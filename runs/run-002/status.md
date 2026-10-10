@@ -1,8 +1,8 @@
 # run-002
 
 Problem: bipartite_dd
-Generations done: 8 of 41 (including generation 0)
-Total mutator calls: 84
+Generations done: 9 of 41 (including generation 0)
+Total mutator calls: 96
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -17,13 +17,13 @@ Total mutator calls: 84
 | d4D5 | target | 160 | 236 | 160 = | g006-c05 |
 | d5D5 | target | 336 | 676 | 330 | g006-c02 |
 | d6D5 | target | 684 | 1556 | 582 | g006-c00 |
-| d7D5 | target | 1134 | 3106 | 892 | g005-c09 |
+| d7D5 | target | 1134 | 3106 | 896 | g008-c03 |
 | d7D4 | target | 346 | 518 | 334 | g004-c05 |
 | d11D4 | target | 1734 | 2222 | 1665 | g004-c05 |
 | d11D3 | target | 190 | 220 | 184 | g000-i01 |
 | d13D3 | target | 274 | 314 | 268 | g000-i01 |
 | d15D3 | target | 374 | 422 | 368 | g000-i01 |
-| d16D3 | target | 394 | 482 | 386 | g004-c07 |
+| d16D3 | target | 394 | 482 | 387 | g008-c07 |
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
@@ -35,3 +35,4 @@ Total mutator calls: 84
 | 5 | 12 | 0 | 0.9069 | 0.9069 |
 | 6 | 12 | 0 | 0.9160 | 0.9160 |
 | 7 | 12 | 0 | 0.9160 | 0.9158 |
+| 8 | 12 | 0 | 0.9246 | 0.9246 |
