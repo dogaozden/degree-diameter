@@ -43,3 +43,12 @@ def test_prompt_header_recommends_is_valid_and_single_process():
     from problems.bipartite_dd.problem import PROMPT_HEADER
     assert "lib.is_valid(n, edges, d, D)" in PROMPT_HEADER
     assert "Use a single process and a single thread: no multiprocessing, no threads, no subprocesses." in PROMPT_HEADER
+
+
+def test_specialist_islands_load_and_focus():
+    from evolve.types import load_problem
+    p = load_problem("problems.bipartite_dd.islands:D3FAM")
+    assert [c.id for c in p.cases] == ["d3D3", "d11D3", "d13D3", "d15D3"]
+    assert p.smoke_case().id == "d3D3" and p.cases[0].weight == 0.1
+    assert "This island's focus" in p.prompt_context() and "record 190" in p.prompt_context()
+    assert load_problem("problems.bipartite_dd.problem").name == "bipartite_dd"

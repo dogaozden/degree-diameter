@@ -45,4 +45,6 @@ class Problem(Protocol):
 
 
 def load_problem(module_path: str) -> Problem:
-    return importlib.import_module(module_path).PROBLEM
+    """Load `module.PROBLEM`, or `module:NAME` to pick another attribute (e.g. one island's problem)."""
+    module, _, attr = module_path.partition(":")
+    return getattr(importlib.import_module(module), attr or "PROBLEM")

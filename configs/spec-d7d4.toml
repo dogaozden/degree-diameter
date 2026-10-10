@@ -1,0 +1,32 @@
+# Specialist cloud island: only d7D4 (+ d3D3 smoke). One cloud session, 4 vCPU.
+run_id = "spec-d7d4"
+problem = "problems.bipartite_dd.islands:D7D4"
+seed = 204
+generations = 80
+candidates_per_generation = 32
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "runs/run-002/candidates/g010-c06/program.py",
+  "runs/run-002/candidates/g016-c08/program.py",
+  "runs/run-002/candidates/g014-c07/program.py",
+  "runs/run-002/candidates/g015-c00/program.py",
+  "runs/run-002/candidates/g014-c04/program.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 300
+max_calls = 3000
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true
