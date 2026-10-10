@@ -22,7 +22,8 @@ Your program must define:
 Rules:
 - It is called once per case with the case's d and D, an integer seed, and time_limit in seconds. Return before time_limit runs out (leave a margin); slow programs are killed and score 0.
 - Allowed imports: the Python standard library, numpy, and `lib` (shown below). No networkx, no files, no network.
-- Output must be exactly valid: no duplicate edges, no self-loops, degree <= d, bipartite, diameter <= D. Any violation scores 0 for that case. A good pattern is to construct, then verify with lib.within_diameter / lib.max_degree / lib.is_bipartite, and fall back to a smaller valid graph if the check fails.
+- Output must be exactly valid: no duplicate edges, no self-loops, degree <= d, bipartite, diameter <= D. Any violation scores 0 for that case. A good pattern is to construct, then verify with lib.is_valid(n, edges, d, D), and fall back to a smaller valid graph if the check fails.
+- Use a single process and a single thread: no multiprocessing, no threads, no subprocesses.
 - One program handles every (d, D) case. Specializing by case inside build() is fine."""
 
 

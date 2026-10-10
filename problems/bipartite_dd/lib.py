@@ -195,7 +195,7 @@ def adjacency(n, edges):
 
 
 def max_degree(n, edges):
-    """Return the largest vertex degree (0 for an empty graph)."""
+    """Return the largest vertex degree (0 for an empty graph). Duplicate edges are ignored."""
     return max((len(a) for a in adjacency(n, edges)), default=0)
 
 
@@ -251,3 +251,44 @@ def relabel(edges):
     """Return (n, edges) with vertex labels compacted to 0..n-1 in sorted order of the old labels."""
     new = {old: i for i, old in enumerate(sorted({x for e in edges for x in e}))}
     return len(new), [(new[u], new[v]) for u, v in edges]
+
+
+def _moore_bound(d, D):
+    """Largest possible order of a bipartite graph with max degree d and diameter D."""
+    if D == 0 or d == 0:
+        return 1
+    if d == 1:
+        return min(2, D + 1)
+    if d == 2:
+        return 2 * D
+    return 2 * sum((d - 1) ** i for i in range(D))
+
+
+def _is_int(x):
+    return isinstance(x, int) and not isinstance(x, bool)
+
+
+def is_valid(n, edges, d, D):
+    """True iff (n, edges) is exactly what the scorer accepts: labels in range, no self-loops, no duplicate edges, max degree <= d, bipartite, diameter <= D."""
+    if not _is_int(n) or not 1 <= n <= 2_000_000:
+        return False
+    seen = set()
+    degree = {}
+    for e in edges:
+        if not isinstance(e, (list, tuple)) or len(e) != 2:
+            return False
+        u, v = e
+        if not _is_int(u) or not _is_int(v) or not (0 <= u < n and 0 <= v < n) or u == v:
+            return False
+        key = (u, v) if u < v else (v, u)
+        if key in seen:
+            return False
+        seen.add(key)
+        degree[u] = degree.get(u, 0) + 1
+        degree[v] = degree.get(v, 0) + 1
+    if any(k > d for k in degree.values()):
+        return False
+    # Cheap rejections first, so a huge n never reaches the O(n^2)-bit step.
+    if n > _moore_bound(d, D) or (n > 1 and len(seen) < n - 1):
+        return False
+    return is_bipartite(n, list(seen)) and within_diameter(n, list(seen), D)

@@ -38,3 +38,8 @@ def test_seed_valid_everywhere_and_optimal_on_planes():
         assert ok, (c.id, reason)
         if c.id in ("d3D3", "d4D3", "d5D3", "d6D3"):
             assert value == c.record
+
+def test_prompt_header_recommends_is_valid_and_single_process():
+    from problems.bipartite_dd.problem import PROMPT_HEADER
+    assert "lib.is_valid(n, edges, d, D)" in PROMPT_HEADER
+    assert "Use a single process and a single thread: no multiprocessing, no threads, no subprocesses." in PROMPT_HEADER

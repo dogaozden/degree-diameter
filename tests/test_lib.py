@@ -67,3 +67,44 @@ def test_bad_pairs_path():
 
 def test_relabel():
     assert lib.relabel([(10, 30), (30, 20)]) == (3, [(0, 2), (2, 1)])
+
+
+def test_is_valid_agrees_with_checker_on_random_graphs():
+    from problems.bipartite_dd.checker import check
+    rng = random.Random(11)
+    for _ in range(400):
+        a = rng.randint(1, 9); b = rng.randint(1, 9); n = a + b
+        p = rng.random()
+        edges = [(i, a + j) for i in range(a) for j in range(b) if rng.random() < p]
+        r = rng.random()
+        if r < 0.2 and n >= 3:
+            edges.append((0, 1 if a > 1 else n - 1))     # may break bipartiteness
+        elif r < 0.4 and edges:
+            edges.append(rng.choice(edges)[::-1])         # duplicate edge, reversed
+        elif r < 0.5:
+            edges.append((2, 2) if n > 2 else (0, 0))     # self-loop
+        d = rng.randint(1, 6); D = rng.randint(1, 5)
+        assert lib.is_valid(n, edges, d, D) == check((n, edges), d, D).valid, (n, edges, d, D)
+
+def test_is_valid_rejects_duplicates_that_max_degree_ignores():
+    edges = [(0, 1), (1, 0)]
+    assert lib.max_degree(2, edges) == 1 and lib.within_diameter(2, edges, 1)
+    assert not lib.is_valid(2, edges, 3, 3)
+    assert not lib.is_valid(2, [(0, 0), (0, 1)], 3, 3)
+    assert lib.is_valid(2, [(0, 1)], 3, 3)
+
+def test_is_valid_bad_labels_and_huge_n_fast():
+    import time
+    assert not lib.is_valid(3, [(0, 5)], 3, 3) and not lib.is_valid(0, [], 3, 3)
+    t = time.time()
+    assert not lib.is_valid(2_000_000, [], 3, 3)
+    assert time.time() - t < 1
+
+def test_is_valid_known_graphs():
+    from tests.graphs import HEAWOOD, TUTTE_COXETER
+    assert lib.is_valid(*HEAWOOD, 3, 3) and not lib.is_valid(*TUTTE_COXETER, 3, 3)
+    assert lib.is_valid(*TUTTE_COXETER, 3, 4)
+
+def test_lib_does_not_import_checker():
+    import inspect
+    assert "checker" not in inspect.getsource(lib).replace("the scorer", "")
