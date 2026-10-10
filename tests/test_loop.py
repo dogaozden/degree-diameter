@@ -394,3 +394,83 @@ def test_seed_programs_missing_file_raises_before_writing(tmp_path):
     with pytest.raises(FileNotFoundError, match="nope.py"):
         run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None)
     assert not (tmp_path / "runs").exists()
+
+
+# --- pooled evaluation across candidates ---
+
+def _store_with(repo, codes):
+    from evolve.store import RunStore
+    store = RunStore(repo / "runs" / "t")
+    store.init("x")
+    for cid, code in codes.items():
+        store.add_candidate(cid, code, {"id": cid, "generation": 1, "parents": [], "role": "default"})
+    return store
+
+def _strip_wall(result):
+    # wall time varies and crash tracebacks carry the (per-test) temp path; keep the last line only
+    return {**result, "cases": {k: {**v, "wall_s": 0, "reason": v["reason"].strip().splitlines()[-1:]}
+                                for k, v in result["cases"].items()}}
+
+def test_evaluate_candidates_matches_one_at_a_time(tmp_path):
+    from evolve.loop import evaluate_candidate, evaluate_candidates
+    from tests.toy_problem import PROBLEM
+    codes = {
+        "g001-c00": "import helper\ndef build(x, seed, time_limit):\n    return helper.double(x) + 1\n",
+        "g001-c01": "def build(x, seed, time_limit):\n    return x\n",
+        "g001-c02": "def build(x, seed, time_limit):\n    raise ValueError('boom')\n",
+    }
+    c = cfg(eval_seeds=[0, 1])
+    solo_repo, pool_repo = tmp_path / "solo", tmp_path / "pool"
+    solo, pool = _store_with(solo_repo, codes), _store_with(pool_repo, codes)
+    one_by_one = {cid: evaluate_candidate(PROBLEM, solo, cid, c, solo_repo) for cid in codes}
+    pooled = evaluate_candidates(PROBLEM, pool, list(codes), c, pool_repo)
+    assert set(pooled) == set(codes)
+    for cid in codes:
+        assert _strip_wall(pooled[cid]) == _strip_wall(one_by_one[cid])
+        assert _strip_wall(json.loads((pool.root / "candidates" / cid / "result.json").read_text())) == \
+               _strip_wall(json.loads((solo.root / "candidates" / cid / "result.json").read_text()))
+    names = lambda repo: sorted(p.relative_to(repo).as_posix() for p in (repo / "records").rglob("*.json"))
+    assert names(pool_repo) == names(solo_repo) and names(pool_repo)
+
+SLEEPY = "import time\ndef build(x, seed, time_limit):\n    time.sleep(0.5)\n    return x * 2\n"
+
+def test_pooled_evaluation_fills_idle_workers(tmp_path, capsys):
+    import time
+    from evolve.loop import evaluate_candidate, evaluate_candidates
+    from tests.toy_problem import PROBLEM
+    codes = {f"g001-c0{k}": SLEEPY for k in range(3)}
+    # 3 candidates x 2 cases = 6 jobs on 4 workers: 2 waves pooled, but 3 waves (2 jobs each) one by one
+    c = cfg(workers=4, time_limit_s=10)
+    pool_repo, solo_repo = tmp_path / "pool", tmp_path / "solo"
+    pool, solo = _store_with(pool_repo, codes), _store_with(solo_repo, codes)
+    t0 = time.monotonic()
+    evaluate_candidates(PROBLEM, pool, list(codes), c, pool_repo)
+    pooled_s = time.monotonic() - t0
+    t0 = time.monotonic()
+    for cid in codes:
+        evaluate_candidate(PROBLEM, solo, cid, c, solo_repo)
+    solo_s = time.monotonic() - t0
+    with capsys.disabled():
+        print(f"\n[pooled eval] pooled={pooled_s:.2f}s one-at-a-time={solo_s:.2f}s")
+    assert pooled_s < 1.5 and pooled_s < solo_s - 0.2
+    assert all((pool.root / "candidates" / cid / "result.json").exists() for cid in codes)
+
+def test_pooled_evaluation_writes_each_candidate_as_it_finishes_and_stops_on_ctrl_c(tmp_path, monkeypatch):
+    import evolve.loop as loop_mod
+    from evolve.loop import evaluate_candidates
+    from tests.toy_problem import PROBLEM
+    codes = {f"g001-c0{k}": "def build(x, seed, time_limit):\n    return x\n" for k in range(3)}
+    store = _store_with(tmp_path, codes)
+    real = loop_mod._score_candidate
+    def interrupt_after_first(*a, **kw):
+        if any((store.root / "candidates" / cid / "result.json").exists() for cid in codes):
+            raise KeyboardInterrupt
+        return real(*a, **kw)
+    monkeypatch.setattr(loop_mod, "_score_candidate", interrupt_after_first)
+    with pytest.raises(KeyboardInterrupt):
+        evaluate_candidates(PROBLEM, store, list(codes), cfg(workers=1), tmp_path)
+    done = [cid for cid in codes if store.has_result(cid)]
+    assert len(done) == 1                       # the finished one stays written; the rest are redone on resume
+    monkeypatch.undo()
+    evaluate_candidates(PROBLEM, store, [c for c in codes if c not in done], cfg(workers=1), tmp_path)
+    assert all(store.has_result(cid) for cid in codes)
