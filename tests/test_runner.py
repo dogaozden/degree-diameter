@@ -48,3 +48,16 @@ def build(seed, time_limit):
     assert r.status == "timeout"
     time.sleep(5)
     assert not marker.exists()
+
+def test_relative_paths(tmp_path, monkeypatch):
+    (tmp_path / "libdir").mkdir()
+    (tmp_path / "libdir" / "helper.py").write_text("X = 1\n")
+    prog(tmp_path, "import helper\ndef build(seed, time_limit):\n    return helper.X\n")
+    monkeypatch.chdir(tmp_path)
+    r = run_program(Path("p.py"), Path("libdir"), {}, 0, 5)
+    assert r.status == "ok" and r.output == 1
+
+def test_stdin_is_eof(tmp_path):
+    body = "def build(seed, time_limit):\n    try:\n        input()\n    except EOFError:\n        return 1\n    return 0\n"
+    r = run_program(prog(tmp_path, body), tmp_path, {}, 0, 5)
+    assert r.status == "ok" and r.output == 1

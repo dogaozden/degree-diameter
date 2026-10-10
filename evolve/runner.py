@@ -37,11 +37,12 @@ def run_program(program: Path, harness_dir: Path, params: dict, seed: int,
     with tempfile.TemporaryDirectory(prefix="evolve-run-") as tmp:
         out_path = Path(tmp) / "out.json"
         err_path = Path(tmp) / "stderr.txt"
-        cmd = [sys.executable, "-I", str(HARNESS), str(program), str(harness_dir),
+        # cwd is the temp dir, so the child needs absolute paths
+        cmd = [sys.executable, "-I", str(HARNESS), str(Path(program).resolve()), str(Path(harness_dir).resolve()),
                json.dumps(params), str(seed), str(time_limit), str(out_path)]
         start = time.monotonic()
         with open(err_path, "wb") as err_f:
-            proc = subprocess.Popen(cmd, cwd=tmp, env=env, stdout=subprocess.DEVNULL,
+            proc = subprocess.Popen(cmd, cwd=tmp, env=env, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                                     stderr=err_f, start_new_session=True)
             try:
                 try:
