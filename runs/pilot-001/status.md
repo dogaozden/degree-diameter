@@ -1,8 +1,8 @@
 # pilot-001
 
 Problem: bipartite_dd
-Generations done: 10 of 11 (including generation 0)
-Total mutator calls: 108
+Generations done: 11 of 11 (including generation 0)
+Total mutator calls: 120
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -22,7 +22,6 @@ Total mutator calls: 108
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
-| 0 | 1 | 0 | 0.6740 | 0.6740 |
 | 1 | 12 | 0 | 0.8558 | 0.8558 |
 | 2 | 12 | 0 | 0.8752 | 0.8752 |
 | 3 | 12 | 0 | 0.8936 | 0.8936 |
@@ -32,3 +31,4 @@ Total mutator calls: 108
 | 7 | 12 | 0 | 0.9090 | 0.9090 |
 | 8 | 12 | 0 | 0.9109 | 0.9109 |
 | 9 | 12 | 0 | 0.9109 | 0.9068 |
+| 10 | 12 | 0 | 0.9109 | 0.9056 |
