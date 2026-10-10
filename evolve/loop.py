@@ -124,10 +124,12 @@ def render_status(store: RunStore, problem, cfg: RunConfig) -> str:
             mark = " NEW" if b["value"] > case.record else (" =" if b["value"] == case.record else "")
             shown, cid = f"{b['value']:g}{mark}", b["cid"]
         lines.append(f"| {case.id} | {case.kind} | {case.record:g} | {case.ceiling:g} | {shown} | {cid} |")
-    lines += ["", "| gen | made | failed | best fitness |", "|---|---|---|---|"]
+    lines += ["", "| gen | made | failed | best fitness | gen best |", "|---|---|---|---|---|"]
     for g in done[-10:]:
         s = store.read_generation(g)
-        lines.append(f"| {g} | {s['made']} | {s['failed']} | {s['best_fitness']:.4f} |")
+        gen_best = s.get("gen_best_fitness")
+        shown = "-" if gen_best is None else f"{gen_best:.4f}"
+        lines.append(f"| {g} | {s['made']} | {s['failed']} | {s['best_fitness']:.4f} | {shown} |")
     return "\n".join(lines) + "\n"
 
 
@@ -135,7 +137,11 @@ def _git(cfg: RunConfig, repo_root: Path, log, message: str) -> None:
     if not cfg.git.get("enabled"):
         return
     paths = [p for p in (f"{cfg.runs_dir}/{cfg.run_id}", cfg.records_dir) if (repo_root / p).exists()]
-    cmds = [["git", "add", "--", *paths], ["git", "commit", "-m", f"{message}\n\n{COMMIT_TRAILER}"]]
+    if not paths:
+        return
+    # Commit only this run's paths, so anything else the user has staged stays staged.
+    cmds = [["git", "add", "--", *paths],
+            ["git", "commit", "-m", f"{message}\n\n{COMMIT_TRAILER}", "--", *paths]]
     if cfg.git.get("push"):
         cmds.append(["git", "push"])
     env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
@@ -176,14 +182,17 @@ def _make_plan(g: int, store: RunStore, problem, cfg: RunConfig) -> dict:
     return {"generation": g, "tasks": tasks}
 
 
-def _mutation_task(task: dict, store: RunStore, problem) -> MutationTask:
+def _mutation_task(task: dict, store: RunStore, problem, time_limit: float | None = None) -> MutationTask:
     parents = []
     for pid in task["parents"]:
-        values = {}
+        scores: dict = {}
         if store.has_result(pid):
-            values = {k: v["value"] for k, v in store.read_result(pid)["cases"].items()}
-        parents.append((pid, store.read_program(pid), values))
-    return MutationTask(task["cid"], task["role"], parents, problem.cases)
+            for k, v in store.read_result(pid)["cases"].items():
+                # a zero carries its status and reason so the model can see what went wrong
+                scores[k] = v["value"] if v["value"] else {"value": v["value"], "status": v["status"],
+                                                           "reason": v["reason"]}
+        parents.append((pid, store.read_program(pid), scores))
+    return MutationTask(task["cid"], task["role"], parents, problem.cases, time_limit)
 
 
 def _mutate_generation(g: int, plan: dict, store: RunStore, problem, cfg: RunConfig, mutator, log) -> bool:
@@ -195,19 +204,29 @@ def _mutate_generation(g: int, plan: dict, store: RunStore, problem, cfg: RunCon
             t["status"] = "made"    # crashed between add_candidate and the plan write
     todo = [t for t in plan["tasks"] if t["status"] == "pending"]
     inflight: dict = {}
-    stop, first_exc = False, None
+    stop, first_exc, interrupted = False, None, False
     try:
         with ThreadPoolExecutor(concurrency) as ex:
             while todo or inflight:
-                while todo and len(inflight) < concurrency and not stop and first_exc is None:
+                while todo and len(inflight) < concurrency and not stop and first_exc is None and not interrupted:
                     if store.count_calls() >= max_calls:
                         stop = True
                         break
                     t = todo.pop(0)
-                    inflight[ex.submit(mutator.mutate, _mutation_task(t, store, problem))] = t
+                    inflight[ex.submit(mutator.mutate, _mutation_task(t, store, problem, cfg.time_limit_s))] = t
                 if not inflight:
                     break
-                done, _ = wait(inflight, return_when=FIRST_COMPLETED)
+                try:
+                    done, _ = wait(inflight, return_when=FIRST_COMPLETED)
+                except KeyboardInterrupt as e:
+                    # Ctrl-C: no new CLI calls, but keep draining so finished work is saved.
+                    first_exc = first_exc or e
+                    interrupted = True
+                    abort = getattr(mutator, "abort", None)
+                    if abort is not None:
+                        abort()
+                    log("interrupted: waiting for in-flight mutations to finish and saving them")
+                    continue
                 for fut in done:
                     t = inflight.pop(fut)
                     try:
@@ -242,6 +261,7 @@ def _summary(g: int, store: RunStore, problem, plan: dict | None, stop: bool, st
     cands = store.load_candidates()
     best = _best_by_case(store, problem)
     tasks = plan["tasks"] if plan else []
+    gen_best = max((c.fitness for c in cands if c.generation == g and c.fitness is not None), default=0.0)
     return {
         "generation": g, "complete": not stop,
         "candidates": len(store.candidates_in_generation(g)),
@@ -249,6 +269,7 @@ def _summary(g: int, store: RunStore, problem, plan: dict | None, stop: bool, st
         "failed": sum(t["status"] == "failed" for t in tasks),
         "calls_total": store.count_calls(),
         "best_fitness": max((c.fitness for c in cands if c.fitness is not None), default=0.0),
+        "gen_best_fitness": gen_best,
         "best_by_case": best,
         "new_records": [[cid, b["cid"], b["value"]] for cid, b in best.items() if b["value"] > b["record"]],
         "elapsed_s": time.monotonic() - started,
@@ -276,6 +297,11 @@ def _finish_generation(g, store, problem, cfg, repo_root, log, plan, stop, start
     summary = _summary(g, store, problem, plan, stop, started)
     store.write_generation(g, summary)
     store.write_status(render_status(store, problem, cfg))
+    log(f"gen {g}: made {summary['made']} failed {summary['failed']} calls {summary['calls_total']} "
+        f"gen-best {summary['gen_best_fitness']:.4f} best {summary['best_fitness']:.4f}")
+    for case_id, cid, value in summary["new_records"]:
+        if store.read_meta(cid)["generation"] == g:
+            log(f"*** NEW RECORD {case_id}: {value:g} > {summary['best_by_case'][case_id]['record']:g} ({cid}) ***")
     _git(cfg, repo_root, log, f"chore(run): {cfg.run_id} generation {g} best {summary['best_fitness']:.4f}")
 
 

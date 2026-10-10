@@ -29,4 +29,4 @@ def main(argv: list[str] | None = None) -> int:
     cfg, text = load_config(args.config)
     if args.fake:
         cfg.mutator = {**cfg.mutator, "kind": "fake"}
-    return run(cfg, text, Path.cwd())
+    return run(cfg, text, Path.cwd(), log=lambda *a: print(*a, flush=True))

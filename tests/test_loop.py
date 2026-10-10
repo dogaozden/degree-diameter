@@ -161,6 +161,7 @@ def test_git_nothing_to_commit_is_not_a_failure_and_still_pushes(tmp_path, monke
             return subprocess.CompletedProcess(cmd, 1, "nothing to commit, working tree clean\n", "")
         return subprocess.CompletedProcess(cmd, 0, "", "")
     monkeypatch.setattr("evolve.loop.subprocess.run", fake_run)
+    (tmp_path / "runs" / "t").mkdir(parents=True)
     loop_git(c, tmp_path, logs.append, "msg")
     assert calls[-1] == ["git", "push"] and logs == []
 
@@ -172,5 +173,174 @@ def test_git_timeout_is_logged_not_raised(tmp_path, monkeypatch):
         seen.update(kw)
         raise subprocess.TimeoutExpired(cmd, kw["timeout"])
     monkeypatch.setattr("evolve.loop.subprocess.run", fake_run)
+    (tmp_path / "runs" / "t").mkdir(parents=True)
     loop_git(cfg(git={"enabled": True, "push": True}), tmp_path, logs.append, "msg")
     assert seen["timeout"] == 120 and seen["env"]["GIT_TERMINAL_PROMPT"] == "0" and "timed out" in logs[0]
+
+
+class SlowAbortable:
+    """A mutator whose mutations take a moment; records abort()."""
+    def __init__(self, delay=0.3):
+        self.delay, self.aborted, self.started = delay, False, 0
+        self.inner = FakeMutator(better, ok_smoke)
+
+    def abort(self):
+        self.aborted = True
+
+    def mutate(self, task):
+        import time
+        self.started += 1
+        if self.aborted:
+            raise BudgetStop("aborted", calls=[{"cid": task.cid, "aborted": True}])
+        time.sleep(self.delay)
+        r = self.inner.mutate(task)
+        r.calls = [{"cid": task.cid}]
+        return r
+
+def test_ctrl_c_drains_inflight_work_persists_it_and_reraises(tmp_path, monkeypatch):
+    import evolve.loop as loop_mod
+    real_wait, raised = loop_mod.wait, []
+    def wait_once_interrupted(*a, **kw):
+        if not raised:
+            raised.append(1)
+            raise KeyboardInterrupt
+        return real_wait(*a, **kw)
+    monkeypatch.setattr(loop_mod, "wait", wait_once_interrupted)
+    m = SlowAbortable()
+    c = cfg(generations=1, mutator={"kind": "fake", "concurrency": 2, "max_calls": 100})
+    with pytest.raises(KeyboardInterrupt):
+        run(c, "x", tmp_path, mutator=m, log=lambda *a: None)
+    root = tmp_path / "runs" / "t"
+    assert m.aborted and m.started == 2          # two were in flight; the third was never submitted
+    plan = json.loads((root / "generations" / "001.plan.json").read_text())
+    assert [t["status"] for t in plan["tasks"]] == ["made", "made", "pending"]
+    assert (root / "candidates" / "g001-c00" / "program.py").exists()
+    assert len((root / "calls.jsonl").read_text().splitlines()) == 2
+    # resuming finishes the generation
+    assert run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None) == EXIT_DONE
+
+def test_ctrl_c_aborted_tasks_stay_pending_and_their_calls_are_logged(tmp_path, monkeypatch):
+    import evolve.loop as loop_mod
+    real_wait, raised = loop_mod.wait, []
+    class AbortRaises(SlowAbortable):
+        def mutate(self, task):
+            import time
+            self.started += 1
+            time.sleep(self.delay)
+            if self.aborted:
+                raise BudgetStop("aborted", calls=[{"cid": task.cid, "aborted": True}])
+            return self.inner.mutate(task)
+    def wait_once_interrupted(*a, **kw):
+        if not raised:
+            raised.append(1)
+            raise KeyboardInterrupt
+        return real_wait(*a, **kw)
+    monkeypatch.setattr(loop_mod, "wait", wait_once_interrupted)
+    c = cfg(generations=1, mutator={"kind": "fake", "concurrency": 2, "max_calls": 100})
+    with pytest.raises(KeyboardInterrupt):
+        run(c, "x", tmp_path, mutator=AbortRaises(), log=lambda *a: None)
+    root = tmp_path / "runs" / "t"
+    plan = json.loads((root / "generations" / "001.plan.json").read_text())
+    assert [t["status"] for t in plan["tasks"]] == ["pending"] * 3
+    assert len((root / "calls.jsonl").read_text().splitlines()) == 2
+
+def test_mutation_task_carries_zero_reasons_and_time_limit(tmp_path):
+    from evolve.loop import _mutation_task
+    from evolve.store import RunStore
+    from tests.toy_problem import PROBLEM
+    store = RunStore(tmp_path / "runs" / "t"); store.init("x")
+    store.add_candidate("g000-seed", "def build(x, seed, time_limit):\n    return x\n",
+                        {"id": "g000-seed", "generation": 0, "parents": [], "role": "seed"})
+    store.write_result("g000-seed", {"cases": {
+        "c1": {"case_id": "c1", "status": "ok", "valid": True, "value": 3.0, "score": 0.5, "reason": "", "wall_s": 0.1},
+        "c2": {"case_id": "c2", "status": "timeout", "valid": False, "value": 0.0, "score": 0.0,
+               "reason": "timeout: killed", "wall_s": 9.0}}, "fitness": 0.1})
+    task = _mutation_task({"cid": "g001-c00", "role": "default", "parents": ["g000-seed"]}, store, PROBLEM, 7.5)
+    _cid, _code, scores = task.parents[0]
+    assert scores["c1"] == 3.0
+    assert scores["c2"] == {"value": 0.0, "status": "timeout", "reason": "timeout: killed"}
+    assert task.time_limit == 7.5
+
+def test_progress_lines_and_gen_best(tmp_path):
+    logs = []
+    run(cfg(), "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=logs.append)
+    assert "gen 1: made 3 failed 0 calls 0 gen-best 1.1222 best 1.1222" in logs
+    assert "gen 2: made 3 failed 0 calls 0 gen-best 1.1222 best 1.1222" in logs
+    rec = [l for l in logs if l.startswith("*** NEW RECORD")]
+    assert rec == ["*** NEW RECORD c1: 7 > 6 (g001-c00) ***", "*** NEW RECORD c2: 11 > 10 (g001-c00) ***"]   # none repeated in gen 2
+    root = tmp_path / "runs" / "t"
+    s0 = json.loads((root / "generations" / "000.json").read_text())
+    s1 = json.loads((root / "generations" / "001.json").read_text())
+    assert s0["gen_best_fitness"] == pytest.approx(s0["best_fitness"])
+    assert s1["gen_best_fitness"] == pytest.approx(1.1222, abs=1e-4) and s1["gen_best_fitness"] > s0["gen_best_fitness"]
+    status = (root / "status.md").read_text()
+    assert "| gen | made | failed | best fitness | gen best |" in status
+
+def test_gen_best_is_per_generation_not_cumulative(tmp_path):
+    weak = lambda t, a: "```python\ndef build(x, seed, time_limit):\n    return 1\n```"
+    # generation 1 is good; generation 2 only echoes a weaker program
+    replies = {1: better, 2: weak}
+    class ByGen:
+        def __init__(self): self.fakes = {g: FakeMutator(f, ok_smoke) for g, f in replies.items()}
+        def mutate(self, task): return self.fakes[int(task.cid[1:4])].mutate(task)
+    run(cfg(), "x", tmp_path, mutator=ByGen(), log=lambda *a: None)
+    root = tmp_path / "runs" / "t"
+    g1 = json.loads((root / "generations" / "001.json").read_text())
+    g2 = json.loads((root / "generations" / "002.json").read_text())
+    assert g2["best_fitness"] == g1["best_fitness"] and g2["gen_best_fitness"] < g2["best_fitness"]
+
+def test_cli_passes_a_flushing_print(tmp_path, monkeypatch):
+    import sys
+    import evolve.cli as cli
+    seen = {}
+    monkeypatch.setattr(cli, "run", lambda cfg, text, root, **kw: seen.update(kw) or 0)
+    monkeypatch.chdir(Path(__file__).parent.parent)
+    assert cli.main(["run", "configs/smoke.toml", "--fake"]) == 0
+    class Out:
+        def __init__(self): self.w, self.flushes = [], 0
+        def write(self, s): self.w.append(s)
+        def flush(self): self.flushes += 1
+    out = Out()
+    monkeypatch.setattr(sys, "stdout", out)
+    seen["log"]("hello")
+    assert "hello" in "".join(out.w) and out.flushes >= 1
+
+def _init_repo(path):
+    _git(path, "init", "-q")
+    _git(path, "config", "user.name", "t")
+    _git(path, "config", "user.email", "t@example.com")
+    _git(path, "commit", "-q", "--allow-empty", "-m", "init")
+
+def test_git_commit_leaves_other_staged_files_alone(tmp_path):
+    _init_repo(tmp_path)
+    (tmp_path / "mine.txt").write_text("user's work")
+    _git(tmp_path, "add", "mine.txt")
+    c = cfg(generations=1, git={"enabled": True, "push": False})
+    assert run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None) == EXIT_DONE
+    for sha_range in ("HEAD", "HEAD~1"):
+        assert "mine.txt" not in _git(tmp_path, "show", "--name-only", "--format=", sha_range)
+    assert _git(tmp_path, "diff", "--cached", "--name-only").split() == ["mine.txt"]
+    assert "runs/t/generations/001.json" in _git(tmp_path, "show", "--name-only", "--format=", "HEAD")
+
+def test_git_second_commit_with_nothing_new_is_quiet(tmp_path):
+    from evolve.loop import _git as loop_git
+    _init_repo(tmp_path)
+    (tmp_path / "runs" / "t").mkdir(parents=True)
+    (tmp_path / "runs" / "t" / "f.txt").write_text("a")
+    c, logs = cfg(git={"enabled": True, "push": False}), []
+    loop_git(c, tmp_path, logs.append, "first")
+    loop_git(c, tmp_path, logs.append, "second")
+    assert logs == []
+    assert _git(tmp_path, "log", "--format=%s").split("\n")[:2] == ["first", "init"]
+
+def test_git_commit_is_scoped_to_run_paths(tmp_path, monkeypatch):
+    import subprocess
+    from evolve.loop import _git as loop_git
+    (tmp_path / "runs" / "t").mkdir(parents=True)
+    (tmp_path / "records").mkdir()
+    cmds = []
+    monkeypatch.setattr("evolve.loop.subprocess.run",
+                        lambda cmd, **kw: cmds.append(cmd) or subprocess.CompletedProcess(cmd, 0, "", ""))
+    loop_git(cfg(git={"enabled": True, "push": False}), tmp_path, lambda *_: None, "msg")
+    commit = cmds[1]
+    assert commit[:2] == ["git", "commit"] and commit[-3:] == ["--", "runs/t", "records"]
