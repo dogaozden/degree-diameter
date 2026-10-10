@@ -344,3 +344,53 @@ def test_git_commit_is_scoped_to_run_paths(tmp_path, monkeypatch):
     loop_git(cfg(git={"enabled": True, "push": False}), tmp_path, lambda *_: None, "msg")
     commit = cmds[1]
     assert commit[:2] == ["git", "commit"] and commit[-3:] == ["--", "runs/t", "records"]
+
+
+def _write_imports(tmp_path):
+    (tmp_path / "old").mkdir()
+    good = "import helper\ndef build(x, seed, time_limit):\n    return helper.double(x) + 1\n"
+    weak = "def build(x, seed, time_limit):\n    return 1\n"
+    (tmp_path / "old" / "good.py").write_text(good)
+    (tmp_path / "old" / "weak.py").write_text(weak)
+    return ["old/good.py", "old/weak.py"]
+
+def test_seed_programs_are_imported_evaluated_and_selectable(tmp_path):
+    paths = _write_imports(tmp_path)
+    c = cfg(generations=1, seed_programs=paths)
+    assert run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None) == EXIT_DONE
+    root = tmp_path / "runs" / "t"
+    for k, path in enumerate(paths):
+        cid = f"g000-i{k:02d}"
+        meta = json.loads((root / "candidates" / cid / "meta.json").read_text())
+        assert (meta["role"], meta["parents"], meta["generation"], meta["source"]) == ("import", [], 0, path)
+        assert (root / "candidates" / cid / "program.py").read_text() == (tmp_path / path).read_text()
+        assert (root / "candidates" / cid / "result.json").exists()
+    s0 = json.loads((root / "generations" / "000.json").read_text())
+    assert s0["candidates"] == 3
+    good = json.loads((root / "candidates" / "g000-i00" / "result.json").read_text())["fitness"]
+    seed = json.loads((root / "candidates" / "g000-seed" / "result.json").read_text())["fitness"]
+    assert good > seed and s0["gen_best_fitness"] == pytest.approx(good)
+    plan = json.loads((root / "generations" / "001.plan.json").read_text())
+    assert "g000-i00" in {p for t in plan["tasks"] for p in t["parents"]}
+
+def test_seed_programs_resume_does_not_duplicate(tmp_path):
+    paths = _write_imports(tmp_path)
+    c = cfg(generations=1, seed_programs=paths)
+    run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None)
+    root = tmp_path / "runs" / "t"
+    before = sorted(p.name for p in (root / "candidates").iterdir())
+    created = (root / "candidates" / "g000-i00" / "meta.json").read_text()
+    (root / "generations" / "000.json").unlink()      # force generation 0 to be redone
+    (root / "candidates" / "g000-i01" / "result.json").unlink()
+    assert run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None) == EXIT_DONE
+    assert sorted(p.name for p in (root / "candidates").iterdir()) == before
+    assert (root / "candidates" / "g000-i00" / "meta.json").read_text() == created
+    assert (root / "candidates" / "g000-i01" / "result.json").exists()
+    assert json.loads((root / "generations" / "000.json").read_text())["candidates"] == 3
+
+def test_seed_programs_missing_file_raises_before_writing(tmp_path):
+    paths = _write_imports(tmp_path)
+    c = cfg(generations=1, seed_programs=[paths[0], "old/nope.py"])
+    with pytest.raises(FileNotFoundError, match="nope.py"):
+        run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None)
+    assert not (tmp_path / "runs").exists()

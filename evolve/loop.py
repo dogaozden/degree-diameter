@@ -280,11 +280,12 @@ def run(cfg: RunConfig, config_text: str, repo_root: Path, mutator=None, log=pri
     repo_root = Path(repo_root)
     problem = load_problem(cfg.problem)
     store = RunStore(repo_root / cfg.runs_dir / cfg.run_id)
+    imports = [] if store.generation_done(0) else _read_imports(cfg, repo_root)   # fail before anything is written
     store.init(config_text)
     if mutator is None:
         mutator = _build_mutator(problem, cfg)
     try:
-        return _run(cfg, repo_root, problem, store, mutator, log)
+        return _run(cfg, repo_root, problem, store, mutator, log, imports)
     except CheckerBug as e:
         log(f"checker bug: {e}")
         store.write_status(f"# CHECKER BUG\n\n{e}\n\nThe run stopped. Fix the checker before resuming.\n\n"
@@ -305,14 +306,31 @@ def _finish_generation(g, store, problem, cfg, repo_root, log, plan, stop, start
     _git(cfg, repo_root, log, f"chore(run): {cfg.run_id} generation {g} best {summary['best_fitness']:.4f}")
 
 
-def _run(cfg, repo_root, problem, store, mutator, log) -> int:
+def _read_imports(cfg: RunConfig, repo_root: Path) -> list[tuple[str, str]]:
+    """Read every cfg.seed_programs file as (path string, code); a missing file raises FileNotFoundError."""
+    imports = []
+    for rel in cfg.seed_programs:
+        path = repo_root / rel
+        if not path.is_file():
+            raise FileNotFoundError(f"seed_programs: no such file: {path}")
+        imports.append((rel, path.read_text()))
+    return imports
+
+
+def _run(cfg, repo_root, problem, store, mutator, log, imports=()) -> int:
     if not store.generation_done(0):
         started = time.monotonic()
         if not store.has_candidate(SEED_CID):
             store.add_candidate(SEED_CID, Path(problem.seed_program).read_text(),
                                 {"id": SEED_CID, "generation": 0, "parents": [], "role": "seed"})
-        if not store.has_result(SEED_CID):
-            evaluate_candidate(problem, store, SEED_CID, cfg, repo_root)
+        for k, (source, code) in enumerate(imports):
+            cid = f"g000-i{k:02d}"
+            if not store.has_candidate(cid):
+                store.add_candidate(cid, code, {"id": cid, "generation": 0, "parents": [], "role": "import",
+                                                "source": source})
+        for cid in store.candidates_in_generation(0):
+            if not store.has_result(cid):
+                evaluate_candidate(problem, store, cid, cfg, repo_root)
         _finish_generation(0, store, problem, cfg, repo_root, log, None, False, started)
 
     for g in range(1, cfg.generations + 1):
