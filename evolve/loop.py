@@ -174,7 +174,7 @@ def _git(cfg: RunConfig, repo_root: Path, log, message: str) -> None:
     cmds = [["git", "add", "--", *paths],
             ["git", "commit", "-m", f"{message}\n\n{COMMIT_TRAILER}", "--", *paths]]
     if cfg.git.get("push"):
-        cmds.append(["git", "push"])
+        cmds.append(["git", "push", "-u", "origin", "HEAD"])
     env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
     for cmd in cmds:
         try:

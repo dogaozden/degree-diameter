@@ -156,14 +156,14 @@ def test_git_nothing_to_commit_is_not_a_failure_and_still_pushes(tmp_path, monke
     c = cfg(git={"enabled": True, "push": True})
     calls, logs = [], []
     def fake_run(cmd, **kw):
-        calls.append(cmd[:2])
+        calls.append(cmd)
         if cmd[1] == "commit":
             return subprocess.CompletedProcess(cmd, 1, "nothing to commit, working tree clean\n", "")
         return subprocess.CompletedProcess(cmd, 0, "", "")
     monkeypatch.setattr("evolve.loop.subprocess.run", fake_run)
     (tmp_path / "runs" / "t").mkdir(parents=True)
     loop_git(c, tmp_path, logs.append, "msg")
-    assert calls[-1] == ["git", "push"] and logs == []
+    assert calls[-1] == ["git", "push", "-u", "origin", "HEAD"] and logs == []
 
 def test_git_timeout_is_logged_not_raised(tmp_path, monkeypatch):
     import subprocess
