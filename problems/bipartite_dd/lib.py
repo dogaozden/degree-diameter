@@ -4,6 +4,7 @@ Graphs are given as `(n, edges)`: `n` vertices labelled 0..n-1 and `edges`, a li
 `(u, v)` pairs. Edges are undirected. Uses only the standard library and numpy.
 """
 import itertools
+import math
 
 import numpy as np
 
@@ -181,6 +182,47 @@ def haar_graph(m, S):
     """Return (2m, edges) of the Haar graph of Z_m with connection set S: a_i=i joins b_j=m+j for j-i in S."""
     shifts = sorted({s % m for s in S})
     return 2 * m, [(i, m + (i + s) % m) for i in range(m) for s in shifts]
+
+
+def cyclic_group(m):
+    """Return (order, mul, inv) for Z_m, with elements 0..m-1."""
+    return m, (lambda x, y: (x + y) % m), (lambda x: (-x) % m)
+
+
+def semidirect_group(m, k, r):
+    """Return (order, mul, inv) for Z_m x|_r Z_k, element (a, b) coded as a*k+b; needs r^k = 1 mod m and gcd(r, m) = 1."""
+    if m < 1 or k < 1 or math.gcd(r, m) != 1 or pow(r, k, m) != 1 % m:
+        raise ValueError(f"need gcd(r, m) = 1 and r^k = 1 mod m, got m={m} k={k} r={r}")
+    r %= m
+    powers = [pow(r, b, m) for b in range(k)]   # powers[b] = r^b mod m
+
+    def mul(x, y):
+        """(a, b) * (c, d) = (a + r^b * c, b + d)."""
+        a, b = divmod(x, k)
+        c, d = divmod(y, k)
+        return ((a + powers[b] * c) % m) * k + (b + d) % k
+
+    def inv(x):
+        """Inverse of (a, b) is (-r^(-b) * a, -b)."""
+        a, b = divmod(x, k)
+        nb = (-b) % k
+        return ((-powers[nb] * a) % m) * k + nb
+
+    return m * k, mul, inv
+
+
+def group_lift(base_n, darts, order, mul):
+    """Lift a base graph over a finite group: dart (u, v, g) joins u*order+x to v*order+mul(x, g) for all x; return (base_n*order, edges).
+
+    A loop dart (u, u, g) gives the same edges as (u, u, inverse of g), so list a loop only once.
+    """
+    edges = set()
+    for u, v, g in darts:
+        for x in range(order):
+            a, b = u * order + x, v * order + mul(x, g)
+            if a != b:
+                edges.add((min(a, b), max(a, b)))
+    return base_n * order, sorted(edges)
 
 
 # ------------------------------------------------------------------ graph queries
