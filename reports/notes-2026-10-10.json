@@ -1,0 +1,166 @@
+{
+ "when": "Saturday 10 October 2026 \u00b7 while you were away",
+ "headline": "Two records tied, none beaten yet",
+ "lede": "While you were away, the engine ran 27 rounds of evolution across two runs and wrote 324 programs with Haiku. It rediscovered all 8 known answers and matched the best known graph on two open cases: 160 for degree 4 within 5 steps, and 394 for degree 16 within 3 steps. Both were checked by two independent checkers and rebuilt from scratch. No case has been beaten yet; the closest is degree 7 within 4 steps at 339 of 346.",
+ "cases": [
+  {
+   "id": "d3D3",
+   "d": 3,
+   "D": 3,
+   "record": 14,
+   "ceiling": 14,
+   "kind": "calibration"
+  },
+  {
+   "id": "d4D3",
+   "d": 4,
+   "D": 3,
+   "record": 26,
+   "ceiling": 26,
+   "kind": "calibration"
+  },
+  {
+   "id": "d5D3",
+   "d": 5,
+   "D": 3,
+   "record": 42,
+   "ceiling": 42,
+   "kind": "calibration"
+  },
+  {
+   "id": "d6D3",
+   "d": 6,
+   "D": 3,
+   "record": 62,
+   "ceiling": 62,
+   "kind": "calibration"
+  },
+  {
+   "id": "d3D4",
+   "d": 3,
+   "D": 4,
+   "record": 30,
+   "ceiling": 30,
+   "kind": "calibration"
+  },
+  {
+   "id": "d4D4",
+   "d": 4,
+   "D": 4,
+   "record": 80,
+   "ceiling": 80,
+   "kind": "calibration"
+  },
+  {
+   "id": "d3D5",
+   "d": 3,
+   "D": 5,
+   "record": 56,
+   "ceiling": 56,
+   "kind": "calibration"
+  },
+  {
+   "id": "d7D3",
+   "d": 7,
+   "D": 3,
+   "record": 80,
+   "ceiling": 80,
+   "kind": "calibration"
+  },
+  {
+   "id": "d4D5",
+   "d": 4,
+   "D": 5,
+   "record": 160,
+   "ceiling": 236,
+   "kind": "target"
+  },
+  {
+   "id": "d5D5",
+   "d": 5,
+   "D": 5,
+   "record": 336,
+   "ceiling": 676,
+   "kind": "target"
+  },
+  {
+   "id": "d6D5",
+   "d": 6,
+   "D": 5,
+   "record": 684,
+   "ceiling": 1556,
+   "kind": "target"
+  },
+  {
+   "id": "d7D5",
+   "d": 7,
+   "D": 5,
+   "record": 1134,
+   "ceiling": 3106,
+   "kind": "target"
+  },
+  {
+   "id": "d7D4",
+   "d": 7,
+   "D": 4,
+   "record": 346,
+   "ceiling": 518,
+   "kind": "target"
+  },
+  {
+   "id": "d11D4",
+   "d": 11,
+   "D": 4,
+   "record": 1734,
+   "ceiling": 2222,
+   "kind": "target"
+  },
+  {
+   "id": "d11D3",
+   "d": 11,
+   "D": 3,
+   "record": 190,
+   "ceiling": 220,
+   "kind": "target"
+  },
+  {
+   "id": "d13D3",
+   "d": 13,
+   "D": 3,
+   "record": 274,
+   "ceiling": 314,
+   "kind": "target"
+  },
+  {
+   "id": "d15D3",
+   "d": 15,
+   "D": 3,
+   "record": 374,
+   "ceiling": 422,
+   "kind": "target"
+  },
+  {
+   "id": "d16D3",
+   "d": 16,
+   "D": 3,
+   "record": 394,
+   "ceiling": 482,
+   "kind": "target"
+  }
+ ],
+ "ideas": [
+  "Lifts over non-cyclic groups. After I added a helper for 'semidirect product' groups and a hint, Haiku picked it up within one round, and that is how it tied the 160 record.",
+  "Arc-extended projective planes: start from the classic plane graph and graft on extra points. This tied the 394 record for degree 16.",
+  "Generalized quadrangles for the 4-step cases. It found W(3) from the hint on its very first try.",
+  "Crossover programs that bundle the best trick for each case did most of the climbing after round 10.",
+  "Zero broken programs in 324 tries. Every Haiku reply compiled and returned a valid graph."
+ ],
+ "next": [
+  "Let run 2 finish its 40 rounds (about 3 more hours). It keeps going on its own.",
+  "The published construction for the diameter-3 cases is now a helper Haiku can see (it builds 190, 274 and 374 exactly). Next rounds can start from the record instead of 6 below it.",
+  "Settle cloud with you watching: open one cloud session in the app and paste the 4-step test. Takes 5 minutes.",
+  "If the ties hold and nothing beats them in 40 rounds, switch targets to diameter 5 and 6 with bigger degrees, where the gaps are widest."
+ ],
+ "cloud": "Not solved. A real cloud session started fine, but it went idle and never pushed its results, and I could not read it back from the terminal without an interactive prompt. My own remote-agent option quietly ran on your Mac instead. So everything tonight ran on your Mac. The open question is still whether claude -p works on your subscription inside a cloud machine.",
+ "costnote": "Haiku calls are cheap: about 0.5 to 1 cent each at API prices. The whole night used about 9% of the weekly allowance on the account, including my own coordinating. The five-hour window never went above 20%."
+}
