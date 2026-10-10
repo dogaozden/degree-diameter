@@ -104,3 +104,9 @@ def test_moore_bound_values():
     assert moore_bound(1, 4) == 2
     assert moore_bound(0, 4) == 1
     assert moore_bound(3, 0) == 1
+
+
+@pytest.mark.parametrize("fn", BOTH)
+def test_too_few_edges_to_be_connected(fn):
+    r = fn([100, [(2 * i, 2 * i + 1) for i in range(10)]], 3, 10)
+    assert not r.valid and r.reason == "diameter: graph is disconnected"
