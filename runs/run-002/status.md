@@ -1,8 +1,8 @@
 # run-002
 
 Problem: bipartite_dd
-Generations done: 6 of 41 (including generation 0)
-Total mutator calls: 60
+Generations done: 7 of 41 (including generation 0)
+Total mutator calls: 72
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -14,9 +14,9 @@ Total mutator calls: 60
 | d4D4 | calibration | 80 | 80 | 80 = | g000-i00 |
 | d3D5 | calibration | 56 | 56 | 56 = | g000-i00 |
 | d7D3 | calibration | 80 | 80 | 80 = | g000-i01 |
-| d4D5 | target | 160 | 236 | 152 | g004-c09 |
-| d5D5 | target | 336 | 676 | 310 | g005-c08 |
-| d6D5 | target | 684 | 1556 | 558 | g005-c08 |
+| d4D5 | target | 160 | 236 | 160 = | g006-c05 |
+| d5D5 | target | 336 | 676 | 330 | g006-c02 |
+| d6D5 | target | 684 | 1556 | 582 | g006-c00 |
 | d7D5 | target | 1134 | 3106 | 892 | g005-c09 |
 | d7D4 | target | 346 | 518 | 334 | g004-c05 |
 | d11D4 | target | 1734 | 2222 | 1665 | g004-c05 |
@@ -33,3 +33,4 @@ Total mutator calls: 60
 | 3 | 12 | 0 | 0.8939 | 0.8931 |
 | 4 | 12 | 0 | 0.9038 | 0.9038 |
 | 5 | 12 | 0 | 0.9069 | 0.9069 |
+| 6 | 12 | 0 | 0.9160 | 0.9160 |
