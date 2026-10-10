@@ -5,6 +5,7 @@ import json
 import os
 import re
 import subprocess
+import threading
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -159,20 +160,32 @@ def _check(code: str | None, smoke: Callable[[str], tuple[bool, str]]) -> str | 
     return None if ok else (msg or "smoke test failed")
 
 
+class _CallFailed(Exception):
+    """A CLI call produced no usable reply (timeout, exhausted retries, non-transient error)."""
+
+
 def _mutate_with(get_reply: Callable[[str], str], task: MutationTask, smoke,
                  calls: list[dict] | None = None) -> MutationResult:
-    """Shared attempt/retry flow: one attempt, then one retry that shows the model its failure."""
+    """Shared attempt/retry flow: one attempt, then one retry that shows the model its failure.
+
+    get_reply may raise _CallFailed; that attempt then fails with the real CLI error text.
+    """
     calls = calls if calls is not None else []
-    try:
-        reply = get_reply(build_user_prompt(task))
+
+    def attempt(prompt: str) -> tuple[str | None, str, str | None]:
+        try:
+            reply = get_reply(prompt)
+        except _CallFailed as e:
+            return None, "", str(e)
         code = extract_code(reply)
-        err = _check(code, smoke)
+        return code, reply, _check(code, smoke)
+
+    try:
+        code, reply, err = attempt(build_user_prompt(task))
         attempts = 1
         if err is not None:
             prompt = build_user_prompt(task, previous_code=code or reply[:4000], error=err)
-            reply = get_reply(prompt)
-            code = extract_code(reply)
-            err = _check(code, smoke)
+            code, reply, err = attempt(prompt)
             attempts = 2
     except BudgetStop as e:
         e.calls = calls
@@ -195,9 +208,10 @@ class ClaudeMutator:
         self.backoff_s = tuple(backoff_s)
         self._limit_hit = False
         self._rate_limits: dict = {}
-        self._log: list[dict] = []          # raw results of CLI runs not yet turned into call records
+        self._lock = threading.Lock()       # guards _limit_hit and _rate_limits (shared across threads)
 
     def _max_utilization(self) -> float:
+        # caller holds self._lock
         vals = [w.get("utilization") for w in self._rate_limits.values() if isinstance(w, dict)]
         return max((v for v in vals if isinstance(v, (int, float))), default=0.0)
 
@@ -213,27 +227,34 @@ class ClaudeMutator:
             proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True,
                                   timeout=self.timeout_s, cwd=cwd, env=child_env())
             res = parse_stream(proc.stdout)
+            if res["error_message"] == "no result event":
+                res["error_message"] += f" (exit code {proc.returncode}): {(proc.stderr or '')[-1000:]}"
         except subprocess.TimeoutExpired:
             res = parse_stream("")
             res["error_message"] = "timeout"
         res["wall_s"] = time.monotonic() - t0
         return res
 
-    def call(self, prompt: str) -> dict:
-        if self._limit_hit or self._max_utilization() >= self.stop_at:
-            raise BudgetStop("subscription budget reached before call")
+    def call(self, prompt: str, runs: list[dict] | None = None) -> dict:
+        """One logical CLI call (with transient retries). Every CLI run is appended to `runs`."""
+        runs = runs if runs is not None else []
+        with self._lock:
+            if self._limit_hit or self._max_utilization() >= self.stop_at:
+                raise BudgetStop("subscription budget reached before call")
         retries = 0
         while True:
             res = self._run_once(prompt)
-            self._log.append(res)
-            if res["rate_limits"]:
-                self._rate_limits = res["rate_limits"]
+            runs.append(res)
+            with self._lock:
+                if res["rate_limits"]:
+                    self._rate_limits = res["rate_limits"]
             auth = res["auth"]
             if auth is not None and auth != "none":
                 raise RuntimeError("refusing: claude -p is not using the subscription login "
                                    f"(apiKeySource={auth})")
             if res["is_error"] and _LIMIT_RE.search(res["error_message"] or ""):
-                self._limit_hit = True
+                with self._lock:
+                    self._limit_hit = True
                 raise BudgetStop(f"subscription limit hit: {res['error_message']}")
             status = res["error_status"]
             transient = isinstance(status, int) and (status in (429, 529) or status >= 500)
@@ -242,8 +263,10 @@ class ClaudeMutator:
                 retries += 1
                 continue
             break
-        if not res["is_error"] and self._max_utilization() >= self.stop_at:
-            self._limit_hit = True
+        if not res["is_error"]:
+            with self._lock:
+                if self._max_utilization() >= self.stop_at:
+                    self._limit_hit = True
         return res
 
     def mutate(self, task: MutationTask) -> MutationResult:
@@ -253,10 +276,11 @@ class ClaudeMutator:
         def get_reply(prompt: str) -> str:
             nonlocal attempt
             attempt += 1
+            runs: list[dict] = []
             try:
-                res = self.call(prompt)
+                res = self.call(prompt, runs)
             finally:
-                for raw in self._log:
+                for raw in runs:
                     calls.append({
                         "cid": task.cid, "attempt": attempt, "model": self.model,
                         "usage": raw["usage"], "cost_usd": raw["cost_usd"],
@@ -264,8 +288,9 @@ class ClaudeMutator:
                         "is_error": raw["is_error"], "error_message": raw["error_message"],
                         "rate_limits": raw["rate_limits"],
                     })
-                self._log = []
-            return "" if res["is_error"] else res["text"]
+            if res["is_error"]:
+                raise _CallFailed(f"claude -p failed: {res['error_message']}")
+            return res["text"]
 
         return _mutate_with(get_reply, task, self.smoke, calls)
 

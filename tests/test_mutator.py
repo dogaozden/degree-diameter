@@ -91,3 +91,56 @@ def test_transient_error_retried(monkeypatch, tmp_path):
     m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli=FAKE, backoff_s=(0.01,))
     r = m.mutate(TASK)
     assert r.code is not None and len(r.calls) == 2
+
+def test_threaded_mutations_keep_their_own_call_records(monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    monkeypatch.delenv("FAKE_CLAUDE_MODE", raising=False)
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli=FAKE)
+    tasks = [MutationTask(f"g001-c{i:02d}", "default", [("g000-seed", GOOD, {"d3D3": 14.0})], CASES)
+             for i in range(24)]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        results = list(pool.map(m.mutate, tasks))
+    assert len(results) == 24
+    for task, r in zip(tasks, results):
+        assert r.cid == task.cid and r.code is not None
+        assert len(r.calls) == 1 and r.calls[0]["cid"] == task.cid
+    assert sum(len(r.calls) for r in results) == 24
+
+def test_exact_argv_cwd_env_and_stdin(monkeypatch):
+    import subprocess
+    import evolve.mutator as mut
+    seen = {}
+    stdout = "\n".join([
+        '{"type":"system","subtype":"init","apiKeySource":"none"}',
+        '{"type":"result","is_error":false,"result":"ok","usage":{},"total_cost_usd":0,"duration_api_ms":1}',
+    ])
+    def fake_run(cmd, **kw):
+        seen["cmd"], seen["kw"] = cmd, kw
+        return subprocess.CompletedProcess(cmd, 0, stdout, "")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "k")
+    monkeypatch.setattr(mut.subprocess, "run", fake_run)
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude")
+    m.call("the prompt")
+    assert seen["cmd"] == ["claude", "-p", "--output-format", "stream-json", "--verbose",
+                           "--model", "claude-haiku-5-5", "--setting-sources", "",
+                           "--strict-mcp-config", "--disable-slash-commands", "--tools", "",
+                           "--system-prompt=sys"]
+    kw = seen["kw"]
+    assert str(kw["cwd"]).endswith(".cache/claude-p-isolated")
+    assert "ANTHROPIC_API_KEY" not in kw["env"] and kw["env"]["CLAUDE_CODE_DISABLE_AUTO_MEMORY"] == "1"
+    assert kw["input"] == "the prompt"
+
+def test_failed_cli_run_reports_real_error(monkeypatch):
+    import subprocess
+    import evolve.mutator as mut
+    prompts = []
+    def fake_run(cmd, **kw):
+        prompts.append(kw["input"])
+        return subprocess.CompletedProcess(cmd, 3, "", "x" * 2000 + "kaboom")
+    monkeypatch.setattr(mut.subprocess, "run", fake_run)
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude")
+    r = m.mutate(TASK)
+    assert r.code is None and r.attempts == 2 and len(r.calls) == 2
+    assert r.error.startswith("claude -p failed: no result event (exit code 3)") and r.error.endswith("kaboom")
+    assert len(r.error) < 1200
+    assert "claude -p failed" in prompts[1] and "no python code block" not in prompts[1]
