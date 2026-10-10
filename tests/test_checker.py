@@ -1,6 +1,7 @@
 import random
+import time
 import pytest
-from problems.bipartite_dd.checker import check, parse_output
+from problems.bipartite_dd.checker import check, moore_bound, parse_output
 from problems.bipartite_dd.checker_nx import check_nx
 from tests.graphs import HEAWOOD, TUTTE_COXETER, lcf
 
@@ -76,3 +77,30 @@ def test_checkers_agree_on_random_graphs():
         edges = list(dict.fromkeys(tuple(sorted(e)) for e in edges if e[0] != e[1]))
         d = rng.randint(1, 6); D = rng.randint(1, 5)
         assert check((n, edges), d, D).valid == check_nx((n, edges), d, D).valid
+
+
+@pytest.mark.parametrize("fn", BOTH)
+def test_huge_empty_graph_rejected_fast(fn):
+    t = time.time()
+    r = fn([2_000_000, []], 3, 3)
+    assert not r.valid and r.reason.startswith("diameter")
+    assert time.time() - t < 1
+
+
+@pytest.mark.parametrize("fn", BOTH)
+def test_long_path_rejected_fast(fn):
+    t = time.time()
+    r = fn([5000, [(i, i + 1) for i in range(4999)]], 2, 3)
+    assert not r.valid and r.reason.startswith("diameter")
+    assert time.time() - t < 1
+
+
+def test_moore_bound_values():
+    assert moore_bound(3, 3) == 14
+    assert moore_bound(3, 4) == 30
+    assert moore_bound(4, 5) == 242
+    assert moore_bound(11, 3) == 222
+    assert moore_bound(2, 5) == 10
+    assert moore_bound(1, 4) == 2
+    assert moore_bound(0, 4) == 1
+    assert moore_bound(3, 0) == 1

@@ -58,6 +58,27 @@ def _bad(reason: str, n: int = 0) -> CheckResult:
     return CheckResult(False, n, reason)
 
 
+def moore_bound(d: int, D: int) -> int:
+    """Largest possible order of a bipartite graph with max degree d and diameter D."""
+    if D == 0 or d == 0:
+        return 1
+    if d == 1:
+        return min(2, D + 1)
+    if d == 2:
+        return 2 * D
+    return 2 * sum((d - 1) ** i for i in range(D))
+
+
+def size_guard(n: int, n_edges: int, d: int, D: int) -> str:
+    """Cheap test for graphs that must fail the diameter rule. Returns a reason, or ""."""
+    m = moore_bound(d, D)
+    if n > m:
+        return f"diameter: n={n} exceeds the bipartite Moore bound {m} for d={d}, D={D}"
+    if n > 1 and n_edges < n - 1:
+        return "diameter: graph is disconnected"
+    return ""
+
+
 def check(output, d: int, D: int) -> CheckResult:
     try:
         n, edges = parse_output(output)
@@ -83,6 +104,11 @@ def check(output, d: int, D: int) -> CheckResult:
     for v in range(n):
         if len(adj[v]) > d:
             return _bad(f"degree: vertex {v} has {len(adj[v])} > {d}", n)
+
+    # Keeps the O(n^2)-bit reachability step away from graphs that must fail anyway.
+    guard = size_guard(n, len(edges), d, D)
+    if guard:
+        return _bad(guard, n)
 
     colour = [-1] * n
     for s in range(n):

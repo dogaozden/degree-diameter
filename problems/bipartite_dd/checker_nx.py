@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import networkx as nx
 
-from problems.bipartite_dd.checker import CheckResult, parse_output
+from problems.bipartite_dd.checker import CheckResult, parse_output, size_guard
 
 
 def check_nx(output, d: int, D: int) -> CheckResult:
@@ -11,6 +11,12 @@ def check_nx(output, d: int, D: int) -> CheckResult:
         n, edges = parse_output(output)
     except ValueError as exc:
         return CheckResult(False, 0, str(exc))
+
+    # Before building the graph, so a huge n is rejected without allocating it. Unlike `check`,
+    # this runs ahead of the self-loop/duplicate/degree rules: validity agrees, only the reason may differ.
+    guard = size_guard(n, len(edges), d, D)
+    if guard:
+        return CheckResult(False, n, guard)
 
     G = nx.Graph()
     G.add_nodes_from(range(n))
