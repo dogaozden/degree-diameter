@@ -1,0 +1,164 @@
+# Run 2 cases. Records/ceilings: Combinatorics Wiki bipartite degree-diameter table, checked 2026-10-10.
+
+[[case]]
+id = "d3D3"
+d = 3
+D = 3
+record = 14
+ceiling = 14
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d4D3"
+d = 4
+D = 3
+record = 26
+ceiling = 26
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d5D3"
+d = 5
+D = 3
+record = 42
+ceiling = 42
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d6D3"
+d = 6
+D = 3
+record = 62
+ceiling = 62
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d3D4"
+d = 3
+D = 4
+record = 30
+ceiling = 30
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d4D4"
+d = 4
+D = 4
+record = 80
+ceiling = 80
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d3D5"
+d = 3
+D = 5
+record = 56
+ceiling = 56
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d7D3"
+d = 7
+D = 3
+record = 80
+ceiling = 80
+kind = "calibration"
+weight = 0.5
+
+[[case]]
+id = "d4D5"
+d = 4
+D = 5
+record = 160
+ceiling = 236
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d5D5"
+d = 5
+D = 5
+record = 336
+ceiling = 676
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d6D5"
+d = 6
+D = 5
+record = 684
+ceiling = 1556
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d7D5"
+d = 7
+D = 5
+record = 1134
+ceiling = 3106
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d7D4"
+d = 7
+D = 4
+record = 346
+ceiling = 518
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d11D4"
+d = 11
+D = 4
+record = 1734
+ceiling = 2222
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d11D3"
+d = 11
+D = 3
+record = 190
+ceiling = 220
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d13D3"
+d = 13
+D = 3
+record = 274
+ceiling = 314
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d15D3"
+d = 15
+D = 3
+record = 374
+ceiling = 422
+kind = "target"
+weight = 2
+
+[[case]]
+id = "d16D3"
+d = 16
+D = 3
+record = 394
+ceiling = 482
+kind = "target"
+weight = 2
+
