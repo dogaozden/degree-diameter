@@ -1,8 +1,8 @@
 # run-002
 
 Problem: bipartite_dd
-Generations done: 3 of 41 (including generation 0)
-Total mutator calls: 24
+Generations done: 4 of 41 (including generation 0)
+Total mutator calls: 36
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -30,3 +30,4 @@ Total mutator calls: 24
 | 0 | 1 | 0 | 0.8918 | 0.8918 |
 | 1 | 12 | 0 | 0.8931 | 0.8931 |
 | 2 | 12 | 0 | 0.8939 | 0.8939 |
+| 3 | 12 | 0 | 0.8939 | 0.8931 |
