@@ -1,8 +1,8 @@
 # pilot-001
 
 Problem: bipartite_dd
-Generations done: 9 of 11 (including generation 0)
-Total mutator calls: 96
+Generations done: 10 of 11 (including generation 0)
+Total mutator calls: 108
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -17,7 +17,7 @@ Total mutator calls: 96
 | d4D5 | target | 160 | 236 | 144 | g001-c03 |
 | d5D5 | target | 336 | 676 | 288 | g002-c01 |
 | d6D5 | target | 684 | 1556 | 512 | g001-c03 |
-| d7D4 | target | 346 | 518 | 316 | g004-c07 |
+| d7D4 | target | 346 | 518 | 320 | g009-c08 |
 | d11D3 | target | 190 | 220 | 184 | g004-c07 |
 
 | gen | made | failed | best fitness | gen best |
@@ -31,3 +31,4 @@ Total mutator calls: 96
 | 6 | 12 | 0 | 0.9078 | 0.9051 |
 | 7 | 12 | 0 | 0.9090 | 0.9090 |
 | 8 | 12 | 0 | 0.9109 | 0.9109 |
+| 9 | 12 | 0 | 0.9109 | 0.9068 |
