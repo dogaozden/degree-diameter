@@ -8,3 +8,7 @@
 - Duplication (Delorme-Farhi): replace each vertex of a good graph by k copies and connect copies with a structured pattern. This multiplies the order while increasing the degree.
 - Repair search: start from a large near-valid graph, then remove the vertices involved in the most bad pairs (lib.bad_pairs counts them) or rewire edges until it is valid.
 - Bipartiteness comes free if every edge joins an "A" vertex to a "B" vertex: build A and B parts explicitly.
+- Many record graphs for D = 5 (d = 5..9) and other cases are voltage lifts over NON-cyclic groups. Cyclic lifts (Z_m) often stall below the record. Try lib.group_lift with lib.semidirect_group(m, k, r) (Z_m x| Z_k, r^k = 1 mod m) and small base graphs (1-6 vertices per side, loops and parallel darts allowed). Search over r, the voltages and the base graph.
+- Record orders often factor as (base vertices) x (group order). For example 160 = 2*80, 336 = 2*168, 684 = 2*342, 1134 = 2*567. So aim for group orders near record/base_n, and slightly above.
+- D = 3 records for d = q + 2 (q a prime power, d-1 not a prime power) are 2(q^2+q+5), from Araujo-Pardo and Lopez (PG(2,q) incidence plus 8 extra vertices using the spare degree). For d = 11, 13, 15 that is 190, 274, 374. Beating it means 2(q^2+q+6) or more.
+- Search budgets: the largest wins come from spending most of time_limit on search for the TARGET cases. Calibration cases with a known construction should return instantly.

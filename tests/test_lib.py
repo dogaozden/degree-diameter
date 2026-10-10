@@ -108,3 +108,46 @@ def test_is_valid_known_graphs():
 def test_lib_does_not_import_checker():
     import inspect
     assert "checker" not in inspect.getsource(lib).replace("the scorer", "")
+
+
+def test_semidirect_group_nonabelian():
+    order, mul, inv = lib.semidirect_group(7, 3, 2)
+    assert order == 21
+    assert any(mul(x, y) != mul(y, x) for x in range(order) for y in range(order))
+    rng = random.Random(5)
+    for _ in range(500):
+        x, y, z = (rng.randrange(order) for _ in range(3))
+        assert mul(mul(x, y), z) == mul(x, mul(y, z))
+    for x in range(order):
+        assert mul(0, x) == x == mul(x, 0)
+        assert mul(x, inv(x)) == 0 == mul(inv(x), x)
+    assert sorted(mul(3, y) for y in range(order)) == list(range(order))
+
+def test_semidirect_group_abelian_cases():
+    order, mul, _ = lib.semidirect_group(5, 4, 1)
+    assert order == 20 and all(mul(x, y) == mul(y, x) for x in range(order) for y in range(order))
+    order, mul, _ = lib.semidirect_group(6, 1, 1)
+    assert order == 6 and [mul(x, y) for x in range(6) for y in range(6)] == [(x + y) % 6 for x in range(6) for y in range(6)]
+
+def test_semidirect_group_rejects_bad_r():
+    with pytest.raises(ValueError):
+        lib.semidirect_group(7, 3, 3)    # 3^3 = 27 = 6 mod 7
+    with pytest.raises(ValueError):
+        lib.semidirect_group(6, 2, 3)    # gcd(3, 6) != 1
+
+def test_group_lift_cyclic_matches_voltage_lift():
+    darts = [(0, 1, 0), (0, 1, 1), (0, 1, 3)]
+    order, mul, _ = lib.cyclic_group(7)
+    assert lib.group_lift(2, darts, order, mul) == lib.voltage_lift(2, darts, 7)
+
+def test_group_lift_nonabelian_is_regular():
+    order, mul, _ = lib.semidirect_group(7, 3, 2)
+    n, edges = lib.group_lift(2, [(0, 1, 0), (0, 1, 1), (0, 1, 5)], order, mul)
+    assert n == 42 and len(edges) == 63
+    assert lib.max_degree(n, edges) == 3 and lib.is_bipartite(n, edges)
+    assert {len(a) for a in lib.adjacency(n, edges)} == {3}
+
+def test_group_lift_loop_and_inverse_loop_agree():
+    order, mul, inv = lib.semidirect_group(7, 3, 2)
+    g = 4
+    assert lib.group_lift(1, [(0, 0, g)], order, mul) == lib.group_lift(1, [(0, 0, inv(g))], order, mul)
