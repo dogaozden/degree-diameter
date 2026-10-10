@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import random
 import subprocess
 import tempfile
@@ -21,7 +22,9 @@ from evolve.types import CaseScore, CheckerBug, load_problem
 
 EXIT_DONE, EXIT_BUDGET, EXIT_CHECKER_BUG = 0, 3, 4
 SEED_CID = "g000-seed"
-COMMIT_TRAILER = "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+COMMIT_TRAILER = ("Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"
+                  "Claude-Session: https://claude.ai/code/session_01BUMdzXMSdYyesowPZnwehe")
+GIT_TIMEOUT_S = 120
 
 
 def make_smoke(problem, cfg: RunConfig) -> Callable[[str], tuple[bool, str]]:
@@ -135,14 +138,21 @@ def _git(cfg: RunConfig, repo_root: Path, log, message: str) -> None:
     cmds = [["git", "add", "--", *paths], ["git", "commit", "-m", f"{message}\n\n{COMMIT_TRAILER}"]]
     if cfg.git.get("push"):
         cmds.append(["git", "push"])
+    env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
     for cmd in cmds:
         try:
-            proc = subprocess.run(cmd, cwd=repo_root, capture_output=True, text=True)
-        except OSError as e:
-            log(f"git failed: {cmd[:2]}: {e}")
+            proc = subprocess.run(cmd, cwd=repo_root, capture_output=True, text=True, env=env, timeout=GIT_TIMEOUT_S)
+        except subprocess.TimeoutExpired:
+            log(f"git failed: {' '.join(cmd[:2])}: timed out after {GIT_TIMEOUT_S}s")
             return
+        except OSError as e:
+            log(f"git failed: {' '.join(cmd[:2])}: {e}")
+            return
+        out = (proc.stderr or "") + (proc.stdout or "")
         if proc.returncode != 0:
-            log(f"git failed: {' '.join(cmd[:2])}: {(proc.stderr or proc.stdout).strip()[-500:]}")
+            if cmd[1] == "commit" and "nothing to commit" in out:
+                continue    # nothing new to record; still push earlier commits
+            log(f"git failed: {' '.join(cmd[:2])}: {out.strip()[-500:]}")
             return
 
 

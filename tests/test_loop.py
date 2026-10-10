@@ -133,3 +133,44 @@ def test_cli_status_and_run(tmp_path, capsys, monkeypatch):
     (tmp_path / "status-run" / "status.md").write_text("hello status\n")
     assert main(["status", "status-run"]) == 0
     assert "hello status" in capsys.readouterr().out
+
+def _git(repo, *args):
+    import subprocess
+    return subprocess.run(["git", *args], cwd=repo, capture_output=True, text=True, check=True).stdout
+
+def test_git_commits_carry_both_trailer_lines(tmp_path):
+    _git(tmp_path, "init", "-q")
+    _git(tmp_path, "config", "user.name", "t")
+    _git(tmp_path, "config", "user.email", "t@example.com")
+    _git(tmp_path, "commit", "-q", "--allow-empty", "-m", "init")
+    c = cfg(generations=1, git={"enabled": True, "push": False})
+    assert run(c, "x", tmp_path, mutator=FakeMutator(better, ok_smoke), log=lambda *a: None) == EXIT_DONE
+    msg = _git(tmp_path, "log", "-1", "--format=%B")
+    assert msg.startswith("chore(run): t generation 1 best ")
+    assert "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" in msg
+    assert "Claude-Session: https://claude.ai/code/session_01BUMdzXMSdYyesowPZnwehe" in msg
+
+def test_git_nothing_to_commit_is_not_a_failure_and_still_pushes(tmp_path, monkeypatch):
+    import subprocess
+    from evolve.loop import _git as loop_git
+    c = cfg(git={"enabled": True, "push": True})
+    calls, logs = [], []
+    def fake_run(cmd, **kw):
+        calls.append(cmd[:2])
+        if cmd[1] == "commit":
+            return subprocess.CompletedProcess(cmd, 1, "nothing to commit, working tree clean\n", "")
+        return subprocess.CompletedProcess(cmd, 0, "", "")
+    monkeypatch.setattr("evolve.loop.subprocess.run", fake_run)
+    loop_git(c, tmp_path, logs.append, "msg")
+    assert calls[-1] == ["git", "push"] and logs == []
+
+def test_git_timeout_is_logged_not_raised(tmp_path, monkeypatch):
+    import subprocess
+    from evolve.loop import _git as loop_git
+    seen, logs = {}, []
+    def fake_run(cmd, **kw):
+        seen.update(kw)
+        raise subprocess.TimeoutExpired(cmd, kw["timeout"])
+    monkeypatch.setattr("evolve.loop.subprocess.run", fake_run)
+    loop_git(cfg(git={"enabled": True, "push": True}), tmp_path, logs.append, "msg")
+    assert seen["timeout"] == 120 and seen["env"]["GIT_TERMINAL_PROMPT"] == "0" and "timed out" in logs[0]
