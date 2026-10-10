@@ -110,3 +110,20 @@ def test_moore_bound_values():
 def test_too_few_edges_to_be_connected(fn):
     r = fn([100, [(2 * i, 2 * i + 1) for i in range(10)]], 3, 10)
     assert not r.valid and r.reason == "diameter: graph is disconnected"
+
+
+def test_huge_empty_graph_does_not_allocate_per_vertex_lists():
+    import tracemalloc
+    tracemalloc.start()
+    try:
+        r = check([2_000_000, []], 3, 3)
+        _, peak = tracemalloc.get_traced_memory()
+    finally:
+        tracemalloc.stop()
+    assert not r.valid and r.reason.startswith("diameter")
+    assert peak < 5_000_000
+
+
+def test_degree_violation_reports_lowest_vertex():
+    r = check((6, [(3, 4), (3, 5), (3, 0), (1, 2), (1, 0), (1, 5)]), 2, 5)
+    assert r.reason == "degree: vertex 1 has 3 > 2"

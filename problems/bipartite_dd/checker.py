@@ -96,19 +96,25 @@ def check(output, d: int, D: int) -> CheckResult:
             return _bad(f"duplicate edge: {key}", n)
         seen.add(key)
 
+    degree = {}
+    for u, v in edges:
+        degree[u] = degree.get(u, 0) + 1
+        degree[v] = degree.get(v, 0) + 1
+    over = [v for v, k in degree.items() if k > d]
+    if over:
+        v = min(over)
+        return _bad(f"degree: vertex {v} has {degree[v]} > {d}", n)
+
+    # Keeps the O(n^2)-bit reachability step, and the O(n) adjacency lists, away from
+    # graphs that must fail anyway.
+    guard = size_guard(n, len(edges), d, D)
+    if guard:
+        return _bad(guard, n)
+
     adj = [[] for _ in range(n)]
     for u, v in edges:
         adj[u].append(v)
         adj[v].append(u)
-
-    for v in range(n):
-        if len(adj[v]) > d:
-            return _bad(f"degree: vertex {v} has {len(adj[v])} > {d}", n)
-
-    # Keeps the O(n^2)-bit reachability step away from graphs that must fail anyway.
-    guard = size_guard(n, len(edges), d, D)
-    if guard:
-        return _bad(guard, n)
 
     colour = [-1] * n
     for s in range(n):
