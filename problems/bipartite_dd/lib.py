@@ -334,3 +334,73 @@ def is_valid(n, edges, d, D):
     if n > _moore_bound(d, D) or (n > 1 and len(seen) < n - 1):
         return False
     return is_bipartite(n, list(seen)) and within_diameter(n, list(seen), D)
+
+
+def araujo_lopez_graph(q):
+    """(q+2)-regular bipartite graph of order 2(q^2+q+5) and diameter 3 (Araujo-Pardo & López, arXiv 2005.02427): PG(2,q) incidence plus 8 vertices. Record order for d = q+2 when d-1 is not a prime power."""
+    if q < 3 or not is_prime_power(q):
+        raise ValueError(f"q must be a prime power >= 3, got {q}")
+    F = GF(q)
+    a = 2  # any field element other than 0 and 1
+    ids = {}
+    edges = set()
+
+    def vid(name):
+        return ids.setdefault(name, len(ids))
+
+    def add(point, line):
+        edges.add((vid(point), vid(line)))
+
+    # Construction, with PG(2,q) points (x,y), P_m, P and lines [m,b], L_c, L:
+    #  1. Start from the PG(2,q) incidence graph, which is (q+1)-regular.
+    #  2. Delete the edge ((0,a), [0,a]).
+    #  3. Add 8 vertices: points Q0, (0,0)^, (0,1)^, (0,a)^ and lines M0, [0,0]^, [0,1]^, [0,a]^.
+    #  4. Add edges: P-M0, L-Q0; Q0 to [0,j]^ and to [0,i]; M0 to (0,j)^ and to (0,i);
+    #     P_0-[0,a]^, L_0-(0,a)^, (0,0)^-[0,1]^, (0,1)^-[0,0]^; (0,j)^-[t,j] and [0,j]^-(t,j),
+    #     for j in {0,1,a}, i not in {0,1}, all t.
+    #  5. Match the vertices still of degree q+1: P_i-L_i, and (x,y)-[x,y]. Every degree is now q+2.
+    for m in range(q):
+        for b in range(q):
+            for x in range(q):
+                add(("pt", x, F.add(F.mul(m, x), b)), ("ln", m, b))  # (x, mx+b) on [m,b]
+    for m in range(q):
+        add(("P", m), ("L",))                      # P_m on L
+        for b in range(q):
+            add(("P", m), ("ln", m, b))            # P_m on [m,b]
+    for c in range(q):
+        add(("P",), ("L", c))                      # P on L_c
+        for y in range(q):
+            add(("pt", c, y), ("L", c))            # (c,y) on L_c
+    add(("P",), ("L",))                            # P on L
+    edges.discard((vid(("pt", 0, a)), vid(("ln", 0, a))))
+
+    J = (0, 1, a)
+    I = [i for i in range(q) if i not in (0, 1)]
+    add(("P",), ("M0",))
+    add(("Q0",), ("L",))
+    for j in J:
+        add(("Q0",), ("hl", j))
+        add(("hp", j), ("M0",))
+    for i in I:
+        add(("Q0",), ("ln", 0, i))
+        add(("pt", 0, i), ("M0",))
+    add(("P", 0), ("hl", a))
+    add(("hp", a), ("L", 0))
+    add(("hp", 0), ("hl", 1))
+    add(("hp", 1), ("hl", 0))
+    for j in J:
+        for t in range(q):
+            add(("hp", j), ("ln", t, j))
+            add(("hl", j), ("pt", t, j))
+
+    degree = {}
+    for u, v in edges:
+        degree[u] = degree.get(u, 0) + 1
+        degree[v] = degree.get(v, 0) + 1
+    matching = [(("P", i), ("L", i)) for i in range(q)]
+    matching += [(("pt", x, y), ("ln", x, y)) for x in range(q) for y in range(q)]
+    for point, line in matching:
+        u, v = vid(point), vid(line)
+        if degree.get(u) == q + 1 and degree.get(v) == q + 1:
+            edges.add((u, v))
+    return len(ids), sorted(edges)

@@ -151,3 +151,29 @@ def test_group_lift_loop_and_inverse_loop_agree():
     order, mul, inv = lib.semidirect_group(7, 3, 2)
     g = 4
     assert lib.group_lift(1, [(0, 0, g)], order, mul) == lib.group_lift(1, [(0, 0, inv(g))], order, mul)
+
+
+def _check_araujo_lopez(q):
+    from collections import Counter
+    from problems.bipartite_dd.checker import check
+    n, edges = lib.araujo_lopez_graph(q)
+    assert n == 2 * (q * q + q + 5)
+    assert lib.is_valid(n, edges, q + 2, 3)
+    degree = Counter(v for e in edges for v in e)
+    assert len(degree) == n and set(degree.values()) == {q + 2}
+    assert check((n, edges), q + 2, 3).valid
+
+@pytest.mark.parametrize("q", [3, 4, 5, 9, 11])
+def test_araujo_lopez_graph(q):
+    _check_araujo_lopez(q)
+
+def test_araujo_lopez_graph_q13():
+    _check_araujo_lopez(13)
+
+def test_araujo_lopez_graph_is_deterministic():
+    assert lib.araujo_lopez_graph(4) == lib.araujo_lopez_graph(4)
+
+@pytest.mark.parametrize("q", [2, 6, 10])
+def test_araujo_lopez_graph_rejects_bad_q(q):
+    with pytest.raises(ValueError):
+        lib.araujo_lopez_graph(q)
