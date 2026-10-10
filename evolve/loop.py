@@ -8,7 +8,7 @@ import random
 import subprocess
 import tempfile
 import time
-from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, as_completed, wait
 from dataclasses import asdict
 from pathlib import Path
 from typing import Callable
@@ -63,24 +63,8 @@ def _save_record(records_dir: Path, problem, case, value: float, output, cfg: Ru
     _atomic_write(folder / f"{top}-{cfg.run_id}-{cid}.json", json.dumps(body, indent=2, sort_keys=True) + "\n")
 
 
-def evaluate_candidate(problem, store: RunStore, cid: str, cfg: RunConfig, repo_root: Path | None = None) -> dict:
-    """Run a candidate on every (case, seed), keep the best seed per case, and write result.json."""
-    if repo_root is None:   # store.root is repo_root / runs_dir / run_id
-        repo_root = store.root.parents[len(Path(cfg.runs_dir).parts)]
-    records_dir = repo_root / cfg.records_dir
-    program = store.program_path(cid)
-
-    def job(case, seed):
-        res = run_program(program, problem.harness_dir, case.params, seed, cfg.time_limit_s)
-        if res.status != "ok":
-            return (seed, res, False, 0.0, f"{res.status}: {res.error[-300:]}")
-        valid, value, reason = problem.evaluate(case, res.output)   # may raise CheckerBug
-        return (seed, res, valid, float(value) if valid else 0.0, reason)
-
-    with ThreadPoolExecutor(max(1, cfg.workers)) as ex:
-        futures = {case.id: [ex.submit(job, case, s) for s in cfg.eval_seeds] for case in problem.cases}
-        outcomes = {cid_: [f.result() for f in fs] for cid_, fs in futures.items()}
-
+def _score_candidate(problem, outcomes: dict, cid: str, cfg: RunConfig, records_dir: Path) -> dict:
+    """Best seed per case, second-checker verify, record saving, fitness. Main thread only."""
     cases, scores = {}, {}
     for case in problem.cases:
         seed, res, valid, value, reason = max(outcomes[case.id], key=lambda o: (o[2], o[3]))
@@ -93,9 +77,56 @@ def evaluate_candidate(problem, store: RunStore, cid: str, cfg: RunConfig, repo_
         cases[case.id] = asdict(CaseScore(case.id, res.status, valid, value if valid else 0.0, score,
                                           "" if valid else reason, res.wall_s))
         scores[case.id] = score
-    result = {"cases": cases, "fitness": fitness(scores, problem.cases)}
-    store.write_result(cid, result)
-    return result
+    return {"cases": cases, "fitness": fitness(scores, problem.cases)}
+
+
+def evaluate_candidates(problem, store: RunStore, cids: list[str], cfg: RunConfig,
+                        repo_root: Path | None = None) -> dict[str, dict]:
+    """Run every candidate on every (case, seed) through one shared pool of cfg.workers threads.
+
+    A candidate is scored, its records saved and its result.json written (all in this thread) as
+    soon as its own jobs are done, so a resume keeps every candidate that finished.
+    """
+    if repo_root is None:   # store.root is repo_root / runs_dir / run_id
+        repo_root = store.root.parents[len(Path(cfg.runs_dir).parts)]
+    records_dir = repo_root / cfg.records_dir
+
+    def job(program, case, seed):
+        res = run_program(program, problem.harness_dir, case.params, seed, cfg.time_limit_s)
+        if res.status != "ok":
+            return (seed, res, False, 0.0, f"{res.status}: {res.error[-300:]}")
+        valid, value, reason = problem.evaluate(case, res.output)   # may raise CheckerBug
+        return (seed, res, valid, float(value) if valid else 0.0, reason)
+
+    results: dict[str, dict] = {}
+    ex = ThreadPoolExecutor(max(1, cfg.workers))
+    try:
+        owner, outcomes, left = {}, {}, {}
+        for cid in cids:
+            program = store.program_path(cid)
+            outcomes[cid] = {case.id: [None] * len(cfg.eval_seeds) for case in problem.cases}
+            left[cid] = len(problem.cases) * len(cfg.eval_seeds)
+            for case in problem.cases:
+                for i, seed in enumerate(cfg.eval_seeds):
+                    owner[ex.submit(job, program, case, seed)] = (cid, case.id, i)
+        for f in as_completed(owner):
+            cid, case_id, i = owner[f]
+            outcomes[cid][case_id][i] = f.result()
+            left[cid] -= 1
+            if left[cid] == 0:
+                result = _score_candidate(problem, outcomes.pop(cid), cid, cfg, records_dir)
+                store.write_result(cid, result)
+                results[cid] = result
+    except BaseException:
+        ex.shutdown(wait=True, cancel_futures=True)
+        raise
+    ex.shutdown()
+    return results
+
+
+def evaluate_candidate(problem, store: RunStore, cid: str, cfg: RunConfig, repo_root: Path | None = None) -> dict:
+    """Run one candidate on every (case, seed), keep the best seed per case, and write result.json."""
+    return evaluate_candidates(problem, store, [cid], cfg, repo_root)[cid]
 
 
 def _best_by_case(store: RunStore, problem) -> dict:
@@ -328,9 +359,8 @@ def _run(cfg, repo_root, problem, store, mutator, log, imports=()) -> int:
             if not store.has_candidate(cid):
                 store.add_candidate(cid, code, {"id": cid, "generation": 0, "parents": [], "role": "import",
                                                 "source": source})
-        for cid in store.candidates_in_generation(0):
-            if not store.has_result(cid):
-                evaluate_candidate(problem, store, cid, cfg, repo_root)
+        pending = [cid for cid in store.candidates_in_generation(0) if not store.has_result(cid)]
+        evaluate_candidates(problem, store, pending, cfg, repo_root)
         _finish_generation(0, store, problem, cfg, repo_root, log, None, False, started)
 
     for g in range(1, cfg.generations + 1):
@@ -342,9 +372,8 @@ def _run(cfg, repo_root, problem, store, mutator, log, imports=()) -> int:
             plan = _make_plan(g, store, problem, cfg)
             store.write_plan(g, plan)
         stop = _mutate_generation(g, plan, store, problem, cfg, mutator, log)
-        for cid in store.candidates_in_generation(g):
-            if not store.has_result(cid):
-                evaluate_candidate(problem, store, cid, cfg, repo_root)
+        pending = [cid for cid in store.candidates_in_generation(g) if not store.has_result(cid)]
+        evaluate_candidates(problem, store, pending, cfg, repo_root)
         _finish_generation(g, store, problem, cfg, repo_root, log, plan, stop, started)
         if stop:
             return EXIT_BUDGET
