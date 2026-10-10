@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import signal
 import subprocess
 import threading
 import time
@@ -24,8 +25,9 @@ class BudgetStop(Exception):
 class MutationTask:
     cid: str
     role: str                                   # "default" | "crossover" | "invent" | "moonshot"
-    parents: list[tuple[str, str, dict]]        # (parent cid, code, {case_id: value})
+    parents: list[tuple[str, str, dict]]        # (parent cid, code, {case_id: value or {value, status, reason}})
     cases: list[Case]
+    time_limit: float | None = None             # per-case seconds, shown to the model
 
 
 @dataclass
@@ -53,17 +55,39 @@ _FINAL_LINE = ("Reply with the complete new program in a single ```python code b
                "Do not include anything after the code block.")
 
 
+def _zero_note(status: str, reason: str) -> str:
+    """Why a case scored 0: the status, plus a short piece of the reason."""
+    if status == "ok":
+        return f" [invalid: {reason[:80]}]"
+    if status in ("crash", "bad_output"):   # the useful part of a traceback is its last line
+        lines = [ln.strip() for ln in reason.removeprefix(f"{status}: ").splitlines() if ln.strip()]
+        return f" [{status}: {lines[-1][:80]}]" if lines else f" [{status}]"
+    return f" [{status}]"
+
+
 def _case_line(case: Case, scores: dict) -> str:
     params = ", ".join(f"{k}={v}" for k, v in case.params.items())
-    value = scores.get(case.id)
-    shown = "not scored" if value is None else f"{value:g}"
+    entry = scores.get(case.id)
+    note = ""
+    if isinstance(entry, dict):
+        value = entry.get("value")
+        if value == 0 and entry.get("status"):
+            note = _zero_note(entry["status"], entry.get("reason") or "")
+    else:
+        value = entry
+    shown = "not scored" if value is None else f"{value:g}{note}"
     return (f"{case.id} ({case.kind}, {params}): {shown} / record {case.record:g} "
             f"/ ceiling {case.ceiling:g}")
 
 
 def build_user_prompt(task: MutationTask, previous_code: str | None = None,
                       error: str | None = None) -> str:
-    parts = [ROLE_INSTRUCTIONS[task.role]]
+    role = task.role
+    if role == "crossover" and len(task.parents) < 2:
+        role = "default"
+    parts = [ROLE_INSTRUCTIONS[role]]
+    if task.time_limit is not None:
+        parts.append(f"Each case gets {task.time_limit:g} seconds.")
     for cid, code, scores in task.parents:
         lines = "\n".join(_case_line(c, scores) for c in task.cases)
         parts.append(f"### Parent {cid}\n\nScores:\n{lines}\n\n```python\n{code}\n```")
@@ -208,7 +232,12 @@ class ClaudeMutator:
         self.backoff_s = tuple(backoff_s)
         self._limit_hit = False
         self._rate_limits: dict = {}
+        self._aborted = threading.Event()   # set by abort(); no CLI process starts after it
         self._lock = threading.Lock()       # guards _limit_hit and _rate_limits (shared across threads)
+
+    def abort(self) -> None:
+        """Stop starting CLI processes: every later call raises BudgetStop("aborted"). Thread-safe."""
+        self._aborted.set()
 
     def _max_utilization(self) -> float:
         # caller holds self._lock
@@ -223,13 +252,20 @@ class ClaudeMutator:
                           "--strict-mcp-config", "--disable-slash-commands", "--tools", "",
                           f"--system-prompt={self.system_prompt}"]
         t0 = time.monotonic()
+        # Own session: the terminal's Ctrl-C does not reach the child, and a timeout can kill its whole group.
+        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True, cwd=cwd, env=child_env(), start_new_session=True)
         try:
-            proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True,
-                                  timeout=self.timeout_s, cwd=cwd, env=child_env())
-            res = parse_stream(proc.stdout)
+            stdout, stderr = proc.communicate(input=prompt, timeout=self.timeout_s)
+            res = parse_stream(stdout)
             if res["error_message"] == "no result event":
-                res["error_message"] += f" (exit code {proc.returncode}): {(proc.stderr or '')[-1000:]}"
+                res["error_message"] += f" (exit code {proc.returncode}): {(stderr or '')[-1000:]}"
         except subprocess.TimeoutExpired:
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)
+            except (ProcessLookupError, PermissionError):
+                pass
+            proc.communicate()
             res = parse_stream("")
             res["error_message"] = "timeout"
         res["wall_s"] = time.monotonic() - t0
@@ -238,6 +274,8 @@ class ClaudeMutator:
     def call(self, prompt: str, runs: list[dict] | None = None) -> dict:
         """One logical CLI call (with transient retries). Every CLI run is appended to `runs`."""
         runs = runs if runs is not None else []
+        if self._aborted.is_set():
+            raise BudgetStop("aborted")
         with self._lock:
             if self._limit_hit or self._max_utilization() >= self.stop_at:
                 raise BudgetStop("subscription budget reached before call")
@@ -259,7 +297,8 @@ class ClaudeMutator:
             status = res["error_status"]
             transient = isinstance(status, int) and (status in (429, 529) or status >= 500)
             if res["is_error"] and transient and retries < len(self.backoff_s):
-                time.sleep(self.backoff_s[retries])
+                if self._aborted.wait(self.backoff_s[retries]):
+                    raise BudgetStop("aborted")
                 retries += 1
                 continue
             break
@@ -286,7 +325,8 @@ class ClaudeMutator:
                         "usage": raw["usage"], "cost_usd": raw["cost_usd"],
                         "duration_api_ms": raw["duration_api_ms"], "wall_s": raw["wall_s"],
                         "is_error": raw["is_error"], "error_message": raw["error_message"],
-                        "rate_limits": raw["rate_limits"],
+                        "rate_limits": raw["rate_limits"], "auth": raw["auth"],
+                        "model_usage": raw["model_usage"],
                     })
             if res["is_error"]:
                 raise _CallFailed(f"claude -p failed: {res['error_message']}")

@@ -106,41 +106,156 @@ def test_threaded_mutations_keep_their_own_call_records(monkeypatch):
         assert len(r.calls) == 1 and r.calls[0]["cid"] == task.cid
     assert sum(len(r.calls) for r in results) == 24
 
+class FakePopen:
+    """Stands in for subprocess.Popen: records the call, replies with canned output."""
+    instances = []
+
+    def __init__(self, cmd, canned_out="", canned_err="", returncode=0, timeout=False, **kw):
+        self.cmd, self.kw, self._out, self._err = cmd, kw, canned_out, canned_err
+        self.returncode, self._timeout, self.pid = returncode, timeout, 424242
+        self.input = None
+        self.killed = False
+        FakePopen.instances.append(self)
+
+    def communicate(self, input=None, timeout=None):
+        import subprocess
+        if input is not None:
+            self.input = input
+        if self._timeout and not self.killed:
+            raise subprocess.TimeoutExpired(self.cmd, timeout)
+        return self._out, self._err
+
+
+def popen_factory(**canned):
+    FakePopen.instances = []
+    return lambda cmd, **kw: FakePopen(cmd, **canned, **kw)
+
+
 def test_exact_argv_cwd_env_and_stdin(monkeypatch):
-    import subprocess
     import evolve.mutator as mut
-    seen = {}
     stdout = "\n".join([
         '{"type":"system","subtype":"init","apiKeySource":"none"}',
         '{"type":"result","is_error":false,"result":"ok","usage":{},"total_cost_usd":0,"duration_api_ms":1}',
     ])
-    def fake_run(cmd, **kw):
-        seen["cmd"], seen["kw"] = cmd, kw
-        return subprocess.CompletedProcess(cmd, 0, stdout, "")
     monkeypatch.setenv("ANTHROPIC_API_KEY", "k")
-    monkeypatch.setattr(mut.subprocess, "run", fake_run)
+    monkeypatch.setattr(mut.subprocess, "Popen", popen_factory(canned_out=stdout))
     m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude")
     m.call("the prompt")
-    assert seen["cmd"] == ["claude", "-p", "--output-format", "stream-json", "--verbose",
-                           "--model", "claude-haiku-5-5", "--setting-sources", "",
-                           "--strict-mcp-config", "--disable-slash-commands", "--tools", "",
-                           "--system-prompt=sys"]
-    kw = seen["kw"]
+    proc = FakePopen.instances[0]
+    assert proc.cmd == ["claude", "-p", "--output-format", "stream-json", "--verbose",
+                        "--model", "claude-haiku-5-5", "--setting-sources", "",
+                        "--strict-mcp-config", "--disable-slash-commands", "--tools", "",
+                        "--system-prompt=sys"]
+    kw = proc.kw
     assert str(kw["cwd"]).endswith(".cache/claude-p-isolated")
     assert "ANTHROPIC_API_KEY" not in kw["env"] and kw["env"]["CLAUDE_CODE_DISABLE_AUTO_MEMORY"] == "1"
-    assert kw["input"] == "the prompt"
+    assert kw["start_new_session"] is True
+    assert proc.input == "the prompt"
 
 def test_failed_cli_run_reports_real_error(monkeypatch):
-    import subprocess
     import evolve.mutator as mut
-    prompts = []
-    def fake_run(cmd, **kw):
-        prompts.append(kw["input"])
-        return subprocess.CompletedProcess(cmd, 3, "", "x" * 2000 + "kaboom")
-    monkeypatch.setattr(mut.subprocess, "run", fake_run)
+    monkeypatch.setattr(mut.subprocess, "Popen", popen_factory(returncode=3, canned_err="x" * 2000 + "kaboom"))
     m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude")
     r = m.mutate(TASK)
+    prompts = [p.input for p in FakePopen.instances]
     assert r.code is None and r.attempts == 2 and len(r.calls) == 2
     assert r.error.startswith("claude -p failed: no result event (exit code 3)") and r.error.endswith("kaboom")
     assert len(r.error) < 1200
     assert "claude -p failed" in prompts[1] and "no python code block" not in prompts[1]
+
+def test_timeout_kills_the_whole_process_group(monkeypatch):
+    import evolve.mutator as mut
+    kills = []
+    def fake_killpg(pgid, sig):
+        kills.append((pgid, sig))
+        FakePopen.instances[-1].killed = True
+    monkeypatch.setattr(mut.os, "killpg", fake_killpg)
+    monkeypatch.setattr(mut.subprocess, "Popen", popen_factory(timeout=True))
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude", timeout_s=0.01)
+    res = m.call("p")
+    import signal
+    assert res["is_error"] and res["error_message"] == "timeout"
+    assert kills == [(424242, signal.SIGKILL)]
+
+def test_abort_makes_next_mutate_raise_without_running_a_process(monkeypatch):
+    import evolve.mutator as mut
+    monkeypatch.setattr(mut.subprocess, "Popen", popen_factory())
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli="claude")
+    m.abort()
+    with pytest.raises(BudgetStop, match="aborted"):
+        m.mutate(TASK)
+    assert FakePopen.instances == []
+
+def test_abort_stops_the_retry_attempt(monkeypatch):
+    monkeypatch.delenv("FAKE_CLAUDE_MODE", raising=False)
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli=FAKE)
+    real_call, n = m.call, []
+    def call_then_abort(prompt, runs=None):
+        res = real_call(prompt, runs)
+        n.append(1)
+        m.abort()
+        res["text"] = "no code in this reply"    # force a retry
+        return res
+    m.call = call_then_abort
+    with pytest.raises(BudgetStop, match="aborted") as e:
+        m.mutate(TASK)
+    assert len(n) == 1 and len(e.value.calls) == 1
+
+def test_prompt_shows_why_a_parent_scored_zero():
+    cases = [Case("d7D4", {"d": 7, "D": 4}, 346, 518, "target", 2),
+             Case("d4D3", {"d": 4, "D": 3}, 62, 62, "calibration", 1),
+             Case("d3D3", {"d": 3, "D": 3}, 14, 14, "calibration", 1),
+             Case("d5D3", {"d": 5, "D": 3}, 62, 62, "calibration", 1)]
+    scores = {"d7D4": {"value": 0.0, "status": "timeout", "reason": "timeout: killed after 20.0s"},
+              "d4D3": {"value": 0.0, "status": "ok", "reason": "degree: vertex 7 has 5 > 4 " + "x" * 200},
+              "d3D3": 14.0,
+              "d5D3": {"value": 30.0, "status": "ok", "reason": ""}}
+    task = MutationTask("g001-c00", "default", [("g000-seed", GOOD, scores)], cases, time_limit=15)
+    p = build_user_prompt(task)
+    assert "d7D4 (target, d=7, D=4): 0 [timeout] / record 346 / ceiling 518" in p
+    assert "d4D3 (calibration, d=4, D=3): 0 [invalid: degree: vertex 7 has 5 > 4 " in p
+    assert "x" * 81 not in p
+    assert "d3D3 (calibration, d=3, D=3): 14 / record 14" in p
+    assert "d5D3 (calibration, d=5, D=3): 30 / record 62" in p
+    assert "Each case gets 15 seconds." in p
+
+def test_crashed_parent_case_shows_the_error_tail():
+    cases = [Case("d3D3", {"d": 3, "D": 3}, 14, 14, "calibration", 1)]
+    scores = {"d3D3": {"value": 0.0, "status": "crash",
+                       "reason": "crash: Traceback (most recent call last):\n  File x\nValueError: boom"}}
+    p = build_user_prompt(MutationTask("c", "default", [("p", GOOD, scores)], cases))
+    assert "d3D3 (calibration, d=3, D=3): 0 [crash: ValueError: boom] / record 14" in p
+    assert "Each case gets" not in p
+
+def test_crossover_with_one_parent_uses_default_instruction():
+    from evolve.mutator import ROLE_INSTRUCTIONS
+    one = MutationTask("c", "crossover", [("p", GOOD, {})], CASES)
+    p = build_user_prompt(one)
+    assert p.startswith(ROLE_INSTRUCTIONS["default"]) and "two parent programs" not in p
+    two = MutationTask("c", "crossover", [("p", GOOD, {}), ("q", GOOD, {})], CASES)
+    assert build_user_prompt(two).startswith(ROLE_INSTRUCTIONS["crossover"])
+
+def test_call_records_carry_auth_and_model_usage(monkeypatch):
+    monkeypatch.delenv("FAKE_CLAUDE_MODE", raising=False)
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli=FAKE)
+    rec = m.mutate(TASK).calls[0]
+    assert rec["auth"] == "none"
+    assert rec["model_usage"] == {"claude-haiku-5-5": {"outputTokens": 5}}
+
+def test_real_timeout_kills_child_and_grandchild(monkeypatch, tmp_path):
+    import time
+    pidfile = tmp_path / "pid"
+    monkeypatch.setenv("FAKE_CLAUDE_MODE", "hang"); monkeypatch.setenv("FAKE_CLAUDE_PIDFILE", str(pidfile))
+    m = ClaudeMutator("claude-haiku-5-5", "sys", smoke=lambda c: (True, ""), cli=FAKE, timeout_s=1.5)
+    t0 = time.time()
+    res = m.call("p")
+    assert res["error_message"] == "timeout" and time.time() - t0 < 10
+    pid = int(pidfile.read_text())
+    for _ in range(50):
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            break
+        time.sleep(0.1)
+    else:
+        raise AssertionError("grandchild still alive")

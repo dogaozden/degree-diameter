@@ -4,6 +4,7 @@ Mode comes from the env var FAKE_CLAUDE_MODE:
   apikey       init event reports apiKeySource=ANTHROPIC_API_KEY
   limit90      adds a rate_limit_event at 95% utilization
   usage_limit  result is an error: "You've hit your limit"
+  hang         spawns a grandchild (pid written to $FAKE_CLAUDE_PIDFILE), then sleeps
   transient    first call (tracked by $FAKE_CLAUDE_COUNTER) is a 529 error, then normal
   (unset)      normal successful reply
 """
@@ -19,6 +20,14 @@ def emit(event):
 def main():
     sys.stdin.read()
     mode = os.environ.get("FAKE_CLAUDE_MODE", "")
+    if mode == "hang":
+        import subprocess
+        import time
+        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+        with open(os.environ["FAKE_CLAUDE_PIDFILE"], "w") as f:
+            f.write(str(child.pid))
+        time.sleep(60)
+        return
     emit({"type": "system", "subtype": "init",
           "apiKeySource": "ANTHROPIC_API_KEY" if mode == "apikey" else "none"})
     if mode == "limit90":
