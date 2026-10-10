@@ -1,0 +1,167 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.7377133749978384
+    },
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 2.642232874990441
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 4.974639000007301
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 5.279667374998098
+    },
+    "d16D3": {
+      "case_id": "d16D3",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 5.963425833004294
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.19859045799239539
+    },
+    "d3D4": {
+      "case_id": "d3D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 30.0,
+      "wall_s": 0.18475966600817628
+    },
+    "d3D5": {
+      "case_id": "d3D5",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.7654195420036558
+    },
+    "d4D3": {
+      "case_id": "d4D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 26.0,
+      "wall_s": 0.1485848340089433
+    },
+    "d4D4": {
+      "case_id": "d4D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 80.0,
+      "wall_s": 0.13981483300449327
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.9337850000010803
+    },
+    "d5D3": {
+      "case_id": "d5D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 42.0,
+      "wall_s": 0.14972104199114256
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.0692905830073869
+    },
+    "d6D3": {
+      "case_id": "d6D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 62.0,
+      "wall_s": 0.14289712499885354
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.119345125000109
+    },
+    "d7D3": {
+      "case_id": "d7D3",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.1865166669886094
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.4168142499984242
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: .py\", line 472, in _anneal\n    _swap(P, Pinv, k, a, b)\n    ~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/Users/dogaozden/AI_Projects/math/runs/run-002/candidates/g010-c07/program.py\", line 706, in _swap\n    adj[x1].discard(y1)\n    ^^^^^^^^^^^^^^^\nAttributeError: 'numpy.ndarray' object has no attribute 'discard'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.3152929159987252
+    }
+  },
+  "fitness": 0.125
+}
