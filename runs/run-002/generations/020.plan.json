@@ -1,0 +1,102 @@
+{
+  "generation": 20,
+  "tasks": [
+    {
+      "cid": "g020-c00",
+      "parents": [
+        "g015-c00"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c01",
+      "parents": [
+        "g018-c04",
+        "g014-c04"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c02",
+      "parents": [
+        "g014-c07"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c03",
+      "parents": [
+        "g015-c00"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c04",
+      "parents": [
+        "g018-c04"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c05",
+      "parents": [
+        "g018-c04"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c06",
+      "parents": [
+        "g016-c08"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c07",
+      "parents": [
+        "g018-c04"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c08",
+      "parents": [
+        "g016-c08"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c09",
+      "parents": [
+        "g018-c00"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c10",
+      "parents": [
+        "g014-c04"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g020-c11",
+      "parents": [
+        "g014-c07"
+      ],
+      "role": "invent",
+      "status": "made"
+    }
+  ]
+}
