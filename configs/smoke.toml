@@ -1,0 +1,24 @@
+run_id = "smoke-001"
+problem = "problems.bipartite_dd.problem"
+seed = 1
+generations = 1
+candidates_per_generation = 4
+eval_seeds = [0]
+time_limit_s = 20
+workers = 8
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 4
+timeout_s = 300
+max_calls = 12
+stop_at = 0.9
+
+[selection]
+elite_k = 4
+roles = { default = 0.5, crossover = 0.2, invent = 0.15, moonshot = 0.15 }
+
+[git]
+enabled = false
+push = true
