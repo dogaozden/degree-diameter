@@ -1,0 +1,45 @@
+{
+  "best_by_case": {
+    "d11D3": {
+      "cid": "g001-c00",
+      "record": 190,
+      "value": 192.0
+    },
+    "d13D3": {
+      "cid": "g003-c19",
+      "record": 274,
+      "value": 276.0
+    },
+    "d15D3": {
+      "cid": "g000-seed",
+      "record": 374,
+      "value": 374.0
+    },
+    "d3D3": {
+      "cid": "g000-i00",
+      "record": 14,
+      "value": 14.0
+    }
+  },
+  "best_fitness": 1.0058444543811367,
+  "calls_total": 224,
+  "candidates": 32,
+  "complete": true,
+  "elapsed_s": 1504.2128165369995,
+  "failed": 0,
+  "gen_best_fitness": 1.0058444543811367,
+  "generation": 7,
+  "made": 32,
+  "new_records": [
+    [
+      "d11D3",
+      "g001-c00",
+      192.0
+    ],
+    [
+      "d13D3",
+      "g003-c19",
+      276.0
+    ]
+  ]
+}
