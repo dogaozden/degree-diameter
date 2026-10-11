@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.12661366399970575
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash:                   min(deadline, time.monotonic() + 0.1 * budget))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/c-d7d5/candidates/g012-c01/program.py\", line 399, in _slack_extend\n    deg[u] += 1\n    ~~~^^^\nIndexError: list index out of range\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.1656358039999759
+    }
+  },
+  "fitness": 0.047619047619047616
+}
