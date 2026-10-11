@@ -1,0 +1,33 @@
+# Wave w3 island, seeded with the top 5 programs of island-1-w2 (origin/island-1-w2).
+# Cloud island 1: one Claude Code cloud session (4 vCPU, 16 GB). Seeded from run-002's best programs.
+run_id = "island-1-w3b"
+problem = "problems.bipartite_dd.problem_v2"
+seed = 2101
+generations = 60
+candidates_per_generation = 16
+eval_seeds = [0]
+time_limit_s = 30
+workers = 4
+seed_programs = [
+  "seeds/w3/island-1-w3b/island-1-w2-g002-c03.py",
+  "seeds/w3/island-1-w3b/island-1-w2-g000-i00.py",
+  "seeds/w3/island-1-w3b/island-1-w2-g000-i01.py",
+  "seeds/w3/island-1-w3b/island-1-w2-g002-c07.py",
+  "seeds/w3/island-1-w3b/island-1-w2-g002-c09.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 300
+max_calls = 1000
+stop_at = 0.9
+
+[selection]
+elite_k = 4
+roles = { default = 0.4, crossover = 0.2, invent = 0.2, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true

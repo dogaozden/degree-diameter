@@ -1,0 +1,1093 @@
+<title>Haiku Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a full-bleed 3D hero (one record graph you can fold into distance shells), then the live fleet,
+   the climb over the day, how close each cell is to its ceiling, and the proof ledger. One dark world, by choice:
+   the two sides of every bipartite graph are brass and glacier blue, and every edge joins one to the other. */
+:root {
+  --ink: #090c15;
+  --ink-2: #0f1422;
+  --panel: #131a2b;
+  --line: #222b42;
+  --fg: #ebe7dc;
+  --muted: #8e95a9;
+  --faint: #5b6378;
+  --brass: #f0b35b;
+  --glacier: #86cbea;
+  --spark: #fff1cf;
+  --ok: #93d6a0;
+  --warn: #e9c46a;
+  --stop: #6b7387;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gutter: clamp(16px, 4vw, 48px);
+  --radius: 14px;
+  color-scheme: dark;
+}
+html, body { background: var(--ink); }
+body { color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+p, h1, h2, h3 { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; border-radius: 6px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.wrap { padding-inline: var(--gutter); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; height: clamp(520px, 50vw, 820px); overflow: hidden; background: radial-gradient(120% 90% at 70% 40%, #121a31 0%, var(--ink) 62%); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.hero canvas:active { cursor: grabbing; }
+.hero-copy { position: absolute; left: var(--gutter); top: clamp(20px, 3.5vw, 56px); max-width: min(560px, 80vw); display: flex; flex-direction: column; gap: 14px; pointer-events: none; }
+.hero-copy h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6.4vw, 84px); line-height: .98; letter-spacing: -.01em; text-wrap: balance; text-shadow: 0 2px 30px rgba(9,12,21,.9); }
+.hero-copy h1 em { font-style: italic; color: var(--brass); }
+.hero-copy .lede { color: #c9c6bd; font-size: 15.5px; max-width: 44ch; text-shadow: 0 1px 14px rgba(9,12,21,.95); }
+.live-pill { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 10px 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,20,34,.7); backdrop-filter: blur(6px); }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(147,214,160,.6); animation: beat 2.4s infinite; }
+.live-pill.off .live-dot { background: var(--stop); animation: none; }
+@keyframes beat { 0% { box-shadow: 0 0 0 0 rgba(147,214,160,.55); } 70% { box-shadow: 0 0 0 9px rgba(147,214,160,0); } 100% { box-shadow: 0 0 0 0 rgba(147,214,160,0); } }
+
+.picker { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 18px; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.chip { flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 8px 12px 9px; border: 1px solid var(--line); border-radius: 12px; background: rgba(15,20,34,.78); backdrop-filter: blur(8px); cursor: pointer; text-align: left; transition: border-color .2s, background .2s; }
+.chip:hover { border-color: #3a4566; }
+.chip[aria-pressed="true"] { border-color: var(--brass); background: rgba(40,32,20,.82); }
+.chip .k { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.chip .v { font-family: var(--font-display); font-size: 25px; line-height: 1; }
+.chip .g { font-family: var(--font-mono); font-size: 11px; color: var(--ok); }
+
+.readout { position: absolute; right: var(--gutter); top: clamp(20px, 3.5vw, 56px); width: 290px; padding: 16px 16px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(13,18,31,.8); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 10px; }
+.readout h2 { font-size: 13px; font-weight: 500; color: var(--fg); }
+.readout .hint { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.steps { display: flex; flex-direction: column; gap: 6px; }
+.step { display: grid; grid-template-columns: 54px 1fr 64px; align-items: center; gap: 8px; font-size: 12px; }
+.step .lbl { font-family: var(--font-mono); color: var(--muted); }
+.step .bar { position: relative; height: 8px; border-radius: 4px; background: #1b2337; overflow: hidden; }
+.step .bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: linear-gradient(90deg, var(--glacier), var(--brass)); width: 0; transition: width .45s cubic-bezier(.2,.7,.2,1); }
+.step .num { font-family: var(--font-mono); text-align: right; color: var(--fg); }
+.step.dim { opacity: .35; }
+.verdict { font-size: 12.5px; color: var(--ok); min-height: 1.45em; }
+.controls { display: flex; gap: 6px; flex-wrap: wrap; }
+.btn { padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--fg); font-size: 12.5px; cursor: pointer; }
+.btn:hover { border-color: #3a4566; }
+.btn[aria-pressed="true"] { border-color: var(--glacier); color: var(--glacier); }
+.legend { display: flex; gap: 12px; font-size: 11.5px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend b { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.no3d { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 14px; padding: 24px; text-align: center; }
+
+/* ---------- sections ---------- */
+main, footer { max-width: 1360px; margin-inline: auto; }
+main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); padding-block: clamp(40px, 6vw, 72px) 64px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; margin-bottom: 22px; }
+.sec-head > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.sec-head h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; text-wrap: balance; }
+.sec-head p { color: var(--muted); max-width: 62ch; }
+
+/* fleet */
+.counters { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.counter { display: flex; flex-direction: column; gap: 2px; }
+.counter .n { font-family: var(--font-display); font-size: clamp(34px, 4vw, 48px); line-height: 1; font-variant-numeric: tabular-nums; }
+.counter .l { font-size: 12px; color: var(--muted); }
+.fleet { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 12px; }
+.cellcard { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.cellcard .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cellcard .name { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.cellcard .best { font-family: var(--font-display); font-size: 30px; line-height: 1; }
+.cellcard .vs { font-size: 11.5px; color: var(--muted); }
+.cellcard .vs .up { color: var(--ok); }
+.cellcard .vs .tie { color: var(--warn); }
+.tiles { display: grid; grid-template-columns: 34px repeat(4, 1fr); gap: 5px; align-items: center; }
+.tiles .rowlbl { font-family: var(--font-mono); font-size: 10px; color: var(--faint); }
+.tile { position: relative; height: 26px; border-radius: 6px; border: 1px solid transparent; display: grid; place-items: center; font-family: var(--font-mono); font-size: 10.5px; cursor: default; }
+.tile.running { background: #1a2a2a; border-color: #2c4a45; color: #cfeee0; }
+.tile.running.fresh::after { content: ""; position: absolute; inset: -1px; border-radius: 6px; border: 1px solid var(--ok); opacity: 0; animation: ping 3s infinite; animation-delay: var(--d, 0s); }
+@keyframes ping { 0% { opacity: .9; transform: scale(1); } 80%, 100% { opacity: 0; transform: scale(1.22); } }
+.tile.booting { border: 1px dashed #3a4566; color: var(--faint); }
+.tile.stopped { background: transparent; border-color: #2a3147; color: var(--stop); }
+.tile.quiet { background: #2a2416; border-color: #4a3d1e; color: var(--warn); }
+.tile.beats { box-shadow: inset 0 -2px 0 var(--brass); }
+.fleet-key { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: 12px; color: var(--muted); }
+.fleet-key span { display: inline-flex; align-items: center; gap: 7px; }
+.fleet-key i { width: 18px; height: 12px; border-radius: 3px; display: inline-block; }
+.pop { position: fixed; z-index: 10; pointer-events: none; padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: #0d1220; box-shadow: 0 10px 30px rgba(0,0,0,.45); font-size: 12px; line-height: 1.5; max-width: 260px; }
+.pop .t { font-family: var(--font-mono); color: var(--fg); margin-bottom: 2px; }
+.pop .r { color: var(--muted); }
+
+/* climb */
+.panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 18px; min-width: 0; }
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart text { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+.chart .ms text { fill: #b8bdcc; }
+.chart-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+.chart-tools .clock { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: auto; }
+.keyrow { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 12px; color: var(--muted); }
+.keyrow span { display: inline-flex; gap: 6px; align-items: center; }
+.keyrow b { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+/* ceilings */
+.ceil { display: flex; flex-direction: column; gap: 14px; }
+.crow { display: grid; grid-template-columns: 92px 1fr 150px; gap: 14px; align-items: center; }
+.crow .c { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg); }
+.crow .track { position: relative; height: 22px; }
+.crow .rail { position: absolute; left: 0; right: 0; top: 10px; height: 2px; background: #222b42; border-radius: 2px; }
+.crow .fill { position: absolute; left: 0; top: 9px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, rgba(134,203,234,.35), var(--glacier)); }
+.crow .tbl { position: absolute; top: 3px; width: 2px; height: 16px; background: var(--muted); }
+.crow .us { position: absolute; top: 5px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--brass); box-shadow: 0 0 12px rgba(240,179,91,.7); }
+.crow .us.tie { background: var(--warn); box-shadow: none; }
+.crow .txt { font-size: 12px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.crow .txt b { color: var(--fg); font-weight: 500; }
+
+/* ledger */
+.ledger { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.ledger th { text-align: left; font-weight: 500; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: 0 12px 10px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.ledger td { padding: 11px 12px 11px 0; border-bottom: 1px solid #1a2134; vertical-align: top; }
+.ledger td.n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.ledger td.who { color: var(--muted); min-width: 14rem; }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; white-space: nowrap; border: 1px solid; }
+.pill.good { color: var(--ok); border-color: rgba(147,214,160,.4); background: rgba(147,214,160,.08); }
+.pill.mid { color: var(--warn); border-color: rgba(233,196,106,.4); background: rgba(233,196,106,.08); }
+.pill.none { color: var(--muted); border-color: var(--line); }
+.scroll { overflow-x: auto; }
+.two { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.checks { display: flex; flex-direction: column; gap: 12px; }
+.check { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 13.5px; }
+.check i { width: 16px; height: 16px; margin-top: 2px; border-radius: 50%; border: 1.5px solid var(--ok); display: grid; place-items: center; }
+.check i::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+.check p span { color: var(--muted); }
+/* explainer */
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.rule svg { width: 100%; max-height: 150px; height: auto; display: block; }
+.rule h3 { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; }
+.rule h3 span { font-family: var(--font-mono); font-size: 13px; color: var(--brass); margin-left: 6px; vertical-align: 3px; }
+.rule p { color: #c3c1b9; font-size: 14px; }
+.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 12px; margin-top: 12px; }
+.duo .panel { display: flex; flex-direction: column; gap: 12px; }
+.duo h3 { font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.1; }
+.duo p { color: #c3c1b9; font-size: 14px; max-width: 60ch; }
+.duo svg { width: 100%; max-height: 380px; height: auto; display: block; }
+.duo svg .v { cursor: pointer; }
+.duo svg text { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
+.lvl { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); min-height: 1.5em; }
+.lvl b { color: var(--fg); font-weight: 500; }
+.formula { font-family: var(--font-mono); font-size: 13px; color: var(--fg); background: #0b101c; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; overflow-x: auto; }
+.guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; margin-top: 12px; }
+.gitem { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 14px; min-width: 0; }
+.gitem svg { width: 96px; height: 72px; display: block; }
+.gitem h4 { margin: 0 0 4px; font-size: 14.5px; font-weight: 500; }
+.gitem p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.gitem a { color: var(--glacier); }
+footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
+.empty { color: var(--muted); font-size: 13.5px; padding: 18px 0; }
+
+@media (max-width: 860px) {
+  .readout { position: static; width: auto; margin: 0 var(--gutter); transform: translateY(-8px); }
+  .hero { height: clamp(460px, 110vw, 620px); }
+  .two { grid-template-columns: 1fr; }
+  .crow { grid-template-columns: 70px 1fr; }
+  .crow .txt { grid-column: 1 / -1; text-align: left; margin-top: -8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-dot, .tile.running.fresh::after { animation: none; }
+}
+</style>
+
+<section class="hero" id="hero" aria-label="A record graph in 3D">
+  <canvas id="gl" aria-label="3D view of the selected record graph. Drag to turn it; click a vertex to see how far it reaches."></canvas>
+  <div class="hero-copy">
+    <span class="live-pill off" id="livepill"><span class="live-dot"></span><span class="mono" id="livetext" style="font-size:11.5px">Connecting…</span></span>
+    <h1 id="headline"><em>Records</em> broken by Haikus</h1>
+    <p class="lede">Each glowing point is a vertex of a graph nobody had built before. Brass and blue are the two sides; every edge joins one to the other. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
+  </div>
+  <div class="picker" id="picker" role="group" aria-label="Choose a record graph"></div>
+</section>
+<div class="readout" id="readout" aria-live="polite">
+  <h2 id="ro-title">Reach from one vertex</h2>
+  <p class="hint" id="ro-hint">Steps outward from the bright vertex. The bar shows how many vertices are first reached at each step.</p>
+  <div class="steps" id="steps"></div>
+  <p class="verdict" id="verdict"></p>
+  <div class="controls">
+    <button class="btn" id="b-shells" aria-pressed="true">Rings</button>
+    <button class="btn" id="b-tangle" aria-pressed="false">Tangle</button>
+    <button class="btn" id="b-auto" aria-pressed="true">Auto</button>
+  </div>
+  <div class="legend"><span><b style="background:var(--brass)"></b>side A</span><span><b style="background:var(--glacier)"></b>side B</span><span><b style="background:var(--spark)"></b>start</span></div>
+</div>
+
+<main class="wrap">
+  <section id="fleet-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Live · the fleet</span>
+        <h2>Sixty-eight islands, writing programs</h2>
+        <p>Each tile is one cloud island: a separate evolutionary search where Haikus write programs, the programs build graphs, and the best survive. Tiles light up when an island has just pushed a new round.</p>
+      </div>
+      <div class="counters">
+        <div class="counter"><span class="n" id="c-running">—</span><span class="l">islands writing</span></div>
+        <div class="counter"><span class="n" id="c-haikus">—</span><span class="l">Haikus at once, at most</span></div>
+        <div class="counter"><span class="n" id="c-programs">—</span><span class="l">programs written</span></div>
+      </div>
+    </div>
+    <div class="fleet" id="fleet"><p class="empty">The fleet appears here when live data connects.</p></div>
+    <div class="fleet-key">
+      <span><i style="background:#1a2a2a;border:1px solid #2c4a45"></i>writing</span>
+      <span><i style="border:1px dashed #3a4566"></i>starting up</span>
+      <span><i style="border:1px solid #2a3147"></i>paused at a usage limit</span>
+      <span><i style="background:#1a2a2a;box-shadow:inset 0 -2px 0 var(--brass)"></i>holds a graph above the table</span>
+      <span class="mono" style="font-size:11px">rows: Py = Python engine, C = C engine · columns: first island, twin, two from tonight's doubling</span>
+    </div>
+  </section>
+
+  <section id="climb-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">The day</span>
+        <h2>Records broken, over the day</h2>
+        <p>The brass staircase counts the table records we have broken so far. Each step is one record, labelled with the old number and our best. The blue strip shows how many programs the Haikus wrote; the bands underneath mark each phase of the search.</p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="chart-tools">
+        <button class="btn" id="replay">Replay the day</button>
+        <span class="clock" id="clock"></span>
+      </div>
+      <div class="chart" id="climb"><p class="empty">The chart appears when live data connects.</p></div>
+      <div class="keyrow" id="climbkey"></div>
+    </div>
+  </section>
+
+  <section id="ceil-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Room left</span>
+        <h2>How close each cell is to its ceiling</h2>
+        <p>The rail runs from zero to the best proven upper bound. The grey tick is the published record, the brass dot is ours. Most ceilings are far away, so nobody knows the true answers yet.</p>
+      </div>
+    </div>
+    <div class="panel"><div class="ceil" id="ceil"><p class="empty">Waiting for live data.</p></div></div>
+  </section>
+
+  <section id="proof-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Proof</span>
+        <h2>Why we believe the graphs</h2>
+        <p>Every record passes three separate checkers and a literature search. The Lean column says which graph has a machine-checked proof.</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="panel scroll">
+        <table class="ledger" id="ledger">
+          <thead><tr><th>Cell</th><th>Table</th><th>Ours</th><th>In Lean</th><th>Old record</th></tr></thead>
+          <tbody><tr><td colspan="5" class="empty">Waiting for live data.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="panel checks">
+        <div class="check"><i></i><p>A fast bitset checker <span>confirms degree, two sides and the diameter.</span></p></div>
+        <div class="check"><i></i><p>networkx agrees <span>using a completely separate library.</span></p></div>
+        <div class="check"><i></i><p>A from-scratch search from every vertex <span>finds the exact diameter.</span></p></div>
+        <div class="check"><i></i><p>Rebuilt on a second machine <span>from the island's own program.</span></p></div>
+        <div class="check"><i></i><p>Literature search <span>found nothing larger published, and no proven bound below ours.</span></p></div>
+        <div class="check"><i></i><p>Lean proofs, written by a Haiku <span>in strict mode, trusting only Lean's kernel.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="explain">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">How to read this page</span>
+        <h2>What problem is this?</h2>
+        <p>Build the biggest network you can, under three rules. Nobody knows the true maximum for most sizes, so mathematicians keep a table of the best ones anyone has found. Beating an entry means building a bigger graph that still follows all three rules.</p>
+      </div>
+    </div>
+    <div class="rules">
+      <div class="rule"><svg id="ex-sides" viewBox="0 0 240 120" aria-label="Two sides, edges only between them"></svg><h3>Two sides</h3><p>Every vertex is brass or blue, and every edge joins a brass vertex to a blue one. No edge stays inside one side. This is what "bipartite" means.</p></div>
+      <div class="rule"><svg id="ex-degree" viewBox="0 0 240 120" aria-label="A vertex with at most Delta neighbours"></svg><h3>A handshake limit <span>Δ</span></h3><p>No vertex may have more than Δ neighbours. In the table, Δ runs from 3 to 16. Our records are at Δ = 4, 5, 7, 11, 13 and 15.</p></div>
+      <div class="rule"><svg id="ex-diam" viewBox="0 0 240 120" aria-label="Any two vertices joined within D steps"></svg><h3>Short chains <span>D</span></h3><p>Any two vertices must be joined by a path of at most D edges. This is the diameter. A small D forces every vertex to be close to all the others.</p></div>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <span class="eyebrow">Try it · a perfect small answer</span>
+        <h3>The Heawood graph: Δ = 3, D = 3, 14 vertices</h3>
+        <p>Click any vertex. It turns white, and the rest are coloured by how many steps away they are. Everyone is within 3 steps. No bipartite graph with these rules can have more than 14 vertices, so this one is a perfect answer. The big 3D view at the top does the same thing to our record graphs, with up to 1,774 vertices.</p>
+        <svg id="ex-heawood" viewBox="0 0 360 300" aria-label="The Heawood graph; click a vertex to see distances"></svg>
+        <div class="lvl" id="ex-hlvl"></div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Why it is hard</span>
+        <h3>Every step can multiply the reach by Δ − 1, at most</h3>
+        <p>From one vertex, step 1 reaches at most Δ vertices. Each of those has at most Δ − 1 new neighbours, and so on: a tree. That caps how big any graph can be. Real graphs fall short because paths collide and reach the same vertex twice. The reach bars in the 3D panel compare each step with this tree.</p>
+        <svg id="ex-tree" viewBox="0 0 360 292" aria-label="The tree limit for Delta 3"></svg>
+        <div class="formula">most at step k = Δ·(Δ−1)<sup>k−1</sup> · ceiling for two sides = 2·(1 + (Δ−1) + … + (Δ−1)<sup>D−1</sup>)</div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:48px">
+      <div>
+        <span class="eyebrow">The visuals, one by one</span>
+        <h2>What each picture shows</h2>
+      </div>
+    </div>
+    <div class="guide" id="ex-guide"></div>
+  </section>
+</main>
+<footer class="wrap" id="foot">Bipartite degree–diameter table, Combinatorics Wiki. Search engine, graphs and proofs in the math repo. Live data refreshes about every ten minutes from the islands' pushes.</footer>
+<div class="pop" id="pop" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+/* 2D page and live data. The 3D view lives in the module script below and talks to this one through window.HF. */
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const HF = window.HF = window.HF || { graph: null, listeners: [] };
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = (n) => Number(n).toLocaleString('en-US');
+  const hm = (d) => new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' }).format(d);
+  const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+  const CELLS = [
+    ['d4D5', 'Δ4 · D5'], ['d5D5', 'Δ5 · D5'], ['d6D5', 'Δ6 · D5'], ['d7D5', 'Δ7 · D5'], ['d7D4', 'Δ7 · D4'],
+    ['d11D4', 'Δ11 · D4'], ['d11D3', 'Δ11 · D3'], ['d13D3', 'Δ13 · D3'], ['d15D3', 'Δ15 · D3'], ['d16D3', 'Δ16 · D3'],
+  ];
+  const CEILING = { d4D5: 236, d5D5: 676, d6D5: 1556, d7D5: 3104, d7D4: 518, d11D4: 2222, d11D3: 220, d13D3: 314, d15D3: 422, d16D3: 482 };
+  const COLORS = ['#f0b35b', '#86cbea', '#e98aa7', '#9bd88f', '#c9a4f2', '#f2d27a', '#6fd3c1', '#f39b6d', '#7d8597', '#7d8597'];
+  const cellLabel = (c) => (CELLS.find((x) => x[0] === c) || [c, c])[1];
+  let now = null, db = null, selected = null, unsubGraph = null, programsShown = 0;
+
+  /* ---------- live connection ---------- */
+  function setLive(ok, text) { $('livepill').classList.toggle('off', !ok); $('livetext').textContent = text; }
+  function ago(iso) {
+    const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000));
+    return m < 1 ? 'just now' : m === 1 ? '1 min ago' : m < 60 ? m + ' min ago' : Math.round(m / 6) / 10 + ' h ago';
+  }
+  function liveText() { if (now) setLive(true, 'Live · updated ' + ago(now.as_of) + ' (' + hm(new Date(now.as_of)) + ' PT)'); }
+  setInterval(liveText, 30000);
+
+  (async () => {
+    try { db = window.claude && window.claude.use ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (!db) { setLive(false, 'Live data is available when this page is opened in Claude'); return; }
+    db.doc('live/now').onSnapshot((snap) => {
+      if (!snap.exists) { setLive(false, 'Waiting for the first update'); return; }
+      now = snap.data();
+      liveText();
+      renderAll();
+    }, () => setLive(false, 'Live data paused. Reload to reconnect'));
+  })();
+
+  /* ---------- graph selection ---------- */
+  function select(cs) {
+    if (!db || cs === selected) return;
+    selected = cs;
+    document.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.case === cs)));
+    if (unsubGraph) unsubGraph();
+    unsubGraph = db.doc('graphs/' + cs).onSnapshot((snap) => {
+      if (!snap.exists) return;
+      HF.graph = snap.data();
+      $('lede-d').textContent = HF.graph.D;
+      HF.listeners.forEach((fn) => fn(HF.graph));
+    });
+  }
+  HF.showRipple = function (info) {
+    const box = $('steps'); box.replaceChildren();
+    $('ro-title').textContent = 'Reach from one vertex · ' + cellLabel(info.case);
+    let total = 1;
+    info.layers.forEach((size, i) => {
+      if (i === 0) return;
+      const most = info.d * Math.pow(info.d - 1, i - 1);
+      const row = document.createElement('div'); row.className = 'step' + (info.shown < i ? ' dim' : '');
+      const lbl = document.createElement('span'); lbl.className = 'lbl'; lbl.textContent = 'step ' + i;
+      const bar = document.createElement('span'); bar.className = 'bar';
+      const fill = document.createElement('i'); fill.style.width = (info.shown >= i ? Math.min(100, 100 * size / most) : 0) + '%';
+      bar.title = '';
+      bar.append(fill);
+      const num = document.createElement('span'); num.className = 'num'; num.textContent = info.shown >= i ? fmt(size) + ' / ' + fmt(most) : '';
+      row.append(lbl, bar, num); box.append(row);
+      if (info.shown >= i) total += size;
+    });
+    $('ro-hint').textContent = 'Bars: vertices first reached at each step, out of the most a degree-' + info.d + ' tree could reach.';
+    $('verdict').textContent = info.shown >= info.layers.length - 1
+      ? 'All ' + fmt(info.n) + ' vertices within ' + (info.layers.length - 1) + ' steps. The limit is ' + info.D + '.'
+      : 'Reached ' + fmt(total) + ' of ' + fmt(info.n) + '…';
+  };
+
+  /* ---------- render everything from the snapshot ---------- */
+  function renderAll() {
+    const recs = now.records || [];
+    const h = $('headline'); h.replaceChildren();
+    const em = document.createElement('em'); em.textContent = (WORDS[recs.length] || recs.length) + ' records';
+    h.append(em, document.createTextNode(' broken by Haikus'));
+    renderPicker(recs); renderFleet(); renderClimb(); renderCeil(); renderLedger();
+  }
+
+  function renderPicker(recs) {
+    const box = $('picker'); box.replaceChildren();
+    const order = CELLS.map((c) => c[0]);
+    [...recs].sort((a, b) => order.indexOf(a.case) - order.indexOf(b.case)).forEach((r) => {
+      const b = document.createElement('button'); b.className = 'chip'; b.dataset.case = r.case;
+      b.setAttribute('aria-pressed', String(r.case === selected));
+      const k = document.createElement('span'); k.className = 'k'; k.textContent = cellLabel(r.case);
+      const v = document.createElement('span'); v.className = 'v'; v.textContent = fmt(r.ours);
+      const g = document.createElement('span'); g.className = 'g'; g.textContent = 'was ' + fmt(r.table) + ' · +' + r.gain;
+      b.append(k, v, g); b.addEventListener('click', () => { select(r.case); HF.userPicked && HF.userPicked(); });
+      box.append(b);
+    });
+    if (!selected && recs.length) select((recs.find((r) => r.case === 'd7D5') || recs[0]).case);
+  }
+
+  /* fleet */
+  const GROUPS = [
+    { key: 'island-1', label: 'All ten cells', cells: [], bases: [['island-1', 'Mix']] },
+    { key: 'd4D5', cells: ['d4D5'], bases: [['spec-d4d5', 'Py'], ['c-d4d5', 'C']] },
+    { key: 'd5D5', cells: ['d5D5'], bases: [['spec-d5d5', 'Py'], ['c-d5d5', 'C']] },
+    { key: 'd6D5', cells: ['d6D5'], bases: [['spec-d6d5', 'Py'], ['c-d6d5', 'C']] },
+    { key: 'd7D5', cells: ['d7D5'], bases: [['spec-d7d5', 'Py'], ['c-d7d5', 'C']] },
+    { key: 'd7D4', cells: ['d7D4'], bases: [['spec-d7d4', 'Py'], ['c-d7d4', 'C']] },
+    { key: 'd11D4', cells: ['d11D4'], bases: [['spec-d11d4', 'Py'], ['c-d11d4', 'C']] },
+    { key: 'd3', label: 'Δ11, 13, 15 · D3', cells: ['d11D3', 'd13D3', 'd15D3'], bases: [['spec-d3fam', 'Py'], ['c-d3fam', 'C']] },
+    { key: 'd16D3', cells: ['d16D3'], bases: [['spec-d16d3', 'Py'], ['c-d16d3', 'C']] },
+  ];
+  const WAVES = ['', '-w2', '-w3', '-w3b'];
+  function bestFor(cs) {
+    const p = (now.progress || []).filter((r) => r.case === cs);
+    return p.length ? p[p.length - 1] : null;
+  }
+  function renderFleet() {
+    const fleet = now.fleet || [];
+    const byId = new Map(fleet.map((f) => [f.run_id, f]));
+    const running = fleet.filter((f) => f.status === 'running').length;
+    $('c-running').textContent = running + ' / ' + fleet.length;
+    $('c-haikus').textContent = fmt(running * 8);
+    const total = (now.programs || []).reduce((s, b) => s + Number(b.total), 0);
+    tween($('c-programs'), programsShown, total); programsShown = total;
+    const box = $('fleet'); box.replaceChildren();
+    for (const g of GROUPS) {
+      const card = document.createElement('div'); card.className = 'cellcard';
+      const top = document.createElement('div'); top.className = 'top';
+      const name = document.createElement('span'); name.className = 'name'; name.textContent = g.label || cellLabel(g.key);
+      top.append(name);
+      const vs = document.createElement('div'); vs.className = 'vs';
+      if (g.cells.length === 1) {
+        const b = bestFor(g.cells[0]);
+        const best = document.createElement('span'); best.className = 'best'; best.textContent = b ? fmt(b.value) : '—';
+        top.append(best);
+        if (b) {
+          const diff = b.value - b.record;
+          const s = document.createElement('span'); s.className = diff > 0 ? 'up' : diff === 0 ? 'tie' : '';
+          s.textContent = diff > 0 ? '+' + diff + ' over ' + fmt(b.record) : diff === 0 ? 'ties ' + fmt(b.record) : fmt(b.record) + ' to beat';
+          vs.append(s);
+        }
+      } else if (g.cells.length > 1) {
+        vs.textContent = g.cells.map((c) => { const b = bestFor(c); return b ? fmt(b.value) : '—'; }).join(' · ');
+      } else {
+        vs.textContent = 'one island searches every cell';
+      }
+      const tiles = document.createElement('div'); tiles.className = 'tiles';
+      for (const [base, rowName] of g.bases) {
+        const rl = document.createElement('span'); rl.className = 'rowlbl'; rl.textContent = rowName; tiles.append(rl);
+        WAVES.forEach((w, wi) => {
+          const f = byId.get(base + w);
+          const t = document.createElement('span'); t.tabIndex = 0;
+          const st = f ? f.status : 'booting';
+          t.className = 'tile ' + st + (f && st === 'running' && Number(f.minutes_since_push) <= 8 ? ' fresh' : '') + (f && Number(f.beats) > 0 ? ' beats' : '');
+          t.style.setProperty('--d', ((wi * 0.7 + base.length * 0.13) % 3).toFixed(2) + 's');
+          t.textContent = f && f.generation !== '' && st !== 'booting' ? 'g' + f.generation : '·';
+          t.addEventListener('pointerenter', (e) => showPop(e, f, base + w));
+          t.addEventListener('focus', (e) => showPop(e, f, base + w));
+          t.addEventListener('pointerleave', hidePop); t.addEventListener('blur', hidePop);
+          tiles.append(t);
+        });
+      }
+      card.append(top, vs, tiles); box.append(card);
+    }
+  }
+  const STATUS = { running: 'writing programs', stopped: 'paused at a usage limit', booting: 'starting up', quiet: 'quiet for a while' };
+  function showPop(e, f, id) {
+    const p = $('pop'); p.replaceChildren();
+    const t = document.createElement('div'); t.className = 't'; t.textContent = id;
+    const r = document.createElement('div'); r.className = 'r';
+    r.textContent = f ? (STATUS[f.status] || f.status) + (f.generation !== '' ? ' · round ' + f.generation : '') + (f.minutes_since_push !== '' ? ' · pushed ' + f.minutes_since_push + ' min before the update' : '') : 'not started yet';
+    p.append(t, r);
+    if (f && f.cells) {
+      const c = document.createElement('div'); c.className = 'r';
+      const cs = String(f.cells).split(' '), bs = String(f.best).split(' ');
+      c.textContent = 'best: ' + cs.map((x, i) => cellLabel(x) + ' ' + bs[i]).join(', ');
+      p.append(c);
+    }
+    p.hidden = false;
+    const rect = e.target.getBoundingClientRect();
+    p.style.left = Math.min(window.innerWidth - 270, rect.left) + 'px';
+    p.style.top = rect.bottom + 8 + 'px';
+  }
+  function hidePop() { $('pop').hidden = true; }
+  function tween(el, from, to) {
+    if (reduced || from === 0) { el.textContent = fmt(to); return; }
+    const t0 = performance.now();
+    const step = (t) => { const k = Math.min(1, (t - t0) / 1200); el.textContent = fmt(Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+
+  /* climb chart with replay */
+  let replayTimer = null;
+  function renderClimb(cursor) {
+    // A staircase: how many table records we have broken so far, over the day. Each step is labelled with the record
+    // that fell. Underneath: programs written per 10 minutes, and coloured bands for each phase of the search.
+    const host = $('climb'); host.replaceChildren();
+    const prog = (now.progress || []).map((p) => ({ ...p, t: new Date(p.time) }));
+    const bins = (now.programs || []).map((b) => ({ t: new Date(b.bin_start), n: Number(b.total) }));
+    if (!prog.length) return;
+    const end = new Date(now.as_of), start = d3.min(prog, (p) => p.t), cut = cursor || end;
+    const recByCase = new Map((now.records || []).map((r) => [r.case, r]));
+    const events = [];
+    CELLS.forEach(([cs, label]) => {
+      const pts = prog.filter((p) => p.case === cs);
+      const beat = pts.find((p) => p.value > p.record);
+      if (beat) events.push({ cs, label, t: beat.t, from: beat.record, first: beat.value, best: pts[pts.length - 1].value });
+    });
+    events.sort((a, b) => a.t - b.t);
+    const W = Math.max(320, host.clientWidth), narrow = W < 640;
+    const H = narrow ? 400 : 470, total = CELLS.length;
+    const m = { t: 18, r: 18, b: 112, l: 34 };
+    const x = d3.scaleUtc([start, end], [m.l, W - m.r]);
+    const y = d3.scaleLinear([0, total], [H - m.b, m.t]);
+    const svg = d3.select(host).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', 'Records broken so far over the day, one step per record');
+    const defs = svg.append('defs');
+    const grad = defs.append('linearGradient').attr('id', 'stairfill').attr('x1', 0).attr('x2', 0).attr('y1', 0).attr('y2', 1);
+    grad.append('stop').attr('offset', '0%').attr('stop-color', '#f0b35b').attr('stop-opacity', .32);
+    grad.append('stop').attr('offset', '100%').attr('stop-color', '#f0b35b').attr('stop-opacity', 0);
+    // grid: one faint line per cell count, the full table at the top
+    for (let k = 0; k <= total; k += 2) {
+      svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(k)).attr('y2', y(k)).attr('stroke', '#1a2236');
+      svg.append('text').attr('x', m.l - 8).attr('y', y(k) + 4).attr('text-anchor', 'end').text(k);
+    }
+    svg.append('text').attr('x', W - m.r).attr('y', y(total) - 6).attr('text-anchor', 'end').attr('fill', '#5b6378').text('all ' + total + ' cells in our table');
+    // the staircase
+    const shown = events.filter((e) => e.t <= cut);
+    const steps = [{ t: start, k: 0 }, ...shown.map((e, i) => ({ t: e.t, k: i + 1 })), { t: cut, k: shown.length }];
+    const area = d3.area().x((d) => x(d.t)).y0(y(0)).y1((d) => y(d.k)).curve(d3.curveStepAfter);
+    const line = d3.line().x((d) => x(d.t)).y((d) => y(d.k)).curve(d3.curveStepAfter);
+    svg.append('path').attr('d', area(steps)).attr('fill', 'url(#stairfill)');
+    svg.append('path').attr('d', line(steps)).attr('fill', 'none').attr('stroke', '#f0b35b').attr('stroke-width', 2.5).attr('stroke-linejoin', 'round');
+    // labels: to the left of each riser, at the new height, where the chart is empty
+    shown.forEach((e, i) => {
+      const px = x(e.t), py = y(i + 1);
+      svg.append('circle').attr('cx', px).attr('cy', py).attr('r', 5).attr('fill', '#fff1cf').attr('stroke', '#0f1422').attr('stroke-width', 2);
+      const g = svg.append('text').attr('x', px - 10).attr('y', py + 4).attr('text-anchor', 'end').style('font-size', narrow ? '11px' : '12.5px');
+      g.append('tspan').attr('fill', '#ebe7dc').attr('font-weight', 500).text(e.label + '  ');
+      if (!narrow) g.append('tspan').attr('fill', '#8e95a9').text(fmt(e.from) + ' → ');
+      g.append('tspan').attr('fill', '#f0b35b').text(fmt(e.best));
+      if (!narrow) g.append('tspan').attr('fill', '#5b6378').text('  ' + hm(e.t));
+    });
+    const endK = shown.length;
+    svg.append('circle').attr('cx', x(cut)).attr('cy', y(endK)).attr('r', 6).attr('fill', '#f0b35b');
+    svg.append('circle').attr('cx', x(cut)).attr('cy', y(endK)).attr('r', 12).attr('fill', 'none').attr('stroke', '#f0b35b').attr('opacity', .35);
+    // activity strip: programs written per 10 minutes
+    const stripTop = H - m.b + 44, stripH = 26;
+    const bh = d3.scaleLinear([0, d3.max(bins, (b) => b.n) || 1], [0, stripH]);
+    const bw = Math.max(1, x(new Date(+start + 600000)) - x(start) - 1);
+    bins.filter((b) => b.t <= cut).forEach((b) => svg.append('rect').attr('x', x(b.t)).attr('width', bw).attr('y', stripTop + stripH - bh(b.n)).attr('height', bh(b.n)).attr('rx', 1).attr('fill', '#86cbea').attr('opacity', .55));
+    svg.append('text').attr('x', m.l).attr('y', stripTop - 6).attr('fill', '#5b6378').text('programs written per 10 min');
+    // phase bands
+    const phases = (now.milestones || []).filter((d) => d.on_chart === 'yes').map((d) => ({ label: d.label, t: new Date(d.time) })).filter((d) => d.t >= start && d.t <= end).sort((a, b) => a.t - b.t);
+    const PH = { Pilot: 'Mac pilot', 'Run 2': 'Mac run 2', Cloud: '17 islands', 'C islands': 'C islands', 'Fleet doubled': '34 islands', 'Doubled again': '~50 islands' };
+    const bandY = stripTop + stripH + 10, tones = ['#2a3350', '#33405f', '#3f3a2c', '#5a4a26', '#6a5426', '#7a5d24'];
+    phases.forEach((ph, i) => {
+      const x0 = x(ph.t), x1 = i + 1 < phases.length ? x(phases[i + 1].t) : W - m.r;
+      svg.append('rect').attr('x', x0).attr('width', Math.max(1, x1 - x0 - 2)).attr('y', bandY).attr('height', 8).attr('rx', 4).attr('fill', tones[i % tones.length]);
+      if (x1 - x0 > 52) svg.append('text').attr('x', x0 + 2).attr('y', bandY + 22).attr('fill', '#9aa1b5').text(PH[ph.label] || ph.label);
+    });
+    const xa = svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(narrow ? 4 : 8).tickFormat(hm).tickSize(0).tickPadding(6));
+    xa.select('.domain').attr('stroke', '#2a3350');
+    if (cursor) svg.append('line').attr('x1', x(cut)).attr('x2', x(cut)).attr('y1', m.t).attr('y2', bandY + 8).attr('stroke', '#f0b35b').attr('opacity', .5);
+    $('climbkey').replaceChildren();
+    $('clock').textContent = hm(cut) + ' PT · ' + endK + ' of ' + total + ' records broken';
+  }
+  $('replay').addEventListener('click', () => {
+    if (!now) return;
+    if (replayTimer) { cancelAnimationFrame(replayTimer); replayTimer = null; renderClimb(); $('replay').textContent = 'Replay the day'; return; }
+    const prog = (now.progress || []).map((p) => new Date(p.time));
+    const s = Math.min(...prog), e = +new Date(now.as_of), dur = reduced ? 1 : 9000, t0 = performance.now();
+    $('replay').textContent = 'Stop';
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      renderClimb(new Date(s + (e - s) * k));
+      if (k < 1) replayTimer = requestAnimationFrame(tick); else { replayTimer = null; $('replay').textContent = 'Replay the day'; renderClimb(); }
+    };
+    replayTimer = requestAnimationFrame(tick);
+  });
+
+  /* ceilings */
+  function renderCeil() {
+    const box = $('ceil'); box.replaceChildren();
+    CELLS.forEach(([cs, label]) => {
+      const b = bestFor(cs); if (!b) return;
+      const ub = CEILING[cs];
+      const row = document.createElement('div'); row.className = 'crow';
+      const c = document.createElement('span'); c.className = 'c'; c.textContent = label;
+      const tr = document.createElement('div'); tr.className = 'track';
+      const rail = document.createElement('i'); rail.className = 'rail';
+      const fill = document.createElement('i'); fill.className = 'fill'; fill.style.width = (100 * b.value / ub) + '%';
+      const tb = document.createElement('i'); tb.className = 'tbl'; tb.style.left = (100 * b.record / ub) + '%';
+      const us = document.createElement('i'); us.className = 'us' + (b.value === b.record ? ' tie' : ''); us.style.left = (100 * b.value / ub) + '%';
+      tr.append(rail, fill, tb, us);
+      const t = document.createElement('span'); t.className = 'txt';
+      const bb = document.createElement('b'); bb.textContent = fmt(b.value);
+      t.append(bb, document.createTextNode(' of ' + fmt(ub) + ' · ' + Math.round(100 * b.value / ub) + '%'));
+      row.append(c, tr, t); box.append(row);
+    });
+  }
+
+  /* ledger */
+  function renderLedger() {
+    const tb = $('ledger').querySelector('tbody'); tb.replaceChildren();
+    const lean = new Map((now.lean || []).map((l) => [l.case, l]));
+    const order = CELLS.map((c) => c[0]);
+    [...(now.records || [])].sort((a, b) => order.indexOf(a.case) - order.indexOf(b.case)).forEach((r) => {
+      const tr = document.createElement('tr');
+      const td = (txt, cls) => { const d = document.createElement('td'); if (cls) d.className = cls; d.textContent = txt; tr.append(d); return d; };
+      td(cellLabel(r.case), 'n'); td(fmt(r.table), 'n'); td(fmt(r.ours), 'n');
+      const l = lean.get(r.case); const cell = td('');
+      const p = document.createElement('span');
+      if (l && l.state === 'current') { p.className = 'pill good'; p.textContent = 'proved, ' + fmt(l.in_lean); }
+      else if (l && l.state === 'older graph') { p.className = 'pill mid'; p.textContent = 'proved ' + fmt(l.in_lean) + ', update due'; }
+      else { p.className = 'pill none'; p.textContent = 'not yet'; }
+      cell.append(p);
+      td(r.old_holder + (r.old_year ? ' (' + r.old_year + ')' : ''), 'who');
+      tb.append(tr);
+    });
+  }
+
+  let rz = null;
+  window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (now) { renderClimb(); } }, 150); });
+  setTimeout(() => { if (!HF.ready3d && !HF.failed3d) { HF.failed3d = true; } }, 15000);
+  // a link ending in #<section id> (fleet-sec, climb-sec, ceil-sec, proof-sec, explain) opens at that section
+  const jump = () => { const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 12); };
+  window.addEventListener('hashchange', jump);
+  [1500, 4000, 7000].forEach((ms) => setTimeout(jump, ms));
+})();
+</script>
+
+
+<script>
+/* Explainer diagrams: small SVGs drawn from the rules themselves (the Heawood graph is built, not typed in). */
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  const BR = '#f0b35b', GL = '#86cbea', SP = '#fff1cf', LINE = '#3a4566', MUTED = '#8e95a9';
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.append(e); return e; };
+  const txt = (parent, x, y, s, attrs) => { const t = el('text', Object.assign({ x, y }, attrs || {}), parent); t.textContent = s; return t; };
+
+  // rule 1: two sides
+  (function () {
+    const s = document.getElementById('ex-sides');
+    const top = [40, 120, 200].map((x) => [x, 28]), bot = [40, 120, 200].map((x) => [x, 92]);
+    [[0, 0], [0, 1], [1, 1], [1, 2], [2, 0], [2, 2]].forEach(([a, b]) => el('line', { x1: top[a][0], y1: top[a][1], x2: bot[b][0], y2: bot[b][1], stroke: '#6b7aa0', 'stroke-width': 1.5 }, s));
+    el('path', { d: 'M40 28 Q80 4 120 28', fill: 'none', stroke: '#e07a6a', 'stroke-width': 1.5, 'stroke-dasharray': '4 4' }, s);
+    txt(s, 80, 12, 'not allowed', { 'text-anchor': 'middle', fill: '#e07a6a', 'font-size': 10, 'font-family': 'Geist Mono, monospace' });
+    top.forEach(([x, y]) => el('circle', { cx: x, cy: y, r: 7, fill: BR }, s));
+    bot.forEach(([x, y]) => el('circle', { cx: x, cy: y, r: 7, fill: GL }, s));
+  })();
+
+  // rule 2: handshake limit, drawn for Δ = 4
+  (function () {
+    const s = document.getElementById('ex-degree');
+    const c = [120, 62], d = 4;
+    for (let i = 0; i < d; i++) {
+      const a = -Math.PI / 2 + (i + 0.5) * (2 * Math.PI / d), x = c[0] + Math.cos(a) * 70, y = c[1] + Math.sin(a) * 44;
+      el('line', { x1: c[0], y1: c[1], x2: x, y2: y, stroke: '#6b7aa0', 'stroke-width': 1.5 }, s);
+      el('circle', { cx: x, cy: y, r: 7, fill: GL }, s);
+    }
+    el('circle', { cx: c[0], cy: c[1], r: 9, fill: BR }, s);
+    txt(s, 120, 116, 'Δ = 4: four neighbours, no more', { 'text-anchor': 'middle', fill: MUTED, 'font-size': 10.5, 'font-family': 'Geist Mono, monospace' });
+  })();
+
+  // rule 3: within D steps
+  (function () {
+    const s = document.getElementById('ex-diam');
+    const pts = [[24, 60], [76, 30], [128, 78], [180, 34], [222, 66]];
+    for (let i = 0; i < pts.length - 1; i++) {
+      el('line', { x1: pts[i][0], y1: pts[i][1], x2: pts[i + 1][0], y2: pts[i + 1][1], stroke: '#c9a46a', 'stroke-width': 2 }, s);
+      txt(s, (pts[i][0] + pts[i + 1][0]) / 2, (pts[i][1] + pts[i + 1][1]) / 2 - 8, String(i + 1), { 'text-anchor': 'middle', fill: MUTED, 'font-size': 10.5, 'font-family': 'Geist Mono, monospace' });
+    }
+    pts.forEach(([x, y], i) => el('circle', { cx: x, cy: y, r: i === 0 || i === pts.length - 1 ? 9 : 6.5, fill: i === 0 || i === pts.length - 1 ? SP : (i % 2 ? GL : BR) }, s));
+    txt(s, 120, 112, 'these two are 4 steps apart', { 'text-anchor': 'middle', fill: MUTED, 'font-size': 10.5, 'font-family': 'Geist Mono, monospace' });
+  })();
+
+  // Heawood graph: a 14-cycle plus chords i to i+5 from every even i
+  (function () {
+    const s = document.getElementById('ex-heawood'), n = 14, cx = 180, cy = 150, R = 118;
+    const adj = Array.from({ length: n }, () => []);
+    const add = (a, b) => { adj[a].push(b); adj[b].push(a); };
+    for (let i = 0; i < n; i++) add(i, (i + 1) % n);
+    for (let i = 0; i < n; i += 2) add(i, (i + 5) % n);
+    const P = Array.from({ length: n }, (_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + Math.cos(a) * R, cy + Math.sin(a) * R]; });
+    const edges = []; adj.forEach((ns, a) => ns.forEach((b) => { if (a < b) edges.push([a, b]); }));
+    const eEls = edges.map(([a, b]) => el('line', { x1: P[a][0], y1: P[a][1], x2: P[b][0], y2: P[b][1], stroke: LINE, 'stroke-width': 1.6 }, s));
+    const ringCols = [SP, '#f6cf8a', '#a9d7ee', '#6f86b8'];
+    const vEls = P.map(([x, y], i) => { const c = el('circle', { cx: x, cy: y, r: 11, fill: i % 2 ? GL : BR, class: 'v', tabindex: 0, role: 'button', 'aria-label': 'vertex ' + (i + 1) }, s); return c; });
+    const labels = P.map(([x, y]) => txt(s, x, y + 3.5, '', { 'text-anchor': 'middle', fill: '#0b0f1a', 'font-size': 10, 'font-weight': 600 }));
+    labels.forEach((l) => l.setAttribute('pointer-events', 'none'));
+    function pick(root) {
+      const dist = Array(n).fill(-1); dist[root] = 0; const q = [root];
+      while (q.length) { const x = q.shift(); for (const y of adj[x]) if (dist[y] < 0) { dist[y] = dist[x] + 1; q.push(y); } }
+      vEls.forEach((c, i) => { c.setAttribute('fill', ringCols[dist[i]]); c.setAttribute('r', i === root ? 13 : 11); });
+      labels.forEach((l, i) => { l.textContent = String(dist[i]); });
+      eEls.forEach((e, k) => { const [a, b] = edges[k]; const near = Math.abs(dist[a] - dist[b]) === 1; e.setAttribute('stroke', near ? '#7b6a48' : LINE); e.setAttribute('stroke-width', near ? 2 : 1.2); });
+      const counts = [0, 0, 0, 0]; dist.forEach((d) => counts[d]++);
+      const box = document.getElementById('ex-hlvl'); box.replaceChildren();
+      counts.forEach((c, k) => { const sp = document.createElement('span'); const b = document.createElement('b'); b.textContent = String(c); sp.append(k === 0 ? 'start ' : 'step ' + k + ': ', b); sp.style.color = ringCols[k]; box.append(sp); });
+      const last = document.createElement('span'); last.textContent = 'all 14 within 3 steps'; box.append(last);
+    }
+    vEls.forEach((c, i) => { c.addEventListener('click', () => pick(i)); c.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } }); });
+    pick(0);
+  })();
+
+  // tree limit for Δ = 3, three steps
+  (function () {
+    const s = document.getElementById('ex-tree'), cx = 180, cy = 128, d = 3;
+    const nodes = [{ x: cx, y: cy, k: 0, a: 0 }];
+    let frontier = [{ x: cx, y: cy, a0: 0, a1: Math.PI * 2, k: 0 }];
+    for (let k = 1; k <= 3; k++) {
+      const next = [];
+      frontier.forEach((p) => {
+        const kids = k === 1 ? d : d - 1, span = (p.a1 - p.a0) / kids;
+        for (let j = 0; j < kids; j++) {
+          const a0 = p.a0 + j * span, a1 = a0 + span, a = (a0 + a1) / 2, r = k * 36;
+          const q = { x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r, a0, a1, k };
+          el('line', { x1: p.x, y1: p.y, x2: q.x, y2: q.y, stroke: LINE, 'stroke-width': 1.4 }, s);
+          next.push(q);
+        }
+      });
+      next.forEach((q) => nodes.push(q));
+      frontier = next;
+      el('circle', { cx, cy, r: k * 36, fill: 'none', stroke: '#1f2840', 'stroke-dasharray': '2 4' }, s);
+    }
+    nodes.forEach((q) => el('circle', { cx: q.x, cy: q.y, r: q.k === 0 ? 8 : 6, fill: q.k === 0 ? SP : q.k % 2 ? GL : BR }, s));
+    [[1, 3], [2, 6], [3, 12]].forEach(([k, c]) => txt(s, 30 + (k - 1) * 112, 262, 'step ' + k + ': ≤ ' + c, { fill: k % 2 ? GL : BR, 'font-size': 11 }));
+    txt(s, 180, 284, 'Δ = 3 · two sides cap the whole graph at 14', { fill: MUTED, 'font-size': 10.5, 'text-anchor': 'middle' });
+  })();
+
+  // guide to the page's visuals, each with a tiny glyph
+  (function () {
+    const box = document.getElementById('ex-guide');
+    const items = [
+      ['3D view, tangle', 'tangle', 'Every vertex of one record graph, spread out so connected vertices sit near each other. Drag to turn it. The chips under it switch graphs.'],
+      ['3D view, rings', 'rings', 'Click a vertex: the whole graph folds into rings around it, ring k holding the vertices k steps away. The outermost ring is at most D, which is the diameter rule made visible.'],
+      ['Reach bars', 'bars', 'How many vertices each step first reaches, against the tree limit Δ·(Δ−1)^(k−1). Full early bars, then a big last step, is what a good graph looks like.'],
+      ['Fleet tiles', 'tiles', 'One tile per cloud island. Green tiles are writing programs and the number is the round. A brass underline means that island holds a graph above the table. Hover a tile for details.'],
+      ['Records broken, over the day', 'climb', 'A staircase that climbs by one each time a table record falls, labelled with the record. The strip below shows how hard the Haikus were working. Replay animates the day.'],
+      ['Room left', 'rail', 'Each rail runs from 0 to the best proven ceiling. The grey tick is the old record and the brass dot is ours. Most of the rail is empty: the true answers are unknown.'],
+      ['Proof ledger', 'ledger', 'Who held each record before, and whether our graph also has a Lean proof, which a computer checks line by line, trusting only the small core of Lean.'],
+    ];
+    const glyph = (kind) => {
+      const s = el('svg', { viewBox: '0 0 96 72', 'aria-hidden': 'true' });
+      el('rect', { x: 0.5, y: 0.5, width: 95, height: 71, rx: 10, fill: '#0b101c', stroke: '#222b42' }, s);
+      if (kind === 'tangle') {
+        const pts = Array.from({ length: 22 }, (_, i) => [48 + Math.cos(i * 2.4) * (8 + (i * 7) % 24), 36 + Math.sin(i * 2.4) * (6 + (i * 5) % 22)]);
+        pts.forEach((p, i) => { const q = pts[(i * 7 + 3) % pts.length]; el('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: '#2e3a5c', 'stroke-width': .8 }, s); });
+        pts.forEach((p, i) => el('circle', { cx: p[0], cy: p[1], r: 2.2, fill: i % 2 ? GL : BR }, s));
+      } else if (kind === 'rings') {
+        [10, 20, 30].forEach((r) => el('circle', { cx: 48, cy: 36, r, fill: 'none', stroke: '#2e3a5c' }, s));
+        [[10, 4], [20, 8], [30, 14]].forEach(([r, m], k) => { for (let i = 0; i < m; i++) { const a = i / m * Math.PI * 2 + k; el('circle', { cx: 48 + Math.cos(a) * r, cy: 36 + Math.sin(a) * r, r: 2.2, fill: k % 2 ? BR : GL }, s); } });
+        el('circle', { cx: 48, cy: 36, r: 3.5, fill: SP }, s);
+      } else if (kind === 'bars') {
+        [1, 1, .9, .35, .05].forEach((w, i) => { el('rect', { x: 12, y: 12 + i * 11, width: 72, height: 5, rx: 2.5, fill: '#1b2337' }, s); el('rect', { x: 12, y: 12 + i * 11, width: 72 * w, height: 5, rx: 2.5, fill: i % 2 ? BR : GL }, s); });
+      } else if (kind === 'tiles') {
+        for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++) { const st = (r * 4 + c) % 5; el('rect', { x: 12 + c * 19, y: 18 + r * 20, width: 16, height: 14, rx: 3, fill: st === 4 ? 'none' : '#1a2a2a', stroke: st === 4 ? '#3a4566' : '#2c4a45', 'stroke-dasharray': st === 4 ? '2 2' : '' }, s); if (st === 1) el('rect', { x: 12 + c * 19, y: 30 + r * 20, width: 16, height: 2, fill: BR }, s); }
+      } else if (kind === 'climb') {
+        [[18, .35], [36, .55], [54, .8]].forEach(([y, f]) => {
+          el('line', { x1: 10, x2: 10 + 76 * f, y1: y, y2: y, stroke: '#5b6378', 'stroke-dasharray': '2 3', 'stroke-width': 1.5 }, s);
+          el('line', { x1: 10 + 76 * f, x2: 86, y1: y, y2: y, stroke: BR, 'stroke-width': 6, 'stroke-linecap': 'round' }, s);
+          el('circle', { cx: 10 + 76 * f, cy: y, r: 3.5, fill: SP }, s);
+        });
+      } else if (kind === 'rail') {
+        [20, 36, 52].forEach((y, i) => { el('rect', { x: 10, y: y - 1, width: 76, height: 2, fill: '#222b42' }, s); const t = [.62, .4, .55][i], u = t + [.02, .05, .01][i]; el('rect', { x: 10 + 76 * t, y: y - 6, width: 1.5, height: 12, fill: MUTED }, s); el('circle', { cx: 10 + 76 * u, cy: y, r: 3.5, fill: BR }, s); });
+      } else {
+        [18, 32, 46, 60].forEach((y, i) => { el('rect', { x: 10, y: y - 3, width: 30, height: 4, rx: 2, fill: '#3a4566' }, s); el('rect', { x: 50, y: y - 5, width: 34, height: 9, rx: 4.5, fill: 'none', stroke: i < 3 ? '#93d6a0' : '#e9c46a' }, s); });
+      }
+      return s;
+    };
+    items.forEach(([title, kind, body]) => {
+      const it = document.createElement('div'); it.className = 'gitem';
+      const right = document.createElement('div');
+      const h = document.createElement('h4'); h.textContent = title;
+      const p = document.createElement('p'); p.textContent = body;
+      right.append(h, p); it.append(glyph(kind), right); box.append(it);
+    });
+  })();
+})();
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.webgpu.js",
+  "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.webgpu.js",
+  "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.tsl.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+/* 3D: Three.js with the WebGPU renderer (it falls back to WebGL2 by itself where WebGPU is missing).
+   Vertices are instanced spheres, edges one line-segment buffer, and a bloom pass makes the reached vertices glow. */
+import * as THREE from 'three/webgpu';
+import { pass } from 'three/tsl';
+import { bloom } from 'three/addons/tsl/display/BloomNode.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const HF = window.HF = window.HF || { graph: null, listeners: [] };
+const canvas = document.getElementById('gl');
+const hero = document.getElementById('hero');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BRASS = new THREE.Color('#f0b35b'), GLACIER = new THREE.Color('#86cbea'), SPARK = new THREE.Color('#fff1cf');
+
+let renderer;
+try {
+  renderer = new THREE.WebGPURenderer({ canvas, antialias: true });
+  await renderer.init();
+} catch (e) {
+  const msg = document.createElement('div'); msg.className = 'no3d';
+  msg.textContent = 'This browser cannot draw the 3D view. The live numbers below still work.';
+  hero.append(msg); HF.failed3d = true; throw e;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#090c15');
+scene.fog = new THREE.FogExp2('#090c15', 0.11);
+const camera = new THREE.PerspectiveCamera(42, 1, 0.05, 50);
+camera.position.set(0.6, 0.5, 4.6);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; controls.dampingFactor = 0.06;
+controls.autoRotate = !reduced; controls.autoRotateSpeed = 0.55;
+controls.enableZoom = false; controls.enablePan = false;
+
+const post = new THREE.PostProcessing(renderer);
+const scenePass = pass(scene, camera);
+const color = scenePass.getTextureNode('output');
+const glow = bloom(color, 0.85, 0.45, 0.22);
+post.outputNode = color.add(glow);
+
+// faint distance rings, shown in ring mode
+const ringGroup = new THREE.Group(); scene.add(ringGroup);
+const ringMat = new THREE.LineBasicNodeMaterial({ color: '#3a4a72', transparent: true, opacity: 0, depthWrite: false });
+
+function resize() {
+  const w = hero.clientWidth, h = hero.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.position.setLength(w < 700 ? 6.2 : 4.6);
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(hero); resize();
+
+/* ---------- graph state ---------- */
+let G = null;            // { n, d, D, adj, side, edges, tangle(Float32Array) }
+let mesh = null, lines = null;
+let cur, from, to;       // Float32Array positions
+let morphT = 1, morphStart = 0;
+const MORPH = reduced ? 1 : 1700;
+let ripple = null;       // { root, dist, layers, t0 }
+const STEP = reduced ? 0 : 520;
+let mode = 'rings', auto = !reduced, lastUser = -1e9, nextAuto = 0;
+
+function bfs(root) {
+  const dist = new Int16Array(G.n).fill(-1); dist[root] = 0;
+  const q = new Int32Array(G.n); let h = 0, t = 0; q[t++] = root;
+  while (h < t) { const x = q[h++]; for (const y of G.adj[x]) if (dist[y] < 0) { dist[y] = dist[x] + 1; q[t++] = y; } }
+  return dist;
+}
+function fib(m, rot) {
+  const out = new Float32Array(m * 3), g = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < m; i++) {
+    const y = m === 1 ? 0 : 1 - (i / (m - 1)) * 2, r = Math.sqrt(1 - y * y), th = g * i + rot;
+    out[i * 3] = Math.cos(th) * r; out[i * 3 + 1] = y; out[i * 3 + 2] = Math.sin(th) * r;
+  }
+  return out;
+}
+function ringLayout(root, dist) {
+  const D = Math.max(...dist), pos = new Float32Array(G.n * 3), dir = new Float32Array(G.n * 3);
+  const layers = Array.from({ length: D + 1 }, () => []);
+  for (let v = 0; v < G.n; v++) layers[dist[v]].push(v);
+  const R = (k) => 0.2 + 1.55 * k / D;
+  for (let k = 1; k <= D; k++) {
+    const L = layers[k], m = L.length, pts = fib(m, k * 1.7);
+    if (k === 1) { L.forEach((v, i) => dir.set(pts.subarray(i * 3, i * 3 + 3), v * 3)); }
+    else {
+      // each vertex aims at the mean direction of its parents, then takes the nearest free point on its ring
+      const want = L.map((v) => {
+        let x = 0, y = 0, z = 0;
+        for (const u of G.adj[v]) if (dist[u] === k - 1) { x += dir[u * 3]; y += dir[u * 3 + 1]; z += dir[u * 3 + 2]; }
+        const l = Math.hypot(x, y, z) || 1; return [x / l, y / l, z / l];
+      });
+      const used = new Uint8Array(m);
+      const order = L.map((_, i) => i).sort(() => Math.random() - 0.5);
+      for (const i of order) {
+        let best = -1, bd = -2; const [a, b, c] = want[i];
+        for (let j = 0; j < m; j++) if (!used[j]) { const d = a * pts[j * 3] + b * pts[j * 3 + 1] + c * pts[j * 3 + 2]; if (d > bd) { bd = d; best = j; } }
+        used[best] = 1; dir.set(pts.subarray(best * 3, best * 3 + 3), L[i] * 3);
+      }
+    }
+    for (const v of L) { const r = R(k); pos[v * 3] = dir[v * 3] * r; pos[v * 3 + 1] = dir[v * 3 + 1] * r; pos[v * 3 + 2] = dir[v * 3 + 2] * r; }
+  }
+  return { pos, layers, D };
+}
+function buildRings(D) {
+  ringGroup.clear();
+  for (let k = 1; k <= D; k++) {
+    const r = 0.2 + 1.55 * k / D;
+    for (const [ax, ay] of [[0, 0], [Math.PI / 2, 0], [Math.PI / 2, Math.PI / 2]]) {
+      const pts = []; for (let i = 0; i <= 96; i++) { const a = i / 96 * Math.PI * 2; pts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0)); }
+      const ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), ringMat);
+      ln.rotation.set(ax, ay, 0); ringGroup.add(ln);
+    }
+  }
+}
+
+function load(g) {
+  const n = g.n, e = g.edges, m = e.length / 2;
+  const adj = Array.from({ length: n }, () => []);
+  for (let i = 0; i < m; i++) { adj[e[2 * i]].push(e[2 * i + 1]); adj[e[2 * i + 1]].push(e[2 * i]); }
+  const side = new Uint8Array(n).fill(255); side[0] = 0; const q = [0];
+  while (q.length) { const x = q.shift(); for (const y of adj[x]) if (side[y] === 255) { side[y] = 1 - side[x]; q.push(y); } }
+  const tangle = new Float32Array(g.pos.length); for (let i = 0; i < g.pos.length; i++) tangle[i] = g.pos[i] * 1.55;
+  const eScale = Math.min(1, Math.sqrt(600 / m)), rest = n > 1000 ? 0.38 : n > 400 ? 0.45 : 0.55;
+  G = { n, d: g.d, D: g.D, adj, side, edges: e, m, tangle, case: g.case, eScale, rest, flash: n > 1000 ? 1.6 : 2.2 };
+  if (mesh) { scene.remove(mesh); mesh.geometry.dispose(); }
+  if (lines) { scene.remove(lines); lines.geometry.dispose(); }
+  const size = n > 1000 ? 0.012 : n > 400 ? 0.017 : 0.024;
+  mesh = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(size, 1), new THREE.MeshBasicNodeMaterial({ color: '#ffffff' }), n);
+  mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  mesh.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(n * 3), 3);
+  mesh.frustumCulled = false; scene.add(mesh);
+  const lg = new THREE.BufferGeometry();
+  lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(m * 6), 3).setUsage(THREE.DynamicDrawUsage));
+  lg.setAttribute('color', new THREE.BufferAttribute(new Float32Array(m * 6), 3).setUsage(THREE.DynamicDrawUsage));
+  lines = new THREE.LineSegments(lg, new THREE.LineBasicNodeMaterial({ vertexColors: true, transparent: true, opacity: n > 1000 ? 0.32 : 0.5, blending: THREE.AdditiveBlending, depthWrite: false }));
+  lines.frustumCulled = false; scene.add(lines);
+  buildRings(g.D);
+  cur = new Float32Array(tangle); from = new Float32Array(tangle); to = tangle; morphT = 1;
+  ripple = null;
+  if (reduced || mode === 'rings') startRipple(Math.floor(Math.random() * n), !reduced);
+  writeAll(performance.now());
+}
+
+function morphTo(target) { from = new Float32Array(cur); to = target; morphT = 0; morphStart = performance.now(); }
+function startRipple(root, animate) {
+  const dist = bfs(root);
+  const rl = ringLayout(root, dist);
+  const layers = rl.layers.map((l) => l.length);
+  ripple = { root, dist, layers, t0: performance.now() + (animate && mode === 'rings' ? MORPH * 0.55 : 0), pos: rl.pos, shown: -1 };
+  nextAuto = performance.now() + 8200;
+  if (mode === 'rings') morphTo(rl.pos);
+  if (!animate) ripple.t0 = performance.now() - 1e6;
+}
+
+const tmp = new THREE.Color();
+function vertexColor(v, now, out) {
+  const base = G.side[v] ? GLACIER : BRASS;
+  let k = G.rest;
+  if (ripple) {
+    const t = (now - ripple.t0) / 1000, at = ripple.dist[v] * STEP / 1000;
+    if (v === ripple.root) { out.copy(SPARK).multiplyScalar(4.5); return; }
+    if (t < at) k = 0.16;
+    else { const since = t - at; k = G.rest + G.flash * Math.exp(-since * 2.6); }
+  }
+  out.copy(base).multiplyScalar(k);
+}
+function writeAll(now) {
+  if (!G) return;
+  const mt = mesh.instanceMatrix.array, ic = mesh.instanceColor.array, s = 1;
+  for (let v = 0; v < G.n; v++) {
+    const o = v * 16;
+    mt[o] = s; mt[o + 5] = s; mt[o + 10] = s; mt[o + 15] = 1;
+    mt[o + 12] = cur[v * 3]; mt[o + 13] = cur[v * 3 + 1]; mt[o + 14] = cur[v * 3 + 2];
+    vertexColor(v, now, tmp); ic[v * 3] = tmp.r; ic[v * 3 + 1] = tmp.g; ic[v * 3 + 2] = tmp.b;
+  }
+  mesh.instanceMatrix.needsUpdate = true; mesh.instanceColor.needsUpdate = true;
+  const P = lines.geometry.attributes.position.array, C = lines.geometry.attributes.color.array, e = G.edges;
+  for (let i = 0; i < G.m; i++) {
+    const a = e[2 * i], b = e[2 * i + 1], o = i * 6;
+    P[o] = cur[a * 3]; P[o + 1] = cur[a * 3 + 1]; P[o + 2] = cur[a * 3 + 2];
+    P[o + 3] = cur[b * 3]; P[o + 4] = cur[b * 3 + 1]; P[o + 5] = cur[b * 3 + 2];
+    let ka = 0.2 * G.eScale, kb = 0.2 * G.eScale;
+    if (ripple) {
+      const t = (now - ripple.t0) / 1000, da = ripple.dist[a], db = ripple.dist[b], far = Math.max(da, db);
+      const at = far * STEP / 1000;
+      if (t < at) { ka = kb = 0.04 * G.eScale; } else { const g = (0.12 + 0.9 * Math.exp(-(t - at) * 2.2)) * G.eScale; ka = kb = Math.abs(da - db) === 1 ? g : 0.08 * G.eScale; }
+    }
+    const ca = G.side[a] ? GLACIER : BRASS, cb = G.side[b] ? GLACIER : BRASS;
+    C[o] = ca.r * ka; C[o + 1] = ca.g * ka; C[o + 2] = ca.b * ka; C[o + 3] = cb.r * kb; C[o + 4] = cb.g * kb; C[o + 5] = cb.b * kb;
+  }
+  lines.geometry.attributes.position.needsUpdate = true; lines.geometry.attributes.color.needsUpdate = true;
+}
+const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+let loopErr = false;
+renderer.setAnimationLoop(() => {
+  const now = performance.now();
+  try {
+  if (G) {
+    if (morphT < 1) {
+      morphT = Math.min(1, (now - morphStart) / MORPH);
+      const k = ease(morphT);
+      for (let i = 0; i < cur.length; i++) cur[i] = from[i] + (to[i] - from[i]) * k;
+    }
+    if (ripple) {
+      const shown = Math.min(ripple.layers.length - 1, Math.floor((now - ripple.t0) / Math.max(1, STEP)));
+      if (shown !== ripple.shown) { ripple.shown = shown; HF.showRipple && HF.showRipple({ case: G.case, d: G.d, D: G.D, n: G.n, layers: ripple.layers, shown: Math.max(0, shown) }); }
+    }
+    writeAll(now);
+    ringMat.opacity += ((mode === 'rings' ? 0.22 : 0) - ringMat.opacity) * 0.06;
+    if (auto && now > nextAuto && now - lastUser > 20000 && mode === 'rings') {
+      startRipple(Math.floor(Math.random() * G.n), true);
+      nextAuto = now + 8200;
+    }
+  }
+  } catch (err) { if (!loopErr) { loopErr = true; console.error('3D update failed', err); } }
+  controls.update();
+  post.render();
+});
+HF.ready3d = true;
+
+/* ---------- interaction ---------- */
+const ray = new THREE.Raycaster(); const ndc = new THREE.Vector2(); let down = null;
+canvas.addEventListener('pointerdown', (e) => { down = [e.clientX, e.clientY]; });
+canvas.addEventListener('pointerup', (e) => {
+  if (!down || !G || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return;
+  const r = canvas.getBoundingClientRect();
+  ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  // pick the vertex closest to the ray, within a small screen tolerance
+  let best = -1, bd = 1e9; const p = new THREE.Vector3(), sp = new THREE.Vector3();
+  for (let v = 0; v < G.n; v++) {
+    p.set(cur[v * 3], cur[v * 3 + 1], cur[v * 3 + 2]); sp.copy(p).project(camera);
+    const dx = (sp.x - ndc.x) * r.width / 2, dy = (sp.y - ndc.y) * r.height / 2, d = dx * dx + dy * dy;
+    if (d < bd && sp.z < 1) { bd = d; best = v; }
+  }
+  if (best >= 0 && bd < 22 * 22) {
+    lastUser = now(); if (mode !== 'rings') setMode('rings');
+    startRipple(best, true);
+  }
+});
+const now = () => performance.now();
+function setMode(m) {
+  mode = m;
+  document.getElementById('b-shells').setAttribute('aria-pressed', String(m === 'rings'));
+  document.getElementById('b-tangle').setAttribute('aria-pressed', String(m === 'tangle'));
+  if (!G) return;
+  if (m === 'tangle') morphTo(G.tangle); else if (ripple) morphTo(ripple.pos); else startRipple(0, true);
+}
+document.getElementById('b-shells').addEventListener('click', () => { lastUser = now(); setMode('rings'); });
+document.getElementById('b-tangle').addEventListener('click', () => { lastUser = now(); setMode('tangle'); });
+const bAuto = document.getElementById('b-auto'); bAuto.setAttribute('aria-pressed', String(auto));
+bAuto.addEventListener('click', () => { auto = !auto; bAuto.setAttribute('aria-pressed', String(auto)); lastUser = auto ? -1e9 : now(); controls.autoRotate = auto && !reduced; });
+HF.userPicked = () => { lastUser = -1e9; };
+
+HF.listeners.push(load);
+if (HF.graph) load(HF.graph);
+</script>
