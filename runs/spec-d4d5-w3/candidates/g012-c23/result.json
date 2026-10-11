@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11445907600000282
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "timeout: killed after 65.0s wall-clock limit",
+      "score": 0.0,
+      "status": "timeout",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 65.00378898100007
+    }
+  },
+  "fitness": 0.047619047619047616
+}
