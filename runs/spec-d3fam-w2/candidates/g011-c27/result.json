@@ -1,0 +1,41 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash: v = [inv(y) for y in range(N)]\n          ~~~^^^\n  File \"/home/user/math/runs/spec-d3fam-w2/candidates/g011-c27/program.py\", line 63, in inv\n    ia = F.inv(a)\n  File \"/home/user/math/problems/bipartite_dd/lib.py\", line 133, in inv\n    raise ValueError(\"0 has no inverse\")\nValueError: 0 has no inverse\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.3156030310000233
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash: v = [inv(y) for y in range(N)]\n          ~~~^^^\n  File \"/home/user/math/runs/spec-d3fam-w2/candidates/g011-c27/program.py\", line 63, in inv\n    ia = F.inv(a)\n  File \"/home/user/math/problems/bipartite_dd/lib.py\", line 133, in inv\n    raise ValueError(\"0 has no inverse\")\nValueError: 0 has no inverse\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.26527516600003764
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 374.0,
+      "wall_s": 51.20722594000006
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.22253711700000167
+    }
+  },
+  "fitness": 0.34426229508196726
+}
