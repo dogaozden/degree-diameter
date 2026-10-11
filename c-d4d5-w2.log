@@ -1,4 +1,7 @@
-budget stop at g015-c12: subscription limit hit: You've hit your usage limit
-budget stop at g015-c15: subscription limit hit: You've hit your usage limit
-gen 15: made 18 failed 0 calls 469 gen-best 1.0119 best 1.0119
+gen 15: made 32 failed 0 calls 483 gen-best 1.0119 best 1.0119
+gen 16: made 32 failed 0 calls 515 gen-best 1.0000 best 1.0119
+gen 17: made 32 failed 0 calls 547 gen-best 1.0000 best 1.0119
+gen 18: made 32 failed 0 calls 579 gen-best 1.0119 best 1.0119
+budget stop at g019-c08: subscription budget reached before call
+gen 19: made 8 failed 0 calls 587 gen-best 1.0000 best 1.0119
 EXIT=3
