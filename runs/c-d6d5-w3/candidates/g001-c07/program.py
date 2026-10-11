@@ -1,0 +1,854 @@
+"""Combined search: breakout-weighted annealing over semidirect-product voltage lifts,
+with an elite pool (iterated local search), followed by grow-by-two from the best lift.
+
+Python builds the best known baseline (PG(2,q), Araujo-Pardo-Lopez, W(q), or K_{d,d}),
+passes it to C on stdin, and validates whatever C returns.
+"""
+import itertools
+import time
+
+import lib
+
+
+C_SOURCE = r"""
+/* Bipartite degree-diameter search core.
+ * Usage:  prog d D seed time_limit   < start_graph
+ * stdin:  "n m" then m lines "u v" (a valid start graph, or "0 0").
+ * stdout: "n m" then m lines "u v": the best valid graph found.
+ *
+ * Phase 1 (until 70% of the budget): annealing over voltage lifts of
+ *   Z_m x| Z_k2 over K-by-K base multigraphs, with breakout weights and an
+ *   elite pool (iterated local search).
+ * Phase 2 (rest of the budget): if a lift was found, grow by two vertices from
+ *   the best lift (degree-preserving edge swaps repair the bad pairs).
+ *   Otherwise phase 1 continues.
+ */
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <math.h>
+#include <time.h>
+
+#define BIGC 1000000000LL
+#define ITERS 6000
+#define ILS_ITERS 3000
+#define POOLMAX 48
+#define POOLP 0.6
+#define BRK 150
+#define MAXN 4096
+#define MAXD 32
+#define MAXW (MAXN / 64)
+
+typedef struct {
+    int n;
+    int deg[MAXN];
+    int adj[MAXN][MAXD];
+    unsigned char side[MAXN];
+} Graph;
+
+static uint64_t rs[2];
+static struct timespec T0;
+
+static uint64_t splitmix(uint64_t *x) {
+    uint64_t z = (*x += 0x9E3779B97F4A7C15ULL);
+    z = (z ^ (z >> 30)) * 0xBF58476D1CE4E5B9ULL;
+    z = (z ^ (z >> 27)) * 0x94D049BB133111EBULL;
+    return z ^ (z >> 31);
+}
+
+static uint64_t rnd64(void) {
+    uint64_t s1 = rs[0];
+    const uint64_t s0 = rs[1];
+    rs[0] = s0;
+    s1 ^= s1 << 23;
+    rs[1] = s1 ^ s0 ^ (s1 >> 18) ^ (s0 >> 5);
+    return rs[1] + s0;
+}
+
+static int rnd_int(int n) { return (int)(rnd64() % (uint64_t)n); }
+static double rnd_unit(void) { return (double)(rnd64() >> 11) * (1.0 / 9007199254740992.0); }
+
+static double elapsed(void) {
+    struct timespec ts;
+    timespec_get(&ts, TIME_UTC);
+    return (double)(ts.tv_sec - T0.tv_sec) + 1e-9 * (double)(ts.tv_nsec - T0.tv_nsec);
+}
+
+static int gcd_i(int a, int b) {
+    while (b) { int t = a % b; a = b; b = t; }
+    return a;
+}
+
+static int powmod(long long b, int e, int m) {
+    long long r = 1 % m, x = b % m;
+    while (e) {
+        if (e & 1) r = r * x % m;
+        x = x * x % m;
+        e >>= 1;
+    }
+    return (int)r;
+}
+
+static long moore_bound(int d, int D) {
+    if (D <= 0 || d <= 0) return 1;
+    if (d == 1) return 2;
+    if (d == 2) return 2L * D;
+    long s = 0, p = 1;
+    for (int i = 0; i < D; i++) {
+        s += p;
+        p *= (d - 1);
+        if (s > 100000000L) break;
+    }
+    return 2 * s;
+}
+
+/* ------------------------------------------------------------ global state */
+
+static int DEG, DIAM, K, K2, M, G, T, MAXT, R;
+static int *Rpow;
+static int *dI, *dJ, *dS, *perm, *adj, *cnt, *stamp, *fr, *nx;
+static int *bestJ, *bestS;
+static int curstamp;
+static double DEADLINE;
+static long MOORE;
+
+static int best_n = 0, best_m = 0;
+static int *best_e = NULL;
+static Graph bestG;
+static int bestG_ok = 0;
+
+static long long *wt = NULL;
+static long long *unc = NULL;
+static long long wsum_w = 0;
+static long long last_w = 0;
+
+typedef struct {
+    int K, K2, M, R;
+    long long cost;
+    int *J, *S;
+} Cfg;
+
+static Cfg pool[POOLMAX];
+static int npool = 0;
+
+static int badv[MAXN];
+static uint64_t RA[MAXN * MAXW], RB[MAXN * MAXW];
+
+/* ------------------------------------------------------------ graph helpers */
+
+static void graph_reset(Graph *g, int n, int split) {
+    g->n = n;
+    for (int v = 0; v < n; v++) {
+        g->deg[v] = 0;
+        g->side[v] = (unsigned char)(v >= split);
+    }
+}
+
+static void g_add(Graph *g, int u, int v) {
+    g->adj[u][g->deg[u]++] = v;
+    g->adj[v][g->deg[v]++] = u;
+}
+
+static int has_edge(const Graph *g, int u, int v) {
+    for (int i = 0; i < g->deg[u]; i++)
+        if (g->adj[u][i] == v) return 1;
+    return 0;
+}
+
+static void del_half(Graph *g, int u, int v) {
+    for (int i = 0; i < g->deg[u]; i++)
+        if (g->adj[u][i] == v) {
+            g->adj[u][i] = g->adj[u][--g->deg[u]];
+            return;
+        }
+}
+
+static void del_edge(Graph *g, int u, int v) {
+    del_half(g, u, v);
+    del_half(g, v, u);
+}
+
+static void copy_graph(Graph *dst, const Graph *src) {
+    dst->n = src->n;
+    for (int v = 0; v < src->n; v++) {
+        dst->deg[v] = src->deg[v];
+        dst->side[v] = src->side[v];
+        memcpy(dst->adj[v], src->adj[v], sizeof(int) * (size_t)src->deg[v]);
+    }
+}
+
+/* Number of unordered pairs at distance > DIAM; fills badv[]. */
+static long bad_pairs(const Graph *g) {
+    int n = g->n, W = (n + 63) / 64;
+    uint64_t *cur = RA, *nxt = RB;
+    memset(cur, 0, sizeof(uint64_t) * (size_t)n * W);
+    for (int v = 0; v < n; v++) cur[(size_t)v * W + v / 64] |= 1ULL << (v % 64);
+    for (int r = 0; r < DIAM; r++) {
+        for (int v = 0; v < n; v++) {
+            uint64_t *dst = nxt + (size_t)v * W;
+            const uint64_t *src = cur + (size_t)v * W;
+            for (int w = 0; w < W; w++) dst[w] = src[w];
+            for (int i = 0; i < g->deg[v]; i++) {
+                const uint64_t *s = cur + (size_t)g->adj[v][i] * W;
+                for (int w = 0; w < W; w++) dst[w] |= s[w];
+            }
+        }
+        uint64_t *t = cur;
+        cur = nxt;
+        nxt = t;
+    }
+    long total = 0;
+    for (int v = 0; v < n; v++) {
+        int c = 0;
+        const uint64_t *s = cur + (size_t)v * W;
+        for (int w = 0; w < W; w++) c += __builtin_popcountll(s[w]);
+        badv[v] = n - c;
+        total += n - c;
+    }
+    return total / 2;
+}
+
+static int graph_is_valid(const Graph *g) {
+    if (g->n <= 0 || g->n > MAXN) return 0;
+    for (int v = 0; v < g->n; v++) {
+        if (g->deg[v] > DEG) return 0;
+        for (int i = 0; i < g->deg[v]; i++) {
+            int u = g->adj[v][i];
+            if (u < 0 || u >= g->n || u == v || g->side[u] == g->side[v]) return 0;
+            for (int j = 0; j < i; j++)
+                if (g->adj[v][j] == u) return 0;
+        }
+    }
+    return bad_pairs(g) == 0;
+}
+
+/* Store the edges of g as the current best output. */
+static void set_best_from_graph(const Graph *g) {
+    long m = 0;
+    for (int u = 0; u < g->n; u++)
+        for (int i = 0; i < g->deg[u]; i++)
+            if (u < g->adj[u][i]) m++;
+    int *e = malloc(sizeof(int) * 2 * (size_t)(m > 0 ? m : 1));
+    long idx = 0;
+    for (int u = 0; u < g->n; u++)
+        for (int i = 0; i < g->deg[u]; i++) {
+            int v = g->adj[u][i];
+            if (u < v) {
+                e[idx++] = u;
+                e[idx++] = v;
+            }
+        }
+    free(best_e);
+    best_e = e;
+    best_m = (int)m;
+    best_n = g->n;
+}
+
+static void set_complete(int dd) {
+    int m = dd * dd;
+    int *e = malloc(sizeof(int) * 2 * (size_t)m);
+    int idx = 0;
+    for (int a = 0; a < dd; a++)
+        for (int b = 0; b < dd; b++) {
+            e[idx++] = a;
+            e[idx++] = dd + b;
+        }
+    free(best_e);
+    best_e = e;
+    best_m = m;
+    best_n = 2 * dd;
+}
+
+/* Read the optional start graph from stdin. Trusted: Python validates it. */
+static void read_start(void) {
+    int n = 0, m = 0;
+    if (scanf("%d %d", &n, &m) != 2 || n <= 0 || n > MAXN || m < 0) return;
+    int *e = malloc(sizeof(int) * 2 * (size_t)(m > 0 ? m : 1));
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        if (scanf("%d %d", &u, &v) != 2 || u < 0 || v < 0 || u >= n || v >= n) {
+            free(e);
+            return;
+        }
+        e[2 * i] = u;
+        e[2 * i + 1] = v;
+    }
+    free(best_e);
+    best_e = e;
+    best_m = m;
+    best_n = n;
+    bestG_ok = 0;
+}
+
+/* ------------------------------------------------------------ groups and lifts */
+
+static int gmul(int x, int y) {
+    int a = x / K2, b = x % K2;
+    int c = y / K2, e = y % K2;
+    int ra = (int)(((long long)a + (long long)Rpow[b] * c) % M);
+    int rb = (b + e) % K2;
+    return ra * K2 + rb;
+}
+
+static void build_perm(int t) {
+    int s = dS[t];
+    int *pm = perm + (size_t)t * G;
+    for (int g = 0; g < G; g++) pm[g] = gmul(g, s);
+}
+
+/* Returns the true cost: uncovered ordered pairs over the 2K block representatives.
+ * Sets unc[r] per block and last_w to the weighted cost. */
+static long long eval_cost(void) {
+    int N = 2 * K * G;
+    for (int t1 = 0; t1 < T; t1++)
+        for (int t2 = t1 + 1; t2 < T; t2++)
+            if (dI[t1] == dI[t2] && dJ[t1] == dJ[t2] && dS[t1] == dS[t2]) {
+                for (int r = 0; r < 2 * K; r++) unc[r] = 0;
+                last_w = BIGC;
+                return BIGC;
+            }
+    memset(cnt, 0, sizeof(int) * (size_t)N);
+    for (int t = 0; t < T; t++) {
+        int ai = dI[t] * G, bj = (K + dJ[t]) * G;
+        const int *pm = perm + (size_t)t * G;
+        for (int g = 0; g < G; g++) {
+            int a = ai + g, b = bj + pm[g];
+            adj[(size_t)a * DEG + cnt[a]++] = b;
+            adj[(size_t)b * DEG + cnt[b]++] = a;
+        }
+    }
+    long long total = 0;
+    for (int r = 0; r < 2 * K; r++) {
+        int src = r * G;
+        if (curstamp >= 2000000000) {
+            memset(stamp, 0, sizeof(int) * (size_t)N);
+            curstamp = 0;
+        }
+        curstamp++;
+        int *f = fr, *h = nx;
+        int fsz = 1, count = 1;
+        f[0] = src;
+        stamp[src] = curstamp;
+        for (int lvl = 0; lvl < DIAM && fsz > 0; lvl++) {
+            int nsz = 0;
+            for (int q = 0; q < fsz; q++) {
+                const int *au = adj + (size_t)f[q] * DEG;
+                for (int e = 0; e < DEG; e++) {
+                    int v = au[e];
+                    if (stamp[v] != curstamp) {
+                        stamp[v] = curstamp;
+                        h[nsz++] = v;
+                    }
+                }
+            }
+            count += nsz;
+            int *tmp = f;
+            f = h;
+            h = tmp;
+            fsz = nsz;
+        }
+        unc[r] = N - count;
+        total += N - count;
+    }
+    long long w = 0;
+    for (int r = 0; r < 2 * K; r++) w += wt[r] * unc[r];
+    last_w = w;
+    return total;
+}
+
+static void alloc_config(void) {
+    int N = 2 * K * G;
+    T = DEG * K;
+    dI = malloc(sizeof(int) * (size_t)T);
+    dJ = malloc(sizeof(int) * (size_t)T);
+    dS = malloc(sizeof(int) * (size_t)T);
+    bestJ = malloc(sizeof(int) * (size_t)T);
+    bestS = malloc(sizeof(int) * (size_t)T);
+    perm = malloc(sizeof(int) * (size_t)T * G);
+    adj = malloc(sizeof(int) * (size_t)N * DEG);
+    cnt = malloc(sizeof(int) * (size_t)N);
+    stamp = calloc((size_t)N, sizeof(int));
+    fr = malloc(sizeof(int) * (size_t)N);
+    nx = malloc(sizeof(int) * (size_t)N);
+    Rpow = malloc(sizeof(int) * (size_t)K2);
+    wt = malloc(sizeof(long long) * (size_t)(2 * K));
+    unc = malloc(sizeof(long long) * (size_t)(2 * K));
+    curstamp = 0;
+    Rpow[0] = 1 % M;
+    for (int b = 1; b < K2; b++) Rpow[b] = (int)((long long)Rpow[b - 1] * R % M);
+}
+
+static void free_config(void) {
+    free(dI); free(dJ); free(dS); free(bestJ); free(bestS);
+    free(perm); free(adj); free(cnt); free(stamp); free(fr); free(nx); free(Rpow);
+    free(wt); free(unc);
+    dI = dJ = dS = bestJ = bestS = perm = adj = cnt = stamp = fr = nx = Rpow = NULL;
+    wt = unc = NULL;
+}
+
+static void setup_group(int k, int c2, int m, int r) {
+    K = k; K2 = c2; M = m; R = r; G = m * c2;
+    alloc_config();
+    for (int t = 0; t < T; t++) dI[t] = t % K;
+    for (int b = 0; b < 2 * K; b++) wt[b] = 1;
+    wsum_w = 2 * K;
+}
+
+/* Store the current lift as the output graph if it beats the best so far. */
+static void emit(void) {
+    int split = K * G, N = 2 * K * G;
+    graph_reset(&bestG, N, split);
+    for (int t = 0; t < T; t++)
+        for (int g = 0; g < G; g++)
+            g_add(&bestG, dI[t] * G + g, (K + dJ[t]) * G + perm[(size_t)t * G + g]);
+    set_best_from_graph(&bestG);
+    bestG_ok = 1;
+}
+
+static void random_init(void) {
+    int p[8];
+    for (int l = 0; l < DEG; l++) {
+        for (int i = 0; i < K; i++) p[i] = i;
+        for (int i = K - 1; i > 0; i--) {
+            int j = rnd_int(i + 1);
+            int tmp = p[i]; p[i] = p[j]; p[j] = tmp;
+        }
+        for (int i = 0; i < K; i++) {
+            int t = l * K + i;
+            dI[t] = i;
+            dJ[t] = p[i];
+            dS[t] = rnd_int(G);
+        }
+    }
+    for (int t = 0; t < T; t++) build_perm(t);
+}
+
+/* Random kicks: voltage changes and within-layer target swaps. */
+static void perturb(int nmoves) {
+    for (int s = 0; s < nmoves; s++) {
+        if (K > 1 && rnd_unit() < 0.3) {
+            int l = rnd_int(DEG);
+            int i1 = rnd_int(K), i2 = rnd_int(K);
+            if (i1 == i2) continue;
+            int t1 = l * K + i1, t2 = l * K + i2;
+            int tmp = dJ[t1]; dJ[t1] = dJ[t2]; dJ[t2] = tmp;
+        } else {
+            int t = rnd_int(T);
+            dS[t] = rnd_int(G);
+            build_perm(t);
+        }
+    }
+}
+
+/* Annealing on the weighted cost with breakout weight bumps.
+ * Caller must have just called eval_cost(). Best state by true cost goes to bestJ/bestS. */
+static long long run_sa(int iters, double tscale, long long cost) {
+    long long bestc = cost;
+    long long wcur = last_w;
+    long long prevc = cost;
+    memcpy(bestJ, dJ, sizeof(int) * (size_t)T);
+    memcpy(bestS, dS, sizeof(int) * (size_t)T);
+    for (int it = 0; it < iters && bestc > 0; it++) {
+        if ((it & 63) == 0 && elapsed() > DEADLINE) break;
+        if (it > 0 && it % BRK == 0) {
+            if (cost < BIGC && cost >= prevc) {
+                eval_cost();
+                for (int r = 0; r < 2 * K; r++)
+                    if (unc[r] > 0) { wt[r]++; wsum_w++; }
+                wcur = 0;
+                for (int r = 0; r < 2 * K; r++) wcur += wt[r] * unc[r];
+            }
+            prevc = cost;
+        }
+        double sc = (double)wsum_w / (2.0 * K);
+        double temp = tscale * (3.0 * (1.0 - (double)it / iters) + 0.05) * sc;
+        if (K > 1 && rnd_unit() < 0.25) {
+            int l = rnd_int(DEG);
+            int i1 = rnd_int(K), i2 = rnd_int(K);
+            if (i1 == i2) continue;
+            int t1 = l * K + i1, t2 = l * K + i2;
+            int tmp = dJ[t1]; dJ[t1] = dJ[t2]; dJ[t2] = tmp;
+            long long c2 = eval_cost();
+            long long w2 = last_w;
+            if (w2 <= wcur || rnd_unit() < exp(-(double)(w2 - wcur) / temp)) {
+                cost = c2;
+                wcur = w2;
+            } else {
+                tmp = dJ[t1]; dJ[t1] = dJ[t2]; dJ[t2] = tmp;
+            }
+        } else {
+            int t = rnd_int(T);
+            int olds = dS[t];
+            int news = rnd_int(G);
+            if (news == olds) continue;
+            dS[t] = news;
+            build_perm(t);
+            long long c2 = eval_cost();
+            long long w2 = last_w;
+            if (w2 <= wcur || rnd_unit() < exp(-(double)(w2 - wcur) / temp)) {
+                cost = c2;
+                wcur = w2;
+            } else {
+                dS[t] = olds;
+                build_perm(t);
+            }
+        }
+        if (cost < bestc) {
+            bestc = cost;
+            memcpy(bestJ, dJ, sizeof(int) * (size_t)T);
+            memcpy(bestS, dS, sizeof(int) * (size_t)T);
+        }
+    }
+    return bestc;
+}
+
+static void finish_run(long long bc) {
+    if (bc == 0) {
+        memcpy(dJ, bestJ, sizeof(int) * (size_t)T);
+        memcpy(dS, bestS, sizeof(int) * (size_t)T);
+        for (int t = 0; t < T; t++) build_perm(t);
+        if (2 * K * G > best_n) emit();
+    }
+}
+
+static void pool_add(long long cost, const int *J, const int *S) {
+    if (cost <= 0 || cost >= BIGC) return;
+    int slot;
+    if (npool < POOLMAX) {
+        slot = npool++;
+    } else {
+        slot = 0;
+        for (int i = 1; i < POOLMAX; i++)
+            if (pool[i].cost > pool[slot].cost) slot = i;
+        if (pool[slot].cost <= cost) return;
+    }
+    Cfg *c = &pool[slot];
+    c->K = K; c->K2 = K2; c->M = M; c->R = R; c->cost = cost;
+    memcpy(c->J, J, sizeof(int) * (size_t)T);
+    memcpy(c->S, S, sizeof(int) * (size_t)T);
+}
+
+static int pick_pool(void) {
+    int cand[POOLMAX], nc = 0;
+    for (int i = 0; i < npool; i++) {
+        long long nn = 2LL * pool[i].K * pool[i].K2 * pool[i].M;
+        if (nn > best_n) cand[nc++] = i;
+    }
+    if (nc == 0) return -1;
+    int bi = cand[rnd_int(nc)];
+    for (int s = 0; s < 2; s++) {
+        int c = cand[rnd_int(nc)];
+        if (pool[c].cost < pool[bi].cost) bi = c;
+    }
+    return bi;
+}
+
+/* Phase 1: annealing and iterated local search until `until`. */
+static void sa_phase(double until) {
+    static const int kc[5] = {1, 1, 2, 2, 3};
+    DEADLINE = until;
+    while (elapsed() < until && best_n < MOORE) {
+        int pi = -1;
+        if (rnd_unit() < POOLP) pi = pick_pool();
+        if (pi >= 0) {
+            Cfg c = pool[pi];
+            setup_group(c.K, c.K2, c.M, c.R);
+            memcpy(dJ, c.J, sizeof(int) * (size_t)T);
+            memcpy(dS, c.S, sizeof(int) * (size_t)T);
+            for (int t = 0; t < T; t++) build_perm(t);
+            perturb(2 + rnd_int(4));
+            for (int t = 0; t < T; t++) build_perm(t);
+            long long cst = eval_cost();
+            long long bc = run_sa(ILS_ITERS, 0.35, cst);
+            finish_run(bc);
+            pool_add(bc, bestJ, bestS);
+            free_config();
+            continue;
+        }
+
+        int k = kc[rnd_int(5)];
+        int gmin = best_n / (2 * k) + 1;
+        int spread = gmin / 6 + 2;
+        int g = gmin + rnd_int(spread);
+        if (g < 2) g = 2;
+        if (2 * k * g > MAXN - 2) continue;
+        int opts[12], no = 0;
+        for (int c = 1; c <= 12; c++)
+            if (g % c == 0 && g / c >= 2) opts[no++] = c;
+        if (no == 0) continue;
+        int c2 = opts[rnd_int(no)];
+        int m = g / c2, r = 1;
+        if (c2 > 1) {
+            int found = 0;
+            for (int tr = 0; tr < 200 && !found; tr++) {
+                int cand = 1 + rnd_int(m - 1);
+                if (gcd_i(cand, m) == 1 && powmod(cand, c2, m) == 1 % m) {
+                    r = cand;
+                    found = 1;
+                }
+            }
+            if (!found) {
+                c2 = 1;
+                m = g;
+                r = 1;
+            }
+        }
+        setup_group(k, c2, m, r);
+        random_init();
+        long long cost = eval_cost();
+        long long bc = run_sa(ITERS, 1.0, cost);
+        finish_run(bc);
+        pool_add(bc, bestJ, bestS);
+        free_config();
+    }
+}
+
+/* ------------------------------------------------------------ phase 2: grow by two */
+
+static int grow_once(const Graph *best, Graph *work, double until) {
+    int n = best->n;
+    if (n + 2 > MOORE || n + 2 > MAXN) return 0;
+    copy_graph(work, best);
+    int x = n, y = n + 1;
+    work->n = n + 2;
+    work->deg[x] = work->deg[y] = 0;
+    work->side[x] = 0;
+    work->side[y] = 1;
+    g_add(work, x, y);
+    static int used[MAXN];
+    static int stamp_u = 0;
+    stamp_u++;
+    used[x] = used[y] = stamp_u;
+    for (int k = 0, tries = 0; k < DEG - 1 && tries < 100000; tries++) {
+        int a = rnd_int(n);
+        if (work->side[a] != 0 || used[a] == stamp_u || work->deg[a] == 0) continue;
+        int b = work->adj[a][rnd_int(work->deg[a])];
+        if (used[b] == stamp_u || b >= n) continue;
+        del_edge(work, a, b);
+        g_add(work, x, b);
+        g_add(work, y, a);
+        used[a] = used[b] = stamp_u;
+        k++;
+    }
+    long bad = bad_pairs(work);
+    double temp = 1.0;
+    long it = 0;
+    while (bad > 0) {
+        if ((++it & 15) == 0 && elapsed() > until) return 0;
+        int v = rnd_int(work->n);
+        for (int tries = 0; tries < 30 && badv[v] == 0; tries++) v = rnd_int(work->n);
+        if (work->deg[v] == 0) continue;
+        int u = work->adj[v][rnd_int(work->deg[v])];
+        int s = rnd_int(work->n);
+        if (work->side[s] != work->side[v] || s == v || work->deg[s] == 0) continue;
+        int t = work->adj[s][rnd_int(work->deg[s])];
+        if (t == u || has_edge(work, v, t) || has_edge(work, s, u)) continue;
+        del_edge(work, v, u);
+        del_edge(work, s, t);
+        g_add(work, v, t);
+        g_add(work, s, u);
+        long nb = bad_pairs(work);
+        if (nb <= bad || rnd_unit() < exp((double)(bad - nb) / temp)) {
+            bad = nb;
+        } else {
+            del_edge(work, v, t);
+            del_edge(work, s, u);
+            g_add(work, v, u);
+            g_add(work, s, t);
+        }
+        temp *= 0.9995;
+        if (temp < 0.05) temp = 1.0;
+    }
+    return graph_is_valid(work);
+}
+
+static void grow_search(double until) {
+    static Graph work;
+    while (elapsed() < until && bestG.n + 2 <= MOORE && bestG.n + 2 <= MAXN) {
+        double left = until - elapsed();
+        double slice = left < 4.0 ? left : (left / 4 > 4.0 ? left / 4 : 4.0);
+        if (grow_once(&bestG, &work, elapsed() + slice)) {
+            copy_graph(&bestG, &work);
+            set_best_from_graph(&bestG);
+        }
+    }
+}
+
+/* ------------------------------------------------------------ main */
+
+int main(int argc, char **argv) {
+    if (argc < 5) {
+        fprintf(stderr, "usage: %s d D seed time_limit < start_graph\n", argv[0]);
+        return 2;
+    }
+    timespec_get(&T0, TIME_UTC);
+    DEG = atoi(argv[1]);
+    DIAM = atoi(argv[2]);
+    uint64_t sd = strtoull(argv[3], NULL, 10);
+    double limit = atof(argv[4]);
+    double t_end = limit * 0.93;
+    double t_sa = limit * 0.70;
+
+    if (DEG < 1 || DIAM < 1 || DEG > MAXD) {
+        printf("0 0\n");
+        return 0;
+    }
+    MAXT = 3 * DEG;
+    for (int i = 0; i < POOLMAX; i++) {
+        pool[i].J = malloc(sizeof(int) * (size_t)MAXT);
+        pool[i].S = malloc(sizeof(int) * (size_t)MAXT);
+        pool[i].cost = BIGC;
+    }
+    uint64_t sm = sd * 2654435761ULL + 12345ULL;
+    rs[0] = splitmix(&sm);
+    rs[1] = splitmix(&sm);
+
+    read_start();
+    if (best_n == 0 && DIAM >= 2) set_complete(DEG);
+    if (best_n == 0) {
+        printf("0 0\n");
+        return 0;
+    }
+    MOORE = moore_bound(DEG, DIAM);
+
+    if (best_n < MOORE) {
+        sa_phase(t_sa);
+        if (bestG_ok && best_n < MOORE) grow_search(t_end);
+        else sa_phase(t_end);
+    }
+
+    printf("%d %d\n", best_n, best_m);
+    for (int i = 0; i < best_m; i++)
+        printf("%d %d\n", best_e[2 * i], best_e[2 * i + 1]);
+    return 0;
+}
+"""
+
+
+# ----------------------------------------------------------------------------
+# Python baselines.
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest small prime power q with q + 1 <= d (cheap to build)."""
+    for q in range(min(d - 1, 5), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Driver.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2, so it is valid for D >= 2.
+    best = lib.haar_graph(d, range(d))
+
+    def consider(n, e):
+        nonlocal best
+        try:
+            if n > best[0] and lib.is_valid(n, e, d, D):
+                best = (n, e)
+        except Exception:
+            pass
+
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+        if D == 3 and d - 2 >= 3 and lib.is_prime_power(d - 2):
+            try:
+                ap = lib.araujo_lopez_graph(d - 2)
+                consider(ap[0], ap[1])
+            except Exception:
+                pass
+
+    if D >= 4 and time.monotonic() - start < 0.2 * time_limit:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+
+    # Already at the Moore bound: nothing larger is possible.
+    if best[0] >= lib.moore_bound(d, D):
+        return best
+
+    # Give the C search almost all of the budget; its internal clock stops at 93%.
+    remaining = 0.9 * time_limit - (time.monotonic() - start) - 1.0
+    if remaining >= 1.0:
+        try:
+            out = lib.run_c(C_SOURCE, [d, D, seed, f"{remaining:.2f}"],
+                            stdin_graph=best, timeout=remaining + 5.0)
+            n, e = lib.parse_graph_text(out)
+            consider(n, e)
+        except Exception:
+            pass
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
