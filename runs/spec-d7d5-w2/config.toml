@@ -1,0 +1,33 @@
+# Wave 2 twin of spec-d7d5, seeded with its top 5 programs as of origin/claude/spec-d7d5-evolve-run-7x2rx5.
+# Specialist cloud island: only d7D5 (+ d3D3 smoke). One cloud session, 4 vCPU.
+run_id = "spec-d7d5-w2"
+problem = "problems.bipartite_dd.islands:D7D5"
+seed = 1203
+generations = 80
+candidates_per_generation = 32
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "seeds/wave2/spec-d7d5/g005-c30.py",
+  "seeds/wave2/spec-d7d5/g013-c25.py",
+  "seeds/wave2/spec-d7d5/g013-c12.py",
+  "seeds/wave2/spec-d7d5/g013-c11.py",
+  "seeds/wave2/spec-d7d5/g012-c23.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 300
+max_calls = 3000
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true
