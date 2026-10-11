@@ -13,7 +13,7 @@ page last edited 2022.
 |---|---|---|---|---|---|---|
 | (4, 5) | 160 | **162** | 236 | 4-regular, 81 + 81 | C island c-d4d5, g002-c08 | d4D5/162-c-d4d5-g002-c08.json |
 | (5, 5) | 336 | **352** | 676 | 5-regular, 176 + 176, 880 edges | C island c-d5d5, g010-c30 | d5D5/352-c-d5d5-g010-c30.json |
-| (7, 4) | 346 | **358** | 518 | degrees 6–7, 176 + 182, 1232 edges | Python island spec-d7d4, g008-c11 | d7D4/358-spec-d7d4-g008-c11.json |
+| (7, 4) | 346 | **359** | 518 | degrees 6–7, 177 + 182, 1239 edges | Python island spec-d7d4, g017-c11 | d7D4/359-spec-d7d4-g017-c11.json |
 | (11, 3) | 190 | **192** | 220 | 11-regular, 96 + 96 | C island c-d3fam, g001-c00 | d11D3/192-c-d3fam-g001-c00.json |
 | (13, 3) | 274 | **276** | 314 | 13-regular, 138 + 138, 1794 edges | C island c-d3fam, g003-c19 | d13D3/276-c-d3fam-g003-c19.json |
 | (7, 5) | 1134 | **1140** | 3106 | 7-regular, 570 + 570, 3990 edges | Python island spec-d7d5, g016-c15 | d7D5/1140-spec-d7d5-g016-c15.json |
@@ -28,6 +28,7 @@ Other verified graphs that beat the table, kept as independent confirmations:
 |---|---|---|---|---|
 | (4, 5) | 162 | 4-regular, 81 + 81, 324 edges | Python island spec-d4d5, g005-c05 | d4D5/162-spec-d4d5-g005-c05.json |
 | (5, 5) | 344 | 5-regular, 172 + 172, 860 edges | C island c-d5d5, g003-c05 | d5D5/344-c-d5d5-g003-c05.json |
+| (7, 4) | 358 | degrees 6–7, 176 + 182, 1232 edges | Python island spec-d7d4, g008-c11 | d7D4/358-spec-d7d4-g008-c11.json |
 | (7, 4) | 356 | degrees 6–7, 174 + 182, 1218 edges | Python island spec-d7d4, g004-c23 | d7D4/356-spec-d7d4-g004-c23.json |
 | (11, 4) | 1773 | degrees 10–11, 871 + 902, 9530 edges | Python island spec-d11d4, g004-c01 | d11D4/1773-spec-d11d4-g004-c01.json |
 | (7, 4) | 354 | degrees 6–7, 172 + 182, 1204 edges | C island c-d7d4, g002-c13 | d7D4/354-c-d7d4-g002-c13.json |
@@ -35,14 +36,14 @@ Other verified graphs that beat the table, kept as independent confirmations:
 
 ## Verification (2026-10-10, on the Mac)
 
-1. All fourteen graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
+1. All fifteen graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
    from-scratch check (adjacency sets, explicit 2-colouring, BFS from every vertex for the exact diameter).
    For the first 1773 graph, the from-scratch check ran 1773 searches (33.8 million edge steps) and every vertex has
    eccentricity exactly 4. All three checkers also reject two sabotaged copies of that graph
    (a pendant vertex, which makes the diameter 5, and one extra edge inside a side, which makes an odd cycle).
 2. Each generating program (saved next to its graph as `*.program.py`) was re-run fresh on a different
-   machine than the cloud island that found it, with seed 0 and a 60 s limit. Thirteen rebuilt the same order:
-   162, 162, 344, 352, 349, 354, 356, 358, 192, 276, 376, 1140, 1773. Where the island saved its own copy, five rebuilds are
+   machine than the cloud island that found it, with seed 0 and a 60 s limit. Fourteen rebuilt the same order:
+   162, 162, 344, 352, 349, 354, 356, 358, 359, 192, 276, 376, 1140, 1773. Where the island saved its own copy, five rebuilds are
    edge-for-edge identical to it (162, 192, 276, 344, 352, 356, 376, 1140); 358 and the first 1773 have the same order with
    different edges, because those searches run to a clock deadline and depend on the machine.
 3. The 1774 program rebuilt only 1773 on the Mac, every time, with time limits from 12 s to 120 s. The 1774

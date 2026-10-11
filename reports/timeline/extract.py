@@ -26,7 +26,8 @@ TARGETS = {  # case: (label, table record, wiki upper bound, old record holder)
 }
 ISLANDS = ["island-1", "spec-d4d5", "spec-d5d5", "spec-d6d5", "spec-d7d5", "spec-d7d4", "spec-d11d4", "spec-d3fam",
            "spec-d16d3", "c-d4d5", "c-d5d5", "c-d6d5", "c-d7d5", "c-d7d4", "c-d11d4", "c-d3fam", "c-d16d3"]
-ISLANDS += [i + "-w2" for i in ISLANDS]  # wave 2 twins
+BASE_ISLANDS = list(ISLANDS)
+ISLANDS = ISLANDS + [i + s for s in ("-w2", "-w3", "-w3b") for i in BASE_ISLANDS]  # waves 2 and 3
 
 
 def git(*a):
@@ -40,7 +41,7 @@ def freshest(run_id):
         ref, t = line.rsplit(" ", 1)
         if best is None or int(t) > best[1]:
             best = (ref, int(t))
-    return best[0]
+    return best[0] if best else None
 
 
 def engine(run_id):
@@ -50,7 +51,7 @@ def engine(run_id):
     return {"pilot-001": "Mac pilot", "run-002": "Mac run 2"}[run_id]
 
 
-runs = [("pilot-001", "origin/master"), ("run-002", "origin/master")] + [(r, freshest(r)) for r in ISLANDS]
+runs = [("pilot-001", "origin/master"), ("run-002", "origin/master")] + [(r, f) for r in ISLANDS if (f := freshest(r))]
 # Collect blob ids for every candidate's meta.json and result.json, then read them all through one cat-file process.
 want = []
 for run_id, ref in runs:
@@ -128,3 +129,52 @@ with open(OUT / "records.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(recs[0]), lineterminator="\n"); w.writeheader(); w.writerows(recs)
 print(json.dumps({"progress_rows": len(prog), "program_bins": len(prows), "programs_total": total,
                   "records": [(r["case"], r["ours"], r["first_beaten"]) for r in recs]}, ensure_ascii=False), file=sys.stderr)
+
+# fleet.csv: one row per cloud island, for the live view
+import re
+as_of = datetime.now(timezone.utc)
+STATUS_ROW = re.compile(r"^\| (d\d+D\d+) \| target \| (\d+) \| (\d+) \| (\d+)( NEW| =)? \|", re.M)
+fleet = []
+for run_id in ISLANDS:
+    base = run_id.split("-w")[0]
+    wave = 3 if "-w3" in run_id else 2 if run_id.endswith("-w2") else 1
+    row = {"run_id": run_id, "base": base, "engine": engine(base), "wave": wave, "status": "booting",
+           "minutes_since_push": "", "generation": "", "cells": "", "best": "", "beats": 0, "as_of": as_of.isoformat(timespec="seconds")}
+    ref = freshest(run_id)
+    if ref:
+        t = int(git("log", "-1", "--format=%ct", ref)); subj = git("log", "-1", "--format=%s", ref)
+        age = (as_of.timestamp() - t) / 60
+        status_md = subprocess.run(["git", "show", f"{ref}:runs/{run_id}/status.md"], capture_output=True, text=True).stdout
+        g = re.search(r"Generations done: (\d+)", status_md)
+        cells = STATUS_ROW.findall(status_md)
+        stopped = re.search(r"usage limit|EXIT=|exit \d|final", subj, re.I)
+        row.update(minutes_since_push=round(age), generation=g.group(1) if g else "",
+                   status="stopped" if stopped else "running" if age <= 25 else "quiet",
+                   cells=" ".join(c[0] for c in cells), best=" ".join(c[3] for c in cells),
+                   beats=sum(int(c[3]) > int(c[1]) for c in cells))
+        if not cells:
+            row["status"] = "booting" if not stopped else row["status"]
+    fleet.append(row)
+with open(OUT / "fleet.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(fleet[0]), lineterminator="\n"); w.writeheader(); w.writerows(fleet)
+
+# lean.csv: what the Lean proof covers versus our best now
+lean_ref = "origin/lean-haiku"
+records_src = subprocess.run(["git", "show", f"{lean_ref}:lean/BipartiteDD/Records.lean"], capture_output=True, text=True).stdout
+axioms = subprocess.run(["git", "show", f"{lean_ref}:lean/Axioms.out.txt"], capture_output=True, text=True).stdout
+in_lean = {f"d{a}D{b}": (int(n), name) for name, n, a, b in
+           re.findall(r"^theorem (nb_\w+) : \u2203 G : SimpleGraph \(Fin (\d+)\), BipartiteDD.IsBipartiteDegDiam G (\d+) (\d+)", records_src, re.M)}
+lean_rows = []
+for r in recs:
+    proved = in_lean.get(r["case"])
+    mode = ""
+    if proved:
+        line = next((l for l in axioms.splitlines() if l.startswith(f"'{proved[1]}'")), "")
+        mode = "fast mode" if "native_decide" in line else "strict (kernel)" if line else "unknown"
+    lean_rows.append({"case": r["case"], "label": r["label"], "best_now": r["ours"], "in_lean": proved[0] if proved else "",
+                      "mode": mode, "state": "current" if proved and proved[0] >= int(r["ours"]) else "older graph" if proved else "not yet"})
+with open(OUT / "lean.csv", "w", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(lean_rows[0]), lineterminator="\n"); w.writeheader(); w.writerows(lean_rows)
+print(f"fleet: {sum(r['status'] == 'running' for r in fleet)} running, {sum(r['status'] == 'stopped' for r in fleet)} stopped, "
+      f"{sum(r['status'] == 'booting' for r in fleet)} booting, {sum(r['status'] == 'quiet' for r in fleet)} quiet; "
+      f"lean: {[(r['case'], r['state']) for r in lean_rows]}", file=sys.stderr)
