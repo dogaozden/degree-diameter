@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16923478999888175
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: runs/spec-d5d5/candidates/g016-c17/program.py\", line 293, in build\n    n, e = _edges(*res)\n           ~~~~~~^^^^^^\n  File \"/home/user/math/runs/spec-d5d5/candidates/g016-c17/program.py\", line 210, in _edges\n    for i, j, g in darts:\n        ^^^^^^^\nValueError: too many values to unpack (expected 3)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.5658588709993637
+    }
+  },
+  "fitness": 0.047619047619047616
+}
