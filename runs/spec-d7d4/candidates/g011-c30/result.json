@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 21.107240493998688
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: ^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d4/candidates/g011-c30/program.py\", line 505, in _haar_search\n    nxt.extend(active[active.index(st):])\n                      ~~~~~~~~~~~~^^^^\nValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 51.14809501499985
+    }
+  },
+  "fitness": 0.047619047619047616
+}
