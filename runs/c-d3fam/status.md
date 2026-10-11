@@ -1,14 +1,14 @@
 # c-d3fam
 
 Problem: bipartite_dd
-Generations done: 3 of 81 (including generation 0)
-Total mutator calls: 64
+Generations done: 4 of 81 (including generation 0)
+Total mutator calls: 96
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
 | d3D3 | calibration | 14 | 14 | 14 = | g000-i00 |
 | d11D3 | target | 190 | 220 | 192 NEW | g001-c00 |
-| d13D3 | target | 274 | 314 | 274 = | g000-seed |
+| d13D3 | target | 274 | 314 | 276 NEW | g003-c19 |
 | d15D3 | target | 374 | 422 | 374 = | g000-seed |
 
 | gen | made | failed | best fitness | gen best |
@@ -16,3 +16,4 @@ Total mutator calls: 64
 | 0 | 1 | 0 | 1.0000 | 1.0000 |
 | 1 | 32 | 0 | 1.0035 | 1.0035 |
 | 2 | 32 | 0 | 1.0035 | 1.0035 |
+| 3 | 32 | 0 | 1.0058 | 1.0058 |
