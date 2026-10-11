@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d16D3": {
+      "case_id": "d16D3",
+      "reason": "crash: o()\n    ~~~~^^\n  File \"/home/user/math/runs/spec-d16d3-w2/candidates/g004-c29/program.py\", line 233, in undo\n    unlink_vertex(vid)\n    ~~~~~~~~~~~~~^^^^^\n  File \"/home/user/math/runs/spec-d16d3-w2/candidates/g004-c29/program.py\", line 150, in unlink_vertex\n    s = adj[u]\n        ~~~^^^\nKeyError: 4\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 2.3204399290002584
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 42.09930602900022
+    }
+  },
+  "fitness": 0.047619047619047616
+}
