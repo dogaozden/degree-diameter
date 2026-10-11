@@ -246,8 +246,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
     <div class="sec-head">
       <div>
         <span class="eyebrow">The day</span>
-        <h2>When each record fell</h2>
-        <p>One row per table cell, across the whole day. Grey dots: we are still below the published record. Brass: our graph beats it, from the white dot onward, with the old and new numbers on the right. Press replay to watch them fall in order.</p>
+        <h2>Records broken, over the day</h2>
+        <p>The brass staircase counts the table records we have broken so far. Each step is one record, labelled with the old number and our best. The blue strip shows how many programs the Haikus wrote; the bands underneath mark each phase of the search.</p>
       </div>
     </div>
     <div class="panel">
@@ -533,67 +533,78 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   /* climb chart with replay */
   let replayTimer = null;
   function renderClimb(cursor) {
-    // One lane per cell. Grey dotted line while we are below the published record; a brass bar from the moment
-    // our best passes it (yellow while we only tie). Each improvement after that is a tick, the newest is labelled.
+    // A staircase: how many table records we have broken so far, over the day. Each step is labelled with the record
+    // that fell. Underneath: programs written per 10 minutes, and coloured bands for each phase of the search.
     const host = $('climb'); host.replaceChildren();
     const prog = (now.progress || []).map((p) => ({ ...p, t: new Date(p.time) }));
+    const bins = (now.programs || []).map((b) => ({ t: new Date(b.bin_start), n: Number(b.total) }));
     if (!prog.length) return;
     const end = new Date(now.as_of), start = d3.min(prog, (p) => p.t), cut = cursor || end;
+    const recByCase = new Map((now.records || []).map((r) => [r.case, r]));
+    const events = [];
+    CELLS.forEach(([cs, label]) => {
+      const pts = prog.filter((p) => p.case === cs);
+      const beat = pts.find((p) => p.value > p.record);
+      if (beat) events.push({ cs, label, t: beat.t, from: beat.record, first: beat.value, best: pts[pts.length - 1].value });
+    });
+    events.sort((a, b) => a.t - b.t);
     const W = Math.max(320, host.clientWidth), narrow = W < 640;
-    const laneH = 40, top = 30, left = narrow ? 70 : 92, right = narrow ? 92 : 170;
-    const lanes = CELLS.filter(([cs]) => prog.some((p) => p.case === cs));
-    const H = top + lanes.length * laneH + 26;
-    const x = d3.scaleUtc([start, end], [left, W - right]);
+    const H = narrow ? 400 : 470, total = CELLS.length;
+    const m = { t: 18, r: 18, b: 112, l: 34 };
+    const x = d3.scaleUtc([start, end], [m.l, W - m.r]);
+    const y = d3.scaleLinear([0, total], [H - m.b, m.t]);
     const svg = d3.select(host).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
-      .attr('aria-label', 'When each record fell: one row per cell over the day');
-    // milestones as faint columns with labels on top
-    const ms = (now.milestones || []).filter((d) => d.on_chart === 'yes').map((d) => ({ ...d, t: new Date(d.time) })).filter((d) => d.t >= start && d.t <= end);
-    let lastX = -1e9, row = 0;
-    ms.forEach((d) => {
-      const px = x(d.t); row = px - lastX < 84 ? 1 - row : 0; lastX = px;
-      svg.append('line').attr('x1', px).attr('x2', px).attr('y1', top - 6 + row * 0).attr('y2', H - 22).attr('stroke', '#232c45').attr('stroke-dasharray', '2 4');
-      svg.append('text').attr('x', px + 3).attr('y', 11 + row * 12).attr('fill', '#9aa1b5').text(d.label);
+      .attr('aria-label', 'Records broken so far over the day, one step per record');
+    const defs = svg.append('defs');
+    const grad = defs.append('linearGradient').attr('id', 'stairfill').attr('x1', 0).attr('x2', 0).attr('y1', 0).attr('y2', 1);
+    grad.append('stop').attr('offset', '0%').attr('stop-color', '#f0b35b').attr('stop-opacity', .32);
+    grad.append('stop').attr('offset', '100%').attr('stop-color', '#f0b35b').attr('stop-opacity', 0);
+    // grid: one faint line per cell count, the full table at the top
+    for (let k = 0; k <= total; k += 2) {
+      svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(k)).attr('y2', y(k)).attr('stroke', '#1a2236');
+      svg.append('text').attr('x', m.l - 8).attr('y', y(k) + 4).attr('text-anchor', 'end').text(k);
+    }
+    svg.append('text').attr('x', W - m.r).attr('y', y(total) - 6).attr('text-anchor', 'end').attr('fill', '#5b6378').text('all ' + total + ' cells in our table');
+    // the staircase
+    const shown = events.filter((e) => e.t <= cut);
+    const steps = [{ t: start, k: 0 }, ...shown.map((e, i) => ({ t: e.t, k: i + 1 })), { t: cut, k: shown.length }];
+    const area = d3.area().x((d) => x(d.t)).y0(y(0)).y1((d) => y(d.k)).curve(d3.curveStepAfter);
+    const line = d3.line().x((d) => x(d.t)).y((d) => y(d.k)).curve(d3.curveStepAfter);
+    svg.append('path').attr('d', area(steps)).attr('fill', 'url(#stairfill)');
+    svg.append('path').attr('d', line(steps)).attr('fill', 'none').attr('stroke', '#f0b35b').attr('stroke-width', 2.5).attr('stroke-linejoin', 'round');
+    // labels: to the left of each riser, at the new height, where the chart is empty
+    shown.forEach((e, i) => {
+      const px = x(e.t), py = y(i + 1);
+      svg.append('circle').attr('cx', px).attr('cy', py).attr('r', 5).attr('fill', '#fff1cf').attr('stroke', '#0f1422').attr('stroke-width', 2);
+      const g = svg.append('text').attr('x', px - 10).attr('y', py + 4).attr('text-anchor', 'end').style('font-size', narrow ? '11px' : '12.5px');
+      g.append('tspan').attr('fill', '#ebe7dc').attr('font-weight', 500).text(e.label + '  ');
+      if (!narrow) g.append('tspan').attr('fill', '#8e95a9').text(fmt(e.from) + ' → ');
+      g.append('tspan').attr('fill', '#f0b35b').text(fmt(e.best));
+      if (!narrow) g.append('tspan').attr('fill', '#5b6378').text('  ' + hm(e.t));
     });
-    const xa = svg.append('g').attr('transform', `translate(0,${H - 22})`).call(d3.axisBottom(x).ticks(narrow ? 4 : 9).tickFormat(hm).tickSize(0).tickPadding(6));
+    const endK = shown.length;
+    svg.append('circle').attr('cx', x(cut)).attr('cy', y(endK)).attr('r', 6).attr('fill', '#f0b35b');
+    svg.append('circle').attr('cx', x(cut)).attr('cy', y(endK)).attr('r', 12).attr('fill', 'none').attr('stroke', '#f0b35b').attr('opacity', .35);
+    // activity strip: programs written per 10 minutes
+    const stripTop = H - m.b + 44, stripH = 26;
+    const bh = d3.scaleLinear([0, d3.max(bins, (b) => b.n) || 1], [0, stripH]);
+    const bw = Math.max(1, x(new Date(+start + 600000)) - x(start) - 1);
+    bins.filter((b) => b.t <= cut).forEach((b) => svg.append('rect').attr('x', x(b.t)).attr('width', bw).attr('y', stripTop + stripH - bh(b.n)).attr('height', bh(b.n)).attr('rx', 1).attr('fill', '#86cbea').attr('opacity', .55));
+    svg.append('text').attr('x', m.l).attr('y', stripTop - 6).attr('fill', '#5b6378').text('programs written per 10 min');
+    // phase bands
+    const phases = (now.milestones || []).filter((d) => d.on_chart === 'yes').map((d) => ({ label: d.label, t: new Date(d.time) })).filter((d) => d.t >= start && d.t <= end).sort((a, b) => a.t - b.t);
+    const PH = { Pilot: 'Mac pilot', 'Run 2': 'Mac run 2', Cloud: '17 islands', 'C islands': 'C islands', 'Fleet doubled': '34 islands', 'Doubled again': '~50 islands' };
+    const bandY = stripTop + stripH + 10, tones = ['#2a3350', '#33405f', '#3f3a2c', '#5a4a26', '#6a5426', '#7a5d24'];
+    phases.forEach((ph, i) => {
+      const x0 = x(ph.t), x1 = i + 1 < phases.length ? x(phases[i + 1].t) : W - m.r;
+      svg.append('rect').attr('x', x0).attr('width', Math.max(1, x1 - x0 - 2)).attr('y', bandY).attr('height', 8).attr('rx', 4).attr('fill', tones[i % tones.length]);
+      if (x1 - x0 > 52) svg.append('text').attr('x', x0 + 2).attr('y', bandY + 22).attr('fill', '#9aa1b5').text(PH[ph.label] || ph.label);
+    });
+    const xa = svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(narrow ? 4 : 8).tickFormat(hm).tickSize(0).tickPadding(6));
     xa.select('.domain').attr('stroke', '#2a3350');
-    let broken = 0;
-    lanes.forEach(([cs, label], i) => {
-      const y = top + i * laneH + laneH / 2;
-      const pts = prog.filter((p) => p.case === cs && p.t <= cut);
-      const rec = (prog.find((p) => p.case === cs) || {}).record;
-      svg.append('text').attr('x', 0).attr('y', y + 4).attr('fill', '#ebe7dc').text(label);
-      svg.append('line').attr('x1', left).attr('x2', W - right).attr('y1', y).attr('y2', y).attr('stroke', '#1a2236').attr('stroke-width', 10).attr('stroke-linecap', 'round');
-      if (!pts.length) return;
-      const firstT = pts[0].t;
-      const tieP = pts.find((p) => p.value >= rec), beatP = pts.find((p) => p.value > rec);
-      const chaseEnd = tieP ? tieP.t : cut;
-      svg.append('line').attr('x1', x(firstT)).attr('x2', x(chaseEnd)).attr('y1', y).attr('y2', y).attr('stroke', '#5b6378').attr('stroke-width', 2).attr('stroke-dasharray', '2 4');
-      if (tieP) svg.append('line').attr('x1', x(tieP.t)).attr('x2', x(beatP ? beatP.t : cut)).attr('y1', y).attr('y2', y).attr('stroke', '#e9c46a').attr('stroke-width', 6).attr('stroke-linecap', 'round').attr('opacity', .8);
-      if (beatP) {
-        broken++;
-        svg.append('line').attr('x1', x(beatP.t)).attr('x2', x(cut)).attr('y1', y).attr('y2', y).attr('stroke', '#f0b35b').attr('stroke-width', 10).attr('stroke-linecap', 'round');
-        pts.filter((p) => p.t > beatP.t).forEach((p) => svg.append('line').attr('x1', x(p.t)).attr('x2', x(p.t)).attr('y1', y - 7).attr('y2', y + 7).attr('stroke', '#0f1422').attr('stroke-width', 2));
-        svg.append('circle').attr('cx', x(beatP.t)).attr('cy', y).attr('r', 7).attr('fill', '#fff1cf').attr('stroke', '#0f1422').attr('stroke-width', 2);
-        if (!narrow) svg.append('text').attr('x', x(beatP.t)).attr('y', y - 10).attr('text-anchor', 'middle').attr('fill', '#c9c6bd').text(hm(beatP.t));
-      }
-      const last = pts[pts.length - 1];
-      const t = svg.append('text').attr('x', W - right + 10).attr('y', y + 4);
-      if (beatP) {
-        t.append('tspan').attr('fill', '#8e95a9').text(fmt(rec) + ' → ');
-        t.append('tspan').attr('fill', '#f0b35b').attr('font-weight', 600).text(fmt(last.value));
-        t.append('tspan').attr('fill', '#93d6a0').text('  +' + (last.value - rec));
-      } else if (tieP) {
-        t.append('tspan').attr('fill', '#e9c46a').text('ties ' + fmt(rec));
-      } else {
-        t.append('tspan').attr('fill', '#8e95a9').text(fmt(last.value) + ' of ' + fmt(rec));
-      }
-    });
-    if (cursor) svg.append('line').attr('x1', x(cut)).attr('x2', x(cut)).attr('y1', top - 8).attr('y2', H - 22).attr('stroke', '#f0b35b').attr('opacity', .7);
+    if (cursor) svg.append('line').attr('x1', x(cut)).attr('x2', x(cut)).attr('y1', m.t).attr('y2', bandY + 8).attr('stroke', '#f0b35b').attr('opacity', .5);
     $('climbkey').replaceChildren();
-    [['#5b6378', 'still below the record', 'dash'], ['#e9c46a', 'ties the record', 'bar'], ['#f0b35b', 'beats the record', 'bar'], ['#fff1cf', 'the moment it fell', 'dot']].forEach(([c, txt]) => {
-      const s = document.createElement('span'); const b = document.createElement('b'); b.style.background = c; s.append(b, document.createTextNode(txt)); $('climbkey').append(s);
-    });
-    $('clock').textContent = hm(cut) + ' PT · ' + broken + ' of ' + lanes.length + ' records broken';
+    $('clock').textContent = hm(cut) + ' PT · ' + endK + ' of ' + total + ' records broken';
   }
   $('replay').addEventListener('click', () => {
     if (!now) return;
@@ -767,7 +778,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       ['3D view, rings', 'rings', 'Click a vertex: the whole graph folds into rings around it, ring k holding the vertices k steps away. The outermost ring is at most D, which is the diameter rule made visible.'],
       ['Reach bars', 'bars', 'How many vertices each step first reaches, against the tree limit Δ·(Δ−1)^(k−1). Full early bars, then a big last step, is what a good graph looks like.'],
       ['Fleet tiles', 'tiles', 'One tile per cloud island. Green tiles are writing programs and the number is the round. A brass underline means that island holds a graph above the table. Hover a tile for details.'],
-      ['When each record fell', 'climb', 'One row per cell over the day. Grey dots while we chase the record, brass from the moment we beat it, with old and new numbers on the right. Replay animates it.'],
+      ['Records broken, over the day', 'climb', 'A staircase that climbs by one each time a table record falls, labelled with the record. The strip below shows how hard the Haikus were working. Replay animates the day.'],
       ['Room left', 'rail', 'Each rail runs from 0 to the best proven ceiling. The grey tick is the old record and the brass dot is ours. Most of the rail is empty: the true answers are unknown.'],
       ['Proof ledger', 'ledger', 'Who held each record before, and whether our graph also has a Lean proof, which a computer checks line by line, trusting only the small core of Lean.'],
     ];
