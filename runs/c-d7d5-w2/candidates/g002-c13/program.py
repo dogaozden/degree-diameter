@@ -1,0 +1,582 @@
+import itertools
+import math
+import random
+import time
+
+import lib
+
+MAXG = 2600  # largest group order passed to the C engine (table is MAXG^2 ints)
+
+
+# ----------------------------------------------------------------------------
+# C search engine: simulated annealing over voltages of a bi-Cayley lift over an
+# arbitrary finite group given by a multiplication table (identity = 0).
+#
+# Groups:
+#   type 0: Z_m x|_r Z_k2   (element (a,b) coded a*k2+b)
+#   type 1: Heisenberg-type group of order m*m*k, k a multiple of m:
+#           elements (a in Z_m, b in Z_k, c in Z_m) coded (a*k+b)*m+c,
+#           (a,b,c)(a',b',c') = (a+a', b+b', c+c'+a*b') with the sums reduced
+#           mod (m, k, m). This group is non-abelian for m >= 2.
+#
+# Base graph: K vertices per side, DEG layers, each layer a permutation of
+# 0..K-1. Dart e = l*K + i joins A_i to B_{dJ[e]} with voltage dS[e]:
+# A_{i,g} ~ B_{j, g*s} for all g. Left multiplication is an automorphism, so BFS
+# from the 2K identity representatives decides the diameter exactly.
+#
+# Moves: change a voltage, or swap two darts' targets within one layer.
+# Cost = unreached (rep, vertex) pairs + duplicate-dart penalty.
+#
+# Usage: prog d D K type p1 p2 p3 seed slice_seconds
+# Prints a graph ("n m" + edges) or "0 0".
+# ----------------------------------------------------------------------------
+
+C_SOURCE = r"""
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <math.h>
+#include <time.h>
+
+#define PEN 1000
+#define BIGCOST (1 << 30)
+#define MAXG 2600
+#define FAIL() do { printf("0 0\n"); return 0; } while (0)
+
+static int DEG, DIAM, K, G, N, NE;
+static int POWR[64];
+static int *TAB;
+static int *dI, *dJ, *dS, *perm, *adj, *cnt, *fr, *nx, *bestS, *bestJ;
+static uint32_t *vis;
+static uint32_t stamp = 0;
+static uint64_t rs = 88172645463325252ULL;
+
+static inline uint64_t rnd64(void) {
+    rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17;
+    return rs;
+}
+static inline int rndint(int n) { return (int)(rnd64() % (uint64_t)n); }
+static inline double rnd01(void) { return (double)(rnd64() >> 11) * (1.0 / 9007199254740992.0); }
+
+static double elapsed(clock_t t0) {
+    return (double)(clock() - t0) / (double)CLOCKS_PER_SEC;
+}
+
+static int gcd_int(int a, int b) {
+    while (b) { int t = a % b; a = b; b = t; }
+    return a;
+}
+
+static void build_table(int type, int p1, int p2, int p3) {
+    if (type == 0) {
+        int MM = p1, K2 = p2;
+        int r = ((p3 % MM) + MM) % MM;
+        POWR[0] = 1 % MM;
+        for (int b = 1; b < K2; b++) POWR[b] = (int)((long long)POWR[b - 1] * r % MM);
+        for (int x = 0; x < G; x++) {
+            int a = x / K2, b = x % K2;
+            for (int y = 0; y < G; y++) {
+                int c = y / K2, dd = y % K2;
+                long long t = ((long long)a + (long long)POWR[b] * c) % MM;
+                TAB[(size_t)x * G + y] = (int)(t * K2 + (b + dd) % K2);
+            }
+        }
+    } else {
+        int m = p1, k = p2;
+        for (int x = 0; x < G; x++) {
+            int c = x % m, t1 = x / m, b = t1 % k, a = t1 / k;
+            for (int y = 0; y < G; y++) {
+                int c2 = y % m, t2 = y / m, b2 = t2 % k, a2 = t2 / k;
+                int A = (a + a2) % m;
+                int Bq = (b + b2) % k;
+                int Cc = (c + c2 + (a * b2) % m) % m;
+                TAB[(size_t)x * G + y] = (A * k + Bq) * m + Cc;
+            }
+        }
+    }
+}
+
+static void set_perm(int e) {
+    int s = dS[e];
+    int *pm = perm + (size_t)e * G;
+    for (int g = 0; g < G; g++) pm[g] = TAB[(size_t)g * G + s];
+}
+
+static int cost_fn(void) {
+    int dup = 0;
+    for (int e1 = 0; e1 < NE; e1++)
+        for (int e2 = e1 + 1; e2 < NE; e2++)
+            if (dI[e1] == dI[e2] && dJ[e1] == dJ[e2] && dS[e1] == dS[e2]) dup++;
+
+    memset(cnt, 0, sizeof(int) * (size_t)N);
+    for (int e = 0; e < NE; e++) {
+        int ba = dI[e] * G, bb = (K + dJ[e]) * G;
+        const int *pm = perm + (size_t)e * G;
+        for (int g = 0; g < G; g++) {
+            int a = ba + g, b = bb + pm[g];
+            adj[(size_t)a * DEG + cnt[a]++] = b;
+            adj[(size_t)b * DEG + cnt[b]++] = a;
+        }
+    }
+
+    int total = 0;
+    for (int ri = 0; ri < 2 * K; ri++) {
+        int src = ri * G;
+        if (stamp == 0xFFFFFFFFu) {
+            memset(vis, 0, sizeof(uint32_t) * (size_t)N);
+            stamp = 0;
+        }
+        stamp++;
+        vis[src] = stamp;
+        int *cur = fr, *nxt = nx;
+        int fn = 1, reached = 1;
+        cur[0] = src;
+        for (int lv = 0; lv < DIAM && fn > 0; lv++) {
+            int nn = 0;
+            for (int q = 0; q < fn; q++) {
+                int u = cur[q];
+                const int *au = adj + (size_t)u * DEG;
+                for (int t = 0; t < DEG; t++) {
+                    int v = au[t];
+                    if (vis[v] != stamp) {
+                        vis[v] = stamp;
+                        nxt[nn++] = v;
+                    }
+                }
+            }
+            reached += nn;
+            int *tmp = cur; cur = nxt; nxt = tmp;
+            fn = nn;
+        }
+        total += N - reached;
+    }
+    return total + PEN * dup;
+}
+
+static void save_best(void) {
+    memcpy(bestS, dS, sizeof(int) * (size_t)NE);
+    memcpy(bestJ, dJ, sizeof(int) * (size_t)NE);
+}
+
+int main(int argc, char **argv) {
+    if (argc < 10) {
+        fprintf(stderr, "usage: prog d D K type p1 p2 p3 seed slice\n");
+        return 1;
+    }
+    DEG = atoi(argv[1]);
+    DIAM = atoi(argv[2]);
+    K = atoi(argv[3]);
+    int type = atoi(argv[4]);
+    int p1 = atoi(argv[5]), p2 = atoi(argv[6]), p3 = atoi(argv[7]);
+    uint64_t seed = strtoull(argv[8], NULL, 10);
+    double slice = atof(argv[9]);
+
+    if (DEG < 1 || DEG > 20 || DIAM < 1 || K < 1 || K > 8) FAIL();
+
+    long long Gl = 0;
+    if (type == 0) {
+        int MM = p1, K2 = p2;
+        if (MM < 1 || K2 < 1 || K2 > 60) FAIL();
+        int r = ((p3 % MM) + MM) % MM;
+        if (gcd_int(r, MM) != 1) FAIL();
+        POWR[0] = 1 % MM;
+        for (int b = 1; b < K2; b++) POWR[b] = (int)((long long)POWR[b - 1] * r % MM);
+        if (((long long)POWR[K2 - 1] * r) % MM != 1 % MM) FAIL();
+        Gl = (long long)MM * K2;
+    } else if (type == 1) {
+        int m = p1, k = p2;
+        if (m < 2 || k < m || k % m != 0) FAIL();
+        Gl = (long long)m * m * k;
+    } else {
+        FAIL();
+    }
+    if (Gl < 1 || Gl > MAXG) FAIL();
+    G = (int)Gl;
+
+    NE = DEG * K;
+    N = 2 * K * G;
+    rs = seed * 0x9E3779B97F4A7C15ULL ^ 0x1234567ULL;
+    if (rs == 0) rs = 1;
+
+    TAB = malloc(sizeof(int) * (size_t)G * G);
+    dI = malloc(sizeof(int) * NE);
+    dJ = malloc(sizeof(int) * NE);
+    dS = malloc(sizeof(int) * NE);
+    bestS = malloc(sizeof(int) * NE);
+    bestJ = malloc(sizeof(int) * NE);
+    perm = malloc(sizeof(int) * (size_t)NE * G);
+    adj = malloc(sizeof(int) * (size_t)N * DEG);
+    cnt = malloc(sizeof(int) * N);
+    fr = malloc(sizeof(int) * N);
+    nx = malloc(sizeof(int) * N);
+    vis = calloc(N, sizeof(uint32_t));
+    int *p = malloc(sizeof(int) * K);
+    if (!TAB || !dI || !dJ || !dS || !bestS || !bestJ || !perm || !adj || !cnt
+        || !fr || !nx || !vis || !p) FAIL();
+
+    build_table(type, p1, p2, p3);
+
+    clock_t t0 = clock();
+    int found = 0;
+    int bestCost = BIGCOST;
+    const int RL = 60000;
+
+    while (!found && elapsed(t0) < slice) {
+        double T0;
+        if (bestCost >= BIGCOST || rnd01() < 0.25) {
+            /* Fresh random lift. */
+            for (int l = 0; l < DEG; l++) {
+                for (int i = 0; i < K; i++) p[i] = i;
+                for (int i = K - 1; i > 0; i--) {
+                    int j = rndint(i + 1);
+                    int t = p[i]; p[i] = p[j]; p[j] = t;
+                }
+                for (int i = 0; i < K; i++) {
+                    dI[l * K + i] = i;
+                    dJ[l * K + i] = p[i];
+                }
+            }
+            for (int e = 0; e < NE; e++) {
+                dS[e] = rndint(G);
+                set_perm(e);
+            }
+            T0 = 2.0;
+        } else {
+            /* Reheat from the best state with a random kick. */
+            memcpy(dJ, bestJ, sizeof(int) * (size_t)NE);
+            memcpy(dS, bestS, sizeof(int) * (size_t)NE);
+            int kick = NE / 8 + 1;
+            for (int q = 0; q < kick; q++) dS[rndint(NE)] = rndint(G);
+            for (int e = 0; e < NE; e++) set_perm(e);
+            T0 = 0.8;
+        }
+        int cur = cost_fn();
+        if (cur < bestCost) { bestCost = cur; save_best(); }
+        if (cur == 0) { found = 1; break; }
+
+        for (int it = 0; it < RL; it++) {
+            if ((it & 255) == 0 && elapsed(t0) >= slice) break;
+            double T = T0 * (1.0 - (double)it / RL) + 0.05;
+            if (K > 1 && rnd01() < 0.3) {
+                int l = rndint(DEG);
+                int i1 = rndint(K);
+                int i2 = rndint(K - 1);
+                if (i2 >= i1) i2++;
+                int e1 = l * K + i1, e2 = l * K + i2;
+                int t = dJ[e1]; dJ[e1] = dJ[e2]; dJ[e2] = t;
+                int nc = cost_fn();
+                if (nc <= cur || rnd01() < exp(-(double)(nc - cur) / T)) {
+                    cur = nc;
+                } else {
+                    t = dJ[e1]; dJ[e1] = dJ[e2]; dJ[e2] = t;
+                }
+            } else {
+                int e = rndint(NE);
+                int old = dS[e];
+                int ns = rndint(G);
+                if (ns == old) continue;
+                dS[e] = ns;
+                set_perm(e);
+                int nc = cost_fn();
+                if (nc <= cur || rnd01() < exp(-(double)(nc - cur) / T)) {
+                    cur = nc;
+                } else {
+                    dS[e] = old;
+                    set_perm(e);
+                }
+            }
+            if (cur < bestCost) { bestCost = cur; save_best(); }
+            if (cur == 0) { found = 1; break; }
+        }
+    }
+
+    if (found) {
+        printf("%d %d\n", N, NE * G);
+        for (int e = 0; e < NE; e++) {
+            for (int g = 0; g < G; g++) {
+                printf("%d %d\n", dI[e] * G + g,
+                       (K + dJ[e]) * G + perm[(size_t)e * G + g]);
+            }
+        }
+    } else {
+        printf("0 0\n");
+    }
+    fflush(stdout);
+    return 0;
+}
+"""
+
+
+# ----------------------------------------------------------------------------
+# Exact / safe constructions.
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d, restricted to small q for speed."""
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Greedy spare-degree extension (no-op for regular lifts).
+# ----------------------------------------------------------------------------
+
+def _two_colour(n, edges):
+    """Return a 0/1 side label per vertex (bipartition), or None if not bipartite."""
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    col = [-1] * n
+    for s in range(n):
+        if col[s] != -1:
+            continue
+        col[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if col[v] == -1:
+                    col[v] = 1 - col[u]
+                    stack.append(v)
+                elif col[v] == col[u]:
+                    return None
+    return col
+
+
+def _extend_spare(n, edges, d, D, deadline):
+    """Greedily add fresh vertex pairs while the graph stays valid. Returns (n, edges)."""
+    if d < 2:
+        return n, edges
+    col = _two_colour(n, edges)
+    if col is None:
+        return n, edges
+    deg = [0] * n
+    for u, v in edges:
+        deg[u] += 1
+        deg[v] += 1
+    edges = list(edges)
+    while time.monotonic() < deadline:
+        A_sp = [v for v in range(n) if col[v] == 0 and deg[v] < d]
+        B_sp = [v for v in range(n) if col[v] == 1 and deg[v] < d]
+        if not A_sp or not B_sp:
+            break
+        grown = False
+        for k in range(d - 1, 0, -1):
+            if time.monotonic() >= deadline:
+                break
+            if k > len(A_sp) or k > len(B_sp):
+                continue
+            a, b = n, n + 1
+            cand_new = [(a, b)] + [(a, x) for x in B_sp[:k]] + [(b, y) for y in A_sp[:k]]
+            cand = edges + cand_new
+            if lib.is_valid(n + 2, cand, d, D):
+                edges = cand
+                n += 2
+                col += [0, 1]
+                deg += [0, 0]
+                deg[a] = k + 1
+                deg[b] = k + 1
+                for x in B_sp[:k]:
+                    deg[x] += 1
+                for y in A_sp[:k]:
+                    deg[y] += 1
+                grown = True
+                break
+        if not grown:
+            break
+    return n, edges
+
+
+# ----------------------------------------------------------------------------
+# Group sampling. Each choice is (type, p1, p2, p3, order) for the C engine.
+# ----------------------------------------------------------------------------
+
+def _group_candidates(target):
+    """Heisenberg-type groups of order m*m*k (k a multiple of m) with order in [target, MAXG]."""
+    cands = []
+    for m in range(2, 60):
+        for t in range(1, 6):
+            k = m * t
+            order = m * m * k
+            if target <= order <= MAXG:
+                cands.append((1, m, k, 0, order))
+    cands.sort(key=lambda c: c[4])
+    return cands
+
+
+def _sample_group(target, rng):
+    """Return (type, p1, p2, p3, order) for a group of order >= target, or None."""
+    if rng.random() < 0.6:
+        cands = _group_candidates(target)
+        if cands:
+            return rng.choice(cands[:3])
+    for _ in range(100):
+        k2 = rng.choice([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 24, 30, 36])
+        m = max(2, -(-target // k2))
+        if m * k2 > MAXG:
+            continue
+        r = 1  # r = 1 is the direct product, always valid
+        if k2 > 1 and m > 2:
+            cands = [c for c in range(2, m) if math.gcd(c, m) == 1 and pow(c, k2, m) == 1 % m]
+            if cands and rng.random() < 0.7:
+                r = rng.choice(cands)
+        return 0, m, k2, r, m * k2
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Driver.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    budget = max(1.0, min(0.85 * time_limit, time_limit - 5.0))
+    deadline = start + budget
+    search_deadline = start + 0.9 * budget
+    rng = random.Random(seed)
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2.
+    best = lib.haar_graph(d, range(d))
+
+    def consider(n, e):
+        nonlocal best
+        if n > best[0] and lib.is_valid(n, e, d, D):
+            best = (n, e)
+
+    # Exact constructions.
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+            if D == 3 and lib.is_prime_power(d - 1):
+                return best
+
+        if D == 3 and d - 2 >= 3 and lib.is_prime_power(d - 2):
+            try:
+                ap = lib.araujo_lopez_graph(d - 2)
+                consider(ap[0], ap[1])
+            except (ValueError, RuntimeError):
+                pass
+
+    if D >= 4 and time.monotonic() < deadline:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+            if D == 4 and d - 1 <= 9 and lib.is_prime_power(d - 1):
+                return best
+
+    # Main search: anneal voltages of bi-Cayley lifts over non-abelian and
+    # semidirect groups. Each target order is just above best / (2K), so any
+    # success is a strict improvement.
+    failures = 0
+    while failures < 4:
+        remaining = search_deadline - time.monotonic()
+        if remaining < 1.0:
+            break
+        slice_s = min(remaining, 12.0)
+        k = rng.choice([1, 1, 2, 2, 3, 4])
+        base = best[0] // (2 * k)
+        target = base + 1 + rng.randrange(0, max(2, base // 10 + 1))
+        grp = _sample_group(target, rng)
+        if grp is None:
+            continue
+        typ, p1, p2, p3, _order = grp
+        try:
+            out = lib.run_c(
+                C_SOURCE,
+                [d, D, k, typ, p1, p2, p3, rng.randrange(1, 10 ** 9), f"{slice_s:.2f}"],
+                timeout=slice_s + 10.0,
+            )
+        except RuntimeError:
+            failures += 1
+            continue
+        try:
+            n, e = lib.parse_graph_text(out)
+        except ValueError:
+            failures += 1
+            continue
+        if n == 0:
+            failures += 1
+            continue
+        consider(n, e)
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+
+    # Spare-degree extension with the remaining time.
+    try:
+        n2, e2 = _extend_spare(best[0], best[1], d, D, deadline)
+        if n2 > best[0] and lib.is_valid(n2, e2, d, D):
+            best = (n2, e2)
+    except Exception:
+        pass
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
