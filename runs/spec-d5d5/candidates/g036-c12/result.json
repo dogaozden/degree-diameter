@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11577544699991904
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: , seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d5d5/candidates/g036-c12/program.py\", line 652, in build\n    N = lo + rng.randrange(max(2, min(N_WINDOW_MAX, lo // 10)))\n                                      ^^^^^^^^^^^^\nNameError: name 'N_WINDOW_MAX' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.1143023729999868
+    }
+  },
+  "fitness": 0.047619047619047616
+}
