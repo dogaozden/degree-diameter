@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11447606300134794
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d5/candidates/g014-c19/program.py\", line 167, in _set_dart\n    nbr[l, i * G:(i + 1) * G] = (k + j) * G + Ts[s]\n                                              ~~^^^\nIndexError: index 132 is out of bounds for axis 0 with size 126\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 47.59621042299841
+    }
+  },
+  "fitness": 0.047619047619047616
+}
