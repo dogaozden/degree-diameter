@@ -119,3 +119,11 @@ and Pineda-Villavicencio.
 Reporting: the wiki takes no anonymous edits; changes go through a moderator. The degree/diameter
 moderators are Eyal Loz (chief), Hebert Pérez-Rosés and Guillermo Pineda-Villavicencio, and Nacho López is
 named as a maintainer. Araujo-Pardo and López are the natural people to tell about (11,3) and (13,3).
+
+## Why +2 works for (11,3), (13,3) and (15,3)
+
+The three +2 graphs add a fourth "hat" pair to the Araujo-Pardo–López construction, with a small rotation of
+three incidences to make room. The clean rule works in every projective plane of order q ≥ 4 and gives
+2(q² + q + 6) vertices at degree q + 2 and diameter 3. A proof, computer checks and SAT evidence against +3 and +4
+inside the same family are in `research/plus2/REPORT.md`. The proof was written by a model and checked by computer;
+it still needs a mathematician's reading.
