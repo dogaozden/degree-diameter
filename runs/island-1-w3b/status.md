@@ -1,8 +1,8 @@
 # island-1-w3b
 
 Problem: bipartite_dd
-Generations done: 2 of 61 (including generation 0)
-Total mutator calls: 16
+Generations done: 3 of 61 (including generation 0)
+Total mutator calls: 32
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -16,10 +16,10 @@ Total mutator calls: 16
 | d7D3 | calibration | 80 | 80 | 80 = | g000-i02 |
 | d4D5 | target | 160 | 236 | 160 = | g000-i02 |
 | d5D5 | target | 336 | 676 | 344 NEW | g000-i00 |
-| d6D5 | target | 684 | 1556 | 536 | g001-c12 |
+| d6D5 | target | 684 | 1556 | 602 | g002-c14 |
 | d7D5 | target | 1134 | 3106 | 906 | g000-i02 |
-| d7D4 | target | 346 | 518 | 341 | g000-i00 |
-| d11D4 | target | 1734 | 2222 | 1683 | g000-i00 |
+| d7D4 | target | 346 | 518 | 342 | g002-c12 |
+| d11D4 | target | 1734 | 2222 | 1684 | g002-c08 |
 | d11D3 | target | 190 | 220 | 190 = | g000-i00 |
 | d13D3 | target | 274 | 314 | 274 = | g000-i00 |
 | d15D3 | target | 374 | 422 | 374 = | g000-i00 |
@@ -29,3 +29,4 @@ Total mutator calls: 16
 |---|---|---|---|---|
 | 0 | 1 | 0 | 0.9514 | 0.9514 |
 | 1 | 16 | 0 | 0.9514 | 0.9514 |
+| 2 | 16 | 0 | 0.9537 | 0.9537 |
