@@ -1,8 +1,8 @@
 # island-1
 
 Problem: bipartite_dd
-Generations done: 1 of 61 (including generation 0)
-Total mutator calls: 0
+Generations done: 2 of 61 (including generation 0)
+Total mutator calls: 16
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -18,13 +18,14 @@ Total mutator calls: 0
 | d5D5 | target | 336 | 676 | 330 | g000-i04 |
 | d6D5 | target | 684 | 1556 | 588 | g000-i05 |
 | d7D5 | target | 1134 | 3106 | 906 | g000-i03 |
-| d7D4 | target | 346 | 518 | 339 | g000-i00 |
-| d11D4 | target | 1734 | 2222 | 1674 | g000-i00 |
-| d11D3 | target | 190 | 220 | 184 | g000-i00 |
-| d13D3 | target | 274 | 314 | 268 | g000-i00 |
-| d15D3 | target | 374 | 422 | 368 | g000-i00 |
+| d7D4 | target | 346 | 518 | 341 | g001-c04 |
+| d11D4 | target | 1734 | 2222 | 1683 | g001-c04 |
+| d11D3 | target | 190 | 220 | 190 = | g001-c00 |
+| d13D3 | target | 274 | 314 | 274 = | g001-c00 |
+| d15D3 | target | 374 | 422 | 374 = | g001-c00 |
 | d16D3 | target | 394 | 482 | 394 = | g000-i00 |
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
 | 0 | 1 | 0 | 0.9455 | 0.9455 |
+| 1 | 16 | 0 | 0.9513 | 0.9513 |
