@@ -1,0 +1,8 @@
+You are babysitting cloud island RUNID of an evolutionary search. Do not edit any code. Do not stop to ask for approval.
+1. Run `git remote -v`. If there is no GitHub origin, write the one word NOREMOTE and stop.
+2. Run `cc --version`. If it fails, install a C compiler (`sudo apt-get install -y gcc` or `apt-get install -y gcc`) and check again; if there is still no cc, stop and report.
+3. Run `python3 -m pip install -q numpy networkx pytest` then `python3 -m pytest -q 2>&1 | tail -1`. If tests fail, stop and report.
+4. Run `git checkout -b RUNID`.
+5. Start the run detached from the repo root: `(nohup python3 -m evolve run configs/RUNID.toml > RUNID.log 2>&1; echo "EXIT=$?" >> RUNID.log) &`
+6. Keep watch: repeatedly run `sleep 540; tail -2 RUNID.log; git log --oneline -1` with the Bash timeout set to 600000 ms, until RUNID.log contains EXIT= or 6 hours have passed.
+7. When it ends, reply with the last 5 lines of RUNID.log.
