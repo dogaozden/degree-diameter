@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11639869800001179
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: r/math/runs/spec-d5d5/candidates/g004-c23/program.py\", line 312, in _attempt2\n    res = _anneal2(M, T, invs, a, d, D, rng, deadline)\n  File \"/home/user/math/runs/spec-d5d5/candidates/g004-c23/program.py\", line 269, in _anneal2\n    blk[s] = b\n    ~~~^^^\nIndexError: list assignment index out of range\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 18.141389847000028
+    }
+  },
+  "fitness": 0.047619047619047616
+}
