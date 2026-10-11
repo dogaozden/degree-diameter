@@ -1,8 +1,8 @@
 # c-d5d5-w2
 
 Problem: bipartite_dd
-Generations done: 9 of 81 (including generation 0)
-Total mutator calls: 258
+Generations done: 10 of 81 (including generation 0)
+Total mutator calls: 290
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -20,3 +20,4 @@ Total mutator calls: 258
 | 6 | 32 | 0 | 1.0227 | 1.0227 |
 | 7 | 32 | 0 | 1.0227 | 1.0227 |
 | 8 | 32 | 0 | 1.0227 | 1.0227 |
+| 9 | 32 | 0 | 1.0227 | 1.0227 |
