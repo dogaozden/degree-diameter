@@ -1,8 +1,8 @@
 # c-d7d4
 
 Problem: bipartite_dd
-Generations done: 19 of 81 (including generation 0)
-Total mutator calls: 579
+Generations done: 20 of 81 (including generation 0)
+Total mutator calls: 611
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -11,7 +11,6 @@ Total mutator calls: 579
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
-| 9 | 32 | 0 | 1.0303 | 1.0303 |
 | 10 | 32 | 0 | 1.0303 | 1.0275 |
 | 11 | 32 | 0 | 1.0303 | 1.0275 |
 | 12 | 32 | 0 | 1.0303 | 1.0303 |
@@ -21,3 +20,4 @@ Total mutator calls: 579
 | 16 | 32 | 0 | 1.0303 | 1.0303 |
 | 17 | 32 | 0 | 1.0303 | 1.0275 |
 | 18 | 32 | 0 | 1.0303 | 1.0303 |
+| 19 | 32 | 0 | 1.0303 | 1.0303 |
