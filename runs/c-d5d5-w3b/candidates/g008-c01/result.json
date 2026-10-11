@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11627978499927849
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: :\n                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/c-d5d5-w3b/candidates/g008-c01/program.py\", line 542, in <lambda>\n    for cand in sorted(cands, key=lambda c: -c[0]):\n                                             ~^^^\nTypeError: 'NoneType' object is not subscriptable\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.11658133299988549
+    }
+  },
+  "fitness": 0.047619047619047616
+}
