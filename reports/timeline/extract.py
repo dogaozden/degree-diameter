@@ -26,6 +26,7 @@ TARGETS = {  # case: (label, table record, wiki upper bound, old record holder)
 }
 ISLANDS = ["island-1", "spec-d4d5", "spec-d5d5", "spec-d6d5", "spec-d7d5", "spec-d7d4", "spec-d11d4", "spec-d3fam",
            "spec-d16d3", "c-d4d5", "c-d5d5", "c-d6d5", "c-d7d5", "c-d7d4", "c-d11d4", "c-d3fam", "c-d16d3"]
+ISLANDS += [i + "-w2" for i in ISLANDS]  # wave 2 twins
 
 
 def git(*a):
