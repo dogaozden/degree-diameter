@@ -1,0 +1,629 @@
+import itertools
+import math
+import random
+import time
+
+import lib
+
+_BIG = 10 ** 9
+
+
+# ----------------------------------------------------------------------------
+# Projective-plane bases and arc-extended incidence graphs (D = 3).
+#
+# PG(2, q) incidence (points 0..m-1, lines m..2m-1) gives degree q+1. With spare
+# s = d - q - 1, a point set S with every line holding <= s points of S and every
+# point on <= s lines indexed by S lets us add an A-vertex per point of S (joined
+# to its q+1 lines) and a B-vertex per line of S (joined to its q+1 points).
+# Diameter stays 3.
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _pg_data(q):
+    """Return (m, edges, pl, lp, pts): pl[P] = lines through point P, lp[L] = points on line L."""
+    n2, edges = lib.projective_plane_incidence(q)
+    m = n2 // 2
+    pl = [[] for _ in range(m)]
+    lp = [[] for _ in range(m)]
+    for u, v in edges:
+        pl[u].append(v - m)
+        lp[v - m].append(u)
+    return m, edges, pl, lp, lib.projective_points(q)
+
+
+def _loads_ok(S, s, m, pl, lp):
+    cl = [0] * m
+    cp = [0] * m
+    for P in S:
+        for L in pl[P]:
+            cl[L] += 1
+        for Q in lp[P]:
+            cp[Q] += 1
+    return max(cl, default=0) <= s and max(cp, default=0) <= s
+
+
+def _greedy_arc(m, s, pl, lp, rng, trials, deadline):
+    best = []
+    order = list(range(m))
+    for _ in range(trials):
+        if time.monotonic() > deadline:
+            break
+        rng.shuffle(order)
+        cl = [0] * m
+        cp = [0] * m
+        S = []
+        for P in order:
+            if all(cl[L] < s for L in pl[P]) and all(cp[Q] < s for Q in lp[P]):
+                S.append(P)
+                for L in pl[P]:
+                    cl[L] += 1
+                for Q in lp[P]:
+                    cp[Q] += 1
+        if len(S) > len(best):
+            best = S
+    return best
+
+
+def _conic_set(q, index, F):
+    """Conic (plus nucleus for even q): an arc with no three collinear."""
+    S = [index[(1, t, F.mul(t, t))] for t in range(q)]
+    S.append(index[(0, 0, 1)])
+    if q % 2 == 0:
+        S.append(index[(0, 1, 0)])
+    return S
+
+
+def _arc_graph(m, edges, S, pl, lp):
+    k = len(S)
+    n = 2 * m + 2 * k
+    E = list(edges)
+    for t, P in enumerate(S):
+        x = 2 * m + t
+        for L in pl[P]:
+            E.append((x, m + L))
+    for t, j in enumerate(S):
+        b = 2 * m + k + t
+        for Q in lp[j]:
+            E.append((Q, b))
+    return n, E
+
+
+def _arc_candidates(d, deadline, rng):
+    """Return [(n, edges, m, pl, lp)] sorted by decreasing n, one per prime power q."""
+    out = []
+    for q in range(2, min(d - 1, 23) + 1):
+        if not lib.is_prime_power(q):
+            continue
+        if time.monotonic() > deadline:
+            break
+        s = d - q - 1
+        if s < 1:
+            continue
+        m, edges, pl, lp, pts = _pg_data(q)
+        S = _greedy_arc(m, s, pl, lp, rng, 40, deadline)
+        if s >= 2:
+            F = lib.GF(q)
+            index = {p: i for i, p in enumerate(pts)}
+            cs = _conic_set(q, index, F)
+            if len(cs) > len(S) and _loads_ok(cs, s, m, pl, lp):
+                S = cs
+        if not S or not _loads_ok(S, s, m, pl, lp):
+            continue
+        n_c, e_c = _arc_graph(m, edges, S, pl, lp)
+        out.append((n_c, e_c, m, pl, lp))
+    out.sort(key=lambda t: -t[0])
+    return out
+
+
+# ----------------------------------------------------------------------------
+# Cover-based growth and edge saturation (diameter-preserving).
+# ----------------------------------------------------------------------------
+
+def _balls_radius(n, adj, r):
+    ball = [1 << v for v in range(n)]
+    for _ in range(r):
+        new = []
+        for v in range(n):
+            x = ball[v]
+            for u in adj[v]:
+                x |= ball[u]
+            new.append(x)
+        ball = new
+    return ball
+
+
+def _bipartition(n, adj):
+    color = [-1] * n
+    for s in range(n):
+        if color[s] != -1:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if color[v] == -1:
+                    color[v] = 1 - color[u]
+                    stack.append(v)
+    return color
+
+
+def _greedy_cover(cands, ball, full, d, rng, randomize):
+    pool = list(cands)
+    if randomize:
+        rng.shuffle(pool)
+    covered = 0
+    chosen = []
+    while covered != full and len(chosen) < d and pool:
+        gains = [(ball[s] & ~covered).bit_count() for s in pool]
+        best_g = max(gains, default=0)
+        if best_g == 0:
+            break
+        thr = best_g
+        if randomize and rng.random() < 0.5:
+            thr = best_g - 1
+        opts = [i for i, g in enumerate(gains) if g >= thr and g > 0]
+        i = rng.choice(opts) if randomize else opts[0]
+        s = pool.pop(i)
+        chosen.append(s)
+        covered |= ball[s]
+    return chosen if covered == full else None
+
+
+def _extend_cover(n, edges, d, D, deadline, rng):
+    """Add vertices whose neighbourhoods cover all vertices within distance D-1."""
+    if D < 2:
+        return n, edges
+    edges = list(edges)
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    deg = [len(a) for a in adj]
+    color = _bipartition(n, adj)
+    while time.monotonic() < deadline:
+        ball = _balls_radius(n, adj, D - 1)
+        full = (1 << n) - 1
+        added = False
+        for c in (0, 1):
+            cands = [s for s in range(n) if color[s] == c and deg[s] < d]
+            if not cands:
+                continue
+            chosen = None
+            for attempt in range(60):
+                if time.monotonic() >= deadline:
+                    break
+                chosen = _greedy_cover(cands, ball, full, d, rng, attempt > 0)
+                if chosen:
+                    break
+            if chosen:
+                v = n
+                n += 1
+                color.append(1 - c)
+                adj.append([])
+                deg.append(0)
+                for s in chosen:
+                    edges.append((s, v))
+                    adj[s].append(v)
+                    adj[v].append(s)
+                    deg[s] += 1
+                    deg[v] += 1
+                added = True
+                break
+        if not added:
+            break
+    return n, edges
+
+
+def _saturate_edges(n, edges, d, rng):
+    """Join deficient opposite-side vertex pairs (keeps bipartiteness, never raises distances)."""
+    edges = list(edges)
+    adj = [[] for _ in range(n)]
+    existing = set()
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+        existing.add((min(u, v), max(u, v)))
+    deg = [len(a) for a in adj]
+    color = _bipartition(n, adj)
+    left = [v for v in range(n) if color[v] == 0 and deg[v] < d]
+    right = [v for v in range(n) if color[v] == 1 and deg[v] < d]
+    pairs = [(a, b) for a in left for b in right if (min(a, b), max(a, b)) not in existing]
+    rng.shuffle(pairs)
+    for a, b in pairs:
+        if deg[a] < d and deg[b] < d:
+            edges.append((a, b))
+            deg[a] += 1
+            deg[b] += 1
+    return edges
+
+
+def _grow(n, edges, d, D, deadline, rng):
+    cur_n, cur_e = n, list(edges)
+    for _ in range(8):
+        if time.monotonic() >= deadline:
+            break
+        n2, e2 = _extend_cover(cur_n, cur_e, d, D, deadline, rng)
+        grew = n2 != cur_n
+        cur_n = n2
+        cur_e = _saturate_edges(cur_n, e2, d, rng)
+        if not grew:
+            break
+    return cur_n, cur_e
+
+
+# ----------------------------------------------------------------------------
+# Validity-checked local search on a D = 3 base graph.
+#
+# Moves: add a vertex on a projective star (neighbours with spare degree),
+# add an edge along an odd 3-path (keeps bipartiteness, uses spare degree),
+# or remove a vertex (annealed). Every accepted state passes a diameter and
+# bipartiteness check, and the best state is validated again at the end.
+# ----------------------------------------------------------------------------
+
+def _local_search(n0, E0, m, pl, lp, d, D, deadline, rng):
+    adj = {}
+
+    def link(u, v):
+        adj.setdefault(u, set()).add(v)
+        adj.setdefault(v, set()).add(u)
+
+    def unlink(v):
+        nb = adj.pop(v, set())
+        for u in nb:
+            s = adj[u]
+            s.discard(v)
+            if not s:
+                del adj[u]
+        return nb
+
+    def raw():
+        return [(u, v) for u in adj for v in adj[u] if u < v]
+
+    def ok():
+        n, E = lib.relabel(raw())
+        return lib.is_bipartite(n, E) and lib.within_diameter(n, E, D)
+
+    def load(E):
+        adj.clear()
+        for u, v in E:
+            link(u, v)
+
+    best_E = list(E0)
+    load(E0)
+    best_cnt = len(adj)
+    nxt = n0
+    T = 0.6
+    stale = 0
+
+    while time.monotonic() < deadline:
+        stale += 1
+        if stale > 3000:
+            load(best_E)
+            hi = max((max(e) for e in best_E), default=n0 - 1)
+            nxt = max(n0, hi + 1)
+            stale = 0
+            T = 0.6
+            continue
+        T = max(0.05, T * 0.9995)
+
+        r = rng.random()
+        if r < 0.35:
+            if rng.random() < 0.5:
+                cand = [m + L for L in pl[rng.randrange(m)]]
+            else:
+                cand = list(lp[rng.randrange(m)])
+            nb = [u for u in cand if u in adj and len(adj[u]) < d]
+            if len(nb) < 2:
+                continue
+            x = nxt
+            nxt += 1
+            for u in nb:
+                link(x, u)
+            if not ok():
+                unlink(x)
+                continue
+        elif r < 0.75:
+            if not adj:
+                continue
+            keys = list(adj)
+            u = rng.choice(keys)
+            if len(adj[u]) >= d:
+                continue
+            v = rng.choice(list(adj[u]))
+            w = rng.choice(list(adj[v]))
+            z = rng.choice(list(adj[w]))
+            if z == u or z in adj[u] or len(adj[z]) >= d:
+                continue
+            link(u, z)
+            if not ok():
+                adj[u].discard(z)
+                adj[z].discard(u)
+                continue
+        else:
+            if not adj or rng.random() >= math.exp(-1.0 / T):
+                continue
+            v = rng.choice(list(adj))
+            nb = unlink(v)
+            if not ok():
+                for u in nb:
+                    link(v, u)
+                continue
+
+        cnt = len(adj)
+        if cnt > best_cnt:
+            best_cnt = cnt
+            best_E = raw()
+            stale = 0
+
+    n, E = lib.relabel(best_E)
+    if lib.is_valid(n, E, d, D):
+        return n, E
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Generalized quadrangle baseline (D = 4).
+# ----------------------------------------------------------------------------
+
+def _gq_w(q):
+    """Incidence graph of points and lines of W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Simulated annealing over bi-Cayley voltage lifts (for D >= 4 and fallbacks).
+# ----------------------------------------------------------------------------
+
+def _sample_group(G, rng):
+    for _ in range(80):
+        k2 = rng.choice([1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+        if G % k2:
+            continue
+        m = G // k2
+        if m < 2:
+            continue
+        if k2 == 1:
+            r = 1
+        else:
+            cands = [r for r in rng.sample(range(1, m), min(m - 1, 60))
+                     if math.gcd(r, m) == 1 and pow(r, k2, m) == 1 % m]
+            if not cands:
+                continue
+            r = rng.choice(cands)
+        try:
+            order, mul, _ = lib.semidirect_group(m, k2, r)
+        except ValueError:
+            continue
+        return order, mul
+    return None
+
+
+def _right_perm(mul, G, s):
+    return [mul(g, s) for g in range(G)]
+
+
+def _cost(k, G, D, darts, perms):
+    if len({(i, j, s) for i, j, s in darts}) < len(darts):
+        return _BIG
+    N = 2 * k * G
+    adj = [[] for _ in range(N)]
+    for (i, j, _s), pm in zip(darts, perms):
+        base_a = i * G
+        base_b = (k + j) * G
+        for g in range(G):
+            a = base_a + g
+            b = base_b + pm[g]
+            adj[a].append(b)
+            adj[b].append(a)
+    reps = [i * G for i in range(k)] + [(k + j) * G for j in range(k)]
+    total = 0
+    for src in reps:
+        seen = [False] * N
+        seen[src] = True
+        frontier = [src]
+        count = 1
+        for _ in range(D):
+            nxt = []
+            for u in frontier:
+                for v in adj[u]:
+                    if not seen[v]:
+                        seen[v] = True
+                        nxt.append(v)
+            count += len(nxt)
+            frontier = nxt
+            if not frontier:
+                break
+        total += N - count
+    return total
+
+
+def _edges(k, G, darts, perms):
+    E = set()
+    for (i, j, _s), pm in zip(darts, perms):
+        for g in range(G):
+            E.add((i * G + g, (k + j) * G + pm[g]))
+    return 2 * k * G, sorted(E)
+
+
+def _anneal(d, D, k, G, mul, rng, deadline, iters):
+    darts = []
+    for _ in range(d):
+        p = rng.sample(range(k), k)
+        for i in range(k):
+            darts.append([i, p[i], rng.randrange(G)])
+    perms = [_right_perm(mul, G, s) for _, _, s in darts]
+    cost = _cost(k, G, D, darts, perms)
+
+    T = 1.0
+    for _ in range(iters):
+        if cost == 0 or time.monotonic() > deadline:
+            break
+        T = max(0.05, T * 0.997)
+
+        if rng.random() < 0.7 or k == 1:
+            idx = rng.randrange(len(darts))
+            old_s = darts[idx][2]
+            new_s = rng.randrange(G)
+            if new_s == old_s:
+                continue
+            old_perm = perms[idx]
+            darts[idx][2] = new_s
+            perms[idx] = _right_perm(mul, G, new_s)
+            c2 = _cost(k, G, D, darts, perms)
+            delta = c2 - cost
+            if delta <= 0 or rng.random() < math.exp(-delta / T):
+                cost = c2
+            else:
+                darts[idx][2] = old_s
+                perms[idx] = old_perm
+        else:
+            L = rng.randrange(d)
+            a, b = rng.sample(range(k), 2)
+            ia, ib = L * k + a, L * k + b
+            darts[ia][1], darts[ib][1] = darts[ib][1], darts[ia][1]
+            c2 = _cost(k, G, D, darts, perms)
+            delta = c2 - cost
+            if delta <= 0 or rng.random() < math.exp(-delta / T):
+                cost = c2
+            else:
+                darts[ia][1], darts[ib][1] = darts[ib][1], darts[ia][1]
+
+    if cost == 0:
+        return _edges(k, G, darts, perms)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Driver.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    deadline = start + 0.8 * time_limit
+    rng = random.Random(seed)
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2, valid for D >= 2.
+    n0, e0 = lib.haar_graph(d, range(d))
+    best = [n0, e0]
+    moore = lib.moore_bound(d, D)
+
+    def consider(n, e):
+        if n > best[0] and lib.is_valid(n, e, d, D):
+            best[0], best[1] = n, e
+
+    if best[0] >= moore:
+        return best[0], best[1]
+
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+        if best[0] < moore:
+            arcs = _arc_candidates(d, start + 0.12 * time_limit,
+                                   random.Random(seed * 7919 + d))
+            for n_c, e_c, _m, _pl, _lp in arcs:
+                consider(n_c, e_c)
+
+            if arcs and best[0] < moore:
+                bn, be, m, pl, lp = arcs[0]
+                gn, ge = _grow(bn, be, d, D, time.monotonic() + 0.05 * time_limit, rng)
+                if gn != bn and lib.is_valid(gn, ge, d, D):
+                    consider(gn, ge)
+                    bn, be = gn, ge
+                # Validity-checked local search from the largest arc-type graph.
+                res = _local_search(bn, be, m, pl, lp, d, D, deadline,
+                                    random.Random(seed * 31 + 7))
+                if res is not None:
+                    consider(res[0], res[1])
+
+    if D >= 4:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+            n2, e2 = _grow(gq[0], gq[1], d, D, start + 0.4 * time_limit, rng)
+            consider(n2, e2)
+
+    # Annealed voltage lifts for everything else (and leftover time).
+    ks = [1, 2, 2, 3, 4] if D >= 5 else [1, 1, 2, 3]
+    while time.monotonic() < deadline:
+        if best[0] >= moore:
+            break
+        k = rng.choice(ks)
+        base = best[0] // (2 * k)
+        G = max(2, base + 1 + rng.randrange(0, max(3, base // 8 + 1)))
+        g = _sample_group(G, rng)
+        if g is None:
+            continue
+        order, mul = g
+        res = _anneal(d, D, k, order, mul, rng, deadline, iters=400)
+        if res is not None:
+            consider(res[0], res[1])
+
+    n, e = best[0], best[1]
+    if not lib.is_valid(n, e, d, D):
+        n, e = lib.haar_graph(d, range(d))
+    return n, e
