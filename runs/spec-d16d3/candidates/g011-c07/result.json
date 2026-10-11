@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d16D3": {
+      "case_id": "d16D3",
+      "reason": "crash: tes\n    S = _pack(m, s, point_lines, rng, deadline, 60000, seeds)\n  File \"/home/user/math/runs/spec-d16d3/candidates/g011-c07/program.py\", line 88, in _pack\n    if not chosen[i] and all(load[t] < s for t in incid[i]):\n           ~~~~~~^^^\nTypeError: list indices must be integers or slices, not list\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.16782957000032184
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 42.12780314199881
+    }
+  },
+  "fitness": 0.047619047619047616
+}
