@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11440275399991151
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: in build\n    c2, st2 = _search(d, D, k, G, Ts, rng, slice_end, 3000,\n              ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                      init=state, kick=_ILS_KICKS)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: _search() missing 1 required positional argument: 'iters'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.46873932400012563
+    }
+  },
+  "fitness": 0.047619047619047616
+}

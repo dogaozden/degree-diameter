@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16943801000002168
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d5-w2/candidates/g002-c26/program.py\", line 247, in _anneal\n    l = rng.randrange(d)\n  File \"/usr/lib/python3.13/random.py\", line 313, in randrange\n    raise ValueError(\"empty range for randrange()\")\nValueError: empty range for randrange()\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.21868140999981733
+    }
+  },
+  "fitness": 0.047619047619047616
+}
