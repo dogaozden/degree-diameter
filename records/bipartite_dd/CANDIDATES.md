@@ -14,6 +14,7 @@ page last edited 2022.
 | (5, 5) | 336 | **344** | 676 | 5-regular, 172 + 172, 860 edges | C island c-d5d5, g003-c05 | d5D5/344-c-d5d5-g003-c05.json |
 | (7, 4) | 346 | **356** | 518 | degrees 6–7, 174 + 182, 1218 edges | Python island spec-d7d4, g004-c23 | d7D4/356-spec-d7d4-g004-c23.json |
 | (11, 3) | 190 | **192** | 220 | 11-regular, 96 + 96 | C island c-d3fam, g001-c00 | d11D3/192-c-d3fam-g001-c00.json |
+| (13, 3) | 274 | **276** | 314 | 13-regular, 138 + 138, 1794 edges | C island c-d3fam, g003-c19 | d13D3/276-c-d3fam-g003-c19.json |
 | (11, 4) | 1734 | **1773** | 2222 | degrees 10–11, 871 + 902, 9530 edges | Python island spec-d11d4, g004-c01 | d11D4/1773-spec-d11d4-g004-c01.json |
 
 Upper bounds are the wiki's "lowest known upper bounds" table. Every graph sits below its bound.
@@ -28,14 +29,14 @@ Other verified graphs that beat the table, kept as independent confirmations:
 
 ## Verification (2026-10-10, on the Mac)
 
-1. All eight graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
+1. All nine graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
    from-scratch check (adjacency sets, explicit 2-colouring, BFS from every vertex for the exact diameter).
    For 1773, the from-scratch check ran 1773 searches (33.8 million edge steps) and every vertex has
    eccentricity exactly 4. All three checkers also reject two sabotaged copies of that graph
    (a pendant vertex, which makes the diameter 5, and one extra edge inside a side, which makes an odd cycle).
 2. Each generating program (saved next to its graph as `*.program.py`) was re-run fresh on a different
    machine than the cloud island that found it, with seed 0 and a 60 s limit, and rebuilt the same order:
-   162, 162, 344, 349, 354, 356, 192, 1773.
+   162, 162, 344, 349, 354, 356, 192, 276, 1773.
 
 Re-run the check: `python scripts/verify_record.py records/bipartite_dd/d11D4/1773-spec-d11d4-g004-c01.json 11 4`
 
@@ -49,6 +50,7 @@ Who holds each beaten entry, from the wiki table's colour key:
 | (5, 5) | 336 | Eyal Loz, in the project "The degree/diameter problem for several classes of graphs" (Loz, Pérez-Rosés, Pineda-Villavicencio) |
 | (7, 4) | 346 | a graph duplication by Delorme and Farhi |
 | (11, 3) | 190 | Feria-Purón, Miller and Pineda-Villavicencio, and independently Araujo-Pardo and López |
+| (13, 3) | 274 | Araujo-Pardo and López (2022) |
 | (11, 4) | 1734 | a graph duplication by Delorme and Farhi |
 
 Sources:
