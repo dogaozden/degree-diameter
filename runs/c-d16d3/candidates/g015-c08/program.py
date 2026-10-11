@@ -1,0 +1,436 @@
+"""Starter program: Python builds the best known start graph, the C engine searches from it.
+
+Changes in this version:
+  * The C engine spends about half its budget on grow-by-two from the start graph, then
+    switches to a different family: simulated annealing on a FRESH random d-regular
+    bipartite graph with n+2 vertices, minimising the number of pairs farther than D apart.
+  * Lift search is removed (it only helps cases that are not scored on this island).
+  * build() keeps the largest valid structured graph as a fallback.
+"""
+import time
+
+import lib
+
+C_SOURCE = r'''
+#define _POSIX_C_SOURCE 200809L
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define MAXN 1024
+#define MAXD 32
+#define MAXW (MAXN / 64)
+
+typedef struct {
+    int n;
+    int deg[MAXN];
+    int adj[MAXN][MAXD];
+    unsigned char side[MAXN];
+} Graph;
+
+static int d, D;
+static double t_end;
+
+static double now(void) {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ts.tv_sec + ts.tv_nsec * 1e-9;
+}
+
+static uint64_t rs = 88172645463325252ULL;
+static uint64_t rnd(void) {
+    rs ^= rs << 13;
+    rs ^= rs >> 7;
+    rs ^= rs << 17;
+    return rs;
+}
+static int rndint(int k) { return (int)(rnd() % (uint64_t)k); }
+static double rnd01(void) { return (rnd() >> 11) * (1.0 / 9007199254740992.0); }
+
+static long moore_bound(void) {
+    if (D <= 0 || d <= 0) return 1;
+    if (d == 1) return 2;
+    if (d == 2) return 2L * D;
+    long s = 0, p = 1;
+    for (int i = 0; i < D; i++) {
+        s += p;
+        p *= (d - 1);
+        if (s > 100000000L) break;
+    }
+    return 2 * s;
+}
+
+static int has_edge(const Graph *g, int u, int v) {
+    for (int i = 0; i < g->deg[u]; i++)
+        if (g->adj[u][i] == v) return 1;
+    return 0;
+}
+
+static void add_edge(Graph *g, int u, int v) {
+    g->adj[u][g->deg[u]++] = v;
+    g->adj[v][g->deg[v]++] = u;
+}
+
+static void del_half(Graph *g, int u, int v) {
+    for (int i = 0; i < g->deg[u]; i++)
+        if (g->adj[u][i] == v) {
+            g->adj[u][i] = g->adj[u][--g->deg[u]];
+            return;
+        }
+}
+
+static void del_edge(Graph *g, int u, int v) {
+    del_half(g, u, v);
+    del_half(g, v, u);
+}
+
+static void copy_graph(Graph *dst, const Graph *src) {
+    dst->n = src->n;
+    for (int v = 0; v < src->n; v++) {
+        dst->deg[v] = src->deg[v];
+        dst->side[v] = src->side[v];
+        memcpy(dst->adj[v], src->adj[v], sizeof(int) * src->deg[v]);
+    }
+}
+
+static uint64_t RA[MAXN * MAXW], RB[MAXN * MAXW];
+static int badv[MAXN];
+
+/* Number of unordered pairs at distance > D. */
+static long bad_pairs(const Graph *g) {
+    int n = g->n, W = (n + 63) / 64;
+    uint64_t *cur = RA, *nxt = RB;
+    memset(cur, 0, sizeof(uint64_t) * (size_t)n * W);
+    for (int v = 0; v < n; v++) cur[(size_t)v * W + v / 64] |= 1ULL << (v % 64);
+    for (int r = 0; r < D; r++) {
+        for (int v = 0; v < n; v++) {
+            uint64_t *dst = nxt + (size_t)v * W;
+            const uint64_t *src = cur + (size_t)v * W;
+            for (int w = 0; w < W; w++) dst[w] = src[w];
+            for (int i = 0; i < g->deg[v]; i++) {
+                const uint64_t *s = cur + (size_t)g->adj[v][i] * W;
+                for (int w = 0; w < W; w++) dst[w] |= s[w];
+            }
+        }
+        uint64_t *t = cur;
+        cur = nxt;
+        nxt = t;
+    }
+    long total = 0;
+    for (int v = 0; v < n; v++) {
+        int c = 0;
+        const uint64_t *s = cur + (size_t)v * W;
+        for (int w = 0; w < W; w++) c += __builtin_popcountll(s[w]);
+        badv[v] = n - c;
+        total += n - c;
+    }
+    return total / 2;
+}
+
+static int is_valid(const Graph *g) {
+    if (g->n <= 0 || g->n > MAXN) return 0;
+    for (int v = 0; v < g->n; v++) {
+        if (g->deg[v] > d) return 0;
+        for (int i = 0; i < g->deg[v]; i++) {
+            int u = g->adj[v][i];
+            if (u < 0 || u >= g->n || u == v || g->side[u] == g->side[v]) return 0;
+            for (int j = 0; j < i; j++)
+                if (g->adj[v][j] == u) return 0;
+        }
+    }
+    return bad_pairs(g) == 0;
+}
+
+static void read_start(Graph *g) {
+    int n, m;
+    g->n = 0;
+    if (scanf("%d %d", &n, &m) != 2 || n <= 0 || n > MAXN) return;
+    g->n = n;
+    for (int v = 0; v < n; v++) { g->deg[v] = 0; g->side[v] = 255; }
+    for (int e = 0; e < m; e++) {
+        int u, v;
+        if (scanf("%d %d", &u, &v) != 2 || u < 0 || v < 0 || u >= n || v >= n ||
+            g->deg[u] >= MAXD || g->deg[v] >= MAXD) { g->n = 0; return; }
+        add_edge(g, u, v);
+    }
+    static int queue[MAXN];
+    for (int s = 0; s < n; s++) {
+        if (g->side[s] != 255) continue;
+        int head = 0, tail = 0;
+        g->side[s] = 0;
+        queue[tail++] = s;
+        while (head < tail) {
+            int v = queue[head++];
+            for (int i = 0; i < g->deg[v]; i++) {
+                int u = g->adj[v][i];
+                if (g->side[u] == 255) { g->side[u] = 1 - g->side[v]; queue[tail++] = u; }
+                else if (g->side[u] == g->side[v]) { g->n = 0; return; }
+            }
+        }
+    }
+    if (!is_valid(g)) g->n = 0;
+}
+
+static void print_graph(const Graph *g) {
+    long m = 0;
+    for (int u = 0; u < g->n; u++)
+        for (int i = 0; i < g->deg[u]; i++)
+            if (u < g->adj[u][i]) m++;
+    printf("%d %ld\n", g->n, m);
+    for (int u = 0; u < g->n; u++)
+        for (int i = 0; i < g->deg[u]; i++)
+            if (u < g->adj[u][i]) printf("%d %d\n", u, g->adj[u][i]);
+}
+
+static void complete_bipartite(Graph *g) {
+    g->n = 2 * d;
+    for (int v = 0; v < g->n; v++) { g->deg[v] = 0; g->side[v] = v >= d; }
+    for (int a = 0; a < d; a++)
+        for (int b = 0; b < d; b++) add_edge(g, a, d + b);
+}
+
+/* Grow by two: insert one vertex per side with d-1 stolen edges, then anneal edge swaps. */
+static int grow_once(const Graph *best, Graph *work, double until) {
+    int n = best->n;
+    if (n + 2 > moore_bound() || n + 2 > MAXN) return 0;
+    copy_graph(work, best);
+    int x = n, y = n + 1;
+    work->n = n + 2;
+    work->deg[x] = work->deg[y] = 0;
+    work->side[x] = 0;
+    work->side[y] = 1;
+    add_edge(work, x, y);
+    static int used[MAXN];
+    static int stamp = 0;
+    stamp++;
+    used[x] = used[y] = stamp;
+    for (int k = 0, tries = 0; k < d - 1 && tries < 100000; tries++) {
+        int a = rndint(n);
+        if (work->side[a] != 0 || used[a] == stamp || work->deg[a] == 0) continue;
+        int b = work->adj[a][rndint(work->deg[a])];
+        if (used[b] == stamp || b >= n) continue;
+        del_edge(work, a, b);
+        add_edge(work, x, b);
+        add_edge(work, y, a);
+        used[a] = used[b] = stamp;
+        k++;
+    }
+    long bad = bad_pairs(work);
+    double T = 1.0;
+    long it = 0;
+    while (bad > 0) {
+        if ((++it & 15) == 0 && now() > until) return 0;
+        int v = rndint(work->n);
+        for (int tries = 0; tries < 30 && badv[v] == 0; tries++) v = rndint(work->n);
+        if (work->deg[v] == 0) continue;
+        int u = work->adj[v][rndint(work->deg[v])];
+        int s = rndint(work->n);
+        if (work->side[s] != work->side[v] || s == v || work->deg[s] == 0) continue;
+        int t = work->adj[s][rndint(work->deg[s])];
+        if (t == u || has_edge(work, v, t) || has_edge(work, s, u)) continue;
+        del_edge(work, v, u);
+        del_edge(work, s, t);
+        add_edge(work, v, t);
+        add_edge(work, s, u);
+        long nb = bad_pairs(work);
+        if (nb <= bad || rnd01() < exp((double)(bad - nb) / T)) {
+            bad = nb;
+        } else {
+            del_edge(work, v, t);
+            del_edge(work, s, u);
+            add_edge(work, v, u);
+            add_edge(work, s, t);
+        }
+        T *= 0.9995;
+        if (T < 0.05) T = 1.0;
+    }
+    return is_valid(work);
+}
+
+static void grow_search(Graph *best, double until) {
+    static Graph work;
+    while (now() < until && best->n + 2 <= moore_bound()) {
+        double left = until - now();
+        double slice = left < 4.0 ? left : (left / 4 > 4.0 ? left / 4 : 4.0);
+        if (grow_once(best, &work, now() + slice)) copy_graph(best, &work);
+    }
+}
+
+/* Random d-regular simple bipartite graph on N + N vertices: circulant start, then
+ * degree-preserving double edge swaps. */
+static void regular_bipartite(Graph *g, int N) {
+    g->n = 2 * N;
+    for (int v = 0; v < g->n; v++) { g->deg[v] = 0; g->side[v] = v >= N; }
+    for (int a = 0; a < N; a++)
+        for (int s = 0; s < d; s++) add_edge(g, a, N + (a + s) % N);
+    long E = (long)N * d;
+    for (long k = 0; k < 20L * E; k++) {
+        int a = rndint(N), c = rndint(N);
+        if (a == c) continue;
+        int b = g->adj[a][rndint(g->deg[a])];
+        int e = g->adj[c][rndint(g->deg[c])];
+        if (b == e || has_edge(g, a, e) || has_edge(g, c, b)) continue;
+        del_edge(g, a, b);
+        del_edge(g, c, e);
+        add_edge(g, a, e);
+        add_edge(g, c, b);
+    }
+}
+
+/* Simulated annealing on a fresh random d-regular bipartite graph with n vertices.
+ * Objective: number of pairs at distance > D. Returns 1 and fills out if it reaches 0. */
+static int fresh_anneal(Graph *out, int n, double until) {
+    static Graph cur;
+    int N = n / 2;
+    if (N < d || n > MAXN) return 0;
+    regular_bipartite(&cur, N);
+    long bad = bad_pairs(&cur);
+    double T = 2.0;
+    long it = 0;
+    while (bad > 0) {
+        if ((++it & 7) == 0 && now() > until) return 0;
+        int a = rndint(N), c = rndint(N);
+        if (a == c) continue;
+        int b = cur.adj[a][rndint(cur.deg[a])];
+        int e = cur.adj[c][rndint(cur.deg[c])];
+        if (b == e || has_edge(&cur, a, e) || has_edge(&cur, c, b)) continue;
+        del_edge(&cur, a, b);
+        del_edge(&cur, c, e);
+        add_edge(&cur, a, e);
+        add_edge(&cur, c, b);
+        long nb = bad_pairs(&cur);
+        if (nb <= bad || rnd01() < exp((double)(bad - nb) / T)) {
+            bad = nb;
+        } else {
+            del_edge(&cur, a, e);
+            del_edge(&cur, c, b);
+            add_edge(&cur, a, b);
+            add_edge(&cur, c, e);
+        }
+        T *= 0.9999;
+        if (T < 0.1) T = 2.0;
+    }
+    if (!is_valid(&cur)) return 0;
+    copy_graph(out, &cur);
+    return 1;
+}
+
+int main(int argc, char **argv) {
+    if (argc < 5) {
+        fprintf(stderr, "usage: %s d D seed time_limit < start_graph\n", argv[0]);
+        return 2;
+    }
+    d = atoi(argv[1]);
+    D = atoi(argv[2]);
+    long seed = atol(argv[3]);
+    double limit = atof(argv[4]);
+    double t0 = now();
+    t_end = t0 + limit * 0.9;
+    rs ^= (uint64_t)(seed + 1) * 0x9E3779B97F4A7C15ULL;
+    if (!rs) rs = 1;
+    for (int i = 0; i < 10; i++) rnd();
+
+    static Graph best;
+    if (d < 1 || D < 1 || d > MAXD) { complete_bipartite(&best); print_graph(&best); return 0; }
+    read_start(&best);
+    if (best.n == 0) complete_bipartite(&best);
+
+    if (D >= 2 && d >= 2 && best.n < moore_bound()) {
+        grow_search(&best, t0 + (t_end - t0) * 0.5);
+        static Graph fresh;
+        while (now() < t_end && best.n + 2 <= moore_bound() && best.n + 2 <= MAXN) {
+            if (fresh_anneal(&fresh, best.n + 2, t_end)) copy_graph(&best, &fresh);
+            else break;
+        }
+    }
+    if (!is_valid(&best)) complete_bipartite(&best);
+    print_graph(&best);
+    return 0;
+}
+'''
+
+
+def known_start(d, D):
+    """Best graph Python can build directly for (d, D), or None."""
+    if D == 3 and lib.is_prime_power(d - 1):
+        return lib.projective_plane_incidence(d - 1)   # Moore graph: optimal
+    if D == 3 and d - 2 >= 3 and lib.is_prime_power(d - 2):
+        return lib.araujo_lopez_graph(d - 2)
+    return None
+
+
+def conic_blowup(d, D):
+    """Twin blow-up of PG(2,q), q = d-3 odd: conic points and dual-conic lines duplicated once.
+
+    Gives 2(q^2+q+1) + 2(q+1) vertices (394 for d = 16). Within the twin family this is
+    optimal, since a copy set must meet every line in at most 2 points (an arc, size <= q+1).
+    """
+    q = d - 3
+    if D != 3 or q < 3 or q % 2 == 0 or not lib.is_prime_power(q):
+        return None
+    F = lib.GF(q)
+    pts = lib.projective_points(q)
+    index = {v: i for i, v in enumerate(pts)}
+    m = len(pts)
+    conic = [(1, t, F.mul(t, t)) for t in range(q)] + [(0, 0, 1)]
+    if any(v not in index for v in conic):
+        return None
+    arc = [index[v] for v in conic]
+    n0, base = lib.projective_plane_incidence(q)
+    pcopy = {i: [i] for i in range(m)}
+    lcopy = {j: [m + j] for j in range(m)}
+    n = n0
+    for i in arc:
+        pcopy[i].append(n)
+        n += 1
+    for j in arc:
+        lcopy[j].append(n)
+        n += 1
+    edges = set()
+    for u, v in base:
+        i, j = u, v - m
+        for a in pcopy[i]:
+            for b in lcopy[j]:
+                edges.add((a, b) if a < b else (b, a))
+    return n, sorted(edges)
+
+
+def starts(d, D):
+    out = []
+    ks = known_start(d, D)
+    if ks is not None:
+        out.append(ks)
+    cb = conic_blowup(d, D)
+    if cb is not None:
+        out.append(cb)
+    return out
+
+
+def build(d, D, seed, time_limit):
+    t0 = time.monotonic()
+    start = None
+    for cand in starts(d, D):
+        try:
+            ok = lib.is_valid(cand[0], cand[1], d, D)
+        except Exception:
+            ok = False
+        if ok and (start is None or cand[0] > start[0]):
+            start = cand
+    best = start if start is not None else lib.haar_graph(d, range(d))   # K_{d,d}: always valid
+
+    budget = 0.8 * time_limit - (time.monotonic() - t0) - 2.0
+    if best[0] >= lib.moore_bound(d, D):
+        budget = min(budget, 0.5)
+    if budget > 0.2:
+        try:
+            text = lib.run_c(C_SOURCE, [d, D, seed, budget], stdin_graph=start,
+                             timeout=budget + 10)
+            out = lib.parse_graph_text(text)
+            if out[0] > best[0] and lib.is_valid(*out, d, D):
+                best = out
+        except Exception:
+            pass   # keep the valid structured fallback
+    return best
