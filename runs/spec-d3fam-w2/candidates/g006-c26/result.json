@@ -1,0 +1,41 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash: ogram.py\", line 256, in build\n    res = _orbit_search(d, N, groups, rng, deadline)\n  File \"/home/user/math/runs/spec-d3fam-w2/candidates/g006-c26/program.py\", line 147, in _orbit_search\n    mul, inv = groups[rng.randrange(len(groups))]\n    ^^^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 9.939911774000393
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash: ogram.py\", line 256, in build\n    res = _orbit_search(d, N, groups, rng, deadline)\n  File \"/home/user/math/runs/spec-d3fam-w2/candidates/g006-c26/program.py\", line 147, in _orbit_search\n    mul, inv = groups[rng.randrange(len(groups))]\n    ^^^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 9.956423372000245
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "crash: ogram.py\", line 256, in build\n    res = _orbit_search(d, N, groups, rng, deadline)\n  File \"/home/user/math/runs/spec-d3fam-w2/candidates/g006-c26/program.py\", line 147, in _orbit_search\n    mul, inv = groups[rng.randrange(len(groups))]\n    ^^^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 9.998448816999371
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.14893439400020725
+    }
+  },
+  "fitness": 0.01639344262295082
+}
