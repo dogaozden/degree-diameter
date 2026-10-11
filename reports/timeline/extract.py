@@ -36,9 +36,12 @@ def git(*a):
 
 def freshest(run_id):
     best = None
-    for line in git("for-each-ref", "--format=%(refname:short) %(committerdate:unix)", f"refs/remotes/origin/{run_id}",
-                    f"refs/remotes/origin/claude/{run_id}-evolve-run-*").splitlines():
+    # Cloud sessions name their branches freely, so take any branch whose name contains the id
+    # and that carries this island's run folder.
+    for line in git("for-each-ref", "--format=%(refname:short) %(committerdate:unix)", "refs/remotes/origin/").splitlines():
         ref, t = line.rsplit(" ", 1)
+        if run_id not in ref or subprocess.run(["git", "cat-file", "-e", f"{ref}:runs/{run_id}/status.md"]).returncode:
+            continue
         if best is None or int(t) > best[1]:
             best = (ref, int(t))
     return best[0] if best else None
