@@ -2,7 +2,7 @@
 
 Problem: bipartite_dd
 Generations done: 7 of 61 (including generation 0)
-Total mutator calls: 96
+Total mutator calls: 104
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
