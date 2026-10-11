@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11869575299897406
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash:  * dupcount()\n           ~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d5/candidates/g018-c30/program.py\", line 228, in _unreached\n    return 2 * k * N - int(_POP[reach].sum())\n                           ~~~~^^^^^^^\nIndexError: index 1048575 is out of bounds for axis 0 with size 65536\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.956946758000413
+    }
+  },
+  "fitness": 0.047619047619047616
+}
