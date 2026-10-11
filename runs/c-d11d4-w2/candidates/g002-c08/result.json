@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: D, ils_end, rng, consider)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/c-d11d4-w2/candidates/g002-c08/program.py\", line 477, in _ruin_recreate\n    rn, re = _saturate_edges(rn, re, d, rng)\n    ^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 2.2770155340001565
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 54.160579280999855
+    }
+  },
+  "fitness": 0.047619047619047616
+}
