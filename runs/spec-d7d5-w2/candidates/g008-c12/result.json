@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.1672590769994713
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: 5 * budget, st, consider)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d5-w2/candidates/g008-c12/program.py\", line 333, in _bicayley_phase\n    trials = {k: 0 for k in _KS}\n                            ^^^\nNameError: name '_KS' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 28.171750991999943
+    }
+  },
+  "fitness": 0.047619047619047616
+}
