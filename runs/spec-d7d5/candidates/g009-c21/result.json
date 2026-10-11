@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11441738000030455
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: , d, D, rng, deadline)\n  File \"/home/user/math/runs/spec-d7d5/candidates/g009-c21/program.py\", line 285, in _grow_step\n    rng.shuffle(order)\n    ~~~~~~~~~~~^^^^^^^\n  File \"/usr/lib/python3.13/random.py\", line 360, in shuffle\n    j = randbelow(i + 1)\nRecursionError: maximum recursion depth exceeded\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 30.997238949999883
+    }
+  },
+  "fitness": 0.047619047619047616
+}
