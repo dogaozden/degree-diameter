@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16496698700007073
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "crash: (_gq_w(q))\n               ~~~~~^^^\n  File \"/home/user/math/runs/c-d4d5-w2/candidates/g018-c05/program.py\", line 529, in _gq_w\n    pts = [v for v in itertools.product(range(q), repeat=4)\n                      ^^^^^^^^^\nNameError: name 'itertools' is not defined. Did you forget to import 'itertools'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.172972001999824
+    }
+  },
+  "fitness": 0.047619047619047616
+}
