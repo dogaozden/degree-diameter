@@ -1,0 +1,167 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.625747373000195
+    },
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.669241351000892
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.6476756510001
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.64630162299909
+    },
+    "d16D3": {
+      "case_id": "d16D3",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.650258912000936
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16506383100022504
+    },
+    "d3D4": {
+      "case_id": "d3D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 30.0,
+      "wall_s": 0.114565848998609
+    },
+    "d3D5": {
+      "case_id": "d3D5",
+      "reason": "crash: d(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 555, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.1253008900002897
+    },
+    "d4D3": {
+      "case_id": "d4D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 26.0,
+      "wall_s": 0.11457844100004877
+    },
+    "d4D4": {
+      "case_id": "d4D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 80.0,
+      "wall_s": 0.11821686100120132
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "crash: d(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 555, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.135655219999535
+    },
+    "d5D3": {
+      "case_id": "d5D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 42.0,
+      "wall_s": 0.11459296099928906
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: d(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 555, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.1272510849994433
+    },
+    "d6D3": {
+      "case_id": "d6D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 62.0,
+      "wall_s": 0.11459069900047325
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash: d(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 555, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.12583455999993
+    },
+    "d7D3": {
+      "case_id": "d7D3",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.636514687001181
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: d(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 555, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 7.640971615999661
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: y\", line 534, in build\n    g = _sample_group_rng(G, rng)\n  File \"/home/user/math/runs/island-1/candidates/g007-c12/program.py\", line 452, in _sample_group_rng\n    return _sample_group(G, rng)\n           ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined. Did you mean: '_sample_group_rng'?\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.161894445998769
+    }
+  },
+  "fitness": 0.125
+}
