@@ -1,0 +1,167 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.2648805570006516
+    },
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 15.781692945000032
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.36526630699972884
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.5187219420004112
+    },
+    "d16D3": {
+      "case_id": "d16D3",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.0208389520003038
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11579642000015156
+    },
+    "d3D4": {
+      "case_id": "d3D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 30.0,
+      "wall_s": 0.16484131299966975
+    },
+    "d3D5": {
+      "case_id": "d3D5",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.1144405770000958
+    },
+    "d4D3": {
+      "case_id": "d4D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 26.0,
+      "wall_s": 0.11469294099970284
+    },
+    "d4D4": {
+      "case_id": "d4D4",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 80.0,
+      "wall_s": 0.11813629900007072
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 12.409619390000444
+    },
+    "d5D3": {
+      "case_id": "d5D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 42.0,
+      "wall_s": 0.11452354399989417
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 13.966599406000569
+    },
+    "d6D3": {
+      "case_id": "d6D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 62.0,
+      "wall_s": 0.1144485929999064
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 11.851639187999353
+    },
+    "d7D3": {
+      "case_id": "d7D3",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.16443620300015027
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 14.146918675999586
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash:  in main\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/island-1-w2/candidates/g005-c09/program.py\", line 537, in build\n    g = _sample_group(G, rng)\n        ^^^^^^^^^^^^^\nNameError: name '_sample_group' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 12.977376290999928
+    }
+  },
+  "fitness": 0.125
+}
