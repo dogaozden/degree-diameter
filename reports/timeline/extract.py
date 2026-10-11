@@ -62,18 +62,38 @@ for run_id, ref in runs:
         meta, path = line.split("\t")
         if path.endswith(("/meta.json", "/result.json")):
             want.append((run_id, path.split("/")[3], path.rsplit("/", 1)[1], meta.split()[2]))
-proc = subprocess.run(["git", "cat-file", "--batch"], input="\n".join(w[3] for w in want) + "\n",
-                      capture_output=True, text=True, check=True)
-out, pos, blobs = proc.stdout, 0, []
-for _ in want:
-    header_end = out.index("\n", pos)
-    size = int(out[pos:header_end].split()[2])
-    raw = out[header_end + 1: header_end + 1 + size]
-    blobs.append(raw)
-    pos = header_end + 1 + size + 1
+# Candidate files can be large (meta.json holds the whole Haiku prompt and reply), so keep only the few fields
+# we need, cached by blob id, and stream just the new blobs through one `git cat-file --batch`.
+CACHE = OUT / ".blobcache.json"
+cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+
+
+def slim(kind, raw):
+    d = json.loads(raw)
+    if kind == "meta.json":
+        return {"created": d.get("created"), "calls": (d.get("mutator") or {}).get("calls", 0) or 0}
+    return {"cases": {c: {"valid": v.get("valid"), "value": v.get("value")} for c, v in (d.get("cases") or {}).items()}}
+
+
+new_ids = sorted({w[3] for w in want if w[3] not in cache})
+if new_ids:
+    kinds = {w[3]: w[2] for w in want}
+    proc = subprocess.Popen(["git", "cat-file", "--batch"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    import threading
+    threading.Thread(target=lambda: (proc.stdin.write(("\n".join(new_ids) + "\n").encode()), proc.stdin.close()), daemon=True).start()
+    for sha in new_ids:
+        header = proc.stdout.readline().split()
+        size = int(header[2])
+        raw = proc.stdout.read(size); proc.stdout.read(1)
+        try:
+            cache[sha] = slim(kinds[sha], raw)
+        except ValueError:
+            cache[sha] = {}
+    proc.wait()
+    CACHE.write_text(json.dumps(cache, separators=(",", ":")))
 cands = {}
-for (run_id, cid, kind, _), raw in zip(want, blobs):
-    cands.setdefault((run_id, cid), {})[kind] = json.loads(raw)
+for run_id, cid, kind, sha in want:
+    cands.setdefault((run_id, cid), {})[kind] = cache.get(sha, {})
 
 rows = []  # (time, run_id, cid, haiku_written, {case: value})
 for (run_id, cid), files in cands.items():
@@ -81,7 +101,7 @@ for (run_id, cid), files in cands.items():
     t = datetime.fromisoformat(meta["created"]) if meta.get("created") else None
     if t is None:
         continue
-    calls = (meta.get("mutator") or {}).get("calls", 0) or 0
+    calls = meta.get("calls", 0) or 0
     vals = {c: v["value"] for c, v in (res.get("cases") or {}).items() if v.get("valid") and c in TARGETS}
     rows.append((t, run_id, cid, calls > 0, vals))
 rows.sort(key=lambda r: r[0])
