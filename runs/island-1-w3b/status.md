@@ -2,7 +2,7 @@
 
 Problem: bipartite_dd
 Generations done: 4 of 61 (including generation 0)
-Total mutator calls: 48
+Total mutator calls: 56
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -18,7 +18,7 @@ Total mutator calls: 48
 | d5D5 | target | 336 | 676 | 344 NEW | g000-i00 |
 | d6D5 | target | 684 | 1556 | 602 | g002-c14 |
 | d7D5 | target | 1134 | 3106 | 906 | g000-i02 |
-| d7D4 | target | 346 | 518 | 342 | g002-c12 |
+| d7D4 | target | 346 | 518 | 343 | g004-c03 |
 | d11D4 | target | 1734 | 2222 | 1684 | g002-c08 |
 | d11D3 | target | 190 | 220 | 190 = | g000-i00 |
 | d13D3 | target | 274 | 314 | 274 = | g000-i00 |

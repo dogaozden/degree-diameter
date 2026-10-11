@@ -1,0 +1,137 @@
+{
+  "generation": 4,
+  "tasks": [
+    {
+      "cid": "g004-c00",
+      "parents": [
+        "g000-i02"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c01",
+      "parents": [
+        "g000-i02"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c02",
+      "parents": [
+        "g003-c11"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c03",
+      "parents": [
+        "g002-c08"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c04",
+      "parents": [
+        "g002-c14",
+        "g003-c11"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c05",
+      "parents": [
+        "g003-c11"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c06",
+      "parents": [
+        "g002-c14"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c07",
+      "parents": [
+        "g003-c11"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c08",
+      "parents": [
+        "g002-c14"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c09",
+      "parents": [
+        "g000-i01",
+        "g002-c14"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c10",
+      "parents": [
+        "g002-c14"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c11",
+      "parents": [
+        "g003-c11"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c12",
+      "parents": [
+        "g002-c08",
+        "g002-c14"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c13",
+      "parents": [
+        "g000-i02",
+        "g000-i01"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c14",
+      "parents": [
+        "g000-i02"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g004-c15",
+      "parents": [
+        "g000-i01"
+      ],
+      "role": "default",
+      "status": "pending"
+    }
+  ]
+}
