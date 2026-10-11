@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11779193099982876
+    },
+    "d7D5": {
+      "case_id": "d7D5",
+      "reason": "crash: *json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d7d5-w2/candidates/g003-c10/program.py\", line 344, in build\n    layers = [list(row) for row in e_layers]\n                                   ^^^^^^^^\nTypeError: 'NoneType' object is not iterable\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.5150434299998778
+    }
+  },
+  "fitness": 0.047619047619047616
+}
