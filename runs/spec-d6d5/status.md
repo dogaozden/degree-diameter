@@ -2,12 +2,12 @@
 
 Problem: bipartite_dd
 Generations done: 24 of 81 (including generation 0)
-Total mutator calls: 747
+Total mutator calls: 755
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
 | d3D3 | calibration | 14 | 14 | 14 = | g000-i00 |
-| d6D5 | target | 684 | 1556 | 630 | g023-c09 |
+| d6D5 | target | 684 | 1556 | 640 | g024-c06 |
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
