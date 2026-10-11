@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: odule.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/c-d11d4/candidates/g030-c17/program.py\", line 956, in build\n    pn, pe = _pipeline(src[0], src[1], d, D, pipe_end, rng)\n             ^^^^^^^^^\nNameError: name '_pipeline' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.5729641819999642
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.1673933390000002
+    }
+  },
+  "fitness": 0.047619047619047616
+}
