@@ -1,0 +1,138 @@
+{
+  "generation": 4,
+  "tasks": [
+    {
+      "cid": "g004-c00",
+      "parents": [
+        "g001-c09"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c01",
+      "parents": [
+        "g002-c09"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c02",
+      "parents": [
+        "g003-c05",
+        "g002-c12"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c03",
+      "parents": [
+        "g002-c07",
+        "g003-c05"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c04",
+      "parents": [
+        "g001-c09"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c05",
+      "parents": [
+        "g003-c03"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c06",
+      "parents": [
+        "g002-c12"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c07",
+      "parents": [
+        "g001-c09",
+        "g002-c07"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c08",
+      "parents": [
+        "g002-c09",
+        "g002-c15"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c09",
+      "parents": [
+        "g003-c05"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c10",
+      "parents": [
+        "g003-c03"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c11",
+      "parents": [
+        "g002-c09"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c12",
+      "parents": [
+        "g003-c03"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c13",
+      "parents": [
+        "g002-c15"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c14",
+      "parents": [
+        "g002-c12",
+        "g002-c07"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g004-c15",
+      "parents": [
+        "g002-c07"
+      ],
+      "role": "default",
+      "status": "made"
+    }
+  ]
+}
