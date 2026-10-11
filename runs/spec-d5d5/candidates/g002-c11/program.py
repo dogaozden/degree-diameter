@@ -1,0 +1,283 @@
+import itertools
+import math
+import random
+import time
+
+import lib
+
+
+# ----------------------------------------------------------------------------
+# Safe baseline families (unchanged from the parent).
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d, restricted to small q for speed."""
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Group voltage lifts with annealed search.
+#
+# Vertices: A_i,g = i*G + g  and  B_j,h = (k+j)*G + h, for base size k.
+# Dart (i, j, s) joins A_i,g to B_j,g*s for every g in the group.
+#
+# NEW in this version: a "layer-swap" move. Each layer l is a permutation
+# p_l of the k base indices, with dart (i, p_l[i], s). Swapping the B-targets
+# of two darts in the same layer keeps every B vertex at degree d, so it is a
+# pure rewiring of the base graph. The parent only changed voltages, so its
+# base graph was frozen after the first random draw. Rewiring lets the search
+# leave a bad base graph without restarting from scratch.
+# ----------------------------------------------------------------------------
+
+DUP_WEIGHT = 4  # penalty per duplicated dart, scaled by the vertex count
+
+
+def _sample_group(G, rng):
+    """Return (order, mul) for a random semidirect product Z_m x| Z_k2 of order G, or None."""
+    for _ in range(80):
+        k2 = rng.choice([1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+        if G % k2:
+            continue
+        m = G // k2
+        if m < 2:
+            continue
+        if k2 == 1:
+            r = 1
+        else:
+            cands = [r for r in rng.sample(range(1, m), min(m - 1, 60))
+                     if math.gcd(r, m) == 1 and pow(r, k2, m) == 1 % m]
+            if not cands:
+                continue
+            r = rng.choice(cands)
+        try:
+            order, mul, _ = lib.semidirect_group(m, k2, r)
+        except ValueError:
+            continue
+        return order, mul
+    return None
+
+
+def _right_perm(mul, G, s):
+    """Permutation g -> g*s of the group."""
+    return [mul(g, s) for g in range(G)]
+
+
+def _cost(k, G, D, darts, perms):
+    """Unreached (representative, vertex) pairs within distance D, plus duplicate-dart penalty."""
+    seen = set()
+    dup = 0
+    for i, j, s in darts:
+        key = (i, j, s)
+        if key in seen:
+            dup += 1
+        else:
+            seen.add(key)
+    N = 2 * k * G
+    adj = [[] for _ in range(N)]
+    for (i, j, _s), pm in zip(darts, perms):
+        base_a = i * G
+        base_b = (k + j) * G
+        for g in range(G):
+            a = base_a + g
+            b = base_b + pm[g]
+            adj[a].append(b)
+            adj[b].append(a)
+    reps = [i * G for i in range(k)] + [(k + j) * G for j in range(k)]
+    total = 0
+    for src in reps:
+        seen_v = [False] * N
+        seen_v[src] = True
+        frontier = [src]
+        count = 1
+        for _ in range(D):
+            nxt = []
+            for u in frontier:
+                for v in adj[u]:
+                    if not seen_v[v]:
+                        seen_v[v] = True
+                        nxt.append(v)
+            count += len(nxt)
+            frontier = nxt
+            if not frontier:
+                break
+        total += N - count
+    return total + dup * DUP_WEIGHT * N
+
+
+def _edges(k, G, darts, perms):
+    E = set()
+    for (i, j, _s), pm in zip(darts, perms):
+        for g in range(G):
+            E.add((i * G + g, (k + j) * G + pm[g]))
+    return 2 * k * G, sorted(E)
+
+
+def _search(d, D, k, G, rng, iters, deadline):
+    """Simulated annealing over voltages and layer-swap rewirings in a group of order G.
+
+    Base: k A-vertices and k B-vertices. Layer l is a permutation of the k
+    indices, so each A_i and each B_j has exactly d darts.
+    Returns (n, edges) with diameter <= D, or None.
+    """
+    g = _sample_group(G, rng)
+    if g is None:
+        return None
+    order, mul = g
+    G = order
+
+    darts = []
+    for _ in range(d):
+        p = rng.sample(range(k), k)
+        for i in range(k):
+            darts.append([i, p[i], rng.randrange(G)])
+    perms = [_right_perm(mul, G, s) for _, _, s in darts]
+    cost = _cost(k, G, D, darts, perms)
+
+    best_cost = cost
+    best_state = ([list(x) for x in darts], list(perms))
+
+    T0, T_floor = 3.0, 0.05
+    for it in range(iters):
+        if cost == 0 or time.monotonic() > deadline:
+            break
+        T = max(T_floor, T0 * (1.0 - it / iters))
+
+        if k >= 2 and rng.random() < 0.35:
+            # Layer-swap move: exchange B-targets of two darts in one layer.
+            l = rng.randrange(d)
+            i1, i2 = rng.sample(range(k), 2)
+            x, y = l * k + i1, l * k + i2
+            darts[x][1], darts[y][1] = darts[y][1], darts[x][1]
+            c2 = _cost(k, G, D, darts, perms)
+            if c2 <= cost or rng.random() < math.exp(-(c2 - cost) / T):
+                cost = c2
+            else:
+                darts[x][1], darts[y][1] = darts[y][1], darts[x][1]
+        else:
+            # Voltage move: change one dart's group element.
+            idx = rng.randrange(len(darts))
+            old_s = darts[idx][2]
+            old_perm = perms[idx]
+            new_s = rng.randrange(G)
+            darts[idx][2] = new_s
+            perms[idx] = _right_perm(mul, G, new_s)
+            c2 = _cost(k, G, D, darts, perms)
+            if c2 <= cost or rng.random() < math.exp(-(c2 - cost) / T):
+                cost = c2
+            else:
+                darts[idx][2] = old_s
+                perms[idx] = old_perm
+
+        if cost < best_cost:
+            best_cost = cost
+            best_state = ([list(x) for x in darts], list(perms))
+
+    if best_cost == 0:
+        darts, perms = best_state
+        return _edges(k, G, darts, perms)
+    return None
+
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    deadline = start + 0.8 * time_limit
+    rng = random.Random(seed)
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2, so it is valid for D >= 2.
+    best = lib.haar_graph(d, range(d))
+    best_n = best[0]
+
+    def consider(n, e):
+        nonlocal best, best_n
+        if n > best_n and lib.is_valid(n, e, d, D):
+            best = (n, e)
+            best_n = n
+
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+
+    if D >= 4 and time.monotonic() < deadline:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+
+    # Main search: annealed lifts with 1-3 base vertices per side.
+    # Target group orders just above the current best, with a little spread.
+    while time.monotonic() < deadline:
+        k = rng.choice([1, 1, 1, 2, 2, 3])
+        base = best_n // (2 * k)
+        G = max(2, base + 1 + rng.randrange(0, max(3, base // 6 + 1)))
+        res = _search(d, D, k, G, rng, 2000, deadline)
+        if res is not None:
+            consider(res[0], res[1])
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
