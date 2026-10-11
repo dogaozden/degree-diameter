@@ -1,8 +1,8 @@
 # spec-d3fam
 
 Problem: bipartite_dd
-Generations done: 9 of 81 (including generation 0)
-Total mutator calls: 257
+Generations done: 10 of 81 (including generation 0)
+Total mutator calls: 289
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -22,3 +22,4 @@ Total mutator calls: 257
 | 6 | 32 | 0 | 1.0000 | 1.0000 |
 | 7 | 32 | 0 | 1.0000 | 1.0000 |
 | 8 | 32 | 0 | 1.0000 | 1.0000 |
+| 9 | 32 | 0 | 1.0000 | 1.0000 |

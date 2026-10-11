@@ -1,0 +1,688 @@
+import itertools
+import math
+import random
+import time
+
+import numpy as np
+import lib
+
+
+# ----------------------------------------------------------------------------
+# Base constructions.
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _ara(d):
+    """Araujo-Pardo & Lopez record graph for d = q + 2 with q a prime power >= 3 (diameter 3)."""
+    q = d - 2
+    if q >= 3 and lib.is_prime_power(q):
+        try:
+            return lib.araujo_lopez_graph(q)
+        except Exception:
+            return None
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d, restricted to small q for speed."""
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Shared helpers.
+# ----------------------------------------------------------------------------
+
+def _colour(n, edges):
+    """Two-colouring of a bipartite graph as a list, or None if an odd cycle exists."""
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    color = [-1] * n
+    for s in range(n):
+        if color[s] != -1:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if color[v] == -1:
+                    color[v] = 1 - color[u]
+                    stack.append(v)
+                elif color[v] == color[u]:
+                    return None
+    return color
+
+
+def _balls_radius(n, adj, r):
+    """Bitmask per vertex of all vertices within distance r."""
+    ball = [1 << v for v in range(n)]
+    for _ in range(r):
+        new = []
+        for v in range(n):
+            x = ball[v]
+            for u in adj[v]:
+                x |= ball[u]
+            new.append(x)
+        ball = new
+    return ball
+
+
+def _bipartition(n, adj):
+    """Two-colouring of a bipartite graph given by adjacency lists."""
+    color = [-1] * n
+    for s in range(n):
+        if color[s] != -1:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if color[v] == -1:
+                    color[v] = 1 - color[u]
+                    stack.append(v)
+    return color
+
+
+# ----------------------------------------------------------------------------
+# NEW: degree-neutral annealing with vertex insertion for diameter 3.
+#
+# State: a bipartite graph on n vertices (A side colour 0, B side colour 1) with
+# max degree d. Cost = (# unordered pairs at distance > 3) + LAM * (total degree
+# deficiency). Distance <= 3 is tested for all pairs at once with two float32
+# matrix products of R = I + M:  R^3 > 0  <=>  dist <= 3.
+#
+# Moves:
+#   swap   : 2-switch of two edges a1-b1, a2-b2 -> a1-b2, a2-b1 (degrees fixed).
+#   insert : for a deficient A-vertex x and deficient B-vertex y, pick any edge a-b
+#            and rewire it to x-b and a-y. This fills x and y by two units and
+#            leaves the degrees of a and b unchanged. Vertices are thereby added
+#            to the graph while their degree budget is absorbed from existing
+#            saturated edges.
+#   free   : any deficient non-adjacent (x, y) pair is joined greedily (never
+#            increases the bad-pair count).
+# Growth: append one A and one B vertex (both isolated) and anneal until no pair
+# is further than 3 apart. Success keeps the larger graph as the new base.
+# ----------------------------------------------------------------------------
+
+_LAM = 2.0
+
+
+def _misses(M):
+    """Number of unordered vertex pairs at distance greater than 3."""
+    n = M.shape[0]
+    R = M.copy()
+    np.fill_diagonal(R, 1.0)
+    R2 = R @ R
+    R3 = R2 @ R
+    return (n * n - int(np.count_nonzero(R3))) // 2
+
+
+def _set(M, a, b, val):
+    M[a, b] = val
+    M[b, a] = val
+
+
+def _free_pair(M, defA, defB):
+    for x in defA:
+        for y in defB:
+            if M[x, y] == 0:
+                return x, y
+    return None
+
+
+def _undo(M, E, deg, u):
+    if u[0] == 'swap':
+        _, i, j, a1, b1, a2, b2 = u
+        E[i] = [a1, b1]
+        E[j] = [a2, b2]
+        _set(M, a1, b2, 0)
+        _set(M, a2, b1, 0)
+        _set(M, a1, b1, 1)
+        _set(M, a2, b2, 1)
+    else:
+        _, k, x, y, a, b = u
+        E.pop()
+        E[k] = [a, b]
+        _set(M, x, b, 0)
+        _set(M, a, y, 0)
+        _set(M, a, b, 1)
+        deg[x] -= 1
+        deg[y] -= 1
+
+
+def _anneal_round(M, color, E, deg, d, iters, deadline, rng):
+    """Anneal toward zero bad pairs. Returns the edge list on success, else None."""
+    n = M.shape[0]
+    A_list = [v for v in range(n) if color[v] == 0]
+    B_list = [v for v in range(n) if color[v] == 1]
+    misses = _misses(M)
+    defi = sum(d - x for x in deg)
+    cost = misses + _LAM * defi
+    if misses == 0:
+        return [tuple(e) for e in E]
+
+    for it in range(iters):
+        if (it & 15) == 0 and time.monotonic() > deadline:
+            break
+        defA = [v for v in A_list if deg[v] < d]
+        defB = [v for v in B_list if deg[v] < d]
+
+        pair = _free_pair(M, defA, defB)
+        if pair is not None:
+            x, y = pair
+            _set(M, x, y, 1)
+            E.append([x, y])
+            deg[x] += 1
+            deg[y] += 1
+            misses = _misses(M)
+            defi -= 2
+            cost = misses + _LAM * defi
+            if misses == 0:
+                return [tuple(e) for e in E]
+            continue
+
+        T = 0.6 * (0.02 ** (it / iters))
+        if defA and defB and rng.random() < 0.5:
+            x = rng.choice(defA)
+            y = rng.choice(defB)
+            k = rng.randrange(len(E))
+            a, b = E[k]
+            if M[x, b] or M[a, y]:
+                continue
+            E[k] = [x, b]
+            E.append([a, y])
+            _set(M, a, b, 0)
+            _set(M, x, b, 1)
+            _set(M, a, y, 1)
+            deg[x] += 1
+            deg[y] += 1
+            dd = -2
+            undo = ('ins', k, x, y, a, b)
+        else:
+            if len(E) < 2:
+                continue
+            i = rng.randrange(len(E))
+            j = rng.randrange(len(E))
+            if i == j:
+                continue
+            a1, b1 = E[i]
+            a2, b2 = E[j]
+            if a1 == a2 or b1 == b2 or M[a1, b2] or M[a2, b1]:
+                continue
+            E[i] = [a1, b2]
+            E[j] = [a2, b1]
+            _set(M, a1, b1, 0)
+            _set(M, a2, b2, 0)
+            _set(M, a1, b2, 1)
+            _set(M, a2, b1, 1)
+            dd = 0
+            undo = ('swap', i, j, a1, b1, a2, b2)
+
+        new_misses = _misses(M)
+        new_defi = defi + dd
+        new_cost = new_misses + _LAM * new_defi
+        delta = new_cost - cost
+        if delta <= 0 or rng.random() < math.exp(-delta / T):
+            misses, defi, cost = new_misses, new_defi, new_cost
+            if misses == 0:
+                return [tuple(e) for e in E]
+        else:
+            _undo(M, E, deg, undo)
+    return None
+
+
+def _grow_anneal(n, edges, color, d, deadline, rng):
+    """Repeatedly add an A-vertex and a B-vertex and anneal back to diameter 3."""
+    best_n, best_e = n, list(edges)
+    cur_n, cur_e, cur_c = n, list(edges), list(color)
+    fails = 0
+    while time.monotonic() < deadline and fails < 3:
+        N = cur_n + 2
+        c = cur_c + [0, 1]
+        M = np.zeros((N, N), dtype=np.float32)
+        deg = [0] * N
+        E = []
+        for u, v in cur_e:
+            a, b = (u, v) if c[u] == 0 else (v, u)
+            E.append([a, b])
+            M[a, b] = 1.0
+            M[b, a] = 1.0
+            deg[a] += 1
+            deg[b] += 1
+        res = _anneal_round(M, c, E, deg, d, 8000, deadline, rng)
+        if res is None:
+            fails += 1
+            continue
+        cur_n, cur_c, cur_e = N, c, res
+        best_n, best_e = N, res
+        fails = 0
+    return best_n, best_e
+
+
+def _build_d3(d, D, start, time_limit, rng):
+    deadline = start + 0.8 * time_limit
+    best = lib.haar_graph(d, range(d))
+    for cand in (_ara(d), _best_pg(d)):
+        if cand is not None and cand[0] > best[0] and lib.is_valid(cand[0], cand[1], d, D):
+            best = cand
+    if best[0] >= lib._moore_bound(d, D):
+        return best
+    color = _colour(best[0], best[1])
+    if color is None:
+        return best
+    n2, e2 = _grow_anneal(best[0], best[1], color, d, deadline, rng)
+    e2 = [(int(u), int(v)) for u, v in e2]
+    if n2 > best[0] and lib.is_valid(n2, e2, d, D):
+        return n2, e2
+    return best
+
+
+# ----------------------------------------------------------------------------
+# Cover-based vertex extension and edge saturation (diameter-preserving growth, D >= 4).
+# ----------------------------------------------------------------------------
+
+def _greedy_cover(cands, ball, full, d, rng, randomize):
+    """Greedy set cover of `full` by at most d candidate vertices; None if it fails."""
+    pool = list(cands)
+    if randomize:
+        rng.shuffle(pool)
+    covered = 0
+    chosen = []
+    while covered != full and len(chosen) < d and pool:
+        gains = [(ball[s] & ~covered).bit_count() for s in pool]
+        best_g = max(gains, default=0)
+        if best_g == 0:
+            break
+        thr = best_g
+        if randomize and rng.random() < 0.5:
+            thr = best_g - 1
+        opts = [i for i, g in enumerate(gains) if g >= thr and g > 0]
+        i = rng.choice(opts) if randomize else opts[0]
+        s = pool.pop(i)
+        chosen.append(s)
+        covered |= ball[s]
+    return chosen if covered == full else None
+
+
+def _extend_cover(n, edges, d, D, deadline, rng):
+    """Greedily add vertices whose neighbourhoods cover all vertices within D-1 of the graph."""
+    if D < 2:
+        return n, edges
+    edges = list(edges)
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    deg = [len(a) for a in adj]
+    color = _bipartition(n, adj)
+
+    while time.monotonic() < deadline:
+        ball = _balls_radius(n, adj, D - 1)
+        full = (1 << n) - 1
+        added = False
+        for c in (0, 1):
+            cands = [s for s in range(n) if color[s] == c and deg[s] < d]
+            if not cands:
+                continue
+            chosen = None
+            for attempt in range(200):
+                if time.monotonic() >= deadline:
+                    break
+                chosen = _greedy_cover(cands, ball, full, d, rng, attempt > 0)
+                if chosen:
+                    break
+            if chosen:
+                v = n
+                n += 1
+                color.append(1 - c)
+                adj.append([])
+                deg.append(0)
+                for s in chosen:
+                    edges.append((s, v))
+                    adj[s].append(v)
+                    adj[v].append(s)
+                    deg[s] += 1
+                    deg[v] += 1
+                added = True
+                break
+        if not added:
+            break
+    return n, edges
+
+
+def _saturate_edges(n, edges, d, rng):
+    """Greedily join deficient opposite-side vertices in random order."""
+    edges = list(edges)
+    adj = [[] for _ in range(n)]
+    existing = set()
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+        existing.add((min(u, v), max(u, v)))
+    deg = [len(a) for a in adj]
+    color = _bipartition(n, adj)
+    left = [v for v in range(n) if color[v] == 0 and deg[v] < d]
+    right = [v for v in range(n) if color[v] == 1 and deg[v] < d]
+    pairs = [(a, b) for a in left for b in right
+             if (min(a, b), max(a, b)) not in existing]
+    rng.shuffle(pairs)
+    for a, b in pairs:
+        if deg[a] < d and deg[b] < d:
+            edges.append((a, b))
+            deg[a] += 1
+            deg[b] += 1
+    return edges
+
+
+def _grow(n, edges, d, D, deadline, rng):
+    """Extend by cover vertices first, then saturate edges with the leftover spare degree."""
+    cur_n, cur_e = n, list(edges)
+    for _ in range(8):
+        if time.monotonic() >= deadline:
+            break
+        n2, e2 = _extend_cover(cur_n, cur_e, d, D, deadline, rng)
+        grew = n2 != cur_n
+        cur_n = n2
+        cur_e = _saturate_edges(cur_n, e2, d, rng)
+        if not grew:
+            break
+    return cur_n, cur_e
+
+
+# ----------------------------------------------------------------------------
+# Bi-Cayley voltage lifts over semidirect products Z_m x| Z_k2, annealed (D >= 4 path).
+# ----------------------------------------------------------------------------
+
+_BIG = 10 ** 9
+
+
+def _sample_group(G, rng):
+    """Return (order, mul) for a random semidirect product Z_m x| Z_k2 of order G, or None."""
+    for _ in range(80):
+        k2 = rng.choice([1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+        if G % k2:
+            continue
+        m = G // k2
+        if m < 2:
+            continue
+        if k2 == 1:
+            r = 1
+        else:
+            cands = [r for r in rng.sample(range(1, m), min(m - 1, 60))
+                     if math.gcd(r, m) == 1 and pow(r, k2, m) == 1 % m]
+            if not cands:
+                continue
+            r = rng.choice(cands)
+        try:
+            order, mul, _ = lib.semidirect_group(m, k2, r)
+        except ValueError:
+            continue
+        return order, mul
+    return None
+
+
+def _right_perm(mul, G, s):
+    """Permutation g -> mul(g, s) of the group."""
+    return [mul(g, s) for g in range(G)]
+
+
+def _cost(k, G, D, darts, perms, limit=float("inf")):
+    """Number of (representative, vertex) pairs not reached within distance D. Zero means valid."""
+    if len({(i, j, s) for i, j, s in darts}) < len(darts):
+        return _BIG
+    N = 2 * k * G
+    adj = [[] for _ in range(N)]
+    for (i, j, _s), pm in zip(darts, perms):
+        base_a = i * G
+        base_b = (k + j) * G
+        for g in range(G):
+            a = base_a + g
+            b = base_b + pm[g]
+            adj[a].append(b)
+            adj[b].append(a)
+    reps = [i * G for i in range(k)] + [(k + j) * G for j in range(k)]
+    total = 0
+    for src in reps:
+        seen = [False] * N
+        seen[src] = True
+        frontier = [src]
+        count = 1
+        for _ in range(D):
+            nxt = []
+            for u in frontier:
+                for v in adj[u]:
+                    if not seen[v]:
+                        seen[v] = True
+                        nxt.append(v)
+            count += len(nxt)
+            frontier = nxt
+            if not frontier:
+                break
+        total += N - count
+        if total > limit:
+            return total
+    return total
+
+
+def _edges(k, G, darts, perms):
+    E = set()
+    for (i, j, _s), pm in zip(darts, perms):
+        for g in range(G):
+            E.add((i * G + g, (k + j) * G + pm[g]))
+    return 2 * k * G, sorted(E)
+
+
+def _anneal(d, D, k, G, mul, rng, deadline, iters):
+    """Simulated annealing over voltages and per-layer B-assignments."""
+    darts = []
+    for _ in range(d):
+        p = rng.sample(range(k), k)
+        for i in range(k):
+            darts.append([i, p[i], rng.randrange(G)])
+    perms = [_right_perm(mul, G, s) for _, _, s in darts]
+    cost = _cost(k, G, D, darts, perms)
+
+    for it in range(iters):
+        if cost == 0 or time.monotonic() > deadline:
+            break
+        T = 1.0 * (0.05 ** (it / iters))
+        u = 1.0 - rng.random()
+        limit = cost - T * math.log(u)
+
+        if rng.random() < 0.7 or k == 1:
+            idx = rng.randrange(len(darts))
+            old_s = darts[idx][2]
+            new_s = rng.randrange(G)
+            if new_s == old_s:
+                continue
+            old_perm = perms[idx]
+            darts[idx][2] = new_s
+            perms[idx] = _right_perm(mul, G, new_s)
+            c2 = _cost(k, G, D, darts, perms, limit)
+            if c2 <= limit:
+                cost = c2
+            else:
+                darts[idx][2] = old_s
+                perms[idx] = old_perm
+        else:
+            L = rng.randrange(d)
+            a, b = rng.sample(range(k), 2)
+            ia, ib = L * k + a, L * k + b
+            darts[ia][1], darts[ib][1] = darts[ib][1], darts[ia][1]
+            c2 = _cost(k, G, D, darts, perms, limit)
+            if c2 <= limit:
+                cost = c2
+            else:
+                darts[ia][1], darts[ib][1] = darts[ib][1], darts[ia][1]
+
+    if cost == 0:
+        return _edges(k, G, darts, perms)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# Haar graph hill-climb (small D, secondary family).
+# ----------------------------------------------------------------------------
+
+def _search_haar(d, D, m, rng, deadline, iters):
+    """Hill-climb a connection set S (|S| = d, containing 0) in Z_m so the Haar graph has diameter <= D."""
+    others = list(range(1, m))
+    if len(others) < d - 1:
+        return None
+
+    def cost(S):
+        n, edges = lib.haar_graph(m, S)
+        return lib.bad_pairs(n, edges, D)
+
+    S = [0] + rng.sample(others, d - 1)
+    c = cost(S)
+    for _ in range(iters):
+        if c == 0:
+            return S
+        if time.monotonic() >= deadline:
+            break
+        cand = [x for x in others if x not in S]
+        if not cand:
+            break
+        i = rng.randrange(1, d)
+        T = S[:]
+        T[i] = rng.choice(cand)
+        ct = cost(T)
+        if ct <= c:
+            S, c = T, ct
+    return S if c == 0 else None
+
+
+# ----------------------------------------------------------------------------
+# Driver.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    deadline = start + 0.8 * time_limit
+    rng = random.Random(seed)
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    if D == 3:
+        return _build_d3(d, D, start, time_limit, rng)
+
+    # Safe fallback: K_{d,d} has diameter 2, valid for D >= 2.
+    best = lib.haar_graph(d, range(d))
+    best_n = best[0]
+
+    def consider(n, e):
+        nonlocal best, best_n
+        if n > best_n and lib.is_valid(n, e, d, D):
+            best = (n, e)
+            best_n = n
+
+    if D >= 3:
+        ara = _ara(d)
+        if ara is not None:
+            consider(ara[0], ara[1])
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+
+    if D >= 4:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+            n2, e2 = _grow(gq[0], gq[1], d, D, start + 0.45 * time_limit, rng)
+            consider(n2, e2)
+
+    # Main search: annealed group voltage lifts, with occasional Haar attempts for small D.
+    ks = [1, 2, 2, 3, 4] if D >= 5 else [1, 1, 2, 3]
+    haar_m, haar_miss = d + 1, 0
+    while time.monotonic() < deadline:
+        if D <= 4 and haar_miss < 4 and rng.random() < 0.1:
+            S = _search_haar(d, D, haar_m, rng, deadline, 120)
+            if S is not None:
+                n, e = lib.haar_graph(haar_m, S)
+                consider(n, e)
+                haar_miss = 0
+            else:
+                haar_miss += 1
+            haar_m += 1
+            continue
+
+        k = rng.choice(ks)
+        base = best_n // (2 * k)
+        G = max(2, base + 1 + rng.randrange(0, max(3, base // 8 + 1)))
+        g = _sample_group(G, rng)
+        if g is None:
+            continue
+        order, mul = g
+        res = _anneal(d, D, k, order, mul, rng, deadline, iters=1200)
+        if res is not None:
+            consider(res[0], res[1])
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
