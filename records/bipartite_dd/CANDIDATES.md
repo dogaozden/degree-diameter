@@ -16,6 +16,7 @@ page last edited 2022.
 | (7, 4) | 346 | **358** | 518 | degrees 6–7, 176 + 182, 1232 edges | Python island spec-d7d4, g008-c11 | d7D4/358-spec-d7d4-g008-c11.json |
 | (11, 3) | 190 | **192** | 220 | 11-regular, 96 + 96 | C island c-d3fam, g001-c00 | d11D3/192-c-d3fam-g001-c00.json |
 | (13, 3) | 274 | **276** | 314 | 13-regular, 138 + 138, 1794 edges | C island c-d3fam, g003-c19 | d13D3/276-c-d3fam-g003-c19.json |
+| (7, 5) | 1134 | **1140** | 3106 | 7-regular, 570 + 570, 3990 edges | Python island spec-d7d5, g016-c15 | d7D5/1140-spec-d7d5-g016-c15.json |
 | (11, 4) | 1734 | **1774** | 2222 | degrees 10–11, 872 + 902, 9541 edges | Python island spec-d11d4, g010-c19 | d11D4/1774-spec-d11d4-g010-c19.json |
 
 Upper bounds are the wiki's "lowest known upper bounds" table. Every graph sits below its bound.
@@ -33,15 +34,15 @@ Other verified graphs that beat the table, kept as independent confirmations:
 
 ## Verification (2026-10-10, on the Mac)
 
-1. All twelve graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
+1. All thirteen graphs pass `scripts/verify_record.py`: the trusted checker, the networkx checker, and a
    from-scratch check (adjacency sets, explicit 2-colouring, BFS from every vertex for the exact diameter).
    For the first 1773 graph, the from-scratch check ran 1773 searches (33.8 million edge steps) and every vertex has
    eccentricity exactly 4. All three checkers also reject two sabotaged copies of that graph
    (a pendant vertex, which makes the diameter 5, and one extra edge inside a side, which makes an odd cycle).
 2. Each generating program (saved next to its graph as `*.program.py`) was re-run fresh on a different
-   machine than the cloud island that found it, with seed 0 and a 60 s limit. Eleven rebuilt the same order:
-   162, 162, 344, 352, 349, 354, 356, 358, 192, 276, 1773. Where the island saved its own copy, five rebuilds are
-   edge-for-edge identical to it (162, 192, 276, 344, 352, 356); 358 and the first 1773 have the same order with
+   machine than the cloud island that found it, with seed 0 and a 60 s limit. Twelve rebuilt the same order:
+   162, 162, 344, 352, 349, 354, 356, 358, 192, 276, 1140, 1773. Where the island saved its own copy, five rebuilds are
+   edge-for-edge identical to it (162, 192, 276, 344, 352, 356, 1140); 358 and the first 1773 have the same order with
    different edges, because those searches run to a clock deadline and depend on the machine.
 3. The 1774 program rebuilt only 1773 on the Mac, every time, with time limits from 12 s to 120 s. The 1774
    graph here is the island's own saved copy (from its branch `spec-d11d4`), checked as in step 1.
@@ -59,6 +60,7 @@ Who holds each beaten entry, from the wiki table's colour key:
 | (7, 4) | 346 | a graph duplication by Delorme and Farhi |
 | (11, 3) | 190 | Feria-Purón, Miller and Pineda-Villavicencio, and independently Araujo-Pardo and López |
 | (13, 3) | 274 | Araujo-Pardo and López (2022) |
+| (7, 5) | 1134 | Eyal Loz's computer-search project (Loz, Pérez-Rosés, Pineda-Villavicencio) |
 | (11, 4) | 1734 | a graph duplication by Delorme and Farhi |
 
 Sources:
