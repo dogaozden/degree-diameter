@@ -1,0 +1,455 @@
+import itertools
+import time
+
+import lib
+
+
+# ----------------------------------------------------------------------------
+# Exact baselines (kept as safe, instant fallbacks).
+# ----------------------------------------------------------------------------
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d, restricted to small q for speed."""
+    for q in range(min(d - 1, 9), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+# ----------------------------------------------------------------------------
+# C engine (new construction search): bi-Cayley graphs over semidirect groups
+# Z_m x| Z_k, searched by SIMULATED ANNEALING with Metropolis acceptance on the
+# count of unreached representative pairs (plus duplicate-dart penalty).
+# This replaces the breakout / clause-weighting search of the parent.
+#
+# Vertices: A_{i,g} = i*G+g, B_{j,h} = (K+j)*G+h, dart (l, i) joins
+# A_{i,g} to B_{P[l][i], g*S[l][i]}. Left multiplication by any h is an
+# automorphism, so BFS from the identity of each block decides diameter.
+# ----------------------------------------------------------------------------
+
+C_SOURCE = r'''
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <math.h>
+#include <time.h>
+
+#define MAXD 16
+#define MAXK 3
+#define PEN 3
+#define SA_ITERS 20000
+#define T_START 3.0
+#define T_END 0.05
+
+static uint64_t rs = 88172645463325252ULL;
+
+static uint64_t rnd(void) {
+    rs ^= rs << 13;
+    rs ^= rs >> 7;
+    rs ^= rs << 17;
+    return rs;
+}
+
+static int rint_(int n) { return (int)(rnd() % (uint64_t)n); }
+
+static double rdbl(void) { return (double)(rnd() >> 11) * (1.0 / 9007199254740992.0); }
+
+static double now_s(void) {
+    struct timespec ts;
+    timespec_get(&ts, TIME_UTC);
+    return (double)ts.tv_sec + 1e-9 * (double)ts.tv_nsec;
+}
+
+static int Dd = 7, DD = 5;
+static int GM = 1, GK = 1, GG = 1;
+static long long gpow[64];
+static double deadline = 0.0;
+
+static int P[MAXD][MAXK];
+static int S[MAXD][MAXK];
+static int K = 1;
+
+static int capN = 0;
+static int *adj = NULL, *cnt = NULL, *vis = NULL, *qu = NULL;
+static int stamp = 0;
+
+static void set_group(int m, int k, int r) {
+    GM = m;
+    GK = k;
+    GG = m * k;
+    long long p = 1 % m;
+    for (int b = 0; b < k; b++) {
+        gpow[b] = p;
+        p = (p * r) % m;
+    }
+}
+
+/* (a,b)*(c,d) = (a + r^b c, b + d), element coded a*k + b. */
+static int gmul(int x, int y) {
+    int a = x / GK, b = x % GK;
+    int c = y / GK, d = y % GK;
+    long long t = ((long long)a + gpow[b] * (long long)c) % GM;
+    return (int)t * GK + (b + d) % GK;
+}
+
+static void ensure(int N) {
+    if (N <= capN) return;
+    free(adj);
+    free(cnt);
+    free(vis);
+    free(qu);
+    capN = N;
+    adj = malloc(sizeof(int) * (size_t)N * (size_t)Dd);
+    cnt = malloc(sizeof(int) * (size_t)N);
+    vis = calloc((size_t)N, sizeof(int));
+    qu = malloc(sizeof(int) * (size_t)N);
+    if (!adj || !cnt || !vis || !qu) {
+        fprintf(stderr, "out of memory\n");
+        exit(1);
+    }
+    stamp = 0;
+}
+
+/* Returns raw unreached representative pairs + PEN * duplicate darts.
+   Zero means the current configuration is a valid graph. */
+static int evaluate(void) {
+    int N = 2 * K * GG;
+    ensure(N);
+    for (int v = 0; v < N; v++) cnt[v] = 0;
+    int dup = 0;
+    for (int l = 0; l < Dd; l++) {
+        for (int i = 0; i < K; i++) {
+            int j = P[l][i], s = S[l][i];
+            for (int g = 0; g < GG; g++) {
+                int a = i * GG + g;
+                int b = (K + j) * GG + gmul(g, s);
+                adj[a * Dd + cnt[a]++] = b;
+                adj[b * Dd + cnt[b]++] = a;
+            }
+        }
+    }
+    for (int i = 0; i < K; i++)
+        for (int l1 = 0; l1 < Dd; l1++)
+            for (int l2 = l1 + 1; l2 < Dd; l2++)
+                if (P[l1][i] == P[l2][i] && S[l1][i] == S[l2][i]) dup++;
+
+    int raw = 0;
+    for (int r = 0; r < 2 * K; r++) {
+        stamp++;
+        int src = r * GG, head = 0, tail = 0;
+        vis[src] = stamp;
+        qu[tail++] = src;
+        for (int lvl = 0; lvl < DD; lvl++) {
+            int end = tail;
+            if (head == end) break;
+            while (head < end) {
+                int u = qu[head++];
+                for (int t = 0; t < Dd; t++) {
+                    int v = adj[u * Dd + t];
+                    if (vis[v] != stamp) {
+                        vis[v] = stamp;
+                        qu[tail++] = v;
+                    }
+                }
+            }
+        }
+        raw += N - tail;
+    }
+    return raw + PEN * dup;
+}
+
+static void random_cfg(void) {
+    for (int l = 0; l < Dd; l++) {
+        for (int i = 0; i < K; i++) P[l][i] = i;
+        for (int i = K - 1; i > 0; i--) {
+            int j = rint_(i + 1);
+            int t = P[l][i];
+            P[l][i] = P[l][j];
+            P[l][j] = t;
+        }
+        for (int i = 0; i < K; i++) S[l][i] = rint_(GG);
+    }
+}
+
+/* Simulated annealing from a random start. Returns 1 if a valid graph was
+   reached (state left in P,S), 0 otherwise. */
+static int sa_run(long iters) {
+    random_cfg();
+    int cur = evaluate();
+    if (cur == 0) return 1;
+    int saveP[MAXD][MAXK], saveS[MAXD][MAXK];
+    for (long t = 0; t < iters; t++) {
+        if ((t & 255) == 0 && now_s() > deadline) break;
+        double frac = (double)t / (double)iters;
+        double T = T_START * pow(T_END / T_START, frac);
+        memcpy(saveP, P, sizeof P);
+        memcpy(saveS, S, sizeof S);
+        int mv = rint_(4);
+        if (mv == 0 && K >= 2) {
+            int l = rint_(Dd);
+            int i = rint_(K);
+            int i2 = rint_(K - 1);
+            if (i2 >= i) i2++;
+            int tmp = P[l][i];
+            P[l][i] = P[l][i2];
+            P[l][i2] = tmp;
+        } else {
+            int l = rint_(Dd);
+            int i = rint_(K);
+            S[l][i] = rint_(GG);
+        }
+        int nc = evaluate();
+        int delta = nc - cur;
+        if (delta <= 0 || rdbl() < exp(-(double)delta / T)) {
+            cur = nc;
+            if (cur == 0) return 1;
+        } else {
+            memcpy(P, saveP, sizeof P);
+            memcpy(S, saveS, sizeof S);
+        }
+    }
+    return 0;
+}
+
+static long long gcdll(long long a, long long b) {
+    while (b) {
+        long long t = a % b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+
+static long long powmod(long long b, long long e, long long m) {
+    long long r = 1 % m;
+    b %= m;
+    while (e > 0) {
+        if (e & 1) r = r * b % m;
+        b = b * b % m;
+        e >>= 1;
+    }
+    return r;
+}
+
+static const int KF[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16,
+                         18, 20, 21, 24, 27, 28, 30, 32, 36, 40};
+
+static void sample_group(long long target, int *oM, int *oK, int *oR) {
+    int nk = (int)(sizeof(KF) / sizeof(KF[0]));
+    int k = KF[rint_(nk)];
+    long long m = (target + k - 1) / k;
+    if (m < 2) m = 2;
+    int r = 1;
+    if (k > 1 && m > 2) {
+        for (int t = 0; t < 200; t++) {
+            long long c = 2 + (long long)rint_((int)(m - 2));
+            if (gcdll(c, m) == 1 && powmod(c, k, m) == 1 % m) {
+                r = (int)c;
+                break;
+            }
+        }
+    }
+    *oM = (int)m;
+    *oK = k;
+    *oR = r;
+}
+
+int main(int argc, char **argv) {
+    Dd = argc > 1 ? atoi(argv[1]) : 7;
+    DD = argc > 2 ? atoi(argv[2]) : 5;
+    unsigned long long seed = argc > 3 ? strtoull(argv[3], NULL, 10) : 1ULL;
+    double tl = argc > 4 ? atof(argv[4]) : 10.0;
+    int min_n = argc > 5 ? atoi(argv[5]) : 0;
+
+    if (Dd < 1 || Dd > MAXD || DD < 1) {
+        printf("0 0\n");
+        return 0;
+    }
+    rs ^= (uint64_t)seed * 0x9E3779B97F4A7C15ULL + 12345ULL;
+    if (rs == 0) rs = 1;
+    for (int w = 0; w < 4; w++) rnd();
+
+    double t0 = now_s();
+    deadline = t0 + tl;
+
+    int best_n = min_n;
+    int have = 0;
+    int bestK = 1, bestM = 1, bestKk = 1, bestR = 1;
+    int bestP[MAXD][MAXK], bestS[MAXD][MAXK];
+    memset(bestP, 0, sizeof bestP);
+    memset(bestS, 0, sizeof bestS);
+    int fails = 0;
+
+    while (now_s() < deadline) {
+        int Kc = (rint_(100) < 80) ? 1 : 2;
+        long long g0 = (long long)best_n / (2 * Kc) + 1;
+        long long span = g0 / 30 + 4 + (long long)(fails / 30) * (g0 / 60 + 1);
+        if (span > g0 / 3 + 4) span = g0 / 3 + 4;
+        long long target = g0 + (long long)rint_((int)span);
+        int M, Kk, R;
+        sample_group(target, &M, &Kk, &R);
+        set_group(M, Kk, R);
+        if (GG > 3000) {
+            fails++;
+            continue;
+        }
+        K = Kc;
+        int N = 2 * K * GG;
+        if (N <= best_n) {
+            fails++;
+            continue;
+        }
+        int ok = sa_run(SA_ITERS);
+        if (ok) {
+            best_n = N;
+            have = 1;
+            bestK = K;
+            bestM = M;
+            bestKk = Kk;
+            bestR = R;
+            memcpy(bestP, P, sizeof P);
+            memcpy(bestS, S, sizeof S);
+            fails = 0;
+        } else {
+            fails++;
+        }
+    }
+
+    if (!have) {
+        printf("0 0\n");
+        return 0;
+    }
+    set_group(bestM, bestKk, bestR);
+    K = bestK;
+    memcpy(P, bestP, sizeof P);
+    memcpy(S, bestS, sizeof S);
+    int G = GG;
+    int n = 2 * K * G;
+    long m = (long)Dd * K * G;
+    printf("%d %ld\n", n, m);
+    for (int l = 0; l < Dd; l++) {
+        for (int i = 0; i < K; i++) {
+            int j = P[l][i], s = S[l][i];
+            for (int g = 0; g < G; g++) {
+                printf("%d %d\n", i * G + g, (K + j) * G + gmul(g, s));
+            }
+        }
+    }
+    return 0;
+}
+'''
+
+
+# ----------------------------------------------------------------------------
+# Python glue: exact constructions first, then the annealing search in C.
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    deadline = start + max(3.0, min(0.85 * time_limit, time_limit - 6.0))
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2, so it is valid for D >= 2.
+    best = lib.haar_graph(d, range(d))
+    best_n = best[0]
+
+    def consider(n, e):
+        nonlocal best, best_n
+        if n > best_n and lib.is_valid(n, e, d, D):
+            best = (n, e)
+            best_n = n
+
+    # Exact constructions.
+    if D >= 3:
+        pg = _best_pg(d)
+        if pg is not None:
+            consider(pg[0], pg[1])
+            if D == 3 and lib.is_prime_power(d - 1):
+                return best
+
+    if D >= 4 and time.monotonic() < deadline:
+        gq = _best_gq(d)
+        if gq is not None:
+            consider(gq[0], gq[1])
+            if D == 4 and d - 1 <= 9 and lib.is_prime_power(d - 1):
+                return best
+
+    # Simulated annealing over bi-Cayley graphs on semidirect groups, seeded
+    # with the best known order as a lower bound. Only for degrees the C
+    # engine supports (MAXD = 16).
+    if 3 <= d <= 16 and D >= 3:
+        c_budget = deadline - time.monotonic() - 1.5
+        if c_budget >= 2.0:
+            try:
+                out = lib.run_c(C_SOURCE, [d, D, seed, f"{c_budget:.2f}", best_n],
+                                timeout=time_limit - 3.0)
+                n, e = lib.parse_graph_text(out)
+                consider(n, e)
+            except Exception:
+                pass
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
