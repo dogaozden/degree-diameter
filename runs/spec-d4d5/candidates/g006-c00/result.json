@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 48.12761285800025
+    },
+    "d4D5": {
+      "case_id": "d4D5",
+      "reason": "crash: s_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d4d5/candidates/g006-c00/program.py\", line 573, in build\n    res_e, darts, cost = _anneal(d, D, k, order, mul, rng, deadline, iters=400)\n    ^^^^^^^^^^^^^^^^^^\nValueError: too many values to unpack (expected 3)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.11961497900028917
+    }
+  },
+  "fitness": 0.047619047619047616
+}
