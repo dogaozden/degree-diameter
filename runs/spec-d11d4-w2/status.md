@@ -1,8 +1,8 @@
 # spec-d11d4-w2
 
 Problem: bipartite_dd
-Generations done: 6 of 81 (including generation 0)
-Total mutator calls: 161
+Generations done: 7 of 81 (including generation 0)
+Total mutator calls: 193
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -17,3 +17,4 @@ Total mutator calls: 161
 | 3 | 32 | 0 | 1.0220 | 1.0214 |
 | 4 | 32 | 0 | 1.0220 | 1.0214 |
 | 5 | 32 | 0 | 1.0220 | 1.0214 |
+| 6 | 32 | 0 | 1.0220 | 1.0220 |
