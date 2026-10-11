@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.17839377299969783
+    },
+    "d5D5": {
+      "case_id": "d5D5",
+      "reason": "crash: py\", line 148, in _tabu\n    S = [0] + rng.sample(range(1, N), d - 1)\n              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/random.py\", line 434, in sample\n    raise ValueError(\"Sample larger than population or is negative\")\nValueError: Sample larger than population or is negative\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.1646952320006676
+    }
+  },
+  "fitness": 0.047619047619047616
+}
