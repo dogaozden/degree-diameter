@@ -1,0 +1,590 @@
+<style>
+/* Layout: one column. Headline, four figures, the climb chart with dated events, programs per 10 minutes,
+   then the records and the day's milestones side by side when there is room. */
+#dash-root .hx { font-family: var(--font-anthropic-sans); color: var(--color-fg); display: flex; flex-direction: column; gap: var(--cds-gap-lg); }
+.hx p { margin: 0; }
+.hx-head { display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+.hx-head h1 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.2; text-wrap: balance; }
+.hx-take { color: var(--color-fg-muted); font-size: var(--cds-font-size-body); max-width: 72ch; line-height: 1.5; }
+.hx-take b, .hx-kpi b { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+.hx-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--cds-gap-md); }
+.hx-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+.hx-kpi .hx-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.hx-kpi .hx-big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.5); line-height: 1.1; font-variant-numeric: tabular-nums; min-height: 1.1em; }
+.hx-kpi .hx-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.4; }
+.hx-cardhead { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: var(--cds-gap-sm); }
+.hx-cardhead > div { min-width: 0; display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+.hx-cardhead h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); text-wrap: balance; }
+.hx-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.45; max-width: 80ch; }
+.hx-seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; flex: none; }
+.hx-seg button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 0; background: transparent; color: var(--color-fg-muted); cursor: pointer; }
+.hx-seg button + button { border-left: 1px solid var(--color-border-line); }
+.hx-seg button[aria-pressed="true"] { background: var(--color-bg); color: var(--color-fg); }
+.hx-seg button:focus-visible, .hx-chip:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.hx-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); min-height: 1.75rem; }
+.hx-chip { font: inherit; font-size: var(--cds-font-size-caption); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: 999px; background: transparent; color: var(--color-fg); cursor: pointer; font-variant-numeric: tabular-nums; }
+.hx-chip[aria-pressed="true"] { background: var(--color-bg); border-color: var(--color-fg-muted); }
+.hx-chip.hx-dim { opacity: .45; }
+.hx-sw { width: .625rem; height: .625rem; border-radius: 50%; flex: none; }
+.hx-chart { position: relative; min-height: 300px; }
+.hx-chart.hx-tall { min-height: 420px; }
+.hx-chart svg { display: block; overflow: visible; }
+.hx-chart text { fill: var(--color-fg-muted); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+.hx-chart .hx-ms text { fill: var(--color-fg); }
+.hx-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); line-height: 1.5; min-width: 12rem; max-width: 18rem; z-index: 2; font-variant-numeric: tabular-nums; }
+.hx-tip .hx-tt { color: var(--cds-text-secondary); margin-bottom: 2px; }
+.hx-tip .hx-tr { display: flex; align-items: center; gap: var(--cds-gap-xs); }
+.hx-tip .hx-tr span:nth-child(2) { flex: 1; }
+.hx-fail { display: flex; align-items: center; justify-content: center; gap: var(--cds-gap-xs); min-height: inherit; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.hx-fail::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); }
+.hx-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: var(--cds-gap-md); align-items: start; }
+.hx-scroll { overflow-x: auto; min-width: 0; }
+.hx-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.hx-table th { text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+.hx-table td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.hx-table tr:last-child td { border-bottom: 0; }
+.hx-table .hx-num { text-align: right; }
+.hx-table td.hx-up { color: var(--color-ok); }
+.hx-table td.hx-wrap { min-width: 12rem; line-height: 1.4; }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+@media (prefers-reduced-motion: no-preference) {
+  .hx-grow { animation: hx-in var(--cds-dur-slow) var(--cds-ease-out) both; }
+  @keyframes hx-in { from { opacity: 0; } to { opacity: 1; } }
+}
+</style>
+
+<div class="hx" id="hx-root">
+  <header class="hx-head">
+    <h1 id="title">Evolutionary Haikus timeline</h1>
+    <p class="hx-take" id="takeaway"><span class="dash-skeleton" id="take-text">—</span></p>
+  </header>
+
+  <section class="hx-kpis" id="figures" aria-label="Headline figures">
+    <div class="hx-card hx-kpi">
+      <p class="hx-label">Table records beaten</p>
+      <p class="hx-big dash-skeleton" data-source="kpi" data-field="records" data-row="0">—</p>
+      <p class="hx-sub">of <span data-source="kpi" data-field="cases" data-row="0">—</span> target cells in the bipartite table</p>
+    </div>
+    <div class="hx-card hx-kpi">
+      <p class="hx-label">Programs written by Haiku</p>
+      <p class="hx-big dash-skeleton" data-source="kpi" data-field="programs" data-row="0">—</p>
+      <p class="hx-sub">up to <span data-source="kpi" data-field="peak_bin" data-row="0">—</span> in a single 10 minutes</p>
+    </div>
+    <div class="hx-card hx-kpi">
+      <p class="hx-label">Biggest jump over the table</p>
+      <p class="hx-big dash-skeleton">+<span data-source="kpi" data-field="gain" data-row="0">—</span></p>
+      <p class="hx-sub">vertices, at <span data-source="kpi" data-field="gain_label" data-row="0">—</span></p>
+    </div>
+    <div class="hx-card hx-kpi">
+      <p class="hx-label">First record fell at</p>
+      <p class="hx-big dash-skeleton" data-source="kpi" data-field="first_record_local" data-row="0">—</p>
+      <p class="hx-sub"><span data-source="kpi" data-field="minutes_after_cloud" data-row="0">—</span> minutes after the first cloud island went up (Pacific time)</p>
+    </div>
+  </section>
+
+  <section class="hx-card" id="climb">
+    <div class="hx-cardhead">
+      <div>
+        <h2>The climb to the record line</h2>
+        <p class="hx-note">Our best graph for each target cell, as a share of the published record. A line above 100% beats the table. Each step is a better graph found by some run; dashed lines mark the day's turning points.</p>
+      </div>
+      <div class="hx-seg" role="group" aria-label="Time range">
+        <button type="button" id="view-day" aria-pressed="true">Whole day</button>
+        <button type="button" id="view-late" aria-pressed="false">Last 3 hours</button>
+      </div>
+    </div>
+    <div class="hx-legend" id="legend" data-source="progress records" aria-label="Cases: click one to follow it"></div>
+    <div class="hx-chart hx-tall dash-skeleton" id="climb-chart" data-source="progress records milestones"></div>
+  </section>
+
+  <section class="hx-card" id="throughput">
+    <div class="hx-cardhead">
+      <div>
+        <h2>Programs written, every 10 minutes</h2>
+        <p class="hx-note">Each bar counts the programs Haiku wrote in that window: the Mac runs first, then the cloud islands.</p>
+      </div>
+    </div>
+    <div class="hx-chart dash-skeleton" id="programs-chart" data-source="programs"></div>
+  </section>
+
+  <div class="hx-pair">
+    <section class="hx-card" id="records">
+      <div class="hx-cardhead"><div>
+        <h2>Records beaten</h2>
+        <p class="hx-note">Times are Pacific. "Found by" is the run that holds our best graph now.</p>
+      </div></div>
+      <div class="hx-scroll">
+        <table class="hx-table" id="records-table" data-source="records" data-row-key="case">
+          <thead><tr>
+            <th data-field="label">Cell</th>
+            <th class="hx-num" data-field="table">Table</th>
+            <th class="hx-num" data-field="ours">Ours</th>
+            <th class="hx-num" data-field="gain">Gain</th>
+            <th data-source="records_view" data-field="first_local">First beaten</th>
+            <th data-source="records_view" data-field="best_local">Best found</th>
+            <th data-field="engine">Found by</th>
+            <th data-field="old_holder">Old record by</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="hx-card" id="milestones">
+      <div class="hx-cardhead"><div>
+        <h2>The day, in milestones</h2>
+        <p class="hx-note">Pacific time, 10 October 2026, from commit times and session events.</p>
+      </div></div>
+      <div class="hx-scroll">
+        <table class="hx-table" id="milestones-table" data-source="milestones" data-row-key="label">
+          <thead><tr>
+            <th data-source="milestones_view" data-field="local">Time</th>
+            <th data-field="label">Milestone</th>
+            <th data-field="detail">What happened</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+dash.calc('kpi', {
+  inputs: ['records', 'programs', 'progress', 'milestones'],
+  title: 'Headline figures',
+  description: 'Records beaten, programs written, the biggest gain, and when the first record fell after the islands went up.',
+  fn: (records, programs, progress, milestones) => {
+    const ms = (s) => new Date(s).getTime();
+    const hm = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+    const top = records.reduce((a, r) => (Number(r.gain) > Number(a.gain) ? r : a), records[0]);
+    const first = records.reduce((a, r) => (ms(r.first_beaten) < ms(a.first_beaten) ? r : a), records[0]);
+    const cloud = milestones.find((m) => m.label === 'Cloud');
+    const mac = progress.filter((p) => p.engine.startsWith('Mac'));
+    return [{
+      records: records.length,
+      cases: new Set(progress.map((p) => p.case)).size,
+      programs: programs.reduce((s, b) => s + Number(b.total), 0),
+      peak_bin: Math.max(...programs.map((b) => Number(b.total))),
+      gain: Number(top.gain),
+      gain_label: top.label,
+      first_record_local: hm.format(new Date(first.first_beaten)),
+      minutes_after_cloud: Math.round((ms(first.first_beaten) - ms(cloud.time)) / 60000),
+      by_islands: records.filter((r) => r.engine.endsWith('island')).length,
+      mac_ties: new Set(mac.filter((p) => Number(p.ratio) >= 1).map((p) => p.case)).size,
+      mac_beats: new Set(mac.filter((p) => Number(p.ratio) > 1).map((p) => p.case)).size,
+    }];
+  },
+});
+
+dash.calc('records_view', {
+  inputs: ['records'],
+  title: 'Record times, Pacific',
+  description: 'When each record was first beaten and when our current best was found, in Pacific time.',
+  fn: (records) => {
+    const hm = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+    return records.map((r) => ({ case: r.case, first_local: hm.format(new Date(r.first_beaten)), best_local: hm.format(new Date(r.best_found)) }));
+  },
+});
+
+dash.calc('milestones_view', {
+  inputs: ['milestones'],
+  title: 'Milestone times, Pacific',
+  description: 'Each milestone time in Pacific time.',
+  fn: (milestones) => {
+    const hm = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+    return milestones.map((m) => ({ label: m.label, local: hm.format(new Date(m.time)) }));
+  },
+});
+
+(function () {
+  const fmtInt = d3.format(',');
+  const fmtPct = d3.format('.1%');
+  const fmtTick = d3.format('.0%');
+  const hmFmt = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+  const hm = (d) => hmFmt.format(d);
+  const TEN_MIN = 10 * 60 * 1000;
+  const state = { view: 'day', focus: null };
+  let drawn = false;
+
+  const $ = (id) => document.getElementById(id);
+  const ready = (...ids) => ids.every((id) => dash.data(id).status === 'ok');
+  const failed = (...ids) => ids.some((id) => dash.data(id).status === 'error');
+
+  function placeholder(el, isFail) {
+    el.replaceChildren();
+    if (isFail) {
+      el.classList.remove('dash-skeleton');
+      const p = document.createElement('div');
+      p.className = 'hx-fail';
+      p.textContent = 'Failed to load';
+      el.append(p);
+    } else {
+      el.classList.add('dash-skeleton');
+    }
+  }
+
+  function fillMarks(k) {
+    document.querySelectorAll('#hx-root [data-source="kpi"]').forEach((el) => {
+      const f = el.getAttribute('data-field');
+      const v = k ? k[f] : null;
+      el.textContent = v == null ? '—' : (typeof v === 'number' ? fmtInt(v) : String(v));
+    });
+    document.querySelectorAll('#figures .hx-big').forEach((el) => el.classList.toggle('dash-skeleton', !k));
+  }
+
+  function fillTakeaway(k) {
+    const box = $('takeaway');
+    box.replaceChildren();
+    if (!k) {
+      const s = document.createElement('span');
+      s.className = 'dash-skeleton';
+      s.textContent = '—';
+      box.append(s);
+      return;
+    }
+    const mark = (field, text) => {
+      const b = document.createElement('b');
+      b.setAttribute('data-source', 'kpi');
+      b.setAttribute('data-field', field);
+      b.setAttribute('data-row', '0');
+      b.textContent = text;
+      return b;
+    };
+    const t = (s) => document.createTextNode(s);
+    box.append(mark('records', fmtInt(k.records)), t(' of '), mark('cases', fmtInt(k.cases)),
+      t(' target cells in the bipartite degree-diameter table fell today'));
+    if (k.by_islands === k.records) box.append(t(', every one to a cloud island'));
+    box.append(t('. The first went at '), mark('first_record_local', k.first_record_local), t(', '),
+      mark('minutes_after_cloud', fmtInt(k.minutes_after_cloud)), t(' minutes after the first island went up. '));
+    if (k.mac_beats === 0) box.append(t('On the Mac alone, the best result was a tie, on '), mark('mac_ties', fmtInt(k.mac_ties)), t(' cells.'));
+  }
+
+  function series(progress, records) {
+    const recordCases = records.map((r) => r.case);
+    const byCase = d3.group(progress, (p) => p.case);
+    const out = [];
+    for (const [c, rows] of byCase) {
+      const pts = rows.map((r) => ({ t: new Date(r.time), ratio: Number(r.ratio), value: Number(r.value), record: Number(r.record), engine: r.engine, run: r.run_id }))
+        .sort((a, b) => a.t - b.t);
+      const ri = recordCases.indexOf(c);
+      out.push({ id: c, label: rows[0].label, pts, record: Number(rows[0].record), isRecord: ri >= 0,
+        color: ri >= 0 ? dash.colors[ri % dash.colors.length] : 'var(--cds-chart-muted)' });
+    }
+    out.sort((a, b) => (b.isRecord - a.isRecord) || (b.pts[b.pts.length - 1].ratio - a.pts[a.pts.length - 1].ratio));
+    return out;
+  }
+
+  function drawLegend(ss) {
+    const box = $('legend');
+    box.replaceChildren();
+    for (const s of ss) {
+      const last = s.pts[s.pts.length - 1];
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hx-chip' + (state.focus && state.focus !== s.id ? ' hx-dim' : '');
+      b.setAttribute('aria-pressed', String(state.focus === s.id));
+      const sw = document.createElement('span');
+      sw.className = 'hx-sw';
+      sw.style.background = s.color;
+      const name = document.createElement('span');
+      name.textContent = s.label;
+      const val = document.createElement('span');
+      val.style.color = 'var(--color-fg-muted)';
+      val.textContent = fmtInt(last.value);
+      b.append(sw, name, val);
+      b.addEventListener('click', () => { state.focus = state.focus === s.id ? null : s.id; render(); });
+      box.append(b);
+    }
+  }
+
+  function drawClimb(el, ss, milestones, endT) {
+    el.replaceChildren();
+    el.classList.remove('dash-skeleton');
+    const W = Math.max(280, el.clientWidth);
+    const H = W < 560 ? 320 : 420;
+    const late = state.view === 'late';
+    const t0 = late ? new Date(endT - 3 * 3600e3) : d3.min(ss, (s) => s.pts[0].t);
+    const allRatios = ss.flatMap((s) => s.pts.map((p) => p.ratio));
+    const maxR = d3.max(allRatios);
+    const yLo = late ? 0.9 : Math.floor(d3.min(allRatios) * 20) / 20;
+    const yHi = Math.max(1.02, Math.ceil((maxR + 0.005) * 100) / 100);
+    const ms = milestones.filter((m) => m.on_chart === 'yes').map((m) => ({ t: new Date(m.time), label: m.label }))
+      .filter((m) => m.t >= t0 && m.t <= endT);
+
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', 'Best graph per target cell as a share of the table record, over the day');
+    // measure the widest y tick to set the left margin
+    const y0 = d3.scaleLinear([yLo, yHi], [0, 1]);
+    const yTicks = y0.ticks(late ? 6 : 7);
+    const probe = svg.append('text').text(fmtTick(yTicks[yTicks.length - 1]));
+    const left = Math.ceil(probe.node().getComputedTextLength()) + 12;
+    probe.remove();
+    // milestone labels: place in rows so they never meet
+    const xTmp = d3.scaleUtc([t0, endT], [left, W - 12]);
+    const rowEnds = [];
+    const placed = ms.map((m) => {
+      const t = svg.append('text').text(m.label);
+      const w = t.node().getComputedTextLength();
+      t.remove();
+      const x = xTmp(m.t);
+      const flip = x + 4 + w > W - 12;
+      const start = flip ? x - 4 - w : x + 4;
+      let row = rowEnds.findIndex((end) => start > end + 8);
+      if (row < 0) { row = rowEnds.length; rowEnds.push(-Infinity); }
+      rowEnds[row] = start + w;
+      return { ...m, row, w, flip };
+    });
+    const top = 8 + Math.max(1, rowEnds.length) * 16;
+    const m = { top, right: 12, bottom: 28, left };
+    const x = d3.scaleUtc([t0, endT], [m.left, W - m.right]);
+    const y = d3.scaleLinear([yLo, yHi], [H - m.bottom, m.top]);
+
+    const clipId = 'hx-clip-' + state.view;
+    svg.append('clipPath').attr('id', clipId).append('rect')
+      .attr('x', m.left).attr('y', m.top).attr('width', W - m.left - m.right).attr('height', H - m.top - m.bottom).attr('fill', 'none');
+
+    // grid and axes
+    svg.append('g').selectAll('line').data(y.ticks(late ? 6 : 7)).join('line')
+      .attr('x1', m.left).attr('x2', W - m.right).attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
+      .attr('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 1);
+    const yAxis = svg.append('g').attr('transform', `translate(${m.left},0)`)
+      .call(d3.axisLeft(y).ticks(late ? 6 : 7).tickFormat(fmtTick).tickSize(0).tickPadding(8));
+    yAxis.attr('font-size', null).attr('font-family', null).select('.domain').remove();
+    const hours = (endT - t0) / 3600e3;
+    const step = W < 560 ? (hours > 4 ? 2 : 1) : 1;
+    const xAxis = svg.append('g').attr('transform', `translate(0,${H - m.bottom})`)
+      .call(d3.axisBottom(x).ticks(d3.utcHour.every(step)).tickFormat((d) => hm(d)).tickSizeOuter(0).tickPadding(6));
+    xAxis.attr('font-size', null).attr('font-family', null);
+    xAxis.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+    xAxis.selectAll('.tick line').attr('stroke', 'var(--cds-chart-axis)');
+
+    // milestones
+    const mg = svg.append('g').attr('class', 'hx-ms');
+    for (const p of placed) {
+      mg.append('line').attr('x1', x(p.t)).attr('x2', x(p.t)).attr('y1', 6 + p.row * 16 + 6).attr('y2', H - m.bottom)
+        .attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 4').attr('stroke-width', 1);
+      mg.append('text').attr('x', p.flip ? x(p.t) - 4 : x(p.t) + 4).attr('text-anchor', p.flip ? 'end' : 'start')
+        .attr('y', 6 + p.row * 16 + 10).text(p.label);
+    }
+
+    // the record line
+    svg.append('line').attr('x1', m.left).attr('x2', W - m.right).attr('y1', y(1)).attr('y2', y(1))
+      .attr('stroke', 'var(--color-fg)').attr('stroke-width', 1.5).attr('stroke-dasharray', '6 4');
+    svg.append('text').attr('x', W - m.right).attr('y', y(1) + 14).attr('text-anchor', 'end').text('Table record = 100%');
+
+    // lines: muted ones first, focused one last
+    const line = d3.line().x((p) => x(p.t)).y((p) => y(p.ratio)).curve(d3.curveStepAfter);
+    const order = [...ss].sort((a, b) => (a.isRecord - b.isRecord) || ((state.focus === a.id) - (state.focus === b.id)));
+    const lg = svg.append('g').attr('clip-path', `url(#${clipId})`).attr('class', drawn ? '' : 'hx-grow');
+    for (const s of order) {
+      const pts = [...s.pts, { ...s.pts[s.pts.length - 1], t: endT }];
+      const dim = state.focus && state.focus !== s.id;
+      lg.append('path').attr('d', line(pts)).attr('fill', 'none').attr('stroke', s.color)
+        .attr('stroke-width', state.focus === s.id ? 3 : 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+        .attr('opacity', dim ? 0.15 : 1);
+      if (s.isRecord) {
+        const cross = s.pts.find((p) => p.ratio > 1);
+        if (cross && cross.t >= t0) {
+          lg.append('circle').attr('cx', x(cross.t)).attr('cy', y(cross.ratio)).attr('r', 4.5)
+            .attr('fill', s.color).attr('stroke', 'var(--color-panel)').attr('stroke-width', 1.5).attr('opacity', dim ? 0.2 : 1);
+        }
+      }
+    }
+
+    // hover
+    const tip = d3.select(el).append('div').attr('class', 'hx-tip').style('display', 'none');
+    const rule = svg.append('line').attr('y1', m.top).attr('y2', H - m.bottom).attr('stroke', 'var(--cds-chart-axis)').style('display', 'none');
+    const dots = svg.append('g').style('display', 'none');
+    svg.append('rect').attr('x', m.left).attr('y', m.top).attr('width', W - m.left - m.right).attr('height', H - m.top - m.bottom)
+      .attr('fill', 'transparent').style('cursor', 'crosshair')
+      .on('pointerleave', () => { tip.style('display', 'none'); rule.style('display', 'none'); dots.style('display', 'none'); })
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev, svg.node());
+        const t = x.invert(mx);
+        const at = ss.map((s) => {
+          const p = [...s.pts].reverse().find((q) => q.t <= t);
+          return p ? { s, p } : null;
+        }).filter(Boolean).sort((a, b) => b.p.ratio - a.p.ratio);
+        if (!at.length) return;
+        const px = x(t);
+        rule.attr('x1', px).attr('x2', px).style('display', null);
+        dots.style('display', null).selectAll('circle').data(at.filter((d) => !state.focus || d.s.id === state.focus)).join('circle')
+          .attr('cx', px).attr('cy', (d) => y(Math.max(yLo, Math.min(yHi, d.p.ratio)))).attr('r', 3.5)
+          .attr('fill', (d) => d.s.color).attr('stroke', 'var(--color-panel)');
+        tip.replaceChildren();
+        tip.append('div').attr('class', 'hx-tt').text(hm(t) + ' Pacific');
+        for (const d of at) {
+          const r = tip.append('div').attr('class', 'hx-tr').style('opacity', state.focus && state.focus !== d.s.id ? 0.45 : 1);
+          r.append('span').attr('class', 'hx-sw').style('background', d.s.color);
+          r.append('span').text(d.s.label);
+          r.append('span').text(`${fmtInt(d.p.value)} · ${fmtPct(d.p.ratio)}`);
+        }
+        const box = el.getBoundingClientRect();
+        const scale = box.width / W;
+        const tw = tip.node().offsetWidth;
+        let left = px * scale + 14;
+        if (left + tw > box.width) left = px * scale - tw - 14;
+        tip.style('left', Math.max(0, left) + 'px').style('top', (m.top * scale) + 'px').style('display', null);
+      });
+  }
+
+  function drawPrograms(el, programs, endT) {
+    el.replaceChildren();
+    el.classList.remove('dash-skeleton');
+    const W = Math.max(280, el.clientWidth);
+    const H = 300;
+    const bins = programs.map((b) => ({ t: new Date(b.bin_start), mac: Number(b.mac), cloud: Number(b.cloud), total: Number(b.total), cum: Number(b.cumulative) }));
+    const t0 = bins[0].t;
+    const t1 = new Date(Math.max(endT, +bins[bins.length - 1].t + TEN_MIN));
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', 'Programs written by Haiku per 10 minutes');
+    const yMax = d3.max(bins, (b) => b.total);
+    const y0 = d3.scaleLinear([0, yMax], [0, 1]).nice();
+    const probe = svg.append('text').text(fmtInt(y0.ticks(5).slice(-1)[0]));
+    const left = Math.ceil(probe.node().getComputedTextLength()) + 12;
+    probe.remove();
+    const m = { top: 12, right: 12, bottom: 28, left };
+    const x = d3.scaleUtc([t0, t1], [m.left, W - m.right]);
+    const y = d3.scaleLinear([0, yMax], [H - m.bottom, m.top]).nice();
+    svg.append('g').selectAll('line').data(y.ticks(5)).join('line')
+      .attr('x1', m.left).attr('x2', W - m.right).attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
+      .attr('stroke', 'var(--cds-chart-grid)');
+    const ya = svg.append('g').attr('transform', `translate(${m.left},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(fmtInt).tickSize(0).tickPadding(8));
+    ya.attr('font-size', null).attr('font-family', null).select('.domain').remove();
+    const hours = (t1 - t0) / 3600e3;
+    const xa = svg.append('g').attr('transform', `translate(0,${H - m.bottom})`)
+      .call(d3.axisBottom(x).ticks(d3.utcHour.every(W < 560 && hours > 4 ? 2 : 1)).tickFormat((d) => hm(d)).tickSizeOuter(0).tickPadding(6));
+    xa.attr('font-size', null).attr('font-family', null);
+    xa.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+    xa.selectAll('.tick line').attr('stroke', 'var(--cds-chart-axis)');
+    const bw = Math.max(1, x(new Date(+t0 + TEN_MIN)) - x(t0) - 2);
+    const g = svg.append('g').attr('class', drawn ? '' : 'hx-grow');
+    g.selectAll('rect.mac').data(bins.filter((b) => b.mac > 0)).join('rect').attr('class', 'mac')
+      .attr('x', (b) => x(b.t) + 1).attr('width', bw).attr('y', (b) => y(b.mac)).attr('height', (b) => y(0) - y(b.mac))
+      .attr('fill', 'var(--cds-chart-muted)').attr('rx', Math.min(3, bw / 2));
+    g.selectAll('rect.cloud').data(bins.filter((b) => b.cloud > 0)).join('rect').attr('class', 'cloud')
+      .attr('x', (b) => x(b.t) + 1).attr('width', bw).attr('y', (b) => y(b.mac + b.cloud)).attr('height', (b) => y(b.mac) - y(b.mac + b.cloud))
+      .attr('fill', dash.colors[0]).attr('rx', Math.min(3, bw / 2));
+    // key
+    const key = svg.append('g').attr('transform', `translate(${m.left + 8},${m.top + 6})`);
+    [['Mac runs', 'var(--cds-chart-muted)'], ['Cloud islands', dash.colors[0]]].forEach(([name, color], i) => {
+      const k = key.append('g').attr('transform', `translate(${i * 110},0)`);
+      k.append('rect').attr('width', 10).attr('height', 10).attr('rx', 2).attr('y', -9).attr('fill', color);
+      k.append('text').attr('x', 15).text(name);
+    });
+    // hover
+    const tip = d3.select(el).append('div').attr('class', 'hx-tip').style('display', 'none');
+    svg.append('rect').attr('x', m.left).attr('y', m.top).attr('width', W - m.left - m.right).attr('height', H - m.top - m.bottom)
+      .attr('fill', 'transparent')
+      .on('pointerleave', () => tip.style('display', 'none'))
+      .on('pointermove', (ev) => {
+        const [mx] = d3.pointer(ev, svg.node());
+        const t = x.invert(mx);
+        const b = bins.find((q) => t >= q.t && t < +q.t + TEN_MIN);
+        if (!b) { tip.style('display', 'none'); return; }
+        tip.replaceChildren();
+        tip.append('div').attr('class', 'hx-tt').text(`${hm(b.t)} to ${hm(new Date(+b.t + TEN_MIN))} Pacific`);
+        [['Mac runs', b.mac, 'var(--cds-chart-muted)'], ['Cloud islands', b.cloud, dash.colors[0]], ['Running total', b.cum, null]].forEach(([n, v, c]) => {
+          const r = tip.append('div').attr('class', 'hx-tr');
+          r.append('span').attr('class', 'hx-sw').style('background', c || 'transparent');
+          r.append('span').text(n);
+          r.append('span').text(fmtInt(v));
+        });
+        const box = el.getBoundingClientRect();
+        const scale = box.width / W;
+        const tw = tip.node().offsetWidth;
+        let leftPx = x(b.t) * scale + bw * scale + 10;
+        if (leftPx + tw > box.width) leftPx = x(b.t) * scale - tw - 10;
+        tip.style('left', Math.max(0, leftPx) + 'px').style('top', (m.top * scale) + 'px').style('display', null);
+      });
+  }
+
+  function fillTable(tableId, rows, keyField, cells) {
+    const tbody = document.querySelector(`#${tableId} tbody`);
+    tbody.replaceChildren();
+    for (const r of rows) {
+      const tr = document.createElement('tr');
+      tr.setAttribute('data-key', r[keyField]);
+      for (const c of cells) {
+        const td = document.createElement('td');
+        td.textContent = c.get(r);
+        if (c.cls) td.className = c.cls;
+        tr.append(td);
+      }
+      tbody.append(tr);
+    }
+  }
+
+  function render() {
+    const k = ready('kpi') ? dash.data('kpi').data[0] : null;
+    fillMarks(k);
+    fillTakeaway(k);
+
+    const climb = $('climb-chart');
+    const progOk = ready('progress', 'records', 'milestones', 'programs');
+    let endT = null;
+    if (progOk) {
+      const progress = dash.data('progress').data;
+      const records = dash.data('records').data;
+      const programs = dash.data('programs').data;
+      const lastProg = d3.max(progress, (p) => new Date(p.time));
+      const lastBin = d3.max(programs, (b) => new Date(+new Date(b.bin_start) + TEN_MIN));
+      endT = new Date(Math.max(+lastProg, +lastBin));
+      const ss = series(progress, records);
+      drawLegend(ss);
+      drawClimb(climb, ss, dash.data('milestones').data, endT);
+    } else {
+      $('legend').replaceChildren();
+      placeholder(climb, failed('progress', 'records', 'milestones', 'programs'));
+    }
+
+    const progEl = $('programs-chart');
+    if (ready('programs')) {
+      const programs = dash.data('programs').data;
+      drawPrograms(progEl, programs, endT || d3.max(programs, (b) => new Date(+new Date(b.bin_start) + TEN_MIN)));
+    } else {
+      placeholder(progEl, failed('programs'));
+    }
+
+    if (ready('records', 'records_view')) {
+      const view = new Map(dash.data('records_view').data.map((v) => [v.case, v]));
+      fillTable('records-table', dash.data('records').data, 'case', [
+        { get: (r) => r.label },
+        { get: (r) => fmtInt(Number(r.table)), cls: 'hx-num' },
+        { get: (r) => fmtInt(Number(r.ours)), cls: 'hx-num' },
+        { get: (r) => fmtInt(Number(r.gain)), cls: 'hx-num hx-up' },
+        { get: (r) => view.get(r.case)?.first_local ?? '—' },
+        { get: (r) => view.get(r.case)?.best_local ?? '—' },
+        { get: (r) => r.engine },
+        { get: (r) => r.old_holder, cls: 'hx-wrap' },
+      ]);
+    } else {
+      document.querySelector('#records-table tbody').replaceChildren();
+    }
+
+    if (ready('milestones', 'milestones_view')) {
+      const view = new Map(dash.data('milestones_view').data.map((v) => [v.label, v]));
+      fillTable('milestones-table', dash.data('milestones').data, 'label', [
+        { get: (r) => view.get(r.label)?.local ?? '—' },
+        { get: (r) => r.label },
+        { get: (r) => r.detail, cls: 'hx-wrap' },
+      ]);
+    } else {
+      document.querySelector('#milestones-table tbody').replaceChildren();
+    }
+    if (progOk) drawn = true;
+  }
+
+  for (const [id, v] of [['view-day', 'day'], ['view-late', 'late']]) {
+    $(id).addEventListener('click', () => {
+      state.view = v;
+      $('view-day').setAttribute('aria-pressed', String(v === 'day'));
+      $('view-late').setAttribute('aria-pressed', String(v === 'late'));
+      render();
+    });
+  }
+
+  dash.onData(render);
+})();
+</script>
