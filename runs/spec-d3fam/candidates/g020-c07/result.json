@@ -1,0 +1,41 @@
+{
+  "cases": {
+    "d11D3": {
+      "case_id": "d11D3",
+      "reason": "crash: ^^^^^^^^^^^^^^^^\n                          random.Random(seed * 104729 + d))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d3fam/candidates/g020-c07/program.py\", line 433, in _repair_grow\n    trial[a2].remove(b2)\n    ~~~~~~~~~~~~~~~~^^^^\nKeyError: 190\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 4.677234281999972
+    },
+    "d13D3": {
+      "case_id": "d13D3",
+      "reason": "crash: ^^^^^^^^^^^^^^^^^^\n                          random.Random(seed * 104729 + d))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d3fam/candidates/g020-c07/program.py\", line 446, in _repair_grow\n    trial[b].remove(a2)\n    ~~~~~~~~~~~~~~~^^^^\nKeyError: 274\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 13.441848725
+    },
+    "d15D3": {
+      "case_id": "d15D3",
+      "reason": "crash: ^^^^^^^^^^^^^^^^^^^\n                          random.Random(seed * 104729 + d))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d3fam/candidates/g020-c07/program.py\", line 444, in _repair_grow\n    trial[b2].remove(a)\n    ~~~~~~~~~~~~~~~~^^^\nKeyError: 87\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 3.8232277980000617
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11827929500009304
+    }
+  },
+  "fitness": 0.01639344262295082
+}
