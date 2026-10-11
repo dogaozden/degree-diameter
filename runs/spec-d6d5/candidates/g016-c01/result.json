@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "crash: esult = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d6d5/candidates/g016-c01/program.py\", line 756, in build\n    n2, e2 = _saturate_edges(rep[0], rep[1], d, rng)\n    ^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 35.26371841800028
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash: esult = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d6d5/candidates/g016-c01/program.py\", line 756, in build\n    n2, e2 = _saturate_edges(rep[0], rep[1], d, rng)\n    ^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 35.31412566600011
+    }
+  },
+  "fitness": 0.0
+}
