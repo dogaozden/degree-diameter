@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 49.37794857299991
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: ds(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/spec-d7d4-w2/candidates/g001-c10/program.py\", line 770, in build\n    res = _insert_repair(best_n, best[1], d, D, rng, slice_end, 4000)\n          ^^^^^^^^^^^^^^\nNameError: name '_insert_repair' is not defined\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 15.234108785999979
+    }
+  },
+  "fitness": 0.047619047619047616
+}
