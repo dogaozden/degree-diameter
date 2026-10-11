@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16498607899995932
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: 27/program.py\", line 562, in _add_matching\n    if not augment(p, set()):\n           ~~~~~~~^^^^^^^^^^\n  File \"/home/user/math/runs/c-d7d4/candidates/g001-c27/program.py\", line 552, in augment\n    if match_r[l] == -1 or augment(match_r[l], seen):\n       ~~~~~~~^^^\nIndexError: list index out of range\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.41513815799999065
+    }
+  },
+  "fitness": 0.047619047619047616
+}
