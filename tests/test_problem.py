@@ -52,3 +52,43 @@ def test_specialist_islands_load_and_focus():
     assert p.smoke_case().id == "d3D3" and p.cases[0].weight == 0.1
     assert "This island's focus" in p.prompt_context() and "record 190" in p.prompt_context()
     assert load_problem("problems.bipartite_dd.problem").name == "bipartite_dd"
+
+
+def test_c_islands_use_c_seed_and_header():
+    from evolve.types import load_problem
+    p = load_problem("problems.bipartite_dd.islands_c:D7D4")
+    assert p.seed_program.name == "seed_c.py" and [c.id for c in p.cases] == ["d3D3", "d7D4"]
+    t = p.prompt_context()
+    assert t.startswith("You are improving a program") and "C_SOURCE" in t and "This island's focus" in t
+    assert load_problem("problems.bipartite_dd.islands:D7D4").prompt_context().startswith("You are improving a Python program")
+
+
+def test_c_seed_compiles_cleanly_and_is_valid_on_smoke():
+    import shutil, subprocess, sys, importlib.util
+    from problems.bipartite_dd.checker import check
+    from problems.bipartite_dd.problem import PROBLEM
+    sys.path.insert(0, str(PROBLEM.harness_dir))
+    spec = importlib.util.spec_from_file_location("seed_c_mod", PROBLEM.harness_dir / "seed_c.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    cc = shutil.which("cc")
+    assert cc, "a C compiler is required"
+    r = subprocess.run([cc, "-O2", "-std=c11", "-Wall", "-Wextra", "-Werror", "-x", "c", "-", "-o", "/dev/null", "-lm"],
+                       input=mod.C_SOURCE, capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    assert check(mod.build(3, 3, 0, 5.0), 3, 3).valid
+    assert check(mod.build(4, 5, 1, 6.0), 4, 5).valid
+
+
+def test_lib_graph_text_roundtrip_and_run_c_errors():
+    import sys
+    import pytest
+    from problems.bipartite_dd.problem import PROBLEM
+    sys.path.insert(0, str(PROBLEM.harness_dir))
+    import lib
+    g = (4, [(0, 2), (1, 3), (0, 3)])
+    assert lib.parse_graph_text(lib.graph_to_text(*g)) == g
+    with pytest.raises(ValueError):
+        lib.parse_graph_text("5 3\n0 1\n")
+    with pytest.raises(RuntimeError, match="compile failed"):
+        lib.run_c("int main(void) { return }", [1])
+    assert lib.moore_bound(3, 3) == 14

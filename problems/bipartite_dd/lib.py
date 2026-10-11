@@ -404,3 +404,64 @@ def araujo_lopez_graph(q):
         if degree.get(u) == q + 1 and degree.get(v) == q + 1:
             edges.add((u, v))
     return len(ids), sorted(edges)
+
+
+# ---------------------------------------------------------------- running C code
+
+def graph_to_text(n, edges):
+    """The "n m" + one "u v" line per edge text format used by C search engines."""
+    return f"{n} {len(edges)}\n" + "".join(f"{u} {v}\n" for u, v in edges)
+
+
+def parse_graph_text(text):
+    """Inverse of graph_to_text: returns (n, edges). Raises ValueError on malformed text."""
+    nums = text.split()
+    if len(nums) < 2:
+        raise ValueError("C output is empty or truncated")
+    n, m = int(nums[0]), int(nums[1])
+    if len(nums) < 2 + 2 * m:
+        raise ValueError(f"C output promised {m} edges but has {(len(nums) - 2) // 2}")
+    return n, [(int(nums[2 + 2 * i]), int(nums[3 + 2 * i])) for i in range(m)]
+
+
+def run_c(source, args, stdin_graph=None, timeout=60.0):
+    """Compile C source once (cached by hash, cc -O2 -std=c11 -lm), run it as `prog *args`.
+
+    stdin gets `stdin_graph` = (n, edges) in graph_to_text format, or "0 0" if None.
+    Returns stdout text. Raises RuntimeError with the compiler or program error on failure,
+    so broken C shows up clearly instead of silently scoring low.
+    """
+    import hashlib
+    import os
+    import subprocess
+    import tempfile
+
+    cache = os.path.join(tempfile.gettempdir(), "evolve-c-cache")
+    os.makedirs(cache, exist_ok=True)
+    exe = os.path.join(cache, hashlib.sha256(source.encode()).hexdigest()[:20])
+    if not os.path.exists(exe):
+        src = f"{exe}.{os.getpid()}.c"
+        tmp = f"{exe}.{os.getpid()}.tmp"
+        with open(src, "w") as f:
+            f.write(source)
+        cc = os.environ.get("CC", "cc")
+        r = subprocess.run([cc, "-O2", "-std=c11", "-o", tmp, src, "-lm"],
+                           capture_output=True, text=True, timeout=120)
+        os.remove(src)
+        if r.returncode != 0:
+            raise RuntimeError("C compile failed:\n" + r.stderr[-2000:])
+        os.replace(tmp, exe)
+    stdin = graph_to_text(*stdin_graph) if stdin_graph else "0 0\n"
+    try:
+        r = subprocess.run([exe, *map(str, args)], input=stdin, capture_output=True,
+                           text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(f"C program ran past its {timeout:.1f}s timeout") from None
+    if r.returncode != 0:
+        raise RuntimeError(f"C program exited with code {r.returncode}:\n" + r.stderr[-2000:])
+    return r.stdout
+
+
+def moore_bound(d, D):
+    """Largest possible order of a bipartite graph with max degree d and diameter D."""
+    return _moore_bound(d, D)

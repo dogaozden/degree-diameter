@@ -30,6 +30,7 @@ Rules:
 class BipartiteDD:
     name = "bipartite_dd"
     harness_dir = Path(__file__).parent           # holds lib.py
+    prompt_header = PROMPT_HEADER
     seed_program = harness_dir / "seed.py"
 
     def __init__(self, cases_path=None):
@@ -58,7 +59,7 @@ class BipartiteDD:
     def prompt_context(self):
         lib_src = (self.harness_dir / "lib.py").read_text()
         notes = (self.harness_dir / "notes.md").read_text()
-        return PROMPT_HEADER + "\n\n## lib.py\n```python\n" + lib_src + "\n```\n\n## Notes\n" + notes
+        return self.prompt_header + "\n\n## lib.py\n```python\n" + lib_src + "\n```\n\n## Notes\n" + notes
 
 
 PROBLEM = BipartiteDD()
