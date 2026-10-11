@@ -1,8 +1,8 @@
 # island-1
 
 Problem: bipartite_dd
-Generations done: 14 of 61 (including generation 0)
-Total mutator calls: 208
+Generations done: 15 of 61 (including generation 0)
+Total mutator calls: 224
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -27,7 +27,6 @@ Total mutator calls: 208
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
-| 4 | 16 | 0 | 0.9514 | 0.9514 |
 | 5 | 16 | 0 | 0.9514 | 0.9513 |
 | 6 | 16 | 0 | 0.9514 | 0.9510 |
 | 7 | 16 | 0 | 0.9514 | 0.9513 |
@@ -37,3 +36,4 @@ Total mutator calls: 208
 | 11 | 16 | 0 | 0.9597 | 0.9597 |
 | 12 | 16 | 0 | 0.9597 | 0.9514 |
 | 13 | 16 | 0 | 0.9597 | 0.9514 |
+| 14 | 16 | 0 | 0.9597 | 0.9485 |
