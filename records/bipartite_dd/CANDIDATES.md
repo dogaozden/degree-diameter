@@ -90,7 +90,9 @@ A separate agent searched arXiv (through 11 Oct 2026), OpenAlex, Crossref (EJC, 
 Google Scholar and Semantic Scholar citations, the wiki's edit history, and the pages of Loz, Exoo, Comellas
 and Pineda-Villavicencio.
 
-- **All six cases:** no published value above the table, and no proven upper bound below our graphs.
+- **All seven cases:** no published value above the table, and no proven upper bound below our graphs.
+  (7,5) was checked separately after 1140 was found: 1134 is unchanged since 2012 and no paper gives a
+  (7,5) value.
 - **The wiki:** the cells for (4,5), (5,5), (7,4), (11,3) and (11,4) are unchanged since its first revision
   (17 Jan 2012). (13,3) went from 270 to 274 on 30 Mar 2021 (Araujo-Pardo and López). The upper-bound table
   is unchanged since 2012. The survey (Miller and Širáň, 2013) and Loz's 2009 table agree.
@@ -99,6 +101,8 @@ and Pineda-Villavicencio.
   - (7,4) 518 and (11,4) 2222 are the Moore bound itself. Reaching it would need a generalized quadrangle
     of order 6 or 10, which nobody has ruled out.
   - (11,3) 220 is the Moore bound minus 2.
+  - (7,5): the wiki shows 3106 but colours it "Moore bound minus 6", which is 3104 (Moore bound 3110);
+    Prop. 6.4 of Feria-Purón and Pineda-Villavicencio gives 3104.
   - (13,3) 314 is the Moore bound. Reaching it would need a projective plane of order 12, which is open.
 - **Araujo-Pardo and López's family** gives 2(q² + q + 5) vertices at degree q + 2: 190 at q = 9 and 274 at
   q = 11. Our 192 and 276 are each exactly 2 more. Their paper's Problem 3 asks readers to "improve our
