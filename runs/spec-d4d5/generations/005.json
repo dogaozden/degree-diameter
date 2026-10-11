@@ -1,0 +1,30 @@
+{
+  "best_by_case": {
+    "d3D3": {
+      "cid": "g000-i00",
+      "record": 14,
+      "value": 14.0
+    },
+    "d4D5": {
+      "cid": "g005-c05",
+      "record": 160,
+      "value": 162.0
+    }
+  },
+  "best_fitness": 1.0119047619047619,
+  "calls_total": 160,
+  "candidates": 32,
+  "complete": true,
+  "elapsed_s": 918.4935798739998,
+  "failed": 0,
+  "gen_best_fitness": 1.0119047619047619,
+  "generation": 5,
+  "made": 32,
+  "new_records": [
+    [
+      "d4D5",
+      "g005-c05",
+      162.0
+    ]
+  ]
+}
