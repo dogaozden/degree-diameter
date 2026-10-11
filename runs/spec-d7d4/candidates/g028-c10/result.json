@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.175246781000169
+    },
+    "d7D4": {
+      "case_id": "d7D4",
+      "reason": "crash: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/spec-d7d4/candidates/g028-c10/program.py\", line 359, in _expand\n    cur_n, cur_e = _grow(cur_n, cur_e, d, D, deadline)\n                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: _grow() missing 1 required positional argument: 'rng'\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 1.4195312749998266
+    }
+  },
+  "fitness": 0.047619047619047616
+}
