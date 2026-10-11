@@ -1,6 +1,7 @@
 # Candidate new records (bipartite degree-diameter)
 
-Status: **verified graphs, literature check pending.** Not yet claimed as records.
+Status: **verified graphs; the literature check (2026-10-10) found nothing larger and no bound below them.**
+Not yet reported to the table's moderators.
 
 Reference table: Combinatorics Wiki, "The Degree Diameter Problem for Bipartite Graphs"
 (http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs), table "as of January 2012",
@@ -73,3 +74,32 @@ Nearby recent work (not on the bipartite table):
 
 - F. Comellas, "Table of large graphs with given degree and diameter", arXiv:2406.18994 (2024). Updates the general table since 2013.
 - R. Mizuno, "New lower bounds for the degree/diameter problem via interaction with a browser-accessible LLM", arXiv:2606.15860 (June 2026). General graphs, found with an LLM.
+
+## Literature check (2026-10-10)
+
+A separate agent searched arXiv (through 11 Oct 2026), OpenAlex, Crossref (EJC, Discrete Math, JGT, DAM),
+Google Scholar and Semantic Scholar citations, the wiki's edit history, and the pages of Loz, Exoo, Comellas
+and Pineda-Villavicencio.
+
+- **All six cases:** no published value above the table, and no proven upper bound below our graphs.
+- **The wiki:** the cells for (4,5), (5,5), (7,4), (11,3) and (11,4) are unchanged since its first revision
+  (17 Jan 2012). (13,3) went from 270 to 274 on 30 Mar 2021 (Araujo-Pardo and López). The upper-bound table
+  is unchanged since 2012. The survey (Miller and Širáň, 2013) and Loz's 2009 table agree.
+- **Upper bounds:**
+  - (4,5) 236 and (5,5) 676 are the Moore bound minus 6 (Feria-Purón and Pineda-Villavicencio, Prop. 6.4).
+  - (7,4) 518 and (11,4) 2222 are the Moore bound itself. Reaching it would need a generalized quadrangle
+    of order 6 or 10, which nobody has ruled out.
+  - (11,3) 220 is the Moore bound minus 2.
+  - (13,3) 314 is the Moore bound. Reaching it would need a projective plane of order 12, which is open.
+- **Araujo-Pardo and López's family** gives 2(q² + q + 5) vertices at degree q + 2: 190 at q = 9 and 274 at
+  q = 11. Our 192 and 276 are each exactly 2 more. Their paper's Problem 3 asks readers to "improve our
+  construction".
+- **Not a Haar graph:** Haanpää (2004) shows abelian Haar graphs of degree 11 and diameter 3 stop at 190.
+  Our 192 is not one; its program grows the Araujo-Pardo–López 190 graph by two vertices.
+- **Could not read:** Feria-Purón's PhD thesis (bot-blocked; it claims improved upper bounds) and
+  Araujo-Pardo's 2025–26 book chapter on bipartite biregular graphs (paywalled). An upper bound below one of
+  our verified graphs would be a mistake, so the only open risk is a larger graph in those two sources.
+
+Reporting: the wiki takes no anonymous edits; changes go through a moderator. The degree/diameter
+moderators are Eyal Loz (chief), Hebert Pérez-Rosés and Guillermo Pineda-Villavicencio, and Nacho López is
+named as a maintainer. Araujo-Pardo and López are the natural people to tell about (11,3) and (13,3).
