@@ -1,0 +1,503 @@
+import itertools
+import random
+import time
+
+import numpy as np
+
+import lib
+
+
+# ----------------------------------------------------------------------------
+# Bases.
+# ----------------------------------------------------------------------------
+
+def _pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q <= d - 1, or None."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_full(q):
+    """Point-line incidence graph of the symplectic generalized quadrangle W(q).
+
+    Points are 0..P-1, lines are P..P+L-1. Returns (n, edges, F, pts, index) where
+    pts[i] is the normalised homogeneous vector of point i and index maps it back.
+    """
+    F = lib.GF(q)
+    A = F.add_table.tolist()
+    M = F.mul_table.tolist()
+    NEG = [F.neg(a) for a in range(q)]
+    INV = [0] + [F.inv(a) for a in range(1, q)]
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    P = len(pts)
+    index = {v: i for i, v in enumerate(pts)}
+
+    def norm(v):
+        c = next(x for x in v if x)
+        ic = INV[c]
+        return tuple(M[ic][x] for x in v)
+
+    covered = [bytearray(P) for _ in range(P)]
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        ci = covered[i]
+        for j in range(i + 1, P):
+            if ci[j]:
+                continue
+            y = pts[j]
+            # Symplectic form x0*y1 - x1*y0 + x2*y3 - x3*y2.
+            t = A[M[x[0]][y[1]]][NEG[M[x[1]][y[0]]]]
+            s = A[M[x[2]][y[3]]][NEG[M[x[3]][y[2]]]]
+            if A[t][s] != 0:
+                continue
+            L = set()
+            for a in range(q):
+                ax = [M[a][x[k]] for k in range(4)]
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(A[ax[k]][M[b][y[k]]] for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                cp = covered[p]
+                for r in L:
+                    cp[r] = 1
+    edges = [(p, P + j) for j, L in enumerate(lines) for p in L]
+    return P + len(lines), edges, F, pts, index
+
+
+def _gq(q):
+    n, e, _, _, _ = _gq_full(q)
+    return n, e
+
+
+# ----------------------------------------------------------------------------
+# Twin blow-up.
+#
+# Blowing a vertex v up into two twins (same neighbourhood) preserves all
+# distances between original vertices. A vertex may gain at most one degree,
+# so every vertex may have at most one blown neighbour. Thus the blown set S
+# needs: on the line side, a partial spread; on the point side, a partial
+# ovoid. The two sides are independent constraints.
+#
+# New in this version: the point-side partial ovoid is also searched in a
+# symmetry-reduced way. The diagonal torus diag(l, 1/l, m, 1/m) of Sp(4, q)
+# preserves the symplectic form, hence the collinearity graph of W(q). We pick
+# random torus subgroups, take orbits of points, solve a weighted independent
+# set problem on the orbit graph, and extend the result greedily to single
+# points. The best of this and plain iterated local search is kept.
+# ----------------------------------------------------------------------------
+
+def _spread_search(A_nb, B_to_A, nB, k, rng, deadline):
+    """Largest family of A-vertices with pairwise disjoint neighbourhoods (k each)."""
+    nA = len(A_nb)
+    blocked = [0] * nA
+    covered = [False] * nB
+    chosen = []
+    best = []
+    stop = [False]
+    steps = [0]
+    cap = [0]
+    order = list(range(nB))
+
+    def rec(U):
+        if stop[0]:
+            return
+        steps[0] += 1
+        if steps[0] > cap[0] or ((steps[0] & 15) == 0 and time.monotonic() >= deadline):
+            stop[0] = True
+            return
+        if len(chosen) > len(best):
+            best[:] = chosen
+        if U == 0 or len(chosen) + U // k <= len(best):
+            return
+        pick = None
+        for b in order:
+            if covered[b]:
+                continue
+            o = [a for a in B_to_A[b] if blocked[a] == 0]
+            if not o:
+                return
+            if pick is None or len(o) < len(pick):
+                pick = o
+        rng.shuffle(pick)
+        for a in pick:
+            chosen.append(a)
+            for x in A_nb[a]:
+                covered[x] = True
+                for a2 in B_to_A[x]:
+                    blocked[a2] += 1
+            rec(U - k)
+            for x in A_nb[a]:
+                covered[x] = False
+                for a2 in B_to_A[x]:
+                    blocked[a2] -= 1
+            chosen.pop()
+            if stop[0]:
+                return
+
+    while time.monotonic() < deadline and len(best) * k < nB:
+        rng.shuffle(order)
+        stop[0] = False
+        cap[0] = steps[0] + 600
+        rec(nB)
+    return list(best)
+
+
+def _independent_set(N, nb, rng, nprng, deadline):
+    """Iterated local search for a large set of vertices with no conflicting pair."""
+    nbn = [np.asarray(x, dtype=np.int64) for x in nb]
+    cnt = np.zeros(N, dtype=np.int64)
+    inS = np.zeros(N, dtype=bool)
+    tabu = np.zeros(N, dtype=np.int64)
+    S = []
+    conf = 0
+    best = []
+    best_size = 0
+    it = 0
+    last_best_it = 0
+
+    def add(v):
+        nonlocal conf
+        conf += int(cnt[v])
+        cnt[nbn[v]] += 1
+        inS[v] = True
+        S.append(v)
+
+    def remove(u):
+        nonlocal conf
+        conf -= int(cnt[u])
+        cnt[nbn[u]] -= 1
+        inS[u] = False
+        S.remove(u)
+
+    def pick():
+        score = cnt + nprng.random(N)
+        score[inS] = np.inf
+        score[tabu > it] = np.inf
+        return int(np.argmin(score))
+
+    if N == 0:
+        return []
+
+    while True:
+        it += 1
+        if (it & 63) == 0 and time.monotonic() >= deadline:
+            break
+        if conf == 0:
+            if len(S) > best_size:
+                best = list(S)
+                best_size = len(S)
+                last_best_it = it
+            add(pick())
+        else:
+            conflicting = [u for u in S if cnt[u] > 0]
+            u = conflicting[rng.randrange(len(conflicting))]
+            remove(u)
+            tabu[u] = it + 5 + rng.randrange(8)
+            add(pick())
+        if S and it - last_best_it > 15000:
+            u = S[rng.randrange(len(S))]
+            remove(u)
+            tabu[u] = it + 5
+            last_best_it = it
+    if conf == 0 and len(S) > best_size:
+        best = list(S)
+    return best
+
+
+def _side_search(V, cs, rng, nprng, deadline):
+    """Large conflict-free subset of one side V, using local conflict lists cs."""
+    idx = {v: i for i, v in enumerate(V)}
+    nb_local = [[idx[w] for w in cs[v] if w in idx] for v in V]
+    res = _independent_set(len(V), nb_local, rng, nprng, deadline)
+    return [V[i] for i in res]
+
+
+def _normalize(F, v):
+    """Scale a nonzero homogeneous vector so its first nonzero entry is 1."""
+    c = next(x for x in v if x)
+    ic = F.inv(c)
+    return tuple(F.mul(ic, x) for x in v)
+
+
+def _torus_perm(F, pts, index, lam, mu):
+    """Permutation of point indices induced by diag(lam, 1/lam, mu, 1/mu) (a symplectic map)."""
+    li = F.inv(lam)
+    mi = F.inv(mu)
+    perm = []
+    for v in pts:
+        w = (F.mul(lam, v[0]), F.mul(li, v[1]), F.mul(mu, v[2]), F.mul(mi, v[3]))
+        j = index.get(_normalize(F, w))
+        if j is None:
+            return None
+        perm.append(j)
+    return perm
+
+
+def _random_torus_perms(F, pts, index, rng):
+    """Permutations from one or two random torus elements built on a primitive element."""
+    q = F.q
+    g = F.primitive_element()
+    perms = []
+    for _ in range(1 + rng.randrange(2)):
+        a = rng.randrange(q - 1)
+        b = rng.randrange(q - 1)
+        if a == 0 and b == 0:
+            continue
+        perm = _torus_perm(F, pts, index, F.pow(g, a), F.pow(g, b))
+        if perm is not None:
+            perms.append(perm)
+    return perms
+
+
+def _orbit_mis(P, cs, perms, rng, deadline):
+    """Weighted independent set of point orbits (orbit weight = orbit size), randomised greedy + swaps."""
+    par = list(range(P))
+
+    def find(x):
+        while par[x] != x:
+            par[x] = par[par[x]]
+            x = par[x]
+        return x
+
+    for perm in perms:
+        for i in range(P):
+            a = find(i)
+            b = find(perm[i])
+            if a != b:
+                par[a] = b
+    groups = {}
+    for i in range(P):
+        groups.setdefault(find(i), []).append(i)
+    orbs = list(groups.values())
+    m = len(orbs)
+    oid = [0] * P
+    for k, o in enumerate(orbs):
+        for p in o:
+            oid[p] = k
+    valid = [all(oid[r] != k for p in orbs[k] for r in cs[p]) for k in range(m)]
+    adj = [set() for _ in range(m)]
+    for k in range(m):
+        if not valid[k]:
+            continue
+        for p in orbs[k]:
+            for r in cs[p]:
+                j = oid[r]
+                if j != k and valid[j]:
+                    adj[k].add(j)
+    cand = [k for k in range(m) if valid[k]]
+    w = [len(o) for o in orbs]
+    best, best_w = [], 0
+    if not cand:
+        return best
+    while True:
+        key = {k: w[k] + 2.0 * rng.random() for k in cand}
+        order = sorted(cand, key=lambda k: -key[k])
+        chosen = set()
+        blocked = set()
+        for k in order:
+            if k in blocked:
+                continue
+            chosen.add(k)
+            blocked.add(k)
+            blocked |= adj[k]
+        improved = True
+        while improved:
+            improved = False
+            for k in order:
+                if k in chosen:
+                    continue
+                C = adj[k] & chosen
+                if not C:
+                    chosen.add(k)
+                    improved = True
+                elif sum(w[c] for c in C) < w[k]:
+                    chosen -= C
+                    chosen.add(k)
+                    improved = True
+        tw = sum(w[k] for k in chosen)
+        if tw > best_w:
+            best_w = tw
+            best = [p for k in chosen for p in orbs[k]]
+        if time.monotonic() >= deadline:
+            break
+    return best
+
+
+def _extend_points(S0, cs, P, rng):
+    """Greedily add single points that conflict with nothing already chosen."""
+    S = list(S0)
+    inS = set(S)
+    blockedp = set()
+    for p in S:
+        blockedp |= cs[p]
+    order = list(range(P))
+    rng.shuffle(order)
+    for p in order:
+        if p in inS or p in blockedp:
+            continue
+        S.append(p)
+        inS.add(p)
+        blockedp |= cs[p]
+    return S
+
+
+def _orbit_ovoid(F, pts, index, P, cs, rng, deadline):
+    """Partial ovoid of W(q) via torus-orbit reduction, several random subgroups."""
+    best = []
+    while time.monotonic() < deadline and len(best) < P:
+        perms = _random_torus_perms(F, pts, index, rng)
+        end = min(deadline, time.monotonic() + 0.8)
+        cand = _orbit_mis(P, cs, perms, rng, end)
+        cand = _extend_points(cand, cs, P, rng)
+        if len(cand) > len(best):
+            best = cand
+    return best
+
+
+def _two_colour(n, edges):
+    """Return a 0/1 colouring of a bipartite graph (vertices in each component start at 0)."""
+    adj = [[] for _ in range(n)]
+    for u, v in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    color = [-1] * n
+    for s in range(n):
+        if color[s] != -1:
+            continue
+        color[s] = 0
+        stack = [s]
+        while stack:
+            x = stack.pop()
+            for y in adj[x]:
+                if color[y] == -1:
+                    color[y] = 1 - color[x]
+                    stack.append(y)
+    return color
+
+
+def _blow(n0, edges0, S):
+    """Blow up each vertex of S into two twin copies (same neighbourhood)."""
+    extra = {}
+    for v in S:
+        extra[v] = n0 + len(extra)
+    copies = [[v] + ([extra[v]] if v in extra else []) for v in range(n0)]
+    edges = []
+    for u, v in edges0:
+        for a in copies[u]:
+            for b in copies[v]:
+                edges.append((a, b))
+    return n0 + len(extra), edges
+
+
+def _blowup(n0, edges0, d, deadline, rng, nprng, geom=None):
+    """Twin blow-up of a base graph of degree d-1, using a spread search and an ovoid search."""
+    adj = [[] for _ in range(n0)]
+    for u, v in edges0:
+        adj[u].append(v)
+        adj[v].append(u)
+    if any(len(a) != d - 1 for a in adj):
+        return None
+    cs = [set() for _ in range(n0)]
+    for w in range(n0):
+        a = adj[w]
+        for i in range(len(a)):
+            for j in range(i + 1, len(a)):
+                x, y = a[i], a[j]
+                cs[x].add(y)
+                cs[y].add(x)
+    if n0 <= 60:
+        deadline = min(deadline, time.monotonic() + 2.0)
+    color = _two_colour(n0, edges0)
+    sides = [[v for v in range(n0) if color[v] == c] for c in (0, 1)]
+
+    now = time.monotonic()
+    total = max(0.0, deadline - now)
+
+    # Line side (A): partial spread, half of the time.
+    A_list = sides[1]
+    B_list = sides[0]
+    idxB = {v: i for i, v in enumerate(B_list)}
+    A_nb = [[idxB[w] for w in adj[v]] for v in A_list]
+    B_to_A = [[] for _ in B_list]
+    for ai, nbs in enumerate(A_nb):
+        for b in nbs:
+            B_to_A[b].append(ai)
+    res = _spread_search(A_nb, B_to_A, len(B_list), d - 1, rng, now + 0.5 * total)
+    S = [A_list[ai] for ai in res]
+
+    # Point side (B): partial ovoid. Torus-orbit search gets a share, then ILS.
+    ovoid_best = []
+    if geom is not None and sides[0] == list(range(geom[3])):
+        F, pts, index, P = geom
+        left = max(0.0, deadline - time.monotonic())
+        ovoid_best = _orbit_ovoid(F, pts, index, P, cs, rng,
+                                  time.monotonic() + 0.3 * left)
+    ils = _side_search(sides[0], cs, rng, nprng, deadline)
+    S += ovoid_best if len(ovoid_best) > len(ils) else ils
+    return _blow(n0, edges0, S)
+
+
+# ----------------------------------------------------------------------------
+
+def build(d, D, seed, time_limit):
+    start = time.monotonic()
+    deadline = start + max(0.5, 0.8 * time_limit - 4.0)
+    rng = random.Random(seed)
+    nprng = np.random.default_rng(abs(int(seed)) % (2 ** 32))
+
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # Safe fallback: K_{d,d} has diameter 2.
+    best = lib.haar_graph(d, range(d))
+    best_n = best[0]
+
+    def consider(n, e):
+        nonlocal best, best_n
+        if n > best_n and lib.is_valid(n, e, d, D):
+            best = (n, e)
+            best_n = n
+
+    if D == 2:
+        return best
+
+    pg = _pg(d)
+    if pg is not None:
+        consider(pg[0], pg[1])
+
+    q = d - 2
+    if 2 <= q <= 11 and lib.is_prime_power(q) and time.monotonic() < deadline - 2.0:
+        try:
+            geom = None
+            if D >= 4:
+                n0, e0, F, pts, index = _gq_full(q)
+                geom = (F, pts, index, len(pts))
+            elif D == 3:
+                n0, e0 = lib.projective_plane_incidence(q)
+            else:
+                n0, e0 = 0, []
+            if n0 > 0:
+                consider(n0, e0)
+                try:
+                    res = _blowup(n0, e0, d, deadline, rng, nprng, geom)
+                except Exception:
+                    res = None
+                if res is not None:
+                    consider(res[0], res[1])
+        except Exception:
+            pass
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
