@@ -1,0 +1,33 @@
+# Wave w3 island, seeded with the top 5 programs of spec-d3fam (origin/spec-d3fam).
+# Specialist cloud island: only d11D3, d13D3, d15D3 (+ d3D3 smoke). One cloud session, 4 vCPU.
+run_id = "spec-d3fam-w3"
+problem = "problems.bipartite_dd.islands:D3FAM"
+seed = 2206
+generations = 80
+candidates_per_generation = 32
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "seeds/w3/spec-d3fam-w3/spec-d3fam-g010-c31.py",
+  "seeds/w3/spec-d3fam-w3/spec-d3fam-g010-c30.py",
+  "seeds/w3/spec-d3fam-w3/spec-d3fam-g010-c29.py",
+  "seeds/w3/spec-d3fam-w3/spec-d3fam-g010-c28.py",
+  "seeds/w3/spec-d3fam-w3/spec-d3fam-g010-c27.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 300
+max_calls = 3000
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true
