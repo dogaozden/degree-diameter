@@ -1,8 +1,8 @@
 # island-1-w3b
 
 Problem: bipartite_dd
-Generations done: 6 of 61 (including generation 0)
-Total mutator calls: 85
+Generations done: 7 of 61 (including generation 0)
+Total mutator calls: 101
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -33,3 +33,4 @@ Total mutator calls: 85
 | 3 | 16 | 0 | 0.9542 | 0.9542 |
 | 4 | 16 | 0 | 0.9549 | 0.9549 |
 | 5 | 16 | 0 | 0.9619 | 0.9619 |
+| 6 | 16 | 0 | 0.9619 | 0.9556 |
