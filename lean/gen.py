@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Lean data files for the six bipartite degree-diameter records.
+"""Generate the Lean data files for the eight bipartite degree-diameter records.
 
 Run from the repository root or from lean/:  python3 lean/gen.py
 
@@ -23,11 +23,13 @@ OUT = LEAN / "BipartiteDD" / "Graphs"
 RECORDS = [
     # (Lean name, n, file under records/bipartite_dd, Delta, D)
     ("G162", 162, "d4D5/162-c-d4d5-g002-c08.json", 4, 5),
-    ("G344", 344, "d5D5/344-c-d5d5-g003-c05.json", 5, 5),
-    ("G356", 356, "d7D4/356-spec-d7d4-g004-c23.json", 7, 4),
+    ("G354", 354, "d5D5/354-c-d5d5-w3-g014-c13.json", 5, 5),
+    ("G1140", 1140, "d7D5/1140-spec-d7d5-g016-c15.json", 7, 5),
+    ("G359", 359, "d7D4/359-spec-d7d4-g017-c11.json", 7, 4),
+    ("G1774", 1774, "d11D4/1774-spec-d11d4-g010-c19.json", 11, 4),
     ("G192", 192, "d11D3/192-c-d3fam-g001-c00.json", 11, 3),
     ("G276", 276, "d13D3/276-c-d3fam-g003-c19.json", 13, 3),
-    ("G1773", 1773, "d11D4/1773-spec-d11d4-g004-c01.json", 11, 4),
+    ("G376", 376, "d15D3/376-c-d3fam-w2-g002-c12.json", 15, 3),
 ]
 
 
