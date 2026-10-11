@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: ain\n    result = module.build(**json.loads(params_json), seed=int(seed), time_limit=float(time_limit))\n  File \"/home/user/math/runs/c-d11d4/candidates/g016-c07/program.py\", line 1086, in build\n    hn, he = _saturate_edges(hn, he, d, rng)\n    ^^^^^^\nValueError: too many values to unpack (expected 2)\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 34.6427233710001
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11445761499999207
+    }
+  },
+  "fitness": 0.047619047619047616
+}
