@@ -1,0 +1,268 @@
+{
+  "generation": 39,
+  "tasks": [
+    {
+      "cid": "g039-c00",
+      "parents": [
+        "g003-c19"
+      ],
+      "role": "default",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c01",
+      "parents": [
+        "g003-c00",
+        "g003-c07"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c02",
+      "parents": [
+        "g003-c24",
+        "g003-c19"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c03",
+      "parents": [
+        "g003-c19",
+        "g003-c24"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c04",
+      "parents": [
+        "g003-c24",
+        "g003-c07"
+      ],
+      "role": "crossover",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c05",
+      "parents": [
+        "g003-c19"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c06",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "invent",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c07",
+      "parents": [
+        "g003-c24"
+      ],
+      "role": "moonshot",
+      "status": "made"
+    },
+    {
+      "cid": "g039-c08",
+      "parents": [
+        "g003-c24",
+        "g003-c07"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c09",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c10",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c11",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c12",
+      "parents": [
+        "g003-c24"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c13",
+      "parents": [
+        "g003-c07"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c14",
+      "parents": [
+        "g003-c19"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c15",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c16",
+      "parents": [
+        "g003-c19",
+        "g003-c14"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c17",
+      "parents": [
+        "g003-c24"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c18",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c19",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c20",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c21",
+      "parents": [
+        "g003-c07"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c22",
+      "parents": [
+        "g003-c24"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c23",
+      "parents": [
+        "g002-c26"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c24",
+      "parents": [
+        "g003-c24",
+        "g002-c26"
+      ],
+      "role": "crossover",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c25",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c26",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c27",
+      "parents": [
+        "g003-c24"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c28",
+      "parents": [
+        "g003-c14"
+      ],
+      "role": "invent",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c29",
+      "parents": [
+        "g003-c07"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c30",
+      "parents": [
+        "g003-c00"
+      ],
+      "role": "default",
+      "status": "pending"
+    },
+    {
+      "cid": "g039-c31",
+      "parents": [
+        "g003-c00"
+      ],
+      "role": "moonshot",
+      "status": "pending"
+    }
+  ]
+}
