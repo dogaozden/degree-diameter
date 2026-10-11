@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.12123251699995308
+    },
+    "d6D5": {
+      "case_id": "d6D5",
+      "reason": "crash: 58, in build\n    table = _table(order, mul)\n  File \"/home/user/math/runs/c-d6d5-w2/candidates/g010-c28/program.py\", line 503, in _table\n    return [(x * order + y, mul(x, y)) for x in range(order) for y in range(order)]\n                            ~~~^^^^^^\nTypeError: 'tuple' object is not callable\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.11747563700009778
+    }
+  },
+  "fitness": 0.047619047619047616
+}
