@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d11D4": {
+      "case_id": "d11D4",
+      "reason": "crash: ur_n, cur_e = _twin_grow(cur_n, cur_e, d, rng, deadline)\n                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/math/runs/c-d11d4-w2/candidates/g003-c15/program.py\", line 86, in _twin_grow\n    for u, v in edges:\n        ^^^^\nTypeError: cannot unpack non-iterable int object\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 2.885743277999609
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16483942299964838
+    }
+  },
+  "fitness": 0.047619047619047616
+}
