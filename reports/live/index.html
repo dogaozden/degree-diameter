@@ -58,6 +58,7 @@ button { font: inherit; color: inherit; }
 .hero-copy { position: absolute; left: var(--gutter); top: clamp(20px, 3.5vw, 56px); max-width: min(560px, 80vw); display: flex; flex-direction: column; gap: 14px; pointer-events: none; }
 .hero-copy h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6.4vw, 84px); line-height: .98; letter-spacing: -.01em; text-wrap: balance; text-shadow: 0 2px 30px rgba(9,12,21,.9); }
 .hero-copy h1 em { font-style: italic; color: var(--brass); }
+.hero-copy .evo-link { pointer-events: auto; color: inherit; text-decoration: underline; text-decoration-color: var(--brass); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 .hero-copy .lede { color: #c9c6bd; font-size: 15.5px; max-width: 44ch; text-shadow: 0 1px 14px rgba(9,12,21,.95); }
 .live-pill { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 10px 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,20,34,.7); backdrop-filter: blur(6px); }
 .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(147,214,160,.6); animation: beat 2.4s infinite; }
@@ -185,7 +186,7 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .cite-who { font-size: 14px; color: var(--fg); }
 .cite-who .yr { font-family: var(--font-mono); color: var(--brass); margin-left: 4px; }
 .cite-ref { font-size: 12.5px; color: #aeb2bf; line-height: 1.45; }
-.cite a, .cite-foot a { color: var(--glacier); }
+.cite a, .cite-foot a, #evolve-sec .sec-head p a { color: var(--glacier); }
 .cite-foot { margin-top: 14px; font-size: 12.5px; color: var(--muted); max-width: 80ch; text-shadow: 0 1px 10px rgb(6 9 16 / .95); }
 /* the evolutionary search */
 .evo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; align-items: center; }
@@ -244,7 +245,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   <div class="hero-copy">
     <span class="live-pill off" id="livepill"><span class="live-dot"></span><span class="mono" id="livetext" style="font-size:11.5px">Connecting…</span></span>
     <h1 id="headline"><em>Records</em> broken by Haikus</h1>
-    <p class="lede">Found by an evolutionary search: Haikus wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
+    <p class="lede">Found by an <a class="evo-link" href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener" title="AlphaEvolve: A coding agent for scientific and algorithmic discovery (Google DeepMind, 2025)">evolutionary search</a>: 384 Haikus wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
   </div>
   <div class="picker" id="picker" role="group" aria-label="Choose a record graph"></div>
 </section>
@@ -319,7 +320,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       <div>
         <span class="eyebrow">How they were found</span>
         <h2>Evolution, with Haikus doing the mutating</h2>
-        <p>Nobody designed these graphs. They came out of an evolutionary search, the same idea as breeding: keep the best, change them a little, keep the best again. The twist is who makes the changes. Claude Haiku, a small and fast AI model, rewrites the programs that build the graphs, thousands of times.</p>
+        <p>Nobody designed these graphs. They came out of an evolutionary search, the same idea as breeding: keep the best, change them a little, keep the best again. The twist is who makes the changes. Claude Haiku, a small and fast AI model, rewrites the programs that build the graphs, thousands of times. The method follows Google DeepMind’s <a href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener">AlphaEvolve</a> (2025), run here on small, cheap models.</p>
       </div>
     </div>
     <div class="evo">
@@ -363,8 +364,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
         <p>Each tile is one cloud island: a separate evolutionary search where Haikus write programs, the programs build graphs, and the best survive. Tiles light up when an island has just pushed a new round.</p>
       </div>
       <div class="counters">
-        <div class="counter"><span class="n" id="c-running">—</span><span class="l">islands writing</span></div>
-        <div class="counter"><span class="n" id="c-haikus">—</span><span class="l">Haikus at once, at most</span></div>
+        <div class="counter"><span class="n" id="c-running">—</span><span class="l" id="c-running-l">islands writing</span></div>
+        <div class="counter"><span class="n" id="c-haikus">—</span><span class="l" id="c-haikus-l">Haikus at once, at most</span></div>
         <div class="counter"><span class="n" id="c-programs">—</span><span class="l">programs written</span></div>
       </div>
     </div>
@@ -572,8 +573,16 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
     const fleet = now.fleet || [];
     const byId = new Map(fleet.map((f) => [f.run_id, f]));
     const running = fleet.filter((f) => f.status === 'running').length;
-    $('c-running').textContent = running + ' / ' + fleet.length;
-    $('c-haikus').textContent = fmt(running * 8);
+    // Peak measured from the islands' git history: 48 islands pushed a round within one 15-minute window
+    // (Sat 10 Oct, 23:24 PT), each with 8 Haikus writing at once. Shown whenever the fleet is not running.
+    const PEAK_ISLANDS = 48, PEAK_HAIKUS = PEAK_ISLANDS * 8;
+    if (running > 0) {
+      $('c-running').textContent = running + ' / ' + fleet.length; $('c-running-l').textContent = 'islands writing';
+      $('c-haikus').textContent = fmt(running * 8); $('c-haikus-l').textContent = 'Haikus at once, at most';
+    } else {
+      $('c-running').textContent = PEAK_ISLANDS + ' / ' + fleet.length; $('c-running-l').textContent = 'islands writing at the peak (fleet stopped now)';
+      $('c-haikus').textContent = fmt(PEAK_HAIKUS); $('c-haikus-l').textContent = 'Haikus writing at once, at the peak';
+    }
     const total = (now.programs || []).reduce((s, b) => s + Number(b.total), 0);
     tween($('c-programs'), programsShown, total); programsShown = total;
     const box = $('fleet'); box.replaceChildren();
@@ -780,6 +789,10 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   // a link ending in #<section id> (explain, records-sec, evolve-sec, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
   const jump = () => { const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 12); };
   window.addEventListener('hashchange', jump);
+  // In-page links scroll directly (the viewer frame does not always scroll on a hash change by itself).
+  document.addEventListener('click', (e) => { const a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    const t = document.getElementById(a.getAttribute('href').slice(1)); if (!t) return;
+    e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 12, behavior: 'smooth' }); });
   [1500, 4000, 7000].forEach((ms) => setTimeout(jump, ms));
 })();
 </script>
