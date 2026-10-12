@@ -137,5 +137,8 @@ Each theorem reads `∃ G : SimpleGraph (Fin n), BipartiteDD.IsBipartiteDegDiam 
 propext, Classical.choice and Quot.sound (`lean/Axioms.out.txt`). Each Lean data file was checked edge for edge
 against its record JSON. Proved by a Haiku cloud session; merged at commit a0830d87f.
 
-In progress: a Lean proof of the +2 theorem for every projective plane (branch `lean-plus2`, brief
-docs/plus2-lean-brief.md).
+The +2 theorem is also proved in Lean (`lean/BipartiteDD/Plus2/`): for every finite projective plane of order q
+and every frame, a bipartite graph on 2(q² + q + 6) vertices with maximum degree q + 2 and diameter 3 exists
+(`plus2`), and for every plane of order q ≥ 4 (`plus2_of_order`). Axioms: propext, Classical.choice, Quot.sound.
+Definitions and statements were written in advance (docs/plus2-lean-brief.md) and checked unchanged; proved by a Haiku
+cloud session (merged from commit 6d390ca48). The build was run in that session, not yet independently.

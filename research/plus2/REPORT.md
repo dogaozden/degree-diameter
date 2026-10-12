@@ -177,3 +177,4 @@ This matches the islands, which never found 194.
 - The rebuilt graphs for q = 4, 5, 7, 8, 9, 11, 13 and 16 pass all three checkers in `scripts/verify_record.py`.
 - Negative controls fail as they should: dropping the rotation, or dropping the link H1–K0, gives diameter above 3 for q = 5, 9 and 13.
 - I read the proof and found no gap. It is a proof written by a model and checked here by computer on PG(2,q) for q up to 16; it still needs a reading by a mathematician before it goes in a paper.
+- **Lean (2026-10-11):** the theorem is formalized in `lean/BipartiteDD/Plus2/` (`plus2`, `plus2_of_order`), with only the three standard axioms. This replaces the need to trust the prose proof, provided the definitions in `Plus2/Defs.lean` match section 3; they were written to it rule by rule.
