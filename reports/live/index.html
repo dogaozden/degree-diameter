@@ -234,6 +234,37 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
 </div>
 
 <main class="wrap">
+  <section id="explain">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Start here</span>
+        <h2>Problem statement</h2>
+        <p>Build the biggest network you can, under three rules. Nobody knows the true maximum for most sizes, so mathematicians keep a table of the best ones anyone has found. Beating an entry means building a bigger graph that still follows all three rules.</p>
+      </div>
+    </div>
+    <div class="rules">
+      <div class="rule"><svg id="ex-sides" viewBox="0 0 240 120" aria-label="Two sides, edges only between them"></svg><h3>Two sides</h3><p>Every vertex is brass or blue, and every edge joins a brass vertex to a blue one. No edge stays inside one side. This is what "bipartite" means.</p></div>
+      <div class="rule"><svg id="ex-degree" viewBox="0 0 240 120" aria-label="A vertex with at most Delta neighbours"></svg><h3>A handshake limit <span>Δ</span></h3><p>No vertex may have more than Δ neighbours. In the table, Δ runs from 3 to 16. Our records are at Δ = 4, 5, 7, 11, 13 and 15.</p></div>
+      <div class="rule"><svg id="ex-diam" viewBox="0 0 240 120" aria-label="Any two vertices joined within D steps"></svg><h3>Short chains <span>D</span></h3><p>Any two vertices must be joined by a path of at most D edges. This is the diameter. A small D forces every vertex to be close to all the others.</p></div>
+    </div>
+    <div class="duo">
+      <div class="panel">
+        <span class="eyebrow">Try it · a perfect small answer</span>
+        <h3>The Heawood graph: Δ = 3, D = 3, 14 vertices</h3>
+        <p>Click any vertex. It turns white, and the rest are coloured by how many steps away they are. Everyone is within 3 steps. No bipartite graph with these rules can have more than 14 vertices, so this one is a perfect answer. The big 3D view at the top does the same thing to our record graphs, with up to 1,774 vertices.</p>
+        <svg id="ex-heawood" viewBox="0 0 360 300" aria-label="The Heawood graph; click a vertex to see distances"></svg>
+        <div class="lvl" id="ex-hlvl"></div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Why it is hard</span>
+        <h3>Every step can multiply the reach by Δ − 1, at most</h3>
+        <p>From one vertex, step 1 reaches at most Δ vertices. Each of those has at most Δ − 1 new neighbours, and so on: a tree. That caps how big any graph can be. Real graphs fall short because paths collide and reach the same vertex twice. The reach bars in the 3D panel compare each step with this tree.</p>
+        <svg id="ex-tree" viewBox="0 0 360 292" aria-label="The tree limit for Delta 3"></svg>
+        <div class="formula">most at step k = Δ·(Δ−1)<sup>k−1</sup> · ceiling for two sides = 2·(1 + (Δ−1) + … + (Δ−1)<sup>D−1</sup>)</div>
+      </div>
+    </div>
+  </section>
+
   <section id="fleet-sec">
     <div class="sec-head">
       <div>
@@ -312,37 +343,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
     </div>
   </section>
 
-  <section id="explain">
+  <section id="guide">
     <div class="sec-head">
-      <div>
-        <span class="eyebrow">How to read this page</span>
-        <h2>What problem is this?</h2>
-        <p>Build the biggest network you can, under three rules. Nobody knows the true maximum for most sizes, so mathematicians keep a table of the best ones anyone has found. Beating an entry means building a bigger graph that still follows all three rules.</p>
-      </div>
-    </div>
-    <div class="rules">
-      <div class="rule"><svg id="ex-sides" viewBox="0 0 240 120" aria-label="Two sides, edges only between them"></svg><h3>Two sides</h3><p>Every vertex is brass or blue, and every edge joins a brass vertex to a blue one. No edge stays inside one side. This is what "bipartite" means.</p></div>
-      <div class="rule"><svg id="ex-degree" viewBox="0 0 240 120" aria-label="A vertex with at most Delta neighbours"></svg><h3>A handshake limit <span>Δ</span></h3><p>No vertex may have more than Δ neighbours. In the table, Δ runs from 3 to 16. Our records are at Δ = 4, 5, 7, 11, 13 and 15.</p></div>
-      <div class="rule"><svg id="ex-diam" viewBox="0 0 240 120" aria-label="Any two vertices joined within D steps"></svg><h3>Short chains <span>D</span></h3><p>Any two vertices must be joined by a path of at most D edges. This is the diameter. A small D forces every vertex to be close to all the others.</p></div>
-    </div>
-    <div class="duo">
-      <div class="panel">
-        <span class="eyebrow">Try it · a perfect small answer</span>
-        <h3>The Heawood graph: Δ = 3, D = 3, 14 vertices</h3>
-        <p>Click any vertex. It turns white, and the rest are coloured by how many steps away they are. Everyone is within 3 steps. No bipartite graph with these rules can have more than 14 vertices, so this one is a perfect answer. The big 3D view at the top does the same thing to our record graphs, with up to 1,774 vertices.</p>
-        <svg id="ex-heawood" viewBox="0 0 360 300" aria-label="The Heawood graph; click a vertex to see distances"></svg>
-        <div class="lvl" id="ex-hlvl"></div>
-      </div>
-      <div class="panel">
-        <span class="eyebrow">Why it is hard</span>
-        <h3>Every step can multiply the reach by Δ − 1, at most</h3>
-        <p>From one vertex, step 1 reaches at most Δ vertices. Each of those has at most Δ − 1 new neighbours, and so on: a tree. That caps how big any graph can be. Real graphs fall short because paths collide and reach the same vertex twice. The reach bars in the 3D panel compare each step with this tree.</p>
-        <svg id="ex-tree" viewBox="0 0 360 292" aria-label="The tree limit for Delta 3"></svg>
-        <div class="formula">most at step k = Δ·(Δ−1)<sup>k−1</sup> · ceiling for two sides = 2·(1 + (Δ−1) + … + (Δ−1)<sup>D−1</sup>)</div>
-      </div>
-    </div>
-
-    <div class="sec-head" style="margin-top:48px">
       <div>
         <span class="eyebrow">The visuals, one by one</span>
         <h2>What each picture shows</h2>
@@ -680,7 +682,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   let rz = null;
   window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (now) { renderClimb(); } }, 150); });
   setTimeout(() => { if (!HF.ready3d && !HF.failed3d) { HF.failed3d = true; } }, 15000);
-  // a link ending in #<section id> (fleet-sec, climb-sec, ceil-sec, proof-sec, explain) opens at that section
+  // a link ending in #<section id> (explain, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
   const jump = () => { const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 12); };
   window.addEventListener('hashchange', jump);
   [1500, 4000, 7000].forEach((ms) => setTimeout(jump, ms));
