@@ -1,0 +1,207 @@
+\documentclass[11pt]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[margin=1.15in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\PG}{\mathrm{PG}}
+\newcommand{\cS}{\mathcal{S}}
+
+\title[A fourth hat]{A fourth hat: bipartite graphs of maximum degree $q+2$ and diameter $3$ on $2(q^2+q+6)$ vertices}
+\author{Do\u{g}a \"Ozden}
+\address{Redwood City, California}
+\email{dogaozden@gmail.com}
+\date{October 2026. Preliminary note; not yet refereed.}
+
+\begin{document}
+
+\begin{abstract}
+For every projective plane of order $q \ge 4$ we construct a bipartite graph with $2(q^2+q+6)$ vertices, maximum degree $q+2$ and diameter $3$. This is two vertices more than the family of Araujo-Pardo and L\'opez, and for $q = 9, 11, 13$ it gives bipartite $(11,3)$-, $(13,3)$- and $(15,3)$-graphs of orders $192$, $276$ and $376$, each two more than the largest previously listed. The construction adds a fourth ``hat'' pair to a projective plane and makes room for it by rotating three incidences. The proof uses only the axioms of a projective plane and a self-duality of the construction.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+A \emph{bipartite $(\Delta,D)$-graph} is a bipartite graph of maximum degree at most $\Delta$ and diameter at most $D$. The bipartite degree/diameter problem asks for the largest order of such a graph; see the survey of Miller and \v{S}ir\'a\v{n}~\cite{MS} and the table maintained on the Combinatorics Wiki~\cite{wiki}. For $D = 3$ the bipartite Moore bound is $2(\Delta^2 - \Delta + 1)$, and it is attained by the point--line incidence graph of a projective plane of order $\Delta - 1$. When $\Delta - 1$ is not the order of a known projective plane, the best known graphs are built by modifying a plane of a smaller order.
+
+For $\Delta = q+2$ with $q$ a prime power, Araujo-Pardo and L\'opez~\cite{AL} add a small number of vertices to the incidence graph of $\PG(2,q)$ and obtain bipartite $(q+2,3)$-graphs of order $2(q^2+q+5)$. For $\Delta = 11$ the same order $190$ was found independently by Feria-Pur\'on, Miller and Pineda-Villavicencio~\cite{FMP}. These are the listed values for $(11,3)$, $(13,3)$ and $(15,3)$ in~\cite{wiki}, and the paper~\cite{AL} asks for improvements of the construction.
+
+\begin{theorem}\label{thm:main}
+Let $\Pi$ be a projective plane of order $q \ge 4$. There is a bipartite graph of order $2(q^2+q+6)$, maximum degree $q+2$ and diameter $3$, whose two sides extend the points and the lines of $\Pi$.
+\end{theorem}
+
+The plane need not be Desarguesian. Table~\ref{tab:values} lists the orders where the theorem matters, namely those $\Delta = q+2$ with $q$ a prime power and $\Delta - 1$ not a prime power (when $\Delta-1$ is a prime power, $\PG(2,\Delta-1)$ already meets the Moore bound).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrrl}
+\toprule
+$\Delta$ & $q$ & $2(q^2+q+5)$ & $2(q^2+q+6)$ & Moore bound & largest listed in~\cite{wiki}\\
+\midrule
+7 & 5 & 70 & 72 & 86 & 80 \\
+11 & 9 & 190 & \textbf{192} & 222 & 190 \\
+13 & 11 & 274 & \textbf{276} & 314 & 274 \\
+15 & 13 & 374 & \textbf{376} & 422 & 374 \\
+19 & 17 & 622 & 624 & 686 & --- \\
+21 & 19 & 770 & 772 & 842 & --- \\
+25 & 23 & 1114 & 1116 & 1202 & --- \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Orders given by Theorem~\ref{thm:main} for $\Delta \le 25$. The table in~\cite{wiki} stops at $\Delta = 16$; for $\Delta = 7$ a larger graph is known.}
+\label{tab:values}
+\end{table}
+
+The graphs for $q = 9, 11, 13$ were first found by a computer search (Appendix~\ref{app:checks}); the general rule below was then read off from them.
+
+\section{The construction}\label{sec:construction}
+
+Let $\Pi$ be a projective plane of order $q \ge 4$. Fix
+\begin{itemize}[leftmargin=2em]
+\item a line $\ell$ and a point $A \notin \ell$;
+\item a point $P \in \ell$;
+\item four distinct points $X_0, X_1, X_a, X_c \in \ell \setminus \{P\}$ (possible since $|\ell| = q+1 \ge 5$).
+\end{itemize}
+For $X \in \ell$ write $AX$ for the line through $A$ and $X$; these are the $q+1$ lines through $A$, and $AX \cap \ell = \{X\}$. Let
+\[ \ell^* = \ell \setminus \{X_0, X_1, X_c\}, \]
+a set of $q-2$ points containing $P$ and $X_a$. Write $S = \{0,1,a,c\}$.
+
+Add five new points $Q, H_0, H_1, H_a, H_c$ and five new lines $M, K_0, K_1, K_a, K_c$. The incidence structure $\cS$ has the following incidences.
+\begin{enumerate}[label=\textup{(R\arabic*)},leftmargin=3em]
+\item\label{r:plane} Every incidence of $\Pi$ except $(X_s, AX_s)$ for $s \in S$; and, in addition, the \emph{rotation}
+\[ X_1 \in AX_0, \qquad X_c \in AX_1, \qquad X_0 \in AX_c. \]
+\item\label{r:hat} For each $s \in S$, $H_s$ lies on every line of $\Pi$ through $X_s$ except $\ell$.
+\item\label{r:hatline} For each $s \in S$, $K_s$ contains every point of $AX_s$ except $A$.
+\item\label{r:M} $M$ contains the points of $\ell^*$ and $H_0, H_1, H_a, H_c$.
+\item\label{r:Q} $Q$ lies on $AX$ for every $X \in \ell^*$, and on $K_0, K_1, K_a, K_c$.
+\item\label{r:links} $A \in K_a$, \ $H_a \in \ell$, \ $H_0 \in K_c$, \ $H_c \in K_1$, \ $H_1 \in K_0$.
+\end{enumerate}
+Let $G$ be the incidence graph of $\cS$: its vertices are the points and lines of $\cS$, and a point is adjacent to a line when they are incident. $G$ is bipartite by definition, and it has $2(q^2+q+1+5) = 2(q^2+q+6)$ vertices.
+
+Informally, $H_s$ is a copy of the point $X_s$ without $\ell$, and $K_s$ is a copy of the line $AX_s$ without $A$; a pair $(H_s, K_s)$ is a \emph{hat}. The construction of~\cite{AL} uses three hats. Here a fourth hat is added, and the rotation in~\ref{r:plane} supplies the extra incidences it needs.
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+\begin{lemma}[Degrees]\label{lem:deg}
+Every vertex of $G$ has degree at most $q+2$.
+\end{lemma}
+
+\begin{proof}
+In $\Pi$ every point and every line has degree $q+1$. We list, for each vertex, what~\ref{r:plane}--\ref{r:links} remove and add.
+
+\emph{Points of $\Pi$.}
+\begin{itemize}[leftmargin=2em]
+\item A point $u \notin \ell$, $u \neq A$, loses nothing. It gains $K_s$ exactly when $u \in AX_s$; since $u$ lies on only one line through $A$, it gains at most one line. Degree $\le q+2$.
+\item $A$ gains only $K_a$. Degree $q+2$.
+\item $X \in \ell^* \setminus \{X_a\}$ gains only $M$ (it lies on no $AX_s$, since $AX_s \cap \ell = \{X_s\}$). Degree $q+2$.
+\item $X_a$ loses $AX_a$ and gains $M$ and $K_a$. Degree $q+2$.
+\item $X_0$ loses $AX_0$, gains $AX_c$ and $K_0$. Likewise $X_1$ loses $AX_1$ and gains $AX_0$ and $K_1$, and $X_c$ loses $AX_c$ and gains $AX_1$ and $K_c$. Degree $q+2$ each.
+\end{itemize}
+\emph{New points.} $Q$ lies on $q-2$ lines $AX$ and on four lines $K_s$: degree $q+2$. Each $H_s$ lies on $q$ lines of $\Pi$ by~\ref{r:hat}, on $M$, and on exactly one line from~\ref{r:links} ($\ell$, $K_c$, $K_1$ or $K_0$): degree $q+2$.
+
+\emph{Lines of $\Pi$.}
+\begin{itemize}[leftmargin=2em]
+\item A line $L \neq \ell$ not through $A$ loses nothing, since every removed incidence is on a line through $A$. It gains $H_s$ exactly when $X_s \in L$, and $L$ meets $\ell$ in one point, so it gains at most one hat. Degree $\le q+2$.
+\item $\ell$ gains only $H_a$. Degree $q+2$.
+\item $AX$ with $X \in \ell^* \setminus \{X_a\}$ (this includes $AP$) gains only $Q$. Degree $q+2$.
+\item $AX_a$ loses $X_a$ and gains $Q$ and $H_a$. Degree $q+2$.
+\item $AX_0$ loses $X_0$, gains $X_1$ and $H_0$. Likewise $AX_1$ loses $X_1$ and gains $X_c$ and $H_1$, and $AX_c$ loses $X_c$ and gains $X_0$ and $H_c$. Degree $q+2$ each.
+\end{itemize}
+\emph{New lines.} $M$ contains $q-2$ points of $\ell^*$ and four hats: degree $q+2$. Each $K_s$ contains $q$ points of $AX_s \setminus \{A\}$, the point $Q$, and exactly one point from~\ref{r:links} ($A$, $H_c$, $H_0$ or $H_1$ for $s = a, 1, c, 0$ respectively): degree $q+2$.
+\end{proof}
+
+The diameter bound reduces to two covering properties.
+
+\begin{lemma}\label{lem:reduce}
+If any two points of $\cS$ lie on a common line and any two lines of $\cS$ meet in a common point, then $G$ has diameter at most $3$.
+\end{lemma}
+
+\begin{proof}
+Two points, or two lines, are at distance $2$. Let $p$ be a point and $L$ a line not incident with $p$. Pick any point $p' \in L$ and a line $L'$ through $p$ and $p'$; then $p, L', p', L$ is a path of length $3$.
+\end{proof}
+
+\begin{lemma}[Points]\label{lem:points}
+Any two points of $\cS$ lie on a common line of $\cS$.
+\end{lemma}
+
+\begin{proof}
+Only the four incidences $(X_s, AX_s)$ of $\Pi$ are removed.
+
+\emph{(a) Two points $u, v$ of $\Pi$.} Let $L = uv$ in $\Pi$. If both incidences survive, $L$ works. Otherwise $L = AX_s$ and, say, $u = X_s$. If $v \neq A$ then $u, v \in AX_s \setminus \{A\} \subseteq K_s$. If $v = A$, use $K_a$ for $s = a$, and the rotation for the others: $X_0$ and $A$ lie on $AX_c$, $X_1$ and $A$ on $AX_0$, $X_c$ and $A$ on $AX_1$.
+
+\emph{(b) $Q$ and a point $u$ of $\Pi$.} If $u = A$, use $AP$ (as $P \in \ell^*$). If $u \in \ell^* \setminus\{X_a\}$, use $Au$. If $u = X_a$, use $K_a$. If $u = X_s$ with $s \in \{0,1,c\}$, use $K_s$. If $u \notin \ell$ and $u \ne A$, let $X = Au \cap \ell$: if $X \in \ell^*$ use $AX$; otherwise $X = X_s$ with $s \in \{0,1,c\}$, and $u \in AX_s \setminus \{A\} \subseteq K_s$.
+
+\emph{(c) $H_s$ and a point $u$ of $\Pi$.} If $u \notin \ell$ (including $u = A$), the line $uX_s$ of $\Pi$ is not $\ell$, so it contains $H_s$ by~\ref{r:hat}, and $u$ keeps all its incidences. If $u = X_s$, use any line through $X_s$ other than $\ell$ and $AX_s$. If $u \in \ell^*$, use $M$. Finally let $u \in \{X_0, X_1, X_c\}$, $u \ne X_s$:
+\begin{itemize}[leftmargin=2em]
+\item $s = a$: use $\ell$.
+\item $s = 0$: $X_1$ via $AX_0$ (rotation); $X_c$ via $K_c$.
+\item $s = 1$: $X_c$ via $AX_1$ (rotation); $X_0$ via $K_0$.
+\item $s = c$: $X_0$ via $AX_c$ (rotation); $X_1$ via $K_1$.
+\end{itemize}
+
+\emph{(d) Two new points.} Two hats share $M$. Finally $Q$ and $H_0$ share $K_c$, $Q$ and $H_c$ share $K_1$, $Q$ and $H_1$ share $K_0$, and $Q$ and $H_a$ share $AX_a$ (as $X_a \in \ell^*$).
+\end{proof}
+
+\begin{lemma}[Self-duality]\label{lem:dual}
+Apply the construction of Section~\ref{sec:construction} to the dual plane $\Pi^*$ with the choices
+\[ \ell' = A,\quad A' = \ell,\quad P' = AP,\quad X_0' = AX_0,\ X_1' = AX_c,\ X_a' = AX_a,\ X_c' = AX_1. \]
+The resulting structure is the dual of $\cS$, under the correspondence
+\begin{gather*} H_0' = K_0,\quad H_1' = K_c,\quad H_a' = K_a,\quad H_c' = K_1,\\ K_0' = H_0,\quad K_1' = H_c,\quad K_a' = H_a,\quad K_c' = H_1,\\ Q' = M,\quad M' = Q. \end{gather*}
+\end{lemma}
+
+\begin{proof}
+The choices are valid: $\ell \not\ni A$, and $AP, AX_0, AX_1, AX_a, AX_c$ are five distinct lines through $A$. In $\Pi^*$ the line through $A'$ and $X'$, for $X' = AX$, is the point $AX \cap \ell = X$. Hence $A'X_0' = X_0$, $A'X_1' = X_c$, $A'X_a' = X_a$, $A'X_c' = X_1$, and $\ell'^{*}$ is the set of lines $AX$ with $X \in \ell^*$. We translate each rule back to $\Pi$.
+\begin{itemize}[leftmargin=2em]
+\item \ref{r:plane}: the removed incidences are again $(X_s, AX_s)$, $s\in S$. The rotation ``$X_1'$ on $A'X_0'$, $X_c'$ on $A'X_1'$, $X_0'$ on $A'X_c'$'' reads $X_0 \in AX_c$, $X_c \in AX_1$, $X_1 \in AX_0$: the same three incidences.
+\item \ref{r:hat}: $H_s'$ contains every point of $\Pi$ on the line $X_s'$ except $A$; for $X_s' = AX_t$ this is $K_t$.
+\item \ref{r:hatline}: $K_s'$ lies on every line of $\Pi$ through the point $A'X_s' = X_t$ except $\ell$; this is $H_t$.
+\item \ref{r:M}: $M'$ lies on the lines $AX$, $X \in \ell^*$, and on all $K_t$; this is $Q$.
+\item \ref{r:Q}: $Q'$ contains the points $X \in \ell^*$ and all $H_t$; this is $M$.
+\item \ref{r:links}: ``$A' \in K_a'$, $H_a' \in \ell'$, $H_0' \in K_c'$, $H_c' \in K_1'$, $H_1' \in K_0'$'' reads $H_a \in \ell$, $A \in K_a$, $H_1 \in K_0$, $H_0 \in K_c$, $H_c \in K_1$: the same five incidences.\qedhere
+\end{itemize}
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+$G$ is bipartite with $2(q^2+q+6)$ vertices, and its maximum degree is at most $q+2$ by Lemma~\ref{lem:deg} (and equals $q+2$, e.g.\ at $A$). By Lemma~\ref{lem:points}, any two points of $\cS$ are collinear. By Lemma~\ref{lem:dual}, the dual of $\cS$ is an instance of the same construction in the plane $\Pi^*$ of order $q$, so Lemma~\ref{lem:points} applied there shows that any two lines of $\cS$ meet. Lemma~\ref{lem:reduce} gives diameter at most $3$, and the diameter is exactly $3$ because $G$ is bipartite and not complete bipartite.
+\end{proof}
+
+\begin{remark}
+The graph $G$ need not be regular. In every case we computed, adding a maximum matching between the points and lines of degree less than $q+2$ that are not yet adjacent makes it $(q+2)$-regular; adding edges cannot increase the diameter.
+\end{remark}
+
+\begin{remark}[Limits of the method]
+We looked for $+3$ and $+4$ inside the same family: $\Pi = \PG(2,q)$ is kept fixed outside a small gadget around $\ell$ and $A$, more hats, copies of $A$ or copies of $\ell$ are added, and every incidence inside the gadget is left free. Every such SAT instance we tried, for $q$ between $5$ and $13$, is unsatisfiable. This rules out only extensions of this specific shape, not larger graphs in general.
+\end{remark}
+
+\appendix
+\section{How the construction was found and checked}\label{app:checks}
+
+The graphs were found by an evolutionary program search in which a language model (Claude Haiku, by Anthropic) writes candidate Python programs that build graphs, and an independent checker scores them. The search produced bipartite $(11,3)$-, $(13,3)$- and $(15,3)$-graphs of orders $192$, $276$ and $376$. Comparing them with the Araujo-Pardo--L\'opez graphs showed that, outside a small gadget around $\ell$ and $A$ and apart from filler edges, each is a projective plane with four hats; the three gadgets differed, and the clean rotation of Section~\ref{sec:construction} was extracted from the $q = 9$ graph, which uses exactly that rotation. The proof above was drafted with the help of Claude (Anthropic) and then checked as follows.
+
+\begin{itemize}[leftmargin=2em]
+\item \emph{Three implementations.} The construction was implemented three times from its description, once by the agent that extracted the rule and twice independently from the six rules alone. All three agree.
+\item \emph{All inputs for small $q$.} For $q = 4, 5, 7, 8, 9$, every ordered choice of $(X_0, X_1, X_a, X_c)$ in $\PG(2,q)$ gives a valid graph ($24$, $120$, $840$, $1680$ and $3024$ choices). Since $\mathrm{PGL}(3,q)$ is transitive on the choices of $(A, \ell, P)$, this covers every input in these planes. For $q = 11, 13$, $300$ random choices each; for $q = 16$, three random frames.
+\item \emph{Non-Desarguesian planes.} $200$ random frames in each of two non-Desarguesian planes of order $9$, coordinatised by the Dickson nearfield of order $9$ with its product taken in either order.
+\item \emph{Three checkers} (a bitset diameter check, a check built on \texttt{networkx}, and a from-scratch breadth-first search from every vertex) accept every graph above and reject deliberately damaged copies.
+\item \emph{Negative controls.} Dropping the rotation, or dropping the incidence $H_1 \in K_0$, gives diameter greater than $3$ in every case tested.
+\end{itemize}
+The literature check behind the ``largest listed'' column of Table~\ref{tab:values} searched arXiv, Crossref, OpenAlex, Google Scholar and Semantic Scholar, and the edit history of~\cite{wiki}, in October 2026. Code and graph files are available from the author.
+
+\begin{thebibliography}{9}
+\bibitem{AL} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, \emph{Graphs Combin.} (2022). \texttt{arXiv:2005.02427}.
+\bibitem{FMP} R.~Feria-Pur\'on, M.~Miller and G.~Pineda-Villavicencio, On large bipartite graphs of diameter 3, \emph{Discrete Math.} (2013). \texttt{arXiv:1203.3588}.
+\bibitem{MS} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, \emph{Electron.\ J.\ Combin.}, Dynamic Survey DS14 (2013).
+\bibitem{wiki} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}, accessed October 2026.
+\end{thebibliography}
+
+\end{document}
