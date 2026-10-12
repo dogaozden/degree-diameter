@@ -71,6 +71,7 @@ button { font: inherit; color: inherit; }
 .chip .k { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; }
 .chip .v { font-family: var(--font-display); font-size: 25px; line-height: 1; }
 .chip .g { font-family: var(--font-mono); font-size: 11px; color: var(--ok); }
+.chip .c { font-size: 11px; color: #c9c6bd; font-style: italic; white-space: nowrap; }
 
 .readout { position: absolute; right: var(--gutter); top: clamp(20px, 3.5vw, 56px); width: 290px; padding: 16px 16px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(13,18,31,.8); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 10px; }
 .readout h2 { font-size: 13px; font-weight: 500; color: var(--fg); }
@@ -173,6 +174,33 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .check i::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
 .check p span { color: var(--muted); }
 /* explainer */
+/* records we beat */
+.cites { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+.cite { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 15px 16px; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.cite-top { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+.cite .stood { font-family: var(--font-mono); color: var(--brass); font-size: 11.5px; }
+.cite-num { font-family: var(--font-display); font-size: 30px; line-height: 1; }
+.cite-num .old { color: var(--muted); }
+.cite-num .arrow { color: var(--faint); font-size: 22px; }
+.cite-who { font-size: 14px; color: var(--fg); }
+.cite-who .yr { font-family: var(--font-mono); color: var(--brass); margin-left: 4px; }
+.cite-ref { font-size: 12.5px; color: #aeb2bf; line-height: 1.45; }
+.cite a, .cite-foot a { color: var(--glacier); }
+.cite-foot { margin-top: 14px; font-size: 12.5px; color: var(--muted); max-width: 80ch; text-shadow: 0 1px 10px rgb(6 9 16 / .95); }
+/* the evolutionary search */
+.evo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; align-items: center; }
+.evo-loop svg { width: 100%; max-height: 360px; display: block; }
+.evo-loop text { font-family: var(--font-mono); font-size: 12px; fill: #dfe1e8; text-anchor: middle; }
+.evo-loop text.hot { fill: var(--brass); }
+.evo-loop text.mid { font-family: var(--font-display); font-size: 22px; fill: var(--fg); }
+.evo-loop text.sub { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
+.evo-steps { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #d6d4cc; text-shadow: 0 1px 14px rgb(6 9 16 / .95); }
+.evo-steps b { color: var(--fg); font-weight: 600; }
+.evo-steps li::marker { font-family: var(--font-mono); color: var(--brass); }
+.evo-more { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; margin-top: 14px; }
+.evo-more h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin-bottom: 6px; }
+.evo-more p { color: #c3c1b9; font-size: 14px; }
+@media (max-width: 860px) { .evo { grid-template-columns: 1fr; } }
 .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
 .rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .rule svg { width: 100%; max-height: 150px; height: auto; display: block; }
@@ -216,7 +244,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   <div class="hero-copy">
     <span class="live-pill off" id="livepill"><span class="live-dot"></span><span class="mono" id="livetext" style="font-size:11.5px">Connecting…</span></span>
     <h1 id="headline"><em>Records</em> broken by Haikus</h1>
-    <p class="lede">Each glowing point is a vertex of a graph nobody had built before. Brass and blue are the two sides; every edge joins one to the other. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
+    <p class="lede">Found by an evolutionary search: Haikus wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
   </div>
   <div class="picker" id="picker" role="group" aria-label="Choose a record graph"></div>
 </section>
@@ -243,7 +271,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       </div>
     </div>
     <div class="rules">
-      <div class="rule"><svg id="ex-sides" viewBox="0 0 240 120" aria-label="Two sides, edges only between them"></svg><h3>Two sides</h3><p>Every vertex is brass or blue, and every edge joins a brass vertex to a blue one. No edge stays inside one side. This is what "bipartite" means.</p></div>
+      <div class="rule"><svg id="ex-sides" viewBox="0 0 240 120" aria-label="Two sides, edges only between them"></svg><h3>Two sides</h3><p>Every vertex is brass or blue. Edges only ever join brass to blue: blue never touches blue, and brass never touches brass. So every path zig-zags between the colours. Nobody picks the colours: colour one vertex brass, and the edges force every other colour from there. This is what "bipartite" means.</p></div>
       <div class="rule"><svg id="ex-degree" viewBox="0 0 240 120" aria-label="A vertex with at most Delta neighbours"></svg><h3>A handshake limit <span>Δ</span></h3><p>No vertex may have more than Δ neighbours. In the table, Δ runs from 3 to 16. Our records are at Δ = 4, 5, 7, 11, 13 and 15.</p></div>
       <div class="rule"><svg id="ex-diam" viewBox="0 0 240 120" aria-label="Any two vertices joined within D steps"></svg><h3>Short chains <span>D</span></h3><p>Any two vertices must be joined by a path of at most D edges. This is the diameter. A small D forces every vertex to be close to all the others.</p></div>
     </div>
@@ -262,6 +290,68 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
         <svg id="ex-tree" viewBox="0 0 360 292" aria-label="The tree limit for Delta 3"></svg>
         <div class="formula">most at step k = Δ·(Δ−1)<sup>k−1</sup> · ceiling for two sides = 2·(1 + (Δ−1) + … + (Δ−1)<sup>D−1</sup>)</div>
       </div>
+    </div>
+  </section>
+
+  <section id="records-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">What we beat</span>
+        <h2>Eight records, the oldest from 1984</h2>
+        <p>Every entry in the table came from a paper or a computer search. Here is each one we beat, who set it, and how long it stood, oldest first.</p>
+      </div>
+    </div>
+    <div class="cites">
+      <article class="cite"><div class="cite-top"><span class="mono">Δ7 · D4</span><span class="stood">stood 42 years</span></div><p class="cite-num"><span class="old">346</span> <span class="arrow">→</span> <b>359</b></p><p class="cite-who">Delorme &amp; Farhi <span class="yr">1984</span></p><p class="cite-ref">C. Delorme, G. Farhi, “Large graphs with given degree and diameter, Part I”, <i>IEEE Transactions on Computers</i> C-33 (1984) 857–860. <a href="https://doi.org/10.1109/TC.1984.1676504" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ11 · D4</span><span class="stood">stood 42 years</span></div><p class="cite-num"><span class="old">1,734</span> <span class="arrow">→</span> <b>1,774</b></p><p class="cite-who">Delorme &amp; Farhi <span class="yr">1984</span></p><p class="cite-ref">Same paper: built by their “graph duplication” method. <a href="https://doi.org/10.1109/TC.1984.1676504" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ4 · D5</span><span class="stood">stood 17+ years</span></div><p class="cite-num"><span class="old">160</span> <span class="arrow">→</span> <b>162</b></p><p class="cite-who">Hafner, and independently Loz <span class="yr">by 2009</span></p><p class="cite-ref">Found by computer search; the table cites no paper. Earliest listing we found: Eyal Loz’s degree–diameter table, January 2009. <a href="http://web.archive.org/web/20140125092156/http://eyal.com.au/wiki/The_Degree/Diameter_Problem" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ5 · D5</span><span class="stood">stood 17+ years</span></div><p class="cite-num"><span class="old">336</span> <span class="arrow">→</span> <b>354</b></p><p class="cite-who">Loz, Pérez-Rosés &amp; Pineda-Villavicencio <span class="yr">by 2009</span></p><p class="cite-ref">A computer-search project; listed in Loz’s January 2009 table. Related paper: E. Loz, G. Pineda-Villavicencio, <i>The Computer Journal</i> 53 (2010). <a href="http://web.archive.org/web/20140125092156/http://eyal.com.au/wiki/The_Degree/Diameter_Problem" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ7 · D5</span><span class="stood">stood 17+ years</span></div><p class="cite-num"><span class="old">1,134</span> <span class="arrow">→</span> <b>1,140</b></p><p class="cite-who">Loz, Pérez-Rosés &amp; Pineda-Villavicencio <span class="yr">by 2009</span></p><p class="cite-ref">Same project and table as the line above. <a href="http://web.archive.org/web/20140125092156/http://eyal.com.au/wiki/The_Degree/Diameter_Problem" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ11 · D3</span><span class="stood">stood 13 years</span></div><p class="cite-num"><span class="old">190</span> <span class="arrow">→</span> <b>192</b></p><p class="cite-who">Feria-Purón, Miller &amp; Pineda-Villavicencio <span class="yr">2013</span></p><p class="cite-ref">R. Feria-Purón, M. Miller, G. Pineda-Villavicencio, “On large bipartite graphs of diameter 3”, <i>Discrete Mathematics</i> 313 (2013). Matched independently by Araujo-Pardo &amp; López (2022). <a href="https://doi.org/10.1016/j.disc.2012.11.013" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ13 · D3</span><span class="stood">stood 4 years</span></div><p class="cite-num"><span class="old">274</span> <span class="arrow">→</span> <b>276</b></p><p class="cite-who">Araujo-Pardo &amp; López <span class="yr">2022</span></p><p class="cite-ref">G. Araujo-Pardo, N. López, “On new record graphs close to bipartite Moore graphs”, <i>Graphs and Combinatorics</i> (2022). Their paper ends by asking readers to improve it. <a href="https://doi.org/10.1007/s00373-022-02500-3" target="_blank" rel="noopener">source</a></p></article>
+      <article class="cite"><div class="cite-top"><span class="mono">Δ15 · D3</span><span class="stood">stood 4 years</span></div><p class="cite-num"><span class="old">374</span> <span class="arrow">→</span> <b>376</b></p><p class="cite-who">Araujo-Pardo &amp; López <span class="yr">2022</span></p><p class="cite-ref">Same paper, same family of graphs. All three of their cells grew by exactly 2. <a href="https://doi.org/10.1007/s00373-022-02500-3" target="_blank" rel="noopener">source</a></p></article>
+    </div>
+    <p class="cite-foot">Years are when the record was published. Where the table cites no paper, the year is the earliest table we found it in. The table is the Combinatorics Wiki’s <a href="http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs" target="_blank" rel="noopener">bipartite degree–diameter table</a>; a literature search found nothing larger published for any of these eight cells.</p>
+  </section>
+
+  <section id="evolve-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">How they were found</span>
+        <h2>Evolution, with Haikus doing the mutating</h2>
+        <p>Nobody designed these graphs. They came out of an evolutionary search, the same idea as breeding: keep the best, change them a little, keep the best again. The twist is who makes the changes. Claude Haiku, a small and fast AI model, rewrites the programs that build the graphs, thousands of times.</p>
+      </div>
+    </div>
+    <div class="evo">
+      <div class="panel evo-loop">
+        <svg viewBox="0 0 420 330" aria-label="The evolution loop: pick parents, Haiku rewrites, run, check, survive">
+          <defs><marker id="evo-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6378"/></marker></defs>
+          <circle cx="210" cy="165" r="118" fill="none" stroke="#222b42" stroke-width="1.5" stroke-dasharray="3 6"/>
+          <g class="evo-arcs" fill="none" stroke="#5b6378" stroke-width="1.6" marker-end="url(#evo-ar)">
+            <path d="M262 62 A118 118 0 0 1 322 128"/><path d="M326 210 A118 118 0 0 1 270 268"/><path d="M178 279 A118 118 0 0 1 112 238"/><path d="M93 152 A118 118 0 0 1 135 77"/><path d="M178 50 A118 118 0 0 1 232 49"/>
+          </g>
+          <g class="evo-nodes">
+            <g transform="translate(210 47)"><circle r="30" fill="#131a2b" stroke="#f0b35b"/><text y="-3">pick</text><text y="11">parents</text></g>
+            <g transform="translate(322 128)"><circle r="34" fill="#2a2416" stroke="#f0b35b" stroke-width="1.6"/><text y="-3" class="hot">Haiku</text><text y="11" class="hot">rewrites</text></g>
+            <g transform="translate(283 260)"><circle r="30" fill="#131a2b" stroke="#86cbea"/><text y="-3">run</text><text y="11">60 s</text></g>
+            <g transform="translate(137 260)"><circle r="30" fill="#131a2b" stroke="#86cbea"/><text y="-3">check</text><text y="11">3 rules</text></g>
+            <g transform="translate(98 128)"><circle r="30" fill="#131a2b" stroke="#93d6a0"/><text y="-3">best</text><text y="11">survive</text></g>
+          </g>
+          <text x="210" y="160" class="mid">one round</text><text x="210" y="178" class="mid sub">32 new programs</text>
+        </svg>
+      </div>
+      <ol class="evo-steps">
+        <li><b>Pick parents.</b> Choose a few of the best programs found so far.</li>
+        <li><b>Haiku rewrites.</b> Eight Haikus at once each get a parent’s code plus a page of hints, and write a changed version. This is the mutation step, and it is where the new ideas come from.</li>
+        <li><b>Run.</b> Each new program gets 60 seconds to build a graph.</li>
+        <li><b>Check.</b> A strict checker tests the three rules. A graph that breaks one scores zero; a valid one scores by how big it is.</li>
+        <li><b>Survive.</b> The best programs join the population and become the next parents. Repeat.</li>
+      </ol>
+    </div>
+    <div class="evo-more">
+      <div class="panel"><h3>Islands</h3><p>68 separate populations ran on cloud machines, up to about 56 at a time. Some specialised in one cell, some used a fast C engine. New islands started from their siblings’ best programs, so good ideas spread between islands, like migration.</p></div>
+      <div class="panel"><h3>What the evolution bought</h3><p>Six hours on one laptop gave only ties. Once the islands ran in the cloud, seven records fell in under three hours. In all, Haikus wrote over 32,000 programs, starting from two starter programs.</p></div>
+      <div class="panel"><h3>From a search to a theorem</h3><p>Three of the records grew by exactly 2 in the same way. That pattern, found by the search, turned out to work for an infinite family of graphs, and it is now proved in Lean.</p></div>
     </div>
   </section>
 
@@ -367,6 +457,10 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   const fmt = (n) => Number(n).toLocaleString('en-US');
   const hm = (d) => new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'America/Los_Angeles' }).format(d);
   const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+  // Who set each record we beat, and when (publication year; 'by 2009' = earliest table it appears in, Loz, Jan 2009).
+  const CITE = { d4D5: 'Hafner & Loz · by 2009', d5D5: 'Loz et al. · by 2009', d7D5: 'Loz et al. · by 2009',
+    d7D4: 'Delorme & Farhi 1984', d11D4: 'Delorme & Farhi 1984', d11D3: 'Feria-Purón et al. 2013',
+    d13D3: 'Araujo-Pardo & López 2022', d15D3: 'Araujo-Pardo & López 2022' };
   const CELLS = [
     ['d4D5', 'Δ4 · D5'], ['d5D5', 'Δ5 · D5'], ['d6D5', 'Δ6 · D5'], ['d7D5', 'Δ7 · D5'], ['d7D4', 'Δ7 · D4'],
     ['d11D4', 'Δ11 · D4'], ['d11D3', 'Δ11 · D3'], ['d13D3', 'Δ13 · D3'], ['d15D3', 'Δ15 · D3'], ['d16D3', 'Δ16 · D3'],
@@ -450,7 +544,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       const k = document.createElement('span'); k.className = 'k'; k.textContent = cellLabel(r.case);
       const v = document.createElement('span'); v.className = 'v'; v.textContent = fmt(r.ours);
       const g = document.createElement('span'); g.className = 'g'; g.textContent = 'was ' + fmt(r.table) + ' · +' + r.gain;
-      b.append(k, v, g); b.addEventListener('click', () => { select(r.case); HF.userPicked && HF.userPicked(); });
+      const c = document.createElement('span'); c.className = 'c'; c.textContent = CITE[r.case] || '';
+      b.append(k, v, g, c); b.addEventListener('click', () => { select(r.case); HF.userPicked && HF.userPicked(); });
       box.append(b);
     });
     if (!selected && recs.length) select((recs.find((r) => r.case === 'd7D5') || recs[0]).case);
@@ -674,7 +769,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       else if (l && l.state === 'older graph') { p.className = 'pill mid'; p.textContent = 'proved ' + fmt(l.in_lean) + ', update due'; }
       else { p.className = 'pill none'; p.textContent = 'not yet'; }
       cell.append(p);
-      td(r.old_holder + (r.old_year ? ' (' + r.old_year + ')' : ''), 'who');
+      td(CITE[r.case] || r.old_holder, 'who');
       tb.append(tr);
     });
   }
@@ -682,7 +777,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   let rz = null;
   window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (now) { renderClimb(); } }, 150); });
   setTimeout(() => { if (!HF.ready3d && !HF.failed3d) { HF.failed3d = true; } }, 15000);
-  // a link ending in #<section id> (explain, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
+  // a link ending in #<section id> (explain, records-sec, evolve-sec, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
   const jump = () => { const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 12); };
   window.addEventListener('hashchange', jump);
   [1500, 4000, 7000].forEach((ms) => setTimeout(jump, ms));

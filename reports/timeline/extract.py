@@ -182,7 +182,7 @@ with open(OUT / "fleet.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(fleet[0]), lineterminator="\n"); w.writeheader(); w.writerows(fleet)
 
 # lean.csv: what the Lean proof covers versus our best now
-lean_ref = "origin/lean-haiku"
+lean_ref = "origin/master"
 records_src = subprocess.run(["git", "show", f"{lean_ref}:lean/BipartiteDD/Records.lean"], capture_output=True, text=True).stdout
 axioms = subprocess.run(["git", "show", f"{lean_ref}:lean/Axioms.out.txt"], capture_output=True, text=True).stdout
 in_lean = {f"d{a}D{b}": (int(n), name) for name, n, a, b in
