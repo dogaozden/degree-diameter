@@ -1,0 +1,50 @@
+import BipartiteDD.Basic
+import BipartiteDD.Fast
+import BipartiteDD.Graphs.G162
+import BipartiteDD.Graphs.G354
+import BipartiteDD.Graphs.G1140
+import BipartiteDD.Graphs.G359
+import BipartiteDD.Graphs.G1774
+import BipartiteDD.Graphs.G192
+import BipartiteDD.Graphs.G276
+import BipartiteDD.Graphs.G376
+
+theorem nb_4_5 : ∃ G : SimpleGraph (Fin 162), BipartiteDD.IsBipartiteDegDiam G 4 5 :=
+  ⟨_, BipartiteDD.check_sound 4 5 BipartiteDD.G162.nbrs BipartiteDD.G162.color
+    (BipartiteDD.Fast.check_of_fast 8 4 5 BipartiteDD.G162.adjL BipartiteDD.G162.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_5_5 : ∃ G : SimpleGraph (Fin 354), BipartiteDD.IsBipartiteDegDiam G 5 5 :=
+  ⟨_, BipartiteDD.check_sound 5 5 BipartiteDD.G354.nbrs BipartiteDD.G354.color
+    (BipartiteDD.Fast.check_of_fast 9 5 5 BipartiteDD.G354.adjL BipartiteDD.G354.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_7_5 : ∃ G : SimpleGraph (Fin 1140), BipartiteDD.IsBipartiteDegDiam G 7 5 :=
+  ⟨_, BipartiteDD.check_sound 7 5 BipartiteDD.G1140.nbrs BipartiteDD.G1140.color
+    (BipartiteDD.Fast.check_of_fast 11 7 5 BipartiteDD.G1140.adjL BipartiteDD.G1140.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_7_4 : ∃ G : SimpleGraph (Fin 359), BipartiteDD.IsBipartiteDegDiam G 7 4 :=
+  ⟨_, BipartiteDD.check_sound 7 4 BipartiteDD.G359.nbrs BipartiteDD.G359.color
+    (BipartiteDD.Fast.check_of_fast 9 7 4 BipartiteDD.G359.adjL BipartiteDD.G359.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_11_4 : ∃ G : SimpleGraph (Fin 1774), BipartiteDD.IsBipartiteDegDiam G 11 4 :=
+  ⟨_, BipartiteDD.check_sound 11 4 BipartiteDD.G1774.nbrs BipartiteDD.G1774.color
+    (BipartiteDD.Fast.check_of_fast 11 11 4 BipartiteDD.G1774.adjL BipartiteDD.G1774.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_11_3 : ∃ G : SimpleGraph (Fin 192), BipartiteDD.IsBipartiteDegDiam G 11 3 :=
+  ⟨_, BipartiteDD.check_sound 11 3 BipartiteDD.G192.nbrs BipartiteDD.G192.color
+    (BipartiteDD.Fast.check_of_fast 8 11 3 BipartiteDD.G192.adjL BipartiteDD.G192.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_13_3 : ∃ G : SimpleGraph (Fin 276), BipartiteDD.IsBipartiteDegDiam G 13 3 :=
+  ⟨_, BipartiteDD.check_sound 13 3 BipartiteDD.G276.nbrs BipartiteDD.G276.color
+    (BipartiteDD.Fast.check_of_fast 9 13 3 BipartiteDD.G276.adjL BipartiteDD.G276.colL
+      (by decide) (by decide +kernel))⟩
+
+theorem nb_15_3 : ∃ G : SimpleGraph (Fin 376), BipartiteDD.IsBipartiteDegDiam G 15 3 :=
+  ⟨_, BipartiteDD.check_sound 15 3 BipartiteDD.G376.nbrs BipartiteDD.G376.color
+    (BipartiteDD.Fast.check_of_fast 9 15 3 BipartiteDD.G376.adjL BipartiteDD.G376.colL
+      (by decide) (by decide +kernel))⟩
