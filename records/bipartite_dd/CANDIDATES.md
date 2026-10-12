@@ -131,7 +131,11 @@ it still needs a mathematician's reading.
 
 ## Lean status (2026-10-11)
 
-Confirmed on branch `lean-haiku`: a strict-mode (kernel-checked) proof of six records, at the values current
-when it was written: (4,5) = 162, (5,5) = 344, (7,4) = 356, (11,3) = 192, (13,3) = 276, (11,4) = 1773.
-Open, by Doğa's choice, for a later session: the update to all eight final graphs. It stopped at commit 3439a2299
-(work in progress, not built), and its brief is docs/lean-update-brief.md.
+All eight records are proved in Lean 4 with Mathlib, kernel-checked (no `native_decide`), in `lean/`:
+(4,5) = 162, (5,5) = 354, (7,5) = 1140, (7,4) = 359, (11,4) = 1774, (11,3) = 192, (13,3) = 276, (15,3) = 376.
+Each theorem reads `∃ G : SimpleGraph (Fin n), BipartiteDD.IsBipartiteDegDiam G Δ D` and `#print axioms` lists only
+propext, Classical.choice and Quot.sound (`lean/Axioms.out.txt`). Each Lean data file was checked edge for edge
+against its record JSON. Proved by a Haiku cloud session; merged at commit a0830d87f.
+
+In progress: a Lean proof of the +2 theorem for every projective plane (branch `lean-plus2`, brief
+docs/plus2-lean-brief.md).
