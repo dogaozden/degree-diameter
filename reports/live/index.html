@@ -266,7 +266,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   <div class="hero-copy">
     <span class="live-pill off" id="livepill"><span class="live-dot"></span><span class="mono" id="livetext" style="font-size:11.5px">Connecting…</span></span>
     <h1 id="headline"><em>Records</em> broken by Haikus</h1>
-    <p class="lede">Found by an <a class="evo-link" href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener" title="AlphaEvolve: A coding agent for scientific and algorithmic discovery (Google DeepMind, 2025)">evolutionary search</a>: 384 Haikus wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
+    <p class="lede">Found by an <a class="evo-link" href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener" title="AlphaEvolve: A coding agent for scientific and algorithmic discovery (Google DeepMind, 2025)">evolutionary search</a>: 384 Haiku 5.5 agents wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
     <a class="thm-pill" href="#theorem-sec">+ a new theorem, proved in Lean <span aria-hidden="true">→</span></a>
   </div>
   <div class="picker" id="picker" role="group" aria-label="Choose a record graph"></div>
@@ -357,8 +357,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
         <p class="thm-label">How it was found</p>
         <ol class="thm-path">
           <li><b>Haikus</b>, by evolutionary search, found graphs of 192, 276 and 376 vertices: each 2 above the 2022 record.</li>
-          <li><b>Claude Opus</b> compared them with the 2022 construction, saw the shared pattern, and wrote a proof that it works for every plane.</li>
-          <li><b>A Haiku</b> then proved it again in Lean, the proof checker mathematicians use, so no one has to trust the prose.</li>
+          <li><b>Claude Opus 5.5</b> compared them with the 2022 construction, saw the shared pattern, and wrote a proof that it works for every plane.</li>
+          <li><b>A Haiku 5.5 agent</b> then proved it again in Lean, the proof checker mathematicians use, so no one has to trust the prose.</li>
         </ol>
         <p class="thm-label" style="margin-top:6px">What it gives</p>
         <div class="scroll"><table class="ledger thm-table">
@@ -384,7 +384,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       <div>
         <span class="eyebrow">How they were found</span>
         <h2>Evolution, with Haikus doing the mutating</h2>
-        <p>Nobody designed these graphs. They came out of an evolutionary search, the same idea as breeding: keep the best, change them a little, keep the best again. The twist is who makes the changes. Claude Haiku, a small and fast AI model, rewrites the programs that build the graphs, thousands of times. The method follows Google DeepMind’s <a href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener">AlphaEvolve</a> (2025), run here on small, cheap models.</p>
+        <p>Nobody designed these graphs. They came out of an evolutionary search, the same idea as breeding: keep the best, change them a little, keep the best again. The twist is who makes the changes. Claude Haiku 5.5, a small and fast AI model, rewrites the programs that build the graphs, thousands of times. The method follows Google DeepMind’s <a href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener">AlphaEvolve</a> (2025), run here on small, cheap models.</p>
       </div>
     </div>
     <div class="evo">
@@ -645,7 +645,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       $('c-haikus').textContent = fmt(running * 8); $('c-haikus-l').textContent = 'Haikus at once, at most';
     } else {
       $('c-running').textContent = PEAK_ISLANDS + ' / ' + fleet.length; $('c-running-l').textContent = 'islands writing at the peak (fleet stopped now)';
-      $('c-haikus').textContent = fmt(PEAK_HAIKUS); $('c-haikus-l').textContent = 'Haikus writing at once, at the peak';
+      $('c-haikus').textContent = fmt(PEAK_HAIKUS); $('c-haikus-l').textContent = 'Haiku 5.5 agents writing at once, at the peak';
     }
     const total = (now.programs || []).reduce((s, b) => s + Number(b.total), 0);
     tween($('c-programs'), programsShown, total); programsShown = total;
