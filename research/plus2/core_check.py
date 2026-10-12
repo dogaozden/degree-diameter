@@ -1,6 +1,6 @@
 """Is the degree-filling matching needed for diameter 3?  Remove it and count bad pairs."""
 import sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/research/plus2')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from plus2 import plus2_named
 from al import al_named
 import lib

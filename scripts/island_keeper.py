@@ -13,7 +13,7 @@ Prints one line per launch and per pass. --once runs a single pass; --dry-run pr
 import argparse, json, os, re, subprocess, sys, time
 from pathlib import Path
 
-REPO = "/Users/dogaozden/AI_Projects/math"
+REPO = str(__import__("pathlib").Path(__file__).resolve().parents[1])
 SCRATCH = Path(__file__).resolve().parent / "keeper"  # prompt templates; keeper_state.json lives here too
 BASE = ["island-1", "spec-d4d5", "spec-d5d5", "spec-d6d5", "spec-d7d5", "spec-d7d4", "spec-d11d4", "spec-d3fam",
         "spec-d16d3", "c-d4d5", "c-d5d5", "c-d6d5", "c-d7d5", "c-d7d4", "c-d11d4", "c-d3fam", "c-d16d3"]

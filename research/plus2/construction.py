@@ -13,7 +13,7 @@ import sys
 
 import networkx as nx
 
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/problems/bipartite_dd')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[2]) + '/problems/bipartite_dd')
 import lib
 
 

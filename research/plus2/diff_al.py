@@ -1,12 +1,12 @@
 """Compare each found +2 graph with lib.araujo_lopez_graph(q) under the identity labelling."""
 import json, sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/problems/bipartite_dd')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[2]) + '/problems/bipartite_dd')
 import lib
 
 FILES = {9: 'records/bipartite_dd/d11D3/192-c-d3fam-g001-c00.json',
          11: 'records/bipartite_dd/d13D3/276-c-d3fam-g003-c19.json',
          13: 'records/bipartite_dd/d15D3/376-c-d3fam-w2-g002-c12.json'}
-ROOT = '/Users/dogaozden/AI_Projects/math/'
+ROOT = str(__import__('pathlib').Path(__file__).resolve().parents[2]) + '/'
 
 def norm(edges):
     return {(min(u, v), max(u, v)) for u, v in edges}

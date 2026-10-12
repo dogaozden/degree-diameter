@@ -3,7 +3,7 @@
 Names as in al.py. S = {0, 1, a, c} are the hatted rows.
 """
 import sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/problems/bipartite_dd')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[2]) + '/problems/bipartite_dd')
 import lib
 
 

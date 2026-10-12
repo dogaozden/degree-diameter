@@ -4,7 +4,7 @@ Filler = an edge between two old PG vertices that is not a PG incidence.  We che
 graph without its filler still has diameter 3, and list the PG incidences that were removed.
 """
 import json, sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/research/plus2')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from al import al_named
 from diff_al import FILES, ROOT, norm
 import lib

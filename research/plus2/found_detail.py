@@ -1,7 +1,7 @@
 """Per found graph: off-row neighbours of the extra vertices, and a minimal set of filler edges
 that the diameter really needs (greedy: drop filler edges one at a time while diameter stays 3)."""
 import json, sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/research/plus2')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from al import al_named
 from diff_al import FILES, ROOT, norm
 from found_core import analyse, SPECIAL

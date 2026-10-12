@@ -5,7 +5,7 @@ point; ('ln',m,b) line y=mx+b; ('L',c) vertical line x=c; ('L',) line at infinit
 extra points ('Q0',), ('hp',j); extra lines ('M0',), ('hl',j), j in {0,1,a}.
 """
 import sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/problems/bipartite_dd')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parents[2]) + '/problems/bipartite_dd')
 import lib
 
 

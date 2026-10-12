@@ -15,7 +15,7 @@
 
 ## Global Constraints
 
-- All Python runs through `/Users/dogaozden/AI_Projects/math/.venv/bin/python`. Tests run with `.venv/bin/python -m pytest`.
+- All Python runs through `.venv/bin/python`. Tests run with `.venv/bin/python -m pytest`.
 - Model calls only go through `claude -p` with:
   - `--output-format stream-json --verbose --model claude-haiku-5-5 --setting-sources "" --strict-mcp-config --disable-slash-commands --tools "" --system-prompt=<text>`
   - the prompt on stdin

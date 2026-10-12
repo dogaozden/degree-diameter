@@ -1,5 +1,5 @@
 import json, sys
-sys.path.insert(0, '/Users/dogaozden/AI_Projects/math/research/plus2')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from al import al_named
 import lib
 from diff_al import FILES, ROOT, norm

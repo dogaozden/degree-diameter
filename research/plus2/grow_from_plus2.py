@@ -8,7 +8,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path('/Users/dogaozden/AI_Projects/math')
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from construction import pg_plane, default_frame, build, lib  # noqa: E402
 
