@@ -141,4 +141,4 @@ The +2 theorem is also proved in Lean (`lean/BipartiteDD/Plus2/`): for every fin
 and every frame, a bipartite graph on 2(q² + q + 6) vertices with maximum degree q + 2 and diameter 3 exists
 (`plus2`), and for every plane of order q ≥ 4 (`plus2_of_order`). Axioms: propext, Classical.choice, Quot.sound.
 Definitions and statements were written in advance (docs/plus2-lean-brief.md) and checked unchanged; proved by a Haiku
-cloud session (merged from commit 6d390ca48). The build was run in that session, not yet independently.
+cloud session (merged from commit 6d390ca48). An independent cloud session rebuilt the whole Lean project from scratch on 2026-10-11 (lean/CHECK.txt): all builds pass, same axioms.

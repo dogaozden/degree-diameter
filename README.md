@@ -60,7 +60,8 @@ mathematicians is in [`research/plus2/note/`](research/plus2/note/).
 
 `#print axioms` lists only `propext`, `Classical.choice` and `Quot.sound` for every theorem
 ([`lean/Axioms.out.txt`](lean/Axioms.out.txt), [`lean/BipartiteDD/Plus2/Axioms.out.txt`](lean/BipartiteDD/Plus2/Axioms.out.txt)).
-The proofs were built in the cloud sessions that wrote them; an independent rebuild is pending.
+An independent session rebuilt everything from scratch, compiling Mathlib from source, with the same result
+([`lean/CHECK.txt`](lean/CHECK.txt)).
 
 Besides Lean, every record graph passes three independent checkers (bitsets, networkx, and a from-scratch
 search from every vertex), and its program rebuilt it on a second machine.

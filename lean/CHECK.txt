@@ -1,0 +1,35 @@
+Independent Lean build check (toolchain leanprover/lean4:v4.34.1, 4 cores, no Mathlib cache)
+
+## Setup
+- elan install script: OK (elan 4.2.4).
+- 'elan toolchain install leanprover/lean4:v4.34.1' (3 tries): FAILED, CONNECT tunnel 403 for release.lean-lang.org.
+- GitHub release URL https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst: WORKED (curl, 7s). No zstd binary, so extracted with python zstandard and ran 'elan toolchain link leanprover/lean4:v4.34.1 <dir>'.
+- 'lake exe cache get': FAILED, cache.mathlib.org CONNECT 403 (also reservoir.lean-lang.org and lakecache.blob.core.windows.net 403). Killed after ~5 min with ~1MB downloaded. Mathlib sources cloned fine via git.
+- Consequence: everything below compiled Mathlib modules from source.
+
+## Commands (exit code, wall time)
+1. lake build                                  exit=0 secs=1287  (Build completed successfully, 1036 jobs)
+   lake build BipartiteDD.Plus2.Axioms exit=0 secs=1604
+   lake env lean Axioms.lean exit=0 secs=4
+   lake env lean BipartiteDD/Plus2/Axioms.lean exit=0 secs=6
+
+   (lake build BipartiteDD.Plus2.Axioms needed extra Mathlib modules not in the default target: 2001 jobs)
+
+## #print axioms: lake env lean Axioms.lean
+'nb_4_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_5_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_7_5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_7_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_11_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_11_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_13_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'nb_15_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## #print axioms: lake env lean BipartiteDD/Plus2/Axioms.lean
+'BipartiteDD.Plus2.plus2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Plus2.plus2_of_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+## grep -rnE '\bsorry\b|\badmit\b|native_decide|^axiom ' lean/BipartiteDD lean/*.lean
+(exit 1 = no matches)
+
+## Failing builds: none (all exit 0)
