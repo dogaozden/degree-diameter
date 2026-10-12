@@ -1,0 +1,36 @@
+Independent Lean build check
+============================
+Branch base: origin/master (commit 01be9486f "docs: +2 theorem proved in Lean")
+Toolchain pinned in lean/lean-toolchain: leanprover/lean4:v4.34.1
+
+BLOCKED: the Lean toolchain could not be downloaded in this environment.
+
+Step 2 - elan install
+  command: curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+  exit: 0, wall time: 1s
+  result: elan installed (lake/lean shims in ~/.elan/bin)
+
+Step 3 - lake exe cache get (in lean/)
+  command: lake exe cache get
+  exit: 1, wall time: 0s
+  error: "error during download ... CONNECT tunnel failed, response 403"
+  The egress proxy refused CONNECT to release.lean-lang.org:443 (proxy status:
+  connect_rejected, "policy denial or upstream failure"). The mathlib cache host
+  (lakecache.blob.core.windows.net) also did not connect. No Lean toolchain is
+  present locally, so nothing below could run.
+
+Build steps - NOT RUN (no toolchain)
+  lake build                                   : not run
+  lake build BipartiteDD.Plus2.Axioms          : not run
+  lake env lean Axioms.lean                    : not run
+  lake env lean BipartiteDD/Plus2/Axioms.lean  : not run
+  (No #print axioms output was produced by this run.)
+
+Step 4 - source scan
+  command: grep -rnE '\bsorry\b|\badmit\b|native_decide|^axiom ' lean/BipartiteDD lean/*.lean
+  exit: 1 (no matches)
+  output: (none)
+
+Next step: rerun on a machine or session with access to release.lean-lang.org
+(and the mathlib cache host), or allow that host in the environment's network policy.
+No .lean file was edited.
