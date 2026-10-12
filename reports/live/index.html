@@ -25,9 +25,19 @@
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --gutter: clamp(16px, 4vw, 48px);
   --radius: 14px;
+  --river-tint: .78;
+  --glass: rgb(10 14 24 / var(--river-tint));
   color-scheme: dark;
 }
-html, body { background: var(--ink); }
+html { background: var(--ink); }
+body { background: transparent; margin: 0; }
+#river { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; opacity: 0; transition: opacity 1.2s ease; pointer-events: none; }
+#river.ready { opacity: 1; }
+/* Without WebGL the riverbed photo still shows, darkened, behind the page. */
+.river-static body { background: linear-gradient(rgb(9 12 21 / .55), rgb(9 12 21 / .55)), var(--river-bed, none) center / cover fixed; }
+.hero, .readout, main, footer { position: relative; z-index: 1; }
+.sec-head h2, .sec-head p, .sec-head .eyebrow, .counter { text-shadow: 0 1px 18px rgb(6 9 16 / .95), 0 0 2px rgb(6 9 16 / .8); }
+footer { text-shadow: 0 1px 10px rgb(6 9 16 / .95); }
 body { color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
 p, h1, h2, h3 { margin: 0; }
@@ -38,7 +48,7 @@ button { font: inherit; color: inherit; }
 .wrap { padding-inline: var(--gutter); }
 
 /* ---------- hero ---------- */
-.hero { position: relative; height: clamp(520px, 50vw, 820px); overflow: hidden; background: radial-gradient(120% 90% at 70% 40%, #121a31 0%, var(--ink) 62%); }
+.hero { position: relative; height: clamp(520px, 50vw, 820px); overflow: hidden; background: radial-gradient(90% 80% at 18% 22%, rgb(7 10 18 / .62) 0%, transparent 60%); }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
 .hero canvas:active { cursor: grabbing; }
 .hero-copy { position: absolute; left: var(--gutter); top: clamp(20px, 3.5vw, 56px); max-width: min(560px, 80vw); display: flex; flex-direction: column; gap: 14px; pointer-events: none; }
@@ -92,7 +102,7 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .counter .n { font-family: var(--font-display); font-size: clamp(34px, 4vw, 48px); line-height: 1; font-variant-numeric: tabular-nums; }
 .counter .l { font-size: 12px; color: var(--muted); }
 .fleet { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 12px; }
-.cellcard { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.cellcard { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .cellcard .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .cellcard .name { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 .cellcard .best { font-family: var(--font-display); font-size: 30px; line-height: 1; }
@@ -117,7 +127,7 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .pop .r { color: var(--muted); }
 
 /* climb */
-.panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 18px; min-width: 0; }
+.panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 18px; min-width: 0; }
 .chart { position: relative; }
 .chart svg { display: block; width: 100%; overflow: visible; }
 .chart text { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
@@ -160,7 +170,7 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .check p span { color: var(--muted); }
 /* explainer */
 .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
-.rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .rule svg { width: 100%; max-height: 150px; height: auto; display: block; }
 .rule h3 { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; }
 .rule h3 span { font-family: var(--font-mono); font-size: 13px; color: var(--brass); margin-left: 6px; vertical-align: 3px; }
@@ -176,7 +186,7 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .lvl b { color: var(--fg); font-weight: 500; }
 .formula { font-family: var(--font-mono); font-size: 13px; color: var(--fg); background: #0b101c; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; overflow-x: auto; }
 .guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 12px; margin-top: 12px; }
-.gitem { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2); padding: 14px; min-width: 0; }
+.gitem { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 14px; min-width: 0; }
 .gitem svg { width: 96px; height: 72px; display: block; }
 .gitem h4 { margin: 0 0 4px; font-size: 14.5px; font-weight: 500; }
 .gitem p { color: var(--muted); font-size: 13px; line-height: 1.5; }
@@ -196,6 +206,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
 }
 </style>
 
+<canvas id="river" aria-hidden="true"></canvas>
 <section class="hero" id="hero" aria-label="A record graph in 3D">
   <canvas id="gl" aria-label="3D view of the selected record graph. Drag to turn it; click a vertex to see how far it reaches."></canvas>
   <div class="hero-copy">
@@ -338,6 +349,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
 </main>
 <footer class="wrap" id="foot">Bipartite degree–diameter table, Combinatorics Wiki. Search engine, graphs and proofs in the math repo. Live data refreshes about every ten minutes from the islands' pushes.</footer>
 <div class="pop" id="pop" hidden></div>
+<script src="river/river.js" data-beds="river/"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
@@ -833,7 +845,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
 /* 3D: Three.js with the WebGPU renderer (it falls back to WebGL2 by itself where WebGPU is missing).
    Vertices are instanced spheres, edges one line-segment buffer, and a bloom pass makes the reached vertices glow. */
 import * as THREE from 'three/webgpu';
-import { pass } from 'three/tsl';
+import { pass, renderOutput, vec4, max, clamp } from 'three/tsl';
 import { bloom } from 'three/addons/tsl/display/BloomNode.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -845,7 +857,7 @@ const BRASS = new THREE.Color('#f0b35b'), GLACIER = new THREE.Color('#86cbea'), 
 
 let renderer;
 try {
-  renderer = new THREE.WebGPURenderer({ canvas, antialias: true });
+  renderer = new THREE.WebGPURenderer({ canvas, antialias: true, alpha: true });
   await renderer.init();
 } catch (e) {
   const msg = document.createElement('div'); msg.className = 'no3d';
@@ -857,7 +869,8 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#090c15');
+scene.background = null; // transparent: the river shows through around the graph
+renderer.setClearColor(0x000000, 0);
 scene.fog = new THREE.FogExp2('#090c15', 0.11);
 const camera = new THREE.PerspectiveCamera(42, 1, 0.05, 50);
 camera.position.set(0.6, 0.5, 4.6);
@@ -870,7 +883,12 @@ const post = new THREE.PostProcessing(renderer);
 const scenePass = pass(scene, camera);
 const color = scenePass.getTextureNode('output');
 const glow = bloom(color, 0.85, 0.45, 0.22);
-post.outputNode = color.add(glow);
+// Tone-map first, then give each pixel an alpha equal to its brightest channel, so glow and edges composite
+// over the river like light (premultiplied: rgb never exceeds alpha). Dim or fogged vertices fade into the water
+// instead of sitting on it as dark dots, and empty space stays clear.
+post.outputColorTransform = false;
+const lit = renderOutput(color.add(glow));
+post.outputNode = vec4(lit.rgb, clamp(max(lit.r, max(lit.g, lit.b)), 0, 1));
 
 // faint distance rings, shown in ring mode
 const ringGroup = new THREE.Group(); scene.add(ringGroup);
