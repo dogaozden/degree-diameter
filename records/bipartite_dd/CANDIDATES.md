@@ -128,3 +128,10 @@ three incidences to make room. The clean rule works in every projective plane of
 2(q² + q + 6) vertices at degree q + 2 and diameter 3. A proof, computer checks and SAT evidence against +3 and +4
 inside the same family are in `research/plus2/REPORT.md`. The proof was written by a model and checked by computer;
 it still needs a mathematician's reading.
+
+## Lean status (2026-10-11)
+
+Confirmed on branch `lean-haiku`: a strict-mode (kernel-checked) proof of six records, at the values current
+when it was written: (4,5) = 162, (5,5) = 344, (7,4) = 356, (11,3) = 192, (13,3) = 276, (11,4) = 1773.
+Open, by Doğa's choice, for a later session: the update to all eight final graphs. It stopped at commit 3439a2299
+(work in progress, not built), and its brief is docs/lean-update-brief.md.
