@@ -186,7 +186,7 @@ We looked for $+3$ and $+4$ inside the same family: $\Pi = \PG(2,q)$ is kept fix
 \appendix
 \section{How the construction was found and checked}\label{app:checks}
 
-The graphs were found by an evolutionary program search in which a language model (Claude Haiku, by Anthropic) writes candidate Python programs that build graphs, and an independent checker scores them. The search produced bipartite $(11,3)$-, $(13,3)$- and $(15,3)$-graphs of orders $192$, $276$ and $376$. Comparing them with the Araujo-Pardo--L\'opez graphs showed that, outside a small gadget around $\ell$ and $A$ and apart from filler edges, each is a projective plane with four hats; the three gadgets differed, and the clean rotation of Section~\ref{sec:construction} was extracted from the $q = 9$ graph, which uses exactly that rotation. The proof above was drafted with the help of Claude (Anthropic) and then checked as follows.
+The graphs were found by an evolutionary program search, in the spirit of AlphaEvolve~\cite{AE} and following Xu's use of Claude Haiku as the mutator for square packing~\cite{Xu}, in which a language model (Claude Haiku, by Anthropic) writes candidate Python programs that build graphs, and an independent checker scores them. The search produced bipartite $(11,3)$-, $(13,3)$- and $(15,3)$-graphs of orders $192$, $276$ and $376$. Comparing them with the Araujo-Pardo--L\'opez graphs showed that, outside a small gadget around $\ell$ and $A$ and apart from filler edges, each is a projective plane with four hats; the three gadgets differed, and the clean rotation of Section~\ref{sec:construction} was extracted from the $q = 9$ graph, which uses exactly that rotation. The proof above was drafted with the help of Claude (Anthropic) and then checked as follows.
 
 \begin{itemize}[leftmargin=2em]
 \item \emph{Three implementations.} The construction was implemented three times from its description, once by the agent that extracted the rule and twice independently from the six rules alone. All three agree.
@@ -198,10 +198,12 @@ The graphs were found by an evolutionary program search in which a language mode
 The literature check behind the ``largest listed'' column of Table~\ref{tab:values} searched arXiv, Crossref, OpenAlex, Google Scholar and Semantic Scholar, and the edit history of~\cite{wiki}, in October 2026. Code and graph files are available from the author.
 
 \begin{thebibliography}{9}
+\bibitem{AE} A.~Novikov et al., AlphaEvolve: a coding agent for scientific and algorithmic discovery, Google DeepMind (2025). \texttt{arXiv:2506.13131}.
 \bibitem{AL} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, \emph{Graphs Combin.} (2022). \texttt{arXiv:2005.02427}.
 \bibitem{FMP} R.~Feria-Pur\'on, M.~Miller and G.~Pineda-Villavicencio, On large bipartite graphs of diameter 3, \emph{Discrete Math.} (2013). \texttt{arXiv:1203.3588}.
 \bibitem{MS} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, \emph{Electron.\ J.\ Combin.}, Dynamic Survey DS14 (2013).
 \bibitem{wiki} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}, accessed October 2026.
+\bibitem{Xu} R.~Xu, Improving 25 square packing upper bounds through evolutionary LLM program search, \url{https://slightlysupervised.substack.com/p/improving-25-square-packing-upper}.
 \end{thebibliography}
 
 \end{document}
