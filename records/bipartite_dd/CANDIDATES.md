@@ -20,6 +20,8 @@ page last edited 2022.
 | (15, 3) | 374 | **376** | 422 | 15-regular, 188 + 188, 2820 edges | C island c-d3fam-w2, g002-c12 | d15D3/376-c-d3fam-w2-g002-c12.json |
 | (11, 4) | 1734 | **1774** | 2222 | degrees 10–11, 872 + 902, 9541 edges | Python island spec-d11d4, g010-c19 | d11D4/1774-spec-d11d4-g010-c19.json |
 
+Each of the eight best graphs is also provided next to its JSON in two standard formats: `.g6` (graph6, from networkx, vertices 0..n-1, isolated vertices kept) and `.edges.txt` (a plain edge list with a comment header giving n, edges, Δ and D). Both were made by `scripts/export_formats.py`, which reads each file back and checks it against the JSON.
+
 Upper bounds are the wiki's "lowest known upper bounds" table. Every graph sits below its bound.
 
 Other verified graphs that beat the table, kept as independent confirmations:
