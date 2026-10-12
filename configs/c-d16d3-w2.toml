@@ -1,0 +1,34 @@
+# Wave 2 twin of c-d16d3, seeded with its top 5 programs as of origin/claude/c-d16d3-evolve-run-9143rc.
+# C-engine specialist cloud island: only d16D3 (+ d3D3 smoke). One cloud session, 4 vCPU.
+# Starts from the C starter program (g000-seed) plus the best Python program for its target(s).
+run_id = "c-d16d3-w2"
+problem = "problems.bipartite_dd.islands_c:D16D3"
+seed = 1307
+generations = 80
+candidates_per_generation = 32
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "seeds/wave2/c-d16d3/g008-c31.py",
+  "seeds/wave2/c-d16d3/g008-c30.py",
+  "seeds/wave2/c-d16d3/g008-c29.py",
+  "seeds/wave2/c-d16d3/g008-c28.py",
+  "seeds/wave2/c-d16d3/g008-c27.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 600
+max_calls = 3000
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true

@@ -1,0 +1,69 @@
+run_id,base,engine,wave,status,minutes_since_push,generation,cells,best,beats,as_of
+island-1,island-1,Generalist island,1,running,16,19,d4D5 d5D5 d6D5 d7D5 d7D4 d11D4 d11D3 d13D3 d15D3 d16D3,160 352 630 1010 353 1733 190 274 374 394,2,2026-10-11T16:18:40+00:00
+spec-d4d5,spec-d4d5,Python island,1,stopped,29,29,d4D5,162,1,2026-10-11T16:18:40+00:00
+spec-d5d5,spec-d5d5,Python island,1,stopped,8,39,d5D5,336,0,2026-10-11T16:18:40+00:00
+spec-d6d5,spec-d6d5,Python island,1,running,1,27,d6D5,640,0,2026-10-11T16:18:40+00:00
+spec-d7d5,spec-d7d5,Python island,1,running,5,38,d7D5,1140,1,2026-10-11T16:18:40+00:00
+spec-d7d4,spec-d7d4,Python island,1,stopped,31,30,d7D4,359,1,2026-10-11T16:18:40+00:00
+spec-d11d4,spec-d11d4,Python island,1,stopped,6,37,d11D4,1774,1,2026-10-11T16:18:40+00:00
+spec-d3fam,spec-d3fam,Python island,1,running,1,21,d11D3 d13D3 d15D3,190 274 374,0,2026-10-11T16:18:40+00:00
+spec-d16d3,spec-d16d3,Python island,1,running,6,23,d16D3,394,0,2026-10-11T16:18:40+00:00
+c-d4d5,c-d4d5,C island,1,running,8,36,d4D5,162,1,2026-10-11T16:18:40+00:00
+c-d5d5,c-d5d5,C island,1,stopped,3,32,d5D5,352,1,2026-10-11T16:18:40+00:00
+c-d6d5,c-d6d5,C island,1,stopped,2,31,d6D5,684,0,2026-10-11T16:18:40+00:00
+c-d7d5,c-d7d5,C island,1,running,1,40,d7D5,1120,0,2026-10-11T16:18:40+00:00
+c-d7d4,c-d7d4,C island,1,stopped,32,24,d7D4,358,1,2026-10-11T16:18:40+00:00
+c-d11d4,c-d11d4,C island,1,stopped,4,33,d11D4,1732,0,2026-10-11T16:18:40+00:00
+c-d3fam,c-d3fam,C island,1,running,19,2,d11D3 d13D3 d15D3,192 274 374,1,2026-10-11T16:18:40+00:00
+c-d16d3,c-d16d3,C island,1,running,2,30,d16D3,394,0,2026-10-11T16:18:40+00:00
+island-1-w2,island-1,Generalist island,2,running,23,13,d4D5 d5D5 d6D5 d7D5 d7D4 d11D4 d11D3 d13D3 d15D3 d16D3,162 344 582 994 353 1723 190 274 374 394,3,2026-10-11T16:18:40+00:00
+spec-d4d5-w2,spec-d4d5,Python island,2,stopped,6,18,d4D5,162,1,2026-10-11T16:18:40+00:00
+spec-d5d5-w2,spec-d5d5,Python island,2,stopped,3,27,d5D5,336,0,2026-10-11T16:18:40+00:00
+spec-d6d5-w2,spec-d6d5,Python island,2,stopped,1,18,d6D5,648,0,2026-10-11T16:18:40+00:00
+spec-d7d5-w2,spec-d7d5,Python island,2,stopped,4,32,d7D5,1116,0,2026-10-11T16:18:40+00:00
+spec-d7d4-w2,spec-d7d4,Python island,2,stopped,29,20,d7D4,359,1,2026-10-11T16:18:40+00:00
+spec-d11d4-w2,spec-d11d4,Python island,2,running,17,27,d11D4,1774,1,2026-10-11T16:18:40+00:00
+spec-d3fam-w2,spec-d3fam,Python island,2,running,2,13,d11D3 d13D3 d15D3,192 274 374,1,2026-10-11T16:18:40+00:00
+spec-d16d3-w2,spec-d16d3,Python island,2,running,6,20,d16D3,394,0,2026-10-11T16:18:40+00:00
+c-d4d5-w2,c-d4d5,C island,2,stopped,6,19,d4D5,162,1,2026-10-11T16:18:40+00:00
+c-d5d5-w2,c-d5d5,C island,2,stopped,37,23,d5D5,344,1,2026-10-11T16:18:40+00:00
+c-d6d5-w2,c-d6d5,C island,2,running,9,22,d6D5,684,0,2026-10-11T16:18:40+00:00
+c-d7d5-w2,c-d7d5,C island,2,stopped,10,24,d7D5,1100,0,2026-10-11T16:18:40+00:00
+c-d7d4-w2,c-d7d4,C island,2,running,5,14,d7D4,357,1,2026-10-11T16:18:40+00:00
+c-d11d4-w2,c-d11d4,C island,2,stopped,6,24,d11D4,1732,0,2026-10-11T16:18:40+00:00
+c-d3fam-w2,c-d3fam,C island,2,running,5,14,d11D3 d13D3 d15D3,192 276 376,3,2026-10-11T16:18:40+00:00
+c-d16d3-w2,c-d16d3,C island,2,stopped,5,20,d16D3,394,0,2026-10-11T16:18:40+00:00
+island-1-w3,island-1,Generalist island,3,running,5,9,d4D5 d5D5 d6D5 d7D5 d7D4 d11D4 d11D3 d13D3 d15D3 d16D3,160 344 570 930 341 1683 190 274 374 394,1,2026-10-11T16:18:40+00:00
+spec-d4d5-w3,spec-d4d5,Python island,3,running,5,13,d4D5,162,1,2026-10-11T16:18:40+00:00
+spec-d5d5-w3,spec-d5d5,Python island,3,stopped,11,8,d5D5,336,0,2026-10-11T16:18:40+00:00
+spec-d6d5-w3,spec-d6d5,Python island,3,running,4,10,d6D5,624,0,2026-10-11T16:18:40+00:00
+spec-d7d5-w3,spec-d7d5,Python island,3,stopped,10,7,d7D5,1140,1,2026-10-11T16:18:40+00:00
+spec-d7d4-w3,spec-d7d4,Python island,3,stopped,1,7,d7D4,358,1,2026-10-11T16:18:40+00:00
+spec-d11d4-w3,spec-d11d4,Python island,3,stopped,3,8,d11D4,1774,1,2026-10-11T16:18:40+00:00
+spec-d3fam-w3,spec-d3fam,Python island,3,running,3,3,d11D3 d13D3 d15D3,190 274 374,0,2026-10-11T16:18:40+00:00
+spec-d16d3-w3,spec-d16d3,Python island,3,running,10,3,d16D3,394,0,2026-10-11T16:18:40+00:00
+c-d4d5-w3,c-d4d5,C island,3,stopped,3,7,d4D5,162,1,2026-10-11T16:18:40+00:00
+c-d5d5-w3,c-d5d5,C island,3,stopped,6,18,d5D5,354,1,2026-10-11T16:18:40+00:00
+c-d6d5-w3,c-d6d5,C island,3,stopped,23,1,d6D5,684,0,2026-10-11T16:18:40+00:00
+c-d7d5-w3,c-d7d5,C island,3,stopped,30,1,d7D5,1120,0,2026-10-11T16:18:40+00:00
+c-d7d4-w3,c-d7d4,C island,3,running,5,13,d7D4,358,1,2026-10-11T16:18:40+00:00
+c-d11d4-w3,c-d11d4,C island,3,running,5,3,d11D4,1732,0,2026-10-11T16:18:40+00:00
+c-d3fam-w3,c-d3fam,C island,3,running,21,8,d11D3 d13D3 d15D3,192 276 374,2,2026-10-11T16:18:40+00:00
+c-d16d3-w3,c-d16d3,C island,3,quiet,555,12,d16D3,394,0,2026-10-11T16:18:40+00:00
+island-1-w3b,island-1,Generalist island,3,stopped,542,7,d4D5 d5D5 d6D5 d7D5 d7D4 d11D4 d11D3 d13D3 d15D3 d16D3,160 344 602 928 346 1718 190 274 374 394,1,2026-10-11T16:18:40+00:00
+spec-d4d5-w3b,spec-d4d5,Python island,3,stopped,547,9,d4D5,162,1,2026-10-11T16:18:40+00:00
+spec-d5d5-w3b,spec-d5d5,Python island,3,stopped,556,6,d5D5,336,0,2026-10-11T16:18:40+00:00
+spec-d6d5-w3b,spec-d6d5,Python island,3,stopped,546,9,d6D5,624,0,2026-10-11T16:18:40+00:00
+spec-d7d5-w3b,spec-d7d5,Python island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+spec-d7d4-w3b,spec-d7d4,Python island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+spec-d11d4-w3b,spec-d11d4,Python island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+spec-d3fam-w3b,spec-d3fam,Python island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+spec-d16d3-w3b,spec-d16d3,Python island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+c-d4d5-w3b,c-d4d5,C island,3,quiet,558,16,d4D5,162,1,2026-10-11T16:18:40+00:00
+c-d5d5-w3b,c-d5d5,C island,3,quiet,553,13,d5D5,344,1,2026-10-11T16:18:40+00:00
+c-d6d5-w3b,c-d6d5,C island,3,stopped,724,1,d6D5,684,0,2026-10-11T16:18:40+00:00
+c-d7d5-w3b,c-d7d5,C island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+c-d7d4-w3b,c-d7d4,C island,3,booting,,,,,0,2026-10-11T16:18:40+00:00
+c-d11d4-w3b,c-d11d4,C island,3,stopped,553,14,d11D4,1732,0,2026-10-11T16:18:40+00:00
+c-d3fam-w3b,c-d3fam,C island,3,stopped,544,8,d11D3 d13D3 d15D3,192 276 374,2,2026-10-11T16:18:40+00:00
+c-d16d3-w3b,c-d16d3,C island,3,stopped,550,13,d16D3,394,0,2026-10-11T16:18:40+00:00
