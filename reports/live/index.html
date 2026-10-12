@@ -76,6 +76,7 @@ button { font: inherit; color: inherit; }
 .chip .v { font-family: var(--font-display); font-size: 25px; line-height: 1; }
 .chip .g { font-family: var(--font-mono); font-size: 11px; color: var(--ok); }
 .chip .c { font-size: 11px; color: #c9c6bd; font-style: italic; white-space: nowrap; }
+.chip .y { font-family: var(--font-mono); font-size: 10.5px; color: var(--brass); white-space: nowrap; }
 
 .readout { position: absolute; right: var(--gutter); top: clamp(20px, 3.5vw, 56px); width: 290px; padding: 16px 16px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(13,18,31,.8); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 10px; }
 .readout h2 { font-size: 13px; font-weight: 500; color: var(--fg); }
@@ -526,6 +527,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   const CITE = { d4D5: 'Hafner & Loz · by 2009', d5D5: 'Loz et al. · by 2009', d7D5: 'Loz et al. · by 2009',
     d7D4: 'Delorme & Farhi 1984', d11D4: 'Delorme & Farhi 1984', d11D3: 'Feria-Purón et al. 2013',
     d13D3: 'Araujo-Pardo & López 2022', d15D3: 'Araujo-Pardo & López 2022' };
+  const STOOD = { d4D5: '17+', d5D5: '17+', d7D5: '17+', d7D4: '42', d11D4: '42', d11D3: '13', d13D3: '4', d15D3: '4' };
   const CELLS = [
     ['d4D5', 'Δ4 · D5'], ['d5D5', 'Δ5 · D5'], ['d6D5', 'Δ6 · D5'], ['d7D5', 'Δ7 · D5'], ['d7D4', 'Δ7 · D4'],
     ['d11D4', 'Δ11 · D4'], ['d11D3', 'Δ11 · D3'], ['d13D3', 'Δ13 · D3'], ['d15D3', 'Δ15 · D3'], ['d16D3', 'Δ16 · D3'],
@@ -610,7 +612,8 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       const v = document.createElement('span'); v.className = 'v'; v.textContent = fmt(r.ours);
       const g = document.createElement('span'); g.className = 'g'; g.textContent = 'was ' + fmt(r.table) + ' · +' + r.gain;
       const c = document.createElement('span'); c.className = 'c'; c.textContent = CITE[r.case] || '';
-      b.append(k, v, g, c); b.addEventListener('click', () => { select(r.case); HF.userPicked && HF.userPicked(); });
+      const y = document.createElement('span'); y.className = 'y'; y.textContent = STOOD[r.case] ? 'stood ' + STOOD[r.case] + ' years' : '';
+      b.append(k, v, g, c, y); b.addEventListener('click', () => { select(r.case); HF.userPicked && HF.userPicked(); });
       box.append(b);
     });
     if (!selected && recs.length) select((recs.find((r) => r.case === 'd7D5') || recs[0]).case);
