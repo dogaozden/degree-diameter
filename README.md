@@ -132,3 +132,9 @@ Island runs in the cloud pushed their logs to their own branches.
 
 Doğa Özden, with Claude Code (Claude Opus 5.5 coordinating; Claude Haiku 5.5 searching and writing Lean).
 Prior work: the table's authors listed above, and the Combinatorics Wiki's maintainers.
+
+## License
+
+Code (`evolve/`, `problems/`, `scripts/`, `tests/`, `lean/`) is under the [MIT License](LICENSE). The record
+graphs, run logs, research write-ups, pages and documents are under
+[CC BY 4.0](LICENSE-DATA): reuse them freely, with credit.
