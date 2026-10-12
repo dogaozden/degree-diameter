@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Haiku Frontier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +59,8 @@ button { font: inherit; color: inherit; }
 .hero-copy { position: absolute; left: var(--gutter); top: clamp(20px, 3.5vw, 56px); max-width: min(560px, 80vw); display: flex; flex-direction: column; gap: 14px; pointer-events: none; }
 .hero-copy h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6.4vw, 84px); line-height: .98; letter-spacing: -.01em; text-wrap: balance; text-shadow: 0 2px 30px rgba(9,12,21,.9); }
 .hero-copy h1 em { font-style: italic; color: var(--brass); }
+.hero-copy .thm-pill { pointer-events: auto; align-self: flex-start; padding: 7px 13px; border: 1px solid rgba(240,179,91,.55); border-radius: 999px; background: rgba(40,32,20,.7); backdrop-filter: blur(6px); color: var(--brass); font-size: 13.5px; text-decoration: none; }
+.hero-copy .thm-pill:hover { background: rgba(60,46,24,.85); }
 .hero-copy .evo-link { pointer-events: auto; color: inherit; text-decoration: underline; text-decoration-color: var(--brass); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 .hero-copy .lede { color: #c9c6bd; font-size: 15.5px; max-width: 44ch; text-shadow: 0 1px 14px rgba(9,12,21,.95); }
 .live-pill { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 10px 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: rgba(15,20,34,.7); backdrop-filter: blur(6px); }
@@ -202,6 +205,24 @@ main { display: flex; flex-direction: column; gap: clamp(56px, 8vw, 96px); paddi
 .evo-more h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin-bottom: 6px; }
 .evo-more p { color: #c3c1b9; font-size: 14px; }
 @media (max-width: 860px) { .evo { grid-template-columns: 1fr; } }
+/* the +2 theorem */
+.thm { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+.thm .panel { display: flex; flex-direction: column; gap: 12px; }
+.thm-main { border-color: rgba(240,179,91,.45); box-shadow: 0 0 0 1px rgba(240,179,91,.12), 0 20px 60px -30px rgba(240,179,91,.35); }
+.thm-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+.thm-text { font-family: var(--font-display); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.2; color: var(--fg); text-wrap: pretty; }
+.thm-text b { color: var(--brass); font-weight: 400; }
+.thm-plain { color: #c3c1b9; font-size: 14.5px; max-width: 62ch; }
+.lean-stmt { line-height: 1.7; }
+.lean-k { color: var(--brass); }
+.thm-axioms { font-size: 12.5px; color: var(--ok); }
+.thm-path { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 9px; font-size: 14px; color: #d6d4cc; }
+.thm-path b { color: var(--fg); font-weight: 600; }
+.thm-path li::marker { font-family: var(--font-mono); color: var(--brass); }
+.thm-table td, .thm-table th { padding: 6px 10px 6px 0; font-size: 12.5px; }
+.thm-table tr.hit td { color: var(--brass); }
+.thm-note { font-size: 12.5px; color: var(--muted); }
+@media (max-width: 860px) { .thm { grid-template-columns: 1fr; } }
 .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
 .rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .rule svg { width: 100%; max-height: 150px; height: auto; display: block; }
@@ -246,6 +267,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
     <span class="live-pill off" id="livepill"><span class="live-dot"></span><span class="mono" id="livetext" style="font-size:11.5px">Connecting…</span></span>
     <h1 id="headline"><em>Records</em> broken by Haikus</h1>
     <p class="lede">Found by an <a class="evo-link" href="https://arxiv.org/abs/2506.13131" target="_blank" rel="noopener" title="AlphaEvolve: A coding agent for scientific and algorithmic discovery (Google DeepMind, 2025)">evolutionary search</a>: 384 Haikus wrote over 32,000 programs, and only the best survived to be rewritten. Each glowing point is a vertex of a record graph nobody had built before. Click any vertex: the graph folds into rings by distance, and every vertex lands within <span id="lede-d">a few</span> steps.</p>
+    <a class="thm-pill" href="#theorem-sec">+ a new theorem, proved in Lean <span aria-hidden="true">→</span></a>
   </div>
   <div class="picker" id="picker" role="group" aria-label="Choose a record graph"></div>
 </section>
@@ -313,6 +335,48 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       <article class="cite"><div class="cite-top"><span class="mono">Δ15 · D3</span><span class="stood">stood 4 years</span></div><p class="cite-num"><span class="old">374</span> <span class="arrow">→</span> <b>376</b></p><p class="cite-who">Araujo-Pardo &amp; López <span class="yr">2022</span></p><p class="cite-ref">Same paper, same family of graphs. All three of their cells grew by exactly 2. <a href="https://doi.org/10.1007/s00373-022-02500-3" target="_blank" rel="noopener">source</a></p></article>
     </div>
     <p class="cite-foot">Years are when the record was published. Where the table cites no paper, the year is the earliest table we found it in. The table is the Combinatorics Wiki’s <a href="http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs" target="_blank" rel="noopener">bipartite degree–diameter table</a>; a literature search found nothing larger published for any of these eight cells.</p>
+  </section>
+
+  <section id="theorem-sec">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">A new theorem · proved in Lean</span>
+        <h2>The +2 theorem</h2>
+        <p>Three of our records grew by exactly 2 vertices, in the same way. That was not luck. The pattern works for a whole infinite family of graphs, and we proved it.</p>
+      </div>
+    </div>
+    <div class="thm">
+      <div class="panel thm-main">
+        <p class="thm-label">Theorem</p>
+        <p class="thm-text">For every finite projective plane of order <i>q</i> ≥ 4, there is a bipartite graph with <b>2(<i>q</i>² + <i>q</i> + 6)</b> vertices, maximum degree <i>q</i> + 2 and diameter 3.</p>
+        <p class="thm-plain">In plain words: Araujo-Pardo and López (2022) built graphs of size 2(<i>q</i>² + <i>q</i> + 5) and ended their paper asking readers to improve the construction. This beats it by 2, for every <i>q</i>, including planes nobody has written down. The trick is a fourth “hat”: one more copy of a point and of a line, wired in by rotating three connections in a small cycle.</p>
+        <div class="formula lean-stmt"><span class="lean-k">theorem</span> plus2_of_order … (h : 4 ≤ ProjectivePlane.order P L) :<br>&nbsp;&nbsp;∃ G : SimpleGraph (Fin (2 * (q ^ 2 + q + 6))),<br>&nbsp;&nbsp;&nbsp;&nbsp;IsBipartiteDegDiam G (q + 2) 3</div>
+        <p class="thm-axioms">Checked by Lean’s kernel. Depends only on the three standard axioms (propext, Classical.choice, Quot.sound): no gaps, no shortcuts.</p>
+      </div>
+      <div class="panel thm-side">
+        <p class="thm-label">How it was found</p>
+        <ol class="thm-path">
+          <li><b>Haikus</b>, by evolutionary search, found graphs of 192, 276 and 376 vertices: each 2 above the 2022 record.</li>
+          <li><b>Claude Opus</b> compared them with the 2022 construction, saw the shared pattern, and wrote a proof that it works for every plane.</li>
+          <li><b>A Haiku</b> then proved it again in Lean, the proof checker mathematicians use, so no one has to trust the prose.</li>
+        </ol>
+        <p class="thm-label" style="margin-top:6px">What it gives</p>
+        <div class="scroll"><table class="ledger thm-table">
+          <thead><tr><th>q</th><th>Δ</th><th>2022</th><th>+2</th><th>table</th></tr></thead>
+          <tbody>
+          <tr><td class="n">4</td><td class="n">6</td><td class="n">50</td><td class="n"><b>52</b></td><td>62 (perfect)</td></tr>
+          <tr><td class="n">5</td><td class="n">7</td><td class="n">70</td><td class="n"><b>72</b></td><td>80</td></tr>
+          <tr><td class="n">7</td><td class="n">9</td><td class="n">122</td><td class="n"><b>124</b></td><td>146 (perfect)</td></tr>
+          <tr><td class="n">8</td><td class="n">10</td><td class="n">154</td><td class="n"><b>156</b></td><td>182 (perfect)</td></tr>
+          <tr class="hit"><td class="n">9</td><td class="n">11</td><td class="n">190</td><td class="n"><b>192</b></td><td>190 → now our record</td></tr>
+          <tr class="hit"><td class="n">11</td><td class="n">13</td><td class="n">274</td><td class="n"><b>276</b></td><td>274 → now our record</td></tr>
+          <tr class="hit"><td class="n">13</td><td class="n">15</td><td class="n">374</td><td class="n"><b>376</b></td><td>374 → now our record</td></tr>
+          <tr><td class="n">16</td><td class="n">18</td><td class="n">554</td><td class="n"><b>556</b></td><td>not in table</td></tr>
+          </tbody>
+        </table></div>
+        <p class="thm-note">Where a perfect (Moore) graph exists, the table is already higher, so the theorem matters most where none can exist. In the table’s range that is exactly our three records.</p>
+      </div>
+    </div>
   </section>
 
   <section id="evolve-sec">
@@ -786,7 +850,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
   let rz = null;
   window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (now) { renderClimb(); } }, 150); });
   setTimeout(() => { if (!HF.ready3d && !HF.failed3d) { HF.failed3d = true; } }, 15000);
-  // a link ending in #<section id> (explain, records-sec, evolve-sec, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
+  // a link ending in #<section id> (explain, records-sec, theorem-sec, evolve-sec, fleet-sec, climb-sec, ceil-sec, proof-sec, guide) opens at that section
   const jump = () => { const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)); if (t) window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY - 12); };
   window.addEventListener('hashchange', jump);
   // In-page links scroll directly (the viewer frame does not always scroll on a hash change by itself).
