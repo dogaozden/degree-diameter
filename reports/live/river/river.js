@@ -6,7 +6,7 @@
   const script = document.currentScript;
   // data-beds is a folder relative to the page (like any src attribute), not to this script.
   const base = new URL(script?.dataset.beds || 'river/', document.baseURI);
-  const STORE = 'haiku-frontier-river-v1';
+  const STORE = 'haiku-frontier-river-v2';
   const BEDS = { original: 'Original', slate: 'Slate', shingle: 'Shingle', sandbar: 'Sandbar' };
   // Same values the live site launches with (RIVER_LAUNCH.water), plus the page-tint knob that only exists here.
   const DEFAULTS = { speed: 1, direction: 1, turbulence: 1.2, refraction: 1, rainRate: 0.7, rainStrength: 0.45, pointerStrength: 0.5, brightness: 1.35, tint: 0.78, bed: 'original' };

@@ -34,7 +34,7 @@ body { background: transparent; margin: 0; }
 #river { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; opacity: 0; transition: opacity 1.2s ease; pointer-events: none; }
 #river.ready { opacity: 1; }
 /* Without WebGL the riverbed photo still shows, darkened, behind the page. */
-.river-static body { background: linear-gradient(rgb(9 12 21 / .55), rgb(9 12 21 / .55)), var(--river-bed, none) center / cover fixed; }
+.river-static body { background: linear-gradient(rgb(8 16 22 / .3), rgb(8 16 22 / .3)), var(--river-bed, none) center / cover fixed; }
 .hero, .readout, main, footer { position: relative; z-index: 1; }
 .sec-head h2, .sec-head p, .sec-head .eyebrow, .counter { text-shadow: 0 1px 18px rgb(6 9 16 / .95), 0 0 2px rgb(6 9 16 / .8); }
 footer { text-shadow: 0 1px 10px rgb(6 9 16 / .95); }
