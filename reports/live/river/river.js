@@ -6,11 +6,11 @@
   const script = document.currentScript;
   // data-beds is a folder relative to the page (like any src attribute), not to this script.
   const base = new URL(script?.dataset.beds || 'river/', document.baseURI);
-  const STORE = 'haiku-frontier-river-v2';
+  const STORE = 'haiku-frontier-river-v3';
   const BEDS = { original: 'Original', slate: 'Slate', shingle: 'Shingle', sandbar: 'Sandbar' };
-  // Same values the live site launches with (RIVER_LAUNCH.water), plus the page-tint knob that only exists here.
-  const DEFAULTS = { speed: 1, direction: 1, turbulence: 1.2, refraction: 1, rainRate: 0.7, rainStrength: 0.45, pointerStrength: 0.5, brightness: 1.35, tint: 0.78, bed: 'original' };
-  const BOUNDS = { speed: [0, 3], direction: [-1, 1], turbulence: [0, 2.5], refraction: [0, 2], rainRate: [0, 6], rainStrength: [0, 4], pointerStrength: [0, 4], brightness: [0.5, 1.8], tint: [0.3, 0.97] };
+  // The live site's launch values (RIVER_LAUNCH.water), but darker by default (Doga asked), plus a page-tint knob.
+  const DEFAULTS = { speed: 1, direction: 1, turbulence: 1.2, refraction: 1, rainRate: 0.7, rainStrength: 0.45, pointerStrength: 0.5, brightness: 0.55, tint: 0.78, bed: 'original' };
+  const BOUNDS = { speed: [0, 3], direction: [-1, 1], turbulence: [0, 2.5], refraction: [0, 2], rainRate: [0, 6], rainStrength: [0, 4], pointerStrength: [0, 4], brightness: [0.05, 1.8], tint: [0.3, 0.97] };
   const settings = { ...DEFAULTS };
   function apply(values) {
     for (const [key, value] of Object.entries(values || {})) {
