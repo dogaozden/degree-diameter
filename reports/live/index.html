@@ -349,7 +349,7 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
       <div class="panel thm-main">
         <p class="thm-label">Theorem</p>
         <p class="thm-text">For every finite projective plane of order <i>q</i> ≥ 4, there is a bipartite graph with <b>2(<i>q</i>² + <i>q</i> + 6)</b> vertices, maximum degree <i>q</i> + 2 and diameter 3.</p>
-        <p class="thm-plain">In plain words: Araujo-Pardo and López (2022) built graphs of size 2(<i>q</i>² + <i>q</i> + 5) and ended their paper asking readers to improve the construction. This beats it by 2, for every <i>q</i>, including planes nobody has written down. The trick is a fourth “hat”: one more copy of a point and of a line, wired in by rotating three connections in a small cycle.</p>
+        <p class="thm-plain">Araujo-Pardo and López (2022) built graphs of size 2(<i>q</i>² + <i>q</i> + 5) and ended their paper asking readers to improve the construction. This beats it by 2, for every <i>q</i>, including planes nobody has written down. The trick is a fourth “hat”: one more copy of a point and of a line, wired in by rotating three connections in a small cycle.</p>
         <div class="formula lean-stmt"><span class="lean-k">theorem</span> plus2_of_order … (h : 4 ≤ ProjectivePlane.order P L) :<br>&nbsp;&nbsp;∃ G : SimpleGraph (Fin (2 * (q ^ 2 + q + 6))),<br>&nbsp;&nbsp;&nbsp;&nbsp;IsBipartiteDegDiam G (q + 2) 3</div>
         <p class="thm-axioms">Checked by Lean’s kernel. Depends only on the three standard axioms (propext, Classical.choice, Quot.sound): no gaps, no shortcuts.</p>
       </div>
@@ -781,11 +781,21 @@ footer { color: var(--faint); font-size: 12.5px; padding-block: 0 48px; }
     const phases = (now.milestones || []).filter((d) => d.on_chart === 'yes').map((d) => ({ label: d.label, t: new Date(d.time) })).filter((d) => d.t >= start && d.t <= end).sort((a, b) => a.t - b.t);
     const PH = { Pilot: 'Mac pilot', 'Run 2': 'Mac run 2', Cloud: '17 islands', 'C islands': 'C islands', 'Fleet doubled': '34 islands', 'Doubled again': '~50 islands' };
     const bandY = stripTop + stripH + 10, tones = ['#2a3350', '#33405f', '#3f3a2c', '#5a4a26', '#6a5426', '#7a5d24'];
+    // Labels go under their band; when a label would run into the one before it, it drops to a second row
+    // (with a short tick up to its band), so short neighbouring phases never print on top of each other.
+    const rowEnd = [-1e9, -1e9]; let rows = 1;
     phases.forEach((ph, i) => {
       const x0 = x(ph.t), x1 = i + 1 < phases.length ? x(phases[i + 1].t) : W - m.r;
       svg.append('rect').attr('x', x0).attr('width', Math.max(1, x1 - x0 - 2)).attr('y', bandY).attr('height', 8).attr('rx', 4).attr('fill', tones[i % tones.length]);
-      if (x1 - x0 > 52) svg.append('text').attr('x', x0 + 2).attr('y', bandY + 22).attr('fill', '#9aa1b5').text(PH[ph.label] || ph.label);
+      const label = svg.append('text').attr('x', x0 + 2).attr('fill', '#9aa1b5').text(PH[ph.label] || ph.label);
+      const wid = label.node().getComputedTextLength ? label.node().getComputedTextLength() : 70;
+      const lx = Math.min(x0 + 2, W - m.r - wid);
+      const row = lx >= rowEnd[0] + 8 ? 0 : (lx >= rowEnd[1] + 8 ? 1 : 0);
+      label.attr('x', lx).attr('y', bandY + 22 + row * 15);
+      if (row === 1) { rows = 2; svg.append('line').attr('x1', x0 + 4).attr('x2', x0 + 4).attr('y1', bandY + 10).attr('y2', bandY + 27).attr('stroke', '#3a4566'); }
+      rowEnd[row] = lx + wid;
     });
+    if (rows === 2) svg.attr('viewBox', `0 0 ${W} ${H + 15}`);
     const xa = svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).ticks(narrow ? 4 : 8).tickFormat(hm).tickSize(0).tickPadding(6));
     xa.select('.domain').attr('stroke', '#2a3350');
     if (cursor) svg.append('line').attr('x1', x(cut)).attr('x2', x(cut)).attr('y1', m.t).attr('y2', bandY + 8).attr('stroke', '#f0b35b').attr('opacity', .5);
