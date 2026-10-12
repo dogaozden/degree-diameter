@@ -49,7 +49,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; height: clamp(520px, 50vw, 820px); overflow: hidden; background: radial-gradient(90% 80% at 18% 22%, rgb(7 10 18 / .62) 0%, transparent 60%); }
-.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab;
+/* The 3D view stops above the record chips, so the chips never cover the graph. */
+.hero canvas { position: absolute; inset: 0 0 112px 0; width: 100%; height: calc(100% - 112px); display: block; touch-action: none; cursor: grab;
   /* Fade the graph out before the hero's edges, so it never ends in a hard line. */
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 80%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 80%, transparent 100%); }
