@@ -11,36 +11,36 @@ variable {P L : Type*} [Membership P L] [ProjectivePlane P L]
 theorem exists_point_ne [Finite P] [Finite L] (l : L) (a b : P) :
     ∃ p, p ∈ l ∧ p ≠ a ∧ p ≠ b := by
   by_contra h
-  push_neg at h
+  push Not at h
   have hsub : {p : P | p ∈ l} ⊆ ({a, b} : Set P) := by
     intro p hp
     by_cases hpa : p = a
     · exact Or.inl hpa
     · exact Or.inr (h p hp hpa)
-  have h2 := two_lt_pointCount (P := P) (L := L) l
+  have h2 := ProjectivePlane.two_lt_pointCount (P := P) (L := L) l
   have h3 : ({p : P | p ∈ l}).ncard ≤ ({a, b} : Set P).ncard :=
     Set.ncard_le_ncard hsub (Set.toFinite _)
   have h4 : ({a, b} : Set P).ncard ≤ 2 :=
     (Set.ncard_insert_le a {b}).trans (by simp)
-  have h5 : pointCount P l = ({p : P | p ∈ l}).ncard := Set.Nat.card_coe_set_eq _
+  have h5 : pointCount P l = ({p : P | p ∈ l}).ncard := Nat.card_coe_set_eq _
   omega
 
 /-- A point has a line other than two given lines (it has `q + 1 ≥ 3` lines). -/
 theorem exists_line_ne [Finite P] [Finite L] (p : P) (a b : L) :
     ∃ l, p ∈ l ∧ l ≠ a ∧ l ≠ b := by
   by_contra h
-  push_neg at h
+  push Not at h
   have hsub : {l : L | p ∈ l} ⊆ ({a, b} : Set L) := by
     intro l hl
     by_cases hla : l = a
     · exact Or.inl hla
     · exact Or.inr (h l hl hla)
-  have h2 := two_lt_lineCount (P := P) (L := L) p
+  have h2 := ProjectivePlane.two_lt_lineCount (P := P) (L := L) p
   have h3 : ({l : L | p ∈ l}).ncard ≤ ({a, b} : Set L).ncard :=
     Set.ncard_le_ncard hsub (Set.toFinite _)
   have h4 : ({a, b} : Set L).ncard ≤ 2 :=
     (Set.ncard_insert_le a {b}).trans (by simp)
-  have h5 : lineCount L p = ({l : L | p ∈ l}).ncard := Set.Nat.card_coe_set_eq _
+  have h5 : lineCount L p = ({l : L | p ∈ l}).ncard := Nat.card_coe_set_eq _
   omega
 
 namespace Frame

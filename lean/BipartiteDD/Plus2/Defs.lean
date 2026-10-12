@@ -6,15 +6,33 @@ open Configuration
 
 /-- The four hat rows 0, 1, a, c. -/
 inductive Row | r0 | r1 | ra | rc
-  deriving DecidableEq, Fintype
+  deriving DecidableEq
+
+instance : Fintype Row := ⟨{.r0, .r1, .ra, .rc}, fun x => by cases x <;> decide⟩
 
 /-- The five new points: Q and the hat points H s. -/
 inductive NewPt | Q | H (s : Row)
-  deriving DecidableEq, Fintype
+  deriving DecidableEq
+
+/-- `NewPt` is `Option Row` with `none ↦ Q` and `some s ↦ H s`. -/
+instance : Fintype NewPt :=
+  Fintype.ofEquiv (Option Row)
+    { toFun := fun o => match o with | none => .Q | some s => .H s
+      invFun := fun v => match v with | .Q => none | .H s => some s
+      left_inv := fun o => by cases o <;> rfl
+      right_inv := fun v => by cases v <;> rfl }
 
 /-- The five new lines: M and the hat lines K s. -/
 inductive NewLn | M | K (s : Row)
-  deriving DecidableEq, Fintype
+  deriving DecidableEq
+
+/-- `NewLn` is `Option Row` with `none ↦ M` and `some s ↦ K s`. -/
+instance : Fintype NewLn :=
+  Fintype.ofEquiv (Option Row)
+    { toFun := fun o => match o with | none => .M | some s => .K s
+      invFun := fun v => match v with | .M => none | .K s => some s
+      left_inv := fun o => by cases o <;> rfl
+      right_inv := fun v => by cases v <;> rfl }
 
 /-- The 3-cycle used twice: X t goes on line AX s, and hat point H t goes on hat line K s,
 exactly for (t, s) = (1, 0), (c, 1), (0, c). -/
@@ -62,9 +80,7 @@ def Frame.graph (F : Frame P L) : SimpleGraph ((P ⊕ NewPt) ⊕ (L ⊕ NewLn)) 
     | .inl p, .inr l => F.inc p l
     | .inr l, .inl p => F.inc p l
     | _, _ => False
-  symm := by
-    intro u v h
-    rcases u with p | l <;> rcases v with q | m <;> first | exact h | exact h.elim
-  loopless := by
-    intro u h
-    rcases u with p | l <;> exact h
+  symm := ⟨fun u v h => by
+    rcases u with p | l <;> rcases v with q | m <;> first | exact h | exact (show False from h).elim⟩
+  loopless := ⟨fun u h => by
+    rcases u with p | l <;> exact h⟩

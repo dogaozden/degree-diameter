@@ -6,7 +6,7 @@ import BipartiteDD.Plus2.Basic
 namespace BipartiteDD.Plus2
 open Configuration
 
-variable {P L : Type*} [Membership P L] [ProjectivePlane P L]
+variable {P L : Type*} [Membership P L] [ProjectivePlane P L] [Finite P] [Finite L]
 
 namespace Frame
 variable (F : Frame P L)
@@ -63,11 +63,11 @@ theorem pp (u v : P) (huv : u ≠ v) : ∃ l : L ⊕ NewLn, F.inc (.inl u) l ∧
 theorem Q_pt (u : P) : ∃ l : L ⊕ NewLn, F.inc (.inr .Q) l ∧ F.inc (.inl u) l := by
   by_cases hA : u = F.A
   · subst hA
-    have hP : u ≠ F.P0 := fun h => F.A_not_mem (h ▸ F.P0_mem)
+    have hP : F.A ≠ F.P0 := fun h => F.A_not_mem (h ▸ F.P0_mem)
     refine ⟨.inl (HasLines.mkLine hP), (F.inc_Ql _).2 ⟨(HasLines.mkLine_ax hP).1,
-      ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .r0 (F.X_ne_P0 .r0).symm,
-      ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .r1 (F.X_ne_P0 .r1).symm,
-      ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .rc (F.X_ne_P0 .rc).symm⟩,
+      F.ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .r0 (F.X_ne_P0 .r0).symm,
+      F.ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .r1 (F.X_ne_P0 .r1).symm,
+      F.ne_AX_of_mem F.P0_mem (HasLines.mkLine_ax hP).2 .rc (F.X_ne_P0 .rc).symm⟩,
       F.inc_pl_of (HasLines.mkLine_ax hP).1 (fun s hs _ => F.A_ne_X s hs)⟩
   · have huA : F.A ≠ u := fun h => hA h.symm
     obtain ⟨m, hAm, hum⟩ : ∃ m : L, F.A ∈ m ∧ u ∈ m :=
@@ -85,8 +85,8 @@ theorem Q_pt (u : P) : ∃ l : L ⊕ NewLn, F.inc (.inr .Q) l ∧ F.inc (.inl u)
     cases s
     · exact h0
     · exact h1
-    · exact h2
     · exact absurd hs hua
+    · exact h2
 
 /-- A common line of `H s` and `X s`. -/
 theorem H_gen (s : Row) : ∃ l : L ⊕ NewLn, F.inc (.inr (.H s)) l ∧ F.inc (.inl (F.X s)) l := by
@@ -142,7 +142,7 @@ theorem H_pt (s : Row) (u : P) : ∃ l : L ⊕ NewLn, F.inc (.inr (.H s)) l ∧ 
         exact F.H_gen t
       · obtain ⟨l, h1, h2⟩ := F.H_X s t (fun h => hts h.symm)
         exact ⟨l, h1, h2⟩
-    · push_neg at hX
+    · push Not at hX
       exact ⟨.inr .M, F.inc_HM s, (F.inc_pM u).2 ⟨hu, hX .r0, hX .r1, hX .rc⟩⟩
   · have hXu : F.X s ≠ u := fun h => hu (by rw [← h]; exact F.X_mem s)
     obtain ⟨m, hXm, hum⟩ : ∃ m : L, F.X s ∈ m ∧ u ∈ m :=

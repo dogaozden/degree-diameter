@@ -9,7 +9,7 @@ open Configuration
 
 namespace Frame
 
-variable {P L : Type*} [Membership P L] [ProjectivePlane P L]
+variable {P L : Type*} [Membership P L] [ProjectivePlane P L] [Finite P] [Finite L]
 variable (F : Frame P L)
 
 /-- Adjacent vertices of the incidence graph lie on opposite sides (points and lines). -/
@@ -17,8 +17,8 @@ theorem side_of_adj {u v : (P ⊕ NewPt) ⊕ (L ⊕ NewLn)} (h : F.graph.Adj u v
     u.isLeft ≠ v.isLeft := by
   rcases u with p | l <;> rcases v with q | m
   · exact (show False from h).elim
-  · decide
-  · decide
+  · simp
+  · simp
   · exact (show False from h).elim
 
 /-- The incidence graph is 2-colourable. -/
@@ -66,7 +66,7 @@ theorem degree_comap {W : Type*} (e : ((P ⊕ NewPt) ⊕ (L ⊕ NewLn)) ≃ W) (
 
 /-- The transported incidence graph is bipartite with degree `≤ q + 2` and diameter `≤ 3`. -/
 theorem isBipartiteDegDiam_comap {W : Type*} (e : ((P ⊕ NewPt) ⊕ (L ⊕ NewLn)) ≃ W) :
-    IsBipartiteDegDiam (F.graph.comap e.symm) (order P L + 2) 3 := by
+    IsBipartiteDegDiam (F.graph.comap e.symm) (ProjectivePlane.order P L + 2) 3 := by
   refine ⟨?_, fun w => ?_, F.ediam_le_comap e⟩
   · exact ⟨SimpleGraph.Coloring.mk (fun w => if (e.symm w).isLeft then (0 : Fin 2) else 1) (by
       intro u v h

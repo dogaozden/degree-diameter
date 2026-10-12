@@ -7,7 +7,7 @@ off from the dual dictionary (REPORT.md section 4, Step 3). -/
 namespace BipartiteDD.Plus2
 open Configuration
 
-variable {P L : Type*} [Membership P L] [ProjectivePlane P L]
+variable {P L : Type*} [Membership P L] [ProjectivePlane P L] [Finite P] [Finite L]
 
 /-- In the 3-cycle on `{0, 1, c}`, two distinct rows are related one way or the other. -/
 theorem cyc_cases : ∀ t s : Row, t ≠ .ra → s ≠ .ra → t ≠ s → cyc t s = true ∨ cyc s t = true := by
@@ -36,18 +36,18 @@ theorem pt_AX_pair (s : Row) (m : L) (hm : m ≠ F.AX s) (hXm : F.X s ∈ m) :
 /-- Two distinct plane lines. -/
 theorem pp_lines (l m : L) (hlm : l ≠ m) :
     ∃ p : P ⊕ NewPt, F.inc p (.inl l) ∧ F.inc p (.inl m) := by
-  have h0 := HasPoints.mkPoint_ax hlm
-  by_cases F1 : ∃ s, HasPoints.mkPoint hlm = F.X s ∧ l = F.AX s
+  have h0 := HasPoints.mkPoint_ax (P := P) hlm
+  by_cases F1 : ∃ s, HasPoints.mkPoint (P := P) hlm = F.X s ∧ l = F.AX s
   · obtain ⟨s, hps, hls⟩ := F1
     have hXm : F.X s ∈ m := by rw [← hps]; exact h0.2
     obtain ⟨p, h1, h2⟩ := F.pt_AX_pair s m (fun e => hlm (hls.trans e.symm)) hXm
     exact ⟨p, by rw [hls]; exact h1, h2⟩
-  · by_cases F2 : ∃ s, HasPoints.mkPoint hlm = F.X s ∧ m = F.AX s
+  · by_cases F2 : ∃ s, HasPoints.mkPoint (P := P) hlm = F.X s ∧ m = F.AX s
     · obtain ⟨s, hps, hms⟩ := F2
       have hXl : F.X s ∈ l := by rw [← hps]; exact h0.1
       obtain ⟨p, h1, h2⟩ := F.pt_AX_pair s l (fun e => hlm (e.trans hms.symm)) hXl
       exact ⟨p, h2, by rw [hms]; exact h1⟩
-    · exact ⟨.inl (HasPoints.mkPoint hlm), F.inc_pl_of h0.1 (fun s hs hls => F1 ⟨s, hs, hls⟩),
+    · exact ⟨.inl (HasPoints.mkPoint (P := P) hlm), F.inc_pl_of h0.1 (fun s hs hls => F1 ⟨s, hs, hls⟩),
         F.inc_pl_of h0.2 (fun s hs hms => F2 ⟨s, hs, hms⟩)⟩
 
 /-- A plane line and `M`. -/
@@ -55,14 +55,14 @@ theorem pM (l : L) : ∃ p : P ⊕ NewPt, F.inc p (.inl l) ∧ F.inc p (.inr .M)
   by_cases hl : l = F.ell
   · subst hl
     exact ⟨.inr (.H .ra), (F.inc_Hl _ _).2 (Or.inr ⟨rfl, rfl⟩), F.inc_HM _⟩
-  · have hxl := HasPoints.mkPoint_ax (Ne.symm hl)
-    by_cases hX : ∃ s, HasPoints.mkPoint (Ne.symm hl) = F.X s
+  · have hxl := HasPoints.mkPoint_ax (P := P) (Ne.symm hl)
+    by_cases hX : ∃ s, HasPoints.mkPoint (P := P) (Ne.symm hl) = F.X s
     · obtain ⟨s, hs⟩ := hX
       refine ⟨.inr (.H s), (F.inc_Hl _ _).2 (Or.inl ⟨?_, hl⟩), F.inc_HM s⟩
       rw [← hs]
       exact hxl.2
-    · push_neg at hX
-      refine ⟨.inl (HasPoints.mkPoint (Ne.symm hl)), F.inc_pl_of hxl.2 (fun s hs _ => hX s hs),
+    · push Not at hX
+      refine ⟨.inl (HasPoints.mkPoint (P := P) (Ne.symm hl)), F.inc_pl_of hxl.2 (fun s hs _ => hX s hs),
         (F.inc_pM _).2 ⟨hxl.1, hX .r0, hX .r1, hX .rc⟩⟩
 
 /-- A line through `A` other than `AX t` for `t ∈ {0, 1, c}`, meeting the hat line `K s`. -/
@@ -103,7 +103,7 @@ theorem pK (l : L) (s : Row) : ∃ p : P ⊕ NewPt, F.inc p (.inl l) ∧ F.inc p
       exact F.pK_AX t s ht
   · have hl : l ≠ F.AX s := fun e => hAl (by rw [e]; exact F.A_mem_AX s)
     obtain ⟨p, hpl, hpA⟩ : ∃ p : P, p ∈ l ∧ p ∈ F.AX s :=
-      ⟨_, (HasPoints.mkPoint_ax hl).1, (HasPoints.mkPoint_ax hl).2⟩
+      ⟨_, (HasPoints.mkPoint_ax (P := P) hl).1, (HasPoints.mkPoint_ax (P := P) hl).2⟩
     have hpA' : p ≠ F.A := fun e => hAl (by rw [← e]; exact hpl)
     refine ⟨.inl p, F.inc_pl_of hpl (fun t _ hlt => hAl (by rw [hlt]; exact F.A_mem_AX t)),
       F.inc_pK_of hpA hpA'⟩

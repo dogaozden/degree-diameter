@@ -1,4 +1,5 @@
 import Mathlib.Combinatorics.SimpleGraph.Diam
+import Mathlib.Tactic.NormNum
 
 /-! The generic diameter lemma (REPORT.md section 4, Step 0): in a bipartite graph whose
 left vertices pairwise have a common neighbour and whose right vertices pairwise have a
@@ -20,14 +21,12 @@ theorem ediam_le_three {α β W : Type*} (H : SimpleGraph W) (e : α ⊕ β ≃ 
   have key : ∀ (p : α) (l : β), H.edist (e (.inl p)) (e (.inr l)) ≤ 3 := by
     intro p l
     by_cases h : inc p l
-    · have w := Walk.cons ((hG p l).2 h) Walk.nil
-      exact (edist_le w).trans (by simp)
+    · exact (edist_le (Walk.cons ((hG p l).2 h) Walk.nil)).trans (by norm_num)
     · obtain ⟨q, hq⟩ := hL l
       have hpq : p ≠ q := fun e' => h (e' ▸ hq)
       obtain ⟨m, hpm, hqm⟩ := hPP p q hpq
-      have w := Walk.cons ((hG p m).2 hpm)
-        (Walk.cons ((hG q m).2 hqm).symm (Walk.cons ((hG q l).2 hq) Walk.nil))
-      exact (edist_le w).trans (by simp)
+      exact (edist_le (Walk.cons ((hG p m).2 hpm)
+        (Walk.cons ((hG q m).2 hqm).symm (Walk.cons ((hG q l).2 hq) Walk.nil)))).trans (by norm_num)
   rw [ediam_le_iff]
   intro w₁ w₂
   obtain ⟨u, rfl⟩ := e.surjective w₁
@@ -37,8 +36,8 @@ theorem ediam_le_three {α β W : Type*} (H : SimpleGraph W) (e : α ⊕ β ≃ 
     · subst hpq
       simp
     · obtain ⟨l, h1, h2⟩ := hPP p q hpq
-      have w := Walk.cons ((hG p l).2 h1) (Walk.cons ((hG q l).2 h2).symm Walk.nil)
-      exact (edist_le w).trans (by simp)
+      exact (edist_le (Walk.cons ((hG p l).2 h1)
+        (Walk.cons ((hG q l).2 h2).symm Walk.nil))).trans (by norm_num)
   · exact key p m
   · rw [edist_comm]
     exact key q l
@@ -46,8 +45,7 @@ theorem ediam_le_three {α β W : Type*} (H : SimpleGraph W) (e : α ⊕ β ≃ 
     · subst hlm
       simp
     · obtain ⟨p, h1, h2⟩ := hLL l m hlm
-      have w := Walk.cons ((hG p l).2 h1).symm
-        (Walk.cons ((hG p m).2 h2) Walk.nil)
-      exact (edist_le w).trans (by simp)
+      exact (edist_le (Walk.cons ((hG p l).2 h1).symm
+        (Walk.cons ((hG p m).2 h2) Walk.nil))).trans (by norm_num)
 
 end BipartiteDD.Plus2
