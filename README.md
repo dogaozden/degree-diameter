@@ -4,6 +4,9 @@ Eight new records for the **bipartite degree–diameter problem**, and a new the
 found by an evolutionary search in which Claude Haiku 5.5 agents rewrite graph-building programs. Every record
 graph and the theorem are checked in Lean 4.
 
+**See it:** [dogaozden.com/haiku-frontier](https://dogaozden.com/haiku-frontier/) shows every record graph in 3D,
+how the search found them, and the theorem.
+
 ## The problem
 
 Build the largest graph you can such that
