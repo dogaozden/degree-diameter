@@ -156,6 +156,9 @@ Hats must also sit on one line through one point: two hat points at X and Y woul
   - +4 (5,5,1,1), (4,4,2,2), (6,6,0,0) and (6,5,0,1): UNSAT for q = 5, 7, 9, 11, 13.
   - +4 (5,5,2,0), (3,3,3,3) and (5,4,2,1): UNSAT for q = 5, 7.
 - Caveat: the hats sit at fixed points of ℓ and the bulk is fixed. This rules out the hat family only, not other graphs.
+- Re-run 2026-10-15 for the website's step-through, which offers q = 4, 5, 7, 8, 9, 11 and 13. The model is unchanged; the runs are not saved in the repo.
+  - A fifth hat, (5,5,1,1), is also UNSAT at q = 4 and q = 8 in the default frame. The AL and +2 controls are SAT there, and their decoded graphs are valid.
+  - It is also UNSAT in random frames 1, 2 and 3 at q = 5 and q = 8, with the +2 control SAT and valid in each.
 
 **Looser SAT** (sat_free.py). The new vertices have all incidences free, and so do the plane incidences inside the gadget. It finds AL and +2 for q = 4 and 5. For +3 it did not finish: (6,5) at q=4 ran 150 s and at q=5 ran 500 s, both unresolved. That model has no symmetry breaking.
 
