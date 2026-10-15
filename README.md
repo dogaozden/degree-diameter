@@ -26,15 +26,16 @@ A record is a lower bound: one valid graph that is bigger than the table entry.
 |---|---|---|---|---|
 | (7, 4) | 346 | **359** | Delorme & Farhi, 1984 | 42 years |
 | (11, 4) | 1734 | **1774** | Delorme & Farhi, 1984 | 42 years |
-| (4, 5) | 160 | **162** | Hafner; Loz (computer search), by 2009 | 17+ years |
-| (5, 5) | 336 | **354** | Loz, Pérez-Rosés & Pineda-Villavicencio, by 2009 | 17+ years |
-| (7, 5) | 1134 | **1140** | Loz, Pérez-Rosés & Pineda-Villavicencio, by 2009 | 17+ years |
-| (11, 3) | 190 | **192** | Feria-Purón, Miller & Pineda-Villavicencio, 2013 | 13 years |
-| (13, 3) | 274 | **276** | Araujo-Pardo & López, 2022 | 4 years |
-| (15, 3) | 374 | **376** | Araujo-Pardo & López, 2022 | 4 years |
+| (4, 5) | 160 | **162** | Hafner; Loz, by 2009 | 17+ years |
+| (5, 5) | 336 | **354** | Eyal Loz (project with Pérez-Rosés & Pineda-Villavicencio), by 2009 | 17+ years |
+| (7, 5) | 1134 | **1140** | Eyal Loz (project with Pérez-Rosés & Pineda-Villavicencio), by 2009 | 17+ years |
+| (11, 3) | 190 | **192** | Feria-Purón, Miller & Pineda-Villavicencio, 2013 | 14 years |
+| (13, 3) | 274 | **276** | Araujo-Pardo & López, 2022 | 5+ years |
+| (15, 3) | 374 | **376** | Araujo-Pardo & López, 2022 | 5+ years |
 
 "By 2009" marks entries the table cites no paper for; the year is the earliest table we found them in
-(Eyal Loz's degree–diameter table, January 2009). Full references, upper bounds and the literature check are in
+(Eyal Loz's degree–diameter table, January 2009). Years are journal years; "Stood" counts from when the record
+entered the table (the 2013 and 2022 papers were on arXiv in 2012 and 2020). Full references, upper bounds and the literature check are in
 [`records/bipartite_dd/CANDIDATES.md`](records/bipartite_dd/CANDIDATES.md). Each graph is stored as JSON
 (`[n, [[u, v], ...]]`) next to the program that built it, under `records/bipartite_dd/`.
 
@@ -45,8 +46,8 @@ These are not yet in the published table; the next step is to send them to its m
 > For every finite projective plane of order q ≥ 4 there is a bipartite graph with 2(q² + q + 6) vertices,
 > maximum degree q + 2 and diameter 3.
 
-Araujo-Pardo and López (2022) built such graphs with 2(q² + q + 5) vertices and asked readers to improve the
-construction. The search found graphs exactly 2 larger at q = 9, 11 and 13. All three add a fourth "hat" pair
+Araujo-Pardo and López (2022) built such graphs with 2(q² + q + 5) vertices and listed improving the construction
+as an open problem. The search found graphs exactly 2 larger at q = 9, 11 and 13. All three add a fourth "hat" pair
 (a copy of a point and a copy of a line) and rotate three incidences to make room. The general rule, its proof
 and computer checks are in [`research/plus2/REPORT.md`](research/plus2/REPORT.md); a short note for
 mathematicians is in [`research/plus2/note/`](research/plus2/note/).
@@ -67,7 +68,8 @@ An independent session rebuilt everything from scratch, compiling Mathlib from s
 ([`lean/CHECK.txt`](lean/CHECK.txt)).
 
 Besides Lean, every record graph passes three independent checkers (bitsets, networkx, and a from-scratch
-search from every vertex), and its program rebuilt it on a second machine.
+search from every vertex). Seven of the eight were rebuilt from their own programs on a second machine; the
+1,774 program gives 1,773, so that graph is the island's saved copy.
 
 ## How it was found
 
@@ -82,10 +84,10 @@ The engine in [`evolve/`](evolve/) is an evolutionary program search in the spir
 4. **Check**: a strict checker tests the three rules; a broken graph scores zero, a valid one scores by size.
 5. **Survive**: the best join the population. Repeat.
 
-The search ran as up to 68 separate populations ("islands") in Claude Code cloud sessions, up to 48 at a time
-(384 Haiku agents writing at once), some specialised in one cell and some using a fast C engine. In total Haiku
-wrote about 32,500 programs. Six hours on one laptop produced only ties; once the islands ran in the cloud, seven
-records fell in under three hours. Claude Opus 5.5 coordinated, checked every record, and turned the +2 pattern
+The search ran as separate populations ("islands") in Claude Code cloud sessions: 68 were launched and 61 got a
+machine and ran, up to 48 at a time with eight Haiku calls each, some specialised in one cell and some using a fast
+C engine. In total Haiku wrote about 32,500 programs. Five hours on one laptop matched two records and beat none;
+once the islands ran in the cloud, the first record fell after 31 minutes and six fell within 82. Claude Opus 5.5 coordinated, checked every record, and turned the +2 pattern
 into a proof; Haiku 5.5 agents also wrote the Lean proofs.
 
 ## Reproduce
