@@ -34,17 +34,24 @@ def git(*a):
     return subprocess.run(["git", *a], capture_output=True, text=True, check=True).stdout
 
 
-def freshest(run_id):
-    best = None
+def branches(run_id):
+    """Every remote branch that carries this island's run folder, freshest first."""
+    found = []
     # Cloud sessions name their branches freely, so take any branch whose name contains the id
-    # and that carries this island's run folder.
+    # and that carries this island's run folder. An island can have several: a session that was
+    # restarted pushes to a new branch, and its candidates are not on the old one.
     for line in git("for-each-ref", "--format=%(refname:short) %(committerdate:unix)", "refs/remotes/origin/").splitlines():
         ref, t = line.rsplit(" ", 1)
-        if run_id not in ref or subprocess.run(["git", "cat-file", "-e", f"{ref}:runs/{run_id}/status.md"]).returncode:
+        if run_id not in ref or subprocess.run(["git", "cat-file", "-e", f"{ref}:runs/{run_id}/status.md"], stderr=subprocess.DEVNULL).returncode:
             continue
-        if best is None or int(t) > best[1]:
-            best = (ref, int(t))
-    return best[0] if best else None
+        found.append((int(t), ref))
+    return [ref for _, ref in sorted(found, reverse=True)]
+
+
+def freshest(run_id):
+    """The branch with the island's latest status (used for the live fleet view only)."""
+    found = branches(run_id)
+    return found[0] if found else None
 
 
 def engine(run_id):
@@ -54,14 +61,14 @@ def engine(run_id):
     return {"pilot-001": "Mac pilot", "run-002": "Mac run 2"}[run_id]
 
 
-runs = [("pilot-001", "origin/master"), ("run-002", "origin/master")] + [(r, f) for r in ISLANDS if (f := freshest(r))]
+runs = [("pilot-001", "origin/master"), ("run-002", "origin/master")] + [(r, f) for r in ISLANDS for f in branches(r)]
 # Collect blob ids for every candidate's meta.json and result.json, then read them all through one cat-file process.
 want = []
 for run_id, ref in runs:
     for line in git("ls-tree", "-r", ref, f"runs/{run_id}/candidates/").splitlines():
         meta, path = line.split("\t")
         if path.endswith(("/meta.json", "/result.json")):
-            want.append((run_id, path.split("/")[3], path.rsplit("/", 1)[1], meta.split()[2]))
+            want.append((run_id, ref, path.split("/")[3], path.rsplit("/", 1)[1], meta.split()[2]))
 # Candidate files can be large (meta.json holds the whole Haiku prompt and reply), so keep only the few fields
 # we need, cached by blob id, and stream just the new blobs through one `git cat-file --batch`.
 CACHE = OUT / ".blobcache.json"
@@ -75,9 +82,9 @@ def slim(kind, raw):
     return {"cases": {c: {"valid": v.get("valid"), "value": v.get("value")} for c, v in (d.get("cases") or {}).items()}}
 
 
-new_ids = sorted({w[3] for w in want if w[3] not in cache})
+new_ids = sorted({w[4] for w in want if w[4] not in cache})
 if new_ids:
-    kinds = {w[3]: w[2] for w in want}
+    kinds = {w[4]: w[3] for w in want}
     proc = subprocess.Popen(["git", "cat-file", "--batch"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     import threading
     threading.Thread(target=lambda: (proc.stdin.write(("\n".join(new_ids) + "\n").encode()), proc.stdin.close()), daemon=True).start()
@@ -91,21 +98,30 @@ if new_ids:
             cache[sha] = {}
     proc.wait()
     CACHE.write_text(json.dumps(cache, separators=(",", ":")))
+# The same candidate sits on every branch that was cut from the one that made it, so read each branch's
+# candidate folder as a unit (meta.json with its own result.json). A restarted island reuses candidate ids for
+# different programs, so a candidate's identity is (run, id, created), never the id alone.
+by_branch = {}
+for run_id, ref, cid, kind, sha in want:
+    by_branch.setdefault((run_id, ref, cid), {})[kind] = cache.get(sha, {})
 cands = {}
-for run_id, cid, kind, sha in want:
-    cands.setdefault((run_id, cid), {})[kind] = cache.get(sha, {})
+for (run_id, ref, cid), files in by_branch.items():
+    meta, res = files.get("meta.json", {}), files.get("result.json", {})
+    if not meta.get("created"):
+        continue
+    key = (run_id, cid, meta["created"])
+    if key not in cands or (res and not cands[key][1]):  # keep a copy that has its result
+        cands[key] = (meta, res)
 
 rows = []  # (time, run_id, cid, haiku_written, {case: value})
-for (run_id, cid), files in cands.items():
-    meta, res = files.get("meta.json", {}), files.get("result.json", {})
-    t = datetime.fromisoformat(meta["created"]) if meta.get("created") else None
-    if t is None:
-        continue
+for (run_id, cid, created), (meta, res) in cands.items():
+    t = datetime.fromisoformat(created)
     calls = meta.get("calls", 0) or 0
     vals = {c: v["value"] for c, v in (res.get("cases") or {}).items() if v.get("valid") and c in TARGETS}
     rows.append((t, run_id, cid, calls > 0, vals))
 rows.sort(key=lambda r: r[0])
-print(f"{len(rows)} candidates from {len(runs)} runs; {sum(r[3] for r in rows)} written by Haiku", file=sys.stderr)
+print(f"{len(rows)} candidates from {len({r[0] for r in runs})} runs on {len(runs)} branches; "
+      f"{sum(r[3] for r in rows)} written by Haiku", file=sys.stderr)
 
 # progress.csv: improvements of the best-so-far per target case
 best, prog = {}, []
