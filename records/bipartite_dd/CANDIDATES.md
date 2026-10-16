@@ -100,8 +100,10 @@ and Pineda-Villavicencio.
   (7,5) was checked separately after 1140 was found: 1134 is unchanged since 2012 and no paper gives a
   (7,5) value.
 - **The wiki:** the cells for (4,5), (5,5), (7,4), (11,3) and (11,4) are unchanged since its first revision
-  (17 Jan 2012). (13,3) went from 270 to 274 on 30 Mar 2021 (Araujo-Pardo and López). The upper-bound table
-  is unchanged since 2012. The survey (Miller and Širáň, 2013) and Loz's 2009 table agree.
+  (17 Jan 2012). (13,3) went from 270 to 274 and (15,3) from 370 to 374 on 30 Mar 2021 (Araujo-Pardo and López;
+  their arXiv v1 of 5 May 2020 already claims both). The upper-bound table is unchanged since 2012. The survey
+  (Miller and Širáň, 2013) agrees. Loz's January 2009 table agrees except at (11,3), where it has 186: 190 arrived
+  between January 2009 and the wiki's first revision (rechecked 2026-10-15).
 - **Upper bounds:**
   - (4,5) 236 and (5,5) 676 are the Moore bound minus 6 (Feria-Purón and Pineda-Villavicencio, Prop. 6.4).
   - (7,4) 518 and (11,4) 2222 are the Moore bound itself. Reaching it would need a generalized quadrangle

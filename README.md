@@ -29,12 +29,14 @@ A record is a lower bound: one valid graph that is bigger than the table entry.
 | (4, 5) | 160 | **162** | Hafner; Loz (computer search), by 2009 | 17+ years |
 | (5, 5) | 336 | **354** | Loz, Pérez-Rosés & Pineda-Villavicencio, by 2009 | 17+ years |
 | (7, 5) | 1134 | **1140** | Loz, Pérez-Rosés & Pineda-Villavicencio, by 2009 | 17+ years |
-| (11, 3) | 190 | **192** | Feria-Purón, Miller & Pineda-Villavicencio, 2013 | 13 years |
-| (13, 3) | 274 | **276** | Araujo-Pardo & López, 2022 | 4 years |
-| (15, 3) | 374 | **376** | Araujo-Pardo & López, 2022 | 4 years |
+| (11, 3) | 190 | **192** | Feria-Purón, Miller & Pineda-Villavicencio, by 2012 | 14+ years |
+| (13, 3) | 274 | **276** | Araujo-Pardo & López, 2020 | 6 years |
+| (15, 3) | 374 | **376** | Araujo-Pardo & López, 2020 | 6 years |
 
-"By 2009" marks entries the table cites no paper for; the year is the earliest table we found them in
-(Eyal Loz's degree–diameter table, January 2009). Full references, upper bounds and the literature check are in
+Each year is when the record first became public: in a paper, its preprint, or the earliest table we found it in,
+whichever came first. "By" means it may be older: (4, 5), (5, 5) and (7, 5) are in Eyal Loz's degree–diameter table of
+January 2009, and 190 at (11, 3) is in the wiki's first revision of January 2012, before its paper (arXiv March 2012,
+journal 2013). Araujo-Pardo and López posted theirs on arXiv in May 2020 (journal 2022). "Stood" counts from that year to 2026. Full references, upper bounds and the literature check are in
 [`records/bipartite_dd/CANDIDATES.md`](records/bipartite_dd/CANDIDATES.md). Each graph is stored as JSON
 (`[n, [[u, v], ...]]`) next to the program that built it, under `records/bipartite_dd/`.
 
