@@ -8,6 +8,7 @@ import BipartiteDD.Graphs.G1774
 import BipartiteDD.Graphs.G192
 import BipartiteDD.Graphs.G276
 import BipartiteDD.Graphs.G376
+import BipartiteDD.Graphs.G396
 import BipartiteDD.Staged
 import BipartiteDD.Graphs.G2510
 import BipartiteDD.Graphs.G3122
@@ -140,3 +141,8 @@ theorem nb_16_4_v2 : ∃ G : SimpleGraph (Fin 5440), BipartiteDD.IsBipartiteDegD
         intro r hr
         obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
         exacts [BipartiteDD.G5440.stage0, BipartiteDD.G5440.stage1, BipartiteDD.G5440.stage2, BipartiteDD.G5440.stage3]))⟩
+
+theorem nb_16_3 : ∃ G : SimpleGraph (Fin 396), BipartiteDD.IsBipartiteDegDiam G 16 3 :=
+  ⟨_, BipartiteDD.check_sound 16 3 BipartiteDD.G396.nbrs BipartiteDD.G396.color
+    (BipartiteDD.Fast.check_of_fast 9 16 3 BipartiteDD.G396.adjL BipartiteDD.G396.colL
+      (by decide) (by decide +kernel))⟩
