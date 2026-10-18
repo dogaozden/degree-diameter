@@ -1,0 +1,78 @@
+# Diameter 4 from the quadrangle Q(4,q): copies of an ovoid and of a line multiset
+
+Draft, 2026-10-18. Proof complete; the size of the line multiset is the open input (see the last section).
+
+## Setting
+
+Q(4,q) is the generalized quadrangle of order (q,q) (points and lines of a non-singular quadric in PG(4,q)).
+It has (q+1)(q²+1) points and as many lines; every line has q+1 points, every point is on q+1 lines, and
+(GQ axiom) for a point x not on a line L there is exactly one point of L collinear with x.
+
+Its incidence graph G is bipartite, (q+1)-regular, of girth 8 and diameter 4. Distances in G:
+- two distinct points: 2 if collinear, 4 if not;
+- two distinct lines: 2 if they meet, 4 if disjoint;
+- a point and a line: 1 if incident, 3 if not (by the GQ axiom).
+
+An ovoid O of Q(4,q) is a set of q²+1 points meeting every line in exactly one point (Q(4,q) has ovoids for
+every q, e.g. an elliptic quadric section).
+
+## Construction
+
+Fix j ≥ 1. Let M be a multiset of lines in which every point lies on at most j lines (counted with
+multiplicity); call t = |M|. Build H from G by adding
+- j copies of each point of O, each copy adjacent to exactly the lines through its point;
+- one copy of each entry of M, each copy adjacent to exactly the points of its line.
+
+## Theorem
+
+H is bipartite, has maximum degree q+1+j, diameter 4, and order
+
+    n(H) = 2(q+1)(q²+1) + j(q²+1) + t.
+
+## Proof
+
+Bipartite: point copies are adjacent only to lines, line copies only to points.
+
+Degrees: a copy has degree q+1. An original line gains exactly j neighbours (the j copies of the one point of
+O on it). An original point gains one neighbour per entry of M through it, at most j.
+
+Diameter: H contains G, so distances between original vertices are at most 4. A copy v′ of v has N(v′) = N(v),
+so for every vertex w other than v′, any walk from v to w can be started at v′ instead; hence
+d(v′, w) ≤ max(d(v, w), 2) ≤ 4, with d(v′, v) = 2. Applying this to both ends handles two copies. So diameter ≤ 4,
+and it equals 4: two non-collinear points of G have no common neighbour in H either (every new line has the
+point set of an old line), so they stay at distance 4. ∎
+
+## Which multisets
+
+- j = 1: M is a partial spread (pairwise disjoint lines), t = s ≤ q²+1, with t = q²+1 a spread (exists iff q is
+  even). For q odd, s ≤ q²−q+1 (Tallini; dual partial ovoids of W(q)).
+- j = 2: every point on at most 2 entries; t ≤ 2(q²+1), with equality exactly for a 2-cover of Q(4,q), dually a
+  2-ovoid of W(q). A doubled partial spread gives t = 2s, but larger t may exist.
+
+## Against the table (bipartite degree–diameter, diameter 4)
+
+The table entries at degrees 7, 11, 13, 15 are exactly the case j = 1, s = q+3, q odd (credited to Delorme &
+Farhi 1984): 346 (q = 5), 1734 (q = 9), 3064 (q = 11), 4946 (q = 13). The degree-16 entry 5134 equals the case
+j = 2, q = 13, t = 34. So any partial spread with more than q+3 lines beats the table at degree q+2. (Whether
+other degrees fit the same pattern is being checked against the full table.)
+
+Records from this construction (all checked by scripts/verify_record.py):
+
+| cell | q | j | t | order | table |
+|---|---|---|---|---|---|
+| (7,4) | 5 | 1 | 21 | 359 | 346 |
+| (11,4) | 9 | 1 | 52 | 1774 | 1734 |
+| (13,4) | 11 | 1 | 72 | 3122 | 3064 |
+| (15,4) | 13 | 1 | 92 | 5022 | 4946 |
+| (16,4) | 13 | 2 | 184 | 5284 | 5134 |
+
+(The (7,4) and (11,4) graphs were found by Haiku islands on 2026-10-10 and fit this shape after the fact.)
+
+## Open inputs (being checked)
+
+1. A construction of a partial spread of Q(4,q) with more than q+3 lines for every odd q (Tallini's 2q+1 is
+   reported; source being confirmed). With it, the theorem beats the Delorme–Farhi family for all odd q ≥ 5 by at
+   least q−2.
+2. j = 2, q = 13: a 2-cover of Q(4,13) (2-ovoid of W(13)) would give (16,4) ≥ 5440. Literature and a computer
+   search are running.
+3. What the table holds at degrees 3–16 for diameter 4 (check that no other cell fits the shape).
