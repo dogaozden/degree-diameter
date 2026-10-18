@@ -2,6 +2,7 @@ import BipartiteDD.GQST.Main
 import BipartiteDD.Records
 import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
+import BipartiteDD.ASq.Main
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -29,3 +30,7 @@ import BipartiteDD.GQ4.Count
 #print axioms BipartiteDD.GQST.gqst
 #print axioms BipartiteDD.GQST.gq4_of_gqst
 #print axioms BipartiteDD.GQ.toGQst
+
+#print axioms BipartiteDD.ASq.isGQst
+#print axioms BipartiteDD.ASq.weighted_two_ovoid
+#print axioms BipartiteDD.ASq.bound

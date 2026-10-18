@@ -57,12 +57,6 @@ def dirLine (g : F × F × F) {d : F × F} (hd : d ≠ 0) : Line F :=
 def fibLine (w : F × F) : Line F :=
   ⟨fib w, Or.inr ⟨w, rfl⟩⟩
 
-theorem det_self (d : F × F) : det d d = 0 := by
-  simp only [det]; ring
-
-theorem det_add_left (w v d : F × F) : det (w + v) d = det w d + det v d := by
-  simp only [det, Prod.fst_add, Prod.snd_add]; ring
-
 theorem mem_lineA_self (g : F × F × F) (d : F × F) : g ∈ lineA g d :=
   ⟨0, by simp [det]⟩
 

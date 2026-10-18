@@ -278,8 +278,7 @@ theorem card_mul_eq {P L : Type*} [Membership P L] [Fintype P] [Fintype L] {s t 
     rw [← G.pts_on_line l, Nat.card_eq_fintype_card, Fintype.card_subtype]
     rfl
   simp only [hA, hB, Finset.sum_const, Finset.card_univ, smul_eq_mul] at h
-  rw [Fintype.card_eq_nat_card, Fintype.card_eq_nat_card] at *
-  linarith
+  exact h
 
 /-- Statement 1: AS(q) is a generalized quadrangle of order `(q - 1, q + 1)`, where `q` is the order of
 `F`. The hypothesis `ringChar F ≠ 2` is not used: the four axioms hold in every characteristic. -/

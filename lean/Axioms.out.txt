@@ -22,3 +22,6 @@
 'BipartiteDD.GQST.gqst' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQST.gq4_of_gqst' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQ.toGQst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.ASq.isGQst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.ASq.weighted_two_ovoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.ASq.bound' depends on axioms: [propext, Classical.choice, Quot.sound]
