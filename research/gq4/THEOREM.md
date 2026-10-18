@@ -68,6 +68,24 @@ Records from this construction (all checked by scripts/verify_record.py):
 
 (The (7,4) and (11,4) graphs were found by Haiku islands on 2026-10-10 and fit this shape after the fact.)
 
+## Corollary for even j (2026-10-18, from the literature)
+
+Bamberg, Law, Penttila, "Tight sets and m-ovoids of generalised quadrangles", Combinatorica 29 (2009) 1-17, construct
+m-ovoids of W(3,q) for q odd and every even m. W(3,q) is dual to Q(4,q), so an m-ovoid of W(3,q) is an m-cover of
+Q(4,q): a set of m(q^2+1) lines with every point on exactly m of them. Taking M = a j-cover (j even) gives
+
+    for q odd and j even:  n_b(q+1+j, 4) >= 2(q^2+1)(q+1+j).
+
+j = 2, q = 13: (16,4) >= 5440 (table 5134, our explicit graph 5284). An explicit 2-cover of Q(4,13) is being
+searched for, so the record can be checked graph by graph. Also: the cells covered by the construction in the
+table are exactly the diameter-4 degrees with Δ-1 not a prime power (7, 11, 13, 15, 16); every other degree up to
+16 has a generalized quadrangle incidence graph, which meets the Moore bound and cannot be beaten.
+
+Partial spreads for all odd q: Tallini (Mitt. Math. Sem. Giessen 201, 1991) constructs a maximal partial ovoid of
+W(3,q), q odd, of size 2q+1 (cited in Ceria-De Beule-Pavese-Smaldore, arXiv 2203.04553, Section 1; the
+construction itself not yet seen). So for every odd q >= 5 the j = 1 case beats the Delorme-Farhi family
+(s = q+3) by at least q-2.
+
 ## Open inputs (being checked)
 
 1. A construction of a partial spread of Q(4,q) with more than q+3 lines for every odd q (Tallini's 2q+1 is
