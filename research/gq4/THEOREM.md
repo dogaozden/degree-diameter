@@ -10,6 +10,11 @@
   m-ovoids), and the AS(q) construction (research/gq4x/), which no degree-diameter paper uses.
 - Earlier wording here said the table values "are the case s = q+3". That is a count match only: Delorme's q+3 extra
   vertices are not a partial spread. Read "same order as Delorme's", not "equal to".
+- Related: Araujo-Pardo, Dalfo, Fiol, Lopez, arXiv 2103.11443, Sec. 4 (Thm 4.3, 4.5(ii)): duplicating every line of
+  a GQ ("semi-double graph"), biregular [r,2r;4]. Cage papers (arXiv 2310.12137, 1111.3279) delete GQ substructures;
+  none adds copies. Araujo-Pardo & Lopez, arXiv 2005.02427, Problem 4 asks to generalize their diameter-3
+  construction to diameters 4 and 6; the AS(q) result is a diameter-4 answer.
+- Not read (paywalled): Delorme, J. Graph Theory 9 (1985) 325-334; Bond-Delorme, Ars Combin. 25C (1988).
 
 Draft, 2026-10-18. Proof complete; the size of the line multiset is the open input (see the last section).
 
@@ -94,7 +99,8 @@ searched for, so the record can be checked graph by graph. Also: the cells cover
 table are exactly the diameter-4 degrees with Δ-1 not a prime power (7, 11, 13, 15, 16); every other degree up to
 16 has a generalized quadrangle incidence graph, which meets the Moore bound and cannot be beaten.
 
-Partial spreads for all odd q: Tallini (Mitt. Math. Sem. Giessen 201, 1991) constructs a maximal partial ovoid of
+Partial spreads for all odd q: Tallini ("Fibrations through lines in a nonsingular quadric Q(4,q) of PG(4,q)", Atti Accad. Peloritana
+Pericolanti 66 (1988) 127-146, as cited in arXiv 2203.04553) constructs a maximal partial ovoid of
 W(3,q), q odd, of size 2q+1 (cited in Ceria-De Beule-Pavese-Smaldore, arXiv 2203.04553, Section 1; the
 construction itself not yet seen). So for every odd q >= 5 the j = 1 case beats Delorme's family
 (order of s = q+3) by at least q-2.
