@@ -1,13 +1,13 @@
 # c2-d11d5
 
 Problem: bipartite_dd
-Generations done: 4 of 81 (including generation 0)
-Total mutator calls: 96
+Generations done: 5 of 81 (including generation 0)
+Total mutator calls: 128
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
 | d3D3 | calibration | 14 | 14 | 14 = | g000-i00 |
-| d11D5 | target | 5850 | 22222 | 4560 | g000-i00 |
+| d11D5 | target | 5850 | 22222 | 4680 | g004-c16 |
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
@@ -15,3 +15,4 @@ Total mutator calls: 96
 | 1 | 32 | 0 | 0.7995 | 0.7809 |
 | 2 | 32 | 0 | 0.7995 | 0.7995 |
 | 3 | 32 | 0 | 0.7995 | 0.7995 |
+| 4 | 32 | 0 | 0.8182 | 0.8182 |
