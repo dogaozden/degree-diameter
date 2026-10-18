@@ -1,0 +1,596 @@
+"""Generic semidirect-product lifts for the bipartite degree-diameter problem.
+
+Change in this version: the group family is no longer F_q x| H (which only gives
+orders q*c with q a prime power). The C engine now searches over the semidirect
+products G = Z_M x|_r Z_K for every order N = M*K, with r^K = 1 (mod M) and
+gcd(r, M) = 1. Non-field orders such as 1255 = 5 * 251 become available, and
+non-abelian groups are included (r > 1). Cyclic groups are the case K = 1.
+
+Multi-orbit lift: B left orbits and B right orbits, each of size N. Dart (i, t)
+with voltage v joins L(i, g) to R(tgt[i][t], g*v). Left translations are
+automorphisms and are transitive on every left and every right orbit, so BFS
+from the 2B orbit representatives decides the diameter. Each dart slot t is a
+random permutation of the B orbits (every base pattern is a union of such slots).
+Simplicity needs distinct voltages on darts into the same orbit. The C engine
+checks simplicity and, when the graph is small enough, does a full BFS from every
+vertex. Python checks the result with lib.is_valid and keeps a valid fallback.
+"""
+import itertools
+import time
+
+import lib
+
+C_SOURCE = r'''
+/* Lifts over G = Z_M x|_r Z_K (element (a,b) coded a*K+b), B orbits per side.
+ * Usage: prog d D seed time_limit lo3 hi3 lo1 hi1 lo2 hi2
+ * Output: "n m" then m lines "u v", or "0 0".
+ */
+#define _POSIX_C_SOURCE 200809L
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define MAXN 4800
+#define MAXD 32
+#define MAXB 3
+#define MAXCAND 60000
+
+typedef struct { int m, k, r, N; } Cand;
+
+static int d, D;
+static double t_end;
+static uint64_t rs = 88172645463325252ULL;
+
+static double now(void) {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ts.tv_sec + ts.tv_nsec * 1e-9;
+}
+static uint64_t rnd(void) {
+    rs ^= rs << 13;
+    rs ^= rs >> 7;
+    rs ^= rs << 17;
+    return rs;
+}
+static int rndint(int k) { return (int)(rnd() % (uint64_t)k); }
+static double rnd01(void) { return (rnd() >> 11) * (1.0 / 9007199254740992.0); }
+
+static int gcd_i(int a, int b) {
+    while (b) { int t = a % b; a = b; b = t; }
+    return a;
+}
+static int powmod_i(int b, int e, int m) {
+    long r = 1 % m, x = b % m;
+    while (e) {
+        if (e & 1) r = r * x % m;
+        x = x * x % m;
+        e >>= 1;
+    }
+    return (int)r;
+}
+
+/* ------------------------------------------------------------ group G = Z_M x|_r Z_K */
+
+static int GM, GK, GR, GN;
+static int powR[MAXN], invP[MAXN];
+
+static void setup_group(int m, int k, int r) {
+    GM = m;
+    GK = k;
+    GR = r;
+    GN = m * k;
+    powR[0] = 1 % m;
+    for (int b = 1; b < k; b++) powR[b] = (int)((long)powR[b - 1] * r % m);
+    /* invP[b] = r^{-b} = r^{(K-b) mod K}, since r^K = 1. */
+    for (int b = 0; b < k; b++) invP[b] = powR[(k - b) % k];
+}
+
+/* (a,b)*(c,e) = (a + r^b c, b + e). */
+static inline int gmul(int x, int y) {
+    int a = x / GK, b = x % GK, c = y / GK, e = y % GK;
+    int na = (int)((a + (long)powR[b] * c) % GM);
+    int nb = (b + e) % GK;
+    return na * GK + nb;
+}
+
+/* (a,b)^{-1} = (-r^{-b} a, -b). */
+static inline int ginv(int x) {
+    int a = x / GK, b = x % GK;
+    int nb = (GK - b) % GK;
+    int na = (int)((GM - ((long)invP[b] * a) % GM) % GM);
+    return na * GK + nb;
+}
+
+/* ------------------------------------------------------------ lift state */
+
+static int curB;
+static int tgt[MAXB][MAXD], vol[MAXB][MAXD];
+static int fw[MAXB][MAXD][MAXN], bw[MAXB][MAXD][MAXN];
+static int incI[MAXB][MAXD], incT[MAXB][MAXD];
+static int vis[2 * MAXB * MAXN], que[2 * MAXB * MAXN];
+static int stamp_ = 0;
+
+static int bestTotal = 0, bestB, bestM, bestK, bestR, bestN;
+static int bestTgt[MAXB][MAXD], bestVol[MAXB][MAXD];
+
+static int base_connected(int B) {
+    int seenL[MAXB], seenR[MAXB];
+    for (int i = 0; i < B; i++) { seenL[i] = 0; seenR[i] = 0; }
+    seenL[0] = 1;
+    int changed = 1;
+    while (changed) {
+        changed = 0;
+        for (int i = 0; i < B; i++)
+            for (int t = 0; t < d; t++) {
+                int j = tgt[i][t];
+                if (seenL[i] && !seenR[j]) { seenR[j] = 1; changed = 1; }
+                if (seenR[j] && !seenL[i]) { seenL[i] = 1; changed = 1; }
+            }
+    }
+    for (int i = 0; i < B; i++)
+        if (!seenL[i] || !seenR[i]) return 0;
+    return 1;
+}
+
+static int set_incidence(int B) {
+    int cnt[MAXB];
+    for (int j = 0; j < B; j++) cnt[j] = 0;
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) {
+            int j = tgt[i][t];
+            if (j < 0 || j >= B || cnt[j] >= d) return 0;
+            incI[j][cnt[j]] = i;
+            incT[j][cnt[j]] = t;
+            cnt[j]++;
+        }
+    for (int j = 0; j < B; j++)
+        if (cnt[j] != d) return 0;
+    return 1;
+}
+
+static void random_pattern(int B) {
+    for (;;) {
+        for (int t = 0; t < d; t++) {
+            int p[MAXB];
+            for (int i = 0; i < B; i++) p[i] = i;
+            for (int i = B - 1; i > 0; i--) {
+                int r = rndint(i + 1);
+                int tmp = p[i]; p[i] = p[r]; p[r] = tmp;
+            }
+            for (int i = 0; i < B; i++) tgt[i][t] = p[i];
+        }
+        if (base_connected(B) && set_incidence(B)) break;
+    }
+    curB = B;
+}
+
+static int valid_value(int i, int t, int x, int limit) {
+    for (int t2 = 0; t2 < limit; t2++)
+        if (t2 != t && tgt[i][t2] == tgt[i][t] && vol[i][t2] == x) return 0;
+    return 1;
+}
+
+static int simple_state(int B) {
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++)
+            for (int t2 = 0; t2 < t; t2++)
+                if (tgt[i][t2] == tgt[i][t] && vol[i][t2] == vol[i][t]) return 0;
+    return 1;
+}
+
+static void set_dart(int i, int t, int x) {
+    vol[i][t] = x;
+    int xi = ginv(x);
+    for (int g = 0; g < GN; g++) {
+        fw[i][t][g] = gmul(g, x);
+        bw[i][t][g] = gmul(g, xi);
+    }
+}
+
+static int bfs_count(int src) {
+    int N = GN, BN = curB * N;
+    stamp_++;
+    int head = 0, tail = 0;
+    que[tail++] = src;
+    vis[src] = stamp_;
+    for (int lvl = 0; lvl < D && head < tail; lvl++) {
+        int end = tail;
+        while (head < end) {
+            int v = que[head++];
+            if (v < BN) {
+                int i = v / N, g = v % N;
+                for (int t = 0; t < d; t++) {
+                    int u = BN + tgt[i][t] * N + fw[i][t][g];
+                    if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                }
+            } else {
+                int w = v - BN, j = w / N, x = w % N;
+                for (int k = 0; k < d; k++) {
+                    int i = incI[j][k], t = incT[j][k];
+                    int u = i * N + bw[i][t][x];
+                    if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                }
+            }
+        }
+    }
+    return tail;
+}
+
+static long cover_cost(void) {
+    int N = GN, V = 2 * curB * N;
+    long cost = 0;
+    for (int i = 0; i < curB; i++) cost += (long)(V - bfs_count(i * N));
+    for (int j = 0; j < curB; j++) cost += (long)(V - bfs_count((curB + j) * N));
+    return cost;
+}
+
+static int search_group(double until) {
+    int N = GN, B = curB;
+    const int iters = 20000;
+    while (now() < until) {
+        random_pattern(B);
+        for (int i = 0; i < B; i++)
+            for (int t = 0; t < d; t++) {
+                int x, tries = 0;
+                do { x = rndint(N); tries++; } while (!valid_value(i, t, x, t) && tries < 100000);
+                set_dart(i, t, x);
+            }
+        long cost = cover_cost();
+        double c0 = cost > 0 ? (double)cost : 1.0;
+        double Ts = 0.05 * c0 + 1.0, Te = 0.3;
+        for (int it = 0; it < iters && cost > 0; it++) {
+            if ((it & 15) == 0 && now() > until) return 0;
+            double T = Ts * pow(Te / Ts, (double)it / iters);
+            int i = rndint(B), t = rndint(d);
+            int x, tries = 0;
+            do { x = rndint(N); tries++; } while (!valid_value(i, t, x, d) && tries < 1000);
+            if (tries >= 1000) continue;
+            int old = vol[i][t];
+            set_dart(i, t, x);
+            long c2 = cover_cost();
+            if (c2 <= cost || rnd01() < exp(-(double)(c2 - cost) / T)) {
+                cost = c2;
+            } else {
+                set_dart(i, t, old);
+            }
+        }
+        if (cost == 0 && simple_state(B)) return 1;
+    }
+    return 0;
+}
+
+/* ------------------------------------------------------------ candidates and phases */
+
+static Cand cand[MAXCAND];
+static int nc = 0;
+
+/* All semidirect groups Z_M x|_r Z_K with M*K = N in [lo, hi], M >= 2,
+ * r in [1, M), gcd(r, M) = 1 and r^K = 1 (mod M). K = 1 gives cyclic groups. */
+static void build_cands(int lo, int hi) {
+    nc = 0;
+    for (int N = lo; N <= hi; N++) {
+        for (int M = 2; M <= N; M++) {
+            if (N % M) continue;
+            int K = N / M;
+            for (int r = 1; r < M; r++) {
+                if (gcd_i(r, M) != 1) continue;
+                if (powmod_i(r, K, M) != 1 % M) continue;
+                if (nc < MAXCAND) {
+                    Cand c = {M, K, r, N};
+                    cand[nc++] = c;
+                }
+            }
+        }
+    }
+}
+
+static void record(int B, Cand c) {
+    int total = 2 * B * c.N;
+    if (total <= bestTotal) return;
+    bestTotal = total;
+    bestB = B;
+    bestM = c.m;
+    bestK = c.k;
+    bestR = c.r;
+    bestN = c.N;
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) {
+            bestTgt[i][t] = tgt[i][t];
+            bestVol[i][t] = vol[i][t];
+        }
+}
+
+static void search_phase(int B, int lo, int hi, double until) {
+    if (lo > hi) return;
+    build_cands(lo, hi);
+    if (nc == 0) return;
+    int bestIdx = -1, bestNp = 0;
+    int a = 0, b = nc - 1;
+    while (a <= b && now() < until) {
+        int mid = (a + b) / 2;
+        double rem = until - now();
+        double slice = rem * 0.2;
+        if (slice < 1.5) slice = 1.5;
+        if (slice > rem) slice = rem;
+        setup_group(cand[mid].m, cand[mid].k, cand[mid].r);
+        curB = B;
+        if (search_group(now() + slice)) {
+            record(B, cand[mid]);
+            if (cand[mid].N > bestNp) { bestNp = cand[mid].N; bestIdx = mid; }
+            a = mid + 1;
+        } else {
+            b = mid - 1;
+        }
+    }
+    if (bestIdx < 0) return;
+    int fails = 0, idx = bestIdx + 1;
+    while (idx < nc && now() < until && fails < 2) {
+        if (cand[idx].N <= bestNp) { idx++; continue; }
+        double rem = until - now();
+        double slice = rem * 0.6;
+        if (slice > rem) slice = rem;
+        setup_group(cand[idx].m, cand[idx].k, cand[idx].r);
+        curB = B;
+        if (search_group(now() + slice)) {
+            record(B, cand[idx]);
+            bestNp = cand[idx].N;
+            bestIdx = idx;
+            idx++;
+            fails = 0;
+        } else {
+            idx++;
+            fails++;
+        }
+    }
+}
+
+/* ------------------------------------------------------------ main */
+
+static int adj[2 * MAXB * MAXN][MAXD];
+
+int main(int argc, char **argv) {
+    if (argc < 11) {
+        printf("0 0\n");
+        return 0;
+    }
+    d = atoi(argv[1]);
+    D = atoi(argv[2]);
+    long seed = atol(argv[3]);
+    double limit = atof(argv[4]);
+    int lo3 = atoi(argv[5]), hi3 = atoi(argv[6]);
+    int lo1 = atoi(argv[7]), hi1 = atoi(argv[8]);
+    int lo2 = atoi(argv[9]), hi2 = atoi(argv[10]);
+    double t0 = now();
+    t_end = t0 + limit * 0.9 - 0.5;
+    rs ^= (uint64_t)(seed + 1) * 0x9E3779B97F4A7C15ULL;
+    if (!rs) rs = 1;
+    for (int i = 0; i < 10; i++) rnd();
+
+    if (d < 2 || d > MAXD || D < 3) { printf("0 0\n"); return 0; }
+    if (hi3 > MAXN - 1) hi3 = MAXN - 1;
+    if (hi1 > MAXN - 1) hi1 = MAXN - 1;
+    if (hi2 > MAXN - 1) hi2 = MAXN - 1;
+    if (lo3 < 2 * d) lo3 = 2 * d;
+    if (lo1 < 2 * d) lo1 = 2 * d;
+    if (lo2 < 2 * d) lo2 = 2 * d;
+
+    double span = t_end - t0;
+
+    /* Phase A: three orbits per side (6N vertices). */
+    if (lo3 <= hi3) search_phase(3, lo3, hi3, t0 + 0.5 * span);
+
+    /* Phase B: extend B = 3 if it worked, otherwise try B = 1 (2N vertices). */
+    if (bestTotal > 0 && bestB == 3) {
+        if (bestN + 1 <= hi3) search_phase(3, bestN + 1, hi3, t0 + 0.8 * span);
+    } else if (lo1 <= hi1) {
+        search_phase(1, lo1, hi1, t0 + 0.8 * span);
+    }
+
+    /* Phase C: extend the best family, or fall back to B = 2 (4N vertices). */
+    if (bestTotal == 0) {
+        if (lo2 <= hi2) search_phase(2, lo2, hi2, t_end);
+    } else if (bestB == 3) {
+        if (bestN + 1 <= hi3) search_phase(3, bestN + 1, hi3, t_end);
+    } else if (bestB == 1) {
+        if (bestN + 1 <= hi1) search_phase(1, bestN + 1, hi1, t_end);
+    } else if (bestB == 2) {
+        if (bestN + 1 <= hi2) search_phase(2, bestN + 1, hi2, t_end);
+    }
+
+    if (bestTotal == 0) {
+        printf("0 0\n");
+        return 0;
+    }
+
+    /* Rebuild the best graph. */
+    int B = bestB;
+    setup_group(bestM, bestK, bestR);
+    curB = B;
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) tgt[i][t] = bestTgt[i][t];
+    if (!set_incidence(B)) { printf("0 0\n"); return 0; }
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) set_dart(i, t, bestVol[i][t]);
+
+    int N = GN, BN = B * N, V = 2 * BN, E = BN * d;
+    for (int v = 0; v < BN; v++) {
+        int i = v / N, g = v % N;
+        for (int t = 0; t < d; t++) adj[v][t] = BN + tgt[i][t] * N + fw[i][t][g];
+    }
+    for (int w = BN; w < V; w++) {
+        int j = (w - BN) / N, x = (w - BN) % N;
+        for (int k = 0; k < d; k++) {
+            int i = incI[j][k], t = incT[j][k];
+            adj[w][k] = i * N + bw[i][t][x];
+        }
+    }
+
+    /* Simplicity: no repeated neighbour anywhere. */
+    for (int v = 0; v < V; v++)
+        for (int k = 0; k < d; k++)
+            for (int l = 0; l < k; l++)
+                if (adj[v][k] == adj[v][l]) { printf("0 0\n"); return 0; }
+
+    /* Full diameter check from every vertex when cheap. */
+    if (V <= 5000) {
+        for (int s = 0; s < V; s++) {
+            stamp_++;
+            int head = 0, tail = 0;
+            que[tail++] = s;
+            vis[s] = stamp_;
+            for (int lvl = 0; lvl < D && head < tail; lvl++) {
+                int end = tail;
+                while (head < end) {
+                    int v = que[head++];
+                    for (int k = 0; k < d; k++) {
+                        int u = adj[v][k];
+                        if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                    }
+                }
+            }
+            if (tail != V) {
+                printf("0 0\n");
+                return 0;
+            }
+        }
+    }
+
+    printf("%d %d\n", V, E);
+    for (int v = 0; v < BN; v++)
+        for (int t = 0; t < d; t++)
+            printf("%d %d\n", v, adj[v][t]);
+    return 0;
+}
+'''
+
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def _gq_w(q):
+    """Incidence graph of points and lines of the generalized quadrangle W(q); diameter 4."""
+    F = lib.GF(q)
+    pts = [v for v in itertools.product(range(q), repeat=4)
+           if any(v) and next(c for c in v if c) == 1]
+    index = {v: i for i, v in enumerate(pts)}
+    P = len(pts)
+
+    def norm(v):
+        c = next(x for x in v if x)
+        inv = F.inv(c)
+        return tuple(F.mul(inv, x) for x in v)
+
+    def form(x, y):
+        t = F.sub(F.mul(x[0], y[1]), F.mul(x[1], y[0]))
+        return F.add(t, F.sub(F.mul(x[2], y[3]), F.mul(x[3], y[2])))
+
+    covered = set()
+    lines = []
+    for i in range(P):
+        x = pts[i]
+        for j in range(i + 1, P):
+            if (i, j) in covered:
+                continue
+            y = pts[j]
+            if form(x, y) != 0:
+                continue
+            L = set()
+            for a in range(q):
+                for b in range(q):
+                    if a == 0 and b == 0:
+                        continue
+                    v = tuple(F.add(F.mul(a, x[k]), F.mul(b, y[k])) for k in range(4))
+                    if any(v):
+                        L.add(index[norm(v)])
+            L = sorted(L)
+            lines.append(L)
+            for p in L:
+                for r in L:
+                    if p < r:
+                        covered.add((p, r))
+
+    edges = []
+    for j, L in enumerate(lines):
+        for p in L:
+            edges.append((p, P + j))
+    return 2 * P, edges
+
+
+def _best_gq(d):
+    """W(q) for the largest prime power q with q + 1 <= d (kept small for speed)."""
+    for q in range(min(d - 1, 7), 1, -1):
+        if lib.is_prime_power(q):
+            return _gq_w(q)
+    return None
+
+
+def build(d, D, seed, time_limit):
+    t0 = time.monotonic()
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # K_{d,d} has diameter 2, so it is valid for every D >= 2 and is the safe fallback.
+    best = lib.haar_graph(d, range(d))
+
+    def consider(cand):
+        nonlocal best
+        if cand is None:
+            return
+        n, e = cand
+        if n > best[0] and lib.is_valid(n, e, d, D):
+            best = (n, e)
+
+    if D >= 3:
+        try:
+            consider(_best_pg(d))
+        except Exception:
+            pass
+        # Exact Moore graph: nothing can beat it.
+        if D == 3 and lib.is_prime_power(d - 1) and best[0] > 2 * d:
+            return best
+        if d - 2 >= 3 and lib.is_prime_power(d - 2):
+            try:
+                consider(lib.araujo_lopez_graph(d - 2))
+            except Exception:
+                pass
+
+    if D == 4:
+        try:
+            consider(_best_gq(d))
+        except Exception:
+            pass
+
+    # Semidirect-product multi-orbit lifts: B = 3 gives 6N, B = 1 gives 2N, B = 2 gives 4N.
+    if d >= 2 and D >= 3:
+        mb = lib.moore_bound(d, D)
+        # Leave room for the one-time C compile and the Python checks.
+        budget = 0.8 * time_limit - (time.monotonic() - t0) - 3.0
+        lo3 = max(2 * d, best[0] // 6 + 1, mb // 24)
+        hi3 = mb // 6
+        lo1 = max(2 * d, best[0] // 2 + 1, mb // 8)
+        hi1 = mb // 2
+        lo2 = max(2 * d, mb // 16)
+        hi2 = mb // 4
+        if budget > 4.0 and (lo3 <= hi3 or lo1 <= hi1 or lo2 <= hi2):
+            try:
+                text = lib.run_c(C_SOURCE,
+                                 [d, D, seed, round(budget, 2),
+                                  lo3, hi3, lo1, hi1, lo2, hi2],
+                                 stdin_graph=None, timeout=budget + 8.0)
+                consider(lib.parse_graph_text(text))
+            except Exception:
+                pass   # keep the valid Python graph
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
