@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11886325000000397
+    },
+    "d8D5": {
+      "case_id": "d8D5",
+      "reason": "crash: 08/program.py\", line 264, in _lift_in_c\n    m, k2, r = rng.choice(_group_options(G))\n               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/random.py\", line 351, in choice\n    raise IndexError('Cannot choose from an empty sequence')\nIndexError: Cannot choose from an empty sequence\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.11909599700004492
+    }
+  },
+  "fitness": 0.09090909090909091
+}
