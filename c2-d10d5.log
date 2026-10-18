@@ -8,3 +8,6 @@ gen 6: made 32 failed 0 calls 192 gen-best 0.8709 best 0.8805
 gen 7: made 32 failed 0 calls 224 gen-best 0.8927 best 0.8927
 gen 8: made 32 failed 0 calls 256 gen-best 0.8927 best 0.8927
 budget stop at g009-c16: subscription budget reached before call
+gen 9: made 16 failed 0 calls 272 gen-best 0.8927 best 0.8927
+git failed: git commit: fatal: cannot lock ref 'HEAD': is at 1908c81fc5a636c4709306cc321a7efe2fd9d3c6 but expected 3f4d76f180a7f91561a566252f8ed8b629443f58
+EXIT=3
