@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d11D5": {
+      "case_id": "d11D5",
+      "reason": "crash: nt()\n           ~~~~~~~~~~^^^^^^^^^^^^^\n  File \"/home/user/degree-diameter/runs/c2-d11d5/candidates/g012-c10/program.py\", line 429, in _unreached\n    return 2 * k * N - int(_POP[reach].sum())\n                           ~~~~^^^^^^^\nIndexError: index 262143 is out of bounds for axis 0 with size 65536\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.37247928499982663
+    },
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.16687987299974338
+    }
+  },
+  "fitness": 0.09090909090909091
+}
