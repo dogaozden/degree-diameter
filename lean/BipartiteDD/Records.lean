@@ -47,6 +47,20 @@ import BipartiteDD.Stages.G5440_s0
 import BipartiteDD.Stages.G5440_s1
 import BipartiteDD.Stages.G5440_s2
 import BipartiteDD.Stages.G5440_s3
+import BipartiteDD.Graphs.G1728
+import BipartiteDD.Stages.G1728_local
+import BipartiteDD.Stages.G1728_s0
+import BipartiteDD.Stages.G1728_s1
+import BipartiteDD.Stages.G1728_s2
+import BipartiteDD.Stages.G1728_s3
+import BipartiteDD.Stages.G1728_s4
+import BipartiteDD.Graphs.G2530
+import BipartiteDD.Stages.G2530_local
+import BipartiteDD.Stages.G2530_s0
+import BipartiteDD.Stages.G2530_s1
+import BipartiteDD.Stages.G2530_s2
+import BipartiteDD.Stages.G2530_s3
+import BipartiteDD.Stages.G2530_s4
 
 theorem nb_4_5 : ∃ G : SimpleGraph (Fin 162), BipartiteDD.IsBipartiteDegDiam G 4 5 :=
   ⟨_, BipartiteDD.check_sound 4 5 BipartiteDD.G162.nbrs BipartiteDD.G162.color
@@ -146,3 +160,21 @@ theorem nb_16_3 : ∃ G : SimpleGraph (Fin 396), BipartiteDD.IsBipartiteDegDiam 
   ⟨_, BipartiteDD.check_sound 16 3 BipartiteDD.G396.nbrs BipartiteDD.G396.color
     (BipartiteDD.Fast.check_of_fast 9 16 3 BipartiteDD.G396.adjL BipartiteDD.G396.colL
       (by decide) (by decide +kernel))⟩
+
+theorem nb_8_5 : ∃ G : SimpleGraph (Fin 1728), BipartiteDD.IsBipartiteDegDiam G 8 5 :=
+  ⟨_, BipartiteDD.check_sound 8 5 BipartiteDD.G1728.nbrs BipartiteDD.G1728.color
+    (BipartiteDD.Staged.check_of_chain 11 8 5 BipartiteDD.G1728.adjL BipartiteDD.G1728.colL
+      (by decide) BipartiteDD.G1728.levs (by decide) BipartiteDD.G1728.local_ok
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 ∨ r = 4 := by omega
+        exacts [BipartiteDD.G1728.stage0, BipartiteDD.G1728.stage1, BipartiteDD.G1728.stage2, BipartiteDD.G1728.stage3, BipartiteDD.G1728.stage4]))⟩
+
+theorem nb_9_5_v2 : ∃ G : SimpleGraph (Fin 2530), BipartiteDD.IsBipartiteDegDiam G 9 5 :=
+  ⟨_, BipartiteDD.check_sound 9 5 BipartiteDD.G2530.nbrs BipartiteDD.G2530.color
+    (BipartiteDD.Staged.check_of_chain 12 9 5 BipartiteDD.G2530.adjL BipartiteDD.G2530.colL
+      (by decide) BipartiteDD.G2530.levs (by decide) BipartiteDD.G2530.local_ok
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 ∨ r = 4 := by omega
+        exacts [BipartiteDD.G2530.stage0, BipartiteDD.G2530.stage1, BipartiteDD.G2530.stage2, BipartiteDD.G2530.stage3, BipartiteDD.G2530.stage4]))⟩

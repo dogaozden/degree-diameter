@@ -31,3 +31,14 @@ Summary of the agent's final report (main session transcription).
 - (19,3): q = 16 at Delta = q+3 gives at most 546+60, below AL+2 at q = 17 (624). (7,3) = 80 is optimal.
 - H(5) minus an elliptic hyperplane section: at most 8820 by degree count. Partial copies in hexagons give distance 7.
   Hexagons of order (q-1, q+1): ruled out by Feit-Higman.
+
+## (7,6) push, round 2 (13:00-14:00)
+- Best 8890 (1078 extra vertices on H(5); table 8992 needs 1180): graphs/thmC_h5_d7_n8890.json, passes verify_record.py.
+  Slower single annealing schedule (hex_sa.c, CYC/T0 env vars).
+- Hat pairs: a copy x_P and a copy y_L with P on L joined to each other (x_P on the core lines through P except L,
+  y_L on the core points of L except P) keep diameter 6 (checked case by case; graphs/pairs_h5_d7_n8888.json, 905 on
+  H(3)). No gain in search (1075-1076). Count bound with pairs 2N/5 = 1562.
+- Symmetry + exact orbit ILP (SL(3,5) inside G2(5), hexgroup.py, orbit_ilp.py): Singer group of order 93 proven optimum
+  1023; order 31 best 1023; diagonal torus of order 16: 962. ILP neighbourhood search: 1060 -> 1063.
+- Bottleneck: twin lines/points use every core vertex's single spare edge, so a point is on at most one twin line; the
+  copy sets behave like partial distance-2 ovoids of H(5). All methods stop near 1078 (about 9% short).

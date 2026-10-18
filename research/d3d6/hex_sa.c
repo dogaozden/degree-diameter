@@ -11,11 +11,11 @@
 #include <math.h>
 #include <time.h>
 
-static int N, K;
+static int N, K; static double CYC=4;
 static int *lp;   /* lines -> points, N*K */
 static int *pl;   /* points -> lines, N*K */
 static int *cP, *cL, *nC, *nW, *nD, *nT;
-static unsigned long long rs;
+static unsigned long long rs; static double T0g=0.6;
 static inline unsigned long long rnd(void){ rs ^= rs<<13; rs ^= rs>>7; rs ^= rs<<17; return rs; }
 static inline double urand(void){ return (rnd()>>11)*(1.0/9007199254740992.0); }
 
@@ -53,7 +53,7 @@ static void setline(int L, int s){
 int main(int argc, char **argv){
     if(argc<6){ fprintf(stderr,"usage\n"); return 1; }
     FILE *f = fopen(argv[1],"r"); double secs = atof(argv[2]); rs = 88172645463325252ULL ^ (unsigned long long)atoll(argv[3])*2654435761ULL;
-    double lam = atof(argv[4]);
+    double lam = atof(argv[4]); if(getenv("CYC")) CYC=atof(getenv("CYC")); if(getenv("T0")) T0g=atof(getenv("T0"));
     if(fscanf(f,"%d %d",&N,&K)!=2) return 1;
     lp = malloc(sizeof(int)*N*K); pl = malloc(sizeof(int)*N*K);
     int *cnt = calloc(N,sizeof(int)), i, j;
@@ -65,7 +65,7 @@ int main(int argc, char **argv){
     long size=0, viol=0;
     for(i=0;i<N;i++){ size += (cP[i]>0)+(cL[i]>0); viol += vline(i)+vpt(i); }
     long best=-1; clock_t t0=clock(); long it=0;
-    double T0=0.6, T1=0.05;
+    double T0=T0g, T1=0.05;
     for(;;it++){
         if((it&0xFFFF)==0){
             double el=(double)(clock()-t0)/CLOCKS_PER_SEC; if(el>secs) break;
@@ -73,7 +73,7 @@ int main(int argc, char **argv){
         }
         double el=(double)(clock()-t0)/CLOCKS_PER_SEC; (void)el;
         double frac = 0; if((it&0xFF)==0){} 
-        static double T=0.6; if((it&0xFFF)==0){ double e=(double)(clock()-t0)/CLOCKS_PER_SEC/secs; T = T0*pow(T1/T0, fmod(e*4.0,1.0)); }
+        static double T=0.6; if((it&0xFFF)==0){ double e=(double)(clock()-t0)/CLOCKS_PER_SEC/secs; T = T0*pow(T1/T0, CYC>1? fmod(e*CYC,1.0) : e); }
         (void)frac;
         int isline = rnd()&1; int x = rnd()%N; int s = rnd()%3; int old = isline? cL[x]:cP[x]; if(s==old) continue;
         int dv = isline? dline(x,s) : dpoint(x,s);

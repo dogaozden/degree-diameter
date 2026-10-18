@@ -1,0 +1,16 @@
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:48: RuntimeWarning: divide by zero encountered in matmul
+  val = int(-c @ cur); print('start', val, flush=True)
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:48: RuntimeWarning: overflow encountered in matmul
+  val = int(-c @ cur); print('start', val, flush=True)
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:48: RuntimeWarning: invalid value encountered in matmul
+  val = int(-c @ cur); print('start', val, flush=True)
+start 1060
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:71: RuntimeWarning: divide by zero encountered in matmul
+  nv = int(-c @ nx)
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:71: RuntimeWarning: overflow encountered in matmul
+  nv = int(-c @ nx)
+/Users/dogaozden/AI_Projects/degree-diameter/research/d3d6/hex_lns.py:71: RuntimeWarning: invalid value encountered in matmul
+  nv = int(-c @ nx)
+it 3405 t=128s: 1060 -> 1061 (free 5766)
+it 13151 t=502s: 1061 -> 1062 (free 5756)
+it 18575 t=711s: 1062 -> 1063 (free 1874)
