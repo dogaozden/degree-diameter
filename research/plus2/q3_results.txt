@@ -20,3 +20,16 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.13/dist-packages/pysat/solvers.py", line 2328, in interrupt
     raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
 NotImplementedError: Limited solve is currently unsupported by CaDiCaL.
+Exception in thread deg q+3: q=9 new points=11 new lines=11 n=204 gadget clonesThread-1:
+ UNSAT (10003.0s, 11444 clauses)
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 1345, in run
+    self.function(*self.args, **self.kwargs)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/pysat/solvers.py", line 2328, in interrupt
+    raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
+NotImplementedError: Limited solve is currently unsupported by CaDiCaL.
+BATCH DONE
