@@ -80,7 +80,7 @@ Records from this construction (all checked by scripts/verify_record.py):
 | (11,4) | 9 | 1 | 52 | 1774 | 1734 |
 | (13,4) | 11 | 1 | 72 | 3122 | 3064 |
 | (15,4) | 13 | 1 | 92 | 5022 | 4946 |
-| (16,4) | 13 | 2 | 257 | 5357 | 5134 |
+| (16,4) | 13 | 2 | 340 | 5440 | 5134 |
 
 (The (16,4) row uses a partial 2-cover of 257 lines found by annealing, 2026-10-18; the earlier 184 was a doubled
 partial spread. Since then AS(q)-based graphs (research/gq4x/) give (11,4) 1782, (13,4) 3146, (15,4) 5070.)
@@ -94,8 +94,11 @@ Q(4,q): a set of m(q^2+1) lines with every point on exactly m of them. Taking M 
 
     for q odd and j even:  n_b(q+1+j, 4) >= 2(q^2+1)(q+1+j).
 
-j = 2, q = 13: (16,4) >= 5440 (table 5134, our explicit graph 5284). An explicit 2-cover of Q(4,13) is being
-searched for, so the record can be checked graph by graph. Also: the cells covered by the construction in the
+j = 2, q = 13: (16,4) >= 5440 (table 5134). Explicit since 2026-10-18 (twocover-opus, research/gq4y/): in PG(3,q) =
+GF(q^4)*/GF(q)* with B(x,y) = Tr(d x y^(q^2)), d = g^((q^2+1)/2), the shift by g^(q+1) preserves W(3,q); its orbits are
+the residue classes mod q+1, and classes a and q-a together form a 2-ovoid (checked by computer for q = 3,5,7,11,13;
+no general proof written). Mapped to Q(4,13) by the Klein correspondence: 340 lines, every point on exactly 2.
+This meets the construction's ceiling 2(q^2+1)(q+3) at (16,4). Also: the cells covered by the construction in the
 table are exactly the diameter-4 degrees with Δ-1 not a prime power (7, 11, 13, 15, 16); every other degree up to
 16 has a generalized quadrangle incidence graph, which meets the Moore bound and cannot be beaten.
 
