@@ -1,5 +1,16 @@
 # Diameter 4 from the quadrangle Q(4,q): copies of an ovoid and of a line multiset
 
+## Prior art (novelty check by novelty-sonnet, 2026-10-18)
+- Vertex duplication is Delorme & Farhi (IEEE Trans. Comput. C-33, 1984, 857-860). Delorme, "Grands graphes de degre
+  et diametre donnes", Europ. J. Combin. 6 (1985) 291-302, Sec. 7 (nested duplication, kept bipartite) and Sec. 8(a)
+  (generalized quadrangles, duplicating an ovoid-type set of points at mutual distance 4) give exactly the table
+  values 346, 1734, 3064, 4946 and 5134. So **the ovoid-copy part is Delorme's (1985)**.
+- New here (no prior art found): adding copies of a line multiset with every point on at most j entries (partial
+  spreads larger than the q+3 extra vertices Delorme gets, partial 2-covers, j-covers via Bamberg-Law-Penttila
+  m-ovoids), and the AS(q) construction (research/gq4x/), which no degree-diameter paper uses.
+- Earlier wording here said the table values "are the case s = q+3". That is a count match only: Delorme's q+3 extra
+  vertices are not a partial spread. Read "same order as Delorme's", not "equal to".
+
 Draft, 2026-10-18. Proof complete; the size of the line multiset is the open input (see the last section).
 
 ## Setting
@@ -51,8 +62,8 @@ point set of an old line), so they stay at distance 4. ∎
 
 ## Against the table (bipartite degree–diameter, diameter 4)
 
-The table entries at degrees 7, 11, 13, 15 are exactly the case j = 1, s = q+3, q odd (credited to Delorme &
-Farhi 1984): 346 (q = 5), 1734 (q = 9), 3064 (q = 11), 4946 (q = 13). The degree-16 entry 5134 equals the case
+The table entries at degrees 7, 11, 13, 15 have the same order as the case j = 1, s = q+3, q odd (Delorme 1985,
+Sec. 8(a); a count match, not the same graph): 346 (q = 5), 1734 (q = 9), 3064 (q = 11), 4946 (q = 13). The degree-16 entry 5134 equals the case
 j = 2, q = 13, t = 34. So any partial spread with more than q+3 lines beats the table at degree q+2. (Whether
 other degrees fit the same pattern is being checked against the full table.)
 
@@ -85,13 +96,13 @@ table are exactly the diameter-4 degrees with Δ-1 not a prime power (7, 11, 13,
 
 Partial spreads for all odd q: Tallini (Mitt. Math. Sem. Giessen 201, 1991) constructs a maximal partial ovoid of
 W(3,q), q odd, of size 2q+1 (cited in Ceria-De Beule-Pavese-Smaldore, arXiv 2203.04553, Section 1; the
-construction itself not yet seen). So for every odd q >= 5 the j = 1 case beats the Delorme-Farhi family
-(s = q+3) by at least q-2.
+construction itself not yet seen). So for every odd q >= 5 the j = 1 case beats Delorme's family
+(order of s = q+3) by at least q-2.
 
 ## Open inputs (being checked)
 
 1. A construction of a partial spread of Q(4,q) with more than q+3 lines for every odd q (Tallini's 2q+1 is
-   reported; source being confirmed). With it, the theorem beats the Delorme–Farhi family for all odd q ≥ 5 by at
+   reported; source being confirmed). With it, the theorem beats Delorme's 1985 family for all odd q ≥ 5 by at
    least q−2.
 2. j = 2, q = 13: a 2-cover of Q(4,13) (2-ovoid of W(13)) would give (16,4) ≥ 5440. Literature and a computer
    search are running.
