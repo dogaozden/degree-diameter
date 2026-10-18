@@ -1,0 +1,29 @@
+# C-engine specialist cloud island: only d11D5 (+ d3D3 smoke). One cloud session, 4 vCPU.
+# Starts from the C starter program (g000-seed) plus the record program of the nearest cell, d7D5 (1140).
+run_id = "c2-d11d5"
+problem = "problems.bipartite_dd.islands_c:D11D5"
+seed = 405
+generations = 80
+candidates_per_generation = 32
+eval_seeds = [0]
+time_limit_s = 60
+workers = 4
+seed_programs = [
+  "records/bipartite_dd/d7D5/1140-spec-d7d5-g016-c15.program.py",
+]
+
+[mutator]
+kind = "claude"
+model = "claude-haiku-5-5"
+concurrency = 8
+timeout_s = 600
+max_calls = 1500
+stop_at = 0.9
+
+[selection]
+elite_k = 6
+roles = { default = 0.35, crossover = 0.2, invent = 0.25, moonshot = 0.2 }
+
+[git]
+enabled = true
+push = true
