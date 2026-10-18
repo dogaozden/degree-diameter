@@ -1,0 +1,11 @@
+points: 3906
+lines: 3906
+lines_equal_points: True
+every_line_q+1_points: True
+every_point_on_q+1_lines: True
+diameter6_degree_q+1: True
+girth: 12
+girth_is_12: True
+q=5: H(q) checks PASSED
+wrote /Users/dogaozden/AI_Projects/degree-diameter/research/gh6/hex/hexagon_q5.json
+python3 gh_build.py 5  50.39s user 0.16s system 98% cpu 51.486 total
