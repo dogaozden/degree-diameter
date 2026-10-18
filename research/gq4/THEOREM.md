@@ -98,7 +98,11 @@ j = 2, q = 13: (16,4) >= 5440 (table 5134). Explicit since 2026-10-18 (twocover-
 GF(q^4)*/GF(q)* with B(x,y) = Tr(d x y^(q^2)), d = g^((q^2+1)/2), the shift by g^(q+1) preserves W(3,q); its orbits are
 the residue classes mod q+1, and classes a and q-a together form a 2-ovoid (checked by computer for q = 3,5,7,11,13;
 no general proof written). Mapped to Q(4,13) by the Klein correspondence: 340 lines, every point on exactly 2.
-This meets the construction's ceiling 2(q^2+1)(q+3) at (16,4). Also: the cells covered by the construction in the
+This meets the construction's ceiling 2(q^2+1)(q+3) at (16,4).
+Proposition C (writeup-opus, 2026-10-18; full proof in research/NOTE.md): the pairing a <-> q-a gives a 2-ovoid of W(3,q)
+for every odd prime power q (the classes are Ebert's partition of PG(3,q) into elliptic quadrics; a discriminant
+identity D(h nu^q) = N(h) D(nu) with N(h) a non-square makes the two counts 1+chi and 1-chi). Computer check also
+for q = 9, 25, 27 (research/gq4y/w3_singer_pp.py). Also: the cells covered by the construction in the
 table are exactly the diameter-4 degrees with Δ-1 not a prime power (7, 11, 13, 15, 16); every other degree up to
 16 has a generalized quadrangle incidence graph, which meets the Moore bound and cannot be beaten.
 

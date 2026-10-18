@@ -1,0 +1,4 @@
+VALID  n=396 d=16 D=3  research/d3d6/graphs/sym3_q13_d16_n396.json
+    checker: True   networkx: True  from-scratch: pass (diameter 3, degrees [14, 15, 16], sides (198, 198), 2979 edges)
+VALID  n=396 d=16 D=3  research/d3d6/graphs/kframe_q13_k3_d16_n396.json
+    checker: True   networkx: True  from-scratch: pass (diameter 3, degrees [14, 15, 16], sides (198, 198), 2987 edges)
