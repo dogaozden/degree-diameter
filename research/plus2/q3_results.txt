@@ -8,3 +8,15 @@ deg q+3: q=4 new points=6 new lines=6 n=54 SAT (0.0s) valid=True
 deg q+3: q=4 new points=7 new lines=7 n=56 gadget SAT (1.3s) valid=True
 deg q+3: q=7 new points=10 new lines=9 n=133 gadget clones UNSAT (102.1s, 8826 clauses)
 deg q+3: q=7 new points=9 new lines=9 n=132 gadget clones UNSAT (118.8s, 6514 clauses)
+Exception in thread Thread-1:
+deg q+3: q=7 new points=10 new lines=10 n=134 gadget clones UNSAT (2355.8s, 11444 clauses)
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 1345, in run
+    self.function(*self.args, **self.kwargs)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/pysat/solvers.py", line 2328, in interrupt
+    raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
+NotImplementedError: Limited solve is currently unsupported by CaDiCaL.
