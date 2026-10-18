@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "d3D3": {
+      "case_id": "d3D3",
+      "reason": "",
+      "score": 1.0,
+      "status": "ok",
+      "valid": true,
+      "value": 14.0,
+      "wall_s": 0.11441193099994962
+    },
+    "d8D5": {
+      "case_id": "d8D5",
+      "reason": "crash: program.py\", line 1039, in build\n    best = _bicayley_phase(best, d, D, rng, py_end, consider)\n  File \"/home/user/degree-diameter/runs/c2-d8d5/candidates/g010-c12/program.py\", line 915, in _bicayley_phase\n    base = best[0] // (2 * k)\n           ~~~~^^^\nTypeError: 'bool' object is not subscriptable\n",
+      "score": 0.0,
+      "status": "crash",
+      "valid": false,
+      "value": 0.0,
+      "wall_s": 0.11433650799995121
+    }
+  },
+  "fitness": 0.09090909090909091
+}
