@@ -1,0 +1,6 @@
+VALID  n=1782 d=11 D=4  research/gq4x/graphs/as_w2_q9_n1782.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [11], sides (891, 891), 9801 edges)
+VALID  n=3146 d=13 D=4  research/gq4x/graphs/as_w2_q11_n3146.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [13], sides (1573, 1573), 20449 edges)
+VALID  n=5070 d=15 D=4  research/gq4x/graphs/as_w2_q13_n5070.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [15], sides (2535, 2535), 38025 edges)
