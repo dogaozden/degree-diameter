@@ -16,6 +16,8 @@ import BipartiteDD.SingerC.Main
 #print axioms nb_15_4_v2
 #print axioms nb_16_4_v2
 #print axioms nb_16_3
+#print axioms nb_8_5
+#print axioms nb_9_5_v2
 #print axioms BipartiteDD.SingerC.card_zeros_form
 #print axioms BipartiteDD.SingerC.Setting.natCard_F
 #print axioms BipartiteDD.SingerC.Setting.natCard_L
