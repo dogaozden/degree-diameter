@@ -19,6 +19,7 @@ local test, then one radius step per stage. `BipartiteDD.Staged` shows how they 
 not trusted; each stage is a kernel check.
 """
 import json
+import sys
 from collections import deque
 from pathlib import Path
 
@@ -40,9 +41,13 @@ RECORDS = [
     ("G3122", 3122, "d13D4/3122-gq4-gq4_q11_n3122.json", 13, 4),
     ("G5022", 5022, "d15D4/5022-gq4-gq4_q13_n5022.json", 15, 4),
     ("G5284", 5284, "d16D4/5284-gq4-gq4_q13_j2_n5284.json", 16, 4),
+    ("G1782", 1782, "d11D4/1782-gq4x-as_w2_q9_n1782.json", 11, 4),
+    ("G3146", 3146, "d13D4/3146-gq4x-as_w2_q11_n3146.json", 13, 4),
+    ("G5070", 5070, "d15D4/5070-gq4x-as_w2_q13_n5070.json", 15, 4),
+    ("G5440", 5440, "d16D4/5440-gq4-cover2_q13_n5440.json", 16, 4),
 ]
 
-STAGED = {"G2510", "G3122", "G5022", "G5284"}
+STAGED = {"G2510", "G3122", "G5022", "G5284", "G1782", "G3146", "G5070", "G5440"}
 
 
 def load(rel):
@@ -225,9 +230,11 @@ def write_stages(name, n, d, D):
         (stages / f"{name}_s{r}.lean").write_text(body)
 
 
-def main():
+def main(only=None):
     OUT.mkdir(parents=True, exist_ok=True)
     for name, n, rel, d, D in RECORDS:
+        if only and name not in only:
+            continue
         nn, adj = load(rel)
         assert nn == n, (name, nn, n)
         assert max(len(a) for a in adj) <= d, (name, "degree")
@@ -245,4 +252,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # Optional arguments are Lean names (e.g. G1782); without them every record is written.
+    main(set(sys.argv[1:]) or None)
