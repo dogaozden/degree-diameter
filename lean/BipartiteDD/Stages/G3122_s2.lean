@@ -6,6 +6,7 @@ namespace BipartiteDD.G3122
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Radius step 2 -> 3 of the 3122-vertex graph. -/
 theorem stage2 : stepOK 12 adjL (chainL 3122 4 levs 2) (chainL 3122 4 levs 3) = true := by decide +kernel
 

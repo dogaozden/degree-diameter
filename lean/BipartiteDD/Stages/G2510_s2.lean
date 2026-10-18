@@ -6,6 +6,7 @@ namespace BipartiteDD.G2510
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Radius step 2 -> 3 of the 2510-vertex graph. -/
 theorem stage2 : stepOK 12 adjL (chainL 2510 5 levs 2) (chainL 2510 5 levs 3) = true := by decide +kernel
 

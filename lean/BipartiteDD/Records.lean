@@ -9,19 +9,36 @@ import BipartiteDD.Graphs.G192
 import BipartiteDD.Graphs.G276
 import BipartiteDD.Graphs.G376
 import BipartiteDD.Staged
+import BipartiteDD.StagedLocal
 import BipartiteDD.Graphs.G2510
-import BipartiteDD.Graphs.G3122
-import BipartiteDD.Stages.G2510_local
+import BipartiteDD.Stages.G2510_lo
+import BipartiteDD.Stages.G2510_hi
 import BipartiteDD.Stages.G2510_s0
 import BipartiteDD.Stages.G2510_s1
 import BipartiteDD.Stages.G2510_s2
 import BipartiteDD.Stages.G2510_s3
 import BipartiteDD.Stages.G2510_s4
-import BipartiteDD.Stages.G3122_local
+import BipartiteDD.Graphs.G3122
+import BipartiteDD.Stages.G3122_lo
+import BipartiteDD.Stages.G3122_hi
 import BipartiteDD.Stages.G3122_s0
 import BipartiteDD.Stages.G3122_s1
 import BipartiteDD.Stages.G3122_s2
 import BipartiteDD.Stages.G3122_s3
+import BipartiteDD.Graphs.G5022
+import BipartiteDD.Stages.G5022_lo
+import BipartiteDD.Stages.G5022_hi
+import BipartiteDD.Stages.G5022_s0
+import BipartiteDD.Stages.G5022_s1
+import BipartiteDD.Stages.G5022_s2
+import BipartiteDD.Stages.G5022_s3
+import BipartiteDD.Graphs.G5284
+import BipartiteDD.Stages.G5284_lo
+import BipartiteDD.Stages.G5284_hi
+import BipartiteDD.Stages.G5284_s0
+import BipartiteDD.Stages.G5284_s1
+import BipartiteDD.Stages.G5284_s2
+import BipartiteDD.Stages.G5284_s3
 
 theorem nb_4_5 : ∃ G : SimpleGraph (Fin 162), BipartiteDD.IsBipartiteDegDiam G 4 5 :=
   ⟨_, BipartiteDD.check_sound 4 5 BipartiteDD.G162.nbrs BipartiteDD.G162.color
@@ -66,7 +83,9 @@ theorem nb_15_3 : ∃ G : SimpleGraph (Fin 376), BipartiteDD.IsBipartiteDegDiam 
 theorem nb_9_5 : ∃ G : SimpleGraph (Fin 2510), BipartiteDD.IsBipartiteDegDiam G 9 5 :=
   ⟨_, BipartiteDD.check_sound 9 5 BipartiteDD.G2510.nbrs BipartiteDD.G2510.color
     (BipartiteDD.Staged.check_of_chain 12 9 5 BipartiteDD.G2510.adjL BipartiteDD.G2510.colL
-      (by decide) BipartiteDD.G2510.levs (by decide) BipartiteDD.G2510.local_ok
+      (by decide) BipartiteDD.G2510.levs (by decide)
+      (BipartiteDD.Staged.checkLocal_of_split 1255 (by decide) BipartiteDD.G2510.local_lo
+        BipartiteDD.G2510.local_hi)
       (by
         intro r hr
         obtain rfl | rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 ∨ r = 4 := by omega
@@ -75,8 +94,32 @@ theorem nb_9_5 : ∃ G : SimpleGraph (Fin 2510), BipartiteDD.IsBipartiteDegDiam 
 theorem nb_13_4 : ∃ G : SimpleGraph (Fin 3122), BipartiteDD.IsBipartiteDegDiam G 13 4 :=
   ⟨_, BipartiteDD.check_sound 13 4 BipartiteDD.G3122.nbrs BipartiteDD.G3122.color
     (BipartiteDD.Staged.check_of_chain 12 13 4 BipartiteDD.G3122.adjL BipartiteDD.G3122.colL
-      (by decide) BipartiteDD.G3122.levs (by decide) BipartiteDD.G3122.local_ok
+      (by decide) BipartiteDD.G3122.levs (by decide)
+      (BipartiteDD.Staged.checkLocal_of_split 1561 (by decide) BipartiteDD.G3122.local_lo
+        BipartiteDD.G3122.local_hi)
       (by
         intro r hr
         obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
         exacts [BipartiteDD.G3122.stage0, BipartiteDD.G3122.stage1, BipartiteDD.G3122.stage2, BipartiteDD.G3122.stage3]))⟩
+
+theorem nb_15_4 : ∃ G : SimpleGraph (Fin 5022), BipartiteDD.IsBipartiteDegDiam G 15 4 :=
+  ⟨_, BipartiteDD.check_sound 15 4 BipartiteDD.G5022.nbrs BipartiteDD.G5022.color
+    (BipartiteDD.Staged.check_of_chain 13 15 4 BipartiteDD.G5022.adjL BipartiteDD.G5022.colL
+      (by decide) BipartiteDD.G5022.levs (by decide)
+      (BipartiteDD.Staged.checkLocal_of_split 2511 (by decide) BipartiteDD.G5022.local_lo
+        BipartiteDD.G5022.local_hi)
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
+        exacts [BipartiteDD.G5022.stage0, BipartiteDD.G5022.stage1, BipartiteDD.G5022.stage2, BipartiteDD.G5022.stage3]))⟩
+
+theorem nb_16_4 : ∃ G : SimpleGraph (Fin 5284), BipartiteDD.IsBipartiteDegDiam G 16 4 :=
+  ⟨_, BipartiteDD.check_sound 16 4 BipartiteDD.G5284.nbrs BipartiteDD.G5284.color
+    (BipartiteDD.Staged.check_of_chain 13 16 4 BipartiteDD.G5284.adjL BipartiteDD.G5284.colL
+      (by decide) BipartiteDD.G5284.levs (by decide)
+      (BipartiteDD.Staged.checkLocal_of_split 2642 (by decide) BipartiteDD.G5284.local_lo
+        BipartiteDD.G5284.local_hi)
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
+        exacts [BipartiteDD.G5284.stage0, BipartiteDD.G5284.stage1, BipartiteDD.G5284.stage2, BipartiteDD.G5284.stage3]))⟩
