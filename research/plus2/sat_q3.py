@@ -23,7 +23,7 @@ from pathlib import Path
 
 from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
-from pysat.solvers import Cadical153
+from pysat.solvers import Glucose4  # Cadical153 cannot be interrupted, so timeouts crashed
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from construction import pg_plane, default_frame, lib  # noqa: E402
@@ -125,7 +125,7 @@ def main():
         print(tag, 'UNSAT (trivially)', flush=True)
         return
     PTS, LNS, INC, clauses, pool = m
-    s = Cadical153(bootstrap_with=clauses)
+    s = Glucose4(bootstrap_with=clauses)
     timer = threading.Timer(limit, s.interrupt)
     timer.start()
     res = s.solve_limited(expect_interrupt=True)
