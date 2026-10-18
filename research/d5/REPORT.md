@@ -43,3 +43,8 @@ at Δ=11.
    864 = 2^5·3^3 were solved at once by two groups).
 3. Lifts over bigger bases (2+2, 3+3), same reduced test (one BFS per base vertex).
 4. Find the Δ ≥ 12 table values.
+
+## Round 2 (haar-haiku, incremental search haar_search2.c, about 1.8x faster)
+- (9,5): cost 0 at group orders 1266, 1280 and 1310; best 1310 = Z_131 ⋊_53 Z_10 gives a 9-regular diameter-5 graph on
+  2620 vertices (graphs/haar_d9_n2620.json, passes verify_record.py; solution sols/h2_d9_N1310_m131_k10_l53.txt).
+- Still short: Δ=6 best 2 uncovered (orders 351, 355); Δ=8 best 2 at 882; Δ=10 best 8 at 2005; Δ=9 at 1378 not solved.
