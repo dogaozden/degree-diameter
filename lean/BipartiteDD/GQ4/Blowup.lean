@@ -41,10 +41,12 @@ def origOf (O : Finset P) (j : ℕ) (m : L → ℕ) :
   | .inl p => .inl (.inl p)
   | .inr l => .inr (.inl l)
 
+omit [Membership P L] in
 theorem under_origOf (O : Finset P) (j : ℕ) (m : L → ℕ) (w : P ⊕ L) :
     under (origOf O j m w) = w := by
   cases w <;> rfl
 
+omit [Membership P L] in
 theorem isOrig_origOf (O : Finset P) (j : ℕ) (m : L → ℕ) (w : P ⊕ L) :
     isOrig (origOf O j m w) := by
   cases w <;> trivial

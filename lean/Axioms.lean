@@ -1,5 +1,6 @@
 import BipartiteDD.Records
 import BipartiteDD.GQ4.Main
+import BipartiteDD.GQ4.Count
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -17,3 +18,4 @@ import BipartiteDD.GQ4.Main
 #print axioms BipartiteDD.GQ4.ediam_le_four_of_copy
 #print axioms BipartiteDD.GQ4.isBipartiteDegDiam
 #print axioms BipartiteDD.GQ4.gq4
+#print axioms BipartiteDD.GQ.card_points

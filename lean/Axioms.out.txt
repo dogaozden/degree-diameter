@@ -13,3 +13,4 @@
 'BipartiteDD.GQ4.ediam_le_four_of_copy' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQ4.isBipartiteDegDiam' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQ4.gq4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.GQ.card_points' depends on axioms: [propext, Classical.choice, Quot.sound]
