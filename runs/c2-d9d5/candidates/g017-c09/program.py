@@ -1,0 +1,463 @@
+"""Multi-orbit semidirect lifts for the bipartite degree-diameter problem.
+
+The previous version used one or two orbits per side with a fixed affine group.
+This version searches a wider family:
+  * B orbits per side (B = 1..5), each a copy of a semidirect group G = Z_m x| Z_k,
+    with the group drawn at random for every restart (r^k = 1 mod m, gcd(r, m) = 1).
+  * The base multigraph is a union of d random permutations of {0..B-1}, so every
+    orbit has degree d and the lift is d-regular and bipartite.
+  * Voltages are annealed to minimise the number of pairs left uncovered by BFS
+    from the 2B orbit representatives. Left translations are automorphisms that act
+    transitively on each orbit, so cost 0 means diameter <= D.
+  * For each B a ladder of orders N climbs on success and backs off on failure.
+    Every accepted order must beat the incumbent vertex count passed in from Python.
+
+Before output the C engine re-checks the full graph from every vertex when it is
+small enough. Python checks the result with lib.is_valid and keeps a valid fallback.
+"""
+import time
+
+import lib
+
+C_SOURCE = r'''
+#define _POSIX_C_SOURCE 200809L
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#define MAXB 6
+#define MAXD 32
+#define MAXN 8192
+#define MAXV (2 * MAXB * MAXN)
+
+static int d, D;
+static double t_end;
+static uint64_t rs = 88172645463325252ULL;
+static int bestTotal = 0;
+
+static double now(void) {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ts.tv_sec + ts.tv_nsec * 1e-9;
+}
+static uint64_t rnd(void) {
+    rs ^= rs << 13;
+    rs ^= rs >> 7;
+    rs ^= rs << 17;
+    return rs;
+}
+static int rndint(int k) { return (int)(rnd() % (uint64_t)k); }
+static double rnd01(void) { return (rnd() >> 11) * (1.0 / 9007199254740992.0); }
+
+/* ------------------------------------------------------------ group Z_m x| Z_k */
+
+static int GM, GK, GN;
+static int PW[MAXN];
+
+static long gcdl(long a, long b) {
+    while (b) { long t = a % b; a = b; b = t; }
+    return a;
+}
+static long powmod(long b, long e, long m) {
+    long r = 1 % m;
+    b %= m;
+    while (e > 0) {
+        if (e & 1) r = r * b % m;
+        b = b * b % m;
+        e >>= 1;
+    }
+    return r;
+}
+
+/* Element (a, b) is coded a*GK + b; (a,b)(c,e) = (a + r^b c, b + e). */
+static inline int gmul(int x, int y) {
+    int a = x / GK, b = x % GK, c = y / GK, e = y % GK;
+    int na = (a + PW[b] * c) % GM;
+    return na * GK + (b + e) % GK;
+}
+static int ginv(int x) {
+    int a = x / GK, b = x % GK;
+    int nb = (GK - b) % GK;
+    int na = (GM - (PW[nb] * a) % GM) % GM;
+    return na * GK + nb;
+}
+
+static void pick_group(int N) {
+    int divs[64], nd = 0;
+    for (int k = 1; k <= N && nd < 64; k++)
+        if (N % k == 0) divs[nd++] = k;
+    int k = divs[rndint(nd)];
+    if (rndint(3) == 0) k = 1;
+    int m = N / k, r = 1;
+    if (k >= 2 && m >= 2) {
+        int found = 0;
+        for (int tries = 0; tries < 400 && !found; tries++) {
+            int rr = 1 + rndint(m - 1);
+            if (gcdl(rr, m) != 1) continue;
+            if (powmod(rr, k, m) != 1 % m) continue;
+            r = rr;
+            found = 1;
+        }
+        if (!found) { k = 1; m = N; r = 1; }
+    }
+    GM = m;
+    GK = k;
+    GN = N;
+    PW[0] = 1 % m;
+    for (int b = 1; b < k; b++) PW[b] = (int)((long)PW[b - 1] * r % m);
+}
+
+/* ------------------------------------------------------------ lift state */
+
+static int curB;
+static int tgt[MAXB][MAXD], vol[MAXB][MAXD];
+static int incI[MAXB][MAXD], incT[MAXB][MAXD];
+static int fw[MAXB][MAXD][MAXN], bw[MAXB][MAXD][MAXN];
+static int vis[MAXV], que[MAXV];
+static int stamp_ = 0;
+
+static int bestB = 0, bestN = 0, bestGM = 0, bestGK = 0;
+static int bestPW[MAXN];
+static int bestTgt[MAXB][MAXD], bestVol[MAXB][MAXD];
+
+/* Right orbit j has exactly d incident darts (i, t) with tgt[i][t] == j. */
+static void build_inc(int B) {
+    for (int j = 0; j < B; j++) {
+        int cnt = 0;
+        for (int i = 0; i < B; i++)
+            for (int t = 0; t < d; t++)
+                if (tgt[i][t] == j && cnt < MAXD) {
+                    incI[j][cnt] = i;
+                    incT[j][cnt] = t;
+                    cnt++;
+                }
+    }
+}
+
+/* Random base: d permutations of the B orbits, so every orbit has d darts per side. */
+static void gen_base(int B) {
+    for (int t = 0; t < d; t++) {
+        int p[MAXB];
+        for (int i = 0; i < B; i++) p[i] = i;
+        for (int i = B - 1; i > 0; i--) {
+            int j = rndint(i + 1);
+            int tmp = p[i];
+            p[i] = p[j];
+            p[j] = tmp;
+        }
+        for (int i = 0; i < B; i++) tgt[i][t] = p[i];
+    }
+    build_inc(B);
+}
+
+static void set_dart(int i, int t, int x) {
+    vol[i][t] = x;
+    int xi = ginv(x);
+    for (int g = 0; g < GN; g++) {
+        fw[i][t][g] = gmul(g, x);
+        bw[i][t][g] = gmul(g, xi);
+    }
+}
+
+static void set_all_darts(int B) {
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) set_dart(i, t, vol[i][t]);
+}
+
+/* Darts sharing a target orbit need distinct voltages so the graph stays simple. */
+static int valid_value(int i, int t, int x) {
+    for (int t2 = 0; t2 < d; t2++)
+        if (t2 != t && tgt[i][t2] == tgt[i][t] && vol[i][t2] == x) return 0;
+    return 1;
+}
+
+/* BFS up to depth D from src; returns number of vertices reached. */
+static int bfs_count(int src) {
+    int N = GN, BN = curB * N;
+    stamp_++;
+    int head = 0, tail = 0;
+    que[tail++] = src;
+    vis[src] = stamp_;
+    for (int lvl = 0; lvl < D && head < tail; lvl++) {
+        int end = tail;
+        while (head < end) {
+            int v = que[head++];
+            if (v < BN) {
+                int i = v / N, g = v % N;
+                for (int t = 0; t < d; t++) {
+                    int u = BN + tgt[i][t] * N + fw[i][t][g];
+                    if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                }
+            } else {
+                int w = v - BN, j = w / N, y = w % N;
+                for (int k = 0; k < d; k++) {
+                    int i = incI[j][k], t = incT[j][k];
+                    int u = i * N + bw[i][t][y];
+                    if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                }
+            }
+        }
+    }
+    return tail;
+}
+
+/* Uncovered pairs from the 2B orbit representatives. */
+static long cover_cost(void) {
+    int N = GN, V = 2 * curB * N;
+    long cost = 0;
+    for (int i = 0; i < curB; i++) cost += (long)(V - bfs_count(i * N));
+    for (int j = 0; j < curB; j++) cost += (long)(V - bfs_count((curB + j) * N));
+    return cost;
+}
+
+static void record(int B) {
+    int total = 2 * B * GN;
+    if (total <= bestTotal) return;
+    bestTotal = total;
+    bestB = B;
+    bestN = GN;
+    bestGM = GM;
+    bestGK = GK;
+    for (int k = 0; k < GK; k++) bestPW[k] = PW[k];
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) {
+            bestTgt[i][t] = tgt[i][t];
+            bestVol[i][t] = vol[i][t];
+        }
+}
+
+/* Simulated annealing over group choice, base and voltages for fixed (B, N).
+ * Returns 1 and records the state when a cost-0 lift is found. */
+static int search_group(int B, int N, double until) {
+    const int iters = 4000;
+    curB = B;
+    while (now() < until) {
+        pick_group(N);
+        gen_base(B);
+        for (int i = 0; i < B; i++)
+            for (int t = 0; t < d; t++) vol[i][t] = -1;
+        int ok = 1;
+        for (int i = 0; i < B && ok; i++)
+            for (int t = 0; t < d && ok; t++) {
+                int x = -1;
+                for (int tries = 0; tries < 1000; tries++) {
+                    int c = rndint(N);
+                    if (valid_value(i, t, c)) { x = c; break; }
+                }
+                if (x < 0) ok = 0;
+                else vol[i][t] = x;
+            }
+        if (!ok) continue;
+        set_all_darts(B);
+        long cost = cover_cost();
+        double c0 = cost > 0 ? (double)cost : 1.0;
+        double Ts = 0.05 * c0 + 1.0, Te = 0.3;
+        for (int it = 0; it < iters && cost > 0; it++) {
+            if ((it & 15) == 0 && now() > until) return 0;
+            double T = Ts * pow(Te / Ts, (double)it / iters);
+            int i = rndint(B), t = rndint(d);
+            int x = -1;
+            for (int tries = 0; tries < 1000; tries++) {
+                int c = rndint(N);
+                if (c != vol[i][t] && valid_value(i, t, c)) { x = c; break; }
+            }
+            if (x < 0) continue;
+            int old = vol[i][t];
+            set_dart(i, t, x);
+            long c2 = cover_cost();
+            if (c2 <= cost || rnd01() < exp(-(double)(c2 - cost) / T)) {
+                cost = c2;
+            } else {
+                set_dart(i, t, old);
+            }
+        }
+        if (cost == 0) {
+            record(B);
+            return 1;
+        }
+    }
+    return 0;
+}
+
+/* ------------------------------------------------------------ main */
+
+static int adj[MAXV][MAXD];
+
+int main(int argc, char **argv) {
+    if (argc < 5) {
+        printf("0 0\n");
+        return 0;
+    }
+    d = atoi(argv[1]);
+    D = atoi(argv[2]);
+    long seed = atol(argv[3]);
+    double limit = atof(argv[4]);
+    int minTotal = argc > 5 ? atoi(argv[5]) : 0;
+    int Bmax = argc > 6 ? atoi(argv[6]) : 5;
+    double t0 = now();
+    t_end = t0 + limit * 0.92 - 0.5;
+    rs ^= (uint64_t)(seed + 1) * 0x9E3779B97F4A7C15ULL;
+    if (!rs) rs = 1;
+    for (int i = 0; i < 10; i++) rnd();
+
+    if (d < 2 || d > MAXD || D < 3) {
+        printf("0 0\n");
+        return 0;
+    }
+    if (Bmax < 1) Bmax = 1;
+    if (Bmax > MAXB) Bmax = MAXB;
+    bestTotal = minTotal;
+
+    int gB[MAXB + 1], stB[MAXB + 1];
+    for (int B = 1; B <= Bmax; B++) {
+        int fl = bestTotal / (2 * B) + 1;
+        if (fl < 2 * d) fl = 2 * d;
+        gB[B] = fl;
+        stB[B] = 1 + fl / 40;
+    }
+
+    while (now() < t_end) {
+        for (int B = 1; B <= Bmax && now() < t_end; B++) {
+            int fl = bestTotal / (2 * B) + 1;
+            if (fl < 2 * d) fl = 2 * d;
+            if (gB[B] < fl) gB[B] = fl;
+            if (gB[B] > MAXN - 1) gB[B] = MAXN - 1;
+            double rem = t_end - now();
+            double slice = rem * 0.2;
+            if (slice < 0.8) slice = 0.8;
+            if (slice > 8.0) slice = 8.0;
+            if (slice > rem) slice = rem;
+            if (search_group(B, gB[B], now() + slice)) {
+                gB[B] += stB[B];
+                stB[B] = 1 + gB[B] / 40;
+            } else {
+                stB[B] = 1 + stB[B] / 2;
+                gB[B] -= stB[B];
+            }
+        }
+    }
+
+    if (bestB == 0) {
+        printf("0 0\n");
+        return 0;
+    }
+
+    /* Rebuild the best lift. */
+    int B = bestB, N = bestN;
+    GM = bestGM;
+    GK = bestGK;
+    GN = N;
+    for (int k = 0; k < GK; k++) PW[k] = bestPW[k];
+    curB = B;
+    for (int i = 0; i < B; i++)
+        for (int t = 0; t < d; t++) {
+            tgt[i][t] = bestTgt[i][t];
+            vol[i][t] = bestVol[i][t];
+        }
+    build_inc(B);
+    set_all_darts(B);
+
+    int BN = B * N, V = 2 * BN, E = BN * d;
+    for (int v = 0; v < BN; v++) {
+        int i = v / N, g = v % N;
+        for (int t = 0; t < d; t++)
+            adj[v][t] = BN + tgt[i][t] * N + fw[i][t][g];
+    }
+    for (int w = BN; w < V; w++) {
+        int j = (w - BN) / N, y = (w - BN) % N;
+        for (int k = 0; k < d; k++) {
+            int i = incI[j][k], t = incT[j][k];
+            adj[w][k] = i * N + bw[i][t][y];
+        }
+    }
+
+    /* Full BFS from every vertex when cheap; otherwise rely on the symmetry argument. */
+    if (V <= 6000) {
+        for (int s = 0; s < V; s++) {
+            stamp_++;
+            int head = 0, tail = 0;
+            que[tail++] = s;
+            vis[s] = stamp_;
+            for (int lvl = 0; lvl < D && head < tail; lvl++) {
+                int end = tail;
+                while (head < end) {
+                    int v = que[head++];
+                    for (int k = 0; k < d; k++) {
+                        int u = adj[v][k];
+                        if (vis[u] != stamp_) { vis[u] = stamp_; que[tail++] = u; }
+                    }
+                }
+            }
+            if (tail != V) {
+                printf("0 0\n");
+                return 0;
+            }
+        }
+    }
+
+    printf("%d %d\n", V, E);
+    for (int v = 0; v < BN; v++)
+        for (int t = 0; t < d; t++)
+            printf("%d %d\n", v, adj[v][t]);
+    return 0;
+}
+'''
+
+
+def _best_pg(d):
+    """Incidence graph of PG(2, q) for the largest prime power q with q + 1 <= d."""
+    for q in range(d - 1, 1, -1):
+        if lib.is_prime_power(q):
+            return lib.projective_plane_incidence(q)
+    return None
+
+
+def build(d, D, seed, time_limit):
+    t0 = time.monotonic()
+    if d < 1 or D < 1:
+        return 1, []
+    if D == 1:
+        return 2, [(0, 1)]
+
+    # K_{d,d} has diameter 2, so it is valid for every D >= 2 and is the safe fallback.
+    best = lib.haar_graph(d, range(d))
+
+    def consider(cand):
+        nonlocal best
+        if cand is None:
+            return
+        n, e = cand
+        if n > best[0] and lib.is_valid(n, e, d, D):
+            best = (n, e)
+
+    if D >= 3:
+        try:
+            consider(_best_pg(d))
+        except Exception:
+            pass
+        # Exact Moore graph: nothing can beat it.
+        if D == 3 and lib.is_prime_power(d - 1) and best[0] > 2 * d:
+            return best
+        if d - 2 >= 3 and lib.is_prime_power(d - 2):
+            try:
+                consider(lib.araujo_lopez_graph(d - 2))
+            except Exception:
+                pass
+
+    if d >= 2 and D >= 3:
+        elapsed = time.monotonic() - t0
+        budget = 0.88 * time_limit - elapsed - 2.5
+        if budget > 3.0:
+            try:
+                text = lib.run_c(C_SOURCE, [d, D, seed, round(budget, 2), best[0], 5],
+                                 stdin_graph=None, timeout=budget + 8.0)
+                consider(lib.parse_graph_text(text))
+            except Exception:
+                pass   # keep the valid Python graph
+
+    if not lib.is_valid(best[0], best[1], d, D):
+        best = lib.haar_graph(d, range(d))
+    return best
