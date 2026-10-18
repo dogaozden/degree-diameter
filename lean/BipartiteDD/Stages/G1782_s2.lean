@@ -6,6 +6,7 @@ namespace BipartiteDD.G1782
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Radius step 2 -> 3 of the 1782-vertex graph. -/
 theorem stage2 : stepOK 11 adjL (chainL 1782 4 levs 2) (chainL 1782 4 levs 3) = true := by decide +kernel
 

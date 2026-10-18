@@ -6,6 +6,7 @@ namespace BipartiteDD.G3146
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Radius step 1 -> 2 of the 3146-vertex graph. -/
 theorem stage1 : stepOK 12 adjL (chainL 3146 4 levs 1) (chainL 3146 4 levs 2) = true := by decide +kernel
 

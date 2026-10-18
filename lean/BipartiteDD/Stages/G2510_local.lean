@@ -6,6 +6,7 @@ namespace BipartiteDD.G2510
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Local test (degrees, symmetry, colouring) of the 2510-vertex graph. -/
 theorem local_ok : checkLocal 12 9 adjL colL = true := by decide +kernel
 

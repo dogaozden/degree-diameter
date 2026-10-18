@@ -34,6 +34,18 @@ import BipartiteDD.Stages.G3146_s0
 import BipartiteDD.Stages.G3146_s1
 import BipartiteDD.Stages.G3146_s2
 import BipartiteDD.Stages.G3146_s3
+import BipartiteDD.Graphs.G5070
+import BipartiteDD.Stages.G5070_local
+import BipartiteDD.Stages.G5070_s0
+import BipartiteDD.Stages.G5070_s1
+import BipartiteDD.Stages.G5070_s2
+import BipartiteDD.Stages.G5070_s3
+import BipartiteDD.Graphs.G5440
+import BipartiteDD.Stages.G5440_local
+import BipartiteDD.Stages.G5440_s0
+import BipartiteDD.Stages.G5440_s1
+import BipartiteDD.Stages.G5440_s2
+import BipartiteDD.Stages.G5440_s3
 
 theorem nb_4_5 : ∃ G : SimpleGraph (Fin 162), BipartiteDD.IsBipartiteDegDiam G 4 5 :=
   ⟨_, BipartiteDD.check_sound 4 5 BipartiteDD.G162.nbrs BipartiteDD.G162.color
@@ -110,3 +122,21 @@ theorem nb_13_4_v2 : ∃ G : SimpleGraph (Fin 3146), BipartiteDD.IsBipartiteDegD
         intro r hr
         obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
         exacts [BipartiteDD.G3146.stage0, BipartiteDD.G3146.stage1, BipartiteDD.G3146.stage2, BipartiteDD.G3146.stage3]))⟩
+
+theorem nb_15_4_v2 : ∃ G : SimpleGraph (Fin 5070), BipartiteDD.IsBipartiteDegDiam G 15 4 :=
+  ⟨_, BipartiteDD.check_sound 15 4 BipartiteDD.G5070.nbrs BipartiteDD.G5070.color
+    (BipartiteDD.Staged.check_of_chain 13 15 4 BipartiteDD.G5070.adjL BipartiteDD.G5070.colL
+      (by decide) BipartiteDD.G5070.levs (by decide) BipartiteDD.G5070.local_ok
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
+        exacts [BipartiteDD.G5070.stage0, BipartiteDD.G5070.stage1, BipartiteDD.G5070.stage2, BipartiteDD.G5070.stage3]))⟩
+
+theorem nb_16_4_v2 : ∃ G : SimpleGraph (Fin 5440), BipartiteDD.IsBipartiteDegDiam G 16 4 :=
+  ⟨_, BipartiteDD.check_sound 16 4 BipartiteDD.G5440.nbrs BipartiteDD.G5440.color
+    (BipartiteDD.Staged.check_of_chain 13 16 4 BipartiteDD.G5440.adjL BipartiteDD.G5440.colL
+      (by decide) BipartiteDD.G5440.levs (by decide) BipartiteDD.G5440.local_ok
+      (by
+        intro r hr
+        obtain rfl | rfl | rfl | rfl : r = 0 ∨ r = 1 ∨ r = 2 ∨ r = 3 := by omega
+        exacts [BipartiteDD.G5440.stage0, BipartiteDD.G5440.stage1, BipartiteDD.G5440.stage2, BipartiteDD.G5440.stage3]))⟩

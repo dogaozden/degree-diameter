@@ -6,6 +6,7 @@ namespace BipartiteDD.G1782
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Local test (degrees, symmetry, colouring) of the 1782-vertex graph. -/
 theorem local_ok : checkLocal 11 11 adjL colL = true := by decide +kernel
 

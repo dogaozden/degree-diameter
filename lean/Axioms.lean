@@ -10,3 +10,7 @@ import BipartiteDD.Records
 #print axioms nb_15_3
 #print axioms nb_9_5
 #print axioms nb_13_4
+#print axioms nb_11_4_v2
+#print axioms nb_13_4_v2
+#print axioms nb_15_4_v2
+#print axioms nb_16_4_v2

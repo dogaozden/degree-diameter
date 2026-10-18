@@ -6,6 +6,7 @@ namespace BipartiteDD.G3146
 
 open BipartiteDD.Staged
 
+set_option maxRecDepth 100000 in
 /-- Local test (degrees, symmetry, colouring) of the 3146-vertex graph. -/
 theorem local_ok : checkLocal 12 13 adjL colL = true := by decide +kernel
 

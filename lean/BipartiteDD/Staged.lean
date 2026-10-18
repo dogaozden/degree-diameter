@@ -23,6 +23,36 @@ def checkLocal (K d : ℕ) {n : ℕ} (adj : List (List (Fin n))) (col : List Boo
       (Tree.get [] K adjT v.val).any (fun w => w.val == u) &&
       (Tree.get false K colT u != Tree.get false K colT v.val))
 
+/-- The local test of `checkLocal` restricted to the vertices `lo ≤ u < hi`, so that a large graph's
+local test can be kernel-checked in pieces. -/
+def localRange (K d lo hi : ℕ) {n : ℕ} (adj : List (List (Fin n))) (col : List Bool) : Bool :=
+  let adjT := Tree.build [] K adj
+  let colT := Tree.build false K col
+  (List.range' lo (hi - lo)).all fun u =>
+    decide ((Tree.get [] K adjT u).length ≤ d) &&
+    (Tree.get [] K adjT u).all (fun v =>
+      (Tree.get [] K adjT v.val).any (fun w => w.val == u) &&
+      (Tree.get false K colT u != Tree.get false K colT v.val))
+
+/-- The local test on `lo ≤ u < hi` and on `hi ≤ u < hi'` give it on `lo ≤ u < hi'`. -/
+theorem localRange_append {K d lo m hi n : ℕ} {adj : List (List (Fin n))} {col : List Bool}
+    (h1 : localRange K d lo m adj col = true) (h2 : localRange K d m hi adj col = true)
+    (hlm : lo ≤ m) (hmh : m ≤ hi) : localRange K d lo hi adj col = true := by
+  simp only [localRange] at h1 h2 ⊢
+  rw [List.all_eq_true] at h1 h2 ⊢
+  intro u hu
+  rw [List.mem_range'_1] at hu
+  by_cases hum : u < m
+  · exact h1 u (List.mem_range'_1.mpr ⟨hu.1, by omega⟩)
+  · exact h2 u (List.mem_range'_1.mpr ⟨by omega, by omega⟩)
+
+/-- The local test of all `n` vertices, from its restriction to `0 ≤ u < n`. -/
+theorem checkLocal_of_range {K d n : ℕ} {adj : List (List (Fin n))} {col : List Bool}
+    (h : localRange K d 0 n adj col = true) : checkLocal K d adj col = true := by
+  simp only [localRange, checkLocal, Nat.sub_zero] at h ⊢
+  rw [List.range_eq_range']
+  exact h
+
 /-- One radius step: `nxt` is the step of `cur`. -/
 def stepOK (K : ℕ) {n : ℕ} (adj : List (List (Fin n))) (cur nxt : List ℕ) : Bool :=
   decide (step K (Tree.build [] K adj) cur = nxt)
