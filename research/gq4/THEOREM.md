@@ -64,8 +64,10 @@ Records from this construction (all checked by scripts/verify_record.py):
 | (11,4) | 9 | 1 | 52 | 1774 | 1734 |
 | (13,4) | 11 | 1 | 72 | 3122 | 3064 |
 | (15,4) | 13 | 1 | 92 | 5022 | 4946 |
-| (16,4) | 13 | 2 | 184 | 5284 | 5134 |
+| (16,4) | 13 | 2 | 257 | 5357 | 5134 |
 
+(The (16,4) row uses a partial 2-cover of 257 lines found by annealing, 2026-10-18; the earlier 184 was a doubled
+partial spread. Since then AS(q)-based graphs (research/gq4x/) give (11,4) 1782, (13,4) 3146, (15,4) 5070.)
 (The (7,4) and (11,4) graphs were found by Haiku islands on 2026-10-10 and fit this shape after the fact.)
 
 ## Corollary for even j (2026-10-18, from the literature)
