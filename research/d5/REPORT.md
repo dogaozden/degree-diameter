@@ -48,3 +48,11 @@ at Δ=11.
 - (9,5): cost 0 at group orders 1266, 1280 and 1310; best 1310 = Z_131 ⋊_53 Z_10 gives a 9-regular diameter-5 graph on
   2620 vertices (graphs/haar_d9_n2620.json, passes verify_record.py; solution sols/h2_d9_N1310_m131_k10_l53.txt).
 - Still short: Δ=6 best 2 uncovered (orders 351, 355); Δ=8 best 2 at 882; Δ=10 best 8 at 2005; Δ=9 at 1378 not solved.
+
+## Round 3 (autopilot, d5-groups-haiku: table-driven search haar_search3.c over non-metacyclic groups)
+- (9,5): SL(2,11), order 1320, reached cost 0 in 81 s (seed 1): a 9-regular diameter-5 Haar graph on 2640 vertices
+  (beats our 2620). S, as matrices [[a,b],[c,d]] mod 11 written (a,b,c,d): (1,0,0,1), (0,1,10,9), (1,1,9,10),
+  (10,7,4,4), (9,10,4,7), (0,4,8,4), (3,4,0,4), (7,9,2,9), (9,4,4,8). Edges (g,A)~(sg,B).
+  graphs/haar_d9_n2640_sl2_11.json; rebuilt independently from the matrices; verify_record.py VALID (3 checkers).
+- First near misses (2 elements short): Δ7 over AGL(1,25) (order 600), Δ6 over SL(2,5)×Z_3 (360); 1 short: Δ8 over
+  AGL(1,7)×Z_21 (882).
