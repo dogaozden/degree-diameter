@@ -79,3 +79,5 @@ import BipartiteDD.ASq.Main
 #print axioms BipartiteDD.ASq.isGQst
 #print axioms BipartiteDD.ASq.weighted_two_ovoid
 #print axioms BipartiteDD.ASq.bound
+#print axioms nb_15_4
+#print axioms nb_16_4
