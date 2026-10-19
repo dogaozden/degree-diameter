@@ -1,3 +1,5 @@
+-- Prints the axioms of every top-level result of the merged branches.
+-- Each line should list only [propext, Classical.choice, Quot.sound].
 import BipartiteDD.GQST.Main
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
@@ -17,6 +19,8 @@ import BipartiteDD.ASq.Main
 #print axioms nb_15_3
 #print axioms nb_9_5
 #print axioms nb_13_4
+#print axioms nb_9_5_v4
+#print axioms nb_13_4_v3
 #print axioms nb_11_4_v2
 #print axioms nb_13_4_v2
 #print axioms nb_15_4_v2
@@ -24,39 +28,10 @@ import BipartiteDD.ASq.Main
 #print axioms nb_16_3
 #print axioms nb_8_5
 #print axioms nb_9_5_v2
-#print axioms BipartiteDD.SingerC.card_zeros_form
-#print axioms BipartiteDD.SingerC.Setting.natCard_F
-#print axioms BipartiteDD.SingerC.Setting.natCard_L
-#print axioms BipartiteDD.SingerC.Setting.B_antisymm
-#print axioms BipartiteDD.SingerC.Setting.B_self
-#print axioms BipartiteDD.SingerC.Setting.B_smul_left
-#print axioms BipartiteDD.SingerC.Setting.B_smul_right
-#print axioms BipartiteDD.SingerC.Setting.B_scale
-#print axioms BipartiteDD.SingerC.Setting.B_nondeg
-#print axioms BipartiteDD.SingerC.Setting.inClass_iff
-#print axioms BipartiteDD.SingerC.Setting.inClass_unique
-#print axioms BipartiteDD.SingerC.Setting.disc_identity
-#print axioms BipartiteDD.SingerC.Setting.dis_pair
-#print axioms BipartiteDD.SingerC.Setting.coeff_not_all_zero
-#print axioms BipartiteDD.SingerC.Setting.card_class_F
-#print axioms BipartiteDD.SingerC.Setting.card_union_class
-#print axioms BipartiteDD.SingerC.Setting.propC_pair
-#print axioms BipartiteDD.SingerC.Setting.propC_subspace
-#print axioms BipartiteDD.Haar.haar_colorable
-#print axioms BipartiteDD.Haar.haar_degree
-#print axioms BipartiteDD.Haar.haar_ediam_le_five
-#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam
-#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam_of_equiv
-#print axioms BipartiteDD.Haar.Z131.card_grp
-#print axioms BipartiteDD.Haar.Z131.card_S9
-#print axioms BipartiteDD.Haar.Z131.ok1_all
-#print axioms BipartiteDD.Haar.Z131.ok2_all
-#print axioms BipartiteDD.Haar.Z131.dec_enc
-#print axioms BipartiteDD.Haar.Z131.cover1
-#print axioms BipartiteDD.Haar.Z131.cover2
-#print axioms nb_9_5_v3
-#print axioms BipartiteDD.Haar.Z144.card_S8
+#print axioms nb_15_4
+#print axioms nb_16_4
 #print axioms nb_8_5_haar
+#print axioms nb_9_5_v3
 
 #print axioms BipartiteDD.GQ.ediam_le_four
 #print axioms BipartiteDD.GQ4.blowup_colorable
@@ -66,7 +41,6 @@ import BipartiteDD.ASq.Main
 #print axioms BipartiteDD.GQ4.isBipartiteDegDiam
 #print axioms BipartiteDD.GQ4.gq4
 #print axioms BipartiteDD.GQ.card_points
-
 #print axioms BipartiteDD.GQst.ediam_le_four
 #print axioms BipartiteDD.GQST.blowup_colorable
 #print axioms BipartiteDD.GQST.blowup_ediam
@@ -75,9 +49,9 @@ import BipartiteDD.ASq.Main
 #print axioms BipartiteDD.GQST.gqst
 #print axioms BipartiteDD.GQST.gq4_of_gqst
 #print axioms BipartiteDD.GQ.toGQst
-
 #print axioms BipartiteDD.ASq.isGQst
 #print axioms BipartiteDD.ASq.weighted_two_ovoid
 #print axioms BipartiteDD.ASq.bound
-#print axioms nb_15_4
-#print axioms nb_16_4
+#print axioms BipartiteDD.SingerC.Setting.propC_subspace
+#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam
+#print axioms BipartiteDD.Haar.haar_ediam_le_five
