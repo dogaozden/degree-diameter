@@ -1,7 +1,11 @@
+import BipartiteDD.GQST.Main
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
 import BipartiteDD.Haar.Record2620
 import BipartiteDD.Haar.Record1728
+import BipartiteDD.GQ4.Main
+import BipartiteDD.GQ4.Count
+import BipartiteDD.ASq.Main
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -53,3 +57,25 @@ import BipartiteDD.Haar.Record1728
 #print axioms nb_9_5_v3
 #print axioms BipartiteDD.Haar.Z144.card_S8
 #print axioms nb_8_5_haar
+
+#print axioms BipartiteDD.GQ.ediam_le_four
+#print axioms BipartiteDD.GQ4.blowup_colorable
+#print axioms BipartiteDD.GQ4.blowup_ediam
+#print axioms BipartiteDD.GQ4.blowup_degree
+#print axioms BipartiteDD.GQ4.ediam_le_four_of_copy
+#print axioms BipartiteDD.GQ4.isBipartiteDegDiam
+#print axioms BipartiteDD.GQ4.gq4
+#print axioms BipartiteDD.GQ.card_points
+
+#print axioms BipartiteDD.GQst.ediam_le_four
+#print axioms BipartiteDD.GQST.blowup_colorable
+#print axioms BipartiteDD.GQST.blowup_ediam
+#print axioms BipartiteDD.GQST.blowup_degree
+#print axioms BipartiteDD.GQST.isBipartiteDegDiam
+#print axioms BipartiteDD.GQST.gqst
+#print axioms BipartiteDD.GQST.gq4_of_gqst
+#print axioms BipartiteDD.GQ.toGQst
+
+#print axioms BipartiteDD.ASq.isGQst
+#print axioms BipartiteDD.ASq.weighted_two_ovoid
+#print axioms BipartiteDD.ASq.bound
