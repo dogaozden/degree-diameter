@@ -1,5 +1,6 @@
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
+import BipartiteDD.Haar.Record2620
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -36,3 +37,16 @@ import BipartiteDD.SingerC.Main
 #print axioms BipartiteDD.SingerC.Setting.card_union_class
 #print axioms BipartiteDD.SingerC.Setting.propC_pair
 #print axioms BipartiteDD.SingerC.Setting.propC_subspace
+#print axioms BipartiteDD.Haar.haar_colorable
+#print axioms BipartiteDD.Haar.haar_degree
+#print axioms BipartiteDD.Haar.haar_ediam_le_five
+#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam
+#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam_of_equiv
+#print axioms BipartiteDD.Haar.Z131.card_grp
+#print axioms BipartiteDD.Haar.Z131.card_S9
+#print axioms BipartiteDD.Haar.Z131.ok1_all
+#print axioms BipartiteDD.Haar.Z131.ok2_all
+#print axioms BipartiteDD.Haar.Z131.dec_enc
+#print axioms BipartiteDD.Haar.Z131.cover1
+#print axioms BipartiteDD.Haar.Z131.cover2
+#print axioms nb_9_5_v3
