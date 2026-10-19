@@ -1,6 +1,7 @@
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
 import BipartiteDD.Haar.Record2620
+import BipartiteDD.Haar.Record1728
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -50,3 +51,5 @@ import BipartiteDD.Haar.Record2620
 #print axioms BipartiteDD.Haar.Z131.cover1
 #print axioms BipartiteDD.Haar.Z131.cover2
 #print axioms nb_9_5_v3
+#print axioms BipartiteDD.Haar.Z144.card_S8
+#print axioms nb_8_5_haar
