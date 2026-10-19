@@ -15,6 +15,8 @@ Names:
   agl_Q                  AGL(1,Q) = GF(Q) x| GF(Q)^*, Q a prime power
   aff_Q_K                GF(Q) x| C_K, C_K the subgroup of order K of GF(Q)^*
   sl_Q, psl_Q, pgl_Q     SL(2,Q), PSL(2,Q), PGL(2,Q)
+  gl_Q                   GL(2,Q), all invertible 2x2 matrices over GF(Q)
+  sl_3                   SL(2,3), order 24 (same as sl_Q with Q = 3)
   A__x__B                direct product of two named groups (index i*N_B + j)
 """
 import itertools
@@ -143,7 +145,7 @@ def affine(q, k):
 
 
 def matrix_group(kind, q):
-    """SL(2,q), PSL(2,q) or PGL(2,q). Elements of the quotients are represented by canonical 2x2 tuples."""
+    """SL(2,q), PSL(2,q), PGL(2,q) or GL(2,q). Elements of the quotients are represented by canonical 2x2 tuples."""
     F = GF(q)
 
     def mul_m(x, y):
@@ -165,6 +167,10 @@ def matrix_group(kind, q):
         def canon(x):
             return min(x, tuple(F.neg[v] for v in x))
         mats = [m for m in itertools.product(range(q), repeat=4) if det(m) == 1]
+    elif kind == "gl":
+        def canon(x):
+            return x
+        mats = [m for m in itertools.product(range(q), repeat=4) if det(m) != 0]
     else:  # pgl
         def canon(x):
             return min(tuple(F.mul[c][v] for v in x) for c in range(1, q))
@@ -244,7 +250,7 @@ def build(name):
         return affine(int(f[1]), int(f[1]) - 1)
     if kind == "aff":
         return affine(int(f[1]), int(f[2]))
-    if kind in ("sl", "psl", "pgl"):
+    if kind in ("sl", "psl", "pgl", "gl"):
         return matrix_group(kind, int(f[1]))
     raise ValueError(f"unknown group name {name}")
 
