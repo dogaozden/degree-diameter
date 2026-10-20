@@ -167,8 +167,7 @@ $\Hq(q)$ is a generalized hexagon of order $(q,q)$. For a point $x$, the conditi
 
 \section{Doubling with levels}\label{sec:doubling}
 
-Delorme and Farhi \cite{DF84} observed that a \emph{duplicate} of an element (a new element incident with exactly the same elements) does not increase the diameter. Delorme \cite{D85a,D85b} refined this into a doubling of a whole set of elements, with levels, and used it to build the largest bipartite graphs then known of diameters $4$ and $6$. We recast it as an operation on incidence structures. (Delorme's polarity quotients of generalized polygons \cite{D85a} give large \emph{ordinary} graphs and are not used here.)
-% TODO (co-authors): which of the two 1985 Delorme papers [D85a] (EJC) and [D85b] (JGT) contains the bipartite doubling with levels and the D=4,6 constructions? Our earlier notes attributed them to [D85a] Sec. 7-8; the JGT abstract suggests [D85b]. Check against the papers; no section numbers are claimed in this draft.
+Delorme and Farhi \cite{DF84} observed that a \emph{duplicate} of an element (a new element incident with exactly the same elements) does not increase the diameter. Delorme \cite{D85a,D85b} refined this into a doubling of a whole set of elements, with levels, and used it to build the largest bipartite graphs then known of diameters $4$ and $6$. We recast it as an operation on incidence structures.\footnote{Note for co-authors: the full texts of Delorme's two 1985 papers \cite{D85a,D85b} have not been read by the authors of this draft. Our earlier notes attribute the doubling with levels and the bipartite constructions for $D=4,6$ to \cite{D85a}, Sections~7--8; the abstract of \cite{D85b} also describes bipartite constructions. Please check which paper contains which construction; no section numbers are claimed here.}
 
 \subsection{The operation}
 Let $\cS=(\cP,\cL,\I)$ be an incidence structure, $m\ge2$ an integer, and
@@ -456,7 +455,7 @@ elements. These are the previous table values $346$, $1734$, $3064$, $4946$ at $
 \end{example}
 
 \begin{remark}[Ovoids and stars]\label{rem:ovoidfamily}
-More generally, let $\cO$ be an ovoid of $\Qf(4,q)$ and $\cM$ a set of lines such that every point outside $\cO$ is on at most one line of $\cM$. Then $\cA_0=\cO\cup\cM$ (one level) satisfies \ref{L0} and \textup{(C$_4$)}: its components are stars centered at points of $\cO$. This gives maximum degree $q+2$, diameter~$4$ and $2(q+1)(q^2+1)+q^2+1+|\cM|$ elements. If some $o\in\cO$ is on $k\ge2$ lines of $\cM$, then $|\cM|\le k+(q+1-k)q\le q^2-q+2$. Indeed, a line $L\in\cM$ not on $o$ has a unique point $y$ collinear with $o$; $y\notin\cO$, the line $oy$ is not in $\cM$ (else $y$ would be on two lines of $\cM$), and distinct $L$ give distinct $y$. If every point of $\cO$ is on at most one line of $\cM$, then $\cM$ is a partial spread, so $|\cM|\le q^2-q+1$ for $q$ odd (Tallini \cite{Tal91}; for large partial ovoids see also \cite{CDPS22}).
+More generally, let $\cO$ be an ovoid of $\Qf(4,q)$ and $\cM$ a set of lines such that every point outside $\cO$ is on at most one line of $\cM$. Then $\cA_0=\cO\cup\cM$ (one level) satisfies \ref{L0} and \textup{(C$_4$)}: its components are stars centered at points of $\cO$. This gives maximum degree $q+2$, diameter~$4$ and $2(q+1)(q^2+1)+q^2+1+|\cM|$ elements. If some $o\in\cO$ is on $k\ge2$ lines of $\cM$, then $|\cM|\le k+(q+1-k)q\le q^2-q+2$. Indeed, a line $L\in\cM$ not on $o$ has a unique point $y$ collinear with $o$; $y\notin\cO$, the line $oy$ is not in $\cM$ (else $y$ would be on two lines of $\cM$), and distinct $L$ give distinct $y$. If every point of $\cO$ is on at most one line of $\cM$, then $\cM$ is a partial spread, so $|\cM|\le q^2-q+1$ for $q$ odd (Tallini \cite{Tal91}\footnote{Note for co-authors: the page range of this reference (Mitt.\ Math.\ Sem.\ Giessen 201 (1991) 141--147) is quoted from memory and has not been verified.}; for large partial ovoids see also \cite{CDPS22}).
 \end{remark}
 
 \subsection{Clones and shadow lines}
@@ -591,9 +590,8 @@ Hence $\operatorname{disc}(h\nu')=\Nm_{K/\F}(h)\,\operatorname{disc}(\nu)$. Sinc
 \end{proof}
 
 \begin{remark}
-For $q$ odd, $\Wq(q)$ is known to have $m$-ovoids for every even $m$ (in particular $2$-ovoids) and $(q+1)/2$-ovoids \cite{BLP09}; see also \cite{CCEM08} for $m$-ovoids of $\Wq(q)$. We have not checked whether the $2$-ovoids $C_a\cup C_{q-a}$, or the partition they form, coincide with those constructions; the proof above is self-contained.
+For $q$ odd, $\Wq(q)$ is known to have $m$-ovoids for every even $m$ (in particular $2$-ovoids) and $(q+1)/2$-ovoids \cite{BLP09}; see also \cite{CCEM08} for $m$-ovoids of $\Wq(q)$. We have not checked whether the $2$-ovoids $C_a\cup C_{q-a}$, or the partition they form, coincide with those constructions; the proof above is self-contained.\footnote{Note for co-authors: we have confirmed from the abstract of \cite{BLP09} only the existence of $m$-ovoids of $\Wq(q)$ for even $m$ and of $(q+1)/2$-ovoids, $q$ odd. Whether partitions into $2$-ovoids occur there, and whether \cite{CCEM08} has a Singer-group description, still has to be checked.}
 The proof only uses that $d^2$ is a non-square in $K$: replacing $d$ by any $\delta_0$ with $\bar\delta_0=-\delta_0$ gives a symplectic form for which $C_a\cup C_{b}$ is a $2$-ovoid when $h^{a+b}\delta_0^2\in\F^*$.
-% TODO: check the exact statements in BLP09 and CCEM08 (partitions into 2-ovoids? Singer-group description?).
 \end{remark}
 
 \subsection{All degrees}
