@@ -8,3 +8,7 @@ D=7 d=5 table=tables/psl_7.txt c=10 N=1680 n=3360 K=20 best=10 restarts=37 steps
 D=7 d=5 table=tables/pgl_7.txt c=5 N=1680 n=3360 K=20 best=12 restarts=32 steps=2302041 evals=46040820 time=3600.0 evals_per_s=12789
 D=7 d=5 table=tables/gl_3.txt c=33 N=1584 n=3168 K=20 best=22 restarts=39 steps=2610812 evals=52216240 time=3600.0 evals_per_s=14505
 D=7 d=5 table=tables/meta_397_4_63.txt c=1 N=1588 n=3176 K=20 best=438 restarts=49 steps=2965043 evals=59300860 time=3600.0 evals_per_s=16472
+D=8 d=4 table=tables/agl_8.txt c=20 N=1120 n=2240 K=20 best=39 restarts=102 steps=6728508 evals=134570160 time=2400.0 evals_per_s=56071
+D=8 d=4 table=tables/meta_137_8_10.txt c=1 N=1096 n=2192 K=20 best=8 restarts=96 steps=5931005 evals=118620100 time=2400.0 evals_per_s=49425
+D=8 d=4 table=tables/heis_5.txt c=9 N=1125 n=2250 K=20 best=247 restarts=130 steps=7752681 evals=155053620 time=2400.0 evals_per_s=64606
+D=8 d=4 table=tables/agl_7.txt c=27 N=1134 n=2268 K=20 best=79 restarts=116 steps=6976048 evals=139520960 time=2400.0 evals_per_s=58134
