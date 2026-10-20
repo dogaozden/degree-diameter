@@ -25,7 +25,7 @@ beating the table, and the hat lemma says in what sense AL's construction genera
 | |LBM(3,8)| = 6951; |LBM(4,6)| = 3,747,351; unique closest-to-Moore graph at (4,6); ratio for Q1 at (3,8) | Computer enumeration, validated on AL's (3,6) = 5 and an exact mass formula. research/p12/REPORT.md. Not Lean (enumeration). |
 
 ## AL Problem 3 (improve the construction)
-Fourth hat: +2 at every q ≥ 4 (above). SAT: +3/+4 impossible only inside the hat model (q = 5..13), not in general.
+Fourth hat: +2 at every q ≥ 4 (above), also with the plane untouched. +3 (research/plus3/plus3.tex): structure theorem (new vertices are near-copies; with no plane changes they form the hat shape); theorem: no +3 with PG(2,q) induced for q ≥ 42; SAT: no +3 in the hat shape with ≤ 3/2/1/1 changes at q = 7/9/11/13; general +3 with plane changes open. n_b(7,3) = 80 is known exact (Feria-Purón et al. 2013).
 
 ## Other records (same paper or a second one)
 D = 5 Haar graphs (Haar lemma in Lean; 1152, 1764, 2662 kernel-checked); D = 3 (16,3) 396. Not part of AL's problems.
