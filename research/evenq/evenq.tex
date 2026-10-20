@@ -1,0 +1,155 @@
+% Even q: diameters 4 and 6.  To be \input after Section "Diameter 6" of research/geometry/geometry.tex
+% (uses its macros and labels: lem:herm, thm:whisk, thm:exact, lem:J, lem:key, lem:G, thm:R, cor:B1, cor:B2,
+% prop:count).  Standalone test build: research/evenq/evenq_standalone.tex.
+% Code and logs: research/evenq/ (see the README lines at the end of this file).
+
+\section{Even \texorpdfstring{$q$}{q}}\label{sec:even}
+
+Theorems~\ref{thm:A}, \ref{thm:exact} and~\ref{thm:R} were stated for odd $q$. Here $q=2^e$. Throughout, $\F=\GF(q)$, $\Tr$ is the absolute trace of $\F$, and we fix $\delta\in\F$ with $\Tr(\delta)=1$, so that $t^2+t+\delta$ is irreducible over $\F$ and the binary form $a^2+ab+\delta b^2$ is anisotropic.
+
+\subsection{Diameter 4}
+For $q$ even nothing new is needed: $\Qf(4,q)$ has both ovoids and spreads \cite[Ch.~3]{PT}, and Corollary~\ref{cor:B2} already gives a $\Delta$-regular structure with $2\Delta(q^2+1)$ elements for every $\Delta\ge q+1$. In the language of doubling (Section~\ref{sec:doubling}): if $\cO$ is an ovoid and $\Sigma$ a spread, every line of $\Sigma$ contains exactly one point of $\cO$, so $\cA_0=\cO\cup\Sigma$ (one level) has $q^2+1$ components, each a flag, and satisfies \ref{L0} and \textup{(C$_4$)}. Doubling gives maximum degree $q+2$, diameter $4$ and $2(q+1)(q^2+1)+2(q^2+1)=2(q^2+1)(q+2)$ elements; the elements of $\cA_0$ and their copies have degree $q+1$, and adding the anti-flags $(p,L')$ and $(p',L)$ for each flag $(p,L)$ of $\cA_0$ makes the structure $(q+2)$-regular. This is the structure of Corollary~\ref{cor:B1} with $w=\mathbf 1_\cO$, $\cM=\Sigma$, made regular. Every element outside $\cA_0$ is incident with exactly one element of $\cA_0$, so the counting bound of Proposition~\ref{prop:count} holds with equality for $q^2+1$ components.
+
+At $\Delta=q+2$ this beats the value $2q^2(q+2)$ of Theorem~\ref{thm:A} by $2(q+2)$, so for even $q$ the quadrangle $\AS(q)$ is not needed. For $q=2,4,8,16$ these graphs (and the ones with $j=2$ copies of $\cO$ and of $\Sigma$) were built and checked; see Table~\ref{tab:even}. They do not improve the table: when $q\in\{2,4,8,16\}$, $q+1$ is a prime power, so $\Delta=q+2$ is a Moore degree, and at $\Delta=q+3$ the odd prime power $q+1$ gives more. The first degrees at which an even $q$ is the best choice in Corollary~\ref{cor:B2} are $\Delta=34,35,36,37$ ($q=32$; for example $n_b(34,4)\ge 2\cdot1025\cdot34=69700$, against $65416$ from $q=31$), outside the range of the table.
+
+\subsection{Diameter 6: the frame in characteristic 2}
+The split Cayley hexagon $\Hq(q)$ is defined for all $q$ by the same quadric and the same six Tits equations; in characteristic $2$ the signs disappear and the quadric $\Qf(6,q)\colon X_0X_4+X_1X_5+X_2X_6+X_3^2=0$ has a nucleus, the point $e_3$. The hyperplanes $X_0+cX_4+\dots=0$ of Section~\ref{sec:d6} contain $e_3$ and so meet $\Qf(6,q)$ in a cone; instead we take, for $z=(\alpha,\beta)\in\F^2$,
+\[
+\Pi_z\colon\ X_3=X_0+\delta X_4+\alpha X_2+\beta X_5,\qquad \Pi=\Pi_{(0,0)},
+\]
+and $S_z$ the set of lines of $\Hq(q)$ in $\Pi_z$. Again $v=\langle e_1,e_6\rangle\subseteq\Pi_z$ for all $z$.
+
+\begin{lemma}\label{lem:herm2}
+Lemma~\ref{lem:herm} holds verbatim for even $q$ with these $\Pi_z$.
+\end{lemma}
+
+\begin{proof}
+(a) On $\Pi_z$,
+\[
+X_0X_4+X_1X_5+X_2X_6+X_3^2=\bigl(X_0^2+X_0X_4+\delta^2X_4^2\bigr)+(X_1+\beta^2X_5)X_5+X_2(X_6+\alpha^2X_2).
+\]
+The first term is anisotropic since $\Tr(\delta^2)=\Tr(\delta)=1$, and $\Pi_z$ misses the nucleus $e_3$, so $\Pi_z\cap\Qf(6,q)$ is a non-degenerate quadric of Witt index $2$, an elliptic quadric $\Qf^-(5,q)$. (b), (c) and (e) are proved as before. (d) The Tits equations give $X_2=X_5=0$ exactly as before (only signs change); the cone $X_0X_4=X_3^2$ meets $\Pi_z$ where $X_0^2+X_0X_4+\delta^2X_4^2=0$, that is $X_0=X_4=0$, hence $X_3=0$, on $v$.
+\end{proof}
+
+So Theorem~\ref{thm:whisk} (Delorme's doubling with whiskers) holds for even $q$ without change. Free points are defined as before, there are $q^3(q^2-1)$ of them, and an exact whisker set has $q^2(q^2-1)$ lines.
+
+\subsection{An exact whisker set for even \texorpdfstring{$q$}{q}}
+For a point $X$ of $\Hq(q)$ in $\Pi$, not on $v$, put
+\[
+\nu(X)=\frac{X_2X_3+X_2X_4+X_4X_5}{\delta X_2^2+X_2X_5+X_5^2}.
+\]
+The denominator is anisotropic, and vanishes only if $X_2=X_5=0$, that is (Lemma~\ref{lem:herm2}) only on $v$. For $c_0,c_1\in\F$ let
+\[
+G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3,\qquad F(z)=\frac{G(\alpha,\beta)}{\alpha^2+\alpha\beta+\delta\beta^2}\quad(z=(\alpha,\beta)\ne0).
+\]
+
+\begin{lemma}\label{lem:G2}
+There are $c_0,c_1\in\F$ such that $G$ has no zero on $\F^2\setminus\{0\}$ if and only if $q\ge4$.
+\end{lemma}
+
+\begin{proof}
+$G(a,0)=c_0a^3$, so $c_0\ne0$ is needed. For $b\ne0$ and $t=a/b$, $G(a,b)=0$ if and only if $c_0t+c_1=r(t):=1/(t^2+t+\delta)$. For fixed $t$ this is a line in the $(c_0,c_1)$-plane with $q-1$ points having $c_0\ne0$. If $q\ge4$, take $\omega\notin\{0,1\}$; then $r(\omega)\ne r(0)$, so the lines for $t=0$ and $t=\omega$ meet at $c_0=(r(0)+r(\omega))/\omega\ne0$, and the $q$ lines cover fewer than $q(q-1)$ points with $c_0\ne0$. If $q=2$, then $r(0)=r(1)=1$ and the lines $c_1=1$, $c_0+c_1=1$ contain both points with $c_0=1$.
+\end{proof}
+
+We use coordinates $x=(x_0,x_1,x_2,x_4,x_5,x_6)$ on $\Pi_z$, with $X_3=x_0+\delta x_4+\alpha x_2+\beta x_5$, and define the linear map $J_z$ of $\Pi_z$ by
+\[
+\begin{aligned}
+J_zx=\bigl(\,&(\delta+1)x_0+\delta\alpha x_2+\delta^2x_4+(\alpha+\delta\beta)x_5,\ \ \beta x_0+x_1+\alpha\beta x_2+(\alpha+\delta\beta)x_4+\beta^2x_5+x_6,\\
+&x_2+x_5,\ \ x_0+(\alpha+\beta)x_2+\delta x_4+\beta x_5,\ \ \delta x_2,\ \ (\alpha+\beta)x_0+\delta x_1+\alpha^2x_2+\delta\alpha x_4+\alpha\beta x_5\,\bigr).
+\end{aligned}
+\]
+
+\begin{lemma}[Complex structure, characteristic 2]\label{lem:J2}
+For every $z\in\F^2$, with $Q$ the quadratic form and $B$ its polar form:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $J_z^2+J_z+\delta=0$, $Q(J_zx)=\delta Q(x)$ and $B(x,J_zx)=Q(x)$.
+\item The six Tits differences of the Grassmann coordinates of $x\wedge J_zx$ equal $Q(x)$ times $1,0,0,\delta,\alpha,\beta$.
+\item For every point $x$ of $\Qf(6,q)\cap\Pi_z$ the line $\langle x,J_zx\rangle$ is the line of $S_z$ on $x$.
+\item With $\mathrm{num}=X_2X_3+X_2X_4+X_4X_5$ and $\mathrm{den}=\delta X_2^2+X_2X_5+X_5^2$ on $\Pi$: $\mathrm{num}(sx+tJ_0x)=(s^2+st+\delta t^2)\,\mathrm{num}(x)$, and likewise for $\mathrm{den}$. So $\nu$ is constant on every line of $S\setminus\{v\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a), (b), (d) are polynomial identities over $\mathbb{F}_2[\delta,\alpha,\beta,x]$, checked by direct expansion (and by computer algebra, \path{research/evenq/proof_J.py}). (c) follows from (a), (b) and Lemma~\ref{lem:herm2}(b) as in Lemma~\ref{lem:J}: $J_z$ has no eigenvector because $t^2+t+\delta$ is irreducible, and on a singular $x$ the line $\langle x,J_zx\rangle$ is totally singular with Grassmann coordinates satisfying Tits' equations. In (d), $s^2+st+\delta t^2\ne0$ for $(s,t)\ne0$.
+\end{proof}
+
+Let $p$ be a free point. Then $(p_2,p_5)\ne(0,0)$, and we normalize $p_0+p_3+\delta p_4=1$. Now $p\in\Pi_z$ if and only if $z$ lies on the affine line $A_p\colon\alpha p_2+\beta p_5=1$, which has direction $(p_5,p_2)$. For $z\in A_p$ let $X(z)$ be the point of $\Pi$ on the line of $S_z$ through $p$.
+
+\begin{lemma}[Key identity, characteristic 2]\label{lem:key2}
+For $z=(\alpha,\beta)\in A_p$,
+\[
+\Phi_p(z):=\nu(X(z))+\frac{\beta^3}{\alpha^2+\alpha\beta+\delta\beta^2}=\frac{p_2p_3+p_2p_4+p_4p_5+\beta p_2^2}{\delta p_2^2+p_2p_5+p_5^2}.
+\]
+So $\Phi_p$ is affine on $A_p$, with increment $p_2^3/(\delta p_2^2+p_2p_5+p_5^2)$ along $(p_5,p_2)$.
+\end{lemma}
+
+\begin{proof}
+Put $\Theta=\delta p_2^2+p_2p_5+p_5^2\ne0$ and $\lambda(y)=y_0+y_3+\delta y_4$, so that $\Pi=\{\lambda=0\}$ and $\lambda=\alpha y_2+\beta y_5$ on $\Pi_z$. Then $\lambda(p)=1$ and $\gamma:=\lambda(J_zp)=\alpha(p_2+p_5)+\delta\beta p_2$. By Lemma~\ref{lem:J2}(c) the line of $S_z$ on $p$ is $\langle p,J_zp\rangle$, so $X(z)=\gamma p+J_zp$ (then $\lambda(X)=2\gamma=0$). In particular $X_2=(\gamma+1)p_2+p_5$ and $X_5=\delta p_2+\gamma p_5$. Direct expansion gives
+\[
+\mathrm{den}(X)=(\gamma^2+\gamma+\delta)\,\Theta,\qquad
+\mathrm{num}(X)=(\gamma^2+\gamma+\delta)(p_2p_3+p_2p_4+p_4p_5)+\beta\bigl((\gamma+\delta+1)p_2^2+p_5^2\bigr),
+\]
+and $\gamma^2+\gamma+\delta\ne0$. Solving $\alpha p_2+\beta p_5=1$, $\alpha(p_2+p_5)+\delta\beta p_2=\gamma$ (determinant $\Theta$) gives $\alpha=(\delta p_2+\gamma p_5)/\Theta$, $\beta=((\gamma+1)p_2+p_5)/\Theta$, hence $\alpha^2+\alpha\beta+\delta\beta^2=(\gamma^2+\gamma+\delta)/\Theta$ and
+\[
+\frac{\beta^3}{\alpha^2+\alpha\beta+\delta\beta^2}=\frac{\beta\bigl((\gamma+1)p_2+p_5\bigr)^2}{(\gamma^2+\gamma+\delta)\Theta}.
+\]
+The $\beta$-terms add up to $\beta\bigl((\gamma+\delta+1)+(\gamma+1)^2\bigr)p_2^2/((\gamma^2+\gamma+\delta)\Theta)=\beta p_2^2/\Theta$. Along $(p_5,p_2)$, $\beta$ changes by $p_2$.
+\end{proof}
+
+\begin{theorem}\label{thm:exact2}
+Let $q\ge4$ be even and $c_0,c_1$ as in Lemma~\ref{lem:G2}. Then
+\[
+W=\bigl\{\,m\in S_z\setminus\{v\}\;:\;z\in\F^2\setminus\{0\},\ \nu(m\cap\Pi)=F(z)\,\bigr\}
+\]
+is an exact whisker set, so $|W|=q^2(q^2-1)$. For $q=2$ an exact whisker set ($12$ lines) exists as well (found by computer); the formula gives none, since no $(c_0,c_1)$ is good.
+\end{theorem}
+
+\begin{proof}
+As in Theorem~\ref{thm:exact}: the lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on a free point $p$ are the $q$ distinct lines $m_p(z)$, $z\in A_p$, and $m_p(z)\in W$ if and only if $\Phi_p(z)+c_0\alpha+c_1\beta=0$, because $F(z)=c_0\alpha+c_1\beta+\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)$. By Lemma~\ref{lem:key2} the left side is affine on $A_p$ with increment
+\[
+\frac{p_2^3}{\Theta}+c_0p_5+c_1p_2=\frac{G(p_5,p_2)}{\Theta}\ne0
+\]
+along $(p_5,p_2)$, so it vanishes at exactly one point of $A_p$.
+\end{proof}
+
+\begin{corollary}\label{cor:even6}
+Corollary~\ref{cor:d6} and Theorem~\ref{thm:R} hold for every prime power $q$, odd or even: for $m\ge2$,
+\[
+n_b(q+m,6)\ge2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr),
+\]
+and there is a $(q+m)$-regular bipartite graph of diameter $6$ on $2(q+1)\bigl(q^4+q^2+1+(m-1)(q^3+m+1)\bigr)$ vertices.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:whisk} with Lemma~\ref{lem:herm2} and Theorem~\ref{thm:exact2}; the proof of Theorem~\ref{thm:R} uses only that $W$ is exact.
+\end{proof}
+
+As for $D=4$, this does not change the table: for $q=2,4,8,16$ the degree $q+2$ is a Moore degree ($\Hq(q+1)$ exists), and at $\Delta=q+3$ the odd $q+1$ gives more. Even $q$ is the best choice first at $\Delta=34,\dots,37$ ($q=32$; e.g.\ $n_b(34,6)\ge 71502028$ against $63159250$ from $q=31$, $m=3$).
+
+\begin{remark}[What changes in characteristic $2$]
+The anisotropic form $a^2+cb^2$ ($-c$ a non-square) becomes $a^2+ab+\delta b^2$ ($\Tr\delta=1$); $J^2=-c$ becomes $J^2+J+\delta=0$; the hyperplanes $\Pi_z$ must avoid the nucleus; $\nu$ gains the term $X_2X_4$; and Lemma~\ref{lem:G} needs $q\ge4$. Equivalently, with $K=\F[\omega]$, $\omega^2=\omega+\delta$: $\nu(X)=\Tr_{K/\F}\bigl(\omega\,(X_3+X_4\omega)/(\delta X_2+X_5\omega)\bigr)$.
+\end{remark}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}cccccl@{}}
+\toprule
+$D$ & $q$ & $\Delta$ & construction & order & check \\
+\midrule
+4 & 2, 4, 8, 16 & $q+2$ & ovoid + spread, regular & 40, 204, 1300, 9252 & all VALID \\
+4 & 2, 4, 8, 16 & $q+3$ & 2 ovoids + 2 spreads, regular & 50, 238, 1430, 9766 & all VALID \\
+6 & 2, 4, 8 & $q+2$ & Thm.~\ref{thm:whisk} + exact $W$ & 208, 3524, 85180 & all VALID \\
+6 & 2, 4, 8 & $q+3$ & same, $m=3$ & 324, 4468, 96516 & all VALID \\
+6 & 2, 4, 8 & $q+2$ & regular (Thm.~\ref{thm:R}) & 192, 3400, 84168 & all VALID \\
+6 & 2, 4, 8 & $q+3$ & regular, $m=3$ & 270, 4090, 93474 & all VALID \\
+6 & 16 & $18$ & Thm.~\ref{thm:whisk} + exact $W$ & 2384492 & PENDING \\
+\bottomrule
+\end{tabular}
+\caption{Even $q$, computer checks (bipartite, maximum degree, exact diameter by BFS from every vertex). For $D=6$, $q\ge4$ uses the whiskers of Theorem~\ref{thm:exact2}; $q=2$ uses an ILP solution. Exactness of $W$ was also checked directly for $q=4$ ($\delta=2,3$), $q=8$ ($\delta=1,3,5,7$) and $q=16$ ($\delta=8,9$; $65280$ whiskers). All values are below the Moore graphs or table values at the same $\Delta$.}\label{tab:even}
+\end{table}
+
+% README.  hexq.py (H(q) for any q), frame.py, check_frame.py (Lemma herm2 for q = 2,4,8), explore.py (ILP),
+% affine.py / exact_search.py / fit_nu.py / fit_h.py / slope.py / test_nu.py / findJ.py / fitJ.py (how nu, h, J
+% were found), rule.py (Theorem exact2 built and checked), rule_all.py (exact <=> G zero-free, q = 2,4,8),
+% proof_char2.py (minors-based symbolic check), proof_J.py, proof_J2.py (Lemmas J2, key2 mod 2),
+% build_graph.py (Delorme levels + whiskers), d4_even.py (D = 4), graphs/, runs/.
