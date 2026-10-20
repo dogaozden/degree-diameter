@@ -31,11 +31,11 @@ theorem card_O_line {a : ℕ} (ha : a ≤ S.q) (l : S.TILine) :
   have h1 := S.card_vec_points l.1 (S.Oz a) (fun c hc hc0 z => S.Oz_mul_F_iff ha hc hc0)
   have h2 : Nat.card {v : K // v ≠ 0 ∧ v ∈ l.1 ∧ S.Oz a v} = 2 * (S.q - 1) := by
     rw [← S.propC_subspace ha l.1 l.2.1 l.2.2]
-    exact Nat.card_congr
+    exact (Nat.card_congr
       { toFun := fun u => ⟨u.1.1, fun h => u.2.1 (Subtype.ext h), u.1.2, u.2.2⟩
         invFun := fun v => ⟨⟨v.1, v.2.2.1⟩, fun h => v.2.1 (congrArg Subtype.val h), v.2.2.2⟩
         left_inv := fun u => Subtype.ext (Subtype.ext rfl)
-        right_inv := fun v => Subtype.ext rfl }
+        right_inv := fun v => Subtype.ext rfl }).symm
   rw [h2] at h1
   have hq : 0 < S.q - 1 := by have := S.one_lt_q; omega
   have h3 : (S.q - 1) * 2 =
@@ -139,10 +139,13 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
   have hw : ∀ l : S.TILine, ∑ x ∈ Finset.univ.filter (fun x => x ∈ l), w x ≤ j := by
     intro l
     have hc : ((Finset.univ.filter (fun x => x ∈ l)).filter (fun x => S.Oz 0 x.rep)).card = 2 := by
-      rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
-      exact S.card_O_line (Nat.zero_le _) l
+      have h := S.card_O_line (Nat.zero_le _) l
+      rw [Nat.card_eq_fintype_card, Fintype.card_subtype] at h
+      rw [Finset.filter_filter]
+      convert h using 2
     have hs : ∑ x ∈ Finset.univ.filter (fun x => x ∈ l), w x =
         ∑ x ∈ (Finset.univ.filter (fun x => x ∈ l)).filter (fun x => S.Oz 0 x.rep), j / 2 := by
+      symm
       rw [Finset.sum_filter]
     rw [hs, Finset.sum_const, hc, smul_eq_mul]
     omega
@@ -156,6 +159,7 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
       exact S.spread_unique ha.2 hb.2 ha.1 hb.1
     have hs : ∑ l ∈ Finset.univ.filter (fun l : S.TILine => x ∈ l), m l =
         ∑ l ∈ (Finset.univ.filter (fun l : S.TILine => x ∈ l)).filter (fun l => S.IsSpread l), j := by
+      symm
       rw [Finset.sum_filter]
     rw [hs, Finset.sum_const, smul_eq_mul]
     exact le_trans (Nat.mul_le_mul_right j hc) (by simp)
@@ -166,10 +170,10 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
   have hL : Fintype.card S.TILine = (S.q + 1) * (S.q ^ 2 + 1) := by
     rw [← Nat.card_eq_fintype_card, S.card_lines]
   have hW : ∑ x, w x = j * (S.q ^ 2 + 1) := by
-    have hs : ∑ x, w x = ∑ x ∈ Finset.univ.filter (fun x => S.Oz 0 x.rep), j / 2 := by
+    have hs : ∑ x, w x = ∑ x ∈ Finset.univ.filter (fun x : ℙ S.F K => S.Oz 0 x.rep), j / 2 := by
       rw [Finset.sum_filter]
     rw [hs, Finset.sum_const, smul_eq_mul]
-    have hc : (Finset.univ.filter (fun x => S.Oz 0 x.rep)).card = 2 * (S.q ^ 2 + 1) := by
+    have hc : (Finset.univ.filter (fun x : ℙ S.F K => S.Oz 0 x.rep)).card = 2 * (S.q ^ 2 + 1) := by
       rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
       exact S.card_O (Nat.zero_le _)
     rw [hc, show 2 * (S.q ^ 2 + 1) * (j / 2) = (S.q ^ 2 + 1) * (2 * (j / 2)) by ring, hj2']
@@ -192,12 +196,35 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
 theorem corC1_two :
     ∃ H : SimpleGraph (Fin (2 * (S.q ^ 2 + 1) * (S.q + 3))), IsBipartiteDegDiam H (S.q + 3) 4 := by
   obtain ⟨H, hH⟩ := S.corC1 (j := 2) even_two le_rfl
-  have hn : 2 * (S.q ^ 2 + 1) * (S.q + 1 + 2) = 2 * (S.q ^ 2 + 1) * (S.q + 3) := by ring
-  have hd : S.q + 1 + 2 = S.q + 3 := by ring
-  refine ⟨H.comap (finCongr hn).symm, ?_⟩
-  have := isBipartiteDegDiam_comap (finCongr hn) hH
-  rwa [hd] at this
+  have key : ∀ n n' d d' : ℕ, n = n' → d = d' → ∀ H : SimpleGraph (Fin n),
+      IsBipartiteDegDiam H d 4 → ∃ H' : SimpleGraph (Fin n'), IsBipartiteDegDiam H' d' 4 := by
+    rintro n n' d d' rfl rfl H h
+    exact ⟨H, h⟩
+  exact key _ _ _ _ (by ring) (by ring) H hH
 
 end Setting
+
+end BipartiteDD.SingerC
+
+namespace BipartiteDD.SingerC
+
+open scoped LinearAlgebra.Projectivization
+
+variable {K : Type*} [Field K] [Fintype K] {p : ℕ} [Fact p.Prime] [CharP K p]
+
+/-- `O_a`: the points of `W(3,q)` whose vectors lie in Singer class `a` or `q - a`. -/
+def W3.O (S : Setting K p) (a : ℕ) : Set (ℙ S.F K) := {x | S.Oz a x.rep}
+
+/-- Target 2, Proposition C: `O_a` is a 2-ovoid of `W(3,q)`: every line meets it in exactly two
+points. -/
+theorem propC (S : Setting K p) {a : ℕ} (ha : a ≤ S.q) (l : W3Line S) :
+    Nat.card {x : ℙ S.F K // x ∈ l ∧ x ∈ W3.O S a} = 2 :=
+  S.card_O_line ha l
+
+/-- Target 4, Corollary C1. -/
+theorem corC1 (S : Setting K p) {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
+    ∃ H : SimpleGraph (Fin (2 * (S.q ^ 2 + 1) * (S.q + 1 + j))),
+      IsBipartiteDegDiam H (S.q + 1 + j) 4 :=
+  S.corC1 hj hj2
 
 end BipartiteDD.SingerC

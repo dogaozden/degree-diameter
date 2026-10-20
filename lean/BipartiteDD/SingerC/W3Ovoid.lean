@@ -55,9 +55,9 @@ theorem card_nonzero_units : Nat.card {c : S.F // c ≠ 0} = S.q - 1 := by
 
 /-- The representative of the point of a nonzero vector is a nonzero scalar multiple of it. -/
 theorem rep_mk_eq (v : K) (hv : v ≠ 0) :
-    ∃ c : K, c ∈ S.F ∧ c ≠ 0 ∧ (mk S.F v hv).rep = c * v := by
-  obtain ⟨a, ha⟩ := (mk_eq_mk_iff' S.F _ _ _ _).mp (mk_rep (mk S.F v hv))
-  refine ⟨a, a.2, fun h => (mk S.F v hv).rep_nonzero ?_, ha.symm⟩
+    ∃ c : K, c ∈ S.F ∧ c ≠ 0 ∧ (Projectivization.mk S.F v hv).rep = c * v := by
+  obtain ⟨a, ha⟩ := (Projectivization.mk_eq_mk_iff' S.F _ _ _ _).mp (Projectivization.mk_rep (Projectivization.mk S.F v hv))
+  refine ⟨a, a.2, fun h => (Projectivization.mk S.F v hv).rep_nonzero ?_, ha.symm⟩
   rw [← ha]
   show (a : K) • v = 0
   rw [show (a : K) = 0 from h, zero_smul]
@@ -68,15 +68,15 @@ theorem card_vec_points (U : Submodule S.F K) (P : K → Prop)
     Nat.card {v : K // v ≠ 0 ∧ v ∈ U ∧ P v} =
       (S.q - 1) * Nat.card {x : ℙ S.F K // x.submodule ≤ U ∧ P x.rep} := by
   classical
-  have hrepP : ∀ v : K, ∀ hv : v ≠ 0, P (mk S.F v hv).rep ↔ P v := by
+  have hrepP : ∀ v : K, ∀ hv : v ≠ 0, P (Projectivization.mk S.F v hv).rep ↔ P v := by
     intro v hv
     obtain ⟨c, hc, hc0, hcv⟩ := S.rep_mk_eq v hv
     rw [hcv]
     exact hP c hc hc0 v
   let g : {v : K // v ≠ 0 ∧ v ∈ U ∧ P v} → {x : ℙ S.F K // x.submodule ≤ U ∧ P x.rep} :=
-    fun v => ⟨mk S.F v.1 v.2.1, by
+    fun v => ⟨Projectivization.mk S.F v.1 v.2.1, by
       refine ⟨?_, ?_⟩
-      · show (mk S.F v.1 v.2.1).submodule ≤ U
+      · show (Projectivization.mk S.F v.1 v.2.1).submodule ≤ U
         rw [Projectivization.submodule_mk, Submodule.span_singleton_le_iff_mem]
         exact v.2.2.1
       · exact (hrepP v.1 v.2.1).mpr v.2.2.2⟩
@@ -86,23 +86,22 @@ theorem card_vec_points (U : Submodule S.F K) (P : K → Prop)
     intro x
     obtain ⟨hxU, hxP⟩ := x.2
     have hr0 : x.1.rep ≠ 0 := x.1.rep_nonzero
-    have hr : mk S.F x.1.rep x.1.rep_nonzero = x.1 := mk_rep x.1
+    have hr : Projectivization.mk S.F x.1.rep x.1.rep_nonzero = x.1 := mk_rep x.1
     let f : {c : S.F // c ≠ 0} → {v : {v : K // v ≠ 0 ∧ v ∈ U ∧ P v} // g v = x} :=
       fun c => ⟨⟨(c.1 : K) * x.1.rep, mul_ne_zero (fun h => c.2 (Subtype.ext h)) hr0,
           U.smul_mem c.1 (hxU (S.rep_mem' x.1)), (hP (c.1 : K) c.1.2
             (fun h => c.2 (Subtype.ext h)) _).mpr hxP⟩,
         Subtype.ext (by
-          show mk S.F ((c.1 : K) * x.1.rep) _ = x.1
-          rw [← hr]
-          exact (mk_eq_mk_iff' S.F _ _ _ _).mpr ⟨c.1, rfl⟩)⟩
+          show Projectivization.mk S.F ((c.1 : K) * x.1.rep) _ = x.1
+          exact ((Projectivization.mk_eq_mk_iff' S.F _ _ _ _).mpr ⟨c.1, rfl⟩).trans hr)⟩
     have hfbij : Function.Bijective f := by
       constructor
       · intro c c' h
         have h2 : (c.1 : K) * x.1.rep = (c'.1 : K) * x.1.rep := congrArg (fun w => w.1.1) h
         exact Subtype.ext (Subtype.ext (mul_right_cancel₀ hr0 h2))
       · rintro ⟨⟨v, hv0, hvU, hvP⟩, hgv⟩
-        have hgv' : mk S.F v hv0 = x.1 := congrArg Subtype.val hgv
-        obtain ⟨a, ha⟩ := (mk_eq_mk_iff' S.F v x.1.rep hv0 hr0).mp (hgv'.trans hr.symm)
+        have hgv' : Projectivization.mk S.F v hv0 = x.1 := congrArg Subtype.val hgv
+        obtain ⟨a, ha⟩ := (Projectivization.mk_eq_mk_iff' S.F v x.1.rep hv0 hr0).mp (hgv'.trans hr.symm)
         have ha0 : a ≠ 0 := fun h => hv0 (by rw [← ha, h, zero_smul])
         exact ⟨⟨a, ha0⟩, Subtype.ext (Subtype.ext ha)⟩
     rw [← Nat.card_eq_of_bijective f hfbij]

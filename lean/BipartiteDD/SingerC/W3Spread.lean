@@ -131,3 +131,30 @@ theorem spread_unique {x : ℙ S.F K} {l l' : S.TILine} (hl : S.IsSpread l) (hl'
 end Setting
 
 end BipartiteDD.SingerC
+
+namespace BipartiteDD.SingerC
+
+open scoped LinearAlgebra.Projectivization
+
+variable {K : Type*} [Field K] [Fintype K] {p : ℕ} [Fact p.Prime] [CharP K p]
+
+/-- Target 3: the regular spread `{x · L : x ≠ 0}` of `W(3,q)`, `L = GF(q²)`. -/
+def W3.spread (S : Setting K p) : Set (W3Line S) := {l | S.IsSpread l}
+
+/-- The lines of the regular spread are exactly the sets `x · L` with `x ≠ 0`. -/
+theorem W3.mem_spread (S : Setting K p) (l : W3Line S) :
+    l ∈ W3.spread S ↔ ∃ x : K, x ≠ 0 ∧ l.1 = S.spreadSub x :=
+  ⟨fun ⟨x, hx, h⟩ => ⟨x, hx, h⟩, fun ⟨x, hx, h⟩ => ⟨x, hx, h⟩⟩
+
+/-- Every spread line is totally isotropic. -/
+theorem W3.spread_totally_isotropic (S : Setting K p) (l : W3Line S) :
+    ∀ u ∈ l.1, ∀ v ∈ l.1, S.B u v = 0 :=
+  l.2.2
+
+/-- Every point of `W(3,q)` lies on exactly one spread line. -/
+theorem W3.spread_exists_unique (S : Setting K p) (x : ℙ S.F K) :
+    ∃! l : W3Line S, l ∈ W3.spread S ∧ x ∈ l :=
+  ⟨S.spreadLine x.rep_nonzero, ⟨⟨x.rep, x.rep_nonzero, rfl⟩, S.pt_mem_spreadLine x⟩,
+    fun l hl => S.spread_unique hl.1 ⟨x.rep, x.rep_nonzero, rfl⟩ hl.2 (S.pt_mem_spreadLine x)⟩
+
+end BipartiteDD.SingerC

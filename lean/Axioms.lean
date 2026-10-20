@@ -3,6 +3,7 @@
 import BipartiteDD.GQST.Main
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
+import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Haar.Record2620
 import BipartiteDD.Haar.Record1728
 import BipartiteDD.GQ4.Main
@@ -55,3 +56,8 @@ import BipartiteDD.ASq.Main
 #print axioms BipartiteDD.SingerC.Setting.propC_subspace
 #print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam
 #print axioms BipartiteDD.Haar.haar_ediam_le_five
+#print axioms BipartiteDD.SingerC.W3.isGQst
+#print axioms BipartiteDD.SingerC.propC
+#print axioms BipartiteDD.SingerC.W3.spread_exists_unique
+#print axioms BipartiteDD.SingerC.W3.spread_totally_isotropic
+#print axioms BipartiteDD.SingerC.corC1
