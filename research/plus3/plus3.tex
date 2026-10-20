@@ -29,17 +29,19 @@ In the range of the Combinatorics Wiki table ($\Delta \le 16$) the relevant cell
 \begin{center}
 \begin{tabular}{@{}rrrrrl@{}}
 \toprule
-$\Delta$ & $q$ & \cite{AL} & four hats & table upper bound & status of $2(q^2+q+6)+1$\\
+$\Delta$ & $q$ & \cite{AL} & four hats & upper bound (table) & $2(q^2+q+6)+1$\\
 \midrule
-$7$ & $5$ & $70$ & $72$ & $80$ & below $n_b(7,3) = 80$ (Hafner--Loz graph; no $(7,3,-4)$-graph~\cite{FMPV})\\
-$11$ & $9$ & $190$ & $192$ & $220$ & open ($193$)\\
-$13$ & $11$ & $274$ & $276$ & $314$ & open ($277$)\\
-$15$ & $13$ & $374$ & $376$ & $422$ & open ($377$)\\
+$7$ & $5$ & $70$ & $72$ & $80$ & $73 < 80$\\
+$11$ & $9$ & $190$ & $192$ & $220$ & $193$; open\\
+$13$ & $11$ & $274$ & $276$ & $314$ & $277$; open\\
+$15$ & $13$ & $374$ & $376$ & $422$ & $377$; open\\
 \bottomrule
 \end{tabular}
 \end{center}
-For $\Delta = 16$ ($q+1 = 15$) the table value $394$ comes from duplication and is not of this form.
-Beyond the table, $2(q^2+q+6)+1$ is the open value for every prime power $q \ge 9$ with $q+1$ not a prime power
+At $\Delta = 7$ the value $n_b(7,3) = 80$ is known exactly~\cite{FMPV}: the table has a graph of order $80$, and
+\cite[Thm.~4.1]{FMPV} rules out bipartite $(7,3,-4)$-graphs, the last case left. For $\Delta = 16$ neither
+$\Delta - 1 = 15$ nor $\Delta - 2 = 14$ is a prime power, so the question does not arise.
+Beyond the table, $2(q^2+q+6)+1$ is the first open value for every prime power $q \ge 9$ with $q+1$ not a prime power
 ($q = 9, 11, 13, 17, 19, 23, 25, 27, 29, 32, 37, \dots$), as far as we know.
 
 \subsection{Extensions of a projective plane}\label{ssec:ext}
@@ -85,7 +87,8 @@ points. Hence $N - a(q+1) + \sigma_h - t \le d(q+1)$. Use $a + d \le q+2$ for th
 \end{proof}
 
 \begin{lemma}[near-copies]\label{lem:copy}
-Let $h$, $a$, $t$, $\varepsilon$ be as in Lemma~\ref{lem:cover} and suppose $q \ge 3l + 6 + t + 3\varepsilon$. Then there is an
+Let $h$, $a$, $t$, $\varepsilon$ be as in Lemma~\ref{lem:cover} and suppose $q \ge 3l + 6 + t + 3\varepsilon$ (so $t \le q-6$ and
+$\varepsilon$ is defined). Then there is an
 old point $X$ such that all but at most one line of $O(h)$ pass through $X$ (in $\Pi$). At least $q-l-\varepsilon-1$ lines of
 $O(h)$ pass through $X$.
 \end{lemma}
@@ -104,9 +107,9 @@ As $g$ is convex, $a \le \max\{g(r_0), g((s+1)/3)\}$. First, $g((s+1)/3) = (s+7)
 (use $a \ge (s+5)/3 + 1$ and $a \le q+2$), and $x \mapsto x + (s+1)/x$ is convex, so $g(r_0) + 1$ is at most the larger of
 $a/3 + 3(s+1)/a < a/3 + 9$ and $a(q+1)/(2q+1) + (s+1)(2q+1)/(a(q+1)) < a(q+1)/(2q+1) + 6$. Both are at most $a+1$ once
 $a \ge 13$, which holds for $q \ge 15$. So $g(r_0) < a$, a contradiction. For $q \le 14$ the hypothesis forces $l \le 2$ and
-$t \le 5$, and an exhaustive check of the integer system (i), (ii), $a = r + b$, $b \ge 2$, $a \ge q+1-l-\varepsilon$ finds no
-solution (\texttt{thresholds.py}, which checks all $q \le 400$, $0 \le l \le 12$, $t \le 12$; the bound $3l+6+t+3\varepsilon$ is
-exactly the threshold of this system in every case checked). Hence $b \le 1$ and $r = a - b \ge q - l - \varepsilon - 1$.
+$t \le 5$, and an exhaustive check of the integer system (i), (ii), $a = r + b$, $b \ge 2$, $q+1-l-\varepsilon \le a \le q+2$ finds no
+solution (\texttt{thresholds.py}, which checks every $q$ from the threshold up to $400$ for $0 \le l \le 12$, $t \le 12$; the
+bound $3l+6+t+3\varepsilon$ is exactly the threshold of this system in every case checked). Hence $b \le 1$ and $r = a - b \ge q - l - \varepsilon - 1$.
 \end{proof}
 
 We call $X$ the point \emph{copied} by $h$ and write $X = X_h$; dually a new line $K$ copies an old line $L_K$.
@@ -133,7 +136,7 @@ against the hypothesis. Dually for lines.
 point, and added pairs put at most $e$ further points of $M$ on old lines of $h$. So at least $q-1-e$ points of $M$ are
 at distance $2$ from $h$ only through new lines through $h$. A new line $K$ through $h$ with $L_K \ne M$ has at most two
 old points on $M$ (one on $L_K$, and possibly its one old point off $L_K$). If no $K$ through $h$ copied $M$, then
-$q-1-e \le 2d_h \le 2l$, which is false. The copies of different lines $M$ are different by (b), so $d_h \ge m_h$.
+$q-1-e \le 2d_h \le 2l$, which is false. Different lines $M$ have different copies, so $d_h \ge m_h$.
 Finally $a_h = (q+1-m_h) + b$ with $b \in \{0,1\}$ the number of old lines of $h$ not through $X_h$, and $a_h + d_h \le q+2$.
 \end{proof}
 
@@ -164,14 +167,15 @@ set, $m \ge 2$ of them, and two points $u, v$ of the set off $L$; if $m \ge 3$, 
 together with $u, v$ form a quadrangle, and if $m = 2$ any four points do. Dually for $\cL'$.
 \end{proof}
 
-With changes the same argument shows that at most $e$ joins of copied points can fail to be copied (each failure needs
-a deleted flag on that line), so the configuration is closed up to $e$ exceptions. In the hat configuration the line
-is $\ell$ and the point is $A$; the copied point off $\ell$ is $A$ and the copied line not through $A$ is $\ell$.
+With changes the same argument shows that at most $e$ lines joining two copied points can fail to be copied (such a
+line is an old line of both copies, so it carries a deleted flag, and distinct lines carry distinct flags); dually for
+meets. So the configuration is closed up to $e$ exceptions. In the hat configuration the line is $\ell$, the point is
+$A$, and $A \notin \ell$.
 
 \begin{theorem}\label{thm:nochange}
 Let $G$ be an extension of $\Pi$ with no changes, $p$ new points and $l$ new lines, $p + l \le 13$ and
 $q \ge 3\max(p,l)+9$. Then $p \le 6$ and $l \le 6$, and $p = 6$ or $l = 6$ forces $p = l = 6$.
-In particular $p + l \notin \{11, 13\}$: for $q \ge 3(p+l)+9$, hence for $q \ge 42$, no graph of maximum degree $q+2$
+In particular $p + l \notin \{11, 13\}$: for $q \ge 42$ (respectively $q \ge 48$) no graph of maximum degree $q+2$
 and diameter $3$ consists of the incidence graph of a projective plane of order $q$ as an induced subgraph plus exactly
 $11$ (or $13$) further vertices.
 \end{theorem}
@@ -185,8 +189,9 @@ For every other $Y$, $L^*$ is missing at $h_Y$, so $K^*$ passes through $h_Y$ (T
 \item The new points on $K^*$ are the copies of the points of $L^*$ that are not old points of $K^*$, and at most one
 more (the dual of Theorem~\ref{thm:copies}(c)). Hence at most two points $Y \in S$ are old points of $K^*$: the one with
 $L^* \in O(h_Y)$, and one whose copy is the extra new point of $K^*$.
-\item A new line $K \ne K^*$ contains at most two copies $h_Y$, $Y \in S$: its line $L_K$ meets $L^*$ in one point, and
-$K$ has at most one new point that is not the copy of a point of $L_K$.
+\item A new line $K \ne K^*$ contains at most two copies $h_Y$, $Y \in S$: its new points are copies of points of $L_K$
+that are not old points of $K$, plus at most one more; $L_K \ne L^*$ meets $L^*$ in one point, so at most one of the
+former copies a point of $S$.
 \item Let $Y \ne Y'$ in $S$ with $L^*$ missing at $h_{Y'}$. The old lines of $h_{Y'}$ are lines through $Y'$ other than
 $L^* = YY'$, and at most one further line $E_{Y'}$. So unless $Y \in E_{Y'}$, the points $Y$ and $h_{Y'}$ are joined only
 by a new line, which must be the unique new line $\nu(Y)$ through $Y$.
@@ -202,7 +207,11 @@ then $\max(p,l) \ge 6$ and $\min(p,l) \le 6$ with $(p,l) \ne (6,6)$, a contradic
 \end{proof}
 
 The hypothesis $q \ge 3\max(p,l)+9$ is what Theorem~\ref{thm:copies} needs; the counting in the proof itself does not
-depend on $q$. With changes the argument breaks in two places: a changed incidence can let two new points share an
+depend on $q$. The proof also survives a single added pair and no deleted flag (with $q \ge 3\max(p,l)+10$): without
+deletions the closure is exact and every old vertex still has at most one new neighbour, and the added pair raises
+$\sum_Y e_Y$ by at most one, while $(s-2)(s-4) \le s+1$ still fails at $s = 6$. The slack at $s = 6$ is only two, so two
+added pairs, or one deleted flag (which lets one old point carry two new lines and one old line two new points), already
+break the count. With changes the argument breaks in two places: a changed incidence can let two new points share an
 old line, and can let a copied point see a hat through an added old incidence. So a $+3$ on a projective plane of large
 order must change the plane, and Theorem~\ref{thm:nochange} says nothing about how many changes would suffice.
 Whether $p = l = 6$ (that is, $2(q^2+q+7)$, five hats) can occur without changes is also left open by the counting;
@@ -244,7 +253,7 @@ $\ell$ and $AX_i$ (point $H_i$), and $AX_i$ (point $H_{s^{-1}(i)}$), and these c
 points with a new line are the points of $\ell \setminus \{X_1,X_2,X_3\}$ (line $M$), of $AX_a \setminus \{X_a\}$ (line $K_a$),
 of $AX_i \setminus\{A, X_i\}$ (line $K_i$), and $X_i$ (line $K_{s(i)}$).
 
-\emph{Two points.} Old pairs are joined in $\Pi$. $Q$ and an old point $x$: if $Ax \ne AX_i$ for all $i$ then $Ax$ is a line
+\emph{Two points.} Old pairs are joined in $\Pi$. $Q$ and $A$ lie on $AX_a$. $Q$ and an old point $x \ne A$: if $Ax \ne AX_i$ for all $i$ then $Ax$ is a line
 of $Q$; if $x \in AX_i \setminus \{A, X_i\}$, use $K_i$; if $x = X_i$, use $K_{s(i)}$. $H_a$ and $x$: if $x \notin AX_a$ or
 $x = X_a$ use $X_ax$; otherwise use $K_a$. $H_i$ and $x$: if $X_ix \notin \{\ell, AX_i\}$ use it; $A$ and $X_{s(i)}$ lie on
 $AX_{s(i)}$; the points of $\ell$ other than $X_1,X_2,X_3$ lie on $M$; $X_{s^{-1}(i)}$ and the points of
@@ -253,7 +262,7 @@ $Q, H_i$ on $K_i$; any two hats on $M$.
 
 \emph{Two lines.} $M$ and an old line $L$: if $L$ meets $\ell$ in a point of $M$, done; if $L \ni X_i$ and $L \ne \ell$, then
 $L$ contains $H_i$ (when $L \ne AX_i$) or $H_{s^{-1}(i)}$ (when $L = AX_i$), and both lie on $M$. $K_a$ and $L$: $L$ meets
-$AX_a$; if only in $X_a$, then $L$ is a line through $X_a$ other than $AX_a$ and contains $H_a$. $K_i$ and $L \ne AX_i$:
+$AX_a$; if only in $X_a$, then $L$ is a line through $X_a$ other than $AX_a$ and contains $H_a$. $K_i$ and $AX_i$ share the $q-1 \ge 2$ points of $AX_i \setminus \{A, X_i\}$. $K_i$ and $L \ne AX_i$:
 let $y = L \cap AX_i$. If $y \notin \{A, X_i\}$, done. If $y = X_i$ and $L \ne \ell$, $L$ contains $H_i$; if $L = \ell$, it
 contains $X_{s^{-1}(i)} \in K_i$. If $y = A$, then $L$ contains $Q$ unless $L = AX_j$ with $j \ne i$; then either
 $j = s(i)$ and $L$ contains $H_i$, or $j = s^{-1}(i)$ and $L$ contains $X_j \in K_i$. New pairs: $M$ meets $K_a$ in $H_a$
@@ -267,3 +276,89 @@ breaks the diameter. In the language of Theorem~\ref{thm:copies}: $H_1, H_2, H_3
 ($\ell$ and $AX_i$, copied by $M$ and $K_i$) and carry one old line not through it ($AX_{s(i)}$); $K_1, K_2, K_3$ are dual.
 An AL-size graph without changes ($p = l = 4$: $Q$, $M$ and three hats whose rotation is a $3$-cycle; $Q$ and $M$
 each carry one extra old incidence) was found by the same search at $q = 7$ (\texttt{graphs/ext\_q7\_4\_4\_E0\_A0\_n122.json}).
+
+\subsection{Computer evidence beyond the hat model}\label{ssec:plus3sat}
+The program \texttt{sat\_ext.py} encodes extensions of $\PG(2,q)$ directly: $p$ new points and $l$ new lines with all
+their incidences free; at most $E$ flags of the plane may be deleted and at most $A$ non-incident old pairs added;
+degree at most $q+2$; any two points and any two lines have a common neighbour. Nothing about hats, frames or gadgets is
+fixed. Symmetry is broken soundly: new points are sorted by their old lines and new lines by their old points, and the
+action of $\mathrm{P\Gamma L}(3,q)$ is used in one of two ways.
+\begin{itemize}
+\item \emph{Full model.} Either no new point lies on two old lines (case A), or, for $r = 2, \dots, q+1$, $r$ is the largest
+number of old lines through one old point that any new point lies on, attained by new point $0$ at old point $0$ on
+$\min(r,3)$ fixed lines of its pencil (case $r$). These $q+1$ cases cover everything.
+\item \emph{Copy model.} The conclusions of Theorem~\ref{thm:copies} are imposed (a theorem for $q \ge 3\max(p,l)+9+e$,
+an assumption below that); new point $0$ copies old point $0$, and new line $0$ copies a fixed line through it (case
+``on'') or not through it (case ``off''). Optionally (``changes in the configuration'') changes are allowed only between
+copied points and copied lines, as in both known constructions. Deleted flags are taken maximal (a deleted flag with spare
+degree at both ends could be put back), which is sound.
+\end{itemize}
+Every satisfying assignment is decoded and checked independently; every SAT graph quoted below passes \texttt{lib.is\_valid}.
+Runs used CaDiCaL~1.5.3 or~1.9.5 through PySAT, at most four in parallel, each with a wall-clock limit.
+
+In the table, $E$ and $A$ bound the deleted flags and the added pairs; ``all cases'' means case A and every case $r$.
+\begin{center}
+\small
+\begin{tabular}{@{}llllp{5.5cm}@{}}
+\toprule
+model & $q$ & $(p,l)$ & $E, A$ & result\\
+\midrule
+full & $4$ & $(5,4)$, $(6,3)$ & $0, 0$ & UNSAT, all cases (so no $+1$ over \cite{AL} without changes at $q=4$ for these splits)\\
+full & $4$ & $(5,5)$ & $0, 0$ & SAT; same copy configuration and $3$-cycle of extra incidences as Proposition~\ref{prop:zero}\\
+full & $4$ & $(6,5)$ & $0, 0$ & UNSAT, all cases (longest $166$\,s)\\
+full & $5$ & $(5,4)$ & $0, 0$ & UNSAT in case A and case $r=2$ ($389$\,s); cases $r \ge 3$ not finished\\
+full & $4$ & $(6,5)$ & $8, 8$ & unknown: every case hit the $600$\,s limit\\
+copy & $5,7,9$ & $(5,5)$ & $0, 0$ & SAT in both cases (controls)\\
+copy & $7$ & $(6,5)$ & $0, 0$ & UNSAT in case ``off'' ($243$\,s); case ``on'' unknown ($1500$\,s)
+\\
+copy & $9$ & $(6,5)$ & $0, 0$ & unknown in both cases ($900$\,s)\\
+copy & $7, 9$ & $(6,5)$ & $1, 1$ & unknown: $900$\,s limit\\
+five hats & $7$ & $(6,5)$ & see right & UNSAT for $E = A = 0, 1, 2, 3$ (longest $1048$\,s); $E = A = 4$: unknown ($1500$\,s); $E = A = 8$: unknown ($900$\,s)
+\\
+five hats & $9$ & $(6,5)$ & see right & UNSAT for $E = A = 1, 2$ (longest $515$\,s); $E = A = 3$: unknown ($1500$\,s); $E = A = 4, 8$: unknown ($900$\,s)
+\\
+five hats & $11$ & $(6,5)$ & $1, 1$ & UNSAT ($132$\,s); $E = A = 2$: unknown ($900$\,s)
+\\
+five hats & $13$ & $(6,5)$ & $1, 1$ & UNSAT ($493$\,s)\\
+five hats & $5,7,9$ & $(5,5)$ & $4, 3$ & SAT (controls, changes only between copied vertices; $4$ deletions used)\\
+five hats & $7$ & $(5,5)$ & $4, 3$ & SAT (control, changes anywhere; $153$\,s)\\
+\bottomrule
+\end{tabular}
+\end{center}
+The ``five hats'' rows use the copy model with the configuration fixed to the natural $(6,5)$ shape: a closed
+configuration as in Proposition~\ref{prop:closed} with one join left uncopied (which needs a deleted flag on it): $Q$ copies a point $u$, $M$ copies a line $L^* \not\ni u$,
+five new points copy five points $Y_1, \dots, Y_5$ of $L^*$, and four new lines copy $uY_1, \dots, uY_4$. Three of the
+$Y_i$ are fixed (the stabiliser of $(u, L^*)$ is $3$-transitive on $L^*$); everything else is free, and changes may
+be anywhere in the plane. This is the configuration of the hat-model case $(5,4,1,1)$ of \S\ref{sec:coords}, but with
+all incidences of the new vertices free. (With changes restricted to pairs of copied vertices this shape is impossible
+for a trivial reason: the uncopied join $uY_5$ would carry two new points and needs a deleted flag. Those runs are not
+evidence and are not listed.)
+
+\emph{Local search.} The annealer of our $376$-vertex program, which inserts a vertex on each side and then swaps any
+edges (incidences of the plane included), was started from the graph of Proposition~\ref{prop:zero} with a filler
+matching at $q = 9$: two runs of $300$\,s found no graph of order $194$ (\texttt{grow0.py}). Earlier runs from the
+four-hat graph at $q = 7, 9$ also found none.
+
+\subsection{Summary}\label{ssec:plus3sum}
+\begin{itemize}
+\item The $+2$ does not need to change the plane (Proposition~\ref{prop:zero}).
+\item For large $q$ ($q \ge 3\max(p,l)+9+e$), every extension of a projective plane by $p$ new points, $l$ new lines and
+$e$ changes is a copy configuration (Theorem~\ref{thm:copies}).
+\item Without changes, $+3$ is impossible for $q \ge 42$ (Theorem~\ref{thm:nochange}); at $q = 4$ the computer shows
+it for the split $(6,5)$, and at $q = 7$ in the copy model, case ``off''.
+\item With changes the question is open. The natural $+3$ shape (five hats, one hat line short) is UNSAT with up to two
+deletions and two additions anywhere at $q = 7, 9$ (three of each at $q = 7$) and with one of each at $q = 11, 13$,
+in the copy model; larger budgets did not finish. Other shapes
+(an uncopied $L^*$, which needs at least four deletions on it; six or more copied points on a line; configurations
+that are not closed because of changes) and the full model with changes were not settled.
+\item Nothing here gives a new table value: at the open cells $\Delta = 11, 13, 15$ the best known orders stay
+$192, 276, 376$.
+\end{itemize}
+
+% Bibliography entries used above (add to the paper's bibliography if missing):
+% \bibitem{FMPV} R. Feria-Pur\'on, M. Miller, G. Pineda-Villavicencio, On large bipartite graphs of diameter 3,
+%   Discrete Math. 313 (2013) 381--390, arXiv:1203.3588 (Theorem 4.1: no bipartite (7,3,-4)-graph; N^b(7,3) = 80).
+% \bibitem{FPPV} R. Feria-Pur\'on, G. Pineda-Villavicencio, On bipartite graphs of defect at most 4,
+%   Discrete Appl. Math. 160 (2012) 140--154, arXiv:1010.5651 (Propositions 3.1 and 3.2).
+% \bibitem{DJMP} C. Delorme, L. K. J{\o}rgensen, M. Miller, G. Pineda-Villavicencio, On bipartite graphs of
+%   diameter 3 and defect 2, J. Graph Theory 61 (2009) 271--288.

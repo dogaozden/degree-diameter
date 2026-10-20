@@ -52,7 +52,7 @@ def lex_geq(xs, ys, pool, tag):
 
 
 def build(q, kP, kL, E, ADD, force_del=False, sym=None, near=None, conc=None, copy=None,
-          chg_config=False, maxdel=False):
+          chg_config=False, maxdel=False, cfg65=False):
     pts, lns = pg_plane(q)
     N = len(pts)
     pool = IDPool()
@@ -260,6 +260,26 @@ def build(q, kP, kL, E, ADD, force_del=False, sym=None, near=None, conc=None, co
                     cls.append([-bad] + [cp[h, x] for h in range(N, N + kP)])
                     cls.append([-bad] + [cl[K, l] for K in range(N, N + kL)])
         start, lstart = 1, 1
+        if cfg65:
+            # Near-pencil shape (Proposition prop:closed, up to one exceptional join): Q copies
+            # u = point 0, M copies L* (a fixed line off u), hats h_1..h_{kP-1} copy points of L*,
+            # and K_i copies the line u Y_i for i = 1..kL-1.  For (6,5) the hat h_5 has no K-line.
+            # Three hats are fixed by 3-transitivity of PGL(2,q) on L* (the K-less hat, if any,
+            # among them); the others range over the rest of L*.  No lex chains.
+            assert copy == 'off' and kL - 1 <= kP - 1 <= kL
+            Ls = sorted(lns[off0[0]])
+            hats = list(range(1, kP))
+            fixed = [1, 2, kP - 1] if kP > kL else [1, 2, 3]
+            for t, i in enumerate(fixed):
+                cls.append([cp[N + i, Ls[t]]])
+            for i in hats:
+                if i not in fixed:
+                    cls.append([cp[N + i, y] for y in Ls[3:]])
+            for i in range(1, kL):
+                for y in Ls:
+                    j = next(l for l in range(N) if 0 in lns[l] and y in lns[l])
+                    cls.append([-cp[N + i, y], cl[N + i, j]])
+            start, lstart = kP, kL
     if sym == 'A':      # no new point lies on two old lines
         for h in range(N, N + kP):
             atmost([INC[h, l] for l in range(N)], 1)
@@ -300,6 +320,7 @@ def main():
     ap.add_argument('--force-del', action='store_true')
     ap.add_argument('--solver', default='cadical153')
     ap.add_argument('--save', action='store_true')
+    ap.add_argument('--cfg65', action='store_true', help='copy model, fixed (6,5) five-hat configuration')
     ap.add_argument('--maxdel', action='store_true', help='WLOG every deleted flag has a saturated end')
     ap.add_argument('--copy', choices=['on', 'off'], default=None,
                     help='copy model; new line 0 copies a line through (on) / not through (off) the point copied by new point 0')
@@ -314,9 +335,9 @@ def main():
     a = ap.parse_args()
     t0 = time.time()
     tag = (f'q={a.q} kP={a.kP} kL={a.kL} E<={a.E} ADD<={a.ADD}'
-           + (' force-del' if a.force_del else '') + (f' sym={a.sym}' if a.sym else '') + (f' near<={a.near}' if a.near is not None else '') + (f' conc={a.conc}' if a.conc else '') + (f' copy={a.copy}' if a.copy else '') + (' chg-config' if a.chg_config else '') + (' maxdel' if a.maxdel else '') + f' n={2*(a.q*a.q+a.q+1)+a.kP+a.kL}')
+           + (' force-del' if a.force_del else '') + (f' sym={a.sym}' if a.sym else '') + (f' near<={a.near}' if a.near is not None else '') + (f' conc={a.conc}' if a.conc else '') + (f' copy={a.copy}' if a.copy else '') + (' chg-config' if a.chg_config else '') + (' maxdel' if a.maxdel else '') + (' cfg65' if a.cfg65 else '') + f' n={2*(a.q*a.q+a.q+1)+a.kP+a.kL}')
     try:
-        N, P, L, INC, cls = build(a.q, a.kP, a.kL, a.E, a.ADD, a.force_del, a.sym, a.near, a.conc, a.copy, a.chg_config, a.maxdel)
+        N, P, L, INC, cls = build(a.q, a.kP, a.kL, a.E, a.ADD, a.force_del, a.sym, a.near, a.conc, a.copy, a.chg_config, a.maxdel, a.cfg65)
     except ValueError as ex:
         print(tag, 'UNSAT (trivial:', ex, ')', flush=True)
         return
