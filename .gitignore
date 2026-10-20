@@ -20,3 +20,9 @@ research/p4/**/*.o
 research/p4/d6haar/haar_dd
 research/p4/d6/ils_mis
 research/p4/d6/diam
+# Problems 1-2: raw generator output stays local
+research/p12/**/run/
+research/p12/lbm
+research/p12/lbm46/tc
+research/p12/lbm46/an
+research/p12/**/*.g6.gz
