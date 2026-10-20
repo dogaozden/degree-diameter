@@ -296,6 +296,20 @@ int main(int argc, char **argv) {
         bufA = malloc(sizeof(int) * N); bufB = malloc(sizeof(int) * N);
         for (int i = 0; i < d; i++) S[i] = atoi(argv[6 + i]);
         printf("cost=%d bfs_diameter=%d N=%d\n", cost(S), bfs_diam(S), N);
+        if (D % 2 == 1) {                   /* list the missed elements per side as (g0, z) */
+            static int T[MAXD * MAXD];
+            for (int side = 0; side < 2; side++) {
+                int nt = pairset(S, side, T), n = nt;
+                int *A = bufA, *B = bufB;
+                memcpy(A, T, sizeof(int) * nt);
+                for (int j = 1; j < D / 2; j++) { n = prodset(A, n, T, nt, B); int *t = A; A = B; B = t; }
+                cur++;
+                for (int u = 0; u < n; u++) stamp[A[u]] = cur;
+                printf("side %d missed:", side);
+                for (int g = 0; g < N; g++) if (stamp[g] != cur) printf(" (%d,%d)", bg[g], bz[g]);
+                printf("\n");
+            }
+        }
         return 0;
     }
     int check = argc > 1 && strcmp(argv[1], "check") == 0;
@@ -397,6 +411,16 @@ int main(int argc, char **argv) {
     double el = now() - t0;
     printf("D=%d d=%d table=%s c=%d N=%d n=%d K=%d best=%d restarts=%d steps=%lld evals=%lld time=%.1f evals_per_s=%.0f\n",
            D, d, table, C, N, 2 * N, K, bestc, restarts, steps, evals, el, evals / el);
+    if (bestc > 0 && out) {                 /* near miss: keep S in <outfile>.best for later study */
+        char path[1024];
+        snprintf(path, sizeof path, "%s.best", out);
+        FILE *f = fopen(path, "w");
+        if (f) {
+            fprintf(f, "%d %d %d %d %s %s best=%d\n", D, d, N, C, table, second, bestc);
+            for (int i = 0; i < d; i++) fprintf(f, "%d\n", best[i]);
+            fclose(f);
+        }
+    }
     if (bestc == 0 && out) {
         if (bfs_diam(best) > D) { fprintf(stderr, "internal: BFS disagrees on best\n"); return 2; }
         FILE *f = fopen(out, "w");

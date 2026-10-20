@@ -61,6 +61,15 @@ D = 7 (no Moore entries):
 D = 8: Δ = 4: 2184 (needs 1093, 0.333); Δ = 5: 9234 (4618, 0.211); Δ = 6: 29790 (14896, 0.153); Δ = 7: 80940
 (40471, 0.120); Δ = 8: 201480 (100741, 0.105).
 
+Who holds these cells (wiki colour legend): D = 7: Δ = 4 Hafner and Loz; Δ = 5 Loz (Loz, Pérez-Rosés,
+Pineda-Villavicencio project, voltage-graph lifts); Δ = 6..16 Delorme, Gómez and Quisquater. D = 8: Δ = 4..9 Loz;
+Δ ≥ 10 Delorme, Gómez and Quisquater. D = 6, Δ = 7, 11, 13, 15, 16 and D = 4, Δ = 7, 11, 13, 15, 16: Delorme–Farhi
+duplications.
+
+Novelty note: Haar graphs are exactly the regular lifts (voltage graphs) of the dipole with Δ parallel edges, voltages
+S, so they lie in the class Loz searched; the lemma is the standard ball description for bi-Cayley graphs, written
+out here for our use. What is new, if anything, is a specific (group, S) beating a table value.
+
 So diameter 6 (and 4) is a poor fit for Haar graphs: the only non-Moore cells need 48–84 % of the word bound. Diameters
 7 and 8 need only 10–38 %.
 
@@ -90,7 +99,25 @@ D = 6, Δ = 7 is out of reach: not even 0.235 of the bound is solved, the table 
 
 Local batch jobs_a.txt (2 cores, 23:16-23:33, stopped for batch b): D = 7, Δ = 5: AGL(1,41) (1640) best 19 after
 15 min, PGL(2,7) × Z_5 (1680) 28, Heis(7) × Z_5 (1715) 98 (stopped). Nilpotent × cyclic looks bad here.
-Local batch jobs_b.txt (haar_dd2, 2 cores, from 23:34): D = 7, Δ = 5 screening, 10 min per group.
+Local batch jobs_b.txt (haar_dd2, 2 cores, 23:34-00:05): D = 7, Δ = 5 screening, 10 min per group: SL(2,5) × Z_13
+8 (twice), SL(2,5) × D_7 16, PSL(2,7) × D_5 47, A5 × D_13 50, PGL(2,3) × Z_67 58, SL(2,3) × Z_67 108.
+
+Status at 00:05 (best = elements missed; 0 would beat the table):
+| D | Δ | group | order | best | where |
+|---|---|---|---|---|---|
+| 7 | 5 | SL(2,5) × Z_13 | 1560 | 8 | local, 10 min |
+| 7 | 5 | PSL(2,7) × Z_10 | 1680 | 10 | cloud 1, 25 min |
+| 7 | 5 | PGL(2,7) × Z_5 | 1680 | 12 | cloud 1, 25 min |
+| 7 | 5 | GL(2,3) × Z_33 | 1584 | 22 | cloud 1 |
+| 7 | 5 | Z_397 ⋊ Z_4 | 1588 | 438 | cloud 1 (metacyclic: bad) |
+| 8 | 6 | AGL(1,25) × Z_25 | 15000 | 14 | cloud 3, 30 min |
+| 8 | 6 | Heis(7) × Z_44 | 15092 | 2433 | cloud 3 (bad) |
+| 7 | 8 | AGL(1,25) × Z_34 | 20400 | 18 | cloud 3, 30 min |
+| 7 | 8 | Heis(11) × Z_16 | 21296 | 214 | cloud 3 |
+| 4 | 7 | AGL(1,5) × Z_9 | 180 | 9 | cloud 1, 5 min (needs 0.69 of the bound) |
+| 4 | 7 | SL(2,3) × Z_8 | 192 | 14 | cloud 1, 5 min |
+Pattern: Heisenberg (nilpotent, big centre) × cyclic and metacyclic groups are bad at D = 7, 8; AGL(1,q), SL/PSL/PGL(2,q)
+times a cyclic group are good.
 Cloud batches (Haiku, medium; code at commit b40925969 on research-diam4), launched 23:27:
 | session | jobs | cells | branch |
 |---|---|---|---|

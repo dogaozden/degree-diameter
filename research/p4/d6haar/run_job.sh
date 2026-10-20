@@ -12,7 +12,7 @@ tag="D${D}_d${d}_${g}_x${c}_s${seed}_K${K}"
 [ -f tables/$g.txt ] || python3 groups.py $g >/dev/null
 carg=$c
 case $c in *[!0-9]*) [ -f tables/$c.txt ] || python3 groups.py $c >/dev/null; carg=tables/$c.txt;; esac   # second factor: a group name (haar_dd2 only)
-bin=./haar_dd; [ -x ./haar_dd2 ] && bin=./haar_dd2   # haar_dd2: faster at odd D, same at even D, takes a second table
+bin=./haar_dd4   # breakout local search (best so far); haar_dd3 (targeted moves) tested no better
 nice -n 15 $bin $D $d tables/$g.txt $carg $seed $secs sols/$tag.txt $K > logs/$tag.log 2>&1
 tail -1 logs/$tag.log
 exit 0
