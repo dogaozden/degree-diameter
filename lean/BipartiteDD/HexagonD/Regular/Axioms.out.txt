@@ -3,3 +3,4 @@
 'BipartiteDD.HexagonD.levRel_isBipartiteDegDiam' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD.natCard_sides' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD.exists_levRel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonD.levRel_twin' depends on axioms: [propext, Classical.choice, Quot.sound]
