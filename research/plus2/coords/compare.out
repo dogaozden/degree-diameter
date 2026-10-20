@@ -1,0 +1,37 @@
+== 1. four hats vs construction.py ==
+q=9: construction.py core isomorphic to coordinate core for (a,c) in [(2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (3, 2), (3, 5), (3, 6), (3, 7), (3, 8), (4, 2), (4, 5), (4, 6), (4, 7), (4, 8), (5, 2), (5, 3), (5, 4), (5, 6), (5, 7), (6, 2), (6, 3), (6, 4), (6, 5), (6, 8), (7, 2), (7, 3), (7, 4), (7, 5), (7, 8), (8, 2), (8, 3), (8, 4), (8, 6), (8, 7)]
+      saved regular graph (networkx filler) isomorphic to delta-filled coordinate graph for none
+      42 choices of (a,c) give 2 isomorphism classes of cores
+      wrote research/plus2/coords/graphs/coords_q9_d11_n192.json (a=2, c=3)
+q=11: construction.py core isomorphic to coordinate core for (a,c) in [(2, 3), (2, 4), (2, 6), (2, 7), (2, 9), (2, 10), (3, 2), (3, 4), (3, 6), (3, 9), (3, 10), (4, 2), (4, 3), (4, 5), (4, 7), (4, 8), (5, 4), (5, 6), (5, 7), (5, 8), (5, 10), (6, 2), (6, 3), (6, 5), (6, 7), (6, 9), (6, 10), (7, 2), (7, 4), (7, 5), (7, 6), (7, 8), (8, 4), (8, 5), (8, 7), (8, 9), (8, 10), (9, 2), (9, 3), (9, 6), (9, 8), (9, 10), (10, 2), (10, 3), (10, 5), (10, 6), (10, 8), (10, 9)]
+      saved regular graph (networkx filler) isomorphic to delta-filled coordinate graph for none
+      72 choices of (a,c) give 2 isomorphism classes of cores
+      wrote research/plus2/coords/graphs/coords_q11_d13_n276.json (a=2, c=3)
+q=13: construction.py core isomorphic to coordinate core for (a,c) in [(2, 3), (2, 12), (3, 2), (3, 9), (4, 6), (5, 9), (5, 11), (6, 4), (6, 7), (7, 6), (7, 8), (8, 7), (8, 10), (9, 3), (9, 5), (10, 8), (11, 5), (11, 12), (12, 2), (12, 11)]
+      saved regular graph (networkx filler) isomorphic to delta-filled coordinate graph for none
+      110 choices of (a,c) give 3 isomorphism classes of cores
+      wrote research/plus2/coords/graphs/coords_q13_d15_n376.json (a=2, c=3)
+== 2. AL vs lib.araujo_lopez_graph ==
+q=4: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 3]
+q=5: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 4]
+q=7: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 6]
+q=8: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 3, 4, 5, 6, 7]
+q=9: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2]
+q=11: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 10]
+q=13: lib AL graph isomorphic to coordinate AL (matching with all i != 0) for a in [2, 12]
+== 3. negative controls (must fail) ==
+q=5 no rotation: diameter 4, points collinear False, lines concurrent False -> fails as expected
+q=5 no H_1 in K_0: diameter 4, points collinear False, lines concurrent False -> fails as expected
+q=9 no rotation: diameter 4, points collinear False, lines concurrent False -> fails as expected
+q=9 no H_1 in K_0: diameter 4, points collinear False, lines concurrent False -> fails as expected
+q=13 no rotation: diameter 4, points collinear False, lines concurrent False -> fails as expected
+q=13 no H_1 in K_0: diameter 4, points collinear False, lines concurrent False -> fails as expected
+== 4. duality: delta maps S_sigma onto the dual of S_sigma^-1 ==
+q=4: all 2 choices: True; AL self-dual under delta for every a: True
+q=5: all 6 choices: True; AL self-dual under delta for every a: True
+q=7: all 20 choices: True; AL self-dual under delta for every a: True
+q=8: all 30 choices: True; AL self-dual under delta for every a: True
+q=9: all 42 choices: True; AL self-dual under delta for every a: True
+q=11: all 72 choices: True; AL self-dual under delta for every a: True
+q=13: all 110 choices: True; AL self-dual under delta for every a: True
+ALL OK

@@ -1,0 +1,6 @@
+VALID  n=192 d=11 D=3  research/plus2/coords/graphs/coords_q9_d11_n192.json
+    checker: True   networkx: True  from-scratch: pass (diameter 3, degrees [11], sides (96, 96), 1056 edges)
+VALID  n=276 d=13 D=3  research/plus2/coords/graphs/coords_q11_d13_n276.json
+    checker: True   networkx: True  from-scratch: pass (diameter 3, degrees [13], sides (138, 138), 1794 edges)
+VALID  n=376 d=15 D=3  research/plus2/coords/graphs/coords_q13_d15_n376.json
+    checker: True   networkx: True  from-scratch: pass (diameter 3, degrees [15], sides (188, 188), 2820 edges)

@@ -1,0 +1,17 @@
+q  | structure | choices | three builds agree | max deg | covering pts/lines | diam core | filled: regular, diam
+ 3 | AL     |   1 | yes | 5 | True/True | 3 | 5-5, 3 | n=34 | all 1 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 4; all i != 0: min deg 5]
+ 4 | AL     |   2 | yes | 6 | True/True | 3 | 6-6, 3 | n=50 | all 2 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 5; all i != 0: min deg 6]
+ 4 | 4 hats |   2 | yes | 6 | True/True | 3 | 6-6, 3 | n=52 | all 2 choices valid: True
+ 5 | AL     |   3 | yes | 7 | True/True | 3 | 7-7, 3 | n=70 | all 3 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 6; all i != 0: min deg 7]
+ 5 | 4 hats |   6 | yes | 7 | True/True | 3 | 7-7, 3 | n=72 | all 6 choices valid: True
+ 7 | AL     |   5 | yes | 9 | True/True | 3 | 9-9, 3 | n=122 | all 5 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 8; all i != 0: min deg 9]
+ 7 | 4 hats |  20 | yes | 9 | True/True | 3 | 9-9, 3 | n=124 | all 20 choices valid: True
+ 8 | AL     |   6 | yes | 10 | True/True | 3 | 10-10, 3 | n=154 | all 6 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 9; all i != 0: min deg 10]
+ 8 | 4 hats |  30 | yes | 10 | True/True | 3 | 10-10, 3 | n=156 | all 30 choices valid: True
+ 9 | AL     |   7 | yes | 11 | True/True | 3 | 11-11, 3 | n=190 | all 7 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 10; all i != 0: min deg 11]
+ 9 | 4 hats |  42 | yes | 11 | True/True | 3 | 11-11, 3 | n=192 | all 42 choices valid: True
+11 | AL     |   9 | yes | 13 | True/True | 3 | 13-13, 3 | n=274 | all 9 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 12; all i != 0: min deg 13]
+11 | 4 hats |  72 | yes | 13 | True/True | 3 | 13-13, 3 | n=276 | all 72 choices valid: True
+13 | AL     |  11 | yes | 15 | True/True | 3 | 15-15, 3 | n=374 | all 11 choices valid: True  [AL paper matching, i not in {0,1,a}: min deg 14; all i != 0: min deg 15]
+13 | 4 hats | 110 | yes | 15 | True/True | 3 | 15-15, 3 | n=376 | all 110 choices valid: True
+ALL OK
