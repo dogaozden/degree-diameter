@@ -5,7 +5,7 @@ axioms of everything listed below: only `propext`, `Classical.choice`, `Quot.sou
 `Axioms.out.txt`). `F` is a finite field with `(2 : F) ≠ 0`, `q = |F|`, `c : F` with `-c` a non-square
 (`¬ IsSquare (-c)`; `exists_nonsquare_neg`).
 
-## Done: targets 1, 2, 3
+## Done: targets 1, 2, 3, 4
 
 | Brief | Lean |
 |---|---|
@@ -36,5 +36,21 @@ axioms of everything listed below: only `propext`, `Classical.choice`, `Quot.sou
    same point.
 6. `Delorme`: `delorme_levelled_polygon` with K = 3, the vertex count 2(q+1)(q⁴+q²+1) from `card_spt_eq`, `card_hline`.
 
+
+## Target 4: exact whiskers (Theorem 4 of `research/p4/hats/REPORT.md` §4) — done
+
+| Report step | Lean |
+|---|---|
+| Step 1: Π_z : x0 + c x4 + α x2 + β x5 = 0, S_z is a spread of Π_z ∩ Q, distinct lines opposite | `PiZ.lean`: `exists_plane_not_piZ`, `finrank_planePiZ`, `slineZ_unique`, `slineZ_opp` (the proof of `Pi.lean` for every z) |
+| S ∩ S_z = {v} for z ≠ 0 | `Exact.lean`: `vStd = ⟨e1, e6⟩`, `no_second_line` |
+| Step 2: a free point has (p2, p5) ≠ 0; through p the lines of S_z, z ∈ A_p | `FreeLines.lean`: `exists_line_meets_vStd` (a singular x with x2 = x5 = 0 is collinear with a point of v, computed directly, no point count), normalisation `u = L(p)⁻¹ p`; `ExactFamily.lean`: `exact_of_family` (π_u ∩ Π_z is 2-dimensional, its Π-vector is unique up to scalar, so lines through u in S_z correspond to z ∈ A_u) |
+| Step 3: closed-form identity ν(X(z)) + β³/(α²+cβ²) affine in z along A_p | `ChartA.lean` (u5 ≠ 0), `ChartB.lean` (u5 = 0 ≠ u2): `XA_mem_plane`, `XA_L`, `XA_Lz`, `XA_ne`, `XA_nu`; `XB_*`. All are polynomial identities (`field_simp; ring`) with the explicit vectors of `verify_closed.py`, `verify_closed2.py` |
+| Step 4: the cubic G has no zero ⇒ exactly one root | `ExactCharts.lean`: `exact_chartA`, `exact_chartB` (coefficient of s is G(u5, −u2) resp. u2³(1 − c c1)); `GCubic.lean`: `exists_goodCubic` (c0, c1 exist for every finite field with −c non-square; pigeonhole as in the report) |
+| W is exact, whiskers, \|W\| = q²(q²−1) | `FreeLines.lean`: `exists_unique_wline`, `wset_whiskers` (`Whiskers c (vS c) (Wset c c0 c1)`); `WCount.lean`: `ncard_notFree` (q²(q+1)), `ncard_free` (q³(q²−1) free points), `ncard_wset` (`\|W\| + q² = q⁴`) |
+| Bound | `TheoremD.lean`: `theorem4`, `theoremD`, `theoremD_two`: n_b(q+2,6) ≥ 2(q+1)(q⁴+q²+1) + 2q⁴+4q³+4q+10; `Sanity.lean`: q = 3 gives 1020 vertices (degree 5), q = 5 gives 9592 (degree 7) |
+
+The set is `Wset c c0 c1 = {m ≠ v | ∃ z ≠ 0, m ∈ S_z, ν(m ∩ Π) = F(z)}` with `F(z) = G(z)/(α² + cβ²)`,
+`G(a, b) = (c0 a + c1 b)(a² + c b²) − b³`; `ν` is `nuf`, invariant under scaling.
+
 ## Whole-library build
-See the end of this file.
+See the end of this file (to be filled in).
