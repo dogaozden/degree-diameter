@@ -19,4 +19,6 @@ Each build is alone; times are wall-clock, memory is peak RSS.
 | Records9592 (`nb_7_6`) | 0 | 10 | 1.8 |
 
 `#print axioms nb_7_6` (scratch file importing only `BipartiteDD.Records9592`): `[propext, Classical.choice, Quot.sound]`.
-The `nb_7_6` line in `lean/Axioms.out.txt` comes from that run; the full regeneration (`lake env lean Axioms.lean`) is attempted below.
+Full regeneration: all 166 modules `Axioms.lean` depends on were rebuilt one at a time (finished 17:58 UTC), then `lake env lean Axioms.lean` (10 s) gave a 61-line `Axioms.out.txt` identical to the committed one. Every line is `[propext, Classical.choice, Quot.sound]` except the existing `standin_zero_eq_blowup` (`[propext, Quot.sound]`).
+
+Total wall-clock: 14:43 to 17:58 UTC (3 h 15 min, under the 4 h limit).
