@@ -1,6 +1,7 @@
 import BipartiteDD.Doubling.Single
 import BipartiteDD.Doubling.Theorem1
 import BipartiteDD.Doubling.Polygon
+import BipartiteDD.Doubling.HatConverse
 
 /-! Axioms used by the Doubling group. Run `lake env lean BipartiteDD/Doubling/Axioms.lean`. -/
 
@@ -18,3 +19,5 @@ import BipartiteDD.Doubling.Polygon
 #print axioms BipartiteDD.Doubling.GenPolygonGraph.condC_of_forestDiam
 #print axioms BipartiteDD.Doubling.isBipartiteDegDiam_double_polygon
 #print axioms BipartiteDD.Doubling.delorme_levelled_polygon
+#print axioms BipartiteDD.Doubling.GenPolygonGraph.forestDiam_of_condC
+#print axioms BipartiteDD.Doubling.GenPolygonGraph.condC_iff_forestDiam
