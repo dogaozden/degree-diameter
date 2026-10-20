@@ -1,0 +1,27 @@
+### q=9 sym=t:10
+q=9 m=3 mode=ovoid sym=t:10 orbits=220 INFEASIBLE time=0.0s
+exit=0
+### q=9 sym=sw fq
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/p4/d4/cp_w.py", line 33, in <module>
+    orbs, of = orbits(n, groups.gens(W, args.sym))
+                         ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/user/degree-diameter/research/p4/d4/groups.py", line 109, in gens
+    raise ValueError(part)
+ValueError: sw fq
+exit=1
+### q=9 sym=t:20
+q=9 m=3 mode=ovoid sym=t:20 orbits=420 INFEASIBLE time=0.1s
+exit=0
+### q=9 sym=fp:1
+q=9 m=3 mode=ovoid sym=fp:1 orbits=214 INFEASIBLE time=0.0s
+exit=0
+### q=9 sym=ns:41
+q=9 m=3 mode=ovoid sym=ns:41 orbits=410 INFEASIBLE time=0.0s
+exit=0
+### q=9 sym=t:16
+q=9 m=3 mode=ovoid sym=t:16 orbits=164 INFEASIBLE time=0.0s
+exit=0
+### q=9 sym=t:40
+exit=killed-manually (queue restart)
+### q=9 sym=t:40
