@@ -24,3 +24,20 @@ Code: research/p4/d4 (w3k.py, cp_m.py, pq.py, hs.c, groups.py).
   p4-d4-3) session_01FXg91CE77JRUHqDm5hMWFJ; A and B launching.
 - Theorem B dual builder works end to end: graphs/q4st_q7_n890.json passes verify_record (9,4) (a Moore cell; pipeline
   check only).
+
+## Update 00:30 (from the agent's message)
+- Clouds: A q=9 search (session_0132DUXSq8VcQPWVgCi9mAvv, branch p4-d4-1); B q=11/13 (session_011DG3j5iMDDmLx41CKtfTSX,
+  p4-d4-2); C weighted 3-ovoids (session_01FXg91CE77JRUHqDm5hMWFJ, p4-d4-3).
+- Best stand-in sets M (W(3,q) points, ≤ 1 per t.i. line outside S, ≤ 2 per S-line; order
+  2(q+1)(q²+1) + (q²+1) + |M|; upper bound q²−q+2):
+  q=7: 40 (needs 33 to beat AS); graphs/q4st_q7_n890.json verified (Moore cell).
+  q=9: 56 (needs 61) → 1778 < 1782. Same 56 from tabu and CP-SAT with a symmetry of order 4; Kantor–Knuth spread gives 55.
+  q=11: 76 so far (needs 97). q=13: 90 so far (needs 141).
+  |M|/q² drops with q (0.82, 0.69, 0.63, …); expectation: stand-ins will not beat Theorem A at Δ = 11/13/15.
+- The q=7 optimum is structured: antipodal pairs on 20 spread lines; in the Singer model the pair indices are
+  {0,13,29,32}+40k mod 200, invariant under the order-10 Singer subgroup. The analogous subgroups do not exist for q = 9,
+  11 ((q²+1)/2 = 41 and 61 are prime), which may explain the drop.
+- Correction: the first Δ where weighted 3-ovoids of W(3,q) would matter is Δ = 23 (q = 19, j = 3; +46 over AS(19)), then
+  41, 47, 53, 57, 59 below 64. Full D = 4 table for Δ ≤ 64: research/p4/d4/dtable.py (python3 dtable.py 5 64).
+- Weighted 3-ovoids with F-torus symmetry: found at q = 7; ruled out for q = 9, 11, 13 under that symmetry; unsymmetric
+  search in cloud C.
