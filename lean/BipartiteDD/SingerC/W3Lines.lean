@@ -1,6 +1,6 @@
 import BipartiteDD.SingerC.W3Basic
 
-/-! Corollary C1, step 2 (continued, work in progress): the GQ axioms of W(3,q). -/
+/-! Corollary C1, step 2 (continued): the GQ axioms of W(3,q). -/
 
 namespace BipartiteDD.SingerC
 

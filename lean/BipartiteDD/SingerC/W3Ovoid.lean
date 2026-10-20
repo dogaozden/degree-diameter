@@ -1,6 +1,6 @@
 import BipartiteDD.SingerC.W3Spread
 
-/-! Corollary C1, step 3 (work in progress): the 2-ovoid `O` of W(3,q), and counting vectors and
+/-! Corollary C1, step 3: the 2-ovoid `O` of W(3,q), and counting vectors and
 points of a subspace in a class. -/
 
 namespace BipartiteDD.SingerC

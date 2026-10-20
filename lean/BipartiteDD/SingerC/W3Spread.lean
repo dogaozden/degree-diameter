@@ -1,6 +1,6 @@
 import BipartiteDD.SingerC.W3Lines
 
-/-! Corollary C1, step 4 (work in progress): the regular spread `{x · L : x ≠ 0}` of W(3,q). -/
+/-! Corollary C1, step 4: the regular spread `{x · L : x ≠ 0}` of W(3,q). -/
 
 namespace BipartiteDD.SingerC
 

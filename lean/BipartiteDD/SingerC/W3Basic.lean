@@ -1,11 +1,11 @@
 import BipartiteDD.SingerC.Main
 import BipartiteDD.GQST.Defs
 
-/-! Corollary C1, step 2: the generalized quadrangle W(3,q) on the Singer setting (work in progress).
+/-! Corollary C1, step 2: the generalized quadrangle W(3,q) on the Singer setting.
 
 Points are the projective points `ℙ F K` (1-dimensional `F`-subspaces of `K`); lines are the
 2-dimensional totally isotropic `F`-subspaces for the form `S.B`; `p ∈ l` means `p ≤ l`.
-This file is not on the import chain of `BipartiteDD` until it is sorry-free. -/
+This file is on the import chain of `BipartiteDD`. -/
 
 namespace BipartiteDD.SingerC
 

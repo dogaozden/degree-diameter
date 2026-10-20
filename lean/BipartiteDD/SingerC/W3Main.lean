@@ -1,7 +1,7 @@
 import BipartiteDD.SingerC.W3Ovoid
 import BipartiteDD.GQST.Main
 
-/-! Corollary C1, steps 2–5 (work in progress): the copy theorem applied to W(3,q) with the
+/-! Corollary C1, steps 2–5: the copy theorem applied to W(3,q) with the
 2-ovoid `O` and the regular spread. -/
 
 namespace BipartiteDD.SingerC
