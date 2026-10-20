@@ -2,6 +2,7 @@
 # One search job: run_job.sh D d G0 c seed seconds K   (builds the table if missing; logs to logs/, solution to sols/)
 set -u
 cd "$(dirname "$0")"
+mkdir -p logs sols graphs tables
 D=$1; d=$2; g=$3; c=$4; seed=$5; secs=$6; K=${7:-20}
 tag="D${D}_d${d}_${g}_x${c}_s${seed}_K${K}"
 [ -f sols/$tag.txt ] && { echo "skip $tag (solved)"; exit 0; }

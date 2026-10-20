@@ -75,4 +75,18 @@ of elements missed by the sets of the lemma, computed by deduplicated set produc
 
 ## 4. Runs
 
-(in progress)
+Calibration (local, about half a core each; load average ~60-120):
+| D | Δ | group | order | ratio | best (missed elements) | time |
+|---|---|---|---|---|---|---|
+| 6 | 7 | Heis(13) | 2197 | 0.235 | 2 | 150 s |
+| 6 | 7 | PGL(2,7) × Z_10 | 3360 | 0.36 | 93 | 150 s |
+| 7 | 5 | SL(2,5) × Z_13 | 1560 | 0.286 | 8 | 240 s |
+| 7 | 4 | SL(2,3) × Z_18 | 432 | 0.395 | 26 | 240 s |
+| 7 | 8 | AGL(1,25) × Z_34 | 20400 | 0.149 | 18 | 20 s (480 steps) |
+| 8 | 6 | AGL(1,25) × Z_25 | 15000 | 0.154 | 26 | 20 s |
+| 7 | 6 | AGL(1,25) × Z_7 | 4200 | 0.215 | 17 | 20 s |
+
+D = 6, Δ = 7 is out of reach: not even 0.235 of the bound is solved, the table needs 0.482.
+
+Local batch jobs_a.txt (2 cores, from 23:16): D = 7, Δ = 5 over 8 groups, 30 min each.
+Cloud batches jobs_c1..c3.txt (briefs cloud_c1..c3.txt, branches p4-d6haar-1..3): see below once launched.

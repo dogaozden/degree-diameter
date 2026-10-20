@@ -267,9 +267,10 @@ int main(int argc, char **argv) {
     if (bestc == 0 && out) {
         if (bfs_diam(best) > D) { fprintf(stderr, "internal: BFS disagrees on best\n"); return 2; }
         FILE *f = fopen(out, "w");
+        if (!f) { fprintf(stderr, "cannot write %s\n", out); f = stdout; }
         fprintf(f, "%d %d %d %d %s\n", D, d, N, C, table);
         for (int i = 0; i < d; i++) fprintf(f, "%d\n", best[i]);
-        fclose(f);
+        if (f != stdout) fclose(f);
     }
     return 0;
 }

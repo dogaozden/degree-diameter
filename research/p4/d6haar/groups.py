@@ -276,10 +276,12 @@ def check_table(table, trials=100000, seed=1):
 
 
 def write_table(path, table):
-    with open(path, "w") as f:
+    tmp = f"{path}.{os.getpid()}.tmp"   # write then rename, so parallel jobs never read a half-written table
+    with open(tmp, "w") as f:
         f.write(f"{len(table)}\n")
         for row in table:
             f.write(" ".join(map(str, row)) + "\n")
+    os.replace(tmp, path)
 
 
 def main(argv):
