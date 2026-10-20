@@ -20,8 +20,8 @@ groups and keeps the best M in sols/sweep_st_q{q}.json. A 0/1 vector over points
 STEPS:
 a. python3 export_inst.py 11 st ; python3 export_inst.py 13 st
 b. Tabu in parallel, using all cores, split between q=11 and q=13:
-   scripts/guarded.sh 4 runs/hs runs/inst_st_q11.txt 85 12000 SEED runs/hs_q11_sSEED.out > runs/hs_q11_sSEED.log
-   scripts/guarded.sh 4 runs/hs runs/inst_st_q13.txt 120 12000 SEED runs/hs_q13_sSEED.out > runs/hs_q13_sSEED.log
+   scripts/guarded.sh 4 runs/hs runs/inst_st_q11.txt 200 12000 SEED runs/hs_q11_sSEED.out > runs/hs_q11_sSEED.log
+   scripts/guarded.sh 4 runs/hs runs/inst_st_q13.txt 300 12000 SEED runs/hs_q13_sSEED.out > runs/hs_q13_sSEED.log
    (different SEED per job).
 c. After b, if time remains: scripts/guarded.sh 1 python3 sweep.py 11 60 --random 30 --workers 2 > runs/sweep_q11.log
 d. Report the best |M| for each q ("size=" lines). Goals: q=11: >= 97; q=13: >= 141. Report the best even if lower.

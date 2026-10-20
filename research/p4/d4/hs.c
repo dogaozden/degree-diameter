@@ -1,7 +1,7 @@
 // Capacitated hypergraph independent set by tabu search with a fixed target size k.
 // Instance (text): n m, then m lines "cap size v1 v2 ...". Find a set X of k vertices with |X & e| <= cap(e) for all e.
 // Penalty = sum_e max(0, |X & e| - cap(e)). On reaching penalty 0, save X and set k = k+1.
-// usage: hs INSTANCE k0 seconds seed OUTFILE [init_file]
+// usage: hs INSTANCE k0 seconds seed OUTFILE [init_file]   (starts at min(k0, greedy size + 1))
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < n; i++) if (!in[ord[i]] && addc[ord[i]] == 0) add(ord[i]);
     free(ord);
   }
-  if (pen == 0 && xs >= k) { k = xs; }
+  if (pen == 0 && k > xs + 1) k = xs + 1;  // grow from the greedy start (k0 only caps it)
   int best = pen == 0 ? xs : 0;
   if (best) { FILE *o = fopen(argv[5], "w"); for (int i = 0; i < xs; i++) fprintf(o, "%d\n", X[i]); fclose(o); printf("init %d\n", best); fflush(stdout); }
   while (xs < k) { // add cheapest

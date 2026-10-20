@@ -19,8 +19,8 @@ groups and keeps the best M in sols/sweep_st_q{q}.json. A 0/1 vector over points
 
 STEPS:
 a. python3 export_inst.py 9 st ; python3 export_inst.py 9 st 1   (second is a different spread, file inst_st_q9_e1.txt)
-b. Tabu, in parallel, half the cores: for seeds 1..(cores/2): scripts/guarded.sh 2 runs/hs runs/inst_st_q9.txt 56 6000 SEED runs/hs_q9_sSEED.out > runs/hs_q9_sSEED.log
-   (k0 = 56; it grows k by itself). One of the seeds should use inst_st_q9_e1.txt instead (out file hs_q9e1_sSEED.out).
+b. Tabu, in parallel, half the cores: for seeds 1..(cores/2): scripts/guarded.sh 2 runs/hs runs/inst_st_q9.txt 200 6000 SEED runs/hs_q9_sSEED.out > runs/hs_q9_sSEED.log
+   (it starts from a greedy set and grows k by itself). One of the seeds should use inst_st_q9_e1.txt instead (out file hs_q9e1_sSEED.out).
 c. Other half of the cores, at the same time: scripts/guarded.sh 3 python3 sweep.py 9 60 --random 60 --workers 2 --seed 7 --full 3600 > runs/sweep_q9.log
 d. When b and c finish, report the best |M| (the largest "size=" in runs/hs_q9_*.log and "best" in sweep_q9.log).
    The goal is |M| >= 61; 56 is known. Report the best even if it is below 61.
