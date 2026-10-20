@@ -289,6 +289,7 @@ theorem mem_odd_union {v : P ⊕ L} {k : ℕ} {l : List (P ⊕ L)} (hk : k ≤ 5
     l ∈ nbLists (incGraph inc) v 1 ∪ nbLists (incGraph inc) v 3 ∪ nbLists (incGraph inc) v 5 := by
   rcases (by omega : k = 1 ∨ k = 3 ∨ k = 5) with rfl | rfl | rfl <;> simp [hl]
 
+variable (inc) in
 /-- **Moore-type theorem for generalized hexagons.** Let `inc` be an incidence relation between finite
 sets of points `P` and lines `L` with every point on `q + 1` lines and every line through `q + 1` points
 (`q ≥ 1`), with `(q + 1)(1 + q² + q⁴)` points, and such that every point is joined to every line by a
@@ -299,37 +300,36 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
     (hN : Nat.card P = (q + 1) * (1 + q ^ 2 + q ^ 4))
     (hd : ∀ p l, ∃ w : (incGraph inc).Walk (.inl p) (.inr l), w.length ≤ 5) :
     Doubling.GenPolygonGraph (incGraph inc) 6 := by
-  set G := incGraph inc with hG
-  set N := (q + 1) * (1 + q ^ 2 + q ^ 4) with hNdef
   have hP' : ∀ p, (univ.filter (inc p)).card = q + 1 := fun p => by
     rw [← hP p, Nat.card_eq_fintype_card, Fintype.card_subtype]
   have hL' : ∀ l, (univ.filter (fun p => inc p l)).card = q + 1 := fun l => by
     rw [← hL l, Nat.card_eq_fintype_card, Fintype.card_subtype]
-  have hcP : Fintype.card P = N := by rw [← hN, Nat.card_eq_fintype_card]
-  have hcL : Fintype.card L = N := by
+  have hcP : Fintype.card P = (q + 1) * (1 + q ^ 2 + q ^ 4) := by rw [← hN, Nat.card_eq_fintype_card]
+  have hcL : Fintype.card L = (q + 1) * (1 + q ^ 2 + q ^ 4) := by
     rw [← hN, ← card_lines_eq (by omega : 1 ≤ q + 1) hP hL, Nat.card_eq_fintype_card]
-  have hdeg : ∀ u, (univ.filter (G.Adj u)).card = q + 1 := by
+  have hdeg : ∀ u, (univ.filter ((incGraph inc).Adj u)).card = q + 1 := by
     rintro (p | l)
     · rw [card_filter_adj_inl, hP']
     · rw [card_filter_adj_inr, hL']
   -- injectivity of the end-point map, from every base vertex
   have hinj : ∀ v : P ⊕ L, Set.InjOn (fun l : List (P ⊕ L) => l.headD v)
-      (↑(nbLists G v 1 ∪ nbLists G v 3 ∪ nbLists G v 5) : Set (List (P ⊕ L))) := by
+      (↑(nbLists (incGraph inc) v 1 ∪ nbLists (incGraph inc) v 3 ∪ nbLists (incGraph inc) v 5) : Set (List (P ⊕ L))) := by
     rintro (p | l)
     · refine injOn_nbLists q hdeg _ (univ.map Function.Embedding.inr) (by simp [hcL]) ?_
       intro w hw
       obtain ⟨l, -, rfl⟩ := mem_map.1 hw
-      exact exists_odd_nbList (hd p l).choose.reverse (by simpa using (hd p l).choose_spec)
-        (by simp)
+      obtain ⟨W, hW⟩ := hd p l
+      exact exists_odd_nbList (w := .inr l) W.reverse (by simpa using hW) (by simp)
     · refine injOn_nbLists q hdeg _ (univ.map Function.Embedding.inl) (by simp [hcP]) ?_
       intro w hw
       obtain ⟨p, -, rfl⟩ := mem_map.1 hw
-      exact exists_odd_nbList (hd p l).choose (hd p l).choose_spec (by simp)
+      obtain ⟨W, hW⟩ := hd p l
+      exact exists_odd_nbList (w := .inl p) W hW (by simp)
   -- girth at least 12
-  have hgirth : ∀ (a : P ⊕ L) (c : G.Walk a a), c.IsCycle → 12 ≤ c.length := by
+  have hgirth : ∀ (a : P ⊕ L) (c : (incGraph inc).Walk a a), c.IsCycle → 12 ≤ c.length := by
     intro a c hc
     by_contra hlt
-    push_neg at hlt
+    push Not at hlt
     obtain ⟨m, hm⟩ := (isLeft_eq_iff_even c).1 rfl
     have h3 := hc.three_le_length
     set n := c.length with hn
@@ -354,7 +354,7 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
       omega
     exact hdisj he (List.mem_reverse.2 he)
   -- diameter at most 6
-  have hdiam : ∀ u w : P ⊕ L, G.edist u w ≤ 6 := by
+  have hdiam : ∀ u w : P ⊕ L, (incGraph inc).edist u w ≤ 6 := by
     have hline : ∀ p : P, ∃ l, inc p l := fun p => by
       obtain ⟨l, hl⟩ := card_pos.1 (by rw [hP']; omega : 0 < (univ.filter (inc p)).card)
       exact ⟨l, (mem_filter.1 hl).2⟩
@@ -364,15 +364,15 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
     rintro (p | l) (p' | l')
     · obtain ⟨l, hl⟩ := hline p'
       obtain ⟨W, hW⟩ := hd p l
-      exact edist_le_of_walk (W.concat (show G.Adj (.inr l) (.inl p') from hl))
+      exact edist_le_of_walk (n := 6) (W.concat (show (incGraph inc).Adj (.inr l) (.inl p') from hl))
         (by rw [Walk.length_concat]; omega)
     · obtain ⟨W, hW⟩ := hd p l'
-      exact edist_le_of_walk W (by omega)
+      exact edist_le_of_walk (n := 6) W (by omega)
     · obtain ⟨W, hW⟩ := hd p' l
-      exact edist_le_of_walk W.reverse (by rw [Walk.length_reverse]; omega)
+      exact edist_le_of_walk (n := 6) W.reverse (by rw [Walk.length_reverse]; omega)
     · obtain ⟨p', hp'⟩ := hpt l'
       obtain ⟨W, hW⟩ := hd p' l
-      exact edist_le_of_walk (W.reverse.concat (show G.Adj (.inl p') (.inr l') from hp'))
+      exact edist_le_of_walk (n := 6) (W.reverse.concat (show (incGraph inc).Adj (.inl p') (.inr l') from hp'))
         (by rw [Walk.length_concat, Walk.length_reverse]; omega)
   -- a point at distance 6 from a fixed point
   have hPne : Nonempty P := Fintype.card_pos_iff.1 (by rw [hcP]; positivity)
@@ -380,10 +380,10 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
   obtain ⟨w, hwT, hwfar⟩ := exists_far q hq hdeg (.inl p₀) (univ.map Function.Embedding.inl)
     (by simp [hcP])
   obtain ⟨p₁, -, rfl⟩ := mem_map.1 hwT
-  have hfar : ∀ W : G.Walk (.inl p₁) (.inl p₀), 6 ≤ W.length := by
+  have hfar : ∀ W : (incGraph inc).Walk (.inl p₁) (.inl p₀), 6 ≤ W.length := by
     intro W
     by_contra hlt
-    push_neg at hlt
+    push Not at hlt
     obtain ⟨l, hl, he⟩ := exists_even_nbList W (by omega) rfl
     exact hwfar l hl he
   refine ⟨by norm_num, incGraph_colorable, ?_, ?_, ?_⟩
@@ -391,11 +391,11 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
     refine le_antisymm ?_ (le_egirth.2 fun a c hc => by exact_mod_cast hgirth a c hc)
     obtain ⟨l₁, hl₁, l₂, hl₂, hne⟩ := one_lt_card.1 (by rw [hP']; omega : 1 < (univ.filter (inc p₁)).card)
     rw [mem_filter] at hl₁ hl₂
-    have mk : ∀ l, inc p₁ l → ∃ γ : G.Walk (.inl p₁) (.inl p₀),
+    have mk : ∀ l, inc p₁ l → ∃ γ : (incGraph inc).Walk (.inl p₁) (.inl p₀),
         γ.IsPath ∧ γ.length ≤ 6 ∧ γ.getVert 1 = .inr l := by
       intro l hl
       obtain ⟨W, hW⟩ := hd p₀ l
-      refine ⟨.cons (show G.Adj (.inl p₁) (.inr l) from hl) W.bypass.reverse, ?_, ?_, by simp⟩
+      refine ⟨.cons (show (incGraph inc).Adj (.inl p₁) (.inr l) from hl) W.bypass.reverse, ?_, ?_, by simp⟩
       · rw [Walk.cons_isPath_iff]
         refine ⟨W.bypass_isPath.reverse, fun hmem => ?_⟩
         have h1 := hfar (W.bypass.reverse.dropUntil _ hmem)
@@ -414,16 +414,19 @@ theorem genPolygonGraph_six (q : ℕ) (hq : 1 ≤ q)
   · -- diameter exactly 6
     refine le_antisymm (ediam_le_iff.2 fun u w => by exact_mod_cast hdiam u w) ?_
     refine le_trans ?_ (edist_le_ediam (u := .inl p₁) (v := .inl p₀))
-    have hne : G.edist (.inl p₁) (.inl p₀) ≠ ⊤ := ne_top_of_le_ne_top (by simp) (hdiam _ _)
+    have hne : (incGraph inc).edist (.inl p₁) (.inl p₀) ≠ ⊤ := ne_top_of_le_ne_top (by simp) (hdiam _ _)
     obtain ⟨W, hW⟩ := exists_walk_of_edist_ne_top hne
     rw [← hW]
     exact_mod_cast hfar W
   · -- two distinct neighbours
     intro u
     obtain ⟨a, ha, b, hb, hab⟩ :=
-      one_lt_card.1 (by rw [hdeg]; omega : 1 < (univ.filter (G.Adj u)).card)
+      one_lt_card.1 (by rw [hdeg]; omega : 1 < (univ.filter ((incGraph inc).Adj u)).card)
     exact ⟨a, b, (mem_filter.1 ha).2, (mem_filter.1 hb).2, hab⟩
 
 end Inc
+
+-- #print axioms BipartiteDD.Hexagon.genPolygonGraph_six
+-- [propext, Classical.choice, Quot.sound]
 
 end BipartiteDD.Hexagon
