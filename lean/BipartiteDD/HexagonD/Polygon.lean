@@ -158,4 +158,81 @@ theorem eq_of_triangle (hG : GenPolygonGraph (Hexagon.incGraph inc) 6) {p p₁ p
     have := three_le_girth hG c hc
     simp [c] at this
 
+/-! ### Points at distance `5` from a line -/
+
+/-- A walk of length at most `3` from a point to a line gives incidence or a "collinear" configuration. -/
+theorem close_of_walk_pl {p : P} {l : L} (w : (Hexagon.incGraph inc).Walk (.inl p) (.inr l))
+    (hw : w.length ≤ 3) : inc p l ∨ ∃ (M : L) (r : P), inc p M ∧ inc r M ∧ inc r l := by
+  cases w with
+  | cons h1 w1 =>
+    rename_i b
+    cases b with
+    | inl p' => exact absurd h1 Hexagon.incGraph_not_adj_inl_inl
+    | inr M =>
+      have h1' : inc p M := Hexagon.incGraph_adj_inl_inr.1 h1
+      cases w1 with
+      | nil => exact Or.inl h1'
+      | cons h2 w2 =>
+        rename_i b2
+        cases b2 with
+        | inr M' => exact absurd h2 Hexagon.incGraph_not_adj_inr_inr
+        | inl r =>
+          have h2' : inc r M := Hexagon.incGraph_adj_inr_inl.1 h2
+          cases w2 with
+          | cons h3 w3 =>
+            rename_i b3
+            cases b3 with
+            | inl r' => exact absurd h3 Hexagon.incGraph_not_adj_inl_inl
+            | inr l' =>
+              have h3' : inc r l' := Hexagon.incGraph_adj_inl_inr.1 h3
+              cases w3 with
+              | nil => exact Or.inr ⟨M, r, h1', h2', h3'⟩
+              | cons h4 w4 =>
+                exfalso
+                simp only [Walk.length_cons] at hw
+                omega
+
+/-- A point not on `l` and not collinear (via a line) with a point of `l` is at distance `5` from `l`. -/
+theorem edist_eq_five (hG : GenPolygonGraph (Hexagon.incGraph inc) 6) {p : P} {l : L}
+    (h1 : ¬ inc p l) (h3 : ¬ ∃ (M : L) (r : P), inc p M ∧ inc r M ∧ inc r l) :
+    (Hexagon.incGraph inc).edist (.inl p) (.inr l) = 5 := by
+  have hle : (Hexagon.incGraph inc).edist (.inl p) (.inr l) ≤ 6 := by
+    have := edist_le_ediam (G := Hexagon.incGraph inc) (u := .inl p) (v := .inr l)
+    rw [hG.ediam] at this
+    exact_mod_cast this
+  have hne : (Hexagon.incGraph inc).edist (.inl p) (.inr l) ≠ ⊤ :=
+    ne_top_of_le_ne_top (by simp) hle
+  obtain ⟨w, hw⟩ := exists_walk_of_edist_ne_top hne
+  have hodd : ¬ Even w.length := fun h => by
+    have := (isLeft_eq_iff_even w).2 h
+    simp at this
+  have h6 : w.length ≤ 6 := by
+    rw [← hw] at hle; exact_mod_cast hle
+  have hlen : w.length = 5 := by
+    by_contra hne5
+    have h3' : w.length ≤ 3 := by
+      rcases Nat.even_or_odd w.length with h | ⟨k, hk⟩
+      · exact absurd h hodd
+      · omega
+    rcases close_of_walk_pl w h3' with h | h
+    · exact h1 h
+    · exact h3 h
+  rw [← hw, hlen]; rfl
+
+/-- Conversely, a point at distance `5` from a line is not collinear with a point of it. -/
+theorem not_close_of_edist_eq_five {p : P} {l : L}
+    (h : (Hexagon.incGraph inc).edist (.inl p) (.inr l) = 5) :
+    ¬ inc p l ∧ ¬ ∃ (M : L) (r : P), inc p M ∧ inc r M ∧ inc r l := by
+  constructor
+  · intro h1
+    have := edist_le_of_walk (n := 1) (.cons (Hexagon.incGraph_adj_inl_inr.2 h1) .nil) (by simp)
+    rw [h] at this
+    exact absurd this (by norm_num)
+  · rintro ⟨M, r, h1, h2, h3⟩
+    have := edist_le_of_walk (n := 3)
+      (.cons (Hexagon.incGraph_adj_inl_inr.2 h1) (.cons (Hexagon.incGraph_adj_inr_inl.2 h2)
+        (.cons (Hexagon.incGraph_adj_inl_inr.2 h3) .nil))) (by simp)
+    rw [h] at this
+    exact absurd this (by norm_num)
+
 end BipartiteDD.HexagonD
