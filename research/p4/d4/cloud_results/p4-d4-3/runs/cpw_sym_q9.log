@@ -25,3 +25,8 @@ exit=0
 ### q=9 sym=t:40
 exit=killed-manually (queue restart)
 ### q=9 sym=t:40
+q=9 m=3 mode=ovoid sym=t:40 orbits=820 UNKNOWN time=300.0s
+exit=0
+### q=9 sym=sw+fq
+q=9 m=3 mode=ovoid sym=sw+fq orbits=220 INFEASIBLE time=0.0s
+exit=0
