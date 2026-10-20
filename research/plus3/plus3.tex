@@ -1,0 +1,269 @@
+% plus3.tex -- Is AL+3 possible?  Landscape, structure of extensions of a projective plane,
+% and computer evidence beyond the hat model.  Drop-in section: needs amsmath, amssymb, amsthm
+% (theorem, lemma, proposition, remark environments), enumitem, booktabs.
+% Code: research/plus3/ (sat_ext.py, jobs.py, thresholds.py, analyze.py); logs in runs/.
+\providecommand{\PG}{\mathrm{PG}}
+\providecommand{\cP}{\mathcal{P}}
+\providecommand{\cL}{\mathcal{L}}
+\providecommand{\cX}{\mathcal{X}}
+
+\section{Beyond the hat model}\label{sec:plus3}
+
+Write $n_b(\Delta,3)$ for the largest order of a bipartite graph of maximum degree $\Delta$ and diameter $3$.
+For a prime power $q$, the construction of~\cite{AL} gives $n_b(q+2,3) \ge 2(q^2+q+5)$ and the four-hat
+construction gives $n_b(q+2,3) \ge 2(q^2+q+6)$, two vertices more. Here we ask whether one more vertex is
+possible, that is, whether $n_b(q+2,3) \ge 2(q^2+q+6)+1$ (``$+3$'' over~\cite{AL}).
+We cannot settle this. We record where the question is open, what any such graph must look like when it is
+built on a projective plane of order~$q$ and $q$ is large, and what a computer search covers.
+
+\subsection{Where the question is open}\label{ssec:frontier}
+The bipartite Moore bound for diameter $3$ is $2(\Delta^2-\Delta+1)$; for $\Delta = q+2$ it is $2(q^2+3q+3)$, which
+exceeds $2(q^2+q+6)$ by $4q-6$. It is attained if and only if a projective plane of order $\Delta-1 = q+1$ exists.
+When both $q$ and $q+1$ are prime powers (one of them is then a power of~$2$: $q \in \{2,3,4,7,8,16,31,\dots\}$),
+$\PG(2,q+1)$ attains it and our question is void. Bipartite graphs of defect $1$ or $3$ do not exist
+(for defect less than $\Delta$ such graphs are regular, hence of even order; see~\cite[Prop.~3.1]{FPPV}),
+and the defect-$2$ case at diameter $3$ is restricted by~\cite{DJMP}. None of these upper bounds comes near:
+for $q \ge 9$ the value $2(q^2+q+6)+1$ has defect $4q-7 \ge 29$.
+
+In the range of the Combinatorics Wiki table ($\Delta \le 16$) the relevant cells are:
+\begin{center}
+\begin{tabular}{@{}rrrrrl@{}}
+\toprule
+$\Delta$ & $q$ & \cite{AL} & four hats & table upper bound & status of $2(q^2+q+6)+1$\\
+\midrule
+$7$ & $5$ & $70$ & $72$ & $80$ & below $n_b(7,3) = 80$ (Hafner--Loz graph; no $(7,3,-4)$-graph~\cite{FMPV})\\
+$11$ & $9$ & $190$ & $192$ & $220$ & open ($193$)\\
+$13$ & $11$ & $274$ & $276$ & $314$ & open ($277$)\\
+$15$ & $13$ & $374$ & $376$ & $422$ & open ($377$)\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $\Delta = 16$ ($q+1 = 15$) the table value $394$ comes from duplication and is not of this form.
+Beyond the table, $2(q^2+q+6)+1$ is the open value for every prime power $q \ge 9$ with $q+1$ not a prime power
+($q = 9, 11, 13, 17, 19, 23, 25, 27, 29, 32, 37, \dots$), as far as we know.
+
+\subsection{Extensions of a projective plane}\label{ssec:ext}
+Every graph in \S\ref{sec:coords} contains the incidence graph of $\PG(2,q)$ with a few incidences changed.
+We now ask what any graph of this kind must look like.
+
+Let $\Pi$ be a projective plane of order $q$ with point set $\cP$ and line set $\cL$, and $N = q^2+q+1$.
+An \emph{extension} of $\Pi$ is a bipartite graph $G$ with parts $\cP \cup P'$ (points) and $\cL \cup L'$ (lines),
+of maximum degree at most $q+2$ and diameter at most $3$. The vertices in $P'$ and $L'$ are \emph{new}, the others
+\emph{old}. A \emph{change} is a pair (old point, old line) on which $G$ and $\Pi$ disagree: a \emph{deleted} flag
+or an \emph{added} non-incident pair. Write $p = |P'|$, $l = |L'|$ and $e$ for the number of changes.
+The order of $G$ is $2N+p+l$; so~\cite{AL} has $p = l = 4$, the four-hat graph has $p = l = 5$, and ``$+3$'' asks for $p+l = 11$.
+In a bipartite graph without isolated vertices, diameter at most $3$ means: any two points have a common neighbour
+and any two lines have a common neighbour (a point $x$ and a line $L \not\ni x$ are then at distance $3$ through
+any point of $L$).
+
+For a new point $h$, let $O(h)$ be the set of old lines through $h$, $a_h = |O(h)|$, and $d_h$ the number of new lines
+through $h$. Dually $O(K)$, $c_K$ for a new line $K$. For an old point $x$ let $r_x(h)$ be the number of lines of
+$O(h)$ that pass through $x$ \emph{in $\Pi$}, and $\sigma_h = \sum_x \max(r_x(h)-1, 0)$.
+
+\begin{lemma}\label{lem:budget}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item An old point $x$ lies on at most $1 + \delta(x) - \alpha(x)$ new lines, where $\delta(x)$ and $\alpha(x)$ count
+the deleted and added pairs at $x$. Dually for old lines.
+\item Two new points with no common new line lie on a common old line carrying a deleted flag.
+In particular, if $e = 0$, any two new points lie on a common new line, and any two new lines meet in a new point.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(a) $x$ has $q+1-\delta(x)+\alpha(x)$ old neighbours and degree at most $q+2$.
+(b) By (a), an old line through two new points has a deleted flag.
+\end{proof}
+
+\begin{lemma}\label{lem:cover}
+Let $h$ be a new point, $a = a_h$, $d = d_h$, and let $t$ be the number of added pairs $(x,L)$ with $L \in O(h)$.
+Then $\sigma_h \le (a+d)(q+1) - N + t \le 2q+1+t$, and $a+d \ge q+1-\varepsilon$, where $\varepsilon = 0$ if $t = 0$ and
+$\varepsilon = 1$ if $1 \le t \le q+1$.
+\end{lemma}
+\begin{proof}
+In $\Pi$ the $a$ lines of $O(h)$ cover $a(q+1)-\sigma_h$ points; in $G$ they cover at most $t$ more.
+Every other old point is at distance $2$ from $h$ through a new line, and a new line through $h$ has at most $q+1$ old
+points. Hence $N - a(q+1) + \sigma_h - t \le d(q+1)$. Use $a + d \le q+2$ for the first claim and $\sigma_h \ge 0$ for the second.
+\end{proof}
+
+\begin{lemma}[near-copies]\label{lem:copy}
+Let $h$, $a$, $t$, $\varepsilon$ be as in Lemma~\ref{lem:cover} and suppose $q \ge 3l + 6 + t + 3\varepsilon$. Then there is an
+old point $X$ such that all but at most one line of $O(h)$ pass through $X$ (in $\Pi$). At least $q-l-\varepsilon-1$ lines of
+$O(h)$ pass through $X$.
+\end{lemma}
+\begin{proof}
+Let $X$ maximise $r = r_X(h)$, and let $b = a - r$ be the number of lines of $O(h)$ not through $X$; put $s = 2q+1+t$,
+so $\sigma_h \le s$ by Lemma~\ref{lem:cover}. Two facts:
+(i) $(b+1)r \le s+1$. Indeed $X$ contributes $r-1$ to $\sigma_h$; every point $x \ne X$ on one of the $r$ lines through $X$
+lies on exactly one of them and contributes the number of non-$X$ lines through it; and each of the $b$ non-$X$
+lines meets each of the $r$ lines in a point other than $X$. So $\sigma_h \ge r - 1 + br$.
+(ii) $a(a-1) \le rs$. Any two lines of $O(h)$ meet in one point of $\Pi$, so
+$a(a-1) = \sum_x r_x(r_x-1) \le r\sum_x \max(r_x-1,0) = r\sigma_h$.
+
+By Lemma~\ref{lem:cover}, $a \ge q+1-l-\varepsilon$, and the hypothesis gives $a \ge (2q+9+t)/3 = (s+8)/3$. Suppose $b \ge 2$.
+Then $r \le (s+1)/3$ by (i), $r \ge r_0 := a(a-1)/s$ by (ii), and $a = r + b \le g(r) := r + (s+1)/r - 1$ by (i).
+As $g$ is convex, $a \le \max\{g(r_0), g((s+1)/3)\}$. First, $g((s+1)/3) = (s+7)/3 < a$. Second, $a/3 < r_0 \le a(q+1)/(2q+1)$
+(use $a \ge (s+5)/3 + 1$ and $a \le q+2$), and $x \mapsto x + (s+1)/x$ is convex, so $g(r_0) + 1$ is at most the larger of
+$a/3 + 3(s+1)/a < a/3 + 9$ and $a(q+1)/(2q+1) + (s+1)(2q+1)/(a(q+1)) < a(q+1)/(2q+1) + 6$. Both are at most $a+1$ once
+$a \ge 13$, which holds for $q \ge 15$. So $g(r_0) < a$, a contradiction. For $q \le 14$ the hypothesis forces $l \le 2$ and
+$t \le 5$, and an exhaustive check of the integer system (i), (ii), $a = r + b$, $b \ge 2$, $a \ge q+1-l-\varepsilon$ finds no
+solution (\texttt{thresholds.py}, which checks all $q \le 400$, $0 \le l \le 12$, $t \le 12$; the bound $3l+6+t+3\varepsilon$ is
+exactly the threshold of this system in every case checked). Hence $b \le 1$ and $r = a - b \ge q - l - \varepsilon - 1$.
+\end{proof}
+
+We call $X$ the point \emph{copied} by $h$ and write $X = X_h$; dually a new line $K$ copies an old line $L_K$.
+In the four-hat graph, $Q$ copies $A$, $H_s$ copies $X_s$, $M$ copies $\ell$ and $K_s$ copies $AX_s$.
+
+\begin{theorem}\label{thm:copies}
+Let $G$ be an extension of $\Pi$ with $p$ new points, $l$ new lines and $e$ changes, and suppose
+$q \ge 3\max(p,l) + 9 + e$. Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item every new point $h$ copies an old point $X_h$: all but at most one of its old lines pass through $X_h$, and it
+has at least $q - l - 2$ old lines through $X_h$; dually every new line $K$ copies an old line $L_K$;
+\item distinct new points copy distinct points, and distinct new lines copy distinct lines;
+\item for every line $M$ of $\Pi$ through $X_h$ that is not an old line through $h$, some new line $K$ through $h$ copies $M$.
+If $m_h$ is the number of such lines $M$, then $m_h \le d_h \le m_h + 1$, and $d_h = m_h$ if $h$ lies on an old line not
+through $X_h$. Dually for new lines.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) is Lemma~\ref{lem:copy} with $t \le e$ and $\varepsilon \le 1$, and its dual.
+(b) If $X_h = X_{h'}$ for new points $h \ne h'$, then at least $2(q-l-2) - (q+1)$ lines through $X_h$ are old lines
+through both $h$ and $h'$; each of them carries a deleted flag by Lemma~\ref{lem:budget}(a), so $q - 2l - 5 \le e$,
+against the hypothesis. Dually for lines.
+(c) The $r$ old lines of $h$ through $X_h$ meet $M$ only in $X_h$, the possible extra old line of $h$ meets it in one
+point, and added pairs put at most $e$ further points of $M$ on old lines of $h$. So at least $q-1-e$ points of $M$ are
+at distance $2$ from $h$ only through new lines through $h$. A new line $K$ through $h$ with $L_K \ne M$ has at most two
+old points on $M$ (one on $L_K$, and possibly its one old point off $L_K$). If no $K$ through $h$ copied $M$, then
+$q-1-e \le 2d_h \le 2l$, which is false. The copies of different lines $M$ are different by (b), so $d_h \ge m_h$.
+Finally $a_h = (q+1-m_h) + b$ with $b \in \{0,1\}$ the number of old lines of $h$ not through $X_h$, and $a_h + d_h \le q+2$.
+\end{proof}
+
+So, for large $q$, every graph of order $2N+k$ built on a projective plane by $e$ changes is a \emph{copy
+configuration}: a set $\cX$ of copied points and a set $\cL'$ of copied lines, such that every line through a copied point
+is either an old line of its copy or is itself copied (and that copy passes through the point's copy), and dually.
+Each new vertex has at most one ``free'' new neighbour that is not explained by this rule. This is the
+general form of the hat lemma (\cite{AL}; \S\ref{sec:coords}): in the four-hat graph $\cX = \{A, X_0, X_1, X_a, X_c\}$
+and $\cL' = \{\ell, AX_0, AX_1, AX_a, AX_c\}$; the hats $H_0, H_1, H_c$ have $m = 1$ (their missing line $\ell$ is
+copied by $M$), $H_a$ lies on $\ell$ and has $m = 0$, and $Q$ has $m = 3$ (missing $AX_0$, $AX_1$, $AX_c$, copied by
+$K_0$, $K_1$, $K_c$; its free line is $K_a$). The hat model of the SAT search in \S\ref{sec:coords} fixes this
+particular configuration. Theorem~\ref{thm:copies} says that for large $q$ only copy configurations occur; the next
+proposition shows that without changes the configuration must have the shape of the hat configuration.
+
+\begin{proposition}\label{prop:closed}
+Let $G$ be an extension of $\Pi$ with no changes ($e = 0$), $q \ge 3\max(p,l)+9$ and $p + l \le 13$. Then the line
+joining any two copied points is copied, and the point where any two copied lines meet is copied. Consequently all
+copied points but at most one lie on one line, and all copied lines but at most one pass through one point.
+\end{proposition}
+\begin{proof}
+Let $h \ne h'$ be new points and $J = X_hX_{h'}$ (the points are distinct by Theorem~\ref{thm:copies}(b)). An old line
+has at most one new point when $e = 0$ (Lemma~\ref{lem:budget}(a)), so $J$ is not an old line of both $h$ and $h'$;
+if it is not an old line of $h$, Theorem~\ref{thm:copies}(c) says $J$ is copied. The second claim is dual.
+So $(\cX, \cL')$ is closed under joins and meets. If $\cX$ contained four points with no three collinear, the closure
+would be a subplane, with at least $7$ points and $7$ lines, against $p + l \le 13$. A point set without such a
+quadrangle has all but at most one of its points on one line: otherwise take a line $L$ with the most points of the
+set, $m \ge 2$ of them, and two points $u, v$ of the set off $L$; if $m \ge 3$, two points of $L$ off the line $uv$
+together with $u, v$ form a quadrangle, and if $m = 2$ any four points do. Dually for $\cL'$.
+\end{proof}
+
+With changes the same argument shows that at most $e$ joins of copied points can fail to be copied (each failure needs
+a deleted flag on that line), so the configuration is closed up to $e$ exceptions. In the hat configuration the line
+is $\ell$ and the point is $A$; the copied point off $\ell$ is $A$ and the copied line not through $A$ is $\ell$.
+
+\begin{theorem}\label{thm:nochange}
+Let $G$ be an extension of $\Pi$ with no changes, $p$ new points and $l$ new lines, $p + l \le 13$ and
+$q \ge 3\max(p,l)+9$. Then $p \le 6$ and $l \le 6$, and $p = 6$ or $l = 6$ forces $p = l = 6$.
+In particular $p + l \notin \{11, 13\}$: for $q \ge 3(p+l)+9$, hence for $q \ge 42$, no graph of maximum degree $q+2$
+and diameter $3$ consists of the incidence graph of a projective plane of order $q$ as an induced subgraph plus exactly
+$11$ (or $13$) further vertices.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:closed} there is a line $L^*$ containing all copied points but at most one; let
+$S = \cX \cap L^*$ and $s = |S| \ge p-1$. Suppose $s \ge 6$. Then $L^*$ is copied (it joins two copied points),
+say by $K^*$; write $h_Y$ for the new point copying $Y \in S$.
+\begin{enumerate}[label=(\roman*)]
+\item $L^*$ has at most one new point (Lemma~\ref{lem:budget}), so it is an old line of $h_Y$ for at most one $Y \in S$.
+For every other $Y$, $L^*$ is missing at $h_Y$, so $K^*$ passes through $h_Y$ (Theorem~\ref{thm:copies}(c)).
+\item The new points on $K^*$ are the copies of the points of $L^*$ that are not old points of $K^*$, and at most one
+more (the dual of Theorem~\ref{thm:copies}(c)). Hence at most two points $Y \in S$ are old points of $K^*$: the one with
+$L^* \in O(h_Y)$, and one whose copy is the extra new point of $K^*$.
+\item A new line $K \ne K^*$ contains at most two copies $h_Y$, $Y \in S$: its line $L_K$ meets $L^*$ in one point, and
+$K$ has at most one new point that is not the copy of a point of $L_K$.
+\item Let $Y \ne Y'$ in $S$ with $L^*$ missing at $h_{Y'}$. The old lines of $h_{Y'}$ are lines through $Y'$ other than
+$L^* = YY'$, and at most one further line $E_{Y'}$. So unless $Y \in E_{Y'}$, the points $Y$ and $h_{Y'}$ are joined only
+by a new line, which must be the unique new line $\nu(Y)$ through $Y$.
+\end{enumerate}
+Let $e_Y$ be the number of $Y' \in S$ with $Y \in E_{Y'}$; as each $E_{Y'}$ meets $L^*$ once, $\sum_Y e_Y \le s$.
+By (i) and (iv), at least $s - 2 - e_Y$ copies $h_{Y'}$ must lie on the new line $\nu(Y)$ (if this number is positive,
+$\nu(Y)$ exists). For the at least $s-2$ points $Y$ that are not old
+points of $K^*$ (by (ii)), $\nu(Y) \ne K^*$, so by (iii) $s - 2 - e_Y \le 2$, that is $e_Y \ge s-4$ (also when $\nu(Y)$ does not exist). Then
+$(s-2)(s-4) \le \sum_Y e_Y \le s$, which fails for $s \ge 6$. So $s \le 5$ and $p \le 6$.
+If $p = 6$, then $s = 5$ and there is a copied point $u \notin L^*$; the five lines $uY$, $Y \in S$, are copied
+(Proposition~\ref{prop:closed}) and so is $L^*$, so $l \ge 6$. The statements for $l$ are dual. If $p + l \in \{11,13\}$
+then $\max(p,l) \ge 6$ and $\min(p,l) \le 6$ with $(p,l) \ne (6,6)$, a contradiction.
+\end{proof}
+
+The hypothesis $q \ge 3\max(p,l)+9$ is what Theorem~\ref{thm:copies} needs; the counting in the proof itself does not
+depend on $q$. With changes the argument breaks in two places: a changed incidence can let two new points share an
+old line, and can let a copied point see a hat through an added old incidence. So a $+3$ on a projective plane of large
+order must change the plane, and Theorem~\ref{thm:nochange} says nothing about how many changes would suffice.
+Whether $p = l = 6$ (that is, $2(q^2+q+7)$, five hats) can occur without changes is also left open by the counting;
+the hat-model SAT search of \S\ref{sec:coords} found no such graph.
+
+\subsection{The four hats without changing the plane}\label{ssec:zero}
+The four-hat construction of \S\ref{sec:coords} moves three incidences of the plane (the rotation). The computer
+search below found that this is not necessary: the rotation can be carried by the copies.
+
+\begin{proposition}\label{prop:zero}
+Let $\Pi$ be a projective plane of order $q \ge 3$, $\ell$ a line, $A$ a point not on $\ell$, and $X_a, X_1, X_2, X_3$
+distinct points of $\ell$. Let $s$ be the $3$-cycle $1 \mapsto 2 \mapsto 3 \mapsto 1$ and write $AX$ for the line through $A$
+and $X$. Add new points $Q, H_a, H_1, H_2, H_3$ and new lines $M, K_a, K_1, K_2, K_3$ to the incidence graph of $\Pi$,
+with these incidences ($i \in \{1,2,3\}$):
+\begin{center}
+\begin{tabular}{@{}l@{\quad}l@{\quad}l@{}}
+\toprule
+vertex & old neighbours & new neighbours\\
+\midrule
+$Q$ & every line through $A$ except $AX_1, AX_2, AX_3$ & $K_a, K_1, K_2, K_3$\\
+$H_a$ & every line through $X_a$ except $AX_a$ & $M, K_a$\\
+$H_i$ & every line through $X_i$ except $\ell$ and $AX_i$; also $AX_{s(i)}$ & $M, K_i$\\
+$M$ & every point of $\ell$ except $X_1, X_2, X_3$ & $H_a, H_1, H_2, H_3$\\
+$K_a$ & every point of $AX_a$ except $X_a$ & $Q, H_a$\\
+$K_i$ & every point of $AX_i$ except $A$ and $X_i$; also $X_{s^{-1}(i)}$ & $Q, H_i$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The resulting graph $G$ is bipartite, has maximum degree $q+2$, diameter $3$ and order $2(q^2+q+6)$, and every
+incidence of $\Pi$ is kept: the incidence graph of $\Pi$ is an induced subgraph of $G$.
+\end{proposition}
+
+\begin{proof}
+\emph{Degrees.} New vertices: $Q$ has $(q+1-3)+4$, $H_a$ has $q+2$, $H_i$ has $(q-1)+1+2$, $M$ has $(q-2)+4$, $K_a$ has
+$q+2$ and $K_i$ has $(q-1)+1+2$ neighbours. Every old vertex gets at most one new neighbour: a line through $A$ meets
+$\ell$ in one point, so the old lines with a new point are $AX_a$ and the lines $AP$, $P \in \ell\setminus\{X_a,X_1,X_2,X_3\}$
+(point $Q$), the lines through $X_a$ other than $AX_a$, among them $\ell$ (point $H_a$), the lines through $X_i$ other than
+$\ell$ and $AX_i$ (point $H_i$), and $AX_i$ (point $H_{s^{-1}(i)}$), and these classes are disjoint. Dually the old
+points with a new line are the points of $\ell \setminus \{X_1,X_2,X_3\}$ (line $M$), of $AX_a \setminus \{X_a\}$ (line $K_a$),
+of $AX_i \setminus\{A, X_i\}$ (line $K_i$), and $X_i$ (line $K_{s(i)}$).
+
+\emph{Two points.} Old pairs are joined in $\Pi$. $Q$ and an old point $x$: if $Ax \ne AX_i$ for all $i$ then $Ax$ is a line
+of $Q$; if $x \in AX_i \setminus \{A, X_i\}$, use $K_i$; if $x = X_i$, use $K_{s(i)}$. $H_a$ and $x$: if $x \notin AX_a$ or
+$x = X_a$ use $X_ax$; otherwise use $K_a$. $H_i$ and $x$: if $X_ix \notin \{\ell, AX_i\}$ use it; $A$ and $X_{s(i)}$ lie on
+$AX_{s(i)}$; the points of $\ell$ other than $X_1,X_2,X_3$ lie on $M$; $X_{s^{-1}(i)}$ and the points of
+$AX_i \setminus\{A,X_i\}$ lie on $K_i$; and $X_i$ is on every line of $H_i$ through it. New pairs: $Q, H_a$ on $K_a$;
+$Q, H_i$ on $K_i$; any two hats on $M$.
+
+\emph{Two lines.} $M$ and an old line $L$: if $L$ meets $\ell$ in a point of $M$, done; if $L \ni X_i$ and $L \ne \ell$, then
+$L$ contains $H_i$ (when $L \ne AX_i$) or $H_{s^{-1}(i)}$ (when $L = AX_i$), and both lie on $M$. $K_a$ and $L$: $L$ meets
+$AX_a$; if only in $X_a$, then $L$ is a line through $X_a$ other than $AX_a$ and contains $H_a$. $K_i$ and $L \ne AX_i$:
+let $y = L \cap AX_i$. If $y \notin \{A, X_i\}$, done. If $y = X_i$ and $L \ne \ell$, $L$ contains $H_i$; if $L = \ell$, it
+contains $X_{s^{-1}(i)} \in K_i$. If $y = A$, then $L$ contains $Q$ unless $L = AX_j$ with $j \ne i$; then either
+$j = s(i)$ and $L$ contains $H_i$, or $j = s^{-1}(i)$ and $L$ contains $X_j \in K_i$. New pairs: $M$ meets $K_a$ in $H_a$
+and $K_i$ in $H_i$; the $K$'s meet in $Q$.
+\end{proof}
+
+The program \texttt{construction0.py} builds $G$ from the table alone and checks it on random frames for
+$q = 3,4,5,7,8,9,11,13,16$ and on the nearfield plane of order $9$; the graphs for $q = 4, 5, 9, 11, 13$ pass
+\texttt{verify\_record.py}, and removing either rotation incidence ($H_i \sim AX_{s(i)}$ or $X_{s^{-1}(i)} \sim K_i$)
+breaks the diameter. In the language of Theorem~\ref{thm:copies}: $H_1, H_2, H_3$ each miss two lines through their point
+($\ell$ and $AX_i$, copied by $M$ and $K_i$) and carry one old line not through it ($AX_{s(i)}$); $K_1, K_2, K_3$ are dual.
+An AL-size graph without changes ($p = l = 4$: $Q$, $M$ and three hats whose rotation is a $3$-cycle; $Q$ and $M$
+each carry one extra old incidence) was found by the same search at $q = 7$ (\texttt{graphs/ext\_q7\_4\_4\_E0\_A0\_n122.json}).
