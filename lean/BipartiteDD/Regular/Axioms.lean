@@ -3,6 +3,7 @@ import BipartiteDD.Regular.Twin
 import BipartiteDD.Regular.Completion
 import BipartiteDD.Regular.Match
 import BipartiteDD.Regular.Plus2
+import BipartiteDD.Regular.ASq
 
 #print axioms BipartiteDD.IsBipartiteRegDiam.toDegDiam
 #print axioms BipartiteDD.IsBipartiteRegDiam.comap
@@ -31,3 +32,4 @@ import BipartiteDD.Regular.Plus2
 #print axioms BipartiteDD.Plus2.Frame.regInc_regular
 #print axioms BipartiteDD.Plus2.plus2_regular
 #print axioms BipartiteDD.Plus2.plus2_regular_of_order
+#print axioms BipartiteDD.ASq.bound_regular
