@@ -56,3 +56,11 @@ at Δ=11.
   graphs/haar_d9_n2640_sl2_11.json; rebuilt independently from the matrices; verify_record.py VALID (3 checkers).
 - First near misses (2 elements short): Δ7 over AGL(1,25) (order 600), Δ6 over SL(2,5)×Z_3 (360); 1 short: Δ8 over
   AGL(1,7)×Z_21 (882).
+
+## Round 4 (autopilot bonus slice, d5-ladder-haiku: matrix-group ladder, run_h4_batch.py)
+- (7,5): PGL(2,3) × Z_24 (PGL(2,3) ≅ S_4; order 576) reached cost 0 in a 30-minute run: a 7-regular diameter-5 Haar
+  graph on 1152 vertices (table 1134, ours was 1140). S, as (matrix (a,b,c,d) over GF(3) up to sign, element of Z_24):
+  ((1,0,0,1),0), ((1,2,2,2),23), ((1,1,2,0),0), ((1,1,0,2),18), ((0,1,1,1),18), ((1,0,1,1),17), ((1,0,0,2),3).
+  graphs/haar_d7_n1152.json, rebuilt independently from the matrices; verify_record.py VALID (3 checkers).
+- The batch driver crashed on its first climb (an int in the command line); fixed (all args str, finished jobs are
+  skipped on restart) and restarted at 17:36.

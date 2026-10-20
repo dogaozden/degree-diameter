@@ -38,6 +38,12 @@ def load(path):
     return jobs
 
 
+def done_before(tag):
+    """A job whose log already has its final best= line ran to the end in an earlier batch; restarts skip it."""
+    p = os.path.join(HERE, "logs", f"h4_{tag}.log")
+    return os.path.exists(p) and "best=" in open(p).read()
+
+
 def log(msg):
     print(f"{time.strftime('%F %T')} {msg}", flush=True)
 
@@ -82,7 +88,9 @@ def main():
             while queue and len(running) < MAX:
                 d, table, secs, seed, k = queue.popleft()
                 tag = tag_of(d, table, seed, k)
-                cmd = ["nice", "-n", "15", os.path.join(HERE, "run_h4.sh"), str(d), table, str(seed), secs, k]
+                if done_before(tag):
+                    continue
+                cmd = ["nice", "-n", "15", os.path.join(HERE, "run_h4.sh"), str(d), table, str(seed), str(secs), str(k)]
                 running.append((subprocess.Popen(cmd), tag, d, table))
                 log(f"start {tag} secs={secs} (running {len(running)}, queued {len(queue)})")
         if not running and (stop or not queue):
