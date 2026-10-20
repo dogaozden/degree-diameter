@@ -88,5 +88,12 @@ Calibration (local, about half a core each; load average ~60-120):
 
 D = 6, Δ = 7 is out of reach: not even 0.235 of the bound is solved, the table needs 0.482.
 
-Local batch jobs_a.txt (2 cores, from 23:16): D = 7, Δ = 5 over 8 groups, 30 min each.
-Cloud batches jobs_c1..c3.txt (briefs cloud_c1..c3.txt, branches p4-d6haar-1..3): see below once launched.
+Local batch jobs_a.txt (2 cores, 23:16-23:33, stopped for batch b): D = 7, Δ = 5: AGL(1,41) (1640) best 19 after
+15 min, PGL(2,7) × Z_5 (1680) 28, Heis(7) × Z_5 (1715) 98 (stopped). Nilpotent × cyclic looks bad here.
+Local batch jobs_b.txt (haar_dd2, 2 cores, from 23:34): D = 7, Δ = 5 screening, 10 min per group.
+Cloud batches (Haiku, medium; code at commit b40925969 on research-diam4), launched 23:27:
+| session | jobs | cells | branch |
+|---|---|---|---|
+| session_01NHxTH4j2YRPGNeCzDd4hfZ | jobs_c1.txt | D=4 Δ=7 (short), D=7 Δ=5, D=8 Δ=4, D=7 Δ=4 | p4-d6haar-1 |
+| session_01TTFmonZXwERZb3hEeuzjAG | jobs_c2.txt | D=7 Δ=6, D=8 Δ=5, D=7 Δ=7 | p4-d6haar-2 |
+| session_01NXLeLnY2aWH9DiofGnQbkh | jobs_c3.txt | D=7 Δ=8, D=8 Δ=6, D=8 Δ=7 | p4-d6haar-3 |

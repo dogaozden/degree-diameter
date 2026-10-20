@@ -18,9 +18,10 @@ def main(sol, out):
     lines = [l.split() for l in open(sol) if l.strip()]
     D, d, N, c = map(int, lines[0][:4])
     table_path = lines[0][4]
+    second = lines[0][5] if len(lines[0]) > 5 else str(c)   # haar_dd2: a number (Z_c) or a second table file
     name = os.path.basename(table_path)[:-4]
     T0 = groups.build(name)
-    els = groups.LAST_ELEMENTS if "__x__" not in name else None
+    els = groups.LAST_ELEMENTS if "__x__" not in name else None   # read before building the second factor
     N0 = len(T0)
     groups.check_table(T0, trials=20000)
     with open(os.path.join(HERE, table_path) if not os.path.isabs(table_path) else table_path) as f:
@@ -31,12 +32,21 @@ def main(sol, out):
     S = [int(l[0]) for l in lines[1:1 + d]]
     assert len(set(S)) == d
 
+    if second.isdigit():
+        T1 = [[(z + w) % c for w in range(c)] for z in range(c)]
+        name1 = f"Z_{c}"
+    else:
+        name1 = os.path.basename(second)[:-4]
+        T1 = groups.build(name1)
+        groups.check_table(T1, trials=20000)
+        assert len(T1) == c
+
     def mul(x, y):
-        return T0[x // c][y // c] * c + (x % c + y % c) % c
+        return T0[x // c][y // c] * c + T1[x % c][y % c]
 
     edges = [[x, N + mul(s, x)] for x in range(N) for s in S]
     desc = [[x // c, x % c] for x in S]
-    con = {"group": f"{name} x Z_{c}" if c > 1 else name, "group_order": N, "D": D,
+    con = {"group": f"{name} x {name1}" if c > 1 else name, "group_order": N, "D": D,
            "edges": "(x, A) ~ (s x, B), vertex (x, A) = x, (x, B) = N + x, x = g*c + z",
            "S_index": S, "S_as_(g0_index, z)": desc}
     if els is not None:

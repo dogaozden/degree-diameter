@@ -5,6 +5,8 @@ Rules: run `scripts/stop_check.sh` (from the repo root) before each step; if it 
 have. Every long command goes through `scripts/guarded.sh HOURS ...` (max 5 hours).
 
 Steps (from the repo root):
+0. If research/p4/d6haar/haar_dd.c is missing: git fetch origin research-diam4 && git checkout research-diam4
+   (the code is on that branch, commit b40925969 or later).
 1. scripts/stop_check.sh; then: cd research/p4/d6haar && cc -O3 -march=native -o haar_dd haar_dd.c -lm
    Then build two test tables and run the self-check (must print "check OK" each time):
    python3 groups.py --check sl_5 heis_3 && ./haar_dd check 7 4 tables/sl_5.txt 1 7 && ./haar_dd check 8 3 tables/heis_3.txt 2 7

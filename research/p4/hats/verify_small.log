@@ -1,0 +1,16 @@
+VALID  n=948 d=5 D=6  research/p4/hats/graphs/hex_q3_delorme_n948.json
+    checker: True   networkx: True  from-scratch: pass (diameter 6, degrees [4, 5], sides (484, 464), 2204 edges)
+VALID  n=1020 d=5 D=6  research/p4/hats/graphs/hex_q3_delorme_whisk72_n1020.json
+    checker: True   networkx: True  from-scratch: pass (diameter 6, degrees [4, 5], sides (484, 536), 2420 edges)
+VALID  n=868 d=5 D=6  research/p4/hats/graphs/hex_q3_stars_n868.json
+    checker: True   networkx: True  from-scratch: pass (diameter 6, degrees [4, 5], sides (476, 392), 1904 edges)
+VALID  n=359 d=7 D=4  research/p4/hats/graphs/opart_q5_n359.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [6, 7], sides (182, 177), 1197 edges)
+VALID  n=346 d=7 D=4  research/p4/hats/graphs/opart_q5_pencil_n346.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [6, 7], sides (184, 162), 1134 edges)
+VALID  n=359 d=7 D=4  research/p4/hats/graphs/opart_q5_two_n359.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [6, 7], sides (182, 177), 1197 edges)
+VALID  n=98 d=5 D=4  research/p4/hats/graphs/delorme_Q4_q3_n98.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [4, 5], sides (50, 48), 224 edges)
+VALID  n=98 d=5 D=4  research/p4/hats/graphs/opart_q3_n98.json
+    checker: True   networkx: True  from-scratch: pass (diameter 4, degrees [4, 5], sides (50, 48), 224 edges)

@@ -27,6 +27,7 @@ spec.loader.exec_module(d6lift)
 
 q, secs = int(sys.argv[1]), float(sys.argv[2])
 pencil = len(sys.argv) > 3 and sys.argv[3] == '1'
+force2 = len(sys.argv) > 3 and sys.argv[3] == '2'   # force two lines through ovoid[0] (WLOG if |M| > q^2-q+1)
 pts, lines, ovoid = q4(q)
 n, m = len(pts), len(lines)
 O = set(ovoid)
@@ -43,6 +44,11 @@ if pencil:
     for j, L in enumerate(lines):
         if o in L:
             lb[j] = 1
+if force2:
+    o = ovoid[int(sys.argv[4])] if len(sys.argv) > 4 else o
+    pick = [int(c) for c in sys.argv[5].split(',')] if len(sys.argv) > 5 else [0, 1]
+    for j in [[j for j, L in enumerate(lines) if o in L][i] for i in pick]:
+        lb[j] = 1
 t = time.time()
 res = milp(-np.ones(m), constraints=[LinearConstraint(A.tocsr(), 0, 1)], integrality=np.ones(m),
            bounds=Bounds(lb, 1), options={'time_limit': secs, 'disp': False})
@@ -65,7 +71,7 @@ N, H, _ = d6lift.build(n + m, adj, lev)
 ok = lib.is_valid(N, H, q + 2, 4)
 print(f'order {N}, valid(D=4, Delta={q+2}) {ok}')
 if ok:
-    out = ROOT / 'research' / 'p4' / 'hats' / 'graphs' / f'opart_q{q}{"_pencil" if pencil else ""}_n{N}.json'
+    out = ROOT / 'research' / 'p4' / 'hats' / 'graphs' / f'opart_q{q}{"_pencil" if pencil else ""}{"_two" if force2 else ""}_n{N}.json'
     out.write_text(json.dumps({'case': f'd{q+2}D4', 'value': N, 'output': [N, [list(e) for e in H]],
                                'lines': M, 'ovoid': sorted(O)}))
     print('wrote', out)
