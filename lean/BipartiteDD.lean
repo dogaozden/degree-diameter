@@ -11,3 +11,10 @@ import BipartiteDD.ASq.Main
 import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Hexagon.Main
 import BipartiteDD.Hexagon.Sanity
+import BipartiteDD.Regular.Defs
+import BipartiteDD.Regular.Twin
+import BipartiteDD.Regular.Completion
+import BipartiteDD.Regular.Match
+import BipartiteDD.Regular.Plus2
+import BipartiteDD.Regular.ASq
+import BipartiteDD.Regular.TheoremR
