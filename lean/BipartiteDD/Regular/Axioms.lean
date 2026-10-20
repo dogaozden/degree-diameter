@@ -1,6 +1,8 @@
 import BipartiteDD.Regular.Defs
 import BipartiteDD.Regular.Twin
 import BipartiteDD.Regular.Completion
+import BipartiteDD.Regular.Match
+import BipartiteDD.Regular.Plus2
 
 #print axioms BipartiteDD.IsBipartiteRegDiam.toDegDiam
 #print axioms BipartiteDD.IsBipartiteRegDiam.comap
@@ -17,3 +19,15 @@ import BipartiteDD.Regular.Completion
 #print axioms BipartiteDD.Regular.exists_regular_completion
 #print axioms BipartiteDD.Regular.exists_regular_completion_diam
 #print axioms BipartiteDD.Regular.exists_regular_completion_fin
+
+#print axioms BipartiteDD.Regular.exists_matching_avoiding
+#print axioms BipartiteDD.Plus2.Frame.card_defPt
+#print axioms BipartiteDD.Plus2.Frame.card_defLn
+#print axioms BipartiteDD.Plus2.Frame.card_defLn_through
+#print axioms BipartiteDD.Plus2.Frame.card_defPt_on
+#print axioms BipartiteDD.Plus2.Frame.ptNb_ncard_add
+#print axioms BipartiteDD.Plus2.Frame.lnNb_ncard_add
+#print axioms BipartiteDD.Plus2.Frame.exists_matching
+#print axioms BipartiteDD.Plus2.Frame.regInc_regular
+#print axioms BipartiteDD.Plus2.plus2_regular
+#print axioms BipartiteDD.Plus2.plus2_regular_of_order
