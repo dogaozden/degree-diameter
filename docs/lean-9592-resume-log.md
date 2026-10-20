@@ -14,3 +14,4 @@ Each build is alone; times are wall-clock, memory is peak RSS.
 | Stages.G9592_s1 | 0 | 441 | 11.7 |
 | Stages.G9592_s2 | 0 | 315 | 11.8 |
 | Stages.G9592_s3 | 0 | 181 | 11.8 |
+| Stages.G9592_s4 | 0 | 176 | 11.8 |
