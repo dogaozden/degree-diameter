@@ -2,6 +2,7 @@
 -- Each line should list only [propext, Classical.choice, Quot.sound].
 import BipartiteDD.GQST.Main
 import BipartiteDD.Records
+import BipartiteDD.Records9592
 import BipartiteDD.SingerC.Main
 import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Haar.Record2620
@@ -76,3 +77,4 @@ import BipartiteDD.GQST.StandinMain
 #print axioms BipartiteDD.SingerC.W3.spread_exists_unique
 #print axioms BipartiteDD.SingerC.W3.spread_totally_isotropic
 #print axioms BipartiteDD.SingerC.corC1
+#print axioms nb_7_6

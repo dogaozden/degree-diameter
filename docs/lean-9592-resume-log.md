@@ -16,3 +16,7 @@ Each build is alone; times are wall-clock, memory is peak RSS.
 | Stages.G9592_s3 | 0 | 181 | 11.8 |
 | Stages.G9592_s4 | 0 | 176 | 11.8 |
 | Stages.G9592_s5 | 0 | 200 | 11.9 |
+| Records9592 (`nb_7_6`) | 0 | 10 | 1.8 |
+
+`#print axioms nb_7_6` (scratch file importing only `BipartiteDD.Records9592`): `[propext, Classical.choice, Quot.sound]`.
+The `nb_7_6` line in `lean/Axioms.out.txt` comes from that run; the full regeneration (`lake env lean Axioms.lean`) is attempted below.
