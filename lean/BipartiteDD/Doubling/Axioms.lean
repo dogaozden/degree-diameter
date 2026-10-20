@@ -1,4 +1,5 @@
 import BipartiteDD.Doubling.Single
+import BipartiteDD.Doubling.Theorem1
 
 /-! Axioms used by the Doubling group. Run `lake env lean BipartiteDD/Doubling/Axioms.lean`. -/
 
@@ -6,3 +7,9 @@ import BipartiteDD.Doubling.Single
 #print axioms BipartiteDD.Doubling.double_colorable
 #print axioms BipartiteDD.Doubling.double_degree
 #print axioms BipartiteDD.Doubling.double_ediam
+#print axioms BipartiteDD.Doubling.levelled_colorable
+#print axioms BipartiteDD.Doubling.levelled_degree
+#print axioms BipartiteDD.Doubling.levelled_ediam
+#print axioms BipartiteDD.Doubling.isBipartiteDegDiam_levelled
+#print axioms BipartiteDD.Doubling.card_levelled_levels
+#print axioms BipartiteDD.Doubling.delorme_levelled
