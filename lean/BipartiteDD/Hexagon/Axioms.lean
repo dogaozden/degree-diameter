@@ -1,4 +1,5 @@
 import BipartiteDD.Hexagon.Main
+import BipartiteDD.Hexagon.Sanity
 
 /-! Axioms used by the Hexagon group. Run `lake env lean BipartiteDD/Hexagon/Axioms.lean`. -/
 
@@ -14,3 +15,8 @@ import BipartiteDD.Hexagon.Main
 #print axioms BipartiteDD.Hexagon.genPolygonGraph_six
 #print axioms BipartiteDD.Hexagon.genPolygonGraph_hexagon
 #print axioms BipartiteDD.Hexagon.card_hline
+#print axioms BipartiteDD.Hexagon.hexagon_q3
+#print axioms BipartiteDD.Hexagon.hexagon_q5
+#print axioms BipartiteDD.Hexagon.card_spt_q3
+#print axioms BipartiteDD.Hexagon.card_spt_q5
+#print axioms BipartiteDD.Hexagon.card_zeros_q3

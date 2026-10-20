@@ -10,3 +10,8 @@
 'BipartiteDD.Hexagon.genPolygonGraph_six' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.Hexagon.genPolygonGraph_hexagon' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.Hexagon.card_hline' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Hexagon.hexagon_q3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Hexagon.hexagon_q5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Hexagon.card_spt_q3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Hexagon.card_spt_q5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Hexagon.card_zeros_q3' depends on axioms: [propext, Classical.choice, Quot.sound]
