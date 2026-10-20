@@ -1,35 +1,38 @@
-Independent Lean build check (toolchain leanprover/lean4:v4.34.1, 4 cores, no Mathlib cache)
+Full build check of master after the 2026-10-20 Lean merges (branch lean-buildcheck from origin/master)
+
+Date: 2026-10-20 (UTC)
+Toolchain: leanprover/lean4:v4.34.1 (Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52; elan 4.2.4 installed in the sandbox)
+Mathlib: v4.34.1, commit d13f23b723b8a846827a245b89c10fc7d3f11612 (lake-manifest.json)
+Machine: 4 cores, 15 GB RAM
 
 ## Setup
-- elan install script: OK (elan 4.2.4).
-- 'elan toolchain install leanprover/lean4:v4.34.1' (3 tries): FAILED, CONNECT tunnel 403 for release.lean-lang.org.
-- GitHub release URL https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst: WORKED (curl, 7s). No zstd binary, so extracted with python zstandard and ran 'elan toolchain link leanprover/lean4:v4.34.1 <dir>'.
-- 'lake exe cache get': FAILED, cache.mathlib.org CONNECT 403 (also reservoir.lean-lang.org and lakecache.blob.core.windows.net 403). Killed after ~5 min with ~1MB downloaded. Mathlib sources cloned fine via git.
-- Consequence: everything below compiled Mathlib modules from source.
+- `lake exe cache get`: ok (8908 files, Mathlib cache from leanprover-community).
 
-## Commands (exit code, wall time)
-1. lake build                                  exit=0 secs=1287  (Build completed successfully, 1036 jobs)
-   lake build BipartiteDD.Plus2.Axioms exit=0 secs=1604
-   lake env lean Axioms.lean exit=0 secs=4
-   lake env lean BipartiteDD/Plus2/Axioms.lean exit=0 secs=6
+## Build
+- First pass, `scripts/guarded.sh 3 lake build` (whole library): exit 1. 26 jobs were OOM-killed (Lean exit 137) while lake ran jobs in parallel:
+  BipartiteDD.Stages G3122_local; G5070_loc1, loc3, s0, s1, s2, s3; G5440_loc0, loc1, loc3, s0, s1, s2, s3; G5022_hi, lo, s0, s1, s2, s3; G5284_hi, lo, s0, s1, s2, s3.
+- Each of those 26 was rebuilt alone (one `lake build BipartiteDD.Stages.<m>` per module): all 26 ok.
+- Imports of the axioms files that were not yet built: BipartiteDD.Records9592, Haar.Record1152, Haar.Record1728, Haar.Record1764, Haar.Record2620, Haar.Record2640, Haar.Record2662, GQST.StandinMain, SingerC.Regular5440 (built one at a time).
+  - BipartiteDD.Records9592 first failed with OOM kills (exit 137) in seven BipartiteDD.Stages.G9592 modules: loc2, loc6, s0, s2, s3, s4, s5. Each was rebuilt alone, then BipartiteDD.Records9592: ok.
+- Full `scripts/guarded.sh 1.5 lake build` after all rebuilds: exit 0, "Build completed successfully (9115 jobs)".
+- No source change was needed. Theorem statements are unchanged. No sorry, admit, axiom, or native_decide in BipartiteDD/, Axioms.lean, RegularAxioms.lean.
+- Note: this Lake (5.0.0) has no `-j` option, so the one-module-at-a-time rebuilds used plain `lake build <module>`.
 
-   (lake build BipartiteDD.Plus2.Axioms needed extra Mathlib modules not in the default target: 2001 jobs)
+## Axioms
+Regenerated every axioms file with `lake env lean <file>`. Each output is byte-identical to the committed Axioms.out.txt / RegularAxioms.out.txt.
+Distinct axioms used across all files: propext, Classical.choice, Quot.sound (no sorryAx, no other axioms).
 
-## #print axioms: lake env lean Axioms.lean
-'nb_4_5' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_5_5' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_7_5' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_7_4' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_11_4' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_11_3' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_13_3' depends on axioms: [propext, Classical.choice, Quot.sound]
-'nb_15_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+Files and line counts:
+  lean/Axioms.out.txt                              61
+  lean/RegularAxioms.out.txt                       10
+  lean/BipartiteDD/Doubling/Axioms.out.txt         16
+  lean/BipartiteDD/Hexagon/Axioms.out.txt          17
+  lean/BipartiteDD/HexagonD/Axioms.out.txt         41
+  lean/BipartiteDD/HexagonD/Identity/Axioms.out.txt 20
+  lean/BipartiteDD/Plus2/Axioms.out.txt             2
+  lean/BipartiteDD/Plus2Zero/Axioms.out.txt         2
+  lean/BipartiteDD/Regular/Axioms.out.txt          30
 
-## #print axioms: lake env lean BipartiteDD/Plus2/Axioms.lean
-'BipartiteDD.Plus2.plus2' depends on axioms: [propext, Classical.choice, Quot.sound]
-'BipartiteDD.Plus2.plus2_of_order' depends on axioms: [propext, Classical.choice, Quot.sound]
-
-## grep -rnE '\bsorry\b|\badmit\b|native_decide|^axiom ' lean/BipartiteDD lean/*.lean
-(exit 1 = no matches)
-
-## Failing builds: none (all exit 0)
+## Result
+PASS: the full library builds (lake build, 9115 jobs), every axioms file lists only propext, Classical.choice, Quot.sound.
+Caveat: the default `lake build` on this machine needs one-module-at-a-time rebuilds for the record modules listed above (OOM at 15 GB); the final build is clean.
