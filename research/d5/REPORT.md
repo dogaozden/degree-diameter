@@ -64,3 +64,8 @@ at Δ=11.
   graphs/haar_d7_n1152.json, rebuilt independently from the matrices; verify_record.py VALID (3 checkers).
 - The batch driver crashed on its first climb (an int in the command line); fixed (all args str, finished jobs are
   skipped on restart) and restarted at 17:36.
+- (8,5): AGL(1,7) × Z_21 (order 882) reached cost 0 in a 30-minute run: an 8-regular diameter-5 Haar graph on 1764
+  vertices (table 1710, ours was 1728). S, as ((b,a) = the map t ↦ at+b on GF(7), c ∈ Z_21): ((0,1),0), ((0,4),5),
+  ((6,6),18), ((6,5),6), ((2,4),1), ((2,2),16), ((4,5),12), ((2,6),15). graphs/haar_d8_n1764.json, rebuilt
+  independently; verify_record.py VALID (3 checkers). Also cost 0: Heis(5) × Z_7 (order 875 → 1750, VALID,
+  graphs/haar_d8_heis_5__x__cyc_7.json), smaller.
