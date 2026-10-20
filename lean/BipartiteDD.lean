@@ -21,3 +21,7 @@ import BipartiteDD.Regular.Match
 import BipartiteDD.Regular.Plus2
 import BipartiteDD.Regular.ASq
 import BipartiteDD.Regular.TheoremR
+import BipartiteDD.HexagonD.Identity.Key
+import BipartiteDD.HexagonD.Identity.Nu
+import BipartiteDD.HexagonD.Identity.Line
+import BipartiteDD.Plus2Zero.Main
