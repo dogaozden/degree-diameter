@@ -41,3 +41,15 @@ Code: research/p4/d4 (w3k.py, cp_m.py, pq.py, hs.c, groups.py).
   41, 47, 53, 57, 59 below 64. Full D = 4 table for Δ ≤ 64: research/p4/d4/dtable.py (python3 dtable.py 5 64).
 - Weighted 3-ovoids with F-torus symmetry: found at q = 7; ruled out for q = 9, 11, 13 under that symmetry; unsymmetric
   search in cloud C.
+
+## Update ~01:15: regular versions (AL20 Problem 4 asks for regular graphs)
+Every Cor. B1 graph can be made Δ-regular. Originals already have degree Δ. The point copies (Σw = (Δ−s−1)(st+1), each of
+degree t+1) and the line copies (|M| = (Δ−t−1)(st+1), each of degree s+1) sit on opposite sides and miss exactly the
+same total degree, so add a biregular bipartite graph between them (degrees Δ−t−1 and Δ−s−1; cyclic matchings work).
+Adding edges cannot increase distances; two non-collinear original points still have no common neighbour, so the
+diameter stays exactly 4.
+Consequence: for every prime power q and Δ ≥ q+1 there is a Δ-regular bipartite graph of diameter 4 and order
+2Δ(q²+1) when q is even or Δ−q−1 is even (Q(4,q)), else 2Δq² (AS(q), Theorem A copies plus fibre-spread copies).
+Verified: graphs/regular_c1_q13_n5440.json is 16-regular, passes verify_record (16,4): 5440 vertices, sides 2720+2720,
+43520 edges (build_regular.py). 1782/3146/5070 were regular already. Also graphs/w3cover_q7_n1100.json (weighted
+3-cover of Q(4,7)) passes (11,4) — pipeline check only.
