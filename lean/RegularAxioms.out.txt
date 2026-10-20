@@ -5,3 +5,6 @@
 'BipartiteDD.GQST.exists_biregular_copies' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQST.regular_copy_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQST.regular_copy_graph_fin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.Setting.card_spread_through' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.Setting.regular_W3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.regular5440' depends on axioms: [propext, Classical.choice, Quot.sound]
