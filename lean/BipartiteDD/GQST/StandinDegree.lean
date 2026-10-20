@@ -56,7 +56,7 @@ theorem ncard_nbr_stand [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t) (
     omega
 
 /-- The neighbours of an original line: `s + 1` original points and the copies of the points on it. -/
-theorem ncard_nbr_line [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t) (a : ℕ)
+theorem standin_ncard_nbr_line [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t) (a : ℕ)
     (hw : ∀ l : L, ∑ p ∈ Finset.univ.filter (fun p => p ∈ l), w p ≤ a) (l : L) :
     ((standin P L w m σ).neighborSet (.inr (.inl l))).ncard ≤ s + 1 + a := by
   refine (GQ4.ncard_le_of_subset_range _
@@ -80,7 +80,7 @@ theorem ncard_nbr_line [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t) (a
     omega
 
 /-- The neighbours of a line copy: its `s + 1` stand-ins. -/
-theorem ncard_nbr_line_copy [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t)
+theorem standin_ncard_nbr_line_copy [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t)
     (c : Σ l, Fin (m l)) :
     ((standin P L w m σ).neighborSet (.inr (.inr c))).ncard ≤ s + 1 := by
   refine (GQ4.ncard_le_of_subset_range _
@@ -109,9 +109,9 @@ theorem standin_degree [Fintype P] [Fintype L] {s t : ℕ} (G : GQst P L s t)
   · obtain ⟨p, j, rfl⟩ := exists_standVtx q
     have := ncard_nbr_stand G b hσ p j
     omega
-  · have := ncard_nbr_line (σ := σ) (m := m) G a hw l
+  · have := standin_ncard_nbr_line (σ := σ) (m := m) G a hw l
     omega
-  · have := ncard_nbr_line_copy (σ := σ) (w := w) G c
+  · have := standin_ncard_nbr_line_copy (σ := σ) (w := w) G c
     omega
 
 end BipartiteDD.GQST
