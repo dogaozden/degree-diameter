@@ -1,0 +1,901 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\I}{\mathrel{\mathrm{I}}}
+\newcommand{\nI}{\mathrel{\not\!\mathrm{I}}}
+\newcommand{\PG}{\mathrm{PG}}
+\newcommand{\GF}{\mathrm{GF}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Hq}{\mathrm{H}}
+\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\Wq}{\mathrm{W}}
+\newcommand{\Qf}{\mathrm{Q}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\Nm}{\mathrm{N}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\pnt}[3]{({#1}{:}{#2}{:}{#3})}
+\newcommand{\lin}[3]{[{#1}{:}{#2}{:}{#3}]}
+\newcommand{\lam}{\lambda}
+\newcommand{\Dbl}[2]{{#1}^{(#2)}_{\cA}}
+
+\title[Doubling in generalized polygons]{Doubling in generalized polygons:\\ large incidence structures of diameter $3$, $4$ and $6$}
+\author{Draft for discussion --- authors to be settled}
+\date{20 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let $n_b(\Delta,D)$ be the largest number of elements (points plus lines) of an incidence structure in which every point lies on at most $\Delta$ lines, every line has at most $\Delta$ points, and any two elements are at distance at most $D$ in the incidence graph. For $D\in\{3,4,6\}$ and $\Delta-1$ a prime power the classical generalized $D$-gons of order $(\Delta-1,\Delta-1)$ attain the Moore bound. For the remaining degrees we adjoin new points and new lines to a classical generalized polygon. The main tool is Delorme's \emph{doubling} of a set of elements, with levels, which we recast as an operation on incidence structures. We show that in a generalized $n$-gon, doubling keeps the diameter equal to $n$ if and only if every connected component of the doubled set is a tree of diameter at most $n-2$.
+For $D=3$ we add four \emph{hats} to any projective plane of order $q\ge 3$ and obtain $2(q^2+q+6)$ elements at $\Delta=q+2$; in $\PG(2,q)$ a correlation completes it to a regular structure.
+For $D=4$ we show that two elliptic quadrics through a point $x$ of $\Wq(q)$ form a weighted $2$-ovoid of $\AS(q)=P(\Wq(q),x)$, $q$ odd, which gives $(q+2)$-regular structures with $2q^2(q+2)$ elements; we also treat copies of lines (``shadows'') and give a short proof that two orbits of a Singer subgroup form a $2$-ovoid of $\Wq(q)$.
+For $D=6$ we extend Delorme's doubling of the split Cayley hexagon $\Hq(q)$ along a Hermitian spread, for every odd $q$, by an explicit set of $q^2(q^2-1)$ lines that meets the counting bound, and obtain $2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ elements at $\Delta=q+2$, together with regular versions.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $\cS=(\cP,\cL,\I)$ be a finite incidence structure, and let $\Gamma(\cS)$ be its incidence graph. Every bipartite graph with a chosen bipartition is the incidence graph of an incidence structure. So the \emph{bipartite degree/diameter problem} asks for the largest number of elements of an incidence structure with given maximum degree and given diameter. Write
+\[
+n_b(\Delta,D)=\max\bigl\{\,|\cP|+|\cL| \;:\; \Delta(\cS)\le\Delta,\ \diam\cS\le D\,\bigr\},
+\]
+where $\Delta(\cS)$ is the largest number of lines on a point or points on a line, and $\diam\cS$ is the diameter of $\Gamma(\cS)$.
+Counting the elements at distance $0,1,\dots,D-1$ from a flag gives the bipartite Moore bound
+\[
+n_b(\Delta,D)\le M_b(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr).
+\]
+Equality holds exactly for the incidence graphs of generalized $D$-gons of order $(\Delta-1,\Delta-1)$. By the theorem of Feit and Higman \cite{FH64} this forces $D\in\{3,4,6\}$ when $\Delta\ge 3$ (an octagon of order $(s,s)$ would need $2s^2$ to be a square). Projective planes, generalized quadrangles and generalized hexagons of order $(q,q)$ are known when $q$ is a prime power, and for no other $q$. So the open cases with $D\in\{3,4,6\}$ are the degrees $\Delta$ for which $\Delta-1$ is not a prime power. In the usual range $\Delta\le16$ these are $\Delta\in\{7,11,13,15,16\}$.
+
+Our constructions all have the same shape. We start from a classical generalized polygon $\cS$ of order $(q,q)$ or $(q-1,q+1)$, with $q+1<\Delta$, and adjoin new points and new lines with prescribed incidences. The incidence graph appears only at the end, as the object whose order and diameter we count.
+
+\smallskip\noindent\textbf{Results.}
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{Doubling} (Section~\ref{sec:doubling}). We describe Delorme's doubling with levels \cite{D85} as an operation $\cS\mapsto\Dbl{\cS}{m}$ on incidence structures, prove Delorme's diameter theorem (Theorem~\ref{thm:delorme}), and show (Lemma~\ref{lem:hat}) that in a generalized $n$-gon the diameter condition holds if and only if each component of the doubled set is a tree of diameter at most $n-2$. This explains why diameter~$3$ needs extra ``patch'' incidences and why diameters $4$ and $6$ do not.
+\item \emph{Diameter $3$} (Section~\ref{sec:d3}). A fourth hat in any projective plane of order $q\ge3$ (Theorem~\ref{thm:fourhat}), completing the construction of Araujo-Pardo and L\'opez \cite{AL20}: $n_b(q+2,3)\ge 2(q^2+q+6)$, with a regular version in $\PG(2,q)$.
+\item \emph{Diameter $4$} (Section~\ref{sec:d4}). A weighted $2$-ovoid of $\AS(q)$ formed by two elliptic quadrics (Theorem~\ref{thm:A}); clones and shadow lines in any generalized quadrangle (Theorem~\ref{thm:B}); a $2$-ovoid of $\Wq(q)$ from a Singer subgroup (Proposition~\ref{prop:C}); regular structures of every degree $\Delta\ge q+1$ (Corollary~\ref{cor:B2}).
+\item \emph{Diameter $6$} (Section~\ref{sec:d6}). Delorme's doubling of $\Hq(q)$ along a Hermitian spread, extended by an explicit exact set of $q^2(q^2-1)$ ``whisker'' lines for every odd $q$ (Theorem~\ref{thm:exact}), and regular versions (Theorem~\ref{thm:R}).
+\item \emph{Orders} (Section~\ref{sec:orders}). Doubling gains at most about $2q^{D-2}$ elements at $\Delta=q+2$; the constructions reach this order of magnitude for $D=4$ and attain the counting bound for $D=6$.
+\end{itemize}
+
+\section{Notation and preliminaries}\label{sec:prelim}
+
+\begin{table}[ht]
+\centering\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright}p{0.30\textwidth}p{0.62\textwidth}@{}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$\cS=(\cP,\cL,\I)$ & incidence structure: points, lines, symmetric incidence relation\\
+$\cS^D=(\cL,\cP,\I)$ & the dual structure\\
+$\Gamma(\cS)$ & incidence graph: vertex set $\cP\cup\cL$, edges the flags\\
+$\dd(x,y)$ & distance in $\Gamma(\cS)$; $\diam\cS:=\diam\Gamma(\cS)$\\
+$\deg x$ & number of elements incident with $x$ (lines on a point; points on a line)\\
+$\Delta(\cS)$ & maximum of $\deg x$ over all elements\\
+$x\sim y$ & distinct points on a common line (collinear), or distinct lines on a common point (concurrent)\\
+$x^\perp$ & $\{x\}\cup\{y: y\sim x\}$\\
+flag, anti-flag & incident, resp.\ non-incident, point--line pair\\
+order $(s,t)$ & every line has $s+1$ points, every point is on $t+1$ lines\\
+opposite & at distance $n$ in a generalized $n$-gon\\
+$\PG(2,q)$; $\pnt xyz$, $\lin uvw$ & Desarguesian plane; points, lines; incidence $ux+vy+wz=0$\\
+$\Wq(q)=\Wq(3,q)$ & symplectic quadrangle: points of $\PG(3,q)$, totally isotropic lines\\
+$\Qf(4,q)$, $\Qf(6,q)$ & parabolic quadrics; $\Qf(4,q)$ is the dual of $\Wq(q)$\\
+$\AS(q)=P(\Wq(q),x)$ & Payne derivation of $\Wq(q)$ at $x$; order $(q-1,q+1)$; Ahrens--Szekeres quadrangle for $q$ odd\\
+$\Hq(q)$ & split Cayley hexagon on $\Qf(6,q)$, order $(q,q)$\\
+$\cO$; $m$-ovoid; weighted $m$-ovoid & ovoid; point set meeting every line in $m$ points; weight $w\colon\cP\to\mathbb Z_{\ge0}$ with $\sum_{p\I L}w(p)=m$ for every line $L$\\
+spread; $m$-cover & duals of ovoid and of (weighted) $m$-ovoid\\
+$\cA=(\cA_0\supseteq\cA_1\supseteq\cdots)$ & a filtration of a set of elements; $\lambda(x)$ the level of $x$\\
+$\Dbl{\cS}{m}$, $x^w$ & $m$-fold doubling of $\cS$ along $\cA$; the version of $x$ indexed by the word $w$\\
+$n_b(\Delta,D)$, $M_b(\Delta,D)$ & largest order; bipartite Moore bound\\
+\bottomrule
+\end{tabular}
+\caption{Notation.}\label{tab:notation}
+\end{table}
+
+\subsection{Incidence structures and distance}
+An \emph{incidence structure} $\cS=(\cP,\cL,\I)$ consists of disjoint sets $\cP$ of \emph{points} and $\cL$ of \emph{lines} and a symmetric relation $\I\subseteq(\cP\times\cL)\cup(\cL\times\cP)$. Points and lines are \emph{elements}. We do not assume that two points lie on at most one line: some of our structures have repeated lines. For a set $\cA$ of elements, the \emph{substructure induced on $\cA$} is $(\cA\cap\cP,\cA\cap\cL,\I)$; its connected components are the components of the subgraph of $\Gamma(\cS)$ induced on $\cA$. We say that $\cA$ is a \emph{tree} if this subgraph is a tree.
+
+All distances are taken in $\Gamma(\cS)$. Two points are at even distance, a point and a line at odd distance. Two distinct points are at distance $2$ exactly when they are collinear, and a point $p$ and a line $L$ are at distance $3$ exactly when $p\nI L$ and some point of $L$ is collinear with $p$. An element is \emph{isolated} if it is incident with nothing.
+
+\begin{lemma}[Diameter in geometric terms]\label{lem:diam}
+Let $\cS$ be an incidence structure without isolated elements and let $D\ge2$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If $D$ is even, then $\diam\cS\le D$ if and only if $\dd(p,L)\le D-1$ for every anti-flag $(p,L)$.
+\item If $D$ is odd, then $\diam\cS\le D$ if and only if any two points are at distance at most $D-1$ and any two lines are at distance at most $D-1$.
+\end{enumerate}
+In particular:
+\begin{itemize}[leftmargin=1.5em]
+\item $\diam\cS\le3$ if and only if any two points are collinear and any two lines are concurrent;
+\item $\diam\cS\le4$ if and only if for every anti-flag $(p,L)$ some point of $L$ is collinear with $p$;
+\item $\diam\cS\le6$ if and only if for every anti-flag $(p,L)$ some point $x\I L$ and some point $y$ satisfy $p\in y^\perp$ and $x\in y^\perp$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+(i) Let $p\ne p'$ be points. Choose a line $L\I p'$. If $p\I L$ then $\dd(p,p')=2$; otherwise $\dd(p,p')\le\dd(p,L)+1\le D$. Two lines are handled in the same way, choosing a point on one of them. A flag is at distance $1$. (ii) Let $(p,L)$ be an anti-flag and choose $p'\I L$. Then $p'\ne p$ and $\dd(p,L)\le\dd(p,p')+1\le D$. The converse directions of (i) and (ii) hold by parity. The three special cases are the translations of $\dd\le2$, $\dd\le3$ and $\dd\le5$.
+\end{proof}
+
+\subsection{Generalized polygons}
+Following Tits and \cite{VM98}, a \emph{generalized $n$-gon} ($n\ge3$) is an incidence structure whose incidence graph has diameter $n$ and girth $2n$. It has \emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines; it is \emph{thick} if $s,t\ge2$. Elements at distance $n$ are \emph{opposite}. We use two consequences of the girth.
+\begin{enumerate}[label=\textup{(G\arabic*)},leftmargin=3em]
+\item\label{g:unique} If $\dd(x,y)<n$, there is a unique path of length $\dd(x,y)$ from $x$ to $y$.
+\item\label{g:count} A generalized quadrangle ($n=4$) of order $(s,t)$ has $(s+1)(st+1)$ points and $(t+1)(st+1)$ lines; for an anti-flag $(p,L)$ there is a unique point of $L$ collinear with $p$. A generalized hexagon of order $(s,t)$ has $(s+1)(s^2t^2+st+1)$ points and $(t+1)(s^2t^2+st+1)$ lines.
+\end{enumerate}
+A generalized $n$-gon of order $(q,q)$ has $2(1+q+\dots+q^{n-1})=M_b(q+1,n)$ elements. By Feit and Higman \cite{FH64}, finite thick generalized $n$-gons exist only for $n\in\{3,4,6,8\}$, and for $n=8$ the number $2st$ is a square.
+
+\subsection{The classical examples}
+Let $q$ be a prime power and $\F=\GF(q)$.
+
+\emph{The plane $\PG(2,q)$} \cite{H98}. Points $\pnt xyz$ and lines $\lin uvw$ are nonzero vectors of $\F^3$ up to scalars, and $\pnt xyz\I\lin uvw$ if and only if $ux+vy+wz=0$. It is a generalized $3$-gon (projective plane) of order $(q,q)$. Non-Desarguesian projective planes also exist for many $q$; Section~\ref{sec:d3} works in any projective plane.
+
+\emph{The quadrangles $\Wq(q)$ and $\Qf(4,q)$} \cite[Ch.~3]{PT}. $\Wq(q)=\Wq(3,q)$ has as points all points of $\PG(3,q)$ and as lines the totally isotropic lines of a symplectic polarity; $\Qf(4,q)$ has as points and lines those of a non-singular quadric of $\PG(4,q)$. Both have order $(q,q)$, and $\Qf(4,q)$ is isomorphic to the dual of $\Wq(q)$. An \emph{ovoid} of a generalized quadrangle is a set of points meeting every line in exactly one point; a \emph{spread} is the dual notion. A \emph{partial ovoid} meets every line in at most one point. $\Qf(4,q)$ has ovoids for every $q$ (the elliptic quadric sections $\Qf^-(3,q)$); $\Wq(q)$ has ovoids if and only if $q$ is even, so $\Qf(4,q)$ has spreads if and only if $q$ is even \cite[Ch.~3]{PT}. $\Wq(q)$ always has spreads, for instance regular spreads of $\PG(3,q)$.
+
+\emph{$m$-ovoids and weights.} An \emph{$m$-ovoid} is a set of points meeting every line in exactly $m$ points \cite{BLP09}. A \emph{weighted $m$-ovoid} is a function $w\colon\cP\to\mathbb Z_{\ge0}$ with $\sum_{p\I L}w(p)=m$ for every line $L$; equivalently a multiset of points meeting every line in $m$ points counted with multiplicity. Dually, a \emph{(weighted) $m$-cover} is a set (multiset) of lines with exactly $m$ members through every point. By duality, a weighted $m$-ovoid of $\Wq(q)$ is a weighted $m$-cover of $\Qf(4,q)$.
+
+\emph{The quadrangle $\AS(q)$.} Every point $x$ of $\Wq(q)$ is regular. Payne's derivation $P(\Wq(q),x)$ \cite{P71}, \cite[Ch.~3]{PT} has as points the points of $\PG(3,q)$ not in $x^\perp$, and as lines (i) the totally isotropic lines not through $x$, each with its point in $x^\perp$ removed, and (ii) the lines of $\PG(3,q)$ through $x$ not contained in $x^\perp$ (the hyperbolic lines $\{x,y\}^{\perp\perp}$), each with $x$ removed. It is a generalized quadrangle of order $(q-1,q+1)$, and for $q$ odd it is isomorphic to the Ahrens--Szekeres quadrangle $\AS(q)$ \cite{AS69}, \cite[Ch.~3]{PT}. The lines of type (ii) form a spread of $\AS(q)$.
+
+\emph{The hexagon $\Hq(q)$} \cite{T59}, \cite[\S2.4]{VM98}. Let $\Qf(6,q)$ be the quadric $X_0X_4+X_1X_5+X_2X_6=X_3^2$ of $\PG(6,q)$. The points of $\Hq(q)$ are all points of $\Qf(6,q)$; the lines are the lines of $\Qf(6,q)$ whose Grassmann coordinates $p_{ij}=x_iy_j-x_jy_i$ satisfy Tits' equations
+\[
+p_{12}=p_{34},\quad p_{54}=p_{32},\quad p_{20}=p_{35},\quad p_{65}=p_{30},\quad p_{01}=p_{36},\quad p_{46}=p_{31}.
+\]
+$\Hq(q)$ is a generalized hexagon of order $(q,q)$. For a point $x$, the conditions that a point $y$ lies on a line of $\Hq(q)$ through $x$ are linear in $y$; the $q+1$ lines of $\Hq(q)$ through $x$ are the lines through $x$ of a totally singular plane $\pi_x$ of $\Qf(6,q)$ (the hexagon is \emph{flat}). A \emph{Hermitian spread} of $\Hq(q)$ is the set of lines of $\Hq(q)$ contained in a hyperplane $\Pi$ for which $\Pi\cap\Qf(6,q)$ is an elliptic quadric $\Qf^-(5,q)$ \cite{T80}, \cite{VM98}; Lemma~\ref{lem:herm} proves the properties we use.
+
+\section{Doubling with levels}\label{sec:doubling}
+
+Delorme and Farhi \cite{DF84} observed that a \emph{duplicate} of an element (a new element incident with exactly the same elements) does not increase the diameter. Delorme \cite[\S7]{D85} refined this into a doubling of a whole set of elements, with levels, and used it to build the largest bipartite graphs then known of diameters $4$ and $6$. We recast it as an operation on incidence structures.
+
+\subsection{The operation}
+Let $\cS=(\cP,\cL,\I)$ be an incidence structure, $m\ge2$ an integer, and
+\[
+\cA=(\cA_0\supseteq\cA_1\supseteq\dots\supseteq\cA_r\supseteq\cA_{r+1}=\emptyset)
+\]
+a filtration of a set $\cA_0$ of elements (points and lines may be mixed). The \emph{level} of an element $x$ is $\lambda(x)=\max\{k: x\in\cA_k\}$, with $\lambda(x)=-1$ if $x\notin\cA_0$. Let $[m]=\{1,\dots,m\}$ and write $u\preceq w$ if the word $u$ is a prefix of the word $w$; two words are \emph{comparable} if one is a prefix of the other.
+
+\begin{definition}[Doubling]\label{def:doubling}
+The \emph{$m$-fold doubling of $\cS$ along $\cA$} is the incidence structure $\Dbl{\cS}{m}$ whose elements are the \emph{versions}
+\[
+x^w,\qquad x\in\cP\cup\cL,\quad w\in[m]^{\lambda(x)+1},
+\]
+where $x^w$ is a point if $x$ is a point and a line if $x$ is a line, and in which
+\[
+x^w\I y^u\iff x\I y\ \text{ and $w,u$ are comparable.}
+\]
+An element of level $-1$ has the single version $x^\varnothing$, which we identify with $x$. For $m=2$ we speak of \emph{doubling}, for $m=3$ of \emph{tripling}.
+\end{definition}
+
+For a single level ($r=0$, $\cA=\cA_0$) and $m=2$, write $x=x^1$ and $x'=x^2$ for $x\in\cA$. Then $\Dbl{\cS}{2}$ is obtained from $\cS$ by adjoining, for each $x\in\cA$, a new element $x'$ of the same type, incident with
+\[
+y'\ \text{for every } y\in\cA \text{ with } y\I x,\qquad\text{and}\qquad y\ \text{for every } y\notin\cA \text{ with } y\I x.
+\]
+If $\cA$ contains no flag, $x'$ is a duplicate of $x$ in the sense of \cite{DF84}. In general $x'$ is \emph{not} a duplicate: inside $\cA$ the copies are incident with copies, outside $\cA$ with originals.
+
+The map $x^w\mapsto x$ preserves incidence, so
+\begin{equation}\label{eq:proj}
+\dd(x^w,y^u)\ge\dd(x,y)\qquad\text{for all versions.}
+\end{equation}
+In particular two opposite elements of level $-1$ stay at distance $n$.
+
+\subsection{Delorme's theorem}
+Consider the following conditions on $\cA$, where $D\ge2$.
+\begin{enumerate}[label=\textup{(L\arabic*)},leftmargin=3em,start=0]
+\item\label{L0} Every element outside $\cA_0$ is incident with at most one element of $\cA_0$.
+\item\label{L1} For every $i\ge0$: every element incident with an element of $\cA_{i+1}$ lies in $\cA_i$, and every element of $\cA_i\setminus\cA_{i+1}$ is incident with at most one element of $\cA_{i+1}$.
+\end{enumerate}
+\begin{enumerate}[label=\textup{(C$_D$)},leftmargin=3em]
+\item\label{CD} For any two elements $x,y$ (possibly $x=y$) in the same connected component of the substructure induced on $\cA_0$, there is an element $z\notin\cA_0$ with $\dd(x,z)+\dd(z,y)\le D$.
+\end{enumerate}
+
+\begin{theorem}[Delorme {\cite[\S7]{D85}}]\label{thm:delorme}
+Let $\cS$ be an incidence structure of diameter at most $D$, $D\ge2$, and let $m\ge2$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item If $\cA$ satisfies \ref{CD}, then $\Dbl{\cS}{m}$ has diameter at most $D$.
+\item If $\cA$ satisfies \ref{L0} and \ref{L1}, then every version $x^w$ has $\deg x^w\le\deg x+m-1$, with equality only if $x$ is incident with an element of level $\lambda(x)+1$. In particular $\Delta(\Dbl{\cS}{m})\le\Delta(\cS)+m-1$.
+\item The numbers of points and of lines of $\Dbl{\cS}{m}$ are
+\[
+|\cP|+(m-1)\sum_{k\ge0}m^k|\cA_k\cap\cP|\qquad\text{and}\qquad |\cL|+(m-1)\sum_{k\ge0}m^k|\cA_k\cap\cL|.
+\]
+\end{enumerate}
+\end{theorem}
+
+Delorme states the theorem without proof; we include one.
+
+\begin{proof}
+(c) An element of level $k$ has $m^{k+1}$ versions, and $m^{k+1}-1=(m-1)(1+m+\dots+m^k)$. Summing over the levels gives the formula.
+
+(b) Let $\lambda(x)=k$ and $|w|=k+1$. A neighbour $y$ of $x$ with $\lambda(y)=j\le k$ has exactly one version incident with $x^w$ (the one indexed by the prefix of $w$ of length $j+1$), and a neighbour with $\lambda(y)=j>k$ has $m^{j-k}$ such versions. If $k=-1$, \ref{L0} says that $x$ has at most one neighbour in $\cA_0$, and that neighbour has level $0$, since a neighbour in $\cA_1$ would put $x$ in $\cA_0$ by \ref{L1}. If $k\ge0$, \ref{L1} says that $x$ has at most one neighbour in $\cA_{k+1}$, and none in $\cA_{k+2}$, since that would put $x$ in $\cA_{k+1}$. So $\deg x^w\le\deg x-1+m$, with equality only when the higher neighbour exists.
+
+(a) For an infinite word $\omega$ over $[m]$, the \emph{sheet} $\Sigma_\omega$ is the set of versions $x^w$ with $w\preceq\omega$. Every element has exactly one version in $\Sigma_\omega$, and any two versions in $\Sigma_\omega$ have comparable words, so $x^w\mapsto x$ is an isomorphism from the substructure on $\Sigma_\omega$ onto $\cS$. Two versions lie in a common sheet if and only if their words are comparable, and then they are at distance at most $D$.
+
+Let $x^w,y^u$ have incomparable words. Then both words are non-empty, so $x,y\in\cA_0$. If $x$ and $y$ lie in different components of the substructure on $\cA_0$, a shortest path $x=z_0,z_1,\dots,z_k=y$ in $\Gamma(\cS)$, $k\le D$, contains some $z_i\notin\cA_0$. The element $z_i$ has a single version, which lies in every sheet. Lift $z_0,\dots,z_i$ into a sheet containing $x^w$ and $z_i,\dots,z_k$ into a sheet containing $y^u$; this is a path of length $k$ from $x^w$ to $y^u$. If $x$ and $y$ lie in the same component (this includes $x=y$), \ref{CD} gives $z\notin\cA_0$ with $\dd(x,z)+\dd(z,y)\le D$, and the same lifting gives a path of length at most $D$.
+\end{proof}
+
+\subsection{The hat lemma}
+In a generalized polygon, condition \ref{CD} has a clean geometric form.
+
+\begin{lemma}[Hat lemma]\label{lem:hat}
+Let $\cS$ be a generalized $n$-gon of order $(s,t)$ with $s,t\ge1$, and let $\cA_0$ be a set of elements. Then \textup{(C$_n$)} holds if and only if every connected component of the substructure induced on $\cA_0$ is a tree of diameter at most $n-2$.
+\end{lemma}
+
+\begin{proof}
+Suppose some component $B$ contains a path $x=z_0,z_1,\dots,z_{n-1}=y$ of length $n-1$. (It does if $B$ has diameter at least $n-1$; it does if $B$ contains a cycle, because cycles of $\Gamma(\cS)$ have length at least $2n$.) By the girth, this is the unique path of length at most $n-1$ from $x$ to $y$, so $\dd(x,y)=n-1$. If $\dd(x,z)+\dd(z,y)\le n$, then by parity $\dd(x,z)+\dd(z,y)=n-1$, so $z$ lies on a shortest path from $x$ to $y$, that is $z=z_i\in\cA_0$. So \textup{(C$_n$)} fails.
+
+Conversely, let $B$ be a tree of diameter at most $n-2$, let $x,y\in B$, and let $P$ be the path from $x$ to $y$ in $B$, of length $d$. The component $B$ is not all of $\Gamma(\cS)$, which contains cycles, so some element of $B$ has a neighbour outside $\cA_0$. Let $k$ be the least distance in $B$ from $P$ to such an element $u$, and let $z\notin\cA_0$ be a neighbour of $u$. Then $\dd(x,z)+\dd(z,y)\le d+2k+2$. If $k=0$ this is at most $n$. If $k\ge1$, every element of $B$ at distance less than $k$ from $P$ has all its neighbours in $B$, and every element has at least two neighbours. Walking $k$ steps away from $P$ from $x$, and $k$ steps away from $P$ from $y$ (along two different neighbours if $x=y$), we obtain a path of length $d+2k$ in the tree $B$. Hence $d+2k\le n-2$, and again $\dd(x,z)+\dd(z,y)\le n$.
+\end{proof}
+
+In geometric terms, the components allowed by Lemma~\ref{lem:hat} are:
+\begin{itemize}[leftmargin=1.5em]
+\item $n=3$ (projective planes): single elements and flags;
+\item $n=4$ (quadrangles): single elements, flags, and \emph{stars}: a point with some of the lines on it, or a line with some of its points;
+\item $n=6$ (hexagons): trees of diameter at most $4$, for instance an element $x$, some elements incident with $x$, and some elements incident with those.
+\end{itemize}
+
+\subsection{Two consequences}
+\begin{proposition}[Diameter $3$ needs patches]\label{prop:d3patch}
+Let $\cS$ be a projective plane and let $\cA$ satisfy \ref{L0}, \ref{L1} and \textup{(C$_3$)}. Then $\cA_0$ consists of at most one point and at most one line, and $\cA_1=\emptyset$.
+\end{proposition}
+
+\begin{proof}
+Let $x\ne y$ be points of $\cA_0$. If the line $xy$ is not in $\cA_0$, it is incident with two elements of $\cA_0$, against \ref{L0}. If it is in $\cA_0$, then $x,xy,y$ lie in one component, which is then not a single element or a flag, against Lemma~\ref{lem:hat}. The same holds for lines. If $\cA_1$ contained an element, its $q+1\ge3$ neighbours would lie in $\cA_0$ by \ref{L1}.
+\end{proof}
+
+So a pure doubling of a projective plane gains at most two elements. The constructions of Section~\ref{sec:d3} double flags and then modify a bounded number of incidences (\emph{patches}).
+
+\begin{proposition}[Counting bound]\label{prop:count}
+Let $\cS$ be a generalized $n$-gon of order $(q,q)$ with $N$ points and $N$ lines, and let $\cA_0$ satisfy \ref{L0} and \textup{(C$_n$)}. Let $c$ be the number of components of the substructure on $\cA_0$. Then
+\[
+q\,|\cA_0|+2c\le 2N,
+\]
+with equality if and only if every element outside $\cA_0$ is incident with exactly one element of $\cA_0$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:hat} the substructure on $\cA_0$ is a forest with $|\cA_0|-c$ flags. So the number of flags with exactly one element in $\cA_0$ is $(q+1)|\cA_0|-2(|\cA_0|-c)$. By \ref{L0} it is at most $2N-|\cA_0|$, with equality as stated.
+\end{proof}
+
+Since $N\sim q^{n-1}$, a doubling along $\cA$ at $\Delta=q+2$ has $|\cA_0|<2N/q\sim 2q^{n-2}$; the higher levels contribute lower-order terms. Section~\ref{sec:orders} compares this with the Moore bound.
+
+\section{Diameter 3: four hats in a projective plane}\label{sec:d3}
+
+By Lemma~\ref{lem:diam}, an incidence structure without isolated elements has diameter at most $3$ exactly when any two points are collinear and any two lines are concurrent. Araujo-Pardo and L\'opez \cite{AL20} add three \emph{hats} to $\PG(2,q)$ and obtain $n_b(q+2,3)\ge2(q^2+q+5)$. We add a fourth hat.
+
+\subsection{The frame}
+Let $\Pi$ be a projective plane of order $q\ge3$. Fix an anti-flag $(A,\ell)$, and four distinct points of $\ell$, labelled $X_s$ with $s$ in a four-element index set $S=\{0,1,a,c\}$. Put
+\[
+T=S\setminus\{a\}=\{0,1,c\},\qquad \lam_s=AX_s\ (s\in S),
+\]
+and let $\sigma$ be a $3$-cycle on $T$; for definiteness $\sigma=(0\;c\;1)$, that is $\sigma(0)=c$, $\sigma(c)=1$, $\sigma(1)=0$. Let
+\[
+\ell^*=\ell\setminus\{X_t:t\in T\}\qquad\text{and}\qquad \Lambda^*=\{\text{lines on }A\}\setminus\{\lam_t:t\in T\}.
+\]
+So $\ell^*$ consists of $q-2$ points of $\ell$, among them $X_a$, and $\Lambda^*$ of $q-2$ lines on $A$, among them $\lam_a$.
+
+\begin{definition}[Four hats]\label{def:fourhat}
+The incidence structure $\cS=\cS(\Pi;A,\ell,(X_s)_{s\in S},\sigma)$ has as points the points of $\Pi$ and five new points $Q$, $H_s$ ($s\in S$), and as lines the lines of $\Pi$ and five new lines $M$, $K_s$ ($s\in S$). Its incidences are exactly the following.
+\begin{enumerate}[label=\textup{(H\arabic*)},ref=\textup{H\arabic*},leftmargin=3em]
+\item\label{h:plane} The incidences of $\Pi$, except the four flags $(X_s,\lam_s)$, $s\in S$; and the three \emph{rotated} flags $(X_t,\lam_{\sigma(t)})$, $t\in T$:
+\[
+X_0\I\lam_c,\qquad X_c\I\lam_1,\qquad X_1\I\lam_0.
+\]
+\item\label{h:hat} For $s\in S$, the hat point $H_s$ lies on every line of $\Pi$ through $X_s$ other than $\ell$.
+\item\label{h:hatline} For $s\in S$, the hat line $K_s$ contains every point of $\lam_s$ other than $A$.
+\item\label{h:M} $M$ contains the points of $\ell^*$ and the four hat points $H_s$.
+\item\label{h:Q} $Q$ lies on the lines of $\Lambda^*$ and on the four hat lines $K_s$.
+\item\label{h:links} The \emph{links}: $A\I K_a$, $H_a\I\ell$, and $H_t\I K_{\sigma(t)}$ for $t\in T$:
+\[
+H_0\I K_c,\qquad H_c\I K_1,\qquad H_1\I K_0.
+\]
+\end{enumerate}
+\end{definition}
+
+The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lam_s)$: $H_s$ lies on the lines through $X_s$ and $K_s$ contains the points of $\lam_s$, with the flag ``crossed'' ($H_s\I\lam_s$ and $X_s\I K_s$). The pair $(Q,M)$ is a copy of the anti-flag $(A,\ell)$; see Remark~\ref{rem:al-doubling}.
+
+\begin{theorem}\label{thm:fourhat}
+Let $\Pi$ be a projective plane of order $q\ge3$. The incidence structure $\cS$ of Definition~\ref{def:fourhat} has $q^2+q+6$ points and $q^2+q+6$ lines, every element has degree $q+1$ or $q+2$, and $\cS$ has diameter~$3$. Hence $n_b(q+2,3)\ge2(q^2+q+6)$ for every prime power $q\ge3$.
+\end{theorem}
+
+The proof occupies Lemmas~\ref{lem:fh-deg}--\ref{lem:fh-dual}.
+
+\begin{lemma}[Degrees]\label{lem:fh-deg}
+In $\cS$:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $A$, every point of $\ell$, $Q$ and every $H_s$ are on exactly $q+2$ lines;
+\item a point $p\notin\ell$, $p\ne A$, of $\Pi$ is on $q+2$ lines if $Ap=\lam_s$ for some $s\in S$, and on $q+1$ lines otherwise;
+\item dually, $\ell$, every line on $A$, $M$ and every $K_s$ have exactly $q+2$ points, and a line $L\ne\ell$ of $\Pi$ not on $A$ has $q+2$ points if $L\cap\ell=X_s$ for some $s\in S$, and $q+1$ points otherwise.
+\end{enumerate}
+In particular there are $(q-1)(q-3)$ points and $(q-1)(q-3)$ lines of degree $q+1$.
+\end{lemma}
+
+\begin{proof}
+We count lines on each point: the number in $\Pi$, minus removed flags, plus added flags.
+$A$: its flags in $\Pi$ are untouched, and it gains $K_a$ (\ref{h:links}); it is not on any other $K_s$ by~\ref{h:hatline}.
+$X\in\ell^*$, $X\ne X_a$: gains $M$.
+$X_a$: loses $\lam_a$, gains $M$ and $K_a$ (\ref{h:hatline}, as $X_a\ne A$ is on $\lam_a$).
+$X_t$, $t\in T$: loses $\lam_t$, gains $\lam_{\sigma(t)}$ and $K_t$; it is not on $M$.
+A point $p\notin\ell$, $p\ne A$: it is on exactly one line on $A$, namely $Ap$; it loses nothing and gains $K_s$ exactly when $Ap=\lam_s$.
+$Q$: $|\Lambda^*|+4=q+2$ lines.
+$H_s$: $q$ lines of $\Pi$, $M$, and one link (\ref{h:links}): $\ell$ if $s=a$, $K_{\sigma(s)}$ if $s\in T$.
+The statement for lines is the dual count (or follows from Lemma~\ref{lem:fh-dual}). Finally, the points of degree $q+1$ are the $q-1$ points other than $A$ and $X$ on each of the $q-3$ lines $AX$ with $X\in\ell\setminus\{X_s:s\in S\}$.
+\end{proof}
+
+\begin{lemma}[Points]\label{lem:fh-points}
+Any two distinct points of $\cS$ are collinear in $\cS$.
+\end{lemma}
+
+\begin{proof}
+The only flags of $\Pi$ missing from $\cS$ are $(X_s,\lam_s)$, $s\in S$. Let $u\ne v$ be points of $\cS$.
+
+\emph{(P1) $u,v$ in $\Pi$.} Let $L=uv$ in $\Pi$. If both flags survive, $L$ works. Otherwise, say, $u=X_s$ and $L=\lam_s$. If $v\ne A$, both $u$ and $v$ lie on $K_s$ by~\ref{h:hatline}. If $v=A$ and $s=a$, use $K_a$ (\ref{h:hatline}, \ref{h:links}). If $v=A$ and $s\in T$, use $\lam_{\sigma(s)}$, which contains $A$ and, by the rotation, $X_s$.
+
+\emph{(P2) $Q$ and a point $u$ of $\Pi$.} If $u=A$, use $\lam_a\in\Lambda^*$. If $u\in\ell$ and $u\ne X_s$ for all $s$, use $Au\in\Lambda^*$. If $u=X_s$, use $K_s$. If $u\notin\ell$, $u\ne A$, let $X=Au\cap\ell$: if $Au\in\Lambda^*$ use $Au$; otherwise $X=X_t$ with $t\in T$ and $u$, $Q$ lie on $K_t$.
+
+\emph{(P3) $H_s$ and a point $u$ of $\Pi$.} If $u\notin\ell$ (this includes $u=A$), the line $uX_s$ of $\Pi$ is not $\ell$, contains $u$ in $\cS$ (as $u\notin\ell$) and contains $H_s$ by~\ref{h:hat}. If $u=X_s$, use any line through $X_s$ other than $\ell$ and $\lam_s$. If $u\in\ell^*$, $u\ne X_s$, use $M$. Otherwise $u=X_t$ with $t\in T\setminus\{s\}$. If $s=a$, use $\ell$ (\ref{h:links}). If $s\in T$, then $t\in\{\sigma(s),\sigma^{-1}(s)\}$ because $\sigma$ is a $3$-cycle. If $t=\sigma(s)$, use $K_{\sigma(s)}$, which contains $X_{\sigma(s)}$ (\ref{h:hatline}) and $H_s$ (\ref{h:links}). If $t=\sigma^{-1}(s)$, use $\lam_s$, which contains $X_{\sigma^{-1}(s)}$ (rotation) and $H_s$ (\ref{h:hat}).
+
+\emph{(P4) Two new points.} $H_s$ and $H_{s'}$: $M$. $Q$ and $H_a$: $\lam_a$ ($\lam_a\in\Lambda^*$, and $\lam_a\ne\ell$ is a line through $X_a$). $Q$ and $H_t$, $t\in T$: $K_{\sigma(t)}$.
+\end{proof}
+
+\begin{lemma}[Duality]\label{lem:fh-dual}
+Let $\Pi^D$ be the dual plane. The dual of $\cS(\Pi;A,\ell,(X_s),\sigma)$ is isomorphic to $\cS(\Pi^D;\ell,A,(\lam_s),\sigma^{-1})$, by the identity on $\Pi$ and
+\[
+H_s\leftrightarrow K_s,\qquad Q\leftrightarrow M .
+\]
+Consequently any two distinct lines of $\cS$ are concurrent.
+\end{lemma}
+
+\begin{proof}
+In $\Pi^D$ the point $\ell$ is off the line $A$, the points $\lam_s$ lie on the line $A$, and the line joining the points $\ell$ and $\lam_s$ is $X_s$. Read the six rules of Definition~\ref{def:fourhat} in $\Pi^D$ with these data and with $\sigma^{-1}$. Rule~\ref{h:plane} removes the flags $(\lam_s,X_s)$ and adds $\lam_t\I X_{\sigma^{-1}(t)}$, which is the rotation $X_u\I\lam_{\sigma(u)}$ of $\cS$. Rule~\ref{h:hat} gives a new element incident with every element of $\Pi$ incident with $\lam_s$ other than $A$: this is $K_s$. Rule~\ref{h:hatline} gives a new element incident with every element incident with $X_s$ other than $\ell$: this is $H_s$. Rule~\ref{h:M} gives a new element incident with the lines on $A$ other than $\lam_t$ ($t\in T$) and with all $K_s$: this is $Q$; likewise~\ref{h:Q} gives $M$. Rule~\ref{h:links} gives $\ell\I H_a$, $K_a\I A$ and $K_t\I H_{\sigma^{-1}(t)}$, which are the links of $\cS$. Since $\Pi^D$ is a projective plane of order $q$ and $\sigma^{-1}$ is a $3$-cycle on $T$, Lemma~\ref{lem:fh-points} for $\cS(\Pi^D;\ell,A,(\lam_s),\sigma^{-1})$ says that any two lines of $\cS$ are concurrent.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fourhat}]
+The counts are Lemma~\ref{lem:fh-deg}; no element is isolated. By Lemmas~\ref{lem:fh-points}, \ref{lem:fh-dual} and~\ref{lem:diam}, $\diam\cS\le3$, and $\diam\cS=3$ because $A\nI\ell$.
+\end{proof}
+
+\subsection{Coordinates and a regular completion}
+Now let $\Pi=\PG(2,q)$ with $q\ge4$. Take
+\[
+\ell=\lin100,\quad A=\pnt100,\quad P=\pnt010,\quad \lam_\infty=\lin001,\qquad X_t=\pnt0t1,\quad \lam_t=\lin01{-t}\quad(t\in\F),
+\]
+so that $\ell=\{P\}\cup\{X_t\}$, the lines on $A$ are $\lam_\infty$ and the $\lam_t$, $\lam_t\cap\ell=X_t$ and $\lam_\infty\cap\ell=P$. Let $a,c\in\F\setminus\{0,1\}$ be distinct, and use the labels $S=\{0,1,a,c\}\subseteq\F$ for the points $X_0,X_1,X_a,X_c$. Then $\ell^*=\{P\}\cup\{X_t:t\notin T\}$ and $\Lambda^*=\{\lam_\infty\}\cup\{\lam_t:t\notin T\}$, and the rules read:
+\begin{itemize}[leftmargin=1.5em]
+\item $H_s$ ($s\in S$) lies on $\lin w1{-s}$ for every $w\in\F$ (these are the lines on $X_s$ other than $\ell$, with $\lam_s$ at $w=0$);
+\item $K_s$ ($s\in S$) contains $\pnt xs1$ for every $x\in\F$ (the points of $\lam_s$ other than $A$, with $X_s$ at $x=0$);
+\item $M$ contains $P$, $X_t$ ($t\notin T$) and the $H_s$; $Q$ lies on $\lam_\infty$, $\lam_t$ ($t\notin T$) and the $K_s$;
+\item rotation and links as in~\ref{h:plane} and~\ref{h:links}.
+\end{itemize}
+By Lemma~\ref{lem:fh-deg} the elements of degree $q+1$ are the points $\pnt xy1$ ($x\ne0$, $y\notin S$) and $\pnt x10$ ($x\ne0$), and the lines $\lin u1w$ ($u\ne0$, $-w\notin S$) and $\lin10w$ ($w\ne0$).
+
+\begin{lemma}[A correlation]\label{lem:corr}
+The map $\delta\colon\pnt xyz\mapsto\lin xz{-y}$, $\lin uvw\mapsto\pnt uw{-v}$ is a correlation of $\PG(2,q)$ with
+\[
+\delta(A)=\ell,\quad \delta(X_t)=\lam_t,\quad \delta(P)=\lam_\infty,
+\]
+and a point $p$ lies on $\delta(p)$ if and only if $p\in\ell$. It maps the points of degree $q+1$ bijectively onto the lines of degree $q+1$.
+\end{lemma}
+
+\begin{proof}
+$ux+wz+(-v)(-y)=ux+vy+wz$, so $\delta$ preserves incidence; it is clearly bijective. $\pnt xyz\I\lin xz{-y}$ iff $x^2+yz-zy=x^2=0$. Finally $\delta\pnt xy1=\lin x1{-y}$ with $x\ne0$, $y\notin S$, and $\delta\pnt x10=\lin x0{-1}=\lin10{-1/x}$.
+\end{proof}
+
+\begin{theorem}\label{thm:fourhat-regular}
+Let $q\ge4$ be a prime power and $a,c$ distinct elements of $\F\setminus\{0,1\}$. Adjoining to $\cS(\PG(2,q);A,\ell,(X_s),\sigma)$ the $(q-1)(q-3)$ flags $(p,\delta(p))$, $p$ a point of degree $q+1$, gives a $(q+2)$-regular incidence structure with $q^2+q+6$ points, $q^2+q+6$ lines and diameter~$3$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:corr} the new flags are not flags of $\cS$ (the points of degree $q+1$ are off $\ell$) and they match the elements of degree $q+1$ in pairs. Adding flags cannot increase distances, and $A\nI\ell$ still.
+\end{proof}
+
+\begin{remark}[Arbitrary planes]
+In any projective plane of order $q\ge7$ a regular completion also exists. Each of the $N=(q-1)(q-3)$ points of degree $q+1$ is incident with at most $q+1$ of the $N$ lines of degree $q+1$, and $N-(q+1)\ge N/2$ for $q\ge7$, so Hall's theorem gives a perfect matching of non-incident pairs.
+\end{remark}
+
+\begin{remark}[The three-hat structure of {\cite{AL20}}]\label{rem:al}
+In the same coordinates, the structure of Araujo-Pardo and L\'opez uses the hats $S_{AL}=\{0,1,a\}$, no rotation, and links $A\I K_a$, $H_a\I\ell$, $H_0\I K_1$, $H_1\I K_0$; it removes only the flag $(X_a,\lam_a)$, and $M$ contains $P$ and $X_t$ for $t\notin\{0,1\}$, $Q$ lies on $\lam_\infty$ and $\lam_t$ for $t\notin\{0,1\}$. (In their affine coordinates $(x,y)=\pnt xy1$, $[m,b]=\lin m{-1}b$, $L_c=\lin10{-c}$, $L=\lin001$, $P_m=\pnt1m0$; so $L_0=\ell$, $P_0=A$, $(0,s)=X_s$, $[0,s]=\lam_s$ and $L=\lam_\infty$.) It has $2(q^2+q+5)$ elements and diameter $3$ for $q\ge3$ \cite{AL20}; the proof is a case analysis like that of Lemma~\ref{lem:fh-points}. Its elements of degree $q+1$ are the points $(x,y)$, $x\ne0$, $y\notin S_{AL}$, and $P_i$, $i\ne0$, and the lines $[x,y]$, $x\ne0$, $y\notin S_{AL}$, and $L_i$, $i\ne0$. The completing matching printed in \cite{AL20} is $(x,y)\sim[x,y]$ together with $P_i\sim L_i$ for $i\in\F\setminus\{0,1,a\}$; with this index set the four elements $P_1,P_a,L_1,L_a$ keep degree $q+1$. Taking $i\in\F^*$ instead (the pairs $P_i\notin L_i$ are always non-incident) gives a $(q+2)$-regular structure, as intended. This affects neither the maximum degree nor the diameter.
+\end{remark}
+
+\begin{remark}[Hats as doubled flags]\label{rem:al-doubling}
+Let $\cA=\{\ell,A\}\cup\{X_s,\lam_s:s\in S_{AL}\}$ in $\PG(2,q)$ and double it ($m=2$), except that each flag $(X_s,\lam_s)$ is \emph{crossed}: instead of $X_s'\I\lam_s'$ put $X_s'\I\lam_s$ and $X_s\I\lam_s'$. With $M=\ell'$, $Q=A'$, $H_s=X_s'$, $K_s=\lam_s'$, one checks from the rules that the structure of \cite{AL20} is this crossed doubling plus the six incidences $H_1\I K_0$, $H_0\I K_1$, $H_a\I\ell$, $A\I K_a$, $X_a\I M$, $Q\I\lam_a$, minus the flag $(X_a,\lam_a)$. By Proposition~\ref{prop:d3patch} some patching is unavoidable: the component of $\cA$ contains the path $\ell,X_s,\lam_s,A$ of length $3>n-2=1$. For $q=5$ a direct check shows that in the crossed doubling without patches the pairs at distance greater than $3$ are exactly $(H_s,X_t)$, $(K_s,\lam_t)$ ($s\ne t$), $(H_s,Q)$ and $(K_s,M)$, all of them copies of pairs joined inside $\cA$ by a path of length $2=n-1$ (such as $X_s,\ell,X_t$ or $X_s,\lam_s,A$), as in the proof of Lemma~\ref{lem:hat}; the patches repair exactly these. Heuristically, the fourth hat needs the rotation because $M$ now misses three points of $\ell$, and each hat point $H_t$, $t\in T$, must reach the two of them other than $X_t$ with only two spare incidences.
+\end{remark}
+
+\begin{remark}[Scope]
+All proofs above use only the axioms of a projective plane, so Theorem~\ref{thm:fourhat} holds in non-Desarguesian planes as well. For $\Delta=q+2\le16$ the theorem gives $192$, $276$, $376$ at $\Delta=11,13,15$ ($q=9,11,13$), two more than \cite{AL20}; at $\Delta=7$ ($q=5$) it gives $72$, below the known value $80$.
+\end{remark}
+
+\section{Diameter 4: generalized quadrangles}\label{sec:d4}
+
+By Lemma~\ref{lem:diam}, an incidence structure without isolated elements has diameter at most $4$ exactly when, for every anti-flag $(p,L)$, some point of $L$ is collinear with $p$. Every generalized quadrangle has this property, with a unique such point.
+
+\subsection{Doubling in quadrangles}
+By Lemma~\ref{lem:hat}, in a generalized quadrangle a set $\cA_0$ satisfies \textup{(C$_4$)} exactly when its components are single elements, flags or stars. The following is Delorme's construction \cite[\S8]{D85} in this language.
+
+\begin{example}[Delorme]\label{ex:delorme4}
+Let $\Sigma$ be a spread of $\Wq(q)$, let $v\in\Sigma$, and let $\cP(v)$ be the set of points of $v$. Put
+\[
+\cA_1=\{v\},\qquad \cA_0=\Sigma\cup\cP(v).
+\]
+\ref{L1}: the elements incident with $v$ are its points; a point of $v$ is incident with $v$ only, a line of $\Sigma\setminus\{v\}$ with nothing in $\cA_1$. \ref{L0}: a point off $v$ is on exactly one line of $\Sigma$ and on no other line of $\cA_0$; a line not in $\Sigma$ meets $v$ in at most one point and contains no other element of $\cA_0$. The components are the star $\{v\}\cup\cP(v)$ and the single lines of $\Sigma\setminus\{v\}$. By Theorem~\ref{thm:delorme} with $m=2$ we get maximum degree $q+2$, diameter $4$ and
+\[
+2(q+1)(q^2+1)+|\cA_0|+2|\cA_1|=2(q+1)(q^2+1)+q^2+q+4=2q^3+3q^2+3q+6
+\]
+elements. These are the previous table values $346$, $1734$, $3064$, $4946$ at $\Delta=7,11,13,15$. Dually: an ovoid $\cO$ of $\Qf(4,q)$, a point $o\in\cO$, $\cA_1=\{o\}$, $\cA_0=\cO\cup\{\text{lines on }o\}$.
+\end{example}
+
+\begin{remark}[Ovoids and stars]\label{rem:ovoidfamily}
+More generally, let $\cO$ be an ovoid of $\Qf(4,q)$ and $\cM$ a set of lines such that every point outside $\cO$ is on at most one line of $\cM$. Then $\cA_0=\cO\cup\cM$ (one level) satisfies \ref{L0} and \textup{(C$_4$)}: its components are stars centred at points of $\cO$. This gives maximum degree $q+2$, diameter~$4$ and $2(q+1)(q^2+1)+q^2+1+|\cM|$ elements. If some $o\in\cO$ is on $k\ge2$ lines of $\cM$, then $|\cM|\le k+(q+1-k)q\le q^2-q+2$. Indeed, a line $L\in\cM$ not on $o$ has a unique point $y$ collinear with $o$; $y\notin\cO$, the line $oy$ is not in $\cM$ (else $y$ would be on two lines of $\cM$), and distinct $L$ give distinct $y$. If every point of $\cO$ is on at most one line of $\cM$, then $\cM$ is a partial spread, so $|\cM|\le q^2-q+1$ for $q$ odd (Tallini; see \cite{CDPS22}).
+\end{remark}
+
+\subsection{Clones and shadow lines}
+The next construction is not a doubling: it adjoins several copies of points and copies of lines that are attached to copies of points.
+
+\begin{definition}[Clones and shadows]\label{def:clones}
+Let $\cS=(\cP,\cL,\I)$ be a generalized quadrangle of order $(s,t)$. Let $w\colon\cP\to\mathbb Z_{\ge0}$ be a weight and $\cM$ a finite multiset of lines. For each entry $\mu$ of $\cM$, with underlying line $L_\mu$, choose for every point $p\I L_\mu$ a \emph{stand-in} $\sigma_\mu(p)\in\{p,p^1,\dots,p^{w(p)}\}$. The structure $\cS[w,\cM,\sigma]$ has
+\begin{itemize}[leftmargin=1.5em]
+\item points: $\cP$ and the \emph{clones} $p^1,\dots,p^{w(p)}$ of each $p\in\cP$;
+\item lines: $\cL$ and one \emph{shadow line} $L^\mu$ for each entry $\mu$ of $\cM$;
+\item incidences: those of $\cS$; $p^i\I L$ whenever $p\I L\in\cL$; and $\sigma_\mu(p)\I L^\mu$ for $p\I L_\mu$.
+\end{itemize}
+\end{definition}
+
+So a clone is incident with exactly the old lines through its point, and a shadow line has exactly one point ``over'' each point of its line. Write $\pi$ for the map sending a clone or a shadow line to the underlying point or line ($\pi$ is the identity on $\cP\cup\cL$).
+
+\begin{theorem}\label{thm:B}
+Let $\cS$ be a generalized quadrangle of order $(s,t)$, $s,t\ge1$, and let $\cS'=\cS[w,\cM,\sigma]$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\cS'$ has diameter $4$.
+\item $\Delta(\cS')\le\Delta$ if and only if $\Delta\ge\max(s,t)+1$, $\sum_{p\I L}w(p)\le\Delta-s-1$ for every line $L$ of $\cS$, and every point of $\cS'$ \textup{(}old point or clone\textup{)} is incident with at most $\Delta-t-1$ shadow lines.
+\item $\cS'$ has $(s+1)(st+1)+\sum_pw(p)$ points and $(t+1)(st+1)+|\cM|$ lines.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(b) and (c) are counts: an old line $L$ has $s+1+\sum_{p\I L}w(p)$ points, a shadow line $s+1$ points, and an old point or clone is on $t+1$ old lines plus the shadow lines it serves.
+
+(a) We use Lemma~\ref{lem:diam}(i). Let $(x,Y)$ be an anti-flag of $\cS'$. Every point $x$ of $\cS'$ is incident with every old line through $\pi(x)$.
+If $Y$ is an old line, then $\pi(x)\nI Y$; let $r$ be the point of $Y$ collinear with $\pi(x)$ in $\cS$, on the line $N$. Then $x\I N\I r\I Y$.
+If $Y=L^\mu$ and $\pi(x)\nI L_\mu$, let $r\I L_\mu$ be collinear with $\pi(x)$ on the line $N$. Then $x\I N\I\sigma_\mu(r)\I L^\mu$.
+If $Y=L^\mu$ and $\pi(x)\I L_\mu$, pick $r\I L_\mu$ with $r\ne\pi(x)$. Then $x\I L_\mu\I\sigma_\mu(r)\I L^\mu$.
+In each case some point of $Y$ is collinear with $x$, so $\diam\cS'\le4$. Two non-collinear points $p,p'$ of $\cS$ remain non-collinear: they share no old line, and a shadow line $L^\mu$ contains only points over points of $L_\mu$, and an old point is over itself only. So $\diam\cS'=4$.
+\end{proof}
+
+If all stand-ins are the old points, a shadow line is a duplicate of its line except that it misses the clones; this is the setting of the following corollary.
+
+\begin{corollary}\label{cor:B1}
+Let $\cS$ be a generalized quadrangle of order $(s,t)$ and $\Delta\ge\max(s,t)+1$. Suppose $\cS$ has a weighted $(\Delta-s-1)$-ovoid $w$ and a weighted $(\Delta-t-1)$-cover $\cM$. Then $\cS[w,\cM,\mathrm{id}]$ has diameter $4$, maximum degree $\Delta$ and $2\Delta(st+1)$ elements. Adjoining further flags between clones and shadow lines makes it $\Delta$-regular, with the same number of elements and diameter $4$.
+\end{corollary}
+
+\begin{proof}
+Double counting flags gives $\sum_pw(p)=(\Delta-s-1)(st+1)$ and $|\cM|=(\Delta-t-1)(st+1)$, and the total is $(s+t+2)(st+1)+(\Delta-s-1)(st+1)+(\Delta-t-1)(st+1)=2\Delta(st+1)$. Old points and old lines have degree exactly $\Delta$. Each clone has degree $t+1$ and lacks $\Delta-t-1$; each shadow line has degree $s+1$ and lacks $\Delta-s-1$; and $\sum_pw(p)\,(\Delta-t-1)=|\cM|\,(\Delta-s-1)$. Order the clones $c_0,c_1,\dots$ and the shadow lines $y_0,\dots,y_{b-1}$, $b=|\cM|$, and join $c_i$ to $y_j$ for $j\equiv i(\Delta-t-1)+k\pmod b$, $0\le k<\Delta-t-1$. Since $\Delta-t-1\le b$ these are distinct, and every shadow line receives exactly $\Delta-s-1$ of them. Adding flags cannot increase distances, and two non-collinear old points still have no common line.
+\end{proof}
+
+\subsection{Two elliptic quadrics in \texorpdfstring{$\AS(q)$}{AS(q)}}
+Let $q$ be odd. Take $\Wq(q)$ with the alternating form $\beta(u,v)=u_0v_1-u_1v_0+u_2v_3-u_3v_2$ and the point $x=(1{:}0{:}0{:}0)$. Then $x^\perp$ is the plane $X_1=0$, and the points of $\AS(q)=P(\Wq(q),x)$ are the $q^3$ points $(a{:}1{:}w_1{:}w_2)$, which we write $(a,w)$ with $a\in\F$, $w=(w_1,w_2)\in\F^2$. The lines of $\AS(q)$ are:
+\begin{itemize}[leftmargin=1.5em]
+\item the \emph{fibres} $\{(a_0+\mu,w_0):\mu\in\F\}$: the hyperbolic lines $xy$, $y\notin x^\perp$, with $x$ removed;
+\item the sets $\{(a_0+\lambda\det(w_0,d),\,w_0+\lambda d):\lambda\in\F\}$ with $d\ne0$: the totally isotropic line through $(a_0,w_0)$ and $(\det(w_0,d){:}0{:}d)$, with its point in $x^\perp$ removed.
+\end{itemize}
+Fix a non-square $\varepsilon\in\F$ and let $\Nm(w)=w_1^2-\varepsilon w_2^2$, an anisotropic form. For $\kappa\in\F^*$ let
+\[
+\cE_\kappa\colon\ X_0X_1=\kappa\,\Nm(X_2,X_3).
+\]
+This is an elliptic quadric of $\PG(3,q)$ through $x$, with tangent plane $x^\perp$ at $x$. So $\cE_\kappa\cap x^\perp=\{x\}$ and $\cE_\kappa\setminus\{x\}=\{(\kappa\Nm(w),w):w\in\F^2\}$ is a set of $q^2$ points of $\AS(q)$.
+
+\begin{theorem}\label{thm:A}
+Let $q$ be odd, $\varepsilon$ a non-square and $\kappa_1\kappa_2=1/(4\varepsilon)$. Then every line of $\AS(q)$ meets $\cE_{\kappa_1}\setminus\{x\}$ and $\cE_{\kappa_2}\setminus\{x\}$ in exactly two points in total, counted with multiplicity. The two quadrics meet only in $x$ and $e=(0,0)$. Hence $w=\mathbf 1_{\cE_{\kappa_1}\setminus x}+\mathbf 1_{\cE_{\kappa_2}\setminus x}$ is a weighted $2$-ovoid of $\AS(q)$ with $w(e)=2$.
+\end{theorem}
+
+\begin{proof}
+\emph{Fibres.} A fibre lies on a line of $\PG(3,q)$ through $x$ not in the tangent plane $x^\perp$, so it meets each $\cE_\kappa$ in one point besides $x$ (in coordinates, at $\mu=\kappa\Nm(w_0)-a_0$).
+
+\emph{The other lines.} Write $D=\det(w_0,d)$ and $B=\Nm(w_0+d)-\Nm(w_0)-\Nm(d)$. The point with parameter $\lambda$ lies on $\cE_\kappa$ if and only if
+\[
+\kappa\Nm(d)\lambda^2+(\kappa B-D)\lambda+\kappa\Nm(w_0)-a_0=0 .
+\]
+As $\Nm(d)\ne0$ this is a quadratic with $1+\chi(\Delta_\kappa)$ roots, where $\chi$ is the quadratic character ($\chi(0)=0$) and $\Delta_\kappa$ the discriminant. With $w_0=(b_0,c_0)$, $d=(b_1,c_1)$ one has $B=2(b_0b_1-\varepsilon c_0c_1)$ and
+\[
+B^2-4\Nm(w_0)\Nm(d)=4\varepsilon(b_0c_1-c_0b_1)^2=4\varepsilon D^2,
+\]
+hence
+\[
+\Delta_\kappa=(\kappa B-D)^2-4\kappa\Nm(d)(\kappa\Nm(w_0)-a_0)=4\kappa\Nm(d)\,(a_0-a^*_\kappa),\qquad a^*_\kappa=-\frac{4\varepsilon\kappa D^2-2BD+D^2/\kappa}{4\Nm(d)}.
+\]
+Now $a^*_{\kappa_1}-a^*_{\kappa_2}=-\frac{D^2}{4\Nm(d)}(\kappa_1-\kappa_2)\bigl(4\varepsilon-\frac1{\kappa_1\kappa_2}\bigr)=0$; call the common value $a^*$. The line meets the two quadrics in
+\[
+2+\chi\bigl(\Nm(d)(a_0-a^*)\bigr)\bigl(\chi(\kappa_1)+\chi(\kappa_2)\bigr)=2
+\]
+points, because $\chi(\kappa_1)\chi(\kappa_2)=\chi(\varepsilon)=-1$. (A double root, $a_0=a^*$, gives one point on each quadric.)
+
+\emph{Intersection.} $\kappa_1\ne\kappa_2$, since $\kappa_1^2=1/(4\varepsilon)$ is impossible. So $\kappa_1\Nm(w)=\kappa_2\Nm(w)$ forces $w=0$.
+\end{proof}
+
+\begin{corollary}\label{cor:A1}
+For every odd prime power $q$, $\AS(q)[w,\emptyset]$ with $w$ as in Theorem~\ref{thm:A} is $(q+2)$-regular of diameter $4$ with $2q^2(q+2)$ elements. Hence $n_b(q+2,4)\ge2q^2(q+2)$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:B} with $(s,t)=(q-1,q+1)$ and $\cM=\emptyset$: every line gains exactly two points, every clone is on the $q+2$ lines of its point, and there are $q^3+(q+2)q^2+2q^2$ elements.
+\end{proof}
+
+At $q=9,11,13$ this gives $1782$, $3146$, $5070$. Since the structure is regular, no choice of clones and shadows on $\AS(q)$ does better at $\Delta=q+2$. Weights are needed: for $q=3,5$, $\AS(q)$ has no $2$-ovoid without repeated points.
+
+\subsection{A Singer \texorpdfstring{$2$}{2}-ovoid of \texorpdfstring{$\Wq(q)$}{W(q)}}
+Let $q$ be odd, $\F=\GF(q)\subset K=\GF(q^2)\subset E=\GF(q^4)$, and $g$ a primitive element of $E$. Model $\PG(3,q)$ as $E^*/\F^*$; the point $\langle g^i\rangle$ has index $i$ modulo $(q+1)(q^2+1)$. Write $\bar y=y^{q^2}$, $k'=k^q$ for $k\in K$, $\Nm(y)=y\bar y\in K$ and $\Tr=\Tr_{K/\F}$. Let $d=g^{(q^2+1)/2}$, so $\bar d=-d$ and $h=d^2=g^{q^2+1}$ generates $K^*$. The form
+\[
+b(y,z)=\Tr_{E/\F}(d\,y\bar z)=\Tr\bigl(d(y\bar z-\bar yz)\bigr)
+\]
+is alternating and non-degenerate; let $\Wq(q)$ be its symplectic quadrangle. Multiplication by $g^{q+1}$ scales $b$ by an element of $\F^*$, so it preserves $\Wq(q)$. Its orbits on points are the classes
+\[
+C_a=\{\langle g^i\rangle: i\equiv a\pmod{q+1}\},\qquad |C_a|=q^2+1,
+\]
+and $\langle y\rangle\in C_a$ if and only if $\Nm(y)\in h^a\F^*$. These are Ebert's elliptic quadrics partitioning $\PG(3,q)$ \cite{E85}.
+
+\begin{proposition}\label{prop:C}
+Let $q$ be odd.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Every line of $\PG(3,q)$ meets each class $C_a$ in at most two points.
+\item Every totally isotropic line of $\Wq(q)$ meets $C_a\cup C_{q-a}$ in exactly two points.
+\end{enumerate}
+So the $(q+1)/2$ sets $C_a\cup C_{q-a}$, $0\le a\le(q-1)/2$, are $2$-ovoids of $\Wq(q)$ partitioning its points; dually, they are $2$-covers of $\Qf(4,q)$.
+\end{proposition}
+
+\begin{proof}
+Let $L=\langle y,z\rangle_\F$ and $u=sy+tz$. Then $\Nm(u)=As^2+\beta st+Ct^2$ with $A=\Nm(y)$, $C=\Nm(z)$, $\beta=y\bar z+\bar yz$, all in $K$. Put $\theta=y\bar z-\bar yz$; as $\bar\theta=-\theta$, $\theta=dk_0$ with $k_0\in K$, and
+\[
+\mathcal D:=\beta^2-4AC=\theta^2=hk_0^2,\qquad b(y,z)=\Tr(hk_0).
+\]
+Fix $\omega\in K^*$ with $\omega'=-\omega$. For $\mu\in K^*$ put $\nu=\omega/\mu$; then $\Tr(\nu k)=0$ if and only if $k\in\mu\F$. So $\langle u\rangle$ lies in the class $\{\langle u\rangle:\Nm(u)\in\mu\F^*\}$ if and only if $(s{:}t)$ is a zero of
+\[
+f_\nu(s,t)=\Tr(\nu A)s^2+\Tr(\nu\beta)st+\Tr(\nu C)t^2 .
+\]
+(a) Suppose $f_\nu\equiv0$. Then $A,\beta,C\in\mu\F$. If $\mathcal D\ne0$, then $h=\mathcal D/k_0^2\in\mu^2\F^*/k_0^2$; but $\F^*\subseteq(K^*)^2$, as $q+1$ is even, so $h$ would be a square in $K^*$, which it is not. If $\mathcal D=0$, then $\Nm(u)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with $\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A\ne0$), which vanishes at $(s{:}t)=(-\beta_0:2\alpha_0)$, impossible for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(D(\nu))\le2$ zeros, $D(\nu)=\Tr(\nu\beta)^2-4\Tr(\nu A)\Tr(\nu C)$.
+
+(b) Expanding, $D(\nu)=\Tr(\nu^2\mathcal D)+\nu\nu'P$ with $P=2\beta\beta'-4AC'-4A'C\in\F$. If $L$ is totally isotropic then $hk_0\in\omega\F$, so $e:=h\mathcal D=(hk_0)^2\in\F$, and
+\[
+\Tr(h^2\nu'^2\mathcal D)=e(h\nu'^2+h'\nu^2)=hh'\,\Tr(\nu^2\mathcal D).
+\]
+Hence $D(h\nu')=\Nm_{K/\F}(h)\,D(\nu)$. Since $h$ generates $K^*$, $\Nm_{K/\F}(h)$ generates $\F^*$ and is a non-square, so $\chi(D(h\nu'))=-\chi(D(\nu))$. The class belonging to $h\nu'$ is $\omega/(h\nu')\equiv\mu'/h\equiv(h\mu)^{-1}$ modulo $\F^*$ (using $\mu^{q+1}\in\F^*$); in indices, $a\mapsto q-a$. Scaling $\nu$ by $\F^*$ multiplies $D$ by a square. So $L$ meets $C_a\cup C_{q-a}$ in $(1+\chi(D))+(1-\chi(D))=2$ points. The pairing $a\leftrightarrow q-a$ has no fixed point since $q+1$ is even.
+\end{proof}
+
+\begin{remark}
+Partitions of $\Wq(q)$, $q$ odd, into $2$-ovoids are known \cite{BLP09}; see also \cite{CCEM08} for transitive $2$-ovoids related to Singer groups. We have not checked whether those constructions coincide with $C_a\cup C_{q-a}$; the proof above is self-contained. The proof only uses that $d^2$ is a non-square in $K$: replacing $d$ by any $\delta_0$ with $\bar\delta_0=-\delta_0$ gives a symplectic form for which $C_a\cup C_{b}$ is a $2$-ovoid when $h^{a+b}\delta_0^2\in\F^*$.
+\end{remark}
+
+\subsection{All degrees}
+\begin{corollary}\label{cor:B2}
+Let $q$ be a prime power and $\Delta\ge q+1$. There is a $\Delta$-regular incidence structure of diameter $4$ with
+\[
+2\Delta(q^2+1)\ \text{elements if $q$ is even or $\Delta-q-1$ is even},\qquad 2\Delta q^2\ \text{elements otherwise.}
+\]
+In particular $n_b(\Delta,4)\ge2q^2\Delta$ for every prime power $q\le\Delta-1$.
+\end{corollary}
+
+\begin{proof}
+Apply Corollary~\ref{cor:B1}. Let $j=\Delta-q-1$. If $q$ is even, $\Qf(4,q)$ has an ovoid $\cO$ and a spread $\Sigma$; take $w=j\mathbf 1_\cO$ and $\cM=j\Sigma$. If $q$ is odd and $j$ is even, take $w=j\mathbf 1_\cO$ and $\cM$ equal to $j/2$ copies of a $2$-cover of $\Qf(4,q)$ from Proposition~\ref{prop:C}. If $q$ is odd and $j$ is odd, then $\Delta\ge q+2$; in $\AS(q)$, of order $(q-1,q+1)$, take $(\Delta-q)/2$ copies of the weighted $2$-ovoid of Theorem~\ref{thm:A} and $\Delta-q-2$ copies of the spread of fibres.
+\end{proof}
+
+At $q=13$, $\Delta=16$ this gives $n_b(16,4)\ge5440$.
+
+\subsection{Limits of the method}
+\begin{proposition}\label{prop:shadowbound}
+Let $q$ be odd, $\cO$ an ovoid of $\Qf(4,q)$, $w=\mathbf 1_\cO$, and let $\cS'=\Qf(4,q)[w,\cM,\sigma]$ have maximum degree $q+2$. Then $|\cM|\le q^2-q+2$.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:B}(b) every old point and every clone serves at most one shadow line. So a point outside $\cO$ is on at most one entry of $\cM$, and a point $o\in\cO$ on at most two (one served by $o$, one by its clone). In particular $\cM$ has no repeated line. If some $o\in\cO$ is on two lines $L_1,L_2\in\cM$, then every other $L\in\cM$ misses $o$, and its unique point $y$ collinear with $o$ is not in $\cO$ (points of an ovoid are pairwise non-collinear). The line $oy$ is not in $\cM$, since $y$ is on at most one line of $\cM$, so $oy$ is one of the $q-1$ lines on $o$ other than $L_1,L_2$, and $y$ is one of its $q$ points other than $o$. Distinct $L$ give distinct $y$, so $|\cM|\le2+q(q-1)$. Otherwise $\cM$ is a partial spread of $\Qf(4,q)$ and $|\cM|\le q^2-q+1$ (Tallini; see \cite{CDPS22}).
+\end{proof}
+
+So these structures have at most $2(q+1)(q^2+1)+(q^2+1)+(q^2-q+2)=2q^2(q+2)+q+5$ elements; to beat Corollary~\ref{cor:A1} one needs $|\cM|\ge q^2-2q-2$. For $q=5$ there is a set $\cM$ of $21$ lines with suitable stand-ins (an explicit example, checked by computer), giving $n_b(7,4)\ge359$; we do not know whether $q^2-2q-2$ lines are possible for $q\ge9$. In particular, $q^2+1$ shadow lines (which would give $2(q^2+1)(q+2)$ elements) are impossible for odd $q$.
+
+\begin{remark}[Weighted $3$-ovoids]
+Weighted $3$-ovoids of $\Wq(q)$, that is weighted $3$-covers of $\Qf(4,q)$, exist at least for $q=3,5,7$ (we know explicit examples; for $q=5$ there is even a $3$-ovoid). Together with $2$-covers they would remove the case distinction in Corollary~\ref{cor:B2} for $\Delta\ge q+4$.
+\end{remark}
+
+\begin{question}
+Does $\Wq(q)$ have a weighted $3$-ovoid for every odd $q$? Does $\AS(q)$ have a weighted $3$-ovoid for every odd $q$ (known for $q=5,7$)?
+\end{question}
+
+\section{Diameter 6: the split Cayley hexagon}\label{sec:d6}
+
+Throughout this section $q$ is odd, $\F=\GF(q)$, and $\Hq(q)$ is the split Cayley hexagon on the quadric $\Qf(6,q)$ of equation $X_0X_4+X_1X_5+X_2X_6=X_3^2$, as in Section~\ref{sec:prelim}. Distances are taken in the incidence graph of $\Hq(q)$; two lines are opposite when they are at distance $6$, and a point is at distance $1$, $3$ or $5$ from a line.
+
+\subsection{The frame}
+Let $v=\langle e_1,e_6\rangle$. It is a line of $\Hq(q)$: all six Tits equations involve no Grassmann coordinate $p_{16}$, and $e_1,e_6$ span a totally singular line. Fix $c\in\F$ with $-c$ a non-square. For $z=(\alpha,\beta)\in\F^2$ let
+\[
+\Pi_z\colon\ X_0+cX_4+\alpha X_2+\beta X_5=0,\qquad \Pi=\Pi_{(0,0)},
+\]
+and let $S_z$ be the set of lines of $\Hq(q)$ contained in $\Pi_z$, $S=S_{(0,0)}$. All $\Pi_z$ contain $v$.
+
+\begin{lemma}\label{lem:herm}
+For every $z\in\F^2$:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\Pi_z\cap\Qf(6,q)$ is an elliptic quadric $\Qf^-(5,q)$.
+\item Every point of $\Hq(q)$ in $\Pi_z$ lies on exactly one line of $S_z$. So $|S_z|=q^3+1$, the lines of $S_z$ are pairwise opposite, and $v\in S_z$. \textup{(}$S_z$ is a Hermitian spread.\textup{)}
+\item A line of $\Hq(q)$ not in $S_z$ meets $\Pi_z$ in exactly one point.
+\item The points of $\Hq(q)$ at distance at most $3$ from $v$ are exactly the points of $\Qf(6,q)$ with $X_2=X_5=0$. Among them only the points of $v$ lie in $\Pi_z$.
+\item $S_z\cap S_{z'}=\{v\}$ for $z\ne z'$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) On $\Pi_z$ substitute $X_0=-cX_4-\alpha X_2-\beta X_5$:
+\[
+X_0X_4+X_1X_5+X_2X_6-X_3^2=(X_1-\beta X_4)X_5+X_2(X_6-\alpha X_4)-(X_3^2+cX_4^2).
+\]
+This is the sum of two hyperbolic planes and the binary form $X_3^2+cX_4^2$, which is anisotropic because $-c$ is a non-square. So the form on $\Pi_z$ is non-degenerate of Witt index $2$.
+
+(b) Let $y\in\Pi_z\cap\Qf(6,q)$. The lines of $\Hq(q)$ through $y$ are the lines through $y$ of the totally singular plane $\pi_y$. By (a), $\Pi_z\cap\Qf(6,q)$ contains no totally singular plane, so $\pi_y\not\subseteq\Pi_z$ and $\pi_y\cap\Pi_z$ is a single line through $y$; it is the only line of $\Hq(q)$ on $y$ inside $\Pi_z$. As $\Qf^-(5,q)$ has $(q+1)(q^3+1)$ points, $|S_z|=q^3+1$. Two lines of $S_z$ are not concurrent by uniqueness. If two lines of $S_z$ were at distance $4$, a line $N$ of $\Hq(q)$ would meet both in distinct points; then $N\subseteq\Pi_z$, so $N\in S_z$ is concurrent with them, a contradiction. So they are opposite.
+
+(c) A line not contained in the hyperplane $\Pi_z$ meets it in one point.
+
+(d) Let $y=ae_1+be_6$ be a point of $v$ and let $u$ be a point with $yu$ a line of $\Hq(q)$. The Tits equations $p_{12}=p_{34}$ and $p_{65}=p_{30}$ and the polarity condition give $au_2=0$, $bu_5=0$ and $au_5+bu_2=0$, hence $u_2=u_5=0$. So the points at distance at most $3$ from $v$ satisfy $X_2=X_5=0$. Conversely, $\Qf(6,q)\cap\{X_2=X_5=0\}$ is $X_0X_4=X_3^2$, a cone with vertex $v$ over a conic; it has $(q+1)+(q+1)q^2$ points, which is the number of points at distance at most $3$ from $v$ ($q+1$ on $v$, and $q$ further points on each of the $q(q+1)$ other lines meeting $v$). If such a point also lies in $\Pi_z$, then $X_0=-cX_4$ and $-cX_4^2=X_3^2$, so $X_0=X_3=X_4=0$ and the point is on $v$.
+
+(e) Let $m\in S_z\cap S_{z'}$, $m\ne v$. On $m$, $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$, so the linear map $m\to\F^2$, $X\mapsto(X_2,X_5)$, has a non-trivial kernel, and $m$ has a point with $X_2=X_5=0$. By (d) that point is at distance at most $3$ from $v$. But $m$ and $v$ are opposite by (b), so every point of $m$ is at distance $5$ from $v$.
+\end{proof}
+
+\subsection{Delorme's doubling and whiskers}
+Let $\cP(v)$ be the set of points of $v$, $\cL_v$ the set of lines $\ne v$ meeting $v$, and $\cP_\Pi$ the set of points of $\Hq(q)$ in $\Pi$ (the points on lines of $S$). A point is \emph{free} if it is not in $\Pi$ and is at distance $5$ from $v$. By Lemma~\ref{lem:herm}(d) the points of $\Pi$ other than those of $v$ are at distance $5$ from $v$, so there are
+\[
+(q+1)(q^4+q^2+1)-(q+1)-q^2(q+1)-q^3(q+1)=q^3(q^2-1)
+\]
+free points.
+
+\begin{definition}[Whiskers]
+A \emph{whisker set} is a set $W$ of lines of $\Hq(q)$, each opposite $v$ and not in $S$, such that no free point is on two lines of $W$. It is \emph{exact} if every free point is on exactly one line of $W$.
+\end{definition}
+
+A line $m$ opposite $v$ and not in $S$ meets $\Pi$ in one point, which lies on a unique line of $S\setminus\{v\}$, and its other $q$ points are free. So $|W|\le q^3(q^2-1)/q=q^2(q^2-1)$, with equality if and only if $W$ is exact.
+
+\begin{theorem}\label{thm:whisk}
+Let $W$ be a whisker set and $m\ge2$. Put
+\[
+\cA_2=\{v\},\qquad \cA_1=\{v\}\cup\cP(v)\cup S,\qquad \cA_0=\cA_1\cup\cP_\Pi\cup\cL_v\cup W .
+\]
+Then $\cA$ satisfies \ref{L0}, \ref{L1} and \textup{(C$_6$)}. Hence $\Dbl{\Hq(q)}{m}$ has maximum degree $q+m$, diameter $6$, and
+\[
+2(q+1)(q^4+q^2+1)+(m-1)\bigl(q^4+2q^3+q^2+2q+2+|W|+m(q^3+q+2)+m^2\bigr)
+\]
+elements.
+\end{theorem}
+
+For $W=\emptyset$ this is Delorme's construction \cite[\S7]{D85}; at $m=2$ it gives $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements, the previous table values $8992$, $142464$, $374452$, $842048$ at $\Delta=7,11,13,15$, and at $q=13$, $m=3$ the value $884062$ at $\Delta=16$.
+
+\begin{proof}
+\ref{L1}, $i=1$: the elements incident with $v$ are its points, which are in $\cA_1$; a point of $v$ is incident with exactly one element of $\cA_2$, a line of $S\setminus\{v\}$ with none.
+\ref{L1}, $i=0$: the elements incident with $\cA_1$ are the points of $v$, the lines of $\cL_v$, and the points on lines of $S$, all in $\cA_0$. A line of $\cL_v$ meets $v$ in one point and contains no other point of $\cA_1$. A point of $\cP_\Pi\setminus\cP(v)$ is on exactly one line of $S$ (Lemma~\ref{lem:herm}(b)) and not on $v$. A line of $W$ contains no point of $v$, being opposite $v$.
+\ref{L0}: a point outside $\cA_0$ is a point off $\Pi$. If it is at distance $3$ from $v$, it is on exactly one line of $\cL_v$ (two would close a circuit of length at most $6$) and on no line of $W$ (that line would be at distance at most $4$ from $v$). If it is free, it is on no line of $\cL_v$ and on at most one line of $W$. A line outside $\cA_0$ is not in $\Pi$, so it meets $\Pi$ in one point, and that point is its only point in $\cA_0$.
+\textup{(C$_6$)}: a line of $\cL_v$ contains no point of $\Pi$ other than its point on $v$ (Lemma~\ref{lem:herm}(d)), and a line of $W$ contains exactly one point of $\Pi$, not on $v$. So the components of the substructure on $\cA_0$ are
+\[
+\{v\}\cup\cP(v)\cup\cL_v\qquad\text{and}\qquad \{n\}\cup\cP(n)\cup\{w\in W: w\text{ meets }n\}\quad(n\in S\setminus\{v\}).
+\]
+Both are trees of diameter at most $4$: the first is the ball of radius $2$ about $v$, the second consists of $n$, its points, and whiskers hanging from them. Lemma~\ref{lem:hat} gives \textup{(C$_6$)}.
+Now Theorem~\ref{thm:delorme} applies, and the diameter is exactly $6$ by \eqref{eq:proj}. For the count: $\cA_2=\{v\}$; $\cA_1$ consists of $q^3+1$ lines and $q+1$ points, $q^3+q+2$ elements; and $\cA_0$ consists of the $q^3+1$ lines of $S$, the $q^2+q$ lines of $\cL_v$, the $|W|$ whiskers and the $(q+1)(q^3+1)$ points of $\Pi$, which is $q^4+2q^3+q^2+2q+2+|W|$ elements.
+\end{proof}
+
+\subsection{An exact whisker set for every odd \texorpdfstring{$q$}{q}}
+For a point $X$ of $\Hq(q)$ in $\Pi$, not on $v$, put
+\[
+\nu(X)=\frac{X_2X_3-X_4X_5}{cX_2^2+X_5^2}.
+\]
+This is well defined: the denominator vanishes only when $X_2=X_5=0$ (as $-c$ is a non-square), and by Lemma~\ref{lem:herm}(d) such a point of $\Pi$ lies on $v$. Let
+\[
+G(a,b)=(c_0a+c_1b)(a^2+cb^2)-b^3,\qquad F(z)=\frac{G(\alpha,\beta)}{\alpha^2+c\beta^2}\quad(z=(\alpha,\beta)\ne0),
+\]
+where $c_0,c_1\in\F$ are chosen so that $G$ has no zero on $\F^2\setminus\{0\}$.
+
+\begin{lemma}\label{lem:G}
+Such $c_0,c_1$ exist for every odd $q$.
+\end{lemma}
+
+\begin{proof}
+$G(a,0)=c_0a^3$, so we need $c_0\ne0$. For $b\ne0$ put $\alpha=a/b$: $G(a,b)=0$ if and only if $c_0\alpha+c_1=1/(\alpha^2+c)$ (note $\alpha^2+c\ne0$). For fixed $\alpha$ this is a line in the $(c_0,c_1)$-plane with $q-1$ points having $c_0\ne0$. The lines for $\alpha=0$ and $\alpha=1$ meet at $c_0=1/(1+c)-1/c=-1/(c(1+c))\ne0$ (note $c\ne-1$ as $-c$ is a non-square). So the $q$ lines cover fewer than $q(q-1)$ of the points with $c_0\ne0$, and some $(c_0,c_1)$ is good.
+\end{proof}
+
+\begin{theorem}\label{thm:exact}
+Let $q$ be odd, $-c$ a non-square, and $c_0,c_1$ as in Lemma~\ref{lem:G}. Then
+\[
+W=\bigl\{\,m\in S_z\setminus\{v\}\;:\; z\in\F^2\setminus\{0\},\ \nu(m\cap\Pi)=F(z)\,\bigr\}
+\]
+is an exact whisker set: every free point lies on exactly one line of $W$, and $|W|=q^2(q^2-1)$.
+\end{theorem}
+
+Here $m\cap\Pi$ is a single point not on $v$: $m\subseteq\Pi_z$, $m\ne v$, so $m\notin S$ by Lemma~\ref{lem:herm}(e), and $m$ is opposite $v$ by Lemma~\ref{lem:herm}(b).
+
+The proof rests on an identity. Let $p$ be a free point. By Lemma~\ref{lem:herm}(d), $(p_2,p_5)\ne(0,0)$, and since $p\notin\Pi$ we may normalise $p_0+cp_4=1$. Then $p\in\Pi_z$ if and only if $z$ lies on the affine line
+\[
+A_p=\{(\alpha,\beta):\alpha p_2+\beta p_5=-1\}\subseteq\F^2\setminus\{0\},
+\]
+which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $m_p(z)$ be the line of $S_z$ through $p$ (Lemma~\ref{lem:herm}(b)) and $X(z)=m_p(z)\cap\Pi$.
+
+\begin{lemma}[Key identity]\label{lem:key}
+The function
+\[
+\Phi_p(z)=\nu(X(z))+\frac{\beta^3}{\alpha^2+c\beta^2}\qquad(z=(\alpha,\beta)\in A_p)
+\]
+is the restriction to $A_p$ of an affine function, and its increment along $(p_5,-p_2)$ is $-p_2^3/(cp_2^2+p_5^2)$. Explicitly, if $p_5\ne0$ and $z=(sp_5,\,-1/p_5-sp_2)$, then
+\[
+\Phi_p(z)=-\frac{p_2^3p_5\,s+p_2^2-p_2p_3p_5+p_4p_5^2}{p_5(cp_2^2+p_5^2)};
+\]
+if $p_5=0$ and $z=(-1/p_2,\,s)$, then $\Phi_p(z)=(p_2s+p_3)/(cp_2)$.
+\end{lemma}
+
+\begin{proof}
+The point $X(z)$ is characterised as the point $X\ne p$ with $pX$ a line of $\Hq(q)$, $X\in\Pi$ and $X\in\Pi_z$: such a line $pX$ lies in $\Pi_z$, so it is $m_p(z)$. Appendix~\ref{app:X} gives, in each chart, a vector $X$ whose coordinates are polynomials in $c$, $s$ and the coordinates of $p$, which satisfies $\Qf(X)=0$, the polarity condition and the six Tits equations with $p$, and the equations of $\Pi$ and $\Pi_z$, identically; and $cX_2^2+X_5^2$ factors as a product of non-vanishing terms, so $X\ne0$ and $\nu(X)$ is defined. Substituting $X$ into $\nu$ gives the stated $\Phi_p$. In the first chart, increasing $s$ by $1$ moves $z$ by $(p_5,-p_2)$ and changes $\Phi_p$ by $-p_2^3/(cp_2^2+p_5^2)$. In the second chart the direction is $(0,-p_2)$ and the increment is $-p_2\cdot\frac1c=-p_2^3/(cp_2^2)$.
+\end{proof}
+
+\begin{remark}
+The identities in Lemma~\ref{lem:key} and Appendix~\ref{app:X} are polynomial identities with integer coefficients, so they hold in every odd characteristic. We verified them by computer algebra; a conceptual proof would be welcome. Similarly one checks that $\nu$ is constant on each line of $S\setminus\{v\}$, so the condition defining $W$ only depends on the line of $S$ that $m$ meets: $\nu$ is a function on the Hermitian spread $S\setminus\{v\}$.
+\end{remark}
+
+\begin{proof}[Proof of Theorem~\ref{thm:exact}]
+Let $p$ be a free point, normalised as above. The lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ through $p$ are exactly the lines $m_p(z)$, $z\in A_p$, and these $q$ lines are distinct: a common line would lie in $S_z\cap S_{z'}=\{v\}$. Since $F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $m_p(z)\in W$ if and only if
+\[
+\Phi_p(z)-(c_0\alpha+c_1\beta)=0 .
+\]
+The left side is affine on $A_p$ with increment
+\[
+-\frac{p_2^3}{cp_2^2+p_5^2}-(c_0p_5-c_1p_2)=-\frac{G(p_5,-p_2)}{cp_2^2+p_5^2}\ne0
+\]
+along $(p_5,-p_2)$, so it vanishes at exactly one of the $q$ points of $A_p$. Hence $p$ is on exactly one line of $W$. The lines of $W$ are opposite $v$ and not in $S$, so $W$ is an exact whisker set.
+\end{proof}
+
+\begin{corollary}\label{cor:d6}
+For every odd prime power $q$ and every $m\ge2$,
+\[
+n_b(q+m,6)\ge2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr).
+\]
+In particular $n_b(q+2,6)\ge2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ and $n_b(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
+\end{corollary}
+
+By Proposition~\ref{prop:count} an exact whisker set is the most this family can give: with $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$, and equality $q|\cA_0|+2c=2N$ holds ($c=q^3+1$ components).
+
+\subsection{Regular versions}
+The structure of Theorem~\ref{thm:whisk} with $W$ exact has equally many points and lines in $\cA_0$, but more lines than points in $\cA_1$ and $\cA_2$; it has $(m-1)m(q^3-q+m)$ more lines than points. We remove repeated lines and then add flags.
+
+\begin{lemma}[Repeated lines]\label{lem:twin}
+If two lines of an incidence structure have the same set of points, deleting one of them changes no distance between the remaining elements.
+\end{lemma}
+
+\begin{proof}
+A shortest path through the deleted line $L$ can pass through its twin $L'$ instead; it does not already contain $L'$, since then it could be shortened.
+\end{proof}
+
+\begin{lemma}[Completion]\label{lem:complete}
+Let $\cS$ be a finite incidence structure with $\Delta(\cS)\le\Delta$, such that every element has degree at least $\Delta-r$, and $\sum_{p}(\Delta-\deg p)=\sum_{L}(\Delta-\deg L)=:T$. If $T>2r\Delta$, there is a set $J$ of anti-flags such that $(\cP,\cL,\I\cup J)$ is $\Delta$-regular.
+\end{lemma}
+
+\begin{proof}
+Choose a multiset $J$ of point--line pairs in which each element $x$ occurs $\Delta-\deg x$ times (possible as the sums agree). Call an entry \emph{bad} if it is a flag of $\cS$ or a repeated pair, and choose $J$ with the fewest bad entries. Suppose $(p,L)$ is bad. In $\I\cup J$, the line $L$ is joined to at most $\Delta$ points and each of them occurs in at most $r$ entries of $J$; likewise for $p$. So at most $2r\Delta$ entries $(p',L')$ of $J$ have $p'$ joined to $L$ or $L'$ joined to $p$, and some entry $(p',L')$ has neither. Replacing $(p,L),(p',L')$ by $(p,L'),(p',L)$ removes a bad entry and creates none. So $J$ has no bad entries.
+\end{proof}
+
+\begin{theorem}\label{thm:R}
+For every odd prime power $q$ and every $m\ge2$ there is a $(q+m)$-regular incidence structure of diameter at most $6$ with
+\[
+2(q+1)\bigl(q^4+q^2+1+(m-1)(q^3+m+1)\bigr)
+\]
+elements; for $m=2$ this is $2(q+1)(q^4+q^3+q^2+4)$, and for $m=3$ it is $2(q+1)(q^4+2q^3+q^2+9)$.
+\end{theorem}
+
+\begin{proof}
+Start from $\Dbl{\Hq(q)}{m}$ with $W$ exact. For $n\in S\setminus\{v\}$ (level $1$) and $a\in[m]$, the $m$ versions $n^{a1},\dots,n^{am}$ all have the point set $\{p^a:p\I n\}$; for $a,b\in[m]$ the versions $v^{ab1},\dots,v^{abm}$ all have the point set $\{p^{ab}:p\I v\}$. So there are $mq^3+m^2$ classes of $m$ repeated lines. Delete $(m-1)m(q^3-q+m)\le(m-1)(mq^3+m^2)$ lines, at most $m-1$ from each class; by Lemma~\ref{lem:twin} no distance increases, and points and lines are now equal in number. Every point of $\Pi$ is on exactly one line of $S$, so each point loses at most $m-1$ lines. In $\Dbl{\Hq(q)}{m}$ every version has degree between $q+1$ and $q+m$; after the deletion this still holds, so every deficit is at most $r=m-1$. The deficit sum $T$ is at least that of the $m|W|=mq^2(q^2-1)$ whisker versions, each of degree $q+1$, so $T\ge(m-1)mq^2(q^2-1)>2(m-1)(q+m)$. Lemma~\ref{lem:complete} completes the structure; adding flags cannot increase distances. The number of points is $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$, which gives the formula.
+\end{proof}
+
+At $q=5,9,11,13$ and $m=2$, Theorem~\ref{thm:R} gives $9348$, $147500$, $386328$, $866068$ elements, and at $q=13$, $m=3$ it gives $927724$. For these parameters the number of elements exceeds $M_b(q+m,5)$, so the diameter is exactly $6$.
+
+\section{Orders}\label{sec:orders}
+
+At $\Delta=q+2$ the gap between the Moore bound and a generalized $D$-gon of order $(q,q)$ is
+\[
+M_b(q+2,D)-M_b(q+1,D)=2\sum_{i=1}^{D-1}\bigl((q+1)^i-q^i\bigr)=2(D-1)q^{D-2}+O(q^{D-3});
+\]
+it is $4q+4$ for $D=3$ and $6q^2+10q+6$ for $D=4$. Doubling cannot close this gap. By Proposition~\ref{prop:count}, a doubled set satisfies $|\cA_0|<2N/q$, where $N=q^{D-1}+O(q^{D-2})$ is the number of points; the higher levels are smaller still, since every element of $\cA_1$ has all its $q+1$ neighbours in $\cA_0$. So doubling gains at most $2q^{D-2}+O(q^{D-3})$ elements, roughly a fraction $1/(D-1)$ of the gap.
+\begin{itemize}[leftmargin=1.5em]
+\item $D=3$: the gain is a constant. A pure doubling gains at most $2$ (Proposition~\ref{prop:d3patch}); with patches, three hats gain $8$ \cite{AL20} and four hats gain $10$ (Theorem~\ref{thm:fourhat}).
+\item $D=4$: the gain is of order $q^2$. Delorme's doubling gains $q^2+q+4$. Theorem~\ref{thm:A} uses a different quadrangle, $\AS(q)$, and has $2q^2(q+2)=2(q+1)(q^2+1)+2q^2-2q-2$ elements, which has the order of magnitude of the counting bound $2q^2+O(q)$; Proposition~\ref{prop:shadowbound} limits the shadow-line variant on $\Qf(4,q)$ to at most $q+5$ more.
+\item $D=6$: the gain is of order $q^4$. Delorme's doubling gains $q^4+O(q^3)$; with an exact whisker set (Theorem~\ref{thm:exact}) the gain is $2q^4+4q^3+4q+10$, and the single-level part attains the counting bound with equality.
+\end{itemize}
+
+Table~\ref{tab:values} lists the resulting values in the range $\Delta\le16$ of the table of largest known bipartite graphs \cite{CW}, for the degrees where no generalized polygon of order $(\Delta-1,\Delta-1)$ is known.
+
+\begin{table}[ht]
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lrrrrrl@{}}
+\toprule
+$(\Delta,D)$ & $q$ & $M_b(\Delta,D)$ & table \cite{CW} & new & regular & construction\\
+\midrule
+$(11,3)$ & $9$ & $222$ & $190$ & $\mathbf{192}$ & $192$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+$(13,3)$ & $11$ & $314$ & $274$ & $\mathbf{276}$ & $276$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+$(15,3)$ & $13$ & $422$ & $374$ & $\mathbf{376}$ & $376$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+\midrule
+$(7,4)$ & $5$ & $518$ & $346$ & $\mathbf{359}$ & -- & Thm.~\ref{thm:B}, $\Qf(4,5)$, $21$ shadow lines$^{*}$\\
+$(11,4)$ & $9$ & $2222$ & $1734$ & $\mathbf{1782}$ & $1782$ & Cor.~\ref{cor:A1}, $\AS(9)$\\
+$(13,4)$ & $11$ & $3770$ & $3064$ & $\mathbf{3146}$ & $3146$ & Cor.~\ref{cor:A1}, $\AS(11)$\\
+$(15,4)$ & $13$ & $5910$ & $4946$ & $\mathbf{5070}$ & $5070$ & Cor.~\ref{cor:A1}, $\AS(13)$\\
+$(16,4)$ & $13$ & $7232$ & $5134$ & $\mathbf{5440}$ & $5440$ & Cor.~\ref{cor:B2}, $\Qf(4,13)$, Prop.~\ref{prop:C}\\
+\midrule
+$(7,6)$ & $5$ & $18662$ & $8992$ & $\mathbf{9592}$ & $9348$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(11,6)$ & $9$ & $222222$ & $142464$ & $\mathbf{148944}$ & $147500$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(13,6)$ & $11$ & $542906$ & $374452$ & $\mathbf{388972}$ & $386328$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(15,6)$ & $13$ & $1158390$ & $842048$ & $\mathbf{870440}$ & $866068$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(16,6)$ & $13$ & $1627232$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}, $m=3$\\
+\bottomrule
+\end{tabular}
+\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``Table'' is the value listed in \cite{CW} (consulted October 2026; for $D=3$ these are the values of \cite{AL20}, for $D=4$ and $D=6$ those of Delorme \cite{D85}). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family. The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer.}
+\label{tab:values}
+\end{table}
+
+\section{Open questions}\label{sec:open}
+\begin{enumerate}[leftmargin=1.5em]
+\item \emph{Diameter $3$.} Is there a five-hat structure, or any modification of a projective plane of order $q$ with $\Delta=q+2$, diameter $3$ and more than $2(q^2+q+6)$ elements?
+\item \emph{Diameter $4$.} For odd $q\ge9$, are there $q^2-2q-2$ shadow lines on $\Qf(4,q)$ with one ovoid of clones (Proposition~\ref{prop:shadowbound})? Do weighted $3$-ovoids of $\Wq(q)$ exist for all odd $q$? Is the partition of Proposition~\ref{prop:C} the one of \cite{BLP09}?
+\item \emph{Diameter $6$.} Is there a conceptual proof of Lemma~\ref{lem:key}? Is there a balanced doubling of $\Hq(q)$, with level-$1$ centres at points as well as lines, that is regular without deleting repeated lines? The Feit--Higman theorem rules out hexagons of order $(q-1,q+1)$, so there is no direct analogue of $\AS(q)$; are there weighted distance-$2$ ovoids of $\Hq(q)$ that help?
+\item \emph{Diameter $8$.} The Ree--Tits octagon of order $(2,4)$ has the shape $(q-1,q+1)$ with $q=3$; a weighted $2$-ovoid in it would give a $5$-regular structure of diameter $8$ with $5850$ elements.
+\end{enumerate}
+
+\appendix
+\section{The point \texorpdfstring{$X(z)$}{X(z)}}\label{app:X}
+Let $p$ be a free point with $p_0=1-cp_4$.
+
+\emph{Chart $p_5\ne0$.} Here $p_1=(p_3^2-p_0p_4-p_2p_6)/p_5$ and $z=(sp_5,\,-1/p_5-sp_2)$. Put
+\begin{align*}
+R&=cp_2^2p_4p_5s+cp_2p_4-p_2^2p_5s-p_2+p_3p_5+p_4p_5^3s,\\
+X_0&=-cp_5R,\qquad X_4=p_5R,\qquad X_2=p_5(cp_2^2+p_5^2)(p_2p_5s+1),\qquad X_5=p_5^3s(cp_2^2+p_5^2),\\
+X_3&=p_5\bigl(cp_2^2p_3p_5s+cp_2p_3-cp_4p_5+p_2p_5^2s+p_3p_5^3s+p_5\bigr),\\
+X_6&=p_5\bigl(c^2p_4^2+cp_2^2p_5p_6s-cp_2p_4p_5s+cp_3^2-2cp_4+p_2p_5s+p_3p_5^2s+p_5^3p_6s+1\bigr),\\
+X_1&=c^2p_2^2p_4^2p_5s+c^2p_2p_4^2-cp_2^3p_5p_6s+cp_2^2p_3^2p_5s-cp_2^2p_4p_5s-cp_2^2p_6+cp_2p_3^2\\
+&\quad-cp_2p_4+cp_4^2p_5^3s+p_2p_3p_5^2s-p_2p_5^3p_6s+p_3^2p_5^3s+p_3p_5-p_5^2p_6 .
+\end{align*}
+Then $cX_2^2+X_5^2=p_5^2(cp_2^2+p_5^2)^2\bigl(c(p_2p_5s+1)^2+p_5^4s^2\bigr)\ne0$.
+
+\emph{Chart $p_5=0$.} Then $p_2\ne0$, $p_6=(p_3^2-p_0p_4)/p_2$ and $z=(-1/p_2,\,s)$. Put
+\begin{align*}
+X_0&=cp_2(cp_2p_4s-p_2s-p_3),\quad X_4=-p_2(cp_2p_4s-p_2s-p_3),\quad X_2=-cp_2^3s,\quad X_5=-cp_2^2,\\
+X_3&=-cp_2(p_2p_3s+p_4),\quad X_1=-cp_1p_2^2s-cp_4^2-p_2p_3s-p_3^2,\\
+X_6&=-c^2p_2p_4^2s+cp_1p_2-cp_2p_3^2s+2cp_2p_4s-p_2s-p_3 .
+\end{align*}
+Then $cX_2^2+X_5^2=c^2p_2^4(cp_2^2s^2+1)\ne0$.
+
+In both charts one checks by direct substitution that $\Qf(X)=0$, that $X$ satisfies the polarity condition and the six Tits equations with $p$, that $X_0+cX_4=0$ and $\alpha X_2+\beta X_5=0$, and that $\nu(X)+\beta^3/(\alpha^2+c\beta^2)$ equals $\Phi_p$ of Lemma~\ref{lem:key}.
+
+\begin{thebibliography}{99}
+\bibitem{AS69} R.~W. Ahrens, G.~Szekeres, On a combinatorial generalization of 27 lines associated with a cubic surface, \emph{J. Austral. Math. Soc.} 10 (1969) 485--492.
+\bibitem{AL20} G.~Araujo-Pardo, N.~L\'opez, On new record graphs close to bipartite Moore graphs, arXiv:2005.02427 (2020).
+\bibitem{BLP09} J.~Bamberg, M.~Law, T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, \emph{Combinatorica} 29 (2009) 1--17.
+\bibitem{CDPS22} M.~Ceria, J.~De Beule, F.~Pavese, V.~Smaldore, On large partial ovoids of symplectic and Hermitian polar spaces, arXiv:2203.04553 (2022).
+\bibitem{CW} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{https://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}.
+\bibitem{CCEM08} A.~Cossidente, C.~Culbert, G.~L. Ebert, G.~Marino, On $m$-ovoids of $W_3(q)$, \emph{Finite Fields Appl.} 14 (2008) 76--84.
+\bibitem{D85} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, \emph{European J. Combin.} 6 (1985) 291--302.
+\bibitem{DF84} C.~Delorme, G.~Farhi, Large graphs with given degree and diameter, Part~I, \emph{IEEE Trans. Comput.} C-33 (1984) 857--860.
+\bibitem{E85} G.~L. Ebert, Partitioning projective geometries into caps, \emph{Canad. J. Math.} 37 (1985) 1163--1175.
+\bibitem{FH64} W.~Feit, G.~Higman, The nonexistence of certain generalized polygons, \emph{J. Algebra} 1 (1964) 114--131.
+\bibitem{H98} J.~W.~P. Hirschfeld, \emph{Projective Geometries over Finite Fields}, 2nd ed., Oxford University Press, 1998.
+\bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, \emph{J. Algebra} 18 (1971) 201--212.
+\bibitem{PT} S.~E. Payne, J.~A. Thas, \emph{Finite Generalized Quadrangles}, 2nd ed., EMS Series of Lectures in Mathematics, European Mathematical Society, 2009 (1st ed. Pitman, 1984).
+\bibitem{T80} J.~A. Thas, Polar spaces, generalized hexagons and perfect codes, \emph{J. Combin. Theory Ser. A} 29 (1980) 87--93.
+\bibitem{T59} J.~Tits, Sur la trialit\'e et certains groupes qui s'en d\'eduisent, \emph{Publ. Math. IH\'ES} 2 (1959) 13--60.
+\bibitem{VM98} H.~Van Maldeghem, \emph{Generalized Polygons}, Monographs in Mathematics 93, Birkh\"auser, 1998.
+\end{thebibliography}
+
+\end{document}
