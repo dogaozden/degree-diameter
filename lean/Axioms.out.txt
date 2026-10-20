@@ -43,3 +43,8 @@
 'BipartiteDD.SingerC.Setting.propC_subspace' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.Haar.haar_isBipartiteDegDiam' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.Haar.haar_ediam_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.W3.isGQst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.propC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.W3.spread_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.W3.spread_totally_isotropic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.corC1' depends on axioms: [propext, Classical.choice, Quot.sound]
