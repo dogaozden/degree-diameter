@@ -5,5 +5,7 @@ import BipartiteDD.Sanity
 import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.GQST.Main
+import BipartiteDD.Doubling.Polygon
+import BipartiteDD.Doubling.HatConverse
 import BipartiteDD.ASq.Main
 import BipartiteDD.SingerC.W3Main
