@@ -12,3 +12,11 @@ reports/timeline/.blobcache.json
 research/d5/tables/
 research/d5/haar_search2
 research/d5/haar_search3
+# Problem 4 overnight: big generated files stay local
+research/p4/*/tables/
+research/p4/*/logs/
+research/p4/*/runs/
+research/p4/**/*.o
+research/p4/d6haar/haar_dd
+research/p4/d6/ils_mis
+research/p4/d6/diam
