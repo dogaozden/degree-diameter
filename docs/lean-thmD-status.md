@@ -75,3 +75,14 @@ is the comap of `biGraph rel` along `Equiv.sumSigmaDistrib`), then `Regular.regu
 
 `#print axioms` for all main statements: only `propext`, `Classical.choice`, `Quot.sound` (57 lines in
 `HexagonD/Axioms.out.txt`; one of them, `biGraph_rel_eq`, uses only `propext`, `Quot.sound`).
+
+## Whole-library `lake build` (4 cores, 15 GB RAM, Mathlib cache)
+- Run 1 (`lake build`): everything up to module ~1036 of 1109 built, including all of `Hexagon`, `Doubling`, `Regular`
+  (merged without conflicts; they build together). It then died with exit code 137 (out of memory, four of the huge
+  record-graph modules in parallel): `Graphs/G5440`, `Stages/G3122_local`, `Stages/G5022_*`, `Stages/G5070_*`, `Stages/G5284_*`.
+- Run 2 (same command, pinned to one core): same out-of-memory failures, stopped by hand.
+- Run 3 (one module per `lake build` call, 80 unbuilt modules: `Graphs`, `Stages`, `Haar`, `Records*`, `SingerC.Regular5440`, …):
+  4 of 80 built in 30 minutes with no failures; the rest was not finished within the session. None of these modules
+  is imported by `HexagonD`, `Hexagon` or `Regular`.
+- All `HexagonD` modules build (`lake build BipartiteDD.HexagonD.TheoremR BipartiteDD.HexagonD.Sanity`).
+- A full clean `lake build` probably needs more memory than 15 GB or a job limit.
