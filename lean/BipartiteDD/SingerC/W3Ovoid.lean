@@ -6,6 +6,7 @@ points of a subspace in a class. -/
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
@@ -45,7 +46,7 @@ theorem Oz_mul_F_iff {a : ℕ} (ha : a ≤ S.q) {c z : K} (hc : c ∈ S.F) (hc0 
 
 /-- Points of `F^×`-scalar classes: the nonzero vectors of `F · r` form `F^×`. -/
 theorem card_nonzero_units : Nat.card {c : S.F // c ≠ 0} = S.q - 1 := by
-  have h := S.card_erase_add_one (fun _ : S.F => True) 0 trivial
+  have h := card_erase_add_one (fun _ : S.F => True) 0 trivial
   have hF : Nat.card {c : S.F // True} = S.q := by
     rw [Nat.card_congr (Equiv.subtypeUnivEquiv (fun _ => trivial)), S.natCard_F]
   have h' : Nat.card {y // True ∧ y ≠ (0 : S.F)} = Nat.card {c : S.F // c ≠ 0} :=

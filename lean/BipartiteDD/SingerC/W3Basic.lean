@@ -10,13 +10,14 @@ This file is not on the import chain of `BipartiteDD` until it is sorry-free. -/
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
 variable {K : Type*} [Field K] [Fintype K] {p : ℕ} [Fact p.Prime] [CharP K p]
 variable (S : Setting K p)
 
-instance : FiniteDimensional S.F K := Module.finite_of_finite S.F
+instance : FiniteDimensional S.F K := Module.Finite.of_finite
 
 theorem tr4_mem_F (z : K) : S.tr4 z ∈ S.F := by
   rw [mem_F]
@@ -35,7 +36,7 @@ theorem B_mem_F (x y : K) : S.B x y ∈ S.F := S.tr4_mem_F _
 def Bfun (v : K) : K →ₗ[S.F] S.F where
   toFun x := ⟨S.B v x, S.B_mem_F v x⟩
   map_add' x y := Subtype.ext (S.B_add_right v x y)
-  map_smul' c x := Subtype.ext (S.B_smul_right v c c.2 x)
+  map_smul' c x := Subtype.ext (S.B_smul_right c c.2 v x)
 
 theorem finrank_K : finrank S.F K = 4 := by
   have h := Module.card_eq_pow_finrank (K := S.F) (V := K)
@@ -53,8 +54,9 @@ theorem card_points_le (U : Submodule S.F K) :
     intro q
     induction q using Projectivization.ind with
     | h v hv =>
-      simp only [f, Projectivization.map_mk, Projectivization.submodule_mk,
-        Submodule.span_singleton_le_iff_mem]
+      have e : f (Projectivization.mk S.F v hv) = Projectivization.mk S.F (v : K)
+          (fun h => hv (Subtype.ext h)) := Projectivization.map_mk _ _ _ _
+      rw [e, Projectivization.submodule_mk, Submodule.span_singleton_le_iff_mem]
       exact v.2
   refine (Nat.card_congr (Equiv.ofBijective (fun q => ⟨f q, hmem q⟩) ⟨?_, ?_⟩)).symm
   · intro a b hab
@@ -67,7 +69,7 @@ theorem card_points_le (U : Submodule S.F K) :
         exact hx
       refine ⟨Projectivization.mk S.F (⟨v, hvU⟩ : U) (fun h => hv (congrArg Subtype.val h)), ?_⟩
       apply Subtype.ext
-      simp [f, Projectivization.map_mk]
+      exact Projectivization.map_mk U.subtype (fun a b h => Subtype.ext h) _ _
 
 theorem card_points_on (U : Submodule S.F K) (hU : finrank S.F U = 2) :
     Nat.card {x : ℙ S.F K // x.submodule ≤ U} = S.q + 1 := by

@@ -5,6 +5,7 @@ import BipartiteDD.SingerC.W3Basic
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
@@ -49,8 +50,10 @@ theorem lineOf_eq {x y : ℙ S.F K} (hxy : x ≠ y) (h : S.B x.rep y.rep = 0) (l
     (hxl : x ∈ l) (hyl : y ∈ l) : S.lineOf hxy h = l := by
   have hxl' : x.submodule ≤ l.1 := hxl
   have hyl' : y.submodule ≤ l.1 := hyl
-  exact Subtype.ext (Submodule.eq_of_le_of_finrank_eq (sup_le hxl' hyl')
-    (by rw [S.finrank_sup_of_ne hxy, l.2.1]))
+  apply Subtype.ext
+  show x.submodule ⊔ y.submodule = l.1
+  exact Submodule.eq_of_le_of_finrank_eq (sup_le hxl' hyl')
+    (by rw [S.finrank_sup_of_ne hxy, l.2.1])
 
 theorem rep_mem' (x : ℙ S.F K) : x.rep ∈ x.submodule := by
   rw [Projectivization.submodule_eq]
@@ -93,7 +96,7 @@ theorem gq_ax (x : ℙ S.F K) (l : S.TILine) (hx : x ∉ l) :
   have hwW : S.B x.rep w = 0 :=
     (S.Bfun_apply x.rep w).mp (LinearMap.mem_ker.mp (Submodule.mem_inf.mp hwI).2)
   let y : ℙ S.F K := Projectivization.mk S.F w hw0
-  have hysub : y.submodule = S.F ∙ w := Projectivization.submodule_mk _ _ _
+  have hysub : y.submodule = S.F ∙ w := Projectivization.submodule_mk _ _
   have hyl : y ∈ l := by
     show y.submodule ≤ l.1
     rw [hysub, Submodule.span_singleton_le_iff_mem]
@@ -114,15 +117,11 @@ instance : Finite S.TILine :=
 
 theorem card_erase_add_one {α : Type*} [Finite α] (P : α → Prop) (a : α) (ha : P a) :
     Nat.card {y // P y ∧ y ≠ a} + 1 = Nat.card {y // P y} := by
-  classical
-  have := Fintype.ofFinite α
-  rw [Nat.card_eq_fintype_card, Nat.card_eq_fintype_card, Fintype.card_subtype,
-    Fintype.card_subtype]
-  have hmem : a ∈ Finset.univ.filter P := by simp [ha]
-  rw [← Finset.card_erase_add_one hmem]
-  congr 1
-  ext y
-  simp [Finset.mem_erase, and_comm]
+  have e1 : {y | P y} \ {a} = {y | P y ∧ y ≠ a} := by ext y; simp
+  have h1 : Nat.card {y // P y ∧ y ≠ a} = Set.ncard {y | P y ∧ y ≠ a} := Nat.card_coe_set_eq _
+  have h2 : Nat.card {y // P y} = Set.ncard {y | P y} := Nat.card_coe_set_eq _
+  rw [h1, h2, ← e1]
+  exact Set.ncard_diff_singleton_add_one ha (Set.toFinite _)
 
 theorem points_in_ker_iff (x y : ℙ S.F K) :
     y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ↔ S.B x.rep y.rep = 0 := by
@@ -142,12 +141,12 @@ theorem lines_on_pt (x : ℙ S.F K) : Nat.card {l : S.TILine // x ∈ l} = S.q +
   -- the points of `W = x^⊥` other than `x`: `q² + q` of them
   have hZ : Nat.card {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x}
       = S.q + S.q ^ 2 := by
-    have h1 := S.card_erase_add_one
+    have h1 := card_erase_add_one
       (fun y : ℙ S.F K => y.submodule ≤ LinearMap.ker (S.Bfun x.rep)) x hxW
     have h2 : Nat.card {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep)}
         = 1 + S.q + S.q ^ 2 := by
       rw [S.card_points_le _, Projectivization.card_of_finrank S.F _ hW3]
-      simp [Finset.sum_range_succ, S.natCard_F]
+      simp only [Finset.sum_range_succ, Finset.sum_range_zero, S.natCard_F]
       ring
     omega
   -- the line through `x` and `y`
@@ -159,29 +158,32 @@ theorem lines_on_pt (x : ℙ S.F K) : Nat.card {l : S.TILine // x ∈ l} = S.q +
       Nat.card {y : {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x} //
         f y = l} = S.q := by
     intro l
-    have hcount := S.card_erase_add_one (fun z : ℙ S.F K => z.submodule ≤ l.1.1) x l.2
+    have hcount := card_erase_add_one (fun z : ℙ S.F K => z.submodule ≤ l.1.1) x l.2
     have hcard : Nat.card {z : ℙ S.F K // z.submodule ≤ l.1.1} = S.q + 1 :=
       S.card_points_on l.1.1 l.1.2.1
     have hxrep : x.rep ∈ l.1.1 := l.2 (S.rep_mem' x)
+    have hto : ∀ y : {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x},
+        f y = l → y.1.submodule ≤ l.1.1 := by
+      intro y hy
+      have hle : y.1.submodule ≤ (f y).1.1 :=
+        (S.mem_lineOf (fun h => y.2.2 h.symm) ((S.points_in_ker_iff x y.1).mp y.2.1)).2
+      rw [hy] at hle
+      exact hle
     have e : {y : {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x} //
         f y = l} ≃ {z : ℙ S.F K // z.submodule ≤ l.1.1 ∧ z ≠ x} :=
-      { toFun := fun y => ⟨y.1.1, by
-          have hle : y.1.1.submodule ≤ (f y.1).1.1 := (S.mem_lineOf _ _).2
-          have he : (f y.1).1.1 = l.1.1 := congrArg (fun m : {l : S.TILine // x ∈ l} => m.1.1) y.2
-          rw [he] at hle
-          exact hle, y.1.2.2⟩
+      { toFun := fun y => ⟨y.1.1, hto y.1 y.2, y.1.2.2⟩
         invFun := fun z =>
           have hzl : z.1.submodule ≤ l.1.1 := z.2.1
           have hB : S.B x.rep z.1.rep = 0 :=
             l.1.2.2 _ hxrep _ (hzl (S.rep_mem' z.1))
           ⟨⟨z.1, (S.points_in_ker_iff x z.1).mpr hB, z.2.2⟩,
-            Subtype.ext (S.lineOf_eq _ _ l.1 l.2 (hzl (S.rep_mem' z.1)) |> fun h => h)⟩
+            Subtype.ext (S.lineOf_eq (fun h => z.2.2 h.symm) hB l.1 l.2 hzl)⟩
         left_inv := fun y => Subtype.ext (Subtype.ext rfl)
         right_inv := fun z => Subtype.ext rfl }
     rw [Nat.card_congr e]
     omega
-  haveI : Fintype {l : S.TILine // x ∈ l} := Fintype.ofFinite _
-  have htot : Nat.card {y : {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x}}
+  have : Fintype {l : S.TILine // x ∈ l} := Fintype.ofFinite _
+  have htot : Nat.card {y : ℙ S.F K // y.submodule ≤ LinearMap.ker (S.Bfun x.rep) ∧ y ≠ x}
       = Nat.card {l : S.TILine // x ∈ l} * S.q := by
     rw [← Nat.card_congr (Equiv.sigmaFiberEquiv f), Nat.card_sigma]
     simp only [hfiber, Finset.sum_const, Finset.card_univ, smul_eq_mul]
@@ -197,6 +199,18 @@ end Setting
 
 end BipartiteDD.SingerC
 
-end Setting
+namespace BipartiteDD.SingerC
+
+open scoped LinearAlgebra.Projectivization
+
+variable {K : Type*} [Field K] [Fintype K] {p : ℕ} [Fact p.Prime] [CharP K p]
+
+/-- The lines of `W(3,q)` on the Singer setting: the totally isotropic 2-dimensional `F`-subspaces
+of `K`. -/
+abbrev W3Line (S : Setting K p) : Type _ := S.TILine
+
+/-- Target 1: `W(3,q)` on the Singer setting is a generalized quadrangle of order `(q, q)`. -/
+theorem W3.isGQst (S : Setting K p) : GQst (ℙ S.F K) (W3Line S) S.q S.q :=
+  ⟨S.pts_on_line, S.lines_on_pt, S.one_line, S.gq_ax⟩
 
 end BipartiteDD.SingerC

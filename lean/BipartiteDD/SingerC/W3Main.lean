@@ -7,6 +7,7 @@ import BipartiteDD.GQST.Main
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
