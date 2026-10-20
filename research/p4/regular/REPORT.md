@@ -57,8 +57,8 @@ regularize.py IN Δ OUT [seed]` (deterministic per seed).
 | (15,6) | 866068 | reg_q13_d15.txt | 15:866068 | bigcheck (700 s) | 842048 | 870440 |
 | (16,6) | 927724 | reg_q13a3_d16.txt | 16:927724, sides 463862/463862 | bigcheck (2057 s) | 884062 | 940846 |
 
-Main-session independent bigcheck (research-lab/verify/bigcheck, written without the agents' code): (7,6) also
-verify_record VALID; (11,6) VALID, sides 73750/73750; (13,6) VALID, sides 193164/193164; (15,6), (16,6) running.
+Main-session independent bigcheck (research-lab/verify/bigcheck, written without the agents' code), all VALID,
+exactly regular, equal sides, exact diameter 6: (7,6) also verify_record; (11,6), (13,6), (15,6) 433034/433034, (16,6) 463862/463862.
 
 Simpler alternative proof, same n: keep only q⁴−2q³−q²+2q−4 exact whiskers (q⁴−3q³−q²+3q−9 when m = 3); sides balance
 directly through hats Theorem 3, then the completion lemma. Delorme's own graphs (no whiskers) have the opposite excess
