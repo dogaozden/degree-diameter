@@ -41,7 +41,7 @@ import os
 hyps = [tuple(int(c) for c in os.environ['HYPER'].split(','))] if 'HYPER' in os.environ else \
     itertools.product(range(q), repeat=7)
 for a in hyps:
-    if not any(a) or next(c for c in a if c) != 1:
+    if not any(a) or ('HYPER' not in os.environ and next(c for c in a if c) != 1):
         continue
     inH = [sum(x * y for x, y in zip(a, w)) % q == 0 for w in P]
     cand = [k for k, L in enumerate(lines) if all(inH[p] for p in L)]

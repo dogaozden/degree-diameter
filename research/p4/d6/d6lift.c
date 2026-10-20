@@ -104,6 +104,8 @@ int main(int argc, char **argv) {
         int cb = 0; for (int k = 0; k < L; k++) cb += inB[k];
         fprintf(stderr, "blocks through v: %d; B uses %d of them, %d spread lines (incl. v)\n", nbk, NB, cb);
     }
+    if (getenv("BFILE")) { FILE *g = fopen(getenv("BFILE"), "r"); int k, cb = 0; while (fscanf(g, "%d", &k) == 1) { inB[k] = 1; cb++; } fclose(g);
+        fprintf(stderr, "B from file: %d spread lines\n", cb); }
     /* candidates */
     int *cand = malloc(sizeof(int) * L); int nc = 0;
     for (int k = 0; k < L; k++) {
