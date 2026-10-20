@@ -7,6 +7,7 @@ import BipartiteDD.GQST.Main
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
@@ -30,11 +31,12 @@ theorem card_O_line {a : ℕ} (ha : a ≤ S.q) (l : S.TILine) :
   have h1 := S.card_vec_points l.1 (S.Oz a) (fun c hc hc0 z => S.Oz_mul_F_iff ha hc hc0)
   have h2 : Nat.card {v : K // v ≠ 0 ∧ v ∈ l.1 ∧ S.Oz a v} = 2 * (S.q - 1) := by
     rw [← S.propC_subspace ha l.1 l.2.1 l.2.2]
-    exact Nat.card_congr
+    let E : {u : l.1 // u ≠ 0 ∧ S.Oz a u.1} ≃ {v : K // v ≠ 0 ∧ v ∈ l.1 ∧ S.Oz a v} :=
       { toFun := fun u => ⟨u.1.1, fun h => u.2.1 (Subtype.ext h), u.1.2, u.2.2⟩
         invFun := fun v => ⟨⟨v.1, v.2.2.1⟩, fun h => v.2.1 (congrArg Subtype.val h), v.2.2.2⟩
         left_inv := fun u => Subtype.ext (Subtype.ext rfl)
         right_inv := fun v => Subtype.ext rfl }
+    exact (Nat.card_congr E).symm
   rw [h2] at h1
   have hq : 0 < S.q - 1 := by have := S.one_lt_q; omega
   have h3 : (S.q - 1) * 2 =
@@ -137,12 +139,17 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
   let m : S.TILine → ℕ := fun l => if S.IsSpread l then j else 0
   have hw : ∀ l : S.TILine, ∑ x ∈ Finset.univ.filter (fun x => x ∈ l), w x ≤ j := by
     intro l
-    have hc : ((Finset.univ.filter (fun x => x ∈ l)).filter (fun x => S.Oz 0 x.rep)).card = 2 := by
-      rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
-      exact S.card_O_line (Nat.zero_le _) l
+    have hc : ((Finset.univ.filter (fun x => x ∈ l)).filter (fun x : ℙ S.F K => S.Oz 0 x.rep)).card = 2 := by
+      have h := S.card_O_line (Nat.zero_le _) l
+      rw [Nat.card_eq_fintype_card, Fintype.card_subtype] at h
+      rw [← h]
+      congr 1
+      ext x
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+      exact Iff.rfl
     have hs : ∑ x ∈ Finset.univ.filter (fun x => x ∈ l), w x =
-        ∑ x ∈ (Finset.univ.filter (fun x => x ∈ l)).filter (fun x => S.Oz 0 x.rep), j / 2 := by
-      rw [Finset.sum_filter]
+        ∑ x ∈ (Finset.univ.filter (fun x => x ∈ l)).filter (fun x : ℙ S.F K => S.Oz 0 x.rep), j / 2 := by
+      simp only [Finset.sum_filter, w, m]
     rw [hs, Finset.sum_const, hc, smul_eq_mul]
     omega
   have hm : ∀ x : ℙ S.F K, ∑ l ∈ Finset.univ.filter (fun l => x ∈ l), m l ≤ j := by
@@ -155,7 +162,7 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
       exact S.spread_unique ha.2 hb.2 ha.1 hb.1
     have hs : ∑ l ∈ Finset.univ.filter (fun l : S.TILine => x ∈ l), m l =
         ∑ l ∈ (Finset.univ.filter (fun l : S.TILine => x ∈ l)).filter (fun l => S.IsSpread l), j := by
-      rw [Finset.sum_filter]
+      simp only [Finset.sum_filter, w, m]
     rw [hs, Finset.sum_const, smul_eq_mul]
     exact le_trans (Nat.mul_le_mul_right j hc) (by simp)
   obtain ⟨H, hH⟩ := BipartiteDD.GQST.gqst S.gq_W w m j j hw hm
@@ -165,17 +172,17 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
   have hL : Fintype.card S.TILine = (S.q + 1) * (S.q ^ 2 + 1) := by
     rw [← Nat.card_eq_fintype_card, S.card_lines]
   have hW : ∑ x, w x = j * (S.q ^ 2 + 1) := by
-    have hs : ∑ x, w x = ∑ x ∈ Finset.univ.filter (fun x => S.Oz 0 x.rep), j / 2 := by
-      rw [Finset.sum_filter]
+    have hs : ∑ x, w x = ∑ x ∈ Finset.univ.filter (fun x : ℙ S.F K => S.Oz 0 x.rep), j / 2 := by
+      simp only [Finset.sum_filter, w, m]
     rw [hs, Finset.sum_const, smul_eq_mul]
-    have hc : (Finset.univ.filter (fun x => S.Oz 0 x.rep)).card = 2 * (S.q ^ 2 + 1) := by
+    have hc : (Finset.univ.filter (fun x : ℙ S.F K => S.Oz 0 x.rep)).card = 2 * (S.q ^ 2 + 1) := by
       rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
       exact S.card_O (Nat.zero_le _)
     rw [hc, show 2 * (S.q ^ 2 + 1) * (j / 2) = (S.q ^ 2 + 1) * (2 * (j / 2)) by ring, hj2']
     ring
   have hM : ∑ l, m l = j * (S.q ^ 2 + 1) := by
     have hs : ∑ l, m l = ∑ l ∈ Finset.univ.filter (fun l : S.TILine => S.IsSpread l), j := by
-      rw [Finset.sum_filter]
+      simp only [Finset.sum_filter, w, m]
     rw [hs, Finset.sum_const, smul_eq_mul]
     have hc : (Finset.univ.filter (fun l : S.TILine => S.IsSpread l)).card = S.q ^ 2 + 1 := by
       rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
@@ -187,15 +194,10 @@ theorem corC1 {j : ℕ} (hj : Even j) (hj2 : 2 ≤ j) :
     ring
   exact ⟨H.comap (finCongr hn).symm, isBipartiteDegDiam_comap (finCongr hn) hH⟩
 
-/-- The case `j = 2`: `n_b(q + 3, 4) ≥ 2 (q² + 1)(q + 3)`. -/
+/-- The case `j = 2`: `n_b(q + 3, 4) ≥ 2 (q² + 1)(q + 3)`, with degree `q + 1 + 2`. -/
 theorem corC1_two :
-    ∃ H : SimpleGraph (Fin (2 * (S.q ^ 2 + 1) * (S.q + 3))), IsBipartiteDegDiam H (S.q + 3) 4 := by
-  obtain ⟨H, hH⟩ := S.corC1 (j := 2) even_two le_rfl
-  have hn : 2 * (S.q ^ 2 + 1) * (S.q + 1 + 2) = 2 * (S.q ^ 2 + 1) * (S.q + 3) := by ring
-  have hd : S.q + 1 + 2 = S.q + 3 := by ring
-  refine ⟨H.comap (finCongr hn).symm, ?_⟩
-  have := isBipartiteDegDiam_comap (finCongr hn) hH
-  rwa [hd] at this
+    ∃ H : SimpleGraph (Fin (2 * (S.q ^ 2 + 1) * (S.q + 1 + 2))), IsBipartiteDegDiam H (S.q + 1 + 2) 4 :=
+  S.corC1 (j := 2) even_two le_rfl
 
 end Setting
 

@@ -1,22 +1,22 @@
 import BipartiteDD.SingerC.Main
 import BipartiteDD.GQST.Defs
 
-/-! Corollary C1, step 2: the generalized quadrangle W(3,q) on the Singer setting (work in progress).
+/-! Corollary C1, step 2: the generalized quadrangle W(3,q) on the Singer setting.
 
 Points are the projective points `ℙ F K` (1-dimensional `F`-subspaces of `K`); lines are the
 2-dimensional totally isotropic `F`-subspaces for the form `S.B`; `p ∈ l` means `p ≤ l`.
-This file is not on the import chain of `BipartiteDD` until it is sorry-free. -/
+Compiled and sorry-free; imported only by the Corollary C1 files, not by the `BipartiteDD` root. -/
 
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
 variable {K : Type*} [Field K] [Fintype K] {p : ℕ} [Fact p.Prime] [CharP K p]
 variable (S : Setting K p)
 
-instance : FiniteDimensional S.F K := Module.finite_of_finite S.F
 
 theorem tr4_mem_F (z : K) : S.tr4 z ∈ S.F := by
   rw [mem_F]
@@ -35,7 +35,7 @@ theorem B_mem_F (x y : K) : S.B x y ∈ S.F := S.tr4_mem_F _
 def Bfun (v : K) : K →ₗ[S.F] S.F where
   toFun x := ⟨S.B v x, S.B_mem_F v x⟩
   map_add' x y := Subtype.ext (S.B_add_right v x y)
-  map_smul' c x := Subtype.ext (S.B_smul_right v c c.2 x)
+  map_smul' c x := Subtype.ext (S.B_smul_right (c : K) c.2 v x)
 
 theorem finrank_K : finrank S.F K = 4 := by
   have h := Module.card_eq_pow_finrank (K := S.F) (V := K)
@@ -47,14 +47,15 @@ theorem finrank_K : finrank S.F K = 4 := by
 /-- Points of `W(3,q)`: the projective points of `K` over `F`. -/
 theorem card_points_le (U : Submodule S.F K) :
     Nat.card {x : ℙ S.F K // x.submodule ≤ U} = Nat.card (ℙ S.F U) := by
-  let f : ℙ S.F U → ℙ S.F K := Projectivization.map U.subtype (fun a b h => Subtype.ext h)
-  have hf : Function.Injective f := Projectivization.map_injective _ (fun a b h => Subtype.ext h)
+  let f : ℙ S.F U → ℙ S.F K := Projectivization.map U.subtype (fun a b h => Subtype.ext (by simpa using h))
+  have hf : Function.Injective f := Projectivization.map_injective _ (fun a b h => Subtype.ext (by simpa using h))
   have hmem : ∀ q : ℙ S.F U, (f q).submodule ≤ U := by
     intro q
     induction q using Projectivization.ind with
     | h v hv =>
-      simp only [f, Projectivization.map_mk, Projectivization.submodule_mk,
-        Submodule.span_singleton_le_iff_mem]
+      have hv' : (v : K) ≠ 0 := fun h => hv (Subtype.ext h)
+      show (Projectivization.mk S.F (v : K) hv').submodule ≤ U
+      simp only [Projectivization.submodule_mk, Submodule.span_singleton_le_iff_mem]
       exact v.2
   refine (Nat.card_congr (Equiv.ofBijective (fun q => ⟨f q, hmem q⟩) ⟨?_, ?_⟩)).symm
   · intro a b hab
@@ -66,8 +67,7 @@ theorem card_points_le (U : Submodule S.F K) :
         rw [Projectivization.submodule_mk, Submodule.span_singleton_le_iff_mem] at hx
         exact hx
       refine ⟨Projectivization.mk S.F (⟨v, hvU⟩ : U) (fun h => hv (congrArg Subtype.val h)), ?_⟩
-      apply Subtype.ext
-      simp [f, Projectivization.map_mk]
+      exact Subtype.ext rfl
 
 theorem card_points_on (U : Submodule S.F K) (hU : finrank S.F U = 2) :
     Nat.card {x : ℙ S.F K // x.submodule ≤ U} = S.q + 1 := by

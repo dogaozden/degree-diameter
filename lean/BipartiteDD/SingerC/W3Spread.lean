@@ -5,6 +5,7 @@ import BipartiteDD.SingerC.W3Lines
 namespace BipartiteDD.SingerC
 
 open Module Projectivization
+open scoped LinearAlgebra.Projectivization
 
 namespace Setting
 
