@@ -1,0 +1,822 @@
+On new record graphs close to bipartite Moore graphs
+Gabriela Araujo
+Instituto de Matemáticas
+Universidad Nacional Autonóma de México
+México D.F. 04510,México
+garaujo@matem.unam.mx
+
+arXiv:2005.02427v1 [math.CO] 5 May 2020
+
+Nacho López
+Departament de Matemàtica
+Universitat de Lleida
+Jaume II 69, 25001 Lleida, Spain
+nacho.lopez@udl.cat
+
+May 7, 2020
+
+Abstract
+The modelling of interconnection networks by graphs motivated the study of several
+extremal problems that involve well known parameters of a graph (degree, diameter, girth
+and order) and ask for the optimal value of one of them while holding the other two fixed.
+Here we focus in bipartite Moore graphs, that is, bipartite graphs attaining the optimum
+order, fixed either the degree/diameter or degree/girth. The fact that there are very few
+bipartite Moore graphs suggests the relaxation of some of the constraints implied by the
+bipartite Moore bound. First we deal with local bipartite Moore graphs. We find in some
+cases those local bipartite Moore graphs with local girths as close as possible to the local
+girths given by a bipartite Moore graph. Second, we construct a family of (q +2)-bipartite
+graphs of order 2(q 2 + q + 5) and diameter 3, for q a power of prime. These graphs attain
+the record value for q = 9 and improve the values for q = 11 and q = 13.
+
+Keywords: Bipartite Moore bound, Bipartite graph, girth, local girth.
+
+1
+
+Introduction
+
+The degree/diameter problem for graphs consists in finding the largest order of a graph with
+prescribed degree and diameter (for a survey of it see [9]). Here we focus on the class of
+bipartite graphs. In this context, given the values of maximum degree ∆ and diameter d of a
+bipartite graph, there is a natural upper bound for its number of vertices n,
+
+ (∆ − 1)d − 1
+2
+if ∆ > 2,
+b
+n ≤ M∆,d =
+(1)
+∆−2
+
+2d
+if ∆ = 2.
+
+b
+where M∆,d
+is known as the bipartite Moore bound . It is well known that biparite Moore
+graphs only exists for a few combinations of the parameters ∆ and d, namely, ∆ = 1 and
+d = 1 (Complete graph of two vertices), ∆ = 2 and d ≥ 1 (Cycle graphs), d = 2 and ∆ ≥ 3
+(Complete bipartite graphs). For d = 3, 4, 6 bipartite Moore graphs have been constructed
+
+1
+
+only when ∆ − 1 is a prime power (see [9]).
+The fact that there are very few Moore graphs suggested the study of graphs ‘close’ to
+the Moore ones. This ‘closeness’ has been usually measured as the difference between the
+(unattainable) Moore bound and the order of the considered graphs. In this sense, the existence and construction of graphs with small ‘defect’ δ (order n = M (∆, d) − δ) has deserved
+much attention in the literature (also see [9] and [11] for complete surveys of the problem).
+Besides, the degree/girth problem (also known as the cage problem) consists in finding the
+smallest order of a graph with prescribed degree and girth (for a survey of it see [5]). In this
+context, given the values of the maximum degree ∆ > 2 and the girth g of a bipartite graph
+(notice that g must be even) there is a natural lower bound for its number of vertices n,
+g−2
+
+b
+n ≥ M∆,g
+= 2 1 + (∆ − 1) + (∆ − 1)2 + · · · + (∆ − 1) 2
+
+
+
+=2
+
+(∆ − 1)g/2 − 1
+∆−2
+
+(2)
+
+graphs attaining such a bound are again biparite Moore graphs and hence both problems
+collide in their corresponding extremal value (g = 2d). Both bounds (1) and (2) can easily
+calculated just by counting the number of vertices at every distance from any edge uv in a
+bipartite Moore tree (see Figure 1) where the depth of the tree is d (and therefore the graph
+must have girth g = 2d) and where every vertex has degree ∆ (except those vertices at depth
+d, that is, terminal vertices of the tree).
+b
+Also the existence of graphs with small ‘excess’  (order n = M∆,g
++ ) has been studied deeply and those graphs with prescribed degree/girth and minimum order are known as
+(∆, g)-cages.
+Another kind of approach considers relaxing some of the constraints implied by the
+Moore bound. For instance, this approach has been considered yet in the context of the
+degree/diameter problem, where Tang, Miller and Lin [10] relax the condition of the degree
+and admit few vertices with degree ∆ + . Alternatively, Capdevila et al. [2] allow the existence of vertices with eccentricity d + 1. In this context, regular graphs of degree d, radius d,
+diameter d + 1 and order equal to the Moore bound are known as radial Moore graphs.
+
+Contributions in this paper
+We study two problems related with the ‘relaxation’ of bipartite Moore graphs. In section
+2, inspired in the idea given by Capdevila et al [2] about radial Moore graphs (relaxing the
+diameter of the graph), we define the local bipartite Moore graphs as graphs preserving one
+structural property that every bipartite Moore graph has (in this case we relax the girth).
+We enumerate these extremal graphs in a special case and we rank them according to their
+proximity to a bipartite Moore graph.
+We attend a problem related with the classical relaxation of ‘closeness’ in section 3, constructing bipartite graphs with small defect. In particular, we construct a (q + 2)-regular
+bipartite graph of diameter 3 and girth 4 adding 8 vertices to the incidence graph of the
+projective plane of order q. This result presents new record graphs in the context of the
+degree/diameter problem, to consult the record regular bipartite graphs known until this moment see [12]. Moreover, the graphs attained and improved with our construction are given
+in ([1, 3, 6]).
+2
+
+Finally, in section 4, we present several questions and open problems related to this work.
+
+Terminology and notation
+Let G = (V, E) be a connected graph. Given two vertices u and v of G, the distance between
+u and v, distG (u, v), is the length of a shortest path joining them. The girth of a graph G is
+the length of its shortest cycle. If we restrict our attention to the cycles through a given vertex
+v, we can define the local girth of vertex v, g(v), as the smallest length of such ‘rooted’ cycles.
+The vector g(G) constituted by the girths of all its vertices will be referred to as the girth
+vector of G. Usually, when the vector is long enough, we denote it with a short description
+using superscripts, that is, g(G) : g1n1 , g2n2 , . . . , gknk , where g1 > g2 > · · · > gk , and ni denotes
+the number of vertices having gi as its local girth, for all 1 ≤ i ≤ k.
+
+2
+
+Local bipartite Moore graphs
+
+b ,
+Radial Moore graphs (see [2, 4, 7]) are defined as regular graphs of degree ∆, order M∆,d
+radius d and diameter d + 1. In other words, radial Moore graphs have the same distancepreserving spanning tree than a Moore graph has for any vertex, but only for some of their
+vertices (those vertices with eccentricity d). In a radial Moore graph it is allowed the existence
+of other spanning trees of depth at most d + 1. Here we do something similar with bipartite
+Moore graphs: if we hang a bipartite Moore graph from any of its edges uv we observe the
+‘same’ distance-preserving spanning tree (see figure 1). Thus we could relax this property
+in the set of regular bipartite graphs by forcing the existence of this Moore tree for at least
+one edge, but allowing others distance-preserving spanning trees in the graph for other edges.
+This is how we define a local bipartite Moore graph.
+
+Definition 1. Given two positive integers ∆ ≥ 2 and g ≥ 4, a connected regular bipartite
+b
+graph of degree ∆ and order M∆,g
+is said to be a local bipartite Moore graph if it contains
+at least one edge such that its corresponding distance-preserving spanning tree is a bipartite
+Moore tree (see figure 1).
+From this point of view, bipartite Moore graphs are a particular case of local bipartite
+Moore graphs having the same distance-preserving spanning tree for any of its edges. There
+are at least two vertices with local girth g in a local bipartite Moore graph (the end vertices
+of the edge uv in figure 1), meanwhile for a Moore graph all vertices have local girth g (and
+hence the whole graph has girth g).
+Let us denote by RB(∆, g) the set of all nonisomorphic regular bipartite graphs of degree
+b . The set of local bipartite Moore graph of degree ∆ and girth g will be
+d and order M∆,g
+denoted as LBM(∆, g). Of course LBM(∆, g) ⊆ RB(∆, g) and our purpose is give some
+extra information about this set.
+Let us start with the case g = 4 and any ∆ ≥ 2. Let G ∈ LBM(∆, 4), then, according to
+b
+Eq. (2), G has order M∆,4
+= 2∆ and G contains the Moore tree depicted in Fig. 2. Due to the
+regularity of G, every vertex of the set {u2 , . . . , u∆ } is adjacent to each vertex of {v2 , . . . , v∆ }
+and viceversa. Hence local bipartite Moore graphs for g = 4 are complete bipartite graphs
+K∆,∆ and they are indeed Moore graphs (both for girth g = 4 or diameter d = 2).
+3
+
+The case g = 6 requires a deeper analysis. Next proposition gives a complete enumeration
+of these graphs for the cubic case ∆ = 3.
+Proposition 1. There are 5 graphs in the set LBM(3, 6), namely H, G1 , G2 , G3 and G4
+depicted in figures 5 and 6, where H is the unique bipartite Moore graph for these parameters
+(also known as the Heawood graph).
+Proof. Let G be a graph G ∈ LBM(3, 6). By definition, G contains the distance-preserving
+spanning tree depicted in Figure 5 and we label the vertices as they are depicted in this figure
+(B for ‘black’ vertices and W for ‘white’ vertices). Notice that the edges of G that do not
+appear in this Moore tree must join vertices in the set S = {B1 , B2 , B10 , B20 , W1 , W2 , W10 , W20 },
+that is, those vertices at maximum distance from the ‘root’ edge (Wr , Br ). Moreover, the
+subgraph GS of G induced by the set of vertices S must be 2-regular, and since it is bipartite,
+then GS is either a cycle graph of length 8 or the union of two cycle graphs of order 4. Hence,
+in order to complete graph G, we have to analyze several cases:
+(a) GS = C8 : We divide this case according to the distance between vertices inside the
+cycle:
+(a1) If distGS (B1 , B2 ) = 4 and distGS (W1 , W2 ) = 2.
+Then, distGS (B10 , B20 ) = 4 and distGS (W10 , W20 ) = 2. There are several labelings of C8
+with these conditions, one of them is depicted in Fig. 3. Nevertheless, all of them are
+equivalent performing a convinient relabeling of vertices in G. However, the local girth
+for all v ∈ {W1 , W2 , W10 , W20 , B, B 0 } is g(v) = 4, since they belong to a cycle of length 4
+in G. Moreover, since distGS (W1 , W2 ) = 2 then W1 and W2 must be adjacent both to
+just one black vertex in GS (vertex B1 in Fig. 3). Hence this black vertex has also local
+girth 4. Another one black vertex has also local girth 4 because distGS (W10 , W20 ) = 2. It
+is easy to see that the remaining vertices have maximum local girth. Hence g(G) : 66 , 48 .
+A complete representation of graph G is given in Fig. 4, where subgraph GS is depicted
+in red color.
+(a2) If distGS (B1 , B2 ) = 2 and distGS (W1 , W2 ) = 4. This case is equivalent to the previous
+one replacing black vertices Bi and Bi0 by white ones Wi and Wi0 , respectively.
+(a3) If distGS (B1 , B2 ) = 4 and distGS (W1 , W2 ) = 4.
+Then, distGS (B10 , B20 ) = 4 and distGS (W10 , W20 ) = 4. Following the ideas given above,
+it is easy to see that every vertex in G has maximum local girth, that is, g(G) : 614 .
+Therefore G is a Moore graph. This graph is precisely the Heawood graph, denoted by
+H in figure 5.
+(a4) If distGS (B1 , B2 ) = 2 and distGS (W1 , W2 ) = 2.
+Then, distGS (B10 , B20 ) = 2 and distGS (W10 , W20 ) = 2. Notice that the sequence of vertices
+(W, W1 , v, W2 ), where v is one of the black vertices v ∈ {B1 , B2 , B10 , B20 }, is a cycle of
+length 4. In fact, every vertex of S, together with vertices {W, W 0 , B, B 0 } have local
+girth 4. Then g(G) : 62 , 412 and G is isomorphic to graph G3 depicted in figure 6.
+(b) GS = C4 ∪ C4 . In this case every vertex of S has local girth 4. The local girth of the
+vertices in the set {W, W 0 , B, B 0 } depends on the configuration of these cycles of length
+four. Although there are serveral cases to take into account, all of them fall into one of
+these three cases, after a vertex relabeling.
+4
+
+(b1) distGS (B1 , B10 ) = 2 and distGS (W1 , W10 ) = 2.
+Then distGS (B2 , B20 ) = 2 and distGS (W2 , W20 ) = 2 and there are two possibilities for
+GS : Either GS is the union of the cycles (B1 , W1 , B10 , W1 ) and (C4 : B2 , W2 , B20 , W20 )
+or the union of the cycles (B1 , W2 , B10 , W20 ) and (B2 , W1 , B20 , W10 ). Both are equivalent
+with a properly relabeling. However, each vertex of {W, W 0 , B, B 0 } has local girth 6 in
+this situation. Then g(G) : 66 , 48 and G is again the graph G1 depicted in figure 4,
+where each C4 has been depicted in different color.
+(b2) If distGS (B1 , B2 ) = 2 and distGS (W1 , W2 ) = 2. Then, W (resp. B) has local girth 4
+since it is adjacent both to B1 and B2 (resp. W1 and W2 ). The same reasoning applies
+to W 0 and B 0 since distGS (B10 , B20 ) = 2 and distGS (W10 , W20 ) = 2. As a consequence
+g(G) : 62 , 412 and G is isomporphic to G4 (See figure 6).
+(b3) distGS (B1 , B2 ) = 2 and distGS (W1 , W10 ) = 2. Then W and W 0 has local girth 4. Besides
+B and B 0 has maximum local girth. Hence g(G) : 64 , 410 and G is isomorphic to G2
+depicted in figure 6.
+
+Now we would like to rank each local bipartite Moore graph according to their closeness
+to the Moore graph. Two ranking measures are introduced in [2] in the context of radial
+Moore graphs. Here we describe the one involving local girths: Let us consider the set of
+b
+graphs LBM(∆, g) and let g∆,g be the vector of length M∆,g
+with all components equal to
+b
+g, where M∆,g is the bipartite Moore bound (2). Notice that g∆,g represent the girth vector
+of a bipartite Moore graph of degree ∆ and girth g. For every positive integer p,
+Ñp (G) = kg(G) − g∆,g kp .
+In particular,
+Ñ1 (G) =
+
+X
+
+(g − g(v))
+
+v∈V
+
+is the girth norm of G. Given two graphs G1 , G2 ∈ LBM(∆, g) we define G1 and G2 to
+be girth-equivalent, G1 ≈ G2 , if they have the same girth vector. In the quotient set of
+LBM(∆, g) by ≈, LBM(∆, g)/ ≈, we will say that G1 is closer than G2 to be a Moore graph
+if there exists a positive integer l such that
+Ñp (G1 ) = Ñp (G2 ), p = 1, . . . , l − 1 and Ñl (G1 ) < Ñl (G2 ),
+in which case we will denote G1 ≺ G2 .
+In the particular case ∆ = 3 and g = 6 it is suffice to compute the girth norm Ñ1 (G) of
+the five graphs to rank them. The girth norm for each one of these five graphs is calculated
+in proposition 1 and it is resumed in figures 5 and 6. Taking into account that G3 and G4
+share the same vector of local girths, we have that:
+Corollary 1. Let H, G1 , G2 , G3 and G4 be the five graphs in LBM(3, 6). Then,
+H ≺ G1 ≺ G2 ≺ G3 ≈ G4 .
+
+5
+
+3
+
+New record graphs in the context of the degree/diameter
+problem for bipartite graphs
+
+In this section we construct new record bipartite graphs with small defect that attend the
+Moore problem in the context of the degree/diameter problem. To consult more about this
+topic see [12]. In particular, we construct a (q + 2)-regular bipartite graph of diameter 3 and
+girth 4 adding 8 vertices to the incidence graph of the projective plane of order q. See ([1, 3, 6])
+to consult the graphs given in [12] which are attained and improved by our construction.
+
+Description of the incidence graph of the projective plane or order q
+Firstly, we introduce the algebraic projective plane of order q and their incidence graph Gq .
+Let q be a prime power and denote by GF (q) the Galois Field of order q. The following
+is a useful description of the projective plane over GF (q): Let P and L two incident point
+and line that we will call the infinity point and line respectively, and let {P0 , P1 , . . . , Pq−1 }
+the set of points, different of P , incident with L and analogously {L0 , L1 , . . . , Lq−1 } the set
+of lines, different of L, incident with P .
+Moreover, let {(i, 0), (i, 1), . . . , (i, q − 1)} the set of points, different to P , incident in Li ;
+and, let {[i, 0], [i, 1], . . . , [i, q − 1]} the set of lines, different to L, incident with Pi . With the
+previous information, we construct the bipartite Moore tree of depth 3, depicted on figure 1,
+that is the spanning tree of Gq , the incidence graph of the projective plane of order q.
+The rest of the incidences are given by the cordinatization, here the line [m, b] is adjacent
+in the graph with all the points (x, y) that satisfy that y = mx + b using the arithmetic of
+GF (q). As we known, Gq is a (q + 1, 6)-Moore Cage with diameter 3 and girth 6.
+Figure 7 depicts G3 , the incidence graph of the projective plane of order 3.
+In the sequel we construct, using Gq , another bipartite (q + 1)-regular graph, called Hq ,
+it has also diameter 3, but the girth is equal to 4.
+The next simple observation on Gq is very useful for the construction of Hq :
+Observation 1. (1) The set of points incident with the line [0, i], different of L0 , are:
+{(0, i), (1, i), . . . , (q − 1, i)}.
+(2) The set of lines incident with the point (0, i), different of P0 , are:
+{[0, i], [1, i], . . . , [q − 1, i]}.
+
+General construction for bipartite graphs of diameter 3
+In this section we construct Hq that is (q + 2)-regular bipartite Moore graph of diameter 3
+and girth 4 adding 8 vertices to Gq .
+Let:
+[
+[
+[
+V (Hq ) = V (Gq ) ∪ {Q0 , M0 , (0,
+0), (0,
+1), (0,
+a), [0, 0], [0, 1], [0, a]},
+be the set of vertices of Hq , where a is any element of GF (q) different of 0 and 1 and let:
+dj]), (M0 , (0,
+[
+E(Hq ) = E(Hq ) − {((0, a), [0, a])} ∪ {(P, M0 ), (L, Q0 ), (Q0 , [0,
+j)), (Q0 , [0, i]),
+6
+
+dj], (t, j))}
+[
+[
+[
+[
+[
+[
+[
+(M0 , (0, i)), (P0 , [0,
+a]), (L0 , (0,
+a)), ((0,
+0), [0,
+1]), ((0,
+1), [0,
+0]), ((0,
+j), [t, j]), ([0,
+
+be the set of edges of Hq , such that j ∈ {0, 1, a}, i ∈ GF (q) − {0, 1} and t ∈ GF (q).
+
+In the sequel we prove that Hq is a bipartite graph with degree sequence {q, q + 1}, girth
+4 and diameter 3:
+To prove that Hq is bipartite we only have to note that Q0 , and the new vertices denoted
+with parenthesis are in the partite set of the points whereas M0 and the new vertices denoted
+with brackets are in the partite set of the lines in the incidence graph of the projective plane
+of order q. To show that it has the degree sequence given, notice that the new vertices, P , L,
+P0 , L0 , {(t, j), [t, j]} for j ∈ {0, 1, a} and t ∈ GF (q) have degree q + 1, and the rest has degree
+[
+q. It is important to notice that adding the edges (Q0 , [0, a]) and ((0,
+a), [0, a]) the degree of
+[0, a] is equal to q +2, but, to construct Hq , we delete the edge α = ((0, a), [0, a]) and with this
+we garantice that degHq ([0, a]) = q +1. A similar analysis garantice that degHq ((0, a)) = q +1.
+Clearly, the girth of Hq is four because it is an incidence graph, it is bipartite, and it is
+[
+plenty of 4-cycles; for instance (M0 , (0, a), L0 , (0,
+a)) is a C4 .
+Related with observation 1, we have this new observation:
+Observation 2. For Hq we have that
+(1) For i ∈ {0, 1}:
+di]) = {(0, i), (1, i), . . . , (q − 1, i)},
+N ([0, i]) ∪ N ([0,
+[
+N ((0, i)) ∪ N ((0,
+j)) = {[0, i], [1, i], . . . , [q − 1, i]}.
+(2)
+
+N ([0, a]) ∪ N ([0, a]) = {(1, a), . . . , (q − 1, a)},
+[
+N ((0, a)) ∪ N ((0,
+a)) = {[1, a], . . . , [q − 1, a]}.
+
+We are ready to prove that the diameter of Hq is 3:
+Notice that the distance between two vertices on Gq is preserving in Hq , except the
+distances that involve the deleted edge α = ((0, a), [0, a]). In fact, in Hq , d((0, a), [0, a]) = 3
+because there exists a 3-path ((0, a), [0, a], L0 , [0, a]).
+[
+Moreover, as α∗ = ((0, a), [0, a]) and α∗∗ = ([0, a], (0,
+a)) are edges of Hq , by observation
+2, the paths that use to used in Gq the deleted edge α use in Hq the edges α∗ and α∗∗ , with
+this the vertices (0, a) and [0, a] preserve their distances with all the vertices of Gq .
+Now, we will prove that the new vertices have eccentricity at most three.
+[
+• By observation 2, we have that (0,
+s) have the same distance to all the vertices of Gq than
+the vertex (0, s), for s ∈ {0, 1, a}, except with the vertices {(0, t), L0 , P } for t ∈ GF (q).
+[
+– The d((0,
+s), (0, t)) = 2 for s ∈ {0, 1}, and t ∈ GF (q) − {0, 1}, because there exists
+[
+the path {(0,
+s), M0 , (0, t)}.
+[
+[
+– For s = 0 and t ∈ {0, 1}; d((0,
+0), (0, 0)) = 2 by the path {(0,
+0), [0, 0], (0, 0)};
+[
+[
+[
+[
+d((0, 0), (0, 1)) = 2 by the path {(0, 0),
+0, 1], (0, 1)}. The d((0, 0), L0 ) = 3 by the
+[
+[
+path ((0, 0), M0 , (0, a), L0 ). An analogous analysis can be doing for s = 1.
+7
+
+[
+[
+– For s = a, L0 is adjacent with (0,
+a) and d((0,
+a), (0, s)) = 2 for s ∈ {0, 1, a}
+[
+because ((0, a), L0 , (0, s)) is a path of length 2.
+[
+Notice that, by construction, the distance of (0,
+s) to P is equal to three.
+ds] for s ∈ {0, 1, a} to all the vertices of Gq and for
+• A similar analysis should be for [0,
+the vertices {[0, t], P0 , L} for t ∈ GF (q).
+
+• To finish we will prove that the distance of M0 to the vertices of Gq is at most three,
+notice that their first neighborhood coincides with the first neighborhood of L0 (except
+[
+with (0, s) for s ∈ {0, 1}). Notice that as (0,
+s) ∈ N (M0 ) for s ∈ {0, 1}, using the
+observation 2, we can conclude that the second neighborhoods of M0 and L0 coincide
+in all. Then we only have to check the distance to (0, s) for s ∈ {0, 1} and the distance
+dt] for t ∈ {0, 1, a} and Q0 .
+to [0,
+– The d(M0 , (0, s)) = 3 for s ∈ {0, 1} by the path (M0 , (0, a), L0 , (0, s)).
+[
+– The d(M0 , [0, 0]) = d(M0 , [0, 1]) = d(M0 , [0, a]) by the paths (M0 , (0,
+1), [0, 0]),
+[
+(M0 , (0,
+0), [0, 1]), and (M0 , (0, a), [0, a]) respectively.
+– The d(M0 , Q0 ) = 3 by the path (M0 , P, L, Q0 ).
+• An analogously analysis could be for Q0 .
+
+Finally, to obtain a (q + 2)-regular graph, called Rq , we add to Hq a matching:
+{(Pi , Li ), ((x, y), [x, y])} for i ∈ GF (q)−{0, 1, a} and {x, y} ∈ GF (q) with degHq {Pi , (x, y)} =
+q + 1. This matching is well defined because, by construction if degHq {Pi , (x, y)} = q + 1. then
+also degHq {Li , [x, y]} = q + 1.
+With the previous construction we have the following theorem:
+Theorem 1. Let q be a power of prime, then there exists a (q + 2)-bipartite graph of diameter
+3 and order 2(q 2 + q + 5).
+The right side of figure 7 depicts R3 , the (5, 3)-biregular bipartite graph constructed before
+and given in theorem 1.
+
+4
+
+Questions and open problems
+
+We give a complete enumeration of LBM(3, 6) in section 2. It would be nice to have this
+enumeration also for other values of ∆ and/or g. Nevertheless, it seems that the number of
+graphs in LBM(∆, g) increases very quickly with ∆ and/or g, since the order of the graphs
+(Moore bound) follows an exponential law.
+Problem 1. Give a complete enumeration of LBM(∆, g) for any ∆ ≥ 3 and/or g ≥ 6, other
+than (∆, g) = (3, 6).
+There are 13 graphs in RB(3, 6) (they can be counted using an appropiatte software, like
+Nauty [8]) but just 5 of them belong to LBM(3, 6). There are 23466857 graphs in RB(3, 8)
+(again one can use Nauty), but we do not know how many of them are local bipartite Moore
+graphs.
+8
+
+Question 1. Can we say something about the ratio
+
+|LBM(∆, g)|
+?
+|RB(∆, g)|
+
+Local bipartite Moore graphs include Moore graphs, but Moore graphs do not exist for
+infinitely many values of ∆ and g. For any of these combinations of ∆ and g it would be nice
+to have the closest graph to the ‘theoretical’ Moore graph in terms of the girth norm. For
+∆ = 3 and g = 6 we have seen that G1 is the closest graph to the Moore graph. Even for
+these cases when Moore graph exist, which is the ‘closest’ graph to the Moore one?
+Problem 2. Find the closest graph (in terms of local girths) to the Moore graph for other
+values of ∆ and/or g.
+In the context of degree-diameter problem of bipartite Moore graphs the principal open
+problems are construct graphs that improve the graphs given in [12]. In particular we include
+two particular problems related with our results:
+Problem 3. Find smaller bipartite regular graphs with the same parameters that we give in
+this paper. In other words "improve" our construction.
+Problem 4. Generalize our construction to construct bipartite regular graphs of diameters 4
+and 6.
+
+Acknowledgments
+Research of N. López was supported in part by grant MTM2017-86767-R (Spanish Ministerio de Ciencia e Innovacion) and research of G. Araujo was supported by PASPA-DGAPA
+Sabatical Year 2020, CONACyT-México under Project 282280 and PAPIIT-México under
+Projects IN107218, IN106318. G. Araujo would like to thank Ruben Alfaro for his help and
+computation assistance at the first of the construction on the graph given in Section 3.
+
+References
+[1] J.C. Bermont C. Delorme, G. Farhi, Large graphs with given degree and diameter.
+III., Graph theory (Cambridge, 1981), North-Holland Math. Stud., 62, North-Holland,
+Amsterdam-New York, 1982., 23–31.
+[2] C. Capdevila, J. Conde, G. Exoo, J. Gimbert and N. López, Ranking measures for radially
+Moore graphs, Networks, 56 (4) (2010), 255–262.
+[3] C. Delorme, G. Farhi, Large graphs with given degree and diameter. I., IEEE Trans.
+Comput. 33 (9) (1984) 857–860.
+[4] G. Exoo, J. Gimbert, N. López and J. Gómez, Radial Moore graphs of radius three,
+Discrete Applied Mathematics, 160 (10) (2012), 1507–1512.
+[5] G. Exoo and R. Jajcay, Dynamic cage survey, Electronic Journal of Combinatorics 16.
+#DS16v3 (2016).
+[6] R. Feira-Purón, M. Miller and G. Pineda-Villavicencio, On large bipartite graphs of diameter 3, Discrete Math. 4 (2013) 381–390.
+9
+
+[7] J. Gómez and M. Miller, On the existence of radial Moore graphs for every radius and
+every degree, European J. Combin. 47 (2015), 15–22.
+[8] B.D. McKay, nauty User’s Guide. Technical Report TR-CS-90-02, Computer Science Department, Australian National University (1990).
+[9] M. Miller and J. Širáň, Moore graphs and beyond: A survey, Electronic J. Combin. 20 2.
+#DS14v3, (2016).
+[10] J. Tang, M. Miller and Y. Lin, HSAGA and its application for the construction of nearMoore digraphs, J. Discrete Algorithms 6 (1) (2008), 73–84.
+[11] The Degree-Diameter Problem for graphs: https://combgraph.upc.edu/en/resources
+[12] CombinatoricsWiki:
+http://combinatoricswiki.org/wiki/The_Degree_Diameter_
+Problem_for_Bipartite_Graphs
+
+10
+
+u
+
+v
+
+..
+.
+
+..
+.
+
+Figure 1: Bipartite Moore tree, that is, a distance-preserving spanning tree of a bipartite
+Moore graph depicted ‘hanging’ from any of its edges uv.
+
+11
+
+u1
+
+u2
+
+u3
+
+v1
+
+u∆
+
+v2
+
+v3
+
+Figure 2: Spanning tree of a bipartite Moore graph for g = 4.
+
+12
+
+v∆
+
+Br
+
+Wr
+
+W2
+B2′
+
+B1
+W′
+
+W
+
+B1
+
+B2
+
+B1′
+
+B′
+
+B
+
+B2′
+
+W1
+
+W2
+
+W1′
+
+W2′
+
+W2′
+
+W1
+
+B1′
+
+B2
+W1′
+
+(a)
+
+(b)
+
+Figure 3: (a) Spanning tree of a cubic bipartite Moore graph for g = 6 where vertices are
+labelled as in Proposition 1. (b) The subgraph GS induced by the vertices at maximum
+distance from the edge root (Br , Wr ) for the case (a1) in Proposition 1.
+
+13
+
+B2
+
+W1′
+
+W2
+
+B1′
+
+B2
+W′
+
+W
+
+B
+Wr
+
+W
+
+B1
+
+Br
+
+B1
+
+Br
+
+W1
+
+Wr
+
+W1
+
+W′
+
+W2
+
+B2′
+
+B2′
+
+B1′
+
+B′
+
+B
+W2′
+
+W1′
+
+(a1)
+
+B′
+
+W2′
+
+(b1)
+
+Figure 4: (a) The graphs obtained in cases (a1) and (b1) of Proposition 1. They are isomorphic
+to the graph G1 depicted in figure 5
+.
+
+Heawood Graph H
+g(H) : 614 ; Ñ1 (H) = 0.
+
+G1
+6
+8
+g(G1 ) : 6 , 4 ; Ñ1 (G1 ) = 16.
+
+Figure 5: The Moore graph for d = 3 and g = 6 (Heawood graph) and its closest graph G1 in
+terms of local girths.
+
+14
+
+G2
+g(G2 ) : 64 , 410
+Ñ1 (G2 ) = 20
+
+G3
+g(G3 ) : 62 , 412
+Ñ1 (G3 ) = 24
+
+G4
+g(G4 ) : 62 , 412
+Ñ1 (G4 ) = 24
+
+Figure 6: The remaining graphs in LBM(3, 6) and their corresponding girth vector g(G) and
+girth norm Ñ1 (G). Notice that G3 and G4 have the same girth vector and hence both are
+girth-equivalent.
+
+P
+
+L
+
+P2
+
+L2
+
+[2, 0]
+
+(2, 1)
+
+(1, 2)
+
+[1, 1]
+
+!
+[0,
+0]
+
+Q0
+
+L
+
+P1
+
+[1, 2]
+(0, 2)
+
+M0
+!
+(0,
+0)
+
+(2, 0)
+
+L1
+
+[1, 2]
+
+!
+(0,
+1)
+
+[0, 0]
+
+P1
+
+[1, 0]
+
+(1, 1)
+(0, 0)
+
+(1, 1)
+
+!
+[0,
+1]
+
+[1, 0]
+
+[2, 2]
+
+[2, 0]
+
+(2, 2)
+
+(2, 0)
+
+(1, 2)
+
+(0, 1)
+
+!
+[0,
+2]
+
+[0, 1]
+
+[2, 1]
+
+[1, 1]
+
+P0
+
+(1, 0)
+
+(0, 1)
+[0, 0]
+
+(0, 2)
+
+P2
+
+(2, 2)
+[2, 1]
+
+P0
+L0
+
+L2
+
+[0, 2]
+
+[0, 1]
+(0, 0)
+
+(2, 1)
+
+[2, 2]
+(1, 0)
+
+[0, 2]
+
+G3
+
+L1
+
+P
+
+L0
+
+!
+(0,
+2)
+
+R3
+
+Figure 7: On the left G3 , the incidence graph of the projective plane of order q = 3, and on
+the right the new graph R3 .
+
+15
+
+
