@@ -11,5 +11,5 @@ for b in 1 2 3 1b 2b 3b; do
   echo "== cloud $b ($(git log -1 --format=%cr $r))"
   for f in $(git ls-tree --name-only $r logs/ | grep "/D"); do
     printf "%-48s %s\n" "$(basename $f .log)" "$(git show $r:./$f | summ)"; done
-  git ls-tree --name-only $r sols/ | grep -v gitkeep | sed 's/^/SOLVED: /'
+  git ls-tree --name-only $r sols/ | grep -v "gitkeep\|\.best" | sed 's/^/SOLVED: /'
 done

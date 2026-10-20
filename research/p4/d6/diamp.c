@@ -11,23 +11,28 @@ static long n, m, *off, *adj; static int D; static long nextb = 0, bad = 0, done
 static pthread_mutex_t mu = PTHREAD_MUTEX_INITIALIZER;
 static void *work(void *arg) {
     (void)arg;
-    uint64_t *vis = malloc(n * 8), *fr = malloc(n * 8), *nx = malloc(n * 8);
+    typedef struct { uint64_t w[4]; } B4;
+    B4 *vis = malloc(n * sizeof(B4)), *fr = malloc(n * sizeof(B4)), *nx = malloc(n * sizeof(B4));
     for (;;) {
-        pthread_mutex_lock(&mu); long b = nextb; nextb += 64; pthread_mutex_unlock(&mu);
+        pthread_mutex_lock(&mu); long b = nextb; nextb += 256; pthread_mutex_unlock(&mu);
         if (b >= n) break;
-        int k = (n - b < 64) ? (int)(n - b) : 64; uint64_t full = (k == 64) ? ~0ULL : ((1ULL << k) - 1);
-        memset(vis, 0, n * 8); memset(fr, 0, n * 8);
-        for (int j = 0; j < k; j++) vis[b + j] = fr[b + j] = 1ULL << j;
+        int k = (n - b < 256) ? (int)(n - b) : 256;
+        B4 full; for (int i = 0; i < 4; i++) { int lo = i * 64; int c = k - lo; full.w[i] = c >= 64 ? ~0ULL : (c <= 0 ? 0 : ((1ULL << c) - 1)); }
+        memset(vis, 0, n * sizeof(B4)); memset(fr, 0, n * sizeof(B4));
+        for (int j = 0; j < k; j++) { vis[b + j].w[j / 64] = fr[b + j].w[j / 64] = 1ULL << (j % 64); }
         for (int r = 0; r < D; r++) {
             for (long v = 0; v < n; v++) {
-                uint64_t x = 0; for (long t = off[v]; t < off[v + 1]; t++) x |= fr[adj[t]];
-                x &= ~vis[v]; nx[v] = x; vis[v] |= x;
+                uint64_t x0 = 0, x1 = 0, x2 = 0, x3 = 0;
+                for (long t = off[v]; t < off[v + 1]; t++) { const B4 *f = &fr[adj[t]]; x0 |= f->w[0]; x1 |= f->w[1]; x2 |= f->w[2]; x3 |= f->w[3]; }
+                x0 &= ~vis[v].w[0]; x1 &= ~vis[v].w[1]; x2 &= ~vis[v].w[2]; x3 &= ~vis[v].w[3];
+                nx[v].w[0] = x0; nx[v].w[1] = x1; nx[v].w[2] = x2; nx[v].w[3] = x3;
+                vis[v].w[0] |= x0; vis[v].w[1] |= x1; vis[v].w[2] |= x2; vis[v].w[3] |= x3;
             }
-            uint64_t *t = fr; fr = nx; nx = t;
+            B4 *t = fr; fr = nx; nx = t;
         }
-        long lb = 0; for (long v = 0; v < n; v++) lb += __builtin_popcountll(full & ~vis[v]);
+        long lb = 0; for (long v = 0; v < n; v++) for (int i = 0; i < 4; i++) lb += __builtin_popcountll(full.w[i] & ~vis[v].w[i]);
         pthread_mutex_lock(&mu); bad += lb; done += k;
-        if ((done / 64) % 2000 == 0) { fprintf(stderr, "progress %ld/%ld bad=%ld\n", done, n, bad); }
+        if ((done / 256) % 500 == 0) { fprintf(stderr, "progress %ld/%ld bad=%ld\n", done, n, bad); }
         pthread_mutex_unlock(&mu);
     }
     return NULL;

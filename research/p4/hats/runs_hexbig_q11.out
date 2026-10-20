@@ -1,0 +1,24 @@
+[     2s] points 177156
+[     2s] point 0 lines so far 12
+[    48s] point 20000 lines so far 177156
+[    79s] point 40000 lines so far 177156
+[   110s] point 60000 lines so far 177156
+[   142s] point 80000 lines so far 177156
+[   173s] point 100000 lines so far 177156
+[   212s] point 120000 lines so far 177156
+[   241s] point 140000 lines so far 177156
+[   278s] point 160000 lines so far 177156
+[   306s] lines 177156
+[   307s] v = 23 [[0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1]]
+[   312s] distances done; max 6
+[   312s] spread from X0 + 1 X4 = 0
+[   313s] K_S generators fix v and S
+[   314s] torus element with g = 2
+[   338s] blocks through v 121 other blocks 13310
+[   338s] direction (1, 0) E blocks [0, 1, 12, 44, 52, 63, 65, 79, 81, 92, 100]
+[   338s] free points 159720 X-points 14520 candidates 145200
+[   341s] orbits: candidates 120 free points 132 X-points 12
+[   345s] ILP: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+[   345s] whiskers 14520 expected 14520 free covered once True one per X True
+[   359s] graph 388972 vertices 2511132 edges -> /Users/dogaozden/AI_Projects/degree-diameter/research/p4/hats/runs/hex_q11_big.txt
+[   950s] diam: n=388972 m=2511132 maxdeg=13 D=6 far_ordered_pairs=0 OK

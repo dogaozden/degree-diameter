@@ -59,6 +59,7 @@ int main(int argc, char **argv) {
     }
     if (nS != target) { fprintf(stderr, "no elliptic hyperplane found\n"); return 1; }
     for (int i = 0; i < nS; i++) inS[S[i]] = 1;
+    if (getenv("SASEED")) { rs = 0x9E3779B97F4A7C15ULL ^ ((uint64_t)atoi(getenv("SASEED")) * 0x2545F4914F6CDD1DULL); for (int i = 0; i < 10; i++) rnd(); }
     /* S pairwise opposite <=> every line outside S meets exactly one line of S (and S lines are disjoint) */
     char *onS = calloc(N, 1); int bad = 0;
     for (int i = 0; i < nS; i++) for (int j = 0; j < Q1; j++) { int pt = ln[(long)S[i] * Q1 + j]; if (onS[pt]) bad++; onS[pt] = 1; }
@@ -122,7 +123,22 @@ int main(int argc, char **argv) {
     int ew = getenv("SPT") ? q + 1 : q;  /* SPT: also forbid two whiskers at one spread point */
     int *el = malloc(sizeof(int) * (long)nc * ew);
     for (int c = 0; c < nc; c++) { int m = 0; for (int j = 0; j < Q1; j++) { int pt = ln[(long)cand[c] * Q1 + j]; if (!onS[pt]) el[(long)c * ew + m++] = pt; } if (ew > q) for (int j = 0; j < Q1; j++) { int pt = ln[(long)cand[c] * Q1 + j]; if (onS[pt]) el[(long)c * ew + q] = pt; } if (m != q) { fprintf(stderr, "whisker with %d off-S points\n", m); return 1; } }
-    if (win) {
+    int *mlt = calloc(L, sizeof(int)); int multmode = getenv("MULT") != NULL;
+    if (win && multmode) {
+        /* MULT: whisker file may repeat a line; multiplicity m (1 <= m <= b-1) gives the whisker m+1 versions; the
+           last version also serves the remaining versions of its spread point (a quotient of the full b-version
+           whisker, so distances do not grow); each free point carries total multiplicity <= b-1. */
+        FILE *g = fopen(win, "r"); int k; int *pos = malloc(sizeof(int) * L); for (int i = 0; i < L; i++) pos[i] = -1;
+        for (int c = 0; c < nc; c++) pos[cand[c]] = c;
+        int *load = calloc(N, sizeof(int)); long tot = 0;
+        while (fscanf(g, "%d", &k) == 1) { if (pos[k] < 0) { fprintf(stderr, "input whisker %d not a candidate\n", k); return 1; }
+            mlt[k]++; tot++; for (int j = 0; j < Q1; j++) { int pt = ln[(long)k * Q1 + j]; if (!onS[pt]) load[pt]++; } }
+        fclose(g);
+        for (int i = 0; i < N; i++) if (load[i] > b - 1) { fprintf(stderr, "free point over capacity\n"); return 1; }
+        for (int k2 = 0; k2 < L; k2++) if (mlt[k2] > b - 1) { fprintf(stderr, "multiplicity too high\n"); return 1; }
+        fprintf(stderr, "MULT: total multiplicity %ld\n", tot);
+        secs = 0;
+    } else if (win) {
         FILE *g = fopen(win, "r"); int k;
         int *pos = malloc(sizeof(int) * L); for (int i = 0; i < L; i++) pos[i] = -1; for (int c = 0; c < nc; c++) pos[cand[c]] = c;
         while (fscanf(g, "%d", &k) == 1) { int c = pos[k]; if (c < 0) { fprintf(stderr, "input whisker %d not a candidate\n", k); return 1; }
@@ -153,6 +169,12 @@ int main(int argc, char **argv) {
     fprintf(stderr, "whiskers best=%d after %ld moves\n", best, it);
     sprintf(fn, "runs/W_q%d_b%d_s%d.txt", q, b, seed);
     FILE *wf = fopen(fn, "w"); for (int c = 0; c < nc; c++) if (bestc[c]) { fprintf(wf, "%d\n", cand[c]); lev[N + cand[c]] = 0; } fclose(wf);
+    if (multmode) for (int k2 = 0; k2 < L; k2++) if (mlt[k2]) lev[N + k2] = 0;
+    /* number of versions of each base vertex */
+    long pwb[8]; pwb[0] = 1; for (int i = 1; i < 8; i++) pwb[i] = pwb[i - 1] * b;
+    long *nver = malloc(sizeof(long) * 2 * N);
+    for (int x = 0; x < 2 * N; x++) nver[x] = lev[x] >= 0 ? pwb[lev[x] + 1] : 1;
+    if (multmode) for (int k2 = 0; k2 < L; k2++) if (mlt[k2]) nver[N + k2] = mlt[k2] + 1;
     /* level checks: neighbour levels differ by <= 1, at most one higher neighbour */
     int nV = 2 * N; /* base vertices: points then lines */
     long viol = 0;
@@ -163,26 +185,33 @@ int main(int argc, char **argv) {
             int y = isP ? N + thr[(long)x * Q1 + j] : ln[(long)(x - N) * Q1 + j];
             int d = lev[y] - lev[x]; if (d > 1 || d < -1) viol++; if (d == 1) hi++;
         }
-        if (hi > 1) viol++;
+        if (hi > 1 && !(multmode && isP && lev[x] == -1)) viol++;
+        if (multmode && isP && lev[x] == -1) { int ld = 0; for (int j = 0; j < Q1; j++) { int y = N + thr[(long)x * Q1 + j]; if (lev[y] == 0) ld += (int)nver[y] - 1; } if (ld > b - 1) viol++; }
     }
     long gain = 0, pw[8]; pw[0] = 1; for (int i = 1; i < 8; i++) pw[i] = pw[i - 1] * b;
-    for (int x = 0; x < nV; x++) if (lev[x] >= 0) gain += pw[lev[x] + 1] - 1;
+    for (int x = 0; x < nV; x++) if (lev[x] >= 0) gain += nver[x] - 1;
     long n = 2L * N + gain;
     fprintf(stderr, "level violations %ld, gain %ld, order %ld\n", viol, gain, n);
     if (viol) return 1;
     if (!out) return 0;
     /* ids */
     long *base = malloc(sizeof(long) * (nV + 1)); base[0] = 0;
-    for (int x = 0; x < nV; x++) base[x + 1] = base[x] + (lev[x] >= 0 ? pw[lev[x] + 1] : 1);
+    for (int x = 0; x < nV; x++) base[x + 1] = base[x] + nver[x];
     long m = 0;
     for (int x = 0; x < N; x++) for (int j = 0; j < Q1; j++) {
         int y = N + thr[(long)x * Q1 + j]; int lx = lev[x] + 1, ly = lev[y] + 1; /* string lengths */
         long nx = pw[lx], ny = pw[ly];
+        if (nver[y] != pw[ly]) { m += (lx == 1) ? pw[1] : nver[y]; continue; }
         if (lx <= ly) m += ny; else m += nx;
     }
     FILE *o = fopen(out, "w"); fprintf(o, "%ld %ld\n", n, m);
     for (int x = 0; x < N; x++) for (int j = 0; j < Q1; j++) {
         int y = N + thr[(long)x * Q1 + j]; int lx = lev[x] + 1, ly = lev[y] + 1;
+        if (nver[y] != pw[ly]) {  /* partial whisker: level 0, versions 0..nver-1 */
+            if (lx == 1) { for (long c = 0; c < pw[1]; c++) fprintf(o, "%ld %ld\n", base[x] + c, base[y] + (c < nver[y] ? c : nver[y] - 1)); }
+            else { for (long a = 0; a < nver[y]; a++) fprintf(o, "%ld %ld\n", base[x], base[y] + a); }
+            continue;
+        }
         if (lx <= ly) { for (long c = 0; c < pw[ly]; c++) fprintf(o, "%ld %ld\n", base[x] + c / pw[ly - lx], base[y] + c); }
         else { for (long a = 0; a < pw[lx]; a++) fprintf(o, "%ld %ld\n", base[x] + a, base[y] + a / pw[lx - ly]); }
     }

@@ -84,6 +84,11 @@ of elements missed by the sets of the lemma, computed by deduplicated set produc
 
 ## 4. Runs
 
+**Summary at 01:15: no cell solved yet.** Closest (missed elements; 0 would beat the table): D = 7, Δ = 5: 6 at order
+1560 (SL(2,5) × Z_13, table needs 1556); D = 7, Δ = 6: 6 at 4200 (AGL(1,25) × Z_7, needs 4156); D = 8, Δ = 4: 8 at
+1096 (Z_137 ⋊ Z_8, needs 1093); D = 8, Δ = 6: 10 at 15000 (AGL(1,25) × Z_25, needs 14896); D = 7, Δ = 8: 18 at 20400.
+Missed elements come in inverse pairs (T^k is closed under inverses), e.g. 3 + 3 on the two sides.
+
 Calibration (local, about half a core each; load average ~60-120):
 | D | Δ | group | order | ratio | best (missed elements) | time |
 |---|---|---|---|---|---|---|
@@ -124,3 +129,11 @@ Cloud batches (Haiku, medium; code at commit b40925969 on research-diam4), launc
 | session_01NHxTH4j2YRPGNeCzDd4hfZ | jobs_c1.txt | D=4 Δ=7 (short), D=7 Δ=5, D=8 Δ=4, D=7 Δ=4 | p4-d6haar-1 |
 | session_01TTFmonZXwERZb3hEeuzjAG | jobs_c2.txt | D=7 Δ=6, D=8 Δ=5, D=7 Δ=7 | p4-d6haar-2 |
 | session_01NXLeLnY2aWH9DiofGnQbkh | jobs_c3.txt | D=7 Δ=8, D=8 Δ=6, D=8 Δ=7 | p4-d6haar-3 |
+
+Round b (haar_dd4, code at 08226f646), launched 00:48 with main's go-ahead (the first three are unreachable by
+message, so they finish their old lists):
+| session | jobs | cells | branch |
+|---|---|---|---|
+| session_01PK97yvRT3TSrEp7URXEySV | jobs_c1b.txt | D=7 Δ=5 | p4-d6haar-1b |
+| session_016xS3PStDsMJn5nPtuKyiNw | jobs_c2b.txt | D=7 Δ=6, D=8 Δ=5, D=7 Δ=7 | p4-d6haar-2b |
+| session_013J4gEtU8iKNwybPVLhJcNM | jobs_c3b.txt | D=8 Δ=6, D=7 Δ=8, D=8 Δ=7 | p4-d6haar-3b |

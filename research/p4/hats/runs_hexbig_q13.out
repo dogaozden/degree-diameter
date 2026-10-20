@@ -1,0 +1,35 @@
+[     7s] points 402234
+[     7s] point 0 lines so far 14
+[    67s] point 20000 lines so far 260820
+[   144s] point 40000 lines so far 402234
+[   218s] point 60000 lines so far 402234
+[   265s] point 80000 lines so far 402234
+[   296s] point 100000 lines so far 402234
+[   335s] point 120000 lines so far 402234
+[   374s] point 140000 lines so far 402234
+[   399s] point 160000 lines so far 402234
+[   438s] point 180000 lines so far 402234
+[   491s] point 200000 lines so far 402234
+[   550s] point 220000 lines so far 402234
+[   609s] point 240000 lines so far 402234
+[   658s] point 260000 lines so far 402234
+[   712s] point 280000 lines so far 402234
+[   750s] point 300000 lines so far 402234
+[   786s] point 320000 lines so far 402234
+[   813s] point 340000 lines so far 402234
+[   844s] point 360000 lines so far 402234
+[   885s] point 380000 lines so far 402234
+[   938s] point 400000 lines so far 402234
+[   942s] lines 402234
+[   948s] v = 27 [[0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1]]
+[   962s] distances done; max 6
+[   962s] spread from X0 + 2 X4 = 0
+[   966s] K_S generators fix v and S
+[   966s] torus element with g = 2
+[  1025s] blocks through v 169 other blocks 26364
+[  1025s] direction (1, 0) E blocks [0, 1, 14, 49, 59, 73, 86, 89, 107, 110, 123, 136, 146]
+[  1025s] free points 369096 X-points 28392 candidates 340704
+[  1032s] orbits: candidates 168 free points 182 X-points 14
+[  1042s] ILP: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+[  1042s] whiskers 28392 expected 28392 free covered once True one per X True
+[  1083s] graph 870440 vertices 6495510 edges -> /Users/dogaozden/AI_Projects/degree-diameter/research/p4/hats/runs/hex_q13_big.txt

@@ -15,7 +15,13 @@ spec.loader.exec_module(d6lift)
 HERE = Path(__file__).resolve().parent
 d = json.loads(Path(sys.argv[1]).read_text())
 q, S, v, W = d['q'], d['S'], d['v'], d['whiskers']
-lines = json.loads((ROOT / 'research' / 'gh6' / 'hex' / f'hexagon_q{q}.json').read_text())['lines']
+hexfile = ROOT / 'research' / 'gh6' / 'hex' / f'hexagon_q{q}.json'
+if hexfile.exists():
+    lines = json.loads(hexfile.read_text())['lines']
+else:
+    sys.path.insert(0, str(ROOT / 'research' / 'gh6'))
+    import gh_build
+    lines = gh_build.hexagon(q)[1]
 N = len(lines)
 through = [[] for _ in range(N)]
 for k, L in enumerate(lines):
@@ -41,6 +47,13 @@ for k in W:
 ex = d6lift.degree_excess(adj, lev)
 print('q', q, 'whiskers', len(W), 'max excess', max(ex), 'gain', d6lift.gain(lev))
 n, edges, _ = d6lift.build(2 * N, adj, lev)
+if q >= 7:  # too big for the Python checker: bit-parallel C check (research/p4/d6/diam.c, compiled here)
+    import subprocess
+    txt = HERE / 'runs' / f'hex_q{q}_whisk{len(W)}.txt'
+    txt.write_text(f'{n} {len(edges)}\n' + ''.join(f'{u} {w}\n' for u, w in edges))
+    r = subprocess.run([str(HERE / 'diam'), str(txt), '6'], capture_output=True, text=True)
+    print('diam:', r.stdout.strip(), 'order', n)
+    sys.exit(0)
 ok = lib.is_valid(n, edges, q + 2, 6)
 print('order', n, 'valid(lib)', ok, flush=True)
 if ok:

@@ -1,0 +1,20 @@
+[     1s] points 66430
+[     1s] point 0 lines so far 10
+[    26s] point 20000 lines so far 66430
+[    56s] point 40000 lines so far 66430
+[    91s] point 60000 lines so far 66430
+[   102s] lines 66430
+[   161s] base incidence graph: n=132860 m=664300 components=1 bipartite=yes sides=66430+66430 maxdeg=10 pairs_beyond_D=0 -> DIAMETER<=D OK
+[   161s] v = 19 [[0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1]]
+[   162s] distances done; max 6
+[   162s] spread from X0 + 4 X4 = 0
+[   163s] K_S generators fix v and S; 2 additive generators
+[   163s] torus element with g = 4
+[   166s] blocks through v 81 other blocks 5832
+[   167s] direction (1, 0) E blocks [0, 1, 10, 43, 47, 51, 59, 63, 71]
+[   167s] free points 58320 X-points 6480 candidates 51840
+[   168s] orbits: candidates 80 free points 90 X-points 10
+[   169s] ILP: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+[   169s] whiskers 6480 expected 6480 free covered once True one per X True
+[   173s] graph 148944 vertices 811250 edges -> /Users/dogaozden/AI_Projects/degree-diameter/research/p4/hats/runs/hex_q9_big.txt
+[   252s] diam: n=148944 m=811250 maxdeg=11 D=6 far_ordered_pairs=0 OK
