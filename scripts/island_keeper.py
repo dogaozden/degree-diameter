@@ -40,7 +40,7 @@ def launch(run_id, template):
     import pty
     prompt = (SCRATCH / template).read_text().replace("RUNID", run_id)
     master, slave = pty.openpty()
-    p = subprocess.Popen(["timeout", "60", "claude", "--model", "claude-haiku-5-5", "--effort", "low", "--cloud", prompt],
+    p = subprocess.Popen(["timeout", "60", "claude", "--model", "claude-haiku-5-5", "--effort", "medium", "--cloud", prompt],
                          cwd=REPO, stdin=slave, stdout=slave, stderr=slave, close_fds=True)
     os.close(slave)
     out = b""
