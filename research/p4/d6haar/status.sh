@@ -6,7 +6,7 @@ summ() {  # stdin: log text; prints best so far and whether finished
 }
 echo "== local"; for f in logs/D*.log; do printf "%-48s %s\n" "$(basename $f .log)" "$(summ < $f)"; done
 git fetch -q origin 'refs/heads/p4-d6haar-*:refs/remotes/origin/p4-d6haar-*' 2>/dev/null
-for b in 1 2 3; do
+for b in 1 2 3 1b 2b 3b; do
   r=origin/p4-d6haar-$b; git rev-parse -q --verify $r >/dev/null || { echo "== cloud $b: no branch yet"; continue; }
   echo "== cloud $b ($(git log -1 --format=%cr $r))"
   for f in $(git ls-tree --name-only $r logs/ | grep "/D"); do

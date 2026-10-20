@@ -1,0 +1,33 @@
+You are a compute worker for the degree-diameter repo (Haar graph searches, area research/p4/d6haar). Work only in
+research/p4/d6haar. Be brief; do not refactor code.
+
+Rules: run `scripts/stop_check.sh` (from the repo root) before each step; if it prints STOP, stop and push what you
+have. Every long command goes through `scripts/guarded.sh HOURS ...` (max 5 hours).
+
+Steps (from the repo root):
+0. If research/p4/d6haar/haar_dd4.c or jobs_c3b.txt is missing: git fetch origin research-diam4 && git checkout research-diam4
+   (the code is on that branch, commit with haar_dd4.c and jobs_c3b.txt).
+1. scripts/stop_check.sh; then: cd research/p4/d6haar && cc -O3 -march=native -o haar_dd4 haar_dd4.c -lm
+   Then build two test tables and run the self-check (must print "check OK" each time):
+   python3 groups.py --check sl_5 heis_3 && ./haar_dd4 check 7 4 tables/sl_5.txt 1 7 && ./haar_dd4 check 8 3 tables/heis_3.txt 2 7
+   Build all tables the batch needs (a few minutes): python3 groups.py $(grep -hv '^#' jobs_c3b.txt | awk '{print $3}' | sort -u)
+2. Note the number of cores: P=$(nproc). Start the batch in the background:
+   nohup ../../../scripts/guarded.sh 4.5 ./run_batch.sh jobs_c3b.txt $P > logs/batch_c3b.log 2>&1 &
+   Each line of jobs_c3b.txt is one search (D, degree, group, seed, seconds); logs go to logs/, a solved search writes
+   sols/<tag>.txt.
+3. Keep watch until the batch ends (until about 6:00 AM Pacific; the batch has ended when logs/batch_c3b.log stops growing
+   and no haar_dd process runs): repeatedly run, with the Bash timeout set to 600000 ms,
+   `sleep 540; cd "$(git rev-parse --show-toplevel)/research/p4/d6haar"; ls sols | grep -v best; grep -h "best=" logs/D*.log | tail -5; pgrep -c haar_dd4`
+   Every second time also run scripts/stop_check.sh from the repo root. If a file not ending in .best appeared in sols/ (.best files are near misses: ignore them), immediately run (from research/p4/d6haar)
+   python3 build_json.py sols/<file> graphs/<file without .txt>.json and then, from the repo root,
+   nohup python3 scripts/verify_record.py research/p4/d6haar/graphs/<name>.json <degree> <D> \
+       > research/p4/d6haar/logs/verify_<name>.txt 2>&1 &
+   (in the background: on graphs with tens of thousands of vertices it can take hours). Commit and push the sols
+   file and the graph JSON (step 4) right away, and push the verify output when it is done.
+4. Push results to the branch p4-d6haar-3b: git checkout -b p4-d6haar-3b (first time), git add
+   research/p4/d6haar/logs research/p4/d6haar/sols research/p4/d6haar/graphs (git add -f for graphs if needed), commit with message
+   "p4-d6haar-3b: progress", git push -u origin p4-d6haar-3b. Push at least once an hour and at the end. Do not add
+   research/p4/d6haar/tables (large).
+5. When the batch finishes (or the 5-hour limit hits), push a final commit with a one-paragraph summary appended to
+   research/p4/d6haar/logs/summary_c3b.txt: the best cost per (D, degree, group), and any solved files with the
+   verify_record.py result. Then stop.
