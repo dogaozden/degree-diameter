@@ -9,6 +9,7 @@ import BipartiteDD.Haar.Record1728
 import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.ASq.Main
+import BipartiteDD.GQST.StandinMain
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -57,3 +58,9 @@ import BipartiteDD.ASq.Main
 #print axioms BipartiteDD.SingerC.Setting.propC_subspace
 #print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam
 #print axioms BipartiteDD.Haar.haar_ediam_le_five
+#print axioms BipartiteDD.GQST.standin_colorable
+#print axioms BipartiteDD.GQST.standin_ediam
+#print axioms BipartiteDD.GQST.standin_degree
+#print axioms BipartiteDD.GQST.standin_isBipartiteDegDiam
+#print axioms BipartiteDD.GQST.standin_gqst
+#print axioms BipartiteDD.GQST.standin_zero_eq_blowup
