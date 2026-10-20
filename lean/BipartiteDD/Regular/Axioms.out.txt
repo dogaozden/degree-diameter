@@ -25,3 +25,6 @@
 'BipartiteDD.Plus2.plus2_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.Plus2.plus2_regular_of_order' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.ASq.bound_regular' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Regular.degL_restrictR_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Regular.regular_of_twins' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.Regular.regular_of_twin_classes' depends on axioms: [propext, Classical.choice, Quot.sound]
