@@ -69,3 +69,7 @@ at Δ=11.
   ((6,6),18), ((6,5),6), ((2,4),1), ((2,2),16), ((4,5),12), ((2,6),15). graphs/haar_d8_n1764.json, rebuilt
   independently; verify_record.py VALID (3 checkers). Also cost 0: Heis(5) × Z_7 (order 875 → 1750, VALID,
   graphs/haar_d8_heis_5__x__cyc_7.json), smaller.
+- (9,5): the Heisenberg group mod 11 (upper unitriangular 3×3 over Z_11, order 1331) reached cost 0 (K=1, 2-hour run):
+  a 9-regular diameter-5 Haar graph on 2662 vertices (beats 2640 from earlier today). S, as (a,b,c) =
+  [[1,a,c],[0,1,b],[0,0,1]]: (0,0,0), (8,6,10), (7,9,3), (10,1,8), (4,4,5), (5,5,8), (6,5,4), (1,0,9), (6,10,8).
+  graphs/haar_d9_n2662.json, rebuilt independently; verify_record.py VALID (3 checkers).
