@@ -11,6 +11,9 @@ import BipartiteDD.ASq.Main
 import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Hexagon.Main
 import BipartiteDD.Hexagon.Sanity
+import BipartiteDD.HexagonD.Delorme
+import BipartiteDD.HexagonD.TheoremD
+import BipartiteDD.HexagonD.Sanity
 import BipartiteDD.Regular.Defs
 import BipartiteDD.Regular.Twin
 import BipartiteDD.Regular.Completion
