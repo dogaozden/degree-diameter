@@ -9,3 +9,5 @@ import BipartiteDD.Doubling.Polygon
 import BipartiteDD.Doubling.HatConverse
 import BipartiteDD.ASq.Main
 import BipartiteDD.SingerC.W3Main
+import BipartiteDD.Hexagon.Main
+import BipartiteDD.Hexagon.Sanity
