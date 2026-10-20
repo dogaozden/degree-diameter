@@ -3,6 +3,7 @@
 import BipartiteDD.GQST.Main
 import BipartiteDD.Records
 import BipartiteDD.SingerC.Main
+import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Haar.Record2620
 import BipartiteDD.Haar.Record2640
 import BipartiteDD.Haar.Record1728
@@ -64,3 +65,8 @@ import BipartiteDD.GQST.StandinMain
 #print axioms BipartiteDD.GQST.standin_isBipartiteDegDiam
 #print axioms BipartiteDD.GQST.standin_gqst
 #print axioms BipartiteDD.GQST.standin_zero_eq_blowup
+#print axioms BipartiteDD.SingerC.W3.isGQst
+#print axioms BipartiteDD.SingerC.propC
+#print axioms BipartiteDD.SingerC.W3.spread_exists_unique
+#print axioms BipartiteDD.SingerC.W3.spread_totally_isotropic
+#print axioms BipartiteDD.SingerC.corC1

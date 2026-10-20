@@ -6,3 +6,4 @@ import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.GQST.Main
 import BipartiteDD.ASq.Main
+import BipartiteDD.SingerC.W3Main

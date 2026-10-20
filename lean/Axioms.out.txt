@@ -50,3 +50,8 @@
 'BipartiteDD.GQST.standin_isBipartiteDegDiam' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQST.standin_gqst' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.GQST.standin_zero_eq_blowup' depends on axioms: [propext, Quot.sound]
+'BipartiteDD.SingerC.W3.isGQst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.propC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.W3.spread_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.W3.spread_totally_isotropic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.SingerC.corC1' depends on axioms: [propext, Classical.choice, Quot.sound]
