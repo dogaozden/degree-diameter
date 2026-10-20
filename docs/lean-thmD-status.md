@@ -5,7 +5,7 @@ axioms of everything listed below: only `propext`, `Classical.choice`, `Quot.sou
 `Axioms.out.txt`). `F` is a finite field with `(2 : F) ≠ 0`, `q = |F|`, `c : F` with `-c` a non-square
 (`¬ IsSquare (-c)`; `exists_nonsquare_neg`).
 
-## Done: targets 1, 2, 3, 4
+## Done: targets 1, 2, 3, 4, 5
 
 | Brief | Lean |
 |---|---|
@@ -52,5 +52,26 @@ axioms of everything listed below: only `propext`, `Classical.choice`, `Quot.sou
 The set is `Wset c c0 c1 = {m ≠ v | ∃ z ≠ 0, m ∈ S_z, ν(m ∩ Π) = F(z)}` with `F(z) = G(z)/(α² + cβ²)`,
 `G(a, b) = (c0 a + c1 b)(a² + c b²) − b³`; `ν` is `nuf`, invariant under scaling.
 
-## Whole-library build
-See the end of this file (to be filled in).
+
+## Target 5: Theorem R (regular graphs of diameter 6) — done
+
+`RegLevels.lean` … `RegHex7.lean`, `TheoremR.lean`. The levelled doubling of the exact hexagon (m ≥ 2) is written as the
+bipartite relation `rr` between point versions `VL` and line versions `VR` (`biGraph_rel_eq`, the levelled graph
+is the comap of `biGraph rel` along `Equiv.sumSigmaDistrib`), then `Regular.regular_of_twins` is applied:
+
+* sizes: `card_VL_eq`, `card_VR_eq`; `|β| = |α| + (m−1) m (q³ + m − q)`; the lines have the surplus, as in the report;
+* pool `P` of deletable line versions (`isP`: a version of a spread line whose last letter is nonzero, `(m−1)(m q³ + m²)`
+  elements, `card_pool` with `card_lastne` via `Fin.snocEquiv`), a set `S ⊆ P` of exactly the excess size
+  (`exists_deletion`);
+* twins: a version in `P` has the twin with last letter `0` (`twin_of_isP`), because over a point of a spread line
+  `ℓ` the height drops by one (`hgt_pt_on_sline`), so the neighbourhood does not depend on the last letter;
+* degrees: every version keeps at least `q+1` neighbours after deleting any `S ⊆ P` (`degL_ge`, `degR_ge`: pad the
+  string of the neighbour with `0`; such a version of a spread line has last letter `0`), so all deficits are at most
+  `m−1` (`s = m−1`); the total deficit is at least `(q+1)|S|` (counting the edges to `S`), which exceeds
+  `2 s (Δ + s + 1)` (`hbig_arith`);
+* `theoremR`, `theoremR_hexagon`, `theoremR_hexagon_two`: a `(q+m)`-regular bipartite graph of diameter at most 6 on
+  `2[(q+1)(q⁴+q²+1) + (m−1)((q³+1)(q+1) + m(q+1))]` vertices, `= 2(q+1)(q⁴+q³+q²+4)` for `m = 2`
+  (`Sanity.lean`: q = 3 gives 968 vertices (5-regular), q = 5 gives 9348 (7-regular), the values of the report).
+
+`#print axioms` for all main statements: only `propext`, `Classical.choice`, `Quot.sound` (57 lines in
+`HexagonD/Axioms.out.txt`; one of them, `biGraph_rel_eq`, uses only `propext`, `Quot.sound`).

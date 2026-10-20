@@ -1,5 +1,6 @@
 import BipartiteDD.HexagonD.Delorme
 import BipartiteDD.HexagonD.TheoremD
+import BipartiteDD.HexagonD.TheoremR
 
 /-! Axioms used by the HexagonD group. Run `lake env lean BipartiteDD/HexagonD/Axioms.lean`. -/
 
@@ -44,3 +45,19 @@ import BipartiteDD.HexagonD.TheoremD
 #print axioms BipartiteDD.HexagonD.theorem4
 #print axioms BipartiteDD.HexagonD.theoremD
 #print axioms BipartiteDD.HexagonD.theoremD_two
+#print axioms BipartiteDD.HexagonD.biGraph_rel_eq
+#print axioms BipartiteDD.HexagonD.isBipartiteDegDiam_biGraph_rel
+#print axioms BipartiteDD.HexagonD.hgt_pt_on_sline
+#print axioms BipartiteDD.HexagonD.canR_not_isP
+#print axioms BipartiteDD.HexagonD.degL_ge
+#print axioms BipartiteDD.HexagonD.degR_ge
+#print axioms BipartiteDD.HexagonD.twin_of_isP
+#print axioms BipartiteDD.HexagonD.card_VL_eq
+#print axioms BipartiteDD.HexagonD.card_VR_eq
+#print axioms BipartiteDD.HexagonD.card_lastne
+#print axioms BipartiteDD.HexagonD.card_pool
+#print axioms BipartiteDD.HexagonD.exists_deletion
+#print axioms BipartiteDD.HexagonD.hex_levelled_bound
+#print axioms BipartiteDD.HexagonD.theoremR
+#print axioms BipartiteDD.HexagonD.theoremR_hexagon
+#print axioms BipartiteDD.HexagonD.theoremR_hexagon_two
