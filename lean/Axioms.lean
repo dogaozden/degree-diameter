@@ -7,6 +7,9 @@ import BipartiteDD.SingerC.W3Main
 import BipartiteDD.Haar.Record2620
 import BipartiteDD.Haar.Record2640
 import BipartiteDD.Haar.Record1728
+import BipartiteDD.Haar.Record1152
+import BipartiteDD.Haar.Record1764
+import BipartiteDD.Haar.Record2662
 import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.ASq.Main
@@ -36,6 +39,9 @@ import BipartiteDD.GQST.StandinMain
 #print axioms nb_8_5_haar
 #print axioms nb_9_5_v3
 #print axioms nb_9_5_v5
+#print axioms nb_7_5_v2
+#print axioms nb_8_5_v2
+#print axioms nb_9_5_v6
 
 #print axioms BipartiteDD.GQ.ediam_le_four
 #print axioms BipartiteDD.GQ4.blowup_colorable
