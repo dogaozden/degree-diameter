@@ -105,7 +105,7 @@ problem).
 | 7 | 5 | 8 992 | **9 592** | +600 | 9 592 (reached) | graphs/h5_whisk600_n9592.json | **verify_record.py VALID**; diam.c, diamp.c OK |
 | 11 | 9 | 142 464 | **146 545** | +4 081 | 148 944 | `./hexgen 9; ./d6lift 9 2 0 1 out.txt graphs/h9_whisk4081_W.txt` | diam.c OK (max degree 11, diameter <= 6) |
 | 13 | 11 | 374 452 | **382 650** | +8 198 | 388 972 | `./hexgen 11; ./d6lift 11 2 0 1 out.txt graphs/h11_whisk8198_W.txt` | diamp.c OK (max degree 13, bipartite, diameter <= 6) |
-| 15 | 13 | 842 048 | **856 521** | +14 473 | 870 440 | `./hexgen 13; ./d6lift 13 2 0 1 out.txt graphs/h13_whisk14473_W.txt` | diamp.c running |
+| 15 | 13 | 842 048 | **856 521** | +14 473 | 870 440 | `./hexgen 13; ./d6lift 13 2 0 1 out.txt graphs/h13_whisk14473_W.txt` | diamp.c OK (max degree 15, bipartite, diameter <= 6) |
 | 16 | 13 | 884 062 | **913 008** (b = 3) | +28 946 | 940 846 | `./d6lift 13 3 0 1 out.txt graphs/h13_whisk14473_W.txt` | queued |
 
 "Perfect-W value" = Theorem D with |W| = q^4 - q^2 (b = 3: 2|W| more). Delorme's own graph is rebuilt exactly

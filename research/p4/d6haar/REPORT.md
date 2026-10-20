@@ -84,9 +84,11 @@ of elements missed by the sets of the lemma, computed by deduplicated set produc
 
 ## 4. Runs
 
-**Summary at 01:15: no cell solved yet.** Closest (missed elements; 0 would beat the table): D = 7, Δ = 5: 6 at order
-1560 (SL(2,5) × Z_13, table needs 1556); D = 7, Δ = 6: 6 at 4200 (AGL(1,25) × Z_7, needs 4156); D = 8, Δ = 4: 8 at
-1096 (Z_137 ⋊ Z_8, needs 1093); D = 8, Δ = 6: 10 at 15000 (AGL(1,25) × Z_25, needs 14896); D = 7, Δ = 8: 18 at 20400.
+**Summary at 02:10: no cell solved yet.** Closest (missed elements; 0 would beat the table):
+D = 8, Δ = 5 (table 9234, needs order 4618): **2** at 4620 (PSL(2,11) × Z_7, haar_dd4, 15 min), 3 at 4704 (PGL(2,7) ×
+Z_14, annealing); D = 7, Δ = 6: 5 at 4200 (AGL(1,25) × Z_7); D = 7, Δ = 5: 6 at 1560 (SL(2,5) × Z_13); D = 8, Δ = 4:
+8 at 1096 (Z_137 ⋊ Z_8); D = 7, Δ = 8: 8 at 21168 (AGL(1,49) × Z_9, annealing); D = 8, Δ = 6: 10 at 15000.
+From 02:05 all 4 local cores run D = 8, Δ = 5 (PSL(2,11) × Z_7 seeds 1-3, PGL(2,7) × Z_14).
 Missed elements come in inverse pairs (T^k is closed under inverses), e.g. 3 + 3 on the two sides.
 
 Calibration (local, about half a core each; load average ~60-120):
@@ -123,6 +125,12 @@ Status at 00:05 (best = elements missed; 0 would beat the table):
 | 4 | 7 | SL(2,3) × Z_8 | 192 | 14 | cloud 1, 5 min |
 Pattern: Heisenberg (nilpotent, big centre) × cyclic and metacyclic groups are bad at D = 7, 8; AGL(1,q), SL/PSL/PGL(2,q)
 times a cyclic group are good.
+Local batch e (haar_dd4, 00:58-01:50): D = 7, Δ = 6, AGL(1,25) × Z_7: 6 (stuck from 20 min to 52 min); D = 8, Δ = 6,
+AGL(1,25) × Z_25: 13. Local batch f (01:36-01:50): D = 8, Δ = 8, AGL(1,25) × Z_168 (100800): 306 after 10 min;
+D = 8, Δ = 7, AGL(1,16) × Z_169 (40560): 455 after 10 min (big orders move slowly; dropped).
+Local batch g (haar_dd4, 4 workers, from 01:50, 4 h): D = 8, Δ = 5, PSL(2,11) × Z_7 (4620); D = 7, Δ = 6,
+AGL(1,11) × Z_38 (4180); D = 8, Δ = 4, Z_137 ⋊ Z_8 (1096); D = 7, Δ = 5, A5 × Z_26 (1560).
+
 Cloud batches (Haiku, medium; code at commit b40925969 on research-diam4), launched 23:27:
 | session | jobs | cells | branch |
 |---|---|---|---|
