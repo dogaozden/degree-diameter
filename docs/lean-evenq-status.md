@@ -13,6 +13,14 @@ the import lines added to `lean/BipartiteDD.lean`.
 - No `sorry`, `admit`, `axiom`, `native_decide` in the proof files. `HexagonEven/Axioms.lean` and
   `Axioms.out.txt`: only `propext`, `Classical.choice`, `Quot.sound`.
 
+## Target 2 (in progress)
+- `HexagonEven/Pi.lean`: hyperplane `Π_d : x₀ + x₃ + d x₄ = 0` (`LfunE`, `InPiE`, `SLineE`), with the
+  hypothesis `hd : ∀ t, t² + t + d ≠ 0` (replaces `¬ IsSquare (-c)`) and `(2 : F) = 0`. `plane_not_piE`: the
+  plane `π_y` of a nonzero singular `y ∈ Π_d` is not inside `Π_d`. Its proof uses a 7×7 certificate
+  (determinant `(λ²+λ+d)³` mod 2, found with sympy; `linear_combination` coefficients are in the file).
+  `finrank_planePiE` (dim 2), `exists_slineE` (existence), `slineE_unique` (uniqueness of the spread line).
+- `HexagonEven/PiCount.lean`: `card_zeros_PiE`, `card_pointsPiE`: `|Π_d ∩ Q| = (q³+1)(q+1)` (elliptic quadric).
+
 ## Next
 - Target 2: char-2 Hermitian spread in Π (Tr δ = 1), Delorme levels, whiskers (mirror `HexagonD`).
 - Target 3: char-2 J_z and key identity, exact whiskers for q ≥ 4, `theoremD_even`, `theoremR_even`.

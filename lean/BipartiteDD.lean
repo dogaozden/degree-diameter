@@ -13,6 +13,8 @@ import BipartiteDD.Hexagon.Main
 import BipartiteDD.Hexagon.Sanity
 import BipartiteDD.HexagonEven.Main
 import BipartiteDD.HexagonEven.Sanity
+import BipartiteDD.HexagonEven.Pi
+import BipartiteDD.HexagonEven.PiCount
 import BipartiteDD.HexagonD.Delorme
 import BipartiteDD.HexagonD.TheoremD
 import BipartiteDD.HexagonD.Sanity
