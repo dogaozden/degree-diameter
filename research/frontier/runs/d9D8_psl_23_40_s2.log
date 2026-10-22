@@ -1,0 +1,12 @@
+group psl 23 x Z_40, N=242880, identity 10120
+start cost=24
+t=30 steps=154 evals=1233 cost=6 best=6 T=0.53
+t=60 steps=311 evals=2489 cost=3 best=3 T=0.19
+t=90 steps=468 evals=3745 cost=3 best=3 T=0.15
+t=120 steps=630 evals=5041 cost=3 best=3 T=0.15
+t=150 steps=793 evals=6345 cost=2 best=2 T=0.15
+t=181 steps=952 evals=7617 cost=2 best=2 T=0.15
+t=211 steps=1114 evals=8913 cost=2 best=2 T=0.15
+t=241 steps=1275 evals=10201 cost=2 best=2 T=0.15
+t=271 steps=1432 evals=11457 cost=2 best=2 T=0.15
+RESULT d=9 D=8 group=psl 23 x Z_40 N=242880 best=2 evals=12705 time=300.1

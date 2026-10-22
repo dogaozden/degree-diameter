@@ -6,6 +6,6 @@ while read -r d D secs seed K grp; do
   tag=$(echo "d${d}D${D}_${grp}_s${seed}" | tr ' ' '_')
   [ -f "sols/$tag.txt" ] && continue
   echo "$(date +%T) start $tag"
-  ./haar_gen $d $D $secs $seed $K "sols/$tag.txt" $grp > "runs/$tag.log" 2>&1
+  ${BIN:-./haar_gen} $d $D $secs $seed $K "sols/$tag.txt" $grp > "runs/$tag.log" 2>&1
   echo "$(date +%T) end $tag: $(grep RESULT runs/$tag.log)"
 done < "$1"

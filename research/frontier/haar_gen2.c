@@ -193,7 +193,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < d; i++) { fill(L[i], S[i]); fill(Li[i], INV[S[i]]); TA[i] = L[i]; TB[i] = Li[i]; }
     UNC[0] = malloc(4 * (size_t)N); UNC[1] = malloc(4 * (size_t)N);
     int c = cost(), best = c; memcpy(bestS, S, sizeof S); collect();
-    double t0 = now(), T = 1.5, lastimp = t0, lastprint = t0; long long evals = 1, steps = 0;
+    double t0 = now(), T = 1.5, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
     fprintf(stderr, "start cost=%d\n", c);
     while (!stop_flag && now() - t0 < secs && best > 0) {
         int i;
@@ -220,9 +220,10 @@ int main(int argc, char **argv) {
         TA[i] = L[i]; TB[i] = Li[i];
         if (bc <= c || exp((c - bc) / T) > (rnd() % 1000000) / 1e6) { S[i] = bx; fill(L[i], bx); fill(Li[i], INV[bx]); c = bc; collect(); }
         steps++;
-        if (c < best) { best = c; memcpy(bestS, S, sizeof S); lastimp = now(); }
-        T *= 0.9995; if (T < 0.15) T = 0.15;
-        if (now() - lastimp > 150) { T = 1.5; memcpy(S, bestS, sizeof S); for (int j = 0; j < d; j++) { fill(L[j], S[j]); fill(Li[j], INV[S[j]]); } c = best; collect(); lastimp = now(); }
+        if (c < best) { best = c; memcpy(bestS, S, sizeof S); lastimp = now(); lastimpstep = steps; }
+        /* cooling by time: halve every 20 s after the last reheat; reheat after 150 s and 400 steps without gain */
+        T = 1.5 * pow(0.5, (now() - lastheat) / 20.0); if (T < 0.15) T = 0.15;
+        if (now() - lastimp > 150 && steps - lastimpstep > 400) { lastheat = now(); T = 1.5; memcpy(S, bestS, sizeof S); for (int j = 0; j < d; j++) { fill(L[j], S[j]); fill(Li[j], INV[S[j]]); } c = best; collect(); lastimp = now(); }
         if (now() - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%d best=%d T=%.2f\n", now() - t0, steps, evals, c, best, T); lastprint = now(); }
     }
     memcpy(S, bestS, sizeof S);
