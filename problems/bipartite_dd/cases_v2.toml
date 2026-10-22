@@ -109,6 +109,27 @@ kind = "target"
 weight = 2
 
 [[case]]
+id = "d10D5"
+d = 10
+D = 5
+record = 4000
+ceiling = 14756
+kind = "target"
+weight = 2
+
+# d11D5: record 5850 / ceiling 22216 read from the wiki table row for degree 11 (190, 1734, 5850, ...) through a
+# search-result snippet (the wiki itself was unreachable on 2026-10-22); 5850 / 22216 = 26.33% matches the wiki's
+# percentage row. Re-check against the live table before reporting a record here.
+[[case]]
+id = "d11D5"
+d = 11
+D = 5
+record = 5850
+ceiling = 22216
+kind = "target"
+weight = 2
+
+[[case]]
 id = "d7D4"
 d = 7
 D = 4

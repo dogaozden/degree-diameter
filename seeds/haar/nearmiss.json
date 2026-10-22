@@ -1,0 +1,55 @@
+{
+ "_doc": "Near-miss connection sets S (element indices of the group tables in core.py) found by the C annealers haar_search2/3 in research/d5. cost = elements of G uncovered by (S^-1 S)^2 plus those uncovered by (S S^-1)^2; 0 = valid diameter-5 Haar graph.",
+ "d6_meta_117_3_16": {
+  "order": 351,
+  "cost": 2,
+  "S": [
+   0,
+   184,
+   47,
+   48,
+   65,
+   21
+  ]
+ },
+ "d6_meta_71_5_5": {
+  "order": 355,
+  "cost": 2,
+  "S": [
+   0,
+   92,
+   218,
+   269,
+   205,
+   88
+  ]
+ },
+ "d10_meta_401_5_39": {
+  "order": 2005,
+  "cost": 6,
+  "S": [
+   0,
+   399,
+   725,
+   919,
+   893,
+   646,
+   1508,
+   130,
+   652,
+   957
+  ]
+ },
+ "d6_sl5_z3": {
+  "order": 360,
+  "cost": 4,
+  "S": [
+   0,
+   246,
+   216,
+   211,
+   99,
+   132
+  ]
+ }
+}
