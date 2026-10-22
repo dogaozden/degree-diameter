@@ -32,8 +32,15 @@ and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fi
 - Axioms: `HexagonEven/Axioms.lean` and `Axioms.out.txt` list all new results; all use only
   `propext, Classical.choice, Quot.sound`.
 
+## Target 3 (in progress)
+- `HexagonEven/Identity.lean`: `JE d α β` (the paper's J_z on Π_z, coordinate 3 fixed by Π_z), `JE_JE` (J² = J + d),
+  `Qf_JE`, `Bf_JE`, `tits_JE`, `InPiZE_JE`, `JE_smul`. Every identity is a polynomial identity mod 2; the
+  certificates `linear_combination G * h2` were generated with sympy.
+- `HexagonEven/JLine.lean`: `isHPair_JE`, `JE_not_mem_span` (uses `hd`), `exists_hline_JE`: `<x, J x>` is a line of
+  H(q) in Π_z for a nonzero singular x in Π_z.
+
 ## Next
-- Target 3: char-2 J_z and key identity, exact whiskers for q >= 4, `theoremD_even`, `theoremR_even`.
+- Target 3: key identity (Lemma key2), G-cubic for q >= 4, the even PiZ/exact whisker set, `theoremD_even`, `theoremR_even`.
 
 ## Blocker
 - None yet.

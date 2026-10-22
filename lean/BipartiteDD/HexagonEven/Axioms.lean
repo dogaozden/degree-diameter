@@ -2,6 +2,8 @@ import BipartiteDD.HexagonEven.Main
 import BipartiteDD.HexagonEven.Sanity
 import BipartiteDD.HexagonEven.Pi
 import BipartiteDD.HexagonEven.PiCount
+import BipartiteDD.HexagonEven.Identity
+import BipartiteDD.HexagonEven.JLine
 import BipartiteDD.HexagonEven.Spread
 import BipartiteDD.HexagonEven.Levels
 import BipartiteDD.HexagonEven.LevelsCount
@@ -34,3 +36,8 @@ import BipartiteDD.HexagonEven.Delorme
 #print axioms BipartiteDD.HexagonEven.whiskers_bound_hexagon
 #print axioms BipartiteDD.HexagonEven.exists_aniso_even
 #print axioms BipartiteDD.HexagonEven.card_hline_even
+#print axioms BipartiteDD.HexagonEven.JE_JE
+#print axioms BipartiteDD.HexagonEven.Qf_JE
+#print axioms BipartiteDD.HexagonEven.Bf_JE
+#print axioms BipartiteDD.HexagonEven.tits_JE
+#print axioms BipartiteDD.HexagonEven.exists_hline_JE

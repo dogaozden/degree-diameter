@@ -21,3 +21,8 @@
 'BipartiteDD.HexagonEven.whiskers_bound_hexagon' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonEven.exists_aniso_even' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonEven.card_hline_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonEven.JE_JE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonEven.Qf_JE' depends on axioms: [propext, Quot.sound]
+'BipartiteDD.HexagonEven.Bf_JE' depends on axioms: [propext, Quot.sound]
+'BipartiteDD.HexagonEven.tits_JE' depends on axioms: [propext, Quot.sound]
+'BipartiteDD.HexagonEven.exists_hline_JE' depends on axioms: [propext, Classical.choice, Quot.sound]
