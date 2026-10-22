@@ -71,10 +71,28 @@ weak relative to the heuristic but out of reach of BFS-based search and of exact
 D = 7 with Δ ≥ 9 and D = 5 with Δ ≥ 10 are strong (need/N_h ≥ 1.1): the Loz lifts there are already better than
 random Haar graphs; skip. (D = 5, Δ = 6 is the D = 5 agent's.)
 
-## 4. Results so far
+## 4. Results so far (all bigcheck VALID: BFS from every vertex, exact diameter)
 
-- **(7,8): 82,992 > 80,940** (+2.5%). Haar graph of SL(2,13) × Z₁₉ (N = 41,496), found in 147 s;
-  bigcheck VALID. records/bipartite_dd/d7D8/. The heuristic's 0.87 N_h ≈ 44,800 suggests ~89–90K is reachable.
+| cell | table (2013) | ours | group G (order N; graph has 2N vertices) | search time | files |
+|---|---|---|---|---|---|
+| (7,8) | 80,940 | **82,992** | SL(2,13) × Z₁₉ (41,496) | 147 s | records/bipartite_dd/d7D8/ |
+| (8,8) | 201,480 | **206,448** | PSL(2,23) × Z₁₇ (103,224) | 8 s | records/bipartite_dd/d8D8/ |
+| (9,8) | 449,480 | **453,840** | PGL(2,61) (226,920) | 69 s | records/bipartite_dd/d9D8/ |
+
+Failed so far: (7,9) over PSL(2,29) × Z₁₇ (N = 207,060, need > 200,080): best 6 uncovered in 600 s.
+
+**Diameter criterion at even D (used for the search; easy remark).** diam H(G,S) ≤ 2k iff every g ∈ G is an
+alternating product s₁s₂⁻¹s₃⋯s₂ⱼ₊₁ with j ≤ k−1. Proof: this says every (g,B) is within 2k−1 of (e,A); inverting
+the words, every (g,A) is within 2k−1 of (e,B); right multiplication is transitive on each side, so every vertex is
+within 2k−1 of the whole other side, and then two vertices of one side are within 2k via a neighbour. So at even D
+there is one covering condition (words of length ≤ D−1), at odd D two (the D = 5 lemma, research/d5/REPORT.md).
+
+**Novelty.** Haar graphs (= lifts of the Δ-dipole) and voltage lifts are standard; Loz–Pérez-Rosés–Pineda-Villavicencio
+built many 2013 table entries from lifts. New: the graphs (non-abelian matrix groups of order 4·10⁴–2·10⁵, annealing
+with targeted moves: pick an uncovered u, a random walk from the start and one from u, and set the new generator to
+join their ends), the heuristic ranking, and the observation that the D = 8 column is weak (table/2 is only 10–13%
+of the word bound W). These are single computer constructions, not a family theorem, so there is no REPORT.md
+theorem; nothing here uses Delorme 1985 / Delorme–Farhi 1984 / Araujo-Pardo–López.
 
 ## 5. Order of work this session
 
