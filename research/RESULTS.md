@@ -13,11 +13,11 @@ has read it yet. "Lean" = machine-checked on master with only propext, Classical
 | Theorem B / Cor. B1, D=4 | Weighted copies with stand-ins in any GQ; regular versions | research/NOTE.md, research/p4/d4/REPORT.md | many | **Yes** (GQST.standin_*, GQST.regular_copy_graph) |
 | Prop. C / Cor. C1, D=4 | Singer 2-ovoids of W(q), all odd q; 5440 at (16,4), regular | research/NOTE.md | 5440 | **Yes** (SingerC.propC, corC1, regular5440) |
 | Theorem D, D=6 | H(q) + Delorme levels + q²(q²−1) exact whiskers (explicit rule via spreads S_z and an irreducible cubic): 2(q+1)(q⁴+q²+1) + 2q⁴+4q³+4q+10, max degree q+2, diameter 6, odd q; also m-ary levels (Δ = q+3) | research/p4/hats/REPORT.md §4 (Theorem 4) | q = 5, 7, 9, 11, 13 graphs; key identity now has a hand proof (complex structure J_z, research/geometry/PROOFREAD.md), also checked with sympy | **Yes, odd q** (HexagonD.theorem4 = exact whiskers, theoremD / theoremD_two = the bounds; built on Hexagon.genPolygonGraph_hexagon and Doubling); key identity also separately (HexagonD.Identity); 9592 graph (nb_7_6). Even q: not in Lean |
-| Theorem R, D=6 regular | Delete twins + complete: (q+m)-regular, diameter 6, 2(q+1)[q⁴+q²+1+(m−1)(q³+m+1)] vertices, odd q | research/p4/regular/REPORT.md | 9348, 147500, 386328, 866068, 927724 all exactly regular; independent bigcheck VALID on all five (exact diameter 6) | **abstract part: yes** (Regular.regular_of_twin_classes, exists_regular_completion); the instance needs the whisker part of Theorem D |
+| Theorem R, D=6 regular | Delete twins + complete: (q+m)-regular, diameter 6, 2(q+1)[q⁴+q²+1+(m−1)(q³+m+1)] vertices, odd q | research/p4/regular/REPORT.md | 9348, 147500, 386328, 866068, 927724 all exactly regular; independent bigcheck VALID on all five (exact diameter 6) | **Yes, odd q** (HexagonD.Regular.theoremR, theoremR_two; paper Thm 6.12) |
 
 **So: is Problem 4 solved?** On paper, yes for odd q: regular graphs at D = 4 (Theorem A, C1) and D = 6 (Theorem R),
-beating the table, and the hat lemma says in what sense AL's construction generalizes. Lean now covers Theorem D for odd q. Not yet: (1) an outside mathematician reading the proofs; (2) the instance of Theorem R
-(regular D = 6) in Lean; (3) even q in Lean (worked out on paper: research/evenq).
+beating the table, and the hat lemma says in what sense AL's construction generalizes. Lean now covers Theorem D for odd q. Lean now also covers Theorem R (regular D = 6) for odd q. Not yet: (1) an outside mathematician reading the proofs;
+(2) even q in Lean (worked out on paper: research/evenq; the q = 16, 2,384,492-vertex graph passed bigcheck).
 
 ## AL Problems 1, 2, Question 1 (local bipartite Moore graphs)
 | Result | Status |
