@@ -25,3 +25,4 @@ import BipartiteDD.HexagonD.Identity.Key
 import BipartiteDD.HexagonD.Identity.Nu
 import BipartiteDD.HexagonD.Identity.Line
 import BipartiteDD.Plus2Zero.Main
+import BipartiteDD.HexagonD.Regular.Final
