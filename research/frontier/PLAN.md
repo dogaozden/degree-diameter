@@ -71,7 +71,12 @@ weak relative to the heuristic but out of reach of BFS-based search and of exact
 D = 7 with Δ ≥ 9 and D = 5 with Δ ≥ 10 are strong (need/N_h ≥ 1.1): the Loz lifts there are already better than
 random Haar graphs; skip. (D = 5, Δ = 6 is the D = 5 agent's.)
 
-## 4. Order of work this session
+## 4. Results so far
+
+- **(7,8): 82,992 > 80,940** (+2.5%). Haar graph of SL(2,13) × Z₁₉ (N = 41,496), found in 147 s;
+  bigcheck VALID. records/bipartite_dd/d7D8/. The heuristic's 0.87 N_h ≈ 44,800 suggests ~89–90K is reachable.
+
+## 5. Order of work this session
 
 1. (7,8) over groups of order 41–48K (SL(2,13)×Z₁₉ = 41,496 first), push N up after the first success.
 2. (8,8) over PSL(2,59) (102,660), SL(2,37)×Z₂ (101,232), PSL(2,23)×Z₁₇ (103,224).
