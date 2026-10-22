@@ -39,8 +39,17 @@ and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fi
 - `HexagonEven/JLine.lean`: `isHPair_JE`, `JE_not_mem_span` (uses `hd`), `exists_hline_JE`: `<x, J x>` is a line of
   H(q) in Π_z for a nonzero singular x in Π_z.
 
+- `HexagonEven/KeyId.lean`: `key_cleared`, the key identity (Lemma key2) cleared of denominators; certificate
+  `Θ⁶(LHS-RHS) = qa(αΘ-A) + qb(βΘ-B) + 2G` computed with sympy (takes ~10 min to compile).
+- `HexagonEven/GCubic.lean`: `exists_goodCubicE` (Lemma G2, for |F| >= 4, char 2).
+- `HexagonEven/PiZ.lean`: `plane_not_piZE`, `finrank_planePiZE`, `slineZE_unique` (lines of S_z through a point).
+- `HexagonEven/Exact.lean`: `vStd'`, `nuE`, `Fz`, `Wset`, `no_second_line'`, `slineZE_opp'` (lines of S_z are opposite v).
+- `HexagonEven/ExactW.lean`: `exists_unique_wline_even`: every free point lies on exactly one line of Wset
+  (via the key identity; the whisker condition is affine along A_u with slope G(u5,u2)/Θ != 0).
+
 ## Next
-- Target 3: key identity (Lemma key2), G-cubic for q >= 4, the even PiZ/exact whisker set, `theoremD_even`, `theoremR_even`.
+- Counting: |Wset| = q^4 - q^2 (port of HexagonD/WCount), Whiskers for Wset, theoremD_even (q >= 4).
+- theoremR_even (Regular folder) not started.
 
 ## Blocker
 - None yet.

@@ -4,6 +4,10 @@ import BipartiteDD.HexagonEven.Pi
 import BipartiteDD.HexagonEven.PiCount
 import BipartiteDD.HexagonEven.Identity
 import BipartiteDD.HexagonEven.JLine
+import BipartiteDD.HexagonEven.KeyId
+import BipartiteDD.HexagonEven.GCubic
+import BipartiteDD.HexagonEven.PiZ
+import BipartiteDD.HexagonEven.ExactW
 import BipartiteDD.HexagonEven.Spread
 import BipartiteDD.HexagonEven.Levels
 import BipartiteDD.HexagonEven.LevelsCount
@@ -41,3 +45,11 @@ import BipartiteDD.HexagonEven.Delorme
 #print axioms BipartiteDD.HexagonEven.Bf_JE
 #print axioms BipartiteDD.HexagonEven.tits_JE
 #print axioms BipartiteDD.HexagonEven.exists_hline_JE
+#print axioms BipartiteDD.HexagonEven.key_cleared
+#print axioms BipartiteDD.HexagonEven.exists_goodCubicE
+#print axioms BipartiteDD.HexagonEven.plane_not_piZE
+#print axioms BipartiteDD.HexagonEven.slineZE_unique
+#print axioms BipartiteDD.HexagonEven.no_second_line'
+#print axioms BipartiteDD.HexagonEven.slineZE_opp'
+#print axioms BipartiteDD.HexagonEven.cond_iff
+#print axioms BipartiteDD.HexagonEven.exists_unique_wline_even

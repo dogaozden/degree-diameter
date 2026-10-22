@@ -19,6 +19,11 @@ import BipartiteDD.HexagonEven.LevelsCount
 import BipartiteDD.HexagonEven.LevelsHyp
 import BipartiteDD.HexagonEven.LevelsForest
 import BipartiteDD.HexagonEven.Delorme
+import BipartiteDD.HexagonEven.ExactW
+import BipartiteDD.HexagonEven.Exact
+import BipartiteDD.HexagonEven.PiZ
+import BipartiteDD.HexagonEven.GCubic
+import BipartiteDD.HexagonEven.KeyId
 import BipartiteDD.HexagonEven.Identity
 import BipartiteDD.HexagonEven.JLine
 import BipartiteDD.HexagonEven.Pi
