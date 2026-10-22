@@ -1,0 +1,11 @@
+read       ok    edge list, 3.4 MB, 290472 edges as listed, 0.02 s
+n          ok      declared n = 82992 (no value field in record)
+endpoints  ok    all 580944 endpoints in [0, 82992)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 82992, m = 290472
+degree     ok      max degree 7 (limit 7); histogram 7:82992
+bipartite  ok      sides 41496 / 41496, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 8 <= 8 (1297 passes of 64 sources, 1 threads, 3.94 s)
+VALID    n=82992 Delta=7 D=8, diameter 8, total 3.98 s

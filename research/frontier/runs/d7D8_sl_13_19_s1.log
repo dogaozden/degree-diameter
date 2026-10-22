@@ -2,3 +2,8 @@ group sl 13 x Z_19, N=41496, identity 2964
 start cost=49
 t=30 steps=1254 evals=10033 cost=3 best=1 T=0.80
 t=60 steps=2506 evals=20049 cost=1 best=1 T=0.43
+t=90 steps=3809 evals=30473 cost=2 best=1 T=0.22
+t=120 steps=5115 evals=40921 cost=2 best=1 T=0.15
+RESULT d=7 D=8 group=sl 13 x Z_19 N=41496 best=0 evals=50425 time=147.4
+full diameter check: OK
+wrote sols/d7D8_sl_13_19_s1.txt
