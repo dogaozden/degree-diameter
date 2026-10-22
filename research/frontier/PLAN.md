@@ -78,8 +78,11 @@ random Haar graphs; skip. (D = 5, Δ = 6 is the D = 5 agent's.)
 | (7,8) | 80,940 | **82,992** | SL(2,13) × Z₁₉ (41,496) | 147 s | records/bipartite_dd/d7D8/ |
 | (8,8) | 201,480 | **206,448** | PSL(2,23) × Z₁₇ (103,224) | 8 s | records/bipartite_dd/d8D8/ |
 | (9,8) | 449,480 | **453,840** | PGL(2,61) (226,920) | 69 s | records/bipartite_dd/d9D8/ |
+| (6,10) | 452,032 | **461,472** | PSL(2,23) × Z₃₈ (230,736) | 36 s | records/bipartite_dd/d6D10/ |
+| (8,9) | 1,091,232 | **1,092,960** | SL(2,23) × Z₄₅ (546,480) | 50 s | records/bipartite_dd/d8D9/ (bigcheck 30 min) |
 
-Failed so far: (7,9) over PSL(2,29) × Z₁₇ (N = 207,060, need > 200,080): best 6 uncovered in 600 s.
+Failed so far (best uncovered count): (7,9) PSL(2,29) × Z₁₇, N = 207,060: 6 in 600 s; (8,8) PSL(2,23) × Z₂₁,
+N = 127,512: 31 in 257 s; (7,8) SL(2,13) × Z₂₁, N = 45,864: 6 in 600 s.
 
 **Diameter criterion at even D (used for the search; easy remark).** diam H(G,S) ≤ 2k iff every g ∈ G is an
 alternating product s₁s₂⁻¹s₃⋯s₂ⱼ₊₁ with j ≤ k−1. Proof: this says every (g,B) is within 2k−1 of (e,A); inverting
