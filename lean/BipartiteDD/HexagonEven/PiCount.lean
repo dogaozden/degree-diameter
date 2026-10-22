@@ -100,7 +100,7 @@ noncomputable def ptPiUnitsEquivE (d : F) :
 
 noncomputable instance (d : F) : Fintype (PtPiE d) := Fintype.ofFinite _
 
-theorem card_pointsPiE {d : F} (hd : ∀ t : F, t ^ 2 + t + d ≠ 0) :
+theorem card_pointsPiE {d : F} (hd : ∀ t : F, t ^ 2 + t + d ≠ 0) (_hchar : (2 : F) = 0) :
     Fintype.card (PtPiE d) = (Fintype.card F ^ 3 + 1) * (Fintype.card F + 1) := by
   have h1 := Fintype.card_congr (ptPiUnitsEquivE d)
   rw [Fintype.card_prod, Fintype.card_units] at h1

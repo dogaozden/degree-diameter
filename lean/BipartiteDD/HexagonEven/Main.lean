@@ -110,4 +110,13 @@ theorem genPolygonGraph_hexagon_even [Fintype F] :
   exact genPolygonGraph_six hexInc (Fintype.card F) Fintype.card_pos card_lines_through_even
     card_points_hline card_spt_eq exists_walk_even
 
+/-- `H(q)` has as many lines as points: `(q⁶ - 1)/(q - 1)`, for every finite field. -/
+theorem card_hline_even [Fintype F] :
+    Nat.card (HLine F) = (Fintype.card F ^ 6 - 1) / (Fintype.card F - 1) := by
+  haveI : Fintype (SPt F) := Fintype.ofFinite _
+  haveI : Fintype (HLine F) := haveI := finite_hline_even (F := F); Fintype.ofFinite _
+  rw [← card_spt_div]
+  exact (card_lines_eq (inc := hexInc (F := F)) (k := Fintype.card F + 1) (by omega)
+    card_lines_through_even card_points_hline).symm ▸ rfl
+
 end BipartiteDD.HexagonEven

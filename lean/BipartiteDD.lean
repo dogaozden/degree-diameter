@@ -13,6 +13,12 @@ import BipartiteDD.Hexagon.Main
 import BipartiteDD.Hexagon.Sanity
 import BipartiteDD.HexagonEven.Main
 import BipartiteDD.HexagonEven.Sanity
+import BipartiteDD.HexagonEven.Spread
+import BipartiteDD.HexagonEven.Levels
+import BipartiteDD.HexagonEven.LevelsCount
+import BipartiteDD.HexagonEven.LevelsHyp
+import BipartiteDD.HexagonEven.LevelsForest
+import BipartiteDD.HexagonEven.Delorme
 import BipartiteDD.HexagonEven.Pi
 import BipartiteDD.HexagonEven.PiCount
 import BipartiteDD.HexagonD.Delorme

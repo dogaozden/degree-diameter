@@ -2,6 +2,12 @@ import BipartiteDD.HexagonEven.Main
 import BipartiteDD.HexagonEven.Sanity
 import BipartiteDD.HexagonEven.Pi
 import BipartiteDD.HexagonEven.PiCount
+import BipartiteDD.HexagonEven.Spread
+import BipartiteDD.HexagonEven.Levels
+import BipartiteDD.HexagonEven.LevelsCount
+import BipartiteDD.HexagonEven.LevelsHyp
+import BipartiteDD.HexagonEven.LevelsForest
+import BipartiteDD.HexagonEven.Delorme
 
 /-! Axioms used by the even-q Hexagon group. Run `lake env lean BipartiteDD/HexagonEven/Axioms.lean`. -/
 
@@ -20,3 +26,11 @@ import BipartiteDD.HexagonEven.PiCount
 #print axioms BipartiteDD.HexagonEven.card_gE
 #print axioms BipartiteDD.HexagonEven.card_zeros_PiE
 #print axioms BipartiteDD.HexagonEven.card_pointsPiE
+#print axioms BipartiteDD.HexagonEven.card_slineE
+#print axioms BipartiteDD.HexagonEven.sline_edistE
+#print axioms BipartiteDD.HexagonEven.exists_levelled_hexagon
+#print axioms BipartiteDD.HexagonEven.delorme_bound_hexagon
+#print axioms BipartiteDD.HexagonEven.delorme_bound_hexagon_two
+#print axioms BipartiteDD.HexagonEven.whiskers_bound_hexagon
+#print axioms BipartiteDD.HexagonEven.exists_aniso_even
+#print axioms BipartiteDD.HexagonEven.card_hline_even

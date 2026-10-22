@@ -13,17 +13,27 @@ the import lines added to `lean/BipartiteDD.lean`.
 - No `sorry`, `admit`, `axiom`, `native_decide` in the proof files. `HexagonEven/Axioms.lean` and
   `Axioms.out.txt`: only `propext`, `Classical.choice`, `Quot.sound`.
 
-## Target 2 (in progress)
-- `HexagonEven/Pi.lean`: hyperplane `Π_d : x₀ + x₃ + d x₄ = 0` (`LfunE`, `InPiE`, `SLineE`), with the
-  hypothesis `hd : ∀ t, t² + t + d ≠ 0` (replaces `¬ IsSquare (-c)`) and `(2 : F) = 0`. `plane_not_piE`: the
-  plane `π_y` of a nonzero singular `y ∈ Π_d` is not inside `Π_d`. Its proof uses a 7×7 certificate
-  (determinant `(λ²+λ+d)³` mod 2, found with sympy; `linear_combination` coefficients are in the file).
-  `finrank_planePiE` (dim 2), `exists_slineE` (existence), `slineE_unique` (uniqueness of the spread line).
-- `HexagonEven/PiCount.lean`: `card_zeros_PiE`, `card_pointsPiE`: `|Π_d ∩ Q| = (q³+1)(q+1)` (elliptic quadric).
+## Target 2: Hermitian spread in Pi_d, Delorme levels, whiskers (done)
+Hyperplane `Pi_d : x0 + x3 + d x4 = 0`, with hypotheses `hd : forall t, t^2 + t + d != 0` (anisotropy, Tr d = 1)
+and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fixed):
+- `HexagonEven/Pi.lean`: `plane_not_piE` (7x7 certificate, determinant (l^2+l+d)^3 mod 2, found with sympy),
+  `finrank_planePiE`, `exists_slineE`, `slineE_unique`.
+- `HexagonEven/PiCount.lean`: `card_zeros_PiE`, `card_pointsPiE` (|Pi_d cap Q| = (q^3+1)(q+1)).
+- `HexagonEven/Spread.lean`: `slineOfE`, `existsUnique_slineE`, `sline_oppE`, `sline_edistE` (opposite lines),
+  `card_slineE` (|S_d| = q^3+1), `ncard_slineE`.
+- `HexagonEven/Levels.lean`, `LevelsCount.lean`, `LevelsHyp.lean`, `LevelsForest.lean`: levels A0, A1, A2,
+  `Whiskers d v W`, sizes, hypotheses (a), (b) of `delorme_levelled_polygon`, and `forestDiam_pi`.
+  Reuses the characteristic-free `HexagonD.Polygon` and `HexagonD.Forest`.
+- `HexagonEven/Delorme.lean`: `exists_aniso_even` (char 2: some d with t^2+t+d != 0 for all t),
+  `exists_levelled_hexagon`, `delorme_bound_hexagon` (all even q, m >= 1), `delorme_bound_hexagon_two`
+  (n_b(q+2,6) >= 2(q+1)(q^4+q^2+1) + q^4 + 4q^3 + q^2 + 4q + 10 for even q), `whiskers_bound_hexagon`,
+  `Whiskers.of_edist`.
+- `HexagonEven/Main.lean` also has `card_hline_even`.
+- Axioms: `HexagonEven/Axioms.lean` and `Axioms.out.txt` list all new results; all use only
+  `propext, Classical.choice, Quot.sound`.
 
 ## Next
-- Target 2: char-2 Hermitian spread in Π (Tr δ = 1), Delorme levels, whiskers (mirror `HexagonD`).
-- Target 3: char-2 J_z and key identity, exact whiskers for q ≥ 4, `theoremD_even`, `theoremR_even`.
+- Target 3: char-2 J_z and key identity, exact whiskers for q >= 4, `theoremD_even`, `theoremR_even`.
 
 ## Blocker
 - None yet.
