@@ -47,9 +47,11 @@ and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fi
 - `HexagonEven/ExactW.lean`: `exists_unique_wline_even`: every free point lies on exactly one line of Wset
   (via the key identity; the whisker condition is affine along A_u with slope G(u5,u2)/Θ != 0).
 
+- `HexagonEven/ThmD.lean`: `ncard_wsetE` (|Wset| = q^4 - q^2), `wset_whiskers_even`, and `theoremD_even`
+  (Theorem D for every even q >= 4: n_b(q+m, 6) bound with the whisker count q^4 - q^2).
+
 ## Next
-- Counting: |Wset| = q^4 - q^2 (port of HexagonD/WCount), Whiskers for Wset, theoremD_even (q >= 4).
-- theoremR_even (Regular folder) not started.
+- theoremR_even (Regular folder, port of HexagonD/Regular): in progress.
 
 ## Blocker
 - None yet.

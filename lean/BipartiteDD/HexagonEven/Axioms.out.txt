@@ -34,3 +34,6 @@
 'BipartiteDD.HexagonEven.slineZE_opp'' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonEven.cond_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonEven.exists_unique_wline_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonEven.ncard_wsetE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonEven.wset_whiskers_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonEven.theoremD_even' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -8,6 +8,7 @@ import BipartiteDD.HexagonEven.KeyId
 import BipartiteDD.HexagonEven.GCubic
 import BipartiteDD.HexagonEven.PiZ
 import BipartiteDD.HexagonEven.ExactW
+import BipartiteDD.HexagonEven.ThmD
 import BipartiteDD.HexagonEven.Spread
 import BipartiteDD.HexagonEven.Levels
 import BipartiteDD.HexagonEven.LevelsCount
@@ -53,3 +54,6 @@ import BipartiteDD.HexagonEven.Delorme
 #print axioms BipartiteDD.HexagonEven.slineZE_opp'
 #print axioms BipartiteDD.HexagonEven.cond_iff
 #print axioms BipartiteDD.HexagonEven.exists_unique_wline_even
+#print axioms BipartiteDD.HexagonEven.ncard_wsetE
+#print axioms BipartiteDD.HexagonEven.wset_whiskers_even
+#print axioms BipartiteDD.HexagonEven.theoremD_even
