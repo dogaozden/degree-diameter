@@ -50,8 +50,17 @@ and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fi
 - `HexagonEven/ThmD.lean`: `ncard_wsetE` (|Wset| = q^4 - q^2), `wset_whiskers_even`, and `theoremD_even`
   (Theorem D for every even q >= 4: n_b(q+m, 6) bound with the whisker count q^4 - q^2).
 
-## Next
-- theoremR_even (Regular folder, port of HexagonD/Regular): in progress.
+- `HexagonEven/Reg/{Relation,Classes,Kept,Choice,Final}.lean`: port of `HexagonD/Regular` (mechanical transform,
+  then 3 hand fixes). `theoremR` (m >= 2) and `theoremR_two` (m = 2) for every even q >= 4.
+- `ThmD.lean`: `theorem4_even` (wrapper: anisotropic d, good cubic, whiskers, count, exactness).
+
+## Summary of this slice (even q)
+- Target 1 (generalized hexagon for all finite fields): done (`genPolygonGraph_hexagon_even`).
+- Target 2 (Hermitian spread, levels, whiskers, Delorme bound): done (`delorme_bound_hexagon_two` etc.).
+- Target 3: J_z and key identity done; exact whiskers (q >= 4) done; `theoremD_even` and `theoremR_even` done.
+  Hypothesis q >= 4 (not q = 2): the good cubic needs |F| >= 4 (q = 2 has no good cubic; the paper uses a computer
+  search there). `theoremD_two` (q+2 form) is not restated for even q; `theoremD_even` covers all m >= 1.
+- Still open: none of the brief's targets; q = 2 excluded from theorem D/R.
 
 ## Blocker
 - None yet.

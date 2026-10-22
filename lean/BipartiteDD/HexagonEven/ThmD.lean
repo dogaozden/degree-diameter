@@ -187,4 +187,16 @@ theorem theoremD_even [Fintype F] (hchar : (2 : F) = 0) (hq : 4 ≤ Fintype.card
   rw [e] at hb
   exact hb
 
+/-- Theorem 4 (even `q ≥ 4`): the anisotropic `d`, a good cubic, the whiskers `Wset`, the count `q⁴ - q²`
+and the exactness (every free point on exactly one whisker line). -/
+theorem theorem4_even [Fintype F] (hchar : (2 : F) = 0) (hq : 4 ≤ Fintype.card F) :
+    ∃ d c0 c1 : F, (∀ t : F, t ^ 2 + t + d ≠ 0) ∧ GoodCubicE d c0 c1 ∧
+    Whiskers d (vS' d) (Wset d c0 c1) ∧
+    (Wset d c0 c1).ncard + Fintype.card F ^ 2 = Fintype.card F ^ 4 ∧
+    ∀ p : SPt F, p ∈ FreePtsE d → ∃! m : HLine F, m ∈ Wset d c0 c1 ∧ hexInc p m := by
+  obtain ⟨d, hd⟩ := exists_aniso_even hchar
+  obtain ⟨c0, c1, hG⟩ := exists_goodCubicE hd hq hchar
+  exact ⟨d, c0, c1, hd, hG, wset_whiskers_even hd hchar hG, ncard_wsetE hd hchar hG,
+    fun p hp => exists_unique_wline_even hd hchar hG hp.1 hp.2⟩
+
 end BipartiteDD.HexagonEven

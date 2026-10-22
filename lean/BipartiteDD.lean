@@ -21,6 +21,7 @@ import BipartiteDD.HexagonEven.LevelsForest
 import BipartiteDD.HexagonEven.Delorme
 import BipartiteDD.HexagonEven.ExactW
 import BipartiteDD.HexagonEven.ThmD
+import BipartiteDD.HexagonEven.Reg.Final
 import BipartiteDD.HexagonEven.Exact
 import BipartiteDD.HexagonEven.PiZ
 import BipartiteDD.HexagonEven.GCubic
