@@ -19,6 +19,7 @@ import BipartiteDD.HexagonEven.LevelsCount
 import BipartiteDD.HexagonEven.LevelsHyp
 import BipartiteDD.HexagonEven.LevelsForest
 import BipartiteDD.HexagonEven.Delorme
+import BipartiteDD.HexagonEven.Q2
 import BipartiteDD.HexagonEven.ExactW
 import BipartiteDD.HexagonEven.ThmD
 import BipartiteDD.HexagonEven.Reg.Final

@@ -60,7 +60,19 @@ and `hchar : (2 : F) = 0`. Files mirror `HexagonD` (ported mechanically, then fi
 - Target 3: J_z and key identity done; exact whiskers (q >= 4) done; `theoremD_even` and `theoremR_even` done.
   Hypothesis q >= 4 (not q = 2): the good cubic needs |F| >= 4 (q = 2 has no good cubic; the paper uses a computer
   search there). `theoremD_two` (q+2 form) is not restated for even q; `theoremD_even` covers all m >= 1.
-- Still open: none of the brief's targets; q = 2 excluded from theorem D/R.
+- Still open: none of the brief's targets for even q >= 4. q = 2 is covered in the section below (Q2).
+
+## q = 2 (Q2)
+- `HexagonEven/Q2.lean` (F = ZMod 2, d = 1, spread line v = <e1, e6>): an explicit set of 12 whiskers
+  `q2W = Set.range q2wl` (coordinates from `research/evenq/whiskers_raw_q2.json`, checked in Python against the
+  Lean definitions of Opp / free points / distinctness).
+- `q2_whiskers : Whiskers 1 q2vS q2W`, `q2W_ncard : q2W.ncard = 12`.
+- `theoremD_q2 : ∃ H : SimpleGraph (Fin 208), IsBipartiteDegDiam H 4 6` (via `whiskers_bound_hexagon`, m = 2:
+  126 + 70 + 12 = 208 vertices).
+- `q2_exact`: every free point lies on exactly one whisker of `q2W` (finite check `q2_cover_dec`).
+- `theoremR_q2 : ∃ G : SimpleGraph (Fin 192), IsBipartiteRegDiam G 4 6` (4-regular, diameter 6, via `regular_levRel`
+  with `|q2W| + q^2 = q^4`, 12 + 4 = 16).
+- All finite checks are kernel `decide`; no `sorry`/`admit`/`native_decide`.
 
 ## Blocker
 - None yet.

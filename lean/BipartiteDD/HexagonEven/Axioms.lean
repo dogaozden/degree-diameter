@@ -16,6 +16,7 @@ import BipartiteDD.HexagonEven.LevelsCount
 import BipartiteDD.HexagonEven.LevelsHyp
 import BipartiteDD.HexagonEven.LevelsForest
 import BipartiteDD.HexagonEven.Delorme
+import BipartiteDD.HexagonEven.Q2
 
 /-! Axioms used by the even-q Hexagon group. Run `lake env lean BipartiteDD/HexagonEven/Axioms.lean`. -/
 
@@ -61,3 +62,9 @@ import BipartiteDD.HexagonEven.Delorme
 #print axioms BipartiteDD.HexagonEven.theoremR
 #print axioms BipartiteDD.HexagonEven.theoremR_two
 #print axioms BipartiteDD.HexagonEven.theorem4_even
+#print axioms BipartiteDD.HexagonEven.isBDD_transfer
+#print axioms BipartiteDD.HexagonEven.q2_whiskers
+#print axioms BipartiteDD.HexagonEven.q2W_ncard
+#print axioms BipartiteDD.HexagonEven.theoremD_q2
+#print axioms BipartiteDD.HexagonEven.q2_exact
+#print axioms BipartiteDD.HexagonEven.theoremR_q2
