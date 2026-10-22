@@ -32,6 +32,8 @@ D = 5 Haar graphs (Haar lemma in Lean; 1152, 1764, 2662 kernel-checked); D = 3 (
 Oct 22 (frontier-opus, Haar graphs at even D, one covering condition with words of length ≤ D−1): (7,8) 82,992 (table 80,940),
 (8,8) 206,448 (201,480), (9,8) 453,840 (449,480), (6,10) 461,472 (452,032). bigcheck VALID twice (agent, coordinator). Table
 values from the 2013 Miller–Širáň survey; the live wiki was not readable, so check for newer entries. Not in Lean yet.
+Also Oct 22: (8,9) 1,092,960 (table 1,091,232), Haar graph of SL(2,23) × Z45 (odd D); bigcheck VALID twice (agent; coordinator
+on an independent rebuild, same sha256, research/frontier/runs/coordinator_check_d8D9_1092960.txt).
 
 ## Prior art to credit
 Delorme 1985 (doubling with levels; all old D = 4 and D = 6 table values), Delorme–Farhi 1984, Bamberg–Law–Penttila 2009
