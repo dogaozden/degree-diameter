@@ -48,7 +48,7 @@ theorem sptOf_mem {v : V7 F} {hv : v ≠ 0} {hQ : Qf v = 0} {W : Submodule F (V7
 
 section
 
-variable [Fintype F] [NeZero (2 : F)]
+variable [Fintype F]
 
 theorem exists_hline_through {x : V7 F} (hx : x ≠ 0) (hQ : Qf x = 0) : ∃ M : HLine F, x ∈ M.1 := by
   have hnot : ¬ plane x ≤ span F {x} := by

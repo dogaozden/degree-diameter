@@ -41,7 +41,7 @@ theorem card_dc {S T : Type*} [Fintype S] [Fintype T] (r : S → T → Prop) (q 
 
 end dc
 
-variable {F : Type*} [Field F] [Fintype F] [NeZero (2 : F)]
+variable {F : Type*} [Field F] [Fintype F]
 
 theorem finite_hline : Finite (HLine F) :=
   Finite.of_injective (fun W : HLine F => (W.1 : Set (V7 F)))
@@ -56,7 +56,7 @@ theorem card_lines_through (p : SPt F) :
   have hq : 0 < Fintype.card F := Fintype.card_pos
   let S := {t : SPt F // t.1.rep ∈ plane x}
   let T := {W : HLine F // x ∈ W.1}
-  haveI : Finite T := haveI := @finite_hline F _ _ _; Subtype.finite
+  haveI : Finite T := haveI := finite_hline (F := F); Subtype.finite
   haveI : Fintype S := Fintype.ofFinite S
   haveI : Fintype T := Fintype.ofFinite T
   let p0 : S := ⟨p, hxplane⟩

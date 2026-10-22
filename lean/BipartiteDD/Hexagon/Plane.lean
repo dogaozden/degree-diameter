@@ -3,7 +3,7 @@ import BipartiteDD.Hexagon.Zorn
 /-! Split Cayley hexagon `H(q)`, part 3: the plane `π_x` of lines through a singular point.
 
 For a nonzero singular `x ∈ F^7` put `π_x = {y | φ x · φ y = 0}` (the kernel of the linear map `y ↦ φ x · φ y`).
-Over a field of characteristic `≠ 2`:
+Over any field (no characteristic assumption):
 * `φ x · φ y = 0` is the same as `IsHPair x y` (`isHPair_iff`): Tits' equations are the vector part of the
   octonion product, and the scalar part is forced to vanish by `x (x y) = x² y = 0`;
 * `π_x` is totally singular (`(x y) ȳ = N(y) x`), hence `dim π_x ≤ 3` because `Q(6, q)` has Witt index `3`;
@@ -30,6 +30,28 @@ theorem two_mul_finrank_le {M : Type*} [AddCommGroup M] [Module F M] [FiniteDime
   have h1 := Submodule.finrank_mono hle
   have h2 := LinearMap.BilinForm.finrank_orthogonal hB S
   have h3 : finrank F S ≤ finrank F M := Submodule.finrank_le S
+  omega
+
+/-- A totally isotropic subspace meeting the radical `B.ker` trivially has at most half the dimension.
+No nondegeneracy is needed: in characteristic `2` the form `Bf` has a one-dimensional radical. -/
+theorem two_mul_finrank_le_of_ker {M : Type*} [AddCommGroup M] [Module F M] [FiniteDimensional F M]
+    (B : LinearMap.BilinForm F M) (S : Submodule F M)
+    (hS : ∀ x ∈ S, ∀ y ∈ S, B x y = 0) (hrad : ∀ x ∈ S, (∀ y, B x y = 0) → x = 0) :
+    2 * finrank F S ≤ finrank F M := by
+  have hle : S ≤ B.orthogonal S := fun x hx => by
+    rw [LinearMap.BilinForm.mem_orthogonal_iff]
+    intro n hn
+    exact hS n hn x hx
+  have hinf : S ⊓ B.ker = ⊥ := by
+    rw [eq_bot_iff]
+    intro x hx
+    obtain ⟨hxS, hxk⟩ := hx
+    rw [Submodule.mem_bot]
+    refine hrad x hxS (fun y => ?_)
+    exact LinearMap.congr_fun hxk y
+  have h1 := LinearMap.BilinForm.finrank_add_finrank_orthogonal' (B := B) S
+  rw [hinf, finrank_bot, add_zero] at h1
+  have h2 := Submodule.finrank_mono hle
   omega
 
 end generic
@@ -150,12 +172,32 @@ theorem finrank_V7 : finrank F (V7 F) = 7 := by simp
 
 theorem finrank_C8 : finrank F (C8 F) = 8 := by simp
 
-variable [NeZero (2 : F)]
+/-- A singular vector in the radical of `Bf` is zero. The radical of `Bf` is `⟨e₃⟩`, and `Q(c e₃) = -c²`.
+This holds in every characteristic (in odd characteristic the radical is already trivial). -/
+theorem eq_zero_of_Bf_radical {s : V7 F} (hs : Qf s = 0) (h : ∀ y, Bf s y = 0) : s = 0 := by
+  have h0 := h (Pi.single 0 1)
+  have h1 := h (Pi.single 1 1)
+  have h2 := h (Pi.single 2 1)
+  have h4 := h (Pi.single 4 1)
+  have h5 := h (Pi.single 5 1)
+  have h6 := h (Pi.single 6 1)
+  simp [Bf] at h0 h1 h2 h4 h5 h6
+  have h3 : s 3 = 0 := by
+    have : s 3 ^ 2 = 0 := by
+      simp only [Qf] at hs
+      rw [h0, h1, h2, h4, h5, h6] at hs
+      linear_combination -hs
+    exact pow_eq_zero_iff two_ne_zero |>.1 this
+  ext i
+  fin_cases i <;> simp [*]
 
-/-- `dim π_x ≤ 3`. -/
+/-- The totally singular planes `π_x` meet the radical of `Bf` trivially, so the Witt-type bound applies
+in every characteristic: `dim π_x ≤ 3`. -/
 theorem finrank_plane_le {x : V7 F} (hx : x ≠ 0) : finrank F (plane x) ≤ 3 := by
-  have h := two_mul_finrank_le (BfForm F) BfForm_nondegenerate (plane x)
+  have h := two_mul_finrank_le_of_ker (BfForm F) (plane x)
     (fun y hy z hz => Bf_eq_zero_of_mem_plane hx hy hz)
+    (fun s hs hrad => eq_zero_of_Bf_radical (Qf_eq_zero_of_mem_plane hx hs)
+      (fun y => by simpa using hrad y))
   rw [finrank_V7] at h
   omega
 
