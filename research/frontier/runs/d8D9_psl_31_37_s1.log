@@ -1,3 +1,7 @@
 group psl 31 x Z_37, N=550560, identity 17205
 start cost=8
 t=30 steps=29 evals=233 cost=2 best=1 T=0.53
+t=61 steps=58 evals=465 cost=2 best=1 T=0.18
+RESULT d=8 D=9 group=psl 31 x Z_37 N=550560 best=0 evals=497 time=66.4
+full diameter check: OK
+wrote sols/d8D9_psl_31_37_s1.txt

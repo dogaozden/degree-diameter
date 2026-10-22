@@ -1,3 +1,7 @@
 group psl 29 x Z_45, N=548100, identity 18270
 start cost=11
 t=31 steps=30 evals=241 cost=1 best=1 T=0.52
+t=62 steps=60 evals=481 cost=1 best=1 T=0.18
+RESULT d=8 D=9 group=psl 29 x Z_45 N=548100 best=0 evals=617 time=81.6
+full diameter check: OK
+wrote sols/d8D9_psl_29_45_s2.txt
