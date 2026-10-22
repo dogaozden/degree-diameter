@@ -1,0 +1,25 @@
+2026-10-22 21:18:04 start: 22 jobs, MAX=3
+2026-10-22 21:18:04 start d6_heis_7_s1_K20 secs=720 (running 1, queued 21)
+2026-10-22 21:18:04 start d10_heis_13_s1_K20 secs=1800 (running 2, queued 20)
+2026-10-22 21:18:04 start d6_meta_7_3_2__x__cyc_17_s1_K20 secs=720 (running 3, queued 19)
+2026-10-22 21:30:04 done d6_heis_7_s1_K20 exit=0
+2026-10-22 21:30:04 done d6_meta_7_3_2__x__cyc_17_s1_K20 exit=0
+2026-10-22 21:30:05 start d10_sl_13_s1_K20 secs=1800 (running 2, queued 18)
+2026-10-22 21:30:05 start d6_heis_3__x__cyc_13_s1_K20 secs=720 (running 3, queued 17)
+2026-10-22 21:42:05 done d6_heis_3__x__cyc_13_s1_K20 exit=0
+2026-10-22 21:42:05 start d10_pgl_13_s1_K20 secs=1800 (running 3, queued 16)
+2026-10-22 21:48:10 done d10_heis_13_s1_K20 exit=0
+2026-10-22 21:48:10 start d6_agl_4__x__cyc_29_s1_K20 secs=720 (running 3, queued 15)
+2026-10-22 22:00:10 done d10_sl_13_s1_K20 exit=0
+2026-10-22 22:00:10 done d6_agl_4__x__cyc_29_s1_K20 exit=0
+2026-10-22 22:00:10 start d10_z2_19_6_singer_s1_K20 secs=1800 (running 2, queued 14)
+2026-10-22 22:00:10 start d6_agl_5__x__cyc_18_s1_K20 secs=720 (running 3, queued 13)
+2026-10-22 22:12:05 done d10_pgl_13_s1_K20 exit=0
+2026-10-22 22:12:05 start d10_psl_13__x__cyc_2_s1_K20 secs=1800 (running 3, queued 12)
+2026-10-22 22:12:10 done d6_agl_5__x__cyc_18_s1_K20 exit=0
+2026-10-22 22:12:10 start d6_psl_9_s1_K20 secs=720 (running 3, queued 11)
+2026-10-22 22:19:49 signal 15: sending TERM to 3 running jobs, starting nothing new
+2026-10-22 22:19:50 done d10_z2_19_6_singer_s1_K20 exit=-15
+2026-10-22 22:19:50 done d10_psl_13__x__cyc_2_s1_K20 exit=-15
+2026-10-22 22:19:50 done d6_psl_9_s1_K20 exit=-15
+2026-10-22 22:19:50 stopped

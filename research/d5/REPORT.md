@@ -73,3 +73,24 @@ at Δ=11.
   a 9-regular diameter-5 Haar graph on 2662 vertices (beats 2640 from earlier today). S, as (a,b,c) =
   [[1,a,c],[0,1,b],[0,0,1]]: (0,0,0), (8,6,10), (7,9,3), (10,1,8), (4,4,5), (5,5,8), (6,5,4), (1,0,9), (6,10,8).
   graphs/haar_d9_n2662.json, rebuilt independently; verify_record.py VALID (3 checkers).
+
+## Round 4 (cloud, d5-hunt-haiku): group ladder for Δ=6 and Δ=10, no record yet
+Search: haar_search3 (table-driven, K=20 replacements per step), jobs in h5_jobs.txt (first batch) and h5b_jobs.txt
+(phase 2, reprioritised toward orders just above threshold). Logs: logs/h4_d<Δ>_<table>_s<seed>_K<K>.log.
+A cost-0 hit would be checked with make_haar_r4.py (BFS diameter, writes JSON) and verify_record.py.
+
+Near misses (uncovered elements at the end of each run; 720 s for Δ=6, 1800 s for Δ=10):
+| Δ | target order | group | order | uncovered (K=20, seed 1) |
+|---|---|---|---|---|
+| 6 | ≥343 | Heis(7) | 343 | 10 |
+| 6 | ≥343 | Z_7 ⋊ Z_3 × Z_17 (meta_7_3_2 × Z_17) | 357 | 4 |
+| 6 | ≥343 | Heis(3) × Z_13 | 351 | 4 |
+| 6 | ≥343 | AGL(1,4) × Z_29 (A4 × Z_29) | 348 | 10 |
+| 6 | ≥343 | AGL(1,5) × Z_18 | 360 | 10 |
+| 10 | ≥2001 | Heis(13) | 2197 | 28 |
+| 10 | ≥2001 | SL(2,13) | 2184 | 24 |
+| 10 | ≥2001 | PGL(2,13) | 2184 | 47 |
+Killed at the switch to phase 2 (no result): Δ6 psl_9 (K=20), Δ10 PSL(2,13)×Z_2, Δ10 Z_19²⋊Z_6 (Singer).
+Reading: the Δ=10 groups at 2184-2197 are 9-10% above the threshold and leave 24-47 uncovered; the metacyclic
+near misses at 2005 were 6-8. Δ=6 non-metacyclic groups sit at 4 uncovered, the same level as the metacyclic
+351-355 runs of round 2 (2 uncovered at best). Phase 2 targets orders 2016-2040 (Δ10) and the 360-order groups (Δ6).
