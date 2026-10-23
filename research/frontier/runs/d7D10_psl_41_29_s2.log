@@ -1,0 +1,18 @@
+group psl 41 x Z_29, N=998760, identity 23780
+start cost=4
+t=31 steps=16 evals=129 cost=1 best=1 T=0.52
+t=61 steps=32 evals=257 cost=1 best=1 T=0.18
+t=92 steps=48 evals=385 cost=1 best=1 T=0.15
+t=123 steps=65 evals=521 cost=1 best=1 T=0.15
+t=154 steps=84 evals=673 cost=1 best=1 T=0.15
+t=185 steps=105 evals=841 cost=1 best=1 T=0.15
+t=216 steps=126 evals=1009 cost=1 best=1 T=0.15
+t=246 steps=146 evals=1169 cost=1 best=1 T=0.15
+t=277 steps=167 evals=1337 cost=1 best=1 T=0.15
+t=307 steps=187 evals=1497 cost=1 best=1 T=0.15
+t=338 steps=208 evals=1665 cost=1 best=1 T=0.15
+t=369 steps=229 evals=1833 cost=1 best=1 T=0.15
+t=400 steps=250 evals=2001 cost=1 best=1 T=0.15
+RESULT d=7 D=10 group=psl 41 x Z_29 N=998760 best=0 evals=2089 time=415.8
+full diameter check: OK
+wrote sols/d7D10_psl_41_29_s2.txt
