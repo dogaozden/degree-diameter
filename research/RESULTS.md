@@ -114,3 +114,12 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 14:11 PT (harvest): (11,9) 16,792,080 (was 16,369,920), sl 61 n 37; claude/structured-haar-search-ws7bet.
 
 - Oct 23 14:12 PT (harvest): (10,10) 58,863,480 (was 57,868,272), psl 389 n 1; claude/structured-haar-search-ws7bet.
+
+- Oct 23 15:11 PT (harvest): (6,7) 8,880 (was 8,440), sl 5 n 37; claude/structured-search-orbit-w5dd4f.
+- Oct 23 15:11 PT (harvest): (6,9) 127,296 (was 121,440), sl 17 n 13; claude/structured-search-orbit-w5dd4f.
+- Oct 23 15:11 PT (harvest): (6,10) 524,160 (was 506,160), prod sl 5 psl 7 n 13; claude/structured-search-orbit-w5dd4f.
+- Oct 23 15:11 PT (harvest): (9,8) 540,360 (was 511,056), psl 19 n 79; claude/structured-search-orbit-w5dd4f.
+- Oct 23 15:11 PT (harvest): (10,10) 60,141,120 (was 58,863,480), sl 79 n 61; claude/structured-haar-search-ws7bet.
+- Oct 23 15:11 PT (harvest): (13,9) 63,872,400 (was 62,156,160), sl 101 n 31; claude/structured-haar-search-ws7bet.
+- Oct 23 15:11 PT (harvest): (14,9) 116,068,656 (was 111,482,880), sl 67 n 193; claude/structured-haar-search-ws7bet.
+- Oct 23 15:11 PT (harvest): (16,9) 324,164,400 (was 316,679,760), sl 149 n 49; claude/structured-haar-search-ws7bet.
