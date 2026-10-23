@@ -1,3 +1,42 @@
 group prod psl 7 sl 17 x Z_5, N=4112640, identity 515440, H order 63, rows 65280, threads 1, setup 0.20s
 start cost=50
 t=30 steps=492 evals=3937 cost=25 best=25 T=0.53
+t=60 steps=1069 evals=8553 cost=24 best=24 T=0.19
+t=90 steps=1590 evals=12721 cost=24 best=24 T=0.15
+t=120 steps=2150 evals=17201 cost=21 best=21 T=0.15
+t=150 steps=2690 evals=21521 cost=21 best=21 T=0.15
+t=180 steps=3253 evals=26025 cost=18 best=18 T=0.15
+t=210 steps=3780 evals=30241 cost=18 best=18 T=0.15
+t=240 steps=4299 evals=34393 cost=18 best=18 T=0.15
+t=270 steps=4797 evals=38377 cost=18 best=18 T=0.15
+t=300 steps=5345 evals=42761 cost=18 best=18 T=0.15
+t=330 steps=5874 evals=46993 cost=18 best=18 T=1.26
+t=360 steps=6435 evals=51481 cost=18 best=18 T=0.45
+t=390 steps=6965 evals=55721 cost=18 best=18 T=0.16
+t=420 steps=7515 evals=60121 cost=18 best=18 T=0.15
+t=450 steps=8085 evals=64681 cost=18 best=18 T=0.15
+t=480 steps=8602 evals=68817 cost=18 best=18 T=1.26
+t=510 steps=9102 evals=72817 cost=18 best=18 T=0.45
+t=540 steps=9623 evals=76985 cost=18 best=18 T=0.16
+t=570 steps=10157 evals=81257 cost=18 best=18 T=0.15
+t=600 steps=10670 evals=85361 cost=18 best=18 T=0.15
+t=631 steps=11190 evals=89521 cost=18 best=18 T=1.25
+t=661 steps=11665 evals=93321 cost=18 best=18 T=0.44
+t=691 steps=12134 evals=97073 cost=18 best=18 T=0.16
+t=721 steps=12604 evals=100833 cost=18 best=18 T=0.15
+t=751 steps=13081 evals=104649 cost=18 best=18 T=0.15
+t=781 steps=13555 evals=108441 cost=18 best=18 T=1.25
+t=811 steps=14072 evals=112577 cost=18 best=18 T=0.44
+t=841 steps=14596 evals=116769 cost=18 best=18 T=0.16
+t=871 steps=15118 evals=120945 cost=18 best=18 T=0.15
+t=901 steps=15636 evals=125089 cost=18 best=18 T=0.15
+t=931 steps=16153 evals=129225 cost=18 best=18 T=1.25
+t=961 steps=16691 evals=133529 cost=18 best=18 T=0.44
+t=991 steps=17221 evals=137769 cost=18 best=18 T=0.16
+t=1021 steps=17741 evals=141929 cost=18 best=18 T=0.15
+t=1051 steps=18270 evals=146161 cost=18 best=18 T=0.15
+t=1081 steps=18799 evals=150393 cost=18 best=18 T=1.24
+t=1111 steps=19317 evals=154537 cost=18 best=18 T=0.44
+t=1141 steps=19878 evals=159025 cost=18 best=18 T=0.16
+t=1171 steps=20444 evals=163553 cost=18 best=18 T=0.15
+RESULT d=8 D=10 group=prod psl 7 sl 17 x Z_5 N=4112640 best=18 evals=167561 time=1198.3
