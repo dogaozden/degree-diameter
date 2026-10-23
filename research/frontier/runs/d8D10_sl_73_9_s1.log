@@ -1,0 +1,15 @@
+group sl 73 x Z_9, N=3500496, identity 47304
+start cost=7
+t=47 steps=2 evals=17 cost=3 best=3 T=0.30
+t=92 steps=4 evals=33 cost=3 best=3 T=0.15
+t=136 steps=6 evals=49 cost=2 best=2 T=0.15
+t=178 steps=8 evals=65 cost=2 best=2 T=0.15
+t=219 steps=10 evals=81 cost=1 best=1 T=0.15
+t=260 steps=12 evals=97 cost=1 best=1 T=0.15
+t=301 steps=14 evals=113 cost=1 best=1 T=0.15
+t=342 steps=16 evals=129 cost=1 best=1 T=0.15
+t=381 steps=18 evals=145 cost=1 best=1 T=0.15
+t=423 steps=20 evals=161 cost=0 best=0 T=0.15
+RESULT d=8 D=10 group=sl 73 x Z_9 N=3500496 best=0 evals=161 time=425.2
+full diameter check: OK
+wrote sols/d8D10_sl_73_9_s1.txt
