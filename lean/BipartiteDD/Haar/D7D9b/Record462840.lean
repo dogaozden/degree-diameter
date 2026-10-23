@@ -6,6 +6,7 @@ import BipartiteDD.Haar.D7D9b.Cover
 `D7D9b.Cover`, built from the stage modules `D7D9b.Stage00 … Stage41`. -/
 
 open BipartiteDD.Haar.D7D9b in
+set_option maxHeartbeats 1000000 in
 /-- A graph on 462840 vertices, bipartite, of degree at most 7 and diameter at most 9. -/
 theorem nb_7_9_haar_462840 : ∃ G : SimpleGraph (Fin 462840), BipartiteDD.IsBipartiteDegDiam G 7 9 := by
   have h := BipartiteDD.Haar.haar_isBipartiteDegDiam9_of_equiv SS haarVert ⟨sel 0, sel_mem 0 (by norm_num)⟩
