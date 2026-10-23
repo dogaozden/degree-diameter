@@ -1,0 +1,18 @@
+group psl 17 x Z_18, N=44064, identity 2448
+start cost=20
+t=30 steps=926 evals=7409 cost=10 best=8 T=0.53
+t=60 steps=1886 evals=15089 cost=7 best=7 T=0.19
+t=90 steps=2882 evals=23057 cost=5 best=5 T=0.15
+t=120 steps=3864 evals=30913 cost=5 best=5 T=0.15
+t=150 steps=4829 evals=38633 cost=5 best=5 T=0.15
+t=180 steps=5781 evals=46249 cost=5 best=5 T=0.15
+t=210 steps=6740 evals=53921 cost=5 best=5 T=0.15
+t=240 steps=7697 evals=61577 cost=5 best=5 T=1.47
+t=270 steps=8678 evals=69425 cost=4 best=4 T=0.52
+t=300 steps=9623 evals=76985 cost=4 best=4 T=0.18
+t=330 steps=10566 evals=84529 cost=4 best=4 T=0.15
+t=360 steps=11525 evals=92201 cost=4 best=4 T=0.15
+t=390 steps=12502 evals=100017 cost=4 best=4 T=0.15
+RESULT d=7 D=8 group=psl 17 x Z_18 N=44064 best=0 evals=102681 time=401.0
+full diameter check: OK
+wrote sols/d7D8_psl_17_18_s1.txt

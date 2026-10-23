@@ -48,3 +48,18 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - (8,8) 208,320 (was ours 206,448), PSL(2,31) × Z7.
 - (7,8) 83,232 (was ours 82,992), PSL(2,17) × Z17.
 - Later Oct 23 (same check): (7,9) 404,928 (table 400,160), SL(2,37) × Z4, new cell; (7,10) → 1,997,520, PSL(2,29) × Z82; (9,8) → 473,616, PSL(2,23) × Z39; (8,8) → 210,528, PSL(2,17) × Z43.
+
+- Oct 22 21:07 PT (harvest): (6,8) 30,576 (was 29,790), sl 13 n 7; watch-d6D8w1-auto.
+- Oct 22 21:07 PT (harvest): (6,9) 117,504 (was 117,360), sl 17 n 12; master.
+- Oct 22 21:07 PT (harvest): (6,10) 491,400 (was 462,840), psl 27 poly x^3+2x+1 n 25; master.
+- Oct 22 21:07 PT (harvest): (7,8) 88,128 (was 83,232), psl 17 n 18; watch-d7D8w1-auto.
+- Oct 22 21:07 PT (harvest): (7,9) 416,640 (was 404,928), sl 31 n 7; master.
+- Oct 22 21:07 PT (harvest): (7,10) 2,116,800 (was 1,997,520), sl 49 poly x^2+1 n 9; master.
+- Oct 22 21:07 PT (harvest): (8,8) 219,240 (was 210,528), psl 29 n 9; master.
+- Oct 22 21:07 PT (harvest): (8,9) 1,231,920 (was 1,130,880), sl 59 n 3; master.
+- Oct 22 21:07 PT (harvest): (8,10) 7,349,616 (was 6,927,210), sl 107 n 3; master.
+- Oct 22 21:07 PT (harvest): (9,8) 487,200 (was 473,616), psl 29 n 20; watch-d9D8w1-auto.
+- Oct 22 21:07 PT (harvest): (9,9) 3,188,160 (was 2,961,536), sl 81 poly x^4+x+2 n 3; master.
+- Oct 22 21:07 PT (harvest): (9,10) 21,385,728 (was 20,017,260), prod sl 13 sl 17 n 1; master.
+- Oct 22 21:07 PT (harvest): (10,9) 7,488,000 (was 7,057,400), prod psl 5 sl 25 poly x^2+2 n 4; master.
+- Oct 22 21:07 PT (harvest): (13,8) 6,209,280 (was 5,314,680), prod sl 7 sl 11 n 7; master.
