@@ -1,0 +1,9 @@
+group prod psl 7 sl 7 x Z_11, N=620928, identity 78078, H order 56, rows 11088, threads 1, setup 0.03s
+start cost=38
+t=30 steps=2917 evals=23337 cost=4 best=4 T=0.53
+t=60 steps=5916 evals=47329 cost=3 best=3 T=0.19
+t=90 steps=8848 evals=70785 cost=6 best=3 T=0.15
+t=120 steps=11733 evals=93865 cost=4 best=3 T=0.15
+RESULT d=8 D=9 group=prod psl 7 sl 7 x Z_11 N=620928 best=0 evals=114201 time=145.6
+full diameter check: OK
+wrote sols/d8D9_prod_psl_7_sl_7_11_s404.txt
