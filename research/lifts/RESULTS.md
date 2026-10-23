@@ -39,7 +39,7 @@ Solution files: `sols/rebuild_*.txt`.
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
 | (5,10) | 90,068 (Loz) | **93,000** (+3.3 %) | Haar graph of Z775 ⋊₁₃₃ Z60 (metacyclic) | `sols/d5D10_n93000_haar_meta775_60_133.txt`. Also 92,492 (Z1217 ⋊₇₆ Z38), 92,318 (Z1489 ⋊₆₁ Z31), 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
-| (5,9) | 27,936 (Loz) | **28,444** (+1.8 %) | Haar graph of Z1094 ⋊₂₃₇ Z13 (metacyclic) | `sols/d5D9_n28444_haar_meta1094_13_237.txt`. Also 28,418 (Z1093 ⋊₁₁ Z13), 28,094 (Z1277 ⋊₁₃₅ Z11), 27,972 (Z777 ⋊₁₆₄ Z18) and 27,948 (Z411 ⋊₃₈ Z34) |
+| (5,9) | 27,936 (Loz) | **28,560** (+2.2 %) | Haar graph of Z595 ⋊₅₃ Z24 (metacyclic) | `sols/d5D9_n28560_haar_meta595_24_53.txt`. Also 28,444, 28,418, 28,094, 27,972 and 27,948 |
 
 All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
 the repo's build_haar2.py:
@@ -50,6 +50,7 @@ the repo's build_haar2.py:
 - (5,10) 91,812: sha256 90994a5f…;
 - (5,10) 91,756: sha256 a28102a9…;
 - (5,10) 91,728: sha256 32998e69…;
+- (5,9) 28,560: sha256 5b6247d3…;
 - (5,9) 28,444: sha256 766dfcd6…;
 - (5,9) 28,418: sha256 918ae59c…;
 - (5,9) 28,094: sha256 d0a736d4…;
@@ -58,10 +59,9 @@ the repo's build_haar2.py:
 Outputs are in `verify/`.
 
 **(5,9).**
-- Connection set of the 28,444 graph in Z1094 ⋊₂₃₇ Z13, elements (a, j): (0,0), (706,3), (233,2), (951,6),
-  (126,7).
-- Found by haar_cell.py: haar_gen3 annealing on the RANDSAMPLE-screened metacyclic candidates. The five orders took
-  24 s, 5 s, 303 s, 10 s and 206 s.
+- Connection set of the 28,560 graph in Z595 ⋊₅₃ Z24, elements (a, j): (0,0), (556,1), (172,11), (75,23), (170,5).
+- Found by haar_cell.py: haar_gen3 annealing on the RANDSAMPLE-screened metacyclic candidates. The six orders took
+  24 s, 5 s, 303 s, 10 s, 206 s and 328 s. N = 14,280 was the top of the window.
 - N = 14,133 (Z673 ⋊ Z21) stalled at cost 2 on two seeds. A push to N = 14,700 is queued.
 - The cell was "marginal" (−1.7 %) in the size law and had never been run. Loz's 27,936 is itself a metabelian Haar
   graph search result (LITERATURE.md §3), so this is a modest gain from a stronger search, not a new structure.
@@ -148,7 +148,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
 | (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | queued |
-| **(5,9)** | 27936 (Loz) | 174,762 | **28,444** | **new record** (§2.0); push to N = 14,700 queued |
+| **(5,9)** | 27936 (Loz) | 174,762 | **28,560** | **new record** (§2.0); push to N = 14,700 running |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
 | **(5,10)** | 90068 (Loz) | 699,050 | **93,000** | **new record** (§2.0); push to N = 47,500 running |
