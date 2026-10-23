@@ -1,0 +1,11 @@
+group psl 59 x Z_34, N=3490440, identity 58174
+start cost=7
+t=42 steps=2 evals=17 cost=4 best=4 T=0.35
+t=80 steps=4 evals=33 cost=4 best=4 T=0.15
+t=119 steps=6 evals=49 cost=1 best=1 T=0.15
+t=160 steps=8 evals=65 cost=1 best=1 T=0.15
+t=209 steps=10 evals=81 cost=1 best=1 T=0.15
+t=256 steps=12 evals=97 cost=1 best=1 T=0.15
+RESULT d=8 D=10 group=psl 59 x Z_34 N=3490440 best=0 evals=105 time=285.3
+full diameter check: OK
+wrote sols/d8D10_psl_59_34_s2.txt
