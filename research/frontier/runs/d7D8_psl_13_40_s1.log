@@ -1,2 +1,22 @@
 group psl 13 x Z_40, N=43680, identity 3120
 start cost=52
+t=30 steps=1264 evals=10113 cost=7 best=6 T=0.53
+t=60 steps=2535 evals=20281 cost=6 best=6 T=0.19
+t=90 steps=3798 evals=30385 cost=4 best=4 T=0.15
+t=120 steps=5063 evals=40505 cost=4 best=4 T=0.15
+t=150 steps=6325 evals=50601 cost=4 best=4 T=0.15
+t=180 steps=7615 evals=60921 cost=4 best=4 T=0.15
+t=210 steps=8917 evals=71337 cost=4 best=4 T=0.15
+t=240 steps=10193 evals=81545 cost=3 best=3 T=1.37
+t=270 steps=11488 evals=91905 cost=4 best=3 T=0.49
+t=300 steps=12783 evals=102265 cost=4 best=3 T=0.17
+t=330 steps=14084 evals=112673 cost=4 best=3 T=0.15
+t=360 steps=15393 evals=123145 cost=4 best=3 T=0.15
+t=390 steps=16697 evals=133577 cost=3 best=3 T=1.38
+t=420 steps=17983 evals=143865 cost=3 best=3 T=0.49
+t=450 steps=19277 evals=154217 cost=3 best=3 T=0.17
+t=480 steps=20564 evals=164513 cost=3 best=3 T=0.15
+t=510 steps=21845 evals=174761 cost=3 best=3 T=0.15
+t=540 steps=23133 evals=185065 cost=3 best=3 T=1.38
+t=570 steps=24415 evals=195321 cost=3 best=3 T=0.49
+RESULT d=7 D=8 group=psl 13 x Z_40 N=43680 best=3 evals=205353 time=600.0

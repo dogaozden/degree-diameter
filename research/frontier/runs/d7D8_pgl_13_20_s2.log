@@ -1,2 +1,22 @@
 group pgl 13 x Z_20, N=43680, identity 3120
 start cost=21840
+t=30 steps=1268 evals=10145 cost=7 best=7 T=0.53
+t=60 steps=2530 evals=20241 cost=4 best=4 T=0.19
+t=90 steps=3805 evals=30441 cost=4 best=4 T=0.15
+t=120 steps=5081 evals=40649 cost=4 best=4 T=0.15
+t=150 steps=6340 evals=50721 cost=4 best=4 T=0.15
+t=180 steps=7613 evals=60905 cost=4 best=4 T=0.15
+t=210 steps=8898 evals=71185 cost=6 best=4 T=0.81
+t=240 steps=10166 evals=81329 cost=5 best=4 T=0.29
+t=270 steps=11444 evals=91553 cost=5 best=4 T=0.15
+t=300 steps=12718 evals=101745 cost=5 best=4 T=0.15
+t=330 steps=13985 evals=111881 cost=5 best=4 T=0.15
+t=360 steps=15268 evals=122145 cost=3 best=3 T=0.81
+t=390 steps=16577 evals=132617 cost=3 best=3 T=0.29
+t=420 steps=17878 evals=143025 cost=3 best=3 T=0.15
+t=450 steps=19196 evals=153569 cost=3 best=3 T=0.15
+t=480 steps=20499 evals=163993 cost=3 best=3 T=0.15
+t=510 steps=21820 evals=174561 cost=3 best=3 T=1.16
+t=540 steps=23115 evals=184921 cost=3 best=3 T=0.41
+t=570 steps=24419 evals=195353 cost=3 best=3 T=0.15
+RESULT d=7 D=8 group=pgl 13 x Z_20 N=43680 best=3 evals=205641 time=600.0
