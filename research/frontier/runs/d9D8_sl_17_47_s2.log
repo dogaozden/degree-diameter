@@ -1,0 +1,10 @@
+group sl 17 x Z_47, N=230112, identity 12784
+start cost=177
+t=30 steps=156 evals=1249 cost=1 best=1 T=0.53
+t=60 steps=345 evals=2761 cost=1 best=1 T=0.19
+t=90 steps=532 evals=4257 cost=1 best=1 T=0.15
+t=120 steps=717 evals=5737 cost=1 best=1 T=0.15
+t=150 steps=909 evals=7273 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=sl 17 x Z_47 N=230112 best=0 evals=8257 time=169.7
+full diameter check: OK
+wrote sols/d9D8_sl_17_47_s2.txt
