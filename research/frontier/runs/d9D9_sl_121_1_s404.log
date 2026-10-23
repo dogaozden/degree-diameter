@@ -1,2 +1,32 @@
 group sl 121 poly x^2+1 x Z_1, N=1771440, identity 14520, H order 61, rows 29040, threads 1, setup 0.09s
 start cost=102
+t=30 steps=781 evals=6249 cost=32 best=32 T=0.53
+t=60 steps=1563 evals=12505 cost=30 best=30 T=0.19
+t=90 steps=2350 evals=18801 cost=30 best=30 T=0.15
+t=120 steps=3152 evals=25217 cost=30 best=30 T=0.15
+t=150 steps=3922 evals=31377 cost=28 best=28 T=0.15
+t=180 steps=4731 evals=37849 cost=22 best=22 T=0.15
+t=210 steps=5452 evals=43617 cost=22 best=22 T=0.15
+t=240 steps=6214 evals=49713 cost=22 best=22 T=0.15
+t=270 steps=7038 evals=56305 cost=22 best=22 T=0.15
+t=300 steps=7824 evals=62593 cost=22 best=22 T=0.15
+t=330 steps=8542 evals=68337 cost=22 best=22 T=0.62
+t=360 steps=9270 evals=74161 cost=22 best=22 T=0.22
+t=390 steps=10017 evals=80137 cost=22 best=22 T=0.15
+t=420 steps=10647 evals=85177 cost=22 best=22 T=0.15
+t=450 steps=11285 evals=90281 cost=22 best=22 T=0.15
+t=480 steps=11856 evals=94849 cost=22 best=22 T=0.62
+t=510 steps=12501 evals=100009 cost=22 best=22 T=0.22
+t=540 steps=13172 evals=105377 cost=22 best=22 T=0.15
+t=570 steps=13829 evals=110633 cost=22 best=22 T=0.15
+t=600 steps=14531 evals=116249 cost=22 best=22 T=0.15
+t=630 steps=15182 evals=121457 cost=22 best=22 T=0.62
+t=660 steps=15859 evals=126873 cost=22 best=22 T=0.22
+t=691 steps=16520 evals=132161 cost=22 best=22 T=0.15
+t=721 steps=17144 evals=137153 cost=20 best=20 T=0.15
+t=751 steps=17807 evals=142457 cost=20 best=20 T=0.15
+t=781 steps=18526 evals=148209 cost=20 best=20 T=0.15
+t=811 steps=19188 evals=153505 cost=20 best=20 T=0.15
+t=841 steps=19871 evals=158969 cost=20 best=20 T=0.15
+t=871 steps=20543 evals=164345 cost=20 best=20 T=1.32
+RESULT d=9 D=9 group=sl 121 poly x^2+1 x Z_1 N=1771440 best=20 evals=169553 time=900.0
