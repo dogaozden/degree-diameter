@@ -1,0 +1,32 @@
+group prod sl 7 sl 17 x Z_1, N=1645056, identity 205904, H order 63, rows 26112, threads 1, setup 0.06s
+start cost=18
+t=30 steps=1138 evals=9105 cost=6 best=6 T=0.53
+t=60 steps=2279 evals=18233 cost=6 best=6 T=0.19
+t=90 steps=3398 evals=27185 cost=6 best=6 T=0.15
+t=120 steps=4516 evals=36129 cost=4 best=4 T=0.15
+t=150 steps=5677 evals=45417 cost=4 best=4 T=0.15
+t=180 steps=6819 evals=54553 cost=4 best=4 T=0.15
+t=210 steps=7933 evals=63465 cost=4 best=4 T=0.15
+t=240 steps=9072 evals=72577 cost=4 best=4 T=0.15
+t=270 steps=10220 evals=81761 cost=6 best=4 T=1.12
+t=300 steps=11379 evals=91033 cost=6 best=4 T=0.40
+t=330 steps=12535 evals=100281 cost=4 best=4 T=0.15
+t=360 steps=13689 evals=109513 cost=4 best=4 T=0.15
+t=390 steps=14846 evals=118769 cost=4 best=4 T=0.15
+t=420 steps=15997 evals=127977 cost=4 best=4 T=1.12
+t=450 steps=17181 evals=137449 cost=4 best=4 T=0.40
+t=480 steps=18343 evals=146745 cost=4 best=4 T=0.15
+t=510 steps=19482 evals=155857 cost=4 best=4 T=0.15
+t=540 steps=20650 evals=165201 cost=4 best=4 T=0.15
+t=570 steps=21790 evals=174321 cost=4 best=4 T=1.12
+t=600 steps=22990 evals=183921 cost=2 best=2 T=0.40
+t=630 steps=24202 evals=193617 cost=2 best=2 T=0.15
+t=660 steps=25362 evals=202897 cost=2 best=2 T=0.15
+t=690 steps=26511 evals=212089 cost=2 best=2 T=0.15
+t=720 steps=27670 evals=221361 cost=2 best=2 T=0.15
+t=750 steps=28842 evals=230737 cost=2 best=2 T=1.21
+t=780 steps=29980 evals=239841 cost=2 best=2 T=0.43
+t=810 steps=31175 evals=249401 cost=2 best=2 T=0.15
+t=840 steps=32336 evals=258689 cost=2 best=2 T=0.15
+t=870 steps=33531 evals=268249 cost=2 best=2 T=0.15
+RESULT d=9 D=9 group=prod sl 7 sl 17 x Z_1 N=1645056 best=2 evals=277817 time=900.0
