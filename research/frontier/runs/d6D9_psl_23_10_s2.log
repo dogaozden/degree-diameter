@@ -1,3 +1,22 @@
 group psl 23 x Z_10, N=60720, identity 2530
 start cost=126
 t=30 steps=639 evals=5113 cost=19 best=19 T=0.53
+t=60 steps=1276 evals=10209 cost=16 best=16 T=0.19
+t=90 steps=1911 evals=15289 cost=12 best=12 T=0.15
+t=120 steps=2543 evals=20345 cost=12 best=12 T=0.15
+t=150 steps=3167 evals=25337 cost=12 best=12 T=0.15
+t=180 steps=3796 evals=30369 cost=12 best=12 T=0.15
+t=210 steps=4435 evals=35481 cost=12 best=12 T=0.15
+t=240 steps=5057 evals=40457 cost=12 best=12 T=1.39
+t=270 steps=5688 evals=45505 cost=12 best=12 T=0.49
+t=300 steps=6305 evals=50441 cost=12 best=12 T=0.17
+t=330 steps=6958 evals=55665 cost=12 best=12 T=0.15
+t=360 steps=7583 evals=60665 cost=12 best=12 T=0.15
+t=390 steps=8216 evals=65729 cost=12 best=12 T=1.39
+t=420 steps=8829 evals=70633 cost=12 best=12 T=0.49
+t=450 steps=9453 evals=75625 cost=12 best=12 T=0.17
+t=481 steps=10069 evals=80553 cost=12 best=12 T=0.15
+t=511 steps=10701 evals=85609 cost=12 best=12 T=0.15
+t=541 steps=11341 evals=90729 cost=12 best=12 T=1.39
+t=571 steps=11976 evals=95809 cost=12 best=12 T=0.49
+RESULT d=6 D=9 group=psl 23 x Z_10 N=60720 best=12 evals=100745 time=600.0
