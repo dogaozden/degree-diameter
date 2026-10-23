@@ -7,6 +7,8 @@ the math. Spend as few tokens as you can: start the jobs, wait, check, push.
 
 Your cell and job list are in your first message: CELL (e.g. d7D10) and the file research/frontier/watch/jobs_CELL.txt.
 Each job line is `d D seconds seed K group... n` (batch.sh format). Time limit: 6 hours from start.
+Wave-2 CELL ids carry a suffix (e.g. d7D10w3): use the full id for the job file, queue files and branch; the files
+batch.sh writes are still tagged by the plain cell (e.g. sols/d7D10_psl_31_70_s1.txt). Commit the ones your queues made.
 
 ## Setup (once)
 ```
