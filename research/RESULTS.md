@@ -38,3 +38,12 @@ on an independent rebuild, same sha256, research/frontier/runs/coordinator_check
 ## Prior art to credit
 Delorme 1985 (doubling with levels; all old D = 4 and D = 6 table values), Delorme–Farhi 1984, Bamberg–Law–Penttila 2009
 (m-ovoids), Tallini 1988, AL 2020 (and the index slip in their printed matching: i ∈ F* fixes it).
+
+Oct 23 (frontier watchers: Haiku cloud sessions running haar_gen on 4 cores each; each graph rebuilt independently
+by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothing unreached; runs/coordinator_check_watchers_2026-10-23.txt):
+- (7,10) 1,993,920 (table 1,987,380), PSL(2,31) × Z67. New cell past the table.
+- (8,9) 1,130,880 (was ours 1,092,960; table 1,091,232), PSL(2,31) × Z38.
+- (9,8) 465,120 (was ours 453,840), SL(2,19) × Z34.
+- (6,10) 462,840 (was ours 461,472), PSL(2,29) × Z19.
+- (8,8) 208,320 (was ours 206,448), PSL(2,31) × Z7.
+- (7,8) 83,232 (was ours 82,992), PSL(2,17) × Z17.
