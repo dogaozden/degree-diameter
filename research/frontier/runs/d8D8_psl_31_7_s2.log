@@ -3,3 +3,13 @@ start cost=47
 t=30 steps=451 evals=3609 cost=4 best=1 T=0.53
 t=60 steps=898 evals=7185 cost=1 best=1 T=0.19
 t=90 steps=1353 evals=10825 cost=1 best=1 T=0.15
+t=120 steps=1818 evals=14545 cost=1 best=1 T=0.15
+t=150 steps=2294 evals=18353 cost=1 best=1 T=0.15
+t=180 steps=2753 evals=22025 cost=1 best=1 T=0.60
+t=210 steps=3220 evals=25761 cost=2 best=1 T=0.21
+t=240 steps=3693 evals=29545 cost=2 best=1 T=0.15
+t=270 steps=4152 evals=33217 cost=1 best=1 T=0.15
+t=300 steps=4623 evals=36985 cost=1 best=1 T=0.15
+RESULT d=8 D=8 group=psl 31 x Z_7 N=104160 best=0 evals=39001 time=317.1
+full diameter check: OK
+wrote sols/d8D8_psl_31_7_s2.txt
