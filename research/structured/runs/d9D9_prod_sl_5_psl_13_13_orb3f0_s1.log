@@ -1,0 +1,25 @@
+group prod sl 5 psl 13 x Z_13, N=1703520, identity 284934, H order 52, rows 32760, threads 1, setup 0.21s
+wide rows: HW order 195, rows 8736, setup 0.30s
+alpha: conj by prod[mat(1,4,1,0);mat(3,1,6,11)] (index 45207), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 35 (+e); mu = 22.04, mu/k = 7.35, fixed-point misses ~ 1.69
+start cost=52
+t=30 steps=842 evals=6737 cost=6 best=6 T=0.53
+t=60 steps=1733 evals=13865 cost=6 best=6 T=0.19
+t=90 steps=2644 evals=21153 cost=6 best=6 T=0.15
+t=120 steps=3562 evals=28497 cost=6 best=6 T=0.15
+t=150 steps=4477 evals=35817 cost=6 best=6 T=0.15
+t=180 steps=5394 evals=43153 cost=6 best=6 T=0.90
+t=210 steps=6270 evals=50161 cost=8 best=6 T=0.32
+t=240 steps=7199 evals=57593 cost=8 best=6 T=0.15
+t=270 steps=8069 evals=64553 cost=8 best=6 T=0.15
+t=300 steps=8975 evals=71801 cost=8 best=6 T=0.15
+t=330 steps=9899 evals=79193 cost=16 best=6 T=0.89
+t=360 steps=10787 evals=86297 cost=9 best=6 T=0.32
+t=390 steps=11687 evals=93497 cost=10 best=6 T=0.15
+RESULT d=9 D=9 group=prod sl 5 psl 13 x Z_13 N=1703520 best=0 evals=94281 time=393.5 orbit k=3 m=3 f=0 fix=35
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oF/d9D9_prod_sl_5_psl_13_13_orb3f0_s1.txt
+n = 3407040 edges = 15331680 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = b577543be80a25d8c7c25177275333ccc53188b8fe68b7243e9e01a7dd98e751
+VALID d=9 D=9 group=prod sl 5 psl 13 x Z_13 N=1703520 vertices=3407040
