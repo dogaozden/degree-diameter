@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:32:08Z
+file: research/frontier/sols/d7D10_psl_49_19_orb3_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 d1431b11448e36d79bc3c6ec89e607cc19e77d7d32272b00ce4ead35d35ce283
+header: 7 10 psl 49 poly x^2+1 n 19 N 1117200
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d7D10_psl_49_19_orb3_s1.txt
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2234400 edges = 7820400 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = f2deae1189bd1b6ca3435cbe2551346662461343f57dae31af4861f9cdb9315b
+VALID d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 vertices=2234400
+(exit 0)
+[exit 0; wall 5s; cpu 5s; peak RSS 313 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d7D10_psl_49_19_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d7D10_psl_49_19_orb3_s1.txt
+header: 7 10 psl 49 poly x^2+1 n 19 N 1117200
+d=7 D=10
+group: PSL(2,49) [order 58800] x Z_19; |G| = 1117200, vertices 2|G| = 2234400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 7 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1117200 vertices per side): every vertex has 7 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.1s]
+BFS from A: ecc=10 reached 2234400 of 2234400 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53457, 284061, 885105, 823808, 177083] [0.2s]
+BFS from B: ecc=10 reached 2234400 of 2234400 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53445, 284061, 883803, 823808, 178397] [0.4s]
+max degree = min degree = 7, no repeated edges (checked above)
+elapsed 0.4s
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2234400
+(exit 0)
+[exit 0; wall 0s; cpu 1s; peak RSS 11 MB]
