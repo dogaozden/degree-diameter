@@ -1,2 +1,12 @@
 group psl 27 poly x^3+2x+1 x Z_26, N=255528, identity 9126, H order 39, rows 6552, threads 1, setup 0.00s
 start cost=31
+t=30 steps=11801 evals=94409 cost=7 best=6 T=0.53
+t=60 steps=23897 evals=191177 cost=5 best=5 T=0.19
+t=90 steps=36022 evals=288177 cost=4 best=4 T=0.15
+t=120 steps=48213 evals=385705 cost=4 best=4 T=0.15
+t=150 steps=60234 evals=481873 cost=4 best=4 T=0.15
+t=180 steps=72227 evals=577817 cost=3 best=3 T=0.15
+t=210 steps=84789 evals=678313 cost=3 best=3 T=0.15
+t=240 steps=96992 evals=775937 cost=3 best=3 T=0.15
+t=270 steps=109317 evals=874537 cost=3 best=3 T=0.15
+RESULT d=6 D=10 group=psl 27 poly x^3+2x+1 x Z_26 N=255528 best=3 evals=976097 time=300.0
