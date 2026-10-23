@@ -1,0 +1,19 @@
+group sl 61 x Z_37, N=8396040, identity 135420, H order 62, rows 135420, threads 1, setup 0.86s
+wide rows: HW order 222, rows 37820, setup 1.14s
+alpha: conj by mat(14,0,21,48) (index 52054), z -> 10 z on Z_37
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 59 (+e); mu = 15.02, mu/k = 5.01, fixed-point misses ~ 1.46
+start cost=46
+t=30 steps=79 evals=633 cost=6 best=2 T=0.52
+t=61 steps=150 evals=1201 cost=6 best=2 T=0.18
+t=91 steps=230 evals=1841 cost=6 best=2 T=0.15
+t=122 steps=305 evals=2441 cost=6 best=2 T=0.15
+t=152 steps=379 evals=3033 cost=6 best=2 T=0.15
+t=183 steps=455 evals=3641 cost=6 best=2 T=0.88
+t=213 steps=537 evals=4297 cost=6 best=2 T=0.31
+t=243 steps=606 evals=4849 cost=6 best=2 T=0.15
+RESULT d=11 D=9 group=sl 61 x Z_37 N=8396040 best=0 evals=4969 time=247.9 orbit k=3 m=3 f=2 fix=59
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outI/d11D9_sl_61_37_orb3_s1.txt
+n = 16792080 edges = 92356440 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 2382f5528cb82595fe52710339ff6b77af48842811a84efd47ab3f6940b2d4bb
+VALID d=11 D=9 group=sl 61 x Z_37 N=8396040 vertices=16792080
