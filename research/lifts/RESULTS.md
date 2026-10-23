@@ -132,7 +132,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (16,5) | 27300 (DGQ) | 108,482 | – | not of the polygon form; not run |
 | (3,7) | 168 (Conder et al.) | 254 | 168 (= Conder's graph) | negative above 168 (§4) |
 | (4,7) | 840 (Bond–Delorme, Hafner, Loz) | 2,186 | 840 (= Bond–Delorme, A5 × Z7) | negative above 840 (§4) |
-| (5,7) | 3110 (Loz) | 10,922 | – | queued |
+| (5,7) | 3110 (Loz) | 10,922 | – | rich and wide lift sweeps (orders 3112–3200): no solution; haar_gen3 sweep queued |
 | (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling) |
 | **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0); push above 288 running |
 | (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2260): no solution; wide sweep and haar_gen3 queued |
@@ -141,7 +141,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | queued |
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,444** | **new record** (§2.0); push to N = 14,700 queued |
-| (3,10) | 800 (DGQ) | 2,046 | – | near misses: cost 2 at n = 812 (2+2 base, Z29 ⋊ Z7; exhaustive: no solution) and at n = 816 (3+3 base, Z17 ⋊ Z8; exhaustive search running) |
+| (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
 | **(5,10)** | 90068 (Loz) | 699,050 | **91,938** | **new record** (§2.0); push to N = 46,500 running |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
@@ -228,5 +228,10 @@ copy needs about q+1 such routes, against about 4j² routes available. Not prove
   assignments, no solutions:
   - Z3² ⋊ Z16 (576 vertices), four actions: best costs 52–78;
   - Z2³ ⋊ Z21 (672): best costs 76–108.
+- **(3,10) near misses, exhaustively closed.** These are complete searches over all gauge-fixed assignments, so "no
+  solution" is definitive for the stated base and group:
+  - 2+2 base over Z29 ⋊ Z7 at 812;
+  - 3+3 base b3_3_0 over Z17 ⋊ Z8 at 816;
+  - 2+2 base over Z3² ⋊ Z24 at 864, six actions (best costs 4–50).
 - **Cyclic K3,3 lifts at (3,8).** Exhaustive: Z43 (258) is the only order with solutions in N = 43…60. For
   N = 44–60 the best costs are 10, 16, 22, 26, 28, …, 130, rising with N.
