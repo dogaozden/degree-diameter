@@ -1,0 +1,10 @@
+group psl 29 x Z_20, N=243600, identity 8120, H order 60, rows 4060, threads 1, setup 0.01s
+start cost=14
+t=30 steps=9345 evals=74761 cost=3 best=2 T=0.53
+t=60 steps=19133 evals=153065 cost=2 best=2 T=0.19
+t=90 steps=28274 evals=226193 cost=1 best=1 T=0.15
+t=120 steps=37292 evals=298337 cost=1 best=1 T=0.15
+t=150 steps=47381 evals=379049 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=psl 29 x Z_20 N=243600 best=0 evals=414417 time=164.0
+full diameter check: OK
+wrote sols/d9D8_psl_29_20_s402.txt
