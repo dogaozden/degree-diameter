@@ -154,3 +154,6 @@ screen	364	meta 91 4 64 1	min=52	p10=88	median=154	mu=42.6	score=5.68
 screen	364	meta 91 4 8 1	min=34	p10=62	median=115	mu=42.6	score=4.16
 screen	364	meta 91 4 90 1	min=240	p10=272	median=344	mu=42.6	score=14.46
 run	343	meta 49 7 8 1	seed=1	best=6	check=-	180s
+run	343	meta 49 7 8 1	seed=2	best=6	check=-	180s
+run	351	meta 117 3 61 1	seed=1	best=6	check=-	180s
+run	351	meta 117 3 61 1	seed=2	best=6	check=-	180s
