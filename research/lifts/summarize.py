@@ -30,18 +30,18 @@ def main():
                 continue
             cells[cell].append(dict(tag=tag, n=int(w[0]), h=int(w[1]), base=w[2], group=w[3], best=int(w[4]),
                                     evals=int(w[5]), secs=float(w[6])))
-    print("| cell | table | jobs | CPU h | orders tried | solved above table | best (lowest) cost at the smallest unsolved order |")
+    print("| cell | table | jobs | CPU h | orders tried | solved above table | above the best solved order |")
     print("|---|---|---|---|---|---|---|")
     for cell in sorted(cells, key=lambda c: (c[1], c[0])):
         rs = cells[cell]
         tab = TABLE.get(cell, 0)
         orders = sorted(set(r["n"] for r in rs))
         solved = sorted(set(r["n"] for r in rs if r["best"] == 0 and r["n"] > tab))
-        uns = [o for o in orders if o > tab and o not in solved]
+        top = max(solved) if solved else tab
+        uns = [o for o in orders if o > top]
         if uns:
-            o = uns[0]
-            b = min((r for r in rs if r["n"] == o), key=lambda r: r["best"])
-            bdesc = f"n = {o}: cost {b['best']} (h={b['h']}, {b['base']}, {b['group']})"
+            b = min((r for r in rs if r["n"] in uns), key=lambda r: (r["best"], r["n"]))
+            bdesc = f"lowest cost above {top}: {b['best']} at n = {b['n']} (h={b['h']}, {b['base']}, {b['group']})"
         else:
             bdesc = "-"
         cpu = sum(r["secs"] for r in rs) / 3600

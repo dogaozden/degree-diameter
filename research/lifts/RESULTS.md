@@ -50,8 +50,10 @@ passes the repo's build_haar2.py (sha256 32998e69…). Outputs are in `verify/`.
 | voltage | 0,0,0 | 2,0,3 | 0,0,0 | 0,0,0 | 1,1,3 | 1,1,2 |
 
 - 3-regular, bipartite, diameter 8, girth 12. Edge-list sha256 9dbc8e8f….
-- \|Aut\| = 144, and Aut is regular on each colour class. So it is also a Haar graph of a group of order 144, found
-  here as a 4-vertex-base lift over a group of order 72.
+- \|Aut\| = 144, with 2 vertex orbits of 72 white + 72 black vertices each, so some automorphisms swap the colours.
+  The colour-preserving automorphisms are exactly the 72 translations of the voltage group, with 4 orbits.
+- So the graph is **not** a Haar graph: an exhaustive Haar search over Z3² ⋊ Z16, the group with Aut's element-order
+  profile, finds no diameter-8 graph (best cost 6). A 2+2 base is genuinely needed.
 - The group Z3² ⋊ Z8 is metabelian but not metacyclic. It came from the `aff` family added this session.
 - It was found in 41 evaluations: (3,8) is far from saturated (Moore 510), and a push above 288 is running.
 
