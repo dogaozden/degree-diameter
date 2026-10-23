@@ -12,7 +12,9 @@ The groups are constructed here from their mathematical definitions (numpy), ind
   agl1 q              maps x -> a x + b over GF(q), product = composition (s g)(x) = s(g(x))
   prod G1 G2          direct product
   cyc                 trivial group
-and G = <group> x Z_n.  Element order (for the edge list) = sorted canonical tuples, then z; for the old families this
+and G = <group> x Z_n, except
+  tpgl q              G = Z_n x| PGL(2,q): (m,z)(m',z') = (m m', z + chi(m) z'), chi(m) = +1 if det(m) is a square in
+                      GF(q), else -1 (well defined on PGL since scalars change det by squares).  Element order (for the edge list) = sorted canonical tuples, then z; for the old families this
 is the same order as build_haar.py, so the edge list (and its sha256) is identical to build_haar.py's.
 Haar graph: vertices (g,A) -> idx(g), (g,B) -> N + idx(g); edges (g,A) ~ (s g, B), s in S.  Right multiplication by G is
 an automorphism group transitive on each side, so two BFS (from (e,A) and (e,B)) give the exact diameter.
@@ -110,7 +112,11 @@ class Field:
 
 # ---------------------------------------------------------------- groups
 class Group:
-    """elements 0..order-1 in sorted canonical order; lmul(s, idx_array) -> idx_array of s*g; parse(desc) -> index"""
+    """elements 0..order-1 in sorted canonical order; lmul(s, idx_array) -> idx_array of s*g; parse(desc) -> index;
+    chi(s) = sign by which s acts on the cyclic factor Z_n (+1 except for tpgl)"""
+
+    def chi(self, s):
+        return 1
 
 
 class Meta(Group):
@@ -151,6 +157,16 @@ class Matrix(Group):
         assert self.order == expect, (self.order, expect)
         self.ident = self.index(self.canon_key(np.array([1]), np.array([0]), np.array([0]), np.array([1])))[0]
         self.spec = f"{kind} {q}" + (f" poly {poly}" if poly else "")
+        self.twist = False
+
+    def chi(self, s):
+        if not self.twist:
+            return 1
+        F = self.F
+        a, b, c, d = (int(x[0]) for x in self.entries(np.array([s])))
+        det = int(F.add[F.mul[a, d], F.neg[F.mul[b, c]]])
+        squares = {int(F.mul[v, v]) for v in range(1, self.q)}
+        return 1 if det in squares else -1
 
     def canon_key(self, a, b, c, d):
         q, F = self.q, self.F
@@ -251,6 +267,17 @@ def parse_group(tok, i):
     t = tok[i]
     if t == "meta":
         return Meta(int(tok[i + 1]), int(tok[i + 2]), int(tok[i + 3])), i + 4
+    if t == "tpgl":
+        assert i == 0, "tpgl only as the whole group"
+        q = int(tok[i + 1])
+        assert q % 2, "tpgl needs q odd"
+        poly, j = None, i + 2
+        if j < len(tok) and tok[j] == "poly":
+            poly, j = tok[j + 1], j + 2
+        g = Matrix("pgl", q, poly)
+        g.twist = True
+        g.spec = "t" + g.spec
+        return g, j
     if t in ("sl", "psl", "pgl", "agl1"):
         q = int(tok[i + 1])
         poly, j = None, i + 2
@@ -295,7 +322,7 @@ def main():
         sq, sz = divmod(s, n)
         qp = np.asarray(Q.lmul(sq, qi), dtype=np.int64)
         assert len(np.unique(qp)) == Q.order, "left multiplication is not a permutation"
-        perm = (qp[:, None] * n + (np.arange(n)[None, :] + sz) % n).ravel()
+        perm = (qp[:, None] * n + (Q.chi(sq) * np.arange(n)[None, :] + sz) % n).ravel()
         perms.append(perm)
     perms = np.array(perms)                                   # d x N
     inv = np.empty_like(perms)

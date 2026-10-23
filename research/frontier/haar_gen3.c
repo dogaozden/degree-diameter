@@ -197,7 +197,9 @@ static void build_matrix(grp *G) {
     G->order = n;
     G->ident = G->IDXK[mkey(G, 1, 0, 0, 1)];
 }
+static int TWIST = 0, top_level = 0;    /* tpgl q: G = Z_n x| PGL(2,q), non-square determinant inverts Z_n */
 static grp *parse_group(char **argv, int argc, int *a) {
+    top_level++;
     if (*a >= argc) { fprintf(stderr, "bad group\n"); exit(2); }
     grp *G = calloc(1, sizeof *G); const char *t = argv[*a];
     if (!strcmp(t, "meta")) {
@@ -206,8 +208,9 @@ static grp *parse_group(char **argv, int argc, int *a) {
         for (int j = 1; j < G->k; j++) G->R[j] = G->R[j - 1] * r % G->m;
         if (G->R[G->k - 1] * r % G->m != 1 % G->m) { fprintf(stderr, "r^k != 1\n"); exit(2); }
         G->order = G->m * G->k; G->ident = 0; snprintf(G->spec, sizeof G->spec, "meta %d %d %lld", G->m, G->k, r);
-    } else if (!strcmp(t, "sl") || !strcmp(t, "psl") || !strcmp(t, "pgl")) {
+    } else if (!strcmp(t, "sl") || !strcmp(t, "psl") || !strcmp(t, "pgl") || !strcmp(t, "tpgl")) {
         G->type = !strcmp(t, "sl") ? G_SL : !strcmp(t, "psl") ? G_PSL : G_PGL;
+        if (!strcmp(t, "tpgl")) { if (top_level != 1) { fprintf(stderr, "tpgl only as the whole group (not inside prod)\n"); exit(2); } TWIST = 1; }
         int q = atoi(argv[*a + 1]); *a += 2; G->F = make_field(q);
         if (G->type == G_PSL && G->F->p == 2) G->type = G_SL;     /* PSL = SL in characteristic 2 */
         build_matrix(G);
@@ -224,13 +227,19 @@ static grp *parse_group(char **argv, int argc, int *a) {
         snprintf(G->spec, sizeof G->spec, "prod %s %s", G->g1->spec, G->g2->spec);
     } else if (!strcmp(t, "cyc")) { G->type = G_TRIV; G->order = 1; G->ident = 0; *a += 1; snprintf(G->spec, sizeof G->spec, "cyc"); }
     else { fprintf(stderr, "bad group %s\n", t); exit(2); }
+    if (G->type == G_PGL && TWIST && G->F->p == 2) { fprintf(stderr, "tpgl needs q odd\n"); exit(2); }
     return G;
 }
 
 /* ---------------- G = Q x Z_n ---------------- */
 static grp *Q; static int ncyc, N, ident;
-static inline int gmul(int x, int y) { return qmul(Q, x / ncyc, y / ncyc) * ncyc + (x % ncyc + y % ncyc) % ncyc; }
-static inline int ginv(int x) { return qinv(Q, x / ncyc) * ncyc + (ncyc - x % ncyc) % ncyc; }
+static int8_t *CHI;                /* twist: CHI[q] = +1 or -1 (all +1 for direct products) */
+static inline int gmul(int x, int y) {
+    int xq = x / ncyc, yz = y % ncyc; if (CHI[xq] < 0) yz = (ncyc - yz) % ncyc;
+    return qmul(Q, xq, y / ncyc) * ncyc + (x % ncyc + yz) % ncyc; }
+static inline int ginv(int x) {
+    int xq = x / ncyc, z = (ncyc - x % ncyc) % ncyc; if (CHI[xq] < 0) z = (ncyc - z) % ncyc;
+    return qinv(Q, xq) * ncyc + z; }
 
 /* cosets of H = <h> */
 static int nH, R;                 /* |H|, number of rows */
@@ -247,15 +256,46 @@ static unsigned long long rs;
 static inline unsigned long long rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 
+static int *REPQ, *REPZ;          /* REP split into (Q index, z) */
+#define EMIT(g) do { int ps_ = POS[g], r2_ = ps_ >> 6, j_ = ps_ & 63; \
+    tf[r] = ((uint32_t)r2_ << 6) | (uint32_t)j_; ti[r2_] = ((uint32_t)r << 6) | (uint32_t)(j_ ? nH - j_ : 0); } while (0)
 static void make_tables(int x, uint32_t *tf, uint32_t *ti) {
+    int xq = x / ncyc, xz = x % ncyc, neg = CHI[xq] < 0;
+    if (Q->type == G_SL || Q->type == G_PSL || Q->type == G_PGL) {
+        /* fast path for matrix groups: rows of the multiplication table for the fixed entries of x */
+        const field *F = Q->F; const int q = F->q;
+        const uint16_t *A = Q->EL + 4 * (size_t)xq, *EL = Q->EL, *AD = F->add, *IV = F->inv;
+        const uint16_t *M0 = F->mul + A[0] * q, *M1 = F->mul + A[1] * q, *M2 = F->mul + A[2] * q, *M3 = F->mul + A[3] * q;
+        const int *IDXK = Q->IDXK, pgl = Q->type == G_PGL, prime = F->k == 1;
+        for (int r = 0; r < R; r++) {
+            const uint16_t *B = EL + 4 * (size_t)REPQ[r];
+            int a, b, c, dd;
+            if (prime) {
+                a = M0[B[0]] + M1[B[2]]; a -= a >= q ? q : 0;  b = M0[B[1]] + M1[B[3]]; b -= b >= q ? q : 0;
+                c = M2[B[0]] + M3[B[2]]; c -= c >= q ? q : 0;  dd = M2[B[1]] + M3[B[3]]; dd -= dd >= q ? q : 0;
+            } else {
+                a = AD[M0[B[0]] * q + M1[B[2]]]; b = AD[M0[B[1]] * q + M1[B[3]]];
+                c = AD[M2[B[0]] * q + M3[B[2]]]; dd = AD[M2[B[1]] * q + M3[B[3]]];
+            }
+            int key;
+            if (pgl) {
+                if (a) { const uint16_t *Mi = F->mul + IV[a] * q; key = (Mi[b] * q + Mi[c]) * q + Mi[dd]; }
+                else { const uint16_t *Mi = F->mul + IV[b] * q; key = q * q * q + Mi[c] * q + Mi[dd]; }
+            } else key = a ? ((a - 1) * q + b) * q + c : (q - 1) * q * q + (b - 1) * q + dd;
+            int rz = neg && REPZ[r] ? ncyc - REPZ[r] : REPZ[r];
+            int z = xz + rz; z -= z >= ncyc ? ncyc : 0;
+            EMIT(IDXK[key] * ncyc + z);
+        }
+        return;
+    }
     for (int r = 0; r < R; r++) {
-        int ps = POS[gmul(x, REP[r])], r2 = ps >> 6, j = ps & 63;
-        tf[r] = ((uint32_t)r2 << 6) | (uint32_t)j;
-        ti[r2] = ((uint32_t)r << 6) | (uint32_t)((nH - j) % nH);
+        int rz = neg && REPZ[r] ? ncyc - REPZ[r] : REPZ[r];
+        int z = xz + rz; z -= z >= ncyc ? ncyc : 0;
+        EMIT(qmul(Q, xq, REPQ[r]) * ncyc + z);
     }
 }
 
-typedef struct { uint64_t *V[2], *F, *Fn, *NB; int *fl, *fln, *tl; uint32_t *cf, *ci; } ctx;
+typedef struct { uint64_t *V[2], *F, *Fn, *NB; int *fl, *fln, *tl; uint32_t *cf, *ci; long long lev[64]; } ctx;
 static ctx *new_ctx(void) {
     ctx *c = calloc(1, sizeof *c);
     c->V[0] = calloc(R, 8); c->V[1] = calloc(R, 8); c->F = calloc(R, 8); c->Fn = calloc(R, 8); c->NB = calloc(R, 8);
@@ -302,16 +342,18 @@ static void bfs(ctx *c, uint32_t **tf, uint32_t **ti, int startB, int depth, lon
             if (last) for (int r = 0; r < R; r++) { uint64_t nw = NB[r] & ~Vn[r]; NB[r] = 0; Vn[r] |= nw; add += __builtin_popcountll(nw); }
             else for (int r = 0; r < R; r++) { uint64_t nw = NB[r] & ~Vn[r]; NB[r] = 0; Vn[r] |= nw; Fn[r] = nw; add += __builtin_popcountll(nw); }
         }
-        cnt[ns] += add;
+        cnt[ns] += add; if (step < 64) c->lev[step] = cnt[ns];
         uint64_t *t2 = F; F = Fn; Fn = t2; side = ns;
     }
     c->F = F; c->Fn = Fn;
 }
-static long long cost_with(ctx *c, uint32_t **tf, uint32_t **ti) {
-    long long cnt[2];
-    if (D % 2 == 0) { bfs(c, tf, ti, 0, D - 1, cnt); return N - cnt[1]; }
-    long long tot; bfs(c, tf, ti, 0, D - 1, cnt); tot = N - cnt[0];
-    bfs(c, tf, ti, 1, D - 1, cnt); return tot + N - cnt[1];
+/* primary cost = #uncovered; *sec = fraction of the target side not within D-3 (slack, used only if SEC > 0) */
+static long long cost_with(ctx *c, uint32_t **tf, uint32_t **ti, double *sec) {
+    long long cnt[2]; int L = D - 4;
+    if (D % 2 == 0) { bfs(c, tf, ti, 0, D - 1, cnt); *sec = L >= 0 ? (double)(N - c->lev[L]) / N : 0; return N - cnt[1]; }
+    long long tot; bfs(c, tf, ti, 0, D - 1, cnt); tot = N - cnt[0]; *sec = L >= 0 ? (double)(N - c->lev[L]) / N : 0;
+    bfs(c, tf, ti, 1, D - 1, cnt); if (L >= 0) *sec += (double)(N - c->lev[L]) / N;
+    return tot + N - cnt[1];
 }
 static int full_check(ctx *c) {
     long long cnt[2];
@@ -388,10 +430,20 @@ int main(int argc, char **argv) {
     long long NN = (long long)Q->order * ncyc;
     if (NN > (1LL << 30)) { fprintf(stderr, "group too large\n"); return 2; }
     N = (int)NN; ident = Q->ident * ncyc;
+    CHI = malloc(Q->order); memset(CHI, 1, Q->order);
+    if (TWIST) {   /* sign of PGL(2,q) element = quadratic character of det (well defined up to scalars) */
+        const field *F = Q->F; int q = F->q; char *sq = calloc(q, 1);
+        for (int v = 1; v < q; v++) sq[FMUL(F, v, v)] = 1;
+        for (int i = 0; i < Q->order; i++) { const uint16_t *E = Q->EL + 4 * (size_t)i;
+            int det = FADD(F, FMUL(F, E[0], E[3]), F->neg[FMUL(F, E[1], E[2])]); CHI[i] = sq[det] ? 1 : -1; }
+        free(sq);
+    }
     int nth = getenv("THREADS") ? atoi(getenv("THREADS")) : 1; if (nth < 1) nth = 1;
     int hmax = getenv("HMAX") ? atoi(getenv("HMAX")) : 63; if (hmax > 63) hmax = 63; if (hmax < 1) hmax = 1;
     if (getenv("UCAP")) UCAP = atoi(getenv("UCAP"));
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;
+    double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
+    int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70;
     int prof = getenv("PROFILE") ? atoi(getenv("PROFILE")) : 0;
 #ifdef _OPENMP
     omp_set_num_threads(nth);
@@ -430,6 +482,14 @@ int main(int argc, char **argv) {
     for (int g = 0; g < N; g++) POS[g] = -1;
     { int r = 0; for (int g = 0; g < N; g++) if (POS[g] < 0) { REP[r] = g; for (int b = 0; b < nH; b++) POS[gmul(g, HP[b])] = r * 64 + b; r++; }
       if (r != R) { fprintf(stderr, "coset count error\n"); return 2; } }
+    REPQ = malloc(sizeof(int) * (size_t)R); REPZ = malloc(sizeof(int) * (size_t)R);
+    for (int r = 0; r < R; r++) { REPQ[r] = REP[r] / ncyc; REPZ[r] = REP[r] % ncyc; }
+    /* self-test of the fast table builder against plain multiplication */
+    { uint32_t *t1 = malloc(4 * (size_t)R), *t2 = malloc(4 * (size_t)R);
+      unsigned long long save = rs; rs = 0xABCDEFULL;
+      for (int t = 0; t < 3; t++) { int x = rnd() % N; make_tables(x, t1, t2);
+        for (int r = 0; r < R; r++) { int ps = POS[gmul(x, REP[r])]; if (t1[r] != (((uint32_t)(ps >> 6) << 6) | (uint32_t)(ps & 63))) { fprintf(stderr, "table self-test error\n"); return 2; } } }
+      rs = save; free(t1); free(t2); }
     fprintf(stderr, "group %s x Z_%d, N=%d, identity %d, H order %d, rows %d, threads %d, setup %.2fs\n", Q->spec, ncyc, N, ident, nH, R, nth, now() - tsetup);
 
     for (int i = 0; i < d; i++) { TF[i] = malloc(4 * (size_t)R); TI[i] = malloc(4 * (size_t)R); }
@@ -438,16 +498,17 @@ int main(int argc, char **argv) {
     S[0] = ident;
     for (int i = 1; i < d; i++) { int x; do x = rnd() % N; while (x == ident || used(x, i)); S[i] = x; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); make_tables(S[i], TF[i], TI[i]); }
-    long long c = cost_with(C[0], TF, TI), best = c; memcpy(bestS, S, sizeof S); collect(C[0]);
-    double t0 = now(), T = 1.5, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
+    double SEC = getenv("SEC") ? atof(getenv("SEC")) : 0.0, csec;
+    long long c = cost_with(C[0], TF, TI, &csec), best = c; double cE = c + SEC * csec; memcpy(bestS, S, sizeof S); collect(C[0]);
+    double t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
     double tgen = 0, tev = 0, tacc = 0;
     fprintf(stderr, "start cost=%lld\n", c);
-    int xs[256]; long long cs[256]; if (K > 256) K = 256;
+    int xs[256]; long long cs[256]; double ce[256]; if (K > 256) K = 256;
     while (!stop_flag && now() - t0 < secs && best > 0) {
         double ta = now();
         int i = 1 + rnd() % (d - 1);
         for (int t = 0; t < K; t++) {
-            int x = (rnd() % 100 < 70) ? targeted(i) : -1;
+            int x = ((int)(rnd() % 100) < TARGP) ? targeted(i) : -1;
             if (x < 0 || x == ident || used(x, i)) do x = rnd() % N; while (x == ident || used(x, i));
             xs[t] = x;
         }
@@ -462,22 +523,22 @@ int main(int argc, char **argv) {
             make_tables(xs[t], cx->cf, cx->ci);
             uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
             tf[i] = cx->cf; ti[i] = cx->ci;
-            cs[t] = cost_with(cx, tf, ti);
+            double sc; cs[t] = cost_with(cx, tf, ti, &sc); ce[t] = cs[t] + SEC * sc;
         }
         evals += K;
         double tc = now();
-        int bt = 0; for (int t = 1; t < K; t++) if (cs[t] < cs[bt]) bt = t;
-        long long bc = cs[bt]; int bx = xs[bt];
-        if (bc <= c || exp((c - bc) / T) > (rnd() % 1000000) / 1e6) {
-            S[i] = bx; SI[i] = ginv(bx); make_tables(bx, TF[i], TI[i]); c = bc; collect(C[0]);
+        int bt = 0; for (int t = 1; t < K; t++) if (ce[t] < ce[bt]) bt = t;
+        long long bc = cs[bt]; double bE = ce[bt]; int bx = xs[bt];
+        if (bE <= cE || exp((cE - bE) / T) > (rnd() % 1000000) / 1e6) {
+            S[i] = bx; SI[i] = ginv(bx); make_tables(bx, TF[i], TI[i]); c = bc; cE = bE; collect(C[0]);
         }
         steps++;
         if (c < best) { best = c; memcpy(bestS, S, sizeof S); lastimp = now(); lastimpstep = steps; }
-        T = 1.5 * pow(0.5, (now() - lastheat) / COOL); if (T < 0.15) T = 0.15;
+        T = TMAX * pow(0.5, (now() - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (now() - lastimp > REHEAT && steps - lastimpstep > 400) {
-            lastheat = now(); T = 1.5; memcpy(S, bestS, sizeof S);
+            lastheat = now(); T = TMAX; memcpy(S, bestS, sizeof S);
             for (int j = 0; j < d; j++) { SI[j] = ginv(S[j]); make_tables(S[j], TF[j], TI[j]); }
-            c = best; collect(C[0]); lastimp = now();
+            c = cost_with(C[0], TF, TI, &csec); cE = c + SEC * csec; collect(C[0]); lastimp = now();
         }
         double td = now(); tgen += tb - ta; tev += tc - tb; tacc += td - tc;
         if (now() - lastprint > 30) {
