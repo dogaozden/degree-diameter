@@ -103,7 +103,10 @@ python3 ../frontier/build_haar2.py sol.txt
   seeds and wall-clock budget (`PAR` single-thread runs at a time), as a markdown table with one column per variant.
   List lines are `VARIANT | d D GROUP... n` with VARIANT `random` (haar_fast) or `k m f [VAR=x ...]` (haar_sym).
   With `SAVE=dir` every run keeps its solution and log (orbq.sh names) and solutions get build_haar2.py's verdict.
-- `records_table.py`: the STRUCTURE.md §4 table (best VALID result per cell, from `runs/`).
+- `records_table.py`: the STRUCTURE.md §4 table (best VALID result per cell, from `runs/`); `update_records.sh` writes
+  it into STRUCTURE.md.
+- `pool.sh DIR P`: a spool of job files (`*.jobs` for orbq.sh, `*.cmd` for any command), started in name order while
+  fewer than P haar_sym/haar_fast processes run on the machine; files can be added while it runs.
 - `save_sol.sh OUTDIR TAG...`: copy a verified solution and its log into `../frontier/sols` and `runs/`, commit, push.
 - `haarcheck_psl.c`: an independent low-memory checker for PSL(2,p) × Z_n (p an odd prime), written from the
   definitions like `../frontier/haarcheck_sl.c` (which only handles SL). It agrees with build_haar2.py on 5 valid
