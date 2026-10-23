@@ -210,4 +210,15 @@ theorem chunk_elem {k c t : ℕ} {l : List ℕ} (hc : checkChunk k c ((l.drop (2
   rw [hget] at hs
   exact hs
 
+theorem checkOneI_sound {i j z cc : ℕ} (h : checkOneI i j z cc = true) :
+    prodA (cc % 2 ^ 24) = toG (i, j, z) ∧ prodB (cc / 2 ^ 24 % 2 ^ 24) = toG (i, j, z) ∧
+      prodC (cc / 2 ^ 48 % 2 ^ 24) = toG (i, j, z) := by
+  unfold checkOneI at h
+  simp only [Bool.and_eq_true, decide_eq_true_eq] at h
+  obtain ⟨⟨h1, h2⟩, h3⟩ := h
+  refine ⟨?_, ?_, ?_⟩
+  · rw [← toG_prodIA, h1]
+  · rw [← toG_prodIB, h2]
+  · rw [← toG_prodIC, h3]
+
 end BipartiteDD.Haar.R225792
