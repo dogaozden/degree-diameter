@@ -161,31 +161,47 @@ def checkOneI (i j z cc : ℕ) : Bool :=
   decide (prodIA (cc % 2 ^ 24) = (i, j, z)) && decide (prodIB (cc / 2 ^ 24 % 2 ^ 24) = (i, j, z)) &&
     decide (prodIC (cc / 2 ^ 48 % 2 ^ 24) = (i, j, z))
 
+/-- The check of the blocks of one stage, from element `t` on; one pass over the list. -/
+def checkRec (k : ℕ) : ℕ → List ℕ → Bool
+  | _, [] => true
+  | t, cc :: rest => checkOneI (6 * k + t / 672) (t % 672 / 2) (t % 2) cc && checkRec k (t + 1) rest
+
 /-- The check of one stage: `cl` holds the 72-bit blocks of its `4032` elements. -/
 def checkStage (k : ℕ) (cl : List ℕ) : Bool :=
-  (List.range 4032).all fun t =>
-    checkOneI (6 * k + t / 672) (t % 672 / 2) (t % 2) (cl.getD t 0)
+  checkRec k 0 cl && decide (cl.length = 4032)
 
-theorem checkOneI_sound {i j z cc : ℕ} (h : checkOneI i j z cc = true) :
-    prodA (cc % 2 ^ 24) = toG (i, j, z) ∧ prodB (cc / 2 ^ 24 % 2 ^ 24) = toG (i, j, z) ∧
-      prodC (cc / 2 ^ 48 % 2 ^ 24) = toG (i, j, z) := by
-  unfold checkOneI at h
-  simp only [Bool.and_eq_true, decide_eq_true_eq] at h
-  obtain ⟨⟨h1, h2⟩, h3⟩ := h
-  refine ⟨?_, ?_, ?_⟩
-  · rw [← toG_prodIA, h1]
-  · rw [← toG_prodIB, h2]
-  · rw [← toG_prodIC, h3]
+theorem checkRec_sound (k : ℕ) : ∀ (l : List ℕ) (s : ℕ), checkRec k s l = true →
+    ∀ (idx : ℕ) (h : idx < l.length),
+      checkOneI (6 * k + (s + idx) / 672) ((s + idx) % 672 / 2) ((s + idx) % 2) (l[idx]) = true := by
+  intro l
+  induction l with
+  | nil => intro s _ idx h; simp at h
+  | cons cc rest ih =>
+    intro s hrec idx h
+    unfold checkRec at hrec
+    simp only [Bool.and_eq_true] at hrec
+    cases idx with
+    | zero => simpa using hrec.1
+    | succ n =>
+      have := ih (s + 1) hrec.2 n (by simpa using h)
+      have e : s + (n + 1) = s + 1 + n := by omega
+      simpa [e] using this
 
 /-- A passing stage gives the check of each of its elements. -/
 theorem checkStage_sound {k i j z : ℕ} {cl : List ℕ} (h : checkStage k cl = true) (hi : i / 6 = k)
     (hj : j < 336) (hz : z < 2) :
     checkOneI i j z (cl.getD ((i % 6) * 672 + j * 2 + z) 0) = true := by
-  have hmem : (i % 6) * 672 + j * 2 + z ∈ List.range 4032 := List.mem_range.2 (by omega)
-  have h' := List.all_eq_true.1 h _ hmem
-  have e1 : 6 * k + ((i % 6) * 672 + j * 2 + z) / 672 = i := by omega
-  have e2 : ((i % 6) * 672 + j * 2 + z) % 672 / 2 = j := by omega
-  have e3 : ((i % 6) * 672 + j * 2 + z) % 2 = z := by omega
-  simpa only [e1, e2, e3] using h'
+  unfold checkStage at h
+  simp only [Bool.and_eq_true, decide_eq_true_eq] at h
+  have hlen : (i % 6) * 672 + j * 2 + z < cl.length := by
+    rw [h.2]; omega
+  have hs := checkRec_sound k cl 0 h.1 _ hlen
+  rw [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem hlen]
+  simp only [Option.getD_some]
+  have e1 : 6 * k + (0 + ((i % 6) * 672 + j * 2 + z)) / 672 = i := by omega
+  have e2 : (0 + ((i % 6) * 672 + j * 2 + z)) % 672 / 2 = j := by omega
+  have e3 : (0 + ((i % 6) * 672 + j * 2 + z)) % 2 = z := by omega
+  rw [e1, e2, e3] at hs
+  exact hs
 
 end BipartiteDD.Haar.R225792
