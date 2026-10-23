@@ -1,3 +1,32 @@
 group sl 49 poly x^2+1 x Z_15, N=1764000, identity 35280, H order 60, rows 29400, threads 1, setup 0.07s
 start cost=114
 t=30 steps=896 evals=7169 cost=28 best=28 T=0.53
+t=60 steps=1800 evals=14401 cost=28 best=28 T=0.19
+t=90 steps=2800 evals=22401 cost=28 best=28 T=0.15
+t=120 steps=3763 evals=30105 cost=28 best=28 T=0.15
+t=150 steps=4739 evals=37913 cost=28 best=28 T=0.15
+t=180 steps=5738 evals=45905 cost=26 best=26 T=0.15
+t=210 steps=6714 evals=53713 cost=26 best=26 T=0.15
+t=240 steps=7703 evals=61625 cost=26 best=26 T=0.15
+t=270 steps=8621 evals=68969 cost=26 best=26 T=0.15
+t=300 steps=9521 evals=76169 cost=26 best=26 T=0.15
+t=330 steps=10428 evals=83425 cost=26 best=26 T=0.54
+t=360 steps=11324 evals=90593 cost=26 best=26 T=0.19
+t=390 steps=12236 evals=97889 cost=26 best=26 T=0.15
+t=420 steps=13160 evals=105281 cost=26 best=26 T=0.15
+t=450 steps=14084 evals=112673 cost=26 best=26 T=0.15
+t=480 steps=15022 evals=120177 cost=26 best=26 T=0.54
+t=510 steps=15917 evals=127337 cost=26 best=26 T=0.19
+t=540 steps=16828 evals=134625 cost=26 best=26 T=0.15
+t=570 steps=17693 evals=141545 cost=26 best=26 T=0.15
+t=600 steps=18579 evals=148633 cost=26 best=26 T=0.15
+t=630 steps=19530 evals=156241 cost=26 best=26 T=0.54
+t=660 steps=20448 evals=163585 cost=26 best=26 T=0.19
+t=690 steps=21339 evals=170713 cost=26 best=26 T=0.15
+t=720 steps=22241 evals=177929 cost=26 best=26 T=0.15
+t=750 steps=23116 evals=184929 cost=26 best=26 T=0.15
+t=780 steps=23992 evals=191937 cost=26 best=26 T=0.54
+t=810 steps=24900 evals=199201 cost=26 best=26 T=0.19
+t=840 steps=25731 evals=205849 cost=26 best=26 T=0.15
+t=870 steps=26545 evals=212361 cost=26 best=26 T=0.15
+RESULT d=9 D=9 group=sl 49 poly x^2+1 x Z_15 N=1764000 best=26 evals=218953 time=900.0
