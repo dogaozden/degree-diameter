@@ -1,0 +1,12 @@
+group sl 9 poly x^2+1 x Z_62, N=44640, identity 4464, H order 62, rows 720, threads 1, setup 0.01s
+start cost=192
+t=30 steps=70926 evals=567409 cost=4 best=4 T=0.53
+t=60 steps=144033 evals=1152265 cost=4 best=4 T=0.19
+t=90 steps=217211 evals=1737689 cost=4 best=4 T=0.15
+t=120 steps=290491 evals=2323929 cost=9 best=4 T=0.15
+t=150 steps=363975 evals=2911801 cost=10 best=4 T=0.15
+t=180 steps=437349 evals=3498793 cost=4 best=4 T=1.19
+t=210 steps=510215 evals=4081721 cost=4 best=4 T=0.42
+t=240 steps=582957 evals=4663657 cost=4 best=4 T=0.15
+t=270 steps=656993 evals=5255945 cost=4 best=4 T=0.15
+RESULT d=7 D=8 group=sl 9 poly x^2+1 x Z_62 N=44640 best=4 evals=5842105 time=300.0
