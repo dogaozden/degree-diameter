@@ -1,3 +1,42 @@
 group prod psl 16 poly x^4+x+1 sl 7 x Z_3, N=4112640, identity 242046, H order 60, rows 68544, threads 1, setup 0.20s
 start cost=77
 t=30 steps=587 evals=4697 cost=27 best=25 T=0.53
+t=60 steps=1173 evals=9385 cost=22 best=22 T=0.19
+t=90 steps=1761 evals=14089 cost=22 best=22 T=0.15
+t=120 steps=2322 evals=18577 cost=22 best=22 T=0.15
+t=150 steps=2879 evals=23033 cost=22 best=22 T=0.15
+t=180 steps=3442 evals=27537 cost=22 best=22 T=0.15
+t=210 steps=3961 evals=31689 cost=22 best=22 T=1.16
+t=240 steps=4531 evals=36249 cost=24 best=22 T=0.41
+t=270 steps=5101 evals=40809 cost=23 best=22 T=0.15
+t=300 steps=5679 evals=45433 cost=23 best=22 T=0.15
+t=330 steps=6287 evals=50297 cost=20 best=20 T=0.15
+t=360 steps=6913 evals=55305 cost=20 best=20 T=0.15
+t=390 steps=7516 evals=60129 cost=20 best=20 T=0.15
+t=420 steps=8127 evals=65017 cost=20 best=20 T=0.15
+t=451 steps=8744 evals=69953 cost=20 best=20 T=0.15
+t=481 steps=9359 evals=74873 cost=20 best=20 T=0.80
+t=511 steps=9974 evals=79793 cost=20 best=20 T=0.28
+t=541 steps=10603 evals=84825 cost=20 best=20 T=0.15
+t=571 steps=11222 evals=89777 cost=20 best=20 T=0.15
+t=601 steps=11843 evals=94745 cost=20 best=20 T=0.15
+t=631 steps=12446 evals=99569 cost=20 best=20 T=0.79
+t=661 steps=13070 evals=104561 cost=20 best=20 T=0.28
+t=691 steps=13691 evals=109529 cost=20 best=20 T=0.15
+t=721 steps=14303 evals=114425 cost=20 best=20 T=0.15
+t=751 steps=14904 evals=119233 cost=20 best=20 T=0.15
+t=781 steps=15516 evals=124129 cost=20 best=20 T=0.79
+t=811 steps=16096 evals=128769 cost=18 best=18 T=0.28
+t=841 steps=16717 evals=133737 cost=18 best=18 T=0.15
+t=871 steps=17324 evals=138593 cost=18 best=18 T=0.15
+t=901 steps=17904 evals=143233 cost=18 best=18 T=0.15
+t=931 steps=18492 evals=147937 cost=18 best=18 T=0.15
+t=961 steps=19072 evals=152577 cost=18 best=18 T=1.39
+t=991 steps=19686 evals=157489 cost=18 best=18 T=0.49
+t=1021 steps=20302 evals=162417 cost=18 best=18 T=0.17
+t=1051 steps=20868 evals=166945 cost=18 best=18 T=0.15
+t=1081 steps=21467 evals=171737 cost=18 best=18 T=0.15
+t=1111 steps=22018 evals=176145 cost=18 best=18 T=1.38
+t=1141 steps=22572 evals=180577 cost=18 best=18 T=0.49
+t=1171 steps=23122 evals=184977 cost=18 best=18 T=0.17
+RESULT d=8 D=10 group=prod psl 16 poly x^4+x+1 sl 7 x Z_3 N=4112640 best=18 evals=189217 time=1198.4
