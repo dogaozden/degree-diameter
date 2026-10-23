@@ -94,3 +94,23 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 02:18 PT (harvest): (6,7) 8,370 (was 8,310), meta 279 15 7 n 1; master.
 - Oct 23 02:18 PT (harvest): (13,10) 636,550,992 (was 617,330,936), sl 307 n 11; master.
 - Oct 23 02:18 PT (harvest): (14,10) 1,217,130,096 (was 1,213,477,190), sl 443 n 7; master.
+
+- Oct 23 11:13 PT (harvest): (6,7) 8,440 (was 8,370), meta 844 5 477 n 1; w4-d6D7_w1.
+- Oct 23 11:13 PT (harvest): (7,8) 95,760 (was 88,920), psl 19 n 14; claude/structured-haar-search-ws7bet.
+- Oct 23 11:13 PT (harvest): (8,7) 43,344 (was 41,040), sl 8 poly x^3+x+1 n 43; claude/structured-haar-search-ws7bet.
+- Oct 23 11:13 PT (harvest): (8,8) 239,904 (was 225,792), psl 17 n 49; claude/structured-haar-search-ws7bet.
+
+- Oct 23 11:19 PT (harvest): (7,9) 449,328 (was 416,640), psl 23 n 37; claude/structured-haar-search-ws7bet.
+
+- Oct 23 12:11 PT (harvest): (7,9) 462,840 (was 449,328), psl 29 n 19; claude/structured-haar-search-ws7bet.
+- Oct 23 12:11 PT (harvest): (8,9) 1,316,016 (was 1,245,312), sl 37 n 13; claude/structured-haar-search-ws7bet.
+- Oct 23 12:11 PT (harvest): (9,8) 511,056 (was 497,904), sl 27 poly x^3+2x+1 n 13; claude/structured-haar-search-ws7bet.
+
+- Oct 23 13:11 PT (harvest): (8,10) 7,802,160 (was 7,349,616), sl 59 n 19; claude/structured-haar-search-ws7bet.
+- Oct 23 13:11 PT (harvest): (10,9) 8,003,856 (was 7,488,000), sl 83 n 7; claude/structured-haar-search-ws7bet.
+- Oct 23 13:11 PT (harvest): (13,8) 6,604,416 (was 6,408,480), prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13; claude/structured-haar-search-ws7bet.
+
+- Oct 23 14:11 PT (harvest): (7,10) 2,234,400 (was 2,147,040), psl 49 poly x^2+1 n 19; claude/structured-haar-search-ws7bet.
+- Oct 23 14:11 PT (harvest): (11,9) 16,792,080 (was 16,369,920), sl 61 n 37; claude/structured-haar-search-ws7bet.
+
+- Oct 23 14:12 PT (harvest): (10,10) 58,863,480 (was 57,868,272), psl 389 n 1; claude/structured-haar-search-ws7bet.
