@@ -1,12 +1,12 @@
 group psl 16 poly x^4+x+1 x Z_11, N=44880, identity 2640, H order 55, rows 816, threads 1, setup 0.00s
 start cost=44
-t=30 steps=114480 evals=915841 cost=4 best=4 T=0.53
-t=60 steps=232497 evals=1859977 cost=4 best=4 T=0.19
-t=90 steps=348958 evals=2791665 cost=4 best=4 T=0.15
-t=120 steps=465931 evals=3727449 cost=4 best=4 T=0.15
-t=150 steps=579332 evals=4634657 cost=4 best=4 T=0.15
-t=180 steps=696006 evals=5568049 cost=3 best=3 T=0.63
-t=210 steps=810141 evals=6481129 cost=4 best=3 T=0.22
-t=240 steps=930610 evals=7444881 cost=4 best=3 T=0.15
-t=270 steps=1047937 evals=8383497 cost=3 best=3 T=0.15
-RESULT d=7 D=8 group=psl 16 poly x^4+x+1 x Z_11 N=44880 best=2 evals=9274273 time=299.9
+t=30 steps=119246 evals=953969 cost=6 best=4 T=0.53
+t=60 steps=232817 evals=1862537 cost=2 best=2 T=0.19
+t=90 steps=349399 evals=2795193 cost=2 best=2 T=0.15
+t=120 steps=465272 evals=3722177 cost=2 best=2 T=0.15
+t=150 steps=582532 evals=4660257 cost=2 best=2 T=0.15
+t=180 steps=696812 evals=5574497 cost=2 best=2 T=0.15
+t=210 steps=810564 evals=6484513 cost=5 best=2 T=0.82
+t=240 steps=926536 evals=7412289 cost=5 best=2 T=0.29
+t=270 steps=1042624 evals=8340993 cost=3 best=2 T=0.15
+RESULT d=7 D=8 group=psl 16 poly x^4+x+1 x Z_11 N=44880 best=2 evals=9265713 time=300.0

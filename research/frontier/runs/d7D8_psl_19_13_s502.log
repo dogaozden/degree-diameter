@@ -1,12 +1,12 @@
 group psl 19 x Z_13, N=44460, identity 2223, H order 39, rows 1140, threads 1, setup 0.00s
 start cost=106
-t=30 steps=85490 evals=683921 cost=4 best=1 T=0.53
-t=60 steps=172618 evals=1380945 cost=3 best=1 T=0.19
-t=90 steps=257914 evals=2063313 cost=3 best=1 T=0.15
-t=120 steps=347532 evals=2780257 cost=3 best=1 T=0.15
-t=150 steps=432575 evals=3460601 cost=3 best=1 T=0.15
-t=180 steps=517807 evals=4142457 cost=2 best=1 T=0.62
-t=210 steps=606663 evals=4853305 cost=2 best=1 T=0.22
-t=240 steps=690253 evals=5522025 cost=2 best=1 T=0.15
-t=270 steps=775324 evals=6202593 cost=2 best=1 T=0.15
-RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=1 evals=6898985 time=300.0
+t=30 steps=84645 evals=677161 cost=3 best=2 T=0.53
+t=60 steps=170440 evals=1363521 cost=3 best=2 T=0.19
+t=90 steps=257382 evals=2059057 cost=2 best=2 T=0.15
+t=120 steps=345459 evals=2763673 cost=1 best=1 T=0.15
+t=150 steps=428371 evals=3426969 cost=1 best=1 T=0.15
+t=180 steps=514040 evals=4112321 cost=1 best=1 T=0.15
+t=210 steps=602242 evals=4817937 cost=1 best=1 T=0.15
+t=240 steps=687586 evals=5500689 cost=1 best=1 T=0.15
+t=270 steps=772736 evals=6181889 cost=7 best=1 T=0.95
+RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=1 evals=6881185 time=300.0
