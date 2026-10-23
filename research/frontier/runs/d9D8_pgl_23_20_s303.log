@@ -2,3 +2,10 @@ group pgl 23 x Z_20, N=242880, identity 0, H order 60, rows 4048, threads 1, set
 start cost=28
 t=30 steps=17791 evals=142329 cost=3 best=1 T=0.53
 t=60 steps=35712 evals=285697 cost=2 best=1 T=0.19
+t=90 steps=53122 evals=424977 cost=2 best=1 T=0.15
+t=120 steps=70508 evals=564065 cost=2 best=1 T=0.15
+t=150 steps=88478 evals=707825 cost=1 best=1 T=0.15
+t=180 steps=106025 evals=848201 cost=2 best=1 T=0.71
+RESULT d=9 D=8 group=pgl 23 x Z_20 N=242880 best=0 evals=866505 time=183.7
+full diameter check: OK
+wrote sols/d9D8_pgl_23_20_s303.txt
