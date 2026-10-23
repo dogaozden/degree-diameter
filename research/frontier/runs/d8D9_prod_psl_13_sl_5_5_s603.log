@@ -1,22 +1,22 @@
-group prod psl 13 sl 5 x Z_5, N=655200, identity 46900, H order 60, rows 10920, threads 1, setup 0.05s
+group prod psl 13 sl 5 x Z_5, N=655200, identity 46900, H order 60, rows 10920, threads 1, setup 0.03s
 start cost=985
-t=30 steps=2021 evals=16169 cost=19 best=18 T=0.53
-t=60 steps=4009 evals=32073 cost=16 best=16 T=0.19
-t=90 steps=6074 evals=48593 cost=16 best=16 T=0.15
-t=120 steps=8032 evals=64257 cost=16 best=16 T=0.15
-t=150 steps=9996 evals=79969 cost=16 best=16 T=0.15
-t=180 steps=12048 evals=96385 cost=16 best=16 T=0.15
-t=210 steps=14093 evals=112745 cost=16 best=16 T=0.96
-t=240 steps=16129 evals=129033 cost=16 best=16 T=0.34
-t=270 steps=18072 evals=144577 cost=16 best=16 T=0.15
-t=300 steps=19971 evals=159769 cost=15 best=15 T=0.15
-t=330 steps=21997 evals=175977 cost=15 best=15 T=0.15
-t=360 steps=23947 evals=191577 cost=9 best=9 T=0.15
-t=390 steps=25919 evals=207353 cost=9 best=9 T=0.15
-t=420 steps=27908 evals=223265 cost=9 best=9 T=0.15
-t=450 steps=29749 evals=237993 cost=9 best=9 T=0.15
-t=480 steps=31694 evals=253553 cost=9 best=9 T=0.15
-t=510 steps=33568 evals=268545 cost=9 best=9 T=1.25
-t=540 steps=35537 evals=284297 cost=9 best=9 T=0.44
-t=570 steps=37473 evals=299785 cost=9 best=9 T=0.16
-RESULT d=8 D=9 group=prod psl 13 sl 5 x Z_5 N=655200 best=9 evals=316017 time=600.0
+t=30 steps=2157 evals=17257 cost=19 best=18 T=0.53
+t=60 steps=4408 evals=35265 cost=16 best=16 T=0.19
+t=90 steps=6641 evals=53129 cost=16 best=16 T=0.15
+t=120 steps=8880 evals=71041 cost=16 best=16 T=0.15
+t=150 steps=10997 evals=87977 cost=16 best=16 T=0.15
+t=180 steps=13219 evals=105753 cost=16 best=16 T=0.15
+t=210 steps=15339 evals=122713 cost=16 best=16 T=0.84
+t=240 steps=17505 evals=140041 cost=16 best=16 T=0.30
+t=270 steps=19756 evals=158049 cost=16 best=16 T=0.15
+t=300 steps=21790 evals=174321 cost=16 best=16 T=0.15
+t=330 steps=23955 evals=191641 cost=15 best=15 T=0.15
+t=360 steps=26183 evals=209465 cost=14 best=14 T=0.15
+t=390 steps=28421 evals=227369 cost=14 best=14 T=0.15
+t=420 steps=30638 evals=245105 cost=14 best=14 T=0.15
+t=450 steps=32850 evals=262801 cost=11 best=11 T=0.15
+t=480 steps=35027 evals=280217 cost=9 best=9 T=0.15
+t=510 steps=37248 evals=297985 cost=9 best=9 T=0.15
+t=540 steps=39621 evals=316969 cost=9 best=9 T=0.15
+t=570 steps=41777 evals=334217 cost=9 best=9 T=0.15
+RESULT d=8 D=9 group=prod psl 13 sl 5 x Z_5 N=655200 best=9 evals=352097 time=600.0
