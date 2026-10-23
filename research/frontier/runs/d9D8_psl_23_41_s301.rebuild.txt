@@ -1,0 +1,30 @@
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 497904 edges = 2240568 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = d2852726bc4b6540a7e9decd6d3c7ebc9ba416e22c343d657895aa9af3934a08
+VALID d=9 D=8 group=psl 23 x Z_41 N=248952 vertices=497904
+
+--- check_haar_indep ---
+file /Users/sapphire/lab/out/incoming/068809ed13aed661db74ecd928650f1a80f41cc1.txt
+header: d=9 D=8 spec=psl 23 NCYC=41 N=248952
+group order |G|=6072 (factors [6072]), x Z_41 -> 248952; vertices 2N=497904
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=8 reached 497904 of 497904 (unreached 0); level sizes [1, 9, 72, 576, 4596, 34698, 171297, 213669, 72986]
+BFS from B: ecc=8 reached 497904 of 497904 (unreached 0); level sizes [1, 9, 72, 576, 4596, 34698, 171405, 213669, 72878]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=497904 (0s)
+
+
+--- bigcheck ---
+read       ok    edge list, 30.4 MB, 2240568 edges as listed, 0.04 s
+n          ok      declared n = 497904 (no value field in record)
+endpoints  ok    all 4481136 endpoints in [0, 497904)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 497904, m = 2240568
+degree     ok      max degree 9 (limit 9); histogram 9:497904
+bipartite  ok      sides 248952 / 248952, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 8 <= 8 (7780 passes of 64 sources, 2 threads, 186.50 s)
+VALID    n=497904 Delta=9 D=8, diameter 8, total 186.63 s
