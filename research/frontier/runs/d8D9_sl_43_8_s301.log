@@ -1,22 +1,2 @@
-group sl 43 x Z_8, N=635712, identity 14448, H order 56, rows 11352, threads 1, setup 0.03s
+group sl 43 x Z_8, N=635712, identity 14448, H order 56, rows 11352, threads 1, setup 0.02s
 start cost=36
-t=30 steps=2199 evals=17593 cost=6 best=6 T=0.53
-t=60 steps=4245 evals=33961 cost=6 best=6 T=0.19
-t=90 steps=6718 evals=53745 cost=6 best=6 T=0.15
-t=120 steps=9330 evals=74641 cost=6 best=6 T=0.15
-t=150 steps=12070 evals=96561 cost=6 best=6 T=0.15
-t=180 steps=14592 evals=116737 cost=6 best=6 T=1.43
-t=210 steps=17029 evals=136233 cost=6 best=6 T=0.51
-t=240 steps=19579 evals=156633 cost=6 best=6 T=0.18
-t=270 steps=22233 evals=177865 cost=6 best=6 T=0.15
-t=300 steps=24880 evals=199041 cost=6 best=6 T=0.15
-t=330 steps=27596 evals=220769 cost=6 best=6 T=1.43
-t=360 steps=30128 evals=241025 cost=6 best=6 T=0.51
-t=390 steps=32439 evals=259513 cost=6 best=6 T=0.18
-t=420 steps=34599 evals=276793 cost=6 best=6 T=0.15
-t=450 steps=37218 evals=297745 cost=6 best=6 T=0.15
-t=480 steps=39639 evals=317113 cost=4 best=4 T=0.15
-t=510 steps=42092 evals=336737 cost=4 best=4 T=0.15
-t=540 steps=44634 evals=357073 cost=10 best=4 T=0.15
-t=570 steps=47293 evals=378345 cost=8 best=4 T=0.15
-RESULT d=8 D=9 group=sl 43 x Z_8 N=635712 best=4 evals=398873 time=600.0
