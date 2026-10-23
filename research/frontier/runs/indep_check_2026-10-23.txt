@@ -350,3 +350,17 @@ BFS from B: ecc=10 reached 22178688 of 22178688 (unreached 0); level sizes [1, 9
 every vertex has exactly 9 distinct neighbours: True
 RESULT VALID d=9 D=10 eccA=10 eccB=10 n=22178688 (104s)
 
+==================== Cross-check with the old build_haar.py (prime fields only) ====================
+d6D9_sl_17_12_s101:  ecc A = 9, ecc B = 9, unreached 0, n = 117504, max degree 6   (agrees)
+d7D9_sl_31_7_s111:   ecc A = 9, ecc B = 9, unreached 0, n = 416640, max degree 7   (agrees)
+d8D9_sl_59_3_s101:   ecc A = 9, ecc B = 9, unreached 0, n = 1231920, max degree 8  (agrees)
+d8D10_sl_107_3_s111: ecc A = 10, ecc B = 10, unreached 0, n = 7349616, max degree 8 (agrees; 2m56s)
+d9D10_sl_223_1_s111: not run with build_haar.py (it enumerates p^4 = 2.5e9 matrices in pure Python; infeasible)
+
+==================== Format notes ====================
+Field element = base-p digit integer c0 + c1*p + ... (poly basis, low digit = constant term) in GF(p)[x]/(f).
+mat(a,b,c,d) = [[a,b],[c,d]]; (transposed reading gives an isomorphic Haar graph, so it cannot matter).
+prod[<mat>;<mat>] z=Z : components in the order of the two factors in the spec; `poly` follows its own factor's q.
+psl/sl generators all have det 1 in the field as read; wrong readings (digit-reversed encoding, a different
+irreducible polynomial) fail immediately (det != 1 / closure failure), so the reading is confirmed.
+No file in sols/ has an agl1 header, so agl1 is not implemented.
