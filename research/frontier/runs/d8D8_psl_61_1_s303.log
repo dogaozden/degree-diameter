@@ -1,0 +1,12 @@
+group psl 61 x Z_1, N=113460, identity 1830, H order 61, rows 1860, threads 1, setup 0.00s
+start cost=52
+t=30 steps=41881 evals=335049 cost=5 best=5 T=0.53
+t=60 steps=83552 evals=668417 cost=5 best=5 T=0.19
+t=90 steps=125760 evals=1006081 cost=5 best=5 T=0.15
+t=120 steps=167063 evals=1336505 cost=5 best=5 T=0.15
+t=150 steps=208093 evals=1664745 cost=5 best=5 T=0.15
+t=180 steps=250250 evals=2002001 cost=15 best=5 T=0.87
+t=210 steps=291695 evals=2333561 cost=7 best=5 T=0.31
+t=240 steps=333659 evals=2669273 cost=7 best=5 T=0.15
+t=270 steps=375898 evals=3007185 cost=6 best=5 T=0.15
+RESULT d=8 D=8 group=psl 61 x Z_1 N=113460 best=5 evals=3344825 time=300.0
