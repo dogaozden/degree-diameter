@@ -1,0 +1,10 @@
+group prod sl 5 sl 5 x Z_17, N=244800, identity 41140, H order 51, rows 4800, threads 1, setup 0.01s
+start cost=37
+t=30 steps=11396 evals=91169 cost=5 best=2 T=0.53
+t=60 steps=23262 evals=186097 cost=3 best=2 T=0.19
+t=90 steps=34943 evals=279545 cost=3 best=2 T=0.15
+t=120 steps=46525 evals=372201 cost=3 best=2 T=0.15
+t=150 steps=58171 evals=465369 cost=2 best=2 T=0.15
+t=180 steps=67980 evals=543841 cost=1 best=1 T=0.64
+t=210 steps=77167 evals=617337 cost=1 best=1 T=0.23
+RESULT d=9 D=8 group=prod sl 5 sl 5 x Z_17 N=244800 best=1 evals=689769 time=240.0
