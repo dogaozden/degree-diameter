@@ -1,2 +1,16 @@
 group sl 81 poly x^4+x+2 x Z_2, N=1062720, identity 12960, H order 41, rows 25920, threads 1, setup 0.03s
 start cost=17
+t=30 steps=1882 evals=15057 cost=1 best=1 T=0.53
+t=60 steps=3824 evals=30593 cost=1 best=1 T=0.19
+t=90 steps=5731 evals=45849 cost=1 best=1 T=0.15
+t=120 steps=7520 evals=60161 cost=1 best=1 T=0.15
+t=150 steps=9335 evals=74681 cost=1 best=1 T=0.15
+t=180 steps=11129 evals=89033 cost=11 best=1 T=1.09
+t=210 steps=12970 evals=103761 cost=2 best=1 T=0.39
+t=240 steps=14716 evals=117729 cost=2 best=1 T=0.15
+t=270 steps=16478 evals=131825 cost=2 best=1 T=0.15
+t=300 steps=18187 evals=145497 cost=2 best=1 T=0.15
+t=330 steps=19930 evals=159441 cost=7 best=1 T=1.09
+RESULT d=7 D=10 group=sl 81 poly x^4+x+2 x Z_2 N=1062720 best=0 evals=162521 time=336.8
+full diameter check: OK
+wrote sols/d7D10_sl_81_2_s601.txt
