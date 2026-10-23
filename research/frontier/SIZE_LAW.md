@@ -488,6 +488,50 @@ How well the rule did, over the 19 big-cell runs (N ≥ 7 M) of both sessions:
 - At D = 7, (8,7) solved at μ = 25.5 after 4.3·10^7 evaluations, where the M-rule gives μ_max = 25.1. Two other seeds,
   and two groups at μ 24.4–25.0, were still at cost 2–8 after 5·10^7 evaluations.
 
+## 9. Wave 4: the remaining open cells at D ≥ 7 (2026-10-23, second session)
+
+μ at the table value (that is, at N = table/2 + 1) says which cells a Haar search can take. The limit μ_max is from §8.
+
+| cell | table | μ at table | μ_max (local budget) | table/2N_h | verdict | result |
+|---|---|---|---|---|---|---|
+| (3,7) | 168 | 19 | ~30 | 1.16 | above the first-moment ceiling | 59 groups of order 85–100 × 10 s: best cost 10. Not taken |
+| (4,7) | 840 | 31 | ~33 (10^9 evals) | 1.08 | above the ceiling; long shot | best cost 4 after 10^9 evals (meta 44 10 3, 600 s); wave4 list |
+| (5,7) | 3,110 | 47 | ~30 | 1.05 | can't | not run |
+| (6,7) | 8,310 | 38 | ~30 (1 h) | 0.95 | long shot | best cost 2 (meta 279 15 7, N = 4,185); wave4 lists |
+| (7,7) | 23,436 | 99 | ~27 | 1.07 | can't | not run |
+| **(8,7)** | 40,586 | 23 | ~25–28 | 0.84 | reachable | **41,040** (SL(2,19)×Z_3, +1.1 %), D7_PUSH |
+| (9–16,7) | 117,648 – 4,022,340 | 360 – 10^4 | ~20 | 1.22–1.44 | can't (tables far above the ceiling) | not run |
+| (10,8) | 1,176,480 | 63 | ~15 | 0.93 | can't | not run |
+| (11,8) | 2,246,940 | 57 | ~14 | 0.91 | can't | not run |
+| (12,8), (14,8), (16,8) | 4.65 M – 36.2 M | 230 – 733 | ~10–13 | 1.03–1.09 | can't | not run |
+| **(12,10)** | 300,383,050 | 4.7 | 7.5–10 | 0.79 | reachable | **310,628,640** (SL(2,281)×Z_7, +3.4 %); also 300,799,200 and 306,179,328 |
+| **(13,10)** | 617,330,936 | 3.7 | 7–9 | 0.78 | reachable | **636,550,992** (SL(2,307)×Z_11, +3.1 %); also 622,736,928 |
+| **(14,10)** | 1,213,477,190 | 3.6 | 6–8 | 0.78 | reachable | **1,217,130,096** (SL(2,443)×Z_7, +0.3 %), D14_PUSH |
+| (15,10), (16,10) | 2.30 G, 4.12 G | ~3 | ~6 | 0.79 | marginal (+1 % predicted) | not run: N > 2^30 overflows haar_gen3's 32-bit indices, and ~16–30 GB RAM needed |
+| (6,5) | 684 | 35 | ~37 | 1.00 | at the ceiling; the earlier D = 5 hunts reached cost 2 | not run |
+| (10,5) | 4,000 | 50 | ~30 | 0.91 | can't | not run |
+
+Notes:
+- **D = 7 calibration.** The four (8,7) groups at μ 24.4–25.5 behaved as §8 predicts (one solve at 4.3·10^7 evaluations,
+  the rest at cost 2–8). Random-S excess at D = 7 is larger than at D ≥ 8: median cost/(2μ) = 1.4–3 for the matrix
+  groups, because q is small. For N ≤ 5,000 the metacyclic groups screen best (random-S minimum cost 4–24 at μ 34–41).
+  The model's D = 7 column (interpolated in §3.3) stands: only (8,7) was reachable, plus long shots at (4,7) and (6,7).
+- **Why D = 8 with Δ ≥ 10 is closed to Haar search.** At the table order, μ is 57–733. Each +1 in μ costs ~1.6× more
+  evaluations, so even (11,8) needs ~e^((57−14)/2) ≈ 10^9 times today's budget. Those table graphs beat random-like
+  covering (§3.4).
+- **Verification.** All new graphs pass haar_gen3's own full BFS and `sizelaw/haarcheck_sl.c`. (8,7) also passes
+  build_haar2 (sha256 0fc82859323f5e4ad9fff3610b3d3b3869ba891da4039e4242d04b0779080cab). The D = 10 graphs have
+  0.3–1.2 G vertices, too big for the Python checkers on this box.
+- **(15,8) table value.** Rechecked against TABLE.md's source: DS14v2 Table 4 (p. 37, downloaded again today and read
+  with PDFKit) really lists 14,172,480 for both Δ = 14 and Δ = 15 at D = 8. The live CombinatoricsWiki page still fails
+  TLS (certificate name mismatch); I did not bypass it. So TABLE.md is faithful to its source. Whether the wiki has a
+  larger Δ = 15 value is unverified.
+- **wave4 lists** (`research/frontier/wave4/`, wave3 format, one file per 4-core watcher):
+  - `jobs4_d8D7_w1.txt`: (8,7) above 41,040, 7 groups × 4 seeds × 3600 s.
+  - `jobs4_d6D7_w1.txt`, `jobs4_d6D7_w2.txt`: (6,7), 16 groups × 2 seeds × 3600 s each list.
+  - `jobs4_d4D7_w1.txt`: (4,7), 8 groups × 4 seeds × 1800 s.
+  - All jobs need under 10 MB. (6,7) and (4,7) are long shots by the μ rule; (8,7) is a stretch.
+
 ## Appendix A. Solution files of the new cells (haar_gen3 format; build_haar2.py and check_haar_indep.py read them)
 
 `d10D10_sl_307_1_s3.txt` — (10,10), 57,868,272 vertices
