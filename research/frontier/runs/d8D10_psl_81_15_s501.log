@@ -1,0 +1,22 @@
+group psl 81 poly x^4+x+2 x Z_15, N=3985200, identity 48600, H order 60, rows 66420, threads 1, setup 0.15s
+start cost=44
+t=30 steps=251 evals=2009 cost=16 best=14 T=0.53
+t=60 steps=511 evals=4089 cost=12 best=12 T=0.19
+t=90 steps=753 evals=6025 cost=12 best=12 T=0.15
+t=120 steps=1023 evals=8185 cost=12 best=12 T=0.15
+t=150 steps=1286 evals=10289 cost=12 best=12 T=0.15
+t=180 steps=1564 evals=12513 cost=12 best=12 T=0.15
+t=211 steps=1835 evals=14681 cost=12 best=12 T=0.81
+t=241 steps=2105 evals=16841 cost=12 best=12 T=0.29
+t=271 steps=2364 evals=18913 cost=12 best=12 T=0.15
+t=301 steps=2633 evals=21065 cost=12 best=12 T=0.15
+t=331 steps=2894 evals=23153 cost=12 best=12 T=0.15
+t=361 steps=3174 evals=25393 cost=12 best=12 T=0.81
+t=391 steps=3448 evals=27585 cost=12 best=12 T=0.28
+t=421 steps=3717 evals=29737 cost=12 best=12 T=0.15
+t=451 steps=3987 evals=31897 cost=12 best=12 T=0.15
+t=481 steps=4233 evals=33865 cost=12 best=12 T=0.15
+t=511 steps=4484 evals=35873 cost=12 best=12 T=0.80
+t=541 steps=4745 evals=37961 cost=12 best=12 T=0.28
+t=571 steps=4987 evals=39897 cost=9 best=9 T=0.15
+RESULT d=8 D=10 group=psl 81 poly x^4+x+2 x Z_15 N=3985200 best=9 evals=41785 time=598.4
