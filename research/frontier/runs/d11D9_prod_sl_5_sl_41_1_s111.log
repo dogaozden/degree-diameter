@@ -1,0 +1,20 @@
+group prod sl 5 sl 41 x Z_1, N=8265600, identity 1379240, H order 60, rows 137760, threads 1, setup 0.28s
+start cost=18
+t=30 steps=139 evals=1113 cost=6 best=6 T=0.53
+t=60 steps=279 evals=2233 cost=6 best=6 T=0.19
+t=90 steps=420 evals=3361 cost=6 best=6 T=0.15
+t=121 steps=565 evals=4521 cost=6 best=6 T=0.15
+t=151 steps=709 evals=5673 cost=6 best=6 T=0.15
+t=181 steps=850 evals=6801 cost=6 best=6 T=0.61
+t=211 steps=995 evals=7961 cost=6 best=6 T=0.21
+t=241 steps=1145 evals=9161 cost=6 best=6 T=0.15
+t=271 steps=1290 evals=10321 cost=4 best=4 T=0.15
+t=301 steps=1438 evals=11505 cost=4 best=4 T=0.15
+t=331 steps=1583 evals=12665 cost=4 best=4 T=0.15
+t=361 steps=1728 evals=13825 cost=4 best=4 T=0.15
+t=391 steps=1871 evals=14969 cost=4 best=4 T=0.15
+t=422 steps=2015 evals=16121 cost=8 best=4 T=0.85
+t=452 steps=2161 evals=17289 cost=6 best=4 T=0.30
+t=482 steps=2300 evals=18401 cost=6 best=4 T=0.15
+t=512 steps=2448 evals=19585 cost=2 best=2 T=0.15
+RESULT d=11 D=9 group=prod sl 5 sl 41 x Z_1 N=8265600 best=2 evals=19649 time=513.4

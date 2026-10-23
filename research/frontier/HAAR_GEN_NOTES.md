@@ -16,6 +16,8 @@ the solution files are byte-compatible: `build_haar.py` still checks them, and `
 edge list (same element order), so the sha256 agrees with `build_haar.py`'s edge file (checked on
 d7D8_psl_17_17_s1: both 82594e26…).
 
+Wave-3 recipe and job lists for the watchers: `wave3/WAVE3.md`.
+
 ## 1. Speed
 
 ### Where the time went (haar_gen)
@@ -112,7 +114,7 @@ in 1 s (761 evaluations).
 `6 9 … sl 17 12` (4 seeds × 45 s each: default 1/4 solved, RESTART=1 REHEAT=5 0/4, REHEAT=5 1/4). Near a wall
 the search sits on a cost-1 or cost-2 plateau; what helps is more groups and more seeds, not tuning.
 
-## 4. Results of this session (haar_gen3, this container, ≤ 3 cores, ~3 h)
+## 4. Results of this session (haar_gen3, this container, ≤ 3 cores, ~2.5 h of runs)
 
 All rebuilt with `build_haar2.py` (two BFS from (e,A) and (e,B): ecc ≤ D, unreached 0, max = min degree = Δ, no
 repeated edge). sha256 = of the edge list `n` + `u v` lines as written by build_haar2.py (= build_haar.py's format and
@@ -120,7 +122,19 @@ order for the old families). Files: `sols/<tag>.txt`, `runs/<tag>.log`, `runs/<t
 
 | cell | group | N | vertices | previous best (vertices) | tag | edge-list sha256 |
 |---|---|---|---|---|---|---|
-RESULTS_TABLE
+| (6,9) | sl 17 x Z_12 | 58,752 | 117,504 | none; table 117,360 (new cell) | d6D9_sl_17_12_s101 | 3cefda3aac28d9112fd1037f6b4b00b9f16e30182a056a79adaaa7a36e0f3e62 |
+| (6,10) | psl 27 poly x^3+2x+1 x Z_25 | 245,700 | 491,400 | 482,160 | d6D10_psl_27_25_s101 | b1b77f30fab083a640952abbe386862fcc099c04f63f40310812aff41834a218 |
+| (7,9) | sl 31 x Z_7 | 208,320 | 416,640 | 410,640 | d7D9_sl_31_7_s111 | 3d3b74e4b749094f544807e0397dcee2da3576a9f8a0494fcef337cbbee05409 |
+| (7,10) | sl 49 poly x^2+1 x Z_9 | 1,058,400 | 2,116,800 | 2,075,520 | d7D10_sl_49_9_s101 | 73ef408e888516f5ad9b3bee1333cb298f954286e275d2c4c237256273ddb0e8 |
+| (8,8) | psl 29 x Z_9 | 109,620 | 219,240 | 210,528 | d8D8_psl_29_9_s101 | 0c4ba39a4bb612d9af61dcb0ccd793eab042c154a841f01d9e30d0a25ff9b211 |
+| (8,9) | sl 59 x Z_3 | 615,960 | 1,231,920 | 1,169,280 | d8D9_sl_59_3_s101 | f41383998754bba80b1372e46337733adf33b196466720ae74ee5d8198e0be01 |
+| (8,10) | sl 107 x Z_3 | 3,674,808 | 7,349,616 | 7,143,552 | d8D10_sl_107_3_s111 | ecde263dc881283548aa7d5d1e4c47ecba1ff0840c78d115a94c39c21b19fb5e |
+| (9,8) | prod sl 7 sl 9 poly x^2+1 x Z_1 | 241,920 | 483,840 | 476,784 | d9D8_prod_sl_7_sl_9_1_s101 | 610caefd2f73800f43fd9174b245c7f5a6298ab9cd4c7b33057a6e54693530d5 |
+| (9,9) | sl 81 poly x^4+x+2 x Z_3 | 1,594,080 | 3,188,160 | 2,976,480 | d9D9_sl_81_3_s111 | 344a85abc21b165c94367543d2e0bf62ccf64284efb023ca61d94926c0e9a602 |
+| (9,10) | sl 223 x Z_1 | 11,089,344 | 22,178,688 | none; table 20,017,260 (new cell) | d9D10_sl_223_1_s111 | d29df0b77b1bf5436dff17a10b0d68d717d0d55a586a145313de79c527d977cb |
+| (10,9) | prod psl 5 sl 25 poly x^2+2 x Z_4 | 3,744,000 | 7,488,000 | 7,349,616 | d10D9_prod_psl_5_sl_25_4_s111 | d91dddbfa77ffe35e38bdeb20baa461d4904de3d80844c1b002c00c5da5cf251 |
+| (11,9) | prod sl 7 sl 29 x Z_1 | 8,184,960 | 16,369,920 | none; table 15,200,448 (new cell) | d11D9_prod_sl_7_sl_29_1_s111 | f0685bc56672428602cdc50cddad9abf2f10a064dd4936cc03f9d8b0cf2d2d43 |
+| (13,8) | prod sl 7 sl 11 x Z_7 | 3,104,640 | 6,209,280 | 5,725,440 | d13D8_prod_sl_7_sl_11_7_s101 | c1390148325ab758d9bf9241bf526bc46d8a674049ab586431f36d4f15269046 |
 
 Walls seen (orders tried above the best, all with cost 1–4 left after 150–600 s):
 - (8,8): best 109,620; unsolved at 109,440 (SL(2,19)×Z16, best 1), 110,880 (A5×PSL(2,7)×Z11, 2), 112,896 (2),
@@ -132,7 +146,18 @@ Walls seen (orders tried above the best, all with cost 1–4 left after 150–60
 - (7,9): best 208,320; 207,060 PSL(2,29)×Z17 (2), 216,000 products (5, 6), 216,216 SL(2,27)×Z11 (6).
 - (7,10): best 1,058,400; 1,062,720 SL(2,81)×Z2 (1, two seeds), 1,062,936 SL(2,37)×Z21 (1), 1,073,520 SL(2,71)×Z3 (2).
 - (8,9): best 615,960; 619,920 SL(2,41)×Z9 (2), 620,928 (2), 622,656 SL(2,47)×Z6 (2), 633,600 (6), 655,200 (12).
-- (9,9): best 1,594,080; 1,637,064 SL(2,53)×Z11 (4).
+- (9,9): best 1,594,080; 1,637,064 SL(2,53)×Z11 (4), 1,642,560 SL(2,59)×Z8 (6 at 240 s).
+- (8,10): best 3,674,808; 3,694,968 PSL(2,73)×Z19 (1), 3,719,520 SL(2,81)×Z7 (1).
+- (10,9): best 3,744,000; 3,769,920 PSL(2,11)×SL(2,7)×Z17 (2), 3,801,600 PSL(2,9)×SL(2,11)×Z8 (2).
+- (9,10): best 11,089,344; 11,232,000 SL(2,9)×SL(2,25) (2).
+- (11,9): best 8,184,960; 8,265,600 SL(2,5)×SL(2,41) (2).
 - (13,8): best 3,104,640; 3,111,552 SL(2,73)×Z8 (1), 3,144,960 PSL(2,13)×SL(2,9)×Z4 (1), 3,231,360 (4).
 In N_h units (heuristic.py) the walls sit at 0.80–0.86: (7,8) 0.86, (6,9) 0.84, (8,8) 0.83, (6,10) 0.83,
 (7,10) 0.83, (7,9) 0.82, (8,9) 0.81, (9,9) 0.80, (9,8) 0.80, (13,8) 0.79.
+
+New cells (no earlier Haar graph of ours): (6,9), (9,10), (11,9). The two huge new cells were nearly free: at
+0.75·N_h random generator sets already have cost 0 (RANDSAMPLE min = 0), so the search only polishes. Cells with
+table/N_h around 0.75 or less that nobody here has tried yet: (12,9) (table 30,001,152 → N 15.0M, 0.73),
+(13,9) (50,990,610 → N 25.5M, 0.66), (10,10) (50,331,156 → N 25.2M, 0.71), (14,9), (15,9), (16,9). These need
+N = 15–145M; haar_gen3's memory is ~10 bytes per element plus O(N/60) tables, so 25M is fine on this box,
+and build_haar2.py checked 22M vertices in 270 s.
