@@ -1,0 +1,8 @@
+group psl 19 x Z_14, N=47880, identity 2394, H order 63, rows 760, threads 1, setup 0.00s
+wide rows: HW order 133, rows 360, setup 0.00s
+alpha: conj by mat(1,3,6,0) (index 234), z -> 9 z on Z_14
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 42.97, mu/k = 14.32, fixed-point misses ~ 1.74
+start cost=23940
+RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=0 evals=264425 time=13.0 orbit k=3 m=2 f=1 fix=17
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/orb/d7D8_psl_19_14_k3_s1.txt
