@@ -4,7 +4,32 @@ structured-search job (Opus), 2026-10-23, cloud container (4 cores, Xeon 2.8 GHz
 (search), `tools/orb_screen.py` (screening), `tools/orbq.sh` (job queue). Notation follows `../frontier/SIZE_LAW.md`:
 N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the Poisson mean of the uncovered count.
 
-<!-- RESULTS-SUMMARY -->
+## 0. Summary
+
+1. **Orbit-symmetric S changes the exponent.** Make S invariant under an automorphism α of odd prime order k:
+   S = {e} ∪ (generators fixed by α) ∪ (α-orbits of size k). The uncovered set then comes in α-orbits. A random
+   symmetric S covers everything with probability ≈ e^(−μ/k − fixed-point misses) instead of e^(−μ). With k = 3
+   (conjugation by an element of order 3 on SL/PSL(2,q), times z ↦ rz on Z_n), annealing over orbit
+   representatives needs ≈ e^(μ/4.5) evaluations instead of ≈ e^(μ/2). On identical groups and seeds at (7,8):
+   - μ = 34: random S 0/4 (cost 6 after 1.2–1.6·10⁶ evaluations); orbit 4/4 in 1.7–5.8·10⁴;
+   - μ = 43: orbit solves in 2.3·10⁵; random S is at cost 9–10.
+   The reachable μ roughly doubles (walls at μ ≈ 45–50 instead of 21–25 with ~10⁷ evaluations), which is
+   +5–11 % in N.
+2. **New graphs** (all build_haar2.py VALID, files in ../frontier/sols/, names with `orb3`): see §4. These are
+   improvements of cells we already held; no new cell yet (§7).
+3. **What does not work** (§2, §5): involutions (k = 2) and anything acting trivially on a quotient (z-only,
+   metacyclic scalings, Z_n with fixed z) create word collisions. Heisenberg groups (fixed-point-free α) mix far too
+   badly at D = 8. Frobenius (field) orbits, single orbits (Δ = 6), coset-structured S and big cyclic factors also
+   fail.
+4. **The ceiling does not move.** Counting symmetric S gives the same first-moment ceiling μ ≈ Δ ln N as random S
+   (§1). Cells whose table lies above it ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13) stay
+   unreachable for random-like and orbit-symmetric S alike. (10,8) and (11,8) lie below it and are being attempted
+   (§7).
+5. **"A billion times more efficient?"** (§6) Not as a constant factor: SPEEDUP.md measures 1.2–3.2× per core. As an
+   exponent change, the orbit method beats extrapolated random-S annealing by ~10⁵ at μ = 34, ~10⁶ at μ = 43 and,
+   extrapolated, ~10⁹ near μ ≈ 67. But it has its own wall, and nothing random-like passes the first-moment
+   ceiling.
+
 
 ## 1. The idea: make S invariant under an automorphism
 
@@ -164,8 +189,9 @@ SIZE_LAW §3.3.)
 
 **As an exponent: partly yes.** Orbit-symmetric S with k = 3 replaces e^(μ/2) by about e^(μ/4.5) (§3). At μ = 34 it
 needed 2·10⁴ evaluations where random-S annealing needs ~4·10⁹ (extrapolated; it failed at 4.5·10⁶): a factor of
-~10⁵. At μ = 43, 3·10⁵ against ~3·10¹¹: ~10⁶. Extrapolating both fits, the ratio e^(0.28 μ) reaches 10⁹ at
-μ ≈ 74. In that sense the change *is* a billion-fold efficiency gain in the band μ ≈ 60–75, but only there:
+~10⁵. At μ = 43, 3·10⁵ against ~3·10¹¹: ~10⁶. Extrapolating both fits (random 10⁵ e^((μ−13)/2), orbit
+3·10³ e^(0.226(μ−23.3))), the ratio ≈ 10 e^(0.274 μ) reaches 10⁹ at μ ≈ 67. In that sense the change *is* a
+billion-fold efficiency gain around μ ≈ 65–70, but only there:
 
 - **It cannot pass the first-moment ceiling.** The count of symmetric S shrinks by the same factor k in the exponent
   (§1), so (12,8), (14,8) and (16,8), whose tables lie *above* the ceiling for every random-like or orbit-symmetric S
@@ -178,5 +204,27 @@ needed 2·10⁴ evaluations where random-S annealing needs ~4·10⁹ (extrapolat
 - (10,8) and (11,8) lie in the band between the k = 3 wall and the ceiling. They are being attempted (§7):
   (10,8) with k = 3 (μ_eff ≈ 22) and (11,8) with k = 5 on PSL(2,59) × Z11 (μ_eff ≈ 16).
 
-<!-- SECTION 7 -->
+## 7. Open attempts, and what to do next
+
+<!-- OPEN-ATTEMPTS -->
+
+Next steps, in order of expected value:
+1. **Sweep every held cell with k = 3 orbit search** (each costs minutes to an hour per rung). D = 8–10 cells with
+   Δ ≡ 1 or 2 mod 3 (f = 1 or 2) gain about 5–11 % (§4: (7,8), (8,8), (8,7), (7,9), (8,9)). Not yet run: (7,10),
+   (8,10), (13,8), (10,9), (13,10), (10,10) and the other big cells. Use `tools/orb_screen.py` for the group, then
+   `tools/orbq.sh` with a μ-ladder starting near our current order.
+2. **Δ ≡ 0 mod 3 is weak** (f = 3: two extra torus generators, an abelian sub-alphabet). (9,8) went +2.6 % and then
+   stalled at μ = 27. Better choices for Δ = 9, 12, 15 would need k = 5 or 7 with fewer fixed points.
+3. **Groups with small centralizers and good mixing.** The k = 3 wall is μ/3 + |Fix|·e^(−λ/3) ≈ 16–18. In SL(2,q),
+   |Fix| ≈ q, which blocks k ≥ 5 except when q is small (but then n is large and mixing is poor). SL(3,q) has
+   regular-semisimple centralizers of size ~q² out of q⁸, which would allow k = 5–7 at moderate N. Not implemented
+   (needs a 3×3 matrix family in haar_gen3/haar_fast and in build_haar2.py).
+4. **A cheaper orbit evaluation.** If the coset subgroup H lies in the torus centralizing the conjugating element
+   (and in the r-fixed part of Z_n), α maps rows to rows, so the BFS could run on α-orbits of rows: about k× fewer
+   operations. Worth ≈ +2 in μ for k = 3.
+5. **Above-ceiling cells** ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13). They need covering-design
+   structure (negatively correlated coverage). The natural route is voltage lifts over Moore graphs or generalized
+   polygons with structured voltages (Loz–Pérez-Rosés–Pineda-Villavicencio style). That is a different program and
+   was not attempted here.
+
 
