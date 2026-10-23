@@ -1,2 +1,42 @@
 group prod psl 13 sl 7 x Z_9, N=3302208, identity 236250, H order 63, rows 52416, threads 1, setup 0.14s
 start cost=30
+t=30 steps=578 evals=4625 cost=10 best=10 T=0.53
+t=60 steps=1186 evals=9489 cost=9 best=9 T=0.19
+t=90 steps=1783 evals=14265 cost=6 best=6 T=0.15
+t=120 steps=2400 evals=19201 cost=6 best=6 T=0.15
+t=150 steps=3015 evals=24121 cost=6 best=6 T=0.15
+t=180 steps=3602 evals=28817 cost=6 best=6 T=0.15
+t=210 steps=4211 evals=33689 cost=6 best=6 T=0.15
+t=240 steps=4837 evals=38697 cost=6 best=6 T=0.57
+t=270 steps=5414 evals=43313 cost=6 best=6 T=0.20
+t=300 steps=6003 evals=48025 cost=6 best=6 T=0.15
+t=330 steps=6596 evals=52769 cost=6 best=6 T=0.15
+t=360 steps=7225 evals=57801 cost=6 best=6 T=0.15
+t=390 steps=7808 evals=62465 cost=11 best=6 T=0.57
+t=420 steps=8433 evals=67465 cost=10 best=6 T=0.20
+t=450 steps=9039 evals=72313 cost=9 best=6 T=0.15
+t=480 steps=9644 evals=77153 cost=9 best=6 T=0.15
+t=510 steps=10234 evals=81873 cost=8 best=6 T=0.15
+t=541 steps=10819 evals=86553 cost=6 best=6 T=0.57
+t=571 steps=11472 evals=91777 cost=6 best=6 T=0.20
+t=601 steps=12132 evals=97057 cost=6 best=6 T=0.15
+t=631 steps=12788 evals=102305 cost=6 best=6 T=0.15
+t=661 steps=13437 evals=107497 cost=6 best=6 T=0.15
+t=691 steps=14094 evals=112753 cost=10 best=6 T=0.57
+t=721 steps=14740 evals=117921 cost=7 best=6 T=0.20
+t=751 steps=15393 evals=123145 cost=7 best=6 T=0.15
+t=781 steps=16031 evals=128249 cost=7 best=6 T=0.15
+t=811 steps=16644 evals=133153 cost=7 best=6 T=0.15
+t=841 steps=17282 evals=138257 cost=8 best=6 T=0.57
+t=871 steps=17930 evals=143441 cost=8 best=6 T=0.20
+t=901 steps=18577 evals=148617 cost=8 best=6 T=0.15
+t=931 steps=19197 evals=153577 cost=8 best=6 T=0.15
+t=961 steps=19850 evals=158801 cost=8 best=6 T=0.15
+t=991 steps=20486 evals=163889 cost=6 best=6 T=0.57
+t=1021 steps=21120 evals=168961 cost=6 best=6 T=0.20
+t=1051 steps=21763 evals=174105 cost=6 best=6 T=0.15
+t=1081 steps=22441 evals=179529 cost=6 best=6 T=0.15
+t=1111 steps=23083 evals=184665 cost=6 best=6 T=0.15
+t=1141 steps=23729 evals=189833 cost=6 best=6 T=0.57
+t=1171 steps=24363 evals=194905 cost=6 best=6 T=0.20
+RESULT d=13 D=8 group=prod psl 13 sl 7 x Z_9 N=3302208 best=6 evals=199977 time=1200.0
