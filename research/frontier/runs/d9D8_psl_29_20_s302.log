@@ -1,3 +1,8 @@
 group psl 29 x Z_20, N=243600, identity 8120, H order 60, rows 4060, threads 1, setup 0.00s
 start cost=29
 t=30 steps=19428 evals=155425 cost=4 best=1 T=0.53
+t=60 steps=39279 evals=314233 cost=1 best=1 T=0.19
+t=90 steps=60010 evals=480081 cost=1 best=1 T=0.15
+t=120 steps=79205 evals=633641 cost=1 best=1 T=0.15
+t=150 steps=98685 evals=789481 cost=1 best=1 T=0.15
+t=180 steps=119448 evals=955585 cost=2 best=1 T=0.56

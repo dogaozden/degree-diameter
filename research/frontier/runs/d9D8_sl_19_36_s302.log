@@ -3,3 +3,11 @@ start cost=23
 t=30 steps=20354 evals=162833 cost=4 best=2 T=0.53
 t=60 steps=40384 evals=323073 cost=3 best=2 T=0.19
 t=90 steps=61063 evals=488505 cost=3 best=2 T=0.15
+t=120 steps=81915 evals=655321 cost=3 best=2 T=0.15
+t=150 steps=104099 evals=832793 cost=2 best=2 T=0.15
+t=180 steps=124959 evals=999673 cost=4 best=2 T=0.64
+t=210 steps=146118 evals=1168945 cost=2 best=2 T=0.23
+t=240 steps=168127 evals=1345017 cost=2 best=2 T=0.15
+RESULT d=9 D=8 group=sl 19 x Z_36 N=246240 best=0 evals=1417881 time=251.5
+full diameter check: OK
+wrote sols/d9D8_sl_19_36_s302.txt
