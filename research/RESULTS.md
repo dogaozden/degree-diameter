@@ -47,3 +47,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - (6,10) 462,840 (was ours 461,472), PSL(2,29) × Z19.
 - (8,8) 208,320 (was ours 206,448), PSL(2,31) × Z7.
 - (7,8) 83,232 (was ours 82,992), PSL(2,17) × Z17.
+- Later Oct 23 (same check): (7,9) 404,928 (table 400,160), SL(2,37) × Z4, new cell; (7,10) → 1,997,520, PSL(2,29) × Z82; (9,8) → 473,616, PSL(2,23) × Z39; (8,8) → 210,528, PSL(2,17) × Z43.
