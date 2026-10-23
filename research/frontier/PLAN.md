@@ -101,7 +101,21 @@ join their ends), the heuristic ranking, and the observation that the D = 8 colu
 of the word bound W). These are single computer constructions, not a family theorem, so there is no REPORT.md
 theorem; nothing here uses Delorme 1985 / Delorme–Farhi 1984 / Araujo-Pardo–López.
 
-## 5. Order of work this session
+## 5. Next (ranked)
+
+1. **(7,10)**, table 1,987,380, need N > 993,690: PSL(2,23) × Z₁₆₄ (N = 995,808) reached 2 uncovered in 15 min at
+   6 evaluations/s. A 1–2 h search plus ~100 min of single-thread bigcheck (2M vertices) should give a new cell.
+2. **(7,9)**, table 400,160: odd D (two conditions) is harder; PSL(2,23) × Z₃₃ (200,376, margin 0.15%) stuck at 3–4.
+   Try 2+2 lifts (two orbits per side: twice the generators per vertex count) or more groups of order 200–205K.
+3. **Push our new D = 8–10 cells** in steps of 2–3% (5–7% steps all failed at 2–31 uncovered): (8,8) ~108K,
+   (9,8) ~235K, (6,10) ~236K, (7,8) ~42.5K per side.
+4. **Huge weak cells** (need/N_h 0.67–0.73): (13,8) 5.3M, (15,8) 14M, (9,9) 3M, (13–16,9), (10,10), (8,10) 6.9M.
+   The search itself is feasible (2 BFS per evaluation), but all-pairs bigcheck is not (days). They need a certificate
+   check instead: the Haar lemma (in Lean for D = 5; the even-D criterion above is one line) + an independent
+   two-BFS check of a rebuilt graph. Decide whether that counts as verification.
+5. D = 5 with Δ ≥ 10 and D = 7 with Δ ≥ 9 are strong (need/N_h ≥ 1.1); not worth the cores. D = 3, 4, 6: nothing left.
+
+## 6. Order of work this session (as planned at the start)
 
 1. (7,8) over groups of order 41–48K (SL(2,13)×Z₁₉ = 41,496 first), push N up after the first success.
 2. (8,8) over PSL(2,59) (102,660), SL(2,37)×Z₂ (101,232), PSL(2,23)×Z₁₇ (103,224).
