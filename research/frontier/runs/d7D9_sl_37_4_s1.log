@@ -1,0 +1,30 @@
+group sl 37 x Z_4, N=202464, identity 5328
+start cost=108
+t=30 steps=137 evals=1097 cost=4 best=4 T=0.53
+t=60 steps=278 evals=2225 cost=2 best=2 T=0.19
+t=90 steps=415 evals=3321 cost=2 best=2 T=0.15
+t=121 steps=553 evals=4425 cost=2 best=2 T=0.15
+t=151 steps=688 evals=5505 cost=2 best=2 T=0.15
+t=181 steps=826 evals=6609 cost=2 best=2 T=0.15
+t=211 steps=959 evals=7673 cost=4 best=2 T=0.65
+t=241 steps=1092 evals=8737 cost=4 best=2 T=0.23
+t=271 steps=1227 evals=9817 cost=4 best=2 T=0.15
+t=301 steps=1362 evals=10897 cost=4 best=2 T=0.15
+t=332 steps=1496 evals=11969 cost=2 best=2 T=0.15
+t=362 steps=1631 evals=13049 cost=2 best=2 T=0.64
+t=392 steps=1756 evals=14049 cost=2 best=2 T=0.22
+t=422 steps=1892 evals=15137 cost=2 best=2 T=0.15
+t=452 steps=2029 evals=16233 cost=2 best=2 T=0.15
+t=482 steps=2164 evals=17313 cost=2 best=2 T=0.15
+t=512 steps=2300 evals=18401 cost=2 best=2 T=0.63
+t=542 steps=2436 evals=19489 cost=2 best=2 T=0.22
+t=572 steps=2576 evals=20609 cost=2 best=2 T=0.15
+t=602 steps=2712 evals=21697 cost=2 best=2 T=0.15
+t=633 steps=2847 evals=22777 cost=2 best=2 T=0.15
+t=663 steps=2981 evals=23849 cost=2 best=2 T=0.62
+t=693 steps=3115 evals=24921 cost=2 best=2 T=0.22
+t=723 steps=3248 evals=25985 cost=2 best=2 T=0.15
+t=753 steps=3380 evals=27041 cost=2 best=2 T=0.15
+RESULT d=7 D=9 group=sl 37 x Z_4 N=202464 best=0 evals=27489 time=765.9
+full diameter check: OK
+wrote sols/d7D9_sl_37_4_s1.txt
