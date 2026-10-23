@@ -297,7 +297,7 @@ that no letters commute and there are Δ/3 orbits instead of Δ/3 − 1. haar_sy
 (it writes S·s₀⁻¹ so the file starts with e, after re-running its full check); it had never been run.
 
 **Ball growth** (distinct elements per BFS level, 3 random symmetric S each, (9,8) on PSL(2,23) × Z43; the
-non-backtracking word count is 9, 73, 585, 4,681, 37,513, …):
+non-backtracking word count is 9, 73, 585, 4,681, 37,449, …):
 
 | f | level 2 | level 3 | level 4 | level 5 | level 6 | RANDORB median cost (μ = 26.9) |
 |---|---|---|---|---|---|---|
