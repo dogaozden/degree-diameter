@@ -171,7 +171,7 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (12,9) | 30,001,152 | 32,772,096 | **33,948,672** (+3.6 %) | sl 257 × Z1; 3, 4, 0 | 15.7 | 4.1e+03 | d12D9_sl_257_1_orb3f0_s1.txt |
 | (13,9) | 50,990,610 | 62,156,160 | **63,872,400** (+2.8 %) | sl 101 × Z31; 3, 4, 1 | 13.3 | 2.8e+02 | d13D9_sl_101_31_orb3_s1.txt |
 | (14,9) | 95,087,738 | 111,482,880 | **116,068,656** (+4.1 %) | sl 67 × Z193; 3, 4, 2 | 14.1 | 3.4e+03 | d14D9_sl_67_193_orb3_s1.txt |
-| (15,9) | 168,016,334 | 190,887,072 | **199,858,800** (+4.7 %) | sl 101 × Z97; 3, 5, 0 | 12.4 | 3e+02 | d15D9_sl_101_97_orb3f0_s1.txt |
+| (15,9) | 168,016,334 | 190,887,072 | **202,537,440** (+6.1 %) | sl 71 × Z283; 3, 5, 0 | 15.5 | 4.6e+03 | d15D9_sl_71_283_orb3f0_s1.txt |
 | (16,9) | 288,939,118 | 316,679,760 | **324,164,400** (+2.4 %) | sl 149 × Z49; 3, 5, 1 | 7.1 | 9 | d16D9_sl_149_49_orb3_s1.txt |
 | (6,10) | 452,032 | 506,160 | **524,160** (+3.6 %) | prod sl 5 psl 7 × Z13; 3, 2, 0 | 23.6 | 7.4e+04 | d6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19; 3, 2, 1 | 22.2 | 2.3e+04 | d7D10_psl_49_19_orb3_s1.txt |
@@ -349,4 +349,15 @@ graph is even above the first-moment estimate 2N_h ≈ 8,747 of mu_plan.py; at D
 **Where it does not help.** (6,8) on PSL(2,9) × Z43 (μ = 28.2, just above our 30,576): f = 0 stops at cost 3 (one
 uncovered orbit) after 6·10⁷ evaluations, random S at cost 2 after 6.6·10⁷ (2 seeds each, 600 s). With m = 2 the
 orbit space has only (N/3)²/2 ≈ 1.3·10⁷ points, fewer than the evaluations spent: Δ = 6 is at the orbit method's
-first-moment ceiling there.
+first-moment ceiling there. `RANDORB=2·10⁷` (more samples than points, so ≈ 78 % of the space is seen) gives minimum
+cost 3 on PSL(2,9) × Z43: there is very probably no orbit-symmetric solution for this α at all. Other (6,8) groups
+just above our order: <!-- D6D8-RANDORB -->
+
+**Cells nobody holds, screened and dropped.** (7,7) (table 23,436, N ≥ 11,719, μ ≥ 99 at the table) and (9,7)
+(table 117,648, N ≥ 58,825, μ ≥ 361): random symmetric S have minimum cost 78 at μ = 121 (SL(2,23)) and 634 at
+μ = 410 (PSL(2,11) × Z91, k = 3, f = 0). Both tables lie above the first-moment ceiling (mu_plan.py ratios 1.07 and
+1.22), and the screens agree. (10,8) with k = 5, f = 0 (Δ = 5·2): in the order window 588,241–600,000 every
+candidate group either has a quotient without elements of order 5 (PSL(2,17), PSL(2,13), PSL(2,27), A4 factors), or
+|Fix(α)| ≈ 100 (SL(2,5)² × Z41, e^(−λ/5) ≈ 0.16 each), or a cyclic factor of order 451–1,661 (SL(2,9) × Z821,
+SL(2,11) × Z451; random S on those already cost ~300). k = 3 needs μ/3 ≈ 21 there, beyond the wall. Not attempted
+further.
