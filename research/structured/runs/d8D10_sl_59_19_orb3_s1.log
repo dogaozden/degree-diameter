@@ -1,0 +1,27 @@
+group sl 59 x Z_19, N=3901080, identity 65018, H order 60, rows 65018, threads 1, setup 0.28s
+wide rows: HW order 228, rows 17110, setup 0.47s
+alpha: conj by mat(5,36,27,53) (index 19497), z -> 7 z on Z_19
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 59 (+e); mu = 22.39, mu/k = 7.46, fixed-point misses ~ 1.07
+start cost=127
+t=30 steps=553 evals=4425 cost=9 best=4 T=0.53
+t=60 steps=1174 evals=9393 cost=4 best=4 T=0.19
+t=90 steps=1734 evals=13873 cost=4 best=4 T=0.15
+t=120 steps=2330 evals=18641 cost=4 best=4 T=0.15
+t=150 steps=2870 evals=22961 cost=4 best=4 T=0.15
+t=180 steps=3456 evals=27649 cost=6 best=4 T=0.90
+t=210 steps=4091 evals=32729 cost=3 best=3 T=0.32
+t=240 steps=4692 evals=37537 cost=3 best=3 T=0.15
+t=270 steps=5226 evals=41809 cost=3 best=3 T=0.15
+t=300 steps=5834 evals=46673 cost=3 best=3 T=0.15
+t=330 steps=6438 evals=51505 cost=3 best=3 T=0.15
+t=360 steps=7036 evals=56289 cost=18 best=3 T=0.87
+t=390 steps=7590 evals=60721 cost=3 best=3 T=0.31
+t=420 steps=8155 evals=65241 cost=3 best=3 T=0.15
+t=450 steps=8713 evals=69705 cost=3 best=3 T=0.15
+t=481 steps=9251 evals=74009 cost=3 best=3 T=0.15
+RESULT d=8 D=10 group=sl 59 x Z_19 N=3901080 best=0 evals=74489 time=483.9 orbit k=3 m=2 f=2 fix=59
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outF/d8D10_sl_59_19_orb3_s1.txt
+n = 7802160 edges = 31208640 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 838e0d59cdad51323d3d2b24bfe9f53e62fb4bad15b96f88b6a3adea947179b1
+VALID d=8 D=10 group=sl 59 x Z_19 N=3901080 vertices=7802160
