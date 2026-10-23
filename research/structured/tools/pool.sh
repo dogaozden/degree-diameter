@@ -4,6 +4,7 @@
 #   DIR/<name>.jobs  an orbq.sh job file: run as  orbq.sh DIR/<name>.jobs DIR/<name>/   (one slot)
 #   DIR/<name>.cmd   any shell command line (one slot), output in DIR/<name>.out
 # Files are started in name order (prefix them 10-, 20-, ... to order them); new files can be added at any time.
+# A file is started only while fewer than P search processes (haar_sym, haar_fast, anyone's) run on the machine.
 # A started file gets DIR/<name>.started; DIR/P (if present) overrides P on the fly; touch DIR/STOP to stop the
 # pool after the running files finish.
 DIR=$1; P0=${2:-4}; HERE=$(cd "$(dirname "$0")" && pwd)
@@ -13,14 +14,14 @@ while [ ! -e "$DIR/STOP" ] || [ ${#pid[@]} -gt 0 ]; do
   P=$P0; [ -s "$DIR/P" ] && P=$(cat "$DIR/P")
   if [ ! -e "$DIR/STOP" ]; then
     for f in $(ls "$DIR"/*.jobs "$DIR"/*.cmd 2>/dev/null | sort); do
-      [ ${#pid[@]} -ge "$P" ] && break
+      [ "$(pgrep -c -x 'haar_sym|haar_fast')" -ge "$P" ] && break
       n=$(basename "$f"); [ -e "$DIR/$n.started" ] && continue
       touch "$DIR/$n.started"; echo "$(date +%T) start $n"
       case "$f" in
         *.jobs) mkdir -p "$DIR/${n%.jobs}"; "$HERE/orbq.sh" "$f" "$DIR/${n%.jobs}" > "$DIR/${n%.jobs}/queue.log" 2>&1 & ;;
         *.cmd)  bash "$f" > "$DIR/${n%.cmd}.out" 2>&1 & ;;
       esac
-      pid[$n]=$!
+      pid[$n]=$!; sleep 5
     done
   fi
   sleep 15
