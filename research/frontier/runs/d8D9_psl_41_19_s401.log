@@ -2,3 +2,21 @@ group psl 41 x Z_19, N=654360, identity 15580, H order 57, rows 11480, threads 1
 start cost=92
 t=30 steps=2992 evals=23937 cost=20 best=20 T=0.53
 t=60 steps=5928 evals=47425 cost=20 best=20 T=0.19
+t=90 steps=8869 evals=70953 cost=20 best=20 T=0.15
+t=120 steps=11817 evals=94537 cost=20 best=20 T=0.15
+t=150 steps=14795 evals=118361 cost=20 best=20 T=0.15
+t=180 steps=17770 evals=142161 cost=20 best=20 T=1.25
+t=210 steps=20748 evals=165985 cost=20 best=20 T=0.44
+t=240 steps=23772 evals=190177 cost=20 best=20 T=0.16
+t=270 steps=26745 evals=213961 cost=20 best=20 T=0.15
+t=300 steps=29698 evals=237585 cost=20 best=20 T=0.15
+t=330 steps=32673 evals=261385 cost=20 best=20 T=1.25
+t=360 steps=35657 evals=285257 cost=20 best=20 T=0.44
+t=390 steps=38616 evals=308929 cost=20 best=20 T=0.16
+t=420 steps=41558 evals=332465 cost=20 best=20 T=0.15
+t=450 steps=44521 evals=356169 cost=20 best=20 T=0.15
+t=480 steps=47444 evals=379553 cost=20 best=20 T=1.25
+t=510 steps=50356 evals=402849 cost=14 best=14 T=0.44
+t=540 steps=53141 evals=425129 cost=14 best=14 T=0.16
+t=570 steps=56069 evals=448553 cost=14 best=14 T=0.15
+RESULT d=8 D=9 group=psl 41 x Z_19 N=654360 best=14 evals=471633 time=600.0
