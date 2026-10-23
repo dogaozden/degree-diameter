@@ -1,3 +1,42 @@
 group sl 109 x Z_3, N=3884760, identity 35316, H order 55, rows 70632, threads 1, setup 0.26s
 start cost=36
 t=30 steps=173 evals=1385 cost=7 best=7 T=0.53
+t=60 steps=344 evals=2753 cost=7 best=7 T=0.19
+t=90 steps=529 evals=4233 cost=7 best=7 T=0.15
+t=120 steps=710 evals=5681 cost=7 best=7 T=0.15
+t=150 steps=909 evals=7273 cost=7 best=7 T=0.15
+t=181 steps=1087 evals=8697 cost=6 best=6 T=0.88
+t=211 steps=1272 evals=10177 cost=6 best=6 T=0.31
+t=241 steps=1460 evals=11681 cost=6 best=6 T=0.15
+t=271 steps=1652 evals=13217 cost=6 best=6 T=0.15
+t=301 steps=1849 evals=14793 cost=6 best=6 T=0.15
+t=331 steps=2027 evals=16217 cost=6 best=6 T=0.99
+t=361 steps=2216 evals=17729 cost=6 best=6 T=0.35
+t=391 steps=2385 evals=19081 cost=6 best=6 T=0.15
+t=421 steps=2566 evals=20529 cost=6 best=6 T=0.15
+t=451 steps=2746 evals=21969 cost=6 best=6 T=0.15
+t=481 steps=2922 evals=23377 cost=11 best=6 T=0.98
+t=512 steps=3103 evals=24825 cost=10 best=6 T=0.34
+t=542 steps=3279 evals=26233 cost=9 best=6 T=0.15
+t=572 steps=3457 evals=27657 cost=9 best=6 T=0.15
+t=602 steps=3635 evals=29081 cost=6 best=6 T=0.15
+t=632 steps=3819 evals=30553 cost=6 best=6 T=0.98
+t=662 steps=3997 evals=31977 cost=6 best=6 T=0.35
+t=692 steps=4185 evals=33481 cost=6 best=6 T=0.15
+t=722 steps=4366 evals=34929 cost=6 best=6 T=0.15
+t=752 steps=4542 evals=36337 cost=6 best=6 T=0.15
+t=782 steps=4719 evals=37753 cost=5 best=5 T=0.15
+t=812 steps=4890 evals=39121 cost=5 best=5 T=0.15
+t=842 steps=5067 evals=40537 cost=5 best=5 T=0.15
+t=872 steps=5248 evals=41985 cost=5 best=5 T=0.15
+t=902 steps=5420 evals=43361 cost=5 best=5 T=0.15
+t=932 steps=5581 evals=44649 cost=5 best=5 T=0.94
+t=962 steps=5749 evals=45993 cost=5 best=5 T=0.33
+t=992 steps=5923 evals=47385 cost=5 best=5 T=0.15
+t=1023 steps=6081 evals=48649 cost=5 best=5 T=0.15
+t=1053 steps=6256 evals=50049 cost=5 best=5 T=0.15
+t=1083 steps=6421 evals=51369 cost=5 best=5 T=0.93
+t=1113 steps=6579 evals=52633 cost=5 best=5 T=0.33
+t=1143 steps=6738 evals=53905 cost=5 best=5 T=0.15
+t=1173 steps=6890 evals=55121 cost=5 best=5 T=0.15
+RESULT d=8 D=10 group=sl 109 x Z_3 N=3884760 best=5 evals=56337 time=1200.2
