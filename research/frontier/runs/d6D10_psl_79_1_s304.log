@@ -1,2 +1,12 @@
 group psl 79 x Z_1, N=246480, identity 3081, H order 40, rows 6162, threads 1, setup 0.01s
 start cost=24
+t=30 steps=8316 evals=66529 cost=3 best=3 T=0.53
+t=60 steps=17064 evals=136513 cost=3 best=3 T=0.19
+t=90 steps=25501 evals=204009 cost=2 best=2 T=0.15
+t=120 steps=34062 evals=272497 cost=2 best=2 T=0.15
+t=150 steps=42591 evals=340729 cost=2 best=2 T=0.15
+t=180 steps=51457 evals=411657 cost=2 best=2 T=0.15
+t=210 steps=59927 evals=479417 cost=2 best=2 T=0.15
+t=240 steps=68672 evals=549377 cost=6 best=2 T=1.33
+t=270 steps=77357 evals=618857 cost=4 best=2 T=0.47
+RESULT d=6 D=10 group=psl 79 x Z_1 N=246480 best=2 evals=687553 time=300.0
