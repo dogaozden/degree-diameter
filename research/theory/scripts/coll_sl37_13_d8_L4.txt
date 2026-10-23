@@ -1,0 +1,24 @@
+group sl(2,37^1) x Z_13, N = 658008, d = 8, words of length <= 4 with parity 0, 150 samples x 2 sides
+mode         |Fix|-1    words      p10   median     mean      p90
+rand               0     2801    0.00%    0.14%    0.37%    0.93%
+conj              35     2801    0.00%    0.86%    1.96%    4.50%
+
+rand: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.013  A: r2 e r7 r2 = r3 e r7 r3
+    0.013  A: r2 r7 e r2 = r3 r7 e r3
+    0.013  A: e r2 r3 e = r7 r2 r3 r7
+    0.013  A: e r3 r2 e = r7 r3 r2 r7
+    0.013  B: e r7 r2 r3 = r2 r3 e r7
+    0.013  B: e r7 r3 r2 = r3 r2 e r7
+    0.013  B: r2 r3 r7 e = r7 e r2 r3
+    0.013  B: r3 r2 r7 e = r7 e r3 r2
+
+conj: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.640  A: e a0 b0 e = F2 a0 b0 F2
+    0.640  B: e F2 a0 b0 = a0 b0 e F2
+    0.600  B: e a0 e b0 = a2 e a1 b0
+    0.600  B: a0 e b0 e = a0 b1 e b2
+    0.600  B: F2 a0 F2 b0 = a2 F2 a1 b0
+    0.600  B: a0 F2 b0 F2 = a0 b1 F2 b2
+    0.600  A: e F2 a0 b0 = F2 e a0 b0
+    0.600  A: e a0 F2 b0 = F2 a0 e b0
