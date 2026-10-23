@@ -90,3 +90,7 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 00:42 PT (harvest): (15,8) 16,483,200 (was 14,172,480), sl 101 n 8; master.
 - Oct 23 00:42 PT (harvest): (15,9) 190,887,072 (was 168,016,334), sl 457 n 1; master.
 - Oct 23 00:42 PT (harvest): (16,9) 316,679,760 (was 288,939,118), sl 541 n 1; master.
+
+- Oct 23 02:18 PT (harvest): (6,7) 8,370 (was 8,310), meta 279 15 7 n 1; master.
+- Oct 23 02:18 PT (harvest): (13,10) 636,550,992 (was 617,330,936), sl 307 n 11; master.
+- Oct 23 02:18 PT (harvest): (14,10) 1,217,130,096 (was 1,213,477,190), sl 443 n 7; master.

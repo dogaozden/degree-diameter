@@ -220,3 +220,77 @@ BFS from (e,B):
   from (e,B) level 9: new=49875850  reached=316679760 / 316679760
   done in 89.24s, eccB=9, reached 316679760 / 316679760
 VALID d=16 D=9 vertices=316679760 eccA=9 eccB=9
+== d6D7_meta_279_15_7_1_s1 (origin/master, 02:18 PT)
+ecc from A = 7 unreached 0
+ecc from B = 7 unreached 0
+n = 8370 edges = 25110 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = b8b2e7807d0c3c3a01109bfbbf8dc28ae0d83bbf8e88a168e83be052303a8f00
+VALID d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 vertices=8370
+== d13D10_sl_307_11_s2 (origin/master, 02:18 PT)
+from (e,A): reached A 318275496/318275496, B 318275496/318275496 within 10, ecc 10
+from (e,B): reached A 318275496/318275496, B 318275496/318275496 within 10, ecc 10
+VALID d=13 D=10 group=sl 307 x Z_11 N=318275496 vertices=636550992 (distinct generators, 13-regular simple)
+
+file=/tmp/tmprlg5086r/sol.txt d=13 D=10 p=307 n=11 |G|=318275496 vertices=636550992
+selfcheck: SL(2,307) index is a bijection onto det-1 matrices (|SL|=28934136), fastmod ok (0.14s)
+generators: 13 read, all in SL(2,307) x Z_11, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=13  reached=14 / 636550992
+  from (e,A) level 2: new=156  reached=170 / 636550992
+  from (e,A) level 3: new=1872  reached=2042 / 636550992
+  from (e,A) level 4: new=22460  reached=24502 / 636550992
+  from (e,A) level 5: new=269352  reached=293854 / 636550992
+  from (e,A) level 6: new=3216410  reached=3510264 / 636550992
+  from (e,A) level 7: new=36487467  reached=39997731 / 636550992
+  from (e,A) level 8: new=242010509  reached=282008240 / 636550992
+  from (e,A) level 9: new=281516792  reached=563525032 / 636550992
+  from (e,A) level 10: new=73025960  reached=636550992 / 636550992
+  done in 92.08s, eccA=10, reached 636550992 / 636550992
+BFS from (e,B):
+  from (e,B) level 1: new=13  reached=14 / 636550992
+  from (e,B) level 2: new=156  reached=170 / 636550992
+  from (e,B) level 3: new=1872  reached=2042 / 636550992
+  from (e,B) level 4: new=22460  reached=24502 / 636550992
+  from (e,B) level 5: new=269352  reached=293854 / 636550992
+  from (e,B) level 6: new=3216380  reached=3510234 / 636550992
+  from (e,B) level 7: new=36487467  reached=39997701 / 636550992
+  from (e,B) level 8: new=242013745  reached=282011446 / 636550992
+  from (e,B) level 9: new=281516792  reached=563528238 / 636550992
+  from (e,B) level 10: new=73022754  reached=636550992 / 636550992
+  done in 59.34s, eccB=10, reached 636550992 / 636550992
+VALID d=13 D=10 vertices=636550992 eccA=10 eccB=10
+== d14D10_sl_443_7_s1 (origin/master, 02:18 PT)
+from (e,A): reached A 608565048/608565048, B 608565048/608565048 within 10, ecc 10
+from (e,B): reached A 608565048/608565048, B 608565048/608565048 within 10, ecc 10
+VALID d=14 D=10 group=sl 443 x Z_7 N=608565048 vertices=1217130096 (distinct generators, 14-regular simple)
+
+file=/tmp/tmp2c2k58lr/sol.txt d=14 D=10 p=443 n=7 |G|=608565048 vertices=1217130096
+selfcheck: SL(2,443) index is a bijection onto det-1 matrices (|SL|=86937864), fastmod ok (0.23s)
+generators: 14 read, all in SL(2,443) x Z_7, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=14  reached=15 / 1217130096
+  from (e,A) level 2: new=182  reached=197 / 1217130096
+  from (e,A) level 3: new=2366  reached=2563 / 1217130096
+  from (e,A) level 4: new=30758  reached=33321 / 1217130096
+  from (e,A) level 5: new=399744  reached=433065 / 1217130096
+  from (e,A) level 6: new=5176006  reached=5609071 / 1217130096
+  from (e,A) level 7: new=63919837  reached=69528908 / 1217130096
+  from (e,A) level 8: new=460922673  reached=530451581 / 1217130096
+  from (e,A) level 9: new=544243087  reached=1074694668 / 1217130096
+  from (e,A) level 10: new=142435428  reached=1217130096 / 1217130096
+  done in 136.01s, eccA=10, reached 1217130096 / 1217130096
+BFS from (e,B):
+  from (e,B) level 1: new=14  reached=15 / 1217130096
+  from (e,B) level 2: new=182  reached=197 / 1217130096
+  from (e,B) level 3: new=2366  reached=2563 / 1217130096
+  from (e,B) level 4: new=30758  reached=33321 / 1217130096
+  from (e,B) level 5: new=399744  reached=433065 / 1217130096
+  from (e,B) level 6: new=5176012  reached=5609077 / 1217130096
+  from (e,B) level 7: new=63919837  reached=69528914 / 1217130096
+  from (e,B) level 8: new=460931701  reached=530460615 / 1217130096
+  from (e,B) level 9: new=544243087  reached=1074703702 / 1217130096
+  from (e,B) level 10: new=142426394  reached=1217130096 / 1217130096
+  done in 135.50s, eccB=10, reached 1217130096 / 1217130096
+VALID d=14 D=10 vertices=1217130096 eccA=10 eccB=10
