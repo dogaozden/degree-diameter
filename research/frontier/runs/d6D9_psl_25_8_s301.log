@@ -1,12 +1,12 @@
 group psl 25 poly x^2+2 x Z_8, N=62400, identity 2400, H order 52, rows 1200, threads 1, setup 0.00s
 start cost=167
-t=30 steps=41991 evals=335929 cost=17 best=17 T=0.53
-t=60 steps=84665 evals=677321 cost=17 best=17 T=0.19
-t=90 steps=128037 evals=1024297 cost=17 best=17 T=0.15
-t=120 steps=171592 evals=1372737 cost=17 best=17 T=0.15
-t=150 steps=214924 evals=1719393 cost=17 best=17 T=0.15
-t=180 steps=259128 evals=2073025 cost=17 best=17 T=0.76
-t=210 steps=302759 evals=2422073 cost=17 best=17 T=0.27
-t=240 steps=346232 evals=2769857 cost=17 best=17 T=0.15
-t=270 steps=389540 evals=3116321 cost=17 best=17 T=0.15
-RESULT d=6 D=9 group=psl 25 poly x^2+2 x Z_8 N=62400 best=17 evals=3462681 time=300.0
+t=30 steps=35413 evals=283305 cost=17 best=17 T=0.53
+t=60 steps=71158 evals=569265 cost=17 best=17 T=0.19
+t=90 steps=106506 evals=852049 cost=17 best=17 T=0.15
+t=120 steps=141575 evals=1132601 cost=17 best=17 T=0.15
+t=150 steps=175886 evals=1407089 cost=17 best=17 T=0.15
+t=180 steps=212534 evals=1700273 cost=17 best=17 T=0.82
+t=210 steps=248230 evals=1985841 cost=17 best=17 T=0.29
+t=240 steps=284106 evals=2272849 cost=17 best=17 T=0.15
+t=270 steps=318517 evals=2548137 cost=17 best=17 T=0.15
+RESULT d=6 D=9 group=psl 25 poly x^2+2 x Z_8 N=62400 best=17 evals=2836649 time=300.0

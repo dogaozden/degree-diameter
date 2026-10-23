@@ -1,3 +1,12 @@
 group psl 19 x Z_18, N=61560, identity 3078, H order 57, rows 1080, threads 1, setup 0.00s
 start cost=219
-RESULT d=6 D=9 group=psl 19 x Z_18 N=61560 best=13 evals=298721 time=22.7
+t=30 steps=39525 evals=316201 cost=15 best=15 T=0.53
+t=60 steps=78622 evals=628977 cost=11 best=11 T=0.19
+t=90 steps=118000 evals=944001 cost=11 best=11 T=0.15
+t=120 steps=157798 evals=1262385 cost=11 best=11 T=0.15
+t=150 steps=197244 evals=1577953 cost=11 best=11 T=0.15
+t=180 steps=235652 evals=1885217 cost=11 best=11 T=0.15
+t=210 steps=273228 evals=2185825 cost=11 best=11 T=0.99
+t=240 steps=310937 evals=2487497 cost=11 best=11 T=0.35
+t=270 steps=349383 evals=2795065 cost=11 best=11 T=0.15
+RESULT d=6 D=9 group=psl 19 x Z_18 N=61560 best=11 evals=3106929 time=299.9

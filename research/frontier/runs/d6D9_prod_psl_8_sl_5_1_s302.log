@@ -1,12 +1,12 @@
 group prod psl 8 poly x^3+x+1 sl 5 x Z_1, N=60480, identity 6740, H order 45, rows 1344, threads 1, setup 0.00s
 start cost=90
-t=30 steps=33978 evals=271825 cost=6 best=6 T=0.53
-t=60 steps=67556 evals=540449 cost=2 best=2 T=0.19
-t=90 steps=101083 evals=808665 cost=2 best=2 T=0.15
-t=120 steps=134383 evals=1075065 cost=2 best=2 T=0.15
-t=150 steps=167596 evals=1340769 cost=2 best=2 T=0.15
-t=180 steps=200970 evals=1607761 cost=2 best=2 T=0.15
-t=210 steps=234521 evals=1876169 cost=2 best=2 T=1.35
-t=240 steps=267895 evals=2143161 cost=6 best=2 T=0.48
-t=270 steps=301369 evals=2410953 cost=2 best=2 T=0.17
-RESULT d=6 D=9 group=prod psl 8 poly x^3+x+1 sl 5 x Z_1 N=60480 best=2 evals=2671841 time=300.0
+t=30 steps=27096 evals=216769 cost=4 best=4 T=0.53
+t=60 steps=54026 evals=432209 cost=4 best=4 T=0.19
+t=90 steps=81292 evals=650337 cost=4 best=4 T=0.15
+t=120 steps=108198 evals=865585 cost=4 best=4 T=0.15
+t=150 steps=135328 evals=1082625 cost=4 best=4 T=0.15
+t=180 steps=163057 evals=1304457 cost=4 best=4 T=0.67
+t=210 steps=190353 evals=1522825 cost=4 best=4 T=0.24
+t=240 steps=218035 evals=1744281 cost=4 best=4 T=0.15
+t=270 steps=245039 evals=1960313 cost=4 best=4 T=0.15
+RESULT d=6 D=9 group=prod psl 8 poly x^3+x+1 sl 5 x Z_1 N=60480 best=4 evals=2182577 time=300.0

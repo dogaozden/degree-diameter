@@ -1,12 +1,12 @@
 group psl 16 poly x^4+x+1 x Z_15, N=61200, identity 3600, H order 51, rows 1200, threads 1, setup 0.00s
 start cost=100
-t=30 steps=38084 evals=304673 cost=12 best=9 T=0.53
-t=60 steps=76181 evals=609449 cost=12 best=9 T=0.19
-t=90 steps=114290 evals=914321 cost=12 best=9 T=0.15
-t=120 steps=152280 evals=1218241 cost=12 best=9 T=0.15
-t=150 steps=190790 evals=1526321 cost=12 best=9 T=0.15
-t=180 steps=228606 evals=1828849 cost=10 best=9 T=0.54
-t=210 steps=266671 evals=2133369 cost=9 best=9 T=0.19
-t=240 steps=304835 evals=2438681 cost=9 best=9 T=0.15
-t=270 steps=343327 evals=2746617 cost=9 best=9 T=0.15
-RESULT d=6 D=9 group=psl 16 poly x^4+x+1 x Z_15 N=61200 best=9 evals=3052065 time=300.0
+t=30 steps=36476 evals=291809 cost=12 best=9 T=0.53
+t=60 steps=71977 evals=575817 cost=12 best=9 T=0.19
+t=90 steps=108462 evals=867697 cost=12 best=9 T=0.15
+t=120 steps=145107 evals=1160857 cost=12 best=9 T=0.15
+t=150 steps=180659 evals=1445273 cost=12 best=9 T=0.15
+t=180 steps=217147 evals=1737177 cost=10 best=9 T=0.54
+t=210 steps=253182 evals=2025457 cost=9 best=9 T=0.19
+t=240 steps=289423 evals=2315385 cost=9 best=9 T=0.15
+t=270 steps=325322 evals=2602577 cost=9 best=9 T=0.15
+RESULT d=6 D=9 group=psl 16 poly x^4+x+1 x Z_15 N=61200 best=9 evals=2889937 time=300.0
