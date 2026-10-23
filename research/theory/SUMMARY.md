@@ -73,3 +73,19 @@ D growing), the same statement is a well-supported conjecture that nobody can cu
 **Caveats.** The literature check was done by web search this session; anything marked [B] or [M] in
 LITERATURE.md was not read in full. The Bollobás–Fernandez de la Vega constant in particular needs checking against
 the original. Lemma 2.2 uses Yadin's published form of Suen's inequality, not Janson's.
+
+## Second session: beyond random S (BEYOND_RANDOM.md)
+
+- **Why the orbit search wins.** Orbit-symmetric S (order-3 automorphism) do not cover better: they have the same
+  words, slightly fewer distinct values and the same mean number of misses. But the misses come in clumps of 3, so
+  P(valid) ≈ e^{−μ_A} with μ_A ≈ μ/3 + a small fixed-point term.
+- **The search sees μ_A exactly as it sees μ.** The random-S effort law fits the orbit runs with no free
+  parameter.
+- **Gain per cell.** The gain is ≈ [ln 3 + ln(1 − Φ/μ)]/(1+λ) at equal effort. Corrected for budgets, it predicts
+  the records to 2.3 % rms.
+- **Two ceilings.** The small cells are at the orbit space's first-moment ceiling. The big cells have +5–10 % left
+  for more compute.
+- **Avoid involutions in the symmetry group.** Proved: |Fix|·|Anti| ≥ N, so there are same-length coincidences.
+- **Frobenius lost only because Fix = SL(2,2) on SL(2,8).** On SL(2,64) it equals conjugation.
+- **Concrete suggestions** are ranked in §4.5 (f = 0 for Δ ≡ 0 mod 3, k = 5 at (11,9), (10,10) and (11,8), longer
+  runs on big cells).
