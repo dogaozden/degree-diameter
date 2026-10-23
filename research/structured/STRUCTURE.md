@@ -171,7 +171,7 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (12,9) | 30,001,152 | 32,772,096 | **33,948,672** (+3.6 %) | sl 257 × Z1; 3, 4, 0 | 15.7 | 4.1e+03 | d12D9_sl_257_1_orb3f0_s1.txt |
 | (13,9) | 50,990,610 | 62,156,160 | **63,872,400** (+2.8 %) | sl 101 × Z31; 3, 4, 1 | 13.3 | 2.8e+02 | d13D9_sl_101_31_orb3_s1.txt |
 | (14,9) | 95,087,738 | 111,482,880 | **116,068,656** (+4.1 %) | sl 67 × Z193; 3, 4, 2 | 14.1 | 3.4e+03 | d14D9_sl_67_193_orb3_s1.txt |
-| (15,9) | 168,016,334 | 190,887,072 | **202,537,440** (+6.1 %) | sl 71 × Z283; 3, 5, 0 | 15.5 | 4.6e+03 | d15D9_sl_71_283_orb3f0_s1.txt |
+| (15,9) | 168,016,334 | 190,887,072 | **205,083,600** (+7.4 %) | sl 149 × Z31; 3, 5, 0 | 19.0 | 2.2e+03 | d15D9_sl_149_31_orb3f0_s1.txt |
 | (16,9) | 288,939,118 | 316,679,760 | **324,164,400** (+2.4 %) | sl 149 × Z49; 3, 5, 1 | 7.1 | 9 | d16D9_sl_149_49_orb3_s1.txt |
 | (6,10) | 452,032 | 506,160 | **524,160** (+3.6 %) | prod sl 5 psl 7 × Z13; 3, 2, 0 | 23.6 | 7.4e+04 | d6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19; 3, 2, 1 | 22.2 | 2.3e+04 | d7D10_psl_49_19_orb3_s1.txt |
@@ -351,7 +351,8 @@ uncovered orbit) after 6·10⁷ evaluations, random S at cost 2 after 6.6·10⁷
 orbit space has only (N/3)²/2 ≈ 1.3·10⁷ points, fewer than the evaluations spent: Δ = 6 is at the orbit method's
 first-moment ceiling there. `RANDORB=2·10⁷` (more samples than points, so ≈ 78 % of the space is seen) gives minimum
 cost 3 on PSL(2,9) × Z43: there is very probably no orbit-symmetric solution for this α at all. Other (6,8) groups
-just above our order: <!-- D6D8-RANDORB -->
+just above our order: SL(2,25) (N = 15,600, μ = 29.8) minimum 2, SL(2,8) × Z31 and PGL(2,8) × Z31 (N = 15,624, μ = 30.1) minimum 3,
+each from 2·10⁷ samples (logs runs/d6D8_*_rand.log). (6,8) stays at 30,576 (random-S annealing).
 
 **Cells nobody holds, screened and dropped.** (7,7) (table 23,436, N ≥ 11,719, μ ≥ 99 at the table) and (9,7)
 (table 117,648, N ≥ 58,825, μ ≥ 361): random symmetric S have minimum cost 78 at μ = 121 (SL(2,23)) and 634 at
