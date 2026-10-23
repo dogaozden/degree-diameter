@@ -2,3 +2,11 @@ group sl 19 x Z_36, N=246240, identity 12312, H order 60, rows 4104, threads 1, 
 start cost=21
 t=30 steps=10296 evals=82369 cost=5 best=1 T=0.53
 t=60 steps=20647 evals=165177 cost=2 best=1 T=0.19
+t=90 steps=31055 evals=248441 cost=2 best=1 T=0.15
+t=120 steps=41830 evals=334641 cost=2 best=1 T=0.15
+t=150 steps=52657 evals=421257 cost=2 best=1 T=0.15
+t=180 steps=62898 evals=503185 cost=7 best=1 T=0.56
+t=210 steps=73349 evals=586793 cost=3 best=1 T=0.20
+t=240 steps=84164 evals=673313 cost=2 best=1 T=0.15
+t=270 steps=95076 evals=760609 cost=2 best=1 T=0.15
+RESULT d=9 D=8 group=sl 19 x Z_36 N=246240 best=1 evals=846241 time=300.0
