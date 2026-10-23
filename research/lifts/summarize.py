@@ -18,7 +18,7 @@ def main():
     cells = defaultdict(list)
     for fn in sorted(glob.glob(os.path.join(HERE, "runs", "*.tsv"))):
         tag = os.path.basename(fn)[:-4]
-        if tag.endswith(".screen") or not any(tag.startswith(p) for p in pref):
+        if tag.endswith(".screen") or tag.startswith(("ex_", "hc_")) or not any(tag.startswith(p) for p in pref):
             continue
         m = re.search(r"d(\d+)D(\d+)", tag)
         if not m:
