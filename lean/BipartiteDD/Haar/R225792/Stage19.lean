@@ -3,8 +3,9 @@ import BipartiteDD.Haar.R225792.Check
 
 namespace BipartiteDD.Haar.R225792
 
-/-- Certificates of stage 19 (PSL indices 114 .. 119): element `t` is `(i, j, z) = (114 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
-def cert19_00 : List ℕ := [
+/-! Certificates of stage 19 (PSL indices 114 .. 119): element `t` is `(i, j, z) = (114 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
+
+def cert19_c00 : List ℕ := [
   23122976068628625544,
   64188642973346175624,
   67439128403967114248,
@@ -259,7 +260,7 @@ def cert19_00 : List ℕ := [
   63477071517803744256
 ]
 
-def cert19_01 : List ℕ := [
+def cert19_c01 : List ℕ := [
   134012469766229761216,
   56523205691367164480,
   50644015425569730304,
@@ -514,7 +515,7 @@ def cert19_01 : List ℕ := [
   14355278573076888000
 ]
 
-def cert19_02 : List ℕ := [
+def cert19_c02 : List ℕ := [
   4644354832474368000,
   60512002802336316608,
   209550492995224789184,
@@ -769,7 +770,7 @@ def cert19_02 : List ℕ := [
   67829254209897320704
 ]
 
-def cert19_03 : List ℕ := [
+def cert19_c03 : List ℕ := [
   63960365896428239936,
   101059233542140993160,
   6249331272157328384,
@@ -1024,7 +1025,7 @@ def cert19_03 : List ℕ := [
   138729401199663759552
 ]
 
-def cert19_04 : List ℕ := [
+def cert19_c04 : List ℕ := [
   128044171383229840448,
   17326258285617356888,
   219801142355966495432,
@@ -1279,7 +1280,7 @@ def cert19_04 : List ℕ := [
   53677201345246109584
 ]
 
-def cert19_05 : List ℕ := [
+def cert19_c05 : List ℕ := [
   53331267279243561552,
   5821769151519233536,
   143410754628462981576,
@@ -1534,7 +1535,7 @@ def cert19_05 : List ℕ := [
   80857424468069753288
 ]
 
-def cert19_06 : List ℕ := [
+def cert19_c06 : List ℕ := [
   23991329684280432776,
   71537419698554628872,
   59819290242162749760,
@@ -1789,7 +1790,7 @@ def cert19_06 : List ℕ := [
   1951191981740140544
 ]
 
-def cert19_07 : List ℕ := [
+def cert19_c07 : List ℕ := [
   78477345179312559440,
   14671094701689605632,
   140814133537216991616,
@@ -2044,7 +2045,7 @@ def cert19_07 : List ℕ := [
   121518529807843111744
 ]
 
-def cert19_08 : List ℕ := [
+def cert19_c08 : List ℕ := [
   177643042085008941696,
   196774147215106983296,
   23460184377071714440,
@@ -2299,7 +2300,7 @@ def cert19_08 : List ℕ := [
   20468093960761203904
 ]
 
-def cert19_09 : List ℕ := [
+def cert19_c09 : List ℕ := [
   10246291188571468176,
   20220113560311895296,
   28558278602864265536,
@@ -2554,7 +2555,7 @@ def cert19_09 : List ℕ := [
   9579192949005676096
 ]
 
-def cert19_10 : List ℕ := [
+def cert19_c10 : List ℕ := [
   78721817467384968256,
   146066851673197141256,
   56209922847219520896,
@@ -2809,7 +2810,7 @@ def cert19_10 : List ℕ := [
   102500275259135812864
 ]
 
-def cert19_11 : List ℕ := [
+def cert19_c11 : List ℕ := [
   64240716042675404288,
   107080815336657955144,
   13064429405709911560,
@@ -3064,7 +3065,7 @@ def cert19_11 : List ℕ := [
   18212907844543423104
 ]
 
-def cert19_12 : List ℕ := [
+def cert19_c12 : List ℕ := [
   23253299479993266560,
   23991611160326336192,
   216471826521942797448,
@@ -3319,7 +3320,7 @@ def cert19_12 : List ℕ := [
   2373687533470081536
 ]
 
-def cert19_13 : List ℕ := [
+def cert19_c13 : List ℕ := [
   94103854275535243840,
   28409659248227127744,
   143913117417426809920,
@@ -3574,7 +3575,7 @@ def cert19_13 : List ℕ := [
   60194779293478314048
 ]
 
-def cert19_14 : List ℕ := [
+def cert19_c14 : List ℕ := [
   30775746928331663296,
   129759166156957295040,
   50515662346565254088,
@@ -3829,7 +3830,7 @@ def cert19_14 : List ℕ := [
   42738197596507077208
 ]
 
-def cert19_15 : List ℕ := [
+def cert19_c15 : List ℕ := [
   46330676428436568264,
   8586708395118973952,
   47656147150019791048,
@@ -4084,8 +4085,90 @@ def cert19_15 : List ℕ := [
   113672283178407710784
 ]
 
-def cert19 : List ℕ := cert19_00 ++ cert19_01 ++ cert19_02 ++ cert19_03 ++ cert19_04 ++ cert19_05 ++ cert19_06 ++ cert19_07 ++ cert19_08 ++ cert19_09 ++ cert19_10 ++ cert19_11 ++ cert19_12 ++ cert19_13 ++ cert19_14 ++ cert19_15
+def cert19 : List ℕ := cert19_c00 ++ cert19_c01 ++ cert19_c02 ++ cert19_c03 ++ cert19_c04 ++ cert19_c05 ++ cert19_c06 ++ cert19_c07 ++ cert19_c08 ++ cert19_c09 ++ cert19_c10 ++ cert19_c11 ++ cert19_c12 ++ cert19_c13 ++ cert19_c14 ++ cert19_c15
 
-theorem stage19_ok : checkStage 19 cert19 = true := by decide +kernel
+theorem stage19_c00 :
+    checkChunk 19 0 ((cert19.drop (252 * 0)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c01 :
+    checkChunk 19 1 ((cert19.drop (252 * 1)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c02 :
+    checkChunk 19 2 ((cert19.drop (252 * 2)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c03 :
+    checkChunk 19 3 ((cert19.drop (252 * 3)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c04 :
+    checkChunk 19 4 ((cert19.drop (252 * 4)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c05 :
+    checkChunk 19 5 ((cert19.drop (252 * 5)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c06 :
+    checkChunk 19 6 ((cert19.drop (252 * 6)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c07 :
+    checkChunk 19 7 ((cert19.drop (252 * 7)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c08 :
+    checkChunk 19 8 ((cert19.drop (252 * 8)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c09 :
+    checkChunk 19 9 ((cert19.drop (252 * 9)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c10 :
+    checkChunk 19 10 ((cert19.drop (252 * 10)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c11 :
+    checkChunk 19 11 ((cert19.drop (252 * 11)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c12 :
+    checkChunk 19 12 ((cert19.drop (252 * 12)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c13 :
+    checkChunk 19 13 ((cert19.drop (252 * 13)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c14 :
+    checkChunk 19 14 ((cert19.drop (252 * 14)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_c15 :
+    checkChunk 19 15 ((cert19.drop (252 * 15)).take 252) = true := by
+  decide +kernel
+
+theorem stage19_chunks (c : ℕ) (hc : c < 16) :
+    checkChunk 19 c ((cert19.drop (252 * c)).take 252) = true := by
+  interval_cases c
+  · exact stage19_c00
+  · exact stage19_c01
+  · exact stage19_c02
+  · exact stage19_c03
+  · exact stage19_c04
+  · exact stage19_c05
+  · exact stage19_c06
+  · exact stage19_c07
+  · exact stage19_c08
+  · exact stage19_c09
+  · exact stage19_c10
+  · exact stage19_c11
+  · exact stage19_c12
+  · exact stage19_c13
+  · exact stage19_c14
+  · exact stage19_c15
 
 end BipartiteDD.Haar.R225792

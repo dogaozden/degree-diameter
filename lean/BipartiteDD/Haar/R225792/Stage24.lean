@@ -3,8 +3,9 @@ import BipartiteDD.Haar.R225792.Check
 
 namespace BipartiteDD.Haar.R225792
 
-/-- Certificates of stage 24 (PSL indices 144 .. 149): element `t` is `(i, j, z) = (144 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
-def cert24_00 : List ℕ := [
+/-! Certificates of stage 24 (PSL indices 144 .. 149): element `t` is `(i, j, z) = (144 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
+
+def cert24_c00 : List ℕ := [
   80168229783283902984,
   290287539432574407048,
   2560306154920415232,
@@ -259,7 +260,7 @@ def cert24_00 : List ℕ := [
   67085875960644179968
 ]
 
-def cert24_01 : List ℕ := [
+def cert24_c01 : List ℕ := [
   129671512916983872784,
   122783187428209521408,
   142685075111865576192,
@@ -514,7 +515,7 @@ def cert24_01 : List ℕ := [
   23815970104851137984
 ]
 
-def cert24_02 : List ℕ := [
+def cert24_c02 : List ℕ := [
   27892587743550193160,
   13908013128917574848,
   63870856512381978176,
@@ -769,7 +770,7 @@ def cert24_02 : List ℕ := [
   124150283395496234688
 ]
 
-def cert24_03 : List ℕ := [
+def cert24_c03 : List ℕ := [
   15042080136180958720,
   121140774424715334736,
   7175950430248578048,
@@ -1024,7 +1025,7 @@ def cert24_03 : List ℕ := [
   24610576995270288384
 ]
 
-def cert24_04 : List ℕ := [
+def cert24_c04 : List ℕ := [
   65847381338653232768,
   17382272019650196160,
   427410404601740483600,
@@ -1279,7 +1280,7 @@ def cert24_04 : List ℕ := [
   39015676829275154824
 ]
 
-def cert24_05 : List ℕ := [
+def cert24_c05 : List ℕ := [
   16301403985907271232,
   20314689513271822400,
   15286964300076341128,
@@ -1534,7 +1535,7 @@ def cert24_05 : List ℕ := [
   71571478300655028736
 ]
 
-def cert24_06 : List ℕ := [
+def cert24_c06 : List ℕ := [
   19308412632898028352,
   25802909544992256920,
   137898846372498587712,
@@ -1789,7 +1790,7 @@ def cert24_06 : List ℕ := [
   68724348050336360264
 ]
 
-def cert24_07 : List ℕ := [
+def cert24_c07 : List ℕ := [
   106278666804564727624,
   27427026356090430720,
   37272214172778714752,
@@ -2044,7 +2045,7 @@ def cert24_07 : List ℕ := [
   115071562449106888576
 ]
 
-def cert24_08 : List ℕ := [
+def cert24_c08 : List ℕ := [
   66809185003056901120,
   58938833156347367296,
   96982859668598007424,
@@ -2299,7 +2300,7 @@ def cert24_08 : List ℕ := [
   5658513042256498176
 ]
 
-def cert24_09 : List ℕ := [
+def cert24_c09 : List ℕ := [
   63960928848532830720,
   50443885953697593408,
   69024682996160917312,
@@ -2554,7 +2555,7 @@ def cert24_09 : List ℕ := [
   33026710903796929792
 ]
 
-def cert24_10 : List ℕ := [
+def cert24_c10 : List ℕ := [
   135532068213044851472,
   247437359713315811456,
   130085164159317637184,
@@ -2809,7 +2810,7 @@ def cert24_10 : List ℕ := [
   177269759010648350920
 ]
 
-def cert24_11 : List ℕ := [
+def cert24_c11 : List ℕ := [
   18147605400836163392,
   65074166628067502024,
   4766515438370966528,
@@ -3064,7 +3065,7 @@ def cert24_11 : List ℕ := [
   40305681568504053056
 ]
 
-def cert24_12 : List ℕ := [
+def cert24_c12 : List ℕ := [
   62130771568489497936,
   131072172492478933784,
   29539222638687393600,
@@ -3319,7 +3320,7 @@ def cert24_12 : List ℕ := [
   63528018682924731648
 ]
 
-def cert24_13 : List ℕ := [
+def cert24_c13 : List ℕ := [
   37722294377440631808,
   56360512534202577216,
   63623439064041391360,
@@ -3574,7 +3575,7 @@ def cert24_13 : List ℕ := [
   3576716173106169344
 ]
 
-def cert24_14 : List ℕ := [
+def cert24_c14 : List ℕ := [
   111970415770490649152,
   49773972953614358016,
   51858021631173308800,
@@ -3829,7 +3830,7 @@ def cert24_14 : List ℕ := [
   24572859204516075392
 ]
 
-def cert24_15 : List ℕ := [
+def cert24_c15 : List ℕ := [
   117878040286374147016,
   32701606065521784192,
   237763125076782685440,
@@ -4084,8 +4085,90 @@ def cert24_15 : List ℕ := [
   39803246818444452608
 ]
 
-def cert24 : List ℕ := cert24_00 ++ cert24_01 ++ cert24_02 ++ cert24_03 ++ cert24_04 ++ cert24_05 ++ cert24_06 ++ cert24_07 ++ cert24_08 ++ cert24_09 ++ cert24_10 ++ cert24_11 ++ cert24_12 ++ cert24_13 ++ cert24_14 ++ cert24_15
+def cert24 : List ℕ := cert24_c00 ++ cert24_c01 ++ cert24_c02 ++ cert24_c03 ++ cert24_c04 ++ cert24_c05 ++ cert24_c06 ++ cert24_c07 ++ cert24_c08 ++ cert24_c09 ++ cert24_c10 ++ cert24_c11 ++ cert24_c12 ++ cert24_c13 ++ cert24_c14 ++ cert24_c15
 
-theorem stage24_ok : checkStage 24 cert24 = true := by decide +kernel
+theorem stage24_c00 :
+    checkChunk 24 0 ((cert24.drop (252 * 0)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c01 :
+    checkChunk 24 1 ((cert24.drop (252 * 1)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c02 :
+    checkChunk 24 2 ((cert24.drop (252 * 2)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c03 :
+    checkChunk 24 3 ((cert24.drop (252 * 3)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c04 :
+    checkChunk 24 4 ((cert24.drop (252 * 4)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c05 :
+    checkChunk 24 5 ((cert24.drop (252 * 5)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c06 :
+    checkChunk 24 6 ((cert24.drop (252 * 6)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c07 :
+    checkChunk 24 7 ((cert24.drop (252 * 7)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c08 :
+    checkChunk 24 8 ((cert24.drop (252 * 8)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c09 :
+    checkChunk 24 9 ((cert24.drop (252 * 9)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c10 :
+    checkChunk 24 10 ((cert24.drop (252 * 10)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c11 :
+    checkChunk 24 11 ((cert24.drop (252 * 11)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c12 :
+    checkChunk 24 12 ((cert24.drop (252 * 12)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c13 :
+    checkChunk 24 13 ((cert24.drop (252 * 13)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c14 :
+    checkChunk 24 14 ((cert24.drop (252 * 14)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_c15 :
+    checkChunk 24 15 ((cert24.drop (252 * 15)).take 252) = true := by
+  decide +kernel
+
+theorem stage24_chunks (c : ℕ) (hc : c < 16) :
+    checkChunk 24 c ((cert24.drop (252 * c)).take 252) = true := by
+  interval_cases c
+  · exact stage24_c00
+  · exact stage24_c01
+  · exact stage24_c02
+  · exact stage24_c03
+  · exact stage24_c04
+  · exact stage24_c05
+  · exact stage24_c06
+  · exact stage24_c07
+  · exact stage24_c08
+  · exact stage24_c09
+  · exact stage24_c10
+  · exact stage24_c11
+  · exact stage24_c12
+  · exact stage24_c13
+  · exact stage24_c14
+  · exact stage24_c15
 
 end BipartiteDD.Haar.R225792

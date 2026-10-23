@@ -3,8 +3,9 @@ import BipartiteDD.Haar.R225792.Check
 
 namespace BipartiteDD.Haar.R225792
 
-/-- Certificates of stage 27 (PSL indices 162 .. 167): element `t` is `(i, j, z) = (162 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
-def cert27_00 : List ℕ := [
+/-! Certificates of stage 27 (PSL indices 162 .. 167): element `t` is `(i, j, z) = (162 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
+
+def cert27_c00 : List ℕ := [
   163087682967246912088,
   111282233250835088072,
   97599963188540625856,
@@ -259,7 +260,7 @@ def cert27_00 : List ℕ := [
   5087398135887377408
 ]
 
-def cert27_01 : List ℕ := [
+def cert27_c01 : List ℕ := [
   57533704712488547200,
   78812495361710852800,
   67491201473299353792,
@@ -514,7 +515,7 @@ def cert27_01 : List ℕ := [
   78608745558821208768
 ]
 
-def cert27_02 : List ℕ := [
+def cert27_c02 : List ℕ := [
   63694652504796577472,
   142698368258715840776,
   56197819377046271360,
@@ -769,7 +770,7 @@ def cert27_02 : List ℕ := [
   46724742899065706816
 ]
 
-def cert27_03 : List ℕ := [
+def cert27_c03 : List ℕ := [
   144224361156055122376,
   67081653819899167488,
   55156076514317967552,
@@ -1024,7 +1025,7 @@ def cert27_03 : List ℕ := [
   132698720872468941952
 ]
 
-def cert27_04 : List ℕ := [
+def cert27_c04 : List ℕ := [
   47119090845747463360,
   47219296319718653064,
   45329184640921323264,
@@ -1279,7 +1280,7 @@ def cert27_04 : List ℕ := [
   277579597903543427456
 ]
 
-def cert27_05 : List ℕ := [
+def cert27_c05 : List ℕ := [
   140504274672130499016,
   43136486207898496648,
   19147971284141811336,
@@ -1534,7 +1535,7 @@ def cert27_05 : List ℕ := [
   17875136583991683456
 ]
 
-def cert27_06 : List ℕ := [
+def cert27_c06 : List ℕ := [
   129282002066621005136,
   8516339382505725952,
   54503052077266608904,
@@ -1789,7 +1790,7 @@ def cert27_06 : List ℕ := [
   79813901694401182912
 ]
 
-def cert27_07 : List ℕ := [
+def cert27_c07 : List ℕ := [
   70065018478633312960,
   18665802809714721984,
   96545542190232743616,
@@ -2044,7 +2045,7 @@ def cert27_07 : List ℕ := [
   40593068616016019008
 ]
 
-def cert27_08 : List ℕ := [
+def cert27_c08 : List ℕ := [
   16568806233840636672,
   65412219364667919896,
   76186503484095285776,
@@ -2299,7 +2300,7 @@ def cert27_08 : List ℕ := [
   162287705873191114624
 ]
 
-def cert27_09 : List ℕ := [
+def cert27_c09 : List ℕ := [
   8640751796805948416,
   26889688575788499464,
   66707572148836036096,
@@ -2554,7 +2555,7 @@ def cert27_09 : List ℕ := [
   163636150760171304768
 ]
 
-def cert27_10 : List ℕ := [
+def cert27_c10 : List ℕ := [
   56446644205655670848,
   219761813435731901056,
   157685007883291615880,
@@ -2809,7 +2810,7 @@ def cert27_10 : List ℕ := [
   124621529689697422272
 ]
 
-def cert27_11 : List ℕ := [
+def cert27_c11 : List ℕ := [
   62230977042444968704,
   58849042296258881736,
   108308530399129218304,
@@ -3064,7 +3065,7 @@ def cert27_11 : List ℕ := [
   214367258934496417856
 ]
 
-def cert27_12 : List ℕ := [
+def cert27_c12 : List ℕ := [
   5493286600640591872,
   53125789762412322304,
   15932670359823232192,
@@ -3319,7 +3320,7 @@ def cert27_12 : List ℕ := [
   13622033461655323272
 ]
 
-def cert27_13 : List ℕ := [
+def cert27_c13 : List ℕ := [
   7958453850507895808,
   51179664349582720328,
   58752496010954372744,
@@ -3574,7 +3575,7 @@ def cert27_13 : List ℕ := [
   165105039188753524864
 ]
 
-def cert27_14 : List ℕ := [
+def cert27_c14 : List ℕ := [
   40713821841662027592,
   28683253969268411856,
   67438846927916615624,
@@ -3829,7 +3830,7 @@ def cert27_14 : List ℕ := [
   152298583882916301960
 ]
 
-def cert27_15 : List ℕ := [
+def cert27_c15 : List ℕ := [
   29226221270582734016,
   17827004179367489792,
   113570958219076318272,
@@ -4084,8 +4085,90 @@ def cert27_15 : List ℕ := [
   64246064087636121184
 ]
 
-def cert27 : List ℕ := cert27_00 ++ cert27_01 ++ cert27_02 ++ cert27_03 ++ cert27_04 ++ cert27_05 ++ cert27_06 ++ cert27_07 ++ cert27_08 ++ cert27_09 ++ cert27_10 ++ cert27_11 ++ cert27_12 ++ cert27_13 ++ cert27_14 ++ cert27_15
+def cert27 : List ℕ := cert27_c00 ++ cert27_c01 ++ cert27_c02 ++ cert27_c03 ++ cert27_c04 ++ cert27_c05 ++ cert27_c06 ++ cert27_c07 ++ cert27_c08 ++ cert27_c09 ++ cert27_c10 ++ cert27_c11 ++ cert27_c12 ++ cert27_c13 ++ cert27_c14 ++ cert27_c15
 
-theorem stage27_ok : checkStage 27 cert27 = true := by decide +kernel
+theorem stage27_c00 :
+    checkChunk 27 0 ((cert27.drop (252 * 0)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c01 :
+    checkChunk 27 1 ((cert27.drop (252 * 1)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c02 :
+    checkChunk 27 2 ((cert27.drop (252 * 2)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c03 :
+    checkChunk 27 3 ((cert27.drop (252 * 3)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c04 :
+    checkChunk 27 4 ((cert27.drop (252 * 4)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c05 :
+    checkChunk 27 5 ((cert27.drop (252 * 5)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c06 :
+    checkChunk 27 6 ((cert27.drop (252 * 6)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c07 :
+    checkChunk 27 7 ((cert27.drop (252 * 7)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c08 :
+    checkChunk 27 8 ((cert27.drop (252 * 8)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c09 :
+    checkChunk 27 9 ((cert27.drop (252 * 9)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c10 :
+    checkChunk 27 10 ((cert27.drop (252 * 10)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c11 :
+    checkChunk 27 11 ((cert27.drop (252 * 11)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c12 :
+    checkChunk 27 12 ((cert27.drop (252 * 12)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c13 :
+    checkChunk 27 13 ((cert27.drop (252 * 13)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c14 :
+    checkChunk 27 14 ((cert27.drop (252 * 14)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_c15 :
+    checkChunk 27 15 ((cert27.drop (252 * 15)).take 252) = true := by
+  decide +kernel
+
+theorem stage27_chunks (c : ℕ) (hc : c < 16) :
+    checkChunk 27 c ((cert27.drop (252 * c)).take 252) = true := by
+  interval_cases c
+  · exact stage27_c00
+  · exact stage27_c01
+  · exact stage27_c02
+  · exact stage27_c03
+  · exact stage27_c04
+  · exact stage27_c05
+  · exact stage27_c06
+  · exact stage27_c07
+  · exact stage27_c08
+  · exact stage27_c09
+  · exact stage27_c10
+  · exact stage27_c11
+  · exact stage27_c12
+  · exact stage27_c13
+  · exact stage27_c14
+  · exact stage27_c15
 
 end BipartiteDD.Haar.R225792

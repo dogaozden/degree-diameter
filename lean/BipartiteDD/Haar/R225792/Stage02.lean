@@ -3,8 +3,9 @@ import BipartiteDD.Haar.R225792.Check
 
 namespace BipartiteDD.Haar.R225792
 
-/-- Certificates of stage 2 (PSL indices 12 .. 17): element `t` is `(i, j, z) = (12 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
-def cert02_00 : List ℕ := [
+/-! Certificates of stage 2 (PSL indices 12 .. 17): element `t` is `(i, j, z) = (12 + t / 672, (t % 672) / 2, t % 2)`, with a 72-bit block (wA, wB, wC) of eight letters of 3 bits each. -/
+
+def cert02_c00 : List ℕ := [
   16647619527961950272,
   81228353449522414784,
   47240969975598028224,
@@ -259,7 +260,7 @@ def cert02_00 : List ℕ := [
   64302359297720973248
 ]
 
-def cert02_01 : List ℕ := [
+def cert02_c01 : List ℕ := [
   56068058917793138752,
   58903648650041307528,
   99896984216011494088,
@@ -514,7 +515,7 @@ def cert02_01 : List ℕ := [
   39643086945738246720
 ]
 
-def cert02_02 : List ℕ := [
+def cert02_c02 : List ℕ := [
   47848676768519340096,
   30443323712741540928,
   22817011601792512080,
@@ -769,7 +770,7 @@ def cert02_02 : List ℕ := [
   34615643208607703296
 ]
 
-def cert02_03 : List ℕ := [
+def cert02_c03 : List ℕ := [
   10245728236470563200,
   77403725404193064200,
   109099192508119191816,
@@ -1024,7 +1025,7 @@ def cert02_03 : List ℕ := [
   30104426547994496576
 ]
 
-def cert02_04 : List ℕ := [
+def cert02_c04 : List ℕ := [
   23416837065300220800,
   61285217512919307264,
   8590930535875768832,
@@ -1279,7 +1280,7 @@ def cert02_04 : List ℕ := [
   24517971374663967240
 ]
 
-def cert02_05 : List ℕ := [
+def cert02_c05 : List ℕ := [
   34887267597291286528,
   153020058586276268240,
   129742810730236190272,
@@ -1534,7 +1535,7 @@ def cert02_05 : List ℕ := [
   70532550198439535048
 ]
 
-def cert02_06 : List ℕ := [
+def cert02_c06 : List ℕ := [
   64753846882653392136,
   58266668347869231816,
   47399722468052695744,
@@ -1789,7 +1790,7 @@ def cert02_06 : List ℕ := [
   62008610962582201424
 ]
 
-def cert02_07 : List ℕ := [
+def cert02_c07 : List ℕ := [
   373520547283806598528,
   6857319541135791104,
   26409771909760574216,
@@ -2044,7 +2045,7 @@ def cert02_07 : List ℕ := [
   114213242538489382960
 ]
 
-def cert02_08 : List ℕ := [
+def cert02_c08 : List ℕ := [
   92438052733427549448,
   70422211586666589760,
   69601708899596859912,
@@ -2299,7 +2300,7 @@ def cert02_08 : List ℕ := [
   8203619490452451840
 ]
 
-def cert02_09 : List ℕ := [
+def cert02_c09 : List ℕ := [
   3051200386910433280,
   61018659693143510032,
   226730572929919585600,
@@ -2554,7 +2555,7 @@ def cert02_09 : List ℕ := [
   68705207678898857728
 ]
 
-def cert02_10 : List ℕ := [
+def cert02_c10 : List ℕ := [
   14342612150812613824,
   25272045713826182592,
   116670226600058919296,
@@ -2809,7 +2810,7 @@ def cert02_10 : List ℕ := [
   56131953981245065224
 ]
 
-def cert02_11 : List ℕ := [
+def cert02_c11 : List ℕ := [
   37567482549699367944,
   49679678476720567048,
   187464488026848027144,
@@ -3064,7 +3065,7 @@ def cert02_11 : List ℕ := [
   75623257023710249736
 ]
 
-def cert02_12 : List ℕ := [
+def cert02_c12 : List ℕ := [
   127554070338420165760,
   8962760398524171264,
   16528836634686327744,
@@ -3319,7 +3320,7 @@ def cert02_12 : List ℕ := [
   211952962258821198592
 ]
 
-def cert02_13 : List ℕ := [
+def cert02_c13 : List ℕ := [
   13379119630118746688,
   4880231762753975296,
   30060234808075694208,
@@ -3574,7 +3575,7 @@ def cert02_13 : List ℕ := [
   289619753899445295680
 ]
 
-def cert02_14 : List ℕ := [
+def cert02_c14 : List ℕ := [
   51048496510072457792,
   144685372023773620160,
   99453406955557797696,
@@ -3829,7 +3830,7 @@ def cert02_14 : List ℕ := [
   35662171164178872136
 ]
 
-def cert02_15 : List ℕ := [
+def cert02_c15 : List ℕ := [
   48045710003842297480,
   113698001027031191296,
   1772736165752943616,
@@ -4084,8 +4085,90 @@ def cert02_15 : List ℕ := [
   72040417400711099016
 ]
 
-def cert02 : List ℕ := cert02_00 ++ cert02_01 ++ cert02_02 ++ cert02_03 ++ cert02_04 ++ cert02_05 ++ cert02_06 ++ cert02_07 ++ cert02_08 ++ cert02_09 ++ cert02_10 ++ cert02_11 ++ cert02_12 ++ cert02_13 ++ cert02_14 ++ cert02_15
+def cert02 : List ℕ := cert02_c00 ++ cert02_c01 ++ cert02_c02 ++ cert02_c03 ++ cert02_c04 ++ cert02_c05 ++ cert02_c06 ++ cert02_c07 ++ cert02_c08 ++ cert02_c09 ++ cert02_c10 ++ cert02_c11 ++ cert02_c12 ++ cert02_c13 ++ cert02_c14 ++ cert02_c15
 
-theorem stage02_ok : checkStage 2 cert02 = true := by decide +kernel
+theorem stage02_c00 :
+    checkChunk 2 0 ((cert02.drop (252 * 0)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c01 :
+    checkChunk 2 1 ((cert02.drop (252 * 1)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c02 :
+    checkChunk 2 2 ((cert02.drop (252 * 2)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c03 :
+    checkChunk 2 3 ((cert02.drop (252 * 3)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c04 :
+    checkChunk 2 4 ((cert02.drop (252 * 4)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c05 :
+    checkChunk 2 5 ((cert02.drop (252 * 5)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c06 :
+    checkChunk 2 6 ((cert02.drop (252 * 6)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c07 :
+    checkChunk 2 7 ((cert02.drop (252 * 7)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c08 :
+    checkChunk 2 8 ((cert02.drop (252 * 8)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c09 :
+    checkChunk 2 9 ((cert02.drop (252 * 9)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c10 :
+    checkChunk 2 10 ((cert02.drop (252 * 10)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c11 :
+    checkChunk 2 11 ((cert02.drop (252 * 11)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c12 :
+    checkChunk 2 12 ((cert02.drop (252 * 12)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c13 :
+    checkChunk 2 13 ((cert02.drop (252 * 13)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c14 :
+    checkChunk 2 14 ((cert02.drop (252 * 14)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_c15 :
+    checkChunk 2 15 ((cert02.drop (252 * 15)).take 252) = true := by
+  decide +kernel
+
+theorem stage02_chunks (c : ℕ) (hc : c < 16) :
+    checkChunk 2 c ((cert02.drop (252 * c)).take 252) = true := by
+  interval_cases c
+  · exact stage02_c00
+  · exact stage02_c01
+  · exact stage02_c02
+  · exact stage02_c03
+  · exact stage02_c04
+  · exact stage02_c05
+  · exact stage02_c06
+  · exact stage02_c07
+  · exact stage02_c08
+  · exact stage02_c09
+  · exact stage02_c10
+  · exact stage02_c11
+  · exact stage02_c12
+  · exact stage02_c13
+  · exact stage02_c14
+  · exact stage02_c15
 
 end BipartiteDD.Haar.R225792

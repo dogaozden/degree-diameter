@@ -161,14 +161,14 @@ def checkOneI (i j z cc : ℕ) : Bool :=
   decide (prodIA (cc % 2 ^ 24) = (i, j, z)) && decide (prodIB (cc / 2 ^ 24 % 2 ^ 24) = (i, j, z)) &&
     decide (prodIC (cc / 2 ^ 48 % 2 ^ 24) = (i, j, z))
 
-/-- The check of the blocks of one stage, from element `t` on; one pass over the list. -/
+/-- The check of the blocks of a stage list, from element `t` on; one pass over the list. -/
 def checkRec (k : ℕ) : ℕ → List ℕ → Bool
   | _, [] => true
   | t, cc :: rest => checkOneI (6 * k + t / 672) (t % 672 / 2) (t % 2) cc && checkRec k (t + 1) rest
 
-/-- The check of one stage: `cl` holds the 72-bit blocks of its `4032` elements. -/
-def checkStage (k : ℕ) (cl : List ℕ) : Bool :=
-  checkRec k 0 cl && decide (cl.length = 4032)
+/-- The check of one chunk `l` of a stage, its first element being element `252 * c`. -/
+def checkChunk (k c : ℕ) (l : List ℕ) : Bool :=
+  checkRec k (252 * c) l && decide (l.length = 252)
 
 theorem checkRec_sound (k : ℕ) : ∀ (l : List ℕ) (s : ℕ), checkRec k s l = true →
     ∀ (idx : ℕ) (h : idx < l.length),
@@ -187,21 +187,27 @@ theorem checkRec_sound (k : ℕ) : ∀ (l : List ℕ) (s : ℕ), checkRec k s l 
       have e : s + (n + 1) = s + 1 + n := by omega
       simpa [e] using this
 
-/-- A passing stage gives the check of each of its elements. -/
-theorem checkStage_sound {k i j z : ℕ} {cl : List ℕ} (h : checkStage k cl = true) (hi : i / 6 = k)
-    (hj : j < 336) (hz : z < 2) :
-    checkOneI i j z (cl.getD ((i % 6) * 672 + j * 2 + z) 0) = true := by
-  unfold checkStage at h
-  simp only [Bool.and_eq_true, decide_eq_true_eq] at h
-  have hlen : (i % 6) * 672 + j * 2 + z < cl.length := by
-    rw [h.2]; omega
-  have hs := checkRec_sound k cl 0 h.1 _ hlen
-  rw [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem hlen]
-  simp only [Option.getD_some]
-  have e1 : 6 * k + (0 + ((i % 6) * 672 + j * 2 + z)) / 672 = i := by omega
-  have e2 : (0 + ((i % 6) * 672 + j * 2 + z)) % 672 / 2 = j := by omega
-  have e3 : (0 + ((i % 6) * 672 + j * 2 + z)) % 2 = z := by omega
-  rw [e1, e2, e3] at hs
+/-- A passing chunk gives the check of each of its elements, read from the stage list `l`:
+element `t` (with `t / 252 = c`) has its block `l.getD t 0`. -/
+theorem chunk_elem {k c t : ℕ} {l : List ℕ} (hc : checkChunk k c ((l.drop (252 * c)).take 252) = true)
+    (ht : t / 252 = c) :
+    checkOneI (6 * k + t / 672) (t % 672 / 2) (t % 2) (l.getD t 0) = true := by
+  unfold checkChunk at hc
+  simp only [Bool.and_eq_true, decide_eq_true_eq] at hc
+  have htl : t < l.length := by
+    have h2 := hc.2
+    rw [List.length_take, List.length_drop] at h2
+    omega
+  have hidx : t - 252 * c < ((l.drop (252 * c)).take 252).length := by
+    rw [hc.2]; omega
+  have hs := checkRec_sound k _ (252 * c) hc.1 (t - 252 * c) hidx
+  have e1 : 252 * c + (t - 252 * c) = t := by omega
+  rw [e1] at hs
+  have hget : ((l.drop (252 * c)).take 252)[t - 252 * c] = l.getD t 0 := by
+    rw [List.getElem_take, List.getElem_drop, List.getD_eq_getElem?_getD, List.getElem?_eq_getElem htl]
+    simp only [Option.getD_some]
+    simp [e1]
+  rw [hget] at hs
   exact hs
 
 end BipartiteDD.Haar.R225792
