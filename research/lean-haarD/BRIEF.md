@@ -22,3 +22,8 @@ Rules for every job
 
 Statement form for a record: `theorem nb_<Δ>_<D> : IsBipartiteDegDiam G_rec Δ D` with the vertex count proved, like
 nb_8_5_haar. A record graph may be superseded by a bigger one while you work; finish the one you started anyway.
+
+**Never end your turn while a build is running.** A cloud session stops when its turn ends, and background builds die with it.
+Several workers stopped on Oct 23 with "stage builds are running" in their STATUS and nothing finished. Run builds in the
+foreground, one module at a time. If a build is long, poll its log in the same turn. Keep going until the record theorem and
+its Axioms file build, or until you are truly blocked.
