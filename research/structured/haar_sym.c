@@ -1,7 +1,7 @@
 /* haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
  *     alpha = (conjugation by an element of the base group) x (z -> r z on Z_n), or (x,y,z) -> (a x, b y, a b z) on heis.
- *     Annealing moves replace a whole orbit (or one fixed generator); energy = uncovered / k.
+ *     Annealing moves replace a whole orbit (or one fixed generator); energy = uncovered / k (ORBW=w: a fixed element weighs w).
  *   RANDORB=m: cost statistics of m random symmetric S (no search).
  *   ALPHA=<index of the conjugating element>, AR=<r>, AHA/AHB=<a>/<b> override the automatic choice of alpha.
  *   GROUP heis q: Heisenberg group of 3x3 upper unitriangular matrices over GF(q), (a,b,c)(a',b',c') = (a+a', b+b', c+c'+ab').
@@ -900,6 +900,20 @@ static int random_orbit(int j, int *o) {   /* random valid orbit for slot j (or 
     for (int tries = 0; tries < 100000; tries++) { int x = rnd() % N; if (orbit_of(x, o) && orbit_free(o, j)) return 1; }
     return 0;
 }
+/* ORBW=w: an uncovered alpha-fixed element weighs w instead of 1 (w = k: every uncovered alpha-orbit counts 1).
+ * Integer energy c + (w-1) * (uncovered fixed elements) >= c, so the early abort on the raw count stays exact. */
+static int ORBW = 1;
+static long long fixmiss(uint64_t **sv) {
+    long long m = 0;
+    for (int t = 0; t < (D % 2 ? 2 : 1); t++) {
+        const uint64_t *V = sv[t];
+        for (long long i = -1; i < NFIX; i++) { int g = i < 0 ? ident : FIXL[i], cov;
+            if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+            else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+            m += !cov; }
+    }
+    return m;
+}
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
@@ -945,13 +959,20 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     uint64_t *SV[64][2]; for (int t = 0; t < K; t++) { SV[t][0] = zalloc64(BITBYTES); SV[t][1] = zalloc64(BITBYTES); }
     uint32_t *OTF[64][MAXD], *OTI[64][MAXD];
     for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
-    int cand[64][MAXD]; long long cs[64]; int bestS2[MAXD];
-    long long c = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0), best = c; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
-    double cE = (double)c / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
+    int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
+    if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
+    long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
+    long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
+    double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
+    if (ORBW > 1) fprintf(stderr, "ORBW=%d: an uncovered fixed element weighs %d; start energy %lld\n", ORBW, ORBW, ce);
     long long evals = 1, steps = 0, lastimpstep = 0;
+    double OVCLOCK = getenv("VCLOCK") ? atof(getenv("VCLOCK")) : 0;   /* deterministic schedule: x seconds per step */
+    long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
+#define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
     fprintf(stderr, "start cost=%lld\n", c);
     int nslots = OM + (OF > 1 ? OF - 1 : 0);
-    while (!stop_flag && now() - t0 < secs && best > 0) {
+    char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
+    while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
         int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
         for (int t = 0; t < K; t++) {
             if (isorb) {
@@ -972,7 +993,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             ctx *cx = C[me]; uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
             if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
             else { mktab(cand[t][0], OTF[me][0], OTI[me][0]); tf[fs] = OTF[me][0]; ti[fs] = OTI[me][0]; }
-            double sc; long long r = cost_any(cx, tf, ti, &sc, SV[t], &bound, nth > 1);
+            double sc; long long r = cost_any(cx, tf, ti, &sc, SV[t], OABORT ? &bound : &NOBOUND, nth > 1);
+            if (r >= 0 && ORBW > 1) { craw[t] = r; r += (ORBW - 1) * fixmiss(SV[t]); } else craw[t] = r;
             if (r < 0) cs[t] = NOBOUND;
             else { cs[t] = r; long long bv = __atomic_load_n(&bound, __ATOMIC_RELAXED);
                 while (r < bv && !__atomic_compare_exchange_n(&bound, &bv, r, 0, __ATOMIC_RELAXED, __ATOMIC_RELAXED)) ; }
@@ -983,24 +1005,27 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         if (bE <= cE || exp((cE - bE) / T) > (rnd() % 1000000) / 1e6) {
             if (isorb) for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             else { S[fs] = cand[bt][0]; SI[fs] = ginv(S[fs]); mktab(S[fs], TF[fs], TI[fs]); }
-            c = cs[bt]; cE = bE; collect_saved(SV[bt]);
+            c = craw[bt]; ce = cs[bt]; cE = bE; collect_saved(SV[bt]);
         }
-        steps++;
-        if (c < best) { best = c; memcpy(bestS2, S, sizeof(int) * d); lastimp = now(); lastimpstep = steps; }
-        T = TMAX * pow(0.5, (now() - lastheat) / COOL); if (T < TMIN) T = TMIN;
-        if (now() - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
-            lastheat = now(); T = TMAX; memcpy(S, bestS2, sizeof(int) * d);
+        steps++; ohash = (ohash ^ (unsigned long long)(cs[bt] * 1000003 + bt * 7 + (c == cs[bt]))) * 1099511628211ULL;
+        if (ce < bestE) { best = c; bestE = ce; memcpy(bestS2, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; }
+        T = TMAX * pow(0.5, (ONOW - lastheat) / COOL); if (T < TMIN) T = TMIN;
+        if (ONOW - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
+            lastheat = ONOW; T = TMAX; memcpy(S, bestS2, sizeof(int) * d);
             if (ORESTART) {   /* diversify: fresh random orbits (fixed generators kept) */
                 for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
                 for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
             }
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
-            c = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0); cE = (double)c / OK_; collect(C[0]); lastimp = now(); lastimpstep = steps;
+            c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
+            cE = (double)ce / OK_; collect(C[0]); lastimp = ONOW; lastimpstep = steps;
         }
-        if (now() - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f\n", now() - t0, steps, evals, c, best, T); lastprint = now(); }
+        if (ONOW - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f%s\n", ONOW - t0, steps, evals, c, best, T,
+                                                  ORBW > 1 ? (sprintf(obuf, " energy=%lld bestE=%lld", ce, bestE), obuf) : ""); lastprint = ONOW; }
     }
     memcpy(S, bestS2, sizeof(int) * d);
     for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+    if (OVCLOCK > 0 || OMAXSTEPS) fprintf(stderr, "TRACE steps=%lld hash=%016llx best=%lld evals=%lld\n", steps, ohash, best, evals);
     printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, best, evals, now() - t0, OK_, OM, OF, NFIX);
     if (best == 0) {
         int ok = WIDE ? full_check_w(C[0]) : full_check(C[0]);
