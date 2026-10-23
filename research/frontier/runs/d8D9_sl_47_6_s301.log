@@ -2,3 +2,22 @@ group sl 47 x Z_6, N=622656, identity 12972, H order 48, rows 12972, threads 1, 
 start cost=40
 t=30 steps=2126 evals=17009 cost=4 best=2 T=0.53
 t=60 steps=4105 evals=32841 cost=4 best=2 T=0.19
+t=90 steps=6557 evals=52457 cost=2 best=2 T=0.15
+t=120 steps=9065 evals=72521 cost=2 best=2 T=0.15
+t=150 steps=11688 evals=93505 cost=2 best=2 T=0.15
+t=180 steps=14139 evals=113113 cost=2 best=2 T=0.58
+t=210 steps=16546 evals=132369 cost=2 best=2 T=0.20
+t=240 steps=19079 evals=152633 cost=2 best=2 T=0.15
+t=270 steps=21644 evals=173153 cost=2 best=2 T=0.15
+t=300 steps=24145 evals=193161 cost=2 best=2 T=0.15
+t=330 steps=26695 evals=213561 cost=4 best=2 T=0.58
+t=360 steps=29124 evals=232993 cost=4 best=2 T=0.20
+t=390 steps=31514 evals=252113 cost=2 best=2 T=0.15
+t=420 steps=33711 evals=269689 cost=2 best=2 T=0.15
+t=450 steps=36133 evals=289065 cost=2 best=2 T=0.15
+t=480 steps=38504 evals=308033 cost=8 best=2 T=0.58
+t=510 steps=40837 evals=326697 cost=2 best=2 T=0.20
+t=540 steps=43306 evals=346449 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 47 x Z_6 N=622656 best=0 evals=365705 time=568.1
+full diameter check: OK
+wrote sols/d8D9_sl_47_6_s301.txt
