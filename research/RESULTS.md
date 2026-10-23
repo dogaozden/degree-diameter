@@ -123,3 +123,5 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 15:11 PT (harvest): (13,9) 63,872,400 (was 62,156,160), sl 101 n 31; claude/structured-haar-search-ws7bet.
 - Oct 23 15:11 PT (harvest): (14,9) 116,068,656 (was 111,482,880), sl 67 n 193; claude/structured-haar-search-ws7bet.
 - Oct 23 15:11 PT (harvest): (16,9) 324,164,400 (was 316,679,760), sl 149 n 49; claude/structured-haar-search-ws7bet.
+
+- Oct 23 15:20 PT (coordinator): (3,8) 288 (was 256), (5,9) 28,560 (was 27,936), (5,10) 93,000 (was 90,068): voltage-lifts session finds, rebuilt and checked all-pairs by the coordinator (research/lifts/coordinator_check/).

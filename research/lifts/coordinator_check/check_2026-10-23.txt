@@ -1,0 +1,19 @@
+# Coordinator check, 2026-10-23 15:15 PDT, Mac mini. build.py rebuilds each graph from its group and voltages (own code); apsp.c checks all pairs (bit-parallel BFS from every vertex, no symmetry assumed).
+== d3D8: python3 build.py lift 3 0,2,1,0 8 0:2:0,0,0 0:2:2,0,3 0:3:0,0,0 1:2:0,0,0 1:3:1,1,3 1:3:1,1,2 d3D8.e
+d3D8.e 288 432
+n=288 edges=432 degree min=3 max=3 bipartite=yes diameter=8
+RESULT VALID d=3 D=8 n=288
+   with D-1:
+RESULT INVALID
+== d5D9: python3 build.py meta 595 24 53 0,0 556,1 172,11 75,23 170,5 d5D9.e
+d5D9.e 28560 71400
+n=28560 edges=71400 degree min=5 max=5 bipartite=yes diameter=9
+RESULT VALID d=5 D=9 n=28560
+   with D-1:
+RESULT INVALID
+== d5D10: python3 build.py meta 775 60 133 0,0 227,14 27,1 508,42 310,38 d5D10.e
+d5D10.e 93000 232500
+n=93000 edges=232500 degree min=5 max=5 bipartite=yes diameter=10
+RESULT VALID d=5 D=10 n=93000
+   with D-1:
+RESULT INVALID
