@@ -876,7 +876,7 @@ int main(int argc, char **argv) {
                     uint32_t b = t1[r]; if ((t2[b >> 9] >> 9) != (uint32_t)r) { fprintf(stderr, "wide inverse table self-test error\n"); return 2; } } }
               rs = sv; free(t1); free(t2); }
             fprintf(stderr, "wide rows: HW order %d, rows %d, setup %.2fs\n", nHW, RW, now() - tsetup);
-        } else { fprintf(stderr, "wide rows: no cyclic subgroup of order >= %d found (best %d); using 64-bit rows\n", hwmin, bestt); FAST = 1; }
+        } else { fprintf(stderr, "wide rows: no cyclic subgroup of order >= %d found (best %d); using haar_gen3's evaluation\n", hwmin, bestt); FAST = 0; }
     }
     NROWS = WIDE ? (size_t)RW : (size_t)R; BITBYTES = WIDE ? 64 * (size_t)RW : 8 * (size_t)R;   /* wide: F rows are doubled (64 B); V rows use 32 B */
 
