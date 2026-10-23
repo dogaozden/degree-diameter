@@ -1,0 +1,13 @@
+group sl 61 x Z_5, N=1134600, identity 18300, H order 62, rows 18300, threads 1, setup 0.03s
+start cost=26
+t=30 steps=2738 evals=21905 cost=10 best=10 T=0.53
+t=60 steps=5502 evals=44017 cost=11 best=9 T=0.19
+t=90 steps=8199 evals=65593 cost=9 best=9 T=0.15
+t=120 steps=10885 evals=87081 cost=9 best=9 T=0.15
+t=150 steps=13611 evals=108889 cost=9 best=9 T=0.15
+t=180 steps=16326 evals=130609 cost=9 best=9 T=0.15
+t=210 steps=18985 evals=151881 cost=10 best=9 T=0.90
+t=240 steps=21644 evals=173153 cost=9 best=8 T=0.32
+t=270 steps=24473 evals=195785 cost=9 best=8 T=0.15
+t=300 steps=27070 evals=216561 cost=9 best=8 T=0.15
+RESULT d=7 D=10 group=sl 61 x Z_5 N=1134600 best=8 evals=232721 time=320.4

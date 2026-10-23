@@ -1,3 +1,22 @@
 group psl 49 poly x^2+1 x Z_19, N=1117200, identity 22344, H order 57, rows 19600, threads 1, setup 0.03s
 start cost=33
 t=30 steps=2254 evals=18033 cost=6 best=6 T=0.53
+t=60 steps=4454 evals=35633 cost=6 best=6 T=0.19
+t=90 steps=6952 evals=55617 cost=8 best=6 T=0.15
+t=120 steps=9369 evals=74953 cost=8 best=6 T=0.15
+t=150 steps=11558 evals=92465 cost=8 best=6 T=0.15
+t=180 steps=13892 evals=111137 cost=10 best=6 T=1.15
+t=210 steps=16078 evals=128625 cost=5 best=5 T=0.41
+t=240 steps=18159 evals=145273 cost=5 best=5 T=0.15
+t=270 steps=20378 evals=163025 cost=5 best=5 T=0.15
+t=300 steps=22617 evals=180937 cost=5 best=5 T=0.15
+t=330 steps=24931 evals=199449 cost=5 best=5 T=0.15
+t=360 steps=26996 evals=215969 cost=5 best=5 T=0.89
+t=390 steps=29030 evals=232241 cost=5 best=5 T=0.31
+t=420 steps=31113 evals=248905 cost=5 best=5 T=0.15
+t=450 steps=33194 evals=265553 cost=5 best=5 T=0.15
+t=480 steps=35391 evals=283129 cost=5 best=5 T=0.15
+t=510 steps=37662 evals=301297 cost=4 best=4 T=0.15
+t=540 steps=39978 evals=319825 cost=4 best=4 T=0.15
+t=570 steps=42226 evals=337809 cost=4 best=4 T=0.15
+RESULT d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 best=4 evals=355073 time=600.0

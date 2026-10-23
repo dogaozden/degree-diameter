@@ -1,0 +1,10 @@
+group prod psl 19 sl 7 x Z_1, N=1149120, identity 57498, H order 63, rows 18240, threads 1, setup 0.05s
+start cost=51
+t=30 steps=2595 evals=20761 cost=13 best=13 T=0.53
+t=60 steps=5219 evals=41753 cost=16 best=9 T=0.19
+t=90 steps=7913 evals=63305 cost=11 best=9 T=0.15
+t=120 steps=10566 evals=84529 cost=11 best=9 T=0.15
+t=150 steps=13262 evals=106097 cost=11 best=9 T=0.15
+t=180 steps=15797 evals=126377 cost=10 best=9 T=0.15
+t=210 steps=18565 evals=148521 cost=14 best=9 T=1.37
+RESULT d=7 D=10 group=prod psl 19 sl 7 x Z_1 N=1149120 best=9 evals=157905 time=222.2
