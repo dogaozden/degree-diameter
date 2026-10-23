@@ -1,0 +1,78 @@
+group psl 61 x Z_79, N=8963340, identity 144570, H order 61, rows 146940, threads 1, setup 0.71s
+wide rows: HW order 237, rows 37820, setup 1.22s
+alpha: conj by mat(20,18,50,42) (index 73677), z -> 23 z on Z_79
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 29 (+e); mu = 28.32, mu/k = 9.44, fixed-point misses ~ 0.44
+start cost=156
+t=30 steps=158 evals=1265 cost=4 best=4 T=0.53
+t=60 steps=303 evals=2425 cost=4 best=4 T=0.19
+t=90 steps=449 evals=3593 cost=4 best=4 T=0.15
+t=121 steps=612 evals=4897 cost=4 best=4 T=0.15
+t=151 steps=777 evals=6217 cost=4 best=4 T=0.15
+t=181 steps=927 evals=7417 cost=12 best=4 T=1.33
+t=211 steps=1074 evals=8593 cost=4 best=4 T=0.47
+t=241 steps=1232 evals=9857 cost=6 best=4 T=0.16
+t=271 steps=1374 evals=10993 cost=6 best=4 T=0.15
+t=301 steps=1537 evals=12297 cost=6 best=4 T=0.15
+t=331 steps=1696 evals=13569 cost=3 best=3 T=0.15
+t=362 steps=1849 evals=14793 cost=1 best=1 T=0.15
+t=392 steps=2007 evals=16057 cost=1 best=1 T=0.15
+t=422 steps=2166 evals=17329 cost=1 best=1 T=0.15
+t=452 steps=2317 evals=18537 cost=1 best=1 T=0.15
+t=482 steps=2478 evals=19825 cost=1 best=1 T=0.15
+t=512 steps=2626 evals=21009 cost=1 best=1 T=1.14
+t=542 steps=2791 evals=22329 cost=1 best=1 T=0.40
+t=572 steps=2946 evals=23569 cost=1 best=1 T=0.15
+t=603 steps=3098 evals=24785 cost=1 best=1 T=0.15
+t=633 steps=3237 evals=25897 cost=1 best=1 T=0.15
+t=663 steps=3356 evals=26849 cost=1 best=1 T=1.12
+t=693 steps=3463 evals=27705 cost=1 best=1 T=0.40
+t=723 steps=3574 evals=28593 cost=1 best=1 T=0.15
+t=753 steps=3691 evals=29529 cost=1 best=1 T=0.15
+t=783 steps=3806 evals=30449 cost=1 best=1 T=0.15
+t=813 steps=3922 evals=31377 cost=1 best=1 T=1.11
+t=844 steps=4042 evals=32337 cost=1 best=1 T=0.39
+t=874 steps=4160 evals=33281 cost=1 best=1 T=0.15
+t=904 steps=4285 evals=34281 cost=1 best=1 T=0.15
+t=934 steps=4404 evals=35233 cost=1 best=1 T=0.15
+t=964 steps=4518 evals=36145 cost=16 best=1 T=1.10
+t=994 steps=4637 evals=37097 cost=9 best=1 T=0.39
+t=1024 steps=4751 evals=38009 cost=6 best=1 T=0.15
+t=1054 steps=4868 evals=38945 cost=6 best=1 T=0.15
+t=1084 steps=4983 evals=39865 cost=6 best=1 T=0.15
+t=1114 steps=5127 evals=41017 cost=12 best=1 T=1.08
+t=1145 steps=5314 evals=42513 cost=9 best=1 T=0.38
+t=1175 steps=5474 evals=43793 cost=4 best=1 T=0.15
+t=1205 steps=5636 evals=45089 cost=4 best=1 T=0.15
+t=1235 steps=5815 evals=46521 cost=4 best=1 T=0.15
+t=1265 steps=5978 evals=47825 cost=12 best=1 T=1.07
+t=1295 steps=6163 evals=49305 cost=4 best=1 T=0.38
+t=1325 steps=6327 evals=50617 cost=4 best=1 T=0.15
+t=1356 steps=6507 evals=52057 cost=4 best=1 T=0.15
+t=1386 steps=6665 evals=53321 cost=4 best=1 T=0.15
+t=1416 steps=6853 evals=54825 cost=18 best=1 T=1.06
+t=1446 steps=7034 evals=56273 cost=7 best=1 T=0.37
+t=1476 steps=7228 evals=57825 cost=7 best=1 T=0.15
+t=1506 steps=7432 evals=59457 cost=7 best=1 T=0.15
+t=1536 steps=7636 evals=61089 cost=7 best=1 T=0.15
+t=1566 steps=7832 evals=62657 cost=1 best=1 T=1.05
+t=1596 steps=8027 evals=64217 cost=1 best=1 T=0.37
+t=1626 steps=8219 evals=65753 cost=1 best=1 T=0.15
+t=1656 steps=8417 evals=67337 cost=1 best=1 T=0.15
+t=1686 steps=8604 evals=68833 cost=1 best=1 T=0.15
+t=1716 steps=8802 evals=70417 cost=15 best=1 T=1.05
+t=1746 steps=8993 evals=71945 cost=4 best=1 T=0.37
+t=1776 steps=9184 evals=73473 cost=4 best=1 T=0.15
+t=1807 steps=9378 evals=75025 cost=4 best=1 T=0.15
+t=1837 steps=9567 evals=76537 cost=4 best=1 T=0.15
+t=1867 steps=9761 evals=78089 cost=1 best=1 T=1.03
+t=1897 steps=9961 evals=79689 cost=1 best=1 T=0.36
+t=1927 steps=10156 evals=81249 cost=1 best=1 T=0.15
+t=1957 steps=10355 evals=82841 cost=1 best=1 T=0.15
+t=1987 steps=10551 evals=84409 cost=1 best=1 T=0.15
+RESULT d=15 D=8 group=psl 61 x Z_79 N=8963340 best=0 evals=84761 time=1994.1 orbit k=3 m=5 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/pool/30-d15D8/d15D8_psl_61_79_orb3f0_s1.txt
+n = 17926680 edges = 134450100 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = bf28c39dc39573708c51a27dbb9fa5788d22b0201e3fe0f1d6a42d3be7bea4ba
+VALID d=15 D=8 group=psl 61 x Z_79 N=8963340 vertices=17926680
