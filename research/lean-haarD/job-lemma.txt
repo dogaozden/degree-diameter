@@ -1,0 +1,8 @@
+You are a Lean 4 worker (Mathlib) in the degree-diameter repo. Read research/lean-haarD/BRIEF.md first and follow its rules.
+Job "lemma" (branch lean-haarD-lemma): generalize the Haar diameter lemma from 5 to every diameter. In
+lean/BipartiteDD/Haar/, add GraphD.lean with: for a finite group G, a finset S and n ≥ 1, if every element of G is a
+product of words alternating s⁻¹t (s,t ∈ S) of length ≤ n on the left side, and likewise tsᵢ⁻¹ on the right side, then
+the Haar graph has diameter ≤ 2n+1 (odd D) — and the matching even-D statement used by haar_gen3 (see
+research/frontier/HAAR_GEN_NOTES.md §covering). Prove haar_ediam_le_five as the n=2 corollary to check the statement
+is right. Also give a decidable, certificate-style form (each g with an explicit word) that record proofs can use
+without enumerating all words. Push progress hourly; finish with STATUS-lemma.md.

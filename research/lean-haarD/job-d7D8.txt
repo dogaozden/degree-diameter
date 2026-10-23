@@ -1,0 +1,8 @@
+You are a Lean 4 worker (Mathlib) in the degree-diameter repo. Read research/lean-haarD/BRIEF.md first and follow its rules.
+Job "d7D8" (branch lean-haarD-d7D8): prove the record Δ7·D8 88,920 in Lean: the Haar graph of PSL(2,19) × Z13 with the set S in
+research/frontier/sols/d7D8_psl_19_13_s403.txt (confirm the vertex count first with research/frontier/build_haar2.py on that file).
+Use the general Haar lemma from the "lemma" job if its branch lean-haarD-lemma has GraphD.lean (git fetch; merge it);
+until then, write the certificate (for each group element an explicit covering word) with a small Python script,
+emit it as a Lean data module, and check it by decide in stages, as Haar/Cert2640.lean and Record2662.lean do. If the
+group is too big for the kernel in one piece, split the certificate into stage modules. Push progress hourly; finish
+with STATUS-d7D8.md (done / partial / blocked, with the exact obstacle and the largest stage that built).
