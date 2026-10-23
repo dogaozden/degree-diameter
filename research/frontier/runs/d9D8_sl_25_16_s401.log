@@ -1,12 +1,12 @@
-group sl 25 poly x^2+2 x Z_16, N=249600, identity 9600, H order 52, rows 4800, threads 1, setup 0.01s
+group sl 25 poly x^2+2 x Z_16, N=249600, identity 9600, H order 52, rows 4800, threads 1, setup 0.02s
 start cost=30
-t=30 steps=8836 evals=70689 cost=3 best=2 T=0.53
-t=60 steps=17599 evals=140793 cost=2 best=2 T=0.19
-t=90 steps=26116 evals=208929 cost=2 best=2 T=0.15
-t=120 steps=34370 evals=274961 cost=2 best=2 T=0.15
-t=150 steps=42800 evals=342401 cost=2 best=2 T=0.15
-t=180 steps=51111 evals=408889 cost=4 best=2 T=0.67
-t=210 steps=59327 evals=474617 cost=2 best=2 T=0.24
-t=240 steps=68191 evals=545529 cost=2 best=2 T=0.15
-t=270 steps=76994 evals=615953 cost=2 best=2 T=0.15
-RESULT d=9 D=8 group=sl 25 poly x^2+2 x Z_16 N=249600 best=2 evals=686625 time=300.0
+t=30 steps=8561 evals=68489 cost=6 best=2 T=0.53
+t=60 steps=17507 evals=140057 cost=2 best=2 T=0.19
+t=90 steps=26183 evals=209465 cost=2 best=2 T=0.15
+t=120 steps=34816 evals=278529 cost=2 best=2 T=0.15
+t=150 steps=43084 evals=344673 cost=2 best=2 T=0.15
+t=180 steps=51188 evals=409505 cost=3 best=2 T=0.67
+t=210 steps=59850 evals=478801 cost=3 best=2 T=0.24
+t=240 steps=68628 evals=549025 cost=2 best=2 T=0.15
+t=270 steps=77364 evals=618913 cost=2 best=2 T=0.15
+RESULT d=9 D=8 group=sl 25 poly x^2+2 x Z_16 N=249600 best=2 evals=689489 time=300.0
