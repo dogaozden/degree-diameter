@@ -1,2 +1,32 @@
 group prod psl 5 sl 31 x Z_1, N=1785600, identity 298530, H order 62, rows 28800, threads 1, setup 0.06s
 start cost=94
+t=30 steps=1060 evals=8481 cost=30 best=30 T=0.53
+t=60 steps=2091 evals=16729 cost=30 best=30 T=0.19
+t=90 steps=3161 evals=25289 cost=30 best=30 T=0.15
+t=120 steps=4196 evals=33569 cost=30 best=30 T=0.15
+t=150 steps=5228 evals=41825 cost=30 best=30 T=0.15
+t=180 steps=6272 evals=50177 cost=30 best=30 T=1.06
+t=210 steps=7294 evals=58353 cost=30 best=30 T=0.38
+t=240 steps=8339 evals=66713 cost=30 best=30 T=0.15
+t=270 steps=9384 evals=75073 cost=30 best=30 T=0.15
+t=300 steps=10419 evals=83353 cost=30 best=30 T=0.15
+t=330 steps=11437 evals=91497 cost=30 best=30 T=1.06
+t=360 steps=12493 evals=99945 cost=24 best=24 T=0.38
+t=390 steps=13529 evals=108233 cost=24 best=24 T=0.15
+t=420 steps=14544 evals=116353 cost=24 best=24 T=0.15
+t=450 steps=15558 evals=124465 cost=24 best=24 T=0.15
+t=480 steps=16593 evals=132745 cost=24 best=24 T=0.15
+t=510 steps=17583 evals=140665 cost=24 best=24 T=1.37
+t=540 steps=18595 evals=148761 cost=24 best=24 T=0.49
+t=570 steps=19628 evals=157025 cost=24 best=24 T=0.17
+t=600 steps=20656 evals=165249 cost=24 best=24 T=0.15
+t=630 steps=21646 evals=173169 cost=24 best=24 T=0.15
+t=660 steps=22651 evals=181209 cost=24 best=24 T=1.37
+t=690 steps=23652 evals=189217 cost=24 best=24 T=0.48
+t=720 steps=24646 evals=197169 cost=24 best=24 T=0.17
+t=750 steps=25638 evals=205105 cost=24 best=24 T=0.15
+t=780 steps=26629 evals=213033 cost=24 best=24 T=0.15
+t=810 steps=27598 evals=220785 cost=24 best=24 T=1.37
+t=840 steps=28604 evals=228833 cost=24 best=24 T=0.48
+t=870 steps=29616 evals=236929 cost=24 best=24 T=0.17
+RESULT d=9 D=9 group=prod psl 5 sl 31 x Z_1 N=1785600 best=24 evals=244889 time=900.0
