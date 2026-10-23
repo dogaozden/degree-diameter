@@ -11,7 +11,9 @@
      lift search BASE D SECONDS SEED K OUT GROUP...    anneal the free voltages; write OUT if cost 0
      lift check SOL [EDGES]                            exact BFS (int distances) from every (u,1); optional edge list
      lift sample BASE D M GROUP...                     cost quantiles of M random voltage assignments (screening)
-   GROUP := FACTOR [x FACTOR]...,  FACTOR := cyc n | meta m k r | dih n | sl p | psl p | pgl p   (p prime)
+   GROUP := FACTOR [x FACTOR]...,  FACTOR := cyc n | meta m k r | dih n | aff p a b c d k | sl p | psl p | pgl p   (p prime)
+     aff p a b c d k = Z_p^2 x|_M Z_k with M = [[a,b],[c,d]], M^k = I mod p; (v,j)(w,l) = (v + M^j w, j + l).
+       M = [[1,1],[0,1]], k = p gives the Heisenberg group of order p^3 (p odd).
      meta m k r = Z_m x|_r Z_k, (a,j)(b,l) = (a + r^j b, j + l), needs r^k = 1 mod m.  dih n = meta n 2 n-1.
    Element text: components joined by '|'; cyc "a", meta "a,j", sl/psl/pgl "a,b,c,d" = [[a,b],[c,d]].
    BASE file: "k K" then lines "e x y" (free voltage) or "e x y = ELEM" (fixed); '#' comments.
@@ -33,11 +35,12 @@ static double now(void) { struct timeval tv; gettimeofday(&tv, NULL); return tv.
 static void die(const char *m) { fprintf(stderr, "error: %s\n", m); exit(2); }
 
 /* ------------------------------------------------------------------ groups */
-enum { F_CYC, F_META, F_SL, F_PSL, F_PGL };
+enum { F_CYC, F_META, F_AFF, F_SL, F_PSL, F_PGL };
 typedef struct {
     int type, n;            /* order */
     int m, k, r;            /* cyc: m = n; meta: m, k, r */
-    int p;                  /* matrix groups */
+    int p;                  /* matrix groups; aff: Z_p^2 x|_M Z_k */
+    int M[4], *mpow;        /* aff: M and its powers (4 entries each) */
     int *rpow;              /* meta: r^j mod m */
     uint16_t *E;            /* matrix entries, 4 per element */
     uint64_t *hkey; int *hval; size_t hcap;   /* matrix index hash */
@@ -78,6 +81,12 @@ static int fmul(const factor *f, int x, int y) {
         int a = x / f->k, j = x % f->k, b = y / f->k, l = y % f->k;
         return (int)((a + (long long)f->rpow[j] * b) % f->m) * f->k + (j + l) % f->k;
     }
+    case F_AFF: {   /* (v, j)(w, l) = (v + M^j w, j + l), v in Z_p^2 */
+        int p = f->p, k = f->k, j = x % k, l = y % k, v = x / k, w = y / k;
+        int v0 = v / p, v1 = v % p, w0 = w / p, w1 = w % p; const int *P = f->mpow + 4 * j;
+        int z0 = (v0 + P[0] * w0 + P[1] * w1) % p, z1 = (v1 + P[2] * w0 + P[3] * w1) % p;
+        return (z0 * p + z1) * k + (j + l) % k;
+    }
     default: {
         const uint16_t *A = f->E + 4 * (size_t)x, *B = f->E + 4 * (size_t)y; int p = f->p, c[4];
         c[0] = (A[0] * B[0] + A[1] * B[2]) % p; c[1] = (A[0] * B[1] + A[1] * B[3]) % p;
@@ -94,6 +103,15 @@ static void build_factor(factor *f) {
         for (int j = 1; j < f->k; j++) f->rpow[j] = (int)((long long)f->rpow[j - 1] * f->r % f->m);
         if ((long long)f->rpow[f->k - 1] * f->r % f->m != 1 % f->m) die("meta: r^k != 1 mod m");
         snprintf(f->spec, 64, "meta %d %d %d", f->m, f->k, f->r);
+    } else if (f->type == F_AFF) {
+        int p = f->p, k = f->k; if (!isprime(p) || k < 1) die("aff: p prime, k >= 1");
+        f->mpow = malloc(sizeof(int) * 4 * (k + 1)); int *P = f->mpow; P[0] = 1; P[1] = 0; P[2] = 0; P[3] = 1;
+        for (int j = 1; j <= k; j++) { int *A = P + 4 * (j - 1), *B = P + 4 * j, *Mm = f->M;
+            B[0] = (A[0] * Mm[0] + A[1] * Mm[2]) % p; B[1] = (A[0] * Mm[1] + A[1] * Mm[3]) % p;
+            B[2] = (A[2] * Mm[0] + A[3] * Mm[2]) % p; B[3] = (A[2] * Mm[1] + A[3] * Mm[3]) % p; }
+        int *Q = P + 4 * k; if (Q[0] != 1 || Q[1] != 0 || Q[2] != 0 || Q[3] != 1) die("aff: M^k != I mod p");
+        f->n = p * p * k;
+        snprintf(f->spec, 64, "aff %d %d %d %d %d %d", p, f->M[0], f->M[1], f->M[2], f->M[3], k);
     } else {
         int p = f->p; if (!isprime(p) || p > 250) die("matrix groups need p prime <= 250");
         long long cnt = 0; int a[4];
@@ -145,6 +163,11 @@ static void build_factor(factor *f) {
     f->inv = malloc(sizeof(int) * f->n);
     for (int x = 0; x < f->n; x++) {
         if (f->type == F_CYC) f->inv[x] = (f->n - x) % f->n;
+        else if (f->type == F_AFF) {   /* (v,j)^-1 = (-M^{k-j} v, -j) */
+            int p = f->p, k = f->k, j = x % k, jj = (k - j) % k, v = x / k, v0 = v / p, v1 = v % p; const int *P = f->mpow + 4 * jj;
+            int z0 = (p - (P[0] * v0 + P[1] * v1) % p) % p, z1 = (p - (P[2] * v0 + P[3] * v1) % p) % p;
+            f->inv[x] = (z0 * p + z1) * k + jj;
+        }
         else if (f->type == F_META) {   /* (a,j)^-1 = (-r^{-j} a, -j) */
             int a = x / f->k, j = x % f->k, jj = (f->k - j) % f->k;
             int y = (int)((f->m - (long long)f->rpow[jj] * a % f->m) % f->m);
@@ -176,6 +199,7 @@ static void gdesc(int x, char *buf) {
     for (int i = 0; i < nf; i++) {
         const factor *f = &FS[i]; int xi = (x / RAD[i]) % f->n; char t[64];
         if (f->type == F_CYC) sprintf(t, "%d", xi);
+        else if (f->type == F_AFF) sprintf(t, "%d,%d,%d", xi / f->k / f->p, xi / f->k % f->p, xi % f->k);
         else if (f->type == F_META) sprintf(t, "%d,%d", xi / f->k, xi % f->k);
         else { const uint16_t *A = f->E + 4 * (size_t)xi; sprintf(t, "%d,%d,%d,%d", A[0], A[1], A[2], A[3]); }
         if (i) strcat(buf, "|");
@@ -194,6 +218,8 @@ static int gparse(const char *s) {   /* returns -1 on error */
         }
         int xi;
         if (f->type == F_CYC) { if (c != 1) return -1; xi = ((v[0] % f->n) + f->n) % f->n; }
+        else if (f->type == F_AFF) { if (c != 3) return -1; int p = f->p, k = f->k;
+            xi = ((((v[0] % p) + p) % p) * p + ((v[1] % p) + p) % p) * k + ((v[2] % k) + k) % k; }
         else if (f->type == F_META) { if (c != 2) return -1; xi = (((v[0] % f->m) + f->m) % f->m) * f->k + ((v[1] % f->k) + f->k) % f->k; }
         else {
             if (c != 4) return -1;
@@ -219,6 +245,7 @@ static void parse_group(int argc, char **argv, int *a) {
         const char *t = argv[*a];
         if (!strcmp(t, "cyc")) { f->type = F_CYC; f->m = atoi(argv[*a + 1]); *a += 2; }
         else if (!strcmp(t, "meta")) { f->type = F_META; f->m = atoi(argv[*a + 1]); f->k = atoi(argv[*a + 2]); f->r = atoi(argv[*a + 3]); *a += 4; }
+        else if (!strcmp(t, "aff")) { f->type = F_AFF; f->p = atoi(argv[*a + 1]); for (int i = 0; i < 4; i++) f->M[i] = ((atoi(argv[*a + 2 + i]) % f->p) + f->p) % f->p; f->k = atoi(argv[*a + 6]); *a += 7; }
         else if (!strcmp(t, "dih")) { f->type = F_META; f->m = atoi(argv[*a + 1]); f->k = 2; f->r = f->m - 1; *a += 2; }
         else if (!strcmp(t, "sl")) { f->type = F_SL; f->p = atoi(argv[*a + 1]); *a += 2; }
         else if (!strcmp(t, "psl")) { f->type = F_PSL; f->p = atoi(argv[*a + 1]); *a += 2; }
@@ -310,7 +337,7 @@ static void read_base(const char *fn, int want_volt_text) { (void)want_volt_text
                         if (*c == '|') comp++;
                         if (*c == '*') {
                             const factor *f = &FS[comp]; mask |= 1 << comp;
-                            o += sprintf(o, "%s", f->type == F_CYC ? "0" : f->type == F_META ? "0,0" : "1,0,0,1");
+                            o += sprintf(o, "%s", f->type == F_CYC ? "0" : f->type == F_META ? "0,0" : f->type == F_AFF ? "0,0,0" : "1,0,0,1");
                         } else *o++ = *c;
                     }
                     *o = 0;

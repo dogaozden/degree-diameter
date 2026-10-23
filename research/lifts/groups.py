@@ -3,7 +3,8 @@
 Usage: python3 groups.py N [--max M] [--rich]      prints one spec per line (--rich: also products of two
        non-abelian factors, e.g. meta 7 3 2 x meta 5 4 2, psl 5 x meta 7 3 2)
 Families: cyc N; cyc a x cyc b (a | b, a > 1); meta m k r (Z_m x|_r Z_k, r != 1, one r per cyclic subgroup
-<r> generated with a unit exponent); meta m k r x cyc c; sl/psl/pgl p (x cyc c).
+<r> generated with a unit exponent); meta m k r x cyc c; sl/psl/pgl p (x cyc c); with --rich also
+aff p a b c d k (Z_p^2 x|_M Z_k, incl. Heisenberg groups) x cyc c, and products of two non-abelian factors.
 Isomorphic duplicates across families are possible (e.g. meta with r of small order); lift.c does not care.
 """
 import math
@@ -82,9 +83,66 @@ def nonabelian_small(limit):
     return out
 
 
+def mat_order(M, p, cap):
+    (a, b), (c, d) = M
+    A = M
+    for o in range(1, cap + 1):
+        if A == ((1, 0), (0, 1)):
+            return o
+        (e, f), (g, h) = A
+        A = (((e * a + f * c) % p, (e * b + f * d) % p), ((g * a + h * c) % p, (g * b + h * d) % p))
+    return None
+
+
+def affs(p, k):
+    """aff p a b c d k: Z_p^2 x|_M Z_k, one M per conjugacy class of GL(2,p) with M^k = I and M != I
+    (rational canonical forms: scalars and companion matrices), up to M -> M^j with gcd(j, k) = 1"""
+    out, seen = [], set()
+    cands = [((l, 0), (0, l)) for l in range(2, p)]
+    cands += [((0, (-dd) % p), (1, t)) for t in range(p) for dd in range(1, p)]
+    for M in cands:
+        o = mat_order(M, p, k)
+        if o is None or k % o or o == 1:
+            continue
+        # class key of <M> under unit powers: char polys (trace, det) of M^j, gcd(j, k) = 1
+        keys = []
+        A = ((1, 0), (0, 1))
+        pw = [A]
+        for _ in range(k):
+            (e, f), (g, h) = pw[-1]
+            (a, b), (c, d) = M
+            pw.append((((e * a + f * c) % p, (e * b + f * d) % p), ((g * a + h * c) % p, (g * b + h * d) % p)))
+        for j in range(1, k + 1):
+            if math.gcd(j, k) == 1:
+                (e, f), (g, h) = pw[j]
+                scalar = f == 0 and g == 0 and e == h
+                keys.append((scalar, (e + h) % p, (e * h - f * g) % p))
+        key = min(keys)
+        if key in seen:
+            continue
+        seen.add(key)
+        (a, b), (c, d) = M
+        out.append(f"aff {p} {a} {b} {c} {d} {k}")
+    return out
+
+
+def aff_specs(N):
+    out = []
+    for p in range(2, int(N ** 0.5) + 1):
+        if not is_prime(p) or N % (p * p):
+            continue
+        rest = N // (p * p)
+        for k in divisors(rest):
+            if k < 2:
+                continue
+            c = rest // k
+            out += [s + (f" x cyc {c}" if c > 1 else "") for s in affs(p, k)]
+    return out
+
+
 def specs_rich(N, maxfactor=400):
-    """specs(N) plus direct products of two non-abelian factors (times a cyclic group)"""
-    out = specs(N)
+    """specs(N) plus Z_p^2 x| Z_k (times cyclic) and direct products of two non-abelian factors (times cyclic)"""
+    out = specs(N) + aff_specs(N)
     fac = nonabelian_small(min(maxfactor, N // 6))
     seen = set()
     for i, (s1, o1) in enumerate(fac):

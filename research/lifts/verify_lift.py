@@ -6,6 +6,7 @@ The group is rebuilt here from its definition, not from lift.c's tables:
   cyc n          integers mod n
   meta m k r     pairs (a, j), (a, j)(b, l) = (a + r^j b mod m, j + l mod k)
   dih n          meta n 2 n-1
+  aff p a b c d k   triples (x, y, j), (v, j)(w, l) = (v + M^j w mod p, j + l mod k), M = [[a,b],[c,d]]
   sl p / psl p / pgl p   2x2 matrices over Z/p with det 1 / det 1 modulo +-1 / det != 0 modulo scalars
   G x H          direct product (tuples)
 Elements are listed in sorted order of their canonical tuples; lift vertex (u, g) gets index u*N + rank(g).
@@ -56,6 +57,31 @@ class Meta:
     def parse(self, s):
         a, j = map(int, s.split(","))
         return (a % self.m, j % self.k)
+
+
+class Aff:
+    """Z_p^2 x|_M Z_k: (v, j)(w, l) = (v + M^j w, j + l)"""
+
+    def __init__(self, p, M, k):
+        self.p, self.k = p, k
+        self.pw = [((1, 0), (0, 1))]
+        for _ in range(k):
+            (a, b), (c, d) = self.pw[-1]
+            (e, f), (g, h) = M
+            self.pw.append((((a * e + b * g) % p, (a * f + b * h) % p), ((c * e + d * g) % p, (c * f + d * h) % p)))
+        assert self.pw[k] == ((1, 0), (0, 1)), "M^k != I"
+        self.elems = [(x, y, j) for x in range(p) for y in range(p) for j in range(k)]
+        self.e = (0, 0, 0)
+
+    def mul(self, X, Y):
+        x, y, j = X
+        u, v, l = Y
+        (a, b), (c, d) = self.pw[j]
+        return ((x + a * u + b * v) % self.p, (y + c * u + d * v) % self.p, (j + l) % self.k)
+
+    def parse(self, s):
+        x, y, j = map(int, s.split(","))
+        return (x % self.p, y % self.p, j % self.k)
 
 
 class Mat:
@@ -136,6 +162,11 @@ def parse_group(tokens):
         elif t == "meta":
             fs.append(Meta(int(tokens[i + 1]), int(tokens[i + 2]), int(tokens[i + 3])))
             i += 4
+        elif t == "aff":
+            p = int(tokens[i + 1])
+            a, b, c, d = (int(x) % p for x in tokens[i + 2:i + 6])
+            fs.append(Aff(p, ((a, b), (c, d)), int(tokens[i + 6])))
+            i += 7
         elif t == "dih":
             n = int(tokens[i + 1])
             fs.append(Meta(n, 2, n - 1))
