@@ -1,0 +1,12 @@
+group psl 29 x Z_5, N=60900, identity 2030, H order 35, rows 1740, threads 1, setup 0.00s
+start cost=53
+t=30 steps=26244 evals=209953 cost=11 best=10 T=0.53
+t=60 steps=53680 evals=429441 cost=10 best=10 T=0.19
+t=90 steps=81554 evals=652433 cost=10 best=10 T=0.15
+t=120 steps=109500 evals=876001 cost=8 best=8 T=0.15
+t=150 steps=137645 evals=1101161 cost=8 best=8 T=0.15
+t=180 steps=166405 evals=1331241 cost=8 best=8 T=0.15
+t=210 steps=196171 evals=1569369 cost=8 best=8 T=0.15
+t=240 steps=226293 evals=1810345 cost=8 best=8 T=0.15
+t=270 steps=255775 evals=2046201 cost=10 best=8 T=0.86
+RESULT d=6 D=9 group=psl 29 x Z_5 N=60900 best=8 evals=2287313 time=300.0

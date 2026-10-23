@@ -2,3 +2,11 @@ group prod psl 8 poly x^3+x+1 sl 5 x Z_1, N=60480, identity 6740, H order 45, ro
 start cost=89
 t=30 steps=29141 evals=233129 cost=8 best=7 T=0.53
 t=60 steps=59035 evals=472281 cost=2 best=2 T=0.19
+t=90 steps=89294 evals=714353 cost=2 best=2 T=0.15
+t=120 steps=119383 evals=955065 cost=2 best=2 T=0.15
+t=150 steps=149688 evals=1197505 cost=2 best=2 T=0.15
+t=180 steps=180597 evals=1444777 cost=2 best=2 T=0.15
+t=210 steps=210325 evals=1682601 cost=2 best=2 T=1.46
+t=240 steps=239679 evals=1917433 cost=2 best=2 T=0.52
+t=270 steps=269592 evals=2156737 cost=2 best=2 T=0.18
+RESULT d=6 D=9 group=prod psl 8 poly x^3+x+1 sl 5 x Z_1 N=60480 best=2 evals=2388537 time=300.0

@@ -1,0 +1,12 @@
+group pgl 19 x Z_9, N=61560, identity 0, H order 60, rows 1026, threads 1, setup 0.00s
+start cost=106
+t=30 steps=42962 evals=343697 cost=14 best=10 T=0.53
+t=60 steps=85724 evals=685793 cost=14 best=10 T=0.19
+t=90 steps=128575 evals=1028601 cost=11 best=10 T=0.15
+t=120 steps=171559 evals=1372473 cost=11 best=10 T=0.15
+t=150 steps=214489 evals=1715913 cost=10 best=10 T=0.15
+t=180 steps=258007 evals=2064057 cost=10 best=10 T=0.62
+t=210 steps=302385 evals=2419081 cost=10 best=10 T=0.22
+t=240 steps=346610 evals=2772881 cost=10 best=10 T=0.15
+t=270 steps=390430 evals=3123441 cost=10 best=10 T=0.15
+RESULT d=6 D=9 group=pgl 19 x Z_9 N=61560 best=10 evals=3471129 time=300.0
