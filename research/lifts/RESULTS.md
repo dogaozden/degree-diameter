@@ -2,16 +2,17 @@
 
 ## Summary
 
-- **Three cells taken from the table.** Every graph was checked four ways: lift.c's BFS; an independent Python
+- **Four cells taken from the table.** Every graph was checked four ways: lift.c's BFS; an independent Python
   rebuild; all-pairs BFS with no symmetry assumed; and, for Haar graphs, the repo's build_haar2.py. Details in §2.0.
 
   | cell | table (holder) | ours | construction |
   |---|---|---|---|
   | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
-  | (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
+  | (4,10) | 11,748 (Loz) | **11,772** (+0.2 %) | Haar graph of Z218 ⋊₃ Z27 (metacyclic) | `sols/d4D10_n11772_haar_meta218_27_3.txt` |
+| (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
   | (5,10) | 90,068 (Loz) | **93,444** | Haar graph of Z1797 ⋊₂₁₂ Z26 |
 
-  The (5,9) and (5,10) values may still rise; the last sweeps were still finding solutions.
+  The (4,10), (5,9) and (5,10) values may still rise; the last sweeps were still finding solutions.
 - **Exact rebuilds of table records**, proved isomorphic with BLISS:
   - (7,3) 80, from the only published voltage assignment;
   - (3,7) 168, Conder's graph, as a 2+2-base lift;
@@ -77,6 +78,8 @@ the repo's build_haar2.py:
 - (5,10) 91,812: sha256 90994a5f…;
 - (5,10) 91,756: sha256 a28102a9…;
 - (5,10) 91,728: sha256 32998e69…;
+- (4,10) 11,772: sha256 4665f9f1…. A networkx all-pairs diameter is also in
+  `verify/d4D10_n11772_haar_meta218_27_3.networkx.txt`;
 - (5,9) 28,842: sha256 aab0d5cb…;
 - (5,9) 28,560: sha256 5b6247d3…;
 - (5,9) 28,444: sha256 766dfcd6…;
@@ -183,7 +186,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (4,9) | 4970 (Loz) | 19,682 | – | rich and wide lift sweeps (orders 4972–5100): no solution; haar_gen3 sweep queued |
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,842** | **new record** (§2.0); above it (N up to 14,700) best cost 2 |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
-| (4,10) | 11748 (Loz) | 59,048 | – | rich lift sweep (orders 11750–12000): no solution; wide sweep and haar_gen3 sweep running |
+| **(4,10)** | 11748 (Loz) | 59,048 | **11,772** | **new record**: Haar(Z218 ⋊₃ Z27), found in 2 s by the haar_gen3 sweep (N = 5,875–6,050), which is still running. The rich lift sweep (orders 11750–12000) found nothing |
 | **(5,10)** | 90068 (Loz) | 699,050 | **93,444** | **new record** (§2.0); push to N = 48,500 running |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
