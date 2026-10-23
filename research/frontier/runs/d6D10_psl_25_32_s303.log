@@ -1,0 +1,12 @@
+group psl 25 poly x^2+2 x Z_32, N=249600, identity 9600, H order 52, rows 4800, threads 1, setup 0.01s
+start cost=29
+t=30 steps=13015 evals=104121 cost=4 best=3 T=0.53
+t=60 steps=26473 evals=211785 cost=2 best=2 T=0.19
+t=90 steps=39865 evals=318921 cost=2 best=2 T=0.15
+t=120 steps=53457 evals=427657 cost=2 best=2 T=0.15
+t=150 steps=67031 evals=536249 cost=2 best=2 T=0.15
+t=180 steps=80884 evals=647073 cost=2 best=2 T=0.15
+t=210 steps=94591 evals=756729 cost=6 best=2 T=0.90
+t=240 steps=108577 evals=868617 cost=3 best=2 T=0.32
+t=270 steps=121709 evals=973673 cost=3 best=2 T=0.15
+RESULT d=6 D=10 group=psl 25 poly x^2+2 x Z_32 N=249600 best=2 evals=1082249 time=300.0

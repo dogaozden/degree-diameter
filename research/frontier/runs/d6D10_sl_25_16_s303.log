@@ -1,0 +1,14 @@
+group sl 25 poly x^2+2 x Z_16, N=249600, identity 9600, H order 52, rows 4800, threads 1, setup 0.01s
+start cost=52
+t=30 steps=12526 evals=100209 cost=4 best=2 T=0.53
+t=60 steps=25538 evals=204305 cost=1 best=1 T=0.19
+t=90 steps=38495 evals=307961 cost=1 best=1 T=0.15
+t=120 steps=51778 evals=414225 cost=1 best=1 T=0.15
+t=150 steps=64870 evals=518961 cost=1 best=1 T=0.15
+t=180 steps=78287 evals=626297 cost=1 best=1 T=0.15
+t=210 steps=91351 evals=730809 cost=5 best=1 T=0.95
+t=240 steps=105032 evals=840257 cost=6 best=1 T=0.34
+t=270 steps=117659 evals=941273 cost=2 best=1 T=0.15
+RESULT d=6 D=10 group=sl 25 poly x^2+2 x Z_16 N=249600 best=0 evals=1014057 time=291.0
+full diameter check: OK
+wrote sols/d6D10_sl_25_16_s303.txt
