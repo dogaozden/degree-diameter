@@ -1,2 +1,10 @@
 group psl 23 x Z_39, N=236808, identity 9867
 start cost=18
+t=30 steps=177 evals=1417 cost=4 best=2 T=0.53
+t=60 steps=366 evals=2929 cost=1 best=1 T=0.19
+t=90 steps=551 evals=4409 cost=1 best=1 T=0.15
+t=120 steps=737 evals=5897 cost=1 best=1 T=0.15
+t=150 steps=926 evals=7409 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=psl 23 x Z_39 N=236808 best=0 evals=7849 time=159.2
+full diameter check: OK
+wrote sols/d9D8_psl_23_39_s2.txt
