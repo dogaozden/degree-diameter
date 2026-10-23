@@ -1,3 +1,10 @@
 group prod sl 11 sl 11 x Z_1, N=1742400, identity 145310, H order 60, rows 29040, threads 1, setup 0.09s
 start cost=62
 t=30 steps=511 evals=4089 cost=24 best=24 T=0.53
+t=60 steps=1148 evals=9185 cost=24 best=24 T=0.19
+t=90 steps=1814 evals=14513 cost=18 best=18 T=0.15
+t=120 steps=2450 evals=19601 cost=18 best=18 T=0.15
+t=150 steps=3109 evals=24873 cost=18 best=18 T=0.15
+t=180 steps=3753 evals=30025 cost=18 best=18 T=0.15
+t=210 steps=4415 evals=35321 cost=18 best=18 T=0.15
+t=240 steps=5084 evals=40673 cost=18 best=18 T=0.90
