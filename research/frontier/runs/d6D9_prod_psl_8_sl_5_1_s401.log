@@ -3,3 +3,10 @@ start cost=221
 t=30 steps=17392 evals=139137 cost=6 best=6 T=0.53
 t=60 steps=35536 evals=284289 cost=3 best=3 T=0.19
 t=90 steps=52978 evals=423825 cost=3 best=3 T=0.15
+t=120 steps=70537 evals=564297 cost=3 best=3 T=0.15
+t=150 steps=88784 evals=710273 cost=3 best=3 T=0.15
+t=180 steps=106277 evals=850217 cost=3 best=3 T=0.15
+t=210 steps=124668 evals=997345 cost=5 best=3 T=0.59
+t=240 steps=143210 evals=1145681 cost=5 best=3 T=0.21
+t=270 steps=161429 evals=1291433 cost=3 best=3 T=0.15
+RESULT d=6 D=9 group=prod psl 8 poly x^3+x+1 sl 5 x Z_1 N=60480 best=3 evals=1437121 time=300.0
