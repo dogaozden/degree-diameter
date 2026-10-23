@@ -1,2 +1,12 @@
 group psl 17 x Z_45, N=110160, identity 6120, H order 60, rows 1836, threads 1, setup 0.01s
 start cost=26
+t=30 steps=26276 evals=210209 cost=3 best=3 T=0.53
+t=60 steps=52444 evals=419553 cost=2 best=2 T=0.19
+t=90 steps=78806 evals=630449 cost=2 best=2 T=0.15
+t=120 steps=105416 evals=843329 cost=1 best=1 T=0.15
+t=150 steps=132056 evals=1056449 cost=1 best=1 T=0.15
+t=180 steps=158964 evals=1271713 cost=1 best=1 T=0.15
+t=210 steps=185577 evals=1484617 cost=1 best=1 T=0.15
+t=240 steps=212244 evals=1697953 cost=1 best=1 T=0.15
+t=270 steps=238874 evals=1910993 cost=3 best=1 T=0.56
+RESULT d=8 D=8 group=psl 17 x Z_45 N=110160 best=1 evals=2118473 time=300.0
