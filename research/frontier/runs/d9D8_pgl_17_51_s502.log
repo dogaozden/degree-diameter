@@ -1,3 +1,6 @@
 group pgl 17 x Z_51, N=249696, identity 0, H order 51, rows 4896, threads 1, setup 0.01s
 start cost=30
-RESULT d=9 D=8 group=pgl 17 x Z_51 N=249696 best=5 evals=20473 time=5.4
+t=30 steps=14643 evals=117145 cost=5 best=4 T=0.53
+t=60 steps=29070 evals=232561 cost=3 best=3 T=0.19
+t=90 steps=43875 evals=351001 cost=3 best=3 T=0.15
+t=120 steps=58888 evals=471105 cost=3 best=3 T=0.15
