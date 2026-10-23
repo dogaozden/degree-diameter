@@ -1,22 +1,22 @@
-group prod psl 9 poly x^2+1 sl 11 x Z_7, N=3326400, identity 333410, H order 60, rows 55440, threads 1, setup 0.17s
+group prod psl 9 poly x^2+1 sl 11 x Z_7, N=3326400, identity 333410, H order 60, rows 55440, threads 1, setup 0.11s
 start cost=27
-t=30 steps=698 evals=5585 cost=12 best=12 T=0.53
-t=60 steps=1410 evals=11281 cost=10 best=10 T=0.19
-t=90 steps=2113 evals=16905 cost=10 best=10 T=0.15
-t=120 steps=2822 evals=22577 cost=8 best=8 T=0.15
-t=150 steps=3554 evals=28433 cost=8 best=8 T=0.15
-t=180 steps=4254 evals=34033 cost=8 best=8 T=0.15
-t=210 steps=4971 evals=39769 cost=8 best=8 T=0.15
-t=240 steps=5686 evals=45489 cost=8 best=8 T=0.15
-t=270 steps=6395 evals=51161 cost=11 best=8 T=0.92
-t=300 steps=7127 evals=57017 cost=8 best=8 T=0.33
-t=330 steps=7839 evals=62713 cost=8 best=8 T=0.15
-t=360 steps=8550 evals=68401 cost=10 best=8 T=0.15
-t=390 steps=9275 evals=74201 cost=10 best=8 T=0.15
-t=420 steps=10005 evals=80041 cost=14 best=8 T=0.92
-t=450 steps=10710 evals=85681 cost=10 best=8 T=0.33
-t=480 steps=11431 evals=91449 cost=10 best=8 T=0.15
-t=510 steps=12136 evals=97089 cost=10 best=8 T=0.15
-t=540 steps=12797 evals=102377 cost=10 best=8 T=0.15
-t=570 steps=13507 evals=108057 cost=10 best=8 T=0.92
-RESULT d=13 D=8 group=prod psl 9 poly x^2+1 sl 11 x Z_7 N=3326400 best=8 evals=113377 time=599.5
+t=30 steps=703 evals=5625 cost=12 best=12 T=0.53
+t=60 steps=1398 evals=11185 cost=10 best=10 T=0.19
+t=90 steps=2101 evals=16809 cost=10 best=10 T=0.15
+t=120 steps=2805 evals=22441 cost=8 best=8 T=0.15
+t=150 steps=3499 evals=27993 cost=8 best=8 T=0.15
+t=180 steps=4202 evals=33617 cost=8 best=8 T=0.15
+t=210 steps=4907 evals=39257 cost=8 best=8 T=0.15
+t=240 steps=5600 evals=44801 cost=8 best=8 T=0.15
+t=270 steps=6300 evals=50401 cost=9 best=8 T=0.95
+t=300 steps=6996 evals=55969 cost=11 best=8 T=0.34
+t=330 steps=7670 evals=61361 cost=8 best=8 T=0.15
+t=360 steps=8370 evals=66961 cost=7 best=7 T=0.15
+t=390 steps=9058 evals=72465 cost=7 best=7 T=0.15
+t=420 steps=9752 evals=78017 cost=7 best=7 T=0.15
+t=450 steps=10457 evals=83657 cost=7 best=7 T=0.15
+t=480 steps=11185 evals=89481 cost=7 best=7 T=0.15
+t=510 steps=11890 evals=95121 cost=7 best=7 T=1.43
+t=540 steps=12587 evals=100697 cost=7 best=7 T=0.50
+t=570 steps=13295 evals=106361 cost=7 best=7 T=0.18
+t=600 steps=13989 evals=111913 cost=7 best=7 T=0.15
