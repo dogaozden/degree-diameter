@@ -1,0 +1,724 @@
+# bigcheck_indep validation, 2026-10-23T21:22:34Z
+# machine: nproc=4; free -g: total 15 used 0 free 15
+# git: e3b9561 ; checker sha256 24d8499f5fa47d5d
+# build: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c
+# note: the checker's per-level progress lines go to stderr and are discarded here (2>/dev/null); stdout is shown in full.
+
+################################################################
+# (a) level sizes vs research/frontier/check_haar_indep.py on known records on master
+################################################################
+
+=== (a) d9D8_pgl_61_1_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d9D8_pgl_61_1_s1.txt
+header: 9 8 pgl 61 n 1 N 226920
+d=9 D=8
+group: PGL(2,61) [order 226920] x Z_1; |G| = 226920, vertices 2|G| = 453840
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 226920 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160414, 192533, 61888] [0.1s]
+BFS from B: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160185, 192533, 62117] [0.1s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.1s
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=453840
+[wall 0.103s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d9D8_pgl_61_1_s1.txt
+header: d=9 D=8 spec=pgl 61 NCYC=1 N=226920
+group order |G|=226920 (factors [226920]), x Z_1 -> 226920; vertices 2N=453840
+distinct generators (as full group elements): 9 of d=9
+permutations built (1s)
+BFS from A: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160414, 192533, 61888]
+BFS from B: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160185, 192533, 62117]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=453840 (1s)
+
+[wall 1.147s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 9, 72, 576, 4545, 33802, 160414, 192533, 61888]'), ('B', '[1, 9, 72, 576, 4545, 33802, 160185, 192533, 62117]')]
+python: [('A', '[1, 9, 72, 576, 4545, 33802, 160414, 192533, 61888]'), ('B', '[1, 9, 72, 576, 4545, 33802, 160185, 192533, 62117]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d6D10_psl_23_38_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d6D10_psl_23_38_s1.txt
+header: 6 10 psl 23 n 38 N 230736
+d=6 D=10
+group: PSL(2,23) [order 6072] x Z_38; |G| = 230736, vertices 2|G| = 461472
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 6 distinct group elements, all in the group [0.0s]
+neighbour check (full: 230736 vertices per side): every vertex has 6 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18183, 77013, 185610, 149827, 26162] [0.0s]
+BFS from B: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18187, 77013, 185461, 149827, 26307] [0.1s]
+max degree = min degree = 6, no repeated edges (checked above)
+elapsed 0.1s
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=461472
+[wall 0.058s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d6D10_psl_23_38_s1.txt
+header: d=6 D=10 spec=psl 23 NCYC=38 N=230736
+group order |G|=6072 (factors [6072]), x Z_38 -> 230736; vertices 2N=461472
+distinct generators (as full group elements): 6 of d=6
+permutations built (0s)
+BFS from A: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18183, 77013, 185610, 149827, 26162]
+BFS from B: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18187, 77013, 185461, 149827, 26307]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=461472 (0s)
+
+[wall 0.310s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 6, 30, 150, 750, 3740, 18183, 77013, 185610, 149827, 26162]'), ('B', '[1, 6, 30, 150, 750, 3740, 18187, 77013, 185461, 149827, 26307]')]
+python: [('A', '[1, 6, 30, 150, 750, 3740, 18183, 77013, 185610, 149827, 26162]'), ('B', '[1, 6, 30, 150, 750, 3740, 18187, 77013, 185461, 149827, 26307]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d9D8_sl_19_34_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d9D8_sl_19_34_s1.txt
+header: 9 8 sl 19 n 34 N 232560
+d=9 D=8
+group: SL(2,19) [order 6840] x Z_34; |G| = 232560, vertices 2|G| = 465120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 232560 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163600, 197991, 64323] [0.1s]
+BFS from B: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163752, 197991, 64171] [0.1s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.1s
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=465120
+[wall 0.092s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d9D8_sl_19_34_s1.txt
+header: d=9 D=8 spec=sl 19 NCYC=34 N=232560
+group order |G|=6840 (factors [6840]), x Z_34 -> 232560; vertices 2N=465120
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163600, 197991, 64323]
+BFS from B: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163752, 197991, 64171]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=465120 (0s)
+
+[wall 0.431s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 9, 72, 576, 4564, 33984, 163600, 197991, 64323]'), ('B', '[1, 9, 72, 576, 4564, 33984, 163752, 197991, 64171]')]
+python: [('A', '[1, 9, 72, 576, 4564, 33984, 163600, 197991, 64323]'), ('B', '[1, 9, 72, 576, 4564, 33984, 163752, 197991, 64171]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d6D10_psl_27_25_s101 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d6D10_psl_27_25_s101.txt
+header: 6 10 psl 27 poly x^3+2x+1 n 25 N 245700
+d=6 D=10
+group: PSL(2,27) [order 9828] x Z_25; |G| = 245700, vertices 2|G| = 491400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 6 distinct group elements, all in the group [0.0s]
+neighbour check (full: 245700 vertices per side): every vertex has 6 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18252, 78323, 195391, 163476, 31276] [0.1s]
+BFS from B: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18260, 78323, 195250, 163476, 31409] [0.1s]
+max degree = min degree = 6, no repeated edges (checked above)
+elapsed 0.1s
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=491400
+[wall 0.077s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d6D10_psl_27_25_s101.txt
+header: d=6 D=10 spec=psl 27 poly x^3+2x+1 NCYC=25 N=245700
+group order |G|=9828 (factors [9828]), x Z_25 -> 245700; vertices 2N=491400
+distinct generators (as full group elements): 6 of d=6
+permutations built (0s)
+BFS from A: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18252, 78323, 195391, 163476, 31276]
+BFS from B: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18260, 78323, 195250, 163476, 31409]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=491400 (0s)
+
+[wall 0.311s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 6, 30, 150, 750, 3745, 18252, 78323, 195391, 163476, 31276]'), ('B', '[1, 6, 30, 150, 750, 3745, 18260, 78323, 195250, 163476, 31409]')]
+python: [('A', '[1, 6, 30, 150, 750, 3745, 18252, 78323, 195391, 163476, 31276]'), ('B', '[1, 6, 30, 150, 750, 3745, 18260, 78323, 195250, 163476, 31409]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d8D9_sl_37_13_orb3_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d8D9_sl_37_13_orb3_s1.txt
+header: 8 9 sl 37 n 13 N 658008
+d=8 D=9
+group: SL(2,37) [order 50616] x Z_13; |G| = 658008, vertices 2|G| = 1316016
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 658008 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.1s]
+BFS from A: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122538, 489071, 532669, 149489] [0.2s]
+BFS from B: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122560, 489071, 532647, 149489] [0.2s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 0.2s
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1316016
+[wall 0.218s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d8D9_sl_37_13_orb3_s1.txt
+header: d=8 D=9 spec=sl 37 NCYC=13 N=658008
+group order |G|=50616 (factors [50616]), x Z_13 -> 658008; vertices 2N=1316016
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122538, 489071, 532669, 149489]
+BFS from B: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122560, 489071, 532647, 149489]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1316016 (1s)
+
+[wall 1.006s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 8, 56, 392, 2744, 19048, 122538, 489071, 532669, 149489]'), ('B', '[1, 8, 56, 392, 2744, 19048, 122560, 489071, 532647, 149489]')]
+python: [('A', '[1, 8, 56, 392, 2744, 19048, 122538, 489071, 532669, 149489]'), ('B', '[1, 8, 56, 392, 2744, 19048, 122560, 489071, 532647, 149489]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d8D9_prod_psl_7_sl_9_5_s101 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d8D9_prod_psl_7_sl_9_5_s101.txt
+header: 8 9 prod psl 7 sl 9 poly x^2+1 n 5 N 604800
+d=8 D=9
+group: PSL(2,7) [order 168] x SL(2,9) [order 720] x Z_5; |G| = 604800, vertices 2|G| = 1209600
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 604800 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.2s]
+BFS from A: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120637, 463296, 481362, 122096] [0.2s]
+BFS from B: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120703, 463296, 481296, 122096] [0.3s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 0.3s
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1209600
+[wall 0.305s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d8D9_prod_psl_7_sl_9_5_s101.txt
+header: d=8 D=9 spec=prod psl 7 sl 9 poly x^2+1 NCYC=5 N=604800
+group order |G|=120960 (factors [168, 720]), x Z_5 -> 604800; vertices 2N=1209600
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120637, 463296, 481362, 122096]
+BFS from B: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120703, 463296, 481296, 122096]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1209600 (1s)
+
+[wall 0.627s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 8, 56, 392, 2744, 19008, 120637, 463296, 481362, 122096]'), ('B', '[1, 8, 56, 392, 2744, 19008, 120703, 463296, 481296, 122096]')]
+python: [('A', '[1, 8, 56, 392, 2744, 19008, 120637, 463296, 481362, 122096]'), ('B', '[1, 8, 56, 392, 2744, 19008, 120703, 463296, 481296, 122096]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d7D10_psl_67_7_s101 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d7D10_psl_67_7_s101.txt
+header: 7 10 psl 67 n 7 N 1052436
+d=7 D=10
+group: PSL(2,67) [order 150348] x Z_7; |G| = 1052436, vertices 2|G| = 2104872
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 7 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1052436 vertices per side): every vertex has 7 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.1s]
+BFS from A: ecc=10 reached 2104872 of 2104872 (unreached 0); level sizes [1, 7, 42, 252, 1510, 9033, 53073, 279729, 845255, 763415, 152555] [0.3s]
+BFS from B: ecc=10 reached 2104872 of 2104872 (unreached 0); level sizes [1, 7, 42, 252, 1510, 9033, 53069, 279729, 845066, 763415, 152748] [0.4s]
+max degree = min degree = 7, no repeated edges (checked above)
+elapsed 0.4s
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2104872
+[wall 0.367s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d7D10_psl_67_7_s101.txt
+header: d=7 D=10 spec=psl 67 NCYC=7 N=1052436
+group order |G|=150348 (factors [150348]), x Z_7 -> 1052436; vertices 2N=2104872
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=10 reached 2104872 of 2104872 (unreached 0); level sizes [1, 7, 42, 252, 1510, 9033, 53073, 279729, 845255, 763415, 152555]
+BFS from B: ecc=10 reached 2104872 of 2104872 (unreached 0); level sizes [1, 7, 42, 252, 1510, 9033, 53069, 279729, 845066, 763415, 152748]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2104872 (1s)
+
+[wall 1.405s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 7, 42, 252, 1510, 9033, 53073, 279729, 845255, 763415, 152555]'), ('B', '[1, 7, 42, 252, 1510, 9033, 53069, 279729, 845066, 763415, 152748]')]
+python: [('A', '[1, 7, 42, 252, 1510, 9033, 53073, 279729, 845255, 763415, 152555]'), ('B', '[1, 7, 42, 252, 1510, 9033, 53069, 279729, 845066, 763415, 152748]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d9D9_sl_73_4_s111 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d9D9_sl_73_4_s111.txt
+header: 9 9 sl 73 n 4 N 1555776
+d=9 D=9
+group: SL(2,73) [order 388944] x Z_4; |G| = 1555776, vertices 2|G| = 3111552
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1555776 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.2s]
+BFS from A: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269326, 1189766, 1281769, 328895] [0.4s]
+BFS from B: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269382, 1189766, 1281713, 328895] [0.5s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.5s
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3111552
+[wall 0.518s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d9D9_sl_73_4_s111.txt
+header: d=9 D=9 spec=sl 73 NCYC=4 N=1555776
+group order |G|=388944 (factors [388944]), x Z_4 -> 1555776; vertices 2N=3111552
+distinct generators (as full group elements): 9 of d=9
+permutations built (2s)
+BFS from A: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269326, 1189766, 1281769, 328895]
+BFS from B: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269382, 1189766, 1281713, 328895]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3111552 (3s)
+
+[wall 2.895s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 9, 72, 576, 4608, 36530, 269326, 1189766, 1281769, 328895]'), ('B', '[1, 9, 72, 576, 4608, 36530, 269382, 1189766, 1281713, 328895]')]
+python: [('A', '[1, 9, 72, 576, 4608, 36530, 269326, 1189766, 1281769, 328895]'), ('B', '[1, 9, 72, 576, 4608, 36530, 269382, 1189766, 1281713, 328895]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d13D8_prod_sl_8_sl_8_13_orb3_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+header: 13 8 prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13 N 3302208
+d=13 D=8
+group: SL(2,8) [order 504] x SL(2,8) [order 504] x Z_13; |G| = 3302208, vertices 2|G| = 6604416
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 13 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3302208 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [1.0s]
+BFS from A: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234] [1.7s]
+BFS from B: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682] [2.5s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 2.5s
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6604416
+[wall 2.459s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+header: d=13 D=8 spec=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 NCYC=13 N=3302208
+group order |G|=254016 (factors [504, 504]), x Z_13 -> 3302208; vertices 2N=6604416
+distinct generators (as full group elements): 13 of d=13
+permutations built (0s)
+BFS from A: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234]
+BFS from B: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6604416 (4s)
+
+[wall 4.578s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234]'), ('B', '[1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682]')]
+python: [('A', '[1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234]'), ('B', '[1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d8D10_pgl_43_45_s111 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d8D10_pgl_43_45_s111.txt
+header: 8 10 pgl 43 n 45 N 3575880
+d=8 D=10
+group: PGL(2,43) [order 79464] x Z_45; |G| = 3575880, vertices 2|G| = 7151760
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3575880 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.5s]
+BFS from A: ecc=10 reached 7151760 of 7151760 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19168, 131981, 822717, 2890377, 2733595, 550721] [0.8s]
+BFS from B: ecc=10 reached 7151760 of 7151760 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19168, 131989, 822717, 2890144, 2733595, 550946] [1.1s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 1.1s
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7151760
+[wall 1.085s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d8D10_pgl_43_45_s111.txt
+header: d=8 D=10 spec=pgl 43 NCYC=45 N=3575880
+group order |G|=79464 (factors [79464]), x Z_45 -> 3575880; vertices 2N=7151760
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 7151760 of 7151760 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19168, 131981, 822717, 2890377, 2733595, 550721]
+BFS from B: ecc=10 reached 7151760 of 7151760 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19168, 131989, 822717, 2890144, 2733595, 550946]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7151760 (4s)
+
+[wall 3.633s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 8, 56, 392, 2744, 19168, 131981, 822717, 2890377, 2733595, 550721]'), ('B', '[1, 8, 56, 392, 2744, 19168, 131989, 822717, 2890144, 2733595, 550946]')]
+python: [('A', '[1, 8, 56, 392, 2744, 19168, 131981, 822717, 2890377, 2733595, 550721]'), ('B', '[1, 8, 56, 392, 2744, 19168, 131989, 822717, 2890144, 2733595, 550946]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d10D9_sl_81_7_s111 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d10D9_sl_81_7_s111.txt
+header: 10 9 sl 81 poly x^4+x+2 n 7 N 3719520
+d=10 D=9
+group: SL(2,81) [order 531360] x Z_7; |G| = 3719520, vertices 2|G| = 7439040
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 10 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3719520 vertices per side): every vertex has 10 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.5s]
+BFS from A: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545956, 2781410, 3166183, 872193] [0.9s]
+BFS from B: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545922, 2781410, 3166217, 872193] [1.3s]
+max degree = min degree = 10, no repeated edges (checked above)
+elapsed 1.3s
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=7439040
+[wall 1.332s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d10D9_sl_81_7_s111.txt
+header: d=10 D=9 spec=sl 81 poly x^4+x+2 NCYC=7 N=3719520
+group order |G|=531360 (factors [531360]), x Z_7 -> 3719520; vertices 2N=7439040
+distinct generators (as full group elements): 10 of d=10
+permutations built (2s)
+BFS from A: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545956, 2781410, 3166183, 872193]
+BFS from B: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545922, 2781410, 3166217, 872193]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=7439040 (6s)
+
+[wall 6.556s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 10, 90, 810, 7290, 65097, 545956, 2781410, 3166183, 872193]'), ('B', '[1, 10, 90, 810, 7290, 65097, 545922, 2781410, 3166217, 872193]')]
+python: [('A', '[1, 10, 90, 810, 7290, 65097, 545956, 2781410, 3166183, 872193]'), ('B', '[1, 10, 90, 810, 7290, 65097, 545922, 2781410, 3166217, 872193]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d10D9_sl_83_7_orb3_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt
+header: 10 9 sl 83 n 7 N 4001928
+d=10 D=9
+group: SL(2,83) [order 571704] x Z_7; |G| = 4001928, vertices 2|G| = 8003856
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 10 distinct group elements, all in the group [0.0s]
+neighbour check (full: 4001928 vertices per side): every vertex has 10 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.4s]
+BFS from A: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413] [0.8s]
+BFS from B: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413] [1.2s]
+max degree = min degree = 10, no repeated edges (checked above)
+elapsed 1.2s
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=8003856
+[wall 1.186s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt
+header: d=10 D=9 spec=sl 83 NCYC=7 N=4001928
+group order |G|=571704 (factors [571704]), x Z_7 -> 4001928; vertices 2N=8003856
+distinct generators (as full group elements): 10 of d=10
+permutations built (2s)
+BFS from A: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413]
+BFS from B: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=8003856 (7s)
+
+[wall 7.337s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413]'), ('B', '[1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413]')]
+python: [('A', '[1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413]'), ('B', '[1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413]')]
+LEVEL SIZES AGREE EXACTLY
+
+=== (a) d11D9_sl_61_37_orb3_s1 ===
+--- bigcheck_indep:
+file /home/user/degree-diameter/research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt
+header: 11 9 sl 61 n 37 N 8396040
+d=11 D=9
+group: SL(2,61) [order 226920] x Z_37; |G| = 8396040, vertices 2|G| = 16792080
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 11 distinct group elements, all in the group [0.0s]
+neighbour check (full: 8396040 vertices per side): every vertex has 11 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.9s]
+BFS from A: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020326, 6011396, 7364663, 2275008] [1.7s]
+BFS from B: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008] [2.5s]
+max degree = min degree = 11, no repeated edges (checked above)
+elapsed 2.5s
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16792080
+[wall 2.546s]
+(exit code 0)
+--- check_haar_indep.py:
+file /home/user/degree-diameter/research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt
+header: d=11 D=9 spec=sl 61 NCYC=37 N=8396040
+group order |G|=226920 (factors [226920]), x Z_37 -> 8396040; vertices 2N=16792080
+distinct generators (as full group elements): 11 of d=11
+permutations built (1s)
+BFS from A: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020326, 6011396, 7364663, 2275008]
+BFS from B: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16792080 (16s)
+
+[wall 15.888s]
+(exit code 0)
+--- comparison:
+mine  : [('A', '[1, 11, 110, 1097, 10940, 108528, 1020326, 6011396, 7364663, 2275008]'), ('B', '[1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008]')]
+python: [('A', '[1, 11, 110, 1097, 10940, 108528, 1020326, 6011396, 7364663, 2275008]'), ('B', '[1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008]')]
+LEVEL SIZES AGREE EXACTLY
+
+(a) SUMMARY: level sizes agree exactly for 13 of 13 records
+
+################################################################
+# (b) one element of S changed -> must not be reported VALID
+################################################################
+
+=== (b) b1_sl_19_34_shear1 : d9D8_sl_19_34_s1 with mode=shear on generator line 1 (diff vs original follows) ===
+2c2
+< 114049 mat(9,6,10,11) z=13
+---
+> 114049 mat(0,17,10,11) z=13
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b1_sl_19_34_shear1.txt
+header: 9 8 sl 19 n 34 N 232560
+d=9 D=8
+group: SL(2,19) [order 6840] x Z_34; |G| = 232560, vertices 2|G| = 465120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 232560 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=9 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4554, 33773, 161102, 198185, 66831, 17] [0.0s]
+BFS from B: ecc=9 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4552, 33773, 161076, 198185, 66859, 17] [0.1s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.1s
+RESULT INVALID ecc from A is 9 > D=8
+(exit code 1)
+
+=== (b) b2_psl_23_38_shear2 : d6D10_psl_23_38_s1 with mode=shear on generator line 2 (diff vs original follows) ===
+2c2
+< 219686 mat(11,10,8,22) z=8
+---
+> 219686 mat(19,9,8,22) z=8
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b2_psl_23_38_shear2.txt
+header: 6 10 psl 23 n 38 N 230736
+d=6 D=10
+group: PSL(2,23) [order 6072] x Z_38; |G| = 230736, vertices 2|G| = 461472
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 6 distinct group elements, all in the group [0.0s]
+neighbour check (full: 230736 vertices per side): every vertex has 6 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=11 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3730, 18006, 75634, 182880, 151207, 29069, 9] [0.0s]
+BFS from B: ecc=11 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3730, 18008, 75634, 182924, 151207, 29023, 9] [0.1s]
+max degree = min degree = 6, no repeated edges (checked above)
+elapsed 0.1s
+RESULT INVALID ecc from A is 11 > D=10
+(exit code 1)
+
+=== (b) b3_sl_37_13_shear3 : d8D9_sl_37_13_orb3_s1 with mode=shear on generator line 3 (diff vs original follows) ===
+2c2
+< 20327 mat(1,6,9,18) z=8
+---
+> 20327 mat(10,24,9,18) z=8
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b3_sl_37_13_shear3.txt
+header: 8 9 sl 37 n 13 N 658008
+d=8 D=9
+group: SL(2,37) [order 50616] x Z_13; |G| = 658008, vertices 2|G| = 1316016
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 658008 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.1s]
+BFS from A: ecc=10 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19033, 121784, 485678, 533387, 152897, 36] [0.1s]
+BFS from B: ecc=10 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19033, 121738, 485678, 533445, 152897, 24] [0.2s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 0.2s
+RESULT INVALID ecc from A is 10 > D=9
+(exit code 1)
+
+=== (b) b4_pgl_61_shear1 : d9D8_pgl_61_1_s1 with mode=shear on generator line 1 (diff vs original follows) ===
+2c2
+< 175705 mat(1,47,0,26) z=0
+---
+> 175705 mat(1,12,0,26) z=0
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b4_pgl_61_shear1.txt
+header: 9 8 pgl 61 n 1 N 226920
+d=9 D=8
+group: PGL(2,61) [order 226920] x Z_1; |G| = 226920, vertices 2|G| = 453840
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 226920 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=9 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4549, 33854, 160591, 192469, 61707, 12] [0.1s]
+BFS from B: ecc=9 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4549, 33854, 160649, 192469, 61649, 12] [0.1s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.1s
+RESULT INVALID ecc from A is 9 > D=8
+(exit code 1)
+
+=== (b) b5_sl_73_4_shear5 : d9D9_sl_73_4_s111 with mode=shear on generator line 5 (diff vs original follows) ===
+2c2
+< 1522488 mat(71,32,0,36) z=0
+---
+> 1522488 mat(71,68,0,36) z=0
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b5_sl_73_4_shear5.txt
+header: 9 9 sl 73 n 4 N 1555776
+d=9 D=9
+group: SL(2,73) [order 388944] x Z_4; |G| = 1555776, vertices 2|G| = 3111552
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1555776 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.2s]
+BFS from A: ecc=10 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4600, 36446, 268857, 1188787, 1282240, 329958, 6] [0.3s]
+BFS from B: ecc=10 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4600, 36446, 268863, 1188787, 1282234, 329958, 6] [0.5s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.5s
+RESULT INVALID ecc from A is 10 > D=9
+(exit code 1)
+
+=== (b) b6_sl_19_34_dup : d9D8_sl_19_34_s1 with mode=dup on generator line 2 (diff vs original follows) ===
+2c2
+< 175381 mat(14,6,9,8) z=9
+---
+> 175381 mat(1,0,0,1) z=0
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b6_sl_19_34_dup.txt
+header: 9 8 sl 19 n 34 N 232560
+d=9 D=8
+group: SL(2,19) [order 6840] x Z_34; |G| = 232560, vertices 2|G| = 465120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+RESULT INVALID generators 1 and 3 are the same group element
+(exit code 1)
+
+=== (b) b7_sl_19_34_det : d9D8_sl_19_34_s1 with mode=det on generator line 3 (diff vs original follows) ===
+2c2
+< 35527 mat(2,17,18,11) z=31
+---
+> 35527 mat(2,17,18,12) z=31
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b7_sl_19_34_det.txt
+header: 9 8 sl 19 n 34 N 232560
+d=9 D=8
+group: SL(2,19) [order 6840] x Z_34; |G| = 232560, vertices 2|G| = 465120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+RESULT INVALID generator 4: matrix (2,17,18,12) is not in SL(2,19) (det=3)
+(exit code 1)
+
+=== (b) b8_disconnected : hand-made file, 3 upper-unitriangular generators in SL(2,19) x Z_1 (they generate a proper subgroup) ===
+3 20 sl 19 n 1 N 6840
+0 mat(1,1,0,1) z=0
+1 mat(1,2,0,1) z=0
+2 mat(1,3,0,1) z=0
+--- bigcheck_indep:
+file /tmp/claude-0/-home-user-degree-diameter/f4f8f3ab-157f-5f10-9027-76cabfedebc0/scratchpad/val/b8_disconnected.txt
+header: 3 20 sl 19 n 1 N 6840
+d=3 D=20
+group: SL(2,19) [order 6840] x Z_1; |G| = 6840, vertices 2|G| = 13680
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 3 distinct group elements, all in the group [0.0s]
+neighbour check (full: 6840 vertices per side): every vertex has 3 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.0s]
+BFS from A: ecc=10 reached 38 of 13680 (unreached 13642); level sizes [1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 2] [0.0s]
+BFS from B: ecc=10 reached 38 of 13680 (unreached 13642); level sizes [1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 2] [0.0s]
+max degree = min degree = 3, no repeated edges (checked above)
+elapsed 0.0s
+RESULT INVALID BFS from A reaches only 38 of 13680 vertices
+(exit code 1)
+--- check_haar_indep.py:
+BFS from B: ecc=10 reached 38 of 13680 (unreached 13642); level sizes [1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 2]
+every vertex has exactly 3 distinct neighbours: True
+RESULT INVALID d=3 D=20 eccA=10 eccB=10 n=13680 (0s)
+
+
+--- cross-check of two modified files with check_haar_indep.py:
+== b1_sl_19_34_shear1
+BFS from B: ecc=9 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4552, 33773, 161076, 198185, 66859, 17]
+every vertex has exactly 9 distinct neighbours: True
+RESULT INVALID d=9 D=8 eccA=9 eccB=9 n=465120 (0s)
+
+== b2_psl_23_38_shear2
+BFS from B: ecc=11 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3730, 18008, 75634, 182924, 151207, 29023, 9]
+every vertex has exactly 6 distinct neighbours: True
+RESULT INVALID d=6 D=10 eccA=11 eccB=11 n=461472 (0s)
+
+
+################################################################
+# (c) D lowered by 1 -> must be INVALID (these records are tight: max ecc == D)
+################################################################
+
+=== (c) d9D8_pgl_61_1_s1 with --D 7 (header D=8) ===
+d=9 D=7 (overridden by --D)
+BFS from A: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160414, 192533, 61888] [0.1s]
+BFS from B: ecc=8 reached 453840 of 453840 (unreached 0); level sizes [1, 9, 72, 576, 4545, 33802, 160185, 192533, 62117] [0.1s]
+RESULT INVALID ecc from A is 8 > D=7
+(exit code 1)
+
+=== (c) d6D10_psl_23_38_s1 with --D 9 (header D=10) ===
+d=6 D=9 (overridden by --D)
+BFS from A: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18183, 77013, 185610, 149827, 26162] [0.0s]
+BFS from B: ecc=10 reached 461472 of 461472 (unreached 0); level sizes [1, 6, 30, 150, 750, 3740, 18187, 77013, 185461, 149827, 26307] [0.0s]
+RESULT INVALID ecc from A is 10 > D=9
+(exit code 1)
+
+=== (c) d9D8_sl_19_34_s1 with --D 7 (header D=8) ===
+d=9 D=7 (overridden by --D)
+BFS from A: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163600, 197991, 64323] [0.1s]
+BFS from B: ecc=8 reached 465120 of 465120 (unreached 0); level sizes [1, 9, 72, 576, 4564, 33984, 163752, 197991, 64171] [0.1s]
+RESULT INVALID ecc from A is 8 > D=7
+(exit code 1)
+
+=== (c) d8D9_sl_37_13_orb3_s1 with --D 8 (header D=9) ===
+d=8 D=8 (overridden by --D)
+BFS from A: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122538, 489071, 532669, 149489] [0.1s]
+BFS from B: ecc=9 reached 1316016 of 1316016 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19048, 122560, 489071, 532647, 149489] [0.2s]
+RESULT INVALID ecc from A is 9 > D=8
+(exit code 1)
+
+=== (c) d9D9_sl_73_4_s111 with --D 8 (header D=9) ===
+d=9 D=8 (overridden by --D)
+BFS from A: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269326, 1189766, 1281769, 328895] [0.4s]
+BFS from B: ecc=9 reached 3111552 of 3111552 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36530, 269382, 1189766, 1281713, 328895] [0.6s]
+RESULT INVALID ecc from A is 9 > D=8
+(exit code 1)
+
+=== (c) d13D8_prod_sl_8_sl_8_13_orb3_s1 with --D 7 (header D=8) ===
+d=13 D=7 (overridden by --D)
+BFS from A: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234] [1.6s]
+BFS from B: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682] [2.3s]
+RESULT INVALID ecc from A is 8 > D=7
+(exit code 1)
+
+=== (c) d10D9_sl_83_7_orb3_s1 with --D 8 (header D=9) ===
+d=10 D=8 (overridden by --D)
+BFS from A: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413] [1.1s]
+BFS from B: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413] [1.5s]
+RESULT INVALID ecc from A is 9 > D=8
+(exit code 1)
+
+################################################################
+# (d) an unsupported family is rejected with a clear message
+################################################################
+=== d6D7_meta_279_15_7_1_s1 ===
+RESULT UNSUPPORTED group family 'meta' (supported: sl, psl, pgl, prod of two of them; times Z_n)
+(exit code 2)
+
+# done 2026-10-23T21:23:38Z
