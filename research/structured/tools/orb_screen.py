@@ -1,9 +1,10 @@
 """Screen groups for symmetric (orbit) search.
-usage: python3 orb_screen.py d D LO HI "k m f" [--samples 1000] [--bin PATH] [--fams sl,psl,pgl,prod] [--anyn] [--top 20]
+usage: python3 orb_screen.py d D LO HI "k m f" [--samples 1000] [--bin PATH] [--fams sl,psl,pgl,prod] [--anyn] [--top 20] [--list]
 Lists G = Q x Z_n with LO <= |G| <= HI (Q = SL/PSL/PGL(2,q), or a product of two with a small first factor), keeps n
 whose prime factors are all 1 mod k (so z -> r z has only the fixed point 0) unless --anyn, runs
 'ORBIT="k m f" RANDORB=samples haar_sym ...' on each and prints them ranked by (p1 + p10)/2 of the cost, with mu and
-|Fix(alpha)|.  Lines: rank, N, mu, fix, min, p1, p10, median, spec."""
+|Fix(alpha)|.  Lines: rank, N, mu, fix, min, p1, p10, median, spec.  --list: only list the candidates with mu (for
+groups too large to screen)."""
 import sys, os, math, subprocess, re
 args = sys.argv[1:]
 d, D, lo, hi = int(args[0]), int(args[1]), int(args[2]), int(args[3]); kmf = args[4]
@@ -11,7 +12,7 @@ opt = {'samples': '1000', 'bin': os.path.join(os.path.dirname(os.path.abspath(__
 flags = set()
 i = 5
 while i < len(args):
-    if args[i] in ('--anyn',): flags.add(args[i][2:]); i += 1
+    if args[i] in ('--anyn', '--list'): flags.add(args[i][2:]); i += 1
     else: opt[args[i][2:]] = args[i + 1]; i += 2
 k = int(kmf.split()[0])
 def W(d, D):
@@ -49,6 +50,9 @@ for s, o in base + prods:
         if 'anyn' not in flags and n > 1 and any(p % k != 1 for p in factor(n)): continue
         cands.add((N, '%s %d' % (s, n)))
 w = W(d, D)
+if 'list' in flags:
+    for N, spec in sorted(cands): print('N=%d 2N=%d mu=%.1f  %s' % (N, 2 * N, N * math.exp(-w / N), spec))
+    sys.exit(0)
 rows = []
 for N, spec in sorted(cands):
     mu = N * math.exp(-w / N)
