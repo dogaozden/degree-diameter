@@ -1,0 +1,18 @@
+machine: nproc=4, free -g: total=15 used=0 free=14 available=15
+--- build_haar2.py ---
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6604416 edges = 42928704 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = 3aad62b851ff9400d73a917ba5f9e02e77a5cb53351db3df72923a51a1d96b58
+VALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416
+--- check_haar_indep.py ---
+file /home/user/degree-diameter/research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+header: d=13 D=8 spec=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 NCYC=13 N=3302208
+group order |G|=254016 (factors [504, 504]), x Z_13 -> 3302208; vertices 2N=6604416
+distinct generators (as full group elements): 13 of d=13
+permutations built (0s)
+BFS from A: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234]
+BFS from B: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6604416 (4s)
+
