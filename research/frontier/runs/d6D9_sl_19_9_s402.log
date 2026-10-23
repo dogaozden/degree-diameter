@@ -1,3 +1,12 @@
 group sl 19 x Z_9, N=61560, identity 3078, H order 60, rows 1026, threads 1, setup 0.00s
 start cost=102
 t=30 steps=26300 evals=210401 cost=6 best=6 T=0.53
+t=60 steps=52292 evals=418337 cost=6 best=6 T=0.19
+t=90 steps=79203 evals=633625 cost=6 best=6 T=0.15
+t=120 steps=106804 evals=854433 cost=6 best=6 T=0.15
+t=150 steps=132921 evals=1063369 cost=6 best=6 T=0.15
+t=180 steps=159112 evals=1272897 cost=6 best=6 T=1.09
+t=210 steps=185305 evals=1482441 cost=6 best=6 T=0.39
+t=240 steps=211589 evals=1692713 cost=6 best=6 T=0.15
+t=270 steps=238021 evals=1904169 cost=2 best=2 T=0.15
+RESULT d=6 D=9 group=sl 19 x Z_9 N=61560 best=2 evals=2119601 time=300.0
