@@ -87,7 +87,15 @@ Measured with `RANDORB` (cost of random symmetric S) and `LEVELS` (ball growth);
 5. **One orbit is too few.** For Δ = 6 the only odd choices are f = 3, k = 3, m = 1 or f = 1, k = 5, m = 1. The
    orbit space then has only N·|Fix|² points and random symmetric S are poor (minimum cost 72 at μ = 30 at (6,8)).
 
-So the working recipe is: **G = Q × Z_n with Q = SL/PSL/PGL(2,q) (or a product of two), every prime factor of n
+6. **Odd D: avoid groups with many involutions.** For odd D the binding word set on each side is inverse-closed
+   (SIZE_LAW §2.3.4), so the words hitting an involution x = x⁻¹ come in collapsed pairs. x is then missed with
+   probability e^(−λ/2), like a fixed point of an order-2 symmetry. PSL(2,q) has ≈ q²/2 involutions, SL(2,q) has one
+   (−I). The expected involution misses, ~43–46 at (11,9), (13,9) and (16,9) with PSL(2,q) alone, match what was
+   seen. Random S on PSL(2,397) at (13,9) has median cost 135 at μ = 9.6, and the orbit runs on PSL(2,257),
+   PSL(2,397) and PSL(2,683) stalled at cost 59–73. At even D, PSL is fine (PSL(2,389) solved (10,10) in 385
+   evaluations). This is the mechanism behind SIZE_LAW's empirical "avoid simple groups alone".
+
+So the working recipe is: **G = Q × Z_n with Q = SL/PSL/PGL(2,q) (SL for odd D; or a product of two), every prime factor of n
 ≡ 1 mod 3, α = (conjugation by an element of order 3) × (z ↦ rz with r of order 3), k = 3**. Then Δ = f + 3m with
 f ≥ 1. Use f = 1 when Δ ≡ 1 mod 3 (7, 10, 13, 16), f = 2 when Δ ≡ 2 (8, 11, 14), and f = 3 when Δ ≡ 0 (9, 12, 15),
 the extra fixed generators being torus elements.
@@ -179,6 +187,7 @@ its log (last lines, from build_haar2.py) or in runs/*.rebuild.txt.
 | field structure: Frobenius orbits, x ↦ x^p entrywise on SL(2,8) × Z43 | (8,7), 3 seeds × 60 s | best cost 10 every time (1.5·10⁶ evals each); conjugation orbits on the same group solve in 2·10³–2·10⁵ evals |
 | one orbit (m = 1), Δ = 6 | (6,8), k = 3 (f = 3) and k = 5 (f = 1) | min 72 / 38 at μ = 30 (median 342 / 7,860); orbit space too small |
 | large cyclic factor Q × Z_p, p ≈ 300–800 | (10,8), (11,8) with k = 5 | random S min 75–300 at μ = 62–71 (sl 9 × Z821 worst); also no wide rows |
+| PSL(2,q) alone at odd D (involutions) | (11,9) psl 257, (13,9) psl 397, (16,9) psl 683 | stalled at cost 73, 59, 68 (μ = 17.5, 9.6, 5.2); random S median 135 at μ = 9.6; predicted involution misses ≈ 43–46 |
 | coset-structured S (S ⊂ xH, unions of cosets of a torus/unipotent subgroup) | algebra | s_i⁻¹ s_j ∈ H for all pairs: length-2 words collapse into a small subgroup (no run needed) |
 
 What the negatives have in common: **any structure that makes words collide is fatal**, because coverage is only
