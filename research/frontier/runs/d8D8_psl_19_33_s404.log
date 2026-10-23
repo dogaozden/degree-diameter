@@ -1,0 +1,12 @@
+group psl 19 x Z_33, N=112860, identity 5643, H order 57, rows 1980, threads 1, setup 0.00s
+start cost=51
+t=30 steps=32956 evals=263649 cost=5 best=4 T=0.53
+t=60 steps=65661 evals=525289 cost=5 best=4 T=0.19
+t=90 steps=99982 evals=799857 cost=5 best=4 T=0.15
+t=120 steps=133764 evals=1070113 cost=4 best=4 T=0.15
+t=150 steps=167117 evals=1336937 cost=4 best=4 T=0.15
+t=180 steps=200224 evals=1601793 cost=8 best=4 T=0.53
+t=210 steps=234244 evals=1873953 cost=3 best=3 T=0.19
+t=240 steps=267793 evals=2142345 cost=3 best=3 T=0.15
+t=270 steps=301465 evals=2411721 cost=3 best=3 T=0.15
+RESULT d=8 D=8 group=psl 19 x Z_33 N=112860 best=3 evals=2679569 time=300.0

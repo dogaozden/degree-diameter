@@ -1,2 +1,12 @@
 group prod psl 5 psl 7 x Z_11, N=110880, identity 18711, H order 55, rows 2016, threads 1, setup 0.01s
 start cost=27
+t=30 steps=27506 evals=220049 cost=3 best=2 T=0.53
+t=60 steps=55020 evals=440161 cost=2 best=2 T=0.19
+t=90 steps=82873 evals=662985 cost=2 best=2 T=0.15
+t=120 steps=110729 evals=885833 cost=2 best=2 T=0.15
+t=150 steps=138184 evals=1105473 cost=2 best=2 T=0.15
+t=180 steps=165725 evals=1325801 cost=3 best=2 T=0.56
+t=210 steps=193487 evals=1547897 cost=4 best=2 T=0.20
+t=240 steps=221137 evals=1769097 cost=2 best=2 T=0.15
+t=270 steps=249085 evals=1992681 cost=2 best=2 T=0.15
+RESULT d=8 D=8 group=prod psl 5 psl 7 x Z_11 N=110880 best=2 evals=2214017 time=300.0
