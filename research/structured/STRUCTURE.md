@@ -321,7 +321,15 @@ f = 3 loses 8–10 % of the words at levels 4–6 to collisions; f = 0 loses 1�
 
 **Head-to-head** (`tools/cmp.sh`, same seeds, wall clock, 4 single-thread runs at a time):
 
-<!-- F0-CMP -->
+| cell | group | N | μ | orbit (k,m,f)=(3, 2, 3): solved, evals (or best cost) | orbit (k,m,f)=(3, 3, 0): solved, evals (or best cost) |
+|---|---|---|---|---|---|
+| (9,8) | psl 23 x Z_43 | 261,096 | 26.9 | 1/4; best 6 @ 5.3e+05, 3.78e+05, best 3 @ 5.2e+05, best 3 @ 5.2e+05 | 4/4; 4.71e+04, 521, 2.1e+04, 8.57e+03 |
+| (9,8) | psl 17 x Z_109 | 266,832 | 33.5 | 0/4; best 12 @ 6.4e+05, best 15 @ 6.3e+05, best 6 @ 6.4e+05, best 12 @ 6.4e+05 | 1/4; 1.54e+05, best 4 @ 6.2e+05, best 3 @ 6.5e+05, best 3 @ 1.3e+06 |
+
+(log: runs/cmp_f0_d9D8.txt; 300 s per run, 2 at a time on a box running 5–7 jobs, so 300 s bought 5–13·10⁵
+evaluations for either variant.) f = 3 solves 1 of 8 runs,
+f = 0 solves 5 of 8 and its unsolved runs stop at cost 3–4 (one orbit) where f = 3 stops at 3–15. On the first
+group f = 0 needs 521–4.7·10⁴ evaluations; the one f = 3 success needed 3.8·10⁵.
 
 **What it found** (all in §4; the first rung of each cell, within 40 minutes of the first f = 0 run):
 
