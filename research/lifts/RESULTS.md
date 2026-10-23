@@ -90,9 +90,35 @@ passes the repo's build_haar2.py (sha256 32998e69…). Outputs are in `verify/`.
   - N = 44, 45, 46, 47, 48 have none (best costs 10, 16, 22, 26, 28).
   - The other bases and groups for orders 260–300 are in §2.2.
 
-### 2.2 Per-cell campaign results
+### 2.2 Every cell of the task: status
 
-(filled in from runs/*.tsv as the campaigns finish)
+Ordering. The user asked to start where the table is furthest below the Moore bound and the record is oldest. That
+points at the green D = 8 cells with Δ ≥ 10 (2n/Moore ≈ 0.10; Delorme–Gómez–Quisquater, unpublished). For them, and
+for the other green large-Δ cells, the analysis and small-scale tests of §3 come first. They show that random-voltage
+lifts cannot reach these values, and searching them at N ~ 10^5–10^7 would only confirm it. The compute therefore
+went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LAW.md §8): (3,8) 18, (5,10) 19, (5,9) 29,
+(3,10) 31, (3,9) 34, (6,5) 35, (4,10) 39, (5,8) 41, (5,7) 47, (4,9) 47, (4,8) 54.
+
+| cell | table (holder) | Moore | best found here | status |
+|---|---|---|---|---|
+| (6,5) | 684 (Loz) | 1,562 | – | campaigns queued (runs/campaign1b.sh, haar_cells.sh) |
+| (10..15,5) | 4000, 5850, 8200, 11480, 14760, 20496 (DGQ) | | rebuilt 4000 = (2j+1)·GQ | §3.2: the polygon family stops at 2j+1 copies; Haar can't (SIZE_LAW §3.3, −10 % to −29 %) |
+| (16,5) | 27300 (DGQ) | 108,482 | – | not of the polygon form; not run |
+| (3,7) | 168 (Conder et al.) | 254 | 168 (= Conder's graph) | negative above 168 (§4) |
+| (4,7) | 840 (Bond–Delorme, Hafner, Loz) | 2,186 | 840 (= Bond–Delorme, A5 × Z7) | negative above 840 (§4) |
+| (5,7) | 3110 (Loz) | 10,922 | – | queued |
+| (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling) |
+| **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0); push above 288 running |
+| (4,8) | 2184 (Loz) | 6,560 | – | queued |
+| (5,8) | 9234 (Loz) | 43,690 | – | queued; GH(3) + matching lifts reach only m = 6 (§3.3) |
+| (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
+| (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
+| (4,9) | 4970 (Loz) | 19,682 | – | queued |
+| (5,9) | 27936 (Loz) | 174,762 | – | queued |
+| (3,10) | 800 (DGQ) | 2,046 | – | near misses: cost 2 at n = 812 (2+2 base, Z29 ⋊ Z7; exhaustive: no solution) and at n = 816 (3+3 base, Z17 ⋊ Z8; exhaustive search running) |
+| (4,10) | 11748 (Loz) | 59,048 | – | queued |
+| **(5,10)** | 90068 (Loz) | 699,050 | **91,728** | **new record** (§2.0) |
+| (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
 ## 3. Structured families: what was tried and why it stops
 
