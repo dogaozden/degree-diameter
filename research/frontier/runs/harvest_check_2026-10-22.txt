@@ -94,3 +94,45 @@ ecc from B = 9 unreached 0
 n = 16369920 edges = 90034560 max degree = 11 min degree = 11 duplicate edges = 0
 edge list sha256 = f0685bc56672428602cdc50cddad9abf2f10a064dd4936cc03f9d8b0cf2d2d43
 VALID d=11 D=9 group=prod sl 7 sl 29 x Z_1 N=8184960 vertices=16369920
+== d6D9_sl_23_5_s401 (origin/master, 21:50 PT)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 121440 edges = 364320 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 23a728feffc5264892c5dcac5ab4f90ddb1fb24481e06375d134e728f258f2a9
+VALID d=6 D=9 group=sl 23 x Z_5 N=60720 vertices=121440
+== d6D10_pgl_37_5_s401 (origin/master, 21:50 PT)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 506160 edges = 1518480 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 86746fe0a924920d6d2ff3fe0d5d7396c147f595ac10efa7644d2b4c2e06136b
+VALID d=6 D=10 group=pgl 37 x Z_5 N=253080 vertices=506160
+== d7D10_sl_81_2_s601 (origin/w3-d7D10w4, 21:50 PT)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2125440 edges = 7439040 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = 8f340a396b36df2256de0d935522789118eaaf191f6e65f1cb0d6e05c9e03131
+VALID d=7 D=10 group=sl 81 poly x^4+x+2 x Z_2 N=1062720 vertices=2125440
+== d8D8_prod_psl_7_sl_7_2_s301 (origin/master, 21:50 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 225792 edges = 903168 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = a72c5b19b4f95027385c03b248a4b6309c1295ff7a05b09c890375b27af160d2
+VALID d=8 D=8 group=prod psl 7 sl 7 x Z_2 N=112896 vertices=225792
+== d8D9_sl_47_6_s301 (origin/w3-d8D9w1, 21:50 PT)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 1245312 edges = 4981248 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = db8abd84834de3582a6bd83434105d3165cef54de102dc0d1fbaedcb38c06cb3
+VALID d=8 D=9 group=sl 47 x Z_6 N=622656 vertices=1245312
+== d9D8_psl_23_41_s301 (origin/master, 21:50 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 497904 edges = 2240568 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = d2852726bc4b6540a7e9decd6d3c7ebc9ba416e22c343d657895aa9af3934a08
+VALID d=9 D=8 group=psl 23 x Z_41 N=248952 vertices=497904
+== d13D8_sl_73_8_s301 (origin/w3-d13D8w1, 21:50 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6223104 edges = 40450176 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = b4810b007db7220387119bc0ee6342939bc05aed693dd699f6eecf92392b9f3e
+VALID d=13 D=8 group=sl 73 x Z_8 N=3111552 vertices=6223104

@@ -66,3 +66,11 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 22 21:16 PT (harvest): (9,10) 22,178,688 (was 21,385,728), sl 223 n 1; master.
 - Oct 22 21:16 PT (harvest): (11,9) 16,369,920 (was 15,200,448), prod sl 7 sl 29 n 1; master.
+
+- Oct 22 21:50 PT (harvest): (6,9) 121,440 (was 117,504), sl 23 n 5; master.
+- Oct 22 21:50 PT (harvest): (6,10) 506,160 (was 491,400), pgl 37 n 5; master.
+- Oct 22 21:50 PT (harvest): (7,10) 2,125,440 (was 2,116,800), sl 81 poly x^4+x+2 n 2; w3-d7D10w4.
+- Oct 22 21:50 PT (harvest): (8,8) 225,792 (was 219,240), prod psl 7 sl 7 n 2; master.
+- Oct 22 21:50 PT (harvest): (8,9) 1,245,312 (was 1,231,920), sl 47 n 6; w3-d8D9w1.
+- Oct 22 21:50 PT (harvest): (9,8) 497,904 (was 487,200), psl 23 n 41; master.
+- Oct 22 21:50 PT (harvest): (13,8) 6,223,104 (was 6,209,280), sl 73 n 8; w3-d13D8w1.
