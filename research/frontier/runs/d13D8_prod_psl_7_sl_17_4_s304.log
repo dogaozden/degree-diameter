@@ -2,3 +2,32 @@ group prod psl 7 sl 17 x Z_4, N=3290112, identity 412352, H order 63, rows 52224
 start cost=42
 t=30 steps=654 evals=5233 cost=9 best=8 T=0.53
 t=60 steps=1174 evals=9393 cost=8 best=8 T=0.19
+t=90 steps=1834 evals=14673 cost=7 best=7 T=0.15
+t=120 steps=2497 evals=19977 cost=7 best=7 T=0.15
+t=150 steps=3173 evals=25385 cost=7 best=7 T=0.15
+t=180 steps=3873 evals=30985 cost=7 best=7 T=0.15
+t=210 steps=4557 evals=36457 cost=6 best=6 T=0.15
+t=240 steps=5241 evals=41929 cost=4 best=4 T=0.15
+t=270 steps=5913 evals=47305 cost=4 best=4 T=0.15
+t=300 steps=6585 evals=52681 cost=4 best=4 T=0.15
+t=330 steps=7272 evals=58177 cost=4 best=4 T=0.15
+t=360 steps=7948 evals=63585 cost=4 best=4 T=0.15
+t=390 steps=8625 evals=69001 cost=4 best=4 T=0.85
+t=420 steps=9282 evals=74257 cost=6 best=4 T=0.30
+t=450 steps=9957 evals=79657 cost=6 best=4 T=0.15
+t=480 steps=10621 evals=84969 cost=6 best=4 T=0.15
+t=510 steps=11312 evals=90497 cost=6 best=4 T=0.15
+t=540 steps=12031 evals=96249 cost=4 best=4 T=0.85
+t=570 steps=12733 evals=101865 cost=4 best=4 T=0.30
+t=600 steps=13445 evals=107561 cost=4 best=4 T=0.15
+t=630 steps=14132 evals=113057 cost=4 best=4 T=0.15
+t=660 steps=14829 evals=118633 cost=4 best=4 T=0.15
+t=691 steps=15533 evals=124265 cost=4 best=4 T=0.85
+t=721 steps=16220 evals=129761 cost=4 best=4 T=0.30
+t=751 steps=16891 evals=135129 cost=4 best=4 T=0.15
+t=781 steps=17590 evals=140721 cost=4 best=4 T=0.15
+t=811 steps=18273 evals=146185 cost=4 best=4 T=0.15
+t=841 steps=18966 evals=151729 cost=12 best=4 T=0.85
+t=871 steps=19640 evals=157121 cost=7 best=4 T=0.30
+t=901 steps=20332 evals=162657 cost=7 best=4 T=0.15
+RESULT d=13 D=8 group=prod psl 7 sl 17 x Z_4 N=3290112 best=4 evals=162873 time=902.0
