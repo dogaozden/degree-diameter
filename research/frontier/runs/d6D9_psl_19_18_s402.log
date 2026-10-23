@@ -1,12 +1,12 @@
-group psl 19 x Z_18, N=61560, identity 3078, H order 57, rows 1080, threads 1, setup 0.01s
+group psl 19 x Z_18, N=61560, identity 3078, H order 57, rows 1080, threads 1, setup 0.00s
 start cost=95
-t=30 steps=25163 evals=201305 cost=13 best=12 T=0.53
-t=60 steps=50711 evals=405689 cost=14 best=12 T=0.19
-t=90 steps=75386 evals=603089 cost=14 best=12 T=0.15
-t=120 steps=99488 evals=795905 cost=14 best=12 T=0.15
-t=150 steps=123828 evals=990625 cost=14 best=12 T=0.15
-t=180 steps=149584 evals=1196673 cost=12 best=12 T=0.82
-t=210 steps=175416 evals=1403329 cost=12 best=12 T=0.29
-t=240 steps=200284 evals=1602273 cost=12 best=12 T=0.15
-t=270 steps=224721 evals=1797769 cost=12 best=12 T=0.15
-RESULT d=6 D=9 group=psl 19 x Z_18 N=61560 best=12 evals=1963241 time=295.8
+t=30 steps=25250 evals=202001 cost=13 best=12 T=0.53
+t=60 steps=49972 evals=399777 cost=14 best=12 T=0.19
+t=90 steps=75771 evals=606169 cost=14 best=12 T=0.15
+t=120 steps=100766 evals=806129 cost=14 best=12 T=0.15
+t=150 steps=126116 evals=1008929 cost=14 best=12 T=0.15
+t=180 steps=150939 evals=1207513 cost=12 best=12 T=0.81
+t=210 steps=175337 evals=1402697 cost=12 best=12 T=0.29
+t=240 steps=199842 evals=1598737 cost=12 best=12 T=0.15
+t=270 steps=225379 evals=1803033 cost=12 best=12 T=0.15
+RESULT d=6 D=9 group=psl 19 x Z_18 N=61560 best=12 evals=2000673 time=300.0
