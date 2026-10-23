@@ -1,2 +1,22 @@
 group prod psl 5 sl 27 poly x^3+2x+1 x Z_1, N=1179360, identity 197262, H order 42, rows 28080, threads 1, setup 0.07s
 start cost=48
+t=30 steps=1296 evals=10369 cost=20 best=19 T=0.53
+t=60 steps=2633 evals=21065 cost=18 best=18 T=0.19
+t=90 steps=3900 evals=31201 cost=17 best=17 T=0.15
+t=120 steps=5260 evals=42081 cost=17 best=17 T=0.15
+t=150 steps=6614 evals=52913 cost=16 best=16 T=0.15
+t=180 steps=7920 evals=63361 cost=16 best=16 T=0.15
+t=210 steps=9256 evals=74049 cost=16 best=16 T=0.15
+t=240 steps=10552 evals=84417 cost=16 best=16 T=0.15
+t=270 steps=11849 evals=94793 cost=16 best=16 T=0.15
+t=300 steps=13202 evals=105617 cost=18 best=16 T=0.99
+t=330 steps=14552 evals=116417 cost=15 best=15 T=0.35
+t=360 steps=15901 evals=127209 cost=15 best=15 T=0.15
+t=390 steps=17282 evals=138257 cost=15 best=15 T=0.15
+t=420 steps=18500 evals=148001 cost=15 best=15 T=0.15
+t=450 steps=19799 evals=158393 cost=15 best=15 T=0.15
+t=480 steps=21109 evals=168873 cost=15 best=15 T=1.50
+t=510 steps=22460 evals=179681 cost=15 best=15 T=0.53
+t=540 steps=23751 evals=190009 cost=15 best=15 T=0.19
+t=570 steps=25075 evals=200601 cost=15 best=15 T=0.15
+RESULT d=7 D=10 group=prod psl 5 sl 27 poly x^3+2x+1 x Z_1 N=1179360 best=15 evals=211337 time=600.0
