@@ -1,2 +1,12 @@
 group psl 13 x Z_42, N=45864, identity 3276, H order 42, rows 1092, threads 1, setup 0.00s
 start cost=553
+t=30 steps=90778 evals=726225 cost=10 best=7 T=0.53
+t=60 steps=179253 evals=1434025 cost=7 best=7 T=0.19
+t=90 steps=269372 evals=2154977 cost=7 best=7 T=0.15
+t=120 steps=357142 evals=2857137 cost=7 best=7 T=0.15
+t=150 steps=445373 evals=3562985 cost=7 best=7 T=0.15
+t=180 steps=529677 evals=4237417 cost=8 best=6 T=0.68
+t=210 steps=615434 evals=4923473 cost=7 best=6 T=0.24
+t=240 steps=698594 evals=5588753 cost=6 best=6 T=0.15
+t=270 steps=786374 evals=6290993 cost=8 best=6 T=0.15
+RESULT d=7 D=8 group=psl 13 x Z_42 N=45864 best=6 evals=7014225 time=300.0
