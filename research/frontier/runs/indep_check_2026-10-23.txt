@@ -1,0 +1,352 @@
+Independent Haar-graph check, 2026-10-23, check_haar_indep.py
+
+file sols/d10D9_prod_psl_19_sl_5_9_s111.txt
+header: d=10 D=9 spec=prod psl 19 sl 5 NCYC=9 N=3693600
+group order |G|=410400 (factors [3420, 120]), x Z_9 -> 3693600; vertices 2N=7387200
+distinct generators (as full group elements): 10 of d=10
+permutations built (0s)
+BFS from A: ecc=9 reached 7387200 of 7387200 (unreached 0); level sizes [1, 10, 90, 809, 7256, 64679, 540567, 2754427, 3145686, 873675]
+BFS from B: ecc=9 reached 7387200 of 7387200 (unreached 0); level sizes [1, 10, 90, 809, 7256, 64679, 540551, 2754427, 3145702, 873675]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=7387200 (3s)
+
+file sols/d10D9_prod_psl_5_sl_25_4_s111.txt
+header: d=10 D=9 spec=prod psl 5 sl 25 poly x^2+2 NCYC=4 N=3744000
+group order |G|=936000 (factors [60, 15600]), x Z_4 -> 3744000; vertices 2N=7488000
+distinct generators (as full group elements): 10 of d=10
+permutations built (0s)
+BFS from A: ecc=9 reached 7488000 of 7488000 (unreached 0); level sizes [1, 10, 90, 810, 7286, 65058, 545903, 2790283, 3190720, 887839]
+BFS from B: ecc=9 reached 7488000 of 7488000 (unreached 0); level sizes [1, 10, 90, 810, 7286, 65058, 545903, 2790283, 3190720, 887839]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=7488000 (3s)
+
+file sols/d10D9_sl_81_7_s111.txt
+header: d=10 D=9 spec=sl 81 poly x^4+x+2 NCYC=7 N=3719520
+group order |G|=531360 (factors [531360]), x Z_7 -> 3719520; vertices 2N=7439040
+distinct generators (as full group elements): 10 of d=10
+permutations built (2s)
+BFS from A: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545956, 2781410, 3166183, 872193]
+BFS from B: ecc=9 reached 7439040 of 7439040 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65097, 545922, 2781410, 3166217, 872193]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=7439040 (5s)
+
+file sols/d11D9_prod_sl_7_sl_29_1_s111.txt
+header: d=11 D=9 spec=prod sl 7 sl 29 NCYC=1 N=8184960
+group order |G|=8184960 (factors [336, 24360]), x Z_1 -> 8184960; vertices 2N=16369920
+distinct generators (as full group elements): 11 of d=11
+permutations built (3s)
+BFS from A: ecc=9 reached 16369920 of 16369920 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109248, 1027886, 5966371, 7145963, 2108230]
+BFS from B: ecc=9 reached 16369920 of 16369920 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109248, 1027896, 5966371, 7145953, 2108230]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16369920 (6s)
+
+file sols/d11D9_sl_125_4_s111.txt
+header: d=11 D=9 spec=sl 125 poly x^3+x+1 NCYC=4 N=7812000
+group order |G|=1953000 (factors [1953000]), x Z_4 -> 7812000; vertices 2N=15624000
+distinct generators (as full group elements): 11 of d=11
+permutations built (10s)
+BFS from A: ecc=9 reached 15624000 of 15624000 (unreached 0); level sizes [1, 11, 110, 1100, 10991, 109034, 1020774, 5800648, 6780124, 1901207]
+BFS from B: ecc=9 reached 15624000 of 15624000 (unreached 0); level sizes [1, 11, 110, 1100, 10991, 109034, 1020696, 5800648, 6780202, 1901207]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=15624000 (20s)
+
+file sols/d11D9_sl_81_15_s111.txt
+header: d=11 D=9 spec=sl 81 poly x^4+x+2 NCYC=15 N=7970400
+group order |G|=531360 (factors [531360]), x Z_15 -> 7970400; vertices 2N=15940800
+distinct generators (as full group elements): 11 of d=11
+permutations built (2s)
+BFS from A: ecc=9 reached 15940800 of 15940800 (unreached 0); level sizes [1, 11, 110, 1100, 10992, 109221, 1025702, 5880237, 6933595, 1979831]
+BFS from B: ecc=9 reached 15940800 of 15940800 (unreached 0); level sizes [1, 11, 110, 1100, 10992, 109221, 1025724, 5880237, 6933573, 1979831]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=15940800 (12s)
+
+file sols/d13D8_prod_psl_11_psl_11_7_s101.txt
+header: d=13 D=8 spec=prod psl 11 psl 11 NCYC=7 N=3049200
+group order |G|=435600 (factors [660, 660]), x Z_7 -> 3049200; vertices 2N=6098400
+distinct generators (as full group elements): 13 of d=13
+permutations built (0s)
+BFS from A: ecc=8 reached 6098400 of 6098400 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257899, 1976284, 2789416, 1050373]
+BFS from B: ecc=8 reached 6098400 of 6098400 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257899, 1975875, 2789416, 1050782]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6098400 (3s)
+
+file sols/d13D8_prod_psl_5_sl_37_1_s101.txt
+header: d=13 D=8 spec=prod psl 5 sl 37 NCYC=1 N=3036960
+group order |G|=3036960 (factors [60, 50616]), x Z_1 -> 3036960; vertices 2N=6073920
+distinct generators (as full group elements): 13 of d=13
+permutations built (1s)
+BFS from A: ecc=8 reached 6073920 of 6073920 (unreached 0); level sizes [1, 13, 156, 1872, 22384, 257940, 1976013, 2777135, 1038406]
+BFS from B: ecc=8 reached 6073920 of 6073920 (unreached 0); level sizes [1, 13, 156, 1872, 22384, 257940, 1975460, 2777135, 1038959]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6073920 (3s)
+
+file sols/d13D8_prod_psl_9_psl_11_13_s101.txt
+header: d=13 D=8 spec=prod psl 9 poly x^2+1 psl 11 NCYC=13 N=3088800
+group order |G|=237600 (factors [360, 660]), x Z_13 -> 3088800; vertices 2N=6177600
+distinct generators (as full group elements): 13 of d=13
+permutations built (0s)
+BFS from A: ecc=8 reached 6177600 of 6177600 (unreached 0); level sizes [1, 13, 156, 1872, 22414, 258821, 1996226, 2828094, 1070003]
+BFS from B: ecc=8 reached 6177600 of 6177600 (unreached 0); level sizes [1, 13, 156, 1872, 22414, 258821, 1996422, 2828094, 1069807]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6177600 (3s)
+
+file sols/d13D8_prod_sl_7_sl_11_7_s101.txt
+header: d=13 D=8 spec=prod sl 7 sl 11 NCYC=7 N=3104640
+group order |G|=443520 (factors [336, 1320]), x Z_7 -> 3104640; vertices 2N=6209280
+distinct generators (as full group elements): 13 of d=13
+permutations built (0s)
+BFS from A: ecc=8 reached 6209280 of 6209280 (unreached 0); level sizes [1, 13, 156, 1872, 22420, 258740, 1999160, 2844015, 1082903]
+BFS from B: ecc=8 reached 6209280 of 6209280 (unreached 0); level sizes [1, 13, 156, 1872, 22420, 258740, 1998920, 2844015, 1083143]
+every vertex has exactly 13 distinct neighbours: True
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6209280 (3s)
+
+file sols/d6D10_prod_sl_7_sl_9_1_s101.txt
+header: d=6 D=10 spec=prod sl 7 sl 9 poly x^2+1 NCYC=1 N=241920
+group order |G|=241920 (factors [336, 720]), x Z_1 -> 241920; vertices 2N=483840
+distinct generators (as full group elements): 6 of d=6
+permutations built (0s)
+BFS from A: ecc=10 reached 483840 of 483840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3735, 18121, 77236, 191777, 160793, 31241]
+BFS from B: ecc=10 reached 483840 of 483840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3735, 18121, 77236, 191847, 160793, 31171]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=483840 (0s)
+
+file sols/d6D10_psl_27_25_s101.txt
+header: d=6 D=10 spec=psl 27 poly x^3+2x+1 NCYC=25 N=245700
+group order |G|=9828 (factors [9828]), x Z_25 -> 245700; vertices 2N=491400
+distinct generators (as full group elements): 6 of d=6
+permutations built (0s)
+BFS from A: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18252, 78323, 195391, 163476, 31276]
+BFS from B: ecc=10 reached 491400 of 491400 (unreached 0); level sizes [1, 6, 30, 150, 750, 3745, 18260, 78323, 195250, 163476, 31409]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=491400 (0s)
+
+file sols/d7D10_sl_49_9_s101.txt
+header: d=7 D=10 spec=sl 49 poly x^2+1 NCYC=9 N=1058400
+group order |G|=117600 (factors [117600]), x Z_9 -> 1058400; vertices 2N=2116800
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=10 reached 2116800 of 2116800 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9052, 53182, 279259, 845893, 769830, 157770]
+BFS from B: ecc=10 reached 2116800 of 2116800 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9052, 53186, 279259, 845517, 769830, 158142]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2116800 (1s)
+
+file sols/d8D10_prod_psl_11_psl_13_5_s111.txt
+header: d=8 D=10 spec=prod psl 11 psl 13 NCYC=5 N=3603600
+group order |G|=720720 (factors [660, 1092]), x Z_5 -> 3603600; vertices 2N=7207200
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 7207200 of 7207200 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19158, 131809, 823795, 2911704, 2760247, 557286]
+BFS from B: ecc=10 reached 7207200 of 7207200 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19158, 131809, 823795, 2910864, 2760247, 558126]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7207200 (3s)
+
+file sols/d8D10_prod_psl_23_sl_5_5_s111.txt
+header: d=8 D=10 spec=prod psl 23 sl 5 NCYC=5 N=3643200
+group order |G|=728640 (factors [6072, 120]), x Z_5 -> 3643200; vertices 2N=7286400
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 7286400 of 7286400 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19173, 131995, 825616, 2933456, 2798011, 574948]
+BFS from B: ecc=10 reached 7286400 of 7286400 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19173, 132005, 825616, 2934458, 2798011, 573936]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7286400 (2s)
+
+file sols/d8D8_prod_psl_5_psl_9_5_s101.txt
+header: d=8 D=8 spec=prod psl 5 psl 9 poly x^2+1 NCYC=5 N=108000
+group order |G|=21600 (factors [60, 360]), x Z_5 -> 108000; vertices 2N=216000
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=8 reached 216000 of 216000 (unreached 0); level sizes [1, 8, 56, 392, 2728, 17787, 76142, 89813, 29073]
+BFS from B: ecc=8 reached 216000 of 216000 (unreached 0); level sizes [1, 8, 56, 392, 2726, 17787, 76057, 89813, 29160]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=8 eccA=8 eccB=8 n=216000 (0s)
+
+file sols/d8D8_sl_25_7_s101.txt
+header: d=8 D=8 spec=sl 25 poly x^2+2 NCYC=7 N=109200
+group order |G|=15600 (factors [15600]), x Z_7 -> 109200; vertices 2N=218400
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=8 reached 218400 of 218400 (unreached 0); level sizes [1, 8, 56, 391, 2714, 17689, 75980, 91112, 30449]
+BFS from B: ecc=8 reached 218400 of 218400 (unreached 0); level sizes [1, 8, 56, 391, 2714, 17689, 76046, 91112, 30383]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=8 eccA=8 eccB=8 n=218400 (0s)
+
+file sols/d8D9_prod_psl_7_sl_9_5_s101.txt
+header: d=8 D=9 spec=prod psl 7 sl 9 poly x^2+1 NCYC=5 N=604800
+group order |G|=120960 (factors [168, 720]), x Z_5 -> 604800; vertices 2N=1209600
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120637, 463296, 481362, 122096]
+BFS from B: ecc=9 reached 1209600 of 1209600 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 120703, 463296, 481296, 122096]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1209600 (0s)
+
+file sols/d8D9_prod_sl_5_sl_17_1_s101.txt
+header: d=8 D=9 spec=prod sl 5 sl 17 NCYC=1 N=587520
+group order |G|=587520 (factors [120, 4896]), x Z_1 -> 587520; vertices 2N=1175040
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=9 reached 1175040 of 1175040 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 121036, 457740, 463683, 110372]
+BFS from B: ecc=9 reached 1175040 of 1175040 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19008, 121052, 457740, 463667, 110372]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1175040 (0s)
+
+file sols/d9D10_prod_sl_13_sl_17_1_s111.txt
+header: d=9 D=10 spec=prod sl 13 sl 17 NCYC=1 N=10692864
+group order |G|=10692864 (factors [2184, 4896]), x Z_1 -> 10692864; vertices 2N=21385728
+distinct generators (as full group elements): 9 of d=9
+permutations built (2s)
+BFS from A: ecc=10 reached 21385728 of 21385728 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36829, 291307, 2117099, 8635567, 8538351, 1761309]
+BFS from B: ecc=10 reached 21385728 of 21385728 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36829, 291307, 2117099, 8636421, 8538351, 1760455]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=21385728 (6s)
+
+file sols/d9D10_sl_81_19_s111.txt
+header: d=9 D=10 spec=sl 81 poly x^4+x+2 NCYC=19 N=10095840
+group order |G|=531360 (factors [531360]), x Z_19 -> 10095840; vertices 2N=20191680
+distinct generators (as full group elements): 9 of d=9
+permutations built (2s)
+BFS from A: ecc=10 reached 20191680 of 20191680 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36809, 290566, 2095809, 8284051, 7962637, 1516542]
+BFS from B: ecc=10 reached 20191680 of 20191680 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36809, 290538, 2095809, 8285091, 7962637, 1515530]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=20191680 (10s)
+
+file sols/d9D8_prod_sl_7_sl_9_1_s101.txt
+header: d=9 D=8 spec=prod sl 7 sl 9 poly x^2+1 NCYC=1 N=241920
+group order |G|=241920 (factors [336, 720]), x Z_1 -> 241920; vertices 2N=483840
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=8 reached 483840 of 483840 (unreached 0); level sizes [1, 9, 72, 574, 4547, 33913, 166127, 207424, 71173]
+BFS from B: ecc=8 reached 483840 of 483840 (unreached 0); level sizes [1, 9, 72, 574, 4547, 33913, 166417, 207424, 70883]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=483840 (0s)
+
+file sols/d9D8_prod_sl_7_sl_9_1_s102.txt
+header: d=9 D=8 spec=prod sl 7 sl 9 poly x^2+1 NCYC=1 N=241920
+group order |G|=241920 (factors [336, 720]), x Z_1 -> 241920; vertices 2N=483840
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=8 reached 483840 of 483840 (unreached 0); level sizes [1, 9, 72, 576, 4592, 34561, 169924, 206774, 67331]
+BFS from B: ecc=8 reached 483840 of 483840 (unreached 0); level sizes [1, 9, 72, 576, 4592, 34561, 169920, 206774, 67335]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=483840 (0s)
+
+file sols/d9D9_prod_psl_11_sl_7_7_s111.txt
+header: d=9 D=9 spec=prod psl 11 sl 7 NCYC=7 N=1552320
+group order |G|=221760 (factors [660, 336]), x Z_7 -> 1552320; vertices 2N=3104640
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3104640 of 3104640 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36490, 268512, 1185191, 1279127, 330054]
+BFS from B: ecc=9 reached 3104640 of 3104640 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36490, 268516, 1185191, 1279123, 330054]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3104640 (1s)
+
+file sols/d9D9_prod_psl_7_sl_11_7_s111.txt
+header: d=9 D=9 spec=prod psl 7 sl 11 NCYC=7 N=1552320
+group order |G|=221760 (factors [168, 1320]), x Z_7 -> 1552320; vertices 2N=3104640
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3104640 of 3104640 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36575, 269729, 1189163, 1277910, 325997]
+BFS from B: ecc=9 reached 3104640 of 3104640 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36575, 269773, 1189163, 1277866, 325997]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3104640 (1s)
+
+file sols/d9D9_prod_psl_7_sl_9_13_s111.txt
+header: d=9 D=9 spec=prod psl 7 sl 9 poly x^2+1 NCYC=13 N=1572480
+group order |G|=120960 (factors [168, 720]), x Z_13 -> 1572480; vertices 2N=3144960
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36470, 268461, 1192977, 1299342, 342448]
+BFS from B: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36470, 268495, 1192977, 1299308, 342448]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3144960 (1s)
+
+file sols/d9D9_prod_sl_9_sl_13_1_s111.txt
+header: d=9 D=9 spec=prod sl 9 poly x^2+1 sl 13 NCYC=1 N=1572480
+group order |G|=1572480 (factors [720, 2184]), x Z_1 -> 1572480; vertices 2N=3144960
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4603, 36420, 267555, 1192374, 1300249, 343101]
+BFS from B: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4603, 36420, 267499, 1192374, 1300305, 343101]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3144960 (0s)
+
+file sols/d9D9_prod_sl_9_sl_9_3_s111.txt
+header: d=9 D=9 spec=prod sl 9 poly x^2+1 sl 9 poly x^2+1 NCYC=3 N=1555200
+group order |G|=518400 (factors [720, 720]), x Z_3 -> 1555200; vertices 2N=3110400
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3110400 of 3110400 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36442, 267693, 1184260, 1282830, 333913]
+BFS from B: ecc=9 reached 3110400 of 3110400 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36442, 267685, 1184260, 1282838, 333913]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3110400 (1s)
+
+file sols/d9D9_sl_49_13_s111.txt
+header: d=9 D=9 spec=sl 49 poly x^2+1 NCYC=13 N=1528800
+group order |G|=117600 (factors [117600]), x Z_13 -> 1528800; vertices 2N=3057600
+distinct generators (as full group elements): 9 of d=9
+permutations built (0s)
+BFS from A: ecc=9 reached 3057600 of 3057600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36472, 267664, 1173057, 1256455, 318686]
+BFS from B: ecc=9 reached 3057600 of 3057600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36472, 267732, 1173057, 1256387, 318686]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3057600 (1s)
+
+file sols/d9D9_sl_81_3_s111.txt
+header: d=9 D=9 spec=sl 81 poly x^4+x+2 NCYC=3 N=1594080
+group order |G|=531360 (factors [531360]), x Z_3 -> 1594080; vertices 2N=3188160
+distinct generators (as full group elements): 9 of d=9
+permutations built (2s)
+BFS from A: ecc=9 reached 3188160 of 3188160 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36554, 269977, 1208238, 1319422, 348703]
+BFS from B: ecc=9 reached 3188160 of 3188160 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36554, 269989, 1208238, 1319410, 348703]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3188160 (3s)
+
+file sols/d6D9_sl_17_12_s101.txt
+header: d=6 D=9 spec=sl 17 NCYC=12 N=58752
+group order |G|=4896 (factors [4896]), x Z_12 -> 58752; vertices 2N=117504
+distinct generators (as full group elements): 6 of d=6
+permutations built (0s)
+BFS from A: ecc=9 reached 117504 of 117504 (unreached 0); level sizes [1, 6, 30, 150, 750, 3700, 16300, 44523, 41671, 10373]
+BFS from B: ecc=9 reached 117504 of 117504 (unreached 0); level sizes [1, 6, 30, 150, 750, 3700, 16304, 44523, 41667, 10373]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=9 eccA=9 eccB=9 n=117504 (0s)
+
+file sols/d7D9_sl_31_7_s111.txt
+header: d=7 D=9 spec=sl 31 NCYC=7 N=208320
+group order |G|=29760 (factors [29760]), x Z_7 -> 208320; vertices 2N=416640
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=9 reached 416640 of 416640 (unreached 0); level sizes [1, 7, 42, 252, 1512, 8987, 48568, 160154, 158197, 38920]
+BFS from B: ecc=9 reached 416640 of 416640 (unreached 0); level sizes [1, 7, 42, 252, 1512, 8987, 48558, 160154, 158207, 38920]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=9 eccA=9 eccB=9 n=416640 (0s)
+
+file sols/d8D9_sl_59_3_s101.txt
+header: d=8 D=9 spec=sl 59 NCYC=3 N=615960
+group order |G|=205320 (factors [205320]), x Z_3 -> 615960; vertices 2N=1231920
+distinct generators (as full group elements): 8 of d=8
+permutations built (1s)
+BFS from A: ecc=9 reached 1231920 of 1231920 (unreached 0); level sizes [1, 8, 56, 392, 2744, 18936, 120393, 467120, 492766, 129504]
+BFS from B: ecc=9 reached 1231920 of 1231920 (unreached 0); level sizes [1, 8, 56, 392, 2744, 18936, 120431, 467120, 492728, 129504]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1231920 (1s)
+
+file sols/d8D10_sl_107_3_s111.txt
+header: d=8 D=10 spec=sl 107 NCYC=3 N=3674808
+group order |G|=1224936 (factors [1224936]), x Z_3 -> 3674808; vertices 2N=7349616
+distinct generators (as full group elements): 8 of d=8
+permutations built (5s)
+BFS from A: ecc=10 reached 7349616 of 7349616 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19183, 132184, 828035, 2954765, 2827190, 585058]
+BFS from B: ecc=10 reached 7349616 of 7349616 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19183, 132190, 828035, 2953691, 2827190, 586126]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7349616 (7s)
+
+file sols/d9D10_sl_223_1_s111.txt
+header: d=9 D=10 spec=sl 223 NCYC=1 N=11089344
+group order |G|=11089344 (factors [11089344]), x Z_1 -> 11089344; vertices 2N=22178688
+distinct generators (as full group elements): 9 of d=9
+permutations built (97s)
+BFS from A: ecc=10 reached 22178688 of 22178688 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36829, 291177, 2119985, 8828246, 8931945, 1965240]
+BFS from B: ecc=10 reached 22178688 of 22178688 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36829, 291171, 2119985, 8827212, 8931945, 1966280]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=22178688 (104s)
+
