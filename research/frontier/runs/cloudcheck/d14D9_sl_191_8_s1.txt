@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:57:46Z
+file: research/frontier/sols/d14D9_sl_191_8_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 a1a2433bbb6f33883551de5e62cdf302bdb98ed519761107f6dda32cbf30ca81
+header: 14 9 sl 191 n 8 N 55741440
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d14D9_sl_191_8_s1.txt
+from (e,A): reached A 55741440/55741440, B 55741440/55741440 within 9, ecc 9
+from (e,B): reached A 55741440/55741440, B 55741440/55741440 within 9, ecc 9
+VALID d=14 D=9 group=sl 191 x Z_8 N=55741440 vertices=111482880 (distinct generators, 14-regular simple)
+(exit 0)
+[exit 0; wall 43s; cpu 43s; peak RSS 42 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d14D9_sl_191_8_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d14D9_sl_191_8_s1.txt
+header: 14 9 sl 191 n 8 N 55741440
+d=14 D=9
+group: SL(2,191) [order 6967680] x Z_8; |G| = 55741440, vertices 2|G| = 111482880
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 14 distinct group elements, all in the group [0.0s]
+neighbour check (full: 55741440 vertices per side): every vertex has 14 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [5.8s]
+BFS from A: ecc=9 reached 111482880 of 111482880 (unreached 0); level sizes [1, 14, 182, 2366, 30746, 398411, 4962450, 38895279, 50748061, 16445370] [13.4s]
+BFS from B: ecc=9 reached 111482880 of 111482880 (unreached 0); level sizes [1, 14, 182, 2366, 30746, 398411, 4962748, 38895279, 50747763, 16445370] [20.6s]
+max degree = min degree = 14, no repeated edges (checked above)
+elapsed 20.6s
+RESULT VALID d=14 D=9 eccA=9 eccB=9 n=111482880
+(exit 0)
+[exit 0; wall 21s; cpu 81s; peak RSS 29 MB]
