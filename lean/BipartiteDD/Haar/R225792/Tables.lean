@@ -1,3 +1,4 @@
+import Mathlib.Tactic.IntervalCases
 import BipartiteDD.Haar.R225792.TabDefs
 import BipartiteDD.Haar.R225792.TabP0
 import BipartiteDD.Haar.R225792.TabP1
