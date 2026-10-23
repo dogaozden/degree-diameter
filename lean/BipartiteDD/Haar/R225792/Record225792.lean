@@ -71,37 +71,52 @@ def certs : ℕ → List ℕ
   | 27 => cert27
   | _ => []
 
-/-- Every stage passes its check. -/
-theorem stage_all {k : ℕ} (hk : k < 28) : checkStage k (certs k) = true := by
+/-- Every chunk of every stage passes its check. -/
+theorem stage_chunks (k : ℕ) (hk : k < 28) (c : ℕ) (hc : c < 16) :
+    checkChunk k c (((certs k).drop (252 * c)).take 252) = true := by
   interval_cases k
-  · exact stage00_ok
-  · exact stage01_ok
-  · exact stage02_ok
-  · exact stage03_ok
-  · exact stage04_ok
-  · exact stage05_ok
-  · exact stage06_ok
-  · exact stage07_ok
-  · exact stage08_ok
-  · exact stage09_ok
-  · exact stage10_ok
-  · exact stage11_ok
-  · exact stage12_ok
-  · exact stage13_ok
-  · exact stage14_ok
-  · exact stage15_ok
-  · exact stage16_ok
-  · exact stage17_ok
-  · exact stage18_ok
-  · exact stage19_ok
-  · exact stage20_ok
-  · exact stage21_ok
-  · exact stage22_ok
-  · exact stage23_ok
-  · exact stage24_ok
-  · exact stage25_ok
-  · exact stage26_ok
-  · exact stage27_ok
+  · exact stage00_chunks c hc
+  · exact stage01_chunks c hc
+  · exact stage02_chunks c hc
+  · exact stage03_chunks c hc
+  · exact stage04_chunks c hc
+  · exact stage05_chunks c hc
+  · exact stage06_chunks c hc
+  · exact stage07_chunks c hc
+  · exact stage08_chunks c hc
+  · exact stage09_chunks c hc
+  · exact stage10_chunks c hc
+  · exact stage11_chunks c hc
+  · exact stage12_chunks c hc
+  · exact stage13_chunks c hc
+  · exact stage14_chunks c hc
+  · exact stage15_chunks c hc
+  · exact stage16_chunks c hc
+  · exact stage17_chunks c hc
+  · exact stage18_chunks c hc
+  · exact stage19_chunks c hc
+  · exact stage20_chunks c hc
+  · exact stage21_chunks c hc
+  · exact stage22_chunks c hc
+  · exact stage23_chunks c hc
+  · exact stage24_chunks c hc
+  · exact stage25_chunks c hc
+  · exact stage26_chunks c hc
+  · exact stage27_chunks c hc
+
+/-- Every element of every stage passes its check, read from the stage list. -/
+theorem stage_elem (k : ℕ) (hk : k < 28) (t : ℕ) (ht : t < 4032) :
+    checkOneI (6 * k + t / 672) (t % 672 / 2) (t % 2) ((certs k).getD t 0) = true :=
+  chunk_elem (stage_chunks k hk (t / 252) (by omega)) rfl
+
+theorem elem_ok (i j z : ℕ) (hi : i < 168) (hj : j < 336) (hz : z < 2) :
+    checkOneI i j z ((certs (i / 6)).getD ((i % 6) * 672 + j * 2 + z) 0) = true := by
+  have h := stage_elem (i / 6) (by omega) ((i % 6) * 672 + j * 2 + z) (by omega)
+  have e1 : 6 * (i / 6) + ((i % 6) * 672 + j * 2 + z) / 672 = i := by omega
+  have e2 : ((i % 6) * 672 + j * 2 + z) % 672 / 2 = j := by omega
+  have e3 : ((i % 6) * 672 + j * 2 + z) % 2 = z := by omega
+  rw [e1, e2, e3] at h
+  exact h
 
 theorem toG_surj (x : G8) : ∃ i j z : ℕ, i < 168 ∧ j < 336 ∧ z < 2 ∧ toG (i, j, z) = x := by
   obtain ⟨p, q, z⟩ := x
@@ -115,9 +130,7 @@ theorem toG_surj (x : G8) : ∃ i j z : ℕ, i < 168 ∧ j < 336 ∧ z < 2 ∧ t
 /-- Every element of `G8` has its three covering words. -/
 theorem all_good (x : G8) : ∃ wA wB wC : ℕ, prodA wA = x ∧ prodB wB = x ∧ prodC wC = x := by
   obtain ⟨i, j, z, hi, hj, hz, rfl⟩ := toG_surj x
-  have hk : i / 6 < 28 := by omega
-  have hs := checkStage_sound (i := i) (j := j) (z := z) (stage_all hk) rfl (by omega) (by omega)
-  obtain ⟨h1, h2, h3⟩ := checkOneI_sound hs
+  obtain ⟨h1, h2, h3⟩ := checkOneI_sound (elem_ok i j z hi hj hz)
   exact ⟨_, _, _, h1, h2, h3⟩
 
 /-- The connection set `S` of the record, as a finset of `G8`. -/
