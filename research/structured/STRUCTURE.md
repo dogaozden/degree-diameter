@@ -32,6 +32,11 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
    exponent change, the orbit method beats extrapolated random-S annealing by ~10⁵ at μ = 34, ~10⁶ at μ = 43 and,
    extrapolated, ~10⁹ near μ ≈ 67. But it has its own wall, and nothing random-like passes the first-moment
    ceiling.
+6. **Second session: free orbits only (f = 0, §8).** When 3 | Δ the old recipe needed e plus two commuting torus
+   letters, whose words collide (8–10 % fewer distinct words at BFS levels 4–6). Dropping them (S = Δ/3 free
+   α-orbits, no identity; e ∈ S is only a normalisation) fixed Δ = 9, 12, 15 and made Δ = 6 usable. It raised
+   (6,7), (6,9), (6,10), (9,8), (9,10), (12,9), (12,10) and (15,8) on their first rungs, most within minutes.
+   The same session also ran the first orbit ladder on (13,10) (k = 3, f = 1).
 
 
 ## 1. The idea: make S invariant under an automorphism

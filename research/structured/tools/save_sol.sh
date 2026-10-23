@@ -4,6 +4,9 @@ OUT=$1; shift
 REPO=$(cd "$(dirname "$0")/../../.." && pwd)
 for tag in "$@"; do
   grep -q "^VALID" "$OUT/$tag.log" || { echo "$tag: no VALID line, skipped"; continue; }
+  fam=$(head -1 "$OUT/$tag.txt" | awk '{print $3}'); NN=$(head -1 "$OUT/$tag.txt" | awk '{print $NF}')
+  if [ "$fam" = sl ] && [ "$NN" -gt 10000000 ] && ! grep -q "eccA=" "$OUT/$tag.log"; then
+    echo "$tag: haarcheck2 verdict not in the log yet, skipped"; continue; fi
   cp "$OUT/$tag.txt" "$REPO/research/frontier/sols/" && cp "$OUT/$tag.log" "$REPO/research/structured/runs/"
   echo "$tag: $(grep '^VALID' "$OUT/$tag.log")"
 done
