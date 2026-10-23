@@ -1,0 +1,23 @@
+group prod sl 7 sl 17 x Z_1, N=1645056, identity 205904, H order 63, rows 26112, threads 1, setup 0.10s
+start cost=44
+t=30 steps=648 evals=5185 cost=6 best=6 T=0.53
+t=60 steps=1312 evals=10497 cost=4 best=4 T=0.19
+t=90 steps=1984 evals=15873 cost=4 best=4 T=0.15
+t=120 steps=2628 evals=21025 cost=4 best=4 T=0.15
+t=150 steps=3302 evals=26417 cost=4 best=4 T=0.15
+t=180 steps=3974 evals=31793 cost=4 best=4 T=0.15
+t=210 steps=4624 evals=36993 cost=8 best=4 T=0.88
+t=240 steps=5285 evals=42281 cost=8 best=4 T=0.31
+t=270 steps=5926 evals=47409 cost=6 best=4 T=0.15
+t=300 steps=6569 evals=52553 cost=6 best=4 T=0.15
+t=330 steps=7162 evals=57297 cost=6 best=4 T=0.15
+t=360 steps=7762 evals=62097 cost=4 best=4 T=0.88
+t=390 steps=8396 evals=67169 cost=4 best=4 T=0.31
+t=420 steps=8987 evals=71897 cost=4 best=4 T=0.15
+t=450 steps=9647 evals=77177 cost=4 best=4 T=0.15
+t=480 steps=10297 evals=82377 cost=4 best=4 T=0.15
+t=510 steps=10917 evals=87337 cost=4 best=4 T=0.88
+t=540 steps=11562 evals=92497 cost=4 best=4 T=0.31
+RESULT d=9 D=9 group=prod sl 7 sl 17 x Z_1 N=1645056 best=0 evals=93769 time=547.4
+full diameter check: OK
+wrote sols/d9D9_prod_sl_7_sl_17_1_s504.txt
