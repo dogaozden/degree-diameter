@@ -195,7 +195,7 @@ Verification: haar_gen3's own full BFS check passed for all. **build_haar2.py VA
 (sha256 1a8fd889805939c50316a84d2e651fd48d0c5a5c95ce716887f578135cdfc2c6, 852 s, 3.6 GB); (13,9) 62,156,160 (sha256 4fa150abcc58d8a9294e6a880f56f4c925a0830bf0ca71a7d4380109115c8e24, 103 s, 4.3 GB). build_haar2 is
 too heavy for 111–317 M vertices on this shared box, so I also wrote an independent low-memory checker for SL(2,p)×Z_n, p prime: own element indexing, explicit matrix products, bitset BFS from (e,A) and (e,B), about
 4N bits of memory. It agrees with build_haar2 on the cells both can check and rejects a corrupted file. The lab's check_haar_indep.py
-also gives VALID for (15,8) and (12,9) (18 s and 52 s, 2.4 GB); its runs on (10,10) and (13,9) were still going at commit time. Its results:
+also gives VALID for (15,8), (12,9), (10,10) and (13,9) (up to 1,562 s and 5.6 GB). Its results:
 **VALID for all seven** ((15,8), (12,9), (10,10), (13,9), (14,9), (15,9), (16,9): both eccentricities ≤ D, every vertex reached, Δ distinct generators; 1.5–31 s, ≤ 120 MB). These graphs are **not harvested**. The solution files are in Appendix A. Harvest (labctl: build_haar2
 or a C checker, check_haar_indep, bigcheck) is the coordinator's step.
 
@@ -434,8 +434,8 @@ and seconds per evaluation is ≈ (1–2)·10^(−9)·N·(#BFS) on this Mac for 
   - All fits and numbers in §1, from the solution files and `size_law_fits.csv`.
   - The ball-growth, excess, inverse-pair, Z_n-fiber, parity and capability measurements of §2.3 and §4.1.
   - The ORBIT-mode experiments.
-  - The seven new-cell runs: haar_gen3 internal full check for all; build_haar2 VALID for (15,8), (12,9), (10,10) and (13,9);
-    the independent C checker as listed in §3.2.
+  - The seven new-cell runs: haar_gen3 internal full check for all; build_haar2 and check_haar_indep VALID for (15,8), (12,9), (10,10)
+    and (13,9); the independent C checker as listed in §3.2.
 - **Fitted, so it can be wrong out of range:** μ\*(N) (calibrated on N ≤ 11 M; tested today up to 158 M), the D = 7
   predictions (no D = 7 Haar data) and the 13 + 2 ln(M/10^5) capability rule (one cell, 24 runs).
 - **From memory, not re-checked:** Bollobás–Fernandez de la Vega, Lubetzky–Peres, Sardari, Larsen–Shalev and
