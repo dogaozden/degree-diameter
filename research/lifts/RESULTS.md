@@ -33,7 +33,40 @@ Solution files: `sols/rebuild_*.txt`.
 
 ## 2. Attack on the missing cells
 
-### 2.1 New record: (3,8) = 258 (table 256)
+### 2.0 New records so far
+
+| cell | table (holder) | ours | construction | file |
+|---|---|---|---|---|
+| (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
+| (5,10) | 90,068 (Loz) | **91,728** (+1.8 %) | Haar graph (dipole lift) of SL(2,13) × Z21 | `sols/d5D10_n91728_haar_sl13xcyc21.txt` (haar_gen3 original: `sols/haar/d5D10_sl_13_21_s1.txt`) |
+
+All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The (5,10) graph also
+passes the repo's build_haar2.py (sha256 32998e69…). Outputs are in `verify/`.
+
+**(3,8) = 288.** Voltages (aff "x,y,j"; base edges 0–2 ×2, 0–3, 1–2, 1–3 ×2):
+
+| edge | 0–2 | 0–2 | 0–3 | 1–2 | 1–3 | 1–3 |
+|---|---|---|---|---|---|---|
+| voltage | 0,0,0 | 2,0,3 | 0,0,0 | 0,0,0 | 1,1,3 | 1,1,2 |
+
+- 3-regular, bipartite, diameter 8, girth 12. Edge-list sha256 9dbc8e8f….
+- \|Aut\| = 144, and Aut is regular on each colour class. So it is also a Haar graph of a group of order 144, found
+  here as a 4-vertex-base lift over a group of order 72.
+- The group Z3² ⋊ Z8 is metabelian but not metacyclic. It came from the `aff` family added this session.
+- It was found in 41 evaluations: (3,8) is far from saturated (Moore 510), and a push above 288 is running.
+
+**(5,10) = 91,728.**
+- Connection set in SL(2,13) × Z21 (matrix | z):
+  - [[1,0],[0,1]] | 0
+  - [[3,8],[0,9]] | 16
+  - [[2,7],[7,12]] | 7
+  - [[1,10],[10,10]] | 2
+  - [[8,3],[9,10]] | 5
+- Found by haar_gen3 in 9 s (2·10⁵ evaluations), after RANDSAMPLE screening put SL(2,13) × Z21 first (random-set
+  minimum cost 13). μ at this order is 22.5.
+- The size law predicted the cell as "marginal" (+0.7 %) but nobody had run it.
+
+### 2.1 Earlier record: (3,8) = 258, a Z43-lift of K3,3
 
 `sols/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt`: a **Z43-lift of K3,3**. Gauge-fixed voltages:
 
