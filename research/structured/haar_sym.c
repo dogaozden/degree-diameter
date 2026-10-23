@@ -783,14 +783,15 @@ static int cmpll(const void *a, const void *b) { long long x = *(const long long
 
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
-static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0;
+static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
 static int alpha(int x) {
     int xq = x / ncyc, z = x % ncyc, yq;
     if (Q->type == G_HEIS && (AHA || AHB)) {
         const field *F = Q->F; int q = F->q, a = xq / (q * q), b = xq / q % q, c = xq % q;
         yq = (FMUL(F, AHA, a) * q + FMUL(F, AHB, b)) * q + FMUL(F, FMUL(F, AHA, AHB), c);
-    } else yq = AQ >= 0 ? qmul(Q, qmul(Q, AQ, xq), AQI) : xq;
+    } else if (Q->type == G_META && AMU) yq = (int)((long long)AMU * (xq / Q->k) % Q->m) * Q->k + xq % Q->k;
+    else yq = AQ >= 0 ? qmul(Q, qmul(Q, AQ, xq), AQI) : xq;
     return yq * ncyc + (int)((long long)AR * z % ncyc);
 }
 static int orbit_of(int x, int *o) {   /* o[i] = alpha^i(x); 1 iff the orbit of x has exactly k elements */
@@ -843,6 +844,18 @@ static int choose_alpha(void) {
         }
         fprintf(stderr, "alpha: heis scaling a=%d b=%d, z -> %d z on Z_%d (order %d)\n", AHA, AHB, AR, ncyc, ordr);
         return 1;
+    }
+    if (Q->type == G_META && !getenv("ALPHA")) {   /* (a,j) -> (u a, j), u of order k mod m with the fewest fixed a */
+        int m = Q->m, best = -1, bfix = 1 << 30;
+        if (getenv("AMU")) best = atoi(getenv("AMU"));
+        else for (int u = 2; u < m; u++) {
+            if (gcdi(u, m) != 1 || ipow_mod(u, k, m) != 1) continue;
+            int o = 1; long long y = u; while (y != 1) { y = y * u % m; o++; }
+            int l = o / gcdi(o, ordr) * ordr; if (l != k) continue;
+            int fx = gcdi(u - 1, m); if (fx < bfix) { bfix = fx; best = u; }
+        }
+        if (best > 0) { AMU = best; fprintf(stderr, "alpha: meta scaling a -> %d a, z -> %d z on Z_%d\n", AMU, AR, ncyc); return 1; }
+        fprintf(stderr, "meta: no scaling of order %d; trying conjugation\n", k);
     }
     if (getenv("ALPHA")) { AQ = !strcmp(getenv("ALPHA"), "e") ? Q->ident : atoi(getenv("ALPHA"));
         if (AQ < 0 || AQ >= Q->order) { fprintf(stderr, "ALPHA out of range (0..%d or e)\n", Q->order - 1); return 0; }
