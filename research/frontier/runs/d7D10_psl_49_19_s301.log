@@ -1,22 +1,22 @@
-group psl 49 poly x^2+1 x Z_19, N=1117200, identity 22344, H order 57, rows 19600, threads 1, setup 0.04s
+group psl 49 poly x^2+1 x Z_19, N=1117200, identity 22344, H order 57, rows 19600, threads 1, setup 0.05s
 start cost=36
-t=30 steps=940 evals=7521 cost=12 best=11 T=0.53
-t=60 steps=2136 evals=17089 cost=8 best=8 T=0.19
-t=90 steps=3295 evals=26361 cost=8 best=8 T=0.15
-t=120 steps=4409 evals=35273 cost=8 best=8 T=0.15
-t=150 steps=5507 evals=44057 cost=8 best=8 T=0.15
-t=180 steps=6596 evals=52769 cost=8 best=8 T=0.15
-t=210 steps=7635 evals=61081 cost=14 best=8 T=1.39
-t=240 steps=8625 evals=69001 cost=11 best=8 T=0.49
-t=270 steps=9715 evals=77721 cost=8 best=8 T=0.17
-t=300 steps=10810 evals=86481 cost=8 best=8 T=0.15
-t=330 steps=11962 evals=95697 cost=7 best=7 T=0.15
-t=360 steps=13082 evals=104657 cost=5 best=5 T=0.15
-t=390 steps=14137 evals=113097 cost=5 best=5 T=0.15
-t=420 steps=15292 evals=122337 cost=5 best=5 T=0.15
-t=450 steps=16437 evals=131497 cost=5 best=5 T=0.15
-t=480 steps=17576 evals=140609 cost=5 best=5 T=0.15
-t=510 steps=18698 evals=149585 cost=5 best=5 T=0.63
-t=540 steps=19765 evals=158121 cost=5 best=5 T=0.22
-t=570 steps=20871 evals=166969 cost=5 best=5 T=0.15
-RESULT d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 best=5 evals=175913 time=600.0
+t=30 steps=1037 evals=8297 cost=12 best=11 T=0.53
+t=60 steps=2170 evals=17361 cost=8 best=8 T=0.19
+t=90 steps=3211 evals=25689 cost=8 best=8 T=0.15
+t=120 steps=4166 evals=33329 cost=8 best=8 T=0.15
+t=150 steps=5148 evals=41185 cost=8 best=8 T=0.15
+t=180 steps=6153 evals=49225 cost=8 best=8 T=0.15
+t=210 steps=7169 evals=57353 cost=12 best=8 T=1.34
+t=240 steps=8110 evals=64881 cost=10 best=8 T=0.47
+t=270 steps=9196 evals=73569 cost=7 best=7 T=0.17
+t=300 steps=10238 evals=81905 cost=7 best=7 T=0.15
+t=330 steps=11312 evals=90497 cost=7 best=7 T=0.15
+t=360 steps=12354 evals=98833 cost=7 best=7 T=0.15
+t=390 steps=13431 evals=107449 cost=7 best=7 T=0.15
+t=420 steps=14467 evals=115737 cost=11 best=7 T=0.73
+t=450 steps=15486 evals=123889 cost=8 best=7 T=0.26
+t=480 steps=16490 evals=131921 cost=8 best=7 T=0.15
+t=510 steps=17584 evals=140673 cost=8 best=7 T=0.15
+t=540 steps=18525 evals=148201 cost=8 best=7 T=0.15
+t=570 steps=19606 evals=156849 cost=6 best=6 T=0.73
+RESULT d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 best=6 evals=165361 time=600.0
