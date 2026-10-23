@@ -1,3 +1,6 @@
 group sl 23 x Z_5, N=60720, identity 2530, H order 60, rows 1012, threads 1, setup 0.00s
 start cost=72
 t=30 steps=25876 evals=207009 cost=4 best=4 T=0.53
+RESULT d=6 D=9 group=sl 23 x Z_5 N=60720 best=0 evals=255361 time=37.2
+full diameter check: OK
+wrote sols/d6D9_sl_23_5_s401.txt
