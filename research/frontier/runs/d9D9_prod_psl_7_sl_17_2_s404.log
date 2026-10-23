@@ -1,2 +1,7 @@
 group prod psl 7 sl 17 x Z_2, N=1645056, identity 206176, H order 63, rows 26112, threads 1, setup 0.05s
 start cost=37
+t=30 steps=1038 evals=8305 cost=6 best=6 T=0.53
+t=60 steps=2144 evals=17153 cost=6 best=6 T=0.19
+RESULT d=9 D=9 group=prod psl 7 sl 17 x Z_2 N=1645056 best=0 evals=20337 time=71.1
+full diameter check: OK
+wrote sols/d9D9_prod_psl_7_sl_17_2_s404.txt
