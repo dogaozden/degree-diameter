@@ -16,6 +16,12 @@ while IFS= read -r line; do
   grep -q RESULT "$log" 2>/dev/null && continue
   echo "$(date +%H:%M:%S) start $tag" >&2
   ORBIT="$spec" timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
-  if [ -s "$sol" ]; then python3 "$CHECK" "$sol" 2>&1 | tail -3 >> "$log"; fi
+  if [ -s "$sol" ]; then
+    read -r _ _ fam p _ n _ NN < <(head -1 "$sol")
+    if [ "$fam" = sl ] && [ "$NN" -gt 10000000 ] && [ -x "$HERE/hcsl" ] && [ -x "$HERE/hc2" ] && [ "$(echo "$p" | grep -c poly)" = 0 ]; then
+      # > 20M vertices, SL(2,p) x Z_n: the two independent low-memory checkers (build_haar2 needs hours and > 7 GB)
+      "$HERE/hcsl" "$sol" 2>&1 | tail -1 >> "$log"; "$HERE/hc2" "$sol" 2>&1 | tail -1 >> "$log"
+    else python3 "$CHECK" "$sol" 2>&1 | tail -3 >> "$log"; fi
+  fi
   echo "$(date +%H:%M:%S) done  $tag: $(grep -h 'RESULT\|VALID' "$log" | tr '\n' ' ')" >&2
 done < "$JOBS"
