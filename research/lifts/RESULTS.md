@@ -1,5 +1,31 @@
 # Voltage lifts: results (voltage-lifts job, 2026-10-23)
 
+## Summary
+
+- **Three cells taken from the table.** Every graph was checked four ways: lift.c's BFS; an independent Python
+  rebuild; all-pairs BFS with no symmetry assumed; and, for Haar graphs, the repo's build_haar2.py. Details in §2.0.
+
+  | cell | table (holder) | ours | construction |
+  |---|---|---|---|
+  | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
+  | (5,9) | 27,936 (Loz) | **28,560** | Haar graph of Z595 ⋊₅₃ Z24 |
+  | (5,10) | 90,068 (Loz) | **93,000** | Haar graph of Z775 ⋊₁₃₃ Z60 |
+
+  The (5,9) and (5,10) values may still rise; the last sweeps were still finding solutions.
+- **Exact rebuilds of table records**, proved isomorphic with BLISS:
+  - (7,3) 80, from the only published voltage assignment;
+  - (3,7) 168, Conder's graph, as a 2+2-base lift;
+  - (4,7) 840, the Bond–Delorme graph, which turns out to be Haar(A5 × Z7).
+  - Also (10,5) 4000 and (7,7) 23436 by an explicit polygon-cover construction that reproduces every green D = 5 and
+    D = 7 value of that form.
+- **Negative results with reasons:**
+  - (3,7) and (4,7) above the table;
+  - the polygon-cover family (saturated at 2j+1 copies);
+  - the green D = 8 cells (about 2.5× beyond random lifts);
+  - a girth obstruction (proved) that rules out lifts of GH/GQ incidence graphs below D = g − 1;
+  - (3,10), with two cost-2 near misses closed by exhaustive search;
+  - (6,5), floor at cost 4.
+
 All runs were made in this cloud session (4 cores, 15 GB), each with a time limit. Table values are from
 research/frontier/TABLE.md, which agrees with the CombinatoricsWiki (LITERATURE.md §1). "Moore" is the bipartite
 Moore bound.
