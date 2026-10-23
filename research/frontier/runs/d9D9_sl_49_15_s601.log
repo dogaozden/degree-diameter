@@ -1,0 +1,20 @@
+group sl 49 poly x^2+1 x Z_15, N=1764000, identity 35280, H order 60, rows 29400, threads 1, setup 0.06s
+start cost=92
+t=30 steps=508 evals=4065 cost=34 best=34 T=0.53
+t=60 steps=971 evals=7769 cost=34 best=34 T=0.19
+t=90 steps=1453 evals=11625 cost=34 best=34 T=0.15
+t=120 steps=1941 evals=15529 cost=32 best=32 T=0.15
+t=150 steps=2442 evals=19537 cost=32 best=32 T=0.15
+t=180 steps=2909 evals=23273 cost=32 best=32 T=0.15
+t=210 steps=3401 evals=27209 cost=26 best=26 T=0.15
+t=240 steps=3914 evals=31313 cost=26 best=26 T=0.15
+t=270 steps=4394 evals=35153 cost=26 best=26 T=0.15
+t=300 steps=4905 evals=39241 cost=26 best=26 T=0.15
+t=330 steps=5375 evals=43001 cost=26 best=26 T=0.15
+t=360 steps=5845 evals=46761 cost=26 best=26 T=0.56
+t=390 steps=6329 evals=50633 cost=26 best=26 T=0.20
+t=420 steps=6821 evals=54569 cost=26 best=26 T=0.15
+t=450 steps=7286 evals=58289 cost=26 best=26 T=0.15
+t=481 steps=7797 evals=62377 cost=26 best=26 T=0.15
+t=511 steps=8267 evals=66137 cost=26 best=26 T=0.55
+RESULT d=9 D=9 group=sl 49 poly x^2+1 x Z_15 N=1764000 best=26 evals=68377 time=527.9
