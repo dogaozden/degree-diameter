@@ -64,4 +64,119 @@ So the working recipe is: **G = Q × Z_n with Q = SL/PSL/PGL(2,q) (or a product 
 f ≥ 1. Use f = 1 when Δ ≡ 1 mod 3 (7, 10, 13, 16), f = 2 when Δ ≡ 2 (8, 11, 14), and f = 3 when Δ ≡ 0 (9, 12, 15),
 the extra fixed generators being torus elements.
 
-<!-- SECTIONS 3-6 -->
+## 3. Calibration: how far up in μ does it reach?
+
+All runs: haar_sym, k = 3, K = 8, single thread, this container (shared by up to 5 jobs). "evals" = cost evaluations
+until cost 0, or the budget when it stopped. For comparison, random-S annealing (SIZE_LAW §4.1, (7,8), haar_gen3
+on a Mac): μ = 13 solves in ~10⁵ evaluations, μ ≈ 21 needs ~5·10⁶, μ ≈ 30–34 failed 8 of 8 runs at 4.5·10⁶ each.
+The fit there is evals ≈ 10⁵ e^((μ−13)/2).
+
+| cell | group | N | μ | |Fix| | result | evals |
+|---|---|---|---|---|---|---|
+| (7,8) | psl 19 × Z13 (old record order) | 44,460 | 23.2 | 8 | solved 4/4 seeds | 1.3k, 3.1k, 3.1k, 3.6k |
+| (7,8) | psl 17 × Z19 | 46,512 | 34.0 | 8 | solved 3/3 | 15.6k, 17.6k, 19.8k |
+| (7,8) | psl 13 × Z43 | 46,956 | 36.7 | 5 | solved | 347k |
+| (7,8) | psl 19 × Z14 | 47,880 | 43.0 | 17 | solved (**record**) | 264k |
+| (7,8) | psl 11 × Z73 | 48,180 | 45.2 | 5 | best 3 | 3·10⁶ (stopped) |
+| (7,8) | sl 11 × Z37 | 48,840 | 50.3 | 11 | best 1 | 5.9·10⁶ |
+| (7,8) | prod psl 5 sl 5 × Z7 | 50,400 | 64.2 | 17 | best 6 | |
+| (7,8) | sl 37 | 50,616 | 66.4 | 35 | best 10 | |
+| (8,7) | psl 13 × Z19 | 20,748 | 27.8 | 5 | solved | 18k |
+| (8,7) | sl 8 × Z43, pgl 8 × Z43 | 21,672 | 38.5 | 8 | solved (**record**), 5/5 seeds | 1.9k–183k |
+| (8,7) | pgl 9 × Z31 | 22,320 | 47.6 | 8 | best 9 | 8.7·10⁶ |
+| (8,8) | psl 17 × Z43 (an old record order) | 105,264 | 11.4 | 8 | solved 2/2 | 0.4k, 0.6k |
+| (8,8) | psl 23 × Z19 | 115,368 | 27.9 | 11 | solved | 8.2k |
+| (8,8) | sl 49 | 117,600 | 33.3 | 47 | solved | 1.0·10⁶ |
+| (8,8) | psl 17 × Z49 | 119,952 | 39.8 | 8 | solved (**record**) | 88k |
+| (8,8) | sl 11 × Z91 | 120,120 | 40.3 | 11 | best 4 | 6.0·10⁶ |
+| (8,8) | prod sl 7 psl 9 | 120,960 | 43.0 | 53 | best 8 | 1.4·10⁶ |
+| (8,8) | psl 19 × Z37 | 126,540 | 63.8 | 8 | best 9 | 3.9·10⁶ |
+| (7,9) | psl 23 × Z37 | 224,664 | 28.5 | 11 | solved | 183k |
+| (7,9) | psl 29 × Z19 | 231,420 | 38.2 | 14 | solved (**record**) | 1.5·10⁶ |
+| (9,8) | sl 27 × Z13 (f = 3) | 255,528 | 21.6 | 53 | solved (**record**) | 504k |
+
+Same machine, same seeds, 60 s each (`cmp1.txt` in runs/):
+
+<!-- CMP-TABLE -->
+
+Reading: for k = 3 the evaluations to solve grow roughly like e^(μ/4.5) (from 3·10³ at μ = 23 to 3·10⁵ at μ = 43
+at (7,8)), against e^(μ/2) for random S. The wall, the μ where ~10⁷ evaluations stop sufficing, is μ ≈ 45–50 at
+N ≈ 2·10⁴–10⁵. For random S it is μ ≈ 21–25. Runs that stall usually sit at cost 1–9: one or two uncovered orbits
+plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
+
+## 4. New graphs (all: haar_sym's full diameter check and build_haar2.py VALID; files in ../frontier/sols/)
+
+| cell | table (DS14v2) | previous best (ours) | new | group, structure | μ at new order | evals | file |
+|---|---|---|---|---|---|---|---|
+| (7,8) | 80,940 | 88,920 | **95,760** (+7.7 %) | psl 19 × Z14, k = 3, m = 2, f = 1 | 43.0 | 2.6·10⁵ | d7D8_psl_19_14_orb3_s1.txt |
+| (8,8) | 201,480 | 225,792 | **239,904** (+6.3 %) | psl 17 × Z49, k = 3, m = 2, f = 2 | 39.8 | 8.8·10⁴ | d8D8_psl_17_49_orb3_s1.txt |
+| (8,7) | 40,586 | 41,040 | **43,344** (+5.6 %) | sl 8 × Z43, k = 3, m = 2, f = 2 | 38.5 | 1.2·10⁴ | d8D7_sl_8_43_orb3_s1.txt |
+| (7,9) | 400,160 | 416,640 | **462,840** (+11.1 %) | psl 29 × Z19, k = 3, m = 2, f = 1 | 38.2 | 1.5·10⁶ | d7D9_psl_29_19_orb3_s1.txt |
+| (9,8) | 449,480 | 497,904 | **511,056** (+2.6 %) | sl 27 × Z13, k = 3, m = 2, f = 3 | 21.6 | 5.0·10⁵ | d9D8_sl_27_13_orb3_s1.txt |
+
+Also valid but superseded or not records (kept in runs/): (7,8) psl 17 × Z19 (93,024), psl 13 × Z43 (93,912);
+(8,8) psl 23 × Z19 (230,736), sl 49 (235,200); (8,7) psl 13 × Z19 (41,496), pgl 8 × Z43 (43,344); (7,9)
+psl 23 × Z37 (449,328). edge-list sha256 values are in runs/*.rebuild.txt.
+
+<!-- MORE-RECORDS -->
+
+## 5. Negative and screening results (structured families that do not help)
+
+| family | test | result |
+|---|---|---|
+| involutive α (k = 2), any Q × Z_n | RANDORB, ball growth, brute force on SL(2,13) × Z19 | median cost 400–500 against μ = 12.7 (random S: 31); length-2 words already collide (41 or 39 distinct instead of 43): α(u) = u⁻¹ for a density-1/q set |
+| α trivial on Q (z ↦ −z only) | RANDORB | cost 10⁴–3·10⁴ at μ = 12.7 |
+| conjugation only, z fixed (AR = 1) | RANDORB | median 401 at μ = 12.7; |Fix| = 227 |
+| metacyclic scaling (a, j) ↦ (ua, j) | Z_337 ⋊ Z_6 at (10,5) | min 399 against μ = 52 (random S min 178); α is trivial on the quotient Z_6 |
+| AGL(1,223) with conjugation | (7,8) | cost ≈ 40,000: degenerate |
+| Heisenberg groups Heis(q) × Z_n (fixed-point-free α) | (7,8), (8,8) RANDSAMPLE | random S already costs 1,500–7,900 at μ = 13–44 (SL-type: ~25–80): class-2 nilpotent groups mix badly at D = 8 |
+| field structure: Frobenius orbits, x ↦ x^p entrywise on SL(2,8) × Z43 | (8,7), 3 seeds × 60 s | best cost 10 every time (1.5·10⁶ evals each); conjugation orbits on the same group solve in 2·10³–2·10⁵ evals |
+| one orbit (m = 1), Δ = 6 | (6,8), k = 3 (f = 3) and k = 5 (f = 1) | min 72 / 38 at μ = 30 (median 342 / 7,860); orbit space too small |
+| large cyclic factor Q × Z_p, p ≈ 300–800 | (10,8), (11,8) with k = 5 | random S min 75–300 at μ = 62–71 (sl 9 × Z821 worst); also no wide rows |
+| coset-structured S (S ⊂ xH, unions of cosets of a torus/unipotent subgroup) | algebra | s_i⁻¹ s_j ∈ H for all pairs: length-2 words collapse into a small subgroup (no run needed) |
+
+What the negatives have in common: **any structure that makes words collide is fatal**, because coverage is only
+~λ ≈ 8–15 words per element. Equivariance (orbits) works because it correlates *which* elements are covered without
+creating collisions, as long as α has odd order and acts without fixed points on every quotient.
+
+Singer difference sets fit this picture. By Hall's multiplier theorem a perfect difference set in Z_(q²+q+1) is
+fixed, up to translation, by the multiplier z ↦ q z, an automorphism of order 3. So the D = 3 Moore construction is
+itself an orbit-structured S. At D = 3 the orbit structure gives zero waste. At D ≥ 7 it only reshuffles the
+Poisson clumps, which is why the gain is in search effort and not in the ceiling.
+
+## 6. Can the algorithm be made a billion times more efficient? (the honest answer)
+
+**As a constant factor: no.** SPEEDUP.md measures 1.2–3.2× per core end to end, bit-identical. The bitset BFS is
+within 2–3× of the memory system's limit on this CPU. A GPU might add 10–30×, and 4 cores give 4×. That is 10²–10³
+at best. Since each 10× in evaluations buys ≈ +4.6 in μ ≈ +3–4 % in N (SIZE_LAW §4.1), even 10⁹ would buy only
+≈ +30 % in N. The cells asked about need far more than that:
+
+| cell | table | μ at table | first-moment ceiling μ_h = Δ ln N | random-S evals ≈ 10⁵ e^((μ−13)/2) | status |
+|---|---|---|---|---|---|
+| (10,8) | 1,176,480 | 62.6 | 133 | 6·10¹⁵ | below the ceiling |
+| (11,8) | 2,246,940 | 56.9 | 154 | 3·10¹⁴ | below the ceiling |
+| (12,8) | 4,650,100 | 230 | 175 | — | above the ceiling |
+| (14,8) | 14,172,480 | 483 | 221 | — | above the ceiling |
+| (16,8) | 36,201,060 | 733 | 267 | — | above the ceiling |
+
+(The ceiling is the μ where the expected number of valid S, ≈ N^Δ e^(−μ), drops to 1; table/2N_h > 1 in
+SIZE_LAW §3.3.)
+
+**As an exponent: partly yes.** Orbit-symmetric S with k = 3 replaces e^(μ/2) by about e^(μ/4.5) (§3). At μ = 34 it
+needed 2·10⁴ evaluations where random-S annealing needs ~4·10⁹ (extrapolated; it failed at 4.5·10⁶): a factor of
+~10⁵. At μ = 43, 3·10⁵ against ~3·10¹¹: ~10⁶. Extrapolating both fits, the ratio e^(0.28 μ) reaches 10⁹ at
+μ ≈ 74. In that sense the change *is* a billion-fold efficiency gain in the band μ ≈ 60–75, but only there:
+
+- **It cannot pass the first-moment ceiling.** The count of symmetric S shrinks by the same factor k in the exponent
+  (§1), so (12,8), (14,8) and (16,8), whose tables lie *above* the ceiling for every random-like or orbit-symmetric S
+  (and likewise D = 7 with Δ ≥ 9 and D = 5 with Δ ≥ 13), stay out of reach at any compute. Those tables come from
+  algebraic constructions whose words cover with negative correlation (§4.3 of SIZE_LAW). Nothing in this job
+  reproduces that at D ≥ 7.
+- **It has its own wall**, at μ ≈ 45–50 with 10⁷ evaluations for k = 3 (§3), set by μ/3 plus fixed-point misses.
+  Larger k needs α with few fixed points. In SL-type groups |Fix| ≈ q and each fixed point is missed with probability
+  e^(−λ/k). Groups with fixed-point-free α are nilpotent and mix badly (§5).
+- (10,8) and (11,8) lie in the band between the k = 3 wall and the ceiling. They are being attempted (§7):
+  (10,8) with k = 3 (μ_eff ≈ 22) and (11,8) with k = 5 on PSL(2,59) × Z11 (μ_eff ≈ 16).
+
+<!-- SECTION 7 -->
+
