@@ -1,0 +1,12 @@
+group prod psl 7 psl 8 poly x^3+x+1 x Z_3, N=254016, identity 31920, H order 63, rows 4032, threads 1, setup 0.01s
+start cost=35
+t=30 steps=13353 evals=106825 cost=4 best=4 T=0.53
+t=60 steps=26696 evals=213569 cost=3 best=3 T=0.19
+t=90 steps=39935 evals=319481 cost=3 best=3 T=0.15
+t=120 steps=53026 evals=424209 cost=3 best=3 T=0.15
+t=150 steps=66112 evals=528897 cost=3 best=3 T=0.15
+t=180 steps=79230 evals=633841 cost=3 best=3 T=0.15
+t=210 steps=92342 evals=738737 cost=2 best=2 T=0.84
+t=240 steps=105644 evals=845153 cost=2 best=2 T=0.30
+t=270 steps=118849 evals=950793 cost=2 best=2 T=0.15
+RESULT d=6 D=10 group=prod psl 7 psl 8 poly x^3+x+1 x Z_3 N=254016 best=2 evals=1056465 time=300.0

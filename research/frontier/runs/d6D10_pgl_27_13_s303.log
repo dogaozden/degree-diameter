@@ -1,0 +1,12 @@
+group pgl 27 poly x^3+2x+1 x Z_13, N=255528, identity 0, H order 52, rows 4914, threads 1, setup 0.01s
+start cost=30
+t=30 steps=11939 evals=95513 cost=5 best=5 T=0.53
+t=60 steps=23488 evals=187905 cost=4 best=4 T=0.19
+t=90 steps=35493 evals=283945 cost=4 best=4 T=0.15
+t=120 steps=47143 evals=377145 cost=4 best=4 T=0.15
+t=150 steps=58785 evals=470281 cost=4 best=4 T=0.15
+t=180 steps=70305 evals=562441 cost=4 best=4 T=0.15
+t=210 steps=82194 evals=657553 cost=6 best=4 T=0.76
+t=240 steps=93862 evals=750897 cost=4 best=4 T=0.27
+t=270 steps=105484 evals=843873 cost=4 best=4 T=0.15
+RESULT d=6 D=10 group=pgl 27 poly x^3+2x+1 x Z_13 N=255528 best=4 evals=937977 time=300.0
