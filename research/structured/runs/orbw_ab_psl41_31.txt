@@ -1,0 +1,26 @@
+# ORBW A/B: (11,8) psl 41 x Z31, ORBIT="5 2 1", THREADS=1, 600 s cap; evaluations to a VALID solution (all solved)
+# |Fix(alpha)| = 19 (+e), mu = 32.3, mu/k = 6.45, expected fixed-point misses 2.5
+ORBW=1 seed 1: RESULT ... best=0 evals=31993
+w=1 s=2 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=33857 time=38.6 orbit k=5 m=2 f=1 fix=19
+w=1 s=3 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=12929 time=15.0 orbit k=5 m=2 f=1 fix=19
+w=1 s=4 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=12897 time=14.9 orbit k=5 m=2 f=1 fix=19
+w=1 s=5 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=4777 time=5.9 orbit k=5 m=2 f=1 fix=19
+w=1 s=6 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=6289 time=8.0 orbit k=5 m=2 f=1 fix=19
+w=1 s=7 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=27993 time=35.0 orbit k=5 m=2 f=1 fix=19
+w=1 s=8 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=4233 time=5.5 orbit k=5 m=2 f=1 fix=19
+w=1 s=9 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=46721 time=58.0 orbit k=5 m=2 f=1 fix=19
+w=1 s=10 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=297 time=0.4 orbit k=5 m=2 f=1 fix=19
+w=1 s=11 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=25905 time=29.8 orbit k=5 m=2 f=1 fix=19
+done
+ORBW=5 seed 1: RESULT ... best=0 evals=7393
+w=5 s=2 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=8433 time=10.2 orbit k=5 m=2 f=1 fix=19
+w=5 s=3 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=17297 time=20.1 orbit k=5 m=2 f=1 fix=19
+w=5 s=4 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=59945 time=71.1 orbit k=5 m=2 f=1 fix=19
+w=5 s=5 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=8977 time=11.1 orbit k=5 m=2 f=1 fix=19
+w=5 s=6 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=13401 time=16.9 orbit k=5 m=2 f=1 fix=19
+w=5 s=7 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=1729 time=2.2 orbit k=5 m=2 f=1 fix=19
+w=5 s=8 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=6817 time=8.4 orbit k=5 m=2 f=1 fix=19
+w=5 s=9 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=22993 time=28.5 orbit k=5 m=2 f=1 fix=19
+w=5 s=10 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=15297 time=18.3 orbit k=5 m=2 f=1 fix=19
+w=5 s=11 RESULT d=11 D=8 group=psl 41 x Z_31 N=1067640 best=0 evals=2649 time=3.1 orbit k=5 m=2 f=1 fix=19
+done
