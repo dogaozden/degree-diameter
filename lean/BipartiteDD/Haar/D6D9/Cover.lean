@@ -24,7 +24,7 @@ open BipartiteDD.Haar.SL23Z5
 theorem exA (n : ℕ) (hn : n < 60720) : ∃ c, okA c n = true := by
   obtain ⟨k, hk⟩ : ∃ k, n / 5060 = k := ⟨_, rfl⟩
   have hk12 : k < 12 := by omega
-  interval_cases k
+  rcases (show (k = 0 ∨ k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 ∨ k = 5 ∨ k = 6 ∨ k = 7 ∨ k = 8 ∨ k = 9 ∨ k = 10 ∨ k = 11) by omega) with h0 | h1 | h2 | h3 | h4 | h5 | h6 | h7 | h8 | h9 | h10 | h11
   · exact stageExA 0 5060 stageA00 certA00 n (by omega) (by omega)
   · exact stageExA 5060 5060 stageA01 certA01 n (by omega) (by omega)
   · exact stageExA 10120 5060 stageA02 certA02 n (by omega) (by omega)
@@ -42,7 +42,7 @@ theorem exA (n : ℕ) (hn : n < 60720) : ∃ c, okA c n = true := by
 theorem exB (n : ℕ) (hn : n < 60720) : ∃ c, okB c n = true := by
   obtain ⟨k, hk⟩ : ∃ k, n / 5060 = k := ⟨_, rfl⟩
   have hk12 : k < 12 := by omega
-  interval_cases k
+  rcases (show (k = 0 ∨ k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 ∨ k = 5 ∨ k = 6 ∨ k = 7 ∨ k = 8 ∨ k = 9 ∨ k = 10 ∨ k = 11) by omega) with h0 | h1 | h2 | h3 | h4 | h5 | h6 | h7 | h8 | h9 | h10 | h11
   · exact stageExB 0 5060 stageB00 certB00 n (by omega) (by omega)
   · exact stageExB 5060 5060 stageB01 certB01 n (by omega) (by omega)
   · exact stageExB 10120 5060 stageB02 certB02 n (by omega) (by omega)

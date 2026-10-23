@@ -217,14 +217,14 @@ open BipartiteDD.Haar.SL23Z5
 theorem exA (n : ℕ) (hn : n < 60720) : ∃ c, okA c n = true := by
   obtain ⟨k, hk⟩ : ∃ k, n / {stage} = k := ⟨_, rfl⟩
   have hk12 : k < {stages} := by omega
-  interval_cases k
+  rcases (show {ors} by omega) with {alts}
 {casesA}
 
 /-- Every index `n < 60720` has a B-code. -/
 theorem exB (n : ℕ) (hn : n < 60720) : ∃ c, okB c n = true := by
   obtain ⟨k, hk⟩ : ∃ k, n / {stage} = k := ⟨_, rfl⟩
   have hk12 : k < {stages} := by omega
-  interval_cases k
+  rcases (show {ors} by omega) with {alts}
 {casesB}
 
 theorem cover1 : ∀ g : Grp, ∃ x1 ∈ SS, ∃ x2 ∈ SS, ∃ x3 ∈ SS, ∃ x4 ∈ SS, ∃ x5 ∈ SS, ∃ x6 ∈ SS,
@@ -264,6 +264,9 @@ def cover_text():
     text = text.replace("{imports}", imports)
     text = text.replace("{stage}", str(STAGE))
     text = text.replace("{stages}", str(STAGES))
+    ors = " ∨ ".join("k = %d" % k for k in range(STAGES))
+    alts = " | ".join("h%d" % k for k in range(STAGES))
+    text = text.replace("{ors}", "(" + ors + ")").replace("{alts}", alts)
     text = text.replace("{casesA}", cases["A"])
     text = text.replace("{casesB}", cases["B"])
     return text
