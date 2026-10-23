@@ -1,0 +1,187 @@
+# haarcheck2 (independent low-memory Haar checker), cc -O3, run 2026-10-23
+# Test 1: known-valid files
+== T1 d15D8_sl_101_8_s2 (expect VALID ecc 8) ==
+file=sols/d15D8_sl_101_8_s2.txt d=15 D=8 p=101 n=8 |G|=8241600 vertices=16483200
+selfcheck: SL(2,101) index is a bijection onto det-1 matrices (|SL|=1030200), fastmod ok (0.00s)
+generators: 15 read, all in SL(2,101) x Z_8, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 16483200
+  from (e,A) level 2: new=210  reached=226 / 16483200
+  from (e,A) level 3: new=2940  reached=3166 / 16483200
+  from (e,A) level 4: new=41067  reached=44233 / 16483200
+  from (e,A) level 5: new=556689  reached=600922 / 16483200
+  from (e,A) level 6: new=5121105  reached=5722027 / 16483200
+  from (e,A) level 7: new=7681956  reached=13403983 / 16483200
+  from (e,A) level 8: new=3079217  reached=16483200 / 16483200
+  done in 1.65s, eccA=8, reached 16483200 / 16483200
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 16483200
+  from (e,B) level 2: new=210  reached=226 / 16483200
+  from (e,B) level 3: new=2940  reached=3166 / 16483200
+  from (e,B) level 4: new=41067  reached=44233 / 16483200
+  from (e,B) level 5: new=556689  reached=600922 / 16483200
+  from (e,B) level 6: new=5121099  reached=5722021 / 16483200
+  from (e,B) level 7: new=7681956  reached=13403977 / 16483200
+  from (e,B) level 8: new=3079223  reached=16483200 / 16483200
+  done in 1.62s, eccB=8, reached 16483200 / 16483200
+VALID d=15 D=8 vertices=16483200 eccA=8 eccB=8
+# exit=0 wall=3.26s max_rss=5.3 MB peak_footprint=4.9 MB
+
+== T1 d12D9_sl_127_8_s2 (expect VALID ecc 9) ==
+file=sols/d12D9_sl_127_8_s2.txt d=12 D=9 p=127 n=8 |G|=16386048 vertices=32772096
+selfcheck: SL(2,127) index is a bijection onto det-1 matrices (|SL|=2048256), fastmod ok (0.01s)
+generators: 12 read, all in SL(2,127) x Z_8, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=12  reached=13 / 32772096
+  from (e,A) level 2: new=132  reached=145 / 32772096
+  from (e,A) level 3: new=1452  reached=1597 / 32772096
+  from (e,A) level 4: new=15972  reached=17569 / 32772096
+  from (e,A) level 5: new=174904  reached=192473 / 32772096
+  from (e,A) level 6: new=1822481  reached=2014954 / 32772096
+  from (e,A) level 7: new=11780548  reached=13795502 / 32772096
+  from (e,A) level 8: new=14547462  reached=28342964 / 32772096
+  from (e,A) level 9: new=4429132  reached=32772096 / 32772096
+  done in 2.56s, eccA=9, reached 32772096 / 32772096
+BFS from (e,B):
+  from (e,B) level 1: new=12  reached=13 / 32772096
+  from (e,B) level 2: new=132  reached=145 / 32772096
+  from (e,B) level 3: new=1452  reached=1597 / 32772096
+  from (e,B) level 4: new=15972  reached=17569 / 32772096
+  from (e,B) level 5: new=174904  reached=192473 / 32772096
+  from (e,B) level 6: new=1822513  reached=2014986 / 32772096
+  from (e,B) level 7: new=11780548  reached=13795534 / 32772096
+  from (e,B) level 8: new=14547430  reached=28342964 / 32772096
+  from (e,B) level 9: new=4429132  reached=32772096 / 32772096
+  done in 2.55s, eccB=9, reached 32772096 / 32772096
+VALID d=12 D=9 vertices=32772096 eccA=9 eccB=9
+# exit=0 wall=5.12s max_rss=9.2 MB peak_footprint=8.8 MB
+
+# Test 2: broken copies (expect INVALID)
+== T2 d15D8 with D lowered to 7 ==
+file=/private/tmp/claude-502/-Users-dogaozden-AI-Projects-degree-diameter/31a2fcff-fd6b-4c01-b1b7-05c9b8d9f143/scratchpad/broken/d15D7_lowered.txt d=15 D=7 p=101 n=8 |G|=8241600 vertices=16483200
+selfcheck: SL(2,101) index is a bijection onto det-1 matrices (|SL|=1030200), fastmod ok (0.00s)
+generators: 15 read, all in SL(2,101) x Z_8, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 16483200
+  from (e,A) level 2: new=210  reached=226 / 16483200
+  from (e,A) level 3: new=2940  reached=3166 / 16483200
+  from (e,A) level 4: new=41067  reached=44233 / 16483200
+  from (e,A) level 5: new=556689  reached=600922 / 16483200
+  from (e,A) level 6: new=5121105  reached=5722027 / 16483200
+  from (e,A) level 7: new=7681956  reached=13403983 / 16483200
+  from (e,A) level 8: new=3079217  reached=16483200 / 16483200
+  done in 1.61s, eccA=8, reached 16483200 / 16483200
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 16483200
+  from (e,B) level 2: new=210  reached=226 / 16483200
+  from (e,B) level 3: new=2940  reached=3166 / 16483200
+  from (e,B) level 4: new=41067  reached=44233 / 16483200
+  from (e,B) level 5: new=556689  reached=600922 / 16483200
+  from (e,B) level 6: new=5121099  reached=5722021 / 16483200
+  from (e,B) level 7: new=7681956  reached=13403977 / 16483200
+  from (e,B) level 8: new=3079223  reached=16483200 / 16483200
+  done in 1.63s, eccB=8, reached 16483200 / 16483200
+INVALID d=15 D=7 vertices=16483200 eccA=8 eccB=8 reason=eccA 8 > D 7
+# exit=1 wall=3.24s max_rss=5.3 MB peak_footprint=4.9 MB
+
+== T2 d15D8 with generator 3 replaced by duplicate of generator 1 ==
+file=/private/tmp/claude-502/-Users-dogaozden-AI-Projects-degree-diameter/31a2fcff-fd6b-4c01-b1b7-05c9b8d9f143/scratchpad/broken/d15D8_dupgen.txt d=15 D=8 p=101 n=8 |G|=8241600 vertices=16483200
+selfcheck: SL(2,101) index is a bijection onto det-1 matrices (|SL|=1030200), fastmod ok (0.01s)
+INVALID d=15 D=8 vertices=16483200 eccA=na eccB=na reason=generator 3 duplicates generator 1
+# exit=1 wall=0.01s max_rss=1.3 MB peak_footprint=0.9 MB
+
+# Test 3: large files, one at a time
+== T3 d14D9_sl_191_8_s1 ==
+file=sols/d14D9_sl_191_8_s1.txt d=14 D=9 p=191 n=8 |G|=55741440 vertices=111482880
+selfcheck: SL(2,191) index is a bijection onto det-1 matrices (|SL|=6967680), fastmod ok (0.03s)
+generators: 14 read, all in SL(2,191) x Z_8, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=14  reached=15 / 111482880
+  from (e,A) level 2: new=182  reached=197 / 111482880
+  from (e,A) level 3: new=2366  reached=2563 / 111482880
+  from (e,A) level 4: new=30746  reached=33309 / 111482880
+  from (e,A) level 5: new=398411  reached=431720 / 111482880
+  from (e,A) level 6: new=4962450  reached=5394170 / 111482880
+  from (e,A) level 7: new=38895279  reached=44289449 / 111482880
+  from (e,A) level 8: new=50748061  reached=95037510 / 111482880
+  from (e,A) level 9: new=16445370  reached=111482880 / 111482880
+  done in 11.49s, eccA=9, reached 111482880 / 111482880
+BFS from (e,B):
+  from (e,B) level 1: new=14  reached=15 / 111482880
+  from (e,B) level 2: new=182  reached=197 / 111482880
+  from (e,B) level 3: new=2366  reached=2563 / 111482880
+  from (e,B) level 4: new=30746  reached=33309 / 111482880
+  from (e,B) level 5: new=398411  reached=431720 / 111482880
+  from (e,B) level 6: new=4962748  reached=5394468 / 111482880
+  from (e,B) level 7: new=38895279  reached=44289747 / 111482880
+  from (e,B) level 8: new=50747763  reached=95037510 / 111482880
+  from (e,B) level 9: new=16445370  reached=111482880 / 111482880
+  done in 11.96s, eccB=9, reached 111482880 / 111482880
+VALID d=14 D=9 vertices=111482880 eccA=9 eccB=9
+# exit=0 wall=23.47s max_rss=28.0 MB peak_footprint=27.6 MB
+
+== T3 d15D9_sl_457_1_s2 ==
+file=sols/d15D9_sl_457_1_s2.txt d=15 D=9 p=457 n=1 |G|=95443536 vertices=190887072
+selfcheck: SL(2,457) index is a bijection onto det-1 matrices (|SL|=95443536), fastmod ok (0.38s)
+generators: 15 read, all in SL(2,457) x Z_1, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 190887072
+  from (e,A) level 2: new=210  reached=226 / 190887072
+  from (e,A) level 3: new=2940  reached=3166 / 190887072
+  from (e,A) level 4: new=41144  reached=44310 / 190887072
+  from (e,A) level 5: new=574326  reached=618636 / 190887072
+  from (e,A) level 6: new=7729185  reached=8347821 / 190887072
+  from (e,A) level 7: new=65788087  reached=74135908 / 190887072
+  from (e,A) level 8: new=87672996  reached=161808904 / 190887072
+  from (e,A) level 9: new=29078168  reached=190887072 / 190887072
+  done in 36.64s, eccA=9, reached 190887072 / 190887072
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 190887072
+  from (e,B) level 2: new=210  reached=226 / 190887072
+  from (e,B) level 3: new=2940  reached=3166 / 190887072
+  from (e,B) level 4: new=41144  reached=44310 / 190887072
+  from (e,B) level 5: new=574326  reached=618636 / 190887072
+  from (e,B) level 6: new=7729329  reached=8347965 / 190887072
+  from (e,B) level 7: new=65788087  reached=74136052 / 190887072
+  from (e,B) level 8: new=87672852  reached=161808904 / 190887072
+  from (e,B) level 9: new=29078168  reached=190887072 / 190887072
+  done in 47.51s, eccB=9, reached 190887072 / 190887072
+VALID d=15 D=9 vertices=190887072 eccA=9 eccB=9
+# exit=0 wall=84.52s max_rss=47.0 MB peak_footprint=46.6 MB
+
+== T3 d16D9_sl_541_1_s1 ==
+file=sols/d16D9_sl_541_1_s1.txt d=16 D=9 p=541 n=1 |G|=158339880 vertices=316679760
+selfcheck: SL(2,541) index is a bijection onto det-1 matrices (|SL|=158339880), fastmod ok (0.74s)
+generators: 16 read, all in SL(2,541) x Z_1, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=16  reached=17 / 316679760
+  from (e,A) level 2: new=240  reached=257 / 316679760
+  from (e,A) level 3: new=3600  reached=3857 / 316679760
+  from (e,A) level 4: new=53992  reached=57849 / 316679760
+  from (e,A) level 5: new=807739  reached=865588 / 316679760
+  from (e,A) level 6: new=11685563  reached=12551151 / 316679760
+  from (e,A) level 7: new=107652675  reached=120203826 / 316679760
+  from (e,A) level 8: new=146600084  reached=266803910 / 316679760
+  from (e,A) level 9: new=49875850  reached=316679760 / 316679760
+  done in 95.74s, eccA=9, reached 316679760 / 316679760
+BFS from (e,B):
+  from (e,B) level 1: new=16  reached=17 / 316679760
+  from (e,B) level 2: new=240  reached=257 / 316679760
+  from (e,B) level 3: new=3600  reached=3857 / 316679760
+  from (e,B) level 4: new=53992  reached=57849 / 316679760
+  from (e,B) level 5: new=807739  reached=865588 / 316679760
+  from (e,B) level 6: new=11685685  reached=12551273 / 316679760
+  from (e,B) level 7: new=107652675  reached=120203948 / 316679760
+  from (e,B) level 8: new=146599962  reached=266803910 / 316679760
+  from (e,B) level 9: new=49875850  reached=316679760 / 316679760
+  done in 85.32s, eccB=9, reached 316679760 / 316679760
+VALID d=16 D=9 vertices=316679760 eccA=9 eccB=9
+# exit=0 wall=181.80s max_rss=77.0 MB peak_footprint=76.6 MB
+
+done
