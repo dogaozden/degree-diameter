@@ -1,0 +1,57 @@
+--- D = 3 (words s^-1 t; Theorem 3 regime: Delta ~ sqrt(n ln n)) ---
+SL(2,11)           D=3 Δ=80  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 10.99 11.06 11.06
+SL(2,11)           D=3 Δ=90  P_emp=0.140±0.020 | e^-mu: generic 0.047  +special 0.045  +coincid 0.045 | mu 3.05 3.10 3.10
+SL(2,11)           D=3 Δ=100 P_emp=0.673±0.027 | e^-mu: generic 0.482  +special 0.471  +coincid 0.471 | mu 0.73 0.75 0.75
+SL(2,11)           D=3 Δ=110 P_emp=0.937±0.014 | e^-mu: generic 0.861  +special 0.852  +coincid 0.852 | mu 0.15 0.16 0.16
+PSL(2,11) x Z2     D=3 Δ=80  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 10.99 30.22 30.22
+PSL(2,11) x Z2     D=3 Δ=90  P_emp=0.000±0.002 | e^-mu: generic 0.047  +special 0.000  +coincid 0.000 | mu 3.05 13.43 13.43
+PSL(2,11) x Z2     D=3 Δ=100 P_emp=0.020±0.008 | e^-mu: generic 0.482  +special 0.003  +coincid 0.003 | mu 0.73 5.86 5.86
+PSL(2,11) x Z2     D=3 Δ=110 P_emp=0.217±0.024 | e^-mu: generic 0.861  +special 0.083  +coincid 0.083 | mu 0.15 2.49 2.49
+SL(2,5) x Z11      D=3 Δ=80  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 10.99 10.98 10.98
+SL(2,5) x Z11      D=3 Δ=90  P_emp=0.187±0.022 | e^-mu: generic 0.047  +special 0.046  +coincid 0.046 | mu 3.05 3.07 3.07
+SL(2,5) x Z11      D=3 Δ=100 P_emp=0.683±0.027 | e^-mu: generic 0.482  +special 0.474  +coincid 0.474 | mu 0.73 0.75 0.75
+SL(2,5) x Z11      D=3 Δ=110 P_emp=0.947±0.013 | e^-mu: generic 0.861  +special 0.853  +coincid 0.853 | mu 0.15 0.16 0.16
+--- D = 4 ---
+SL(2,11)           D=4 Δ=17  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 48.21 48.21 48.33
+SL(2,11)           D=4 Δ=19  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 12.27 12.27 12.32
+SL(2,11)           D=4 Δ=21  P_emp=0.160±0.021 | e^-mu: generic 0.107  +special 0.107  +coincid 0.105 | mu 2.24 2.24 2.25
+SL(2,11)           D=4 Δ=23  P_emp=0.800±0.023 | e^-mu: generic 0.754  +special 0.754  +coincid 0.753 | mu 0.28 0.28 0.28
+PSL(2,11) x Z2     D=4 Δ=17  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 48.21 48.21 63.70
+PSL(2,11) x Z2     D=4 Δ=19  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 12.27 12.27 18.20
+PSL(2,11) x Z2     D=4 Δ=21  P_emp=0.043±0.012 | e^-mu: generic 0.107  +special 0.107  +coincid 0.022 | mu 2.24 2.24 3.83
+PSL(2,11) x Z2     D=4 Δ=23  P_emp=0.617±0.028 | e^-mu: generic 0.754  +special 0.754  +coincid 0.562 | mu 0.28 0.28 0.58
+SL(2,5) x Z11      D=4 Δ=17  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 48.21 48.21 48.90
+SL(2,5) x Z11      D=4 Δ=19  P_emp=0.000±0.002 | e^-mu: generic 0.000  +special 0.000  +coincid 0.000 | mu 12.27 12.27 12.52
+SL(2,5) x Z11      D=4 Δ=21  P_emp=0.113±0.018 | e^-mu: generic 0.107  +special 0.107  +coincid 0.100 | mu 2.24 2.24 2.30
+SL(2,5) x Z11      D=4 Δ=23  P_emp=0.683±0.027 | e^-mu: generic 0.754  +special 0.754  +coincid 0.746 | mu 0.28 0.28 0.29
+--- D = 5 ---
+SL(2,11)           D=5 Δ=10  P_emp=0.027±0.009 | e^-mu: generic 0.007  +special 0.006  +coincid 0.006 | mu 4.92 5.16 5.19
+SL(2,11)           D=5 Δ=11  P_emp=0.650±0.028 | e^-mu: generic 0.747  +special 0.663  +coincid 0.661 | mu 0.29 0.41 0.41
+SL(2,11)           D=5 Δ=12  P_emp=0.963±0.011 | e^-mu: generic 0.993  +special 0.949  +coincid 0.948 | mu 0.01 0.05 0.05
+SL(2,11)           D=5 Δ=13  P_emp=0.997±0.003 | e^-mu: generic 1.000  +special 0.987  +coincid 0.987 | mu 0.00 0.01 0.01
+SL(2,11)           D=5 Δ=14  P_emp=1.000±0.002 | e^-mu: generic 1.000  +special 0.997  +coincid 0.997 | mu 0.00 0.00 0.00
+PSL(2,11) x Z2     D=5 Δ=10  P_emp=0.000±0.002 | e^-mu: generic 0.007  +special 0.000  +coincid 0.000 | mu 4.92 18.18 28.46
+PSL(2,11) x Z2     D=5 Δ=11  P_emp=0.017±0.007 | e^-mu: generic 0.747  +special 0.026  +coincid 0.002 | mu 0.29 3.66 6.48
+PSL(2,11) x Z2     D=5 Δ=12  P_emp=0.353±0.028 | e^-mu: generic 0.993  +special 0.580  +coincid 0.313 | mu 0.01 0.55 1.16
+PSL(2,11) x Z2     D=5 Δ=13  P_emp=0.873±0.019 | e^-mu: generic 1.000  +special 0.946  +coincid 0.863 | mu 0.00 0.06 0.15
+PSL(2,11) x Z2     D=5 Δ=14  P_emp=0.973±0.009 | e^-mu: generic 1.000  +special 0.995  +coincid 0.986 | mu 0.00 0.00 0.01
+SL(2,5) x Z11      D=5 Δ=10  P_emp=0.010±0.006 | e^-mu: generic 0.007  +special 0.003  +coincid 0.003 | mu 4.92 5.67 5.96
+SL(2,5) x Z11      D=5 Δ=11  P_emp=0.477±0.029 | e^-mu: generic 0.747  +special 0.578  +coincid 0.559 | mu 0.29 0.55 0.58
+SL(2,5) x Z11      D=5 Δ=12  P_emp=0.893±0.018 | e^-mu: generic 0.993  +special 0.929  +coincid 0.925 | mu 0.01 0.07 0.08
+SL(2,5) x Z11      D=5 Δ=13  P_emp=0.990±0.006 | e^-mu: generic 1.000  +special 0.985  +coincid 0.984 | mu 0.00 0.02 0.02
+SL(2,5) x Z11      D=5 Δ=14  P_emp=1.000±0.002 | e^-mu: generic 1.000  +special 0.997  +coincid 0.997 | mu 0.00 0.00 0.00
+Z_1320 (abelian)   D=5 Δ=10  P_emp=0.000±0.002 | e^-mu: generic 0.007  +special 0.000  +coincid 0.000 | mu 4.92 39.15 637.39
+Z_1320 (abelian)   D=5 Δ=11  P_emp=0.000±0.002 | e^-mu: generic 0.747  +special 0.000  +coincid 0.000 | mu 0.29 9.52 632.58
+Z_1320 (abelian)   D=5 Δ=12  P_emp=0.000±0.002 | e^-mu: generic 0.993  +special 0.234  +coincid 0.000 | mu 0.01 1.45 627.34
+Z_1320 (abelian)   D=5 Δ=13  P_emp=0.107±0.018 | e^-mu: generic 1.000  +special 0.877  +coincid 0.000 | mu 0.00 0.13 621.67
+Z_1320 (abelian)   D=5 Δ=14  P_emp=0.537±0.029 | e^-mu: generic 1.000  +special 0.992  +coincid 0.000 | mu 0.00 0.01 615.58
+--- D = 6 ---
+SL(2,11)           D=6 Δ=7   P_emp=0.230±0.024 | e^-mu: generic 0.325  +special 0.325  +coincid 0.321 | mu 1.12 1.12 1.14
+SL(2,11)           D=6 Δ=8   P_emp=0.967±0.010 | e^-mu: generic 1.000  +special 1.000  +coincid 1.000 | mu 0.00 0.00 0.00
+SL(2,11)           D=6 Δ=9   P_emp=1.000±0.002 | e^-mu: generic 1.000  +special 1.000  +coincid 1.000 | mu 0.00 0.00 0.00
+PSL(2,11) x Z2     D=6 Δ=7   P_emp=0.057±0.013 | e^-mu: generic 0.325  +special 0.325  +coincid 0.025 | mu 1.12 1.12 3.68
+PSL(2,11) x Z2     D=6 Δ=8   P_emp=0.880±0.019 | e^-mu: generic 1.000  +special 1.000  +coincid 0.994 | mu 0.00 0.00 0.01
+PSL(2,11) x Z2     D=6 Δ=9   P_emp=0.997±0.003 | e^-mu: generic 1.000  +special 1.000  +coincid 1.000 | mu 0.00 0.00 0.00
+SL(2,5) x Z11      D=6 Δ=7   P_emp=0.167±0.022 | e^-mu: generic 0.325  +special 0.325  +coincid 0.267 | mu 1.12 1.12 1.32
+SL(2,5) x Z11      D=6 Δ=8   P_emp=0.870±0.019 | e^-mu: generic 1.000  +special 1.000  +coincid 0.999 | mu 0.00 0.00 0.00
+SL(2,5) x Z11      D=6 Δ=9   P_emp=0.997±0.003 | e^-mu: generic 1.000  +special 1.000  +coincid 1.000 | mu 0.00 0.00 0.00

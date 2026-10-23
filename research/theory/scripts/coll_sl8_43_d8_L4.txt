@@ -1,0 +1,46 @@
+group sl(2,2^3) x Z_43, N = 21672, d = 8, words of length <= 4 with parity 0, 300 samples x 2 sides
+mode         |Fix|-1    words      p10   median     mean      p90
+rand               0     2801    5.14%    7.71%    8.59%   13.75%
+conj               8     2801    5.57%    9.43%   12.33%   19.96%
+frob               5     2801    8.46%   15.32%   17.91%   27.31%
+frob_noinv         2     2801    6.71%   12.50%   15.05%   26.20%
+
+rand: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.053  A: r1 r5 r2 r4 = r2 r4 r1 r5
+    0.053  A: r2 r4 r5 r1 = r5 r1 r2 r4
+    0.050  A: r1 r5 r4 r2 = r4 r2 r1 r5
+    0.050  A: r4 r2 r5 r1 = r5 r1 r4 r2
+    0.050  B: r2 r1 r5 r2 = r4 r1 r5 r4
+    0.050  B: r2 r5 r1 r2 = r4 r5 r1 r4
+    0.050  B: r1 r2 r4 r1 = r5 r2 r4 r5
+    0.047  A: e r1 r2 r3 = r2 r3 e r1
+
+conj: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    1.903  A: F2 a0 F2 b0 = a2 F2 a1 b0
+    1.903  B: F2 a0 F2 b0 = a1 F2 a2 b0
+    1.840  A: a0 b0 = b2 a2 b1 a1
+    1.840  A: a0 b0 = b1 a1 b2 a2
+    1.840  B: a0 b0 = b1 a1 b2 a2
+    1.840  B: a0 b0 = b2 a2 b1 a1
+    1.787  A: a0 F2 b0 F2 = a0 b1 F2 b2
+    1.747  B: a0 F2 b0 F2 = a0 b2 F2 b1
+
+frob: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    10.933  B: e F2 a0 b0 = F2 e a0 b0
+    10.923  A: e F2 a0 b0 = F2 e a0 b0
+    9.657  A: a0 e F2 b0 = a0 F2 e b0
+    9.587  B: a0 b0 e F2 = a0 b0 F2 e
+    9.543  A: a0 b0 e F2 = a0 b0 F2 e
+    9.427  B: a0 e F2 b0 = a0 F2 e b0
+    3.680  A: F2 a0 = e F2 e a0
+    3.680  A: e a0 = F2 e F2 a0
+
+frob_noinv: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    5.980  A: e F2 e a0 = F2 e F2 a0
+    5.980  B: e F2 e a0 = F2 e F2 a0
+    5.407  B: a0 e F2 e = a0 F2 e F2
+    5.300  A: a0 e F2 e = a0 F2 e F2
+    3.717  B: a0 a2 a1 b0 = a1 a2 a0 b0
+    3.713  A: a0 a2 a1 b0 = a1 a2 a0 b0
+    3.610  B: a0 b0 b2 b1 = a0 b1 b2 b0
+    3.583  A: a0 b0 b2 b1 = a0 b1 b2 b0
