@@ -1,0 +1,10 @@
+group psl 43 x Z_6, N=238392, identity 5418
+start cost=26
+t=30 steps=178 evals=1425 cost=2 best=2 T=0.53
+t=60 steps=368 evals=2945 cost=2 best=2 T=0.19
+t=90 steps=562 evals=4497 cost=2 best=2 T=0.15
+t=120 steps=750 evals=6001 cost=2 best=2 T=0.15
+t=150 steps=935 evals=7481 cost=2 best=2 T=0.15
+RESULT d=6 D=10 group=psl 43 x Z_6 N=238392 best=0 evals=8481 time=170.9
+full diameter check: OK
+wrote sols/d6D10_psl_43_6_s2.txt

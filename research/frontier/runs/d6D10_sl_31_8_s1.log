@@ -1,0 +1,13 @@
+group sl 31 x Z_8, N=238080, identity 7440
+start cost=10
+t=30 steps=204 evals=1633 cost=2 best=1 T=0.53
+t=60 steps=409 evals=3273 cost=1 best=1 T=0.19
+t=90 steps=603 evals=4825 cost=1 best=1 T=0.15
+t=120 steps=803 evals=6425 cost=1 best=1 T=0.15
+t=150 steps=1001 evals=8009 cost=1 best=1 T=0.15
+t=180 steps=1199 evals=9593 cost=1 best=1 T=0.73
+t=211 steps=1402 evals=11217 cost=7 best=1 T=0.26
+t=241 steps=1598 evals=12785 cost=1 best=1 T=0.15
+RESULT d=6 D=10 group=sl 31 x Z_8 N=238080 best=0 evals=13801 time=260.3
+full diameter check: OK
+wrote sols/d6D10_sl_31_8_s1.txt

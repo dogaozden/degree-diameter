@@ -1,0 +1,12 @@
+group pgl 43 x Z_3, N=238392, identity 5418
+start cost=62
+t=30 steps=177 evals=1417 cost=1 best=1 T=0.53
+t=60 steps=366 evals=2929 cost=2 best=1 T=0.19
+t=90 steps=554 evals=4433 cost=2 best=1 T=0.15
+t=120 steps=741 evals=5929 cost=2 best=1 T=0.15
+t=151 steps=929 evals=7433 cost=1 best=1 T=0.15
+t=181 steps=1117 evals=8937 cost=6 best=1 T=0.90
+t=211 steps=1303 evals=10425 cost=2 best=1 T=0.32
+RESULT d=6 D=10 group=pgl 43 x Z_3 N=238392 best=0 evals=11241 time=226.8
+full diameter check: OK
+wrote sols/d6D10_pgl_43_3_s1.txt
