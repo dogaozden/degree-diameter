@@ -22,7 +22,8 @@ theorem card_SS : SS.card = 6 := by
   decide
 
 theorem sel_mem (j : ℕ) (hj : j < 6) : sel j ∈ SS := by
-  interval_cases j <;> simp [SS]
+  have h : j = 0 ∨ j = 1 ∨ j = 2 ∨ j = 3 ∨ j = 4 ∨ j = 5 := by omega
+  rcases h with rfl | rfl | rfl | rfl | rfl | rfl <;> simp [SS]
 
 theorem sN_ok : ∀ j : ℕ, j < 6 → detZ (sN j) ≠ 0 ∧ (sN j).2.1 < 37 ∧ (sN j).2.2.1 < 37 := by
   decide
@@ -37,7 +38,7 @@ theorem adjN_det (c k : ℕ) : detZ (adjN (sN (dig c k))) ≠ 0 := by
 
 theorem Ls_ok (c : ℕ) : ∀ M ∈ Ls c, detZ M ≠ 0 := by
   intro M hM
-  simp only [Ls, List.mem_cons, List.mem_singleton] at hM
+  simp only [Ls, List.mem_cons, List.mem_singleton, List.not_mem_nil, or_false] at hM
   rcases hM with h | h | h | h | h | h | h | h | h <;> subst h
   · exact sN_det c 0
   · exact adjN_det c 1
@@ -57,26 +58,27 @@ def wordG (c : ℕ) : PGL37Z5.Grp :=
   sel (dig c 0) * ((sel (dig c 1))⁻¹ * (sel (dig c 2) * ((sel (dig c 3))⁻¹ *
     (sel (dig c 4) * ((sel (dig c 5))⁻¹ * (sel (dig c 6) * ((sel (dig c 7))⁻¹ * sel (dig c 8))))))))
 
-theorem wordG_fst (c : ℕ) (hdet : detZ (prodN (Ls c)) ≠ 0) :
-    (wordG c).1 = gM (prodN (Ls c)) := by
-  have key : gM (prodN (Ls c)) = gM (sN (dig c 0)) * ((gM (sN (dig c 1)))⁻¹ * (gM (sN (dig c 2)) *
-      ((gM (sN (dig c 3)))⁻¹ * (gM (sN (dig c 4)) * ((gM (sN (dig c 5)))⁻¹ *
-        (gM (sN (dig c 6)) * ((gM (sN (dig c 7)))⁻¹ * gM (sN (dig c 8)))))))) := by
-    rw [gM_prodN _ (Ls_ok c)]
-    simp only [Ls, List.map_cons, List.map_nil, List.prod_cons, List.prod_nil, mul_one, gM_adjN_dig]
-  rw [key]
-  rfl
+theorem wordG_fst (c : ℕ) : (wordG c).1 = gM (prodN (Ls c)) := by
+  rw [gM_prodN _ (Ls_ok c)]
+  simp only [wordG, sel, Prod.fst_mul, Prod.fst_inv, Ls, List.map_cons, List.map_nil, List.prod_cons,
+    List.prod_nil, mul_one, gM_adjN_dig]
+
+theorem toAdd_mul' (x y : Multiplicative (ZMod 5)) :
+    Multiplicative.toAdd (x * y) = Multiplicative.toAdd x + Multiplicative.toAdd y := rfl
+
+theorem toAdd_inv' (x : Multiplicative (ZMod 5)) : Multiplicative.toAdd x⁻¹ = -Multiplicative.toAdd x := rfl
+
+theorem toAdd_ofAdd' (a : ZMod 5) : Multiplicative.toAdd (Multiplicative.ofAdd a) = a := rfl
 
 theorem wordG_eq (c n : ℕ) (hP : normN (prodN (Ls c)) = quadN (n / 5)) (hZ : zW c = n % 5) :
     wordG c = PGL37Z5.grpOf n := by
   have hdet : detZ (prodN (Ls c)) ≠ 0 := detZ_prodN _ (Ls_ok c)
   have h1 : (wordG c).1 = PGL37.grpOf (n / 5) := by
-    rw [wordG_fst c hdet, ← gM_normN _ hdet, hP]
+    rw [wordG_fst c, ← gM_normN _ hdet, hP]
     rfl
-  have hzW : ((zW c : ℕ) : ZMod 5) = (zN (dig c 0) : ZMod 5) + (-(zN (dig c 1) : ZMod 5) +
-      ((zN (dig c 2) : ZMod 5) + (-(zN (dig c 3) : ZMod 5) + ((zN (dig c 4) : ZMod 5) +
-        (-(zN (dig c 5) : ZMod 5) + ((zN (dig c 6) : ZMod 5) + (-(zN (dig c 7) : ZMod 5) +
-          (zN (dig c 8) : ZMod 5))))))) := by
+  have hz : Multiplicative.toAdd (wordG c).2 = ((zW c : ℕ) : ZMod 5) := by
+    unfold wordG sel
+    simp only [Prod.snd_mul, Prod.snd_inv, toAdd_mul', toAdd_inv', toAdd_ofAdd']
     unfold zW
     rw [ZMod.natCast_mod]
     push_cast
@@ -84,11 +86,7 @@ theorem wordG_eq (c n : ℕ) (hP : normN (prodN (Ls c)) = quadN (n / 5)) (hZ : z
     rw [h4]
     ring
   have h2 : (wordG c).2 = Multiplicative.ofAdd ((n % 5 : ℕ) : ZMod 5) := by
-    show Multiplicative.ofAdd ((zN (dig c 0) : ZMod 5) + (-(zN (dig c 1) : ZMod 5) +
-      ((zN (dig c 2) : ZMod 5) + (-(zN (dig c 3) : ZMod 5) + ((zN (dig c 4) : ZMod 5) +
-        (-(zN (dig c 5) : ZMod 5) + ((zN (dig c 6) : ZMod 5) + (-(zN (dig c 7) : ZMod 5) +
-          (zN (dig c 8) : ZMod 5))))))))) = _
-    rw [← hzW, hZ]
+    rw [show (wordG c).2 = Multiplicative.ofAdd (Multiplicative.toAdd (wordG c).2) from rfl, hz, hZ]
   exact Prod.ext h1 h2
 
 theorem cover : ∀ g : PGL37Z5.Grp, ∃ x₁ ∈ SS, ∃ x₂ ∈ SS, ∃ x₃ ∈ SS, ∃ x₄ ∈ SS, ∃ x₅ ∈ SS, ∃ x₆ ∈ SS,

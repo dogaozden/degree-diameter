@@ -16,6 +16,7 @@ noncomputable def equiv506160 : PGL37Z5.Grp ⊕ PGL37Z5.Grp ≃ Fin 506160 :=
 end BipartiteDD.Haar.D6D10
 
 open BipartiteDD.Haar.D6D10 in
+set_option maxHeartbeats 4000000 in
 /-- A graph on 506160 vertices, bipartite, of degree at most 6 and diameter at most 10. -/
 theorem nb_6_10_haar : ∃ G : SimpleGraph (Fin 506160), BipartiteDD.IsBipartiteDegDiam G 6 10 := by
   have h := BipartiteDD.Haar.haar_isBipartiteDegDiam10_of_equiv SS equiv506160 cover
