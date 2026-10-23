@@ -2,3 +2,11 @@ group pgl 29 x Z_10, N=243600, identity 0, H order 58, rows 4200, threads 1, set
 start cost=47
 t=30 steps=17892 evals=143137 cost=1 best=1 T=0.53
 t=60 steps=36195 evals=289561 cost=2 best=1 T=0.19
+t=90 steps=55173 evals=441385 cost=1 best=1 T=0.15
+t=120 steps=74063 evals=592505 cost=1 best=1 T=0.15
+t=150 steps=92625 evals=741001 cost=1 best=1 T=0.15
+t=180 steps=111495 evals=891961 cost=4 best=1 T=1.02
+t=210 steps=129954 evals=1039633 cost=2 best=1 T=0.36
+t=240 steps=149569 evals=1196553 cost=1 best=1 T=0.15
+t=270 steps=168628 evals=1349025 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=pgl 29 x Z_10 N=243600 best=1 evals=1497153 time=300.0
