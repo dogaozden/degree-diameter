@@ -70,6 +70,10 @@ haar_fast plus:
   `AMU=<u>`, `AHA=<a> AHB=<b>`.
 - `RANDORB=m` (with `ORBIT`): cost statistics of m random symmetric S, plus a histogram of cost/k (screening).
 - `RESTART=1` (with `ORBIT`): a reheat starts from fresh random orbits instead of the best S found so far.
+- `ORBW=w` (with `ORBIT`): an uncovered α-fixed element weighs w in the energy instead of 1 (`ORBW=k`: every
+  uncovered α-orbit, free or fixed, counts the same). The early abort stays exact.
+- `VCLOCK`, `MAXSTEPS`, `ABORT=0` also work in `ORBIT` mode (a `TRACE` line with a trajectory hash is printed when
+  `VCLOCK` or `MAXSTEPS` is set).
 - `AFROB=j` (with `ORBIT`, matrix groups over GF(p^e)): α = the field automorphism x ↦ x^(p^j) on the entries.
   This is the "field structure" experiment; it does worse than conjugation (STRUCTURE.md §5).
 - `LEVELS=n` (with `RANDSAMPLE` or `RANDORB`): ball sizes per BFS level for the first n samples.

@@ -15,9 +15,9 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
    - μ = 43: orbit solves in 2.3·10⁵; random S is at cost 9–10.
    The reachable μ roughly doubles (walls at μ ≈ 45–50 instead of 21–25 with ~10⁷ evaluations), which is
    +5–11 % in N.
-2. **New graphs** in 14 cells, files in ../frontier/sols/ (names contain `orb3`); see §4. Every one passed
+2. **New graphs** in 15 cells, files in ../frontier/sols/ (names contain `orb3`); see §4. Every one passed
    haar_sym's full check and build_haar2.py. Above 20M vertices the independent low-memory checkers were used instead
-   (two for SL, one for PSL). Gains are +0.2 % to +11 % over our previous records. Small gains in the biggest cells reflect compute, not the method: there only
+   (two for SL, one for PSL). Gains are +2.2 % to +11 % over our previous records. Small gains in the biggest cells reflect compute, not the method: there only
    the first, cheap rungs (μ ≈ 8–15, a few hundred evaluations at 0.1–1 s each) were run. All are cells we already held;
    no new cell yet (§7).
 3. **What does not work** (§2, §5): involutions (k = 2) and anything acting trivially on a quotient (z-only,
@@ -159,8 +159,9 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (8,9) | 1,091,232 | 1,245,312 | **1,316,016** (+5.7 %) | sl 37 × Z13; 3, 2, 2 | 23.9 | 2.2e+05 | d8D9_sl_37_13_orb3_s1.txt |
 | (10,9) | 7,057,400 | 7,488,000 | **8,003,856** (+6.9 %) | sl 83 × Z7; 3, 3, 1 | 22.2 | 2.5e+04 | d10D9_sl_83_7_orb3_s1.txt |
 | (11,9) | 15,200,448 | 16,369,920 | **16,792,080** (+2.6 %) | sl 61 × Z37; 3, 3, 2 | 15.0 | 5e+03 | d11D9_sl_61_37_orb3_s1.txt |
+| (13,9) | 50,990,610 | 62,156,160 | **63,872,400** (+2.8 %) | sl 101 × Z31; 3, 4, 1 | 13.3 | 2.8e+02 | d13D9_sl_101_31_orb3_s1.txt |
 | (14,9) | 95,087,738 | 111,482,880 | **113,979,936** (+2.2 %) | psl 113 × Z79; 3, 4, 2 | 10.5 | 1.4e+03 | d14D9_psl_113_79_orb3_s1.txt |
-| (16,9) | 288,939,118 | 316,679,760 | **317,308,656** (+0.2 %) | sl 283 × Z7; 3, 5, 1 | 4.8 | 25 | d16D9_sl_283_7_orb3_s1.txt |
+| (16,9) | 288,939,118 | 316,679,760 | **324,164,400** (+2.4 %) | sl 149 × Z49; 3, 5, 1 | 7.1 | 9 | d16D9_sl_149_49_orb3_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19; 3, 2, 1 | 22.2 | 2.3e+04 | d7D10_psl_49_19_orb3_s1.txt |
 | (8,10) | 6,927,210 | 7,349,616 | **7,802,160** (+6.2 %) | sl 59 × Z19; 3, 2, 2 | 22.4 | 7.4e+04 | d8D10_sl_59_19_orb3_s1.txt |
 | (10,10) | 50,331,156 | 57,868,272 | **60,141,120** (+3.9 %) | sl 79 × Z61; 3, 3, 1 | 15.3 | 8.3e+02 | d10D10_sl_79_61_orb3_s1.txt |
@@ -256,7 +257,7 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
 <!-- OPEN-ATTEMPTS -->
 
 Next steps, in order of expected value:
-1. **Push the held cells further.** Done here: the 14 cells of §4. The large cells (N ≥ 10⁷) only got rungs at
+1. **Push the held cells further.** Done here: the 15 cells of §4. The large cells (N ≥ 10⁷) only got rungs at
    μ ≈ 5–17, which cost 25–5,000 evaluations. Going up to μ ≈ 25–35, as at the smaller cells, would add another
    3–6 % there, at 0.1–2.5 s per evaluation (hours per cell). Not run at all: (13,10), (14,10), (12,10), (9,9),
    (9,10), (12,9), (15,9), (15,8) and (6,*), where Δ ≡ 0 mod 3 or Δ = 6 or memory (N ≥ 3·10⁸) is the obstacle.
