@@ -1,0 +1,18 @@
+group psl 41 x Z_101, N=3478440, identity 82820
+start cost=8
+t=38 steps=2 evals=17 cost=2 best=2 T=0.41
+t=76 steps=4 evals=33 cost=1 best=1 T=0.15
+t=112 steps=6 evals=49 cost=1 best=1 T=0.15
+t=147 steps=8 evals=65 cost=1 best=1 T=0.15
+t=184 steps=10 evals=81 cost=1 best=1 T=0.15
+t=219 steps=12 evals=97 cost=1 best=1 T=0.15
+t=254 steps=14 evals=113 cost=1 best=1 T=0.15
+t=290 steps=16 evals=129 cost=1 best=1 T=0.15
+t=325 steps=18 evals=145 cost=1 best=1 T=0.15
+t=361 steps=20 evals=161 cost=1 best=1 T=0.15
+t=396 steps=22 evals=177 cost=1 best=1 T=0.15
+t=432 steps=24 evals=193 cost=1 best=1 T=0.15
+t=469 steps=26 evals=209 cost=0 best=0 T=0.15
+RESULT d=8 D=10 group=psl 41 x Z_101 N=3478440 best=0 evals=209 time=469.8
+full diameter check: OK
+wrote sols/d8D10_psl_41_101_s2.txt
