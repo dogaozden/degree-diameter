@@ -1,0 +1,26 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13, N=3302208, identity 367640, H order 63, rows 52416, threads 1, setup 0.27s
+wide rows: HW order 234, rows 14112, setup 0.53s
+alpha: conj by prod[mat(5,2,4,4);mat(2,4,3,3)] (index 167483), z -> 3 z on Z_13
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 80 (+e); mu = 23.87, mu/k = 7.96, fixed-point misses ~ 1.57
+start cost=45
+t=30 steps=417 evals=3337 cost=4 best=4 T=0.53
+t=60 steps=839 evals=6713 cost=6 best=4 T=0.19
+t=90 steps=1279 evals=10233 cost=2 best=2 T=0.15
+t=120 steps=1726 evals=13809 cost=2 best=2 T=0.15
+t=150 steps=2178 evals=17425 cost=2 best=2 T=0.15
+t=180 steps=2593 evals=20745 cost=2 best=2 T=0.15
+t=210 steps=3021 evals=24169 cost=2 best=2 T=0.15
+t=240 steps=3432 evals=27457 cost=8 best=2 T=0.55
+t=270 steps=3881 evals=31049 cost=5 best=2 T=0.19
+t=301 steps=4294 evals=34353 cost=4 best=2 T=0.15
+t=331 steps=4715 evals=37721 cost=4 best=2 T=0.15
+t=361 steps=5155 evals=41241 cost=1 best=1 T=0.15
+t=391 steps=5568 evals=44545 cost=1 best=1 T=0.15
+t=421 steps=6002 evals=48017 cost=1 best=1 T=0.15
+t=451 steps=6437 evals=51497 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 best=0 evals=53265 time=464.8 orbit k=3 m=4 f=1 fix=80
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outH/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+n = 6604416 edges = 42928704 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = 3aad62b851ff9400d73a917ba5f9e02e77a5cb53351db3df72923a51a1d96b58
+VALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416
