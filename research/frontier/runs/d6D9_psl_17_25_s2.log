@@ -1,3 +1,22 @@
 group psl 17 x Z_25, N=61200, identity 3400
 start cost=2358
 t=30 steps=637 evals=5097 cost=16 best=14 T=0.53
+t=60 steps=1272 evals=10177 cost=16 best=14 T=0.19
+t=90 steps=1923 evals=15385 cost=14 best=14 T=0.15
+t=120 steps=2569 evals=20553 cost=14 best=14 T=0.15
+t=150 steps=3218 evals=25745 cost=7 best=7 T=0.15
+t=180 steps=3861 evals=30889 cost=7 best=7 T=0.15
+t=210 steps=4497 evals=35977 cost=7 best=7 T=0.15
+t=240 steps=5145 evals=41161 cost=7 best=7 T=0.15
+t=270 steps=5785 evals=46281 cost=7 best=7 T=0.15
+t=300 steps=6421 evals=51369 cost=7 best=7 T=0.58
+t=330 steps=7062 evals=56497 cost=7 best=7 T=0.21
+t=360 steps=7702 evals=61617 cost=7 best=7 T=0.15
+t=390 steps=8348 evals=66785 cost=7 best=7 T=0.15
+t=420 steps=8977 evals=71817 cost=7 best=7 T=0.15
+t=450 steps=9628 evals=77025 cost=7 best=7 T=0.58
+t=480 steps=10266 evals=82129 cost=7 best=7 T=0.20
+t=510 steps=10907 evals=87257 cost=5 best=5 T=0.15
+t=540 steps=11546 evals=92369 cost=5 best=5 T=0.15
+t=571 steps=12194 evals=97553 cost=5 best=5 T=0.15
+RESULT d=6 D=9 group=psl 17 x Z_25 N=61200 best=5 evals=102617 time=600.0
