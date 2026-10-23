@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:27:13Z
+file: research/frontier/sols/d16D9_sl_149_49_orb3_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 a09f90de2f64d2a5fb0cd72ab62a61a570e5eb14e55ae3e4299bfb2dae05a72b
+header: 16 9 sl 149 n 49 N 162082200
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d16D9_sl_149_49_orb3_s1.txt
+from (e,A): reached A 162082200/162082200, B 162082200/162082200 within 9, ecc 9
+from (e,B): reached A 162082200/162082200, B 162082200/162082200 within 9, ecc 9
+VALID d=16 D=9 group=sl 149 x Z_49 N=162082200 vertices=324164400 (distinct generators, 16-regular simple)
+(exit 0)
+[exit 0; wall 135s; cpu 134s; peak RSS 118 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d16D9_sl_149_49_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d16D9_sl_149_49_orb3_s1.txt
+header: 16 9 sl 149 n 49 N 162082200
+d=16 D=9
+group: SL(2,149) [order 3307800] x Z_49; |G| = 162082200, vertices 2|G| = 324164400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 16 distinct group elements, all in the group [0.0s]
+neighbour check (full: 162082200 vertices per side): every vertex has 16 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [19.5s]
+BFS from A: ecc=9 reached 324164400 of 324164400 (unreached 0); level sizes [1, 16, 240, 3600, 53988, 807493, 11683625, 108687338, 150344346, 52583753] [44.0s]
+BFS from B: ecc=9 reached 324164400 of 324164400 (unreached 0); level sizes [1, 16, 240, 3600, 53988, 807493, 11683471, 108687338, 150344500, 52583753] [67.5s]
+max degree = min degree = 16, no repeated edges (checked above)
+elapsed 67.5s
+RESULT VALID d=16 D=9 eccA=9 eccB=9 n=324164400
+(exit 0)
+[exit 0; wall 67s; cpu 265s; peak RSS 79 MB]
