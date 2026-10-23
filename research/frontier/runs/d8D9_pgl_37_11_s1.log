@@ -2,3 +2,7 @@ group pgl 37 x Z_11, N=556776, identity 14652
 start cost=57
 t=31 steps=32 evals=257 cost=2 best=2 T=0.51
 t=61 steps=65 evals=521 cost=2 best=2 T=0.18
+t=92 steps=98 evals=785 cost=0 best=0 T=0.15
+RESULT d=8 D=9 group=pgl 37 x Z_11 N=556776 best=0 evals=785 time=92.2
+full diameter check: OK
+wrote sols/d8D9_pgl_37_11_s1.txt
