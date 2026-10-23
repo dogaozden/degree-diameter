@@ -1,0 +1,12 @@
+group psl 163 x Z_73, N=158066316, identity 963819, H order 41, rows 3855276, threads 1, setup 6.64s
+wide rows: HW order 219, rows 721764, setup 12.17s
+alpha: conj by mat(66,95,147,98) (index 1755820), z -> 8 z on Z_73
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 80 (+e); mu = 11.81, mu/k = 3.94, fixed-point misses ~ 0.34
+start cost=12
+t=30 steps=10 evals=81 cost=3 best=3 T=0.52
+t=61 steps=20 evals=161 cost=1 best=1 T=0.18
+RESULT d=12 D=10 group=psl 163 x Z_73 N=158066316 best=0 evals=233 time=88.1 orbit k=3 m=4 f=0 fix=80
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oE/d12D10_psl_163_73_orb3f0_s1.txt
+VALID d=12 D=10 group=psl 163 x Z_73 N=158066316 vertices=316132632 (distinct generators, 12-regular simple)
