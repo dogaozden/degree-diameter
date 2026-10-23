@@ -1,0 +1,10 @@
+group sl 13 x Z_7, N=15288, identity 1092
+start cost=49
+t=30 steps=3770 evals=30161 cost=4 best=4 T=0.53
+t=60 steps=7632 evals=61057 cost=2 best=2 T=0.19
+t=90 steps=11396 evals=91169 cost=2 best=2 T=0.15
+t=120 steps=15212 evals=121697 cost=2 best=2 T=0.15
+t=150 steps=19054 evals=152433 cost=2 best=2 T=0.15
+RESULT d=6 D=8 group=sl 13 x Z_7 N=15288 best=0 evals=177993 time=175.7
+full diameter check: OK
+wrote sols/d6D8_sl_13_7_s2.txt
