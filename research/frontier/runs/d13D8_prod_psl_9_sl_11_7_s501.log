@@ -1,3 +1,17 @@
 group prod psl 9 poly x^2+1 sl 11 x Z_7, N=3326400, identity 333410, H order 60, rows 55440, threads 1, setup 0.11s
 start cost=23
 t=30 steps=800 evals=6401 cost=12 best=9 T=0.53
+t=60 steps=1587 evals=12697 cost=9 best=9 T=0.19
+t=90 steps=2401 evals=19209 cost=9 best=9 T=0.15
+t=120 steps=3204 evals=25633 cost=9 best=9 T=0.15
+t=150 steps=3987 evals=31897 cost=6 best=6 T=0.15
+t=180 steps=4746 evals=37969 cost=6 best=6 T=0.15
+t=210 steps=5495 evals=43961 cost=6 best=6 T=0.15
+t=240 steps=6267 evals=50137 cost=6 best=6 T=0.15
+t=270 steps=7001 evals=56009 cost=6 best=6 T=0.15
+t=300 steps=7755 evals=62041 cost=11 best=6 T=0.63
+t=330 steps=8488 evals=67905 cost=10 best=6 T=0.22
+t=360 steps=9239 evals=73913 cost=10 best=6 T=0.15
+t=390 steps=10015 evals=80121 cost=10 best=6 T=0.15
+t=420 steps=10803 evals=86425 cost=10 best=6 T=0.15
+t=450 steps=11575 evals=92601 cost=11 best=6 T=0.63
