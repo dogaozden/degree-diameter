@@ -374,45 +374,61 @@ def main():
         assert len(np.unique(qp)) == Q.order, "left multiplication is not a permutation"
         perm = (qp[:, None] * n + (Q.chi(sq) * np.arange(n)[None, :] + sz + zshift[:, None]) % n).ravel()
         perms.append(perm)
-    perms = np.array(perms)                                   # d x N
+    perms = np.array(perms, dtype=np.int32)                   # d x N (int32 keeps 10M-vertex checks in memory)
     inv = np.empty_like(perms)
+    ar = np.arange(N, dtype=np.int32)
     for t in range(d):
-        inv[t][perms[t]] = np.arange(N)
+        inv[t][perms[t]] = ar
+    del ar
     e = Q.ident * n
     ok = True
     for src_side in (0, 1):
-        distA = np.full(N, -1, dtype=np.int32)
-        distB = np.full(N, -1, dtype=np.int32)
+        distA = np.full(N, -1, dtype=np.int16)
+        distB = np.full(N, -1, dtype=np.int16)
         (distA if src_side == 0 else distB)[e] = 0
         front, side, lev = np.array([e]), src_side, 0
+        mark = np.zeros(N, dtype=bool)
         while len(front):
             lev += 1
-            nb = np.unique((perms if side == 0 else inv)[:, front].ravel())
+            P = perms if side == 0 else inv
+            mark[:] = False
+            for t in range(d):
+                mark[P[t][front]] = True
             tgt = distB if side == 0 else distA
-            nb = nb[tgt[nb] < 0]
+            nb = np.flatnonzero(mark & (tgt < 0))
             tgt[nb] = lev
             front, side = nb, side ^ 1
         ecc = int(max(distA.max(), distB.max()))
         unreached = int((distA < 0).sum() + (distB < 0).sum())
         print("ecc from", "A" if src_side == 0 else "B", "=", ecc, "unreached", unreached)
         ok &= unreached == 0 and ecc <= D
+        del distA, distB, mark
     nv = 2 * N
-    u = np.repeat(np.arange(N, dtype=np.int64), d)
-    v = N + perms.T.ravel()
-    deg = np.bincount(np.concatenate([u, v]), minlength=nv)
-    pairs = np.unique(u * nv + v)
-    dup = len(u) - len(pairs)
-    print("n =", nv, "edges =", len(u), "max degree =", int(deg.max()), "min degree =", int(deg.min()), "duplicate edges =", dup)
-    ok &= int(deg.max()) == d and dup == 0
+    # degrees: every A vertex g has the d listed edges (g, s g); B vertex degrees counted per generator
+    degB = np.zeros(N, dtype=np.int64)
+    for t in range(d):
+        degB += np.bincount(perms[t], minlength=N)
+    maxdeg, mindeg = max(d, int(degB.max())), min(d, int(degB.min()))
+    del degB
+    # repeated edges: (g, s g) = (g, s' g) for two generators, i.e. equal entries in a column of perms
+    dup, step = 0, 1 << 20
+    for st in range(0, N, step):
+        blk = np.sort(perms[:, st:st + step], axis=0)
+        dup += int((blk[1:] == blk[:-1]).sum())
+    print("n =", nv, "edges =", N * d, "max degree =", maxdeg, "min degree =", mindeg, "duplicate edges =", dup)
+    ok &= maxdeg == d and dup == 0
     h = hashlib.sha256()
     f = open(out, "w") if out else None
     chunk = f"{nv}\n"
     h.update(chunk.encode())
     if f:
         f.write(chunk)
-    step = 1 << 20
-    for st in range(0, len(u), step):
-        txt = "\n".join(f"{a} {b}" for a, b in zip(u[st:st + step].tolist(), v[st:st + step].tolist())) + "\n"
+    gstep = max(1, (1 << 20) // d)
+    for st in range(0, N, gstep):
+        blk = perms[:, st:st + gstep]
+        u = np.repeat(np.arange(st, st + blk.shape[1], dtype=np.int64), d)
+        v = N + blk.T.ravel().astype(np.int64)
+        txt = "\n".join(f"{a} {b}" for a, b in zip(u.tolist(), v.tolist())) + "\n"
         h.update(txt.encode())
         if f:
             f.write(txt)

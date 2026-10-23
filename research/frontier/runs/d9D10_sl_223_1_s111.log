@@ -1,0 +1,14 @@
+group sl 223 x Z_1, N=11089344, identity 49506, H order 56, rows 198024, threads 1, setup 0.54s
+start cost=9
+t=30 steps=79 evals=633 cost=6 best=3 T=0.53
+t=60 steps=160 evals=1281 cost=4 best=3 T=0.18
+t=91 steps=241 evals=1929 cost=2 best=2 T=0.15
+t=121 steps=319 evals=2553 cost=2 best=2 T=0.15
+t=151 steps=400 evals=3201 cost=2 best=2 T=0.15
+t=181 steps=480 evals=3841 cost=2 best=2 T=0.15
+t=211 steps=559 evals=4473 cost=1 best=1 T=0.15
+t=241 steps=638 evals=5105 cost=1 best=1 T=0.15
+t=272 steps=718 evals=5745 cost=1 best=1 T=0.15
+RESULT d=9 D=10 group=sl 223 x Z_1 N=11089344 best=0 evals=5905 time=279.4
+full diameter check: OK
+wrote sols/d9D10_sl_223_1_s111.txt

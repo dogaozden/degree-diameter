@@ -1,0 +1,22 @@
+group prod sl 9 poly x^2+1 sl 25 poly x^2+2 x Z_1, N=11232000, identity 1123800, H order 60, rows 187200, threads 1, setup 0.40s
+start cost=18
+t=30 steps=183 evals=1465 cost=5 best=4 T=0.53
+t=60 steps=364 evals=2913 cost=4 best=4 T=0.19
+t=90 steps=544 evals=4353 cost=4 best=4 T=0.15
+t=120 steps=715 evals=5721 cost=4 best=4 T=0.15
+t=151 steps=900 evals=7201 cost=4 best=4 T=0.15
+t=181 steps=1079 evals=8633 cost=2 best=2 T=1.14
+t=211 steps=1259 evals=10073 cost=2 best=2 T=0.40
+t=241 steps=1444 evals=11553 cost=2 best=2 T=0.15
+t=271 steps=1631 evals=13049 cost=2 best=2 T=0.15
+t=301 steps=1817 evals=14537 cost=2 best=2 T=0.15
+t=331 steps=1995 evals=15961 cost=2 best=2 T=1.42
+t=361 steps=2170 evals=17361 cost=5 best=2 T=0.50
+t=391 steps=2352 evals=18817 cost=3 best=2 T=0.18
+t=421 steps=2533 evals=20265 cost=3 best=2 T=0.15
+t=451 steps=2711 evals=21689 cost=2 best=2 T=0.15
+t=481 steps=2890 evals=23121 cost=2 best=2 T=1.41
+t=511 steps=3066 evals=24529 cost=5 best=2 T=0.50
+t=541 steps=3250 evals=26001 cost=3 best=2 T=0.18
+t=572 steps=3403 evals=27225 cost=3 best=2 T=0.15
+RESULT d=9 D=10 group=prod sl 9 poly x^2+1 sl 25 poly x^2+2 x Z_1 N=11232000 best=2 evals=28321 time=600.1

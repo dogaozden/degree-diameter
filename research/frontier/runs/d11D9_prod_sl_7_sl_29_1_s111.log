@@ -1,0 +1,11 @@
+group prod sl 7 sl 29 x Z_1, N=8184960, identity 1023932, H order 60, rows 136416, threads 1, setup 0.27s
+start cost=22
+t=30 steps=153 evals=1225 cost=4 best=4 T=0.53
+t=60 steps=309 evals=2473 cost=2 best=2 T=0.19
+t=90 steps=461 evals=3689 cost=2 best=2 T=0.15
+t=120 steps=621 evals=4969 cost=2 best=2 T=0.15
+t=150 steps=777 evals=6217 cost=2 best=2 T=0.15
+t=180 steps=931 evals=7449 cost=2 best=2 T=0.15
+RESULT d=11 D=9 group=prod sl 7 sl 29 x Z_1 N=8184960 best=0 evals=7681 time=186.4
+full diameter check: OK
+wrote sols/d11D9_prod_sl_7_sl_29_1_s111.txt
