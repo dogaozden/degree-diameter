@@ -18,7 +18,7 @@ research/lean-haarD/gen_d8D7b.py. Do not edit by hand. -/
 
 namespace BipartiteDD.Haar.D8D7b
 
-open BipartiteDD.Haar.SL8Z43
+open BipartiteDD.Haar.D8D7b.SL8Z43
 
 /-- Every index `n < 21672` has a A-code. -/
 theorem exA (n : ℕ) (hn : n < 21672) : ∃ c, okA c n = true := by

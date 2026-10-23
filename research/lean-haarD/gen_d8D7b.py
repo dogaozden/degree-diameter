@@ -269,7 +269,7 @@ def write_cover(outdir):
         "",
         "namespace BipartiteDD.Haar.D8D7b",
         "",
-        "open BipartiteDD.Haar.SL8Z43",
+        "open BipartiteDD.Haar.D8D7b.SL8Z43",
         "",
     ]
     for side in ("A", "B"):
