@@ -1,4 +1,5 @@
 import BipartiteDD.Haar.D7D8.PSL19
+import Mathlib.Logic.Equiv.Fin.Basic
 
 /-! The group `G = PSL(2, 19) × Z13` of the Δ7·D8 record (order 44460), and its numbering by `Fin 44460`. -/
 
