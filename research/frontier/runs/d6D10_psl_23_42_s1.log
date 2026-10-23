@@ -1,0 +1,21 @@
+group psl 23 x Z_42, N=255024, identity 10626
+start cost=39
+t=30 steps=94 evals=753 cost=13 best=13 T=0.52
+t=60 steps=193 evals=1545 cost=9 best=9 T=0.19
+t=91 steps=295 evals=2361 cost=9 best=9 T=0.15
+t=121 steps=384 evals=3073 cost=9 best=9 T=0.15
+t=151 steps=479 evals=3833 cost=9 best=9 T=0.15
+t=181 steps=572 evals=4577 cost=9 best=9 T=0.15
+t=211 steps=673 evals=5385 cost=10 best=9 T=0.58
+t=242 steps=771 evals=6169 cost=10 best=9 T=0.20
+t=272 steps=871 evals=6969 cost=7 best=7 T=0.15
+t=302 steps=973 evals=7785 cost=7 best=7 T=0.15
+t=332 steps=1074 evals=8593 cost=7 best=7 T=0.15
+t=362 steps=1178 evals=9425 cost=7 best=7 T=0.15
+t=392 steps=1279 evals=10233 cost=7 best=7 T=0.15
+t=422 steps=1383 evals=11065 cost=7 best=7 T=1.48
+t=452 steps=1485 evals=11881 cost=6 best=6 T=0.52
+t=482 steps=1596 evals=12769 cost=6 best=6 T=0.18
+t=512 steps=1707 evals=13657 cost=6 best=6 T=0.15
+t=542 steps=1814 evals=14513 cost=6 best=6 T=0.15
+RESULT d=6 D=10 group=psl 23 x Z_42 N=255024 best=6 evals=14849 time=554.4
