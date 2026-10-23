@@ -2,3 +2,6 @@ group prod psl 7 sl 7 x Z_11, N=620928, identity 78078, H order 56, rows 11088, 
 start cost=42
 t=30 steps=2436 evals=19489 cost=2 best=2 T=0.53
 t=60 steps=4662 evals=37297 cost=2 best=2 T=0.19
+RESULT d=8 D=9 group=prod psl 7 sl 7 x Z_11 N=620928 best=0 evals=41329 time=65.5
+full diameter check: OK
+wrote sols/d8D9_prod_psl_7_sl_7_11_s301.txt
