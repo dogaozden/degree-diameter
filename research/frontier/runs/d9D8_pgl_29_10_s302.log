@@ -1,3 +1,9 @@
 group pgl 29 x Z_10, N=243600, identity 0, H order 58, rows 4200, threads 1, setup 0.01s
 start cost=14
 t=30 steps=19245 evals=153961 cost=2 best=2 T=0.53
+t=60 steps=37640 evals=301121 cost=1 best=1 T=0.19
+t=90 steps=56531 evals=452249 cost=1 best=1 T=0.15
+t=120 steps=75678 evals=605425 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=pgl 29 x Z_10 N=243600 best=0 evals=748545 time=147.8
+full diameter check: OK
+wrote sols/d9D8_pgl_29_10_s302.txt
