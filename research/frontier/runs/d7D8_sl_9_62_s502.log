@@ -1,12 +1,12 @@
 group sl 9 poly x^2+1 x Z_62, N=44640, identity 4464, H order 62, rows 720, threads 1, setup 0.00s
 start cost=143
-t=30 steps=115186 evals=921489 cost=9 best=8 T=0.53
-t=60 steps=231133 evals=1849065 cost=7 best=7 T=0.19
-t=90 steps=345517 evals=2764137 cost=7 best=7 T=0.15
-t=120 steps=460067 evals=3680537 cost=7 best=7 T=0.15
-t=150 steps=574045 evals=4592361 cost=7 best=7 T=0.15
-t=180 steps=688365 evals=5506921 cost=7 best=7 T=0.15
-t=210 steps=804786 evals=6438289 cost=6 best=6 T=0.71
-t=240 steps=921661 evals=7373289 cost=6 best=6 T=0.25
-t=270 steps=1037146 evals=8297169 cost=6 best=6 T=0.15
-RESULT d=7 D=8 group=sl 9 poly x^2+1 x Z_62 N=44640 best=6 evals=9237073 time=299.1
+t=30 steps=132352 evals=1058817 cost=8 best=7 T=0.53
+t=60 steps=265111 evals=2120889 cost=8 best=7 T=0.19
+t=90 steps=400297 evals=3202377 cost=8 best=7 T=0.15
+t=120 steps=528875 evals=4231001 cost=8 best=7 T=0.15
+t=150 steps=663499 evals=5307993 cost=8 best=7 T=0.15
+t=180 steps=794359 evals=6354873 cost=9 best=7 T=1.07
+t=210 steps=925360 evals=7402881 cost=6 best=6 T=0.38
+t=240 steps=1054427 evals=8435417 cost=6 best=6 T=0.15
+t=270 steps=1188476 evals=9507809 cost=6 best=6 T=0.15
+RESULT d=7 D=8 group=sl 9 poly x^2+1 x Z_62 N=44640 best=6 evals=10559473 time=300.0
