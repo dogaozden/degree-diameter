@@ -1,0 +1,15 @@
+group sl 49 poly x^2+1 x Z_1, N=117600, identity 2352, H order 50, rows 2352, threads 1, setup 0.03s
+wide rows: no cyclic subgroup of order >= 64 found (best 50); using haar_gen3's evaluation
+alpha: conj by mat(19,9,47,38) (index 46058), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 47 (+e); mu = 33.28, mu/k = 11.09, fixed-point misses ~ 3.15
+start cost=2969
+t=30 steps=15679 evals=125433 cost=2 best=2 T=0.53
+t=60 steps=32063 evals=256505 cost=2 best=2 T=0.19
+t=90 steps=46949 evals=375593 cost=1 best=1 T=0.15
+t=120 steps=61715 evals=493721 cost=1 best=1 T=0.15
+t=150 steps=79697 evals=637577 cost=1 best=1 T=0.15
+t=180 steps=98078 evals=784625 cost=1 best=1 T=0.15
+t=210 steps=116569 evals=932553 cost=1 best=1 T=0.15
+RESULT d=8 D=8 group=sl 49 poly x^2+1 x Z_1 N=117600 best=0 evals=1000169 time=224.0 orbit k=3 m=2 f=2 fix=47
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/d8/d8D8_sl_49_1_k3_s1.txt

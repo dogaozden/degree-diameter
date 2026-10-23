@@ -1,0 +1,11 @@
+group pgl 8 poly x^3+x+1 x Z_43, N=21672, identity 0, H order 43, rows 504, threads 1, setup 0.00s
+wide rows: HW order 129, rows 168, setup 0.01s
+alpha: conj by mat(1,4,2,5) (index 242), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 38.49, mu/k = 12.83, fixed-point misses ~ 2.18
+start cost=101
+RESULT d=8 D=7 group=pgl 8 poly x^3+x+1 x Z_43 N=21672 best=0 evals=18681 time=0.6 orbit k=3 m=2 f=2 fix=8
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outA/d8D7_pgl_8_43_orb3_s1.txt
+n = 43344 edges = 173376 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 206e785b6a8a2a9d1463b75a79ba8ff2a1a121fd8efe86f121131da04d125a45
+VALID d=8 D=7 group=pgl 8 poly x^3+x+1 x Z_43 N=21672 vertices=43344
