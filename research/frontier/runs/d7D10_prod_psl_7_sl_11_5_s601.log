@@ -1,2 +1,22 @@
 group prod psl 7 sl 11 x Z_5, N=1108800, identity 139150, H order 60, rows 18480, threads 1, setup 0.06s
 start cost=41
+t=30 steps=2543 evals=20345 cost=9 best=4 T=0.53
+t=60 steps=4995 evals=39961 cost=5 best=4 T=0.19
+t=90 steps=7498 evals=59985 cost=5 best=4 T=0.15
+t=120 steps=9971 evals=79769 cost=5 best=4 T=0.15
+t=150 steps=12309 evals=98473 cost=7 best=4 T=0.15
+t=180 steps=14555 evals=116441 cost=8 best=4 T=0.95
+t=210 steps=16821 evals=134569 cost=5 best=4 T=0.34
+t=240 steps=19144 evals=153153 cost=5 best=4 T=0.15
+t=270 steps=21565 evals=172521 cost=5 best=4 T=0.15
+t=300 steps=23810 evals=190481 cost=5 best=4 T=0.15
+t=330 steps=25873 evals=206985 cost=4 best=4 T=0.95
+t=360 steps=28034 evals=224273 cost=4 best=4 T=0.34
+t=390 steps=30141 evals=241129 cost=4 best=4 T=0.15
+t=420 steps=32410 evals=259281 cost=4 best=4 T=0.15
+t=450 steps=34656 evals=277249 cost=4 best=4 T=0.15
+t=480 steps=36736 evals=293889 cost=6 best=4 T=0.95
+t=510 steps=38946 evals=311569 cost=6 best=4 T=0.34
+t=540 steps=41021 evals=328169 cost=6 best=4 T=0.15
+t=570 steps=43024 evals=344193 cost=5 best=4 T=0.15
+RESULT d=7 D=10 group=prod psl 7 sl 11 x Z_5 N=1108800 best=4 evals=362825 time=600.0
