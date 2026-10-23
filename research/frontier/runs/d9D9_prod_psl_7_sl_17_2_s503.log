@@ -1,2 +1,10 @@
 group prod psl 7 sl 17 x Z_2, N=1645056, identity 206176, H order 63, rows 26112, threads 1, setup 0.09s
 start cost=38
+t=30 steps=629 evals=5033 cost=6 best=6 T=0.53
+t=60 steps=1255 evals=10041 cost=6 best=6 T=0.19
+t=90 steps=1870 evals=14961 cost=6 best=6 T=0.15
+t=120 steps=2525 evals=20201 cost=6 best=6 T=0.15
+t=150 steps=3172 evals=25377 cost=6 best=6 T=0.15
+t=180 steps=3837 evals=30697 cost=6 best=6 T=0.95
+t=210 steps=4442 evals=35537 cost=10 best=6 T=0.33
+t=240 steps=5080 evals=40641 cost=6 best=6 T=0.15
