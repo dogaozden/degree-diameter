@@ -1,0 +1,18 @@
+machine: nproc=4, mem total=15G used=0G free=14G
+== build_haar2.py research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt /tmp/e.txt
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 16792080 edges = 92356440 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 2382f5528cb82595fe52710339ff6b77af48842811a84efd47ab3f6940b2d4bb
+VALID d=11 D=9 group=sl 61 x Z_37 N=8396040 vertices=16792080
+== check_haar_indep.py research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt
+file research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt
+header: d=11 D=9 spec=sl 61 NCYC=37 N=8396040
+group order |G|=226920 (factors [226920]), x Z_37 -> 8396040; vertices 2N=16792080
+distinct generators (as full group elements): 11 of d=11
+permutations built (1s)
+BFS from A: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020326, 6011396, 7364663, 2275008]
+BFS from B: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16792080 (12s)
+
