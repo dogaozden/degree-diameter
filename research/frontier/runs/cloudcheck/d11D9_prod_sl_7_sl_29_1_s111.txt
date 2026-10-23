@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:45:19Z
+file: research/frontier/sols/d11D9_prod_sl_7_sl_29_1_s111.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 092508a9e8a225a15fe90ed4b05542a8dedfb3d55edcbc81173d9b04a742c7a3
+header: 11 9 prod sl 7 sl 29 n 1 N 8184960
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d11D9_prod_sl_7_sl_29_1_s111.txt
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 16369920 edges = 90034560 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = f0685bc56672428602cdc50cddad9abf2f10a064dd4936cc03f9d8b0cf2d2d43
+VALID d=11 D=9 group=prod sl 7 sl 29 x Z_1 N=8184960 vertices=16369920
+(exit 0)
+[exit 0; wall 223s; cpu 221s; peak RSS 1909 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d11D9_prod_sl_7_sl_29_1_s111.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d11D9_prod_sl_7_sl_29_1_s111.txt
+header: 11 9 prod sl 7 sl 29 n 1 N 8184960
+d=11 D=9
+group: SL(2,7) [order 336] x SL(2,29) [order 24360] x Z_1; |G| = 8184960, vertices 2|G| = 16369920
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 11 distinct group elements, all in the group [0.0s]
+neighbour check (full: 8184960 vertices per side): every vertex has 11 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [1.0s]
+BFS from A: ecc=9 reached 16369920 of 16369920 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109248, 1027886, 5966371, 7145963, 2108230] [2.7s]
+BFS from B: ecc=9 reached 16369920 of 16369920 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109248, 1027896, 5966371, 7145953, 2108230] [4.4s]
+max degree = min degree = 11, no repeated edges (checked above)
+elapsed 4.4s
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16369920
+(exit 0)
+[exit 0; wall 4s; cpu 17s; peak RSS 11 MB]
