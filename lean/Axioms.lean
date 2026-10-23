@@ -11,6 +11,7 @@ import BipartiteDD.Haar.Record1728
 import BipartiteDD.Haar.Record1152
 import BipartiteDD.Haar.Record1764
 import BipartiteDD.Haar.Record2662
+import BipartiteDD.Haar.Record30576
 import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.ASq.Main
@@ -78,3 +79,5 @@ import BipartiteDD.GQST.StandinMain
 #print axioms BipartiteDD.SingerC.W3.spread_totally_isotropic
 #print axioms BipartiteDD.SingerC.corC1
 #print axioms nb_7_6
+#print axioms BipartiteDD.Haar.SL213Z7.nb_6_8
+#print axioms BipartiteDD.Haar.SL213Z7.nb_6_8_exists
