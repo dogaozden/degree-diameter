@@ -65,7 +65,7 @@ are proved end to end from `decide +kernel` checks. The 10-cycle has diameter 5,
 - Toolchain `leanprover/lean4:v4.34.1`, Mathlib from `lake exe cache get` (ok, 8908 files).
 - `lake build BipartiteDD.Haar.GraphD`: ok, no warnings.
 - `lake build BipartiteDD.Haar.Main`: ok, no warnings.
-- `lake build BipartiteDD.Haar.Record1152`: see the note at the end (run for regression).
+- `lake build BipartiteDD.Haar.Record1152` (regression, against the changed `Main`): ok, 1228 jobs.
 
 ## Not done / caveats
 
