@@ -145,10 +145,11 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (9,8) | 449,480 | 497,904 | **511,056** (+2.6 %) | sl 27 × Z13, k = 3, m = 2, f = 3 | 21.6 | 5.0·10⁵ | d9D8_sl_27_13_orb3_s1.txt |
 | (8,9) | 1,091,232 | 1,245,312 | **1,279,680** (+2.8 %) | psl 31 × Z43, k = 3, m = 2, f = 2 | 17.4 | 7.6·10³ | d8D9_psl_31_43_orb3_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19, k = 3, m = 2, f = 1 | 22.2 | 2.3·10⁴ | d7D10_psl_49_19_orb3_s1.txt |
+| (8,10) | 6,927,210 | 7,349,616 | **7,596,840** (+3.4 %) | psl 59 × Z37, k = 3, m = 2, f = 2 | 15.7 | 3.9·10³ | d8D10_psl_59_37_orb3_s1.txt |
 
 Also valid but superseded or not records (kept in runs/): (7,8) psl 17 × Z19 (93,024), psl 13 × Z43 (93,912);
 (8,8) psl 23 × Z19 (230,736), sl 49 (235,200); (8,7) psl 13 × Z19 (41,496), pgl 8 × Z43 (43,344); (7,9)
-psl 23 × Z37 (449,328). edge-list sha256 values are in runs/*.rebuild.txt.
+psl 23 × Z37 (449,328); (8,10) psl 83 × Z13 (7,432,152). edge-list sha256 values are in runs/*.rebuild.txt.
 
 <!-- MORE-RECORDS -->
 
@@ -213,6 +214,11 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
 
 ## 7. Open attempts, and what to do next
 
+- **(10,8)**, new cell, table 1,176,480 (needs N ≥ 588,241, μ ≥ 62.6). k = 3 on psl 23 × Z97 (N = 588,984,
+  μ_eff ≈ 21 + 0.6): best cost 12 (= 4 uncovered orbits) after 2.7·10⁶ evaluations (34 min). Not solved. By the
+  §3 fit it needs ~2·10⁷ or more. k = 5 (Δ = 5·2, f = 0) would give μ_eff ≈ 14, but every group with elements of order 5
+  and a suitable Z_n at this order has a large cyclic factor and mixes badly (sl 9 × Z821: random-S minimum 298 at
+  μ = 66; sl 11 × Z451: orbit minimum 78).
 <!-- OPEN-ATTEMPTS -->
 
 Next steps, in order of expected value:
