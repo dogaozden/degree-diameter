@@ -1,17 +1,21 @@
-group prod psl 8 poly x^3+x+1 sl 13 x Z_1, N=1100736, identity 122460, H order 63, rows 17472, threads 1, setup 0.03s
+group prod psl 8 poly x^3+x+1 sl 13 x Z_1, N=1100736, identity 122460, H order 63, rows 17472, threads 1, setup 0.06s
 start cost=20
-t=30 steps=3020 evals=24161 cost=7 best=6 T=0.53
-t=60 steps=6232 evals=49857 cost=5 best=5 T=0.19
-t=90 steps=9499 evals=75993 cost=5 best=5 T=0.15
-t=120 steps=12698 evals=101585 cost=5 best=5 T=0.15
-t=150 steps=15824 evals=126593 cost=5 best=5 T=0.15
-t=180 steps=19030 evals=152241 cost=5 best=5 T=0.15
-t=210 steps=22207 evals=177657 cost=8 best=4 T=1.00
-t=240 steps=25350 evals=202801 cost=5 best=4 T=0.35
-t=270 steps=28497 evals=227977 cost=4 best=4 T=0.15
-t=300 steps=31616 evals=252929 cost=3 best=3 T=0.15
-t=330 steps=34831 evals=278649 cost=3 best=3 T=0.15
-t=360 steps=38114 evals=304913 cost=3 best=3 T=0.15
-t=390 steps=41546 evals=332369 cost=3 best=3 T=0.15
-t=420 steps=44804 evals=358433 cost=3 best=3 T=0.15
-RESULT d=7 D=10 group=prod psl 8 poly x^3+x+1 sl 13 x Z_1 N=1100736 best=3 evals=384833 time=448.3
+t=30 steps=2801 evals=22409 cost=6 best=6 T=0.53
+t=60 steps=5668 evals=45345 cost=5 best=5 T=0.19
+t=90 steps=8523 evals=68185 cost=4 best=4 T=0.15
+t=120 steps=11335 evals=90681 cost=4 best=4 T=0.15
+t=150 steps=14135 evals=113081 cost=4 best=4 T=0.15
+t=180 steps=16971 evals=135769 cost=4 best=4 T=0.15
+t=210 steps=19836 evals=158689 cost=4 best=4 T=0.15
+t=240 steps=22718 evals=181745 cost=5 best=4 T=0.57
+t=270 steps=25559 evals=204473 cost=4 best=4 T=0.20
+t=300 steps=28430 evals=227441 cost=4 best=4 T=0.15
+t=330 steps=31294 evals=250353 cost=3 best=3 T=0.15
+t=360 steps=34172 evals=273377 cost=3 best=3 T=0.15
+t=390 steps=37053 evals=296425 cost=3 best=3 T=0.15
+t=420 steps=39867 evals=318937 cost=3 best=3 T=0.15
+t=450 steps=42766 evals=342129 cost=3 best=3 T=0.15
+t=480 steps=45636 evals=365089 cost=8 best=2 T=1.30
+t=510 steps=48437 evals=387497 cost=5 best=2 T=0.46
+t=540 steps=51244 evals=409953 cost=4 best=2 T=0.16
+t=570 steps=53805 evals=430441 cost=4 best=2 T=0.15
