@@ -1,0 +1,32 @@
+group prod sl 7 sl 9 poly x^2+1 x Z_7, N=1693440, identity 212184, H order 56, rows 30240, threads 1, setup 0.06s
+start cost=68
+t=30 steps=1050 evals=8401 cost=18 best=16 T=0.53
+t=60 steps=2140 evals=17121 cost=18 best=16 T=0.19
+t=90 steps=3186 evals=25489 cost=14 best=14 T=0.15
+t=120 steps=4251 evals=34009 cost=14 best=14 T=0.15
+t=150 steps=5290 evals=42321 cost=14 best=14 T=0.15
+t=180 steps=6343 evals=50745 cost=14 best=14 T=0.15
+t=210 steps=7418 evals=59345 cost=14 best=14 T=0.15
+t=240 steps=8481 evals=67849 cost=14 best=14 T=1.00
+t=270 steps=9526 evals=76209 cost=14 best=14 T=0.35
+t=300 steps=10581 evals=84649 cost=14 best=14 T=0.15
+t=330 steps=11650 evals=93201 cost=14 best=14 T=0.15
+t=360 steps=12727 evals=101817 cost=14 best=14 T=0.15
+t=390 steps=13782 evals=110257 cost=14 best=14 T=1.00
+t=420 steps=14849 evals=118793 cost=8 best=8 T=0.35
+t=450 steps=15907 evals=127257 cost=8 best=8 T=0.15
+t=480 steps=16948 evals=135585 cost=8 best=8 T=0.15
+t=510 steps=17999 evals=143993 cost=8 best=8 T=0.15
+t=540 steps=19045 evals=152361 cost=8 best=8 T=0.15
+t=570 steps=20090 evals=160721 cost=8 best=8 T=0.59
+t=600 steps=21167 evals=169337 cost=8 best=8 T=0.21
+t=630 steps=22238 evals=177905 cost=8 best=8 T=0.15
+t=660 steps=23287 evals=186297 cost=8 best=8 T=0.15
+t=690 steps=24346 evals=194769 cost=8 best=8 T=0.15
+t=720 steps=25415 evals=203321 cost=8 best=8 T=0.59
+t=750 steps=26456 evals=211649 cost=8 best=8 T=0.21
+t=780 steps=27489 evals=219913 cost=8 best=8 T=0.15
+t=810 steps=28540 evals=228321 cost=8 best=8 T=0.15
+t=840 steps=29571 evals=236569 cost=8 best=8 T=0.15
+t=870 steps=30604 evals=244833 cost=8 best=8 T=0.59
+RESULT d=9 D=9 group=prod sl 7 sl 9 poly x^2+1 x Z_7 N=1693440 best=8 evals=253105 time=900.0
