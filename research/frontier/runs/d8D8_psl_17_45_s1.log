@@ -1,2 +1,47 @@
 group psl 17 x Z_45, N=110160, identity 6120
 start cost=17
+t=30 steps=501 evals=4009 cost=9 best=6 T=0.53
+t=60 steps=1001 evals=8009 cost=6 best=6 T=0.19
+t=90 steps=1505 evals=12041 cost=4 best=4 T=0.15
+t=120 steps=2019 evals=16153 cost=4 best=4 T=0.15
+t=150 steps=2537 evals=20297 cost=4 best=4 T=0.15
+t=180 steps=3055 evals=24441 cost=4 best=4 T=0.15
+t=210 steps=3576 evals=28609 cost=4 best=4 T=0.15
+t=240 steps=4099 evals=32793 cost=5 best=4 T=0.62
+t=270 steps=4624 evals=36993 cost=5 best=4 T=0.22
+t=300 steps=5152 evals=41217 cost=5 best=4 T=0.15
+t=330 steps=5683 evals=45465 cost=5 best=4 T=0.15
+t=360 steps=6216 evals=49729 cost=5 best=4 T=0.15
+t=390 steps=6755 evals=54041 cost=8 best=4 T=0.62
+t=420 steps=7295 evals=58361 cost=3 best=3 T=0.22
+t=450 steps=7835 evals=62681 cost=3 best=3 T=0.15
+t=481 steps=8382 evals=67057 cost=3 best=3 T=0.15
+t=511 steps=8929 evals=71433 cost=3 best=3 T=0.15
+t=541 steps=9469 evals=75753 cost=3 best=3 T=0.15
+t=571 steps=10027 evals=80217 cost=7 best=3 T=0.75
+t=601 steps=10590 evals=84721 cost=6 best=3 T=0.27
+t=631 steps=11150 evals=89201 cost=6 best=3 T=0.15
+t=661 steps=11702 evals=93617 cost=5 best=3 T=0.15
+t=691 steps=12262 evals=98097 cost=5 best=3 T=0.15
+t=721 steps=12818 evals=102545 cost=3 best=3 T=0.75
+t=751 steps=13391 evals=107129 cost=3 best=3 T=0.26
+t=781 steps=13949 evals=111593 cost=3 best=3 T=0.15
+t=811 steps=14517 evals=116137 cost=3 best=3 T=0.15
+t=841 steps=15096 evals=120769 cost=3 best=3 T=0.15
+t=871 steps=15672 evals=125377 cost=3 best=3 T=0.75
+t=901 steps=16247 evals=129977 cost=3 best=3 T=0.26
+t=931 steps=16820 evals=134561 cost=3 best=3 T=0.15
+t=961 steps=17395 evals=139161 cost=3 best=3 T=0.15
+t=991 steps=17968 evals=143745 cost=3 best=3 T=0.15
+t=1021 steps=18539 evals=148313 cost=3 best=3 T=0.75
+t=1051 steps=19122 evals=152977 cost=3 best=3 T=0.26
+t=1081 steps=19691 evals=157529 cost=3 best=3 T=0.15
+t=1111 steps=20267 evals=162137 cost=3 best=3 T=0.15
+t=1141 steps=20840 evals=166721 cost=3 best=3 T=0.15
+t=1171 steps=21402 evals=171217 cost=6 best=3 T=0.74
+t=1201 steps=21970 evals=175761 cost=3 best=3 T=0.26
+t=1231 steps=22545 evals=180361 cost=3 best=3 T=0.15
+t=1261 steps=23124 evals=184993 cost=3 best=3 T=0.15
+t=1291 steps=23716 evals=189729 cost=3 best=3 T=0.15
+t=1321 steps=24307 evals=194457 cost=4 best=3 T=0.74
+RESULT d=8 D=8 group=psl 17 x Z_45 N=110160 best=3 evals=196761 time=1335.6
