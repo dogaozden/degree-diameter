@@ -1,3 +1,22 @@
 group sl 73 x Z_3, N=1166832, identity 15768, H order 37, rows 31536, threads 1, setup 0.06s
 start cost=91
 t=30 steps=630 evals=5041 cost=16 best=16 T=0.53
+t=60 steps=1321 evals=10569 cost=17 best=16 T=0.19
+t=90 steps=2045 evals=16361 cost=15 best=15 T=0.15
+t=120 steps=2779 evals=22233 cost=15 best=15 T=0.15
+t=150 steps=3513 evals=28105 cost=15 best=15 T=0.15
+t=180 steps=4229 evals=33833 cost=15 best=15 T=0.15
+t=210 steps=4975 evals=39801 cost=14 best=14 T=0.15
+t=240 steps=5696 evals=45569 cost=14 best=14 T=0.15
+t=270 steps=6419 evals=51353 cost=14 best=14 T=0.15
+t=300 steps=7094 evals=56753 cost=14 best=14 T=0.15
+t=330 steps=7822 evals=62577 cost=14 best=14 T=0.15
+t=360 steps=8535 evals=68281 cost=14 best=14 T=0.59
+t=390 steps=9250 evals=74001 cost=11 best=11 T=0.21
+t=420 steps=9951 evals=79609 cost=11 best=11 T=0.15
+t=450 steps=10681 evals=85449 cost=11 best=11 T=0.15
+t=480 steps=11385 evals=91081 cost=11 best=11 T=0.15
+t=510 steps=12108 evals=96865 cost=11 best=11 T=0.15
+t=540 steps=12788 evals=102305 cost=11 best=11 T=1.41
+t=570 steps=13512 evals=108097 cost=11 best=11 T=0.50
+RESULT d=7 D=10 group=sl 73 x Z_3 N=1166832 best=11 evals=113697 time=600.0
