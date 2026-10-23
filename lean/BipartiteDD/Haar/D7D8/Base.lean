@@ -32,6 +32,7 @@ theorem gOf_idxG (g : G) : gOf (idxG g) = g := by
     omega
   unfold gOf idxG
   rw [h1, h3, grpP_enc, ZMod.natCast_zmod_val]
+  rfl
 
 theorem idxG_gOf (n : ℕ) (hn : n < 44460) : idxG (gOf n) = n := by
   have h1 : enc (grpP (n / 13)).a (grpP (n / 13)).b (grpP (n / 13)).c (grpP (n / 13)).d = n / 13 :=
