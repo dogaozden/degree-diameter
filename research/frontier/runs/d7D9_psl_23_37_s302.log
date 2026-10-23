@@ -1,0 +1,12 @@
+group psl 23 x Z_37, N=224664, identity 9361, H order 37, rows 6072, threads 1, setup 0.01s
+start cost=117
+t=30 steps=4219 evals=33753 cost=21 best=21 T=0.53
+t=60 steps=8360 evals=66881 cost=21 best=21 T=0.19
+t=90 steps=12371 evals=98969 cost=21 best=21 T=0.15
+t=120 steps=16554 evals=132433 cost=21 best=21 T=0.15
+t=150 steps=20742 evals=165937 cost=21 best=21 T=0.15
+t=180 steps=25062 evals=200497 cost=19 best=19 T=0.56
+t=210 steps=29279 evals=234233 cost=12 best=12 T=0.20
+t=240 steps=33515 evals=268121 cost=12 best=12 T=0.15
+t=270 steps=37783 evals=302265 cost=12 best=12 T=0.15
+RESULT d=7 D=9 group=psl 23 x Z_37 N=224664 best=12 evals=336129 time=300.0
