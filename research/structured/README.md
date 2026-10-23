@@ -46,6 +46,12 @@ Extra environment variables (all optional):
 
 `THREADS`, `RANDSAMPLE`, `PROFILE`, `COOL`, `REHEAT`, … behave as in haar_gen3.
 
+Memory: wide mode keeps haar_gen3's coset index (4N bytes, needed to reproduce its uncovered lists exactly) and
+adds its own (4N bytes). That is about 18 instead of 14 bytes per group element, e.g. 2.9 GB instead of 2.3 GB at
+N = 158M. Use `FAST=0` when memory is the limit. When more than 65,536 elements are uncovered, rebuilding
+haar_gen3's reservoir sample costs O(N) group products. That happens only for hopeless S and the trajectory stays
+exact.
+
 Identity test (both lines must show the same hash):
 ```
 TRACE=1 VCLOCK=0.01 MAXSTEPS=4000 FAST=0 ./haar_fast 8 9 3600 1 8 /dev/null sl 59 3
