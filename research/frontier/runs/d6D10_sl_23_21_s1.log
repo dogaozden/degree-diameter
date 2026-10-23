@@ -1,2 +1,21 @@
 group sl 23 x Z_21, N=255024, identity 10626
 start cost=66
+t=30 steps=89 evals=713 cost=12 best=11 T=0.53
+t=60 steps=185 evals=1481 cost=12 best=11 T=0.18
+t=91 steps=281 evals=2249 cost=8 best=8 T=0.15
+t=121 steps=366 evals=2929 cost=8 best=8 T=0.15
+t=151 steps=456 evals=3649 cost=8 best=8 T=0.15
+t=181 steps=548 evals=4385 cost=8 best=8 T=0.15
+t=211 steps=650 evals=5201 cost=8 best=8 T=0.15
+t=242 steps=744 evals=5953 cost=8 best=8 T=0.59
+t=272 steps=849 evals=6793 cost=8 best=8 T=0.21
+t=302 steps=960 evals=7681 cost=8 best=8 T=0.15
+t=332 steps=1058 evals=8465 cost=8 best=8 T=0.15
+t=362 steps=1164 evals=9313 cost=8 best=8 T=0.15
+t=392 steps=1263 evals=10105 cost=5 best=5 T=0.15
+t=422 steps=1367 evals=10937 cost=5 best=5 T=0.15
+t=453 steps=1469 evals=11753 cost=12 best=5 T=0.15
+t=483 steps=1575 evals=12601 cost=10 best=5 T=0.15
+t=513 steps=1679 evals=13433 cost=6 best=5 T=0.15
+t=543 steps=1793 evals=14345 cost=5 best=5 T=0.56
+RESULT d=6 D=10 group=sl 23 x Z_21 N=255024 best=5 evals=14689 time=554.1
