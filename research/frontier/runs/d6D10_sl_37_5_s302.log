@@ -1,12 +1,14 @@
 group sl 37 x Z_5, N=253080, identity 6660, H order 60, rows 4218, threads 1, setup 0.01s
 start cost=39
-t=30 steps=13728 evals=109825 cost=1 best=1 T=0.53
-t=60 steps=27402 evals=219217 cost=1 best=1 T=0.19
-t=90 steps=41118 evals=328945 cost=1 best=1 T=0.15
-t=120 steps=55082 evals=440657 cost=1 best=1 T=0.15
-t=150 steps=68815 evals=550521 cost=1 best=1 T=0.15
-t=180 steps=82702 evals=661617 cost=3 best=1 T=0.77
-t=210 steps=96544 evals=772353 cost=3 best=1 T=0.27
-t=240 steps=109874 evals=878993 cost=1 best=1 T=0.15
-t=270 steps=122467 evals=979737 cost=1 best=1 T=0.15
-RESULT d=6 D=10 group=sl 37 x Z_5 N=253080 best=1 evals=1079393 time=300.0
+t=30 steps=13400 evals=107201 cost=3 best=2 T=0.53
+t=60 steps=26443 evals=211545 cost=2 best=2 T=0.19
+t=90 steps=38942 evals=311537 cost=2 best=2 T=0.15
+t=120 steps=51303 evals=410425 cost=1 best=1 T=0.15
+t=150 steps=63888 evals=511105 cost=1 best=1 T=0.15
+t=180 steps=76768 evals=614145 cost=1 best=1 T=0.15
+t=210 steps=89770 evals=718161 cost=1 best=1 T=0.15
+t=240 steps=102704 evals=821633 cost=1 best=1 T=0.15
+t=270 steps=116019 evals=928153 cost=4 best=1 T=1.13
+RESULT d=6 D=10 group=sl 37 x Z_5 N=253080 best=0 evals=1005009 time=292.8
+full diameter check: OK
+wrote sols/d6D10_sl_37_5_s302.txt
