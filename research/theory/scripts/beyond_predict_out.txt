@@ -59,7 +59,8 @@
   solved runs, ln(evals / rule(mu_alpha)): mean -0.39, sd 1.60  (rule predicts 0)
   same with the model mu_alpha (special targets, junction swaps): mean -0.76, sd 1.78
   for contrast, the rule applied to plain mu (no clumping): mean -7.39, sd 3.74
-  unsolved runs: 13; of these, 3 used fewer evals than the rule says mu_alpha needs (consistent), 10 used more:
+  unsolved runs: 13; 3 stopped before the rule's typical effort, 10 ran longer, by factors 2.0-33 (median 6.4),
+  i.e. 0.4-2.1 residual sd beyond it (the failed runs are the edge of each ladder, so they lean hard).
      (11, 9) psl 257 x Z_1                  mu  17.5  mu_a  39.2  best  73  evals 1.3e+04  rule 4.8e+10
      (13, 9) psl 397 x Z_1                  mu   9.6  mu_a  33.9  best  59  evals 3.1e+03  rule 3.5e+09
      (10, 8) psl 23 x Z_97                  mu  63.5  mu_a  21.7  best  12  evals 2.7e+06  rule 7.7e+06

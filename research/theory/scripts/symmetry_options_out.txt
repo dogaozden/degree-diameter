@@ -91,25 +91,25 @@ Columns: mu = random-S Poisson mean; then for each symmetry: mu_A (delta = coinc
 summary at the current order: which symmetry type has the lowest mu_A, per cell (count):
    {'conj k=3': 12, 'Frobenius k=3': 1, 'conj k=5': 1}
 
-== reach with <= 1e+06 evals (effort law), groups with N in [N_best, 1.3 N_best] ==
-feasible = predicted evals <= budget AND mu_A <= ln(#symmetric S) - 3 (first moment: valid S should exist);
+== reach with 4 core-hours per cell (evals = 4 h / (c N b), DATA_CHECK §3), N in [N_best, 1.3 N_best] ==
+feasible = predicted evals <= budget AND mu_A <= ln(#symmetric S) - 1 (first moment: e valid S expected);
 #S ~ (N/k)^m |Fix|^(f-1) / m!, m = number of free orbits. Gain is over the current best (orbit k = 3) order.
-   cell      current N    conj k=3            conj k=5            conj k=7            Frobenius k=3       conj k=2            Z6                
-   ( 8, 7)        21672    -                   -                   -                   -                   -                   -                 
-   ( 7, 8)        47880    -                   -                   -                   -                   -                   -                 
-   ( 8, 8)       119952    -                   -                   -                   -                   -                   -                 
-   ( 9, 8)       255528     +0.0% S27.13       -                   -                    +2.5% S64.1        -                   -                 
-   (10, 8)       588241    -                   -                   -                   -                   -                   -                 
-   (11, 8)      1123471    -                    +0.5% P59.11       -                   -                   -                   -                 
-   (13, 8)      3302208     +4.5% P81.13       -                   -                    +3.1% S64.13       -                   -                 
-   ( 7, 9)       231420    -                   -                   -                   -                   -                   -                 
-   ( 8, 9)       658008     +0.0% S37.13       -                   -                   -                   -                   -                 
-   (10, 9)      4001928     +0.0% S83.7        -                   -                   -                   -                   -                 
-   (11, 9)      8396040     +7.7% S109.7       +10.3% S61.41       -                   -                   -                   -                 
-   (13, 9)     31936200     +7.8% S89.49       -                   -                   -                   -                    +5.6% S169.7     
-   (14, 9)     58034328     +8.0% S101.61      -                   -                    +4.2% S125.31       +1.4% S389.1       -                 
-   (16, 9)    162082200    +10.4% S139.67       +9.9% S121.101     -                    +9.2% S125.91       +6.4% S557.1        +9.7% S169.37    
-   ( 7,10)      1117200     +0.6% P131.1        +1.1% P59.11       -                   -                   -                   -                 
-   ( 8,10)      3901080     +2.6% S83.7        -                   -                   -                   -                   -                 
-   (10,10)     30070560     +7.5% S81.61        +8.1% P181.11      -                    +0.7% P125.31       +2.0% S313.1       -                 
+   cell      current N  evals  conj k=3            conj k=5            conj k=7            Frobenius k=3       conj k=2            Z6                
+   ( 8, 7)        21672 1.0e+08 -                   -                   -                   -                   -                   -                 
+   ( 7, 8)        47880 1.0e+08  +0.0% S19.7        -                   -                   -                   -                   -                 
+   ( 8, 8)       119952 1.0e+08 -                   -                   -                   -                   -                   -                 
+   ( 9, 8)       255528 1.0e+08 +10.1% P31.19       -                   -                    +2.5% S64.1        -                   -                 
+   (10, 8)       588241 5.4e+07 -                   -                   -                   -                   -                   -                 
+   (11, 8)      1123471 2.8e+07 -                    +0.5% P59.11       -                   -                   -                   -                 
+   (13, 8)      3302208 9.7e+06  +6.3% P61.31       -                   -                    +3.1% S64.13        +0.2% S149.1        +4.5% P81.13     
+   ( 7, 9)       231420 6.9e+07 -                   -                   -                   -                   -                   -                 
+   ( 8, 9)       658008 2.4e+07  +6.9% S89.1        -                   -                   -                   -                   -                 
+   (10, 9)      4001928 4.0e+06  +0.0% S83.7        -                   -                   -                   -                   -                 
+   (11, 9)      8396040 1.9e+06  +8.7% S89.13       +10.3% S61.41       -                   -                   -                   -                 
+   (13, 9)     31936200 1.5e+05  +5.9% S103.31      -                   -                   -                   -                   -                 
+   (14, 9)     58034328 8.3e+04  +5.2% S97.67       -                   -                    +4.2% S125.31       +1.4% S389.1       -                 
+   (16, 9)    162082200 3.0e+04  +6.4% S557.1        +1.1% S139.61      -                   -                    +1.4% S233.13       +4.2% S289.7     
+   ( 7,10)      1117200 2.9e+07  +0.6% P131.1        +1.1% P59.11       -                   -                   -                   -                 
+   ( 8,10)      3901080 8.2e+06  +7.3% P61.37       -                   -                   -                   -                   -                 
+   (10,10)     30070560 3.2e+05  +6.0% S101.31       +7.5% S81.61       -                    +0.7% P125.31       +0.0% S311.1        +4.2% P169.13    
    (entries: gain in ln N over the current order, and the group: S/P q.n = SL/PSL(2,q) x Z_n)

@@ -102,8 +102,12 @@ if __name__ == '__main__':
     xr = np.array([r['mu'] for r in sol]); res3 = y - np.log([cap_rule(v) for v in xr])
     print('  for contrast, the rule applied to plain mu (no clumping): mean %+.2f, sd %.2f' % (res3.mean(), res3.std()))
     uns = [r for r in runs if r['best'] > 0]
-    print('  unsolved runs: %d; of these, %d used fewer evals than the rule says mu_alpha needs (consistent), %d used more:' % (
-        len(uns), sum(r['evals'] < cap_rule(r['mua_g']) for r in uns), sum(r['evals'] >= cap_rule(r['mua_g']) for r in uns)))
+    rat = sorted(r['evals'] / cap_rule(r['mua_g']) for r in uns)
+    over = [x for x in rat if x >= 1]
+    print('  unsolved runs: %d; %d stopped before the rule\'s typical effort, %d ran longer, by factors %.1f-%.0f (median %.1f),' % (
+        len(uns), len(rat) - len(over), len(over), min(over), max(over), over[len(over) // 2]))
+    print('  i.e. %.1f-%.1f residual sd beyond it (the failed runs are the edge of each ladder, so they lean hard).' % (
+        math.log(min(over)) / sd, math.log(max(over)) / sd))
     for r in sorted(uns, key=lambda r: r['evals'] / cap_rule(r['mua_g'])):
         print('     (%2d,%2d) %-30s mu %5.1f  mu_a %5.1f  best %3d  evals %.2g  rule %.2g' % (
             r['d'], r['D'], r['spec'][:30], r['mu'], r['mua_g'], r['best'], r['evals'], cap_rule(r['mua_g'])))

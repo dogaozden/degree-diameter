@@ -163,11 +163,13 @@ if __name__ == '__main__':
     print('  ', wins)
 
     # ---- reach: largest order each symmetry type should solve with a fixed effort ----
-    BUDGET = 1e6
-    print('\n== reach with <= %.0e evals (effort law), groups with N in [N_best, 1.3 N_best] ==' % BUDGET)
-    print('feasible = predicted evals <= budget AND mu_A <= ln(#symmetric S) - 3 (first moment: valid S should exist);')
+    HOURS = 4.0
+    def budget(N, D):   # DATA_CHECK §3 machine constant: one evaluation ~ c N b seconds (b = 2 sides for odd D)
+        return min(1e8, HOURS * 3600 / ((1.5e-9 if N >= 1e7 else 4.5e-10) * N * (2 if D % 2 else 1)))
+    print('\n== reach with %.0f core-hours per cell (evals = 4 h / (c N b), DATA_CHECK §3), N in [N_best, 1.3 N_best] ==' % HOURS)
+    print('feasible = predicted evals <= budget AND mu_A <= ln(#symmetric S) - 1 (first moment: e valid S expected);')
     print('#S ~ (N/k)^m |Fix|^(f-1) / m!, m = number of free orbits. Gain is over the current best (orbit k = 3) order.')
-    print('   cell      current N    ' + '  '.join('%-18s' % t for t in ('conj k=3', 'conj k=5', 'conj k=7', 'Frobenius k=3', 'conj k=2', 'Z6')))
+    print('   cell      current N  evals  ' + '  '.join('%-18s' % t for t in ('conj k=3', 'conj k=5', 'conj k=7', 'Frobenius k=3', 'conj k=2', 'Z6')))
     reach_tab = {}
     for (d, D), Nb in sorted(CELLS.items(), key=lambda t: (t[0][1], t[0][0])):
         fams = ('sl',) if D % 2 else ('sl', 'psl')
@@ -182,7 +184,7 @@ if __name__ == '__main__':
                 F = cl[0][0] + 1
                 lnS = m * math.log(N / kk) + max(f - 1, 0) * math.log(F) - math.lgamma(m + 1)
                 ev = 1e5 * math.exp(min((muA - 13) / 2, 600))
-                if ev <= BUDGET and muA <= lnS - 3 and (name not in best or N > best[name][0]):
+                if ev <= budget(N, D) and muA <= lnS - 1 and (name not in best or N > best[name][0]):
                     best[name] = (N, fam, q, n, muA)
         key = {'conj k=3': 'conj k=3', 'conj k=5': 'conj k=5', 'conj k=7': 'conj k=7', 'Frobenius k=3': 'Frobenius k=3',
                'conj k=2': 'conj k=2', 'Frob2 x conj3 (Z6)': 'Z6'}
@@ -193,5 +195,5 @@ if __name__ == '__main__':
                 cells_out.append('%+5.1f%% %s%d.%d' % (100 * math.log(N / Nb), 'P' if fam == 'psl' else 'S', q, n))
             else: cells_out.append('-')
         reach_tab[(d, D)] = best
-        print('   (%2d,%2d)  %11d    ' % (d, D, Nb) + '  '.join('%-18s' % c for c in cells_out))
+        print('   (%2d,%2d)  %11d %7.1e ' % (d, D, Nb, budget(Nb, D)) + '  '.join('%-18s' % c for c in cells_out))
     print('   (entries: gain in ln N over the current order, and the group: S/P q.n = SL/PSL(2,q) x Z_n)')
