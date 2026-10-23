@@ -15,7 +15,7 @@ PREV = {(7,8): 88920, (8,8): 225792, (8,7): 41040, (7,9): 416640, (9,8): 497904,
         (14,9): 111482880, (16,9): 316679760, (13,10): 636550992}
 best = {}
 valid, results = {}, {}
-for f in glob.glob(os.path.join(runs, '*.log')) + glob.glob(os.path.join(runs, '*.rebuild.txt')):
+for f in glob.glob(os.path.join(runs, '*.log')) + glob.glob(os.path.join(runs, '*.rebuild.txt')) + glob.glob(os.path.join(runs, '*.lowmem.txt')):
     txt = open(f).read()
     for v in re.finditer(r'^VALID d=(\d+) D=(\d+) group=(.+?) N=(\d+) vertices=(\d+)', txt, re.M):
         valid.setdefault((int(v.group(1)), int(v.group(2)), int(v.group(4)), v.group(3)), os.path.basename(f).split('.')[0])
