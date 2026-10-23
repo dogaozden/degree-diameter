@@ -1,0 +1,18 @@
+group sl 37 x Z_13, N=658008, identity 17316, H order 52, rows 12654, threads 1, setup 0.02s
+wide rows: HW order 247, rows 2664, setup 0.03s
+alpha: conj by mat(18,23,6,18) (index 25462), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 35 (+e); mu = 23.95, mu/k = 7.98, fixed-point misses ~ 2.39
+start cost=54
+t=30 steps=3607 evals=28857 cost=6 best=4 T=0.53
+t=60 steps=7374 evals=58993 cost=6 best=4 T=0.19
+t=90 steps=10697 evals=85577 cost=6 best=4 T=0.15
+t=120 steps=14076 evals=112609 cost=6 best=4 T=0.15
+t=150 steps=17981 evals=143849 cost=2 best=2 T=0.15
+t=180 steps=21744 evals=173953 cost=2 best=2 T=0.15
+t=210 steps=25280 evals=202241 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 37 x Z_13 N=658008 best=0 evals=223985 time=232.2 orbit k=3 m=2 f=2 fix=35
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outD/d8D9_sl_37_13_orb3_s1.txt
+n = 1316016 edges = 5264064 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 11b66e48280115fa33ecbb20b56007f4605b3ac95609ca19bb2f4c04ea6571eb
+VALID d=8 D=9 group=sl 37 x Z_13 N=658008 vertices=1316016
