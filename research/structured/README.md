@@ -70,7 +70,8 @@ haar_fast plus:
   `AMU=<u>`, `AHA=<a> AHB=<b>`. **f = 0** (k | d): S is m free orbits and nothing else, no identity; the solution is
   written as S·s₀⁻¹ (an isomorphic Haar graph, re-checked) so that its first generator is e. This is the right choice
   for Δ = 6, 9, 12, 15 with k = 3 (STRUCTURE.md §8).
-- `RANDORB=m` (with `ORBIT`): cost statistics of m random symmetric S, plus a histogram of cost/k (screening).
+- `RANDORB=m` (with `ORBIT`): cost statistics of m random symmetric S, plus a histogram of cost/k (screening). If a
+  sample has cost 0 and an output file other than /dev/null is given, it is checked and written like a search result.
 - `RESTART=1` (with `ORBIT`): a reheat starts from fresh random orbits instead of the best S found so far.
 - `ORBW=w` (with `ORBIT`): an uncovered α-fixed element weighs w in the energy instead of 1 (`ORBW=k`: every
   uncovered α-orbit, free or fixed, counts the same). The early abort stays exact.
@@ -93,7 +94,8 @@ python3 ../frontier/build_haar2.py sol.txt
 
 - `orb_screen.py d D LO HI "k m f"`: lists Q × Z_n in an order window (n with all prime factors ≡ 1 mod k, unless
   `--anyn`), runs RANDORB on each and ranks them by the lower tail of the cost. `--list` only lists the candidates
-  with μ (for groups too large to screen).
+  with μ (for groups too large to screen); `--save DIR` keeps any cost-0 sample (with a log and build_haar2.py's
+  verdict, orbq.sh names with seed tag `rand`).
 - `orbq.sh JOBFILE OUTDIR`: sequential job queue (`k m f [VAR=x ...] | d D secs seed K GROUP... n` per line; extra
   `VAR=x` such as `ORBW=5` go to haar_sym and into the tag, f = 0 runs are tagged `orb<k>f0`); every solution is
   re-checked with build_haar2.py (or the low-memory checkers above 20M vertices) and the verdict is appended to the log.

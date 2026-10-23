@@ -914,6 +914,23 @@ static long long fixmiss(uint64_t **sv) {
     }
     return m;
 }
+/* full diameter check of the current S; f = 0: normalise to S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A))
+ * so that the first generator is e, and check again; then write the solution file.  Returns 1 iff written. */
+static int check_and_write(ctx *c0, const char *out) {
+    int ok = WIDE ? full_check_w(c0) : full_check(c0);
+    printf("full diameter check: %s\n", ok ? "OK" : "FAIL");
+    if (!ok) return 0;
+    if (S[0] != ident) { int a0 = ginv(S[0]); for (int i = 0; i < d; i++) S[i] = gmul(S[i], a0);
+        for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+        int ok2 = WIDE ? full_check_w(c0) : full_check(c0); printf("full diameter check after normalising s_0 = e: %s\n", ok2 ? "OK" : "FAIL");
+        if (!ok2) return 0; }
+    FILE *f = fopen(out, "w");
+    if (!f) { perror(out); return 0; }
+    fprintf(f, "%d %d %s n %d N %d\n", d, D, Q->spec, ncyc, N);
+    for (int i = 0; i < d; i++) { char buf[1000]; desc_elem(S[i], buf); fprintf(f, "%s\n", buf); }
+    fclose(f); printf("wrote %s\n", out);
+    return 1;
+}
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
@@ -936,12 +953,14 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
-        int m = atoi(getenv("RANDORB")); long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
+        int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
             for (int u = 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
-            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0); sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
+            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
+            if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
+            sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
             if (getenv("LEVELS") && t < atoi(getenv("LEVELS"))) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld\n", v[t]); }
         }
         qsort(v, m, sizeof(long long), cmpll);
@@ -1027,22 +1046,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
     if (OVCLOCK > 0 || OMAXSTEPS) fprintf(stderr, "TRACE steps=%lld hash=%016llx best=%lld evals=%lld\n", steps, ohash, best, evals);
     printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, best, evals, now() - t0, OK_, OM, OF, NFIX);
-    if (best == 0) {
-        int ok = WIDE ? full_check_w(C[0]) : full_check(C[0]);
-        printf("full diameter check: %s\n", ok ? "OK" : "FAIL");
-        if (ok) {
-            /* f = 0: write S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A)) so that the first generator is e */
-            if (S[0] != ident) { int a0 = ginv(S[0]); for (int i = 0; i < d; i++) S[i] = gmul(S[i], a0);
-                for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
-                int ok2 = WIDE ? full_check_w(C[0]) : full_check(C[0]); printf("full diameter check after normalising s_0 = e: %s\n", ok2 ? "OK" : "FAIL");
-                if (!ok2) return 1; }
-            FILE *f = fopen(out, "w");
-            if (!f) { perror(out); return 1; }
-            fprintf(f, "%d %d %s n %d N %d\n", d, D, Q->spec, ncyc, N);
-            for (int i = 0; i < d; i++) { char buf[1000]; desc_elem(S[i], buf); fprintf(f, "%s\n", buf); }
-            fclose(f); printf("wrote %s\n", out);
-        }
-    }
+    if (best == 0 && !check_and_write(C[0], out)) return 1;
     return best == 0 ? 0 : 1;
 }
 int main(int argc, char **argv) {
