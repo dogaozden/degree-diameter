@@ -2,3 +2,11 @@ group pgl 13 x Z_21, N=45864, identity 0, H order 42, rows 1092, threads 1, setu
 start cost=68
 t=30 steps=71743 evals=573945 cost=8 best=6 T=0.53
 t=60 steps=140083 evals=1120665 cost=4 best=4 T=0.19
+t=90 steps=209073 evals=1672585 cost=4 best=4 T=0.15
+t=120 steps=279979 evals=2239833 cost=4 best=4 T=0.15
+t=150 steps=351273 evals=2810185 cost=4 best=4 T=0.15
+t=180 steps=422875 evals=3383001 cost=4 best=4 T=0.15
+t=210 steps=493059 evals=3944473 cost=4 best=4 T=0.92
+t=240 steps=564311 evals=4514489 cost=4 best=4 T=0.32
+t=270 steps=637172 evals=5097377 cost=4 best=4 T=0.15
+RESULT d=7 D=8 group=pgl 13 x Z_21 N=45864 best=4 evals=5677817 time=300.0
