@@ -1,0 +1,15 @@
+group psl 19 x Z_79, N=270180, identity 13509, H order 19, rows 14220, threads 1, setup 0.01s
+wide rows: HW order 237, rows 1140, setup 0.04s
+alpha: conj by mat(1,3,6,0) (index 234), z -> 23 z on Z_79
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 8 (+e); mu = 37.94, mu/k = 12.65, fixed-point misses ~ 0.47
+start cost=80
+t=30 steps=15817 evals=126537 cost=12 best=6 T=0.53
+t=60 steps=31016 evals=248129 cost=9 best=6 T=0.19
+t=90 steps=49130 evals=393041 cost=6 best=6 T=0.15
+RESULT d=9 D=8 group=psl 19 x Z_79 N=270180 best=0 evals=439785 time=99.2 orbit k=3 m=3 f=0 fix=8
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/o98b/d9D8_psl_19_79_orb3_s1.txt
+n = 540360 edges = 2431620 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = d672ae5a984812c7de12e552c526304a6dbde72508df3821202b198220ce294c
+VALID d=9 D=8 group=psl 19 x Z_79 N=270180 vertices=540360
