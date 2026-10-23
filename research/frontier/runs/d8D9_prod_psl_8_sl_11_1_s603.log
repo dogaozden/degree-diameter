@@ -2,3 +2,21 @@ group prod psl 8 poly x^3+x+1 sl 11 x Z_1, N=665280, identity 74030, H order 45,
 start cost=173
 t=30 steps=1645 evals=13161 cost=18 best=18 T=0.53
 t=60 steps=3577 evals=28617 cost=18 best=18 T=0.19
+t=90 steps=5386 evals=43089 cost=18 best=18 T=0.15
+t=120 steps=7216 evals=57729 cost=18 best=18 T=0.15
+t=150 steps=9093 evals=72745 cost=17 best=17 T=0.15
+t=180 steps=10896 evals=87169 cost=17 best=17 T=0.15
+t=210 steps=12608 evals=100865 cost=16 best=16 T=0.15
+t=240 steps=14507 evals=116057 cost=13 best=13 T=0.15
+t=270 steps=16340 evals=130721 cost=13 best=13 T=0.15
+t=300 steps=18158 evals=145265 cost=13 best=13 T=0.15
+t=330 steps=19997 evals=159977 cost=13 best=13 T=0.15
+t=360 steps=21863 evals=174905 cost=13 best=13 T=0.15
+t=390 steps=23721 evals=189769 cost=13 best=13 T=0.78
+t=420 steps=25618 evals=204945 cost=13 best=13 T=0.27
+t=450 steps=27474 evals=219793 cost=12 best=12 T=0.15
+t=480 steps=29386 evals=235089 cost=12 best=12 T=0.15
+t=510 steps=31324 evals=250593 cost=12 best=12 T=0.15
+t=540 steps=33234 evals=265873 cost=12 best=12 T=0.15
+t=570 steps=35109 evals=280873 cost=12 best=12 T=0.15
+RESULT d=8 D=9 group=prod psl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 best=12 evals=296369 time=600.0

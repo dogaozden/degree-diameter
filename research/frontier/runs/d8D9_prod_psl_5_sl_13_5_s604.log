@@ -2,3 +2,21 @@ group prod psl 5 sl 13 x Z_5, N=655200, identity 109980, H order 60, rows 10920,
 start cost=80
 t=30 steps=1902 evals=15217 cost=16 best=14 T=0.53
 t=60 steps=4041 evals=32329 cost=16 best=14 T=0.19
+t=90 steps=6062 evals=48497 cost=10 best=10 T=0.15
+t=120 steps=8121 evals=64969 cost=10 best=10 T=0.15
+t=150 steps=10282 evals=82257 cost=10 best=10 T=0.15
+t=180 steps=12368 evals=98945 cost=10 best=10 T=0.15
+t=210 steps=14305 evals=114441 cost=10 best=10 T=0.15
+t=240 steps=16443 evals=131545 cost=10 best=10 T=1.05
+t=270 steps=18545 evals=148361 cost=10 best=10 T=0.37
+t=300 steps=20479 evals=163833 cost=10 best=10 T=0.15
+t=330 steps=22587 evals=180697 cost=10 best=10 T=0.15
+t=360 steps=24751 evals=198009 cost=10 best=10 T=0.15
+t=390 steps=26899 evals=215193 cost=10 best=10 T=1.05
+t=420 steps=29104 evals=232833 cost=10 best=10 T=0.37
+t=450 steps=31327 evals=250617 cost=8 best=8 T=0.15
+t=480 steps=33486 evals=267889 cost=8 best=8 T=0.15
+t=510 steps=35705 evals=285641 cost=8 best=8 T=0.15
+t=540 steps=37908 evals=303265 cost=8 best=8 T=0.15
+t=570 steps=39980 evals=319841 cost=8 best=8 T=0.15
+RESULT d=8 D=9 group=prod psl 5 sl 13 x Z_5 N=655200 best=8 evals=337329 time=600.0
