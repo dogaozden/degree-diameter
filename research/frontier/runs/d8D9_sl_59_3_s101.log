@@ -1,0 +1,8 @@
+group sl 59 x Z_3, N=615960, identity 10266, H order 60, rows 10266, threads 1, setup 0.01s
+start cost=36
+t=30 steps=3549 evals=28393 cost=2 best=2 T=0.53
+t=60 steps=7128 evals=57025 cost=2 best=2 T=0.19
+t=90 steps=10833 evals=86665 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 59 x Z_3 N=615960 best=0 evals=96385 time=100.2
+full diameter check: OK
+wrote sols/d8D9_sl_59_3_s101.txt

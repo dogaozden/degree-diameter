@@ -90,3 +90,18 @@ the best-scoring fraction. Evidence at equal order (1 thread, same K):
 
 So simple groups alone (n = 1) and groups rich in involutions are bad; SL(2,q) (one involution) is good. But the
 score is not everything: A5 × A6 × Z5 (f2 = 7e-3) solved (8,8) at 108,000 in 48 s.
+
+**Random-S screening beats the score.** `RANDSAMPLE=m haar_gen3 d D 1 1 8 /dev/null GROUP n` prints quantiles of the
+cost of m random generator sets (no search; ~0.1–1 s per group at m = 300–1000). On (6,9) at 58,752 the p10 order
+(SL 42 < PSL 54 = csl 54 < PGL 68 < PSL(2,49) 83 < tpgl 151) is exactly the annealing order. `make_jobs3.py
+--screen m` ranks candidates by (p10 + median) / (N e^(−W/N)) (normalised so different orders compare) and
+`wave3/pick_top.py K` keeps the best K. The screen found the winners below: SL(2,7) × SL(2,9) for (6,10) and (9,8)
+(top-ranked at its order), SL(2,q) × small Z_n with large q for (7,10) and (8,9).
+
+**Products of two SL(2,q)** (no cyclic factor, perfect group, few small-order elements) are very strong:
+SL(2,7) × SL(2,9) = 241,920 solved (6,10) in 2.3 s and (9,8) in 9.8 s; SL(2,5) × SL(2,17) = 587,520 solved (8,9)
+in 1 s (761 evaluations).
+
+**Search knobs** (restart from random, faster reheat, secondary slack objective): no measurable gain on
+`6 9 … sl 17 12` (4 seeds × 45 s each: default 1/4 solved, RESTART=1 REHEAT=5 0/4, REHEAT=5 1/4). Near a wall
+the search sits on a cost-1 or cost-2 plateau; what helps is more groups and more seeds, not tuning.
