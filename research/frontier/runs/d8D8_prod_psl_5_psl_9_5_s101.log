@@ -1,0 +1,6 @@
+group prod psl 5 psl 9 poly x^2+1 x Z_5, N=108000, identity 18180, H order 60, rows 1800, threads 1, setup 0.00s
+start cost=38
+t=30 steps=33168 evals=265345 cost=2 best=1 T=0.53
+RESULT d=8 D=8 group=prod psl 5 psl 9 poly x^2+1 x Z_5 N=108000 best=0 evals=434153 time=48.5
+full diameter check: OK
+wrote sols/d8D8_prod_psl_5_psl_9_5_s101.txt

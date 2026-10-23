@@ -14,7 +14,9 @@ The groups are constructed here from their mathematical definitions (numpy), ind
   cyc                 trivial group
 and G = <group> x Z_n, except
   tpgl q              G = Z_n x| PGL(2,q): (m,z)(m',z') = (m m', z + chi(m) z'), chi(m) = +1 if det(m) is a square in
-                      GF(q), else -1 (well defined on PGL since scalars change det by squares).  Element order (for the edge list) = sorted canonical tuples, then z; for the old families this
+                      GF(q), else -1 (well defined on PGL since scalars change det by squares).
+  csl q               G = (SL(2,q) x Z_n) / <(-I, n/2)> (central product, n even); element [X, z] with X the
+                      lexicographically smaller of +-X, [-X, z] = [X, z + n/2].  Element order (for the edge list) = sorted canonical tuples, then z; for the old families this
 is the same order as build_haar.py, so the edge list (and its sha256) is identical to build_haar.py's.
 Haar graph: vertices (g,A) -> idx(g), (g,B) -> N + idx(g); edges (g,A) ~ (s g, B), s in S.  Right multiplication by G is
 an automorphism group transitive on each side, so two BFS (from (e,A) and (e,B)) give the exact diameter.
@@ -118,6 +120,13 @@ class Group:
     def chi(self, s):
         return 1
 
+    def lmul2(self, s, g):
+        """(index of s*g, extra shift of the Z_n coordinate) -- the shift is 0 except for csl"""
+        return self.lmul(s, g), 0
+
+    def parse2(self, desc):
+        return self.parse(desc), 0
+
 
 class Meta(Group):
     def __init__(self, m, k, r):
@@ -158,6 +167,7 @@ class Matrix(Group):
         self.ident = self.index(self.canon_key(np.array([1]), np.array([0]), np.array([0]), np.array([1])))[0]
         self.spec = f"{kind} {q}" + (f" poly {poly}" if poly else "")
         self.twist = False
+        self.csl = False
 
     def chi(self, s):
         if not self.twist:
@@ -200,6 +210,29 @@ class Matrix(Group):
         nc = A[M[sc, a], M[sd, c]]
         nd = A[M[sc, b], M[sd, d]]
         return self.index(self.canon_key(na, nb, nc, nd))
+
+    def lmul2(self, s, g):
+        if not self.csl:
+            return self.lmul(s, g), 0
+        q, F, A, M = self.q, self.F, self.F.add, self.F.mul
+        sa, sb, sc, sd = (int(x[0]) for x in self.entries(np.array([s])))
+        a, b, c, d = self.entries(g)
+        na = A[M[sa, a], M[sb, c]]
+        nb = A[M[sa, b], M[sb, d]]
+        nc = A[M[sc, a], M[sd, c]]
+        nd = A[M[sc, b], M[sd, d]]
+        actual = ((na * q + nb) * q + nc) * q + nd
+        canon = self.canon_key(na, nb, nc, nd)          # min over +-X
+        return self.index(canon), np.where(actual != canon, self.n // 2, 0)
+
+    def parse2(self, desc):
+        idx = self.parse(desc)
+        if not self.csl:
+            return idx, 0
+        vals = [int(t) for t in re.fullmatch(r"mat\(([^)]*)\)", desc).group(1).split(",")]
+        q = self.q
+        actual = ((vals[0] * q + vals[1]) * q + vals[2]) * q + vals[3]
+        return idx, (self.n // 2 if actual != int(self.keys[idx]) else 0)
 
     def parse(self, desc):
         vals = [int(t) for t in re.fullmatch(r"mat\(([^)]*)\)", desc).group(1).split(",")]
@@ -267,6 +300,17 @@ def parse_group(tok, i):
     t = tok[i]
     if t == "meta":
         return Meta(int(tok[i + 1]), int(tok[i + 2]), int(tok[i + 3])), i + 4
+    if t == "csl":
+        assert i == 0, "csl only as the whole group"
+        q = int(tok[i + 1])
+        assert q % 2, "csl needs q odd"
+        poly, j = None, i + 2
+        if j < len(tok) and tok[j] == "poly":
+            poly, j = tok[j + 1], j + 2
+        g = Matrix("psl", q, poly)
+        g.csl = True
+        g.spec = "c" + g.spec[1:]
+        return g, j
     if t == "tpgl":
         assert i == 0, "tpgl only as the whole group"
         q = int(tok[i + 1])
@@ -305,6 +349,9 @@ def main():
     assert j == ni - 2, "trailing tokens in the group spec"
     n = int(head[ni + 1])
     N = Q.order * n
+    if getattr(Q, "csl", False):
+        assert n % 2 == 0, "csl needs n even"
+        Q.n = n
     if "N" in head[ni:]:
         assert int(head[head.index("N", ni) + 1]) == N, "declared N does not match the group order"
     S = []
@@ -313,16 +360,19 @@ def main():
         m = re.fullmatch(r"(.*?)\s*z=(\d+)", body.strip())
         desc, z = m.group(1), int(m.group(2))
         assert 0 <= z < n
-        S.append(Q.parse(desc) * n + z)
+        qidx, zs = Q.parse2(desc)
+        S.append(qidx * n + (z + zs) % n)
     assert len(S) == d and len(set(S)) == d, "generators must be d distinct elements"
     # permutations g -> s g of G = Q x Z_n, element index qi * n + z
     qi = np.arange(Q.order)
     perms = []
     for s in S:
         sq, sz = divmod(s, n)
-        qp = np.asarray(Q.lmul(sq, qi), dtype=np.int64)
+        qp, zshift = Q.lmul2(sq, qi)
+        qp = np.asarray(qp, dtype=np.int64)
+        zshift = np.broadcast_to(np.asarray(zshift, dtype=np.int64), qp.shape)
         assert len(np.unique(qp)) == Q.order, "left multiplication is not a permutation"
-        perm = (qp[:, None] * n + (Q.chi(sq) * np.arange(n)[None, :] + sz) % n).ravel()
+        perm = (qp[:, None] * n + (Q.chi(sq) * np.arange(n)[None, :] + sz + zshift[:, None]) % n).ravel()
         perms.append(perm)
     perms = np.array(perms)                                   # d x N
     inv = np.empty_like(perms)

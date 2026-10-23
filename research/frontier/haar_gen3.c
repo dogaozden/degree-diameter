@@ -113,6 +113,7 @@ typedef struct grp {
     int type, order, ident;
     int m, k; int64_t *R;                 /* meta */
     field *F; uint16_t *EL; int *IDXK;    /* matrix groups: EL[4*i..], IDXK[key] -> index */
+    uint8_t *IDXS;                        /* psl: 1 if the key is the negative of the stored representative */
     struct grp *g1, *g2;                  /* prod */
     char spec[400];
 } grp;
@@ -170,6 +171,7 @@ static void build_matrix(grp *G) {
     long long nkeys = (long long)q * q * q + (long long)q * q;
     G->IDXK = malloc(sizeof(int) * nkeys); for (long long i = 0; i < nkeys; i++) G->IDXK[i] = -1;
     long long cap = (long long)q * q * q;   /* >= |G| */
+    G->IDXS = calloc(nkeys, 1);
     G->EL = malloc(8 * cap); int n = 0;
     if (G->type == G_PGL) {
         for (int b = 0; b < q; b++) for (int c = 0; c < q; c++) for (int dd = 0; dd < q; dd++) {
@@ -190,14 +192,14 @@ static void build_matrix(grp *G) {
             if (G->IDXK[key] >= 0) continue;
             uint16_t *E = G->EL + 4 * (size_t)n; E[0] = a; E[1] = b; E[2] = c; E[3] = dd;
             G->IDXK[key] = n;
-            if (G->type == G_PSL) G->IDXK[mkey(G, F->neg[a], F->neg[b], F->neg[c], F->neg[dd])] = n;
+            if (G->type == G_PSL) { int k2 = mkey(G, F->neg[a], F->neg[b], F->neg[c], F->neg[dd]); G->IDXK[k2] = n; G->IDXS[k2] = 1; }
             n++;
         }
     }
     G->order = n;
     G->ident = G->IDXK[mkey(G, 1, 0, 0, 1)];
 }
-static int TWIST = 0, top_level = 0;    /* tpgl q: G = Z_n x| PGL(2,q), non-square determinant inverts Z_n */
+static int TWIST = 0, CSL = 0, top_level = 0;   /* csl q: (SL(2,q) x Z_n)/<(-I, n/2)>, n even */    /* tpgl q: G = Z_n x| PGL(2,q), non-square determinant inverts Z_n */
 static grp *parse_group(char **argv, int argc, int *a) {
     top_level++;
     if (*a >= argc) { fprintf(stderr, "bad group\n"); exit(2); }
@@ -208,8 +210,9 @@ static grp *parse_group(char **argv, int argc, int *a) {
         for (int j = 1; j < G->k; j++) G->R[j] = G->R[j - 1] * r % G->m;
         if (G->R[G->k - 1] * r % G->m != 1 % G->m) { fprintf(stderr, "r^k != 1\n"); exit(2); }
         G->order = G->m * G->k; G->ident = 0; snprintf(G->spec, sizeof G->spec, "meta %d %d %lld", G->m, G->k, r);
-    } else if (!strcmp(t, "sl") || !strcmp(t, "psl") || !strcmp(t, "pgl") || !strcmp(t, "tpgl")) {
-        G->type = !strcmp(t, "sl") ? G_SL : !strcmp(t, "psl") ? G_PSL : G_PGL;
+    } else if (!strcmp(t, "sl") || !strcmp(t, "psl") || !strcmp(t, "pgl") || !strcmp(t, "tpgl") || !strcmp(t, "csl")) {
+        G->type = !strcmp(t, "sl") ? G_SL : (!strcmp(t, "psl") || !strcmp(t, "csl")) ? G_PSL : G_PGL;
+        if (!strcmp(t, "csl")) { if (top_level != 1) { fprintf(stderr, "csl only as the whole group (not inside prod)\n"); exit(2); } CSL = 1; }
         if (!strcmp(t, "tpgl")) { if (top_level != 1) { fprintf(stderr, "tpgl only as the whole group (not inside prod)\n"); exit(2); } TWIST = 1; }
         int q = atoi(argv[*a + 1]); *a += 2; G->F = make_field(q);
         if (G->type == G_PSL && G->F->p == 2) G->type = G_SL;     /* PSL = SL in characteristic 2 */
@@ -228,17 +231,27 @@ static grp *parse_group(char **argv, int argc, int *a) {
     } else if (!strcmp(t, "cyc")) { G->type = G_TRIV; G->order = 1; G->ident = 0; *a += 1; snprintf(G->spec, sizeof G->spec, "cyc"); }
     else { fprintf(stderr, "bad group %s\n", t); exit(2); }
     if (G->type == G_PGL && TWIST && G->F->p == 2) { fprintf(stderr, "tpgl needs q odd\n"); exit(2); }
+    if (CSL && G->type != G_PSL) { fprintf(stderr, "csl needs q odd\n"); exit(2); }
     return G;
 }
 
 /* ---------------- G = Q x Z_n ---------------- */
 static grp *Q; static int ncyc, N, ident;
 static int8_t *CHI;                /* twist: CHI[q] = +1 or -1 (all +1 for direct products) */
+static inline int csl_key(int x, int y) {   /* key of the product of the stored representatives */
+    const field *F = Q->F; const uint16_t *A = Q->EL + 4 * (size_t)x, *B = Q->EL + 4 * (size_t)y;
+    int a = FADD(F, FMUL(F, A[0], B[0]), FMUL(F, A[1], B[2])), b = FADD(F, FMUL(F, A[0], B[1]), FMUL(F, A[1], B[3]));
+    int c = FADD(F, FMUL(F, A[2], B[0]), FMUL(F, A[3], B[2])), dd = FADD(F, FMUL(F, A[2], B[1]), FMUL(F, A[3], B[3]));
+    return mkey(Q, a, b, c, dd);
+}
 static inline int gmul(int x, int y) {
     int xq = x / ncyc, yz = y % ncyc; if (CHI[xq] < 0) yz = (ncyc - yz) % ncyc;
+    if (CSL) { int key = csl_key(xq, y / ncyc); return Q->IDXK[key] * ncyc + (x % ncyc + yz + Q->IDXS[key] * (ncyc / 2)) % ncyc; }
     return qmul(Q, xq, y / ncyc) * ncyc + (x % ncyc + yz) % ncyc; }
 static inline int ginv(int x) {
     int xq = x / ncyc, z = (ncyc - x % ncyc) % ncyc; if (CHI[xq] < 0) z = (ncyc - z) % ncyc;
+    if (CSL) { const uint16_t *A = Q->EL + 4 * (size_t)xq; const field *F = Q->F;
+        int key = mkey(Q, A[3], F->neg[A[1]], F->neg[A[2]], A[0]); return Q->IDXK[key] * ncyc + (z + Q->IDXS[key] * (ncyc / 2)) % ncyc; }
     return qinv(Q, xq) * ncyc + z; }
 
 /* cosets of H = <h> */
@@ -257,6 +270,7 @@ static inline unsigned long long rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^
 static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 
 static int *REPQ, *REPZ;          /* REP split into (Q index, z) */
+static uint8_t *zero_s;           /* all-zero sign table (non-csl groups) */
 #define EMIT(g) do { int ps_ = POS[g], r2_ = ps_ >> 6, j_ = ps_ & 63; \
     tf[r] = ((uint32_t)r2_ << 6) | (uint32_t)j_; ti[r2_] = ((uint32_t)r << 6) | (uint32_t)(j_ ? nH - j_ : 0); } while (0)
 static void make_tables(int x, uint32_t *tf, uint32_t *ti) {
@@ -266,7 +280,8 @@ static void make_tables(int x, uint32_t *tf, uint32_t *ti) {
         const field *F = Q->F; const int q = F->q;
         const uint16_t *A = Q->EL + 4 * (size_t)xq, *EL = Q->EL, *AD = F->add, *IV = F->inv;
         const uint16_t *M0 = F->mul + A[0] * q, *M1 = F->mul + A[1] * q, *M2 = F->mul + A[2] * q, *M3 = F->mul + A[3] * q;
-        const int *IDXK = Q->IDXK, pgl = Q->type == G_PGL, prime = F->k == 1;
+        const int *IDXK = Q->IDXK, pgl = Q->type == G_PGL, prime = F->k == 1, half = CSL ? ncyc / 2 : 0;
+        const uint8_t *IDXS = CSL ? Q->IDXS : zero_s;
         for (int r = 0; r < R; r++) {
             const uint16_t *B = EL + 4 * (size_t)REPQ[r];
             int a, b, c, dd;
@@ -283,7 +298,7 @@ static void make_tables(int x, uint32_t *tf, uint32_t *ti) {
                 else { const uint16_t *Mi = F->mul + IV[b] * q; key = q * q * q + Mi[c] * q + Mi[dd]; }
             } else key = a ? ((a - 1) * q + b) * q + c : (q - 1) * q * q + (b - 1) * q + dd;
             int rz = neg && REPZ[r] ? ncyc - REPZ[r] : REPZ[r];
-            int z = xz + rz; z -= z >= ncyc ? ncyc : 0;
+            int z = xz + rz + (IDXS[key] ? half : 0); z -= z >= ncyc ? ncyc : 0; z -= z >= ncyc ? ncyc : 0;
             EMIT(IDXK[key] * ncyc + z);
         }
         return;
@@ -431,6 +446,8 @@ int main(int argc, char **argv) {
     if (NN > (1LL << 30)) { fprintf(stderr, "group too large\n"); return 2; }
     N = (int)NN; ident = Q->ident * ncyc;
     CHI = malloc(Q->order); memset(CHI, 1, Q->order);
+    if (CSL && ncyc % 2) { fprintf(stderr, "csl needs n even\n"); return 2; }
+    if (Q->type == G_SL || Q->type == G_PSL || Q->type == G_PGL) { long long nk = (long long)Q->F->q * Q->F->q * Q->F->q + (long long)Q->F->q * Q->F->q; zero_s = calloc(nk, 1); }
     if (TWIST) {   /* sign of PGL(2,q) element = quadratic character of det (well defined up to scalars) */
         const field *F = Q->F; int q = F->q; char *sq = calloc(q, 1);
         for (int v = 1; v < q; v++) sq[FMUL(F, v, v)] = 1;
@@ -444,6 +461,8 @@ int main(int argc, char **argv) {
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;
     double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
     int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70;
+    int RESTART = getenv("RESTART") ? atoi(getenv("RESTART")) : 0;   /* 1: a reheat starts from a fresh random S */
+    long long REHEATSTEPS = getenv("REHEATSTEPS") ? atoll(getenv("REHEATSTEPS")) : 400;
     int prof = getenv("PROFILE") ? atoi(getenv("PROFILE")) : 0;
 #ifdef _OPENMP
     omp_set_num_threads(nth);
@@ -501,7 +520,7 @@ int main(int argc, char **argv) {
     double SEC = getenv("SEC") ? atof(getenv("SEC")) : 0.0, csec;
     long long c = cost_with(C[0], TF, TI, &csec), best = c; double cE = c + SEC * csec; memcpy(bestS, S, sizeof S); collect(C[0]);
     double t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
-    double tgen = 0, tev = 0, tacc = 0;
+    double tgen = 0, tev = 0, tacc = 0; int nrestart = 0; long long runbest = c;
     fprintf(stderr, "start cost=%lld\n", c);
     int xs[256]; long long cs[256]; double ce[256]; if (K > 256) K = 256;
     while (!stop_flag && now() - t0 < secs && best > 0) {
@@ -534,15 +553,18 @@ int main(int argc, char **argv) {
         }
         steps++;
         if (c < best) { best = c; memcpy(bestS, S, sizeof S); lastimp = now(); lastimpstep = steps; }
+        if (RESTART && c < runbest) { runbest = c; lastimp = now(); lastimpstep = steps; }
         T = TMAX * pow(0.5, (now() - lastheat) / COOL); if (T < TMIN) T = TMIN;
-        if (now() - lastimp > REHEAT && steps - lastimpstep > 400) {
+        if (now() - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
             lastheat = now(); T = TMAX; memcpy(S, bestS, sizeof S);
+            if (RESTART) { nrestart++; for (int j = 1; j < d; j++) { int x; do x = rnd() % N; while (x == ident || used(x, j)); S[j] = x; } }
             for (int j = 0; j < d; j++) { SI[j] = ginv(S[j]); make_tables(S[j], TF[j], TI[j]); }
-            c = cost_with(C[0], TF, TI, &csec); cE = c + SEC * csec; collect(C[0]); lastimp = now();
+            c = cost_with(C[0], TF, TI, &csec); cE = c + SEC * csec; collect(C[0]); lastimp = now(); lastimpstep = steps; runbest = c;
         }
         double td = now(); tgen += tb - ta; tev += tc - tb; tacc += td - tc;
         if (now() - lastprint > 30) {
-            fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f\n", now() - t0, steps, evals, c, best, T);
+            fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f%s\n", now() - t0, steps, evals, c, best, T, RESTART ? " (restarts)" : "");
+            if (RESTART) fprintf(stderr, "  restarts=%d\n", nrestart);
             if (prof) fprintf(stderr, "  profile: gen %.2fs eval %.2fs (%.3f ms/eval) accept/collect %.2fs\n", tgen, tev, 1e3 * tev / (evals - 1) * nth, tacc);
             lastprint = now();
         }

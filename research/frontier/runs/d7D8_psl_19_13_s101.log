@@ -1,0 +1,9 @@
+group psl 19 x Z_13, N=44460, identity 2223, H order 39, rows 1140, threads 1, setup 0.00s
+start cost=46
+t=30 steps=71934 evals=575473 cost=1 best=1 T=0.53
+t=60 steps=143585 evals=1148681 cost=1 best=1 T=0.19
+t=90 steps=215721 evals=1725769 cost=1 best=1 T=0.15
+t=120 steps=286367 evals=2290937 cost=1 best=1 T=0.15
+t=150 steps=358762 evals=2870097 cost=1 best=1 T=0.15
+t=180 steps=428061 evals=3424489 cost=9 best=1 T=1.29
+RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=1 evals=3424489 time=180.0
