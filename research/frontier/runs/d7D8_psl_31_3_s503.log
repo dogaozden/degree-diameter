@@ -1,2 +1,12 @@
 group psl 31 x Z_3, N=44640, identity 1395, H order 48, rows 930, threads 1, setup 0.00s
 start cost=95
+t=30 steps=103195 evals=825561 cost=5 best=2 T=0.53
+t=60 steps=205110 evals=1640881 cost=4 best=2 T=0.19
+t=90 steps=311078 evals=2488625 cost=4 best=2 T=0.15
+t=120 steps=413012 evals=3304097 cost=4 best=2 T=0.15
+t=150 steps=517062 evals=4136497 cost=4 best=2 T=0.15
+t=180 steps=619243 evals=4953945 cost=6 best=2 T=0.58
+t=210 steps=722882 evals=5783057 cost=3 best=2 T=0.20
+t=240 steps=828552 evals=6628417 cost=3 best=2 T=0.15
+t=270 steps=931303 evals=7450425 cost=3 best=2 T=0.15
+RESULT d=7 D=8 group=psl 31 x Z_3 N=44640 best=2 evals=8261161 time=300.0
