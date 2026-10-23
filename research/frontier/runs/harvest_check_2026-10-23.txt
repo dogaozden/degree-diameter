@@ -432,3 +432,21 @@ BFS from A: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11
 BFS from B: ecc=9 reached 16792080 of 16792080 (unreached 0); level sizes [1, 11, 110, 1097, 10940, 108528, 1020294, 6011396, 7364695, 2275008]
 every vertex has exactly 11 distinct neighbours: True
 RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16792080 (12s)
+== d10D10_psl_389_1_orb3_s1 (origin/claude/structured-haar-search-ws7bet, 14:12 PT)
+machine: nproc=4, mem total=15G used=0G free=14G
+== build_haar2.py research/frontier/sols/d10D10_psl_389_1_orb3_s1.txt /tmp/e.txt
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 58863480 edges = 294317400 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = f35636b4a8a3b7eed9818a2e1c5db97e1b68c4d115cd9f699c65de937ba44f80
+VALID d=10 D=10 group=psl 389 x Z_1 N=29431740 vertices=58863480
+== check_haar_indep.py research/frontier/sols/d10D10_psl_389_1_orb3_s1.txt
+file research/frontier/sols/d10D10_psl_389_1_orb3_s1.txt
+header: d=10 D=10 spec=psl 389 NCYC=1 N=29431740
+group order |G|=29431740 (factors [29431740]), x Z_1 -> 29431740; vertices 2N=58863480
+distinct generators (as full group elements): 10 of d=10
+permutations built (456s)
+BFS from A: ecc=10 reached 58863480 of 58863480 (unreached 0); level sizes [1, 10, 90, 810, 7284, 65427, 582191, 4822347, 23047827, 24543146, 5794347]
+BFS from B: ecc=10 reached 58863480 of 58863480 (unreached 0); level sizes [1, 10, 90, 810, 7284, 65427, 582195, 4822347, 23046341, 24543146, 5795829]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=10 eccA=10 eccB=10 n=58863480 (481s)
