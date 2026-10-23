@@ -2,3 +2,7 @@ group pgl 139 x Z_1, N=2685480, identity 19182
 start cost=7
 t=31 steps=4 evals=33 cost=1 best=1 T=0.52
 t=64 steps=9 evals=73 cost=1 best=1 T=0.16
+t=102 steps=14 evals=113 cost=0 best=0 T=0.15
+RESULT d=13 D=8 group=pgl 139 x Z_1 N=2685480 best=0 evals=113 time=105.3
+full diameter check: OK
+wrote sols/d13D8_pgl_139_1_s1.txt
