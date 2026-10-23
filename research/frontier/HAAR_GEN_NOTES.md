@@ -62,8 +62,31 @@ Time to solution, same jobs (K = 8, seconds):
   New orders: PSL(2,q) for q = 8, 9, 16, 25, 27, 32, 49, 64, 81, 121, 125, 128, 169, 243, 256 … (PSL(2,49) = 58,800,
   PSL(2,64) = 262,080, PSL(2,81) = 265,680, PSL(2,121) = 885,720, PSL(2,125) = 976,500, PSL(2,128) = 2,097,024).
 - `agl1 q` — affine group x ↦ ax + b over GF(q), order q(q−1).
-- `prod G1 G2` — direct products, nestable, e.g. `prod psl 7 psl 11` (110,880), `prod psl 8 psl 13`.
+- `prod G1 G2` — direct products, nestable, e.g. `prod psl 7 psl 11` (110,880), `prod psl 5 psl 9` (21,600 = A5 × A6).
+- `tpgl q` — twisted Z_n ⋊ PGL(2,q): (m,z)(m',z') = (mm', z + χ(m)z'), χ = quadratic character of det. Only as the
+  whole group. **Bad** (see below): every involution of PGL∖PSL gives n involutions.
+- `csl q` — central product (SL(2,q) × Z_n)/⟨(−I, n/2)⟩, n even. For n ≡ 2 mod 4 it is ≅ SL(2,q) × Z_{n/2}; for
+  4 | n it has many involutions. Kept for completeness; no advantage seen.
 
 Checker: `build_haar2.py` rebuilds every family from its definition (brute-force matrix enumeration over GF(q) with
 the field built from the polynomial in the spec and checked irreducible), and was run on a solution of every new
 family (psl 27, pgl 16, agl1 49, prod psl 4 psl 7, sl 9, psl 8, psl 25, prod meta psl 9, psl 9, agl1 32): all VALID.
+
+## 3. What makes a group good (observations, this session)
+
+Short cycles: if s_i⁻¹s_j has order k, every vertex lies on a 2k-cycle, which wastes words of length ≥ k. So the
+density f_k of elements of order k (k = 2..6) should matter. `wave3/group_score.py` computes f_k exactly for
+SL/PSL/PGL(2,q) × Z_n and products (class formulas) and a score Σ f_k/(d−1)^(k−2); `make_jobs3.py --best F` keeps
+the best-scoring fraction. Evidence at equal order (1 thread, same K):
+
+| cell, N | group | f2 | result |
+|---|---|---|---|
+| (6,9), 58,752 | SL(2,17) × Z12 | 5e-5 | solved 0.4 s (seed 101); best 2 in 60 s (seeds 1, 2) |
+| | PSL(2,17) × Z24 | 5e-3 | best 6 (180 s) |
+| | PGL(2,17) × Z12 | 1e-2 | best 7 (180 s) |
+| | csl 17 × Z24 | | best 5, 5 (60 s) |
+| | PSL(2,49) | 2e-2 | best 23 (180 s) |
+| | tpgl 17 × Z12 | 3e-2 | best 42, 37 (60 s) |
+
+So simple groups alone (n = 1) and groups rich in involutions are bad; SL(2,q) (one involution) is good. But the
+score is not everything: A5 × A6 × Z5 (f2 = 7e-3) solved (8,8) at 108,000 in 48 s.

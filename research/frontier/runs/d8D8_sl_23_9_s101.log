@@ -1,0 +1,9 @@
+group sl 23 x Z_9, N=109296, identity 4554, H order 46, rows 2376, threads 1, setup 0.00s
+start cost=22
+t=30 steps=36007 evals=288057 cost=3 best=1 T=0.53
+t=60 steps=72070 evals=576561 cost=1 best=1 T=0.19
+t=90 steps=107511 evals=860089 cost=1 best=1 T=0.15
+t=120 steps=143517 evals=1148137 cost=1 best=1 T=0.15
+RESULT d=8 D=8 group=sl 23 x Z_9 N=109296 best=0 evals=1276865 time=133.6
+full diameter check: OK
+wrote sols/d8D8_sl_23_9_s101.txt

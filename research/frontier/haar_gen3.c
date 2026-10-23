@@ -518,6 +518,16 @@ int main(int argc, char **argv) {
     for (int i = 1; i < d; i++) { int x; do x = rnd() % N; while (x == ident || used(x, i)); S[i] = x; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); make_tables(S[i], TF[i], TI[i]); }
     double SEC = getenv("SEC") ? atof(getenv("SEC")) : 0.0, csec;
+    if (getenv("RANDSAMPLE")) {   /* screening: cost statistics of random generator sets, no search */
+        int m = atoi(getenv("RANDSAMPLE")); double sc; long long *v = malloc(sizeof(long long) * m);
+        for (int t = 0; t < m; t++) {
+            for (int i = 1; i < d; i++) { int x; do x = rnd() % N; while (x == ident || used(x, i)); S[i] = x; make_tables(S[i], TF[i], TI[i]); }
+            v[t] = cost_with(C[0], TF, TI, &sc);
+        }
+        for (int a1 = 1; a1 < m; a1++) { long long key = v[a1]; int b1 = a1 - 1; while (b1 >= 0 && v[b1] > key) { v[b1 + 1] = v[b1]; b1--; } v[b1 + 1] = key; }
+        printf("RANDSAMPLE d=%d D=%d group=%s x Z_%d N=%d samples=%d min=%lld p1=%lld p10=%lld median=%lld\n", d, D, Q->spec, ncyc, N, m, v[0], v[m / 100], v[m / 10], v[m / 2]);
+        return 0;
+    }
     long long c = cost_with(C[0], TF, TI, &csec), best = c; double cE = c + SEC * csec; memcpy(bestS, S, sizeof S); collect(C[0]);
     double t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
     double tgen = 0, tev = 0, tacc = 0; int nrestart = 0; long long runbest = c;

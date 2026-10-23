@@ -8,7 +8,13 @@ Run with:  BIN=./haar_gen3 bash batch.sh JOBFILE
 --best F keeps the fraction F of candidates with the lowest small-order score (group_score.py: few involutions and
 elements of order 3..6 = few short cycles); --maxscore X drops candidates scoring above X.  Families group_score
 cannot rate (agl1, tpgl, csl) are kept only when --best/--maxscore are not given.
+--screen M (needs --bin, default ../haar_gen3): instead of the score, rank candidates by the cost of M random generator
+sets (haar_gen3 RANDSAMPLE mode: p10 + median of the uncovered count, lower is better; ~0.1-1 s per group) and keep
+the --best fraction.  On (6,9) at N = 58,752 the p10 order SL < PSL = csl < PGL < PSL(2,49) < tpgl matched the
+annealing results exactly.
 """
+import math
+import subprocess
 import argparse
 import os
 import sys
@@ -35,6 +41,7 @@ ap.add_argument("--fam", default="sl,psl,pgl,tpgl,csl,prod"); ap.add_argument("-
 ap.add_argument("--K", type=int, default=8); ap.add_argument("--seed0", type=int, default=1)
 ap.add_argument("--best", type=float, default=1.0); ap.add_argument("--maxscore", type=float, default=None)
 ap.add_argument("--show", action="store_true", help="print N, score and the job, for inspection")
+ap.add_argument("--screen", type=int, default=0); ap.add_argument("--bin", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "haar_gen3"))
 a = ap.parse_args()
 fams = set(a.fam.split(","))
 bases = []   # (order, spec)
@@ -45,7 +52,7 @@ for q in prime_powers(a.qmax):
     if "pgl" in fams and q % 2: bases.append((o, f"pgl {q}"))        # PGL = PSL for q even
     if "agl1" in fams: bases.append((q * (q - 1), f"agl1 {q}"))
     if "tpgl" in fams and q % 2: bases.append((o, f"tpgl {q}"))
-    if "csl" in fams and q % 2: bases.append((o // 2, f"csl {q}"))      # order |PSL| * n, n even
+    if "csl" in fams and q % 2: bases.append((o // 2, f"csl {q}"))      # order |PSL| * n, n = 0 mod 4 (n = 2 mod 4: = sl)
 if "prod" in fams:
     small = [(q * (q * q - 1) // (2 if q % 2 else 1), f"psl {q}") for q in prime_powers(64) if q >= 5]   # psl 4 = psl 5 = A5
     small += [(q * (q * q - 1), f"sl {q}") for q in prime_powers(32) if q % 2 and q >= 5]
@@ -56,13 +63,29 @@ cands = set()
 for o, spec in bases:
     if o > a.hi: continue
     for n in range(max(1, -(-a.lo // o)), a.hi // o + 1):
-        if n <= a.nmax and not (spec.startswith("csl") and n % 2): cands.add((o * n, spec, n))
+        if n <= a.nmax and not (spec.startswith("csl") and n % 4): cands.add((o * n, spec, n))
+def Wwords(d, D):   # binding word count, as in heuristic.py
+    if D % 2:
+        k = (D - 1) // 2
+        return 1 + sum(d * (d - 1) ** (2 * i - 1) for i in range(1, k + 1))
+    k = D // 2
+    return d * sum((d - 1) ** (2 * i) for i in range(k))
+Wd = Wwords(a.d, a.D)
 rated = []
 for N, spec, n in sorted(cands):
-    try:
-        sc = score(a.d, group_counts(spec.split(), n))[0]
-    except ValueError:
-        sc = None
+    if a.screen:
+        out = subprocess.run([a.bin, str(a.d), str(a.D), "1", "1", str(a.K), "/dev/null"] + spec.split() + [str(n)],
+                             capture_output=True, text=True, env=dict(os.environ, RANDSAMPLE=str(a.screen))).stdout
+        import re
+        m = re.search(r"p10=(\d+) median=(\d+)", out)
+        # normalise by the random-graph expectation N exp(-W/N) so that different orders compare
+        sc = (int(m.group(1)) + int(m.group(2))) / (N * math.exp(-Wd / N)) if m else None
+        print("# screen", N, spec, n, sc, file=sys.stderr, flush=True)
+    else:
+        try:
+            sc = score(a.d, group_counts(spec.split(), n))[0]
+        except ValueError:
+            sc = None
     rated.append((N, spec, n, sc))
 if a.best < 1.0 or a.maxscore is not None:
     rated = [r for r in rated if r[3] is not None]
@@ -74,5 +97,5 @@ if a.best < 1.0 or a.maxscore is not None:
 for N, spec, n, sc in rated:
     for s in range(a.seed0, a.seed0 + a.seeds):
         if a.show:
-            print(N, "%.2e" % sc if sc is not None else "-", end=" | ")
+            print(N, "%.3g" % sc if sc is not None else "-", end=" | ")
         print(a.d, a.D, a.secs, s, a.K, spec, n)
