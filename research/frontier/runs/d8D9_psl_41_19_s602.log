@@ -1,3 +1,22 @@
 group psl 41 x Z_19, N=654360, identity 15580, H order 57, rows 11480, threads 1, setup 0.02s
 start cost=82
 t=30 steps=2009 evals=16073 cost=23 best=23 T=0.53
+t=60 steps=3951 evals=31609 cost=19 best=19 T=0.19
+t=90 steps=5831 evals=46649 cost=19 best=19 T=0.15
+t=120 steps=7773 evals=62185 cost=19 best=19 T=0.15
+t=150 steps=9792 evals=78337 cost=19 best=19 T=0.15
+t=180 steps=11818 evals=94545 cost=19 best=19 T=0.15
+t=210 steps=13884 evals=111073 cost=19 best=19 T=0.76
+t=240 steps=15953 evals=127625 cost=18 best=18 T=0.27
+t=270 steps=18019 evals=144153 cost=18 best=18 T=0.15
+t=300 steps=20066 evals=160529 cost=18 best=18 T=0.15
+t=330 steps=22242 evals=177937 cost=18 best=18 T=0.15
+t=360 steps=24325 evals=194601 cost=18 best=18 T=0.15
+t=390 steps=26303 evals=210425 cost=18 best=18 T=0.69
+t=420 steps=28350 evals=226801 cost=18 best=18 T=0.24
+t=450 steps=30462 evals=243697 cost=18 best=18 T=0.15
+t=480 steps=32557 evals=260457 cost=18 best=18 T=0.15
+t=510 steps=34655 evals=277241 cost=18 best=18 T=0.15
+t=540 steps=36671 evals=293369 cost=18 best=18 T=0.69
+t=570 steps=38832 evals=310657 cost=18 best=18 T=0.24
+RESULT d=8 D=9 group=psl 41 x Z_19 N=654360 best=18 evals=326857 time=600.0
