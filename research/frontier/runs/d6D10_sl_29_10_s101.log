@@ -1,0 +1,8 @@
+group sl 29 x Z_10, N=243600, identity 8120, H order 58, rows 4200, threads 1, setup 0.00s
+start cost=17
+t=30 steps=17606 evals=140849 cost=4 best=1 T=0.53
+t=60 steps=36403 evals=291225 cost=1 best=1 T=0.19
+t=90 steps=54920 evals=439361 cost=1 best=1 T=0.15
+RESULT d=6 D=10 group=sl 29 x Z_10 N=243600 best=0 evals=497281 time=101.6
+full diameter check: OK
+wrote sols/d6D10_sl_29_10_s101.txt

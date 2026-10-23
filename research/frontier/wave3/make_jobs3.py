@@ -55,10 +55,10 @@ for q in prime_powers(a.qmax):
     if "csl" in fams and q % 2: bases.append((o // 2, f"csl {q}"))      # order |PSL| * n, n = 0 mod 4 (n = 2 mod 4: = sl)
 if "prod" in fams:
     small = [(q * (q * q - 1) // (2 if q % 2 else 1), f"psl {q}") for q in prime_powers(64) if q >= 5]   # psl 4 = psl 5 = A5
-    small += [(q * (q * q - 1), f"sl {q}") for q in prime_powers(32) if q % 2 and q >= 5]
+    small += [(q * (q * q - 1), f"sl {q}") for q in prime_powers(64) if q % 2 and q >= 5]
     for i, (o1, s1) in enumerate(small):
-        for o2, s2 in small[i:]:
-            if s1 != s2 and o1 * o2 <= a.hi: bases.append((o1 * o2, f"prod {s1} {s2}"))
+        for o2, s2 in small[i:]:                       # equal factors allowed (e.g. SL(2,5) x SL(2,5))
+            if o1 * o2 <= a.hi: bases.append((o1 * o2, f"prod {s1} {s2}"))
 cands = set()
 for o, spec in bases:
     if o > a.hi: continue

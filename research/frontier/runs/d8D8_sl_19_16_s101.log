@@ -1,0 +1,9 @@
+group sl 19 x Z_16, N=109440, identity 5472, H order 48, rows 2280, threads 1, setup 0.00s
+start cost=26
+t=30 steps=37452 evals=299617 cost=1 best=1 T=0.53
+t=60 steps=74996 evals=599969 cost=1 best=1 T=0.19
+t=90 steps=113131 evals=905049 cost=1 best=1 T=0.15
+t=120 steps=148805 evals=1190441 cost=1 best=1 T=0.15
+t=150 steps=187574 evals=1500593 cost=1 best=1 T=0.15
+t=180 steps=225427 evals=1803417 cost=5 best=1 T=1.10
+RESULT d=8 D=8 group=sl 19 x Z_16 N=109440 best=1 evals=2009713 time=200.0
