@@ -1,0 +1,11 @@
+group sl 383 x Z_1, N=56181504, identity 146306, H order 48, rows 1170448, threads 1, setup 4.11s
+wide rows: HW order 192, rows 292612, setup 8.76s
+alpha: conj by mat(71,275,312,313) (index 10520173), z -> 0 z on Z_1
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 383 (+e); mu = 8.29, mu/k = 2.76, fixed-point misses ~ 4.06
+start cost=40
+t=31 steps=9 evals=73 cost=14 best=6 T=0.51
+t=62 steps=18 evals=145 cost=8 best=6 T=0.17
+t=95 steps=28 evals=225 cost=4 best=4 T=0.15
+RESULT d=14 D=9 group=sl 383 x Z_1 N=56181504 best=0 evals=257 time=109.5 orbit k=3 m=4 f=2 fix=383
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outK/d14D9_sl_383_1_orb3_s1.txt

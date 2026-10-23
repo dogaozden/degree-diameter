@@ -1,0 +1,30 @@
+from (e,A): reached A 658008/658008, B 658008/658008 within 9, ecc 9
+from (e,B): reached A 658008/658008, B 658008/658008 within 9, ecc 9
+VALID d=8 D=9 group=sl 37 x Z_13 N=658008 vertices=1316016 (distinct generators, 8-regular simple)
+file=q/outD/d8D9_sl_37_13_orb3_s1.txt d=8 D=9 p=37 n=13 |G|=658008 vertices=1316016
+selfcheck: SL(2,37) index is a bijection onto det-1 matrices (|SL|=50616), fastmod ok (0.00s)
+generators: 8 read, all in SL(2,37) x Z_13, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=8  reached=9 / 1316016
+  from (e,A) level 2: new=56  reached=65 / 1316016
+  from (e,A) level 3: new=392  reached=457 / 1316016
+  from (e,A) level 4: new=2744  reached=3201 / 1316016
+  from (e,A) level 5: new=19048  reached=22249 / 1316016
+  from (e,A) level 6: new=122538  reached=144787 / 1316016
+  from (e,A) level 7: new=489071  reached=633858 / 1316016
+  from (e,A) level 8: new=532669  reached=1166527 / 1316016
+  from (e,A) level 9: new=149489  reached=1316016 / 1316016
+  done in 0.11s, eccA=9, reached 1316016 / 1316016
+BFS from (e,B):
+  from (e,B) level 1: new=8  reached=9 / 1316016
+  from (e,B) level 2: new=56  reached=65 / 1316016
+  from (e,B) level 3: new=392  reached=457 / 1316016
+  from (e,B) level 4: new=2744  reached=3201 / 1316016
+  from (e,B) level 5: new=19048  reached=22249 / 1316016
+  from (e,B) level 6: new=122560  reached=144809 / 1316016
+  from (e,B) level 7: new=489071  reached=633880 / 1316016
+  from (e,B) level 8: new=532647  reached=1166527 / 1316016
+  from (e,B) level 9: new=149489  reached=1316016 / 1316016
+  done in 0.11s, eccB=9, reached 1316016 / 1316016
+VALID d=8 D=9 vertices=1316016 eccA=9 eccB=9
