@@ -1,0 +1,12 @@
+group sl 13 x Z_21, N=45864, identity 3276, H order 42, rows 1092, threads 1, setup 0.00s
+start cost=62
+t=30 steps=74058 evals=592465 cost=5 best=5 T=0.53
+t=60 steps=143873 evals=1150985 cost=5 best=5 T=0.19
+t=90 steps=214216 evals=1713729 cost=5 best=5 T=0.15
+t=120 steps=287419 evals=2299353 cost=5 best=5 T=0.15
+t=150 steps=359931 evals=2879449 cost=5 best=5 T=0.15
+t=180 steps=432811 evals=3462489 cost=11 best=5 T=1.36
+t=210 steps=505217 evals=4041737 cost=1 best=1 T=0.48
+t=240 steps=576979 evals=4615833 cost=1 best=1 T=0.17
+t=270 steps=650758 evals=5206065 cost=1 best=1 T=0.15
+RESULT d=7 D=8 group=sl 13 x Z_21 N=45864 best=1 evals=5792097 time=300.0
