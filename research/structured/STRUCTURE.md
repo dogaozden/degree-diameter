@@ -27,7 +27,8 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
 4. **The ceiling does not move.** Counting symmetric S gives the same first-moment ceiling μ ≈ Δ ln N as random S
    (§1). Cells whose table lies above it ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13) stay
    unreachable for random-like and orbit-symmetric S alike. (10,8) and (11,8) lie below it and were attempted
-   (§7). (11,8) got to 2 uncovered elements, both fixed by α. Neither cell is solved yet.
+   (§7). **(11,8) is solved** (second session, §8): 2,258,520 vertices, above the table's 2,246,940, with k = 5 on
+   PSL(2,59) × Z11. (10,8) is not.
 5. **"A billion times more efficient?"** (§6) Not as a constant factor: SPEEDUP.md measures 1.2–3.2× per core. As an
    exponent change, the orbit method beats extrapolated random-S annealing by ~10⁵ at μ = 34, ~10⁶ at μ = 43 and,
    extrapolated, ~10⁹ near μ ≈ 67. But it has its own wall, and nothing random-like passes the first-moment
@@ -160,6 +161,7 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (7,8) | 80,940 | 88,920 | **95,760** (+7.7 %) | psl 19 × Z14; 3, 2, 1 | 43.0 | 2.6e+05 | d7D8_psl_19_14_orb3_s1.txt |
 | (8,8) | 201,480 | 225,792 | **239,904** (+6.2 %) | psl 17 × Z49; 3, 2, 2 | 39.8 | 8.8e+04 | d8D8_psl_17_49_orb3_s1.txt |
 | (9,8) | 449,480 | 497,904 | **540,360** (+8.5 %) | psl 19 × Z79; 3, 3, 0 | 37.9 | 4.4e+05 | d9D8_psl_19_79_orb3_s1.txt |
+| (11,8) | 2,246,940 | – | **2,258,520** (new cell, table +0.52 %) | psl 59 × Z11; 5, 2, 1 | 60.2 | 1.3e+06 | d11D8_psl_59_11_orb5_ORBW5_s3.txt |
 | (13,8) | 5,314,680 | 6,408,480 | **6,604,416** (+3.1 %) | prod sl 8 sl 8 × Z13; 3, 4, 1 | 23.9 | 5.3e+04 | d13D8_prod_sl_8_sl_8_13_orb3_s1.txt |
 | (15,8) | 14,172,480 | 16,483,200 | **17,926,680** (+8.8 %) | psl 61 × Z79; 3, 5, 0 | 28.3 | 8.5e+04 | d15D8_psl_61_79_orb3f0_s1.txt |
 | (6,9) | 117,360 | 121,440 | **127,296** (+4.8 %) | sl 17 × Z13; 3, 2, 0 | 29.7 | 6.2e+04 | d6D9_sl_17_13_orb3f0_s2.txt |
@@ -267,7 +269,9 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
   - seed 1: best cost 3 after 3.0·10⁶ evaluations (2 h);
   - seed 2 with RESTART=1: best 2 after 1.6·10⁶ (1 h).
   Free orbits come in multiples of 5, so both runs had **all free orbits covered**; what remained were 2–3
-  uncovered α-fixed elements. The run was decided by fixed points, as §2.3 predicts. A short try on psl 19 × Z331
+  uncovered α-fixed elements. The run was decided by fixed points, as §2.3 predicts. **Solved in the second session**
+  (§8): seed 3 with `ORBW=5` (an uncovered fixed element weighs as much as a free orbit) reached cost 0 after
+  1.25·10⁶ evaluations (56 min on a box running 4–6 jobs). A short try on psl 19 × Z331
   (|Fix| = 10 but no wide rows, 7 ms per evaluation) reached cost 15. Promising next steps: a group with a smaller
   centralizer and good mixing, more seeds, or extra fixed generators to cover Fix(α). The cell looks within reach.
 <!-- OPEN-ATTEMPTS -->
@@ -345,6 +349,14 @@ group f = 0 needs 521–4.7·10⁴ evaluations; the one f = 3 success needed 3.8
 
 On PSL(2,23) × Z43 at (9,8), f = 3 had stalled at cost 3 after 1.9·10⁶ evaluations (previous session). The (6,7)
 graph is even above the first-moment estimate 2N_h ≈ 8,747 of mu_plan.py; at D = 7 the Poisson model is crude.
+
+**(11,8): a new cell** (not f = 0; k = 5, the attempt §7 describes). Table 2,246,940, now **2,258,520** = 2·|PSL(2,59) ×
+Z11|, S = {e} ∪ two α-orbits of size 5, α = conjugation by an element of order 5 times z ↦ 3z. μ = 60.2 (μ/5 = 12.0,
+|Fix(α)| = 29 + e). The first session's two runs ended at cost 3 and 2, with only α-fixed elements uncovered. This
+session ran `ORBW=5`, which counts each uncovered fixed element as heavily as an uncovered free orbit, so the annealing stops
+neglecting them. Seed 3 went 65 → 6 in 1.2·10⁶ evaluations and then to 0 within the last 6·10³. VALID by
+build_haar2.py, haarcheck_psl and ../frontier/check_haar_indep.py (runs/d11D8_psl_59_11_orb5_ORBW5_s3.log). One
+success is not a measured advantage for ORBW=5. The seeds without it are in the same pool (`RESTART=1`, seed 4).
 
 **Where it does not help.** (6,8) on PSL(2,9) × Z43 (μ = 28.2, just above our 30,576): f = 0 stops at cost 3 (one
 uncovered orbit) after 6·10⁷ evaluations, random S at cost 2 after 6.6·10⁷ (2 seeds each, 600 s). With m = 2 the
