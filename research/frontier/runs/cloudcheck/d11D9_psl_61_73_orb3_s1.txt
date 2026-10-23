@@ -1,0 +1,18 @@
+machine: nproc=4, free -g: total=15 used=0 free=14 available=15
+--- build_haar2.py ---
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 16565160 edges = 91108380 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 8616ab1378dc231472047db0f1f395486a68ef333db312eb0515a6a15ad55516
+VALID d=11 D=9 group=psl 61 x Z_73 N=8282580 vertices=16565160
+--- check_haar_indep.py ---
+file /home/user/degree-diameter/research/frontier/sols/d11D9_psl_61_73_orb3_s1.txt
+header: d=11 D=9 spec=psl 61 NCYC=73 N=8282580
+group order |G|=113460 (factors [113460]), x Z_73 -> 8282580; vertices 2N=16565160
+distinct generators (as full group elements): 11 of d=11
+permutations built (1s)
+BFS from A: ecc=9 reached 16565160 of 16565160 (unreached 0); level sizes [1, 11, 110, 1100, 10994, 109250, 1026082, 5983935, 7245393, 2188284]
+BFS from B: ecc=9 reached 16565160 of 16565160 (unreached 0); level sizes [1, 11, 110, 1100, 10994, 109250, 1026095, 5983935, 7245380, 2188284]
+every vertex has exactly 11 distinct neighbours: True
+RESULT VALID d=11 D=9 eccA=9 eccB=9 n=16565160 (9s)
+
