@@ -33,7 +33,12 @@ cache for N ≳ 10^5. 2.7 ms/eval at N = 41,616 (d7D8), 130 ms/eval at N = 565,4
   group products.
 - Sparse frontier lists for the first BFS levels, dense row sweeps once the frontier is > R/16 rows.
 - Matrix groups indexed by a q³-size key (not p⁴), so q up to ~200 fits easily.
-- `THREADS=t`: the K candidates of a move are evaluated in parallel (OpenMP).
+- `THREADS=t`: the K candidates of a move are evaluated in parallel (OpenMP). On this container, with the other
+  cores busy, 2 threads gave no more evaluations per second than 1 (17.7k vs 18.4k in 20 s with
+  `OMP_WAIT_POLICY=passive`; without it the spinning threads halved throughput). Not measured on idle cores; four
+  independent seeds (four batch.sh queues) are the better use of a 4-core box anyway, since near a wall solve times
+  are heavy-tailed.
+- An accepted candidate's coverage bitsets are kept, so building the targeted-move lists needs no extra BFS.
 
 ### Benchmarks (this container, Xeon 2.1 GHz, 1 thread per run)
 
@@ -45,6 +50,7 @@ Per evaluation:
 | d8D9 psl 31 × Z38 | 565,440 | 130 ms | 0.87 ms | 150× |
 | d7D10 psl 29 × Z82 (2 tables + 1 BFS) | 998,760 | ~190 ms | 0.88 ms | ~200× |
 | d8D10 pgl 31 × Z117 | 3,481,920 | – | 5.4 ms | |
+| d13D8 SL(2,9) × SL(2,13) × Z2 | 3,144,960 | – | 6.9 ms | |
 
 Time to solution, same jobs (K = 8, seconds):
 

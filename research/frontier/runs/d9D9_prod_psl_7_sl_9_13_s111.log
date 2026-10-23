@@ -1,0 +1,7 @@
+group prod psl 7 sl 9 poly x^2+1 x Z_13, N=1572480, identity 197496, H order 56, rows 28080, threads 1, setup 0.05s
+start cost=26
+t=30 steps=1092 evals=8737 cost=3 best=2 T=0.53
+t=60 steps=2245 evals=17961 cost=2 best=2 T=0.19
+RESULT d=9 D=9 group=prod psl 7 sl 9 poly x^2+1 x Z_13 N=1572480 best=0 evals=18025 time=60.2
+full diameter check: OK
+wrote sols/d9D9_prod_psl_7_sl_9_13_s111.txt

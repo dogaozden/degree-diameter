@@ -1,0 +1,22 @@
+group prod psl 13 sl 9 poly x^2+1 x Z_4, N=3144960, identity 224928, H order 60, rows 52416, threads 1, setup 0.10s
+start cost=16
+t=30 steps=621 evals=4969 cost=1 best=1 T=0.53
+t=60 steps=1265 evals=10121 cost=2 best=1 T=0.19
+t=90 steps=1902 evals=15217 cost=2 best=1 T=0.15
+t=120 steps=2536 evals=20289 cost=2 best=1 T=0.15
+t=150 steps=3173 evals=25385 cost=2 best=1 T=0.15
+t=180 steps=3811 evals=30489 cost=4 best=1 T=0.88
+t=210 steps=4457 evals=35657 cost=2 best=1 T=0.31
+t=240 steps=5092 evals=40737 cost=2 best=1 T=0.15
+t=270 steps=5724 evals=45793 cost=2 best=1 T=0.15
+t=300 steps=6347 evals=50777 cost=2 best=1 T=0.15
+t=330 steps=6968 evals=55745 cost=4 best=1 T=0.88
+t=360 steps=7578 evals=60625 cost=3 best=1 T=0.31
+t=390 steps=8200 evals=65601 cost=3 best=1 T=0.15
+t=420 steps=8828 evals=70625 cost=2 best=1 T=0.15
+t=450 steps=9449 evals=75593 cost=2 best=1 T=0.15
+t=480 steps=10070 evals=80561 cost=5 best=1 T=0.88
+t=510 steps=10693 evals=85545 cost=1 best=1 T=0.31
+t=540 steps=11302 evals=90417 cost=1 best=1 T=0.15
+t=570 steps=11910 evals=95281 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=prod psl 13 sl 9 poly x^2+1 x Z_4 N=3144960 best=1 evals=100073 time=600.0
