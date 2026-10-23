@@ -1,0 +1,12 @@
+group sl 49 poly x^2+1 x Z_73, N=8584800, identity 171696, H order 50, rows 171696, threads 1, setup 0.28s
+wide rows: HW order 219, rows 39200, setup 0.61s
+alpha: conj by mat(19,9,47,38) (index 46058), z -> 8 z on Z_73
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 47 (+e); mu = 15.52, mu/k = 5.17, fixed-point misses ~ 0.58
+start cost=12
+RESULT d=15 D=8 group=sl 49 poly x^2+1 x Z_73 N=8584800 best=0 evals=81 time=1.0 orbit k=3 m=5 f=0 fix=47
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oA/d15D8_sl_49_73_orb3f0_s1.txt
+n = 17169600 edges = 128772000 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = db3356e1df16f3f73d42f8b7c657a700722b14723795fe01f28a8b27cfa4906b
+VALID d=15 D=8 group=sl 49 poly x^2+1 x Z_73 N=8584800 vertices=17169600
