@@ -1,2 +1,22 @@
 group sl 11 x Z_45, N=59400, identity 4950
 start cost=840
+t=30 steps=659 evals=5273 cost=24 best=24 T=0.53
+t=60 steps=1335 evals=10681 cost=22 best=22 T=0.19
+t=90 steps=2014 evals=16113 cost=22 best=22 T=0.15
+t=120 steps=2702 evals=21617 cost=22 best=22 T=0.15
+t=150 steps=3379 evals=27033 cost=22 best=22 T=0.15
+t=180 steps=4073 evals=32585 cost=20 best=20 T=0.15
+t=210 steps=4759 evals=38073 cost=20 best=20 T=0.15
+t=240 steps=5436 evals=43489 cost=20 best=20 T=0.15
+t=270 steps=6115 evals=48921 cost=20 best=20 T=0.15
+t=300 steps=6783 evals=54265 cost=20 best=20 T=0.15
+t=330 steps=7460 evals=59681 cost=20 best=20 T=0.81
+t=360 steps=8150 evals=65201 cost=20 best=20 T=0.29
+t=390 steps=8829 evals=70633 cost=20 best=20 T=0.15
+t=420 steps=9516 evals=76129 cost=18 best=18 T=0.15
+t=450 steps=10199 evals=81593 cost=18 best=18 T=0.15
+t=480 steps=10875 evals=87001 cost=12 best=12 T=0.15
+t=510 steps=11546 evals=92369 cost=12 best=12 T=0.15
+t=540 steps=12232 evals=97857 cost=12 best=12 T=0.15
+t=570 steps=12923 evals=103385 cost=12 best=12 T=0.15
+RESULT d=6 D=9 group=sl 11 x Z_45 N=59400 best=12 evals=108921 time=600.0
