@@ -41,7 +41,8 @@ for c in cells:
     t0, t2 = float(e0.get('time', 0)), float(e2.get('time', 0))
     same = 'yes' if e0.get('hash') and e0.get('hash') == e2.get('hash') else 'NO'
     b0, b2 = c.get('bench0'), c.get('bench2')
-    print('| %s %s | %s | %s | %s → %s (%s×) | %s | %.1f → %.1f | **%s** | %s | %.0f | %.0f | %s |' % (
+    g3 = lambda x: (format(round(x), ',') if x >= 100 else '%.3g' % x) if x else '–'
+    print('| %s %s | %s | %s | %s → %s (%s×) | %s | %.1f → %.1f | **%s** | %s | %s | %s | %s |' % (
         c['cell'], c['grp'], format(c.get('N', 0), ','), c.get('rs', '–'),
         '%.3g' % b0 if b0 else '–', '%.3g' % b2 if b2 else '–', fx(b0, b2),
-        e0.get('steps', '–'), t0, t2, fx(t0, t2), same, c.get('H3', 0), c.get('HF', 0), fx(c.get('HF'), c.get('H3'))))
+        e0.get('steps', '–'), t0, t2, fx(t0, t2), same, g3(c.get('H3')), g3(c.get('HF')), fx(c.get('HF'), c.get('H3'))))
