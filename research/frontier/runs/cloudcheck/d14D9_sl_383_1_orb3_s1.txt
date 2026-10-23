@@ -1,0 +1,14 @@
+machine: nproc=4, mem total=15G used=0G free=14G
+== build_haar2.py research/frontier/sols/d14D9_sl_383_1_orb3_s1.txt /tmp/e.txt
+(no stdout: process killed by SIGKILL, rc=-9, at peak RSS 13.9 GB; the 1.5 GB guard did not fire; not a VALID or INVALID verdict)
+== check_haar_indep.py research/frontier/sols/d14D9_sl_383_1_orb3_s1.txt
+file research/frontier/sols/d14D9_sl_383_1_orb3_s1.txt
+header: d=14 D=9 spec=sl 383 NCYC=1 N=56181504
+group order |G|=56181504 (factors [56181504]), x Z_1 -> 56181504; vertices 2N=112363008
+distinct generators (as full group elements): 14 of d=14
+permutations built (1125s)
+BFS from A: ecc=9 reached 112363008 of 112363008 (unreached 0); level sizes [1, 14, 182, 2366, 30758, 398642, 4963170, 38998773, 51187393, 16781709]
+BFS from B: ecc=9 reached 112363008 of 112363008 (unreached 0); level sizes [1, 14, 182, 2366, 30758, 398642, 4963036, 38998773, 51187527, 16781709]
+every vertex has exactly 14 distinct neighbours: True
+RESULT VALID d=14 D=9 eccA=9 eccB=9 n=112363008 (1206s)
+
