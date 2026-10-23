@@ -1,0 +1,12 @@
+group psl 17 x Z_25, N=61200, identity 3400, H order 50, rows 1224, threads 1, setup 0.00s
+start cost=144
+t=30 steps=34028 evals=272225 cost=7 best=7 T=0.53
+t=60 steps=67039 evals=536313 cost=7 best=7 T=0.19
+t=90 steps=100676 evals=805409 cost=7 best=7 T=0.15
+t=120 steps=135110 evals=1080881 cost=7 best=7 T=0.15
+t=150 steps=168453 evals=1347625 cost=7 best=7 T=0.15
+t=180 steps=203874 evals=1630993 cost=7 best=7 T=0.59
+t=210 steps=239039 evals=1912313 cost=7 best=7 T=0.21
+t=240 steps=274113 evals=2192905 cost=7 best=7 T=0.15
+t=270 steps=309150 evals=2473201 cost=6 best=6 T=0.15
+RESULT d=6 D=9 group=psl 17 x Z_25 N=61200 best=6 evals=2758633 time=300.0

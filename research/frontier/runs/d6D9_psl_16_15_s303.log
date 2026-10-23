@@ -1,0 +1,12 @@
+group psl 16 poly x^4+x+1 x Z_15, N=61200, identity 3600, H order 51, rows 1200, threads 1, setup 0.00s
+start cost=157
+t=30 steps=32223 evals=257785 cost=8 best=8 T=0.53
+t=60 steps=67349 evals=538793 cost=8 best=8 T=0.19
+t=90 steps=101050 evals=808401 cost=8 best=8 T=0.15
+t=120 steps=134492 evals=1075937 cost=8 best=8 T=0.15
+t=150 steps=169296 evals=1354369 cost=8 best=8 T=0.15
+t=180 steps=203067 evals=1624537 cost=8 best=8 T=1.41
+t=210 steps=239602 evals=1916817 cost=8 best=8 T=0.50
+t=240 steps=275416 evals=2203329 cost=8 best=8 T=0.18
+t=270 steps=311326 evals=2490609 cost=8 best=8 T=0.15
+RESULT d=6 D=9 group=psl 16 poly x^4+x+1 x Z_15 N=61200 best=8 evals=2782665 time=300.0
