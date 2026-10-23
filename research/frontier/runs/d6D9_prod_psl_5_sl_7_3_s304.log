@@ -1,3 +1,8 @@
 group prod psl 5 sl 7 x Z_3, N=60480, identity 10206, H order 60, rows 1008, threads 1, setup 0.00s
 start cost=71
 t=30 steps=36792 evals=294337 cost=3 best=2 T=0.53
+t=60 steps=72674 evals=581393 cost=2 best=2 T=0.19
+t=90 steps=109072 evals=872577 cost=2 best=2 T=0.15
+RESULT d=6 D=9 group=prod psl 5 sl 7 x Z_3 N=60480 best=0 evals=1136937 time=117.6
+full diameter check: OK
+wrote sols/d6D9_prod_psl_5_sl_7_3_s304.txt
