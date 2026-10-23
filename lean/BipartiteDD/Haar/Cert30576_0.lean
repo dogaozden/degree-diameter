@@ -7,8 +7,8 @@ namespace BipartiteDD.Haar.SL213Z7
 
 open BipartiteDD.Haar
 
-/-- Entries `n = 0 + i`, `i < 1024`, of the `okA` certificate. -/
 set_option maxRecDepth 100000 in
+/-- Entries `n = 0 + i`, `i < 1024`, of the `okA` certificate. -/
 def certA_0 : List (Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6) := [
     (0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 4, 3, 4, 3, 4, 3),
@@ -1039,8 +1039,8 @@ set_option maxRecDepth 100000 in
 theorem okA_all_0 :
     (List.range 1024).all (fun i => okA (0 + i) (certA_0.getD i (0, 0, 0, 0, 0, 0, 0, 0))) = true := by decide +kernel
 
-/-- Entries `n = 0 + i`, `i < 1024`, of the `okB` certificate. -/
 set_option maxRecDepth 100000 in
+/-- Entries `n = 0 + i`, `i < 1024`, of the `okB` certificate. -/
 def certB_0 : List (Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6) := [
     (0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 3, 4, 3, 4, 3, 4),
@@ -2071,8 +2071,8 @@ set_option maxRecDepth 100000 in
 theorem okB_all_0 :
     (List.range 1024).all (fun i => okB (0 + i) (certB_0.getD i (0, 0, 0, 0, 0, 0, 0, 0))) = true := by decide +kernel
 
-/-- Entries `n = 0 + i`, `i < 1024`, of the `okAB` certificate. -/
 set_option maxRecDepth 100000 in
+/-- Entries `n = 0 + i`, `i < 1024`, of the `okAB` certificate. -/
 def certAB_0 : List (Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6 × Fin 6) := [
     (0, 0, 0, 0, 0, 0, 0),
     (0, 3, 4, 3, 4, 3, 4),

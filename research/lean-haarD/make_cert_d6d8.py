@@ -218,8 +218,8 @@ end BipartiteDD.Haar.SL213Z7
                 ("certAB", "okAB", certAB, 7, "(0, 0, 0, 0, 0, 0, 0)")):
             entries = ",\n    ".join(lean_tuple(cert[base + i]) for i in range(L))
             tup = " × ".join(["Fin 6"] * width)
-            body += (f"/-- Entries `n = {base} + i`, `i < {L}`, of the `{pred}` certificate. -/\n"
-                     f"set_option maxRecDepth 100000 in\n"
+            body += (f"set_option maxRecDepth 100000 in\n"
+                     f"/-- Entries `n = {base} + i`, `i < {L}`, of the `{pred}` certificate. -/\n"
                      f"def {name}_{k} : List ({tup}) := [\n    {entries}]\n\n"
                      f"set_option maxRecDepth 100000 in\n"
                      f"theorem {pred}_all_{k} :\n"
