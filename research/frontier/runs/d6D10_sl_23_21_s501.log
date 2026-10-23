@@ -1,0 +1,12 @@
+group sl 23 x Z_21, N=255024, identity 10626, H order 56, rows 4554, threads 1, setup 0.01s
+start cost=15
+t=30 steps=9571 evals=76569 cost=4 best=4 T=0.53
+t=60 steps=19122 evals=152977 cost=4 best=4 T=0.19
+t=90 steps=28751 evals=230009 cost=4 best=4 T=0.15
+t=120 steps=37929 evals=303433 cost=4 best=4 T=0.15
+t=150 steps=47559 evals=380473 cost=4 best=4 T=0.15
+t=180 steps=56727 evals=453817 cost=8 best=4 T=1.29
+t=210 steps=65587 evals=524697 cost=5 best=4 T=0.46
+t=240 steps=74717 evals=597737 cost=5 best=4 T=0.16
+t=270 steps=84235 evals=673881 cost=4 best=4 T=0.15
+RESULT d=6 D=10 group=sl 23 x Z_21 N=255024 best=4 evals=748369 time=300.0

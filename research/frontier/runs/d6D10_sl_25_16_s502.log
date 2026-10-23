@@ -1,0 +1,12 @@
+group sl 25 poly x^2+2 x Z_16, N=249600, identity 9600, H order 52, rows 4800, threads 1, setup 0.01s
+start cost=131
+t=30 steps=9817 evals=78537 cost=4 best=3 T=0.53
+t=60 steps=20302 evals=162417 cost=3 best=3 T=0.19
+t=90 steps=30444 evals=243553 cost=3 best=3 T=0.15
+t=120 steps=40300 evals=322401 cost=3 best=3 T=0.15
+t=150 steps=50440 evals=403521 cost=3 best=3 T=0.15
+t=180 steps=60427 evals=483417 cost=2 best=2 T=0.68
+t=210 steps=70085 evals=560681 cost=2 best=2 T=0.24
+t=240 steps=79410 evals=635281 cost=1 best=1 T=0.15
+t=270 steps=89249 evals=713993 cost=1 best=1 T=0.15
+RESULT d=6 D=10 group=sl 25 poly x^2+2 x Z_16 N=249600 best=1 evals=793497 time=300.0
