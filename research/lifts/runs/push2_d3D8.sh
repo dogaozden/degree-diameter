@@ -1,5 +1,4 @@
 #!/bin/bash
-# second (3,8) push with the composite-modulus aff and aff3 families (added after push_d3D8 had built its job list)
+# second (3,8) push (after the container restart): all rich groups incl. composite-modulus aff and aff3, orders 296-400
 cd "$(dirname "$0")/.."
-while pgrep -f "tag push_d3D8 " > /dev/null || pgrep -f "tag push_d3D8$" > /dev/null; do sleep 15; done
-python3 run_cell.py --delta 3 --D 8 --orders 290:400 --hs 1,2,3 --rich --screen 150 --top 10 --maxbases 3 --maxgroups 80 --secs 20 --budget 2400 --workers 2 --stop-on-solve --tag push2_d3D8
+python3 run_cell.py --delta 3 --D 8 --orders 296:400 --hs 1,2,3 --rich --screen 150 --top 10 --maxbases 3 --maxgroups 80 --secs 20 --budget 3000 --workers 1 --stop-on-solve --tag push2_d3D8

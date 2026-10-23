@@ -167,5 +167,13 @@ copy needs about q+1 such routes, against about 4j² routes available. Not prove
 - **Polygon covers beyond 2j+1 copies** (§3.2) and random-voltage lifts of GH(q) + matchings at D = 8 (§3.3): far from
   0.
 - **Lifts of GQ(q) incidence graphs alone at D = 7** (§3.4): cost > 1000.
-- **(5,10) above 91,728** (in progress): SL(2,11) × Z35 (N = 46,200) and SL(2,13) × Z22 (N = 48,048) stopped at cost
-  4–6.
+- **(5,10) above 91,728.**
+  - SL(2,11) × Z35 (N = 46,200) and SL(2,13) × Z22 (N = 48,048) were at cost 4–6 after about 450 s of wall time.
+    The machine was oversubscribed.
+  - Both were killed by a container restart (18:52) before finishing. Not resumed.
+- **(3,9) with field-affine groups on the 2+2 cubic base** (the (3,8) recipe). Exhaustive over all voltage
+  assignments, no solutions:
+  - Z3² ⋊ Z16 (576 vertices), four actions: best costs 52–78;
+  - Z2³ ⋊ Z21 (672): best costs 76–108.
+- **Cyclic K3,3 lifts at (3,8).** Exhaustive: Z43 (258) is the only order with solutions in N = 43…60. For
+  N = 44–60 the best costs are 10, 16, 22, 26, 28, …, 130, rising with N.
