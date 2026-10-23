@@ -1,3 +1,8 @@
 group prod psl 13 sl 7 x Z_9, N=3302208, identity 236250, H order 63, rows 52416, threads 1, setup 0.10s
 start cost=28
 t=30 steps=733 evals=5865 cost=10 best=8 T=0.53
+t=60 steps=1424 evals=11393 cost=9 best=8 T=0.19
+t=90 steps=2236 evals=17889 cost=9 best=8 T=0.15
+t=120 steps=3059 evals=24473 cost=9 best=8 T=0.15
+t=150 steps=3889 evals=31113 cost=9 best=8 T=0.15
+t=180 steps=4678 evals=37425 cost=10 best=8 T=0.61
