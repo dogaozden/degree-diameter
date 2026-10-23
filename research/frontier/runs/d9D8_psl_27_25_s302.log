@@ -1,3 +1,8 @@
 group psl 27 poly x^3+2x+1 x Z_25, N=245700, identity 8775, H order 50, rows 4914, threads 1, setup 0.00s
 start cost=22
 t=30 steps=15380 evals=123041 cost=3 best=1 T=0.53
+t=60 steps=29867 evals=238937 cost=1 best=1 T=0.19
+t=90 steps=44326 evals=354609 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=psl 27 poly x^3+2x+1 x Z_25 N=245700 best=0 evals=386017 time=98.2
+full diameter check: OK
+wrote sols/d9D8_psl_27_25_s302.txt
