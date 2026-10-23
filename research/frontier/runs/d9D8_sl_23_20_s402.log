@@ -1,0 +1,13 @@
+group sl 23 x Z_20, N=242880, identity 10120, H order 60, rows 4048, threads 1, setup 0.01s
+start cost=18
+t=30 steps=9254 evals=74033 cost=2 best=1 T=0.53
+t=60 steps=19169 evals=153353 cost=1 best=1 T=0.19
+t=90 steps=29054 evals=232433 cost=1 best=1 T=0.15
+t=120 steps=39013 evals=312105 cost=1 best=1 T=0.15
+t=150 steps=49070 evals=392561 cost=1 best=1 T=0.15
+t=180 steps=58954 evals=471633 cost=1 best=1 T=0.95
+t=210 steps=68059 evals=544473 cost=1 best=1 T=0.34
+t=240 steps=77783 evals=622265 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=sl 23 x Z_20 N=242880 best=0 evals=668449 time=257.9
+full diameter check: OK
+wrote sols/d9D8_sl_23_20_s402.txt
