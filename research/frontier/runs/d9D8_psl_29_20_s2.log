@@ -1,2 +1,53 @@
 group psl 29 x Z_20, N=243600, identity 8120
 start cost=10
+t=30 steps=62 evals=497 cost=5 best=5 T=0.52
+t=60 steps=127 evals=1017 cost=5 best=5 T=0.18
+t=91 steps=185 evals=1481 cost=4 best=4 T=0.15
+t=121 steps=248 evals=1985 cost=3 best=3 T=0.15
+t=151 steps=310 evals=2481 cost=3 best=3 T=0.15
+t=181 steps=374 evals=2993 cost=3 best=3 T=0.15
+t=212 steps=438 evals=3505 cost=3 best=3 T=0.15
+t=242 steps=503 evals=4025 cost=3 best=3 T=0.15
+t=272 steps=566 evals=4529 cost=3 best=3 T=0.15
+t=302 steps=627 evals=5017 cost=3 best=3 T=0.92
+t=332 steps=689 evals=5513 cost=3 best=3 T=0.32
+t=363 steps=752 evals=6017 cost=3 best=3 T=0.15
+t=393 steps=814 evals=6513 cost=3 best=3 T=0.15
+t=423 steps=876 evals=7009 cost=3 best=3 T=0.15
+t=453 steps=939 evals=7513 cost=3 best=3 T=0.90
+t=483 steps=1006 evals=8049 cost=3 best=3 T=0.32
+t=514 steps=1071 evals=8569 cost=3 best=3 T=0.15
+t=544 steps=1134 evals=9073 cost=3 best=3 T=0.15
+t=574 steps=1198 evals=9585 cost=3 best=3 T=0.15
+t=605 steps=1262 evals=10097 cost=7 best=3 T=0.86
+t=635 steps=1324 evals=10593 cost=2 best=2 T=0.30
+t=665 steps=1388 evals=11105 cost=2 best=2 T=0.15
+t=695 steps=1450 evals=11601 cost=2 best=2 T=0.15
+t=725 steps=1513 evals=12105 cost=2 best=2 T=0.15
+t=755 steps=1577 evals=12617 cost=2 best=2 T=0.15
+t=786 steps=1641 evals=13129 cost=2 best=2 T=0.15
+t=816 steps=1704 evals=13633 cost=7 best=2 T=0.97
+t=846 steps=1768 evals=14145 cost=3 best=2 T=0.34
+t=876 steps=1832 evals=14657 cost=3 best=2 T=0.15
+t=907 steps=1899 evals=15193 cost=3 best=2 T=0.15
+t=937 steps=1961 evals=15689 cost=3 best=2 T=0.15
+t=967 steps=2023 evals=16185 cost=2 best=2 T=0.93
+t=997 steps=2086 evals=16689 cost=2 best=2 T=0.33
+t=1028 steps=2152 evals=17217 cost=2 best=2 T=0.15
+t=1058 steps=2220 evals=17761 cost=2 best=2 T=0.15
+t=1088 steps=2283 evals=18265 cost=2 best=2 T=0.15
+t=1118 steps=2348 evals=18785 cost=3 best=2 T=0.91
+t=1148 steps=2412 evals=19297 cost=3 best=2 T=0.32
+t=1179 steps=2478 evals=19825 cost=3 best=2 T=0.15
+t=1209 steps=2542 evals=20337 cost=2 best=2 T=0.15
+t=1239 steps=2609 evals=20873 cost=2 best=2 T=0.15
+t=1269 steps=2674 evals=21393 cost=2 best=2 T=0.90
+t=1299 steps=2740 evals=21921 cost=2 best=2 T=0.32
+t=1330 steps=2807 evals=22457 cost=2 best=2 T=0.15
+t=1360 steps=2875 evals=23001 cost=2 best=2 T=0.15
+t=1390 steps=2937 evals=23497 cost=2 best=2 T=0.15
+t=1420 steps=2998 evals=23985 cost=2 best=2 T=0.88
+t=1450 steps=3060 evals=24481 cost=2 best=2 T=0.31
+RESULT d=9 D=8 group=psl 29 x Z_20 N=243600 best=0 evals=24897 time=1476.6
+full diameter check: OK
+wrote sols/d9D8_psl_29_20_s2.txt
