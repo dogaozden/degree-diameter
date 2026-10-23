@@ -1,6 +1,7 @@
 #!/bin/bash
-# Sequential job queue for haar_sym.  Each line:  ORBIT_SPEC | d D seconds seed K GROUP... n
-# e.g.  3 2 2 | 8 7 600 1 8 psl 13 19
+# Sequential job queue for haar_sym.  Each line:  k m f [VAR=x ...] | d D seconds seed K GROUP... n
+# e.g.  3 2 2 | 8 7 600 1 8 psl 13 19        5 2 1 ORBW=5 RESTART=1 | 11 8 7200 3 8 psl 59 11
+# (extra VAR=x are passed to haar_sym and appended to the tag; f = 0 runs are tagged orb<k>f0)
 # Solutions go to OUTDIR/d<d>D<D>_<group>_orb<k>_s<seed>.txt, logs next to them; a solved job is checked with
 # build_haar2.py (verdict appended to the log).  Lines starting with # are skipped; a job whose log already has
 # RESULT is skipped (restartable).  usage: orbq.sh JOBFILE OUTDIR [BIN]
@@ -11,11 +12,12 @@ while IFS= read -r line; do
   [[ -z "$line" || "$line" =~ ^# ]] && continue
   spec=$(echo "${line%%|*}" | xargs); rest=$(echo "${line#*|}" | xargs)
   set -- $rest; d=$1; D=$2; secs=$3; seed=$4; K=$5; shift 5; grp="$*"
-  k=${spec%% *}; tag="d${d}D${D}_$(echo $grp | tr ' ' '_')_orb${k}_s${seed}"
+  read -r k m f extra <<< "$spec"; f0=; [ "$f" = 0 ] && f0=f0; ex=$(echo $extra | tr -d '= '); ex=${ex:+_$ex}
+  tag="d${d}D${D}_$(echo $grp | tr ' ' '_')_orb${k}${f0}${ex}_s${seed}"
   log=$OUT/$tag.log; sol=$OUT/$tag.txt
   grep -q RESULT "$log" 2>/dev/null && continue
   echo "$(date +%H:%M:%S) start $tag" >&2
-  ORBIT="$spec" timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
+  env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
   if [ -s "$sol" ]; then
     read -r _ _ fam p _ n _ NN < <(head -1 "$sol")
     big=0; [[ "$NN" =~ ^[0-9]+$ ]] && [ "$NN" -gt 10000000 ] && big=1

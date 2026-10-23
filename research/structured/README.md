@@ -67,7 +67,9 @@ haar_fast plus:
   order k and as few fixed z as possible. For `meta` groups a scaling (a, j) ↦ (u·a, j) is tried first. For `heis` it
   is the scaling (x, y, z) ↦ (a x, b y, ab z). Annealing moves replace a whole orbit (or one fixed generator). The
   energy is uncovered/k and targeted moves avoid the orbit being replaced. Override with `ALPHA=<index>|e`, `AR=<r>`,
-  `AMU=<u>`, `AHA=<a> AHB=<b>`.
+  `AMU=<u>`, `AHA=<a> AHB=<b>`. **f = 0** (k | d): S is m free orbits and nothing else, no identity; the solution is
+  written as S·s₀⁻¹ (an isomorphic Haar graph, re-checked) so that its first generator is e. This is the right choice
+  for Δ = 6, 9, 12, 15 with k = 3 (STRUCTURE.md §8).
 - `RANDORB=m` (with `ORBIT`): cost statistics of m random symmetric S, plus a histogram of cost/k (screening).
 - `RESTART=1` (with `ORBIT`): a reheat starts from fresh random orbits instead of the best S found so far.
 - `ORBW=w` (with `ORBIT`): an uncovered α-fixed element weighs w in the energy instead of 1 (`ORBW=k`: every
@@ -90,13 +92,17 @@ python3 ../frontier/build_haar2.py sol.txt
 ### tools/
 
 - `orb_screen.py d D LO HI "k m f"`: lists Q × Z_n in an order window (n with all prime factors ≡ 1 mod k, unless
-  `--anyn`), runs RANDORB on each and ranks them by the lower tail of the cost.
-- `orbq.sh JOBFILE OUTDIR`: sequential job queue (`k m f | d D secs seed K GROUP... n` per line); every solution is
-  re-checked with build_haar2.py and the verdict is appended to the log.
+  `--anyn`), runs RANDORB on each and ranks them by the lower tail of the cost. `--list` only lists the candidates
+  with μ (for groups too large to screen).
+- `orbq.sh JOBFILE OUTDIR`: sequential job queue (`k m f [VAR=x ...] | d D secs seed K GROUP... n` per line; extra
+  `VAR=x` such as `ORBW=5` go to haar_sym and into the tag, f = 0 runs are tagged `orb<k>f0`); every solution is
+  re-checked with build_haar2.py (or the low-memory checkers above 20M vertices) and the verdict is appended to the log.
 - `mu_plan.py`: per cell, μ = N e^(−W/N) at the table value and at our best, and the orders where μ reaches given
   levels.
-- `cmp.sh SECS < list` and `cmp_table.py LOG`: head-to-head of random-S annealing (haar_fast) against orbit annealing
-  (haar_sym) on the same groups, seeds and wall-clock budget, as a markdown table.
+- `cmp.sh SECS "SEEDS" [PAR] < list` and `cmp_table.py LOG`: head-to-head of search variants on the same groups,
+  seeds and wall-clock budget (`PAR` single-thread runs at a time), as a markdown table with one column per variant.
+  List lines are `VARIANT | d D GROUP... n` with VARIANT `random` (haar_fast) or `k m f [VAR=x ...]` (haar_sym).
+  With `SAVE=dir` every run keeps its solution and log (orbq.sh names) and solutions get build_haar2.py's verdict.
 - `records_table.py`: the STRUCTURE.md §4 table (best VALID result per cell, from `runs/`).
 - `save_sol.sh OUTDIR TAG...`: copy a verified solution and its log into `../frontier/sols` and `runs/`, commit, push.
 - `haarcheck_psl.c`: an independent low-memory checker for PSL(2,p) × Z_n (p an odd prime), written from the
