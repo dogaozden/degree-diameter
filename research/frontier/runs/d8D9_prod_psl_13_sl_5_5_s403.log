@@ -1,0 +1,12 @@
+group prod psl 13 sl 5 x Z_5, N=655200, identity 46900, H order 60, rows 10920, threads 1, setup 0.02s
+start cost=100
+t=30 steps=2861 evals=22889 cost=19 best=18 T=0.53
+t=60 steps=5724 evals=45793 cost=17 best=17 T=0.19
+t=90 steps=8676 evals=69409 cost=13 best=13 T=0.15
+t=120 steps=11523 evals=92185 cost=13 best=13 T=0.15
+t=150 steps=14429 evals=115433 cost=13 best=13 T=0.15
+t=180 steps=17332 evals=138657 cost=13 best=13 T=0.15
+t=210 steps=20215 evals=161721 cost=13 best=13 T=0.15
+t=240 steps=23086 evals=184689 cost=13 best=13 T=1.40
+t=270 steps=25943 evals=207545 cost=13 best=13 T=0.49
+t=300 steps=28737 evals=229897 cost=13 best=13 T=0.17
