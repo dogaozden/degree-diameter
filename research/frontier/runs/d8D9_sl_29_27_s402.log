@@ -1,22 +1,22 @@
-group sl 29 x Z_27, N=657720, identity 21924, H order 63, rows 10440, threads 1, setup 0.01s
+group sl 29 x Z_27, N=657720, identity 21924, H order 63, rows 10440, threads 1, setup 0.02s
 start cost=56
-t=30 steps=3460 evals=27681 cost=20 best=20 T=0.53
-t=60 steps=6925 evals=55401 cost=20 best=20 T=0.19
-t=90 steps=10319 evals=82553 cost=18 best=18 T=0.15
-t=120 steps=13708 evals=109665 cost=16 best=16 T=0.15
-t=150 steps=17157 evals=137257 cost=16 best=16 T=0.15
-t=180 steps=20612 evals=164897 cost=16 best=16 T=0.15
-t=210 steps=24080 evals=192641 cost=16 best=16 T=0.15
-t=240 steps=27592 evals=220737 cost=16 best=16 T=0.15
-t=270 steps=31064 evals=248513 cost=16 best=16 T=1.19
-t=300 steps=34515 evals=276121 cost=16 best=16 T=0.42
-t=330 steps=38038 evals=304305 cost=16 best=16 T=0.15
-t=360 steps=41554 evals=332433 cost=16 best=16 T=0.15
-t=390 steps=45022 evals=360177 cost=16 best=16 T=0.15
-t=420 steps=48538 evals=388305 cost=16 best=16 T=1.19
-t=450 steps=51978 evals=415825 cost=16 best=16 T=0.42
-t=480 steps=55477 evals=443817 cost=16 best=16 T=0.15
-t=510 steps=58929 evals=471433 cost=16 best=16 T=0.15
-t=540 steps=62420 evals=499361 cost=16 best=16 T=0.15
-t=570 steps=65877 evals=527017 cost=16 best=16 T=1.19
-RESULT d=8 D=9 group=sl 29 x Z_27 N=657720 best=16 evals=554505 time=600.0
+t=30 steps=3293 evals=26345 cost=22 best=22 T=0.53
+t=60 steps=6505 evals=52041 cost=20 best=20 T=0.19
+t=90 steps=9770 evals=78161 cost=18 best=18 T=0.15
+t=120 steps=13030 evals=104241 cost=16 best=16 T=0.15
+t=150 steps=16363 evals=130905 cost=16 best=16 T=0.15
+t=180 steps=19645 evals=157161 cost=16 best=16 T=0.15
+t=210 steps=22933 evals=183465 cost=16 best=16 T=0.15
+t=240 steps=26187 evals=209497 cost=16 best=16 T=0.15
+t=270 steps=29450 evals=235601 cost=16 best=16 T=1.45
+t=300 steps=32727 evals=261817 cost=16 best=16 T=0.51
+t=330 steps=35955 evals=287641 cost=16 best=16 T=0.18
+t=360 steps=39245 evals=313961 cost=16 best=16 T=0.15
+t=390 steps=42553 evals=340425 cost=16 best=16 T=0.15
+t=420 steps=45756 evals=366049 cost=14 best=14 T=1.45
+t=450 steps=48953 evals=391625 cost=14 best=14 T=0.51
+t=480 steps=52155 evals=417241 cost=14 best=14 T=0.18
+t=510 steps=55341 evals=442729 cost=14 best=14 T=0.15
+t=540 steps=58395 evals=467161 cost=14 best=14 T=0.15
+t=570 steps=61606 evals=492849 cost=12 best=12 T=0.15
+RESULT d=8 D=9 group=sl 29 x Z_27 N=657720 best=12 evals=517033 time=600.0
