@@ -5,8 +5,8 @@ import BipartiteDD.Haar.PGL37Z5
 /-! The covering hypothesis of the (6,10) record, in `PGL(2, 37) × Z_5`.
 
 `sel j` is the `j`-th element of the connection set. `wordG c` is the nine-letter alternating product of the code `c`
-(`x₁ x₂⁻¹ x₃ x₄⁻¹ x₅ x₆⁻¹ x₇ x₈⁻¹ x₉`, written right-nested). `wordG_eq` identifies it with the element of index `n`
-whenever the Nat check `okC c n` holds, and `cover` is the covering hypothesis of `Diam10`. -/
+(`x₁ x₂⁻¹ x₃ x₄⁻¹ x₅ x₆⁻¹ x₇ x₈⁻¹ x₉`, written right-nested, as `wordOf`). `wordG_eq` identifies it with the element of
+index `n` whenever the Nat check `okC c n` holds, and `cover : CoverHyp SS` is the covering hypothesis of `Diam10`. -/
 
 namespace BipartiteDD.Haar.D6D10
 
@@ -53,14 +53,19 @@ theorem Ls_ok (c : ℕ) : ∀ M ∈ Ls c, detZ M ≠ 0 := by
 theorem gM_adjN_dig (c k : ℕ) : gM (adjN (sN (dig c k))) = (gM (sN (dig c k)))⁻¹ :=
   gM_adjN _ (sN_det c k) (sN_ok _ (dig_lt c k)).2.1 (sN_ok _ (dig_lt c k)).2.2
 
-/-- The nine-letter word of the code `c`, right-nested. -/
+/-- The nine-letter alternating word `x₁ x₂⁻¹ x₃ x₄⁻¹ x₅ x₆⁻¹ x₇ x₈⁻¹ x₉` in a group, right-nested. It is the
+right-hand side of `CoverHyp`, so `wordOf` is the same term as the covering word in every group. -/
+def wordOf {G : Type*} [Group G] (x₁ x₂ x₃ x₄ x₅ x₆ x₇ x₈ x₉ : G) : G :=
+  x₁ * (x₂⁻¹ * (x₃ * (x₄⁻¹ * (x₅ * (x₆⁻¹ * (x₇ * (x₈⁻¹ * x₉)))))))
+
+/-- The nine-letter word of the code `c`. -/
 def wordG (c : ℕ) : PGL37Z5.Grp :=
-  sel (dig c 0) * ((sel (dig c 1))⁻¹ * (sel (dig c 2) * ((sel (dig c 3))⁻¹ *
-    (sel (dig c 4) * ((sel (dig c 5))⁻¹ * (sel (dig c 6) * ((sel (dig c 7))⁻¹ * sel (dig c 8))))))))
+  wordOf (sel (dig c 0)) (sel (dig c 1)) (sel (dig c 2)) (sel (dig c 3)) (sel (dig c 4)) (sel (dig c 5))
+    (sel (dig c 6)) (sel (dig c 7)) (sel (dig c 8))
 
 theorem wordG_fst (c : ℕ) : (wordG c).1 = gM (prodN (Ls c)) := by
   rw [gM_prodN _ (Ls_ok c)]
-  simp only [wordG, sel, Prod.fst_mul, Prod.fst_inv, Ls, List.map_cons, List.map_nil, List.prod_cons,
+  simp only [wordG, wordOf, sel, Prod.fst_mul, Prod.fst_inv, Ls, List.map_cons, List.map_nil, List.prod_cons,
     List.prod_nil, mul_one, gM_adjN_dig]
 
 theorem toAdd_mul' (x y : Multiplicative (ZMod 5)) :
@@ -77,7 +82,7 @@ theorem wordG_eq (c n : ℕ) (hP : normN (prodN (Ls c)) = quadN (n / 5)) (hZ : z
     rw [wordG_fst c, ← gM_normN _ hdet, hP]
     rfl
   have hz : Multiplicative.toAdd (wordG c).2 = ((zW c : ℕ) : ZMod 5) := by
-    unfold wordG sel
+    unfold wordG wordOf sel
     simp only [Prod.snd_mul, Prod.snd_inv, toAdd_mul', toAdd_inv', toAdd_ofAdd']
     unfold zW
     rw [ZMod.natCast_mod]
@@ -89,9 +94,16 @@ theorem wordG_eq (c n : ℕ) (hP : normN (prodN (Ls c)) = quadN (n / 5)) (hZ : z
     rw [show (wordG c).2 = Multiplicative.ofAdd (Multiplicative.toAdd (wordG c).2) from rfl, hz, hZ]
   exact Prod.ext h1 h2
 
-theorem cover : ∀ g : PGL37Z5.Grp, ∃ x₁ ∈ SS, ∃ x₂ ∈ SS, ∃ x₃ ∈ SS, ∃ x₄ ∈ SS, ∃ x₅ ∈ SS, ∃ x₆ ∈ SS,
-    ∃ x₇ ∈ SS, ∃ x₈ ∈ SS, ∃ x₉ ∈ SS,
-    g = x₁ * (x₂⁻¹ * (x₃ * (x₄⁻¹ * (x₅ * (x₆⁻¹ * (x₇ * (x₈⁻¹ * x₉))))))) := by
+/-- The nine-letter covering condition of `haar_isBipartiteDegDiam10_of_equiv`, for a general group. It is a
+definition, so that `cover` below has the lemma's group operations (those of the `Group` instance) in its type, and
+the application of the lemma is checked by unfolding one name rather than by comparing the operations of
+`PGL(2, 37) × Z_5` term by term. -/
+def CoverHyp {G : Type*} [Group G] (S : Finset G) : Prop :=
+  ∀ g : G, ∃ x₁ ∈ S, ∃ x₂ ∈ S, ∃ x₃ ∈ S, ∃ x₄ ∈ S, ∃ x₅ ∈ S, ∃ x₆ ∈ S, ∃ x₇ ∈ S, ∃ x₈ ∈ S,
+    ∃ x₉ ∈ S, g = x₁ * (x₂⁻¹ * (x₃ * (x₄⁻¹ * (x₅ * (x₆⁻¹ * (x₇ * (x₈⁻¹ * x₉)))))))
+
+theorem cover : CoverHyp SS := by
+  unfold CoverHyp
   intro g
   obtain ⟨c, hc⟩ := exC (PGL37Z5.enc g) (PGL37Z5.enc_lt g)
   obtain ⟨hP, hZ⟩ := okC_spec hc

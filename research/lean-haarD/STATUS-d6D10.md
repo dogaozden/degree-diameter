@@ -1,5 +1,8 @@
 # STATUS d6D10: Δ6·D10 506,160 in Lean
 
+> Superseded by `STATUS-d6D10c.md`: `nb_6_10_haar` now builds, with the standard axioms only.
+
+
 **Partial: blocked at the last step.** Everything except the record theorem and its axioms file builds, with no
 `sorry`, `admit`, `native_decide` or `axiom`. `nb_6_10_haar` does **not** build yet: elaborating
 `haar_isBipartiteDegDiam10_of_equiv SS equiv506160 cover` times out in `isDefEq` at the `cover` argument
