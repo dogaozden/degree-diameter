@@ -1,2 +1,38 @@
 group pgl 31 x Z_21, N=624960, identity 19530
 start cost=331
+t=30 steps=41 evals=329 cost=89 best=89 T=0.53
+t=60 steps=84 evals=673 cost=81 best=81 T=0.19
+t=91 steps=127 evals=1017 cost=80 best=80 T=0.15
+t=121 steps=170 evals=1361 cost=80 best=80 T=0.15
+t=152 steps=214 evals=1713 cost=80 best=80 T=0.15
+t=182 steps=258 evals=2065 cost=80 best=80 T=0.15
+t=212 steps=301 evals=2409 cost=78 best=78 T=0.15
+t=242 steps=344 evals=2753 cost=78 best=78 T=0.15
+t=273 steps=389 evals=3113 cost=78 best=78 T=0.15
+t=303 steps=433 evals=3465 cost=78 best=78 T=0.15
+t=334 steps=478 evals=3825 cost=78 best=78 T=0.15
+t=364 steps=523 evals=4185 cost=78 best=78 T=0.15
+t=394 steps=569 evals=4553 cost=78 best=78 T=0.15
+t=424 steps=615 evals=4921 cost=78 best=78 T=0.15
+t=455 steps=661 evals=5289 cost=78 best=78 T=1.46
+t=485 steps=707 evals=5657 cost=78 best=78 T=0.51
+t=515 steps=754 evals=6033 cost=78 best=78 T=0.18
+t=546 steps=800 evals=6401 cost=78 best=78 T=0.15
+t=576 steps=846 evals=6769 cost=78 best=78 T=0.15
+t=606 steps=891 evals=7129 cost=78 best=78 T=1.41
+t=636 steps=935 evals=7481 cost=76 best=76 T=0.50
+t=667 steps=981 evals=7849 cost=76 best=76 T=0.17
+t=697 steps=1026 evals=8209 cost=76 best=76 T=0.15
+t=727 steps=1072 evals=8577 cost=76 best=76 T=0.15
+t=758 steps=1117 evals=8937 cost=76 best=76 T=0.15
+t=788 steps=1162 evals=9297 cost=76 best=76 T=0.15
+t=818 steps=1208 evals=9665 cost=76 best=76 T=0.15
+t=849 steps=1254 evals=10033 cost=76 best=76 T=0.15
+t=879 steps=1301 evals=10409 cost=68 best=68 T=0.15
+t=909 steps=1348 evals=10785 cost=68 best=68 T=0.15
+t=940 steps=1395 evals=11161 cost=68 best=68 T=0.15
+t=970 steps=1442 evals=11537 cost=68 best=68 T=0.15
+t=1000 steps=1487 evals=11897 cost=68 best=68 T=0.15
+t=1030 steps=1534 evals=12273 cost=68 best=68 T=0.15
+t=1060 steps=1581 evals=12649 cost=68 best=68 T=0.15
+RESULT d=10 D=8 group=pgl 31 x Z_21 N=624960 best=68 evals=12689 time=1063.7
