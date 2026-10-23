@@ -1,0 +1,22 @@
+group psl 59 x Z_11, N=1129260, identity 18821, H order 59, rows 19140, threads 1, setup 0.03s
+start cost=32
+t=30 steps=2674 evals=21393 cost=8 best=8 T=0.53
+t=60 steps=5299 evals=42393 cost=13 best=8 T=0.19
+t=90 steps=7886 evals=63089 cost=6 best=6 T=0.15
+t=120 steps=10593 evals=84745 cost=6 best=6 T=0.15
+t=150 steps=13355 evals=106841 cost=6 best=6 T=0.15
+t=180 steps=16034 evals=128273 cost=6 best=6 T=0.15
+t=210 steps=18486 evals=147889 cost=6 best=6 T=0.15
+t=240 steps=21061 evals=168489 cost=11 best=6 T=0.95
+t=270 steps=23651 evals=189209 cost=7 best=6 T=0.34
+t=300 steps=26185 evals=209481 cost=7 best=6 T=0.15
+t=330 steps=28842 evals=230737 cost=7 best=6 T=0.15
+t=360 steps=31487 evals=251897 cost=7 best=6 T=0.15
+t=390 steps=34181 evals=273449 cost=11 best=6 T=0.95
+t=420 steps=36821 evals=294569 cost=9 best=6 T=0.34
+t=450 steps=39456 evals=315649 cost=9 best=6 T=0.15
+t=480 steps=42070 evals=336561 cost=8 best=6 T=0.15
+t=510 steps=44721 evals=357769 cost=8 best=6 T=0.15
+t=540 steps=47353 evals=378825 cost=6 best=6 T=0.95
+t=570 steps=49907 evals=399257 cost=6 best=6 T=0.34
+RESULT d=7 D=10 group=psl 59 x Z_11 N=1129260 best=6 evals=420593 time=600.0
