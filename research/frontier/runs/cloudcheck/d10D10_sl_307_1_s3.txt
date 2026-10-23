@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:55:50Z
+file: research/frontier/sols/d10D10_sl_307_1_s3.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 3cda3896ce2b5ac18574f156a2ee5363f2e1f0d47deb6cd618ad98e1f8b987fa
+header: 10 10 sl 307 n 1 N 28934136
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d10D10_sl_307_1_s3.txt
+from (e,A): reached A 28934136/28934136, B 28934136/28934136 within 10, ecc 10
+from (e,B): reached A 28934136/28934136, B 28934136/28934136 within 10, ecc 10
+VALID d=10 D=10 group=sl 307 x Z_1 N=28934136 vertices=57868272 (distinct generators, 10-regular simple)
+(exit 0)
+[exit 0; wall 18s; cpu 18s; peak RSS 22 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d10D10_sl_307_1_s3.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d10D10_sl_307_1_s3.txt
+header: 10 10 sl 307 n 1 N 28934136
+d=10 D=10
+group: SL(2,307) [order 28934136] x Z_1; |G| = 28934136, vertices 2|G| = 57868272
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.2s]
+generators: 10 distinct group elements, all in the group [0.2s]
+neighbour check (full: 28934136 vertices per side): every vertex has 10 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [2.3s]
+BFS from A: ecc=10 reached 57868272 of 57868272 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65570, 585054, 4848255, 22922329, 24019491, 5419372] [6.5s]
+BFS from B: ecc=10 reached 57868272 of 57868272 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65570, 585056, 4848255, 22923427, 24019491, 5418272] [11.2s]
+max degree = min degree = 10, no repeated edges (checked above)
+elapsed 11.2s
+RESULT VALID d=10 D=10 eccA=10 eccB=10 n=57868272
+(exit 0)
+[exit 0; wall 11s; cpu 44s; peak RSS 16 MB]
