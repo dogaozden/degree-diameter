@@ -1,4 +1,5 @@
 import BipartiteDD.Haar.D9D8.Cover
+import BipartiteDD.Haar.GraphD
 
 /-! The covering hypothesis of `isBipartiteDegDiam8_even_of` for `G = PSL(2, 23) × Z41`, from the checked codes of
 `Cover`: every `x` is `s * (p₁⁻¹ p₂) (p₃⁻¹ p₄) (p₅⁻¹ p₆)` with `s, p₁, …, p₆ ∈ SS`. -/
