@@ -1,0 +1,12 @@
+group sl 19 x Z_31, N=212040, identity 10602, H order 62, rows 3420, threads 1, setup 0.01s
+start cost=86
+t=30 steps=10914 evals=87313 cost=8 best=8 T=0.53
+t=60 steps=21422 evals=171377 cost=6 best=6 T=0.19
+t=90 steps=31980 evals=255841 cost=6 best=6 T=0.15
+t=120 steps=42544 evals=340353 cost=6 best=6 T=0.15
+t=150 steps=52839 evals=422713 cost=6 best=6 T=0.15
+t=180 steps=63453 evals=507625 cost=6 best=6 T=0.15
+t=210 steps=73981 evals=591849 cost=6 best=6 T=0.67
+t=240 steps=84508 evals=676065 cost=6 best=6 T=0.24
+t=270 steps=95170 evals=761361 cost=6 best=6 T=0.15
+RESULT d=7 D=9 group=sl 19 x Z_31 N=212040 best=6 evals=846697 time=300.0
