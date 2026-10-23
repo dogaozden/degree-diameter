@@ -1,0 +1,21 @@
+group psl 17 x Z_43, N=105264, identity 5848
+start cost=82
+t=30 steps=476 evals=3809 cost=7 best=3 T=0.53
+t=60 steps=966 evals=7729 cost=1 best=1 T=0.19
+t=90 steps=1465 evals=11721 cost=1 best=1 T=0.15
+t=120 steps=1983 evals=15865 cost=1 best=1 T=0.15
+t=150 steps=2503 evals=20025 cost=1 best=1 T=0.15
+t=180 steps=3014 evals=24113 cost=1 best=1 T=0.15
+t=210 steps=3533 evals=28265 cost=3 best=1 T=0.62
+t=240 steps=4046 evals=32369 cost=2 best=1 T=0.22
+t=270 steps=4574 evals=36593 cost=2 best=1 T=0.15
+t=300 steps=5099 evals=40793 cost=2 best=1 T=0.15
+t=330 steps=5628 evals=45025 cost=2 best=1 T=0.15
+t=360 steps=6149 evals=49193 cost=3 best=1 T=0.62
+t=390 steps=6674 evals=53393 cost=1 best=1 T=0.22
+t=420 steps=7208 evals=57665 cost=1 best=1 T=0.15
+t=450 steps=7740 evals=61921 cost=2 best=1 T=0.15
+t=480 steps=8277 evals=66217 cost=1 best=1 T=0.15
+RESULT d=8 D=8 group=psl 17 x Z_43 N=105264 best=0 evals=67361 time=488.4
+full diameter check: OK
+wrote sols/d8D8_psl_17_43_s2.txt
