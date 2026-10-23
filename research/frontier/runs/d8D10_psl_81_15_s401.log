@@ -1,22 +1,22 @@
-group psl 81 poly x^4+x+2 x Z_15, N=3985200, identity 48600, H order 60, rows 66420, threads 1, setup 0.16s
+group psl 81 poly x^4+x+2 x Z_15, N=3985200, identity 48600, H order 60, rows 66420, threads 1, setup 0.15s
 start cost=30
-t=30 steps=266 evals=2129 cost=14 best=14 T=0.53
-t=60 steps=531 evals=4249 cost=14 best=14 T=0.19
-t=90 steps=805 evals=6441 cost=14 best=14 T=0.15
-t=120 steps=1092 evals=8737 cost=12 best=12 T=0.15
-t=150 steps=1378 evals=11025 cost=11 best=11 T=0.15
-t=180 steps=1649 evals=13193 cost=11 best=11 T=0.15
-t=210 steps=1904 evals=15233 cost=11 best=11 T=0.15
-t=240 steps=2163 evals=17305 cost=11 best=11 T=0.15
-t=271 steps=2432 evals=19457 cost=11 best=11 T=0.15
-t=301 steps=2687 evals=21497 cost=11 best=11 T=0.56
-t=331 steps=2962 evals=23697 cost=11 best=11 T=0.20
-t=361 steps=3231 evals=25849 cost=11 best=11 T=0.15
-t=391 steps=3498 evals=27985 cost=11 best=11 T=0.15
-t=421 steps=3770 evals=30161 cost=11 best=11 T=0.15
-t=451 steps=4035 evals=32281 cost=11 best=11 T=0.55
-t=481 steps=4304 evals=34433 cost=11 best=11 T=0.20
-t=511 steps=4567 evals=36537 cost=11 best=11 T=0.15
-t=541 steps=4840 evals=38721 cost=11 best=11 T=0.15
-t=571 steps=5098 evals=40785 cost=11 best=11 T=0.15
-RESULT d=8 D=10 group=psl 81 poly x^4+x+2 x Z_15 N=3985200 best=11 evals=42649 time=598.8
+t=30 steps=262 evals=2097 cost=14 best=14 T=0.53
+t=60 steps=522 evals=4177 cost=14 best=14 T=0.19
+t=90 steps=779 evals=6233 cost=14 best=14 T=0.15
+t=120 steps=1038 evals=8305 cost=14 best=14 T=0.15
+t=150 steps=1303 evals=10425 cost=11 best=11 T=0.15
+t=180 steps=1555 evals=12441 cost=11 best=11 T=0.15
+t=210 steps=1807 evals=14457 cost=11 best=11 T=0.15
+t=241 steps=2050 evals=16401 cost=11 best=11 T=0.15
+t=271 steps=2291 evals=18329 cost=11 best=11 T=0.15
+t=301 steps=2537 evals=20297 cost=11 best=11 T=0.69
+t=331 steps=2793 evals=22345 cost=11 best=11 T=0.24
+t=361 steps=3059 evals=24473 cost=11 best=11 T=0.15
+t=391 steps=3298 evals=26385 cost=11 best=11 T=0.15
+t=421 steps=3540 evals=28321 cost=11 best=11 T=0.15
+t=451 steps=3782 evals=30257 cost=11 best=11 T=0.68
+t=481 steps=4033 evals=32265 cost=11 best=11 T=0.24
+t=511 steps=4279 evals=34233 cost=11 best=11 T=0.15
+t=541 steps=4529 evals=36233 cost=11 best=11 T=0.15
+t=571 steps=4782 evals=38257 cost=11 best=11 T=0.15
+t=601 steps=5040 evals=40321 cost=11 best=11 T=0.68
