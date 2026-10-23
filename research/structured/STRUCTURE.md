@@ -241,6 +241,14 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
   §3 fit it needs ~2·10⁷ or more. k = 5 (Δ = 5·2, f = 0) would give μ_eff ≈ 14, but every group with elements of order 5
   and a suitable Z_n at this order has a large cyclic factor and mixes badly (sl 9 × Z821: random-S minimum 298 at
   μ = 66; sl 11 × Z451: orbit minimum 78).
+- **(11,8)**, new cell, table 2,246,940 (needs N ≥ 1,123,471, μ ≥ 56.9). k = 5 (Δ = 1 + 5·2) on psl 59 × Z11
+  (N = 1,129,260, μ = 60.2, μ/5 = 12.0, |Fix| = 29, expected fixed-point misses 4.2):
+  - seed 1: best cost 3 after 3.0·10⁶ evaluations (2 h);
+  - seed 2 with RESTART=1: best 2 after 1.6·10⁶ (1 h).
+  Free orbits come in multiples of 5, so both runs had **all free orbits covered**; what remained were 2–3
+  uncovered α-fixed elements. The run was decided by fixed points, as §2.3 predicts. A short try on psl 19 × Z331
+  (|Fix| = 10 but no wide rows, 7 ms per evaluation) reached cost 15. Promising next steps: a group with a smaller
+  centralizer and good mixing, more seeds, or extra fixed generators to cover Fix(α). The cell looks within reach.
 <!-- OPEN-ATTEMPTS -->
 
 Next steps, in order of expected value:
