@@ -1,5 +1,6 @@
 import BipartiteDD.Basic
 import BipartiteDD.Haar.Graph
+import BipartiteDD.Haar.GraphD
 import Mathlib.Logic.Equiv.Fin.Basic
 import Mathlib.Tactic.Group
 
@@ -163,8 +164,11 @@ theorem haar_colorable (S : Finset G) : (haarGraph S).Colorable 2 :=
 theorem haar_ediam_le_five (S : Finset G) (hS : S.Nonempty)
     (hA : ∀ g : G, ∃ a ∈ S, ∃ b ∈ S, ∃ c ∈ S, ∃ d ∈ S, g = a⁻¹ * b * c⁻¹ * d)
     (hB : ∀ g : G, ∃ a ∈ S, ∃ b ∈ S, ∃ c ∈ S, ∃ d ∈ S, g = a * b⁻¹ * c * d⁻¹) :
-    (haarGraph S).ediam ≤ 5 :=
-  ediam_le_five_of S (haarGraph S) (Equiv.refl _) (fun _ _ => Iff.rfl) hS hA hB
+    (haarGraph S).ediam ≤ 5 := by
+  -- the `n = 2` case of `haar_ediam_le_odd` (in `GraphD`)
+  have h := haar_ediam_le_odd hS 2 (fun x => isLeftWord_two_of_four (hA x))
+    (fun x => isRightWord_two_of_four (hB x))
+  simpa using h
 
 /-- The Haar graph of `S` on `G ⊕ G`, with `|S|` as degree bound and diameter 5. -/
 theorem haar_isBipartiteDegDiam (S : Finset G) (hS : S.Nonempty)
@@ -172,6 +176,18 @@ theorem haar_isBipartiteDegDiam (S : Finset G) (hS : S.Nonempty)
     (hB : ∀ g : G, ∃ a ∈ S, ∃ b ∈ S, ∃ c ∈ S, ∃ d ∈ S, g = a * b⁻¹ * c * d⁻¹) :
     IsBipartiteDegDiam (haarGraph S) S.card 5 :=
   isBipartiteDegDiam_of S (haarGraph S) (Equiv.refl _) (fun _ _ => Iff.rfl) hS hA hB
+
+/-- Odd diameter `2 n + 1` on `G ⊕ G`: degree `|S|`, bipartite, from `n`-word covers of both sides. -/
+theorem haar_isBipartiteDegDiam_odd (S : Finset G) (hS : S.Nonempty) (n : ℕ)
+    (hA : ∀ x : G, IsLeftWord S n x) (hB : ∀ x : G, IsRightWord S n x) :
+    IsBipartiteDegDiam (haarGraph S) S.card (2 * n + 1) :=
+  ⟨haar_colorable S, haar_degree S, haar_ediam_le_odd hS n hA hB⟩
+
+/-- Even diameter `2 n + 2` on `G ⊕ G`: degree `|S|`, bipartite, from the even cover `S (S⁻¹S)^n = G`. -/
+theorem haar_isBipartiteDegDiam_even (S : Finset G) (n : ℕ)
+    (hA : ∀ x : G, ∃ s ∈ S, IsLeftWord S n (s⁻¹ * x)) :
+    IsBipartiteDegDiam (haarGraph S) S.card (2 * n + 2) :=
+  ⟨haar_colorable S, haar_degree S, haar_ediam_le_even n hA⟩
 
 /-- The same graph transported along any equivalence `e : G ⊕ G ≃ W`. -/
 theorem haar_isBipartiteDegDiam_of_equiv {W : Type*} (S : Finset G) (e : G ⊕ G ≃ W)
