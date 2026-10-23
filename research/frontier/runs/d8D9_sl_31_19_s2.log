@@ -2,3 +2,8 @@ group sl 31 x Z_19, N=565440, identity 17670
 start cost=10
 t=31 steps=24 evals=193 cost=4 best=4 T=0.52
 t=61 steps=42 evals=337 cost=4 best=4 T=0.18
+t=92 steps=65 evals=521 cost=2 best=2 T=0.15
+t=123 steps=89 evals=713 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 31 x Z_19 N=565440 best=0 evals=809 time=139.5
+full diameter check: OK
+wrote sols/d8D9_sl_31_19_s2.txt
