@@ -1,0 +1,25 @@
+import BipartiteDD.Haar.Diam7
+import BipartiteDD.Haar.D6D7.Cover
+
+/-! The (6,7) record on 8370 vertices, as the Haar graph of `Z_279 ⋊ Z_15` (the `meta 279 15 7` group) with the
+connection set of `research/frontier/sols/d6D7_meta_279_15_7_1_s1.txt`. The covering hypotheses are the
+kernel-checked certificates of `D6D7.Cover`, built from the stage modules `D6D7.Stage00 … Stage04`. -/
+
+namespace BipartiteDD.Haar.D6D7
+
+open BipartiteDD.Haar
+
+/-- `(Z_279 ⋊ Z_15) ⊕ (Z_279 ⋊ Z_15) ≃ Fin 8370`: the two sides, numbered `0 … 8369`. -/
+noncomputable def equiv8370 : Meta279.Grp ⊕ Meta279.Grp ≃ Fin 8370 :=
+  (Equiv.sumCongr Meta279.equivG Meta279.equivG).trans
+    (finSumFinEquiv.trans (finCongr (by norm_num)))
+
+end BipartiteDD.Haar.D6D7
+
+open BipartiteDD.Haar.D6D7 in
+/-- A graph on 8370 vertices, bipartite, of degree at most 6 and diameter at most 7. -/
+theorem nb_6_7_haar : ∃ G : SimpleGraph (Fin 8370), BipartiteDD.IsBipartiteDegDiam G 6 7 := by
+  have h := BipartiteDD.Haar.haar_isBipartiteDegDiam7_of_equiv SS equiv8370
+    ⟨sel 0, sel_mem 0 (by norm_num)⟩ cover1 cover2
+  rw [card_SS] at h
+  exact ⟨_, h⟩
