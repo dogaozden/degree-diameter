@@ -27,7 +27,7 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
 4. **The ceiling does not move.** Counting symmetric S gives the same first-moment ceiling μ ≈ Δ ln N as random S
    (§1). Cells whose table lies above it ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13) stay
    unreachable for random-like and orbit-symmetric S alike. (10,8) and (11,8) lie below it and were attempted
-   (§7). (11,8) got to 2 uncovered elements, both fixed by α. Neither cell is solved yet.
+   (§7). (11,8) got to 1 uncovered element, fixed by α (7 seeds, 1.7·10⁷ evaluations). Neither cell is solved yet.
 5. **"A billion times more efficient?"** (§6) Not as a constant factor: SPEEDUP.md measures 1.2–3.2× per core. As an
    exponent change, the orbit method beats extrapolated random-S annealing by ~10⁵ at μ = 34, ~10⁶ at μ = 43 and,
    extrapolated, ~10⁹ near μ ≈ 67. But it has its own wall, and nothing random-like passes the first-moment
@@ -236,8 +236,8 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
   Larger k needs α with few fixed points. In SL-type groups |Fix| ≈ q and each fixed point is missed with probability
   e^(−λ/k). Groups with fixed-point-free α are nilpotent and mix badly (§5).
 - (10,8) and (11,8) lie in the band between the k = 3 wall and the ceiling. Both were attempted (§7): (10,8) with
-  k = 3 (μ_eff ≈ 22, best 12) and (11,8) with k = 5 on PSL(2,59) × Z11 (μ_eff ≈ 16, best 2: only fixed points
-  left). Neither is solved. (11,8) looks close.
+  k = 3 (μ_eff ≈ 22, best 12) and (11,8) with k = 5 on PSL(2,59) × Z11 (μ_eff ≈ 16, best 1: a single α-fixed
+  element left). Neither is solved. (11,8) is one orbit short, right at the wall.
 
 ## 7. Open attempts, and what to do next
 
@@ -247,13 +247,32 @@ billion-fold efficiency gain around μ ≈ 65–70, but only there:
   and a suitable Z_n at this order has a large cyclic factor and mixes badly (sl 9 × Z821: random-S minimum 298 at
   μ = 66; sl 11 × Z451: orbit minimum 78).
 - **(11,8)**, new cell, table 2,246,940 (needs N ≥ 1,123,471, μ ≥ 56.9). k = 5 (Δ = 1 + 5·2) on psl 59 × Z11
-  (N = 1,129,260, μ = 60.2, μ/5 = 12.0, |Fix| = 29, expected fixed-point misses 4.2):
-  - seed 1: best cost 3 after 3.0·10⁶ evaluations (2 h);
-  - seed 2 with RESTART=1: best 2 after 1.6·10⁶ (1 h).
-  Free orbits come in multiples of 5, so both runs had **all free orbits covered**; what remained were 2–3
-  uncovered α-fixed elements. The run was decided by fixed points, as §2.3 predicts. A short try on psl 19 × Z331
-  (|Fix| = 10 but no wide rows, 7 ms per evaluation) reached cost 15. Promising next steps: a group with a smaller
-  centralizer and good mixing, more seeds, or extra fixed generators to cover Fix(α). The cell looks within reach.
+  (N = 1,129,260, μ = 60.2, μ/5 = 12.0, |Fix| = 29, expected fixed-point misses 4.2, so μ_eff ≈ 16: the same as
+  the k = 3 wall, μ/3 ≈ 15–17). Seven seeds, 1.7·10⁷ evaluations in all (≈ 8.5 core-hours). None solved:
+
+  | seed | energy | evaluations | best cost | left uncovered |
+  |---|---|---|---|---|
+  | 1 | uncovered / 5 | 3.0·10⁶ (2 h) | 3 | 3 α-fixed elements |
+  | 2, RESTART=1 | uncovered / 5 | 1.6·10⁶ | 2 | 2 fixed elements |
+  | 3 | uncovered / 5 | 2.2·10⁶ | 3 | 3 fixed elements |
+  | 4 | ORBW=5 | 2.9·10⁶ | **1** | 1 fixed element (reached after 5.5·10⁴ evaluations, then stuck) |
+  | 5, RESTART=1 | ORBW=5 | 2.9·10⁶ | 5 | one free 5-orbit |
+  | 6 | ORBW=5 | 2.7·10⁶ | 5 | one free 5-orbit |
+  | 7 | ORBW=5 | 1.6·10⁶ | 5 | one free 5-orbit |
+
+  With the plain energy a fixed element costs 1/5 of a free orbit, and every run ended with all free orbits covered
+  and 2–3 fixed elements left, as §2.3 predicts. `ORBW=5` counts every uncovered α-orbit, fixed or free, as 1. All
+  four ORBW runs ended exactly one orbit short. On an easy instance of the same cell (psl 41 × Z31, μ/5 = 6.4,
+  2.5 expected fixed misses, 11 seeds each, `runs/orbw_ab_psl41_31.txt`) ORBW made no measurable difference:
+  geometric means of 1.08·10⁴ and 0.99·10⁴ evaluations, every run solved. So the cell is one orbit away, but this
+  is exactly where k = 3 runs stall at their wall too.
+
+  Other groups, checked on paper: μ ≈ 57–62 needs N ≈ 1.12–1.14M, a narrow window. The other k = 5 candidates in
+  it have huge cyclic factors: PSL(2,11) × Z1721 and PSL(2,19) × Z331 (|Fix| = 5 and 10). psl 19 × Z331 reached
+  cost 15 in a short try, at 7 ms per evaluation without wide rows. SL(2,32) has a field automorphism of order 5
+  fixing only SL(2,2) (6 elements), but SL(2,32) × Z_n jumps from N = 1.01M (n = 31, too small) to 1.34M (n = 41,
+  μ = 341). Extra fixed generators are not possible: f = 6 would leave a single orbit (§5).
+  Next: more seeds (about 1 h each), or a cheaper orbit evaluation. Item 4 below needs |C(g)| ≥ 64; here it is 30.
 <!-- OPEN-ATTEMPTS -->
 
 Next steps, in order of expected value:
