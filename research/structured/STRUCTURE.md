@@ -120,9 +120,14 @@ The fit there is evals ≈ 10⁵ e^((μ−13)/2).
 | (7,9) | psl 29 × Z19 | 231,420 | 38.2 | 14 | solved (**record**) | 1.5·10⁶ |
 | (9,8) | sl 27 × Z13 (f = 3) | 255,528 | 21.6 | 53 | solved (**record**) | 504k |
 
-Same machine, same seeds, 60 s each (`cmp1.txt` in runs/):
+Head-to-head on the same machine, same groups, same seeds 1–4, 60 s wall clock each (`tools/cmp.sh`, log `runs/cmp1.txt`;
+the box ran 5–7 jobs, so 60 s bought 0.6–1.9·10⁶ evaluations):
 
-<!-- CMP-TABLE -->
+| cell | group | N | μ | random S: solved, evals (or best cost) | orbit k=3: solved, evals |
+|---|---|---|---|---|---|
+| (7,8) | psl 19 x Z_13 | 44,460 | 23.3 | 1/4; best 2 @ 1.9e+06, best 1 @ 1.7e+06, best 2 @ 1.7e+06, 3.28e+04 | 4/4; 3.62e+03, 3.14e+03, 1.33e+03, 737 |
+| (7,8) | psl 17 x Z_19 | 46,512 | 34.0 | 0/4; best 6 @ 1.2e+06, best 6 @ 1.4e+06, best 6 @ 1.6e+06, best 6 @ 1.3e+06 | 4/4; 1.67e+04, 5.76e+04, 2.65e+04, 3.76e+04 |
+| (7,8) | psl 19 x Z_14 | 47,880 | 43.0 | 0/4; best 10 @ 8.4e+05, best 9 @ 9.8e+05, best 9 @ 6.4e+05, best 10 @ 7.9e+05 | 1/4; 2.29e+05, best 3 @ 6.5e+05, best 3 @ 7.1e+05, best 3 @ 7.9e+05 |
 
 Reading: for k = 3 the evaluations to solve grow roughly like e^(μ/4.5) (from 3·10³ at μ = 23 to 3·10⁵ at μ = 43
 at (7,8)), against e^(μ/2) for random S. The wall, the μ where ~10⁷ evaluations stop sufficing, is μ ≈ 45–50 at
@@ -138,6 +143,8 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (8,7) | 40,586 | 41,040 | **43,344** (+5.6 %) | sl 8 × Z43, k = 3, m = 2, f = 2 | 38.5 | 1.2·10⁴ | d8D7_sl_8_43_orb3_s1.txt |
 | (7,9) | 400,160 | 416,640 | **462,840** (+11.1 %) | psl 29 × Z19, k = 3, m = 2, f = 1 | 38.2 | 1.5·10⁶ | d7D9_psl_29_19_orb3_s1.txt |
 | (9,8) | 449,480 | 497,904 | **511,056** (+2.6 %) | sl 27 × Z13, k = 3, m = 2, f = 3 | 21.6 | 5.0·10⁵ | d9D8_sl_27_13_orb3_s1.txt |
+| (8,9) | 1,091,232 | 1,245,312 | **1,279,680** (+2.8 %) | psl 31 × Z43, k = 3, m = 2, f = 2 | 17.4 | 7.6·10³ | d8D9_psl_31_43_orb3_s1.txt |
+| (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19, k = 3, m = 2, f = 1 | 22.2 | 2.3·10⁴ | d7D10_psl_49_19_orb3_s1.txt |
 
 Also valid but superseded or not records (kept in runs/): (7,8) psl 17 × Z19 (93,024), psl 13 × Z43 (93,912);
 (8,8) psl 23 × Z19 (230,736), sl 49 (235,200); (8,7) psl 13 × Z19 (41,496), pgl 8 × Z43 (43,344); (7,9)
@@ -219,9 +226,12 @@ Next steps, in order of expected value:
    |Fix| ≈ q, which blocks k ≥ 5 except when q is small (but then n is large and mixing is poor). SL(3,q) has
    regular-semisimple centralizers of size ~q² out of q⁸, which would allow k = 5–7 at moderate N. Not implemented
    (needs a 3×3 matrix family in haar_gen3/haar_fast and in build_haar2.py).
-4. **A cheaper orbit evaluation.** If the coset subgroup H lies in the torus centralizing the conjugating element
-   (and in the r-fixed part of Z_n), α maps rows to rows, so the BFS could run on α-orbits of rows: about k× fewer
-   operations. Worth ≈ +2 in μ for k = 3.
+4. **A cheaper orbit evaluation.** If the coset subgroup H lies in Fix(α) = C(g) × {0}, then α maps the coset
+   x H to α(x) H with a fixed rotation, and the frontier rows of an α-orbit of rows are rotations of each other. Keep
+   only one representative row per orbit, and fold the map "source row → (representative, extra offset)" into each
+   generator's table when it is built (offsets add, so a gather still costs one window read). Then tables, dense
+   levels and counting all shrink by about k. It needs |C(g)| ≥ 64 for wide rows, i.e. q ≥ 64. It does not apply
+   to the q = 23 and q = 59 groups used for (10,8) and (11,8) here. Worth ≈ +2 in μ for k = 3 and ≈ +3 for k = 5.
 5. **Above-ceiling cells** ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13). They need covering-design
    structure (negatively correlated coverage). The natural route is voltage lifts over Moore graphs or generalized
    polygons with structured voltages (Loz–Pérez-Rosés–Pineda-Villavicencio style). That is a different program and
