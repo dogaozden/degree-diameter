@@ -2,3 +2,11 @@ group psl 29 x Z_5, N=60900, identity 2030, H order 35, rows 1740, threads 1, se
 start cost=52
 t=30 steps=16516 evals=132129 cost=12 best=12 T=0.53
 t=60 steps=32742 evals=261937 cost=10 best=10 T=0.19
+t=90 steps=49745 evals=397961 cost=10 best=10 T=0.15
+t=120 steps=66526 evals=532209 cost=10 best=10 T=0.15
+t=150 steps=83237 evals=665897 cost=10 best=10 T=0.15
+t=180 steps=99571 evals=796569 cost=10 best=10 T=0.15
+t=210 steps=115817 evals=926537 cost=9 best=9 T=0.98
+t=240 steps=132530 evals=1060241 cost=7 best=7 T=0.35
+t=270 steps=148979 evals=1191833 cost=7 best=7 T=0.15
+RESULT d=6 D=9 group=psl 29 x Z_5 N=60900 best=7 evals=1321553 time=300.0
