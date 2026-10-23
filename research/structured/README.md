@@ -102,6 +102,7 @@ python3 ../frontier/build_haar2.py sol.txt
   for graphs above 20M vertices, where build_haar2.py needs hours and > 7 GB.
 - `speed_bench.sh H3 HF`: the measurements behind SPEEDUP.md (RANDSAMPLE identity, BENCH breakdowns, end-to-end
   trajectory hashes and wall-time ratios, haar_gen3 vs haar_fast evaluations per second).
+- `speed_table.py OUT`: turns speed_bench.sh output into the table at the top of SPEEDUP.md.
 
 `runs/` has the logs and build_haar2 outputs of the record runs. New solution files are in `../frontier/sols/`
 (names contain `orb3`).
