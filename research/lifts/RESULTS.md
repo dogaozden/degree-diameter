@@ -170,7 +170,8 @@ copy needs about q+1 such routes, against about 4j² routes available. Not prove
 - **(5,10) above 91,728.**
   - SL(2,11) × Z35 (N = 46,200) and SL(2,13) × Z22 (N = 48,048) were at cost 4–6 after about 450 s of wall time.
     The machine was oversubscribed.
-  - Both were killed by a container restart (18:52) before finishing. Not resumed.
+  - Both were killed by a container restart (18:52) before finishing. They are re-queued at the end of
+    runs/haar_cells.sh.
 - **(3,9) with field-affine groups on the 2+2 cubic base** (the (3,8) recipe). Exhaustive over all voltage
   assignments, no solutions:
   - Z3² ⋊ Z16 (576 vertices), four actions: best costs 52–78;
