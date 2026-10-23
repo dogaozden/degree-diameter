@@ -2,3 +2,21 @@ group psl 47 x Z_13, N=674544, identity 14053, H order 52, rows 12972, threads 1
 start cost=74
 t=30 steps=1968 evals=15745 cost=35 best=34 T=0.53
 t=60 steps=3903 evals=31225 cost=34 best=34 T=0.19
+t=90 steps=5751 evals=46009 cost=34 best=34 T=0.15
+t=120 steps=7654 evals=61233 cost=33 best=33 T=0.15
+t=150 steps=9530 evals=76241 cost=33 best=33 T=0.15
+t=180 steps=11403 evals=91225 cost=33 best=33 T=0.15
+t=210 steps=13311 evals=106489 cost=33 best=33 T=0.15
+t=240 steps=15244 evals=121953 cost=28 best=28 T=0.15
+t=270 steps=17187 evals=137497 cost=28 best=28 T=0.15
+t=300 steps=19021 evals=152169 cost=28 best=28 T=0.15
+t=330 steps=20948 evals=167585 cost=28 best=28 T=0.15
+t=360 steps=22745 evals=181961 cost=28 best=28 T=0.15
+t=390 steps=24646 evals=197169 cost=28 best=28 T=0.75
+t=420 steps=26564 evals=212513 cost=28 best=28 T=0.27
+t=450 steps=28423 evals=227385 cost=28 best=28 T=0.15
+t=480 steps=30283 evals=242265 cost=28 best=28 T=0.15
+t=510 steps=32192 evals=257537 cost=28 best=28 T=0.15
+t=540 steps=34052 evals=272417 cost=28 best=28 T=0.75
+t=570 steps=35918 evals=287345 cost=28 best=28 T=0.27
+RESULT d=8 D=9 group=psl 47 x Z_13 N=674544 best=28 evals=302361 time=600.0

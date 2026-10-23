@@ -2,3 +2,21 @@ group prod psl 7 sl 7 x Z_11, N=620928, identity 78078, H order 56, rows 11088, 
 start cost=64
 t=30 steps=2767 evals=22137 cost=5 best=5 T=0.53
 t=60 steps=5543 evals=44345 cost=3 best=3 T=0.19
+t=90 steps=8233 evals=65865 cost=3 best=3 T=0.15
+t=120 steps=10992 evals=87937 cost=3 best=3 T=0.15
+t=150 steps=13693 evals=109545 cost=3 best=3 T=0.15
+t=180 steps=16407 evals=131257 cost=3 best=3 T=0.15
+t=210 steps=19131 evals=153049 cost=4 best=3 T=0.53
+t=240 steps=21846 evals=174769 cost=4 best=3 T=0.19
+t=270 steps=24611 evals=196889 cost=4 best=3 T=0.15
+t=300 steps=27278 evals=218225 cost=2 best=2 T=0.15
+t=330 steps=29981 evals=239849 cost=2 best=2 T=0.15
+t=360 steps=32605 evals=260841 cost=2 best=2 T=0.15
+t=390 steps=35333 evals=282665 cost=2 best=2 T=0.15
+t=420 steps=38034 evals=304273 cost=2 best=2 T=0.15
+t=450 steps=40739 evals=325913 cost=2 best=2 T=1.32
+t=480 steps=43506 evals=348049 cost=4 best=2 T=0.47
+t=510 steps=46217 evals=369737 cost=2 best=2 T=0.16
+t=540 steps=48954 evals=391633 cost=2 best=2 T=0.15
+t=570 steps=51646 evals=413169 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=prod psl 7 sl 7 x Z_11 N=620928 best=2 evals=434345 time=600.0
