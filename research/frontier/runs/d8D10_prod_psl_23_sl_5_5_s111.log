@@ -1,0 +1,5 @@
+group prod psl 23 sl 5 x Z_5, N=3643200, identity 151900, H order 60, rows 60720, threads 1, setup 0.13s
+start cost=5
+RESULT d=8 D=10 group=prod psl 23 sl 5 x Z_5 N=3643200 best=0 evals=2153 time=11.3
+full diameter check: OK
+wrote sols/d8D10_prod_psl_23_sl_5_5_s111.txt

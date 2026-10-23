@@ -1,0 +1,10 @@
+group prod psl 5 sl 25 poly x^2+2 x Z_4, N=3744000, identity 626400, H order 60, rows 62400, threads 1, setup 0.11s
+start cost=37
+t=30 steps=410 evals=3281 cost=4 best=3 T=0.53
+t=60 steps=830 evals=6641 cost=2 best=2 T=0.19
+t=90 steps=1242 evals=9937 cost=2 best=2 T=0.15
+t=120 steps=1657 evals=13257 cost=2 best=2 T=0.15
+t=150 steps=2077 evals=16617 cost=2 best=2 T=0.15
+RESULT d=10 D=9 group=prod psl 5 sl 25 poly x^2+2 x Z_4 N=3744000 best=0 evals=18553 time=167.2
+full diameter check: OK
+wrote sols/d10D9_prod_psl_5_sl_25_4_s111.txt
