@@ -51,13 +51,17 @@ Notation as in THRESHOLD.md and STRUCTURE.md:
    - Among odd k, conjugation of order 3 is right for SL(2,q) × Z_n at moderate size. Order 5 helps at (11,9)
      and (10,10), where λ ≥ 13. It is also the only feasible option for the open cell (11,8).
    - Frobenius of order k has a fixed-point cost that stays bounded for every k. It is the only route to large k.
-6. **Why the field automorphism lost** (STRUCTURE §5). On SL(2,8), Fix(Frobenius) = SL(2,2) ≅ S₃: five
+6. **Two new records from the model's suggestions** (§4.6), both independently checked:
+   - Δ9·D8 = 524,160 vertices: SL(2,64), Frobenius orbits, f = 0.
+   - Δ13·D8 = 6,814,080 vertices: SL(2,64)×Z₁₃, conjugation orbits.
+7. **Why the field automorphism lost** (STRUCTURE §5). On SL(2,8), Fix(Frobenius) = SL(2,2) ≅ S₃: five
    non-identity elements, three of them involutions.
    - The extra fixed generator is drawn from it. If it is an involution t, e·t^{−1} = t·e^{−1} wipes out about 9 %
      of the words.
    - At odd D the fixed involutions are missed at rate e^{−λ/6}.
    - On SL(2,64), where Fix(Frobenius) = SL(2,4) has 60 elements against 63 for conjugation, the two cost
-     distributions are identical (§4.3, measured here). The loss was a small-field artefact.
+     distributions are identical, and each symmetry solved one of two anneals there (§4.3, §4.6). The loss
+     was a small-field artefact.
 
 ---
 
@@ -113,16 +117,16 @@ number of uncovered clumps is
 - A valid S needs U = ∅. Random S has about μ independent chances to fail. Orbit S has μ/3 independent chances,
   each of which costs three elements at once.
 - The variance of |U| goes up by a factor of about k, and P(|U| = 0) = e^{−μ/k} instead of e^{−μ}.
-- The question "fewer distinct words but better spread?" therefore has the answer **no on both counts**:
-  - there are slightly fewer distinct words (§1.4);
-  - the spread is worse in the sense of positive correlation: perfect within a clump, and asymptotically
-    independent between clumps.
+- So the answer to "fewer distinct words but better spread?" is half yes:
+  - **fewer distinct words: yes**, slightly (§1.4);
+  - **better spread: no**. Coverage events are positively correlated: perfectly within a clump, and
+    asymptotically independent between clumps.
 - The gain comes entirely from concentrating the failures.
 
 ### 1.4 Distinct words and coincidences, measured [MEASURED]
 
 `collisions.py` enumerates all reduced binding words up to length 4 or 5. It counts distinct values per S and
-classifies every coinciding pair by its letter pattern. All 150–300 samples per row are taken on both sides
+classifies every coinciding pair by its letter pattern. Each row uses 150–300 samples of S, both sides
 (`coll_*.txt`).
 
 | group, Δ, word length | random S: median loss | conj k=3: median (p90) | other |
@@ -175,7 +179,8 @@ families.
 
 - With m = 2 orbits (Δ = 7, 8) the orbit space holds only e^{2–4} valid S at the record orders. The next orders
   up hold about one.
-- That is the wall STRUCTURE measured at μ ≈ 45–50. It is a ceiling, not a lack of compute.
+- That is the wall STRUCTURE measured at μ ≈ 45–50. It is a ceiling, not a lack of compute. The record-scale excess
+  ε ≈ 1.3–2 of DATA_CHECK §4e multiplies μ_A, so the true margins are smaller still.
 - The big cells are nowhere near their ceiling.
 
 ## 2. The search-effort law transfers: the annealer sees μ_A [MEASURED]
@@ -205,7 +210,7 @@ families.
   - On PSL(2,19)×Z₁₄, μ = 43: orbit is 1/4 at 2.3·10⁵ (rule for μ_A = 16.0: 4.4·10⁵).
 - **Residual outliers.**
   - SL(2,27)×Z₁₃ at (9,8), f = 3: +3.4 in ln evals, the abelian-triple effect of §1.4. A rerun with f = 0 solved
-    the same group in 1.5·10⁵ evals, against 5.0·10⁵ (one seed each; `exp/an_98_sl27_f0.log`, §4.5).
+    the same group in 1.5·10⁵ evals, against 5.0·10⁵ (one seed each; `exp/an_98_sl27_f0.log`, §4.6).
   - SL(2,8)×Z₄₃ at (8,7): −4.2, i.e. faster than the rule. The rule is calibrated at N ≈ 45,000 and extrapolates
     poorly to the smallest groups.
 
@@ -378,7 +383,7 @@ Fix(conjugation) = C(g) has 63. With f = 1 there are no fixed generators. Over 1
 | mean | 72 | 78 | – |
 
 The two symmetric distributions are identical within noise, as the model predicts. The 40-minute anneals on this
-group are reported in §4.5.
+group are in §4.6.
 
 ### 4.4 Odd D: the involution targets
 
@@ -406,6 +411,7 @@ stalled PSL(2,257) and PSL(2,397) runs in the logs.
    - Measured at (9,8) on SL(2,27)×Z₁₃, over 400 random symmetric S: f = 0 gives min 7, p10 23, median 56,
      mean 193. f = 3 gives 12, 36, 95 and 4,598.
    - An f = 0 anneal solved the record group in 1.5·10⁵ evals, against 5.0·10⁵ for the f = 3 record run.
+   - With f = 0, SL(2,64) gave the new (9,8) record (§4.6).
    - Not run at all so far: (9,9), (9,10), (12,9), (12,10), (15,8), (15,9). These are the cells STRUCTURE §7 left for
      lack of a good Δ ≡ 0 layout.
 3. **Choose fixed generators of large order** in C(g), such as torus generators, never of order 2 or 3. haar_sym
@@ -418,15 +424,49 @@ stalled PSL(2,257) and PSL(2,397) runs in the logs.
    - The two attempts there, at 1.6 and 3.0·10⁶ evals (best 2 and 3, only fixed points left), are 0.6 and 0.9 sd
      beyond that typical effort. That is unlucky but not a contradiction, so more seeds are the recommendation.
    - Every prime of n must be ≡ 1 mod 5.
-5. **Frobenius of order 3 at (13,8) on SL(2,64)×Z₁₃** (6,814,080 vertices, above the current 6,604,416): see the
-   anneal results below. Conjugation on the same group is equivalent (§4.3).
+5. **SL(2,64)** at (13,8) and (9,8), with either symmetry: done in §4.6, two new records. The same reasoning
+   points to SL(2,64)×Z_n and SL(2,125)×Z_n at the other cells where |Q|·n lands just above the record. The
+   model's candidates are in `symmetry_options_out.txt`.
 6. **Do not try k = 2 or 4**, including normaliser and diagonal automorphisms, unless |Fix| ≳ 500. Do not try Z₆
    below q₀ ≈ 17.
 7. **Beyond the ceiling.** For Δ = 7, 8 at D = 7–9, every random-like or orbit-symmetric family is close to its
    first-moment ceiling (§1.5). Further gains there need coverings with negative correlation, which is a different
    program (STRUCTURE §7.5).
 
-ANNEAL-RESULTS-PLACEHOLDER
+### 4.6 Anneal tests of the predictions (this session) [MEASURED]
+
+These are 40-minute (or shorter) single-thread haar_sym runs, one seed each, on groups the model picked. Logs and
+solution files are in `scripts/exp/`.
+
+| cell | group, symmetry, layout | μ | μ_A | rule evals | result |
+|---|---|---|---|---|---|
+| (9,8) | SL(2,27)×Z₁₃, conjugation, **f = 0** | 21.6 | 9.5 | 1.8e4 | solved in 1.5e5 (f = 3 record run: 5.0e5) |
+| (9,8) | **SL(2,64)**, Frobenius x ↦ x⁴, f = 0 | 28.0 | 12.3 | 6.9e4 | **solved in 2.1e5: 524,160 vertices** |
+| (9,8) | SL(2,64), conjugation, f = 0 | 28.0 | 12.3 | 6.9e4 | best 1 (one fixed element) after 2.0e6 |
+| (13,8) | **SL(2,64)×Z₁₃**, conjugation, f = 1 | 35.5 | 13.2 | 1.1e5 | **solved in 1.7e5: 6,814,080 vertices** |
+| (13,8) | SL(2,64)×Z₁₃, Frobenius x ↦ x⁴, f = 1 | 35.5 | 13.2 | 1.1e5 | best 1 (one fixed element) after 2.6e5 |
+
+**Two new records.** Both passed haar_sym's full check and `frontier/build_haar2.py` (`exp/check_*.txt`). The files
+are in `frontier/sols/` for harvesting:
+- **Δ9·D8 = 524,160 vertices**, beating 511,056 (+2.5 %): `d9D8_sl_64_1_orb3frob_f0_s1.txt`, edge sha256
+  16ae6dfb….
+- **Δ13·D8 = 6,814,080 vertices**, beating 6,604,416 (+3.1 %): `d13D8_sl_64_13_orb3_s1.txt`, sha256 56e5d80e….
+
+Both orders are in the "reach" table of §4.5 (Frobenius k = 3: +2.5 % at (9,8), +3.1 % at (13,8)). The solved runs
+took 1.5–3× the rule's typical effort, within its scatter.
+
+**Frobenius against conjugation.** On SL(2,64) each symmetry solved one of the two cells and stalled at cost 1 in
+the other.
+- That is what "equivalent" predicts, given the rule's factor-5 scatter.
+- It is the opposite of the SL(2,8) result, where Fix = S₃ was the problem.
+
+**The stalls.** Both runs that stalled were left with a single uncovered **fixed** element.
+- The cost was 1, not a multiple of 3, and the fixed-point term is Φ ≈ 2.9 here: 62 or 59 fixed points ×
+  e^{−λ/3} = 0.05.
+- When Φ is a large part of μ_A, the energy uncovered/3 undervalues fixed points.
+- `ORBW=3` (an uncovered fixed element costs as much as an orbit) is the obvious knob. STRUCTURE saw no difference
+  "when easy"; these runs are the hard case.
+
 
 ## 5. What is proved, what is not
 
@@ -442,6 +482,7 @@ ANNEAL-RESULTS-PLACEHOLDER
 | k = 2 loss δ ≈ ρℓ²/8 | first-order HEURISTIC, MEASURED order of magnitude |
 | Odd-k norm coincidences cost O(ℓρ/Δ²) | first-order HEURISTIC, consistent with the measured short-word losses |
 | f = 3 abelian triples, low-order fixed letters | exact identities; size MEASURED |
+| New Δ9·D8 524,160 and Δ13·D8 6,814,080 graphs | VALID (haar_sym full check + build_haar2.py) |
 
 ## 6. Files (all in `scripts/`; run from that folder)
 
@@ -455,6 +496,6 @@ ANNEAL-RESULTS-PLACEHOLDER
   §4.2). Usage is in the file header.
 - `symmetry_options.py` → `symmetry_options_out.txt`: §4.5, μ_A for each candidate symmetry and group, and the
   reach table.
-- `exp/`: the haar_sym screening and anneal runs of this session (§4.3, §4.5).
+- `exp/`: the haar_sym screening and anneal runs of this session (§4.3, §4.5, §4.6).
   - Built from `research/structured/haar_sym.c` of the structured branch, unchanged.
   - Commands are at the top of `exp/README.md`.

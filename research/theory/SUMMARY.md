@@ -87,5 +87,8 @@ the original. Lemma 2.2 uses Yadin's published form of Suen's inequality, not Ja
   for more compute.
 - **Avoid involutions in the symmetry group.** Proved: |Fix|·|Anti| ≥ N, so there are same-length coincidences.
 - **Frobenius lost only because Fix = SL(2,2) on SL(2,8).** On SL(2,64) it equals conjugation.
+- **Two new records from the model's picks**, both checked with build_haar2.py: Δ9·D8 = 524,160 (SL(2,64),
+  Frobenius orbits, f = 0) and Δ13·D8 = 6,814,080 (SL(2,64)×Z₁₃, conjugation orbits). Files are in
+  frontier/sols.
 - **Concrete suggestions** are ranked in §4.5 (f = 0 for Δ ≡ 0 mod 3, k = 5 at (11,9), (10,10) and (11,8), longer
   runs on big cells).

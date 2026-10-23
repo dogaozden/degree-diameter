@@ -1,0 +1,45 @@
+group sl 64 poly x^6+x+1 x Z_1, N=262080, identity 4032, H order 63, rows 4160, threads 1, setup 0.01s
+wide rows: HW order 65, rows 4032, setup 0.02s
+alpha: conj by mat(11,51,29,10) (index 48285), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 62 (+e); mu = 27.98, mu/k = 9.33, fixed-point misses ~ 2.99
+start cost=127
+t=30 steps=6236 evals=49889 cost=9 best=9 T=0.53
+t=60 steps=12499 evals=99993 cost=1 best=1 T=0.19
+t=90 steps=18786 evals=150289 cost=1 best=1 T=0.15
+t=120 steps=24897 evals=199177 cost=1 best=1 T=0.15
+t=150 steps=30810 evals=246481 cost=1 best=1 T=0.15
+t=180 steps=36972 evals=295777 cost=1 best=1 T=0.15
+t=210 steps=43334 evals=346673 cost=1 best=1 T=0.99
+t=240 steps=49479 evals=395833 cost=4 best=1 T=0.35
+t=270 steps=55595 evals=444761 cost=4 best=1 T=0.15
+t=300 steps=61733 evals=493865 cost=4 best=1 T=0.15
+t=330 steps=67848 evals=542785 cost=4 best=1 T=0.15
+t=360 steps=73718 evals=589745 cost=1 best=1 T=0.99
+t=390 steps=79908 evals=639265 cost=7 best=1 T=0.35
+t=420 steps=86062 evals=688497 cost=7 best=1 T=0.15
+t=450 steps=92041 evals=736329 cost=7 best=1 T=0.15
+t=480 steps=98197 evals=785577 cost=7 best=1 T=0.15
+t=510 steps=104396 evals=835169 cost=21 best=1 T=0.99
+t=540 steps=110484 evals=883873 cost=10 best=1 T=0.35
+t=570 steps=116519 evals=932153 cost=8 best=1 T=0.15
+t=600 steps=122562 evals=980497 cost=8 best=1 T=0.15
+t=630 steps=128810 evals=1030481 cost=10 best=1 T=0.15
+t=660 steps=134819 evals=1078553 cost=19 best=1 T=0.99
+t=690 steps=140772 evals=1126177 cost=7 best=1 T=0.35
+t=720 steps=146992 evals=1175937 cost=10 best=1 T=0.15
+t=750 steps=153350 evals=1226801 cost=7 best=1 T=0.15
+t=780 steps=159442 evals=1275537 cost=7 best=1 T=0.15
+t=810 steps=165463 evals=1323705 cost=10 best=1 T=0.99
+t=840 steps=171439 evals=1371513 cost=7 best=1 T=0.35
+t=870 steps=177651 evals=1421209 cost=4 best=1 T=0.15
+t=900 steps=183824 evals=1470593 cost=4 best=1 T=0.15
+t=930 steps=190050 evals=1520401 cost=4 best=1 T=0.15
+t=960 steps=196090 evals=1568721 cost=19 best=1 T=0.99
+t=990 steps=202237 evals=1617897 cost=10 best=1 T=0.35
+t=1020 steps=208318 evals=1666545 cost=10 best=1 T=0.15
+t=1050 steps=214482 evals=1715857 cost=4 best=1 T=0.15
+t=1080 steps=220843 evals=1766745 cost=4 best=1 T=0.15
+t=1110 steps=227175 evals=1817401 cost=1 best=1 T=0.99
+t=1140 steps=233541 evals=1868329 cost=1 best=1 T=0.35
+t=1170 steps=239749 evals=1917993 cost=1 best=1 T=0.15
+RESULT d=9 D=8 group=sl 64 poly x^6+x+1 x Z_1 N=262080 best=1 evals=1966457 time=1200.0 orbit k=3 m=3 f=0 fix=62
