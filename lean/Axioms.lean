@@ -78,3 +78,16 @@ import BipartiteDD.GQST.StandinMain
 #print axioms BipartiteDD.SingerC.W3.spread_totally_isotropic
 #print axioms BipartiteDD.SingerC.corC1
 #print axioms nb_7_6
+
+-- Haar lemma for every diameter (GraphD, Main additions).
+#print axioms BipartiteDD.Haar.haar_ediam_le_odd
+#print axioms BipartiteDD.Haar.haar_ediam_le_even
+#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam_odd
+#print axioms BipartiteDD.Haar.haar_isBipartiteDegDiam_even
+#print axioms BipartiteDD.Haar.haar_ediam_le_five
+#print axioms BipartiteDD.Haar.isLeftWord_two_of_four
+#print axioms BipartiteDD.Haar.isLeftWord_of_cert
+#print axioms BipartiteDD.Haar.isRightWord_of_cert
+#print axioms BipartiteDD.Haar.isEven_of_cert
+#print axioms BipartiteDD.Haar.Cycle10.ediam_le_five
+#print axioms BipartiteDD.Haar.Cycle10.ediam_le_six

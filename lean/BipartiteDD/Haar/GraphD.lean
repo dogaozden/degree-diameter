@@ -217,7 +217,7 @@ theorem isLeftWord_two_of_four {x : G}
   obtain ⟨a, ha, b, hb, c, hc, d, hd, rfl⟩ := h
   refine ⟨[(a, b), (c, d)], by simp, ?_, by simp [mul_assoc]⟩
   intro p hp
-  simp only [List.mem_cons, List.mem_singleton, List.not_mem_nil, or_false] at hp
+  simp only [List.mem_cons, List.not_mem_nil, or_false] at hp
   rcases hp with rfl | rfl <;> simp [ha, hb, hc, hd]
 
 theorem isRightWord_two_of_four {x : G}
@@ -225,7 +225,7 @@ theorem isRightWord_two_of_four {x : G}
   obtain ⟨a, ha, b, hb, c, hc, d, hd, rfl⟩ := h
   refine ⟨[(a, b), (c, d)], by simp, ?_, by simp [mul_assoc]⟩
   intro p hp
-  simp only [List.mem_cons, List.mem_singleton, List.not_mem_nil, or_false] at hp
+  simp only [List.mem_cons, List.not_mem_nil, or_false] at hp
   rcases hp with rfl | rfl <;> simp [ha, hb, hc, hd]
 
 /-! ### Certificates
@@ -250,6 +250,7 @@ def wordOK (sL : List G) (n : ℕ) (w : List (ℕ × ℕ)) : Bool :=
 def elemWord (sL : List G) (w : List (ℕ × ℕ)) : List (G × G) :=
   w.map fun p => (sL.getD p.1 1, sL.getD p.2 1)
 
+omit [Group G] in
 theorem wordOK_length {sL : List G} {n : ℕ} {w : List (ℕ × ℕ)} (hw : wordOK sL n w = true) :
     w.length ≤ n := by
   simp only [wordOK, Bool.and_eq_true, decide_eq_true_eq] at hw
