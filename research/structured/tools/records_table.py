@@ -43,5 +43,5 @@ print('|---|---|---|---|---|---|---|---|')
 for (d, D) in sorted(best, key=lambda c: (c[1], c[0])):
     N, grp, ev, k, mm, ff, tag, _ = best[(d, D)]
     mu = N * math.exp(-W(d, D) / N); prev = PREV.get((d, D)); t = TABLE.get((d, D))
-    gain = '(+%.1f %%)' % (100.0 * (2 * N / prev - 1)) if prev else ''
+    gain = '(+%.1f %%)' % (100.0 * (2 * N / prev - 1)) if prev else ('(new cell, table +%.2f %%)' % (100.0 * (2 * N / t - 1)) if t else '')
     print('| (%d,%d) | %s | %s | **%s** %s | %s; %d, %d, %d | %.1f | %.2g | %s.txt |' % (d, D, format(t, ',') if t else '–', format(prev, ',') if prev else '–', format(2 * N, ','), gain, grp, k, mm, ff, mu, ev, tag))

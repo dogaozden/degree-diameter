@@ -10,7 +10,16 @@ for tag in "$@"; do
   cp "$OUT/$tag.txt" "$REPO/research/frontier/sols/" && cp "$OUT/$tag.log" "$REPO/research/structured/runs/"
   echo "$tag: $(grep '^VALID' "$OUT/$tag.log")"
 done
-cd "$REPO" && git add research/frontier/sols research/structured && git commit -q -m "structured: $(for t in "$@"; do grep -h '^VALID' "$OUT/$t.log" | head -1 | grep -o 'd=[0-9]* D=[0-9]* group=.* vertices=[0-9]*'; done | tr '\n' ';') $(grep -ho "orbit k=[0-9]* m=[0-9]* f=[0-9]*" "$OUT/$1.log" | head -1 | sed "s/orbit //") orbit search [haar_sym full check + $(grep -q 'eccA=' "$OUT/$1.log" && echo 'haarcheck_sl + haarcheck2' || (grep -q 'group=psl' "$OUT/$1.log" && grep -q 'distinct generators' "$OUT/$1.log" && echo haarcheck_psl || echo build_haar2)) VALID]
+checkers() {   # which checkers left a VALID verdict in the log (each has its own line format)
+  c=()
+  grep -qE '^VALID d=[0-9]+ D=[0-9]+ group=.* vertices=[0-9]+$' "$1" && c+=(build_haar2)
+  grep -qE '^VALID d=.* group=sl .*distinct generators' "$1" && c+=(haarcheck_sl)
+  grep -qE '^VALID d=.* group=psl .*distinct generators' "$1" && c+=(haarcheck_psl)
+  grep -qE '^VALID d=[0-9]+ D=[0-9]+ vertices=[0-9]+ eccA=' "$1" && c+=(haarcheck2)
+  grep -qE '^RESULT VALID d=' "$1" && c+=(check_haar_indep)
+  local IFS=+; echo "${c[*]}" | sed 's/+/ + /g'
+}
+cd "$REPO" && git add research/frontier/sols research/structured && git commit -q -m "structured: $(for t in "$@"; do grep -h '^VALID' "$OUT/$t.log" | head -1 | grep -o 'd=[0-9]* D=[0-9]* group=.* vertices=[0-9]*'; done | tr '\n' ';') $(grep -ho "orbit k=[0-9]* m=[0-9]* f=[0-9]*" "$OUT/$1.log" | head -1 | sed "s/orbit //") orbit search [haar_sym full check + $(checkers "$OUT/$1.log") VALID]
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_01Ayob3KjJs51WGU95fnUsyn" && git push -q origin HEAD 2>&1 | tail -1
