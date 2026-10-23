@@ -4,7 +4,8 @@ Lists G = Q x Z_n with LO <= |G| <= HI (Q = SL/PSL/PGL(2,q), or a product of two
 whose prime factors are all 1 mod k (so z -> r z has only the fixed point 0) unless --anyn, runs
 'ORBIT="k m f" RANDORB=samples haar_sym ...' on each and prints them ranked by (p1 + p10)/2 of the cost, with mu and
 |Fix(alpha)|.  Lines: rank, N, mu, fix, min, p1, p10, median, spec.  --list: only list the candidates with mu (for
-groups too large to screen)."""
+groups too large to screen).  --save DIR: a sample of cost 0 is kept (haar_sym checks it and writes it) as
+DIR/<tag>.txt with its log DIR/<tag>.log (orbq.sh names, seed tag "rand") and build_haar2.py's verdict."""
 import sys, os, math, subprocess, re
 args = sys.argv[1:]
 d, D, lo, hi = int(args[0]), int(args[1]), int(args[2]), int(args[3]); kmf = args[4]
@@ -57,7 +58,17 @@ rows = []
 for N, spec in sorted(cands):
     mu = N * math.exp(-w / N)
     env = dict(os.environ, ORBIT=kmf, RANDORB=opt['samples'])
-    r = subprocess.run([opt['bin'], str(d), str(D), '1', '1', '8', '/dev/null'] + spec.split(), env=env, capture_output=True, text=True)
+    out = '/dev/null'
+    if 'save' in opt:
+        kk, mm, ff = kmf.split()[:3]
+        tag = 'd%dD%d_%s_orb%s%s_rand' % (d, D, spec.replace(' ', '_'), kk, 'f0' if ff == '0' else '')
+        out = os.path.join(opt['save'], tag + '.txt')
+    r = subprocess.run([opt['bin'], str(d), str(D), '1', '1', '8', out] + spec.split(), env=env, capture_output=True, text=True)
+    if out != '/dev/null' and os.path.exists(out):
+        chk = subprocess.run(['python3', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'frontier', 'build_haar2.py'), out],
+                             capture_output=True, text=True).stdout.strip().splitlines()[-3:] if N <= 10000000 else ['(no build_haar2 above 10M)']
+        open(out[:-4] + '.log', 'w').write(r.stderr + r.stdout + '\n'.join(chk) + '\n')
+        print('# SAVED %s: %s' % (out, chk[-1]), flush=True)
     m = re.search(r'fix=(\d+) samples=\d+ min=(\d+) p1=(\d+) p10=(\d+) median=(\d+)', r.stdout)
     if not m: print('#', spec, 'failed:', (r.stderr.strip().splitlines() or [''])[-1], flush=True); continue
     fix, mn, p1, p10, med = map(int, m.groups())
