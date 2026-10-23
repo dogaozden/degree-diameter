@@ -444,7 +444,7 @@ and seconds per evaluation is ≈ (1–2)·10^(−9)·N·(#BFS) on this Mac for 
 
 ## 7. Reproduction
 
-Session scripts are not committed. They live in the session scratchpad
+Session scripts are committed in `research/frontier/sizelaw/` (with a README). They were developed in the session scratchpad
 `/private/tmp/claude-502/-Users-dogaozden-AI-Projects-degree-diameter/31a2fcff-fd6b-4c01-b1b7-05c9b8d9f143/scratchpad/sl/` (temporary: /private/tmp does not survive a reboot). Ask if they should go into
 `research/frontier/`. They are:
 - `data.py`, `fit.py` (§1 and the CSV), `predict.py` and `table_md.py` (§3), `zbal.py` (fiber loads);
@@ -456,6 +456,37 @@ needs it. Build it with `cc -O3 -o haarcheck_sl haarcheck_sl.c` and run `./haarc
 
 The formulas are all in this file. W and N_h are as in heuristic.py, μ = N e^(−W/N), and the prediction solves
 ln N − W/N = 4.335 − 0.123 ln N.
+
+## 8. Planning by μ (for watchers' job lists)
+
+Use this recipe for every new job list (`sizelaw/plan_mu.py` does steps 1–3).
+1. **Window.** LO = table/2 + 1 (or our best + 1). HI = the order where μ reaches the limit in step 3.
+2. **μ for each candidate order.** μ(N) = N e^(−W(Δ,D)/N), with W as in heuristic.py. It depends only on N, not on the
+   group.
+3. **Limit for the job's budget.** M = job seconds / t_eval, where t_eval ≈ c·N·b, b = 1 (even D) or 2 (odd D),
+   c ≈ 1.5·10^(−9) s for N ≥ 10^7 and ≈ 4.5·10^(−10) s below (this Mac; cloud cores are about 1.5–2× slower).
+   μ_max = max(13 + 2 ln(M/10^5), μ\*(N)) with ln μ\*(N) = 4.335 − 0.123 ln N. The first rule comes from long runs at
+   small N; the second from 10–40 minute runs on SL(2,q) × small Z_n at N ≥ 10^6. Both are rough, about ±2 in μ.
+4. **Classify each order:**
+   - μ ≤ μ_max − 2: safe. One seed usually solves it within the budget. Put these first so the cell is taken.
+   - μ_max − 2 < μ ≤ μ_max + 1: stretch. Use 2–4 seeds and the best-screened groups.
+   - μ > μ_max + 2: skip. More seeds do not help much: each +1 in μ costs about e^(1/2) ≈ 1.6× more evaluations.
+5. **Group choice.** Screen with `RANDSAMPLE=300 haar_gen3 …` and keep groups with the smallest median/μ. For
+   N ≥ 10^6, SL(2,q) × Z_n with n ≤ 12 and SL × SL products are the reliable families. For N ≤ 10^4, the metacyclic
+   `meta m k r` groups screen best. Avoid simple groups alone and large cyclic factors.
+6. **Memory.** haar_gen3 needs about 14 bytes per group element plus 12·q³ bytes for SL(2,q). That is 2.3 GB at
+   N = 158 M (q = 541) and about 4.5 GB at N = 600 M (q ≈ 400–450, n ≈ 7–9). Prefer smaller q with a larger n when
+   memory is tight. The harvest checks up to ~60 M vertices with build_haar2 (≤ 6 GB). Above that, use
+   `sizelaw/haarcheck_sl.c` (4N bits; SL(2,p) × Z_n only) plus a second checker.
+7. **Order.** Start with the safest order above the table (claims the cell). Then step up by about +1 in μ per job,
+   until two seeds fail at the same μ.
+
+How well the rule did, over the 19 big-cell runs (N ≥ 7 M) of both sessions:
+- All 15 runs with μ ≤ μ\*(N) solved.
+- Of the 4 runs with μ between μ\* + 0.9 and μ\* + 1.8, one solved ((12,10) at μ\* + 1.2) and three failed ((15,8)
+  +1.8, (15,9) +0.9 and (16,9) +1.0; the last was stopped early).
+- At D = 7, (8,7) solved at μ = 25.5 after 4.3·10^7 evaluations, where the M-rule gives μ_max = 25.1. Two other seeds,
+  and two groups at μ 24.4–25.0, were still at cost 2–8 after 5·10^7 evaluations.
 
 ## Appendix A. Solution files of the new cells (haar_gen3 format; build_haar2.py and check_haar_indep.py read them)
 
