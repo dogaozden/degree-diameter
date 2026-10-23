@@ -28,7 +28,7 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
    (§1). Cells whose table lies above it ((12,8), (14,8), (16,8), D = 7 with Δ ≥ 9, D = 5 with Δ ≥ 13) stay
    unreachable for random-like and orbit-symmetric S alike. (10,8) and (11,8) lie below it and were attempted
    (§7). (11,8) got to 1 uncovered element, fixed by α (7 seeds, 1.7·10⁷ evaluations). Neither cell is solved yet.
-5. **"A billion times more efficient?"** (§6) Not as a constant factor: SPEEDUP.md measures 1.2–3.2× per core. As an
+5. **"A billion times more efficient?"** (§6) Not as a constant factor: SPEEDUP.md measures 1.0–3.2× per core at identical results (2.3–3.1× for N ≥ 10⁶). As an
    exponent change, the orbit method beats extrapolated random-S annealing by ~10⁵ at μ = 34, ~10⁶ at μ = 43 and,
    extrapolated, ~10⁹ near μ ≈ 67. But it has its own wall, and nothing random-like passes the first-moment
    ceiling.
@@ -205,7 +205,7 @@ Poisson clumps, which is why the gain is in search effort and not in the ceiling
 
 ## 6. Can the algorithm be made a billion times more efficient? (the honest answer)
 
-**As a constant factor: no.** SPEEDUP.md measures 1.2–3.2× per core end to end, bit-identical. The bitset BFS is
+**As a constant factor: no.** SPEEDUP.md measures 1.0–3.2× per core end to end (2.3–3.1× for N ≥ 10⁶), bit-identical. The bitset BFS is
 within 2–3× of the memory system's limit on this CPU. A GPU might add 10–30×, and 4 cores give 4×. That is 10²–10³
 at best. Since each 10× in evaluations buys ≈ +4.6 in μ ≈ +3–4 % in N (SIZE_LAW §4.1), even 10⁹ would buy only
 ≈ +30 % in N. The cells asked about need far more than that:

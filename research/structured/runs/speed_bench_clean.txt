@@ -1,0 +1,75 @@
+start Fri Oct 23 22:12:50 UTC 2026
+ 22:12:50 up  4:53,  0 user,  load average: 0.72, 1.50, 2.72
+=== 7 8 psl 17 18
+RANDSAMPLE identical: RANDSAMPLE d=7 D=8 group=psl 17 x Z_18 N=44064 samples=200 min=13 p1=17 p10=25 median=50
+BENCH FAST=0 d=7 D=8 group=psl 17 x Z_18 N=44064 nH=51 R=864 evals=3000 ms/eval=0.0404 tables=0.0073 sumcost=471352 levels(ms): 0.0001 0.0002 0.0015 0.0055 0.0088 0.0085 0.0079
+BENCH FAST=2 d=7 D=8 group=psl 17 x Z_18 N=44064 nH=153 R=288 evals=3000 ms/eval=0.0595 tables=0.0038 sumcost=471352 levels(ms): 0.0001 0.0006 0.0105 0.0106 0.0106 0.0105 0.0115
+E2E FAST=0 TRACE steps=100000 hash=30e5b5ac686ab3a3 best=2 evals=800001 abandoned=0 time=38.57
+E2E FAST=2 TRACE steps=100000 hash=30e5b5ac686ab3a3 best=2 evals=800001 abandoned=536302 time=28.72
+H3 RESULT d=7 D=8 group=psl 17 x Z_18 N=44064 best=2 evals=1454073 time=60.0
+HF RESULT d=7 D=8 group=psl 17 x Z_18 N=44064 best=1 evals=1736841 time=60.0
+=== 6 7 meta 279 15 7 1
+RANDSAMPLE identical: RANDSAMPLE d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 samples=200 min=24 p1=26 p10=48 median=98
+BENCH FAST=0 d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 nH=45 R=93 evals=20000 ms/eval=0.0091 tables=0.0011 sumcost=39200242 levels(ms): 0.0001 0.0005 0.0011 0.0020 0.0019 0.0019
+BENCH FAST=2 d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 nH=93 R=45 evals=20000 ms/eval=0.0104 tables=0.0005 sumcost=39200242 levels(ms): 0.0001 0.0018 0.0018 0.0017 0.0018 0.0022
+E2E FAST=0 TRACE steps=20000 hash=5de2335653ca1a30 best=8 evals=160001 abandoned=0 time=1.30
+E2E FAST=2 TRACE steps=20000 hash=5de2335653ca1a30 best=8 evals=160001 abandoned=106878 time=1.31
+H3 RESULT d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 best=4 evals=7235545 time=60.0
+HF RESULT d=6 D=7 group=meta 279 15 7 x Z_1 N=4185 best=4 evals=7343993 time=60.0
+=== 8 9 sl 59 3
+RANDSAMPLE identical: RANDSAMPLE d=8 D=9 group=sl 59 x Z_3 N=615960 samples=200 min=10 p1=12 p10=18 median=30
+BENCH FAST=0 d=8 D=9 group=sl 59 x Z_3 N=615960 nH=60 R=10266 evals=300 ms/eval=1.2796 tables=0.3063 sumcost=12280 levels(ms): 0.0004 0.0015 0.0071 0.0537 0.1457 0.2503 0.2505 0.2461
+BENCH FAST=2 d=8 D=9 group=sl 59 x Z_3 N=615960 nH=177 R=3480 evals=300 ms/eval=0.9375 tables=0.0619 sumcost=12280 levels(ms): 0.0005 0.0016 0.0104 0.1631 0.1587 0.1629 0.1630 0.1873
+E2E FAST=0 TRACE steps=4000 hash=7220569a7dcfad94 best=2 evals=32001 abandoned=0 time=39.78
+E2E FAST=2 TRACE steps=4000 hash=7220569a7dcfad94 best=2 evals=32001 abandoned=21955 time=27.56
+H3 RESULT d=8 D=9 group=sl 59 x Z_3 N=615960 best=2 evals=44657 time=60.0
+HF RESULT d=8 D=9 group=sl 59 x Z_3 N=615960 best=2 evals=69577 time=60.0
+=== 7 10 sl 49 9
+RANDSAMPLE identical: RANDSAMPLE d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 samples=200 min=5 p1=7 p10=10 median=17
+BENCH FAST=0 d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 nH=63 R=16800 evals=100 ms/eval=1.6357 tables=0.8406 sumcost=2305 levels(ms): 0.0007 0.0013 0.0042 0.0178 0.0643 0.1570 0.1798 0.1752 0.1728
+BENCH FAST=2 d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 nH=225 R=4704 evals=100 ms/eval=0.9407 tables=0.1208 sumcost=2305 levels(ms): 0.0006 0.0015 0.0069 0.0387 0.1475 0.1606 0.1463 0.1466 0.1392
+E2E FAST=0 TRACE steps=1500 hash=77c856d7a6d77c84 best=2 evals=12001 abandoned=0 time=22.63
+E2E FAST=2 TRACE steps=1500 hash=77c856d7a6d77c84 best=2 evals=12001 abandoned=8191 time=8.29
+H3 RESULT d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 best=1 evals=32337 time=60.0
+HF RESULT d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 best=1 evals=89049 time=60.0
+=== 8 10 sl 107 3
+RANDSAMPLE identical: RANDSAMPLE d=8 D=10 group=sl 107 x Z_3 N=3674808 samples=200 min=4 p1=5 p10=8 median=12
+BENCH FAST=0 d=8 D=10 group=sl 107 x Z_3 N=3674808 nH=54 R=68052 evals=60 ms/eval=10.0800 tables=5.1939 sumcost=653 levels(ms): 0.0016 0.0055 0.0219 0.1289 0.6540 0.7266 1.0902 1.0674 1.0381
+BENCH FAST=2 d=8 D=10 group=sl 107 x Z_3 N=3674808 nH=214 R=17172 evals=60 ms/eval=2.6433 tables=0.3771 sumcost=653 levels(ms): 0.0009 0.0028 0.0120 0.0788 0.4218 0.4210 0.4149 0.4202 0.3757
+E2E FAST=0 TRACE steps=600 hash=eb341025c3e69301 best=1 evals=4801 abandoned=0 time=45.97
+E2E FAST=2 TRACE steps=600 hash=eb341025c3e69301 best=1 evals=4801 abandoned=3311 time=14.85
+H3 RESULT d=8 D=10 group=sl 107 x Z_3 N=3674808 best=1 evals=6361 time=60.1
+HF RESULT d=8 D=10 group=sl 107 x Z_3 N=3674808 best=1 evals=21361 time=60.0
+=== 15 8 sl 101 8
+RANDSAMPLE identical: RANDSAMPLE d=15 D=8 group=sl 101 x Z_8 N=8241600 samples=200 min=1 p1=2 p10=5 median=9
+BENCH FAST=0 d=15 D=8 group=sl 101 x Z_8 N=8241600 nH=51 R=161600 evals=30 ms/eval=35.7831 tables=8.6948 sumcost=273 levels(ms): 0.0048 0.0344 0.2332 2.5410 5.7945 9.0392 8.8983
+BENCH FAST=2 d=15 D=8 group=sl 101 x Z_8 N=8241600 nH=204 R=40400 evals=30 ms/eval=15.0633 tables=1.2972 sumcost=273 levels(ms): 0.0053 0.0235 0.2013 3.4209 3.4436 3.5874 2.6073
+E2E FAST=0 TRACE steps=150 hash=b926caf9ac86cbef best=1 evals=1201 abandoned=0 time=41.86
+E2E FAST=2 TRACE steps=150 hash=b926caf9ac86cbef best=1 evals=1201 abandoned=819 time=17.97
+H3 RESULT d=15 D=8 group=sl 101 x Z_8 N=8241600 best=1 evals=1633 time=60.1
+HF RESULT d=15 D=8 group=sl 101 x Z_8 N=8241600 best=1 evals=4113 time=60.1
+=== 10 8 psl 23 97
+RANDSAMPLE identical: RANDSAMPLE d=10 D=8 group=psl 23 x Z_97 N=588984 samples=200 min=60 p1=63 p10=74 median=95
+BENCH FAST=0 d=10 D=8 group=psl 23 x Z_97 N=588984 nH=23 R=25608 evals=100 ms/eval=1.3342 tables=0.2758 sumcost=8417 levels(ms): 0.0005 0.0023 0.0107 0.1041 0.2032 0.3596 0.3509
+BENCH FAST=2 d=10 D=8 group=psl 23 x Z_97 N=588984 nH=194 R=3036 evals=100 ms/eval=0.5266 tables=0.0567 sumcost=8417 levels(ms): 0.0004 0.0015 0.0112 0.1048 0.1191 0.1026 0.1161
+E2E FAST=0 TRACE steps=800 hash=c7bd24ee4c1aa618 best=45 evals=6401 abandoned=0 time=8.98
+E2E FAST=2 TRACE steps=800 hash=c7bd24ee4c1aa618 best=45 evals=6401 abandoned=4201 time=2.79
+H3 RESULT d=10 D=8 group=psl 23 x Z_97 N=588984 best=36 evals=44801 time=60.0
+HF RESULT d=10 D=8 group=psl 23 x Z_97 N=588984 best=35 evals=136169 time=60.0
+=== 12 9 sl 127 8
+RANDSAMPLE identical: RANDSAMPLE d=12 D=9 group=sl 127 x Z_8 N=16386048 samples=200 min=6 p1=8 p10=12 median=20
+BENCH FAST=0 d=12 D=9 group=sl 127 x Z_8 N=16386048 nH=63 R=260096 evals=10 ms/eval=120.3162 tables=17.0519 sumcost=208 levels(ms): 0.0069 0.0504 0.2689 2.6342 20.2221 23.2719 27.5353 27.5395
+BENCH FAST=2 d=12 D=9 group=sl 127 x Z_8 N=16386048 nH=254 R=64512 evals=10 ms/eval=39.4352 tables=1.8209 sumcost=208 levels(ms): 0.0103 0.0435 0.2216 2.2451 8.7221 9.2408 9.3456 6.1234
+E2E FAST=0 TRACE steps=40 hash=7f1ee2eabe92b61a best=4 evals=321 abandoned=0 time=35.63
+E2E FAST=2 TRACE steps=40 hash=7f1ee2eabe92b61a best=4 evals=321 abandoned=221 time=11.43
+H3 RESULT d=12 D=9 group=sl 127 x Z_8 N=16386048 best=4 evals=513 time=60.8
+HF RESULT d=12 D=9 group=sl 127 x Z_8 N=16386048 best=2 evals=1657 time=60.3
+=== 10 10 sl 307 1
+RANDSAMPLE identical: RANDSAMPLE d=10 D=10 group=sl 307 x Z_1 N=28934136 samples=200 min=2 p1=3 p10=5 median=9
+BENCH FAST=0 d=10 D=10 group=sl 307 x Z_1 N=28934136 nH=51 R=567336 evals=6 ms/eval=198.5348 tables=80.3254 sumcost=54 levels(ms): 0.0052 0.0323 0.1184 0.6458 4.8766 13.5294 29.3020 35.0997 32.6390
+BENCH FAST=2 d=10 D=10 group=sl 307 x Z_1 N=28934136 nH=154 R=187884 evals=6 ms/eval=76.3532 tables=12.5295 sumcost=54 levels(ms): 0.0062 0.0307 0.1216 0.7586 5.6024 13.5544 13.7294 18.3676 7.9624
+E2E FAST=0 TRACE steps=25 hash=9beb581168328a59 best=2 evals=201 abandoned=0 time=37.97
+E2E FAST=2 TRACE steps=25 hash=9beb581168328a59 best=2 evals=201 abandoned=134 time=15.53
+H3 RESULT d=10 D=10 group=sl 307 x Z_1 N=28934136 best=2 evals=329 time=61.0
+HF RESULT d=10 D=10 group=sl 307 x Z_1 N=28934136 best=1 evals=801 time=60.5
+end Fri Oct 23 22:43:20 UTC 2026

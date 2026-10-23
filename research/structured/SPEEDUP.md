@@ -4,7 +4,42 @@ structured-search job (Opus), 2026-10-23. Machine: cloud container, Intel Xeon (
 L2 1 MB/core, L3 33 MB, AVX-512. Compiler: gcc 13.3 `-O3 -march=native -fopenmp`. Baseline: the unmodified
 `research/frontier/haar_gen3.c`. Program: `haar_fast.c` (see README for flags).
 
-<!-- CLEAN-TABLE -->
+## 0. Result: clean measurement on an idle machine
+
+`tools/speed_bench.sh` ran alone on the box (load 0.7 at the start; 22:13–22:43), one process at a time,
+single thread. Both binaries were built from the committed sources (`../frontier/haar_gen3.c` unmodified,
+`haar_fast.c`). Raw output: `runs/speed_bench_clean.txt`. Table: `tools/speed_table.py`.
+
+| cell, group | N | same RANDSAMPLE costs | ms/eval FAST=0 → 2 | E2E steps | E2E s FAST=0 → 2 | E2E factor | same trajectory hash | haar_gen3 evals/s | haar_fast evals/s | factor |
+|---|---|---|---|---|---|---|---|---|---|---|
+| (7,8) psl 17 × Z18 | 44,064 | yes | 0.0404 → 0.0595 (0.68×) | 100000 | 38.6 → 28.7 | **1.34** | yes | 24,235 | 28,947 | 1.19 |
+| (6,7) meta 279 15 7 × Z1 | 4,185 | yes | 0.0091 → 0.0104 (0.88×) | 20000 | 1.3 → 1.3 | **0.99** | yes | 120,592 | 122,400 | 1.01 |
+| (8,9) sl 59 × Z3 | 615,960 | yes | 1.28 → 0.938 (1.36×) | 4000 | 39.8 → 27.6 | **1.44** | yes | 744 | 1,160 | 1.56 |
+| (7,10) sl 49 × Z9 | 1,058,400 | yes | 1.64 → 0.941 (1.74×) | 1500 | 22.6 → 8.3 | **2.73** | yes | 539 | 1,484 | 2.75 |
+| (8,10) sl 107 × Z3 | 3,674,808 | yes | 10.1 → 2.64 (3.81×) | 600 | 46.0 → 14.8 | **3.10** | yes | 106 | 356 | 3.36 |
+| (15,8) sl 101 × Z8 | 8,241,600 | yes | 35.8 → 15.1 (2.38×) | 150 | 41.9 → 18.0 | **2.33** | yes | 27.2 | 68.4 | 2.52 |
+| (10,8) psl 23 × Z97 | 588,984 | yes | 1.33 → 0.527 (2.53×) | 800 | 9.0 → 2.8 | **3.22** | yes | 747 | 2,269 | 3.04 |
+| (12,9) sl 127 × Z8 | 16,386,048 | yes | 120 → 39.4 (3.05×) | 40 | 35.6 → 11.4 | **3.12** | yes | 8.44 | 27.5 | 3.26 |
+| (10,10) sl 307 × Z1 | 28,934,136 | yes | 199 → 76.4 (2.60×) | 25 | 38.0 → 15.5 | **2.44** | yes | 5.39 | 13.2 | 2.45 |
+
+Columns:
+- **same RANDSAMPLE costs**: haar_gen3 and haar_fast print the identical quantile line for 200 random S.
+- **ms/eval**: `BENCH` (single-generator replacements, no abort), haar_gen3's evaluation code (FAST=0) against wide
+  rows (FAST=2).
+- **E2E**: the same annealing run (same seed, `VCLOCK`, `MAXSTEPS`) with FAST=0 and FAST=2. Both print the same
+  `TRACE` hash, so the trajectory and every cost are identical; the factor is the wall-time ratio. **This is the
+  speedup at bit-identical results.**
+- **evals/s**: haar_gen3 itself against haar_fast, 60 s runs with the normal wall-clock schedule (the trajectories
+  differ there, because the schedule follows the clock).
+
+Reading:
+- **Small groups (N ≲ 5·10⁴): 1.0–1.3×.** Everything fits in L2. A wide-row evaluation is even slower there (BENCH
+  0.68–0.88×), and the exact abort wins it back.
+- **N ≈ 0.6–1·10⁶: 1.4–3.2× end to end** (1.6–3.0× in evaluations per second). The spread comes from the cell more
+  than from N: (8,9) has two BFS per evaluation and short dense levels.
+- **N ≥ 3.7·10⁶: 2.3–3.1× end to end** (2.5–3.4× in evaluations per second).
+
+All nine cells: same costs and same trajectory hash.
 
 ## 1. Profile of haar_gen3 (per candidate evaluation, single thread)
 
@@ -79,8 +114,8 @@ Analysed and not implemented, with the reason:
 ## 4. End-to-end factors (same seed, same trajectory, wall time ratio)
 
 Same seed, `VCLOCK`, `MAXSTEPS`; FAST=0 is haar_gen3's evaluation code, FAST=2 the default. These preliminary
-numbers were measured while 1–3 other search jobs ran on the box (shared L3 and memory bandwidth). The clean table
-is at the top of this file if it was measured.
+numbers were measured while 1–3 other search jobs ran on the box (shared L3 and memory bandwidth). The clean
+measurement is §0.
 
 | cell, group | N | steps | FAST=0 (s) | FAST=2 (s) | factor | hashes equal |
 |---|---|---|---|---|---|---|
@@ -97,7 +132,7 @@ a large prime p) use haar_gen3's evaluation unchanged, so they are never slower.
 
 ## 5. What this buys
 
-SIZE_LAW §4.1: each 10× in evaluations adds about 4.6 to the reachable μ, i.e. about 3–4 % in N. The 1.2–3.2× here
+SIZE_LAW §4.1: each 10× in evaluations adds about 4.6 to the reachable μ, i.e. about 3–4 % in N. The 1.0–3.2× here
 is worth about 0.5–1.5 % in N at the walls. Running the 4 cores as 4 seeds multiplies throughput by 4 again (the
 K candidates of a move can also be split over threads, `THREADS=t`, with the abort made strict so results stay
 identical). These are honest constant factors: the structure of the bitset BFS is already close to the memory system's
