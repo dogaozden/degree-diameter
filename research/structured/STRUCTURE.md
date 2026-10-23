@@ -180,6 +180,7 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (10,10) | 50,331,156 | 57,868,272 | **60,141,120** (+3.9 %) | sl 79 × Z61; 3, 3, 1 | 15.3 | 8.3e+02 | d10D10_sl_79_61_orb3_s1.txt |
 | (12,10) | 300,383,050 | 310,628,640 | **321,576,192** (+3.5 %) | psl 127 × Z157; 3, 4, 0 | 15.9 | 5e+02 | d12D10_psl_127_157_orb3f0_s1.txt |
 | (13,10) | 617,330,936 | 636,550,992 | **667,903,200** (+4.9 %) | sl 151 × Z97; 3, 4, 1 | 16.0 | 8.1e+02 | d13D10_sl_151_97_orb3_s1.txt |
+| (14,10) | 1,213,477,190 | 1,217,130,096 | **1,268,117,760** (+4.2 %) | sl 191 × Z91; 3, 4, 2 | 8.6 | 57 | d14D10_sl_191_91_orb3_FAST1_s1.txt |
 
 Graphs above 20M vertices were checked by independent low-memory checkers instead of build_haar2.py, as in
 SIZE_LAW §3.2: SL(2,p) × Z_n by both `../frontier/haarcheck_sl.c` and `../frontier/haarcheck2.c`, PSL(2,p) × Z_n
