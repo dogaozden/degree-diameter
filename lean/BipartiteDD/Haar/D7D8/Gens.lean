@@ -10,12 +10,12 @@ open BipartiteDD.Haar.PSL19
 
 /-- The generators, indexed `0 … 6`; index `0` is the identity. -/
 def sGl : List G :=
-  [(⟨1, 0, 0, 1, by decide, by decide⟩, 0),
-    (⟨4, 13, 1, 13, by decide, by decide⟩, 2),
-    (⟨11, 13, 5, 6, by decide, by decide⟩, 0),
-    (⟨11, 16, 7, 12, by decide, by decide⟩, 11),
-    (⟨14, 0, 2, 15, by decide, by decide⟩, 9),
-    (⟨17, 13, 3, 18, by decide, by decide⟩, 9),
-    (⟨0, 9, 2, 13, by decide, by decide⟩, 8)]
+  [(⟨1, 0, 0, 1, by decide, by decide⟩, Multiplicative.ofAdd (0 : ZMod 13)),
+    (⟨4, 13, 1, 13, by decide, by decide⟩, Multiplicative.ofAdd (2 : ZMod 13)),
+    (⟨11, 13, 5, 6, by decide, by decide⟩, Multiplicative.ofAdd (0 : ZMod 13)),
+    (⟨11, 16, 7, 12, by decide, by decide⟩, Multiplicative.ofAdd (11 : ZMod 13)),
+    (⟨14, 0, 2, 15, by decide, by decide⟩, Multiplicative.ofAdd (9 : ZMod 13)),
+    (⟨17, 13, 3, 18, by decide, by decide⟩, Multiplicative.ofAdd (9 : ZMod 13)),
+    (⟨0, 9, 2, 13, by decide, by decide⟩, Multiplicative.ofAdd (8 : ZMod 13))]
 
 end BipartiteDD.Haar.D7D8

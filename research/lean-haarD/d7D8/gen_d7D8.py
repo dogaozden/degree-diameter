@@ -242,7 +242,7 @@ end BipartiteDD.Haar.D7D8
 
 def lean_elem(g):
     a, b, c, d, z = g
-    return f"(⟨{a}, {b}, {c}, {d}, by decide, by decide⟩, {z})"
+    return f"(⟨{a}, {b}, {c}, {d}, by decide, by decide⟩, Multiplicative.ofAdd ({z} : ZMod 13))"
 
 
 def write_gens(path, S):
