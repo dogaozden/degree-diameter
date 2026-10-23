@@ -1,0 +1,14 @@
+group sl 73 x Z_8, N=3111552, identity 42048, H order 37, rows 84096, threads 1, setup 0.11s
+start cost=10
+t=30 steps=307 evals=2457 cost=1 best=1 T=0.53
+t=60 steps=605 evals=4841 cost=1 best=1 T=0.19
+t=90 steps=926 evals=7409 cost=1 best=1 T=0.15
+t=120 steps=1254 evals=10033 cost=1 best=1 T=0.15
+t=150 steps=1573 evals=12585 cost=1 best=1 T=0.15
+t=180 steps=1890 evals=15121 cost=5 best=1 T=0.92
+t=210 steps=2233 evals=17865 cost=2 best=1 T=0.33
+t=240 steps=2555 evals=20441 cost=2 best=1 T=0.15
+t=270 steps=2895 evals=23161 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=sl 73 x Z_8 N=3111552 best=0 evals=25585 time=296.5
+full diameter check: OK
+wrote sols/d13D8_sl_73_8_s304.txt
