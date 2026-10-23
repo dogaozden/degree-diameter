@@ -1,0 +1,13 @@
+group psl 19 x Z_13, N=44460, identity 2223, H order 39, rows 1140, threads 1, setup 0.00s
+start cost=20
+t=30 steps=48831 evals=390649 cost=2 best=2 T=0.53
+t=60 steps=95924 evals=767393 cost=2 best=2 T=0.19
+t=90 steps=144516 evals=1156129 cost=2 best=2 T=0.15
+t=120 steps=193375 evals=1547001 cost=2 best=2 T=0.15
+t=150 steps=241197 evals=1929577 cost=2 best=2 T=0.15
+t=180 steps=288918 evals=2311345 cost=2 best=2 T=0.77
+t=210 steps=336493 evals=2691945 cost=2 best=2 T=0.27
+t=240 steps=384638 evals=3077105 cost=2 best=2 T=0.15
+RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=3317249 time=258.8
+full diameter check: OK
+wrote sols/d7D8_psl_19_13_s403.txt
