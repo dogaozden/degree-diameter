@@ -8,7 +8,9 @@ Job "structured-search" (2026-10-23, cloud session). Goal: get past the random-s
 - `SPEEDUP.md`: what was profiled, what was changed, and the measured factors against haar_gen3 on identical seeds.
 - `STRUCTURE.md`: the structured families (orbit-symmetric S under an automorphism, Heisenberg groups, metacyclic
   scalings, …), what each found, the negative results, and the honest answer to "can it be made a billion times
-  more efficient?".
+  more efficient?". §4 is the table of every cell raised (best VALID graph per cell, generated from `runs/`).
+  §8 is the second session (same day, evening): free-orbit-only S (`ORBIT="3 m 0"`) for Δ = 6, 9, 12, 15, with a
+  head-to-head against the old f = 3 recipe.
 
 ## Programs
 
