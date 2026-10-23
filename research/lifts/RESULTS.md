@@ -39,21 +39,22 @@ Solution files: `sols/rebuild_*.txt`.
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
 | (5,10) | 90,068 (Loz) | **91,728** (+1.8 %) | Haar graph (dipole lift) of SL(2,13) × Z21 | `sols/d5D10_n91728_haar_sl13xcyc21.txt` (haar_gen3 original: `sols/haar/d5D10_sl_13_21_s1.txt`) |
-| (5,9) | 27,936 (Loz) | **28,094** (+0.57 %) | Haar graph of Z1277 ⋊₁₃₅ Z11 (metacyclic) | `sols/d5D9_n28094_haar_meta1277_11_135.txt` (also 27,972 = Z777 ⋊₁₆₄ Z18 and 27,948 = Z411 ⋊₃₈ Z34) |
+| (5,9) | 27,936 (Loz) | **28,418** (+1.7 %) | Haar graph of Z1093 ⋊₁₁ Z13 (metacyclic) | `sols/d5D9_n28418_haar_meta1093_13_11.txt`. Also 28,094 (Z1277 ⋊₁₃₅ Z11), 27,972 (Z777 ⋊₁₆₄ Z18) and 27,948 (Z411 ⋊₃₈ Z34) |
 
 All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
 the repo's build_haar2.py:
 - (5,10): sha256 32998e69…;
+- (5,9) 28,418: sha256 918ae59c…;
 - (5,9) 28,094: sha256 d0a736d4…;
 - (5,9) 27,972: sha256 01da8334….
 
 Outputs are in `verify/`.
 
 **(5,9).**
-- Connection set of the 28,094 graph in Z1277 ⋊₁₃₅ Z11, elements (a, j): (0,0), (645,8), (848,9), (785,2),
-  (1219,7).
-- Found by haar_cell.py: haar_gen3 annealing on the RANDSAMPLE-screened metacyclic candidates. The three orders took
-  24 s, 5 s and 303 s.
+- Connection set of the 28,418 graph in Z1093 ⋊₁₁ Z13, elements (a, j): (0,0), (584,6), (764,5), (130,6), (54,10).
+- Found by haar_cell.py: haar_gen3 annealing on the RANDSAMPLE-screened metacyclic candidates. The four orders took
+  24 s, 5 s, 303 s and 10 s.
+- N = 14,133 (Z673 ⋊ Z21) stalled at cost 2 on two seeds. A push to N = 14,700 is queued.
 - The cell was "marginal" (−1.7 %) in the size law and had never been run. Loz's 27,936 is itself a metabelian Haar
   graph search result (LITERATURE.md §3), so this is a modest gain from a stronger search, not a new structure.
 
@@ -128,7 +129,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
 | (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | queued |
-| **(5,9)** | 27936 (Loz) | 174,762 | **28,094** | **new record** (§2.0); larger N running |
+| **(5,9)** | 27936 (Loz) | 174,762 | **28,418** | **new record** (§2.0); push to N = 14,700 queued |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses: cost 2 at n = 812 (2+2 base, Z29 ⋊ Z7; exhaustive: no solution) and at n = 816 (3+3 base, Z17 ⋊ Z8; exhaustive search running) |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
 | **(5,10)** | 90068 (Loz) | 699,050 | **91,728** | **new record** (§2.0) |
