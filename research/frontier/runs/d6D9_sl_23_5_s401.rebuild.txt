@@ -1,0 +1,18 @@
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 121440 edges = 364320 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 23a728feffc5264892c5dcac5ab4f90ddb1fb24481e06375d134e728f258f2a9
+VALID d=6 D=9 group=sl 23 x Z_5 N=60720 vertices=121440
+
+--- bigcheck ---
+read       ok    edge list, 4.4 MB, 364320 edges as listed, 0.00 s
+n          ok      declared n = 121440 (no value field in record)
+endpoints  ok    all 728640 endpoints in [0, 121440)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 121440, m = 364320
+degree     ok      max degree 6 (limit 6); histogram 6:121440
+bipartite  ok      sides 60720 / 60720, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 9 <= 9 (1898 passes of 64 sources, 2 threads, 7.44 s)
+VALID    n=121440 Delta=6 D=9, diameter 9, total 7.45 s
