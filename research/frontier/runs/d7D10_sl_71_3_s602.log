@@ -1,0 +1,21 @@
+group sl 71 x Z_3, N=1073520, identity 14910, H order 42, rows 25560, threads 1, setup 0.03s
+start cost=18
+t=30 steps=1458 evals=11665 cost=5 best=3 T=0.53
+t=60 steps=3002 evals=24017 cost=1 best=1 T=0.19
+t=90 steps=4464 evals=35713 cost=1 best=1 T=0.15
+t=120 steps=6051 evals=48409 cost=1 best=1 T=0.15
+t=150 steps=7571 evals=60569 cost=1 best=1 T=0.15
+t=180 steps=9076 evals=72609 cost=1 best=1 T=0.15
+t=210 steps=10597 evals=84777 cost=4 best=1 T=1.07
+t=240 steps=12145 evals=97161 cost=2 best=1 T=0.38
+t=270 steps=13657 evals=109257 cost=2 best=1 T=0.15
+t=300 steps=15159 evals=121273 cost=1 best=1 T=0.15
+t=330 steps=16681 evals=133449 cost=1 best=1 T=0.15
+t=360 steps=18207 evals=145657 cost=5 best=1 T=1.06
+t=390 steps=19719 evals=157753 cost=3 best=1 T=0.38
+t=420 steps=21137 evals=169097 cost=2 best=1 T=0.15
+t=450 steps=22641 evals=181129 cost=2 best=1 T=0.15
+t=480 steps=24072 evals=192577 cost=2 best=1 T=0.15
+RESULT d=7 D=10 group=sl 71 x Z_3 N=1073520 best=0 evals=200969 time=502.8
+full diameter check: OK
+wrote sols/d7D10_sl_71_3_s602.txt

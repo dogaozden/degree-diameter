@@ -76,3 +76,7 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 22 21:50 PT (harvest): (13,8) 6,223,104 (was 6,209,280), sl 73 n 8; w3-d13D8w1.
 
 - Oct 22 22:11 PT (harvest): (7,8) 88,920 (was 88,128), psl 19 n 13; w3-d7D8w2.
+
+- Oct 22 23:12 PT (harvest): (7,10) 2,147,040 (was 2,125,440), sl 71 n 3; w3-d7D10w4.
+- Oct 22 23:12 PT (harvest): (9,9) 3,290,112 (was 3,188,160), prod sl 7 sl 17 n 1; w3-d9D9w1.
+- Oct 22 23:12 PT (harvest): (13,8) 6,408,480 (was 6,223,104), psl 79 n 13; w3-d13D8w2.

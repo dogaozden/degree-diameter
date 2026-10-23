@@ -1,0 +1,18 @@
+group psl 79 x Z_13, N=3204240, identity 40053, H order 52, rows 61620, threads 1, setup 0.07s
+start cost=11
+t=30 steps=516 evals=4129 cost=7 best=5 T=0.53
+t=60 steps=1018 evals=8145 cost=3 best=3 T=0.19
+t=90 steps=1568 evals=12545 cost=3 best=3 T=0.15
+t=120 steps=2146 evals=17169 cost=3 best=3 T=0.15
+t=150 steps=2754 evals=22033 cost=3 best=3 T=0.15
+t=180 steps=3279 evals=26233 cost=3 best=3 T=0.15
+t=210 steps=3844 evals=30753 cost=6 best=3 T=0.59
+t=240 steps=4423 evals=35385 cost=4 best=3 T=0.21
+t=270 steps=4958 evals=39665 cost=4 best=3 T=0.15
+t=300 steps=5504 evals=44033 cost=4 best=3 T=0.15
+t=330 steps=6026 evals=48209 cost=4 best=3 T=0.15
+t=360 steps=6607 evals=52857 cost=8 best=3 T=0.59
+t=390 steps=7164 evals=57313 cost=3 best=3 T=0.21
+RESULT d=13 D=8 group=psl 79 x Z_13 N=3204240 best=0 evals=61721 time=417.0
+full diameter check: OK
+wrote sols/d13D8_psl_79_13_s404.txt

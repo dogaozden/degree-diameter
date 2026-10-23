@@ -1,0 +1,7 @@
+group prod sl 7 sl 17 x Z_1, N=1645056, identity 205904, H order 63, rows 26112, threads 1, setup 0.05s
+start cost=32
+t=30 steps=1199 evals=9593 cost=6 best=6 T=0.53
+t=60 steps=2377 evals=19017 cost=6 best=6 T=0.19
+RESULT d=9 D=9 group=prod sl 7 sl 17 x Z_1 N=1645056 best=0 evals=24585 time=77.1
+full diameter check: OK
+wrote sols/d9D9_prod_sl_7_sl_17_1_s302.txt
