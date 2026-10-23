@@ -1,6 +1,6 @@
 """Independent rebuild and check of a lift solution file (written by lift.c).
 
-Usage: python3 -I verify_lift.py SOL.txt [EDGES_OUT] [--full]
+Usage: python3 -I verify_lift.py SOL.txt [EDGES_OUT] [--full] [--no-bfs]
 
 The group is rebuilt here from its definition, not from lift.c's tables:
   cyc n          integers mod n
@@ -258,9 +258,9 @@ def main():
         with open(eout + ".perms", "w") as f:
             for img in perms:
                 f.write(" ".join(map(str, img)) + "\n")
-    # eccentricity of (u, e) for each base vertex u
+    # eccentricity of (u, e) for each base vertex u (skipped with --no-bfs: then run apsp on the edge list)
     ecc = []
-    for u in range(k):
+    for u in ([] if "--no-bfs" in sys.argv else range(k)):
         s = u * N + rank[G.e]
         dist = [-1] * n
         dist[s] = 0
@@ -272,7 +272,7 @@ def main():
                     dist[b] = dist[a] + 1
                     dq.append(b)
         ecc.append(max(dist) if min(dist) >= 0 else float("inf"))
-    diam = max(ecc)
+    diam = max(ecc) if ecc else None
     print(f"ecc((u,1)) for u = 0..{k - 1}: {ecc}")
     print(f"diameter (fiber representatives + automorphisms) = {diam}")
     if full:
@@ -283,6 +283,9 @@ def main():
         dfull = nx.diameter(Gx)
         print(f"networkx all-pairs diameter = {dfull}")
         diam = max(diam, dfull)
+    if diam is None:
+        print("fiber BFS skipped (--no-bfs): the diameter must come from apsp on the edge list")
+        diam = -1
     ok = (rep == 0 and loops == 0 and bip and conn and auto_ok and min(degs) == max(degs) and D is not None and diam <= D)
     print(f"SUMMARY n={n} Delta={max(degs)} regular={min(degs) == max(degs)} bipartite={bip} diameter={diam} D={D} -> {'VALID' if ok else 'INVALID'}")
     sys.exit(0 if ok else 1)

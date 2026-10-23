@@ -1,0 +1,14 @@
+# Hafner-Loz (7,3) graph, 80 vertices: published voltages (Feria-Puron, Miller, Pineda-Villavicencio,
+# Discrete Math. 313 (2013) 381-390, p. 389, citing Loz PhD thesis p. 72): dipole, 7 parallel edges, Z5 x|_2 Z8,
+# voltages (0, 0) (3, 4) (4, 4) (3, 7) (3, 3) (1, 6) (4, 6) in the right-multiplication convention (u,g) -> (v, g a).
+# lift.c uses (x,g) ~ (y, a g); g -> g^-1 turns one into the other, so the voltages below are the inverses.
+lift D 3 Delta 7 k 2 N 40 n 80 cost -1
+group meta 5 8 2
+k 2
+e 0 1 = 0,0
+e 0 1 = 2,4
+e 0 1 = 1,4
+e 0 1 = 4,1
+e 0 1 = 4,5
+e 0 1 = 1,2
+e 0 1 = 4,2

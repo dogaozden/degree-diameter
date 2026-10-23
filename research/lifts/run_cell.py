@@ -33,10 +33,19 @@ def bases_for(h, d, maxmult):
     sub = f"b{h}_{d}" + (f"_m{maxmult}" if maxmult else "")
     dd = os.path.join(HERE, "bases", "enum", sub)
     if not os.path.isdir(dd):
-        cmd = [sys.executable, os.path.join(HERE, "enum_bases.py"), str(h), str(d), dd]
-        if maxmult:
-            cmd += ["--maxmult", str(maxmult)]
-        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL)
+        tmp = dd + ".tmp"
+        if h <= 6:   # complete list up to isomorphism
+            cmd = [sys.executable, os.path.join(HERE, "enum_bases.py"), str(h), str(d), tmp]
+            if maxmult:
+                cmd += ["--maxmult", str(maxmult)]
+            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL)
+        else:        # too many to enumerate: 200 random connected d-regular bipartite multigraphs
+            os.makedirs(tmp, exist_ok=True)
+            for s in range(200):
+                with open(os.path.join(tmp, f"r{h}_{d}_{s}.txt"), "w") as f:
+                    subprocess.run([sys.executable, os.path.join(HERE, "bases.py"), "random", str(2 * h), str(d), str(s)],
+                                   check=True, stdout=f)
+        os.rename(tmp, dd)
     return sorted(os.path.join(dd, f) for f in os.listdir(dd) if f.endswith(".txt"))
 
 
