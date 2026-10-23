@@ -140,7 +140,7 @@ theorem toG_mulI (x y : Ix) : toG (mulI x y) = toG x * toG y := by
   simp only [toG, mulI, Prod.mk_mul_mk, fP_mul, fS_mul, fZ_mul]
 
 theorem toG_invI (x : Ix) : toG (invI x) = (toG x)⁻¹ := by
-  simp only [toG, invI, Prod.mk_inv, fP_iP, fS_iQ, fZ_inv_eq]
+  simp only [toG, invI, Prod.inv_mk, fP_iP, fS_iQ, fZ_inv_eq]
 
 theorem toG_sI (k : ℕ) : toG (sI k) = sN k := by
   simp [toG, sI, sN, sS, f168_val, f336_val, f2_val]
