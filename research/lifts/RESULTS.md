@@ -39,9 +39,23 @@ Solution files: `sols/rebuild_*.txt`.
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
 | (5,10) | 90,068 (Loz) | **91,728** (+1.8 %) | Haar graph (dipole lift) of SL(2,13) × Z21 | `sols/d5D10_n91728_haar_sl13xcyc21.txt` (haar_gen3 original: `sols/haar/d5D10_sl_13_21_s1.txt`) |
+| (5,9) | 27,936 (Loz) | **28,094** (+0.57 %) | Haar graph of Z1277 ⋊₁₃₅ Z11 (metacyclic) | `sols/d5D9_n28094_haar_meta1277_11_135.txt` (also 27,972 = Z777 ⋊₁₆₄ Z18 and 27,948 = Z411 ⋊₃₈ Z34) |
 
-All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The (5,10) graph also
-passes the repo's build_haar2.py (sha256 32998e69…). Outputs are in `verify/`.
+All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
+the repo's build_haar2.py:
+- (5,10): sha256 32998e69…;
+- (5,9) 28,094: sha256 d0a736d4…;
+- (5,9) 27,972: sha256 01da8334….
+
+Outputs are in `verify/`.
+
+**(5,9).**
+- Connection set of the 28,094 graph in Z1277 ⋊₁₃₅ Z11, elements (a, j): (0,0), (645,8), (848,9), (785,2),
+  (1219,7).
+- Found by haar_cell.py: haar_gen3 annealing on the RANDSAMPLE-screened metacyclic candidates. The three orders took
+  24 s, 5 s and 303 s.
+- The cell was "marginal" (−1.7 %) in the size law and had never been run. Loz's 27,936 is itself a metabelian Haar
+  graph search result (LITERATURE.md §3), so this is a modest gain from a stronger search, not a new structure.
 
 **(3,8) = 288.** Voltages (aff "x,y,j"; base edges 0–2 ×2, 0–3, 1–2, 1–3 ×2):
 
@@ -101,7 +115,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 
 | cell | table (holder) | Moore | best found here | status |
 |---|---|---|---|---|
-| (6,5) | 684 (Loz) | 1,562 | – | campaigns queued (runs/campaign1b.sh, haar_cells.sh) |
+| (6,5) | 684 (Loz) | 1,562 | – | negative so far. Rich and wide lift sweeps over orders 686–720: best cost 4 at 702 (Haar of GF(27) ⋊ Z13 = Z3³ ⋊ Z13, the `aff3` family); 7 further 300 s runs on that group all stop at cost 4 |
 | (10..15,5) | 4000, 5850, 8200, 11480, 14760, 20496 (DGQ) | | rebuilt 4000 = (2j+1)·GQ | §3.2: the polygon family stops at 2j+1 copies; Haar can't (SIZE_LAW §3.3, −10 % to −29 %) |
 | (16,5) | 27300 (DGQ) | 108,482 | – | not of the polygon form; not run |
 | (3,7) | 168 (Conder et al.) | 254 | 168 (= Conder's graph) | negative above 168 (§4) |
@@ -109,12 +123,12 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (5,7) | 3110 (Loz) | 10,922 | – | queued |
 | (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling) |
 | **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0); push above 288 running |
-| (4,8) | 2184 (Loz) | 6,560 | – | queued |
+| (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2260): no solution; wide sweep and haar_gen3 queued |
 | (5,8) | 9234 (Loz) | 43,690 | – | queued; GH(3) + matching lifts reach only m = 6 (§3.3) |
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
 | (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | queued |
-| (5,9) | 27936 (Loz) | 174,762 | – | queued |
+| **(5,9)** | 27936 (Loz) | 174,762 | **28,094** | **new record** (§2.0); larger N running |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses: cost 2 at n = 812 (2+2 base, Z29 ⋊ Z7; exhaustive: no solution) and at n = 816 (3+3 base, Z17 ⋊ Z8; exhaustive search running) |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
 | **(5,10)** | 90068 (Loz) | 699,050 | **91,728** | **new record** (§2.0) |
