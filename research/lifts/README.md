@@ -42,8 +42,9 @@ lift sample BASE D M GROUP...                    cost quantiles of M random volt
 - `cyc n`;
 - `meta m k r`: Z_m ⋊_r Z_k, with (a,j)(b,l) = (a + r^j b, j + l), the Loz–Širáň convention;
 - `dih n`;
-- `aff p a b c d k`: Z_p² ⋊_M Z_k with M = [[a,b],[c,d]] and M^k = I. M = [[1,1],[0,1]], k = p gives the
-  Heisenberg group of order p³ (metabelian, not metacyclic);
+- `aff p a b c d k`: Z_p² ⋊_M Z_k with M = [[a,b],[c,d]] and M^k = I mod p, where p is any modulus ≥ 2.
+  M = [[1,1],[0,1]], k = p (p prime) gives the Heisenberg group of order p³, which is metabelian but not metacyclic.
+  The (3,8) record uses `aff 3 0 2 1 0 8`;
 - `sl p`, `psl p`, `pgl p`, for p prime ≤ 250.
 
 Direct products cover Z_m × Z_n, metacyclic × cyclic, SL(2,p) × Z_n, SL × SL, and so on. Elements are written

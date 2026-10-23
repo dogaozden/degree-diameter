@@ -7,6 +7,7 @@ The group is rebuilt here from its definition, not from lift.c's tables:
   meta m k r     pairs (a, j), (a, j)(b, l) = (a + r^j b mod m, j + l mod k)
   dih n          meta n 2 n-1
   aff p a b c d k   triples (x, y, j), (v, j)(w, l) = (v + M^j w mod p, j + l mod k), M = [[a,b],[c,d]]
+                    (p any modulus >= 2)
   sl p / psl p / pgl p   2x2 matrices over Z/p with det 1 / det 1 modulo +-1 / det != 0 modulo scalars
   G x H          direct product (tuples)
 Elements are listed in sorted order of their canonical tuples; lift vertex (u, g) gets index u*N + rank(g).

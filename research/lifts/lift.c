@@ -14,7 +14,8 @@
      lift exhaust BASE D OUT GROUP...                  every assignment of the free voltages (gauge-fixed); writes the
                                                        first cost-0 lift to OUT; COUNTALL=1 counts all of them
    GROUP := FACTOR [x FACTOR]...,  FACTOR := cyc n | meta m k r | dih n | aff p a b c d k | sl p | psl p | pgl p   (p prime)
-     aff p a b c d k = Z_p^2 x|_M Z_k with M = [[a,b],[c,d]], M^k = I mod p; (v,j)(w,l) = (v + M^j w, j + l).
+     aff p a b c d k = Z_p^2 x|_M Z_k with M = [[a,b],[c,d]], M^k = I mod p (p any modulus >= 2);
+       (v,j)(w,l) = (v + M^j w, j + l).
        M = [[1,1],[0,1]], k = p gives the Heisenberg group of order p^3 (p odd).
      meta m k r = Z_m x|_r Z_k, (a,j)(b,l) = (a + r^j b, j + l), needs r^k = 1 mod m.  dih n = meta n 2 n-1.
    Element text: components joined by '|'; cyc "a", meta "a,j", sl/psl/pgl "a,b,c,d" = [[a,b],[c,d]].
@@ -106,7 +107,7 @@ static void build_factor(factor *f) {
         if ((long long)f->rpow[f->k - 1] * f->r % f->m != 1 % f->m) die("meta: r^k != 1 mod m");
         snprintf(f->spec, 64, "meta %d %d %d", f->m, f->k, f->r);
     } else if (f->type == F_AFF) {
-        int p = f->p, k = f->k; if (!isprime(p) || k < 1) die("aff: p prime, k >= 1");
+        int p = f->p, k = f->k; if (p < 2 || k < 1) die("aff: modulus >= 2, k >= 1");   /* p need not be prime */
         f->mpow = malloc(sizeof(int) * 4 * (k + 1)); int *P = f->mpow; P[0] = 1; P[1] = 0; P[2] = 0; P[3] = 1;
         for (int j = 1; j <= k; j++) { int *A = P + 4 * (j - 1), *B = P + 4 * j, *Mm = f->M;
             B[0] = (A[0] * Mm[0] + A[1] * Mm[2]) % p; B[1] = (A[0] * Mm[1] + A[1] * Mm[3]) % p;

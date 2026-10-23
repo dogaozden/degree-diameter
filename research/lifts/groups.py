@@ -126,8 +126,41 @@ def affs(p, k):
     return out
 
 
+def affs_ring(m, k):
+    """aff m a b c d k for a composite modulus m: companion matrices [[0,-d],[1,t]] with gcd(d, m) = 1 and
+    M^k = I mod m, M != I, one per <M> up to unit powers (keyed by (trace, det) of the powers)"""
+    out, seen = [], set()
+    for t in range(m):
+        for dd in range(1, m):
+            if math.gcd(dd, m) != 1:
+                continue
+            M = ((0, (-dd) % m), (1, t))
+            o = mat_order(M, m, k)
+            if o is None or k % o or o == 1:
+                continue
+            pw = [((1, 0), (0, 1))]
+            for _ in range(k):
+                (e, f), (g, h) = pw[-1]
+                pw.append((((e * 0 + f * 1) % m, (e * ((-dd) % m) + f * t) % m), ((g * 0 + h * 1) % m, (g * ((-dd) % m) + h * t) % m)))
+            key = min(((pw[j][0][0] + pw[j][1][1]) % m, (pw[j][0][0] * pw[j][1][1] - pw[j][0][1] * pw[j][1][0]) % m)
+                      for j in range(1, k + 1) if math.gcd(j, k) == 1)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(f"aff {m} 0 {(-dd) % m} 1 {t} {k}")
+    return out
+
+
 def aff_specs(N):
     out = []
+    for m in range(4, 13):   # composite moduli
+        if is_prime(m) or N % (m * m):
+            continue
+        rest = N // (m * m)
+        for k in divisors(rest):
+            if k >= 2:
+                c = rest // k
+                out += [s + (f" x cyc {c}" if c > 1 else "") for s in affs_ring(m, k)]
     for p in range(2, int(N ** 0.5) + 1):
         if not is_prime(p) or N % (p * p):
             continue
