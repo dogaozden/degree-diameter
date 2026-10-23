@@ -1,0 +1,16 @@
+group sl 59 x Z_1, N=205320, identity 3422
+start cost=18
+t=30 steps=87 evals=697 cost=4 best=4 T=0.53
+t=60 steps=180 evals=1441 cost=4 best=4 T=0.19
+t=90 steps=280 evals=2241 cost=4 best=4 T=0.15
+t=121 steps=377 evals=3017 cost=2 best=2 T=0.15
+t=151 steps=471 evals=3769 cost=2 best=2 T=0.15
+t=181 steps=568 evals=4545 cost=2 best=2 T=0.15
+t=211 steps=669 evals=5353 cost=2 best=2 T=0.15
+t=241 steps=773 evals=6185 cost=2 best=2 T=0.15
+t=271 steps=881 evals=7049 cost=2 best=2 T=1.05
+t=302 steps=992 evals=7937 cost=2 best=2 T=0.37
+t=332 steps=1083 evals=8665 cost=2 best=2 T=0.15
+RESULT d=7 D=9 group=sl 59 x Z_1 N=205320 best=0 evals=8889 time=340.5
+full diameter check: OK
+wrote sols/d7D9_sl_59_1_s1.txt
