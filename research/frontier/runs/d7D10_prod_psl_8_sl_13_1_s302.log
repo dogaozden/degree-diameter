@@ -1,0 +1,22 @@
+group prod psl 8 poly x^3+x+1 sl 13 x Z_1, N=1100736, identity 122460, H order 63, rows 17472, threads 1, setup 0.06s
+start cost=31
+t=30 steps=1857 evals=14857 cost=4 best=4 T=0.53
+t=60 steps=3697 evals=29577 cost=4 best=4 T=0.19
+t=90 steps=5537 evals=44297 cost=4 best=4 T=0.15
+t=120 steps=7435 evals=59481 cost=4 best=4 T=0.15
+t=150 steps=9268 evals=74145 cost=4 best=4 T=0.15
+t=180 steps=11049 evals=88393 cost=6 best=4 T=1.34
+t=210 steps=12880 evals=103041 cost=6 best=4 T=0.47
+t=240 steps=14707 evals=117657 cost=6 best=4 T=0.17
+t=270 steps=16556 evals=132449 cost=5 best=4 T=0.15
+t=300 steps=18375 evals=147001 cost=5 best=4 T=0.15
+t=330 steps=20228 evals=161825 cost=8 best=4 T=1.34
+t=360 steps=22117 evals=176937 cost=7 best=4 T=0.47
+t=390 steps=23934 evals=191473 cost=5 best=4 T=0.17
+t=420 steps=25798 evals=206385 cost=4 best=4 T=0.15
+t=450 steps=27651 evals=221209 cost=4 best=4 T=0.15
+t=480 steps=29471 evals=235769 cost=9 best=4 T=1.34
+t=510 steps=31278 evals=250225 cost=3 best=3 T=0.47
+t=540 steps=33037 evals=264297 cost=3 best=3 T=0.17
+t=570 steps=34910 evals=279281 cost=3 best=3 T=0.15
+RESULT d=7 D=10 group=prod psl 8 poly x^3+x+1 sl 13 x Z_1 N=1100736 best=3 evals=294033 time=600.0
