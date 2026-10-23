@@ -1,2 +1,29 @@
 group sl 31 x Z_50, N=1488000, identity 46500
 start cost=26
+t=32 steps=9 evals=73 cost=6 best=6 T=0.50
+t=64 steps=19 evals=153 cost=6 best=6 T=0.16
+t=96 steps=29 evals=233 cost=4 best=4 T=0.15
+t=128 steps=39 evals=313 cost=4 best=4 T=0.15
+t=159 steps=49 evals=393 cost=4 best=4 T=0.15
+t=190 steps=59 evals=473 cost=4 best=4 T=0.15
+t=221 steps=69 evals=553 cost=4 best=4 T=0.15
+t=252 steps=79 evals=633 cost=4 best=4 T=0.15
+t=282 steps=89 evals=713 cost=4 best=4 T=0.15
+t=313 steps=99 evals=793 cost=4 best=4 T=0.15
+t=346 steps=110 evals=881 cost=4 best=4 T=0.15
+t=379 steps=121 evals=969 cost=4 best=4 T=0.15
+t=411 steps=132 evals=1057 cost=4 best=4 T=0.15
+t=444 steps=143 evals=1145 cost=4 best=4 T=0.15
+t=476 steps=154 evals=1233 cost=4 best=4 T=0.15
+t=508 steps=165 evals=1321 cost=4 best=4 T=0.15
+t=538 steps=175 evals=1401 cost=4 best=4 T=0.15
+t=569 steps=185 evals=1481 cost=2 best=2 T=0.15
+t=600 steps=196 evals=1569 cost=2 best=2 T=0.15
+t=633 steps=207 evals=1657 cost=2 best=2 T=0.15
+t=665 steps=218 evals=1745 cost=2 best=2 T=0.15
+t=698 steps=229 evals=1833 cost=2 best=2 T=0.15
+t=729 steps=240 evals=1921 cost=2 best=2 T=0.15
+t=760 steps=251 evals=2009 cost=2 best=2 T=0.15
+RESULT d=9 D=9 group=sl 31 x Z_50 N=1488000 best=0 evals=2041 time=772.9
+full diameter check: OK
+wrote sols/d9D9_sl_31_50_s1.txt
