@@ -1,0 +1,18 @@
+machine: nproc=4, free -g: total=15 used=0 free=14 available=15
+--- build_haar2.py ---
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 8003856 edges = 40019280 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = e2e06fdb0bf7847ff20273c4e568423a56ea857b0410ea554277e5f6b0ba8645
+VALID d=10 D=9 group=sl 83 x Z_7 N=4001928 vertices=8003856
+--- check_haar_indep.py ---
+file /home/user/degree-diameter/research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt
+header: d=10 D=9 spec=sl 83 NCYC=7 N=4001928
+group order |G|=571704 (factors [571704]), x Z_7 -> 4001928; vertices 2N=8003856
+distinct generators (as full group elements): 10 of d=10
+permutations built (3s)
+BFS from A: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548813, 2897580, 3445734, 1038413]
+BFS from B: ecc=9 reached 8003856 of 8003856 (unreached 0); level sizes [1, 10, 90, 810, 7290, 65115, 548851, 2897580, 3445696, 1038413]
+every vertex has exactly 10 distinct neighbours: True
+RESULT VALID d=10 D=9 eccA=9 eccB=9 n=8003856 (6s)
+
