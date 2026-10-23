@@ -1,0 +1,8 @@
+group prod psl 11 psl 11 x Z_7, N=3049200, identity 254485, H order 55, rows 55440, threads 1, setup 0.14s
+start cost=12
+t=30 steps=706 evals=5649 cost=1 best=1 T=0.53
+t=60 steps=1507 evals=12057 cost=1 best=1 T=0.19
+t=90 steps=2275 evals=18201 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=prod psl 11 psl 11 x Z_7 N=3049200 best=0 evals=19537 time=96.6
+full diameter check: OK
+wrote sols/d13D8_prod_psl_11_psl_11_7_s101.txt

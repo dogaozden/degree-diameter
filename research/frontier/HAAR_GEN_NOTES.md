@@ -105,3 +105,16 @@ in 1 s (761 evaluations).
 **Search knobs** (restart from random, faster reheat, secondary slack objective): no measurable gain on
 `6 9 … sl 17 12` (4 seeds × 45 s each: default 1/4 solved, RESTART=1 REHEAT=5 0/4, REHEAT=5 1/4). Near a wall
 the search sits on a cost-1 or cost-2 plateau; what helps is more groups and more seeds, not tuning.
+
+## 4. Results of this session (haar_gen3, this container, ≤ 3 cores, ~3 h)
+
+All rebuilt with `build_haar2.py` (two BFS from (e,A) and (e,B): ecc ≤ D, unreached 0, max = min degree = Δ, no
+repeated edge). sha256 = of the edge list `n` + `u v` lines as written by build_haar2.py (= build_haar.py's format and
+order for the old families). Files: `sols/<tag>.txt`, `runs/<tag>.log`, `runs/<tag>.rebuild.txt`.
+
+| cell | group | N | vertices | previous best (vertices) | tag | edge-list sha256 |
+|---|---|---|---|---|---|---|
+RESULTS_TABLE
+
+Walls seen (orders tried above the best, all with cost 1–4 left after 150–600 s):
+WALLS_TEXT

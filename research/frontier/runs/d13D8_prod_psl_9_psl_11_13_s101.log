@@ -1,0 +1,9 @@
+group prod psl 9 poly x^2+1 psl 11 x Z_13, N=3088800, identity 309595, H order 55, rows 56160, threads 1, setup 0.10s
+start cost=4
+t=30 steps=721 evals=5769 cost=1 best=1 T=0.53
+t=60 steps=1462 evals=11697 cost=1 best=1 T=0.19
+t=90 steps=2206 evals=17649 cost=1 best=1 T=0.15
+t=120 steps=2941 evals=23529 cost=1 best=1 T=0.15
+RESULT d=13 D=8 group=prod psl 9 poly x^2+1 psl 11 x Z_13 N=3088800 best=0 evals=28081 time=143.5
+full diameter check: OK
+wrote sols/d13D8_prod_psl_9_psl_11_13_s101.txt

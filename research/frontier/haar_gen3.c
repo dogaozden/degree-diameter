@@ -363,11 +363,15 @@ static void bfs(ctx *c, uint32_t **tf, uint32_t **ti, int startB, int depth, lon
     c->F = F; c->Fn = Fn;
 }
 /* primary cost = #uncovered; *sec = fraction of the target side not within D-3 (slack, used only if SEC > 0) */
-static long long cost_with(ctx *c, uint32_t **tf, uint32_t **ti, double *sec) {
+/* save (optional): copies of the covered target-side bitsets, so an accepted candidate needs no extra BFS */
+static long long cost_with(ctx *c, uint32_t **tf, uint32_t **ti, double *sec, uint64_t **save) {
     long long cnt[2]; int L = D - 4;
-    if (D % 2 == 0) { bfs(c, tf, ti, 0, D - 1, cnt); *sec = L >= 0 ? (double)(N - c->lev[L]) / N : 0; return N - cnt[1]; }
+    if (D % 2 == 0) { bfs(c, tf, ti, 0, D - 1, cnt); *sec = L >= 0 ? (double)(N - c->lev[L]) / N : 0;
+        if (save) memcpy(save[0], c->V[1], 8 * (size_t)R); return N - cnt[1]; }
     long long tot; bfs(c, tf, ti, 0, D - 1, cnt); tot = N - cnt[0]; *sec = L >= 0 ? (double)(N - c->lev[L]) / N : 0;
+    if (save) memcpy(save[0], c->V[0], 8 * (size_t)R);
     bfs(c, tf, ti, 1, D - 1, cnt); if (L >= 0) *sec += (double)(N - c->lev[L]) / N;
+    if (save) memcpy(save[1], c->V[1], 8 * (size_t)R);
     return tot + N - cnt[1];
 }
 static int full_check(ctx *c) {
@@ -379,9 +383,7 @@ static int full_check(ctx *c) {
 /* uncovered samples (reservoir) from the current state */
 static int UCAP = 65536;
 static int *UNC[2], nst[2], ust[2], uside[2], nlists; static long long ntrue[2];
-static void collect1(ctx *c, int t, int startB, int targetSame) {
-    long long cnt[2]; bfs(c, TF, TI, startB, D - 1, cnt);
-    int sd = targetSame ? startB : startB ^ 1; uint64_t *V = c->V[sd];
+static void scan_unc(int t, const uint64_t *V, int startB, int sd) {
     long long seen = 0; int n = 0;
     for (int r = 0; r < R; r++) {
         uint64_t z = ~V[r] & MASK;
@@ -394,9 +396,17 @@ static void collect1(ctx *c, int t, int startB, int targetSame) {
     }
     nst[t] = n; ntrue[t] = seen; ust[t] = startB; uside[t] = sd;
 }
+static void collect1(ctx *c, int t, int startB, int targetSame) {
+    long long cnt[2]; bfs(c, TF, TI, startB, D - 1, cnt);
+    int sd = targetSame ? startB : startB ^ 1; scan_unc(t, c->V[sd], startB, sd);
+}
 static void collect(ctx *c) {
     if (D % 2 == 0) { nlists = 1; collect1(c, 0, 0, 0); }
     else { nlists = 2; collect1(c, 0, 0, 1); collect1(c, 1, 1, 1); }
+}
+static void collect_saved(uint64_t **sv) {   /* same lists as collect(), from the saved bitsets of a candidate */
+    if (D % 2 == 0) { nlists = 1; scan_unc(0, sv[0], 0, 1); }
+    else { nlists = 2; scan_unc(0, sv[0], 0, 0); scan_unc(1, sv[1], 1, 1); }
 }
 static int walk(int g, int *side, int len, int avoid) {
     for (int s = 0; s < len; s++) {
@@ -522,17 +532,19 @@ int main(int argc, char **argv) {
         int m = atoi(getenv("RANDSAMPLE")); double sc; long long *v = malloc(sizeof(long long) * m);
         for (int t = 0; t < m; t++) {
             for (int i = 1; i < d; i++) { int x; do x = rnd() % N; while (x == ident || used(x, i)); S[i] = x; make_tables(S[i], TF[i], TI[i]); }
-            v[t] = cost_with(C[0], TF, TI, &sc);
+            v[t] = cost_with(C[0], TF, TI, &sc, NULL);
         }
         for (int a1 = 1; a1 < m; a1++) { long long key = v[a1]; int b1 = a1 - 1; while (b1 >= 0 && v[b1] > key) { v[b1 + 1] = v[b1]; b1--; } v[b1 + 1] = key; }
         printf("RANDSAMPLE d=%d D=%d group=%s x Z_%d N=%d samples=%d min=%lld p1=%lld p10=%lld median=%lld\n", d, D, Q->spec, ncyc, N, m, v[0], v[m / 100], v[m / 10], v[m / 2]);
         return 0;
     }
-    long long c = cost_with(C[0], TF, TI, &csec), best = c; double cE = c + SEC * csec; memcpy(bestS, S, sizeof S); collect(C[0]);
+    long long c = cost_with(C[0], TF, TI, &csec, NULL), best = c; double cE = c + SEC * csec; memcpy(bestS, S, sizeof S); collect(C[0]);
     double t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0, lastimpstep = 0;
     double tgen = 0, tev = 0, tacc = 0; int nrestart = 0; long long runbest = c;
     fprintf(stderr, "start cost=%lld\n", c);
     int xs[256]; long long cs[256]; double ce[256]; if (K > 256) K = 256;
+    uint64_t *SAVE[256][2];
+    for (int t = 0; t < K; t++) { SAVE[t][0] = malloc(8 * (size_t)R); SAVE[t][1] = malloc(8 * (size_t)R); }
     while (!stop_flag && now() - t0 < secs && best > 0) {
         double ta = now();
         int i = 1 + rnd() % (d - 1);
@@ -552,14 +564,14 @@ int main(int argc, char **argv) {
             make_tables(xs[t], cx->cf, cx->ci);
             uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
             tf[i] = cx->cf; ti[i] = cx->ci;
-            double sc; cs[t] = cost_with(cx, tf, ti, &sc); ce[t] = cs[t] + SEC * sc;
+            double sc; cs[t] = cost_with(cx, tf, ti, &sc, SAVE[t]); ce[t] = cs[t] + SEC * sc;
         }
         evals += K;
         double tc = now();
         int bt = 0; for (int t = 1; t < K; t++) if (ce[t] < ce[bt]) bt = t;
         long long bc = cs[bt]; double bE = ce[bt]; int bx = xs[bt];
         if (bE <= cE || exp((cE - bE) / T) > (rnd() % 1000000) / 1e6) {
-            S[i] = bx; SI[i] = ginv(bx); make_tables(bx, TF[i], TI[i]); c = bc; cE = bE; collect(C[0]);
+            S[i] = bx; SI[i] = ginv(bx); make_tables(bx, TF[i], TI[i]); c = bc; cE = bE; collect_saved(SAVE[bt]);
         }
         steps++;
         if (c < best) { best = c; memcpy(bestS, S, sizeof S); lastimp = now(); lastimpstep = steps; }
@@ -569,7 +581,7 @@ int main(int argc, char **argv) {
             lastheat = now(); T = TMAX; memcpy(S, bestS, sizeof S);
             if (RESTART) { nrestart++; for (int j = 1; j < d; j++) { int x; do x = rnd() % N; while (x == ident || used(x, j)); S[j] = x; } }
             for (int j = 0; j < d; j++) { SI[j] = ginv(S[j]); make_tables(S[j], TF[j], TI[j]); }
-            c = cost_with(C[0], TF, TI, &csec); cE = c + SEC * csec; collect(C[0]); lastimp = now(); lastimpstep = steps; runbest = c;
+            c = cost_with(C[0], TF, TI, &csec, NULL); cE = c + SEC * csec; collect(C[0]); lastimp = now(); lastimpstep = steps; runbest = c;
         }
         double td = now(); tgen += tb - ta; tev += tc - tb; tacc += td - tc;
         if (now() - lastprint > 30) {
