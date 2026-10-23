@@ -1,0 +1,12 @@
+group psl 277 x Z_1, N=10626828, identity 38226, H order 46, rows 231018, threads 1, setup 0.47s
+start cost=7
+t=30 steps=51 evals=409 cost=2 best=2 T=0.52
+t=61 steps=97 evals=777 cost=1 best=1 T=0.18
+t=91 steps=145 evals=1161 cost=1 best=1 T=0.15
+t=121 steps=194 evals=1553 cost=1 best=1 T=0.15
+t=151 steps=254 evals=2033 cost=1 best=1 T=0.15
+t=182 steps=314 evals=2513 cost=1 best=1 T=0.15
+t=212 steps=374 evals=2993 cost=1 best=1 T=0.15
+RESULT d=9 D=10 group=psl 277 x Z_1 N=10626828 best=0 evals=3473 time=241.7
+full diameter check: OK
+wrote sols/d9D10_psl_277_1_s111.txt

@@ -1,0 +1,9 @@
+group sl 107 x Z_3, N=3674808, identity 34026, H order 54, rows 68052, threads 1, setup 0.11s
+start cost=9
+t=30 steps=603 evals=4825 cost=2 best=1 T=0.53
+t=60 steps=1214 evals=9713 cost=2 best=1 T=0.19
+t=90 steps=1806 evals=14449 cost=1 best=1 T=0.15
+t=120 steps=2418 evals=19345 cost=1 best=1 T=0.15
+RESULT d=8 D=10 group=sl 107 x Z_3 N=3674808 best=0 evals=22889 time=142.2
+full diameter check: OK
+wrote sols/d8D10_sl_107_3_s111.txt
