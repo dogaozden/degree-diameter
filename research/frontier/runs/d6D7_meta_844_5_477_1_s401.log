@@ -1,0 +1,19 @@
+group meta 844 5 477 x Z_1, N=4220, identity 0, H order 20, rows 211, threads 1, setup 0.00s
+start cost=114
+t=30 steps=252234 evals=2017873 cost=4 best=4 T=0.53
+t=60 steps=517378 evals=4139025 cost=4 best=4 T=0.19
+t=90 steps=781340 evals=6250721 cost=4 best=4 T=0.15
+t=120 steps=1045055 evals=8360441 cost=10 best=4 T=0.15
+t=150 steps=1313941 evals=10511529 cost=10 best=4 T=0.15
+t=180 steps=1582830 evals=12662641 cost=8 best=4 T=0.53
+t=210 steps=1852541 evals=14820329 cost=8 best=4 T=0.19
+t=240 steps=2110379 evals=16883033 cost=8 best=4 T=0.15
+t=270 steps=2363994 evals=18911953 cost=8 best=4 T=0.15
+t=300 steps=2627787 evals=21022297 cost=8 best=4 T=0.15
+t=330 steps=2898762 evals=23190097 cost=6 best=4 T=0.53
+t=360 steps=3168249 evals=25345993 cost=6 best=4 T=0.19
+t=390 steps=3434249 evals=27473993 cost=6 best=4 T=0.15
+t=420 steps=3714426 evals=29715409 cost=6 best=4 T=0.15
+RESULT d=6 D=7 group=meta 844 5 477 x Z_1 N=4220 best=0 evals=30215441 time=426.9
+full diameter check: OK
+wrote sols/d6D7_meta_844_5_477_1_s401.txt

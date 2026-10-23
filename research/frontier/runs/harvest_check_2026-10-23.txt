@@ -294,3 +294,27 @@ BFS from (e,B):
   from (e,B) level 10: new=142426394  reached=1217130096 / 1217130096
   done in 135.50s, eccB=10, reached 1217130096 / 1217130096
 VALID d=14 D=10 vertices=1217130096 eccA=10 eccB=10
+== d6D7_meta_844_5_477_1_s401 (origin/w4-d6D7_w1, 11:13 PT)
+ecc from A = 7 unreached 0
+ecc from B = 7 unreached 0
+n = 8440 edges = 25320 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 0841acbb56352ed4a0f33ad7d99066008bb889dbb9a2187c51354ba75f1f6fae
+VALID d=6 D=7 group=meta 844 5 477 x Z_1 N=4220 vertices=8440
+== d7D8_psl_19_14_orb3_s1 (origin/claude/structured-haar-search-ws7bet, 11:13 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 95760 edges = 335160 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = c27fde6e0091b00befe3967762bfb61fa7d169dc6524b7101e58264d8395b389
+VALID d=7 D=8 group=psl 19 x Z_14 N=47880 vertices=95760
+== d8D7_sl_8_43_orb3_s1 (origin/claude/structured-haar-search-ws7bet, 11:13 PT)
+ecc from A = 7 unreached 0
+ecc from B = 7 unreached 0
+n = 43344 edges = 173376 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 70c4e95be1a65a305eb217891c38f2329225d6388cfe2ca968a04f4e6d326edc
+VALID d=8 D=7 group=sl 8 poly x^3+x+1 x Z_43 N=21672 vertices=43344
+== d8D8_psl_17_49_orb3_s1 (origin/claude/structured-haar-search-ws7bet, 11:13 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 239904 edges = 959616 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 2b36d4a9a9083a5df79ab56643acf27fa6630cfde93d50129905e4f99ad74ee8
+VALID d=8 D=8 group=psl 17 x Z_49 N=119952 vertices=239904
