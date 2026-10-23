@@ -1,0 +1,5 @@
+group pgl 8 poly x^3+x+1 x Z_31, N=15624, identity 0, H order 62, rows 252, threads 1, setup 0.01s
+alpha: conj by mat(1,4,2,5) (index 242), z -> 5 z on Z_31
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 30.15, mu/k = 10.05, fixed-point misses ~ 1.12
+RANDORB d=6 D=8 group=pgl 8 poly x^3+x+1 x Z_31 N=15624 k=3 m=2 f=0 fix=8 samples=20000000 min=3 p1=15 p10=37 median=168 mean=727.17 var=3397855.4 mu=30.15 time=258.3
+RANDORB hist (cost/k): 0 14436 28399 28861 100592 136824 136252 232776 222102 301642 257730 376802 323181 315644 311802 301335 294365 290087 254873 261928 239532 251060 311542 337242 241084 284195 215659 211658 187240 193811 223334 13114012
