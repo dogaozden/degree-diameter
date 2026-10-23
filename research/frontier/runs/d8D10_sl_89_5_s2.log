@@ -1,0 +1,31 @@
+group sl 89 x Z_5, N=3524400, identity 39160
+start cost=7
+t=31 steps=4 evals=33 cost=1 best=1 T=0.52
+t=64 steps=8 evals=65 cost=2 best=1 T=0.17
+t=95 steps=12 evals=97 cost=2 best=1 T=0.15
+t=125 steps=16 evals=129 cost=2 best=1 T=0.15
+t=156 steps=20 evals=161 cost=2 best=1 T=0.15
+t=195 steps=25 evals=201 cost=2 best=1 T=0.15
+t=227 steps=29 evals=233 cost=2 best=1 T=0.15
+t=258 steps=33 evals=265 cost=1 best=1 T=0.15
+t=290 steps=37 evals=297 cost=1 best=1 T=0.15
+t=329 steps=41 evals=329 cost=1 best=1 T=0.15
+t=367 steps=45 evals=361 cost=1 best=1 T=0.15
+t=405 steps=49 evals=393 cost=1 best=1 T=0.15
+t=439 steps=53 evals=425 cost=1 best=1 T=0.15
+t=469 steps=57 evals=457 cost=1 best=1 T=0.15
+t=506 steps=62 evals=497 cost=1 best=1 T=0.15
+t=543 steps=67 evals=537 cost=1 best=1 T=0.15
+t=574 steps=71 evals=569 cost=1 best=1 T=0.15
+t=604 steps=75 evals=601 cost=1 best=1 T=0.15
+t=634 steps=79 evals=633 cost=1 best=1 T=0.15
+t=665 steps=83 evals=665 cost=1 best=1 T=0.15
+t=702 steps=88 evals=705 cost=1 best=1 T=0.15
+t=739 steps=93 evals=745 cost=1 best=1 T=0.15
+t=776 steps=98 evals=785 cost=1 best=1 T=0.15
+t=814 steps=103 evals=825 cost=1 best=1 T=0.15
+t=850 steps=108 evals=865 cost=1 best=1 T=0.15
+t=882 steps=112 evals=897 cost=1 best=1 T=0.15
+RESULT d=8 D=10 group=sl 89 x Z_5 N=3524400 best=0 evals=905 time=892.7
+full diameter check: OK
+wrote sols/d8D10_sl_89_5_s2.txt
