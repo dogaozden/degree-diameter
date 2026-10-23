@@ -1,0 +1,51 @@
+group psl 37 x Z_67, N=1695636, identity 44622, H order 37, rows 45828, threads 1, setup 0.04s
+wide rows: HW order 201, rows 8436, setup 0.08s
+alpha: conj by mat(2,15,2,34) (index 2592), z -> 29 z on Z_67
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 17 (+e); mu = 20.82, mu/k = 6.94, fixed-point misses ~ 0.83
+start cost=96
+t=30 steps=1378 evals=11025 cost=6 best=6 T=0.53
+t=60 steps=2784 evals=22273 cost=6 best=6 T=0.19
+t=90 steps=4120 evals=32961 cost=6 best=6 T=0.15
+t=120 steps=5541 evals=44329 cost=6 best=6 T=0.15
+t=150 steps=7057 evals=56457 cost=6 best=6 T=0.15
+t=180 steps=8493 evals=67945 cost=6 best=6 T=0.59
+t=210 steps=9940 evals=79521 cost=6 best=6 T=0.21
+t=240 steps=11344 evals=90753 cost=6 best=6 T=0.15
+t=270 steps=12781 evals=102249 cost=3 best=3 T=0.15
+t=300 steps=14250 evals=114001 cost=3 best=3 T=0.15
+t=330 steps=15552 evals=124417 cost=3 best=3 T=0.15
+t=360 steps=16851 evals=134809 cost=3 best=3 T=0.15
+t=390 steps=18079 evals=144633 cost=3 best=3 T=0.15
+t=420 steps=19357 evals=154857 cost=3 best=3 T=0.65
+t=450 steps=20590 evals=164721 cost=3 best=3 T=0.23
+t=480 steps=21809 evals=174473 cost=2 best=2 T=0.15
+t=510 steps=23005 evals=184041 cost=2 best=2 T=0.15
+t=540 steps=24221 evals=193769 cost=2 best=2 T=0.15
+t=570 steps=25407 evals=203257 cost=2 best=2 T=0.15
+t=600 steps=26623 evals=212985 cost=2 best=2 T=0.15
+t=630 steps=27782 evals=222257 cost=2 best=2 T=1.48
+t=660 steps=28935 evals=231481 cost=6 best=2 T=0.52
+t=690 steps=30085 evals=240681 cost=6 best=2 T=0.18
+t=720 steps=31225 evals=249801 cost=6 best=2 T=0.15
+t=750 steps=32358 evals=258865 cost=6 best=2 T=0.15
+t=780 steps=33490 evals=267921 cost=19 best=2 T=1.48
+t=810 steps=34606 evals=276849 cost=6 best=2 T=0.52
+t=840 steps=35758 evals=286065 cost=6 best=2 T=0.18
+t=870 steps=36898 evals=295185 cost=6 best=2 T=0.15
+t=901 steps=38001 evals=304009 cost=6 best=2 T=0.15
+t=931 steps=39096 evals=312769 cost=2 best=2 T=1.47
+t=961 steps=40268 evals=322145 cost=3 best=2 T=0.52
+t=991 steps=41423 evals=331385 cost=3 best=2 T=0.18
+t=1021 steps=42558 evals=340465 cost=3 best=2 T=0.15
+t=1051 steps=43709 evals=349673 cost=3 best=2 T=0.15
+t=1081 steps=44847 evals=358777 cost=2 best=2 T=1.47
+t=1111 steps=46050 evals=368401 cost=3 best=2 T=0.52
+t=1141 steps=47156 evals=377249 cost=3 best=2 T=0.18
+t=1171 steps=48321 evals=386569 cost=3 best=2 T=0.15
+RESULT d=9 D=9 group=psl 37 x Z_67 N=1695636 best=0 evals=394665 time=1196.6 orbit k=3 m=3 f=0 fix=17
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oF/d9D9_psl_37_67_orb3f0_s1.txt
+n = 3391272 edges = 15260724 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = c4d2178486c268a4d20fa738ba292f5158cb840e2a2de3f863eb8aa18af1d82c
+VALID d=9 D=9 group=psl 37 x Z_67 N=1695636 vertices=3391272
