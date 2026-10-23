@@ -1,2 +1,22 @@
 group sl 81 poly x^4+x+2 x Z_2, N=1062720, identity 12960, H order 41, rows 25920, threads 1, setup 0.04s
 start cost=20
+t=30 steps=1124 evals=8993 cost=2 best=1 T=0.53
+t=60 steps=2312 evals=18497 cost=1 best=1 T=0.19
+t=90 steps=3409 evals=27273 cost=1 best=1 T=0.15
+t=120 steps=4558 evals=36465 cost=1 best=1 T=0.15
+t=150 steps=5740 evals=45921 cost=1 best=1 T=0.15
+t=180 steps=6909 evals=55273 cost=6 best=1 T=0.77
+t=210 steps=8029 evals=64233 cost=3 best=1 T=0.27
+t=240 steps=9231 evals=73849 cost=2 best=1 T=0.15
+t=270 steps=10364 evals=82913 cost=2 best=1 T=0.15
+t=300 steps=11315 evals=90521 cost=1 best=1 T=0.15
+t=330 steps=12464 evals=99713 cost=7 best=1 T=0.77
+t=360 steps=13409 evals=107273 cost=2 best=1 T=0.27
+t=390 steps=14413 evals=115305 cost=1 best=1 T=0.15
+t=420 steps=15326 evals=122609 cost=1 best=1 T=0.15
+t=450 steps=16282 evals=130257 cost=1 best=1 T=0.15
+t=480 steps=17380 evals=139041 cost=3 best=1 T=0.77
+t=510 steps=18380 evals=147041 cost=6 best=1 T=0.27
+t=540 steps=19346 evals=154769 cost=1 best=1 T=0.15
+t=570 steps=20434 evals=163473 cost=1 best=1 T=0.15
+RESULT d=7 D=10 group=sl 81 poly x^4+x+2 x Z_2 N=1062720 best=1 evals=171249 time=600.1
