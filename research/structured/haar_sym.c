@@ -940,6 +940,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
     int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70;
     long long REHEATSTEPS = getenv("REHEATSTEPS") ? atoll(getenv("REHEATSTEPS")) : 400;
+    int ORESTART = getenv("RESTART") ? atoi(getenv("RESTART")) : 0;
     if (K > 64) K = 64;
     uint64_t *SV[64][2]; for (int t = 0; t < K; t++) { SV[t][0] = zalloc64(BITBYTES); SV[t][1] = zalloc64(BITBYTES); }
     uint32_t *OTF[64][MAXD], *OTI[64][MAXD];
@@ -989,6 +990,10 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         T = TMAX * pow(0.5, (now() - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (now() - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
             lastheat = now(); T = TMAX; memcpy(S, bestS2, sizeof(int) * d);
+            if (ORESTART) {   /* diversify: fresh random orbits (fixed generators kept) */
+                for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
+                for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+            }
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             c = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0); cE = (double)c / OK_; collect(C[0]); lastimp = now(); lastimpstep = steps;
         }
