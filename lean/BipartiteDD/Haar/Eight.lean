@@ -102,9 +102,9 @@ theorem ediam_le_eight_of {W : Type*} (S : Finset G) (H : SimpleGraph W) (e : G 
   obtain ⟨v, rfl⟩ := e.surjective w₂
   rcases u with g | g <;> rcases v with g' | g'
   · exact aa g g'
-  · exact (ab g g').trans (by norm_num)
+  · exact le_trans (ab g g') (by exact_mod_cast (by norm_num : (7 : ℕ) ≤ 8))
   · rw [edist_comm]
-    exact (ab g' g).trans (by norm_num)
+    exact le_trans (ab g' g) (by exact_mod_cast (by norm_num : (7 : ℕ) ≤ 8))
   · exact bb g g'
 
 /-- The three properties for a Haar graph transported along `e`, with diameter `8`. -/
