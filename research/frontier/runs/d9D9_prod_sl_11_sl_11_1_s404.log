@@ -2,3 +2,29 @@ group prod sl 11 sl 11 x Z_1, N=1742400, identity 145310, H order 60, rows 29040
 start cost=66
 t=30 steps=1059 evals=8473 cost=22 best=22 T=0.53
 t=60 steps=2006 evals=16049 cost=22 best=22 T=0.19
+t=90 steps=3062 evals=24497 cost=22 best=22 T=0.15
+t=120 steps=4172 evals=33377 cost=22 best=22 T=0.15
+t=150 steps=5280 evals=42241 cost=20 best=20 T=0.15
+t=180 steps=6377 evals=51017 cost=20 best=20 T=0.15
+t=210 steps=7471 evals=59769 cost=18 best=18 T=0.15
+t=240 steps=8553 evals=68425 cost=18 best=18 T=0.15
+t=270 steps=9595 evals=76761 cost=18 best=18 T=0.15
+t=300 steps=10653 evals=85225 cost=18 best=18 T=0.15
+t=330 steps=11717 evals=93737 cost=18 best=18 T=0.15
+t=360 steps=12743 evals=101945 cost=18 best=18 T=0.57
+t=390 steps=13803 evals=110425 cost=18 best=18 T=0.20
+t=420 steps=14841 evals=118729 cost=18 best=18 T=0.15
+t=450 steps=15879 evals=127033 cost=18 best=18 T=0.15
+t=480 steps=16909 evals=135273 cost=18 best=18 T=0.15
+t=510 steps=17940 evals=143521 cost=18 best=18 T=0.56
+t=540 steps=18985 evals=151881 cost=18 best=18 T=0.20
+t=570 steps=20021 evals=160169 cost=18 best=18 T=0.15
+t=600 steps=21060 evals=168481 cost=18 best=18 T=0.15
+t=630 steps=22098 evals=176785 cost=18 best=18 T=0.15
+t=660 steps=23146 evals=185169 cost=16 best=16 T=0.56
+t=690 steps=24188 evals=193505 cost=16 best=16 T=0.20
+t=720 steps=25210 evals=201681 cost=16 best=16 T=0.15
+t=750 steps=26224 evals=209793 cost=16 best=16 T=0.15
+t=780 steps=27218 evals=217745 cost=16 best=16 T=0.15
+t=810 steps=28242 evals=225937 cost=16 best=16 T=1.29
+RESULT d=9 D=9 group=prod sl 11 sl 11 x Z_1 N=1742400 best=16 evals=230681 time=828.0
