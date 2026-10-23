@@ -1,0 +1,12 @@
+group prod psl 5 sl 9 poly x^2+1 x Z_5, N=216000, identity 36360, H order 60, rows 3600, threads 1, setup 0.01s
+start cost=87
+t=30 steps=6035 evals=48281 cost=12 best=8 T=0.53
+t=60 steps=12061 evals=96489 cost=8 best=8 T=0.19
+t=90 steps=18112 evals=144897 cost=6 best=6 T=0.15
+t=120 steps=24146 evals=193169 cost=6 best=6 T=0.15
+t=150 steps=30194 evals=241553 cost=6 best=6 T=0.15
+t=180 steps=36222 evals=289777 cost=6 best=6 T=0.15
+t=210 steps=42161 evals=337289 cost=6 best=6 T=0.15
+t=240 steps=48159 evals=385273 cost=6 best=6 T=0.86
+t=270 steps=54213 evals=433705 cost=6 best=6 T=0.30
+RESULT d=7 D=9 group=prod psl 5 sl 9 poly x^2+1 x Z_5 N=216000 best=6 evals=479985 time=300.0
