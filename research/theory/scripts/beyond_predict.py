@@ -38,6 +38,18 @@ def random_records():
 
 def mu_gen(d, D, N): return N * math.exp(-W(d, D) / N)
 
+def old_evals():
+    """evals of the random-S run that produced each record (RESULT lines in frontier/runs, wave3, wave4), by (d, D, N)."""
+    out = {}
+    for fn in glob.glob(os.path.join(HERE, '..', '..', 'frontier', '*', '**', '*'), recursive=True):
+        if not os.path.isfile(fn): continue
+        for line in open(fn, errors='replace'):
+            m = RX.search(line) if line.startswith('RESULT') else None
+            if m and m.group(5) == '0':
+                key = (int(m.group(1)), int(m.group(2)), int(m.group(4)))
+                out[key] = min(out.get(key, 10 ** 12), int(m.group(6)))
+    return out
+
 def solve_N(f, target, lo, hi):
     """largest N in [lo, hi] with f(N) <= target (f increasing in N)."""
     for _ in range(200):
@@ -105,14 +117,15 @@ if __name__ == '__main__':
 
     print('\n== 3. predicted gain per cell ==')
     print('  N_old: best random-S record (frontier/sols, non-orb files); N_new: best solved orbit run.')
-    print('  P0 = closed form: ln(N_new/N_old) = ln 3 / (1 + lambda_old)   (clumping only).')
+    print('  P0 = closed form, clumping only: ln(N_new/N_old) = ln 3 / (1 + lambda_old).')
     print('  P1 = equal difficulty: mu_alpha,model(N_new) = mu_model(N_old), with the new group\'s fixed-point counts.')
-    print('  P2 = at the run\'s own evals: mu_alpha(N) = 13 + 2 ln(evals/1e5) (zero free parameters).')
-    cells = {}
+    print('  P3 = equal difficulty corrected for budget: mu_alpha(N_new) = mu(N_old) + 2 ln(M_new / M_old), M = evals of the')
+    print('       record run (old: frontier run logs; only where the log is in the repo). Generic mu on both sides.')
+    oe = old_evals(); cells = {}
     for r in runs:
         if r['best'] == 0 and ((r['d'], r['D']) not in cells or r['N'] > cells[(r['d'], r['D'])]['N']): cells[(r['d'], r['D'])] = r
     rows = []
-    print(' cell     N_old        mu_old  lam_old  N_new        gain    P0     P1     P2     evals   group (new)')
+    print(' cell     N_old        mu_old  lam_old  N_new        gain    P0      P1      P3      M_old    M_new   group (new)')
     for (d, D), r in sorted(cells.items(), key=lambda t: (t[0][1], t[0][0])):
         o = rec[(d, D)]
         if o['N'] >= r['N']: continue
@@ -121,18 +134,21 @@ if __name__ == '__main__':
         p0 = math.log(3) / (1 + lo)
         f1 = lambda Nx: mu_orbit(d, D, Nx, at_N(r, Nx), r['a'])
         p1 = math.log(solve_N(f1, mo, o['N'] * 0.5, o['N'] * 2) / o['N'])
-        f2 = lambda Nx: mu_orbit(d, D, Nx, None if D % 2 == 0 else at_N(r, Nx), r['a'], coincid=False)
-        p2 = math.log(solve_N(f2, mu_of_evals(r['evals']), o['N'] * 0.5, o['N'] * 2) / o['N'])
-        rows.append((d, D, g_actual, p0, p1, p2, r['evals']))
-        print(' (%2d,%2d)  %-11d  %6.1f  %5.2f    %-11d  %+5.1f%%  %+5.1f%%  %+5.1f%%  %+5.1f%%  %7d  %s' % (
-            d, D, o['N'], mo, lo, r['N'], 100 * g_actual, 100 * p0, 100 * p1, 100 * p2, r['evals'], r['spec']))
+        Mo = oe.get((d, D, o['N']))
+        if Mo:
+            f3 = lambda Nx: mu_orbit(d, D, Nx, None if D % 2 == 0 else at_N(r, Nx), r['a'], coincid=False)
+            tgt = mu_gen(d, D, o['N']) + 2 * math.log(r['evals'] / Mo)
+            p3 = math.log(solve_N(f3, tgt, o['N'] * 0.5, o['N'] * 2) / o['N'])
+        else: p3 = float('nan')
+        rows.append((d, D, g_actual, p0, p1, p3, r['evals']))
+        print(' (%2d,%2d)  %-11d  %6.1f  %5.2f    %-11d  %+5.1f%%  %+5.1f%%  %+5.1f%%  %s  %8s  %7d  %s' % (
+            d, D, o['N'], mo, lo, r['N'], 100 * g_actual, 100 * p0, 100 * p1,
+            '%+5.1f%%' % (100 * p3) if p3 == p3 else '    - ', Mo or '-', r['evals'], r['spec']))
     a = np.array([t[2:6] for t in rows])
-    for j, lab in ((1, 'P0'), (2, 'P1'), (3, 'P2')):
-        dif = a[:, 0] - a[:, j]
-        print('  %s: actual - predicted gain: mean %+.1f%%, rms %.1f%%, corr(actual, pred) %.2f' % (
-            lab, 100 * dif.mean(), 100 * math.sqrt((dif ** 2).mean()), np.corrcoef(a[:, 0], a[:, j])[0, 1]))
-    big = [t for t in rows if t[6] < 2e4]; small = [t for t in rows if t[6] >= 2e4]
-    for lab, s in (('cells whose record run used >= 2e4 evals', small), ('cells whose record run used < 2e4 evals', big)):
-        if s:
-            s = np.array([t[2:6] for t in s])
-            print('  %s (%d): mean actual %+.1f%%, P1 %+.1f%%, P2 %+.1f%%' % (lab, len(s), 100 * s[:, 0].mean(), 100 * s[:, 2].mean(), 100 * s[:, 3].mean()))
+    for j, lab in ((1, 'P0'), (2, 'P1'), (3, 'P3')):
+        ok = ~np.isnan(a[:, j]); dif = a[ok, 0] - a[ok, j]
+        print('  %s (%2d cells): actual - predicted gain: mean %+.1f%%, rms %.1f%%, corr(actual, pred) %.2f' % (
+            lab, ok.sum(), 100 * dif.mean(), 100 * math.sqrt((dif ** 2).mean()), np.corrcoef(a[ok, 0], a[ok, j])[0, 1]))
+    ok = ~np.isnan(a[:, 3])
+    print('  same %d cells, P1: mean %+.1f%%, rms %.1f%%' % (ok.sum(), 100 * (a[ok, 0] - a[ok, 2]).mean(), 100 * math.sqrt(((a[ok, 0] - a[ok, 2]) ** 2).mean())))
+    print('  mean gain: actual %+.1f%%, P0 %+.1f%%, P1 %+.1f%%' % (100 * a[:, 0].mean(), 100 * a[:, 1].mean(), 100 * a[:, 2].mean()))

@@ -102,27 +102,28 @@
 
 == 3. predicted gain per cell ==
   N_old: best random-S record (frontier/sols, non-orb files); N_new: best solved orbit run.
-  P0 = closed form: ln(N_new/N_old) = ln 3 / (1 + lambda_old)   (clumping only).
+  P0 = closed form, clumping only: ln(N_new/N_old) = ln 3 / (1 + lambda_old).
   P1 = equal difficulty: mu_alpha,model(N_new) = mu_model(N_old), with the new group's fixed-point counts.
-  P2 = at the run's own evals: mu_alpha(N) = 13 + 2 ln(evals/1e5) (zero free parameters).
- cell     N_old        mu_old  lam_old  N_new        gain    P0     P1     P2     evals   group (new)
- ( 8, 7)  20520          26.7   6.69    21672         +5.5%  +14.3%  +10.9%   -3.9%    18681  pgl 8 poly x^3+x+1 x Z_43
- ( 7, 8)  44460          26.3   7.56    47880         +7.4%  +12.8%  +12.0%   +6.5%   264425  psl 19 x Z_14
- ( 8, 8)  112896         23.2   8.51    119952        +6.1%  +11.6%  +11.0%   +5.1%    87673  psl 17 x Z_49
- ( 9, 8)  248952         17.6   9.63    255528        +2.6%  +10.3%   +9.6%   +8.8%   503929  sl 27 poly x^3+2x+1 x Z_13
- (13, 8)  3204240        16.7  12.20    3302208       +3.0%   +8.3%   +7.7%   +4.9%    53265  prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13
- ( 7, 9)  208320         14.9   9.68    231420       +10.5%  +10.3%   +7.3%  +10.9%  1499673  psl 29 x Z_19
- ( 8, 9)  622656         14.8  10.80    658008        +5.5%   +9.3%   +8.8%   +8.7%   223985  sl 37 x Z_13
- (10, 9)  3744000        10.6  12.93    4001928       +6.7%   +7.9%   +6.9%   +6.6%    24609  sl 83 x Z_7
- (11, 9)  8184960        11.5  13.58    8396040       +2.5%   +7.5%   +6.3%   +1.5%     4969  sl 61 x Z_37
- (13, 9)  31078080       10.6  15.09    31936200      +2.7%   +6.8%   +6.5%  -24.4%      281  sl 101 x Z_31
- (14, 9)  55741440        8.3  15.85    58034328      +4.0%   +6.5%   +3.2%   +0.1%     3409  sl 67 x Z_193
- (16, 9)  158339880       4.9  17.34    162082200     +2.3%   +6.0%   +3.4%  -69.3%        9  sl 149 x Z_49
- ( 7,10)  1073520        13.8  11.27    1117200       +4.0%   +9.0%   +8.3%   +6.0%    22937  psl 49 poly x^2+1 x Z_19
- ( 8,10)  3674808        10.0  12.81    3901080       +6.0%   +8.0%   +7.3%   +9.1%    74489  sl 59 x Z_19
- (10,10)  28934136        8.3  15.06    30070560      +3.9%   +6.8%   +6.4%   +0.3%      833  sl 79 x Z_61
-  P0: actual - predicted gain: mean -4.2%, rms 4.8%, corr(actual, pred) 0.50
-  P1: actual - predicted gain: mean -2.9%, rms 3.9%, corr(actual, pred) 0.38
-  P2: actual - predicted gain: mean +6.8%, rms 20.1%, corr(actual, pred) 0.46
-  cells whose record run used >= 2e4 evals (9): mean actual +5.8%, P1 +8.8%, P2 +7.4%
-  cells whose record run used < 2e4 evals (6): mean actual +3.5%, P1 +6.1%, P2 -16.0%
+  P3 = equal difficulty corrected for budget: mu_alpha(N_new) = mu(N_old) + 2 ln(M_new / M_old), M = evals of the
+       record run (old: frontier run logs; only where the log is in the repo). Generic mu on both sides.
+ cell     N_old        mu_old  lam_old  N_new        gain    P0      P1      P3      M_old    M_new   group (new)
+ ( 8, 7)  20520          26.7   6.69    21672         +5.5%  +14.3%  +10.9%      -          -    18681  pgl 8 poly x^3+x+1 x Z_43
+ ( 7, 8)  44460          26.3   7.56    47880         +7.4%  +12.8%  +12.0%   +9.2%   3317249   264425  psl 19 x Z_14
+ ( 8, 8)  112896         23.2   8.51    119952        +6.1%  +11.6%  +11.0%      -          -    87673  psl 17 x Z_49
+ ( 9, 8)  248952         17.6   9.63    255528        +2.6%  +10.3%   +9.6%      -          -   503929  sl 27 poly x^3+2x+1 x Z_13
+ (13, 8)  3204240        16.7  12.20    3302208       +3.0%   +8.3%   +7.7%   +7.5%     61721    53265  prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13
+ ( 7, 9)  208320         14.9   9.68    231420       +10.5%  +10.3%   +7.3%   +9.6%    261345  1499673  psl 29 x Z_19
+ ( 8, 9)  622656         14.8  10.80    658008        +5.5%   +9.3%   +8.8%   +6.2%    365705   223985  sl 37 x Z_13
+ (10, 9)  3744000        10.6  12.93    4001928       +6.7%   +7.9%   +6.9%   +6.0%     18553    24609  sl 83 x Z_7
+ (11, 9)  8184960        11.5  13.58    8396040       +2.5%   +7.5%   +6.3%   +4.6%      7681     4969  sl 61 x Z_37
+ (13, 9)  31078080       10.6  15.09    31936200      +2.7%   +6.8%   +6.5%      -          -      281  sl 101 x Z_31
+ (14, 9)  55741440        8.3  15.85    58034328      +4.0%   +6.5%   +3.2%      -          -     3409  sl 67 x Z_193
+ (16, 9)  158339880       4.9  17.34    162082200     +2.3%   +6.0%   +3.4%      -          -        9  sl 149 x Z_49
+ ( 7,10)  1073520        13.8  11.27    1117200       +4.0%   +9.0%   +8.3%   +5.4%    200969    22937  psl 49 poly x^2+1 x Z_19
+ ( 8,10)  3674808        10.0  12.81    3901080       +6.0%   +8.0%   +7.3%   +9.1%     22889    74489  sl 59 x Z_19
+ (10,10)  28934136        8.3  15.06    30070560      +3.9%   +6.8%   +6.4%      -          -      833  sl 79 x Z_61
+  P0 (15 cells): actual - predicted gain: mean -4.2%, rms 4.8%, corr(actual, pred) 0.50
+  P1 (15 cells): actual - predicted gain: mean -2.9%, rms 3.9%, corr(actual, pred) 0.38
+  P3 ( 8 cells): actual - predicted gain: mean -1.5%, rms 2.3%, corr(actual, pred) 0.71
+  same 8 cells, P1: mean -2.4%, rms 3.5%
+  mean gain: actual +4.8%, P0 +9.0%, P1 +7.7%

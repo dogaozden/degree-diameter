@@ -3,7 +3,7 @@ For each sampled S, enumerate the reduced alternating words of one side up to le
 length, and classify every coinciding pair (w1, w2) by a canonical letter pattern.
 
 usage: python3 collisions.py FAM p e n d D_side_len Lmax samples MODE [MODE...]
-  MODE = rand | conj | frob | frob_noinv   (k = 3; frob_noinv: fixed generators that are not involutions; f fixed generators as haar_sym: f = 1, 2, 3 for d = 1, 2, 0 mod 3)
+  MODE = rand | conj | frob | frob_noinv | conj2 | frob2   (conj2, frob2: k = 2; others k = 3; frob_noinv: fixed generators that are not involutions; f fixed generators as haar_sym: f = 1, 2, 3 for d = 1, 2, 0 mod 3)
 example: python3 collisions.py sl 2 3 43 8 4 200 rand conj frob"""
 import sys, random, collections
 from symgroups import QxZ, Conj, Frob, find_order3_conj, unit_order3, fixed_points
@@ -24,8 +24,16 @@ def value(G, S, Sinv, w, first_sign):
         x = G.mul(S[i] if sgn > 0 else Sinv[i], x); sgn = -sgn
     return x
 
+def find_order4(G, rng):
+    """g with g^2 central but g not central (conjugation of order 2)."""
+    m1 = G.norm(G.F.neg[1], 0, 0, G.F.neg[1]) + (0,)
+    while True:
+        g = G.rand(rng)[:4] + (0,); g2 = G.mul(g, g)
+        if g != G.e() and g != m1 and g2 in (G.e(), m1): return g
+
 def make_S(G, mode, d, rng, alpha=None, fix=None):
-    k = 3; f = {1: 1, 2: 2, 0: 3}[d % 3]; m = (d - f) // k
+    k = 2 if mode.endswith('2') else 3
+    f = {1: 1, 2: 2, 0: 3}[d % 3] if k == 3 else (1 if d % 2 else 2); m = (d - f) // k
     if mode == 'rand':
         S = [G.e()]
         while len(S) < d:
@@ -38,9 +46,10 @@ def make_S(G, mode, d, rng, alpha=None, fix=None):
         if x not in S: S.append(x); lab.append('F%d' % len(S))
     for j in range(m):
         while True:
-            x = G.rand(rng); o = [x, alpha(x), alpha(alpha(x))]
-            if len(set(o)) == 3 and alpha(o[2]) == x and not set(o) & set(S): break
-        S += o; lab += ['o%d.%d' % (j, i) for i in range(3)]
+            x = G.rand(rng); o = [x]
+            while len(o) < k: o.append(alpha(o[-1]))
+            if len(set(o)) == k and alpha(o[-1]) == x and not set(o) & set(S): break
+        S += o; lab += ['o%d.%d' % (j, i) for i in range(k)]
     return S, lab
 
 def pattern(w, lab, ren=None, ph=None):
@@ -52,13 +61,17 @@ def pattern(w, lab, ren=None, ph=None):
         if l[0] == 'o':
             j, p = l[1:].split('.'); p = int(p)
             if j not in ren: ren[j] = 'abcdefgh'[len(ren)]; ph[j] = p
-            out.append('%s%d' % (ren[j], (p - ph[j]) % 3))
+            out.append('%s%d' % (ren[j], (p - ph[j]) % 3))   # (mod 3 also labels k = 2 phases 0/1 correctly)
         else: out.append(l)
     return out
 
 def run(G, mode, d, Lmax, samples, seed=1):
     rng = random.Random(seed); alpha = fix = None
-    if mode != 'rand':
+    if mode in ('conj2', 'frob2'):              # involutive alpha: conjugation by g with g^2 central, or Frobenius of order 2
+        r = G.n - 1 if G.n > 1 else 0
+        alpha = Conj(G, find_order4(G, rng), r) if mode == 'conj2' else Frob(G, G.F.e // 2, r)
+        fix = [x for x in fixed_points(G, alpha) if x != G.e()]
+    elif mode != 'rand':
         r = unit_order3(G.n)
         alpha = Conj(G, find_order3_conj(G, rng), r) if mode == 'conj' else Frob(G, 1, r)
         fix = [x for x in fixed_points(G, alpha) if x != G.e()]

@@ -1,0 +1,115 @@
+mu_A and predicted evals (1e5 exp((mu_A - 13)/2)) for groups Q x Z_n with N in [N_best, 1.06 N_best]
+(N_best = current record, or the order that would beat the table for (10,8), (11,8)); SL only at odd D;
+q >= 7, n <= min(200, q), every prime of n = 1 mod 3 or every prime = 1 mod 5; lambda uses model.py W_eff.
+Columns: mu = random-S Poisson mean; then for each symmetry: mu_A (delta = coincidence loss).
+
+(8,7)  N_best = 21672, lambda = 6.33, 0 candidate groups
+
+(7,8)  N_best = 47880, lambda = 7.02, 2 candidate groups
+   conj k=3             mu_A   16.2  (mu   43.0, delta 0.000)  evals ~  4.9e+05   on sl(2,19) x Z_7, N = 47880, fixed-type counts [17]
+   conj k=2             mu_A  104.8  (mu   66.4, delta 0.170)  evals ~  8.8e+24   on sl(2,37) x Z_1, N = 50616, fixed-type counts [35]
+
+(8,8)  N_best = 119952, lambda = 8.01, 0 candidate groups
+
+(9,8)  N_best = 255528, lambda = 9.38, 4 candidate groups
+   Frobenius k=3        mu_A    8.3  (mu   21.6, delta 0.000)  evals ~  9.5e+03   on sl(2,27) x Z_13, N = 255528, fixed-type counts [23]
+   conj k=3             mu_A    9.6  (mu   21.6, delta 0.000)  evals ~  1.8e+04   on sl(2,27) x Z_13, N = 255528, fixed-type counts [53]
+   Frob2 x conj3 (Z6)   mu_A   23.2  (mu   32.1, delta 0.084)  evals ~  1.6e+07   on psl(2,81) x Z_1, N = 265680, fixed-type counts [8, 31, 711]
+   conj k=7             mu_A   24.0  (mu   28.0, delta 0.000)  evals ~  2.4e+07   on sl(2,64) x Z_1, N = 262080, fixed-type counts [62]
+   conj k=2             mu_A   45.1  (mu   32.1, delta 0.077)  evals ~  9.4e+11   on psl(2,81) x Z_1, N = 265680, fixed-type counts [79]
+   Frobenius k=2        mu_A   60.0  (mu   32.1, delta 0.084)  evals ~  1.6e+15   on psl(2,81) x Z_1, N = 265680, fixed-type counts [719]
+
+(10,8)  N_best = 588241, lambda = 9.15, 2 candidate groups
+   conj k=3             mu_A   39.9  (mu  108.8, delta 0.000)  evals ~  7.1e+10   on sl(2,32) x Z_19, N = 621984, fixed-type counts [32]
+   conj k=2             mu_A   98.8  (mu   93.7, delta 0.057)  evals ~  4.3e+23   on psl(2,107) x Z_1, N = 612468, fixed-type counts [107]
+
+(11,8)  N_best = 1123471, lambda = 9.89, 3 candidate groups
+   conj k=5             mu_A   16.7  (mu   60.2, delta 0.000)  evals ~  6.4e+05   on psl(2,59) x Z_11, N = 1129260, fixed-type counts [29]
+   conj k=3             mu_A   26.5  (mu   57.2, delta 0.000)  evals ~  8.3e+07   on psl(2,131) x Z_1, N = 1123980, fixed-type counts [65]
+   conj k=2             mu_A   57.3  (mu   57.2, delta 0.046)  evals ~  4.2e+14   on psl(2,131) x Z_1, N = 1123980, fixed-type counts [131]
+
+(13,8)  N_best = 3302208, lambda = 11.84, 9 candidate groups
+   conj k=3             mu_A   11.0  (mu   24.4, delta 0.000)  evals ~  3.7e+04   on sl(2,149) x Z_1, N = 3307800, fixed-type counts [149]
+   Frobenius k=3        mu_A   13.6  (mu   35.5, delta 0.000)  evals ~  1.4e+05   on sl(2,64) x Z_13, N = 3407040, fixed-type counts [59]
+   conj k=2             mu_A   20.4  (mu   24.4, delta 0.041)  evals ~  4.1e+06   on sl(2,149) x Z_1, N = 3307800, fixed-type counts [147]
+   Frob2 x conj3 (Z6)   mu_A   22.0  (mu   42.0, delta 0.084)  evals ~  8.9e+06   on psl(2,81) x Z_13, N = 3453840, fixed-type counts [8, 31, 711]
+   Frobenius k=2        mu_A   60.2  (mu   42.0, delta 0.084)  evals ~  1.8e+15   on psl(2,81) x Z_13, N = 3453840, fixed-type counts [719]
+
+(7,9)  N_best = 231420, lambda = 8.71, 0 candidate groups
+
+(8,9)  N_best = 658008, lambda = 10.22, 1 candidate groups
+   conj k=3             mu_A    9.2  (mu   23.9, delta 0.000)  evals ~  1.5e+04   on sl(2,37) x Z_13, N = 658008, fixed-type counts [35]
+   conj k=2             mu_A  117.8  (mu   23.9, delta 0.222)  evals ~  5.7e+27   on sl(2,37) x Z_13, N = 658008, fixed-type counts [35]
+
+(10,9)  N_best = 4001928, lambda = 12.10, 1 candidate groups
+   conj k=3             mu_A    8.9  (mu   22.2, delta 0.000)  evals ~  1.3e+04   on sl(2,83) x Z_7, N = 4001928, fixed-type counts [83]
+   conj k=2             mu_A   35.6  (mu   22.2, delta 0.095)  evals ~    8e+09   on sl(2,83) x Z_7, N = 4001928, fixed-type counts [83]
+
+(11,9)  N_best = 8396040, lambda = 13.23, 4 candidate groups
+   conj k=3             mu_A    5.8  (mu   15.0, delta 0.000)  evals ~  2.7e+03   on sl(2,61) x Z_37, N = 8396040, fixed-type counts [59]
+   conj k=5             mu_A    7.4  (mu   15.6, delta 0.000)  evals ~  5.9e+03   on sl(2,59) x Z_41, N = 8418120, fixed-type counts [59]
+   conj k=2             mu_A   26.7  (mu   20.2, delta 0.074)  evals ~  9.3e+07   on sl(2,107) x Z_7, N = 8574552, fixed-type counts [107]
+
+(13,9)  N_best = 31936200, lambda = 14.69, 8 candidate groups
+   conj k=3             mu_A    5.2  (mu   13.3, delta 0.000)  evals ~    2e+03   on sl(2,101) x Z_31, N = 31936200, fixed-type counts [101]
+   Frob2 x conj3 (Z6)   mu_A   13.9  (mu   31.6, delta 0.051)  evals ~  1.5e+05   on sl(2,169) x Z_7, N = 33786480, fixed-type counts [11, 156, 2172]
+   conj k=2             mu_A   18.4  (mu   18.4, delta 0.048)  evals ~  1.5e+06   on sl(2,167) x Z_7, N = 32601072, fixed-type counts [167]
+   Frobenius k=2        mu_A   35.1  (mu   31.6, delta 0.051)  evals ~  6.2e+09   on sl(2,169) x Z_7, N = 33786480, fixed-type counts [2183]
+
+(14,9)  N_best = 58034328, lambda = 15.23, 6 candidate groups
+   conj k=3             mu_A    8.5  (mu   17.8, delta 0.000)  evals ~  1.1e+04   on sl(2,389) x Z_1, N = 58863480, fixed-type counts [389]
+   Frobenius k=3        mu_A   10.2  (mu   27.7, delta 0.000)  evals ~  2.4e+04   on sl(2,125) x Z_31, N = 60543000, fixed-type counts [119]
+   conj k=2             mu_A   12.4  (mu   17.8, delta 0.021)  evals ~  7.3e+04   on sl(2,389) x Z_1, N = 58863480, fixed-type counts [387]
+
+(16,9)  N_best = 162082200, lambda = 16.94, 9 candidate groups
+   conj k=3             mu_A    2.9  (mu    7.1, delta 0.000)  evals ~  6.4e+02   on sl(2,149) x Z_49, N = 162082200, fixed-type counts [149]
+   conj k=2             mu_A    5.5  (mu    8.5, delta 0.015)  evals ~  2.4e+03   on sl(2,547) x Z_1, N = 163666776, fixed-type counts [547]
+   Frob2 x conj3 (Z6)   mu_A    6.5  (mu   14.8, delta 0.029)  evals ~  3.9e+03   on sl(2,289) x Z_7, N = 168960960, fixed-type counts [17, 270, 4878]
+   conj k=5             mu_A    6.6  (mu    8.6, delta 0.000)  evals ~    4e+03   on sl(2,139) x Z_61, N = 163814280, fixed-type counts [139]
+   Frobenius k=2        mu_A   13.7  (mu   14.8, delta 0.029)  evals ~  1.4e+05   on sl(2,289) x Z_7, N = 168960960, fixed-type counts [4895]
+   conj k=7             mu_A   50.8  (mu    8.5, delta 0.000)  evals ~  1.6e+13   on sl(2,547) x Z_1, N = 163666776, fixed-type counts [545]
+
+(7,10)  N_best = 1117200, lambda = 10.82, 4 candidate groups
+   conj k=3             mu_A    8.6  (mu   22.2, delta 0.000)  evals ~  1.1e+04   on psl(2,49) x Z_19, N = 1117200, fixed-type counts [23]
+   conj k=5             mu_A    8.9  (mu   25.2, delta 0.000)  evals ~  1.3e+04   on psl(2,59) x Z_11, N = 1129260, fixed-type counts [29]
+   conj k=2             mu_A   37.8  (mu   23.9, delta 0.077)  evals ~  2.4e+10   on psl(2,131) x Z_1, N = 1123980, fixed-type counts [131]
+   Frob2 x conj3 (Z6)   mu_A   53.9  (mu   22.2, delta 0.237)  evals ~  7.6e+13   on psl(2,49) x Z_19, N = 1117200, fixed-type counts [2, 21, 333]
+   Frobenius k=2        mu_A  158.1  (mu   22.2, delta 0.237)  evals ~  3.3e+36   on psl(2,49) x Z_19, N = 1117200, fixed-type counts [335]
+
+(8,10)  N_best = 3901080, lambda = 12.07, 5 candidate groups
+   conj k=3             mu_A    8.6  (mu   22.4, delta 0.000)  evals ~  1.1e+04   on sl(2,59) x Z_19, N = 3901080, fixed-type counts [59]
+   conj k=2             mu_A   30.0  (mu   25.5, delta 0.051)  evals ~  4.9e+08   on psl(2,199) x Z_1, N = 3940200, fixed-type counts [199]
+
+(10,10)  N_best = 30070560, lambda = 14.49, 17 candidate groups
+   conj k=3             mu_A    5.7  (mu   15.3, delta 0.000)  evals ~  2.7e+03   on sl(2,79) x Z_61, N = 30070560, fixed-type counts [77]
+   Frobenius k=3        mu_A    6.2  (mu   16.9, delta 0.000)  evals ~  3.4e+03   on psl(2,125) x Z_31, N = 30271500, fixed-type counts [59]
+   conj k=5             mu_A    7.4  (mu   15.3, delta 0.000)  evals ~  6.2e+03   on sl(2,79) x Z_61, N = 30070560, fixed-type counts [79]
+   conj k=2             mu_A   12.5  (mu   15.3, delta 0.032)  evals ~    8e+04   on sl(2,311) x Z_1, N = 30079920, fixed-type counts [311]
+   Frob2 x conj3 (Z6)   mu_A   14.4  (mu   29.1, delta 0.065)  evals ~    2e+05   on psl(2,169) x Z_13, N = 31373160, fixed-type counts [5, 78, 2178]
+   Frobenius k=2        mu_A   39.9  (mu   29.1, delta 0.065)  evals ~  6.8e+10   on psl(2,169) x Z_13, N = 31373160, fixed-type counts [2183]
+
+summary at the current order: which symmetry type has the lowest mu_A, per cell (count):
+   {'conj k=3': 12, 'Frobenius k=3': 1, 'conj k=5': 1}
+
+== reach with <= 1e+06 evals (effort law), groups with N in [N_best, 1.3 N_best] ==
+feasible = predicted evals <= budget AND mu_A <= ln(#symmetric S) - 3 (first moment: valid S should exist);
+#S ~ (N/k)^m |Fix|^(f-1) / m!, m = number of free orbits. Gain is over the current best (orbit k = 3) order.
+   cell      current N    conj k=3            conj k=5            conj k=7            Frobenius k=3       conj k=2            Z6                
+   ( 8, 7)        21672    -                   -                   -                   -                   -                   -                 
+   ( 7, 8)        47880    -                   -                   -                   -                   -                   -                 
+   ( 8, 8)       119952    -                   -                   -                   -                   -                   -                 
+   ( 9, 8)       255528     +0.0% S27.13       -                   -                    +2.5% S64.1        -                   -                 
+   (10, 8)       588241    -                   -                   -                   -                   -                   -                 
+   (11, 8)      1123471    -                    +0.5% P59.11       -                   -                   -                   -                 
+   (13, 8)      3302208     +4.5% P81.13       -                   -                    +3.1% S64.13       -                   -                 
+   ( 7, 9)       231420    -                   -                   -                   -                   -                   -                 
+   ( 8, 9)       658008     +0.0% S37.13       -                   -                   -                   -                   -                 
+   (10, 9)      4001928     +0.0% S83.7        -                   -                   -                   -                   -                 
+   (11, 9)      8396040     +7.7% S109.7       +10.3% S61.41       -                   -                   -                   -                 
+   (13, 9)     31936200     +7.8% S89.49       -                   -                   -                   -                    +5.6% S169.7     
+   (14, 9)     58034328     +8.0% S101.61      -                   -                    +4.2% S125.31       +1.4% S389.1       -                 
+   (16, 9)    162082200    +10.4% S139.67       +9.9% S121.101     -                    +9.2% S125.91       +6.4% S557.1        +9.7% S169.37    
+   ( 7,10)      1117200     +0.6% P131.1        +1.1% P59.11       -                   -                   -                   -                 
+   ( 8,10)      3901080     +2.6% S83.7        -                   -                   -                   -                   -                 
+   (10,10)     30070560     +7.5% S81.61        +8.1% P181.11      -                    +0.7% P125.31       +2.0% S313.1       -                 
+   (entries: gain in ln N over the current order, and the group: S/P q.n = SL/PSL(2,q) x Z_n)
