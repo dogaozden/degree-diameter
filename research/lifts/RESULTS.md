@@ -38,11 +38,13 @@ Solution files: `sols/rebuild_*.txt`.
 | cell | table (holder) | ours | construction | file |
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
-| (5,10) | 90,068 (Loz) | **92,318** (+2.5 %) | Haar graph of Z1489 ⋊₆₁ Z31 (metacyclic) | `sols/d5D10_n92318_haar_meta1489_31_61.txt`. Also 91,938 (Z1393 ⋊₁₈ Z33), 91,812 (Z1093 ⋊₂₀₈ Z42), 91,756 (Z3277 ⋊₁₂₉ Z14) and 91,728 (SL(2,13) × Z21) |
+| (5,10) | 90,068 (Loz) | **93,000** (+3.3 %) | Haar graph of Z775 ⋊₁₃₃ Z60 (metacyclic) | `sols/d5D10_n93000_haar_meta775_60_133.txt`. Also 92,492 (Z1217 ⋊₇₆ Z38), 92,318 (Z1489 ⋊₆₁ Z31), 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
 | (5,9) | 27,936 (Loz) | **28,444** (+1.8 %) | Haar graph of Z1094 ⋊₂₃₇ Z13 (metacyclic) | `sols/d5D9_n28444_haar_meta1094_13_237.txt`. Also 28,418 (Z1093 ⋊₁₁ Z13), 28,094 (Z1277 ⋊₁₃₅ Z11), 27,972 (Z777 ⋊₁₆₄ Z18) and 27,948 (Z411 ⋊₃₈ Z34) |
 
 All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
 the repo's build_haar2.py:
+- (5,10) 93,000: sha256 eca54823…;
+- (5,10) 92,492: sha256 6be113dc…;
 - (5,10) 92,318: sha256 0aedd296…;
 - (5,10) 91,938: sha256 73dc7fc3…;
 - (5,10) 91,812: sha256 90994a5f…;
@@ -78,7 +80,10 @@ Outputs are in `verify/`.
 - The group Z3² ⋊ Z8 is metabelian but not metacyclic. It came from the `aff` family added this session.
 - It was found in 41 evaluations: (3,8) is far from saturated (Moore 510), and a push above 288 is running.
 
-**(5,10) = 92,318, with 91,938, 91,812, 91,756 and 91,728 found on the way.**
+**(5,10) = 93,000, with 92,492, 92,318, 91,938, 91,812, 91,756 and 91,728 found on the way.**
+- 93,000 is a Haar graph of Z775 ⋊₁₃₃ Z60. Connection set (a, j): (0,0), (227,14), (27,1), (508,42), (310,38).
+  It solved after 168 s, at the top order of the second sweep's window (N = 46,500), so the cell is not saturated;
+  a third sweep (N = 46,501–47,500) is running.
 - 92,318 is a Haar graph of Z1489 ⋊₆₁ Z31. Connection set (a, j): (0,0), (909,30), (656,18), (378,4), (1082,9).
   It was found by the second sweep (18,989 screened candidates, N = 45,970–46,500) after 82 s of annealing.
 - 91,938 is a Haar graph of Z1393 ⋊₁₈ Z33. Connection set (a, j): (0,0), (629,6), (1362,20), (900,23), (1300,8).
@@ -146,7 +151,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,444** | **new record** (§2.0); push to N = 14,700 queued |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
-| **(5,10)** | 90068 (Loz) | 699,050 | **92,318** | **new record** (§2.0); push to N = 46,500 running |
+| **(5,10)** | 90068 (Loz) | 699,050 | **93,000** | **new record** (§2.0); push to N = 47,500 running |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
 ## 3. Structured families: what was tried and why it stops
