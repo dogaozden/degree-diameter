@@ -1,0 +1,22 @@
+group prod psl 5 sl 13 x Z_5, N=655200, identity 109980, H order 60, rows 10920, threads 1, setup 0.02s
+start cost=89
+t=30 steps=2217 evals=17737 cost=16 best=16 T=0.53
+t=60 steps=4480 evals=35841 cost=14 best=14 T=0.19
+t=90 steps=6679 evals=53433 cost=14 best=14 T=0.15
+t=120 steps=8946 evals=71569 cost=12 best=12 T=0.15
+t=150 steps=11238 evals=89905 cost=12 best=12 T=0.15
+t=180 steps=13430 evals=107441 cost=12 best=12 T=0.15
+t=210 steps=15688 evals=125505 cost=11 best=11 T=0.15
+t=240 steps=17992 evals=143937 cost=10 best=10 T=0.15
+t=270 steps=20245 evals=161961 cost=10 best=10 T=0.15
+t=300 steps=22492 evals=179937 cost=10 best=10 T=0.15
+t=330 steps=24732 evals=197857 cost=10 best=10 T=0.15
+t=360 steps=27203 evals=217625 cost=10 best=10 T=0.15
+t=390 steps=29718 evals=237745 cost=10 best=10 T=0.97
+t=420 steps=32225 evals=257801 cost=10 best=10 T=0.34
+t=450 steps=34712 evals=277697 cost=10 best=10 T=0.15
+t=480 steps=37219 evals=297753 cost=10 best=10 T=0.15
+t=510 steps=39739 evals=317913 cost=10 best=10 T=0.15
+t=540 steps=42100 evals=336801 cost=10 best=10 T=0.97
+t=570 steps=44374 evals=354993 cost=10 best=10 T=0.34
+RESULT d=8 D=9 group=prod psl 5 sl 13 x Z_5 N=655200 best=10 evals=371665 time=599.3
