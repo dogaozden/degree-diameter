@@ -1,0 +1,22 @@
+group prod psl 8 poly x^3+x+1 sl 11 x Z_1, N=665280, identity 74030, H order 45, rows 14784, threads 1, setup 0.02s
+start cost=112
+t=30 steps=2273 evals=18185 cost=17 best=17 T=0.53
+t=60 steps=4543 evals=36345 cost=17 best=17 T=0.19
+t=90 steps=6772 evals=54177 cost=16 best=16 T=0.15
+t=120 steps=9041 evals=72329 cost=12 best=12 T=0.15
+t=150 steps=11321 evals=90569 cost=12 best=12 T=0.15
+t=180 steps=13595 evals=108761 cost=12 best=12 T=0.15
+t=210 steps=15879 evals=127033 cost=12 best=12 T=0.15
+t=240 steps=18153 evals=145225 cost=12 best=12 T=0.15
+t=270 steps=20390 evals=163121 cost=12 best=12 T=0.72
+t=300 steps=22674 evals=181393 cost=12 best=12 T=0.26
+t=330 steps=24957 evals=199657 cost=12 best=12 T=0.15
+t=360 steps=27228 evals=217825 cost=12 best=12 T=0.15
+t=390 steps=29473 evals=235785 cost=12 best=12 T=0.15
+t=420 steps=31724 evals=253793 cost=12 best=12 T=0.72
+t=450 steps=34013 evals=272105 cost=12 best=12 T=0.26
+t=480 steps=36289 evals=290313 cost=12 best=12 T=0.15
+t=510 steps=38601 evals=308809 cost=12 best=12 T=0.15
+t=540 steps=40885 evals=327081 cost=12 best=12 T=0.15
+t=570 steps=43140 evals=345121 cost=12 best=12 T=0.72
+RESULT d=8 D=9 group=prod psl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 best=12 evals=363265 time=599.9
