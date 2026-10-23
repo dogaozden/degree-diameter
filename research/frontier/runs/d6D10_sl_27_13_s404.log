@@ -1,2 +1,12 @@
 group sl 27 poly x^3+2x+1 x Z_13, N=255528, identity 9126, H order 52, rows 4914, threads 1, setup 0.00s
 start cost=32
+t=30 steps=14493 evals=115945 cost=4 best=4 T=0.53
+t=60 steps=29370 evals=234961 cost=2 best=2 T=0.19
+t=90 steps=43725 evals=349801 cost=1 best=1 T=0.15
+t=120 steps=57684 evals=461473 cost=1 best=1 T=0.15
+t=150 steps=72099 evals=576793 cost=1 best=1 T=0.15
+t=180 steps=86997 evals=695977 cost=1 best=1 T=0.15
+t=210 steps=101102 evals=808817 cost=1 best=1 T=0.15
+t=240 steps=115081 evals=920649 cost=12 best=1 T=1.17
+t=270 steps=129459 evals=1035673 cost=4 best=1 T=0.41
+RESULT d=6 D=10 group=sl 27 poly x^3+2x+1 x Z_13 N=255528 best=1 evals=1151177 time=300.0
