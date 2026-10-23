@@ -1,8 +1,8 @@
 # haar-d10d5-b
 
 Problem: bipartite_dd
-Generations done: 10 of 21 (including generation 0)
-Total mutator calls: 216
+Generations done: 11 of 21 (including generation 0)
+Total mutator calls: 240
 
 | case | kind | record | ceiling | best value | best cid |
 |---|---|---|---|---|---|
@@ -11,7 +11,6 @@ Total mutator calls: 216
 
 | gen | made | failed | best fitness | gen best |
 |---|---|---|---|---|
-| 0 | 1 | 0 | 0.9005 | 0.9005 |
 | 1 | 24 | 0 | 0.9005 | 0.9005 |
 | 2 | 24 | 0 | 0.9005 | 0.9005 |
 | 3 | 24 | 0 | 0.9005 | 0.9005 |
@@ -21,3 +20,4 @@ Total mutator calls: 216
 | 7 | 24 | 0 | 0.9005 | 0.9005 |
 | 8 | 24 | 0 | 0.9005 | 0.9005 |
 | 9 | 24 | 0 | 0.9005 | 0.9005 |
+| 10 | 24 | 0 | 0.9005 | 0.9005 |
