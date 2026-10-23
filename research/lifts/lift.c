@@ -11,6 +11,8 @@
      lift search BASE D SECONDS SEED K OUT GROUP...    anneal the free voltages; write OUT if cost 0
      lift check SOL [EDGES]                            exact BFS (int distances) from every (u,1); optional edge list
      lift sample BASE D M GROUP...                     cost quantiles of M random voltage assignments (screening)
+     lift exhaust BASE D OUT GROUP...                  every assignment of the free voltages (gauge-fixed); writes the
+                                                       first cost-0 lift to OUT; COUNTALL=1 counts all of them
    GROUP := FACTOR [x FACTOR]...,  FACTOR := cyc n | meta m k r | dih n | aff p a b c d k | sl p | psl p | pgl p   (p prime)
      aff p a b c d k = Z_p^2 x|_M Z_k with M = [[a,b],[c,d]], M^k = I mod p; (v,j)(w,l) = (v + M^j w, j + l).
        M = [[1,1],[0,1]], k = p gives the Heisenberg group of order p^3 (p odd).
@@ -414,6 +416,41 @@ static long long evaluate(int **tab, unc_cb cb) {
     return cost;
 }
 
+/* nc candidate tables for edge ei evaluated in one bit-sliced BFS: candidate L uses bits [L*s, L*s + s) of every mask
+   (s = number of sources of the colour of the pass); every other edge is shared by all lanes. Needs s * nc <= 64. */
+static int multi_ok(int nc) { return (NSRC[0] > NSRC[1] ? NSRC[0] : NSRC[1]) * nc <= 64; }
+static void evaluate_multi(int **tab, int ei, int **ctab, int nc, long long *costs) {
+    for (int L = 0; L < nc; L++) costs[L] = 0;
+    for (int c = 0; c < 2; c++) {
+        int s = NSRC[c]; if (s == 0) continue;
+        uint64_t lane = s == 64 ? ~0ULL : ((1ULL << s) - 1), full = 0, lm[64];
+        for (int L = 0; L < nc; L++) { lm[L] = lane << (L * s); full |= lm[L]; }
+        memset(MSK, 0, sizeof(uint64_t) * (size_t)K * N);
+        for (int b = 0; b < s; b++) for (int L = 0; L < nc; L++) MSK[(size_t)SRC[c][b] * N + IDENT] |= 1ULL << (b + L * s);
+        for (int l = 1; l <= D; l++) {
+            int upd = (c + l) & 1;
+            for (int e = 0; e < E; e++) {
+                uint64_t *X = MSK + (size_t)EX[e] * N, *Y = MSK + (size_t)EY[e] * N;
+                if (e != ei) {
+                    const int *t = tab[e];
+                    if (upd == 1) { for (int g = 0; g < N; g++) Y[t[g]] |= X[g]; }
+                    else { for (int g = 0; g < N; g++) X[g] |= Y[t[g]]; }
+                } else {
+                    for (int L = 0; L < nc; L++) {
+                        const int *t = ctab[L]; uint64_t m = lm[L];
+                        if (upd == 1) { for (int g = 0; g < N; g++) Y[t[g]] |= X[g] & m; }
+                        else { for (int g = 0; g < N; g++) X[g] |= Y[t[g]] & m; }
+                    }
+                }
+            }
+        }
+        for (size_t i = 0; i < (size_t)K * N; i++) {
+            uint64_t miss = full & ~MSK[i];
+            if (miss) for (int L = 0; L < nc; L++) costs[L] += __builtin_popcountll(miss & lm[L]);
+        }
+    }
+}
+
 /* ------------------------------------------------------------------ search helpers */
 static int UCAP = 4096, nunc = 0; static long long seen_unc = 0;
 static int *UNC_S, *UNC_V, *UNC_G;
@@ -550,12 +587,13 @@ static int random_volt(int i) { int x, t = 0; do { x = restrict_volt(i, rnd() % 
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: lift search|check|sample ... (see source header)\n"); return 2; }
     if (!strcmp(argv[1], "check")) { if (argc < 3) die("lift check SOL [EDGES]"); return check_solution(argv[2], argc > 3 ? argv[3] : NULL); }
-    int sample = !strcmp(argv[1], "sample");
-    if (!sample && strcmp(argv[1], "search")) die("mode must be search, check or sample");
-    if (sample ? argc < 6 : argc < 9) die("not enough arguments");
+    int sample = !strcmp(argv[1], "sample"), exhaust = !strcmp(argv[1], "exhaust");
+    if (!sample && !exhaust && strcmp(argv[1], "search")) die("mode must be search, check, sample or exhaust");
+    if ((sample || exhaust) ? argc < 6 : argc < 9) die("not enough arguments");
     const char *basefn = argv[2]; D = atoi(argv[3]);
     double secs = 0; int K2 = 1, M = 0; const char *out = NULL; int a;
     if (sample) { M = atoi(argv[4]); a = 5; }
+    else if (exhaust) { out = argv[4]; a = 5; }
     else { secs = atof(argv[4]); rs ^= ((uint64_t)atoll(argv[5]) + 1) * 0x9E3779B97F4A7C15ULL; for (int t = 0; t < 10; t++) rnd(); K2 = atoi(argv[6]); out = argv[7]; a = 8; }
     if (getenv("SEED")) { rs ^= ((uint64_t)atoll(getenv("SEED")) + 7) * 0xD1B54A32D192ED03ULL; for (int t = 0; t < 10; t++) rnd(); }
     parse_group(argc, argv, &a);
@@ -574,6 +612,26 @@ int main(int argc, char **argv) {
         printf("SAMPLE base=%s D=%d group=%s N=%d n=%lld samples=%d min=%lld p10=%lld median=%lld (%.3f ms/eval)\n", basefn, D, GSPEC, N, (long long)K * N, M, v[0], v[M / 10], v[M / 2], 1e3 * (now() - t0) / M);
         return 0;
     }
+    if (exhaust) {   /* every assignment of the free voltages (odometer); stops at the first cost-0 lift unless COUNTALL=1 */
+        for (int j = 0; j < NFREE; j++) if (FIXED[FREE[j]] == 2) die("exhaust: partly fixed edges not supported");
+        double tot = pow((double)N, NFREE); if (tot > 2e10) die("exhaust: search space too large");
+        int countall = getenv("COUNTALL") ? atoi(getenv("COUNTALL")) : 0;
+        for (int j = 0; j < NFREE; j++) { VOLT[FREE[j]] = 0; make_table(0, TAB[FREE[j]]); }
+        long long nsol = 0, nev = 0, best = -1; double t0 = now();
+        for (;;) {
+            if (simple_ok()) {
+                long long c = evaluate(TAB, NULL); nev++;
+                if (best < 0 || c < best) best = c;
+                if (c == 0) { if (!nsol) { write_solution(out, 0, basefn); printf("wrote %s\n", out); } nsol++; if (!countall) break; }
+            }
+            int j = NFREE - 1;
+            while (j >= 0) { int e = FREE[j]; VOLT[e]++; if (VOLT[e] < N) { make_table(VOLT[e], TAB[e]); break; } VOLT[e] = 0; make_table(0, TAB[e]); j--; }
+            if (j < 0) break;
+        }
+        printf("EXHAUST base=%s D=%d group=%s N=%d n=%lld free=%d space=%.3g evaluated=%lld solutions=%lld%s best=%lld time=%.1f\n",
+               basefn, D, GSPEC, N, (long long)K * N, NFREE, tot, nev, nsol, (nsol && !countall) ? "+ (stopped at first)" : "", best, now() - t0);
+        return nsol ? 0 : 1;
+    }
     if (NFREE == 0) die("no free edges");
     double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 60;
@@ -583,6 +641,16 @@ int main(int argc, char **argv) {
     int *cand = malloc(sizeof(int) * K2), **ctab = malloc(sizeof(int *) * K2); long long *cc = malloc(sizeof(long long) * K2);
     for (int t = 0; t < K2; t++) ctab[t] = malloc(sizeof(int) * N);
     int *bestV = malloc(sizeof(int) * E);
+    int multi = multi_ok(K2) && !(getenv("NOMULTI") && atoi(getenv("NOMULTI")));
+    if (multi) {   /* self-test: bit-sliced costs must equal one-at-a-time costs */
+        for (int rep = 0; rep < 3; rep++) {
+            int i = FREE[rnd() % NFREE];
+            for (int t = 0; t < K2; t++) { cand[t] = random_volt(i); make_table(cand[t], ctab[t]); }
+            evaluate_multi(TAB, i, ctab, K2, cc);
+            for (int t = 0; t < K2; t++) { int *keep = TAB[i]; TAB[i] = ctab[t]; long long c1 = evaluate(TAB, NULL); TAB[i] = keep;
+                if (c1 != cc[t]) { fprintf(stderr, "multi self-test FAILED (%lld vs %lld)\n", cc[t], c1); return 2; } }
+        }
+    }
     nunc = 0; seen_unc = 0; long long c = evaluate(TAB, collect_cb), best = c; memcpy(bestV, VOLT, sizeof(int) * E);
     double t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0; long long evals = 1, steps = 0;
     fprintf(stderr, "start cost=%lld\n", c);
@@ -594,8 +662,9 @@ int main(int argc, char **argv) {
             if (x < 0 || x == old || parallel_clash(i, x)) { int tr = 0; do { x = restrict_volt(i, rnd() % N); tr++; } while ((x == old || parallel_clash(i, x)) && tr < 1000); }
             cand[t] = x;
             make_table(x, ctab[t]);
-            int *keep = TAB[i]; TAB[i] = ctab[t]; cc[t] = evaluate(TAB, NULL); TAB[i] = keep;
+            if (!multi) { int *keep = TAB[i]; TAB[i] = ctab[t]; cc[t] = evaluate(TAB, NULL); TAB[i] = keep; }
         }
+        if (multi) evaluate_multi(TAB, i, ctab, K2, cc);
         evals += K2;
         int bt = 0; for (int t = 1; t < K2; t++) if (cc[t] < cc[bt]) bt = t;
         if (cc[bt] <= c || exp((double)(c - cc[bt]) / T) > (rnd() % 1000000) / 1e6) {

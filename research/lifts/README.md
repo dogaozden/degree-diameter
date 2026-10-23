@@ -25,9 +25,10 @@ files), `verify/` (checker outputs).
 | `enum_bases.py` | all connected d-regular bipartite multigraphs on h+h vertices up to isomorphism (h ≤ 5, or h = 6 with d = 3) |
 | `bases.py` | named bases (dipole, K_{a,b}, Heawood, Möbius–Kantor, Pappus, Desargues, Tutte 8-cage, cube) and random bases |
 | `polygons.py` | incidence graphs of PG(2,q), W(q) and H(q) (q prime), optionally plus j perfect matchings, as base or solution files |
-| `groups.py` | the group specs of a given order that lift.c implements |
+| `groups.py` | the group specs of a given order that lift.c implements (`--rich`: also aff groups and products of two non-abelian factors) |
+| `summarize.py` | per-cell summary of `runs/*.tsv` |
 | `run_cell.py` | parallel driver for one cell: orders × bases × groups, each job time-limited, results in `runs/TAG.tsv` |
-| `campaign1.sh` | the small-cell campaign of this session |
+| `campaign1.sh`, `campaign2.sh` | the small-cell campaigns of this session (screened rich groups + wide bases; matrix-group Haar sweeps) |
 
 ### lift.c
 
@@ -41,10 +42,12 @@ lift sample BASE D M GROUP...                    cost quantiles of M random volt
 - `cyc n`;
 - `meta m k r`: Z_m ⋊_r Z_k, with (a,j)(b,l) = (a + r^j b, j + l), the Loz–Širáň convention;
 - `dih n`;
+- `aff p a b c d k`: Z_p² ⋊_M Z_k with M = [[a,b],[c,d]] and M^k = I. M = [[1,1],[0,1]], k = p gives the
+  Heisenberg group of order p³ (metabelian, not metacyclic);
 - `sl p`, `psl p`, `pgl p`, for p prime ≤ 250.
 
 Direct products cover Z_m × Z_n, metacyclic × cyclic, SL(2,p) × Z_n, SL × SL, and so on. Elements are written
-componentwise, joined by `|`: `3`, `2,5`, `1,2,0,1` (a matrix [[a,b],[c,d]]).
+componentwise, joined by `|`: `3`, `2,5`, `x,y,j` (aff), `1,2,0,1` (a matrix [[a,b],[c,d]]).
 
 **Base file.** The first line is `k K`. Each edge is `e x y` (free voltage), `e x y = ELEM` (fixed), or
 `e x y = 3|*` (partly fixed: components written `*` are free). B must be bipartite, connected and loopless.
