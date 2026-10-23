@@ -1,0 +1,18 @@
+group sl 317 x Z_1, N=31854696, identity 100172, H order 53, rows 601032, threads 1, setup 9.48s
+wide rows: HW order 159, rows 200344, setup 17.09s
+alpha: conj by mat(11,25,299,305) (index 1113286), z -> 0 z on Z_1
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 317 (+e); mu = 12.82, mu/k = 4.27, fixed-point misses ~ 4.70
+start cost=48
+t=33 steps=7 evals=57 cost=12 best=12 T=0.47
+t=68 steps=16 evals=129 cost=8 best=8 T=0.15
+t=99 steps=25 evals=201 cost=8 best=8 T=0.15
+t=129 steps=42 evals=337 cost=4 best=4 T=0.15
+t=160 steps=60 evals=481 cost=4 best=4 T=0.15
+t=190 steps=79 evals=633 cost=4 best=4 T=0.15
+t=221 steps=98 evals=785 cost=4 best=4 T=0.15
+t=252 steps=118 evals=945 cost=4 best=4 T=0.15
+RESULT d=13 D=9 group=sl 317 x Z_1 N=31854696 best=0 evals=1001 time=264.2 orbit k=3 m=4 f=1 fix=317
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outL/d13D9_sl_317_1_orb3_s1.txt
+VALID d=13 D=9 group=sl 317 x Z_1 N=31854696 vertices=63709392 (distinct generators, 13-regular simple)
+VALID d=13 D=9 vertices=63709392 eccA=9 eccB=9
