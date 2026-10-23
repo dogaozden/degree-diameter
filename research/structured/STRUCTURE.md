@@ -15,7 +15,7 @@ N = |G|, W = W(Δ,D) the number of binding words, λ = W/N, μ = N e^(−λ) the
    - μ = 43: orbit solves in 2.3·10⁵; random S is at cost 9–10.
    The reachable μ roughly doubles (walls at μ ≈ 45–50 instead of 21–25 with ~10⁷ evaluations), which is
    +5–11 % in N.
-2. **New graphs** in 12 cells, files in ../frontier/sols/ (names contain `orb3`); see §4. Every one passed
+2. **New graphs** in 14 cells, files in ../frontier/sols/ (names contain `orb3`); see §4. Every one passed
    haar_sym's full check and build_haar2.py, or the two low-memory checkers above 20M vertices. Gains are +0.8 %
    to +11 % over our previous records. Small gains in the biggest cells reflect compute, not the method: there only
    the first, cheap rungs (μ ≈ 8–15, a few hundred evaluations at 0.1–1 s each) were run. All are cells we already held;
@@ -159,13 +159,16 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (8,9) | 1,091,232 | 1,245,312 | **1,316,016** (+5.7 %) | sl 37 × Z13; 3, 2, 2 | 23.9 | 2.2e+05 | d8D9_sl_37_13_orb3_s1.txt |
 | (10,9) | 7,057,400 | 7,488,000 | **8,003,856** (+6.9 %) | sl 83 × Z7; 3, 3, 1 | 22.2 | 2.5e+04 | d10D9_sl_83_7_orb3_s1.txt |
 | (11,9) | 15,200,448 | 16,369,920 | **16,792,080** (+2.6 %) | sl 61 × Z37; 3, 3, 2 | 15.0 | 5e+03 | d11D9_sl_61_37_orb3_s1.txt |
-| (14,9) | 95,087,738 | 111,482,880 | **112,363,008** (+0.8 %) | sl 383 × Z1; 3, 4, 2 | 8.3 | 2.6e+02 | d14D9_sl_383_1_orb3_s1.txt |
+| (14,9) | 95,087,738 | 111,482,880 | **113,979,936** (+2.2 %) | psl 113 × Z79; 3, 4, 2 | 10.5 | 1.4e+03 | d14D9_psl_113_79_orb3_s1.txt |
+| (16,9) | 288,939,118 | 316,679,760 | **317,308,656** (+0.2 %) | sl 283 × Z7; 3, 5, 1 | 4.8 | 25 | d16D9_sl_283_7_orb3_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19; 3, 2, 1 | 22.2 | 2.3e+04 | d7D10_psl_49_19_orb3_s1.txt |
 | (8,10) | 6,927,210 | 7,349,616 | **7,802,160** (+6.2 %) | sl 59 × Z19; 3, 2, 2 | 22.4 | 7.4e+04 | d8D10_sl_59_19_orb3_s1.txt |
+| (10,10) | 50,331,156 | 57,868,272 | **60,141,120** (+3.9 %) | sl 79 × Z61; 3, 3, 1 | 15.3 | 8.3e+02 | d10D10_sl_79_61_orb3_s1.txt |
 
-Graphs above 20M vertices with SL(2,p) × Z_n were checked by the two independent low-memory checkers
-(`../frontier/haarcheck_sl.c`, `../frontier/haarcheck2.c`; outputs in runs/*.lowmem.txt) instead of build_haar2.py,
-as in SIZE_LAW §3.2.
+Graphs above 20M vertices were checked by independent low-memory checkers instead of build_haar2.py, as in
+SIZE_LAW §3.2: SL(2,p) × Z_n by both `../frontier/haarcheck_sl.c` and `../frontier/haarcheck2.c`, PSL(2,p) × Z_n
+by `tools/haarcheck_psl.c` (written here; it agrees with build_haar2.py on 5 smaller PSL graphs). Outputs are in
+runs/*.lowmem.txt or at the end of each log.
 
 Every other VALID solution of this job (lower rungs of the same ladders, kept for the record) has its log in
 runs/. Some of those are also in ../frontier/sols/ (e.g. (7,9) 449,328, (8,9) 1,279,680 and 1,308,720, (8,10)
