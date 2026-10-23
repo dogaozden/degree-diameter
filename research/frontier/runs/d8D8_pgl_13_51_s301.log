@@ -1,0 +1,12 @@
+group pgl 13 x Z_51, N=111384, identity 0, H order 51, rows 2184, threads 1, setup 0.00s
+start cost=55692
+t=30 steps=41208 evals=329665 cost=4 best=4 T=0.53
+t=60 steps=82700 evals=661601 cost=4 best=4 T=0.19
+t=90 steps=123935 evals=991481 cost=4 best=4 T=0.15
+t=120 steps=164308 evals=1314465 cost=3 best=3 T=0.15
+t=150 steps=203288 evals=1626305 cost=3 best=3 T=0.15
+t=180 steps=243573 evals=1948585 cost=3 best=3 T=0.15
+t=210 steps=284499 evals=2275993 cost=3 best=3 T=0.15
+t=240 steps=323818 evals=2590545 cost=3 best=3 T=0.15
+t=270 steps=364197 evals=2913577 cost=7 best=3 T=0.58
+RESULT d=8 D=8 group=pgl 13 x Z_51 N=111384 best=3 evals=3228897 time=300.0
