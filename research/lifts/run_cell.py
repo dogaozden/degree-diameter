@@ -49,6 +49,12 @@ def bases_for(h, d, maxmult):
     return sorted(os.path.join(dd, f) for f in os.listdir(dd) if f.endswith(".txt"))
 
 
+def has_matrix(spec):
+    """an SL/PSL/PGL(2,p) factor with p >= 3 (p = 2 gives only S3)"""
+    w = spec.split()
+    return any(t in ("sl", "psl", "pgl") and int(w[i + 1]) >= 3 for i, t in enumerate(w[:-1]))
+
+
 def run_job(job, secs, K, seed, tag):
     n, h, base, spec = job
     bname = os.path.splitext(os.path.basename(base))[0]
@@ -94,6 +100,7 @@ def main():
     ap.add_argument("--groups", default=None)
     ap.add_argument("--extra-bases", default="", help="comma-separated base files tried in addition (any k)")
     ap.add_argument("--rich", action="store_true", help="groups.specs_rich: also products of two non-abelian factors")
+    ap.add_argument("--matrix-only", action="store_true", help="keep only groups with an sl/psl/pgl(2,p) factor, p >= 3")
     ap.add_argument("--screen", type=int, default=0, help="screen every job with M random assignments first")
     ap.add_argument("--top", type=int, default=8, help="with --screen: anneal the best T jobs per order")
     args = ap.parse_args()
@@ -109,7 +116,7 @@ def main():
             N = n // (2 * h)
             bs = bases_for(h, args.delta, args.maxmult)
             gs = args.groups.split(";") if args.groups else (groups.specs_rich(N) if args.rich else groups.specs(N))
-            gs = [g for g in gs if g]
+            gs = [g for g in gs if g and (not args.matrix_only or has_matrix(g))]
             rng.shuffle(bs)
             rng.shuffle(gs)
             for b in bs[: args.maxbases]:
