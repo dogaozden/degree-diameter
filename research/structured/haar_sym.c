@@ -783,14 +783,16 @@ static int cmpll(const void *a, const void *b) { long long x = *(const long long
 
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
-static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0;   /* AMU: meta scaling (a,j) -> (u a, j) */
+static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0;   /* AFROB = j: entries x -> x^(p^j) */
+static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
 static int alpha(int x) {
     int xq = x / ncyc, z = x % ncyc, yq;
     if (Q->type == G_HEIS && (AHA || AHB)) {
         const field *F = Q->F; int q = F->q, a = xq / (q * q), b = xq / q % q, c = xq % q;
         yq = (FMUL(F, AHA, a) * q + FMUL(F, AHB, b)) * q + FMUL(F, FMUL(F, AHA, AHB), c);
-    } else if (Q->type == G_META && AMU) yq = (int)((long long)AMU * (xq / Q->k) % Q->m) * Q->k + xq % Q->k;
+    } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq; yq = Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])]; }
+    else if (Q->type == G_META && AMU) yq = (int)((long long)AMU * (xq / Q->k) % Q->m) * Q->k + xq % Q->k;
     else yq = AQ >= 0 ? qmul(Q, qmul(Q, AQ, xq), AQI) : xq;
     return yq * ncyc + (int)((long long)AR * z % ncyc);
 }
@@ -845,6 +847,16 @@ static int choose_alpha(void) {
         fprintf(stderr, "alpha: heis scaling a=%d b=%d, z -> %d z on Z_%d (order %d)\n", AHA, AHB, AR, ncyc, ordr);
         return 1;
     }
+    if (getenv("AFROB")) {   /* field automorphism x -> x^(p^j) of GF(p^e), order e/gcd(e,j); matrix groups only */
+        if (!(Q->type == G_SL || Q->type == G_PSL || Q->type == G_PGL) || Q->F->k == 1) { fprintf(stderr, "AFROB needs sl/psl/pgl over GF(p^e), e > 1\n"); return 0; }
+        const field *F = Q->F; int e = F->k, j = atoi(getenv("AFROB")); AFROB = j;
+        if (e / gcdi(e, j) != k) { fprintf(stderr, "Frobenius^%d has order %d, not %d\n", j, e / gcdi(e, j), k); return 0; }
+        FROBT = malloc(2 * (size_t)F->q);
+        for (int x = 0; x < F->q; x++) { int y = 1; for (int t = 0; t < j; t++) for (int u = 0; u < F->p; u++) ; int pw = 1; for (int t = 0; t < j; t++) pw *= F->p;
+            y = 1; for (int t = 0; t < pw; t++) y = FMUL(F, y, x); FROBT[x] = (uint16_t)(x ? y : 0); }
+        fprintf(stderr, "alpha: Frobenius x -> x^%d on entries, z -> %d z on Z_%d\n", (int)pow(F->p, j), AR, ncyc);
+        return 1;
+    }
     if (Q->type == G_META && !getenv("ALPHA")) {   /* (a,j) -> (u a, j), u of order k mod m with the fewest fixed a */
         int m = Q->m, best = -1, bfix = 1 << 30;
         if (getenv("AMU")) best = atoi(getenv("AMU"));
@@ -889,8 +901,8 @@ static int random_orbit(int j, int *o) {   /* random valid orbit for slot j (or 
     return 0;
 }
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
-    if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
-        fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, f >= 1 (e counts), f + k m = d\n"); return 2; }
+    if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
+        fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
     if (TWIST || CSL) { fprintf(stderr, "ORBIT: plain groups only\n"); return 2; }
     if (!choose_alpha()) return 2;
     { int t[6]; for (int u = 0; u < 6; u++) t[u] = rnd() % N;   /* alpha must be a homomorphism of order dividing k */
@@ -903,7 +915,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             OK_, OM, OF, NFIX, mu, mu / OK_, nb * (NFIX + 1) * exp(-lam / OK_));
     int nth_ = nth; (void)nth_;
     /* initial S */
-    S[0] = ident;
+    if (OF) S[0] = ident;
     for (int u = 1; u < OF; u++) { if (NFIX < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
@@ -937,7 +949,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     double cE = (double)c / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
     long long evals = 1, steps = 0, lastimpstep = 0;
     fprintf(stderr, "start cost=%lld\n", c);
-    int nslots = OM + OF - 1;
+    int nslots = OM + (OF > 1 ? OF - 1 : 0);
     while (!stop_flag && now() - t0 < secs && best > 0) {
         int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
         for (int t = 0; t < K; t++) {
@@ -989,6 +1001,11 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         int ok = WIDE ? full_check_w(C[0]) : full_check(C[0]);
         printf("full diameter check: %s\n", ok ? "OK" : "FAIL");
         if (ok) {
+            /* f = 0: write S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A)) so that the first generator is e */
+            if (S[0] != ident) { int a0 = ginv(S[0]); for (int i = 0; i < d; i++) S[i] = gmul(S[i], a0);
+                for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+                int ok2 = WIDE ? full_check_w(C[0]) : full_check(C[0]); printf("full diameter check after normalising s_0 = e: %s\n", ok2 ? "OK" : "FAIL");
+                if (!ok2) return 1; }
             FILE *f = fopen(out, "w");
             if (!f) { perror(out); return 1; }
             fprintf(f, "%d %d %s n %d N %d\n", d, D, Q->spec, ncyc, N);
@@ -1233,6 +1250,11 @@ int main(int argc, char **argv) {
         int ok = WIDE ? full_check_w(C[0]) : full_check(C[0]);
         printf("full diameter check: %s\n", ok ? "OK" : "FAIL");
         if (ok) {
+            /* f = 0: write S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A)) so that the first generator is e */
+            if (S[0] != ident) { int a0 = ginv(S[0]); for (int i = 0; i < d; i++) S[i] = gmul(S[i], a0);
+                for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+                int ok2 = WIDE ? full_check_w(C[0]) : full_check(C[0]); printf("full diameter check after normalising s_0 = e: %s\n", ok2 ? "OK" : "FAIL");
+                if (!ok2) return 1; }
             FILE *f = fopen(out, "w");
             if (!f) { perror(out); return 1; }
             fprintf(f, "%d %d %s n %d N %d\n", d, D, Q->spec, ncyc, N);
