@@ -1,0 +1,14 @@
+group sl 41 x Z_9, N=619920, identity 14760, H order 63, rows 9840, threads 1, setup 0.01s
+start cost=44
+t=30 steps=3035 evals=24281 cost=2 best=2 T=0.53
+t=60 steps=6119 evals=48953 cost=2 best=2 T=0.19
+t=90 steps=9226 evals=73809 cost=2 best=2 T=0.15
+t=120 steps=12364 evals=98913 cost=2 best=2 T=0.15
+t=150 steps=15520 evals=124161 cost=2 best=2 T=0.15
+t=180 steps=18576 evals=148609 cost=2 best=2 T=0.73
+t=210 steps=21570 evals=172561 cost=2 best=2 T=0.26
+t=240 steps=24670 evals=197361 cost=2 best=2 T=0.15
+t=270 steps=27646 evals=221169 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 41 x Z_9 N=619920 best=0 evals=239433 time=293.8
+full diameter check: OK
+wrote sols/d8D9_sl_41_9_s502.txt

@@ -1,0 +1,11 @@
+group sl 47 x Z_6, N=622656, identity 12972, H order 48, rows 12972, threads 1, setup 0.03s
+start cost=42
+t=30 steps=2413 evals=19305 cost=4 best=4 T=0.53
+t=60 steps=4944 evals=39553 cost=4 best=4 T=0.19
+t=90 steps=7494 evals=59953 cost=4 best=4 T=0.15
+t=120 steps=9991 evals=79929 cost=4 best=4 T=0.15
+t=150 steps=12525 evals=100201 cost=2 best=2 T=0.15
+t=180 steps=15148 evals=121185 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 47 x Z_6 N=622656 best=0 evals=128865 time=191.5
+full diameter check: OK
+wrote sols/d8D9_sl_47_6_s501.txt
