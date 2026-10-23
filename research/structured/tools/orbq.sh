@@ -18,9 +18,13 @@ while IFS= read -r line; do
   ORBIT="$spec" timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
   if [ -s "$sol" ]; then
     read -r _ _ fam p _ n _ NN < <(head -1 "$sol")
-    if [ "$fam" = sl ] && [ "$NN" -gt 10000000 ] && [ -x "$HERE/hcsl" ] && [ -x "$HERE/hc2" ] && [ "$(echo "$p" | grep -c poly)" = 0 ]; then
+    big=0; [[ "$NN" =~ ^[0-9]+$ ]] && [ "$NN" -gt 10000000 ] && big=1
+    if [ $big = 1 ] && [ "$fam" = sl ] && [ -x "$HERE/hcsl" ] && [ -x "$HERE/hc2" ]; then
       # > 20M vertices, SL(2,p) x Z_n: the two independent low-memory checkers (build_haar2 needs hours and > 7 GB)
       "$HERE/hcsl" "$sol" 2>&1 | tail -1 >> "$log"; "$HERE/hc2" "$sol" 2>&1 | tail -1 >> "$log"
+    elif [ $big = 1 ] && [ "$fam" = psl ] && [ -x "$HERE/haarcheck_psl" ]; then
+      "$HERE/haarcheck_psl" "$sol" 2>&1 | tail -1 >> "$log"            # > 20M vertices, PSL(2,p) x Z_n
+    elif [ $big = 1 ]; then echo "UNCHECKED: > 20M vertices and no low-memory checker for $fam" >> "$log"
     else python3 "$CHECK" "$sol" 2>&1 | tail -3 >> "$log"; fi
   fi
   echo "$(date +%H:%M:%S) done  $tag: $(grep -h 'RESULT\|VALID' "$log" | tr '\n' ' ')" >&2
