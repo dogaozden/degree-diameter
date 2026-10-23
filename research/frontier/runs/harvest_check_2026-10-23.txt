@@ -1,0 +1,222 @@
+== d8D7_sl_19_3_s2 (origin/master, 00:42 PT)
+ecc from A = 7 unreached 0
+ecc from B = 7 unreached 0
+n = 41040 edges = 164160 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 0fc82859323f5e4ad9fff3610b3d3b3869ba891da4039e4242d04b0779080cab
+VALID d=8 D=7 group=sl 19 x Z_3 N=20520 vertices=41040
+== d10D10_sl_307_1_s3 (origin/master, 00:42 PT)
+from (e,A): reached A 28934136/28934136, B 28934136/28934136 within 10, ecc 10
+from (e,B): reached A 28934136/28934136, B 28934136/28934136 within 10, ecc 10
+VALID d=10 D=10 group=sl 307 x Z_1 N=28934136 vertices=57868272 (distinct generators, 10-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmp5i7zhhs3/sol.txt d=10 D=10 p=307 n=1 |G|=28934136 vertices=57868272
+selfcheck: SL(2,307) index is a bijection onto det-1 matrices (|SL|=28934136), fastmod ok (0.12s)
+generators: 10 read, all in SL(2,307) x Z_1, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=10  reached=11 / 57868272
+  from (e,A) level 2: new=90  reached=101 / 57868272
+  from (e,A) level 3: new=810  reached=911 / 57868272
+  from (e,A) level 4: new=7290  reached=8201 / 57868272
+  from (e,A) level 5: new=65570  reached=73771 / 57868272
+  from (e,A) level 6: new=585054  reached=658825 / 57868272
+  from (e,A) level 7: new=4848255  reached=5507080 / 57868272
+  from (e,A) level 8: new=22922329  reached=28429409 / 57868272
+  from (e,A) level 9: new=24019491  reached=52448900 / 57868272
+  from (e,A) level 10: new=5419372  reached=57868272 / 57868272
+  done in 5.08s, eccA=10, reached 57868272 / 57868272
+BFS from (e,B):
+  from (e,B) level 1: new=10  reached=11 / 57868272
+  from (e,B) level 2: new=90  reached=101 / 57868272
+  from (e,B) level 3: new=810  reached=911 / 57868272
+  from (e,B) level 4: new=7290  reached=8201 / 57868272
+  from (e,B) level 5: new=65570  reached=73771 / 57868272
+  from (e,B) level 6: new=585056  reached=658827 / 57868272
+  from (e,B) level 7: new=4848255  reached=5507082 / 57868272
+  from (e,B) level 8: new=22923427  reached=28430509 / 57868272
+  from (e,B) level 9: new=24019491  reached=52450000 / 57868272
+  from (e,B) level 10: new=5418272  reached=57868272 / 57868272
+  done in 5.05s, eccB=10, reached 57868272 / 57868272
+VALID d=10 D=10 vertices=57868272 eccA=10 eccB=10
+== d12D9_sl_127_8_s2 (origin/master, 00:42 PT)
+from (e,A): reached A 16386048/16386048, B 16386048/16386048 within 9, ecc 9
+from (e,B): reached A 16386048/16386048, B 16386048/16386048 within 9, ecc 9
+VALID d=12 D=9 group=sl 127 x Z_8 N=16386048 vertices=32772096 (distinct generators, 12-regular simple)
+
+file /var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmpnyzthhu3/sol.txt
+header: d=12 D=9 spec=sl 127 NCYC=8 N=16386048
+group order |G|=2048256 (factors [2048256]), x Z_8 -> 16386048; vertices 2N=32772096
+distinct generators (as full group elements): 12 of d=12
+permutations built (27s)
+BFS from A: ecc=9 reached 32772096 of 32772096 (unreached 0); level sizes [1, 12, 132, 1452, 15972, 174904, 1822481, 11780548, 14547462, 4429132]
+BFS from B: ecc=9 reached 32772096 of 32772096 (unreached 0); level sizes [1, 12, 132, 1452, 15972, 174904, 1822513, 11780548, 14547430, 4429132]
+every vertex has exactly 12 distinct neighbours: True
+RESULT VALID d=12 D=9 eccA=9 eccB=9 n=32772096 (31s)
+== d12D10_sl_281_7_s3 (origin/master, 00:42 PT)
+from (e,A): reached A 155314320/155314320, B 155314320/155314320 within 10, ecc 10
+from (e,B): reached A 155314320/155314320, B 155314320/155314320 within 10, ecc 10
+VALID d=12 D=10 group=sl 281 x Z_7 N=155314320 vertices=310628640 (distinct generators, 12-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmpifmji773/sol.txt d=12 D=10 p=281 n=7 |G|=155314320 vertices=310628640
+selfcheck: SL(2,281) index is a bijection onto det-1 matrices (|SL|=22187760), fastmod ok (0.09s)
+generators: 12 read, all in SL(2,281) x Z_7, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=12  reached=13 / 310628640
+  from (e,A) level 2: new=132  reached=145 / 310628640
+  from (e,A) level 3: new=1452  reached=1597 / 310628640
+  from (e,A) level 4: new=15972  reached=17569 / 310628640
+  from (e,A) level 5: new=175612  reached=193181 / 310628640
+  from (e,A) level 6: new=1920896  reached=2114077 / 310628640
+  from (e,A) level 7: new=19854254  reached=21968331 / 310628640
+  from (e,A) level 8: new=119373287  reached=141341618 / 310628640
+  from (e,A) level 9: new=135282990  reached=276624608 / 310628640
+  from (e,A) level 10: new=34004032  reached=310628640 / 310628640
+  done in 34.79s, eccA=10, reached 310628640 / 310628640
+BFS from (e,B):
+  from (e,B) level 1: new=12  reached=13 / 310628640
+  from (e,B) level 2: new=132  reached=145 / 310628640
+  from (e,B) level 3: new=1452  reached=1597 / 310628640
+  from (e,B) level 4: new=15972  reached=17569 / 310628640
+  from (e,B) level 5: new=175612  reached=193181 / 310628640
+  from (e,B) level 6: new=1920906  reached=2114087 / 310628640
+  from (e,B) level 7: new=19854254  reached=21968341 / 310628640
+  from (e,B) level 8: new=119372791  reached=141341132 / 310628640
+  from (e,B) level 9: new=135282990  reached=276624122 / 310628640
+  from (e,B) level 10: new=34004518  reached=310628640 / 310628640
+  done in 32.83s, eccB=10, reached 310628640 / 310628640
+VALID d=12 D=10 vertices=310628640 eccA=10 eccB=10
+== d13D9_sl_109_24_s2 (origin/master, 00:42 PT)
+from (e,A): reached A 31078080/31078080, B 31078080/31078080 within 9, ecc 9
+from (e,B): reached A 31078080/31078080, B 31078080/31078080 within 9, ecc 9
+VALID d=13 D=9 group=sl 109 x Z_24 N=31078080 vertices=62156160 (distinct generators, 13-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmpcfwa74qx/sol.txt d=13 D=9 p=109 n=24 |G|=31078080 vertices=62156160
+selfcheck: SL(2,109) index is a bijection onto det-1 matrices (|SL|=1294920), fastmod ok (0.00s)
+generators: 13 read, all in SL(2,109) x Z_24, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=13  reached=14 / 62156160
+  from (e,A) level 2: new=156  reached=170 / 62156160
+  from (e,A) level 3: new=1872  reached=2042 / 62156160
+  from (e,A) level 4: new=22464  reached=24506 / 62156160
+  from (e,A) level 5: new=268475  reached=292981 / 62156160
+  from (e,A) level 6: new=3066968  reached=3359949 / 62156160
+  from (e,A) level 7: new=21937025  reached=25296974 / 62156160
+  from (e,A) level 8: new=27988491  reached=53285465 / 62156160
+  from (e,A) level 9: new=8870695  reached=62156160 / 62156160
+  done in 5.06s, eccA=9, reached 62156160 / 62156160
+BFS from (e,B):
+  from (e,B) level 1: new=13  reached=14 / 62156160
+  from (e,B) level 2: new=156  reached=170 / 62156160
+  from (e,B) level 3: new=1872  reached=2042 / 62156160
+  from (e,B) level 4: new=22464  reached=24506 / 62156160
+  from (e,B) level 5: new=268475  reached=292981 / 62156160
+  from (e,B) level 6: new=3067062  reached=3360043 / 62156160
+  from (e,B) level 7: new=21937025  reached=25297068 / 62156160
+  from (e,B) level 8: new=27988397  reached=53285465 / 62156160
+  from (e,B) level 9: new=8870695  reached=62156160 / 62156160
+  done in 5.05s, eccB=9, reached 62156160 / 62156160
+VALID d=13 D=9 vertices=62156160 eccA=9 eccB=9
+== d14D9_sl_191_8_s1 (origin/master, 00:42 PT)
+from (e,A): reached A 55741440/55741440, B 55741440/55741440 within 9, ecc 9
+from (e,B): reached A 55741440/55741440, B 55741440/55741440 within 9, ecc 9
+VALID d=14 D=9 group=sl 191 x Z_8 N=55741440 vertices=111482880 (distinct generators, 14-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmpv07c1t1x/sol.txt d=14 D=9 p=191 n=8 |G|=55741440 vertices=111482880
+selfcheck: SL(2,191) index is a bijection onto det-1 matrices (|SL|=6967680), fastmod ok (0.03s)
+generators: 14 read, all in SL(2,191) x Z_8, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=14  reached=15 / 111482880
+  from (e,A) level 2: new=182  reached=197 / 111482880
+  from (e,A) level 3: new=2366  reached=2563 / 111482880
+  from (e,A) level 4: new=30746  reached=33309 / 111482880
+  from (e,A) level 5: new=398411  reached=431720 / 111482880
+  from (e,A) level 6: new=4962450  reached=5394170 / 111482880
+  from (e,A) level 7: new=38895279  reached=44289449 / 111482880
+  from (e,A) level 8: new=50748061  reached=95037510 / 111482880
+  from (e,A) level 9: new=16445370  reached=111482880 / 111482880
+  done in 11.21s, eccA=9, reached 111482880 / 111482880
+BFS from (e,B):
+  from (e,B) level 1: new=14  reached=15 / 111482880
+  from (e,B) level 2: new=182  reached=197 / 111482880
+  from (e,B) level 3: new=2366  reached=2563 / 111482880
+  from (e,B) level 4: new=30746  reached=33309 / 111482880
+  from (e,B) level 5: new=398411  reached=431720 / 111482880
+  from (e,B) level 6: new=4962748  reached=5394468 / 111482880
+  from (e,B) level 7: new=38895279  reached=44289747 / 111482880
+  from (e,B) level 8: new=50747763  reached=95037510 / 111482880
+  from (e,B) level 9: new=16445370  reached=111482880 / 111482880
+  done in 11.16s, eccB=9, reached 111482880 / 111482880
+VALID d=14 D=9 vertices=111482880 eccA=9 eccB=9
+== d15D8_sl_101_8_s2 (origin/master, 00:42 PT)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 16483200 edges = 123624000 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = 3aee39eb66e87753f11873bbabc04fe4b163622f4c061cd7e2759c3ffde67ef9
+VALID d=15 D=8 group=sl 101 x Z_8 N=8241600 vertices=16483200
+== d15D9_sl_457_1_s2 (origin/master, 00:42 PT)
+from (e,A): reached A 95443536/95443536, B 95443536/95443536 within 9, ecc 9
+from (e,B): reached A 95443536/95443536, B 95443536/95443536 within 9, ecc 9
+VALID d=15 D=9 group=sl 457 x Z_1 N=95443536 vertices=190887072 (distinct generators, 15-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmpe6khp3zq/sol.txt d=15 D=9 p=457 n=1 |G|=95443536 vertices=190887072
+selfcheck: SL(2,457) index is a bijection onto det-1 matrices (|SL|=95443536), fastmod ok (0.37s)
+generators: 15 read, all in SL(2,457) x Z_1, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 190887072
+  from (e,A) level 2: new=210  reached=226 / 190887072
+  from (e,A) level 3: new=2940  reached=3166 / 190887072
+  from (e,A) level 4: new=41144  reached=44310 / 190887072
+  from (e,A) level 5: new=574326  reached=618636 / 190887072
+  from (e,A) level 6: new=7729185  reached=8347821 / 190887072
+  from (e,A) level 7: new=65788087  reached=74135908 / 190887072
+  from (e,A) level 8: new=87672996  reached=161808904 / 190887072
+  from (e,A) level 9: new=29078168  reached=190887072 / 190887072
+  done in 45.11s, eccA=9, reached 190887072 / 190887072
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 190887072
+  from (e,B) level 2: new=210  reached=226 / 190887072
+  from (e,B) level 3: new=2940  reached=3166 / 190887072
+  from (e,B) level 4: new=41144  reached=44310 / 190887072
+  from (e,B) level 5: new=574326  reached=618636 / 190887072
+  from (e,B) level 6: new=7729329  reached=8347965 / 190887072
+  from (e,B) level 7: new=65788087  reached=74136052 / 190887072
+  from (e,B) level 8: new=87672852  reached=161808904 / 190887072
+  from (e,B) level 9: new=29078168  reached=190887072 / 190887072
+  done in 47.01s, eccB=9, reached 190887072 / 190887072
+VALID d=15 D=9 vertices=190887072 eccA=9 eccB=9
+== d16D9_sl_541_1_s1 (origin/master, 00:42 PT)
+from (e,A): reached A 158339880/158339880, B 158339880/158339880 within 9, ecc 9
+from (e,B): reached A 158339880/158339880, B 158339880/158339880 within 9, ecc 9
+VALID d=16 D=9 group=sl 541 x Z_1 N=158339880 vertices=316679760 (distinct generators, 16-regular simple)
+
+file=/var/folders/1n/mdvb_qls4w1fgn_s3v45q8b80000gp/T/tmp0ejsxfe8/sol.txt d=16 D=9 p=541 n=1 |G|=158339880 vertices=316679760
+selfcheck: SL(2,541) index is a bijection onto det-1 matrices (|SL|=158339880), fastmod ok (0.66s)
+generators: 16 read, all in SL(2,541) x Z_1, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=16  reached=17 / 316679760
+  from (e,A) level 2: new=240  reached=257 / 316679760
+  from (e,A) level 3: new=3600  reached=3857 / 316679760
+  from (e,A) level 4: new=53992  reached=57849 / 316679760
+  from (e,A) level 5: new=807739  reached=865588 / 316679760
+  from (e,A) level 6: new=11685563  reached=12551151 / 316679760
+  from (e,A) level 7: new=107652675  reached=120203826 / 316679760
+  from (e,A) level 8: new=146600084  reached=266803910 / 316679760
+  from (e,A) level 9: new=49875850  reached=316679760 / 316679760
+  done in 100.27s, eccA=9, reached 316679760 / 316679760
+BFS from (e,B):
+  from (e,B) level 1: new=16  reached=17 / 316679760
+  from (e,B) level 2: new=240  reached=257 / 316679760
+  from (e,B) level 3: new=3600  reached=3857 / 316679760
+  from (e,B) level 4: new=53992  reached=57849 / 316679760
+  from (e,B) level 5: new=807739  reached=865588 / 316679760
+  from (e,B) level 6: new=11685685  reached=12551273 / 316679760
+  from (e,B) level 7: new=107652675  reached=120203948 / 316679760
+  from (e,B) level 8: new=146599962  reached=266803910 / 316679760
+  from (e,B) level 9: new=49875850  reached=316679760 / 316679760
+  done in 89.24s, eccB=9, reached 316679760 / 316679760
+VALID d=16 D=9 vertices=316679760 eccA=9 eccB=9
