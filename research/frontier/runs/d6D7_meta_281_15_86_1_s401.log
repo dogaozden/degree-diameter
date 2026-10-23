@@ -1,0 +1,22 @@
+group meta 281 15 86 x Z_1, N=4215, identity 0, H order 15, rows 281, threads 1, setup 0.00s
+start cost=50
+t=30 steps=197860 evals=1582881 cost=6 best=6 T=0.53
+t=60 steps=391985 evals=3135881 cost=6 best=6 T=0.19
+t=90 steps=599804 evals=4798433 cost=6 best=6 T=0.15
+t=120 steps=803966 evals=6431729 cost=6 best=6 T=0.15
+t=150 steps=1014985 evals=8119881 cost=12 best=6 T=0.15
+t=180 steps=1208797 evals=9670377 cost=8 best=6 T=0.63
+t=210 steps=1403116 evals=11224929 cost=8 best=6 T=0.22
+t=240 steps=1607587 evals=12860697 cost=8 best=6 T=0.15
+t=270 steps=1815597 evals=14524777 cost=8 best=6 T=0.15
+t=300 steps=2018750 evals=16150001 cost=8 best=6 T=0.15
+t=330 steps=2211239 evals=17689913 cost=4 best=4 T=0.63
+t=360 steps=2389326 evals=19114609 cost=4 best=4 T=0.22
+t=390 steps=2590919 evals=20727353 cost=4 best=4 T=0.15
+t=420 steps=2800657 evals=22405257 cost=4 best=4 T=0.15
+t=450 steps=3001311 evals=24010489 cost=4 best=4 T=0.15
+t=480 steps=3203941 evals=25631529 cost=4 best=4 T=0.65
+t=510 steps=3402449 evals=27219593 cost=4 best=4 T=0.23
+t=540 steps=3595228 evals=28761825 cost=4 best=4 T=0.15
+t=570 steps=3799465 evals=30395721 cost=10 best=4 T=0.15
+RESULT d=6 D=7 group=meta 281 15 86 x Z_1 N=4215 best=4 evals=31578625 time=593.9

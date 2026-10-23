@@ -1,0 +1,14 @@
+group meta 175 24 18 x Z_1, N=4200, identity 0, H order 56, rows 75, threads 1, setup 0.00s
+start cost=50
+t=30 steps=669911 evals=5359289 cost=2 best=2 T=0.53
+t=60 steps=1354778 evals=10838225 cost=6 best=2 T=0.19
+t=90 steps=2055189 evals=16441513 cost=8 best=2 T=0.15
+t=120 steps=2732376 evals=21859009 cost=8 best=2 T=0.15
+t=150 steps=3428090 evals=27424721 cost=8 best=2 T=0.15
+t=180 steps=4124228 evals=32993825 cost=2 best=2 T=1.20
+t=210 steps=4838994 evals=38711953 cost=2 best=2 T=0.42
+t=240 steps=5479996 evals=43839969 cost=2 best=2 T=0.15
+t=270 steps=6116760 evals=48934081 cost=2 best=2 T=0.15
+RESULT d=6 D=7 group=meta 175 24 18 x Z_1 N=4200 best=0 evals=53061217 time=293.1
+full diameter check: OK
+wrote sols/d6D7_meta_175_24_18_1_s401.txt
