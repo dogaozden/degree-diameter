@@ -1,0 +1,12 @@
+group pgl 25 poly x^2+2 x Z_16, N=249600, identity 0, H order 52, rows 4800, threads 1, setup 0.01s
+start cost=76
+t=30 steps=14132 evals=113057 cost=4 best=4 T=0.53
+t=60 steps=28414 evals=227313 cost=4 best=4 T=0.19
+t=90 steps=42310 evals=338481 cost=3 best=3 T=0.15
+t=120 steps=56287 evals=450297 cost=3 best=3 T=0.15
+t=150 steps=70332 evals=562657 cost=3 best=3 T=0.15
+t=180 steps=84558 evals=676465 cost=3 best=3 T=0.15
+t=210 steps=98017 evals=784137 cost=3 best=3 T=0.15
+t=240 steps=112506 evals=900049 cost=6 best=3 T=1.31
+t=270 steps=126618 evals=1012945 cost=5 best=3 T=0.46
+RESULT d=9 D=8 group=pgl 25 poly x^2+2 x Z_16 N=249600 best=3 evals=1124625 time=300.0
