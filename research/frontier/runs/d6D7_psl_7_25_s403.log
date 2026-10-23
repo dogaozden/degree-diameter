@@ -1,0 +1,17 @@
+group psl 7 x Z_25, N=4200, identity 525, H order 50, rows 84, threads 1, setup 0.00s
+start cost=194
+t=30 steps=612869 evals=4902953 cost=11 best=10 T=0.53
+t=60 steps=1226367 evals=9810937 cost=11 best=10 T=0.19
+t=90 steps=1852856 evals=14822849 cost=11 best=10 T=0.15
+t=120 steps=2462811 evals=19702489 cost=11 best=10 T=0.15
+t=150 steps=3054381 evals=24435049 cost=11 best=10 T=0.15
+t=180 steps=3663570 evals=29308561 cost=5 best=5 T=0.53
+t=210 steps=4297993 evals=34383945 cost=5 best=5 T=0.19
+t=240 steps=4923043 evals=39384345 cost=13 best=5 T=0.15
+t=270 steps=5532532 evals=44260257 cost=13 best=5 T=0.15
+t=300 steps=6148060 evals=49184481 cost=13 best=5 T=0.15
+t=330 steps=6755893 evals=54047145 cost=5 best=5 T=0.67
+t=360 steps=7350925 evals=58807401 cost=5 best=5 T=0.24
+t=390 steps=7895805 evals=63166441 cost=14 best=5 T=0.15
+t=420 steps=8478191 evals=67825529 cost=14 best=5 T=0.15
+RESULT d=6 D=7 group=psl 7 x Z_25 N=4200 best=5 evals=68395705 time=423.6

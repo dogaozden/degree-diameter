@@ -1,0 +1,49 @@
+group meta 843 5 232 x Z_1, N=4215, identity 0, H order 15, rows 281, threads 1, setup 0.00s
+start cost=96
+t=30 steps=206158 evals=1649265 cost=6 best=6 T=0.53
+t=60 steps=421549 evals=3372393 cost=10 best=6 T=0.19
+t=90 steps=639083 evals=5112665 cost=10 best=6 T=0.15
+t=120 steps=840083 evals=6720665 cost=10 best=6 T=0.15
+t=150 steps=1051076 evals=8408609 cost=10 best=6 T=0.15
+t=180 steps=1264808 evals=10118465 cost=8 best=6 T=0.96
+t=210 steps=1470303 evals=11762425 cost=8 best=6 T=0.34
+t=240 steps=1678465 evals=13427721 cost=8 best=6 T=0.15
+t=270 steps=1881245 evals=15049961 cost=8 best=6 T=0.15
+t=300 steps=2078602 evals=16628817 cost=8 best=6 T=0.15
+t=330 steps=2289150 evals=18313201 cost=6 best=4 T=0.96
+t=360 steps=2493077 evals=19944617 cost=4 best=4 T=0.34
+t=390 steps=2700417 evals=21603337 cost=4 best=4 T=0.15
+t=420 steps=2895324 evals=23162593 cost=4 best=4 T=0.15
+t=450 steps=3093726 evals=24749809 cost=4 best=4 T=0.15
+t=480 steps=3295651 evals=26365209 cost=4 best=4 T=1.11
+t=510 steps=3495355 evals=27962841 cost=4 best=4 T=0.39
+t=540 steps=3690782 evals=29526257 cost=4 best=4 T=0.15
+t=570 steps=3900508 evals=31204065 cost=4 best=4 T=0.15
+t=600 steps=4104155 evals=32833241 cost=4 best=4 T=0.15
+t=630 steps=4305535 evals=34444281 cost=4 best=4 T=1.11
+t=660 steps=4512374 evals=36098993 cost=4 best=4 T=0.39
+t=690 steps=4725509 evals=37804073 cost=4 best=4 T=0.15
+t=720 steps=4937921 evals=39503369 cost=4 best=4 T=0.15
+t=750 steps=5149526 evals=41196209 cost=4 best=4 T=0.15
+t=780 steps=5361359 evals=42890873 cost=4 best=4 T=1.11
+t=810 steps=5567859 evals=44542873 cost=4 best=4 T=0.39
+t=840 steps=5772558 evals=46180465 cost=4 best=4 T=0.15
+t=870 steps=5983483 evals=47867865 cost=4 best=4 T=0.15
+t=900 steps=6191280 evals=49530241 cost=8 best=4 T=0.15
+t=930 steps=6402810 evals=51222481 cost=10 best=4 T=1.11
+t=960 steps=6613266 evals=52906129 cost=6 best=4 T=0.39
+t=990 steps=6823363 evals=54586905 cost=8 best=4 T=0.15
+t=1020 steps=7022073 evals=56176585 cost=8 best=4 T=0.15
+t=1050 steps=7234044 evals=57872353 cost=8 best=4 T=0.15
+t=1080 steps=7448884 evals=59591073 cost=4 best=4 T=1.11
+t=1110 steps=7662068 evals=61296545 cost=4 best=4 T=0.39
+t=1140 steps=7869431 evals=62955449 cost=4 best=4 T=0.15
+t=1170 steps=8077853 evals=64622825 cost=4 best=4 T=0.15
+t=1200 steps=8279725 evals=66237801 cost=4 best=4 T=0.15
+t=1230 steps=8483857 evals=67870857 cost=4 best=4 T=1.11
+t=1260 steps=8697432 evals=69579457 cost=4 best=4 T=0.39
+t=1290 steps=8914147 evals=71313177 cost=4 best=4 T=0.15
+t=1320 steps=9120758 evals=72966065 cost=4 best=4 T=0.15
+RESULT d=6 D=7 group=meta 843 5 232 x Z_1 N=4215 best=0 evals=74586185 time=1349.3
+full diameter check: OK
+wrote sols/d6D7_meta_843_5_232_1_s404.txt

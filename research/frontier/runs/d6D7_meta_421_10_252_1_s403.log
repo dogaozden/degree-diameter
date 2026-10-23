@@ -1,0 +1,38 @@
+group meta 421 10 252 x Z_1, N=4210, identity 0, H order 10, rows 421, threads 1, setup 0.00s
+start cost=502
+t=30 steps=156641 evals=1253129 cost=8 best=6 T=0.53
+t=60 steps=314500 evals=2516001 cost=8 best=6 T=0.19
+t=90 steps=471160 evals=3769281 cost=8 best=6 T=0.15
+t=120 steps=626093 evals=5008745 cost=8 best=6 T=0.15
+t=150 steps=777757 evals=6222057 cost=8 best=6 T=0.15
+t=180 steps=929467 evals=7435737 cost=4 best=4 T=0.65
+t=210 steps=1082325 evals=8658601 cost=4 best=4 T=0.23
+t=240 steps=1236223 evals=9889785 cost=4 best=4 T=0.15
+t=270 steps=1387672 evals=11101377 cost=4 best=4 T=0.15
+t=300 steps=1540971 evals=12327769 cost=4 best=4 T=0.15
+t=330 steps=1690211 evals=13521689 cost=8 best=4 T=0.74
+t=360 steps=1845548 evals=14764385 cost=6 best=4 T=0.26
+t=390 steps=1993987 evals=15951897 cost=6 best=4 T=0.15
+t=420 steps=2144244 evals=17153953 cost=6 best=4 T=0.15
+t=450 steps=2295660 evals=18365281 cost=6 best=4 T=0.15
+t=480 steps=2446666 evals=19573329 cost=6 best=4 T=0.74
+t=510 steps=2597860 evals=20782881 cost=4 best=4 T=0.26
+t=540 steps=2744410 evals=21955281 cost=4 best=4 T=0.15
+t=570 steps=2894896 evals=23159169 cost=4 best=4 T=0.15
+t=600 steps=3038244 evals=24305953 cost=4 best=4 T=0.15
+t=630 steps=3187021 evals=25496169 cost=12 best=4 T=0.74
+t=660 steps=3329046 evals=26632369 cost=8 best=4 T=0.26
+t=690 steps=3473022 evals=27784177 cost=8 best=4 T=0.15
+t=720 steps=3618792 evals=28950337 cost=8 best=4 T=0.15
+t=750 steps=3768447 evals=30147577 cost=8 best=4 T=0.15
+t=780 steps=3907096 evals=31256769 cost=4 best=4 T=0.74
+t=810 steps=4047754 evals=32382033 cost=4 best=4 T=0.26
+t=840 steps=4196137 evals=33569097 cost=4 best=4 T=0.15
+t=870 steps=4350083 evals=34800665 cost=4 best=4 T=0.15
+t=900 steps=4499147 evals=35993177 cost=2 best=2 T=0.15
+t=930 steps=4642130 evals=37137041 cost=2 best=2 T=0.15
+t=960 steps=4792939 evals=38343513 cost=2 best=2 T=0.15
+t=990 steps=4940461 evals=39523689 cost=2 best=2 T=0.15
+t=1020 steps=5079915 evals=40639321 cost=2 best=2 T=0.15
+t=1050 steps=5222482 evals=41779857 cost=2 best=2 T=1.00
+RESULT d=6 D=7 group=meta 421 10 252 x Z_1 N=4210 best=2 evals=42698073 time=1074.0
