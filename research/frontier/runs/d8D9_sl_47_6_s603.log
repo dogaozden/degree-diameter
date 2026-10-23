@@ -1,2 +1,22 @@
 group sl 47 x Z_6, N=622656, identity 12972, H order 48, rows 12972, threads 1, setup 0.05s
 start cost=94
+t=30 steps=1839 evals=14713 cost=4 best=4 T=0.53
+t=60 steps=3755 evals=30041 cost=2 best=2 T=0.19
+t=90 steps=5599 evals=44793 cost=2 best=2 T=0.15
+t=120 steps=7565 evals=60521 cost=2 best=2 T=0.15
+t=150 steps=9482 evals=75857 cost=2 best=2 T=0.15
+t=180 steps=11367 evals=90937 cost=2 best=2 T=0.15
+t=210 steps=13298 evals=106385 cost=2 best=2 T=0.85
+t=240 steps=15294 evals=122353 cost=2 best=2 T=0.30
+t=270 steps=17253 evals=138025 cost=2 best=2 T=0.15
+t=300 steps=19169 evals=153353 cost=2 best=2 T=0.15
+t=330 steps=21106 evals=168849 cost=2 best=2 T=0.15
+t=360 steps=23061 evals=184489 cost=8 best=2 T=0.85
+t=390 steps=25027 evals=200217 cost=4 best=2 T=0.30
+t=420 steps=26972 evals=215777 cost=2 best=2 T=0.15
+t=450 steps=28924 evals=231393 cost=2 best=2 T=0.15
+t=480 steps=30844 evals=246753 cost=2 best=2 T=0.15
+t=510 steps=32816 evals=262529 cost=2 best=2 T=0.85
+t=540 steps=34665 evals=277321 cost=2 best=2 T=0.30
+t=570 steps=36612 evals=292897 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 47 x Z_6 N=622656 best=2 evals=308361 time=600.0
