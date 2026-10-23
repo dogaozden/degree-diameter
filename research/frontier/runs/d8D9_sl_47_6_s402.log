@@ -3,3 +3,10 @@ start cost=30
 t=30 steps=2875 evals=23001 cost=4 best=4 T=0.53
 t=60 steps=5685 evals=45481 cost=4 best=4 T=0.19
 t=90 steps=8500 evals=68001 cost=4 best=4 T=0.15
+t=120 steps=11286 evals=90289 cost=2 best=2 T=0.15
+t=150 steps=14072 evals=112577 cost=2 best=2 T=0.15
+t=180 steps=16906 evals=135249 cost=2 best=2 T=0.15
+t=210 steps=19611 evals=156889 cost=2 best=2 T=0.15
+RESULT d=8 D=9 group=sl 47 x Z_6 N=622656 best=0 evals=165161 time=221.3
+full diameter check: OK
+wrote sols/d8D9_sl_47_6_s402.txt
