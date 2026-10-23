@@ -1,0 +1,11 @@
+group sl 41 x Z_3, N=206640, identity 4920
+start cost=42
+t=30 steps=47 evals=377 cost=6 best=6 T=0.53
+t=61 steps=96 evals=769 cost=6 best=6 T=0.18
+t=91 steps=145 evals=1161 cost=6 best=6 T=0.15
+t=121 steps=193 evals=1545 cost=6 best=6 T=0.15
+t=151 steps=243 evals=1945 cost=6 best=6 T=0.15
+t=182 steps=293 evals=2345 cost=6 best=6 T=0.15
+RESULT d=7 D=9 group=sl 41 x Z_3 N=206640 best=0 evals=2497 time=193.8
+full diameter check: OK
+wrote sols/d7D9_sl_41_3_s2.txt
