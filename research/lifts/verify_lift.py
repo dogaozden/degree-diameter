@@ -8,6 +8,7 @@ The group is rebuilt here from its definition, not from lift.c's tables:
   dih n          meta n 2 n-1
   aff p a b c d k   triples (x, y, j), (v, j)(w, l) = (v + M^j w mod p, j + l mod k), M = [[a,b],[c,d]]
                     (p any modulus >= 2)
+  aff3 p m00..m22 k quadruples (x, y, z, j), the same with a 3x3 matrix M
   sl p / psl p / pgl p   2x2 matrices over Z/p with det 1 / det 1 modulo +-1 / det != 0 modulo scalars
   G x H          direct product (tuples)
 Elements are listed in sorted order of their canonical tuples; lift vertex (u, g) gets index u*N + rank(g).
@@ -83,6 +84,30 @@ class Aff:
     def parse(self, s):
         x, y, j = map(int, s.split(","))
         return (x % self.p, y % self.p, j % self.k)
+
+
+class Aff3:
+    """Z_p^3 x|_M Z_k: (v, j)(w, l) = (v + M^j w, j + l), M a 3x3 matrix mod p"""
+
+    def __init__(self, p, M, k):
+        self.p, self.k = p, k
+        I = tuple(tuple(int(r == c) for c in range(3)) for r in range(3))
+        self.pw = [I]
+        for _ in range(k):
+            A = self.pw[-1]
+            self.pw.append(tuple(tuple(sum(A[r][u] * M[u][c] for u in range(3)) % p for c in range(3)) for r in range(3)))
+        assert self.pw[k] == I, "M^k != I"
+        self.elems = [(x, y, z, j) for x in range(p) for y in range(p) for z in range(p) for j in range(k)]
+        self.e = (0, 0, 0, 0)
+
+    def mul(self, X, Y):
+        A = self.pw[X[3]]
+        w = Y[:3]
+        return tuple((X[r] + sum(A[r][c] * w[c] for c in range(3))) % self.p for r in range(3)) + ((X[3] + Y[3]) % self.k,)
+
+    def parse(self, s):
+        x, y, z, j = map(int, s.split(","))
+        return (x % self.p, y % self.p, z % self.p, j % self.k)
 
 
 class Mat:
@@ -163,6 +188,11 @@ def parse_group(tokens):
         elif t == "meta":
             fs.append(Meta(int(tokens[i + 1]), int(tokens[i + 2]), int(tokens[i + 3])))
             i += 4
+        elif t == "aff3":
+            p = int(tokens[i + 1])
+            m = [int(x) % p for x in tokens[i + 2:i + 11]]
+            fs.append(Aff3(p, tuple(tuple(m[3 * r:3 * r + 3]) for r in range(3)), int(tokens[i + 11])))
+            i += 12
         elif t == "aff":
             p = int(tokens[i + 1])
             a, b, c, d = (int(x) % p for x in tokens[i + 2:i + 6])
