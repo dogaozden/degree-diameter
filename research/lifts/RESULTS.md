@@ -38,11 +38,12 @@ Solution files: `sols/rebuild_*.txt`.
 | cell | table (holder) | ours | construction | file |
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
-| (5,10) | 90,068 (Loz) | **91,756** (+1.9 %) | Haar graph of Z3277 ⋊₁₂₉ Z14 (metacyclic) | `sols/d5D10_n91756_haar_meta3277_14_129.txt`. Also 91,728 = Haar(SL(2,13) × Z21), `sols/d5D10_n91728_haar_sl13xcyc21.txt` |
+| (5,10) | 90,068 (Loz) | **91,812** (+1.9 %) | Haar graph of Z1093 ⋊₂₀₈ Z42 (metacyclic) | `sols/d5D10_n91812_haar_meta1093_42_208.txt`. Also 91,756 = Haar(Z3277 ⋊₁₂₉ Z14) and 91,728 = Haar(SL(2,13) × Z21) |
 | (5,9) | 27,936 (Loz) | **28,444** (+1.8 %) | Haar graph of Z1094 ⋊₂₃₇ Z13 (metacyclic) | `sols/d5D9_n28444_haar_meta1094_13_237.txt`. Also 28,418 (Z1093 ⋊₁₁ Z13), 28,094 (Z1277 ⋊₁₃₅ Z11), 27,972 (Z777 ⋊₁₆₄ Z18) and 27,948 (Z411 ⋊₃₈ Z34) |
 
 All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
 the repo's build_haar2.py:
+- (5,10) 91,812: sha256 from build_haar2 in `verify/d5D10_n91812_haar_meta1093_42_208.txt`;
 - (5,10) 91,756: sha256 a28102a9…;
 - (5,10) 91,728: sha256 32998e69…;
 - (5,9) 28,444: sha256 766dfcd6…;
@@ -75,7 +76,8 @@ Outputs are in `verify/`.
 - The group Z3² ⋊ Z8 is metabelian but not metacyclic. It came from the `aff` family added this session.
 - It was found in 41 evaluations: (3,8) is far from saturated (Moore 510), and a push above 288 is running.
 
-**(5,10) = 91,756 and 91,728.**
+**(5,10) = 91,812, 91,756 and 91,728.**
+- 91,812 is a Haar graph of Z1093 ⋊₂₀₈ Z42, found by the same sweep after 113 s of annealing.
 - 91,756 is a Haar graph of Z3277 ⋊₁₂₉ Z14. Connection set (a, j): (0,0), (1169,3), (2805,11), (952,5), (1779,4).
   It was found by haar_cell.py: 7,704 screened candidates of order 45,865–46,100, then 46 s of annealing.
 - 91,728 was the first find:
@@ -138,7 +140,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,444** | **new record** (§2.0); push to N = 14,700 queued |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses: cost 2 at n = 812 (2+2 base, Z29 ⋊ Z7; exhaustive: no solution) and at n = 816 (3+3 base, Z17 ⋊ Z8; exhaustive search running) |
 | (4,10) | 11748 (Loz) | 59,048 | – | queued |
-| **(5,10)** | 90068 (Loz) | 699,050 | **91,756** | **new record** (§2.0); screened sweep up to N = 46,100 running |
+| **(5,10)** | 90068 (Loz) | 699,050 | **91,812** | **new record** (§2.0); screened sweep up to N = 46,100 running |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
 ## 3. Structured families: what was tried and why it stops
