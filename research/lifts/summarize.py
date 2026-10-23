@@ -26,8 +26,8 @@ def main():
         cell = (int(m.group(1)), int(m.group(2)))
         for line in open(fn):
             w = line.rstrip("\n").split("\t")
-            if len(w) < 7 or w[4] == "None":
-                continue
+            if len(w) < 7 or not w[0].isdigit() or not w[4].lstrip("-").isdigit():
+                continue   # not a run_cell.py line (exhaust_cell.py / haar_cell.py logs have other formats)
             cells[cell].append(dict(tag=tag, n=int(w[0]), h=int(w[1]), base=w[2], group=w[3], best=int(w[4]),
                                     evals=int(w[5]), secs=float(w[6])))
     print("| cell | table | jobs | CPU h | orders tried | solved above table | above the best solved order |")

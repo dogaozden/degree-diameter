@@ -156,4 +156,16 @@ copy needs about q+1 such routes, against about 4j² routes available. Not prove
 
 ## 4. Honest negatives
 
-(in progress)
+- **(3,7), table 168 (Conder; our rebuild is isomorphic to it).**
+  - 375 lift searches, 20 s each: Haar graphs and every connected cubic bipartite base on 2+2 … 7+7 vertices
+    (complete lists up to 6+6, 200 random 7+7), generic groups, orders 170–200.
+  - The best cost was 10 (n = 176, a 4+4 base over Z22). There is no graph above 168. This matches the Haar job
+    (wave4: best cost 10).
+- **(4,7), table 840 (Bond–Delorme = Haar(A5 × Z7), rebuilt exactly).** Haar graphs over the matrix-group products
+  SL(2,3), S4, A4, A5, SL(2,5), S5, PSL(2,7), times cyclic or dihedral groups, N = 432–540, 2 seeds × 60 s: best costs
+  18–56. The wave4 metacyclic runs reached cost 4.
+- **Polygon covers beyond 2j+1 copies** (§3.2) and random-voltage lifts of GH(q) + matchings at D = 8 (§3.3): far from
+  0.
+- **Lifts of GQ(q) incidence graphs alone at D = 7** (§3.4): cost > 1000.
+- **(5,10) above 91,728** (in progress): SL(2,11) × Z35 (N = 46,200) and SL(2,13) × Z22 (N = 48,048) stopped at cost
+  4–6.

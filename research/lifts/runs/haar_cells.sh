@@ -14,3 +14,7 @@ h 5 8 4618 4760 --tag hc_d5D8 --top 10 --secs 400
 h 5 7 1556 1620 --tag hc_d5D7 --top 10 --secs 300
 h 4 9 2486 2580 --tag hc_d4D9 --top 10 --secs 300
 h 4 8 1093 1140 --tag hc_d4D8 --top 10 --secs 300
+# green cells (documentation runs: the size law predicts failure)
+h 10 5 2001 2060 --tag hc_d10D5 --top 6 --secs 300
+h 7 7 11719 11900 --tag hc_d7D7 --top 5 --secs 300 --screen 100
+# (10,8) not run here: the candidate generator enumerates metacyclic groups per order and is too slow at N ~ 6e5
