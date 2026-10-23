@@ -34,7 +34,7 @@ def bases_for(h, d, maxmult):
     dd = os.path.join(HERE, "bases", "enum", sub)
     if not os.path.isdir(dd):
         tmp = dd + ".tmp"
-        if h <= 6:   # complete list up to isomorphism
+        if h <= 5 or (h == 6 and d == 3):   # complete list up to isomorphism (larger lists take too long)
             cmd = [sys.executable, os.path.join(HERE, "enum_bases.py"), str(h), str(d), tmp]
             if maxmult:
                 cmd += ["--maxmult", str(maxmult)]
@@ -92,6 +92,10 @@ def main():
     ap.add_argument("--maxmult", type=int, default=0)
     ap.add_argument("--stop-on-solve", action="store_true")
     ap.add_argument("--groups", default=None)
+    ap.add_argument("--extra-bases", default="", help="comma-separated base files tried in addition (any k)")
+    ap.add_argument("--rich", action="store_true", help="groups.specs_rich: also products of two non-abelian factors")
+    ap.add_argument("--screen", type=int, default=0, help="screen every job with M random assignments first")
+    ap.add_argument("--top", type=int, default=8, help="with --screen: anneal the best T jobs per order")
     args = ap.parse_args()
     tag = args.tag or f"d{args.delta}D{args.D}"
     lo, hi, *st = map(int, args.orders.split(":"))
@@ -104,13 +108,45 @@ def main():
                 continue
             N = n // (2 * h)
             bs = bases_for(h, args.delta, args.maxmult)
-            gs = args.groups.split(";") if args.groups else groups.specs(N)
+            gs = args.groups.split(";") if args.groups else (groups.specs_rich(N) if args.rich else groups.specs(N))
             gs = [g for g in gs if g]
             rng.shuffle(bs)
             rng.shuffle(gs)
             for b in bs[: args.maxbases]:
                 for g in gs[: args.maxgroups]:
                     jobs.append((n, h, b, g))
+    for b in filter(None, args.extra_bases.split(",")):
+        k = int(next(l.split()[1] for l in open(b) if l.startswith("k ")))
+        for n in range(lo, hi + 1, step):
+            if n % k:
+                continue
+            gs = args.groups.split(";") if args.groups else (groups.specs_rich(n // k) if args.rich else groups.specs(n // k))
+            gs = [g for g in gs if g]
+            rng.shuffle(gs)
+            for g in gs[: args.maxgroups]:
+                jobs.append((n, k // 2, b, g))
+    jobs.sort(key=lambda j: j[0])
+    if args.screen:
+        # cheap screening: cost quantiles of random voltage assignments, keep the best --top jobs per order
+        def scr(job):
+            n, h, b, g = job
+            cmd = [os.path.join(HERE, "lift"), "sample", b, str(args.D), str(args.screen)] + g.split()
+            try:
+                out = subprocess.run(cmd, capture_output=True, text=True, timeout=600).stdout
+                kv = dict(w.split("=", 1) for w in out.split() if "=" in w)
+                return (int(kv["min"]), int(kv["p10"]), int(kv["median"]))
+            except Exception:
+                return (10 ** 18, 10 ** 18, 10 ** 18)
+        with ThreadPoolExecutor(args.workers) as ex:
+            scores = list(ex.map(scr, jobs))
+        slog = open(os.path.join(HERE, "runs", f"{tag}.screen.tsv"), "a")
+        for j, sc in zip(jobs, scores):
+            slog.write("\t".join(map(str, (j[0], j[1], os.path.basename(j[2]), j[3]) + sc)) + "\n")
+        slog.close()
+        byn = {}
+        for j, sc in zip(jobs, scores):
+            byn.setdefault(j[0], []).append((sc[0] + sc[1] + sc[2], j))
+        jobs = [j for n in sorted(byn) for _, j in sorted(byn[n], key=lambda t: t[0])[: args.top]]
     print(f"{tag}: {len(jobs)} jobs, {args.secs}s each, {args.workers} workers, budget {args.budget}s", flush=True)
     os.makedirs(os.path.join(HERE, "runs"), exist_ok=True)
     os.makedirs(os.path.join(HERE, "sols"), exist_ok=True)

@@ -1,7 +1,8 @@
 """Generalized polygon incidence graphs + j extra perfect matchings, written as lift.c base / solution files.
 
 Usage:
-  python3 polygons.py gq|gh q j m MODE [--seed s] [--D D] > FILE
+  python3 polygons.py gq|gh|pg q j m MODE [--seed s] [--D D] > FILE
+    pg q : PG(2,q), q prime: incidence graph (q+1)-regular, diameter 3, girth 6, 2(q^2+q+1) vertices.
     gq q : W(q), q prime: points of PG(3,q), lines = totally isotropic lines of x0y1 - x1y0 + x2y3 - x3y2.
            Incidence graph: (q+1)-regular, diameter 4, girth 8, 2(q+1)(q^2+1) vertices.
     gh q : split Cayley hexagon H(q), q prime (construction copied from research/gh6/gh_build.py: points of the
@@ -50,6 +51,14 @@ def wq(q):
     return len(pts), L
 
 
+def pg(q):
+    """PG(2,q), q prime: points = lines = normalized vectors of GF(q)^3, incidence x.y = 0"""
+    pts = [v for v in itertools.product(range(q), repeat=3) if next((c for c in v if c), 0) == 1]
+    lines = [[i for i, x in enumerate(pts) if (x[0] * l[0] + x[1] * l[1] + x[2] * l[2]) % q == 0] for l in pts]
+    assert all(len(L) == q + 1 for L in lines)
+    return len(pts), lines
+
+
 def gh(q):
     P = [v for v in itertools.product(range(q), repeat=7)
          if next((c for c in v if c), 0) == 1 and (v[0] * v[4] + v[1] * v[5] + v[2] * v[6] - v[3] * v[3]) % q == 0]
@@ -96,7 +105,7 @@ def main():
     kind, q, j, m, mode = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), sys.argv[5]
     seed = int(sys.argv[sys.argv.index("--seed") + 1]) if "--seed" in sys.argv else 1
     D = int(sys.argv[sys.argv.index("--D") + 1]) if "--D" in sys.argv else (5 if kind == "gq" else 7)
-    P, lines = wq(q) if kind == "gq" else gh(q)
+    P, lines = {"gq": wq, "gh": gh, "pg": pg}[kind](q)
     rng = random.Random(seed)
     w = sys.stdout.write
     n0 = 2 * P

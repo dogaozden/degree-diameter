@@ -16,3 +16,8 @@ networkx all-pairs diameter = 3
 SUMMARY n=80 Delta=7 regular=True bipartite=True diameter=3 D=3 -> VALID
 n=80 m=280 degree min 7 max 7 repeated 0 loops 0 bipartite yes components 1
 RESULT diameter=3 (all-pairs, 80 sources)
+lift: n=80 edges=280 degrees=[7] diameter=3
+published: n=80 edges=280 degrees=[7] diameter=3
+adjacency spectra equal: True
+|Aut| lift = 7680, |Aut| published = 7680
+ISOMORPHIC (BLISS)

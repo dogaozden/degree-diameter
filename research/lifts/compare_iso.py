@@ -2,7 +2,8 @@
 
 Usage: python3 -I compare_iso.py EDGES ADJLIST
 ADJLIST: Hafner's format (row i lists the neighbours of vertex i; labels 0- or 1-based, detected; '#' = comment).
-Prints n, degrees, diameter, the adjacency spectrum comparison, and the verdict of an exact backtracking search:
+Prints n, degrees, diameter, the adjacency spectrum comparison, automorphism group orders and the verdict of
+igraph's BLISS isomorphism test (if igraph is installed); otherwise an exact backtracking search:
 fix a vertex a0 of the lift, try every image b of the published graph, extend along a BFS order of the lift
 (each new vertex goes to an unused neighbour of its parent's image, adjacency to all mapped vertices checked).
 The search is complete, so "not isomorphic" is a proof (given the spectra it is usually decided at once).
@@ -111,6 +112,17 @@ def main():
     print(f"adjacency spectra equal: {same}", flush=True)
     if not same:
         print("NOT ISOMORPHIC (spectra differ)")
+        return
+    try:
+        import igraph
+    except ImportError:
+        igraph = None
+    if igraph is not None:   # BLISS canonical labelling (fast); the backtracking below is the fallback
+        ga = igraph.Graph(n=len(A), edges=[(u, w) for u in range(len(A)) for w in A[u] if u < w])
+        gb = igraph.Graph(n=len(B), edges=[(u, w) for u in range(len(B)) for w in B[u] if u < w])
+        print(f"|Aut| lift = {ga.count_automorphisms()}, |Aut| published = {gb.count_automorphisms()}")
+        iso = ga.isomorphic_bliss(gb)
+        print("ISOMORPHIC (BLISS)" if iso else "NOT ISOMORPHIC (BLISS)")
         return
     f = find_iso(A, B)
     if f is None:

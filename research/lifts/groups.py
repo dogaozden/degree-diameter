@@ -1,6 +1,7 @@
 """Group specs (lift.c grammar) of a given order, from the families lift.c implements.
 
-Usage: python3 groups.py N [--max M]       prints one spec per line
+Usage: python3 groups.py N [--max M] [--rich]      prints one spec per line (--rich: also products of two
+       non-abelian factors, e.g. meta 7 3 2 x meta 5 4 2, psl 5 x meta 7 3 2)
 Families: cyc N; cyc a x cyc b (a | b, a > 1); meta m k r (Z_m x|_r Z_k, r != 1, one r per cyclic subgroup
 <r> generated with a unit exponent); meta m k r x cyc c; sl/psl/pgl p (x cyc c).
 Isomorphic duplicates across families are possible (e.g. meta with r of small order); lift.c does not care.
@@ -66,8 +67,40 @@ def specs(N):
     return out
 
 
+def nonabelian_small(limit):
+    """(spec, order) of small non-abelian factors: metacyclic with r != 1 (k prime power free of repeats) and matrix groups"""
+    out = []
+    for o in range(6, limit + 1):
+        for m in divisors(o):
+            k = o // m
+            if k < 2:
+                continue
+            for r in metas(m, k):
+                if pow(r, k, m) == 1 and math.gcd(m, k) == 1:   # split extensions with coprime orders: Frobenius-like
+                    out.append((f"meta {m} {k} {r}", o))
+    out += [(f"{kind} {p}", o) for kind, p, o in matrix_orders(limit)]
+    return out
+
+
+def specs_rich(N, maxfactor=400):
+    """specs(N) plus direct products of two non-abelian factors (times a cyclic group)"""
+    out = specs(N)
+    fac = nonabelian_small(min(maxfactor, N // 6))
+    seen = set()
+    for i, (s1, o1) in enumerate(fac):
+        for s2, o2 in fac[i:]:
+            if N % (o1 * o2):
+                continue
+            c = N // (o1 * o2)
+            spec = f"{s1} x {s2}" + (f" x cyc {c}" if c > 1 else "")
+            if spec not in seen:
+                seen.add(spec)
+                out.append(spec)
+    return out
+
+
 if __name__ == "__main__":
     N = int(sys.argv[1])
     mx = int(sys.argv[sys.argv.index("--max") + 1]) if "--max" in sys.argv else None
-    s = specs(N)
+    s = specs_rich(N) if "--rich" in sys.argv else specs(N)
     print("\n".join(s[:mx] if mx else s))
