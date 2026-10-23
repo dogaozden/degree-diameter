@@ -19,7 +19,7 @@ while IFS= read -r line; do
   echo "$(date +%H:%M:%S) start $tag" >&2
   env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
   if [ -s "$sol" ]; then
-    read -r _ _ fam p _ n _ NN < <(head -1 "$sol")
+    fam=$(head -1 "$sol" | awk '{print $3}'); NN=$(head -1 "$sol" | awk '{print $NF}')
     big=0; [[ "$NN" =~ ^[0-9]+$ ]] && [ "$NN" -gt 10000000 ] && big=1
     if [ $big = 1 ] && [ "$fam" = sl ] && [ -x "$HERE/hcsl" ] && [ -x "$HERE/hc2" ]; then
       # > 20M vertices, SL(2,p) x Z_n: the two independent low-memory checkers (build_haar2 needs hours and > 7 GB)
