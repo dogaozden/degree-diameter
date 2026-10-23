@@ -1,0 +1,10 @@
+group psl 389 x Z_1, N=29431740, identity 75466, H order 39, rows 754660, threads 1, setup 6.87s
+wide rows: HW order 195, rows 150932, setup 10.70s
+alpha: conj by mat(91,213,146,299) (index 13777359), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 194 (+e); mu = 10.90, mu/k = 3.63, fixed-point misses ~ 1.40
+start cost=8
+t=31 steps=17 evals=137 cost=4 best=2 T=0.52
+t=61 steps=36 evals=289 cost=1 best=1 T=0.18
+RESULT d=10 D=10 group=psl 389 x Z_1 N=29431740 best=0 evals=385 time=82.7 orbit k=3 m=3 f=1 fix=194
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outJ/d10D10_psl_389_1_orb3_s1.txt
