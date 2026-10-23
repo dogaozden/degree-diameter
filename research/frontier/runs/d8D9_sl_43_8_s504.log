@@ -1,2 +1,22 @@
 group sl 43 x Z_8, N=635712, identity 14448, H order 56, rows 11352, threads 1, setup 0.01s
 start cost=32
+t=30 steps=2747 evals=21977 cost=4 best=4 T=0.53
+t=60 steps=5448 evals=43585 cost=4 best=4 T=0.19
+t=90 steps=8153 evals=65225 cost=4 best=4 T=0.15
+t=120 steps=10810 evals=86481 cost=4 best=4 T=0.15
+t=150 steps=13376 evals=107009 cost=10 best=4 T=0.15
+t=180 steps=15961 evals=127689 cost=4 best=4 T=0.91
+t=210 steps=18677 evals=149417 cost=4 best=4 T=0.32
+t=240 steps=21435 evals=171481 cost=4 best=4 T=0.15
+t=270 steps=24045 evals=192361 cost=4 best=4 T=0.15
+t=300 steps=26646 evals=213169 cost=4 best=4 T=0.15
+t=330 steps=29233 evals=233865 cost=4 best=4 T=0.91
+t=360 steps=31796 evals=254369 cost=4 best=4 T=0.32
+t=390 steps=34461 evals=275689 cost=4 best=4 T=0.15
+t=420 steps=36988 evals=295905 cost=4 best=4 T=0.15
+t=450 steps=39666 evals=317329 cost=4 best=4 T=0.15
+t=480 steps=42204 evals=337633 cost=4 best=4 T=0.91
+t=510 steps=44782 evals=358257 cost=4 best=4 T=0.32
+t=540 steps=47375 evals=379001 cost=4 best=4 T=0.15
+t=570 steps=49894 evals=399153 cost=4 best=4 T=0.15
+RESULT d=8 D=9 group=sl 43 x Z_8 N=635712 best=4 evals=419241 time=600.0
