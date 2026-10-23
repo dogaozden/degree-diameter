@@ -1,0 +1,42 @@
+group psl 67 x Z_25, N=3758700, identity 55275, H order 55, rows 68340, threads 1, setup 0.14s
+start cost=16
+t=30 steps=434 evals=3473 cost=3 best=2 T=0.53
+t=60 steps=864 evals=6913 cost=3 best=2 T=0.19
+t=90 steps=1313 evals=10505 cost=3 best=2 T=0.15
+t=120 steps=1749 evals=13993 cost=3 best=2 T=0.15
+t=150 steps=2193 evals=17545 cost=3 best=2 T=0.15
+t=180 steps=2618 evals=20945 cost=5 best=2 T=0.88
+t=210 steps=3049 evals=24393 cost=3 best=2 T=0.31
+t=240 steps=3502 evals=28017 cost=3 best=2 T=0.15
+t=270 steps=3957 evals=31657 cost=3 best=2 T=0.15
+t=300 steps=4408 evals=35265 cost=3 best=2 T=0.15
+t=330 steps=4856 evals=38849 cost=7 best=2 T=0.88
+t=360 steps=5295 evals=42361 cost=2 best=2 T=0.31
+t=390 steps=5736 evals=45889 cost=2 best=2 T=0.15
+t=421 steps=6173 evals=49385 cost=2 best=2 T=0.15
+t=451 steps=6615 evals=52921 cost=2 best=2 T=0.15
+t=481 steps=7049 evals=56393 cost=8 best=2 T=0.87
+t=511 steps=7478 evals=59825 cost=6 best=2 T=0.31
+t=541 steps=7906 evals=63249 cost=5 best=2 T=0.15
+t=571 steps=8348 evals=66785 cost=5 best=2 T=0.15
+t=601 steps=8800 evals=70401 cost=2 best=2 T=0.15
+t=631 steps=9240 evals=73921 cost=2 best=2 T=0.87
+t=661 steps=9672 evals=77377 cost=2 best=2 T=0.31
+t=691 steps=10096 evals=80769 cost=2 best=2 T=0.15
+t=721 steps=10502 evals=84017 cost=2 best=2 T=0.15
+t=751 steps=10933 evals=87465 cost=2 best=2 T=0.15
+t=781 steps=11363 evals=90905 cost=2 best=2 T=0.87
+t=811 steps=11819 evals=94553 cost=2 best=2 T=0.31
+t=841 steps=12248 evals=97985 cost=2 best=2 T=0.15
+t=871 steps=12698 evals=101585 cost=2 best=2 T=0.15
+t=901 steps=13137 evals=105097 cost=2 best=2 T=0.15
+t=931 steps=13587 evals=108697 cost=1 best=1 T=0.15
+t=961 steps=13993 evals=111945 cost=1 best=1 T=0.15
+t=991 steps=14423 evals=115385 cost=1 best=1 T=0.15
+t=1021 steps=14851 evals=118809 cost=1 best=1 T=0.15
+t=1051 steps=15286 evals=122289 cost=1 best=1 T=0.15
+t=1081 steps=15726 evals=125809 cost=3 best=1 T=0.61
+t=1111 steps=16158 evals=129265 cost=3 best=1 T=0.21
+t=1141 steps=16585 evals=132681 cost=3 best=1 T=0.15
+t=1171 steps=17009 evals=136073 cost=3 best=1 T=0.15
+RESULT d=8 D=10 group=psl 67 x Z_25 N=3758700 best=1 evals=139305 time=1200.1
