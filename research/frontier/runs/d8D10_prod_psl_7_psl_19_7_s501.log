@@ -1,22 +1,22 @@
-group prod psl 7 psl 19 x Z_7, N=4021920, identity 503937, H order 63, rows 63840, threads 1, setup 0.30s
+group prod psl 7 psl 19 x Z_7, N=4021920, identity 503937, H order 63, rows 63840, threads 1, setup 0.25s
 start cost=25
-t=30 steps=262 evals=2097 cost=16 best=16 T=0.53
-t=60 steps=503 evals=4025 cost=15 best=15 T=0.19
-t=90 steps=758 evals=6065 cost=15 best=15 T=0.15
-t=120 steps=1017 evals=8137 cost=15 best=15 T=0.15
-t=150 steps=1274 evals=10193 cost=15 best=15 T=0.15
-t=180 steps=1528 evals=12225 cost=15 best=15 T=0.15
-t=210 steps=1782 evals=14257 cost=15 best=15 T=0.65
-t=241 steps=2034 evals=16273 cost=15 best=15 T=0.23
-t=271 steps=2283 evals=18265 cost=15 best=15 T=0.15
-t=301 steps=2541 evals=20329 cost=14 best=14 T=0.15
-t=331 steps=2789 evals=22313 cost=14 best=14 T=0.15
-t=361 steps=3037 evals=24297 cost=14 best=14 T=0.15
-t=391 steps=3288 evals=26305 cost=14 best=14 T=0.15
-t=421 steps=3537 evals=28297 cost=14 best=14 T=0.15
-t=451 steps=3782 evals=30257 cost=14 best=14 T=0.93
-t=481 steps=4035 evals=32281 cost=14 best=14 T=0.33
-t=511 steps=4280 evals=34241 cost=14 best=14 T=0.15
-t=541 steps=4525 evals=36201 cost=14 best=14 T=0.15
-t=571 steps=4768 evals=38145 cost=14 best=14 T=0.15
-RESULT d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 best=13 evals=39977 time=598.9
+t=30 steps=237 evals=1897 cost=16 best=16 T=0.53
+t=60 steps=463 evals=3705 cost=16 best=16 T=0.19
+t=90 steps=700 evals=5601 cost=16 best=16 T=0.15
+t=120 steps=937 evals=7497 cost=16 best=16 T=0.15
+t=150 steps=1172 evals=9377 cost=16 best=16 T=0.15
+t=180 steps=1423 evals=11385 cost=16 best=16 T=0.74
+t=211 steps=1666 evals=13329 cost=16 best=16 T=0.26
+t=241 steps=1898 evals=15185 cost=16 best=16 T=0.15
+t=271 steps=2144 evals=17153 cost=16 best=16 T=0.15
+t=301 steps=2391 evals=19129 cost=16 best=16 T=0.15
+t=331 steps=2639 evals=21113 cost=17 best=16 T=0.73
+t=361 steps=2887 evals=23097 cost=16 best=16 T=0.26
+t=391 steps=3137 evals=25097 cost=16 best=16 T=0.15
+t=421 steps=3383 evals=27065 cost=16 best=16 T=0.15
+t=451 steps=3631 evals=29049 cost=12 best=12 T=0.15
+t=481 steps=3873 evals=30985 cost=12 best=12 T=0.15
+t=511 steps=4123 evals=32985 cost=12 best=12 T=0.15
+t=541 steps=4370 evals=34961 cost=12 best=12 T=0.15
+t=571 steps=4613 evals=36905 cost=12 best=12 T=0.15
+t=601 steps=4870 evals=38961 cost=12 best=12 T=1.07
