@@ -1,2 +1,22 @@
 group prod psl 7 sl 19 x Z_1, N=1149120, identity 143982, H order 63, rows 18240, threads 1, setup 0.06s
 start cost=28
+t=30 steps=1403 evals=11225 cost=12 best=12 T=0.53
+t=60 steps=2927 evals=23417 cost=11 best=11 T=0.19
+t=90 steps=4471 evals=35769 cost=10 best=10 T=0.15
+t=120 steps=6014 evals=48113 cost=10 best=10 T=0.15
+t=150 steps=7555 evals=60441 cost=10 best=10 T=0.15
+t=180 steps=9082 evals=72657 cost=10 best=10 T=0.15
+t=210 steps=10576 evals=84609 cost=10 best=10 T=0.15
+t=240 steps=12158 evals=97265 cost=10 best=10 T=0.68
+t=270 steps=13729 evals=109833 cost=10 best=10 T=0.24
+t=300 steps=15273 evals=122185 cost=10 best=10 T=0.15
+t=330 steps=16850 evals=134801 cost=8 best=8 T=0.15
+t=360 steps=18455 evals=147641 cost=8 best=8 T=0.15
+t=390 steps=20022 evals=160177 cost=8 best=8 T=0.15
+t=420 steps=21613 evals=172905 cost=8 best=8 T=0.15
+t=450 steps=23204 evals=185633 cost=8 best=8 T=0.15
+t=480 steps=24764 evals=198113 cost=14 best=8 T=0.92
+t=510 steps=26319 evals=210553 cost=10 best=8 T=0.32
+t=540 steps=27914 evals=223313 cost=10 best=8 T=0.15
+t=570 steps=29473 evals=235785 cost=10 best=8 T=0.15
+RESULT d=7 D=10 group=prod psl 7 sl 19 x Z_1 N=1149120 best=8 evals=248657 time=600.0
