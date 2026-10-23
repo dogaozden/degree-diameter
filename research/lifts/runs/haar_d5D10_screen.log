@@ -1,0 +1,14 @@
+RANDSAMPLE d=5 D=10 group=pgl 13 x Z_21 N=45864 samples=300 min=15 p1=18 p10=41 median=147
+RANDSAMPLE d=5 D=10 group=sl 11 x Z_35 N=46200 samples=300 min=17 p1=28 p10=66 median=172
+RANDSAMPLE d=5 D=10 group=psl 11 x Z_70 N=46200 samples=300 min=21 p1=35 p10=71 median=249
+RANDSAMPLE d=5 D=10 group=pgl 11 x Z_35 N=46200 samples=300 min=21 p1=34 p10=64 median=279
+RANDSAMPLE d=5 D=10 group=sl 7 x Z_135 N=45360 samples=300 min=77 p1=97 p10=253 median=1201
+RANDSAMPLE d=5 D=10 group=psl 7 x Z_270 N=45360 samples=300 min=105 p1=166 p10=443 median=2916
+RANDSAMPLE d=5 D=10 group=prod sl 3 psl 13 x Z_2 N=52416 samples=300 min=43 p1=61 p10=106 median=355
+RANDSAMPLE d=5 D=10 group=prod psl 5 sl 5 x Z_6 N=43200 samples=300 min=6 p1=16 p10=47 median=322
+RANDSAMPLE d=5 D=10 group=prod sl 5 sl 5 x Z_4 N=57600 samples=300 min=131 p1=184 p10=366 median=1569
+RANDSAMPLE d=5 D=10 group=prod psl 7 sl 3 x Z_12 N=48384 samples=300 min=38 p1=44 p10=102 median=412
+RANDSAMPLE d=5 D=10 group=psl 13 x Z_42 N=45864 samples=300 min=12 p1=34 p10=56 median=187
+RANDSAMPLE d=5 D=10 group=sl 13 x Z_21 N=45864 samples=300 min=13 p1=22 p10=44 median=144
+RANDSAMPLE d=5 D=10 group=agl1 211 x Z_1 N=44310 samples=300 min=5 p1=10 p10=34 median=421
+RANDSAMPLE d=5 D=10 group=prod psl 5 psl 7 x Z_5 N=50400 samples=300 min=27 p1=38 p10=64 median=176

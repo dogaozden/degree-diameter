@@ -33,7 +33,31 @@ Solution files: `sols/rebuild_*.txt`.
 
 ## 2. Attack on the missing cells
 
-(in progress; filled in from runs/*.tsv as the campaign finishes)
+### 2.1 New record: (3,8) = 258 (table 256)
+
+`sols/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt`: a **Z43-lift of K3,3**. Gauge-fixed voltages:
+
+| base edge | 0–3 | 0–4 | 0–5 | 1–3 | 1–4 | 1–5 | 2–3 | 2–4 | 2–5 |
+|---|---|---|---|---|---|---|---|---|---|
+| voltage in Z43 | 0 | 0 | 0 | 0 | 7 | 26 | 0 | 1 | 16 |
+
+- 258 vertices, 3-regular, bipartite, diameter 8, girth 12.
+- \|Aut\| = 129 (= 3·43), with 4 vertex orbits.
+- Verification (`verify/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt`):
+  - `lift check` VALID;
+  - `verify_lift.py --full`: independent rebuild, right translations are automorphisms, networkx all-pairs diameter
+    8, VALID;
+  - `apsp`: all-pairs diameter 8.
+- Edge-list sha256: 7dd94ad7fe2b999a87a23979badb0a5eab5f4df1daa2abb54bc740a99eb90f77.
+- The table value 256 is Delorme–Gómez–Quisquater's (green). The Moore bound is 510.
+- **Exhaustive limit for this family:** among all Z_N-lifts of K3,3 (N⁴ gauge-fixed assignments each),
+  - N = 43 has diameter-8 solutions;
+  - N = 44, 45, 46, 47, 48 have none (best costs 10, 16, 22, 26, 28).
+  - The other bases and groups for orders 260–300 are in §2.2.
+
+### 2.2 Per-cell campaign results
+
+(filled in from runs/*.tsv as the campaigns finish)
 
 ## 3. Structured families: what was tried and why it stops
 
