@@ -1,0 +1,12 @@
+group prod psl 7 sl 7 x Z_2, N=112896, identity 14196, H order 56, rows 2016, threads 1, setup 0.00s
+start cost=66
+t=30 steps=27820 evals=222561 cost=4 best=4 T=0.53
+t=60 steps=55289 evals=442313 cost=3 best=3 T=0.19
+t=90 steps=82953 evals=663625 cost=3 best=3 T=0.15
+t=120 steps=111045 evals=888361 cost=2 best=2 T=0.15
+t=150 steps=138137 evals=1105097 cost=2 best=2 T=0.15
+t=180 steps=166465 evals=1331721 cost=2 best=2 T=0.15
+t=210 steps=194668 evals=1557345 cost=2 best=2 T=0.15
+t=240 steps=222274 evals=1778193 cost=2 best=2 T=0.15
+t=270 steps=248520 evals=1988161 cost=8 best=2 T=1.40
+RESULT d=8 D=8 group=prod psl 7 sl 7 x Z_2 N=112896 best=2 evals=2214913 time=300.0
