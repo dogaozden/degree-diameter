@@ -1,0 +1,7 @@
+group prod psl 5 psl 7 x Z_25, N=252000, identity 42525, H order 60, rows 4200, threads 1, setup 0.01s
+start cost=35
+t=30 steps=13717 evals=109737 cost=4 best=4 T=0.53
+t=60 steps=27269 evals=218153 cost=4 best=4 T=0.19
+t=90 steps=40993 evals=327945 cost=4 best=4 T=0.15
+t=120 steps=54590 evals=436721 cost=4 best=4 T=0.15
+RESULT d=9 D=8 group=prod psl 5 psl 7 x Z_25 N=252000 best=4 evals=500049 time=137.4
