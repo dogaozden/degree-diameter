@@ -2,3 +2,21 @@ group sl 41 x Z_9, N=619920, identity 14760, H order 63, rows 9840, threads 1, s
 start cost=44
 t=30 steps=2535 evals=20281 cost=4 best=4 T=0.53
 t=60 steps=5069 evals=40553 cost=4 best=4 T=0.19
+t=90 steps=8050 evals=64401 cost=2 best=2 T=0.15
+t=120 steps=10764 evals=86113 cost=2 best=2 T=0.15
+t=150 steps=13395 evals=107161 cost=2 best=2 T=0.15
+t=180 steps=15969 evals=127753 cost=2 best=2 T=0.15
+t=210 steps=18459 evals=147673 cost=2 best=2 T=0.15
+t=240 steps=21026 evals=168209 cost=4 best=2 T=0.81
+t=270 steps=23630 evals=189041 cost=2 best=2 T=0.29
+t=300 steps=26175 evals=209401 cost=2 best=2 T=0.15
+t=330 steps=28921 evals=231369 cost=2 best=2 T=0.15
+t=360 steps=31438 evals=251505 cost=2 best=2 T=0.15
+t=390 steps=33892 evals=271137 cost=6 best=2 T=0.81
+t=420 steps=36410 evals=291281 cost=4 best=2 T=0.29
+t=450 steps=38988 evals=311905 cost=4 best=2 T=0.15
+t=480 steps=41691 evals=333529 cost=2 best=2 T=0.15
+t=510 steps=44324 evals=354593 cost=6 best=2 T=0.15
+t=540 steps=46858 evals=374865 cost=2 best=2 T=0.81
+t=570 steps=49462 evals=395697 cost=2 best=2 T=0.29
+RESULT d=8 D=9 group=sl 41 x Z_9 N=619920 best=2 evals=416449 time=600.0
