@@ -1,0 +1,27 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T23:39:49Z
+file: research/frontier/sols/d15D8_psl_137_7_orb3f0_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ 2c99c6c26); sha256 b904be39a856e7efef2175dde653acf9de37a198781d54915463cae2840132bf
+header: 15 8 psl 137 n 7 N 8999256
+
+################ reference checker: gcc -O3 -o /tmp/hpsl research/structured/tools/haarcheck_psl.c && /tmp/hpsl research/frontier/sols/d15D8_psl_137_7_orb3f0_s1.txt
+from (e,A): reached A 8999256/8999256, B 8999256/8999256 within 8, ecc 8
+from (e,B): reached A 8999256/8999256, B 8999256/8999256 within 8, ecc 8
+VALID d=15 D=8 group=psl 137 x Z_7 N=8999256 vertices=17998512 (distinct generators, 15-regular simple)
+[exit 0; wall 12s; cpu 12s; peak RSS 10 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d15D8_psl_137_7_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d15D8_psl_137_7_orb3f0_s1.txt
+header: 15 8 psl 137 n 7 N 8999256
+d=15 D=8
+group: PSL(2,137) [order 1285608] x Z_7; |G| = 8999256, vertices 2|G| = 17998512
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 15 distinct group elements, all in the group [0.0s]
+neighbour check (full: 8999256 vertices per side): every vertex has 15 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [1.2s]
+BFS from A: ecc=8 reached 17998512 of 17998512 (unreached 0); level sizes [1, 15, 210, 2940, 41052, 557631, 5298054, 8438670, 3659939] [2.5s]
+BFS from B: ecc=8 reached 17998512 of 17998512 (unreached 0); level sizes [1, 15, 210, 2940, 41052, 557631, 5297741, 8438670, 3660252] [3.8s]
+max degree = min degree = 15, no repeated edges (checked above)
+elapsed 3.8s
+RESULT VALID d=15 D=8 eccA=8 eccB=8 n=17998512
+[exit 0; wall 4s; cpu 15s; peak RSS 11 MB]
