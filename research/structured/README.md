@@ -69,6 +69,9 @@ haar_fast plus:
   energy is uncovered/k and targeted moves avoid the orbit being replaced. Override with `ALPHA=<index>|e`, `AR=<r>`,
   `AMU=<u>`, `AHA=<a> AHB=<b>`.
 - `RANDORB=m` (with `ORBIT`): cost statistics of m random symmetric S, plus a histogram of cost/k (screening).
+- `RESTART=1` (with `ORBIT`): a reheat starts from fresh random orbits instead of the best S found so far.
+- `AFROB=j` (with `ORBIT`, matrix groups over GF(p^e)): α = the field automorphism x ↦ x^(p^j) on the entries.
+  This is the "field structure" experiment; it does worse than conjugation (STRUCTURE.md §5).
 - `LEVELS=n` (with `RANDSAMPLE` or `RANDORB`): ball sizes per BFS level for the first n samples.
 - group family `heis q`: 3×3 upper unitriangular matrices over GF(q).
 
@@ -88,6 +91,10 @@ python3 ../frontier/build_haar2.py sol.txt
   re-checked with build_haar2.py and the verdict is appended to the log.
 - `mu_plan.py`: per cell, μ = N e^(−W/N) at the table value and at our best, and the orders where μ reaches given
   levels.
+- `cmp.sh SECS < list` and `cmp_table.py LOG`: head-to-head of random-S annealing (haar_fast) against orbit annealing
+  (haar_sym) on the same groups, seeds and wall-clock budget, as a markdown table.
+- `speed_bench.sh H3 HF`: the measurements behind SPEEDUP.md (RANDSAMPLE identity, BENCH breakdowns, end-to-end
+  trajectory hashes and wall-time ratios, haar_gen3 vs haar_fast evaluations per second).
 
 `runs/` has the logs and build_haar2 outputs of the record runs. New solution files are in `../frontier/sols/`
 (names contain `orb3`).
