@@ -93,6 +93,13 @@ python3 ../frontier/build_haar2.py sol.txt
   levels.
 - `cmp.sh SECS < list` and `cmp_table.py LOG`: head-to-head of random-S annealing (haar_fast) against orbit annealing
   (haar_sym) on the same groups, seeds and wall-clock budget, as a markdown table.
+- `records_table.py`: the STRUCTURE.md §4 table (best VALID result per cell, from `runs/`).
+- `save_sol.sh OUTDIR TAG...`: copy a verified solution and its log into `../frontier/sols` and `runs/`, commit, push.
+- `haarcheck_psl.c`: an independent low-memory checker for PSL(2,p) × Z_n (p an odd prime), written from the
+  definitions like `../frontier/haarcheck_sl.c` (which only handles SL). It agrees with build_haar2.py on 5 valid
+  PSL solutions and rejects corrupted files. Build: `cc -O3 -o haarcheck_psl haarcheck_psl.c`. orbq.sh uses it,
+  and the SL checkers `hcsl`/`hc2` (copies of `../frontier/haarcheck_sl.c` and `haarcheck2.c`, built in tools/),
+  for graphs above 20M vertices, where build_haar2.py needs hours and > 7 GB.
 - `speed_bench.sh H3 HF`: the measurements behind SPEEDUP.md (RANDSAMPLE identity, BENCH breakdowns, end-to-end
   trajectory hashes and wall-time ratios, haar_gen3 vs haar_fast evaluations per second).
 
