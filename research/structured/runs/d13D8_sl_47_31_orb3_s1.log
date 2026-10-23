@@ -1,0 +1,11 @@
+group sl 47 x Z_31, N=3217056, identity 67022, H order 62, rows 51888, threads 1, setup 0.25s
+wide rows: HW order 248, rows 12972, setup 0.41s
+alpha: conj by mat(44,18,28,4) (index 98023), z -> 5 z on Z_31
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 47 (+e); mu = 17.00, mu/k = 5.67, fixed-point misses ~ 0.84
+start cost=26
+RESULT d=13 D=8 group=sl 47 x Z_31 N=3217056 best=0 evals=1545 time=10.0 orbit k=3 m=4 f=1 fix=47
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outH/d13D8_sl_47_31_orb3_s1.txt
+n = 6434112 edges = 41821728 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = 29fff876e247e75440037e9c7b4c0434aa56dc6ec4752aed44cf1b3e3a71ab82
+VALID d=13 D=8 group=sl 47 x Z_31 N=3217056 vertices=6434112

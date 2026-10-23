@@ -1,0 +1,10 @@
+group sl 149 x Z_49, N=162082200, identity 1080548, H order 50, rows 3241644, threads 1, setup 4.93s
+wide rows: HW order 245, rows 661560, setup 9.12s
+alpha: conj by mat(75,60,126,73) (index 1673992), z -> 18 z on Z_49
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 149 (+e); mu = 7.11, mu/k = 2.37, fixed-point misses ~ 1.06
+start cost=18
+RESULT d=16 D=9 group=sl 149 x Z_49 N=162082200 best=0 evals=9 time=8.6 orbit k=3 m=5 f=1 fix=149
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outM/d16D9_sl_149_49_orb3_s1.txt
+VALID d=16 D=9 group=sl 149 x Z_49 N=162082200 vertices=324164400 (distinct generators, 16-regular simple)
+VALID d=16 D=9 vertices=324164400 eccA=9 eccB=9

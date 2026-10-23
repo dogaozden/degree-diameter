@@ -1,0 +1,25 @@
+group psl 113 x Z_79, N=56989968, identity 499912, H order 57, rows 999824, threads 1, setup 2.19s
+wide rows: HW order 237, rows 240464, setup 4.13s
+alpha: conj by mat(14,59,6,98) (index 178998), z -> 23 z on Z_79
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 56 (+e); mu = 10.51, mu/k = 3.50, fixed-point misses ~ 0.65
+start cost=60
+t=32 steps=11 evals=89 cost=9 best=9 T=0.49
+t=62 steps=21 evals=169 cost=6 best=6 T=0.17
+t=93 steps=32 evals=257 cost=6 best=6 T=0.15
+t=126 steps=43 evals=345 cost=2 best=2 T=0.15
+t=157 steps=54 evals=433 cost=2 best=2 T=0.15
+t=189 steps=65 evals=521 cost=2 best=2 T=0.15
+t=221 steps=76 evals=609 cost=2 best=2 T=0.15
+t=253 steps=86 evals=689 cost=2 best=2 T=0.15
+t=283 steps=96 evals=769 cost=2 best=2 T=0.15
+t=315 steps=106 evals=849 cost=2 best=2 T=0.15
+t=346 steps=117 evals=937 cost=2 best=2 T=0.15
+t=379 steps=128 evals=1025 cost=2 best=2 T=0.15
+t=410 steps=140 evals=1121 cost=2 best=2 T=0.15
+t=441 steps=151 evals=1209 cost=2 best=2 T=0.15
+t=472 steps=162 evals=1297 cost=2 best=2 T=0.15
+t=504 steps=173 evals=1385 cost=2 best=2 T=0.15
+RESULT d=14 D=9 group=psl 113 x Z_79 N=56989968 best=0 evals=1449 time=526.4 orbit k=3 m=4 f=2 fix=56
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outK/d14D9_psl_113_79_orb3_s1.txt
+ecc from A = 9 unreached 0

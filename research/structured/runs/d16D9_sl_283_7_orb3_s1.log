@@ -1,0 +1,11 @@
+group sl 283 x Z_7, N=158654328, identity 558642, H order 47, rows 3375624, threads 1, setup 32.19s
+wide rows: HW order 142, rows 1117284, setup 50.80s
+alpha: conj by mat(262,135,93,22) (index 21021333), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 281 (+e); mu = 4.83, mu/k = 1.61, fixed-point misses ~ 1.76
+start cost=2
+t=33 steps=2 evals=17 cost=2 best=2 T=0.49
+RESULT d=16 D=9 group=sl 283 x Z_7 N=158654328 best=0 evals=25 time=40.7 orbit k=3 m=5 f=1 fix=281
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outM/d16D9_sl_283_7_orb3_s1.txt
+VALID d=16 D=9 group=sl 283 x Z_7 N=158654328 vertices=317308656 (distinct generators, 16-regular simple)
+VALID d=16 D=9 vertices=317308656 eccA=9 eccB=9

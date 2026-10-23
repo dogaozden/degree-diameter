@@ -1,0 +1,22 @@
+group sl 83 x Z_7, N=4001928, identity 47642, H order 42, rows 95284, threads 1, setup 0.14s
+wide rows: HW order 166, rows 24108, setup 0.30s
+alpha: conj by mat(13,32,28,69) (index 92158), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 83 (+e); mu = 22.23, mu/k = 7.41, fixed-point misses ~ 2.98
+start cost=66
+t=30 steps=263 evals=2105 cost=6 best=6 T=0.53
+t=60 steps=555 evals=4441 cost=8 best=6 T=0.19
+t=90 steps=819 evals=6553 cost=6 best=6 T=0.15
+t=120 steps=1068 evals=8545 cost=6 best=6 T=0.15
+t=150 steps=1339 evals=10713 cost=2 best=2 T=0.15
+t=180 steps=1613 evals=12905 cost=2 best=2 T=0.15
+t=210 steps=1901 evals=15209 cost=2 best=2 T=0.15
+t=241 steps=2185 evals=17481 cost=2 best=2 T=0.15
+t=271 steps=2461 evals=19689 cost=2 best=2 T=0.15
+t=301 steps=2725 evals=21801 cost=8 best=2 T=1.18
+t=331 steps=2977 evals=23817 cost=10 best=2 T=0.42
+RESULT d=10 D=9 group=sl 83 x Z_7 N=4001928 best=0 evals=24609 time=342.1 orbit k=3 m=3 f=1 fix=83
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outG/d10D9_sl_83_7_orb3_s1.txt
+n = 8003856 edges = 40019280 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = e2e06fdb0bf7847ff20273c4e568423a56ea857b0410ea554277e5f6b0ba8645
+VALID d=10 D=9 group=sl 83 x Z_7 N=4001928 vertices=8003856
