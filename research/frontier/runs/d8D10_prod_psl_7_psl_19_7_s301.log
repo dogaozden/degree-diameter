@@ -1,22 +1,2 @@
-group prod psl 7 psl 19 x Z_7, N=4021920, identity 503937, H order 63, rows 63840, threads 1, setup 0.14s
+group prod psl 7 psl 19 x Z_7, N=4021920, identity 503937, H order 63, rows 63840, threads 1, setup 0.16s
 start cost=58
-t=30 steps=439 evals=3513 cost=19 best=16 T=0.53
-t=60 steps=835 evals=6681 cost=18 best=16 T=0.19
-t=90 steps=1252 evals=10017 cost=17 best=16 T=0.15
-t=120 steps=1689 evals=13513 cost=14 best=14 T=0.15
-t=150 steps=2124 evals=16993 cost=14 best=14 T=0.15
-t=180 steps=2556 evals=20449 cost=14 best=14 T=0.15
-t=210 steps=2993 evals=23945 cost=13 best=13 T=0.15
-t=240 steps=3418 evals=27345 cost=13 best=13 T=0.15
-t=270 steps=3825 evals=30601 cost=13 best=13 T=0.15
-t=300 steps=4234 evals=33873 cost=13 best=13 T=0.15
-t=330 steps=4656 evals=37249 cost=13 best=13 T=0.15
-t=361 steps=5119 evals=40953 cost=16 best=13 T=0.67
-t=391 steps=5570 evals=44561 cost=14 best=13 T=0.24
-t=421 steps=6021 evals=48169 cost=14 best=13 T=0.15
-t=451 steps=6455 evals=51641 cost=14 best=13 T=0.15
-t=481 steps=6890 evals=55121 cost=14 best=13 T=0.15
-t=511 steps=7336 evals=58689 cost=13 best=13 T=0.67
-t=541 steps=7795 evals=62361 cost=13 best=13 T=0.24
-t=571 steps=8228 evals=65825 cost=13 best=13 T=0.15
-RESULT d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 best=13 evals=69097 time=599.3
