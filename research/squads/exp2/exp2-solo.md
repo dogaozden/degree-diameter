@@ -154,8 +154,11 @@ The final graphs were then checked from scratch by apsp.c (all pairs, no symmetr
 
 **Remarks.**
 - For more points the conditions of different gadgets compete for the same images of φ. The clustered layout went to
-  m = 12 at q = 5 in seconds and m = 16 once p_1 itself was excluded. m = 16 including p_1 stalled at score 2, and
-  m = 30 at about 1,200 (stopped).
+  m = 12 at q = 5 in seconds and m = 16 once p_1 itself was excluded. Stalled and stopped:
+  - m = 16 including p_1, at score 2;
+  - m = 20, at score 4 after 27 min;
+  - m = 30, at about 1,200;
+  - q = 7 with m = 12, at 2,151 after 30 min.
   - Exact covers for each gadget, plus a sparse network of extra edges between the gadget vertices (they have three
     spare slots), should allow far-apart gadgets. Not tried; it adds only 2/n per point.
 - **A route to many more vertices when H(q) is self-dual (q = 3^e, e.g. (11,7) with q = 9; not built).**
@@ -337,4 +340,15 @@ make up for it.
 
 ## 6. Budget and time
 
-(filled in at the end)
+- **Start** 16:56:02 UTC; **work stopped** 19:16:51 UTC, so **wall time 2 h 21 min** (of the 4 h allowed).
+- **budget_units = 2.86** (of 12), all Opus, no subagents (`research/squads/usage/exp2-solo.jsonl`).
+- Rough timeline:
+  - 16:56–17:30: reading, Haar baselines, rebuilding the table's 3-copy construction (q = 5, 7, 9).
+  - 17:30–18:00: negative attempts (gadgets with φ fixed, lifts, copy designs, transpose trick).
+  - 18:00–18:07: the observation that a deleted cross edge breaks only pairs with an endpoint, then the unhooking
+    construction; (7,7) beaten at 18:07.
+  - 18:13: (9,7) beaten.
+  - 18:34: exact covers, so φ explicit for every q.
+  - 18:48: (11,7) beaten.
+  - 18:20–19:16: more unhooked points for (7,7) and (9,7).
+- Machine: 4 cores, mostly all busy (Haar queues until 18:15, then the hexagon searches and the all-pairs checks).
