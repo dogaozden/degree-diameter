@@ -182,3 +182,26 @@ GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder)
   (a nonsingular non-backtracking 4-walk, or a 2-path with a passing pattern; `rcl/pvctrl2.c`). Certified
   controllers need no fitting; checked on an order-64 example (apsp VALID). Running for k = 2, 3, 4 at 66–96 per
   side with the chart of §4.2 (94 good words, 10 good patterns).
+
+### 4.6 More controller families (negative so far)
+
+- Bipartite Cayley controllers Cay(Γ, {a^±1, b^±1}) with a, b outside an index-2 subgroup Γ₀: need all words of
+  length ≤ 4 to cover Γ₀ and one reduced relation of length 4. Exhaustive over all groups of orders 120–190 and
+  all generator pairs (`rcl/ctrlsearch2.c`, `rcl/cay_summary.txt`): no hit at any order, including 128 (64 per
+  side, where Haar controllers exist). Earlier, with the stronger exact-NB-4 condition, the largest was 36 per side.
+- Constraint view of the 66-per-side controllers: per controller there are about 270–300 sets of words of which
+  one must be nonsingular (pairs at distance 4 or 0 with at most 4 candidate words) and about 60 distance-2 pairs
+  that need a nonsingular word or a passing pattern (`rcl/critical.py`, `rcl/chartcrit.c`). Best charts so far
+  violate 132 and 176 weighted constraints. The order-64 Haar controller has only 98 such sets.
+- Near-miss pipeline: chart-aware controller search for the chart of §4.2 (objective = uncertified same-side pairs),
+  then the exact fitter on the best controller (`rcl/near_miss.sh`). Running for k = 2 (C₃₃) and k = 3 (C₂₂).
+
+### 4.7 A lead for other cells (not pursued here)
+
+The lift works for any degree ρq with ρ even (ρ labels in inverse pairs) and fiber F_q⁴, giving 2·(controller
+side)·q⁴ vertices at diameter 5. Over F₃ the closed-walk obstruction of §4.1 disappears by counting (backtracking
+closed walks can reach up to 52 ≥ 40 projective points), so for (12,5) = 4·3 any bipartite (4,5) controller might
+do: the order-64 Haar controller would give 10,368 and the 162-vertex (4,5) record 13,122, against the table's
+8,200. With odd ρ one needs involution labels (A_t² = I, A_t b_t = b_t); then (15,5) = 5·3 and (9,5) = 3·3 come into
+range of the (5,5) and (3,5) records (2·177·81 = 28,674 vs 20,496; 56·81 = 4,536 vs our 2,662). None of this is
+built or checked; a chart fit for (12,5) on the order-64 controller is running at low priority.
