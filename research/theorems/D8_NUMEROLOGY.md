@@ -160,8 +160,9 @@ against DGQ's 30. The gap grows with q, so DGQ used a structure valid for all q.
   incidence graph, after removing a 1-factor when q is even): two extra "states" per element plus one per out-arc.
   Where the table uses the same q at D = 7 and D = 8 the ratio is exactly 7, 8, 9 = 1 + Δ/2 at Δ = 12, 14, 16. But
   (13,8)/(13,7) = 5, not 1 + ⌊13/2⌋ = 7, so the j = 1 cell does not follow the pattern. A degree-preserving operation
-  "diameter D → D + 1 with |V| + |E| vertices" cannot exist in general (applied to H(q) itself it would give (q+1, 7)
-  graphs at half the Moore bound); the line-digraph test above fails.
+  "diameter D → D + 1 with |V| + |E| vertices" applied to H(q) itself would give (q+1, 7) graphs at about half the
+  Moore bound (196,080 vertices at (8,7), where the table has 40,586), so if such an operation exists it must use
+  something the polygon cover has and H(q) lacks. The line-digraph test above (the obvious candidate) fails.
 
 - (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction that adds 4q³ − 2
   vertices to H(q) at the same degree. Not reproduced.
@@ -175,6 +176,8 @@ against DGQ's 30. The gap grows with q, so DGQ used a structure valid for all q.
 |---|---|---|
 | random voltage lifts, 12 variants (free, holo, polygon-cover, parallel 1-/2-factors, tripled flags, doubled hops, Z_5 × Z_k) | models.py, models5k.py, models_j1.py | §2.3: far below DGQ for q ≥ 4 |
 | zero-holonomy designs using only guaranteed walks | gwanneal.c (annealing on the guaranteed-walk cost) | j = 1 stuck at M = q + 1 at q = 3. Weak evidence: for j = 2 the same annealer does not even find the known M = 10 constant-label solution at q = 3 (cost 43), so the landscape is rugged |
+| "V + E" candidate: line digraph of an Eulerian orientation of H(q) plus two tail copies of every element, × Z_5 (exactly DGQ's vertex count for odd q, max degree q+3) | ve_test.py | q = 3: diameter 11 |
+| colour-voltage lift: properly (q+3)-edge-colour the Z_5 polygon cover X and lift X by Z_K with voltage = colour; K = ⌊Δ/2⌋+1 = |Z_Δ/±| would give DGQ's count | colourlift_test.py | q = 3: K = 4 (DGQ's count) leaves 26–44 unreached pairs, K = 6 about 4,400 (diameter 9); q = 5, K = 5 (DGQ's count): 248,798 unreached, about as bad as random |
 | line digraph of an Eulerian orientation (diameter +1 for digraphs) | linegraph_test.py, ulg_gh.py | for the Z_5 cover of H(3) (|E| = 10,920 vertices, degree 6) and for H(3), H(5) themselves the undirected line digraph of a random Eulerian orientation has diameter 10, not 8 |
 | Delorme doubling of H(q) with diameter relaxed to 8 | §2 of the analysis | the degree conditions keep A_0 of size O(q^4): gains lower-order terms only |
 | Z_5 polygon cover of a diameter-7 base | count | the base would need 86% of the D = 7 Moore bound at q = 7 |
