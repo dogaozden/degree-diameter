@@ -524,6 +524,23 @@ Going through the table:
 4. SL(2,8)²×Z14 at (13,8): its random-symmetric minimum is twice SL(2,7)²×Z31's, and its anneals stall at 3
    uncovered orbits (§5.2).
 
+## 6b. Next steps (for later sessions)
+
+1. **Order 6 at the big even-D cells**, where compute is the limit. (13,10) on SL(2,16)²×Z21 (§5.3) screens better
+   than the group that solved (13,8) in 10⁴ evaluations. The same swap construction gives candidates at (14,10)
+   (SL(2,16)²×Z42, Δ = 6+6+2 with OSUB=2).
+2. **(13,8) next rungs:** PSL(2,13)²×Z3 (3,577,392; best 8 in 30 min) and SL(2,8)²×Z14 (3,556,224; best 18). Try
+   more seeds, and OSTAB=1 (the energy counts uncovered orbits; it matters when the last uncovered elements have
+   nontrivial stabilisers).
+3. **(15,8) with mixed orbits** (6+6+3) on SL(2,8)²×Z37, §5.2b, if this session's seeds did not finish it.
+4. Two unexplained patterns worth a look:
+   - PSL(2,11)×Z24's random sets lose far more words than Poisson (ε ≈ 2.7) while its symmetric sets do not (§3.1);
+   - free elements of Anti(α³) are missed 1.2–2.8× more often at even D (§5.1).
+
+No haiku-squad round was run in this session. The work was analysis plus long, CPU-bound anneals on the shared
+4-core box, where more hands add no compute, and the candidate lists came out of the rule itself. Each was a handful
+of groups.
+
 ## 7. Files (`research/theorems/order2/`)
 
 - `hgroups.py`: SL/PSL(2,q) (q a prime power, haar_gen3's field encoding) × Z_n and products, as numpy permutation
@@ -544,7 +561,10 @@ Going through the table:
   - BESTOUT: the best S of an unsolved run.
   Build: `gcc -O3 -march=native -fopenmp -o haar_order2 haar_order2.c -lm`.
 - `classes.py`: summary of CLASSES output → `out/classes/summary.txt`.
-- `check_np.py`: third independent diameter check (own group code).
+- `check_np.py`: third independent diameter check (own group code, numpy, up to about 10⁷ vertices).
+- `check_lowmem.c`: fourth, low-memory checker in C (own GF(p^k) and SL(2,q) arithmetic, products, Z_n; bitset BFS
+  from (e,A) and (e,B), N/2 bytes). Validated VALID on the (13,8) record and INVALID (ecc 9) on a near miss. Build:
+  `gcc -O3 -march=native -fopenmp -o check_lowmem check_lowmem.c`.
 - `uncovered.py`: lists the uncovered α-orbits of a near-solution (swap-conjugation groups).
 - `runs/`: haar logs of this session (anneals `an138_*`, random symmetric screens `ro*`).
 - `sols/`: the two (6,8) records (copied from the table-squad branch) and the order-6 (13,8) solutions.
