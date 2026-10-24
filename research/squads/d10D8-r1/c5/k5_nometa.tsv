@@ -1,0 +1,335 @@
+588336	prod:agl1*agl1	prod agl1 103 agl1 8 1
+588336	prod:agl1*agl1	prod agl1 8 agl1 103 1
+588588	prod:agl1*heis	prod agl1 13 heis 7 11
+588588	prod:heis*agl1	prod heis 7 agl1 13 11
+588600	prod:agl1*agl1	prod agl1 109 agl1 2 25
+588600	prod:agl1*agl1	prod agl1 2 agl1 109 25
+588672	prod3:agl1*agl1*agl1	prod prod agl1 2 agl1 8 agl1 73 1
+588672	prod3:agl1*agl1*agl1	prod prod agl1 73 agl1 2 agl1 8 1
+588672	prod3:agl1*agl1*agl1	prod prod agl1 8 agl1 2 agl1 73 1
+588924	prod:agl1*agl1	prod agl1 19 agl1 7 41
+588924	prod:agl1*agl1	prod agl1 7 agl1 19 41
+589248	prod3:agl1*agl1*heis	prod prod agl1 32 agl1 2 heis 3 11
+589248	prod3:agl1*heis*agl1	prod prod agl1 2 heis 3 agl1 32 11
+589248	prod3:heis*agl1*agl1	prod prod heis 3 agl1 2 agl1 32 11
+589248	prod:agl1*agl1	prod agl1 3 agl1 32 99
+589248	prod:agl1*agl1	prod agl1 32 agl1 3 99
+589248	prod:agl1*heis	prod agl1 32 heis 3 22
+589248	prod:heis*agl1	prod heis 3 agl1 32 22
+589560	prod3:agl1*agl1*heis	prod prod agl1 3 agl1 5 heis 17 1
+589560	prod3:agl1*agl1*heis	prod prod agl1 5 agl1 3 heis 17 1
+589560	prod3:agl1*pgl*heis	prod prod agl1 2 pgl 4 heis 17 1
+589560	prod3:agl1*psl*heis	prod prod agl1 2 psl 5 heis 17 1
+589560	prod3:agl1*sl*heis	prod prod agl1 2 sl 4 heis 17 1
+589560	prod3:heis*agl1*agl1	prod prod heis 17 agl1 3 agl1 5 1
+589560	prod3:heis*agl1*pgl	prod prod heis 17 agl1 2 pgl 4 1
+589560	prod3:heis*agl1*psl	prod prod heis 17 agl1 2 psl 5 1
+589560	prod3:heis*agl1*sl	prod prod heis 17 agl1 2 sl 4 1
+589560	prod3:pgl*agl1*heis	prod prod pgl 4 agl1 2 heis 17 1
+589560	prod3:psl*agl1*heis	prod prod psl 5 agl1 2 heis 17 1
+589560	prod3:sl*agl1*heis	prod prod sl 4 agl1 2 heis 17 1
+589560	prod:heis*pgl	prod heis 17 pgl 5 1
+589560	prod:heis*sl	prod heis 17 sl 5 1
+589560	prod:pgl*heis	prod pgl 5 heis 17 1
+589560	prod:sl*heis	prod sl 5 heis 17 1
+589680	prod3:agl1*agl1*agl1	prod prod agl1 27 agl1 5 agl1 7 1
+589680	prod3:agl1*agl1*agl1	prod prod agl1 5 agl1 7 agl1 27 1
+589680	prod3:agl1*agl1*agl1	prod prod agl1 7 agl1 5 agl1 27 1
+589680	prod3:agl1*heis*psl	prod prod agl1 5 heis 3 psl 13 1
+589680	prod3:heis*agl1*psl	prod prod heis 3 agl1 5 psl 13 1
+589680	prod3:psl*agl1*heis	prod prod psl 13 agl1 5 heis 3 1
+589680	prod:pgl*psl	prod pgl 4 psl 27 1
+589680	prod:psl*pgl	prod psl 27 pgl 4 1
+589680	prod:psl*psl	prod psl 27 psl 5 1
+589680	prod:psl*psl	prod psl 5 psl 27 1
+589680	prod:psl*sl	prod psl 27 sl 4 1
+589680	prod:sl*psl	prod sl 4 psl 27 1
+589824	prod3:agl1*agl1*heis	prod prod agl1 2 agl1 9 heis 16 1
+589824	prod3:agl1*agl1*heis	prod prod agl1 4 agl1 4 heis 16 1
+589824	prod3:agl1*agl1*heis	prod prod agl1 9 agl1 2 heis 16 1
+589824	prod3:agl1*pgl*heis	prod prod agl1 3 pgl 3 heis 16 1
+589824	prod3:agl1*psl*heis	prod prod agl1 4 psl 3 heis 16 1
+589824	prod3:agl1*sl*heis	prod prod agl1 3 sl 3 heis 16 1
+589824	prod3:heis*agl1*agl1	prod prod heis 16 agl1 2 agl1 9 1
+589824	prod3:heis*agl1*agl1	prod prod heis 16 agl1 4 agl1 4 1
+589824	prod3:heis*agl1*pgl	prod prod heis 16 agl1 3 pgl 3 1
+589824	prod3:heis*agl1*psl	prod prod heis 16 agl1 4 psl 3 1
+589824	prod3:heis*agl1*sl	prod prod heis 16 agl1 3 sl 3 1
+589824	prod3:heis*psl*agl1	prod prod heis 16 psl 3 agl1 4 1
+589824	prod3:heis*psl*psl	prod prod heis 16 psl 3 psl 3 1
+589824	prod3:pgl*agl1*heis	prod prod pgl 3 agl1 3 heis 16 1
+589824	prod3:psl*agl1*heis	prod prod psl 3 agl1 4 heis 16 1
+589824	prod3:psl*psl*heis	prod prod psl 3 psl 3 heis 16 1
+589824	prod3:sl*agl1*heis	prod prod sl 3 agl1 3 heis 16 1
+590400	prod3:agl1*agl1*agl1	prod prod agl1 2 agl1 3 agl1 25 82
+590400	prod3:agl1*agl1*agl1	prod prod agl1 2 agl1 4 agl1 25 41
+590400	prod3:agl1*agl1*agl1	prod prod agl1 25 agl1 2 agl1 3 82
+590400	prod3:agl1*agl1*agl1	prod prod agl1 25 agl1 2 agl1 4 41
+590400	prod3:agl1*agl1*agl1	prod prod agl1 3 agl1 2 agl1 25 82
+590400	prod3:agl1*agl1*agl1	prod prod agl1 4 agl1 2 agl1 25 41
+590400	prod3:agl1*agl1*pgl	prod prod agl1 3 agl1 5 pgl 4 82
+590400	prod3:agl1*agl1*pgl	prod prod agl1 3 agl1 5 pgl 5 41
+590400	prod3:agl1*agl1*pgl	prod prod agl1 4 agl1 5 pgl 4 41
+590400	prod3:agl1*agl1*pgl	prod prod agl1 41 agl1 3 pgl 4 1
+590400	prod3:agl1*agl1*pgl	prod prod agl1 5 agl1 3 pgl 4 82
+590400	prod3:agl1*agl1*pgl	prod prod agl1 5 agl1 3 pgl 5 41
+590400	prod3:agl1*agl1*pgl	prod prod agl1 5 agl1 4 pgl 4 41
+590400	prod3:agl1*agl1*psl	prod prod agl1 2 agl1 5 psl 9 41
+590400	prod3:agl1*agl1*psl	prod prod agl1 25 agl1 2 psl 3 41
+590400	prod3:agl1*agl1*psl	prod prod agl1 3 agl1 5 psl 5 82
+590400	prod3:agl1*agl1*psl	prod prod agl1 4 agl1 5 psl 5 41
+590400	prod3:agl1*agl1*psl	prod prod agl1 41 agl1 3 psl 5 1
+590400	prod3:agl1*agl1*psl	prod prod agl1 5 agl1 2 psl 9 41
+590400	prod3:agl1*agl1*psl	prod prod agl1 5 agl1 3 psl 5 82
+590400	prod3:agl1*agl1*psl	prod prod agl1 5 agl1 4 psl 5 41
+590400	prod3:agl1*agl1*sl	prod prod agl1 3 agl1 5 sl 4 82
+590400	prod3:agl1*agl1*sl	prod prod agl1 3 agl1 5 sl 5 41
+590400	prod3:agl1*agl1*sl	prod prod agl1 4 agl1 5 sl 4 41
+590400	prod3:agl1*agl1*sl	prod prod agl1 41 agl1 3 sl 4 1
+590400	prod3:agl1*agl1*sl	prod prod agl1 5 agl1 3 sl 4 82
+590400	prod3:agl1*agl1*sl	prod prod agl1 5 agl1 3 sl 5 41
+590400	prod3:agl1*agl1*sl	prod prod agl1 5 agl1 4 sl 4 41
+590400	prod3:agl1*pgl*agl1	prod prod agl1 3 pgl 4 agl1 41 1
+590400	prod3:agl1*pgl*pgl	prod prod agl1 2 pgl 4 pgl 4 82
+590400	prod3:agl1*pgl*pgl	prod prod agl1 2 pgl 4 pgl 5 41
+590400	prod3:agl1*pgl*psl	prod prod agl1 2 pgl 4 psl 5 82
+590400	prod3:agl1*pgl*sl	prod prod agl1 2 pgl 4 sl 4 82
+590400	prod3:agl1*pgl*sl	prod prod agl1 2 pgl 4 sl 5 41
+590400	prod3:agl1*psl*agl1	prod prod agl1 2 psl 3 agl1 25 41
+590400	prod3:agl1*psl*agl1	prod prod agl1 3 psl 5 agl1 41 1
+590400	prod3:agl1*psl*pgl	prod prod agl1 2 psl 5 pgl 4 82
+590400	prod3:agl1*psl*pgl	prod prod agl1 2 psl 5 pgl 5 41
+590400	prod3:agl1*psl*pgl	prod prod agl1 5 psl 3 pgl 4 41
+590400	prod3:agl1*psl*psl	prod prod agl1 2 psl 5 psl 5 82
+590400	prod3:agl1*psl*psl	prod prod agl1 5 psl 3 psl 5 41
+590400	prod3:agl1*psl*sl	prod prod agl1 2 psl 5 sl 4 82
+590400	prod3:agl1*psl*sl	prod prod agl1 2 psl 5 sl 5 41
+590400	prod3:agl1*psl*sl	prod prod agl1 5 psl 3 sl 4 41
+590400	prod3:agl1*sl*agl1	prod prod agl1 3 sl 4 agl1 41 1
+590400	prod3:agl1*sl*pgl	prod prod agl1 2 sl 4 pgl 4 82
+590400	prod3:agl1*sl*pgl	prod prod agl1 2 sl 4 pgl 5 41
+590400	prod3:agl1*sl*psl	prod prod agl1 2 sl 4 psl 5 82
+590400	prod3:agl1*sl*sl	prod prod agl1 2 sl 4 sl 4 82
+590400	prod3:agl1*sl*sl	prod prod agl1 2 sl 4 sl 5 41
+590400	prod3:pgl*agl1*agl1	prod prod pgl 4 agl1 3 agl1 41 1
+590400	prod3:pgl*agl1*agl1	prod prod pgl 4 agl1 3 agl1 5 82
+590400	prod3:pgl*agl1*agl1	prod prod pgl 4 agl1 4 agl1 5 41
+590400	prod3:pgl*agl1*agl1	prod prod pgl 5 agl1 3 agl1 5 41
+590400	prod3:pgl*agl1*pgl	prod prod pgl 4 agl1 2 pgl 4 82
+590400	prod3:pgl*agl1*pgl	prod prod pgl 4 agl1 2 pgl 5 41
+590400	prod3:pgl*agl1*pgl	prod prod pgl 5 agl1 2 pgl 4 41
+590400	prod3:pgl*agl1*psl	prod prod pgl 4 agl1 2 psl 5 82
+590400	prod3:pgl*agl1*psl	prod prod pgl 5 agl1 2 psl 5 41
+590400	prod3:pgl*agl1*sl	prod prod pgl 4 agl1 2 sl 4 82
+590400	prod3:pgl*agl1*sl	prod prod pgl 4 agl1 2 sl 5 41
+590400	prod3:pgl*agl1*sl	prod prod pgl 5 agl1 2 sl 4 41
+590400	prod3:pgl*psl*agl1	prod prod pgl 4 psl 3 agl1 5 41
+590400	prod3:psl*agl1*agl1	prod prod psl 3 agl1 2 agl1 25 41
+590400	prod3:psl*agl1*agl1	prod prod psl 5 agl1 3 agl1 41 1
+590400	prod3:psl*agl1*agl1	prod prod psl 5 agl1 3 agl1 5 82
+590400	prod3:psl*agl1*agl1	prod prod psl 5 agl1 4 agl1 5 41
+590400	prod3:psl*agl1*agl1	prod prod psl 9 agl1 2 agl1 5 41
+590400	prod3:psl*agl1*pgl	prod prod psl 3 agl1 5 pgl 4 41
+590400	prod3:psl*agl1*pgl	prod prod psl 5 agl1 2 pgl 4 82
+590400	prod3:psl*agl1*pgl	prod prod psl 5 agl1 2 pgl 5 41
+590400	prod3:psl*agl1*psl	prod prod psl 3 agl1 5 psl 5 41
+590400	prod3:psl*agl1*psl	prod prod psl 5 agl1 2 psl 5 82
+590400	prod3:psl*agl1*sl	prod prod psl 3 agl1 5 sl 4 41
+590400	prod3:psl*agl1*sl	prod prod psl 5 agl1 2 sl 4 82
+590400	prod3:psl*agl1*sl	prod prod psl 5 agl1 2 sl 5 41
+590400	prod3:psl*psl*agl1	prod prod psl 5 psl 3 agl1 5 41
+590400	prod3:sl*agl1*agl1	prod prod sl 4 agl1 3 agl1 41 1
+590400	prod3:sl*agl1*agl1	prod prod sl 4 agl1 3 agl1 5 82
+590400	prod3:sl*agl1*agl1	prod prod sl 4 agl1 4 agl1 5 41
+590400	prod3:sl*agl1*agl1	prod prod sl 5 agl1 3 agl1 5 41
+590400	prod3:sl*agl1*pgl	prod prod sl 4 agl1 2 pgl 4 82
+590400	prod3:sl*agl1*pgl	prod prod sl 4 agl1 2 pgl 5 41
+590400	prod3:sl*agl1*pgl	prod prod sl 5 agl1 2 pgl 4 41
+590400	prod3:sl*agl1*psl	prod prod sl 4 agl1 2 psl 5 82
+590400	prod3:sl*agl1*psl	prod prod sl 5 agl1 2 psl 5 41
+590400	prod3:sl*agl1*sl	prod prod sl 4 agl1 2 sl 4 82
+590400	prod3:sl*agl1*sl	prod prod sl 4 agl1 2 sl 5 41
+590400	prod3:sl*agl1*sl	prod prod sl 5 agl1 2 sl 4 41
+590400	prod3:sl*psl*agl1	prod prod sl 4 psl 3 agl1 5 41
+590400	prod:agl1*agl1	prod agl1 25 agl1 4 82
+590400	prod:agl1*agl1	prod agl1 4 agl1 25 82
+590400	prod:agl1*pgl	prod agl1 16 pgl 4 41
+590400	prod:agl1*pgl	prod agl1 25 pgl 3 41
+590400	prod:agl1*pgl	prod agl1 5 pgl 9 41
+590400	prod:agl1*psl	prod agl1 16 psl 5 41
+590400	prod:agl1*psl	prod agl1 25 psl 3 82
+590400	prod:agl1*psl	prod agl1 41 psl 9 1
+590400	prod:agl1*psl	prod agl1 5 psl 9 82
+590400	prod:agl1*sl	prod agl1 16 sl 4 41
+590400	prod:agl1*sl	prod agl1 25 sl 3 41
+590400	prod:agl1*sl	prod agl1 5 sl 9 41
+590400	prod:pgl*agl1	prod pgl 3 agl1 25 41
+590400	prod:pgl*agl1	prod pgl 4 agl1 16 41
+590400	prod:pgl*agl1	prod pgl 9 agl1 5 41
+590400	prod:pgl*pgl	prod pgl 4 pgl 5 82
+590400	prod:pgl*pgl	prod pgl 5 pgl 4 82
+590400	prod:pgl*pgl	prod pgl 5 pgl 5 41
+590400	prod:pgl*psl	prod pgl 5 psl 5 82
+590400	prod:pgl*sl	prod pgl 4 sl 5 82
+590400	prod:pgl*sl	prod pgl 5 sl 4 82
+590400	prod:pgl*sl	prod pgl 5 sl 5 41
+590400	prod:psl*agl1	prod psl 3 agl1 25 82
+590400	prod:psl*agl1	prod psl 5 agl1 16 41
+590400	prod:psl*agl1	prod psl 9 agl1 41 1
+590400	prod:psl*agl1	prod psl 9 agl1 5 82
+590400	prod:psl*pgl	prod psl 5 pgl 5 82
+590400	prod:psl*sl	prod psl 5 sl 5 82
+590400	prod:sl*agl1	prod sl 3 agl1 25 41
+590400	prod:sl*agl1	prod sl 4 agl1 16 41
+590400	prod:sl*agl1	prod sl 9 agl1 5 41
+590400	prod:sl*pgl	prod sl 4 pgl 5 82
+590400	prod:sl*pgl	prod sl 5 pgl 4 82
+590400	prod:sl*pgl	prod sl 5 pgl 5 41
+590400	prod:sl*psl	prod sl 5 psl 5 82
+590400	prod:sl*sl	prod sl 4 sl 5 82
+590400	prod:sl*sl	prod sl 5 sl 4 82
+590400	prod:sl*sl	prod sl 5 sl 5 41
+590646	prod:agl1*heis	prod agl1 7 heis 7 41
+590646	prod:heis*agl1	prod heis 7 agl1 7 41
+590976	prod3:agl1*heis*heis	prod prod agl1 19 heis 3 heis 4 1
+590976	prod3:agl1*pgl*agl1	prod prod agl1 19 pgl 3 agl1 9 1
+590976	prod3:agl1*pgl*agl1	prod prod agl1 9 pgl 3 agl1 19 1
+590976	prod3:agl1*sl*agl1	prod prod agl1 19 sl 3 agl1 9 1
+590976	prod3:agl1*sl*agl1	prod prod agl1 9 sl 3 agl1 19 1
+590976	prod3:heis*heis*agl1	prod prod heis 3 heis 4 agl1 19 1
+590976	prod3:heis*heis*agl1	prod prod heis 4 heis 3 agl1 19 1
+590976	prod3:pgl*agl1*agl1	prod prod pgl 3 agl1 9 agl1 19 1
+590976	prod3:sl*agl1*agl1	prod prod sl 3 agl1 9 agl1 19 1
+591360	prod3:agl1*agl1*agl1	prod prod agl1 16 agl1 2 agl1 8 22
+591360	prod3:agl1*agl1*agl1	prod prod agl1 2 agl1 8 agl1 16 22
+591360	prod3:agl1*agl1*agl1	prod prod agl1 3 agl1 5 agl1 8 88
+591360	prod3:agl1*agl1*agl1	prod prod agl1 4 agl1 5 agl1 8 44
+591360	prod3:agl1*agl1*agl1	prod prod agl1 5 agl1 3 agl1 8 88
+591360	prod3:agl1*agl1*agl1	prod prod agl1 5 agl1 4 agl1 8 44
+591360	prod3:agl1*agl1*agl1	prod prod agl1 8 agl1 2 agl1 16 22
+591360	prod3:agl1*agl1*agl1	prod prod agl1 8 agl1 3 agl1 5 88
+591360	prod3:agl1*agl1*agl1	prod prod agl1 8 agl1 4 agl1 5 44
+591360	prod3:agl1*agl1*heis	prod prod agl1 3 agl1 5 heis 4 77
+591360	prod3:agl1*agl1*heis	prod prod agl1 5 agl1 3 heis 4 77
+591360	prod3:agl1*agl1*heis	prod prod agl1 5 agl1 7 heis 4 11
+591360	prod3:agl1*agl1*heis	prod prod agl1 7 agl1 5 heis 4 11
+591360	prod3:agl1*agl1*pgl	prod prod agl1 2 agl1 5 pgl 7 44
+591360	prod3:agl1*agl1*pgl	prod prod agl1 2 agl1 8 pgl 4 88
+591360	prod3:agl1*agl1*pgl	prod prod agl1 2 agl1 8 pgl 5 44
+591360	prod3:agl1*agl1*pgl	prod prod agl1 5 agl1 2 pgl 7 44
+591360	prod3:agl1*agl1*pgl	prod prod agl1 8 agl1 2 pgl 4 88
+591360	prod3:agl1*agl1*pgl	prod prod agl1 8 agl1 2 pgl 5 44
+591360	prod3:agl1*agl1*pgl	prod prod agl1 8 agl1 5 pgl 3 22
+591360	prod3:agl1*agl1*psl	prod prod agl1 2 agl1 5 psl 7 88
+591360	prod3:agl1*agl1*psl	prod prod agl1 2 agl1 8 psl 5 88
+591360	prod3:agl1*agl1*psl	prod prod agl1 5 agl1 2 psl 7 88
+591360	prod3:agl1*agl1*psl	prod prod agl1 8 agl1 2 psl 5 88
+591360	prod3:agl1*agl1*sl	prod prod agl1 2 agl1 5 sl 7 44
+591360	prod3:agl1*agl1*sl	prod prod agl1 2 agl1 8 sl 4 88
+591360	prod3:agl1*agl1*sl	prod prod agl1 2 agl1 8 sl 5 44
+591360	prod3:agl1*agl1*sl	prod prod agl1 5 agl1 2 sl 7 44
+591360	prod3:agl1*agl1*sl	prod prod agl1 8 agl1 2 sl 4 88
+591360	prod3:agl1*agl1*sl	prod prod agl1 8 agl1 2 sl 5 44
+591360	prod3:agl1*agl1*sl	prod prod agl1 8 agl1 5 sl 3 22
+591360	prod3:agl1*heis*agl1	prod prod agl1 5 heis 2 agl1 7 88
+591360	prod3:agl1*heis*agl1	prod prod agl1 5 heis 2 agl1 8 66
+591360	prod3:agl1*heis*agl1	prod prod agl1 7 heis 2 agl1 5 88
+591360	prod3:agl1*heis*agl1	prod prod agl1 8 heis 2 agl1 5 66
+591360	prod3:agl1*heis*pgl	prod prod agl1 5 heis 2 pgl 7 11
+591360	prod3:agl1*heis*pgl	prod prod agl1 8 heis 2 pgl 11 1
+591360	prod3:agl1*heis*pgl	prod prod agl1 8 heis 2 pgl 3 55
+591360	prod3:agl1*heis*pgl	prod prod agl1 8 heis 2 pgl 4 22
+591360	prod3:agl1*heis*pgl	prod prod agl1 8 heis 2 pgl 5 11
+591360	prod3:agl1*heis*psl	prod prod agl1 5 heis 2 psl 7 22
+591360	prod3:agl1*heis*psl	prod prod agl1 8 heis 2 psl 5 22
+591360	prod3:agl1*heis*sl	prod prod agl1 5 heis 2 sl 7 11
+591360	prod3:agl1*heis*sl	prod prod agl1 8 heis 2 sl 11 1
+591360	prod3:agl1*heis*sl	prod prod agl1 8 heis 2 sl 3 55
+591360	prod3:agl1*heis*sl	prod prod agl1 8 heis 2 sl 4 22
+591360	prod3:agl1*heis*sl	prod prod agl1 8 heis 2 sl 5 11
+591360	prod3:agl1*pgl*agl1	prod prod agl1 5 pgl 3 agl1 8 22
+591360	prod3:agl1*pgl*heis	prod prod agl1 2 pgl 4 heis 4 77
+591360	prod3:agl1*psl*agl1	prod prod agl1 5 psl 3 agl1 8 44
+591360	prod3:agl1*psl*agl1	prod prod agl1 8 psl 3 agl1 5 44
+591360	prod3:agl1*psl*heis	prod prod agl1 2 psl 5 heis 4 77
+591360	prod3:agl1*sl*agl1	prod prod agl1 5 sl 3 agl1 8 22
+591360	prod3:agl1*sl*heis	prod prod agl1 2 sl 4 heis 4 77
+591360	prod3:heis*agl1*agl1	prod prod heis 2 agl1 5 agl1 7 88
+591360	prod3:heis*agl1*agl1	prod prod heis 2 agl1 5 agl1 8 66
+591360	prod3:heis*agl1*agl1	prod prod heis 4 agl1 3 agl1 5 77
+591360	prod3:heis*agl1*agl1	prod prod heis 4 agl1 5 agl1 7 11
+591360	prod3:heis*agl1*pgl	prod prod heis 2 agl1 5 pgl 7 11
+591360	prod3:heis*agl1*pgl	prod prod heis 2 agl1 8 pgl 11 1
+591360	prod3:heis*agl1*pgl	prod prod heis 2 agl1 8 pgl 4 22
+591360	prod3:heis*agl1*pgl	prod prod heis 2 agl1 8 pgl 5 11
+591360	prod3:heis*agl1*pgl	prod prod heis 4 agl1 2 pgl 4 77
+591360	prod3:heis*agl1*psl	prod prod heis 2 agl1 5 psl 7 22
+591360	prod3:heis*agl1*psl	prod prod heis 2 agl1 8 psl 5 22
+591360	prod3:heis*agl1*psl	prod prod heis 4 agl1 2 psl 5 77
+591360	prod3:heis*agl1*sl	prod prod heis 2 agl1 5 sl 7 11
+591360	prod3:heis*agl1*sl	prod prod heis 2 agl1 8 sl 11 1
+591360	prod3:heis*agl1*sl	prod prod heis 2 agl1 8 sl 4 22
+591360	prod3:heis*agl1*sl	prod prod heis 2 agl1 8 sl 5 11
+591360	prod3:heis*agl1*sl	prod prod heis 4 agl1 2 sl 4 77
+591360	prod3:heis*heis*pgl	prod prod heis 2 heis 2 pgl 5 77
+591360	prod3:heis*heis*psl	prod prod heis 2 heis 2 psl 7 55
+591360	prod3:heis*heis*sl	prod prod heis 2 heis 2 sl 5 77
+591360	prod3:heis*pgl*agl1	prod prod heis 2 pgl 3 agl1 8 55
+591360	prod3:heis*sl*agl1	prod prod heis 2 sl 3 agl1 8 55
+591360	prod3:pgl*agl1*agl1	prod prod pgl 3 agl1 5 agl1 8 22
+591360	prod3:pgl*agl1*agl1	prod prod pgl 4 agl1 2 agl1 8 88
+591360	prod3:pgl*agl1*agl1	prod prod pgl 5 agl1 2 agl1 8 44
+591360	prod3:pgl*agl1*agl1	prod prod pgl 7 agl1 2 agl1 5 44
+591360	prod3:pgl*agl1*heis	prod prod pgl 4 agl1 2 heis 4 77
+591360	prod3:pgl*heis*agl1	prod prod pgl 11 heis 2 agl1 8 1
+591360	prod3:pgl*heis*agl1	prod prod pgl 3 heis 2 agl1 8 55
+591360	prod3:pgl*heis*agl1	prod prod pgl 4 heis 2 agl1 8 22
+591360	prod3:pgl*heis*agl1	prod prod pgl 5 heis 2 agl1 8 11
+591360	prod3:pgl*heis*agl1	prod prod pgl 7 heis 2 agl1 5 11
+591360	prod3:pgl*heis*heis	prod prod pgl 5 heis 2 heis 2 77
+591360	prod3:psl*agl1*agl1	prod prod psl 3 agl1 5 agl1 8 44
+591360	prod3:psl*agl1*agl1	prod prod psl 5 agl1 2 agl1 8 88
+591360	prod3:psl*agl1*agl1	prod prod psl 7 agl1 2 agl1 5 88
+591360	prod3:psl*agl1*heis	prod prod psl 5 agl1 2 heis 4 77
+591360	prod3:psl*heis*agl1	prod prod psl 5 heis 2 agl1 8 22
+591360	prod3:psl*heis*agl1	prod prod psl 7 heis 2 agl1 5 22
+591360	prod3:psl*heis*heis	prod prod psl 7 heis 2 heis 2 55
+591360	prod3:sl*agl1*agl1	prod prod sl 3 agl1 5 agl1 8 22
+591360	prod3:sl*agl1*agl1	prod prod sl 4 agl1 2 agl1 8 88
+591360	prod3:sl*agl1*agl1	prod prod sl 5 agl1 2 agl1 8 44
+591360	prod3:sl*agl1*agl1	prod prod sl 7 agl1 2 agl1 5 44
+591360	prod3:sl*agl1*heis	prod prod sl 4 agl1 2 heis 4 77
+591360	prod3:sl*heis*agl1	prod prod sl 11 heis 2 agl1 8 1
+591360	prod3:sl*heis*agl1	prod prod sl 3 heis 2 agl1 8 55
+591360	prod3:sl*heis*agl1	prod prod sl 4 heis 2 agl1 8 22
+591360	prod3:sl*heis*agl1	prod prod sl 5 heis 2 agl1 8 11
+591360	prod3:sl*heis*agl1	prod prod sl 7 heis 2 agl1 5 11
+591360	prod3:sl*heis*heis	prod prod sl 5 heis 2 heis 2 77
+591360	prod:agl1*agl1	prod agl1 16 agl1 8 44
+591360	prod:agl1*agl1	prod agl1 8 agl1 16 44
+591360	prod:agl1*pgl	prod agl1 5 pgl 7 88
+591360	prod:agl1*pgl	prod agl1 8 pgl 5 88
+591360	prod:agl1*sl	prod agl1 5 sl 7 88
+591360	prod:agl1*sl	prod agl1 8 sl 5 88
+591360	prod:heis*pgl	prod heis 4 pgl 5 77
+591360	prod:heis*psl	prod heis 4 psl 7 55
+591360	prod:heis*sl	prod heis 4 sl 5 77
+591360	prod:pgl*agl1	prod pgl 5 agl1 8 88
+591360	prod:pgl*agl1	prod pgl 7 agl1 5 88
+591360	prod:pgl*heis	prod pgl 5 heis 4 77
+591360	prod:psl*heis	prod psl 7 heis 4 55
+591360	prod:sl*agl1	prod sl 5 agl1 8 88
+591360	prod:sl*agl1	prod sl 7 agl1 5 88
+591360	prod:sl*heis	prod sl 5 heis 4 77
+591552	prod3:agl1*heis*agl1	prod prod agl1 4 heis 2 agl1 79 1
+591552	prod3:agl1*heis*agl1	prod prod agl1 79 heis 2 agl1 4 1
+591552	prod3:agl1*heis*psl	prod prod agl1 79 heis 2 psl 3 1
+591552	prod3:heis*agl1*agl1	prod prod heis 2 agl1 4 agl1 79 1
+591552	prod3:heis*psl*agl1	prod prod heis 2 psl 3 agl1 79 1
+591552	prod3:psl*heis*agl1	prod prod psl 3 heis 2 agl1 79 1
+591872	prod3:agl1*heis*agl1	prod prod agl1 17 heis 2 agl1 17 1
+591872	prod3:heis*agl1*agl1	prod prod heis 2 agl1 17 agl1 17 1
+591948	prod3:agl1*heis*heis	prod prod agl1 29 heis 3 heis 3 1
+591948	prod3:heis*heis*agl1	prod prod heis 3 heis 3 agl1 29 1
+591948	prod:agl1*heis	prod agl1 29 heis 9 1
+591948	prod:heis*agl1	prod heis 9 agl1 29 1
