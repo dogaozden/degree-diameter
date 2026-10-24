@@ -36,6 +36,10 @@ int main(int argc, char **argv) {
         int ok = 0;
         for (int tr = 0; tr < 200000 && !ok; tr++) {
             int p = rnd() % N, l = PL[p * Q1 + rnd() % Q1]; ok = 1;
+            static int ctr = -1, L0 = -1; if (ctr < 0) { ctr = rnd() % N; L0 = PL[ctr * Q1]; }
+            if (mode == 3) { l = PL[ctr * Q1 + rnd() % Q1]; do { p = LP[l * Q1 + rnd() % Q1]; } while (p == ctr); }   /* star: l_a through a centre */
+            if (mode == 4) { p = LP[L0 * Q1 + rnd() % Q1]; do { l = PL[p * Q1 + rnd() % Q1]; } while (l == L0); } /* points on one line L0 */
+            for (int b = 0; b < a && ok; b++) if (P[b] == p || L[b] == l) ok = 0;
             for (int b = 0; b < a && ok; b++) {
                 if (mode <= 1 && dp[b][p] != 6) ok = 0;
                 if (mode == 1 && dl[b][N + l] != 6) ok = 0;

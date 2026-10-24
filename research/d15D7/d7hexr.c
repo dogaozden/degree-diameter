@@ -364,7 +364,7 @@ static long fast_search(double maxsec) {
                     for (int a = 0; a < noppA[kk]; a++) if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     for (int a = 0; a < noppB[kk]; a++) if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
-                if (zeros < lastchk) {   /* exact BFS check of all freed sources */
+                if (zeros < lastchk && (zeros * 4 <= lastchk * 3 || zeros < 20)) {   /* exact BFS check of all freed sources (geometric schedule; cell-15-7) */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
@@ -495,6 +495,12 @@ int main(int argc, char **argv) {
     double maxsec = atof(argv[5]);
     const char *out = argc > 6 ? argv[6] : NULL;
     int mode = argc > 7 ? atoi(argv[7]) : 0, alg = argc > 8 ? atoi(argv[8]) : 1;
+    if (getenv("INIT")) {   /* start from a solution file (freed points, hub edges, M), e.g. from cover_match */
+        read_sol(getenv("INIT"));
+        hdp = malloc(sizeof(uint8_t *) * K); hdl = malloc(sizeof(uint8_t *) * K);
+        for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(M[F[j]], 1, hdl[j]); }
+        goto searchphase;
+    }
     /* random bijection M */
     M = malloc(sizeof(int) * N); Minv = malloc(sizeof(int) * N);
     for (int p = 0; p < N; p++) M[p] = p;
@@ -580,6 +586,7 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
     }
+    searchphase:
     if (alg >= 2) fast_search(maxsec * 0.9);
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
