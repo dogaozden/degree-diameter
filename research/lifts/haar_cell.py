@@ -1,12 +1,15 @@
 """Haar graphs (= lifts of the dipole) for one cell with haar_gen3: screen candidate groups, anneal the best.
 
 Usage: python3 haar_cell.py d D NLO NHI --bin HAAR_GEN3 --tag TAG [--screen 200] [--top 12] [--secs 300] [--seeds 2]
+                            [--seed0 1] [--resume]
 
 Candidates come from research/frontier/sizelaw/small_cands.py (metacyclic x Z_n plus the matrix / affine / product
 families of cands_gen.py), group orders N in [NLO, NHI]. Each is screened with RANDSAMPLE (cost quantiles of random
 connection sets); the score is (p10 + median) / mu(N), mu(N) = N exp(-W/N) as in SIZE_LAW.md. The best --top are
 annealed in order of increasing N (once an order is solved, its other candidates are skipped).
 Solutions: sols/haar/TAG_*.txt (haar_gen3 format; convert with haar2lift.py). Log: runs/TAG.tsv.
+--resume reuses the screen lines already in runs/TAG.tsv, skips (N, spec, seed) runs already logged and orders
+already solved there (for restarting a killed sweep). Seeds are seed0 .. seed0 + seeds - 1.
 """
 import argparse
 import math
@@ -36,14 +39,32 @@ def main():
     ap.add_argument("--top", type=int, default=12)
     ap.add_argument("--secs", type=float, default=300)
     ap.add_argument("--seeds", type=int, default=2)
+    ap.add_argument("--seed0", type=int, default=1)
+    ap.add_argument("--resume", action="store_true")
     a = ap.parse_args()
     out = subprocess.run(["python3", "small_cands.py", str(a.nlo), str(a.nhi)], cwd=SIZELAW, capture_output=True,
                          text=True).stdout
     cands = [(int(l.split("|")[1]), l.split("|")[0]) for l in out.splitlines() if "|" in l]
     w = W(a.d, a.D)
-    log = open(os.path.join(HERE, "runs", f"{a.tag}.tsv"), "a")
+    logpath = os.path.join(HERE, "runs", f"{a.tag}.tsv")
+    old_screen, old_runs, solved = {}, set(), set()
+    if a.resume and os.path.exists(logpath):
+        for line in open(logpath):
+            f = line.rstrip("\n").split("\t")
+            if f[0] == "screen" and len(f) >= 8:
+                kv = dict(x.split("=", 1) for x in f[3:])
+                old_screen[(int(f[1]), f[2])] = (float(kv["score"]), int(kv["min"]), int(kv["p10"]), int(kv["median"]))
+            elif f[0] == "run" and len(f) >= 6:
+                old_runs.add((int(f[1]), f[2], f[3]))
+                if f[4] == "best=0" and f[5] == "check=OK":
+                    solved.add(int(f[1]))
+    log = open(logpath, "a")
     scored = []
     for N, spec in cands:
+        if (N, spec) in old_screen:
+            sc, mn, p10, med = old_screen[(N, spec)]
+            scored.append((sc, N, spec, mn, p10, med))
+            continue
         env = dict(os.environ, RANDSAMPLE=str(a.screen))
         try:
             r = subprocess.run([a.bin, str(a.d), str(a.D), "1", "1", "8", "/dev/null"] + spec.split(), env=env,
@@ -60,11 +81,12 @@ def main():
     scored.sort()
     chosen = sorted(scored[: a.top], key=lambda t: (t[1], t[0]))
     print(f"{a.tag}: {len(cands)} candidates screened, annealing {len(chosen)}", flush=True)
-    solved = set()
     for sc, N, spec, mn, p10, med in chosen:
         if N in solved:
             continue
-        for s in range(1, a.seeds + 1):
+        for s in range(a.seed0, a.seed0 + a.seeds):
+            if (N, spec, f"seed={s}") in old_runs:
+                continue
             tag = f"{a.tag}_{spec.replace(' ', '_')}_s{s}"
             sol = os.path.join(HERE, "sols", "haar", tag + ".txt")
             t0 = time.time()

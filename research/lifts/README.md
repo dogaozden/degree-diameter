@@ -28,7 +28,7 @@ files), `verify/` (checker outputs).
 | `groups.py` | the group specs of a given order that lift.c implements (`--rich`: also aff groups and products of two non-abelian factors) |
 | `summarize.py` | per-cell summary of `runs/*.tsv` |
 | `run_cell.py` | parallel driver for one cell: orders × bases × groups, each job time-limited, results in `runs/TAG.tsv` |
-| `haar_cell.py` | Haar graphs (dipole lifts) with haar_gen3 for one cell: candidates from research/frontier/sizelaw/small_cands.py, RANDSAMPLE screening scored by (p10 + median)/μ(N), annealing of the best |
+| `haar_cell.py` | Haar graphs (dipole lifts) with haar_gen3 for one cell: candidates from research/frontier/sizelaw/small_cands.py, RANDSAMPLE screening scored by (p10 + median)/μ(N), annealing of the best. `--resume` restarts a killed sweep from its log |
 | `haar2lift.py` | converts a haar_gen3 solution file to lift.c format (prime fields, meta, cyc) |
 | `verify_haar.sh` | the four checks for a haar_gen3 solution: build_haar2.py, lift check, verify_lift.py, apsp |
 | `exhaust_cell.py` | exhaustive lift search, every assignment, for one cell over small bases and all rich groups |
