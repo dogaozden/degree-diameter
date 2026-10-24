@@ -1,0 +1,28 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt  (from branch origin/claude/bipartite-d15-d10-search-h3rdep) sha256 6430a3a4e15d3d4881b22ace8f717e455c74996b16c9aaeb34d8fd2faf6e8efa
+header: 15 10 sl 149 n 373 N 1233809400
+
+################ reference checker: /tmp/hsl research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt (gcc -O3 -o /tmp/hsl research/frontier/haarcheck_sl.c)
+from (e,A): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10, ecc 10
+from (e,B): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10, ecc 10
+VALID d=15 D=10 group=sl 149 x Z_373 N=1233809400 vertices=2467618800 (distinct generators, 15-regular simple)
+(exit 0)
+[exit 0; wall 1092s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt
+header: 15 10 sl 149 n 373 N 1233809400
+d=15 D=10
+group: SL(2,149) [order 3307800] x Z_373; |G| = 1233809400, vertices 2|G| = 2467618800
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 15 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1233809400 vertices per side): every vertex has 15 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [145.3s]
+BFS from A: ecc=10 reached 2467618800 of 2467618800 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 576090, 8039153, 107794349, 884668878, 1125436006, 341059998] [288.3s]
+BFS from B: ecc=10 reached 2467618800 of 2467618800 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 576090, 8039113, 107794349, 884625062, 1125436006, 341103854] [427.9s]
+max degree = min degree = 15, no repeated edges (checked above)
+elapsed 427.9s
+RESULT VALID d=15 D=10 eccA=10 eccB=10 n=2467618800
+(exit 0)
+[exit 0; wall 428s]

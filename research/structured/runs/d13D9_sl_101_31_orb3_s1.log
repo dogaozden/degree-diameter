@@ -1,0 +1,10 @@
+group sl 101 x Z_31, N=31936200, identity 313100, H order 62, rows 515100, threads 1, setup 1.17s
+wide rows: HW order 202, rows 158100, setup 2.31s
+alpha: conj by mat(16,1,30,84) (index 163246), z -> 5 z on Z_31
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 101 (+e); mu = 13.35, mu/k = 4.45, fixed-point misses ~ 1.53
+start cost=20
+RESULT d=13 D=9 group=sl 101 x Z_31 N=31936200 best=0 evals=281 time=22.0 orbit k=3 m=4 f=1 fix=101
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outL/d13D9_sl_101_31_orb3_s1.txt
+VALID d=13 D=9 group=sl 101 x Z_31 N=31936200 vertices=63872400 (distinct generators, 13-regular simple)
+VALID d=13 D=9 vertices=63872400 eccA=9 eccB=9

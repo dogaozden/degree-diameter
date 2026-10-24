@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:42:26Z
+file: research/frontier/sols/d8D10_sl_59_19_orb3_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 6d6689d4d7f7b605c08582be3a3d4a38ace0e55ecb94f8ba70b4517ba7bfdb16
+header: 8 10 sl 59 n 19 N 3901080
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d8D10_sl_59_19_orb3_s1.txt
+from (e,A): reached A 3901080/3901080, B 3901080/3901080 within 10, ecc 10
+from (e,B): reached A 3901080/3901080, B 3901080/3901080 within 10, ecc 10
+VALID d=8 D=10 group=sl 59 x Z_19 N=3901080 vertices=7802160 (distinct generators, 8-regular simple)
+(exit 0)
+[exit 0; wall 2s; cpu 2s; peak RSS 11 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d8D10_sl_59_19_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d8D10_sl_59_19_orb3_s1.txt
+header: 8 10 sl 59 n 19 N 3901080
+d=8 D=10
+group: SL(2,59) [order 205320] x Z_19; |G| = 3901080, vertices 2|G| = 7802160
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3901080 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.4s]
+BFS from A: ecc=10 reached 7802160 of 7802160 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19106, 131026, 821790, 3046736, 3059784, 720517] [0.7s]
+BFS from B: ecc=10 reached 7802160 of 7802160 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19106, 131042, 821790, 3047158, 3059784, 720079] [1.0s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 1.0s
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7802160
+(exit 0)
+[exit 0; wall 1s; cpu 4s; peak RSS 11 MB]

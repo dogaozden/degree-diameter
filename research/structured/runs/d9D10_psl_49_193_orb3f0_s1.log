@@ -1,0 +1,17 @@
+group psl 49 poly x^2+1 x Z_193, N=11348400, identity 226968, H order 25, rows 453936, threads 1, setup 0.34s
+wide rows: HW order 193, rows 58800, setup 0.58s
+alpha: conj by mat(12,26,1,43) (index 21659), z -> 84 z on Z_193
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 15.30, mu/k = 5.10, fixed-point misses ~ 0.27
+start cost=43
+t=30 steps=267 evals=2137 cost=3 best=3 T=0.53
+t=60 steps=536 evals=4289 cost=1 best=1 T=0.19
+RESULT d=9 D=10 group=psl 49 poly x^2+1 x Z_193 N=11348400 best=0 evals=4817 time=69.5 orbit k=3 m=3 f=0 fix=23
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oA/d9D10_psl_49_193_orb3f0_s1.txt
+(build_haar2.py, re-run to completion; haarcheck_psl only handles prime p)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 22696800 edges = 102135600 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 14801926edc501750b25fb423a1c193a8040dbd917887a8c92c28bc2c90fa05d
+VALID d=9 D=10 group=psl 49 poly x^2+1 x Z_193 N=11348400 vertices=22696800

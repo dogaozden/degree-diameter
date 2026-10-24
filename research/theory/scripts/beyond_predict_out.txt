@@ -1,0 +1,130 @@
+== 1. every orbit run: mu (random S) against the clumped mean mu_alpha (k = 3) ==
+  mu = N e^-lambda; mu_m = model.py (special targets, junction swaps); mu_a = clumped mean, generic / model;
+  evals_pred = random-S capability rule 1e5 exp((x - 13)/2) applied to x = mu_a (generic), no free parameter.
+ cell     group                         N           lam    mu     mu_m   mu_a  mu_a_m  fixed-part  best   evals    evals_pred
+ ( 8, 7)  psl 13 x Z_19                      20748   6.62   27.8   40.1   13.2   14.5    1.14        0     18273    1.1e+05
+ ( 8, 7)  pgl 8 poly x^3+x+1 x Z_43          21672   6.33   38.5   54.9   17.2   19.3    1.01        0     18681      8e+05
+ ( 8, 7)  sl 8 poly x^3+x+1 x Z_43           21672   6.33   38.5   54.9   17.2   19.3    1.01        0     11961      8e+05
+ ( 7, 8)  psl 17 x Z_19                      46512   7.22   34.0   38.3   12.0   13.5    0.75        0     19753    6.2e+04
+ ( 7, 8)  psl 17 x Z_19                      46512   7.22   34.0   38.3   12.0   13.5    0.75        0     15641    6.2e+04
+ ( 7, 8)  psl 17 x Z_19                      46512   7.22   34.0   38.3   12.0   13.5    0.75        0     17609    6.2e+04
+ ( 7, 8)  psl 13 x Z_43                      46956   7.15   36.7   42.8   12.7   14.7    0.48        0    346777    8.6e+04
+ ( 7, 8)  psl 19 x Z_14                      47880   7.02   43.0   51.6   16.0   18.9    1.74        0    264425    4.4e+05
+ ( 7, 8)  sl 11 x Z_37                       48840   6.88   50.3   55.0   17.9   19.5    1.14        1   5925121    1.1e+06
+ ( 8, 8)  psl 23 x Z_19                     115368   8.33   27.9   30.3   10.0   10.8    0.70        0      8241    2.2e+04
+ ( 8, 8)  sl 49 poly x^2+1 x Z_1            117600   8.17   33.3   33.3   14.2   14.2    3.09        0   1000169    1.8e+05
+ ( 8, 8)  psl 17 x Z_49                     119952   8.01   39.8   44.3   13.8   15.3    0.57        0     87673    1.5e+05
+ ( 8, 8)  sl 11 x Z_91                      120120   8.00   40.3   46.4   14.2   16.3    0.80        4   6017881    1.8e+05
+ ( 9, 8)  sl 27 poly x^3+2x+1 x Z_13        255528   9.38   21.6   21.8    9.5    9.6    2.33        0    503929    1.8e+04
+ (10, 8)  psl 23 x Z_97                     588984   9.14   63.5   67.1   21.7   22.9    0.53       12   2683121    7.7e+06
+ (11, 8)  psl 59 x Z_11                    1129260   9.84   60.2   63.1   16.1   16.7    4.09        3   3020017    4.7e+05
+ (11, 8)  psl 59 x Z_11                    1129260   9.84   60.2   63.1   16.1   16.7    4.09        2   1575313    4.7e+05
+ (13, 8)  sl 47 x Z_31                     3217056  12.15   17.0   17.1    6.5    6.5    0.82        0      1545    3.9e+03
+ (13, 8)  prod sl 8 poly x^3+x+1 sl 8      3302208  11.84   23.9   25.0    9.5    9.9    1.57        0     53265    1.7e+04
+ (13, 8)  prod psl 9 poly x^2+1 sl 11      3326400  11.75   26.2   26.3   10.9   10.9    2.13        1    291481    3.4e+04
+ (13, 8)  psl 37 x Z_133                   3365964  11.61   30.5   31.2   10.5   10.8    0.36        3    315473    2.9e+04
+ ( 7, 9)  psl 23 x Z_37                     224664   8.97   28.5   41.5   13.6   14.8    0.98        0    182873    1.3e+05
+ ( 7, 9)  psl 29 x Z_19                     231420   8.71   38.2   55.4   17.9   19.3    0.79        0   1499673    1.1e+06
+ ( 8, 9)  psl 31 x Z_43                     639840  10.51   17.4   26.7    8.8    9.3    0.43        0      7553    1.2e+04
+ ( 8, 9)  psl 41 x Z_19                     654360  10.28   22.5   35.8   12.0   12.6    0.66        0    448969    5.9e+04
+ ( 8, 9)  sl 37 x Z_13                      658008  10.22   23.9   26.6   11.0   11.1    2.43        0    223985    3.7e+04
+ ( 8, 9)  psl 47 x Z_13                     674544   9.97   31.5   49.9   16.9   17.8    1.19        6   1389817    7.1e+05
+ (10, 9)  psl 59 x Z_37                    3798420  12.75   11.0   18.8    6.7    6.9    0.64        0      1913    4.4e+03
+ (10, 9)  sl 59 x Z_19                     3901080  12.41   15.8   17.9    7.9    8.0    2.12        0      1961    7.9e+03
+ (10, 9)  sl 83 x Z_7                      4001928  12.10   22.2   23.3   10.3   10.3    2.66        0     24609    2.5e+04
+ (11, 9)  psl 61 x Z_73                    8282580  13.42   12.4   19.8    7.0    7.1    0.54        0        33      5e+03
+ (11, 9)  sl 61 x Z_37                     8396040  13.23   15.0   18.1    7.7    7.8    1.86        0      4969    7.2e+03
+ (11, 9)  psl 257 x Z_1                    8487168  13.09   17.5  125.0   39.2   43.4    1.73       73     12809    4.8e+10
+ (11, 9)  sl 107 x Z_7                     8574552  12.96   20.2   21.1    9.5    9.5    2.57        2     40649    1.7e+04
+ (13, 9)  psl 397 x Z_1                   31285188  14.99    9.6  104.6   33.9   36.4    1.55       59      3145    3.5e+09
+ (13, 9)  sl 317 x Z_1                    31854696  14.73   12.8   13.1    7.7    7.7    3.41        0      1001      7e+03
+ (13, 9)  sl 101 x Z_31                   31936200  14.69   13.3   15.2    6.8    6.8    1.83        0       281    4.5e+03
+ (14, 9)  sl 383 x Z_1                    56181504  15.73    8.3    8.6    5.8    5.8    3.06        0       257    2.8e+03
+ (14, 9)  psl 113 x Z_79                  56989968  15.51   10.5   17.8    6.2    6.2    0.32        0      1449    3.3e+03
+ (14, 9)  sl 67 x Z_193                   58034328  15.23   14.1   23.0    9.0    9.0    1.46        0      3409    1.4e+04
+ (16, 9)  sl 283 x Z_7                   158654328  17.31    4.8    5.2    3.5    3.5    1.85        0        25    8.7e+02
+ (16, 9)  sl 149 x Z_49                  162082200  16.94    7.1    8.7    4.3    4.3    1.51        0         9    1.3e+03
+ ( 7,10)  psl 49 poly x^2+1 x Z_19         1117200  10.82   22.2   23.9    8.0    8.6    0.64        0     22937    8.4e+03
+ ( 7,10)  prod sl 7 psl 19 x Z_1           1149120  10.52   30.9   31.3   11.9   12.0    1.59        1    439473    5.7e+04
+ ( 8,10)  psl 83 x Z_13                    3716076  12.67   11.7   12.4    4.5    4.7    0.61        0       361    1.4e+03
+ ( 8,10)  psl 59 x Z_37                    3798420  12.39   15.7   16.5    5.7    6.0    0.47        0      3889    2.6e+03
+ ( 8,10)  sl 59 x Z_19                     3901080  12.07   22.4   22.7    8.5    8.6    1.06        0     74489    1.1e+04
+ ( 8,10)  sl 83 x Z_7                      4001928  11.76   31.1   31.3   12.0   12.1    1.65        3    343097    6.1e+04
+ (10,10)  psl 389 x Z_1                   29431740  14.81   10.9   12.7    5.0    5.7    1.47        0       385    1.9e+03
+ (10,10)  sl 79 x Z_61                    30070560  14.49   15.3   15.4    5.7    5.7    0.62        0       833    2.6e+03
+
+== 2. does the annealer see mu_alpha the way it sees mu? (search-effort law) ==
+  solved orbit runs with >= 300 evals: 32. Fit ln(evals) = a + b mu_alpha: a = 5.11, b = 0.453 (se 0.080), resid sd 1.65
+  random-S rule has b = 0.5 and a = ln(1e5) - 6.5 = 5.01.
+  solved runs, ln(evals / rule(mu_alpha)): mean -0.39, sd 1.60  (rule predicts 0)
+  same with the model mu_alpha (special targets, junction swaps): mean -0.76, sd 1.78
+  for contrast, the rule applied to plain mu (no clumping): mean -7.39, sd 3.74
+  unsolved runs: 13; 3 stopped before the rule's typical effort, 10 ran longer, by factors 2.0-33 (median 6.4),
+  i.e. 0.4-2.1 residual sd beyond it (the failed runs are the edge of each ladder, so they lean hard).
+     (11, 9) psl 257 x Z_1                  mu  17.5  mu_a  39.2  best  73  evals 1.3e+04  rule 4.8e+10
+     (13, 9) psl 397 x Z_1                  mu   9.6  mu_a  33.9  best  59  evals 3.1e+03  rule 3.5e+09
+     (10, 8) psl 23 x Z_97                  mu  63.5  mu_a  21.7  best  12  evals 2.7e+06  rule 7.7e+06
+     ( 8, 9) psl 47 x Z_13                  mu  31.5  mu_a  16.9  best   6  evals 1.4e+06  rule 7.1e+05
+     (11, 9) sl 107 x Z_7                   mu  20.2  mu_a   9.5  best   2  evals 4.1e+04  rule 1.7e+04
+     (11, 8) psl 59 x Z_11                  mu  60.2  mu_a  16.1  best   2  evals 1.6e+06  rule 4.7e+05
+     ( 7, 8) sl 11 x Z_37                   mu  50.3  mu_a  17.9  best   1  evals 5.9e+06  rule 1.1e+06
+     ( 8,10) sl 83 x Z_7                    mu  31.1  mu_a  12.0  best   3  evals 3.4e+05  rule 6.1e+04
+     (11, 8) psl 59 x Z_11                  mu  60.2  mu_a  16.1  best   3  evals 3e+06  rule 4.7e+05
+     ( 7,10) prod sl 7 psl 19 x Z_1         mu  30.9  mu_a  11.9  best   1  evals 4.4e+05  rule 5.7e+04
+     (13, 8) prod psl 9 poly x^2+1 sl 11 x  mu  26.2  mu_a  10.9  best   1  evals 2.9e+05  rule 3.4e+04
+     (13, 8) psl 37 x Z_133                 mu  30.5  mu_a  10.5  best   3  evals 3.2e+05  rule 2.9e+04
+     ( 8, 8) sl 11 x Z_91                   mu  40.3  mu_a  14.2  best   4  evals 6e+06  rule 1.8e+05
+
+  head-to-head (same group, seed, 60 s), random S vs orbit:
+     random (7,8) psl 19 x Z_13    mu  23.3  effective  23.3  best  2  evals 1.9e+06  rule(effective) 1.7e+07
+     orbit  (7,8) psl 19 x Z_13    mu  23.3  effective   8.4  best  0  evals 3.6e+03  rule(effective) 1e+04
+     random (7,8) psl 19 x Z_13    mu  23.3  effective  23.3  best  1  evals 1.7e+06  rule(effective) 1.7e+07
+     orbit  (7,8) psl 19 x Z_13    mu  23.3  effective   8.4  best  0  evals 3.1e+03  rule(effective) 1e+04
+     random (7,8) psl 19 x Z_13    mu  23.3  effective  23.3  best  2  evals 1.7e+06  rule(effective) 1.7e+07
+     orbit  (7,8) psl 19 x Z_13    mu  23.3  effective   8.4  best  0  evals 1.3e+03  rule(effective) 1e+04
+     random (7,8) psl 19 x Z_13    mu  23.3  effective  23.3  best  0  evals 3.3e+04  rule(effective) 1.7e+07
+     orbit  (7,8) psl 19 x Z_13    mu  23.3  effective   8.4  best  0  evals 7.4e+02  rule(effective) 1e+04
+     random (7,8) psl 17 x Z_19    mu  34.0  effective  34.0  best  6  evals 1.2e+06  rule(effective) 3.6e+09
+     orbit  (7,8) psl 17 x Z_19    mu  34.0  effective  12.0  best  0  evals 1.7e+04  rule(effective) 6.2e+04
+     random (7,8) psl 17 x Z_19    mu  34.0  effective  34.0  best  6  evals 1.4e+06  rule(effective) 3.6e+09
+     orbit  (7,8) psl 17 x Z_19    mu  34.0  effective  12.0  best  0  evals 5.8e+04  rule(effective) 6.2e+04
+     random (7,8) psl 17 x Z_19    mu  34.0  effective  34.0  best  6  evals 1.6e+06  rule(effective) 3.6e+09
+     orbit  (7,8) psl 17 x Z_19    mu  34.0  effective  12.0  best  0  evals 2.6e+04  rule(effective) 6.2e+04
+     random (7,8) psl 17 x Z_19    mu  34.0  effective  34.0  best  6  evals 1.3e+06  rule(effective) 3.6e+09
+     orbit  (7,8) psl 17 x Z_19    mu  34.0  effective  12.0  best  0  evals 3.8e+04  rule(effective) 6.2e+04
+     random (7,8) psl 19 x Z_14    mu  43.0  effective  43.0  best 10  evals 8.4e+05  rule(effective) 3.2e+11
+     orbit  (7,8) psl 19 x Z_14    mu  43.0  effective  16.0  best  0  evals 2.3e+05  rule(effective) 4.4e+05
+     random (7,8) psl 19 x Z_14    mu  43.0  effective  43.0  best  9  evals 9.8e+05  rule(effective) 3.2e+11
+     orbit  (7,8) psl 19 x Z_14    mu  43.0  effective  16.0  best  3  evals 6.5e+05  rule(effective) 4.4e+05
+     random (7,8) psl 19 x Z_14    mu  43.0  effective  43.0  best  9  evals 6.4e+05  rule(effective) 3.2e+11
+     orbit  (7,8) psl 19 x Z_14    mu  43.0  effective  16.0  best  3  evals 7.1e+05  rule(effective) 4.4e+05
+     random (7,8) psl 19 x Z_14    mu  43.0  effective  43.0  best 10  evals 7.9e+05  rule(effective) 3.2e+11
+     orbit  (7,8) psl 19 x Z_14    mu  43.0  effective  16.0  best  3  evals 7.9e+05  rule(effective) 4.4e+05
+
+== 3. predicted gain per cell ==
+  N_old: best random-S record (frontier/sols, non-orb files); N_new: best solved orbit run.
+  P0 = closed form, clumping only: ln(N_new/N_old) = ln 3 / (1 + lambda_old).
+  P1 = equal difficulty: mu_alpha,model(N_new) = mu_model(N_old), with the new group's fixed-point counts.
+  P3 = equal difficulty corrected for budget: mu_alpha(N_new) = mu(N_old) + 2 ln(M_new / M_old), M = evals of the
+       record run (old: frontier run logs; only where the log is in the repo). Generic mu on both sides.
+ cell     N_old        mu_old  lam_old  N_new        gain    P0      P1      P3      M_old    M_new   group (new)
+ ( 8, 7)  20520          26.7   6.69    21672         +5.5%  +14.3%  +10.9%      -          -    18681  pgl 8 poly x^3+x+1 x Z_43
+ ( 7, 8)  44460          26.3   7.56    47880         +7.4%  +12.8%  +12.0%   +9.2%   3317249   264425  psl 19 x Z_14
+ ( 8, 8)  112896         23.2   8.51    119952        +6.1%  +11.6%  +11.0%      -          -    87673  psl 17 x Z_49
+ ( 9, 8)  248952         17.6   9.63    255528        +2.6%  +10.3%   +9.6%      -          -   503929  sl 27 poly x^3+2x+1 x Z_13
+ (13, 8)  3204240        16.7  12.20    3302208       +3.0%   +8.3%   +7.7%   +7.5%     61721    53265  prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13
+ ( 7, 9)  208320         14.9   9.68    231420       +10.5%  +10.3%   +7.3%   +9.6%    261345  1499673  psl 29 x Z_19
+ ( 8, 9)  622656         14.8  10.80    658008        +5.5%   +9.3%   +8.8%   +6.2%    365705   223985  sl 37 x Z_13
+ (10, 9)  3744000        10.6  12.93    4001928       +6.7%   +7.9%   +6.9%   +6.0%     18553    24609  sl 83 x Z_7
+ (11, 9)  8184960        11.5  13.58    8396040       +2.5%   +7.5%   +6.3%   +4.6%      7681     4969  sl 61 x Z_37
+ (13, 9)  31078080       10.6  15.09    31936200      +2.7%   +6.8%   +6.5%      -          -      281  sl 101 x Z_31
+ (14, 9)  55741440        8.3  15.85    58034328      +4.0%   +6.5%   +3.2%      -          -     3409  sl 67 x Z_193
+ (16, 9)  158339880       4.9  17.34    162082200     +2.3%   +6.0%   +3.4%      -          -        9  sl 149 x Z_49
+ ( 7,10)  1073520        13.8  11.27    1117200       +4.0%   +9.0%   +8.3%   +5.4%    200969    22937  psl 49 poly x^2+1 x Z_19
+ ( 8,10)  3674808        10.0  12.81    3901080       +6.0%   +8.0%   +7.3%   +9.1%     22889    74489  sl 59 x Z_19
+ (10,10)  28934136        8.3  15.06    30070560      +3.9%   +6.8%   +6.4%      -          -      833  sl 79 x Z_61
+  P0 (15 cells): actual - predicted gain: mean -4.2%, rms 4.8%, corr(actual, pred) 0.50
+  P1 (15 cells): actual - predicted gain: mean -2.9%, rms 3.9%, corr(actual, pred) 0.38
+  P3 ( 8 cells): actual - predicted gain: mean -1.5%, rms 2.3%, corr(actual, pred) 0.71
+  same 8 cells, P1: mean -2.4%, rms 3.5%
+  mean gain: actual +4.8%, P0 +9.0%, P1 +7.7%

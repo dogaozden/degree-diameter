@@ -1,0 +1,43 @@
+group sl 149 x Z_31, N=102541800, identity 683612, H order 62, rows 1653900, threads 1, setup 3.71s
+wide rows: HW order 186, rows 551300, setup 6.29s
+alpha: conj by mat(75,60,126,73) (index 1673992), z -> 5 z on Z_31
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 149 (+e); mu = 19.04, mu/k = 6.35, fixed-point misses ~ 1.71
+start cost=12
+t=31 steps=8 evals=65 cost=2 best=2 T=0.52
+t=62 steps=16 evals=129 cost=2 best=2 T=0.18
+t=92 steps=24 evals=193 cost=2 best=2 T=0.15
+t=124 steps=33 evals=265 cost=2 best=2 T=0.15
+t=157 steps=42 evals=337 cost=2 best=2 T=0.15
+t=187 steps=50 evals=401 cost=2 best=2 T=0.15
+t=219 steps=58 evals=465 cost=2 best=2 T=0.15
+t=251 steps=66 evals=529 cost=2 best=2 T=0.15
+t=285 steps=75 evals=601 cost=2 best=2 T=0.15
+t=319 steps=84 evals=673 cost=2 best=2 T=0.15
+t=349 steps=92 evals=737 cost=2 best=2 T=0.15
+t=379 steps=100 evals=801 cost=2 best=2 T=0.15
+t=412 steps=109 evals=873 cost=2 best=2 T=0.15
+t=443 steps=118 evals=945 cost=2 best=2 T=0.15
+t=475 steps=127 evals=1017 cost=2 best=2 T=0.15
+t=508 steps=136 evals=1089 cost=2 best=2 T=0.15
+t=541 steps=145 evals=1161 cost=2 best=2 T=0.15
+t=572 steps=153 evals=1225 cost=2 best=2 T=0.15
+t=604 steps=162 evals=1297 cost=2 best=2 T=0.15
+t=634 steps=170 evals=1361 cost=2 best=2 T=0.15
+t=668 steps=179 evals=1433 cost=2 best=2 T=0.15
+t=699 steps=187 evals=1497 cost=2 best=2 T=0.15
+t=729 steps=195 evals=1561 cost=2 best=2 T=0.15
+t=760 steps=203 evals=1625 cost=2 best=2 T=0.15
+t=791 steps=211 evals=1689 cost=2 best=2 T=0.15
+t=823 steps=220 evals=1761 cost=2 best=2 T=0.15
+t=853 steps=228 evals=1825 cost=2 best=2 T=0.15
+t=887 steps=237 evals=1897 cost=2 best=2 T=0.15
+t=920 steps=246 evals=1969 cost=2 best=2 T=0.15
+t=954 steps=255 evals=2041 cost=2 best=2 T=0.15
+t=985 steps=263 evals=2105 cost=2 best=2 T=0.15
+t=1017 steps=272 evals=2177 cost=0 best=0 T=0.15
+RESULT d=15 D=9 group=sl 149 x Z_31 N=102541800 best=0 evals=2177 time=1017.4 orbit k=3 m=5 f=0 fix=149
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oE/d15D9_sl_149_31_orb3f0_s1.txt
+VALID d=15 D=9 group=sl 149 x Z_31 N=102541800 vertices=205083600 (distinct generators, 15-regular simple)
+VALID d=15 D=9 vertices=205083600 eccA=9 eccB=9

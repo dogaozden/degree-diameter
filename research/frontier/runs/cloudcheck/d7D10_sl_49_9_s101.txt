@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:31:42Z
+file: research/frontier/sols/d7D10_sl_49_9_s101.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 a3802832924013eb28f4c6cbcdcb4fdea4765c88faa259342b9b6a81e5821670
+header: 7 10 sl 49 poly x^2+1 n 9 N 1058400
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d7D10_sl_49_9_s101.txt
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2116800 edges = 7408800 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = 73ef408e888516f5ad9b3bee1333cb298f954286e275d2c4c237256273ddb0e8
+VALID d=7 D=10 group=sl 49 poly x^2+1 x Z_9 N=1058400 vertices=2116800
+(exit 0)
+[exit 0; wall 6s; cpu 6s; peak RSS 327 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d7D10_sl_49_9_s101.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d7D10_sl_49_9_s101.txt
+header: 7 10 sl 49 poly x^2+1 n 9 N 1058400
+d=7 D=10
+group: SL(2,49) [order 117600] x Z_9; |G| = 1058400, vertices 2|G| = 2116800
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 7 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1058400 vertices per side): every vertex has 7 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.2s]
+BFS from A: ecc=10 reached 2116800 of 2116800 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9052, 53182, 279259, 845893, 769830, 157770] [0.3s]
+BFS from B: ecc=10 reached 2116800 of 2116800 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9052, 53186, 279259, 845517, 769830, 158142] [0.4s]
+max degree = min degree = 7, no repeated edges (checked above)
+elapsed 0.4s
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2116800
+(exit 0)
+[exit 0; wall 0s; cpu 1s; peak RSS 11 MB]

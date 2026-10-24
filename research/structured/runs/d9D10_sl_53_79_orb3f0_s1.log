@@ -1,0 +1,51 @@
+group sl 53 x Z_79, N=11757096, identity 217724, H order 54, rows 217724, threads 1, setup 0.30s
+wide rows: HW order 237, rows 49608, setup 0.56s
+alpha: conj by mat(24,10,30,28) (index 67923), z -> 23 z on Z_79
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 53 (+e); mu = 25.36, mu/k = 8.45, fixed-point misses ~ 0.70
+start cost=27
+t=30 steps=323 evals=2585 cost=3 best=3 T=0.53
+t=60 steps=555 evals=4441 cost=6 best=3 T=0.19
+t=90 steps=791 evals=6329 cost=6 best=3 T=0.15
+t=120 steps=1022 evals=8177 cost=6 best=3 T=0.15
+t=150 steps=1265 evals=10121 cost=6 best=3 T=0.15
+t=180 steps=1504 evals=12033 cost=13 best=3 T=0.58
+t=210 steps=1736 evals=13889 cost=6 best=3 T=0.20
+t=241 steps=1979 evals=15833 cost=6 best=3 T=0.15
+t=271 steps=2202 evals=17617 cost=6 best=3 T=0.15
+t=301 steps=2426 evals=19409 cost=4 best=3 T=0.15
+t=331 steps=2668 evals=21345 cost=13 best=3 T=0.57
+t=361 steps=2898 evals=23185 cost=9 best=3 T=0.20
+t=391 steps=3133 evals=25065 cost=8 best=3 T=0.15
+t=421 steps=3370 evals=26961 cost=8 best=3 T=0.15
+t=451 steps=3579 evals=28633 cost=3 best=3 T=0.15
+t=482 steps=3793 evals=30345 cost=6 best=3 T=0.56
+t=512 steps=4006 evals=32049 cost=9 best=3 T=0.20
+t=542 steps=4285 evals=34281 cost=9 best=3 T=0.15
+t=572 steps=4615 evals=36921 cost=4 best=3 T=0.15
+t=602 steps=4934 evals=39473 cost=4 best=3 T=0.15
+t=632 steps=5263 evals=42105 cost=7 best=3 T=0.56
+t=662 steps=5590 evals=44721 cost=3 best=3 T=0.20
+t=692 steps=5912 evals=47297 cost=3 best=3 T=0.15
+t=722 steps=6226 evals=49809 cost=3 best=3 T=0.15
+t=752 steps=6555 evals=52441 cost=3 best=3 T=0.15
+t=782 steps=6883 evals=55065 cost=16 best=3 T=0.56
+t=812 steps=7198 evals=57585 cost=3 best=3 T=0.20
+t=842 steps=7522 evals=60177 cost=3 best=3 T=0.15
+t=872 steps=7847 evals=62777 cost=3 best=3 T=0.15
+t=902 steps=8187 evals=65497 cost=3 best=3 T=0.15
+t=932 steps=8519 evals=68153 cost=8 best=3 T=0.55
+t=962 steps=8851 evals=70809 cost=6 best=3 T=0.19
+t=992 steps=9179 evals=73433 cost=6 best=3 T=0.15
+t=1022 steps=9505 evals=76041 cost=6 best=3 T=0.15
+t=1053 steps=9827 evals=78617 cost=3 best=3 T=0.15
+t=1083 steps=10153 evals=81225 cost=12 best=3 T=0.55
+t=1113 steps=10485 evals=83881 cost=3 best=3 T=0.19
+t=1143 steps=10811 evals=86489 cost=3 best=3 T=0.15
+t=1173 steps=11133 evals=89065 cost=3 best=3 T=0.15
+t=1203 steps=11458 evals=91665 cost=3 best=3 T=0.15
+RESULT d=9 D=10 group=sl 53 x Z_79 N=11757096 best=0 evals=91705 time=1203.3 orbit k=3 m=3 f=0 fix=53
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/pool/38-d9D10/d9D10_sl_53_79_orb3f0_s1.txt
+VALID d=9 D=10 group=sl 53 x Z_79 N=11757096 vertices=23514192 (distinct generators, 9-regular simple)
+VALID d=9 D=10 vertices=23514192 eccA=10 eccB=10

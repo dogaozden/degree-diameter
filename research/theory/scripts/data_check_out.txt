@@ -1,0 +1,111 @@
+check: W(d,D) == bipartite Moore bound per side for d=3..19, D=2..11
+records: 117 files, 31 cells
+
+== best per cell ==
+ cell    N            lnN    C_D    W/N    rho=W/(N lnN)  C lnN/(dg)  mu     mu_corr  extra/mu  group
+( 5, 5) 176           5.17  2.750   1.94   0.375      2.666     25.4     25.4      nan  order-176 group (REPORT.md)
+( 7, 5) 576           6.36  2.667   2.70   0.425      2.354     38.7     48.5    0.252  pgl_3__x__cyc_24
+( 8, 5) 882           6.78  2.571   3.18   0.468      2.136     36.8     40.5    0.100  agl_7__x__cyc_21
+( 9, 5) 1331          7.19  2.600   3.52   0.489      2.045     39.5     40.0    0.013  heis_11
+( 6, 7) 4185          8.34  1.339   4.67   0.560      1.787     39.3     39.5    0.004  meta 279 15 7 n 1
+( 8, 7) 20520         9.93  1.221   6.69   0.674      1.484     25.5     26.1    0.021  sl 19 n 3
+( 6, 8) 15288         9.63  0.978   6.39   0.663      1.508     25.7     25.7    0.000  sl 13 n 7
+( 7, 8) 44460        10.70  0.953   7.56   0.706      1.416     23.3     23.3    0.000  psl 19 n 13
+( 8, 8) 112896       11.63  0.960   8.51   0.732      1.367     22.7     22.7    0.000  prod psl 7 sl 7 n 2
+( 9, 8) 248952       12.43  0.950   9.63   0.775      1.291     16.4     16.4    0.000  psl 23 n 41
+(13, 8) 3204240      14.98  1.073  12.20   0.814      1.228     16.1     16.1    0.000  psl 79 n 13
+(15, 8) 8241600      15.92  1.095  13.77   0.865      1.156      8.6      8.6    0.000  sl 101 n 8
+( 6, 9) 60720        11.01  0.777   8.04   0.730      1.370     19.5     20.4    0.045  sl 23 n 5
+( 7, 9) 208320       12.25  0.744   9.68   0.790      1.266     13.1     13.9    0.062  sl 31 n 7
+( 8, 9) 622656       13.34  0.756  10.80   0.810      1.235     12.7     13.7    0.081  sl 47 n 6
+( 9, 9) 1645056      14.31  0.784  11.66   0.814      1.228     14.3     15.0    0.049  prod sl 7 sl 17 n 1
+(10, 9) 3744000      15.14  0.783  12.93   0.855      1.170      9.0      9.9    0.095  prod psl 5 sl 25 poly x^2+2 n 4
+(11, 9) 8184960      15.92  0.818  13.58   0.853      1.173     10.4     11.0    0.053  prod sl 7 sl 29 n 1
+(12, 9) 16386048     16.61  0.841  14.39   0.866      1.154      9.2      9.9    0.071  sl 127 n 8
+(13, 9) 31078080     17.25  0.867  15.09   0.875      1.143      8.7      9.6    0.110  sl 109 n 24
+(14, 9) 55741440     17.84  0.888  15.85   0.889      1.125      7.3      7.8    0.072  sl 191 n 8
+(15, 9) 95443536     18.37  0.905  16.65   0.906      1.103      5.6      5.7    0.022  sl 457 n 1
+(16, 9) 158339880    18.88  0.927  17.34   0.919      1.089      4.7      4.8    0.024  sl 541 n 1
+( 6,10) 253080       12.44  0.648   9.65   0.775      1.290     16.4     16.4    0.000  pgl 37 n 5
+( 7,10) 1073520      13.89  0.639  11.27   0.811      1.233     13.8     13.8    0.000  sl 71 n 3
+( 8,10) 3674808      15.12  0.637  12.81   0.847      1.180     10.0     10.0    0.000  sl 107 n 3
+( 9,10) 11089344     16.22  0.661  13.83   0.853      1.173     10.9     10.9    0.000  sl 223 n 1
+(10,10) 28934136     17.18  0.672  15.06   0.877      1.141      8.3      8.3    0.000  sl 307 n 1
+(12,10) 155314320    18.86  0.725  16.70   0.885      1.129      8.7      8.7    0.000  sl 281 n 7
+(13,10) 318275496    19.58  0.740  17.69   0.903      1.107      6.6      6.6    0.000  sl 307 n 11
+(14,10) 608565048    20.23  0.746  18.88   0.933      1.071      3.9      3.9    0.000  sl 443 n 7
+
+== per D (best per cell): C_D, C_D lnN/(d g), rho, ln mu ==
+D= 5 cells= 4  C_D 2.647 (sd 0.069)  C lnN/(dg) 2.300 (sd 0.239)  rho 0.439  mean lnN 6.38  mean ln mu 3.54  1-<ln mu>/<lnN> 0.444
+D= 7 cells= 2  C_D 1.280 (sd 0.059)  C lnN/(dg) 1.636 (sd 0.151)  rho 0.617  mean lnN 9.13  mean ln mu 3.46  1-<ln mu>/<lnN> 0.622
+D= 8 cells= 6  C_D 1.001 (sd 0.059)  C lnN/(dg) 1.328 (sd 0.117)  rho 0.759  mean lnN 12.55  mean ln mu 2.87  1-<ln mu>/<lnN> 0.771
+D= 9 cells=11  C_D 0.827 (sd 0.060)  C lnN/(dg) 1.187 (sd 0.078)  rho 0.846  mean lnN 15.54  mean ln mu 2.26  1-<ln mu>/<lnN> 0.854
+D=10 cells= 8  C_D 0.684 (sd 0.043)  C lnN/(dg) 1.165 (sd 0.066)  rho 0.861  mean lnN 16.69  mean ln mu 2.20  1-<ln mu>/<lnN> 0.868
+
+fit ln mu (generic)               = 4.577 -0.144 lnN  (se 0.127, 0.009)  resid sd 0.205 | parity mean resid even +0.063 odd -0.052
+    linear: mu (generic)         = 48.46 -2.34 lnN  (se 2.63, 0.18)  resid sd 4.24
+
+fit ln mu_corr (special targets)  = 4.644 -0.147 lnN  (se 0.127, 0.009)  resid sd 0.205 | parity mean resid even +0.033 odd -0.027
+    linear: mu_corr (special targets) = 51.63 -2.52 lnN  (se 3.08, 0.22)  resid sd 4.96
+D>=7 linear mu       = 46.60 -2.23 lnN (se 3.05, 0.20), resid sd 3.40
+D>=7 linear mu_corr  = 47.08 -2.24 lnN (se 2.94, 0.19), resid sd 3.27
+
+== odd-D files: special-target share (all files) ==
+( 7, 5) N=576        |Z|=24   inv=19     (central 1)  mu= 38.72  mu_corr= 48.49  extra= 9.76  pgl_3__x__cyc_24 *best
+( 7, 5) N=570        |Z|=10   inv=1      (central 1)  mu= 37.25  mu_corr= 38.08  extra= 0.83  (Z19:Z3) x Z10 (REPORT.md)
+( 8, 5) N=882        |Z|=21   inv=7      (central 0)  mu= 36.84  mu_corr= 40.51  extra= 3.67  agl_7__x__cyc_21 *best
+( 8, 5) N=875        |Z|=35   inv=0      (central 0)  mu= 35.63  mu_corr= 37.53  extra= 1.90  heis_5__x__cyc_7
+( 8, 5) N=875        |Z|=35   inv=0      (central 0)  mu= 35.63  mu_corr= 37.53  extra= 1.90  heis_5__x__cyc_7
+( 8, 5) N=864        |Z|=24   inv=3      (central 1)  mu= 33.77  mu_corr= 36.09  extra= 2.32  meta 144 6 25
+( 8, 5) N=864        |Z|=96   inv=1      (central 1)  mu= 33.77  mu_corr= 39.46  extra= 5.69  meta 288 3 97
+( 9, 5) N=1331       |Z|=11   inv=0      (central 0)  mu= 39.52  mu_corr= 40.03  extra= 0.51  heis_11 *best
+( 9, 5) N=1320       |Z|=2    inv=1      (central 1)  mu= 38.06  mu_corr= 38.41  extra= 0.35  sl_11
+( 9, 5) N=1310       |Z|=2    inv=1      (central 1)  mu= 36.76  mu_corr= 37.11  extra= 0.35  meta 131 10 53
+( 9, 5) N=1280       |Z|=10   inv=3      (central 1)  mu= 33.04  mu_corr= 34.39  extra= 1.35  meta 160 8 11
+( 9, 5) N=1280       |Z|=2    inv=3      (central 1)  mu= 33.04  mu_corr= 33.97  extra= 0.93  meta 160 8 19
+( 9, 5) N=1280       |Z|=4    inv=3      (central 1)  mu= 33.04  mu_corr= 34.07  extra= 1.04  meta 160 8 29
+( 9, 5) N=1280       |Z|=2    inv=3      (central 1)  mu= 33.04  mu_corr= 33.97  extra= 0.93  meta 160 8 43
+( 9, 5) N=1280       |Z|=16   inv=3      (central 3)  mu= 33.04  mu_corr= 34.75  extra= 1.71  meta 160 8 57
+( 9, 5) N=1280       |Z|=8    inv=3      (central 3)  mu= 33.04  mu_corr= 34.33  extra= 1.29  meta 80 16 3
+( 9, 5) N=1266       |Z|=2    inv=1      (central 1)  mu= 31.38  mu_corr= 31.72  extra= 0.34  meta 422 3 225
+( 9, 5) N=1265       |Z|=5    inv=0      (central 0)  mu= 31.26  mu_corr= 31.45  extra= 0.18  meta 115 11 6
+( 9, 5) N=1255       |Z|=1    inv=0      (central 0)  mu= 30.11  mu_corr= 30.09  extra=-0.02  meta 251 5 20
+( 6, 7) N=4185       |Z|=3    inv=0      (central 0)  mu= 39.34  mu_corr= 39.52  extra= 0.18  meta 279 15 7 n 1 *best
+( 8, 7) N=20520      |Z|=6    inv=1      (central 1)  mu= 25.54  mu_corr= 26.07  extra= 0.53  sl 19 n 3 *best
+( 6, 9) N=60720      |Z|=10   inv=1      (central 1)  mu= 19.54  mu_corr= 20.42  extra= 0.88  sl 23 n 5 *best
+( 6, 9) N=58752      |Z|=24   inv=3      (central 3)  mu= 14.44  mu_corr= 16.70  extra= 2.25  sl 17 n 12
+( 7, 9) N=208320     |Z|=14   inv=1      (central 1)  mu= 13.09  mu_corr= 13.90  extra= 0.82  sl 31 n 7 *best
+( 7, 9) N=207552     |Z|=4    inv=3      (central 3)  mu= 12.58  mu_corr= 13.46  extra= 0.88  sl 47 n 2
+( 7, 9) N=206640     |Z|=6    inv=1      (central 1)  mu= 12.00  mu_corr= 12.46  extra= 0.46  sl 41 n 3
+( 7, 9) N=202464     |Z|=8    inv=3      (central 3)  mu=  9.61  mu_corr= 10.63  extra= 1.02  sl 37 n 4
+( 8, 9) N=622656     |Z|=12   inv=3      (central 3)  mu= 12.68  mu_corr= 13.72  extra= 1.03  sl 47 n 6 *best
+( 8, 9) N=615960     |Z|=6    inv=1      (central 1)  mu= 11.16  mu_corr= 11.54  extra= 0.38  sl 59 n 3
+( 8, 9) N=607392     |Z|=24   inv=3      (central 3)  mu=  9.43  mu_corr= 10.79  extra= 1.36  sl 37 n 12
+( 8, 9) N=604800     |Z|=10   inv=43     (central 1)  mu=  8.96  mu_corr=  9.77  extra= 0.81  prod psl 7 sl 9 poly x^2+1 n 5
+( 8, 9) N=587520     |Z|=4    inv=3      (central 3)  mu=  6.27  mu_corr=  6.98  extra= 0.71  prod sl 5 sl 17 n 1
+( 8, 9) N=565440     |Z|=38   inv=931    (central 1)  mu=  3.86  mu_corr=  9.84  extra= 5.98  psl 31 n 38
+( 8, 9) N=546480     |Z|=90   inv=1      (central 1)  mu=  2.47  mu_corr=  4.67  extra= 2.20  sl 23 n 45
+( 9, 9) N=1645056    |Z|=4    inv=3      (central 3)  mu= 14.26  mu_corr= 14.96  extra= 0.69  prod sl 7 sl 17 n 1 *best
+( 9, 9) N=1594080    |Z|=6    inv=1      (central 1)  mu=  9.52  mu_corr=  9.84  extra= 0.32  sl 81 poly x^4+x+2 n 3
+( 9, 9) N=1572480    |Z|=26   inv=43     (central 1)  mu=  7.96  mu_corr=  8.93  extra= 0.96  prod psl 7 sl 9 poly x^2+1 n 13
+( 9, 9) N=1572480    |Z|=4    inv=3      (central 3)  mu=  7.96  mu_corr=  8.61  extra= 0.65  prod sl 9 poly x^2+1 sl 13 n 1
+( 9, 9) N=1556640    |Z|=30   inv=1      (central 1)  mu=  6.96  mu_corr=  7.81  extra= 0.85  sl 47 n 15
+( 9, 9) N=1555776    |Z|=8    inv=3      (central 3)  mu=  6.91  mu_corr=  7.64  extra= 0.73  sl 73 n 4
+( 9, 9) N=1555200    |Z|=12   inv=3      (central 3)  mu=  6.88  mu_corr=  7.69  extra= 0.82  prod sl 9 poly x^2+1 sl 9 poly x^2+1 n 3
+( 9, 9) N=1552320    |Z|=14   inv=111    (central 1)  mu=  6.71  mu_corr=  7.65  extra= 0.94  prod psl 11 sl 7 n 7
+( 9, 9) N=1552320    |Z|=14   inv=43     (central 1)  mu=  6.71  mu_corr=  7.36  extra= 0.66  prod psl 7 sl 11 n 7
+( 9, 9) N=1528800    |Z|=26   inv=1      (central 1)  mu=  5.46  mu_corr=  6.18  extra= 0.72  sl 49 poly x^2+1 n 13
+( 9, 9) N=1509816    |Z|=38   inv=1      (central 1)  mu=  4.61  mu_corr=  5.55  extra= 0.94  sl 43 n 19
+( 9, 9) N=1503480    |Z|=10   inv=1      (central 1)  mu=  4.35  mu_corr=  4.71  extra= 0.36  sl 67 n 5
+(10, 9) N=3744000    |Z|=8    inv=63     (central 3)  mu=  9.03  mu_corr=  9.89  extra= 0.86  prod psl 5 sl 25 poly x^2+2 n 4 *best
+(10, 9) N=3719520    |Z|=14   inv=1      (central 1)  mu=  8.24  mu_corr=  8.67  extra= 0.42  sl 81 poly x^4+x+2 n 7
+(10, 9) N=3693600    |Z|=18   inv=343    (central 1)  mu=  7.47  mu_corr=  8.93  extra= 1.46  prod psl 19 sl 5 n 9
+(11, 9) N=8184960    |Z|=4    inv=3      (central 3)  mu= 10.41  mu_corr= 10.96  extra= 0.55  prod sl 7 sl 29 n 1 *best
+(11, 9) N=7970400    |Z|=30   inv=1      (central 1)  mu=  7.03  mu_corr=  7.63  extra= 0.60  sl 81 poly x^4+x+2 n 15
+(11, 9) N=7812000    |Z|=8    inv=3      (central 3)  mu=  5.20  mu_corr=  5.76  extra= 0.56  sl 125 poly x^3+x+1 n 4
+(11, 9) N=7645176    |Z|=2    inv=1      (central 1)  mu=  3.73  mu_corr=  3.89  extra= 0.16  sl 197 n 1
+(12, 9) N=16386048   |Z|=16   inv=3      (central 3)  mu=  9.23  mu_corr=  9.88  extra= 0.66  sl 127 n 8 *best
+(13, 9) N=31078080   |Z|=48   inv=3      (central 3)  mu=  8.66  mu_corr=  9.61  extra= 0.95  sl 109 n 24 *best
+(14, 9) N=55741440   |Z|=16   inv=3      (central 3)  mu=  7.26  mu_corr=  7.79  extra= 0.52  sl 191 n 8 *best
+(15, 9) N=95443536   |Z|=2    inv=1      (central 1)  mu=  5.60  mu_corr=  5.72  extra= 0.12  sl 457 n 1 *best
+(16, 9) N=158339880  |Z|=2    inv=1      (central 1)  mu=  4.66  mu_corr=  4.77  extra= 0.11  sl 541 n 1 *best

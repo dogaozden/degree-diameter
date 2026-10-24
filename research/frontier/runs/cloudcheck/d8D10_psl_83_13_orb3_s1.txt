@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:40:57Z
+file: research/frontier/sols/d8D10_psl_83_13_orb3_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 6a242dfebfb23c7ff55b60274e67faaf9a9802130769f22eedd0fa5c0e1a5580
+header: 8 10 psl 83 n 13 N 3716076
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/structured/tools/haarcheck_psl.c && /tmp/hsl research/frontier/sols/d8D10_psl_83_13_orb3_s1.txt
+from (e,A): reached A 3716076/3716076, B 3716076/3716076 within 10, ecc 10
+from (e,B): reached A 3716076/3716076, B 3716076/3716076 within 10, ecc 10
+VALID d=8 D=10 group=psl 83 x Z_13 N=3716076 vertices=7432152 (distinct generators, 8-regular simple)
+(exit 0)
+[exit 0; wall 3s; cpu 3s; peak RSS 11 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d8D10_psl_83_13_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d8D10_psl_83_13_orb3_s1.txt
+header: 8 10 psl 83 n 13 N 3716076
+d=8 D=10
+group: PSL(2,83) [order 285852] x Z_13; |G| = 3716076, vertices 2|G| = 7432152
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3716076 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.4s]
+BFS from A: ecc=10 reached 7432152 of 7432152 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 132059, 824708, 2960678, 2871790, 620538] [0.7s]
+BFS from B: ecc=10 reached 7432152 of 7432152 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 132035, 824708, 2959825, 2871790, 621415] [1.0s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 1.0s
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7432152
+(exit 0)
+[exit 0; wall 1s; cpu 4s; peak RSS 11 MB]

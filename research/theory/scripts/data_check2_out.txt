@@ -1,0 +1,51 @@
+== Theorem 2 check: |G^ab| <= A(d,D) for every record ==
+  |G^ab| = 288  A = 869  ratio 0.331  d5/d8_N864_288_3_97.txt
+  |G^ab| = 175  A = 869  ratio 0.201  d5/h4_d8_heis_5__x__cyc_7_s1_K20.txt
+  |G^ab| = 175  A = 869  ratio 0.201  d5/h4_d8_heis_5__x__cyc_7_s1_K1.txt
+  |G^ab| = 144  A = 869  ratio 0.166  d5/d8_N864_144_6_25.txt
+  |G^ab| = 126  A = 869  ratio 0.145  d5/h4_d8_agl_7__x__cyc_21_s1_K20.txt
+  A(d,D) for d=6..16, D=5..10:
+   d= 6 271 606 1281 2376 4251 7002
+   d= 8 869 2472 6637 15128 33111 65080
+   d=10 2161 7510 24691 67360 176251 406390
+   d=12 4555 18756 73327 234048 716959 1907940
+   d=16 14761 80016 414841 1719376 6862501 23335504
+
+== best-of-T: one-parameter budget model (SIZE_LAW capability rule, budget B fitted) ==
+  fitted budget B = 698 core-seconds per order; rms log error in N over 27 cells (D>=7): 0.020
+   ( 6, 7) N=4185       pred=3947        err +0.058  mu_rec 39.5  mu_max(B) 28.0
+   ( 8, 7) N=20520      pred=20381       err +0.007  mu_rec 26.2  mu_max(B) 24.9
+   ( 6, 8) N=15288      pred=15302       err -0.001  mu_rec 26.7  mu_max(B) 26.8
+   ( 7, 8) N=44460      pred=44145       err +0.007  mu_rec 26.3  mu_max(B) 24.7
+   ( 8, 8) N=112896     pred=112704      err +0.002  mu_rec 23.2  mu_max(B) 22.8
+   ( 9, 8) N=248952     pred=253439      err -0.018  mu_rec 17.6  mu_max(B) 21.3
+   (13, 8) N=3204240    pred=3195737     err +0.003  mu_rec 16.7  mu_max(B) 16.2
+   (15, 8) N=8241600    pred=8531137     err -0.035  mu_rec 8.6  mu_max(B) 14.3
+   ( 6, 9) N=60720      pred=61309       err -0.010  mu_rec 20.8  mu_max(B) 22.7
+   ( 7, 9) N=208320     pred=215552      err -0.034  mu_rec 14.1  mu_max(B) 20.2
+   ( 8, 9) N=622656     pred=637013      err -0.023  mu_rec 13.8  mu_max(B) 18.0
+   ( 9, 9) N=1645056    pred=1654576     err -0.006  mu_rec 15.0  mu_max(B) 16.1
+   (10, 9) N=3744000    pred=3847246     err -0.027  mu_rec 9.9  mu_max(B) 14.5
+   (11, 9) N=8184960    pred=8276289     err -0.011  mu_rec 11.0  mu_max(B) 12.9
+   (12, 9) N=16386048   pred=16298727    err +0.005  mu_rec 9.9  mu_max(B) 9.1
+   (13, 9) N=31078080   pred=30686840    err +0.013  mu_rec 9.6  mu_max(B) 7.8
+   (14, 9) N=55741440   pred=55231165    err +0.009  mu_rec 7.8  mu_max(B) 6.6
+   (15, 9) N=95443536   pred=95303135    err +0.001  mu_rec 5.7  mu_max(B) 5.6
+   (16, 9) N=158339880  pred=157959463   err +0.002  mu_rec 4.8  mu_max(B) 4.6
+   ( 6,10) N=253080     pred=253500      err -0.002  mu_rec 20.9  mu_max(B) 21.2
+   ( 7,10) N=1073520    pred=1098746     err -0.023  mu_rec 13.8  mu_max(B) 18.3
+   ( 8,10) N=3674808    pred=3799428     err -0.033  mu_rec 10.0  mu_max(B) 15.9
+   ( 9,10) N=11089344   pred=11113291    err -0.002  mu_rec 10.9  mu_max(B) 11.3
+   (10,10) N=28934136   pred=29144859    err -0.007  mu_rec 8.3  mu_max(B) 9.3
+   (12,10) N=155314320  pred=152170808   err +0.020  mu_rec 8.7  mu_max(B) 6.0
+   (13,10) N=318275496  pred=312096072   err +0.020  mu_rec 6.6  mu_max(B) 4.5
+   (14,10) N=608565048  pred=603563241   err +0.008  mu_rec 3.9  mu_max(B) 3.3
+  constant mu* (1 param): mu* = 17.4, rms log error 0.049
+   D=7 mean err +0.033 (n=2)
+   D=8 mean err -0.007 (n=6)
+   D=9 mean err -0.007 (n=11)
+   D=10 mean err -0.002 (n=8)
+
+== parity x family: groups with many involutions (I >= sqrt(N)) ==
+  D even: 58 files, 15 with I >= sqrt(N) (2 of them cell records): pgl 17, pgl 37, pgl 61, prod psl 11 psl 11, prod psl 11 psl 13, prod psl 5 psl 9 poly x^2+1, prod psl 9 poly x^2+1 psl 11, psl 17, psl 23, psl 277, psl 29, psl 31, psl 67, psl 79
+  D odd: 39 files, 1 with I >= sqrt(N) (0 of them cell records): psl 31

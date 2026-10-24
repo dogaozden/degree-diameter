@@ -1,0 +1,38 @@
+group sl 109 x Z_7, N=9064440, identity 82404, H order 63, rows 143880, threads 1, setup 0.26s
+wide rows: HW order 252, rows 35970, setup 0.52s
+alpha: conj by mat(63,0,72,45) (index 748466), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 107 (+e); mu = 32.98, mu/k = 10.99, fixed-point misses ~ 1.66
+start cost=40
+t=30 steps=385 evals=3081 cost=18 best=6 T=0.53
+t=60 steps=788 evals=6305 cost=12 best=6 T=0.19
+t=90 steps=1194 evals=9553 cost=9 best=6 T=0.15
+t=120 steps=1587 evals=12697 cost=7 best=6 T=0.15
+t=150 steps=1975 evals=15801 cost=4 best=4 T=0.15
+t=180 steps=2357 evals=18857 cost=4 best=4 T=0.15
+t=210 steps=2743 evals=21945 cost=4 best=4 T=0.15
+t=240 steps=3129 evals=25033 cost=4 best=4 T=0.15
+t=270 steps=3508 evals=28065 cost=4 best=4 T=0.15
+t=300 steps=3904 evals=31233 cost=7 best=4 T=1.09
+t=330 steps=4302 evals=34417 cost=13 best=4 T=0.39
+t=360 steps=4685 evals=37481 cost=9 best=4 T=0.15
+t=391 steps=5065 evals=40521 cost=4 best=4 T=0.15
+t=421 steps=5448 evals=43585 cost=4 best=4 T=0.15
+t=451 steps=5837 evals=46697 cost=25 best=4 T=1.09
+t=481 steps=6227 evals=49817 cost=7 best=4 T=0.39
+t=511 steps=6623 evals=52985 cost=8 best=4 T=0.15
+t=541 steps=7011 evals=56089 cost=6 best=4 T=0.15
+t=571 steps=7406 evals=59249 cost=6 best=4 T=0.15
+t=601 steps=7797 evals=62377 cost=25 best=4 T=1.09
+t=631 steps=8192 evals=65537 cost=8 best=4 T=0.38
+t=661 steps=8591 evals=68729 cost=3 best=3 T=0.15
+t=691 steps=8987 evals=71897 cost=3 best=3 T=0.15
+t=721 steps=9374 evals=74993 cost=3 best=3 T=0.15
+t=751 steps=9771 evals=78169 cost=3 best=3 T=0.15
+t=781 steps=10170 evals=81361 cost=3 best=3 T=0.15
+RESULT d=15 D=8 group=sl 109 x Z_7 N=9064440 best=0 evals=81393 time=781.3 orbit k=3 m=5 f=0 fix=107
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/pool/31b-d15D8/d15D8_sl_109_7_orb3f0_s1.txt
+n = 18128880 edges = 135966600 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = 76ce32e80d2ba408e8b2cf351278ef660648efdac611fe43856881a907e983b7
+VALID d=15 D=8 group=sl 109 x Z_7 N=9064440 vertices=18128880

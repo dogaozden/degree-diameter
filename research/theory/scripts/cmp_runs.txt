@@ -1,0 +1,26 @@
+# research/structured/runs/cmp1.txt (branch claude/structured-haar-search-ws7bet, commit c8e7452): random-S annealing
+# (haar_fast) vs k=3 orbit annealing (haar_sym), same groups, seeds 1-4, 60 s wall clock each.
+random  7 8 psl 19 13 seed 1 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=2 evals=1934865 time=60.0
+orbit3 2 1 7 8 psl 19 13 seed 1 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=3625 time=0.2 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 19 13 seed 2 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=1 evals=1673137 time=60.0
+orbit3 2 1 7 8 psl 19 13 seed 2 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=3137 time=0.3 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 19 13 seed 3 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=2 evals=1709041 time=60.0
+orbit3 2 1 7 8 psl 19 13 seed 3 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=1329 time=0.1 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 19 13 seed 4 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=32793 time=1.1
+orbit3 2 1 7 8 psl 19 13 seed 4 :: RESULT d=7 D=8 group=psl 19 x Z_13 N=44460 best=0 evals=737 time=0.0 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 17 19 seed 1 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=6 evals=1226081 time=60.0
+orbit3 2 1 7 8 psl 17 19 seed 1 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=16657 time=1.0 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 17 19 seed 2 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=6 evals=1372537 time=60.0
+orbit3 2 1 7 8 psl 17 19 seed 2 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=57561 time=2.7 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 17 19 seed 3 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=6 evals=1591073 time=60.0
+orbit3 2 1 7 8 psl 17 19 seed 3 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=26465 time=1.0 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 17 19 seed 4 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=6 evals=1307073 time=60.0
+orbit3 2 1 7 8 psl 17 19 seed 4 :: RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=37585 time=2.3 orbit k=3 m=2 f=1 fix=8
+random  7 8 psl 19 14 seed 1 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=10 evals=843361 time=60.0
+orbit3 2 1 7 8 psl 19 14 seed 1 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=0 evals=228705 time=14.2 orbit k=3 m=2 f=1 fix=17
+random  7 8 psl 19 14 seed 2 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=9 evals=980217 time=60.0
+orbit3 2 1 7 8 psl 19 14 seed 2 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=3 evals=645297 time=60.0 orbit k=3 m=2 f=1 fix=17
+random  7 8 psl 19 14 seed 3 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=9 evals=637297 time=60.0
+orbit3 2 1 7 8 psl 19 14 seed 3 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=3 evals=712609 time=60.0 orbit k=3 m=2 f=1 fix=17
+random  7 8 psl 19 14 seed 4 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=10 evals=785377 time=60.0
+orbit3 2 1 7 8 psl 19 14 seed 4 :: RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=3 evals=792081 time=60.0 orbit k=3 m=2 f=1 fix=17
