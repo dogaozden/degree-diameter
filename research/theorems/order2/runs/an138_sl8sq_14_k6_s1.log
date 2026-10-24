@@ -5,3 +5,24 @@ ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 59.89, mu/k = 9.98, fixed-point 
 start cost=775
 t=30 steps=356 evals=2849 cost=27 best=24 T=0.53
 t=60 steps=719 evals=5753 cost=27 best=24 T=0.19
+t=90 steps=1084 evals=8673 cost=27 best=24 T=0.15
+t=120 steps=1451 evals=11609 cost=27 best=24 T=0.15
+t=150 steps=1829 evals=14633 cost=22 best=22 T=0.15
+t=180 steps=2198 evals=17585 cost=22 best=22 T=0.15
+t=210 steps=2528 evals=20225 cost=18 best=18 T=0.15
+t=240 steps=2867 evals=22937 cost=18 best=18 T=0.15
+t=270 steps=3240 evals=25921 cost=18 best=18 T=0.15
+t=301 steps=3640 evals=29121 cost=18 best=18 T=0.15
+t=331 steps=4037 evals=32297 cost=18 best=18 T=0.15
+t=361 steps=4419 evals=35353 cost=18 best=18 T=1.42
+t=391 steps=4808 evals=38465 cost=25 best=18 T=0.50
+t=421 steps=5199 evals=41593 cost=25 best=18 T=0.18
+t=451 steps=5569 evals=44553 cost=25 best=18 T=0.15
+t=481 steps=5920 evals=47361 cost=25 best=18 T=0.15
+t=511 steps=6310 evals=50481 cost=18 best=18 T=1.41
+t=541 steps=6684 evals=53473 cost=18 best=18 T=0.50
+t=571 steps=7077 evals=56617 cost=18 best=18 T=0.18
+t=601 steps=7449 evals=59593 cost=18 best=18 T=0.15
+t=631 steps=7827 evals=62617 cost=18 best=18 T=0.15
+t=661 steps=8236 evals=65889 cost=13 best=13 T=0.15
+RESULT d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14 N=3556224 best=13 evals=67033 time=671.7 orbit k=6 m=2 f=1 fix=11

@@ -1,0 +1,22 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14, N=3556224, identity 395920, H order 63, rows 56448, threads 1, setup 0.13s
+wide rows: HW order 126, rows 28224, setup 0.24s
+alpha: swap o Frobenius x -> x^2 on the entries (order 6), z -> 5 z on Z_14
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 59.89, mu/k = 9.98, fixed-point misses ~ 1.92
+start cost=915
+t=30 steps=325 evals=2601 cost=26 best=26 T=0.53
+t=60 steps=654 evals=5233 cost=26 best=26 T=0.19
+t=90 steps=1034 evals=8273 cost=26 best=26 T=0.15
+t=120 steps=1430 evals=11441 cost=26 best=26 T=0.15
+t=150 steps=1795 evals=14361 cost=20 best=20 T=0.15
+t=180 steps=2179 evals=17433 cost=20 best=20 T=0.15
+t=210 steps=2573 evals=20585 cost=18 best=18 T=0.15
+t=240 steps=2972 evals=23777 cost=18 best=18 T=0.15
+t=270 steps=3350 evals=26801 cost=18 best=18 T=0.15
+t=300 steps=3690 evals=29521 cost=18 best=18 T=0.15
+t=330 steps=4073 evals=32585 cost=18 best=18 T=0.15
+t=360 steps=4460 evals=35681 cost=58 best=18 T=1.29
+t=390 steps=4842 evals=38737 cost=41 best=18 T=0.46
+t=420 steps=5241 evals=41929 cost=22 best=18 T=0.16
+t=451 steps=5619 evals=44953 cost=19 best=18 T=0.15
+t=481 steps=6026 evals=48209 cost=19 best=18 T=0.15
+RESULT d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14 N=3556224 best=18 evals=50425 time=500.8 orbit k=6 m=2 f=1 fix=11
