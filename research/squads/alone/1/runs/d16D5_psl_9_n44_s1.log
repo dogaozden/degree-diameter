@@ -1,0 +1,10 @@
+group psl 9 poly x^2+1 x Z_44, N=15840, identity 1584, H order 55, rows 288, threads 1, setup 0.00s
+start cost=1077
+t=30 steps=1114596 evals=1114597 cost=556 best=556 T=0.53
+t=60 steps=2237022 evals=2237023 cost=556 best=556 T=0.19
+t=90 steps=3364256 evals=3364257 cost=556 best=556 T=0.15
+t=120 steps=4494598 evals=4494599 cost=556 best=556 T=0.15
+t=150 steps=5605013 evals=5605014 cost=556 best=556 T=0.15
+t=180 steps=6739786 evals=6739787 cost=564 best=545 T=0.65
+t=210 steps=7863344 evals=7863345 cost=564 best=545 T=0.23
+RESULT d=16 D=5 group=psl 9 poly x^2+1 x Z_44 N=15840 best=545 evals=8985366 time=240.0

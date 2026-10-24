@@ -1,0 +1,20 @@
+{"idea": "haar_gen3 annealing, D=9 sanity check on SL(2,11) (known record 2640 vertices)", "command": "THREADS=1 haar_gen3 9 5 90 1 1 out sl 11 1", "score": 2, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_12 (N=15840), 60 s", "command": "THREADS=1 haar_gen3 16 5 60 1 1 out sl 11 12", "score": 528, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_4 (N=5280), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 4", "score": 10560, "valid": true}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_6 (N=7920), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 6", "score": 15840, "valid": true}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_8 (N=10560), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 8", "score": 14, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_10 (N=13200), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 10", "score": 152, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: SL(2,7) x Z_47 (N=15792), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out sl 7 47", "score": 518, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,11) x Z_24 (N=15840), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 11 24", "score": 526, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: SL(2,5) x Z_132 (N=15840), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out sl 5 132", "score": 576, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: SL(2,11) x Z_12 (N=15840), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out sl 11 12", "score": 484, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: SL(2,9) x Z_22 (N=15840), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out sl 9 22", "score": 502, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,8) x Z_32 (N=16128), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 8 32", "score": 602, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,9) x Z_44 (N=15840), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 9 44", "score": 545, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,16) x Z_4 (N=16320), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 16 4", "score": 717, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,13) x Z_15 (N=16380), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 13 15", "score": 615, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,17) x Z_7 (N=17136), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 17 7", "score": 822, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: PSL(2,19) x Z_5 (N=17100), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out psl 19 5", "score": 793, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 sweep: SL(2,13) x Z_8 (N=17472), 240 s", "command": "THREADS=1 haar_gen3 16 5 240 1 1 out sl 13 8", "score": 878, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 SL(2,11) x Z_4 (N=5280) solved, independently verified by build_haar2.py", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 4", "score": 10560, "valid": true}
+{"idea": "haar_gen3 D=5 d=16 SL(2,11) x Z_6 (N=7920) solved, independently verified by build_haar2.py", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 6", "score": 15840, "valid": true}
