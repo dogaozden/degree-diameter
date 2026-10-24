@@ -11,16 +11,22 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 | (9,7) | 117,648 | **117,650** | 1.00002 | 82,992 (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 |
 | (11,7) | 398,580 | (q = 9 run in progress) | | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
 
-**Two cells beaten** ((7,7) by 24 vertices, (9,7) by 2; the third is running). The new graphs are not Haar graphs. They are 3 copies of
-the generalized hexagon H(q) (the table's own construction), with one point "unhooked" in all three copies and a
-2-vertex gadget added, and a bijection φ chosen by local search (§2). Files in `graphs/`:
+**Two cells beaten** ((7,7) by 24 vertices, (9,7) by 2; the third is running).
+- The new graphs are not Haar graphs. They are 3 copies of the generalized hexagon H(q) (the table's own
+  construction), with m points "unhooked" in all three copies and a 2-vertex gadget per point (§2).
+- The bijection φ that links the copies is either explicit (exact covers, §2) or found by local search.
 
-- `d7D7_hex5_plus2.phi`, `d9D7_hex7_plus2.phi`: the bijection φ (one line index per point).
+Files in `graphs/`:
+- `*.phi`: the bijection φ (one line index per point).
 - `*.edges.gz`: the edge lists (apsp.c format: n, then one "a b" per line).
 - `*.apsp.txt`: the apsp.c verdicts and the sha256 of the uncompressed edge lists.
 
-To rebuild: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`, then `apsp OUT.edges q+2 7`
-(`research/lifts/coordinator_check/apsp.c`: all-pairs BFS, no symmetry assumed).
+To rebuild:
+- m = 1 graphs: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`.
+- m = 4 and 12: `python3 hexd7/plus2.py 5 X.edges` writes X.edges.hfile. Then
+  `PHIIN=graphs/d7D7_hex5_plus24.phi plusm X.edges.hfile 12 0 1 OUT.edges` (plusm.c, gadget layout fixed by m).
+  This reproduces the edge list byte for byte.
+- Then run `apsp OUT.edges q+2 7` (`research/lifts/coordinator_check/apsp.c`: all-pairs BFS, no symmetry assumed).
 
 | cell | n | max degree | diameter | apsp.c | edge-list sha256 |
 |---|---|---|---|---|---|
@@ -91,7 +97,8 @@ n = 6(q⁶−1)/(q−1) + 2.
   built and checked here.
 
 **Finding φ by search (how the first graphs were made).** `hexd7/plus2.py` builds φ from greedy covers for (A) and
-(B) on disjoint domains, then fills the rest at random. The greedy covers were slightly too big (843 and 835 for 780 slots at q = 5), so they are truncated.
+(B) on disjoint domains, then fills the rest at random. The greedy covers were slightly too big (843 and 835 for
+780 slots at q = 5), so they are truncated.
 `hexd7/plus2ls.c` then counts the vertices beyond distance 7 from a and from b by BFS (exact, all routes). It runs a
 local search that swaps the images of two points: targeted swaps create a route a → y → φ(y) → t for an unreached
 point t, or b → M → φ⁻¹(M) → t for an unreached line t, and the rest are random.
@@ -113,8 +120,10 @@ The final graphs were then checked from scratch by apsp.c (all pairs, no symmetr
   is written by plusm.c directly; rebuild it from the .phi with the same gadget choice.
 
 **Remarks.**
-- The same idea should work for every prime power q (so for all the (2k+1)·H(q) cells of the D = 7 column with
-  k = 1). I checked only q = 5 and 7 (and q = 9 below).
+- For more points the conditions of different gadgets compete for the same images of φ. The clustered layout went to
+  m = 12 at q = 5 in seconds; m = 16 stalled at score 2 and m = 30 at about 1,200 (stopped).
+  - Exact covers for each gadget, plus a sparse network of extra edges between the gadget vertices (they have three
+    spare slots), should allow far-apart gadgets. Not tried; it adds only 2/n per point.
 - A first, failed attempt (§5.1) used a non-symmetric gadget on edges inside one copy, with φ fixed. The working
   version unhooks the same point in all three copies and adapts φ to it.
 
