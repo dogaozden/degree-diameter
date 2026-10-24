@@ -6,7 +6,7 @@ research/theorems/chartlift/r3/ (graphs/, diag43/, charts k*q*_*.txt, run logs).
 
 ## Verified new records (builders + apsp/bfs_all check files in chartlift/r3/graphs/)
 - (15,5) 27,216: Haar graph of Z28 x|11 Z6 (m=168; connection set from squad r3 c4), chart r3/k5q3_for168.txt (optimised for it). Also 25,272.
-- (12,5) 12,150: K3,3 + doubled matching over Z25 (m=75), chart r3/k4q3_diag_s170.txt (voltages from squad r3 c2). Also 11,664 and 10,368.
+- (12,5) 12,960: base [[1,3],[3,1]] over Z5 x|2 Z8 (m=80), chart r3/k4q3_diag_s126.txt (base/group from squad r3 c1, closed by r3/alt348.sh). Also 12,150, 11,664, 10,368.
 - (10,5) 4,032: Haar graph of Z14 x|9 Z9 (m=126), chart charts/r2_k5_q2.txt (squad r2 card c4).
 None of these is recorded by the coordinator yet (as of this note).
 
