@@ -22,6 +22,9 @@
          alg=1 installs the algebraic cover for every pair, then targeted local search, then the full check
          alg=2 additionally runs the fast proxy search (incremental route counts) before the BFS-based search
          alg=3 also runs a type-2 greedy pre-pass before the algebraic covers
+         env: BESTK=k best-of-k moves; SKIPFULL=1 skip the internal full check (verify with apsp);
+              DROPSEC=s, DROPSTART=t: after t s, whenever the proxy has not fallen 2% in s seconds, drop the worst pair;
+              DROP=1: after the search, drop the worst pairs until every freed source is fine
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
    Solution file: line "d7hex q N K n", line "freed p1 .. pK", then N line ids M[0..N-1]. */
@@ -312,8 +315,24 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
 static int BESTK = 1;
+static uint8_t *activeP;   /* adaptive dropping: inactive pairs no longer count and their extra edges are back */
+static long pair_zeros(int k) {
+    long z = 0;
+    for (int a = 0; a < noppA[k]; a++) z += cA[k][oppA[k][a]] == 0;
+    for (int a = 0; a < noppB[k]; a++) z += cB[k][oppB[k][a]] == 0;
+    return z;
+}
+static void deactivate(int k) {   /* drop pair k inside the fast search */
+    zeros -= pair_zeros(k);
+    for (int a = 0; a < noppA[k]; a++) cA[k][oppA[k][a]] = 1000;   /* never zero again */
+    for (int a = 0; a < noppB[k]; a++) cB[k][oppB[k][a]] = 1000;
+    activeP[k] = 0;
+    int p = F[k]; isF[p] = 0;               /* p and its line M(p) contribute routes again */
+    pointA(p, +1); lineB(M[p], +1);
+}
 static long fast_search(double maxsec) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
+    activeP = malloc(K + 1); memset(activeP, 1, K + 1);
     cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
     oppA = malloc(sizeof(int *) * K); oppB = malloc(sizeof(int *) * K); noppA = calloc(K, sizeof(int)); noppB = calloc(K, sizeof(int));
     n4p = malloc(sizeof(int *) * K); n2p = malloc(sizeof(int *) * K); n4l = malloc(sizeof(int *) * K); n2l = malloc(sizeof(int *) * K);
@@ -347,11 +366,20 @@ static long fast_search(double maxsec) {
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
+    double dropsec = getenv("DROPSEC") ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
+    long impref = zeros;
+    double dropstart = getenv("DROPSTART") ? atof(getenv("DROPSTART")) : 0;   /* no dropping before this many seconds */
     while (zeros > 0) {
         it++;
         if ((it & 1023) == 0) {
             double el = (double)(clock() - t0) / CLOCKS_PER_SEC;
             if (el > maxsec) break;
+            if (dropsec > 0 && el > dropstart && el - lastimp > dropsec) {   /* stalled: drop the active pair with most uncovered targets */
+                int w = -1; long wz = 0;
+                for (int kk = 0; kk < K; kk++) if (activeP[kk]) { long z = pair_zeros(kk); if (z > wz) { wz = z; w = kk; } }
+                if (w >= 0) { deactivate(w); nactive--; fprintf(stderr, "drop pair %d (%ld uncovered): %d active, proxy %ld (%.0fs)\n", w, wz, nactive, zeros, el); }
+                lastimp = el; best = zeros; impref = zeros; nz = 0;
+            }
             if ((it & ((1 << 20) - 1)) == 0) fprintf(stderr, "it %ld proxy %ld best %ld (%.0fs)\n", it, zeros, best, el);
         }
         double T = T0 * (1.0 - (double)(clock() - t0) / CLOCKS_PER_SEC / maxsec); if (T < 0.05) T = 0.05;
@@ -373,7 +401,7 @@ static long fast_search(double maxsec) {
             side = r >= N; tgt = side ? r - N : r;
             if ((side == 0 ? cA[k][tgt] : cB[k][tgt]) != 0) continue;
         } else {
-            k = rndi(K); side = rndi(2);
+            k = rndi(K); if (!activeP[k]) continue; side = rndi(2);
             int n = side == 0 ? noppA[k] : noppB[k]; int *lst = side == 0 ? oppA[k] : oppB[k]; uint16_t *cc = side == 0 ? cA[k] : cB[k];
             for (int tr = 0; tr < 64; tr++) { int v = lst[rndi(n)]; if (cc[v] == 0) { tgt = v; break; } }
             if (tgt < 0) continue;
@@ -401,10 +429,28 @@ static long fast_search(double maxsec) {
         }
         if (bu < 0) continue;
         if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) swapM(bu, bw);
-        if (zeros < best) best = zeros;
+        if (zeros < best) { best = zeros; if (best < impref - impref / 50 - 1) { impref = best; lastimp = (double)(clock() - t0) / CLOCKS_PER_SEC; } }
     }
     fprintf(stderr, "fast search done: it %ld proxy %ld (%.1fs)\n", it, zeros, (double)(clock() - t0) / CLOCKS_PER_SEC);
     return zeros;
+}
+
+
+/* drop freed pair j: restore its extra edges, delete its two hubs, re-index (the last pair takes index j) */
+static void drop_pair(int j) {
+    int last = K - 1;
+    isF[F[j]] = 0;
+    if (j != last) { F[j] = F[last]; isF[F[j]] = j + 1; uint8_t *t = hdp[j]; hdp[j] = hdp[last]; hdp[last] = t; t = hdl[j]; hdl[j] = hdl[last]; hdl[last] = t; }
+    int m2 = 0;
+    for (int e = 0; e < HGm; e++) {
+        int a = HGj[e], b = HGk[e];
+        if (a == j || b == j) continue;
+        if (a == last) a = j; if (b == last) b = j;
+        HGj[m2] = a; HGk[m2] = b; m2++;
+    }
+    HGm = m2; K = last; NV = 6 * N + 2 * K;
+    for (int t = 0; t <= K; t++) { HGLn[t] = HGPn[t] = 0; }
+    for (int e = 0; e < HGm; e++) { HGL[HGj[e]][HGLn[HGj[e]]++] = HGk[e]; HGP[HGk[e]][HGPn[HGk[e]]++] = HGj[e]; }
 }
 
 int main(int argc, char **argv) {
@@ -515,7 +561,17 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
     }
-    if (alg >= 2) fast_search(maxsec * 0.9);
+    if (alg >= 2) {
+        fast_search(maxsec * 0.9);
+        if (getenv("DROPSEC")) {   /* remove the pairs dropped during the search */
+            if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
+            for (int j = K - 1; j >= 0; j--) if (!activeP[j]) {
+                int last = K - 1; isF[F[j]] = j + 1;   /* drop_pair expects it freed */
+                drop_pair(j); activeP[j] = activeP[last];
+            }
+            fprintf(stderr, "after dropping: K=%d n=%d\n", K, 6 * N + 2 * K);
+        }
+    }
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
     fprintf(stderr, "q=%d N=%d K=%d n=%d initial cost %d\n", q, N, K, NV, cost);
@@ -580,6 +636,15 @@ int main(int argc, char **argv) {
         if (it % 500 == 0) fprintf(stderr, "it %ld acc %ld cost %d  (%.1fs)\n", it, acc, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
     }
     fprintf(stderr, "search done: it %ld cost %d (%.1fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    if (cost > 0 && getenv("DROP")) {   /* salvage: drop the worst pairs until every remaining freed source is fine */
+        if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
+        while (cost > 0 && K > 0) {
+            int w = 0; for (int j = 1; j < K; j++) if (per[j] > per[w]) w = j;
+            drop_pair(w);
+            cost = total_cost(per);
+            fprintf(stderr, "dropped a pair: K=%d cost %d\n", K, cost);
+        }
+    }
     if (cost == 0 && getenv("SKIPFULL")) {   /* freed sources verified by BFS; the rest is left to apsp */
         printf("RESULT q=%d K=%d n=%d freed sources OK (full check skipped; run apsp)\n", q, K, NV);
         if (out) write_sol(out);

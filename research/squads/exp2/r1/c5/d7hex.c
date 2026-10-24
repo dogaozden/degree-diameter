@@ -228,11 +228,45 @@ static void contribB(int k, int ty, int y, int s) {
 /* contribution of point u with line M[u] (side A) and of line L with preimage Minv[L] (side B) */
 static void pointA(int u, int s) { if (isF[u]) return; for (int e = 0; e < nmemP[u]; e++) { int k = memP[u][e] >> 1, ty = (memP[u][e] & 1) ? 2 : 4; contribA(k, ty, M[u], s); } }
 static void lineB(int L, int s) { int y = Minv[L]; if (isF[y]) return; for (int e = 0; e < nmemL[L]; e++) { int k = memL[L][e] >> 1, ty = (memL[L][e] & 1) ? 2 : 4; contribB(k, ty, y, s); } }
+/* ---- improvement (b): hub-assisted routes in the proxy (exp2 r1 card c5) ----
+   Side A: (p,0) -> hub z_p -> (p,2) -> line L at level 2 -> down edge -> (y,1), y = M^-1(L):
+           L through p (hex distance 1): targets x at level 1 with d(y,x) <= 2 (x = y at length 4, others at 6);
+           L at hex distance 3 from p:   target y itself (length 6).
+   Side B (mirror): (l,0) -> hub z'_l -> (l,1) -> point y on l (distance 1) or at distance 3 -> up edge -> line t0 = M(y)
+           at level 2: targets t with d(t0,t) <= 2 (t = t0 at length 4) for y on l, or t = t0 (length 6) for distance 3.
+   Each term depends on one entry only (Minv[L] for side A, M[y] for side B), so swapM updates it like lineB/pointA.
+   Every route counted has length <= 6, so proxy zero still certifies the freed sources. */
+static int use_hub = 1;
+static int **memHL, *nmemHL, **memHP, *nmemHP;   /* memHL[L]: (k*2 + (dist==3)) for d(p_k,L) in {1,3};
+                                                   memHP[y]: (k*2 + (dist==3)) for d(l_k,y) in {1,3} */
+static void hubLine(int L, int s) {              /* side A terms of line L (depends on y = Minv[L]) */
+    int y = Minv[L]; if (isF[y]) return;
+    for (int e = 0; e < nmemHL[L]; e++) {
+        int k = memHL[L][e] >> 1, far = memHL[L][e] & 1; uint8_t *h = hdp[k];
+        if (far) { if (h[y] == 6) updA(k, y, s); continue; }
+        if (h[y] == 6) updA(k, y, s);
+        for (int a = 0; a < Q1; a++) { int L1 = PL[y * Q1 + a];
+            for (int b = 0; b < Q1; b++) { int x = LP[L1 * Q1 + b]; if (x != y && h[x] == 6) updA(k, x, s); } }
+    }
+}
+static void hubPoint(int y, int s) {             /* side B terms of point y (depends on t0 = M[y]) */
+    if (isF[y]) return;
+    int t0 = M[y];
+    for (int e = 0; e < nmemHP[y]; e++) {
+        int k = memHP[y][e] >> 1, far = memHP[y][e] & 1; uint8_t *h = hdl[k];
+        if (far) { if (h[N + t0] == 6) updB(k, t0, s); continue; }
+        if (h[N + t0] == 6) updB(k, t0, s);
+        for (int a = 0; a < Q1; a++) { int x = LP[t0 * Q1 + a];
+            for (int b = 0; b < Q1; b++) { int t = PL[x * Q1 + b]; if (t != t0 && h[N + t] == 6) updB(k, t, s); } }
+    }
+}
 static void swapM(int u, int w) {   /* exchange the lines of points u and w, keeping the proxy counts current */
     int a = M[u], b = M[w];
     pointA(u, -1); pointA(w, -1); lineB(a, -1); lineB(b, -1);
+    if (use_hub) { hubLine(a, -1); hubLine(b, -1); hubPoint(u, -1); hubPoint(w, -1); }
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
+    if (use_hub) { hubLine(a, +1); hubLine(b, +1); hubPoint(u, +1); hubPoint(w, +1); }
 }
 static long fast_search(double maxsec) {
     cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
@@ -263,9 +297,25 @@ static long fast_search(double maxsec) {
             if (dl == 2 || dl == 4) memL[v][nmemL[v]++] = k * 2 + (dl == 2);
         }
     }
+    /* hub-route memberships (static per pair) */
+    use_hub = getenv("D7_NOHUB") ? 0 : 1;
+    nmemHL = calloc(N, sizeof(int)); nmemHP = calloc(N, sizeof(int));
+    for (int k = 0; k < K; k++) for (int v = 0; v < N; v++) {
+        int dl = hdp[k][N + v], dy = hdl[k][v];
+        if (dl == 1 || dl == 3) nmemHL[v]++;
+        if (dy == 1 || dy == 3) nmemHP[v]++;
+    }
+    memHL = malloc(sizeof(int *) * N); memHP = malloc(sizeof(int *) * N);
+    for (int v = 0; v < N; v++) { memHL[v] = malloc(sizeof(int) * (nmemHL[v] + 1)); memHP[v] = malloc(sizeof(int) * (nmemHP[v] + 1)); nmemHL[v] = nmemHP[v] = 0; }
+    for (int k = 0; k < K; k++) for (int v = 0; v < N; v++) {
+        int dl = hdp[k][N + v], dy = hdl[k][v];
+        if (dl == 1 || dl == 3) memHL[v][nmemHL[v]++] = k * 2 + (dl == 3);
+        if (dy == 1 || dy == 3) memHP[v][nmemHP[v]++] = k * 2 + (dy == 3);
+    }
     for (int u = 0; u < N; u++) pointA(u, +1);
     for (int L = 0; L < N; L++) lineB(L, +1);
-    fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
+    if (use_hub) { for (int L = 0; L < N; L++) hubLine(L, +1); for (int u = 0; u < N; u++) hubPoint(u, +1); }
+    fprintf(stderr, "fast search: proxy cost %ld (hub terms %d)\n", zeros, use_hub);
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     while (zeros > 0) {
@@ -286,6 +336,7 @@ static long fast_search(double maxsec) {
                 }
                 if (zeros < lastchk) {   /* exact BFS check of all freed sources */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
+                    if (zeros <= 20) fprintf(stderr, "check: proxy %ld true %ld (it %ld)\n", zeros, tc, it);
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
                 if (nz == 0) continue;
@@ -317,6 +368,15 @@ static long fast_search(double maxsec) {
         long d = zeros - before;
         if (d > 0 && (double)(rnd() % 1000000) / 1e6 >= exp(-d / T)) swapM(u, w);
         if (zeros < best) best = zeros;
+    }
+    if (getenv("D7_CHECK")) {   /* debug: incremental proxy vs full recount */
+        long zinc = zeros;
+        for (int k = 0; k < K; k++) { memset(cA[k], 0, sizeof(uint16_t) * N); memset(cB[k], 0, sizeof(uint16_t) * N); }
+        zeros = 0; for (int k = 0; k < K; k++) zeros += noppA[k] + noppB[k];
+        for (int u = 0; u < N; u++) pointA(u, +1);
+        for (int L = 0; L < N; L++) lineB(L, +1);
+        if (use_hub) { for (int L = 0; L < N; L++) hubLine(L, +1); for (int u = 0; u < N; u++) hubPoint(u, +1); }
+        fprintf(stderr, "CHECK incremental %ld recount %ld\n", zinc, zeros);
     }
     fprintf(stderr, "fast search done: it %ld proxy %ld (%.1fs)\n", it, zeros, (double)(clock() - t0) / CLOCKS_PER_SEC);
     return zeros;

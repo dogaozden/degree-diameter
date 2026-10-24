@@ -2,5 +2,32 @@ pair 0: |S'| = 625, |S| = 625
 pair 17: |S'| = 625, |S| = 625
 algebraic cover installed, conflicts 6296
 fast search: proxy cost 7584
-it 1048576 proxy 1388 best 1375 (8s)
-it 2097152 proxy 1315 best 1292 (14s)
+it 1048576 proxy 1366 best 1343 (8s)
+it 2097152 proxy 1322 best 1201 (14s)
+it 3145728 proxy 1255 best 1184 (20s)
+it 4194304 proxy 1232 best 1137 (25s)
+it 5242880 proxy 1070 best 1038 (32s)
+it 6291456 proxy 960 best 942 (38s)
+it 7340032 proxy 937 best 872 (44s)
+it 8388608 proxy 861 best 770 (51s)
+it 9437184 proxy 844 best 770 (57s)
+it 10485760 proxy 814 best 748 (63s)
+it 11534336 proxy 685 best 673 (69s)
+it 12582912 proxy 614 best 602 (75s)
+it 13631488 proxy 570 best 522 (81s)
+it 14680064 proxy 476 best 475 (88s)
+it 15728640 proxy 530 best 473 (95s)
+it 16777216 proxy 429 best 429 (101s)
+it 17825792 proxy 338 best 336 (107s)
+it 18874368 proxy 319 best 311 (113s)
+it 19922944 proxy 276 best 263 (120s)
+it 20971520 proxy 250 best 221 (126s)
+it 22020096 proxy 197 best 171 (133s)
+it 23068672 proxy 144 best 136 (140s)
+it 24117248 proxy 88 best 88 (147s)
+it 25165824 proxy 63 best 40 (155s)
+true cost 0 at proxy 26
+fast search done: it 25645056 proxy 26 (158.1s)
+q=5 N=3906 K=18 n=23472 initial cost 0
+search done: it 0 cost 0 (0.0s)
+RESULT q=5 K=18 n=23472 maxdeg=7 diameter=7 badsources=0 VALID

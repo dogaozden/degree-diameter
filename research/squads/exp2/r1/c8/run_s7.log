@@ -1,0 +1,43 @@
+q=5 N=3906 NV=31248 degree 7; sample = 20 random level-0 sources
+(a) b=0 a=1       rep 0: sample uncovered 17178 (per source 858.9), double edges 0
+     sample by level (points,lines): L0 0,0  L1 0,0  L2 8541,8637  L3 0,0
+     FULL over all 7812 level-0 sources: avg uncovered per source 858.3, sources with uncovered>0 7812, max ecc 8
+     FULL per source by level (points,lines): L0 0.0,0.0  L1 0.0,0.0  L2 429.2,429.1  L3 0.0,0.0
+(a) b=0 a=1       rep 1: sample uncovered 17129 (per source 856.5), double edges 0
+     sample by level (points,lines): L0 0,0  L1 0,0  L2 8640,8489  L3 0,0
+(a) b=0 a=1       rep 2: sample uncovered 17150 (per source 857.5), double edges 0
+     sample by level (points,lines): L0 0,0  L1 0,0  L2 8589,8561  L3 0,0
+(b) b=0 a random  rep 0: sample uncovered 9176 (per source 458.8), double edges 0
+     sample by level (points,lines): L0 0,0  L1 1102,915  L2 2006,1670  L3 1597,1886
+     FULL over all 7812 level-0 sources: avg uncovered per source 455.5, sources with uncovered>0 7812, max ecc 8
+     FULL per source by level (points,lines): L0 0.0,0.0  L1 73.7,73.8  L2 80.3,80.4  L3 73.7,73.8
+(b) b=0 a random  rep 1: sample uncovered 9232 (per source 461.6), double edges 0
+     sample by level (points,lines): L0 0,0  L1 797,1858  L2 2024,705  L3 1784,2064
+(b) b=0 a random  rep 2: sample uncovered 9241 (per source 462.1), double edges 0
+     sample by level (points,lines): L0 0,0  L1 1442,1555  L2 1414,1701  L3 1809,1320
+(c) b rnd a random  rep 0: sample uncovered 8111 (per source 405.6), double edges 0
+     sample by level (points,lines): L0 993,1074  L1 1005,1029  L2 991,1046  L3 967,1006
+     FULL over all 7812 level-0 sources: avg uncovered per source 402.5, sources with uncovered>0 7812, max ecc 8
+     FULL per source by level (points,lines): L0 50.2,50.2  L1 50.2,50.4  L2 50.5,50.4  L3 50.2,50.4
+(c) b rnd a random  rep 1: sample uncovered 8108 (per source 405.4), double edges 0
+     sample by level (points,lines): L0 997,1022  L1 1000,1030  L2 1032,994  L3 1029,1004
+(c) b rnd a random  rep 2: sample uncovered 8034 (per source 401.7), double edges 3
+     sample by level (points,lines): L0 991,956  L1 961,1054  L2 1039,1060  L3 955,1018
+--- local search from config (c) for 540 s ---
+LS start: cost 10824 (raw sample uncovered + 1000*double edges)
+it 2000 acc 878 cost 9064 (45s)
+it 4000 acc 1584 cost 8140 (87s)
+it 6000 acc 2159 cost 6469 (127s)
+it 8000 acc 2650 cost 4001 (165s)
+it 10000 acc 3068 cost 3633 (207s)
+it 12000 acc 3424 cost 3375 (248s)
+it 14000 acc 3787 cost 3105 (290s)
+it 16000 acc 4098 cost 2897 (329s)
+it 18000 acc 4377 cost 2727 (369s)
+it 20000 acc 4655 cost 2564 (404s)
+it 22000 acc 4914 cost 2450 (448s)
+it 24000 acc 5170 cost 2350 (492s)
+LS done: it 25481 acc 5350 final cost 2278 (540.0s)
+LS final: sample uncovered 2278 (per source 113.90), double edges 0
+LS final FULL over all 7812 level-0 sources: avg uncovered per source 387.17, sources with uncovered>0 7812, max ecc 9, total pairs 3024590
+LS final FULL per source by level (points,lines): L0 48.37,48.46  L1 48.34,48.36  L2 48.48,48.47  L3 48.34,48.36
