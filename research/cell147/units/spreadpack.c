@@ -72,6 +72,14 @@ int main(int argc, char **argv) {
           deg[i] = c; adj[i] = malloc(sizeof(int) * c); memcpy(adj[i], tmp, sizeof(int) * c); }
       free(tmp); }
     fprintf(stderr, "orthogonality graph on E: degree %d (first vertex)\n", deg[0]);
+    if (getenv("DUMP")) {   /* DUMP=prefix: prefix.graph ("n m", then edges "i j", i<j, 0-based vertices of E) and
+                               prefix.map (line i: hexagon point id of vertex i, its spread line id, its 7 coordinates) */
+        char fn[512]; snprintf(fn, sizeof fn, "%s.graph", getenv("DUMP")); FILE *g = fopen(fn, "w"); long m2 = 0;
+        for (int i = 0; i < nE; i++) m2 += deg[i]; fprintf(g, "%d %ld\n", nE, m2 / 2);
+        for (int i = 0; i < nE; i++) for (int e = 0; e < deg[i]; e++) if (adj[i][e] > i) fprintf(g, "%d %d\n", i, adj[i][e]);
+        fclose(g); snprintf(fn, sizeof fn, "%s.map", getenv("DUMP")); g = fopen(fn, "w");
+        for (int i = 0; i < nE; i++) { int p = Ep[i]; fprintf(g, "%d %d", p, spreadOf[p]); for (int k = 0; k < 7; k++) fprintf(g, " %d", X[p][k]); fprintf(g, "\n"); }
+        fclose(g); fprintf(stderr, "wrote %s.graph and .map\n", getenv("DUMP")); }
     /* iterated local search for a maximum independent set */
     int *inS = calloc(nE, sizeof(int)), *tau = calloc(nE, sizeof(int)), *S = malloc(sizeof(int) * nE), *pos = malloc(sizeof(int) * nE); int ns = 0;
     int *best = malloc(sizeof(int) * nE), nbest = 0;
@@ -80,6 +88,11 @@ int main(int argc, char **argv) {
     #define REMV(v) remv((v), inS, pos, S, &ns, deg, adj, tau)
     int *order = malloc(sizeof(int) * nE); for (int i = 0; i < nE; i++) order[i] = i;
     for (int i = nE - 1; i > 0; i--) { int r = rndi(i + 1); int t = order[i]; order[i] = order[r]; order[r] = t; }
+    if (getenv("INIT")) {   /* INIT=flags file: start from these points of E (then fill greedily) */
+        FILE *fi = fopen(getenv("INIT"), "r"); int a, b, nin = 0;
+        while (fi && fscanf(fi, "%d %d", &a, &b) == 2) { if (a >= 0 && a < P && Eidx[a] >= 0 && !inS[Eidx[a]] && tau[Eidx[a]] == 0) { ADDV(Eidx[a]); nin++; } }
+        if (fi) fclose(fi); fprintf(stderr, "INIT: %d points\n", nin);
+    }
     for (int i = 0; i < nE; i++) { int v = order[i]; if (!inS[v] && tau[v] == 0) ADDV(v); }
     nbest = ns; memcpy(best, S, sizeof(int) * ns);
     fprintf(stderr, "greedy: %d\n", ns);

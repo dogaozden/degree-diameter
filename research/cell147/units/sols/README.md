@@ -20,3 +20,15 @@ Z5, plus 155 type-2 units (75 on matching 1, 80 on matching 2; README.md one lev
   shift is an automorphism fixing the new vertices): `d14D7_n1771870_uhcheck.txt`, 0 pairs beyond 7. Independent:
   `NB=1771560 ./apsp_cyc d14D7_n1771870.edges 14 7 5 THREADS` (verifies the shift automorphism on the edge list, then
   BFS from one copy and all new vertices).
+
+## Other D = 7 cells (same construction; DGQ cover with j matchings over Z_{2j+1}, type-2 units, hub graph)
+
+Rebuild any of them like (14,7): `gunzip -k sols/NAME.state.gz && python3 unit_edges2.py BASE sols/NAME.state
+sols/NAME.units sols/NAME.hubs NAME.edges`, with BASE the hexagon file below; check with `uhcheck BASE STATE UNITS HUBS 7
+THREADS` and `NB=<2*P*m> ./apsp_cyc NAME.edges Delta 7 m THREADS`.
+
+| cell | file | vertices | previous | base, j, units | flags | checks |
+|---|---|---|---|---|---|---|
+| (7,7) | d7D7_n23532 | 23,532 | 23,484 (master) | H(5) `gh_build 5`, j = 1, 48 units | flags_q5_spread48.txt (spread, c = 2) | uhcheck all sources, apsp_cyc VALID |
+| (9,7) | d9D7_n117816 | 117,816 | 117,650 (master) | H(7) `gh_build 7`, j = 1, 84 units | flags_q7_spread84.txt (spread, c = 1) | uhcheck all sources, apsp_cyc VALID |
+| (10,7) | d10D7_n224798 | 224,798 | 224,694 (table) | H(8): research/squads/d14D7-r2/c15/gh8.c (GF(8); output sha256 1703336b...f21c5), j = 1, 52 units (random scan) | — | uhcheck all sources (card c15), apsp_cyc VALID (Opus) |
