@@ -11,14 +11,15 @@ checked.
    of PG(4,3) (Cames van Batenburg–Korsky's "bipartite compatibility graph" C(2,3), arXiv:2608.03965, Aug 2026) is
    **16-regular, bipartite, diameter 5, on 31,460 vertices**. The table's (16,5) value is 27,300 (+15.2 %). Checked
    all-pairs. It is not a Haar graph of any family build_haar2.py knows, so it is saved as an edge list (§1.1).
-2. **The same idea gives a family for every building type,** with diameter equal to the Coxeter number. With a balanced
+2. **The same idea gives a family for every building type,** with diameter at most the Coxeter number (equal in all
+   seven cases computed). With a balanced
    diagram it is regular and tends to the bipartite Moore bound: odd D (type A_2k), D ≡ 0 mod 4 (type C_2m; checked
    on C_4(2): 9-regular, diameter 8, 160,650 vertices), D = 6, 12, 30. Inside our table range only (16,5) beats the
    table. D ≡ 2 mod 4 with D ≥ 10 (except 30) has no balanced diagram (§1.2).
 3. **Our record connection sets have no formula.** Across 131 Haar records the normal form of S (classes of
    s_i⁻¹s_j) is indistinguishable from random (χ² = 3.4 on 2 d.o.f.), apart from a mild avoidance of short cycles.
    The metacyclic records (45 solutions) show no formula for (m, k, r, S) either. What *is* regular is the size:
-   the size law of SIZE_LAW.md, which holds to ±2 % per cell across unrelated groups (§3).
+   the size law of SIZE_LAW.md. Unrelated groups solved the same cell within 3–4 % of each other (§2.2).
 4. **The table itself has three exact regularities.** Its green D = 5 and D = 7 values are (2j+1)·|polygon|, which
    the polygon-cover theorem explains (proved, and true for any bipartite base of even diameter). Its green D = 8 values are
    5·⌊(q+5)/2⌋·|GH(q)| in five cells and 15·|GH(11)| in a sixth. Nobody has published that construction; it is the
@@ -88,8 +89,8 @@ gives 23,878,400 at (16,8) (table 36,201,060).
 
 Two ways to grow C(2,q) that fail:
 - **Lifts.** Some same-side pairs at distance 4 in C(2,q) are joined by exactly one walk of length ≤ 4
-  (`walkcount.c` → `runs/walkcount_C2q.txt`: minimum 1 for q = 2 and q = 3). So every voltage lift by a group ≠ 1 has diameter ≥ 6. Proof: the
-  copies of such a target other than the one the unique walk reaches are at distance ≥ 6.
+  (`walkcount.c` → `runs/walkcount_C2q.txt`: minimum 1 for q = 2 and q = 3). So every voltage lift by a group ≠ 1
+  has diameter ≥ 6: the copies of such a target other than the one the unique walk reaches are at distance ≥ 6.
 - **Affine versions.** Removing a hyperplane and/or a point from A₄(3) (12-regular, 18,720 vertices) raises the
   diameter to 8 (`flags_affine.py`, `runs/flags_affine_Hp_q3_check.txt`).
 
@@ -105,7 +106,10 @@ between the classes. Lift B + matchings by Z_M with voltage 0 on B and t_i on σ
 
 Check: `pcover.c` with 0 annealing steps (random matchings) gives cost 0 for W(3), W(4) at D = 6 and for GH(2) at D = 8
 with Z₁₀, T = {1,4}, three seeds each. A scan of all T ⊂ Z_M for M = 10…13 finds only T = {1,4} and {2,3} at M = 10
-(`runs/zero_voltage_n2_gq3.txt`). The same three tests on non-polygon bases (random 4-regular bipartite graphs, diameter 6 and 8, `randbase.py`) give cost 0 every time. An odd diameter really does fail at n+1: PG(2,3), PG(2,5) and C(2,2) with one matching over Z₃ leave 38–826 uncovered pairs at D = n+1 and none at n+2 (`runs/cover_random_bases.txt`). (Random odd-diameter bases have enough slack to reach n+1 anyway.)
+(`runs/zero_voltage_n2_gq3.txt`). The same three tests on non-polygon bases (random 4-regular bipartite graphs of
+diameter 6 and 8, `randbase.py`) give cost 0 every time. An odd diameter really does fail at n+1. PG(2,3), PG(2,5)
+and C(2,2) with one matching over Z₃ leave 38–826 uncovered pairs at D = n+1 and none at n+2
+(`runs/cover_random_bases.txt`). Random odd-diameter bases have enough slack to reach n+1 anyway.
 
 *What it explains.* Every green D = 5 and D = 7 table value is (2j+1)·|GQ(q)| or (2j+1)·|GH(q)| with Δ = q+1+j
 (`table_factor.py` → `table_factor_out.txt`; (16,5) = 27,300 is the exception). Our own D = 4 and D = 6 graphs
