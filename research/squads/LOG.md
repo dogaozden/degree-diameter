@@ -45,3 +45,9 @@ hops) · c13 GQ(11) incidence lifts (needs order 1589) · c15 wildcard · c16 st
   random, 586 vs 670/source). SL(3,q) (torus, coordinate permutations, elementary matrices on (x0,x1,x2) with the dual
   action on (x4,x5,x6)) acts on hexgen's H(q) coordinates, so the Singer torus Z_91 (semiregular on points and lines
   of H(9), 730 orbits each) is available for symmetric designs.
+- c6 q = 5 calibration: random voltages 0 misses up to N = 12; annealing (exact objective) reaches N = 16 (verified
+  all sources, 124,992 vertices), N = 18 best 34, N = 20 best 191. Delorme has N = 25 at q = 5: search reaches about
+  two thirds of the algebraic construction there, and less at q = 9 (16–17 of 35).
+- Opus: affine twists x ↦ a·x + b on Z_N (Bermond–Delorme–Farhi style permutation lifts, tools/affcheck.c) behave
+  exactly like random translations (N = 20: 0.15–0.18 misses per (p, x) source for translations, affine hexagon
+  edges, all-affine); the star product of c16 (fibre cycles, even N) is in the same range (0.2/source at N = 20).
