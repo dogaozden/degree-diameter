@@ -30,3 +30,21 @@ with maximal route coverage · c6 joint annealing at q = 4 · c7 exact SAT/MaxSA
 Outcomes (filled in as the cards report):
 - c4: relative-position voltages are worse than random flag-level ν (q = 5: 11.8 % failures vs 3.1 %; q = 3: 13.7 %
   vs 12.4 %). Coarse partitions correlate the parities of the q+1 geodesics.
+- c1: annealing ν alone lowers Condition-A failures by a factor that shrinks with q: random/annealed = 7.0 (q=2),
+  1.74 (q=3), 1.42 (q=4), 1.29 (q=5; 2.43 % vs 3.13 %).
+- c2: quadratic-character formulas (bilinear, Plücker, quadratic-in-point, products) all converge to the random rate
+  2⁻ᵠ (best 3.104 % vs 3.124 % at q=5). No algebraic advantage.
+- c5: route coverage at q=4 can only be raised from 76.2 % to 77.9 % by annealing σ; distance-3 and distance-5 matchings do no
+  better than random.
+- c6: joint ν, σ annealing on GH(4): 20,985 → 10,901, still falling slowly.
+- c3, c7, c8: no report at the time of writing.
+
+Kept / what happened next (Opus): the hexagon case is closed (DM over GH(7) would need ν ~25× better than random on
+the pairs without routes; nothing structured beats random). But the DM theorem holds for any generalized polygon,
+and over generalized **quadrangles** (D = 5) the counting is favourable (≈ 10³ expected bad pairs vs q⁴ bits).
+Joint annealing (dmfast NPOLY=4) solved W(7) and W(8) in minutes: **(10,5) 4,800** (table 4,000) and
+**(11,5) 7,020** (table 5,850), both apsp VALID. Separately, the exp2-squad's hub trick (research/squads/exp2/hexd7 on
+master) had never been run on H(8) because its generator needs odd q. hexgen2.c builds H(8), and one hub pair gives
+**(10,7) 224,696** (table 224,694), apsp VALID. Did the squad help? Round 1 and 2 cards produced no record. Their
+negative results (c1, c2, c4, c5) settled the hexagon question quickly, so the GQ idea came sooner. The wins
+themselves are Opus solo work (DM theorem, reuse of the hub tool).
