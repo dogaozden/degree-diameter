@@ -39,8 +39,9 @@ Z_5 polygon cover. Cards (research/squads/r2-d8/cards.md), scored by liftdiam (e
   when its time ran out; I resumed it myself for 30 minutes (D8_NUMEROLOGY.md §2.2).
 - d5 anti-homomorphic hop matching at q = 3: no exact one (annealing plateaus at about 4,550 violations of 21,840);
   lifts built on it reach M = 20 for 2 of 300 label seeds, the same as random matchings.
-- d6 literature (partial; its final report was still pending at this commit): found the Comellas–Gómez 1995 paper (arXiv math/9411218) on compounding generalized hexagons for
-  general (non-bipartite) graphs and the Quisquater thesis reference; nothing on bipartite D = 8 (see D8_NUMEROLOGY).
+- d6 literature: NOT FOUND. No accessible bibliography cites the DGQ paper; no diameter-8 hexagon construction and
+  no "diameter + 1, degree kept, order x (1 + Δ/2)" operation in the record (wiki itself unreachable: HTTP 503 /
+  TLS, not bypassed). Nearest unread item: Bond and Delorme, Ars Combin. 25-C (1988). Notes: r2-d8/d6/notes.md.
 - d7 wildcard, duality hops at q = 3: 16 copies against 17 for random; two dualities worse.
 - d8 GF(q)*/{±1} frame labels for the (13,8) cell, Z_3 x Z_3 at q = 7: sampled 177,630 unreached against 170,535 for
   random labels.

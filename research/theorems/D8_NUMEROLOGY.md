@@ -22,7 +22,8 @@ take an M-fold voltage lift; it has M·|GH(q)| vertices.
    - (§1.1) The zero-voltage "n+2 cover" with j constant-voltage matchings has diameter ≤ n+2 whenever a
      sum/difference set covers Z_M. The largest M is 4, 10, 16, 26, 38 for j = 1, ..., 5 (REGULARITIES had j = 2).
    - (§1.2) A list of "guaranteed walks" present in every lift of H(q) plus matchings, and a count showing that a
-     regular zero-holonomy labelling covered by those walks alone has at most q + 4 copies (one matching).
+     regular zero-holonomy labelling covered by those walks alone has at most q + 4 copies (one matching). With two
+     matchings the same method gives 1 + 2(q+1)(q+4)/(q−3), which stays above DGQ's values up to q = 17.
    - (§1.3) A spectral lemma: H(q) admits no "nearly rainbow" equitable labelling missing fewer than √q classes.
      It kills the tight designs, including one whose arithmetic picks out exactly q = 11 and M = 15, the (13,8) cell.
 4. **No table cell beaten.** Two squad rounds (16 Haiku strategies, §4.1) found nothing better than random lifts.
@@ -100,10 +101,29 @@ left is t(x) + l(y) = g; this forces all such points to share one label and all 
 either every point or every line covers g, or n_g + (q+1)n_{−g} ≥ qP/(q+1). Summing over the M − 1 nonzero g, with
 Σ_g (n_g + (q+1)n_{−g}) = (q+2)P, gives (M − 1)·q/(q+1) ≤ q + 2. ∎
 
-Non-regular labellings are not covered by this count (constant labels give the n+2 cover with M = 4). The same
-heuristic count for two matchings gives roughly 2q + 15 (29 at q = 7, 41 at q = 13), a little below DGQ's
-2.5q + 12.5. This suggests, but does not prove, that DGQ's construction uses holonomy on H(q) or walks that exist only
-because of where the matchings are placed.
+Non-regular labellings are not covered by this count (constant labels give the n+2 cover with M = 4).
+
+**Counting consequence (zero holonomy, two matchings)** (`j2bound.py` → `j2bound_out.txt`). If both labellings
+t_1, t_2 are regular and the guaranteed walks alone cover Z_M for every point–line pair, then
+M ≤ 1 + 2(q+1)(q+4)/(q−3) (q ≥ 4).
+
+*Proof.* For g ≠ 0 let A_g be the points x with g ∉ X(x), where X(x) = {t_1(x), t_2(x), t_1(x) − l_2(s_1 x),
+t_2(x) − l_1(s_2 x)} ∪ {−l_k(b) : b ∋ x, k = 1, 2} (the walks that depend on x only), and B_g the lines y with
+g ∉ Y(y), defined in the same way. As above, |A_g| ≥ P − α_g with α_g = Σ_k (n^k_g + (q+1)n^k_{−g}) + c_g, where n^k_v
+is the number of points with t_k = v (≤ P/(q+1) by regularity) and c_g counts the points with t_1(x) − l_2(s_1 x) = g
+plus those with t_2(x) − l_1(s_2 x) = g; likewise |B_g| ≥ P − β_g with d_g in place of c_g. For x ∈ A_g and y ∈ B_g
+only the four walks t_k(x) + l_m(y) are left, so the 2-sets S_x = {g − t_1(x), g − t_2(x)} and T_y = {l_1(y), l_2(y)}
+must meet. Suppose both A_g and B_g are non-empty and fix T_0 = {a, b}. Every S_x contains a or b. If every S_x
+contains a (or every S_x contains b), each x ∈ A_g has t_1(x) or t_2(x) equal to g − a, so |A_g| ≤ 2P/(q+1).
+Otherwise some S_1 contains a but not b and some S_2 contains b but not a; every T_y meets both, so l_1(y) lies in the
+set S_1 ∪ S_2 of at most 4 values and |B_g| ≤ 4P/(q+1). In every case max(α_g, β_g) ≥ P − 4P/(q+1). Summing
+max(α_g, β_g) ≤ Σ_k (n^k_g + (q+1)n^k_{−g}) + c_g + d_g over the M − 1 nonzero g gives
+(M − 1)(q − 3)/(q + 1) ≤ 2(q + 4). ∎
+
+The bound is 45, 44, 44, 46, 48 at q = 7, 8, 9, 11, 13, above DGQ's 30, 30, 35, 40, 45; DGQ's formula passes it only
+from q = 19 on. So, unlike the one-matching case, counting does not show that DGQ needs holonomy or conditional walks
+anywhere in the table range. (An earlier draft called a heuristic version "2q + 15" and suggested it did; that was
+wrong.)
 
 ### 1.3 A spectral obstruction (`spectrum_check.py` → `spectrum_check_out.txt`)
 
@@ -231,8 +251,9 @@ liftdiam (a lift disconnected before level D was reported as 0 unreached); fixed
 Round 2: V + E operations (d1: random level, diameter 9 at q = 3), "two states + out-arcs" bases (d2: base diameter
 8–9, far off), colour voltages with the Z_5 part (d3: 188 unreached at M = 15, q = 5, random level), targeted
 one-matching annealing at q = 4 (d4: 598 unreached at M = 8 = q + 4, from 3,912 for a random start; still falling), anti-homomorphic hop matchings (d5: no exact one; no gain), literature
-(d6: the Comellas–Gómez 1995 paper on compounding generalized hexagons for general graphs, arXiv math/9411218,
-and the Quisquater thesis reference; nothing on bipartite D = 8; final report pending), duality hops (d7: no gain), GF(q)*/±1 labels for the (13,8) cell (d8: random level at q = 7, 9 copies).
+(d6: the DGQ paper is cited nowhere it could reach; no diameter-8 hexagon construction and no "diameter + 1, order
+× (1 + Δ/2)" operation found; nearest unread item: Bond and Delorme, "New large bipartite graphs with given degree and
+diameter", Ars Combin. 25-C (1988) 123–132; notes in research/squads/r2-d8/d6/notes.md), duality hops (d7: no gain), GF(q)*/±1 labels for the (13,8) cell (d8: random level at q = 7, 9 copies).
 
 ## 5. Where to go next
 
