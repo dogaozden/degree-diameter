@@ -20,6 +20,8 @@
      INIT    file written by a previous run (OUT format) to start from
      EVAL    1: evaluate INIT (or the random start) once with all sources and exit
      EDGES   file: with EVAL=1 write the lift edge list (n, then "u v") for apsp
+     TARGET  probability (0..1) that a swap move is targeted: a missed (s,w,g) is turned into a two-hop route
+             s ~> u -hop a-> u' -hop b-> v' ~> w by one swap in matching b (j >= 2)
    OUT format: "glift q j m D" then group spec line, then per point p: sigma_1(p) h_1(p) ... sigma_j(p) h_j(p),
    then per flag (in GH file order: line l, k-th point): voltage of the dart point->line.
    Compile: gcc -O3 -march=native -fopenmp -o glift glift.c */
@@ -148,6 +150,46 @@ static long long misses_from(int u, u64 *A, u64 *Bv) {
     return miss;
 }
 
+
+/* list up to maxk missed targets (w, g) from source u (same propagation as misses_from) */
+static int list_misses(int u, u64 *A, u64 *Bv, int *ow, int *og, int maxk, u64 *rs) {
+    memset(A, 0, sizeof(u64) * NV); A[u] = 1ULL;
+    int side = u < P ? 0 : 1; u64 *cur = A, *nxt = Bv; int k = 0; long long seen = 0;
+    for (int lev = 1; lev <= D; lev++) {
+        int ns = side ^ (lev & 1); int lo = ns ? P : 0, hi = ns ? NV : P;
+        for (int w = lo; w < hi; w++) { const int *nb = nbr + (size_t)w * deg; const int *vi = vin + (size_t)w * deg; u64 r = 0;
+            for (int s = 0; s < deg; s++) { u64 x = cur[nb[s]]; if (x) r |= perm(x, vi[s]); } nxt[w] = r; }
+        u64 *t = cur; cur = nxt; nxt = t;
+        if (lev >= D - 1) for (int w = lo; w < hi; w++) { u64 miss = FULL & ~cur[w];
+            while (miss) { int g = __builtin_ctzll(miss); miss &= miss - 1; seen++;
+                if (k < maxk) { ow[k] = w; og[k] = g; k++; }
+                else { /* reservoir */ *rs = *rs * 6364136223846793005ULL + 1442695040888963407ULL; long long r = (long long)((*rs >> 17) % (u64)seen); if (r < maxk) { ow[r] = w; og[r] = g; } } } }
+    }
+    return k;
+}
+/* GH-only BFS distances (no hops), depth <= 5 */
+static int *ghd;
+static void gh_bfs(int s, int *dist, int *queue) {
+    for (int i = 0; i < NV; i++) dist[i] = -1;
+    int h = 0, t = 0; dist[s] = 0; queue[t++] = s;
+    while (h < t) { int x = queue[h++]; if (dist[x] >= 5) continue;
+        if (x < P) { for (int k = 0; k <= q; k++) { int y = P + ptl[x * (q + 1) + k]; if (dist[y] < 0) { dist[y] = dist[x] + 1; queue[t++] = y; } } }
+        else { int l = x - P; for (int k = 0; k <= q; k++) { int y = lines[l * (q + 1) + k]; if (dist[y] < 0) { dist[y] = dist[x] + 1; queue[t++] = y; } } } }
+}
+/* voltage of the GH geodesic from s to x (dist <= 5, unique): product along the path from s */
+static int path_volt(int s, int x, const int *dist) {
+    /* walk back from x to s along decreasing dist; accumulate voltages in reverse then combine */
+    int seq[8], ns = 0; int cur = x;
+    while (cur != s) {
+        int found = -1, vstep = 0;
+        if (cur < P) { for (int k = 0; k <= q; k++) { int l = ptl[cur * (q + 1) + k], y = P + l; if (dist[y] == dist[cur] - 1) { found = y; vstep = fv[l * (q + 1) + ptk[cur * (q + 1) + k]]; break; } } /* dart y(line) -> cur(point) has voltage fv^-1 */ vstep = ginv[vstep]; }
+        else { int l = cur - P; for (int k = 0; k <= q; k++) { int y = lines[l * (q + 1) + k]; if (dist[y] == dist[cur] - 1) { found = y; vstep = fv[l * (q + 1) + k]; break; } } }
+        seq[ns++] = vstep; cur = found;
+    }
+    int g = 0; for (int i = ns - 1; i >= 0; i--) g = mul[g * m + seq[i]];
+    return g;
+}
+
 static int *srcs; static int nsrc; static int nth = 1;
 static u64 **bufA, **bufB;
 static long long eval_sources_lim(long long lim) {
@@ -247,6 +289,9 @@ int main(int argc, char **argv) {
     for (int l = 0; l < P; l++) set_line_slots(l);
     bufA = malloc(sizeof(u64 *) * nth); bufB = malloc(sizeof(u64 *) * nth);
     for (int i = 0; i < nth; i++) { bufA[i] = malloc(sizeof(u64) * NV); bufB[i] = malloc(sizeof(u64) * NV); }
+    double ptarget = getenv("TARGET") ? atof(getenv("TARGET")) : 0.0;
+    int *tw = malloc(sizeof(int) * 64), *tg = malloc(sizeof(int) * 64); u64 rs_state = seed * 7 + 3;
+    int *ds = malloc(sizeof(int) * NV), *dw = malloc(sizeof(int) * NV), *qu = malloc(sizeof(int) * NV), *du = malloc(sizeof(int) * NV), *qu2 = malloc(sizeof(int) * NV);
     if (getenv("EVAL") && atoi(getenv("EVAL"))) {
         long long ws = -1; double t0 = omp_get_wtime(); long long c;
         if (sample > 0 && sample < NV) { nsrc = sample; srcs = malloc(sizeof(int) * NV); for (int i = 0; i < NV; i++) srcs[i] = i;
@@ -283,8 +328,58 @@ int main(int argc, char **argv) {
         int kinds[3], nk = 0; if (sig_free && J) kinds[nk++] = 0; if (hv_free && J) kinds[nk++] = 1; if (ghv_free || ghv_z2) kinds[nk++] = 2;
         int kind = kinds[rndi(nk)];
         int t = J ? rndi(J) : 0, p1 = 0, p2 = 0, old = 0, idxf = 0;
+        int targeted_ok = 0;
+        if (kind == 0 && J >= 1 && ptarget > 0 && rndu() < ptarget) {
+            /* targeted move: pick a missed (s, w, g) and create a two-hop route
+               s ~(l1)~> u -hop a-> u' ~(l2)~> v -hop b-> v' ~(l3)~> w  by one swap in matching b at v */
+            int s = srcs[rndi(nsrc)];
+            int k = list_misses(s, bufA[0], bufB[0], tw, tg, 64, &rs_state);
+            if (k > 0) {
+                int i = rndi(k), w = tw[i], g = tg[i];
+                gh_bfs(s, ds, qu); gh_bfs(w, dw, qu);
+                int L = ((s < P) == (w < P)) ? D - 1 : D;
+                for (int tries = 0; tries < 80 && !targeted_ok; tries++) {
+                    int l1 = rndi(L - 1), l2 = rndi(L - 1 - l1), l3 = rndi(L - 1 - l1 - l2);
+                    if (l1 > 5 || l3 > 5 || l2 > 5) continue;
+                    int u = -1, vp = -1;
+                    if (l1 == 0) u = s; else for (int z = 0; z < 400 && u < 0; z++) { int x = rndi(NV); if (ds[x] == l1) u = x; }
+                    if (l3 == 0) vp = w; else for (int z = 0; z < 400 && vp < 0; z++) { int x = rndi(NV); if (dw[x] == l3) vp = x; }
+                    if (u < 0 || vp < 0) continue;
+                    int a = rndi(J), b = rndi(J);
+                    /* first hop at u */
+                    int up, x1;
+                    if (u < P) { up = P + sig[a * P + u]; x1 = hv[a * P + u]; }
+                    else { int pt = sinv[a * P + (u - P)]; up = pt; x1 = ginv[hv[a * P + pt]]; }
+                    /* v at GH distance l2 from up, with type such that hop b at v lands on vp's type */
+                    int v = -1;
+                    if (l2 == 0) v = up;
+                    else { gh_bfs(up, du, qu2); for (int z = 0; z < 400 && v < 0; z++) { int x = rndi(NV); if (du[x] == l2) v = x; } }
+                    if (v < 0) continue;
+                    if ((v < P) == (vp < P)) continue;          /* hop b must change side */
+                    if (l2 == 0 && a == b) continue;            /* immediate backtrack on the same matching */
+                    int Vsu = path_volt(s, u, ds), Vvw = ginv[path_volt(w, vp, dw)];
+                    int Vuv = 0; if (l2 > 0) Vuv = path_volt(up, v, du);
+                    if (v < P) { /* hop P->L at v via sigma_b: set sigma_b(v) = vp */
+                        int x2 = hv[b * P + v];
+                        int prod = mul[mul[mul[mul[Vsu * m + x1] * m + Vuv] * m + x2] * m + Vvw];
+                        if (prod != g) continue;
+                        if (b == a && u < P && v == u) continue;
+                        int z = sinv[b * P + (vp - P)]; if (z == v) continue;
+                        if (b == a && (z == u || v == u || (u >= P && (z == up || v == up)))) continue;
+                        t = b; p1 = v; p2 = z; targeted_ok = 1;
+                    } else { /* hop L->P at line v via sigma_b^-1: set sigma_b(vp) = v */
+                        int x2 = ginv[hv[b * P + vp]];
+                        int prod = mul[mul[mul[mul[Vsu * m + x1] * m + Vuv] * m + x2] * m + Vvw];
+                        if (prod != g) continue;
+                        int z = sinv[b * P + (v - P)]; if (z == vp) continue;
+                        if (b == a && (u < P ? (vp == u || z == u) : (vp == up || z == up))) continue;
+                        t = b; p1 = vp; p2 = z; targeted_ok = 1;
+                    }
+                }
+            }
+        }
         if (kind == 0) {
-            p1 = rndi(P); p2 = rndi(P); if (p1 == p2) continue;
+            if (!targeted_ok) { p1 = rndi(P); p2 = rndi(P); if (p1 == p2) continue; }
             int l1 = sig[t * P + p1], l2 = sig[t * P + p2];
             sig[t * P + p1] = l2; sig[t * P + p2] = l1; sinv[t * P + l2] = p1; sinv[t * P + l1] = p2;
             set_point_slots(p1); set_point_slots(p2); set_line_slots(l1); set_line_slots(l2);

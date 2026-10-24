@@ -7,7 +7,7 @@
    Output (text): "P q" then P lines (one per hexagon line) with its q+1 point indices.
    Self-checks: |pi_x| = q^2+q+1 for every x, every kernel vector is singular, every line has q+1 points,
    exactly P lines, every point on q+1 lines.
-   Usage: gh_build q > gh_q.txt          (compile: gcc -O2 -o gh_build gh_build.c) */
+   Usage: gh_build q [COORDFILE] > gh_q.txt   (COORDFILE: one line per point, its normalized vector)          (compile: gcc -O2 -o gh_build gh_build.c) */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -129,6 +129,11 @@ int main(int argc, char **argv) {
     }
     if (L != P) { fprintf(stderr, "line count %d != %d\n", L, P); return 1; }
     for (int i = 0; i < P; i++) if (deg[i] != q + 1) { fprintf(stderr, "point %d on %d lines\n", i, deg[i]); return 1; }
+    if (argc > 2) { /* coordinates file: point index -> normalized vector (Tits coordinates x0..x6) */
+        FILE *cf = fopen(argv[2], "w");
+        for (int i = 0; i < P; i++) { for (int k = 0; k < 7; k++) fprintf(cf, k ? " %d" : "%d", pts[7 * i + k]); fprintf(cf, "\n"); }
+        fclose(cf);
+    }
     printf("%d %d\n", P, q);
     for (int l = 0; l < L; l++) {
         for (int a = 0; a <= q; a++) printf(a ? " %d" : "%d", lines[(long long)(q + 1) * l + a]);
