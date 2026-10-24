@@ -55,3 +55,20 @@ apsp (all pairs), 2026-10-24 23:3x UTC: n=404222 edges=2223221 degree min=11 max
 RESULT VALID d=11 D=7 n=404222. Edge list sha256 767516bed8341d61b52f3398bc5f7d1428c67cdc3aeca816d74228b9594994bb.
 (The 5-level version with the same 2,821 points, 675,584 vertices for (12,7), has diameter 8: with 4K = 11,284 hubs
 of hub-graph degree 7 some same-side hub pairs end up more than 6 apart. Being redone with fewer pairs.)
+
+## Larger sets from squad round 4: (10,7) 224,962, (9,7) 118,224, (7,7) 23,580
+
+The sets came from squad round 4 (research/squads/d10D7-r4/; each set checked with tools/setcheck) and the
+Hermitian-type spread. Lines are no constraint: the H(q)-lines inside a hyperplane whose section of Q(6,q) is elliptic
+form a spread of q^3+1 pairwise opposite lines (research/d10D7/sets/hspread.py builds it for q = 8; the squad found
+spreads for q = 7, 5 by search). Pairwise opposite points (partial ovoids; H(q) has no ovoid unless q = 3^h) set K.
+| cell | points (source) | lines | K | n | solution |
+|---|---|---|---|---|---|
+| (10,7) | 134 (c1, local search; sets/P8_c1_134.txt) | 513 (spread, sets/L8_spread513.txt) | 134 | **224,962** | d10D7_hex8_B2K134_n224962.sol |
+| (9,7) | 288 (c5; sets/P7_c5_288.txt) | 344 (c5 spread; sets/L7_c5_344.txt) | 288 | **118,224** | d9D7_hex7_B2K288_n118224.sol |
+| (7,7) | 72 (c6; sets/P5_c6_72.txt) | 126 (c6 spread; sets/L5_c6_126.txt) | 72 | **23,580** | d7D7_hex5_B2K72_n23580.sol |
+Build: `B2PTS=sets/P8_c1_134.txt B2LINES=sets/L8_spread513.txt ./d7hex b2 hex/hex_q8.bin 1000 3 OUT.sol 6 1`
+(q = 7: hub degree 5; q = 5: hub degree 4). apsp (all pairs), 2026-10-24 ~23:5x UTC:
+- (10,7): n=224962 edges=1124676 degree min=9 max=10 bipartite=yes diameter=7, RESULT VALID d=10 D=7; sha256 a8d2e3efe3dc9ad0fd65a679eebd509598d6c87cb34c129a0105c84c41e9a70a
+- (9,7): n=118224 edges=531720 degree min=8 max=9 bipartite=yes diameter=7, RESULT VALID d=9 D=7; sha256 f08d8d789bf37dec2d5fc0ae82850d5be17b7ca2c5b8d817187b25d4d6a2cf3b
+- (7,7): n=23580 edges=82530 degree min=7 max=7 bipartite=yes diameter=7, RESULT VALID d=7 D=7; sha256 946de08a99434031f515d5deaf1acbf2d8dd45b2536554eee14c80686a7c043e
