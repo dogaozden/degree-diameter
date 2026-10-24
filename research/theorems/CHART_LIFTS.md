@@ -344,7 +344,10 @@ labelling, so these 24 are all the cases. For every group of order 65 to 81 that
 cyclic, Z_a × Z_b, dihedral, dicyclic, metacyclic) an exhaustive scan of all connection sets (one element fixed to
 the identity; `r3/ctrl_exh.c`, the EXH mode written by squad card r2-c6) finds no Haar graph satisfying Theorem 11 for
 7 of the classes (log `r3/exh_d12.log`, minimum cost 2); the other 17 classes are scanned in `r3/exh_d12_new.log`
-(see that log for the outcome; until it is complete this is only proved for the 7). Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅). A Haar graph of order
+(see that log for how far it got; until it is complete the statement is proved for the 7 only). For order 81, the
+only order in this range that would beat the 12,960 graph, all 24 classes are done for the 5 groups of order 81 that
+`mkgroups.py` builds (Z₈₁, Z₃ × Z₂₇, Z₉ × Z₉, Z₉ ⋊₄ Z₉, Z₂₇ ⋊₁₀ Z₃): none works (`r3/exh_d12_new81.log`). The other 10
+groups of order 81 were not tried. Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅). A Haar graph of order
 82 to 121 would also be a 4-regular bipartite graph of diameter 5 on more than 162 vertices, a (4,5) record.
 Controllers with 3 or 4 vertex orbits do go further: m = 72 (Theorem 11 table).
 
