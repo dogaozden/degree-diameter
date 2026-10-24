@@ -105,7 +105,7 @@ between the classes. Lift B + matchings by Z_M with voltage 0 on B and t_i on σ
 
 Check: `pcover.c` with 0 annealing steps (random matchings) gives cost 0 for W(3), W(4) at D = 6 and for GH(2) at D = 8
 with Z₁₀, T = {1,4}, three seeds each. A scan of all T ⊂ Z_M for M = 10…13 finds only T = {1,4} and {2,3} at M = 10
-(`runs/zero_voltage_n2_gq3.txt`).
+(`runs/zero_voltage_n2_gq3.txt`). The same three tests on non-polygon bases (random 4-regular bipartite graphs, diameter 6 and 8, `randbase.py`) give cost 0 every time. An odd diameter really does fail at n+1: PG(2,3), PG(2,5) and C(2,2) with one matching over Z₃ leave 38–826 uncovered pairs at D = n+1 and none at n+2 (`runs/cover_random_bases.txt`). (Random odd-diameter bases have enough slack to reach n+1 anyway.)
 
 *What it explains.* Every green D = 5 and D = 7 table value is (2j+1)·|GQ(q)| or (2j+1)·|GH(q)| with Δ = q+1+j
 (`table_factor.py` → `table_factor_out.txt`; (16,5) = 27,300 is the exception). Our own D = 4 and D = 6 graphs
@@ -204,7 +204,7 @@ D = 8 with Δ = 10, 12, 14, 16 (0.10–0.11, the unexplained GH family). The new
 | meta_table.py | meta_table_out.txt | metacyclic records (meta_sols/ copies the lifts-branch solutions) |
 | table_factor.py | table_factor_out.txt | factorisation of the table against polygon sizes |
 | general_table.py, double_bound.py | double_bound_out.txt | B(H) doubling against the general table |
-| polygons.py, pcover.c | bases/, runs/pc_*, runs/zero_voltage_n2_gq3.txt | polygon covers |
+| polygons.py, pcover.c, randbase.py | bases/, runs/pc_*, runs/zero_voltage_n2_gq3.txt, runs/cover_random_bases.txt | polygon covers |
 | flags.py, flags_affine.py, cflags.py, bflags.py, buildings.py, walkcount.c | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
 | coset.py | runs/coset_cubic.txt | coset graphs with cyclic stabilisers |
 | cells.py, walkhist.py | cells_out.txt, runs/walkhist_C23.txt | per-cell Moore ratios; walk multiplicities in C(2,3) |
