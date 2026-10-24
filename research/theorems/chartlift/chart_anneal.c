@@ -11,6 +11,8 @@
 #include <math.h>
 #include <time.h>
 #include <stdint.h>
+#include <time.h>
+static double wall(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 #define N 4
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t xr(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
@@ -82,14 +84,14 @@ int main(int argc, char **argv) {
     WS = atof(argv[5]); WP = atof(argv[6]); WD = atof(argv[7]); const char *out = argc > 8 ? argv[8] : NULL;
     Q4 = q * q * q * q; mark = malloc(Q4);
     double best = 1e18; int bA[8][N][N], bb[8][N];
-    clock_t t0 = clock(); long it = 0; int restarts = 0;
-    while ((double)(clock() - t0) / CLOCKS_PER_SEC < secs && best > 0) {
+    double t0 = wall(); long it = 0; int restarts = 0;
+    while ((wall() - t0) < secs && best > 0) {
         restarts++;
         for (int c = 0; c < k; c++) {
             do { for (int r = 0; r < N; r++) for (int s = 0; s < N; s++) A[c][r][s] = c == 0 ? (r == s) : (int)(xr() % q); } while (!matinv(A[c], Ai[c]));
             do { for (int r = 0; r < N; r++) b[c][r] = xr() % q; } while (!b[c][0] && !b[c][1] && !b[c][2] && !b[c][3]); }
         double cur = cost(); double T0 = 2.0; long stall = 0;
-        while (stall < 20000 && (double)(clock() - t0) / CLOCKS_PER_SEC < secs) {
+        while (stall < 20000 && (wall() - t0) < secs) {
             it++; int sA[N][N], sb[N]; int c = xr() % k, mv = xr() % 3;
             memcpy(sA, A[c], sizeof sA); memcpy(sb, b[c], sizeof sb);
             if (mv < 2 && c > 0) { A[c][xr() % N][xr() % N] = xr() % q; if (!matinv(A[c], Ai[c])) { memcpy(A[c], sA, sizeof sA); continue; } }
@@ -98,7 +100,11 @@ int main(int argc, char **argv) {
             if (nc <= cur || exp((cur - nc) / TT) > (double)(xr() % 1000000) / 1e6) { if (nc < cur) stall = 0; else stall++; cur = nc; }
             else { memcpy(A[c], sA, sizeof sA); memcpy(b[c], sb, sizeof sb); stall++; }
             if (cur < best) { best = cur; memcpy(bA, A, sizeof bA); memcpy(bb, b, sizeof bb);
-                printf("t=%.1fs best=%.3f sing=%d unc_pencil=%d unc_diag=%d\n", (double)(clock() - t0) / CLOCKS_PER_SEC, best, nsing, unc_p, unc_d); fflush(stdout); if (best == 0) break; }
+                if (out) { FILE *g = fopen(out, "w");
+                    for (int c = 0; c < k; c++) { for (int r = 0; r < N; r++) for (int s = 0; s < N; s++) fprintf(g, "%d ", A[c][r][s]); fprintf(g, "\n"); }
+                    for (int c = 0; c < k; c++) { for (int r = 0; r < N; r++) fprintf(g, "%d ", b[c][r]); fprintf(g, "\n"); }
+                    fclose(g); }
+                printf("t=%.1fs best=%.3f sing=%d unc_pencil=%d unc_diag=%d\n", (wall() - t0), best, nsing, unc_p, unc_d); fflush(stdout); if (best == 0) break; }
         }
     }
     memcpy(A, bA, sizeof bA); memcpy(b, bb, sizeof bb); cost();

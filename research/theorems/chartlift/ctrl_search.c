@@ -18,6 +18,8 @@
 #include <math.h>
 #include <time.h>
 #include <stdint.h>
+#include <time.h>
+static double wall(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t xr(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 #define MAXE 256
@@ -106,13 +108,13 @@ int main(int argc, char **argv) {
             fclose(o); }
         return 0; }
     int free_e[MAXE], nf = 0; for (int i = 0; i < ne; i++) if (!istree[i]) free_e[nf++] = i;
-    long best = -1; int bv[MAXE]; clock_t t0 = clock(); long it = 0; int restarts = 0;
-    while ((double)(clock() - t0) / CLOCKS_PER_SEC < secs && best != 0) {
+    long best = -1; int bv[MAXE]; double t0 = wall(); long it = 0; int restarts = 0;
+    while ((wall() - t0) < secs && best != 0) {
         restarts++;
         do { for (int i = 0; i < ne; i++) volt[i] = istree[i] ? eid : (int)(xr() % g); } while (!parallel_ok());
         long c = cost(); if (best < 0 || c < best) { best = c; memcpy(bv, volt, sizeof volt); }
         double T0 = 1.0 + 0.02 * c; long stall = 0;
-        while (stall < 200000 && best != 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < secs) {
+        while (stall < 200000 && best != 0 && (wall() - t0) < secs) {
             it++; int ei = free_e[xr() % nf], old = volt[ei]; volt[ei] = xr() % g;
             if (!parallel_ok()) { volt[ei] = old; continue; }
             long c2 = cost(); double TT = T0 * exp(-(double)stall / 30000.0) + 0.3;
