@@ -135,3 +135,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 17:11 PT (harvest): (14,10) 1,292,644,080 (was 1,217,130,096), sl 181 n 109; claude/structured-search-orbit-w5dd4f.
 - Oct 23 17:11 PT (harvest): (15,8) 17,998,512 (was 16,483,200), psl 137 n 7; claude/structured-search-orbit-w5dd4f.
 - Oct 23 17:11 PT (harvest): (15,9) 205,083,600 (was 190,887,072), sl 149 n 31; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:25 PT (coordinator): (5,10) 93,444 (was our 93,000): Haar graph of Z1797 ⋊₂₁₂ Z26, voltage-lifts session; rebuilt and checked all-pairs (research/lifts/coordinator_check/check_2026-10-23b.txt).
