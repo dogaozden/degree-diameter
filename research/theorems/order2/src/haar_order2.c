@@ -6,6 +6,7 @@
  *   OSUB=s (s | k, 1 < s < k): one more orbit, of size s (an alpha-orbit inside Fix(alpha^s)), after the m free orbits:
  *   d = f + k m + s.  E.g. ORBIT="6 2 0" OSUB=3 gives d = 15 with no fixed letter.  The annealer moves it like an orbit.
  *   CLASSES=1 (with RANDORB): miss rate of each stabiliser class.  BESTOUT=path: best S of an unsolved run.
+ *   OSTAB=1: annealing energy counts uncovered alpha-orbits (each uncovered x weighs |Stab(x)|), generalising ORBW=k.
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -977,6 +978,28 @@ static long long fixmiss(uint64_t **sv) {
     }
     return m;
 }
+/* haar_order2 OSTAB=1: an uncovered element x weighs |Stab(x)| (its alpha-orbit has k/|Stab(x)| elements), so the energy
+ * counts uncovered alpha-orbits (clumps) instead of elements: extra weight |Stab(x)| - 1 for every non-free x. */
+static int OSTAB = 0, *SMX = 0; static uint8_t *SMW = 0; static long long NSM = 0;
+static void build_small(void) {
+    long long cap = 1 << 16; SMX = malloc(sizeof(int) * cap); SMW = malloc(cap); NSM = 0;
+    for (int x = 0; x < N; x++) { int y = alpha(x), o = 1; while (y != x && o < OK_) { y = alpha(y); o++; }
+        if (o < OK_) { if (NSM == cap) { cap *= 2; SMX = realloc(SMX, sizeof(int) * cap); SMW = realloc(SMW, cap); }
+            SMX[NSM] = x; SMW[NSM] = (uint8_t)(OK_ / o - 1); NSM++; } }
+    fprintf(stderr, "OSTAB: %lld non-free elements weighted by |Stab|\n", NSM);
+}
+static long long smallmiss(uint64_t **sv) {
+    long long m = 0;
+    for (int t = 0; t < (D % 2 ? 2 : 1); t++) { const uint64_t *V = sv[t];
+        for (long long i = 0; i < NSM; i++) { int g = SMX[i], cov;
+            if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+            else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+            if (!cov) m += SMW[i]; } }
+    return m;
+}
+static inline long long extra_energy(uint64_t **sv) {
+    return (OSTAB ? smallmiss(sv) : (ORBW > 1 ? (ORBW - 1) * fixmiss(sv) : 0));
+}
 /* full diameter check of the current S; f = 0: normalise to S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A))
  * so that the first generator is e, and check again; then write the solution file.  Returns 1 iff written. */
 static int check_and_write(ctx *c0, const char *out) {
@@ -1141,6 +1164,7 @@ exdone:
     for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
+    if (getenv("OSTAB") && atoi(getenv("OSTAB"))) { OSTAB = 1; build_small(); }
     /* CKPT=path: the best S so far (element indices; alpha and the group are deterministic) is written there every
      * 60 s, with the evaluations and seconds spent; if the file exists at start, the run resumes from it (budget,
      * evals and RESULT count both segments; the trajectory after a resume is not that of an uninterrupted run). */
@@ -1157,7 +1181,7 @@ exdone:
                   fprintf(stderr, "resumed from %s: evals %lld, %.0f s spent, best %lld\n", ckpt, e0, el, b0); }
         else if (f) fprintf(stderr, "checkpoint %s unusable, fresh start\n", ckpt); }
     double lastck = now();
-    long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
+    long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + extra_energy(SV[0]);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
     if (ORBW > 1) fprintf(stderr, "ORBW=%d: an uncovered fixed element weighs %d; start energy %lld\n", ORBW, ORBW, ce);
@@ -1193,7 +1217,7 @@ exdone:
             else if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
             else { mktab(cand[t][0], OTF[me][0], OTI[me][0]); tf[fs] = OTF[me][0]; ti[fs] = OTI[me][0]; }
             double sc; long long r = cost_any(cx, tf, ti, &sc, SV[t], OABORT ? &bound : &NOBOUND, nth > 1);
-            if (r >= 0 && ORBW > 1) { craw[t] = r; r += (ORBW - 1) * fixmiss(SV[t]); } else craw[t] = r;
+            if (r >= 0 && (ORBW > 1 || OSTAB)) { craw[t] = r; r += extra_energy(SV[t]); } else craw[t] = r;
             if (r < 0) cs[t] = NOBOUND;
             else { cs[t] = r; long long bv = __atomic_load_n(&bound, __ATOMIC_RELAXED);
                 while (r < bv && !__atomic_compare_exchange_n(&bound, &bv, r, 0, __ATOMIC_RELAXED, __ATOMIC_RELAXED)) ; }
@@ -1217,7 +1241,7 @@ exdone:
                 for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
             }
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
-            c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
+            c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + extra_energy(SV[0]);
             cE = (double)ce / OK_; collect(C[0]); lastimp = ONOW; lastimpstep = steps;
         }
         if (ckpt && now() - lastck > 60) { char tmp[1100]; snprintf(tmp, sizeof tmp, "%s.tmp", ckpt); FILE *f = fopen(tmp, "w");
