@@ -33,6 +33,7 @@
               GROW=Kmax: once solved, add freed pairs one at a time (best of NCAND flags by uncovered targets, opposite
                 to all if OPPGROW=1), hub edges HGDEG each, repair for STEPSEC s; keep if solved, else revert (MAXFAIL)
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
+     d7hex grow   HEXBIN SOL OUT [seed]             resume the growth mode (env GROW=Kmax ...) from a solved .sol
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
      d7hex super  HEXBIN SOL out.txt seed tries     add super-hubs (new vertices on hubs with spare degree whose freed
                                                     elements' 4-balls cover a whole side), keep those with ecc <= 7, write edges
@@ -48,7 +49,7 @@ static int q, N, Q1;            /* N points = N lines */
 static int32_t *LP;            /* LP[l*Q1+k]: points on line l */
 static int32_t *PL;            /* PL[p*Q1+k]: lines through point p */
 static int *M, *Minv;          /* point -> line, line -> point */
-static int K, *F, *isF;        /* freed points; isF[p] = index+1 or 0 */
+static int K, *F, *isF, *fl;    /* freed points; isF[p] = index+1 or 0; fl[j] = line of freed flag j */
 static int NV;                 /* 6N + 2K */
 static uint8_t *dist;
 static int *que;
@@ -441,7 +442,7 @@ static long fast_search(double maxsec) {
     for (int L = 0; L < N; L++) lineB(L, +1);
     if (!getenv("NOHGSTATIC")) for (int k = 0; k < K; k++) hubgraph_static(k, +1);
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
-    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
+    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = getenv("T0") ? atof(getenv("T0")) : 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
     double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
@@ -683,6 +684,96 @@ static void drop_pair(int j) {
     for (int e = 0; e < HGm; e++) { HGL[HGj[e]][HGLn[HGj[e]]++] = HGk[e]; HGP[HGk[e]][HGPn[HGk[e]]++] = HGj[e]; }
 }
 
+/* growth loop (GROW=Kmax): returns the final cost; per/per2/badlist are reallocated here */
+static int grow_loop(const char *out, int *per, int *per2, int *badlist) {
+   /* growth: add one freed pair at a time, repair with the fast search, keep it if solved */
+        int KMAX = atoi(getenv("GROW")); double stepsec = getenv("STEPSEC") ? atof(getenv("STEPSEC")) : 120;
+        int ncand = getenv("NCAND") ? atoi(getenv("NCAND")) : 48, hgdeg = getenv("HGDEG") ? atoi(getenv("HGDEG")) : q - 1;
+        int oppgrow = getenv("OPPGROW") ? atoi(getenv("OPPGROW")) : 1, maxfail = getenv("MAXFAIL") ? atoi(getenv("MAXFAIL")) : 6;
+        int rounds = getenv("GROWROUNDS") ? atoi(getenv("GROWROUNDS")) : 4;
+        F = realloc(F, sizeof(int) * (KMAX + 1)); fl = realloc(fl, sizeof(int) * (KMAX + 1));
+        hdp = realloc(hdp, sizeof(uint8_t *) * (KMAX + 1)); hdl = realloc(hdl, sizeof(uint8_t *) * (KMAX + 1));
+        per = realloc(per, sizeof(int) * (KMAX + 1)); per2 = realloc(per2, sizeof(int) * (KMAX + 1));
+        int nvmax = 6 * N + 2 * KMAX + 2;
+        free(dist); free(que); dist = malloc(nvmax); que = malloc(sizeof(int) * nvmax); badlist = realloc(badlist, sizeof(int) * nvmax);
+        HGj = realloc(HGj, sizeof(int) * (KMAX * 8 + 64)); HGk = realloc(HGk, sizeof(int) * (KMAX * 8 + 64));
+        HGcap = HGL ? K : 0;   /* hg_build initialised HGL[0..K-1] */
+        hg_rebuild_cap(KMAX + 1);
+        int *Msave = malloc(sizeof(int) * N), *Minvsave = malloc(sizeof(int) * N), *buf = malloc(sizeof(int) * 4 * Q1 * Q1 * Q1);
+        uint8_t *cdp = malloc(2 * N), *cdl = malloc(2 * N), *bdp = malloc(2 * N), *bdl = malloc(2 * N), *mark = malloc(2 * N);
+        char fn[600];
+        if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
+        int fails = 0; clock_t tg = clock();
+        while (K < KMAX && fails < maxfail) {
+            long best = -1, tries = 0; int bp = -1, bl = -1, found = 0;
+            while (found < ncand && tries < 100000000L) {
+                tries++;
+                int p = rndi(N); if (isF[p]) continue;
+                int l = PL[p * Q1 + rndi(Q1)]; if (isF[Minv[l]]) continue;
+                int good = 1;
+                for (int j = 0; j < K && good; j++) {
+                    if (oppgrow) { if (hdp[j][p] != 6 || hdl[j][N + l] != 6 || hdp[j][N + l] != 5 || hdl[j][p] != 5) good = 0; }
+                    else if (hdp[j][p] < 4 || hdl[j][N + l] < 4) good = 0;
+                }
+                if (!good) continue;
+                found++;
+                long u = cand_uncovered(p, l, cdp, cdl, mark, buf);
+                if (best < 0 || u < best) { best = u; bp = p; bl = l; uint8_t *tt = cdp; cdp = bdp; bdp = tt; tt = cdl; cdl = bdl; bdl = tt; }
+            }
+            if (bp < 0) { fprintf(stderr, "GROW: no candidate flag (tries %ld)\n", tries); break; }
+            memcpy(Msave, M, sizeof(int) * N); memcpy(Minvsave, Minv, sizeof(int) * N); int HGmsave = HGm;
+            int k = K;
+            F[k] = bp; isF[bp] = k + 1; fl[k] = bl;
+            { int w = Minv[bl], o = M[bp]; M[bp] = bl; Minv[bl] = bp; M[w] = o; Minv[o] = w; }
+            hdp[k] = malloc(2 * N); memcpy(hdp[k], bdp, 2 * N); hdl[k] = malloc(2 * N); memcpy(hdl[k], bdl, 2 * N);
+            K++; NV = 6 * N + 2 * K;
+            hg_rebuild_cap(KMAX + 1); hg_add_new(k, hgdeg);
+            int hv = hub_violations(k, 0) + hub_violations(k, 1);
+            for (int rep = 0; hv > 0 && rep < 2 * q; rep++) {   /* link a new hub to a neighbour of a hub it cannot reach */
+                int side = hub_violations(k, 0) > 0 ? 0 : 1, done = 0;
+                for (int j = 0; j < K && !done; j++) {
+                    if (j == k) continue;
+                    if (side == 0) {   /* z_k (line side) must reach z_j: add z_k ~ z'_m for a point-side neighbour m of z_j */
+                        if (HGLn[k] >= q - 1) break;
+                        for (int a = 0; a < HGLn[j] && !done; a++) { int m = HGL[j][a];
+                            if (HGPn[m] < q - 1 && !hg_has(k, m)) { HGj[HGm] = k; HGk[HGm] = m; HGm++; hg_rebuild_cap(HGcap); done = 1; } }
+                    } else {           /* z'_k (point side) must reach z'_j: add z_m ~ z'_k for a line-side neighbour m of z'_j */
+                        if (HGPn[k] >= q - 1) break;
+                        for (int a = 0; a < HGPn[j] && !done; a++) { int m = HGP[j][a];
+                            if (HGLn[m] < q - 1 && !hg_has(m, k)) { HGj[HGm] = m; HGk[HGm] = k; HGm++; hg_rebuild_cap(HGcap); done = 1; } }
+                    }
+                }
+                if (!done) break;
+                hv = hub_violations(k, 0) + hub_violations(k, 1);
+            }
+            int c = -1;
+            if (hv == 0) {
+                long prev = -1;
+                for (int r = 0; r < rounds; r++) {   /* keep searching while the proxy still falls by 30% per round */
+                    nodrop = 1; long zz = fast_search(stepsec); nodrop = 0;
+                    if (zz == 0 || (prev >= 0 && zz * 10 > prev * 7)) break;
+                    prev = zz;
+                }
+                c = total_cost(per);
+                if (c > 0) c = bfs_phase(0.25 * stepsec, per, per2, badlist, c);
+            }
+            double el = (double)(clock() - tg) / CLOCKS_PER_SEC;
+            if (c == 0) {
+                fails = 0;
+                fprintf(stderr, "GROW: K=%d n=%d solved (candidate uncovered %ld, hub edges %d, %.0fs)\n", K, NV, best, HGm, el);
+                if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
+            } else {
+                fails++;
+                fprintf(stderr, "GROW: K=%d failed (cost %d, hub violations %d), reverting (%.0fs)\n", K, c, hv, el);
+                K--; NV = 6 * N + 2 * K; isF[bp] = 0; free(hdp[k]); free(hdl[k]);
+                memcpy(M, Msave, sizeof(int) * N); memcpy(Minv, Minvsave, sizeof(int) * N); HGm = HGmsave; hg_rebuild_cap(KMAX + 1);
+            }
+        }
+        int cost = total_cost(per);
+        fprintf(stderr, "GROW done: K=%d n=%d cost %d\n", K, NV, cost);
+        return cost;
+    }
+
 int main(int argc, char **argv) {
     if (argc < 3) { fprintf(stderr, "usage: see header\n"); return 1; }
     load(argv[2]);
@@ -759,6 +850,22 @@ int main(int argc, char **argv) {
         fclose(f);
         return 0;
     }
+    if (!strcmp(argv[1], "grow")) {   /* d7hex grow HEXBIN SOL OUT seed: resume the growth mode (GROW=Kmax etc.) from a solution */
+        read_sol(argv[3]);
+        const char *outg = argv[4];
+        rs ^= (uint64_t)atoll(argc > 5 ? argv[5] : "1") * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        fl = malloc(sizeof(int) * (K + 1)); for (int j = 0; j < K; j++) fl[j] = M[F[j]];
+        hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));
+        for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(M[F[j]], 1, hdl[j]); }
+        if (!HGm) { HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
+        int *per = malloc(sizeof(int) * (K + 1)), *per2 = malloc(sizeof(int) * (K + 1)), *badlist = malloc(sizeof(int) * NV);
+        int cost = total_cost(per);
+        fprintf(stderr, "resume: q=%d K=%d n=%d cost %d\n", q, K, NV, cost);
+        if (cost == 0 && getenv("GROW")) cost = grow_loop(outg, per, per2, badlist);
+        printf("RESULT q=%d K=%d n=%d cost %d\n", q, K, NV, cost);
+        if (cost == 0) write_sol(outg);
+        return 0;
+    }
     if (strcmp(argv[1], "search")) return 1;
     K = atoi(argv[3]); rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
     double maxsec = atof(argv[5]);
@@ -779,7 +886,7 @@ int main(int argc, char **argv) {
        of S', so (p,0) ~> (u,0) -> (M(u),1) -> (x,1) and (l,0) ~> (M(y),0) -> (y,-1) -> (t,-1) cover what the hubs miss. */
     F = malloc(sizeof(int) * (K + 1)); isF = calloc(N, sizeof(int));
     uint8_t *tmp = malloc(2 * N); uint8_t *ok = malloc(N); memset(ok, 1, N);
-    int *fl = malloc(sizeof(int) * (K + 1));
+    fl = malloc(sizeof(int) * (K + 1));
     if (mode == 1) {
         int c = rndi(N); if (K > Q1) K = Q1;
         int perm[64]; for (int k = 0; k < Q1; k++) perm[k] = k;
@@ -935,69 +1042,7 @@ int main(int argc, char **argv) {
     int *badlist = malloc(sizeof(int) * NV);
     double bfsec = alg >= 2 ? 0.1 * maxsec : maxsec;   /* after the fast search only a short BFS-based phase */
     cost = bfs_phase(bfsec, per, per2, badlist, cost);
-    if (cost == 0 && getenv("GROW")) {   /* growth: add one freed pair at a time, repair with the fast search, keep it if solved */
-        int KMAX = atoi(getenv("GROW")); double stepsec = getenv("STEPSEC") ? atof(getenv("STEPSEC")) : 120;
-        int ncand = getenv("NCAND") ? atoi(getenv("NCAND")) : 48, hgdeg = getenv("HGDEG") ? atoi(getenv("HGDEG")) : q - 1;
-        int oppgrow = getenv("OPPGROW") ? atoi(getenv("OPPGROW")) : 1, maxfail = getenv("MAXFAIL") ? atoi(getenv("MAXFAIL")) : 6;
-        F = realloc(F, sizeof(int) * (KMAX + 1)); fl = realloc(fl, sizeof(int) * (KMAX + 1));
-        hdp = realloc(hdp, sizeof(uint8_t *) * (KMAX + 1)); hdl = realloc(hdl, sizeof(uint8_t *) * (KMAX + 1));
-        per = realloc(per, sizeof(int) * (KMAX + 1)); per2 = realloc(per2, sizeof(int) * (KMAX + 1));
-        int nvmax = 6 * N + 2 * KMAX + 2;
-        free(dist); free(que); dist = malloc(nvmax); que = malloc(sizeof(int) * nvmax); badlist = realloc(badlist, sizeof(int) * nvmax);
-        HGj = realloc(HGj, sizeof(int) * (KMAX * 8 + 64)); HGk = realloc(HGk, sizeof(int) * (KMAX * 8 + 64));
-        HGcap = HGL ? K : 0;   /* hg_build initialised HGL[0..K-1] */
-        hg_rebuild_cap(KMAX + 1);
-        int *Msave = malloc(sizeof(int) * N), *Minvsave = malloc(sizeof(int) * N), *buf = malloc(sizeof(int) * 4 * Q1 * Q1 * Q1);
-        uint8_t *cdp = malloc(2 * N), *cdl = malloc(2 * N), *bdp = malloc(2 * N), *bdl = malloc(2 * N), *mark = malloc(2 * N);
-        char fn[600];
-        if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
-        int fails = 0; clock_t tg = clock();
-        while (K < KMAX && fails < maxfail) {
-            long best = -1, tries = 0; int bp = -1, bl = -1, found = 0;
-            while (found < ncand && tries < 100000000L) {
-                tries++;
-                int p = rndi(N); if (isF[p]) continue;
-                int l = PL[p * Q1 + rndi(Q1)]; if (isF[Minv[l]]) continue;
-                int good = 1;
-                for (int j = 0; j < K && good; j++) {
-                    if (oppgrow) { if (hdp[j][p] != 6 || hdl[j][N + l] != 6 || hdp[j][N + l] != 5 || hdl[j][p] != 5) good = 0; }
-                    else if (hdp[j][p] < 4 || hdl[j][N + l] < 4) good = 0;
-                }
-                if (!good) continue;
-                found++;
-                long u = cand_uncovered(p, l, cdp, cdl, mark, buf);
-                if (best < 0 || u < best) { best = u; bp = p; bl = l; uint8_t *tt = cdp; cdp = bdp; bdp = tt; tt = cdl; cdl = bdl; bdl = tt; }
-            }
-            if (bp < 0) { fprintf(stderr, "GROW: no candidate flag (tries %ld)\n", tries); break; }
-            memcpy(Msave, M, sizeof(int) * N); memcpy(Minvsave, Minv, sizeof(int) * N); int HGmsave = HGm;
-            int k = K;
-            F[k] = bp; isF[bp] = k + 1; fl[k] = bl;
-            { int w = Minv[bl], o = M[bp]; M[bp] = bl; Minv[bl] = bp; M[w] = o; Minv[o] = w; }
-            hdp[k] = malloc(2 * N); memcpy(hdp[k], bdp, 2 * N); hdl[k] = malloc(2 * N); memcpy(hdl[k], bdl, 2 * N);
-            K++; NV = 6 * N + 2 * K;
-            hg_rebuild_cap(KMAX + 1); hg_add_new(k, hgdeg);
-            int hv = hub_violations(k, 0) + hub_violations(k, 1);
-            int c = -1;
-            if (hv == 0) {
-                nodrop = 1; fast_search(stepsec); nodrop = 0;
-                c = total_cost(per);
-                if (c > 0) c = bfs_phase(0.25 * stepsec, per, per2, badlist, c);
-            }
-            double el = (double)(clock() - tg) / CLOCKS_PER_SEC;
-            if (c == 0) {
-                fails = 0;
-                fprintf(stderr, "GROW: K=%d n=%d solved (candidate uncovered %ld, hub edges %d, %.0fs)\n", K, NV, best, HGm, el);
-                if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
-            } else {
-                fails++;
-                fprintf(stderr, "GROW: K=%d failed (cost %d, hub violations %d), reverting (%.0fs)\n", K, c, hv, el);
-                K--; NV = 6 * N + 2 * K; isF[bp] = 0; free(hdp[k]); free(hdl[k]);
-                memcpy(M, Msave, sizeof(int) * N); memcpy(Minv, Minvsave, sizeof(int) * N); HGm = HGmsave; hg_rebuild_cap(KMAX + 1);
-            }
-        }
-        cost = total_cost(per);
-        fprintf(stderr, "GROW done: K=%d n=%d cost %d\n", K, NV, cost);
-    }
+    if (cost == 0 && getenv("GROW")) cost = grow_loop(out, per, per2, badlist);
     if (getenv("REPAIRSEC")) repairsec = atof(getenv("REPAIRSEC"));
     if (cost > 0 && getenv("DROP")) {   /* salvage: drop the worst pairs until every remaining freed source is fine */
         if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
