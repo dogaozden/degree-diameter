@@ -1,0 +1,15 @@
+# (12,5) 12,150: builder r3/graphs/build_d12D5_n12150.py (stdlib only); same edge set as lift.py on the controller (voltages r3/graphs/d12D5_n12150.volt on bases_k33m_col.txt over Z25) + r3/k4q3_diag_s170.txt (sorted-edge sha256 equal). Voltages: squad r3-chartlift card c2 (cost 2 with chart class 1); chart: singular set s170 of the 348 labelled (4,3) diagonal charts, found by scoring those voltages against all 348.
+# edges file sha256 (builder output order): a7cb5850f4d0ddee190ff83dc5e7fcb24362b55494ccf445ce7b20c37691f2b3
+== apsp.c (all pairs, bit-parallel BFS):
+n=12150 edges=72900 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=12150
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=12150 edges=72900 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 12150 ordered pairs
+  dist 1: 145800 ordered pairs
+  dist 2: 1409400 ordered pairs
+  dist 3: 13450050 ordered pairs
+  dist 4: 72389700 ordered pairs
+  dist 5: 60215400 ordered pairs
