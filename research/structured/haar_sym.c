@@ -973,6 +973,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         printf("RANDORB d=%d D=%d group=%s x Z_%d N=%d k=%d m=%d f=%d fix=%lld samples=%d min=%lld p1=%lld p10=%lld median=%lld mean=%.2f var=%.1f mu=%.2f time=%.1f\nRANDORB hist (cost/k):",
                d, D, Q->spec, ncyc, N, OK_, OM, OF, NFIX, m, v[0], v[m / 100], v[m / 10], v[m / 2], sm / m, sq / m - (sm / m) * (sm / m), mu, now() - t0);
         for (int h = 0; h < 32; h++) printf(" %lld", hist[h]); printf("\n");
+        { long long z = 0; for (int t = 0; t < m; t++) z += v[t] == 0;   /* v is sorted */
+          printf("RANDORB cost0=%lld of %d (P=%.4g); cost counts 0..%d:", z, m, (double)z / m, 4 * OK_);
+          for (int c0 = 0, t = 0; c0 <= 4 * OK_; c0++) { long long cnt = 0; while (t < m && v[t] < c0) t++; while (t < m && v[t] == c0) { cnt++; t++; } printf(" %lld", cnt); } printf("\n"); }
         return 0;
     }
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;

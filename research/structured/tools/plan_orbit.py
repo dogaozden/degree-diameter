@@ -3,7 +3,7 @@ mu_A = mu/k + (fixed-point term), predicted evals = 1e5 exp((mu_A - 13)/2) (scat
 usage: python3 plan_orbit.py d D LO HI [--k 3,5] [--frob] [--fams sl,psl,pgl] [--nmax 400] [--nq 6] [--c 4e-9]
                              [--hours 4] [--top 40]
 LO, HI are vertex counts (2N). Lists Q x Z_n (Q = SL/PSL/PGL(2,q); SL only at odd D), every prime of n = 1 mod k,
-n <= nq * q, with alpha = conjugation of order k (Fix = a torus, or Z(Q) x U when p = k), and with --frob also
+n <= nq * q, f = d mod k fixed generators (f >= 3 skipped unless --f3), with alpha = conjugation of order k (Fix = a torus, or Z(Q) x U when p = k), and with --frob also
 Frobenius of order k on GF(p^e) (k | e; Fix = Q(2, p^(e/k))). Ranked by vertices among the runs whose predicted time
 fits in --hours single-thread hours (c = seconds per element per evaluation, 2.2-5 ns measured here with 4 jobs)."""
 import sys, math
@@ -12,7 +12,7 @@ d, D, lo, hi = int(args[0]), int(args[1]), int(args[2]), int(args[3])
 opt = {'k': '3,5', 'fams': 'sl,psl,pgl', 'nmax': '400', 'nq': '6', 'c': '3e-9', 'hours': '4', 'top': '40'}
 flags = set(); i = 4
 while i < len(args):
-    if args[i] in ('--frob', '--all'): flags.add(args[i][2:]); i += 1
+    if args[i] in ('--frob', '--all', '--f3'): flags.add(args[i][2:]); i += 1
     else: opt[args[i][2:]] = args[i + 1]; i += 2
 ks = [int(x) for x in opt['k'].split(',')]
 fams = opt['fams'].split(',') if D % 2 == 0 else ['sl']
@@ -60,6 +60,8 @@ for q in range(3, 2100):
         for k in ks:
             syms = [('conj', conj_fix(fam, q, k))]
             if 'frob' in flags: syms.append(('frob', frob_fix(fam, q, k)))
+            f = d % k                              # fixed generators incl. e (f = 0: free orbits only)
+            if f >= 3 and 'f3' not in flags: continue   # >= 2 fixed letters besides e commute (abelian torus): avoid
             for sym, fx in syms:
                 if fx is None: continue
                 for n in range(1, min(int(opt['nmax']), int(opt['nq']) * q) + 1):
@@ -74,10 +76,11 @@ for q in range(3, 2100):
                     muA = (mu - fix * math.exp(-lam)) / k + phi
                     ev = 1e5 * math.exp((muA - 13) / 2)
                     secs = ev * float(opt['c']) * N
-                    cands.append((2 * N, fam, q, n, k, sym, fix, mu, phi, muA, ev, secs))
+                    m = (d - f) // k; lnS = m * math.log(N / k) + max(0, f - 1) * math.log(fix) - math.lgamma(m + 1)
+                    cands.append((2 * N, fam, q, n, k, sym, fix, mu, phi, muA, ev, secs, f, lnS - muA))
 H = float(opt['hours']) * 3600
-print('# (%d,%d) lambda~%.1f, %d candidates; fits = predicted single-thread time <= %s h' % (d, D, w / (lo / 2), len(cands), opt['hours']))
-print('%12s %-6s %5s %5s k %-4s %5s %6s %5s %6s %9s %8s' % ('vertices', 'fam', 'q', 'n', 'sym', 'fix', 'mu', 'phi', 'mu_A', 'evals', 'hours'))
+print('# (%d,%d) lambda~%.1f, %d candidates; margin = ln #S - mu_A (first moment, #S ~ (N/k)^m |Fix|^(f-1) / m!); fits = predicted single-thread time <= %s h' % (d, D, w / (lo / 2), len(cands), opt['hours']))
+print('%12s %-6s %5s %5s k f %-4s %5s %6s %5s %6s %6s %9s %8s' % ('vertices', 'fam', 'q', 'n', 'sym', 'fix', 'mu', 'phi', 'mu_A', 'margin', 'evals', 'hours'))
 rows = sorted(cands, key=lambda r: -r[0]) if 'all' in flags else sorted([r for r in cands if r[11] <= H], key=lambda r: -r[0])
 for r in rows[:int(opt['top'])]:
-    print('%12d %-6s %5d %5d %d %-4s %5d %6.1f %5.2f %6.2f %9.2g %8.2f' % (r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10], r[11] / 3600))
+    print('%12d %-6s %5d %5d %d %d %-4s %5d %6.1f %5.2f %6.2f %6.1f %9.2g %8.2f' % (r[0], r[1], r[2], r[3], r[4], r[12], r[5], r[6], r[7], r[8], r[9], r[13], r[10], r[11] / 3600))
