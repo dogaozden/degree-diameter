@@ -475,8 +475,10 @@ Going through the table:
   ceiling even with μ/6, and the D = 10 cells need groups of order ≥ 10⁸ with a Frobenius of order 6 near the
   records (SL(2,729) is 16 % too big for (13,10)). That leaves (13,8), §5.2.
 - **Order 8 and up:** needs Δ ≥ 16 for two orbits; no candidate group.
-- **A prediction for a larger budget: (13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ rz), r of order 6
-  (Z21 = Z3 × Z7).
+- **(13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ 5z), r of order 6 (Z21 = Z3 × Z7). The
+  random symmetric screen (16 samples, `runs/ro1310_sl16sq_21_k6.txt`) gives min 23 and p10 26 at μ = 35.5. That is
+  4.3 clumps, better than SL(2,64)×Z13 (6.2), which solved in about 10⁴ evaluations. Anneal (2 threads, 0.57 s per
+  evaluation, 4-hour budget): RESULT-1310.
   - N = 349,574,400, so 699,148,800 vertices, +4.7 % over our 667,903,200.
   - μ = 36.4. The rule gives μ_A ≈ 9.1 for order 6 (fixed points 3.0) against ≈ 13 for order 3 at the same N, which is
     about 7× fewer evaluations.
