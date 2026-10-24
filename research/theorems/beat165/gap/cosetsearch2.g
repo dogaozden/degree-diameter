@@ -3,6 +3,7 @@
 # (point Kg <-> K' = K^g, H n K' = Stab_H(Kg), dA = orbit length); need dB = |K|/|H n K'| <= DMAX.
 # Diameter <= 5 iff the radius-4 balls cover both sides: HK'HK'H = G and K'HK'HK' = G.
 LoadPackage("tomlib");
+if not IsBound(VERBOSE) then VERBOSE := false; fi;
 
 OrbitIds := function(orbs)
   local id, i; id := [];
@@ -36,6 +37,11 @@ PairSearch := function(G, H, K, actH, actK, nH, nK, DMAX, DMIN, MINTOT, logfile,
   for orb in orbsHonK do
     dA := Length(orb);
     if dA < DMIN or dA > DMAX then continue; fi;
+    # |H n K'| = |H|/dA, so dB = |K| dA/|H| is known before any stabilizer computation
+    if (Size(K)*dA) mod Size(H) <> 0 then continue; fi;
+    dB := Size(K)*dA/Size(H);
+    if dB < DMIN or dB > DMAX then continue; fi;
+    if nH > MooreSide(dA, dB) or nK > MooreSide(dB, dA) or nH + nK < MINTOT then continue; fi;
     p := orb[1];
     g := RepresentativeAction(Image(actK), 1, p);
     g := PreImagesRepresentative(actK, g);                  # 1^g = p, i.e. the coset K*g
@@ -50,6 +56,10 @@ PairSearch := function(G, H, K, actH, actK, nH, nK, DMAX, DMIN, MINTOT, logfile,
     if orbH_H = fail then orbH_H := Orbits(Image(actH, H), [1..nH]); id_H_H := OrbitIds(orbH_H); fi;
     orbKp := Orbits(Image(actH, Kp), [1..nH]); idKp := OrbitIds(orbKp);
     a := Ball4(1, orbH_H, id_H_H, orbKp, idKp);
+    if VERBOSE or a[2] >= nH/2 then
+      AppendTo(logfile, "  cand ", tag, " dA=", dA, " dB=", dB, " nA=", nH, " nB=", nK, " |L|=", Size(L),
+        " ballA=", a, " rankA=", Length(orbH_H), "\n");
+    fi;
     if a[2] < nH then continue; fi;
     # B-side: ball around K' in G/K: base point p (stabilizer K'), alternating H-orbits and K'-orbits
     orbK_K := Orbits(Image(actK, Kp), [1..nK]); id_K_K := OrbitIds(orbK_K);
@@ -77,13 +87,20 @@ SearchTom2 := function(name, DMAX, DMIN, NLO, NHI, MINTOT, logfile)
   found := []; tot := 0; t0 := Runtime();
   for i in [1..Length(cls)] do
     reps[i] := RepresentativeTom(t, cls[i]);
-    acts[i] := FactorCosetAction(G, reps[i]);
+    acts[i] := fail;
   od;
   for i in [1..Length(cls)] do
     for j in [1..Length(cls)] do
       h := cls[i]; k := cls[j];
       if idx[h] + idx[k] < MINTOT then continue; fi;
       if idx[h] < idx[k] then continue; fi;     # each unordered pair once (A = larger side)
+      # some dA in [DMIN..DMAX] must give an integral dB = |K| dA / |H| in [DMIN..DMAX]
+      if not ForAny([DMIN..DMAX], dA -> (o[k]*dA) mod o[h] = 0 and o[k]*dA/o[h] >= DMIN and o[k]*dA/o[h] <= DMAX
+                     and idx[h] <= MooreSide(dA, o[k]*dA/o[h]) and idx[k] <= MooreSide(o[k]*dA/o[h], dA)) then
+        continue;
+      fi;
+      if acts[i] = fail then acts[i] := FactorCosetAction(G, reps[i]); fi;
+      if acts[j] = fail then acts[j] := FactorCosetAction(G, reps[j]); fi;
       r := PairSearch(G, reps[i], reps[j], acts[i], acts[j], idx[h], idx[k], DMAX, DMIN, MINTOT, logfile,
         Concatenation(name, " h=", String(h), " k=", String(k)));
       Append(found, r[1]); tot := tot + r[2];
