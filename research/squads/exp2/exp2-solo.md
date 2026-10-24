@@ -56,7 +56,9 @@ identify a generalized hexagon. Then `threecopy.py` adds a perfect matching foun
 Run times: H(5) 4 s to build, 0.4 s to check; H(7) about 1 min and 1 min; H(9) about 4 min and 7 min (one core).
 
 So the table graphs are reproduced exactly, not raised. With k extra edges and copies over Z_(2k+1) (cross edges with
-voltages 1..k) the same proof gives b(Δ + k, D + 1) ≥ (2k+1) · b(Δ, D) for even D. That is the source of the whole
+voltages 1..k) the same proof gives b(Δ + k, D + 1) ≥ (2k+1) · b(Δ, D) for even D. `hexd7/kcopy.py` checks it:
+3, 5 and 7 copies of H(3) (n = 2,184, 3,640, 5,096 at Δ = 5, 6, 7) and 5 copies of H(5) (n = 39,060 at Δ = 8) are all
+RESULT VALID with D = 7 by apsp.c. That is the source of the whole
 D = 7 column. Applied to our own D = 6 records ((7,6) 9,592, (11,6) 148,944, (13,6) 388,972, (15,6) 870,440), it
 gives nothing above the table.
 

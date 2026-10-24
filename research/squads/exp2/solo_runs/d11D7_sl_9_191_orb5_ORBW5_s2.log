@@ -1,0 +1,8 @@
+group sl 9 poly x^2+1 x Z_191, N=137520, identity 13752, H order 10, rows 13752, threads 1, setup 0.06s
+wide rows: HW order 191, rows 720, setup 0.10s
+alpha: conj by mat(7,1,7,6) (index 574), z -> 39 z on Z_191
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 42.60, mu/k = 8.52, fixed-point misses ~ 3.97
+ORBW=5: an uncovered fixed element weighs 5; start energy 229240
+start cost=229208
+t=30 steps=16651 evals=133209 cost=12 best=12 T=0.53 energy=20 bestE=20
+t=60 steps=33419 evals=267353 cost=12 best=12 T=0.19 energy=20 bestE=20
