@@ -62,7 +62,7 @@ Quotients do not rescue them (`balls.py` → `balls_out.txt`). In the D₄(2) ch
 same-side 4-ball holds 16,829 of 42,525 vertices, under the half that a free involution quotient (42,525 vertices)
 would need. A Z₃ quotient would have only 28,350 vertices. Every other entry above is too small to halve.
 
-## 2. Bipartite route-chart lifts (Mizuno's construction made bipartite): works, tops out near 21,500
+## 2. Bipartite route-chart lifts (Mizuno's construction made bipartite): 33,792 (§2.2)
 
 Mizuno (arXiv:2606.15860, June 2026) beat the *general* (16,5) record (147,456) with a "controller × route chart"
 lift. A small 4-regular controller graph C, fiber F_q^n, and for a controller edge u→v labelled t: (u,x) ~
@@ -114,8 +114,8 @@ opposite-side pairs then within 5.) A diagonal pair needs a 4-cycle: closed walk
 through x, at most 211 of the 256 fiber points.
 
 Checks. `chart_search.c` finds pencil-complete charts quickly (`charts/chart_p4.txt`, `chart_p5.txt`; 12 of the 216
-patterns singular), but a chart that is both pencil-complete and universal has not been found yet (best 12
-universal violations). `lift_check.py` on the m = 50 relaxed Haar controller (Z₅⋊Z₁₀, S = {0,1,5,32}), which has
+patterns singular), but a chart that is both pencil-complete and universal has not been found yet (best: 8
+singular patterns, `charts/chart_u8.txt`, squad round 2). `lift_check.py` on the m = 50 relaxed Haar controller (Z₅⋊Z₁₀, S = {0,1,5,32}), which has
 50 ordered pairs at distance 2 with **no** nonbacktracking walk of length 4: the lift reaches all of them. The only
 misses are distance-4 pairs whose walks all have singular patterns, as predicted. `mlift_chart.c` anneals voltages of
 a coloured base for exactly conditions (i)–(iii). Its m = 48 controller lifts to 24,576 vertices, apsp VALID d=16
@@ -126,6 +126,33 @@ Why exact-NB-4 controllers are hard to push: the lift is K₄,₄-structured (ea
 in 4 of them), the same local structure as the flag graph. For K₄,₄-structured graphs of diameter 5 a counting bound
 gives at most 33,145 vertices per side. The flag graph reaches 47.5 % of it; a controller lift needs m ≥ 62, i.e.
 57 % of its own bound 108·256, while the best controllers found reach 39 %.
+
+### 2.2 33,792: K₃,₃ + perfect matching over Z₂₂ with an 8-singular chart
+
+**Construction** (`graphs/build_d16D5_n33792.py` has all the data). Base: K₃,₃ with its perfect matching doubled
+(a₀a₁a₂ | b₀b₁b₂, 12 edges). Controller: voltage lift by Z₂₂, (a_i, g) ~ (b_j, g + v_e), each controller edge carrying
+its base edge's chart letter. Voltages and letters (edge: voltage/letter): a₀b₀ 0/0 and 15/2, a₀b₁ 0/1, a₀b₂ 0/3;
+a₁b₁ 7/0 and 3/2, a₁b₀ 0/3, a₁b₂ 19/1; a₂b₂ 6/0 and 17/2, a₂b₀ 0/1, a₂b₁ 8/3. The matching digons use letters {0, 2},
+the rest of K₃,₃ uses {1, 3}. Chart: `squad165/charts/chart_u8.txt` (A₀ = I; 8 of the 216 nonbacktracking patterns
+singular, pencil-complete), found by squad round-2 card 5. Lift: 2·66·256 = 33,792 vertices, 16-regular, bipartite.
+
+**Check.** apsp.c: RESULT VALID d=16 D=5 n=33792. bfs_all.c from every vertex: max eccentricity 5; ordered pairs at
+distance 0..5 are 33,792 / 540,672 / 6,859,776 / 83,601,408 / 564,056,064 / 486,807,552, which sum to 33,792². The
+self-contained script and the search pipeline give the same edge set. Check file `graphs/d16D5_n33792_check.txt`.
+
+**How it was found.** At m = 63 and 66 the fixed-chart annealer kept failing on diagonals only, and forcing 4-cycles
+(tying digon voltages by an involution, or forcing one trivial closed base walk per orbit) made it much worse. The
+decisive test was a fake chart with every pattern nonsingular: K₃,₃ + matching over Z₂₂ then reaches cost 0 in
+2,769 annealing steps. So the chart, not the controller, was the bottleneck. With round 2's new chart (8 singular
+patterns instead of 12), 8 of the 24 colour relabellings reach cost 0 within 45 s (`mlift_chart.c`, one thread per run).
+
+**Structure.** Every controller vertex lies on exactly one 4-cycle, so the 4-cycles partition the 132 vertices,
+as in the LANL (16,4) controller. They come from two trivial closed base walks: the 4-cycle a₀b₀a₁b₁ through the
+edges with voltages 15, 0, 7, 0 (15 + 7 ≡ 0 mod 22), and the a₂b₂ digon, whose voltage difference 11 is the
+involution of Z₂₂. The controller uses 66 of the 121 same-side vertices a vertex can reach (1 + 12 + 108), 55 %.
+
+**Next sizes.** m = 69 (Z₂₃) is at cost 2 and m = 72 (Z₂₄) at cost 6 on the same base (60 s runs). Squad round 3
+is on m ≥ 67.
 
 ## 3. Other routes tested and dropped
 

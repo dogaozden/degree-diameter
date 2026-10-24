@@ -85,3 +85,19 @@ double controller has exactly one 4-cycle through each vertex (the 4-cycles part
 test: with a fake chart in which every pattern is nonsingular, K₃,₃ + perfect matching over Z₂₂ (**m = 66**) reaches
 cost 0 in 2,769 annealing steps. So for that controller the chart is the bottleneck, not the controller. Round 3
 goes after charts fitted to such controllers.
+
+## 2026-10-24, beat-16-5-squad (session_01R83cdF9zMzt8oY4YvTTqZc) — round 3 (06:45 UTC–)
+
+Lead going in: **33,792 found and verified by Opus at 06:33** (K₃,₃ + perfect matching over Z₂₂, m = 66, with round 2
+card 5's chart; BEAT_16_5_SQUAD.md §2.2). Round 3 goal: m ≥ 67 (more than 33,792). Tools: mlift_chart.c with
+charts/pat_u8_qXX.txt (24 colour relabellings), verify_ctrl.sh, mlift_joint.c (joint voltage + chart annealing, new).
+
+Cards (folders research/squads/r3-165/c1..c8):
+1. K₃,₃ + matching at m = 69 (Z₂₃, best 2 so far) and m = 72 (order 24), all relabellings, more seeds.
+2. 4+4 bases (26 listed + K₄,₄ + K₄⁺×K₂) at m = 68 (Z₁₇).
+3. the other 3+3 bases at m = 66 / 69: is K₃,₃ + matching special?
+4. joint voltage + chart annealing (mlift_joint.c) at m = 69, 72 and 68.
+5. a chart with fewer than 8 singular patterns (pencil-complete), then m = 69.
+6. exhaustive Haar controllers (round-2 card 6's tool) with the new chart, orders 67–96.
+7. dense 5+5 bases (K₅,₅ minus a perfect matching, random) at m = 70, 75, 80.
+8. wildcard (2+2 exhaustive with the new chart, 6+6 bases, bases with more doubled edges).
