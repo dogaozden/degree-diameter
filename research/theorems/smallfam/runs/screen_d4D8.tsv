@@ -95,3 +95,6 @@
 1102	4	-	[2, 19, 29]	1	|G/G'|=1102 outside [5,48] (heuristic skip)	-	-
 1103	1	-	[1103]	1	|G/G'|=1103 outside [5,48] (heuristic skip)	-	-
 1104	1	-	[16, 23]	3	|G/G'|=368 outside [5,48] (heuristic skip)	-	-
+1104	2	C3 x (C23 : C16)	[3, 16]	23	pass 9216 of 19600	199	0 512 155 647
+1104	3	C3 : (C23 : C16)	[16]	69	pass 596 of 816	594	0 27 389 637
+1104	4	-	[3, 16, 23]	1	|G/G'|=1104 outside [5,48] (heuristic skip)	-	-

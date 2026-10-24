@@ -81,9 +81,9 @@ int main(int argc, char **argv) {
     S[0] = E;
     for (int i = 1; i < DELTA; i++) { int x; int ok; do { x = rnd() % N; ok = x != E; for (int j = 1; j < i; j++) if (S[j] == x) ok = 0; } while (!ok); S[i] = x; }
     int c = cost(S, 1), bc = c; memcpy(best, S, sizeof S);
-    double t0 = now(), tlast = t0, Tcur = TMAX, lastgain = t0; long long evals = 1, steps = 0;
+    double t0 = now(), tstart = t0, tlast = t0, Tcur = TMAX, lastgain = t0; long long evals = 1, steps = 0;
     int *uncs = malloc(sizeof(int) * N), nuncs = nunc; memcpy(uncs, unc, sizeof(int) * nunc);
-    while (bc > 0 && now() - t0 < secs) {
+    while (bc > 0 && now() - tstart < secs) {
         steps++;
         int i = 1 + rnd() % (DELTA - 1);
         int bestcand = -1, bestcc = 1 << 30;
