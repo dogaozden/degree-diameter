@@ -12,8 +12,7 @@ checked.
    **16-regular, bipartite, diameter 5, on 31,460 vertices**. The table's (16,5) value is 27,300 (+15.2 %). Checked
    all-pairs. It is not a Haar graph of any family build_haar2.py knows, so it is saved as an edge list (§1.1).
 2. **The same idea gives a family for every building type,** with diameter at most the Coxeter number (equal in all
-   seven cases computed). With a balanced
-   diagram it is regular and tends to the bipartite Moore bound: odd D (type A_2k), D ≡ 0 mod 4 (type C_2m; checked
+   seven cases computed). With a balanced diagram it is regular and tends to the bipartite Moore bound: odd D (type A_2k), D ≡ 0 mod 4 (type C_2m; checked
    on C_4(2): 9-regular, diameter 8, 160,650 vertices), D = 6, 12, 30. Inside our table range only (16,5) beats the
    table. D ≡ 2 mod 4 with D ≥ 10 (except 30) has no balanced diagram (§1.2).
 3. **Our record connection sets have no formula.** Across 131 Haar records the normal form of S (classes of
