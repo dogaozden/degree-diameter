@@ -184,11 +184,11 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (4,7) | 840 (Bond–Delorme, Hafner, Loz) | 2,186 | 840 (= Bond–Delorme, A5 × Z7) | negative above 840 (§4) |
 | (5,7) | 3110 (Loz) | 10,922 | – | rich and wide lift sweeps (orders 3112–3200): no solution; haar_gen3 sweep queued |
 | (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling) |
-| **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0); push above 288 running |
+| **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0). Two pushes over orders 290–348 found nothing above 288 (best cost 10 at 320) |
 | (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2260): no solution; wide sweep and haar_gen3 queued |
 | (5,8) | 9234 (Loz) | 43,690 | – | rich and wide lift sweeps (orders 9236–9500): no solution; GH(3) + matching lifts reach only m = 6 (§3.3); haar_gen3 sweep queued |
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
-| (3,9) | 506 (Loz) | 1,022 | – | 133 searches, orders 508–540: best cost 18 (n = 540); field-affine 2+2 lifts exhaustive negative (§4) |
+| (3,9) | 506 (Loz) | 1,022 | – | negative. 133 lift searches (rich sweep, orders 508–540; the wide sweep was cut short by the container restart): best cost 18 (n = 540). haar_gen3 sweep (N = 254–275): best cost 30. Field-affine 2+2 lifts are exhaustively negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | rich and wide lift sweeps (orders 4972–5100): no solution; haar_gen3 sweep queued |
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,842** | **new record** (§2.0); above it (N up to 14,700) best cost 2 |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
