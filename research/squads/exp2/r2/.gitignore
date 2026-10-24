@@ -8,3 +8,8 @@
 */e.txt
 */e*.txt
 *.bin
+
+# any extensionless file in a card folder is a compiled binary
+*/*
+!*/*.*
+!*/*/
