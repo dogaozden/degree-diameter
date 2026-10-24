@@ -1,0 +1,19 @@
+selftest point 0: perp size 16104 (scan 16104) ok
+selftest point 13229: perp size 16104 (scan 16104) ok
+selftest point 152857: perp size 16104 (scan 16104) ok
+selftest line 4911: Near4 size 1464, hyperplane check ok
+selftest line 35052: Near4 size 1464, hyperplane check ok
+selftest line 125288: Near4 size 1464, hyperplane check ok
+initial |R| = 397
+[30s] it 1619 |R|=397 best=397 improv=0 plateau=771 | moves conf/fib/G1/G2/G3 = 0/0/548/538/533, mean |D| G1/G2/G3 68/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+[60s] it 3284 |R|=397 best=397 improv=0 plateau=1559 | moves conf/fib/G1/G2/G3 = 0/0/1097/1107/1080, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+[90s] it 4948 |R|=397 best=397 improv=0 plateau=2396 | moves conf/fib/G1/G2/G3 = 0/0/1657/1676/1615, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+[120s] it 6559 |R|=397 best=397 improv=0 plateau=3197 | moves conf/fib/G1/G2/G3 = 0/0/2161/2219/2179, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/80/60, skipped 0
+[150s] it 8230 |R|=397 best=397 improv=0 plateau=4019 | moves conf/fib/G1/G2/G3 = 0/0/2682/2785/2763, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/80/60, skipped 0
+[180s] it 9865 |R|=397 best=397 improv=0 plateau=4810 | moves conf/fib/G1/G2/G3 = 0/0/3251/3323/3291, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/80/60, skipped 0
+[210s] it 11504 |R|=397 best=397 improv=0 plateau=5624 | moves conf/fib/G1/G2/G3 = 0/0/3802/3884/3818, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/80/60, skipped 0
+[240s] it 13111 |R|=397 best=397 improv=0 plateau=6396 | moves conf/fib/G1/G2/G3 = 0/0/4350/4394/4367, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+[270s] it 14672 |R|=397 best=397 improv=0 plateau=7150 | moves conf/fib/G1/G2/G3 = 0/0/4856/4928/4888, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/80/60, skipped 0
+[300s] it 16250 |R|=397 best=397 improv=0 plateau=7927 | moves conf/fib/G1/G2/G3 = 0/0/5356/5475/5419, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+[330s] it 17799 |R|=397 best=397 improv=0 plateau=8708 | moves conf/fib/G1/G2/G3 = 0/0/5854/6004/5941, mean |D| G1/G2/G3 69/69/51, mean |C| G1/G2/G3 82/81/60, skipped 0
+exit 124

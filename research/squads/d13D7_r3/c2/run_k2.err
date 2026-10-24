@@ -1,0 +1,9 @@
+selftest point 0: perp size 16104 (scan 16104) ok
+selftest point 34920: perp size 16104 (scan 16104) ok
+selftest point 21004: perp size 16104 (scan 16104) ok
+initial |R| = 364
+maximalised: +0 points, |R| = 364
+[30s] it 6320 |R|=364 best=364 improv=0 plateau=3094 kicks=2 skipped=0 avg|C|=14.1 avg|D|=5.94 bnb-limit=0
+[60s] it 13136 |R|=364 best=364 improv=1 plateau=6530 kicks=5 skipped=0 avg|C|=13.6 avg|D|=5.74 bnb-limit=0
+[90s] it 18922 |R|=364 best=364 improv=1 plateau=9397 kicks=8 skipped=0 avg|C|=13.9 avg|D|=5.86 bnb-limit=1
+[120s] it 25255 |R|=364 best=364 improv=5 plateau=12560 kicks=11 skipped=0 avg|C|=14.1 avg|D|=5.91 bnb-limit=1

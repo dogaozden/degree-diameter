@@ -1,0 +1,33 @@
+universe N(0): 6710 vertices, degree of vertex 0 inside: 3069 (expect 3069)
+best 2 (total 3) steps 1 cpu 0.3 formula-bad 0
+best 3 (total 4) steps 2 cpu 0.3 formula-bad 0
+best 4 (total 5) steps 3 cpu 0.3 formula-bad 0
+best 5 (total 6) steps 4 cpu 0.3 formula-bad 0
+best 6 (total 7) steps 5 cpu 0.3 formula-bad 0
+best 7 (total 8) steps 6 cpu 0.3 formula-bad 0
+best 8 (total 9) steps 7 cpu 0.3 formula-bad 0
+best 9 (total 10) steps 8 cpu 0.3 formula-bad 0
+best 10 (total 11) steps 9 cpu 0.3 formula-bad 0
+best 11 (total 12) steps 10 cpu 0.3 formula-bad 0
+best 12 (total 13) steps 13 cpu 0.3 formula-bad 0
+best 13 (total 14) steps 14 cpu 0.3 formula-bad 0
+best 14 (total 15) steps 17 cpu 0.3 formula-bad 0
+best 15 (total 16) steps 18 cpu 0.3 formula-bad 0
+best 16 (total 17) steps 21 cpu 0.3 formula-bad 0
+best 17 (total 18) steps 23 cpu 0.3 formula-bad 0
+best 18 (total 19) steps 24 cpu 0.3 formula-bad 0
+best 19 (total 20) steps 25 cpu 0.3 formula-bad 0
+best 20 (total 21) steps 26 cpu 0.3 formula-bad 0
+best 21 (total 22) steps 27 cpu 0.3 formula-bad 0
+best 22 (total 23) steps 212 cpu 0.3 formula-bad 0
+best 23 (total 24) steps 2289 cpu 0.3 formula-bad 0
+best 24 (total 25) steps 2290 cpu 0.3 formula-bad 0
+best 25 (total 26) steps 2291 cpu 0.3 formula-bad 0
+best 26 (total 27) steps 2292 cpu 0.3 formula-bad 0
+new best F 376 (k 27, cov 43) after 1 cliques, cpu 0.3
+new best F 378 (k 27, cov 41) after 8 cliques, cpu 0.4
+new best F 385 (k 27, cov 34) after 18 cliques, cpu 0.4
+iters 200000 steps 6591083 cpu 81.3 cur 2 best 27
+distinct maximal cliques of total size >= 27: 9438 (max size seen 27)
+bestF overall 385; top list written to runs/cap27_top.txt
+FINISHED seed 23 pd 2: best total 27, iters 248471, steps 8186689, cpu 100.3 s

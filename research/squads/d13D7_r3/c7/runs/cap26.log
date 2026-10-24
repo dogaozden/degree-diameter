@@ -1,0 +1,54 @@
+universe N(0): 6710 vertices, degree of vertex 0 inside: 3069 (expect 3069)
+best 2 (total 3) steps 1 cpu 0.3 formula-bad 0
+best 3 (total 4) steps 2 cpu 0.3 formula-bad 0
+best 4 (total 5) steps 3 cpu 0.3 formula-bad 0
+best 5 (total 6) steps 4 cpu 0.3 formula-bad 0
+best 6 (total 7) steps 5 cpu 0.3 formula-bad 0
+best 7 (total 8) steps 6 cpu 0.3 formula-bad 0
+best 8 (total 9) steps 7 cpu 0.3 formula-bad 0
+best 9 (total 10) steps 8 cpu 0.3 formula-bad 0
+best 10 (total 11) steps 9 cpu 0.3 formula-bad 0
+best 11 (total 12) steps 10 cpu 0.3 formula-bad 0
+best 12 (total 13) steps 11 cpu 0.3 formula-bad 0
+best 13 (total 14) steps 12 cpu 0.3 formula-bad 0
+best 14 (total 15) steps 13 cpu 0.3 formula-bad 0
+best 15 (total 16) steps 14 cpu 0.3 formula-bad 0
+best 16 (total 17) steps 16 cpu 0.3 formula-bad 0
+best 17 (total 18) steps 17 cpu 0.3 formula-bad 0
+best 18 (total 19) steps 18 cpu 0.3 formula-bad 0
+best 19 (total 20) steps 20 cpu 0.3 formula-bad 0
+best 20 (total 21) steps 21 cpu 0.3 formula-bad 0
+best 21 (total 22) steps 22 cpu 0.3 formula-bad 0
+best 22 (total 23) steps 200 cpu 0.3 formula-bad 0
+best 23 (total 24) steps 2624 cpu 0.3 formula-bad 0
+best 24 (total 25) steps 2625 cpu 0.3 formula-bad 0
+best 25 (total 26) steps 2626 cpu 0.3 formula-bad 0
+new best F 365 (k 26, cov 43) after 1 cliques, cpu 0.3
+new best F 366 (k 26, cov 42) after 3 cliques, cpu 0.4
+new best F 367 (k 26, cov 41) after 7 cliques, cpu 0.5
+new best F 377 (k 26, cov 31) after 9 cliques, cpu 0.5
+new best F 378 (k 26, cov 30) after 79 cliques, cpu 1.3
+new best F 381 (k 26, cov 27) after 929 cliques, cpu 9.9
+new best F 390 (k 26, cov 18) after 1011 cliques, cpu 10.8
+new best sub-clique F 390 (size 26, cov 18) cpu 10.8
+new best sub-clique F 390 (size 26, cov 18) cpu 11.2
+new best sub-clique F 390 (size 26, cov 18) cpu 14.0
+new best sub-clique F 390 (size 26, cov 18) cpu 18.3
+new best sub-clique F 390 (size 26, cov 18) cpu 20.8
+new best sub-clique F 390 (size 26, cov 18) cpu 21.5
+new best sub-clique F 390 (size 26, cov 18) cpu 24.8
+new best sub-clique F 390 (size 26, cov 18) cpu 26.3
+new best sub-clique F 390 (size 26, cov 18) cpu 31.0
+new best sub-clique F 390 (size 26, cov 18) cpu 39.8
+new best sub-clique F 390 (size 26, cov 18) cpu 40.4
+new best sub-clique F 390 (size 26, cov 18) cpu 41.4
+new best sub-clique F 390 (size 26, cov 18) cpu 45.3
+new best sub-clique F 390 (size 26, cov 18) cpu 67.5
+new best sub-clique F 390 (size 26, cov 18) cpu 76.7
+new best sub-clique F 390 (size 26, cov 18) cpu 79.8
+iters 200000 steps 6581261 cpu 81.3 cur 2 best 26
+new best sub-clique F 390 (size 26, cov 18) cpu 84.5
+new best sub-clique F 390 (size 26, cov 18) cpu 90.0
+distinct maximal cliques of total size >= 26: 9513 (max size seen 26)
+bestF overall 390; top list written to runs/cap26_top.txt
+FINISHED seed 21 pd 2: best total 26, iters 246998, steps 8128067, cpu 100.3 s

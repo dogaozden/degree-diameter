@@ -14,7 +14,8 @@
    Hub graph: NSFILE ("j k" lines: line-side hub j ~ point-side hub k; hub j = a*m + index in R), else a random
    d-regular bipartite graph, d = NSDEG or q - r (PARTIAL: q - 1... capped by Delta - (2r+1)), retried until all
    same-side hub distances in it are <= 6 (at most 200 tries).
-   usage: multi HEXFILE r seed out.edges     env NOCHECK=1 skips the internal BFS (damaged vertices + hubs + random) */
+   usage: multi HEXFILE r seed out.edges     env NOCHECK=1 skips the internal BFS (damaged vertices + hubs + random);
+   HP = number of point-side hubs (default = number of line-side hubs; fewer leaves freed line slots unused). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -79,11 +80,14 @@ int main(int argc, char **argv) {
       char *sl = calloc(N, 1); for (int j = 0; j < m; j++) for (int k = 0; k < Q1; k++) { int pt = lp[(size_t)sig[R[j]] * Q1 + k]; if (sl[pt]) bad++; sl[pt] = 1; }
       if (bad) { fprintf(stderr, "local duality / non-concurrency fails (%ld)\n", bad); return 1; } free(mark); free(sl); }
     int Delta = q + 1 + r, d = getenv("NSDEG") ? atoi(getenv("NSDEG")) : Delta - L; if (d > Delta - L) d = Delta - L;
-    int H = nh * m;   /* hubs per side */
-    long n = (long)L * 2 * N + 2L * H;
-    fprintf(stderr, "H(%d), r = %d (%d levels, Delta %d), |R| = %d, %s removal, %d hubs per side, hub degree %d, n = %ld\n", q, r, L, Delta, m, partial ? "partial" : "full", H, d, n);
+    int H = nh * m;   /* line-side hubs */
+    int HP = getenv("HP") ? atoi(getenv("HP")) : H;   /* point-side hubs (<= H; the rest of the freed line slots stay unused) */
+    if (HP > H || HP < 0) { fprintf(stderr, "bad HP\n"); return 1; }
+    long n = (long)L * 2 * N + H + HP;
+    fprintf(stderr, "H(%d), r = %d (%d levels, Delta %d), |R| = %d, %s removal, %d line-side and %d point-side hubs, hub degree %d, n = %ld\n", q, r, L, Delta, m, partial ? "partial" : "full", H, HP, d, n);
     int *NA = NULL, *NB = NULL; long nne = 0;
-    if (getenv("NSFILE")) { FILE *g = fopen(getenv("NSFILE"), "r"); int a, b; NA = malloc(sizeof(int) * 2L * H * (d + 1)); while (g && fscanf(g, "%d %d", &a, &b) == 2) { NA[2 * nne] = a; NA[2 * nne + 1] = b; nne++; } if (g) fclose(g); }
+    if (getenv("NSFILE")) { FILE *g = fopen(getenv("NSFILE"), "r"); int a, b; NA = malloc(sizeof(int) * 2L * (H + HP) * (d + 1)); while (g && fscanf(g, "%d %d", &a, &b) == 2) { NA[2 * nne] = a; NA[2 * nne + 1] = b; nne++; } if (g) fclose(g); }
+    else if (HP != H) { fprintf(stderr, "HP != H needs NSFILE\n"); return 1; }
     else if (H <= d) { NA = malloc(sizeof(int) * 2L * H * H); for (int a = 0; a < H; a++) for (int b = 0; b < H; b++) { NA[2 * nne] = a; NA[2 * nne + 1] = b; nne++; } }
     else {
         int *A = malloc(sizeof(int) * H * d), *B = malloc(sizeof(int) * H * d), *perm = malloc(sizeof(int) * H), *fillB = malloc(sizeof(int) * H), ok = 0;
@@ -108,7 +112,7 @@ int main(int argc, char **argv) {
         if (!ok) { fprintf(stderr, "no hub graph found\n"); return 1; }
         NA = malloc(sizeof(int) * 2L * H * d); for (int j = 0; j < H; j++) for (int t = 0; t < d; t++) { NA[2 * nne] = j; NA[2 * nne + 1] = A[j * d + t]; nne++; }
     }
-    long nemax = (long)L * N * Q1 + (long)L * N * r + 2L * H * L + nne + 16;
+    long nemax = (long)L * N * Q1 + (long)L * N * r + (long)(H + HP) * L + nne + 16;
     int32_t *EU = malloc(4 * nemax), *EW = malloc(4 * nemax); long ne = 0;
 #define V_PT(i, p) ((int32_t)((long)(i) * 2 * N + (p)))
 #define V_LN(i, l) ((int32_t)((long)(i) * 2 * N + N + (l)))
@@ -119,8 +123,9 @@ int main(int argc, char **argv) {
         if (inR[p] && (!partial || k == 1)) continue;
         EU[ne] = V_PT(i, p); EW[ne] = V_LN((i + k) % L, sig[p]); ne++; }
     for (int a = 0; a < nh; a++) for (int j = 0; j < m; j++) for (int i = 0; i < L; i++) {
-        EU[ne] = V_HL(a * m + j); EW[ne] = V_PT(i, R[j]); ne++; EU[ne] = V_HP(a * m + j); EW[ne] = V_LN(i, sig[R[j]]); ne++; }
-    for (long e = 0; e < nne; e++) { if (NA[2 * e] < 0 || NA[2 * e] >= H || NA[2 * e + 1] < 0 || NA[2 * e + 1] >= H) { fprintf(stderr, "bad hub edge\n"); return 1; } EU[ne] = V_HL(NA[2 * e]); EW[ne] = V_HP(NA[2 * e + 1]); ne++; }
+        EU[ne] = V_HL(a * m + j); EW[ne] = V_PT(i, R[j]); ne++;
+        if (a * m + j < HP) { EU[ne] = V_HP(a * m + j); EW[ne] = V_LN(i, sig[R[j]]); ne++; } }
+    for (long e = 0; e < nne; e++) { if (NA[2 * e] < 0 || NA[2 * e] >= H || NA[2 * e + 1] < 0 || NA[2 * e + 1] >= HP) { fprintf(stderr, "bad hub edge\n"); return 1; } EU[ne] = V_HL(NA[2 * e]); EW[ne] = V_HP(NA[2 * e + 1]); ne++; }
     int *deg = calloc(n, sizeof(int)); for (long e = 0; e < ne; e++) { deg[EU[e]]++; deg[EW[e]]++; }
     int maxdeg = 0; for (long x = 0; x < n; x++) if (deg[x] > maxdeg) maxdeg = deg[x];
     fprintf(stderr, "graph: n = %ld, edges = %ld, max degree %d\n", n, ne, maxdeg);
@@ -131,7 +136,7 @@ int main(int argc, char **argv) {
         int nrand = getenv("NRAND") ? atoi(getenv("NRAND")) : 1024;
         long nsrc = 0; int32_t *src = malloc(4 * (2L * m * L + 2L * H + nrand + 64));
         for (int j = 0; j < m; j++) for (int i = 0; i < L; i++) { src[nsrc++] = V_PT(i, R[j]); src[nsrc++] = V_LN(i, sig[R[j]]); }
-        for (int t = 0; t < H; t++) { src[nsrc++] = V_HL(t); src[nsrc++] = V_HP(t); }
+        for (int t = 0; t < H; t++) src[nsrc++] = V_HL(t); for (int t = 0; t < HP; t++) src[nsrc++] = V_HP(t);
         for (int t = 0; t < nrand; t++) src[nsrc++] = (int32_t)(rnd() % n);
         int worst = 0; long bad = 0; long npass = (nsrc + 63) / 64;
         #pragma omp parallel

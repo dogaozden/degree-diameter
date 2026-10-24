@@ -55,3 +55,26 @@ the exact-repair LNS found the swap that the clique searches could not see.
 Side results the same evening, using the same theorem at other q (Opus, not the squad): (11,7) 400,040 (ovoid of
 Q(6,9)), then 406,298 (explicit duality of H(9)); (9,7) 117,992; (7,7) 23,552.
 Next: round 3 on beating 397 (LNS variants, deeper orbits, crossover, ARW, region blocks, fibration + infinity).
+
+## 2026-10-24, cell-13-7 (Opus, cloud session_0136phW63ksffo3wvN1THJtH), round 3: beat 397
+
+Goal: more pairwise-opposite points of H(11) than 397 (the r2 LNS plateau). Brief research/squads/d13D7_r3/BRIEF.md
+(seeds: 397 from LNS, 364 from orbit unions). Launched 23:03 UTC, 8 Haiku cards.
+
+Cards: c1 LNS continued (two-hub blocks, exhaustive (1,k) sweeps) · c2 LNS seeded with the 364 orbit set · c3 deeper
+orbit unions (orders 44-220, commuting pairs, strong exact clique search, generators saved) · c4 crossover of good sets
++ LNS repair · c5 ARW-style tabu ILS · c6 LNS with geometric region blocks · c7 fibration cliques + points at infinity
+jointly · c8 wildcard (penalty annealing, fibre exchanges).
+
+Best per card: c1 397 · c2 364 (the orbit set is LNS-rigid) · c3 **720** (union of orbits of <a,b> = Z15 x Z5, a on a
+5-dim U, b on U^perp; exact optimum of that group's orbit graph; cyclic groups of orders 44-220 peaked at 364) · c4 397
+· c5 397 · c6 397 (still running at the time of logging) · c7 397 (score 11|K| + 122 - cov(K); 397 = 25 fibres + all
+122 points at infinity) · c8 397 (locally optimal for every exchange of <= 5 fibres, 1,026,145 checked).
+
+Verified by Opus: 720 (oppcheck BFS and numpy) -> (13,7) graph 1,064,376 (all-pairs check running at logging time).
+Kept: orbit unions under small abelian groups with exact max-weight clique. Dropped: point-level LNS (all of
+c1, c4-c8 converge to the same 397 basin; c3 showed 397 itself is a union of orbits of an order-11 Eichler element).
+Lesson: the jump came from changing the symmetry class searched, not from more local search; Opus stopped the
+LNS cards early (CPU needed for graph checks) once 720 was verified.
+Next: round 4 (4 cards): orbit unions beyond 720 at q = 11, and the same method at q = 13, 7, 5 for the other
+hexagon cells ((16,7), (9,7), (7,7)), plus LNS from 720.
