@@ -91,3 +91,16 @@ c8 wildcard (10,5)/(11,5).
 - Exhaustive (10,5) on SL(2,13), ORBIT="3 3 1": 62,988,724 sets, exact minimum 6 (16 sets), no solution. Three groups
   enumerated, three floors equal to what annealing found (4, ≥ 7, 6). At D = 5 the annealer reaches the true floor of
   these orbit spaces, so (10,5) with this symmetry is closed for every group in the window that annealed to ≥ 9.
+- r3-c3 (10,5) α sweeps / untried groups: SL(2,13) all 364 order-3 α have |Fix| 11, best anneal 8; A4 × Z169 12;
+  S4 × Z91 26; SL(2,3) × Z91 30. Worse.
+- r3-c1 (10,5) α sweep: stopped by Opus after the exhaustive result; all valid α have |Fix| 17, 71 or 287; anneals 4.
+- r3-c8 wildcard: (11,5)'s 6 are two free orbits, not fixed points (ORBW=3 and 6 give energy = raw count); fixed-
+  generator choices equivalent. A4-type and AGL(1,q) groups at (10,5): 9–17.
+- Opus: (7,4) probe (ours 359, needs N ≥ 180, μ 42.7): plain annealing 12, k = 2 15, k = 3 30 on A5 × Z3. Dropped.
+
+## 2026-10-24, table-squad round 4: small raises on the next rungs above our D = 7..10 records
+
+Each card gets explicit groups just above a record, with μ at most ~1.6 above the μ the record was solved at, and the
+record's own ORBIT. Preamble: research/squads/r4/PREAMBLE.md. Cards: c1 (8,9) · c2 (8,10) · c3 (7,10) · c4 (6,10) ·
+c5 (9,10) · c6 (6,9) · c7 (8,8) + (8,7) · c8 wildcard (7,8), (9,8), (7,9) (no k = 3-friendly group within μ + 1.6).
+Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generator class (156M sets), at low priority.
