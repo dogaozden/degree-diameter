@@ -1,0 +1,35 @@
+universe N(0): 6710 vertices, degree of vertex 0 inside: 3069 (expect 3069)
+best 2 (total 3) steps 1 cpu 0.3 formula-bad 0
+best 3 (total 4) steps 2 cpu 0.3 formula-bad 0
+best 4 (total 5) steps 3 cpu 0.3 formula-bad 0
+best 5 (total 6) steps 4 cpu 0.3 formula-bad 0
+best 6 (total 7) steps 5 cpu 0.3 formula-bad 0
+best 7 (total 8) steps 6 cpu 0.3 formula-bad 0
+best 8 (total 9) steps 7 cpu 0.3 formula-bad 0
+best 9 (total 10) steps 8 cpu 0.3 formula-bad 0
+best 10 (total 11) steps 9 cpu 0.3 formula-bad 0
+best 11 (total 12) steps 10 cpu 0.3 formula-bad 0
+best 12 (total 13) steps 12 cpu 0.3 formula-bad 0
+best 13 (total 14) steps 15 cpu 0.3 formula-bad 0
+best 14 (total 15) steps 16 cpu 0.3 formula-bad 0
+best 15 (total 16) steps 18 cpu 0.3 formula-bad 0
+best 16 (total 17) steps 19 cpu 0.3 formula-bad 0
+best 17 (total 18) steps 20 cpu 0.3 formula-bad 0
+best 18 (total 19) steps 22 cpu 0.3 formula-bad 0
+best 19 (total 20) steps 23 cpu 0.3 formula-bad 0
+best 20 (total 21) steps 24 cpu 0.3 formula-bad 0
+best 21 (total 22) steps 26 cpu 0.3 formula-bad 0
+best 22 (total 23) steps 27 cpu 0.3 formula-bad 0
+best 23 (total 24) steps 28 cpu 0.3 formula-bad 0
+best 24 (total 25) steps 29 cpu 0.3 formula-bad 0
+best 25 (total 26) steps 30 cpu 0.3 formula-bad 0
+best 26 (total 27) steps 31 cpu 0.3 formula-bad 0
+best 27 (total 28) steps 32 cpu 0.3 formula-bad 0
+best 28 (total 29) steps 33 cpu 0.3 formula-bad 0
+iters 200000 steps 6602079 cpu 45.0 cur 2 best 29
+iters 400000 steps 13209773 cpu 91.2 cur 2 best 29
+iters 600000 steps 19815299 cpu 138.2 cur 2 best 29
+iters 800000 steps 26424969 cpu 186.0 cur 2 best 29
+iters 1000000 steps 33030950 cpu 233.5 cur 2 best 29
+distinct local optima of total size >= 29: 39089 (max size seen 29)
+FINISHED seed 101 pd 2: best total 29, iters 1028885, steps 33982590, cpu 240.3 s

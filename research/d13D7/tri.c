@@ -121,14 +121,16 @@ int main(int argc, char **argv) {
         EU[ne] = V_NEWV(j); EW[ne] = V_PT(i, R[j]); ne++;
         EU[ne] = V_NEWU(j); EW[ne] = V_LN(i, S[j]); ne++;
     }
-    /* NS: v_j ~ u_k.  m <= 10: complete bipartite.  Otherwise v_j ~ u_{(j + t*step) mod m}? We use a random 10-regular
-       bipartite multigraph-free graph and let the BFS decide. */
-    if (m > 0 && m <= 10) { for (int j = 0; j < m; j++) for (int k = 0; k < m; k++) { EU[ne] = V_NEWV(j); EW[ne] = V_NEWU(k); ne++; } }
-    else if (m > 10) {
+    /* NS: v_j ~ u_k, degree nsd = q - 1 (env NSDEG overrides, at most 10).  m <= nsd: complete bipartite.  Otherwise a
+       circulant v_j ~ u_{j + c} with nsd random offsets c; the BFS check below decides. */
+    int nsd = getenv("NSDEG") ? atoi(getenv("NSDEG")) : q - 1;   /* hub-graph degree: Delta - 3 = q - 1 */
+    if (nsd > 10) nsd = 10;
+    if (m > 0 && m <= nsd) { for (int j = 0; j < m; j++) for (int k = 0; k < m; k++) { EU[ne] = V_NEWV(j); EW[ne] = V_NEWU(k); ne++; } }
+    else if (m > nsd) {
         /* circulant: v_j ~ u_{j + c_t} for 10 offsets c_t chosen as a "Sidon-like" set mod m */
         int offs[10]; int no = 0;
-        while (no < 10) { int cnd = rnd() % m, ok = 1; for (int t = 0; t < no; t++) if (offs[t] == cnd) ok = 0; if (ok) offs[no++] = cnd; }
-        for (int j = 0; j < m; j++) for (int t = 0; t < 10; t++) { EU[ne] = V_NEWV(j); EW[ne] = V_NEWU((j + offs[t]) % m); ne++; }
+        while (no < nsd) { int cnd = rnd() % m, ok = 1; for (int t = 0; t < no; t++) if (offs[t] == cnd) ok = 0; if (ok) offs[no++] = cnd; }
+        for (int j = 0; j < m; j++) for (int t = 0; t < nsd; t++) { EU[ne] = V_NEWV(j); EW[ne] = V_NEWU((j + offs[t]) % m); ne++; }
     }
     fprintf(stderr, "graph: n = %ld, edges = %ld\n", n, ne);
 
