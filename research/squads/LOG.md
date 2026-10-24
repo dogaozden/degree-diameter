@@ -160,3 +160,11 @@ and came back at 16:23 UTC with no processes; files intact)
   SL(2,11) × Z91 and PGL(2,11) × Z91 (N 120,120) **3** in three of sixteen 90 s seeds (others 6–9). c8 (6,8): SL(2,8) × Z32
   7–12 (10 seeds of 60 s).
 - Round 5 total: 0 records; near misses at (9,10) 2, (8,8) 3, (6,10) 4.
+
+## 2026-10-24 16:30 UTC, table-squad round 6: new seeds on the round-5 near misses
+
+Preamble: research/squads/r6/PREAMBLE.md (round-5 protocol; one driver script per card to save tool calls).
+Cards: c1 (8,8) SL(2,11) × Z91 seeds 41–56 · c2 (8,8) PGL(2,11) × Z91 seeds 41–56 · c3 (6,10) A5² × Z73 seeds 11–22 ·
+c4 (9,10) PSL(2,41) × Z337 · c5 (8,9) PSL(2,23) × Z109, PSL(2,17) × Z271 · c6 (7,10) SL(2,17) × Z229, SL(2,5) × SL(2,9) × Z13,
+PSL(2,131) · c7 (8,10) SL(2,27) × Z199 and two products · c8 (9,8) PGL(2,16) × Z67 seeds 31–42.
+Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s each).
