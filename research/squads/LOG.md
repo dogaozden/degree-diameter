@@ -104,3 +104,9 @@ Each card gets explicit groups just above a record, with μ at most ~1.6 above t
 record's own ORBIT. Preamble: research/squads/r4/PREAMBLE.md. Cards: c1 (8,9) · c2 (8,10) · c3 (7,10) · c4 (6,10) ·
 c5 (9,10) · c6 (6,9) · c7 (8,8) + (8,7) · c8 wildcard (7,8), (9,8), (7,9) (no k = 3-friendly group within μ + 1.6).
 Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generator class (156M sets), at low priority.
+- Opus: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", fixed generator g (the choice g² is the inverse family, same
+  cost): 155,906,729 sets, exact minimum 6 (504 sets), no solution. The squad's plateau at 6 was the true floor.
+- r3-c7 (9,8) k = 3 next rungs: **PGL(2,16) × Z67 (N 273,360, +1.2 %) best 3** (seed 1), 6 (seed 2), 6 and 9 with two
+  other α; SL(2,5)² × Z19 6; others 30–40. Closest miss of the session. Opus is running seeds 3, 4 for 900 s.
+- r3-c5 (8,8): SL(2,11) × Z91 "3 2 2" (N 120,120, +0.14 %) best 6 in 240 s; PSL(2,7) × SL(2,9) with "3 2 2", "4 2 0",
+  "2 4 0" under any α: 7–12. (SL(2,11) × Z91 is also on r4-c7's list.)

@@ -1,0 +1,12 @@
+group pgl 8 poly x^3+x+1 x Z_127, N=64008, identity 0, H order 9, rows 7112, threads 1, setup 0.16s
+wide rows: HW order 254, rows 252, setup 0.21s
+alpha: conj by mat(1,4,2,5) (index 242), z -> 19 z on Z_127
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 31.13, mu/k = 10.38, fixed-point misses ~ 1.42
+start cost=1336
+t=30 steps=28876 evals=231009 cost=48 best=46 T=0.53
+t=60 steps=57933 evals=463465 cost=46 best=46 T=0.19
+t=90 steps=87499 evals=699993 cost=46 best=46 T=0.15
+t=120 steps=118196 evals=945569 cost=46 best=46 T=0.15
+t=150 steps=146853 evals=1174825 cost=46 best=46 T=0.15
+t=180 steps=176982 evals=1415857 cost=46 best=46 T=0.54
+t=210 steps=206685 evals=1653481 cost=46 best=46 T=0.19

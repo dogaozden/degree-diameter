@@ -1,0 +1,33 @@
+group sl 67 x Z_13, N=3909048, identity 57486, H order 52, rows 75174, threads 1, setup 0.47s
+wide rows: HW order 221, rows 17688, setup 0.64s
+alpha: conj by mat(23,47,22,45) (index 106351), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 65 (+e); mu = 22.99, mu/k = 7.66, fixed-point misses ~ 1.19
+start cost=52
+t=30 steps=130 evals=1041 cost=13 best=9 T=0.53
+t=60 steps=256 evals=2049 cost=5 best=5 T=0.18
+t=91 steps=402 evals=3217 cost=5 best=5 T=0.15
+t=121 steps=558 evals=4465 cost=5 best=5 T=0.15
+t=151 steps=708 evals=5665 cost=5 best=5 T=0.15
+t=181 steps=859 evals=6873 cost=5 best=5 T=0.15
+t=211 steps=1012 evals=8097 cost=17 best=5 T=1.43
+t=241 steps=1171 evals=9369 cost=8 best=5 T=0.50
+t=271 steps=1333 evals=10665 cost=3 best=3 T=0.18
+t=301 steps=1496 evals=11969 cost=3 best=3 T=0.15
+t=331 steps=1670 evals=13361 cost=3 best=3 T=0.15
+t=361 steps=1848 evals=14785 cost=3 best=3 T=0.15
+t=391 steps=2027 evals=16217 cost=3 best=3 T=0.15
+t=422 steps=2207 evals=17657 cost=3 best=3 T=0.89
+t=452 steps=2406 evals=19249 cost=3 best=3 T=0.31
+t=482 steps=2588 evals=20705 cost=3 best=3 T=0.15
+t=512 steps=2760 evals=22081 cost=3 best=3 T=0.15
+t=542 steps=2935 evals=23481 cost=3 best=3 T=0.15
+t=572 steps=3112 evals=24897 cost=9 best=3 T=0.88
+t=602 steps=3300 evals=26401 cost=6 best=3 T=0.31
+t=632 steps=3547 evals=28377 cost=5 best=3 T=0.15
+t=662 steps=3774 evals=30193 cost=5 best=3 T=0.15
+t=693 steps=4009 evals=32073 cost=5 best=3 T=0.15
+t=723 steps=4248 evals=33985 cost=15 best=3 T=0.86
+t=753 steps=4491 evals=35929 cost=3 best=3 T=0.30
+t=783 steps=4730 evals=37841 cost=3 best=3 T=0.15
+t=813 steps=4966 evals=39729 cost=1 best=1 T=0.15
+t=843 steps=5207 evals=41657 cost=1 best=1 T=0.15

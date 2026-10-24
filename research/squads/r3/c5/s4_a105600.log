@@ -4,3 +4,10 @@ alpha: conj by prod[mat(3,3,6,4);mat(6,0,3,3)] (index 105600), z -> 0 z on Z_1
 ORBIT k=2 m=4 f=0: |Fix(alpha)| = 63 (+e); mu = 42.95, mu/k = 21.48, fixed-point misses ~ 1.21
 start cost=982
 t=30 steps=7075 evals=56601 cost=18 best=16 T=0.53
+t=60 steps=14950 evals=119601 cost=14 best=14 T=0.19
+t=90 steps=23612 evals=188897 cost=13 best=13 T=0.15
+t=120 steps=31085 evals=248681 cost=13 best=13 T=0.15
+t=150 steps=38164 evals=305313 cost=13 best=13 T=0.15
+t=180 steps=44194 evals=353553 cost=11 best=11 T=0.15
+t=210 steps=50521 evals=404169 cost=11 best=11 T=0.15
+RESULT d=8 D=8 group=prod psl 7 sl 9 poly x^2+1 x Z_1 N=120960 best=11 evals=462329 time=240.0 orbit k=2 m=4 f=0 fix=63
