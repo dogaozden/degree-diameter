@@ -27,7 +27,7 @@ Using SIZE_LAW.md's measure μ = N·e^(−W/N), where W = number of binding word
 | (11,7) | 199,291 | 5.58 | 755 | 134 |
 
 Random-like and orbit-symmetric S have solved D = 7 cells only up to μ ≈ 40–55 in our records ((6,7) at μ ≈ 54 with an
-orbit set; (8,7) at μ ≈ 39 with orbit mode; (8,7) with random S at μ ≈ 28). Every target sits above that band and above the
+orbit set; (8,7) at μ ≈ 28–39 with orbit mode). Every target sits above that band and above the
 ceiling.
 
 ## Measurements (haar_gen3 / haar_sym, 1 thread each; logs in research/squads/exp2/logs/)
@@ -35,9 +35,9 @@ ceiling.
 | cell | group | N | mode | time | best uncovered | μ |
 |---|---|---|---|---|---|---|
 | (11,7) | SL(2,31)×Z7 | 208,320 | random | 180 s | 1,394 | 1,005 |
-| (11,7) | PSL(2,29)×Z17 | 207,060 | random | 180 s | 1,393 | 1,000 |
+| (11,7) | PSL(2,29)×Z17 | 207,060 | random | 180 s | 1,393 | 968 |
 | (11,7) | SL(2,59) | 205,320 | random | 180 s | 1,220 | 917 |
-| (11,7) | PSL(2,37)×Z8 | 202,464 | random | 180 s | 1,269 | ~ |
+| (11,7) | PSL(2,37)×Z8 | 202,464 | random | 180 s | 1,269 | 839 |
 | (11,7) | SL(2,31)×Z7 | 208,320 | orbit k=3 | 240 s | 1,208 | 1,005 |
 | (11,7) | SL(2,59) | 205,320 | orbit k=3 | 240 s | 1,128 | 917 |
 | (9,7) | SL(2,31)×Z2 | 59,520 | random | 180 s | 390 | 388 |
@@ -76,5 +76,5 @@ not enough to close a μ = 99 gap.
 ## Recommendation
 
 For random-like or orbit-symmetric Haar sets these three cells are not reachable with the present tools: their μ is
-2–8× the best solved D = 7 value. Progress would need a different construction, for example a voltage lift or a
+1.8× (7,7) to 14× (11,7) the best solved D = 7 value. Progress would need a different construction, for example a voltage lift or a
 non-Haar bi-Cayley set with more orbits per side, validated against the (6,7)/(8,7) records before scaling to Δ = 9, 11.
