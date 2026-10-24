@@ -27,3 +27,10 @@ nb_8_5_haar. A record graph may be superseded by a bigger one while you work; fi
 Several workers stopped on Oct 23 with "stage builds are running" in their STATUS and nothing finished. Run builds in the
 foreground, one module at a time. If a build is long, poll its log in the same turn. Keep going until the record theorem and
 its Axioms file build, or until you are truly blocked.
+
+**If the record theorem times out at `isDefEq` on a cover argument** (seen in d6D10 and d7D9b): the lemma states the cover
+through the `[Group G]` instance, while a cover written for a concrete product group goes through the direct instances. The
+two are defeq, but comparing them under `∃ x ∈ S` binders blows up, and heartbeats, `have hc : … := cover` and `@[irreducible]`
+don't help. Fix, from STATUS-d6D10c.md: define `CoverHyp {G} [Group G] (S : Finset G) : Prop` as the lemma's hypothesis
+body, write the word product once generically (`wordOf`), prove `cover : CoverHyp SS` by unfolding, and pass it directly.
+See Haar/D6D10/Words.lean.
