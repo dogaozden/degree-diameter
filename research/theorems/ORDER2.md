@@ -377,6 +377,22 @@ side, so the two BFS determine the diameter.
 The effort was about 4× the rule's median estimate (one solve in 8 seeds, at 1.3·10⁵ evaluations against
 3.6·10⁴). That is within the effort law's factor-5 scatter, but on the slow side, like the product group SL(2,8)²×Z14.
 
+### 5.2b Mixed orbit sizes: (15,8) and the open cell (10,8)
+
+The fixed-point analysis suggests a further layout. An element whose α-orbit has size s < k (it lies in Fix(α^s)) can
+be a generator too: S = (m free orbits of size k) ∪ (one orbit of size s), so Δ = km + s with no fixed letter at all.
+This changes the orbit space, not the clumps: the uncovered set is ⟨α⟩-invariant whatever S's orbit sizes are, and
+the class costs of §5.1 are unchanged. It avoids the bad fixed letters that make f = 3 weak (abelian triples,
+involutions and order-3 elements in Fix(α); BEYOND_RANDOM §1.4). haar_order2 implements it as `OSUB=s`.
+
+| cell | group, α, layout | N (vs our record) | μ | μ_A (rule) | random symmetric: min, p10 (clumps) | result |
+|---|---|---|---|---|---|---|
+| (15,8) | SL(2,8)²×Z37, swap∘Frobenius, z ↦ 27z; 6 + 6 + 3 (`ORBIT="6 2 0" OSUB=3`) | 9,398,592 (+4.4 %) | 53.4 | 10.4 | 37, 64 (10.7) | RESULT-158 |
+| (15,8) | PSL(2,137)×Z7, conjugation order 3; 3·5 (record group, for comparison) | 8,999,256 | 29.9 | ≈ 11 | 12, 23 (7.7) | solved in 7.8·10⁴ (STRUCTURE) |
+| (10,8) open | SL(2,16)×Z145, Frobenius x ↦ x² (order 4), z ↦ 12z; 4 + 4 + 2 | 591,600 (table 588,240) | 66.4 | 17.5 before the twisted penalty | 152, 356 (89) | dead: α² fixes only SL(2,4), so ρ = 1/60 and 15 unavoidable twisted 8-cycles at Δ = 10; plus a large cyclic factor |
+| (10,8) open | SL(2,16)×Z146 and ×Z149, the same | 595,680 / 607,920 | 71 / 87 | – | 220–494 | dead |
+| (10,8) open | PSL(2,23)×Z97, conjugation order 3 (STRUCTURE's attempt) | 588,984 | 63.5 | 22 | 36, 78 (26) | best 12 in STRUCTURE |
+
 ### 5.3 Where else order 2, or another even order, should win
 
 By the rule, an even order beats order 3 only if both of these hold:
@@ -455,8 +471,15 @@ Going through the table:
 - `targets.py`, `show_targets.py`: uncovered elements by type (Fix, Anti, involutions, other), binned by generic
   rate → `out/targets/*.json`.
 - `rule.py`: the corrected rule as a calculator, with 24 worked cases → `out/rule_table.txt`.
-- `src/haar_order2.c`: research/squads/table_squad/src/haar_inv.c plus AFSWAP and ASWAPC (header comment). Build:
-  `gcc -O3 -march=native -fopenmp -o haar_order2 haar_order2.c -lm`.
+- `src/haar_order2.c`: research/squads/table_squad/src/haar_inv.c plus five modes (header comment):
+  - AFSWAP, ASWAPC: the swap automorphisms of G×G;
+  - OSUB: one orbit of size s < k;
+  - CLASSES: miss rate per stabiliser class, with RANDORB;
+  - BESTOUT: the best S of an unsolved run.
+  Build: `gcc -O3 -march=native -fopenmp -o haar_order2 haar_order2.c -lm`.
+- `classes.py`: summary of CLASSES output → `out/classes/summary.txt`.
+- `check_np.py`: third independent diameter check (own group code).
+- `uncovered.py`: lists the uncovered α-orbits of a near-solution (swap-conjugation groups).
 - `runs/`: haar logs of this session (anneals `an138_*`, random symmetric screens `ro*`).
 - `sols/`: the two (6,8) records (copied from the table-squad branch) and the order-6 (13,8) solutions.
 - `out/`: census samples (`*.jsonl.gz`: one JSON line per S with its cost, ball sizes, census and S), tables.
