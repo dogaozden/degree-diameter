@@ -46,3 +46,33 @@ The cyclic shift of copies is an automorphism fixing z and z', so it suffices to
 | GH(5) + 2 matchings over Z5 | 1 | 39,062 | 8 | VALID D=7 |
 | GH(5) + 2 matchings over Z5 | 2 (far apart) | 39,064 | 8 | INVALID D=8 (new vertices too far apart; ucheck agrees) |
 | GH(5) + 2 matchings over Z5 | 20 (clustered, udesign) | 39,100 | 8 | VALID D=7 |
+
+## Every Delorme–Gómez–Quisquater cell, with one unit per matching (+2j vertices)
+
+`do_cell.sh NAME BASE n j POINT` builds the polygon cover of a generalized n-gon (n = 4: W(q) from
+`../gq_build.py`; n = 6: H(q) from `../gh_build.c`, q = 8, 9 from the GF(q) version in
+research/squads/d14D7-r1/c3/gh_build.c) with j matchings over Z_{2j+1}, plus units (POINT, t) for t = 1..j, all at one
+point. Units on different matchings never compete for prescribed assignments; their lines are chosen pairwise within
+distance n − 2, so the new vertices stay within reach of each other. Files are in `cells/`: `NAME.units`, `NAME.state.gz`
+(matchings), `NAME.edges.gz` (small graphs) or `NAME.edges.sha256`, and the check output.
+
+| cell | table (DGQ) | base | j | ours | check |
+|---|---|---|---|---|---|
+| (10,5) | 4,000 | W(7) | 2 | **4,004** | apsp VALID (`cells/d10D5.apsp.txt`) |
+| (11,5) | 5,850 | W(8) | 2 | **5,854** | apsp VALID |
+| (12,5) | 8,200 | W(9) | 2 | **8,204** | apsp VALID |
+| (13,5) | 11,480 | W(9) | 3 | **11,486** | apsp VALID |
+| (14,5) | 14,760 | W(9) | 4 | **14,768** | apsp VALID |
+| (15,5) | 20,496 | W(11) | 3 | **20,502** | apsp VALID |
+| (7,7) | 23,436 | H(5) | 1 | **23,438** | apsp VALID |
+| (9,7) | 117,648 | H(7) | 1 | **117,650** | apsp VALID |
+| (10,7) | 224,694 | H(8) | 1 | **224,696** | apsp VALID |
+| (11,7) | 398,580 | H(9) | 1 | 398,582 | apsp running |
+| (12,7) | 664,300 | H(9) | 2 | 664,304 | apsp queued |
+| (13,7) | 1,062,936 | H(11) | 1 | 1,062,938 | unit endpoints pass; ucheck12 queued |
+| (14,7) | 1,771,560 | H(11) | 2 | **1,771,562** (1 unit) / 1,771,564 (2 units) | ucheck12 VALID (1 unit); 2 units running; apsp running |
+| (15,7) | 2,480,184 | H(11) | 3 | 2,480,190 | unit endpoints pass; ucheck12 queued |
+| (16,7) | 4,022,340 | H(13) | 2 | 4,022,344 | unit endpoints pass; ucheck12 queued |
+
+Rebuild any of them: `gunzip -k cells/NAME.state.gz && python3 unit_edges.py BASE cells/NAME.state cells/NAME.units
+OUT.edges` (BASE as in the table, from gh_build / gq_build), then `apsp OUT.edges d D`.

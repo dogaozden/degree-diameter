@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <omp.h>
 typedef uint64_t u64;
 static int P, q, J, m, NV, deg, NU, D = 7;
 static int *lines, *ptl, *ptk, *sig, *sinv, *hv;
@@ -43,8 +44,7 @@ static void swap_sigma(int t, int x, int x2) { /* exchange sigma_t(x) and sigma_
 }
 
 /* propagation from one source: kind 0 base vertex (element 0), 1 z_i, 2 z'_i. Records up to maxk misses. */
-static u64 *A, *B; static char *ZA, *ZB;
-static int run_source(int kind, int src, int *mw, int *mg, int maxk, long long *nmiss) {
+static int run_source(int kind, int src, int *mw, int *mg, int maxk, long long *nmiss, u64 *A, u64 *B, char *ZA, char *ZB) {
     memset(A, 0, 8 * (size_t)NV); memset(ZA, 0, 2 * NU);
     int side;
     if (kind == 0) { A[src] = 1; side = src < P ? 0 : 1; }
@@ -75,6 +75,20 @@ static void gh_bfs(int s, int *dist, int *qu) {
     while (h < t) { int x = qu[h++];
         if (x < P) { for (int k = 0; k <= q; k++) { int y = P + ptl[x * (q + 1) + k]; if (dist[y] < 0) { dist[y] = dist[x] + 1; qu[t++] = y; } } }
         else { int l = x - P; for (int k = 0; k <= q; k++) { int y = lines[l * (q + 1) + k]; if (dist[y] < 0) { dist[y] = dist[x] + 1; qu[t++] = y; } } } }
+}
+
+
+/* vertices of the opposite colour at distance 1 or 3 from v (GH only), via a stamped BFS of depth 3 */
+static int *stampv; static int stampc = 0; static int *levv;
+static void nb3(int v, int *out, int *cnt, int *qq) {
+    if (!stampv) { stampv = calloc(NV, sizeof(int)); levv = malloc(sizeof(int) * 70000); }
+    stampc++; int h = 0, t = 0, n = 0; qq[t] = v; levv[t] = 0; t++; stampv[v] = stampc;
+    while (h < t) { int x = qq[h]; int lx = levv[h]; h++;
+        if (lx & 1) out[n++] = x;
+        if (lx >= 3) continue;
+        if (x < P) { for (int k = 0; k <= q; k++) { int y = P + ptl[x * (q + 1) + k]; if (stampv[y] != stampc) { stampv[y] = stampc; levv[t] = lx + 1; qq[t++] = y; } } }
+        else { int l = x - P; for (int k = 0; k <= q; k++) { int y = lines[l * (q + 1) + k]; if (stampv[y] != stampc) { stampv[y] = stampc; levv[t] = lx + 1; qq[t++] = y; } } } }
+    *cnt = n;
 }
 
 int main(int argc, char **argv) {
@@ -109,28 +123,85 @@ int main(int argc, char **argv) {
     nbr = malloc(sizeof(int) * (size_t)NV * deg); vin = malloc(sizeof(int) * (size_t)NV * deg);
     for (int p = 0; p < P; p++) set_point_slots(p);
     for (int l = 0; l < P; l++) set_line_slots(l);
-    A = malloc(8 * (size_t)NV); B = malloc(8 * (size_t)NV); ZA = malloc(2 * NU + 2); ZB = malloc(2 * NU + 2);
     int *dist = malloc(sizeof(int) * NV), *dist2 = malloc(sizeof(int) * NV), *qu = malloc(sizeof(int) * NV);
-    int MAXK = 200000; int *mw = malloc(sizeof(int) * MAXK), *mg = malloc(sizeof(int) * MAXK);
+    int *cand = malloc(sizeof(int) * 70000), *cand2 = malloc(sizeof(int) * 70000), *qu3 = malloc(sizeof(int) * 70000), *qu3b = malloc(sizeof(int) * 70000);
+    int *score = calloc(NV, sizeof(int)), *seen3 = calloc(NV, sizeof(int)); int stampE = 1;
+    int *free2 = malloc(sizeof(int) * P), *free4 = malloc(sizeof(int) * P);
     char *missmark = calloc(NV, 1);
     long long totfix = 0;
+    int NE = 2 * NU, MK = 30000;
+    int *emw = malloc(sizeof(int) * (size_t)NE * MK), *emg = malloc(sizeof(int) * (size_t)NE * MK), *ek = malloc(sizeof(int) * NE);
+    long long *enm = malloc(sizeof(long long) * NE);
+    int nth = getenv("THREADS") ? atoi(getenv("THREADS")) : 3;
     for (int r = 0; r < rounds; r++) {
-        long long totmiss = 0, other = 0; int fixes = 0;
-        for (int i = 0; i < NU; i++) for (int side = 0; side < 2; side++) {
-            int t = ut[i], h = hv[t * P + up[i]];
+        double t0 = omp_get_wtime();
+        long long totmiss = 0, other = 0, zmiss = 0; int fixes = 0;
+        #pragma omp parallel num_threads(nth)
+        {
+            u64 *A = malloc(8 * (size_t)NV), *B = malloc(8 * (size_t)NV); char *ZA = malloc(2 * NU + 2), *ZB = malloc(2 * NU + 2);
+            #pragma omp for schedule(dynamic, 1)
+            for (int e = 0; e < NE; e++) { int i = e >> 1, side = e & 1; int src = side == 0 ? up[i] : P + ul[i];
+                ek[e] = run_source(0, src, emw + (size_t)e * MK, emg + (size_t)e * MK, MK, &enm[e], A, B, ZA, ZB); }
+            free(A); free(B); free(ZA); free(ZB);
+        }
+        for (int e = 0; e < NE; e++) totmiss += enm[e];
+        double t1 = omp_get_wtime();
+        for (int e = 0; e < NE; e++) {
+            if (!enm[e]) continue;
+            int i = e >> 1, side = e & 1, t = ut[i], h = hv[t * P + up[i]];
             int src = side == 0 ? up[i] : P + ul[i];
-            long long nm; int k = run_source(0, src, mw, mg, MAXK, &nm);
-            totmiss += nm; if (!nm) continue;
+            int k = ek[e]; int *mw = emw + (size_t)e * MK, *mg = emg + (size_t)e * MK;
             gh_bfs(src, dist, qu);
-            /* mark missed targets of the repairable kind */
             int target_g = side == 0 ? h : (m - h) % m;
-            int nrep = 0;
+            /* free slots at distance 2 and 4 from the source (points for side 0, lines for side 1) */
+            int nf2 = 0, nf4 = 0;
+            for (int y = 0; y < P; y++) {
+                if (side == 0) { if (lockP[t * P + y] || dele[t * P + y]) continue; if (dist[y] == 2) free2[nf2++] = y; else if (dist[y] == 4) free4[nf4++] = y; }
+                else { if (lockL[t * P + y] || lockP[t * P + sinv[t * P + y]]) continue; if (dist[P + y] == 2) free2[nf2++] = y; else if (dist[P + y] == 4) free4[nf4++] = y; }
+            }
             for (int z = 0; z < k; z++) {
                 int w = mw[z];
                 if (w < 0) { other++; continue; }
-                if (side == 0 && w < P && mg[z] == target_g && dist[w] == 6) { missmark[w] = 1; nrep++; }
-                else if (side == 1 && w >= P && mg[z] == target_g && dist[w] == 6) { missmark[w] = 1; nrep++; }
+                if (side == 0 && w < P && mg[z] == target_g && dist[w] == 6) missmark[w] = 1;
+                else if (side == 1 && w >= P && mg[z] == target_g && dist[w] == 6) missmark[w] = 1;
                 else other++;
+            }
+            /* S2 repair: one assignment sigma_t(x) = L, x at distance 2 from the source, covers every marked target
+               within distance 3 of L (point side; dually on the line side). score[v] = marked targets within distance 3 of v. */
+            {
+                int nmark = 0;
+                for (int z = 0; z < k; z++) { int y = mw[z]; if (y < 0 || !missmark[y] || seen3[y] == stampE + 1) continue; seen3[y] = stampE + 1; nmark++;
+                    int n2 = 0; nb3(y, cand2, &n2, qu3b); for (int u = 0; u < n2; u++) score[cand2[u]]++; }
+                while (nmark > 0) {
+                    int best = -1, bestc = 1;
+                    int lo = side == 0 ? P : 0, hi = side == 0 ? NV : P;
+                    for (int v = lo; v < hi; v++) { if (score[v] <= bestc) continue;
+                        if (side == 0) { if (lockL[t * P + (v - P)] || lockP[t * P + sinv[t * P + (v - P)]]) continue; }
+                        else { if (lockP[t * P + v] || dele[t * P + v]) continue; }
+                        bestc = score[v]; best = v; }
+                    if (best < 0) break;
+                    int done1 = 0;
+                    while (nf2 > 0 && !done1) {
+                        int ii = (int)(rnd() % (u64)nf2); int y = free2[ii]; free2[ii] = free2[--nf2];
+                        if (side == 0) { if (lockP[t * P + y] || dele[t * P + y]) continue;
+                            int L = best - P, x2 = sinv[t * P + L]; if (lockP[t * P + x2]) { nf2++; free2[nf2 - 1] = y; break; }
+                            if (x2 != y) swap_sigma(t, y, x2);
+                            lockP[t * P + y] = 1; lockL[t * P + L] = 1; done1 = 1; }
+                        else { if (lockL[t * P + y] || lockP[t * P + sinv[t * P + y]]) continue;
+                            int Pt = best, x2 = sinv[t * P + y]; if (x2 != Pt) swap_sigma(t, Pt, x2);
+                            lockP[t * P + Pt] = 1; lockL[t * P + y] = 1; done1 = 1; }
+                    }
+                    if (nf2 == 0 && !done1) break;
+                    if (!done1) { score[best] = 0; continue; }
+                    fixes++;
+                    int n2 = 0; nb3(best, cand, &n2, qu3);
+                    for (int z = 0; z < n2; z++) { int y = cand[z]; if (!missmark[y]) continue; missmark[y] = 0; nmark--;
+                        int n3 = 0; nb3(y, cand2, &n3, qu3b); for (int u = 0; u < n3; u++) score[cand2[u]]--; }
+                }
+                /* clear scores of the targets left for the distance-4 repair */
+                for (int z = 0; z < k; z++) { int y = mw[z]; if (y < 0 || !missmark[y] || seen3[y] != stampE + 1) continue; seen3[y] = 0;
+                    int n2 = 0; nb3(y, cand2, &n2, qu3b); for (int u = 0; u < n2; u++) score[cand2[u]]--; }
+                stampE += 2;
             }
             /* greedy repair */
             for (int z = 0; z < k; z++) {
@@ -144,16 +215,9 @@ int main(int argc, char **argv) {
                     int x = -1, x2 = -1;
                     if (bestL >= 0 && !lockP[t * P + sinv[t * P + bestL]]) {
                         x2 = sinv[t * P + bestL];
-                        for (int tries = 0; tries < 100000 && x < 0; tries++) { int y = (int)(rnd() % (u64)P); if (dist[y] == 4 && !lockP[t * P + y] && !dele[t * P + y]) x = y; }
+                        while (nf4 > 0 && x < 0) { int ii = (int)(rnd() % (u64)nf4); int y = free4[ii]; free4[ii] = free4[--nf4]; if (!lockP[t * P + y] && !dele[t * P + y] && y != x2) x = y; }
                     }
-                    if (x < 0) { /* fallback: x at distance 2, L a line at distance <= 3 from w (route 2 + 1 + 3) */
-                        gh_bfs(w, dist2, qu);
-                        for (int tries = 0; tries < 200000 && x < 0; tries++) {
-                            int L = (int)(rnd() % (u64)P); if (dist2[P + L] > 3 || lockL[t * P + L] || lockP[t * P + sinv[t * P + L]]) continue;
-                            for (int tr2 = 0; tr2 < 2000 && x < 0; tr2++) { int y = (int)(rnd() % (u64)P); if (dist[y] == 2 && !lockP[t * P + y] && !dele[t * P + y]) { x = y; bestL = L; x2 = sinv[t * P + L]; } }
-                        }
-                        if (x < 0) continue;
-                    }
+                    if (x < 0) continue;
                     if (x != x2) swap_sigma(t, x, x2);
                     lockP[t * P + x] = 1; lockL[t * P + bestL] = 1; fixes++;
                     for (int kk = 0; kk <= q; kk++) missmark[lines[bestL * (q + 1) + kk]] = 0;
@@ -166,15 +230,8 @@ int main(int argc, char **argv) {
                         if (cnt > bestc) { bestc = cnt; bestP = Pt; } }
                     int l2 = -1;
                     if (bestP >= 0)
-                        for (int tries = 0; tries < 100000 && l2 < 0; tries++) { int y = (int)(rnd() % (u64)P); if (dist[P + y] == 4 && !lockL[t * P + y] && !lockP[t * P + sinv[t * P + y]]) l2 = y; }
-                    if (l2 < 0) { /* fallback: l2 at distance 2 from src, Pt a point at distance <= 3 from line w (route 2 + 1 + 3) */
-                        gh_bfs(w, dist2, qu);
-                        for (int tries = 0; tries < 200000 && l2 < 0; tries++) {
-                            int Pt = (int)(rnd() % (u64)P); if (dist2[Pt] > 3 || lockP[t * P + Pt] || dele[t * P + Pt]) continue;
-                            for (int tr2 = 0; tr2 < 2000 && l2 < 0; tr2++) { int y = (int)(rnd() % (u64)P); if (dist[P + y] == 2 && !lockL[t * P + y] && !lockP[t * P + sinv[t * P + y]]) { l2 = y; bestP = Pt; } }
-                        }
-                        if (l2 < 0) continue;
-                    }
+                        while (nf4 > 0 && l2 < 0) { int ii = (int)(rnd() % (u64)nf4); int y = free4[ii]; free4[ii] = free4[--nf4]; if (!lockL[t * P + y] && !lockP[t * P + sinv[t * P + y]]) l2 = y; }
+                    if (l2 < 0) continue;
                     int x2 = sinv[t * P + l2];
                     if (x2 != bestP) swap_sigma(t, bestP, x2);
                     lockP[t * P + bestP] = 1; lockL[t * P + l2] = 1; fixes++;
@@ -183,11 +240,18 @@ int main(int argc, char **argv) {
             }
             for (int z = 0; z < k; z++) if (mw[z] >= 0) missmark[mw[z]] = 0;
         }
-        /* unit vertices as sources */
-        long long zmiss = 0;
-        for (int i = 0; i < NU; i++) for (int kk = 1; kk <= 2; kk++) { long long nm; run_source(kk, i, mw, mg, 0, &nm); zmiss += nm; }
+        double t2 = omp_get_wtime();
+        #pragma omp parallel num_threads(nth) reduction(+:zmiss)
+        {
+            u64 *A = malloc(8 * (size_t)NV), *B = malloc(8 * (size_t)NV); char *ZA = malloc(2 * NU + 2), *ZB = malloc(2 * NU + 2);
+            int dmw[1], dmg[1];
+            #pragma omp for schedule(dynamic, 1)
+            for (int e = 0; e < NE; e++) { long long nm; run_source(1 + (e & 1), e >> 1, dmw, dmg, 0, &nm, A, B, ZA, ZB); zmiss += nm; }
+            free(A); free(B); free(ZA); free(ZB);
+        }
         totfix += fixes;
-        fprintf(stderr, "round %d: endpoint misses %lld (not repairable here %lld), unit-vertex misses %lld, repairs %d\n", r, totmiss, other, zmiss, fixes);
+        fprintf(stderr, "round %d: endpoint misses %lld (not repairable here %lld), unit-vertex misses %lld, repairs %d  [%.0fs prop, %.0fs repair, %.0fs z]\n",
+                r, totmiss, other, zmiss, fixes, t1 - t0, t2 - t1, omp_get_wtime() - t2);
         if (totmiss == 0 && zmiss == 0) break;
         if (fixes == 0) break;
     }
