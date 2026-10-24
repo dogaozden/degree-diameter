@@ -78,9 +78,17 @@ The three graphs are pairwise non-isomorphic. In each group all plan solutions f
 At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. Orders 421–448
 are done so far (`runs/allgroups_d4D7.tsv`); the run continues to 546 and skips order 512 (10,494,213 groups).
 
-*Is the exhaustive search itself right?* `hx_check.py` recomputes with igraph the exact diameter of every set on
-two plan lines of SmallGroup(432,233), with the quotient filter on: 858 sets, 2 solutions, 0 mismatches
-(`runs/hx_check_igraph.txt`). Every solution reported anywhere in this file was also checked by apsp.
+*Is the exhaustive search itself right?* Four checks:
+- **Against igraph.** `hx_check.py` recomputes with igraph the exact diameter of every set on two plan lines of
+  SmallGroup(432,233), with the quotient filter on: 858 sets, 2 solutions, 0 mismatches
+  (`runs/hx_check_igraph.txt`).
+- **Against an independent annealer** (`hx_vs_hanneal.py` → `runs/hx_vs_hanneal_d4D7.txt`).
+  - In SmallGroup(432,30) and (432,31), where hx finds nothing, hanneal plateaus at costs 4 and 8 after 1.5 million
+    evaluations.
+  - In (432,247) and (432,249) it finds solutions in 360–1,366 evaluations.
+- **Known records.** At order 420 the same pipeline re-finds Bond–Delorme's group C7 × A5 (8 plan solutions;
+  `runs/allgroups_d4D7_420.tsv`).
+- **apsp.** Every solution reported anywhere in this file was also checked by apsp.
 
 Two remarks:
 - The 840 record is not a ceiling. The size law (SIZE_LAW.md §3.3) predicted 876 [788–980] for a good Haar
