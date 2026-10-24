@@ -72,3 +72,12 @@ Build: `B2PTS=sets/P8_c1_134.txt B2LINES=sets/L8_spread513.txt ./d7hex b2 hex/he
 - (10,7): n=224962 edges=1124676 degree min=9 max=10 bipartite=yes diameter=7, RESULT VALID d=10 D=7; sha256 a8d2e3efe3dc9ad0fd65a679eebd509598d6c87cb34c129a0105c84c41e9a70a
 - (9,7): n=118224 edges=531720 degree min=8 max=9 bipartite=yes diameter=7, RESULT VALID d=9 D=7; sha256 f08d8d789bf37dec2d5fc0ae82850d5be17b7ca2c5b8d817187b25d4d6a2cf3b
 - (7,7): n=23580 edges=82530 degree min=7 max=7 bipartite=yes diameter=7, RESULT VALID d=7 D=7; sha256 946de08a99434031f515d5deaf1acbf2d8dd45b2536554eee14c80686a7c043e
+
+## (11,7) 406,402: the duality M with 3,911 freed pairs
+
+Same construction as 404,222 with a larger set of pairwise non-collinear points of H(9): 3,911 from squad card r4/c4
+(min-degree greedy + k-fixed tabu search; research/d10D7/sets/P9_c4_noncollinear.txt, setcheck VALID).
+    B2PTS=sets/P9_c4_noncollinear.txt ./d7hex b2dual hex/hex_q9.bin dual/x9_dual_K28.sol 1 OUT.sol 8 0
+    file research/frontier/sols/d11D7_hex9_B2dualK3911_n406402.sol
+apsp (all pairs), 2026-10-24 23:4x UTC: n=406402 edges=2235211 degree min=11 max=11 bipartite=yes diameter=7,
+RESULT VALID d=11 D=7 n=406402. Edge list sha256 f0d850ede1cdb0425619e2b543be1b0085b3e4b6bbe2b21646e9530a61302010.
