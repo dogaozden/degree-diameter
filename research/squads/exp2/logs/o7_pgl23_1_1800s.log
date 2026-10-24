@@ -1,0 +1,65 @@
+group pgl 23 x Z_1, N=12144, identity 0, H order 24, rows 506, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 24); using haar_gen3's evaluation
+alpha: conj by mat(1,13,2,6) (index 6627), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 23 (+e); mu = 120.82, mu/k = 40.27, fixed-point misses ~ 10.32
+start cost=716
+t=30 steps=73531 evals=588249 cost=142 best=142 T=0.53
+t=60 steps=147662 evals=1181297 cost=142 best=142 T=0.19
+t=90 steps=221558 evals=1772465 cost=135 best=135 T=0.15
+t=120 steps=291848 evals=2334785 cost=135 best=135 T=0.15
+t=150 steps=360760 evals=2886081 cost=135 best=135 T=0.15
+t=180 steps=426232 evals=3409857 cost=135 best=135 T=0.15
+t=210 steps=497153 evals=3977225 cost=135 best=135 T=0.15
+t=240 steps=566803 evals=4534425 cost=135 best=135 T=1.41
+t=270 steps=635158 evals=5081265 cost=135 best=135 T=0.50
+t=300 steps=702995 evals=5623961 cost=135 best=135 T=0.18
+t=330 steps=773536 evals=6188289 cost=135 best=135 T=0.15
+t=360 steps=842081 evals=6736649 cost=135 best=135 T=0.15
+t=390 steps=909722 evals=7277777 cost=135 best=135 T=1.41
+t=420 steps=975203 evals=7801625 cost=135 best=135 T=0.50
+t=450 steps=1042934 evals=8343473 cost=135 best=135 T=0.18
+t=480 steps=1113345 evals=8906761 cost=135 best=135 T=0.15
+t=510 steps=1185244 evals=9481953 cost=135 best=135 T=0.15
+t=540 steps=1253948 evals=10031585 cost=135 best=135 T=1.41
+t=570 steps=1325935 evals=10607481 cost=135 best=135 T=0.50
+t=600 steps=1399026 evals=11192209 cost=135 best=135 T=0.18
+t=630 steps=1474030 evals=11792241 cost=141 best=135 T=0.15
+t=660 steps=1546950 evals=12375601 cost=141 best=135 T=0.15
+t=690 steps=1623209 evals=12985673 cost=135 best=135 T=1.41
+t=720 steps=1695586 evals=13564689 cost=135 best=135 T=0.50
+t=750 steps=1767712 evals=14141697 cost=135 best=135 T=0.18
+t=780 steps=1838302 evals=14706417 cost=135 best=135 T=0.15
+t=810 steps=1910209 evals=15281673 cost=135 best=135 T=0.15
+t=840 steps=1981629 evals=15853033 cost=135 best=135 T=1.41
+t=870 steps=2055044 evals=16440353 cost=135 best=135 T=0.50
+t=900 steps=2127585 evals=17020681 cost=135 best=135 T=0.18
+t=930 steps=2199447 evals=17595577 cost=135 best=135 T=0.15
+t=960 steps=2271745 evals=18173961 cost=135 best=135 T=0.15
+t=990 steps=2343828 evals=18750625 cost=135 best=135 T=1.41
+t=1020 steps=2416885 evals=19335081 cost=135 best=135 T=0.50
+t=1050 steps=2492138 evals=19937105 cost=135 best=135 T=0.18
+t=1080 steps=2562635 evals=20501081 cost=135 best=135 T=0.15
+t=1110 steps=2635528 evals=21084225 cost=135 best=135 T=0.15
+t=1140 steps=2707260 evals=21658081 cost=135 best=135 T=1.41
+t=1170 steps=2779573 evals=22236585 cost=135 best=135 T=0.50
+t=1200 steps=2850534 evals=22804273 cost=135 best=135 T=0.18
+t=1230 steps=2919295 evals=23354361 cost=135 best=135 T=0.15
+t=1260 steps=2989796 evals=23918369 cost=135 best=135 T=0.15
+t=1290 steps=3061436 evals=24491489 cost=135 best=135 T=1.41
+t=1320 steps=3132883 evals=25063065 cost=135 best=135 T=0.50
+t=1350 steps=3203689 evals=25629513 cost=135 best=135 T=0.18
+t=1380 steps=3273898 evals=26191185 cost=135 best=135 T=0.15
+t=1410 steps=3343490 evals=26747921 cost=135 best=135 T=0.15
+t=1440 steps=3415003 evals=27320025 cost=135 best=135 T=1.41
+t=1470 steps=3485437 evals=27883497 cost=135 best=135 T=0.50
+t=1500 steps=3557031 evals=28456249 cost=143 best=135 T=0.18
+t=1530 steps=3626946 evals=29015569 cost=143 best=135 T=0.15
+t=1560 steps=3699879 evals=29599033 cost=153 best=135 T=0.15
+t=1590 steps=3769880 evals=30159041 cost=135 best=135 T=1.41
+t=1620 steps=3841848 evals=30734785 cost=90 best=90 T=0.50
+t=1650 steps=3915313 evals=31322505 cost=90 best=90 T=0.18
+t=1680 steps=3990494 evals=31923953 cost=90 best=90 T=0.15
+t=1710 steps=4064386 evals=32515089 cost=90 best=90 T=0.15
+t=1740 steps=4135100 evals=33080801 cost=90 best=90 T=0.15
+t=1770 steps=4208298 evals=33666385 cost=90 best=90 T=0.75
+RESULT d=7 D=7 group=pgl 23 x Z_1 N=12144 best=90 evals=34259033 time=1800.0 orbit k=3 m=2 f=1 fix=23
