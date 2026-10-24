@@ -1,0 +1,64 @@
+PG 2 2   (A2, q=[2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 6, 3: 4}  prediction MATCH (residue type I1)
+PG 2 2   (A2, q=[2]) even-dim flags: degree   3, layers {0: 1, 1: 3, 2: 6, 3: 4}  prediction MATCH (residue type I1)
+         chambers 21, vertices 14, diameter (max eccentricity) 3, Coxeter number h of A2: 3  OK
+PG 2 3   (A2, q=[3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 9}  prediction MATCH (residue type I1)
+PG 2 3   (A2, q=[3]) even-dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 9}  prediction MATCH (residue type I1)
+         chambers 52, vertices 26, diameter (max eccentricity) 3, Coxeter number h of A2: 3  OK
+PG 3 2   (A3, q=[2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 24, 3: 32, 4: 80}  prediction MATCH (residue type I2)
+PG 3 2   (A3, q=[2]) even-dim flags: degree   9, layers {0: 1, 1: 9, 2: 18, 3: 96, 4: 16}  prediction MATCH (residue type I1)
+         chambers 315, vertices 140, diameter (max eccentricity) 4, Coxeter number h of A3: 4  OK
+PG 3 3   (A3, q=[3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 60, 3: 126, 4: 459}  prediction MATCH (residue type I2)
+PG 3 3   (A3, q=[3]) even-dim flags: degree  16, layers {0: 1, 1: 16, 2: 48, 3: 504, 4: 81}  prediction MATCH (residue type I1)
+         chambers 2080, vertices 650, diameter (max eccentricity) 4, Coxeter number h of A3: 4  OK
+PG 4 2   (A4, q=[2]) odd -dim flags: degree   9, layers {0: 1, 1: 9, 2: 60, 3: 324, 4: 1024, 5: 752}  prediction MATCH (residue type I1)
+PG 4 2   (A4, q=[2]) even-dim flags: degree   9, layers {0: 1, 1: 9, 2: 60, 3: 324, 4: 1024, 5: 752}  prediction MATCH (residue type I1)
+         chambers 9765, vertices 2170, diameter (max eccentricity) 5, Coxeter number h of A4: 5  OK
+PG 4 3   (A4, q=[3]) odd -dim flags: degree  16, layers {0: 1, 1: 16, 2: 204, 3: 2268, 4: 15525, 5: 13446}  prediction MATCH (residue type I1)
+PG 4 3   (A4, q=[3]) even-dim flags: degree  16, layers {0: 1, 1: 16, 2: 204, 3: 2268, 4: 15525, 5: 13446}  prediction MATCH (residue type I1)
+         chambers 251680, vertices 31460, diameter (max eccentricity) 5, Coxeter number h of A4: 5  OK
+PG 5 2   (A5, q=[2]) odd -dim flags: degree   9, layers {0: 1, 1: 9, 2: 210, 3: 856, 4: 12016, 5: 21920, 6: 56128}  prediction MATCH (residue type I2)
+PG 5 2   (A5, q=[2]) even-dim flags: degree  27, layers {0: 1, 1: 27, 2: 144, 3: 2568, 4: 8816, 5: 65760, 6: 13824}  prediction MATCH (residue type I1)
+         chambers 615195, vertices 91140, diameter (max eccentricity) 6, Coxeter number h of A5: 6  OK
+Sp 2 2   (B2, q=[2, 2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 6, 3: 12, 4: 8}  prediction MATCH (residue type I1)
+Sp 2 2   (B2, q=[2, 2]) even-dim flags: degree   3, layers {0: 1, 1: 3, 2: 6, 3: 12, 4: 8}  prediction MATCH (residue type I1)
+         chambers 45, vertices 30, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+Sp 2 3   (B2, q=[3, 3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 36, 4: 27}  prediction MATCH (residue type I1)
+Sp 2 3   (B2, q=[3, 3]) even-dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 36, 4: 27}  prediction MATCH (residue type I1)
+         chambers 160, vertices 80, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+O 2 3    (B2, q=[3, 3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 36, 4: 27}  prediction MATCH (residue type I1)
+O 2 3    (B2, q=[3, 3]) even-dim flags: degree   4, layers {0: 1, 1: 4, 2: 12, 3: 36, 4: 27}  prediction MATCH (residue type I1)
+         chambers 160, vertices 80, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+Sp 3 2   (B3, q=[2, 2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 24, 3: 40, 4: 248, 5: 272, 6: 672}  prediction MATCH (residue type I2)
+Sp 3 2   (B3, q=[2, 2]) even-dim flags: degree   9, layers {0: 1, 1: 9, 2: 18, 3: 120, 4: 168, 5: 816, 6: 128}  prediction MATCH (residue type I1)
+         chambers 2835, vertices 1260, diameter (max eccentricity) 6, Coxeter number h of B3: 6  OK
+Sp 3 3   (B3, q=[3, 3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 60, 3: 153, 4: 1863, 5: 3483, 6: 12636}  prediction MATCH (residue type I2)
+Sp 3 3   (B3, q=[3, 3]) even-dim flags: degree  16, layers {0: 1, 1: 16, 2: 48, 3: 612, 4: 1404, 5: 13932, 6: 2187}  prediction MATCH (residue type I1)
+         chambers 58240, vertices 18200, diameter (max eccentricity) 6, Coxeter number h of B3: 6  OK
+O 3 3    (B3, q=[3, 3]) odd -dim flags: degree   4, layers {0: 1, 1: 4, 2: 60, 3: 153, 4: 1863, 5: 3483, 6: 12636}  prediction MATCH (residue type I2)
+O 3 3    (B3, q=[3, 3]) even-dim flags: degree  16, layers {0: 1, 1: 16, 2: 48, 3: 612, 4: 1404, 5: 13932, 6: 2187}  prediction MATCH (residue type I1)
+         chambers 58240, vertices 18200, diameter (max eccentricity) 6, Coxeter number h of B3: 6  OK
+Sp 4 2   (B4, q=[2, 2]) odd -dim flags: degree   9, layers {0: 1, 1: 9, 2: 60, 3: 348, 4: 1608, 5: 7200, 6: 26048, 7: 72768, 8: 52608}  prediction MATCH (residue type I2)
+Sp 4 2   (B4, q=[2, 2]) even-dim flags: degree   9, layers {0: 1, 1: 9, 2: 60, 3: 348, 4: 1512, 5: 7200, 6: 28576, 7: 72768, 8: 50176}  prediction MATCH (residue type I1)
+         chambers 722925, vertices 160650, diameter (max eccentricity) 8, Coxeter number h of B4: 8  OK
+Om 2 2   (B2, q=[2, 4]) odd -dim flags: degree   5, layers {0: 1, 1: 5, 2: 10, 3: 40, 4: 16}  prediction MATCH (residue type I2)
+Om 2 2   (B2, q=[2, 4]) even-dim flags: degree   3, layers {0: 1, 1: 3, 2: 12, 3: 24, 4: 32}  prediction MATCH (residue type I1)
+         chambers 135, vertices 72, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+Om 2 3   (B2, q=[3, 9]) odd -dim flags: degree  10, layers {0: 1, 1: 10, 2: 30, 3: 270, 4: 81}  prediction MATCH (residue type I2)
+Om 2 3   (B2, q=[3, 9]) even-dim flags: degree   4, layers {0: 1, 1: 4, 2: 36, 3: 108, 4: 243}  prediction MATCH (residue type I1)
+         chambers 1120, vertices 392, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+Om 3 2   (B3, q=[2, 4]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 42, 3: 76, 4: 896, 5: 992, 6: 4416}  prediction MATCH (residue type I2)
+Om 3 2   (B3, q=[2, 4]) even-dim flags: degree  15, layers {0: 1, 1: 15, 2: 30, 3: 380, 4: 528, 5: 4960, 6: 512}  prediction MATCH (residue type I1)
+         chambers 16065, vertices 6426, diameter (max eccentricity) 6, Coxeter number h of B3: 6  OK
+U 4 4    (B2, q=[4, 2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 12, 3: 24, 4: 32}  prediction MATCH (residue type I2)
+U 4 4    (B2, q=[4, 2]) even-dim flags: degree   5, layers {0: 1, 1: 5, 2: 10, 3: 40, 4: 16}  prediction MATCH (residue type I1)
+         chambers 135, vertices 72, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+U 5 4    (B2, q=[4, 8]) odd -dim flags: degree   9, layers {0: 1, 1: 9, 2: 36, 3: 288, 4: 128}  prediction MATCH (residue type I2)
+U 5 4    (B2, q=[4, 8]) even-dim flags: degree   5, layers {0: 1, 1: 5, 2: 40, 3: 160, 4: 256}  prediction MATCH (residue type I1)
+         chambers 1485, vertices 462, diameter (max eccentricity) 4, Coxeter number h of B2: 4  OK
+U 6 4    (B3, q=[4, 2]) odd -dim flags: degree   5, layers {0: 1, 1: 5, 2: 70, 3: 216, 4: 2256, 5: 6016, 6: 16384}  prediction MATCH (residue type I2)
+U 6 4    (B3, q=[4, 2]) even-dim flags: degree  15, layers {0: 1, 1: 15, 2: 60, 3: 648, 4: 2080, 5: 18048, 6: 4096}  prediction MATCH (residue type I1)
+         chambers 93555, vertices 24948, diameter (max eccentricity) 6, Coxeter number h of B3: 6  OK
+Op 4 2   (D4, q=[2]) odd -dim flags: degree   3, layers {0: 1, 1: 3, 2: 78, 3: 132, 4: 2640, 5: 1440, 6: 11456}  prediction MATCH (residue type I2)
+Op 4 2   (D4, q=[2]) even-dim flags: degree  27, layers {0: 1, 1: 27, 2: 54, 3: 1188, 4: 1008, 5: 12960, 6: 512}  prediction MATCH (residue type I1)
+         chambers 42525, vertices 15750, diameter (max eccentricity) 6, Coxeter number h of D4: 6  OK
+ALL MATCH
