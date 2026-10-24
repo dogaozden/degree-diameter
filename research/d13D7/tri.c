@@ -6,8 +6,9 @@
    R = pairwise opposite points, sigma(R) = pairwise opposite lines.  The new vertices are joined among themselves by
    a bipartite graph NS (v's on one side, u's on the other) of max degree <= 10 so that v-v and u-u distances are <= 6.
 
-   usage: tri HEXFILE m seed [out.edges]
-     m     number of surgeries (0 = the plain table construction); m < 0: as many as the greedy finds
+   usage: [RFILE=points.txt SFILE=lines.txt] tri HEXFILE m seed [out.edges]
+     m     number of surgeries (0 = the plain table construction); m < 0: as many as the greedy finds, or all of
+           RFILE/SFILE (pairwise opposite points / lines, one index per line; checked)
      seed  random seed (sigma off the local-duality region, greedy order)
    Checks: BFS from every damaged vertex, every new vertex and 2000 random vertices (exact eccentricities).
    With an output file, writes the edge list in apsp.c format (first line n, then "u v" per edge). */
@@ -56,6 +57,22 @@ int main(int argc, char **argv) {
     for (int i = N - 1; i > 0; i--) { int j = rnd() % (i + 1), t = permP[i]; permP[i] = permP[j]; permP[j] = t; }
     for (int i = N - 1; i > 0; i--) { int j = rnd() % (i + 1), t = permL[i]; permL[i] = permL[j]; permL[j] = t; }
     int ip = 0, il = 0, want = mreq < 0 ? cap : mreq;
+    const char *rf = getenv("RFILE"), *sf = getenv("SFILE");
+    if (rf || sf) {
+        /* R (points) and S (lines) from files, one index per line; both must be pairwise opposite (checked) */
+        int *RR = malloc(sizeof(int) * N), *SS = malloc(sizeof(int) * N); int nr = 0, ns = 0; char buf[256];
+        FILE *g = rf ? fopen(rf, "r") : NULL; while (g && fgets(buf, sizeof buf, g)) { int v; if (buf[0] != '#' && sscanf(buf, "%d", &v) == 1) RR[nr++] = v; } if (g) fclose(g);
+        g = sf ? fopen(sf, "r") : NULL; while (g && fgets(buf, sizeof buf, g)) { int v; if (buf[0] != '#' && sscanf(buf, "%d", &v) == 1) SS[ns++] = v; } if (g) fclose(g);
+        int mm = nr < ns ? nr : ns; if (mreq >= 0 && mreq < mm) mm = mreq; if (mm > cap) mm = cap;
+        for (int j = 0; j < mm; j++) {
+            int p = RR[j], l = SS[j];
+            if (blkP[p] || blkL[l]) { fprintf(stderr, "R/S not pairwise opposite at entry %d\n", j); return 1; }
+            R[m] = p; S[m] = l; m++;
+            gh_ball(p, 4, dist, queue); for (int x = 0; x < N; x++) if (dist[x] <= 4) blkP[x] = 1;
+            gh_ball(N + l, 4, dist, queue); for (int x = N; x < 2 * N; x++) if (dist[x] <= 4) blkL[x - N] = 1;
+        }
+        want = m;
+    }
     while (m < want) {
         while (ip < N && blkP[permP[ip]]) ip++;
         while (il < N && blkL[permL[il]]) il++;
