@@ -275,7 +275,42 @@ Divided by the clump size, order 6 is lowest: its p10 is about 6 clumps, against
 order 2.
 
 All three order-6 solutions passed haar_sym's full diameter check (`sols/d13D8_sl_64_13_orb6frob_s*.txt`). They have
-the record's order, so they are not records.
+the record's order, so they are not records. `check_np.py` also confirms seed 2 (VALID, diameter 8).
+
+**The fixed-point term at every level.** haar_order2's `CLASSES=1` mode samples random symmetric S and records which
+stabiliser class each uncovered element is in. The model says an element whose stabiliser in ⟨α⟩ has order h is
+missed with probability p^{1/h}, where p is the free elements' rate. Samples are binned by their own p, best quartile
+first, and each entry is measured / predicted (`out/classes/summary.txt`):
+
+| group, symmetry (cell) | h = 2 | h = 3 | h = 6 | free ∩ Anti(α^{k/2}) / p |
+|---|---|---|---|---|
+| SL(2,64)×Z13, Frobenius order 6 (13,8) | 1.10, 0.91, 0.77 (498 el.) | 1.21, 0.92, 0.90 (54) | 0.91, 0.89, 0.74 (6, incl. e) | 2.8, 2.0, 1.2 |
+| SL(2,7)²×Z31, swap∘conj order 6 (13,8) | 0.91, 0.79, 0.67 (330) | 0.98, 1.00, 1.03 (30) | 0.60, 0.51, 0.45 (6, incl. e) | 2.4, 1.6, 1.7 |
+| SL(2,64)×Z13, conjugation order 3 (13,8) | – | 1.05, 0.96, 0.94 (63) | – | – |
+| SL(2,25), conjugation order 2 (6,8) | 0.99, 0.97, 1.00 (24) | – | – | 1.12, 1.06, 1.06 |
+| SL(2,25)×Z4, conjugation order 2 (6,9) | 1.63, 1.48, 1.16 (48) | – | – | 30, 19, 9.6 (0.84, 0.77, 0.74 of √p) |
+
+- The p^{1/h} law holds to within 10–30 % at h = 2 and 3.
+- At h = 6 the class has only six elements, and e is one of them. e is always covered (it is a generator), and the
+  swap∘conjugation fixed points (a diagonal torus) are covered more often than predicted. That makes the term smaller,
+  not larger.
+- The free elements of Anti(α³) are missed 1.2–2.8 times more than generic ones even at even D. This is a small class
+  (0.2–0.3 % of G), and the effect is not explained. It costs less than 0.01 expected misses at these sizes.
+
+**The order-6 solutions keep cheap twisted cycles** (`twist.py sol … --frob 3` or `--swapconj`;
+`out/census_d13D8_*.json`).
+- On SL(2,64)×Z13 (seed 2) the involution α³ = (x ↦ x⁸, z ↦ −z) fixes 504 elements and |Anti(α³)| = 6,760, so
+  ρ = 1/504. The solution has
+  - 0 twisted 4-cycles (expected 0.08);
+  - 12 twisted 8-cycles (expected 5.6);
+  - 605 twisted 12-cycles (expected 535).
+- The record graph on SL(2,7)²×Z31 (ρ = 1/336, tight: 336 × 10,416 = N) has 0, 9 and 665, against expected 0.12, 8.4
+  and 800.
+- At Δ = 13 a twisted 8-cycle costs only λc₂ ≈ 0.008 in ln cost, so the search has no reason to avoid it. Its ball at
+  depth 4 is short of the maximum by 48 elements on SL(2,64): exactly the 12 twisted 8-cycles × 4 pairs.
+- At Δ = 6 an 8-cycle costs 0.13, and both (6,8) records have none.
+
+So the search avoids twisted cycles exactly when they are expensive, as the rule assumes.
 
 ### 5.2 Record attempts at (13,8) with order 6 (current record 6,814,080 = 2 × 3,407,040)
 
@@ -289,6 +324,13 @@ Both have order 2·ord(F^j) or 2·ord(conj c). The involution α³ fixes a diago
 | **SL(2,7)²×Z31** | **3,499,776 (+2.7 %)** | swap∘conj(order 3), z ↦ 6z | 49.4 | 11.0 | 35, 64 | **seed 2 solved in 131,625 evaluations (741 s)**; seeds 1, 3–8: best 6 (one orbit) after 3–14·10⁴ |
 | SL(2,8)²×Z14 | 3,556,224 (+4.4 %) | swap∘Frobenius, z ↦ 3z or 5z | 59.9 | 15.0 | 60–72, 97–104 | 4 seeds: best 18–26 (one orbit = 6) |
 | SL(2,64)×Z14 | 3,669,120 (+7.7 %) | Frobenius order 6, z ↦ 3z | 86.7 | 20.9 | 70, 130 | not run (≈ 5·10⁶ evaluations by the rule) |
+| PSL(2,13)²×Z3 | 3,577,392 (+5.0 %) | swap∘conj(order 3), z ↦ 2z | 64.3 | 14.7 | 52, 91 | RESULT-PSL13 |
+| PSL(2,7)²×Z126 | 3,556,224 (+4.4 %) | swap∘conj(order 3), z ↦ 5z | 59.9 | 11.5* | 57, 132 | screen only: no order-6 multiplier of Z9 moves Z3, and the large cyclic factor mixes badly |
+| SL(2,5)²×Z247 | 3,556,800 (+4.4 %) | swap∘conj(order 3), z ↦ 69z | 60.0 | ≈ 11* | 108, 364 | screen only: the large cyclic factor mixes badly |
+
+\* The rule's μ_A counts only clumps, fixed points and twisted cycles. It does not see the poor mixing of a large
+cyclic factor with a small simple group (STRUCTURE §5). The random-symmetric screen does, and it is the better guide
+there.
 
 **The record graph.** `sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt`, also in `research/frontier/sols/`:
 - S = {e} ∪ O₁ ∪ O₂ in SL(2,7) × SL(2,7) × Z31, with O_i = {s_i, α(s_i), …, α⁵(s_i)};
@@ -330,6 +372,13 @@ Going through the table:
   ceiling even with μ/6, and the D = 10 cells need groups of order ≥ 10⁸ with a Frobenius of order 6 near the
   records (SL(2,729) is 16 % too big for (13,10)). That leaves (13,8), §5.2.
 - **Order 8 and up:** needs Δ ≥ 16 for two orbits; no candidate group.
+- **A prediction for a larger budget: (13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ rz), r of order 6
+  (Z21 = Z3 × Z7).
+  - N = 349,574,400, so 699,148,800 vertices, +4.7 % over our 667,903,200.
+  - μ = 36.4. The rule gives μ_A ≈ 9.1 for order 6 (fixed points 3.0) against ≈ 13 for order 3 at the same N, which is
+    about 7× fewer evaluations.
+  - The effort law predicts about 1.4·10⁴ evaluations. At about 1.2 s each (the (13,10) record run took 1.1 s per
+    evaluation at N = 3.3·10⁸) that is 5–20 hours on one core, beyond this session.
 
 ## 6. Ranked conclusions
 

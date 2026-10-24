@@ -1,0 +1,30 @@
+== out/classes/d13D8_sl64x13_k3conj.txt: k=3 D=8 sizes={1: 63, 3: 3406977} generating samples=2000
+   bin  p(free)    o=1(h=3)
+   0    0.00001   0.0219 (pred 0.0209, ratio 1.05)
+   1    0.00001   0.0225 (pred 0.0234, ratio 0.96)
+   2    0.00002   0.0237 (pred 0.0253, ratio 0.94)
+   3    0.00004   0.0250 (pred 0.0345, ratio 0.73)
+== out/classes/d13D8_sl64x13_k6frob.txt: k=6 D=8 sizes={1: 6, 2: 54, 3: 498, 6: 3399792, 7: 6690} generating samples=1988
+   bin  p(free)    o=1(h=6)  o=2(h=3)  o=3(h=2)  o=7(h=anti)
+   0    0.00001   0.1331 (pred 0.1460, ratio 0.91)   0.0259 (pred 0.0213, ratio 1.21)   0.0034 (pred 0.0031, ratio 1.10)   0.00003 (/p 2.79, /sqrt p 0.01)
+   1    0.00002   0.1419 (pred 0.1593, ratio 0.89)   0.0234 (pred 0.0254, ratio 0.92)   0.0037 (pred 0.0040, ratio 0.91)   0.00003 (/p 1.99, /sqrt p 0.01)
+   2    0.00002   0.1271 (pred 0.1708, ratio 0.74)   0.0263 (pred 0.0292, ratio 0.90)   0.0039 (pred 0.0050, ratio 0.77)   0.00003 (/p 1.24, /sqrt p 0.01)
+   3    0.00221   0.1170 (pred 0.3608, ratio 0.32)   0.0466 (pred 0.1302, ratio 0.36)   0.0125 (pred 0.0470, ratio 0.27)   0.00192 (/p 0.87, /sqrt p 0.04)
+== out/classes/d13D8_sl7sqx31_k6swc.txt: k=6 D=8 sizes={1: 6, 2: 30, 3: 330, 6: 3489000, 7: 10410} generating samples=1995
+   bin  p(free)    o=1(h=6)  o=2(h=3)  o=3(h=2)  o=7(h=anti)
+   0    0.00002   0.0957 (pred 0.1607, ratio 0.60)   0.0254 (pred 0.0258, ratio 0.98)   0.0038 (pred 0.0042, ratio 0.91)   0.00004 (/p 2.42, /sqrt p 0.01)
+   1    0.00003   0.0888 (pred 0.1743, ratio 0.51)   0.0303 (pred 0.0304, ratio 1.00)   0.0042 (pred 0.0053, ratio 0.79)   0.00005 (/p 1.61, /sqrt p 0.01)
+   2    0.00005   0.0855 (pred 0.1919, ratio 0.45)   0.0378 (pred 0.0368, ratio 1.03)   0.0047 (pred 0.0071, ratio 0.67)   0.00008 (/p 1.69, /sqrt p 0.01)
+   3    0.00409   0.0725 (pred 0.4000, ratio 0.18)   0.0581 (pred 0.1600, ratio 0.36)   0.0134 (pred 0.0640, ratio 0.21)   0.00469 (/p 1.15, /sqrt p 0.07)
+== out/classes/d6D8_sl25_k2conj.txt: k=2 D=8 sizes={1: 24, 2: 14928, 3: 648} generating samples=3984
+   bin  p(free)    o=1(h=2)  o=3(h=anti)
+   0    0.00273   0.0516 (pred 0.0523, ratio 0.99)   0.00305 (/p 1.12, /sqrt p 0.06)
+   1    0.00618   0.0761 (pred 0.0786, ratio 0.97)   0.00656 (/p 1.06, /sqrt p 0.08)
+   2    0.01617   0.1273 (pred 0.1271, ratio 1.00)   0.01722 (/p 1.06, /sqrt p 0.14)
+   3    0.08947   0.2604 (pred 0.2991, ratio 0.87)   0.09088 (/p 1.02, /sqrt p 0.30)
+== out/classes/d6D9_sl25x4_k2conj.txt: k=2 D=9 sizes={1: 48, 2: 59756, 3: 2596} generating samples=723
+   bin  p(free)    o=1(h=2)  o=3(h=anti)
+   0    0.00080   0.0459 (pred 0.0283, ratio 1.63)   0.02362 (/p 29.58, /sqrt p 0.84)
+   1    0.00172   0.0612 (pred 0.0415, ratio 1.48)   0.03199 (/p 18.60, /sqrt p 0.77)
+   2    0.00599   0.0898 (pred 0.0774, ratio 1.16)   0.05762 (/p 9.61, /sqrt p 0.74)
+   3    0.04598   0.2102 (pred 0.2144, ratio 0.98)   0.15059 (/p 3.28, /sqrt p 0.70)
