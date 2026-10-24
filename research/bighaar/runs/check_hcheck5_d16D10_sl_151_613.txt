@@ -5,3 +5,8 @@ sha256 24dccdc9d3a13e07481d7ec9d8b17f39f0725c500978d0728147d723c89c81a8  ../../s
 sha256 dacc28e3266211d411b1dcfaa4643360ccd482ef22dbb6a6614f32cc8046f8a8  d16D10_sl_151_613_orb3_s1.txt
 loaded d16D10_sl_151_613_orb3_s1.txt: d=16 D=10 p=151 n=613 N=2110436400; idx-column mismatches=15
 generators distinct: yes
+from (e,A): all reached within 10, ecc 10 (167.103 s)
+from (e,B): all reached within 10, ecc 10 (199.231 s)
+VALID d=16 D=10 group=sl 151 x Z_613 N=2110436400 vertices=4220872800 threads=2 time=366.346 bfs_A=167.103 bfs_B=199.231
+exit: 0
+end: 2026-10-24T19:36:43Z (372 s)
