@@ -1,0 +1,21 @@
+machine: nproc=4; free -g: total 15G used 0G free 15G avail 15G
+sha256 f6cd4267522ffd09e6cdc5497a7a68018516cb306b4aa73609605e9f56f38b1a
+################ reference checker: /tmp/hsl research/frontier/sols/d15D9_sl_79_211_orb3f0_s1.txt   [exit 0]
+from (e,A): reached A 104014560/104014560, B 104014560/104014560 within 9, ecc 9
+from (e,B): reached A 104014560/104014560, B 104014560/104014560 within 9, ecc 9
+VALID d=15 D=9 group=sl 79 x Z_211 N=104014560 vertices=208029120 (distinct generators, 15-regular simple)
+################ bigcheck_indep: /tmp/bci research/frontier/sols/d15D9_sl_79_211_orb3f0_s1.txt   [exit 0]
+file research/frontier/sols/d15D9_sl_79_211_orb3f0_s1.txt
+header: 15 9 sl 79 n 211 N 104014560
+d=15 D=9
+group: SL(2,79) [order 492960] x Z_211; |G| = 104014560, vertices 2|G| = 208029120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 15 distinct group elements, all in the group [0.0s]
+neighbour check (full: 104014560 vertices per side): every vertex has 15 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [16.0s]
+BFS from A: ecc=9 reached 208029120 of 208029120 (unreached 0); level sizes [1, 15, 210, 2937, 41064, 572520, 7716383, 68190949, 96256902, 35248139] [31.4s]
+BFS from B: ecc=9 reached 208029120 of 208029120 (unreached 0); level sizes [1, 15, 210, 2937, 41064, 572520, 7716381, 68190949, 96256904, 35248139] [45.9s]
+max degree = min degree = 15, no repeated edges (checked above)
+elapsed 45.9s
+RESULT VALID d=15 D=9 eccA=9 eccB=9 n=208029120

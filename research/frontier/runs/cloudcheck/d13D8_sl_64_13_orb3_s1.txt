@@ -1,0 +1,23 @@
+machine: nproc=4; free -g: total 15G used 0G free 14G avail 15G
+sha256 c0b2e5f680a225b23ec6bd230ac66311ad9cb65735ec9f41d8dd52ac230145a3
+################ reference checker: python3 research/frontier/build_haar2.py research/frontier/sols/d13D8_sl_64_13_orb3_s1.txt /tmp/e.txt   [exit 0]
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6814080 edges = 44291520 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = 56e5d80ee7df0bd388d88b684dcd569c895e8082d1f44313db6cbf925321145b
+VALID d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 vertices=6814080
+################ bigcheck_indep: /tmp/bci research/frontier/sols/d13D8_sl_64_13_orb3_s1.txt   [exit 0]
+file research/frontier/sols/d13D8_sl_64_13_orb3_s1.txt
+header: 13 8 sl 64 poly x^6+x+1 n 13 N 3407040
+d=13 D=8
+group: SL(2,64) [order 262080] x Z_13; |G| = 3407040, vertices 2|G| = 6814080
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 13 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3407040 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.7s]
+BFS from A: ecc=8 reached 6814080 of 6814080 (unreached 0); level sizes [1, 13, 156, 1872, 22428, 260134, 2081793, 3145021, 1302662] [1.2s]
+BFS from B: ecc=8 reached 6814080 of 6814080 (unreached 0); level sizes [1, 13, 156, 1872, 22428, 260134, 2081723, 3145021, 1302732] [1.8s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 1.8s
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6814080
