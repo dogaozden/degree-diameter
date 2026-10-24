@@ -235,6 +235,15 @@ targets). An involutive symmetry manufactures N/|Fix| such targets in any group.
 | small Δ | yes, twice: k = 3 has only two orbits at Δ = 6 (orbit space ≈ e^{16} at N ≈ 15,840), and the twisted 8-cycle mean ρΔ(Δ−1)³/8 ≈ 4 is small enough to avoid |
 | even D | yes: it removes the Anti-target term entirely |
 
+The same error decided BEYOND_RANDOM's ranking of **Z6** (§4.2 there): "(Frobenius of order 2) × (conjugation of
+order 3) … inherits the σ reflections, at rate about 1/q₀² … ranks it below plain k = 3".
+- Its reflection penalty is the involution's twisted cycles again, treated as self-averaging. For a Frobenius
+  involution ρ ≈ 1/q₀³, and they are cheap (§5.1).
+- The other relation it cites, "x commutes with σ(x)", is a 6-cycle through the fixed letter e. Such a 6-cycle is rare
+  and disappears with f = 0 or the OSUB layout.
+- The order-6 Frobenius x ↦ x² of GF(64) is exactly such a Z6: its square has order 3 (x ↦ x⁴) and its cube is the
+  Frobenius involution x ↦ x⁸. It beat order 3 by 5–35× in evaluations on the same group (§5.1).
+
 ## 4. The corrected rule
 
 For α of order k with α(S) = S, f fixed generators and m orbits of size k:
