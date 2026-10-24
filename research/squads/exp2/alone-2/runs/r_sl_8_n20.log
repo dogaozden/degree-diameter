@@ -1,0 +1,22 @@
+group sl 8 poly x^3+x+1 x Z_20, N=10080, identity 1120, H order 60, rows 168, threads 1, setup 0.00s
+start cost=195
+t=30 steps=263845 evals=2110761 cost=17 best=17 T=0.53
+t=60 steps=519930 evals=4159441 cost=17 best=17 T=0.19
+t=90 steps=772201 evals=6177609 cost=17 best=17 T=0.15
+t=120 steps=1033210 evals=8265681 cost=17 best=17 T=0.15
+t=150 steps=1287484 evals=10299873 cost=17 best=17 T=0.15
+t=180 steps=1547964 evals=12383713 cost=17 best=17 T=0.78
+t=210 steps=1815777 evals=14526217 cost=19 best=17 T=0.28
+t=240 steps=2079804 evals=16638433 cost=19 best=17 T=0.15
+t=270 steps=2343015 evals=18744121 cost=26 best=17 T=0.15
+t=300 steps=2601598 evals=20812785 cost=26 best=17 T=0.15
+t=330 steps=2860892 evals=22887137 cost=17 best=17 T=0.78
+t=360 steps=3126936 evals=25015489 cost=21 best=17 T=0.28
+t=390 steps=3395719 evals=27165753 cost=21 best=17 T=0.15
+t=420 steps=3660172 evals=29281377 cost=21 best=17 T=0.15
+t=450 steps=3926626 evals=31413009 cost=21 best=17 T=0.15
+t=480 steps=4191944 evals=33535553 cost=17 best=17 T=0.78
+t=510 steps=4456985 evals=35655881 cost=24 best=17 T=0.28
+t=540 steps=4718417 evals=37747337 cost=24 best=17 T=0.15
+t=570 steps=4977983 evals=39823865 cost=21 best=17 T=0.15
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_20 N=10080 best=17 evals=41953889 time=600.0
