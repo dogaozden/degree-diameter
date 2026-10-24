@@ -62,6 +62,9 @@ To rebuild:
 | (9,7), m = 4 | 117,656 | 9 | 7 | RESULT VALID d=9 D=7 n=117656 | 4b4eeee82eb417f0ac0b2a9f7e58e9036234e51a2e2c95c159edec14ddcbbf27 |
 | (11,7), m = 1, explicit φ | 398,582 | 11 | 7 | RESULT VALID d=11 D=7 n=398582 | 72f859aa243d587ed381cb1519918878f5f0c086872646545bec1d34c8b8ce13 |
 
+The best graph in each cell ((7,7) m = 16, (9,7) m = 4, (11,7)) was also checked by `hexd7/violations.c`, a
+separate bit-parallel BFS counter written here: 0 pairs beyond distance 7 in each.
+
 The Haar files (haar_gen3 format, the brief's format) are in `research/frontier/sols/`:
 `d7D7_prod_psl_3_sl_5_7_orb3_s1.txt`, `d9D7_sl_13_19_orb3f0_s1.txt`, `d11D7_sl_11_101_orb5_s1.txt` (plus lower rungs
 `d7D7_sl_8_19_orb3_s1.txt`, `d11D7_sl_13_61_orb3_s1.txt`). Each is VALID by build_haar2.py and by
