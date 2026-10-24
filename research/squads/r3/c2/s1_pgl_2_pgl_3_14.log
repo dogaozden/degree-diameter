@@ -1,0 +1,7 @@
+group prod pgl 2 pgl 3 x Z_14, N=2016, identity 0, H order 42, rows 48, threads 1, setup 0.04s
+wide rows: HW order 84, rows 24, setup 0.05s
+alpha: conj by prod[mat(0,1,1,1);mat(0,1,2,1)] (index 142), z -> 9 z on Z_14
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+RANDORB d=10 D=5 group=prod pgl 2 pgl 3 x Z_14 N=2016 k=3 m=3 f=1 fix=17 samples=20000 min=72 p1=152 p10=280 median=2030 mean=1708.70 var=920986.7 mu=51.81 time=0.7
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 2 0 19995
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

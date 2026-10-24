@@ -1,0 +1,25 @@
+group pgl 4 poly x^2+x+1 x Z_73, N=4380, identity 0, H order 5, rows 876, threads 1, setup 0.12s
+wide rows: HW order 219, rows 20, setup 0.16s
+alpha: conj by mat(1,2,0,3) (index 26), z -> 8 z on Z_73
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 2 (+e); mu = 110.82, mu/k = 36.94, fixed-point misses ~ 1.76
+start cost=405
+t=30 steps=244847 evals=1958777 cost=50 best=45 T=0.53
+t=60 steps=482443 evals=3859545 cost=50 best=45 T=0.19
+t=90 steps=716351 evals=5730809 cost=50 best=45 T=0.15
+t=120 steps=955561 evals=7644489 cost=60 best=45 T=0.15
+t=150 steps=1171465 evals=9371721 cost=60 best=45 T=0.15
+t=180 steps=1394500 evals=11156001 cost=48 best=45 T=0.63
+t=210 steps=1619445 evals=12955561 cost=48 best=45 T=0.22
+t=240 steps=1839459 evals=14715673 cost=58 best=45 T=0.15
+t=270 steps=2060110 evals=16480881 cost=57 best=45 T=0.15
+t=300 steps=2314758 evals=18518065 cost=57 best=45 T=0.15
+t=330 steps=2601285 evals=20810281 cost=48 best=45 T=0.63
+t=360 steps=2861393 evals=22891145 cost=45 best=45 T=0.22
+t=390 steps=3159390 evals=25275121 cost=45 best=45 T=0.15
+t=420 steps=3451201 evals=27609609 cost=51 best=45 T=0.15
+t=450 steps=3745193 evals=29961545 cost=51 best=45 T=0.15
+t=480 steps=4041732 evals=32333857 cost=45 best=45 T=0.63
+t=510 steps=4365254 evals=34922033 cost=45 best=45 T=0.22
+t=540 steps=4748774 evals=37990193 cost=45 best=45 T=0.15
+t=570 steps=5139941 evals=41119529 cost=45 best=45 T=0.15
+RESULT d=12 D=5 group=pgl 4 poly x^2+x+1 x Z_73 N=4380 best=45 evals=43796697 time=600.0 orbit k=3 m=4 f=0 fix=2

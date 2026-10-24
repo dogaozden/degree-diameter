@@ -1,0 +1,15 @@
+group psl 5 x Z_7, N=420, identity 70, H order 35, rows 12, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 35); using haar_gen3's evaluation
+alpha: conj by mat(1,3,3,0) (index 28), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 65.41, mu/k = 21.80, fixed-point misses ~ 3.23
+start cost=514
+t=30 steps=877866 evals=7022929 cost=16 best=16 T=0.53
+t=60 steps=1779380 evals=14235041 cost=16 best=16 T=0.19
+t=90 steps=2663180 evals=21305441 cost=16 best=16 T=0.15
+t=120 steps=3505175 evals=28041401 cost=16 best=16 T=0.15
+t=150 steps=4390254 evals=35122033 cost=16 best=16 T=1.50
+t=180 steps=5288219 evals=42305753 cost=16 best=16 T=0.53
+t=210 steps=6141587 evals=49132697 cost=16 best=16 T=0.19
+t=240 steps=6918000 evals=55344001 cost=16 best=16 T=0.15
+t=270 steps=7669728 evals=61357825 cost=16 best=16 T=0.15
+RESULT d=6 D=5 group=psl 5 x Z_7 N=420 best=16 evals=67870217 time=300.0 orbit k=3 m=2 f=0 fix=2

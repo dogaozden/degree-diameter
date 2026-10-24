@@ -1,0 +1,15 @@
+group psl 3 x Z_111, N=1332, identity 333, H order 37, rows 36, threads 1, setup 0.00s
+wide rows: HW order 222, rows 6, setup 0.00s
+alpha: conj by mat(1,2,1,0) (index 10), z -> 10 z on Z_111
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 8 (+e); mu = 39.65, mu/k = 13.22, fixed-point misses ~ 5.58
+start cost=394
+t=30 steps=1990630 evals=15925041 cost=34 best=34 T=0.53
+t=60 steps=3570451 evals=28563609 cost=34 best=34 T=0.19
+t=90 steps=4705789 evals=37646313 cost=34 best=34 T=0.15
+t=120 steps=5768916 evals=46151329 cost=34 best=34 T=0.15
+t=150 steps=6750316 evals=54002529 cost=36 best=34 T=1.50
+t=180 steps=7563451 evals=60507609 cost=34 best=34 T=0.53
+t=210 steps=8431309 evals=67450473 cost=34 best=34 T=0.19
+t=240 steps=9321131 evals=74569049 cost=34 best=34 T=0.15
+t=270 steps=10231371 evals=81850969 cost=34 best=34 T=0.15
+RESULT d=9 D=5 group=psl 3 x Z_111 N=1332 best=34 evals=89962073 time=300.0 orbit k=3 m=3 f=0 fix=8

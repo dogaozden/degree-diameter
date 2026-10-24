@@ -1,0 +1,7 @@
+group prod psl 7 agl1 4 poly x^2+x+1 x Z_1, N=2016, identity 252, H order 21, rows 96, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 21); using haar_gen3's evaluation
+alpha: conj by prod[mat(3,4,0,5);aff(3,2)] (index 1774), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+RANDORB d=10 D=5 group=prod psl 7 agl1 4 poly x^2+x+1 x Z_1 N=2016 k=3 m=3 f=1 fix=8 samples=20000 min=21 p1=66 p10=111 median=244 mean=462.44 var=432506.5 mu=51.81 time=1.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 4 0 0 4 1 8 3 17 8 10 18 26 26 33 38 62 57 53 79 77 131 106 122 121 18996
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

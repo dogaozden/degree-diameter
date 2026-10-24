@@ -1,0 +1,7 @@
+group psl 7 x Z_13, N=2184, identity 273, H order 52, rows 42, threads 1, setup 0.00s
+wide rows: HW order 91, rows 24, setup 0.00s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 2 (+e); mu = 74.39, mu/k = 24.80, fixed-point misses ~ 1.94
+EXHAUST: 727 orbit representatives, m = 3, 1 fixed-generator choices, ~6.38e+07 S in total, split 0/2
+EXHAUST d=10 D=5 group=psl 7 x Z_13 N=2184 k=3 m=3 f=1 fix=2 split=0/2 evaluated=31953922 zero=0 min=4342 time=406.7 counts(0..6,>=7): 0 0 0 0 0 0 0 31953919
+EXHAUST d=10 D=5 group=psl 7 x Z_13 N=2184 k=3 m=3 f=1 fix=2 split=1/2 evaluated=31822153 zero=0 min=4342 time=405.6 counts(0..6,>=7): 0 0 0 0 0 0 0 31822152

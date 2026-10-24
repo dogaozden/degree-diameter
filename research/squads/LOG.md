@@ -71,3 +71,20 @@ c8 wildcard (10,5)/(11,5).
   ≥ 71 elements, so the group is finished for this structure. Told r3-c1 to stop its α sweep, and r3-c3 to move from
   α sweeps (one α class each for PSL(2,7) × Z13 and SL(2,13)) to untried groups. Output:
   table_squad/exhaust/d10D5_prod_psl_3_sl_3_7_orb331.txt.
+
+### Round 1, last reports (c1, c3, c4)
+- c1 (10,5): worse than needed. Best 4 on A4 × SL(2,3) × Z7 (N 2016); SL(2,13) 6, 8, 12 (three seeds), 6 with ORBW=3;
+  PSL(2,7) × Z13 8; A4 × PSL(2,7) 9; A5 × Z37 9; PGL(2,13) 26; k = 2 ("2 5 0") 34–63.
+- c3 (12,5): failed. SL(2,7) × Z13 "3 4 0" 26; A5 × Z73 45; PSL(2,11) × Z7 "6 2 0" 58; PSL(2,7) × Z25 "4 3 0" 76.
+- c4 (13,5): failed. S5 × Z49 and PSL(2,7) × Z35 49, A5 × Z97 54 ("3 4 1", "4 3 1"); "12 1 1" hopeless (min 234).
+- Round 1 total: 0 records in 8 cards. Round 1 ran 1.5–2 h instead of 45 min for c1, c3, c4 (they did not stop on
+  their own).
+
+### Round 2, last reports (c1, c6, c7, c8)
+- c1 (6,7) "2 3 0": PSL(2,11) × Z7 (N 4620) 51. c6 (8,8): "2 4 0" 7 and 11, "4 2 0" 8 and 9 on PSL(2,7) × SL(2,9)
+  and SL(2,7) × PSL(2,9) (N 120,960). c7 (7,9) "2 3 1": 58, 76, 107. c8 (9,8) "2 4 1": 18–30 (150 s runs).
+- Round 2 total: 0 records in 8 cards; the k = 2 idea is confined to (6,8).
+
+### Opus, during round 3
+- Exhaustive (10,5), ORBIT="3 3 1": PSL(2,7) × Z13 (63,776,075 sets): nothing below 7 uncovered. Up to automorphisms
+  this group has one class of order-3 conjugation with few fixed points, so it is finished too.

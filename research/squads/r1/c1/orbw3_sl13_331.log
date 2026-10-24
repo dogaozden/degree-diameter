@@ -1,0 +1,26 @@
+group sl 13 x Z_1, N=2184, identity 156, H order 26, rows 84, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(3,8,0,9) (index 598), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 74.39, mu/k = 24.80, fixed-point misses ~ 7.78
+ORBW=3: an uncovered fixed element weighs 3; start energy 360
+start cost=340
+t=30 steps=150376 evals=1203009 cost=16 best=24 T=0.53 energy=24 bestE=24
+t=60 steps=308879 evals=2471033 cost=16 best=24 T=0.19 energy=24 bestE=24
+t=90 steps=473677 evals=3789417 cost=36 best=24 T=0.15 energy=36 bestE=24
+t=120 steps=633738 evals=5069905 cost=36 best=24 T=0.15 energy=36 bestE=24
+t=150 steps=821020 evals=6568161 cost=36 best=24 T=0.15 energy=36 bestE=24
+t=180 steps=1006651 evals=8053209 cost=16 best=24 T=0.57 energy=24 bestE=24
+t=210 steps=1193798 evals=9550385 cost=28 best=24 T=0.20 energy=36 bestE=24
+t=240 steps=1373285 evals=10986281 cost=8 best=8 T=0.15 energy=12 bestE=12
+t=270 steps=1553004 evals=12424033 cost=8 best=8 T=0.15 energy=12 bestE=12
+t=300 steps=1734736 evals=13877889 cost=8 best=8 T=0.15 energy=12 bestE=12
+t=330 steps=1915731 evals=15325849 cost=8 best=8 T=0.15 energy=12 bestE=12
+t=360 steps=2098425 evals=16787401 cost=8 best=8 T=0.15 energy=12 bestE=12
+t=390 steps=2295737 evals=18365897 cost=14 best=8 T=0.87 energy=18 bestE=12
+t=420 steps=2477875 evals=19823001 cost=14 best=8 T=0.31 energy=18 bestE=12
+t=450 steps=2660108 evals=21280865 cost=14 best=8 T=0.15 energy=18 bestE=12
+t=480 steps=2841090 evals=22728721 cost=14 best=8 T=0.15 energy=18 bestE=12
+t=510 steps=3040078 evals=24320625 cost=14 best=8 T=0.15 energy=18 bestE=12
+t=540 steps=3236570 evals=25892561 cost=6 best=6 T=0.87 energy=6 bestE=6
+t=570 steps=3421088 evals=27368705 cost=6 best=6 T=0.31 energy=6 bestE=6
+RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=6 evals=28793713 time=600.0 orbit k=3 m=3 f=1 fix=11

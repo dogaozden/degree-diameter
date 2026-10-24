@@ -1,0 +1,16 @@
+group psl 3 x Z_247, N=2964, identity 741, H order 57, rows 52, threads 1, setup 0.01s
+wide rows: HW order 247, rows 12, setup 0.02s
+alpha: conj by mat(1,2,1,0) (index 10), z -> 68 z on Z_247
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 2 (+e); mu = 69.80, mu/k = 23.27, fixed-point misses ~ 1.72
+start cost=546
+t=30 steps=432906 evals=3463249 cost=30 best=30 T=0.53
+t=60 steps=888975 evals=7111801 cost=30 best=30 T=0.19
+t=90 steps=1340903 evals=10727225 cost=30 best=30 T=0.15
+t=120 steps=1853786 evals=14830289 cost=30 best=30 T=0.15
+t=150 steps=2408825 evals=19270601 cost=54 best=30 T=0.15
+t=180 steps=2843570 evals=22748561 cost=30 best=30 T=0.62
+t=210 steps=3277051 evals=26216409 cost=36 best=30 T=0.22
+t=240 steps=3716573 evals=29732585 cost=36 best=30 T=0.15
+t=270 steps=4133304 evals=33066433 cost=42 best=30 T=0.15
+RESULT d=11 D=5 group=psl 3 x Z_247 N=2964 best=30 evals=36429097 time=300.0 orbit k=3 m=3 f=2 fix=2
+EXIT 1

@@ -1,0 +1,7 @@
+group prod pgl 2 agl1 19 x Z_1, N=2052, identity 0, H order 57, rows 36, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 57); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,1,1,0);aff(11,7)] (index 1223), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 56.24, mu/k = 18.75, fixed-point misses ~ 32.56
+RANDORB d=10 D=5 group=prod pgl 2 agl1 19 x Z_1 N=2052 k=3 m=3 f=1 fix=53 samples=20000 min=282 p1=428 p10=688 median=1840 mean=1783.71 var=684659.6 mu=56.24 time=0.7
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20000
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

@@ -1,0 +1,25 @@
+group pgl 5 x Z_49, N=5880, identity 0, H order 49, rows 120, threads 1, setup 0.00s
+wide rows: HW order 245, rows 24, setup 0.01s
+alpha: conj by mat(1,4,3,3) (index 94), z -> 18 z on Z_49
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 5 (+e); mu = 125.49, mu/k = 41.83, fixed-point misses ~ 3.33
+start cost=842
+t=30 steps=433384 evals=3467073 cost=53 best=53 T=0.53
+t=60 steps=730143 evals=5841145 cost=53 best=53 T=0.19
+t=90 steps=975872 evals=7806977 cost=53 best=53 T=0.15
+t=120 steps=1235510 evals=9884081 cost=53 best=53 T=0.15
+t=150 steps=1439873 evals=11518985 cost=53 best=53 T=0.15
+t=180 steps=1649014 evals=13192113 cost=52 best=52 T=1.24
+t=210 steps=1874990 evals=14999921 cost=65 best=52 T=0.44
+t=240 steps=2079382 evals=16635057 cost=65 best=52 T=0.15
+t=270 steps=2324019 evals=18592153 cost=65 best=52 T=0.15
+t=300 steps=2584274 evals=20674193 cost=65 best=52 T=0.15
+t=330 steps=2863002 evals=22904017 cost=52 best=52 T=1.49
+t=360 steps=3159609 evals=25276873 cost=52 best=52 T=0.53
+t=390 steps=3409116 evals=27272929 cost=52 best=52 T=0.19
+t=420 steps=3697648 evals=29581185 cost=73 best=52 T=0.15
+t=450 steps=3943239 evals=31545913 cost=80 best=52 T=0.15
+t=480 steps=4161879 evals=33295033 cost=52 best=52 T=1.49
+t=510 steps=4374196 evals=34993569 cost=50 best=49 T=0.53
+t=540 steps=4587193 evals=36697545 cost=66 best=49 T=0.19
+t=570 steps=4802032 evals=38416257 cost=66 best=49 T=0.15
+RESULT d=13 D=5 group=pgl 5 x Z_49 N=5880 best=49 evals=40049785 time=600.0 orbit k=3 m=4 f=1 fix=5

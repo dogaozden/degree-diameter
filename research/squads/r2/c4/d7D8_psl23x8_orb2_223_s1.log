@@ -1,0 +1,16 @@
+group psl 23 x Z_8, N=48576, identity 2024, H order 46, rows 1056, threads 1, setup 0.01s
+wide rows: HW order 184, rows 264, setup 0.01s
+alpha: conj by mat(9,20,12,14) (index 4957), z -> 3 z on Z_8
+ORBIT k=2 m=2 f=3: |Fix(alpha)| = 47 (+e); mu = 48.21, mu/k = 24.10, fixed-point misses ~ 1.51
+start cost=24302
+t=30 steps=54736 evals=437889 cost=26 best=26 T=0.53
+t=60 steps=108510 evals=868081 cost=26 best=26 T=0.19
+t=90 steps=178920 evals=1431361 cost=26 best=26 T=0.15
+t=120 steps=260322 evals=2082577 cost=26 best=26 T=0.15
+t=150 steps=340887 evals=2727097 cost=26 best=26 T=0.15
+t=180 steps=419451 evals=3355609 cost=26 best=26 T=1.37
+t=210 steps=503305 evals=4026441 cost=25 best=25 T=0.48
+t=240 steps=590757 evals=4726057 cost=25 best=25 T=0.17
+t=270 steps=667235 evals=5337881 cost=25 best=25 T=0.15
+RESULT d=7 D=8 group=psl 23 x Z_8 N=48576 best=25 evals=5963049 time=300.0 orbit k=2 m=2 f=3 fix=47
+EXIT 1

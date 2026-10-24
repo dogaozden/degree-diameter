@@ -1,0 +1,15 @@
+group sl 9 poly x^2+1 x Z_379, N=272880, identity 27288, H order 10, rows 27288, threads 1, setup 0.26s
+wide rows: no cyclic subgroup of order >= 64 found (best 10); using haar_gen3's evaluation
+alpha: conj by mat(4,7,8,7) (index 386), z -> 51 z on Z_379
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 17 (+e); mu = 41.83, mu/k = 13.94, fixed-point misses ~ 0.96
+start cost=1155
+t=30 steps=865 evals=6921 cost=53 best=53 T=0.53
+t=60 steps=1582 evals=12657 cost=53 best=53 T=0.19
+t=90 steps=2337 evals=18697 cost=49 best=49 T=0.15
+t=120 steps=3250 evals=26001 cost=49 best=49 T=0.15
+t=150 steps=4181 evals=33449 cost=49 best=49 T=0.15
+t=180 steps=5145 evals=41161 cost=49 best=49 T=0.15
+t=210 steps=6287 evals=50297 cost=49 best=49 T=0.15
+t=240 steps=7336 evals=58689 cost=49 best=49 T=1.33
+t=270 steps=8335 evals=66681 cost=52 best=49 T=0.47
+RESULT d=9 D=8 group=sl 9 poly x^2+1 x Z_379 N=272880 best=40 evals=74329 time=300.0 orbit k=3 m=3 f=0 fix=17

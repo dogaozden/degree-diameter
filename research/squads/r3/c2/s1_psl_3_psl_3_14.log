@@ -1,0 +1,7 @@
+group prod psl 3 psl 3 x Z_14, N=2016, identity 546, H order 42, rows 48, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 42); using haar_gen3's evaluation
+alpha: conj by prod[mat(0,1,2,1);mat(1,0,1,1)] (index 16), z -> 9 z on Z_14
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+RANDORB d=10 D=5 group=prod psl 3 psl 3 x Z_14 N=2016 k=3 m=3 f=1 fix=17 samples=20000 min=28 p1=108 p10=246 median=952 mean=1231.46 var=900926.3 mu=51.81 time=1.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 3 0 6 4 4 8 7 7 5 9 9 11 14 8 17 19884
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

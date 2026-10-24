@@ -1,0 +1,10 @@
+group psl 43 x Z_7, N=278124, identity 6321, H order 43, rows 6468, threads 1, setup 0.08s
+wide rows: HW order 154, rows 1806, setup 0.11s
+alpha: conj by mat(20,42,14,23) (index 37854), z -> 6 z on Z_7
+ORBIT k=2 m=4 f=1: |Fix(alpha)| = 43 (+e); mu = 50.31, mu/k = 25.16, fixed-point misses ~ 0.59
+start cost=451
+t=30 steps=5247 evals=41977 cost=31 best=29 T=0.53
+t=60 steps=10146 evals=81169 cost=31 best=29 T=0.19
+t=90 steps=15071 evals=120569 cost=20 best=20 T=0.15
+t=120 steps=20381 evals=163049 cost=20 best=20 T=0.15
+RESULT d=9 D=8 group=psl 43 x Z_7 N=278124 best=20 evals=206353 time=150.0 orbit k=2 m=4 f=1 fix=43

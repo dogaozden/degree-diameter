@@ -1,0 +1,7 @@
+group prod pgl 2 prod pgl 2 agl1 8 poly x^3+x+1 x Z_1, N=2016, identity 0, H order 42, rows 48, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 42); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,1,1,0);prod[mat(1,0,0,1);aff(1,0)]] (index 1008), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 1007 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 594.94
+RANDORB d=10 D=5 group=prod pgl 2 prod pgl 2 agl1 8 poly x^3+x+1 x Z_1 N=2016 k=3 m=3 f=1 fix=1007 samples=20000 min=3306 p1=3318 p10=3342 median=3474 mean=3479.45 var=13315.1 mu=51.81 time=1.1
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20000
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
