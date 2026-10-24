@@ -887,6 +887,12 @@ int main(int argc, char **argv) {
         uint8_t *cand = malloc(N); memset(cand, 1, N); int ncand = N, *sel = malloc(sizeof(int) * N), ns = 0;
         int *order = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) order[v] = v;
         for (int v = N - 1; v > 0; v--) { int r = rndi(v + 1), t = order[v]; order[v] = order[r]; order[r] = t; }
+        if (getenv("B2PTS")) {   /* a given set of pairwise non-collinear points instead of the greedy one */
+            FILE *sf = fopen(getenv("B2PTS"), "r"); int x; while (sf && fscanf(sf, "%d", &x) == 1) { if (!cand[x]) { fprintf(stderr, "given point %d collinear with an earlier one\n", x); return 1; }
+                sel[ns++] = x; cand[x] = 0; for (int a = 0; a < Q1; a++) { int L = PL[x * Q1 + a]; for (int b = 0; b < Q1; b++) cand[LP[L * Q1 + b]] = 0; } }
+            if (sf) fclose(sf);
+            memset(cand, 0, N);
+        }
         for (int t = 0; t < N; t++) {
             int p = order[t]; if (!cand[p]) continue;
             sel[ns++] = p; cand[p] = 0; ncand--;
