@@ -15,7 +15,8 @@
      hexlift2 diag HEX DESIGN D [nsrc]               uncovered pairs by hexagon distance and side
      hexlift2 anneal HEX DESIGN_IN D secs seed OUT   simulated annealing from DESIGN_IN (cost = uncovered over sources)
    env: THREADS (default 1), NSRC (anneal: number of random sources, default all), MOVES (string of letters:
-        v = jump shift, s = flag shift, M = swap two matching targets; default "vM"), T0, T1 (temperature range),
+        v = jump shift, s = flag shift, M = swap two matching targets, w / t = change only the Z_m2 part of a jump /
+        flag shift (keeps the Z_m1 part, e.g. an X(M) skeleton); default "vM"), T0, T1 (temperature range),
         SRCFILE (file of source vertex ids instead of random/all).
    Distances: the lift is bipartite (points | lines), so D steps reach the same side within D and the other side
    within D-1; the count is over all (vertex, level) pairs not reached. */
@@ -264,6 +265,8 @@ int main(int argc, char **argv) {
             int k = rndi(t), p = rndi(N), p2 = 0, j = 0, old = 0;
             if (mv == 'v') { old = vk[(size_t)k * N + p]; int nv = rndi(m); if (nv == old) continue; vk[(size_t)k * N + p] = nv; }
             else if (mv == 's') { j = rndi(q1); old = sg[(size_t)p * q1 + j]; int nv = rndi(m); if (nv == old) continue; sg[(size_t)p * q1 + j] = nv; }
+            else if (mv == 'w') { old = vk[(size_t)k * N + p]; int nv = old % m1 + m1 * rndi(m2); if (nv == old) continue; vk[(size_t)k * N + p] = nv; mv = 'v'; }
+            else if (mv == 't') { j = rndi(q1); old = sg[(size_t)p * q1 + j]; int nv = old % m1 + m1 * rndi(m2); if (nv == old) continue; sg[(size_t)p * q1 + j] = nv; mv = 's'; }
             else { p2 = rndi(N); if (p2 == p) continue; int x = Mk[(size_t)k * N + p]; Mk[(size_t)k * N + p] = Mk[(size_t)k * N + p2]; Mk[(size_t)k * N + p2] = x; }
             build_adj();
             double u = (rnd() >> 11) * (1.0 / 9007199254740992.0) + 1e-300;

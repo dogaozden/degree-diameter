@@ -1,0 +1,28 @@
+# Snapshot of the CombinatoricsWiki bipartite degree-diameter table (orders of the largest known bipartite graphs)
+# Source: http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs (plain HTTP works;
+# HTTPS fails certificate checks from the container). Fetched 2026-10-24 by the cell-16-8 session. Page says the table is
+# 'as of January 2012'; page last modified 18 February 2022. Each cell: value [colour] ; colour key at the end.
+d\k | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+3 | 14 [#bbffff] | 30 [#bbffff] | 56 [#0066CC] | 126 [#bbffff] | 168 [#993300] | 256 [#66ff66] | 506 [#FF9900] | 800 [#66ff66]
+4 | 26 [#bbffff] | 80 [#bbffff] | 160 [#ff0000] | 728 [#bbffff] | 840 [#ff0000] | 2 184 [#FF9900] | 4 970 [#FF9900] | 11 748 [#FF9900]
+5 | 42 [#bbffff] | 170 [#bbffff] | 336 [#FF9900] | 2 730 [#bbffff] | 3 110 [#FF9900] | 9 234 [#FF9900] | 27 936 [#FF9900] | 90 068 [#FF9900]
+6 | 62 [#bbffff] | 312 [#bbffff] | 684 [#FF9900] | 7 812 [#bbffff] | 8 310 [#66ff66] | 29 790 [#FF9900] | 117 360 [#FF9900] | 452 032 [#FF9900]
+7 | 80 [#ff0000] | 346 [#CC6600] | 1 134 [#FF9900] | 8 992 [#CC6600] | 23 436 [#66ff66] | 80 940 [#FF9900] | 400 160 [#FF9900] | 1 987 380 [#FF9900]
+8 | 114 [#bbffff] | 800 [#bbffff] | 1 710 [#FF9900] | 39 216 [#bbffff] | 40 586 [#66ff66] | 201 480 [#FF9900] | 1 091 232 [#FF9900] | 6 927 210 [#FF9900]
+9 | 146 [#bbffff] | 1 170 [#bbffff] | 2 496 [#FF9900] | 74 898 [#bbffff] | 117 648 [#66ff66] | 449 480 [#FF9900] | 2 961 536 [#FF9900] | 20 017 260 [#FF9900]
+10 | 182 [#bbffff] | 1 640 [#bbffff] | 4 000 [#66ff66] | 132 860 [#bbffff] | 224 694 [#66ff66] | 1 176 480 [#66ff66] | 7 057 400 [#FF9900] | 50 331 156 [#FF9900]
+11 | 190 | 1 734 [#CC6600] | 5 850 [#66ff66] | 142 464 [#CC6600] | 398 580 [#66ff66] | 2 246 940 [#66ff66] | 15 200 448 [#FF9900] | 130 592 354 [#FF9900]
+12 | 266 [#bbffff] | 2 928 [#bbffff] | 8 200 [#66ff66] | 354 312 [#bbffff] | 664 300 [#66ff66] | 4 650 100 [#66ff66] | 30 001 152 [#FF9900] | 300 383 050 [#FF9900]
+13 | 274 | 3 064 [#CC6600] | 11 480 [#66ff66] | 374 452 [#CC6600] | 1 062 936 [#66ff66] | 5 314 680 [#66ff66] | 50 990 610 [#FF9900] | 617 330 936 [#FF9900]
+14 | 366 [#bbffff] | 4 760 [#bbffff] | 14 760 [#66ff66] | 804 468 [#bbffff] | 1 771 560 [#66ff66] | 14 172 480 [#66ff66] | 95 087 738 [#FF9900] | 1 213 477 190 [#FF9900]
+15 | 374 | 4 946 [#CC6600] | 20 496 [#66ff66] | 842 048 [#CC6600] | 2 480 184 [#66ff66] | 14 172 480 [#66ff66] | 168 016 334 [#FF9900] | 2 300 326 510 [#FF9900]
+16 | 394 [#CC6600] | 5 134 [#CC6600] | 27 300 [#66ff66] | 884 062 [#CC6600] | 4 022 340 [#66ff66] | 36 201 060 [#66ff66] | 288 939 118 [#FF9900] | 4 119 507 330 [#FF9900]
+# colour key
+ : Graphs found by G. Araujo and N. López.
+#bbffff : Bipartite Moore graphs (optimal).
+#CC6600 : Graph duplications found by C. Delorme and G. Farhi.
+#66ff66 : Graphs found by C. Delorme, J. Gómez, and J. J. Quisquater.
+#0066CC : Optimal graph found by R. Bar-Yehuda and T. Etzion and by J. Bond and C. Delorme.
+#993300 : Graph found independently by M. Conder and R. Nedela., by C. Delorme, J. Gómez, and J. J. Quisquater and by Eyal Loz.
+#ff0000 : Graphs found independently by Paul Hafner and by Eyal Loz.
+#FF9900 : Graphs found by Eyal Loz as part of the joint project The degree/diameter problem for several classes of graphs by E. Loz, H. Pérez-Rosés and G. Pineda-Villavicencio.
