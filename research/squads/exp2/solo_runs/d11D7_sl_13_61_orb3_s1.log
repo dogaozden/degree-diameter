@@ -1,0 +1,11 @@
+group sl 13 x Z_61, N=133224, identity 9516, H order 61, rows 2184, threads 1, setup 0.01s
+wide rows: HW order 244, rows 546, setup 0.02s
+alpha: conj by mat(3,8,0,9) (index 598), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 11 (+e); mu = 31.80, mu/k = 10.60, fixed-point misses ~ 1.49
+start cost=270
+RESULT d=11 D=7 group=sl 13 x Z_61 N=133224 best=0 evals=112681 time=13.4 orbit k=3 m=3 f=2 fix=11
+full diameter check: OK
+wrote ./d11D7_sl_13_61_orb3_s1.txt
+n = 266448 edges = 1465464 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 0e9c4713b5b64ae7c1b444e1d42de5ef56e67d4954546b6114aa5cc4a762296e
+VALID d=11 D=7 group=sl 13 x Z_61 N=133224 vertices=266448

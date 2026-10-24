@@ -1,0 +1,5 @@
+group prod sl 4 poly x^2+x+1 sl 9 poly x^2+1 x Z_1, N=43200, identity 8712, H order 40, rows 1080, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 40); using haar_gen3's evaluation
+alpha: conj by prod[mat(2,0,0,3);mat(4,7,8,7)] (index 20546), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 53 (+e); mu = 42.04, mu/k = 14.01, fixed-point misses ~ 10.70
+start cost=282

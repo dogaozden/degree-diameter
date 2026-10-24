@@ -1,0 +1,12 @@
+group sl 11 x Z_31, N=40920, identity 3410, H order 62, rows 660, threads 1, setup 0.00s
+wide rows: HW order 186, rows 220, setup 0.01s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 27.06, mu/k = 9.02, fixed-point misses ~ 2.09
+start cost=722
+RESULT d=9 D=7 group=sl 11 x Z_31 N=40920 best=0 evals=2857 time=0.1 orbit k=3 m=3 f=0 fix=11
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote ./d9D7_sl_11_31_orb3f0_s1.txt
+n = 81840 edges = 368280 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 337336c8bb840065da62388d8e8f9f0eaa5b1b91250f34f73cc2bd4a3f5a1eba
+VALID d=9 D=7 group=sl 11 x Z_31 N=40920 vertices=81840
