@@ -1,0 +1,12 @@
+group psl 23 x Z_37, N=224664, identity 9361, H order 37, rows 6072, threads 1, setup 0.02s
+wide rows: HW order 222, rows 1012, setup 0.06s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 10 z on Z_37
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 28.53, mu/k = 9.51, fixed-point misses ~ 1.21
+start cost=534
+t=30 steps=15923 evals=127385 cost=12 best=2 T=0.53
+RESULT d=7 D=9 group=psl 23 x Z_37 N=224664 best=0 evals=182873 time=42.1 orbit k=3 m=2 f=1 fix=11
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outB/d7D9_psl_23_37_orb3_s1.txt
+n = 449328 edges = 1572648 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = eff65cf23a17ac97f57b13ae892e7271d46988119f3d25b4901861b3fb86bfae
+VALID d=7 D=9 group=psl 23 x Z_37 N=224664 vertices=449328

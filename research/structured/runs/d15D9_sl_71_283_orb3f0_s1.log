@@ -1,0 +1,64 @@
+group sl 71 x Z_283, N=101268720, identity 1406510, H order 36, rows 2813020, threads 1, setup 3.80s
+wide rows: HW order 142, rows 713160, setup 8.49s
+alpha: conj by mat(37,69,29,33) (index 191374), z -> 44 z on Z_283
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 71 (+e); mu = 15.48, mu/k = 5.16, fixed-point misses ~ 0.77
+start cost=68
+t=31 steps=9 evals=73 cost=20 best=20 T=0.51
+t=64 steps=18 evals=145 cost=18 best=18 T=0.16
+t=94 steps=27 evals=217 cost=12 best=12 T=0.15
+t=127 steps=36 evals=289 cost=12 best=12 T=0.15
+t=161 steps=45 evals=361 cost=12 best=12 T=0.15
+t=194 steps=54 evals=433 cost=12 best=12 T=0.15
+t=227 steps=64 evals=513 cost=6 best=6 T=0.15
+t=261 steps=73 evals=585 cost=6 best=6 T=0.15
+t=294 steps=82 evals=657 cost=6 best=6 T=0.15
+t=325 steps=91 evals=729 cost=6 best=6 T=0.15
+t=358 steps=100 evals=801 cost=6 best=6 T=0.15
+t=390 steps=110 evals=881 cost=6 best=6 T=0.15
+t=423 steps=121 evals=969 cost=2 best=2 T=0.15
+t=457 steps=130 evals=1041 cost=2 best=2 T=0.15
+t=489 steps=141 evals=1129 cost=2 best=2 T=0.15
+t=520 steps=152 evals=1217 cost=2 best=2 T=0.15
+t=551 steps=163 evals=1305 cost=2 best=2 T=0.15
+t=582 steps=174 evals=1393 cost=2 best=2 T=0.15
+t=614 steps=185 evals=1481 cost=2 best=2 T=0.15
+t=645 steps=196 evals=1569 cost=2 best=2 T=0.15
+t=676 steps=207 evals=1657 cost=2 best=2 T=0.15
+t=706 steps=218 evals=1745 cost=2 best=2 T=0.15
+t=738 steps=230 evals=1841 cost=2 best=2 T=0.15
+t=770 steps=242 evals=1937 cost=2 best=2 T=0.15
+t=801 steps=254 evals=2033 cost=2 best=2 T=0.15
+t=834 steps=265 evals=2121 cost=2 best=2 T=0.15
+t=866 steps=277 evals=2217 cost=2 best=2 T=0.15
+t=897 steps=288 evals=2305 cost=2 best=2 T=0.15
+t=928 steps=299 evals=2393 cost=2 best=2 T=0.15
+t=959 steps=310 evals=2481 cost=2 best=2 T=0.15
+t=989 steps=321 evals=2569 cost=2 best=2 T=0.15
+t=1019 steps=332 evals=2657 cost=2 best=2 T=0.15
+t=1051 steps=343 evals=2745 cost=2 best=2 T=0.15
+t=1083 steps=355 evals=2841 cost=2 best=2 T=0.15
+t=1114 steps=366 evals=2929 cost=2 best=2 T=0.15
+t=1145 steps=377 evals=3017 cost=2 best=2 T=0.15
+t=1176 steps=388 evals=3105 cost=2 best=2 T=0.15
+t=1209 steps=400 evals=3201 cost=2 best=2 T=0.15
+t=1240 steps=411 evals=3289 cost=2 best=2 T=0.15
+t=1271 steps=422 evals=3377 cost=2 best=2 T=0.15
+t=1304 steps=433 evals=3465 cost=2 best=2 T=0.15
+t=1334 steps=444 evals=3553 cost=2 best=2 T=0.15
+t=1365 steps=456 evals=3649 cost=2 best=2 T=0.15
+t=1396 steps=467 evals=3737 cost=2 best=2 T=0.15
+t=1429 steps=479 evals=3833 cost=2 best=2 T=0.15
+t=1459 steps=491 evals=3929 cost=2 best=2 T=0.15
+t=1491 steps=502 evals=4017 cost=2 best=2 T=0.15
+t=1523 steps=513 evals=4105 cost=2 best=2 T=0.15
+t=1554 steps=524 evals=4193 cost=2 best=2 T=0.56
+t=1584 steps=535 evals=4281 cost=2 best=2 T=0.20
+t=1617 steps=547 evals=4377 cost=2 best=2 T=0.15
+t=1650 steps=557 evals=4457 cost=2 best=2 T=0.15
+t=1683 steps=567 evals=4537 cost=2 best=2 T=0.15
+RESULT d=15 D=9 group=sl 71 x Z_283 N=101268720 best=0 evals=4593 time=1706.6 orbit k=3 m=5 f=0 fix=71
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oE/d15D9_sl_71_283_orb3f0_s1.txt
+VALID d=15 D=9 group=sl 71 x Z_283 N=101268720 vertices=202537440 (distinct generators, 15-regular simple)
+VALID d=15 D=9 vertices=202537440 eccA=9 eccB=9

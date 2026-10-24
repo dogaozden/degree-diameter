@@ -1,0 +1,15 @@
+group prod psl 7 psl 7 x Z_61, N=1721664, identity 216489, H order 61, rows 28224, threads 1, setup 0.07s
+wide rows: HW order 244, rows 7056, setup 0.13s
+alpha: conj by prod[mat(3,2,4,3);mat(0,3,2,1)] (index 23031), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 8 (+e); mu = 25.08, mu/k = 8.36, fixed-point misses ~ 0.44
+start cost=209
+t=30 steps=1595 evals=12761 cost=18 best=18 T=0.53
+t=60 steps=3205 evals=25641 cost=12 best=12 T=0.19
+t=90 steps=4784 evals=38273 cost=12 best=12 T=0.15
+RESULT d=9 D=9 group=prod psl 7 psl 7 x Z_61 N=1721664 best=0 evals=42057 time=98.8 orbit k=3 m=3 f=0 fix=8
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/pool/34-d9D9/d9D9_prod_psl_7_psl_7_61_orb3f0_s1.txt
+n = 3443328 edges = 15494976 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = b493454185fefcc36d8668179147d627c72c2791acec4b6ff1926f5e8ef038c6
+VALID d=9 D=9 group=prod psl 7 psl 7 x Z_61 N=1721664 vertices=3443328

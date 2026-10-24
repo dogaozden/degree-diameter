@@ -1,0 +1,12 @@
+group sl 17 x Z_13, N=63648, identity 3536, H order 52, rows 1224, threads 1, setup 0.00s
+wide rows: HW order 234, rows 272, setup 0.01s
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 29.65, mu/k = 9.88, fixed-point misses ~ 2.79
+start cost=2896
+RESULT d=6 D=9 group=sl 17 x Z_13 N=63648 best=0 evals=62409 time=3.3 orbit k=3 m=2 f=0 fix=17
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oB/d6D9_sl_17_13_orb3f0_s2.txt
+n = 127296 edges = 381888 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = f276be6d7f1daa5849fb97c8f803e0689a608a822cfe7a0cc626649240dc6277
+VALID d=6 D=9 group=sl 17 x Z_13 N=63648 vertices=127296

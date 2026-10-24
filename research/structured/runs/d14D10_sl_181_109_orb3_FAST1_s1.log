@@ -1,0 +1,21 @@
+group sl 181 x Z_109, N=646322040, identity 3551220, H order 60, rows 10772034, threads 1, setup 31.55s
+alpha: conj by mat(100,140,136,80) (index 3301395), z -> 45 z on Z_109
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 179 (+e); mu = 12.33, mu/k = 4.11, fixed-point misses ~ 0.48
+start cost=12
+t=32 steps=1 evals=9 cost=3 best=3 T=0.50
+t=89 steps=3 evals=25 cost=3 best=3 T=0.15
+t=141 steps=5 evals=41 cost=3 best=3 T=0.15
+t=189 steps=7 evals=57 cost=3 best=3 T=0.15
+t=245 steps=9 evals=73 cost=3 best=3 T=0.15
+t=298 steps=11 evals=89 cost=3 best=3 T=0.15
+t=355 steps=13 evals=105 cost=3 best=3 T=0.15
+t=411 steps=15 evals=121 cost=3 best=3 T=0.15
+t=455 steps=17 evals=137 cost=3 best=3 T=0.15
+t=503 steps=19 evals=153 cost=3 best=3 T=0.15
+t=549 steps=21 evals=169 cost=3 best=3 T=0.15
+t=596 steps=23 evals=185 cost=3 best=3 T=0.15
+RESULT d=14 D=10 group=sl 181 x Z_109 N=646322040 best=0 evals=193 time=617.9 orbit k=3 m=4 f=2 fix=179
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/o1410/d14D10_sl_181_109_orb3_FAST1_s1.txt
+VALID d=14 D=10 group=sl 181 x Z_109 N=646322040 vertices=1292644080 (distinct generators, 14-regular simple)
+VALID d=14 D=10 vertices=1292644080 eccA=10 eccB=10
