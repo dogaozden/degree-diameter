@@ -25,11 +25,11 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 
 | cell | table | **new graph** (apsp.c VALID) | / table | best Haar graph (build_haar2.py VALID) | / table |
 |---|---|---|---|---|---|
-| (7,7) | 23,436 | **23,460** | 1.00102 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
+| (7,7) | 23,436 | **23,468** | 1.00137 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
 | (9,7) | 117,648 | **117,656** | 1.00007 | 82,992 (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 |
 | (11,7) | 398,580 | **398,582** | 1.000005 | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
 
-**All three cells beaten**: (7,7) by 24 vertices, (9,7) by 8, (11,7) by 2.
+**All three cells beaten**: (7,7) by 32 vertices, (9,7) by 8, (11,7) by 2.
 - The new graphs are not Haar graphs. They are 3 copies of the generalized hexagon H(q) (the table's own
   construction), with m points "unhooked" in all three copies and a 2-vertex gadget per point (§2).
 - The bijection φ that links the copies is either explicit (exact covers, §2) or found by local search.
@@ -53,6 +53,7 @@ To rebuild:
 | (7,7), m = 1, explicit φ | 23,438 | 7 | 7 | RESULT VALID d=7 D=7 n=23438 | add6ae4a772245fe769826ad801a27c1d719177e75dcf8ab395428a97c74ffbd |
 | (7,7), m = 4 | 23,444 | 7 | 7 | RESULT VALID d=7 D=7 n=23444 | 17b756eb35a7d77dd27760c4f601c92b221cc99b6b6c6ce9154fc34e86a828f9 |
 | (7,7), m = 12 | 23,460 | 7 | 7 | RESULT VALID d=7 D=7 n=23460 | 2ee0fb8fa2e3258e855e595b8769426fbe8947fc26912e02fb9540d0198eb44a |
+| (7,7), m = 16 | 23,468 | 7 | 7 | RESULT VALID d=7 D=7 n=23468 | 3fef2048e71ba20e4818e8ae3ea51a77d8fc4425e4cc2fa1ce8263663417c4bf |
 | (9,7), m = 1 | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 94303a1b4845c9112504d773c89fe751b136b6efef320d04242c70c46f555385 |
 | (9,7), m = 1, explicit φ | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 3478bfc0d278f713e7313c71612ba446f74c055339007bc21488ab7837da3cc3 |
 | (9,7), m = 4 | 117,656 | 9 | 7 | RESULT VALID d=9 D=7 n=117656 | 4b4eeee82eb417f0ac0b2a9f7e58e9036234e51a2e2c95c159edec14ddcbbf27 |
@@ -139,14 +140,16 @@ The final graphs were then checked from scratch by apsp.c (all pairs, no symmetr
   lines meeting it. Then the gadget vertices are within 6 of each other.
 - φ starts random (φ(p_i) = L_i). The score is the number of vertices beyond distance 7 from the 4m sources a_i, b_i,
   x_i, w_i, computed by bit-parallel BFS (64 sources per pass). The moves are the same targeted swaps.
-- q = 5, m = 4: 23,444 (90 s). m = 12: 23,460 (37,929 moves, 36 s). q = 7, m = 4: 117,656 (26,481 moves, 209 s).
-  All RESULT VALID by apsp.c.
+- q = 5, m = 4: 23,444 (90 s). m = 12: 23,460 (37,929 moves, 36 s). m = 16 with p_1 itself left alone (`RMIN=2`, gadget
+  points = 16 of the 30 points collinear with p_1): 23,468 (126,493 moves, 103 s). q = 7, m = 4: 117,656 (26,481 moves,
+  209 s). All RESULT VALID by apsp.c.
 - Files: `graphs/d7D7_hex5_plus8.*` and `graphs/d7D7_hex5_plus24.*` (edges.gz, phi, apsp.txt). The m = 12 edge list
   is written by plusm.c directly; rebuild it from the .phi with the same gadget choice.
 
 **Remarks.**
 - For more points the conditions of different gadgets compete for the same images of φ. The clustered layout went to
-  m = 12 at q = 5 in seconds; m = 16 stalled at score 2 and m = 30 at about 1,200 (stopped).
+  m = 12 at q = 5 in seconds and m = 16 once p_1 itself was excluded. m = 16 including p_1 stalled at score 2, and
+  m = 30 at about 1,200 (stopped).
   - Exact covers for each gadget, plus a sparse network of extra edges between the gadget vertices (they have three
     spare slots), should allow far-apart gadgets. Not tried; it adds only 2/n per point.
 - **A route to many more vertices when H(q) is self-dual (q = 3^e, e.g. (11,7) with q = 9; not built).**
