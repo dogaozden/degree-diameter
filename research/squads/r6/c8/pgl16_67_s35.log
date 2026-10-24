@@ -5,3 +5,6 @@ ORBIT k=3 m=3 f=0: |Fix(alpha)| = 14 (+e); mu = 42.56, mu/k = 14.19, fixed-point
 start cost=9298
 t=30 steps=7909 evals=63273 cost=16 best=12 T=0.53
 t=60 steps=16592 evals=132737 cost=12 best=12 T=0.19
+t=90 steps=26151 evals=209209 cost=9 best=9 T=0.15
+t=120 steps=34242 evals=273937 cost=8 best=8 T=0.15
+RESULT d=9 D=8 group=pgl 16 poly x^4+x+1 x Z_67 N=273360 best=8 evals=340473 time=150.0 orbit k=3 m=3 f=0 fix=14

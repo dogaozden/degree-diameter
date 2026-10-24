@@ -1,0 +1,11 @@
+group pgl 16 poly x^4+x+1 x Z_67, N=273360, identity 0, H order 17, rows 16080, threads 1, setup 0.15s
+wide rows: HW order 201, rows 1360, setup 0.20s
+alpha: conj by mat(1,3,13,14) (index 928), z -> 29 z on Z_67
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 14 (+e); mu = 42.56, mu/k = 14.19, fixed-point misses ~ 0.81
+ORBW=3: an uncovered fixed element weighs 3; start energy 288
+start cost=288
+t=30 steps=10703 evals=85625 cost=6 best=6 T=0.53 energy=6 bestE=6
+t=60 steps=21524 evals=172193 cost=6 best=6 T=0.19 energy=6 bestE=6
+t=90 steps=33084 evals=264673 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=120 steps=44312 evals=354497 cost=6 best=6 T=0.15 energy=6 bestE=6
+RESULT d=9 D=8 group=pgl 16 poly x^4+x+1 x Z_67 N=273360 best=6 evals=464161 time=150.0 orbit k=3 m=3 f=0 fix=14

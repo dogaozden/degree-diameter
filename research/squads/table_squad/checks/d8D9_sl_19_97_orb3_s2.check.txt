@@ -1,0 +1,48 @@
+== solution file research/frontier/sols/d8D9_sl_19_97_orb3_s2.txt (sha256 534239d2e157ecf66a9f90207b5f1af4266047dac88e7bb847bd4576c2c6057a), Opus seed sweep (seed 2, ORBW=3) on the next (8,9) rung
+8 9 sl 19 n 97 N 663480
+33174 mat(1,0,0,1) z=0
+601109 mat(17,4,3,3) z=0
+40621 mat(1,4,0,1) z=75
+237947 mat(6,16,2,15) z=6
+660004 mat(18,17,2,3) z=16
+352576 mat(10,2,5,3) z=78
+495296 mat(14,3,14,18) z=14
+4952 mat(0,3,6,13) z=5
+== build_haar2.py
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 1326960 edges = 5307840 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 899256e95ef47e901b7eb34a73771cf4cf5a76a8e140514b2e32ab0fa837b9aa
+VALID d=8 D=9 group=sl 19 x Z_97 N=663480 vertices=1326960
+== haarcheck_sl and haarcheck2 (low-memory, independent)
+from (e,A): reached A 663480/663480, B 663480/663480 within 9, ecc 9
+from (e,B): reached A 663480/663480, B 663480/663480 within 9, ecc 9
+VALID d=8 D=9 group=sl 19 x Z_97 N=663480 vertices=1326960 (distinct generators, 8-regular simple)
+== haarcheck2
+file=d8D9_sl_19_97_orb3_s2.txt d=8 D=9 p=19 n=97 |G|=663480 vertices=1326960
+selfcheck: SL(2,19) index is a bijection onto det-1 matrices (|SL|=6840), fastmod ok (0.00s)
+generators: 8 read, all in SL(2,19) x Z_97, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=8  reached=9 / 1326960
+  from (e,A) level 2: new=56  reached=65 / 1326960
+  from (e,A) level 3: new=392  reached=457 / 1326960
+  from (e,A) level 4: new=2744  reached=3201 / 1326960
+  from (e,A) level 5: new=19031  reached=22232 / 1326960
+  from (e,A) level 6: new=122053  reached=144285 / 1326960
+  from (e,A) level 7: new=488710  reached=632995 / 1326960
+  from (e,A) level 8: new=538626  reached=1171621 / 1326960
+  from (e,A) level 9: new=155339  reached=1326960 / 1326960
+  done in 0.11s, eccA=9, reached 1326960 / 1326960
+BFS from (e,B):
+  from (e,B) level 1: new=8  reached=9 / 1326960
+  from (e,B) level 2: new=56  reached=65 / 1326960
+  from (e,B) level 3: new=392  reached=457 / 1326960
+  from (e,B) level 4: new=2744  reached=3201 / 1326960
+  from (e,B) level 5: new=19031  reached=22232 / 1326960
+  from (e,B) level 6: new=122101  reached=144333 / 1326960
+  from (e,B) level 7: new=488710  reached=633043 / 1326960
+  from (e,B) level 8: new=538578  reached=1171621 / 1326960
+  from (e,B) level 9: new=155339  reached=1326960 / 1326960
+  done in 0.11s, eccB=9, reached 1326960 / 1326960
+VALID d=8 D=9 vertices=1326960 eccA=9 eccB=9

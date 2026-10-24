@@ -5,3 +5,6 @@ ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 24.27, mu/k = 8.09, fixed-point m
 start cost=25
 t=30 steps=5274 evals=42193 cost=9 best=9 T=0.53
 t=60 steps=11571 evals=92569 cost=7 best=7 T=0.19
+t=90 steps=17330 evals=138641 cost=7 best=7 T=0.15
+t=120 steps=22898 evals=183185 cost=7 best=7 T=0.15
+RESULT d=6 D=10 group=prod psl 5 psl 5 x Z_73 N=262800 best=7 evals=232009 time=150.0 orbit k=3 m=2 f=0 fix=8

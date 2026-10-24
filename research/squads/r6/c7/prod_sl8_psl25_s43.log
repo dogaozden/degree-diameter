@@ -1,0 +1,6 @@
+group prod sl 8 poly x^3+x+1 psl 25 poly x^2+2 x Z_1, N=3931200, identity 437100, H order 45, rows 87360, threads 1, setup 0.24s
+wide rows: HW order 117, rows 33600, setup 0.44s
+alpha: conj by prod[mat(7,6,4,6);mat(14,23,17,15)] (index 3845367), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 107 (+e); mu = 24.75, mu/k = 8.25, fixed-point misses ~ 1.99
+start cost=70
+t=30 steps=368 evals=2945 cost=17 best=12 T=0.53

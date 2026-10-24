@@ -170,3 +170,6 @@ PSL(2,131) · c7 (8,10) SL(2,27) × Z199 and two products · c8 (9,8) PGL(2,16) 
 Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s each).
 - **r6-c5 (8,9): PSL(2,23) × Z109, N = 661,848, seed 3 solved in 18,249 evaluations (33.5 s): 1,323,696 vertices**
   (beats this session's 1,320,120). build_haar2.py (Haiku and Opus) and haarcheck_psl VALID.
+- Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s): 4, 3. (8,9) next rungs: PSL(2,17) × Z271 41 (bad group);
+  **SL(2,19) × Z97, N = 663,480, seed 2 with ORBW=3 solved in 103,681 evaluations (138 s): 1,326,960 vertices**.
+  build_haar2.py, haarcheck_sl, haarcheck2 VALID.

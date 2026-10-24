@@ -4,3 +4,7 @@ alpha: conj by mat(10,15,2,19) (index 7670), z -> 92 z on Z_199
 ORBIT k=3 m=2 f=2: |Fix(alpha)| = 53 (+e); mu = 23.18, mu/k = 7.73, fixed-point misses ~ 0.98
 start cost=57
 t=30 steps=297 evals=2377 cost=25 best=24 T=0.53
+t=60 steps=694 evals=5553 cost=16 best=16 T=0.19
+t=90 steps=1040 evals=8321 cost=16 best=16 T=0.15
+t=120 steps=1347 evals=10777 cost=16 best=16 T=0.15
+RESULT d=8 D=10 group=sl 27 poly x^3+2x+1 x Z_199 N=3911544 best=16 evals=13329 time=150.0 orbit k=3 m=2 f=2 fix=53
