@@ -25,8 +25,15 @@ Cards (research/squads/d10D8-r2/scoreboard.jsonl):
 - r2-c1 rank 46 prime-n groups by μ_eff = μ·e^(δλ) (δ = measured duplicate rate): Spearman 0.82 with the RANDORB p1,
   but the two best lower tails are psl 23 × Z97 (p1 54) and PSL(2,7) × SL(2,8) × Z7 (p1 50) — the two groups the main
   runs use. Kept: no switch.
-- r2-c2 cheap features predicting a low duplicate rate (pending).
-- r2-c3 explicit (non-annealed) hexagon voltage rule (pending).
-- r2-c4 wildcard group families (pending).
+- r2-c2 cheap features predicting a low duplicate rate: duplicates among words of length ≤ 5 (1/80 of the work)
+  predict the full rate with Spearman 0.986; element orders, traces etc. do not (|ρ| ≤ 0.23). Among annealed good
+  states the duplicate rate (7.5–8.8 %) does not track the cost, so no filter for the annealer.
+- r2-c3 explicit (non-annealed) hexagon voltage rule: flag voltage 6·p·l mod 16 (hexgen2 indices), σ1 = identity
+  numbering (voltage 1), σ2 = shift by N/3 (voltage 6) is valid at q = 2, 3, 4 with 16 levels (independent BFS agrees
+  at q = 4); the formula's 20 at q = 4 was not reached (best 2 misses at 18 and 20). Score 0.8. Nothing points to
+  30+ levels at q = 7.
+- r2-c4 wildcard group families: best is again PSL(2,7) × SL(2,8) × Z7 (5000-sample p1 50–51 against 55–57 for
+  psl 23 × Z97 over seeds 1–3, p10 75–76 against 82–84); A5 × PSL(2,27), A5 × PSL(2,13) × Z9, PSL(2,7)² × Z21,
+  SL(2,32) × Z18, PSL(2,53) × Z8, a Frobenius α on the SL(2,8) factor and twisted PGL groups are all worse.
 Main runs meanwhile: PSL(2,7) × SL(2,8) × Z7 reached cost 7 in 5.8·10⁵ evaluations, below anything PSL(2,23) × Z97
 reached in 4.5·10⁶ (best 9); three main runs moved to that group (one with ORBW=3).
