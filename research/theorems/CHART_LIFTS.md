@@ -390,9 +390,14 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   (12,5), Z₁₄ ⋊₉ Z₉, Z₂₁ ⋊₄ Z₆ at (10,5) (and Z₂₈ ⋊₁₃ Z₄, Z₁₅ ⋊₇ Z₈ at m = 112, 120, squad-reported). Cyclic, abelian and dicyclic groups do badly (costs 20–118).
   Order-81 groups (odd order, no involutions) are also bad at (12,5) (cost ≥ 16).
 - **The last uncovered target is often a central involution.** At (12,5) order 78 and at (15,5) order 160 the best
-  Haar connection sets leave exactly one target per side uncovered, and it is a central element z of order 2. A
-  likely reason: side-A singularity is invariant under reversing the pattern (U(i₂;i₁) meets U(i₃;i₄) is symmetric),
-  and the reversed walk reaches h⁻¹; for h = z = z⁻¹ the walks come in reversal pairs that are singular together.
+  Haar connection sets leave exactly one target per side uncovered, and it is a central element z of order 2. The
+  proved part: in a Haar controller the walk a_x → … with letters (c₁, c₂, c₃, c₄) ends at h·x with
+  h = s_{c₄}⁻¹ s_{c₃} s_{c₂}⁻¹ s_{c₁}, the reversed letters end at h⁻¹·x, and a pattern is singular exactly when its
+  reverse is (Lemma 2: "U(i₂;i₁) meets U(i₃;i₄)" is symmetric; side B the same). So the uncovered targets are closed
+  under inversion, and the walks reaching an involution z = z⁻¹ come in reversal pairs that are singular together (no
+  nonbacktracking pattern is its own reverse, since i₂ ≠ i₃). An involution therefore has half as many independent
+  chances, which fits it being the last hole. Groups of odd order avoid this, and at (15,5) the odd orders 165
+  (Z₁₁ ⋊ Z₁₅, Z₃₃ ⋊ Z₅) reach cost 2 with side A fully covered, the two side-B holes being an inverse pair.
 - **Controllers reach 71–88% of the best known (k, 5) graph** when the chart covers both diagonals: m = 156 of 177 at
   k = 5, q = 3 (92–112 singular of 640); m = 64 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
   (216–230 of 640). With 4-cycles required the old controllers were at 54/81 and 128/177.
