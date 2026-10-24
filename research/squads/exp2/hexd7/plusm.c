@@ -7,7 +7,8 @@
    Pairs avoiding every p_i, L_i, x_i, w_i keep the routes of the 3-copy proof; by Z3 symmetry it suffices to check
    the sources a_i = (p_i, 0), b_i = (L_i, 1), x_i, w_i. Score = vertices beyond distance 7 from those sources.
    phi starts random (with phi(p_i) = L_i) and is improved by swapping images (targeted, as in plus2ls.c).
-   Usage: plusm HFILE m seconds seed OUT.edges [OUT.phi [R]]  (R: cluster radius, default 2)  -> writes the edge list when the score reaches 0. */
+   Usage: plusm HFILE m seconds seed OUT.edges [OUT.phi [R]]  (R: cluster radius, default 2)
+   PHIIN=file: start from this phi (with seconds = 0 it just rebuilds and checks the graph of a saved phi).  -> writes the edge list when the score reaches 0. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -90,7 +91,8 @@ int main(int argc, char **argv) {
     bfs_inc(P + Lstar, dl);
     int *candP = malloc(sizeof(int) * P), nP = 0, *candL = malloc(sizeof(int) * P), nL = 0;
     int R = argc > 7 ? atoi(argv[7]) : 2;   /* cluster radius: gadget points within R of p_1, gadget lines within R of L* */
-    for (int r = 0; r <= R; r++) { for (int y = 0; y < P; y++) if (dp[y] == r) candP[nP++] = y; for (int l = 0; l < P; l++) if (dl[P + l] == r) candL[nL++] = l; }
+    int R0 = getenv("RMIN") ? atoi(getenv("RMIN")) : 0;   /* RMIN=2: leave p_1 and L* themselves alone */
+    for (int r = R0; r <= R; r++) { for (int y = 0; y < P; y++) if (dp[y] == r) candP[nP++] = y; for (int l = 0; l < P; l++) if (dl[P + l] == r) candL[nL++] = l; }
     if (m > nP || m > nL) { fprintf(stderr, "m too large (max %d)\n", nP < nL ? nP : nL); return 2; }
     GP = malloc(sizeof(int) * m); GL = malloc(sizeof(int) * m); gidP = malloc(sizeof(int) * P); gidL = malloc(sizeof(int) * P);
     for (int i = 0; i < P; i++) gidP[i] = gidL[i] = -1;
@@ -100,6 +102,9 @@ int main(int argc, char **argv) {
     { int *restL = malloc(sizeof(int) * P), nr = 0; for (int l = 0; l < P; l++) if (gidL[l] < 0) restL[nr++] = l;
       for (int i = nr - 1; i > 0; i--) { int j = rnd() % (i + 1), t = restL[i]; restL[i] = restL[j]; restL[j] = t; }
       int k = 0; for (int y = 0; y < P; y++) phi[y] = gidP[y] >= 0 ? GL[gidP[y]] : restL[k++]; }
+    if (getenv("PHIIN")) {   /* warm start or rebuild: read phi (must map p_i to L_i) */
+        FILE *g = fopen(getenv("PHIIN"), "r"); for (int y = 0; y < P; y++) if (fscanf(g, "%d", &phi[y]) != 1) return 2; fclose(g);
+        for (int i = 0; i < m; i++) if (phi[GP[i]] != GL[i]) { fprintf(stderr, "PHIIN: phi(p_%d) != L_%d\n", i, i); return 2; } }
     for (int y = 0; y < P; y++) inv[phi[y]] = y;
     /* per-gadget distance lists for targeted moves */
     int **Y4 = malloc(sizeof(int *) * m), *nY4 = calloc(m, sizeof(int)), **Y2 = malloc(sizeof(int *) * m), *nY2 = calloc(m, sizeof(int));
@@ -131,14 +136,14 @@ int main(int argc, char **argv) {
             if (t >= 6 * P) { y1 = rnd() % P; y2 = rnd() % P; }
             else if (SKIND[k] == 0 || SKIND[k] == 2) {   /* route from (p_i, .) */
                 if (u < P) { int mm = LP[u * K + rnd() % K]; if (gidL[mm] >= 0) continue;
-                    y1 = (rnd() % 4 && nY4[i]) ? Y4[i][rnd() % nY4[i]] : Y2[i][rnd() % nY2[i]]; y2 = inv[mm]; }
+                    if (!nY4[i] && !nY2[i]) continue; y1 = ((rnd() % 4 && nY4[i]) || !nY2[i]) ? Y4[i][rnd() % nY4[i]] : Y2[i][rnd() % nY2[i]]; y2 = inv[mm]; }
                 else { int z = PL[(u - P) * K + rnd() % K], mm = LP[z * K + rnd() % K]; if (gidL[mm] >= 0) continue;
-                    y1 = Y2[i][rnd() % nY2[i]]; y2 = inv[mm]; }
+                    if (!nY2[i]) continue; y1 = Y2[i][rnd() % nY2[i]]; y2 = inv[mm]; }
             } else {                                     /* route from (L_i, .) */
                 if (u >= P) { int z = PL[(u - P) * K + rnd() % K]; if (gidP[z] >= 0) continue;
-                    int mm = (rnd() % 4 && nM4[i]) ? M4[i][rnd() % nM4[i]] : M2[i][rnd() % nM2[i]]; y1 = z; y2 = inv[mm]; }
+                    if (!nM4[i] && !nM2[i]) continue; int mm = ((rnd() % 4 && nM4[i]) || !nM2[i]) ? M4[i][rnd() % nM4[i]] : M2[i][rnd() % nM2[i]]; y1 = z; y2 = inv[mm]; }
                 else { int m0 = LP[u * K + rnd() % K], z = PL[m0 * K + rnd() % K]; if (gidP[z] >= 0) continue;
-                    int mm = M2[i][rnd() % nM2[i]]; y1 = z; y2 = inv[mm]; }
+                    if (!nM2[i]) continue; int mm = M2[i][rnd() % nM2[i]]; y1 = z; y2 = inv[mm]; }
             }
         } else { y1 = rnd() % P; y2 = rnd() % P; }
         if (y1 < 0 || y2 < 0 || y1 == y2 || gidP[y1] >= 0 || gidP[y2] >= 0) continue;
