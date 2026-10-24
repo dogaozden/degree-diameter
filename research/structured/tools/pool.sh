@@ -7,7 +7,10 @@
 # A file is started only while fewer than P search processes (haar_sym, haar_fast, anyone's) run on the machine.
 # A started file gets DIR/<name>.started; DIR/P (if present) overrides P on the fly; touch DIR/STOP to stop the
 # pool after the running files finish.
+# After a machine restart just start pool.sh again: it clears the .started markers of *.jobs files (orbq.sh skips
+# finished jobs and resumes unfinished ones from their checkpoints).
 DIR=$1; P0=${2:-4}; HERE=$(cd "$(dirname "$0")" && pwd)
+rm -f "$DIR"/*.jobs.started
 declare -A pid
 while [ ! -e "$DIR/STOP" ] || [ ${#pid[@]} -gt 0 ]; do
   for n in "${!pid[@]}"; do kill -0 "${pid[$n]}" 2>/dev/null || { echo "$(date +%T) end   $n"; unset "pid[$n]"; }; done

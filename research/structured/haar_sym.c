@@ -989,11 +989,28 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
+    /* CKPT=path: the best S so far (element indices; alpha and the group are deterministic) is written there every
+     * 60 s, with the evaluations and seconds spent; if the file exists at start, the run resumes from it (budget,
+     * evals and RESULT count both segments; the trajectory after a resume is not that of an uninterrupted run). */
+    const char *ckpt = getenv("CKPT"); long long evals0 = 0; double elapsed0 = 0; int resumed = 0;
+    if (ckpt) { FILE *f = fopen(ckpt, "r"); int T2[MAXD], ok = 0; long long e0 = 0, b0 = 0; double el = 0;
+        if (f) { int dd = 0; ok = fscanf(f, "CKPT d=%d evals=%lld elapsed=%lf best=%lld", &dd, &e0, &el, &b0) == 4 && dd == d;
+            for (int i = 0; ok && i < d; i++) ok = fscanf(f, "%d", &T2[i]) == 1 && T2[i] >= 0 && T2[i] < N;
+            fclose(f); }
+        for (int i = 0; ok && i < OF; i++) ok = i == 0 ? T2[0] == ident : alpha(T2[i]) == T2[i];
+        for (int j = 0; ok && j < OM; j++) for (int i = 0; ok && i < OK_; i++) ok = T2[ostart(j) + (i + 1) % OK_] == alpha(T2[ostart(j) + i]);
+        for (int i = 0; ok && i < d; i++) for (int u = 0; u < i; u++) if (T2[u] == T2[i]) ok = 0;
+        if (ok) { memcpy(S, T2, sizeof(int) * d); for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
+                  evals0 = e0; elapsed0 = el; resumed = 1; rs ^= (unsigned long long)(e0 + 1) * 0x9E3779B97F4A7C15ULL;
+                  fprintf(stderr, "resumed from %s: evals %lld, %.0f s spent, best %lld\n", ckpt, e0, el, b0); }
+        else if (f) fprintf(stderr, "checkpoint %s unusable, fresh start\n", ckpt); }
+    double lastck = now();
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
     if (ORBW > 1) fprintf(stderr, "ORBW=%d: an uncovered fixed element weighs %d; start energy %lld\n", ORBW, ORBW, ce);
-    long long evals = 1, steps = 0, lastimpstep = 0;
+    long long evals = 1 + evals0, steps = 0, lastimpstep = 0;
+    if (resumed) t0 -= elapsed0;
     double OVCLOCK = getenv("VCLOCK") ? atof(getenv("VCLOCK")) : 0;   /* deterministic schedule: x seconds per step */
     long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
 #define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
@@ -1048,6 +1065,10 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
             cE = (double)ce / OK_; collect(C[0]); lastimp = ONOW; lastimpstep = steps;
         }
+        if (ckpt && now() - lastck > 60) { char tmp[1100]; snprintf(tmp, sizeof tmp, "%s.tmp", ckpt); FILE *f = fopen(tmp, "w");
+            if (f) { fprintf(f, "CKPT d=%d evals=%lld elapsed=%.1f best=%lld\n", d, evals, now() - t0, best);
+                     for (int i = 0; i < d; i++) fprintf(f, "%d%c", bestS2[i], i + 1 < d ? ' ' : '\n'); fclose(f); rename(tmp, ckpt); }
+            lastck = now(); }
         if (ONOW - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f%s\n", ONOW - t0, steps, evals, c, best, T,
                                                   ORBW > 1 ? (sprintf(obuf, " energy=%lld bestE=%lld", ce, bestE), obuf) : ""); lastprint = ONOW; }
     }
