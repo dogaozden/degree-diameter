@@ -1,0 +1,15 @@
+j=1: counting bound 4, max M = 4, T (up to units) = [(1,)]
+j=2: counting bound 10, max M = 10, T (up to units) = [(1, 4)]
+j=3: counting bound 19, max M = 16, T (up to units) = [(1, 4, 7), (1, 4, 10)]
+j=4: counting bound 31, max M = 26, T (up to units) = [(1, 5, 8, 12)]
+j=5: counting bound 46, max M = 38, T (up to units) = [(1, 12, 24, 30, 33)]
+q=3 j=1 M=4 T=(1,) seed=0: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=1 M=4 T=(1,) seed=1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=2 M=10 T=(1, 4) seed=0: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=2 M=10 T=(1, 4) seed=1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=3 M=16 T=(1, 4, 7) seed=0: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=3 M=16 T=(1, 4, 7) seed=1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=3 M=16 T=(1, 4, 10) seed=0: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=3 M=16 T=(1, 4, 10) seed=1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+q=3 j=4 M=26 T=(1, 5, 8, 12) seed=0: D 8 unreached_pairs 0 max_ecc 7 worst_src 0 (0)
+q=3 j=4 M=26 T=(1, 5, 8, 12) seed=1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
