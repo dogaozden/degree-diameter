@@ -1,0 +1,7 @@
+# Coordinator check, 2026-10-24 00:12 PDT, Mac mini.
+== build_d16D5_n33792.py rebuilds the published edge list exactly (sorted sha256 prefix 5d89528ff6f74d05 for both).
+== apsp.c (all pairs, no symmetry assumed) on d16D5_n33792_k33m_z22.edges:
+n=33792 edges=270336 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=33792
+   with D-1:
+RESULT INVALID
