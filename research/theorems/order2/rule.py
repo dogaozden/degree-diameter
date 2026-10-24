@@ -48,6 +48,8 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False):
     ell = D - 1
     rel = []
     pen = 0.0
+    gf = 0.0
+    mu0 = generic + fixed + anti_cost
     if k % 2 == 0 and anti:
         rho = anti / N
         for j in range(1, (ell - 1) // 2 + 1 if ell % 2 else ell // 2):
@@ -56,12 +58,16 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False):
             unav = R > avoid
             if unav:
                 pen += R * c
-            rel.append((4 * j, R, c, unav))
+            # Poisson generating function: summing over n ~ Poisson(R) with weight exp(-mu0 e^{lambda c n}) gives an
+            # added R (1 - e^{-x}) nats, x = mu0 lambda c, and n* = R e^{-x} cycles in a typical solution
+            x = mu0 * lam * c
+            gf += R * (1 - math.exp(-x))
+            rel.append((4 * j, R, c, unav, R * math.exp(-x)))
     penalty = math.exp(lam * pen)
-    muA = (generic + fixed + anti_cost) * penalty
+    muA = mu0 * penalty
     evals = 1e5 * math.exp((muA - 13) / 2)
     out = dict(lam=lam, mu=mu, generic=generic, fixed=fixed, anti=anti_cost, penalty=penalty, muA=muA, evals=evals,
-               relators=rel)
+               mu0=mu0, gf=gf, evals0=1e5 * math.exp((mu0 - 13) / 2), relators=rel)
     return out
 
 
@@ -100,12 +106,14 @@ CASES = [
 
 
 def main():
-    print(f"{'case':52s} {'lam':>5s} {'mu':>6s} {'mu/k':>6s} {'fixed':>6s} {'anti':>6s} {'pen':>5s} {'mu_A':>6s} {'evals':>8s}  | observed")
+    print(f"{'case':52s} {'lam':>5s} {'mu':>6s} {'mu/k':>6s} {'fixed':>6s} {'anti':>6s} {'pen':>5s} {'mu_A':>6s} {'evals':>8s} {'evals0':>8s} {'gfnat':>5s}  | observed")
+    print("  mu_A = (mu/k + fixed + anti) x pen; evals from mu_A (penalised) and evals0 from mu_A without the twisted-cycle")
+    print("  penalty; gfnat = sum_j R_j (1 - exp(-mu_A0 lam c_j)), the first-moment cost of twisted cycles in nats")
     for name, d, D, N, k, stab, anti, src, obs in CASES:
         r = rule(d, D, N, k, stab, anti)
-        rel = "; ".join(f"{L}: R={R:.2g} c={c:.2g}{' U' if u else ''}" for L, R, c, u in r["relators"])
-        print(f"{name:52s} {r['lam']:5.2f} {r['mu']:6.1f} {r['generic']:6.2f} {r['fixed']:6.2f} {r['anti']:6.2f} {r['penalty']:5.2f} {r['muA']:6.1f} {r['evals']:8.2g}  | {obs}")
-        print(f"{'':52s}   twisted relators (length: Poisson mean R, word fraction c, U = unavoidable): {rel or '-'}")
+        rel = "; ".join(f"{L}: R={R:.2g} c={c:.2g} n*={ns:.2g}{' U' if u else ''}" for L, R, c, u, ns in r["relators"])
+        print(f"{name:52s} {r['lam']:5.2f} {r['mu']:6.1f} {r['generic']:6.2f} {r['fixed']:6.2f} {r['anti']:6.2f} {r['penalty']:5.2f} {r['muA']:6.1f} {r['evals']:8.2g} {r['evals0']:8.2g} {r['gf']:5.1f}  | {obs}")
+        print(f"{'':52s}   twisted cycles (length: Poisson mean R, word fraction c, n* = expected in a solution, U = above R*): {rel or '-'}")
 
 
 if __name__ == "__main__":

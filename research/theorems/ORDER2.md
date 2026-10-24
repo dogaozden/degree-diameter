@@ -152,6 +152,27 @@ The **two record S** (`twist.py sol`, `out/` and below) have levels 6, 31, 156, 
 maximum: no coincidence at all up to length 4. They have zero twisted 4- and 8-cycles and 56 twisted 12-cycles each,
 against means of 78 and 72. Under independence, two draws from a 4 % class have probability 0.0015.
 
+**How many twisted cycles a solution keeps: a parameter-free check.** Let n be the number of twisted cycles of
+length 4j. It is Poisson(R_j) over random symmetric S, and each cycle multiplies the clump mean μ_A⁰ by e^{λc_j}.
+Summing over n with weight P(valid | n) ≈ exp(−μ_A⁰ e^{λc_j n}) puts the typical solution at
+
+    n* = R_j · exp(−μ_A⁰ λ c_j)
+
+and charges R_j (1 − e^{−μ_A⁰ λ c_j}) nats. This is the Poisson generating function: expensive cycles are paid as
+"avoid them all", at R_j nats, and cheap ones as their mean effect. The prediction against every solution in hand
+(`out/nstar_table.txt`):
+
+| solution | 4-cycles n* / observed | 8-cycles n* / observed | 12-cycles n* / observed |
+|---|---|---|---|
+| (6,8) PSL(2,11)×Z24 record | 0.00 / 0 | 0.39 / 0 | 62 / 56 |
+| (6,8) SL(2,25) record | 0.00 / 0 | 0.46 / 0 | 61 / 56 |
+| (13,8) SL(2,64)×Z13, order 6, three seeds | 0.00 / 0, 0, 0 | 5.2 / 6, 12, 6 | 535 / 563, 605, 578 |
+| (13,8) SL(2,7)²×Z31 record, order 6 | 0.00 / 0 | 7.7 / 9 | 802 / 665 |
+
+At Δ = 6 an 8-cycle is expensive (μ_A⁰λc₂ ≈ 2.2), so solutions keep about e^{−2.2} ≈ 1/9 of the random rate. At
+Δ = 13 it is nearly free (0.07), so solutions keep the random rate. Twisted cycles come in ⟨α⟩-orbits, which
+overdisperses the counts (12 = two orbits of 6).
+
 **Why the mean misleads.** The mean loss is Σ_j R_j c_j = (ρ/2) Σ_j (ℓ − 2j + 1), which is BEYOND_RANDOM's ρℓ²/8.
 The weights ℓ − 2j + 1 = 6, 4, 2 put half of it on 4-cycles and a third on 8-cycles. Those terms are a product of a
 rare event (R_j small) and a large effect (c_j large). The "fresh random subword" picture counts the same cycle once
@@ -223,7 +244,11 @@ For α of order k with α(S) = S, f fixed generators and m orbits of size k:
           × exp( λ · Σ_{β} Σ_{j : R_j(β) > R*} R_j(β)·c_j )
 
 with R_j(β) = ρ_β Δ(Δ−1)^{2j−1}/(4j), c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) and R* ≈ 5. Families with R_j ≤ R* are
-avoided by the search at no measurable cost. Plug μ_A into the effort law. `order2/rule.py` implements this and prints
+avoided by the search at no measurable cost. Plug μ_A into the effort law.
+
+The principled form of the twisted-cycle term is the generating-function charge Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats,
+with n* = R_j e^{−μ_A⁰λc_j} cycles left in a solution (§3.1). rule.py prints both forms. The n* half is confirmed on
+all six solutions. The nats half is not: in effort terms it over-predicts the two (6,8) solves (§4, last item). `order2/rule.py` implements this and prints
 the 24 worked cases of `out/rule_table.txt`, each with its observed outcome. In words:
 
 1. Clumps of size k divide μ by k (BEYOND_RANDOM).
@@ -393,8 +418,9 @@ Going through the table:
 **Conjectured with strong evidence**
 1. Twisted cycles of length 4j are approximately Poisson with mean ρΔ(Δ−1)^{2j−1}/(4j) (7 groups, within 15 %),
    each removing about c_j of the words (8-cycles: fitted 0.10–0.16 per cycle in ln cost, predicted 0.13) (§3.1).
-2. The search avoids the short twisted cycles. Both (6,8) record sets have none, against 4 % of random symmetric S
-   (§3.1).
+2. The search avoids the short twisted cycles. Both (6,8) record sets have none, against 4 % of random symmetric S.
+   Quantitatively, a solution keeps n* = R_j e^{−μ_A⁰λc_j} cycles of each length. This parameter-free prediction
+   matches all six solutions in hand, at Δ = 6 and Δ = 13 (§3.1).
 3. At odd D an involution's Anti elements are missed at about √p, and its unavoidable cost kills conjugation-type
    order 2. At even D they are ordinary targets (§3.2; squad: 0 of 31 odd-D k = 2 runs reached even 10 uncovered).
 4. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
