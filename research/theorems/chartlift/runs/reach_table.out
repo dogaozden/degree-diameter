@@ -1,0 +1,69 @@
+cells where the Moore ceiling q^(D-1)*Moore_b(k,D) exceeds the best known value (k >= 3):
+(Delta,D)  k  q   best known    ceiling     q^(D-1)*n_b(k,D) [best known controller order]
+( 6, 5)   3  2           684          992            896 
+( 6, 7)   3  2          8880        16256          10752 
+( 6, 8)   3  2         31680        65280          36864 
+( 6, 9)   3  2        127296       261632         129536 
+( 6,10)   3  2        524160      1047552         409600 <-- even a record controller is too small
+( 8, 5)   4  2          1764         3872           2592 
+( 8, 7)   4  2         43344       139904          53760 
+( 8, 8)   4  2        239904       839680         279552 
+( 8, 9)   4  2       1326960      5038592        1272320 <-- even a record controller is too small
+( 8,10)   4  2       7818096     30232576        6356992 <-- even a record controller is too small
+( 9, 5)   3  3          2662         5022           4536 
+( 9, 7)   3  3        117648       185166         122472 
+( 9, 8)   3  3        540360      1115370         629856 
+( 9, 9)   3  3       3499776      6705342        3319866 <-- even a record controller is too small
+( 9,10)   3  3      23975280     40271418       15746400 <-- even a record controller is too small
+(10, 5)   5  2          4000        10912           5664 
+(10, 7)   5  2        224694       699008         199680 <-- even a record controller is too small
+(10, 8)   5  2       1176480      5592320        1225728 
+(10, 9)   5  2       8003856     44739072        7311360 <-- even a record controller is too small
+(10,10)   5  2      60141120    357913600       48881664 <-- even a record controller is too small
+(12, 5)   3  4          8748        15872          14336 
+(12, 5)   4  3          8748        19602          13122 
+(12, 5)   6  2          8748        24992          10944 
+(12, 7)   3  4        664300      1040384         688128 
+(12, 7)   4  3        664300      1593594         612360 <-- even a record controller is too small
+(12, 7)   6  2        664300      2499968         568320 <-- even a record controller is too small
+(12, 8)   3  4       4650100      8355840        4718592 
+(12, 8)   4  3       4650100     14346720        4776408 
+(12, 8)   6  2       4650100     24999936        4055040 <-- even a record controller is too small
+(12, 9)   3  4      34026720     66977792       33161216 <-- even a record controller is too small
+(12, 9)   4  3      34026720    129133602       32608170 <-- even a record controller is too small
+(12, 9)   6  2      34026720    249999872       32587776 <-- even a record controller is too small
+(12,10)   3  4     325832976    536346624      209715200 <-- even a record controller is too small
+(12,10)   4  3     325832976   1162241784      244384128 <-- even a record controller is too small
+(12,10)   6  2     325832976   2499999744      268369920 <-- even a record controller is too small
+(14, 5)   7  2         14760        49760          18432 
+(14, 7)   7  2       1771560      7166336        1499904 <-- even a record controller is too small
+(14, 8)   7  2      14172480     85996288       12257280 <-- even a record controller is too small
+(14, 9)   7  2     116068656   1031955968      118487040 
+(14,10)   7  2    1326627120  12383472640     1145733120 <-- even a record controller is too small
+(15, 3)   5  3           376          378            378 
+(15, 5)   3  5         20496        38750          35000 
+(15, 5)   5  3         20496        55242          28674 
+(15, 7)   3  5       2480184      3968750        2625000 
+(15, 7)   5  3       2480184      7962138        2274480 <-- even a record controller is too small
+(15, 8)   3  5      18128880     39843750       22500000 
+(15, 8)   5  3      18128880     95550030       20942712 
+(15, 9)   3  5     208029120    399218750      197656250 <-- even a record controller is too small
+(15, 9)   5  3     208029120   1146613482      187382160 <-- even a record controller is too small
+(15,10)   3  5    2300326510   3996093750     1562500000 <-- even a record controller is too small
+(15,10)   5  3    2300326510  13759401150     1879175376 <-- even a record controller is too small
+(16, 3)   4  4           396          416            416 
+(16, 3)   8  2           396          456            456 
+(16, 4)   8  2          5440         6400           6400 
+(16, 5)   4  4         33792        61952          41472 
+(16, 5)   8  2         33792        89632          28224 <-- even a record controller is too small
+(16, 6)   8  2        940846      1254912        1254912 
+(16, 7)   4  4       4022340      8953856        3440640 <-- even a record controller is too small
+(16, 7)   8  2       4022340     17568896        2774016 <-- even a record controller is too small
+(16, 8)   4  4      36201060    107479040       35782656 <-- even a record controller is too small
+(16, 8)   8  2      36201060    245964800       30707712 <-- even a record controller is too small
+(16, 9)   4  4     337394400   1289879552      325713920 <-- even a record controller is too small
+(16, 9)   8  2     337394400   3443507712      339701760 
+(16,10)   4  4    4119507330  15479078912     3254779904 <-- even a record controller is too small
+(16,10)   8  2    4119507330  48209108992     4002865152 <-- even a record controller is too small
+
+cells with no chance (ceiling <= best known): 31 of 96 (cell, k, q) combinations
