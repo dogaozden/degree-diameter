@@ -156,3 +156,6 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 22:11 PT (harvest): (12,9) 34,026,720 (was 33,948,672), sl 41 n 247; claude/structured-search-orbit-w5dd4f.
 - Oct 23 22:11 PT (harvest): (13,9) 67,742,688 (was 63,872,400), sl 103 n 31; claude/structured-search-orbit-04hefm.
 - Oct 23 22:12 PT (coordinator): (5,7) 3,120 (was 3,110, new cell): Haar graph of PGL(2,5) × Z13 (research/lifts/sols/haar/hc_d5D7_pgl_5_13_s1.txt); voltage-lifts session; rebuilt and checked all-pairs (research/lifts/coordinator_check/check_2026-10-23f.txt).
+
+- Oct 23 23:11 PT (harvest): (9,10) 23,725,584 (was 23,142,048), psl 73 n 61; claude/structured-search-orbit-w5dd4f.
+- Oct 23 23:11 PT (harvest): (14,10) 1,316,504,400 (was 1,308,373,248), sl 149 n 199; claude/structured-search-orbit-w5dd4f.
