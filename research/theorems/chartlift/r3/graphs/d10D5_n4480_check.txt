@@ -1,0 +1,15 @@
+# (10,5) 4,480: builder r3/graphs/build_d10D5_n4480.py (stdlib only); same edge set as lift.py on the Haar controller (voltages r3/graphs/d10D5_n4480.volt, group meta:35:4:29 (Z_35 x|_29 Z_4)) + r3/k5q2_for140.txt (sorted-edge sha256 equal). Controller and chart from r3/alt_opt.sh (run folder r3/alt/d10_meta_35_4_29, queue r3/alt_run10.sh): voltage annealing reached cost 4 with the 216-singular chart r3/k5q2_c5_216.txt, then r3/cdesc/star_cd_ctrl.py re-optimised the chart to controller cost 0 (238 singular patterns, both diagonals, complete pencils).
+# edges file sha256 (builder output order): 4165553b6a25c1a2e170341d1ca8a48e631363630c28754fed4a66e3fd8b6302
+== apsp.c (all pairs, bit-parallel BFS):
+n=4480 edges=22400 degree min=10 max=10 bipartite=yes diameter=5
+RESULT VALID d=10 D=5 n=4480
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=4480 edges=22400 degree 10..10 bipartite=yes max_ecc=5
+  dist 0: 4480 ordered pairs
+  dist 1: 44800 ordered pairs
+  dist 2: 380800 ordered pairs
+  dist 3: 2947840 ordered pairs
+  dist 4: 9649920 ordered pairs
+  dist 5: 7042560 ordered pairs

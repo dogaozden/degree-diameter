@@ -9,9 +9,9 @@ flags43/, alt/, run logs). Squad rounds r2-chartlift and r3-chartlift are logged
   (re-optimised for this controller by r3/cdesc/star_cd_ctrl.py). Earlier this session: 25,272 and 22,680.
 - (12,5) 12,960: base [[1,3],[3,1]] over Z5 x|2 Z8 (m=80; base/group from squad r3 card c1), chart
   r3/k4q3_diag_s126.txt (closed by r3/alt348.sh). Earlier: 12,150, 11,664, 10,368.
-- (10,5) 4,096: Haar graph of Z32 x|9 Z4 (m=128), chart r3/k5q2_for128a.txt; second one over Z16 x|5 Z8, chart
-  r3/k5q2_for128b.txt (both from r3/alt_opt.sh: voltages cost 2, then the chart descent reached cost 0).
-  Earlier: 4,032 (Haar graph of Z14 x|9 Z9, m=126; squad r2 card c4, chart charts/r2_k5_q2.txt).
+- (10,5) 4,480: Haar graph of Z35 x|29 Z4 (m=140; group from squad r3 card c6 at cost 4), chart r3/k5q2_for140.txt
+  (r3/alt_opt.sh: voltages cost 4, then the chart descent reached cost 0 in 8 s). Earlier: 4,096 (Z32 x|9 Z4 and
+  Z16 x|5 Z8, m=128, charts r3/k5q2_for128a.txt, ...b.txt, same method) and 4,032 (Haar graph of Z14 x|9 Z9, m=126; squad r2 card c4, chart charts/r2_k5_q2.txt).
 None of these is recorded by the coordinator yet (as of this note).
 
 ## Key ideas
@@ -25,6 +25,6 @@ None of these is recorded by the coordinator yet (as of this note).
 - (15,5): alternating optimisation running/ran over orders 171-180 (r3/alt/d15_*.log). Best known (5,5) graph has
   m = 177, so (15,5) <= about 28,674 by this route.
 - (12,5): m=80 is 99% of the (4,5) record's m=81; m=82 attempts (Z41) cost 12-20.
-- (10,5): m=128 done (4,096). Next: orders 130-144 with r3/alt_opt.sh (q=2, k=5, chart r3/k5q2_for128a.txt).
+- (10,5): m=140 done (4,480). Next: orders 144-160 with r3/alt_run10b.sh (screen 90 s, alternate if cost <= 8).
 - (8,5): (4,2) charts are optimal at 48 singular; 2+2 near miss at m=66 (Z33) being tried with r3/alt_opt.sh.
 - (14,5): (7,2) charts ~42% singular; Haar m=462 cost 36. Needs a different idea.
