@@ -1,0 +1,15 @@
+group sl 7 x Z_31, N=10416, identity 1302, H order 62, rows 168, threads 1, setup 0.00s
+wide rows: HW order 248, rows 42, setup 0.01s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 5 z on Z_31
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 48.23, mu/k = 16.08, fixed-point misses ~ 2.00
+start cost=178
+t=30 steps=483053 evals=3864425 cost=6 best=6 T=0.53
+t=60 steps=973876 evals=7791009 cost=6 best=6 T=0.19
+t=90 steps=1497887 evals=11983097 cost=6 best=6 T=0.15
+t=120 steps=2014696 evals=16117569 cost=14 best=6 T=0.15
+t=150 steps=2516233 evals=20129865 cost=6 best=6 T=0.15
+t=180 steps=3034946 evals=24279569 cost=6 best=6 T=0.55
+t=210 steps=3566357 evals=28530857 cost=6 best=6 T=0.20
+t=240 steps=4090725 evals=32725801 cost=6 best=6 T=0.15
+t=270 steps=4632791 evals=37062329 cost=6 best=6 T=0.15
+RESULT d=7 D=7 group=sl 7 x Z_31 N=10416 best=6 evals=41385001 time=300.0 orbit k=3 m=2 f=1 fix=5

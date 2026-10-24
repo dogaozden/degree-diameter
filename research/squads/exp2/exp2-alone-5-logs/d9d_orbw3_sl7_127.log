@@ -1,0 +1,28 @@
+group sl 7 x Z_127, N=42672, identity 5334, H order 14, rows 3048, threads 1, setup 0.02s
+wide rows: HW order 254, rows 168, setup 0.04s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 19 z on Z_127
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 5 (+e); mu = 38.11, mu/k = 12.70, fixed-point misses ~ 1.16
+ORBW=3: an uncovered fixed element weighs 3; start energy 9756
+start cost=9756
+t=30 steps=115870 evals=926961 cost=12 best=12 T=0.53 energy=12 bestE=12
+t=60 steps=226504 evals=1812033 cost=12 best=12 T=0.19 energy=12 bestE=12
+t=90 steps=341232 evals=2729857 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=120 steps=454133 evals=3633065 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=150 steps=565186 evals=4521489 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=180 steps=680478 evals=5443825 cost=12 best=12 T=0.86 energy=12 bestE=12
+t=210 steps=795702 evals=6365617 cost=12 best=12 T=0.30 energy=12 bestE=12
+t=240 steps=911890 evals=7295121 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=270 steps=1024413 evals=8195305 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=300 steps=1134196 evals=9073569 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=330 steps=1248799 evals=9990393 cost=12 best=12 T=0.86 energy=12 bestE=12
+t=360 steps=1368858 evals=10950865 cost=12 best=12 T=0.30 energy=12 bestE=12
+t=390 steps=1479039 evals=11832313 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=420 steps=1583328 evals=12666625 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=450 steps=1690684 evals=13525473 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=480 steps=1801721 evals=14413769 cost=24 best=12 T=0.86 energy=24 bestE=12
+t=510 steps=1913760 evals=15310081 cost=12 best=12 T=0.30 energy=12 bestE=12
+t=540 steps=2025424 evals=16203393 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=570 steps=2134944 evals=17079553 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=600 steps=2249898 evals=17999185 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=630 steps=2360136 evals=18881089 cost=12 best=12 T=0.86 energy=12 bestE=12
+RESULT d=9 D=7 group=sl 7 x Z_127 N=42672 best=12 evals=19502969 time=651.4 orbit k=3 m=3 f=0 fix=5

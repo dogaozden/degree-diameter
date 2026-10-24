@@ -1,0 +1,9 @@
+group sl 5 x Z_367, N=44040, identity 7340, H order 10, rows 4404, threads 1, setup 0.02s
+wide rows: no cyclic subgroup of order >= 64 found (best 10); using haar_gen3's evaluation
+alpha: conj by mat(3,4,2,3) (index 92), z -> 83 z on Z_367
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 5 (+e); mu = 48.92, mu/k = 16.31, fixed-point misses ~ 1.24
+start cost=12994
+t=30 steps=8636 evals=69089 cost=146 best=146 T=0.53
+t=60 steps=17591 evals=140729 cost=146 best=146 T=0.19
+t=90 steps=26769 evals=214153 cost=146 best=146 T=0.15
+RESULT d=9 D=7 group=sl 5 x Z_367 N=44040 best=146 evals=286825 time=120.0 orbit k=3 m=3 f=0 fix=5

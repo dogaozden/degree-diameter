@@ -49,14 +49,39 @@ cells: about 10,600 vs. 11,718 at (7,7), about 45,000 vs. 58,824 at (9,7), about
 beating them needs words that cover the group better than random S, and the orbit recipe does not raise that
 ceiling (STRUCTURE.md §1). What we have is roughly 0.67–0.82 of the table, which is the search wall of this method.
 
+## Long runs after the ladder (plateau)
+
+Second batch (300 s each): nothing new solved. SL(2,5)×Z_349 (9,7) best 92; SL(2,7)×Z_127 (9,7) best 12; SL(2,9)×Z_61
+(9,7) best 14; SL(2,7)×Z_31 (7,7) best 6; SL(2,11)×Z_103 (11,7) best 6; SL(2,9)×Z_193 (11,7) best 38.
+
+Third batch (about 40 minutes each, then stopped by hand): SL(2,7)×Z_127 (9,7) best 6, SL(2,9)×Z_61 (9,7) best 12,
+SL(2,11)×Z_103 (11,7) best 6, SL(2,7)×Z_31 (7,7) best 6 after 243 M evaluations (stopped at 29 min). All four sat on
+the same plateau for the last 20–30 minutes.
+
+Test of the plateau: ORBW=3 (uncovered fixed elements weigh 3 in the energy) on SL(2,7)×Z_31 and SL(2,7)×Z_127: still
+6 and 12. The stuck elements are probably fixed-point misses of the torus (|Fix| = 5 for SL(2,7) at order 3), which the
+orbit moves cannot reach. That is a property of the group, not of the schedule.
+
+## Not tried (would be next)
+
+- Groups with fewer fixed points under the order-3 automorphism, or a different α, for the SL(2,7) cells.
+- PSL or PGL variants at D = 7 (more involutions, untested here).
+- Two-orbit-per-side lifts (PLAN.md §5, item 2), which change the word count rather than the group.
+
 ## Budget and time
 
-Budget meter (tools/session_usage.py, arm exp2-alone-5): see research/squads/usage/exp2-alone-5.jsonl; the 20-minute
-readings are logged there. Run at the time of writing: 0.004 units after 20 minutes, far below the 1.5 cap.
+Budget meter (tools/session_usage.py, arm exp2-alone-5): research/squads/usage/exp2-alone-5.jsonl, readings every
+20 minutes. Final reading at 18:06 UTC: budget_units 0.006 (cap 1.5).
 
-Wall time: see the end of this file (filled in at the final commit).
+Wall time: 16:56 → 18:07 UTC, about 1 h 11 min (cap 4 h). Stopped early because the plateau persisted across every
+group and seed tried, and more hours of the same method were unlikely to move any ratio.
+
+## Logs
+
+research/squads/exp2/exp2-alone-5-logs/: every haar_sym log (RESULT lines and trajectories) and the three job lists.
 
 ## Status
 
-Long runs in progress at time of writing (one hour each, started 17:26 UTC): SL(2,7)×Z_127 for (9,7), SL(2,9)×Z_61 for
-(9,7), SL(2,11)×Z_103 for (11,7), SL(2,7)×Z_31 for (7,7).
+Finished. No background work is running. Best valid graphs are committed in research/frontier/sols/ and verified with
+build_haar2.py (d7D7_sl_8_19_orb3f1_s1, d9D7_sl_13_19_orb3f0_s1, d11D7_sl_13_61_orb3f2_s1; the other D = 7 files in
+that folder are earlier, smaller graphs).

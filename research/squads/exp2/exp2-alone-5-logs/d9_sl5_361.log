@@ -1,0 +1,9 @@
+group sl 5 x Z_361, N=43320, identity 7220, H order 57, rows 760, threads 1, setup 0.02s
+wide rows: HW order 190, rows 228, setup 0.03s
+alpha: conj by mat(3,4,2,3) (index 92), z -> 68 z on Z_361
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 5 (+e); mu = 42.97, mu/k = 14.32, fixed-point misses ~ 1.20
+start cost=882
+t=30 steps=97538 evals=780305 cost=84 best=84 T=0.53
+t=60 steps=191396 evals=1531169 cost=84 best=84 T=0.19
+t=90 steps=285758 evals=2286065 cost=84 best=84 T=0.15
+RESULT d=9 D=7 group=sl 5 x Z_361 N=43320 best=84 evals=3074873 time=120.0 orbit k=3 m=3 f=0 fix=5

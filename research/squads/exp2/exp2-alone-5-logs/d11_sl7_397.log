@@ -1,0 +1,9 @@
+group sl 7 x Z_397, N=133392, identity 16674, H order 14, rows 9528, threads 1, setup 0.03s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(4,0,1,2) (index 190), z -> 34 z on Z_397
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 5 (+e); mu = 32.18, mu/k = 10.73, fixed-point misses ~ 0.75
+start cost=1734
+t=30 steps=3735 evals=29881 cost=78 best=78 T=0.53
+t=60 steps=7788 evals=62305 cost=78 best=78 T=0.19
+t=90 steps=11844 evals=94753 cost=78 best=78 T=0.15
+RESULT d=11 D=7 group=sl 7 x Z_397 N=133392 best=72 evals=127409 time=120.0 orbit k=3 m=3 f=2 fix=5
