@@ -115,9 +115,9 @@ groups, the inverse-closed negative result, the choice of every card's cells, gr
 - **What Opus did that the squad could not:** spot that (6,8) needed k = 2; write the exhaustive mode and prove the
   D = 5 plateaus are true floors; work out the α classes (which made two Haiku sweeps redundant); compute the rung
   lists; diagnose a residual of 1 as a fixed point (ORBW); and notice that solve times are heavy-tailed.
-- Overall: 6 cells' worth of record graphs this session ((6,8), (7,10), (8,9) ×3 rungs, (8,10), (9,10)). Haikus found
+- Overall: 5 cells raised this session, with 8 record graphs ((6,8) ×2 rungs, (7,10), (8,9) ×3 rungs, (8,10), (9,10)). Haikus found
   3 of the 8 record graphs directly ((9,10), two (8,9) rungs), and their near-miss groups led to 2 more ((8,10),
-  (7,10)); Opus found (6,8) and the last (8,9) rung alone. The combination beat what I would have done alone in rounds 4
+  (7,10)); Opus found both (6,8) graphs and the last (8,9) rung alone. The combination beat what I would have done alone in rounds 4
   and 6, when the Haikus ran explicit lists. A fair summary: Opus aims and verifies; Haikus are good parallel hands for
   well-specified runs and poor explorers.
 - Practical lessons for the next squad session: give each card an explicit list and a stopping rule; have every card
