@@ -1,0 +1,38 @@
+type-2 pre-pass: side A covered 68863 of 87500, side B 66457 of 87500
+pair 0: |S'| = 625, |S| = 625
+pair 27: |S'| = 625, |S| = 625
+algebraic cover installed, conflicts 12816
+fast search: proxy cost 10186
+fast search done: it 26624 proxy 4460 (0.9s)
+q=5 N=3906 K=28 n=23492 initial cost 1356
+search done: it 52 cost 1349 (1.0s)
+dropped a pair: K=27 cost 1315
+dropped a pair: K=26 cost 1272
+dropped a pair: K=25 cost 1250
+dropped a pair: K=24 cost 1200
+dropped a pair: K=23 cost 1156
+dropped a pair: K=22 cost 1119
+dropped a pair: K=21 cost 1063
+dropped a pair: K=20 cost 1008
+dropped a pair: K=19 cost 976
+dropped a pair: K=18 cost 927
+dropped a pair: K=17 cost 877
+dropped a pair: K=16 cost 836
+dropped a pair: K=15 cost 785
+dropped a pair: K=14 cost 736
+dropped a pair: K=13 cost 692
+dropped a pair: K=12 cost 640
+dropped a pair: K=11 cost 582
+dropped a pair: K=10 cost 527
+dropped a pair: K=9 cost 485
+dropped a pair: K=8 cost 430
+dropped a pair: K=7 cost 376
+dropped a pair: K=6 cost 335
+dropped a pair: K=5 cost 285
+dropped a pair: K=4 cost 225
+dropped a pair: K=3 cost 172
+dropped a pair: K=2 cost 119
+dropped a pair: K=1 cost 62
+dropped a pair: K=0 cost 0
+RESULT q=5 K=0 n=23436 freed sources OK (full check skipped; run apsp)
+exit=0

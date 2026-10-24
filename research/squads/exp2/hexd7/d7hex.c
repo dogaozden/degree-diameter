@@ -322,13 +322,36 @@ static long pair_zeros(int k) {
     for (int a = 0; a < noppB[k]; a++) z += cB[k][oppB[k][a]] == 0;
     return z;
 }
+static void hubgraph_static(int k_src, int s);
 static void deactivate(int k) {   /* drop pair k inside the fast search */
     zeros -= pair_zeros(k);
     for (int a = 0; a < noppA[k]; a++) cA[k][oppA[k][a]] = 1000;   /* never zero again */
     for (int a = 0; a < noppB[k]; a++) cB[k][oppB[k][a]] = 1000;
+    if (!getenv("NOHGSTATIC")) hubgraph_static(k, -1);   /* its hubs disappear */
     activeP[k] = 0;
     int p = F[k]; isF[p] = 0;               /* p and its line M(p) contribute routes again */
     pointA(p, +1); lineB(M[p], +1);
+}
+
+/* static coverage through the hub graph (independent of M):
+   side A of pair j: (p_j,0) -> z_j -> z'_k -> (l_k,i) then 3 more steps: points within distance 3 of l_k, at every level;
+   side B of pair k: (l_k,0) -> z'_k -> z_j -> (p_j,i) then 3 more steps: lines within distance 3 of p_j. */
+static void hubgraph_static(int k_src, int s) {   /* add (s=+1) or remove (s=-1) the coverage that pair k_src's hubs give */
+    if (!HGm) return;
+    int *buf = malloc(sizeof(int) * 4 * Q1 * Q1 * Q1);
+    /* pair k_src's point-side hub z'_ksrc helps side A of every line-side neighbour j */
+    for (int t = 0; t < HGPn[k_src]; t++) {
+        int j = HGP[k_src][t]; if (!activeP[j] || j == k_src) continue;
+        int np = ball3_points_of_line(M[F[k_src]], buf);
+        for (int a = 0; a < np; a++) { int x = buf[a]; if (hdp[j][x] == 6) updA(j, x, s); }
+    }
+    /* pair k_src's line-side hub z_ksrc helps side B of every point-side neighbour k */
+    for (int t = 0; t < HGLn[k_src]; t++) {
+        int k = HGL[k_src][t]; if (!activeP[k] || k == k_src) continue;
+        int nl = ball3_lines_of_point(F[k_src], buf);
+        for (int a = 0; a < nl; a++) { int x = buf[a]; if (hdl[k][N + x] == 6) updB(k, x, s); }
+    }
+    free(buf);
 }
 static long fast_search(double maxsec) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
@@ -363,6 +386,7 @@ static long fast_search(double maxsec) {
     }
     for (int u = 0; u < N; u++) pointA(u, +1);
     for (int L = 0; L < N; L++) lineB(L, +1);
+    if (!getenv("NOHGSTATIC")) for (int k = 0; k < K; k++) hubgraph_static(k, +1);
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
