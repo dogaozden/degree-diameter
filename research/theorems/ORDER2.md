@@ -254,9 +254,9 @@ the 24 worked cases of `out/rule_table.txt`, each with its observed outcome. In 
 1. Clumps of size k divide μ by k (BEYOND_RANDOM).
 2. Each subgroup H of ⟨α⟩ pays for its fixed points at rate e^{−λ/|H|}. This is bounded for Frobenius-type α on
    SL(2,p^e) for every e, and for k = 2, 3 conjugation in SL(2,q).
-3. **Odd D:** every involution in ⟨α⟩ also pays for its Anti set. By 2.4 that is at least 2√μ·(2/k)·(1/2)·2 for a
-   balanced involution. For conjugation-type involutions it is far more and kills the method. With k = 3 available,
-   no even order should be used at odd D.
+3. **Odd D:** every involution in ⟨α⟩ also pays for its Anti set. For k = 2 the Fix and Anti terms together are at
+   least (|Fix| + |Anti|)e^{−λ/2} ≥ 2√μ (by 2.4), reached only by a balanced involution. For conjugation-type
+   involutions it is far more and kills the method. With k = 3 available, no even order should be used at odd D.
 4. **Even D:** an involution's twisted cycles are a Poisson field with means R_j ∝ ρ(Δ−1)^{2j}. The short families
    are avoided when R_j ≲ 5. The long ones cost e^{λ R_j c_j} each. They are negligible when ρ is tiny (Frobenius
    involutions, ρ ≈ 1/|SL(2,p^{e/2})|) and about 1.3 at (6,8) with ρ = 1/24.
@@ -265,8 +265,8 @@ the 24 worked cases of `out/rule_table.txt`, each with its observed outcome. In 
 
 How well it predicts (`out/rule_table.txt`):
 - Every odd-D k = 2 failure in the squad logs gets μ_A ≫ μ (96–136 against μ = 25–67).
-- Every even-D k = 2 failure outside (6,8) gets μ_A 1.8–2.4 times the order-3 value at the same cell: (6,10), (7,8),
-  (8,8), (9,8).
+- Every even-D k = 2 failure outside (6,8) gets μ_A 1.8–3.2 times the order-3 value at the same cell and order:
+  (6,10), (7,8), (8,8), (9,8).
 - The order-6 runs at (13,8) are predicted to within their scatter.
 - At (6,8) the rule over-predicts the effort of the two solves. With the 12-cycle penalty it predicts
   1.4·10⁷ and 4.7·10⁶ evaluations, against 3.3·10⁵ and 2.1·10⁶. Without the penalty it predicts 1.0·10⁶ and
@@ -438,7 +438,8 @@ Going through the table:
    Quantitatively, a solution keeps n* = R_j e^{−μ_A⁰λc_j} cycles of each length. This parameter-free prediction
    matches all six solutions in hand, at Δ = 6 and Δ = 13 (§3.1).
 3. At odd D an involution's Anti elements are missed at about √p, and its unavoidable cost kills conjugation-type
-   order 2. At even D they are ordinary targets (§3.2; squad: 0 of 31 odd-D k = 2 runs reached even 10 uncovered).
+   order 2. At even D they are ordinary targets (§3.2). Squads: none of the 16 order-2 runs at odd D solved. Their best
+   values were 6–107 uncovered (6 at (9,5), where order 3 solves SL(2,11) in 0.1 s).
 4. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
    4.7·10³–3.7·10⁴ evaluations, against 1.7·10⁵ for order 3 (§5.1).
 5. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly.
