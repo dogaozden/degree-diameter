@@ -28,3 +28,22 @@ Kept: c6's exact matching (cover_match2) for the K = 16 and K = 20 starts, c4's 
 small placement gain. Opus meanwhile: the exact covers of two flags overlap by 0 (chain position), 1,210/1,210 (generic,
 balanced) or 1,210/1,331 (collinear points, unbalanced); triples overlap by ~100 ± 10 with random imbalance, which is
 where the deficits come from (≈ 10 per triple), so K is limited to about 20 in this session.
+
+## 2026-10-24 19:32–20:00 UTC, cell-15-7 (Opus, cloud session), round 2 (c157-r2): finishing the tail, verification
+
+Goal: more freed flags at (15,7) (each +6 vertices) and independent checks. Before the round Opus had K = 16 starts
+from round 1's exact matching (c6) and found that the real 7-copy graph needs far fewer repairs than the search proxy
+(K = 16 checkpoint at proxy ≈ 35: 3 far pairs, the next one 0). During the round: **K = 16 → 2,480,280** (valid,
+filed). Brief: research/squads/c157-r2/COMMON.md.
+
+Cards: c1 ejection-chain tail finisher · c2 parameter sweep of the finishing search (BESTK, T0) · c3 flag placement by
+Hall-violation counts · c4 lemma validation on small hexagons (kcopy_hub check vs apsp.c vs apsp_sym.c) · c5 an
+independent edge-list builder (Python, from the description only) · c6 wildcard (three different cross bijections, or
+hubs with fewer attachments).
+
+Best per card: c1 (see below) · c2 (see below) · c3 worse than random (K = 24 leftover 26,403 vs 20,037) ·
+c4 72/72 cases agree, lemma holds in all (22 valid, 25 degree-invalid, 25 distance-invalid) · c5 edge set identical to
+kcopy_hub's for K = 8 (sha256 b9e54f48…) · c6 different bijections: new routes cover only ~6 % of the far pairs
+(10 % at K = 20); hubs missing a copy reach ~9 % of it, so 6 per flag stands.
+
+Kept: c4 and c5 as the verification of the final graph (c5's builder + apsp_sym.c, independent of kcopy_hub.c).

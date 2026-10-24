@@ -1,0 +1,21 @@
+c5 (independent builder) vs kcopy_hub edges, (15,7) graph with K = 8 freed flags, 7 copies of H(11), k = 3
+
+Solution: c5/d15D7_hex11_7copy_K8_n2480232.sol (gunzip of research/frontier/sols/d15D7_hex11_7copy_K8_n2480232.sol.gz)
+  sha256 of the uncompressed file: 227738d98e2d004fe068a67d46785e2a6497f0362314043581e4eda7cf5c82b1 (matches check.txt)
+
+Commands:
+  python3 -I c5/build_d15D7.py                       -> c5/mine_edges.txt (sorted, u < v)
+  (cd research/d15D7 && OMP_NUM_THREADS=1 timeout 900 nice -n 10 ./kcopy_hub edges hex/hex_q11.bin <sol> 3 <c5>/ref_edges.txt)
+  python3 -I c5/build_d15D7.py --ref c5/ref_edges.txt -> c5/ref_sorted.txt (normalised u < v, sorted), sha256 compare
+
+Files (the three big edge files were deleted after hashing; sha256 kept here):
+  mine_edges.txt       n = 2480232, edges = 18601612   sha256 b9e54f48ee3e345f0fe860e32b8573f5b2a2c8a52d3bd65b7ed9b20b65820d8a
+  ref_sorted.txt       n = 2480232, edges = 18601612   sha256 b9e54f48ee3e345f0fe860e32b8573f5b2a2c8a52d3bd65b7ed9b20b65820d8a
+  ref_edges.txt (raw kcopy_hub output, no u > v lines)  sha256 8c2ea9a6afe1a273cf021a013026de61eda6c105283a474e259f24a445d57213
+
+Checks on my graph (build_d15D7.py): self loops 0, duplicate edges 0, max degree 15, min degree 7 (the hubs with j = 2, 3).
+Checks on the reference (same script): self loops 0, duplicate edges 0, max degree 15, min degree 7.
+
+Result: IDENTICAL edge sets (sha256 equal; cmp byte-identical). Score 1. No first difference.
+Peak RSS of build_d15D7.py with the comparison: 939 MB. Build alone: 541 MB, about 14 s.
+Diameter was not re-run here; the same edge set is the kcopy_hub output that check.txt reports as OK (max eccentricity 7).
