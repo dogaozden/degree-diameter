@@ -2,11 +2,12 @@
 
 ## Summary
 
-- **Five cells taken from the table.** Every graph was checked four ways: lift.c's BFS; an independent Python
+- **Six cells taken from the table.** Every graph was checked four ways: lift.c's BFS; an independent Python
   rebuild; all-pairs BFS with no symmetry assumed; and, for Haar graphs, the repo's build_haar2.py. Details in §2.0.
 
   | cell | table (holder) | ours | construction |
   |---|---|---|---|
+  | (5,7) | 3,110 (Loz) | **3,120** | Haar graph of PGL(2,5) × Z13 (= S5 × Z13) |
   | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
   | (5,8) | 9,234 (Loz) | **9,576** | Haar graph of Z266 ⋊₁₇ Z18 |
   | (4,10) | 11,748 (Loz) | **12,246** | Haar graph of Z157 ⋊₉ Z39 |
@@ -65,6 +66,7 @@ Solution files: `sols/rebuild_*.txt`.
 
 | cell | table (holder) | ours | construction | file |
 |---|---|---|---|---|
+| (5,7) | 3,110 (Loz) | **3,120** (+0.3 %) | Haar graph of PGL(2,5) × Z13 (PGL(2,5) ≅ S5) | `sols/d5D7_n3120_haar_pgl5xcyc13.txt` |
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
 | (5,8) | 9,234 (Loz) | **9,576** (+3.7 %) | Haar graph of Z266 ⋊₁₇ Z18 (metacyclic) | `sols/d5D8_n9576_haar_meta266_18_17.txt`. Also 9,324 (Z259 ⋊₃₃ Z18) and 9,316 (Z137 ⋊₁₆ Z34) |
 | (4,10) | 11,748 (Loz) | **12,246** (+4.2 %) | Haar graph of Z157 ⋊₉ Z39 (metacyclic) | `sols/d4D10_n12246_haar_meta157_39_9.txt`. Also 11,988 (Z333 ⋊₈₃ Z18) and 11,772 (Z218 ⋊₃ Z27) |
@@ -83,6 +85,8 @@ the repo's build_haar2.py:
 - (5,10) 91,812: sha256 90994a5f…;
 - (5,10) 91,756: sha256 a28102a9…;
 - (5,10) 91,728: sha256 32998e69…;
+- (5,7) 3,120: sha256 ce0020af…. A networkx all-pairs diameter is also in
+  `verify/d5D7_n3120_haar_pgl5xcyc13.networkx.txt`;
 - (5,8) 9,576: sha256 aa3641d8…. A networkx all-pairs diameter is also in
   `verify/d5D8_n9576_haar_meta266_18_17.networkx.txt`;
 - (5,8) 9,324: sha256 58d5aca8…, with networkx in `verify/d5D8_n9324_haar_meta259_18_33.networkx.txt`;
@@ -158,6 +162,17 @@ Outputs are in `verify/`.
   (random-set minimum cost 13). μ at this order is 22.5.
 - The size law predicted the cell as "marginal" (+0.7 %) but nobody had run it.
 
+**(5,7) = 3,120.**
+- Haar graph of PGL(2,5) × Z13, order 1,560 (PGL(2,5) ≅ S5). Connection set, as (matrix [[a,b],[c,d]] up to scalars,
+  z ∈ Z13): ([[1,0],[0,1]], 0), ([[1,2],[3,2]], 12), ([[1,2],[0,1]], 4), ([[1,1],[4,3]], 10), ([[1,4],[2,1]], 0).
+- Found by haar_cell.py in 272 s, on the 15th anneal of the cell. The first eight (300 s, the 8 best-screened
+  candidates) and two 1,200 s re-anneals all stopped at cost 2 or 4: Z65 ⋊ Z24 (five actions) and Z130 ⋊ Z12 at
+  N = 1,560, Z113 ⋊ Z14 and Z226 ⋊ Z7 at N = 1,582. The lane was then switched to breadth (30 best-screened
+  candidates, 400 s each). PGL(2,5) × Z13 ranked 22nd of 874 in the screening (score 6.65; random-set minimum cost 37);
+  SL(2,5) × Z13, the same order, stopped at cost 8.
+- The size law had predicted −8.1 % ("small-N: model not valid"; the table is 1.05 × the random ceiling). The rich
+  and wide lift sweeps over orders 3112–3132 had found nothing (best cost 10).
+
 **(5,8) = 9,576.**
 - Haar graph of Z266 ⋊₁₇ Z18. Connection set (a, j): (0,0), (51,5), (129,13), (156,5), (110,11).
 - Found by the second haar_cell.py sweep (N = 4,761–4,900, 600 s per run). At N = 4,788 the group Z133 ⋊ Z36 stalled at
@@ -166,7 +181,7 @@ Outputs are in `verify/`.
   2,901 screened candidates, annealed in order of N): N = 4,658 (Z137 ⋊₁₆ Z34; (0,0), (47,2), (45,9), (5,31), (115,1);
   n = 9,316) solved after 171 s, then N = 4,662 with seed 2 after 307 s (seed 1 stalled at cost 1).
 - The size law had called this cell "can't" (−6.6 %); 9,576 is 3 % above its Haar ceiling 2N_h = 9,292.
-  The lift sweeps over orders 9236–9500 had found nothing.
+  The lift sweeps over orders 9236–9250 had found nothing.
 
 **(4,10) = 12,246.**
 - Haar graph of Z157 ⋊₉ Z39. Connection set (a, j): (0,0), (151,25), (63,2), (38,5).
@@ -212,22 +227,22 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 
 | cell | table (holder) | Moore | best found here | status |
 |---|---|---|---|---|
-| (6,5) | 684 (Loz) | 1,562 | – | negative so far. Rich and wide lift sweeps over orders 686–720: best cost 4 at 702 (Haar of GF(27) ⋊ Z13 = Z3³ ⋊ Z13, the `aff3` family); 7 further 300 s runs on that group all stop at cost 4 |
+| (6,5) | 684 (Loz) | 1,562 | – | negative so far. Rich and wide lift sweeps over orders 686–714: best cost 4 at 702 (Haar of GF(27) ⋊ Z13 = Z3³ ⋊ Z13, the `aff3` family); 7 further 300 s runs on that group all stop at cost 4 |
 | (10..15,5) | 4000, 5850, 8200, 11480, 14760, 20496 (DGQ) | | rebuilt 4000 = (2j+1)·GQ | §3.2: the polygon family stops at 2j+1 copies; Haar can't (SIZE_LAW §3.3, −10 % to −29 %). Checked at (10,5): haar_cell sweep N = 2,001–2,060 (930 screened, 8 × 300 s), best cost 4 |
 | (16,5) | 27300 (DGQ) | 108,482 | – | not of the polygon form; not run |
 | (3,7) | 168 (Conder et al.) | 254 | 168 (= Conder's graph) | negative above 168 (§4) |
 | (4,7) | 840 (Bond–Delorme, Hafner, Loz) | 2,186 | 840 (= Bond–Delorme, A5 × Z7) | negative above 840 (§4) |
-| (5,7) | 3110 (Loz) | 10,922 | – | rich and wide lift sweeps (orders 3112–3200): no solution. haar_cell sweep (N = 1,556–1,620, 874 screened, 8 × 300 s): best cost 2, at N = 1,560 (Z65 ⋊ Z24, four actions) and N = 1,582 (Z113 ⋊ Z14, Z226 ⋊ Z7). Re-anneals of the 10 best candidates at 1,200 s were still running at the end (`runs/lane_d5D7.sh`) |
+| **(5,7)** | 3110 (Loz) | 10,922 | **3,120** | **new record** (§2.0): Haar(PGL(2,5) × Z13). The rich and wide lift sweeps (orders 3112–3132) found nothing; the first 300 s Haar sweep stopped at cost 2 (N = 1,560, 1,582) before the breadth pass found it. N > 1,560 not yet solved (window 1,556–1,620) |
 | (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling). Checked at (7,7): haar_cell sweep N = 11,719–11,900 (4,286 screened), costs 42 and 44 after 300 s; stopped |
 | **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0). Two pushes over orders 290–348 found nothing above 288 (best cost 10 at 320) |
-| (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2260): no solution. Haar not run: the size law gives −11.3 % and the table is 1.17 × the random ceiling, and (4,9), at −8.8 %, sat at cost 10 |
-| **(5,8)** | 9234 (Loz) | 43,690 | **9,576** | **new record** (§2.0): Haar(Z266 ⋊₁₇ Z18) from the haar_gen3 sweeps (also 9,324 and 9,316). The rich and wide lift sweeps (orders 9236–9500) found nothing; GH(3) + matching lifts reach only m = 6 (§3.3) |
+| (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2208): no solution. Haar not run: the size law gives −11.3 % and the table is 1.17 × the random ceiling, and (4,9), at −8.8 %, sat at cost 10 |
+| **(5,8)** | 9234 (Loz) | 43,690 | **9,576** | **new record** (§2.0): Haar(Z266 ⋊₁₇ Z18) from the haar_gen3 sweeps (also 9,324 and 9,316). The rich and wide lift sweeps (orders 9236–9250) found nothing; GH(3) + matching lifts reach only m = 6 (§3.3) |
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
 | (3,9) | 506 (Loz) | 1,022 | – | negative. 133 lift searches (rich sweep, orders 508–540; the wide sweep was cut short by the container restart): best cost 18 (n = 540). haar_gen3 sweep (N = 254–275): best cost 30. Field-affine 2+2 lifts are exhaustively negative (§4) |
-| (4,9) | 4970 (Loz) | 19,682 | – | rich and wide lift sweeps (orders 4972–5100): no solution. haar_cell sweep N = 2,486–2,580 (1,538 screened): costs 10 and 18 after 300 s; stopped |
+| (4,9) | 4970 (Loz) | 19,682 | – | rich and wide lift sweeps (orders 4972–4988): no solution. haar_cell sweep N = 2,486–2,580 (1,538 screened): costs 10 and 18 after 300 s; stopped |
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,842** | **new record** (§2.0); above it (N up to 14,700) best cost 2 |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups: orders 804–828 complete (best cost 2, at 812); at 832, 43 of 174 groups were done (best cost 14) when the container restart at 01:29 stopped it. Not restarted: the cores went to the Haar cells |
-| **(4,10)** | 11748 (Loz) | 59,048 | **12,246** | **new record** (§2.0): Haar(Z157 ⋊₉ Z39) from the haar_gen3 sweeps (N = 5,875–6,300; also 11,988). The rich and wide lift sweeps (orders 11750–12000) found nothing |
+| **(4,10)** | 11748 (Loz) | 59,048 | **12,246** | **new record** (§2.0): Haar(Z157 ⋊₉ Z39) from the haar_gen3 sweeps (N = 5,875–6,300; also 11,988). The rich and wide lift sweeps (orders 11750–11764) found nothing |
 | **(5,10)** | 90068 (Loz) | 699,050 | **95,472** | **new record** (§2.0). Above it (N = 47,737–48,500, 36,804 screened, 900–1,800 s per run): best cost 1, at N = 47,766 (Z1257 ⋊ Z38, two seeds) and 48,006 (Z1143 ⋊ Z42, two actions) |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
@@ -307,9 +322,9 @@ copy needs about q+1 such routes, against about 4j² routes available. Not prove
 - **(5,10) above 95,472 (N > 47,736).** Seven anneals of 900–1,800 s on the best-screened candidates: best cost 1 at
   N = 47,766 (Z1257 ⋊₄₇ Z38, seeds 1 and 2) and N = 48,006 (Z1143 ⋊ Z42, r = 47 and r = 38); cost 2 at 47,754 and
   48,455; cost 3 at 48,200. The second pass was stopped at 03:20 to free its core for (5,7).
-- **Small cells by Haar graphs (haar_cell.py, 300 s per run).** (10,5): best cost 4 (N = 2,041, 2,050). (5,7): best
-  cost 2 (N = 1,560 and 1,582). (7,7): cost 42–44. (4,9): cost 10–18. The size law (SIZE_LAW.md §3.3) had predicted
-  all four below the table; (5,8), predicted −6.6 %, was the exception (§2.0).
+- **Small cells by Haar graphs (haar_cell.py, 300 s per run).** (10,5): best cost 4 (N = 2,041, 2,050). (7,7): cost
+  42–44. (4,9): cost 10–18. The size law (SIZE_LAW.md §3.3) had predicted these below the table, as it had (5,7) and
+  (5,8), which were solved (§2.0).
 - **(3,9) with field-affine groups on the 2+2 cubic base** (the (3,8) recipe). Exhaustive over all voltage
   assignments, no solutions:
   - Z3² ⋊ Z16 (576 vertices), four actions: best costs 52–78;
