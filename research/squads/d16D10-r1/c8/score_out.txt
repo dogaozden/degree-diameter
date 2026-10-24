@@ -1,0 +1,15 @@
+mu = 18.25  factor exp((18-mu)/4.5) = 0.9460
+variant L100:
+  seed 1: best=0 evals=1305 time=93.8s solved=True full_check_OK=True
+  seed 2: best=1 evals=2777 time=196.4s solved=False full_check_OK=False
+  seed 3: best=0 evals=1177 time=68.4s solved=True full_check_OK=True
+  median(evals, unsolved x3) = 1305  E18 = 1234
+variant L30:
+  seed 1: best=0 evals=3145 time=155.6s solved=True full_check_OK=True
+  seed 2: best=2 evals=2745 time=196.1s solved=False full_check_OK=False
+  median(evals, unsolved x3) = 5690  E18 = 5383
+variant base:
+  seed 1: best=0 evals=3017 time=145.0s solved=True full_check_OK=True
+  seed 2: best=0 evals=1529 time=96.1s solved=True full_check_OK=True
+  seed 3: best=0 evals=3897 time=135.8s solved=True full_check_OK=True
+  median(evals, unsolved x3) = 3017  E18 = 2854

@@ -1,0 +1,9 @@
+group pgl 53 x Z_91, N=13542984, identity 0, H order 63, rows 214968, threads 1, setup 1.55s
+wide rows: HW order 234, rows 57876, setup 2.76s
+alpha: conj by mat(1,28,41,24) (index 79324), z -> 9 z on Z_91
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 53 (+e); mu = 18.25, mu/k = 6.08, fixed-point misses ~ 0.60
+start cost=19
+t=30 steps=51 evals=409 cost=5 best=3 T=0.53
+t=61 steps=108 evals=865 cost=9 best=3 T=0.18
+t=91 steps=157 evals=1257 cost=3 best=3 T=0.15
+t=121 steps=214 evals=1713 cost=3 best=3 T=0.15

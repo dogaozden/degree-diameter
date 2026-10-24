@@ -1,0 +1,19 @@
+group          N          mu     seed  solved  best  evals   time_s  evals/s  ln(evals)
+sl 43 x 163    12952632     9.43  1     True    0     33      0.9     36.7     3.497
+sl 43 x 163    12952632     9.43  2     True    0     209     4.5     46.4     5.342
+sl 41 x 193    13293840    13.91  1     True    0     241     4.5     53.6     5.485
+sl 41 x 193    13293840    13.91  2     True    0     233     4.2     55.5     5.451
+sl 53 x 91     13542984    18.25  1     True    0     2601    41.7    62.4     7.864
+sl 53 x 91     13542984    18.25  2     True    0     1529    22.0    69.5     7.332
+sl 37 x 271    13716936    21.94  1     False   3     1809    240.2   7.5      - (unsolved: censored)
+sl 37 x 271    13716936    21.94  2     False   6     1881    240.2   7.8      - (unsolved: censored)
+sl 61 x 61     NOT RUN (lanes stopped: machine load)
+sl 61 x 61     NOT RUN (lanes stopped: machine load)
+sl 37 x 277    NOT RUN (lanes stopped: machine load)
+sl 37 x 277    NOT RUN (lanes stopped: machine load)
+solved 6 of 8 runs that were run
+OLS on solved runs (natural log): a = 0.8444  b = 0.3596 +- 0.085 (1 sigma, dof 4)  R^2 = 0.816
+theory 1/4.5 would give b = 0.222
+largest mu solved = 18.25 (sl 53 x 91, seed 1)
+largest mu run = 21.94: 0 of 2 seeds solved (best costs 3, 6)
+censored exponential MLE (cross-check, unsolved as lower bounds): a = 1.096  b = 0.362
