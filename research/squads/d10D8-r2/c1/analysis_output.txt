@@ -1,0 +1,28 @@
+groups joined: 46
+spearman(mu_effective, min)=+0.72  (p1)=+0.82  (p10)=+0.87  (median)=+0.88
+spearman(mu_nominal  , min)=+0.60  (p1)=+0.54  (p10)=+0.44  (median)=+0.31
+spearman(delta       , min)=+0.61  (p1)=+0.72  (p10)=+0.79  (median)=+0.82
+spearman(fix_alpha   , min)=+0.06  (p1)=+0.02  (p10)=-0.00  (median)=+0.06
+by p1, top 8 (eff-mu rank in brackets):
+  p1=51 min=35  [eff rank 5, mu_eff 193.1, fix 26]  prod psl 7 sl 8 7
+  p1=51 min=36  [eff rank 12, mu_eff 269.2, fix 11]  psl 23 97
+  p1=67 min=45  [eff rank 10, mu_eff 249.3, fix 26]  psl 27 61
+  p1=73 min=57  [eff rank 1, mu_eff 145.3, fix 26]  pgl 27 31
+  p1=73 min=61  [eff rank 3, mu_eff 165.5, fix 53]  sl 27 31
+  p1=76 min=61  [eff rank 28, mu_eff 618.0, fix 8]  psl 17 241
+  p1=78 min=51  [eff rank 6, mu_eff 207.4, fix 71]  prod sl 3 sl 11 19
+  p1=80 min=54  [eff rank 8, mu_eff 225.7, fix 107]  prod sl 5 sl 9 7
+by min, top 8:
+  min=35 p1=51  [eff rank 5, mu_eff 193.1, fix 26]  prod psl 7 sl 8 7
+  min=36 p1=51  [eff rank 12, mu_eff 269.2, fix 11]  psl 23 97
+  min=45 p1=67  [eff rank 10, mu_eff 249.3, fix 26]  psl 27 61
+  min=48 p1=109  [eff rank 30, mu_eff 678.0, fix 11]  sl 13 271
+  min=51 p1=78  [eff rank 6, mu_eff 207.4, fix 71]  prod sl 3 sl 11 19
+  min=54 p1=80  [eff rank 8, mu_eff 225.7, fix 107]  prod sl 5 sl 9 7
+  min=57 p1=73  [eff rank 1, mu_eff 145.3, fix 26]  pgl 27 31
+  min=60 p1=96  [eff rank 29, mu_eff 623.0, fix 11]  pgl 13 271
+psl 23 97  eff rank 12/46 (mu_eff 269.2); p1 rank  2/46 (p1 51); min rank  2/46 (min 36); fix 11; med 136
+pgl 27 31  eff rank  1/46 (mu_eff 145.3); p1 rank  4/46 (p1 73); min rank  7/46 (min 57); fix 26; med 190
+sl 27 31   eff rank  3/46 (mu_eff 165.5); p1 rank  5/46 (p1 73); min rank  9/46 (min 61); fix 53; med 164
+sl 32 19   eff rank  2/46 (mu_eff 157.3); p1 rank 11/46 (p1 94); min rank 23/46 (min 83); fix 32; med 177
+pgl 32 19  eff rank  4/46 (mu_eff 180.3); p1 rank  9/46 (p1 86); min rank 10/46 (min 61); fix 32; med 178

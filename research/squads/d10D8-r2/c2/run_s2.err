@@ -1,0 +1,8 @@
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.16s
+wide rows: HW order 194, rows 3036, setup 0.24s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+resumed from /home/user/degree-diameter/research/squads/d10D8-r2/c2/s2.ckpt: evals 3666249, 2400 s spent, best 12
+ZSET rep 0 AQ 337 AR 35: 24541 368306 48104 314194 541616 269510 248405 576615 66344 225579
+ZCOEF distinct c 31204, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.185e+05 (5.92 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4977602 duplicate 403238 (7.49 %)

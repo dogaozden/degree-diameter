@@ -1,0 +1,29 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.11s
+wide rows: HW order 252, rows 2352, setup 0.18s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+resumed from d10D8_prod_psl_7_sl_8_7_orb3_s1hot.ckpt: evals 1410249, 840 s spent, best 7
+ORBW=3: an uncovered fixed element weighs 3; start energy 9
+start cost=7
+t=870 steps=6006 evals=1458298 cost=31 best=7 T=1.06 energy=33 bestE=9
+t=900 steps=12350 evals=1509050 cost=24 best=7 T=0.37 energy=24 bestE=9
+t=930 steps=17810 evals=1552730 cost=18 best=7 T=0.15 energy=18 bestE=9
+t=960 steps=23113 evals=1595154 cost=18 best=7 T=0.15 energy=18 bestE=9
+t=990 steps=29154 evals=1643482 cost=7 best=7 T=3.00 energy=9 bestE=9
+t=1020 steps=35700 evals=1695850 cost=27 best=7 T=1.06 energy=27 bestE=9
+t=1050 steps=42446 evals=1749818 cost=19 best=7 T=0.37 energy=21 bestE=9
+t=1080 steps=49447 evals=1805826 cost=19 best=7 T=0.15 energy=21 bestE=9
+t=1110 steps=56505 evals=1862290 cost=19 best=7 T=0.15 energy=21 bestE=9
+t=1140 steps=63291 evals=1916578 cost=7 best=7 T=3.00 energy=9 bestE=9
+t=1170 steps=70347 evals=1973026 cost=29 best=7 T=1.06 energy=33 bestE=9
+t=1200 steps=77685 evals=2031730 cost=22 best=7 T=0.37 energy=24 bestE=9
+t=1230 steps=85095 evals=2091010 cost=19 best=7 T=0.15 energy=21 bestE=9
+t=1260 steps=92425 evals=2149650 cost=19 best=7 T=0.15 energy=21 bestE=9
+t=1290 steps=99950 evals=2209850 cost=7 best=7 T=3.00 energy=9 bestE=9
+t=1320 steps=107408 evals=2269514 cost=22 best=7 T=1.06 energy=24 bestE=9
+t=1350 steps=115079 evals=2330882 cost=22 best=7 T=0.37 energy=24 bestE=9
+t=1380 steps=122479 evals=2390082 cost=12 best=7 T=0.15 energy=12 bestE=9
+t=1410 steps=129980 evals=2450090 cost=12 best=7 T=0.15 energy=12 bestE=9
+t=1440 steps=137507 evals=2510306 cost=7 best=7 T=2.99 energy=9 bestE=9
+t=1470 steps=144596 evals=2567018 cost=37 best=7 T=1.06 energy=39 bestE=9
+t=1500 steps=151570 evals=2622810 cost=21 best=7 T=0.37 energy=21 bestE=9
