@@ -668,6 +668,29 @@ static void hg_add_new(int k, int deg) {
     }
 }
 
+
+/* hub graph: union of hdeg perfect matchings between K line-side and K point-side hubs, no repeated edge
+   (each new matching starts random and is repaired by random swaps) */
+static void hub_matchings(int K_, int hdeg) {
+    HGj = malloc(sizeof(int) * (K_ * hdeg + 1)); HGk = malloc(sizeof(int) * (K_ * hdeg + 1)); HGm = 0;
+    int *perm = malloc(sizeof(int) * (K_ + 1));
+    char **adj = malloc(sizeof(char *) * K_); for (int j = 0; j < K_; j++) adj[j] = calloc(K_, 1);
+    for (int d = 0; d < hdeg && d < K_; d++) {
+        for (int j = 0; j < K_; j++) perm[j] = j;
+        for (int j = K_ - 1; j > 0; j--) { int r = rndi(j + 1), t = perm[j]; perm[j] = perm[r]; perm[r] = t; }
+        for (int pass = 0; pass < 1000; pass++) {
+            int bad = 0;
+            for (int j = 0; j < K_; j++) if (adj[j][perm[j]]) {
+                bad++;
+                for (int tr = 0; tr < 100; tr++) { int r = rndi(K_); if (!adj[j][perm[r]] && !adj[r][perm[j]]) { int t = perm[j]; perm[j] = perm[r]; perm[r] = t; break; } }
+            }
+            if (!bad) break;
+        }
+        for (int j = 0; j < K_; j++) { if (adj[j][perm[j]]) continue; adj[j][perm[j]] = 1; HGj[HGm] = j; HGk[HGm] = perm[j]; HGm++; }
+    }
+    for (int j = 0; j < K_; j++) free(adj[j]); free(adj); free(perm);
+}
+
 /* drop freed pair j: restore its extra edges, delete its two hubs, re-index (the last pair takes index j) */
 static void drop_pair(int j) {
     int last = K - 1;
@@ -854,6 +877,36 @@ int main(int argc, char **argv) {
         fclose(f);
         return 0;
     }
+    if (!strcmp(argv[1], "b2dual")) {   /* d7hex b2dual HEXBIN SOL seed OUT.sol hubdeg [checkcost]
+        M is taken from SOL (a duality phi: then M(B2(p)) = B2(M(p)) for EVERY point p). Freed points: a greedy maximal
+        set of pairwise non-collinear points (distance >= 4), freed lines M(p); hub graph = union of hubdeg random
+        perfect matchings. Every freed source is covered by type-2 routes (see checks/B2_hubs_CHECK.md). */
+        read_sol(argv[3]);
+        rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        const char *outb = argv[5]; int hdeg = atoi(argv[6]), checkcost = argc > 7 ? atoi(argv[7]) : 1;
+        uint8_t *cand = malloc(N); memset(cand, 1, N); int ncand = N, *sel = malloc(sizeof(int) * N), ns = 0;
+        int *order = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) order[v] = v;
+        for (int v = N - 1; v > 0; v--) { int r = rndi(v + 1), t = order[v]; order[v] = order[r]; order[r] = t; }
+        for (int t = 0; t < N; t++) {
+            int p = order[t]; if (!cand[p]) continue;
+            sel[ns++] = p; cand[p] = 0; ncand--;
+            for (int a = 0; a < Q1; a++) { int L = PL[p * Q1 + a]; for (int b = 0; b < Q1; b++) { int y = LP[L * Q1 + b]; if (cand[y]) { cand[y] = 0; ncand--; } } }
+        }
+        K = ns; F = malloc(sizeof(int) * (K + 1)); isF = calloc(N, sizeof(int)); fl = malloc(sizeof(int) * (K + 1));
+        for (int k = 0; k < K; k++) { F[k] = sel[k]; isF[F[k]] = k + 1; fl[k] = M[F[k]]; }
+        hub_matchings(K, hdeg);
+        hg_build(); HGcap = K;
+        NV = 6 * N + 2 * K; free(dist); free(que); alloc_graph();
+        printf("b2dual: q=%d K=%d n=%d (pairwise non-collinear freed points, hub-graph degree %d)\n", q, K, NV, hdeg);
+        if (checkcost) {
+            hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));
+            int bad = 0;
+            for (int j = 0; j < K; j++) { int a, b; bad += bfs(VP(F[j], 0), 7, NULL) + bfs(VL(fl[j], 0), 7, NULL); (void)a; (void)b; }
+            printf("freed-source cost %d\n", bad);
+        }
+        write_sol(outb);
+        return 0;
+    }
     if (!strcmp(argv[1], "b2")) {   /* d7hex b2 HEXBIN K seed OUT.sol hubdeg [restarts]: the B2 construction
         Freed pairs (p_k, l_k) with the points pairwise opposite and the lines pairwise opposite; M(p_k) = l_k and M maps
         the q(q+1) points at distance 2 from p_k onto the q(q+1) lines at distance 2 from l_k (random bijection); the
@@ -864,6 +917,13 @@ int main(int argc, char **argv) {
         uint8_t *tmpd = malloc(2 * N), *cand = malloc(2 * N); int *best[2], nbest[2] = {0, 0}, *cur = malloc(sizeof(int) * N);
         for (int side = 0; side < 2; side++) {   /* 0: pairwise opposite points, 1: pairwise opposite lines (exact greedy) */
             best[side] = malloc(sizeof(int) * N);
+            const char *setf = getenv(side ? "B2LINES" : "B2PTS");
+            if (setf) {   /* a given set (checked pairwise opposite below) instead of the greedy */
+                FILE *sf = fopen(setf, "r"); int x; while (sf && fscanf(sf, "%d", &x) == 1 && nbest[side] < N) best[side][nbest[side]++] = x; if (sf) fclose(sf);
+                for (int i = 0; i < nbest[side]; i++) { hbfs(best[side][i], side, tmpd); for (int j = 0; j < nbest[side]; j++) if (j != i && tmpd[side ? N + best[side][j] : best[side][j]] != 6) { fprintf(stderr, "given %s %d and %d are not opposite\n", side ? "lines" : "points", best[side][i], best[side][j]); return 1; } }
+                fprintf(stderr, "side %d: %d given pairwise opposite %s\n", side, nbest[side], side ? "lines" : "points");
+                continue;
+            }
             for (int r = 0; r < restarts; r++) {
                 int ncur = 0, ncand = N; memset(cand, 1, N);
                 while (ncand > 0 && ncur < Kw) {
@@ -893,18 +953,7 @@ int main(int argc, char **argv) {
         for (int v = 0; v < N; v++) { if (M[v] < 0) fp_[nfp++] = v; if (Minv[v] < 0) fl_[nfl++] = v; }
         for (int i = nfl - 1; i > 0; i--) { int j = rndi(i + 1), t = fl_[i]; fl_[i] = fl_[j]; fl_[j] = t; }
         for (int i = 0; i < nfp; i++) { M[fp_[i]] = fl_[i]; Minv[fl_[i]] = fp_[i]; }
-        /* hub graph: union of hdeg random perfect matchings between line-side and point-side hubs */
-        HGj = malloc(sizeof(int) * (K * hdeg + 1)); HGk = malloc(sizeof(int) * (K * hdeg + 1)); HGm = 0;
-        int *perm = malloc(sizeof(int) * (K + 1));
-        for (int d = 0; d < hdeg; d++) {
-            for (int tr = 0; tr < 1000; tr++) {
-                for (int j = 0; j < K; j++) perm[j] = j;
-                for (int j = K - 1; j > 0; j--) { int r = rndi(j + 1), t = perm[j]; perm[j] = perm[r]; perm[r] = t; }
-                int ok = 1; for (int j = 0; j < K && ok; j++) for (int e = 0; e < HGm; e++) if (HGj[e] == j && HGk[e] == perm[j]) { ok = 0; break; }
-                if (ok) break;
-            }
-            for (int j = 0; j < K; j++) { HGj[HGm] = j; HGk[HGm] = perm[j]; HGm++; }
-        }
+        hub_matchings(K, hdeg);   /* hub graph: union of hdeg random perfect matchings */
         hg_build();
         NV = 6 * N + 2 * K; alloc_graph();
         hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));

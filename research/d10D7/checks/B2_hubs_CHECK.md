@@ -41,3 +41,17 @@ apsp outputs (all pairs, no symmetry assumed), 2026-10-24 23:3x UTC:
 
 K is limited by the size of the greedy pairwise-opposite point and line sets (about 67 at q = 8). Larger partial
 ovoids/spreads, or freed points at distance 4 with an isometric choice of lines, would give more.
+
+## (11,7) 404,222: H(9) with M a duality, 2,821 freed pairs
+
+H(9) is self-dual. With M = phi (the duality from research/d10D7/dual/dualfind.c), M(B2(p)) = B2(phi(p)) holds for
+EVERY point p, and midpoints map to midlines automatically. So any set of pairwise non-collinear points can be freed
+together with the lines phi(p). Pairs at distance 4 share a B2 point, which is consistent because M = phi; their
+hubs are within 2 + 4 = 6. A greedy random maximal non-collinear set has 2,821 points (Hoffman bound 6,643).
+The hub graph is the union of 8 random perfect matchings (degree 8 = q - 1).
+    ./d7hex b2dual hex/hex_q9.bin dual/x9_dual_K28.sol 1 b2dual_q9_s1.sol 8 0   (M from the duality solution)
+    file research/frontier/sols/d11D7_hex9_B2dualK2821_n404222.sol
+apsp (all pairs), 2026-10-24 23:3x UTC: n=404222 edges=2223221 degree min=11 max=11 bipartite=yes diameter=7,
+RESULT VALID d=11 D=7 n=404222. Edge list sha256 767516bed8341d61b52f3398bc5f7d1428c67cdc3aeca816d74228b9594994bb.
+(The 5-level version with the same 2,821 points, 675,584 vertices for (12,7), has diameter 8: with 4K = 11,284 hubs
+of hub-graph degree 7 some same-side hub pairs end up more than 6 apart. Being redone with fewer pairs.)
