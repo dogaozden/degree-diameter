@@ -173,3 +173,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 24 10:11 PT (harvest): (8,9) 1,326,960 (was 1,323,696), sl 19 n 97; claude/degree-diameter-table-squad-0xgp3g.
 - Oct 24 11:25 PT (coordinator): (7,7) 23,462, (9,7) 117,650, (11,7) 398,582: the generalized-hexagon construction X(M) of the table (3·|H(q)|, Δ = q+2) plus hub vertices, by the exp2-squad session (squad experiment 2, arm B). The solo arm got (7,7) 23,438. All checked all-pairs by the coordinator (research/squads/exp2/coordinator_check/check_d7_hex.txt).
+- Oct 24 12:15 PT (coordinator): new cells (4,7) 864 (two vertex-transitive graphs, thm-smallfamilies), (12,5) 8,748 and (15,5) 20,736 (route-chart lifts, thm-chartlift); raised (8,5) 2,048 (chart lift), (7,7) 23,484 and (11,7) 398,606 (exp2-squad, hexagon + hubs). All checked all-pairs by the coordinator (research/coordinator_check/check_2026-10-24_noon.txt).
