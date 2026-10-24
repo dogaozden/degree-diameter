@@ -1,0 +1,10 @@
+group prod sl 3 sl 7 x Z_139, N=1120896, identity 286062, H order 42, rows 26688, threads 1, setup 0.29s
+wide rows: HW order 139, rows 8064, setup 0.57s
+alpha: conj by prod[mat(2,0,2,2);mat(4,0,1,2)] (index 5902), z -> 42 z on Z_139
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 35 (+e); mu = 23.12, mu/k = 7.71, fixed-point misses ~ 0.99
+start cost=296
+t=30 steps=342 evals=2737 cost=64 best=64 T=0.53
+t=60 steps=681 evals=5449 cost=57 best=57 T=0.19
+t=90 steps=1035 evals=8281 cost=52 best=52 T=0.15
+t=120 steps=1385 evals=11081 cost=52 best=52 T=0.15
+RESULT d=7 D=10 group=prod sl 3 sl 7 x Z_139 N=1120896 best=51 evals=13873 time=150.1 orbit k=3 m=2 f=1 fix=35

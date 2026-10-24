@@ -150,3 +150,13 @@ Preamble: research/squads/r5/PREAMBLE.md (protocol: several independent short se
 that ends at 1–2). Cards: c1 (9,10) SL(2,37) × Z229 … · c2 (8,10) products above 3,912,000 · c3 (8,9) PSL(2,23) × Z109 …
 · c4 (7,10) SL(2,3) × SL(2,7) × Z139 … · c5 (6,10) A5² × Z73 … · c6 (9,8) many seeds on SL(2,13) × Z124 and
 PGL(2,16) × Z67 · c7 (8,8) many seeds on SL(2,11) × Z91 · c8 (6,8) k = 2 rungs 16,128–16,500.
+
+### Round 5 outcomes (all 8 Haikus stopped at ~07:30 UTC on a Haiku usage limit; the container was then suspended
+and came back at 16:23 UTC with no processes; files intact)
+- c1 (9,10): SL(2,37) × Z229 (N 11,591,064) **2** after one 700 s seed. c2 (8,10): A4 × SL(2,11) × Z247 27–30 (5 seeds),
+  PSL(2,7)² × Z139 15–21 (5 seeds); r4-c2's SL(2,27) × Z199: 9. c3 (8,9): PSL(2,23) × Z109 6, 6. c4 (7,10):
+  SL(2,3) × SL(2,7) × Z139 34–55 (bad group; its driver also lost the group list to bash's GROUPS builtin at first).
+  c5 (6,10): A5² × Z73 (N 262,800) **4, 9, 4, 4**. c6 (9,8): SL(2,13) × Z124 13–14 (4 seeds, 150 s). c7 (8,8):
+  SL(2,11) × Z91 and PGL(2,11) × Z91 (N 120,120) **3** in three of sixteen 90 s seeds (others 6–9). c8 (6,8): SL(2,8) × Z32
+  7–12 (10 seeds of 60 s).
+- Round 5 total: 0 records; near misses at (9,10) 2, (8,8) 3, (6,10) 4.
