@@ -58,3 +58,20 @@ where Ã₃ has projective planes. A finite quotient of the Ã₃ building whose
 to 33,883 vertices per side. But it would need to be as "perfect" as a spherical building (each A-orbit hit by
 ≤ 2.15 ball elements on average, none missed); quotients by arithmetic lattices of PGL(4, F₃((t))) of that size would
 be tiny solvable quotients (congruence subgroup property), which cover badly. Not pursued further yet.
+
+## 3. Coset graphs with large stabilizers (in progress)
+
+Why: the counting bound in §0 is an average. In an edge-transitive coset graph Cos(G; H, K) (sides G/H, G/K,
+edges G/(H ∩ K), degrees [H : H∩K] and [K : H∩K]) the A-vertices within distance 4 of the base vertex form a union
+of H-orbits, so misses come in clumps of size up to |H|. With μ ≈ 500 expected missed vertices at N ≈ 16,000, the
+expected number of missed regular H-orbits is about μ/|H|, i.e. about 1 for |H| ≈ 500. The flag graph is the extreme
+case (|H| = 15,116,544, 11 orbits per side). So the search space worth trying is: groups G of order ~10⁷–10⁹ with
+subgroups H, K of index 8,000–54,241 meeting in a subgroup of index ≤ 16 in both.
+
+Tools (`beat165/gap/`, GAP 4.12 with tomlib):
+- `cosetsearch2.g`: for subgroup classes H, K (from a table of marks), every H-orbit of length dA ≤ 16 on G/K
+  is a candidate K' = K^g with H ∩ K' = Stab_H(Kg); keep it when dB = [K' : H ∩ K'] ≤ 16. Diameter ≤ 5 iff
+  HK'HK'H = G and K'HK'HK' = G, tested in the coset actions with orbit partitions (exact).
+- `export.g`: writes the edge list of a coset graph for `apsp` (the coordinator's all-pairs checker, no symmetry).
+- Validation: from (P₂₄, P₁₃) in SL(5,3) the search finds the flag graph as the only candidate (balls 205 and 15,730
+  on both sides), and the exported edge list passes apsp (RESULT VALID d=16 D=5 n=31460).
