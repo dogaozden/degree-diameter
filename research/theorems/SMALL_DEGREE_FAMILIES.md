@@ -224,3 +224,23 @@ it does not reach beyond the table in the other cells (§2.4).
 | central-involution metacyclic groups at (4,8) | `named.py` (`runs/centralinv_d4D8.log`) | running |
 | squad r1 (8 Haiku cards; `research/squads/r1-smallfam/`) | Heisenberg 5^{1+2}, 7^{1+2}; affine F_q^n ⋊ H; PSL × C_n; small-abelianization SmallGroups 1093–1140; composite-m metacyclic; perfect-ish groups at (4,9); Δ = 4 lifts of 2+2 bases | none; best costs 6 (Z77 ⋊ Z15), 9, 14, 22 |
 | group-level quotient balance as a predictor of solved runs | `predict_test.py` | p = 0.83–0.995 |
+
+## 7. Tools in `smallfam/` (all new this session)
+
+| file | what |
+|---|---|
+| `hx.c` | Exhaustive Haar search over a plan of (s1, s2) pairs, with the remaining elements free, for metacyclic groups or any multiplication table. Includes the quotient filter (QMAP / QFILTER). Validated against igraph (`hx_check.py`). |
+| `lx.c` | Exhaustive voltage-lift search over a small base, for a table group or a metacyclic group; first free voltage from a plan. |
+| `hanneal.c` | Simulated annealing for Haar graphs over any table group, with targeted moves. It reproduces hx's exhaustive optima: Z137 ⋊ Z8 cost 8, Z61 ⋊ Z18 cost 45, … (`runs/screen_d4D8.tsv` against `runs/frob_d4D8.txt`). |
+| `abfilt.c`, `liftbound.py` | Rigorous abelianization bound and generic lattice bound (§2.2). |
+| `allgroups.py` | Every SmallGroup of each order: filters, GAP export (table, Aut(G)-reduced plan, abelianization map), then hx or lx. Resumable; skips orders with too many groups. |
+| `screen.py` | The same group list, but with a short anneal instead of exhaustive search (fast triage). |
+| `named.py`, `named_edges.py` | Exhaustive Haar search for groups given as GAP expressions (`Aff(n,q,H)`, `Meta(m,k,r)`, direct products, …), and the edge-list rebuild for apsp. |
+| `frob_scan.py`, `affq.py`, `squares.py` | The F_q ⋊ C_k families in normal form (q prime, q a prime power, the squares groups). |
+| `heis.py`, `heisq.py` | Explicit models of Heis(F_{p²}) ⋊ C_k; `graphs/build_d4D7_n864.py` is the standalone builder of the record. |
+| `meta.py`, `fibers.py`, `predict.py`, `predict_test.py` | Parsing and re-checking the metacyclic records; fibre balance; the solved/stalled test. |
+| `canon.py`, `isoclasses.py`, `autgroup.py`, `agl_cayley.py`, `jpat.py` | Canonical forms of S, isomorphism classes (BLISS), automorphism groups, the AGL Cayley description, j-patterns. |
+| `summarize.py`, `completeness.py` | Coverage tables of the all-groups runs; per-order completeness against NrSmallGroups (`runs/coverage_summary.md`, `runs/completeness.txt`). |
+
+GAP 4.12 with the SmallGroups library (`gap-smallgrp` **and `gap-smallgrp-extra`**, without which orders such as
+1092 and 1096–1140 are missing) was installed from Ubuntu packages in the container.

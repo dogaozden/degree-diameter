@@ -27,3 +27,14 @@
 1098	6	-	[2, 9, 61]	1	|G/G'|=1098 outside [5,48] (heuristic skip)	-	-
 1098	7	C3 x (C61 : C6)	[2, 3, 3]	61	pass 800 of 1140	43	0 459 1014 533
 1098	8	S3 x (C61 : C3)	[2, 3]	183	pass 43 of 56	17	0 1006 58 321
+1098	9	C61 : (C3 x S3)	[2, 3]	183	pass 43 of 56	134	0 551 1000 601
+1098	10	C6 x (C61 : C3)	[2, 3, 3]	61	pass 800 of 1140	134	0 691 788 913
+1098	11	C3 x C3 x D122	[2, 3, 3]	61	pass 800 of 1140	541	0 828 597 718
+1098	12	-	[2, 3, 61]	3	|G/G'|=366 outside [5,48] (heuristic skip)	-	-
+1098	13	C3 x D366	[2, 3]	183	pass 43 of 56	882	0 830 597 149
+1098	14	-	[2, 61]	9	|G/G'|=122 outside [5,48] (heuristic skip)	-	-
+1098	15	-	[2]	549	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1098	16	-	[2, 3, 3, 61]	1	rank>3	-	-
+1099	1	-	[7, 157]	1	|G/G'|=1099 outside [5,48] (heuristic skip)	-	-
+1100	1	-	[4, 25]	11	|G/G'|=100 outside [5,48] (heuristic skip)	-	-
+1100	2	-	[4, 25]	11	|G/G'|=100 outside [5,48] (heuristic skip)	-	-
