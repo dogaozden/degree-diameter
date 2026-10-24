@@ -69,12 +69,22 @@ D = 6, 12, 30. D ≡ 2 mod 4 with D ≥ 10, except 30, is not reached this way (
 and the unbalanced versions lose a power of q). I have not checked whether this bipartite statement is in the
 literature.
 
-Computer check of the C-type claim: `cflags.py` builds the flag graph of W(7,2) (symplectic polar space, C₄, q = 2).
-It is 9-regular with 160,650 vertices and diameter exactly 8 (BFS from both sides plus apsp all-pairs,
-`runs/C4_2_check.txt`). Orders for all types and q: `buildings.py` → `buildings_out.txt`. In the table range
-(Δ ≤ 16, D ≤ 10) only A₄(3) beats the table. C₄(2) gives 160,650 at (9,8) (table 449,480) and C₄(3) gives
-23,878,400 at (16,8) (table 36,201,060). Dead variants: removing a hyperplane and/or a point from A₄(3) (12-regular)
-raises the diameter to 8 (`flags_affine.py`, `runs/flags_affine_Hp_q3_check.txt`).
+Status of the proof: CvB–K prove the type-A case (odd–even sorting). For the other types the argument above is a
+sketch: it uses the subword property and the two block orders c₁c₂… and c₂c₁… of w₀, plus the freedom to choose the
+end chambers inside the residues of the two end flags. I checked it by computer on seven cases.
+`bflags.py` → `runs/bflags_coxeter_check.txt` covers A₂–A₅ and C₂–C₄ over GF(2), balanced and unbalanced, and gives
+eccentricity h from both sides every time: A₃ (degrees 3, 9) 4, A₅ (9, 27) 6, C₃ (3, 9) 6. `cflags.py` builds the
+flag graph of W(7,2) (C₄, q = 2) separately. It is 9-regular with 160,650 vertices and has diameter exactly 8
+(apsp all-pairs, `runs/C4_2_check.txt`). Orders for all types and q: `buildings.py` → `buildings_out.txt`. In the
+table range (Δ ≤ 16, D ≤ 10) only A₄(3) beats the table. C₄(2) gives 160,650 at (9,8) (table 449,480) and C₄(3)
+gives 23,878,400 at (16,8) (table 36,201,060).
+
+Two ways to grow C(2,q) that fail:
+- **Lifts.** Some same-side pairs at distance 4 in C(2,q) are joined by exactly one walk of length ≤ 4
+  (`walkcount.c` → `runs/walkcount_C2q.txt`: minimum 1 for q = 2 and q = 3). So every voltage lift by a group ≠ 1 has diameter ≥ 6. Proof: the
+  copies of such a target other than the one the unique walk reaches are at distance ≥ 6.
+- **Affine versions.** Removing a hyperplane and/or a point from A₄(3) (12-regular, 18,720 vertices) raises the
+  diameter to 8 (`flags_affine.py`, `runs/flags_affine_Hp_q3_check.txt`).
 
 ### 1.3 Polygon covers (any even-diameter base) and their saturation
 
@@ -120,9 +130,17 @@ records in every cell (`double_bound_out.txt`). It beats both in exactly one cel
 (16,8) = 45·|GH(13)|, all with Δ = q+3; (13,8) = 15·|GH(11)| with Δ = q+2; (15,8) repeats (14,8). The five Δ = q+3
 values fit **m = 5·⌊(q+5)/2⌋** exactly. Two extra edges per vertex, and a factor 5 = 2j+1 as in the D = 7 cover.
 The extra factor ⌊(q+5)/2⌋ grows with q, so the construction must use the polygon's own paths (non-zero voltages on
-GH). The zero-voltage covers of §1.3 cannot do it. The lifts job estimated these values at 2.5× what random voltages
-on GH(q) + 2 matchings reach. A structured construction, if found, is the natural route to the cells (10,8), (12,8),
-(14,8), (16,8), which random-like Haar search cannot reach (SIZE_LAW §3.3, STRUCTURE.md §6). Not found in this session.
+GH). The zero-voltage covers of §1.3 top out at 10 copies, so they cannot do it.
+
+Random voltages cannot do it either. Take GH(7) + 2 matchings over Z_m (Δ = 10). Each base vertex has about 274 walks
+of odd length ≤ 7 per base target, i.e. 274/m per target copy. With no symmetry all 39,216 base vertices are sources,
+so the expected number of misses is ≈ 39,216 · 19,608 · m · e^{−274/m}. That is about 20 only at m ≈ 13 (the lifts
+job's estimate of 12). Even with an automorphism group acting freely with a handful of orbits, the same count stops near
+m ≈ 25. The table has m = 30, so the construction is genuinely structured. Its vertex count can be rewritten as
+5·(#flags + 2·#elements of GH(q)) for odd q, which may hint at it. A structured construction, if found, is the
+natural route to the cells (10,8), (12,8), (14,8), (16,8), which random-like Haar search cannot reach (SIZE_LAW §3.3,
+STRUCTURE.md §6). Not found in this session. Web searches for the source (Delorme–Gómez–Quisquater, the numbers
+themselves) found nothing.
 
 ### 2.2 The size law is a property of (Δ, D), not of the group
 
