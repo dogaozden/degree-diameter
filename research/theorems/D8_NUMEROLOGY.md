@@ -221,7 +221,8 @@ construction is structured and valid for all q in the table range.
 ### 4.1 Squad rounds (research/squads/r1-d8, r2-d8, LOG.md)
 
 Round 1 (q = 5 unless noted): hyperplane-pencil labels (c1), square-class/quadratic holonomy (c2), annealing of Z_k
-labels (c3), torus-invariant labels (c4), colour-class voltages in Z_M (c5: best, 2 unreached at M = 14), one-matching
+labels (c3: 76,002 unreached at M = 20 and 478,608 at M = 25, random starts about 78k and 500k), torus-invariant
+labels (c4: no torus-equivariant hop matching exists at q = 5; with its 2-torsion, sampled 11,628 at M = 20), colour-class voltages in Z_M (c5: best, 2 unreached at M = 14), one-matching
 designs (c6), apartment-projection labels (c7), non-abelian/permutation voltages (c8). Lessons: potential-type labels
 (distances, projections, pencils) are locally constant and make one-hop walks to a near target collapse onto few
 voltages; square-class holonomy lowers geodesic variety; non-abelian groups do not help. Card c1 found a bug in
@@ -229,8 +230,9 @@ liftdiam (a lift disconnected before level D was reported as 0 unreached); fixed
 
 Round 2: V + E operations (d1: random level, diameter 9 at q = 3), "two states + out-arcs" bases (d2: base diameter
 8–9, far off), colour voltages with the Z_5 part (d3: 188 unreached at M = 15, q = 5, random level), targeted
-one-matching annealing at q = 4 (d4: report pending), anti-homomorphic hop matchings (d5: no exact one; no gain), literature
-(d6: report pending), duality hops (d7: no gain), GF(q)*/±1 labels for the (13,8) cell (d8: random level at q = 7, 9 copies).
+one-matching annealing at q = 4 (d4: 598 unreached at M = 8 = q + 4, from 3,912 for a random start; still falling), anti-homomorphic hop matchings (d5: no exact one; no gain), literature
+(d6: the Comellas–Gómez 1995 paper on compounding generalized hexagons for general graphs, arXiv math/9411218,
+and the Quisquater thesis reference; nothing on bipartite D = 8; final report pending), duality hops (d7: no gain), GF(q)*/±1 labels for the (13,8) cell (d8: random level at q = 7, 9 copies).
 
 ## 5. Where to go next
 
