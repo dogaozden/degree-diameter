@@ -1,6 +1,8 @@
 /* haar_order2 (research/theorems/order2): haar_inv (research/squads/table_squad/src) plus AFSWAP=j: on Q = prod G G
  *   (two copies of one matrix group), alpha(x1, x2) = (F^j(x2), x1) with F^j the entrywise Frobenius x -> x^(p^j), times
  *   z -> AR z.  alpha^2 = (F^j, F^j), so alpha has order 2 ord(F^j): AFSWAP=1 on prod sl 8 sl 8 has order 6.
+ *   ASWAPC=1: alpha(x1, x2) = (c x2 c^-1, x1) on prod G G (any base groups G), c in G chosen with conjugation of order k/2
+ *   (ACONJ=<index of c in G> overrides); alpha^2 = (conj c, conj c), so alpha has order 2 ord(conj c).
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -787,7 +789,7 @@ static int cmpll(const void *a, const void *b) { long long x = *(const long long
 
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
-static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0, AFSWAP = -1;   /* AFROB = j: entries x -> x^(p^j) */
+static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0, AFSWAP = -1, ASWAPC = 0, AQC = -1, AQCI = -1;   /* AFROB = j: entries x -> x^(p^j) */
 static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
 static int *FIXG; static long long NFIXG;           /* those eligible as fixed generators (FIXMIN) */
@@ -800,6 +802,8 @@ static int alpha0(int x) {
         const field *F = Q->F; int q = F->q, a = xq / (q * q), b = xq / q % q, c = xq % q;
         yq = (FMUL(F, AHA, a) * q + FMUL(F, AHB, b)) * q + FMUL(F, FMUL(F, AHA, AHB), c);
     } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq; yq = Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])]; }
+    else if (ASWAPC) { const grp *G1 = Q->g1; int o2 = Q->g2->order, x1 = xq / o2, x2 = xq % o2;
+        yq = qmul(G1, qmul(G1, AQC, x2), AQCI) * o2 + x1; }
     else if (AFSWAP >= 0) { const grp *G1 = Q->g1; int o2 = Q->g2->order, x1 = xq / o2, x2 = xq % o2;
         const uint16_t *E = Q->g2->EL + 4 * (size_t)x2;
         int y1 = G1->IDXK[mkey(G1, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])];
@@ -857,6 +861,29 @@ static int choose_alpha(void) {
             else { AHA = zeta; AHB = zeta; }
         }
         fprintf(stderr, "alpha: heis scaling a=%d b=%d, z -> %d z on Z_%d (order %d)\n", AHA, AHB, AR, ncyc, ordr);
+        return 1;
+    }
+    if (getenv("ASWAPC")) {   /* (x1, x2) -> (c x2 c^-1, x1) on prod G G */
+        if (Q->type != G_PROD || strcmp(Q->g1->spec, Q->g2->spec)) { fprintf(stderr, "ASWAPC needs prod G G\n"); return 0; }
+        if (k % 2) { fprintf(stderr, "ASWAPC needs even k\n"); return 0; }
+        const grp *G1 = Q->g1; int want = k / 2; ASWAPC = 1;
+        if (getenv("ACONJ")) AQC = atoi(getenv("ACONJ"));
+        else {
+            unsigned long long sv = rs; rs = 0xBADC0DEULL; int test[6]; for (int u = 0; u < 6; u++) test[u] = rnd() % G1->order;
+            for (int t = 0; t < 200000 && AQC < 0; t++) {
+                int g = rnd() % G1->order, gi = qinv(G1, g), cur[6], ord = 0; memcpy(cur, test, sizeof cur);
+                for (int j = 1; j <= want; j++) {
+                    int same = 1; for (int u = 0; u < 6; u++) { cur[u] = qmul(G1, qmul(G1, g, cur[u]), gi); if (cur[u] != test[u]) same = 0; }
+                    if (same) { ord = j; break; }
+                }
+                if (ord == want) AQC = g;
+            }
+            rs = sv;
+            if (AQC < 0) { fprintf(stderr, "ASWAPC: no conjugation of order %d found\n", want); return 0; }
+        }
+        AQCI = qinv(G1, AQC);
+        char b[400]; qdesc(G1, AQC, b);
+        fprintf(stderr, "alpha: (x1, x2) -> (c x2 c^-1, x1), c = %s (index %d), z -> %d z on Z_%d\n", b, AQC, AR, ncyc);
         return 1;
     }
     if (getenv("AFSWAP")) {   /* (x1, x2) -> (F^j(x2), x1) on prod G G, G a matrix group over GF(p^e) */
@@ -1149,6 +1176,11 @@ exdone:
     if (OVCLOCK > 0 || OMAXSTEPS) fprintf(stderr, "TRACE steps=%lld hash=%016llx best=%lld evals=%lld\n", steps, ohash, best, evals);
     printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, best, evals, now() - t0, OK_, OM, OF, NFIX);
     if (best == 0 && !check_and_write(C[0], out)) return 1;
+    if (best > 0 && getenv("BESTOUT")) {   /* haar_order2: write the best S of an unsolved run (solution-file format) */
+        FILE *f = fopen(getenv("BESTOUT"), "w");
+        if (f) { fprintf(f, "%d %d %s n %d N %d best %lld\n", d, D, Q->spec, ncyc, N, best);
+            for (int i = 0; i < d; i++) { char buf[1000]; desc_elem(S[i], buf); fprintf(f, "%s\n", buf); } fclose(f); }
+    }
     return best == 0 ? 0 : 1;
 }
 int main(int argc, char **argv) {

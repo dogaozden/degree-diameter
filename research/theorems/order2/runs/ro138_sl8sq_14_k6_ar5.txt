@@ -1,0 +1,7 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14, N=3556224, identity 395920, H order 63, rows 56448, threads 1, setup 0.11s
+wide rows: HW order 126, rows 28224, setup 0.21s
+alpha: swap o Frobenius x -> x^2 on the entries (order 6), z -> 5 z on Z_14
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 59.89, mu/k = 9.98, fixed-point misses ~ 1.92
+RANDORB d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14 N=3556224 k=6 m=2 f=1 fix=11 samples=200 min=60 p1=65 p10=104 median=589 mean=469511.06 var=681896545556.3 mu=59.89 time=3.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 3 1 3 4 3 2 4 5 3 4 5 3 4 3 2 3 3 6 2 3 2 132
+RANDORB cost0=0 of 200 (P=0); cost counts 0..24: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

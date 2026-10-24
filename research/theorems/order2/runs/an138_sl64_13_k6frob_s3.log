@@ -10,3 +10,6 @@ t=120 steps=2361 evals=18889 cost=1 best=1 T=0.15
 t=150 steps=2972 evals=23777 cost=1 best=1 T=0.15
 t=180 steps=3555 evals=28441 cost=2 best=1 T=0.15
 t=210 steps=4143 evals=33145 cost=2 best=1 T=0.53
+RESULT d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 best=0 evals=37185 time=235.5 orbit k=6 m=2 f=1 fix=5
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/58e8cabc-b55f-55a3-910c-be10e616a47b/scratchpad/runs/d13D8_sl_64_13_orb6frob_s3.txt
