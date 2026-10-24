@@ -3,7 +3,7 @@
 One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct 23, 2026.
 
 
-## 2026-10-24 ~17:50–19:20 UTC, thm-buildings (Opus, session_013HBUN7xkpWbWCiMo7oMNJK), round buildings-r1-lit
+## 2026-10-24 ~17:47–18:17 UTC, thm-buildings (Opus, session_013HBUN7xkpWbWCiMo7oMNJK), round buildings-r1-lit
 
 Goal: decide whether "lim n_b(Δ,D)/M_b(Δ,D) = 1" (bipartite degree–diameter, D ∉ {2,3,4,6}) and the diameter of
 flag graphs of higher-rank buildings are already in the literature. Literature round (no numeric scorer): score
@@ -28,5 +28,5 @@ two questions, which is itself the answer: neither is in print. One false claim 
 Next: wrote research/theorems/BUILDINGS.md. No second squad. The remaining questions were proofs (done by me) and
 finite comparisons (done by script). A computational squad on "building-derived graphs beating table cells" had
 nothing to aim at: table_cells.py shows that every candidate is below our values. Did the squad help? Yes, for
-breadth and speed: 8 directions in ~20 minutes, and it surfaced BŠŠ 2017 and Bachratý 2021, which I would not have
+breadth and speed: 8 directions in 12–29 minutes of wall time, and it surfaced BŠŠ 2017 and Bachratý 2021, which I would not have
 looked for. It found nothing that changed the conclusion I had reached from the two 2026 papers.

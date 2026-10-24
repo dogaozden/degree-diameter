@@ -423,6 +423,10 @@ Searched by an 8-card Haiku squad (research/squads/buildings-r1-lit/c1–c8/note
   So lim sup n(Δ, 7)/Δ⁷ = 1 and lim sup n_b(Δ, 8)/M_b(Δ, 8) = 1. `asymptotic_check.py` gives ratios 0.455 at q = 8,
   0.827 at q = 32, 0.954 at q = 128 and 0.997 at q = 2048. This seems to have gone unnoticed for 40 years. CvB–K
   (general) and Sp(8, q) (bipartite, every q, faster) now cover both.
+- ✓ Closest building-theory hit (my own search): Deza–Pankov, "Zigzag structure of thin chamber complexes",
+  arXiv:1509.03754. In Coxeter complexes, zigzags (Petrie-polygon-like paths) have length equal to the Coxeter number.
+  This is the same Coxeter-element phenomenon, in thin complexes, about zigzag length rather than distances between
+  residues.
 - Not found anywhere: Theorem 1 beyond type A and rank 2; Delorme's product applied to higher-rank flag graphs; the
   bipartite limit for any D ∉ {2, 3, 4, 6}; any rate for the bipartite problem.
 
@@ -473,8 +477,13 @@ factors each, lengths adding).
 
 A necessary condition follows: if some s ∈ J₁ commutes with all of J₂, then s is a left descent of w_{J₂}w_{J₁}, and
 w_{J₁}w_{J₂}w_{J₁} is not reduced. So the conjecture says that the colour classes are the only "longest-element
-analogue" of a bipartite Coxeter element. A proof needs that analogue of (C1). I expect it to hold for all types;
-the computation above covers rank ≤ 8.
+analogue" of a bipartite Coxeter element.
+
+**Evidence to rank 20.** `partitions3.py` (→ `out/partitions3.txt`) applies three necessary conditions: a₁ = a₂, a | N,
+and every node has a neighbour in the other part. It then runs the Demazure computation on the survivors, for all
+A_n, B_n (n ≤ 20), D_n (4 ≤ n ≤ 20) and the exceptional types, up to 524,287 splittings per type. Some splittings
+that are not colour classes do pass the three conditions: 101 in B₁₈, 26 in A₂₀, 10 in B₁₂. Even so, the only tight
+splittings found are the colour classes. A proof for all n needs the longest-element analogue of (C1).
 
 ### 2.2 For D ≡ 2 mod 4 the building rate is genuinely worse
 
@@ -487,8 +496,8 @@ it.
 
 - **Convergence is slow and gets slower with D.** The first-order constant t(h−2) grows like D², and the exponent
   shrinks like 1/D. Inside the table (Δ ≤ 16) the asymptotics never matter except for the Moore graphs (D = 3, 4, 6).
-- **Unequal parameters can help at finite q.** ²E₆(q) beats E₆(q) and Sp(12, q) at every q; it reaches 50 % of Moore at
-  q = 16. At D = 4 the AS(q) quadrangles GQ(q−1, q+1) come within 4–7 % of the table, closer than any other non-Moore
+- **Unequal parameters can help at finite q.** ²E₆(q) beats E₆(q) and Sp(12, q) at every q computed (2 ≤ q ≤ 256),
+  and asymptotically (deficiency 10/q against 30/q). It reaches 50 % of Moore at q = 16. At D = 4 the AS(q) quadrangles GQ(q−1, q+1) come within 4–7 % of the table, closer than any other non-Moore
   building graph.
 - **The two sides need not look alike.** Sp(8, 2) is 9-regular, but its sides see different layers: 1,608 versus
   1,512 vertices at distance 4. Corollary 2 explains this; there is no polarity swapping the sides of C₄.
@@ -497,7 +506,7 @@ it.
 
 | idea | test | result |
 |---|---|---|
-| other splittings of the diagram | partitions.py, partitions2.py: all 2-partitions, all types of rank ≤ 8 | lose ≥ 1 power of q (§2.1) |
+| other splittings of the diagram | partitions.py, partitions2.py, partitions3.py: all 2-partitions, all types of rank ≤ 20 | lose ≥ 1 power of q (§2.1) |
 | unbalanced flag graphs as they are (A_odd, C_odd, D_n, E₇, twisted C_n, ³D₄, ²F₄, GQ(s,t)) | §1.5, table_cells.py | max degree is the larger side; lose a power of q; in range 0.8 %–96 % of the table, never above |
 | Kronecker products of two same-h regular flag graphs in range | table_cells.py (K rows) | ≤ 0.80 of the table (D = 3), ≤ 0.62 (D = 4), ≤ 0.30 (D = 6) |
 | Delorme products in range | table_cells.py (P rows) | best (15,8) 10,266,750 = 0.72 of the table, 0.57 of ours |
@@ -555,3 +564,4 @@ The reviewer's own text is not in the repo; these are the gaps I found.
 | opposite_check.py | out/opposite_check.txt | Theorem 1(b) tested directly on random opposite chamber pairs |
 | partitions.py | out/partitions.txt | §2.1, brute force over W |
 | partitions2.py | out/partitions2.txt | §2.1 up to rank 8 incl. E₈, via Demazure products |
+| partitions3.py | out/partitions3.txt | §2.1 for A_n, B_n, D_n up to rank 20 (pruned by the reduction lemma) |
