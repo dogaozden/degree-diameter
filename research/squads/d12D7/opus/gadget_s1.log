@@ -1,0 +1,59 @@
+H: P=66430 deg=10 |S2(X)|=90 |S4(X)|=7290 |S2(L1)|=90 |S4(L1)|=7290  d(X,L1)=5 d(X,L2)=5
+initial cost (F1+F2 uncovered, both shifts) 23855
+it 0 t=0s cost 23853
+it 2000 t=4s cost 21596
+it 4000 t=9s cost 19583
+it 6000 t=12s cost 17825
+it 8000 t=16s cost 16261
+it 10000 t=20s cost 14819
+it 12000 t=24s cost 13494
+it 14000 t=28s cost 12348
+it 16000 t=32s cost 11293
+it 18000 t=36s cost 10347
+it 20000 t=40s cost 9393
+it 22000 t=44s cost 8584
+it 24000 t=47s cost 7806
+it 26000 t=51s cost 7178
+it 28000 t=55s cost 6513
+it 30000 t=59s cost 5934
+it 32000 t=63s cost 5372
+it 34000 t=67s cost 4847
+it 36000 t=70s cost 4368
+it 38000 t=74s cost 3901
+it 40000 t=78s cost 3460
+it 42000 t=82s cost 3098
+it 44000 t=86s cost 2729
+it 46000 t=90s cost 2397
+it 48000 t=94s cost 2074
+it 50000 t=98s cost 1763
+it 52000 t=102s cost 1491
+it 54000 t=106s cost 1226
+it 56000 t=110s cost 951
+it 58000 t=113s cost 706
+it 60000 t=117s cost 488
+it 62000 t=121s cost 271
+it 64000 t=125s cost 111
+final F1(1)=0 F2(1)=0
+final F1(2)=0 F2(2)=0
+repair cost 0
+graph: N=664304 max degree 12
+  source 0 (X): ecc 7, targets beyond 7: 0
+  source 500005 (L1): ecc 7, targets beyond 7: 0
+  source 333850 (L2): ecc 7, targets beyond 7: 0
+  source 1 (X): ecc 7, targets beyond 7: 0
+  source 500006 (L1): ecc 7, targets beyond 7: 0
+  source 333851 (L2): ecc 7, targets beyond 7: 0
+  source 2 (X): ecc 7, targets beyond 7: 0
+  source 500007 (L1): ecc 7, targets beyond 7: 0
+  source 333852 (L2): ecc 7, targets beyond 7: 0
+  source 3 (X): ecc 7, targets beyond 7: 0
+  source 500008 (L1): ecc 7, targets beyond 7: 0
+  source 333853 (L2): ecc 7, targets beyond 7: 0
+  source 4 (X): ecc 7, targets beyond 7: 0
+  source 500009 (L1): ecc 7, targets beyond 7: 0
+  source 333854 (L2): ecc 7, targets beyond 7: 0
+  source 664300 (gadget): ecc 7, targets beyond 7: 0
+  source 664301 (gadget): ecc 7, targets beyond 7: 0
+  source 664302 (gadget): ecc 7, targets beyond 7: 0
+  source 664303 (gadget): ecc 7, targets beyond 7: 0
+RESULT special+gadget sources 19, max ecc 7, bad pairs 0, N 664304
