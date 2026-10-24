@@ -350,11 +350,19 @@ group f = 0 needs 521–4.7·10⁴ evaluations; the one f = 3 success needed 3.8
 On PSL(2,23) × Z43 at (9,8), f = 3 had stalled at cost 3 after 1.9·10⁶ evaluations (previous session). The (6,7)
 graph is even above the first-moment estimate 2N_h ≈ 8,747 of mu_plan.py; at D = 7 the Poisson model is crude.
 
-Later rungs (same session, §4 has the current best of each cell): f = 0 kept solving up to μ ≈ 30 at (15,8)
-(PSL(2,137) × Z7, 17,998,512, 7.8·10⁴ evaluations), μ ≈ 38 at (9,8) (PSL(2,19) × Z79, 540,360, 4.4·10⁵), μ ≈ 25 at
-(9,9) (PSL(2,7)² × Z61, 3,443,328, 4.2·10⁴), μ ≈ 20 at (9,10), (12,10) and (15,9) (a few hundred to a few thousand
-evaluations at 0.3–1 s each). Failures so far: (12,9) at μ = 19.9 (SL(2,43) × Z217, cost 6 after 9·10⁴
-evaluations, 40 ms each), (6,9) at μ = 34–35 (cost 3 and 14), (9,9) on PSL(2,5) × SL(2,16) × Z7 (cost 14; 44 fixed points).
+Later rungs (same session, §4 has the current best of each cell; μ at the solved order, evaluations):
+
+| cell | best rung solved | μ | evals | rungs that failed (best cost) |
+|---|---|---|---|---|
+| (9,8) | PSL(2,19) × Z79, 540,360 | 37.9 | 4.4·10⁵ | μ = 42.6 (3), 48.7 (3), 50.3 (3), each ≥ 8·10⁶ evals |
+| (9,9) | PSL(2,7) × SL(2,7) × Z31, 3,499,776 | 30.5 | 1.3·10⁶ | 22.8 (2), 23.7 (14, 44 fixed points), 25.7 (8), 27.3 (14), 28.4 (24, PSL alone), 35–37 (10–18) |
+| (12,9) | SL(2,41) × Z247, 34,026,720 | 16.3 | 3.8·10⁴ | 16.9 (8), 19.9 (6) |
+| (15,8) | SL(2,109) × Z7, 18,128,880 | 33.0 | 8.1·10⁴ | 34.5 (6), 34.7 (3), 35.8 (3) |
+| (15,9) | SL(2,79) × Z211, 208,029,120 | 24.1 | 1.1·10⁴ | 22.1 (6), 27.8 (8) |
+| (6,10) | SL(2,5) × PSL(2,7) × Z13, 524,160 | 23.6 | 7.4·10⁴ | PSL(2,17) × Z109, μ = 28.4: 3 seeds end at cost 1 (one fixed point), 2 seeds with ORBW=3 at cost 3; PSL(2,19) × Z79 (3) |
+
+k = 3, f ≠ 0 (same session): (13,10) SL(2,199) × Z43, 677,714,400, μ = 20.7, 5.6·10³ evaluations at ~1 s; (14,10)
+SL(2,149) × Z199, 1,316,504,400, μ = 17.3, 1.2·10³ evaluations at ~3 s (FAST=1, 7.5 GB).
 
 **(11,8): a new cell** (not f = 0; k = 5, the attempt §7 describes). Table 2,246,940, now **2,258,520** = 2·|PSL(2,59) ×
 Z11|, S = {e} ∪ two α-orbits of size 5, α = conjugation by an element of order 5 times z ↦ 3z. μ = 60.2 (μ/5 = 12.0,
