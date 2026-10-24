@@ -103,3 +103,5 @@ Lead, later: c6's two cost-2 groups at m=128 -> r3/alt_opt.sh (voltages re-annea
 chart re-optimised for the controller) -> **(10,5) 4,096** twice (Z32 x|9 Z4 and Z16 x|5 Z8), rebuilt and checked
 (apsp, bfs_all), and then c6's cost-4 group Z35 x|29 Z4 at m=140 -> **(10,5) 4,480** (rebuilt, apsp + bfs_all).
 So the joint optimisation closed four more squad near misses.
+Lead, also: the exhaustive Haar scan of Proposition 13 finished for all 24 (4,3) chart classes over the 88 groups of
+order 65-81 (r3/exh_d12.log, r3/exh_d12_new.log): no Haar controller at (12,5), minimum cost 2.

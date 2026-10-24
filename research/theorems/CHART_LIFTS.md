@@ -42,7 +42,7 @@ Round 3 found charts at (k, q) = (4, 3) and (5, 3) that cover both diagonals and
 (§3.1, Proposition 12). Then a controller only needs same-side distances ≤ 4 and a nonsingular nonbacktracking 4-walk
 for each distance-4 pair (Theorem 11). Girth-6 controllers become usable, and plain Haar graphs of metacyclic groups
 work at once: m jumps from 128 to 156 at (15,5) (then 168, below) and from 54 to 64 at (12,5), where Haar graphs then stop
-(for 7 of the 24 chart classes, Proposition 13) and small multi-orbit bases take over (m = 72, 75, then 80).
+(for all 24 chart classes and the 88 groups of order 65–81 tried, Proposition 13) and small multi-orbit bases take over (m = 72, 75, then 80).
 
 **How the (4,3) chart was found (Lemma 5).** All the chart conditions at D = 5 (singular patterns, pencils, diagonals)
 depend only on the points w_c and b_c and on the collineation that A_c induces from the lines through w_c to the lines
@@ -352,12 +352,13 @@ rank 3 (three collinear points); two tetrahedra need 72. (Coincident configurati
 sets of Proposition 12(c) fall into 24 classes (`r3/flags43_orbit_reps.txt`); a Haar controller does not see the
 labelling, so these 24 are all the cases. For every group of order 65 to 81 that `r3/mkgroups.py` builds (88 groups:
 cyclic, Z_a × Z_b, dihedral, dicyclic, metacyclic) an exhaustive scan of all connection sets (one element fixed to
-the identity; `r3/ctrl_exh.c`, the EXH mode written by squad card r2-c6) finds no Haar graph satisfying Theorem 11 for
-7 of the classes (log `r3/exh_d12.log`, minimum cost 2); the other 17 classes are scanned in `r3/exh_d12_new.log`
-(see that log for how far it got; until it is complete the statement is proved for the 7 only). For order 81, the
-only order in this range that would beat the 12,960 graph, all 24 classes are done for the 5 groups of order 81 that
-`mkgroups.py` builds (Z₈₁, Z₃ × Z₂₇, Z₉ × Z₉, Z₉ ⋊₄ Z₉, Z₂₇ ⋊₁₀ Z₃): none works (`r3/exh_d12_new81.log`). The other 10
-groups of order 81 were not tried. Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅). A Haar graph of order
+the identity, which loses nothing since H(G, hS) ≅ H(G, S) with the letters kept; `r3/ctrl_exh.c`, the EXH mode
+written by squad card r2-c6) finds **no Haar graph satisfying Theorem 11, for any of the 24 classes**: 2,112
+group/class pairs, minimum cost 2 (143 pairs reach cost 2, none reach 0 or 1). Logs: `r3/exh_d12.log` (7 classes) and
+`r3/exh_d12_new.log` (the other 17; order 81 for those also in `r3/exh_d12_new81.log`). Order 81 is the only order in
+this range that would beat the 12,960 graph; its 5 groups here are Z₈₁, Z₃ × Z₂₇, Z₉ × Z₉, Z₉ ⋊₄ Z₉, Z₂₇ ⋊₁₀ Z₃. The
+other groups of these orders (for example the remaining 10 groups of order 81, and the groups of order 72 that are
+not of these types) were not tried. Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅). A Haar graph of order
 82 to 121 would also be a 4-regular bipartite graph of diameter 5 on more than 162 vertices, a (4,5) record.
 Controllers with 3 or 4 vertex orbits do go further: m = 72 (Theorem 11 table).
 
