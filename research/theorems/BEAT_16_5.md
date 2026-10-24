@@ -42,7 +42,9 @@ In a building the Weyl distances reachable by a walk with prescribed steps form 
 the Iwahori–Hecke algebra (structure constants ≥ 0), so diameter ≤ 5 iff Ω∘Ω⁻¹∘Ω∘Ω⁻¹ = W and Ω⁻¹∘Ω∘Ω⁻¹∘Ω = W.
 This is exact, not a sample. Result for A₂–A₄, B₂, B₃ (all parameter sets above), G₂, I₂(8), q ≤ 16, keeping
 graphs with ≥ 20,000 vertices: the only one with diameter ≤ 5 is A₄(3) with the flag relation. (331 configurations
-with more than 31,460 vertices fail.) Larger types (A₅, A₆, B₄, B₅, D₄, D₅, F₄): running.
+with more than 31,460 vertices fail.) Larger types (`beat165/hecke_big.out`): A₅, A₆, B₄, B₅ complete and D₄ in
+part, 6,656 configurations with ≥ 20,000 vertices, none of diameter ≤ 5; D₅ and F₄ were not reached before the run
+was stopped.
 
 ## 2. Affine and hyperbolic diagrams: room in the ball, no finite quotient in hand
 
@@ -61,9 +63,9 @@ C(2,3) differs from the Ã₃ flag graph in one place: its {1,4}-residues are K�
 where Ã₃ has projective planes. A finite quotient of the Ã₃ building whose flag graph keeps diameter 5 could have up
 to 33,883 vertices per side. But it would need to be as "perfect" as a spherical building (each A-orbit hit by
 ≤ 2.15 ball elements on average, none missed); quotients by arithmetic lattices of PGL(4, F₃((t))) of that size would
-be tiny solvable quotients (congruence subgroup property), which cover badly. Not pursued further yet.
+be tiny solvable quotients (congruence subgroup property), which cover badly. Not pursued further.
 
-## 3. Coset graphs with large stabilizers (in progress)
+## 3. Coset graphs with large stabilizers (negative)
 
 Why: the counting bound in §0 is an average. In an edge-transitive coset graph Cos(G; H, K) (sides G/H, G/K,
 edges G/(H ∩ K), degrees [H : H∩K] and [K : H∩K]) the A-vertices within distance 4 of the base vertex form a union
@@ -80,7 +82,13 @@ Tools (`beat165/gap/`, GAP 4.12 with tomlib):
 - Validation: from (P₂₄, P₁₃) in SL(5,3) the search finds the flag graph as the only candidate (balls 205 and 15,730
   on both sides), and the exported edge list passes apsp (RESULT VALID d=16 D=5 n=31460).
 
-## 4. The winner: a bipartite route-chart lift (32,768 vertices)
+Results (`beat165/gap/big/*.log`; both degrees in [12, 16], sides 8,000–54,241, total ≥ 25,000): no candidate of
+diameter ≤ 5 in 2F4(2)′, A₁₁, G₂(4), HS, L₃(8), L₃(9), M₂₃, Sz(32), U₃(9), U₃(11), U₅(2) (complete; 0 to 1,870
+candidates each). J₃, L₅(2), O₈⁺(2) were stopped unfinished, with no find (the closest L₅(2) candidate reaches 26,308
+of 52,080 at radius 4). Calibration at smaller sizes (`beat165/gap/calib/`): U₃(5) gives diameter-≤5 coset graphs up
+to 5,250 vertices at degree 16, L₃(5) none.
+
+## 4. The construction: bipartite route-chart lifts (32,768, 33,792, 36,864 vertices)
 
 ### 4.1 Construction
 
@@ -164,8 +172,9 @@ GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder)
 - Haar controllers H(G, S), |S| = 4: exhaustive over all groups of orders 40–121 (`rcl/haar_summary.txt`). With a
   4-cycle and diameter 5 they exist at orders 40, 50, 60 and 64 and at no order 65–121. 64 is the Haar maximum.
 - The (4,5) bipartite record without the 4-cycle condition is 162 (81 per side; it has girth 6). A controller
-  with 65–81 per side and 4-cycles everywhere would give 33,280–41,472. Searches running: permutation-voltage
-  lifts of 2+2, 3+3, 4+4 bases by all groups of orders 33–48, 22–32, 17–24 (`rcl/pvctrl.c`, `rcl/run_pv.sh`);
+  with 65–81 per side and 4-cycles everywhere would give 33,280–41,472. Searched: permutation-voltage lifts of
+  2+2, 3+3, 4+4 bases by all groups of orders 33–48, 22–32, 17–24 (`rcl/pvctrl.c`, `rcl/run_pv.sh`; results in
+  §4.5, §4.9, §4.10);
   direct annealing of 4-regular bipartite graphs (`rcl/anneal45.c`) is too weak (stuck at ~80 violations at 50
   per side).
 - The chart: per-controller fitting (`rcl/chartfit2.c`, `rcl/chartfit3.c` for any permutation-voltage controller)
@@ -173,25 +182,26 @@ GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder)
   for all 12 label pairs) was not found (annealing stops at 4 violations); the winning chart has 14 singular words
   and fails the distance-2 condition for labels bb and BB, and the controller's other walks cover those pairs.
 
-### 4.5 Going past 64 per side (in progress)
+### 4.5 Going past 64 per side
 
 - Permutation-voltage controllers (base with k+k vertices, lifted by a group of order m; Haar = k 1): with k = 3
   and the cyclic group of order 22 there are bipartite 4-regular diameter-5 controllers with a 4-cycle at every
-  vertex and **66 per side** (5 found, `rcl/pv_found_k3.txt`). They would give 33,792. But fitting a chart is
-  hard for them: each has 14 "deficient" same-side pairs (distance 2, no non-backtracking 4-walk), with label
+  vertex and **66 per side** (5 found, `rcl/pv_found_k3.txt`). They would give 33,792. But fitting one chart for
+  the whole controller is hard for them: each has 14 "deficient" same-side pairs (distance 2, no non-backtracking 4-walk), with label
   patterns that include same-letter ones (aa, AA, bb, BB), so the chart needs the distance-2 hyperplane condition
-  for nearly all 12 patterns plus few singular words. Restart-based fitting (`rcl/chartfit4.c`) is at 130k–330k
-  missed pairs so far. For the order-64 Haar controller only 6 pairs were deficient, all with mixed patterns.
+  for nearly all 12 patterns plus few singular words. Restart-based fitting (`rcl/chartfit4.c`) stopped at 130k–330k
+  missed pairs; per-vertex charts solved it (§4.8). For the order-64 Haar controller only 6 pairs were deficient, all with mixed patterns.
 - Field charts (A_a, A_b = multiplication by α, β in F₂₅₆ = F₄⁴, b_a = 1, b_b = γ): exhaustive over all
   255³ triples (`rcl/chartfield.c`). The best universal ones fail the distance-2 condition for all 12 patterns
   (each reaches only 2 of the 5 hyperplanes). So good charts must be non-commutative.
 - New approach: fix a chart, export which 108 words are nonsingular and which of the 12 patterns pass the
   distance-2 condition (`rcl/charttables.c`), and search controllers whose every same-side pair is certified
   (a nonsingular non-backtracking 4-walk, or a 2-path with a passing pattern; `rcl/pvctrl2.c`). Certified
-  controllers need no fitting; checked on an order-64 example (apsp VALID). Running for k = 2, 3, 4 at 66–96 per
-  side with the chart of §4.2 (94 good words, 10 good patterns).
+  controllers need no fitting; checked on an order-64 example (apsp VALID). Run for k = 2, 3, 4 with the chart of §4.2 (94
+  good words, 10 good patterns) on 20 groups at 66–72 per side: at best 6 uncertified pairs, nothing certified
+  (`rcl/pv2_log_k*.txt`). Superseded by per-vertex charts.
 
-### 4.6 More controller families (negative so far)
+### 4.6 More controller families (negative)
 
 - Bipartite Cayley controllers Cay(Γ, {a^±1, b^±1}) with a, b outside an index-2 subgroup Γ₀: need all words of
   length ≤ 4 to cover Γ₀ and one reduced relation of length 4. Exhaustive over all groups of orders 120–190 and
@@ -199,10 +209,11 @@ GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder)
   side, where Haar controllers exist). Earlier, with the stronger exact-NB-4 condition, the largest was 36 per side.
 - Constraint view of the 66-per-side controllers: per controller there are about 270–300 sets of words of which
   one must be nonsingular (pairs at distance 4 or 0 with at most 4 candidate words) and about 60 distance-2 pairs
-  that need a nonsingular word or a passing pattern (`rcl/critical.py`, `rcl/chartcrit.c`). Best charts so far
+  that need a nonsingular word or a passing pattern (`rcl/critical.py`, `rcl/chartcrit.c`). The best single charts
   violate 132 and 176 weighted constraints. The order-64 Haar controller has only 98 such sets.
 - Near-miss pipeline: chart-aware controller search for the chart of §4.2 (objective = uncertified same-side pairs),
-  then the exact fitter on the best controller (`rcl/near_miss.sh`). Running for k = 2 (C₃₃) and k = 3 (C₂₂).
+  then the exact fitter on the best controller (`rcl/near_miss.sh`, `rcl/near_miss.log`). For k = 2 (C₃₃) the
+  fits stopped at 79,872 missed triples; k = 3 (C₂₂) was superseded by §4.8.
 
 ### 4.7 A lead for other cells (not pursued here)
 
@@ -212,7 +223,8 @@ closed walks can reach up to 52 ≥ 40 projective points), so for (12,5) = 4·3 
 do: the order-64 Haar controller would give 10,368 and the 162-vertex (4,5) record 13,122, against the table's
 8,200. With odd ρ one needs involution labels (A_t² = I, A_t b_t = b_t); then (15,5) = 5·3 and (9,5) = 3·3 come into
 range of the (5,5) and (3,5) records (2·177·81 = 28,674 vs 20,496; 56·81 = 4,536 vs our 2,662). None of this is
-built or checked; a chart fit for (12,5) on the order-64 controller is running at low priority.
+built or checked; a first chart fit for (12,5) on the order-64 controller (`rcl/fitq3_g64.out`) was stopped at 1,041,498 missed
+triples.
 
 ### 4.8 Per-vertex charts
 
@@ -220,7 +232,7 @@ The lemma of §4.1 does not need the chart to be the same at every controller ve
 controller one can give each base vertex its own (A, b) for its outgoing a- and b-edges (the reverse labels are then
 forced: A_{w,t⁻¹} = A_{v,t}⁻¹, b_{w,t⁻¹} = A_{v,t}⁻¹ b_{v,t} for w = π_t(v)). The lift stays group-invariant, so one source
 per base vertex still suffices. `rcl/fitqv.c` fits such charts exactly (validated: cost 0 on the order-64 controller
-with the uniform winning chart). Running on the five 66-per-side controllers (12 free (A, b) pairs instead of 2).
+with the uniform winning chart). Run on the five 66-per-side controllers (12 free (A, b) pairs instead of 2):
 
 **Result: 33,792 vertices.** Controller `rcl/ctrl_k3_m22_2.txt` (format: k m / π_a / π_b / φ_a / φ_b; base vertices
 0, 1, 2 on side A and 3, 4, 5 on side B; group C₂₂ = SmallGroup(22,2), elements numbered by `AsSSortedList` from 0,
@@ -253,7 +265,45 @@ a 4-cycle at every vertex, **72 per side** (`rcl/pv_found2_k2.txt`, `rcl/ctrl_k2
 
 What limits the next step: only the controller. Chart fits for these controllers take minutes; so a bipartite
 4-regular diameter-5 graph with a 4-cycle at every vertex and N per side gives 512·N vertices, provided the fit
-succeeds. The (4,5) bipartite record is 81 per side (girth 6); 4-cycles cost some of the 121 walks. Search for
-larger controllers continues (2+2 bases at orders 37–48: none at 37–40 so far, best objectives 24–30; 3+3 at
-orders 23–32).
+succeeds.
 
+The 72-per-side controller is quite symmetric (nauty): |Aut| = 1152, Aut = C₂⁴ : ((S₃ × S₃) : C₂), two vertex orbits
+of 72 that each contain both sides (an automorphism swaps the sides), vertex stabiliser C₂ × D₈; the side-preserving
+subgroup (order 576) has the four base orbits of 36.
+
+| controller | per side | lift |
+|---|---|---|
+| Haar graph on SmallGroup(64,43) | 64 | 32,768 (§4.2) |
+| 3+3 base vertices over C₂₂ | 66 | 33,792 (§4.8) |
+| 2+2 base vertices over C₃ × A₄ | 72 | **36,864** (§4.9) |
+
+### 4.10 Beyond 72 per side (all negative)
+
+- Permutation-voltage controllers, every group of each order (`rcl/pv_best_by_order.txt`: best objective per
+  (k, m); objective = same-side pairs at distance > 4 from the base sources + 50 per base vertex without a 4-cycle).
+  k = 2: 70 (C₃₅) 8, 72 only for SmallGroup(36,11), 74 (C₃₇) 16, 76–80 at least 20, 82–96 between 28 and 58.
+  k = 3: 72 (SmallGroup(24,9)) 4, 75 (C₂₅ and C₅²) 8, 78 and more at least 20. k = 4, 5, 6 (75–96 per side): at
+  least 32. Hill climbing (`rcl/pvctrl.c`) and annealing (`rcl/pvctrl4.c`, 10 runs × 200,000–300,000 steps per
+  group) stop at the same values for the near misses (4 and 8), so these look like real floors, not search noise.
+  The objective grows quickly with the size above 72.
+- Grow and repair (`rcl/grow45.c`): insert one vertex per side into the valid 72-per-side controller (three edges
+  rerouted) and anneal degree-preserving double-edge swaps on the objective above (all pairs, 4-cycle penalty 8 or
+  30, four temperature settings, 20,000,000 steps each). The best is 120 violations at 73 per side; none reached 0.
+- Using the (4,5) bipartite record itself (162 = 81 + 81, `records/bipartite_dd/d4D5/`, |Aut| = 54) as controller
+  would give 41,472, but it has girth 6, and with line charts a vertex without a 4-cycle cannot be covered (§4.1:
+  at most 70 of 85 projective points). Two ways around that, both tested on random charts:
+  - translate families x ↦ A x + v, v in a 4-point set that is not a line: in characteristic 2 the difference set
+    has at most 7 points, and even with all four edges at a vertex of this kind the closed walks cover at most 252
+    of the 256 fiber points (300 trials, `rcl/cover_cc.py`). Such sets also break the tiling needed for distance-4
+    pairs joined by a single walk (5,940 of the 11,016 ordered distance-4 pairs of the 162-vertex graph).
+  - lines whose direction depends on x, x ↦ (A + λN) x + λ b with N of rank 1 and b ∉ Im N (still 4 distinct
+    neighbours per label): with two such edges per vertex the closed walks cover the whole fiber (23 of 60 trials),
+    but walk images are no longer affine spaces: a 4-walk with two such steps is a bijection onto F₄⁴ in 11% of
+    trials (one step: 30%; plain lines: 69%) (`rcl/twist.py`, `rcl/twist2.py`). About 37 targets per vertex are
+    reached by a single walk, so this does not look fittable.
+
+So the next step needs a bipartite 4-regular graph of diameter 5 with a 4-cycle at every vertex and more than 72
+vertices per side. None of the searches here found one. Counting gives only a weak bound: with a 4-cycle through c,
+at most 1 + 11 + 96 = 108 same-side vertices are within distance 4 of c (one collision at distance 2; at distance 4,
+6 of the 108 non-backtracking walks run around the 4-cycle back to the first neighbourhood and 6 pairs of walks
+collide), and the 4-cycles needed at the other vertices cost more.
