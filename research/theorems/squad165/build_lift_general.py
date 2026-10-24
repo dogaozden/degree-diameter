@@ -33,11 +33,23 @@ def colour(m, edges):
     return out
 
 if __name__ == '__main__':
-    edges = [tuple(map(int, l.split()[:2])) for l in open(sys.argv[1]) if l.strip()]
+    rows = [tuple(map(int, l.split())) for l in open(sys.argv[1]) if l.strip()]
+    edges = [r[:2] for r in rows]
     m = max(a for a, b in edges) + 1
     assert len(edges) == 4 * m
-    ch = json.load(open(sys.argv[2])); A = ch['A']; bv = [tuple(v) for v in ch['b']]
-    col = colour(m, edges)
+    if sys.argv[2].endswith('.json'):
+        ch = json.load(open(sys.argv[2])); A = ch['A']; bv = [tuple(v) for v in ch['b']]
+    else:
+        from lift_check import load_chart
+        A, bv = load_chart(sys.argv[2])
+    if all(len(r) >= 3 for r in rows):          # given colouring: check it is proper
+        col = [(a, b, c) for a, b, c in rows]
+        for side in (0, 1):
+            seen = {}
+            for e in col:
+                key = (e[side], e[2]); assert key not in seen, 'colouring not proper'; seen[key] = 1
+    else:
+        col = colour(m, edges)
     vecs = list(itertools.product(range(4), repeat=4)); nA = m * 256
     E = []
     for a, b, c in col:

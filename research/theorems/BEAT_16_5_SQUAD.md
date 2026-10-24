@@ -87,7 +87,34 @@ m ≤ 108 always (108 nonbacktracking walks of length 4 per vertex).
 - The lift is also not competitive in other cells: 3-regular controllers (degree 3q) are perfect only up to m = 12,
   giving 1,944 / 6,144 / 15,000 at (9,5) / (12,5) / (15,5) against 2,662 / 8,200 / 20,496.
 
-Why it is hard to push: the lift is K₄,₄-structured (each controller edge bundle is a union of K₄,₄'s, each vertex
+### 2.1 The pencil lemma: distance-2 pairs for free
+
+Exact-NB-4 is stronger than needed. Colour the controller properly with 4 colours, colour c using chart letter c.
+For u ≠ v on the A side with a common neighbour a, let i, j be the colours of ua and va. Lifted walks of length 4
+from (u, x) to the fiber of v that backtrack once (u→c→u→a→v, u→a→w→a→v, u→a→v→c→v) reach exactly the affine
+3-spaces A_j⁻¹(A_i x + ⟨b_i, b_j, z⟩) for the 8 vectors z ∈ Z(i,j) = {A_iA_k⁻¹b_k : k≠i} ∪ {b_l : l∉{i,j}} ∪
+{A_jA_k⁻¹b_k : k≠j}. They all contain the same 2-space, so **their union is the whole fiber iff Z(i,j) meets all five
+hyperplanes through ⟨b_i, b_j⟩**. That is a condition on the chart alone; the B side is the same with
+(A_c, b_c) → (A_c⁻¹, A_c⁻¹b_c). Call a chart *pencil-complete* if all 24 conditions hold.
+
+**Theorem (route-chart lift, bipartite form).** Take a pencil-complete chart and a properly 4-edge-coloured 4-regular
+bipartite controller C with m vertices per side. Suppose (i) C has bipartite diameter ≤ 5, (ii) every vertex lies on
+a 4-cycle whose colour pattern is nonsingular for the chart, and (iii) every same-side pair at distance 4 is joined by
+a nonbacktracking walk of length 4 with a nonsingular pattern. Then the lift is a 16-regular bipartite graph on 512m
+vertices with diameter ≤ 5. (Same-side pairs: distance 4 by (iii), distance 2 by the lemma, distance 0 by (ii);
+opposite-side pairs then within 5.) A diagonal pair needs a 4-cycle: closed walks that backtrack reach only planes
+through x, at most 211 of the 256 fiber points.
+
+Checks. `chart_search.c` finds pencil-complete charts quickly (`charts/chart_p4.txt`, `chart_p5.txt`; 12 of the 216
+patterns singular), but a chart that is both pencil-complete and universal has not been found yet (best 12
+universal violations). `lift_check.py` on the m = 50 relaxed Haar controller (Z₅⋊Z₁₀, S = {0,1,5,32}), which has
+50 ordered pairs at distance 2 with **no** nonbacktracking walk of length 4: the lift reaches all of them. The only
+misses are distance-4 pairs whose walks all have singular patterns, as predicted. `mlift_chart.c` anneals voltages of
+a coloured base for exactly conditions (i)–(iii). Its m = 48 controller lifts to 24,576 vertices, apsp VALID d=16
+D=5. At m = 63 (K₃,₃ + doubled matching, Z₂₁) the best controller has 2 uncovered pairs. Both are diagonals: one
+orbit on each side has no 4-cycle. Everything else is covered.
+
+Why exact-NB-4 controllers are hard to push: the lift is K₄,₄-structured (each controller edge bundle is a union of K₄,₄'s, each vertex
 in 4 of them), the same local structure as the flag graph. For K₄,₄-structured graphs of diameter 5 a counting bound
 gives at most 33,145 vertices per side. The flag graph reaches 47.5 % of it; a controller lift needs m ≥ 62, i.e.
 57 % of its own bound 108·256, while the best controllers found reach 39 %.
