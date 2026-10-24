@@ -854,6 +854,68 @@ int main(int argc, char **argv) {
         fclose(f);
         return 0;
     }
+    if (!strcmp(argv[1], "b2")) {   /* d7hex b2 HEXBIN K seed OUT.sol hubdeg [restarts]: the B2 construction
+        Freed pairs (p_k, l_k) with the points pairwise opposite and the lines pairwise opposite; M(p_k) = l_k and M maps
+        the q(q+1) points at distance 2 from p_k onto the q(q+1) lines at distance 2 from l_k (random bijection); the
+        rest of M is random. Then every point is within distance 3 of a line M(u), u at distance 2 from p_k (side A
+        by type-2 routes), and every line within distance 3 of a point M^-1(L), L at distance 2 from l_k (side B). */
+        int Kw = atoi(argv[3]); rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        const char *outb = argv[5]; int hdeg = atoi(argv[6]), restarts = argc > 7 ? atoi(argv[7]) : 20;
+        uint8_t *tmpd = malloc(2 * N), *cand = malloc(2 * N); int *best[2], nbest[2] = {0, 0}, *cur = malloc(sizeof(int) * N);
+        for (int side = 0; side < 2; side++) {   /* 0: pairwise opposite points, 1: pairwise opposite lines (exact greedy) */
+            best[side] = malloc(sizeof(int) * N);
+            for (int r = 0; r < restarts; r++) {
+                int ncur = 0, ncand = N; memset(cand, 1, N);
+                while (ncand > 0 && ncur < Kw) {
+                    int pick = rndi(ncand), x = -1; for (int v = 0; v < N; v++) if (cand[v] && pick-- == 0) { x = v; break; }
+                    cur[ncur++] = x; hbfs(x, side, tmpd);
+                    ncand = 0; for (int v = 0; v < N; v++) { if (cand[v] && tmpd[side ? N + v : v] != 6) cand[v] = 0; ncand += cand[v]; }
+                }
+                if (ncur > nbest[side]) { nbest[side] = ncur; memcpy(best[side], cur, sizeof(int) * ncur); }
+            }
+            fprintf(stderr, "side %d: %d pairwise opposite %s (best of %d greedy runs)\n", side, nbest[side], side ? "lines" : "points", restarts);
+        }
+        K = nbest[0] < nbest[1] ? nbest[0] : nbest[1]; if (K > Kw) K = Kw;
+        F = malloc(sizeof(int) * (K + 1)); isF = calloc(N, sizeof(int)); fl = malloc(sizeof(int) * (K + 1));
+        M = malloc(sizeof(int) * N); Minv = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) M[v] = Minv[v] = -1;
+        for (int k = 0; k < K; k++) { F[k] = best[0][k]; fl[k] = best[1][k]; isF[F[k]] = k + 1; M[F[k]] = fl[k]; Minv[fl[k]] = F[k]; }
+        /* B2 assignments */
+        int b2p[256], b2l[256];
+        for (int k = 0; k < K; k++) {
+            hbfs(F[k], 0, tmpd); int np = 0; for (int v = 0; v < N; v++) if (tmpd[v] == 2) b2p[np++] = v;
+            hbfs(fl[k], 1, tmpd); int nl = 0; for (int v = 0; v < N; v++) if (tmpd[N + v] == 2) b2l[nl++] = v;
+            if (np != nl) { fprintf(stderr, "B2 sizes differ\n"); return 1; }
+            for (int i = np - 1; i > 0; i--) { int j = rndi(i + 1), t = b2l[i]; b2l[i] = b2l[j]; b2l[j] = t; }
+            for (int i = 0; i < np; i++) { if (M[b2p[i]] >= 0 || Minv[b2l[i]] >= 0) { fprintf(stderr, "B2 overlap at pair %d\n", k); return 1; } M[b2p[i]] = b2l[i]; Minv[b2l[i]] = b2p[i]; }
+        }
+        /* the rest at random */
+        int *fp_ = malloc(sizeof(int) * N), *fl_ = malloc(sizeof(int) * N), nfp = 0, nfl = 0;
+        for (int v = 0; v < N; v++) { if (M[v] < 0) fp_[nfp++] = v; if (Minv[v] < 0) fl_[nfl++] = v; }
+        for (int i = nfl - 1; i > 0; i--) { int j = rndi(i + 1), t = fl_[i]; fl_[i] = fl_[j]; fl_[j] = t; }
+        for (int i = 0; i < nfp; i++) { M[fp_[i]] = fl_[i]; Minv[fl_[i]] = fp_[i]; }
+        /* hub graph: union of hdeg random perfect matchings between line-side and point-side hubs */
+        HGj = malloc(sizeof(int) * (K * hdeg + 1)); HGk = malloc(sizeof(int) * (K * hdeg + 1)); HGm = 0;
+        int *perm = malloc(sizeof(int) * (K + 1));
+        for (int d = 0; d < hdeg; d++) {
+            for (int tr = 0; tr < 1000; tr++) {
+                for (int j = 0; j < K; j++) perm[j] = j;
+                for (int j = K - 1; j > 0; j--) { int r = rndi(j + 1), t = perm[j]; perm[j] = perm[r]; perm[r] = t; }
+                int ok = 1; for (int j = 0; j < K && ok; j++) for (int e = 0; e < HGm; e++) if (HGj[e] == j && HGk[e] == perm[j]) { ok = 0; break; }
+                if (ok) break;
+            }
+            for (int j = 0; j < K; j++) { HGj[HGm] = j; HGk[HGm] = perm[j]; HGm++; }
+        }
+        hg_build();
+        NV = 6 * N + 2 * K; alloc_graph();
+        hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));
+        for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(fl[j], 1, hdl[j]); }
+        int hv = 0; for (int j = 0; j < K; j++) hv += hub_violations(j, 0) + hub_violations(j, 1);
+        int *per = malloc(sizeof(int) * (K + 1));
+        int cost = total_cost(per);
+        printf("RESULT b2 q=%d K=%d n=%d hub-graph degree %d, same-side hub violations %d, freed-source cost %d\n", q, K, NV, hdeg, hv, cost);
+        write_sol(outb);
+        return 0;
+    }
     if (!strcmp(argv[1], "grow")) {   /* d7hex grow HEXBIN SOL OUT seed: resume the growth mode (GROW=Kmax etc.) from a solution */
         read_sol(argv[3]);
         const char *outg = argv[4];
