@@ -1,0 +1,14 @@
+group sl 79 x Z_133, N=65563680, identity 819546, H order 57, rows 1150240, threads 4, setup 1.88s
+wide rows: HW order 247, rows 265440, setup 3.88s
+alpha: conj by mat(40,1,19,40) (index 249659), z -> 11 z on Z_133
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 77 (+e); mu = 2.86, mu/k = 0.95, fixed-point misses ~ 0.27
+start cost=15
+RESULT d=11 D=10 group=sl 79 x Z_133 N=65563680 best=0 evals=9 time=0.2 orbit k=3 m=3 f=2 fix=77
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/e6920a51-aa4e-57fc-88b7-0bdfe298eb49/scratchpad/runs/d11D10_sl_79_133_orb3_s1.txt
+--- haarcheck_sl (research/frontier/haarcheck_sl.c):
+from (e,A): reached A 65563680/65563680, B 65563680/65563680 within 10, ecc 10
+from (e,B): reached A 65563680/65563680, B 65563680/65563680 within 10, ecc 10
+VALID d=11 D=10 group=sl 79 x Z_133 N=65563680 vertices=131127360 (distinct generators, 11-regular simple)
+--- haarcheck2 (research/frontier/haarcheck2.c):
+VALID d=11 D=10 vertices=131127360 eccA=10 eccB=10
