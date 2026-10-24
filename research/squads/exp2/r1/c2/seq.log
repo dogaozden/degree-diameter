@@ -1,2 +1,6 @@
 K=18 mind=4 seed=2 rc=0 wall=355s :: RESULT q=5 K=18 n=23472 maxdeg=7 diameter=7 badsources=0 VALID
 K=24 mind=4 seed=2 rc=124 wall=900s :: NO RESULT LINE
+K=24 mind=6 seed=2 rc=124 wall=900s :: NO RESULT LINE
+search finished
+scored K=18 mind=4 sol=k18_m4.sol :: RESULT VALID d=7 D=7 n=23472 | n=23472 edges=82146 degree min=6 max=7 bipartite=yes diameter=7
+ALL DONE

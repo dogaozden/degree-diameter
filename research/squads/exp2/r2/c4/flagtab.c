@@ -198,6 +198,46 @@ static void cmd_greedy(int K, uint64_t seed, int mind, const char *out, int pool
     fprintf(stderr, "greedy: wrote %d flags, pairwise sum %ld\n", k, total);
 }
 
+
+/* clique: keep only flags of zero pairwise weight (2|a-b| = 0 and compat) with all chosen; at each step pick, among
+   a sample of the remaining candidates, the one that keeps the most remaining candidates (sampled) */
+static int cw[144];   /* cached pair weight per class: 2|a-b| + 2*(compat fails); -1 = not computed */
+static int class_weight(int p1, int l1, int p2, int l2) {
+    int t[4]; tuple_of(p1, l1, p2, l2, t); int id = cls_index(t);
+    if (cw[id] < 0) { int a, b; pair_ab(p1, l1, p2, l2, &a, &b); cw[id] = 2 * abs(a - b) + 2 * (compat(t) ? 0 : 1); }
+    return cw[id];
+}
+static void cmd_clique(int K, uint64_t seed, const char *out, int sample, int keep) {
+    rs ^= seed * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd();
+    for (int i = 0; i < 144; i++) cw[i] = -1;
+    int F_ = N * Q1;
+    int *cand = malloc(sizeof(int) * F_), nc = 0;
+    for (int f = 0; f < F_; f++) cand[nc++] = f;             /* flag f = (f / Q1 point, PL[point*Q1 + f%Q1] line) */
+    int P[64], L[64], k = 0;
+    int f0 = cand[rndi(nc)];
+    P[k] = f0 / Q1; L[k] = PL[(f0 / Q1) * Q1 + f0 % Q1]; k++;
+    /* filter candidates against the first flag */
+    { int m = 0; for (int i = 0; i < nc; i++) { int f = cand[i], p = f / Q1, l = PL[p * Q1 + f % Q1]; if (class_weight(P[0], L[0], p, l) == 0 && !(p == P[0])) cand[m++] = f; } nc = m; }
+    while (k < K && nc > 0) {
+        int bestf = -1; long bests = -1;
+        for (int s = 0; s < sample; s++) {
+            int f = cand[rndi(nc)], p = f / Q1, l = PL[p * Q1 + f % Q1];
+            long score = 0;
+            for (int r = 0; r < keep; r++) { int g = cand[rndi(nc)], pg = g / Q1, lg = PL[pg * Q1 + g % Q1]; if (pg != p && class_weight(p, l, pg, lg) == 0) score++; }
+            score = score * nc / keep;   /* estimated count of remaining candidates compatible with f */
+            if (score > bests || (score == bests && rndi(2))) { bests = score; bestf = f; }
+        }
+        P[k] = bestf / Q1; L[k] = PL[P[k] * Q1 + bestf % Q1]; k++;
+        int m = 0;
+        for (int i = 0; i < nc; i++) { int f = cand[i], p = f / Q1, l = PL[p * Q1 + f % Q1];
+            if (p != P[k - 1] && class_weight(P[k - 1], L[k - 1], p, l) == 0) cand[m++] = f; }
+        nc = m;
+        if (k <= 3 || k % 4 == 0) fprintf(stderr, "clique: k=%d remaining candidates ~%d\n", k, nc);
+    }
+    FILE *f = fopen(out, "w"); for (int j = 0; j < k; j++) fprintf(f, "%d %d\n", P[j], L[j]); fclose(f);
+    fprintf(stderr, "clique: wrote %d flags (zero pairwise weight) to %s\n", k, out);
+}
+
 int main(int argc, char **argv) {
     if (argc < 3) { fprintf(stderr, "usage: see header\n"); return 1; }
     load(argv[1]);
@@ -206,6 +246,7 @@ int main(int argc, char **argv) {
     else if (!strcmp(argv[2], "eval")) cmd_eval(argv[3]);
     else if (!strcmp(argv[2], "random")) cmd_random(atoi(argv[3]), atoll(argv[4]), atoi(argv[5]), argv[6]);
     else if (!strcmp(argv[2], "greedy")) cmd_greedy(atoi(argv[3]), atoll(argv[4]), atoi(argv[5]), argv[6], argc > 7 ? atoi(argv[7]) : 2000);
+    else if (!strcmp(argv[2], "clique")) cmd_clique(atoi(argv[3]), atoll(argv[4]), argv[5], argc > 6 ? atoi(argv[6]) : 300, argc > 7 ? atoi(argv[7]) : 1500);
     else { fprintf(stderr, "unknown mode\n"); return 1; }
     return 0;
 }

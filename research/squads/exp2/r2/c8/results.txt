@@ -1,0 +1,12 @@
+c8 (super-hub card), raw results, 2026-10-24. All numbers from the r1 K=13 solution (q5_K13_pg23.sol) copied to base13.sol.
+1. base13: d7hex edges + apsp: n=23462, diameter 7, RESULT VALID (sanity check of the H(5) rebuild).
+2. nohg13 (hub graph removed, all 52 HG edges): apsp diameter 8, RESULT INVALID. ecc.c: bad sources = 26 hubs only
+   (214 pairs). All 3*3906 base points/lines still have eccentricity <= 7 without the hub graph.
+3. s1_a (super-hub S = id 23462 on line-hubs {1,2,5,9,10,11,12}; one HG edge removed at each of those 7 hubs):
+   ecc.c: only S is bad (beyond 579); all hubs and base vertices have eccentricity <= 7.
+4. Coverage of points by line-hub balls of radius 6 (cov.py, cov2.py):
+   no HG: best 7-subset covers 3642 of 3906 points per level (all 13 hubs: 3874), so 264 missing per level.
+   base HG: best 7-subset covers 3720 (all 13 hubs: 3874), so 186 missing per level; 32 points per level are
+   beyond 6 from every line-hub. Lines (point-hub side, cov3.py): best 7 cover 3729, all 13 cover 3878.
+5. Pure hexagon (hexcover.py): greedy finds a family of 6 points whose radius-4 balls (781 points each) cover all
+   3906 points. So a super-hub on 7 freed points is geometrically possible; the r1 freed set is not such a family.
