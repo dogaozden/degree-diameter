@@ -456,8 +456,25 @@ eccentricity "the number of blocks after which δ = w₀". On the 13 types they 
 
 Result: gap = 0 only for the colour classes of the balanced types (A₂, A₄, A₆, A₈, B₂, B₄, B₆, B₈, E₆, E₈, F₄, G₂).
 The best non-colour split is A₄ with {s₁, s₄} | {s₂, s₃} (diameter 4, gap 1). Every other non-colour split loses at
-least 3 powers of q, and E₈ at least 29. A proof would need the analogue of (C1) for general parabolic pairs. I expect
-it to hold for all types.
+least 3 powers of q, and E₈ at least 29.
+
+**What is proved (reduction).** gap = 0 iff a₁ = a₂ = a and w₀ = w_{J₁}w_{J₂}w_{J₁}⋯ = w_{J₂}w_{J₁}w_{J₂}⋯ (N/a
+factors each, lengths adding).
+
+*Proof.*
+1. (⇒) Let J₂ have the smaller a and m = m_{J₂}(w₀) ≤ D. The Demazure product of m blocks has length at most
+   ⌈m/2⌉a₂ + ⌊m/2⌋a₁, so N is at most that.
+2. Hence gap ≥ a₁(m−1) + a₂ − N ≥ (⌈m/2⌉ − 1)(a₁ − a₂) ≥ 0.
+3. m ≤ 2 is impossible for a connected diagram. N > a₁ + a₂, because a root such as α_i + α_j with i ∈ J₁ and
+   j ∈ J₂ adjacent belongs to neither parabolic.
+4. So gap = 0 forces a₁ = a₂ = a, D = m and N = ma. Then every Demazure step adds length, so each block is the
+   longest element and the lengths add. The same holds from J₁, since N/a ≤ m_{J₁}(w₀) ≤ D = N/a.
+5. (⇐) The factorisations give D ≤ N/a, so gap ≤ 0. ∎
+
+A necessary condition follows: if some s ∈ J₁ commutes with all of J₂, then s is a left descent of w_{J₂}w_{J₁}, and
+w_{J₁}w_{J₂}w_{J₁} is not reduced. So the conjecture says that the colour classes are the only "longest-element
+analogue" of a bipartite Coxeter element. A proof needs that analogue of (C1). I expect it to hold for all types;
+the computation above covers rank ≤ 8.
 
 ### 2.2 For D ≡ 2 mod 4 the building rate is genuinely worse
 
