@@ -144,8 +144,18 @@ theorem exB (n : ℕ) (hn : n < 231420) : ∃ c, idxG (wordB c) = n := by
   · exact stageExB 220400 5510 stageB40 certB40 n (by omega) (by omega)
   · exact stageExB 225910 5510 stageB41 certB41 n (by omega) (by omega)
 
-theorem cover1 : ∀ g : G, ∃ x1 ∈ SS, ∃ x2 ∈ SS, ∃ x3 ∈ SS, ∃ x4 ∈ SS, ∃ x5 ∈ SS, ∃ x6 ∈ SS,
-    ∃ x7 ∈ SS, ∃ x8 ∈ SS, g = x1⁻¹ * x2 * x3⁻¹ * x4 * x5⁻¹ * x6 * x7⁻¹ * x8 := by
+/-- The covering hypothesis `hA` of `Haar.haar_isBipartiteDegDiam9_of_equiv`, for a finite set `S` in any group. It is
+the lemma's own body, so the lemma's hypothesis and `cover1` share one `Group` instance path. -/
+def CoverHypA {G : Type*} [Group G] (S : Finset G) : Prop :=
+  ∀ g : G, ∃ x1 ∈ S, ∃ x2 ∈ S, ∃ x3 ∈ S, ∃ x4 ∈ S, ∃ x5 ∈ S, ∃ x6 ∈ S, ∃ x7 ∈ S, ∃ x8 ∈ S,
+    g = x1⁻¹ * x2 * x3⁻¹ * x4 * x5⁻¹ * x6 * x7⁻¹ * x8
+
+/-- The covering hypothesis `hB` of `Haar.haar_isBipartiteDegDiam9_of_equiv`, for a finite set `S` in any group. -/
+def CoverHypB {G : Type*} [Group G] (S : Finset G) : Prop :=
+  ∀ g : G, ∃ x1 ∈ S, ∃ x2 ∈ S, ∃ x3 ∈ S, ∃ x4 ∈ S, ∃ x5 ∈ S, ∃ x6 ∈ S, ∃ x7 ∈ S, ∃ x8 ∈ S,
+    g = x1 * x2⁻¹ * x3 * x4⁻¹ * x5 * x6⁻¹ * x7 * x8⁻¹
+
+theorem cover1 : CoverHypA SS := by
   intro g
   obtain ⟨c, hc⟩ := exA (idxG g) (idxG_lt g)
   have h : wordA c = g := eq_of_idxG_eq hc
@@ -153,8 +163,7 @@ theorem cover1 : ∀ g : G, ∃ x1 ∈ SS, ∃ x2 ∈ SS, ∃ x3 ∈ SS, ∃ x4 
     _, sel_mem _ (digit_lt c 3), _, sel_mem _ (digit_lt c 4), _, sel_mem _ (digit_lt c 5),
     _, sel_mem _ (digit_lt c 6), _, sel_mem _ (digit_lt c 7), h.symm⟩
 
-theorem cover2 : ∀ g : G, ∃ x1 ∈ SS, ∃ x2 ∈ SS, ∃ x3 ∈ SS, ∃ x4 ∈ SS, ∃ x5 ∈ SS, ∃ x6 ∈ SS,
-    ∃ x7 ∈ SS, ∃ x8 ∈ SS, g = x1 * x2⁻¹ * x3 * x4⁻¹ * x5 * x6⁻¹ * x7 * x8⁻¹ := by
+theorem cover2 : CoverHypB SS := by
   intro g
   obtain ⟨c, hc⟩ := exB (idxG g) (idxG_lt g)
   have h : wordB c = g := eq_of_idxG_eq hc

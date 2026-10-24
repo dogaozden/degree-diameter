@@ -73,15 +73,24 @@ def rwB (c : ℕ) : RM × ℕ :=
   rmz (rmz (rmz (rmz (rmz (rmz (rmz (rs (digit c 0)) (izc (rs (digit c 1)))) (rs (digit c 2)))
     (izc (rs (digit c 3)))) (rs (digit c 4))) (izc (rs (digit c 5)))) (rs (digit c 6))) (izc (rs (digit c 7)))
 
+/-- The A-word `x₁⁻¹ x₂ x₃⁻¹ x₄ x₅⁻¹ x₆ x₇⁻¹ x₈` in any group: the body of the covering hypothesis `hA` of
+`Haar.haar_isBipartiteDegDiam9_of_equiv`, so it uses the `Group` instance path of that lemma. -/
+def wordOfA {H : Type*} [Group H] (x1 x2 x3 x4 x5 x6 x7 x8 : H) : H :=
+  x1⁻¹ * x2 * x3⁻¹ * x4 * x5⁻¹ * x6 * x7⁻¹ * x8
+
+/-- The B-word `x₁ x₂⁻¹ x₃ x₄⁻¹ x₅ x₆⁻¹ x₇ x₈⁻¹` in any group: the body of the covering hypothesis `hB`. -/
+def wordOfB {H : Type*} [Group H] (x1 x2 x3 x4 x5 x6 x7 x8 : H) : H :=
+  x1 * x2⁻¹ * x3 * x4⁻¹ * x5 * x6⁻¹ * x7 * x8⁻¹
+
 /-- The A-word of the code `c` in `G`. -/
 def wordA (c : ℕ) : G :=
-  (sel (digit c 0))⁻¹ * sel (digit c 1) * (sel (digit c 2))⁻¹ * sel (digit c 3) *
-    (sel (digit c 4))⁻¹ * sel (digit c 5) * (sel (digit c 6))⁻¹ * sel (digit c 7)
+  wordOfA (sel (digit c 0)) (sel (digit c 1)) (sel (digit c 2)) (sel (digit c 3)) (sel (digit c 4))
+    (sel (digit c 5)) (sel (digit c 6)) (sel (digit c 7))
 
 /-- The B-word of the code `c` in `G`. -/
 def wordB (c : ℕ) : G :=
-  sel (digit c 0) * (sel (digit c 1))⁻¹ * sel (digit c 2) * (sel (digit c 3))⁻¹ *
-    sel (digit c 4) * (sel (digit c 5))⁻¹ * sel (digit c 6) * (sel (digit c 7))⁻¹
+  wordOfB (sel (digit c 0)) (sel (digit c 1)) (sel (digit c 2)) (sel (digit c 3)) (sel (digit c 4))
+    (sel (digit c 5)) (sel (digit c 6)) (sel (digit c 7))
 
 /-! ### Group elements as raw values -/
 
@@ -181,10 +190,10 @@ theorem valsG_sel (c k : ℕ) : valsG (sel (digit c k)) = rs (digit c k) :=
   valsG_sel_all _ (digit_lt c k)
 
 theorem valsG_wordA (c : ℕ) : valsG (wordA c) = rwA c := by
-  simp only [wordA, rwA, valsG_mul, valsG_inv, valsG_sel]
+  simp only [wordA, wordOfA, rwA, valsG_mul, valsG_inv, valsG_sel]
 
 theorem valsG_wordB (c : ℕ) : valsG (wordB c) = rwB c := by
-  simp only [wordB, rwB, valsG_mul, valsG_inv, valsG_sel]
+  simp only [wordB, wordOfB, rwB, valsG_mul, valsG_inv, valsG_sel]
 
 /-! ### Indices -/
 
