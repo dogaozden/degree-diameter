@@ -1,0 +1,7 @@
+group prod psl 11 meta 14 1 1 x Z_1, N=9240, identity 770, H order 42, rows 220, threads 1, setup 0.00s
+start cost=95
+t=30 steps=63231 evals=1264621 cost=6 best=4 T=0.53
+t=60 steps=126120 evals=2522401 cost=4 best=4 T=0.19
+t=90 steps=191546 evals=3830921 cost=4 best=4 T=0.15
+t=120 steps=255173 evals=5103461 cost=7 best=4 T=0.15
+RESULT d=16 D=5 group=prod psl 11 meta 14 1 1 x Z_1 N=9240 best=4 evals=6418541 time=150.0

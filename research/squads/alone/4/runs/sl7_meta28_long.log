@@ -1,0 +1,8 @@
+group prod sl 7 meta 28 1 1 x Z_1, N=9408, identity 1176, H order 56, rows 168, threads 1, setup 0.00s
+start cost=82
+t=30 steps=86557 evals=1731141 cost=2 best=2 T=0.53
+t=60 steps=171836 evals=3436721 cost=2 best=2 T=0.19
+t=90 steps=260265 evals=5205301 cost=2 best=2 T=0.15
+RESULT d=16 D=5 group=prod sl 7 meta 28 1 1 x Z_1 N=9408 best=0 evals=6560421 time=113.5
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/alone/4/runs/sl7_meta28_long.txt

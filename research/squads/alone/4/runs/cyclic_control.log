@@ -1,0 +1,9 @@
+group meta 8400 1 1 x Z_1, N=8400, identity 0, H order 60, rows 140, threads 1, setup 0.03s
+start cost=2198
+t=30 steps=113242 evals=2264841 cost=1266 best=1266 T=0.53
+t=60 steps=223693 evals=4473861 cost=1266 best=1266 T=0.19
+t=90 steps=336131 evals=6722621 cost=1266 best=1266 T=0.15
+t=120 steps=450179 evals=9003581 cost=1266 best=1266 T=0.15
+t=150 steps=565633 evals=11312661 cost=1266 best=1266 T=0.15
+t=180 steps=679829 evals=13596581 cost=1266 best=1266 T=0.56
+RESULT d=16 D=5 group=meta 8400 1 1 x Z_1 N=8400 best=1266 evals=15217721 time=200.0

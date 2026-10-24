@@ -1,0 +1,10 @@
+group prod sl 11 meta 12 1 1 x Z_1, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.00s
+start cost=976
+t=30 steps=51702 evals=1034041 cost=522 best=522 T=0.53
+t=60 steps=106142 evals=2122841 cost=546 best=512 T=0.19
+t=90 steps=159401 evals=3188021 cost=496 best=496 T=0.15
+t=120 steps=210034 evals=4200681 cost=496 best=496 T=0.15
+t=150 steps=261101 evals=5222021 cost=496 best=496 T=0.15
+t=180 steps=314830 evals=6296601 cost=496 best=496 T=0.15
+t=210 steps=367439 evals=7348781 cost=496 best=496 T=0.15
+RESULT d=16 D=5 group=prod sl 11 meta 12 1 1 x Z_1 N=15840 best=496 evals=8452941 time=240.0

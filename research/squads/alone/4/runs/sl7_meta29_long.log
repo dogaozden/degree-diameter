@@ -1,0 +1,42 @@
+group prod sl 7 meta 29 1 1 x Z_1, N=9744, identity 1218, H order 58, rows 168, threads 1, setup 0.00s
+start cost=72
+t=30 steps=84223 evals=1684461 cost=4 best=4 T=0.53
+t=60 steps=159353 evals=3187061 cost=4 best=4 T=0.19
+t=90 steps=244409 evals=4888181 cost=4 best=4 T=0.15
+t=120 steps=329838 evals=6596761 cost=4 best=4 T=0.15
+t=150 steps=415514 evals=8310281 cost=4 best=4 T=0.15
+t=180 steps=500670 evals=10013401 cost=2 best=2 T=0.81
+t=210 steps=585129 evals=11702581 cost=2 best=2 T=0.29
+t=240 steps=668169 evals=13363381 cost=2 best=2 T=0.15
+t=270 steps=750705 evals=15014101 cost=4 best=2 T=0.15
+t=300 steps=838153 evals=16763061 cost=4 best=2 T=0.15
+t=330 steps=920983 evals=18419661 cost=2 best=2 T=1.06
+t=360 steps=1004840 evals=20096801 cost=2 best=2 T=0.38
+t=390 steps=1089090 evals=21781801 cost=2 best=2 T=0.15
+t=420 steps=1174872 evals=23497441 cost=2 best=2 T=0.15
+t=450 steps=1260732 evals=25214641 cost=2 best=2 T=0.15
+t=480 steps=1345746 evals=26914921 cost=14 best=2 T=1.06
+t=510 steps=1430970 evals=28619401 cost=6 best=2 T=0.38
+t=540 steps=1518422 evals=30368441 cost=6 best=2 T=0.15
+t=570 steps=1605811 evals=32116221 cost=6 best=2 T=0.15
+t=600 steps=1693672 evals=33873441 cost=6 best=2 T=0.15
+t=630 steps=1780526 evals=35610521 cost=2 best=2 T=1.06
+t=660 steps=1865322 evals=37306441 cost=4 best=2 T=0.38
+t=690 steps=1951065 evals=39021301 cost=2 best=2 T=0.15
+t=720 steps=2036315 evals=40726301 cost=2 best=2 T=0.15
+t=750 steps=2122649 evals=42452981 cost=2 best=2 T=0.15
+t=780 steps=2208387 evals=44167741 cost=2 best=2 T=1.06
+t=810 steps=2294207 evals=45884141 cost=2 best=2 T=0.38
+t=840 steps=2377211 evals=47544221 cost=2 best=2 T=0.15
+t=870 steps=2458662 evals=49173241 cost=2 best=2 T=0.15
+t=900 steps=2540368 evals=50807361 cost=2 best=2 T=0.15
+t=930 steps=2621981 evals=52439621 cost=10 best=2 T=1.06
+t=960 steps=2710255 evals=54205101 cost=8 best=2 T=0.38
+t=990 steps=2800440 evals=56008801 cost=8 best=2 T=0.15
+t=1020 steps=2890998 evals=57819961 cost=8 best=2 T=0.15
+t=1050 steps=2978535 evals=59570701 cost=8 best=2 T=0.15
+t=1080 steps=3067045 evals=61340901 cost=2 best=2 T=1.06
+t=1110 steps=3150035 evals=63000701 cost=2 best=2 T=0.38
+t=1140 steps=3233945 evals=64678901 cost=2 best=2 T=0.15
+t=1170 steps=3318207 evals=66364141 cost=2 best=2 T=0.15
+RESULT d=16 D=5 group=prod sl 7 meta 29 1 1 x Z_1 N=9744 best=2 evals=68078261 time=1200.0
