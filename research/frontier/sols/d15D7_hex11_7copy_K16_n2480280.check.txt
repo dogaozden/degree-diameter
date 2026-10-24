@@ -1,0 +1,14 @@
+(15,7) 2,480,280: 7 copies of H(11) + 96 hubs (16 freed flags, rook 4x4 hub graph). cell-15-7 job, 2026-10-24T19:46Z.
+Solution file (d7hex format: freed points, hub edges, bijection M) = d15D7_hex11_7copy_K16_n2480280.sol.gz; sha256 of the uncompressed file: 0b80742d7513eb1d7e261f1581abdc6cd9fa2340e1397ed08d47c31c800bf4d0
+Found by: cover_match2 (squad c157-r1 card c6, exact candidates) + d7hexr local search (INIT, CKPT, NOTRUE); the checkpoint was tested in the real 7-copy graph by kcopy_hub checkf (watch_ckpt.sh).
+Rebuild: research/d15D7/README.md (hexgen 11, then kcopy_hub check|full|edges hex/hex_q11.bin SOL 3).
+
+1. kcopy_hub check, 7 copies (BFS from all freed sources and hubs; decides the diameter by the lemma in kcopy_hub.c):
+q=11 k=3 copies=7 K=16 hubedges=112 n=2480280 edges=18601828 maxdeg=15 (Delta 15)
+freed sources and hubs: 128 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK
+
+   same bijection, 5 copies ((14,7), table 1,771,560) and 3 copies ((13,7), table 1,062,936):
+q=11 k=2 copies=5 K=16 hubedges=112 n=1771624 edges=12401192 maxdeg=14 (Delta 14)
+freed sources and hubs: 96 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK
+q=11 k=1 copies=3 K=16 hubedges=112 n=1062968 edges=6909244 maxdeg=13 (Delta 13)
+freed sources and hubs: 64 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK

@@ -312,6 +312,66 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
+/* ---------- targeted type-2 sweep (cell-15-7) ----------
+   In the tail almost every point near a flag is already in use, so random proposals are rejected. The type-2
+   resources are strong: a point u at distance 2 from p_k whose line M(u) lies within distance 3 of a target point x
+   covers x, and a 3-ball holds 1,464 targets. For each pair and side: score every line (side A) or point (side B) by the
+   number of currently uncovered targets within distance 3 of it, then try the best candidates against all 132 type-2
+   resources of the pair with the exact proxy delta, and apply the best swap if it lowers the proxy. */
+static int *sw_mark = NULL, *sw_cnt = NULL, sw_epoch = 0;
+static long type2_sweep(int ncand) {
+    if (!sw_mark) { sw_mark = calloc(N, sizeof(int)); sw_cnt = calloc(N, sizeof(int)); }
+    int *tg = malloc(sizeof(int) * N), *touched = malloc(sizeof(int) * N); long applied = 0;
+    for (int k = 0; k < K; k++) for (int side = 0; side < 2; side++) {
+        int nt = 0;
+        if (side == 0) { for (int a = 0; a < noppA[k]; a++) { int x = oppA[k][a]; if (cA[k][x] == 0) tg[nt++] = x; } }
+        else { for (int a = 0; a < noppB[k]; a++) { int t = oppB[k][a]; if (cB[k][t] == 0) tg[nt++] = t; } }
+        if (nt == 0) continue;
+        /* count, for every candidate c, the targets within distance 3 of it (side A: c a line, targets points;
+           side B: c a point, targets lines); B_3 of a point = its lines and the lines through points collinear with it */
+        int ntch = 0; sw_epoch++;
+        for (int i = 0; i < nt; i++) {
+            int x = tg[i];
+            if (side == 0) {
+                for (int a = 0; a < Q1; a++) { int L1 = PL[x * Q1 + a];
+                    if (sw_mark[L1] != sw_epoch) { sw_mark[L1] = sw_epoch; sw_cnt[L1] = 0; touched[ntch++] = L1; } sw_cnt[L1]++;
+                    for (int b = 0; b < Q1; b++) { int y = LP[L1 * Q1 + b]; if (y == x) continue;
+                        for (int c = 0; c < Q1; c++) { int L2 = PL[y * Q1 + c]; if (L2 == L1) continue;
+                            if (sw_mark[L2] != sw_epoch) { sw_mark[L2] = sw_epoch; sw_cnt[L2] = 0; touched[ntch++] = L2; } sw_cnt[L2]++; } } }
+            } else {
+                for (int a = 0; a < Q1; a++) { int y1 = LP[x * Q1 + a];
+                    if (sw_mark[y1] != sw_epoch) { sw_mark[y1] = sw_epoch; sw_cnt[y1] = 0; touched[ntch++] = y1; } sw_cnt[y1]++;
+                    for (int b = 0; b < Q1; b++) { int t1 = PL[y1 * Q1 + b]; if (t1 == x) continue;
+                        for (int c = 0; c < Q1; c++) { int y2 = LP[t1 * Q1 + c]; if (y2 == y1) continue;
+                            if (sw_mark[y2] != sw_epoch) { sw_mark[y2] = sw_epoch; sw_cnt[y2] = 0; touched[ntch++] = y2; } sw_cnt[y2]++; } } }
+            }
+        }
+        /* top candidates by count (partial selection) */
+        int best[64], nb = 0; if (ncand > 64) ncand = 64;
+        for (int i = 0; i < ntch; i++) {
+            int c = touched[i];
+            if (side == 0 ? isF[Minv[c]] : isF[c]) continue;
+            if (nb < ncand) { best[nb++] = c; }
+            else { int wj = 0; for (int j = 1; j < nb; j++) if (sw_cnt[best[j]] < sw_cnt[best[wj]]) wj = j; if (sw_cnt[c] > sw_cnt[best[wj]]) best[wj] = c; }
+        }
+        long bd = 0; int bu = -1, bw = -1;
+        for (int j = 0; j < nb; j++) {
+            int c = best[j];
+            int nr = side == 0 ? nn2p[k] : nn2l[k];
+            for (int r = 0; r < nr; r++) {
+                int u, w;
+                if (side == 0) { u = n2p[k][r]; w = Minv[c]; }          /* u (type-2 point of pair k) takes line c */
+                else { int U = n2l[k][r]; u = c; w = Minv[U]; }           /* point c takes the type-2 line U of pair k */
+                if (u == w || isF[u] || isF[w]) continue;
+                long before = zeros; swapM(u, w); long d = zeros - before; swapM(u, w);
+                if (d < bd) { bd = d; bu = u; bw = w; }
+            }
+        }
+        if (bu >= 0) { swapM(bu, bw); applied++; }
+    }
+    free(tg); free(touched);
+    return applied;
+}
 static int BESTK = 1;
 static long fast_search(double maxsec) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
@@ -402,6 +462,15 @@ static long fast_search(double maxsec) {
         }
         if (bu < 0) continue;
         if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) swapM(bu, bw);
+        {   /* targeted type-2 sweeps in the tail (env SWEEP = proxy threshold, default 4000; SWEEPSEC seconds apart) */
+            static double sw_last = -1e9; static long sw_at = -1; static double sw_sec = 5;
+            if (sw_at < 0) { sw_at = getenv("SWEEP") ? atol(getenv("SWEEP")) : 4000; if (getenv("SWEEPSEC")) sw_sec = atof(getenv("SWEEPSEC")); }
+            if (zeros <= sw_at && (it & 4095) == 0) {
+                double now = (double)clock() / CLOCKS_PER_SEC;
+                if (now - sw_last >= sw_sec) { long z0 = zeros; long ap = type2_sweep(6); sw_last = (double)clock() / CLOCKS_PER_SEC;
+                    if (getenv("SWEEPLOG")) fprintf(stderr, "type-2 sweep: %ld swaps, proxy %ld -> %ld (%.1fs)\n", ap, z0, zeros, sw_last - now); nz = 0; }
+            }
+        }
         if (zeros < best) {
             best = zeros;
             /* checkpoint the current M when the proxy reaches a new low below 2000 (cell-15-7) */

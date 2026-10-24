@@ -148,6 +148,53 @@ int main(int argc, char **argv) {
     if (argc < 5) { fprintf(stderr, "usage: see header\n"); return 1; }
     load(argv[2]); k = atoi(argv[4]); read_sol(argv[3]);
     int Delta = q + 1 + k;
+    if (!strcmp(argv[1], "fix")) {   /* kcopy_hub fix HEX SOL k OUT: repair far pairs by "safe" swaps of M (cell-15-7) */
+        /* roleP[v]: flags b with d(v,p_b) in {2,4} (v's line is a side-A resource of b); roleL[N]: flags b with
+           d(N,l_b) in {2,4} (N's preimage is a side-B resource of b). A swap that only touches elements with no role
+           except the one it creates cannot break a type-2/4 route of any flag; BFS from all freed sources confirms. */
+        uint64_t *roleP = calloc(N, 8), *roleL = calloc(N, 8); uint8_t *hd = malloc(2 * N);
+        uint8_t **dpa = malloc(sizeof(void *) * K), **dla = malloc(sizeof(void *) * K);
+        int *qq = malloc(sizeof(int) * 2 * N);
+        for (int a = 0; a < K; a++) for (int s = 0; s < 2; s++) {
+            uint8_t *d = malloc(2 * N); memset(d, 255, 2 * N); int h = 0, t = 0, st = s == 0 ? F[a] : N + M[F[a]]; d[st] = 0; qq[t++] = st;
+            while (h < t) { int x = qq[h++];
+                if (x < N) { for (int i = 0; i < Q1; i++) { int y = N + PL[x * Q1 + i]; if (d[y] == 255) { d[y] = d[x] + 1; qq[t++] = y; } } }
+                else { int l = x - N; for (int i = 0; i < Q1; i++) { int y = LP[l * Q1 + i]; if (d[y] == 255) { d[y] = d[x] + 1; qq[t++] = y; } } } }
+            if (s == 0) { dpa[a] = d; for (int v = 0; v < N; v++) if (d[v] == 2 || d[v] == 4) roleP[v] |= 1ULL << a; }
+            else { dla[a] = d; for (int l = 0; l < N; l++) if (d[N + l] == 2 || d[N + l] == 4) roleL[l] |= 1ULL << a; }
+        }
+        uint8_t *dist = malloc(NV); int *que = malloc(sizeof(int) * NV);
+        uint64_t rsd = 0x9E3779B97F4A7C15ULL;
+        for (int round = 0; round < 200; round++) {
+            long tot = 0; int fa = -1, fs = -1, ft = -1;
+            for (int a = 0; a < K; a++) for (int s = 0; s < 2; s++) {
+                int v = s == 0 ? VP(F[a], 0) : VL(M[F[a]], 0); long b; bfs_ecc(v, dist, que, &b); tot += b;
+                if (b && fa < 0) { fa = a; fs = s; for (int x = 0; x < NV; x++) if (dist[x] > 7) { ft = x; break; } }
+            }
+            printf("round %d: far pairs %ld\n", round, tot); fflush(stdout);
+            if (!tot) { FILE *f = fopen(argv[5], "w"); fprintf(f, "d7hex %d %d %d %d\nfreed", q, N, K, 6 * N + 2 * K);
+                for (int a = 0; a < K; a++) fprintf(f, " %d", F[a]); fprintf(f, "\nhubedges %d", HGm);
+                for (int e = 0; e < HGm; e++) fprintf(f, " %d %d", HGj[e], HGk[e]); fprintf(f, "\n");
+                for (int p = 0; p < N; p++) fprintf(f, "%d%c", M[p], (p % 20 == 19 || p == N - 1) ? '\n' : ' ');
+                fclose(f); printf("fixed: written %s\n", argv[5]); return 0; }
+            if (ft < 0 || ft >= HB) { printf("far target is a hub or none: stop\n"); return 1; }
+            int x = ft % (2 * N), done = 0; uint64_t me = 1ULL << fa;
+            if (fs == 0 && x < N) {          /* point x opposite p_a: give a line N through x to some u at distance 4 from p_a */
+                for (int i = 0; i < Q1 && !done; i++) { int Nl = PL[x * Q1 + i]; if (roleL[Nl]) continue; int w = Minv[Nl]; if (isF[w] || roleP[w]) continue;
+                    for (int tr = 0; tr < 400000 && !done; tr++) { rsd ^= rsd << 13; rsd ^= rsd >> 7; rsd ^= rsd << 17; int u = rsd % N;
+                        if (dpa[fa][u] != 4 || isF[u] || (roleP[u] & ~me)) continue; int O = M[u]; if (roleL[O]) continue;
+                        M[u] = Nl; Minv[Nl] = u; M[w] = O; Minv[O] = w; done = 1; printf("  swap: point %d takes line %d (through far point %d), point %d takes line %d\n", u, Nl, x, w, O); } }
+            } else if (fs == 1 && x >= N) {  /* line t opposite l_a: give a line U at distance 4 from l_a to some point y on t */
+                int t = x - N;
+                for (int i = 0; i < Q1 && !done; i++) { int y = LP[t * Q1 + i]; if (isF[y] || roleP[y]) continue; int O = M[y]; if (roleL[O]) continue;
+                    for (int tr = 0; tr < 400000 && !done; tr++) { rsd ^= rsd << 13; rsd ^= rsd >> 7; rsd ^= rsd << 17; int U = rsd % N;
+                        if (dla[fa][N + U] != 4 || (roleL[U] & ~me)) continue; int w = Minv[U]; if (isF[w] || roleP[w] || w == y) continue;
+                        M[y] = U; Minv[U] = y; M[w] = O; Minv[O] = w; done = 1; printf("  swap: point %d (on far line %d) takes line %d, point %d takes line %d\n", y, t, U, w, O); } }
+            }
+            if (!done) { printf("no safe swap for flag %d side %d target %d: stop\n", fa, fs, ft); return 1; }
+        }
+        return 1;
+    }
     if (!strcmp(argv[1], "checkf")) {   /* freed sources only (hubs reach everything whatever M is), with far-pair counts */
         uint8_t *dist = malloc(NV); int *que = malloc(sizeof(int) * NV); long tot = 0; int badsrc = 0;
         for (int a = 0; a < K; a++) for (int s = 0; s < 2; s++) {
