@@ -54,6 +54,8 @@ identify a generalized hexagon. Then `threecopy.py` adds a perfect matching foun
 | 9 | 398,580 | 11 | 7 | RESULT VALID d=11 D=7 | 2e8ee60e9b274f40a765a43dd494b70356c4957dbe19ec8b852a32db5b4f4a12 |
 
 Run times: H(5) 4 s to build, 0.4 s to check; H(7) about 1 min and 1 min; H(9) about 4 min and 7 min (one core).
+As the proof says, φ does not matter. With q = 5, two random perfect matchings and two random bijections points →
+lines (not edges of Γ) all gave RESULT VALID d=7 D=7 n=23436.
 
 So the table graphs are reproduced exactly, not raised. With k extra edges and copies over Z_(2k+1) (cross edges with
 voltages 1..k) the same proof gives b(Δ + k, D + 1) ≥ (2k+1) · b(Δ, D) for even D. `hexd7/kcopy.py` checks it:
