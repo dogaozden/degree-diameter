@@ -16,7 +16,8 @@
 
    Usage: t2design GHFILE STATE_IN J NMAX STATE_OUT UNITS_OUT [SEED]
      adds random incident flags on matchings 1..J alternately until NMAX units or no more fit (many failed tries).
-     env BOTH=1: also allow a point to be freed on several matchings.
+     env BOTH=1: also allow a point to be freed on several matchings. SCAN=1: scan all points in random order.
+     FLAGS=file: try the flags "p l" of the file on every matching in turn (e.g. a packing from pack.c).
    Output units file: "p t l". Compile: gcc -O3 -march=native -o t2design t2design.c */
 #include <stdio.h>
 #include <stdlib.h>
@@ -60,9 +61,15 @@ int main(int argc, char **argv) {
     if (scan) { perm = malloc(sizeof(int) * P); for (int i = 0; i < P; i++) perm[i] = i;
         for (int i = P - 1; i > 0; i--) { int r = rndi(i + 1); int tmp = perm[i]; perm[i] = perm[r]; perm[r] = tmp; } }
     int lord[64];
-    while (nu < NMAX && (scan ? sidx < slen * Q1 : fails < maxfails)) {
+    /* FLAGS=file ("p l" per line): try exactly these flags, on every matching 1..J in turn (use BOTH=1 to allow a
+       point on several matchings) */
+    int nfl = 0, *flp = NULL, *fll = NULL; long fidx = 0;
+    if (getenv("FLAGS")) { FILE *ff = fopen(getenv("FLAGS"), "r"); flp = malloc(sizeof(int) * P); fll = malloc(sizeof(int) * P); int a, b;
+        while (ff && nfl < P && fscanf(ff, "%d %d", &a, &b) == 2) { flp[nfl] = a; fll[nfl] = b; nfl++; } if (ff) fclose(ff); scan = 0; }
+    while (nu < NMAX && (flp ? fidx < (long)nfl * JJ : scan ? sidx < slen * Q1 : fails < maxfails)) {
         int p, l;
-        if (scan) { long s2 = sidx++; int li = (int)(s2 % Q1); long s3 = s2 / Q1; t = (int)(s3 % JJ); p = perm[(s3 / JJ) % P];
+        if (flp) { long f2 = fidx++; t = (int)(f2 / nfl); p = flp[f2 % nfl]; l = fll[f2 % nfl]; }
+        else if (scan) { long s2 = sidx++; int li = (int)(s2 % Q1); long s3 = s2 / Q1; t = (int)(s3 % JJ); p = perm[(s3 / JJ) % P];
             if (li == 0) { for (int a = 0; a < Q1; a++) lord[a] = a; for (int a = Q1 - 1; a > 0; a--) { int r = rndi(a + 1); int tmp = lord[a]; lord[a] = lord[r]; lord[r] = tmp; } }
             l = PL[p * Q1 + lord[li]]; }
         else { p = rndi(P); l = PL[p * Q1 + rndi(Q1)]; }
@@ -90,7 +97,7 @@ int main(int argc, char **argv) {
         for (int i = nk - 1; i > 0; i--) { int r = rndi(i + 1); int tmp = Kl[i]; Kl[i] = Kl[r]; Kl[r] = tmp; }
         for (int i = 0; i < nw; i++) { uP[W[i]] = 1; uL[Kl[i]] = 1; fixL[(size_t)t * P + W[i]] = Kl[i]; }
         up[nu] = p; ut[nu] = t; ul[nu] = l; nu++;
-        fails = 0; if (!scan) t = (t + 1) % JJ; else sidx = (sidx / Q1 + 1) * Q1;   /* next (point, matching) */
+        fails = 0; if (flp) {} else if (!scan) t = (t + 1) % JJ; else sidx = (sidx / Q1 + 1) * Q1;   /* next (point, matching) */
         if (nu % 200 == 0) fprintf(stderr, "  %d units\n", nu);
     }
     /* complete each matching at random */

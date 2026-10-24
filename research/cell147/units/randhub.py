@@ -1,21 +1,15 @@
 """Random hub graph for NU units: line-side hub 2i ~ point-side hub 2k+1 links, every hub with exactly d links
-(union of d random perfect matchings, no repeated links), retried until every two hubs of the same side are within distance 6
+(circulant with d distinct random shifts, no repeated links), retried until every two hubs of the same side are within distance 6
 inside the hub graph alone. Output in the uhcheck EXTRAS format (NS = 0).
 Usage: python3 randhub.py NU d SEED > extras"""
 import sys, random, collections
 NU, d, seed = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
 rng = random.Random(seed)
 def attempt():
-    """union of d random perfect matchings between the two sides, no repeated links"""
-    E = set()
-    for r in range(d):
-        for _ in range(200):
-            perm = list(range(NU)); rng.shuffle(perm)
-            if all((a, perm[a]) not in E for a in range(NU)): break
-        else:
-            return None
-        for a in range(NU): E.add((a, perm[a]))
-    return E
+    """circulant: line-side hub a ~ point-side hub (a + s) mod NU for d distinct random shifts s (no repeated links)"""
+    if d > NU: return None
+    S = rng.sample(range(NU), d)
+    return set((a, (a + s) % NU) for a in range(NU) for s in S)
 def ecc_ok(E):
     adj = collections.defaultdict(list)
     for a, b in E: adj[('L', a)].append(('P', b)); adj[('P', b)].append(('L', a))

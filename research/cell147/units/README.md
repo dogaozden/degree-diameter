@@ -4,6 +4,33 @@ Session cell-14-7 (Opus), 2026-10-24. Cell (14,7): bipartite, maximum degree 14,
 (Delorme-Gomez-Quisquater: GH(11) incidence graph + 2 point->line perfect matchings, lifted by Z5; polygon edges
 voltage 0, matching t voltage t; research/lifts/LITERATURE.md section 5 on branch claude/voltage-lifts-search-6lfotq).
 
+## Session 2 (2026-10-24 afternoon): the type-2 design, hundreds of units
+
+**Type-2 design.** Take the unit's line THROUGH its point (an incident flag p ∈ l = sigma_t(p)) and let
+W = the q² points collinear with p off l, K = the q² lines meeting l off p. If sigma_t maps W onto K (any bijection),
+both unit endpoints keep eccentricity 7:
+- a point y opposite p lies on a unique line N at distance 4 from l (its path to l avoids p, since d(y,p) = 6), and N
+  meets a unique K ∈ K (the line on N's path to l); with w = sigma_t^-1(K) ∈ W the route
+  (p,c) –2– (w,c) –hop– (K,c+h) –3– (y,c+h) has length 6;
+- a line T opposite l contains a unique point y at distance 4 from p not via l; y is collinear with a unique w ∈ W, and
+  (l,c+h) –2– (sigma_t(w),c+h) –hop– (w,c) –1– · –1– (y,c) –1– (T,c) has length 6.
+So a unit costs q² = 121 prescribed assignments instead of 14,641 (the older design via points at distance 4, whose
+3-ball analogue is what d7hex.c's type-2 pre-pass approximated with lines at distance 5 from p). Units of one matching
+need pairwise disjoint zones {p} ∪ W and {l} ∪ K (and no freed point in another W): zones of two units can never be
+shared consistently (it would need a 10-cycle in the hexagon), so this is a packing problem. Hubs of the same side are
+kept within distance 6 by a random hub graph (each hub has Δ − m = 9 spare slots at (14,7)).
+
+**Checks.** `uhcheck.c` (generalizes ucheck12 to any small graph on the new vertices: hub links, super-hubs) and
+`apsp_cyc.c` (independent: works on the edge list, verifies that the copy shift is an automorphism, then all-pairs BFS
+from one copy plus the new vertices). Both agree on every small case tried, valid and invalid (e.g. 7 units at q = 5:
+58 pairs beyond 7 without hub links in both, VALID with Fano links in both).
+
+**Tools.** `t2design.c` (type-2 units: random, SCAN or FLAGS placement; BOTH=1 lets a point carry units of several
+matchings), `pack.c` (packings of zones: annealing, compact growth, CHECKONLY validator), `randhub.py` (random hub
+graph, same-side diameter <= 6), `unit_edges2.py` (edge list with hub links), `t2cell.sh` (whole pipeline for any DGQ
+D = 7 cell), `flowdesign.c` (older type-4 designs by max-flow between constraint types: 5 units per matching exactly),
+`hexbin2txt.py` (H(9) from research/p4/d6/hexgen.c).
+
 ## The unit
 
 A unit (p, t) on that lift deletes the 5 lifted copies of the matching edge (p, l), l = sigma_t(p), and adds two new
