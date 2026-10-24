@@ -999,6 +999,11 @@ static int zopt_main(ctx *c0, const char *out) {
         /* fibres in increasing size: the likeliest to fail come first (insertion-free: sort by size via qsort on keys) */
         { long long *key = malloc(sizeof(long long) * nq); for (int x = 0; x < nq; x++) key[x] = (long long)cnt[x] * nq + x;
           qsort(key, nq, sizeof(long long), cmpll); for (int x = 0; x < nq; x++) ord[x] = (int)(key[x] % nq); free(key); }
+        if (getenv("ZONLYDUP") && rep == 0) {   /* coefficient-vector statistics (independent of the Q-parts): pairs of words sharing c */
+            int *cc = malloc(sizeof(int) * Znrec); memcpy(cc, Zc, sizeof(int) * Znrec); qsort(cc, Znrec, sizeof(int), zcmpi);
+            double pairs = 0; long long nd = 0; for (long long t = 0, u; t < Znrec; t = u) { u = t; while (u < Znrec && cc[u] == cc[t]) u++; double c = (double)(u - t); pairs += c * (c - 1) / 2; nd++; }
+            fprintf(stderr, "ZCOEF distinct c %lld, pairs sharing c %.4g, generic duplicate estimate pairs/|Q| = %.4g (%.2f %% of words)\n", nd, pairs, pairs / Q->order, 100.0 * pairs / Q->order / Znrec);
+            free(cc); }
         if (getenv("ZONLYDUP")) { fprintf(stderr, "ZDUP rep %d: words %lld distinct (q,c) %lld duplicate %lld (%.2f %%)\n", rep, Znrec, tot, dup, 100.0 * dup / Znrec); continue; }
         /* evaluate z */
         int zb[4] = {0}; long long best = -1, cz = -1, nzero = 0, nz = 0;
