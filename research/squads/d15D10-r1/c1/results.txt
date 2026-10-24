@@ -1,0 +1,8 @@
+# c1: SL(2,p) x Z_n, p = 1 mod 3, at (15,10), RANDORB=16 screen (ORBIT default 3 5 0, K=8, seed 11), excess = median/mu
+# fields: p n N mu min p10 median mean excess seconds (seconds = wall time the run held the lock, incl. setup)
+p=79  n=2521 N=1242752160 mu=20.83 min=15 p10=15 median=39 mean=99.56 excess=1.872 seconds=19
+p=127 n=607  N=1243291392 mu=21.00 min=15 p10=18 median=28 mean=82.50 excess=1.333 seconds=35
+p=139 n=463  N=1243377240 mu=21.03 min=15 p10=18 median=27 mean=27.25 excess=1.284 seconds=29
+p=307 n=43   N=1244167848 mu=21.29 min=10 p10=13 median=23 mean=22.50 excess=1.080 seconds=19
+p=457 n=13   N=1240765968 mu=20.21 min=9  p10=13 median=24 mean=23.88 excess=1.188 seconds=32
+# lowest excess: sl 307 x Z_43 (1.080). Noise: 16 samples, so the medians move by about +-2..3 (excess +-0.12); treat 1.08 vs 1.19 as tied.

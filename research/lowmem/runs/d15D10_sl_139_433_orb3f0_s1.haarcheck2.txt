@@ -1,0 +1,31 @@
+haarcheck2 (research/frontier/haarcheck2.c) start 2026-10-24T19:23:59Z
+file=../frontier/sols/d15D10_sl_139_433_orb3f0_s1.txt d=15 D=10 p=139 n=433 |G|=1162812840 vertices=2325625680
+selfcheck: SL(2,139) index is a bijection onto det-1 matrices (|SL|=2685480), fastmod ok (0.03s)
+generators: 15 read, all in SL(2,139) x Z_433, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 2325625680
+  from (e,A) level 2: new=210  reached=226 / 2325625680
+  from (e,A) level 3: new=2937  reached=3163 / 2325625680
+  from (e,A) level 4: new=41064  reached=44227 / 2325625680
+  from (e,A) level 5: new=573978  reached=618205 / 2325625680
+  from (e,A) level 6: new=7996796  reached=8615001 / 2325625680
+  from (e,A) level 7: new=106840988  reached=115455989 / 2325625680
+  from (e,A) level 8: new=854561688  reached=970017677 / 2325625680
+  from (e,A) level 9: new=1055394922  reached=2025412599 / 2325625680
+  from (e,A) level 10: new=300213081  reached=2325625680 / 2325625680
+  done in 531.90s, eccA=10, reached 2325625680 / 2325625680
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 2325625680
+  from (e,B) level 2: new=210  reached=226 / 2325625680
+  from (e,B) level 3: new=2937  reached=3163 / 2325625680
+  from (e,B) level 4: new=41064  reached=44227 / 2325625680
+  from (e,B) level 5: new=573978  reached=618205 / 2325625680
+  from (e,B) level 6: new=7996812  reached=8615017 / 2325625680
+  from (e,B) level 7: new=106840988  reached=115456005 / 2325625680
+  from (e,B) level 8: new=854551676  reached=970007681 / 2325625680
+  from (e,B) level 9: new=1055394922  reached=2025402603 / 2325625680
+  from (e,B) level 10: new=300223077  reached=2325625680 / 2325625680
+  done in 567.39s, eccB=10, reached 2325625680 / 2325625680
+VALID d=15 D=10 vertices=2325625680 eccA=10 eccB=10
+exit 0 after 1099 s, 2026-10-24T19:42:18Z

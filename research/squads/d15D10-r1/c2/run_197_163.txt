@@ -1,0 +1,4 @@
+group sl 197 x Z_163, N=1246163688, rows 38808 of 32111 bits (502 words), memory 0.31 GB per thread, threads 1, setup 0.19s
+alpha: conj by mat(0,196,1,1), z -> 58 z on Z_163
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 197 (+e); mu = 21.94, mu/k = 7.31, fixed-point misses ~ 0.52
+RANDORB d=15 D=10 group=sl 197 x Z_163 N=1246163688 k=3 m=5 f=0 fix=197 samples=16 min=6 p10=13 median=18 mean=21.69 mu=21.94 time=21.8

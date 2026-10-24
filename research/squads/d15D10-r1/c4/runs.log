@@ -1,0 +1,20 @@
+### sl 457 13 19:30:52
+group sl 457 x Z_13, N=1240765968, rows 208848 of 5941 bits (93 words), memory 0.31 GB per thread, threads 1, setup 0.10s
+alpha: conj by mat(0,456,1,1), z -> 3 z on Z_13
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 455 (+e); mu = 20.21, mu/k = 6.74, fixed-point misses ~ 1.16
+RANDORB d=15 D=10 group=sl 457 x Z_13 N=1240765968 k=3 m=5 f=0 fix=455 samples=12 min=13 p10=13 median=21 mean=20.33 mu=20.21 time=44.8
+### psl 709 7 19:33:38
+group psl 709 x Z_7, N=1247400420, rows 251340 of 4963 bits (78 words), memory 0.31 GB per thread, threads 1, setup 0.07s
+alpha: conj by mat(0,708,1,1), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 353 (+e); mu = 22.35, mu/k = 7.45, fixed-point misses ~ 0.93
+RANDORB d=15 D=10 group=psl 709 x Z_7 N=1247400420 k=3 m=5 f=0 fix=353 samples=12 min=19 p10=19 median=24 mean=25.25 mu=22.35 time=29.7
+### sl 307 43 19:36:06
+group sl 307 x Z_43, N=1244167848, rows 94248 of 13201 bits (207 words), memory 0.31 GB per thread, threads 1, setup 0.05s
+alpha: conj by mat(0,306,1,1), z -> 6 z on Z_43
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 305 (+e); mu = 21.29, mu/k = 7.10, fixed-point misses ~ 0.79
+RANDORB d=15 D=10 group=sl 307 x Z_43 N=1244167848 k=3 m=5 f=0 fix=305 samples=12 min=12 p10=16 median=24 mean=22.83 mu=21.29 time=18.8
+### psl 431 31 19:37:36
+group psl 431 x Z_31, N=1240969680, rows 92880 of 13361 bits (209 words), memory 0.31 GB per thread, threads 1, setup 0.08s
+alpha: conj by mat(0,430,1,1), z -> 5 z on Z_31
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 215 (+e); mu = 20.27, mu/k = 6.76, fixed-point misses ~ 0.55
+RANDORB d=15 D=10 group=psl 431 x Z_31 N=1240969680 k=3 m=5 f=0 fix=215 samples=12 min=13 p10=15 median=24 mean=8792.92 mu=20.27 time=18.2
