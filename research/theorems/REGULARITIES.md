@@ -161,6 +161,13 @@ Across groups it barely moves. At (5,10), fourteen different metacyclic groups (
 N = 45,864–47,736, a spread of 4 %. At (5,9) eight groups lie within 3 %, at (4,10) three within 4 %
 (`meta_table_out.txt`). Ours/table: 1.03–1.28 at D = 8, 1.08–1.25 at D = 9, 1.08–1.20 at D = 10.
 
+### 2.3 Where we stand against the Moore bound
+
+`cells.py` → `cells_out.txt` gives best known / bipartite Moore bound for every cell (* = ours). Within each column the
+ratio falls slowly with Δ. Our weakest cells relative to Moore are the ones held by structured families we cannot
+search: D = 5 with Δ = 10–15 (0.24–0.27, polygon covers), D = 7 with Δ = 7 and 9–16 (0.15–0.21, hexagon covers) and
+D = 8 with Δ = 10, 12, 14, 16 (0.10–0.11, the unexplained GH family). The new (16,5) entry is 0.29.
+
 ## 3. Weak patterns
 
 - **S in the Haar records is random-like** (`stats_S.py` → `stats_S_out.txt`; 96 records over SL/PSL(2,q), q odd,
@@ -185,6 +192,7 @@ N = 45,864–47,736, a spread of 4 %. At (5,9) eight groups lie within 3 %, at (
 | covers of our D = 4 / D = 6 records to D = 5 / D = 7 | §1.3 arithmetic | below the table in every cell |
 | edge-transitive coset graphs Cos(G; ⟨a⟩, ⟨b⟩), a, b of order Δ (Conder's (3,7) graph has this form) | coset.py on PSL(2,7), (2,11), (2,13) with Δ = 3 (all pairs) and PSL(2,17) with Δ = 4 (200 pairs) → `runs/coset_cubic.txt` | at most 112 vertices at D = 7, 440 at D = 10, 1,224 at (4,8) (table 2,184). The vertex stabiliser ⟨a⟩ clumps misses by Δ, but its fixed points (≈ 4|T|/Δ in PSL(2,q)) are missed with probability e^(−λ/Δ). It is the one-orbit case of STRUCTURE.md §2.5 |
 | voltage lifts of C(2,q) to keep D = 5 with more vertices | walkcount.c | impossible: unique walks (§1.2) |
+| delete vertices/edges of C(2,3) to get Δ = 15 (31,460 vertices vs 20,497 needed) | walkhist.py → `runs/walkhist_C23.txt` | 11,664 of the 15,525 same-side targets at distance 4 have exactly one walk of length ≤ 4, so almost any deletion breaks diameter 5 |
 
 ## Scripts and outputs (this folder)
 
@@ -199,3 +207,4 @@ N = 45,864–47,736, a spread of 4 %. At (5,9) eight groups lie within 3 %, at (
 | polygons.py, pcover.c | bases/, runs/pc_*, runs/zero_voltage_n2_gq3.txt | polygon covers |
 | flags.py, flags_affine.py, cflags.py, bflags.py, buildings.py, walkcount.c | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
 | coset.py | runs/coset_cubic.txt | coset graphs with cyclic stabilisers |
+| cells.py, walkhist.py | cells_out.txt, runs/walkhist_C23.txt | per-cell Moore ratios; walk multiplicities in C(2,3) |
