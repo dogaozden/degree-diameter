@@ -4,8 +4,8 @@ Job "thm-buildings" (Opus). Branch `claude/buildings-flag-graph-diameter-g9lf1o`
 REGULARITIES.md §1.2 (branch `claude/theorem-search-regularities-nt0d98`). Every claim has a script in
 `research/theorems/buildings/` and a saved output in `research/theorems/buildings/out/`. "Table" means the 2013
 bipartite table (DS14v2 Table 4 = research/frontier/TABLE.md). "Ours" means the largest value in research/frontier/TABLE.md
-or research/RESULTS.md. The literature search was a Haiku squad round, logged in research/squads/LOG.md, with notes in
-research/squads/buildings-r1-lit/.
+or research/RESULTS.md, as of master 852773f (2026-10-24). The literature search was a Haiku squad round, logged in
+research/squads/LOG.md, with notes in research/squads/buildings-r1-lit/.
 
 n_b(Δ, D) is the largest order of a bipartite graph with maximum degree ≤ Δ and diameter ≤ D, and
 M_b(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bound.
@@ -553,6 +553,10 @@ The reviewer's own text is not in the repo; these are the gaps I found.
    statements that a computation could certify. (C2) and (C3) are needed only for the factorisations that occur.
 
 ## Scripts and outputs (research/theorems/buildings/)
+
+Run every script from `research/theorems/buildings/` with python3. Only partitions3.py needs numpy.
+`run_checks.sh` and `run_checks2.sh` take a scratch directory and the compiled checker
+(`gcc -O2 -o apsp research/lifts/coordinator_check/apsp.c`).
 
 | script | output | what |
 |---|---|---|
