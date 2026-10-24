@@ -413,9 +413,9 @@ Both have order 2·ord(F^j) or 2·ord(conj c). The involution α³ fixes a diago
 | group | N (vs record) | α | μ | μ_A (rule) | random symmetric: min, p10 | anneals |
 |---|---|---|---|---|---|---|
 | **SL(2,7)²×Z31** | **3,499,776 (+2.7 %)** | swap∘conj(order 3), z ↦ 6z | 49.4 | 11.0 | 35, 64 | **seed 2 solved in 131,625 evaluations (741 s)**; seeds 1, 3–8: best 6 (one orbit) after 3–14·10⁴ |
-| SL(2,8)²×Z14 | 3,556,224 (+4.4 %) | swap∘Frobenius, z ↦ 3z or 5z | 59.9 | 15.0 | 60–72, 97–104 | 4 seeds: best 18–26 (one orbit = 6) |
+| SL(2,8)²×Z14 | 3,556,224 (+4.4 %) | swap∘Frobenius (x ↦ x² or x⁴), z ↦ 3z or 5z | 59.9 | 15.0 | 60–72, 97–104 | 6 seeds of 300–900 s: best 18–26 |
 | SL(2,64)×Z14 | 3,669,120 (+7.7 %) | Frobenius order 6, z ↦ 3z | 86.7 | 20.9 | 70, 130 | not run (≈ 5·10⁶ evaluations by the rule) |
-| PSL(2,13)²×Z3 | 3,577,392 (+5.0 %) | swap∘conj(order 3), z ↦ 2z | 64.3 | 14.7 | 52, 91 | RESULT-PSL13 |
+| PSL(2,13)²×Z3 | 3,577,392 (+5.0 %) | swap∘conj(order 3), z ↦ 2z | 64.3 | 14.7 | 52, 91 | 2 seeds of 1,300–1,800 s: best 8 and 21 (1.1–1.5·10⁵ evaluations) |
 | PSL(2,7)²×Z126 | 3,556,224 (+4.4 %) | swap∘conj(order 3), z ↦ 5z | 59.9 | 11.5* | 57, 132 | screen only: no order-6 multiplier of Z9 moves Z3, and the large cyclic factor mixes badly |
 | SL(2,5)²×Z247 | 3,556,800 (+4.4 %) | swap∘conj(order 3), z ↦ 69z | 60.0 | ≈ 11* | 108, 364 | screen only: the large cyclic factor mixes badly |
 
@@ -428,7 +428,7 @@ there.
 - c = mat(2,0,4,4), of trace −1 and order 3;
 - 3,499,776 group elements, so 6,999,552 vertices.
 
-The three checks:
+The four checks:
 - haar_order2's full diameter check (all four side pairs within 8): OK.
 - `research/frontier/build_haar2.py`, which rebuilds the group from its definition: ecc 8 from both sides, nothing
   unreached, 45,497,088 edges, every degree 13, no repeated edge, edge-list sha256
@@ -436,6 +436,8 @@ The three checks:
   (`checks/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.check.txt`).
 - `check_np.py`, a third group implementation: BFS from (e,A) and (e,B) over all 6,999,552 vertices, ecc 8 from both,
   nothing unreached, 13 distinct generators. VALID (`checks/…check_np.txt`).
+- `check_lowmem.c`, a fourth, written in C from scratch (own field and matrix arithmetic, bitset BFS): VALID, ecc 8
+  from both sides (`checks/…check_lowmem.txt`). It reports INVALID (ecc 9) on a near miss with 12 uncovered.
 
 apsp.c is out of reach at 7M vertices (about n²·d/64 ≈ 10¹³ operations). Right multiplication is transitive on each
 side, so the two BFS determine the diameter.
@@ -474,7 +476,7 @@ By the rule, an even order beats order 3 only if both of these hold:
 - D is even;
 - either the order-3 orbit space is starved (two orbits at small N) and the involution's 8-cycles are avoidable
   (R₂ = ρΔ(Δ−1)³/8 ≲ 5, i.e. |Fix(β)| ≳ 20, 40, 70 for Δ = 6, 7, 8), or the even order is larger than 3 with
-  bounded fixed-point costs (Frobenius type).
+  bounded fixed-point costs (Frobenius or swap type, checklist §4.1).
 
 Going through the table:
 - **Order 2:** only (6,8). At (6,10), (7,8), (8,8) and (9,8) order 3 has room. There μ/2 against μ/3 is 2–8 nats of
@@ -484,9 +486,11 @@ Going through the table:
   or leave α² trivial on them, which puts thousands of elements in Fix(α²). Checked by hand: (8,8), (9,8), (8,10),
   (9,10), (10,10), (13,8). The only clean one is (10,10) on SL(2,81)×Z58, and there μ_A ≈ 7.6 equals order 3's. No
   gain predicted.
-- **Order 6:** needs Δ ≥ 12 for two orbits. Of those cells, (12,8), (14,8) and (16,8) are above the first-moment
-  ceiling even with μ/6, and the D = 10 cells need groups of order ≥ 10⁸ with a Frobenius of order 6 near the
-  records (SL(2,729) is 16 % too big for (13,10)). That leaves (13,8), §5.2.
+- **Order 6:** needs Δ ≥ 12 for two orbits.
+  - (12,8), (14,8) and (16,8) are above the first-moment ceiling even with μ/6.
+  - (13,8): done (§5.2), and (15,8) with the mixed layout 6+6+3 (§5.2b).
+  - The D = 10 cells need groups of order about 10⁸–10⁹. The Frobenius type SL(2,729) is 16 % too big for (13,10),
+    but the swap type fits: SL(2,16)²×Z21, below.
 - **Order 8 and up:** needs Δ ≥ 16 for two orbits; no candidate group.
 - **(13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ 5z), r of order 6 (Z21 = Z3 × Z7). The
   random symmetric screen (16 samples, `runs/ro1310_sl16sq_21_k6.txt`) gives min 23 and p10 26 at μ = 35.5. That is
