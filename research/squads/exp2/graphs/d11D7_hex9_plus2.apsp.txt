@@ -1,0 +1,5 @@
+wrote /tmp/claude-0/-home-user-degree-diameter/7273a1ca-9f99-545c-af61-067de2f4dcbd/scratchpad/h9e.edges: n=398582 edges=2192194 (3 copies of H(9) + 2, max degree 11)
+n=398582 edges=2192194 degree min=4 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=398582
+sha256(edges) 72f859aa243d587ed381cb1519918878f5f0c086872646545bec1d34c8b8ce13
+built by: EXACT=1 greedyphi HFILE(q=9) 1 PHI; NOGREEDY=1 python3 plus2.py 9 OUT 1 PHI (explicit phi from exact covers, no search)
