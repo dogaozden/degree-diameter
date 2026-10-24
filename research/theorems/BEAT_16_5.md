@@ -142,3 +142,21 @@ GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder)
   is exact and fast. A chart that works for every such controller (universal + the distance-2 hyperplane condition
   for all 12 label pairs) was not found (annealing stops at 4 violations); the winning chart has 14 singular words
   and fails the distance-2 condition for labels bb and BB, and the controller's other walks cover those pairs.
+
+### 4.5 Going past 64 per side (in progress)
+
+- Permutation-voltage controllers (base with k+k vertices, lifted by a group of order m; Haar = k 1): with k = 3
+  and the cyclic group of order 22 there are bipartite 4-regular diameter-5 controllers with a 4-cycle at every
+  vertex and **66 per side** (5 found, `rcl/pv_found_k3.txt`). They would give 33,792. But fitting a chart is
+  hard for them: each has 14 "deficient" same-side pairs (distance 2, no non-backtracking 4-walk), with label
+  patterns that include same-letter ones (aa, AA, bb, BB), so the chart needs the distance-2 hyperplane condition
+  for nearly all 12 patterns plus few singular words. Restart-based fitting (`rcl/chartfit4.c`) is at 130k–330k
+  missed pairs so far. For the order-64 Haar controller only 6 pairs were deficient, all with mixed patterns.
+- Field charts (A_a, A_b = multiplication by α, β in F₂₅₆ = F₄⁴, b_a = 1, b_b = γ): exhaustive over all
+  255³ triples (`rcl/chartfield.c`). The best universal ones fail the distance-2 condition for all 12 patterns
+  (each reaches only 2 of the 5 hyperplanes). So good charts must be non-commutative.
+- New approach: fix a chart, export which 108 words are nonsingular and which of the 12 patterns pass the
+  distance-2 condition (`rcl/charttables.c`), and search controllers whose every same-side pair is certified
+  (a nonsingular non-backtracking 4-walk, or a 2-path with a passing pattern; `rcl/pvctrl2.c`). Certified
+  controllers need no fitting; checked on an order-64 example (apsp VALID). Running for k = 2, 3, 4 at 66–96 per
+  side with the chart of §4.2 (94 good words, 10 good patterns).
