@@ -1,0 +1,19 @@
+== solution file research/frontier/sols/d9D10_psl_149_7_orb3f0_s1.txt (sha256 0959fe6ba7ccc9e3946d266dccc1273f8a48a80141eade3221a16408bbd64800), found by squad-r4-c5-haiku (research/squads/r4/c5/psl149_7_s1.txt)
+9 10 psl 149 n 7 N 11577300
+77182 mat(1,0,0,1) z=0
+4352285 mat(28,75,127,138) z=0
+2551430 mat(16,137,36,1) z=0
+3115429 mat(20,81,147,59) z=2
+473904 mat(3,82,54,36) z=4
+3376899 mat(22,34,101,41) z=1
+7868226 mat(51,19,125,143) z=2
+3938365 mat(25,125,148,1) z=4
+6686464 mat(43,78,119,105) z=1
+== haarcheck_psl (research/structured/tools/haarcheck_psl.c, branch claude/structured-search-orbit-04hefm), low-memory, from the definitions
+from (e,A): reached A 11577300/11577300, B 11577300/11577300 within 10, ecc 10
+from (e,B): reached A 11577300/11577300, B 11577300/11577300 within 10, ecc 10
+VALID d=9 D=10 group=psl 149 x Z_7 N=11577300 vertices=23154600 (distinct generators, 9-regular simple)
+
+real	0m50.157s
+user	0m28.395s
+sys	0m0.022s
