@@ -1,51 +1,74 @@
 # Chart lifts: the (16,5) route-chart lift as a family (job thm-chartlift)
 
-Opus theorist session with two Haiku squads, branch `claude/chart-lift-family-wko52j`, 2026-10-24. Scripts, charts,
-controllers and check outputs: `research/theorems/chartlift/` (tool list in its README.md). Squad rounds:
-`research/squads/LOG.md`, folders `research/squads/r1-chartlift/`, `r2-chartlift/`.
+Opus theorist sessions with Haiku squads, 2026-10-24. Round 1-2: branch `claude/chart-lift-family-wko52j`; round 3
+(this update): branch `claude/chartlift-family-h3605i`. Scripts, charts, controllers and check outputs:
+`research/theorems/chartlift/` (tool list in its README.md; round-3 tools and graphs in `chartlift/r3/`). Squad rounds:
+`research/squads/LOG.md`, folders `research/squads/r1-chartlift/` and `r2-chartlift/`.
 
 ## Results first
 
-New graphs. Each one was rebuilt by a self-contained builder (`chartlift/graphs/build_*.py`, stdlib only). Each was
-then checked by two all-pairs programs: apsp.c (the coordinator's checker) and bfs_all.c (plain BFS from every vertex).
+New graphs. Each was rebuilt by a self-contained builder (stdlib only) and checked by two all-pairs programs:
+apsp.c (the coordinator's checker; it also reports INVALID with D = 4, so the diameter is exactly 5) and bfs_all.c
+(plain BFS from every vertex; the distance counts sum to n²).
 
-| cell (Δ, D) | table | lab before | **new** | letters × field | controller (m per side) | chart | check file |
+| cell (Δ, D) | table | ours before | **new** | letters × field | controller (m per side) | chart | builder / check |
 |---|---|---|---|---|---|---|---|
-| (12, 5) | 8,200 | — | **8,748** | 4 × F₃ | K₃,₃ + doubled matching over Z₁₈ (54) | `charts/r2_k4_q3.txt` (26 singular) | `graphs/d12D5_n8748_check.txt` |
-| (15, 5) | 20,496 | — | **20,736** | 5 × F₃ | 5-regular 2+2 base over the dicyclic group of order 64 (128) | `charts/r2_k5_q3.txt` (112 singular) | `graphs/d15D5_n20736_check.txt` |
-| (8, 5) | 1,710 | 1,764 | **2,048** | 4 × F₂ | K₄,₄ (Latin colouring) over Z₂ × Z₈ (64) | `charts/c4s2_k4_q2.txt` (48 singular) | `graphs/d8D5_n2048_check.txt` |
+| (15, 5) | 20,496 | 20,736 | **25,272** | 5 × F₃ | Haar graph of Z₂₆ ⋊₃ Z₆ (156) | `r3/k5q3_pd112.txt` (112 singular, both diagonals) | `r3/graphs/build_d15D5_n25272.py`, `…_check.txt` |
+| (12, 5) | 8,200 | 8,748 | **10,368** | 4 × F₃ | Haar graph of Z₁₆ ⋊₃ Z₄ (64) | `r3/k4q3_diag_tt.txt` (16 singular, both diagonals) | `r3/graphs/build_d12D5_n10368.py`, `…_check.txt` |
+| (10, 5) | 4,000 | — | **4,032** | 5 × F₂ | Haar graph of Z₁₄ ⋊₉ Z₉ (126) | `charts/r2_k5_q2.txt` (230 singular, both diagonals) | `r3/graphs/build_d10D5_n4032.py`, `…_check.txt` |
+| (8, 5) | 1,710 | — | 2,048 (round 2) | 4 × F₂ | K₄,₄ (Latin colouring) over Z₂ × Z₈ (64) | `charts/c4s2_k4_q2.txt` (48 singular) | `graphs/build_d8D5_n2048.py` |
+| (16, 5) | 27,300 | — | 33,792 (beat-16-5 squad) | 4 × F₄ | K₃,₃ + doubled matching over Z₂₂ (66) | squad chart (8 singular) | branch `claude/beat-16-5-squad-jiiwg2` |
 
-The (15,5) and (8,5) controllers came from squad round 1 (cards c6 and c4). I rebuilt and checked both. Cells
-touched without a record: (9,5) 2,592 (beats the table's 2,496, not the lab's 2,662); (12,5) with 3 letters 8,192
-(8 short of the table). (16,5) stays at the squad's 33,792.
+Z_M ⋊_t Z_N is the metacyclic group of pairs (x, y) with (x₁, y₁)(x₂, y₂) = (x₁ + t^{y₁} x₂ mod M, y₁ + y₂ mod N);
+a Haar graph of a group G with connection set S = {s₀, …, s_{k−1}} joins a_g to b_{s g}, and the edge from s_c gets
+letter c. The (10,5) controller came from squad round 2, card c4 (rebuilt and checked here); the other two are ours.
+Also found and checked: (15,5) 22,680 (Haar graph of Z₃₅ ⋊₆ Z₄), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, squad card c5).
 
-**Main theorem (§3.1, Theorem 3; computer-assisted proof).** For every prime power q,
+**What changed in round 3: charts that cover both diagonals.** A vertex's own fibre is reached by closed 4-walks.
+Before, the charts at q = 3, 4 did not cover this "diagonal" with backtracking walks, so every controller vertex
+needed a 4-cycle, and 4-cycles cap controllers hard (cubic: m ≤ 16, Theorem 8; 4-regular: m = 54–66 in practice).
+Round 3 found charts at (k, q) = (4, 3) and (5, 3) that cover both diagonals and keep every pencil complete
+(§3.1, Proposition 12). Then a controller only needs same-side distances ≤ 4 and a nonsingular nonbacktracking 4-walk
+for each distance-4 pair (Theorem 11). Girth-6 controllers become usable, and plain Haar graphs of metacyclic groups
+work at once: m jumps from 54 to 64 at (12,5) and from 128 to 156 at (15,5).
+
+**How the (4,3) chart was found (Lemma 5).** All the chart conditions at D = 5 (singular patterns, pencils, diagonals)
+depend only on the points w_c and b_c and on the collineation that A_c induces from the lines through w_c to the lines
+through b_c. Coordinates can be changed separately in the A-fibres and the B-fibres, so the points can be put in a normal
+form, and the search is over 4 collineations of PG(2,3) (5,616 each). An exhaustive search (`r3/diag43/`) shows that a
+(4,3) chart covers both diagonals only when w₀..w₃ and b₀..b₃ are both independent, and then it always has complete
+pencils and exactly 16 singular patterns (the annealer used in rounds 1-2 never found any of these charts; its best
+had 26 singular patterns and no diagonal). In particular **no perfect (4,3) chart exists**, and at (3,2) no chart covers
+both diagonals at all.
+
+**Main theorem (§3.1, Theorem 3; computer-assisted proof; round 2).** For every prime power q,
 
 > **n_b(4q, 5) ≥ 108 q⁴.**
 
 For q ≥ 3 this is the lift of one fixed 108-vertex controller, K₃,₃ + doubled matching over Z₁₈. Every same-side
 pair of it, even a vertex with itself, is joined by a nonbacktracking 4-walk. The chart is any universal 4-letter
 chart over F_q⁴, and such a chart exists for every prime power q ≥ 3. q = 2 is the 2,048 graph. The bound beats the
-published table at every cell it touches: (8,5) 1,728 > 1,710, (12,5) 8,748 > 8,200, (16,5) 27,648 > 27,300. At q = 2
-and q = 4 our graphs do better: 2,048 = 128·2⁴ and 33,792 = 132·4⁴. At q = 3, 4, 5 the lifts of the fixed controller
-were also built and checked all-pairs: 8,748, 27,648 and 67,500 vertices (degree 20), apsp VALID
-(`chartlift/runs/exact54_lifts.out`).
+published table at every cell it touches: (8,5) 1,728 > 1,710, (12,5) 8,748 > 8,200, (16,5) 27,648 > 27,300. The
+actual graphs do better at q = 2, 3, 4: 2,048 = 128·2⁴, 10,368 = 128·3⁴ and 33,792 = 132·4⁴. At q = 3, 4, 5 the lifts
+of the fixed controller were also built and checked all-pairs: 8,748, 27,648 and 67,500 vertices (degree 20), apsp
+VALID (`chartlift/runs/exact54_lifts.out`).
 
-The cell-by-cell statements behind the table (§3.1, Theorem 2):
+The cell-by-cell statements behind the table (§3.1, Theorems 2 and 11):
 
 > **n_b(kq, 5) ≥ 2 m q⁴** whenever a k-regular bipartite controller with m vertices per side satisfies the chart
-> conditions of Theorem 1. Explicitly: n_b(4q, 5) ≥ 108 q⁴ for q = 2, 3, 4 (one base graph, K₃,₃ + doubled matching
-> over Z₁₈; for q = 3 and 4 even one and the same controller); n_b(3q, 5) ≥ 32 q⁴ for q = 3, 4 (one 32-vertex cubic
-> controller, a Z₈-lift of the base [[1,2],[2,1]]); n_b(8,5) ≥ 2,048 = 2·64·2⁴; n_b(15,5) ≥ 20,736 = 2·128·3⁴; n_b(16,5) ≥ 33,792 = 2·66·4⁴.
+> conditions of Theorem 1 (with 4-cycles at every vertex), or of Theorem 11 (no 4-cycles, for a chart covering both
+> diagonals). Explicitly: n_b(12,5) ≥ 2·64·3⁴, n_b(15,5) ≥ 2·156·3⁴, n_b(10,5) ≥ 2·126·2⁴, n_b(8,5) ≥ 2·64·2⁴,
+> n_b(16,5) ≥ 2·66·4⁴.
 
 The general product theorem n_b(kq, D) ≥ q^(D−1) · N(k, D) (Theorem 9) holds for every D once a "D-perfect" chart
-exists, and it would give 15–25% records at D = 7 and 8. No D-perfect chart exists at D = 5 for the cells we need
-(proved for (3,2), counting for the rest), and none was found at D = 7, 8 (§3.2).
+exists, and it would give 15–25% records at D = 7 and 8. No perfect chart exists at D = 5 for the cells we need
+((3,2) and (4,3) proved exhaustively, the rest by counting), and none was found at D = 7, 8 (§3.2).
 
-**How the work was split.** Opus built the tools, the theory and the (12,5) record, and proved the general theorems.
-Two Haiku squads (14 cards, `research/squads/LOG.md`) swept bases, groups and charts; their (8,5) and (15,5)
-controllers became records after independent rebuilds here. Their negative results (no (4,4) chart below 8 singular
-patterns, no gain from joint annealing or general switch annealing, exhaustive minima at Z₁₉) are listed below.
+**How the work was split.** Rounds 1-2: Opus built the tools, the theory and the first (12,5) record, and proved the
+general theorems; two Haiku squads (14 cards) swept bases, groups and charts, and their (8,5) and (15,5) controllers
+became records after independent rebuilds. Round 3: Opus found the diagonal idea, the star-collineation reduction, the
+(4,3) and (5,3) charts and the (12,5) and (15,5) Haar controllers; squad round r2-chartlift (8 cards) found the (10,5)
+controller and a (5,2) chart with 216 singular patterns, and mapped where Haar controllers stop (§3.3).
 
 ## 1. The construction
 
@@ -103,6 +126,23 @@ either these lines cover PG(3,q), or u needs a 4-cycle whose letter pattern is n
 
 `ctrl_search.c` counts the violations of these conditions over the voltage-group orbits; cost 0 means the lift has
 diameter ≤ 5, and every record above was also checked on the lift itself.
+
+**Lemma 5 (what the chart conditions depend on; round 3).** Write σ_c for the collineation that A_c induces from the
+star of lines through w_c (a PG(2,q)) to the star of lines through b_c = A_c w_c. Then
+U(c;t) = σ_c⁻¹(the line b_c b_t) and V(c;t) = σ_c(the line w_c w_t).
+So the singular patterns (Lemma 2), the pencils (Lemma 3: planes through b_i b_j spanned by V-lines and b-points, or
+through w_i w_j spanned by U-lines and w-points) and both diagonals (Lemma 4: unions of the points, the lines w_s w_t or
+b_s b_t, and the U- or V-lines) depend only on the points w_c, b_c and the collineations σ_c. Two further facts make
+this usable. (i) Changing coordinates separately in the A-fibres and the B-fibres (A_c → Q A_c P⁻¹, b_c → Q b_c) gives
+an isomorphic lift, so the labelled points (w_c) and (b_c) can each be moved to a fixed representative of their
+PGL(4,q)-orbit. (ii) Every collineation between the two stars comes from some A_c with A_c w_c = b_c, and the remaining
+freedom in A_c (maps fixing w_c and acting as a scalar on its star) changes none of the conditions. Proof: the
+displayed formulas are the definitions of U and V read in the stars; the rest is Lemmas 2–4. ∎
+
+Two tools follow. `r3/diag43/` searches the collineations exhaustively for small (k, q) (Proposition 12). And
+`r3/chart_anneal3.c` (`MOVES=star`) anneals charts by left-multiplying A_c with transvections that fix b_c, which moves
+σ_c and nothing else; it finds a (4,3) chart covering both diagonals in about 5 seconds, where the round-1/2 annealer
+(random single entries of A_c) never found one in hours.
 
 **The 33,792 graph explained.** Its chart (squad round 2) has exactly two meeting U-pairs, U(0;2)~U(3;1) and
 U(0;3)~U(1;0), and two meeting V-pairs, V(0;2)~V(1;2) and V(2;0)~V(3;1). Hence 8 singular patterns. All 24 pencils
@@ -198,6 +238,50 @@ every k-regular diameter-5 graph into a controller: the 56-vertex (3,5) graph wo
   partitions, all planar, so the same argument applies: the w's are collinear and the B-pencils fail. With three
   collinear b's the counting is not decisive. There the annealer never got below 22 singular patterns with pencils
   and diagonals required.
+- **Round 3 settles (4,3) completely: no perfect chart exists.** By Proposition 12(c) every (4,3) chart that covers
+  both diagonals has exactly 16 singular patterns. (The annealer's "22 with diagonals" above was itself a miss: those
+  charts did not cover the diagonals.)
+
+**Theorem 11 (square-free controllers; round 3).** Suppose the chart has every pencil complete and covers both
+diagonals. Then the lift of C has diameter ≤ 5 as soon as (i) C has same-side distances ≤ 4 and (ii) every same-side
+pair at distance 4 is joined by a nonbacktracking 4-walk whose pattern is nonsingular. No 4-cycles are needed.
+Proof: Theorem 1; distance-2 pairs are covered by pencils, and a vertex's own fibre by the backtracking walks. ∎
+So n_b(kq, 5) ≥ 2 m q⁴ for every such C, and with a perfect chart n_b(kq, 5) ≥ q⁴ · N_b(k, 5), where N_b(k, 5) is the
+largest k-regular bipartite graph of diameter ≤ 5 (Theorem 9 at D = 5). Instances, all built and checked all-pairs
+with apsp (VALID at D = 5, INVALID at D = 4); the three bold records were also checked with bfs_all (max eccentricity 5):
+
+| (Δ, 5) | k × q | chart (singular patterns) | controller | m | lift | best (k,5) graph, m |
+|---|---|---|---|---|---|---|
+| (15, 5) | 5 × 3 | `r3/k5q3_pd112.txt` (112 of 640) | Haar, Z₂₆ ⋊₃ Z₆ | 156 | **25,272** | 177 (88%) |
+| (15, 5) | 5 × 3 | same | Haar, Z₃₅ ⋊₆ Z₄ | 140 | 22,680 | |
+| (12, 5) | 4 × 3 | `r3/k4q3_diag_tt.txt` (16 of 216) | Haar, Z₁₆ ⋊₃ Z₄ | 64 | **10,368** | 81 (79%) |
+| (12, 5) | 4 × 3 | same | Haar, Z₁₅ ⋊₂ Z₄ (t = 7, 11 also reach cost 0) | 60 | 9,720 | |
+| (10, 5) | 5 × 2 | `charts/r2_k5_q2.txt` (230 of 640) | Haar, Z₁₄ ⋊₉ Z₉ (squad c4) | 126 | **4,032** | 177 (71%) |
+| (10, 5) | 5 × 2 | squad c5 chart `r3/k5q2_c5_216.txt` (216 of 640) | Haar, Z₂₁ ⋊₄ Z₆ (squad c5) | 126 | 4,032 | |
+
+The last column compares with the largest known (k,5) graph (162 vertices for k = 4, 354 for k = 5): a perfect
+chart would allow the whole of it. The Haar controllers are found by `ctrl_search` in seconds to minutes; metacyclic
+groups with a cyclic quotient of order 4 to 9 win, dicyclic and abelian groups do badly (§3.3).
+
+**Proposition 12 (which charts can cover both diagonals; computer-assisted, round 3).**
+(a) Counting (Proposition 6.3): both diagonals need k + C(k,2)(q−1) + k(k−1)q ≥ (q+1)(q²+1). For kq ≤ 16 this leaves
+only (k, q) = (3,2), (4,2), (5,2), (6,2), (7,2), (8,2), (4,3), (5,3). It rules out (3,3), (3,4), (3,5) and (4,4), so
+(9,5), the 3 × F₄ and 3 × F₅ splits, and (16,5) with 4 × F₄ keep needing 4-cycles everywhere. Remark: with F_q-subspace
+steps of dimension d (fibre F_q^{4d}, degree k q^d) the count is the same with q replaced by q^d (in vectors), so
+F₂-planes in F₂⁸ do not rescue (16,5) either (210 < 255 nonzero vectors covered).
+(b) (3,2): **no chart covers both diagonals** (`r3/diag43/diag_k3q2.py`: every labelled configuration of three points
+on each side, coincidences included, and all 168³ triples of collineations; one-sided coverings exist, 2,688 of them
+for independent points). So (6,5) with 3 × F₂ always needs 4-cycles on one side.
+(c) (4,3): **both diagonals can be covered only when w₀..w₃ and b₀..b₃ are both independent**, and then every such
+chart has complete pencils and **exactly 16 singular patterns**, 8 on each side (`r3/diag43/diag_exhaust3.py`,
+`diag_joint.c`, `diag_coinc.py`, `diag43_allsing.py`: 27 labelled configurations per side up to PGL(4,3), coincidences
+included, 729 pairs; only the independent/independent pair has solutions: 72 in normal form, giving 1,152 distinct
+charts once each letter's collineation is varied, all with 16 singular patterns, complete pencils and both diagonals;
+outputs `diag_charts_all.out`, `diag_coinc.out`). Up to relabelling the letters there are 7 different singular sets
+(`classify_sing.py`, charts `r3/k4q3_diag_cls0..6.txt`).
+(d) (4,2), (5,2), (5,3): charts covering both diagonals with complete pencils exist, with 48, 216 and 102 singular
+patterns (`charts/c4s2_k4_q2.txt`, squad r2 c5, `r3/k5q3_pd102.txt`). (6,2) and (7,2): 602 of 1,500 and 1,314 of
+3,024 (squad r2 c8, c7; one anneal each).
 
 **Theorem 8 (cubic controllers stop at m = 16; so k = 3 gives at most 32 q⁴).** Let C be cubic and bipartite,
 with same-side distances ≤ 4 and every vertex on a 4-cycle. Then C has at most 16 vertices per side. This is exactly
