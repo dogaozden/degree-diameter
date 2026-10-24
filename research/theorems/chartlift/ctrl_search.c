@@ -107,11 +107,14 @@ int main(int argc, char **argv) {
             for (int i = 0; i < ne; i++) for (int x = 0; x < g; x++) fprintf(o, "%d %d %d\n", EA[i] * g + x, EB[i] * g + mul(volt[i], x), col[i]);
             fclose(o); }
         return 0; }
-    int free_e[MAXE], nf = 0; for (int i = 0; i < ne; i++) if (!istree[i]) free_e[nf++] = i;
+    /* PIN="e:v,e:v": fix edge e's voltage to group element v (e.g. to force 4-cycles); pinned edges are never moved */
+    int pinned[MAXE] = {0}, pinval[MAXE] = {0};
+    if (getenv("PIN")) { char *p = getenv("PIN"); while (*p) { int e = (int)strtol(p, &p, 10); if (*p == ':') p++; int v = (int)strtol(p, &p, 10); if (e >= 0 && e < ne) { pinned[e] = 1; pinval[e] = v; } if (*p == ',') p++; else break; } }
+    int free_e[MAXE], nf = 0; for (int i = 0; i < ne; i++) if (!istree[i] && !pinned[i]) free_e[nf++] = i;
     long best = -1; int bv[MAXE]; double t0 = wall(); long it = 0; int restarts = 0;
     while ((wall() - t0) < secs && best != 0) {
         restarts++;
-        do { for (int i = 0; i < ne; i++) volt[i] = istree[i] ? eid : (int)(xr() % g); } while (!parallel_ok());
+        do { for (int i = 0; i < ne; i++) volt[i] = pinned[i] ? pinval[i] : (istree[i] ? eid : (int)(xr() % g)); } while (!parallel_ok());
         long c = cost(); if (best < 0 || c < best) { best = c; memcpy(bv, volt, sizeof volt); }
         double T0 = 1.0 + 0.02 * c; long stall = 0;
         while (stall < 200000 && best != 0 && (wall() - t0) < secs) {
