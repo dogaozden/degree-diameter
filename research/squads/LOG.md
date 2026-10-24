@@ -53,7 +53,7 @@ brief COMMON.md):
 8. (12,5) six letters over F2: chart + Haar at m >= 274.
 
 Outcomes:
-1. (pending at time of writing)
+1. no gain: best cost 4 at m=160 (meta:20:8:3 and 20:8:13, three seeds each, flat), 6 at 168; 25 of 37 sweep groups not run.
 2. no gain for the record: best chart 106 singular (old annealer); note: two parallel b-vectors force >= 64 singular.
 3. no gain: best cost 6 at m=160 (2+2 over meta:20:4:9/11); 3+3 far worse.
 4. **record: (10,5) 4,032** (Haar Z14 x|9 Z9, m=126), rebuilt and checked here (apsp VALID, bfs_all max_ecc 5); also
