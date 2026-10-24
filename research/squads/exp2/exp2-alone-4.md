@@ -1,50 +1,65 @@
-# exp2-alone-4: report (draft, updated as runs finish)
+# exp2-alone-4: final report
 
-Job: raise (7,7), (9,7) or (11,7) at diameter 7 (table values 23,436; 117,648; 398,580 vertices). Arm: one Haar worker,
-no subagents. Start 2026-10-24 16:56 UTC.
+Job: raise one of (7,7), (9,7), (11,7) at diameter 7 (table values 23,436; 117,648; 398,580 vertices).
+Arm: one Haar worker, no subagents. Start 2026-10-24 16:56 UTC, stop 18:10 UTC (wall time 1 h 14 min).
+Budget (tools/session_usage.py, this session): budget_units 0.009 of the 1.5 cap (log: research/squads/usage/exp2-alone-4.jsonl).
 
-## Best valid size per cell (vertices; each checked by research/frontier/build_haar2.py, diameter 7, max = min degree)
+## Result: no cell beaten
 
-| cell | table | our best | ratio | group, orbit parameters |
+Every graph below is a Haar graph H(G,S) on 2|G| vertices. Each was checked with research/frontier/build_haar2.py (two BFS, exact
+diameter 7, max degree = min degree = d, no duplicate edges). Ratio = our vertices / table value.
+
+| cell | table | best valid | ratio | group G (|G|), orbit parameters (k, m, f) |
 |---|---|---|---|---|
-| (7,7) | 23,436 | 19,152 | 0.817 | SL(2,8) x Z19 (N=9,576), k=3, m=2, f=1 |
-| (9,7) | 117,648 | 82,992 | 0.705 | SL(2,13) x Z19 (N=41,496), k=3, m=3, f=0 (and f=3) |
-| (11,7) | 398,580 | 266,448 | 0.668 | SL(2,13) x Z61 (N=133,224), k=3, m=3, f=2 |
+| (7,7) | 23,436 | 19,152 | 0.817 | SL(2,8) x Z19 (9,576), k=3, m=2, f=1 |
+| (9,7) | 117,648 | 85,344 | 0.725 | PGL(2,7) x Z127 (42,672), k=3, m=3, f=0 |
+| (11,7) | 398,580 | 266,448 | 0.668 | SL(2,13) x Z61 (133,224), k=3, m=3, f=2 |
 
-No cell beaten. (Status at time of drafting; see the final section.)
+Other valid finds (in research/frontier/sols/, all verified):
+- d7D7: sl 11 x Z7 (18,480), sl 9 x Z13 (18,720)
+- d9D7: sl 13 x Z19 (82,992, f=0 and f=3), sl 11 x Z31 (81,840)
+- d11D7: sl 11 x Z91 (240,240)
+
+Files: d7D7_sl_8_19_orb3_s1.txt, d7D7_sl_9_13_orb3_s1.txt, d7D7_sl_11_7_orb3_s1.txt, d9D7_pgl_7_127_orb3f0_s1.txt,
+d9D7_sl_13_19_orb3f0_s1.txt, d9D7_sl_13_19_orb3f3_s1.txt, d9D7_sl_11_31_orb3f0_s1.txt, d11D7_sl_11_91_orb3f2_s1.txt,
+d11D7_sl_13_61_orb3f2_s1.txt.
 
 ## What I tried
 
-1. Random-S annealing (haar_gen3) at (7,7), groups of order 11,718 to 12,144 (SL(2,23), PSL(2,13) x Z11, PGL(2,11) x Z9,
-   PSL(2,23) x Z2). Four 240 s runs ended at cost 64 to 149 (uncovered count), i.e. far from solved. These groups are
-   above the table, so this is the case that would beat it. Predicted mean uncovered count at these orders: mu about 110 to 120.
-2. Orbit-symmetric S (haar_sym, from branch claude/structured-search-orbit-w5dd4f, which I fetched, not written by me).
-   S is invariant under an automorphism of order 3 (conjugation times z -> rz). This is the method that worked. It
-   solved every rung up to about mu = 30 within seconds to minutes. Wall-clock runs of 20 to 30 minutes stalled at
-   mu about 38 to 50 (cost 6 to 12, never 0).
-3. Size law: for D = 7 the binding word count is W = 1 + sum_i Delta(Delta-1)^(2i-1) (i = 1..3) per side. Then mu = N e^(-W/N).
-   Table entries are reached only if N exceeds the table/2, which gives mu of about 100 for (7,7), 350 for (9,7) and
-   750 for (11,7) under random S. Orbit search stays feasible at about mu 30 to 40.
+1. Random-S annealing (haar_gen3) at (7,7), groups of order 11,718 to 12,144 (the sizes that would beat the table):
+   SL(2,23), PSL(2,13) x Z11, PGL(2,11) x Z9, PSL(2,23) x Z2. Four 4-minute runs ended at cost 64 to 149 (uncovered
+   vertices). Size law: mu = N e^(-W/N) is about 110 to 120 here, and random annealing cannot reach 0 at that mean.
+2. Orbit-symmetric S (haar_sym, ORBIT="k m f"). The code is from branch claude/structured-search-orbit-w5dd4f
+   (research/structured/haar_sym.c); I did not commit it to this branch. S is invariant under an automorphism of
+   order 3 (conjugation times z -> rz on Z_n), so the words fall into orbits. This is the method that worked here.
+   Every group I used satisfies: every prime factor of n is 1 mod 3.
 
 ## What worked
 
-- Orbit search on SL(2,q) x Z_n with every prime factor of n congruent to 1 mod 3 (so an order-3 automorphism exists).
-- Odd D needs two covering conditions; I used SL rather than PSL to avoid the extra involution misses noted in STRUCTURE.md.
-- (11,7) climbed from mu 11 (sl 11 x Z91, solved in 0.2 s) to mu 32 (sl 13 x Z61, solved in 68 s).
+- Orbit search on SL(2,q) and PGL(2,q) x Z_n, with the parameters listed above. Rungs solved in seconds to minutes up
+  to mu about 30 to 35 (mu = N e^(-W/N), with W the D=7 binding-word count).
+- The (11,7) ladder: sl 11 x Z91 (mu 11, 0.2 s), sl 13 x Z61 (mu 32, 68 s).
+- The (9,7) gain came from PGL(2,7) x Z127 (mu 38, solved after 12.5 min, 2.0e7 evaluations). Its SL version stalled at cost 12.
 
-## What did not work
+## What did not work (floors and stalls)
 
-- (7,7): SL(2,7) x Z31 (N = 10,416, mu 48) stuck at cost 6 for 9 minutes (57 M evaluations). Would have been ratio 0.889.
-- (9,7): SL(2,7) x Z127 (mu 38, cost 12 after 14 M evaluations) and SL(2,9) x Z61 (mu 48, cost 8) stuck.
-- (9,7) SL(2,7) x Z127 with f = 3 (cost 150) and PROD SL(2,4) x SL(2,9) (cost 22) were poor.
-- (11,7) SL(2,8) x Z277 with f = 2 (cost 66 after 90 s) was poor; SL(2,8) x Z271 is running.
+- (7,7): SL(2,7) x Z31 (N = 10,416, mu 48) stalled at cost 6 for 9 min (5.8e7 evaluations). PGL(2,7) x Z31 stalled at cost 6
+  as well, which suggests a structural floor for this group order. Would have been ratio 0.889.
+- (7,7): SL(2,9) x Z13 and SL(2,11) x Z7 solved, but are below the best (19,152).
+- (9,7) above 42,672: SL(2,9) x Z61 (cost 8), PGL(2,9) x Z61 (cost 3 after 2 runs of 20 min), PSL(2,19) x Z13 (cost 2),
+  PSL(2,23) x Z7 (cost 3, ratio would be 0.724), PGL(2,5) x Z361 (cost 72), PROD SL(2,4) x SL(2,9) (cost 22).
+- (9,7): SL(2,7) x Z127 with f = 3 (cost 150).
+- (11,7) above 133,224: SL(2,11) x Z103 (cost 6), PGL(2,11) x Z103 (cost 11), SL(2,8) x Z271 (cost 18 and 36 with a second seed),
+  SL(2,7) x Z397 (cost 60, start cost 33,990).
 
-## Files
+## Reading
 
-- research/frontier/sols/d7D7_sl_11_7_orb3_s1.txt (18,480 vertices), d7D7_sl_8_19_orb3_s1.txt (19,152), d7D7_sl_9_13_orb3_s1.txt (18,720)
-- research/frontier/sols/d9D7_sl_13_19_orb3f0_s1.txt (82,992), d9D7_sl_13_19_orb3f3_s1.txt (82,992), d9D7_sl_11_31_orb3f0_s1.txt (81,840)
-- research/frontier/sols/d11D7_sl_11_91_orb3f2_s1.txt (240,240), d11D7_sl_13_61_orb3f2_s1.txt (266,448)
+- The orbit method's practical wall in these families is mu about 35 to 40 at about 10^7 evaluations. That leaves the
+  table out of reach: for (7,7) it needs mu about 100, for (9,7) about 350, for (11,7) about 750 under random S, and the
+  orbit method gains only a factor of about 2 in mu. So none of the three cells is beaten here.
+- Verification is the bottleneck for big graphs: build_haar2.py took 2 to 5 min at 85k to 266k vertices.
 
-## Budget
+## Limits
 
-(filled in at the end from tools/session_usage.py)
+- Random-S annealing and orbit search are the only constructions tried. No voltage lifts, no theory-based constructions.
+- The searches were one core each, 20 to 30 minutes per rung, with mostly one seed each.
