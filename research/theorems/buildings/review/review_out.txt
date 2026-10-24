@@ -1,0 +1,77 @@
+== thin_check
+A2      |W|=     6 N=  3 h=  3 classes=1+1 vertices=3+3 ecc from I1,I2 = [3, 3]  Thm2 mismatches=0  'Equivalently' as written mismatches=24  corrected=0
+A3      |W|=    24 N=  6 h=  4 classes=2+1 vertices=6+12 ecc from I1,I2 = [4, 4]  Thm2 mismatches=0  'Equivalently' as written mismatches=96  corrected=0
+A4      |W|=   120 N= 10 h=  5 classes=2+2 vertices=30+30 ecc from I1,I2 = [5, 5]  Thm2 mismatches=0  'Equivalently' as written mismatches=480  corrected=0
+A5      |W|=   720 N= 15 h=  6 classes=3+2 vertices=90+180 ecc from I1,I2 = [6, 6]  Thm2 mismatches=0  'Equivalently' as written mismatches=2880  corrected=0
+B2      |W|=     8 N=  4 h=  4 classes=1+1 vertices=4+4 ecc from I1,I2 = [4, 4]  Thm2 mismatches=0  'Equivalently' as written mismatches=32  corrected=0
+B3      |W|=    48 N=  9 h=  6 classes=2+1 vertices=12+24 ecc from I1,I2 = [6, 6]  Thm2 mismatches=0  'Equivalently' as written mismatches=192  corrected=0
+B4      |W|=   384 N= 16 h=  8 classes=2+2 vertices=96+96 ecc from I1,I2 = [8, 8]  Thm2 mismatches=0  'Equivalently' as written mismatches=1536  corrected=0
+D4      |W|=   192 N= 12 h=  6 classes=3+1 vertices=24+96 ecc from I1,I2 = [6, 6]  Thm2 mismatches=0  'Equivalently' as written mismatches=768  corrected=0
+D5      |W|=  1920 N= 20 h=  8 classes=2+3 vertices=480+240 ecc from I1,I2 = [8, 8]  Thm2 mismatches=0  'Equivalently' as written mismatches=7680  corrected=0
+F4      |W|=  1152 N= 24 h= 12 classes=2+2 vertices=288+288 ecc from I1,I2 = [12, 12]  Thm2 mismatches=0  'Equivalently' as written mismatches=4608  corrected=0
+H3      |W|=   120 N= 15 h= 10 classes=2+1 vertices=30+60 ecc from I1,I2 = [10, 10]  Thm2 mismatches=0  'Equivalently' as written mismatches=480  corrected=0
+H4      |W|= 14400 N= 60 h= 30 classes=2+2 vertices=3600+3600 ecc from I1,I2 = [30, 30]  Thm2 mismatches=0  'Equivalently' as written mismatches=57600  corrected=0
+E6      |W|= 51840 N= 36 h= 12 classes=3+3 vertices=6480+6480 ecc from I1,I2 = [12, 12]  Thm2 mismatches=0  'Equivalently' as written mismatches=207360  corrected=0
+I2(5)   |W|=    10 N=  5 h=  5 classes=1+1 vertices=5+5 ecc from I1,I2 = [5, 5]  Thm2 mismatches=0  'Equivalently' as written mismatches=40  corrected=0
+I2(7)   |W|=    14 N=  7 h=  7 classes=1+1 vertices=7+7 ecc from I1,I2 = [7, 7]  Thm2 mismatches=0  'Equivalently' as written mismatches=56  corrected=0
+I2(8)   |W|=    16 N=  8 h=  8 classes=1+1 vertices=8+8 ecc from I1,I2 = [8, 8]  Thm2 mismatches=0  'Equivalently' as written mismatches=64  corrected=0
+I2(9)   |W|=    18 N=  9 h=  9 classes=1+1 vertices=9+9 ecc from I1,I2 = [9, 9]  Thm2 mismatches=0  'Equivalently' as written mismatches=72  corrected=0
+I2(10)  |W|=    20 N= 10 h= 10 classes=1+1 vertices=10+10 ecc from I1,I2 = [10, 10]  Thm2 mismatches=0  'Equivalently' as written mismatches=80  corrected=0
+I2(12)  |W|=    24 N= 12 h= 12 classes=1+1 vertices=12+12 ecc from I1,I2 = [12, 12]  Thm2 mismatches=0  'Equivalently' as written mismatches=96  corrected=0
+== delorme_check
+300 trials OK; (D, diam Q) counts: [((1, 0), 4), ((2, 1), 20), ((3, 2), 42), ((4, 3), 21), ((5, 4), 6), ((6, 5), 1)]
+== asym_check
+q=1000003 A6: q(1-n/Mb) = 14.99988   predicted t(h-2) = 15
+q=1000003 C4: q(1-n/Mb) = 11.99991   predicted t(h-2) = 12
+q=1000003 F4: q(1-n/Mb) = 19.99978   predicted t(h-2) = 20
+q=1000003 E6: q(1-n/Mb) = 29.99953   predicted t(h-2) = 30
+q=1000003 E8: q(1-n/Mb) = 111.99367   predicted t(h-2) = 112
+q=1000003 A3 Delorme: q(1-n/Mb) = 5.99998   predicted r(h-2) = 6
+q=1000003 B5 Delorme: q(1-n/Mb) = 39.99917   predicted r(h-2) = 40
+q=1000003 E7 Delorme: q(1-n/Mb) = 111.99366   predicted r(h-2) = 112
+q=10000019 A4: q(1-n/Mb) = 6.00000   predicted t(h-2) = 6
+q=10000019 A6: q(1-n/Mb) = 14.99999   predicted t(h-2) = 15
+q=10000019 C4: q(1-n/Mb) = 11.99999   predicted t(h-2) = 12
+q=10000019 F4: q(1-n/Mb) = 19.99998   predicted t(h-2) = 20
+q=10000019 E6: q(1-n/Mb) = 29.99995   predicted t(h-2) = 30
+q=10000019 E8: q(1-n/Mb) = 111.99937   predicted t(h-2) = 112
+q=10000019 A3 Delorme: q(1-n/Mb) = 6.00000   predicted r(h-2) = 6
+q=10000019 B5 Delorme: q(1-n/Mb) = 39.99992   predicted r(h-2) = 40
+q=10000019 E7 Delorme: q(1-n/Mb) = 111.99937   predicted r(h-2) = 112
+2E6 top exponent 36 coefficient of q^35: 2  of q^36: 1
+q=2: W(F4) weighted sum = 371231385525, |2E6(q)|/|B| = 371231385525, equal: True
+q=3: W(F4) weighted sum = 380927794737817600, |2E6(q)|/|B| = 380927794737817600, equal: True
+q=4: W(F4) weighted sum = 8961459686903605415625, |2E6(q)|/|B| = 8961459686903605415625, equal: True
+q=5: W(F4) weighted sum = 23690772055748794527812736, |2E6(q)|/|B| = 23690772055748794527812736, equal: True
+q=7: W(F4) weighted sum = 3684681430708762988995645440000, |2E6(q)|/|B| = 3684681430708762988995645440000, equal: True
+F4 colour classes [[0, 2], [1, 3]] -> each class has one weight-1 and one weight-2 node: True
+2E6 q=1000003: q(1-n/Mb) = 9.99995  predicted 10
+== thick_check
+PG(3,2): chambers=315 vertices=140 degrees=[3, 9] P=[9, 3] layers I1->(I1,I2) {0: 1, 2: 18, 4: 16} {1: 9, 3: 96}  MATCH
+PG(4,2): chambers=9765 vertices=2170 degrees=[9] P=[9, 9] layers I1->(I1,I2) {0: 1, 2: 60, 4: 1024} {1: 9, 3: 324, 5: 752}  MATCH
+{1: 119, 2: 1071, 3: 765}
+O-(8,2): chambers=16065 vertices=6426 degrees=[3, 15] P=[15, 3] layers I1->(I1,I2) {0: 1, 2: 30, 4: 528, 6: 512} {1: 15, 3: 380, 5: 4960}  MATCH
+{1: 63, 2: 315, 3: 135}
+Sp(6,2): chambers=2835 vertices=1260 degrees=[3, 9] P=[9, 3] layers I1->(I1,I2) {0: 1, 2: 18, 4: 168, 6: 128} {1: 9, 3: 120, 5: 816}  MATCH
+== rates_check
+PG(3,2): chambers=315 vertices=140 degrees=[3, 9] P=[9, 3] layers I1->(I1,I2) {0: 1, 2: 18, 4: 16} {1: 9, 3: 96}  MATCH
+PG(4,2): chambers=9765 vertices=2170 degrees=[9] P=[9, 9] layers I1->(I1,I2) {0: 1, 2: 60, 4: 1024} {1: 9, 3: 324, 5: 752}  MATCH
+{1: 119, 2: 1071, 3: 765}
+O-(8,2): chambers=16065 vertices=6426 degrees=[3, 15] P=[15, 3] layers I1->(I1,I2) {0: 1, 2: 30, 4: 528, 6: 512} {1: 15, 3: 380, 5: 4960}  MATCH
+{1: 63, 2: 315, 3: 135}
+Sp(6,2): chambers=2835 vertices=1260 degrees=[3, 9] P=[9, 3] layers I1->(I1,I2) {0: 1, 2: 18, 4: 168, 6: 128} {1: 9, 3: 120, 5: 816}  MATCH
+D=5: 50% first at q=8 Delta=81; 90% at q=59 Delta=3.6e+03
+D=7: 50% first at q=23 Delta=1.38e+04; 90% at q=149 Delta=3.38e+06
+D=8: 50% first at q=17 Delta=324; 90% at q=113 Delta=1.3e+04
+D=9: 50% first at q=41 Delta=3.11e+06; 90% at q=269 Delta=5.31e+09
+D=10: 50% first at q=59 Delta=7.78e+08; 90% at q=379 Delta=7.92e+12
+D=12: 50% first at q=29 Delta=900; 90% at q=191 Delta=3.69e+04
+D=16: 50% first at q=81 Delta=4.52e+07; 90% at q=541 Delta=8.63e+10
+D=18: 50% first at q=163 Delta=3.19e+15; 90% at q=1063 Delta=1.54e+21
+D=30: 50% first at q=163 Delta=7.23e+08; 90% at q=1063 Delta=1.28e+12
+q=16 F4: Delta=289 n/Mb(Delta,12) = 0.312
+q=16 E6: Delta=4913 n/Mb(Delta,12) = 0.166
+q=16 2E6: Delta=4369 n/Mb(Delta,12) = 0.528
+B3(16) quotient: |Q|/Moore_general(4913,5) = 0.491
+PG(4,3) layers: {0: 1, 2: 204, 4: 15525} {1: 16, 3: 2268, 5: 13446}
+Sp(8,2) layers same side from I1 / I2: {0: 1, 2: 60, 4: 1512, 6: 28576, 8: 50176} {0: 1, 2: 60, 4: 1608, 6: 26048, 8: 52608}

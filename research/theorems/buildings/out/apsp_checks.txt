@@ -1,0 +1,63 @@
+== flag graph A3q3 (PG 3 3): apsp 16 4
+n=650 edges=2080 degree min=4 max=16 bipartite=yes diameter=4
+RESULT VALID d=16 D=4 n=650
+== flag graph C3q3 (Sp 3 3): apsp 16 6
+n=18200 edges=58240 degree min=4 max=16 bipartite=yes diameter=6
+RESULT VALID d=16 D=6 n=18200
+== flag graph B3q3 (O 3 3): apsp 16 6
+n=18200 edges=58240 degree min=4 max=16 bipartite=yes diameter=6
+RESULT VALID d=16 D=6 n=18200
+== flag graph C2q3_9 (Om 2 3): apsp 10 4
+n=392 edges=1120 degree min=4 max=10 bipartite=yes diameter=4
+RESULT VALID d=10 D=4 n=392
+== flag graph C3q2_4 (Om 3 2): apsp 15 6
+n=6426 edges=16065 degree min=3 max=15 bipartite=yes diameter=6
+RESULT VALID d=15 D=6 n=6426
+== flag graph C2q4_8 (U 5 4): apsp 9 4
+n=462 edges=1485 degree min=5 max=9 bipartite=yes diameter=4
+RESULT VALID d=9 D=4 n=462
+== flag graph C3q4_2 (U 6 4): apsp 15 6
+n=24948 edges=93555 degree min=5 max=15 bipartite=yes diameter=6
+RESULT VALID d=15 D=6 n=24948
+== flag graph D4q2 (Op 4 2): apsp 27 6
+n=15750 edges=42525 degree min=3 max=27 bipartite=yes diameter=6
+RESULT VALID d=27 D=6 n=15750
+== flag graph A5q2 (PG 5 2): apsp 27 6
+n=91140 edges=615195 degree min=9 max=27 bipartite=yes diameter=6
+RESULT VALID d=27 D=6 n=91140
+== Delorme product of A2q3 (PG 2 3): G: 26 vertices (|A|=13, |B|=13); product: 338 vertices
+n=338 edges=2704 degree min=16 max=16 bipartite=yes diameter=3
+RESULT VALID d=16 D=3 n=338
+== Delorme quotient of A2q3 (general graph; apsp prints its diameter; bipartite=no expected)
+n=169 edges=1326 degree min=15 max=16 bipartite=no diameter=2
+RESULT INVALID
+== Delorme product of C2q2 (Sp 2 2): G: 30 vertices (|A|=15, |B|=15); product: 450 vertices
+n=450 edges=2025 degree min=9 max=9 bipartite=yes diameter=4
+RESULT VALID d=9 D=4 n=450
+== Delorme quotient of C2q2 (general graph; apsp prints its diameter; bipartite=no expected)
+n=225 edges=990 degree min=8 max=9 bipartite=no diameter=3
+RESULT INVALID
+== Delorme product of C2q2_4 (Om 2 2): G: 72 vertices (|A|=27, |B|=45); product: 2430 vertices
+n=2430 edges=18225 degree min=15 max=15 bipartite=yes diameter=4
+RESULT VALID d=15 D=4 n=2430
+== Delorme quotient of C2q2_4 (general graph; apsp prints its diameter; bipartite=no expected)
+n=1215 edges=9045 degree min=14 max=15 bipartite=no diameter=3
+RESULT INVALID
+== Delorme product of A3q2 (PG 3 2): G: 140 vertices (|A|=105, |B|=35); product: 7350 vertices
+n=7350 edges=99225 degree min=27 max=27 bipartite=yes diameter=4
+RESULT VALID d=27 D=4 n=7350
+== Delorme quotient of A3q2 (general graph; apsp prints its diameter; bipartite=no expected)
+n=3675 edges=49455 degree min=26 max=27 bipartite=no diameter=3
+RESULT INVALID
+== Delorme product of C2q3_9 (Om 2 3): G: 392 vertices (|A|=112, |B|=280); product: 62720 vertices
+n=62720 edges=1254400 degree min=40 max=40 bipartite=yes diameter=4
+RESULT VALID d=40 D=4 n=62720
+== Delorme quotient of C2q3_9 (general graph; apsp prints its diameter; bipartite=no expected)
+n=31360 edges=626640 degree min=39 max=40 bipartite=no diameter=3
+RESULT INVALID
+== Delorme product of C2q4_8 (U 5 4): G: 462 vertices (|A|=165, |B|=297); product: 98010 vertices
+n=98010 edges=2205225 degree min=45 max=45 bipartite=yes diameter=4
+RESULT VALID d=45 D=4 n=98010
+== Delorme quotient of C2q4_8 (general graph; apsp prints its diameter; bipartite=no expected)
+n=49005 edges=1101870 degree min=44 max=45 bipartite=no diameter=3
+RESULT INVALID

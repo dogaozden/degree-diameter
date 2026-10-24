@@ -1,0 +1,36 @@
+== flag graph A2q2 (PG 2 2): apsp 3 3
+n=14 edges=21 degree min=3 max=3 bipartite=yes diameter=3
+RESULT VALID d=3 D=3 n=14
+== flag graph A2q3 (PG 2 3): apsp 4 3
+n=26 edges=52 degree min=4 max=4 bipartite=yes diameter=3
+RESULT VALID d=4 D=3 n=26
+== flag graph A3q2 (PG 3 2): apsp 9 4
+n=140 edges=315 degree min=3 max=9 bipartite=yes diameter=4
+RESULT VALID d=9 D=4 n=140
+== flag graph A4q2 (PG 4 2): apsp 9 5
+n=2170 edges=9765 degree min=9 max=9 bipartite=yes diameter=5
+RESULT VALID d=9 D=5 n=2170
+== flag graph C2q2 (Sp 2 2): apsp 3 4
+n=30 edges=45 degree min=3 max=3 bipartite=yes diameter=4
+RESULT VALID d=3 D=4 n=30
+== flag graph C2q3 (Sp 2 3): apsp 4 4
+n=80 edges=160 degree min=4 max=4 bipartite=yes diameter=4
+RESULT VALID d=4 D=4 n=80
+== flag graph B2q3 (O 2 3): apsp 4 4
+n=80 edges=160 degree min=4 max=4 bipartite=yes diameter=4
+RESULT VALID d=4 D=4 n=80
+== flag graph C3q2 (Sp 3 2): apsp 9 6
+n=1260 edges=2835 degree min=3 max=9 bipartite=yes diameter=6
+RESULT VALID d=9 D=6 n=1260
+== flag graph C2q2_4 (Om 2 2): apsp 5 4
+n=72 edges=135 degree min=3 max=5 bipartite=yes diameter=4
+RESULT VALID d=5 D=4 n=72
+== flag graph C2q4_2 (U 4 4): apsp 5 4
+n=72 edges=135 degree min=3 max=5 bipartite=yes diameter=4
+RESULT VALID d=5 D=4 n=72
+== flag graph A4q3 (PG 4 3): apsp 16 5
+n=31460 edges=251680 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=31460
+== flag graph C4q2 (Sp 4 2): apsp 9 8
+n=160650 edges=722925 degree min=9 max=9 bipartite=yes diameter=8
+RESULT VALID d=9 D=8 n=160650
