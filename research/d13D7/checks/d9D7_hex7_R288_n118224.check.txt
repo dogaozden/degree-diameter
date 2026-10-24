@@ -1,0 +1,8 @@
+# (9,7) 118,224 = 3*|H(7)| + 2*288 (side result of job cell-13-7, 2026-10-24 ~23:53 UTC).
+# R = 288 pairwise opposite points of H(7) (research/d13D7/q57/R288_q7_idx.txt; squad round 4 card c3, orbit union),
+# S = first 288 lines of the Hermitian spread of H(7); hub graph = circulant of degree 6.
+#   RFILE=q57/R288_q7_idx.txt SFILE=q57/S_q7_spread.txt tri hex/hex_q7.bin -1 1 d9D7_R288.edges
+# All-pairs research/lifts/coordinator_check/apsp.c:
+n=118224 edges=532008 degree min=9 max=9 bipartite=yes diameter=7
+RESULT VALID d=9 D=7 n=118224   (with D = 6: RESULT INVALID)
+# sol: research/frontier/sols/d9D7_hex7_R288_n118224.sol (d7hex format; round trip identical). Supersedes 117,992.
