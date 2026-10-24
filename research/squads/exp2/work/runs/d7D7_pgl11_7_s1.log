@@ -1,0 +1,19 @@
+group pgl 11 x Z_7, N=9240, identity 0, H order 42, rows 220, threads 1, setup 0.00s
+start cost=67
+t=30 steps=177660 evals=1421281 cost=4 best=4 T=0.53
+t=60 steps=340276 evals=2722209 cost=4 best=4 T=0.19
+t=90 steps=513457 evals=4107657 cost=4 best=4 T=0.15
+t=120 steps=684172 evals=5473377 cost=4 best=4 T=0.15
+t=150 steps=862132 evals=6897057 cost=4 best=4 T=0.15
+t=180 steps=1047073 evals=8376585 cost=3 best=3 T=0.61
+t=210 steps=1236248 evals=9889985 cost=3 best=3 T=0.21
+t=240 steps=1437780 evals=11502241 cost=3 best=3 T=0.15
+t=270 steps=1622024 evals=12976193 cost=3 best=3 T=0.15
+t=300 steps=1807416 evals=14459329 cost=5 best=3 T=0.15
+t=330 steps=1996132 evals=15969057 cost=6 best=3 T=0.64
+t=360 steps=2189214 evals=17513713 cost=5 best=3 T=0.23
+t=390 steps=2388060 evals=19104481 cost=5 best=3 T=0.15
+t=420 steps=2587700 evals=20701601 cost=5 best=3 T=0.15
+t=450 steps=2784943 evals=22279545 cost=5 best=3 T=0.15
+t=480 steps=2971681 evals=23773449 cost=7 best=3 T=0.64
+RESULT d=7 D=7 group=pgl 11 x Z_7 N=9240 best=3 evals=24792537 time=500.0

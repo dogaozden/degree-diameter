@@ -1,0 +1,23 @@
+group psl 9 poly x^2+1 x Z_27, N=9720, identity 972, H order 54, rows 180, threads 1, setup 0.00s
+wide rows: HW order 135, rows 72, setup 0.00s
+alpha: conj by mat(1,2,0,1) (index 54), z -> 10 z on Z_27
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 80 (+e); mu = 30.63, mu/k = 10.21, fixed-point misses ~ 23.75
+start cost=6371
+t=30 steps=264379 evals=2115033 cost=48 best=48 T=0.53
+t=60 steps=540655 evals=4325241 cost=48 best=48 T=0.19
+t=90 steps=816632 evals=6533057 cost=48 best=48 T=0.15
+t=120 steps=1096974 evals=8775793 cost=48 best=48 T=0.15
+t=150 steps=1377420 evals=11019361 cost=48 best=48 T=0.15
+t=180 steps=1656660 evals=13253281 cost=48 best=48 T=0.53
+t=210 steps=1934031 evals=15472249 cost=48 best=48 T=0.19
+t=240 steps=2213767 evals=17710137 cost=48 best=48 T=0.15
+t=270 steps=2494420 evals=19955361 cost=48 best=48 T=0.15
+t=300 steps=2752791 evals=22022329 cost=48 best=48 T=0.15
+t=330 steps=3030605 evals=24244841 cost=48 best=48 T=0.53
+t=360 steps=3289142 evals=26313137 cost=48 best=48 T=0.19
+t=390 steps=3558673 evals=28469385 cost=48 best=48 T=0.15
+t=420 steps=3825877 evals=30607017 cost=48 best=48 T=0.15
+t=450 steps=4089155 evals=32713241 cost=48 best=48 T=0.15
+t=480 steps=4351809 evals=34814473 cost=48 best=48 T=0.53
+t=510 steps=4618948 evals=36951585 cost=48 best=48 T=0.19
+RESULT d=7 D=7 group=psl 9 poly x^2+1 x Z_27 N=9720 best=48 evals=39037921 time=540.0 orbit k=3 m=2 f=1 fix=80

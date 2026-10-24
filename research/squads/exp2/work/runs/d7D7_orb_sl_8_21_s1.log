@@ -1,0 +1,23 @@
+group sl 8 poly x^3+x+1 x Z_21, N=10584, identity 1176, H order 63, rows 168, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 63); using haar_gen3's evaluation
+alpha: conj by mat(5,5,6,4) (index 358), z -> 4 z on Z_21
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 26 (+e); mu = 53.37, mu/k = 17.79, fixed-point misses ~ 9.26
+start cost=997
+t=30 steps=220826 evals=1766609 cost=34 best=34 T=0.53
+t=60 steps=450421 evals=3603369 cost=34 best=34 T=0.19
+t=90 steps=696327 evals=5570617 cost=34 best=34 T=0.15
+t=120 steps=934233 evals=7473865 cost=34 best=34 T=0.15
+t=150 steps=1182966 evals=9463729 cost=34 best=34 T=0.15
+t=180 steps=1421895 evals=11375161 cost=39 best=34 T=0.84
+t=210 steps=1657911 evals=13263289 cost=37 best=34 T=0.30
+t=240 steps=1882057 evals=15056457 cost=37 best=34 T=0.15
+t=270 steps=2115784 evals=16926273 cost=37 best=34 T=0.15
+t=300 steps=2350983 evals=18807865 cost=37 best=34 T=0.15
+t=330 steps=2598761 evals=20790089 cost=43 best=34 T=0.84
+t=360 steps=2845073 evals=22760585 cost=37 best=34 T=0.30
+t=390 steps=3087950 evals=24703601 cost=37 best=34 T=0.15
+t=420 steps=3330880 evals=26647041 cost=37 best=34 T=0.15
+t=450 steps=3577084 evals=28616673 cost=37 best=34 T=0.15
+t=480 steps=3806875 evals=30455001 cost=37 best=34 T=0.84
+t=510 steps=4057395 evals=32459161 cost=37 best=34 T=0.30
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_21 N=10584 best=34 evals=34385417 time=540.0 orbit k=3 m=2 f=1 fix=26

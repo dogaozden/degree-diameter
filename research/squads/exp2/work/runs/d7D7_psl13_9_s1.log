@@ -1,0 +1,12 @@
+group psl 13 x Z_9, N=9828, identity 702, H order 63, rows 156, threads 1, setup 0.00s
+start cost=197
+t=30 steps=239662 evals=1917297 cost=9 best=9 T=0.53
+t=60 steps=483951 evals=3871609 cost=9 best=9 T=0.19
+t=90 steps=726452 evals=5811617 cost=9 best=9 T=0.15
+t=120 steps=981521 evals=7852169 cost=9 best=9 T=0.15
+t=150 steps=1204131 evals=9633049 cost=9 best=9 T=0.15
+t=180 steps=1409586 evals=11276689 cost=9 best=8 T=0.87
+t=210 steps=1611459 evals=12891673 cost=9 best=8 T=0.31
+t=240 steps=1823913 evals=14591305 cost=11 best=8 T=0.15
+t=270 steps=2056916 evals=16455329 cost=11 best=8 T=0.15
+RESULT d=7 D=7 group=psl 13 x Z_9 N=9828 best=8 evals=18355857 time=300.0

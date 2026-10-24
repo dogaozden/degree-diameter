@@ -1,0 +1,20 @@
+group pgl 7 x Z_28, N=9408, identity 0, H order 56, rows 168, threads 1, setup 0.00s
+start cost=341
+t=30 steps=233396 evals=1867169 cost=9 best=8 T=0.53
+t=60 steps=464943 evals=3719545 cost=9 best=8 T=0.19
+t=90 steps=698014 evals=5584113 cost=9 best=8 T=0.15
+t=120 steps=934698 evals=7477585 cost=9 best=8 T=0.15
+t=150 steps=1164805 evals=9318441 cost=9 best=8 T=0.15
+t=180 steps=1392041 evals=11136329 cost=7 best=7 T=0.57
+t=210 steps=1601662 evals=12813297 cost=7 best=7 T=0.20
+t=240 steps=1818476 evals=14547809 cost=6 best=6 T=0.15
+t=270 steps=2035408 evals=16283265 cost=6 best=6 T=0.15
+t=300 steps=2267681 evals=18141449 cost=3 best=3 T=0.15
+t=330 steps=2498256 evals=19986049 cost=3 best=3 T=0.15
+t=360 steps=2732269 evals=21858153 cost=3 best=3 T=0.15
+t=390 steps=2950329 evals=23602633 cost=19 best=3 T=0.15
+t=420 steps=3170199 evals=25361593 cost=10 best=3 T=0.15
+t=450 steps=3396758 evals=27174065 cost=3 best=3 T=1.38
+t=480 steps=3632147 evals=29057177 cost=3 best=3 T=0.49
+t=510 steps=3854063 evals=30832505 cost=10 best=3 T=0.17
+RESULT d=7 D=7 group=pgl 7 x Z_28 N=9408 best=3 evals=32658105 time=540.0

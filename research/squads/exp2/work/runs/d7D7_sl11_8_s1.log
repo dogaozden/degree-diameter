@@ -1,0 +1,20 @@
+group sl 11 x Z_8, N=10560, identity 880, H order 44, rows 240, threads 1, setup 0.00s
+start cost=74
+t=30 steps=163075 evals=1304601 cost=20 best=18 T=0.53
+t=60 steps=334142 evals=2673137 cost=20 best=18 T=0.19
+t=90 steps=487389 evals=3899113 cost=20 best=18 T=0.15
+t=120 steps=631535 evals=5052281 cost=20 best=18 T=0.15
+t=150 steps=793604 evals=6348833 cost=20 best=18 T=0.15
+t=180 steps=959968 evals=7679745 cost=14 best=14 T=0.54
+t=210 steps=1137784 evals=9102273 cost=14 best=14 T=0.19
+t=240 steps=1307223 evals=10457785 cost=14 best=14 T=0.15
+t=270 steps=1475427 evals=11803417 cost=14 best=14 T=0.15
+t=300 steps=1625843 evals=13006745 cost=14 best=14 T=0.15
+t=330 steps=1806232 evals=14449857 cost=14 best=14 T=1.25
+t=360 steps=1984380 evals=15875041 cost=14 best=14 T=0.44
+t=390 steps=2168384 evals=17347073 cost=14 best=14 T=0.16
+t=420 steps=2354631 evals=18837049 cost=20 best=14 T=0.15
+t=450 steps=2545377 evals=20363017 cost=20 best=14 T=0.15
+t=480 steps=2736306 evals=21890449 cost=14 best=14 T=1.25
+t=510 steps=2921101 evals=23368809 cost=14 best=14 T=0.44
+RESULT d=7 D=7 group=sl 11 x Z_8 N=10560 best=14 evals=24867825 time=540.0

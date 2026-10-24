@@ -1,0 +1,23 @@
+group sl 9 poly x^2+1 x Z_14, N=10080, identity 1008, H order 56, rows 180, threads 1, setup 0.00s
+wide rows: HW order 70, rows 144, setup 0.00s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 9 z on Z_14
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 35 (+e); mu = 39.02, mu/k = 13.01, fixed-point misses ~ 11.30
+start cost=10098
+t=30 steps=154798 evals=1238385 cost=16 best=10 T=0.53
+t=60 steps=313521 evals=2508169 cost=10 best=10 T=0.19
+t=90 steps=468604 evals=3748833 cost=10 best=10 T=0.15
+t=120 steps=631060 evals=5048481 cost=10 best=10 T=0.15
+t=150 steps=793942 evals=6351537 cost=10 best=10 T=0.15
+t=180 steps=954845 evals=7638761 cost=10 best=10 T=0.54
+t=210 steps=1110526 evals=8884209 cost=10 best=10 T=0.19
+t=240 steps=1269427 evals=10155417 cost=10 best=10 T=0.15
+t=270 steps=1428639 evals=11429113 cost=10 best=10 T=0.15
+t=300 steps=1580329 evals=12642633 cost=10 best=10 T=0.15
+t=330 steps=1738137 evals=13905097 cost=10 best=10 T=0.54
+t=360 steps=1887368 evals=15098945 cost=10 best=10 T=0.19
+t=390 steps=2040395 evals=16323161 cost=10 best=10 T=0.15
+t=420 steps=2195993 evals=17567945 cost=10 best=10 T=0.15
+t=450 steps=2344913 evals=18759305 cost=10 best=10 T=0.15
+t=480 steps=2502455 evals=20019641 cost=10 best=10 T=0.54
+t=510 steps=2659538 evals=21276305 cost=10 best=10 T=0.19
+RESULT d=7 D=7 group=sl 9 poly x^2+1 x Z_14 N=10080 best=10 evals=22453073 time=540.0 orbit k=3 m=2 f=1 fix=35

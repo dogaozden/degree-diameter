@@ -1,0 +1,20 @@
+group psl 7 x Z_56, N=9408, identity 1176, H order 56, rows 168, threads 1, setup 0.00s
+start cost=180
+t=30 steps=216505 evals=1732041 cost=10 best=4 T=0.53
+t=60 steps=463200 evals=3705601 cost=7 best=4 T=0.19
+t=90 steps=701136 evals=5609089 cost=7 best=4 T=0.15
+t=120 steps=927513 evals=7420105 cost=7 best=4 T=0.15
+t=150 steps=1155828 evals=9246625 cost=7 best=4 T=0.15
+t=180 steps=1391873 evals=11134985 cost=5 best=4 T=0.61
+t=210 steps=1619079 evals=12952633 cost=5 best=4 T=0.22
+t=240 steps=1846753 evals=14774025 cost=9 best=4 T=0.15
+t=270 steps=2099604 evals=16796833 cost=9 best=4 T=0.15
+t=300 steps=2347621 evals=18780969 cost=11 best=4 T=0.15
+t=330 steps=2591523 evals=20732185 cost=4 best=4 T=0.61
+t=360 steps=2837469 evals=22699753 cost=4 best=4 T=0.22
+t=390 steps=3097339 evals=24778713 cost=11 best=4 T=0.15
+t=420 steps=3353541 evals=26828329 cost=6 best=4 T=0.15
+t=450 steps=3605866 evals=28846929 cost=6 best=4 T=0.15
+t=480 steps=3849183 evals=30793465 cost=7 best=4 T=0.61
+t=510 steps=4101194 evals=32809553 cost=7 best=4 T=0.22
+RESULT d=7 D=7 group=psl 7 x Z_56 N=9408 best=4 evals=34881249 time=540.0

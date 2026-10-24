@@ -1,0 +1,20 @@
+group sl 7 x Z_35, N=11760, identity 1470, H order 56, rows 210, threads 1, setup 0.00s
+start cost=316
+t=30 steps=195207 evals=1561657 cost=82 best=80 T=0.53
+t=60 steps=383900 evals=3071201 cost=82 best=80 T=0.19
+t=90 steps=573945 evals=4591561 cost=82 best=80 T=0.15
+t=120 steps=742581 evals=5940649 cost=82 best=80 T=0.15
+t=150 steps=929942 evals=7439537 cost=82 best=80 T=0.15
+t=180 steps=1116599 evals=8932793 cost=80 best=80 T=0.53
+t=210 steps=1297756 evals=10382049 cost=80 best=80 T=0.19
+t=240 steps=1490547 evals=11924377 cost=80 best=80 T=0.15
+t=270 steps=1671283 evals=13370265 cost=80 best=80 T=0.15
+t=300 steps=1839152 evals=14713217 cost=78 best=78 T=0.15
+t=330 steps=2033980 evals=16271841 cost=78 best=78 T=0.15
+t=360 steps=2238152 evals=17905217 cost=72 best=72 T=0.15
+t=390 steps=2435665 evals=19485321 cost=72 best=72 T=0.15
+t=420 steps=2647066 evals=21176529 cost=72 best=72 T=0.15
+t=450 steps=2854563 evals=22836505 cost=72 best=72 T=0.15
+t=480 steps=3074134 evals=24593073 cost=82 best=72 T=0.15
+t=510 steps=3283062 evals=26264497 cost=72 best=72 T=1.46
+RESULT d=7 D=7 group=sl 7 x Z_35 N=11760 best=66 evals=27947577 time=540.0

@@ -1,0 +1,20 @@
+group sl 8 poly x^3+x+1 x Z_19, N=9576, identity 1064, H order 57, rows 168, threads 1, setup 0.00s
+start cost=186
+t=30 steps=242911 evals=1943289 cost=6 best=6 T=0.53
+t=60 steps=483776 evals=3870209 cost=6 best=6 T=0.19
+t=90 steps=720764 evals=5766113 cost=6 best=6 T=0.15
+t=120 steps=957406 evals=7659249 cost=6 best=6 T=0.15
+t=150 steps=1194814 evals=9558513 cost=6 best=6 T=0.15
+t=180 steps=1425327 evals=11402617 cost=6 best=6 T=0.60
+t=210 steps=1644204 evals=13153633 cost=6 best=6 T=0.21
+t=240 steps=1866645 evals=14933161 cost=8 best=6 T=0.15
+t=270 steps=2091207 evals=16729657 cost=8 best=6 T=0.15
+t=300 steps=2325706 evals=18605649 cost=9 best=6 T=0.15
+t=330 steps=2550640 evals=20405121 cost=4 best=4 T=0.60
+t=360 steps=2783764 evals=22270113 cost=4 best=4 T=0.21
+t=390 steps=3010308 evals=24082465 cost=9 best=4 T=0.15
+t=420 steps=3242534 evals=25940273 cost=8 best=4 T=0.15
+t=450 steps=3477745 evals=27821961 cost=6 best=4 T=0.15
+t=480 steps=3726619 evals=29812953 cost=4 best=4 T=0.67
+t=510 steps=3943557 evals=31548457 cost=9 best=4 T=0.24
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_19 N=9576 best=4 evals=33417969 time=540.0
