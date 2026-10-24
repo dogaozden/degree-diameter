@@ -70,8 +70,28 @@ n = 6(q⁶−1)/(q−1) + 2.
 - Each asks for a cover of q⁵ targets by about 780 (q = 5) or 2,800 (q = 7) choices, with q⁴ = 625 or 2,401 as the
   fractional optimum.
 
-**Finding φ.** `hexd7/plus2.py` builds φ from greedy covers for (A) and (B) on disjoint domains, then fills the rest
-at random. The greedy covers were slightly too big (843 and 835 for 780 slots at q = 5), so they are truncated.
+**An explicit φ (no search needed).** The hexagon has exact covers for (A) and (B).
+- Let L1 ≠ L0 be a second line through p. C_A = {lines M : d(p, M) = 5, d(L1, M) = 4} partitions the points opposite
+  p, q⁴ lines with q points each.
+  - Why: assign to an opposite point z the first line of its unique geodesic to L1 (d(z, L1) = 5). For another
+    opposite point z' on that line, the same line starts its geodesic to L1, so the assignment is consistent.
+  - Every such M has d(L0, M) = 6, since a path of length 4 from M to L0 would close a cycle of length ≤ 10 through p.
+    So C_A avoids B4(L0).
+- Dually, let p1 ≠ p be a point of L0. C_B = {points y : d(L0, y) = 5, d(p1, y) = 4} meets every line opposite L0
+  exactly once, and C_B avoids B4(p).
+- Since q⁴ < |B4| − 1 = (q⁵−1)/(q−1) − 1, φ can map B4(p) − {p} onto C_A plus fillers, and C_B plus fillers onto
+  B4(L0) − {L0}, on disjoint domains. Then (A) and (B) hold exactly.
+- `hexd7/greedyphi.c` with `EXACT=1` builds this φ and checks exactness and disjointness: 0 violations for q = 3, 5,
+  7, 9 (|C_A| = |C_B| = 81, 625, 2,401, 6,561).
+- With it the BFS score from a and b is 0 before any search (plus2ls.c: "start score 0") for q = 5, 7, 9. For q = 3
+  the graph (n = 2,186, Δ = 5) is RESULT VALID by apsp.c.
+- So, for every q for which H(q) exists (all prime powers; built and checked here for odd q), there is a bipartite
+  graph of max degree q + 2 and diameter 7 on 6(q⁶−1)/(q−1) + 2 vertices. That is 2 more than every table entry of
+  the form 3·|H(q)| at D = 7, i.e. (7,7), (9,7), (10,7), (11,7) and (13,7). Only (7,7), (9,7) and (11,7) were
+  built and checked here.
+
+**Finding φ by search (how the first graphs were made).** `hexd7/plus2.py` builds φ from greedy covers for (A) and
+(B) on disjoint domains, then fills the rest at random. The greedy covers were slightly too big (843 and 835 for 780 slots at q = 5), so they are truncated.
 `hexd7/plus2ls.c` then counts the vertices beyond distance 7 from a and from b by BFS (exact, all routes). It runs a
 local search that swaps the images of two points: targeted swaps create a route a → y → φ(y) → t for an unreached
 point t, or b → M → φ⁻¹(M) → t for an unreached line t, and the rest are random.
