@@ -110,8 +110,8 @@ groups, the inverse-closed negative result, the choice of every card's cells, gr
   of 45 min, several stopped without reporting until pinged, and `pkill -f` patterns killed their own shells.
 - **Execution cards paid.** Round 4 gave each Haiku an explicit, ordered list of groups (computed by Opus from μ and
   the record's structure) and a fixed protocol. 8 cards gave 4 records, 2 directly and 2 through near misses that more
-  seeds converted. Eight parallel runners over a day of cells is exactly what one Opus cannot do alone on 4 cores...
-  except that the 4 cores are the limit: the squad's advantage was parallel bookkeeping, not extra compute.
+  seeds converted. The machine has 4 cores either way, so the squad's advantage was not extra compute but parallel
+  bookkeeping: eight cells driven, logged and checked at once while Opus worked on something else.
 - **What Opus did that the squad could not:** spot that (6,8) needed k = 2; write the exhaustive mode and prove the
   D = 5 plateaus are true floors; work out the α classes (which made two Haiku sweeps redundant); compute the rung
   lists; diagnose a residual of 1 as a fixed point (ORBW); and notice that solve times are heavy-tailed.
