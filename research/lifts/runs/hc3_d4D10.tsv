@@ -6474,3 +6474,11 @@ screen	6600	sl 11 5	min=26	p10=72	median=183	mu=75.3	score=3.39
 screen	6600	sl 3 275	min=3757	p10=3875	median=4622	mu=75.3	score=112.84
 screen	6600	sl 4 110	min=173	p10=522	median=2107	mu=75.3	score=34.91
 screen	6600	sl 5 55	min=100	p10=373	median=1146	mu=75.3	score=20.17
+run	6321	meta 301 21 4 1	seed=1	best=3	check=-	400s
+run	6321	meta 301 21 4 1	seed=2	best=3	check=-	400s
+run	6321	meta 301 21 9 1	seed=1	best=5	check=-	400s
+run	6321	meta 301 21 9 1	seed=2	best=5	check=-	400s
+run	6321	meta 301 21 23 1	seed=1	best=3	check=-	400s
+run	6321	meta 301 21 23 1	seed=2	best=3	check=-	400s
+run	6327	meta 703 9 83 1	seed=1	best=7	check=-	400s
+run	6327	meta 703 9 83 1	seed=2	best=7	check=-	400s
