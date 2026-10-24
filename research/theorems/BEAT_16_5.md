@@ -2,12 +2,11 @@
 
 Job "beat-16-5" (Opus), branch `claude/beat-16-5-bipartite-px5cxt`. Started 2026-10-24.
 
-Target: a bipartite graph with maximum degree 16 and diameter 5 on more than 31,460 vertices. The value to beat is
-the bipartite flag graph C(2,3) of PG(4,3) (Cames van Batenburg–Korsky, arXiv:2608.03965), 15,730 + 15,730
-vertices, 16-regular. Bipartite Moore bound: 2·(15⁵ − 1)/14 = 108,482, so 31,460 is 0.29 of it.
-
-Scripts and outputs are in `beat165/`. Status lines are dated; newest last.
-
+**Status (2026-10-24 05:20 UTC): beaten. A 16-regular bipartite graph of diameter 5 on 32,768 vertices**
+(`graphs/d16D5_n32768_rcl_g64_43.edges.gz`, all-pairs check `beat165/check_d16D5_32768.txt`: RESULT VALID d=16 D=5
+n=32768). It is a bipartite version of Mizuno's route-chart lift (arXiv:2606.15860, a general-graph construction):
+controller = a 4-regular Haar graph on SmallGroup(64,43), fiber F₄⁴. Details in §4. Coordinator: please re-check
+independently; `beat165/rcl/buildlift.py` rebuilds it from the group table, S and the chart.
 ## 0. What a winner has to do (counting)
 
 From a vertex, the non-backtracking walks of length ≤ 4 that end on the same side number
@@ -75,3 +74,47 @@ Tools (`beat165/gap/`, GAP 4.12 with tomlib):
 - `export.g`: writes the edge list of a coset graph for `apsp` (the coordinator's all-pairs checker, no symmetry).
 - Validation: from (P₂₄, P₁₃) in SL(5,3) the search finds the flag graph as the only candidate (balls 205 and 15,730
   on both sides), and the exported edge list passes apsp (RESULT VALID d=16 D=5 n=31460).
+
+## 4. The winner: a bipartite route-chart lift (32,768 vertices)
+
+### 4.1 Construction
+
+Mizuno (arXiv:2606.15860, general graphs, (16,5) ≥ 147,456) lifts a small labeled "controller" graph C to
+V(C) × F_q^s: an edge u → v of C with label t (labels come in inverse pairs t, t⁻¹; each vertex has exactly one
+outgoing edge of each label) lifts to the q edges (u, x) ~ (v, A_t x + λ b_t), λ ∈ F_q, with A_{t⁻¹} = A_t⁻¹ and
+b_{t⁻¹} = A_t⁻¹ b_t. Degree ρq for a ρ-regular controller. Along a controller walk with labels t₁…t_k the endpoint
+is A_w x + M_w λ with M_w = [A_{t_k}⋯A_{t₂} b_{t₁} | … | b_{t_k}].
+
+Bipartite version used here: ρ = 4 (labels a, a⁻¹, b, b⁻¹), q = 4, s = 4, so degree 16 and |V| = 256·|C|.
+The lift is bipartite when C is. Diameter ≤ 5 iff for every same-side pair of controller vertices (c, d) and every
+x, the union over controller walks w from c to d of length 0, 2 or 4 of the affine sets A_w x + Im M_w is all of F₄⁴
+(opposite-side distances are then ≤ 5 automatically). What makes this work:
+- pairs at controller distance 4 are covered by one geodesic once M_w is nonsingular for every label-reduced
+  word of length 4 ("universal chart"; found in seconds by annealing, `rcl/chart4.c`);
+- pairs at distance 2 can be covered by walks with one back-and-forth excursion: they all have the same linear part
+  and their images are 3-spaces through the plane P = span{A_{t₂} b_{t₁}, b_{t₂}}, and the five hyperplanes through
+  P cover F₄⁴. So no 6-cycles are needed in the controller, only the right chart;
+- a vertex c with itself needs a 4-cycle through c (the backtracking closed walks cover at most 70 of the 85
+  projective points), so the controller must have a 4-cycle at every vertex.
+
+So the controller only needs: bipartite, 4-regular, diameter 5, a 4-cycle at every vertex. Haar graphs H(G, S),
+|S| = 4, are vertex-transitive on each side, so one 4-cycle (a repeated quotient s_i⁻¹s_j = s_k⁻¹s_l) suffices.
+`rcl/haarctrl.c` scans all groups of a given order exhaustively; order 64 has 6 such (G, S) (first ones at 40, 50,
+60; none at 62, 63).
+
+### 4.2 The graph
+
+- Controller: H(G, S) with G = SmallGroup(64,43) (C₈ . (C₄ × C₂)), elements numbered as in GAP's
+  `AsSSortedList(SmallGroup(64,43))` from 0 (table `rcl/g64_43_table.txt`, structure and S as permutations in
+  `rcl/g64_43_info.txt`), S = {s₁, s₂, s₃, s₄} = {0, 1, 2, 29}. Vertices (g, A), (g, B); label a: (g,A) → (s₁g, B),
+  (h,B) → (s₂⁻¹h, A); label b: (g,A) → (s₃g, B), (h,B) → (s₄⁻¹h, A); a⁻¹, b⁻¹ are the inverse maps.
+- Chart over F₄ = {0, 1, ω, ω²} coded 0,1,2,3 (addition = XOR of codes): `rcl/chart_g64_43.txt`
+  = A_a rows, b_a, A_b rows, b_b = `3212 1003 2222 3231 | 1023 | 3300 2001 2311 3011 | 0333`.
+- Lift vertex (c, x) ↦ c·256 + index of x (x ∈ F₄⁴ in lexicographic order); side A first.
+- 32,768 vertices, 262,144 edges, 16-regular, bipartite, diameter 5 (all pairs, apsp). Uncompressed sha256
+  18fb910749f631fd6adcf883578c043125344c70fd9ba68548e85d2b98049a26.
+
+How it was found: the six order-64 controllers with the universal chart alone gave diameter 6 (each source fiber
+missed 3 of its 64 same-side controller targets). `rcl/chartfit2.c` anneals the chart on the exact number of missed
+(x, y) pairs over all same-side targets of the two base vertices (exact for these vertex-transitive lifts; it
+reproduced the BFS count 188,928 for the first chart) and reached 0 for SmallGroup(64,43) within 90 s.

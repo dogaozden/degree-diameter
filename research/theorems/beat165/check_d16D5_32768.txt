@@ -1,0 +1,10 @@
+# beat-16-5 check, 2026-10-24T05:18Z, cloud container. Edge list built by beat165/rcl/buildlift.py
+# from SmallGroup(64,43) (table beat165/rcl/g64_43_table.txt), S = {0,1,2,29}, chart beat165/rcl/chart_g64_43.txt.
+== sha256 of the uncompressed edge list
+18fb910749f631fd6adcf883578c043125344c70fd9ba68548e85d2b98049a26  graphs/d16D5_n32768_rcl_g64_43.edges
+== apsp (research/theorems/coordinator_check/apsp.c, all pairs, no symmetry assumed): apsp EDGES 16 5
+n=32768 edges=262144 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=32768
+== same with D = 4 (must fail)
+n=32768 edges=262144 degree min=16 max=16 bipartite=yes diameter=5
+RESULT INVALID
