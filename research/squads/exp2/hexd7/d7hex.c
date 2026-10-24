@@ -767,10 +767,12 @@ int main(int argc, char **argv) {
             drop_pair(w);
             cost = total_cost(per);
             fprintf(stderr, "dropped a pair: K=%d cost %d\n", K, cost);
-            if (cost > 0 && alg >= 2) {   /* the dropped pair's hubs may have carried routes of other pairs: repair */
+            for (int rep = 0; cost > 0 && alg >= 2 && rep < 4; rep++) {   /* the dropped pair's hubs may have carried routes of other pairs: repair */
+                int before = cost;
                 nodrop = 1; fast_search(repairsec); nodrop = 0;
                 cost = total_cost(per);
                 fprintf(stderr, "  after repair: K=%d cost %d\n", K, cost);
+                if (cost > before * 7 / 10) break;   /* repairs stopped paying: drop another pair */
             }
         }
     }

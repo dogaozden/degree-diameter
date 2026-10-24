@@ -53,9 +53,12 @@ a line-side hub z ~ (p,0), (p,1), (p,2) and a point-side hub z' ~ (M(p),0), (M(p
 |---|---|---|---|---|
 | (7,7) | 23,436 | 23,438 | H(5), one freed pair | checks/d7D7_hex5_K1_n23438.apsp.txt |
 | (7,7) | 23,436 | 23,462 | H(5), 13 freed pairs, PG(2,3) hub graph | checks/d7D7_hex5_K13pg23_n23462.apsp.txt |
-| (7,7) | 23,436 | **23,472** | H(5), 18 freed pairs, random hub graph (squad r1/c2) | checks/d7D7_hex5_K18rnd_n23472.apsp.txt |
+| (7,7) | 23,436 | 23,472 | H(5), 18 freed pairs, random hub graph (squad r1/c2) | checks/d7D7_hex5_K18rnd_n23472.apsp.txt |
+| (7,7) | 23,436 | 23,484 | H(5), 24 freed pairs, random hub graph | checks/d7D7_hex5_K24rnd_n23484.apsp.txt |
+| (7,7) | 23,436 | **23,488** | H(5), 26 freed pairs, random hub graph | checks/d7D7_hex5_K26rnd_n23488.apsp.txt |
 | (9,7) | 117,648 | 117,650 | H(7), one freed pair | checks/d9D7_hex7_K1_n117650.apsp.txt |
-| (9,7) | 117,648 | **117,674** | H(7), 13 freed pairs, PG(2,3) hub graph (squad r1/c3) | checks/d9D7_hex7_K13pg23_n117674.apsp.txt |
+| (9,7) | 117,648 | 117,674 | H(7), 13 freed pairs, PG(2,3) hub graph (squad r1/c3) | checks/d9D7_hex7_K13pg23_n117674.apsp.txt |
+| (9,7) | 117,648 | **117,690** | H(7), 21 freed pairs, PG(2,4) hub graph | checks/d9D7_hex7_K21pg24_n117690.apsp.txt |
 | (11,7) | 398,580 | 398,582 | H(9), one freed pair (algebraic cover, no search) | checks/d11D7_hex9_K1_n398582.apsp.txt |
 | (11,7) | 398,580 | **398,606** | H(9), 13 freed pairs, PG(2,3) hub graph | checks/d11D7_hex9_K13pg23_n398606.apsp.txt |
 

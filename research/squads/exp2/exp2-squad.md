@@ -10,11 +10,11 @@ research/lifts/coordinator_check/apsp.c (all-pairs BFS: simple, bipartite, max d
 
 | cell | table | best VALID (this job) | ratio | graph | check |
 |---|---|---|---|---|---|
-| (7,7) | 23,436 | **BEST77** | RATIO77 | H(5) × Z3, K77 freed pairs + 2K77 hubs | CHECK77 |
-| (9,7) | 117,648 | **BEST97** | RATIO97 | H(7) × Z3, K97 freed pairs | CHECK97 |
-| (11,7) | 398,580 | **BEST117** | RATIO117 | H(9) × Z3, K117 freed pairs | CHECK117 |
+| (7,7) | 23,436 | **23,488** | 1.002219 (+52) | H(5) × Z3, 26 freed pairs + 52 hubs | hexd7/checks/d7D7_hex5_K26rnd_n23488.apsp.txt |
+| (9,7) | 117,648 | **117,690** | 1.000357 (+42) | H(7) × Z3, 21 freed pairs | hexd7/checks/d9D7_hex7_K21pg24_n117690.apsp.txt |
+| (11,7) | 398,580 | **398,606** | 1.000065 (+26) | H(9) × Z3, 13 freed pairs | hexd7/checks/d11D7_hex9_K13pg23_n398606.apsp.txt |
 
-FINAL_BUDGET
+Final budget: **2.54 budget_units** (Opus 2.47, Haiku 0.069) at 19:54 UTC, against the cap of 12; wall time 2 h 58 min of search work (16:56–19:54 UTC; this report written after). The time cap, not the budget, was binding.
 
 ## What the table values are, and why Haar graphs were not the way in
 
@@ -72,7 +72,12 @@ Times are UTC on 2026-10-24 (start 16:56).
    endgame moves (neither helped).
 8. **18:21, squad round 2** (8 cards).
 9. **Results of the pushes:** (11,7) K = 13 → **398,606** (apsp VALID 18:40); (7,7) K = 24 → **23,484** (apsp VALID 18:48);
-   EXTRA_TIMELINE
+   (7,7) K = 26 → **23,488** (apsp VALID 19:19); (9,7) K = 21 (PG(2,4) hubs) → **117,690** (apsp VALID 19:29).
+10. **Salvage bug and fix.** End-of-run pair dropping first cascaded to K = 0: a dropped pair's hubs carried routes of
+   other pairs, so every drop broke another pair. Fixed by a short repair search after each drop, repeated while it
+   still pays (a deliberately short K = 28 run then salvaged K = 20).
+11. **Last runs (19:30–20:00):** K = 28, 29, 30 at q = 5 with adaptive dropping and repairs all fell back below K = 26 during salvage (to K = 23–24),
+   so 23,488 stands. Search stopped at 19:54.
 
 ## The squad
 
@@ -92,7 +97,7 @@ What the squad contributed:
 - **What limited it**: CPU. Eight cards plus Opus's own runs shared 4 cores; with Linux autogroup scheduling `nice`
   did not protect anyone, and wall-clock timeouts killed most round-2 searches before they finished (CPU-time budgets
   vs. wall-clock limits, a mistake in the round-2 brief). Round 2 produced no new best, so there was no round 3.
-- Haiku cost was small: HAIKU_UNITS budget units of the total (the Opus session itself was the main cost).
+- Haiku cost was small: 0.069 budget units of the total (the Opus session itself was the main cost).
 
 An honest comparison: the method (the decoding of the table, the any-matching lemma, hubs, the algebraic cover, the
 fast proxy search) came from Opus. The squad's main value was parallel configuration runs early on (two records) and
