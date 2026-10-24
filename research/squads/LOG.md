@@ -52,3 +52,16 @@ c6 (8,8) "2 4 0", "4 2 0" · c7 (7,9) "2 3 1" · c8 wildcard: (9,8), (8,9), (7,1
   **much worse**. (9,5) SL(2,11): 40 uncovered where k = 3 orbits solve in 0.1 s; (6,5) SL(2,5) × Z3 14; (10,5)
   SL(2,13) 20; (11,5) A5 × Z49 188. Halving μ does not pay for halving the free parameters: bipartite doubles of
   Cayley graphs are weak here.
+- c5 (8,7) "2 4 0", "4 2 0": worse. Plateaus at 48–76 (≈ μ) on PSL(2,17) × Z9, A4 × PSL(2,7) × Z11, PSL(2,25) × Z3.
+  On the record group SL(2,8) × Z43, random symmetric costs are ~8× higher for k = 2, f = 0 than for k = 3, f = 2.
+- Opus: (8,8) on PSL(2,7) × SL(2,9) (N 120,960) "2 4 0" seeds 2, 3 with RESTART=1: 10, 8. (10,5) A4 × SL(2,3) × Z7
+  with ORBW=3, seed 2: 8 (two fixed points among them).
+
+## 2026-10-24, table-squad round 3: breadth over groups and α on the near misses, mostly (10,5)
+
+Rounds 1–2 showed plateaus form in under a minute and depend on (group, α), so this round sweeps α (ALPHA=index) and
+small product groups instead of running longer. Preamble: research/squads/r3/PREAMBLE.md.
+Cards: c1 (10,5) ALPHA sweep on A4 × SL(2,3) × Z7 · c2 (10,5) other product groups of order 2001..2100 ·
+c3 (10,5) ALPHA sweeps on the N = 2184 groups · c4 (10,5) search-knob grid (K, TARGP, COOL, REHEAT, RESTART) ·
+c5 (8,8) N = 120,960 other structures + α sweep · c6 (6,8) α sweep at N = 16,128 · c7 (9,8) k = 3 next rungs ·
+c8 wildcard (10,5)/(11,5).
