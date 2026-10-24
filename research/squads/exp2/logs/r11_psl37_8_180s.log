@@ -1,0 +1,8 @@
+group psl 37 x Z_8, N=202464, identity 5328, H order 38, rows 5328, threads 1, setup 0.01s
+start cost=2761
+t=30 steps=6036 evals=48289 cost=1313 best=1313 T=0.53
+t=60 steps=12421 evals=99369 cost=1269 best=1269 T=0.19
+t=90 steps=18494 evals=147953 cost=1269 best=1269 T=0.15
+t=120 steps=24042 evals=192337 cost=1269 best=1269 T=0.15
+t=150 steps=29626 evals=237009 cost=1269 best=1269 T=0.15
+RESULT d=11 D=7 group=psl 37 x Z_8 N=202464 best=1269 evals=263817 time=180.0
