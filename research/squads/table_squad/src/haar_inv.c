@@ -966,6 +966,48 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
+    if (getenv("EXHAUST")) {   /* every S = (e, fixed generators) + m distinct alpha-orbits, by orbit representatives */
+        int *R = malloc(sizeof(int) * (N / OK_ + 1)), nr = 0, o[MAXD];
+        for (int x = 0; x < N; x++) { if (x == ident || !orbit_of(x, o)) continue; int mn = x; for (int i = 1; i < OK_; i++) if (o[i] < mn) mn = o[i]; if (mn == x) R[nr++] = x; }
+        int ea = 0, eb = 1; if (getenv("EXSPLIT")) sscanf(getenv("EXSPLIT"), "%d/%d", &ea, &eb);
+        long long nfixc = 1; for (int u = 1; u < OF; u++) nfixc *= NFIXG;   /* fixed generators: all ordered choices (f <= 3 in practice) */
+        double tot = (double)nfixc; for (int j = 0; j < OM; j++) tot *= (double)(nr - j) / (j + 1);
+        fprintf(stderr, "EXHAUST: %d orbit representatives, m = %d, %lld fixed-generator choices, ~%.3g S in total, split %d/%d\n", nr, OM, nfixc, tot, ea, eb);
+        long long EXB = getenv("EXBOUND") ? atoll(getenv("EXBOUND")) : 7; if (EXB > 7) EXB = 7;
+        long long cnt = 0, zero = 0, mincost = NOBOUND, hist[8] = {0}; double t0 = now(), tl = t0; int saved = 0, idx[16];
+        for (long long fc = 0; fc < nfixc; fc++) {
+            long long r = fc; int bad = 0;
+            for (int u = 1; u < OF; u++) { S[u] = FIXG[r % NFIXG]; r /= NFIXG; }
+            for (int u = 1; u < OF; u++) for (int w = 1; w < u; w++) if (S[u] == S[w]) bad = 1;
+            if (bad) continue;
+            for (int u = 1; u < OF; u++) mktab(S[u], TF[u], TI[u]);
+            for (int j = 0; j < OM; j++) idx[j] = j;
+            int level = 0;   /* tables of orbit slots < level are current */
+            for (;;) {
+                if (idx[0] % eb == ea) {
+                    for (int j = level; j < OM; j++) { orbit_of(R[idx[j]], o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
+                    long long bnd = EXB;   /* cost >= EXB is abandoned early (counted in the last bin) */
+                    long long c = cost_any(C[0], TF, TI, &sc0, NULL, &bnd, 0);
+                    cnt++; if (c >= 0) { if (c < mincost) mincost = c; if (c < 8) hist[c]++; } else hist[7]++;
+                    if (c == 0) { zero++; char b[400]; printf("EXHAUST cost 0:"); for (int i = 0; i < d; i++) { desc_elem(S[i], b); printf(" [%s]", b); } printf("\n"); fflush(stdout);
+                        if (!saved && strcmp(out, "/dev/null")) { int Sb[MAXD]; memcpy(Sb, S, sizeof(int) * d); saved = check_and_write(C[0], out); memcpy(S, Sb, sizeof(int) * d);
+                            for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); } }
+                        if (getenv("EXSTOP")) goto exdone; }
+                    if (now() - tl > 60) { tl = now(); fprintf(stderr, "EXHAUST progress: %lld evaluated, %.1f s, min %lld, zero %lld, idx0 %d/%d\n", cnt, tl - t0, mincost, zero, idx[0], nr); }
+                }
+                /* next combination idx[0] < idx[1] < ... < idx[OM-1] < nr */
+                int j = OM - 1; while (j >= 0 && idx[j] == nr - OM + j) j--;
+                if (j < 0) break;
+                idx[j]++; for (int u = j + 1; u < OM; u++) idx[u] = idx[u - 1] + 1;
+                level = j;
+            }
+        }
+exdone:
+        printf("EXHAUST d=%d D=%d group=%s x Z_%d N=%d k=%d m=%d f=%d fix=%lld split=%d/%d evaluated=%lld zero=%lld min=%lld time=%.1f counts(0..6,>=7):",
+               d, D, Q->spec, ncyc, N, OK_, OM, OF, NFIX, ea, eb, cnt, zero, mincost, now() - t0);
+        for (int h = 0; h < 8; h++) printf(" %lld", hist[h]); printf("\n");
+        return zero ? 0 : 1;
+    }
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {

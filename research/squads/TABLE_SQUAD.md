@@ -30,11 +30,29 @@ Two lessons from the calibration, written into the squad's preamble (r1/PREAMBLE
 
 | cell | before (ours / table) | new | group, structure | check |
 |---|---|---|---|---|
-| (6,8) | 30,576 / 29,790 | **31,200** | SL(2,25), S = 3 orbits of size 2 under conjugation (ORBIT="2 3 0"), found by Opus solo | build_haar2.py VALID; apsp.c all-pairs diameter 8 (table_squad/checks/d6D8_sl_25_1_orb2f0_s1.check.txt) |
+| (6,8) | 30,576 / 29,790 | **31,680** | PSL(2,11) × Z24, S = 3 orbits of size 2 under conjugation (ORBIT="2 3 0"), Opus solo; first rung 31,200 on SL(2,25) | build_haar2.py VALID; apsp.c all-pairs diameter 8 (table_squad/checks/d6D8_psl_11_24_orb2f0_s1.check.txt, d6D8_sl_25_1_orb2f0_s1.check.txt) |
 
 (6,8) had resisted the orbit search with k = 3: with Δ = 6 that leaves only two orbits, and STRUCTURE.md §8 found no
 symmetric solution at all at N ≈ 15,500. With k = 2 there are three orbits (a much larger space), and at D = 8 a fixed
-point costs only e^(−λ/2) ≈ 0.04, so the price of the symmetry is small. SL(2,25) solved in 201 s.
+point costs only e^(−λ/2) ≈ 0.04, so the price of the symmetry is small. SL(2,25) solved in 201 s, PSL(2,11) × Z24 in
+24 s. Above that the rungs stall: 16,128 (two groups) at 5 and 7, 16,320–17,100 at 12–15.
+
+## What did not work (all logged in LOG.md)
+
+- **The D = 5 column (round 1, 8 Haikus).** No cell fell. (10,5) came closest: 4 uncovered on A4 × SL(2,3) × Z7
+  (N = 2016), 6 on SL(2,13). (11,5) sits at exactly 6 on A5 × Z49 in every run. (12,5) 26, (13,5) 49, (14,5), (15,5)
+  hundreds. (6,5): the symmetric families are small enough to sample exhaustively and their minima are 16–24, worse
+  than the non-symmetric searches of research/d5. The squad's two useful findings: the minimum over random symmetric
+  samples predicts where annealing stops, and (c7) every orbit projects onto few values in the quotients Q and Z_n,
+  whose Haar graphs must also have diameter ≤ D, which rules out most designs with large k.
+- **k = 2 and k = 4 elsewhere (round 2).** k = 2 helped only at (6,8). At (6,7), (6,9), (6,10), (7,8), (7,9), (8,7),
+  (8,8), (9,8) it plateaus at 7–76 uncovered, above what k = 3 reaches.
+- **Inverse-closed S** (Opus, a new INV=1 mode in table_squad/src/haar_inv.c). At odd D a Haar graph must cover G
+  twice, by (S⁻¹S)^j and by (SS⁻¹)^j. If S = S⁻¹, swapping the two sides is an automorphism, so the two conditions
+  coincide and μ halves. It is much worse anyway: (9,5) on SL(2,11) stalls at 40 where k = 3 orbits solve in 0.1 s.
+  Halving the free parameters costs more than halving μ gains; bipartite doubles of Cayley graphs are weak here.
+- **Annealing plateaus are properties of (group, α).** They form within a minute and survive reheats, restarts and
+  ORBW. This is why round 3 sweeps α and groups instead of running longer, and why I added an exhaustive mode.
 
 ## Squad rounds
 
