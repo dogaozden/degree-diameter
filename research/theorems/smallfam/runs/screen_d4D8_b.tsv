@@ -1,0 +1,36 @@
+1150	1	C23 x D50	[2, 23]	25	pass 8404 of 17296	261	0 394 1073 951
+1150	2	-	[2, 25]	23	|G/G'|=50 outside [5,48] (heuristic skip)	-	-
+1150	3	-	[2]	575	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1150	4	-	[2, 23, 25]	1	|G/G'|=1150 outside [5,48] (heuristic skip)	-	-
+1150	5	-	[2, 5, 5]	23	|G/G'|=50 outside [5,48] (heuristic skip)	-	-
+1150	6	-	[2, 5, 23]	5	|G/G'|=230 outside [5,48] (heuristic skip)	-	-
+1150	7	C5 x D230	[2, 5]	115	pass 170 of 220	809	0 1149 113 661
+1150	8	C23 x ((C5 x C5) : C2)	[2, 23]	25	pass 8404 of 17296	275	0 741 113 35
+1150	9	-	[2]	575	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1150	10	-	[2, 5, 5, 23]	1	rank>3	-	-
+1151	1	-	[1151]	1	|G/G'|=1151 outside [5,48] (heuristic skip)	-	-
+1152	*	-	-	-	skipped-order(157877 groups)	-	-
+1153	1	-	[1153]	1	|G/G'|=1153 outside [5,48] (heuristic skip)	-	-
+1154	1	-	[2]	577	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1154	2	-	[2, 577]	1	|G/G'|=1154 outside [5,48] (heuristic skip)	-	-
+1155	1	(C7 : C3) x (C11 : C5)	[3, 5]	77	pass 576 of 680	6	0 244 376 1109
+1155	2	-	[3, 5, 7]	11	|G/G'|=105 outside [5,48] (heuristic skip)	-	-
+1155	3	-	[3, 5, 11]	7	|G/G'|=165 outside [5,48] (heuristic skip)	-	-
+1155	4	-	[3, 5, 7, 11]	1	rank>3	-	-
+1156	1	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	2	-	[4, 289]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	3	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	4	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	5	-	[2, 2, 289]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	6	-	[4, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	7	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	8	-	[4, 17, 17]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	9	-	[4, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	10	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	11	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	12	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	13	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	14	-	[2, 2, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	15	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	16	-	[2, 2, 17, 17]	1	rank>3	-	-
+1157	1	-	[13, 89]	1	|G/G'|=1157 outside [5,48] (heuristic skip)	-	-
