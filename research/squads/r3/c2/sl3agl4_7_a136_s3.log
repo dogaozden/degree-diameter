@@ -6,3 +6,10 @@ start cost=216
 t=30 steps=260523 evals=2084185 cost=8 best=4 T=0.53
 t=60 steps=527010 evals=4216081 cost=8 best=4 T=0.19
 t=90 steps=805740 evals=6445921 cost=8 best=4 T=0.15
+t=120 steps=1062446 evals=8499569 cost=8 best=4 T=0.15
+t=150 steps=1332769 evals=10662153 cost=8 best=4 T=0.15
+t=180 steps=1622258 evals=12978065 cost=8 best=4 T=0.56
+t=210 steps=1953373 evals=15626985 cost=8 best=4 T=0.20
+t=240 steps=2287276 evals=18298209 cost=8 best=4 T=0.15
+t=270 steps=2594519 evals=20756153 cost=8 best=4 T=0.15
+RESULT d=10 D=5 group=prod sl 3 agl1 4 poly x^2+x+1 x Z_7 N=2016 best=4 evals=23311009 time=300.0 orbit k=3 m=3 f=1 fix=17

@@ -1,0 +1,15 @@
+group sl 7 x Z_143, N=48048, identity 6006, H order 52, rows 924, threads 1, setup 0.03s
+wide rows: HW order 182, rows 264, setup 0.05s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 100 z on Z_143
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 65 (+e); mu = 44.19, mu/k = 14.73, fixed-point misses ~ 6.42
+start cost=15533
+t=30 steps=60076 evals=480609 cost=38 best=34 T=0.53
+t=60 steps=116582 evals=932657 cost=35 best=34 T=0.19
+t=90 steps=172137 evals=1377097 cost=35 best=34 T=0.15
+t=120 steps=236583 evals=1892665 cost=35 best=34 T=0.15
+t=150 steps=297825 evals=2382601 cost=35 best=34 T=0.15
+t=180 steps=358840 evals=2870721 cost=40 best=34 T=0.68
+t=210 steps=420529 evals=3364233 cost=35 best=34 T=0.24
+t=240 steps=477871 evals=3822969 cost=35 best=34 T=0.15
+t=270 steps=538076 evals=4304609 cost=35 best=34 T=0.15
+RESULT d=7 D=8 group=sl 7 x Z_143 N=48048 best=34 evals=4768913 time=300.0 orbit k=3 m=2 f=1 fix=65

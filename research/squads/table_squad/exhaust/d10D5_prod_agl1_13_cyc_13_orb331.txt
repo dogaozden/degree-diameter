@@ -1,0 +1,7 @@
+group prod agl1 13 cyc x Z_13, N=2028, identity 0, H order 52, rows 39, threads 1, setup 0.00s
+wide rows: HW order 156, rows 13, setup 0.01s
+alpha: conj by prod[aff(3,12);] (index 38), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 53.26, mu/k = 17.75, fixed-point misses ~ 7.13
+EXHAUST: 672 orbit representatives, m = 3, 1 fixed-generator choices, ~5.04e+07 S in total, split 0/2
+EXHAUST d=10 D=5 group=prod agl1 13 cyc x Z_13 N=2028 k=3 m=3 f=1 fix=11 split=0/2 evaluated=25232200 zero=0 min=3 time=190.3 counts(0..6,>=7): 0 0 0 48 0 0 0 25232152
+EXHAUST d=10 D=5 group=prod agl1 13 cyc x Z_13 N=2028 k=3 m=3 f=1 fix=11 split=1/2 evaluated=25119640 zero=0 min=3 time=192.2 counts(0..6,>=7): 0 0 0 48 0 0 0 25119592

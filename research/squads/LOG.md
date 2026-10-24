@@ -119,3 +119,8 @@ Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generat
   vertices** (ours 23,142,048, table 20,017,260). haarcheck_psl VALID and check_haar_indep.py VALID (ecc 10 from both
   sides, all vertices reached, 9 distinct neighbours each). Saved: research/frontier/sols/d9D10_psl_149_7_orb3f0_s1.txt,
   check table_squad/checks/d9D10_psl_149_7_orb3f0_s1.check.txt. First squad-found record of the session.
+- Opus: exhaustive (10,5) on AGL(1,13) × Z13, ORBIT="3 3 1": 50,351,840 sets, exact minimum 3 (96 sets), no solution
+  (AGL(1,13) is complete and has one class of order-3 elements, so this closes the group). (9,8) PGL(2,16) × Z67,
+  seeds 3, 4 for 900 s each: 6 and 6 (the squad's 3 was the best of five runs).
+- r4-c6 (6,9): PSL(2,11) × Z97 18 (two seeds, same plateau), SL(2,8) × Z127 46, PSL(2,7) × Z379 138. Nothing.
+- r4-c8 wildcard: (9,8) SL(2,13) × Z124 (N 270,816, +0.24 %) 6, 10, 9; PSL(2,13) × Z248 13; (7,8) SL(2,7) × Z143 34.
