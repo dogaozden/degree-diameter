@@ -183,6 +183,20 @@ def ctrl_uncovered(U, V):
         total = r_ * gN * r_ - r_          # targets (end base vertex, element) excluding (i, identity) for each start i
         unc += sum(1 for i in range(r_) for j in range(r_) for x in range(gN) if not (i == j and x == gid) and (i, j, x) not in cov)
     return unc
+def write_chart(sel, path):
+    # lift best to matrices: A_c w_c = b_c, A_c bw_i = sum_j M[j][i] bb_j
+    out = []
+    for c in range(k):
+        M = CAND[c][sel[c]][2]
+        src = [list(Wv[c])] + [list(v) for v in BW[c]]; dst = [list(Bv[c])] + [vec(BB[c], [M[j][i] for j in range(3)]) for i in range(3)]
+        S = [[src[cc][r] for cc in range(4)] for r in range(4)]; D = [[dst[cc][r] for cc in range(4)] for r in range(4)]
+        Si = inv(S); out.append([[sum(D[i][t] * Si[t][j] for t in range(4)) % q for j in range(4)] for i in range(4)])
+    G = inv(out[0]); out = [[[sum(Ac[i][t] * G[t][j] for t in range(4)) % q for j in range(4)] for i in range(4)] for Ac in out]
+    with open(path, 'w') as f:
+        for Ac in out: f.write(' '.join(str(x) for row in Ac for x in row) + ' \n')
+        for c in range(k): f.write(' '.join(map(str, Bv[c])) + ' \n')
+    print('wrote', path)
+    
 best = list(cur); bc = cost(cur); print('start', bc, flush=True)
 t0 = time.time(); stale = 0
 while time.time() - t0 < secs:
@@ -195,19 +209,10 @@ while time.time() - t0 < secs:
         scores.sort()
         if scores[0][0] < cost(cur)[0]: cur[c] = scores[0][2]; improved = True
     cc = cost(cur)
-    if cc[0] < bc[0]: best = list(cur); bc = cc; print('t=%.0fs best' % (time.time() - t0), bc, flush=True)
+    if cc[0] < bc[0]:
+        best = list(cur); bc = cc; print('t=%.0fs best' % (time.time() - t0), bc, flush=True)
+        if CTRLW is not None and cc[4] == 0: write_chart(best, outp + '.cu0')
     if not improved:
         stale += 1; c = rng.randrange(k); cur = list(best); cur[c] = rng.randrange(len(CAND[c]))   # kick
 print('FINAL', bc, flush=True)
-# lift best to matrices: A_c w_c = b_c, A_c bw_i = sum_j M[j][i] bb_j
-out = []
-for c in range(k):
-    M = CAND[c][best[c]][2]
-    src = [list(Wv[c])] + [list(v) for v in BW[c]]; dst = [list(Bv[c])] + [vec(BB[c], [M[j][i] for j in range(3)]) for i in range(3)]
-    S = [[src[cc][r] for cc in range(4)] for r in range(4)]; D = [[dst[cc][r] for cc in range(4)] for r in range(4)]
-    Si = inv(S); out.append([[sum(D[i][t] * Si[t][j] for t in range(4)) % q for j in range(4)] for i in range(4)])
-G = inv(out[0]); out = [[[sum(Ac[i][t] * G[t][j] for t in range(4)) % q for j in range(4)] for i in range(4)] for Ac in out]
-with open(outp, 'w') as f:
-    for Ac in out: f.write(' '.join(str(x) for row in Ac for x in row) + ' \n')
-    for c in range(k): f.write(' '.join(map(str, Bv[c])) + ' \n')
-print('wrote', outp)
+write_chart(best, outp)

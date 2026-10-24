@@ -67,3 +67,24 @@ Outcomes:
 Kept: Haar graphs of metacyclic groups Z_M x| Z_N with N = 4..9 for diagonal-covering charts; chart quality is the
 bottleneck at q=2 for k >= 6. Next: round r3-chartlift (multi-orbit bases for (12,5), the 92 chart for (15,5), (10,5)
 past 126, star-move charts for (7,2), non-metacyclic groups).
+
+## 2026-10-24, thm-chartlift round 3 session, squad r3-chartlift (23:05–00:00 UTC)
+
+Lead going in: (4,3) diagonal charts classified (16 singular, 348 labelled singular sets), Haar controllers proved to
+stop at m=64 for (12,5), (5,3) charts down to 92 singular (star-move annealer), the central-involution obstruction
+for Haar graphs. Cards (folders research/squads/r3-chartlift/c1..c8; brief COMMON.md):
+1. (12,5) 2+2 bases over |G| = 33-40 with the (4,3) chart classes.
+2. (12,5) 3+3 bases (incl. K3,3 + doubled matching) over |G| = 22-27.
+3. (12,5) 4+4 bases (K4,4 Latin and others) over |G| = 17-20.
+4. (15,5) Haar at orders 157-170 with the 92 chart.
+5. (15,5) better (5,3) charts with the star-move annealer.
+6. (10,5) push past m=126 (Haar 128-140, 2+2 bases, better (5,2) charts).
+7. (14,5) better (7,2) charts, then Haar at m >= 462.
+8. Wildcard: Haar graphs of direct products (non-metacyclic groups).
+
+Outcomes (filled in as cards report):
+2. **(12,5) 11,664** (m=72, K3,3 + doubled matching over Z3 x|2 Z8, class-1 chart), rebuilt and checked here; also
+   m=66, 69 valid; Z25 (m=75) cost 2, Z26 8, Z27 10. The lead then scored the Z25 voltages against all 348 labelled
+   singular sets: set s170 gives cost 0 -> **(12,5) 12,150**, rebuilt and checked (apsp, bfs_all).
+3. **(12,5) 11,664** again (m=72, K4,4 Latin over Z3 x Z6) and m=68 (Z17) valid; nothing at 76, 80.
+5. (5,3) chart with 88 singular (same count as the lead's coordinate descent); m=160 still cost 2.
