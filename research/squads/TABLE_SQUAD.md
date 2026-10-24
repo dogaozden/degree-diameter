@@ -54,6 +54,33 @@ point costs only e^(−λ/2) ≈ 0.04, so the price of the symmetry is small. SL
 - **Annealing plateaus are properties of (group, α).** They form within a minute and survive reheats, restarts and
   ORBW. This is why round 3 sweeps α and groups instead of running longer, and why I added an exhaustive mode.
 
+## Exhaustive enumeration (Opus)
+
+Because the D = 5 orbit spaces are small, I added an exhaustive mode to my copy of haar_sym (`EXHAUST=1`,
+table_squad/src/haar_inv.c): it evaluates every S = {e} ∪ (fixed generators) ∪ (m distinct α-orbits). Validated on
+(9,5) SL(2,11), where it finds solutions in 1/40 of the space. Results (outputs in table_squad/exhaust/):
+
+| cell | group, ORBIT | sets | exact minimum | annealing had found |
+|---|---|---|---|---|
+| (10,5) | A4 × SL(2,3) × Z7, "3 3 1" | 49.0M | 4 (72 sets) | 4 |
+| (10,5) | PSL(2,7) × Z13, "3 3 1" | 63.8M | ≥ 7 | 8 |
+| (10,5) | SL(2,13), "3 3 1" | 63.0M | 6 (16 sets) | 6 |
+| (11,5) | A5 × Z49, "3 3 2" | 155.9M | 6 (504 sets) | 6 |
+
+Two conclusions. First, at this size the annealer finds the true floor of the orbit space, so a plateau is a property
+of (group, α), not of effort. Second, up to automorphisms of G each of these groups has only one class of order-3
+conjugation with few fixed points, so each line above closes that group for that structure. Under three-orbit
+symmetry, (10,5) and (11,5) would need a different group, and in their order windows the remaining candidates all
+anneal to 8 or more.
+
+Why some groups are so much better than others: the Poisson model predicts about 0.03 symmetric solutions for SL(2,11)
+at (9,5), and enumeration finds about 100 (3 in 1/40 of the space). For A4 × SL(2,3) × Z7 at (10,5) the model predicts
+about 3·10⁻⁵ and there are none. This fits quasirandomness: SL(2,q) has no nontrivial representation of dimension
+below (q−1)/2, so product sets such as (S⁻¹S)² spread over the group faster than random sets (Gowers), while groups with
+abelian quotients (a Z_n factor, A4, PGL) have 1-dimensional representations. At D = 5, where words are short, this
+decides everything. The perfect groups in the (10,5)–(13,5) order windows are SL(2,13) only (now enumerated), so the
+D = 5 column is out of reach for orbit-symmetric Haar graphs.
+
 ## Squad rounds
 
-(filled in as the rounds finish)
+(details and per-card numbers in LOG.md)
