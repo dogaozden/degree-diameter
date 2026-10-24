@@ -1,0 +1,23 @@
+Proxy (15,8) on SL(2,59) x Z_43, N = 8828760, mu = 23.0. Command per run (seed = 1 or 2):
+  cd /home/user/degree-diameter/research/lowmem && timeout 120 nice -n 10 env ORBW=W TARGP=T ./haar_lean 15 8 60 SEED 8 /dev/null sl 59 43
+No lock (N < 2e7), one run at a time, 60 s cap. Raw RESULT lines: research/squads/d15D10-r1/c6/raw.log.
+best = raw cost of the lowest-energy state (0 = solved). With ORBW=3 this is not the minimum raw cost reached.
+
+ORBW TARGP seed best evals time
+1 70 1 0 4289 37.4
+1 70 2 0 4089 41.2
+3 70 1 3 5545 60.1
+3 70 2 3 4337 60.1
+1 95 1 0 2777 35.9
+1 95 2 1 4673 60.0
+3 95 1 0 4361 54.3
+3 95 2 3 6097 60.0
+
+Score per setting (median of 2 seeds; unsolved counts as 2x its evals):
+ORBW=1 TARGP=70: 4289, 4089 -> median 4189.0 (solved 2/2)   <- best
+ORBW=1 TARGP=95: 2777, 2x4673 = 9346 -> median 6061.5 (solved 1/2)
+ORBW=3 TARGP=95: 4361, 2x6097 = 12194 -> median 8277.5 (solved 1/2)
+ORBW=3 TARGP=70: 2x5545 = 11090, 2x4337 = 8674 -> median 9882.0 (solved 0/2)
+
+Best: ORBW=1 TARGP=70 (the default). ORBW=3 did not help on this proxy.
+Caveat: 2 seeds per setting only. Evals/s varied 72-115 with the shared machine load, so the 60 s cap cut some runs.
