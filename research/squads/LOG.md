@@ -37,3 +37,18 @@ c8 wildcard: any non-default idea at (10..12,5).
 Launched while round-1 c1–c4 finish (the k = 2 result at (6,8) is the lead). Preamble: research/squads/r2/PREAMBLE.md.
 Cards: c1 (6,7) "2 3 0" · c2 (6,9) "2 3 0" · c3 (6,10) "2 3 0" · c4 (7,8) "2 3 1" · c5 (8,7) "2 4 0", "4 2 0" ·
 c6 (8,8) "2 4 0", "4 2 0" · c7 (7,9) "2 3 1" · c8 wildcard: (9,8), (8,9), (7,10), (8,10) with any non-k=3 structure.
+
+### Round 2 outcomes (reports so far)
+- c2 (6,9) "2 3 0": worse. Best 36 (SL(2,3) × SL(2,7) × Z8, N 64,512, μ 33), 68–70 on two others. Plateaus within 60 s.
+- c3 (6,10) "2 3 0": worse. Best 12 (SL(2,31) × Z9, N 267,840, μ 29.5), 14–15 on PSL(2,81), PSL(2,41) × Z8.
+- c4 (7,8) "2 3 1": worse. Best 13 (PSL(2,23) × Z8, N 48,576, μ 48); "2 2 3" on the same group 25.
+- So k = 2 is not a general improvement on k = 3: it helped at (6,8) only, where k = 3 had just two orbits and had
+  failed. Plateaus form in under a minute and do not move with reheats.
+
+### Opus solo, between rounds
+- (6,8) above 15,840 with k = 2: A4 × PSL(2,7) × Z8 (16,128) stops at 5 in 4 seeds (also RESTART=1, ORBW=2: one fixed
+  point and two orbits left); SL(2,8) × Z32 (16,128) 7; PSL(2,7) × Z95 and SL(2,5)/S5 × Z133 (15,960) screen at ≥ 98.
+- Inverse-closed S (new INV=1 mode, table_squad/src/haar_inv.c; makes the two odd-D conditions coincide, halving μ):
+  **much worse**. (9,5) SL(2,11): 40 uncovered where k = 3 orbits solve in 0.1 s; (6,5) SL(2,5) × Z3 14; (10,5)
+  SL(2,13) 20; (11,5) A5 × Z49 188. Halving μ does not pay for halving the free parameters: bipartite doubles of
+  Cayley graphs are weak here.

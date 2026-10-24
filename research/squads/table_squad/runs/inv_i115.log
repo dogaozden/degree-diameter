@@ -1,0 +1,6 @@
+group psl 5 x Z_49, N=2940, identity 490, H order 49, rows 60, threads 1, setup 0.00s
+wide rows: HW order 245, rows 12, setup 0.01s
+alpha: inversion (S closed under inverses)
+ORBIT k=2 m=5 f=1: |Fix(alpha)| = 15 (+e); mu = 67.15, mu/k = 33.57, fixed-point misses ~ 4.84
+start cost=752
+RESULT d=11 D=5 group=psl 5 x Z_49 N=2940 best=188 evals=6986529 time=120.0 orbit k=2 m=5 f=1 fix=15
