@@ -1,0 +1,14 @@
+start m=16 sample=16 cost=0
+  sample clean at m=16 (it 1): full COST over reps = 3 (bad reps 3)
+  added 3 bad reps to the sample (now 19)
+it 200 m=16 cost=1 acc=1.000 t=128s
+  sample clean at m=16 (it 266): full COST over reps = 4 (bad reps 4)
+  added 4 bad reps to the sample (now 23)
+it 400 m=16 cost=2 acc=1.000 t=254s
+  sample clean at m=16 (it 543): full COST over reps = 0 (bad reps 0)
+  sample clean at m=17 (it 544): full COST over reps = 4 (bad reps 4)
+  added 4 bad reps to the sample (now 27)
+it 600 m=17 cost=1 acc=1.000 t=397s
+  sample clean at m=17 (it 611): full COST over reps = 0 (bad reps 0)
+  sample clean at m=18 (it 612): full COST over reps = 13 (bad reps 13)
+  added 8 bad reps to the sample (now 40)

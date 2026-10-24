@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
     int nsrc = 0; int *src = malloc(sizeof(int) * (nA + 8));
     if (!strcmp(spec, "all")) { for (int i = 0; i < nA; i++) src[nsrc++] = i; }
     else if (spec[0] == 'r') { int K = 0; unsigned long long seed = 1; sscanf(spec, "r:%d:%llu", &K, &seed);
-        rnd_state ^= seed * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        rnd_state = 0x9E3779B97F4A7C15ULL + (seed + 1) * 0xD1B54A32D192ED03ULL; if (!rnd_state) rnd_state = 1; for (int i = 0; i < 20; i++) rnd();
         for (int i = 0; i < K; i++) src[nsrc++] = (int)(rnd() % (u64)nA); }
     else if (spec[0] == 's') { int st = 0, sp = 1; sscanf(spec, "s:%d:%d", &st, &sp); for (int i = st; i < nA; i += sp) src[nsrc++] = i; }
     else if (spec[0] == 'i') { const char *p = spec + 2; while (*p) { src[nsrc++] = atoi(p); while (*p && *p != ',') p++; if (*p) p++; } }
