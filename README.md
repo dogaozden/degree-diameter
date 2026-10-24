@@ -1,6 +1,6 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **60 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **65 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
@@ -45,7 +45,11 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (7, 5) | 1,134 | **1,152** | +1.6% | Haar graph, hand-picked group | ✓ |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
 | (9, 5) | 2,496 | **2,662** | +6.7% | Haar graph, hand-picked group | ✓ |
-| (12, 5) | 8,200 | **8,748** | +6.7% | route-chart lift | — |
+| (10, 5) | 4,000 | **4,800** | +20.0% | generalized quadrangle construction ¹ | — |
+| (11, 5) | 5,850 | **7,020** | +20.0% | generalized quadrangle construction ¹ | — |
+| (12, 5) | 8,200 | **9,840** | +20.0% | generalized quadrangle construction ¹ | — |
+| (13, 5) | 11,480 | **11,486** | +0.1% | finite geometry (unit design) ¹ | — |
+| (14, 5) | 14,760 | **17,568** | +19.0% | generalized quadrangle construction ¹ | — |
 | (15, 5) | 20,496 | **20,736** | +1.2% | route-chart lift | — |
 | (16, 5) ² | 27,300 | **33,792** | +23.8% | route-chart lift ¹ | — |
 | (7, 6) | 8,992 | **9,592** | +6.7% | finite geometry | ✓ |
@@ -59,7 +63,8 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (7, 7) | 23,436 | **23,488** | +0.2% | hexagon + hub vertices ¹ | — |
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
 | (9, 7) | 117,648 | **117,690** | +0.0% | hexagon + hub vertices ¹ | — |
-| (11, 7) | 398,580 | **398,606** | +0.0% | hexagon + hub vertices ¹ | — |
+| (10, 7) | 224,694 | **224,718** | +0.0% | hexagon + hub vertices ¹ | — |
+| (11, 7) | 398,580 | **398,636** | +0.0% | hexagon + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,576** | +3.7% | voltage lift / metacyclic Haar | ✓ |
 | (6, 8) | 29,790 | **31,680** | +6.3% | orbit search (Haar) ¹ | (30,576) |
@@ -119,6 +124,8 @@ published table yet.
   (Δ = 3–5, D = 7–10).
 - **Route-chart lifts** ([`research/theorems/`](research/theorems/)): lifts of a small controller graph whose edges carry
   "chart letters" over a finite field (Δ = letters × field size). These gave (16, 5) first, then (8, 5), (12, 5) and (15, 5).
+- **Generalized quadrangles at D = 5** ([`research/d10D7/DM_D5.md`](research/d10D7/DM_D5.md)): a construction from a generalized
+  quadrangle of order q gave (10, 5), (11, 5), (12, 5) and (14, 5), about 20% above the table.
 - **Hexagon + hub vertices** ([`research/squads/exp2/hexd7/`](research/squads/exp2/hexd7/)): the table's D = 7 values are three
   copies of a generalized hexagon H(q). Freeing a point–line pair and adding two hub vertices gains 2 vertices per pair,
   with a short proof. This gave (7, 7), (9, 7) and (11, 7).
