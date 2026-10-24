@@ -141,6 +141,9 @@ missed 3 of its 64 same-side controller targets). `rcl/chartfit2.c` anneals the 
 (x, y) pairs over all same-side targets of the two base vertices (exact for these vertex-transitive lifts; it
 reproduced the BFS count 188,928 for the first chart) and reached 0 for SmallGroup(64,43) within 90 s.
 
+The lift is probably vertex-transitive: from ten random sources the distance profile is the same,
+[1, 16, 203, 2490, 16180, 13878] (girth 4). Same side: 1 + 203 + 16,180 = 16,384.
+
 ### 4.3 Independent rebuild
 
 `rcl/rebuild_gap.g` rebuilds the graph in GAP from the definition alone (GAP's own SmallGroup(64,43) elements and
@@ -205,3 +208,11 @@ do: the order-64 Haar controller would give 10,368 and the 162-vertex (4,5) reco
 8,200. With odd ρ one needs involution labels (A_t² = I, A_t b_t = b_t); then (15,5) = 5·3 and (9,5) = 3·3 come into
 range of the (5,5) and (3,5) records (2·177·81 = 28,674 vs 20,496; 56·81 = 4,536 vs our 2,662). None of this is
 built or checked; a chart fit for (12,5) on the order-64 controller is running at low priority.
+
+### 4.8 Per-vertex charts
+
+The lemma of §4.1 does not need the chart to be the same at every controller vertex: for a permutation-voltage
+controller one can give each base vertex its own (A, b) for its outgoing a- and b-edges (the reverse labels are then
+forced: A_{w,t⁻¹} = A_{v,t}⁻¹, b_{w,t⁻¹} = A_{v,t}⁻¹ b_{v,t} for w = π_t(v)). The lift stays group-invariant, so one source
+per base vertex still suffices. `rcl/fitqv.c` fits such charts exactly (validated: cost 0 on the order-64 controller
+with the uniform winning chart). Running on the five 66-per-side controllers (12 free (A, b) pairs instead of 2).
