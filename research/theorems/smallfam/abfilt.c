@@ -56,7 +56,41 @@ int main(int argc, char **argv) {
     if (argc < 5) { fprintf(stderr, "usage: abfilt DELTA D K d1 [d2 ...]\n"); return 2; }
     DELTA = atoi(argv[1]); D = atoi(argv[2]); K = atoll(argv[3]); na = argc - 4;
     for (int i = 0; i < na; i++) { dd[i] = atoi(argv[4 + i]); A *= dd[i]; }
-    if (A > 4000) { printf("pass ? (A = %d too large; not filtered)\n", A); return 0; }
+    /* generic bound: S-bar = {0, e1, ..., e_{DELTA-1}} in Z^{DELTA-1} gives the most distinct walk images; every
+       element of A must be an image, so A <= that count.  (BFS over integer vectors, coordinates in [-D, D].) */
+    {
+        int dim = DELTA - 1, R = D + 1, W = 2 * R + 1; long long cells = 1; for (int i = 0; i < dim; i++) cells *= W;
+        if (cells <= 50000000LL) {
+            char *seen[2]; seen[0] = calloc(cells, 1); seen[1] = calloc(cells, 1);
+            long long *fr = malloc(sizeof(long long) * cells), *nf = malloc(sizeof(long long) * cells); long long nfr = 0, nnf;
+            long long stride[8]; stride[0] = 1; for (int i = 1; i < dim; i++) stride[i] = stride[i - 1] * W;
+            long long origin = 0; for (int i = 0; i < dim; i++) origin += R * stride[i];
+            long long count[2] = {0, 0};
+            for (int startB = 0; startB < 2; startB++) {
+                memset(seen[0], 0, cells); memset(seen[1], 0, cells);
+                int tside = (D % 2 == 0) ? !startB : startB;
+                nfr = 0; fr[nfr++] = origin; seen[startB][origin] = 1; int side = startB;
+                for (int len = 1; len <= D - 1; len++) {
+                    nnf = 0;
+                    for (long long t = 0; t < nfr; t++) {
+                        long long v = fr[t];
+                        for (int g = 0; g < DELTA; g++) {
+                            long long w = v; if (g > 0) w += (side == 0 ? 1 : -1) * stride[g - 1];
+                            if (!seen[1 - side][w]) { seen[1 - side][w] = 1; nf[nnf++] = w; }
+                        }
+                    }
+                    long long *tmp = fr; fr = nf; nf = tmp; nfr = nnf; side = 1 - side;
+                }
+                for (long long c = 0; c < cells; c++) count[startB] += seen[tside][c];
+                if (D % 2 == 0) { count[1] = count[0]; break; }
+            }
+            long long gen = count[0] < count[1] ? count[0] : count[1];
+            free(seen[0]); free(seen[1]); free(fr); free(nf);
+            if (A > gen) { printf("pass 0 of 0 (A = %d > generic image count %lld)\n", A, gen); return 1; }
+        }
+    }
+    {   long long tuples = 1; for (int i = 0; i < DELTA - 1; i++) tuples *= A;
+        if (tuples > 3000000LL || A > 4000) { printf("pass ? (A = %d, %lld tuples: not enumerated)\n", A, tuples); return 0; } }
     ADD = malloc(sizeof(int *) * A); SUB = malloc(sizeof(int *) * A);
     for (int x = 0; x < A; x++) { ADD[x] = malloc(sizeof(int) * A); SUB[x] = malloc(sizeof(int) * A);
         for (int v = 0; v < A; v++) { ADD[x][v] = add(v, x, 1); SUB[x][v] = add(v, x, -1); } }
