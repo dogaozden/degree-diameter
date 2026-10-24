@@ -3872,3 +3872,10 @@ screen	6050	meta 605 10 81 1	min=61	p10=121	median=658	mu=46.0	score=16.95
 screen	6050	meta 605 10 9 1	min=12	p10=35	median=156	mu=46.0	score=4.16
 screen	6050	meta 605 10 94 1	min=251	p10=452	median=1543	mu=46.0	score=43.41
 run	5886	meta 218 27 3 1	seed=1	best=0	check=OK	2s
+run	5887	meta 841 7 190 1	seed=1	best=4	check=-	400s
+run	5887	meta 841 7 190 1	seed=2	best=4	check=-	400s
+run	5964	meta 213 28 20 1	seed=1	best=4	check=-	400s
+run	5964	meta 213 28 20 1	seed=2	best=4	check=-	400s
+run	5994	meta 333 18 86 1	seed=1	best=1	check=-	400s
+run	5994	meta 333 18 86 1	seed=2	best=1	check=-	400s
+run	5994	meta 333 18 83 1	seed=1	best=0	check=OK	1s
