@@ -986,3 +986,25 @@ BFS from B: ecc=9 reached 208029120 of 208029120 (unreached 0); level sizes [1, 
 max degree = min degree = 15, no repeated edges (checked above)
 elapsed 45.9s
 RESULT VALID d=15 D=9 eccA=9 eccB=9 n=208029120
+== d13D10_sl_199_43_orb3_s1 (origin/claude/structured-search-orbit-w5dd4f, 20:47 PT)
+machine: nproc=4; free -g: total 15G used 0G free 15G avail 15G
+sha256 9854750c484f375ca4eb497a7ab9d38139c2715d453da5396b5b4fa8c1bb0384
+################ reference checker: /tmp/hsl research/frontier/sols/d13D10_sl_199_43_orb3_s1.txt   [exit 0]
+from (e,A): reached A 338857200/338857200, B 338857200/338857200 within 10, ecc 10
+from (e,B): reached A 338857200/338857200, B 338857200/338857200 within 10, ecc 10
+VALID d=13 D=10 group=sl 199 x Z_43 N=338857200 vertices=677714400 (distinct generators, 13-regular simple)
+################ bigcheck_indep: /tmp/bci research/frontier/sols/d13D10_sl_199_43_orb3_s1.txt   [exit 0]
+file research/frontier/sols/d13D10_sl_199_43_orb3_s1.txt
+header: 13 10 sl 199 n 43 N 338857200
+d=13 D=10
+group: SL(2,199) [order 7880400] x Z_43; |G| = 338857200, vertices 2|G| = 677714400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.1s]
+generators: 13 distinct group elements, all in the group [0.1s]
+neighbour check (full: 338857200 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [41.6s]
+BFS from A: ecc=10 reached 677714400 of 677714400 (unreached 0); level sizes [1, 13, 156, 1872, 22464, 269448, 3217698, 36621685, 250593204, 301964182, 85023677] [83.9s]
+BFS from B: ecc=10 reached 677714400 of 677714400 (unreached 0); level sizes [1, 13, 156, 1872, 22464, 269448, 3217674, 36621685, 250596298, 301964182, 85020607] [126.6s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 126.6s
+RESULT VALID d=13 D=10 eccA=10 eccB=10 n=677714400
