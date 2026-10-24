@@ -1,0 +1,29 @@
+group sl 27 poly x^3+2x+1 x Z_199, N=3911544, identity 139698, H order 28, rows 139698, threads 1, setup 0.18s
+wide rows: HW order 199, rows 19656, setup 0.31s
+alpha: conj by mat(10,15,2,19) (index 7670), z -> 92 z on Z_199
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 53 (+e); mu = 23.18, mu/k = 7.73, fixed-point misses ~ 0.98
+start cost=201
+t=30 steps=576 evals=4609 cost=18 best=15 T=0.53
+t=60 steps=1116 evals=8929 cost=15 best=15 T=0.19
+t=90 steps=1682 evals=13457 cost=15 best=15 T=0.15
+t=120 steps=2242 evals=17937 cost=15 best=15 T=0.15
+t=150 steps=2792 evals=22337 cost=15 best=15 T=0.15
+t=180 steps=3337 evals=26697 cost=12 best=12 T=0.60
+t=210 steps=3895 evals=31161 cost=12 best=12 T=0.21
+t=240 steps=4466 evals=35729 cost=10 best=10 T=0.15
+t=270 steps=5064 evals=40513 cost=10 best=10 T=0.15
+t=300 steps=5674 evals=45393 cost=10 best=10 T=0.15
+t=330 steps=6299 evals=50393 cost=10 best=10 T=0.15
+t=360 steps=6866 evals=54929 cost=10 best=10 T=0.15
+t=390 steps=7493 evals=59945 cost=10 best=10 T=1.26
+t=420 steps=8128 evals=65025 cost=10 best=10 T=0.45
+t=450 steps=8724 evals=69793 cost=9 best=9 T=0.16
+t=481 steps=9326 evals=74609 cost=9 best=9 T=0.15
+t=511 steps=9885 evals=79081 cost=9 best=9 T=0.15
+t=541 steps=10510 evals=84081 cost=9 best=9 T=0.15
+t=571 steps=11098 evals=88785 cost=10 best=9 T=0.15
+t=601 steps=11663 evals=93305 cost=9 best=9 T=0.56
+t=631 steps=12258 evals=98065 cost=9 best=9 T=0.20
+t=661 steps=12840 evals=102721 cost=9 best=9 T=0.15
+t=691 steps=13417 evals=107337 cost=9 best=9 T=0.15
+t=721 steps=14056 evals=112449 cost=9 best=9 T=0.15

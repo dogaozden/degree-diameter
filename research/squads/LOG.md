@@ -130,3 +130,13 @@ Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generat
 - c2 (8,10): SL(2,67) × Z13 (N 3,909,048) ended at 1 (a single α-fixed element). Opus ran extra seeds: **seed 12 solved
   it in 1,601 evaluations (10.8 s): 7,818,096 vertices** (ours 7,802,160, table 6,927,210). haarcheck_sl, haarcheck2 and
   check_haar_indep.py VALID. Credit: squad lead (r4-c2's group and near miss), Opus's seed.
+- c3 (7,10): A5 × SL(2,8) × Z37 (N 1,118,880) ended at 3. Opus ran ten 150 s seeds (11–20): best 3, 1, 3, 1, **0**, 1, 3,
+  3, 1 — **seed 15 solved it in 13,993 evaluations (40 s): 2,237,760 vertices** (ours 2,234,400, table 1,987,380).
+  build_haar2.py and check_haar_indep.py VALID. Lesson: on these near misses, many short seeds beat a few long runs.
+- c7 (8,8), (8,7): nothing (SL(2,11) × Z91 6 on three seeds, PGL(2,11) × Z91 7; (8,7) groups 24–774).
+
+### Round 3, last reports (c4, c6)
+- c4 (10,5) search-knob grid on A4 × SL(2,3) × Z7: all 24 runs (K 1–64, TARGP 0–100, COOL, REHEAT, RESTART) end at
+  exactly 4, the enumerated floor. c6 (6,8) α sweep on A4 × PSL(2,7) × Z8: 89 valid involution α, all 8 best end at
+  exactly 5. Round 3 total: 0 records; it found the best (10,5) and (9,8) leads (3 and 3) and confirmed that plateaus
+  are fixed by (group, α).
