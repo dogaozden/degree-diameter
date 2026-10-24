@@ -2,3 +2,22 @@ group sl 8 poly x^3+x+1 x Z_19, N=9576, identity 1064, H order 57, rows 168, thr
 wide rows: HW order 171, rows 56, setup 0.00s
 start cost=186
 t=30 steps=362021 evals=2896169 cost=4 best=4 T=0.53
+t=60 steps=721358 evals=5770865 cost=4 best=4 T=0.19
+t=90 steps=1078788 evals=8630305 cost=4 best=4 T=0.15
+t=120 steps=1444732 evals=11557857 cost=6 best=4 T=0.15
+t=150 steps=1808022 evals=14464177 cost=8 best=4 T=0.15
+t=180 steps=2172159 evals=17377273 cost=8 best=4 T=0.92
+t=210 steps=2528651 evals=20229209 cost=5 best=4 T=0.33
+t=240 steps=2888937 evals=23111497 cost=5 best=4 T=0.15
+t=270 steps=3254703 evals=26037625 cost=9 best=4 T=0.15
+t=300 steps=3604439 evals=28835513 cost=9 best=4 T=0.15
+t=330 steps=3959102 evals=31672817 cost=10 best=4 T=0.92
+t=360 steps=4305963 evals=34447705 cost=8 best=4 T=0.33
+t=390 steps=4589491 evals=36715929 cost=10 best=4 T=0.15
+t=420 steps=4878847 evals=39030777 cost=9 best=4 T=0.15
+t=450 steps=5233206 evals=41865649 cost=9 best=4 T=0.15
+t=480 steps=5595257 evals=44762057 cost=13 best=4 T=0.92
+t=510 steps=5946722 evals=47573777 cost=7 best=4 T=0.33
+t=540 steps=6281802 evals=50254417 cost=8 best=4 T=0.15
+t=570 steps=6568597 evals=52548777 cost=8 best=4 T=0.15
+RESULT d=7 D=7 group=sl 8 poly x^3+x+1 x Z_19 N=9576 best=4 evals=54704481 time=600.0

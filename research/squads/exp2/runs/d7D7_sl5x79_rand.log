@@ -1,0 +1,19 @@
+group sl 5 x Z_79, N=9480, identity 1580, H order 10, rows 948, threads 1, setup 0.01s
+wide rows: HW order 237, rows 40, setup 0.02s
+start cost=260
+t=30 steps=516910 evals=4135281 cost=20 best=20 T=0.53
+t=60 steps=959892 evals=7679137 cost=20 best=20 T=0.19
+t=90 steps=1361865 evals=10894921 cost=20 best=20 T=0.15
+t=120 steps=1754753 evals=14038025 cost=26 best=20 T=0.15
+t=150 steps=2271298 evals=18170385 cost=16 best=16 T=0.15
+t=180 steps=2785262 evals=22282097 cost=16 best=16 T=0.15
+t=210 steps=3275186 evals=26201489 cost=38 best=16 T=0.15
+t=240 steps=3801654 evals=30413233 cost=28 best=16 T=0.15
+t=270 steps=4323337 evals=34586697 cost=24 best=16 T=0.15
+t=300 steps=4860537 evals=38884297 cost=22 best=16 T=1.38
+t=330 steps=5411409 evals=43291273 cost=24 best=16 T=0.49
+t=360 steps=5953249 evals=47625993 cost=18 best=16 T=0.17
+t=390 steps=6497634 evals=51981073 cost=18 best=16 T=0.15
+t=420 steps=7045175 evals=56361401 cost=18 best=16 T=0.15
+t=450 steps=7544308 evals=60354465 cost=16 best=16 T=1.38
+RESULT d=7 D=7 group=sl 5 x Z_79 N=9480 best=16 evals=60520361 time=451.4
