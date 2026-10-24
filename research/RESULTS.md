@@ -146,3 +146,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 20:11 PT (harvest): (9,9) 3,499,776 (was 3,443,328), prod psl 7 sl 7 n 31; claude/structured-search-orbit-w5dd4f.
 - Oct 23 20:11 PT (harvest): (15,8) 18,128,880 (was 17,998,512), sl 109 n 7; claude/structured-search-orbit-w5dd4f.
 - Oct 23 20:11 PT (harvest): (15,9) 208,029,120 (was 205,083,600), sl 79 n 211; claude/structured-search-orbit-w5dd4f.
+- Oct 23 20:11 PT (coordinator): (5,8) 9,576 (was 9,234, new cell): Haar graph of the metacyclic group Z266 ⋊₁₇ Z18 with S = {(0,0), (51,5), (129,13), (156,5), (110,11)}; voltage-lifts session; rebuilt and checked all-pairs (research/lifts/coordinator_check/check_2026-10-23e.txt).
