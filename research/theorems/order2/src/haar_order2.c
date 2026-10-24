@@ -3,6 +3,9 @@
  *   z -> AR z.  alpha^2 = (F^j, F^j), so alpha has order 2 ord(F^j): AFSWAP=1 on prod sl 8 sl 8 has order 6.
  *   ASWAPC=1: alpha(x1, x2) = (c x2 c^-1, x1) on prod G G (any base groups G), c in G chosen with conjugation of order k/2
  *   (ACONJ=<index of c in G> overrides); alpha^2 = (conj c, conj c), so alpha has order 2 ord(conj c).
+ *   OSUB=s (s | k, 1 < s < k): one more orbit, of size s (an alpha-orbit inside Fix(alpha^s)), after the m free orbits:
+ *   d = f + k m + s.  E.g. ORBIT="6 2 0" OSUB=3 gives d = 15 with no fixed letter.  The annealer moves it like an orbit.
+ *   CLASSES=1 (with RANDORB): miss rate of each stabiliser class.  BESTOUT=path: best S of an unsolved run.
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -789,6 +792,7 @@ static int cmpll(const void *a, const void *b) { long long x = *(const long long
 
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
+static int OSUB = 0, *SUBL = 0; static long long NSUB = 0;   /* haar_order2: one extra orbit of size OSUB from Fix(alpha^OSUB) */
 static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0, AFSWAP = -1, ASWAPC = 0, AQC = -1, AQCI = -1;   /* AFROB = j: entries x -> x^(p^j) */
 static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
@@ -951,6 +955,14 @@ static int random_orbit(int j, int *o) {   /* random valid orbit for slot j (or 
     for (int tries = 0; tries < 100000; tries++) { int x = rnd() % N; if (orbit_of(x, o) && orbit_free(o, j)) return 1; }
     return 0;
 }
+static inline int subst(void) { return d - OSUB; }
+static int random_sub(int *o) {   /* random orbit of size OSUB, disjoint from S outside the sub slot */
+    for (int tries = 0; tries < 100000; tries++) {
+        int x = SUBL[rnd() % NSUB]; o[0] = x; for (int i = 1; i < OSUB; i++) o[i] = alpha(o[i - 1]);
+        int ok = 1; for (int i = 0; i < OSUB && ok; i++) for (int u = 0; u < subst(); u++) if (S[u] == o[i]) { ok = 0; break; }
+        if (ok) return 1; }
+    return 0;
+}
 /* ORBW=w: an uncovered alpha-fixed element weighs w instead of 1 (w = k: every uncovered alpha-orbit counts 1).
  * Integer energy c + (w-1) * (uncovered fixed elements) >= c, so the early abort on the raw count stays exact. */
 static int ORBW = 1;
@@ -983,7 +995,9 @@ static int check_and_write(ctx *c0, const char *out) {
     return 1;
 }
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
-    if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
+    if (getenv("OSUB")) OSUB = atoi(getenv("OSUB"));
+    if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM + OSUB != d || OK_ > MAXD
+        || (OSUB && (OSUB < 2 || OSUB >= OK_ || OK_ % OSUB))) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
     if (TWIST || CSL) { fprintf(stderr, "ORBIT: plain groups only\n"); return 2; }
     if (getenv("INV") && atoi(getenv("INV"))) {   /* alpha_eff = inversion o alpha0, alpha0 an automorphism of odd order k/2 */
@@ -996,6 +1010,13 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
       for (int u = 0; u < 5; u++) if (alpha(gmul(t[u], t[u + 1])) != (AINV ? gmul(alpha(t[u + 1]), alpha(t[u])) : gmul(alpha(t[u]), alpha(t[u + 1])))) { fprintf(stderr, "alpha is not an (anti-)automorphism\n"); return 2; }
       for (int u = 0; u < 6; u++) { int y = t[u]; for (int i = 0; i < OK_; i++) y = alpha(y); if (y != t[u]) { fprintf(stderr, "alpha^k != 1\n"); return 2; } } }
     scan_fix(); FIXG = FIXL; NFIXG = NFIX;
+    if (OSUB) {   /* elements whose alpha-orbit has exactly OSUB elements */
+        long long cap = 1 << 16; SUBL = malloc(sizeof(int) * cap); NSUB = 0;
+        for (int x = 0; x < N; x++) { int y = x, o = 0; do { y = alpha(y); o++; } while (y != x && o <= OSUB);
+            if (o == OSUB) { if (NSUB == cap) { cap *= 2; SUBL = realloc(SUBL, sizeof(int) * cap); } SUBL[NSUB++] = x; } }
+        fprintf(stderr, "OSUB=%d: %lld elements with alpha-orbit of size %d (%lld orbits)\n", OSUB, NSUB, OSUB, NSUB / OSUB);
+        if (NSUB < OSUB) { fprintf(stderr, "no orbit of size %d\n", OSUB); return 2; }
+    }
     if (getenv("FIXMIN")) {   /* fixed generators of order >= FIXMIN only (no involutions or order 3: BEYOND_RANDOM 4.5.3) */
         int mo = atoi(getenv("FIXMIN")); FIXG = malloc(sizeof(int) * (NFIX + 1)); NFIXG = 0;
         for (long long i = 0; i < NFIX; i++) { int y = FIXL[i], o = 1; while (y != ident) { y = gmul(y, FIXL[i]); o++; } if (o >= mo) FIXG[NFIXG++] = FIXL[i]; }
@@ -1011,6 +1032,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int u = 1; u < OF; u++) { if (NFIXG < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+    if (OSUB) { int o[MAXD]; if (!random_sub(o)) { fprintf(stderr, "no sub-orbit found\n"); return 2; } for (int i = 0; i < OSUB; i++) S[subst() + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
     if (getenv("EXHAUST")) {   /* every S = (e, fixed generators) + m distinct alpha-orbits, by orbit representatives */
@@ -1074,6 +1096,7 @@ exdone:
             for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
+            if (OSUB) { int o[MAXD]; for (int i = 0; i < OSUB; i++) S[subst() + i] = -1 - subst() - i; random_sub(o); for (int i = 0; i < OSUB; i++) { S[subst() + i] = o[i]; mktab(o[i], TF[subst() + i], TI[subst() + i]); } }
             long long c = cost_any(C[0], TF, TI, &sc0, SVR, &NOBOUND, 0), miss[MAXD + 2] = {0};
             for (int sd = 0; sd < (D % 2 ? 2 : 1); sd++) { const uint64_t *V = SVR[sd];
                 for (int g = 0; g < N; g++) { int cov;
@@ -1092,6 +1115,7 @@ exdone:
             for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
+            if (OSUB) { int o[MAXD]; for (int i = 0; i < OSUB; i++) S[subst() + i] = -1 - subst() - i; random_sub(o); for (int i = 0; i < OSUB; i++) { S[subst() + i] = o[i]; mktab(o[i], TF[subst() + i], TI[subst() + i]); } }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
             sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
@@ -1143,12 +1167,13 @@ exdone:
     long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
 #define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
     fprintf(stderr, "start cost=%lld\n", c);
-    int nslots = OM + (OF > 1 ? OF - 1 : 0);
+    int nslots = OM + (OF > 1 ? OF - 1 : 0) + (OSUB ? 1 : 0);
     char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
     while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
-        int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
+        int slot = rnd() % nslots, issub = OSUB && slot == nslots - 1, isorb = slot < OM, j = slot, fs = (isorb || issub) ? -1 : 1 + (slot - OM);
         for (int t = 0; t < K; t++) {
-            if (isorb) {
+            if (issub) { int o[MAXD]; random_sub(o); memcpy(cand[t], o, sizeof(int) * OSUB); }
+            else if (isorb) {
                 int x = -1, o[MAXD]; AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);
                 if ((int)(rnd() % 100) < TARGP) x = targeted(ostart(j));
                 AVOIDMASK = 0;
@@ -1164,7 +1189,8 @@ exdone:
             me = omp_get_thread_num();
 #endif
             ctx *cx = C[me]; uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
-            if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
+            if (issub) for (int i = 0; i < OSUB; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[subst() + i] = OTF[me][i]; ti[subst() + i] = OTI[me][i]; }
+            else if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
             else { mktab(cand[t][0], OTF[me][0], OTI[me][0]); tf[fs] = OTF[me][0]; ti[fs] = OTI[me][0]; }
             double sc; long long r = cost_any(cx, tf, ti, &sc, SV[t], OABORT ? &bound : &NOBOUND, nth > 1);
             if (r >= 0 && ORBW > 1) { craw[t] = r; r += (ORBW - 1) * fixmiss(SV[t]); } else craw[t] = r;
@@ -1176,7 +1202,8 @@ exdone:
         int bt = 0; for (int t = 1; t < K; t++) if (cs[t] < cs[bt]) bt = t;
         double bE = (double)cs[bt] / OK_;
         if (bE <= cE || exp((cE - bE) / T) > (rnd() % 1000000) / 1e6) {
-            if (isorb) for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+            if (issub) for (int i = 0; i < OSUB; i++) { int u = subst() + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+            else if (isorb) for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             else { S[fs] = cand[bt][0]; SI[fs] = ginv(S[fs]); mktab(S[fs], TF[fs], TI[fs]); }
             c = craw[bt]; ce = cs[bt]; cE = bE; collect_saved(SV[bt]);
         }
