@@ -170,3 +170,5 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 24 00:13 PT (coordinator): (4,10) 12,416 (was 12,246, raised): Haar graph of the metacyclic group Z97 ⋊₁₉ Z64 with S = {(0,0), (74,51), (30,20), (47,1)}; voltage-lifts session; rebuilt and checked all-pairs (research/lifts/coordinator_check/check_2026-10-24a.txt).
 
 - Oct 24 09:55 PT (harvest): (8,9) 1,323,696 (was 1,320,120), psl 23 n 109; claude/degree-diameter-table-squad-0xgp3g.
+
+- Oct 24 10:11 PT (harvest): (8,9) 1,326,960 (was 1,323,696), sl 19 n 97; claude/degree-diameter-table-squad-0xgp3g.
