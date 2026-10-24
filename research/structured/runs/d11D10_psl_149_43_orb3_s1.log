@@ -1,0 +1,9 @@
+group psl 149 x Z_43, N=71117700, identity 474118, H order 43, rows 1653900, threads 1, setup 3.04s
+wide rows: HW order 215, rows 330780, setup 5.36s
+alpha: conj by mat(30,112,1,118) (index 671544), z -> 6 z on Z_43
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 74 (+e); mu = 11.66, mu/k = 3.89, fixed-point misses ~ 0.41
+start cost=12
+RESULT d=11 D=10 group=psl 149 x Z_43 N=71117700 best=0 evals=89 time=10.5 orbit k=3 m=3 f=2 fix=74
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/e6920a51-aa4e-57fc-88b7-0bdfe298eb49/scratchpad/q/out/d11D10_psl_149_43_orb3_s1.txt
+VALID d=11 D=10 group=psl 149 x Z_43 N=71117700 vertices=142235400 (distinct generators, 11-regular simple)
