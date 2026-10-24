@@ -1,26 +1,37 @@
-/* lift.c: voltage lifts of B = GH(q) + j perfect matchings (points -> lines) by a group G of order m <= 64.
+/* lift2.c: voltage lifts of B = GH(q) + j perfect matchings (points -> lines) by a group G of order m <= 64.
+ * (lift.c with 64/m sources packed per 64-bit word, a sampled-source mode and a distance diagnostic.)
  *
  * Lift vertex (x, h), h in G.  Base edge x->y with voltage g gives (x, h) ~ (y, h*g); y->x carries g^-1.
  * G acts by left multiplication, so the lift's diameter is max over base sources s of ecc((s, e)).
  * Cost of a source s = sum over base vertices y of (m - #sheets of y within distance D of (s,e)).
- * Computed with sheet bitmasks: W_{k+1}(y) = U_{x~y} W_k(x)*g(x->y)  (walks of length exactly k; in a bipartite
- * graph "within D" = W_{D-1} | W_D).
+ * Cost 0 over all sources <=> the lift (2*N*m vertices, max degree q+1+j, bipartite) has diameter <= D.
  *
- * Group: GROUP="cyc m" | "prod a b" (Z_a x Z_b) | "dih n" (dihedral of order 2n) | "file path" (m then m*m table,
- * element 0 = identity).
- * Variables: voltage of every hexagon edge (flag), voltage of every matching edge, the matchings themselves.
- * Modes (env): HZERO=1 hexagon voltages fixed to e; MCONST=1 matching t has the constant voltage T_t (env T="1 2"),
- *   NOSWAP=1 matchings fixed; SRC=k evaluate on k random sources (resampled every RESAMPLE steps) instead of all;
- *   ITERS, SEED, TEMP0, TEMP1, D (default 7), J (matchings, default 1), OUT (solution file), IN (start solution).
- * Solution file: "q j m D" line, group spec line, then j lines of sigma_t (point -> line index), then j lines of
- *   matching voltages (per point), then one line of hexagon voltages per flag (line-major, k-th point of line l).
- * usage: lift q   (all settings by env)
+ * Environment:
+ *   GROUP   "cyc m" | "prod a b" (Z_a x Z_b) | "dih n" (dihedral of order 2n; dih 3 = S_3) | "file path"
+ *           (m, then the m*m multiplication table, element 0 = identity)
+ *   J       number of matchings (default 1);  D  diameter target (default 7)
+ *   ITERS   annealing steps (0 = just evaluate);  SEED;  TEMP0, TEMP1 (geometric cooling, defaults 2, 0.05)
+ *   SECS    wall-clock limit in seconds
+ *   HZERO=1 hexagon voltages fixed to the identity;  MCONST=1 matching t has the constant voltage T_t (T="1 2")
+ *   NOSWAP=1 matchings fixed (only voltages move)
+ *   DM=1    doubled matching: the J matchings are copies of sigma_1 (parallel edges) with voltages 1, 4, 7, ..;
+ *           GROUP must be cyc 3J; hexagon voltages stay in 3Z; a swap moves all copies
+ *   SRC=k   anneal on k sampled sources; every RESAMPLE steps (default 2000) and whenever the sample cost hits 0,
+ *           a full evaluation runs, the best full state is saved, and the sample is refilled with failing sources
+ *   IN      start from a solution file;  OUT  write the best (full-cost) state
+ *   DIAG=k  print the missing sheets by hexagon distance of the target for k sources, then exit
+ * Solution file: "q j m D cost" line, group spec line, then j lines of sigma_t (point -> line index), then j lines
+ *   of matching voltages (per point, direction point->line), then one line of hexagon voltages per flag
+ *   (line-major: k-th point of line l, direction point->line).
+ * Output line: RESULT q .. J .. m .. D .. vertices .. best <best full cost> fullcost_final_state <cost> [DIAMETER_OK]
+ * usage: lift2 q   (reads hex/hex_q{q}.bin, written by hexgen2)
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 static int q, N, Q1, J = 1, m, D = 7, V, LANES;
 static int32_t *pl;            /* N x Q1: points on line l */
@@ -108,6 +119,34 @@ static long total_cost(long cap) {
     return c;
 }
 
+
+static void diag_report(int k) {
+    build_adj();
+    long tot[16] = {0}, cnt[16] = {0}, worst[16] = {0};
+    int *hd = malloc(sizeof(int) * V), *qu = malloc(sizeof(int) * V);
+    for (int si = 0; si < k && si < V; si++) {
+        int s = (int)((long)si * 7919 % V);
+        /* H-distance from s (hexagon edges only) */
+        for (int v = 0; v < V; v++) hd[v] = -1;
+        int h0 = 0, t0 = 0; hd[s] = 0; qu[t0++] = s;
+        while (h0 < t0) { int u = qu[h0++]; for (int i = 0; i < Q1; i++) { int w = nb[(size_t)u * Dg + i]; if (hd[w] < 0) { hd[w] = hd[u] + 1; qu[t0++] = w; } } }
+        int one[1] = {s};
+        memset(Wa, 0, sizeof(uint64_t) * V); memset(Acc, 0, sizeof(uint64_t) * V);
+        Wa[s] = 1; Acc[s] = 1;
+        for (int kk = 1; kk <= D; kk++) {
+            for (int y = 0; y < V; y++) { uint64_t o = 0; const int *a = nb + (size_t)y * Dg, *g = nv + (size_t)y * Dg;
+                for (int i = 0; i < Dg; i++) { uint64_t R = Wa[a[i]]; if (R) o |= act(R, inv_[g[i]]); } Wb[y] = o; }
+            uint64_t *t = Wa; Wa = Wb; Wb = t;
+            if (kk >= D - 1) for (int y = 0; y < V; y++) Acc[y] |= Wa[y];
+        }
+        (void)one;
+        for (int y = 0; y < V; y++) { int d = hd[y]; int miss = m - __builtin_popcountll(Acc[y] & ((1ULL << m) - 1)); tot[d] += miss; cnt[d]++; if (miss > worst[d]) worst[d] = miss; }
+    }
+    printf("DIAG H-distance: targets, missing sheets (total), mean per target, max\n");
+    for (int d = 0; d < 8; d++) if (cnt[d]) printf("DIAG d=%d targets %ld missing %ld mean %.4f max %ld\n", d, cnt[d], tot[d], (double)tot[d] / cnt[d], worst[d]);
+    free(hd); free(qu);
+}
+
 static void save(const char *fn, const char *gspec, long cost) {
     FILE *f = fopen(fn, "w");
     fprintf(f, "%d %d %d %d %ld\n%s\n", q, J, m, D, cost, gspec);
@@ -150,6 +189,7 @@ int main(int argc, char **argv) {
     int hzero = getenv("HZERO") && atoi(getenv("HZERO"));
     int mconst = getenv("MCONST") && atoi(getenv("MCONST"));
     int noswap = getenv("NOSWAP") && atoi(getenv("NOSWAP"));
+    int dm = getenv("DM") && atoi(getenv("DM"));   /* doubled matching: J parallel copies of sigma_1, voltages 1+3t, hexagon voltages in 3Z_m */
     int T[16] = {1, 2, 3, 4, 5, 6, 7, 8};
     if (getenv("T")) { char *p = getenv("T"), *e; for (int t = 0; t < J; t++) { T[t] = (int)strtol(p, &e, 10); p = e; } }
     Dg = Q1 + J;
@@ -167,49 +207,85 @@ int main(int argc, char **argv) {
     for (int i = 0; i < N * Q1; i++) hv[i] = hzero ? 0 : (int)(rnd() % m);
     if (getenv("IN") && !load(getenv("IN"))) { fprintf(stderr, "cannot load %s\n", getenv("IN")); return 1; }
     if (hzero) for (int i = 0; i < N * Q1; i++) hv[i] = 0;
+    if (dm) { if (m != 3 * J) { fprintf(stderr, "DM needs GROUP cyc 3J\n"); return 1; }
+        for (int t = 1; t < J; t++) for (int p = 0; p < N; p++) { sig[t * N + p] = sig[p]; sinv[t * N + sig[p]] = p; }
+        for (int t = 0; t < J; t++) for (int p = 0; p < N; p++) mv[t * N + p] = (1 + 3 * t) % m;
+        if (!getenv("IN")) for (int i = 0; i < N * Q1; i++) hv[i] = 3 * (int)(rnd() % J);
+        for (int i = 0; i < N * Q1; i++) if (hv[i] % 3) { fprintf(stderr, "DM: hexagon voltage not in 3Z\n"); return 1; } }
     if (mconst) for (int t = 0; t < J; t++) for (int p = 0; p < N; p++) mv[t * N + p] = T[t] % m;
     int SRC = getenv("SRC") ? atoi(getenv("SRC")) : 0;
-    long resample = getenv("RESAMPLE") ? atol(getenv("RESAMPLE")) : 1000;
+    long resample = getenv("RESAMPLE") ? atol(getenv("RESAMPLE")) : 2000;
+    double secs = getenv("SECS") ? atof(getenv("SECS")) : 1e18;
     srcs = malloc(sizeof(int) * V);
-    if (SRC <= 0 || SRC >= V) { nsrc = V; for (int i = 0; i < V; i++) srcs[i] = i; }
-    else { nsrc = SRC; for (int i = 0; i < nsrc; i++) srcs[i] = rnd() % V; }
+    int sampled = (SRC > 0 && SRC < V);
     double T0 = getenv("TEMP0") ? atof(getenv("TEMP0")) : 2.0, T1 = getenv("TEMP1") ? atof(getenv("TEMP1")) : 0.05;
-    long cur = total_cost(1L << 60), best = cur;
-    fprintf(stderr, "q=%d J=%d m=%d D=%d lift vertices %ld, sources %d, initial cost %ld\n", q, J, m, D, (long)V * m, nsrc, cur);
     char *out = getenv("OUT");
-    int nvar_h = hzero ? 0 : N * Q1, nvar_m = mconst ? 0 : J * N, nvar_s = noswap ? 0 : J * N;
+    /* full evaluation helper: also lists failing sources */
+    int *fail = malloc(sizeof(int) * V); int nfail = 0;
+    #define FULL_EVAL(res) do { build_adj(); long _c = 0; nfail = 0; \
+        for (int _i = 0; _i < V; _i += LANES) { int _ns = V - _i < LANES ? V - _i : LANES; int _ss[64]; \
+            for (int _k = 0; _k < _ns; _k++) _ss[_k] = _i + _k; \
+            for (int _k = 0; _k < _ns; _k++) { long _cc = group_cost(_ss + _k, 1, 1L << 60); if (_cc) { fail[nfail++] = _i + _k; _c += _cc; } } } \
+        (res) = _c; } while (0)
+    /* cheaper full evaluation (packed) when we do not need the failing list */
+    #define PACKED_FULL(res) do { int _sv = nsrc; int *_sp = srcs; static int *_all = 0; if (!_all) { _all = malloc(sizeof(int) * V); for (int _i = 0; _i < V; _i++) _all[_i] = _i; } \
+        srcs = _all; nsrc = V; (res) = total_cost(1L << 60); srcs = _sp; nsrc = _sv; } while (0)
+    long fullbest;
+    PACKED_FULL(fullbest);
+    if (!sampled) { nsrc = V; for (int i = 0; i < V; i++) srcs[i] = i; }
+    else { nsrc = SRC; for (int i = 0; i < nsrc; i++) srcs[i] = rnd() % V; }
+    long cur = total_cost(1L << 60), best = cur;
+    fprintf(stderr, "q=%d J=%d m=%d D=%d lift vertices %ld, sources %d, initial cost %ld (full %ld)\n", q, J, m, D, (long)V * m, nsrc, cur, fullbest);
+    if (out && iters > 0) save(out, gspec, fullbest);
+    int nvar_h = hzero ? 0 : N * Q1, nvar_m = (mconst || dm) ? 0 : J * N, nvar_s = noswap ? 0 : (dm ? N : J * N);
     long nv_tot = nvar_h + nvar_m + nvar_s;
-    for (long it = 0; it < iters && best > 0 && nv_tot > 0; it++) {
-        if (SRC > 0 && SRC < V && it % resample == 0 && it) {
-            for (int i = 0; i < nsrc; i++) srcs[i] = rnd() % V;
-            cur = total_cost(1L << 60);
+    struct timespec ts0; clock_gettime(CLOCK_MONOTONIC, &ts0);
+    for (long it = 0; it < iters && fullbest > 0 && nv_tot > 0; it++) {
+        if (sampled && ((it % resample == 0 && it) || cur == 0)) {
+            long fc; FULL_EVAL(fc);
+            if (fc < fullbest) { fullbest = fc; if (out) save(out, gspec, fullbest); fprintf(stderr, "it %ld full cost %ld (failing sources %d)\n", it, fc, nfail); }
+            if (fc == 0) { fullbest = 0; break; }
+            /* new sample: failing sources first, then random */
+            int k = 0; for (int i = 0; i < nfail && k < SRC; i++) srcs[k++] = fail[(i * 2654435761u) % nfail];
+            while (k < SRC) srcs[k++] = rnd() % V;
+            nsrc = SRC; cur = total_cost(1L << 60);
+            struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts);
+            if ((ts.tv_sec - ts0.tv_sec) + 1e-9 * (ts.tv_nsec - ts0.tv_nsec) > secs) break;
         }
+        if (!sampled && (it & 255) == 0) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts);
+            if ((ts.tv_sec - ts0.tv_sec) + 1e-9 * (ts.tv_nsec - ts0.tv_nsec) > secs) break; }
         double temp = T0 * pow(T1 / T0, (double)it / iters);
         long r = rnd() % nv_tot;
         int kind, a1 = 0, a2 = 0, old = 0, t = 0;
-        if (r < nvar_h) { kind = 0; a1 = r; old = hv[a1]; int nwv; do nwv = rnd() % m; while (nwv == old && m > 1); hv[a1] = nwv; }
+        if (r < nvar_h) { kind = 0; a1 = r; old = hv[a1]; int nwv;
+            if (dm) { if (J == 1) continue; do nwv = 3 * (int)(rnd() % J); while (nwv == old); }
+            else { do nwv = rnd() % m; while (nwv == old && m > 1); }
+            hv[a1] = nwv; }
         else if (r < nvar_h + nvar_m) { kind = 1; r -= nvar_h; t = r / N; a1 = r % N; old = mv[t * N + a1]; int nwv; do nwv = rnd() % m; while (nwv == old && m > 1); mv[t * N + a1] = nwv; }
         else { kind = 2; r -= nvar_h + nvar_m; t = r / N; a1 = r % N; a2 = rnd() % N; if (a1 == a2) continue;
-            int l1 = sig[t * N + a1], l2 = sig[t * N + a2]; sig[t * N + a1] = l2; sig[t * N + a2] = l1; sinv[t * N + l2] = a1; sinv[t * N + l1] = a2;
-            int v1 = mv[t * N + a1]; mv[t * N + a1] = mv[t * N + a2]; mv[t * N + a2] = v1; }
+            for (int tt = (dm ? 0 : t); tt <= (dm ? J - 1 : t); tt++) {
+            int l1 = sig[tt * N + a1], l2 = sig[tt * N + a2]; sig[tt * N + a1] = l2; sig[tt * N + a2] = l1; sinv[tt * N + l2] = a1; sinv[tt * N + l1] = a2;
+            int v1 = mv[tt * N + a1]; mv[tt * N + a1] = mv[tt * N + a2]; mv[tt * N + a2] = v1; } }
         double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
         long cap = cur + (long)(-temp * log(u + 1e-300));
         long nc = total_cost(cap);
         if (nc <= cap) {
             cur = nc;
-            if (cur < best) { best = cur; if (out) save(out, gspec, best);
-                fprintf(stderr, "it %ld temp %.3f best %ld\n", it, temp, best); }
+            if (!sampled && cur < fullbest) { fullbest = cur; if (out) save(out, gspec, fullbest); fprintf(stderr, "it %ld temp %.3f best %ld\n", it, temp, fullbest); }
+            if (sampled && cur < best) best = cur;
         } else {
             if (kind == 0) hv[a1] = old;
             else if (kind == 1) mv[t * N + a1] = old;
-            else { int l1 = sig[t * N + a1], l2 = sig[t * N + a2]; sig[t * N + a1] = l2; sig[t * N + a2] = l1; sinv[t * N + l2] = a1; sinv[t * N + l1] = a2;
-                int v1 = mv[t * N + a1]; mv[t * N + a1] = mv[t * N + a2]; mv[t * N + a2] = v1; }
+            else { for (int tt = (dm ? 0 : t); tt <= (dm ? J - 1 : t); tt++) {
+                int l1 = sig[tt * N + a1], l2 = sig[tt * N + a2]; sig[tt * N + a1] = l2; sig[tt * N + a2] = l1; sinv[tt * N + l2] = a1; sinv[tt * N + l1] = a2;
+                int v1 = mv[tt * N + a1]; mv[tt * N + a1] = mv[tt * N + a2]; mv[tt * N + a2] = v1; } }
         }
     }
-    /* final full check on all sources */
+    if (getenv("DIAG")) { diag_report(atoi(getenv("DIAG"))); return 0; }
+    /* final: full check on all sources of the best saved state is done by re-running with IN=OUT ITERS=0 */
     nsrc = V; for (int i = 0; i < V; i++) srcs[i] = i;
     long full = total_cost(1L << 60);
+    printf("RESULT q %d J %d m %d D %d vertices %ld best %ld fullcost_final_state %ld %s\n", q, J, m, D, (long)V * m, fullbest, full, full == 0 ? "DIAMETER_OK" : "");
     if (out && iters == 0) save(out, gspec, full);
-    printf("RESULT q %d J %d m %d D %d vertices %ld best %ld fullcost %ld %s\n", q, J, m, D, (long)V * m, best, full, full == 0 ? "DIAMETER_OK" : "");
     return 0;
 }
