@@ -1,0 +1,7 @@
+# Coordinator check, 2026-10-23 20:13 PDT, Mac mini. Own builder from the definition (not the theorem session's flags.py), plus the all-pairs checker.
+== python3 flags_pg43.py d16D5.e   # flag graph of PG(4,3): (W1<W3) ~ (W2<W4) iff W1<W2<W3<W4
+subspace counts {1: 121, 2: 1210, 3: 1210, 4: 121}; vertices 31460 edges 251680
+n=31460 edges=251680 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=31460
+   with D-1:
+RESULT INVALID
