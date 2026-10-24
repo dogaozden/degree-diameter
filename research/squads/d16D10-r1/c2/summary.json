@@ -1,0 +1,72 @@
+{
+ "n1": {
+  "group": "sl 239 x Z_1",
+  "N": 13651680,
+  "mu": 20.49,
+  "seeds": 2,
+  "solved": 0,
+  "median_evals_eff": 6363.0,
+  "E18": 3661.7,
+  "best_cost": [
+   1,
+   6
+  ],
+  "evals": [
+   2457,
+   1785
+  ]
+ },
+ "small": {
+  "group": "sl 101 x Z_13",
+  "N": 13392600,
+  "mu": 15.51,
+  "seeds": 3,
+  "solved": 3,
+  "median_evals_eff": 249,
+  "E18": 433.4,
+  "best_cost": [
+   0,
+   0,
+   0
+  ],
+  "evals": [
+   25,
+   249,
+   433
+  ]
+ },
+ "medium": {
+  "group": "sl 53 x Z_91",
+  "N": 13542984,
+  "mu": 18.25,
+  "seeds": 2,
+  "solved": 0,
+  "median_evals_eff": 9219.0,
+  "E18": 8721.3,
+  "best_cost": [
+   1,
+   3
+  ],
+  "evals": [
+   3641,
+   2505
+  ]
+ },
+ "large": {
+  "group": "sl 41 x Z_199",
+  "N": 13707120,
+  "mu": 21.72,
+  "seeds": 2,
+  "solved": 1,
+  "median_evals_eff": 8026.0,
+  "E18": 3514.4,
+  "best_cost": [
+   3,
+   0
+  ],
+  "evals": [
+   3217,
+   6401
+  ]
+ }
+}

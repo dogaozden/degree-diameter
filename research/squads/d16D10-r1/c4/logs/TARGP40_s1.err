@@ -1,0 +1,7 @@
+group sl 53 x Z_91, N=13542984, identity 250796, H order 63, rows 214968, threads 1, setup 1.53s
+wide rows: HW order 234, rows 57876, setup 3.15s
+alpha: conj by mat(24,10,30,28) (index 67923), z -> 9 z on Z_91
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 53 (+e); mu = 18.25, mu/k = 6.08, fixed-point misses ~ 0.60
+start cost=16
+t=30 steps=48 evals=385 cost=13 best=3 T=0.53
+t=60 steps=95 evals=761 cost=3 best=3 T=0.18
