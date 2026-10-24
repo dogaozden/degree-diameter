@@ -272,7 +272,8 @@ the 24 worked cases of `out/rule_table.txt`, each with its observed outcome.
 
 The principled form of the twisted-cycle term is the generating-function charge Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats,
 with n* = R_j e^{−μ_A⁰λc_j} cycles left in a solution (§3.1). rule.py prints both forms. The n* half is confirmed on
-all six solutions. The nats half is not: in effort terms it over-predicts the two (6,8) solves (last item below).
+all six solutions. The charge (nats) half is confirmed by the four-way test at (6,8) (§5.4): it gets the ranking right
+where the uncharged rule gets it backwards.
 
 In words:
 
@@ -293,9 +294,10 @@ How well it predicts (`out/rule_table.txt`):
 - Every even-D k = 2 failure outside (6,8) gets μ_A 1.8–3.2 times the order-3 value at the same cell and order:
   (6,10), (7,8), (8,8), (9,8).
 - The order-6 runs at (13,8) are predicted to within their scatter.
-- At (6,8) the rule over-predicts the effort of the two solves. With the 12-cycle penalty it predicts
-  1.4·10⁷ and 4.7·10⁶ evaluations, against 3.3·10⁵ and 2.1·10⁶. Without the penalty it predicts 1.0·10⁶ and
-  4.4·10⁵. So the long-cycle term is real on SL(2,25) (§3.1) but too small to see in two runs.
+- At (6,8) the four-way test (§5.4, 24 runs) ranks the symmetries exactly as the charged rule does:
+  Frobenius 5/6, conjugation 2/6, r = 11 2/6, r = 23 0/6. The uncharged rule ranks Frobenius last.
+  - Absolute efforts are within the usual factor of 5 for Frobenius (median about 4·10⁵ against 6·10⁶ predicted).
+  - For conjugation, the solved seeds took 10⁵–10⁶ evaluations, and the median is above 3.7·10⁶.
 
 ### 4.1 Choosing a symmetry: a checklist for future searches
 
@@ -470,6 +472,32 @@ involutions and order-3 elements in Fix(α); BEYOND_RANDOM §1.4). haar_order2 i
 | (10,8) open | SL(2,16)×Z146 and ×Z149, the same | 595,680 / 607,920 | 71 / 87 | – | 220–494 | dead |
 | (10,8) open | PSL(2,23)×Z97, conjugation order 3 (STRUCTURE's attempt) | 588,984 | 63.5 | 22 | 36, 78 (26) | best 12 in STRUCTURE |
 
+### 5.4 The direct test at (6,8): which involution, and does the twisted-cycle charge count?
+
+Four order-2 symmetries at (6,8), 6 seeds each, 150 s per seed (`runs/d68_compare.sh`, logs in `runs/d68/`,
+`d68_summary.py` → `out/d68_summary.txt`; every solution VALID by `check_np.py`,
+`checks/d68_compare_solutions.check_np.txt`). The two columns of rule predictions differ only in the twisted-cycle
+term. "μ_A⁰" is without it, and "+ charge" adds the generating-function charge Σ R_j(1 − e^{−μ_A⁰λc_j}) of §3.1
+(`out/rule_table.txt`, column gfnat). PSL(2,11)×Z24 evaluates about 3.3× faster than SL(2,25) (wide rows), so in
+150 s it gets about 12M evaluations against 3.7M, worth about 2.4 nats of μ_A by the effort law.
+
+| symmetry | ρ | \|Fix\| | μ_A⁰ | μ_A⁰ + charge | solved in 150 s | evaluations to solve | best of the unsolved |
+|---|---|---|---|---|---|---|---|
+| SL(2,25), Frobenius x ↦ x⁵ | 1/120 | 120 | 20.2 | **22.0** | **5/6** | 0.13, 0.29, 0.42, 0.49, 2.4 M | 4 |
+| SL(2,25), conjugation (trace 0) | 1/24 | 24 | **16.0** | 23.8 | 2/6 | 0.07, 0.36 M | 2, 1, 2, 2 |
+| PSL(2,11)×Z24, conjugation, z ↦ 11z | 1/23.6 | 24 | 17.7 | 25.9 (≈ 23.5 per second) | 2/6 | 0.46, 0.68 M | 2, 3, 2, 2 |
+| PSL(2,11)×Z24, conjugation, z ↦ 23z | 1/11.8 | 24 | 17.7 | 34.2 | 0/6 | – | 11, 6, 11, 11, 12, 11 |
+
+- **The ranking is the charged one.** Frobenius first, then conjugation and r = 11 together, with r = 23 far behind.
+  Without the charge, conjugation should have been easiest (lowest μ_A⁰) and Frobenius hardest: its 120 fixed points
+  cost 5 nats more. The opposite happened, 5/6 against 2/6 on the same group with the same budget.
+- So at Δ = 6 the twisted cycles of a small-centralizer involution cost real effort, although no solution contains a
+  short one. The cost is the avoidance itself (the search must find S in a 4 % class) plus the long cycles.
+- The Z_n choice matters as predicted: r = 23 doubles ρ and never solves, while r = 11 does.
+- This settles the open item of §4. The rule with the charge predicts the effort ranking. The two earlier (6,8) solves
+  that looked too fast were early draws: here r = 11 solved 2 of 6 seeds, in 0.46M and 0.68M evaluations, and
+  stalled at 2–3 in the other four after 12M.
+
 ### 5.3 Where else order 2, or another even order, should win
 
 By the rule, an even order beats order 3 only if both of these hold:
@@ -525,11 +553,14 @@ Going through the table:
 4. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
    4.7·10³–3.7·10⁴ evaluations, against 1.7·10⁵ for order 3 (§5.1).
 5. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly.
+6. At (6,8) the involution's twisted-cycle charge decides which order-2 symmetry works. Frobenius on SL(2,25)
+   (ρ = 1/120) solved 5 of 6 seeds, conjugation (ρ = 1/24) 2 of 6, and r = 23 on PSL(2,11)×Z24 (ρ = 1/12) 0 of 6, all
+   in equal time (§5.4). This is the order the corrected rule predicts, and the reverse of the uncharged one.
 
 **Weak patterns**
 1. The long-cycle factor exp(λΣR_j c_j): about right on SL(2,25) (1.55 measured against 1.30). On PSL(2,11)×Z24 the
    symmetric best class beats random S, against the prediction. Its random baseline has an unusual excess (ε ≈ 2.7).
-2. The effort of the (6,8) solves (two runs) is better than the rule's penalised prediction by 2–40×.
+2. (moved up: the (6,8) effort ranking is now item 6 of the strong evidence.)
 3. σ-palindromic words reduce the Anti penalty at odd D, more for Frobenius than for conjugation (§3.2).
 4. The twisted 12-cycle count is overdispersed (sd ≈ 3 × Poisson), and the record sets sit about 1 sd below its mean.
 
