@@ -1,3 +1,10 @@
 group sl 11 x Z_12, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.00s
 start cost=1322
 t=30 steps=1136962 evals=1136963 cost=528 best=528 T=0.53
+t=60 steps=2273150 evals=2273151 cost=528 best=528 T=0.19
+t=90 steps=3415739 evals=3415740 cost=528 best=528 T=0.15
+t=120 steps=4552632 evals=4552633 cost=528 best=528 T=0.15
+t=150 steps=5642489 evals=5642490 cost=528 best=528 T=0.15
+t=180 steps=6771448 evals=6771449 cost=484 best=484 T=0.58
+t=210 steps=7935147 evals=7935148 cost=484 best=484 T=0.20
+RESULT d=16 D=5 group=sl 11 x Z_12 N=15840 best=484 evals=9080244 time=240.0

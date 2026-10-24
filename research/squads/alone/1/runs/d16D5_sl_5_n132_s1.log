@@ -1,3 +1,10 @@
 group sl 5 x Z_132, N=15840, identity 2640, H order 60, rows 264, threads 1, setup 0.00s
 start cost=1524
 t=30 steps=1207432 evals=1207433 cost=584 best=584 T=0.53
+t=60 steps=2362773 evals=2362774 cost=584 best=584 T=0.19
+t=90 steps=3545031 evals=3545032 cost=584 best=584 T=0.15
+t=120 steps=4725880 evals=4725881 cost=584 best=584 T=0.15
+t=150 steps=5891409 evals=5891410 cost=584 best=584 T=0.15
+t=180 steps=7054095 evals=7054096 cost=584 best=584 T=1.37
+t=210 steps=8260897 evals=8260898 cost=576 best=576 T=0.48
+RESULT d=16 D=5 group=sl 5 x Z_132 N=15840 best=576 evals=9479105 time=240.0
