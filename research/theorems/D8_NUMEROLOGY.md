@@ -79,14 +79,19 @@ point–line pairs are the binding case. Everything else (the "conditional" walk
 things. Unreached targets found by liftdiam in random lifts (`unreached_profile.py`) are exactly where this table
 predicts: point–line pairs at H-distance 5 (zero holonomy) and 3 or 5 (random holonomy).
 
-**Counting consequence (zero holonomy, guaranteed walks only, one matching).** If every line through a point has a
-different label and every point on a line has a different label ("regular" labelling), the guaranteed walks alone
-can cover Z_M for every point–line pair only if M ≤ q + 4 (q ≥ 3). Proof sketch: a label g is reached from every
-point only if label −g sits on lines through all points, which needs about P/(q+1) lines of that label (P = number
-of points); the labels on points and lines are the same multiset, and only the term t(x) + l(y) can repair a pair
-missed on both sides; adding up gives (M − 1)·q/(q+1) ≤ q + 2. The same count for two matchings gives about
-2q + 15, which is below DGQ's 2.5q + 12.5 for q ≥ 7: DGQ's construction cannot be "zero holonomy plus guaranteed
-walks"; it must use holonomy on H(q) or walks that only exist because of how the matchings are placed.
+**Counting consequence (zero holonomy, guaranteed walks only, one matching).** Call a labelling *regular* if the
+lines through any point carry pairwise different labels and so do the points on any line. If the guaranteed walks
+alone cover Z_M for every point–line pair of a regular labelling, then M ≤ q + 4 (q ≥ 3). Proof: lines with the same
+label are pairwise non-concurrent, so every label occurs on at most P/(q+1) lines (P = number of points). A label g
+is missed at x by the x-side terms {t(x)} ∪ −l(lines on x) unless t(x) = g or a line on x has label −g; so the
+number of points missing g on that side is at least P − n_g − (q+1)n_{−g} (n_v = number of points, equivalently
+lines, with label v), and the same for lines. If both a point x and a line y miss g, the only remaining walk is
+t(x) + l(y) = g, which forces all such x to share one label and all such y to share one label; so either every point
+or every line covers g, or n_g + (q+1)n_{−g} ≥ qP/(q+1). Summing over the M − 1 nonzero g (Σ_g (n_g + (q+1)n_{−g}) =
+(q+2)P) gives (M − 1)·q/(q+1) ≤ q + 2. For labellings that are not regular (the extreme being constant labels, the
+n+2 cover with M = 4) the count does not apply as stated. The same heuristic count for two matchings gives roughly
+2q + 15 (about 29 at q = 7, 41 at q = 13), a little below DGQ's 2.5q + 12.5; this suggests, but does not prove, that
+DGQ's construction uses holonomy on H(q) or walks that exist only because of where the matchings are placed.
 
 ### 1.3 A spectral obstruction to the tight designs (`spectrum_check.py` → `spectrum_check_out.txt`)
 
@@ -149,6 +154,15 @@ against DGQ's 30. The gap grows with q, so DGQ used a structure valid for all q.
 
 ## 3. Weak patterns
 
+- **V + E.** For odd q the j = 2 value is exactly |V(X)| + |E(X)|, where X is DGQ's own diameter-7 graph at the same
+  degree, the Z_5 polygon cover of H(q) (5·|GH(q)| vertices, degree q + 3): 5|GH|(1 + (q+3)/2) = 5|GH|(q+5)/2. For
+  q = 8 it is |V(X)|(1 + ⌊Δ/2⌋). Equivalently N/5 = 2·|GH(q)| + (number of arcs of an Eulerian orientation of the
+  incidence graph, after removing a 1-factor when q is even): two extra "states" per element plus one per out-arc.
+  Where the table uses the same q at D = 7 and D = 8 the ratio is exactly 7, 8, 9 = 1 + Δ/2 at Δ = 12, 14, 16. But
+  (13,8)/(13,7) = 5, not 1 + ⌊13/2⌋ = 7, so the j = 1 cell does not follow the pattern. A degree-preserving operation
+  "diameter D → D + 1 with |V| + |E| vertices" cannot exist in general (applied to H(q) itself it would give (q+1, 7)
+  graphs at half the Moore bound); the line-digraph test above fails.
+
 - (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction that adds 4q³ − 2
   vertices to H(q) at the same degree. Not reproduced.
 - (4,8) = 2,184 = 3·|GH(3)| = 2·|PSL(2,13)| (a Loz cell): almost certainly a coincidence (a Z_3-lift of H(3) alone
@@ -160,7 +174,8 @@ against DGQ's 30. The gap grows with q, so DGQ used a structure valid for all q.
 | idea | test | result |
 |---|---|---|
 | random voltage lifts, 12 variants (free, holo, polygon-cover, parallel 1-/2-factors, tripled flags, doubled hops, Z_5 × Z_k) | models.py, models5k.py, models_j1.py | §2.3: far below DGQ for q ≥ 4 |
-| zero-holonomy designs using only guaranteed walks | gwanneal.c (annealing on the guaranteed-walk cost) | j = 1 stuck at M = q + 1 at q = 3; §1.3 explains |
+| zero-holonomy designs using only guaranteed walks | gwanneal.c (annealing on the guaranteed-walk cost) | j = 1 stuck at M = q + 1 at q = 3. Weak evidence: for j = 2 the same annealer does not even find the known M = 10 constant-label solution at q = 3 (cost 43), so the landscape is rugged |
+| line digraph of an Eulerian orientation (diameter +1 for digraphs) | linegraph_test.py, ulg_gh.py | for the Z_5 cover of H(3) (|E| = 10,920 vertices, degree 6) and for H(3), H(5) themselves the undirected line digraph of a random Eulerian orientation has diameter 10, not 8 |
 | Delorme doubling of H(q) with diameter relaxed to 8 | §2 of the analysis | the degree conditions keep A_0 of size O(q^4): gains lower-order terms only |
 | Z_5 polygon cover of a diameter-7 base | count | the base would need 86% of the D = 7 Moore bound at q = 7 |
 | star products with a degree-2 factor | count | at most 5 copies (C_5) |
