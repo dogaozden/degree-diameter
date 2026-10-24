@@ -1,0 +1,8 @@
+group sl 16 poly x^4+x+1 x Z_31, N=126480, identity 7440, H order 62, rows 2040, threads 1, setup 0.01s
+wide rows: HW order 155, rows 816, setup 0.02s
+alpha: conj by mat(10,4,4,11) (index 2612), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 14 (+e); mu = 19.36, mu/k = 6.45, fixed-point misses ~ 1.60
+start cost=132
+RESULT d=11 D=7 group=sl 16 poly x^4+x+1 x Z_31 N=126480 best=0 evals=36969 time=6.5 orbit k=3 m=3 f=2 fix=14
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/1875b87c-6e2f-50f4-8dda-46afc7cbd0f2/scratchpad/h/ladder/d11_sl16_31.txt

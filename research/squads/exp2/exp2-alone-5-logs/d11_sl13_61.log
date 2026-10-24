@@ -1,0 +1,10 @@
+group sl 13 x Z_61, N=133224, identity 9516, H order 61, rows 2184, threads 1, setup 0.02s
+wide rows: HW order 244, rows 546, setup 0.03s
+alpha: conj by mat(3,8,0,9) (index 598), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 11 (+e); mu = 31.80, mu/k = 10.60, fixed-point misses ~ 1.49
+start cost=270
+t=30 steps=29917 evals=239337 cost=6 best=6 T=0.53
+t=60 steps=62136 evals=497089 cost=6 best=6 T=0.19
+RESULT d=11 D=7 group=sl 13 x Z_61 N=133224 best=0 evals=548817 time=65.7 orbit k=3 m=3 f=2 fix=11
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/1875b87c-6e2f-50f4-8dda-46afc7cbd0f2/scratchpad/h/ladder/d11_sl13_61.txt
