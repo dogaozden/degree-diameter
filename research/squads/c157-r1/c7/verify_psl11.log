@@ -1,0 +1,11 @@
+PSL(11) m=660 N=962280 simple=True symmetric=True
+  after 1 sources: max ecc 7, 0.4s
+  after 10 sources: max ecc 7, 4.0s
+  after 100 sources: max ecc 7, 36.2s
+  after 400 sources: max ecc 7, 112.7s
+  after 800 sources: max ecc 7, 214.0s
+  after 1200 sources: max ecc 7, 344.0s
+  after 1458 sources: max ecc 7, 421.7s
+BFS sources=1458 (full): max eccentricity 7, all reached True, 421.7s
+RESULT PASS N=962280
+EXIT 0

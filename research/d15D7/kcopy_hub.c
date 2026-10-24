@@ -20,6 +20,7 @@
 
    Usage:
      kcopy_hub check HEXBIN SOL k          BFS from freed sources and hubs (exact, fast)
+     kcopy_hub checkf HEXBIN SOL k         BFS from freed sources only, far-pair counts (for search checkpoints)
      kcopy_hub full  HEXBIN SOL k [T]      bit-parallel BFS from every copy-0 vertex and every hub (T threads)
      kcopy_hub edges HEXBIN SOL k OUT      write "n" then "u v" edges (for apsp.c / apsp_sym.c)              */
 #include <stdio.h>
@@ -147,6 +148,15 @@ int main(int argc, char **argv) {
     if (argc < 5) { fprintf(stderr, "usage: see header\n"); return 1; }
     load(argv[2]); k = atoi(argv[4]); read_sol(argv[3]);
     int Delta = q + 1 + k;
+    if (!strcmp(argv[1], "checkf")) {   /* freed sources only (hubs reach everything whatever M is), with far-pair counts */
+        uint8_t *dist = malloc(NV); int *que = malloc(sizeof(int) * NV); long tot = 0; int badsrc = 0;
+        for (int a = 0; a < K; a++) for (int s = 0; s < 2; s++) {
+            int v = s == 0 ? VP(F[a], 0) : VL(M[F[a]], 0); long b; bfs_ecc(v, dist, que, &b);
+            if (b) { badsrc++; tot += b; printf("flag %d %s: %ld far\n", a, s ? "line" : "point", b); }
+        }
+        printf("checkf q=%d k=%d K=%d n=%d: bad freed sources %d, far pairs %ld -> %s\n", q, k, K, NV, badsrc, tot, tot ? "FAIL" : "OK");
+        return 0;
+    }
     if (!strcmp(argv[1], "check")) {
         int md; long m; basic_stats(&md, &m);
         printf("q=%d k=%d copies=%d K=%d hubedges=%d n=%d edges=%ld maxdeg=%d (Delta %d)\n", q, k, r, K, HGm, NV, m, md, Delta);

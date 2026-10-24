@@ -364,7 +364,7 @@ static long fast_search(double maxsec) {
                     for (int a = 0; a < noppA[kk]; a++) if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     for (int a = 0; a < noppB[kk]; a++) if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
-                if (zeros < lastchk && (zeros * 4 <= lastchk * 3 || zeros < 20)) {   /* exact BFS check of all freed sources (geometric schedule; cell-15-7) */
+                if (!getenv("NOTRUE") && zeros < lastchk && (zeros * 4 <= lastchk * 3 || zeros < 20)) {   /* NOTRUE: stop only at proxy 0 (valid for any number of copies) */   /* exact BFS check of all freed sources (geometric schedule; cell-15-7) */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
@@ -402,7 +402,12 @@ static long fast_search(double maxsec) {
         }
         if (bu < 0) continue;
         if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) swapM(bu, bw);
-        if (zeros < best) best = zeros;
+        if (zeros < best) {
+            best = zeros;
+            /* checkpoint the current M when the proxy reaches a new low below 2000 (cell-15-7) */
+            static long lastw = 1L << 40; static time_t lastt = 0; const char *ck = getenv("CKPT");
+            if (ck && zeros < 2000 && (zeros * 10 <= lastw * 9 || zeros < 50) && time(NULL) - lastt >= 20) { write_sol(ck); lastw = zeros; lastt = time(NULL); }
+        }
     }
     fprintf(stderr, "fast search done: it %ld proxy %ld (%.1fs)\n", it, zeros, (double)(clock() - t0) / CLOCKS_PER_SEC);
     return zeros;
@@ -661,6 +666,6 @@ int main(int argc, char **argv) {
         printf("RESULT q=%d K=%d n=%d maxdeg=%d diameter=%d badsources=%d %s\n", q, K, NV, maxdeg, diam, bad,
                (bad == 0 && diam <= 7 && maxdeg <= q + 2) ? "VALID" : "INVALID");
         if (out && bad == 0 && diam <= 7) write_sol(out);
-    } else printf("RESULT q=%d K=%d unsolved cost %d\n", q, K, cost);
+    } else { printf("RESULT q=%d K=%d unsolved cost %d\n", q, K, cost); if (out) write_sol(out); }
     return 0;
 }
