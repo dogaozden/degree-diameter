@@ -32,12 +32,13 @@ Cards (folder research/squads/exp2/r2/):
 - c4: conflict geometry: over the 12 relative positions of two flags, |S′∩S′| and |S∩S| are constant per position;
   opposite flags (2/3 of all pairs) are pairwise compatible, but a K = 24 layout of pairwise-opposite flags starts with
   as many conflicts as a random one (the mismatch is K-wise, not pairwise). Run killed at proxy 74.
-- c5: (9,7) with K = 21 (PG(2,4)) → not finished in its time box.
+- c5: (9,7) with K = 21 (PG(2,4)) → not finished (timeout at proxy 4,151).
 - c6: (11,7) with K = 7 (Fano hub graph) → VALID 398,594 (below Opus's 398,606, found meanwhile with K = 13).
-- c7: proxy with two-down routes → no report in the time box.
+- c7: proxy with two-down routes (p,0)>(l,0)>(y,−1)>(l2,−1)>(y2,1)>x, incremental and checked against full recounts →
+  K = 24 solves 1.25× faster (236 s vs 296 s CPU, 2 seeds); its solutions are VALID 23,484 (matching Opus's run).
 - c8: super-hubs → a super-hub is valid iff its own eccentricity is ≤ 7, but its freed points must radius-4-cover all
   points; the K = 13 layout cannot (best 7 cover 3,720 of 3,906). No valid graph.
-Round result: nothing new beat the bests. The limiting factor was the machine: 8 cards plus Opus's runs on 4 cores, with
+Round result: nothing beat the bests (c7 matched 23,484 and gave a 1.25× faster proxy). The limiting factor was the machine: 8 cards plus Opus's runs on 4 cores, with
 wall-clock timeouts on CPU-time budgets. Meanwhile Opus (static hub-graph coverage, priority set per run) reached
 (7,7) 23,484 (K = 24) and (11,7) 398,606 (K = 13). Two rounds without a new best from the cards: no round 3; Opus
 continues the K push alone.

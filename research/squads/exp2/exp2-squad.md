@@ -76,7 +76,27 @@ Times are UTC on 2026-10-24 (start 16:56).
 
 ## The squad
 
-SQUAD
+Two rounds of 8 Haiku cards each (full entries in research/squads/LOG.md; folders r1/, r2/; scoreboards
+r1/scoreboard.jsonl, r2/scoreboard.jsonl). Opus wrote the cards, the shared tool (d7hex) and the scorer instructions;
+every Haiku "VALID" was rebuilt and re-checked with apsp by Opus before it was recorded.
+
+What the squad contributed:
+- **Two records at the time** (round 1): c2 found that random sparse hub graphs carry more pairs than PG(2,3)
+  (K = 18, (7,7) **23,472**), and c3 ran (9,7) with K = 13 (**117,674**, still the best (9,7) of this job).
+- **Ideas that Opus built on**: c5's hub-route proxy terms led to the static hub-graph coverage (4.5× faster search);
+  c8 worked out when a super-hub is valid (own eccentricity ≤ 7, freed points must radius-4-cover a side), which
+  Opus implemented; c4 tabulated the pairwise geometry of freed flags (opposite flags are pairwise compatible, but
+  this does not reduce the K-wise conflicts).
+- **Useful negatives**: per-level matchings give nothing (c7); four copies are hopeless (c8, round 1); hubs need a
+  neighbour in every level (c7).
+- **What limited it**: CPU. Eight cards plus Opus's own runs shared 4 cores; with Linux autogroup scheduling `nice`
+  did not protect anyone, and wall-clock timeouts killed most round-2 searches before they finished (CPU-time budgets
+  vs. wall-clock limits, a mistake in the round-2 brief). Round 2 produced no new best, so there was no round 3.
+- Haiku cost was small: HAIKU_UNITS budget units of the total (the Opus session itself was the main cost).
+
+An honest comparison: the method (the decoding of the table, the any-matching lemma, hubs, the algebraic cover, the
+fast proxy search) came from Opus. The squad's main value was parallel configuration runs early on (two records) and
+two analyses that sharpened later work; once the search was CPU-bound, more cards mostly meant more contention.
 
 ## Limits and honest notes
 
