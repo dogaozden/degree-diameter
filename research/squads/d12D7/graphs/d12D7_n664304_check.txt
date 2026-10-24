@@ -1,0 +1,26 @@
+(12,7) bipartite graph on 664,304 vertices, job cell-12-7, 2026-10-24 (Opus session, branch claude/cell-12-7-search-k69h02)
+
+Construction (build_d12D7_n664304.py): polygon cover H(9) x Z5 with two matchings s1, s2 (voltages 1, 2) = the table's
+664,300 construction; at the point X = 0 delete its 10 hop edges (X,c)~(s_t(X),c+t); add W1, W2 adjacent to (X,c) for
+all c and W1', W2' adjacent to (s1(X),c), resp. (s2(X),c), for all c. Matchings: random bijections repaired by
+opus/gadget.c (seed 1) so that X, s1(X), s2(X) reach everything without X's hops. Files: d12D7_n664304.edges.gz
+(canonical sorted edge list), d12D7_n664304.match.gz (s1, s2), build_d12D7_n664304.py (rebuild from the definition).
+
+sha256 of the canonical sorted edge list (uncompressed): 2eb631995dda1901178b9c425e007d7c1bacfe32b294b00dee0073b45ee12831
+(gadget.c's own unsorted output: 2dc8473871aece7fcdb9f3108492c8684767806411bb910045cc14ffec7fe3ad, same edge set)
+
+1. Rebuild from the definition (python3 build_d12D7_n664304.py OUT):
+   n=664304 edges=3985810 max degree 12; sha256 2eb63199...2831; matches the recorded graph
+
+2. gadget.c (construction program): BFS from the 15 special vertices (X, s1(X), s2(X) in each copy) and the 4 new
+   vertices, the only vertices whose pairs can have lost the cover theorem's routes:
+   RESULT special+gadget sources 19, max ecc 7, bad pairs 0, N 664304
+
+3. symcheck.c (independent of the construction; reads only the edge list; 3 threads):
+   n=664304 edges=3985810 max degree=12 bipartite=yes connected=yes
+   shift by one copy (M=5, 664300 cover vertices, 4 extra vertices fixed): 0 edges not mapped to edges
+   sources 132864 (one per shift orbit), max eccentricity 7, pairs beyond D=7: 0
+   RESULT VALID d=12 D=7 n=664304 (diameter 7)
+
+4. apsp.c (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry): running at the time of writing; result
+   appended below when it finishes.
