@@ -1,0 +1,70 @@
+baseline flag graph (31460 vertices): defect 63040 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 0: defect 88368 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 1: defect 89866 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 2: defect 89918 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 3: defect 89304 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 4: defect 88036 n 31581 m 251680 maxdeg 16 sources 261 D 5
+random trial 5: defect 89990 n 31581 m 251680 maxdeg 16 sources 261 D 5
+sa start defect=89608 limit=240.0s
+  it 4 t=1s best defect 89408
+  it 5 t=1s best defect 88960
+  it 9 t=2s best defect 88462
+  it 10 t=2s best defect 88378
+  it 11 t=3s best defect 88074
+  it 13 t=3s best defect 87480
+  it 16 t=4s best defect 87450
+  it 20 t=5s best defect 87434
+  it 27 t=6s best defect 87178
+  it 28 t=6s best defect 86952
+  it 33 t=7s best defect 86912
+  it 36 t=8s best defect 86756
+  it 51 t=11s best defect 86582
+  it 56 t=12s best defect 85964
+  it 60 t=13s best defect 85928
+  it 65 t=13s best defect 85856
+  it 67 t=14s best defect 85736
+  it 80 t=16s best defect 85626
+  it 82 t=16s best defect 85504
+  it 112 t=23s best defect 85414
+  it 117 t=24s best defect 85312
+  it 122 t=25s best defect 85138
+  it 125 t=26s best defect 84792
+  it 132 t=27s best defect 84546
+  it 139 t=29s best defect 84544
+  it 143 t=29s best defect 84502
+  it 178 t=38s best defect 84376
+  it 181 t=38s best defect 84274
+  it 197 t=41s best defect 83948
+  it 201 t=42s best defect 83610
+  it 206 t=43s best defect 83514
+  it 215 t=46s best defect 82924
+  it 220 t=47s best defect 82466
+  it 249 t=53s best defect 82334
+  it 252 t=53s best defect 82228
+  it 287 t=59s best defect 82046
+  it 348 t=66s best defect 81748
+  it 358 t=67s best defect 81456
+  it 359 t=67s best defect 81430
+  it 372 t=69s best defect 81364
+  it 412 t=74s best defect 81072
+  it 467 t=81s best defect 80994
+  it 468 t=81s best defect 80908
+  it 502 t=85s best defect 80612
+  it 504 t=85s best defect 80520
+  it 555 t=91s best defect 80472
+  it 576 t=94s best defect 80322
+  it 681 t=107s best defect 80060
+  it 833 t=125s best defect 79950
+  it 839 t=126s best defect 79838
+  it 874 t=130s best defect 79668
+  it 942 t=138s best defect 79398
+  it 1032 t=149s best defect 79306
+  it 1039 t=150s best defect 78966
+  it 1136 t=161s best defect 78674
+  it 1200 t=168s best defect 78406
+  it 1238 t=173s best defect 78342
+  it 1369 t=188s best defect 78320
+  it 1383 t=189s best defect 78314
+  it 1518 t=206s best defect 78134
+  it 1601 t=215s best defect 77844
+sa end: iterations=1801 best defect=77844 moves=[(65, 0, 117), (91, 13, 102), (79, 15, 62), (129, 13, 16), (1, 4, 117), (11, 8, 40), (90, 10, 11), (28, 5, 79), (2, 1, 13), (120, 0, 65), (17, 6, 88), (24, 13, 58), (3, 1, 56), (55, 0, 17), (104, 0, 48), (0, 6, 3)]

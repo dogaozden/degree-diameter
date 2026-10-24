@@ -68,10 +68,27 @@ m ≤ 108 always (108 nonbacktracking walks of length 4 per vertex).
 - **Check:** `build_lift.py "meta 7 6 2" "0 1 7 14" chart_u1.json` → 21,504 vertices; apsp.c (all pairs, no
   symmetry): 16-regular, bipartite, diameter 5, RESULT VALID. Below the target, but it validates the pipeline.
 
+- **More orbits help** (squad round 1 and `mlift.c`, which anneals the voltages of any base multigraph read from a
+  file). A k-orbit controller is a voltage lift of a 4-regular bipartite base multigraph on k + k vertices by a
+  group of order m/k. Largest perfect controllers found: k = 1 (Haar) m = 42; k = 2 m = 48 (Z₂₄, Z₆⋊Z₄); k = 3
+  **m = 54** (K₃,₃ plus a doubled matching, Z₁₈; lift 27,648 vertices, apsp VALID d=16 D=5, checked twice). Floors
+  at m ≥ 62: 2 (Haar, m = 63), 8 (k = 2, Z₃₁, exhaustive), 6 (k = 3, m = 63). About 500 group tables (metacyclic,
+  non-metacyclic of order 62–108, non-split metacyclic) give no perfect Haar controller above m = 42.
+- The lift is also not competitive in other cells: 3-regular controllers (degree 3q) are perfect only up to m = 12,
+  giving 1,944 / 6,144 / 15,000 at (9,5) / (12,5) / (15,5) against 2,662 / 8,200 / 20,496.
+
 Why it is hard to push: the lift is K₄,₄-structured (each controller edge bundle is a union of K₄,₄'s, each vertex
 in 4 of them), the same local structure as the flag graph. For K₄,₄-structured graphs of diameter 5 a counting bound
 gives at most 33,145 vertices per side. The flag graph reaches 47.5 % of it; a controller lift needs m ≥ 62, i.e.
 57 % of its own bound 108·256, while the best controllers found reach 39 %.
+
+## 3. Other routes tested and dropped
+
+| idea | test | result |
+|---|---|---|
+| quotients of the Lazebnik–Ustimenko graph D(4,16) (16-regular, 2·16⁴ vertices) | `lu_graphs.py`, `lu_ball.py` | last-coordinate quotients cover D(3,16), whose diameter is 6 (also q = 4, 5, 7, 8); a same-side 4-ball of D(4,16) holds 25,666 of 65,536, under half, so no involution quotient (65,536 vertices) can have diameter 5 |
+| Singer-invariant surgery of the flag graph: add the 121 solids as a new orbit, rewire 16 edge orbits (31,581 vertices) | squad r1 card 8 | ≥ 77,844 pairs beyond distance 5; removing one edge orbit alone breaks 1,098 pairs per vertex |
+| abelian Haar graphs | counting | same-side words s₁+s₂−s₃−s₄ give at most ≈ 18,700 elements for \|S\| = 16, so a cover above 15,730 would need a near-perfect order-4 difference basis; random S are far from it |
 
 ## Notes on what was ruled out before this run (theorem-search, REGULARITIES.md §1.2)
 

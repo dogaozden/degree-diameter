@@ -24,7 +24,8 @@ Cards (folders research/squads/r1-165/c1..c8):
 Outcomes (cost = uncovered elements or pairs; 0 = perfect controller):
 1. worse: 129 non-metacyclic groups (98 of order 64, 31 of order 72), exhaustive over S. Best cost 8 at m = 64,
    10 at m = 72; no perfect. (Orders 62, 63, 65–71 have only metacyclic groups.)
-2. (pending at time of writing; see below)
+2. worse: 321 group tables of orders 73–108 (121 signature-distinct non-metacyclic groups plus non-split metacyclic
+   ones such as Q₈×Z₁₁), exhaustive over S. No perfect controller; best Z₅²⋊Z₃ (m = 75) at cost 10.
 3. better than Haar, no hit: 2-orbit lifts perfect up to m = 48 (Z₂₄, Z₆⋊Z₄); exact floors 8 (Z₃₁, m = 62) and
    9 (Z₈⋊Z₄, m = 64).
 4. no hit: exhaustive 2-orbit abelian lifts floor at 8 (Z₃₁) and 12 (Z₃₂); the plain switch-anneal from the m = 63

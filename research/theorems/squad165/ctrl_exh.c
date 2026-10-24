@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     for (int a = 0; a < 4; a++) for (int b = 0; b < 4; b++) for (int c = 0; c < 4; c++) for (int d = 0; d < 4; d++)
         if (a != b && b != c && c != d) { W[nw][0] = a; W[nw][1] = b; W[nw][2] = c; W[nw][3] = d; nw++; }
     char *cA = malloc(m), *cB = malloc(m);
-    int best = 1 << 30, nsol = 0; long tried = 0;
+    int best = 1 << 30, nsol = 0, bestS[4] = {0}; long tried = 0;
     int others[4096], no = 0; for (int i = 0; i < m; i++) if (i != e) others[no++] = i;
     for (int x = 0; x < no; x++) for (int y = x + 1; y < no; y++) for (int z = y + 1; z < no; z++) {
         int S[4] = { e, others[x], others[y], others[z] }, Si[4];
@@ -34,9 +34,9 @@ int main(int argc, char **argv) {
         }
         int c = 0; for (int i = 0; i < m; i++) c += !cA[i] + !cB[i];
         tried++;
-        if (c < best) best = c;
+        if (c < best) { best = c; for (int k = 0; k < 4; k++) bestS[k] = S[k]; }
         if (c == 0) { nsol++; if (nsol <= maxprint) printf("SOL S = %d %d %d %d\n", S[0], S[1], S[2], S[3]); }
     }
-    printf("m=%d tried=%ld best_cost=%d solutions=%d\n", m, tried, best, nsol);
+    printf("m=%d tried=%ld best_cost=%d solutions=%d bestS=%d %d %d %d\n", m, tried, best, nsol, bestS[0], bestS[1], bestS[2], bestS[3]);
     return 0;
 }
