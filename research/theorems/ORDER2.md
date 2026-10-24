@@ -427,6 +427,15 @@ side, so the two BFS determine the diameter.
 The effort was about 4× the rule's median estimate (one solve in 8 seeds, at 1.3·10⁵ evaluations against
 3.6·10⁴). That is within the effort law's factor-5 scatter, but on the slow side, like the product group SL(2,8)²×Z14.
 
+What order 6 bought on this group (random symmetric samples, 200 each, `runs/ro138_sl7sq_31_k3_vs_k6.txt`):
+
+| symmetry | min | p10 raw | p10 in clumps | rule μ_A |
+|---|---|---|---|---|
+| order 3, conjugation by (c, c′), z ↦ 5z | 25 | 51 | 17 | 17.3 |
+| order 6, swap∘conjugation, z ↦ 6z | 30 | 57 | 9.5 | 11.0 |
+
+By the effort law that is 20–40× fewer evaluations for order 6 on the same group.
+
 ### 5.2b Mixed orbit sizes: (15,8) and the open cell (10,8)
 
 The fixed-point analysis suggests a further layout. An element whose α-orbit has size s < k (it lies in Fix(α^s)) can
