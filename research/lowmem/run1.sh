@@ -11,5 +11,5 @@ tag=$tag$extra
 out=../frontier/sols/$tag.txt
 log=runs/$tag.log
 echo "start $(date -u +%FT%TZ) | ORBIT=$orb $* | haar_lean 15 10 $secs $seed 8 $out $fam $p $n" > "$log"
-env ORBIT="$orb" "$@" nice -n 5 timeout $((secs + 900)) ./haar_lean 15 10 "$secs" "$seed" 8 "$out" "$fam" "$p" "$n" >> "$log" 2>&1
+env ORBIT="$orb" "$@" nice -n 5 timeout $((secs + 900)) ./haar_lean_run 15 10 "$secs" "$seed" 8 "$out" "$fam" "$p" "$n" >> "$log" 2>&1
 echo "exit $? $(date -u +%FT%TZ)" >> "$log"

@@ -144,6 +144,7 @@ static inline void or_rot(uint64_t *restrict acc, const uint64_t *restrict src, 
     else { acc[W0] |= src[0] << sh2; for (int k = 1; W0 + k < WR; k++) acc[W0 + k] |= (src[k] << sh2) | (src[k - 1] >> (64 - sh2)); }
 }
 static inline int row_full(const uint64_t *acc) {
+    for (int k = 1; k < 8; k++) { int w = (int)((long long)k * (WR - 1) / 8); if (w < WR - 1 && acc[w] != ~0ULL) return 0; }   /* quick reject */
     uint64_t a = ~0ULL; for (int w = 0; w < WR - 1; w++) a &= acc[w];
     return a == ~0ULL && (acc[WR - 1] & TAILM) == TAILM;
 }
