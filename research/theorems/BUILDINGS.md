@@ -28,9 +28,10 @@ M_b(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bou
    bipartite version. The 2013 survey (DS14v2, p. 36) says it was known only for D = 2, 3, 4, 6. CvB–K's only
    bipartite limit, in the paper and in their Lean README, is for the edge version; Isham et al. treat general graphs
    only. So it is a corollary to record, not a new theorem (§1.9).
-3. **"D ≡ 2 mod 4 is not reached by buildings" is false.** Delorme's 1985 product G ⊗ Opp(G) of any flag graph is
-   regular of degree ∏(q_s + 1), with diameter exactly h and order/M_b → 1 (Theorem 3). This works for unbalanced
-   diagrams too, so every h ≥ 3 is reached, for example by A_{h−1}(q) or B_{h/2}(q).
+3. **D ≡ 2 mod 4 is reached too, one step past the flag graphs.** REGULARITIES is right that no regular flag graph
+   exists for D ≡ 2 mod 4 with D ≥ 10 and D ≠ 30. But Delorme's 1985 product G ⊗ Opp(G) of any flag graph is regular
+   of degree ∏(q_s + 1), with diameter exactly h and order/M_b → 1 (Theorem 3). This works for unbalanced diagrams
+   too, so every h ≥ 3 is reached, for example by A_{h−1}(q) or B_{h/2}(q).
 4. **What buildings add beyond 2026: much faster convergence.** The deficiency 1 − n/M_b is c/q + O(q⁻²) with an
    explicit c (Theorem 4, all constants checked numerically). In terms of the degree it is c·Δ^(−α), with α as below.
 
@@ -81,8 +82,9 @@ A building of type (W, S) is a set 𝒞 of chambers with a Weyl distance δ: �
 
 The J-residue of C is R_J(C) = {D : δ(C, D) ∈ W_J}; its type is J. A panel is a residue of type {s}. If every s-panel
 has q_s + 1 chambers, the q_s are the parameters, and q_w = ∏ q_{s_i} over any reduced word s₁⋯s_k of w. Finite
-thick buildings of irreducible type and rank ≥ 2 have parameters; the ones that exist are listed in §1.5. Theorems 1
-and 2 below use neither thickness nor finiteness.
+thick buildings of irreducible type and rank ≥ 2 have parameters. §1.5 lists all of them in rank ≥ 3 (those of the
+finite groups of Lie type) and treats rank 2 (generalized polygons of order (s, t), classical or not) as one row.
+Theorems 1 and 2 below use neither thickness nor finiteness.
 
 **The graph Γ.** Its vertices are the I₁-residues and the I₂-residues. An I₁-residue R and an I₂-residue R′ are
 adjacent iff R ∩ R′ ≠ ∅. In flag language, a residue of type J is the set of chambers containing a partial flag of
@@ -106,16 +108,25 @@ Coxeter groups:
 - (C4) W_J ∩ W_K = W_{J∩K} (Bourbaki, *Lie*, Ch. IV §1.8, Thm 2). In particular W_{I₁} ∩ W_{I₂} = {1}.
 
 Buildings. All of these are standard (Abramenko–Brown, Ch. 5); each follows from (WD1)–(WD3) in a few lines:
-- (B1) δ(D, C) = δ(C, D)⁻¹.
+- (B1) If δ(C′, C) = s ∈ S, then δ(C, C′) = s.
+  *Proof.* Put w = δ(C, C′). (WD2) with D = C′ gives 1 = δ(C′, C′) ∈ {sw, w}. Since C ≠ C′, w ≠ 1, so w = s.
 - (B2) *Galleries of reduced type.* If δ(C, D) = w and s₁⋯s_k is a reduced word for w, there are chambers
-  C = C₀, C₁, …, C_k = D with δ(C_{i−1}, C_i) = s_i. Then δ(C_i, C_j) = s_{i+1}⋯s_j for i < j.
-  *Proof.* Existence, by induction on k: (WD3) with s = s₁ gives C₁ with δ(C₁, C) = s₁ and δ(C₁, D) = s₁w, which has
-  length k−1. For the second claim, go backwards from C_j: each step is a (WD2) move with a length increase, because
-  every segment of a reduced word is reduced.
+  C = C₀, C₁, …, C_k = D with δ(C_{i−1}, C_i) = s_i. Then δ(C_i, C_j) = s_{i+1}⋯s_j for i < j, and
+  δ(D, C) = s_k⋯s₁ = w⁻¹.
+  *Proof.*
+  - Existence, by induction on k: (WD3) with s = s₁ gives C₁ with δ(C₁, C) = s₁, so δ(C, C₁) = s₁ by (B1), and
+    δ(C₁, D) = s₁w, which has length k−1.
+  - δ(C_i, C_j): go backwards from C_j. Each step is a (WD2) move with a length increase, because every segment of a
+    reduced word is reduced.
+  - δ(D, C): move the first argument forwards from C₀ to C_k. Here δ(C_i, C_{i−1}) = s_i by (B1), and each (WD2) step
+    increases length, since s_k⋯s₁ is reduced.
+
+  In particular δ(D, C) = δ(C, D)⁻¹ for all C, D.
 - (B3) *Residues.* "δ(C, D) ∈ W_J" is an equivalence relation, and its classes are the J-residues. If D′ ∈ R_J(D),
   then δ(C, D′) ∈ δ(C, D)·W_J.
   *Proof.* Join D to D′ by a gallery whose types lie in J, which is (B2) with a reduced word of δ(D, D′) ∈ W_J; such
-  a word uses only letters of J. Each step changes δ(C, ·) to δ(C, ·)s or leaves it unchanged, by (WD2) and (B1).
+  a word uses only letters of J. Each step changes δ(C, ·) to δ(C, ·)s or leaves it unchanged, by (WD2) and the
+  inverse formula in (B2).
 - (B4) For every chamber C and every w ∈ W there is a chamber D with δ(C, D) = w. In particular every chamber has an
   *opposite* chamber, one with δ = w₀. *Proof.* Apply (WD3) repeatedly.
 - (B5) With parameters, #{D : δ(C, D) = w} = q_w. Hence a J-residue has P_J = Σ_{u∈W_J} q_u chambers, and
@@ -158,18 +169,19 @@ they are adjacent. Hence V₀, …, V_m is a walk of length m. ∎
 2. Since w ≤ w₀, (C2) gives a subword of f_J that is a reduced word for w. Group its letters by the block they come
    from: w = u₀⋯u_{h−1} with u_i ∈ W_{J_i}, J₀ = J, and the lengths add.
 3. If J_{h−1} = K, Lemma 3 gives d ≤ h − 1. Otherwise append u_h = 1 ∈ W_K, and Lemma 3 gives d ≤ h.
-4. Now J_{h−1} = J exactly when h is odd, which gives both bounds in (a). ∎
+4. So d ≤ h always. The "moreover" clause is then just parity: Γ is bipartite, so distances between different types
+   are odd and distances between equal types are even. (Step 3 gives it directly too, since J_{h−1} = J exactly when
+   h is odd.) ∎
 
 *Proof of Theorem 1(b).* Let R = R_J(C), R′ = R_K(C′) and take a shortest path of length ℓ.
 1. By Lemma 2, w₀ ∈ W_{J₀}⋯W_{J_ℓ} with J₀ = J.
 2. Every element of W_{J_i} has length ≤ |J_i|. So N ≤ Σ_{i=0}^{ℓ} |J_i|. With ℓ + 1 = 2p this sum is pr; with
-   ℓ + 1 = 2p + 1 it is pr + |J|.
-3. Both words in (C1) have N letters. When h is odd this forces |I₁| = |I₂| = r/2, with no classification needed.
-4. *h even, K = J:* ℓ is even, and N = (h/2)r ≤ pr + |J| < (p+1)r, so p ≥ h/2 and ℓ = 2p ≥ h.
-5. *h even, K ≠ J:* ℓ is odd, and pr ≥ hr/2, so ℓ = 2p − 1 ≥ h − 1.
-6. *h odd, K ≠ J:* ℓ is odd, and pr ≥ hr/2, so p ≥ (h+1)/2 and ℓ ≥ h.
-7. *h odd, K = J:* ℓ is even, and pr + r/2 ≥ hr/2, so ℓ ≥ h − 1.
-8. With (a) these are equalities. By (B4) every chamber has an opposite chamber, so every vertex has eccentricity
+   ℓ + 1 = 2p + 1 it is pr + |J|, where |J| < r. Recall N = hr/2.
+3. *h even, K = J:* ℓ is even, and hr/2 ≤ pr + |J| < (p+1)r, so p ≥ h/2 and ℓ = 2p ≥ h.
+4. *h even, K ≠ J:* ℓ is odd, and pr ≥ hr/2, so ℓ = 2p − 1 ≥ h − 1.
+5. *h odd, K ≠ J:* ℓ is odd, and pr ≥ hr/2, so p ≥ (h+1)/2 and ℓ ≥ h.
+6. *h odd, K = J:* ℓ is even, and hr/2 ≤ pr + |J| < (p+1)r, so p ≥ (h−1)/2 and ℓ ≥ h − 1.
+7. With (a) these are equalities. By (B4) every chamber has an opposite chamber, so every vertex has eccentricity
    h. ∎
 
 *Remarks.* (i) The proof never uses thickness, finite panels or a group action. It holds for thin buildings (the
@@ -180,9 +192,9 @@ Theorem 6.11.
 (iii) The reviewer's PG(4, q) pair at distance 5 is the case "h odd, different types" of (b): two flags that extend to
 opposite chambers. Explicitly, with basis e₁, …, e₅, take (⟨e₁⟩ ⊂ ⟨e₁, e₂, e₃⟩) and (⟨e₄, e₅⟩ ⊂ ⟨e₂, e₃, e₄, e₅⟩). They
 come from the opposite complete flags ⟨e₁⟩ ⊂ ⟨e₁, e₂⟩ ⊂ … and ⟨e₅⟩ ⊂ ⟨e₅, e₄⟩ ⊂ …, so they are exactly 5 apart.
-(iv) `weyl_all.py` (→ `out/weyl_all.txt`) computes the distance function of Theorem 2 below over all of W for A₂–A₈,
-B₂–B₇, D₄–D₇, G₂, F₄, E₆ and E₇ (2,903,040 elements). It finds eccentricity exactly h from both sides every time, on
-the side that (b) predicts, with d(w₀) = h.
+(iv) `weyl_all.py` (→ `out/weyl_all.txt`) computes the distance function of Theorem 2 below over all of W for 21
+Weyl groups: A₂–A₈, B₂–B₇, D₄–D₇, G₂, F₄, E₆ and E₇. That is 4,408,346 elements in all, 2,903,040 of them in W(E₇).
+It finds eccentricity exactly h from both sides every time, on the side that (b) predicts, with d(w₀) = h.
 (v) `opposite_check.py` (→ `out/opposite_check.txt`) tests (b) directly in the real geometries. It samples random
 pairs of chambers that are opposite by linear algebra: V_i + V′_{n+1−i} = V for PG(n, q), and V_i ∩ V′_i^⊥ = 0 for
 polar spaces. It then measures the four distances between their odd and even parts. In 12 geometries (PG(n, q) with
@@ -193,16 +205,18 @@ n = 2–5, Sp, O, O⁻ and U polar spaces), every sampled distance is h or h −
 ### 1.4 Theorem 2 (distance formula) and the distance layers
 
 > **Theorem 2.** For vertices R of type J and R′ of type K, and any C ∈ R, C′ ∈ R′ with w = δ(C, C′):
-> d(R, R′) = min{ℓ ≥ 0 : ℓ ≡ [J ≠ K] (mod 2) and w ∈ W_{J₀}W_{J₁}⋯W_{J_ℓ}}, with J₀ = J and the J_i alternating.
-> Equivalently, d = m_J(w) − [J_{m_J(w)} = K], where m_J(w) is the least m with w in the product of m alternating
-> factors starting with W_J.
+> d(R, R′) = d_{JK}(w) := min{ℓ ≥ 0 : ℓ ≡ [J ≠ K] (mod 2) and w ∈ W_{J₀}W_{J₁}⋯W_{J_ℓ}}, with J₀ = J and the J_i
+> alternating. Equivalently: let m = m_J(w) ≥ 1 be the least number of alternating factors W_J W_{J′} ⋯ whose product
+> contains w. The last factor, J_{m−1}, has type J if m is odd and J′ if m is even. Then d = m − 1 if J_{m−1} = K, and
+> d = m otherwise.
 
 *Proof.* "≥" is Lemma 2. For "≤": every element of W_{J₀}⋯W_{J_ℓ} is the product of a subword of the concatenated
 word (c_{J₀})(c_{J₁})⋯(c_{J_ℓ}). By (C3) it is also the product of a reduced subword. Grouping that subword by blocks
 gives a factorisation whose lengths add, and Lemma 3 finishes. ∎
 
-> **Corollary 2 (distance layers).** For a vertex R of type J, the number of K-vertices at distance d from R is
-> (1/P_K)·Σ_{w ∈ W, d_{JK}(w) = d} q_w. It depends only on W, the parameters and J, not on R.
+> **Corollary 2 (distance layers).** Suppose every s-panel has q_s + 1 chambers. For a vertex R of type J, the number
+> of K-vertices at distance d from R is (1/P_K)·Σ_{w ∈ W, d_{JK}(w) = d} q_w, with d_{JK} as in Theorem 2. It depends
+> only on W, the parameters and J, not on R.
 
 *Proof.* Fix C ∈ R. By Theorem 2, the distance from R to R_K(C′) depends only on δ(C, C′). Each K-vertex contains
 P_K chambers, all giving that same distance. Count with (B5). ∎
@@ -248,10 +262,12 @@ Parameters as in `table_cells.py`.
 | G₂ | ³D₄(q) = GH(q, q³) | no |
 | I₂(8) | ²F₄(q) = GO(q, q²) | no |
 | C₂ | GQ(s, t), s ≠ t (incl. AS(q) = GQ(q−1, q+1)) | no |
+| I₂(m), rank 2 | any generalized m-gon of order (s, t), classical or not (non-Desarguesian planes, T₂(O), T₂*(O), T₃(O), duals, …) | iff s = t, which happens only for m = 3, 4, 6 |
 
-For the twisted C_n, the class containing the special node n has product (1+s)^{⌈n/2⌉−1}(1+t), and the other has
-(1+s)^{⌊n/2⌋}. These can only be equal when n is even and s = t. REGULARITIES listed "B_{2m}/C_{2m}" as regular
-without the equal-parameter condition, and missed ²E₆.
+The rank ≥ 3 rows are complete. The rank-2 row covers every generalized polygon. For the twisted C_n, the class
+containing the special node n has product (1+s)^{⌈n/2⌉−1}(1+t), and the other has (1+s)^{⌊n/2⌋}. These can only be
+equal when n is even and s = t. REGULARITIES treated equal parameters only, correctly. It did not say that the O⁻ and
+unitary forms of C_{2m} are never regular, and it missed ²E₆(q), which is regular with unequal parameters.
 
 ### 1.6 Theorem 3 (Delorme's product reaches every h)
 
@@ -534,19 +550,30 @@ The reviewer's own text is not in the repo; these are the gaps I found.
      needed this step.
 2. **No lower bound.** "Diameter = h" was only computed on seven cases. Theorem 1(b) proves it for every type, via
    opposite chambers and a letter count. It covers the reviewer's PG(4, q) pair.
-3. **Regularity.** "B_{2m}/C_{2m}" is regular only with equal parameters (Sp(4m, q), O(4m+1, q)). O⁻ and the unitary
-   forms are not. ²E₆(q) is regular and was missing.
+3. **Regularity.** REGULARITIES states regularity for equal parameters, which is right. It does not say that the O⁻
+   and unitary forms of C_{2m} are never regular. It misses ²E₆(q), which is regular with unequal parameters (§1.5).
 4. **Asymptotics.**
    - "lim along prime powers" is a lim sup. The full limit needs monotonicity and the prime number theorem.
-   - "D ≡ 2 mod 4 is not reached" is false (Theorem 3).
+   - "D ≡ 2 mod 4 … is not reached this way" is true of the flag graphs themselves. Delorme's product of a flag graph
+     (Theorem 3) does reach every such D.
    - The whole statement is a corollary of CvB–K (§1.9).
+5. **After this note's own referee (an independent agent, 2026-10-24).** The referee checked §1 with separate code
+   (`buildings/review/`): thin buildings of all types, Theorem 3 on 300 random bipartite graphs, exact asymptotics,
+   and every quoted number. Its verdict was "correct with fixable gaps", and all its points are now fixed:
+   - an off-by-one in the "equivalently" form of Theorem 2;
+   - (B1) was used before it was derived from the axioms;
+   - two misquotes of REGULARITIES;
+   - the rank-2 row of §1.5;
+   - counts in §1.3 remark (iv);
+   - d_{JK} was undefined in Corollary 2;
+   - two simplifications in the proof of Theorem 1.
 
 ## 6. Open questions for a next session
 
 1. Prove §2.1 (only the colour classes are tight). The tight case needs w₀ to factor, with lengths adding, into about
    N/a alternating longest elements of two complementary parabolic subgroups.
-2. Delorme's J. Graph Theory 1985 paper is behind Wiley. Does it treat the octagons? §1.9 says the octagon case
-   seems unnoticed; the full text would settle it.
+2. Delorme's J. Graph Theory 1985 paper is behind Wiley. Does it treat the octagons? §1.9 found no source for the
+   octagon case; the full text would settle it.
 3. Lower bounds on the rate: is 1 − n_b(Δ, 5)/M_b(Δ, 5) ≥ cΔ^(−1/2) for some c > 0? Nothing is known.
 4. Lean: Theorem 1 needs only the W-metric axioms and three Coxeter facts. The Coxeter facts are the hard part to
    formalise in general. For one fixed W, e.g. W(B₄) with 384 elements, the facts actually used become finite
@@ -562,7 +589,7 @@ Run every script from `research/theorems/buildings/` with python3. Only partitio
 |---|---|---|
 | coxeter_check.py | out/coxeter_check.txt | (C1) and N = rh/2 for 40 types; letter counts for the lower bound |
 | weyl_dist.py | (library; run directly for one type) | Theorem 2 / Corollary 2: predicted distance layers from W |
-| weyl_all.py | out/weyl_all.txt | eccentricity h over all of W, 19 Weyl groups up to E₇ |
+| weyl_all.py | out/weyl_all.txt | eccentricity h over all of W, 21 Weyl groups up to E₇ |
 | polar_flags.py | (graphs) | flag graphs of PG, Sp, O, O⁻, O⁺, U geometries over GF(2), GF(3), GF(4), from the definitions |
 | compare_dist.py | out/compare_dist.txt | BFS layers vs Corollary 2 on 21 buildings: all match |
 | delorme.py, run_checks.sh | out/apsp_checks.txt | coordinator's apsp.c on 9 flag graphs, 6 Delorme products, 6 quotients |
@@ -574,6 +601,7 @@ Run every script from `research/theorems/buildings/` with python3. Only partitio
 | run_checks2.sh | out/apsp_checks2.txt | apsp.c on the other 12 flag graphs of compare_dist.py |
 | opposite_check.py | out/opposite_check.txt | Theorem 1(b) tested directly on random opposite chamber pairs |
 | pairwise_check.py | out/pairwise_check.txt | Theorem 2 tested pair by pair in PG(n, q), 2.6 M pairs |
+| review/*.py | review/review_out.txt | the referee's independent re-check of §1 (see review/README.md) |
 | partitions.py | out/partitions.txt | §2.1, brute force over W |
 | partitions2.py | out/partitions2.txt | §2.1 up to rank 8 incl. E₈, via Demazure products |
 | partitions3.py | out/partitions3.txt | §2.1 for A_n, B_n, D_n up to rank 20 (pruned by the reduction lemma) |
