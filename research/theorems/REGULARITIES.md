@@ -57,9 +57,17 @@ noticing that it beats the table. The current wiki value for (16,5) is unverifie
 
 Let a spherical building of rank r have its Coxeter diagram (a tree) split into the two colour classes I₁, I₂. Take
 as vertices the partial flags of type I₁ and of type I₂, adjacent when together they form a chamber. A vertex of type
-I₁ has ∏_{i∈I₂}(q_i+1) neighbours. **Diameter = the Coxeter number h.** For a bipartite Coxeter element c = c₁c₂,
-the longest element is w₀ = c₁c₂c₁… (h blocks, reduced). Every w ≤ w₀ is a subword of that word (subword property of
-Bruhat order), so at most h block steps are ever needed, and w₀ needs all h. With equal parameters and
+I₁ has ∏_{i∈I₂}(q_i+1) neighbours. **Diameter ≤ the Coxeter number h** (= h in every case computed).
+
+*Proof of ≤ h.* An I₁-vertex x is a residue R_x of type I₂, an I₂-vertex a residue of type I₁, and x ~ y iff
+R_x ∩ R_y ≠ ∅. That intersection is then one chamber, since I₁ ∩ I₂ = ∅. A path x = x₀, x₁, …, x_ℓ gives
+chambers C_i = R_{x_{i−1}} ∩ R_{x_i}, and C_i, C_{i+1} lie in a common residue of type I₁ or I₂ (alternately). So
+d(x, y) ≤ ℓ iff the Weyl distance w = δ(C, C') of some C ∈ R_x, C' ∈ R_y is a product of ℓ − 1 alternating
+elements of W_{I₁}, W_{I₂}. Since δ(R_x, R_y) is a double coset W_{I₂} w W_J, this says w is a product of ℓ + 1
+alternating blocks. For a bipartite Coxeter element (c₁ = product of the I₁ reflections, c₂ likewise), both
+c₁c₂c₁… and c₂c₁c₂… with h factors are reduced words for w₀ (Bourbaki, Lie Groups Ch. V §6 Ex. 2). Every w ≤ w₀ is
+a subword of a reduced word for w₀ (subword property of Bruhat order), hence a product of h alternating blocks
+starting with whichever class is needed. So d(x, y) ≤ h. ∎ With equal parameters and
 |I₁| = |I₂| = r/2 the graph is (q+1)^{r/2}-regular of order 2·∏[d_i]_q/(q+1)^{r/2}, and the ratio to the bipartite
 Moore bound tends to 1 as q → ∞.
 
@@ -69,9 +77,8 @@ D = 6, 12, 30. D ≡ 2 mod 4 with D ≥ 10, except 30, is not reached this way (
 and the unbalanced versions lose a power of q). I have not checked whether this bipartite statement is in the
 literature.
 
-Status of the proof: CvB–K prove the type-A case (odd–even sorting). For the other types the argument above is a
-sketch: it uses the subword property and the two block orders c₁c₂… and c₂c₁… of w₀, plus the freedom to choose the
-end chambers inside the residues of the two end flags. I checked it by computer on seven cases.
+Status: CvB–K prove the type-A case directly (odd–even sorting). The argument above uses only standard building
+facts, but nobody else has read it. I checked it by computer on seven cases.
 `bflags.py` → `runs/bflags_coxeter_check.txt` covers A₂–A₅ and C₂–C₄ over GF(2), balanced and unbalanced, and gives
 eccentricity h from both sides every time: A₃ (degrees 3, 9) 4, A₅ (9, 27) 6, C₃ (3, 9) 6. `cflags.py` builds the
 flag graph of W(7,2) (C₄, q = 2) separately. It is 9-regular with 160,650 vertices and has diameter exactly 8
@@ -137,7 +144,11 @@ of odd length ≤ 7 per base target, i.e. 274/m per target copy. With no symmetr
 so the expected number of misses is ≈ 39,216 · 19,608 · m · e^{−274/m}. That is about 20 only at m ≈ 13 (the lifts
 job's estimate of 12). Even with an automorphism group acting freely with a handful of orbits, the same count stops near
 m ≈ 25. The table has m = 30, so the construction is genuinely structured. Its vertex count can be rewritten as
-5·(#flags + 2·#elements of GH(q)) for odd q, which may hint at it. A structured construction, if found, is the
+5·(#flags + 2·#elements of GH(q)) for odd q. A numerical hint: the factor m/5 is (q+1)/2 + 2 for odd q
+and q/2 + 2 for q = 8, and those are |image of a quadratic map x ↦ x² + bx on GF(q)| + 2 (squares for odd q,
+trace-0 elements for even q). That suggests copies indexed by the values of a quadratic form plus two extra
+classes, rather than a group of order m. The one Δ = q+2 value, 15 = 3·5 at q = 11, does not fit the same rule;
+5 = (q−1)/2 there. A structured construction, if found, is the
 natural route to the cells (10,8), (12,8), (14,8), (16,8), which random-like Haar search cannot reach (SIZE_LAW §3.3,
 STRUCTURE.md §6). Not found in this session. Web searches for the source (Delorme–Gómez–Quisquater, the numbers
 themselves) found nothing.
@@ -172,6 +183,8 @@ N = 45,864–47,736, a spread of 4 %. At (5,9) eight groups lie within 3 %, at (
 | affine/bi-affine A₄(3) flag graphs (12-regular, 18,720 vertices) | flags_affine.py + apsp | diameter 8, not 5 |
 | C₄ flag graphs at (9,8), (16,8) | buildings.py, cflags.py | 160,650 < 449,480; 23.9 M < 36.2 M |
 | covers of our D = 4 / D = 6 records to D = 5 / D = 7 | §1.3 arithmetic | below the table in every cell |
+| edge-transitive coset graphs Cos(G; ⟨a⟩, ⟨b⟩), a, b of order Δ (Conder's (3,7) graph has this form) | coset.py on PSL(2,7), (2,11), (2,13) with Δ = 3 (all pairs) and PSL(2,17) with Δ = 4 (200 pairs) → `runs/coset_cubic.txt` | at most 112 vertices at D = 7, 440 at D = 10, 1,224 at (4,8) (table 2,184). The vertex stabiliser ⟨a⟩ clumps misses by Δ, but its fixed points (≈ 4|T|/Δ in PSL(2,q)) are missed with probability e^(−λ/Δ). It is the one-orbit case of STRUCTURE.md §2.5 |
+| voltage lifts of C(2,q) to keep D = 5 with more vertices | walkcount.c | impossible: unique walks (§1.2) |
 
 ## Scripts and outputs (this folder)
 
@@ -184,4 +197,5 @@ N = 45,864–47,736, a spread of 4 %. At (5,9) eight groups lie within 3 %, at (
 | table_factor.py | table_factor_out.txt | factorisation of the table against polygon sizes |
 | general_table.py, double_bound.py | double_bound_out.txt | B(H) doubling against the general table |
 | polygons.py, pcover.c | bases/, runs/pc_*, runs/zero_voltage_n2_gq3.txt | polygon covers |
-| flags.py, flags_affine.py, cflags.py, buildings.py | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
+| flags.py, flags_affine.py, cflags.py, bflags.py, buildings.py, walkcount.c | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
+| coset.py | runs/coset_cubic.txt | coset graphs with cyclic stabilisers |
