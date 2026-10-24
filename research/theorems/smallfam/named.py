@@ -3,7 +3,7 @@
 Usage: python3 named.py DELTA D "GAP expression" [more expressions...] [--threads T] [--maxplan M] [--gap-timeout S]
 GAP helpers available in the expressions:
   Aff(n, q, H)  : the affine group F_q^n x| H for a matrix group H <= GL(n,q) (e.g. Aff(3,2,GL(3,2)) = AGL(3,2))
-  Heis(p, k, e) : Heis(F_{p^2}) x| C_k, y acting by (v,z) -> (lambda^e v, N(lambda)^e z), lambda a primitive element
+  Meta(m, k, r)  : Z_m x|_r Z_k, as the group of left multiplications by (1,0) and (0,1) (isomorphic to Z_m x|_r Z_k)
 Results: runs/named_d{DELTA}D{D}.tsv and runs/named_d{DELTA}D{D}_sols/.
 """
 import argparse
@@ -16,6 +16,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SP = os.environ.get('SCRATCH', '/tmp/claude-0/-home-user-degree-diameter/2c3fb1ba-9359-5c52-a9c4-6d81a7db2df8/scratchpad')
 
 PRELUDE = r'''
+Meta := function(m, k, r)
+  local N, px, py;
+  N := m * k;;
+  px := PermList(List([0..N-1], t -> ((QuoInt(t, k) + 1) mod m) * k + (t mod k) + 1));;
+  py := PermList(List([0..N-1], t -> ((r * QuoInt(t, k)) mod m) * k + ((t mod k) + 1) mod k + 1));;
+  return Group(px, py);
+end;;
 Aff := function(n, q, H)
   local gens, F, one, mats, t;
   F := GF(q);; one := One(F);;
