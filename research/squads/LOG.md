@@ -65,3 +65,9 @@ Cards: c1 (10,5) ALPHA sweep on A4 × SL(2,3) × Z7 · c2 (10,5) other product g
 c3 (10,5) ALPHA sweeps on the N = 2184 groups · c4 (10,5) search-knob grid (K, TARGP, COOL, REHEAT, RESTART) ·
 c5 (8,8) N = 120,960 other structures + α sweep · c6 (6,8) α sweep at N = 16,128 · c7 (9,8) k = 3 next rungs ·
 c8 wildcard (10,5)/(11,5).
+- Opus: **exhaustive enumeration** (new EXHAUST=1 mode of table_squad/src/haar_inv.c). (10,5) on A4 × SL(2,3) × Z7 with
+  ORBIT="3 3 1", default α: all 49,013,160 symmetric S evaluated (2 × 590 s); none of cost 0, the exact minimum is
+  4 (72 sets). So the annealer had found the floor. Up to automorphisms of G every other order-3 α of this group fixes
+  ≥ 71 elements, so the group is finished for this structure. Told r3-c1 to stop its α sweep, and r3-c3 to move from
+  α sweeps (one α class each for PSL(2,7) × Z13 and SL(2,13)) to untried groups. Output:
+  table_squad/exhaust/d10D5_prod_psl_3_sl_3_7_orb331.txt.
