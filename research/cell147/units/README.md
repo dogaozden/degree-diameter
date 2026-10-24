@@ -31,6 +31,17 @@ graph, same-side diameter <= 6), `unit_edges2.py` (edge list with hub links), `t
 D = 7 cell), `flowdesign.c` (older type-4 designs by max-flow between constraint types: 5 units per matching exactly),
 `hexbin2txt.py` (H(9) from research/p4/d6/hexgen.c).
 
+**Hermitian-spread packings (spreadpack.c).** The best packings are not found by local search on flags but by
+geometry. Points of H(q) are at distance <= 4 iff they are orthogonal on the quadric Q(6,q). Take an elliptic hyperplane
+section E = Q(6,q) ∩ v^perp (v = e0 + c e4, i.e. X4 = -c X0 with -c a non-square; c = 1 at q = 7, 11, c = 2 at q = 5,
+c = 11 at q = 13). The hexagon lines inside E form a spread: q^3+1 pairwise opposite lines partitioning the points of
+E (checked by the program). Flags (p, spread line through p) never conflict on the line side (line zones lie in the
+disjoint 2-balls of the spread lines), and they do not conflict on the point side when the points are pairwise
+non-orthogonal. So a packing = a partial ovoid of the elliptic quadric Q^-(5,q) = E; an iterated local search on the
+orthogonality graph of E (degree q(q^2+1)) finds 48 (q = 5), 84 (q = 7), 155 (q = 11), against 30-34, 47 and 91 for the
+best local searches on flags. (At q = 3 the optimum, 28, is an ovoid of H(3) with a dual spread instead; ovoids of H(q)
+exist only for q = 3^h.) Flag sets: sols/flags_q*_spread*.txt.
+
 ## The unit
 
 A unit (p, t) on that lift deletes the 5 lifted copies of the matching edge (p, l), l = sigma_t(p), and adds two new
