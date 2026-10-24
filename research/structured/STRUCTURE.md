@@ -350,6 +350,12 @@ group f = 0 needs 521–4.7·10⁴ evaluations; the one f = 3 success needed 3.8
 On PSL(2,23) × Z43 at (9,8), f = 3 had stalled at cost 3 after 1.9·10⁶ evaluations (previous session). The (6,7)
 graph is even above the first-moment estimate 2N_h ≈ 8,747 of mu_plan.py; at D = 7 the Poisson model is crude.
 
+Later rungs (same session, §4 has the current best of each cell): f = 0 kept solving up to μ ≈ 30 at (15,8)
+(PSL(2,137) × Z7, 17,998,512, 7.8·10⁴ evaluations), μ ≈ 38 at (9,8) (PSL(2,19) × Z79, 540,360, 4.4·10⁵), μ ≈ 25 at
+(9,9) (PSL(2,7)² × Z61, 3,443,328, 4.2·10⁴), μ ≈ 20 at (9,10), (12,10) and (15,9) (a few hundred to a few thousand
+evaluations at 0.3–1 s each). Failures so far: (12,9) at μ = 19.9 (SL(2,43) × Z217, cost 6 after 9·10⁴
+evaluations, 40 ms each), (6,9) at μ = 34–35 (cost 3 and 14), (9,9) on PSL(2,5) × SL(2,16) × Z7 (cost 14; 44 fixed points).
+
 **(11,8): a new cell** (not f = 0; k = 5, the attempt §7 describes). Table 2,246,940, now **2,258,520** = 2·|PSL(2,59) ×
 Z11|, S = {e} ∪ two α-orbits of size 5, α = conjugation by an element of order 5 times z ↦ 3z. μ = 60.2 (μ/5 = 12.0,
 |Fix(α)| = 29 + e). The first session's two runs ended at cost 3 and 2, with only α-fixed elements uncovered. This
