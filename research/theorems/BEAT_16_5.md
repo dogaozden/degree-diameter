@@ -102,6 +102,28 @@ So the controller only needs: bipartite, 4-regular, diameter 5, a 4-cycle at eve
 `rcl/haarctrl.c` scans all groups of a given order exhaustively; order 64 has 6 such (G, S) (first ones at 40, 50,
 60; none at 62, 63).
 
+**Lemma (bipartite route-chart lift).** Let C be a bipartite graph whose edges carry labels from {a, a⁻¹, b, b⁻¹}
+so that every vertex has exactly one outgoing edge of each label and the reverse of an a-edge is an a⁻¹-edge (the
+same for b); equivalently two permutations σ_a, σ_b of V(C) that swap the sides. Let A_a, A_b ∈ GL₄(F_q) and
+b_a, b_b ∈ F_q⁴, with A_{t⁻¹} = A_t⁻¹ and b_{t⁻¹} = A_t⁻¹ b_t. The lift L has vertex set V(C) × F_q⁴ and edges
+(u, x) ~ (σ_t(u), A_t x + λ b_t) for t ∈ {a, b}, λ ∈ F_q. Then:
+1. L is bipartite and every vertex has degree at most 4q (exactly 4q when the 4q neighbours are distinct).
+2. For a controller walk W from c to d with label word t₁…t_k, the lift walks above W starting at (c, x) end
+   exactly at the points A_W x + M_W λ, λ ∈ F_q^k, where A_W = A_{t_k}⋯A_{t₁} and M_W has columns
+   A_{t_k}⋯A_{t_{i+1}} b_{t_i} (i = 1..k).
+3. diam L ≤ 5 iff for every ordered pair (c, d) of controller vertices on the same side and every x ∈ F_q⁴,
+   ⋃_W (A_W x + Im M_W) = F_q⁴, the union over controller walks W from c to d of length 0, 2 or 4.
+
+*Proof.* (1) is clear from the definition (the reverse of the lifted a-edge is the lifted a⁻¹-edge with −λ). (2) by
+induction on k. (3) Two lift vertices on the same side are at distance ≤ 4 iff some lift walk of length 0, 2 or 4
+joins them; it projects to a controller walk of the same length, and by (2) the endpoints of the lifts of W from
+(c, x) are A_W x + Im M_W. So the condition is exactly "same-side distance ≤ 4". For opposite sides, (c, x) and
+(d, y) with y' a neighbour of (d, y) on the side of (c, x): the distance is ≤ 1 + d((c, x), y') ≤ 5. ∎
+
+The searches use (3) directly: `chartfit2.c`, `chartfit3.c`, `fitq.c` compute the number of (c, d, x, y) violating
+it exactly, by enumerating the ≤ 273 label words of length 0, 2, 4 per controller pair. For a vertex-transitive
+controller (Haar, permutation-voltage) it suffices to take c in one orbit representative per orbit.
+
 ### 4.2 The graph
 
 - Controller: H(G, S) with G = SmallGroup(64,43) (C₈ . (C₄ × C₂)), elements numbered as in GAP's
