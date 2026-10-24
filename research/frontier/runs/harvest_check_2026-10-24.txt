@@ -1,0 +1,158 @@
+== d7D10_prod_psl_5_sl_8_37_orb3_s15 (origin/claude/degree-diameter-table-squad-0xgp3g, 00:11 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-24T07:08:24Z
+file: research/frontier/sols/d7D10_prod_psl_5_sl_8_37_orb3_s15.txt  (from branch claude/degree-diameter-table-squad-0xgp3g @ f5704353a); sha256 dd8ef993f849a6d3735254f87a64200af220234195251e15283605b4de73a6f8
+header: 7 10 prod psl 5 sl 8 poly x^3+x+1 n 37 N 1118880
+
+################ reference checker: build_haar2.py research/frontier/sols/d7D10_prod_psl_5_sl_8_37_orb3_s15.txt /tmp/e.txt
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2237760 edges = 7832160 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = 6a957cf29f986d2e00a57933cfdccd1a60485fe55344b33301cc579e4464a44c
+VALID d=7 D=10 group=prod psl 5 sl 8 poly x^3+x+1 x Z_37 N=1118880 vertices=2237760
+(exit 0)
+[exit 0; wall 4.7s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d7D10_prod_psl_5_sl_8_37_orb3_s15.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d7D10_prod_psl_5_sl_8_37_orb3_s15.txt
+header: 7 10 prod psl 5 sl 8 poly x^3+x+1 n 37 N 1118880
+d=7 D=10
+group: PSL(2,5) [order 60] x SL(2,8) [order 504] x Z_37; |G| = 1118880, vertices 2|G| = 2237760
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 7 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1118880 vertices per side): every vertex has 7 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.2s]
+BFS from A: ecc=10 reached 2237760 of 2237760 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 53451, 283128, 883963, 826436, 179911] [0.3s]
+BFS from B: ecc=10 reached 2237760 of 2237760 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 53451, 283128, 884349, 826436, 179525] [0.4s]
+max degree = min degree = 7, no repeated edges (checked above)
+elapsed 0.4s
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2237760
+(exit 0)
+[exit 0; wall 0.4s]
+== d8D9_psl_19_193_orb3_s1 (origin/claude/degree-diameter-table-squad-0xgp3g, 00:11 PT)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 1320120 edges = 5280480 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 8288147580329a2bb4a2b0badd7b0f79a13671a815c657e3b027de0ef16cdd54
+VALID d=8 D=9 group=psl 19 x Z_193 N=660060 vertices=1320120
+== d8D10_sl_67_13_orb3_s12 (origin/claude/degree-diameter-table-squad-0xgp3g, 00:11 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-24T07:08:29Z
+file: research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt  (from branch claude/degree-diameter-table-squad-0xgp3g @ f5704353a); sha256 4bc76b2bcae911ee9c622c81ce6560bdd0011b23465b330deb82886959389b37
+header: 8 10 sl 67 n 13 N 3909048
+
+################ reference checker: /tmp/hsl research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt
+from (e,A): reached A 3909048/3909048, B 3909048/3909048 within 10, ecc 10
+from (e,B): reached A 3909048/3909048, B 3909048/3909048 within 10, ecc 10
+VALID d=8 D=10 group=sl 67 x Z_13 N=3909048 vertices=7818096 (distinct generators, 8-regular simple)
+(exit 0)
+[exit 0; wall 2.0s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt
+header: 8 10 sl 67 n 13 N 3909048
+d=8 D=10
+group: SL(2,67) [order 300696] x Z_13; |G| = 3909048, vertices 2|G| = 7818096
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 8 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3909048 vertices per side): every vertex has 8 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.3s]
+BFS from A: ecc=10 reached 7818096 of 7818096 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19148, 131972, 831456, 3072485, 3058044, 701790] [0.6s]
+BFS from B: ecc=10 reached 7818096 of 7818096 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19148, 131990, 831456, 3071087, 3058044, 703170] [0.9s]
+max degree = min degree = 8, no repeated edges (checked above)
+elapsed 0.9s
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7818096
+(exit 0)
+[exit 0; wall 0.9s]
+== d9D10_psl_71_67_orb3f0_s1 (origin/claude/structured-search-orbit-w5dd4f, 00:11 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-24T07:08:32Z
+file: research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ 36702d551); sha256 2ea1a86096cbe79898ed9443494d1a5f48607d4b14582b421396ea72233cf251
+header: 9 10 psl 71 n 67 N 11987640
+
+################ reference checker: /tmp/hpsl research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt
+from (e,A): reached A 11987640/11987640, B 11987640/11987640 within 10, ecc 10
+from (e,B): reached A 11987640/11987640, B 11987640/11987640 within 10, ecc 10
+VALID d=9 D=10 group=psl 71 x Z_67 N=11987640 vertices=23975280 (distinct generators, 9-regular simple)
+(exit 0)
+[exit 0; wall 10.1s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt
+header: 9 10 psl 71 n 67 N 11987640
+d=9 D=10
+group: PSL(2,71) [order 178920] x Z_67; |G| = 11987640, vertices 2|G| = 23975280
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 11987640 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.9s]
+BFS from A: ecc=10 reached 23975280 of 23975280 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36804, 291027, 2132412, 9252058, 9817839, 2439874] [1.9s]
+BFS from B: ecc=10 reached 23975280 of 23975280 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36804, 291027, 2132412, 9252867, 9817839, 2439065] [3.0s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 3.0s
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=23975280
+(exit 0)
+[exit 0; wall 3.0s]
+== d14D10_sl_139_247_orb3_FAST1_s1 (origin/claude/structured-search-orbit-w5dd4f, 00:11 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-24T06:38:14Z
+file: research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ 2df81f8a7); sha256 d1a8de0c43ab7c28822a2e9f5348a0413e7c6cff15e2b8f26e31fc2704c89ffd
+header: 14 10 sl 139 n 247 N 663313560
+
+################ reference checker: /tmp/hsl research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt
+from (e,A): reached A 663313560/663313560, B 663313560/663313560 within 10, ecc 10
+from (e,B): reached A 663313560/663313560, B 663313560/663313560 within 10, ecc 10
+VALID d=14 D=10 group=sl 139 x Z_247 N=663313560 vertices=1326627120 (distinct generators, 14-regular simple)
+(exit 0)
+[exit 0; wall 523.9s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt
+header: 14 10 sl 139 n 247 N 663313560
+d=14 D=10
+group: SL(2,139) [order 2685480] x Z_247; |G| = 663313560, vertices 2|G| = 1326627120
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 14 distinct group elements, all in the group [0.0s]
+neighbour check (full: 663313560 vertices per side): every vertex has 14 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [67.7s]
+BFS from A: ecc=10 reached 1326627120 of 1326627120 (unreached 0); level sizes [1, 14, 182, 2363, 30680, 398202, 5149931, 63770024, 480895688, 599142957, 177237078] [144.8s]
+BFS from B: ecc=10 reached 1326627120 of 1326627120 (unreached 0); level sizes [1, 14, 182, 2363, 30680, 398202, 5149901, 63770024, 480891598, 599142957, 177241198] [222.7s]
+max degree = min degree = 14, no repeated edges (checked above)
+elapsed 222.7s
+RESULT VALID d=14 D=10 eccA=10 eccB=10 n=1326627120
+(exit 0)
+[exit 0; wall 222.7s]
+== d16D9_sl_151_49_orb3_s1 (origin/claude/structured-search-orbit-w5dd4f, 00:11 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-24T06:38:14Z
+file: research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ 2df81f8a7); sha256 d1a8de0c43ab7c28822a2e9f5348a0413e7c6cff15e2b8f26e31fc2704c89ffd
+header: 14 10 sl 139 n 247 N 663313560
+
+################ reference checker: /tmp/hsl research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt
+from (e,A): reached A 168697200/168697200, B 168697200/168697200 within 9, ecc 9
+from (e,B): reached A 168697200/168697200, B 168697200/168697200 within 9, ecc 9
+VALID d=16 D=9 group=sl 151 x Z_49 N=168697200 vertices=337394400 (distinct generators, 16-regular simple)
+(exit 0)
+[exit 0; wall 139.0s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d16D9_sl_151_49_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d16D9_sl_151_49_orb3_s1.txt
+header: 16 9 sl 151 n 49 N 168697200
+d=16 D=9
+group: SL(2,151) [order 3442800] x Z_49; |G| = 168697200, vertices 2|G| = 337394400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 16 distinct group elements, all in the group [0.0s]
+neighbour check (full: 168697200 vertices per side): every vertex has 16 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [25.9s]
+BFS from A: ecc=9 reached 337394400 of 337394400 (unreached 0); level sizes [1, 16, 240, 3600, 54000, 808275, 11722660, 110919657, 156920299, 56965652] [57.6s]
+BFS from B: ecc=9 reached 337394400 of 337394400 (unreached 0); level sizes [1, 16, 240, 3600, 54000, 808275, 11722398, 110919657, 156920561, 56965652] [88.3s]
+max degree = min degree = 16, no repeated edges (checked above)
+elapsed 88.3s
+RESULT VALID d=16 D=9 eccA=9 eccB=9 n=337394400
+(exit 0)
+[exit 0; wall 88.3s]

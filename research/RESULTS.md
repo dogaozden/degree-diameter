@@ -159,3 +159,10 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 23 23:11 PT (harvest): (9,10) 23,725,584 (was 23,142,048), psl 73 n 61; claude/structured-search-orbit-w5dd4f.
 - Oct 23 23:11 PT (harvest): (14,10) 1,316,504,400 (was 1,308,373,248), sl 149 n 199; claude/structured-search-orbit-w5dd4f.
+
+- Oct 24 00:11 PT (harvest): (7,10) 2,237,760 (was 2,234,400), prod psl 5 sl 8 poly x^3+x+1 n 37; claude/degree-diameter-table-squad-0xgp3g.
+- Oct 24 00:11 PT (harvest): (8,9) 1,320,120 (was 1,316,016), psl 19 n 193; claude/degree-diameter-table-squad-0xgp3g.
+- Oct 24 00:11 PT (harvest): (8,10) 7,818,096 (was 7,802,160), sl 67 n 13; claude/degree-diameter-table-squad-0xgp3g.
+- Oct 24 00:11 PT (harvest): (9,10) 23,975,280 (was 23,725,584), psl 71 n 67; claude/structured-search-orbit-w5dd4f.
+- Oct 24 00:11 PT (harvest): (14,10) 1,326,627,120 (was 1,316,504,400), sl 139 n 247; claude/structured-search-orbit-w5dd4f.
+- Oct 24 00:11 PT (harvest): (16,9) 337,394,400 (was 324,164,400), sl 151 n 49; claude/structured-search-orbit-w5dd4f.
