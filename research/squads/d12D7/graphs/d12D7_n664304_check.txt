@@ -22,5 +22,7 @@ sha256 of the canonical sorted edge list (uncompressed): 2eb631995dda1901178b9c4
    sources 132864 (one per shift orbit), max eccentricity 7, pairs beyond D=7: 0
    RESULT VALID d=12 D=7 n=664304 (diameter 7)
 
-4. apsp.c (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry): running at the time of writing; result
-   appended below when it finishes.
+4. apsp.c (research/lifts/coordinator_check/apsp.c, copied to research/squads/d12D7-r1/tools/; all pairs, bit-parallel,
+   no symmetry assumed; single thread, about 70 minutes), on gadget.c's edge list (same edge set as the .gz):
+   n=664304 edges=3985810 degree min=5 max=12 bipartite=yes diameter=7
+   RESULT VALID d=12 D=7 n=664304
