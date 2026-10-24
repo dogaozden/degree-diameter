@@ -1,0 +1,15 @@
+=== sl 61 x Z331
+RANDORB d=11 D=10 group=sl 61 x Z_331 N=75110520 k=5 m=2 f=1 fix=59 samples=30 min=20 p1=20 p10=25 median=51 mean=75.13 var=12311.5 mu=28.26 time=4.6
+RANDORB hist (cost/k): 0 0 0 0 3 3 3 3 0 2 4 2 4 1 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2
+RANDORB cost0=0 of 30 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+rc=0
+=== sl 41 x Z1091
+RANDORB d=11 D=10 group=sl 41 x Z_1091 N=75148080 k=5 m=2 f=1 fix=39 samples=30 min=36 p1=36 p10=42 median=67 mean=96.80 var=9521.4 mu=28.48 time=6.8
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 1 3 4 0 4 3 1 1 1 3 0 1 1 1 0 0 1 1 1 1 0 0 0 0 2
+RANDORB cost0=0 of 30 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+rc=0
+=== sl 71 x Z211
+RANDORB d=11 D=10 group=sl 71 x Z_211 N=75504240 k=5 m=2 f=1 fix=69 samples=30 min=18 p1=18 p10=26 median=52 mean=91.53 var=18222.4 mu=30.69 time=7.5
+RANDORB hist (cost/k): 0 0 0 1 2 3 2 3 3 1 3 3 0 2 1 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 3
+RANDORB cost0=0 of 30 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1
+rc=0

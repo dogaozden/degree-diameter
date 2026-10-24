@@ -1,0 +1,10 @@
+group psl 59 x Z_11, N=1129260, identity 18821, H order 59, rows 19140, threads 1, setup 0.03s
+wide rows: HW order 165, rows 6844, setup 0.05s
+alpha: conj by mat(8,14,10,25) (index 26914), z -> 3 z on Z_11
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 29 (+e); mu = 60.21, mu/k = 12.04, fixed-point misses ~ 4.19
+ORBW=5: an uncovered fixed element weighs 5; start energy 55
+start cost=39
+t=30 steps=500 evals=4001 cost=20 best=20 T=0.53 energy=20 bestE=20
+t=60 steps=996 evals=7969 cost=11 best=11 T=0.19 energy=15 bestE=15
+MT=3: intersections built 996, mean targets 2.97, mean intersection 3815.0, empty 0
+RESULT d=11 D=8 group=psl 59 x Z_11 N=1129260 best=11 evals=7969 time=60.1 orbit k=5 m=2 f=1 fix=29

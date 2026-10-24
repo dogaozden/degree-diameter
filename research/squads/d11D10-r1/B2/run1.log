@@ -1,0 +1,8 @@
+group sl 9 poly x^2+1 x Z_7, N=5040, identity 504, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.01s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 17 (+e); mu = 0.00, mu/k = 0.00, fixed-point misses ~ 0.00
+start cost=0
+RESULT d=11 D=7 group=sl 9 poly x^2+1 x Z_7 N=5040 best=0 evals=1 time=0.0 orbit k=3 m=3 f=2 fix=17
+full diameter check: OK
+wrote d11D10_sl_9_7_orb3_B2test_s1.txt

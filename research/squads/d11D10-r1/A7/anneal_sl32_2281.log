@@ -1,0 +1,18 @@
+group sl 32 poly x^5+x^2+1 x Z_2281, N=74670816, identity 2262752, H order 33, rows 2262752, threads 1, setup 3.08s
+wide rows: no cyclic subgroup of order >= 64 found (best 33); using haar_gen3's evaluation
+alpha: Frobenius x -> x^2 on entries, z -> 342 z on Z_2281
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 25.75, mu/k = 5.15, fixed-point misses ~ 0.31
+ORBW=5: an uncovered fixed element weighs 5; start energy 220
+start cost=220
+t=31 steps=10 evals=81 cost=30 best=30 T=0.51 energy=30 bestE=30
+t=63 steps=19 evals=153 cost=30 best=30 T=0.17 energy=30 bestE=30
+t=97 steps=28 evals=225 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=128 steps=37 evals=297 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=158 steps=45 evals=361 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=190 steps=54 evals=433 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=222 steps=63 evals=505 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=254 steps=72 evals=577 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=285 steps=80 evals=641 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=317 steps=88 evals=705 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=351 steps=97 evals=777 cost=10 best=10 T=0.15 energy=10 bestE=10
+RESULT d=11 D=10 group=sl 32 poly x^5+x^2+1 x Z_2281 N=74670816 best=10 evals=801 time=361.4 orbit k=5 m=2 f=1 fix=5

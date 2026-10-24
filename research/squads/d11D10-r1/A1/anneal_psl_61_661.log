@@ -1,0 +1,26 @@
+group psl 61 x Z_661, N=74997060, identity 1209630, H order 61, rows 1229460, threads 1, setup 2.30s
+wide rows: no cyclic subgroup of order >= 64 found (best 61); using haar_gen3's evaluation
+alpha: conj by mat(7,44,57,36) (index 26897), z -> 197 z on Z_661
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 29 (+e); mu = 27.59, mu/k = 5.52, fixed-point misses ~ 1.55
+ORBW=5: an uncovered fixed element weighs 5; start energy 50
+start cost=50
+t=31 steps=27 evals=217 cost=7 best=15 T=0.52 energy=15 bestE=15
+t=61 steps=55 evals=441 cost=15 best=15 T=0.18 energy=15 bestE=15
+t=92 steps=83 evals=665 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=122 steps=112 evals=897 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=152 steps=140 evals=1121 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=182 steps=168 evals=1345 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=213 steps=195 evals=1561 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=244 steps=220 evals=1761 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=275 steps=242 evals=1937 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=305 steps=264 evals=2113 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=336 steps=286 evals=2289 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=366 steps=307 evals=2457 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=397 steps=329 evals=2633 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=428 steps=352 evals=2817 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=459 steps=375 evals=3001 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=490 steps=399 evals=3193 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=521 steps=421 evals=3369 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=552 steps=445 evals=3561 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=583 steps=468 evals=3745 cost=5 best=5 T=0.15 energy=5 bestE=5
+RESULT d=11 D=10 group=psl 61 x Z_661 N=74997060 best=5 evals=3857 time=601.2 orbit k=5 m=2 f=1 fix=29

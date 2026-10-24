@@ -1,0 +1,24 @@
+[d6D10_psl_23_38] mine rc=0: VALID d=6 D=10 vertices=461472 eccA=10 eccB=10
+[d6D10_psl_23_38] haarcheck_psl rc=0: VALID d=6 D=10 group=psl 23 x Z_38 N=230736 vertices=461472 (distinct generators, 6-regular simple)
+[d6D10_psl_29_19] mine rc=0: VALID d=6 D=10 vertices=462840 eccA=10 eccB=10
+[d6D10_psl_29_19] haarcheck_psl rc=0: VALID d=6 D=10 group=psl 29 x Z_19 N=231420 vertices=462840 (distinct generators, 6-regular simple)
+[d8D8_psl_31_7] mine rc=0: VALID d=8 D=8 vertices=208320 eccA=8 eccB=8
+[d8D8_psl_31_7] haarcheck_psl rc=0: VALID d=8 D=8 group=psl 31 x Z_7 N=104160 vertices=208320 (distinct generators, 8-regular simple)
+[corrupt_entry] mine rc=1: INVALID reason=generator 2 has det != 1 mod p
+[corrupt_entry] haarcheck_psl rc=2: bad element: 172534 mat(9,2,9,21) z=14
+[corrupt_repeat] mine rc=0: VALID d=6 D=10 vertices=461472 eccA=10 eccB=10
+[corrupt_repeat] haarcheck_psl rc=0: VALID d=6 D=10 group=psl 23 x Z_38 N=230736 vertices=461472 (distinct generators, 6-regular simple)
+[dminus1_D9] mine rc=1: INVALID d=6 D=9 vertices=461472 reason=diameter exceeds D eccA=10 eccB=10
+[dminus1_D9] haarcheck_psl rc=1: INVALID d=6 D=9 group=psl 23 x Z_38 N=230736 vertices=461472 (distinct generators, 6-regular simple)
+=== BIG mine 19:17:38
+group=psl 149 x Z_43 |PSL|=1653900 |G|=71117700 vertices=142235400 W=1 d=11 tables_s=0.77
+bfs from (e,A): ecc=10 reached=142235400 of 142235400 (0.83 s)
+bfs from (e,B): ecc=10 reached=142235400 of 142235400 (0.76 s)
+VALID d=11 D=10 vertices=142235400 eccA=10 eccB=10
+rc=0
+=== done mine 19:17:40
+=== BIG haarcheck_psl 19:17:40
+from (e,B): reached A 71117700/71117700, B 71117700/71117700 within 10, ecc 10
+VALID d=11 D=10 group=psl 149 x Z_43 N=71117700 vertices=142235400 (distinct generators, 11-regular simple)
+rc=0
+=== done haarcheck 19:19:17

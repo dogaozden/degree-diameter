@@ -18,3 +18,32 @@ Cards: A1 k = 5 PSL small p, large n · A2 k = 5 PSL medium p · A3 k = 5 SL · 
 A5 k = 3 SL on A3's groups · A6 α pairings (AR/ALPHA) · A7 Frobenius α on SL(2,32) × Z_n · A8 search wildcard ·
 B1 second PSL checker · B2 prime-power checker · B3 PGL checker · B4 ball-growth census · B5 speed knobs ·
 B6 better orbit moves · B7 theory/plan · B8 open wildcard.
+
+### Round 1 outcomes (best score per card; costs are uncovered elements, μ at the card's group)
+
+- A1 k = 5 PSL small p: no solve. PSL(2,61) × Z661 (μ 27.6) best 5 after 3,857 evaluations. RANDORB-150 medians
+  62 / 46 / 91 for PSL(2,41) × Z2161, PSL(2,61) × Z661, PSL(2,41) × Z2201: a large cyclic factor hurts.
+- **A2 k = 5 PSL medium p: 148,729,680 VALID** (PSL(2,89) × Z211, μ 24.1, 609 evaluations; haarcheck_psl and pqcheck).
+- A3 k = 5 SL: no solve. SL(2,61) × Z331 (μ 28.3) stuck at one uncovered α-fixed element (4,241 evaluations).
+- A4 k = 3 PSL: no solve. RANDORB medians are about twice k = 5's on the same groups; PSL(2,127) × Z73 best 3.
+- A5 k = 3 SL: screens only (medians 40–66 at μ ≈ 28), no anneal inside the box.
+- A6 α pairings: only two of the four AR choices are inequivalent (r ~ r⁴ and r² ~ r³, a Weyl element inverts g), as
+  predicted; medians 42 vs 46 at 200 samples; the anneal stopped at two α-fixed elements.
+- A7 Frobenius α on SL(2,32) × Z_n: worse (median 110 at μ 31.7; small Q, n ≈ 2,300).
+- A8 one α-orbit of size 11 (k = 11, f = 0) on PSL(2,23) × Z12409: hopeless (RANDORB minimum 10,884 at μ 29.7).
+- B1 second PSL checker (pslcheck_b1): validated; 142,235,400 VALID.
+- B2 prime-power checker (haarcheck_pq): agrees with build_haar2.py on 17/17 files.
+- B3 PGL checker: see its folder (report pending at the time of writing).
+- B4 ball-growth census: typical samples grow like random words to level 8; the excess cost comes from a tail of
+  degenerate S.
+- B5 speed: FAST=1 is about 1.25× faster than the default on PSL(2,101) × Z151 (re-measured by Opus: 0.19 vs 0.21 s per
+  evaluation; identical trace hash); on PSL(2,243) × Z11 the default is 2× faster.
+- B6 better orbit moves: see its folder.
+- B7 plan: recommended PSL(2,41) × Z2251 from the model; the measured screens contradict it (large n).
+- B8 metacyclic Z_p ⋊ Z5: not screened (slow evaluation path, gate timeout).
+
+Kept: k = 5 with large |Q| and small n (PSL(2,89) × Z211, PSL(2,101) × Z151), and Frobenius α on PSL(2,243) × Z11 (Opus
+screen: median 66 at μ 60.6, the best ratio to μ of any group, 11 α-fixed elements). Opus runs after the round:
+PSL(2,101) × Z151 (155.6M, μ 48.6) reached two uncovered α-fixed elements after 3,601 evaluations and is being
+continued from its checkpoint plus a second seed; PSL(2,243) × Z11 (157.8M) runs alongside.
+Opus wrote research/squads/d11D10-r1/opus/pqcheck.c, a third independent checker (SL/PSL over any GF(q)).

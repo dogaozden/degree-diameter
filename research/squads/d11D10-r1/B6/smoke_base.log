@@ -1,0 +1,8 @@
+group psl 59 x Z_11, N=1129260, identity 18821, H order 59, rows 19140, threads 1, setup 0.07s
+wide rows: HW order 165, rows 6844, setup 0.13s
+alpha: conj by mat(8,14,10,25) (index 26914), z -> 3 z on Z_11
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 29 (+e); mu = 60.21, mu/k = 12.04, fixed-point misses ~ 4.19
+ORBW=5: an uncovered fixed element weighs 5; start energy 280
+start cost=260
+TRACE steps=150 hash=0258772caa136583 best=10 evals=1201
+RESULT d=11 D=8 group=psl 59 x Z_11 N=1129260 best=10 evals=1201 time=2.6 orbit k=5 m=2 f=1 fix=29

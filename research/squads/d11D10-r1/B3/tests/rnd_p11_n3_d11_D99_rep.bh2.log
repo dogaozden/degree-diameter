@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/frontier/build_haar2.py", line 443, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/frontier/build_haar2.py", line 365, in main
+    assert len(S) == d and len(set(S)) == d, "generators must be d distinct elements"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: generators must be d distinct elements

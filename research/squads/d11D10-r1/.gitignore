@@ -1,0 +1,10 @@
+# compiled binaries and runtime state of the round
+B1/pslcheck_b1
+B2/haarcheck_pq
+B3/haarcheck_pgl
+B6/haar_sym_b6
+B8/metacheck
+opus/pqcheck
+slots/*.lock
+*.ckpt
+*.ckpt.tmp

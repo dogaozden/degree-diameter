@@ -1,0 +1,11 @@
+group psl 79 x Z_311, N=76655280, identity 958191, H order 40, rows 1916382, threads 1, setup 2.62s
+wide rows: HW order 79, rows 970320, setup 4.96s
+alpha: conj by mat(11,66,63,19) (index 70768), z -> 6 z on Z_311
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 39 (+e); mu = 38.86, mu/k = 7.77, fixed-point misses ~ 2.20
+levels: 11 111 1111 11111 110901 1098456 10197541 57071499 76654628 cost 652
+levels: 11 111 1111 11111 110962 1101823 10321284 58561077 76655255 cost 25
+levels: 11 111 1111 11091 110037 1077528 9660343 52355366 76647915 cost 7365
+RANDORB d=11 D=10 group=psl 79 x Z_311 N=76655280 k=5 m=2 f=1 fix=39 samples=3 min=25 p1=25 p10=25 median=652 mean=2680.67 var=11037010.9 mu=38.86 time=1.1
+RANDORB hist (cost/k): 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2
+RANDORB cost0=0 of 3 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+B4_INSIDE_SECONDS 9.77 rc=0

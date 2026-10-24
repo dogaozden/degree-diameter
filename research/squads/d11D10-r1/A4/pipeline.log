@@ -1,0 +1,15 @@
+19:19:17 pipeline start (slot taken)
+19:19:17 RANDORB psl 61 x Z661
+19:19:29 RANDORB psl 61 x Z661 rc=0
+RANDORB d=11 D=10 group=psl 61 x Z_661 N=74997060 k=3 m=3 f=2 fix=29 samples=30 min=30 p1=30 p10=36 median=78 mean=200654.60 var=764674189108.0 mu=27.59 time=7.0
+19:19:29 RANDORB psl 71 x Z421
+19:19:46 RANDORB psl 71 x Z421 rc=0
+RANDORB d=11 D=10 group=psl 71 x Z_421 N=75325320 k=3 m=3 f=2 fix=35 samples=30 min=27 p1=27 p10=45 median=91 mean=48935.80 var=45709566629.2 mu=29.56 time=9.9
+19:19:46 RANDORB psl 127 x Z73
+19:20:03 RANDORB psl 127 x Z73 rc=0
+RANDORB d=11 D=10 group=psl 127 x Z_73 N=74761344 k=3 m=3 f=2 fix=62 samples=30 min=6 p1=6 p10=24 median=45 mean=80.23 var=48756.4 mu=26.25 time=9.2
+19:20:03 ANNEAL psl 127 x Z73 (min 6, median 45, mu 26.25) ORBIT=3 3 2 for 600 s
+19:30:18 ANNEAL rc=1
+start cost=12
+RESULT d=11 D=10 group=psl 127 x Z_73 N=74761344 best=3 evals=2745 time=601.2 orbit k=3 m=3 f=2 fix=62
+19:30:18 PIPELINE DONE

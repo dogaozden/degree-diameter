@@ -1,0 +1,15 @@
+run	group	fast	hwmin	hwmax	pfd	setup_s	wide	evals	time_s	us_per_eval	evals_per_s	hash	best	load1	status
+psl_f1	psl	1	64	256	8	3.15	none	81	29.8	367901	2.718	500317dd53f02844	31	7.77	ok
+psl_def	psl	2	64	256	8	2.92	wide rows: HW order 151 rows 515100 setup 5.57s	81	39.1	482716	2.072	500317dd53f02844	31	7.51	ok
+sl_f1	sl	1	64	256	8	3.16	none	81	36.2	446914	2.238	5d921006daa1af83	12	7.56	ok
+sl_def	sl	2	64	256	8	3.63	wide rows: HW order 158 rows 471120 setup 6.79s	81	15.1	186420	5.364	5d921006daa1af83	12	8.04	ok
+psl_pfd0	psl	2	64	256	0	3.26	wide rows: HW order 151 rows 515100 setup 5.97s	81	56.2	693827	1.441	500317dd53f02844	31	8.40	ok
+sl_pfd0	sl	2	64	256	0	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.0
+psl_pfd16	psl	2	64	256	16	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.0
+sl_pfd16	sl	2	64	256	16	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+psl_hwmax128	psl	2	64	128	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+sl_hwmax128	sl	2	64	128	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+psl_hw32_64	psl	2	32	64	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+sl_hw32_64	sl	2	32	64	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+psl_def2	psl	2	64	256	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1
+sl_def2	sl	2	64	256	8	-	-	-	-	-	-	-	-	8.72	SKIPPED at driver t=228.1

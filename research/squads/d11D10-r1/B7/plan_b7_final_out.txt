@@ -1,0 +1,19 @@
+# per family, largest vertices with hours <= 4: raw (no structure check) | corrected, x <= 0.03
+conj/PSL     k=3 | raw 153990840 (PSL(2,5) n=1283257, h=4.00, x=12.662) | corr-safe 152958960 (PSL(2,89) n=217, h=2.61, muA=13.05)
+conj/PSL     k=5 | raw 157332120 (PSL(2,11) n=119191, h=3.98, x=0.507) | corr-safe 155048880 (PSL(2,41) n=2251, h=2.65, muA=11.01)
+conj/SL      k=3 | raw 153973680 (SL(2,5) n=641557, h=4.00, x=6.331) | corr-safe 153168720 (SL(2,59) n=373, h=3.42, muA=13.59)
+conj/SL      k=5 | raw 157056240 (SL(2,11) n=59491, h=3.95, x=0.254) | corr-safe 154978320 (SL(2,29) n=3181, h=3.96, muA=11.81)
+frob/PSL     k=5 | raw none | corr-safe none
+frob/SL      k=5 | raw 155888832 (SL(2,32) frob n=2381, h=1.90, x=0.010) | corr-safe 155888832 (SL(2,32) frob n=2381, h=2.78, muA=11.09)
+
+# top 10 structure-safe runs (corrected hours <= 4)
+ 1 | SL(2,32) frob k=5 n=2381 | vert=155888832 N=77944416 | |H|=32736 F=6 | mu=50.22 | muA raw=10.33 corr=11.09 | evals raw=2.63e+04 corr=3.85e+04 | hours raw=1.90 corr=2.78 | x=0.010
+ 2 | SL(2,32) frob k=5 n=2371 | vert=155234112 N=77617056 | |H|=32736 F=6 | mu=47.09 | muA raw=9.70 corr=10.42 | evals raw=1.92e+04 corr=2.75e+04 | hours raw=1.38 corr=1.98 | x=0.010
+ 3 | PSL(2,41) k=5 n=2251 | vert=155048880 N=77524440 | |H|=34440 F=20 | mu=46.23 | muA raw=10.33 corr=11.01 | evals raw=2.63e+04 corr=3.69e+04 | hours raw=1.89 corr=2.65 | x=0.010
+ 4 | SL(2,29) k=5 n=3181 | vert=154978320 N=77489160 | |H|=24360 F=30 | mu=45.91 | muA raw=10.83 corr=11.81 | evals raw=3.38e+04 corr=5.51e+04 | hours raw=2.42 corr=3.96 | x=0.014
+ 5 | PSL(2,71) k=5 n=431 | vert=154229040 N=77114520 | |H|=178920 F=35 | mu=42.62 | muA raw=10.43 corr=10.55 | evals raw=2.76e+04 corr=2.94e+04 | hours raw=1.97 corr=2.10 | x=0.002
+ 6 | SL(2,31) k=5 n=2591 | vert=154216320 N=77108160 | |H|=29760 F=30 | mu=42.56 | muA raw=10.14 corr=10.88 | evals raw=2.39e+04 corr=3.46e+04 | hours raw=1.71 corr=2.47 | x=0.011
+ 7 | PSL(2,59) k=5 n=751 | vert=154195320 N=77097660 | |H|=102660 F=30 | mu=42.47 | muA raw=10.12 corr=10.33 | evals raw=2.37e+04 corr=2.63e+04 | hours raw=1.69 corr=1.88 | x=0.003
+ 8 | SL(2,32) frob k=5 n=2351 | vert=153924672 N=76962336 | |H|=32736 F=6 | mu=41.34 | muA raw=8.55 corr=9.18 | evals raw=1.08e+04 corr=1.48e+04 | hours raw=0.77 corr=1.06 | x=0.010
+ 9 | PSL(2,31) k=5 n=5171 | vert=153888960 N=76944480 | |H|=14880 F=15 | mu=41.19 | muA raw=9.02 corr=10.48 | evals raw=1.37e+04 corr=2.84e+04 | hours raw=0.97 corr=2.03 | x=0.023
+10 | PSL(2,29) k=5 n=6311 | vert=153735960 N=76867980 | |H|=12180 F=15 | mu=40.56 | muA raw=8.89 corr=10.69 | evals raw=1.28e+04 corr=3.14e+04 | hours raw=0.91 corr=2.24 | x=0.027

@@ -1,0 +1,7 @@
+group psl 101 x Z_151, N=77780100, identity 762550, H order 51, rows 1525100, threads 1, setup 3.15s
+alpha: conj by mat(38,25,34,41) (index 385046), z -> 8 z on Z_151
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 49 (+e); mu = 48.62, mu/k = 9.72, fixed-point misses ~ 2.87
+ORBW=5: an uncovered fixed element weighs 5; start energy 70
+start cost=66
+TRACE steps=10 hash=500317dd53f02844 best=31 evals=81
+RESULT d=11 D=10 group=psl 101 x Z_151 N=77780100 best=31 evals=81 time=29.8 orbit k=5 m=2 f=1 fix=49

@@ -1,0 +1,7 @@
+group sl 101 x Z_73, N=75204600, identity 737300, H order 51, rows 1474600, threads 1, setup 1.71s
+wide rows: HW order 219, rows 343400, setup 3.00s
+alpha: conj by mat(16,1,30,84) (index 163246), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 101 (+e); mu = 28.82, mu/k = 9.61, fixed-point misses ~ 0.74
+RANDORB d=11 D=10 group=sl 101 x Z_73 N=75204600 k=3 m=3 f=2 fix=101 samples=30 min=21 p1=21 p10=31 median=40 mean=336.53 var=1989229.3 mu=28.82 time=6.6
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 1 2 0 2 2 5 4 4 0 0 0 0 0 1 0 0 1 1 1 1 1 0 1 0 3
+RANDORB cost0=0 of 30 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

@@ -1,0 +1,3 @@
+big: checker D=99 -> VALID d=11 D=99 vertices=1747200 eccA=9 eccB=9; tight D=9
+tight: checker rc=0 VALID d=11 D=9 vertices=1747200 eccA=9 eccB=9 time=2.3s
+tight: build_haar2 rc=0 VALID d=11 D=9 group=pgl 13 x Z_400 N=873600 vertices=1747200 ecc from A = 9 ecc from B = 9 

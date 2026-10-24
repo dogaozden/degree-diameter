@@ -1,0 +1,11 @@
+group psl 59 x Z_761, N=78124260, identity 1302071, H order 59, rows 1324140, threads 1, setup 2.23s
+wide rows: no cyclic subgroup of order >= 64 found (best 59); using haar_gen3's evaluation
+alpha: conj by mat(8,14,10,25) (index 26914), z -> 67 z on Z_761
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 29 (+e); mu = 52.01, mu/k = 10.40, fixed-point misses ~ 1.74
+levels: 11 111 1111 11111 111081 1102836 10327156 59070065 78124203 cost 57
+levels: 11 111 1111 11111 111036 1102631 10333897 59128232 78124205 cost 55
+levels: 11 111 1111 11111 111006 1101461 10308667 58996825 78124208 cost 52
+RANDORB d=11 D=10 group=psl 59 x Z_761 N=78124260 k=5 m=2 f=1 fix=29 samples=3 min=52 p1=52 p10=52 median=55 mean=54.67 var=4.2 mu=52.01 time=1.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+RANDORB cost0=0 of 3 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+B4_INSIDE_SECONDS 6.98 rc=0

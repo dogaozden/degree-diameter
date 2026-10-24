@@ -1,0 +1,12 @@
+group sl 61 x Z_331, N=75110520, identity 1211460, H order 62, rows 1211460, threads 1, setup 2.12s
+wide rows: HW order 122, rows 615660, setup 5.09s
+alpha: conj by mat(24,27,20,20) (index 90910), z -> 64 z on Z_331
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 59 (+e); mu = 28.26, mu/k = 5.65, fixed-point misses ~ 3.11
+group sl 41 x Z_1091, N=75148080, identity 1789240, H order 42, rows 1789240, threads 1, setup 1.66s
+wide rows: HW order 82, rows 916440, setup 4.11s
+alpha: conj by mat(32,37,26,16) (index 55294), z -> 93 z on Z_1091
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 39 (+e); mu = 28.48, mu/k = 5.70, fixed-point misses ~ 2.08
+group sl 71 x Z_211, N=75504240, identity 1048670, H order 36, rows 2097340, threads 1, setup 1.62s
+wide rows: HW order 211, rows 357840, setup 2.93s
+alpha: conj by mat(5,0,51,57) (index 25185), z -> 55 z on Z_211
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 69 (+e); mu = 30.69, mu/k = 6.14, fixed-point misses ~ 3.69

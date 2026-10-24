@@ -1,0 +1,8 @@
+group psl 41 x Z_2201, N=75802440, identity 1804820, H order 62, rows 1222620, threads 1, setup 1.52s
+wide rows: HW order 217, rows 349320, setup 3.92s
+alpha: conj by mat(0,8,5,7) (index 294), z -> 128 z on Z_2201
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 19 (+e); mu = 32.64, mu/k = 6.53, fixed-point misses ~ 1.07
+RANDORB d=11 D=10 group=psl 41 x Z_2201 N=75802440 k=5 m=2 f=1 fix=19 samples=30 min=31 p1=31 p10=46 median=88 mean=8703.97 var=2104316807.6 mu=32.64 time=3.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 1 2 0 1 0 2 1 2 2 3 0 2 1 1 1 1 0 1 0 0 0 0 1 0 0 8
+RANDORB cost0=0 of 30 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+rc=0

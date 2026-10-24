@@ -1,0 +1,24 @@
+base/rnd_p11_n3_d11_D99.txt: checker ecc A=6 B=6 -> tight D=6
+variants of rnd_p11_n3_d11_D99 written with D = 6
+base/rnd_p13_n2_d11_D99.txt: checker ecc A=6 B=6 -> tight D=6
+variants of rnd_p13_n2_d11_D99 written with D = 6
+base/rnd_p5_n7_d11_D99.txt: checker ecc A=5 B=5 -> tight D=5
+variants of rnd_p5_n7_d11_D99 written with D = 5
+base/rnd_p7_n5_d11_D99.txt: checker ecc A=6 B=6 -> tight D=6
+variants of rnd_p7_n5_d11_D99 written with D = 6
+rnd_p11_n3_d11_D99_D5.txt | build_haar2 rc=1: INVALID d=11 D=5 group=pgl 11 x Z_3 N=3960 vertices=7920 | checker rc=1: INVALID d=11 D=5 vertices=7920 eccA=6 eccB=6 unreached=0,0 |AGREE ecc-match
+rnd_p11_n3_d11_D99_D6.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 11 x Z_3 N=3960 vertices=7920 | checker rc=0: VALID d=11 D=6 vertices=7920 eccA=6 eccB=6 |AGREE ecc-match
+rnd_p11_n3_d11_D99_rep.txt | build_haar2 rc=1: no VALID/INVALID line (exception?) | checker rc=1: INVALID reason=repeated generator |AGREE
+rnd_p11_n3_d11_D99_zc.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 11 x Z_3 N=3960 vertices=7920 | checker rc=0: VALID d=11 D=6 vertices=7920 eccA=6 eccB=6 |AGREE ecc-match
+rnd_p13_n2_d11_D99_D5.txt | build_haar2 rc=1: INVALID d=11 D=5 group=pgl 13 x Z_2 N=4368 vertices=8736 | checker rc=1: INVALID d=11 D=5 vertices=8736 eccA=6 eccB=6 unreached=0,0 |AGREE ecc-match
+rnd_p13_n2_d11_D99_D6.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 13 x Z_2 N=4368 vertices=8736 | checker rc=0: VALID d=11 D=6 vertices=8736 eccA=6 eccB=6 |AGREE ecc-match
+rnd_p13_n2_d11_D99_rep.txt | build_haar2 rc=1: no VALID/INVALID line (exception?) | checker rc=1: INVALID reason=repeated generator |AGREE
+rnd_p13_n2_d11_D99_zc.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 13 x Z_2 N=4368 vertices=8736 | checker rc=0: VALID d=11 D=6 vertices=8736 eccA=6 eccB=6 |AGREE ecc-match
+rnd_p5_n7_d11_D99_D4.txt | build_haar2 rc=1: INVALID d=11 D=4 group=pgl 5 x Z_7 N=840 vertices=1680 | checker rc=1: INVALID d=11 D=4 vertices=1680 eccA=5 eccB=5 unreached=0,0 |AGREE ecc-match
+rnd_p5_n7_d11_D99_D5.txt | build_haar2 rc=0: VALID d=11 D=5 group=pgl 5 x Z_7 N=840 vertices=1680 | checker rc=0: VALID d=11 D=5 vertices=1680 eccA=5 eccB=5 |AGREE ecc-match
+rnd_p5_n7_d11_D99_rep.txt | build_haar2 rc=1: no VALID/INVALID line (exception?) | checker rc=1: INVALID reason=repeated generator |AGREE
+rnd_p5_n7_d11_D99_zc.txt | build_haar2 rc=0: VALID d=11 D=5 group=pgl 5 x Z_7 N=840 vertices=1680 | checker rc=0: VALID d=11 D=5 vertices=1680 eccA=5 eccB=5 |AGREE ecc-match
+rnd_p7_n5_d11_D99_D5.txt | build_haar2 rc=1: INVALID d=11 D=5 group=pgl 7 x Z_5 N=1680 vertices=3360 | checker rc=1: INVALID d=11 D=5 vertices=3360 eccA=6 eccB=6 unreached=0,0 |AGREE ecc-match
+rnd_p7_n5_d11_D99_D6.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 7 x Z_5 N=1680 vertices=3360 | checker rc=0: VALID d=11 D=6 vertices=3360 eccA=6 eccB=6 |AGREE ecc-match
+rnd_p7_n5_d11_D99_rep.txt | build_haar2 rc=1: no VALID/INVALID line (exception?) | checker rc=1: INVALID reason=repeated generator |AGREE
+rnd_p7_n5_d11_D99_zc.txt | build_haar2 rc=0: VALID d=11 D=6 group=pgl 7 x Z_5 N=1680 vertices=3360 | checker rc=0: VALID d=11 D=6 vertices=3360 eccA=6 eccB=6 |AGREE ecc-match

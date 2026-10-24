@@ -1,0 +1,6 @@
+group sl 79 x Z_151, N=74436960, identity 930462, H order 40, rows 1860924, threads 1, setup 3.16s
+alpha: conj by mat(40,1,19,40) (index 249659), z -> 32 z on Z_151
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 77 (+e); mu = 24.50, mu/k = 8.17, fixed-point misses ~ 0.54
+start cost=39
+TRACE steps=10 hash=5d921006daa1af83 best=12 evals=81
+RESULT d=11 D=10 group=sl 79 x Z_151 N=74436960 best=12 evals=81 time=36.2 orbit k=3 m=3 f=2 fix=77

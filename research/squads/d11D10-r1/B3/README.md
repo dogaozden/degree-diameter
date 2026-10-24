@@ -1,0 +1,1 @@
+`./haarcheck_pgl SOLUTION.txt`: exact, bitset-BFS diameter check of a `pgl p` x Z_n Haar solution file (p odd prime; header `d D pgl p n NCYC N NTOT`); exit 0 and last line `VALID d=.. D=.. vertices=.. eccA=.. eccB=..` iff valid, else `INVALID ...`. Source: `haarcheck_pgl.c`; tests: `batch.sh` (vs `research/frontier/build_haar2.py`) and `big.sh`.
