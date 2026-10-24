@@ -1,0 +1,15 @@
+# (12,5) 11,664: builder r3/graphs/build_d12D5_n11664.py (stdlib only); same edge set as lift.py on the controller of squad card r3-chartlift/c2 (voltages r3/graphs/d12D5_n11664.volt: K3,3 + doubled matching over meta:3:8:2) + r3/k4q3_diag_cls1.txt (sorted-edge sha256 equal). A second, different controller (squad card c3: 4+4 base over Z3 x Z6, m = 72) also gives a valid 11,664 lift (apsp VALID).
+# edges file sha256 (builder output order): 072d48b1d289e0e2a478e6f15598f563deb37d6758be06b6a9ba8a530d1cdd6e
+== apsp.c (all pairs, bit-parallel BFS):
+n=11664 edges=69984 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=11664
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=11664 edges=69984 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 11664 ordered pairs
+  dist 1: 139968 ordered pairs
+  dist 2: 1353024 ordered pairs
+  dist 3: 12702096 ordered pairs
+  dist 4: 66659760 ordered pairs
+  dist 5: 55182384 ordered pairs
