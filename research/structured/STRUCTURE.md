@@ -380,3 +380,69 @@ candidate group either has a quotient without elements of order 5 (PSL(2,17), PS
 |Fix(α)| ≈ 100 (SL(2,5)² × Z41, e^(−λ/5) ≈ 0.16 each), or a cyclic factor of order 451–1,661 (SL(2,9) × Z821,
 SL(2,11) × Z451; random S on those already cost ~300). k = 3 needs μ/3 ≈ 21 there, beyond the wall. Not attempted
 further.
+
+## 9. Third session: testing the clumped-Poisson predictions (BEYOND_RANDOM.md)
+
+Third structured-search session, 2026-10-24, same container type (4 cores, 15 GB, not shared). Input: the theory
+note `research/theory/BEYOND_RANDOM.md` (branch `claude/cd-theory-beyond-random-3ybyf2`): P(valid) ≈ e^(−μ_A) with
+μ_A ≈ μ/k + fixed-point term, the random-S effort law with μ_A in place of μ, odd k only, order 5 at (11,9), (10,10)
+and (11,8), Frobenius as the route to large k, and +5–10 % in the big cells at a few core-hours each.
+
+New tools: `tools/plan_orbit.py` (μ_A, first-moment margin, predicted evaluations and hours per candidate group),
+`tools/effort_check.py` (the effort law on every orbit log), `FIXMIN=o` in haar_sym (fixed generators of order ≥ o
+only; unset, every trajectory is unchanged), and an exact cost-0 count and cost histogram in `RANDORB`.
+
+### 9.1 The effort law, on all earlier runs
+
+`tools/effort_check.py runs/*.log` (output `runs/s3_effort_check_prior.md`) computes μ_A for each of the 77 orbit runs
+of the first two sessions. μ_A = (μ − |Fix| e^(−λ))/k + |Fix| e^(−λ/k), with fixed involutions at odd D at rate
+λ/2k. It then compares the evaluations used with the theory's law 10⁵ e^((μ_A − 13)/2).
+
+- **Solved runs (71):** mean ln(evals/predicted) = −0.31, sd 2.1. A free fit on the 62 solved runs with ≥ 300
+  evaluations gives ln evals = 5.70 + 0.43 μ_A (slope se 0.07, residual sd 2.0). The law's values are 5.01 + 0.5 μ_A.
+  The theory session fitted 5.11 + 0.45 μ_A on 32 of these runs. **The law holds**, within its stated factor-5 scatter.
+- **By band:** μ_A < 5 (the big cells' cheap first rungs, 14 runs) solves faster than the law (mean −1.6). With
+  μ_A ≈ 3 a random symmetric S is valid with probability ≈ e^(−3)/(excess), so a few dozen evaluations suffice,
+  where the law extrapolates to ~600. μ_A 5–8: −0.7 (24 runs); μ_A 8–11: +1.4 (18 runs); μ_A 11–14: +0.4 (9 runs).
+- **Unsolved runs (13)** spent 2–10× the predicted effort (mean ln +1.6): the edge of each ladder, as the theory says.
+
+### 9.2 P(valid) of a random symmetric S, measured
+
+The claim P(valid) ≈ e^(−μ_A) can be checked directly where μ_A is small. On five groups with μ_A ≈ 3–4.5,
+`RANDORB=20000` counts how many random symmetric S are valid (log `runs/s3_poisson_randorb.txt`). Random S on the
+same groups (`RANDSAMPLE=3000`) has median cost 13–23 at μ = 7.5–12.3. At P ≈ e^(−μ) it would be valid about once in
+10⁴–10⁵ samples.
+
+| cell | group | k, f | μ | μ_A | valid / 20,000 | −ln P | −ln P / μ_A | random S median cost |
+|---|---|---|---|---|---|---|---|---|
+| (8,8) | PSL(2,19) × Z31 | 3, 2 | 12.3 | 4.49 | 38 | 6.27 | 1.40 | 22 |
+| (8,8) | PSL(2,17) × Z43 | 3, 2 | 11.4 | 4.19 | 32 | 6.44 | 1.54 | 23 |
+| (8,8) | PSL(2,25) × Z13 | 3, 2 | 7.8 | 3.06 | 162 | 4.82 | 1.57 | 13 |
+| (10,8) | PSL(2,29) × Z41 | 5, 0 | 10.4 | 3.71 | 127 | 5.06 | 1.36 | 15 |
+| (10,8) | SL(2,19) × Z71 | 5, 0 | 7.5 | 3.57 | 127 | 5.06 | 1.42 | 15 |
+
+- **The law holds with the random-S excess ε ≈ 1.4–1.6 in the exponent: P(valid) ≈ e^(−ε μ_A).** ε is the same
+  factor SIZE_LAW measures for random S (1.3–2). k = 5 fits as well as k = 3.
+- At small cost the histogram of cost/k is close to Poisson. For PSL(2,17) × Z43 the counts at 3, 6, 9 and 12
+  uncovered elements (1, 2, 3, 4 free orbits) are 124, 297, 484 and 590. Their ratios give a Poisson mean of ≈ 4.8
+  (the model's μ_A is 4.2). But 9–32 % of the symmetric S are degenerate (cost ≥ 31 orbits: 32 % at k = 3, f = 2 on
+  PSL(2,17) × Z43, 9 % at k = 5, f = 0 on PSL(2,29) × Z41), so the mean cost is ≫ μ_A. Not examined further; the
+  heavy tail of word losses in the theory note's §1.4 is the likely cause. The annealer leaves such S at once.
+- **Fixed generators of large order help** (the theory's item 4.5.3). With `FIXMIN=5` (the second fixed generator is
+  never of order 2 or 3) the valid counts go from 38 to 50, 32 to 49 and 162 to 237: P rises 1.3–1.5×.
+
+### 9.3 Big cells
+
+(runs in progress)
+
+### 9.4 Order 5
+
+(runs in progress)
+
+### 9.5 Frobenius for large k
+
+(runs in progress)
+
+### 9.6 Verdict on the predictions
+
+(runs in progress)
