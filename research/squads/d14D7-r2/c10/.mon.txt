@@ -1,0 +1,13 @@
+== baseline random scan
+c10_s1: q=7 j=1 m=3 Delta=9 units=45 n=117738 pairs beyond D = 0 randhub: NU=45 d=6 tries=1 same-side diameter 4
+== pack SA (seed 11, 90 s)
+== pack GROW=200 + SA (seed 12, 90 s)
+== check packing pk1
+VALID 46 flags, overlaps 0, non-incident 0
+== check packing pk2
+VALID 47 flags, overlaps 0, non-incident 0
+== type-2 cell with pk1
+c10_pk1: q=7 j=1 m=3 Delta=9 units=46 n=117740 pairs beyond D = 0 randhub: NU=46 d=6 tries=1 same-side diameter 4
+== type-2 cell with pk2
+c10_pk2: q=7 j=1 m=3 Delta=9 units=47 n=117742 pairs beyond D = 0 randhub: NU=47 d=6 tries=1 same-side diameter 4
+== done
