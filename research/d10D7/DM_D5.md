@@ -40,7 +40,7 @@ first moment is positive and joint annealing reaches 0 within minutes.
 | (10,5) | 4,000 | 4,000 | **4,800** | W(7) | 887 bad pairs; 2 runs, ~11 min |
 | (11,5) | 5,850 | 5,850 | **7,020** | W(8) | 1,038; 2 runs, ~13 min |
 | (12,5) | 8,200 | 8,748 (route-chart lift) | **9,840** | W(9) | 1,092; 1 run, ~10 min |
-| (14,5) | 14,760 | 14,760 | 17,568 (running) | W(11) | 856 |
+| (14,5) | 14,760 | 14,760 | **17,568** | W(11) | 856; 1 run, ~17 min |
 
 The table values in these cells are the polygon covers 5·|W(q)| (two plain matchings over Z₅). The doubled matching
 gives a sixth sheet: +20 %.
