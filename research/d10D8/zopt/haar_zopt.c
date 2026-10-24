@@ -1122,6 +1122,27 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         else if (f) fprintf(stderr, "checkpoint %s unusable, fresh start\n", ckpt); }
     double lastck = now();
     if (getenv("ZOPT")) return zopt_main(C[0], out);
+    if (getenv("NEIGH")) {   /* cost histogram of single-orbit replacements of the current S (random or targeted reps) */
+        int ns = atoi(getenv("NEIGH")), targ = getenv("NTARG") ? atoi(getenv("NTARG")) : 0; long long hist[200] = {0}, nlow = 0;
+        double sc; long long c0 = cost_any(C[0], TF, TI, &sc, SV[0], &NOBOUND, 0); collect(C[0]);
+        fprintf(stderr, "NEIGH: base cost %lld, %d samples, targeted %d %%\n", c0, ns, targ);
+        int S0[MAXD]; memcpy(S0, S, sizeof(int) * d);
+        for (int t = 0; t < ns; t++) {
+            int j = rnd() % OM, o[MAXD], x = -1;
+            AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);
+            if ((int)(rnd() % 100) < targ) x = targeted(ostart(j));
+            AVOIDMASK = 0;
+            if (x < 0 || x == ident || !orbit_of(x, o) || !orbit_free(o, j)) random_orbit(j, o);
+            uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
+            for (int i = 0; i < OK_; i++) { mktab(o[i], OTF[0][i], OTI[0][i]); tf[ostart(j) + i] = OTF[0][i]; ti[ostart(j) + i] = OTI[0][i]; }
+            long long c = cost_any(C[0], tf, ti, &sc, SV[1], &NOBOUND, 0);
+            hist[c < 199 ? c : 199]++; if (c <= c0) nlow++;
+        }
+        printf("NEIGH base %lld samples %d  <=base %lld; histogram (cost:count up to 60):", c0, ns, nlow);
+        for (int h = 0; h <= 60; h++) if (hist[h]) printf(" %d:%lld", h, hist[h]);
+        long long tail = 0; for (int h = 61; h < 200; h++) tail += hist[h]; printf("  >60: %lld\n", tail);
+        return 0;
+    }
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;

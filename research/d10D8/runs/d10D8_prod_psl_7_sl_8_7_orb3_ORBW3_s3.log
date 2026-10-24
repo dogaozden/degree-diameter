@@ -1,0 +1,8 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.15s
+wide rows: HW order 252, rows 2352, setup 0.23s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+ORBW=3: an uncovered fixed element weighs 3; start energy 156
+start cost=156
+t=30 steps=6201 evals=49609 cost=22 best=24 T=0.53 energy=24 bestE=24
+t=60 steps=12304 evals=98433 cost=24 best=24 T=0.19 energy=24 bestE=24
