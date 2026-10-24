@@ -1,0 +1,15 @@
+group psl 7 x Z_45, N=7560, identity 945, H order 63, rows 120, threads 1, setup 0.00s
+wide rows: HW order 180, rows 42, setup 0.00s
+alpha: conj by mat(0,1,6,1) (index 1), z -> 29 z on Z_45
+ORBIT k=6 m=2 f=2: |Fix(alpha)| = 2 (+e); mu = 126.20, mu/k = 21.03, fixed-point misses ~ 3.03
+start cost=3038
+t=30 steps=101374 evals=810993 cost=446 best=444 T=0.53
+t=60 steps=200330 evals=1602641 cost=446 best=444 T=0.19
+t=90 steps=301647 evals=2413177 cost=446 best=444 T=0.15
+t=120 steps=407089 evals=3256713 cost=446 best=444 T=0.15
+t=150 steps=498283 evals=3986265 cost=444 best=444 T=1.50
+t=180 steps=588854 evals=4710833 cost=452 best=444 T=0.53
+t=210 steps=678393 evals=5427145 cost=444 best=444 T=0.19
+t=240 steps=768944 evals=6151553 cost=444 best=444 T=0.15
+t=270 steps=859498 evals=6875985 cost=444 best=444 T=0.15
+RESULT d=14 D=5 group=psl 7 x Z_45 N=7560 best=444 evals=7665193 time=300.0 orbit k=6 m=2 f=2 fix=2

@@ -1,0 +1,17 @@
+== solution file d6D8_sl_25_1_orb2f0_s1.txt (sha256 475ae8ba1c07a3c27ae8546f2cb5ff9faef3ce5fbdaa1e0901fb469da255c54b)
+6 8 sl 25 poly x^2+2 n 1 N 15600
+600 mat(1,0,0,1) z=0
+5331 mat(8,14,6,10) z=0
+165 mat(0,7,8,15) z=0
+13980 mat(22,10,5,14) z=0
+3533 mat(5,17,8,11) z=0
+10298 mat(16,12,23,20) z=0
+== build_haar2.py
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 31200 edges = 93600 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = c39704cd1e00c4d816ac299df8f31d2625d30f9ffe9e85c0a1b9d4d8c49d5e43
+VALID d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 vertices=31200
+== apsp.c all-pairs on the edge list (sha256 c39704cd1e00c4d816ac299df8f31d2625d30f9ffe9e85c0a1b9d4d8c49d5e43)
+n=31200 edges=93600 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=31200

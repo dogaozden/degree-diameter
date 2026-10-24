@@ -1,0 +1,25 @@
+group psl 81 poly x^4+x+2 x Z_1, N=265680, identity 3240, H order 41, rows 6480, threads 1, setup 0.08s
+wide rows: no cyclic subgroup of order >= 64 found (best 41); using haar_gen3's evaluation
+alpha: conj by mat(11,40,13,19) (index 45859), z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 79 (+e); mu = 27.13, mu/k = 13.57, fixed-point misses ~ 0.81
+start cost=88
+t=30 steps=1200 evals=9601 cost=21 best=21 T=0.53
+t=60 steps=2225 evals=17801 cost=16 best=16 T=0.19
+t=90 steps=3084 evals=24673 cost=16 best=16 T=0.15
+t=120 steps=3964 evals=31713 cost=14 best=14 T=0.15
+t=150 steps=4810 evals=38481 cost=14 best=14 T=0.15
+t=180 steps=5598 evals=44785 cost=14 best=14 T=0.15
+t=210 steps=6453 evals=51625 cost=14 best=14 T=0.15
+t=240 steps=7399 evals=59193 cost=14 best=14 T=0.15
+t=270 steps=8364 evals=66913 cost=14 best=14 T=1.41
+t=300 steps=9276 evals=74209 cost=27 best=14 T=0.50
+t=330 steps=10296 evals=82369 cost=22 best=14 T=0.18
+t=360 steps=11234 evals=89873 cost=17 best=14 T=0.15
+t=390 steps=12188 evals=97505 cost=17 best=14 T=0.15
+t=420 steps=13238 evals=105905 cost=14 best=14 T=1.41
+t=450 steps=14359 evals=114873 cost=14 best=14 T=0.50
+t=480 steps=15309 evals=122473 cost=14 best=14 T=0.18
+t=510 steps=16505 evals=132041 cost=14 best=14 T=0.15
+t=540 steps=17581 evals=140649 cost=14 best=14 T=0.15
+t=570 steps=18659 evals=149273 cost=14 best=14 T=1.41
+RESULT d=6 D=10 group=psl 81 poly x^4+x+2 x Z_1 N=265680 best=14 evals=158313 time=600.0 orbit k=2 m=3 f=0 fix=79

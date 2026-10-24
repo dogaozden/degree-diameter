@@ -1,0 +1,16 @@
+group pgl 4 poly x^2+x+1 x Z_49, N=2940, identity 0, H order 49, rows 60, threads 1, setup 0.00s
+wide rows: HW order 245, rows 12, setup 0.04s
+alpha: conj by mat(1,2,0,3) (index 26), z -> 18 z on Z_49
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 2 (+e); mu = 67.15, mu/k = 22.38, fixed-point misses ~ 1.70
+start cost=264
+t=30 steps=687883 evals=5503065 cost=12 best=6 T=0.53
+t=60 steps=1430121 evals=11440969 cost=12 best=6 T=0.19
+t=90 steps=2115792 evals=16926337 cost=12 best=6 T=0.15
+t=120 steps=2868399 evals=22947193 cost=21 best=6 T=0.15
+t=150 steps=3698747 evals=29589977 cost=12 best=6 T=0.15
+t=180 steps=4627579 evals=37020633 cost=9 best=6 T=0.57
+t=210 steps=5581176 evals=44649409 cost=18 best=6 T=0.20
+t=240 steps=6522858 evals=52182865 cost=12 best=6 T=0.15
+t=270 steps=7433956 evals=59471649 cost=27 best=6 T=0.15
+RESULT d=11 D=5 group=pgl 4 poly x^2+x+1 x Z_49 N=2940 best=6 evals=66942505 time=300.0 orbit k=3 m=3 f=2 fix=2
+EXIT 1

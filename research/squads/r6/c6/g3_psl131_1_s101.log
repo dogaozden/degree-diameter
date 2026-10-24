@@ -1,0 +1,10 @@
+group psl 131 x Z_1, N=1123980, identity 8515, H order 33, rows 34060, threads 1, setup 0.05s
+wide rows: HW order 131, rows 8580, setup 0.09s
+alpha: conj by mat(51,5,40,81) (index 867260), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 65 (+e); mu = 23.88, mu/k = 7.96, fixed-point misses ~ 1.83
+start cost=46
+t=30 steps=1256 evals=10049 cost=9 best=9 T=0.53
+t=60 steps=2439 evals=19513 cost=5 best=5 T=0.19
+t=90 steps=3704 evals=29633 cost=5 best=5 T=0.15
+t=120 steps=5048 evals=40385 cost=5 best=5 T=0.15
+RESULT d=7 D=10 group=psl 131 x Z_1 N=1123980 best=5 evals=50577 time=150.0 orbit k=3 m=2 f=1 fix=65

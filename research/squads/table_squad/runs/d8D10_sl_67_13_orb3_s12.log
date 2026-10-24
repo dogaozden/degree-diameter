@@ -1,0 +1,8 @@
+group sl 67 x Z_13, N=3909048, identity 57486, H order 52, rows 75174, threads 1, setup 0.21s
+wide rows: HW order 221, rows 17688, setup 0.35s
+alpha: conj by mat(23,47,22,45) (index 106351), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 65 (+e); mu = 22.99, mu/k = 7.66, fixed-point misses ~ 1.19
+start cost=78
+RESULT d=8 D=10 group=sl 67 x Z_13 N=3909048 best=0 evals=1601 time=10.8 orbit k=3 m=2 f=2 fix=65
+full diameter check: OK
+wrote d8D10_sl_67_13_orb3_s12.txt

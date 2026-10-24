@@ -1,0 +1,11 @@
+group prod psl 5 psl 5 x Z_73, N=262800, identity 44530, H order 15, rows 17520, threads 1, setup 0.03s
+wide rows: HW order 219, rows 1200, setup 0.07s
+alpha: conj by prod[mat(2,2,4,2);mat(1,1,2,3)] (index 2957), z -> 8 z on Z_73
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 24.27, mu/k = 8.09, fixed-point misses ~ 0.41
+ORBW=3: an uncovered fixed element weighs 3; start energy 252
+start cost=252
+t=30 steps=6010 evals=48081 cost=4 best=4 T=0.53 energy=6 bestE=6
+t=60 steps=12418 evals=99345 cost=4 best=4 T=0.19 energy=6 bestE=6
+t=90 steps=18628 evals=149025 cost=4 best=4 T=0.15 energy=6 bestE=6
+t=120 steps=24902 evals=199217 cost=4 best=4 T=0.15 energy=6 bestE=6
+RESULT d=6 D=10 group=prod psl 5 psl 5 x Z_73 N=262800 best=4 evals=247353 time=150.0 orbit k=3 m=2 f=0 fix=8

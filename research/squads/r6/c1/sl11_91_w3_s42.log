@@ -1,0 +1,9 @@
+group sl 11 x Z_91, N=120120, identity 10010, H order 52, rows 2310, threads 1, setup 0.02s
+wide rows: HW order 182, rows 660, setup 0.04s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 9 z on Z_91
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
+ORBW=3: an uncovered fixed element weighs 3; start energy 177
+start cost=173
+t=30 steps=18684 evals=149473 cost=19 best=6 T=0.53 energy=21 bestE=6
+t=60 steps=38389 evals=307113 cost=6 best=6 T=0.19 energy=6 bestE=6
+RESULT d=8 D=8 group=sl 11 x Z_91 N=120120 best=6 evals=454681 time=90.0 orbit k=3 m=2 f=2 fix=11

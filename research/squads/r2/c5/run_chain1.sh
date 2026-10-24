@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /home/user/degree-diameter/research/squads/r2/c5
+ORBIT="2 4 0" timeout 900 nice -n 10 /tmp/claude-0/-home-user-degree-diameter/2744c2da-0db8-5a6f-87c3-01a128c9c95e/scratchpad/bin/haar_sym 8 7 600 1 8 /home/user/degree-diameter/research/squads/r2/c5/d8D7_p3x7x11_240_s1.txt prod psl 3 psl 7 11 > /home/user/degree-diameter/research/squads/r2/c5/d8D7_p3x7x11_240_s1.log 2>&1
+ORBIT="2 4 0" timeout 900 nice -n 10 /tmp/claude-0/-home-user-degree-diameter/2744c2da-0db8-5a6f-87c3-01a128c9c95e/scratchpad/bin/haar_sym 8 7 600 1 8 /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl17x9_240_s1.txt psl 17 9 > /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl17x9_240_s1.log 2>&1
+ORBIT="4 2 0" timeout 900 nice -n 10 /tmp/claude-0/-home-user-degree-diameter/2744c2da-0db8-5a6f-87c3-01a128c9c95e/scratchpad/bin/haar_sym 8 7 600 1 8 /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl17x9_420_s1.txt psl 17 9 > /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl17x9_420_s1.log 2>&1
+ORBIT="4 2 0" timeout 900 nice -n 10 /tmp/claude-0/-home-user-degree-diameter/2744c2da-0db8-5a6f-87c3-01a128c9c95e/scratchpad/bin/haar_sym 8 7 600 1 8 /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl25x3_420_s1.txt psl 25 3 > /home/user/degree-diameter/research/squads/r2/c5/d8D7_psl25x3_420_s1.log 2>&1
+echo CHAIN_DONE > /home/user/degree-diameter/research/squads/r2/c5/chain1.done

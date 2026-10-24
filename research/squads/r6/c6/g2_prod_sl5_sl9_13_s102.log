@@ -1,0 +1,11 @@
+group prod sl 5 sl 9 poly x^2+1 x Z_13, N=1123200, identity 188136, H order 52, rows 21600, threads 1, setup 0.08s
+wide rows: HW order 195, rows 5760, setup 0.17s
+alpha: conj by prod[mat(2,3,1,2);mat(5,8,4,6)] (index 44392), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 107 (+e); mu = 23.69, mu/k = 7.90, fixed-point misses ~ 2.98
+ORBW=3: an uncovered fixed element weighs 3; start energy 1773
+start cost=1761
+t=30 steps=869 evals=6953 cost=14 best=15 T=0.53 energy=18 bestE=15
+t=60 steps=1755 evals=14041 cost=7 best=7 T=0.19 energy=9 bestE=9
+t=90 steps=2637 evals=21097 cost=7 best=7 T=0.15 energy=9 bestE=9
+t=120 steps=3569 evals=28553 cost=7 best=7 T=0.15 energy=9 bestE=9
+RESULT d=7 D=10 group=prod sl 5 sl 9 poly x^2+1 x Z_13 N=1123200 best=7 evals=36025 time=150.0 orbit k=3 m=2 f=1 fix=107

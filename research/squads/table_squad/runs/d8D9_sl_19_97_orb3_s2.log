@@ -1,0 +1,9 @@
+group sl 19 x Z_97, N=663480, identity 33174, H order 38, rows 17460, threads 1, setup 0.13s
+wide rows: HW order 194, rows 3420, setup 0.19s
+alpha: conj by mat(17,4,3,3) (index 6197), z -> 35 z on Z_97
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 17 (+e); mu = 26.27, mu/k = 8.76, fixed-point misses ~ 1.23
+ORBW=3: an uncovered fixed element weighs 3; start energy 482766
+start cost=482766
+RESULT d=8 D=9 group=sl 19 x Z_97 N=663480 best=0 evals=103681 time=138.4 orbit k=3 m=2 f=2 fix=17
+full diameter check: OK
+wrote d8D9_sl_19_97_orb3_s2.txt

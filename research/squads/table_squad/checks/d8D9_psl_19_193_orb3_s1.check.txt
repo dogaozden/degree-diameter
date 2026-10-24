@@ -1,0 +1,20 @@
+== solution file research/frontier/sols/d8D9_psl_19_193_orb3_s1.txt (sha256 994fec45251d2165e22191934217e63737e4cf95d337020853f736a87dc5a015), found by squad-r4-c1-haiku (research/squads/r4/c1/psl19_193_s1.txt)
+8 9 psl 19 n 193 N 660060
+33003 mat(1,0,0,1) z=0
+319801 mat(5,2,4,17) z=0
+180685 mat(3,2,5,10) z=37
+116592 mat(2,3,15,4) z=20
+338658 mat(5,7,6,1) z=136
+9370 mat(0,3,6,10) z=106
+530583 mat(8,2,13,1) z=26
+580219 mat(8,16,4,1) z=61
+== build_haar2.py
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 1320120 edges = 5280480 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 8288147580329a2bb4a2b0badd7b0f79a13671a815c657e3b027de0ef16cdd54
+VALID d=8 D=9 group=psl 19 x Z_193 N=660060 vertices=1320120
+== haarcheck_psl (low-memory, independent)
+from (e,A): reached A 660060/660060, B 660060/660060 within 9, ecc 9
+from (e,B): reached A 660060/660060, B 660060/660060 within 9, ecc 9
+VALID d=8 D=9 group=psl 19 x Z_193 N=660060 vertices=1320120 (distinct generators, 8-regular simple)

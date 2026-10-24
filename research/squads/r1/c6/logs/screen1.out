@@ -1,0 +1,84 @@
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 31 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,1,0) (index 10), z -> 5 z on Z_31 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 45.58, mu/k = 15.19, fixed-point misses ~ 2.98 RANDORB d=6 D=5 group=psl 3 x Z_31 N=372 k=3 m=2 f=0 fix=2 samples=2000000 min=56 p1=56 p10=74 median=316 mean=311.01 var=38517.1 mu=45.58 time=4.8 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 31 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,1) (index 3), z -> 30 z on Z_31 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 45.58, mu/k = 22.79, fixed-point misses ~ 8.40 RANDORB d=6 D=5 group=psl 3 x Z_31 N=372 k=2 m=3 f=0 fix=11 samples=2000000 min=154 p1=174 p10=242 median=362 mean=413.86 var=21303.5 mu=45.58 time=4.4 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 31 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 6 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,3,3,0) (index 28), z -> 1 z on Z_6 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 17.47 RANDORB d=6 D=5 group=psl 5 x Z_6 N=360 k=3 m=2 f=0 fix=17 samples=2000000 min=172 p1=172 p10=207 median=404 mean=423.13 var=26318.5 mu=41.13 time=6.5 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 6 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,3,1,4) (index 26), z -> 5 z on Z_6 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 7 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 5.41 RANDORB d=6 D=5 group=psl 5 x Z_6 N=360 k=2 m=3 f=0 fix=7 samples=2000000 min=42 p1=83 p10=146 median=298 mean=308.74 var=16744.4 mu=41.13 time=6.7 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 6 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== sl 5 3 1 | ORBIT=3 2 0 :: alpha: conj by mat(3,4,2,3) (index 92), z -> 1 z on Z_3 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 17.47 RANDORB d=6 D=5 group=sl 5 x Z_3 N=360 k=3 m=2 f=0 fix=17 samples=2000000 min=56 p1=56 p10=66 median=250 mean=317.49 var=45018.8 mu=41.13 time=7.9 
+tr: when not truncating set1, string2 must be non-empty
+== sl 5 3 1 | ORBIT=2 3 0 :: alpha: conj by mat(3,0,0,2) (index 70), z -> 2 z on Z_3 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 3 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 2.70 RANDORB d=6 D=5 group=sl 5 x Z_3 N=360 k=2 m=3 f=0 fix=3 samples=2000000 min=22 p1=54 p10=92 median=194 mean=227.77 var=16993.7 mu=41.13 time=9.7 
+tr: when not truncating set1, string2 must be non-empty
+== sl 5 3 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 5 3 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,4,3,3) (index 94), z -> 1 z on Z_3 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 17.47 RANDORB d=6 D=5 group=pgl 5 x Z_3 N=360 k=3 m=2 f=0 fix=17 samples=2000000 min=128 p1=128 p10=228 median=414 mean=429.42 var=25159.3 mu=41.13 time=15.4 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 5 3 1 | ORBIT=2 3 0 :: alpha: conj by mat(0,1,2,0) (index 105), z -> 2 z on Z_3 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 8.11 RANDORB d=6 D=5 group=pgl 5 x Z_3 N=360 k=2 m=3 f=0 fix=11 samples=2000000 min=43 p1=74 p10=124 median=284 mean=301.49 var=21443.0 mu=41.13 time=18.8 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 5 3 1 | ORBIT=6 1 0 :: alpha: conj by mat(1,4,2,0) (index 88), z -> 2 z on Z_3 ORBIT k=6 m=1 f=0: |Fix(alpha)| = 5 (+e); mu = 41.13, mu/k = 6.85, fixed-point misses ~ 8.36 RANDORB d=6 D=5 group=pgl 5 x Z_3 N=360 k=6 m=1 f=0 fix=5 samples=2000000 min=366 p1=366 p10=366 median=404 mean=461.77 var=12761.1 mu=41.13 time=19.4 
+tr: when not truncating set1, string2 must be non-empty
+== psl 9 1 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,0,1) (index 54), z -> 0 z on Z_1 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 8.73 RANDORB d=6 D=5 group=psl 9 poly x^2+1 x Z_1 N=360 k=3 m=2 f=0 fix=8 samples=2000000 min=24 p1=24 p10=68 median=165 mean=266.43 var=45671.4 mu=41.13 time=49.4 
+tr: when not truncating set1, string2 must be non-empty
+== psl 9 1 1 | ORBIT=2 3 0 :: alpha: conj by mat(4,1,5,8) (index 212), z -> 0 z on Z_1 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 7 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 5.41 RANDORB d=6 D=5 group=psl 9 poly x^2+1 x Z_1 N=360 k=2 m=3 f=0 fix=7 samples=2000000 min=26 p1=56 p10=91 median=175 mean=203.40 var=13902.3 mu=41.13 time=51.3 
+tr: when not truncating set1, string2 must be non-empty
+== psl 9 1 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 15 1 | ORBIT=3 2 0 :: alpha: conj by mat(2,2,1,0) (index 22), z -> 1 z on Z_15 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 89 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 87.34 RANDORB d=6 D=5 group=sl 3 x Z_15 N=360 k=3 m=2 f=0 fix=89 samples=2000000 min=640 p1=640 p10=640 median=640 mean=646.47 var=188.2 mu=41.13 time=7.8 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 15 1 | ORBIT=2 3 0 :: alpha: conj by mat(2,0,0,2) (index 15), z -> 14 z on Z_15 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 16.22 RANDORB d=6 D=5 group=sl 3 x Z_15 N=360 k=2 m=3 f=0 fix=23 samples=2000000 min=128 p1=140 p10=164 median=276 mean=348.38 var=30330.0 mu=41.13 time=7.6 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 15 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 15 1 | ORBIT=3 2 0 :: alpha: conj by mat(0,1,2,1) (index 22), z -> 1 z on Z_15 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 44 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 43.67 RANDORB d=6 D=5 group=pgl 3 x Z_15 N=360 k=3 m=2 f=0 fix=44 samples=2000000 min=600 p1=600 p10=600 median=600 mean=622.72 var=1316.7 mu=41.13 time=7.9 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 15 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,2) (index 1), z -> 14 z on Z_15 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 3 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 2.70 RANDORB d=6 D=5 group=pgl 3 x Z_15 N=360 k=2 m=3 f=0 fix=3 samples=2000000 min=52 p1=116 p10=178 median=344 mean=352.96 var=19319.9 mu=41.13 time=8.3 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 15 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 30 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,1,0) (index 10), z -> 1 z on Z_30 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 89 (+e); mu = 41.13, mu/k = 13.71, fixed-point misses ~ 87.34 RANDORB d=6 D=5 group=psl 3 x Z_30 N=360 k=3 m=2 f=0 fix=89 samples=2000000 min=680 p1=680 p10=680 median=680 mean=681.70 var=26.5 mu=41.13 time=10.3 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 30 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,1) (index 3), z -> 29 z on Z_30 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 16.22 RANDORB d=6 D=5 group=psl 3 x Z_30 N=360 k=2 m=3 f=0 fix=23 samples=2000000 min=214 p1=220 p10=288 median=418 mean=446.89 var=15385.1 mu=41.13 time=10.5 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 30 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 29 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,1,0) (index 10), z -> 1 z on Z_29 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 86 (+e); mu = 36.89, mu/k = 12.30, fixed-point misses ~ 82.35 RANDORB d=6 D=5 group=psl 3 x Z_29 N=348 k=3 m=2 f=0 fix=86 samples=2000000 min=656 p1=656 p10=656 median=656 mean=656.37 var=5.8 mu=36.89 time=7.0 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 29 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,1) (index 3), z -> 28 z on Z_29 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 36.89, mu/k = 18.45, fixed-point misses ~ 7.81 RANDORB d=6 D=5 group=psl 3 x Z_29 N=348 k=2 m=3 f=0 fix=11 samples=2000000 min=106 p1=142 p10=206 median=326 mean=374.19 var=20648.7 mu=36.89 time=7.1 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 29 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 32 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,1,0) (index 10), z -> 1 z on Z_32 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 95 (+e); mu = 50.24, mu/k = 16.75, fixed-point misses ~ 97.47 RANDORB d=6 D=5 group=psl 3 x Z_32 N=384 k=3 m=2 f=0 fix=95 samples=2000000 min=728 p1=728 p10=728 median=728 mean=728.76 var=12.2 mu=50.24 time=7.3 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 32 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,1) (index 3), z -> 15 z on Z_32 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 50.24, mu/k = 25.12, fixed-point misses ~ 17.36 RANDORB d=6 D=5 group=psl 3 x Z_32 N=384 k=2 m=3 f=0 fix=23 samples=2000000 min=236 p1=240 p10=316 median=440 mean=470.37 var=18439.3 mu=50.24 time=6.6 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 32 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 16 1 | ORBIT=3 2 0 :: alpha: conj by mat(2,2,1,0) (index 22), z -> 1 z on Z_16 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 95 (+e); mu = 50.24, mu/k = 16.75, fixed-point misses ~ 97.47 RANDORB d=6 D=5 group=sl 3 x Z_16 N=384 k=3 m=2 f=0 fix=95 samples=2000000 min=688 p1=688 p10=688 median=688 mean=691.70 var=131.3 mu=50.24 time=8.0 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 16 1 | ORBIT=2 3 0 :: alpha: conj by mat(2,0,0,2) (index 15), z -> 7 z on Z_16 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 47 (+e); mu = 50.24, mu/k = 25.12, fixed-point misses ~ 34.72 RANDORB d=6 D=5 group=sl 3 x Z_16 N=384 k=2 m=3 f=0 fix=47 samples=2000000 min=296 p1=296 p10=344 median=428 mean=481.99 var=18501.2 mu=50.24 time=7.8 
+tr: when not truncating set1, string2 must be non-empty
+== sl 3 16 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 16 1 | ORBIT=3 2 0 :: alpha: conj by mat(0,1,2,1) (index 22), z -> 1 z on Z_16 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 47 (+e); mu = 50.24, mu/k = 16.75, fixed-point misses ~ 48.73 RANDORB d=6 D=5 group=pgl 3 x Z_16 N=384 k=3 m=2 f=0 fix=47 samples=2000000 min=648 p1=648 p10=648 median=648 mean=674.30 var=1303.5 mu=50.24 time=7.2 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 16 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,2) (index 1), z -> 7 z on Z_16 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 7 (+e); mu = 50.24, mu/k = 25.12, fixed-point misses ~ 5.79 RANDORB d=6 D=5 group=pgl 3 x Z_16 N=384 k=2 m=3 f=0 fix=7 samples=2000000 min=43 p1=74 p10=174 median=406 mean=398.81 var=24642.3 mu=50.24 time=7.5 
+tr: when not truncating set1, string2 must be non-empty
+== pgl 3 16 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 33 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,2,1,0) (index 10), z -> 1 z on Z_33 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 98 (+e); mu = 55.10, mu/k = 18.37, fixed-point misses ~ 102.60 RANDORB d=6 D=5 group=psl 3 x Z_33 N=396 k=3 m=2 f=0 fix=98 samples=2000000 min=752 p1=752 p10=752 median=752 mean=753.30 var=19.1 mu=55.10 time=7.3 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 33 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,0,0,1) (index 3), z -> 32 z on Z_33 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 55.10, mu/k = 27.55, fixed-point misses ~ 8.95 RANDORB d=6 D=5 group=psl 3 x Z_33 N=396 k=2 m=3 f=0 fix=11 samples=2000000 min=170 p1=210 p10=286 median=406 mean=460.00 var=21548.7 mu=55.10 time=8.3 
+tr: when not truncating set1, string2 must be non-empty
+== psl 3 33 1 | ORBIT=6 1 0 :: 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 7 1 | ORBIT=3 2 0 :: alpha: conj by mat(1,3,3,0) (index 28), z -> 2 z on Z_7 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 65.41, mu/k = 21.80, fixed-point misses ~ 3.23 RANDORB d=6 D=5 group=psl 5 x Z_7 N=420 k=3 m=2 f=0 fix=2 samples=2000000 min=16 p1=32 p10=78 median=188 mean=260.70 var=45638.0 mu=65.41 time=9.5 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 7 1 | ORBIT=2 3 0 :: alpha: conj by mat(1,3,1,4) (index 26), z -> 6 z on Z_7 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 3 (+e); mu = 65.41, mu/k = 32.71, fixed-point misses ~ 3.16 RANDORB d=6 D=5 group=psl 5 x Z_7 N=420 k=2 m=3 f=0 fix=3 samples=2000000 min=59 p1=105 p10=157 median=290 mean=310.06 var=18233.5 mu=65.41 time=9.2 
+tr: when not truncating set1, string2 must be non-empty
+== psl 5 7 1 | ORBIT=6 1 0 :: 

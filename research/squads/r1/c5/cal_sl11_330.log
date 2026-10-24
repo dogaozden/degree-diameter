@@ -1,0 +1,9 @@
+group sl 11 x Z_1, N=1320, identity 110, H order 22, rows 60, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 22); using haar_gen3's evaluation
+alpha: conj by mat(7,8,8,3) (index 932), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 38.06, mu/k = 12.69, fixed-point misses ~ 7.36
+start cost=138
+RESULT d=9 D=5 group=sl 11 x Z_1 N=1320 best=0 evals=103233 time=0.8 orbit k=3 m=3 f=0 fix=11
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote cal_sl11_330.txt

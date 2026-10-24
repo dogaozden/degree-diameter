@@ -1,0 +1,25 @@
+group prod psl 3 psl 13 x Z_5, N=65520, identity 16770, H order 39, rows 1680, threads 1, setup 0.10s
+wide rows: HW order 195, rows 336, setup 0.11s
+alpha: conj by prod[mat(1,2,2,2);mat(1,3,8,12)] (index 12137), z -> 4 z on Z_5
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 47 (+e); mu = 38.00, mu/k = 19.00, fixed-point misses ~ 2.31
+start cost=317
+t=30 steps=15002 evals=120017 cost=82 best=82 T=0.53
+t=60 steps=29642 evals=237137 cost=68 best=68 T=0.19
+t=90 steps=44270 evals=354161 cost=68 best=68 T=0.15
+t=120 steps=58844 evals=470753 cost=68 best=68 T=0.15
+t=150 steps=73714 evals=589713 cost=68 best=68 T=0.15
+t=180 steps=87908 evals=703265 cost=68 best=68 T=0.15
+t=210 steps=103131 evals=825049 cost=68 best=68 T=1.18
+t=240 steps=119555 evals=956441 cost=68 best=68 T=0.42
+t=270 steps=134847 evals=1078777 cost=68 best=68 T=0.15
+t=300 steps=150924 evals=1207393 cost=68 best=68 T=0.15
+t=330 steps=168046 evals=1344369 cost=68 best=68 T=0.15
+t=360 steps=184780 evals=1478241 cost=68 best=68 T=1.18
+t=390 steps=204165 evals=1633321 cost=68 best=68 T=0.42
+t=420 steps=223242 evals=1785937 cost=68 best=68 T=0.15
+t=450 steps=243040 evals=1944321 cost=68 best=68 T=0.15
+t=480 steps=262240 evals=2097921 cost=68 best=68 T=0.15
+t=510 steps=281811 evals=2254489 cost=72 best=68 T=1.18
+t=540 steps=301337 evals=2410697 cost=68 best=68 T=0.42
+t=570 steps=320421 evals=2563369 cost=68 best=68 T=0.15
+RESULT d=6 D=9 group=prod psl 3 psl 13 x Z_5 N=65520 best=68 evals=2716241 time=600.0 orbit k=2 m=3 f=0 fix=47

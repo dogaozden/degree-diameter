@@ -1,0 +1,15 @@
+group prod psl 3 psl 3 x Z_151, N=21744, identity 5889, H order 6, rows 3624, threads 1, setup 0.02s
+wide rows: HW order 151, rows 144, setup 0.05s
+alpha: conj by prod[mat(0,1,2,1);mat(1,0,1,1)] (index 16), z -> 32 z on Z_151
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 39.44, mu/k = 13.15, fixed-point misses ~ 2.20
+start cost=3022
+t=30 steps=69491 evals=555929 cost=774 best=774 T=0.53
+t=60 steps=144385 evals=1155081 cost=774 best=774 T=0.19
+t=90 steps=237729 evals=1901833 cost=774 best=774 T=0.15
+t=120 steps=326240 evals=2609921 cost=774 best=774 T=0.15
+t=150 steps=415585 evals=3324681 cost=774 best=774 T=0.15
+t=180 steps=503208 evals=4025665 cost=774 best=774 T=0.56
+t=210 steps=592145 evals=4737161 cost=774 best=774 T=0.20
+t=240 steps=680615 evals=5444921 cost=774 best=774 T=0.15
+t=270 steps=770363 evals=6162905 cost=774 best=774 T=0.15
+RESULT d=8 D=7 group=prod psl 3 psl 3 x Z_151 N=21744 best=774 evals=6874721 time=300.0 orbit k=3 m=2 f=2 fix=8

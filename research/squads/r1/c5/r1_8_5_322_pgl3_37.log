@@ -1,0 +1,15 @@
+group pgl 3 x Z_37, N=888, identity 0, H order 37, rows 24, threads 1, setup 0.00s
+wide rows: HW order 148, rows 6, setup 0.00s
+alpha: conj by mat(0,1,2,1) (index 22), z -> 10 z on Z_37
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 2 (+e); mu = 37.89, mu/k = 12.63, fixed-point misses ~ 2.10
+start cost=888
+t=30 steps=1404889 evals=11239113 cost=12 best=12 T=0.53
+t=60 steps=2751794 evals=22014353 cost=12 best=12 T=0.19
+t=90 steps=4122043 evals=32976345 cost=12 best=12 T=0.15
+t=120 steps=5550218 evals=44401745 cost=12 best=12 T=0.15
+t=150 steps=6971483 evals=55771865 cost=12 best=12 T=1.50
+t=180 steps=8434170 evals=67473361 cost=12 best=12 T=0.53
+t=210 steps=9863632 evals=78909057 cost=12 best=12 T=0.19
+t=240 steps=11261723 evals=90093785 cost=12 best=12 T=0.15
+t=270 steps=12743881 evals=101951049 cost=12 best=12 T=0.15
+RESULT d=8 D=5 group=pgl 3 x Z_37 N=888 best=12 evals=112975777 time=300.0 orbit k=3 m=2 f=2 fix=2

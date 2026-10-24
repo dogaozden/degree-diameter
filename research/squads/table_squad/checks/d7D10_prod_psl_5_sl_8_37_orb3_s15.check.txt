@@ -1,0 +1,37 @@
+== solution file research/frontier/sols/d7D10_prod_psl_5_sl_8_37_orb3_s15.txt (sha256 dd8ef993f849a6d3735254f87a64200af220234195251e15283605b4de73a6f8), Opus solo seed sweep (seeds 11-20, 150 s each) on squad-r4-c3's group
+7 10 prod psl 5 sl 8 poly x^3+x+1 n 37 N 1118880
+188552 prod[mat(1,0,0,1);mat(1,0,0,1)] z=0
+686904 prod[mat(2,0,1,3);mat(6,5,4,5)] z=36
+109806 prod[mat(0,2,2,0);mat(7,0,7,4)] z=27
+736681 prod[mat(2,0,4,3);mat(4,0,6,7)] z=11
+940166 prod[mat(2,3,0,3);mat(3,3,1,7)] z=33
+854068 prod[mat(2,2,0,3);mat(6,3,2,2)] z=34
+1931 prod[mat(0,1,4,0);mat(0,7,4,4)] z=7
+== build_haar2.py
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2237760 edges = 7832160 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = 6a957cf29f986d2e00a57933cfdccd1a60485fe55344b33301cc579e4464a44c
+VALID d=7 D=10 group=prod psl 5 sl 8 poly x^3+x+1 x Z_37 N=1118880 vertices=2237760
+== check_haar_indep.py
+file d7D10_prod_psl_5_sl_8_37_orb3_s15.txt
+header: d=7 D=10 spec=prod psl 5 sl 8 poly x^3+x+1 NCYC=37 N=1118880
+group order |G|=30240 (factors [60, 504]), x Z_37 -> 1118880; vertices 2N=2237760
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=10 reached 2237760 of 2237760 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 53451, 283128, 883963, 826436, 179911]
+BFS from B: ecc=10 reached 2237760 of 2237760 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 53451, 283128, 884349, 826436, 179525]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2237760 (1s)
+
+== seed sweep: best per seed
+d7D10_prod_psl_5_sl_8_37_orb3_s11.log: best=3 evals=49369 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s12.log: best=1 evals=52953 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s13.log: best=3 evals=53249 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s14.log: best=1 evals=53665 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s15.log: best=0 evals=13993 time=40.4
+d7D10_prod_psl_5_sl_8_37_orb3_s16.log: best=1 evals=50753 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s17.log: best=3 evals=52801 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s18.log: best=3 evals=52745 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s19.log: best=1 evals=53265 time=150.0
+d7D10_prod_psl_5_sl_8_37_orb3_s20.log: best=3 evals=23889 time=69.2

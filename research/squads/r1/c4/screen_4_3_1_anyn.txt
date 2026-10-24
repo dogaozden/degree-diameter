@@ -1,0 +1,148 @@
+# pgl 3 240                          N=5760 mu=113.5 fix=7 min=957 p1=1230 p10=2044 median=5827
+# pgl 4 96                           N=5760 mu=113.5 fix=7 min=6552 p1=6708 p10=7216 median=8014
+# pgl 5 48                           N=5760 mu=113.5 fix=7 min=242 p1=328 p10=662 median=2738
+# pgl 9 8                            N=5760 mu=113.5 fix=15 min=310 p1=356 p10=570 median=1364
+# prod psl 3 psl 3 40                N=5760 mu=113.5 fix=95 min=3782 p1=4292 p10=5196 median=7060
+# prod psl 3 psl 5 8 failed: no conjugation of order dividing 4 found
+# prod psl 3 sl 3 20                 N=5760 mu=113.5 fix=191 min=5388 p1=5576 p10=6462 median=7736
+# prod psl 3 sl 4 8 failed: no conjugation of order dividing 4 found
+# prod psl 3 sl 5 4 failed: no conjugation of order dividing 4 found
+# prod sl 3 psl 5 4 failed: no conjugation of order dividing 4 found
+# prod sl 3 sl 3 10                  N=5760 mu=113.5 fix=191 min=5550 p1=5726 p10=6382 median=7768
+# prod sl 3 sl 4 4 failed: no conjugation of order dividing 4 found
+# prod sl 3 sl 5 2 failed: no conjugation of order dividing 4 found
+# psl 5 96                           N=5760 mu=113.5 fix=7 min=6484 p1=6696 p10=7280 median=8028
+# psl 9 16                           N=5760 mu=113.5 fix=7 min=170 p1=212 p10=292 median=688
+# sl 3 240                           N=5760 mu=113.5 fix=47 min=4136 p1=4200 p10=4752 median=6780
+# sl 4 96                            N=5760 mu=113.5 fix=7 min=6602 p1=6716 p10=7254 median=8064
+# sl 5 48                            N=5760 mu=113.5 fix=7 min=6532 p1=6672 p10=7188 median=8016
+# sl 9 8                             N=5760 mu=113.5 fix=15 min=160 p1=182 p10=298 median=644
+# pgl 3 241                          N=5784 mu=115.8 fix=3 min=1240 p1=1540 p10=2320 median=4048
+# sl 3 241                           N=5784 mu=115.8 fix=23 min=1732 p1=1956 p10=2420 median=4128
+# pgl 3 242                          N=5808 mu=118.2 fix=7 min=9076 p1=9076 p10=9076 median=9460
+# sl 3 242 failed: no conjugation of order dividing 4 found
+# pgl 4 97                           N=5820 mu=119.4 fix=3 min=859 p1=1066 p10=1720 median=2747
+# psl 5 97                           N=5820 mu=119.4 fix=3 min=925 p1=1152 p10=1623 median=2622
+# sl 4 97                            N=5820 mu=119.4 fix=3 min=826 p1=1054 p10=1577 median=2718
+# pgl 3 243                          N=5832 mu=120.6 fix=3 min=9124 p1=9124 p10=9124 median=9420
+# sl 3 243 failed: no conjugation of order dividing 4 found
+# pgl 3 244                          N=5856 mu=123.0 fix=7 min=704 p1=934 p10=1632 median=3962
+# sl 3 244                           N=5856 mu=123.0 fix=47 min=2610 p1=2722 p10=3268 median=5564
+# pgl 3 245                          N=5880 mu=125.5 fix=3 min=2002 p1=2440 p10=2958 median=5084
+# pgl 4 98 failed: no conjugation of order dividing 4 found
+# pgl 5 49                           N=5880 mu=125.5 fix=3 min=1514 p1=1648 p10=2508 median=4488
+# psl 5 98 failed: no conjugation of order dividing 4 found
+# psl 7 35                           N=5880 mu=125.5 fix=3 min=149 p1=172 p10=246 median=528
+# sl 3 245                           N=5880 mu=125.5 fix=23 min=4292 p1=4320 p10=4852 median=6468
+# sl 4 98 failed: no conjugation of order dividing 4 found
+# sl 5 49 failed: no conjugation of order dividing 4 found
+# pgl 3 246                          N=5904 mu=128.0 fix=7 min=856 p1=974 p10=1371 median=4448
+# prod psl 3 psl 3 41                N=5904 mu=128.0 fix=47 min=1850 p1=1940 p10=2590 median=4402
+# sl 3 246                           N=5904 mu=128.0 fix=47 min=2196 p1=2356 p10=2976 median=4832
+# pgl 3 247                          N=5928 mu=130.5 fix=3 min=661 p1=768 p10=1192 median=2888
+# sl 3 247                           N=5928 mu=130.5 fix=23 min=1734 p1=1970 p10=2554 median=4160
+# pgl 4 99 failed: no conjugation of order dividing 4 found
+# psl 11 9 failed: no conjugation of order dividing 4 found
+# psl 5 99 failed: no conjugation of order dividing 4 found
+# sl 4 99 failed: no conjugation of order dividing 4 found
+# pgl 3 248                          N=5952 mu=133.1 fix=7 min=7564 p1=7564 p10=7884 median=8680
+# sl 3 248 failed: no conjugation of order dividing 4 found
+# pgl 3 249                          N=5976 mu=135.7 fix=3 min=9412 p1=9412 p10=9412 median=9680
+# sl 3 249 failed: no conjugation of order dividing 4 found
+# pgl 3 250                          N=6000 mu=138.3 fix=7 min=1764 p1=2194 p10=2954 median=5934
+# pgl 4 100                          N=6000 mu=138.3 fix=7 min=1125 p1=1368 p10=1914 median=3729
+# pgl 5 50                           N=6000 mu=138.3 fix=7 min=548 p1=656 p10=1103 median=2628
+# psl 5 100                          N=6000 mu=138.3 fix=7 min=1143 p1=1327 p10=1840 median=3500
+# sl 3 250                           N=6000 mu=138.3 fix=47 min=2766 p1=2836 p10=3576 median=5894
+# sl 4 100                           N=6000 mu=138.3 fix=7 min=1057 p1=1179 p10=1850 median=3601
+# sl 5 50                            N=6000 mu=138.3 fix=7 min=830 p1=996 p10=1466 median=3232
+# pgl 3 251                          N=6024 mu=140.9 fix=3 min=9508 p1=9508 p10=9508 median=9812
+# sl 3 251 failed: no conjugation of order dividing 4 found
+# pgl 3 252                          N=6048 mu=143.6 fix=7 min=9556 p1=9556 p10=9556 median=9892
+# pgl 7 18                           N=6048 mu=143.6 fix=15 min=552 p1=776 p10=1218 median=2796
+# pgl 8 12 failed: no conjugation of order dividing 4 found
+# prod psl 3 psl 3 42 failed: no conjugation of order dividing 4 found
+# prod psl 3 psl 7 3                 N=6048 mu=143.6 fix=15 min=408 p1=448 p10=590 median=1149
+# prod psl 3 sl 3 21 failed: no conjugation of order dividing 4 found
+# prod psl 3 sl 8 1 failed: no conjugation of order dividing 4 found
+# psl 7 36                           N=6048 mu=143.6 fix=7 min=618 p1=722 p10=950 median=2388
+# sl 3 252 failed: no conjugation of order dividing 4 found
+# sl 7 18                            N=6048 mu=143.6 fix=15 min=300 p1=386 p10=586 median=1490
+# sl 8 12 failed: no conjugation of order dividing 4 found
+# pgl 4 101                          N=6060 mu=145.0 fix=3 min=836 p1=1122 p10=1716 median=3133
+# psl 5 101                          N=6060 mu=145.0 fix=3 min=946 p1=1260 p10=1662 median=3040
+# sl 4 101                           N=6060 mu=145.0 fix=3 min=762 p1=1162 p10=1726 median=2962
+# pgl 3 253                          N=6072 mu=146.3 fix=3 min=9604 p1=9604 p10=9604 median=9900
+# psl 23 1                           N=6072 mu=146.3 fix=11 min=256 p1=306 p10=376 median=614
+# sl 3 253 failed: no conjugation of order dividing 4 found
+# pgl 3 254                          N=6096 mu=149.1 fix=7 min=9652 p1=9652 p10=9652 median=9912
+# sl 3 254 failed: no conjugation of order dividing 4 found
+# pgl 3 255                          N=6120 mu=151.9 fix=3 min=612 p1=774 p10=1009 median=2262
+# pgl 4 102                          N=6120 mu=151.9 fix=7 min=1132 p1=1466 p10=2221 median=4147
+# pgl 5 51                           N=6120 mu=151.9 fix=3 min=235 p1=340 p10=520 median=1171
+# psl 5 102                          N=6120 mu=151.9 fix=7 min=1141 p1=1611 p10=2216 median=3856
+# psl 9 17                           N=6120 mu=151.9 fix=3 min=325 p1=372 p10=512 median=892
+# sl 3 255                           N=6120 mu=151.9 fix=23 min=1488 p1=1766 p10=2128 median=3790
+# sl 4 102                           N=6120 mu=151.9 fix=7 min=1275 p1=1448 p10=2130 median=4040
+# sl 5 51                            N=6120 mu=151.9 fix=3 min=760 p1=1056 p10=1526 median=2760
+# pgl 3 256                          N=6144 mu=154.7 fix=7 min=4716 p1=4792 p10=5540 median=7358
+# sl 3 256                           N=6144 mu=154.7 fix=47 min=8592 p1=8640 p10=8836 median=9616
+# pgl 3 257                          N=6168 mu=157.5 fix=3 min=2104 p1=2232 p10=2688 median=4444
+# sl 3 257                           N=6168 mu=157.5 fix=23 min=2204 p1=2432 p10=2740 median=4220
+# pgl 4 103 failed: no conjugation of order dividing 4 found
+# psl 5 103 failed: no conjugation of order dividing 4 found
+# sl 4 103 failed: no conjugation of order dividing 4 found
+# pgl 3 258                          N=6192 mu=160.4 fix=7 min=9844 p1=9844 p10=9872 median=10228
+# prod psl 3 psl 3 43 failed: no conjugation of order dividing 4 found
+# sl 3 258 failed: no conjugation of order dividing 4 found
+# pgl 3 259                          N=6216 mu=163.3 fix=3 min=458 p1=580 p10=797 median=1888
+# psl 7 37                           N=6216 mu=163.3 fix=3 min=259 p1=334 p10=496 median=817
+# sl 3 259                           N=6216 mu=163.3 fix=23 min=1708 p1=1826 p10=2214 median=4032
+# pgl 3 260                          N=6240 mu=166.3 fix=7 min=944 p1=1176 p10=1928 median=4638
+# pgl 4 104                          N=6240 mu=166.3 fix=7 min=1385 p1=1932 p10=2550 median=4134
+# pgl 5 52                           N=6240 mu=166.3 fix=7 min=325 p1=553 p10=862 median=2440
+# psl 5 104                          N=6240 mu=166.3 fix=7 min=1464 p1=1806 p10=2562 median=4198
+# sl 3 260                           N=6240 mu=166.3 fix=47 min=2768 p1=2892 p10=3504 median=5784
+# sl 4 104                           N=6240 mu=166.3 fix=7 min=1412 p1=1469 p10=2402 median=4075
+# sl 5 52                            N=6240 mu=166.3 fix=7 min=1376 p1=1658 p10=2202 median=3960
+# pgl 3 261                          N=6264 mu=169.2 fix=3 min=526 p1=616 p10=992 median=2158
+# sl 3 261                           N=6264 mu=169.2 fix=23 min=1526 p1=1790 p10=2464 median=4120
+# pgl 3 262                          N=6288 mu=172.2 fix=7 min=10036 p1=10036 p10=10036 median=10376
+# sl 3 262 failed: no conjugation of order dividing 4 found
+# pgl 4 105                          N=6300 mu=173.8 fix=3 min=3548 p1=3628 p10=4889 median=6278
+# psl 5 105                          N=6300 mu=173.8 fix=3 min=3672 p1=4084 p10=4796 median=6273
+# sl 4 105                           N=6300 mu=173.8 fix=3 min=3618 p1=3858 p10=4776 median=6376
+# pgl 3 263                          N=6312 mu=175.3 fix=3 min=10084 p1=10084 p10=10084 median=10372
+# sl 3 263 failed: no conjugation of order dividing 4 found
+# pgl 3 264                          N=6336 mu=178.4 fix=7 min=8332 p1=8412 p10=8644 median=9550
+# prod psl 3 psl 3 44 failed: no conjugation of order dividing 4 found
+# prod psl 3 sl 3 22 failed: no conjugation of order dividing 4 found
+# prod sl 3 sl 3 11 failed: no conjugation of order dividing 4 found
+# sl 3 264 failed: no conjugation of order dividing 4 found
+# pgl 3 265                          N=6360 mu=181.5 fix=3 min=1916 p1=2232 p10=2968 median=4818
+# pgl 4 106                          N=6360 mu=181.5 fix=7 min=1117 p1=1863 p10=2386 median=4100
+# pgl 5 53                           N=6360 mu=181.5 fix=3 min=562 p1=786 p10=1120 median=1908
+# psl 5 106                          N=6360 mu=181.5 fix=7 min=1119 p1=1317 p10=2334 median=4002
+# sl 3 265                           N=6360 mu=181.5 fix=23 min=2224 p1=2372 p10=3080 median=4748
+# sl 4 106                           N=6360 mu=181.5 fix=7 min=1234 p1=1470 p10=2362 median=4362
+# sl 5 53                            N=6360 mu=181.5 fix=3 min=534 p1=724 p10=1000 median=1834
+# pgl 3 266                          N=6384 mu=184.6 fix=7 min=10228 p1=10228 p10=10228 median=10612
+# pgl 7 19                           N=6384 mu=184.6 fix=7 min=660 p1=754 p10=1136 median=2672
+# psl 7 38                           N=6384 mu=184.6 fix=7 min=854 p1=896 p10=1088 median=2558
+# sl 3 266 failed: no conjugation of order dividing 4 found
+# sl 7 19                            N=6384 mu=184.6 fix=7 min=332 p1=464 p10=636 median=1184
+ 1 N=5880 mu=125.5 fix=3 min=149 p1=172 p10=246 median=528  psl 7 35
+ 2 N=5760 mu=113.5 fix=15 min=160 p1=182 p10=298 median=644  sl 9 8
+ 3 N=5760 mu=113.5 fix=7 min=170 p1=212 p10=292 median=688  psl 9 16
+ 4 N=6072 mu=146.3 fix=11 min=256 p1=306 p10=376 median=614  psl 23 1
+ 5 N=6216 mu=163.3 fix=3 min=259 p1=334 p10=496 median=817  psl 7 37
+ 6 N=6120 mu=151.9 fix=3 min=235 p1=340 p10=520 median=1171  pgl 5 51
+ 7 N=6120 mu=151.9 fix=3 min=325 p1=372 p10=512 median=892  psl 9 17
+ 8 N=5760 mu=113.5 fix=15 min=310 p1=356 p10=570 median=1364  pgl 9 8
+ 9 N=6048 mu=143.6 fix=15 min=300 p1=386 p10=586 median=1490  sl 7 18
+10 N=5760 mu=113.5 fix=7 min=242 p1=328 p10=662 median=2738  pgl 5 48
+11 N=6048 mu=143.6 fix=15 min=408 p1=448 p10=590 median=1149  prod psl 3 psl 7 3
+12 N=6384 mu=184.6 fix=7 min=332 p1=464 p10=636 median=1184  sl 7 19
+13 N=6216 mu=163.3 fix=3 min=458 p1=580 p10=797 median=1888  pgl 3 259
+14 N=6240 mu=166.3 fix=7 min=325 p1=553 p10=862 median=2440  pgl 5 52
+15 N=6264 mu=169.2 fix=3 min=526 p1=616 p10=992 median=2158  pgl 3 261

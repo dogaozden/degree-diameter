@@ -1,0 +1,88 @@
+# pgl 11 91                          N=120120 mu=40.3 fix=11 min=39 p1=48 p10=78 median=249
+# pgl 13 55                          N=120120 mu=40.3 fix=659 min=11014 p1=12866 p10=18516 median=42223
+# psl 11 182                         N=120120 mu=40.3 fix=11 min=42 p1=51 p10=104 median=376
+# psl 13 110                         N=120120 mu=40.3 fix=659 min=11364 p1=12987 p10=22431 median=43605
+# sl 11 91                           N=120120 mu=40.3 fix=11 min=21 p1=30 p10=87 median=216
+# sl 13 55                           N=120120 mu=40.3 fix=659 min=2727 p1=3011 p10=6383 median=18652
+# pgl 9 167                          N=120240 mu=40.7 fix=1502 min=66539 p1=66889 p10=69414 median=82619
+# prod psl 3 psl 5 167               N=120240 mu=40.7 fix=1502 min=82718 p1=82905 p10=84315 median=90365
+# prod psl 3 sl 4 167                N=120240 mu=40.7 fix=1502 min=82236 p1=83519 p10=85956 median=93090
+# psl 9 334                          N=120240 mu=40.7 fix=3005 min=64795 p1=65259 p10=70194 median=80850
+# sl 9 167                           N=120240 mu=40.7 fix=3005 min=33568 p1=36482 p10=42770 median=61875
+# pgl 7 358                          N=120288 mu=40.9 fix=2147 min=92081 p1=92130 p10=92935 median=96540
+# sl 7 358                           N=120288 mu=40.9 fix=2147 min=76451 p1=77610 p10=78769 median=83927
+# prod sl 3 sl 3 209                 N=120384 mu=41.2 fix=395 min=12527 p1=14235 p10=24306 median=50805
+# pgl 8 239                          N=120456 mu=41.4 fix=2150 min=51845 p1=51879 p10=55751 median=70074
+# sl 8 239                           N=120456 mu=41.4 fix=2150 min=50311 p1=50747 p10=53772 median=67393
+# psl 9 335                          N=120600 mu=41.8 fix=44 min=65 p1=80 p10=146 median=1026
+# pgl 7 359                          N=120624 mu=41.9 fix=2153 min=92417 p1=92543 p10=93468 median=97301
+# sl 7 359                           N=120624 mu=41.9 fix=2153 min=76127 p1=76127 p10=79103 median=84477
+# psl 11 183                         N=120780 mu=42.4 fix=17 min=72 p1=78 p10=138 median=768
+# pgl 7 360                          N=120960 mu=43.0 fix=719 min=50545 p1=51104 p10=56550 median=77367
+# pgl 8 240                          N=120960 mu=43.0 fix=2159 min=49803 p1=50492 p10=57718 median=72407
+# pgl 9 168                          N=120960 mu=43.0 fix=215 min=579 p1=668 p10=2315 median=60482
+# prod psl 3 psl 5 168               N=120960 mu=43.0 fix=17279 min=99693 p1=100405 p10=101998 median=106491
+# prod psl 3 psl 7 60                N=120960 mu=43.0 fix=539 min=38626 p1=39031 p10=48345 median=65039
+# prod psl 3 psl 9 28                N=120960 mu=43.0 fix=107 min=55 p1=77 p10=198 median=3092
+# prod psl 3 sl 4 168                N=120960 mu=43.0 fix=215 min=5146 p1=5287 p10=8845 median=50778
+# prod psl 3 sl 5 84                 N=120960 mu=43.0 fix=215 min=950 p1=1298 p10=3788 median=33191
+# prod psl 3 sl 7 30                 N=120960 mu=43.0 fix=539 min=12880 p1=14482 p10=21572 median=55671
+# prod psl 3 sl 8 20                 N=120960 mu=43.0 fix=539 min=1274 p1=2001 p10=5518 median=25348
+# prod psl 3 sl 9 14                 N=120960 mu=43.0 fix=107 min=67 p1=82 p10=127 median=1292
+# prod psl 5 psl 7 12                N=120960 mu=43.0 fix=107 min=152 p1=179 p10=652 median=15385
+# prod psl 5 sl 7 6                  N=120960 mu=43.0 fix=107 min=128 p1=140 p10=334 median=3823
+# prod psl 5 sl 8 4                  N=120960 mu=43.0 fix=107 min=75 p1=81 p10=136 median=911
+# prod psl 7 psl 9 2                 N=120960 mu=43.0 fix=53 min=85 p1=92 p10=110 median=1347
+# prod psl 7 sl 9 1                  N=120960 mu=43.0 fix=53 min=37 p1=49 p10=85 median=414
+# prod sl 3 psl 5 84                 N=120960 mu=43.0 fix=17279 min=100431 p1=100768 p10=102091 median=105480
+# prod sl 3 psl 7 30                 N=120960 mu=43.0 fix=539 min=10216 p1=10697 p10=17858 median=53213
+# prod sl 3 psl 9 14                 N=120960 mu=43.0 fix=431 min=208 p1=322 p10=839 median=9430
+# prod sl 3 sl 3 210                 N=120960 mu=43.0 fix=1079 min=58517 p1=63012 p10=67068 median=83209
+# prod sl 3 sl 4 84                  N=120960 mu=43.0 fix=863 min=5457 p1=8574 p10=17393 median=45020
+# prod sl 3 sl 5 42                  N=120960 mu=43.0 fix=215 min=295 p1=426 p10=1223 median=20443
+# prod sl 3 sl 7 15                  N=120960 mu=43.0 fix=539 min=2228 p1=2306 p10=4266 median=21505
+# prod sl 3 sl 8 10                  N=120960 mu=43.0 fix=539 min=578 p1=772 p10=1793 median=12374
+# prod sl 3 sl 9 7                   N=120960 mu=43.0 fix=107 min=50 p1=59 p10=134 median=431
+# prod sl 4 psl 7 12                 N=120960 mu=43.0 fix=107 min=155 p1=192 p10=594 median=12935
+# prod sl 4 sl 7 6                   N=120960 mu=43.0 fix=107 min=137 p1=157 p10=288 median=2849
+# prod sl 4 sl 8 4                   N=120960 mu=43.0 fix=107 min=80 p1=95 p10=222 median=1104
+# prod sl 5 psl 7 6                  N=120960 mu=43.0 fix=107 min=115 p1=124 p10=300 median=3021
+# prod sl 5 sl 7 3                   N=120960 mu=43.0 fix=107 min=116 p1=119 p10=282 median=1753
+# prod sl 5 sl 8 2                   N=120960 mu=43.0 fix=107 min=49 p1=66 p10=124 median=1077
+# prod sl 7 psl 9 1                  N=120960 mu=43.0 fix=53 min=38 p1=41 p10=82 median=313
+# psl 9 336                          N=120960 mu=43.0 fix=431 min=818 p1=895 p10=1958 median=18423
+# sl 7 360                           N=120960 mu=43.0 fix=719 min=24237 p1=25565 p10=33328 median=58392
+# sl 8 240                           N=120960 mu=43.0 fix=2159 min=50728 p1=51461 p10=57693 median=71435
+# sl 9 168                           N=120960 mu=43.0 fix=431 min=344 p1=348 p10=840 median=6788
+# psl 13 111                         N=121212 mu=43.8 fix=17 min=68 p1=72 p10=135 median=424
+# pgl 7 361                          N=121296 mu=44.0 fix=5 min=126 p1=327 p10=642 median=2226
+# sl 7 361                           N=121296 mu=44.0 fix=5 min=282 p1=372 p10=738 median=3672
+# psl 9 337                          N=121320 mu=44.1 fix=8 min=168 p1=187 p10=414 median=2230
+# pgl 11 92                          N=121440 mu=44.5 fix=1103 min=38790 p1=39041 p10=47429 median=66712
+# pgl 23 10                          N=121440 mu=44.5 fix=239 min=137 p1=222 p10=407 median=9616
+# psl 11 184                         N=121440 mu=44.5 fix=1103 min=34869 p1=44521 p10=51578 median=64101
+# psl 23 20                          N=121440 mu=44.5 fix=239 min=82 p1=92 p10=307 median=4201
+# sl 11 92                           N=121440 mu=44.5 fix=1103 min=7071 p1=11333 p10=21619 median=46541
+# sl 23 10                           N=121440 mu=44.5 fix=239 min=127 p1=127 p10=250 median=1692
+# pgl 8 241                          N=121464 mu=44.6 fix=8 min=60 p1=84 p10=168 median=495
+# sl 8 241                           N=121464 mu=44.6 fix=8 min=48 p1=57 p10=198 median=594
+ 1 N=120120 mu=40.3 fix=11 min=21 p1=30 p10=87 median=216  sl 11 91
+ 2 N=120960 mu=43.0 fix=53 min=38 p1=41 p10=82 median=313  prod sl 7 psl 9 1
+ 3 N=120120 mu=40.3 fix=11 min=39 p1=48 p10=78 median=249  pgl 11 91
+ 4 N=120960 mu=43.0 fix=53 min=37 p1=49 p10=85 median=414  prod psl 7 sl 9 1
+ 5 N=120120 mu=40.3 fix=11 min=42 p1=51 p10=104 median=376  psl 11 182
+ 6 N=120960 mu=43.0 fix=107 min=49 p1=66 p10=124 median=1077  prod sl 5 sl 8 2
+ 7 N=120960 mu=43.0 fix=107 min=50 p1=59 p10=134 median=431  prod sl 3 sl 9 7
+ 8 N=120960 mu=43.0 fix=53 min=85 p1=92 p10=110 median=1347  prod psl 7 psl 9 2
+ 9 N=121212 mu=43.8 fix=17 min=68 p1=72 p10=135 median=424  psl 13 111
+10 N=120960 mu=43.0 fix=107 min=67 p1=82 p10=127 median=1292  prod psl 3 sl 9 14
+11 N=120780 mu=42.4 fix=17 min=72 p1=78 p10=138 median=768  psl 11 183
+12 N=120960 mu=43.0 fix=107 min=75 p1=81 p10=136 median=911  prod psl 5 sl 8 4
+13 N=120600 mu=41.8 fix=44 min=65 p1=80 p10=146 median=1026  psl 9 335
+14 N=121464 mu=44.6 fix=8 min=60 p1=84 p10=168 median=495  pgl 8 241
+15 N=121464 mu=44.6 fix=8 min=48 p1=57 p10=198 median=594  sl 8 241
+16 N=120960 mu=43.0 fix=107 min=55 p1=77 p10=198 median=3092  prod psl 3 psl 9 28
+17 N=120960 mu=43.0 fix=107 min=80 p1=95 p10=222 median=1104  prod sl 4 sl 8 4
+18 N=121440 mu=44.5 fix=239 min=127 p1=127 p10=250 median=1692  sl 23 10
+19 N=121440 mu=44.5 fix=239 min=82 p1=92 p10=307 median=4201  psl 23 20
+20 N=120960 mu=43.0 fix=107 min=116 p1=119 p10=282 median=1753  prod sl 5 sl 7 3

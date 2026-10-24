@@ -1,0 +1,16 @@
+group pgl 3 x Z_122, N=2928, identity 0, H order 61, rows 48, threads 1, setup 0.00s
+wide rows: HW order 244, rows 12, setup 0.03s
+alpha: conj by mat(0,1,2,1) (index 22), z -> 13 z on Z_122
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 5 (+e); mu = 65.85, mu/k = 21.95, fixed-point misses ~ 3.39
+start cost=660
+t=30 steps=912132 evals=7297057 cost=32 best=20 T=0.53
+t=60 steps=1816618 evals=14532945 cost=32 best=20 T=0.19
+t=90 steps=3024645 evals=24197161 cost=38 best=20 T=0.15
+t=120 steps=4232365 evals=33858921 cost=32 best=20 T=0.15
+t=150 steps=5437683 evals=43501465 cost=46 best=20 T=0.15
+t=180 steps=6702467 evals=53619737 cost=25 best=20 T=0.54
+t=210 steps=7943503 evals=63548025 cost=32 best=20 T=0.19
+t=240 steps=9127599 evals=73020793 cost=32 best=20 T=0.15
+t=270 steps=10253119 evals=82024953 cost=29 best=20 T=0.15
+RESULT d=11 D=5 group=pgl 3 x Z_122 N=2928 best=20 evals=87422569 time=300.0 orbit k=3 m=3 f=2 fix=5
+EXIT 1

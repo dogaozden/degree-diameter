@@ -1,0 +1,9 @@
+group pgl 11 x Z_91, N=120120, identity 0, H order 52, rows 2310, threads 1, setup 0.02s
+wide rows: HW order 182, rows 660, setup 0.04s
+alpha: conj by mat(1,7,3,0) (index 800), z -> 9 z on Z_91
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
+ORBW=3: an uncovered fixed element weighs 3; start energy 93
+start cost=93
+t=30 steps=18495 evals=147961 cost=12 best=12 T=0.53 energy=12 bestE=12
+t=60 steps=37946 evals=303569 cost=12 best=12 T=0.19 energy=12 bestE=12
+RESULT d=8 D=8 group=pgl 11 x Z_91 N=120120 best=4 evals=460017 time=90.0 orbit k=3 m=2 f=2 fix=11

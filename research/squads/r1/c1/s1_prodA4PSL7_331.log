@@ -1,0 +1,25 @@
+group prod psl 3 psl 7 x Z_1, N=2016, identity 525, H order 21, rows 96, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 21); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,0,2,1);mat(0,3,2,1)] (index 855), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+start cost=323
+t=30 steps=108078 evals=864625 cost=9 best=9 T=0.53
+t=60 steps=209351 evals=1674809 cost=9 best=9 T=0.19
+t=90 steps=311475 evals=2491801 cost=9 best=9 T=0.15
+t=120 steps=421393 evals=3371145 cost=27 best=9 T=0.15
+t=150 steps=536296 evals=4290369 cost=27 best=9 T=0.15
+t=180 steps=654978 evals=5239825 cost=9 best=9 T=0.72
+t=210 steps=769491 evals=6155929 cost=9 best=9 T=0.25
+t=240 steps=886680 evals=7093441 cost=9 best=9 T=0.15
+t=270 steps=993917 evals=7951337 cost=23 best=9 T=0.15
+t=300 steps=1107612 evals=8860897 cost=26 best=9 T=0.15
+t=330 steps=1222383 evals=9779065 cost=20 best=9 T=0.72
+t=360 steps=1341026 evals=10728209 cost=21 best=9 T=0.25
+t=390 steps=1450344 evals=11602753 cost=21 best=9 T=0.15
+t=420 steps=1568197 evals=12545577 cost=21 best=9 T=0.15
+t=450 steps=1691063 evals=13528505 cost=21 best=9 T=0.15
+t=480 steps=1803642 evals=14429137 cost=12 best=9 T=0.72
+t=510 steps=1915479 evals=15323833 cost=12 best=9 T=0.25
+t=540 steps=2027979 evals=16223833 cost=12 best=9 T=0.15
+t=570 steps=2147283 evals=17178265 cost=12 best=9 T=0.15
+RESULT d=10 D=5 group=prod psl 3 psl 7 x Z_1 N=2016 best=9 evals=18272977 time=600.0 orbit k=3 m=3 f=1 fix=8

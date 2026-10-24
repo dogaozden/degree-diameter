@@ -1,0 +1,34 @@
+== solution file research/frontier/sols/d9D10_psl_149_7_orb3f0_s1.txt (sha256 0959fe6ba7ccc9e3946d266dccc1273f8a48a80141eade3221a16408bbd64800), found by squad-r4-c5-haiku (research/squads/r4/c5/psl149_7_s1.txt)
+9 10 psl 149 n 7 N 11577300
+77182 mat(1,0,0,1) z=0
+4352285 mat(28,75,127,138) z=0
+2551430 mat(16,137,36,1) z=0
+3115429 mat(20,81,147,59) z=2
+473904 mat(3,82,54,36) z=4
+3376899 mat(22,34,101,41) z=1
+7868226 mat(51,19,125,143) z=2
+3938365 mat(25,125,148,1) z=4
+6686464 mat(43,78,119,105) z=1
+== haarcheck_psl (research/structured/tools/haarcheck_psl.c, branch claude/structured-search-orbit-04hefm), low-memory, from the definitions
+from (e,A): reached A 11577300/11577300, B 11577300/11577300 within 10, ecc 10
+from (e,B): reached A 11577300/11577300, B 11577300/11577300 within 10, ecc 10
+VALID d=9 D=10 group=psl 149 x Z_7 N=11577300 vertices=23154600 (distinct generators, 9-regular simple)
+
+real	0m50.157s
+user	0m28.395s
+sys	0m0.022s
+== check_haar_indep.py (research/frontier, independent implementation: own GF(p^k), PSL enumeration, BFS)
+file d9D10_psl_149_7_orb3f0_s1.txt
+header: d=9 D=10 spec=psl 149 NCYC=7 N=11577300
+group order |G|=1653900 (factors [1653900]), x Z_7 -> 11577300; vertices 2N=23154600
+distinct generators (as full group elements): 9 of d=9
+permutations built (29s)
+BFS from A: ecc=10 reached 23154600 of 23154600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36819, 291237, 2128548, 9061891, 9411348, 2219491]
+BFS from B: ecc=10 reached 23154600 of 23154600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36819, 291221, 2128548, 9066162, 9411348, 2215236]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=23154600 (77s)
+
+
+real	1m17.294s
+user	0m30.879s
+sys	0m19.020s

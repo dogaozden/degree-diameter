@@ -1,0 +1,17 @@
+group prod sl 3 sl 5 x Z_229, N=659520, identity 169460, H order 30, rows 21984, threads 1, setup 0.41s
+wide rows: HW order 229, rows 2880, setup 0.61s
+alpha: conj by prod[mat(1,2,0,1);mat(3,1,2,1)] (index 1517), z -> 94 z on Z_229
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 35 (+e); mu = 24.57, mu/k = 8.19, fixed-point misses ~ 2.40
+start cost=5502
+t=30 steps=1549 evals=12393 cost=222 best=222 T=0.53
+t=60 steps=3045 evals=24361 cost=222 best=222 T=0.19
+t=90 steps=4522 evals=36177 cost=222 best=222 T=0.15
+t=120 steps=6075 evals=48601 cost=176 best=176 T=0.15
+t=150 steps=7578 evals=60625 cost=176 best=176 T=0.15
+t=180 steps=9529 evals=76233 cost=176 best=176 T=0.15
+t=210 steps=11443 evals=91545 cost=176 best=176 T=0.15
+t=240 steps=13398 evals=107185 cost=176 best=176 T=0.15
+t=270 steps=15374 evals=122993 cost=176 best=176 T=0.67
+t=300 steps=17169 evals=137353 cost=176 best=176 T=0.24
+RESULT d=8 D=9 group=prod sl 3 sl 5 x Z_229 N=659520 best=176 evals=152665 time=327.1 orbit k=3 m=2 f=2 fix=35
+EXIT 1

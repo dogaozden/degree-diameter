@@ -1,0 +1,10 @@
+group sl 13 x Z_124, N=270816, identity 19344, H order 62, rows 4368, threads 1, setup 0.02s
+wide rows: HW order 217, rows 1248, setup 0.04s
+alpha: conj by mat(3,8,0,9) (index 598), z -> 5 z on Z_124
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 47 (+e); mu = 38.83, mu/k = 12.94, fixed-point misses ~ 2.51
+start cost=55
+t=30 steps=11848 evals=94785 cost=14 best=14 T=0.53
+t=60 steps=20043 evals=160345 cost=14 best=14 T=0.19
+t=90 steps=28505 evals=228041 cost=14 best=14 T=0.15
+t=120 steps=36376 evals=291009 cost=14 best=14 T=0.15
+RESULT d=9 D=8 group=sl 13 x Z_124 N=270816 best=14 evals=358905 time=150.0 orbit k=3 m=3 f=0 fix=47

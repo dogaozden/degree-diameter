@@ -1,0 +1,9 @@
+group psl 11 x Z_24, N=15840, identity 1320, H order 60, rows 264, threads 1, setup 0.12s
+wide rows: HW order 132, rows 120, setup 0.12s
+alpha: conj by mat(5,1,7,6) (index 557), z -> 11 z on Z_24
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 33.29, mu/k = 16.64, fixed-point misses ~ 1.10
+start cost=8000
+RESULT d=6 D=8 group=psl 11 x Z_24 N=15840 best=0 evals=334257 time=23.6 orbit k=2 m=3 f=0 fix=23
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D8_psl_11_24_orb2f0_s1.txt

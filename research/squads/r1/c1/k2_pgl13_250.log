@@ -1,0 +1,15 @@
+group pgl 13 x Z_1, N=2184, identity 0, H order 14, rows 156, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(1,10,5,12) (index 1631), z -> 0 z on Z_1
+ORBIT k=2 m=5 f=0: |Fix(alpha)| = 23 (+e); mu = 74.39, mu/k = 37.20, fixed-point misses ~ 8.86
+start cost=337
+t=30 steps=211710 evals=1693681 cost=63 best=63 T=0.53
+t=60 steps=416575 evals=3332601 cost=63 best=63 T=0.19
+t=90 steps=628256 evals=5026049 cost=63 best=63 T=0.15
+t=120 steps=842905 evals=6743241 cost=63 best=63 T=0.15
+t=150 steps=1059901 evals=8479209 cost=63 best=63 T=0.15
+t=180 steps=1276841 evals=10214729 cost=63 best=63 T=0.56
+t=210 steps=1481871 evals=11854969 cost=93 best=63 T=0.20
+t=240 steps=1691048 evals=13528385 cost=93 best=63 T=0.15
+t=270 steps=1905266 evals=15242129 cost=93 best=63 T=0.15
+RESULT d=10 D=5 group=pgl 13 x Z_1 N=2184 best=63 evals=16888473 time=300.0 orbit k=2 m=5 f=0 fix=23

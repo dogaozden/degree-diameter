@@ -1,0 +1,10 @@
+group prod psl 3 sl 3 x Z_7, N=2016, identity 546, H order 42, rows 48, threads 1, setup 0.00s
+wide rows: HW order 84, rows 24, setup 0.07s
+alpha: conj by prod[mat(1,0,2,1);mat(2,2,1,0)] (index 142), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+start cost=810
+t=30 steps=49787 evals=3186369 cost=4 best=4 T=0.53
+t=60 steps=96481 evals=6174785 cost=4 best=4 T=0.19
+t=90 steps=146412 evals=9370369 cost=4 best=4 T=0.15
+t=120 steps=201194 evals=12876417 cost=4 best=4 T=0.15
+RESULT d=10 D=5 group=prod psl 3 sl 3 x Z_7 N=2016 best=4 evals=12876417 time=120.0 orbit k=3 m=3 f=1 fix=17
