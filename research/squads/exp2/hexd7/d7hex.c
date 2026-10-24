@@ -322,7 +322,8 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
-static int BESTK = 1;
+static int BESTK = 1, nodrop = 0;
+static double repairsec = 30;
 static uint8_t *activeP;   /* adaptive dropping: inactive pairs no longer count and their extra edges are back */
 static long pair_zeros(int k) {
     long z = 0;
@@ -399,7 +400,7 @@ static long fast_search(double maxsec) {
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
-    double dropsec = getenv("DROPSEC") ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
+    double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
     long impref = zeros;
     double dropstart = getenv("DROPSTART") ? atof(getenv("DROPSTART")) : 0;   /* no dropping before this many seconds */
     while (zeros > 0) {
@@ -758,6 +759,7 @@ int main(int argc, char **argv) {
         if (it % 500 == 0) fprintf(stderr, "it %ld acc %ld cost %d  (%.1fs)\n", it, acc, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
     }
     fprintf(stderr, "search done: it %ld cost %d (%.1fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    if (getenv("REPAIRSEC")) repairsec = atof(getenv("REPAIRSEC"));
     if (cost > 0 && getenv("DROP")) {   /* salvage: drop the worst pairs until every remaining freed source is fine */
         if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
         while (cost > 0 && K > 0) {
@@ -765,6 +767,13 @@ int main(int argc, char **argv) {
             drop_pair(w);
             cost = total_cost(per);
             fprintf(stderr, "dropped a pair: K=%d cost %d\n", K, cost);
+            for (int rep = 0; cost > 0 && alg >= 2 && rep < 4; rep++) {   /* the dropped pair's hubs may have carried routes of other pairs: repair */
+                int before = cost;
+                nodrop = 1; fast_search(repairsec); nodrop = 0;
+                cost = total_cost(per);
+                fprintf(stderr, "  after repair: K=%d cost %d\n", K, cost);
+                if (cost > before * 7 / 10) break;   /* repairs stopped paying: drop another pair */
+            }
         }
     }
     if (cost == 0 && getenv("SKIPFULL")) {   /* freed sources verified by BFS; the rest is left to apsp */

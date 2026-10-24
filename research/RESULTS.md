@@ -176,3 +176,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 24 12:15 PT (coordinator): new cells (4,7) 864 (two vertex-transitive graphs, thm-smallfamilies), (12,5) 8,748 and (15,5) 20,736 (route-chart lifts, thm-chartlift); raised (8,5) 2,048 (chart lift), (7,7) 23,484 and (11,7) 398,606 (exp2-squad, hexagon + hubs). All checked all-pairs by the coordinator (research/coordinator_check/check_2026-10-24_noon.txt).
 
 - Oct 24 14:55 PT (harvest): (13,8) 6,999,552 (was 6,814,080), prod sl 7 sl 7 n 31; claude/thm-order2-symmetry-gap-4e2nmi.
+- Oct 24 15:05 PT (coordinator): raised (7,7) 23,488 and (9,7) 117,690 (exp2-squad, hexagon + hubs); (13,8) 6,999,552 (thm-order2, cloud-checked). Squad experiment 2 final: arm B 2.54 units, all three cells beaten with the larger margins; arm A 2.86 units, all three beaten (23,468, 117,656, 398,582); arm C none.
