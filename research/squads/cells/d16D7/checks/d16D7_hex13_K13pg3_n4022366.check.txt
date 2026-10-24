@@ -1,0 +1,10 @@
+# d16D7_hex13_K13pg3_n4022366 (cell-16-7 session, 2026-10-24T19:14Z): 13 freed pairs, hub graph PG(2,3), signature init + annealing
+# rebuild: hexgen 13; d16hex edges hex/hex_q13.bin SOL out.edges; chk7 out.edges 16 7 THREADS <mode>
+== d16hex check (BFS from every freed point and line at level 0 and every hub, implicit graph):
+q=13 n=4022366 K=13 maxdeg=16 freed+hub sources: worst ecc 7, bad 0 (39.4s)
+RESULT VALID n=4022366
+== chk7 on the written edge list: all freed points and lines at all 5 levels, all 26 hubs, ~1000 random vertices:
+n=4022366 edges=32178837 degree min=9 max=16 bipartite=yes
+sources: 1180 (list)
+max eccentricity over the 1180 sources = 7, bad passes 0
+RESULT VALID d=16 D=7 n=4022366 (list sources)

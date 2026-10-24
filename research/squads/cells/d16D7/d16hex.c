@@ -50,6 +50,8 @@ static int NV, noM1 = 0;
 static uint8_t *dist;
 static int *que;
 static int HGm = 0, *HGj, *HGk, **HGL, **HGP, *HGLn, *HGPn;
+/* extra vertices: line-side extras adjacent to point-side hubs, point-side extras adjacent to line-side hubs */
+static int nXL = 0, nXP = 0, **XLh, *XLn, **XPh, *XPn, **hubXL, *hubXLn, **hubXP, *hubXPn;
 
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
@@ -62,11 +64,15 @@ static inline int VL(int l, int i) { return i * 2 * N + N + l; }
 static int nbrs(int v, int *out) {
     int c = 0;
     if (v >= NLEV * 2 * N) {
-        int j = v - NLEV * 2 * N;
+        int base = NLEV * 2 * N, j = v - base;
         if (j < K) { int p = F[j]; for (int i = 0; i < NLEV; i++) out[c++] = VP(p, i);
-                     if (HGm) for (int t = 0; t < HGLn[j]; t++) out[c++] = NLEV * 2 * N + K + HGL[j][t]; }
-        else { int l = FLn[j - K]; for (int i = 0; i < NLEV; i++) out[c++] = VL(l, i);
-               if (HGm) for (int t = 0; t < HGPn[j - K]; t++) out[c++] = NLEV * 2 * N + HGP[j - K][t]; }
+                     if (HGm) for (int t = 0; t < HGLn[j]; t++) out[c++] = base + K + HGL[j][t];
+                     if (nXP) for (int t = 0; t < hubXPn[j]; t++) out[c++] = base + 2 * K + nXL + hubXP[j][t]; }
+        else if (j < 2 * K) { int k = j - K, l = FLn[k]; for (int i = 0; i < NLEV; i++) out[c++] = VL(l, i);
+               if (HGm) for (int t = 0; t < HGPn[k]; t++) out[c++] = base + HGP[k][t];
+               if (nXL) for (int t = 0; t < hubXLn[k]; t++) out[c++] = base + 2 * K + hubXL[k][t]; }
+        else if (j < 2 * K + nXL) { int e = j - 2 * K; for (int t = 0; t < XLn[e]; t++) out[c++] = base + K + XLh[e][t]; }
+        else { int e = j - 2 * K - nXL; for (int t = 0; t < XPn[e]; t++) out[c++] = base + XPh[e][t]; }
         return c;
     }
     int i = v / (2 * N), r = v - i * 2 * N;
@@ -123,16 +129,48 @@ static void hg_build(void) {
     }
 }
 
-/* incidence graph of PG(2,r), r prime: returns the number of points (= lines), fills HGj/HGk */
+/* incidence graph of PG(2,r), r = p^e <= 16 (GF(r) as polynomials mod x^2+x+1, x^3+x+1, x^2+1, x^4+x+1, x^2+x+2 etc.):
+   points and lines are normalized triples, x ~ y iff x.y = 0. Returns r^2+r+1 and fills HGj/HGk */
+static int GA[16][16], GM[16][16];
+static void gf_tables(int r) {
+    int p = 2; while (r % p) p++;
+    int e = 0, t = r; while (t > 1) { t /= p; e++; }
+    int poly[5] = {0};   /* monic irreducible of degree e over GF(p): coefficients c0..c_{e-1} of x^e = -(...) */
+    if (e == 1) { for (int a = 0; a < r; a++) for (int b = 0; b < r; b++) { GA[a][b] = (a + b) % r; GM[a][b] = (a * b) % r; } return; }
+    if (r == 4) { poly[0] = 1; poly[1] = 1; }            /* x^2 + x + 1 */
+    else if (r == 8) { poly[0] = 1; poly[1] = 1; poly[2] = 0; }   /* x^3 + x + 1 */
+    else if (r == 9) { poly[0] = 1; poly[1] = 0; }       /* x^2 + 1 */
+    else if (r == 16) { poly[0] = 1; poly[1] = 1; poly[2] = 0; poly[3] = 0; }   /* x^4 + x + 1 */
+    else { fprintf(stderr, "GF(%d) not supported\n", r); exit(1); }
+    for (int a = 0; a < r; a++) for (int b = 0; b < r; b++) {
+        int da[8], db[8], s2[8] = {0}, pr[16] = {0}, x = a, y = b;
+        for (int i = 0; i < e; i++) { da[i] = x % p; x /= p; db[i] = y % p; y /= p; s2[i] = (da[i] + db[i]) % p; }
+        for (int i = 0; i < e; i++) for (int j = 0; j < e; j++) pr[i + j] = (pr[i + j] + da[i] * db[j]) % p;
+        for (int d = 2 * e - 2; d >= e; d--) { int c = pr[d]; if (!c) continue; pr[d] = 0;   /* x^d = x^(d-e) * x^e = -x^(d-e) * sum poly */
+            for (int i = 0; i < e; i++) pr[d - e + i] = ((pr[d - e + i] - c * poly[i]) % p + p) % p; }
+        int va = 0, vm = 0; for (int i = e - 1; i >= 0; i--) { va = va * p + s2[i]; vm = vm * p + pr[i]; }
+        GA[a][b] = va; GM[a][b] = vm;
+    }
+}
 static int hg_pg2(int r) {
     static int pts[4096][3]; int n = 0;
+    gf_tables(r);
     for (int a = 0; a < r; a++) for (int b = 0; b < r; b++) for (int c = 0; c < r; c++) {
         int v[3] = {a, b, c}, f = -1; for (int i = 0; i < 3; i++) if (v[i]) { f = v[i]; break; }
         if (f == 1) { pts[n][0] = a; pts[n][1] = b; pts[n][2] = c; n++; }
     }
     HGj = malloc(sizeof(int) * n * (r + 1)); HGk = malloc(sizeof(int) * n * (r + 1)); HGm = 0;
-    for (int j = 0; j < n; j++) for (int k = 0; k < n; k++)
-        if ((pts[j][0] * pts[k][0] + pts[j][1] * pts[k][1] + pts[j][2] * pts[k][2]) % r == 0) { HGj[HGm] = j; HGk[HGm] = k; HGm++; }
+    int *dj = calloc(n, sizeof(int));
+    for (int j = 0; j < n; j++) for (int k = 0; k < n; k++) {
+        int d = GA[GA[GM[pts[j][0]][pts[k][0]]][GM[pts[j][1]][pts[k][1]]]][GM[pts[j][2]][pts[k][2]]];
+        if (d == 0) { HGj[HGm] = j; HGk[HGm] = k; HGm++; dj[j]++; }
+    }
+    for (int j = 0; j < n; j++) if (dj[j] != r + 1) { fprintf(stderr, "PG(2,%d): degree %d at %d\n", r, dj[j], j); exit(1); }
+    /* any two points lie on exactly one common line */
+    uint8_t *inc = calloc((size_t)n * n, 1); for (int e2 = 0; e2 < HGm; e2++) inc[HGj[e2] * n + HGk[e2]] = 1;
+    for (int j = 0; j < n; j++) for (int j2 = j + 1; j2 < n; j2++) { int c = 0; for (int k = 0; k < n; k++) c += inc[j * n + k] & inc[j2 * n + k];
+        if (c != 1) { fprintf(stderr, "PG(2,%d): points %d,%d on %d common lines\n", r, j, j2, c); exit(1); } }
+    free(inc); free(dj);
     return n;
 }
 
@@ -149,7 +187,22 @@ static void load(const char *fn) {
     free(cnt);
 }
 
-static void alloc_graph(void) { NV = NLEV * 2 * N + 2 * K; dist = malloc(NV); que = malloc(sizeof(int) * NV); }
+static void alloc_graph(void) { NV = NLEV * 2 * N + 2 * K + nXL + nXP; dist = malloc(NV); que = malloc(sizeof(int) * NV); }
+static void x_build(void) {   /* hub -> extras adjacency from the extras' hub lists */
+    hubXL = malloc(sizeof(int *) * (K + 1)); hubXLn = calloc(K + 1, sizeof(int));
+    hubXP = malloc(sizeof(int *) * (K + 1)); hubXPn = calloc(K + 1, sizeof(int));
+    for (int j = 0; j < K; j++) { hubXL[j] = malloc(sizeof(int) * 32); hubXP[j] = malloc(sizeof(int) * 32); }
+    for (int e = 0; e < nXL; e++) for (int t = 0; t < XLn[e]; t++) { int j = XLh[e][t];
+        if (j < 0 || j >= K || hubXLn[j] >= 32) { fprintf(stderr, "bad extra\n"); exit(1); } hubXL[j][hubXLn[j]++] = e; }
+    for (int e = 0; e < nXP; e++) for (int t = 0; t < XPn[e]; t++) { int j = XPh[e][t];
+        if (j < 0 || j >= K || hubXPn[j] >= 32) { fprintf(stderr, "bad extra\n"); exit(1); } hubXP[j][hubXPn[j]++] = e; }
+}
+static void x_alloc(int a, int b) {
+    nXL = a; nXP = b;
+    XLh = malloc(sizeof(int *) * (a + 1)); XLn = calloc(a + 1, sizeof(int)); XPh = malloc(sizeof(int *) * (b + 1)); XPn = calloc(b + 1, sizeof(int));
+    for (int e = 0; e < a; e++) XLh[e] = malloc(sizeof(int) * 32);
+    for (int e = 0; e < b; e++) XPh[e] = malloc(sizeof(int) * 32);
+}
 
 /* background permutation: Fisher-Yates driven by splitmix64(seed) */
 static uint64_t sm_state;
@@ -171,7 +224,13 @@ static void write_sol(const char *fn) {
     for (int j = 0; j < K; j++) fprintf(f, " %d", F[j]);
     fprintf(f, "\nhubedges %d", HGm);
     for (int e = 0; e < HGm; e++) fprintf(f, " %d %d", HGj[e], HGk[e]);
-    fprintf(f, "\nbg %llu %llu\n", (unsigned long long)bgs1, (unsigned long long)bgs2);
+    fprintf(f, "\n");
+    if (nXL || nXP) {
+        fprintf(f, "extras %d %d\n", nXL, nXP);
+        for (int e = 0; e < nXL; e++) { fprintf(f, "%d", XLn[e]); for (int t = 0; t < XLn[e]; t++) fprintf(f, " %d", XLh[e][t]); fprintf(f, "\n"); }
+        for (int e = 0; e < nXP; e++) { fprintf(f, "%d", XPn[e]); for (int t = 0; t < XPn[e]; t++) fprintf(f, " %d", XPh[e][t]); fprintf(f, "\n"); }
+    }
+    fprintf(f, "bg %llu %llu\n", (unsigned long long)bgs1, (unsigned long long)bgs2);
     int c = 0; for (int p = 0; p < N; p++) if (M1[p] != BG1[p]) c++;
     fprintf(f, "m1 %d\n", c); c = 0;
     for (int p = 0; p < N; p++) if (M1[p] != BG1[p]) { fprintf(f, "%d %d%c", p, M1[p], (++c % 10 == 0) ? '\n' : ' '); }
@@ -209,12 +268,22 @@ static void read_sol(const char *fn) {
     for (int e = 0; e < HGm; e++) if (fscanf(f, "%d %d", &HGj[e], &HGk[e]) != 2) exit(1);
     if (HGm) hg_build();
     unsigned long long s1, s2;
-    if (fscanf(f, "%31s %llu %llu", tok, &s1, &s2) != 3 || strcmp(tok, "bg")) { fprintf(stderr, "no bg line\n"); exit(1); }
+    if (fscanf(f, "%31s", tok) != 1) exit(1);
+    if (!strcmp(tok, "extras")) {
+        int a, b; if (fscanf(f, "%d %d", &a, &b) != 2) exit(1);
+        x_alloc(a, b);
+        for (int e = 0; e < a + b; e++) { int d; if (fscanf(f, "%d", &d) != 1 || d < 1 || d > 32) exit(1);
+            int *h = e < a ? XLh[e] : XPh[e - a]; if (e < a) XLn[e] = d; else XPn[e - a] = d;
+            for (int t = 0; t < d; t++) if (fscanf(f, "%d", &h[t]) != 1) exit(1); }
+        if (fscanf(f, "%31s", tok) != 1) exit(1);
+    }
+    if (fscanf(f, "%llu %llu", &s1, &s2) != 2 || strcmp(tok, "bg")) { fprintf(stderr, "no bg line\n"); exit(1); }
     alloc_M(); bgs1 = s1; bgs2 = s2;
     bgperm(bgs1, BG1); bgperm(bgs2, BG2); memcpy(M1, BG1, sizeof(int) * N); memcpy(M2, BG2, sizeof(int) * N);
     read_overrides(f, "m1", M1, M1inv); read_overrides(f, "m2", M2, M2inv);
     fclose(f);
     set_freed_from_F();
+    if (nXL || nXP) x_build();
     alloc_graph();
 }
 
@@ -436,6 +505,14 @@ static void fs_init_counts(void) {
     fprintf(stderr, "proxy cost after counting routes: %ld\n", zeros);
 }
 
+static uint64_t (*cmpS)[2];
+static int cmpf(const void *a, const void *b) {
+    const uint64_t *x = cmpS[*(const int *)a], *y = cmpS[*(const int *)b];
+    if (x[1] != y[1]) return x[1] < y[1] ? -1 : 1;
+    if (x[0] != y[0]) return x[0] < y[0] ? -1 : 1;
+    return 0;
+}
+
 static int BESTK = 1;
 static long fast_search(double maxsec, double T0) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
@@ -547,6 +624,11 @@ int main(int argc, char **argv) {
         int perm[64]; for (int k = 0; k < Q1; k++) perm[k] = k;
         for (int k = Q1 - 1; k > 0; k--) { int rr = rndi(k + 1); int t = perm[k]; perm[k] = perm[rr]; perm[rr] = t; }
         for (int j = 0; j < K; j++) { int l = PL[c * Q1 + perm[j]], p; do { p = LP[l * Q1 + rndi(Q1)]; } while (p == c); F[j] = p; fl[j] = l; }
+    } else if (mode == 3) {   /* line group: the freed points are the points of a line L0, each with another line through it */
+        int L0 = rndi(N); if (K > Q1) K = Q1;
+        int perm[64]; for (int k = 0; k < Q1; k++) perm[k] = k;
+        for (int k = Q1 - 1; k > 0; k--) { int rr = rndi(k + 1); int t = perm[k]; perm[k] = perm[rr]; perm[rr] = t; }
+        for (int j = 0; j < K; j++) { int p = LP[L0 * Q1 + perm[j]], l; do { l = PL[p * Q1 + rndi(Q1)]; } while (l == L0); F[j] = p; fl[j] = l; }
     } else {
         if (mode == 2) {
             int n = hg_pg2(r); if (K > n) K = n;
@@ -564,7 +646,20 @@ int main(int argc, char **argv) {
     }
     for (int j = 0; j < K; j++) m1set(F[j], fl[j]);
     set_freed_from_F();
+    {   /* extras: XL line-side vertices adjacent to every point-side hub (star: the freed lines meet every line within 4),
+           XP point-side vertices adjacent to every line-side hub (line group: the freed points meet every point within 4) */
+        int a = getenv("XL") ? atoi(getenv("XL")) : 0, b = getenv("XP") ? atoi(getenv("XP")) : 0;
+        if (a || b) {
+            x_alloc(a, b);
+            for (int e = 0; e < a; e++) { XLn[e] = K; for (int j = 0; j < K; j++) XLh[e][j] = j; }
+            for (int e = 0; e < b; e++) { XPn[e] = K; for (int j = 0; j < K; j++) XPh[e][j] = j; }
+            x_build();
+            fprintf(stderr, "extras: %d line-side, %d point-side\n", a, b);
+        }
+    }
     alloc_graph();
+    { int nb[64], md = 0; for (int v = NLEV * 2 * N; v < NV; v++) { int c = nbrs(v, nb); if (c > md) md = c; }
+      if (md > q + 3) { fprintf(stderr, "hub or extra degree %d > %d\n", md, q + 3); return 1; } }
     hdp = malloc(sizeof(uint8_t *) * K); hdl = malloc(sizeof(uint8_t *) * K);
     for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(FLn[j], 1, hdl[j]); }
     if (alg & 1) {   /* algebraic cover: M1 maps S'(p) onto S(l) */
@@ -585,6 +680,78 @@ int main(int argc, char **argv) {
             }
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
+    }
+    if (alg & 4) {   /* signature matching: point u with sigma(u) = {j : u in S'(p_j)} gets a line m with tau(m) = sigma(u)
+                        where possible (then M1(S'(p_j)) = S(l_j) holds except at mismatched classes), else the most similar */
+        int W2 = (K + 63) / 64; if (W2 > 2) { fprintf(stderr, "signature init needs K <= 128\n"); return 1; }
+        uint64_t (*sp)[2] = calloc(N, sizeof *sp), (*sl)[2] = calloc(N, sizeof *sl);
+        for (int j = 0; j < K; j++) for (int v = 0; v < N; v++) {
+            if (hdp[j][v] == 4 && hdl[j][v] == 5) sp[v][j / 64] |= 1ULL << (j % 64);
+            if (hdl[j][N + v] == 4 && hdp[j][N + v] == 5) sl[v][j / 64] |= 1ULL << (j % 64);
+        }
+        /* sort non-freed points and lines by signature (random tie order) */
+        int *P = malloc(sizeof(int) * N), *Lr = malloc(sizeof(int) * N), np = 0, nl = 0;
+        for (int v = 0; v < N; v++) { if (!isF[v]) P[np++] = v; if (!isFL[v]) Lr[nl++] = v; }
+        for (int i = np - 1; i > 0; i--) { int rr = rndi(i + 1), t = P[i]; P[i] = P[rr]; P[rr] = t; }
+        for (int i = nl - 1; i > 0; i--) { int rr = rndi(i + 1), t = Lr[i]; Lr[i] = Lr[rr]; Lr[rr] = t; }
+        cmpS = sp; qsort(P, np, sizeof(int), cmpf);
+        cmpS = sl; qsort(Lr, nl, sizeof(int), cmpf);
+        int *newM = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) newM[v] = -1;
+        for (int j = 0; j < K; j++) newM[F[j]] = FLn[j];
+        int *lp = malloc(sizeof(int) * N), *ll = malloc(sizeof(int) * N), nlp = 0, nll = 0;
+        int i = 0, k = 0; long exact = 0;
+        while (i < np || k < nl) {
+            const uint64_t *s;
+            if (i < np && k < nl) { const uint64_t *x = sp[P[i]], *y = sl[Lr[k]];
+                s = (x[1] < y[1] || (x[1] == y[1] && x[0] <= y[0])) ? x : y; }
+            else s = i < np ? sp[P[i]] : sl[Lr[k]];
+            uint64_t s0 = s[0], s1 = s[1];
+            int i0 = i, k0 = k;
+            while (i < np && sp[P[i]][0] == s0 && sp[P[i]][1] == s1) i++;
+            while (k < nl && sl[Lr[k]][0] == s0 && sl[Lr[k]][1] == s1) k++;
+            int a = i - i0, b = k - k0, mn = a < b ? a : b;
+            for (int t = 0; t < mn; t++) { newM[P[i0 + t]] = Lr[k0 + t]; if (s0 | s1) exact++; }
+            for (int t = mn; t < a; t++) lp[nlp++] = P[i0 + t];
+            for (int t = mn; t < b; t++) ll[nll++] = Lr[k0 + t];
+        }
+        /* leftovers: points by decreasing |sigma| take the leftover line with the smallest |sigma xor tau| among the
+           lines sharing a pair with them (per-pair buckets, lazily pruned), else any leftover line */
+        long sim = 0;
+        {
+            uint8_t *usedl = calloc(N, 1);
+            int *bcnt = calloc(K + 1, sizeof(int)), **bk = malloc(sizeof(int *) * (K + 1)), *bpos = calloc(K + 1, sizeof(int));
+            for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < K; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bcnt[j]++; }
+            for (int j = 0; j < K; j++) { bk[j] = malloc(sizeof(int) * (bcnt[j] + 1)); bcnt[j] = 0; }
+            for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < K; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bk[j][bcnt[j]++] = m; }
+            for (int j = 0; j < K; j++) for (int t = bcnt[j] - 1; t > 0; t--) { int rr = rndi(t + 1), tt = bk[j][t]; bk[j][t] = bk[j][rr]; bk[j][rr] = tt; }
+            /* order leftover points by decreasing |sigma| */
+            int *ord = malloc(sizeof(int) * (nlp + 1)), no = 0;
+            for (int c = 2 * 64; c >= 0; c--) for (int t = 0; t < nlp; t++) { int u = lp[t]; if (__builtin_popcountll(sp[u][0]) + __builtin_popcountll(sp[u][1]) == c) ord[no++] = u; }
+            int ncand = getenv("SIGCAND") ? atoi(getenv("SIGCAND")) : 400, anyp = 0;
+            for (int t = 0; t < no; t++) {
+                int u = ord[t], best = -1, bs = 1 << 30, seen = 0;
+                for (int j = 0; j < K && seen < ncand; j++) {
+                    if (!((sp[u][j / 64] >> (j % 64)) & 1)) continue;
+                    int *L = bk[j];
+                    while (bpos[j] < bcnt[j] && usedl[L[bpos[j]]]) bpos[j]++;   /* prune the used prefix */
+                    for (int i2 = bpos[j]; i2 < bcnt[j] && seen < ncand; i2++) { int m = L[i2]; if (usedl[m]) continue; seen++;
+                        int sc = __builtin_popcountll(sp[u][0] ^ sl[m][0]) + __builtin_popcountll(sp[u][1] ^ sl[m][1]);
+                        if (sc < bs) { bs = sc; best = m; if (sc == 0) break; } }
+                }
+                if (best < 0) {   /* no leftover line shares a pair: take the first unused leftover line */
+                    while (anyp < nll && usedl[ll[anyp]]) anyp++;
+                    best = ll[anyp]; bs = __builtin_popcountll(sp[u][0] ^ sl[best][0]) + __builtin_popcountll(sp[u][1] ^ sl[best][1]);
+                }
+                usedl[best] = 1; newM[u] = best; sim += bs;
+            }
+            for (int j = 0; j < K; j++) free(bk[j]);
+            free(bk); free(bcnt); free(bpos); free(ord); free(usedl);
+        }
+        for (int v = 0; v < N; v++) { M1[v] = newM[v]; }
+        for (int v = 0; v < N; v++) M1inv[M1[v]] = v;
+        for (int v = 0; v < N; v++) if (M1inv[M1[v]] != v || M1[v] < 0) { fprintf(stderr, "signature init: not a bijection\n"); return 1; }
+        fprintf(stderr, "signature init: %ld exact matches in nonempty classes, %d leftover points (sum of |sigma xor tau| %ld)\n", exact, nlp, sim);
+        free(sp); free(sl); free(P); free(Lr); free(newM); free(lp); free(ll);
     }
     double tstart = now();
     if (alg & 2) {
