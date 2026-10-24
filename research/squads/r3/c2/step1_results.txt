@@ -1,0 +1,42 @@
+./step1.sh: line 14: 32603 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 agl1 3 agl1 3 agl1 8 x Z1 | Fix= mu=    | 
+./step1.sh: line 14: 32689 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 pgl 2 agl1 3 agl1 8 x Z1 | Fix= mu=    | 
+./step1.sh: line 14: 32756 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 pgl 2 pgl 2 agl1 8 x Z1 | Fix= mu=    | 
+2016 pgl 2 pgl 7 x Z1 | Fix=35 mu=51.81 min=105 p1=212 index 25 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+2016 pgl 7 agl1 3 x Z1 | Fix=17 mu=51.81 min=35 p1=116 index 1405 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 psl 7 agl1 4 x Z1 | Fix=8 mu=51.81 min=21 p1=66 index 1774 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+./step1.sh: line 14:  2943 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 sl 2 agl1 3 agl1 8 x Z1 | Fix= mu=    | 
+./step1.sh: line 14:  3001 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 sl 2 pgl 2 agl1 8 x Z1 | Fix= mu=    | 
+2016 sl 2 pgl 7 x Z1 | Fix=17 mu=51.81 min=43 p1=115 index 1809 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+./step1.sh: line 14:  3870 Floating point exceptionORBIT="3 3 1" RANDORB=20000 timeout 120 nice -n 10 $B/haar_sym 10 5 1 1 8 /dev/null prod $name $n > s1_$tag.log 2>&1
+2016 sl 2 sl 2 agl1 8 x Z1 | Fix= mu=    | 
+2016 sl 2 sl 7 x Z1 | Fix=17 mu=51.81 min=20 p1=54 index 1870 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 sl 7 agl1 3 x Z1 | Fix=35 mu=51.81 min=40 p1=76 index 1638 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+2016 sl 7 pgl 2 x Z1 | Fix=17 mu=51.81 min=20 p1=56 index 855 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 pgl 3 agl1 7 x Z2 | Fix=287 mu=51.81 min=2422 p1=2556 index 25 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 287 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 169.98
+2016 psl 7 agl1 3 x Z2 | Fix=17 mu=51.81 min=34 p1=107 index 397 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 psl 7 pgl 2 x Z2 | Fix=17 mu=51.81 min=44 p1=108 index 489 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 sl 2 psl 7 x Z2 | Fix=17 mu=51.81 min=38 p1=109 index 855 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 sl 3 agl1 7 x Z2 | Fix=71 mu=51.81 min=272 p1=464 index 862 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 71 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 42.50
+2016 pgl 3 agl1 4 x Z7 | Fix=8 mu=51.81 min=20 p1=56 index 57 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+2016 psl 3 pgl 3 x Z7 | Fix=8 mu=51.81 min=18 p1=56 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+2016 sl 3 agl1 4 x Z7 | Fix=17 mu=51.81 min=16 p1=50 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 agl1 4 agl1 4 x Z14 | Fix=17 mu=51.81 min=22 p1=106 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 pgl 2 pgl 3 x Z14 | Fix=17 mu=51.81 min=72 p1=152 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 pgl 3 agl1 3 x Z14 | Fix=17 mu=51.81 min=70 p1=150 index 25 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 psl 3 agl1 4 x Z14 | Fix=17 mu=51.81 min=35 p1=108 index 16 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 psl 3 psl 3 x Z14 | Fix=17 mu=51.81 min=28 p1=108 index 16 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 sl 2 pgl 3 x Z14 | Fix=17 mu=51.81 min=68 p1=155 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+2016 sl 2 sl 3 x Z14 | Fix=35 mu=51.81 min=40 p1=112 index 142 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+2016 sl 3 agl1 3 x Z14 | Fix=35 mu=51.81 min=62 p1=110 index 98 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+2016 sl 3 pgl 2 x Z14 | Fix=35 mu=51.81 min=46 p1=112 index 135 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+2052 agl1 3 agl1 19 x Z1 | Fix=53 mu=56.24 min=266 p1=437 index 464 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 56.24, mu/k = 18.75, fixed-point misses ~ 32.56
+2052 pgl 2 agl1 19 x Z1 | Fix=53 mu=56.24 min=282 p1=428 index 1223 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 56.24, mu/k = 18.75, fixed-point misses ~ 32.56
+2052 sl 2 agl1 19 x Z1 | Fix=53 mu=56.24 min=302 p1=436 index 464 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 56.24, mu/k = 18.75, fixed-point misses ~ 32.56
+2028 agl1 13 x Z13 | Fix= mu=    | bad group 13
+2016 agl1 9 x Z28 | Fix= mu=    | bad group 28
+2016 psl 3 agl1 7 x Z4 | Fix=71 mu=51.81 min=1380 p1=1510 index 358 | ORBIT k=3 m=3 f=1: |Fix(alpha)| = 71 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 42.50

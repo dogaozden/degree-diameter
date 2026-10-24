@@ -1,0 +1,15 @@
+group prod sl 3 agl1 4 poly x^2+x+1 x Z_7, N=2016, identity 504, H order 42, rows 48, threads 1, setup 0.00s
+wide rows: HW order 84, rows 24, setup 0.04s
+alpha: conj by prod[mat(1,1,2,0);aff(2,0)] (index 136), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 10.62
+start cost=64
+t=30 steps=339204 evals=2713633 cost=4 best=4 T=0.53
+t=60 steps=711007 evals=5688057 cost=4 best=4 T=0.19
+t=90 steps=1110355 evals=8882841 cost=4 best=4 T=0.15
+t=120 steps=1499257 evals=11994057 cost=8 best=4 T=0.15
+t=150 steps=1841781 evals=14734249 cost=8 best=4 T=0.15
+t=180 steps=2159561 evals=17276489 cost=8 best=4 T=0.55
+t=210 steps=2462940 evals=19703521 cost=8 best=4 T=0.19
+t=240 steps=2802260 evals=22418081 cost=8 best=4 T=0.15
+t=270 steps=3155917 evals=25247337 cost=8 best=4 T=0.15
+RESULT d=10 D=5 group=prod sl 3 agl1 4 poly x^2+x+1 x Z_7 N=2016 best=4 evals=28215201 time=300.0 orbit k=3 m=3 f=1 fix=17

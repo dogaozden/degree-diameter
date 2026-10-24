@@ -1,0 +1,25 @@
+group psl 25 poly x^2+2 x Z_3, N=23400, identity 900, H order 39, rows 600, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 39); using haar_gen3's evaluation
+alpha: conj by mat(10,22,23,0) (index 5248), z -> 2 z on Z_3
+ORBIT k=4 m=2 f=0: |Fix(alpha)| = 11 (+e); mu = 66.34, mu/k = 16.59, fixed-point misses ~ 5.54
+start cost=708
+t=30 steps=39962 evals=319697 cost=50 best=50 T=0.53
+t=60 steps=78118 evals=624945 cost=50 best=50 T=0.19
+t=90 steps=116745 evals=933961 cost=50 best=50 T=0.15
+t=120 steps=157414 evals=1259313 cost=50 best=50 T=0.15
+t=150 steps=199597 evals=1596777 cost=50 best=50 T=0.15
+t=180 steps=238523 evals=1908185 cost=50 best=50 T=0.56
+t=210 steps=276273 evals=2210185 cost=64 best=50 T=0.20
+t=240 steps=321958 evals=2575665 cost=64 best=50 T=0.15
+t=270 steps=362827 evals=2902617 cost=64 best=50 T=0.15
+t=300 steps=399947 evals=3199577 cost=64 best=50 T=0.15
+t=330 steps=433952 evals=3471617 cost=50 best=50 T=0.56
+t=360 steps=470078 evals=3760625 cost=50 best=50 T=0.20
+t=390 steps=511002 evals=4088017 cost=50 best=50 T=0.15
+t=420 steps=552612 evals=4420897 cost=50 best=50 T=0.15
+t=450 steps=596691 evals=4773529 cost=50 best=50 T=0.15
+t=480 steps=644446 evals=5155569 cost=50 best=50 T=0.56
+t=510 steps=693737 evals=5549897 cost=50 best=50 T=0.20
+t=540 steps=742757 evals=5942057 cost=50 best=50 T=0.15
+t=570 steps=791980 evals=6335841 cost=50 best=50 T=0.15
+RESULT d=8 D=7 group=psl 25 poly x^2+2 x Z_3 N=23400 best=50 evals=6713017 time=600.0 orbit k=4 m=2 f=0 fix=11

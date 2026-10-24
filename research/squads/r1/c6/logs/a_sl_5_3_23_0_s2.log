@@ -1,0 +1,15 @@
+group sl 5 x Z_3, N=360, identity 60, H order 30, rows 12, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 30); using haar_gen3's evaluation
+alpha: conj by mat(3,0,0,2) (index 70), z -> 2 z on Z_3
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 3 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 2.70
+start cost=478
+t=30 steps=830833 evals=6646665 cost=22 best=22 T=0.53
+t=60 steps=1655248 evals=13241985 cost=22 best=22 T=0.19
+t=90 steps=2509929 evals=20079433 cost=22 best=22 T=0.15
+t=120 steps=3522678 evals=28181425 cost=22 best=22 T=0.15
+t=150 steps=4578696 evals=36629569 cost=24 best=22 T=1.50
+t=180 steps=5576485 evals=44611881 cost=22 best=22 T=0.53
+t=210 steps=6742815 evals=53942521 cost=22 best=22 T=0.19
+t=240 steps=7881128 evals=63049025 cost=34 best=22 T=0.15
+t=270 steps=8997096 evals=71976769 cost=26 best=22 T=0.15
+RESULT d=6 D=5 group=sl 5 x Z_3 N=360 best=22 evals=81092825 time=300.0 orbit k=2 m=3 f=0 fix=3

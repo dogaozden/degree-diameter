@@ -1,0 +1,25 @@
+START s1_sl13_331 04:07:11 orbit=3 3 1 orbw= secs=600 seed=1 group=sl 13 1
+END s1_sl13_331 04:17:11 RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=6 evals=27222049 time=600.0 orbit k=3 m=3 f=1 fix=11
+START s1_prodA4SL3x7_331 04:17:11 orbit=3 3 1 orbw= secs=600 seed=1 group=prod psl 3 sl 3 7
+END s1_prodA4SL3x7_331 04:27:11 RESULT d=10 D=5 group=prod psl 3 sl 3 x Z_7 N=2016 best=4 evals=32775897 time=600.0 orbit k=3 m=3 f=1 fix=17
+START s1_prodA4PSL7_331 04:27:11 orbit=3 3 1 orbw= secs=600 seed=1 group=prod psl 3 psl 7 1
+END s1_prodA4PSL7_331 04:37:11 RESULT d=10 D=5 group=prod psl 3 psl 7 x Z_1 N=2016 best=9 evals=18272977 time=600.0 orbit k=3 m=3 f=1 fix=8
+START s2_sl13_331 04:37:11 orbit=3 3 1 orbw= secs=600 seed=2 group=sl 13 1
+END s2_sl13_331 04:47:11 RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=8 evals=49637633 time=600.0 orbit k=3 m=3 f=1 fix=11
+START s3_sl13_331 04:47:11 orbit=3 3 1 orbw= secs=600 seed=3 group=sl 13 1
+END s3_sl13_331 04:57:11 RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=12 evals=23378625 time=600.0 orbit k=3 m=3 f=1 fix=11
+START orbw3_sl13_331 04:57:11 orbit=3 3 1 orbw=3 secs=600 seed=1 group=sl 13 1
+END orbw3_sl13_331 05:07:12 RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=6 evals=28793713 time=600.0 orbit k=3 m=3 f=1 fix=11
+START s1_pgl13_331 05:07:12 orbit=3 3 1 orbw= secs=600 seed=1 group=pgl 13 1
+END s1_pgl13_331 05:17:12 RESULT d=10 D=5 group=pgl 13 x Z_1 N=2184 best=26 evals=15727361 time=600.0 orbit k=3 m=3 f=1 fix=11
+START s1_psl7x13_331 05:17:12 orbit=3 3 1 orbw= secs=600 seed=1 group=psl 7 13
+END s1_psl7x13_331 05:27:12 RESULT d=10 D=5 group=psl 7 x Z_13 N=2184 best=8 evals=85608889 time=600.0 orbit k=3 m=3 f=1 fix=2
+START k2_sl13_250 05:27:12 orbit=2 5 0 orbw= secs=300 seed=1 group=sl 13 1
+END k2_sl13_250 05:32:12 RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=46 evals=31067529 time=300.0 orbit k=2 m=5 f=0 fix=11
+START k2_pgl13_250 05:32:12 orbit=2 5 0 orbw= secs=300 seed=1 group=pgl 13 1
+END k2_pgl13_250 05:37:12 RESULT d=10 D=5 group=pgl 13 x Z_1 N=2184 best=63 evals=16888473 time=300.0 orbit k=2 m=5 f=0 fix=23
+START k2_psl7x13_250 05:37:12 orbit=2 5 0 orbw= secs=300 seed=1 group=psl 7 13
+END k2_psl7x13_250 05:42:12 RESULT d=10 D=5 group=psl 7 x Z_13 N=2184 best=34 evals=55179257 time=300.0 orbit k=2 m=5 f=0 fix=7
+START s1_sl4x37_331 05:42:12 orbit=3 3 1 orbw= secs=600 seed=1 group=sl 4 37
+END s1_sl4x37_331 05:52:12 RESULT d=10 D=5 group=sl 4 poly x^2+x+1 x Z_37 N=2220 best=9 evals=102028329 time=600.0 orbit k=3 m=3 f=1 fix=2
+QUEUE DONE 05:52:12

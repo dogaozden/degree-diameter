@@ -1,0 +1,7 @@
+group sl 13 x Z_1, N=2184, identity 156, H order 26, rows 84, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(3,8,0,9) (index 598), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 74.39, mu/k = 24.80, fixed-point misses ~ 7.78
+EXHAUST: 724 orbit representatives, m = 3, 1 fixed-generator choices, ~6.3e+07 S in total, split 0/2
+EXHAUST d=10 D=5 group=sl 13 x Z_1 N=2184 k=3 m=3 f=1 fix=11 split=0/2 evaluated=31559703 zero=0 min=6 time=527.7 counts(0..6,>=7): 0 0 0 0 0 0 10 31559693
+EXHAUST d=10 D=5 group=sl 13 x Z_1 N=2184 k=3 m=3 f=1 fix=11 split=1/2 evaluated=31429021 zero=0 min=6 time=524.0 counts(0..6,>=7): 0 0 0 0 0 0 6 31429015

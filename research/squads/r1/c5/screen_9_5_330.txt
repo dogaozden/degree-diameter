@@ -1,0 +1,18 @@
+# prod psl 3 sl 5 1                  N=1440 mu=55.8 fix=17 min=72 p1=86 p10=138 median=346
+# prod sl 3 psl 5 1                  N=1440 mu=55.8 fix=17 min=38 p1=85 p10=135 median=286
+# prod sl 3 sl 4 1                   N=1440 mu=55.8 fix=71 min=394 p1=426 p10=498 median=876
+# pgl 3 61                           N=1464 mu=59.8 fix=2 min=44 p1=68 p10=134 median=340
+# sl 3 61                            N=1464 mu=59.8 fix=5 min=62 p1=82 p10=154 median=338
+# psl 3 127                          N=1524 mu=70.6 fix=2 min=86 p1=120 p10=260 median=510
+# pgl 5 13                           N=1560 mu=77.6 fix=5 min=41 p1=64 p10=106 median=269
+# sl 5 13                            N=1560 mu=77.6 fix=5 min=46 p1=54 p10=94 median=200
+# psl 3 133                          N=1596 mu=85.0 fix=2 min=74 p1=138 p10=318 median=620
+ 1 N=1560 mu=77.6 fix=5 min=46 p1=54 p10=94 median=200  sl 5 13
+ 2 N=1560 mu=77.6 fix=5 min=41 p1=64 p10=106 median=269  pgl 5 13
+ 3 N=1464 mu=59.8 fix=2 min=44 p1=68 p10=134 median=340  pgl 3 61
+ 4 N=1440 mu=55.8 fix=17 min=38 p1=85 p10=135 median=286  prod sl 3 psl 5 1
+ 5 N=1440 mu=55.8 fix=17 min=72 p1=86 p10=138 median=346  prod psl 3 sl 5 1
+ 6 N=1464 mu=59.8 fix=5 min=62 p1=82 p10=154 median=338  sl 3 61
+ 7 N=1524 mu=70.6 fix=2 min=86 p1=120 p10=260 median=510  psl 3 127
+ 8 N=1596 mu=85.0 fix=2 min=74 p1=138 p10=318 median=620  psl 3 133
+ 9 N=1440 mu=55.8 fix=71 min=394 p1=426 p10=498 median=876  prod sl 3 sl 4 1

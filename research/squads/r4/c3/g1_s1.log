@@ -1,0 +1,26 @@
+group prod psl 5 sl 8 poly x^3+x+1 x Z_37, N=1118880, identity 188552, H order 45, rows 24864, threads 1, setup 0.39s
+wide rows: HW order 222, rows 5040, setup 0.66s
+alpha: conj by prod[mat(2,3,1,2);mat(7,3,3,6)] (index 26171), z -> 10 z on Z_37
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 26 (+e); mu = 22.64, mu/k = 7.55, fixed-point misses ~ 0.74
+start cost=351
+t=30 steps=317 evals=2537 cost=9 best=9 T=0.53
+t=60 steps=676 evals=5409 cost=6 best=6 T=0.19
+t=90 steps=1081 evals=8649 cost=6 best=6 T=0.15
+t=120 steps=1513 evals=12105 cost=6 best=6 T=0.15
+t=150 steps=1884 evals=15073 cost=3 best=3 T=0.15
+t=180 steps=2289 evals=18313 cost=3 best=3 T=0.15
+t=210 steps=2717 evals=21737 cost=3 best=3 T=0.15
+t=241 steps=3130 evals=25041 cost=3 best=3 T=0.15
+t=271 steps=3514 evals=28113 cost=3 best=3 T=0.15
+t=301 steps=3925 evals=31401 cost=12 best=3 T=1.42
+t=331 steps=4397 evals=35177 cost=9 best=3 T=0.50
+t=361 steps=4874 evals=38993 cost=3 best=3 T=0.18
+t=391 steps=5325 evals=42601 cost=3 best=3 T=0.15
+t=421 steps=5761 evals=46089 cost=3 best=3 T=0.15
+t=451 steps=6291 evals=50329 cost=3 best=3 T=1.41
+t=481 steps=6783 evals=54265 cost=9 best=3 T=0.50
+t=511 steps=7237 evals=57897 cost=7 best=3 T=0.18
+t=541 steps=7717 evals=61737 cost=3 best=3 T=0.15
+t=571 steps=8204 evals=65633 cost=3 best=3 T=0.15
+RESULT d=7 D=10 group=prod psl 5 sl 8 poly x^3+x+1 x Z_37 N=1118880 best=3 evals=69529 time=600.1 orbit k=3 m=2 f=1 fix=26
+exit=1

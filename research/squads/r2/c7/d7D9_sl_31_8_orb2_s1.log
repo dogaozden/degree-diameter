@@ -1,0 +1,25 @@
+group sl 31 x Z_8, N=238080, identity 7440, H order 62, rows 3840, threads 1, setup 0.02s
+wide rows: HW order 248, rows 960, setup 0.03s
+alpha: conj by mat(7,7,15,24) (index 6928), z -> 3 z on Z_8
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 63 (+e); mu = 50.13, mu/k = 25.06, fixed-point misses ~ 1.86
+start cost=238086
+t=30 steps=6856 evals=54849 cost=102 best=102 T=0.53
+t=60 steps=14040 evals=112321 cost=112 best=90 T=0.19
+t=90 steps=21788 evals=174305 cost=94 best=90 T=0.15
+t=120 steps=29163 evals=233305 cost=94 best=90 T=0.15
+t=150 steps=36076 evals=288609 cost=94 best=90 T=0.15
+t=180 steps=43444 evals=347553 cost=94 best=90 T=0.15
+t=210 steps=50856 evals=406849 cost=90 best=90 T=1.20
+t=240 steps=58250 evals=466001 cost=88 best=88 T=0.42
+t=270 steps=66256 evals=530049 cost=88 best=88 T=0.15
+t=300 steps=73570 evals=588561 cost=88 best=88 T=0.15
+t=330 steps=80912 evals=647297 cost=88 best=88 T=0.15
+t=360 steps=88246 evals=705969 cost=88 best=88 T=0.15
+t=390 steps=95909 evals=767273 cost=88 best=88 T=1.39
+t=420 steps=104549 evals=836393 cost=88 best=88 T=0.49
+t=450 steps=112371 evals=898969 cost=88 best=88 T=0.17
+t=480 steps=119742 evals=957937 cost=88 best=88 T=0.15
+t=510 steps=126874 evals=1014993 cost=88 best=88 T=0.15
+t=540 steps=133949 evals=1071593 cost=88 best=88 T=1.39
+t=570 steps=141372 evals=1130977 cost=88 best=88 T=0.49
+RESULT d=7 D=9 group=sl 31 x Z_8 N=238080 best=76 evals=1194073 time=600.0 orbit k=2 m=3 f=1 fix=63

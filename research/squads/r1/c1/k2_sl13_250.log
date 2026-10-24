@@ -1,0 +1,15 @@
+group sl 13 x Z_1, N=2184, identity 156, H order 26, rows 84, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(9,5,7,4) (index 1580), z -> 0 z on Z_1
+ORBIT k=2 m=5 f=0: |Fix(alpha)| = 11 (+e); mu = 74.39, mu/k = 37.20, fixed-point misses ~ 4.43
+start cost=196
+t=30 steps=391075 evals=3128601 cost=50 best=46 T=0.53
+t=60 steps=792517 evals=6340137 cost=50 best=46 T=0.19
+t=90 steps=1179078 evals=9432625 cost=50 best=46 T=0.15
+t=120 steps=1567416 evals=12539329 cost=50 best=46 T=0.15
+t=150 steps=1954647 evals=15637177 cost=50 best=46 T=0.15
+t=180 steps=2349116 evals=18792929 cost=46 best=46 T=0.54
+t=210 steps=2738919 evals=21911353 cost=46 best=46 T=0.19
+t=240 steps=3135966 evals=25087729 cost=46 best=46 T=0.15
+t=270 steps=3517993 evals=28143945 cost=46 best=46 T=0.15
+RESULT d=10 D=5 group=sl 13 x Z_1 N=2184 best=46 evals=31067529 time=300.0 orbit k=2 m=5 f=0 fix=11

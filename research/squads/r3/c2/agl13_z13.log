@@ -1,0 +1,15 @@
+group prod agl1 13 cyc x Z_13, N=2028, identity 0, H order 52, rows 39, threads 1, setup 0.00s
+wide rows: HW order 156, rows 13, setup 0.00s
+alpha: conj by prod[aff(3,12);] (index 38), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 53.26, mu/k = 17.75, fixed-point misses ~ 7.13
+start cost=292
+t=30 steps=670526 evals=5364209 cost=9 best=3 T=0.53
+t=60 steps=1337979 evals=10703833 cost=9 best=3 T=0.19
+t=90 steps=2006740 evals=16053921 cost=9 best=3 T=0.15
+t=120 steps=2676235 evals=21409881 cost=3 best=3 T=0.15
+t=150 steps=3328803 evals=26630425 cost=12 best=3 T=0.15
+t=180 steps=3971396 evals=31771169 cost=3 best=3 T=0.53
+t=210 steps=4611582 evals=36892657 cost=3 best=3 T=0.19
+t=240 steps=5265423 evals=42123385 cost=3 best=3 T=0.15
+t=270 steps=5911015 evals=47288121 cost=3 best=3 T=0.15
+RESULT d=10 D=5 group=prod agl1 13 cyc x Z_13 N=2028 best=3 evals=52358289 time=300.0 orbit k=3 m=3 f=1 fix=11

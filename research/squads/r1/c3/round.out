@@ -1,0 +1,9 @@
+START r1_sl7_13_340 04:08:16 ORBIT=3 4 0 sl 7 13 1
+END r1_sl7_13_340 rc=1 04:18:16 RESULT d=12 D=5 group=sl 7 x Z_13 N=4368 best=26 evals=41708705 time=600.0 orbit k=3 m=4 f=0 fix=5
+START r1_pgl4_73_340 04:18:16 ORBIT=3 4 0 pgl 4 73 1
+END r1_pgl4_73_340 rc=1 04:28:16 RESULT d=12 D=5 group=pgl 4 poly x^2+x+1 x Z_73 N=4380 best=45 evals=43796697 time=600.0 orbit k=3 m=4 f=0 fix=2
+START r1_psl7_25_430 04:28:16 ORBIT=4 3 0 psl 7 25 1
+END r1_psl7_25_430 rc=1 04:38:16 RESULT d=12 D=5 group=psl 7 x Z_25 N=4200 best=76 evals=51843809 time=600.0 orbit k=4 m=3 f=0 fix=3
+START r1_psl11_7_620 04:38:16 ORBIT=6 2 0 psl 11 7 1
+END r1_psl11_7_620 rc=1 04:48:16 RESULT d=12 D=5 group=psl 11 x Z_7 N=4620 best=58 evals=29689729 time=600.0 orbit k=6 m=2 f=0 fix=5
+ALLDONE 04:48:16

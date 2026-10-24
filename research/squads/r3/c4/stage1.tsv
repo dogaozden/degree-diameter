@@ -1,0 +1,24 @@
+base	K=8	none	seed=1	best=4
+K1	K=1	none	seed=1	best=4
+K4	K=4	none	seed=1	best=4
+K16	K=16	none	seed=1	best=4
+K64	K=64	none	seed=1	best=4
+T0	K=8	TARGP=0	seed=1	best=4
+T50	K=8	TARGP=50	seed=1	best=4
+T100	K=8	TARGP=100	seed=1	best=4
+C5	K=8	COOL=5	seed=1	best=4
+C60	K=8	COOL=60	seed=1	best=4
+RH30	K=8	REHEAT=30	seed=1	best=4
+RR30	K=8	REHEAT=30 RESTART=1	seed=1	best=4
+base	K=8	none	seed=2	best=4
+K1	K=1	none	seed=2	best=4
+K4	K=4	none	seed=2	best=4
+K16	K=16	none	seed=2	best=4
+K64	K=64	none	seed=2	best=4
+T0	K=8	TARGP=0	seed=2	best=4
+T50	K=8	TARGP=50	seed=2	best=4
+T100	K=8	TARGP=100	seed=2	best=4
+C5	K=8	COOL=5	seed=2	best=4
+C60	K=8	COOL=60	seed=2	best=4
+RH30	K=8	REHEAT=30	seed=2	best=4
+RR30	K=8	REHEAT=30 RESTART=1	seed=2	best=4

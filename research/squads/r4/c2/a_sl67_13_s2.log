@@ -1,0 +1,9 @@
+group sl 67 x Z_13, N=3909048, identity 57486, H order 52, rows 75174, threads 1, setup 0.50s
+wide rows: HW order 221, rows 17688, setup 0.72s
+alpha: conj by mat(23,47,22,45) (index 106351), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 65 (+e); mu = 22.99, mu/k = 7.66, fixed-point misses ~ 1.19
+ORBW=3: an uncovered fixed element weighs 3; start energy 27
+start cost=21
+t=30 steps=398 evals=3185 cost=6 best=3 T=0.53 energy=6 bestE=3
+t=60 steps=1007 evals=8057 cost=3 best=3 T=0.19 energy=3 bestE=3
+RESULT d=8 D=10 group=sl 67 x Z_13 N=3909048 best=3 evals=8601 time=62.8 orbit k=3 m=2 f=2 fix=65

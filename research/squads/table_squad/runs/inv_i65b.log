@@ -1,0 +1,6 @@
+group sl 5 x Z_3, N=360, identity 60, H order 30, rows 12, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 30); using haar_gen3's evaluation
+alpha: inversion (S closed under inverses)
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 1 (+e); mu = 41.13, mu/k = 20.56, fixed-point misses ~ 1.35
+start cost=204
+RESULT d=6 D=5 group=sl 5 x Z_3 N=360 best=14 evals=14899233 time=120.0 orbit k=2 m=3 f=0 fix=1

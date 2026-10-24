@@ -1,0 +1,24 @@
+group psl 5 x Z_71, N=4260, identity 710, H order 5, rows 852, threads 1, setup 0.01s
+wide rows: HW order 213, rows 20, setup 0.01s
+alpha: conj by mat(1,4,4,2) (index 34), z -> 5 z on Z_71
+ORBIT k=5 m=2 f=2: |Fix(alpha)| = 4 (+e); mu = 97.17, mu/k = 19.43, fixed-point misses ~ 4.69
+ORBW=5: an uncovered fixed element weighs 5; start energy 410
+start cost=410
+t=30 steps=351357 evals=2810857 cost=30 best=30 T=0.53 energy=30 bestE=30
+t=60 steps=706211 evals=5649689 cost=30 best=30 T=0.19 energy=30 bestE=30
+t=90 steps=1086407 evals=8691257 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=120 steps=1503188 evals=12025505 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=150 steps=1893789 evals=15150313 cost=30 best=30 T=1.50 energy=30 bestE=30
+t=180 steps=2297284 evals=18378273 cost=30 best=30 T=0.53 energy=30 bestE=30
+t=210 steps=2704905 evals=21639241 cost=30 best=30 T=0.19 energy=30 bestE=30
+t=240 steps=3103276 evals=24826209 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=270 steps=3522006 evals=28176049 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=300 steps=3947923 evals=31583385 cost=30 best=30 T=1.50 energy=30 bestE=30
+t=330 steps=4323698 evals=34589585 cost=30 best=30 T=0.53 energy=30 bestE=30
+t=360 steps=4746343 evals=37970745 cost=30 best=30 T=0.19 energy=30 bestE=30
+t=390 steps=5155097 evals=41240777 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=420 steps=5557420 evals=44459361 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=450 steps=5959874 evals=47678993 cost=30 best=30 T=1.50 energy=30 bestE=30
+t=480 steps=6346724 evals=50773793 cost=30 best=30 T=0.53 energy=30 bestE=30
+t=510 steps=6751062 evals=54008497 cost=30 best=30 T=0.19 energy=30 bestE=30
+RESULT d=12 D=5 group=psl 5 x Z_71 N=4260 best=30 evals=57189633 time=540.0 orbit k=5 m=2 f=2 fix=4

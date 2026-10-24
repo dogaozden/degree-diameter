@@ -1,0 +1,28 @@
+# prod psl 3 psl 7 1                 N=2016 mu=51.8 fix=8 min=47 p1=71 p10=110 median=230
+# prod psl 3 sl 3 7                  N=2016 mu=51.8 fix=17 min=32 p1=44 p10=104 median=366
+# psl 3 169                          N=2028 mu=53.3 fix=2 min=48 p1=62 p10=190 median=460
+# psl 3 181                          N=2172 mu=72.6 fix=2 min=30 p1=108 p10=258 median=552
+# pgl 13 1                           N=2184 mu=74.4 fix=11 min=85 p1=121 p10=210 median=374
+# pgl 3 91                           N=2184 mu=74.4 fix=2 min=84 p1=118 p10=182 median=358
+# psl 7 13                           N=2184 mu=74.4 fix=2 min=48 p1=66 p10=105 median=198
+# sl 13 1                            N=2184 mu=74.4 fix=11 min=48 p1=64 p10=122 median=236
+# sl 3 91                            N=2184 mu=74.4 fix=5 min=70 p1=126 p10=214 median=446
+# pgl 4 37                           N=2220 mu=79.9 fix=2 min=51 p1=71 p10=114 median=238
+# psl 5 37                           N=2220 mu=79.9 fix=2 min=60 p1=66 p10=116 median=243
+# sl 4 37                            N=2220 mu=79.9 fix=2 min=27 p1=74 p10=122 median=243
+# pgl 5 19                           N=2280 mu=89.5 fix=5 min=79 p1=88 p10=137 median=277
+# sl 5 19                            N=2280 mu=89.5 fix=5 min=58 p1=82 p10=134 median=246
+ 1 N=2016 mu=51.8 fix=17 min=32 p1=44 p10=104 median=366  prod psl 3 sl 3 7
+ 2 N=2184 mu=74.4 fix=2 min=48 p1=66 p10=105 median=198  psl 7 13
+ 3 N=2016 mu=51.8 fix=8 min=47 p1=71 p10=110 median=230  prod psl 3 psl 7 1
+ 4 N=2220 mu=79.9 fix=2 min=60 p1=66 p10=116 median=243  psl 5 37
+ 5 N=2220 mu=79.9 fix=2 min=51 p1=71 p10=114 median=238  pgl 4 37
+ 6 N=2184 mu=74.4 fix=11 min=48 p1=64 p10=122 median=236  sl 13 1
+ 7 N=2220 mu=79.9 fix=2 min=27 p1=74 p10=122 median=243  sl 4 37
+ 8 N=2280 mu=89.5 fix=5 min=58 p1=82 p10=134 median=246  sl 5 19
+ 9 N=2280 mu=89.5 fix=5 min=79 p1=88 p10=137 median=277  pgl 5 19
+10 N=2028 mu=53.3 fix=2 min=48 p1=62 p10=190 median=460  psl 3 169
+11 N=2184 mu=74.4 fix=2 min=84 p1=118 p10=182 median=358  pgl 3 91
+12 N=2184 mu=74.4 fix=11 min=85 p1=121 p10=210 median=374  pgl 13 1
+13 N=2184 mu=74.4 fix=5 min=70 p1=126 p10=214 median=446  sl 3 91
+14 N=2172 mu=72.6 fix=2 min=30 p1=108 p10=258 median=552  psl 3 181

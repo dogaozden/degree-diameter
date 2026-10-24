@@ -1,0 +1,7 @@
+group prod agl1 9 poly x^2+1 cyc x Z_28, N=2016, identity 0, H order 56, rows 36, threads 1, setup 0.00s
+wide rows: HW order 84, rows 24, setup 0.00s
+alpha: conj by prod[aff(1,5);] (index 5), z -> 9 z on Z_28
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 21.25
+RANDORB d=10 D=5 group=prod agl1 9 poly x^2+1 cyc x Z_28 N=2016 k=3 m=3 f=1 fix=35 samples=20000 min=166 p1=292 p10=478 median=1602 mean=1542.95 var=710009.7 mu=51.81 time=0.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 20000
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

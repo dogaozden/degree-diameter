@@ -1,0 +1,7 @@
+group prod pgl 3 agl1 4 poly x^2+x+1 x Z_7, N=2016, identity 0, H order 42, rows 48, threads 1, setup 0.00s
+wide rows: HW order 84, rows 24, setup 0.01s
+alpha: conj by prod[mat(1,0,2,1);aff(3,1)] (index 57), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 51.81, mu/k = 17.27, fixed-point misses ~ 5.31
+RANDORB d=10 D=5 group=prod pgl 3 agl1 4 poly x^2+x+1 x Z_7 N=2016 k=3 m=3 f=1 fix=8 samples=20000 min=20 p1=56 p10=111 median=326 mean=754.12 var=790149.9 mu=51.81 time=0.8
+RANDORB hist (cost/k): 0 0 0 0 0 0 2 7 3 6 7 9 16 12 21 24 29 31 35 53 56 58 86 72 78 81 102 97 116 105 123 18771
+RANDORB cost0=0 of 20000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0

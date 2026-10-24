@@ -1,0 +1,15 @@
+group sl 11 x Z_91, N=120120, identity 10010, H order 52, rows 2310, threads 1, setup 0.06s
+wide rows: HW order 182, rows 660, setup 0.18s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 9 z on Z_91
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
+start cost=367
+t=30 steps=9088 evals=72705 cost=18 best=9 T=0.53
+t=60 steps=18642 evals=149137 cost=9 best=9 T=0.19
+t=90 steps=29291 evals=234329 cost=9 best=9 T=0.15
+t=120 steps=40610 evals=324881 cost=6 best=6 T=0.15
+t=150 steps=50900 evals=407201 cost=6 best=6 T=0.15
+t=180 steps=61512 evals=492097 cost=6 best=6 T=0.15
+t=210 steps=72353 evals=578825 cost=6 best=6 T=0.15
+t=240 steps=83359 evals=666873 cost=6 best=6 T=0.15
+t=270 steps=95181 evals=761449 cost=12 best=6 T=0.96
+RESULT d=8 D=8 group=sl 11 x Z_91 N=120120 best=6 evals=852721 time=300.0 orbit k=3 m=2 f=2 fix=11

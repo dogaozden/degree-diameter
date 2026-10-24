@@ -1,0 +1,59 @@
+== solution file research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt (sha256 4bc76b2bcae911ee9c622c81ce6560bdd0011b23465b330deb82886959389b37), Opus solo (extra seed on squad-r4-c2's near miss)
+8 10 sl 67 n 13 N 3909048
+57486 mat(1,0,0,1) z=0
+3196349 mat(54,52,50,37) z=0
+243215 mat(4,12,15,62) z=11
+3325186 mat(56,66,44,10) z=7
+1005818 mat(17,16,52,49) z=8
+1820380 mat(31,13,66,45) z=3
+2595589 mat(44,33,0,32) z=9
+2505803 mat(42,63,62,34) z=1
+== haarcheck_sl and haarcheck2 (research/frontier, low-memory, from the definitions)
+from (e,A): reached A 3909048/3909048, B 3909048/3909048 within 10, ecc 10
+from (e,B): reached A 3909048/3909048, B 3909048/3909048 within 10, ecc 10
+VALID d=8 D=10 group=sl 67 x Z_13 N=3909048 vertices=7818096 (distinct generators, 8-regular simple)
+== haarcheck2
+file=d8D10_sl_67_13_orb3_s12.txt d=8 D=10 p=67 n=13 |G|=3909048 vertices=7818096
+selfcheck: SL(2,67) index is a bijection onto det-1 matrices (|SL|=300696), fastmod ok (0.01s)
+generators: 8 read, all in SL(2,67) x Z_13, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=8  reached=9 / 7818096
+  from (e,A) level 2: new=56  reached=65 / 7818096
+  from (e,A) level 3: new=392  reached=457 / 7818096
+  from (e,A) level 4: new=2744  reached=3201 / 7818096
+  from (e,A) level 5: new=19148  reached=22349 / 7818096
+  from (e,A) level 6: new=131972  reached=154321 / 7818096
+  from (e,A) level 7: new=831456  reached=985777 / 7818096
+  from (e,A) level 8: new=3072485  reached=4058262 / 7818096
+  from (e,A) level 9: new=3058044  reached=7116306 / 7818096
+  from (e,A) level 10: new=701790  reached=7818096 / 7818096
+  done in 1.80s, eccA=10, reached 7818096 / 7818096
+BFS from (e,B):
+  from (e,B) level 1: new=8  reached=9 / 7818096
+  from (e,B) level 2: new=56  reached=65 / 7818096
+  from (e,B) level 3: new=392  reached=457 / 7818096
+  from (e,B) level 4: new=2744  reached=3201 / 7818096
+  from (e,B) level 5: new=19148  reached=22349 / 7818096
+  from (e,B) level 6: new=131990  reached=154339 / 7818096
+  from (e,B) level 7: new=831456  reached=985795 / 7818096
+  from (e,B) level 8: new=3071087  reached=4056882 / 7818096
+  from (e,B) level 9: new=3058044  reached=7114926 / 7818096
+  from (e,B) level 10: new=703170  reached=7818096 / 7818096
+  done in 1.51s, eccB=10, reached 7818096 / 7818096
+VALID d=8 D=10 vertices=7818096 eccA=10 eccB=10
+== check_haar_indep.py (research/frontier)
+file d8D10_sl_67_13_orb3_s12.txt
+header: d=8 D=10 spec=sl 67 NCYC=13 N=3909048
+group order |G|=300696 (factors [300696]), x Z_13 -> 3909048; vertices 2N=7818096
+distinct generators (as full group elements): 8 of d=8
+permutations built (3s)
+BFS from A: ecc=10 reached 7818096 of 7818096 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19148, 131972, 831456, 3072485, 3058044, 701790]
+BFS from B: ecc=10 reached 7818096 of 7818096 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19148, 131990, 831456, 3071087, 3058044, 703170]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7818096 (11s)
+
+
+real	0m11.408s
+user	0m5.394s
+sys	0m2.861s

@@ -1,0 +1,15 @@
+group prod sl 7 psl 9 poly x^2+1 x Z_1, N=120960, identity 15156, H order 42, rows 2880, threads 1, setup 0.02s
+wide rows: HW order 70, rows 1728, setup 0.11s
+alpha: conj by prod[mat(5,0,3,3);mat(1,1,2,0)] (index 86807), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 53 (+e); mu = 42.95, mu/k = 14.32, fixed-point misses ~ 3.82
+start cost=100800
+t=30 steps=4493 evals=35945 cost=17 best=14 T=0.53
+t=60 steps=9326 evals=74609 cost=18 best=14 T=0.19
+t=90 steps=14193 evals=113545 cost=18 best=14 T=0.15
+t=120 steps=18864 evals=150913 cost=14 best=14 T=0.15
+t=150 steps=23638 evals=189105 cost=14 best=14 T=0.15
+t=180 steps=28264 evals=226113 cost=20 best=14 T=0.61
+t=210 steps=32746 evals=261969 cost=12 best=12 T=0.22
+t=240 steps=37751 evals=302009 cost=12 best=12 T=0.15
+t=270 steps=42553 evals=340425 cost=12 best=12 T=0.15
+RESULT d=8 D=8 group=prod sl 7 psl 9 poly x^2+1 x Z_1 N=120960 best=12 evals=380161 time=300.0 orbit k=3 m=2 f=2 fix=53

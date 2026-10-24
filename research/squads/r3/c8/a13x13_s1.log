@@ -1,0 +1,10 @@
+group agl1 13 x Z_13, N=2028, identity 0, H order 52, rows 39, threads 1, setup 0.00s
+wide rows: HW order 156, rows 13, setup 0.12s
+alpha: conj by aff(9,11) (index 115), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 53.26, mu/k = 17.75, fixed-point misses ~ 7.13
+start cost=238
+t=30 steps=484688 evals=3877505 cost=17 best=9 T=0.53
+t=60 steps=972217 evals=7777737 cost=18 best=9 T=0.19
+t=90 steps=1470695 evals=11765561 cost=24 best=9 T=0.15
+t=120 steps=1943146 evals=15545169 cost=14 best=9 T=0.15
+RESULT d=10 D=5 group=agl1 13 x Z_13 N=2028 best=9 evals=19195457 time=150.0 orbit k=3 m=3 f=1 fix=11

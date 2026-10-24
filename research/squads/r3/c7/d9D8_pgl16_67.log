@@ -1,0 +1,15 @@
+group pgl 16 poly x^4+x+1 x Z_67, N=273360, identity 0, H order 17, rows 16080, threads 1, setup 0.03s
+wide rows: HW order 201, rows 1360, setup 0.06s
+alpha: conj by mat(1,3,13,14) (index 928), z -> 29 z on Z_67
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 14 (+e); mu = 42.56, mu/k = 14.19, fixed-point misses ~ 0.81
+start cost=111
+t=30 steps=8972 evals=71777 cost=12 best=9 T=0.53
+t=60 steps=18180 evals=145441 cost=8 best=8 T=0.19
+t=90 steps=26867 evals=214937 cost=8 best=8 T=0.15
+t=120 steps=35576 evals=284609 cost=3 best=3 T=0.15
+t=150 steps=41944 evals=335553 cost=3 best=3 T=0.15
+t=180 steps=48118 evals=384945 cost=3 best=3 T=0.15
+t=210 steps=54292 evals=434337 cost=3 best=3 T=0.15
+t=240 steps=61191 evals=489529 cost=3 best=3 T=0.15
+t=270 steps=67031 evals=536249 cost=18 best=3 T=0.68
+RESULT d=9 D=8 group=pgl 16 poly x^4+x+1 x Z_67 N=273360 best=3 evals=583961 time=300.0 orbit k=3 m=3 f=0 fix=14

@@ -1,0 +1,15 @@
+group sl 41 x Z_1, N=68880, identity 1640, H order 42, rows 1640, threads 1, setup 0.01s
+wide rows: HW order 82, rows 840, setup 0.03s
+alpha: conj by mat(9,0,2,32) (index 15090), z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 39 (+e); mu = 57.47, mu/k = 28.73, fixed-point misses ~ 2.31
+start cost=846
+t=30 steps=7811 evals=62489 cost=70 best=70 T=0.53
+t=60 steps=14870 evals=118961 cost=70 best=70 T=0.19
+t=90 steps=21930 evals=175441 cost=70 best=70 T=0.15
+t=120 steps=29031 evals=232249 cost=70 best=70 T=0.15
+t=150 steps=35893 evals=287145 cost=70 best=70 T=0.15
+t=180 steps=42825 evals=342601 cost=70 best=70 T=1.46
+t=210 steps=50341 evals=402729 cost=70 best=70 T=0.52
+t=240 steps=57810 evals=462481 cost=70 best=70 T=0.18
+RESULT d=6 D=9 group=sl 41 x Z_1 N=68880 best=70 evals=474465 time=246.4 orbit k=2 m=3 f=0 fix=39
+[stopped by squad member at t~215 s: best=70 flat since t=30 s, mu=57.5 too far]

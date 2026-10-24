@@ -1,0 +1,19 @@
+group psl 19 x Z_193, N=660060, identity 33003, H order 19, rows 34740, threads 1, setup 0.23s
+wide rows: HW order 193, rows 3420, setup 0.29s
+alpha: conj by mat(1,3,6,0) (index 234), z -> 84 z on Z_193
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 24.80, mu/k = 8.27, fixed-point misses ~ 0.60
+start cost=3033
+t=30 steps=3575 evals=28601 cost=30 best=30 T=0.53
+t=60 steps=7432 evals=59457 cost=30 best=30 T=0.19
+t=90 steps=11204 evals=89633 cost=24 best=24 T=0.15
+t=120 steps=15072 evals=120577 cost=18 best=18 T=0.15
+t=150 steps=19048 evals=152385 cost=18 best=18 T=0.15
+t=180 steps=22945 evals=183561 cost=18 best=18 T=0.15
+t=210 steps=26715 evals=213721 cost=18 best=18 T=0.15
+t=240 steps=30374 evals=242993 cost=18 best=18 T=0.15
+t=270 steps=34014 evals=272113 cost=18 best=18 T=1.06
+t=300 steps=37294 evals=298353 cost=18 best=18 T=0.38
+RESULT d=8 D=9 group=psl 19 x Z_193 N=660060 best=0 evals=310657 time=319.2 orbit k=3 m=2 f=2 fix=8
+full diameter check: OK
+wrote r4/c1/psl19_193_s1.txt
+EXIT 0

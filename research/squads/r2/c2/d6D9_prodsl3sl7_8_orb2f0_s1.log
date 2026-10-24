@@ -1,0 +1,25 @@
+group prod sl 3 sl 7 x Z_8, N=64512, identity 16464, H order 56, rows 1152, threads 1, setup 0.15s
+wide rows: HW order 168, rows 384, setup 0.18s
+alpha: conj by prod[mat(2,2,2,1);mat(6,1,5,1)] (index 8027), z -> 3 z on Z_8
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 63 (+e); mu = 33.31, mu/k = 16.65, fixed-point misses ~ 2.91
+start cost=64550
+t=30 steps=17598 evals=140785 cost=48 best=46 T=0.53
+t=60 steps=35284 evals=282273 cost=36 best=36 T=0.19
+t=90 steps=52977 evals=423817 cost=36 best=36 T=0.15
+t=120 steps=70854 evals=566833 cost=36 best=36 T=0.15
+t=150 steps=90094 evals=720753 cost=36 best=36 T=0.15
+t=180 steps=109355 evals=874841 cost=36 best=36 T=0.15
+t=210 steps=127176 evals=1017409 cost=36 best=36 T=1.03
+t=240 steps=144519 evals=1156153 cost=36 best=36 T=0.36
+t=270 steps=162500 evals=1300001 cost=36 best=36 T=0.15
+t=300 steps=179817 evals=1438537 cost=36 best=36 T=0.15
+t=330 steps=198902 evals=1591217 cost=36 best=36 T=0.15
+t=360 steps=216537 evals=1732297 cost=36 best=36 T=1.03
+t=390 steps=234156 evals=1873249 cost=36 best=36 T=0.36
+t=420 steps=252073 evals=2016585 cost=36 best=36 T=0.15
+t=450 steps=269635 evals=2157081 cost=36 best=36 T=0.15
+t=480 steps=287205 evals=2297641 cost=36 best=36 T=0.15
+t=510 steps=303858 evals=2430865 cost=42 best=36 T=1.03
+t=540 steps=320838 evals=2566705 cost=36 best=36 T=0.36
+t=570 steps=337571 evals=2700569 cost=36 best=36 T=0.15
+RESULT d=6 D=9 group=prod sl 3 sl 7 x Z_8 N=64512 best=36 evals=2834241 time=600.0 orbit k=2 m=3 f=0 fix=63
