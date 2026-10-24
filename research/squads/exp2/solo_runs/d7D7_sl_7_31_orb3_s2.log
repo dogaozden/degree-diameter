@@ -1,0 +1,6 @@
+group sl 7 x Z_31, N=10416, identity 1302, H order 62, rows 168, threads 1, setup 0.00s
+wide rows: HW order 248, rows 42, setup 0.00s
+alpha: conj by mat(4,0,1,2) (index 190), z -> 5 z on Z_31
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 48.23, mu/k = 16.08, fixed-point misses ~ 2.00
+start cost=178
+RESULT d=7 D=7 group=sl 7 x Z_31 N=10416 best=6 evals=2843985 time=20.6 orbit k=3 m=2 f=1 fix=5

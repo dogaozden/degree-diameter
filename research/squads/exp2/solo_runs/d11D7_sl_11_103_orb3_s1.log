@@ -1,0 +1,45 @@
+group sl 11 x Z_103, N=135960, identity 11330, H order 22, rows 6180, threads 1, setup 0.01s
+wide rows: HW order 206, rows 660, setup 0.02s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 46 z on Z_103
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 11 (+e); mu = 38.39, mu/k = 12.80, fixed-point misses ~ 1.57
+start cost=378
+t=30 steps=25970 evals=207761 cost=6 best=6 T=0.53
+t=60 steps=51821 evals=414569 cost=6 best=6 T=0.19
+t=90 steps=77529 evals=620233 cost=6 best=6 T=0.15
+t=120 steps=102412 evals=819297 cost=6 best=6 T=0.15
+t=150 steps=128028 evals=1024225 cost=6 best=6 T=0.15
+t=180 steps=153011 evals=1224089 cost=18 best=6 T=0.65
+t=210 steps=178564 evals=1428513 cost=18 best=6 T=0.23
+t=240 steps=204293 evals=1634345 cost=18 best=6 T=0.15
+t=270 steps=230034 evals=1840273 cost=18 best=6 T=0.15
+t=300 steps=255883 evals=2047065 cost=18 best=6 T=0.15
+t=330 steps=281306 evals=2250449 cost=6 best=6 T=0.65
+t=360 steps=306527 evals=2452217 cost=6 best=6 T=0.23
+t=390 steps=332570 evals=2660561 cost=6 best=6 T=0.15
+t=420 steps=356949 evals=2855593 cost=6 best=6 T=0.15
+t=450 steps=382223 evals=3057785 cost=6 best=6 T=0.15
+t=480 steps=406264 evals=3250113 cost=6 best=6 T=0.65
+t=510 steps=431600 evals=3452801 cost=6 best=6 T=0.23
+t=540 steps=457367 evals=3658937 cost=6 best=6 T=0.15
+t=570 steps=482931 evals=3863449 cost=6 best=6 T=0.15
+t=600 steps=509350 evals=4074801 cost=6 best=6 T=0.15
+t=630 steps=534647 evals=4277177 cost=6 best=6 T=0.65
+t=660 steps=560743 evals=4485945 cost=6 best=6 T=0.23
+t=690 steps=587123 evals=4696985 cost=6 best=6 T=0.15
+t=720 steps=613660 evals=4909281 cost=6 best=6 T=0.15
+t=750 steps=639219 evals=5113753 cost=6 best=6 T=0.15
+t=780 steps=665291 evals=5322329 cost=6 best=6 T=0.65
+t=810 steps=690934 evals=5527473 cost=6 best=6 T=0.23
+t=840 steps=716447 evals=5731577 cost=6 best=6 T=0.15
+t=870 steps=741990 evals=5935921 cost=6 best=6 T=0.15
+t=900 steps=767204 evals=6137633 cost=6 best=6 T=0.15
+t=930 steps=792978 evals=6343825 cost=6 best=6 T=0.65
+t=960 steps=818937 evals=6551497 cost=6 best=6 T=0.23
+t=990 steps=844691 evals=6757529 cost=6 best=6 T=0.15
+t=1020 steps=870456 evals=6963649 cost=6 best=6 T=0.15
+t=1050 steps=896446 evals=7171569 cost=6 best=6 T=0.15
+t=1080 steps=922275 evals=7378201 cost=6 best=6 T=0.65
+t=1110 steps=948046 evals=7584369 cost=6 best=6 T=0.23
+t=1140 steps=973897 evals=7791177 cost=6 best=6 T=0.15
+t=1170 steps=998893 evals=7991145 cost=6 best=6 T=0.15
+RESULT d=11 D=7 group=sl 11 x Z_103 N=135960 best=6 evals=8187481 time=1200.0 orbit k=3 m=3 f=2 fix=11

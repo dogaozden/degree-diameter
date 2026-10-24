@@ -1,0 +1,12 @@
+group sl 13 x Z_19, N=41496, identity 2964, H order 57, rows 728, threads 1, setup 0.00s
+wide rows: HW order 247, rows 168, setup 0.01s
+alpha: conj by mat(3,8,0,9) (index 598), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 30.37, mu/k = 10.12, fixed-point misses ~ 2.16
+start cost=134
+RESULT d=9 D=7 group=sl 13 x Z_19 N=41496 best=0 evals=69569 time=2.1 orbit k=3 m=3 f=0 fix=11
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote ./d9D7_sl_13_19_orb3f0_s1.txt
+n = 82992 edges = 373464 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 3f2f03b4222e761a252d970cb285c8b64e9f7b6e698f7095d6a462ac45cb487f
+VALID d=9 D=7 group=sl 13 x Z_19 N=41496 vertices=82992

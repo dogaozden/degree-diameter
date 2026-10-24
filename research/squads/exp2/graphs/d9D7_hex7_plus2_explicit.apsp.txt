@@ -1,0 +1,5 @@
+wrote /tmp/claude-0/-home-user-degree-diameter/7273a1ca-9f99-545c-af61-067de2f4dcbd/scratchpad/h7e.edges: n=117650 edges=529420 (3 copies of H(7) + 2, max degree 9)
+n=117650 edges=529420 degree min=4 max=9 bipartite=yes diameter=7
+RESULT VALID d=9 D=7 n=117650
+sha256(edges) 3478bfc0d278f713e7313c71612ba446f74c055339007bc21488ab7837da3cc3
+built by: EXACT=1 greedyphi HFILE 1 PHI; NOGREEDY=1 python3 plus2.py 7 OUT 1 PHI (explicit phi, no search)
