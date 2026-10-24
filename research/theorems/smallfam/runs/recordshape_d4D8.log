@@ -1,0 +1,6 @@
+Meta(93,12,5)	1116|[ 1116, 17 ]|(C3 : C4) x (C31 : C3)	plan=1510	DONE tested 1680630 solutions 0 best_cost 10 best_set 0 1 12 135 quotient_filtered 845784
+Meta(93,12,68)	1116|[ 1116, 18 ]|C31 : (C3 x (C3 : C4))	plan=1141	DONE tested 1269933 solutions 0 best_cost 22 best_set 0 1 18 547 quotient_filtered 709623
+Meta(111,12,47)	1332|[ 1332, 22 ]|(C3 : C4) x (C37 : C3)	plan=1702	DONE tested 2261958 solutions 0 best_cost 37 best_set 0 1 15 90 quotient_filtered 1161540
+Meta(119,12,16)	1428|[ 1428, 1 ]|(C17 : C4) x (C7 : C3)	plan=2142	DONE tested 3052350 solutions 0 best_cost 40 best_set 0 1 16 140 quotient_filtered 1609836
+DirectProduct(Meta(31,5,2), SmallGroup(8,4))	1240|[ 1240, 14 ]|Q8 x (C31 : C5)	plan=839	DONE tested 1037843 solutions 0 best_cost 10 best_set 0 17 42 102 quotient_filtered 789419
+DirectProduct(Meta(11,2,10), Meta(13,4,12))	1144|[ 1144, 8 ]|(C13 : C4) x D22	plan=1127	DONE tested 1285907 solutions 0 best_cost 371 best_set 0 53 109 537 quotient_filtered 1061183

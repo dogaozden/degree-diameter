@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/theorems/smallfam/allgroups.py", line 154, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/theorems/smallfam/allgroups.py", line 109, in main
+    rows = list_groups(n)
+  File "/home/user/degree-diameter/research/theorems/smallfam/allgroups.py", line 38, in list_groups
+    i, dsize, ab = line.split()
+    ^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 2)

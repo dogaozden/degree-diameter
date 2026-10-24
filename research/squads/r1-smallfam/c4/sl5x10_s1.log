@@ -1,0 +1,7 @@
+group sl 5 x Z_10, N=1200, identity 200, H order 30, rows 40, threads 1, setup 0.00s
+start cost=77
+t=30 steps=549760 evals=4398081 cost=20 best=17 T=0.53
+t=60 steps=1113498 evals=8907985 cost=20 best=17 T=0.19
+t=90 steps=1662787 evals=13302297 cost=20 best=17 T=0.15
+t=120 steps=2213799 evals=17710393 cost=20 best=17 T=0.15
+RESULT d=4 D=8 group=sl 5 x Z_10 N=1200 best=17 evals=22150081 time=150.0
