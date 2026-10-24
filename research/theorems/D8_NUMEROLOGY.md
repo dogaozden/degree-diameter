@@ -4,27 +4,28 @@ Branch `claude/d8-numerology-ocg3xq`. Every script and its saved output is in `r
 item). "Table" is the DS14v2 bipartite table (research/frontier/TABLE.md). |GH(q)| = 2(q^6−1)/(q−1) is the order of
 the incidence graph of the split Cayley hexagon H(q) (built with research/evenq/hexq.py, cached for q = 2, 3, 4, 5, 7,
 8, 9, 11). The green D = 8 cells are credited on the wiki to Delorme, Gómez and Quisquater (DGQ), "On large bipartite
-graphs", submitted, never found (research/lifts LITERATURE.md on branch claude/voltage-lifts-search-6lfotq).
+graphs", submitted, never found (research/lifts LITERATURE.md on branch claude/voltage-lifts-search-6lfotq). A lift of
+H(q) "with j matchings and M copies" means: add j perfect matchings from points to lines ("hops", degree q+1+j) and
+take an M-fold voltage lift; it has M·|GH(q)| vertices.
 
 ## Short answer
 
-1. **The construction behind the numbers was not found.** I can say a lot about what it is not, and the evidence
-   points to a structured lift of H(q) plus extra edges whose structure we could not reproduce (§2).
-2. **The numbers, exactly** (`numerology.py`): (Δ,8) = M·|GH(q)| with Δ = q+3 and M = 5·⌊(q+5)/2⌋ =
-   5(⌊(q+1)/2⌋ + 2) for q = 7, 8, 9, 11, 13 (M = 30, 30, 35, 40, 45), and (13,8) = 15·|GH(11)| with Δ = q+2. For odd q
-   this is 10·|GH(q)| + 5·(number of flags of H(q)). The table also bounds what the DGQ construction can give in the
-   other cells (§2.2). The REGULARITIES formula (2j+1)(⌊(q−1)/2⌋ + 3(j−1)) predicts 18 copies at (q, j) = (13, 1),
-   which would have put 14,480,424 at (15,8); the table has 14,172,480, so for j = 1 that formula fails at q = 13
-   (unless the j = 1 construction needs q ≡ 3 mod 4). M = q + 4 fits all the j = 1 constraints.
-3. **Proved (new, small):** the zero-voltage "n+2 cover" works with j constant-voltage matchings exactly when a
-   sum/difference set covers Z_M; the largest M is 4, 10, 16, 26, 38 for j = 1, ..., 5 (§1.1; REGULARITIES had j = 2).
-   A list of "guaranteed walks" that exist in every lift of H(q) plus matchings (§1.2), and a spectral obstruction
-   showing that the tight designs built only from those walks cannot exist (§1.3).
-4. **Random and optimized lifts fall far short** (§2.3): random voltage lifts of H(q) + 2 matchings reach about 18,
-   14, 12 copies at q = 3, 4, 5 (DGQ: 20, 20, 25); with one extra matching random lifts reach only 4 copies.
-   Annealing on the exact diameter reaches q + 4 copies for one matching at q = 3, but not at q = 4 within an hour.
-5. **No table cell beaten.** A squad round (8 Haiku strategies, §4) found nothing better than random at q = 5
-   except colour-class voltages (14 copies against 12).
+1. **The construction behind the numbers was not found.** The evidence says it is a structured lift of H(q) with
+   two extra matchings (one for the (13,8) cell) whose structure neither I nor two squad rounds could reproduce.
+   Random and optimized lifts fall far short once q ≥ 5 (§2.2).
+2. **The numbers, exactly** (§2.1, `numerology.py`): (Δ,8) = M·|GH(q)|, Δ = q+3, M = 5·⌊(q+5)/2⌋ = 5(⌊Δ/2⌋ + 1) for
+   q = 7, 8, 9, 11, 13, and (13,8) = 15·|GH(11)| with Δ = q+2. For odd q this is |V(X)| + |E(X)| where X is DGQ's own
+   diameter-7 graph at the same degree (the Z_5 polygon cover). Because DGQ entered their best value in every cell,
+   the table also caps what their construction gives at other (q, j); for one matching M = q + 4 fits every cap,
+   while the REGULARITIES formula 3⌊(q−1)/2⌋ breaks the cap at q = 13 (unless it needs q ≡ 3 mod 4).
+3. **Proved (new, small):**
+   - (§1.1) The zero-voltage "n+2 cover" with j constant-voltage matchings has diameter ≤ n+2 whenever a
+     sum/difference set covers Z_M. The largest M is 4, 10, 16, 26, 38 for j = 1, ..., 5 (REGULARITIES had j = 2).
+   - (§1.2) A list of "guaranteed walks" present in every lift of H(q) plus matchings, and a count showing that a
+     regular zero-holonomy labelling covered by those walks alone has at most q + 4 copies (one matching).
+   - (§1.3) A spectral lemma: H(q) admits no "nearly rainbow" equitable labelling missing fewer than √q classes.
+     It kills the tight designs, including one whose arithmetic picks out exactly q = 11 and M = 15, the (13,8) cell.
+4. **No table cell beaten.** Two squad rounds (16 Haiku strategies, §4.1) found nothing better than random lifts.
 
 ---
 
@@ -50,11 +51,19 @@ hop to y. Each walk has length ≤ n + 1. A line to a point is the reverse walk 
 one more step, and additionally by −(t_k + t_l) (x ⇝ s_k(a), the hop back to a, a step to the line s_l(y) ∋ a,
 the hop back to y). ∎
 
-*Largest M* (exhaustive over T, `sumdiff_out.txt`): j = 1: M = 4 (T = {1}); j = 2: 10 ({1,4}); j = 3: 16 ({1,4,7},
-{1,4,10}); j = 4: 26 ({1,5,8,12}); j = 5: 38 ({1,12,24,30,33}). Checked with liftdiam on H(3) and two random
-matchings per case: all have diameter ≤ 8 (`sumdiff_check_out.txt`). With B = H(q) this gives 16·|GH(q)| at Δ = q+4
-and so on. **No table cell is beaten** (the multiplier is a constant; DGQ's grows with q). With B = our D = 6 records
-it is also below the table in every cell (e.g. 10·148,944 at (13,8) against 5,314,680).
+*Largest M* (exhaustive over T, `sumdiff_out.txt`):
+
+| j | counting bound 1 + 2j + j(j−1) + j(j+1)/2 | largest M | T (up to units) |
+|---|---|---|---|
+| 1 | 4 | 4 | {1} |
+| 2 | 10 | 10 | {1, 4} |
+| 3 | 19 | 16 | {1, 4, 7}, {1, 4, 10} |
+| 4 | 31 | 26 | {1, 5, 8, 12} |
+| 5 | 46 | 38 | {1, 12, 24, 30, 33} |
+
+Each case was checked with liftdiam on H(3) and two random matchings: diameter ≤ 8 (`sumdiff_check_out.txt`).
+**No table cell is beaten**: the multiplier is a constant, while DGQ's grows with q; with our D = 6 records as base
+it is also below the table everywhere (e.g. 10·148,944 at (13,8) against 5,314,680).
 
 ### 1.2 Guaranteed walks in a lift of H(q) plus matchings
 
@@ -74,124 +83,164 @@ Write l_k(L) = t_k(s_k^{-1}(L)). For a point x and a line y the following walks 
 | x ⇝ s_m(s_k^{-1} y) → s_k^{-1}(y) → y (k ≠ m) | l_k(y) − t_m(s_k^{-1} y) |
 
 That is 2q + 6 walks for j = 1 and 4q + 17 for j = 2 (more when s_k(x) is opposite y or x is opposite s_k^{-1}(y),
-because those pairs have q + 1 geodesics). Two points or two lines have many more (at least (q+1)^2), so the
-point–line pairs are the binding case. Everything else (the "conditional" walks) depends on where the matchings put
-things. Unreached targets found by liftdiam in random lifts (`unreached_profile.py`) are exactly where this table
-predicts: point–line pairs at H-distance 5 (zero holonomy) and 3 or 5 (random holonomy).
+because those pairs have q + 1 geodesics). Two points or two lines have many more (at least (q+1)^2), so point–line
+pairs are the binding case. All other walks ("conditional" walks) exist or not depending on where the matchings put
+things. The unreached targets that liftdiam finds in random lifts (`unreached_profile.py`) are where this table
+predicts: point–line pairs at H-distance 5 (zero holonomy) and at H-distance 3 or 5 (random holonomy).
 
-**Counting consequence (zero holonomy, guaranteed walks only, one matching).** Call a labelling *regular* if the
-lines through any point carry pairwise different labels and so do the points on any line. If the guaranteed walks
-alone cover Z_M for every point–line pair of a regular labelling, then M ≤ q + 4 (q ≥ 3). Proof: lines with the same
-label are pairwise non-concurrent, so every label occurs on at most P/(q+1) lines (P = number of points). A label g
-is missed at x by the x-side terms {t(x)} ∪ −l(lines on x) unless t(x) = g or a line on x has label −g; so the
-number of points missing g on that side is at least P − n_g − (q+1)n_{−g} (n_v = number of points, equivalently
-lines, with label v), and the same for lines. If both a point x and a line y miss g, the only remaining walk is
-t(x) + l(y) = g, which forces all such x to share one label and all such y to share one label; so either every point
-or every line covers g, or n_g + (q+1)n_{−g} ≥ qP/(q+1). Summing over the M − 1 nonzero g (Σ_g (n_g + (q+1)n_{−g}) =
-(q+2)P) gives (M − 1)·q/(q+1) ≤ q + 2. For labellings that are not regular (the extreme being constant labels, the
-n+2 cover with M = 4) the count does not apply as stated. The same heuristic count for two matchings gives roughly
-2q + 15 (about 29 at q = 7, 41 at q = 13), a little below DGQ's 2.5q + 12.5; this suggests, but does not prove, that
-DGQ's construction uses holonomy on H(q) or walks that exist only because of where the matchings are placed.
+**Counting consequence (zero holonomy, one matching).** Call a labelling *regular* if the lines through any point
+carry pairwise different labels and so do the points on any line. If the guaranteed walks alone cover Z_M for every
+point–line pair of a regular labelling, then M ≤ q + 4 (q ≥ 3).
 
-### 1.3 A spectral obstruction to the tight designs (`spectrum_check.py` → `spectrum_check_out.txt`)
+*Proof.* Lines with the same label are pairwise non-concurrent, so a label sits on at most P/(q+1) lines (P = number
+of points); the same holds for points. A label g is missed at a point x by the x-side terms {t(x)} ∪ −l(lines on x)
+unless t(x) = g or a line on x has label −g, so at least P − n_g − (q+1)n_{−g} points miss it (n_v = number of points,
+equivalently of lines, with label v); the same holds for lines. If a point x and a line y both miss g, the only walk
+left is t(x) + l(y) = g; this forces all such points to share one label and all such lines to share one label, so
+either every point or every line covers g, or n_g + (q+1)n_{−g} ≥ qP/(q+1). Summing over the M − 1 nonzero g, with
+Σ_g (n_g + (q+1)n_{−g}) = (q+2)P, gives (M − 1)·q/(q+1) ≤ q + 2. ∎
 
-The incidence matrix of H(q) has singular values q + 1, √(3q), √q and 0 (checked for q = 2, 3).
+Non-regular labellings are not covered by this count (constant labels give the n+2 cover with M = 4). The same
+heuristic count for two matchings gives roughly 2q + 15 (29 at q = 7, 41 at q = 13), a little below DGQ's
+2.5q + 12.5. This suggests, but does not prove, that DGQ's construction uses holonomy on H(q) or walks that exist only
+because of where the matchings are placed.
 
-*Lemma.* Suppose the points and the lines of H(q) are each split into m classes so that every point of class i lies
-on A_ij ∈ {0, 1} lines of class j and every line of class j contains A_ij points of class i (an equitable partition
-of the incidence graph), with exactly r zeros in each row and column of A. If r < √q, this is impossible.
+### 1.3 A spectral obstruction (`spectrum_check.py` → `spectrum_check_out.txt`)
 
-*Proof.* The singular values of the quotient matrix A are singular values of the incidence matrix. A = J − X with X
-a 0/1 matrix with r ones in every row and column, so X is a sum of r permutation matrices and every singular value of
-A on the vectors orthogonal to the all-ones vector is at most r < √q. They must therefore all be 0, so X is constant
-on that space, which is impossible for a 0/1 matrix with r ones per row unless r = 0 or r = m. ∎
+The incidence matrix of H(q) has singular values q + 1, √(3q), √q and 0 (checked numerically for q = 2, 3).
 
-*Use.* The tight one-matching design with M = q + 4 has each point seeing all nonzero labels on its lines except
-two, and each line seeing all point labels except two (r = 2). Working out the conditions shows it needs (q+3) | P
-and a partition of the nonzero residues mod q+4 into zero-sum triples (plus elements of order 3). Among the prime
-powers up to 13 this singles out **exactly q = 11, the (13,8) cell, with M = 15**: an arithmetic coincidence with
-the DGQ value. But r = 2 < √11, so by the lemma the design does not exist. The M = q + 3 design (each point sees all
-labels but one, r = 1) needs (q+2) | P (q ∈ {5, 19, …}) and also dies by the lemma when it is equitable on both
-sides. So the guaranteed walks can never do the job alone; any construction near DGQ's numbers needs walks whose
-existence depends on the placement of the matchings or holonomy on H(q).
+*Lemma.* Split the points of H(q) into classes P_1, …, P_m and the lines into L_1, …, L_m so that every point of P_i
+lies on exactly A_ij ∈ {0, 1} lines of L_j and every line of L_j contains exactly A_ij points of P_i, where every row
+and every column of A has exactly r zeros, 0 < r < m/2. Then r ≥ √q.
+
+*Proof.* Double counting gives |P_i| = |L_j| whenever A_ij = 1, and the class graph is connected (r < m/2: any two rows share a column of ones), so all classes have
+the same size and the partition is equitable with quotient [[0, A], [A^T, 0]]; its eigenvalues ± (singular values of
+A) are eigenvalues of the incidence graph. A = J − X with X a 0/1 matrix with r ones in each row and column, a sum of
+r permutation matrices, so on the vectors orthogonal to the all-ones vector A acts as −X with norm ≤ r. If r < √q
+these singular values must all be 0, so X is a constant matrix there, impossible for a 0/1 matrix with 0 < r < m ones
+per row. ∎
+
+*Use.* Push the counting of §1.2 to equality (M = q + 4, one matching): each point then sees every nonzero label on
+its lines except two, each line sees every label on its points except two, and the conditions force the excluded
+labels to come from a permutation e of the nonzero residues with e(e(d)) = −d − e(d), i.e. a partition of the nonzero
+residues mod q+4 into zero-sum triples (and elements of order 3). If the excluded labels depend only on the label
+("equitable form"), the label classes have equal size, so (q+3) divides P. Among the prime powers up to 13,
+(q+3) | P holds only for q = 4 and q = 11, and the triple partition exists only for q = 11 (mod 15:
+{1,2,12}, {3,4,8}, {6,11,13}, {7,9,14}, plus 5 and 10). **So the tight design singles out exactly the (13,8) cell,
+with M = 15 = q + 4.** But here r = 2 < √11, so by the lemma it does not exist. The M = q + 3 design (r = 1) dies the
+same way. Guaranteed walks alone cannot produce DGQ's numbers in any equitable form; the coincidence at q = 11 remains
+unexplained.
 
 ---
 
 ## 2. Conjectured, with strong evidence
 
-### 2.1 The six cells are M·|GH(q)| with a lift-like structure
+### 2.1 The six cells and what the table allows elsewhere (`numerology_out.txt`)
 
-`numerology_out.txt`. The five cells with Δ = q+3 have M = 5·⌊(q+5)/2⌋ = 5(⌊(q+1)/2⌋ + 2); (13,8) has M = 15 with
-Δ = q+2. For odd q, M·|GH(q)| = 10·|GH(q)| + 5·#flags; for q = 8 it is 10·|GH(q)| + 5·(#flags − #points). Note
-⌊(q+1)/2⌋ is the number of values of a 2-to-1 quadratic map on GF(q) (x² for odd q, x² + x for even q), and the
-largest number of disjoint pairs among the q+1 lines through a point. I could not turn either reading into a
-construction.
+| cell | value | as M·|GH(q)| | Δ − q − 1 |
+|---|---|---|---|
+| (10,8) | 1,176,480 | 30·|GH(7)| | 2 |
+| (11,8) | 2,246,940 | 30·|GH(8)| | 2 |
+| (12,8) | 4,650,100 | 35·|GH(9)| | 2 |
+| (13,8) | 5,314,680 | 15·|GH(11)| | 1 |
+| (14,8) | 14,172,480 | 40·|GH(11)| | 2 |
+| (15,8) | 14,172,480 | (copy of (14,8)) | |
+| (16,8) | 36,201,060 | 45·|GH(13)| | 2 |
 
-### 2.2 What the table allows at other (q, j)
+Closed forms for the five j = 2 cells: M = 5·⌊(q+5)/2⌋ = 5(⌊(q+1)/2⌋ + 2) = 5(⌊Δ/2⌋ + 1). For odd q, M·|GH(q)| =
+10·|GH(q)| + 5·#flags.
 
-`numerology_out.txt` part (3): M_max(q, j) = ⌊table(q+1+j, 8)/|GH(q)|⌋ bounds the DGQ multiplier at (q, j), since
-DGQ entered their best value. For j = 1: M ≤ 11, 15, 16, 15, 17 at q = 7, 8, 9, 11, 13. So M_1 = q + 4 fits every
-cell (and equals the bound at q = 7, 11, 13), while 3⌊(q−1)/2⌋ fails at q = 13 (18 > 17) unless q ≡ 3 mod 4 is
-required. For j = 3: M ≤ 40 at q = 9 and q = 11, i.e. at most 5 per Z_7-copy: DGQ had no j = 3 version of the
-j = 2 construction that kept the factor ⌊(q+5)/2⌋.
+Since DGQ entered their best value in each cell, M_max(q, j) = ⌊table(q+1+j, 8)/|GH(q)|⌋ caps their multiplier:
 
-### 2.3 The construction is far from random
+| q \ j | 1 | 2 | 3 |
+|---|---|---|---|
+| 7 | 11 | 30 | 57 |
+| 8 | 15 | 30 | 62 |
+| 9 | 16 | 35 | 40 |
+| 11 | 15 | 40 | 40 |
+| 13 | 17 | 45 | – |
 
-| model (H(q) + j matchings, voltages in Z_M) | q = 3 | q = 4 | q = 5 | DGQ formula |
-|---|---|---|---|---|
-| j = 2, random bijections, random hop labels (models.py free) | 14 ok, 18 (1 of 2 seeds) | 12 ok, 16 fails | 12 fails (2) | 20, 20, 25 |
-| j = 2, plus random H-voltages (holo) | 14 ok, 18 (1 of 2) | 12 ok, 16 fails (10) | 12 fails (2) | |
-| j = 2, Z_5 × Z_k, polygon-cover Z_5 part, random Z_k (models5k f5kh) | 15 ok, 20 fails (12) | 10 ok, 15 fails (10) | 10 ok, 15 fails (178) | |
-| j = 2, parallel hops (2-factor of the incidence graph, par2) | 10 ok, 14 fails (6) | | | |
-| j = 1, random (models_j1 free/holo) | 4 ok, 5 fails (4–10) | 4 ok, 5 fails (10–16) | 4 ok, 5 fails (c6) | q+4: 7, 8, 9 |
-| j = 1, annealing on the exact diameter (lanneal) | 7 ok, 8 fails (16 left) | PENDING | | |
+For one matching, M = q + 4 fits every cap (and equals it at q = 7, 11, 13); 3⌊(q−1)/2⌋ gives 18 > 17 at q = 13, so
+that formula holds only if the j = 1 construction needs q ≡ 3 mod 4. For three matchings the caps (40 at q = 9, 11)
+show DGQ had no j = 3 version keeping the factor ⌊(q+5)/2⌋.
 
-(Entries: tested M with 0 unreached pairs over all sources ("ok") and the next tested M, with its number of
-unreached pairs in brackets; liftdiam, one or two seeds.) At q = 7 random reaches about 13 (REGULARITIES estimate)
-against DGQ's 30. The gap grows with q, so DGQ used a structure valid for all q.
+### 2.2 The construction is far from random
+
+Largest tested M with 0 unreached pairs (liftdiam, all sources unless "sampled"), next tested M in brackets:
+
+| model (H(q) + j matchings, voltages in Z_M) | q = 3 | q = 4 | q = 5 | q = 7 | DGQ |
+|---|---|---|---|---|---|
+| j = 2, random hop labels (models.py free) | 14 (18: 1 of 2 seeds) | 12 (16: 30) | 10 (12: 2) | | 20, 20, 25, 30 |
+| j = 2, plus random H-voltages (holo) | 14 (18: 1 of 2) | 12 (16: 10) | 10 (12: 2) | 12 sampled (14: 1, 16: 37, sampled 1 in 13 sources) | |
+| j = 2, Z_5 × Z_k, polygon-cover Z_5 part, random Z_k (f5kh) | 15 (20: 12) | 10 (15: 10) | 10 (15: 178) | | |
+| j = 2, random Z_M, 300 label seeds (squad d5) | 20 (21: none of 300) | | | | |
+| j = 2, parallel hops (2-factor of the incidence graph) | 10 (14: 6) | | | | |
+| j = 2, annealing on the exact diameter (lanneal2) | | (20: run in progress) | | | |
+| j = 1, random (models_j1 free/holo) | 4 (5: 4–10) | 4 (5: 10–16) | 4 (5: squad c6) | (9: ≈2.2M, sampled; squad d8) | q+4: 7, 8, 9, 11 |
+| j = 1, annealing on the exact diameter (lanneal) | 7 (8: 16) | (7, 8: run in progress) | | | |
+
+At q = 3 random structures still reach DGQ's value (20); from q = 5 on the gap opens and grows with q. DGQ's
+construction is structured and valid for all q in the table range.
 
 ---
 
 ## 3. Weak patterns
 
-- **V + E.** For odd q the j = 2 value is exactly |V(X)| + |E(X)|, where X is DGQ's own diameter-7 graph at the same
-  degree, the Z_5 polygon cover of H(q) (5·|GH(q)| vertices, degree q + 3): 5|GH|(1 + (q+3)/2) = 5|GH|(q+5)/2. For
-  q = 8 it is |V(X)|(1 + ⌊Δ/2⌋). Equivalently N/5 = 2·|GH(q)| + (number of arcs of an Eulerian orientation of the
-  incidence graph, after removing a 1-factor when q is even): two extra "states" per element plus one per out-arc.
-  Where the table uses the same q at D = 7 and D = 8 the ratio is exactly 7, 8, 9 = 1 + Δ/2 at Δ = 12, 14, 16. But
-  (13,8)/(13,7) = 5, not 1 + ⌊13/2⌋ = 7, so the j = 1 cell does not follow the pattern. A degree-preserving operation
-  "diameter D → D + 1 with |V| + |E| vertices" applied to H(q) itself would give (q+1, 7) graphs at about half the
-  Moore bound (196,080 vertices at (8,7), where the table has 40,586), so if such an operation exists it must use
-  something the polygon cover has and H(q) lacks. The line-digraph test above (the obvious candidate) fails.
-
-- (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction that adds 4q³ − 2
+- **V + E.** For odd q the j = 2 value is exactly |V(X)| + |E(X)| for X = the Z_5 polygon cover of H(q) (DGQ's own
+  diameter-7 graph at the same degree, 5·|GH(q)| vertices): 5|GH|(1 + (q+3)/2). For q = 8 it is |V(X)|(1 + ⌊Δ/2⌋).
+  In all five cells the factor ⌊Δ/2⌋ + 1 is the number of ±-classes of Z_Δ, and also 2 + (out-degree of an Eulerian
+  orientation of the incidence graph, after removing a 1-factor when q is even). Where the table uses the same q at
+  D = 7 and D = 8 the ratio is exactly 7, 8, 9 = 1 + Δ/2 (Δ = 12, 14, 16). But (13,8)/(13,7) = 5, not 7, so the j = 1
+  cell does not follow the pattern. An operation "diameter D → D+1 with |V| + |E| vertices at the same degree" applied
+  to H(q) itself would give (q+1, 7) graphs at half the Moore bound (196,080 at (8,7), where the table has 40,586), so
+  if it exists it must use something the polygon cover has and H(q) lacks. Four candidates failed (§4).
+- **Pairs.** ⌊(q+1)/2⌋ = (⌊(q+5)/2⌋ − 2) is the number of values of a 2-to-1 quadratic map on GF(q) (x² for odd q,
+  x² + x for even q) and the largest number of disjoint pairs among the q+1 lines through a point.
+- (q+3) | P only for q ∈ {4, 11} among prime powers ≤ 13 (§1.3).
+- (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction adding 4q³ − 2
   vertices to H(q) at the same degree. Not reproduced.
-- (4,8) = 2,184 = 3·|GH(3)| = 2·|PSL(2,13)| (a Loz cell): almost certainly a coincidence (a Z_3-lift of H(3) alone
-  has diameter ≥ 11).
-- (q+3) | P holds exactly for q ∈ {4, 11} among prime powers ≤ 13 (§1.3).
+- (4,8) = 2,184 = 3·|GH(3)| = 2·|PSL(2,13)| (a Loz cell): almost certainly a coincidence (a Z_3-lift of H(3) alone has
+  diameter ≥ 11).
 
 ## 4. Dead ends (tested and dropped)
 
 | idea | test | result |
 |---|---|---|
-| random voltage lifts, 12 variants (free, holo, polygon-cover, parallel 1-/2-factors, tripled flags, doubled hops, Z_5 × Z_k) | models.py, models5k.py, models_j1.py | §2.3: far below DGQ for q ≥ 4 |
-| zero-holonomy designs using only guaranteed walks | gwanneal.c (annealing on the guaranteed-walk cost) | j = 1 stuck at M = q + 1 at q = 3. Weak evidence: for j = 2 the same annealer does not even find the known M = 10 constant-label solution at q = 3 (cost 43), so the landscape is rugged |
-| "V + E" candidate: line digraph of an Eulerian orientation of H(q) plus two tail copies of every element, × Z_5 (exactly DGQ's vertex count for odd q, max degree q+3) | ve_test.py | q = 3: diameter 11 |
-| colour-voltage lift: properly (q+3)-edge-colour the Z_5 polygon cover X and lift X by Z_K with voltage = colour; K = ⌊Δ/2⌋+1 = |Z_Δ/±| would give DGQ's count | colourlift_test.py | q = 3: K = 4 (DGQ's count) leaves 26–44 unreached pairs, K = 6 about 4,400 (diameter 9); q = 5, K = 5 (DGQ's count): 248,798 unreached, about as bad as random |
-| line digraph of an Eulerian orientation (diameter +1 for digraphs) | linegraph_test.py, ulg_gh.py | for the Z_5 cover of H(3) (|E| = 10,920 vertices, degree 6) and for H(3), H(5) themselves the undirected line digraph of a random Eulerian orientation has diameter 10, not 8 |
-| Delorme doubling of H(q) with diameter relaxed to 8 | §2 of the analysis | the degree conditions keep A_0 of size O(q^4): gains lower-order terms only |
+| random voltage lifts, 12 variants (free, holo, polygon-cover, parallel 1-/2-factors, tripled flags, doubled hops, Z_5 × Z_k) | models.py, models5k.py, models_j1.py | §2.2: far below DGQ for q ≥ 5 |
+| zero-holonomy designs using only guaranteed walks | gwanneal.c (annealing on the guaranteed-walk cost) | j = 1 stuck at M = q + 1 at q = 3. Weak evidence: for j = 2 the same annealer does not find the known M = 10 constant-label solution (cost 43) |
+| line digraph of an Eulerian orientation (diameter +1 for digraphs) | linegraph_test.py, ulg_gh.py | for the Z_5 cover of H(3) and for H(3), H(5) the undirected line digraph of a random Eulerian orientation has diameter 10 |
+| "V + E" candidate: that line digraph plus two tail copies of every element, × Z_5 (exactly DGQ's vertex count for odd q, max degree q+3) | ve_test.py | q = 3: diameter 11 |
+| colour-voltage lift: properly (q+3)-edge-colour the Z_5 polygon cover and lift it by Z_K with voltage = colour (K = ⌊Δ/2⌋+1 gives DGQ's count) | colourlift_test.py | q = 3, K = 4: 26–44 unreached; q = 5, K = 5: 248,798 unreached, random-like |
+| Delorme doubling of H(q) with the diameter relaxed to 8 | degree conditions (L0), (L1) | the doubled set stays of size O(q^4): lower-order gains only |
 | Z_5 polygon cover of a diameter-7 base | count | the base would need 86% of the D = 7 Moore bound at q = 7 |
-| star products with a degree-2 factor | count | at most 5 copies (C_5) |
-| G_2(q)-equivariant covers of the incidence graph | characters of the parabolics | none (the two determinant characters disagree on the Borel); G_2(9) × Z_5 cannot act transitively on a side |
-| squad round r1-d8 (research/squads/r1-d8/): hyperplane-pencil labels (c1), square-class/quadratic holonomy (c2), annealing of Z_k labels (c3), torus-invariant labels (c4), colour-class voltages in Z_M (c5), j = 1 designs (c6), apartment-projection labels (c7), non-abelian / permutation voltages (c8) | liftdiam at q = 5 | best: c5 colour voltages, 2 unreached at M = 14; all others at or below random (§4.1) |
+| star products with a degree-2 factor | count | at most 5 copies |
+| G_2(q)-equivariant covers of the incidence graph | characters of the parabolics | none (the determinant characters disagree on the Borel); G_2(9) × Z_5 cannot act transitively on a side |
+| a hop matching sending the lines through each point onto the points of one line | squad d7 | this is a duality, so it exists only for q = 3^h; at q = 3 it gives no gain |
+| squad rounds r1-d8 and r2-d8 (16 strategies) | liftdiam, q = 3, 5, 7 | §4.1: none beats random |
 
-### 4.1 Squad round r1-d8
+### 4.1 Squad rounds (research/squads/r1-d8, r2-d8, LOG.md)
 
-See `research/squads/r1-d8/scoreboard.jsonl` and research/squads/LOG.md. Lessons: potential-type labels (distances,
-projections, hyperplane pencils) are locally constant and make the one-hop walks to a near target collapse onto few
-voltages (c7, c1); square-class holonomy lowers geodesic variety (c2); non-abelian groups do not help random labels
-(c8). Card c1 found a bug in liftdiam (a lift that is disconnected before level D was reported as 0 unreached); it is
-fixed and every zero in this note was rechecked.
+Round 1 (q = 5 unless noted): hyperplane-pencil labels (c1), square-class/quadratic holonomy (c2), annealing of Z_k
+labels (c3), torus-invariant labels (c4), colour-class voltages in Z_M (c5: best, 2 unreached at M = 14), one-matching
+designs (c6), apartment-projection labels (c7), non-abelian/permutation voltages (c8). Lessons: potential-type labels
+(distances, projections, pencils) are locally constant and make one-hop walks to a near target collapse onto few
+voltages; square-class holonomy lowers geodesic variety; non-abelian groups do not help. Card c1 found a bug in
+liftdiam (a lift disconnected before level D was reported as 0 unreached); fixed, and every zero here was rechecked.
+
+Round 2: V + E operations (d1: random level, diameter 9 at q = 3), "two states + out-arcs" bases (d2: base diameter
+8–9, far off), colour voltages with the Z_5 part (d3: 188 unreached at M = 15, q = 5, random level), targeted
+one-matching annealing at q = 4 (d4: report pending), anti-homomorphic hop matchings (d5: no exact one; no gain), literature
+(d6: report pending), duality hops (d7: no gain), GF(q)*/±1 labels for the (13,8) cell (d8: random level at q = 7, 9 copies).
+
+## 5. Where to go next
+
+- The cheapest way forward is the DGQ preprint itself (the authors or their institutions may have it). That is
+  Doğa's call; this session contacted nobody.
+- Tests that would sharpen §2: an exact search (SAT/ILP) for zero-holonomy labellings covered by guaranteed walks at
+  q = 3 and 4, to see whether M = 20 is reachable that way; annealing at q = 5 with exact cost to see whether 25
+  copies are reachable by optimization at all.
+- A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table,
+  and if it extends to j = 3 it would beat (13,8) and (15,8).
 
 ## Scripts and outputs (research/theorems/d8/)
 
@@ -202,7 +251,7 @@ fixed and every zero in this note was rechecked.
 | numerology.py | numerology_out.txt | the cells, closed forms, M_max(q, j) |
 | sumdiff.py, sumdiff_check.py | sumdiff_out.txt, sumdiff_check_out.txt | §1.1 |
 | spectrum_check.py | spectrum_check_out.txt | §1.3 |
-| models.py, models5k.py, models_j1.py, cover_test.py | (printed) | random lift models, §2.3 |
+| models.py, models5k.py, models_j1.py, cover_test.py | (printed, §2.2) | random lift models |
 | unreached_profile.py | — | where a lift fails |
-| gwanneal.c | — | annealing on the guaranteed-walk cost |
-| lanneal.c, lanneal2.c | — | annealing on the exact diameter (all sources / focus set) |
+| gwanneal.c, lanneal.c, lanneal2.c | — | annealing on the guaranteed-walk cost / on the exact diameter |
+| linegraph_test.py, ulg_gh.py, ve_test.py, colourlift_test.py | (printed, §4) | the V + E candidates |
