@@ -19,7 +19,19 @@ The (15,5) and (8,5) controllers came from squad round 1 (cards c6 and c4). I re
 touched without a record: (9,5) 2,592 (beats the table's 2,496, not the lab's 2,662); (12,5) with 3 letters 8,192
 (8 short of the table). (16,5) stays at the squad's 33,792.
 
-The family statement behind the table (§3.1, Theorem 5):
+**Main theorem (§3.1, Theorem 10; computer-assisted proof).** For every prime power q,
+
+> **n_b(4q, 5) ≥ 108 q⁴.**
+
+For q ≥ 3 this is the lift of one fixed 108-vertex controller, K₃,₃ + doubled matching over Z₁₈. Every same-side
+pair of it, even a vertex with itself, is joined by a nonbacktracking 4-walk. The chart is any universal 4-letter
+chart over F_q⁴, and such a chart exists for every prime power q ≥ 3. q = 2 is the 2,048 graph. The bound beats the
+published table at every cell it touches: (8,5) 1,728 > 1,710, (12,5) 8,748 > 8,200, (16,5) 27,648 > 27,300. At q = 2
+and q = 4 our graphs do better: 2,048 = 128·2⁴ and 33,792 = 132·4⁴. At q = 3, 4, 5 the lifts of the fixed controller
+were also built and checked all-pairs: 8,748, 27,648 and 67,500 vertices (degree 20), apsp VALID
+(`chartlift/runs/exact54_lifts.out`).
+
+The cell-by-cell statements behind the table (§3.1, Theorem 5):
 
 > **n_b(kq, 5) ≥ 2 m q⁴** whenever a k-regular bipartite controller with m vertices per side satisfies the chart
 > conditions of Theorem 1. Explicitly: n_b(4q, 5) ≥ 108 q⁴ for q = 2, 3, 4 (one base graph, K₃,₃ + doubled matching
@@ -115,6 +127,25 @@ explicit (files in `chartlift/`). Each lift was built and checked all-pairs:
 | (4, 4) | 16 | the (12,5) controller / Z₁₈ | 54 | 27,648 | above table |
 | (3, 3) | 9 | [[1,2],[2,1]] base / Z₈ | 16 | 2,592 | above table, below lab |
 | (3, 4) | 12 | same controller | 16 | 8,192 | below table |
+
+**Theorem 10 (universal charts for every q ≥ 3; the 108 q⁴ family).**
+1. *Exact controller.* C₅₄ is K₃,₃ + doubled matching over Z₁₈, voltages in `chartlift/runs/exact54.volt`. Every
+   same-side pair, including (u, u), is the pair of ends of a nonbacktracking 4-walk: `ctrl_search` with the flags
+   `charts/nbonly_k4.flags` (no pencils, no diagonal) gives cost 0.
+2. *Universal charts exist for every prime power q ≥ 3.* Fix A₀ = I; the other chart entries are 64 variables. By
+   Lemma 2, side-A pattern (i₁,i₂,i₃,i₄) is nonsingular iff
+   P = det[adj(A_{i₂})b_{i₁}, adj(A_{i₂})b_{i₂}, adj(A_{i₃})b_{i₃}, adj(A_{i₃})b_{i₄}] ≠ 0, a polynomial of degree ≤ 16.
+   Side B uses det[A_{i₂}adj(A_{i₁})b_{i₁}, b_{i₂}, b_{i₃}, A_{i₃}adj(A_{i₄})b_{i₄}], degree ≤ 12. Multiply the 216
+   pattern polynomials and det A₁·det A₂·det A₃; the product F has degree ≤ 3,036. `integer_witness.py` finds 223
+   integer charts at which, for every pattern, the values have gcd 1. So every factor, hence F, is nonzero modulo
+   every prime (`runs/integer_witness.out`). By Schwartz–Zippel, F has a non-root over F_q whenever q > 3,036, which
+   is a universal chart. For 3 ≤ q ≤ 3,036, all 471 prime powers, an explicit universal chart is in
+   `charts/universal/k4_q<q>.txt`, found by `chart_anneal.c` (q ≤ 127) or random search (`universal_large.py`).
+   Every chart was rechecked from the walk rules of Lemma 1 (q ≤ 127 in a second, Python implementation). Field
+   convention: gf.py's polynomial for q ∈ {4, 8, 9, 16, 25, 27, 32, 49}, otherwise the first monic irreducible.
+3. *Conclusion.* Universal means every nonbacktracking 4-walk reaches the whole target fibre (Lemma 2). So the lift
+   of C₅₄ has diameter ≤ 5 for every q ≥ 3: n_b(4q, 5) ≥ 2·54·q⁴ = 108 q⁴. ∎
+   q = 2 has no universal chart (Proposition 7.4), but the (8,5) graph gives 2,048 ≥ 1,728.
 
 **Proposition 6 (ceiling).** A chart lift for (Δ, D) = (kq, D) has fibre dimension D − 1, and its controller is
 k-regular with diameter ≤ D. So its order is at most q^(D−1) · Moore_b(k, D), and realistically
