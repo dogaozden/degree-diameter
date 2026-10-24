@@ -44,9 +44,9 @@ static int q, N, Q1;
 static int32_t *LP, *PL;              /* LP[l*Q1+k]: points on line l; PL[p*Q1+k]: lines through p */
 static int *M1, *M1inv, *M2, *M2inv, *BG1, *BG2;
 static uint64_t bgs1, bgs2;
-static int K, *F, *isF;               /* freed points; isF[p] = index+1 */
-static int *FLn, *isFL;               /* freed lines FLn[j] = M1(F[j]); isFL[l] = index+1 */
-static int NV, noM1 = 0;
+static int K, *F, *isF, *isF2, *TY;   /* freed points; TY[j] = 0 (pair of M1) or 1 (pair of M2); isF[p] / isF2[p] = index+1 */
+static int *FLn, *isFL, *isFL2;       /* freed lines FLn[j] = M1(F[j]) or M2(F[j]); isFL[l] / isFL2[l] = index+1 */
+static int NV, noM1 = 0, noM2 = 0;
 static uint8_t *dist;
 static int *que;
 static int HGm = 0, *HGj, *HGk, **HGL, **HGP, *HGLn, *HGPn;
@@ -56,7 +56,11 @@ static int nXL = 0, nXP = 0, **XLh, *XLn, **XPh, *XPn, **hubXL, *hubXLn, **hubXP
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 static inline int rndi(int n) { return (int)(rnd() % (uint64_t)n); }
-static inline double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
+static int wallclk = -1;
+static inline double now(void) {   /* CPU seconds of this process (fair on a shared box) unless WALLCLOCK is set */
+    if (wallclk < 0) wallclk = getenv("WALLCLOCK") != NULL;
+    struct timespec t; clock_gettime(wallclk ? CLOCK_MONOTONIC : CLOCK_PROCESS_CPUTIME_ID, &t); return t.tv_sec + 1e-9 * t.tv_nsec;
+}
 
 static inline int VP(int p, int i) { return i * 2 * N + p; }
 static inline int VL(int l, int i) { return i * 2 * N + N + l; }
@@ -80,12 +84,12 @@ static int nbrs(int v, int *out) {
         int p = r; const int32_t *pl = PL + (size_t)p * Q1;
         for (int k = 0; k < Q1; k++) out[c++] = VL(pl[k], i);
         if (isF[p]) out[c++] = NLEV * 2 * N + isF[p] - 1; else if (!noM1) out[c++] = VL(M1[p], (i + 1) % NLEV);
-        out[c++] = VL(M2[p], (i + 2) % NLEV);
+        if (isF2[p]) out[c++] = NLEV * 2 * N + isF2[p] - 1; else if (!noM2) out[c++] = VL(M2[p], (i + 2) % NLEV);
     } else {
         int l = r - N; const int32_t *lp = LP + (size_t)l * Q1;
         for (int k = 0; k < Q1; k++) out[c++] = VP(lp[k], i);
         if (isFL[l]) out[c++] = NLEV * 2 * N + K + isFL[l] - 1; else if (!noM1) out[c++] = VP(M1inv[l], (i + NLEV - 1) % NLEV);
-        out[c++] = VP(M2inv[l], (i + NLEV - 2) % NLEV);
+        if (isFL2[l]) out[c++] = NLEV * 2 * N + K + isFL2[l] - 1; else if (!noM2) out[c++] = VP(M2inv[l], (i + NLEV - 2) % NLEV);
     }
     return c;
 }
@@ -214,14 +218,23 @@ static void bgperm(uint64_t seed, int *M) {
 }
 
 static void set_freed_from_F(void) {
-    isF = calloc(N, sizeof(int)); isFL = calloc(N, sizeof(int)); FLn = malloc(sizeof(int) * (K + 1));
-    for (int j = 0; j < K; j++) { if (isF[F[j]]) { fprintf(stderr, "freed point repeated\n"); exit(1); } isF[F[j]] = j + 1; FLn[j] = M1[F[j]]; isFL[FLn[j]] = j + 1; }
+    isF = calloc(N, sizeof(int)); isFL = calloc(N, sizeof(int)); isF2 = calloc(N, sizeof(int)); isFL2 = calloc(N, sizeof(int));
+    FLn = malloc(sizeof(int) * (K + 1));
+    if (!TY) TY = calloc(K + 1, sizeof(int));
+    for (int j = 0; j < K; j++) {
+        if (isF[F[j]] || isF2[F[j]]) { fprintf(stderr, "freed point repeated\n"); exit(1); }
+        if (TY[j] == 0) { isF[F[j]] = j + 1; FLn[j] = M1[F[j]]; } else { isF2[F[j]] = j + 1; FLn[j] = M2[F[j]]; }
+        if (isFL[FLn[j]] || isFL2[FLn[j]]) { fprintf(stderr, "freed line repeated\n"); exit(1); }
+        if (TY[j] == 0) isFL[FLn[j]] = j + 1; else isFL2[FLn[j]] = j + 1;
+    }
 }
 
 static void write_sol(const char *fn) {
     FILE *f = fopen(fn, "w");
     fprintf(f, "d16hex %d %d %d %d\nfreed", q, N, K, NV);
     for (int j = 0; j < K; j++) fprintf(f, " %d", F[j]);
+    int any2 = 0; for (int j = 0; j < K; j++) any2 |= TY[j];
+    if (any2) { fprintf(f, "\ntypes"); for (int j = 0; j < K; j++) fprintf(f, " %d", TY[j]); }
     fprintf(f, "\nhubedges %d", HGm);
     for (int e = 0; e < HGm; e++) fprintf(f, " %d %d", HGj[e], HGk[e]);
     fprintf(f, "\n");
@@ -262,7 +275,11 @@ static void read_sol(const char *fn) {
     K = kk; F = malloc(sizeof(int) * (K + 1));
     for (int j = 0; j < K; j++) if (fscanf(f, "%d", &F[j]) != 1 || F[j] < 0 || F[j] >= N) exit(1);
     char tok[32];
-    if (fscanf(f, "%31s", tok) != 1 || strcmp(tok, "hubedges")) { fprintf(stderr, "no hubedges line\n"); exit(1); }
+    TY = calloc(K + 1, sizeof(int));
+    if (fscanf(f, "%31s", tok) != 1) exit(1);
+    if (!strcmp(tok, "types")) { for (int j = 0; j < K; j++) if (fscanf(f, "%d", &TY[j]) != 1 || TY[j] < 0 || TY[j] > 1) exit(1);
+        if (fscanf(f, "%31s", tok) != 1) exit(1); }
+    if (strcmp(tok, "hubedges")) { fprintf(stderr, "no hubedges line\n"); exit(1); }
     if (fscanf(f, "%d", &HGm) != 1) exit(1);
     HGj = malloc(sizeof(int) * (HGm + 1)); HGk = malloc(sizeof(int) * (HGm + 1));
     for (int e = 0; e < HGm; e++) if (fscanf(f, "%d %d", &HGj[e], &HGk[e]) != 2) exit(1);
@@ -290,6 +307,7 @@ static void read_sol(const char *fn) {
 static inline void m1set(int u, int l) {   /* M1[u] := l; the previous owner of l takes u's old line */
     int w = M1inv[l], o = M1[u]; M1[u] = l; M1inv[l] = u; M1[w] = o; M1inv[o] = w;
 }
+static inline void m2set(int u, int l) { int w = M2inv[l], o = M2[u]; M2[u] = l; M2inv[l] = u; M2[w] = o; M2inv[o] = w; }
 
 static int cost_of(int j, int *bA, int *bB) {
     *bA = bfs(VP(F[j], 0), 7, NULL);
@@ -315,19 +333,22 @@ static int freed_check(int *worst) {
 }
 
 /* ---------------- fast route-count annealing ----------------
-   For pair k (p = F[k], l = FLn[k]) the targets are the points x with d(p,x) = 6 (side A, reached from (p,0) at
-   level 1) and the lines t with d(l,t) = 6 (side B, reached from (l,0) at level -1 = 4). Counted routes (length <= 6,
-   exactly one M1 edge, its "anchor"); D2A(L) = min over u of d(p,u) + d(M2(u),L), D2B(y) = min over L of
-   d(l,L) + d(M2^-1(L),y):
-     A1  (p,0) ~> (u,0) -> (M1 u,1) ~> (x,1)                         d(p,u) = 4: x on M1 u;  d(p,u) = 2: d(M1 u,x) <= 3
+   One family at a time: FAM 0 = the pairs freed on M1 (anchors in M1), FAM 1 = the pairs freed on M2 (anchors in M2).
+   For pair k (p = F[k], l = FLn[k]) of FAM 0 the targets are the points x with d(p,x) = 6 (side A, reached from (p,0)
+   at level 1) and the lines t with d(l,t) = 6 (side B, reached from (l,0) at level -1 = 4); for FAM 1 the levels are
+   2 and -2 = 3. Counted routes have length <= 6 and exactly one edge of the family's matching ("anchor"):
+     A1  (p,0) ~> (u,0) -> (MA u,a) ~> (x,a)                         d(p,u) = 4: x on MA u;  d(p,u) = 2: d(MA u,x) <= 3
+     B1  the mirror image for (l,0)
+   and for FAM 0 also, with D2A(L) = min over u of d(p,u) + d(M2(u),L), D2B(y) = min over L of d(l,L) + d(M2^-1(L),y):
      A2  (p,0) ~> (u,0) -> (M2 u,2) ~> (L,2) -> (M1^-1 L,1) ~> (x,1)   d(M1^-1 L, x) <= 4 - D2A(L)
      A3  (p,0) ~> (l',0) -> (y = M1^-1 l',-1) ~> (y',-1) -> (M2 y',1) ~> (x,1)
                                  d(p,l') = 1: d(M2 y,x) <= 3 or (d(y,y') = 2, x on M2 y');  d(p,l') = 3: x on M2 y
-     B1-B3 the mirror images for (l,0) (lines and points exchanged, M1 and M2 inverted).
-   Routes with no M1 edge (hexagon, M2, hubs) are found once by BFS in the graph without M1 edges ("static").
-   Every counted route is a real path, so count > 0 for all targets implies eccentricity <= 7. */
-enum { KA4, KA2, KB20, KB22, KB24, KB31, KB33 };          /* point-anchored kinds: anchor u, uses M1[u] */
-enum { KL20, KL22, KL24, KL31, KL33, KLB4, KLB2 };         /* line-anchored kinds: anchor L, uses M1inv[L] */
+     B2, B3 the mirror images for (l,0) (lines and points exchanged, M1 and M2 inverted).
+   Routes with no edge of the family's matching (FAM 1: no M1 edge either, since M1 is optimized afterwards) are found
+   once by BFS ("static"). Every counted route is a real path, so count > 0 for all targets implies eccentricity <= 7.
+   FAM 1 is optimized first; FAM 0 afterwards with M2 fixed, and its moves never touch the routes FAM 1 counted. */
+enum { KA4, KA2, KB20, KB22, KB24, KB31, KB33 };          /* point-anchored kinds: anchor u, uses MA[u] */
+enum { KL20, KL22, KL24, KL31, KL33, KLB4, KLB2 };         /* line-anchored kinds: anchor L, uses MAinv[L] */
 static uint8_t **hdp, **hdl, **D2A, **D2B;
 static uint16_t **cA, **cB;
 static long zeros;
@@ -335,9 +356,18 @@ static int32_t **memP, **memL; static int *nmemP, *nmemL;
 static int **n4p, **n2p, **n4l, **n2l, **e4A, **e2A, **e4B, **e2B, *nn4p, *nn2p, *nn4l, *nn2l, *ne4A, *ne2A, *ne4B, *ne2B;
 static int **oppA, **oppB;   /* target lists (points opposite p_k: q^5; lines opposite l_k) */
 static int nopp;
+static int FAM = 0, *MA, *MAinv, *isFA, *isFLA, nfs = 0, *fsIdx;
+#define HP(k) hdp[fsIdx[k]]
+#define HL(k) hdl[fsIdx[k]]
+static void set_family(int fam) {
+    FAM = fam;
+    if (fam == 0) { MA = M1; MAinv = M1inv; isFA = isF; isFLA = isFL; } else { MA = M2; MAinv = M2inv; isFA = isF2; isFLA = isFL2; }
+    if (!fsIdx) fsIdx = malloc(sizeof(int) * (K + 1));
+    nfs = 0; for (int j = 0; j < K; j++) if (TY[j] == fam) fsIdx[nfs++] = j;
+}
 
-static inline void updA(int k, int x, int s) { if (hdp[k][x] != 6) return; if (s > 0) { if (cA[k][x]++ == 0) zeros--; } else { if (--cA[k][x] == 0) zeros++; } }
-static inline void updB(int k, int t, int s) { if (hdl[k][N + t] != 6) return; if (s > 0) { if (cB[k][t]++ == 0) zeros--; } else { if (--cB[k][t] == 0) zeros++; } }
+static inline void updA(int k, int x, int s) { if (HP(k)[x] != 6) return; if (s > 0) { if (cA[k][x]++ == 0) zeros--; } else { if (--cA[k][x] == 0) zeros++; } }
+static inline void updB(int k, int t, int s) { if (HL(k)[N + t] != 6) return; if (s > 0) { if (cB[k][t]++ == 0) zeros--; } else { if (--cB[k][t] == 0) zeros++; } }
 
 /* ball enumerations in the hexagon (girth 12: non-backtracking walks of length <= 5 reach each element once) */
 static void A_ball3_line(int k, int m, int s) {      /* points within 3 of line m */
@@ -367,76 +397,79 @@ static void B_ball_line(int k, int m, int r, int s) {    /* lines within r (0, 2
                 for (int d = 0; d < Q1; d++) { int t = PL[y2 * Q1 + d]; if (t != L1) updB(k, t, s); } } } }
 }
 
-static void contribP(int k, int kind, int u, int m, int s) {   /* anchor point u with M1[u] = m */
+/* M2 edges of pairs freed on M2 are absent: the A3/B3 routes skip them */
+static void contribP(int k, int kind, int u, int m, int s) {   /* anchor point u with MA[u] = m */
     switch (kind) {
-    case KA4: if (hdp[k][N + m] == 5) for (int a = 0; a < Q1; a++) updA(k, LP[m * Q1 + a], s); break;
+    case KA4: if (HP(k)[N + m] == 5) for (int a = 0; a < Q1; a++) updA(k, LP[m * Q1 + a], s); break;
     case KA2: A_ball3_line(k, m, s); break;
     case KB20: B_ball_line(k, m, 4, s); break;
     case KB22: B_ball_line(k, m, 2, s); break;
     case KB24: updB(k, m, s); break;
-    case KB31: { int z = M2inv[m]; B_ball3_point(k, z, s);
+    case KB31: { if (!isFL2[m]) { int z = M2inv[m]; B_ball3_point(k, z, s); }
         for (int a = 0; a < Q1; a++) { int y = LP[m * Q1 + a];
-            for (int b = 0; b < Q1; b++) { int L2 = PL[y * Q1 + b]; if (L2 == m) continue; int z2 = M2inv[L2];
+            for (int b = 0; b < Q1; b++) { int L2 = PL[y * Q1 + b]; if (L2 == m || isFL2[L2]) continue; int z2 = M2inv[L2];
                 for (int c = 0; c < Q1; c++) updB(k, PL[z2 * Q1 + c], s); } } } break;
-    case KB33: { int z = M2inv[m]; for (int c = 0; c < Q1; c++) updB(k, PL[z * Q1 + c], s); } break;
+    case KB33: { if (isFL2[m]) break; int z = M2inv[m]; for (int c = 0; c < Q1; c++) updB(k, PL[z * Q1 + c], s); } break;
     }
     (void)u;
 }
-static void contribL(int k, int kind, int L, int y, int s) {   /* anchor line L with M1inv[L] = y */
+static void contribL(int k, int kind, int L, int y, int s) {   /* anchor line L with MAinv[L] = y */
     switch (kind) {
     case KL20: A_ball_point(k, y, 4, s); break;
     case KL22: A_ball_point(k, y, 2, s); break;
     case KL24: updA(k, y, s); break;
-    case KL31: { int m = M2[y]; A_ball3_line(k, m, s);
+    case KL31: { if (!isF2[y]) { int m = M2[y]; A_ball3_line(k, m, s); }
         for (int a = 0; a < Q1; a++) { int L1 = PL[y * Q1 + a];
-            for (int b = 0; b < Q1; b++) { int y2 = LP[L1 * Q1 + b]; if (y2 == y) continue; int m2 = M2[y2];
+            for (int b = 0; b < Q1; b++) { int y2 = LP[L1 * Q1 + b]; if (y2 == y || isF2[y2]) continue; int m2 = M2[y2];
                 for (int c = 0; c < Q1; c++) updA(k, LP[m2 * Q1 + c], s); } } } break;
-    case KL33: { int m = M2[y]; for (int c = 0; c < Q1; c++) updA(k, LP[m * Q1 + c], s); } break;
-    case KLB4: if (hdl[k][y] == 5) for (int a = 0; a < Q1; a++) updB(k, PL[y * Q1 + a], s); break;
+    case KL33: { if (isF2[y]) break; int m = M2[y]; for (int c = 0; c < Q1; c++) updA(k, LP[m * Q1 + c], s); } break;
+    case KLB4: if (HL(k)[y] == 5) for (int a = 0; a < Q1; a++) updB(k, PL[y * Q1 + a], s); break;
     case KLB2: B_ball3_point(k, y, s); break;
     }
     (void)L;
 }
-static inline void pointC(int u, int s) { if (isF[u]) return; for (int e = 0; e < nmemP[u]; e++) contribP(memP[u][e] >> 3, memP[u][e] & 7, u, M1[u], s); }
-static inline void lineC(int L, int s) { if (isFL[L]) return; for (int e = 0; e < nmemL[L]; e++) contribL(memL[L][e] >> 3, memL[L][e] & 7, L, M1inv[L], s); }
-static void swapM1(int u, int w) {   /* exchange the lines of points u and w, keeping the counts current */
-    int a = M1[u], b = M1[w];
+static inline void pointC(int u, int s) { if (isFA[u]) return; for (int e = 0; e < nmemP[u]; e++) contribP(memP[u][e] >> 3, memP[u][e] & 7, u, MA[u], s); }
+static inline void lineC(int L, int s) { if (isFLA[L]) return; for (int e = 0; e < nmemL[L]; e++) contribL(memL[L][e] >> 3, memL[L][e] & 7, L, MAinv[L], s); }
+static void swapMA(int u, int w) {   /* exchange the lines of points u and w in the family's matching, keeping the counts current */
+    int a = MA[u], b = MA[w];
     pointC(u, -1); pointC(w, -1); lineC(a, -1); lineC(b, -1);
-    M1[u] = b; M1[w] = a; M1inv[b] = u; M1inv[a] = w;
+    MA[u] = b; MA[w] = a; MAinv[b] = u; MAinv[a] = w;
     pointC(u, +1); pointC(w, +1); lineC(a, +1); lineC(b, +1);
 }
 
 static void fs_setup(void) {
-    D2A = malloc(sizeof(uint8_t *) * K); D2B = malloc(sizeof(uint8_t *) * K);
-    cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
-    int **lists[] = {0}; (void)lists;
-    n4p = malloc(sizeof(int *) * K); n2p = malloc(sizeof(int *) * K); n4l = malloc(sizeof(int *) * K); n2l = malloc(sizeof(int *) * K);
-    e4A = malloc(sizeof(int *) * K); e2A = malloc(sizeof(int *) * K); e4B = malloc(sizeof(int *) * K); e2B = malloc(sizeof(int *) * K);
-    nn4p = calloc(K, sizeof(int)); nn2p = calloc(K, sizeof(int)); nn4l = calloc(K, sizeof(int)); nn2l = calloc(K, sizeof(int));
-    ne4A = calloc(K, sizeof(int)); ne2A = calloc(K, sizeof(int)); ne4B = calloc(K, sizeof(int)); ne2B = calloc(K, sizeof(int));
-    oppA = malloc(sizeof(int *) * K); oppB = malloc(sizeof(int *) * K);
+    int KK = nfs > 0 ? nfs : 1;
+    D2A = malloc(sizeof(uint8_t *) * KK); D2B = malloc(sizeof(uint8_t *) * KK);
+    cA = malloc(sizeof(uint16_t *) * KK); cB = malloc(sizeof(uint16_t *) * KK);
+    n4p = malloc(sizeof(int *) * KK); n2p = malloc(sizeof(int *) * KK); n4l = malloc(sizeof(int *) * KK); n2l = malloc(sizeof(int *) * KK);
+    e4A = malloc(sizeof(int *) * KK); e2A = malloc(sizeof(int *) * KK); e4B = malloc(sizeof(int *) * KK); e2B = malloc(sizeof(int *) * KK);
+    nn4p = calloc(KK, sizeof(int)); nn2p = calloc(KK, sizeof(int)); nn4l = calloc(KK, sizeof(int)); nn2l = calloc(KK, sizeof(int));
+    ne4A = calloc(KK, sizeof(int)); ne2A = calloc(KK, sizeof(int)); ne4B = calloc(KK, sizeof(int)); ne2B = calloc(KK, sizeof(int));
+    oppA = malloc(sizeof(int *) * KK); oppB = malloc(sizeof(int *) * KK);
     nmemP = calloc(N, sizeof(int)); nmemL = calloc(N, sizeof(int));
-    for (int k = 0; k < K; k++) {
-        uint8_t *hp = hdp[k], *hl = hdl[k];
+    for (int k = 0; k < nfs; k++) {
+        uint8_t *hp = HP(k), *hl = HL(k);
         D2A[k] = malloc(N); memset(D2A[k], 255, N); D2B[k] = malloc(N); memset(D2B[k], 255, N);
-        /* D2A over lines: u with d(p,u) = 0, 2, 4, then lines within 4 - d(p,u) of M2(u) */
-        for (int u = 0; u < N; u++) {
-            int b = hp[u]; if (b > 4) continue;
-            int m = M2[u];
-            if (b <= 4 && D2A[k][m] > b) D2A[k][m] = b;
-            if (b <= 2) for (int a = 0; a < Q1; a++) { int y1 = LP[m * Q1 + a];
-                for (int c = 0; c < Q1; c++) { int L1 = PL[y1 * Q1 + c]; if (L1 == m) continue; if (D2A[k][L1] > b + 2) D2A[k][L1] = b + 2;
-                    if (b == 0) for (int d = 0; d < Q1; d++) { int y2 = LP[L1 * Q1 + d]; if (y2 == y1) continue;
-                        for (int e = 0; e < Q1; e++) { int t = PL[y2 * Q1 + e]; if (t != L1 && D2A[k][t] > 4) D2A[k][t] = 4; } } } }
-        }
-        for (int L = 0; L < N; L++) {
-            int b = hl[N + L]; if (b > 4) continue;
-            int y = M2inv[L];
-            if (D2B[k][y] > b) D2B[k][y] = b;
-            if (b <= 2) for (int a = 0; a < Q1; a++) { int L1 = PL[y * Q1 + a];
-                for (int c = 0; c < Q1; c++) { int y1 = LP[L1 * Q1 + c]; if (y1 == y) continue; if (D2B[k][y1] > b + 2) D2B[k][y1] = b + 2;
-                    if (b == 0) for (int d = 0; d < Q1; d++) { int L2 = PL[y1 * Q1 + d]; if (L2 == L1) continue;
-                        for (int e = 0; e < Q1; e++) { int x = LP[L2 * Q1 + e]; if (x != y1 && D2B[k][x] > 4) D2B[k][x] = 4; } } } }
+        if (FAM == 0) {
+            /* D2A over lines: u with d(p,u) = 0, 2, 4 (and an M2 edge), then lines within 4 - d(p,u) of M2(u) */
+            for (int u = 0; u < N; u++) {
+                int b = hp[u]; if (b > 4 || isF2[u]) continue;
+                int m = M2[u];
+                if (D2A[k][m] > b) D2A[k][m] = b;
+                if (b <= 2) for (int a = 0; a < Q1; a++) { int y1 = LP[m * Q1 + a];
+                    for (int c = 0; c < Q1; c++) { int L1 = PL[y1 * Q1 + c]; if (L1 == m) continue; if (D2A[k][L1] > b + 2) D2A[k][L1] = b + 2;
+                        if (b == 0) for (int d = 0; d < Q1; d++) { int y2 = LP[L1 * Q1 + d]; if (y2 == y1) continue;
+                            for (int e = 0; e < Q1; e++) { int t = PL[y2 * Q1 + e]; if (t != L1 && D2A[k][t] > 4) D2A[k][t] = 4; } } } }
+            }
+            for (int L = 0; L < N; L++) {
+                int b = hl[N + L]; if (b > 4 || isFL2[L]) continue;
+                int y = M2inv[L];
+                if (D2B[k][y] > b) D2B[k][y] = b;
+                if (b <= 2) for (int a = 0; a < Q1; a++) { int L1 = PL[y * Q1 + a];
+                    for (int c = 0; c < Q1; c++) { int y1 = LP[L1 * Q1 + c]; if (y1 == y) continue; if (D2B[k][y1] > b + 2) D2B[k][y1] = b + 2;
+                        if (b == 0) for (int d = 0; d < Q1; d++) { int L2 = PL[y1 * Q1 + d]; if (L2 == L1) continue;
+                            for (int e = 0; e < Q1; e++) { int x = LP[L2 * Q1 + e]; if (x != y1 && D2B[k][x] > 4) D2B[k][x] = 4; } } } }
+            }
         }
         n4p[k] = malloc(sizeof(int) * N); n2p[k] = malloc(sizeof(int) * 4096); n4l[k] = malloc(sizeof(int) * N); n2l[k] = malloc(sizeof(int) * 4096);
         e4A[k] = malloc(sizeof(int) * N); e2A[k] = malloc(sizeof(int) * N); e4B[k] = malloc(sizeof(int) * N); e2B[k] = malloc(sizeof(int) * N);
@@ -445,13 +478,13 @@ static void fs_setup(void) {
         for (int v = 0; v < N; v++) {
             if (hp[v] == 6) oppA[k][na++] = v;
             if (hl[N + v] == 6) oppB[k][nb++] = v;
-            if (!isF[v]) {
+            if (!isFA[v]) {
                 if (hp[v] == 4) n4p[k][nn4p[k]++] = v;
                 if (hp[v] == 2) n2p[k][nn2p[k]++] = v;
                 if (D2B[k][v] == 4) e4B[k][ne4B[k]++] = v;
                 if (D2B[k][v] <= 2) e2B[k][ne2B[k]++] = v;
             }
-            if (!isFL[v]) {
+            if (!isFLA[v]) {
                 if (hl[N + v] == 4) n4l[k][nn4l[k]++] = v;
                 if (hl[N + v] == 2) n2l[k][nn2l[k]++] = v;
                 if (D2A[k][v] == 4) e4A[k][ne4A[k]++] = v;
@@ -459,7 +492,7 @@ static void fs_setup(void) {
             }
         }
         nopp = na;
-        if (k == 0) fprintf(stderr, "pair 0: targets %d + %d; anchors A1 %d+%d, A2 %d+%d, B1 %d+%d, B2 %d+%d\n", na, nb,
+        if (k == 0) fprintf(stderr, "family %d, %d pairs; pair 0: targets %d + %d; anchors A1 %d+%d, A2 %d+%d, B1 %d+%d, B2 %d+%d\n", FAM, nfs, na, nb,
                             nn4p[0], nn2p[0], ne4A[0], ne2A[0], nn4l[0], nn2l[0], ne4B[0], ne2B[0]);
     }
     /* anchor lists */
@@ -468,16 +501,18 @@ static void fs_setup(void) {
             memP = malloc(sizeof(int32_t *) * N); memL = malloc(sizeof(int32_t *) * N);
             for (int v = 0; v < N; v++) { memP[v] = malloc(sizeof(int32_t) * (nmemP[v] + 1)); memL[v] = malloc(sizeof(int32_t) * (nmemL[v] + 1)); nmemP[v] = nmemL[v] = 0; }
         }
-        for (int k = 0; k < K; k++) {
-            uint8_t *hp = hdp[k], *hl = hdl[k];
+        for (int k = 0; k < nfs; k++) {
+            uint8_t *hp = HP(k), *hl = HL(k);
             for (int v = 0; v < N; v++) {
                 int kp[3], np = 0, kl[3], nl = 0;
                 if (hp[v] == 4) kp[np++] = KA4; else if (hp[v] == 2) kp[np++] = KA2;
-                if (D2B[k][v] == 0) kp[np++] = KB20; else if (D2B[k][v] == 2) kp[np++] = KB22; else if (D2B[k][v] == 4) kp[np++] = KB24;
-                if (hl[v] == 1) kp[np++] = KB31; else if (hl[v] == 3) kp[np++] = KB33;
-                if (D2A[k][v] == 0) kl[nl++] = KL20; else if (D2A[k][v] == 2) kl[nl++] = KL22; else if (D2A[k][v] == 4) kl[nl++] = KL24;
-                if (hp[N + v] == 1) kl[nl++] = KL31; else if (hp[N + v] == 3) kl[nl++] = KL33;
                 if (hl[N + v] == 4) kl[nl++] = KLB4; else if (hl[N + v] == 2) kl[nl++] = KLB2;
+                if (FAM == 0) {
+                    if (D2B[k][v] == 0) kp[np++] = KB20; else if (D2B[k][v] == 2) kp[np++] = KB22; else if (D2B[k][v] == 4) kp[np++] = KB24;
+                    if (hl[v] == 1) kp[np++] = KB31; else if (hl[v] == 3) kp[np++] = KB33;
+                    if (D2A[k][v] == 0) kl[nl++] = KL20; else if (D2A[k][v] == 2) kl[nl++] = KL22; else if (D2A[k][v] == 4) kl[nl++] = KL24;
+                    if (hp[N + v] == 1) kl[nl++] = KL31; else if (hp[N + v] == 3) kl[nl++] = KL33;
+                }
                 for (int i = 0; i < np; i++) { if (pass) memP[v][nmemP[v]] = k * 8 + kp[i]; nmemP[v]++; }
                 for (int i = 0; i < nl; i++) { if (pass) memL[v][nmemL[v]] = k * 8 + kl[i]; nmemL[v]++; }
             }
@@ -487,18 +522,29 @@ static void fs_setup(void) {
     fprintf(stderr, "anchor entries %ld (%.1f per element)\n", tot, (double)tot / (2.0 * N));
 }
 
-/* static coverage: BFS without M1 edges; then counts start at 1 for statically covered targets */
+static void fs_free(void) {
+    for (int k = 0; k < nfs; k++) { free(D2A[k]); free(D2B[k]); free(cA[k]); free(cB[k]); free(n4p[k]); free(n2p[k]); free(n4l[k]); free(n2l[k]);
+        free(e4A[k]); free(e2A[k]); free(e4B[k]); free(e2B[k]); free(oppA[k]); free(oppB[k]); }
+    for (int v = 0; v < N; v++) { free(memP[v]); free(memL[v]); }
+    free(memP); free(memL); free(nmemP); free(nmemL);
+    free(D2A); free(D2B); free(cA); free(cB); free(n4p); free(n2p); free(n4l); free(n2l); free(e4A); free(e2A); free(e4B); free(e2B);
+    free(nn4p); free(nn2p); free(nn4l); free(nn2l); free(ne4A); free(ne2A); free(ne4B); free(ne2B); free(oppA); free(oppB);
+}
+
+/* static coverage: BFS without the family's matching (FAM 1: without M1 too); counts start at 1 where covered */
 static void fs_init_counts(void) {
     zeros = 0; long st = 0;
-    noM1 = 1;
-    for (int k = 0; k < K; k++) {
+    int levA = FAM == 0 ? 1 : 2, levB = FAM == 0 ? NLEV - 1 : NLEV - 2;
+    noM1 = 1; noM2 = FAM == 1;
+    for (int k = 0; k < nfs; k++) {
+        int j = fsIdx[k];
         cA[k] = calloc(N, sizeof(uint16_t)); cB[k] = calloc(N, sizeof(uint16_t));
-        bfs(VP(F[k], 0), 7, NULL);
-        for (int x = 0; x < N; x++) if (hdp[k][x] == 6) { if (dist[VP(x, 1)] <= 6) { cA[k][x] = 1; st++; } else zeros++; }
-        bfs(VL(FLn[k], 0), 7, NULL);
-        for (int t = 0; t < N; t++) if (hdl[k][N + t] == 6) { if (dist[VL(t, NLEV - 1)] <= 6) { cB[k][t] = 1; st++; } else zeros++; }
+        bfs(VP(F[j], 0), 7, NULL);
+        for (int x = 0; x < N; x++) if (HP(k)[x] == 6) { if (dist[VP(x, levA)] <= 6) { cA[k][x] = 1; st++; } else zeros++; }
+        bfs(VL(FLn[j], 0), 7, NULL);
+        for (int t = 0; t < N; t++) if (HL(k)[N + t] == 6) { if (dist[VL(t, levB)] <= 6) { cB[k][t] = 1; st++; } else zeros++; }
     }
-    noM1 = 0;
+    noM1 = noM2 = 0;
     fprintf(stderr, "static coverage: %ld covered, %ld not\n", st, zeros);
     for (int u = 0; u < N; u++) pointC(u, +1);
     for (int L = 0; L < N; L++) lineC(L, +1);
@@ -518,7 +564,7 @@ static long fast_search(double maxsec, double T0) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
     double t0 = now(); long it = 0, best = zeros, acc = 0;
     int zcap = 20000; long *zl = malloc(sizeof(long) * zcap); int nz = 0;
-    while (zeros > 0) {
+    while (zeros > 0 && nfs > 0) {
         it++;
         double el = now() - t0;
         if ((it & 1023) == 0) {
@@ -530,7 +576,7 @@ static long fast_search(double maxsec, double T0) {
         if (zeros <= zcap) {
             if (nz == 0 || (it & 4095) == 0) {
                 nz = 0;
-                for (int kk = 0; kk < K; kk++) for (int a = 0; a < nopp; a++) {
+                for (int kk = 0; kk < nfs; kk++) for (int a = 0; a < nopp; a++) {
                     if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
@@ -540,41 +586,116 @@ static long fast_search(double maxsec, double T0) {
             side = r >= N; tgt = side ? r - N : r;
             if ((side == 0 ? cA[k][tgt] : cB[k][tgt]) != 0) continue;
         } else {
-            k = rndi(K); side = rndi(2);
+            k = rndi(nfs); side = rndi(2);
             int *lst = side == 0 ? oppA[k] : oppB[k]; uint16_t *cc = side == 0 ? cA[k] : cB[k];
             for (int tr = 0; tr < 64; tr++) { int v = lst[rndi(nopp)]; if (cc[v] == 0) { tgt = v; break; } }
             if (tgt < 0) continue;
         }
         int bu = -1, bw = -1; long bd = 1L << 60;
+        int kmax = FAM == 0 ? 16 : 12;   /* FAM 1 counts only A1/B1 routes */
         for (int cand = 0; cand < BESTK; cand++) {
-            int u = -1, w = -1, kind = rndi(16);
+            int u = -1, w = -1, kind = rndi(kmax);
             if (side == 0) {   /* make some route reach the point tgt */
                 int x = tgt;
-                if (kind < 10) { if (!nn4p[k]) continue; u = n4p[k][rndi(nn4p[k])]; w = M1inv[PL[x * Q1 + rndi(Q1)]]; }
-                else if (kind < 12) { if (!nn2p[k]) continue; u = n2p[k][rndi(nn2p[k])]; int L1 = PL[x * Q1 + rndi(Q1)]; int y = LP[L1 * Q1 + rndi(Q1)]; w = M1inv[PL[y * Q1 + rndi(Q1)]]; }
-                else if (kind < 15) { if (!ne4A[k]) continue; u = x; w = M1inv[e4A[k][rndi(ne4A[k])]]; }
-                else { if (!ne2A[k]) continue; int L1 = PL[x * Q1 + rndi(Q1)]; u = LP[L1 * Q1 + rndi(Q1)]; w = M1inv[e2A[k][rndi(ne2A[k])]]; }
+                if (kind < 10) { if (!nn4p[k]) continue; u = n4p[k][rndi(nn4p[k])]; w = MAinv[PL[x * Q1 + rndi(Q1)]]; }
+                else if (kind < 12) { if (!nn2p[k]) continue; u = n2p[k][rndi(nn2p[k])]; int L1 = PL[x * Q1 + rndi(Q1)]; int y = LP[L1 * Q1 + rndi(Q1)]; w = MAinv[PL[y * Q1 + rndi(Q1)]]; }
+                else if (kind < 15) { if (!ne4A[k]) continue; u = x; w = MAinv[e4A[k][rndi(ne4A[k])]]; }
+                else { if (!ne2A[k]) continue; int L1 = PL[x * Q1 + rndi(Q1)]; u = LP[L1 * Q1 + rndi(Q1)]; w = MAinv[e2A[k][rndi(ne2A[k])]]; }
             } else {           /* make some route reach the line tgt */
                 int t = tgt;
-                if (kind < 10) { if (!nn4l[k]) continue; u = LP[t * Q1 + rndi(Q1)]; w = M1inv[n4l[k][rndi(nn4l[k])]]; }
-                else if (kind < 12) { if (!nn2l[k]) continue; int y1 = LP[t * Q1 + rndi(Q1)]; int L1 = PL[y1 * Q1 + rndi(Q1)]; u = LP[L1 * Q1 + rndi(Q1)]; w = M1inv[n2l[k][rndi(nn2l[k])]]; }
-                else if (kind < 15) { if (!ne4B[k]) continue; u = e4B[k][rndi(ne4B[k])]; w = M1inv[t]; }
-                else { if (!ne2B[k]) continue; u = e2B[k][rndi(ne2B[k])]; int y1 = LP[t * Q1 + rndi(Q1)]; w = M1inv[PL[y1 * Q1 + rndi(Q1)]]; }
+                if (kind < 10) { if (!nn4l[k]) continue; u = LP[t * Q1 + rndi(Q1)]; w = MAinv[n4l[k][rndi(nn4l[k])]]; }
+                else if (kind < 12) { if (!nn2l[k]) continue; int y1 = LP[t * Q1 + rndi(Q1)]; int L1 = PL[y1 * Q1 + rndi(Q1)]; u = LP[L1 * Q1 + rndi(Q1)]; w = MAinv[n2l[k][rndi(nn2l[k])]]; }
+                else if (kind < 15) { if (!ne4B[k]) continue; u = e4B[k][rndi(ne4B[k])]; w = MAinv[t]; }
+                else { if (!ne2B[k]) continue; u = e2B[k][rndi(ne2B[k])]; int y1 = LP[t * Q1 + rndi(Q1)]; w = MAinv[PL[y1 * Q1 + rndi(Q1)]]; }
             }
-            /* the move gives u the line currently held by w (A1/B2 kinds: u is the anchor point; else w's line is the anchor) */
-            if (u < 0 || w < 0 || u == w || isF[u] || isF[w]) continue;
+            /* the move gives u the line currently held by w */
+            if (u < 0 || w < 0 || u == w || isFA[u] || isFA[w]) continue;
             long before = zeros;
-            swapM1(u, w);
+            swapMA(u, w);
             long d = zeros - before;
-            swapM1(u, w);
+            swapMA(u, w);
             if (d < bd) { bd = d; bu = u; bw = w; }
         }
         if (bu < 0) continue;
-        if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) { swapM1(bu, bw); acc++; }
+        if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) { swapMA(bu, bw); acc++; }
         if (zeros < best) best = zeros;
     }
-    fprintf(stderr, "fast search done: it %ld acc %ld proxy %ld (%.1fs)\n", it, acc, zeros, now() - t0);
+    free(zl);
+    fprintf(stderr, "fast search (family %d) done: it %ld acc %ld proxy %ld (%.1fs)\n", FAM, it, acc, zeros, now() - t0);
     return zeros;
+}
+
+/* signature matching for the current family: point u with sigma(u) = {k : u in S'(p_k)} gets a line m with
+   tau(m) = sigma(u) where possible (then MA(S'(p_k)) = S(l_k) except at mismatched classes), else the most similar */
+static int sig_init(void) {
+    if (nfs > 128) { fprintf(stderr, "signature init needs <= 128 pairs per family\n"); return 1; }
+    uint64_t (*sp)[2] = calloc(N, sizeof *sp), (*sl)[2] = calloc(N, sizeof *sl);
+    for (int k = 0; k < nfs; k++) for (int v = 0; v < N; v++) {
+        if (HP(k)[v] == 4 && HL(k)[v] == 5) sp[v][k / 64] |= 1ULL << (k % 64);
+        if (HL(k)[N + v] == 4 && HP(k)[N + v] == 5) sl[v][k / 64] |= 1ULL << (k % 64);
+    }
+    int *P = malloc(sizeof(int) * N), *Lr = malloc(sizeof(int) * N), np = 0, nl = 0;
+    for (int v = 0; v < N; v++) { if (!isFA[v]) P[np++] = v; if (!isFLA[v]) Lr[nl++] = v; }
+    for (int i = np - 1; i > 0; i--) { int rr = rndi(i + 1), t = P[i]; P[i] = P[rr]; P[rr] = t; }
+    for (int i = nl - 1; i > 0; i--) { int rr = rndi(i + 1), t = Lr[i]; Lr[i] = Lr[rr]; Lr[rr] = t; }
+    cmpS = sp; qsort(P, np, sizeof(int), cmpf);
+    cmpS = sl; qsort(Lr, nl, sizeof(int), cmpf);
+    int *newM = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) newM[v] = -1;
+    for (int v = 0; v < N; v++) if (isFA[v]) newM[v] = MA[v];
+    int *lp = malloc(sizeof(int) * N), *ll = malloc(sizeof(int) * N), nlp = 0, nll = 0;
+    int i = 0, k = 0; long exact = 0;
+    while (i < np || k < nl) {
+        const uint64_t *s;
+        if (i < np && k < nl) { const uint64_t *x = sp[P[i]], *y = sl[Lr[k]];
+            s = (x[1] < y[1] || (x[1] == y[1] && x[0] <= y[0])) ? x : y; }
+        else s = i < np ? sp[P[i]] : sl[Lr[k]];
+        uint64_t s0 = s[0], s1 = s[1];
+        int i0 = i, k0 = k;
+        while (i < np && sp[P[i]][0] == s0 && sp[P[i]][1] == s1) i++;
+        while (k < nl && sl[Lr[k]][0] == s0 && sl[Lr[k]][1] == s1) k++;
+        int a = i - i0, b = k - k0, mn = a < b ? a : b;
+        for (int t = 0; t < mn; t++) { newM[P[i0 + t]] = Lr[k0 + t]; if (s0 | s1) exact++; }
+        for (int t = mn; t < a; t++) lp[nlp++] = P[i0 + t];
+        for (int t = mn; t < b; t++) ll[nll++] = Lr[k0 + t];
+    }
+    /* leftovers: points by decreasing |sigma| take the leftover line with the smallest |sigma xor tau| among the
+       lines sharing a pair with them (per-pair buckets, lazily pruned), else any leftover line */
+    long sim = 0;
+    {
+        uint8_t *usedl = calloc(N, 1);
+        int *bcnt = calloc(nfs + 1, sizeof(int)), **bk = malloc(sizeof(int *) * (nfs + 1)), *bpos = calloc(nfs + 1, sizeof(int));
+        for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < nfs; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bcnt[j]++; }
+        for (int j = 0; j < nfs; j++) { bk[j] = malloc(sizeof(int) * (bcnt[j] + 1)); bcnt[j] = 0; }
+        for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < nfs; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bk[j][bcnt[j]++] = m; }
+        for (int j = 0; j < nfs; j++) for (int t = bcnt[j] - 1; t > 0; t--) { int rr = rndi(t + 1), tt = bk[j][t]; bk[j][t] = bk[j][rr]; bk[j][rr] = tt; }
+        int *ord = malloc(sizeof(int) * (nlp + 1)), no = 0;
+        for (int c = 2 * 64; c >= 0; c--) for (int t = 0; t < nlp; t++) { int u = lp[t]; if (__builtin_popcountll(sp[u][0]) + __builtin_popcountll(sp[u][1]) == c) ord[no++] = u; }
+        int ncand = getenv("SIGCAND") ? atoi(getenv("SIGCAND")) : 400, anyp = 0;
+        for (int t = 0; t < no; t++) {
+            int u = ord[t], best = -1, bs = 1 << 30, seen = 0;
+            for (int j = 0; j < nfs && seen < ncand; j++) {
+                if (!((sp[u][j / 64] >> (j % 64)) & 1)) continue;
+                int *L = bk[j];
+                while (bpos[j] < bcnt[j] && usedl[L[bpos[j]]]) bpos[j]++;
+                for (int i2 = bpos[j]; i2 < bcnt[j] && seen < ncand; i2++) { int m = L[i2]; if (usedl[m]) continue; seen++;
+                    int sc = __builtin_popcountll(sp[u][0] ^ sl[m][0]) + __builtin_popcountll(sp[u][1] ^ sl[m][1]);
+                    if (sc < bs) { bs = sc; best = m; if (sc == 0) break; } }
+            }
+            if (best < 0) {
+                while (anyp < nll && usedl[ll[anyp]]) anyp++;
+                best = ll[anyp]; bs = __builtin_popcountll(sp[u][0] ^ sl[best][0]) + __builtin_popcountll(sp[u][1] ^ sl[best][1]);
+            }
+            usedl[best] = 1; newM[u] = best; sim += bs;
+        }
+        for (int j = 0; j < nfs; j++) free(bk[j]);
+        free(bk); free(bcnt); free(bpos); free(ord); free(usedl);
+    }
+    for (int v = 0; v < N; v++) MA[v] = newM[v];
+    for (int v = 0; v < N; v++) MAinv[MA[v]] = v;
+    for (int v = 0; v < N; v++) if (MA[v] < 0 || MAinv[MA[v]] != v) { fprintf(stderr, "signature init: not a bijection\n"); return 1; }
+    fprintf(stderr, "signature init (family %d): %ld exact matches in nonempty classes, %d leftover points (sum of |sigma xor tau| %ld)\n", FAM, exact, nlp, sim);
+    free(sp); free(sl); free(P); free(Lr); free(newM); free(lp); free(ll);
+    return 0;
 }
 
 int main(int argc, char **argv) {
@@ -644,7 +765,10 @@ int main(int argc, char **argv) {
             hbfs(p, 0, tmp); for (int x = 0; x < N; x++) if (tmp[x] < mind) ok[x] = 0;
         }
     }
-    for (int j = 0; j < K; j++) m1set(F[j], fl[j]);
+    /* pair types: the last K2 pairs are freed on M2 (their own family, independent covers) */
+    int K2 = getenv("K2") ? atoi(getenv("K2")) : 0; if (K2 > K) K2 = K;
+    TY = calloc(K + 1, sizeof(int)); for (int j = K - K2; j < K; j++) TY[j] = 1;
+    for (int j = 0; j < K; j++) { if (TY[j] == 0) m1set(F[j], fl[j]); else m2set(F[j], fl[j]); }
     set_freed_from_F();
     {   /* extras: XL line-side vertices adjacent to every point-side hub (star: the freed lines meet every line within 4),
            XP point-side vertices adjacent to every line-side hub (line group: the freed points meet every point within 4) */
@@ -662,11 +786,12 @@ int main(int argc, char **argv) {
       if (md > q + 3) { fprintf(stderr, "hub or extra degree %d > %d\n", md, q + 3); return 1; } }
     hdp = malloc(sizeof(uint8_t *) * K); hdl = malloc(sizeof(uint8_t *) * K);
     for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(FLn[j], 1, hdl[j]); }
-    if (alg & 1) {   /* algebraic cover: M1 maps S'(p) onto S(l) */
+    if (alg & 1) {   /* algebraic cover, pair by pair: M1 maps S'(p) onto S(l) (pairs freed on M1 only) */
         uint8_t *lockp = calloc(N, 1), *lockl = calloc(N, 1), *inS = calloc(N, 1), *used = calloc(N, 1);
-        for (int j = 0; j < K; j++) { lockp[F[j]] = 1; lockl[FLn[j]] = 1; }
+        for (int j = 0; j < K; j++) if (TY[j] == 0) { lockp[F[j]] = 1; lockl[FLn[j]] = 1; }
         int *Sp = malloc(sizeof(int) * N), *Sl = malloc(sizeof(int) * N); long conflicts = 0;
         for (int j = 0; j < K; j++) {
+            if (TY[j]) continue;
             int ns = 0, nl = 0; memset(inS, 0, N); memset(used, 0, N);
             for (int l = 0; l < N; l++) if (hdl[j][N + l] == 4 && hdp[j][N + l] == 5) { inS[l] = 1; Sl[nl++] = l; }
             for (int u = 0; u < N; u++) if (hdp[j][u] == 4 && hdl[j][u] == 5) Sp[ns++] = u;
@@ -681,92 +806,29 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
     }
-    if (alg & 4) {   /* signature matching: point u with sigma(u) = {j : u in S'(p_j)} gets a line m with tau(m) = sigma(u)
-                        where possible (then M1(S'(p_j)) = S(l_j) holds except at mismatched classes), else the most similar */
-        int W2 = (K + 63) / 64; if (W2 > 2) { fprintf(stderr, "signature init needs K <= 128\n"); return 1; }
-        uint64_t (*sp)[2] = calloc(N, sizeof *sp), (*sl)[2] = calloc(N, sizeof *sl);
-        for (int j = 0; j < K; j++) for (int v = 0; v < N; v++) {
-            if (hdp[j][v] == 4 && hdl[j][v] == 5) sp[v][j / 64] |= 1ULL << (j % 64);
-            if (hdl[j][N + v] == 4 && hdp[j][N + v] == 5) sl[v][j / 64] |= 1ULL << (j % 64);
-        }
-        /* sort non-freed points and lines by signature (random tie order) */
-        int *P = malloc(sizeof(int) * N), *Lr = malloc(sizeof(int) * N), np = 0, nl = 0;
-        for (int v = 0; v < N; v++) { if (!isF[v]) P[np++] = v; if (!isFL[v]) Lr[nl++] = v; }
-        for (int i = np - 1; i > 0; i--) { int rr = rndi(i + 1), t = P[i]; P[i] = P[rr]; P[rr] = t; }
-        for (int i = nl - 1; i > 0; i--) { int rr = rndi(i + 1), t = Lr[i]; Lr[i] = Lr[rr]; Lr[rr] = t; }
-        cmpS = sp; qsort(P, np, sizeof(int), cmpf);
-        cmpS = sl; qsort(Lr, nl, sizeof(int), cmpf);
-        int *newM = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) newM[v] = -1;
-        for (int j = 0; j < K; j++) newM[F[j]] = FLn[j];
-        int *lp = malloc(sizeof(int) * N), *ll = malloc(sizeof(int) * N), nlp = 0, nll = 0;
-        int i = 0, k = 0; long exact = 0;
-        while (i < np || k < nl) {
-            const uint64_t *s;
-            if (i < np && k < nl) { const uint64_t *x = sp[P[i]], *y = sl[Lr[k]];
-                s = (x[1] < y[1] || (x[1] == y[1] && x[0] <= y[0])) ? x : y; }
-            else s = i < np ? sp[P[i]] : sl[Lr[k]];
-            uint64_t s0 = s[0], s1 = s[1];
-            int i0 = i, k0 = k;
-            while (i < np && sp[P[i]][0] == s0 && sp[P[i]][1] == s1) i++;
-            while (k < nl && sl[Lr[k]][0] == s0 && sl[Lr[k]][1] == s1) k++;
-            int a = i - i0, b = k - k0, mn = a < b ? a : b;
-            for (int t = 0; t < mn; t++) { newM[P[i0 + t]] = Lr[k0 + t]; if (s0 | s1) exact++; }
-            for (int t = mn; t < a; t++) lp[nlp++] = P[i0 + t];
-            for (int t = mn; t < b; t++) ll[nll++] = Lr[k0 + t];
-        }
-        /* leftovers: points by decreasing |sigma| take the leftover line with the smallest |sigma xor tau| among the
-           lines sharing a pair with them (per-pair buckets, lazily pruned), else any leftover line */
-        long sim = 0;
-        {
-            uint8_t *usedl = calloc(N, 1);
-            int *bcnt = calloc(K + 1, sizeof(int)), **bk = malloc(sizeof(int *) * (K + 1)), *bpos = calloc(K + 1, sizeof(int));
-            for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < K; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bcnt[j]++; }
-            for (int j = 0; j < K; j++) { bk[j] = malloc(sizeof(int) * (bcnt[j] + 1)); bcnt[j] = 0; }
-            for (int t = 0; t < nll; t++) { int m = ll[t]; for (int j = 0; j < K; j++) if ((sl[m][j / 64] >> (j % 64)) & 1) bk[j][bcnt[j]++] = m; }
-            for (int j = 0; j < K; j++) for (int t = bcnt[j] - 1; t > 0; t--) { int rr = rndi(t + 1), tt = bk[j][t]; bk[j][t] = bk[j][rr]; bk[j][rr] = tt; }
-            /* order leftover points by decreasing |sigma| */
-            int *ord = malloc(sizeof(int) * (nlp + 1)), no = 0;
-            for (int c = 2 * 64; c >= 0; c--) for (int t = 0; t < nlp; t++) { int u = lp[t]; if (__builtin_popcountll(sp[u][0]) + __builtin_popcountll(sp[u][1]) == c) ord[no++] = u; }
-            int ncand = getenv("SIGCAND") ? atoi(getenv("SIGCAND")) : 400, anyp = 0;
-            for (int t = 0; t < no; t++) {
-                int u = ord[t], best = -1, bs = 1 << 30, seen = 0;
-                for (int j = 0; j < K && seen < ncand; j++) {
-                    if (!((sp[u][j / 64] >> (j % 64)) & 1)) continue;
-                    int *L = bk[j];
-                    while (bpos[j] < bcnt[j] && usedl[L[bpos[j]]]) bpos[j]++;   /* prune the used prefix */
-                    for (int i2 = bpos[j]; i2 < bcnt[j] && seen < ncand; i2++) { int m = L[i2]; if (usedl[m]) continue; seen++;
-                        int sc = __builtin_popcountll(sp[u][0] ^ sl[m][0]) + __builtin_popcountll(sp[u][1] ^ sl[m][1]);
-                        if (sc < bs) { bs = sc; best = m; if (sc == 0) break; } }
-                }
-                if (best < 0) {   /* no leftover line shares a pair: take the first unused leftover line */
-                    while (anyp < nll && usedl[ll[anyp]]) anyp++;
-                    best = ll[anyp]; bs = __builtin_popcountll(sp[u][0] ^ sl[best][0]) + __builtin_popcountll(sp[u][1] ^ sl[best][1]);
-                }
-                usedl[best] = 1; newM[u] = best; sim += bs;
-            }
-            for (int j = 0; j < K; j++) free(bk[j]);
-            free(bk); free(bcnt); free(bpos); free(ord); free(usedl);
-        }
-        for (int v = 0; v < N; v++) { M1[v] = newM[v]; }
-        for (int v = 0; v < N; v++) M1inv[M1[v]] = v;
-        for (int v = 0; v < N; v++) if (M1inv[M1[v]] != v || M1[v] < 0) { fprintf(stderr, "signature init: not a bijection\n"); return 1; }
-        fprintf(stderr, "signature init: %ld exact matches in nonempty classes, %d leftover points (sum of |sigma xor tau| %ld)\n", exact, nlp, sim);
-        free(sp); free(sl); free(P); free(Lr); free(newM); free(lp); free(ll);
-    }
     double tstart = now();
-    if (alg & 2) {
-        fs_setup();
-        fs_init_counts();
-        fast_search(maxsec * fsfrac, T0);
+    {   /* family 1 (pairs freed on M2) first, then family 0 with M2 fixed */
+        double budget = maxsec * fsfrac;
+        for (int fam = 1; fam >= 0; fam--) {
+            set_family(fam); if (nfs == 0) continue;
+            if ((alg & 4) && sig_init()) return 1;
+            if (alg & 2) {
+                fs_setup(); fs_init_counts();
+                double share = fam == 1 ? budget * (double)nfs / K : budget - (now() - tstart);
+                fast_search(share, T0);
+                fs_free();
+            }
+        }
     }
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
-    fprintf(stderr, "q=%d N=%d K=%d n=%d BFS cost %d (%.1fs)\n", q, N, K, NV, cost, now() - tstart);
+    fprintf(stderr, "q=%d N=%d K=%d (%d on M2) n=%d BFS cost %d (%.1fs)\n", q, N, K, K2, NV, cost, now() - tstart);
     long it = 0, acc = 0;
     int *badlist = malloc(sizeof(int) * NV);
     while (cost > 0 && now() - tstart < maxsec) {   /* BFS-targeted polishing (slow; for the last few targets) */
         it++;
         int j; do { j = rndi(K); } while (per[j] == 0);
+        int *Mx = TY[j] ? M2 : M1, *Mxinv = TY[j] ? M2inv : M1inv, *isFx = TY[j] ? isF2 : isF;
         int side = rndi(2);
         int src = side == 0 ? VP(F[j], 0) : VL(FLn[j], 0), nbad = bfs(src, 7, NULL);
         if (nbad == 0) { side ^= 1; src = side == 0 ? VP(F[j], 0) : VL(FLn[j], 0); nbad = bfs(src, 7, NULL); }
@@ -777,26 +839,26 @@ int main(int argc, char **argv) {
         int tr = t % (2 * N), u = -1, w = -1;
         if (side == 0) { if (tr >= N) continue; int x = tr;
             for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdp[j][c] == 4) { u = c; break; } }
-            w = M1inv[PL[x * Q1 + rndi(Q1)]];
+            w = Mxinv[PL[x * Q1 + rndi(Q1)]];
         } else { if (tr < N) continue; int lt = tr - N;
             u = LP[lt * Q1 + rndi(Q1)];
-            for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 4) { w = M1inv[c]; break; } }
+            for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 4) { w = Mxinv[c]; break; } }
         }
-        if (u < 0 || w < 0 || u == w || isF[u] || isF[w]) continue;
-        int a = M1[u], b = M1[w];
-        M1[u] = b; M1[w] = a; M1inv[b] = u; M1inv[a] = w;
+        if (u < 0 || w < 0 || u == w || isFx[u] || isFx[w]) continue;
+        int a = Mx[u], b = Mx[w];
+        Mx[u] = b; Mx[w] = a; Mxinv[b] = u; Mxinv[a] = w;
         int a0, b0, cj = cost_of(j, &a0, &b0), c2 = -1;
         if (cj <= per[j]) c2 = total_cost(per2);
         if (c2 >= 0 && c2 <= cost) { cost = c2; memcpy(per, per2, sizeof(int) * K); acc++; }
-        else { M1[u] = a; M1[w] = b; M1inv[a] = u; M1inv[b] = w; }
+        else { Mx[u] = a; Mx[w] = b; Mxinv[a] = u; Mxinv[b] = w; }
         if (it % 20 == 0) fprintf(stderr, "polish it %ld acc %ld cost %d (%.0fs)\n", it, acc, cost, now() - tstart);
     }
     if (cost == 0) {
         int worst, bad = freed_check(&worst);
         int maxdeg = 0, nb[64]; for (int v = 0; v < NV; v++) { int c = nbrs(v, nb); if (c > maxdeg) maxdeg = c; }
-        printf("RESULT q=%d K=%d n=%d maxdeg=%d freed+hub worst ecc %d bad %d %s\n", q, K, NV, maxdeg, worst, bad,
+        printf("RESULT q=%d K=%d (%d on M2) n=%d maxdeg=%d freed+hub worst ecc %d bad %d %s\n", q, K, K2, NV, maxdeg, worst, bad,
                (bad == 0 && worst <= 7 && maxdeg <= q + 3) ? "VALID" : "INVALID");
         if (out && bad == 0 && worst <= 7) write_sol(out);
-    } else printf("RESULT q=%d K=%d unsolved cost %d\n", q, K, cost);
+    } else printf("RESULT q=%d K=%d (%d on M2) unsolved cost %d\n", q, K, K2, cost);
     return 0;
 }
