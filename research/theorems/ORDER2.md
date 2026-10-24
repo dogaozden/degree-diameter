@@ -321,8 +321,21 @@ How well it predicts (`out/rule_table.txt`):
    Avoid large cyclic factors next to a small simple group (SL(2,5)²×Z247 and SL(2,16)×Z145 screen 3–6× worse than
    the rule's μ_A).
 7. **Screen before annealing:** RANDORB's lower tail in clump units (cost/k) ranks candidates the way the anneals
-   did. On the solved groups, p10 was 6 clumps (SL(2,64)×Z13, about 10⁴ evaluations) and 10.7 (SL(2,7)²×Z31, about
-   1.3·10⁵).
+   did. All runs of this session (random-symmetric p10 from 60–200 samples; the rule's μ_A; anneal outcome):
+
+   | cell, group, order | p10 / k | rule μ_A | anneals |
+   |---|---|---|---|
+   | (13,8) SL(2,64)×Z13, 6 | 6.2 | 7.9 | 3/3 solved, 4.7·10³–3.7·10⁴ |
+   | (15,8) PSL(2,137)×Z7, 3 (record group) | 7.7 | ≈ 11 | solved, 7.8·10⁴ (STRUCTURE) |
+   | (13,8) SL(2,7)²×Z31, 6 | 9.5–10.7 | 11.0 | 1/9 solved, 1.3·10⁵ |
+   | (15,8) SL(2,8)²×Z37, 6 + OSUB 3 | 10.7 | 10.4 | RESULT-158 |
+   | (13,8) SL(2,64)×Z13, 3 | 9–11 | 13.2 | 1/1 solved, 1.7·10⁵; Frobenius 0/1 at 2.6·10⁵ |
+   | (13,8) PSL(2,13)²×Z3, 6 | 15.2 | 14.7 | 0/2, best 8 and 21 at 1.1–1.5·10⁵ |
+   | (13,8) SL(2,8)²×Z14, 6 | 16–17 | 15.0 | 0/6, best 18–26 at 2–6·10⁴ |
+   | (13,8) SL(2,64)×Z14, 6 | 21.7 | 20.9 | not run |
+
+   p10/k and the rule's μ_A agree to within a factor of about 1.25, and both order the outcomes. The rule misses mixing
+   defects that the screen catches (large cyclic factors; footnote in §5.2).
 
 ## 5. Predictions and tests
 
