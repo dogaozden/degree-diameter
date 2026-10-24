@@ -124,3 +124,9 @@ Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generat
   seeds 3, 4 for 900 s each: 6 and 6 (the squad's 3 was the best of five runs).
 - r4-c6 (6,9): PSL(2,11) × Z97 18 (two seeds, same plateau), SL(2,8) × Z127 46, PSL(2,7) × Z379 138. Nothing.
 - r4-c8 wildcard: (9,8) SL(2,13) × Z124 (N 270,816, +0.24 %) 6, 10, 9; PSL(2,13) × Z248 13; (7,8) SL(2,7) × Z143 34.
+- **c1 (8,9): PSL(2,19) × Z193, N = 660,060, ORBIT="3 2 2", solved in 310,657 evaluations (319 s): 1,320,120 vertices**
+  (ours 1,316,016, table 1,091,232). build_haar2.py and haarcheck_psl VALID. The three smaller rungs before it: 9, 26,
+  176 uncovered.
+- c2 (8,10): SL(2,67) × Z13 (N 3,909,048) ended at 1 (a single α-fixed element). Opus ran extra seeds: **seed 12 solved
+  it in 1,601 evaluations (10.8 s): 7,818,096 vertices** (ours 7,802,160, table 6,927,210). haarcheck_sl, haarcheck2 and
+  check_haar_indep.py VALID. Credit: squad lead (r4-c2's group and near miss), Opus's seed.
