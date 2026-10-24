@@ -3937,3 +3937,8 @@ screen	5300	meta 530 10 319 1	min=2188	p10=2649	median=3214	mu=85.9	score=68.21
 screen	5300	meta 530 10 529 1	min=3981	p10=4060	median=4207	mu=85.9	score=96.18
 run	5109	meta 131 39 39 1	seed=1	best=4	check=-	600s
 run	5109	meta 131 39 39 1	seed=2	best=4	check=-	600s
+run	5109	meta 393 13 52 1	seed=1	best=6	check=-	600s
+run	5109	meta 393 13 52 1	seed=2	best=4	check=-	600s
+run	5115	meta 341 15 9 1	seed=1	best=5	check=-	600s
+run	5115	meta 341 15 9 1	seed=2	best=5	check=-	600s
+run	5115	meta 341 15 14 1	seed=1	best=5	check=-	600s
