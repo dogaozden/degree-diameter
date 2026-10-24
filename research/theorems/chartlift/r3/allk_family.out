@@ -1,0 +1,16 @@
+k=3: 24 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 680
+k=4: 108 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 3036
+k=5: 320 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 8976
+k=6: 750 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 21020
+k=7: 1512 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 42360
+k=8: 2744 nonbacktracking patterns per side, all relabel to witnessed k=4 patterns: True; q0(k) = 76860
+K_{3,3} exact (m = 3): True
+K_{4,4} exact (m = 4): True
+K_{5,5} exact (m = 5): True
+K_{6,6} exact (m = 6): True
+K_{7,7} exact (m = 7): True
+K_{8,8} exact (m = 8): True
+runs/exact3_z6.volt: r=2 k=3 |G|=6 m=12 -> given voltages: cost=0 (A 0, B 0) parallel_ok=1
+runs/exact54.volt: r=3 k=4 |G|=18 m=54 -> given voltages: cost=0 (A 0, B 0) parallel_ok=1
+runs/exact5_z29.volt: r=4 k=5 |G|=29 m=116 -> given voltages: cost=0 (A 0, B 0) parallel_ok=1
+runs/exact6_z40.volt: r=5 k=6 |G|=40 m=200 -> given voltages: cost=0 (A 0, B 0) parallel_ok=1

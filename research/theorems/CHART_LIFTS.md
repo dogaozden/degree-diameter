@@ -201,8 +201,29 @@ base K_{k−1,k−1} + doubled perfect matching gives exact controllers for ever
 `charts/nbonly_k*.flags`, `runs/exact*_z*.volt`): m₃ = 12 (Z₆), m₄ = 54 (Z₁₈), m₅ = 116 (Z₂₉) and m₆ ≥ 200 (Z₄₀). For
 comparison, m_k ≤ k(k−1)³ = 24, 108, 320, 750, since there are that many nonbacktracking 4-walks from a vertex.
 Universal charts need k((k−1)q+1) ≤ (q+1)(q²+1) when the b's are in general position, so for k = 5, 6 the family starts
-at Δ = 20, 30, outside the table. The Schwartz–Zippel step for k ≠ 4 was not carried out; it would need its own
-witnesses and small-q charts.
+at Δ = 20, 30, outside the table. The Schwartz–Zippel step for k ≠ 4 is Theorem 14 (round 3); small-q charts for
+k ≠ 4 were not searched.
+
+**Theorem 14 (every k, large q; round 3).** For every k ≥ 3 and every prime power q > q₀(k) = 28k(k−1)³ + 4(k−1)
+there is a universal k-letter chart over F_q⁴. Hence n_b(kq, 5) ≥ 2 m q⁴ for every exact k-regular bipartite
+controller with m vertices per side, for all such q. With the controllers we have:
+
+> n_b(3q, 5) ≥ 24 q⁴ (q > 680), n_b(5q, 5) ≥ 232 q⁴ (q > 8,976), n_b(6q, 5) ≥ 400 q⁴ (q > 21,020),
+> and n_b(kq, 5) ≥ 2k q⁴ for every k ≥ 3 and q > q₀(k) (the controller K_{k,k}).
+
+Proof. Fix A₀ = I. For a nonbacktracking pattern let P be its determinant polynomial (Theorem 3, part 2), of degree
+≤ 16 (side A) or ≤ 12 (side B). A pattern uses at most 4 distinct letters; relabel them onto 0..3 keeping their order.
+The relabelled pattern is a nonbacktracking 4-letter pattern, and P becomes its 4-letter polynomial after renaming
+variables, and after setting A_l = I when letter 0 is not used (a specialisation, so it can only create zeros).
+`integer_witness.py` showed that every 4-letter pattern polynomial is nonzero modulo every prime, so the same holds
+for every k-letter pattern polynomial. The product F of all of them and of det A₁, …, det A_{k−1} is then nonzero modulo
+every prime, and its degree is at most 2k(k−1)³·14 + 4(k−1) = q₀(k). By Schwartz–Zippel F has a non-root over F_q when
+q > q₀(k), which is a universal chart. K_{k,k} is exact for every k ≥ 3: from a_i, the walk a_i b_x a_y b_z a_j with
+y ∉ {i, j} and z ≠ x reaches every a_j ≠ a_i, and a 4-cycle returns to a_i. ∎
+`r3/allk_family.py` → `r3/allk_family.out` checks the relabelling for k ≤ 8 (every k-letter pattern lands on one of
+the 108 witnessed patterns per side), K_{k,k} for k = 3..8, and the exact controllers m = 12, 54, 116, 200 (cost 0).
+None of these cells is in the table except through k = 4 (Theorem 3): the k = 3 family gives 24·3⁴ = 1,944 at (9,5),
+below the table, and k = 5, 6 start at Δ = 20, 30.
 
 **Proposition 5 (ceiling).** A chart lift for (Δ, D) = (kq, D) has fibre dimension D − 1, and its controller is
 k-regular with diameter ≤ D. So its order is at most q^(D−1) · Moore_b(k, D), and realistically
