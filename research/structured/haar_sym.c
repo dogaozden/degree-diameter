@@ -786,6 +786,7 @@ static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of o
 static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0;   /* AFROB = j: entries x -> x^(p^j) */
 static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
+static int *FIXG; static long long NFIXG;           /* those eligible as fixed generators (FIXMIN) */
 static int alpha(int x) {
     int xq = x / ncyc, z = x % ncyc, yq;
     if (Q->type == G_HEIS && (AHA || AHB)) {
@@ -939,7 +940,12 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     { int t[6]; for (int u = 0; u < 6; u++) t[u] = rnd() % N;   /* alpha must be a homomorphism of order dividing k */
       for (int u = 0; u < 5; u++) if (alpha(gmul(t[u], t[u + 1])) != gmul(alpha(t[u]), alpha(t[u + 1]))) { fprintf(stderr, "alpha is not an automorphism\n"); return 2; }
       for (int u = 0; u < 6; u++) { int y = t[u]; for (int i = 0; i < OK_; i++) y = alpha(y); if (y != t[u]) { fprintf(stderr, "alpha^k != 1\n"); return 2; } } }
-    scan_fix();
+    scan_fix(); FIXG = FIXL; NFIXG = NFIX;
+    if (getenv("FIXMIN")) {   /* fixed generators of order >= FIXMIN only (no involutions or order 3: BEYOND_RANDOM 4.5.3) */
+        int mo = atoi(getenv("FIXMIN")); FIXG = malloc(sizeof(int) * (NFIX + 1)); NFIXG = 0;
+        for (long long i = 0; i < NFIX; i++) { int y = FIXL[i], o = 1; while (y != ident) { y = gmul(y, FIXL[i]); o++; } if (o >= mo) FIXG[NFIXG++] = FIXL[i]; }
+        fprintf(stderr, "FIXMIN=%d: %lld of %lld fixed elements eligible as generators\n", mo, NFIXG, NFIX);
+    }
     double W = Wwords(d, D), lam = W / N, mu = N * exp(-lam);
     double nb = D % 2 ? 2 : 1;   /* odd D: two conditions, each with half the targets in inverse pairs; mu is the total */
     fprintf(stderr, "ORBIT k=%d m=%d f=%d: |Fix(alpha)| = %lld (+e); mu = %.2f, mu/k = %.2f, fixed-point misses ~ %.2f\n",
@@ -947,7 +953,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     int nth_ = nth; (void)nth_;
     /* initial S */
     if (OF) S[0] = ident;
-    for (int u = 1; u < OF; u++) { if (NFIX < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; }
+    for (int u = 1; u < OF; u++) { if (NFIXG < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
@@ -955,7 +961,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
-            for (int u = 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
+            for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
@@ -1000,7 +1006,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
                 AVOIDMASK = 0;
                 if (x < 0 || x == ident || !orbit_of(x, o) || !orbit_free(o, j)) random_orbit(j, o);
                 memcpy(cand[t], o, sizeof(int) * OK_);
-            } else { int x; do x = FIXL[rnd() % NFIX]; while (used(x, fs)); cand[t][0] = x; }
+            } else { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, fs)); cand[t][0] = x; }
         }
         long long bound = NOBOUND;
         #pragma omp parallel for schedule(dynamic, 1) if (nth > 1)
