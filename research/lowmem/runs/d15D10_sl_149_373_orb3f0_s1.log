@@ -1,0 +1,40 @@
+start 2026-10-24T19:23:08Z | ORBIT=3 5 0  | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt sl 149 373
+group sl 149 x Z_373, N=1233809400, rows 22200 of 55577 bits (869 words), memory 0.31 GB per thread, threads 1, setup 1.64s
+alpha: conj by mat(0,148,1,1), z -> 88 z on Z_373
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 149 (+e); mu = 18.17, mu/k = 6.06, fixed-point misses ~ 0.37
+start cost=9 (first eval 1.19s)
+t=37 steps=5 evals=41 cost=9 best=9 T=0.42
+t=73 steps=10 evals=81 cost=9 best=9 T=0.15
+t=108 steps=15 evals=121 cost=3 best=3 T=0.15
+t=143 steps=20 evals=161 cost=3 best=3 T=0.15
+t=177 steps=25 evals=201 cost=3 best=3 T=0.15
+t=211 steps=30 evals=241 cost=3 best=3 T=0.15
+t=245 steps=35 evals=281 cost=3 best=3 T=0.15
+t=279 steps=40 evals=321 cost=3 best=3 T=0.15
+t=315 steps=45 evals=361 cost=3 best=3 T=0.15
+t=353 steps=50 evals=401 cost=3 best=3 T=0.15
+t=393 steps=54 evals=433 cost=3 best=3 T=0.15
+t=426 steps=57 evals=457 cost=3 best=3 T=0.15
+t=459 steps=60 evals=481 cost=3 best=3 T=0.15
+t=504 steps=63 evals=505 cost=3 best=3 T=0.15
+t=537 steps=65 evals=521 cost=3 best=3 T=0.15
+t=581 steps=68 evals=545 cost=3 best=3 T=0.15
+t=612 steps=70 evals=561 cost=3 best=3 T=0.15
+t=647 steps=72 evals=577 cost=3 best=3 T=0.15
+t=689 steps=75 evals=601 cost=3 best=3 T=0.15
+t=722 steps=78 evals=625 cost=3 best=3 T=0.15
+t=754 steps=81 evals=649 cost=3 best=3 T=0.15
+t=785 steps=85 evals=681 cost=3 best=3 T=0.15
+t=823 steps=90 evals=721 cost=3 best=3 T=0.15
+t=854 steps=94 evals=753 cost=3 best=3 T=0.15
+RESULT d=15 D=10 group=sl 149 x Z_373 N=1233809400 best=0 evals=761 time=862.7 orbit k=3 m=5 f=0 fix=149
+recomputed cost of best S: 0
+full check from (e,A): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10
+full check from (e,B): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10
+full diameter check: OK
+full check from (e,A): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10
+full check from (e,B): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10
+full diameter check after normalising s_0 = e: OK
+wrote ../frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt
+exit 0 2026-10-24T19:37:40Z
+(note: Opus sent a stop at 19:38:18Z, but the run had already finished and written its solution at 19:37:40Z)
