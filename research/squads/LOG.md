@@ -173,3 +173,12 @@ Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s each).
 - Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s): 4, 3. (8,9) next rungs: PSL(2,17) × Z271 41 (bad group);
   **SL(2,19) × Z97, N = 663,480, seed 2 with ORBW=3 solved in 103,681 evaluations (138 s): 1,326,960 vertices**.
   build_haar2.py, haarcheck_sl, haarcheck2 VALID.
+
+### Round 6 outcomes
+- c5 (8,9): **record** (above). All other cards: floors across many seeds. c1 (8,8) SL(2,11) × Z91: 16 seeds, min 4.
+  c2 PGL(2,11) × Z91: 16 seeds, min 3. c3 (6,10) A5² × Z73: 12 seeds, ten of them exactly 4 (a floor); PSL(2,13) × Z241
+  6–9. c4 (9,10) PSL(2,41) × Z337: 3, 3, 6 (700 s seeds). c6 (7,10) SL(2,17) × Z229 min 3, SL(2,5) × SL(2,9) × Z13 min 4,
+  PSL(2,131) min 3. c7 (8,10) SL(2,27) × Z199 min **2**, SL(2,5) × SL(2,32) min 6, SL(2,8) × PSL(2,25) 9–16.
+  c8 (9,8) PGL(2,16) × Z67: 12 seeds, min 6.
+- Opus: (8,9) SL(2,16) × Z163 24, 15 (dropped); SL(2,8) × SL(2,11) (perfect group, but |Fix| 107) 6, 6. Now running
+  12 short seeds on (8,10) SL(2,27) × Z199.

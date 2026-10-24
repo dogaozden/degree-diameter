@@ -4,3 +4,7 @@ alpha: conj by mat(3,1,6,11) (index 435), z -> 15 z on Z_241
 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 24.62, mu/k = 8.21, fixed-point misses ~ 0.27
 start cost=2115
 t=30 steps=23424 evals=187393 cost=8 best=7 T=0.53
+t=60 steps=46209 evals=369673 cost=8 best=7 T=0.19
+t=90 steps=62955 evals=503641 cost=7 best=7 T=0.15
+t=120 steps=78668 evals=629345 cost=7 best=7 T=0.15
+RESULT d=6 D=10 group=psl 13 x Z_241 N=263172 best=7 evals=749897 time=150.0 orbit k=3 m=2 f=0 fix=5

@@ -13,3 +13,8 @@ prod_sl5_sl32 | ORBIT=3 2 2 | seed=45 | ORBW=0 | start=16:47:55 | rc=1 | best=6 
 GROUP prod_sl5_sl32 ORBIT=3 2 2 min_best=6 solved=0
 prod_sl8_psl25 | ORBIT=3 2 2 | seed=41 | ORBW=0 | start=16:50:26 | rc=1 | best=8 | 
 prod_sl8_psl25_w3 | ORBIT=3 2 2 | seed=42 | ORBW=3 | start=16:52:57 | rc=1 | best=6 | 
+prod_sl8_psl25 | ORBIT=3 2 2 | seed=43 | ORBW=0 | start=16:55:28 | rc=1 | best=7 | 
+prod_sl8_psl25_w3 | ORBIT=3 2 2 | seed=44 | ORBW=3 | start=16:57:59 | rc=1 | best=9 | 
+prod_sl8_psl25 | ORBIT=3 2 2 | seed=45 | ORBW=0 | start=17:00:30 | rc=1 | best=2 | 
+GROUP prod_sl8_psl25 ORBIT=3 2 2 min_best=2 solved=0
+end 17:03:01

@@ -1,0 +1,19 @@
+group psl 41 x Z_337, N=11606280, identity 276340, H order 41, rows 283080, threads 1, setup 0.63s
+wide rows: no cyclic subgroup of order >= 64 found (best 41); using haar_gen3's evaluation
+alpha: conj by mat(3,1,34,39) (index 4257), z -> 128 z on Z_337
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 20 (+e); mu = 21.13, mu/k = 7.04, fixed-point misses ~ 0.26
+start cost=40
+t=30 steps=80 evals=641 cost=9 best=9 T=0.53
+t=60 steps=167 evals=1337 cost=9 best=9 T=0.19
+t=90 steps=253 evals=2025 cost=9 best=9 T=0.15
+t=121 steps=335 evals=2681 cost=3 best=3 T=0.15
+t=151 steps=418 evals=3345 cost=3 best=3 T=0.15
+t=181 steps=501 evals=4009 cost=3 best=3 T=0.15
+t=211 steps=625 evals=5001 cost=3 best=3 T=0.15
+t=241 steps=744 evals=5953 cost=3 best=3 T=0.15
+t=271 steps=859 evals=6873 cost=3 best=3 T=0.54
+t=301 steps=981 evals=7849 cost=3 best=3 T=0.19
+t=331 steps=1097 evals=8777 cost=3 best=3 T=0.15
+t=361 steps=1220 evals=9761 cost=3 best=3 T=0.15
+t=391 steps=1349 evals=10793 cost=3 best=3 T=0.15
+t=421 steps=1486 evals=11889 cost=6 best=3 T=0.54
