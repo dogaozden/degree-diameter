@@ -1,0 +1,11 @@
+# (13,7) 1,063,730 = 3*|H(11)| + 2*397 (job cell-13-7, 2026-10-24 ~22:48-23:07 UTC).
+# R = research/d13D7/sets/R397_r2c6_coords.txt: 397 pairwise opposite points of H(11) (squad round 2 card c6, LNS from
+# the 320 set: e4 removed, 62 points at infinity added, then LNS); checked by tools/oppcheck (BFS) and a numpy B check.
+# Build (independent of hexgen.c, numpy only):
+#   python3 research/d13D7/build_d13D7.py research/d13D7/sets/R397_r2c6_coords.txt d13D7_R397.edges
+# All-pairs (research/d13D7/apsp_wide.c = apsp.c with 512-source batches; same checks; no symmetry used):
+n=1063730 edges=6914245 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1063730
+# Second rebuild path: research/frontier/sols/d13D7_hex11_R397_n1063730.sol (d7hex format, hexgen indexing);
+#   hexgen 11; d7hex edges hex/hex_q11.bin d13D7_hex11_R397_n1063730.sol out.edges
+# gives the same edge set after relabelling the builder's lines to hexgen's order (checked edge by edge).

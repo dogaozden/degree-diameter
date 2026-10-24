@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
             /* perturb: force in 1-2 random points (prefer low tightness), drop conflicts, refill */
             int k = 1 + (rnd() % 2);
             for (int t = 0; t < k; t++) {
-                int x; do { x = rnd() % N; } while (inR[x] || tight[x] > 2);
+                int x, lim = 2; long tr = 0; do { x = rnd() % N; if (++tr % 200000 == 0) lim++; } while (inR[x] || tight[x] > lim);   /* lim grows: no infinite loop when every outside point has tightness > 2 */
                 for (int i = m - 1; i >= 0; i--) if (B(R[i], x) == 0) del(R[i]);
                 add(x);
             }
