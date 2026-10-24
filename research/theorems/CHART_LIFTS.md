@@ -36,7 +36,7 @@ Round 3 found charts at (k, q) = (4, 3) and (5, 3) that cover both diagonals and
 (§3.1, Proposition 12). Then a controller only needs same-side distances ≤ 4 and a nonsingular nonbacktracking 4-walk
 for each distance-4 pair (Theorem 11). Girth-6 controllers become usable, and plain Haar graphs of metacyclic groups
 work at once: m jumps from 128 to 156 at (15,5) (then 168, below) and from 54 to 64 at (12,5), where Haar graphs then stop
-(Proposition 13) and small multi-orbit bases take over (m = 72, 75, then 80).
+(for 7 of the 24 chart classes, Proposition 13) and small multi-orbit bases take over (m = 72, 75, then 80).
 
 **How the (4,3) chart was found (Lemma 5).** All the chart conditions at D = 5 (singular patterns, pencils, diagonals)
 depend only on the points w_c and b_c and on the collineation that A_c induces from the lines through w_c to the lines
@@ -337,11 +337,13 @@ rank 3 (three collinear points); two tetrahedra need 72. (Coincident configurati
 `r3/k5q3_pd_star23.txt` from `chart_anneal3 MOVES=star`); the minima are not known. (6,2) and (7,2): 602 of 1,500 and
 1,314 of 3,024 (squad r2 c8, c7; one anneal each).
 
-**Proposition 13 (Haar controllers stop at m = 64 at (12,5); computer).** For each of the 7 classes of (4,3) charts in
-Proposition 12(c) and every group of order 65 to 81 that `r3/mkgroups.py` builds (88 groups: cyclic, Z_a × Z_b,
-dihedral, dicyclic, metacyclic), no Haar graph satisfies Theorem 11: an exhaustive scan of all connection sets (one
-element fixed to the identity; `r3/ctrl_exh.c`, the EXH mode written by squad card r2-c6; log `r3/exh_d12.log`) finds
-minimum cost 2. Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅), so for Haar controllers m = 64 is the end. A Haar graph of order
+**Proposition 13 (Haar controllers at (12,5); computer).** Up to relabelling the letters, the 348 labelled singular
+sets of Proposition 12(c) fall into 24 classes (`r3/flags43_orbit_reps.txt`); a Haar controller does not see the
+labelling, so these 24 are all the cases. For every group of order 65 to 81 that `r3/mkgroups.py` builds (88 groups:
+cyclic, Z_a × Z_b, dihedral, dicyclic, metacyclic) an exhaustive scan of all connection sets (one element fixed to
+the identity; `r3/ctrl_exh.c`, the EXH mode written by squad card r2-c6) finds no Haar graph satisfying Theorem 11 for
+7 of the classes (log `r3/exh_d12.log`, minimum cost 2); the other 17 classes are scanned in `r3/exh_d12_new.log`
+(see that log for the outcome; until it is complete this is only proved for the 7). Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅). A Haar graph of order
 82 to 121 would also be a 4-regular bipartite graph of diameter 5 on more than 162 vertices, a (4,5) record.
 Controllers with 3 or 4 vertex orbits do go further: m = 72 (Theorem 11 table).
 

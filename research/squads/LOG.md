@@ -70,8 +70,8 @@ past 126, star-move charts for (7,2), non-metacyclic groups).
 
 ## 2026-10-24, thm-chartlift round 3 session, squad r3-chartlift (23:05–00:00 UTC)
 
-Lead going in: (4,3) diagonal charts classified (16 singular, 348 labelled singular sets), Haar controllers proved to
-stop at m=64 for (12,5), (5,3) charts down to 92 singular (star-move annealer), the central-involution obstruction
+Lead going in: (4,3) diagonal charts classified (16 singular, 348 labelled singular sets), Haar controllers shown to stop at m=64 for (12,5) for 7 of the
+24 chart classes (the other 17 scanned later), (5,3) charts down to 92 singular (star-move annealer), the central-involution obstruction
 for Haar graphs. Cards (folders research/squads/r3-chartlift/c1..c8; brief COMMON.md):
 1. (12,5) 2+2 bases over |G| = 33-40 with the (4,3) chart classes.
 2. (12,5) 3+3 bases (incl. K3,3 + doubled matching) over |G| = 22-27.
