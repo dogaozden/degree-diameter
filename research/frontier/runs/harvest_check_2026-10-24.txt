@@ -156,3 +156,9 @@ elapsed 88.3s
 RESULT VALID d=16 D=9 eccA=9 eccB=9 n=337394400
 (exit 0)
 [exit 0; wall 88.3s]
+== d8D9_psl_23_109_orb3_s3 (origin/claude/degree-diameter-table-squad-0xgp3g, 09:55 PT)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 1323696 edges = 5294784 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = e1ed5317271dce141d00478bd2dfb853ce89da5eaa1ccbc6724e03907a69f73b
+VALID d=8 D=9 group=psl 23 x Z_109 N=661848 vertices=1323696
