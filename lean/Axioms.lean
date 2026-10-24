@@ -16,6 +16,7 @@ import BipartiteDD.GQ4.Main
 import BipartiteDD.GQ4.Count
 import BipartiteDD.ASq.Main
 import BipartiteDD.GQST.StandinMain
+import BipartiteDD.Haar.D8D8b.Record
 
 #print axioms nb_4_5
 #print axioms nb_5_5
@@ -94,3 +95,5 @@ import BipartiteDD.GQST.StandinMain
 #print axioms BipartiteDD.Haar.Cycle10.ediam_le_six
 #print axioms BipartiteDD.Haar.SL213Z7.nb_6_8
 #print axioms BipartiteDD.Haar.SL213Z7.nb_6_8_exists
+
+#print axioms nb_8_8_239904

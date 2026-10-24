@@ -18,7 +18,7 @@ for k in $(seq 0 48); do
 done
 mods+=("BipartiteDD.Haar.D8D8b.Cover" "BipartiteDD.Haar.D8D8b.Covers" "BipartiteDD.Haar.D8D8b.Record" "BipartiteDD.Haar.D8D8b.Axioms")
 for m in "${mods[@]}"; do
-  if grep -qx "OK $m" "$LOG"; then continue; fi
+  if grep -q "^OK $m " "$LOG"; then continue; fi
   if [ $(( $(date +%s) - start )) -ge "$BUDGET" ]; then echo "budget reached; next: $m"; exit 3; fi
   if bash "$ROOT/scripts/stop_check.sh" >/dev/null; then echo "STOP requested" >> "$LOG"; exit 2; fi
   t0=$(date +%s)
