@@ -241,8 +241,8 @@ Observations:
 
 ## 5. Earlier attempts to beat the hexagon construction (negative)
 
-1. **Two extra vertices by a local gadget, φ fixed** (superseded by §2). Delete q+1 edges (a_j, b_j) of the 3-copy H(5) graph, add x ~ all a_j,
-   w ~ all b_j, x ~ w: degrees stay ≤ 7 and n = 23,438. `hexd7/violations.c` counts ordered pairs at distance > 7.
+1. **Two extra vertices by a local gadget, φ fixed** (superseded by §2). Delete q+1 edges (a_j, b_j) of the 3-copy
+   H(5) graph, add x ~ all a_j, w ~ all b_j, x ~ w: degrees stay ≤ 7 and n = 23,438. `hexd7/violations.c` counts ordered pairs at distance > 7.
    Deleting one edge already breaks 626–752 ordered pairs for a cross edge, about 1,250 for an ordinary hexagon
    edge, and 230 for the hexagon copy of a matching edge. The matching edge is cheap because of the 6-cycle
    p, φ(p), p, … through the three copies. With the gadget the best of a short local search over which matching
@@ -275,8 +275,9 @@ Observations:
      one H(8) side (37,449), so an H(9) copy still has degree ≤ 2 and r ≤ 3. With two H(9) copies, their free sides
      can serve only one further copy: 2·132,860 + 74,898 = 340,618 < 398,580. Small copies with many spare edges add
      too few vertices to matter.
-   The other routes (through a neighbour's cross edge) cover only radius-4 balls of about q⁴ out of q⁵ vertices per
-   copy, so they cannot replace F or L for a whole copy.
+   This caps the number of copies when every vertex keeps F or L, i.e. for a φ that is not designed around particular
+   vertices. With a φ designed for one vertex, the cross edges of the points within distance 4 of it can cover a whole
+   copy (q⁴ well-chosen lines through q⁵ points). That is how §2 adds vertices; it does not add a copy.
 4. **Other bases.** The construction needs a base of diameter ≤ 6 and degree Δ − 1, and the Moore bound makes H(q) the
    largest. A base of diameter 5 gives only 3 copies (copies c ± 2 are out of reach), e.g. 3 · 1,152 at Δ = 7. A
    generalized quadrangle allows 5 copies at D = 7 (checked by hand, same first/last-step argument), but 5 · |GQ(q,q)|
@@ -285,8 +286,10 @@ Observations:
    the pairs at distance 6 have ~11 geodesics for 3 voltages, so μ ≈ 125 even with a perfect base. Haar graphs cannot
    carry the 3-copy trick either: it needs a (Δ−1, 6) Haar graph near the Moore bound.
 
-**What these show.** Copy designs and lifts are capped at 3·|H(q)|, and so is anything symmetric under the copy
-group. The +2 of §2 comes from breaking the symmetry locally (one point) and spending the freedom in φ there.
+**What these show.** Copy designs in which every vertex reaches the other copies by its own or the target's cross edge
+are capped at 3·|H(q)|, and so are lifts of the hexagon (with uniform voltages). The +2 of §2 gets past the cap
+differently. One point gives up its cross edges; a φ designed around that point (exact covers) plus a 2-vertex gadget
+make up for it.
 
 ## 6. Budget and time
 
