@@ -3,7 +3,7 @@
 Opus theorist sessions with Haiku squads, 2026-10-24. Round 1-2: branch `claude/chart-lift-family-wko52j`; round 3
 (this update): branch `claude/chartlift-family-h3605i`. Scripts, charts, controllers and check outputs:
 `research/theorems/chartlift/` (tool list in its README.md; round-3 tools and graphs in `chartlift/r3/`). Squad rounds:
-`research/squads/LOG.md`, folders `research/squads/r1-chartlift/` and `r2-chartlift/`.
+`research/squads/LOG.md`, folders `research/squads/r1-chartlift/`, `r2-chartlift/` and `r3-chartlift/`.
 
 ## Results first
 
@@ -53,8 +53,9 @@ coordinate descent of Lemma 5 (one letter's star collineation at a time, over al
 uncovered targets in the objective and both diagonals and all pencils as hard constraints. The order-168 Haar graph
 (cost 2 with the 92-singular chart) reached cost 0 in 33 seconds with a 96-singular chart: 27,216 at (15,5). At (4,3)
 the chart side is finite (348 labelled singular sets), so a near-miss controller can be scored against all of them at
-once: the Z₂₅ controller with cost 2 under one class has cost 0 under set s170: 12,150 at (12,5). `r3/alt_opt.sh`
-alternates the two steps.
+once: the Z₂₅ controller with cost 2 under one class has cost 0 under set s170 (12,150), and alternating this scoring
+with voltage annealing (`r3/alt348.sh`) closed a cost-4 controller over Z₅ ⋊₂ Z₈ in one round: 12,960 at (12,5).
+`r3/alt_opt.sh` alternates the two steps at (5,3).
 
 **Main theorem (§3.1, Theorem 3; computer-assisted proof; round 2).** For every prime power q,
 
@@ -64,7 +65,7 @@ For q ≥ 3 this is the lift of one fixed 108-vertex controller, K₃,₃ + doub
 pair of it, even a vertex with itself, is joined by a nonbacktracking 4-walk. The chart is any universal 4-letter
 chart over F_q⁴, and such a chart exists for every prime power q ≥ 3. q = 2 is the 2,048 graph. The bound beats the
 published table at every cell it touches: (8,5) 1,728 > 1,710, (12,5) 8,748 > 8,200, (16,5) 27,648 > 27,300. The
-actual graphs do better at q = 2, 3, 4: 2,048 = 128·2⁴, 10,368 = 128·3⁴ and 33,792 = 132·4⁴. At q = 3, 4, 5 the lifts
+actual graphs do better at q = 2, 3, 4: 2,048 = 128·2⁴, 12,960 = 160·3⁴ and 33,792 = 132·4⁴. At q = 3, 4, 5 the lifts
 of the fixed controller were also built and checked all-pairs: 8,748, 27,648 and 67,500 vertices (degree 20), apsp
 VALID (`chartlift/runs/exact54_lifts.out`).
 
@@ -72,7 +73,7 @@ The cell-by-cell statements behind the table (§3.1, Theorems 2 and 11):
 
 > **n_b(kq, 5) ≥ 2 m q⁴** whenever a k-regular bipartite controller with m vertices per side satisfies the chart
 > conditions of Theorem 1 (with 4-cycles at every vertex), or of Theorem 11 (no 4-cycles, for a chart covering both
-> diagonals). Explicitly: n_b(12,5) ≥ 2·64·3⁴, n_b(15,5) ≥ 2·156·3⁴, n_b(10,5) ≥ 2·126·2⁴, n_b(8,5) ≥ 2·64·2⁴,
+> diagonals). Explicitly: n_b(12,5) ≥ 2·80·3⁴, n_b(15,5) ≥ 2·168·3⁴, n_b(10,5) ≥ 2·126·2⁴, n_b(8,5) ≥ 2·64·2⁴,
 > n_b(16,5) ≥ 2·66·4⁴.
 
 The general product theorem n_b(kq, D) ≥ q^(D−1) · N(k, D) (Theorem 9) holds for every D once a "D-perfect" chart
@@ -81,9 +82,12 @@ exists, and it would give 15–25% records at D = 7 and 8. No perfect chart exis
 
 **How the work was split.** Rounds 1-2: Opus built the tools, the theory and the first (12,5) record, and proved the
 general theorems; two Haiku squads (14 cards) swept bases, groups and charts, and their (8,5) and (15,5) controllers
-became records after independent rebuilds. Round 3: Opus found the diagonal idea, the star-collineation reduction, the
-(4,3) and (5,3) charts and the (12,5) and (15,5) Haar controllers; squad round r2-chartlift (8 cards) found the (10,5)
-controller and a (5,2) chart with 216 singular patterns, and mapped where Haar controllers stop (§3.3).
+became records after independent rebuilds. Round 3: Opus found the diagonal idea, the star-collineation reduction and
+the (4,3) classification, the (4,3) and (5,3) charts, the first (12,5) and (15,5) Haar controllers, and the joint
+chart/controller optimisation; squad round r2-chartlift (8 cards) found the (10,5) controller and a (5,2) chart with 216
+singular patterns, and mapped where Haar controllers stop; squad round r3-chartlift (8 cards) found the multi-orbit
+(12,5) controllers (m = 72 valid, near misses at 75 and 80) and the order-165/168 Haar near misses at (15,5), which the
+joint optimisation turned into the 12,150, 12,960 and 27,216 graphs (§3.3, `research/squads/LOG.md`).
 
 ## 1. The construction
 

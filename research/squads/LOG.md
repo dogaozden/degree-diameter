@@ -92,3 +92,9 @@ Outcomes (filled in as cards report):
    miss above: m=80 cost 4 (base k4r2_000 over Z5 x|2 Z8) -> handed to the lead's 348-set alternation.
 4. (15,5): order-168 near miss Z28 x|11 Z6 at cost 2 (92 chart) -> the lead re-optimised the chart for it (controller-
    aware coordinate descent): **(15,5) 27,216**, rebuilt and checked (apsp, bfs_all). Also 165 and 168 near misses.
+7. no gain: (7,2) chart 1,262 of 3,024 singular (from 1,314); Haar m=462 cost 36, m=432 36, m=480 45.
+8. no gain: direct products (SL(2,3) x Z3, A4 x Z6, S4 x Z7, SL(2,3) x Z7, ...) do no better than metacyclic groups:
+   (12,5) m=72 cost 2 (SL(2,3) x Z3), (15,5) m=168 cost 4.
+Lead, after the cards: c1's m=80 near miss (cost 4) -> r3/alt348.sh -> **(12,5) 12,960** (rebuilt, apsp + bfs_all).
+Kept: the joint optimisation (controller fixed, chart re-optimised; at (4,3) by scoring all 348 singular sets). It
+turned three near misses from the squad into records (12,150, 12,960, 27,216).
