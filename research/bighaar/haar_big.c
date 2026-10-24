@@ -134,29 +134,43 @@ static inline __m512i win8(const u64 *row, i64 q, __m128i sh, __m128i sh2) {
     __m512i lo = _mm512_loadu_si512((const void *)(row + q)), hi = _mm512_loadu_si512((const void *)(row + q + 1));
     return _mm512_or_si512(_mm512_srl_epi64(lo, sh), _mm512_sll_epi64(hi, sh2));
 }
-/* one dense level: T = (S or S^-1) . C over all rows */
+static u64 **RB;                  /* per-thread doubled-row buffers, RW words */
+static int PFD = 2;               /* rows ahead whose source windows are prefetched */
+static inline void prefetch_row(const u64 *C, u64 **tab, i64 w) {
+    for (int j = 0; j < d; j++) { u64 e = tab[j][w]; const u64 *s = C + (i64)(e >> 32) * RW + (((u32)e) >> 6);
+        _mm_prefetch((const char *)s, _MM_HINT_T0); _mm_prefetch((const char *)(s + 8), _MM_HINT_T0); }
+}
+/* one dense level: T = (S or S^-1) . C over all rows.  Per 512-bit chunk the d source windows are ORed in a register;
+ * the doubled target row is built in a thread buffer and streamed out with non-temporal stores. */
 static void pull_level(const u64 *C, u64 *T, u64 **tab) {
     #pragma omp parallel num_threads(NTH)
     {
-        u64 *acc = ACC[omp_get_thread_num()];
+        u64 *acc = ACC[omp_get_thread_num()], *rb = RB[omp_get_thread_num()];
+        const u64 *src[MAXD]; i64 q[MAXD]; __m128i sh[MAXD], sh2[MAXD];
+        i64 base = L >> 6; int r = L & 63; __m128i s1 = _mm_cvtsi32_si128(r), s2 = _mm_cvtsi32_si128(64 - r);
         #pragma omp for schedule(dynamic, 16)
         for (i64 w = 0; w < R; w++) {
-            for (i64 h = 0; h < LW8; h += 8) _mm512_store_si512((void *)(acc + h), _mm512_setzero_si512());
-            for (int j = 0; j < d; j++) {
-                u64 e = tab[j][w]; const u64 *src = C + (i64)(e >> 32) * RW; u32 o = (u32)e;
-                i64 q = o >> 6; int s = o & 63; __m128i sh = _mm_cvtsi32_si128(s), sh2 = _mm_cvtsi32_si128(64 - s);
-                for (i64 h = 0; h < LW8; h += 8) {
-                    __m512i a = _mm512_load_si512((const void *)(acc + h));
-                    _mm512_store_si512((void *)(acc + h), _mm512_or_si512(a, win8(src, q + h, sh, sh2)));
-                }
+            for (int j = 0; j < d; j++) { u64 e = tab[j][w]; src[j] = C + (i64)(e >> 32) * RW; u32 o = (u32)e; q[j] = o >> 6;
+                sh[j] = _mm_cvtsi32_si128(o & 63); sh2[j] = _mm_cvtsi32_si128(64 - (o & 63)); }
+            if (w + PFD < R) prefetch_row(C, tab, w + PFD);
+            for (i64 h = 0; h < LW8; h += 8) {
+                __m512i a = _mm512_setzero_si512();
+                for (int j = 0; j < d; j++) a = _mm512_or_si512(a, win8(src[j], q[j] + h, sh[j], sh2[j]));
+                _mm512_store_si512((void *)(acc + h), a);
             }
-            acc[LW - 1] &= LASTMASK;
+            acc[LW - 1] &= LASTMASK; for (i64 u = LW; u < LW8 + 8; u++) acc[u] = 0;
+            memcpy(rb, acc, 8 * LW); memset(rb + LW, 0, 8 * (RW - LW));
+            if (!r) memcpy(rb + base, acc, 8 * LW);
+            else {   /* second copy at bit L: word base + u = acc[u] << r | acc[u-1] >> (64 - r) */
+                rb[base] |= acc[0] << r;
+                for (i64 u = 1; u <= LW; u += 8)
+                    _mm512_storeu_si512((void *)(rb + base + u), _mm512_or_si512(_mm512_sll_epi64(_mm512_loadu_si512((const void *)(acc + u)), s1),
+                                                                                 _mm512_srl_epi64(_mm512_loadu_si512((const void *)(acc + u - 1)), s2)));
+            }
             u64 *dst = T + w * RW;
-            memcpy(dst, acc, 8 * LW); memset(dst + LW, 0, 8 * (RW - LW));
-            i64 base = L >> 6; int r = L & 63;
-            if (!r) memcpy(dst + base, acc, 8 * LW);
-            else for (i64 u = 0; u < LW; u++) { dst[base + u] |= acc[u] << r; dst[base + u + 1] |= acc[u] >> (64 - r); }
+            for (i64 u = 0; u < RW; u += 8) _mm512_stream_si512((void *)(dst + u), _mm512_load_si512((const void *)(rb + u)));
         }
+        _mm_sfence();
     }
 }
 /* last level: count B-side zeros of S . C; abort (return -1) once the count reaches *bound.  Uncovered elements go
@@ -176,6 +190,7 @@ static i64 last_level(const u64 *C, u64 **tab, i64 bound, i64 *unc, int ucap, in
             const u64 *src[MAXD]; i64 q[MAXD]; __m128i sh[MAXD], sh2[MAXD];
             for (int j = 0; j < d; j++) { u64 e = tab[j][w]; src[j] = C + (i64)(e >> 32) * RW; u32 o = (u32)e; q[j] = o >> 6;
                 sh[j] = _mm_cvtsi32_si128(o & 63); sh2[j] = _mm_cvtsi32_si128(64 - (o & 63)); }
+            if (w + PFD < R) prefetch_row(C, tab, w + PFD);
             i64 zr = 0;
             for (i64 h = 0; h < LW8; h += 8) {
                 __m512i m = h == hl ? lastm : ones, nm = _mm512_xor_si512(m, ones), acc = nm;
@@ -298,8 +313,18 @@ static int random_orbit(int j, el *o) {
 }
 static i64 ipow_mod(i64 b, i64 e, i64 m) { i64 r = 1 % m; b %= m; while (e) { if (e & 1) r = (i64)((__int128)r * b % m); b = (i64)((__int128)b * b % m); e >>= 1; } return r; }
 static i64 gcdl(i64 a, i64 b) { while (b) { i64 t = a % b; a = b; b = t; } return a < 0 ? -a : a; }
-static void choose_alpha(void) {
-    AG = (el){0, P - 1, 1, P - 1, 0}; AG = canon(AG); AGI = einv(AG);
+static void choose_alpha(void) {   /* g = [[0,-1],[1,t]] with g^k = +-I (projective order k; k = 3: t = -1 first) */
+    int tsel = -1;
+    for (int tt = 0; tt < P && tsel < 0; tt++) {
+        int t = (tt == 0) ? P - 1 : tt - 1; if (tt > 0 && t == P - 1) continue;
+        el g = (el){0, P - 1, 1, t, 0}, y = E_ID; int ispm = 0;
+        for (int i = 0; i < OK_; i++) y = emul(y, g);       /* emul canonicalises for PSL; compare up to sign */
+        if ((y.a == 1 && y.d == 1 && !y.b && !y.c) || (y.a == P - 1 && y.d == P - 1 && !y.b && !y.c)) ispm = 1;
+        if (ispm) tsel = t;
+    }
+    if (getenv("AT")) tsel = atoi(getenv("AT"));
+    if (tsel < 0) { fprintf(stderr, "no element of projective order %d in SL(2,%d)\n", OK_, P); exit(2); }
+    AG = (el){0, P - 1, 1, tsel, 0}; AG = canon(AG); AGI = einv(AG);
     if (NC > 1) { i64 best = -1, bfix = (i64)1 << 60;
         for (i64 r = 2; r < NC; r++) { if (gcdl(r, NC) != 1 || ipow_mod(r, OK_, NC) != 1) continue;
             i64 fx = gcdl(r - 1, NC); if (fx < bfix) { bfix = fx; best = r; } }
@@ -399,7 +424,9 @@ int main(int argc, char **argv) {
     double tset = now();
     for (int b = 0; b < 2; b++) { BUF[b] = aligned_alloc(64, (size_t)(R * RW * 8)); if (!BUF[b]) { fprintf(stderr, "out of memory\n"); return 2; } }
     LISTCAP = PUSHMAX + 64; LIST = malloc(sizeof(i64) * LISTCAP);
-    ACC = malloc(sizeof(u64 *) * NTH); for (int t = 0; t < NTH; t++) ACC[t] = aligned_alloc(64, 8 * (LW8 + 8));
+    ACC = malloc(sizeof(u64 *) * NTH); RB = malloc(sizeof(u64 *) * NTH);
+    for (int t = 0; t < NTH; t++) { ACC[t] = aligned_alloc(64, 8 * (LW8 + 16)); RB[t] = aligned_alloc(64, 8 * (RW + 16)); }
+    if (getenv("PFD")) PFD = atoi(getenv("PFD"));
     for (int j = 0; j < d; j++) { FR[j] = malloc(4 * R); FC[j] = malloc(4 * R); PS[j] = malloc(8 * R); PI[j] = malloc(8 * R); }
     fprintf(stderr, "group %s x Z_%lld, N=%lld (2N=%lld), rows %lld x %lld bits (doubled row %lld words), memory %.2f GB, threads %d\n",
             SPEC, (long long)NC, (long long)NG, (long long)(2 * NG), (long long)R, (long long)L, (long long)RW,

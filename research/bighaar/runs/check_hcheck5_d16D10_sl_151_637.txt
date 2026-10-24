@@ -1,0 +1,12 @@
+checker: hcheck5
+command: ../../squads/d16D10-r1/c5/hcheck5 d16D10_sl_151_637_orb3_s1.txt
+start: 2026-10-24T19:37:19Z
+sha256 24dccdc9d3a13e07481d7ec9d8b17f39f0725c500978d0728147d723c89c81a8  ../../squads/d16D10-r1/c5/hcheck5
+sha256 f2a70a0d5bc93765cd0118e5013a6f9e1f9737751f98dfab62f661bb9d502130  d16D10_sl_151_637_orb3_s1.txt
+loaded d16D10_sl_151_637_orb3_s1.txt: d=16 D=10 p=151 n=637 N=2193063600; idx-column mismatches=15
+generators distinct: yes
+from (e,A): all reached within 10, ecc 10 (239.535 s)
+from (e,B): all reached within 10, ecc 10 (209.957 s)
+VALID d=16 D=10 group=sl 151 x Z_637 N=2193063600 vertices=4386127200 threads=2 time=449.492 bfs_A=239.535 bfs_B=209.957
+exit: 0
+end: 2026-10-24T19:44:55Z (456 s)
