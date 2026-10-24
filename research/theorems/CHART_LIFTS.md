@@ -19,7 +19,7 @@ The (15,5) and (8,5) controllers came from squad round 1 (cards c6 and c4). I re
 touched without a record: (9,5) 2,592 (beats the table's 2,496, not the lab's 2,662); (12,5) with 3 letters 8,192
 (8 short of the table). (16,5) stays at the squad's 33,792.
 
-**Main theorem (§3.1, Theorem 10; computer-assisted proof).** For every prime power q,
+**Main theorem (§3.1, Theorem 3; computer-assisted proof).** For every prime power q,
 
 > **n_b(4q, 5) ≥ 108 q⁴.**
 
@@ -31,16 +31,21 @@ and q = 4 our graphs do better: 2,048 = 128·2⁴ and 33,792 = 132·4⁴. At q =
 were also built and checked all-pairs: 8,748, 27,648 and 67,500 vertices (degree 20), apsp VALID
 (`chartlift/runs/exact54_lifts.out`).
 
-The cell-by-cell statements behind the table (§3.1, Theorem 5):
+The cell-by-cell statements behind the table (§3.1, Theorem 2):
 
 > **n_b(kq, 5) ≥ 2 m q⁴** whenever a k-regular bipartite controller with m vertices per side satisfies the chart
 > conditions of Theorem 1. Explicitly: n_b(4q, 5) ≥ 108 q⁴ for q = 2, 3, 4 (one base graph, K₃,₃ + doubled matching
 > over Z₁₈; for q = 3 and 4 even one and the same controller); n_b(3q, 5) ≥ 32 q⁴ for q = 3, 4 (one 32-vertex cubic
 > controller, a Z₈-lift of the base [[1,2],[2,1]]); n_b(8,5) ≥ 2,048 = 2·64·2⁴; n_b(15,5) ≥ 20,736 = 2·128·3⁴; n_b(16,5) ≥ 33,792 = 2·66·4⁴.
 
-The general product theorem n_b(kq, D) ≥ q^(D−1) · N(k, D) (Theorem 6) holds for every D once a "D-perfect" chart
+The general product theorem n_b(kq, D) ≥ q^(D−1) · N(k, D) (Theorem 9) holds for every D once a "D-perfect" chart
 exists, and it would give 15–25% records at D = 7 and 8. No D-perfect chart exists at D = 5 for the cells we need
 (proved for (3,2), counting for the rest), and none was found at D = 7, 8 (§3.2).
+
+**How the work was split.** Opus built the tools, the theory and the (12,5) record, and proved the general theorems.
+Two Haiku squads (14 cards, `research/squads/LOG.md`) swept bases, groups and charts; their (8,5) and (15,5)
+controllers became records after independent rebuilds here. Their negative results (no (4,4) chart below 8 singular
+patterns, no gain from joint annealing or general switch annealing, exhaustive minima at Z₁₉) are listed below.
 
 ## 1. The construction
 
@@ -59,7 +64,7 @@ edge, and (a_i, x) ~ (b_j, v_e x). Then m = r|G|. Each controller edge keeps its
 
 ## 2. Why it works: walks, patterns, pencils, the diagonal
 
-All statements are for diameter 5, so the fibre has dimension 4 and the binding walks have length 4 (§3.1, Theorem 6
+All statements are for diameter 5, so the fibre has dimension 4 and the binding walks have length 4 (§3.1, Theorem 9
 does general D).
 
 **Lemma 1 (walk images).** A walk in C determines, for each start (u, x), the set of lifted endpoints. That set is
@@ -113,7 +118,7 @@ involution of Z₁₈) and the square a₁b₁a₂b₂ with 3 − 13 + 14 − 4 
 
 ### 3.1 Proved
 
-**Theorem 5 (the D = 5 family; computer-verified instances).** In each line below the chart and the voltages are
+**Theorem 2 (the D = 5 family; computer-verified instances).** In each line below the chart and the voltages are
 explicit (files in `chartlift/`). Each lift was built and checked all-pairs:
 
 | (k, q) | Δ | controller | m | lift order | status vs best known |
@@ -128,7 +133,7 @@ explicit (files in `chartlift/`). Each lift was built and checked all-pairs:
 | (3, 3) | 9 | [[1,2],[2,1]] base / Z₈ | 16 | 2,592 | above table, below lab |
 | (3, 4) | 12 | same controller | 16 | 8,192 | below table |
 
-**Theorem 10 (universal charts for every q ≥ 3; the 108 q⁴ family).**
+**Theorem 3 (universal charts for every q ≥ 3; the 108 q⁴ family).**
 1. *Exact controller.* C₅₄ is K₃,₃ + doubled matching over Z₁₈, voltages in `chartlift/runs/exact54.volt`. Every
    same-side pair, including (u, u), is the pair of ends of a nonbacktracking 4-walk: `ctrl_search` with the flags
    `charts/nbonly_k4.flags` (no pencils, no diagonal) gives cost 0.
@@ -145,9 +150,9 @@ explicit (files in `chartlift/`). Each lift was built and checked all-pairs:
    convention: gf.py's polynomial for q ∈ {4, 8, 9, 16, 25, 27, 32, 49}, otherwise the first monic irreducible.
 3. *Conclusion.* Universal means every nonbacktracking 4-walk reaches the whole target fibre (Lemma 2). So the lift
    of C₅₄ has diameter ≤ 5 for every q ≥ 3: n_b(4q, 5) ≥ 2·54·q⁴ = 108 q⁴. ∎
-   q = 2 has no universal chart (Proposition 7.4), but the (8,5) graph gives 2,048 ≥ 1,728.
+   q = 2 has no universal chart (Proposition 6.4), but the (8,5) graph gives 2,048 ≥ 1,728.
 
-**Remark 11 (the same shape for other k).** The argument works for any k:
+**Remark 4 (the same shape for other k).** The argument works for any k:
 
 > n_b(kq, 5) ≥ 2 m_k q⁴
 
@@ -159,15 +164,16 @@ Universal charts need k((k−1)q+1) ≤ (q+1)(q²+1) when the b's are in general
 at Δ = 20, 30, outside the table. The Schwartz–Zippel step for k ≠ 4 was not carried out; it would need its own
 witnesses and small-q charts.
 
-**Proposition 6 (ceiling).** A chart lift for (Δ, D) = (kq, D) has fibre dimension D − 1, and its controller is
+**Proposition 5 (ceiling).** A chart lift for (Δ, D) = (kq, D) has fibre dimension D − 1, and its controller is
 k-regular with diameter ≤ D. So its order is at most q^(D−1) · Moore_b(k, D), and realistically
 q^(D−1) · n_b(k, D). `reach_table.py` → `runs/reach_table.out` lists every cell with Δ ≤ 16 and 3 ≤ D ≤ 10. At D = 3,
-4, 6 only (15,3), (16,3), (16,4), (16,6) pass the Moore ceiling, by 2 to 33%. Each of these needs a controller at or
-near a Moore graph together with a chart condition that provably fails there; the D = 3 count is in §3.4. So the table
-range at D = 3, 4, 6 is out of reach. At D = 5 every cell with a factorisation Δ = kq, k ≥ 3, can be reached in
-principle. At D ≥ 7 a cell needs a controller at 80–99% of the best known (k, D) graph; see Theorem 6.
+4, 6 only four cells pass the Moore ceiling: (15,3) by 0.5%, (16,3) by 5–15%, (16,4) by 18% and (16,6) by 33%. The two
+D = 3 cells are ruled out by the chart conditions themselves (§3.4). (16,4) and (16,6) would need 8 letters over F₂ and
+a controller with 85% of the vertices of the GQ(7,7) incidence graph, or 75% of GH(7,7)'s; these two long shots were
+not pursued. At D = 5 every cell with a factorisation Δ = kq, k ≥ 3, can be reached in principle. At D ≥ 7 a cell
+needs a controller at 80–99% of the best known (k, D) graph; see Theorem 9.
 
-**Proposition 7 (limits on charts).**
+**Proposition 6 (limits on charts).**
 1. k = 2 is useless at D = 5: a 2-regular controller is a cycle. The pencil needs 3k − 4 = 2 ≥ q + 1, which fails.
    The only working controller is a doubled edge, giving 2q⁴ vertices.
 2. Pencils can be complete only when q ≤ 3k − 5 (Lemma 3). So for k = 3 the pencil lemma works up to q = 4, and for
@@ -177,7 +183,7 @@ principle. At D ≥ 7 a cell needs a controller at 80–99% of the best known (k
 4. Universality with the b's in general position (no three collinear) needs the k tripods to be disjoint:
    k((k−1)q + 1) ≤ (q+1)(q²+1). This is impossible for k > q + 1 and tight for k = q + 1.
 
-**Proposition 8 (no perfect chart at (3,2); (4,3) in general position).** Call a D = 5 chart perfect if it is
+**Proposition 7 (no perfect chart at (3,2); (4,3) in general position).** Call a D = 5 chart perfect if it is
 universal (no singular pattern), all pencils are complete and both diagonals are covered. A perfect chart would turn
 every k-regular diameter-5 graph into a controller: the 56-vertex (3,5) graph would give 896 at (6,5), and the
 162-vertex (4,5) graph 13,122 at (12,5).
@@ -193,10 +199,10 @@ every k-regular diameter-5 graph into a controller: the 56-vertex (3,5) graph wo
   collinear b's the counting is not decisive. There the annealer never got below 22 singular patterns with pencils
   and diagonals required.
 
-**Theorem 9 (cubic controllers stop at m = 16; so k = 3 gives at most 32 q⁴).** Let C be cubic and bipartite,
+**Theorem 8 (cubic controllers stop at m = 16; so k = 3 gives at most 32 q⁴).** Let C be cubic and bipartite,
 with same-side distances ≤ 4 and every vertex on a 4-cycle. Then C has at most 16 vertices per side. This is exactly
 what a 3-letter chart lift at D = 5 needs for q ≥ 3, because the backtracking walks cannot cover the diagonal there
-(Proposition 7.3). So for q ≥ 3 every 3-letter chart lift of diameter 5 has at most 32 q⁴ vertices. The bound is
+(Proposition 6.3). So for q ≥ 3 every 3-letter chart lift of diameter 5 has at most 32 q⁴ vertices. The bound is
 attained for q = 3, 4 (2,592 and 8,192).
 Proof. Look from a vertex u. Suppose first that u lies on two 4-cycles. Then |N₂(u)| ≤ 4 and |N₃| ≤ 3|N₂| − 6 ≤ 6,
 so m ≤ 1 + 4 + 12 = 17. Equality needs every level to be tree-like. But some vertex near u must lie on its own 4-cycle:
@@ -212,7 +218,7 @@ derangements P₁, P₂ (König), and relabelling the squares turns P₁ into a 
 (`runs/square_exhaust_s9.out`). The same program finds 5 valid graphs at 8 squares, as a sanity check. ∎
 The m = 16 examples are Z₈, D₄ or Q₈ lifts of [[1,2],[2,1]].
 
-**Theorem 6 (product theorem; proved, not yet instantiated).** View the controller's universal cover as the k-regular
+**Theorem 9 (product theorem; proved, not yet instantiated).** View the controller's universal cover as the k-regular
 tree, i.e. the Cayley graph of Z₂ * ⋯ * Z₂ (k copies). A walk is a word in the letters and its end is the reduced
 word. Call a chart over F_q^(D−1) **D-perfect** if, for both start sides and every reduced word y with
 |y| ≤ D − 1, |y| ≡ D − 1 (mod 2), the words of length D − 1 that reduce to y have spans covering F_q^(D−1). (All those
@@ -237,6 +243,11 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
 - **At D ≥ 7 over F₂ no chart is D-perfect.** The deficiency is almost entirely at the top distance (universality):
   D = 7: 1,920 of 2,038 missing pairs at |y| = 6; D = 8: 10,048 of 10,180 at |y| = 7. A random pair of 3-flats in F₂⁶
   is complementary only 37% of the time, against 58% over F₃ and 69% over F₄.
+- **Over F₃ the short distances block instead.** 3-letter searches over F₃⁶ (D = 7) and F₃⁷ (D = 8) with `perfectq.c`
+  (20 minutes each) end with deficiencies of 14,872 and 122,292 target-vectors. At D = 7 side B became fully
+  universal, but the diagonal and the |y| = 2 and 4 targets stay open. Each needs many nearly disjoint subspaces,
+  e.g. ≥ 28 planes of PG(5,3) from at most 87 closed words. This is the same trade-off as at D = 5: universality wants
+  q large, short-distance coverage wants q small.
 
 ### 3.3 Weak patterns
 
@@ -252,10 +263,14 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
 
 ### 3.4 Dead ends
 
-- **D = 3, 4, 6 for Δ ≤ 16** (Proposition 6). At D = 3, distance-2 pairs need k ≤ q + 1 distinct b-points and the
-  diagonal needs k ≥ q + 1. So Δ = q(q+1), and those cells have Moore graphs. For (16,3) with 8 × F₂ a double count of
-  the good colour pairs bounds the controller by 86 vertices, so the lift has at most 344 < 396.
-- **k = 2** (Proposition 7.1) and **perfect D = 5 charts** (Proposition 8).
+- **D = 3 for Δ ≤ 16** (Proposition 5). The fibre is F_q², and a pair at distance 2 reached through the colour pair
+  (c, c′) is covered only if b_c ≠ b_{c′} as points of PG(1,q); the diagonal needs all q + 1 points among the w's. So a
+  regular controller with every colour pair good needs k = q + 1, i.e. Δ = q(q+1), and those cells have Moore graphs.
+  (16,3) with 4 × F₄ fails the diagonal (k < q + 1). With 8 × F₂, three classes of letters force at least 7 bad pairs
+  at each B-vertex, and a double count of the good pairs bounds the controller by 86 vertices, so the lift has at most
+  344 < 396. (15,3) with 5 × F₃ would need the full 42-vertex PG(2,4) incidence graph (376/9 > 41). There every pair
+  has a unique common neighbour, but two of the five b's coincide in PG(1,3), so bad pairs occur at every vertex.
+- **k = 2** (Proposition 6.1) and **perfect D = 5 charts** (Proposition 7).
 - **(6,5)**: k = 3, q = 2 needs m ≥ 22 (704 > 684). The best (3,2) chart with complete pencils misses one diagonal
   vector on one side (8 singular patterns, `charts/r3_k3_q2_s41.txt`), so that side still needs 4-cycles. Cubic
   controllers then stall at cost 7–8 for m = 22 (`runs/d6_*.out`). **(14,5)**: 7 × F₂ needs m ≥ 462 of at most 576 with a non-universal chart.
