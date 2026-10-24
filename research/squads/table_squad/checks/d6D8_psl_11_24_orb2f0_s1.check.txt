@@ -1,0 +1,17 @@
+== solution file d6D8_psl_11_24_orb2f0_s1.txt (sha256 15c08c5771f84c8d2eab2fd8c2be4ffaea74cbe79589eea2d997e09cf6fd317a)
+6 8 psl 11 n 24 N 15840
+1320 mat(1,0,0,1) z=0
+912 mat(0,4,8,5) z=0
+13947 mat(5,3,9,10) z=3
+7089 mat(2,10,9,7) z=9
+1510 mat(1,0,7,1) z=22
+3122 mat(1,6,9,0) z=2
+== build_haar2.py
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 31680 edges = 95040 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 8b76741ccc4fc1f0909ccc9bd611c0ae7ab9495ce2ed17b1f69cbe9fbca61239
+VALID d=6 D=8 group=psl 11 x Z_24 N=15840 vertices=31680
+== apsp.c all-pairs on the edge list (sha256 8b76741ccc4fc1f0909ccc9bd611c0ae7ab9495ce2ed17b1f69cbe9fbca61239)
+n=31680 edges=95040 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=31680
