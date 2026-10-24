@@ -1,0 +1,6 @@
+group sl 17 x Z_229, N=1121184, identity 62288, H order 34, rows 32976, threads 1, setup 0.14s
+wide rows: HW order 229, rows 4896, setup 0.23s
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 94 z on Z_229
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 23.19, mu/k = 7.73, fixed-point misses ~ 0.49
+start cost=2598
+t=30 steps=2015 evals=16121 cost=9 best=9 T=0.53

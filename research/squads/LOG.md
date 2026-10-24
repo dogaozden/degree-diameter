@@ -168,3 +168,5 @@ Cards: c1 (8,8) SL(2,11) × Z91 seeds 41–56 · c2 (8,8) PGL(2,11) × Z91 seeds
 c4 (9,10) PSL(2,41) × Z337 · c5 (8,9) PSL(2,23) × Z109, PSL(2,17) × Z271 · c6 (7,10) SL(2,17) × Z229, SL(2,5) × SL(2,9) × Z13,
 PSL(2,131) · c7 (8,10) SL(2,27) × Z199 and two products · c8 (9,8) PGL(2,16) × Z67 seeds 31–42.
 Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s each).
+- **r6-c5 (8,9): PSL(2,23) × Z109, N = 661,848, seed 3 solved in 18,249 evaluations (33.5 s): 1,323,696 vertices**
+  (beats this session's 1,320,120). build_haar2.py (Haiku and Opus) and haarcheck_psl VALID.

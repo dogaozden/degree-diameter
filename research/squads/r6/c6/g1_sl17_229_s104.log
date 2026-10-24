@@ -1,0 +1,11 @@
+group sl 17 x Z_229, N=1121184, identity 62288, H order 34, rows 32976, threads 1, setup 0.11s
+wide rows: HW order 229, rows 4896, setup 0.21s
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 94 z on Z_229
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 23.19, mu/k = 7.73, fixed-point misses ~ 0.49
+ORBW=3: an uncovered fixed element weighs 3; start energy 126
+start cost=124
+t=30 steps=2029 evals=16233 cost=12 best=12 T=0.53 energy=12 bestE=12
+t=60 steps=4124 evals=32993 cost=12 best=12 T=0.19 energy=12 bestE=12
+t=90 steps=6188 evals=49505 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=120 steps=8256 evals=66049 cost=3 best=3 T=0.15 energy=3 bestE=3
+RESULT d=7 D=10 group=sl 17 x Z_229 N=1121184 best=3 evals=82257 time=150.0 orbit k=3 m=2 f=1 fix=17
