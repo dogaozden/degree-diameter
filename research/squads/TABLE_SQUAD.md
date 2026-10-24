@@ -33,7 +33,7 @@ Two lessons from the calibration, written into the squad's preamble (r1/PREAMBLE
 | (9,10) | 23,142,048 / 20,017,260 | **23,154,600** | PSL(2,149) × Z7, ORBIT="3 3 0"; squad-r4-c5 | haarcheck_psl and check_haar_indep.py VALID (table_squad/checks/d9D10_psl_149_7_orb3f0_s1.check.txt) |
 | (8,10) | 7,802,160 / 6,927,210 | **7,818,096** | SL(2,67) × Z13, ORBIT="3 2 2"; r4-c2's group and near miss (1 left), Opus's seed 12 | haarcheck_sl, haarcheck2, check_haar_indep.py VALID (d8D10_sl_67_13_orb3_s12.check.txt) |
 | (7,10) | 2,234,400 / 1,987,380 | **2,237,760** | A5 × SL(2,8) × Z37, ORBIT="3 2 1"; r4-c3's group (3 left), Opus's ten-seed sweep, seed 15 | build_haar2.py, check_haar_indep.py VALID (d7D10_prod_psl_5_sl_8_37_orb3_s15.check.txt) |
-| (8,9) | 1,316,016 / 1,091,232 | **1,320,120** | PSL(2,19) × Z193, ORBIT="3 2 2"; squad-r4-c1 | build_haar2.py, haarcheck_psl VALID (d8D9_psl_19_193_orb3_s1.check.txt) |
+| (8,9) | 1,316,016 / 1,091,232 | **1,326,960** | SL(2,19) × Z97, ORBIT="3 2 2" with ORBW=3; Opus seed sweep. Rungs on the way: 1,320,120 PSL(2,19) × Z193 (squad-r4-c1), 1,323,696 PSL(2,23) × Z109 (squad-r6-c5) | build_haar2.py, haarcheck_sl, haarcheck2 VALID (d8D9_sl_19_97_orb3_s2.check.txt; the two rungs: d8D9_psl_19_193_orb3_s1, d8D9_psl_23_109_orb3_s3) |
 | (6,8) | 30,576 / 29,790 | **31,680** | PSL(2,11) × Z24, S = 3 orbits of size 2 under conjugation (ORBIT="2 3 0"), Opus solo; first rung 31,200 on SL(2,25) | build_haar2.py VALID; apsp.c all-pairs diameter 8 (table_squad/checks/d6D8_psl_11_24_orb2f0_s1.check.txt, d6D8_sl_25_1_orb2f0_s1.check.txt) |
 
 (6,8) had resisted the orbit search with k = 3: with Δ = 6 that leaves only two orbits, and STRUCTURE.md §8 found no
@@ -96,7 +96,7 @@ D = 5 column is out of reach for orbit-symmetric Haar graphs.
 | 3 | α and group breadth on the near misses | 0 / 8 | new leads: (10,5) AGL(1,13) × Z13 at 3, (9,8) PGL(2,16) × Z67 at 3, (8,8) SL(2,11) × Z91 at 6; knob grid and α sweeps showed plateaus are fixed by (group, α) |
 | 4 | explicit next-rung groups above each record, the record's own structure | **4** | (9,10) and (8,9) solved by Haikus; (8,10) and (7,10) near misses (1 and 3 left) that Opus converted with extra seeds |
 | 5 | the same ladders with many short seeds | 0 / 8 | stopped early by a Haiku usage limit; near misses (9,10) 2, (8,8) 3, (6,10) 4 |
-| 6 | new seeds on the round-5 near misses | (running) | |
+| 6 | new seeds on the round-5 near misses | **1** | (8,9) 1,323,696 by c5 in 33 s; elsewhere floors of 2–6 over 12–16 seeds per group |
 
 Opus alone in this session: the (6,8) record (k = 2 idea and both rungs), the exhaustive mode and its five closed
 groups, the inverse-closed negative result, the choice of every card's cells, groups and protocol, and all checking.
@@ -115,5 +115,12 @@ groups, the inverse-closed negative result, the choice of every card's cells, gr
 - **What Opus did that the squad could not:** spot that (6,8) needed k = 2; write the exhaustive mode and prove the
   D = 5 plateaus are true floors; work out the α classes (which made two Haiku sweeps redundant); compute the rung
   lists; diagnose a residual of 1 as a fixed point (ORBW); and notice that solve times are heavy-tailed.
-- So far the combination beat what I would have done alone mainly in round 4. A fair summary: Opus aims and
-  verifies, Haikus are good parallel hands for well-specified runs, poor explorers.
+- Overall: 6 cells' worth of record graphs this session ((6,8), (7,10), (8,9) ×3 rungs, (8,10), (9,10)). Haikus found
+  3 of the 8 record graphs directly ((9,10), two (8,9) rungs), and their near-miss groups led to 2 more ((8,10),
+  (7,10)); Opus found (6,8) and the last (8,9) rung alone. The combination beat what I would have done alone in rounds 4
+  and 6, when the Haikus ran explicit lists. A fair summary: Opus aims and verifies; Haikus are good parallel hands for
+  well-specified runs and poor explorers.
+- Practical lessons for the next squad session: give each card an explicit list and a stopping rule; have every card
+  run one driver script under nohup (fewer tool calls, which also matters because round 5 hit a Haiku usage limit);
+  never use `pkill -f` (it matches the caller's own shell); ask for the report before the budget ends, because several
+  Haikus handed back late or only after a reminder.
