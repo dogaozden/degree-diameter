@@ -8,8 +8,8 @@
   | cell | table (holder) | ours | construction |
   |---|---|---|---|
   | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
-  | (4,10) | 11,748 (Loz) | **11,772** (+0.2 %) | Haar graph of Z218 ⋊₃ Z27 (metacyclic) | `sols/d4D10_n11772_haar_meta218_27_3.txt` |
-| (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
+  | (4,10) | 11,748 (Loz) | **11,772** | Haar graph of Z218 ⋊₃ Z27 |
+  | (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
   | (5,10) | 90,068 (Loz) | **93,444** | Haar graph of Z1797 ⋊₂₁₂ Z26 |
 
   The (4,10), (5,9) and (5,10) values may still rise; the last sweeps were still finding solutions.
@@ -65,6 +65,7 @@ Solution files: `sols/rebuild_*.txt`.
 | cell | table (holder) | ours | construction | file |
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
+| (4,10) | 11,748 (Loz) | **11,772** (+0.2 %) | Haar graph of Z218 ⋊₃ Z27 (metacyclic) | `sols/d4D10_n11772_haar_meta218_27_3.txt` |
 | (5,10) | 90,068 (Loz) | **93,444** (+3.7 %) | Haar graph of Z1797 ⋊₂₁₂ Z26 (metacyclic) | `sols/d5D10_n93444_haar_meta1797_26_212.txt`. Also 93,310, 93,240, 93,196, 93,166, 93,120, 93,000, 92,492, 92,318, 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
 | (5,9) | 27,936 (Loz) | **28,842** (+3.2 %) | Haar graph of Z437 ⋊₂₆ Z33 (metacyclic) | `sols/d5D9_n28842_haar_meta437_33_26.txt`. Also 28,560, 28,444, 28,418, 28,094, 27,972 and 27,948 |
 
@@ -110,7 +111,9 @@ Outputs are in `verify/`.
 - So the graph is **not** a Haar graph: an exhaustive Haar search over Z3² ⋊ Z16, the group with Aut's element-order
   profile, finds no diameter-8 graph (best cost 6). A 2+2 base is genuinely needed.
 - The group Z3² ⋊ Z8 is metabelian but not metacyclic. It came from the `aff` family added this session.
-- It was found in 41 evaluations: (3,8) is far from saturated (Moore 510), and a push above 288 is running.
+- It was found in 41 evaluations.
+- Two later pushes (orders 290–348, with every rich group including the composite-modulus and 3-dimensional affine
+  families) found nothing above 288. The best was cost 10 at n = 320.
 
 **(5,10) = 93,444, with eleven smaller orders found on the way.**
 - 93,444 is a Haar graph of Z1797 ⋊₂₁₂ Z26. Connection set (a, j): (0,0), (864,15), (1592,17), (395,21), (1058,12).
@@ -118,8 +121,7 @@ Outputs are in `verify/`.
 - In that sweep, N = 46,580 and N = 46,869 stalled at cost 1. Re-screened sweeps (N = 46,723–47,500 and
   47,501–48,500) are running.
 - 93,000 is a Haar graph of Z775 ⋊₁₃₃ Z60. Connection set (a, j): (0,0), (227,14), (27,1), (508,42), (310,38).
-  It solved after 168 s, at the top order of the second sweep's window (N = 46,500), so the cell is not saturated;
-  a third sweep (N = 46,501–47,500) is running.
+  It solved after 168 s, at the top order of the second sweep's window (N = 46,500).
 - 92,318 is a Haar graph of Z1489 ⋊₆₁ Z31. Connection set (a, j): (0,0), (909,30), (656,18), (378,4), (1082,9).
   It was found by the second sweep (18,989 screened candidates, N = 45,970–46,500) after 82 s of annealing.
 - 91,938 is a Haar graph of Z1393 ⋊₁₈ Z33. Connection set (a, j): (0,0), (629,6), (1362,20), (900,23), (1300,8).
@@ -127,16 +129,20 @@ Outputs are in `verify/`.
 - 91,812 is a Haar graph of Z1093 ⋊₂₀₈ Z42, found by the same sweep after 113 s of annealing.
 - 91,756 is a Haar graph of Z3277 ⋊₁₂₉ Z14. Connection set (a, j): (0,0), (1169,3), (2805,11), (952,5), (1779,4).
   It was found by haar_cell.py: 7,704 screened candidates of order 45,865–46,100, then 46 s of annealing.
-- 91,728 was the first find:
-- Connection set in SL(2,13) × Z21 (matrix | z):
+- 91,728 was the first find, a Haar graph of SL(2,13) × Z21. Connection set (matrix | z):
   - [[1,0],[0,1]] | 0
   - [[3,8],[0,9]] | 16
   - [[2,7],[7,12]] | 7
   - [[1,10],[10,10]] | 2
   - [[8,3],[9,10]] | 5
-- Found by haar_gen3 in 9 s (2·10⁵ evaluations), after RANDSAMPLE screening put SL(2,13) × Z21 first (random-set
-  minimum cost 13). μ at this order is 22.5.
+  It was found by haar_gen3 in 9 s (2·10⁵ evaluations), after RANDSAMPLE screening put SL(2,13) × Z21 first
+  (random-set minimum cost 13). μ at this order is 22.5.
 - The size law predicted the cell as "marginal" (+0.7 %) but nobody had run it.
+
+**(4,10) = 11,772.**
+- Haar graph of Z218 ⋊₃ Z27. Connection set (a, j): (0,0), (187,2), (27,24), (139,23).
+- Found in 2 s by haar_cell.py: 3,873 screened candidates, N = 5,875–6,050.
+- N = 5,887 and 5,964 stalled at cost 4.
 
 ### 2.1 Earlier record: (3,8) = 258, a Z43-lift of K3,3
 
