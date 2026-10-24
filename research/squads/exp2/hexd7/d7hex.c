@@ -21,6 +21,7 @@
          mode 3: hub graph read from HGFILE ("K m" then m lines "j k"; hub degrees <= q-1); K is taken from the file
          alg=1 installs the algebraic cover for every pair, then targeted local search, then the full check
          alg=2 additionally runs the fast proxy search (incremental route counts) before the BFS-based search
+         alg=3 also runs a type-2 greedy pre-pass before the algebraic covers
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
    Solution file: line "d7hex q N K n", line "freed p1 .. pK", then N line ids M[0..N-1]. */
@@ -199,6 +200,82 @@ static void read_sol(const char *fn) {
 }
 
 
+
+/* ---------- type-2 greedy pre-pass (alg >= 3) ----------
+   Side A of pair k: the q(q+1) points u collinear with p_k get lines L whose 3-balls cover many points opposite p_k.
+   Side B: the q(q+1) lines meeting l_k get preimages y whose 3-balls (in lines) cover many lines opposite l_k.
+   These use few elements per pair, so different pairs rarely compete; type-4 covers then fill the rest. */
+static int ball3_lines_of_point(int x, int *out) {   /* lines within distance 3 of point x */
+    int c = 0;
+    for (int a = 0; a < Q1; a++) { int L = PL[x * Q1 + a]; out[c++] = L;
+        for (int b = 0; b < Q1; b++) { int y = LP[L * Q1 + b]; if (y == x) continue;
+            for (int d = 0; d < Q1; d++) { int L2 = PL[y * Q1 + d]; if (L2 != L) out[c++] = L2; } } }
+    return c;
+}
+static int ball3_points_of_line(int L, int *out) {   /* points within distance 3 of line L */
+    int c = 0;
+    for (int a = 0; a < Q1; a++) { int y = LP[L * Q1 + a]; out[c++] = y;
+        for (int b = 0; b < Q1; b++) { int L2 = PL[y * Q1 + b]; if (L2 == L) continue;
+            for (int d = 0; d < Q1; d++) { int x = LP[L2 * Q1 + d]; if (x != y) out[c++] = x; } } }
+    return c;
+}
+static void type2_prepass(uint8_t *lockp, uint8_t *lockl) {
+    int cap = 4 * Q1 * Q1 * Q1, *buf = malloc(sizeof(int) * cap), *buf2 = malloc(sizeof(int) * cap);
+    uint8_t *resP = calloc(N, 1), *resL = calloc(N, 1), *unc = malloc(N);
+    for (int k = 0; k < K; k++) for (int v = 0; v < N; v++) { if (hdp[k][v] == 2) resP[v] = 1; if (hdl[k][N + v] == 2) resL[v] = 1; }
+    long covA = 0, covB = 0, totA = 0, totB = 0;
+    for (int k = 0; k < K; k++) {
+        /* side A */
+        int nU = 0; for (int x = 0; x < N; x++) { unc[x] = (hdp[k][x] == 6); nU += unc[x]; }
+        totA += nU;
+        for (int v = 0; v < N; v++) {
+            if (hdp[k][v] != 2 || isF[v] || lockp[v]) continue;
+            int u = v, bestL = -1, bestg = 0;
+            for (int s = 0; s < 3 && nU > 0; s++) {
+                int x; do { x = rndi(N); } while (!unc[x]);
+                int nc = ball3_lines_of_point(x, buf);
+                for (int c = 0; c < 64; c++) {
+                    int L = buf[rndi(nc)];
+                    if (lockl[L] || resL[L] || isF[Minv[L]] || lockp[Minv[L]] || hdp[k][N + L] != 5) continue;
+                    int np = ball3_points_of_line(L, buf2), g = 0;
+                    for (int t = 0; t < np; t++) g += unc[buf2[t]];
+                    if (g > bestg) { bestg = g; bestL = L; }
+                }
+            }
+            if (bestL < 0) continue;
+            int w = Minv[bestL], o = M[u]; M[u] = bestL; Minv[bestL] = u; M[w] = o; Minv[o] = w;
+            lockp[u] = 1; lockl[bestL] = 1;
+            int np = ball3_points_of_line(bestL, buf2);
+            for (int t = 0; t < np; t++) if (unc[buf2[t]]) { unc[buf2[t]] = 0; nU--; covA++; }
+        }
+        /* side B */
+        nU = 0; for (int t = 0; t < N; t++) { unc[t] = (hdl[k][N + t] == 6); nU += unc[t]; }
+        totB += nU;
+        for (int L = 0; L < N; L++) {
+            if (hdl[k][N + L] != 2 || lockl[L] || isF[Minv[L]] || lockp[Minv[L]]) continue;
+            int besty = -1, bestg = 0;
+            for (int s = 0; s < 3 && nU > 0; s++) {
+                int t; do { t = rndi(N); } while (!unc[t]);
+                int nc = ball3_points_of_line(t, buf);
+                for (int c = 0; c < 64; c++) {
+                    int y = buf[rndi(nc)];
+                    if (lockp[y] || resP[y] || isF[y] || lockl[M[y]] || hdl[k][y] != 5) continue;
+                    int nl = ball3_lines_of_point(y, buf2), g = 0;
+                    for (int a = 0; a < nl; a++) g += unc[buf2[a]];
+                    if (g > bestg) { bestg = g; besty = y; }
+                }
+            }
+            if (besty < 0) continue;
+            int y = besty, w = Minv[L], o = M[y]; M[y] = L; Minv[L] = y; M[w] = o; Minv[o] = w;
+            lockp[y] = 1; lockl[L] = 1;
+            int nl = ball3_lines_of_point(y, buf2);
+            for (int a = 0; a < nl; a++) if (unc[buf2[a]]) { unc[buf2[a]] = 0; nU--; covB++; }
+        }
+    }
+    fprintf(stderr, "type-2 pre-pass: side A covered %ld of %ld, side B %ld of %ld\n", covA, totA, covB, totB);
+    free(buf); free(buf2); free(resP); free(resL); free(unc);
+}
+
 /* ---------- fast proxy search ----------
    For pair k (freed point p = F[k], freed line l = M(p), p on l), count routes of two kinds:
    side A (targets x opposite p, level 1):  u at distance 4 from p, M(u) at distance 5 from p, x on M(u)       [type 4]
@@ -234,7 +311,9 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
+static int BESTK = 1;
 static long fast_search(double maxsec) {
+    if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
     cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
     oppA = malloc(sizeof(int *) * K); oppB = malloc(sizeof(int *) * K); noppA = calloc(K, sizeof(int)); noppB = calloc(K, sizeof(int));
     n4p = malloc(sizeof(int *) * K); n2p = malloc(sizeof(int *) * K); n4l = malloc(sizeof(int *) * K); n2l = malloc(sizeof(int *) * K);
@@ -299,6 +378,8 @@ static long fast_search(double maxsec) {
             for (int tr = 0; tr < 64; tr++) { int v = lst[rndi(n)]; if (cc[v] == 0) { tgt = v; break; } }
             if (tgt < 0) continue;
         }
+        int nbest = BESTK, bu = -1, bw = -1; long bd = 1L << 60;
+        for (int cand = 0; cand < nbest; cand++) {
         int u, w, ty4 = rndi(8) != 0;
         if (side == 0) {      /* make some line through (or near) x the image of a point near p */
             int x = tgt, b;
@@ -315,7 +396,11 @@ static long fast_search(double maxsec) {
         long before = zeros;
         swapM(u, w);
         long d = zeros - before;
-        if (d > 0 && (double)(rnd() % 1000000) / 1e6 >= exp(-d / T)) swapM(u, w);
+        swapM(u, w);
+        if (d < bd) { bd = d; bu = u; bw = w; }
+        }
+        if (bu < 0) continue;
+        if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) swapM(bu, bw);
         if (zeros < best) best = zeros;
     }
     fprintf(stderr, "fast search done: it %ld proxy %ld (%.1fs)\n", it, zeros, (double)(clock() - t0) / CLOCKS_PER_SEC);
@@ -407,6 +492,7 @@ int main(int argc, char **argv) {
     if (alg) {
         uint8_t *lockp = calloc(N, 1), *lockl = calloc(N, 1);
         for (int j = 0; j < K; j++) { lockp[F[j]] = 1; lockl[M[F[j]]] = 1; }
+        if (alg >= 3) type2_prepass(lockp, lockl);
         int *Sp = malloc(sizeof(int) * N), *Sl = malloc(sizeof(int) * N); uint8_t *inS = calloc(N, 1), *used = calloc(N, 1);
         long conflicts = 0;
         for (int j = 0; j < K; j++) {
@@ -429,7 +515,7 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
     }
-    if (alg >= 2) fast_search(maxsec * 0.8);
+    if (alg >= 2) fast_search(maxsec * 0.9);
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
     fprintf(stderr, "q=%d N=%d K=%d n=%d initial cost %d\n", q, N, K, NV, cost);
