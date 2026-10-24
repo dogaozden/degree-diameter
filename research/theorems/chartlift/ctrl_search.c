@@ -103,6 +103,12 @@ int main(int argc, char **argv) {
     hit = malloc((size_t)r * g + 1);
     if (getenv("VOLT")) { char *p = getenv("VOLT"); for (int i = 0; i < ne; i++) { volt[i] = (int)strtol(p, &p, 10); if (*p == ',') p++; }
         long c = cost(); printf("given voltages: cost=%ld (A %ld, B %ld) parallel_ok=%d\n", c, cost_detail[0], cost_detail[1], parallel_ok());
+        if (getenv("DEBUG")) for (int s = 0; s < 2; s++) for (int i = 0; i < r; i++) {
+            memset(hit, 0, (size_t)r * g);
+            for (int t = 0; t < nw[s][i]; t++) { const Walk *w = &W[s][i][t]; int x = walk_elt(s, w);
+                if (w->len == 2 && w->end == i && x == eid) continue; hit[(size_t)w->end * g + x] = 1; }
+            if (diag[s]) hit[(size_t)i * g + eid] = 1;
+            for (int t = 0; t < r * g; t++) if (!hit[t]) printf("  uncovered: side %c base vertex %d -> base vertex %d, group element %d%s\n", s ? 'B' : 'A', i, t / g, t % g, (t / g == i && t % g == eid) ? "  (diagonal)" : ""); }
         if (out) { char fn[512]; snprintf(fn, sizeof fn, "%s.ctrl", out); FILE *o = fopen(fn, "w"); fprintf(o, "%d\n", r * g);
             for (int i = 0; i < ne; i++) for (int x = 0; x < g; x++) fprintf(o, "%d %d %d\n", EA[i] * g + x, EB[i] * g + mul(volt[i], x), col[i]);
             fclose(o); }
