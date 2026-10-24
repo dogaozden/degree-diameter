@@ -1,0 +1,14 @@
+# Coordinator check, 2026-10-24 11:17 PDT, Mac mini.
+Hexagons from research/p4/d6/hexgen.c (q = 5, 7, 9); edge lists from d7hex.c 'edges'; all-pairs apsp.c (no symmetry assumed).
+== d7D7_hex5_K13pg23_n23462:
+n=23462 edges=82117 degree min=7 max=7 bipartite=yes diameter=7
+RESULT VALID d=7 D=7 n=23462
+   with D-1: RESULT INVALID
+== d9D7_hex7_K1_n117650:
+n=117650 edges=529419 degree min=3 max=9 bipartite=yes diameter=7
+RESULT VALID d=9 D=7 n=117650
+   with D-1: RESULT INVALID (run 11:2x)
+== d11D7_hex9_K1_n398582:
+n=398582 edges=2192193 degree min=3 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=398582   (122 s, 129 MB; run at 11:17)
+== solo arm d7D7_hex5_plus2 (23,438): RESULT VALID d=7 D=7 n=23438
