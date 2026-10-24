@@ -87,4 +87,33 @@ D = 5 column is out of reach for orbit-symmetric Haar graphs.
 
 ## Squad rounds
 
-(details and per-card numbers in LOG.md)
+(details and per-card numbers in LOG.md; cards and preambles in r1/ … r6/)
+
+| round | aim (Opus) | records | what the squad added |
+|---|---|---|---|
+| 1 | D = 5 column, orbit search, one cell per card | 0 / 8 | the random-sample minimum predicts the plateau; quotient condition on orbits (c7); (6,5) symmetric families sampled exhaustively (minima 16–24); (11,5) floor 6, (10,5) 4 |
+| 2 | k = 2 and k = 4 orbits on Δ = 6..9, D = 7..10 | 0 / 8 | k = 2 does not transfer beyond (6,8); near misses (8,8) 7, (9,8) 18 |
+| 3 | α and group breadth on the near misses | 0 / 8 | new leads: (10,5) AGL(1,13) × Z13 at 3, (9,8) PGL(2,16) × Z67 at 3, (8,8) SL(2,11) × Z91 at 6; knob grid and α sweeps showed plateaus are fixed by (group, α) |
+| 4 | explicit next-rung groups above each record, the record's own structure | **4** | (9,10) and (8,9) solved by Haikus; (8,10) and (7,10) near misses (1 and 3 left) that Opus converted with extra seeds |
+| 5 | the same ladders with many short seeds | 0 / 8 | stopped early by a Haiku usage limit; near misses (9,10) 2, (8,8) 3, (6,10) 4 |
+| 6 | new seeds on the round-5 near misses | (running) | |
+
+Opus alone in this session: the (6,8) record (k = 2 idea and both rungs), the exhaustive mode and its five closed
+groups, the inverse-closed negative result, the choice of every card's cells, groups and protocol, and all checking.
+
+## Did the squad help? (honest account so far)
+
+- **Exploration cards did not pay.** Rounds 1–3 gave each Haiku a direction ("screen this window", "sweep α", "try
+  anything plausible"). 24 cards produced no record. The Haikus executed carefully and reported honestly, and a few of
+  their observations were useful (the quotient condition, the plateau-predicts-floor rule, two new near-miss groups),
+  but none proposed an idea that changed the plan. The fixed costs were real: three round-1 cards ran 1.5–2 h instead
+  of 45 min, several stopped without reporting until pinged, and `pkill -f` patterns killed their own shells.
+- **Execution cards paid.** Round 4 gave each Haiku an explicit, ordered list of groups (computed by Opus from μ and
+  the record's structure) and a fixed protocol. 8 cards gave 4 records, 2 directly and 2 through near misses that more
+  seeds converted. Eight parallel runners over a day of cells is exactly what one Opus cannot do alone on 4 cores...
+  except that the 4 cores are the limit: the squad's advantage was parallel bookkeeping, not extra compute.
+- **What Opus did that the squad could not:** spot that (6,8) needed k = 2; write the exhaustive mode and prove the
+  D = 5 plateaus are true floors; work out the α classes (which made two Haiku sweeps redundant); compute the rung
+  lists; diagnose a residual of 1 as a fixed point (ORBW); and notice that solve times are heavy-tailed.
+- So far the combination beat what I would have done alone mainly in round 4. A fair summary: Opus aims and
+  verifies, Haikus are good parallel hands for well-specified runs, poor explorers.
