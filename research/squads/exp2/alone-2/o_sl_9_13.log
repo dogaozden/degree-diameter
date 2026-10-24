@@ -1,0 +1,8 @@
+group sl 9 poly x^2+1 x Z_13, N=9360, identity 936, H order 52, rows 180, threads 1, setup 0.00s
+wide rows: HW order 130, rows 72, setup 0.01s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 23.63, mu/k = 7.88, fixed-point misses ~ 4.90
+start cost=128
+RESULT d=7 D=7 group=sl 9 poly x^2+1 x Z_13 N=9360 best=0 evals=569 time=0.0 orbit k=3 m=2 f=1 fix=17
+full diameter check: OK
+wrote ../sols/o_sl_9_13.txt
