@@ -1,0 +1,10 @@
+G := SmallGroup(64, 43); el := AsSSortedList(G);
+Print("StructureDescription: ", StructureDescription(G), "\n");
+Print("IdGroup: ", IdGroup(G), "\n");
+pc := Pcgs(G); Print("pcgs length ", Length(pc), ", relative orders ", RelativeOrders(pc), "\n");
+for i in [1, 2, 3, 30] do Print("element index ", i-1, ": exponents ", ExponentsOfPcElement(pc, el[i]), " order ", Order(el[i]), "\n"); od;
+iso := IsomorphismPermGroup(G); P := Image(iso);
+Print("perm degree ", NrMovedPoints(P), "\n");
+for i in [1, 2, 3, 30] do Print("element index ", i-1, " as permutation: ", Image(iso, el[i]), "\n"); od;
+Print("generators of perm group: ", GeneratorsOfGroup(P), "\n");
+QUIT;
