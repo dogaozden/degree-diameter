@@ -99,3 +99,6 @@ Lead, after the cards: c1's m=80 near miss (cost 4) -> r3/alt348.sh -> **(12,5) 
 Kept: the joint optimisation (controller fixed, chart re-optimised; at (4,3) by scoring all 348 singular sets). It
 turned three near misses from the squad into records (12,150, 12,960, 27,216).
 6. no gain: (10,5) best m=128 cost 1 (Haar Z16 x|3 Z8), cost 2 (Z32 x|9 Z4, Z16 x|5 Z8); 2+2 bases cost 4 at m=128.
+Lead, later: c6's two cost-2 groups at m=128 -> r3/alt_opt.sh (voltages re-annealed with the chart fixed, then the
+chart re-optimised for the controller) -> **(10,5) 4,096** twice (Z32 x|9 Z4 and Z16 x|5 Z8), rebuilt and checked
+(apsp, bfs_all). So the joint optimisation closed a fourth squad near miss.

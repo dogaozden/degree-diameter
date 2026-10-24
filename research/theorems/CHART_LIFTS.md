@@ -15,7 +15,7 @@ apsp.c (the coordinator's checker; it also reports INVALID with D = 4, so the di
 |---|---|---|---|---|---|---|---|
 | (15, 5) | 20,496 | 20,736 | **27,216** | 5 × F₃ | Haar graph of Z₂₈ ⋊₁₁ Z₆ (168) | `r3/k5q3_for168.txt` (96 singular, both diagonals) | `r3/graphs/build_d15D5_n27216.py`, `…_check.txt` |
 | (12, 5) | 8,200 | 8,748 | **12,960** | 4 × F₃ | base [[1,3],[3,1]] (2+2 vertices) over Z₅ ⋊₂ Z₈ (80) | `r3/k4q3_diag_s126.txt` (16 singular, both diagonals) | `r3/graphs/build_d12D5_n12960.py`, `…_check.txt` |
-| (10, 5) | 4,000 | — | **4,032** | 5 × F₂ | Haar graph of Z₁₄ ⋊₉ Z₉ (126) | `charts/r2_k5_q2.txt` (230 singular, both diagonals) | `r3/graphs/build_d10D5_n4032.py`, `…_check.txt` |
+| (10, 5) | 4,000 | 4,032 (this round) | **4,096** | 5 × F₂ | Haar graph of Z₃₂ ⋊₉ Z₄ (128) | `r3/k5q2_for128a.txt` (218 singular, both diagonals) | `r3/graphs/build_d10D5_n4096.py`, `…_check.txt` |
 | (8, 5) | 1,710 | — | 2,048 (round 2) | 4 × F₂ | K₄,₄ (Latin colouring) over Z₂ × Z₈ (64) | `charts/c4s2_k4_q2.txt` (48 singular) | `graphs/build_d8D5_n2048.py` |
 | (16, 5) | 27,300 | — | 33,792 (beat-16-5 squad) | 4 × F₄ | K₃,₃ + doubled matching over Z₂₂ (66) | squad chart (8 singular) | branch `claude/beat-16-5-squad-jiiwg2` |
 
@@ -27,7 +27,11 @@ Proposition 12(c) closed it in one round); the (15,5) connection set from round 
 re-optimised the chart for that controller, below); all rebuilt and checked here. Also found and checked: (15,5)
 25,272 (Haar graph of Z₂₆ ⋊₃ Z₆, ours) and 22,680 (Z₃₅ ⋊₆ Z₄), (12,5) 12,150 (K₃,₃ + doubled matching over Z₂₅,
 voltages from card r3-c2, chart s170 found by the same scoring), 11,664 (K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈, card r3-c2, and a 4+4 base over Z₃ × Z₆, card r3-c3) and 10,368
-(Haar graph of Z₁₆ ⋊₃ Z₄, ours), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, card r2-c5).
+(Haar graph of Z₁₆ ⋊₃ Z₄, ours), (10,5) 4,032 twice (Haar graphs of Z₁₄ ⋊₉ Z₉, card r2-c4, the first (10,5) graph
+of this round, and Z₂₁ ⋊₄ Z₆, card r2-c5). The (10,5) 4,096 graph: card r3-c6 reported Z₃₂ ⋊₉ Z₄ and Z₁₆ ⋊₅ Z₈ at cost 2;
+`r3/alt_opt.sh` (ours) re-annealed the voltages on Z₃₂ ⋊₉ Z₄ (again cost 2 with the 230-singular chart), and re-optimising the chart for that controller reached
+cost 0 in one second. The same run on Z₁₆ ⋊₅ Z₈ gives a second 4,096 graph (`r3/graphs/build_d10D5_n4096b.py`, chart
+`r3/k5q2_for128b.txt`, 226 singular).
 
 **What changed in round 3: charts that cover both diagonals.** A vertex's own fibre is reached by closed 4-walks.
 Before, the charts at q = 3, 4 did not cover this "diagonal" with backtracking walks, so every controller vertex
@@ -73,7 +77,7 @@ The cell-by-cell statements behind the table (§3.1, Theorems 2 and 11):
 
 > **n_b(kq, 5) ≥ 2 m q⁴** whenever a k-regular bipartite controller with m vertices per side satisfies the chart
 > conditions of Theorem 1 (with 4-cycles at every vertex), or of Theorem 11 (no 4-cycles, for a chart covering both
-> diagonals). Explicitly: n_b(12,5) ≥ 2·80·3⁴, n_b(15,5) ≥ 2·168·3⁴, n_b(10,5) ≥ 2·126·2⁴, n_b(8,5) ≥ 2·64·2⁴,
+> diagonals). Explicitly: n_b(12,5) ≥ 2·80·3⁴, n_b(15,5) ≥ 2·168·3⁴, n_b(10,5) ≥ 2·128·2⁴, n_b(8,5) ≥ 2·64·2⁴,
 > n_b(16,5) ≥ 2·66·4⁴.
 
 The general product theorem n_b(kq, D) ≥ q^(D−1) · N(k, D) (Theorem 9) holds for every D once a "D-perfect" chart
@@ -87,7 +91,8 @@ the (4,3) classification, the (4,3) and (5,3) charts, the first (12,5) and (15,5
 chart/controller optimisation; squad round r2-chartlift (8 cards) found the (10,5) controller and a (5,2) chart with 216
 singular patterns, and mapped where Haar controllers stop; squad round r3-chartlift (8 cards) found the multi-orbit
 (12,5) controllers (m = 72 valid, near misses at 75 and 80) and the order-165/168 Haar near misses at (15,5), which the
-joint optimisation turned into the 12,150, 12,960 and 27,216 graphs (§3.3, `research/squads/LOG.md`).
+joint optimisation turned into the 12,150, 12,960 and 27,216 graphs (§3.3, `research/squads/LOG.md`). The same
+joint optimisation, run by Opus on order-128 groups, gave the (10,5) 4,096 graphs.
 
 ## 1. The construction
 
@@ -303,7 +308,9 @@ with apsp (VALID at D = 5, INVALID at D = 4); the bold records and the 10,368 gr
 | (12, 5) | 4 × 3 | same | 4+4 base over Z₃ × Z₆ (squad r3-c3) | 72 | 11,664 | |
 | (12, 5) | 4 × 3 | `r3/k4q3_diag_tt.txt` (16 of 216) | Haar, Z₁₆ ⋊₃ Z₄ | 64 | 10,368 | |
 | (12, 5) | 4 × 3 | same | Haar, Z₁₅ ⋊₂ Z₄ (t = 7, 11 also reach cost 0) | 60 | 9,720 | |
-| (10, 5) | 5 × 2 | `charts/r2_k5_q2.txt` (230 of 640) | Haar, Z₁₄ ⋊₉ Z₉ (squad c4) | 126 | **4,032** | 177 (71%) |
+| (10, 5) | 5 × 2 | `r3/k5q2_for128a.txt` (218 of 640) | Haar, Z₃₂ ⋊₉ Z₄ (group: squad r3-c6) | 128 | **4,096** | 177 (72%) |
+| (10, 5) | 5 × 2 | `r3/k5q2_for128b.txt` (226 of 640) | Haar, Z₁₆ ⋊₅ Z₈ (group: squad r3-c6) | 128 | 4,096 | |
+| (10, 5) | 5 × 2 | `charts/r2_k5_q2.txt` (230 of 640) | Haar, Z₁₄ ⋊₉ Z₉ (squad c4) | 126 | 4,032 | |
 | (10, 5) | 5 × 2 | squad c5 chart `r3/k5q2_c5_216.txt` (216 of 640) | Haar, Z₂₁ ⋊₄ Z₆ (squad c5) | 126 | 4,032 | |
 
 The last column compares with the largest known (k,5) graph (162 vertices for k = 4, 354 for k = 5): a perfect
@@ -412,10 +419,12 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
 - **Fewer singular patterns help less than expected.** (4,3) charts with 24 singular patterns do no better than 26
   at m = 57 (cost 2 either way, squad r1-c3). The limit there is the controller.
 - Lift/Moore ratios: (12,5) 27%, (15,5) 25%, (8,5) 37%, (16,5) 31%. After round 3: (12,5) 10,368 / 32,210 = 32%,
-  (15,5) 25,272 / 82,742 = 31%, (10,5) 4,032 / 14,762 = 27%.
+  (15,5) 25,272 / 82,742 = 31%, (10,5) 4,032 / 14,762 = 27%; latest (12,5) 12,960 / 32,210 = 40%, (15,5) 27,216 /
+  82,742 = 33%, (10,5) 4,096 / 14,762 = 28%.
 - **Round 3: which Haar groups win.** With charts covering both diagonals, metacyclic groups Z_M ⋊_t Z_N with N = 4
   to 9 and a large cyclic normal part win at every cell: Z₂₆ ⋊₃ Z₆ and Z₃₅ ⋊₆ Z₄ at (15,5), Z₁₆ ⋊₃ Z₄ and Z₁₅ ⋊ Z₄ at
-  (12,5), Z₁₄ ⋊₉ Z₉, Z₂₁ ⋊₄ Z₆ at (10,5) (and Z₂₈ ⋊₁₃ Z₄, Z₁₅ ⋊₇ Z₈ at m = 112, 120, squad-reported). Cyclic, abelian and dicyclic groups do badly (costs 20–118).
+  (12,5), Z₁₄ ⋊₉ Z₉, Z₂₁ ⋊₄ Z₆ at (10,5) m = 126 and Z₃₂ ⋊₉ Z₄, Z₁₆ ⋊₅ Z₈ at m = 128 (and Z₂₈ ⋊₁₃ Z₄, Z₁₅ ⋊₇ Z₈
+  at m = 112, 120, squad-reported). Cyclic, abelian and dicyclic groups do badly (costs 20–118).
   Order-81 groups (odd order, no involutions) are also bad at (12,5) (cost ≥ 16).
 - **The last uncovered target is often a central involution.** At (12,5) order 78 and at (15,5) order 160 the best
   Haar connection sets leave exactly one target per side uncovered, and it is a central element z of order 2. The
@@ -427,8 +436,8 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   chances, which fits it being the last hole. Groups of odd order avoid this, and at (15,5) the odd order 165
   (Z₁₁ ⋊ Z₁₅, Z₃₃ ⋊ Z₅) reached cost 2 with side A fully covered, the two side-B holes being an inverse pair; with the
   chart re-optimised for it, Z₁₁ ⋊₃ Z₁₅ gives a valid 26,730-vertex graph (below the 27,216 record).
-- **Controllers reach 71–95% of the best known (k, 5) graph** when the chart covers both diagonals: m = 168 of 177 at
-  k = 5, q = 3 (88–112 singular of 640); m = 80 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
+- **Controllers reach 72–99% of the best known (k, 5) graph** when the chart covers both diagonals: m = 168 of 177 at
+  k = 5, q = 3 (88–112 singular of 640); m = 80 of 81 at k = 4, q = 3 (16 of 216); m = 128 of 177 at k = 5, q = 2
   (216–230 of 640). With 4-cycles required the old controllers were at 54/81 and 128/177.
 
 ### 3.4 Dead ends
