@@ -1,0 +1,10 @@
+grow: 41 flags, overlaps 0
+grow + fill: 42 flags
+it 8M flags 12 overlaps 5 lam 0.42 T 0.355 best 0
+it 16M flags 18 overlaps 8 lam 0.58 T 0.260 best 0
+it 24M flags 17 overlaps 2 lam 0.77 T 0.195 best 17
+it 32M flags 28 overlaps 0 lam 1.03 T 0.145 best 28
+it 40M flags 35 overlaps 0 lam 1.38 T 0.108 best 38
+it 48M flags 47 overlaps 0 lam 1.86 T 0.081 best 47
+it 56M flags 45 overlaps 0 lam 2.46 T 0.061 best 47
+final: 47 flags, overlaps 0 (64585609 iterations)

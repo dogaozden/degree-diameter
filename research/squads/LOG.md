@@ -33,3 +33,31 @@ distance 4 from a line M through p, not projecting onto p, partition the opposit
 (10,5)…(15,5) all apsp VALID, and (7,7) 23,438 apsp VALID (research/cell147/units/README.md).
 Squad assessment: the round produced the decisive idea (c14). The other cards mostly confirmed negatives
 (extra copies at large q, random-like constructions, buildings, LPS) — useful for the cell notes.
+
+## 2026-10-24 22:41–23:10 UTC, cell-14-7 second session (Opus, cloud), round 2 (16 cards, two squads of 8): (14,7) packing and the other D = 7 cells
+
+Opus before the round: found the TYPE-2 unit design (incident flag p ∈ l = sigma_t(p); sigma_t maps the 121 points
+collinear with p off l onto the 121 lines meeting l off p; both unit endpoints then reach everything within 7), so a
+unit costs 121 assignments instead of 14,641; units of one matching need disjoint zones (a packing problem); wrote
+uhcheck (hub-aware checker), apsp_cyc (independent check on edge lists), t2design, pack, t2cell.sh. (14,7) 1,771,870 with
+155 units (uhcheck over all sources VALID). Brief: research/squads/d14D7-r2/BRIEF.md; cards in cards/; scoreboard.jsonl.
+
+Cards: c1 annealing schedules · c2 (1,2)-swap ILS · c3 least-blocking greedy · c4 algebraic partial ovoids (Tits chart)
+· c5 automorphism orbits · c6 exact optimum at small q · c7 wildcard (other unit types) · c8 super-hubs · c9–c16 type-2
+units in the cells (7,7), (9,7), (11,7), (12,7), (13,7), (15,7), (10,7) (new GF(8) hexagon), (16,7).
+
+Best per card (flags per matching at q = 11 for c1–c5): c1 76 · c2 87 · c3 **91** · c4 78 (tabu finds 130 pairwise
+opposite points, but choosing pairwise opposite flag lines for them stalls near 47) · c5 71 (1,200 monomial
+automorphisms found; symmetric packings below random) · c6 q = 3 exact max 28 = an ovoid with its dual spread; q = 5
+best 34 · c7 none · c8 no super-hub cover by <= Delta hubs · c9 (7,7) 23,496 (uhcheck + apsp_cyc VALID) · c10 (9,7)
+117,742 (uhcheck + apsp_cyc VALID) · c11 (11,7) 398,702 (full uhcheck) · c12 (12,7) 664,544 (full uhcheck) · c13 (13,7)
+1,063,098 (QUICK: unit endpoints + new vertices) · c14 (15,7) 2,480,670 (QUICK) · c15 (10,7) 224,798 (full uhcheck; Opus
+apsp_cyc VALID) · c16 (16,7) 4,022,726 (QUICK).
+
+Kept: c4/c6/c9's observation (pairwise opposite points AND pairwise opposite lines are conflict-free; c6's q = 3 optimum
+is an ovoid + dual spread). Opus combined it with the Hermitian spread: the hexagon lines inside an elliptic hyperplane
+section E of Q(6,q) (X4 = -X0 at q = 11) are 1,332 pairwise opposite lines partitioning E, so flags (p, spread line
+through p) never conflict on the line side and the packing is a partial ovoid inside E (orthogonality graph on 15,984
+points, degree 1,342): ILS finds 152 in 60 s (spreadpack.c) against 91 for the best card. Squad assessment: the cell
+cards (c9–c16) turned the trick into new highs in all eight other DGQ D = 7 cells within one round; the packing cards
+gave +15 % over random, and the structural hint that led to the spread construction (+67 %).
