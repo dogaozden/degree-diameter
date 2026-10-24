@@ -244,7 +244,7 @@ targets). An involutive symmetry manufactures N/|Fix| such targets in any group.
 
 | suspected assumption | verdict |
 |---|---|
-| the involution's fixed points | not the problem: |Fix| e^{−λ/2} ≈ 1.1 at (6,8). Fixed points are paired as predicted (Fix/√p ≈ 0.8–1.06) |
+| the involution's fixed points | not the problem: \|Fix\|·e^{−λ/2} ≈ 1.1 at (6,8). Fixed points are paired as predicted (Fix/√p ≈ 0.8–1.06) |
 | the Anti set | its size is right (tight uncertainty bound), but it enters twice. **At even D it matters only through twisted cycles, which are rare and avoidable when short. At odd D it is a set of unavoidable extra targets.** The old argument merged the two and treated the first as self-averaging |
 | small Δ | yes, twice: k = 3 has only two orbits at Δ = 6 (orbit space ≈ e^{16} at N ≈ 15,840), and the twisted 8-cycle mean ρΔ(Δ−1)³/8 ≈ 4 is small enough to avoid |
 | even D | yes: it removes the Anti-target term entirely |
