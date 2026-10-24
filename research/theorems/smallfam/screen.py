@@ -40,6 +40,8 @@ def main():
     ap.add_argument('--maxgroups', type=int, default=2000)
     ap.add_argument('--tag', default='')
     ap.add_argument('--skip', default='', help='comma-separated orders to skip')
+    ap.add_argument('--abmin', type=int, default=1, help='skip groups with |G/G\'| below this (dihedral-like types)')
+    ap.add_argument('--abmaxorder', type=int, default=10**9, help='skip groups with |G/G\'| above this')
     a = ap.parse_args()
     skip = {int(x) for x in a.skip.split(',') if x}
     outp = os.path.join(HERE, 'runs', f'screen_d{a.Delta}D{a.D}{a.tag}.tsv')
@@ -63,6 +65,11 @@ def main():
             ninv = len([x for x in inv if x > 1])
             if ninv > a.Delta - 1:
                 log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\trank>{a.Delta-1}\t-\t-\n'); log.flush()
+                continue
+            from math import prod
+            ab = prod(inv) if inv else 1
+            if ab < a.abmin or ab > a.abmaxorder:
+                log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\t|G/G\'|={ab} outside [{a.abmin},{a.abmaxorder}] (heuristic skip)\t-\t-\n'); log.flush()
                 continue
             fr = abfilt(a.Delta, a.D, dsize, inv)
             if fr.startswith('pass 0 '):

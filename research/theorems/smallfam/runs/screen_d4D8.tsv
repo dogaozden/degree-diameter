@@ -1,0 +1,19 @@
+1093	1	-	[1093]	1	|G/G'|=1093 outside [5,48] (heuristic skip)	-	-
+1094	1	-	[2]	547	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1094	2	-	[2, 547]	1	|G/G'|=1094 outside [5,48] (heuristic skip)	-	-
+1095	1	C5 x (C73 : C3)	[3, 5]	73	pass 576 of 680	33	0 265 933 542
+1095	2	-	[3, 5, 73]	1	|G/G'|=1095 outside [5,48] (heuristic skip)	-	-
+1096	1	-	[8, 137]	1	|G/G'|=1096 outside [5,48] (heuristic skip)	-	-
+1096	2	-	[2, 4, 137]	1	|G/G'|=1096 outside [5,48] (heuristic skip)	-	-
+1096	3	-	[2, 2, 137]	2	|G/G'|=548 outside [5,48] (heuristic skip)	-	-
+1096	4	-	[2, 2, 137]	2	|G/G'|=548 outside [5,48] (heuristic skip)	-	-
+1096	5	-	[2, 2, 2, 137]	1	rank>3	-	-
+1096	6	C137 : C8	[8]	137	pass 88 of 120	825	0 69 1061 62
+1096	7	C4 x D274	[2, 4]	137	pass 68 of 120	880	0 179 583 1078
+1096	8	C2 x (C137 : C4)	[2, 4]	137	pass 68 of 120	947	0 69 1061 62
+1096	9	-	[2, 2]	274	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1096	10	-	[2, 2]	274	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1096	11	-	[2, 2]	274	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1096	12	C2 x C2 x D274	[2, 2, 2]	137	pass 28 of 120	880	0 925 485 33
+1096	13	C137 : C8	[8]	137	pass 88 of 120	194	0 859 522 109
+1096	14	C2 x (C137 : C4)	[2, 4]	137	pass 68 of 120	356	0 201 441 215
