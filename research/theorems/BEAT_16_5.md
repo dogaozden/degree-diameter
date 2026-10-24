@@ -12,6 +12,10 @@ SmallGroup(64,43), one chart, §4.2) and 33,792 (3+3 base vertices lifted by C�
 independently; `beat165/rcl/buildlift_pvv.py` and `beat165/rcl/rebuild_pvv_gap.g` rebuild the graphs from the group
 table, the controller and the charts.
 
+Past 72 per side every search came back empty (§4.10). So within this construction the next step needs a new
+controller: a bipartite 4-regular graph of diameter 5, with a 4-cycle at every vertex and more than 72 vertices per
+side. Rebuild commands for all three graphs: `graphs/README_beat165.md`.
+
 ## 0. What a winner has to do (counting)
 
 From a vertex, the non-backtracking walks of length ≤ 4 that end on the same side number
@@ -301,6 +305,15 @@ subgroup (order 576) has the four base orbits of 36.
     but walk images are no longer affine spaces: a 4-walk with two such steps is a bijection onto F₄⁴ in 11% of
     trials (one step: 30%; plain lines: 69%) (`rcl/twist.py`, `rcl/twist2.py`). About 37 targets per vertex are
     reached by a single walk, so this does not look fittable.
+
+- Other fields: degree 16 = ρq (ρ labels) leaves q ∈ {2, 4, 8}; q = 16 would mean a single controller edge. q = 8
+  means a 2-regular controller, a cycle of length ≤ 10, and its walks of length ≤ 4 cannot cover a fiber F₈⁴. On C₆,
+  C₈ and C₁₀ the closed walks of length ≤ 4 backtrack and give only 6 planes and 2 lines. On C₄ a distance-2 pair
+  is reached by 2 walks of length 2 and 8 backtracking walks of length 4; for x = 0 their images are 2 planes and
+  8 linear subspaces of dimension ≤ 3, which cover at most 512 + 7·448 + 2·64 = 3,776 of the 4,096 points.
+  Smaller fibers give at most 10·8³ = 5,120. q = 2 with an 8-regular controller needs no 4-cycles (closed walks
+  easily cover the 15 points of PG(3,2)), but the fiber is F₂⁴ = 16 points, and the largest known bipartite (8,5)
+  graph has 1,764 vertices (`records/bipartite_dd/d8D5/`), which would give only 28,224.
 
 So the next step needs a bipartite 4-regular graph of diameter 5 with a 4-cycle at every vertex and more than 72
 vertices per side. None of the searches here found one. Counting gives only a weak bound: with a 4-cycle through c,
