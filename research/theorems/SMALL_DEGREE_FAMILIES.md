@@ -32,7 +32,7 @@ Job "thm-smallfamilies" (Opus). Branch `claude/small-degree-families-g7zllq`. Sc
    Within the affine family the exhaustive maxima stay at or below the table (§2.4).
 5. **Complete negatives.**
    - No cubic Haar graph with more than 168 vertices has diameter 7, and no 2+2 cubic lift does either.
-   - No group of order 254–319 gives a cubic Haar graph of diameter 9 (orders 256 and 320 are partial).
+   - No group of order 254–319 gives a cubic Haar graph of diameter 9 (all 56,092 groups of order 256 included).
    - No group of order 401–431 gives one of diameter 10.
    - At (4,8) and (4,9) about 200 structured groups were tested, by me and an 8-Haiku squad; none works (§6).
 
@@ -95,7 +95,7 @@ Two remarks:
 | cell | group | S (normal form) | graphs | girth, \|Aut\| | files |
 |---|---|---|---|---|---|
 | (3,9) 506 | Z23 ⋊_2 Z11 | {1, y, x·y⁶} | **1** (both groups of order 253 searched) | 14, 506 (vertex-transitive) | `runs/d3D9_z23x11_exhaustive.txt`, `canon_d3D9_z23x11.txt`, `aut_d3D9_506.txt` |
-| (4,8) 2184 | SmallGroup(1092,4) = (C7 ⋊ C3) × Dic13 = Z91 ⋊ Z12, r of order 6 | first SOL in `runs/d4D8_sg1092_4_allsols.txt` | **1** (all 25 groups of order 1092 searched) | 10, 2184 (vertex-transitive) | `runs/allgroups_d4D8_1092.tsv`, `d4D8_sg1092_4_isoclasses.txt` |
+| (4,8) 2184 | SmallGroup(1092,4) = (C7 ⋊ C3) × Dic13 = Z91 ⋊ Z12, r of order 6 | first SOL in `runs/d4D8_sg1092_4_allsols.txt` | **1** (all 77 groups of order 1092 handled) | 10, 2184 (vertex-transitive) | `runs/allgroups_d4D8_1092.tsv`, `d4D8_sg1092_4_isoclasses.txt` |
 | (4,9) 4970 | Z71 ⋊_2 Z35 | {1, y, x·y¹³, x⁹·y¹⁹} | **1** (all 4 groups of order 2485 searched) | 12, 2485 | `runs/d4D9_z71x35_normalform.txt`, `canon_d4D9_z71x35.txt`, `d4D9_order2485_others.txt` |
 
 - **(3,9) as a Cayley graph.** Cay(AGL(1,23), {x ↦ 5x, x ↦ 14x, x ↦ −x+1}). 5 is the least primitive root mod 23
@@ -144,8 +144,9 @@ Two remarks:
 - **(3,7), 2+2 lifts:** orders 43–63, every group (`runs/lift_b22_D7.tsv`). The best is cost 16. Order 42 has
   exactly one solving group, C2 × (C7:C3), which is Conder's graph. **Conder's 168 is the largest 2+2 cubic lift of
   diameter 7.**
-- **(3,9), Haar:** orders 254–319 (`runs/allgroups_d3D9.tsv`): no diameter-9 graph. Order 256 is partial (the
-  first ~530 of 56,092 two-groups); orders 320–330 are running.
+- **(3,9), Haar:** every group of every order 254–319 (`runs/allgroups_d3D9.tsv`, completeness in
+  `runs/completeness.txt`), all 56,092 groups of order 256 included: no diameter-9 graph. **No cubic Haar graph
+  with 508–638 vertices has diameter 9.** Orders 320–330 are running.
 - **(3,10), Haar:** orders 401–431 (`runs/allgroups_d3D10.tsv`): none. The best is cost 4, at C29 : C14 and
   C2 × (C29 : C7) (N = 406). Orders 432–460 are running.
 - **(3,8), (3,9), (3,10), 2+2 lifts:** orders 73–114, 127–168 and 201–224 so far (`runs/lift_b22_D*.tsv`): none.
