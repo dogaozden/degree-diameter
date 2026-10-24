@@ -1,0 +1,30 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt  (from branch claude/thm-order2-symmetry-gap-4e2nmi) sha256 b31195a1f0166c3375809f4fa091089c8bc9b7a9490249be006c85cab102cec3
+header: 13 8 prod sl 7 sl 7 n 31 N 3499776
+
+################ reference checker: python3 research/frontier/build_haar2.py research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt /tmp/e.txt
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6999552 edges = 45497088 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = daf0ccf91e35dc587d6bed076ba05be225de3cd0aa2c4607032cffe86af6ebb2
+VALID d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 vertices=6999552
+(exit 0)
+[exit 0; wall 24s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt
+header: 13 8 prod sl 7 sl 7 n 31 N 3499776
+d=13 D=8
+group: SL(2,7) [order 336] x SL(2,7) [order 336] x Z_31; |G| = 3499776, vertices 2|G| = 6999552
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 13 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3499776 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.8s]
+BFS from A: ecc=8 reached 6999552 of 6999552 (unreached 0); level sizes [1, 13, 156, 1872, 22404, 259107, 2089414, 3238784, 1387801] [1.3s]
+BFS from B: ecc=8 reached 6999552 of 6999552 (unreached 0); level sizes [1, 13, 156, 1872, 22404, 259107, 2091626, 3238784, 1385589] [1.8s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 1.8s
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6999552
+(exit 0)
+[exit 0; wall 2s]
