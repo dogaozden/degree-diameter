@@ -14,17 +14,18 @@ apsp.c (the coordinator's checker; it also reports INVALID with D = 4, so the di
 | cell (Δ, D) | table | ours before | **new** | letters × field | controller (m per side) | chart | builder / check |
 |---|---|---|---|---|---|---|---|
 | (15, 5) | 20,496 | 20,736 | **25,272** | 5 × F₃ | Haar graph of Z₂₆ ⋊₃ Z₆ (156) | `r3/k5q3_pd112.txt` (112 singular, both diagonals) | `r3/graphs/build_d15D5_n25272.py`, `…_check.txt` |
-| (12, 5) | 8,200 | 8,748 | **11,664** | 4 × F₃ | K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈ (72) | `r3/k4q3_diag_cls1.txt` (16 singular, both diagonals) | `r3/graphs/build_d12D5_n11664.py`, `…_check.txt` |
+| (12, 5) | 8,200 | 8,748 | **12,150** | 4 × F₃ | K₃,₃ + doubled matching over Z₂₅ (75) | `r3/k4q3_diag_s170.txt` (16 singular, both diagonals) | `r3/graphs/build_d12D5_n12150.py`, `…_check.txt` |
 | (10, 5) | 4,000 | — | **4,032** | 5 × F₂ | Haar graph of Z₁₄ ⋊₉ Z₉ (126) | `charts/r2_k5_q2.txt` (230 singular, both diagonals) | `r3/graphs/build_d10D5_n4032.py`, `…_check.txt` |
 | (8, 5) | 1,710 | — | 2,048 (round 2) | 4 × F₂ | K₄,₄ (Latin colouring) over Z₂ × Z₈ (64) | `charts/c4s2_k4_q2.txt` (48 singular) | `graphs/build_d8D5_n2048.py` |
 | (16, 5) | 27,300 | — | 33,792 (beat-16-5 squad) | 4 × F₄ | K₃,₃ + doubled matching over Z₂₂ (66) | squad chart (8 singular) | branch `claude/beat-16-5-squad-jiiwg2` |
 
 Z_M ⋊_t Z_N is the metacyclic group of pairs (x, y) with (x₁, y₁)(x₂, y₂) = (x₁ + t^{y₁} x₂ mod M, y₁ + y₂ mod N);
 a Haar graph of a group G with connection set S = {s₀, …, s_{k−1}} joins a_g to b_{s g}, and the edge from s_c gets
-letter c. The (10,5) controller came from squad round r2, card c4, and the (12,5) controller from round r3, card c2
-(both rebuilt and checked here); the (15,5) one is ours. Also found and checked: (12,5) 10,368 (Haar graph of
-Z₁₆ ⋊₃ Z₄, ours) and 11,664 again (a 4+4 base over Z₃ × Z₆, squad card r3-c3), (15,5) 22,680 (Haar graph of
-Z₃₅ ⋊₆ Z₄), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, squad card r2-c5).
+letter c. The (10,5) controller came from squad round r2, card c4; the (12,5) voltages from round r3, card c2 (they
+stalled at cost 2 with one chart class; scoring them against all 348 labelled singular sets of Proposition 12(c)
+found a chart that works); both rebuilt and checked here; the (15,5) one is ours. Also found and checked: (12,5)
+11,664 (K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈, card r3-c2, and a 4+4 base over Z₃ × Z₆, card r3-c3) and 10,368
+(Haar graph of Z₁₆ ⋊₃ Z₄, ours), (15,5) 22,680 (Haar graph of Z₃₅ ⋊₆ Z₄), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, card r2-c5).
 
 **What changed in round 3: charts that cover both diagonals.** A vertex's own fibre is reached by closed 4-walks.
 Before, the charts at q = 3, 4 did not cover this "diagonal" with backtracking walks, so every controller vertex
@@ -33,7 +34,7 @@ Round 3 found charts at (k, q) = (4, 3) and (5, 3) that cover both diagonals and
 (§3.1, Proposition 12). Then a controller only needs same-side distances ≤ 4 and a nonsingular nonbacktracking 4-walk
 for each distance-4 pair (Theorem 11). Girth-6 controllers become usable, and plain Haar graphs of metacyclic groups
 work at once: m jumps from 128 to 156 at (15,5) and from 54 to 64 at (12,5), where Haar graphs then stop
-(Proposition 13) and small multi-orbit bases take over (m = 72).
+(Proposition 13) and small multi-orbit bases take over (m = 72, then 75).
 
 **How the (4,3) chart was found (Lemma 5).** All the chart conditions at D = 5 (singular patterns, pencils, diagonals)
 depend only on the points w_c and b_c and on the collineation that A_c induces from the lines through w_c to the lines
@@ -279,7 +280,8 @@ with apsp (VALID at D = 5, INVALID at D = 4); the bold records and the 10,368 gr
 |---|---|---|---|---|---|---|
 | (15, 5) | 5 × 3 | `r3/k5q3_pd112.txt` (112 of 640) | Haar, Z₂₆ ⋊₃ Z₆ | 156 | **25,272** | 177 (88%) |
 | (15, 5) | 5 × 3 | same | Haar, Z₃₅ ⋊₆ Z₄ | 140 | 22,680 | |
-| (12, 5) | 4 × 3 | `r3/k4q3_diag_cls1.txt` (16 of 216) | K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈ (squad r3-c2) | 72 | **11,664** | 81 (89%) |
+| (12, 5) | 4 × 3 | `r3/k4q3_diag_s170.txt` (16 of 216) | K₃,₃ + doubled matching over Z₂₅ (voltages: squad r3-c2) | 75 | **12,150** | 81 (93%) |
+| (12, 5) | 4 × 3 | `r3/k4q3_diag_cls1.txt` (16 of 216) | K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈ (squad r3-c2) | 72 | 11,664 | |
 | (12, 5) | 4 × 3 | same | 4+4 base over Z₃ × Z₆ (squad r3-c3) | 72 | 11,664 | |
 | (12, 5) | 4 × 3 | `r3/k4q3_diag_tt.txt` (16 of 216) | Haar, Z₁₆ ⋊₃ Z₄ | 64 | 10,368 | |
 | (12, 5) | 4 × 3 | same | Haar, Z₁₅ ⋊₂ Z₄ (t = 7, 11 also reach cost 0) | 60 | 9,720 | |
@@ -304,8 +306,11 @@ chart has complete pencils and **exactly 16 singular patterns**, 8 on each side 
 `diag_joint.c`, `diag_coinc.py`, `diag43_allsing.py`: 27 labelled configurations per side up to PGL(4,3), coincidences
 included, 729 pairs; only the independent/independent pair has solutions: 72 in normal form, giving 1,152 distinct
 charts once each letter's collineation is varied, all with 16 singular patterns, complete pencils and both diagonals;
-outputs `diag_charts_all.out`, `diag_coinc.out`). Up to relabelling the letters there are 7 different singular sets
-(`classify_sing.py`, charts `r3/k4q3_diag_cls0..6.txt`).
+outputs `diag_charts_all.out`, `diag_coinc.out`). As labelled sets (letters matter once a controller's edges are
+coloured) there are exactly 348 different singular sets, each with 8 patterns per side; `all_flags43.py` writes all
+of them with a chart realising each (`r3/flags43/s000..s347.{txt,flags}`). So for a fixed coloured controller one can
+test every (4,3) chart that covers both diagonals at once; that is how the 12,150 graph was found.
+(`classify_sing.py` gives 7 classes, but from one collineation per solution only.)
 (d) (4,2): charts covering both diagonals with complete pencils have **at least 48 singular patterns**, and 48 is
 attained (`charts/c4s2_k4_q2.txt`). `r3/dpmin/dp_min.c` scans all 168⁴ combinations of star collineations for each of
 the 36 pairs of coincidence-free labelled configurations (pencils and singular counts are sums over pairs of letters,
