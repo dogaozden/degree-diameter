@@ -1,0 +1,83 @@
+== out/ro_psl11_24_r11.jsonl: 4000 samples, header {"group": "psl 11 x Z_24", "N": 15840, "d": 6, "D": 8, "m": 3, "f": 0, "fix": 24, "anti": 672, "involutions": 112, "r": 11, "alpha": "mat(5,1,7,6)", "frob": null}
+   degenerate (cost >= N/2): 1258
+   cost over generating S: min 16 p1 30 p10 57 median 216 mean 687.9
+   length 2: twisted half-words mean 1.25 (relators 0.156), P(0) 0.847; involutive mean 0.41, P(0) 0.921
+   length 4: twisted half-words mean 69.00 (relators 4.313), P(0) 0.039; involutive mean 12.68, P(0) 0.306
+   length 6: twisted half-words mean 1870.03 (relators 77.918), P(0) 0.000; involutive mean 316.84, P(0) 0.000
+   cost by twisted 4-cycles (n4) and 8-cycles (n8): n4 n8 count min p10 median mean
+     0 0   107     22      35      68    215.7
+     0 1   230     16      36      82    244.9
+     0 2   456     22      46     112    247.7
+     0 3   404     16      61     132    269.1
+     0 4   457     25      75     210    489.2
+     0 5   210     30      85     201    460.9
+     0 6   233     46     129     491    951.6
+     0 7    70     63     177     532   1019.3
+     0 8    85    166     361    1322   1606.1
+     1 4    45    247     271     416    604.9
+     1 5    47    195     318     534    772.1
+     1 6    58    215     336     596    861.6
+     1 7    89    245     463     849   1046.8
+     1 8    53    404     566    1048   1233.5
+   ln(cost) ~ 3.524*1 + 0.292*n4 + 0.156*n8 + 0.018*n12
+
+== out/ro_psl11_24_r23.jsonl: 4000 samples, header {"group": "psl 11 x Z_24", "N": 15840, "d": 6, "D": 8, "m": 3, "f": 0, "fix": 24, "anti": 1344, "involutions": 112, "r": 23, "alpha": "mat(5,1,7,6)", "frob": null}
+   degenerate (cost >= N/2): 1226
+   cost over generating S: min 29 p1 61 p10 109 median 592 mean 1178.8
+   length 2: twisted half-words mean 3.87 (relators 0.483), P(0) 0.598; involutive mean 0.42, P(0) 0.923
+   length 4: twisted half-words mean 131.73 (relators 8.233), P(0) 0.003; involutive mean 13.14, P(0) 0.303
+   length 6: twisted half-words mean 3454.15 (relators 143.923), P(0) 0.000; involutive mean 317.63, P(0) 0.000
+   cost by twisted 4-cycles (n4) and 8-cycles (n8): n4 n8 count min p10 median mean
+     0 0     8     72      74     142    261.6
+     0 1    14     40      56     120    348.1
+     0 2    58     37      57     128    363.2
+     0 3   102     40      71     144    417.5
+     0 4   205     29      76     157    392.9
+     0 5   236     61      88     184    598.6
+     0 6   295     48     100     207    619.0
+     0 7   213     63     105     254    616.9
+     0 8   213     58     120     278    711.5
+     1 4     9    247     289     409    437.7
+     1 5    20    373     414     613    765.0
+     1 6    64    279     419     586    953.8
+     1 7    97    256     455     654   1117.4
+     1 8   125    402     486     816   1124.6
+   ln(cost) ~ 4.639*1 + 0.665*n4 + 0.104*n8 + 0.004*n12
+
+== out/ro_sl25.jsonl: 4000 samples, header {"group": "sl 25 poly x^2+2 x Z_1", "N": 15600, "d": 6, "D": 8, "m": 3, "f": 0, "fix": 24, "anti": 650, "involutions": 2, "r": 1, "alpha": "mat(5,21,12,20)", "frob": null}
+   degenerate (cost >= N/2): 13
+   cost over generating S: min 8 p1 20 p10 42 median 147 mean 451.9
+   length 2: twisted half-words mean 2.00 (relators 0.250), P(0) 0.773; involutive mean 0.01, P(0) 0.997
+   length 4: twisted half-words mean 67.86 (relators 4.242), P(0) 0.035; involutive mean 4.94, P(0) 0.520
+   length 6: twisted half-words mean 1733.44 (relators 72.227), P(0) 0.000; involutive mean 36.49, P(0) 0.166
+   cost by twisted 4-cycles (n4) and 8-cycles (n8): n4 n8 count min p10 median mean
+     0 0   138     15      32      62    113.2
+     0 1   368     12      26      61    100.4
+     0 2   678      8      34      80    137.3
+     0 3   641     20      39      94    152.1
+     0 4   564     12      51     114    207.4
+     0 5   348     13      64     176    336.7
+     0 6   183     34      79     222    507.3
+     0 7    79     60     139     332    661.3
+     0 8    52     82     170     626   1093.2
+     1 4    71    179     234     389    457.7
+     1 5   146    165     248     401    549.4
+     1 6   181    161     294     483    622.0
+     1 7   136    209     348     605    810.9
+     1 8   100    221     444     801   1100.0
+   ln(cost) ~ 2.895*1 + 0.566*n4 + 0.097*n8 + 0.024*n12
+
+== out/rs_psl11_24.jsonl: 4000 samples, header (random S)
+   degenerate (cost >= N/2): 143
+   cost over generating S: min 13 p1 23 p10 39 median 91 mean 205.0
+   length 2: twisted half-words mean 0.00 (relators 0.000), P(0) 1.000; involutive mean 0.39, P(0) 0.903
+   length 4: twisted half-words mean 0.00 (relators 0.000), P(0) 1.000; involutive mean 10.63, P(0) 0.293
+   length 6: twisted half-words mean 0.00 (relators 0.000), P(0) 1.000; involutive mean 293.92, P(0) 0.000
+   cost by involutive 4-cycles (n4) and 8-cycles (n8): n4 n8 count min p10 median mean
+     0 0  2402     13      37      79    150.4
+     0 1   911     15      42     106    219.8
+     0 2   496     22      54     160    358.1
+     0 3    35    118     197     309    968.9
+     0 4     6    132     152     710   1707.7
+     1 4     5    403     429     596   1305.2
+

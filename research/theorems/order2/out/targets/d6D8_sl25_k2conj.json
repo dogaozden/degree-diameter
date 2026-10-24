@@ -1,0 +1,85 @@
+{
+ "group": "sl 25 poly x^2+2 x Z_1",
+ "N": 15600,
+ "d": 6,
+ "D": 8,
+ "m": 3,
+ "f": 0,
+ "random": false,
+ "frob": null,
+ "r": 1,
+ "class_sizes": {
+  "Fix": 24,
+  "Anti": 648,
+  "Inv": 0,
+  "other": 14928
+ },
+ "samples_used": 594,
+ "median_cost": 155.5,
+ "miss_rate": {
+  "Fix": 0.13159371492704827,
+  "Anti": 0.0294768674398304,
+  "Inv": NaN,
+  "other": 0.02878372867654754
+ },
+ "sqrt_other": 0.16965768086516902,
+ "ratio_to_other": {
+  "Fix": 4.571809177532598,
+  "Anti": 1.0240809233255321,
+  "Inv": NaN,
+  "other": 1.0
+ },
+ "ratio_to_sqrt_other": {
+  "Fix": 0.7756425424182765,
+  "Anti": 0.17374319446967076,
+  "Inv": NaN,
+  "other": 0.16965768086516902
+ },
+ "seconds": 23.3,
+ "bins_by_generic_rate": [
+  {
+   "samples": 148,
+   "other": 0.002780010718113612,
+   "sqrt_other": 0.05272580694606401,
+   "Fix": 0.05574324324324324,
+   "Anti": 0.0030655655655655654,
+   "Inv": NaN,
+   "Anti_over_other": 1.1027171750063316,
+   "Anti_over_sqrt_other": 0.058141652885492924,
+   "Fix_over_sqrt_other": 1.0572288310402898
+  },
+  {
+   "samples": 149,
+   "other": 0.0062483365343806874,
+   "sqrt_other": 0.07904642012375189,
+   "Fix": 0.0808165548098434,
+   "Anti": 0.006897837434750187,
+   "Inv": NaN,
+   "Anti_over_other": 1.1039478102364848,
+   "Anti_over_sqrt_other": 0.08726312240264911,
+   "Fix_over_sqrt_other": 1.022393609771578
+  },
+  {
+   "samples": 148,
+   "other": 0.017681266475478696,
+   "sqrt_other": 0.13297092342117015,
+   "Fix": 0.12556306306306306,
+   "Anti": 0.01822655989322656,
+   "Inv": NaN,
+   "Anti_over_other": 1.0308401787001007,
+   "Anti_over_sqrt_other": 0.13707177046139643,
+   "Fix_over_sqrt_other": 0.9442896223662105
+  },
+  {
+   "samples": 149,
+   "other": 0.08817626621204601,
+   "sqrt_other": 0.2969448874994247,
+   "Fix": 0.26370246085011184,
+   "Anti": 0.08946474438644461,
+   "Inv": NaN,
+   "Anti_over_other": 1.0146125281750995,
+   "Anti_over_sqrt_other": 0.30128400303446184,
+   "Fix_over_sqrt_other": 0.8880518640032916
+  }
+ ]
+}
