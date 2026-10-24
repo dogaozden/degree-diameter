@@ -140,3 +140,13 @@ Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generat
   exactly 4, the enumerated floor. c6 (6,8) α sweep on A4 × PSL(2,7) × Z8: 89 valid involution α, all 8 best end at
   exactly 5. Round 3 total: 0 records; it found the best (10,5) and (9,8) leads (3 and 3) and confirmed that plateaus
   are fixed by (group, α).
+- c4 (6,10): SL(2,11) × Z199 18 (one 600 s seed); other groups not reached. c3, c5: as above (stopped after the solves).
+- Round 4 total so far: 4 records in 8 cards ((9,10), (8,9) found by Haikus; (8,10), (7,10) by Opus seeds on the Haikus'
+  near-miss groups). c2 still running SL(2,27) × Z199 at (8,10).
+
+## 2026-10-24, table-squad round 5: climb the ladders with many short seeds
+
+Preamble: research/squads/r5/PREAMBLE.md (protocol: several independent short seeds per group, ORBW=3 after a seed
+that ends at 1–2). Cards: c1 (9,10) SL(2,37) × Z229 … · c2 (8,10) products above 3,912,000 · c3 (8,9) PSL(2,23) × Z109 …
+· c4 (7,10) SL(2,3) × SL(2,7) × Z139 … · c5 (6,10) A5² × Z73 … · c6 (9,8) many seeds on SL(2,13) × Z124 and
+PGL(2,16) × Z67 · c7 (8,8) many seeds on SL(2,11) × Z91 · c8 (6,8) k = 2 rungs 16,128–16,500.
