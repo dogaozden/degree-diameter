@@ -151,3 +151,7 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 20:45 PT (coordinator): correction: (16,5) 31,460 is a published graph (CvB–K 2026), so it does not count as ours; it is now the value to beat.
 
 - Oct 23 20:47 PT (harvest): (13,10) 677,714,400 (was 667,903,200), sl 199 n 43; claude/structured-search-orbit-w5dd4f.
+
+- Oct 23 22:11 PT (harvest): (6,8) 31,680 (was 30,576), psl 11 n 24; claude/degree-diameter-table-squad-0xgp3g.
+- Oct 23 22:11 PT (harvest): (12,9) 34,026,720 (was 33,948,672), sl 41 n 247; claude/structured-search-orbit-w5dd4f.
+- Oct 23 22:11 PT (harvest): (13,9) 67,742,688 (was 63,872,400), sl 103 n 31; claude/structured-search-orbit-04hefm.
