@@ -1,0 +1,20 @@
+# build_haar2.py outputs (research/frontier/build_haar2.py, run with -I)
+# psl 7 x Z61, N=10248 (k=3 f=1 m=5)
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 20496 edges = 163968 max degree = 16 min degree = 16 duplicate edges = 0
+VALID d=16 D=5 group=psl 7 x Z_61 N=10248 vertices=20496
+# pgl 4 x Z151, N=9060 (k=3 f=1 m=5)
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 18120 edges = 144960 max degree = 16 min degree = 16 duplicate edges = 0
+VALID d=16 D=5 group=pgl 4 poly x^2+x+1 x Z_151 N=9060 vertices=18120
+# psl 5 x Z151, N=9060 (k=5 f=1 m=3)
+edge list sha256 = 0e5f9ee28e51561290e06d300d228dcfa545151c5473b8486faaeb3a6f55dc5c
+VALID d=16 D=5 group=psl 5 x Z_151 N=9060 vertices=18120
+# psl 5 x Z181, N=10860 (k=5 f=1 m=3)
+edge list sha256 = b911897cc41407709d4e038ea4bd9b4b0e01df29af822e8c77873912a4568bbd
+VALID d=16 D=5 group=psl 5 x Z_181 N=10860 vertices=21720
+# psl 9 x Z31 (poly x^2+1), N=11160 (k=5 f=1 m=3) -- best valid
+edge list sha256 = ca4c2446f9605f52f03b467a2b17c08fd58309ae0e7996b7290ef8f81e32b2e9
+VALID d=16 D=5 group=psl 9 poly x^2+1 x Z_31 N=11160 vertices=22320

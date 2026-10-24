@@ -1,0 +1,7 @@
+group pgl 7 x Z_31, N=10416, identity 0, H order 62, rows 168, threads 4, setup 0.00s
+wide rows: HW order 248, rows 42, setup 0.00s
+alpha: conj by mat(1,0,4,2) (index 25), z -> 5 z on Z_31
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 5 (+e); mu = 57.03, mu/k = 19.01, fixed-point misses ~ 2.12
+start cost=153
+t=30 steps=729610 evals=5836881 cost=9 best=3 T=0.53
+RESULT d=16 D=5 group=pgl 7 x Z_31 N=10416 best=3 evals=11815081 time=60.0 orbit k=3 m=5 f=1 fix=5

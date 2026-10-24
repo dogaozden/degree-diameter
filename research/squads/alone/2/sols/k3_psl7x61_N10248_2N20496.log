@@ -1,0 +1,8 @@
+group psl 7 x Z_61, N=10248, identity 1281, H order 61, rows 168, threads 4, setup 0.00s
+wide rows: HW order 244, rows 42, setup 0.01s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 13 z on Z_61
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 2 (+e); mu = 51.52, mu/k = 17.17, fixed-point misses ~ 1.03
+start cost=186
+RESULT d=16 D=5 group=psl 7 x Z_61 N=10248 best=0 evals=162465 time=0.8 orbit k=3 m=5 f=1 fix=2
+full diameter check: OK
+wrote runs/k3_psl_7_61_60s.txt

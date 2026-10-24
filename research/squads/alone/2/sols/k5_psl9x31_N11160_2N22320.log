@@ -1,0 +1,8 @@
+group psl 9 poly x^2+1 x Z_31, N=11160, identity 1116, H order 62, rows 180, threads 4, setup 0.00s
+wide rows: HW order 155, rows 72, setup 0.00s
+alpha: conj by mat(1,5,7,7) (index 88), z -> 2 z on Z_31
+ORBIT k=5 m=3 f=1: |Fix(alpha)| = 4 (+e); mu = 86.47, mu/k = 17.29, fixed-point misses ~ 3.78
+start cost=172
+RESULT d=16 D=5 group=psl 9 poly x^2+1 x Z_31 N=11160 best=0 evals=1052777 time=7.8 orbit k=5 m=3 f=1 fix=4
+full diameter check: OK
+wrote runs/lad_k5_psl_9_31.txt
