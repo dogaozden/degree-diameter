@@ -1,0 +1,12 @@
+group prod psl 9 poly x^2+1 meta 26 1 1 x Z_1, N=9360, identity 936, H order 52, rows 180, threads 1, setup 0.00s
+start cost=125
+t=30 steps=82757 evals=1655141 cost=5 best=4 T=0.53
+t=60 steps=166848 evals=3336961 cost=5 best=4 T=0.19
+t=90 steps=249972 evals=4999441 cost=5 best=4 T=0.15
+t=120 steps=333139 evals=6662781 cost=5 best=4 T=0.15
+t=150 steps=414663 evals=8293261 cost=5 best=4 T=0.15
+t=180 steps=498491 evals=9969821 cost=4 best=2 T=0.61
+t=210 steps=581369 evals=11627381 cost=3 best=2 T=0.21
+t=240 steps=663959 evals=13279181 cost=3 best=2 T=0.15
+t=270 steps=747810 evals=14956201 cost=3 best=2 T=0.15
+RESULT d=16 D=5 group=prod psl 9 poly x^2+1 meta 26 1 1 x Z_1 N=9360 best=2 evals=16649221 time=300.0

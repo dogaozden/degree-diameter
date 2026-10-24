@@ -1,0 +1,10 @@
+group prod psl 7 meta 100 1 1 x Z_1, N=16800, identity 2100, H order 60, rows 280, threads 1, setup 0.01s
+start cost=1369
+t=30 steps=48354 evals=967081 cost=749 best=749 T=0.53
+t=60 steps=98135 evals=1962701 cost=725 best=725 T=0.19
+t=90 steps=146054 evals=2921081 cost=695 best=695 T=0.15
+t=120 steps=193293 evals=3865861 cost=695 best=695 T=0.15
+t=150 steps=241534 evals=4830681 cost=695 best=695 T=0.15
+t=180 steps=288459 evals=5769181 cost=695 best=695 T=0.15
+t=210 steps=337461 evals=6749221 cost=695 best=695 T=0.15
+RESULT d=16 D=5 group=prod psl 7 meta 100 1 1 x Z_1 N=16800 best=695 evals=7702481 time=240.0

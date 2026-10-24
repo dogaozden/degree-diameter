@@ -1,0 +1,8 @@
+./run_one.sh psl7_meta50 8400 200 201 prod psl 7 meta 50 1 1 1
+./run_one.sh sl7_meta25 8400 200 202 prod sl 7 meta 25 1 1 1
+./run_one.sh pgl7_meta25 8400 200 203 prod pgl 7 meta 25 1 1 1
+./run_one.sh psl8_meta16 8064 200 204 prod psl 8 meta 16 1 1 1
+./run_one.sh psl5_psl5_n2 7200 200 205 prod psl 5 psl 5 2
+./run_one.sh sl5_psl5 7200 200 206 prod sl 5 psl 5 1
+./run_one.sh psl9_meta22 7920 200 207 prod psl 9 meta 22 1 1 1
+./run_one.sh cyclic_control 8400 200 208 meta 8400 1 1 1

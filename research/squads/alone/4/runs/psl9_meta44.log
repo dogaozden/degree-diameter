@@ -1,0 +1,10 @@
+group prod psl 9 poly x^2+1 meta 44 1 1 x Z_1, N=15840, identity 1584, H order 55, rows 288, threads 1, setup 0.00s
+start cost=1158
+t=30 steps=47018 evals=940361 cost=564 best=564 T=0.53
+t=60 steps=96419 evals=1928381 cost=564 best=564 T=0.19
+t=90 steps=144612 evals=2892241 cost=564 best=564 T=0.15
+t=120 steps=196262 evals=3925241 cost=564 best=564 T=0.15
+t=150 steps=248151 evals=4963021 cost=564 best=564 T=0.15
+t=180 steps=296938 evals=5938761 cost=564 best=564 T=0.55
+t=210 steps=347455 evals=6949101 cost=564 best=564 T=0.20
+RESULT d=16 D=5 group=prod psl 9 poly x^2+1 meta 44 1 1 x Z_1 N=15840 best=564 evals=7971901 time=240.0

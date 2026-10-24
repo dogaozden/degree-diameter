@@ -1,0 +1,12 @@
+group prod pgl 7 meta 28 1 1 x Z_1, N=9408, identity 0, H order 56, rows 168, threads 1, setup 0.00s
+start cost=113
+t=30 steps=87449 evals=1748981 cost=4 best=4 T=0.53
+t=60 steps=173929 evals=3478581 cost=4 best=4 T=0.19
+t=90 steps=259664 evals=5193281 cost=4 best=4 T=0.15
+t=120 steps=344214 evals=6884281 cost=4 best=4 T=0.15
+t=150 steps=427751 evals=8555021 cost=4 best=4 T=0.15
+t=180 steps=513866 evals=10277321 cost=7 best=4 T=0.94
+t=210 steps=600148 evals=12002961 cost=7 best=4 T=0.33
+t=240 steps=683402 evals=13668041 cost=7 best=4 T=0.15
+t=270 steps=770649 evals=15412981 cost=7 best=4 T=0.15
+RESULT d=16 D=5 group=prod pgl 7 meta 28 1 1 x Z_1 N=9408 best=4 evals=17171561 time=300.0
