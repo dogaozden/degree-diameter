@@ -20,6 +20,7 @@
  *           a full evaluation runs, the best full state is saved, and the sample is refilled with failing sources
  *   IN      start from a solution file;  OUT  write the best (full-cost) state
  *   DIAG=k  print the missing sheets by hexagon distance of the target for k sources, then exit
+ *   BASE    base polygon file (default hex/hex_q{q}.bin; e.g. gq/gq_q7.bin from gqgen, with D=5)
  * Solution file: "q j m D cost" line, group spec line, then j lines of sigma_t (point -> line index), then j lines
  *   of matching voltages (per point, direction point->line), then one line of hexagon voltages per flag
  *   (line-major: k-th point of line l, direction point->line).
@@ -172,7 +173,8 @@ static int load(const char *fn) {
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: lift q (env GROUP, J, D, ...)\n"); return 1; }
     q = atoi(argv[1]);
-    char fn[64]; sprintf(fn, "hex/hex_q%d.bin", q);
+    char fn[256]; sprintf(fn, "hex/hex_q%d.bin", q);
+    if (getenv("BASE")) snprintf(fn, sizeof fn, "%s", getenv("BASE"));
     FILE *f = fopen(fn, "rb"); int32_t h[3]; if (!f || fread(h, 4, 3, f) != 3) { fprintf(stderr, "no %s\n", fn); return 1; }
     N = h[1]; Q1 = q + 1; V = 2 * N;
     pl = malloc(4L * N * Q1); if (fread(pl, 4, (size_t)N * Q1, f) != (size_t)N * Q1) return 1; fclose(f);

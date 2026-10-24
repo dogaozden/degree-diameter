@@ -14,6 +14,8 @@
  * c in {0, q+1}}.  Anneals nu by single flag flips with exact incremental updates (each flag lies on 6 q^5
  * geodesics).  sigma is fixed (from IN or random).
  * usage: dmfast q   env: SEED, ITERS, SECS, TEMP0, TEMP1, IN (lift2 DM solution file), OUT (lift2 DM solution file)
+ *   BASE=<polygon file> NPOLY=<n> (default hex/hex_q{q}.bin, n = 6; gq/gq_q{q}.bin with NPOLY=4 for quadrangles,
+ *   target diameter n+1 = 5); NOROUTE=1 ignores routes; SWAPP=p also anneals sigma; NUZERO=1 starts from nu = 0
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +24,7 @@
 #include <math.h>
 #include <time.h>
 
-static int q, Np, Q1, V;            /* Np points (= lines); vertices 0..Np-1 points, Np..2Np-1 lines */
+static int q, Np, Q1, V, NP = 6;            /* NP = polygon diameter n (6 hexagon, 4 quadrangle) */            /* Np points (= lines); vertices 0..Np-1 points, Np..2Np-1 lines */
 static int *adj;                    /* V x Q1 hexagon neighbours */
 static int *flagof;                 /* V x Q1 -> flag index (shared by both ends) */
 static int *flagp, *flagl;          /* flag -> point, line vertex */
@@ -38,7 +40,8 @@ static inline size_t pidx(int a, int b) {   /* a, b same class */
 }
 
 static void load_hex(void) {
-    char fn[64]; sprintf(fn, "hex/hex_q%d.bin", q);
+    char fn[256]; sprintf(fn, "hex/hex_q%d.bin", q);
+    if (getenv("BASE")) snprintf(fn, sizeof fn, "%s", getenv("BASE"));
     FILE *f = fopen(fn, "rb"); int32_t h[3]; if (!f || fread(h, 4, 3, f) != 3) { fprintf(stderr, "no hex\n"); exit(1); }
     Np = h[1]; Q1 = q + 1; V = 2 * Np;
     int32_t *pl = malloc(4L * Np * Q1); if (fread(pl, 4, (size_t)Np * Q1, f) != (size_t)Np * Q1) exit(1); fclose(f);
@@ -63,7 +66,7 @@ static void compute_routes(void) {
     uint8_t *A = malloc(V), *B = malloc(V);
     for (int s = 0; s < V; s++) {
         memset(A, 0, V); A[s] = 1;   /* j=0, f=0 -> bit 0 */
-        for (int step = 1; step <= 6; step++) {
+        for (int step = 1; step <= NP; step++) {
             memset(B, 0, V);
             for (int x = 0; x < V; x++) if (A[x]) {
                 uint8_t a = A[x];
@@ -88,7 +91,7 @@ static int *dist5; static uint8_t *par5; static int *qu;
 static void count_source(int s) {
     for (int v = 0; v < V; v++) dist5[v] = -1;
     int h = 0, t = 0; dist5[s] = 0; par5[s] = 0; qu[t++] = s;
-    while (h < t) { int x = qu[h++]; if (dist5[x] == 5) continue;
+    while (h < t) { int x = qu[h++]; if (dist5[x] == NP - 1) continue;
         for (int k = 0; k < Q1; k++) { int y = adj[x * Q1 + k]; if (dist5[y] < 0) { dist5[y] = dist5[x] + 1; par5[y] = par5[x] ^ nu[flagof[x * Q1 + k]]; qu[t++] = y; } } }
     int cls = s >= Np;
     for (int u = cls * Np; u < (cls + 1) * Np; u++) {
@@ -126,11 +129,11 @@ static void walks_from(int start, int avoid_first, int maxlen, int store[8][4096
 static int Rw[8][4096 * 8], Rpar[8][4096 * 8]; static int nR[8];
 static long flip_delta(int f, int apply) {
     int p = flagp[f], l = flagl[f];
-    walks_from(p, l, 5, Lw, Lpar, nL);
-    walks_from(l, p, 5, Rw, Rpar, nR);
+    walks_from(p, l, NP - 1, Lw, Lpar, nL);
+    walks_from(l, p, NP - 1, Rw, Rpar, nR);
     long d = 0;
-    for (int k = 0; k <= 5; k++) {
-        int kr = 5 - k;
+    for (int k = 0; k <= NP - 1; k++) {
+        int kr = NP - 1 - k;
         for (int i = 0; i < nL[k]; i++) {
             int a = Lw[k][i], pa = Lpar[k][i];
             for (int j = 0; j < nR[kr]; j++) {
@@ -151,7 +154,7 @@ static long flip_delta(int f, int apply) {
 }
 
 int main(int argc, char **argv) {
-    q = atoi(argv[1]); load_hex();
+    q = atoi(argv[1]); if (getenv("NPOLY")) NP = atoi(getenv("NPOLY")); load_hex();
     if (getenv("SEED")) rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL;
     for (int i = 0; i < 10; i++) rnd();
     int NF = Np * Q1;
