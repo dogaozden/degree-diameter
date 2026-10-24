@@ -1,0 +1,8 @@
+group sl 13 x Z_61, N=133224, identity 9516, H order 61, rows 2184, threads 1, setup 0.01s
+wide rows: HW order 244, rows 546, setup 0.02s
+alpha: conj by mat(3,8,0,9) (index 598), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 11 (+e); mu = 31.80, mu/k = 10.60, fixed-point misses ~ 1.49
+start cost=270
+RESULT d=11 D=7 group=sl 13 x Z_61 N=133224 best=0 evals=112681 time=13.2 orbit k=3 m=3 f=2 fix=11
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/exp2/sols/d11D7_orb_sl_13x61.txt
