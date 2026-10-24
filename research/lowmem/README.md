@@ -1,0 +1,40 @@
+# research/lowmem: low-memory orbit Haar search for N ~ 10^9 (job "cell-15-10")
+
+Goal of the job: beat the bipartite (Δ, D) = (15,10) record, 2,300,326,510 vertices (DS14v2 table, 2013), i.e. a Haar
+graph H(G,S) with |G| > 1,150,163,255 and |S| = 15. The orbit search of `../structured/haar_sym.c` (branch
+claude/structured-search-orbit-w5dd4f) is the method that broke the random-S wall at D = 7..10, but it stores about
+11–14 bytes per group element (coset index, 64-bit row tables, bitsets): ~14–17 GB at N = 1.2·10⁹, more than this
+16 GB box. `haar_lean.c` runs the same orbit annealing with a different evaluator that stores **two bitsets of N bits
+and nothing per element** (0.29–0.31 GB per thread at N = 1.2·10⁹).
+
+## How the evaluator works
+
+G = SL(2,p) × Z_n or PSL(2,p) × Z_n, p prime, gcd(p, n) = 1. Rows are the left cosets of H = U × Z_n with
+U = {[[1,t],[0,1]]} (cyclic of order L = pn). The coset of M = [[a,b],[c,d]] is fixed by its first column u = (a,c)
+(up to sign for PSL), with representative g_u = [u | v(u)], v(u) = (0, 1/a) or (−1/c, 0); M = g_u U_t with t = b/a or
+d/c, and (M, z) is bit CRT(t, z) of row u. Left multiplication by s = (A, z_s) sends row u to row Au and rotates the
+row by CRT(t', z_s), where A g_u = g_{Au} U_{t'}. So a BFS level is R × Δ rotated ORs of long rows (R = p² − 1 rows of
+pn ≈ 60,000 bits for p ≈ 140), which streams through memory, and the generator tables have only R entries. Sparse
+levels push element lists through the same tables. The last level only counts (a row stops when it is full) and
+gives up as soon as the count reaches the best candidate of the move (exact).
+
+Speed on this container (Xeon 2.1 GHz, 4 cores; single-core streaming bandwidth ~11–14 GB/s, ~49 GB/s for 4 jobs):
+0.9 s per evaluation at N = 1.16·10⁹ (levels 7, 8, 9 are the dense ones, ~0.25 s each), against ~6 s at N = 6.6·10⁸ for
+haar_sym FAST=1 (7.5 GB).
+
+## Validation (before any (15,10) run)
+
+- Cost 0 and full diameter check VALID on the record files d8D10_sl_59_19, d8D10_sl_67_13, d10D10_psl_389_1,
+  d10D10_sl_79_61 (../frontier/sols).
+- Nonzero costs: each record with one generator replaced by a random element (perturb seeds 1–3), cost compared with
+  the independent checkers run with header D' = D − 1 (missing count on the target side): identical on 12 of 12
+  (SL and PSL, D = 10 and D = 9 with both BFS sides).
+- Search: (10,10) SL(2,79) × Z61 (record order, μ = 15.3) solved in 97 evaluations, haarcheck_sl VALID.
+
+## Files
+
+- `haar_lean.c`: the program (usage and environment variables in its header comment). Build:
+  `gcc -O3 -march=native -mprefer-vector-width=512 -fopenmp -o haar_lean haar_lean.c -lm`
+- `run1.sh SECS SEED FAM P N [VAR=x ...]`: one (15,10) run (nice 5, K = 8), solution to ../frontier/sols/, log to runs/.
+- `mu_list.py d D LO HI [k] [NMAX]`: SL/PSL(2,p) × Z_n in an order window with μ = N e^(−W/N).
+- `runs/`: logs, and the independent checker outputs (`*.haarcheck2.txt`, `*.haarcheck_sl.txt`).
