@@ -179,10 +179,30 @@ Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/f
 | (4,10) | 12,416 (ours) | dipole | F_97 ⋊ C_64, acting with order 32 |
 | (4,7) | 840 (Bond–Delorme) | dipole | A5 × Z7: the exception |
 
-In every affine case the walk sums are signed sums of powers of one field element, and they spread over the fibres
-much better than random words do. At (3,9), random S would leave about 34 vertices uncovered (μ = N e^{−W/N}),
-yet 5 % of all normal-form sets work. The evidence is the eight cells above. Exhaustive searches of this family show
-it does not reach beyond the table in the other cells (§2.4).
+In every affine case the walk sums are signed sums of powers of one field element. The evidence is the eight cells
+above; exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.4).
+
+### 3.2 In the small cells, success is decided by the far lower tail, so search all groups
+
+`structure_factor.py` → `runs/structure_factor.txt` measures the uncovered count of random S in the record groups
+and in control groups of the same order that have no solution.
+
+| group | μ = N e^{−W/N} (per condition) | mean of random S | variance/mean | 1st percentile | valid fraction |
+|---|---|---|---|---|---|
+| (3,9) Z23 ⋊ Z11 (record) | 67 | 1.03 μ | 111 | 0 | 4.8 % of normal forms |
+| (4,7) (432,233) (record) | 69 | 2.5 μ | 163 | 8 | 3.3·10⁻⁴ of normal forms |
+| (4,7) (432,249) (record) | 69 | 3.8 μ | 217 | 20 | – |
+| (4,8) (1092,4) (record) | 54 | 6.1 μ | 237 | 11 | 1.3·10⁻⁵ of plan sets |
+| (4,7) controls (432,30), (432,3), (444,1) (no solution) | 69–76 | 3.1–4.1 μ | 120–166 | 14–38 | 0 |
+
+- The Poisson model of SIZE_LAW.md predicts variance/mean 1 and P(valid) = e^{−μ} ≈ 10^{−24}–10^{−30}. Neither
+  holds here.
+- Every group, solving or not, is strongly overdispersed. The record groups differ from the controls only in the
+  extreme lower tail.
+- So in the small-N cells no averaged quantity, including μ, the screening score or the quotient balance of §4,
+  can tell which group will solve.
+- **That is why exhaustive coverage of all groups of the right order found (4,7).** Annealing over a few families
+  missed it, even though in the right group annealing finds a solution in seconds.
 
 ## 4. The metacyclic records of the voltage-lifts session (45 solutions, D ≥ 7)
 
