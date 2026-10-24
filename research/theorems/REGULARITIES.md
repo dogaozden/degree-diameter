@@ -175,8 +175,11 @@ D = 8 with Δ = 10, 12, 14, 16 (0.10–0.11, the unexplained GH family). The new
   elements, χ² = 3.37 (5 % critical value 5.99). Quotients of full order ≤ 6 (each gives a cycle of length ≤ 12
   through every vertex): 41 observed against 56.4 expected (about 2σ low). The annealing mildly avoids short cycles.
   Girths: 8 or 10 in almost all records, 6 in the f = 3 orbit records (commuting torus letters, as STRUCTURE.md §8 says).
-- **n is not tied to q.** The pairs (q, n) in the records (`tabulate_out.txt`) follow only from hitting a target
-  order N ≈ |Q|·n. The orbit records have every prime of n ≡ 1 mod 3, by design (STRUCTURE.md §2). No n | q ± 1 pattern.
+- **n is not tied to q** (`nq_stats.py` → `nq_stats_out.txt`). In the 66 random-S records with n > 1, n divides q−1 in 14,
+  q+1 in 14 and |Q| in 32 (mostly small n). In the 27 orbit records, n is prime in 22 and has all primes ≡ 1 mod 3 in 25,
+  which is the recipe (STRUCTURE.md §2). It divides |Q| in only 3. n is chosen to hit a target order N ≈ |Q|·n. The orbit
+  shape is also the recipe: (k, f) = (3, 1) for Δ ≡ 1, (3, 2) for Δ ≡ 2, (3, 0) for Δ ≡ 0 mod 3, plus one k = 5 at
+  (11,8) (`tabulate_out.txt`, orbit column).
 - **Metacyclic records** (`meta_table.py` → `meta_table_out.txt`, 45 solutions, D = 5–10): 39/45 have a faithful
   action (ord_m r = k), 11/45 have m prime, and m is otherwise any composite. The abelianisation is small (|G^ab| is
   0.03–1.7 % of N for D ≥ 8). The j-parts of S follow no pattern. No formula for (m, k, r, S).
@@ -207,4 +210,5 @@ D = 8 with Δ = 10, 12, 14, 16 (0.10–0.11, the unexplained GH family). The new
 | polygons.py, pcover.c, randbase.py | bases/, runs/pc_*, runs/zero_voltage_n2_gq3.txt, runs/cover_random_bases.txt | polygon covers |
 | flags.py, flags_affine.py, cflags.py, bflags.py, buildings.py, walkcount.c | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
 | coset.py | runs/coset_cubic.txt | coset graphs with cyclic stabilisers |
+| nq_stats.py | nq_stats_out.txt | is n tied to q? |
 | cells.py, walkhist.py | cells_out.txt, runs/walkhist_C23.txt | per-cell Moore ratios; walk multiplicities in C(2,3) |
