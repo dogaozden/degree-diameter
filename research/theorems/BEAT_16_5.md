@@ -118,3 +118,27 @@ How it was found: the six order-64 controllers with the universal chart alone ga
 missed 3 of its 64 same-side controller targets). `rcl/chartfit2.c` anneals the chart on the exact number of missed
 (x, y) pairs over all same-side targets of the two base vertices (exact for these vertex-transitive lifts; it
 reproduced the BFS count 188,928 for the first chart) and reached 0 for SmallGroup(64,43) within 90 s.
+
+### 4.3 Independent rebuild
+
+`rcl/rebuild_gap.g` rebuilds the graph in GAP from the definition alone (GAP's own SmallGroup(64,43) elements and
+GF(4) arithmetic; shares only the 40 chart digits and S with the Python builder). The sorted edge list is identical
+(sha256 of sorted lists 8cfe42ec…aec1fce for both) and apsp gives RESULT VALID d=16 D=5 n=32768
+(`check_d16D5_32768.txt`).
+
+### 4.4 Why 64 per side, and what limits the next step
+
+- Each controller vertex needs a closed label-reduced walk of length 4 (a 4-cycle): proved above (backtracking
+  closed walks reach at most 70 of the 85 projective points of the fiber). So the controller is a bipartite
+  4-regular graph of diameter 5 with a 4-cycle at every vertex; |V| = 256·|C|.
+- Haar controllers H(G, S), |S| = 4: exhaustive over all groups of orders 40–121 (`rcl/haar_summary.txt`). With a
+  4-cycle and diameter 5 they exist at orders 40, 50, 60 and 64 and at no order 65–121. 64 is the Haar maximum.
+- The (4,5) bipartite record without the 4-cycle condition is 162 (81 per side; it has girth 6). A controller
+  with 65–81 per side and 4-cycles everywhere would give 33,280–41,472. Searches running: permutation-voltage
+  lifts of 2+2, 3+3, 4+4 bases by all groups of orders 33–48, 22–32, 17–24 (`rcl/pvctrl.c`, `rcl/run_pv.sh`);
+  direct annealing of 4-regular bipartite graphs (`rcl/anneal45.c`) is too weak (stuck at ~80 violations at 50
+  per side).
+- The chart: per-controller fitting (`rcl/chartfit2.c`, `rcl/chartfit3.c` for any permutation-voltage controller)
+  is exact and fast. A chart that works for every such controller (universal + the distance-2 hyperplane condition
+  for all 12 label pairs) was not found (annealing stops at 4 violations); the winning chart has 14 singular words
+  and fails the distance-2 condition for labels bb and BB, and the controller's other walks cover those pairs.
