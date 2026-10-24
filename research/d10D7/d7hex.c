@@ -397,6 +397,7 @@ static void hubgraph_static(int k_src, int s) {   /* add (s=+1) or remove (s=-1)
     free(buf);
 }
 static int fsK = -1;
+static double T0override = 0;   /* growth rounds cool down: round r starts at T0/(r+1) */
 static void fs_free(void) {   /* release the proxy structures of the previous fast_search call */
     if (fsK < 0) return;
     for (int k = 0; k < fsK; k++) { free(cA[k]); free(cB[k]); free(oppA[k]); free(oppB[k]); free(n4p[k]); free(n2p[k]); free(n4l[k]); free(n2l[k]); }
@@ -442,8 +443,8 @@ static long fast_search(double maxsec) {
     for (int L = 0; L < N; L++) lineB(L, +1);
     if (!getenv("NOHGSTATIC")) for (int k = 0; k < K; k++) hubgraph_static(k, +1);
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
-    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = getenv("T0") ? atof(getenv("T0")) : 0.6;
-    int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
+    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = T0override > 0 ? T0override : getenv("T0") ? atof(getenv("T0")) : 0.6;
+    int zcap = getenv("ZCAP") ? atoi(getenv("ZCAP")) : 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
     double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
     long impref = zeros;
@@ -470,7 +471,7 @@ static long fast_search(double maxsec) {
                     for (int a = 0; a < noppA[kk]; a++) if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     for (int a = 0; a < noppB[kk]; a++) if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
-                if (zeros < lastchk && (zeros < 64 || zeros * 5 < lastchk * 4)) {   /* exact BFS check of all freed sources (only after real progress) */
+                if (zeros < 600 && zeros < lastchk && (zeros < 64 || zeros * 5 < lastchk * 4)) {   /* exact BFS check of all freed sources (only after real progress) */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
@@ -749,8 +750,11 @@ static int grow_loop(const char *out, int *per, int *per2, int *badlist) {
             int c = -1;
             if (hv == 0) {
                 long prev = -1;
+                double t0base = getenv("T0") ? atof(getenv("T0")) : 0.3;
                 for (int r = 0; r < rounds; r++) {   /* keep searching while the proxy still falls by 30% per round */
+                    T0override = t0base / (r + 1);
                     nodrop = 1; long zz = fast_search(stepsec); nodrop = 0;
+                    T0override = 0;
                     if (zz == 0 || (prev >= 0 && zz * 10 > prev * 7)) break;
                     prev = zz;
                 }
