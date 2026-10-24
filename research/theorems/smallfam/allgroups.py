@@ -102,6 +102,7 @@ def main():
     ap.add_argument('--tag', default='')
     ap.add_argument('--base', default=None, help='lift mode: base file for lx (plan = Aut-orbit reps of the first free voltage)')
     ap.add_argument('--cycles', type=int, default=3, help='lift mode: number of independent cycles of the base (rank filter)')
+    ap.add_argument('--abmax', type=int, default=0, help='lift mode: generic lattice bound on |G^ab| (liftbound.py); 0 = off')
     a = ap.parse_args()
     mode = 'haar' if a.base is None else 'lift_' + os.path.splitext(os.path.basename(a.base))[0]
     outp = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv' if a.base is None else f'{mode}_D{a.D}{a.tag}.tsv')
@@ -125,6 +126,10 @@ def main():
                     log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\trank>{a.cycles}\t0\t0\t-\n'); log.flush()
                     continue
                 fr = 'lift'
+                from math import prod
+                if a.abmax and prod(inv) > a.abmax:
+                    log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\tabfail(|G^ab|>{a.abmax})\t0\t0\t-\n'); log.flush()
+                    continue
             elif ninv > a.Delta - 1:
                 log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\trank>{a.Delta-1}\t0\t0\t-\n'); log.flush()
                 continue
