@@ -2900,3 +2900,5 @@ screen	4760	meta 85 56 69 1	min=1712	p10=2214	median=2820	mu=48.4	score=104.09
 screen	4760	meta 85 56 84 1	min=1132	p10=1529	median=2299	mu=48.4	score=79.15
 screen	4760	meta 85 56 9 1	min=20	p10=61	median=196	mu=48.4	score=5.31
 run	4658	meta 137 34 16 1	seed=1	best=0	check=OK	171s
+run	4662	meta 259 18 33 1	seed=1	best=1	check=-	400s
+run	4662	meta 259 18 33 1	seed=2	best=0	check=OK	307s

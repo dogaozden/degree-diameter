@@ -8,7 +8,7 @@
   | cell | table (holder) | ours | construction |
   |---|---|---|---|
   | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
-  | (5,8) | 9,234 (Loz) | **9,316** | Haar graph of Z137 ⋊₁₆ Z34 |
+  | (5,8) | 9,234 (Loz) | **9,324** | Haar graph of Z259 ⋊₃₃ Z18 |
   | (4,10) | 11,748 (Loz) | **11,988** | Haar graph of Z333 ⋊₈₃ Z18 |
   | (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
   | (5,10) | 90,068 (Loz) | **95,472** | Haar graph of Z1989 ⋊₄₆₁ Z24 |
@@ -66,7 +66,7 @@ Solution files: `sols/rebuild_*.txt`.
 | cell | table (holder) | ours | construction | file |
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
-| (5,8) | 9,234 (Loz) | **9,316** (+0.9 %) | Haar graph of Z137 ⋊₁₆ Z34 (metacyclic) | `sols/d5D8_n9316_haar_meta137_34_16.txt` |
+| (5,8) | 9,234 (Loz) | **9,324** (+1.0 %) | Haar graph of Z259 ⋊₃₃ Z18 (metacyclic) | `sols/d5D8_n9324_haar_meta259_18_33.txt`. Also 9,316 (Z137 ⋊₁₆ Z34) |
 | (4,10) | 11,748 (Loz) | **11,988** (+2.0 %) | Haar graph of Z333 ⋊₈₃ Z18 (metacyclic) | `sols/d4D10_n11988_haar_meta333_18_83.txt`. Also 11,772 (Z218 ⋊₃ Z27) |
 | (5,10) | 90,068 (Loz) | **95,472** (+6.0 %) | Haar graph of Z1989 ⋊₄₆₁ Z24 (metacyclic) | `sols/d5D10_n95472_haar_meta1989_24_461.txt`. Also 93,738, 93,704, 93,444, 93,310, 93,240, 93,196, 93,166, 93,120, 93,000, 92,492, 92,318, 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
 | (5,9) | 27,936 (Loz) | **28,842** (+3.2 %) | Haar graph of Z437 ⋊₂₆ Z33 (metacyclic) | `sols/d5D9_n28842_haar_meta437_33_26.txt`. Also 28,560, 28,444, 28,418, 28,094, 27,972 and 27,948 |
@@ -83,8 +83,9 @@ the repo's build_haar2.py:
 - (5,10) 91,812: sha256 90994a5f…;
 - (5,10) 91,756: sha256 a28102a9…;
 - (5,10) 91,728: sha256 32998e69…;
-- (5,8) 9,316: sha256 dabe25b3…. A networkx all-pairs diameter is also in
-  `verify/d5D8_n9316_haar_meta137_34_16.networkx.txt`;
+- (5,8) 9,324: sha256 58d5aca8…. A networkx all-pairs diameter is also in
+  `verify/d5D8_n9324_haar_meta259_18_33.networkx.txt`;
+- (5,8) 9,316: sha256 dabe25b3…, with networkx in `verify/d5D8_n9316_haar_meta137_34_16.networkx.txt`;
 - (4,10) 11,988: sha256 8528201d…. A networkx all-pairs diameter is also in
   `verify/d4D10_n11988_haar_meta333_18_83.networkx.txt`;
 - (4,10) 11,772: sha256 4665f9f1…, with networkx in `verify/d4D10_n11772_haar_meta218_27_3.networkx.txt`;
@@ -155,9 +156,11 @@ Outputs are in `verify/`.
   (random-set minimum cost 13). μ at this order is 22.5.
 - The size law predicted the cell as "marginal" (+0.7 %) but nobody had run it.
 
-**(5,8) = 9,316.**
-- Haar graph of Z137 ⋊₁₆ Z34. Connection set (a, j): (0,0), (47,2), (45,9), (5,31), (115,1).
-- Found by haar_cell.py after 171 s (N = 4,618–4,760 window). The size law had called this cell "can't" (−6.6 %).
+**(5,8) = 9,324.**
+- Haar graph of Z259 ⋊₃₃ Z18. Connection set (a, j): (0,0), (8,1), (247,1), (95,10), (68,7).
+- Found by haar_cell.py (N = 4,618–4,760 window, 2,901 screened candidates, annealed in order of N): N = 4,658
+  (Z137 ⋊₁₆ Z34, connection set (0,0), (47,2), (45,9), (5,31), (115,1); n = 9,316) solved after 171 s, then
+  N = 4,662 solved with seed 2 after 307 s (seed 1 stalled at cost 1). The size law had called this cell "can't" (−6.6 %).
   The lift sweeps over orders 9236–9500 had found nothing.
 
 **(4,10) = 11,988.**
@@ -209,7 +212,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | (7,7), (9..16,7) | 23436 … 4022340 (DGQ) | | rebuilt 23436 = 3·GH(5) | §3.2 (polygon family saturated); Haar can't (tables 1.07–1.44 × the random ceiling) |
 | **(3,8)** | 256 (DGQ) | 510 | **288** | **new record** (§2.0). Two pushes over orders 290–348 found nothing above 288 (best cost 10 at 320) |
 | (4,8) | 2184 (Loz) | 6,560 | – | rich sweep (orders 2186–2260): no solution; wide sweep and haar_gen3 queued |
-| **(5,8)** | 9234 (Loz) | 43,690 | **9,316** | **new record** (§2.0): Haar(Z137 ⋊₁₆ Z34) from the haar_gen3 sweep. The rich and wide lift sweeps (orders 9236–9500) found nothing; GH(3) + matching lifts reach only m = 6 (§3.3) |
+| **(5,8)** | 9234 (Loz) | 43,690 | **9,324** | **new record** (§2.0): Haar(Z259 ⋊₃₃ Z18) from the haar_gen3 sweep (also 9,316). The rich and wide lift sweeps (orders 9236–9500) found nothing; GH(3) + matching lifts reach only m = 6 (§3.3) |
 | (10,11,12,14,16,8) | 1176480 … 36201060 (DGQ) | | – | §3.3: about 2.5× beyond random lifts of their family; μ = 57–733 at the table orders |
 | (3,9) | 506 (Loz) | 1,022 | – | negative. 133 lift searches (rich sweep, orders 508–540; the wide sweep was cut short by the container restart): best cost 18 (n = 540). haar_gen3 sweep (N = 254–275): best cost 30. Field-affine 2+2 lifts are exhaustively negative (§4) |
 | (4,9) | 4970 (Loz) | 19,682 | – | rich and wide lift sweeps (orders 4972–5100): no solution; haar_gen3 sweep queued |
