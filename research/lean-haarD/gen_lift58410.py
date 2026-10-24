@@ -435,7 +435,7 @@ noncomputable def equiv{nrec} : {grp}.Grp ⊕ {grp}.Grp ≃ Fin {nrec} :=
   (Equiv.sumCongr {grp}.equivG {grp}.equivG).trans (finSumFinEquiv.trans (finCongr (by norm_num)))
 
 /-- The Haar graph of `SS`, transported to `Fin {nrec}`. -/
-def G{nrec} : SimpleGraph (Fin {nrec}) := (haarGraph SS).comap equiv{nrec}.symm
+noncomputable def G{nrec} : SimpleGraph (Fin {nrec}) := (haarGraph SS).comap equiv{nrec}.symm
 
 theorem isBipartiteDegDiam_G{nrec} : BipartiteDD.IsBipartiteDegDiam G{nrec} {delta} {D} := by
   have h := isBipartiteDegDiam8_of SS G{nrec} equiv{nrec} (fun x y => by simp [G{nrec}, SimpleGraph.comap_adj])
@@ -466,7 +466,7 @@ noncomputable def equiv{nrec} : {grp}.Grp ⊕ {grp}.Grp ≃ Fin {nrec} :=
   (Equiv.sumCongr {grp}.equivG {grp}.equivG).trans (finSumFinEquiv.trans (finCongr (by norm_num)))
 
 /-- The Haar graph of `SS`, transported to `Fin {nrec}`. -/
-def G{nrec} : SimpleGraph (Fin {nrec}) := (haarGraph SS).comap equiv{nrec}.symm
+noncomputable def G{nrec} : SimpleGraph (Fin {nrec}) := (haarGraph SS).comap equiv{nrec}.symm
 
 theorem isBipartiteDegDiam_G{nrec} : BipartiteDD.IsBipartiteDegDiam G{nrec} {delta} {D} := by
   have h := haar_isBipartiteDegDiam10_of_equiv SS equiv{nrec} coverD

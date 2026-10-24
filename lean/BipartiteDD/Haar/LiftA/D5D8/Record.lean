@@ -14,7 +14,7 @@ noncomputable def equiv9576 : Meta266.Grp ⊕ Meta266.Grp ≃ Fin 9576 :=
   (Equiv.sumCongr Meta266.equivG Meta266.equivG).trans (finSumFinEquiv.trans (finCongr (by norm_num)))
 
 /-- The Haar graph of `SS`, transported to `Fin 9576`. -/
-def G9576 : SimpleGraph (Fin 9576) := (haarGraph SS).comap equiv9576.symm
+noncomputable def G9576 : SimpleGraph (Fin 9576) := (haarGraph SS).comap equiv9576.symm
 
 theorem isBipartiteDegDiam_G9576 : BipartiteDD.IsBipartiteDegDiam G9576 5 8 := by
   have h := isBipartiteDegDiam8_of SS G9576 equiv9576 (fun x y => by simp [G9576, SimpleGraph.comap_adj])

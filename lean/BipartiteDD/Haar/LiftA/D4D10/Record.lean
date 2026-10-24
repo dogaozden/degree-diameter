@@ -14,7 +14,7 @@ noncomputable def equiv12246 : Meta157.Grp ⊕ Meta157.Grp ≃ Fin 12246 :=
   (Equiv.sumCongr Meta157.equivG Meta157.equivG).trans (finSumFinEquiv.trans (finCongr (by norm_num)))
 
 /-- The Haar graph of `SS`, transported to `Fin 12246`. -/
-def G12246 : SimpleGraph (Fin 12246) := (haarGraph SS).comap equiv12246.symm
+noncomputable def G12246 : SimpleGraph (Fin 12246) := (haarGraph SS).comap equiv12246.symm
 
 theorem isBipartiteDegDiam_G12246 : BipartiteDD.IsBipartiteDegDiam G12246 4 10 := by
   have h := haar_isBipartiteDegDiam10_of_equiv SS equiv12246 coverD
