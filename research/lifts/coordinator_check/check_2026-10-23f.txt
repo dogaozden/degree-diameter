@@ -1,0 +1,8 @@
+# Coordinator check, 2026-10-23 22:12 PDT, Mac mini.
+== d5D7 3,120: build_haar2.py research/lifts/sols/haar/hc_d5D7_pgl_5_13_s1.txt -> edge list, then apsp.c (all pairs, no symmetry assumed)
+n=3120 edges=7800 degree min=5 max=5 bipartite=yes diameter=7
+RESULT VALID d=5 D=7 n=3120
+   with D-1:
+RESULT INVALID
+== check_haar_indep.py (independent Haar checker):
+RESULT VALID d=5 D=7 eccA=7 eccB=7 n=3120 (0s)
