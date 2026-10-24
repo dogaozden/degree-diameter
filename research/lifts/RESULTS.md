@@ -194,6 +194,18 @@ Outputs are in `verify/`.
   - N = 5,887 and 5,964 stalled at cost 4.
   - At N = 5,994 the action r = 86 stalled at cost 1, while r = 83 solved.
 
+**Screening and solving.** Every Haar record came from haar_cell.py:
+- candidate groups of the window come from small_cands.py;
+- they are ranked by the RANDSAMPLE score (p10 + median)/μ(N);
+- the best are annealed in order of N.
+
+In the 33 solved runs in the logs, the solving group ranked 1st–12th in its sweep and 1st–3rd among the candidates
+of its order. That is partly selection: the sweeps annealed only their top 8–12. The exception is (5,7).
+PGL(2,5) × Z13 ranked 22nd of 874 overall and 11th of 183 at its order, with a random-set minimum cost of 37; the
+metacyclic solvers have minima of 4–20. Meanwhile every metacyclic candidate at the same order stalled at cost 2.
+It is one data point, but it suggests the score, which was calibrated on metacyclic groups, understates the others.
+So the passes in `runs/queue6.sh` anneal the top 24–30 with one seed each, instead of the top 8–12 with two seeds.
+
 ### 2.1 Earlier record: (3,8) = 258, a Z43-lift of K3,3
 
 `sols/c1r_d3D8_n258_b3_3_2_cyc43_s1.txt`: a **Z43-lift of K3,3**. Gauge-fixed voltages:
