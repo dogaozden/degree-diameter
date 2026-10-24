@@ -1,0 +1,6 @@
+patterns: 216  witnesses used: 223
+patterns whose witness gcd is not 1 (gcd, largest prime factor): {}
+every gcd is 3036-smooth: for each prime p > 3036 every pattern polynomial is nonzero mod p (integer witness);
+for each prime p <= 3036 the explicit universal chart over F_p (F_4 for p = 2) shows the same.
+degree bound of F = prod(pattern polynomials) * prod det(A_c): 3036
+=> for every prime p, F mod p is a nonzero polynomial; Schwartz-Zippel: a universal chart exists over F_q for every q > 3036

@@ -1,0 +1,9 @@
+controller runs/exact54.ctrl m = 54 lift vertices 8748 edges 52488
+n=8748 edges=52488 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=8748
+controller runs/exact54.ctrl m = 54 lift vertices 27648 edges 221184
+n=27648 edges=221184 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=27648
+controller runs/exact54.ctrl m = 54 lift vertices 67500 edges 675000
+n=67500 edges=675000 degree min=20 max=20 bipartite=yes diameter=5
+RESULT VALID d=20 D=5 n=67500
