@@ -30,6 +30,10 @@ Two lessons from the calibration, written into the squad's preamble (r1/PREAMBLE
 
 | cell | before (ours / table) | new | group, structure | check |
 |---|---|---|---|---|
+| (9,10) | 23,142,048 / 20,017,260 | **23,154,600** | PSL(2,149) × Z7, ORBIT="3 3 0"; squad-r4-c5 | haarcheck_psl and check_haar_indep.py VALID (table_squad/checks/d9D10_psl_149_7_orb3f0_s1.check.txt) |
+| (8,10) | 7,802,160 / 6,927,210 | **7,818,096** | SL(2,67) × Z13, ORBIT="3 2 2"; r4-c2's group and near miss (1 left), Opus's seed 12 | haarcheck_sl, haarcheck2, check_haar_indep.py VALID (d8D10_sl_67_13_orb3_s12.check.txt) |
+| (7,10) | 2,234,400 / 1,987,380 | **2,237,760** | A5 × SL(2,8) × Z37, ORBIT="3 2 1"; r4-c3's group (3 left), Opus's ten-seed sweep, seed 15 | build_haar2.py, check_haar_indep.py VALID (d7D10_prod_psl_5_sl_8_37_orb3_s15.check.txt) |
+| (8,9) | 1,316,016 / 1,091,232 | **1,320,120** | PSL(2,19) × Z193, ORBIT="3 2 2"; squad-r4-c1 | build_haar2.py, haarcheck_psl VALID (d8D9_psl_19_193_orb3_s1.check.txt) |
 | (6,8) | 30,576 / 29,790 | **31,680** | PSL(2,11) × Z24, S = 3 orbits of size 2 under conjugation (ORBIT="2 3 0"), Opus solo; first rung 31,200 on SL(2,25) | build_haar2.py VALID; apsp.c all-pairs diameter 8 (table_squad/checks/d6D8_psl_11_24_orb2f0_s1.check.txt, d6D8_sl_25_1_orb2f0_s1.check.txt) |
 
 (6,8) had resisted the orbit search with k = 3: with Δ = 6 that leaves only two orbits, and STRUCTURE.md §8 found no
