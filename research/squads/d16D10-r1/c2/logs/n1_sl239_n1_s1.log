@@ -1,0 +1,12 @@
+group sl 239 x Z_1, N=13651680, identity 56882, H order 60, rows 227528, threads 1, setup 0.89s
+wide rows: HW order 240, rows 56882, setup 1.59s
+alpha: conj by mat(237,85,104,1) (index 13557857), z -> 0 z on Z_1
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 239 (+e); mu = 20.49, mu/k = 6.83, fixed-point misses ~ 2.75
+start cost=39
+t=30 steps=100 evals=801 cost=4 best=4 T=0.53
+t=60 steps=164 evals=1313 cost=1 best=1 T=0.19
+t=90 steps=217 evals=1737 cost=1 best=1 T=0.15
+t=121 steps=260 evals=2081 cost=1 best=1 T=0.15
+t=151 steps=296 evals=2369 cost=1 best=1 T=0.15
+RESULT d=16 D=8 group=sl 239 x Z_1 N=13651680 best=1 evals=2457 time=160.5 orbit k=3 m=5 f=1 fix=239
+exit=1
