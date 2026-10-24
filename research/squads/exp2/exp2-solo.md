@@ -3,6 +3,24 @@
 Opus, cloud container (4 cores, 15 GB), 2026-10-24, start 16:56:02 UTC. No subagents and no squads (this arm measures
 Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 
+## 0. Summary (plain English)
+
+- **What the cells are.** All three table values are 3 copies of a generalized hexagon H(q) (q = 5, 7, 9) joined by
+  one extra edge per vertex. I rebuilt that construction and proved it works for any way of choosing the extra
+  edges (§3).
+- **What worked: a +2 construction.** Detach one point p from its extra edges in all three copies, add two new
+  vertices that take over those edge slots, and choose the extra edges near p by exact covers of the hexagon (§2).
+  - The graph keeps max degree q + 2 and diameter 7, with 2 more vertices than the table.
+  - Repeating it for several points adds 2 per point; with 12 points at q = 5 this gave 23,460.
+  - All graphs were checked by the all-pairs BFS checker apsp.c.
+- **What did not work.**
+  - Orbit-symmetric Haar graphs (the required format) reached only 0.86, 0.71 and 0.67 of the table. These cells sit
+    above the first-moment ceiling for random-like S.
+  - Also: more than 3 copies, lifts of the hexagon, local gadgets with the extra edges fixed, and a new
+    transpose-symmetry trick for odd D (§4, §5).
+- **Format note.** The new graphs are not Haar graphs, so they are not in haar_gen3 format. They come as edge lists plus
+  the bijection φ that generates them, and they are verified by apsp.c instead of build_haar2.py.
+
 ## 1. Result
 
 | cell | table | **new graph** (apsp.c VALID) | / table | best Haar graph (build_haar2.py VALID) | / table |
