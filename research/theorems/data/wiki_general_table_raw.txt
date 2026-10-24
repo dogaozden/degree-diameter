@@ -1,0 +1,342 @@
+{{Short description|none}}
+
+In [[graph theory]], the [[degree diameter problem]] is the problem of finding the largest possible [[Graph (discrete mathematics)|graph]] for a given maximum [[degree (graph theory)|degree]] and [[diameter (graph theory)|diameter]].  The [[Moore bound]] sets limits on this, but for many years mathematicians in the field have been interested in a more precise answer.  The table below gives current progress on this problem (excluding the case of degree 2, where the largest graphs are [[cycle (graph theory)|cycle]]s with an odd number of vertices).
+
+==Table of the orders of the largest known graphs for the undirected degree diameter problem==
+
+Below is the table of the vertex numbers for the best-known graphs (as of 14 October 2026) in the undirected [[degree diameter problem]] for graphs of degree at most 3&nbsp;≤&nbsp;''d''&nbsp;≤&nbsp;16 and diameter 2&nbsp;≤&nbsp;''k''&nbsp;≤&nbsp;10. Only a few of the graphs in this table (marked in bold) are known to be optimal (that is, largest possible).  The remainder are merely the largest so far discovered, and thus finding a larger graph that is closer in order (in terms of the size of the vertex set) to the Moore bound is considered an [[open problem]]. Some general constructions are known for values of ''d'' and ''k'' outside the range shown in the table.
+
+{| class="wikitable" style="text-align:center; margin-left:auto; margin-right:auto;"
+! {{diagonal split header|''d''|''k''}} || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10
+|-
+! 3
+| '''10'''<ref group="g">The [[Petersen graph]].</ref> || '''20'''<ref group="g" name="elspasgraphs">Optimal graphs proven optimal by {{harvtxt|Elspas|1964}}.</ref> || '''38'''<ref group="g" name="dotygraph">Optimal graph found by {{harvtxt|Doty|1982}} and proven optimal by {{harvtxt|Buset|2000}}.</ref> || 70<ref group="g" name="afygraph">Graph found by {{harvtxt|Alegre|Fiol|Yebra|1986}}.</ref> || 132<ref group="g" name="exoographs">Graphs found by {{harvtxt|Exoo|2001}}.</ref> || 200<ref group="g" name="bhakargraphs">Graphs found by Nishant Bhakar in 2026 with [[Claude Mythos|Claude Fable]] assistance.</ref> || 360<ref group="g">Graph found by Jianxiang Chen in 2018.</ref> || 600<ref group="g">Graph found by Geoffrey Exoo in 2010.</ref> || 1 250<ref group="g">Graph found by {{harvtxt|Conder|2006}}.</ref> 
+|-
+! 4 
+| '''15'''<ref group="g" name="elspasgraphs"/> || 41<ref group="g" name="allwrightgraph">Graph found by {{harvtxt|Allwright|1992}}.</ref> || 104<ref group="g" name="bhakargraphs"/> || 364<ref group="g" name="delormegraphs">Graphs found by {{harvtxt|Delorme|1985}}.</ref> || 760<ref group="g" name="bhakargraphs"/> || 1 344<ref group="g" name="yugegraphs">Graphs found by Dharunish Yugeswardeenoo in 2026 using [[GPT-5.6|OpenAI GPT-5.6 Sol]] and [[Claude Mythos|Claude Fable 5 Max]] assistance.</ref> || 3 243<ref group="g" name="lozgraphs">Graphs found by Eyal Loz in 2006.</ref> || 7 884<ref group="g" name="bhakargraphs"/> || 19 306<ref group="g" name="bhakargraphs"/> 
+|-
+! 5
+| '''24'''<ref group="g" name="elspasgraphs"/> || 72<ref group="g" name="exoographs"/> || 252<ref group="g" name="rajivgraphs">Graphs found by Rishabh Rajiv in 2026 using [[AI-assisted software development|agentic coding systems]].</ref> || 650<ref group="g" name="guptagraphs">Graphs found by Rithwik Gupta in 2026 with AI-assisted computational searches.</ref> || 2 836<ref group="g" name="bhakargraphs"/> || 6 000<ref group="g" name="bhakargraphs"/> || 18 810<ref group="g" name="bhakargraphs"/> || 60 686<ref group="g" name="bhakargraphs"/> || 202 550<ref group="g" name="bhakargraphs"/>
+|-
+! 6
+| '''32'''<ref group="g" name="wegnergraph">Optimal graph found by {{harvtxt|Wegner|1977}} and proven optimal by {{harvtxt|Molodtsov|2006}}.</ref> || 120<ref group="g" name="messgraphs">Graphs found by Michel de Messieres in 2026 with [[Claude (AI)|Claude]] assistance.</ref> || 441<ref group="g" name="rajivgraphs"/> || 1 518<ref group="g" name="rajivgraphs"/> || 8 802<ref group="g" name="yugegraphs"/> || 20 400<ref group="g" name="guptagraphs"/> || 80 050<ref group="g" name="bhakargraphs"/> || 331 387<ref group="g">Graph found by {{harvtxt|Canale|Rodríguez|2012}}.</ref> || 1 394 189<ref group="g" name="bhakargraphs"/> 
+|-
+! 7
+| '''50'''<ref group="g">The [[Hoffman–Singleton graph]].</ref> || 170<ref group="g" name="rajivgraphs"/> || 684<ref group="g" name="messgraphs"/> || 2 810<ref group="g" name="yugegraphs"/> || 12 654<ref group="g" name="bhakargraphs"/> || 56 952<ref group="g" name="rajivgraphs"/> || 264 440<ref group="g" name="bhakargraphs"/> || 1 332 774<ref group="g" name="bhakargraphs"/> || 6 641 680<ref group="g" name="bhakargraphs"/> 
+|-
+! 8
+| 57<ref group="g" name="storwickgraphs">Graphs found by {{harvtxt|Storwick|1970}}.</ref> || 253<ref group="g">Graph found by Margarida Mitjana and Francesc Comellas in 1995, and independently by {{harvtxt|Sampels|1997}}.</ref> || 1 100<ref group="g" name="lozgraphs"/> || 5 334<ref group="g" name="rajivgraphs"/> || 40 560<ref group="g" name="yugegraphs"/> || 138 138<ref group="g" name="yugegraphs"/> || 779 803<ref group="g" name="bhakargraphs"/> || 4 471 111<ref group="g" name="bhakargraphs"/> || 26 899 143<ref group="g" name="yugegraphs"/> 
+|-
+! 9
+| 74<ref group="g" name="storwickgraphs"/> || 585<ref group="g" name="delormegraphs"/> || 1 765<ref group="g">Graph found by Francesc Comellas in 2026 with [[GPT-6.1|OpenAI GPT-6.1 Sol]] assistance.</ref> || 9 020<ref group="g" name="bhakargraphs"/> || 77 418<ref group="g" name="yugegraphs"/> || 302 082<ref group="g" name="bhakargraphs"/> || 1 961 370<ref group="g" name="bhakargraphs"/> || 13 219 318<ref group="g" name="bhakargraphs"/> || 89 543 818<ref group="g" name="bhakargraphs"/> 
+|-
+! 10
+| 91<ref group="g" name="storwickgraphs"/> || 650<ref group="g" name="delormegraphs"/> || 2 485<ref group="g" name="yugegraphs"/>|| 33 397<ref group="g" name="rajivgraphs"/> || 137 180<ref group="g" name="yugegraphs"/> || 616 980<ref group="g" name="yugegraphs"/> || 4 513 493<ref group="g" name="yugegraphs"/> || 34 219 967<ref group="g" name="yugegraphs"/> || 265 612 889<ref group="g" name="bhakargraphs"/> 
+|-
+! 11
+| 106<ref group="g" name="yugegraphs"/> || 715<ref group="g" name="delormegraphs"/> || 3 444<ref group="g" name="yugegraphs"/> || 37 628<ref group="g" name="yugegraphs"/> || 186 033<ref group="g" name="yugegraphs"/> || 1 194 278<ref group="g" name="bhakargraphs"/> || 9 739 368<ref group="g" name="bhakargraphs"/> || 81 961 120<ref group="g" name="bhakargraphs"/> || 697 280 200<ref group="g" name="bhakargraphs"/>
+|-
+! 12
+| 133<ref group="g" name="dfgraphs">Graphs found by {{harvtxt|Delorme|Farhi|1984}}.</ref> || 810<ref group="g" name="yugegraphs"/> || 5 832<ref group="g" name="mizunographs">Graphs found using [[ChatGPT]] by {{harvtxt|Mizuno|2026}}.</ref> || 42 342<ref group="g" name="yugegraphs"/> || 364 032<ref group="g" name="yugegraphs"/> || 2 115 075<ref group="g" name="yugegraphs"/> || 19 144 241<ref group="g" name="bhakargraphs"/> || 178 084 211<ref group="g" name="yugegraphs"/> || 1 692 658 087<ref group="g" name="bhakargraphs"/>
+|-
+! 13
+| 162<ref group="g">[[McKay–Miller–Širáň graph]] found by {{harvtxt|McKay|Miller|Širáň|1998}}.</ref> || 952<ref group="g" name="messgraphs"/> || 6 615<ref group="g" name="yugegraphs"/> || 51 417<ref group="g" name="yugegraphs"/> || 535 302<ref group="g" name="yugegraphs"/> || 3 691 038<ref group="g" name="bhakargraphs"/> || 36 275 160<ref group="g" name="bhakargraphs"/> || 362 492 640<ref group="g" name="bhakargraphs"/> || 3 789 298 110<ref group="g" name="bhakargraphs"/>
+|-
+! 14
+| 183<ref group="g" name="dfgraphs"/> || 1 118<ref group="g">Graph found in 2026 by anonymous person.</ref> || 8 303<ref group="g" name="messgraphs"/> || 88 452<ref group="g" name="mizunographs"/> || 824 124<ref group="g" name="yugegraphs"/> || 6 200 460<ref group="g" name="gfsgraphs">Graph found by {{harvtxt|Gómez|Fiol|Serra|1993}}.</ref> || 64 439 767<ref group="g" name="yugegraphs"/> || 709 125 173<ref group="g" name="bhakargraphs"/> || 8 052 187 457<ref group="g" name="bhakargraphs"/>
+|-
+! 15
+| 190<ref group="g" name="yugegraphs"/> || 1 539<ref group="g" name="rajivgraphs"/> || 11 785<ref group="g" name="yugegraphs"/> || 100 000<ref group="g" name="mizunographs"/> || 1 424 474<ref group="g" name="yugegraphs"/>|| 9 758 988<ref group="g" name="bhakargraphs"/> || 110 115 980<ref group="g" name="bhakargraphs"/> || 1 315 107 690<ref group="g" name="bhakargraphs"/> || 15 810 645 560<ref group="g" name="bhakargraphs"/>
+|-
+! 16
+|  216<ref group="g" name="rajivgraphs"/> || 1 920<ref group="g" name="mizunographs"/> || 16 384<ref group="g">Graph found by J. Amarel, N. DeBardeleben, M. Grosskopf, V. Job, E. Lawrence, L. Monroe, and R. Somasundaram in 2026 using URSA (an [[AI agent|agentic tool]]).</ref> || 147 456<ref group="g" name="mizunographs"/> || 1 783 834<ref group="g" name="yugegraphs"/> || 14 995 367<ref group="g" name="bhakargraphs"/> || 185 394 793<ref group="g" name="bhakargraphs"/> || 2 343 053 633<ref group="g" name="bhakargraphs"/> || 29 899 503 497<ref group="g" name="bhakargraphs"/>
+|}
+
+{{reflist|group=g}}
+
+==Table of Moore bounds for the undirected degree diameter problem==
+The number of vertices in a simple undirected graph of maximum degree at most <math>d</math> and diameter at most <math>k</math> is bounded above by the Moore bound, which equals <math>1+d((d-1)^k-1)/(d-2)</math> when <math>d \geq 3</math>. Moreover, this bound is attained by finitely many [[Moore graph]]s. The table of Moore bounds is given below, with Moore graphs marked in bold.
+
+{| class="wikitable" style="text-align:center; margin-left:auto; margin-right:auto;"
+! {{diagonal split header|''d''|''k''}} || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10
+|-
+! 3
+| [[Petersen graph|'''10''']] || 22 || 46 || 94 || 190 || 382 || 766 || 1 534 || 3 070 
+|-
+! 4 
+| 17 || 53 || 161 || 485 || 1 457 || 4 373 || 13 121 || 39 365 || 118 097 
+|-
+! 5
+| 26 || 106 || 426 || 1 706 || 6 826 || 27 306 || 109 226 || 436 906 || 1 747 626
+|-
+! 6
+| 37 || 187 || 937 || 4687 || 23 437 || 117 187 || 585 937 || 2 929 687 || 14 648 437 
+|-
+! 7
+| [[Hoffman–Singleton graph|'''50''']] || 302 || 1 814 || 10 886 || 65 318 || 391 910 || 2 351 462 || 14 108 774 || 84 652 646 
+|-
+! 8
+| 65 || 457 || 3 201 || 22 409 || 156 865 || 1 098 057 || 7 686 401 || 53 804 809 || 376 633 665 
+|-
+! 9
+| 82 || 658 || 5 266 || 42 130 || 337 042 || 2 696 338 || 21 570 706 || 172 565 650 || 1 380 525 202 
+|-
+! 10
+| 101 || 911 || 8 201 || 73 811 || 664 301 || 5 978 711 || 53 808 401 || 484 275 611 || 4 358 480 501 
+|-
+! 11
+| 122 || 1 222 || 12 222 || 122 222 || 1 222 222 || 12 222 222 || 122 222 222 || 1 222 222 222 || 12 222 222 222
+|-
+! 12
+| 145 || 1 597 || 17 569 || 193 261 || 2 125 873 || 23 384 605 || 257 230 657 || 2 829 537 229 || 31 124 909 521
+|-
+! 13
+| 170 || 2 042 || 24 506 || 294 074 || 3 528 890 || 42 346 682 || 508 160 186 || 6 097 922 234 || 73 175 066 810
+|-
+! 14
+| 197 || 2 563 || 33 321 || 433 175 || 5 631 277 || 73 206 603 || 951 685 841 || 12 371 915 935 || 160 834 907 157
+|-
+! 15
+| 226 || 3 166 || 44 326 || 620 566 || 8 687 926 || 121 630 966 || 1 702 833 526 || 23 839 669 366 || 333 755 371 126
+|-
+! 16
+| 257 || 3 857 || 57 857 || 867 857 || 13 017 857 || 195 267 857 || 2 929 017 857 || 43 935 267 857 || 659 029 017 857
+|}
+
+==References==
+* {{citation
+  | last1 = Alegre
+  | first1 = Ignacio
+  | last2 = Fiol
+  | first2 = Miquel
+  | last3 = Yebra
+  | first3 = J. Luis A.
+  | title = Some Large Graphs with Given Degree and Diameter
+  | journal = [[Journal of Graph Theory]]
+  | volume = 10
+  | issue = 2
+  | year = 1986
+  | pages = 219&ndash;224
+  | doi = 10.1002/jgt.3190100211
+  }}
+
+* {{citation
+  | last = Allwright
+  | first = James
+  | title = New (Δ, D) graphs discovered by heuristic search
+  | journal = [[Discrete Applied Mathematics]]
+  | volume = 37&ndash;38
+  | year = 1992
+  | pages = 3&ndash;8
+  | doi = 10.1016/0166-218X(92)90120-Y
+  | doi-access = 
+  }}
+
+* {{citation
+  | last = Buset
+  | first = Dominique
+  | title = Maximal cubic graphs with diameter 4
+  | journal = [[Discrete Applied Mathematics]]
+  | volume = 101
+  | year = 2000
+  | issue = 1–3
+  | pages = 53&ndash;61
+  | doi = 10.1016/S0166-218X(99)00204-8
+  | doi-access = 
+  }}
+
+* {{citation
+  | last1 = Canale
+  | first1 = Eduardo
+  | last2 = Rodríguez
+  | first2 = Alexis
+  | title = On the application of voltage graphs to the degree/diameter problem
+  | year = 2012
+  | url = http://premat.fing.edu.uy/papers/2013/153.pdf
+  | archive-url = https://web.archive.org/web/20200928131319/http://premat.fing.edu.uy/papers/2013/153.pdf
+  | archive-date = 2020-09-28
+ }}
+
+* {{cite web
+  | url = https://www.math.auckland.ac.nz/~conder/symmcubic2048list.txt
+  | last = Conder
+  | first = Marston
+  | author-link = Marston Conder
+  | title = Trivalent (cubic) symmetric graphs on up to 2048 vertices
+  | date = 2006
+  }}
+
+* {{citation
+  | last1 = Delorme
+  | first1 = Charles
+  | last2 = Farhi
+  | first2 = Guy
+  | title = Large Graphs with Given Degree and Diameter - Part I
+  | journal = [[IEEE Transactions on Computers]]
+  | volume = 33
+  | year = 1984
+  | issue = 9
+  | pages = 857&ndash;860
+  | doi = 10.1109/TC.1984.1676504
+  | bibcode = 1984ITCmp.100..857D
+ }}
+
+* {{citation
+  | last = Delorme
+  | first = Charles
+  | title = Grands Graphes de Degré et Diamètre Donnés
+  | journal = [[European Journal of Combinatorics]]
+  | volume = 6
+  | issue = 4
+  | year = 1985
+  | pages = 291&ndash;302
+  | doi = 10.1016/S0195-6698(85)80043-3
+  | doi-access = 
+  }}
+
+* {{citation
+  | last = Doty
+  | first = Karl
+  | contribution = Large regular interconnection networks
+  | pages = 312&ndash;317
+  | publisher = IEEE Computer Society
+  | title = Proceedings of the 3rd International Conference on Distributed Computing Systems
+  | year = 1982
+  }}
+
+* {{citation
+  | last = Elspas
+  | first = Bernard
+  | title = 1964 Proceedings of the Fifth Annual Symposium on Switching Circuit Theory and Logical Design
+  | chapter = Topological constraints on interconnection-limited logic
+  | year = 1964
+  | pages = 133–137
+  | doi = 10.1109/SWCT.1964.27
+  }}
+
+* {{citation
+  | last = Exoo
+  | first = Geoffrey
+  | title = A family of graphs and the degree/diameter problem
+  | journal = [[Journal of Graph Theory]]
+  | volume = 37
+  | issue = 2
+  | year = 2001
+  | pages = 118–124
+  | doi = 10.1002/jgt.1007
+  }}
+
+* {{citation
+  | last1 = Gómez
+  | first1 = José
+  | last2 = Fiol
+  | first2 = Miquel
+  | last3 = Serra
+  | first3 = Oriol
+  | title = On large (Δ,D)-graphs
+  | journal = [[Discrete Mathematics (journal)|Discrete Mathematics]]
+  | volume = 114
+  | year = 1993
+  | issue = 1–3
+  | pages = 219&ndash;235
+  | doi = 10.1016/0012-365X(93)90368-4 | doi-access = free
+  }}
+
+* {{citation
+  | last1 = Hoffman
+  | first1 = Alan J.
+  | last2 = Singleton
+  | first2 = Robert R.
+  | title = Moore graphs with diameter 2 and 3
+  | journal = [[IBM Journal of Research and Development]]
+  | volume = 5
+  | issue = 4
+  | year = 1960
+  | pages = 497–504
+  | mr = 0140437
+  | doi=10.1147/rd.45.0497
+  }}
+
+* {{citation
+  | last1 = McKay
+  | first1 = Brendan D.
+  | author1-link = Brendan McKay (mathematician)
+  | last2 = Miller 
+  | first2 = Mirka | author2-link = Mirka Miller
+  | last3 = Širáň
+  | first3 = Jozef  
+  | title = A note on large graphs of diameter two and given maximum degree
+  | journal = [[Journal of Combinatorial Theory]]
+  | series=Series B
+  | volume = 74
+  | issue = 4
+  | year = 1998
+  | pages = 110&ndash;118
+  | doi = 10.1006/jctb.1998.1828
+  | doi-access = free
+  }}
+
+* {{cite arXiv
+  | last1 = Mizuno
+  | first1 = Ryosuke
+  | title = New lower bounds for the degree/diameter problem via interaction with a browser-accessible LLM
+  | date = 2026-06-14
+  | class = math.GM
+  | eprint = 2606.15860
+  }}
+
+* {{citation
+  | last = Molodtsov
+  | first = Sergey
+  | title = General Theory of Information Transfer and Combinatorics
+  | year = 2006
+  | isbn = 978-3-540-46244-6
+  | pages = 853&ndash;857
+  | publisher = Springer
+ }}
+
+* {{citation
+  | last = Sampels
+  | first = Michael
+  | contribution = Large Networks with Small Diameter
+  | doi = 10.1007/BFb0024505
+  | pages = 288–302
+  | publisher = Springer, Berlin, Heidelberg
+  | series = Lecture Notes in Computer Science
+  | title = Graph-Theoretic Concepts in Computer Science
+  | volume = 1335
+  | year = 1997
+  | isbn = 978-3-540-69643-8
+  }}
+
+* {{citation
+  | last = Storwick
+  | first = Robert
+  | title = Improved Construction Techniques for (d, k) Graphs
+  | journal = IEEE Transactions on Computers
+  | volume = C-19
+  | issue = 12
+  | year = 1970
+  | pages = 1214&ndash;1216
+  | doi = 10.1109/T-C.1970.222861
+  | bibcode = 1970ITCmp.100.1214S
+ }}
+
+* {{citation
+  | last = Wegner
+  | first = Gerd
+  | title = Graphs with given diameter and a coloring problem
+  | year = 1977
+  | publisher = Technische Universität Dortmund
+  | doi = 10.17877/DE290R-16496
+  | url = https://eldorado.tu-dortmund.de/bitstream/2003/34440/1/S0004501.pdf
+  }}
+
+==External links==
+* [http://combinatoricswiki.org/wiki/The_Degree/Diameter_Problem  The Degree-Diameter Problem on CombinatoricsWiki.org].
+* [https://web.mat.upc.edu/francesc.comellas/delta-d/table_degree_diameter.html Francesc Comellas' degree-diameter problem page with records regularly updated as of 2026]
+* [https://web.archive.org/web/20160303193729/http://www.eyal.com.au/wiki/The_Degree/Diameter_Problem Eyal Loz's] degree-diameter problem page (archived 2016.)
+* [https://web.archive.org/web/20150110030525/http://ginger.indstate.edu/ge/DD/index.html Geoffrey Exoo's] degree-diameter record graphs page (archived 2015.)
+
+[[Category:Graphs]]
+[[Category:Lists by size|Graphs]]
