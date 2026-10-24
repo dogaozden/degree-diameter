@@ -1,0 +1,11 @@
+(15,7) 2,480,232: 7 copies of H(11) + 48 hubs (8 freed flags, K_{8,8} hub graph). cell-15-7 job, 2026-10-24T19:13Z.
+Solution file (d7hex format: freed points, hub edges, bijection M) = d15D7_hex11_7copy_K8_n2480232.sol.gz, sha256 of the uncompressed file: 227738d98e2d004fe068a67d46785e2a6497f0362314043581e4eda7cf5c82b1
+Rebuild: research/d15D7/README.md (hexgen 11, then kcopy_hub check|full|edges hex/hex_q11.bin SOL 3).
+
+kcopy_hub check (BFS from all freed sources and hubs; by the lemma in kcopy_hub.c this decides the diameter):
+q=11 k=3 copies=7 K=8 hubedges=64 n=2480232 edges=18601612 maxdeg=15 (Delta 15)
+freed sources and hubs: 64 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK
+
+Same bijection, 3 and 5 copies:
+freed sources and hubs: 32 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK
+freed sources and hubs: 48 sources, max eccentricity 7, bad sources 0, far pairs 0 -> OK

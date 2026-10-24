@@ -1,0 +1,7 @@
+sampled stage: unmatched 18362
+exact stage: maximum matching deficiency D = 12918 (sampled stage 18362), exact phases 7
+deficient points: isolated 8496, |sigP| hist 0..7+: 0 0 0 885 5253 4745 1584 451
+deficient lines:  isolated 8708, |sigL| hist 0..7+: 0 0 0 952 5179 4755 1583 449
+leftover pairing: greedy cost 20585, after 4 2-opt passes (394 swaps) cost 20037; pair cost hist 0,1,2,3+: 0 7083 4763 1072
+RESULT K=24 unmatched-after-matching 12918, leftover cost 20037 (incompatible matched pairs in exact part: 12918)
+exit=0
