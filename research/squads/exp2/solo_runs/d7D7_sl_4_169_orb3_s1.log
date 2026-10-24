@@ -1,0 +1,8 @@
+group sl 4 poly x^2+x+1 x Z_169, N=10140, identity 2028, H order 39, rows 260, threads 1, setup 0.01s
+wide rows: HW order 169, rows 60, setup 0.01s
+alpha: conj by mat(2,0,0,3) (index 28), z -> 22 z on Z_169
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 2 (+e); mu = 40.56, mu/k = 13.52, fixed-point misses ~ 0.95
+start cost=336
+t=30 steps=375098 evals=3000785 cost=42 best=42 T=0.53
+t=60 steps=748873 evals=5990985 cost=42 best=42 T=0.19
+t=90 steps=1124524 evals=8996193 cost=42 best=42 T=0.15

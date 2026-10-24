@@ -1,0 +1,11 @@
+group prod psl 3 sl 5 x Z_7, N=10080, identity 2660, H order 42, rows 240, threads 1, setup 0.00s
+wide rows: HW order 210, rows 48, setup 0.00s
+alpha: conj by prod[mat(1,0,1,1);mat(2,2,1,4)] (index 536), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 39.02, mu/k = 13.01, fixed-point misses ~ 5.65
+start cost=18144
+RESULT d=7 D=7 group=prod psl 3 sl 5 x Z_7 N=10080 best=0 evals=38785 time=0.4 orbit k=3 m=2 f=1 fix=17
+full diameter check: OK
+wrote ./d7D7_prod_psl_3_sl_5_7_orb3_s1.txt
+n = 20160 edges = 70560 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = cf65cb358a413062cd81ceff9160b73abab8ea122d6508d4971092fc0bb7a446
+VALID d=7 D=7 group=prod psl 3 sl 5 x Z_7 N=10080 vertices=20160

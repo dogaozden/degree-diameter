@@ -3,3 +3,22 @@ wide rows: no cyclic subgroup of order >= 64 found (best 40); using haar_gen3's 
 alpha: conj by prod[mat(2,0,0,3);mat(4,7,8,7)] (index 20546), z -> 0 z on Z_1
 ORBIT k=3 m=3 f=0: |Fix(alpha)| = 53 (+e); mu = 42.04, mu/k = 14.01, fixed-point misses ~ 10.70
 start cost=282
+t=30 steps=22297 evals=178377 cost=19 best=18 T=0.53
+t=60 steps=44341 evals=354729 cost=19 best=18 T=0.19
+t=90 steps=66466 evals=531729 cost=19 best=18 T=0.15
+t=120 steps=88487 evals=707897 cost=19 best=18 T=0.15
+t=150 steps=110734 evals=885873 cost=19 best=18 T=0.15
+t=180 steps=132740 evals=1061921 cost=35 best=18 T=0.62
+t=210 steps=155318 evals=1242545 cost=22 best=18 T=0.22
+t=240 steps=178515 evals=1428121 cost=12 best=12 T=0.15
+t=270 steps=201524 evals=1612193 cost=12 best=12 T=0.15
+t=300 steps=224508 evals=1796065 cost=12 best=12 T=0.15
+t=330 steps=247748 evals=1981985 cost=12 best=12 T=0.15
+t=360 steps=271318 evals=2170545 cost=12 best=12 T=0.15
+t=390 steps=292948 evals=2343585 cost=12 best=12 T=1.46
+t=420 steps=315471 evals=2523769 cost=16 best=12 T=0.52
+t=450 steps=338568 evals=2708545 cost=16 best=12 T=0.18
+t=480 steps=362281 evals=2898249 cost=16 best=12 T=0.15
+t=510 steps=386017 evals=3088137 cost=16 best=12 T=0.15
+t=540 steps=409412 evals=3275297 cost=12 best=12 T=1.46
+t=570 steps=432626 evals=3461009 cost=12 best=12 T=0.52
