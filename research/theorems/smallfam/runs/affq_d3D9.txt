@@ -1,0 +1,54 @@
+q=16 k=15 k0=3 N=240 n=480 poly=[1, 0, 0, 1, 1] tested=150 solutions=0 best=420
+q=16 k=15 k0=5 N=240 n=480 poly=[1, 0, 0, 1, 1] tested=180 solutions=0 best=245
+q=16 k=15 k0=15 N=240 n=480 poly=[1, 0, 0, 1, 1] tested=210 solutions=0 best=257
+q=25 k=8 k0=2 N=200 n=400 poly=[2, 1, 1] tested=32 solutions=0 best=360
+q=25 k=8 k0=4 N=200 n=400 poly=[2, 1, 1] tested=48 solutions=0 best=360
+q=25 k=8 k0=8 N=200 n=400 poly=[2, 1, 1] tested=56 solutions=0 best=204
+q=25 k=9 k0=3 N=225 n=450 poly=[2, 1, 1] tested=54 solutions=0 best=255
+q=25 k=10 k0=2 N=250 n=500 poly=[2, 1, 1] tested=50 solutions=0 best=450
+q=25 k=12 k0=2 N=300 n=600 poly=[2, 1, 1] tested=72 solutions=0 best=540
+q=25 k=12 k0=3 N=300 n=600 poly=[2, 1, 1] tested=96 solutions=0 best=344
+q=25 k=12 k0=4 N=300 n=600 poly=[2, 1, 1] tested=108 solutions=0 best=540
+q=25 k=12 k0=6 N=300 n=600 poly=[2, 1, 1] tested=120 solutions=0 best=339
+q=25 k=12 k0=12 N=300 n=600 poly=[2, 1, 1] tested=132 solutions=0 best=315
+q=25 k=14 k0=2 N=350 n=700 poly=[2, 1, 1] tested=98 solutions=0 best=630
+q=25 k=15 k0=3 N=375 n=750 poly=[2, 1, 1] tested=150 solutions=0 best=471
+q=25 k=16 k0=2 N=400 n=800 poly=[2, 1, 1] tested=128 solutions=0 best=723
+q=25 k=16 k0=4 N=400 n=800 poly=[2, 1, 1] tested=192 solutions=0 best=720
+q=25 k=16 k0=8 N=400 n=800 poly=[2, 1, 1] tested=224 solutions=0 best=462
+q=25 k=18 k0=2 N=450 n=900 poly=[2, 1, 1] tested=162 solutions=0 best=536870912
+q=25 k=18 k0=3 N=450 n=900 poly=[2, 1, 1] tested=216 solutions=0 best=536870912
+q=25 k=18 k0=6 N=450 n=900 poly=[2, 1, 1] tested=270 solutions=0 best=536870912
+q=25 k=20 k0=2 N=500 n=1000 poly=[2, 1, 1] tested=200 solutions=0 best=536870912
+q=25 k=20 k0=4 N=500 n=1000 poly=[2, 1, 1] tested=300 solutions=0 best=536870912
+q=27 k=8 k0=2 N=216 n=432 poly=[1, 0, 2, 1] tested=32 solutions=0 best=408
+q=27 k=10 k0=2 N=270 n=540 poly=[1, 0, 2, 1] tested=50 solutions=0 best=510
+q=27 k=12 k0=2 N=324 n=648 poly=[1, 0, 2, 1] tested=72 solutions=0 best=612
+q=27 k=13 k0=13 N=351 n=702 poly=[1, 0, 2, 1] tested=156 solutions=0 best=371
+q=27 k=14 k0=2 N=378 n=756 poly=[1, 0, 2, 1] tested=98 solutions=0 best=714
+q=27 k=16 k0=2 N=432 n=864 poly=[1, 0, 2, 1] tested=128 solutions=0 best=536870912
+q=27 k=18 k0=2 N=486 n=972 poly=[1, 0, 2, 1] tested=162 solutions=0 best=536870912
+q=49 k=6 k0=2 N=294 n=588 poly=[3, 1, 1] tested=18 solutions=0 best=546
+q=49 k=6 k0=3 N=294 n=588 poly=[3, 1, 1] tested=24 solutions=0 best=546
+q=49 k=6 k0=6 N=294 n=588 poly=[3, 1, 1] tested=30 solutions=0 best=546
+q=49 k=8 k0=2 N=392 n=784 poly=[3, 1, 1] tested=32 solutions=0 best=728
+q=49 k=8 k0=4 N=392 n=784 poly=[3, 1, 1] tested=48 solutions=0 best=604
+q=49 k=8 k0=8 N=392 n=784 poly=[3, 1, 1] tested=56 solutions=0 best=515
+q=49 k=9 k0=3 N=441 n=882 poly=[3, 1, 1] tested=54 solutions=0 best=819
+q=49 k=10 k0=2 N=490 n=980 poly=[3, 1, 1] tested=50 solutions=0 best=536870912
+q=64 k=6 k0=3 N=384 n=768 poly=[1, 0, 0, 0, 0, 1, 1] tested=24 solutions=0 best=744
+q=64 k=7 k0=7 N=448 n=896 poly=[1, 0, 0, 0, 0, 1, 1] tested=42 solutions=0 best=840
+q=81 k=4 k0=2 N=324 n=648 poly=[2, 0, 0, 1, 1] tested=8 solutions=0 best=636
+q=81 k=4 k0=4 N=324 n=648 poly=[2, 0, 0, 1, 1] tested=12 solutions=0 best=612
+q=81 k=5 k0=5 N=405 n=810 poly=[2, 0, 0, 1, 1] tested=20 solutions=0 best=525
+q=81 k=6 k0=2 N=486 n=972 poly=[2, 0, 0, 1, 1] tested=18 solutions=0 best=954
+q=121 k=2 k0=2 N=242 n=484 poly=[2, 4, 1] tested=2 solutions=0 best=467
+q=121 k=3 k0=3 N=363 n=726 poly=[2, 4, 1] tested=6 solutions=0 best=617
+q=121 k=4 k0=2 N=484 n=968 poly=[2, 4, 1] tested=8 solutions=0 best=536870912
+q=121 k=4 k0=4 N=484 n=968 poly=[2, 4, 1] tested=12 solutions=0 best=536870912
+q=125 k=2 k0=2 N=250 n=500 poly=[2, 0, 1, 1] tested=2 solutions=0 best=490
+q=125 k=4 k0=2 N=500 n=1000 poly=[2, 0, 1, 1] tested=8 solutions=0 best=536870912
+q=125 k=4 k0=4 N=500 n=1000 poly=[2, 0, 1, 1] tested=12 solutions=0 best=536870912
+q=169 k=2 k0=2 N=338 n=676 poly=[2, 1, 1] tested=2 solutions=0 best=659
+q=169 k=3 k0=3 N=507 n=1014 poly=[2, 1, 1] tested=6 solutions=0 best=536870912
+q=243 k=2 k0=2 N=486 n=972 poly=[1, 0, 0, 0, 2, 1] tested=2 solutions=0 best=966

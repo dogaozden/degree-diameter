@@ -35,7 +35,9 @@ CloseStream(f);; QUIT;\n''', timeout)
         os.rename(out + '.tmp', out)
     rows = []
     for line in open(out):
-        i, dsize, ab = line.split()
+        f = line.split()
+        i, dsize = f[0], f[1]
+        ab = f[2] if len(f) > 2 else ''
         rows.append((int(i), int(dsize), [int(x) for x in ab.split(',')] if ab != '' else []))
     return rows
 
@@ -48,7 +50,7 @@ def abfilt(Delta, D, K, inv):
     return r.stdout.strip()
 
 
-def export(n, i, useaut, timeout):
+def export(n, i, useaut, timeout, single=False):
     tab = os.path.join(SP, f'tab_{n}_{i}.txt')
     plan = os.path.join(SP, f'plan_{n}_{i}.txt')
     qmap = os.path.join(SP, f'qmap_{n}_{i}.txt')
@@ -65,7 +67,11 @@ for x in qel do AppendTo(f, JoinStringsWithSeparator(List(qel, y -> String(Posit
 AppendTo(f, JoinStringsWithSeparator(List(el, g -> String(Position(qel, Image(hom, g)) - 1)), " "), "\\n");;
 CloseStream(f);;
 f := OutputTextFile("{plan}", false);; SetPrintFormattingStatus(f, false);;
-if {'true' if useaut else 'false'} then
+if {'true' if single else 'false'} then
+  if {'true' if useaut else 'false'} then A := AutomorphismGroup(GRP);; reps := List(Orbits(A, el), o -> o[1]);;
+  else reps := el;; fi;
+  for s1 in reps do if s1 <> One(GRP) then AppendTo(f, Position(el, s1) - 1, "\\n");; fi; od;
+elif {'true' if useaut else 'false'} then
   A := AutomorphismGroup(GRP);;
   for o in Orbits(A, el) do s1 := o[1];;
     if s1 <> One(GRP) then st := Stabilizer(A, s1);;
@@ -94,8 +100,11 @@ def main():
     ap.add_argument('--gap-timeout', type=int, default=300)
     ap.add_argument('--maxplan', type=float, default=5e6)
     ap.add_argument('--tag', default='')
+    ap.add_argument('--base', default=None, help='lift mode: base file for lx (plan = Aut-orbit reps of the first free voltage)')
+    ap.add_argument('--cycles', type=int, default=3, help='lift mode: number of independent cycles of the base (rank filter)')
     a = ap.parse_args()
-    outp = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv')
+    mode = 'haar' if a.base is None else 'lift_' + os.path.splitext(os.path.basename(a.base))[0]
+    outp = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv' if a.base is None else f'{mode}_D{a.D}{a.tag}.tsv')
     done = set()
     if os.path.exists(outp):
         for line in open(outp):
@@ -103,7 +112,7 @@ def main():
             if len(f) > 2 and f[0].isdigit():
                 done.add((int(f[0]), int(f[1])))
     log = open(outp, 'a')
-    soldir = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}_sols')
+    soldir = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}_sols' if a.base is None else f'{mode}_D{a.D}_sols')
     os.makedirs(soldir, exist_ok=True)
     for n in range(a.nmin, a.nmax + 1):
         rows = list_groups(n)
@@ -111,31 +120,41 @@ def main():
             if (n, i) in done:
                 continue
             ninv = len([x for x in inv if x > 1])
-            if ninv > a.Delta - 1:
+            if a.base is not None:
+                if ninv > a.cycles:
+                    log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\trank>{a.cycles}\t0\t0\t-\n'); log.flush()
+                    continue
+                fr = 'lift'
+            elif ninv > a.Delta - 1:
                 log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\trank>{a.Delta-1}\t0\t0\t-\n'); log.flush()
                 continue
-            fr = abfilt(a.Delta, a.D, dsize, inv)
+            if a.base is None:
+                fr = abfilt(a.Delta, a.D, dsize, inv)
             if fr.startswith('pass 0 '):
                 log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\tabfail\t0\t0\t-\n'); log.flush()
                 continue
-            ex = export(n, i, True, a.gap_timeout)
+            ex = export(n, i, True, a.gap_timeout, single=a.base is not None)
             if ex is None:
-                ex = export(n, i, False, a.gap_timeout)
+                ex = export(n, i, False, a.gap_timeout, single=a.base is not None)
                 if ex is None:
                     log.write(f'{n}\t{i}\t-\t{inv}\t{dsize}\tgap-timeout\t0\t0\t-\n'); log.flush()
                     continue
             struct, tab, plan, qmap = ex
             nplan = sum(1 for _ in open(plan))
             from math import comb
-            work = nplan * (comb(n - 3, a.Delta - 3) if a.Delta > 3 else 1)
+            work = nplan * (comb(n - 3, a.Delta - 3) if a.Delta > 3 else 1) if a.base is None else nplan * n * n
             if work > a.maxplan:
                 log.write(f'{n}\t{i}\t{struct}\t{inv}\t{dsize}\ttoo-big:{work:.3g}\t0\t0\t-\n'); log.flush()
                 for p in (tab, plan, qmap):
                     os.remove(p)
                 continue
             env = dict(os.environ, THREADS=str(a.threads), QMAP=qmap)
-            r = subprocess.run([os.path.join(HERE, 'hx'), 'tab', tab, str(a.Delta), str(a.D), plan, '20'],
-                               capture_output=True, text=True, env=env).stdout
+            if a.base is None:
+                r = subprocess.run([os.path.join(HERE, 'hx'), 'tab', tab, str(a.Delta), str(a.D), plan, '20'],
+                                   capture_output=True, text=True, env=env).stdout
+            else:
+                r = subprocess.run([os.path.join(HERE, 'lx'), 'tab', tab, a.base, str(a.D), plan, '20'],
+                                   capture_output=True, text=True, env=env).stdout
             sols = [l for l in r.splitlines() if l.startswith('SOL')]
             dl = [l for l in r.splitlines() if l.startswith('DONE')][0].split()
             tested, nsol, best = dl[2], dl[4], dl[6]
