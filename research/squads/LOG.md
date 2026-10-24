@@ -110,3 +110,12 @@ Opus meanwhile: exhaustive (11,5) on A5 × Z49, ORBIT="3 3 2", one fixed-generat
   other α; SL(2,5)² × Z19 6; others 30–40. Closest miss of the session. Opus is running seeds 3, 4 for 900 s.
 - r3-c5 (8,8): SL(2,11) × Z91 "3 2 2" (N 120,120, +0.14 %) best 6 in 240 s; PSL(2,7) × SL(2,9) with "3 2 2", "4 2 0",
   "2 4 0" under any α: 7–12. (SL(2,11) × Z91 is also on r4-c7's list.)
+- r3-c2 (10,5) product groups of order 2001..2100: **AGL(1,13) × Z13 (N 2028) best 3** on three seeds (new best for
+  the cell); S4 × A4 × Z7 5; SL(2,3) × A4 × Z7 4 (control); SL(2,2) × SL(2,7) 8. Opus is enumerating AGL(1,13) × Z13
+  exhaustively (50.4M sets).
+
+### Round 4 first result
+- **c5 (9,10): PSL(2,149) × Z7, N = 11,577,300, ORBIT="3 3 0", solved in 8,785 evaluations (928 s): 23,154,600
+  vertices** (ours 23,142,048, table 20,017,260). haarcheck_psl VALID and check_haar_indep.py VALID (ecc 10 from both
+  sides, all vertices reached, 9 distinct neighbours each). Saved: research/frontier/sols/d9D10_psl_149_7_orb3f0_s1.txt,
+  check table_squad/checks/d9D10_psl_149_7_orb3f0_s1.check.txt. First squad-found record of the session.
