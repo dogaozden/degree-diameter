@@ -193,16 +193,24 @@ every k-regular diameter-5 graph into a controller: the 56-vertex (3,5) graph wo
   collinear b's the counting is not decisive. There the annealer never got below 22 singular patterns with pencils
   and diagonals required.
 
-**Proposition 9 (cubic controllers top out at 16 or 18).** Let C be cubic, bipartite, with same-side distances ≤ 4
-and every vertex on a 4-cycle (what a zero-singular, pencil-complete chart for k = 3 needs). Then m ≤ 16, unless the
-4-cycles partition V(C) and m = 18.
-Proof sketch, from u: if u lies on two 4-cycles, then |N₂(u)| ≤ 4 and |N₃| ≤ 3|N₂| − 6 ≤ 6, so m ≤ 1 + 4 + 12 = 17.
-Equality forces every level to be tree-like. But the 4-cycle that a neighbour's neighbour must lie on (b′ in one case,
-the third neighbour c in the other) always creates a coincidence at level 2, 3 or 4, so m ≤ 16. Otherwise every vertex
-lies on exactly one 4-cycle, the 4-cycles are disjoint and partition the vertices, so 4 | 2m and m is even. Write x₃
-and x₄ for the coincidences at levels 3 and 4; then m ≤ 24 − 3x₃ − x₄. The square of u's third neighbour gives
-x₃ ≥ 1, and the squares of a′ and b′ give x₄ ≥ 2, so m ≤ 19. ∎ m = 16 is attained (Z₈, D₄ or Q₈ lifts of
-[[1,2],[2,1]]). m = 18 is open (§3.2).
+**Theorem 9 (cubic controllers stop at m = 16; so k = 3 gives at most 32 q⁴).** Let C be cubic and bipartite,
+with same-side distances ≤ 4 and every vertex on a 4-cycle. Then C has at most 16 vertices per side. This is exactly
+what a 3-letter chart lift at D = 5 needs for q ≥ 3, because the backtracking walks cannot cover the diagonal there
+(Proposition 7.3). So for q ≥ 3 every 3-letter chart lift of diameter 5 has at most 32 q⁴ vertices. The bound is
+attained for q = 3, 4 (2,592 and 8,192).
+Proof. Look from a vertex u. Suppose first that u lies on two 4-cycles. Then |N₂(u)| ≤ 4 and |N₃| ≤ 3|N₂| − 6 ≤ 6,
+so m ≤ 1 + 4 + 12 = 17. Equality needs every level to be tree-like. But some vertex near u must lie on its own 4-cycle:
+b′ when the two cycles share one edge, the third neighbour c when they share two. That cycle always creates a
+coincidence at level 2, 3 or 4, so m ≤ 16. Suppose instead that every vertex lies on exactly one 4-cycle. Then the
+4-cycles are disjoint and partition the vertices into "squares", so m is even. Write x₃ and x₄ for the coincidences at
+levels 3 and 4; then m ≤ 24 − 3x₃ − x₄. The square of u's third neighbour gives x₃ ≥ 1, and the squares of a′ and b′
+give x₄ ≥ 2, so m ≤ 19 and m ∈ {16, 18}.
+For m = 18 (9 squares): the two A-vertices of a square are interchangeable, and so are its two B-vertices. So the
+graph is determined by the 2-in-2-out digraph of external edges between squares. That digraph is the union of two
+derangements P₁, P₂ (König), and relabelling the squares turns P₁ into a fixed representative of its cycle type.
+`square_exhaust.c` tests every cycle type with every P₂: 1,067,968 graphs, none with all same-side distances ≤ 4
+(`runs/square_exhaust_s9.out`). The same program finds 5 valid graphs at 8 squares, as a sanity check. ∎
+The m = 16 examples are Z₈, D₄ or Q₈ lifts of [[1,2],[2,1]].
 
 **Theorem 6 (product theorem; proved, not yet instantiated).** View the controller's universal cover as the k-regular
 tree, i.e. the Cayley graph of Z₂ * ⋯ * Z₂ (k copies). A walk is a word in the letters and its end is the reduced
@@ -224,10 +232,6 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
 
 ### 3.2 Conjectured with strong evidence
 
-- **Cubic controllers stop at m = 16** (so k = 3 gives at most 32 q⁴). The square-structured annealer
-  (`square_anneal.c`) searches exactly the space left by Proposition 9 (9 squares + a port matching). Three runs of
-  72 million steps each all stop at cost 36. The general annealer (`graph_anneal.c`) and voltage sweeps
-  (`runs/cubic_sweep.out`, 94 base/group pairs) also stop at 16.
 - **8 singular patterns is the minimum for a pencil-complete (4,4) chart.** Squad card r1-c5 tested all 12,850 one-
   and two-entry neighbours of the squad chart (58 stay pencil-complete, none has fewer than 8), plus symmetric ansatzes.
 - **At D ≥ 7 over F₂ no chart is D-perfect.** The deficiency is almost entirely at the top distance (universality):
@@ -252,9 +256,14 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   diagonal needs k ≥ q + 1. So Δ = q(q+1), and those cells have Moore graphs. For (16,3) with 8 × F₂ a double count of
   the good colour pairs bounds the controller by 86 vertices, so the lift has at most 344 < 396.
 - **k = 2** (Proposition 7.1) and **perfect D = 5 charts** (Proposition 8).
-- **(6,5)**: k = 3, q = 2 needs m ≥ 22, but cubic controllers stop at 16 (and the best (3,2) chart has 6 singular
-  patterns). **(14,5)**: 7 × F₂ needs m ≥ 462 of at most 576 with a non-universal chart.
+- **(6,5)**: k = 3, q = 2 needs m ≥ 22 (704 > 684). The best (3,2) chart with complete pencils misses one diagonal
+  vector on one side (8 singular patterns, `charts/r3_k3_q2_s41.txt`), so that side still needs 4-cycles. Cubic
+  controllers then stall at cost 7–8 for m = 22 (`runs/d6_*.out`). **(14,5)**: 7 × F₂ needs m ≥ 462 of at most 576 with a non-universal chart.
 - **General (non-voltage) controllers** by colour-preserving switches (squad r1-c8): m = 44 at (8,5) and 36 at
   (12,5), far below voltage lifts. **Joint chart + voltage annealing** (r1-c7): cost 2 at m = 57, no gain.
+- **D ≥ 7 with record controllers.** The record (3,8) and (5,8) graphs have no nonbacktracking 7-walk between adjacent
+  vertices, because they have no 8-cycles through edges (`nbwalk_cover.py` → `runs/nbwalk_cover.out`). So a D = 8 chart
+  would have to cover adjacent pairs with three detours, the hardest condition. Short cycles cannot replace it, as
+  4-cycles did at D = 5.
 - **(16,5) beyond 66 on K₃,₃ + matching**: even a hypothetical zero-singular chart leaves cost 2 at m = 69 and 72
   (`runs/k4univ/`). The limit is the controller's 4-cycles and diameter, not the chart.
