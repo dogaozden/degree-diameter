@@ -88,10 +88,20 @@ int main(int argc, char **argv) {
     else {
         int *A = malloc(sizeof(int) * H * d), *B = malloc(sizeof(int) * H * d), *perm = malloc(sizeof(int) * H), *fillB = malloc(sizeof(int) * H), ok = 0;
         for (int att = 0; att < 200 && !ok; att++) {
-            for (int t = 0; t < d; t++) { int good = 0;
-                for (int tr = 0; tr < 500 && !good; tr++) { for (int i = 0; i < H; i++) perm[i] = i; for (int i = H - 1; i > 0; i--) { int z = rnd() % (i + 1), tt = perm[i]; perm[i] = perm[z]; perm[z] = tt; }
-                    good = 1; for (int j = 0; j < H && good; j++) for (int u = 0; u < t; u++) if (A[j * d + u] == perm[j]) { good = 0; break; } }
+            int built = 1;
+            for (int t = 0; t < d && built; t++) {
+                /* random perfect matching avoiding the t earlier ones: random permutation, then repair conflicts by swaps */
+                for (int i = 0; i < H; i++) perm[i] = i; for (int i = H - 1; i > 0; i--) { int z = rnd() % (i + 1), tt = perm[i]; perm[i] = perm[z]; perm[z] = tt; }
+                for (int pass = 0; pass < 1000; pass++) { int conflicts = 0;
+                    for (int j = 0; j < H; j++) { int bad = 0; for (int u = 0; u < t; u++) if (A[j * d + u] == perm[j]) bad = 1;
+                        if (!bad) continue; conflicts++;
+                        for (int tr = 0; tr < 50; tr++) { int k = rnd() % H, ok1 = 1; if (k == j) continue;
+                            for (int u = 0; u < t; u++) if (A[j * d + u] == perm[k] || A[k * d + u] == perm[j]) ok1 = 0;
+                            if (ok1) { int tt = perm[j]; perm[j] = perm[k]; perm[k] = tt; break; } } }
+                    if (!conflicts) break; }
+                for (int j = 0; j < H; j++) for (int u = 0; u < t; u++) if (A[j * d + u] == perm[j]) built = 0;
                 for (int j = 0; j < H; j++) A[j * d + t] = perm[j]; }
+            if (!built) { fprintf(stderr, "hub graph attempt %d: repeated edge, retry\n", att); continue; }
             for (int i = 0; i < H; i++) fillB[i] = 0; for (int j = 0; j < H; j++) for (int t = 0; t < d; t++) { int k = A[j * d + t]; B[k * d + fillB[k]++] = j; }
             ok = hub_ok(H, d, A, B); fprintf(stderr, "hub graph attempt %d: %s\n", att, ok ? "OK" : "fails");
         }

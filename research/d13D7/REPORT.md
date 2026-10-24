@@ -110,8 +110,67 @@ share one tangent line at e4. Each clique vertex is 11 points, i.e. 22 graph ver
 
 ## 5. Current best and checks
 
-(filled in at the end of the session)
+| R | order | check |
+|---|---|---|
+| 320 (fibration, r1 c8) | 1,063,576 | checks/d13D7_hex11_R320_n1063576.check.txt (all-pairs VALID) |
+| **397** (LNS, r2 c6) | **1,063,730** | checks/d13D7_hex11_R397_n1063730.check.txt (all-pairs VALID) |
+
+The 397 set: research/d13D7/sets/R397_r2c6_idx.txt / _coords.txt. Build with `python3 build_d13D7.py
+sets/R397_r2c6_coords.txt out.edges` (numpy only, independent of hexgen.c) or from the d7hex solution
+research/frontier/sols/d13D7_hex11_R397_n1063730.sol with `d7hex edges` (research/squads/exp2/hexd7/d7hex.c); both give
+the same edge set (checked edge by edge). All-pairs: apsp_wide.c (apsp.c with 512 sources per batch; checked against
+apsp.c on smaller graphs), 13-regular, bipartite, diameter exactly 7.
+
+How 397 arose (squad round 2, card c6, research/squads/d13D7_r2/c6/lns.c): the 320 set was maximal but not
+1-swap optimal. e4 was the only point of R orthogonal to 90 points at infinity (x0 = 0); removing e4 freed them and 62
+are pairwise opposite (381). The LNS (remove a block of R, exact maximum pairwise-opposite subset of the freed
+candidates, accept if not smaller) then reached 397 and plateaued. Round 3 (research/squads/d13D7_r3) attacked the
+plateau: see research/squads/LOG.md.
 
 ## 6. What failed or was not worth running
 
-(filled in at the end of the session)
+- Haar/Cayley search (first-moment ceiling, §1). Not run.
+- Four copies, twisted lifts, a dual copy H(11)^D in the cycle: a 3-cycle of copies always has one H -> H
+  transition, so the local duality cannot be made global for q = 11.
+- Larger cliques of the fibration graph (r2 c1, c3, c5: 29 is the most ever seen; 39,089 distinct 29-cliques),
+  the square-class direction (20 lines), two-direction fibrations (r2 c2).
+- Relaxed surgery with distance-4 pairs in R. The theorem extends (R non-collinear, σ(R) non-concurrent, and the
+  "middle" structure of R mirrored by σ(R)), and on the point side large structured R exist: around a point p the
+  points at distance 4 map onto the GQ Q(4,q) = p^perp/p, and an ovoid of that GQ gives 121 stars of 11 points
+  (1,331 points). But the line side must have the same stars, and for lines of H(11) the "forbidden" choices are
+  not coherent (relax/cohere.c, cohere3.c: 110-121 distinct pairs where coherence would give 11; points give 11).
+  The line-star search reached 128 lines (r2 c8). Closed for q = 11 (open for q = 3^h, where H(q) is self-dual).
+- Orbit unions beyond order 44 (r2 c4: 55 -> 362, 110 -> 340, 61 -> 256), LNS from the orbit set (rigid), crossover.
+
+## 7. The same surgery at other q, and with more copies
+
+**Other q, three copies (Δ = q+2).** Nothing in §2 depends on q = 11:
+- (7,7): 23,436 + 2·58 = **23,552** (partial ovoid of Q(6,5) from povoid_ils); (9,7): 117,648 + 2·172 = **117,992**
+  (Q(6,7)); checks/d7D7_hex5_R58_n23552.check.txt, d9D7_hex7_R172_n117992.check.txt (apsp.c, D-1 fails).
+- (11,7), q = 9: Q(6,9) has ovoids; one is a union of 10 orbits of an element of order 73 (q9/orb73.py: since all
+  subgroups of order 73 of O(7,9) are conjugate and the dual of the Hermitian spread is invariant under one, a union
+  of 73-orbits must exist), with the Hermitian spread: 398,580 + 2·730 = **400,040** (checks/d11D7_hex9_R730_n400040).
+- (11,7) with an explicit duality: H(q) is self-dual exactly for q = 3^h. For q = 9 the Plücker vectors of the lines
+  span the 14-dim Lie algebra g2 inside Λ²V; its invariant form has a 7-dim radical in characteristic 3 and the
+  quotient sends every line to a point, every pencil to a line (q9/plucker.py, dualmap.py); a similitude ψ found by
+  matching an apartment (findpsi.py) carries this onto H(9): an explicit duality δ, verified on all 66,430 points and
+  lines (duality9.py, q9/dual_pt2line.txt). With σ = δ the local duality holds at EVERY point, so R only has to be
+  non-collinear (at most q^4+q^2+1 = 6,643): tools/ncol_ils.c finds 3,859, hub graph random 8-regular with same-side
+  distances <= 6 (tools/hubgraph.py), builder tri_dual.c: 398,580 + 2·3,859 = **406,298** (all-pairs VALID).
+
+**More copies (Δ = q+1+r, 2r+1 copies; the table's (12,7), (14,7), (15,7), (16,7)).** Levels Z_{2r+1}, matchings
+(p, i) ~ (σ(p), i+k) for k = 1..r. Any two levels differ by ±k for some k <= r, and the pair of levels i, i+k with the
+k-th matching is exactly the three-copy situation, so the base construction has diameter 7 for any σ and the
+surgery proof applies verbatim pair by pair. Freeing r ∈ R at all levels frees r slots at each (r, i) and r at each
+(σ(r), i): r line-side and r point-side hubs, +2r vertices per point; hub degree <= q - r. multi.c builds these
+(tested all-pairs: 5 copies of H(5) with 8 points, 39,092; 7 copies of H(7), r = 3, 11 points, 274,578).
+Candidates (checks in progress at the time of writing; see §8):
+(12,7) 664,300 + 4·1,953 = 672,112 (q = 9, σ = δ, hub graph = incidence graph of H(5), degree 6, diameter 6);
+(14,7) 1,771,560 + 4·397 = 1,773,148; (15,7) 2,480,184 + 6·397 = 2,482,566 (q = 11, R = the 397 set);
+(16,7) 4,022,340 + 4·168 = 4,023,012 (q = 13, R = 168 points of Q(6,13) from povoid_ils).
+For these graphs (x, i) -> (x, i+1) (hubs fixed) is an automorphism, so BFS from level 0 and all hubs gives the
+exact diameter (apsp_src.c); the coordinator may prefer full all-pairs.
+
+## 8. Status of the multi-copy checks
+
+(filled in below as they finish)
