@@ -47,7 +47,11 @@ Job "thm-smallfamilies" (Opus). Branch `claude/small-degree-families-g7zllq`. Sc
   of exponent 3.
 - λ = 1 + i has order 8 and norm λ⁴ = −1, so φ(v, z) = (λv, −z) is an automorphism of order 8.
 - G = Heis(F_9) ⋊ ⟨y⟩ with y of order 16 acting by φ, so y⁸ is central. G = SmallGroup(432,233).
-- **S = {(0,0,0), (2i,0,9), (2+i,0,8), (1+2i,2,14)}** in coordinates (v, z, j).
+- **S = {1, y, x·c·y¹⁴, c²·y⁶}**, where x = (1, 0) is a translation and c = (0, 1) generates the centre of
+  Heis(F_9). In coordinates (v, z, j) this is S = {(0,0,0), (0,0,1), (1,1,14), (0,2,6)}.
+  - This is the simplest of the 136 normal-form solutions (`runs/d4D7_heis_normalform.txt`).
+  - It gives the same graph as the published S = {(0,0,0), (2i,0,9), (2+i,0,8), (1+2i,2,14)}: igraph isomorphism,
+    apsp VALID (`verify/d4D7_n864_normalform_check.txt`).
 
 *Checks.* 4-regular, bipartite, diameter 7, girth 8, |Aut| = 432 (only the translations of G).
 - `smallfam/graphs/build_d4D7_n864.py`: pure Python, no GAP, BFS from all 864 vertices
@@ -73,6 +77,10 @@ The three graphs are pairwise non-isomorphic. In each group all plan solutions f
 
 At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. Orders 421–448
 are done so far (`runs/allgroups_d4D7.tsv`); the run continues to 546 and skips order 512 (10,494,213 groups).
+
+*Is the exhaustive search itself right?* `hx_check.py` recomputes with igraph the exact diameter of every set on
+two plan lines of SmallGroup(432,233), with the quotient filter on: 858 sets, 2 solutions, 0 mismatches
+(`runs/hx_check_igraph.txt`). Every solution reported anywhere in this file was also checked by apsp.
 
 Two remarks:
 - The 840 record is not a ceiling. The size law (SIZE_LAW.md §3.3) predicted 876 [788–980] for a good Haar
