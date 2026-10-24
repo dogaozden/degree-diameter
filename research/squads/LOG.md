@@ -41,3 +41,38 @@ Outcomes (cost = uncovered elements or pairs; 0 = perfect controller):
 Kept: the orbit direction (more orbits → bigger perfect controllers: 42, 48, 54 for 1, 2, 3 orbits). Next (Opus):
 exhaustive sweep of all 6 bases on 3+3 and all 26 on 4+4 with groups of order m/k for m = 62–72 (mlift.c), then
 round 2 on bigger bases (5+5 … 8+8), nonabelian groups and exhaustive/SAT search on the best (base, group) pairs.
+
+## 2026-10-24, beat-16-5-squad (session_01R83cdF9zMzt8oY4YvTTqZc) — round 2 (05:40–06:30 UTC)
+
+Lead going in: the pencil lemma (BEAT_16_5_SQUAD.md §2.1). With a pencil-complete chart, distance-2 controller pairs
+are free, so a controller needs only diameter ≤ 5, a nonsingular 4-cycle at every vertex and nonsingular NB-4 walks
+for distance-4 pairs. Tool: mlift_chart.c (fixed charts chart_p4/p5, 12 singular patterns each). Also found by Opus
+just before the round, from round-1 card 6's lead: the bipartite double cover of the LANL (16,4) graph gives
+**32,768** (verified twice). It is someone else's graph, so the target for a construction of our own became m ≥ 65.
+
+Cards (folders research/squads/r2-165/c1..c8):
+1. 3+3 bases, groups of order 21/22 (m = 63/66), 16 pattern files.
+2. 4+4 bases, groups of order 17/18 (m = 68/72).
+3. many orbits: k = 5..8 and 13 random bases, small groups (m = 65–72).
+4. 2+2 bases, groups of order 33–36 (m = 66–72), exhaustive.
+5. a chart that is both universal and pencil-complete.
+6. chart-aware Haar controllers, exhaustive over S, orders 62–80.
+7. wildcard: m = 72–81 by any base/group.
+8. wildcard: bipartite double covers of the current general (Δ,4) records for Δ = 10..15.
+
+Outcomes:
+2. no hit: best 8 at m = 68 (Z₁₇), 10 at m = 72 (Z₁₈); diagnosis: the 8 misses are exactly the 8 self-pairs
+   (each orbit's identity vertex lacks a nonsingular 4-cycle); everything else is covered.
+3. no hit: best 8 at m = 65 (k = 5, Z₁₃); costs grow with k.
+4. no hit, exhaustive (all voltage tuples up to Aut(G)): floor 4 at m = 66–72 for every group; side result: a
+   perfect 2-orbit controller at m = 52 (D₁₃), lift 26,624 apsp VALID.
+7. no hit, but the key diagnosis: k3_000 (multiplicities (0,1,3),(1,2,1),(3,1,0)) with Z₂₄ at **m = 72** has cost 6,
+   and the 6 misses are exactly the 6 self-pairs. All cross-orbit pairs are covered.
+8. side result (not (16,5)): the double cover of Mizuno's (12,4) graph (5,832) is a bipartite (12,5) graph on
+   **11,664** vertices, apsp VALID (table 8,200). Credit for the base graph is Mizuno's. Δ = 10, 11, 13, 14, 15
+   covers have diameter 6–9.
+1, 5, 6: pending at time of writing.
+
+Kept: the self-pair diagnosis (cards 2 and 7, same as Opus's own at m = 63). Next (Opus): force a 4-cycle at every
+orbit by tying parallel base edges with an involution (v(e′) = v(e)·h makes the digon walk e e′ e e′ trivial), which
+needs even-order groups; then anneal the rest.
