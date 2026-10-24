@@ -13,7 +13,7 @@ apsp.c (the coordinator's checker; it also reports INVALID with D = 4, so the di
 
 | cell (Δ, D) | table | ours before | **new** | letters × field | controller (m per side) | chart | builder / check |
 |---|---|---|---|---|---|---|---|
-| (15, 5) | 20,496 | 20,736 | **25,272** | 5 × F₃ | Haar graph of Z₂₆ ⋊₃ Z₆ (156) | `r3/k5q3_pd112.txt` (112 singular, both diagonals) | `r3/graphs/build_d15D5_n25272.py`, `…_check.txt` |
+| (15, 5) | 20,496 | 20,736 | **27,216** | 5 × F₃ | Haar graph of Z₂₈ ⋊₁₁ Z₆ (168) | `r3/k5q3_for168.txt` (96 singular, both diagonals) | `r3/graphs/build_d15D5_n27216.py`, `…_check.txt` |
 | (12, 5) | 8,200 | 8,748 | **12,150** | 4 × F₃ | K₃,₃ + doubled matching over Z₂₅ (75) | `r3/k4q3_diag_s170.txt` (16 singular, both diagonals) | `r3/graphs/build_d12D5_n12150.py`, `…_check.txt` |
 | (10, 5) | 4,000 | — | **4,032** | 5 × F₂ | Haar graph of Z₁₄ ⋊₉ Z₉ (126) | `charts/r2_k5_q2.txt` (230 singular, both diagonals) | `r3/graphs/build_d10D5_n4032.py`, `…_check.txt` |
 | (8, 5) | 1,710 | — | 2,048 (round 2) | 4 × F₂ | K₄,₄ (Latin colouring) over Z₂ × Z₈ (64) | `charts/c4s2_k4_q2.txt` (48 singular) | `graphs/build_d8D5_n2048.py` |
@@ -23,9 +23,11 @@ Z_M ⋊_t Z_N is the metacyclic group of pairs (x, y) with (x₁, y₁)(x₂, y�
 a Haar graph of a group G with connection set S = {s₀, …, s_{k−1}} joins a_g to b_{s g}, and the edge from s_c gets
 letter c. The (10,5) controller came from squad round r2, card c4; the (12,5) voltages from round r3, card c2 (they
 stalled at cost 2 with one chart class; scoring them against all 348 labelled singular sets of Proposition 12(c)
-found a chart that works); both rebuilt and checked here; the (15,5) one is ours. Also found and checked: (12,5)
+found a chart that works); the (15,5) connection set from round r3, card c4 (it stalled at cost 2; the lead then
+re-optimised the chart for that controller, below); all rebuilt and checked here. Also found and checked: (15,5)
+25,272 (Haar graph of Z₂₆ ⋊₃ Z₆, ours) and 22,680 (Z₃₅ ⋊₆ Z₄), (12,5)
 11,664 (K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈, card r3-c2, and a 4+4 base over Z₃ × Z₆, card r3-c3) and 10,368
-(Haar graph of Z₁₆ ⋊₃ Z₄, ours), (15,5) 22,680 (Haar graph of Z₃₅ ⋊₆ Z₄), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, card r2-c5).
+(Haar graph of Z₁₆ ⋊₃ Z₄, ours), (10,5) 4,032 again (Z₂₁ ⋊₄ Z₆, card r2-c5).
 
 **What changed in round 3: charts that cover both diagonals.** A vertex's own fibre is reached by closed 4-walks.
 Before, the charts at q = 3, 4 did not cover this "diagonal" with backtracking walks, so every controller vertex
@@ -33,7 +35,7 @@ needed a 4-cycle, and 4-cycles cap controllers hard (cubic: m ≤ 16, Theorem 8;
 Round 3 found charts at (k, q) = (4, 3) and (5, 3) that cover both diagonals and keep every pencil complete
 (§3.1, Proposition 12). Then a controller only needs same-side distances ≤ 4 and a nonsingular nonbacktracking 4-walk
 for each distance-4 pair (Theorem 11). Girth-6 controllers become usable, and plain Haar graphs of metacyclic groups
-work at once: m jumps from 128 to 156 at (15,5) and from 54 to 64 at (12,5), where Haar graphs then stop
+work at once: m jumps from 128 to 156 at (15,5) (then 168, below) and from 54 to 64 at (12,5), where Haar graphs then stop
 (Proposition 13) and small multi-orbit bases take over (m = 72, then 75).
 
 **How the (4,3) chart was found (Lemma 5).** All the chart conditions at D = 5 (singular patterns, pencils, diagonals)
@@ -44,6 +46,15 @@ form, and the search is over 4 collineations of PG(2,3) (5,616 each). An exhaust
 pencils and exactly 16 singular patterns (the annealer used in rounds 1-2 never found any of these charts; its best
 had 26 singular patterns and no diagonal). In particular **no perfect (4,3) chart exists**, and at (3,2) no chart covers
 both diagonals at all.
+
+**Charts and controllers optimised together.** Near misses (a controller with one or two uncovered targets) were
+closed by changing the chart, not the controller. With the controller fixed, `r3/cdesc/star_cd_ctrl.py` runs the
+coordinate descent of Lemma 5 (one letter's star collineation at a time, over all of PGL(3,q)) with the controller's
+uncovered targets in the objective and both diagonals and all pencils as hard constraints. The order-168 Haar graph
+(cost 2 with the 92-singular chart) reached cost 0 in 33 seconds with a 96-singular chart: 27,216 at (15,5). At (4,3)
+the chart side is finite (348 labelled singular sets), so a near-miss controller can be scored against all of them at
+once: the Z₂₅ controller with cost 2 under one class has cost 0 under set s170: 12,150 at (12,5). `r3/alt_opt.sh`
+alternates the two steps.
 
 **Main theorem (§3.1, Theorem 3; computer-assisted proof; round 2).** For every prime power q,
 
@@ -278,7 +289,8 @@ with apsp (VALID at D = 5, INVALID at D = 4); the bold records and the 10,368 gr
 
 | (Δ, 5) | k × q | chart (singular patterns) | controller | m | lift | best (k,5) graph, m |
 |---|---|---|---|---|---|---|
-| (15, 5) | 5 × 3 | `r3/k5q3_pd112.txt` (112 of 640) | Haar, Z₂₆ ⋊₃ Z₆ | 156 | **25,272** | 177 (88%) |
+| (15, 5) | 5 × 3 | `r3/k5q3_for168.txt` (96 of 640) | Haar, Z₂₈ ⋊₁₁ Z₆ (connection set: squad r3-c4) | 168 | **27,216** | 177 (95%) |
+| (15, 5) | 5 × 3 | `r3/k5q3_pd112.txt` (112 of 640) | Haar, Z₂₆ ⋊₃ Z₆ | 156 | 25,272 | |
 | (15, 5) | 5 × 3 | same | Haar, Z₃₅ ⋊₆ Z₄ | 140 | 22,680 | |
 | (12, 5) | 4 × 3 | `r3/k4q3_diag_s170.txt` (16 of 216) | K₃,₃ + doubled matching over Z₂₅ (voltages: squad r3-c2) | 75 | **12,150** | 81 (93%) |
 | (12, 5) | 4 × 3 | `r3/k4q3_diag_cls1.txt` (16 of 216) | K₃,₃ + doubled matching over Z₃ ⋊₂ Z₈ (squad r3-c2) | 72 | 11,664 | |
@@ -403,8 +415,8 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   nonbacktracking pattern is its own reverse, since i₂ ≠ i₃). An involution therefore has half as many independent
   chances, which fits it being the last hole. Groups of odd order avoid this, and at (15,5) the odd orders 165
   (Z₁₁ ⋊ Z₁₅, Z₃₃ ⋊ Z₅) reach cost 2 with side A fully covered, the two side-B holes being an inverse pair.
-- **Controllers reach 71–88% of the best known (k, 5) graph** when the chart covers both diagonals: m = 156 of 177 at
-  k = 5, q = 3 (92–112 singular of 640); m = 64 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
+- **Controllers reach 71–95% of the best known (k, 5) graph** when the chart covers both diagonals: m = 168 of 177 at
+  k = 5, q = 3 (88–112 singular of 640); m = 75 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
   (216–230 of 640). With 4-cycles required the old controllers were at 54/81 and 128/177.
 
 ### 3.4 Dead ends
