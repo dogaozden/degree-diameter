@@ -47,8 +47,12 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    - order 3 needed 170,313 evaluations (one seed, BEYOND_RANDOM);
    - the rule predicted ≈ 10⁴ and 1.1·10⁵ (§5.1).
 
-   The old rule ("odd k is required") would have excluded order 6. Record attempts with order 6 above 3,407,040 are
-   in §5.2.
+   The old rule ("odd k is required") would have excluded order 6.
+
+   **New record Δ13·D8 = 6,999,552 vertices** (was 6,814,080, +2.7 %). Order 6 on SL(2,7)²×Z31, with
+   α(x₁, x₂, z) = (c x₂ c⁻¹, x₁, 6z) and c of order 3, ORBIT="6 2 1". Three independent checks passed: haar_sym's full
+   check, `research/frontier/build_haar2.py` (VALID, edge sha256 daf0ccf9…), and this job's `order2/check_np.py`
+   (VALID) (§5.2).
 7. **Where else order 2 should win:** by the rule, nowhere else in the current table. It needs D even, an order-3
    space with only two orbits, and few twisted 8-cycles; (6,8) is the only such cell. Even orders above 2 need
    Frobenius-type groups, which exist near the records only at (13,8) (§5.3).
@@ -282,9 +286,29 @@ Both have order 2·ord(F^j) or 2·ord(conj c). The involution α³ fixes a diago
 
 | group | N (vs record) | α | μ | μ_A (rule) | random symmetric: min, p10 | anneals |
 |---|---|---|---|---|---|---|
-| SL(2,7)²×Z31 | 3,499,776 (+2.7 %) | swap∘conj(order 3), z ↦ 6z | 49.4 | 11.0 | 35, 64 | RESULT-SL7 |
+| **SL(2,7)²×Z31** | **3,499,776 (+2.7 %)** | swap∘conj(order 3), z ↦ 6z | 49.4 | 11.0 | 35, 64 | **seed 2 solved in 131,625 evaluations (741 s)**; seeds 1, 3–8: best 6 (one orbit) after 3–14·10⁴ |
 | SL(2,8)²×Z14 | 3,556,224 (+4.4 %) | swap∘Frobenius, z ↦ 3z or 5z | 59.9 | 15.0 | 60–72, 97–104 | 4 seeds: best 18–26 (one orbit = 6) |
 | SL(2,64)×Z14 | 3,669,120 (+7.7 %) | Frobenius order 6, z ↦ 3z | 86.7 | 20.9 | 70, 130 | not run (≈ 5·10⁶ evaluations by the rule) |
+
+**The record graph.** `sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt`, also in `research/frontier/sols/`:
+- S = {e} ∪ O₁ ∪ O₂ in SL(2,7) × SL(2,7) × Z31, with O_i = {s_i, α(s_i), …, α⁵(s_i)};
+- c = mat(2,0,4,4), of trace −1 and order 3;
+- 3,499,776 group elements, so 6,999,552 vertices.
+
+The three checks:
+- haar_order2's full diameter check (all four side pairs within 8): OK.
+- `research/frontier/build_haar2.py`, which rebuilds the group from its definition: ecc 8 from both sides, nothing
+  unreached, 45,497,088 edges, every degree 13, no repeated edge, edge-list sha256
+  daf0ccf91e35dc587d6bed076ba05be225de3cd0aa2c4607032cffe86af6ebb2. VALID
+  (`checks/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.check.txt`).
+- `check_np.py`, a third group implementation: BFS from (e,A) and (e,B) over all 6,999,552 vertices, ecc 8 from both,
+  nothing unreached, 13 distinct generators. VALID (`checks/…check_np.txt`).
+
+apsp.c is out of reach at 7M vertices (about n²·d/64 ≈ 10¹³ operations). Right multiplication is transitive on each
+side, so the two BFS determine the diameter.
+
+The effort was about 4× the rule's median estimate (one solve in 8 seeds, at 1.3·10⁵ evaluations against
+3.6·10⁴). That is within the effort law's factor-5 scatter, but on the slow side, like the product group SL(2,8)²×Z14.
 
 ### 5.3 Where else order 2, or another even order, should win
 
