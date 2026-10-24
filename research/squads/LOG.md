@@ -182,3 +182,15 @@ Opus: (9,10) SL(2,37) × Z229 seeds 2, 3 (700 s each).
   c8 (9,8) PGL(2,16) × Z67: 12 seeds, min 6.
 - Opus: (8,9) SL(2,16) × Z163 24, 15 (dropped); SL(2,8) × SL(2,11) (perfect group, but |Fix| 107) 6, 6. Now running
   12 short seeds on (8,10) SL(2,27) × Z199.
+- Opus, last runs: (8,10) SL(2,27) × Z199, 10 seeds of 150 s: 6–15; (8,9) SL(2,8) × SL(2,11): 6, 6, 8, 6. Stopped.
+
+## Session summary (table-squad, 2026-10-24)
+
+Six squad rounds, 48 Haiku cards. Records (all independently checked; files in research/frontier/sols/, checks in
+table_squad/checks/):
+- (6,8) 31,680 (Opus; k = 2 orbits), (7,10) 2,237,760 (Opus seed on a Haiku near miss), (8,9) 1,326,960 (three
+  rungs: 1,320,120 Haiku r4-c1, 1,323,696 Haiku r6-c5, 1,326,960 Opus), (8,10) 7,818,096 (Opus seed on a Haiku near
+  miss), (9,10) 23,154,600 (Haiku r4-c5).
+- Rounds 1–3 (exploration cards) found nothing; rounds 4 and 6 (explicit rung lists) found everything the squad found.
+- Definitive negatives: exhaustive enumeration closes (10,5) on four groups and (11,5) on A5 × Z49 for orbit symmetry.
+Write-up: research/squads/TABLE_SQUAD.md. Nothing is left running.
