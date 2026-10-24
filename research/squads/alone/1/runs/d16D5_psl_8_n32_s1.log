@@ -1,2 +1,10 @@
 group psl 8 poly x^3+x+1 x Z_32, N=16128, identity 1792, H order 56, rows 288, threads 1, setup 0.00s
 start cost=1448
+t=30 steps=1063401 evals=1063402 cost=602 best=602 T=0.53
+t=60 steps=2108977 evals=2108978 cost=602 best=602 T=0.19
+t=90 steps=3170095 evals=3170096 cost=602 best=602 T=0.15
+t=120 steps=4242059 evals=4242060 cost=602 best=602 T=0.15
+t=150 steps=5318919 evals=5318920 cost=602 best=602 T=0.15
+t=180 steps=6406116 evals=6406117 cost=615 best=602 T=0.63
+t=210 steps=7486745 evals=7486746 cost=615 best=602 T=0.22
+RESULT d=16 D=5 group=psl 8 poly x^3+x+1 x Z_32 N=16128 best=602 evals=8590018 time=240.0
