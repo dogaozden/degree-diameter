@@ -17,5 +17,5 @@ for v in range(nb):
         sa[v*m+g] = pa[v]*m + T[fa[v]][g]; sb[v*m+g] = pb[v]*m + T[fb[v]][g]
 open(sys.argv[3], 'w').write(f'{n} {k*m}\n' + ' '.join(map(str, sa)) + '\n' + ' '.join(map(str, sb)) + '\n')
 EOP
-r=$(./fitq 4 $S/nm_ctrl_$6_$3.txt $3 2000 30 chart_g64_43.txt | tail -2 | tr '\n' ' ')
+r=$(STRIDE=$(python3 -c "print(open(\"$S/nm_ctrl_$6_$3.txt\").read().split()[0])" | awk -v k=$2 '{print $1/(2*k)}') ./fitq 4 $S/nm_ctrl_$6_$3.txt $3 2000 60 chart_g64_43.txt | tail -2 | tr '\n' ' ')
 echo "$6 seed $3 fit: $r" >> near_miss.log

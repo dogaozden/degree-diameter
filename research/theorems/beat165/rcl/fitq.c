@@ -12,7 +12,7 @@
 static int q, Q4;                   /* q^4 */
 static int ADD[256][256], SC[4][256];   /* vector add, scalar mult (scalar codes 0..q-1) */
 static int fadd[4][4], fmul[4][4], finv[4];
-static int n, nA, sa[8192], sb[8192], sai[8192], sbi[8192];
+static int n, nA, sa[8192], sb[8192], sai[8192], sbi[8192], stride = 1;
 typedef struct { int m[4][4]; } Mat;
 static int vid(const int *v) { int x = 0, p = 1; for (int i = 0; i < 4; i++) { x += v[i] * p; p *= q; } return x; }
 static void vdec(int x, int *v) { for (int i = 0; i < 4; i++) { v[i] = x % q; x /= q; } }
@@ -49,6 +49,7 @@ static void build_walk_lists(void) {
   static int bucket[8192][64]; static int bcnt[8192];
   npairs = 0; nwl = 0;
   for (int c = 0; c < n; c++) {
+    if (c % stride) continue;
     int side = c < nA; memset(bcnt, 0, sizeof(int) * n);
     #define ADDW(d, code) do { if (bcnt[d] < 64) bucket[d][bcnt[d]++] = (code); } while (0)
     ADDW(c, 0);
@@ -85,6 +86,7 @@ int main(int argc, char **argv) {
   for (int i = 0; i < n; i++) if (fscanf(cf, "%d", &sa[i]) != 1) return 1; for (int i = 0; i < n; i++) if (fscanf(cf, "%d", &sb[i]) != 1) return 1;
   for (int i = 0; i < n; i++) { sai[sa[i]] = i; sbi[sb[i]] = i; }
   rs ^= (unsigned long long)atoll(argv[3]) * 0x9E3779B97F4A7C15ULL; long iters = atol(argv[4]); int restarts = atoi(argv[5]);
+  if (getenv("STRIDE")) stride = atoi(getenv("STRIDE"));
   build_walk_lists();
   if (argc > 6) { FILE *ch = fopen(argv[6], "r"); int d[40], k = 0, cc; while (k < 40 && (cc = fgetc(ch)) != EOF) if (cc >= '0' && cc <= '3') d[k++] = cc - '0';
     for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++) { Aa.m[i][j] = d[4*i+j]; Ab.m[i][j] = d[20+4*i+j]; } int va[4], vb[4]; for (int i = 0; i < 4; i++) { va[i] = d[16+i]; vb[i] = d[36+i]; } ba = vid(va); bb = vid(vb); if (!setup()) return 1; }
