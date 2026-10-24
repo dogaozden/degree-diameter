@@ -1,0 +1,80 @@
+HIT n=40 id=1 sub=0 |G0|=20 a=1 b=7
+HIT n=40 id=1 sub=0 |G0|=20 a=1 b=13
+HIT n=40 id=1 sub=0 |G0|=20 a=1 b=14
+group 40 1 sub 0 |G0|=20 best=20 (a=1 b=7) hits=320
+HIT n=40 id=2 sub=0 |G0|=20 a=1 b=5
+HIT n=40 id=2 sub=0 |G0|=20 a=1 b=12
+HIT n=40 id=2 sub=0 |G0|=20 a=1 b=20
+group 40 2 sub 0 |G0|=20 best=20 (a=1 b=5) hits=192
+group 40 3 sub 0 |G0|=20 best=19 (a=1 b=7) hits=0
+group 40 4 sub 0 |G0|=20 best=16 (a=5 b=9) hits=0
+group 40 4 sub 1 |G0|=20 best=10 (a=1 b=7) hits=0
+group 40 4 sub 2 |G0|=20 best=16 (a=1 b=9) hits=0
+group 40 5 sub 0 |G0|=20 best=16 (a=5 b=9) hits=0
+group 40 5 sub 1 |G0|=20 best=10 (a=1 b=13) hits=0
+group 40 5 sub 2 |G0|=20 best=16 (a=1 b=9) hits=0
+group 40 6 sub 0 |G0|=20 best=10 (a=2 b=9) hits=0
+group 40 6 sub 1 |G0|=20 best=5 (a=1 b=7) hits=0
+group 40 6 sub 2 |G0|=20 best=10 (a=2 b=9) hits=0
+group 40 7 sub 0 |G0|=20 best=16 (a=5 b=9) hits=0
+group 40 7 sub 1 |G0|=20 best=10 (a=1 b=7) hits=0
+group 40 7 sub 2 |G0|=20 best=16 (a=1 b=9) hits=0
+group 40 8 sub 0 |G0|=20 best=16 (a=5 b=9) hits=0
+group 40 8 sub 1 |G0|=20 best=10 (a=1 b=13) hits=0
+group 40 8 sub 2 |G0|=20 best=16 (a=1 b=9) hits=0
+HIT n=40 id=9 sub=0 |G0|=20 a=8 b=12
+HIT n=40 id=9 sub=0 |G0|=20 a=8 b=21
+HIT n=40 id=9 sub=0 |G0|=20 a=8 b=35
+group 40 9 sub 0 |G0|=20 best=20 (a=8 b=12) hits=64
+group 40 9 sub 1 |G0|=20 best=19 (a=6 b=20) hits=0
+HIT n=40 id=9 sub=2 |G0|=20 a=6 b=8
+HIT n=40 id=9 sub=2 |G0|=20 a=6 b=17
+HIT n=40 id=9 sub=2 |G0|=20 a=6 b=32
+group 40 9 sub 2 |G0|=20 best=20 (a=6 b=8) hits=64
+HIT n=40 id=10 sub=0 |G0|=20 a=8 b=12
+HIT n=40 id=10 sub=0 |G0|=20 a=8 b=21
+HIT n=40 id=10 sub=0 |G0|=20 a=8 b=35
+group 40 10 sub 0 |G0|=20 best=20 (a=8 b=12) hits=64
+HIT n=40 id=10 sub=1 |G0|=20 a=6 b=12
+HIT n=40 id=10 sub=1 |G0|=20 a=6 b=21
+HIT n=40 id=10 sub=1 |G0|=20 a=6 b=35
+group 40 10 sub 1 |G0|=20 best=20 (a=6 b=12) hits=64
+HIT n=40 id=10 sub=2 |G0|=20 a=6 b=8
+HIT n=40 id=10 sub=2 |G0|=20 a=6 b=17
+HIT n=40 id=10 sub=2 |G0|=20 a=6 b=32
+group 40 10 sub 2 |G0|=20 best=20 (a=6 b=8) hits=64
+HIT n=40 id=11 sub=0 |G0|=20 a=8 b=12
+HIT n=40 id=11 sub=0 |G0|=20 a=8 b=21
+HIT n=40 id=11 sub=0 |G0|=20 a=8 b=35
+group 40 11 sub 0 |G0|=20 best=20 (a=8 b=12) hits=64
+HIT n=40 id=11 sub=1 |G0|=20 a=6 b=12
+HIT n=40 id=11 sub=1 |G0|=20 a=6 b=21
+HIT n=40 id=11 sub=1 |G0|=20 a=6 b=35
+group 40 11 sub 1 |G0|=20 best=20 (a=6 b=12) hits=64
+HIT n=40 id=11 sub=2 |G0|=20 a=6 b=8
+HIT n=40 id=11 sub=2 |G0|=20 a=6 b=17
+HIT n=40 id=11 sub=2 |G0|=20 a=6 b=32
+group 40 11 sub 2 |G0|=20 best=20 (a=6 b=8) hits=64
+HIT n=40 id=12 sub=0 |G0|=20 a=5 b=9
+HIT n=40 id=12 sub=0 |G0|=20 a=5 b=17
+HIT n=40 id=12 sub=0 |G0|=20 a=5 b=25
+group 40 12 sub 0 |G0|=20 best=20 (a=5 b=9) hits=80
+group 40 12 sub 1 |G0|=20 best=19 (a=1 b=13) hits=0
+HIT n=40 id=12 sub=2 |G0|=20 a=1 b=9
+HIT n=40 id=12 sub=2 |G0|=20 a=1 b=17
+HIT n=40 id=12 sub=2 |G0|=20 a=1 b=25
+group 40 12 sub 2 |G0|=20 best=20 (a=1 b=9) hits=80
+group 40 13 sub 0 |G0|=20 best=10 (a=10 b=16) hits=0
+group 40 13 sub 1 |G0|=20 best=10 (a=9 b=16) hits=0
+group 40 13 sub 2 |G0|=20 best=10 (a=9 b=10) hits=0
+group 40 13 sub 3 |G0|=20 best=5 (a=1 b=7) hits=0
+group 40 13 sub 4 |G0|=20 best=10 (a=10 b=16) hits=0
+group 40 13 sub 5 |G0|=20 best=10 (a=9 b=16) hits=0
+group 40 13 sub 6 |G0|=20 best=10 (a=9 b=10) hits=0
+group 40 14 sub 0 |G0|=20 best=10 (a=10 b=14) hits=0
+group 40 14 sub 1 |G0|=20 best=10 (a=9 b=13) hits=0
+group 40 14 sub 2 |G0|=20 best=10 (a=9 b=10) hits=0
+group 40 14 sub 3 |G0|=20 best=10 (a=7 b=13) hits=0
+group 40 14 sub 4 |G0|=20 best=10 (a=7 b=10) hits=0
+group 40 14 sub 5 |G0|=20 best=10 (a=7 b=9) hits=0
+group 40 14 sub 6 |G0|=20 best=10 (a=7 b=9) hits=0
