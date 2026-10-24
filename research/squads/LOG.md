@@ -88,3 +88,7 @@ Outcomes (filled in as cards report):
    singular sets: set s170 gives cost 0 -> **(12,5) 12,150**, rebuilt and checked (apsp, bfs_all).
 3. **(12,5) 11,664** again (m=72, K4,4 Latin over Z3 x Z6) and m=68 (Z17) valid; nothing at 76, 80.
 5. (5,3) chart with 88 singular (same count as the lead's coordinate descent); m=160 still cost 2.
+1. (12,5) m=72 valid (2+2 base k4r2_001 over Z6 x|5 Z6, class 1; apsp VALID per the card), m=68, 66 valid; best near
+   miss above: m=80 cost 4 (base k4r2_000 over Z5 x|2 Z8) -> handed to the lead's 348-set alternation.
+4. (15,5): order-168 near miss Z28 x|11 Z6 at cost 2 (92 chart) -> the lead re-optimised the chart for it (controller-
+   aware coordinate descent): **(15,5) 27,216**, rebuilt and checked (apsp, bfs_all). Also 165 and 168 near misses.
