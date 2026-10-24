@@ -11,7 +11,8 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 - **What worked: a +2 construction.** Detach one point p from its extra edges in all three copies, add two new
   vertices that take over those edge slots, and choose the extra edges near p by exact covers of the hexagon (§2).
   - The graph keeps max degree q + 2 and diameter 7, with 2 more vertices than the table.
-  - Repeating it for several points adds 2 per point; with 12 points at q = 5 this gave 23,460.
+  - Repeating it for several points adds 2 per point: 16 points at q = 5 gave 23,468, and 4 points at q = 7 gave
+    117,656 (local search for φ).
   - All graphs were checked by the all-pairs BFS checker apsp.c.
 - **What did not work.**
   - Orbit-symmetric Haar graphs (the required format) reached only 0.86, 0.71 and 0.67 of the table. These cells sit
@@ -42,9 +43,11 @@ Files in `graphs/`:
 To rebuild:
 - m = 1 graphs: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`. For q = 9 add `NOGREEDY=1`, otherwise the
   unused greedy cover takes very long.
-- m = 4 and 12: `python3 hexd7/plus2.py 5 X.edges` writes X.edges.hfile. Then
-  `PHIIN=graphs/d7D7_hex5_plus24.phi plusm X.edges.hfile 12 0 1 OUT.edges` (plusm.c, gadget layout fixed by m).
-  This reproduces the edge list byte for byte.
+- m > 1: `python3 hexd7/plus2.py q X.edges` writes X.edges.hfile. Then run plusm.c with seconds = 0; the gadget
+  layout is fixed by m (and RMIN). This reproduces the edge list byte for byte (checked for m = 12 and 16):
+  - `PHIIN=graphs/d7D7_hex5_plus24.phi plusm X.edges.hfile 12 0 1 OUT.edges` (m = 12);
+  - `RMIN=2 PHIIN=graphs/d7D7_hex5_plus32.phi plusm X.edges.hfile 16 0 1 OUT.edges OUT.phi 2` (m = 16);
+  - `PHIIN=graphs/d9D7_hex7_plus8.phi plusm X.edges.hfile 4 0 1 OUT.edges` (q = 7, m = 4).
 - Then run `apsp OUT.edges q+2 7` (`research/lifts/coordinator_check/apsp.c`: all-pairs BFS, no symmetry assumed).
 
 | cell | n | max degree | diameter | apsp.c | edge-list sha256 |
