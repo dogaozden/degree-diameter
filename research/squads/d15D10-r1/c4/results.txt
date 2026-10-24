@@ -1,0 +1,10 @@
+# c4 (big p, small n screen), RANDORB=12 seed 14 K 8, default ORBIT 3 5 0, 1 thread, each run through /tmp/claude-0/squad-heavy.lock. Raw lines: c4/runs.log. s_per_eval = program time/12 (wall, shared machine). excess = median/mu.
+# fam p n N mu min p10 median mean excess s_per_eval
+psl 1361 1 1260503760 27.19 15 19 28 26.92 1.030 7.48
+sl 457 13 1240765968 20.21 13 13 21 20.33 1.039 3.73
+psl 709 7 1247400420 22.35 19 19 24 25.25 1.074 2.48
+sl 307 43 1244167848 21.29 12 16 24 22.83 1.127 1.57
+psl 431 31 1240969680 20.27 13 15 24 8792.92* 1.184 1.52
+# * one sample with cost ~1e5 (S not generating); the median is the robust statistic here.
+# 12 samples per group: the median has noise of about +-0.1 in excess. sl 457 x Z13 gave 1.04 here (seed 14) and 1.19 on c1's 16-sample run (seed 11).
+# Eval cost: psl 1361 x Z1 (926k rows of 22 words) user CPU 58.5 s for 12 samples (4.9 s/eval), against 1-2 s/sample quoted in RULES for N ~1.2e9 shapes.

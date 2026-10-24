@@ -1,0 +1,17 @@
+c8 (wildcard): alpha choice, Z_n action and fixed generators, measured with haar_lean RANDORB (random symmetric S, no search). Script: run_proxy.sh in this folder. haar_lean.c unchanged (env only).
+Proxy (15,8) sl 59 x Z_43, N=8828760, mu 23.00, 1000 samples per line:
+ default ORBIT=3 5 0, AR=6 (auto), ATRACE=1, seed 1: min 0, p10 18, median 28, mean 32.35
+ default, seed 2: min 6, p10 16, median 28, mean 32.54
+ default, seed 3: min 3, p10 18, median 30, mean 32.18
+ ATRACE=58 (other order-3 companion matrix, trace -1), seed 1: min 6, p10 17, median 28, mean 30.15
+ AR=36 (= 6^-1, other cube root of 1 mod 43), seed 1: min 6, p10 17, median 29, mean 32.96
+ AR=1 (conjugation only, Z_43 fixed; |Fix(alpha)| 59 -> 2579), seed 1: min 77, p10 136, median 951, mean 216816
+ ORBIT=3 4 3 (f=3 fixed generators), seed 1: min 6, p10 21, median 35, mean 50.31
+ ORBIT=3 4 3, seed 2: min 3, p10 19, median 33, mean 52.20
+ ORBIT=3 4 3, seed 3: min 6, p10 18, median 30, mean 49.86
+ ORBIT=3 3 6 (f=6), seed 1: min 396, p10 492, median 615, mean 6315
+(15,10) sl 139 x Z_433, N=1162812840 (Opus group), mu 5.69, RANDORB=12 under squad-heavy.lock:
+ ORBIT=3 5 0 (default), seed 1: min 3, p10 6, median 9, mean 11.83 (10.7 s)
+ ORBIT=3 4 3 (f=3), seed 1: min 3, p10 6, median 12, mean 15.92 (11.3 s)
+No cost-0 graph at (15,10). The one cost-0 sample on the proxy (seed 1, default) was not written or checked (out=/dev/null) and is not a (15,10) result.
+Reading: ATRACE and AR=r^-1 give the same distribution as the default (the order-3 classes are conjugate under PGL(2,p), and r and r^-1 generate Aut-conjugate automorphisms when n is prime). AR=1 and f=6 are far worse, and f=3 is worse in mean (about 50 vs 32) and median (about 33 vs 28).

@@ -1,0 +1,17 @@
+c5: K study on the (15,8) proxy. Group SL(2,59) x Z_43, N=8828760, mu=23.0 (from card).
+Settings: ./haar_lean 15 8 60 SEED K /dev/null sl 59 43 (ORBIT default k=3 m=5 f=0, THREADS=1, no lock, outfile /dev/null as the card says).
+Format: K seed best evals time status scored_evals (scored = evals, or 2x evals if unsolved)
+K=4 seed=1 best=3 evals=7173 time=60.0 unsolved scored=14346
+K=4 seed=2 best=0 evals=925 time=9.0 solved scored=925
+K=4 seed=3 best=2 evals=5641 time=60.0 unsolved scored=11282
+K=8 seed=1 best=0 evals=4193 time=55.5 solved scored=4193
+K=8 seed=2 best=3 evals=4449 time=60.0 unsolved scored=8898
+K=8 seed=3 best=0 evals=1809 time=23.0 solved scored=1809
+K=16 seed=1 best=1 evals=4481 time=60.0 unsolved scored=8962
+K=16 seed=2 best=0 evals=2881 time=31.3 solved scored=2881
+K=16 seed=3 best=1 evals=6465 time=60.2 unsolved scored=12930
+Median scored evals: K=4 11282, K=8 4193, K=16 8962. Best K=8, score (median) 4193.
+Solved runs (4 of 9: K=4 s2, K=8 s1, K=8 s3, K=16 s2) passed haar_lean's own full check (recomputed cost 0, full diameter check OK, also after normalising s_0=e). Their solutions went to /dev/null, so none is saved.
+Eval rate was 75-120 candidate evaluations per second for every K (about 0.01 s each), so evals and time are proportional.
+Caveat: 3 seeds per K with heavy-tailed run times; the gaps between K values are within noise.
+Raw logs: raw_K{4,8,16}_s{1,2,3}.log in this folder.
