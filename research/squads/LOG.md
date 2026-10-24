@@ -48,3 +48,28 @@ master) had never been run on H(8) because its generator needs odd q. hexgen2.c 
 **(10,7) 224,696** (table 224,694), apsp VALID. Did the squad help? Round 1 and 2 cards produced no record. Their
 negative results (c1, c2, c4, c5) settled the hexagon question quickly, so the GQ idea came sooner. The wins
 themselves are Opus solo work (DM theorem, reuse of the hub tool).
+
+## 2026-10-24 22:38 UTC, cell-10-7 resumed (Opus, cloud session `claude/bipartite-10-7-uvpxk9`), round 3: more freed pairs
+
+Goal: beat our (10,7) 224,718 (table 224,694). That graph is X(M) over H(8) plus 12 freed pairs, found by Opus
+just before the round with a new **joint algebraic cover**: pairwise opposite freed flags, M maps each point to a line
+with the same membership vector, then a growth mode adds pairs one at a time. Folder research/squads/d10D7-r3/
+(README.md, cards.md, tools/hexkit.py, scoreboard.jsonl). Scorer: apsp.c on `d7hex edges`, or hexkit mismatch/uncovered.
+
+Cards (best score):
+c1 exact joint covers from structure: **max K with mismatch 0 = 4** (one zero quadruple in 10^5 samples; only ~5 % of
+opposite triples are exact; H(2) flags no better) · c2 flag-set local search: mismatch 6,016 at K = 16 (random
+6,000-7,300; about 1 % gain) · c3 leftover matching: no report · c4 q = 5 tuning (old binary): K = 19 then hub-graph
+violations (cap q-1 = 4) · c5 q = 7 tuning: **K = 18 apsp VALID** (117,684; record 117,690 not beaten) · c6 proxy
+(−,−)/(+,+) routes: no report (a K = 22 q = 5 solution left unverified) · c7 more than hubs: none valid (random-M
+trials break diameter 7; hubs are 2 vertices per 3 deleted edges) · c8 new constructions: no report.
+
+Kept / what happened next (Opus): the cards showed the joint algebraic cover cannot be exact beyond 4 flags in
+H(8). In parallel Opus found two things the cards did not:
+1. H(9) is self-dual. A duality M covers every absolute flag exactly, giving (11,7) 398,636 and, in the 5-level
+   cover, (12,7) 664,412.
+2. Watching the q = 9 growth add pairs with zero uncovered targets led to the **B2 condition**: M(B2(p)) = B2(l)
+   alone covers a freed pair by type-2 routes. This gave (10,7) 224,828, (9,7) 117,760, (7,7) 23,500 and (11,7)
+   404,222, all apsp VALID.
+Did the squad help? Indirectly: the c1/c2 negatives closed the joint-cover line quickly, and c5's growth runs gave
+the q = 7 calibration. The records came from Opus's own analysis.
