@@ -24,8 +24,9 @@ M_b(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bou
    follows in one line from a theorem published in August 2026.** Cames van Batenburg–Korsky (arXiv:2608.03965) prove
    lim n(Δ, D)/Δ^D = 1 for general graphs and every D. The doubling n_b(Δ, D) ≥ 2·n(Δ−1, D−1) (REGULARITIES §1.4,
    which they also use, for edges) turns this into lim n_b(Δ, D)/M_b(Δ, D) = 1 for every D. Nobody states the
-   bipartite version. The 2013 survey (DS14v2, p. 36) says it was known only for D = 2, 3, 4, 6. Both 2026 papers'
-   bipartite sentences are about the edge version. So it is a corollary to record, not a new theorem (§1.9).
+   bipartite version. The 2013 survey (DS14v2, p. 36) says it was known only for D = 2, 3, 4, 6. CvB–K's only
+   bipartite limit, in the paper and in their Lean README, is for the edge version; Isham et al. treat general graphs
+   only. So it is a corollary to record, not a new theorem (§1.9).
 3. **"D ≡ 2 mod 4 is not reached by buildings" is false.** Delorme's 1985 product G ⊗ Opp(G) of any flag graph is
    regular of degree ∏(q_s + 1), with diameter exactly h and order/M_b → 1 (Theorem 3). This works for unbalanced
    diagrams too, so every h ≥ 3 is reached, for example by A_{h−1}(q) or B_{h/2}(q).
@@ -56,8 +57,8 @@ M_b(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bou
    | octagon product GO(2,4) ⊗ Opp | (15,8) | 0.57 |
    | C₄(3) | (16,8) | 0.66 of the table |
 
-   GQ(q−1, q+1) is the AS(q) quadrangle that our Theorem A completes. In the table range every non-Moore flag graph is
-   at most 0.29 of the Moore bound.
+   GQ(q−1, q+1) is the AS(q) quadrangle that our Theorem A completes. In the table range every flag graph of a
+   building of rank ≥ 3 is at most 0.29 of the Moore bound.
 
 ---
 
@@ -277,7 +278,7 @@ because they are not bipartite.
 > (b) Delorme product of a building of rank r, equal parameters, Δ = (q+1)^r: n/M_b(Δ, h) = 1 − r(h−2)/q + O(q⁻²).
 > (c) ²E₆(q), Δ = (q+1)(q²+1): n/M_b(Δ, 12) = 1 − 10/q + O(q⁻²).
 > (d) For every D ≥ 2: lim_{Δ→∞} n_b(Δ, D)/M_b(Δ, D) = 1. This is the full limit over all Δ, not only along prime
-> powers.
+> powers. (D = 2 is K_{Δ,Δ}; the proof below is for D ≥ 3.)
 
 *Proof of (a).*
 1. Each [d]_q = q^{d−1}(1 + q⁻¹ + O(q⁻²)), and every d_i ≥ 2, so E = q^N(1 + r/q + O(q⁻²)).
@@ -308,9 +309,9 @@ x = y or xy ∈ E(H)). See §1.9.
 |---|---|---|---|---|---|
 | 3, 4, 6 | PG(2,q), GQ(q), GH(q) | 0 (Moore) | 3 | 3 | 0.79, 0.49, 0.09 |
 | 5 | A₄(q) | 6Δ^(−1/2) | 81 | 3,600 | 0.24 (Δ ≈ 6.5·10⁹) |
-| 7 | A₆(q) | 15Δ^(−1/3) | 13,824 | 3.4·10⁶ | 0.007 |
-| 8 | Sp(8, q) | 12Δ^(−1/2) | 324 | 12,996 | 0.0013 (at q = 16) |
-| 9 | A₈(q) | 28Δ^(−1/4) | 3.1·10⁶ | 5.3·10⁹ | ≈ 0 |
+| 7 | A₆(q) | 15Δ^(−1/3) | 13,824 | 3.4·10⁶ | 0.029 (Δ ≈ 5.4·10¹⁴) |
+| 8 | Sp(8, q) | 12Δ^(−1/2) | 324 | 12,996 | 0.007 |
+| 9 | A₈(q) | 28Δ^(−1/4) | 3.1·10⁶ | 5.3·10⁹ | 0.0013 |
 | 10 | B₅(q) ⊗ Opp | 40Δ^(−1/5) | 7.8·10⁸ | 7.9·10¹² | ≈ 0 |
 | 12 | F₄(q) | 20Δ^(−1/2) | 900 | 36,864 | ≈ 0 |
 | 16 | Sp(16, q) | 56Δ^(−1/4) | 4.5·10⁷ | 8.6·10¹⁰ | – |
@@ -326,7 +327,9 @@ best building route. It squares the degree.
 ≤ (q+1)^D, and |Q|/Δ^D = 1 − D(D−1)/q + O(q⁻²). With the prime number theorem this re-proves CvB–K's Theorem 1.1
 (lim n(Δ, D)/Δ^D = 1 for all D), with deficiency D(D−1)Δ^(−1/D) instead of their D(2D−1)Δ^(−1/(2D)). For odd D the
 quotient of B_{(D+1)/2}(q) does better, (D+1)(D−1)/2·Δ^(−2/(D+1)). For even D, Isham et al.'s polarity quotient of
-C(D/2, q) is better still. `general_rates.py` → `out/general_rates.txt`. For example, at D = 5 the B₃ quotient reaches
+C(D/2, q) is better still. `general_rates.py` → `out/general_rates.txt`. The constants D(D−1), r(D−1) and CvB–K's
+D(2D−1) are confirmed numerically by `general_asymptotic_check.py` → `out/general_asymptotic_check.txt`. For example,
+at D = 5 the B₃ quotient reaches
 0.49 at Δ = 4,913, while H_{5,q} is at 0.09 at Δ ≈ 1.9·10¹². CvB–K's Remark 3.2 asks for the optimal rate. The exact
 degree of H_{k,q} used here is Σ_{T} q^{|T|}(q+1)^{|N(T)|}, over non-empty sets T of odd nodes of A_{2k}, where N(T) is
 the set of even nodes adjacent to T. It is the d = 2 layer of Corollary 2 and matches BFS (60 and 204 for k = 2,
@@ -353,7 +356,7 @@ and the Moore bound.
 | 5 | (9,5) | A₄(2) | 2,170 | 0.87 | 0.82 | 0.23 |
 | 5 | **(16,5)** | **A₄(3)** | **31,460** | **1.15** | 0.93 | 0.29 |
 | 6 | (9,6) | ³D₄(2) = GH(2,8); C₃(2); GH(2) ⊗ Opp | 3,276; 1,260; 7,938 | ≤ 0.11 | | ≤ 0.11 |
-| 6 | (15,6) | U(6,2); O⁻(8,2); GH(2) ⊗ GH(4) | 24,948; 6,426; 171,990 | ≤ 0.20 | | ≤ 0.15 |
+| 6 | (15,6) | U(6,2); O⁻(8,2); GH(2) ⊗ GH(4) | 24,948; 6,426; 171,990 | ≤ 0.21 | | ≤ 0.15 |
 | 6 | (16,6) | C₃(3); GH(3) ⊗ Opp | 18,200; 264,992 | ≤ 0.30 | | ≤ 0.16 |
 | 8 | (5,8) | GO(2,4) (Ree–Tits octagon) | 4,680 | 0.51 | 0.49 | 0.11 |
 | 8 | (9,8) | C₄(2) = Sp(8,2) | 160,650 | 0.36 | 0.30 | 0.034 |
@@ -369,8 +372,8 @@ So:
   lift with 33,792 vertices beats it.
 - The near misses at D = 4 are the AS(q) quadrangles. Our Theorem A (2q²(q+2), research/NOTE.md) is exactly AS(q)
   plus two elliptic quadrics, made regular; it beats them by 2q² vertices.
-- In the table range, every non-Moore flag graph is ≤ 0.29 of the Moore bound. The asymptotics only take over at
-  Δ in the hundreds or thousands (table in §1.7).
+- In the table range, every flag graph of a building of rank ≥ 3 is ≤ 0.29 of the Moore bound. The rank-2 AS(q)
+  quadrangles reach 0.80 at (15,4). The asymptotics only take over at Δ in the hundreds or thousands (table in §1.7).
 
 ### 1.9 Literature: what is known and what is not
 
@@ -462,7 +465,7 @@ it.
 | idea | test | result |
 |---|---|---|
 | other splittings of the diagram | partitions.py, 13 types, all 2-partitions | lose ≥ 1 power of q (§2.1) |
-| unbalanced flag graphs as they are (A_odd, C_odd, D_n, E₇, twisted C_n, ³D₄, ²F₄, GQ(s,t)) | §1.5, table_cells.py | max degree is the larger side; lose a power of q; in range 0.4 %–96 % of the table, never above |
+| unbalanced flag graphs as they are (A_odd, C_odd, D_n, E₇, twisted C_n, ³D₄, ²F₄, GQ(s,t)) | §1.5, table_cells.py | max degree is the larger side; lose a power of q; in range 0.8 %–96 % of the table, never above |
 | Kronecker products of two same-h regular flag graphs in range | table_cells.py (K rows) | ≤ 0.80 of the table (D = 3), ≤ 0.62 (D = 4), ≤ 0.30 (D = 6) |
 | Delorme products in range | table_cells.py (P rows) | best (15,8) 10,266,750 = 0.72 of the table, 0.57 of ours |
 | general table via Delorme or polarity quotients | general_rates.py and the wiki general table ("as of 14 October 2026") | below everywhere: (16,4) A₄(3) quotient 15,730 vs 16,384; (9,4) 1,085 vs 1,765; (15,3) GQ(2,4) quotient 1,215 vs 1,539; (15,7) GO(2,4) quotient 5,133,375 vs 9,758,988 |
@@ -489,6 +492,17 @@ The reviewer's own text is not in the repo; these are the gaps I found.
    - "D ≡ 2 mod 4 is not reached" is false (Theorem 3).
    - The whole statement is a corollary of CvB–K (§1.9).
 
+## 6. Open questions for a next session
+
+1. Prove §2.1 (only the colour classes are tight). The tight case needs w₀ to factor, with lengths adding, into about
+   N/a alternating longest elements of two complementary parabolic subgroups.
+2. Delorme's J. Graph Theory 1985 paper is behind Wiley. Does it treat the octagons? §1.9 says the octagon case
+   seems unnoticed; the full text would settle it.
+3. Lower bounds on the rate: is 1 − n_b(Δ, 5)/M_b(Δ, 5) ≥ cΔ^(−1/2) for some c > 0? Nothing is known.
+4. Lean: Theorem 1 needs only the W-metric axioms and three Coxeter facts. The Coxeter facts are the hard part to
+   formalise in general. For one fixed W, e.g. W(B₄) with 384 elements, the facts actually used become finite
+   statements that a computation could certify. (C2) and (C3) are needed only for the factorisations that occur.
+
 ## Scripts and outputs (research/theorems/buildings/)
 
 | script | output | what |
@@ -503,4 +517,6 @@ The reviewer's own text is not in the repo; these are the gaps I found.
 | rates.py | out/rates.txt | §1.7, ratios to Moore for D = 3…30, three routes |
 | asymptotic_check.py | out/asymptotic_check.txt | first-order constants of Theorem 4 |
 | general_rates.py | out/general_rates.txt | §1.7(f), general graphs |
+| general_asymptotic_check.py | out/general_asymptotic_check.txt | first-order constants for general graphs |
+| run_checks2.sh | out/apsp_checks2.txt | apsp.c on the other 12 flag graphs of compare_dist.py |
 | partitions.py | out/partitions.txt | §2.1 |
