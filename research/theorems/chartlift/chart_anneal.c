@@ -16,7 +16,7 @@ static double wall(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t)
 #define N 4
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t xr(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
-int q, k, ADD[16][16], MUL[16][16], INV[16], NEG[16], SUB[16][16];
+int q, k, ADD[128][128], MUL[128][128], INV[128], NEG[128], SUB[128][128];
 int A[8][N][N], Ai[8][N][N], b[8][N], w[8][N];
 double WS, WP, WD;
 int Q4; unsigned char *mark;
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
     for (int a = 0; a < q; a++) for (int c = 0; c < q; c++) SUB[a][c] = ADD[a][NEG[c]];
     k = atoi(argv[2]); double secs = atof(argv[3]); rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; xr();
     WS = atof(argv[5]); WP = atof(argv[6]); WD = atof(argv[7]); const char *out = argc > 8 ? argv[8] : NULL;
-    Q4 = q * q * q * q; mark = malloc(Q4);
+    Q4 = q * q * q * q; mark = (WP > 0 || WD > 0) ? malloc(Q4) : NULL;
     double best = 1e18; int bA[8][N][N], bb[8][N];
     double t0 = wall(); long it = 0; int restarts = 0;
     while ((wall() - t0) < secs && best > 0) {
