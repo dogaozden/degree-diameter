@@ -272,6 +272,33 @@ How well it predicts (`out/rule_table.txt`):
   1.4·10⁷ and 4.7·10⁶ evaluations, against 3.3·10⁵ and 2.1·10⁶. Without the penalty it predicts 1.0·10⁶ and
   4.4·10⁵. So the long-cycle term is real on SL(2,25) (§3.1) but too small to see in two runs.
 
+### 4.1 Choosing a symmetry: a checklist for future searches
+
+1. **Odd D:** use odd k only (3, or 5 with small fixed sets). Any involution in ⟨α⟩ brings ≥ N/|Fix| Anti targets
+   at rate e^{−λ/2}.
+2. **Even D:** any k. For every subgroup H ≤ ⟨α⟩, count the elements whose stabiliser is exactly H. Each costs
+   (|H|/k)·e^{−λ/|H|}, the miss rate p^{1/|H|} checked in §5.1.
+3. For every involution β ∈ ⟨α⟩, compute ρ = |Anti(β)|/N (≥ 1/|Fix(β)|). Then:
+   - at small Δ (6–8), keep the twisted 8-cycle mean ρΔ(Δ−1)³/8 at a few or less;
+   - at large Δ (≥ 12) twisted cycles are cheap anyway (c_j tiny).
+   - Prefer β with a large centralizer and a tight uncertainty bound. For Z_n, choose r so that
+     gcd(r−1, n)·gcd(r+1, n) = n (for n = 24 that is r = 11, not −1).
+4. **Large k with small fixed sets** comes from:
+   - Frobenius of order e on SL(2,p^e): fixed sets SL(2,p^d) for d | e;
+   - swap∘(automorphism of order k/2) on G×G, where α^{k/2} fixes a twisted diagonal ≅ G.
+
+   Conjugation in SL(2,q) has |Fix| ≈ q at every level, which blocks k ≥ 5 (STRUCTURE §2.3).
+5. **Fill Δ with free orbits plus at most one smaller α-orbit (`OSUB`)** instead of fixed letters. Fixed letters
+   come from Fix(α), which for Frobenius or swap types is a small non-abelian group full of involutions and
+   order-3 elements.
+6. **Z_n factor:** r must have the full order k modulo every prime of n, and every power α^j (j < k) must move every
+   cyclic quotient. Primes p ≡ 1 mod k work; Z9 does not for k = 6 (its order-3 automorphisms fix Z3); Z2 is harmless.
+   Avoid large cyclic factors next to a small simple group (SL(2,5)²×Z247 and SL(2,16)×Z145 screen 3–6× worse than
+   the rule's μ_A).
+7. **Screen before annealing:** RANDORB's lower tail in clump units (cost/k) ranks candidates the way the anneals
+   did. On the solved groups, p10 was 6 clumps (SL(2,64)×Z13, about 10⁴ evaluations) and 10.7 (SL(2,7)²×Z31, about
+   1.3·10⁵).
+
 ## 5. Predictions and tests
 
 ### 5.1 Even orders beat order 3 at even D when the involution has a large centralizer
