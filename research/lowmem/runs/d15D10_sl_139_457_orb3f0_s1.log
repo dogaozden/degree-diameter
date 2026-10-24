@@ -1,0 +1,24 @@
+start 2026-10-24T19:23:08Z | ORBIT=3 5 0  | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_sl_139_457_orb3f0_s1.txt sl 139 457
+group sl 139 x Z_457, N=1227264360, rows 19320 of 63523 bits (993 words), memory 0.31 GB per thread, threads 1, setup 1.78s
+alpha: conj by mat(0,138,1,1), z -> 133 z on Z_457
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 137 (+e); mu = 16.41, mu/k = 5.47, fixed-point misses ~ 0.33
+start cost=28 (first eval 1.13s)
+t=30 steps=4 evals=33 cost=9 best=9 T=0.53
+t=65 steps=9 evals=73 cost=7 best=7 T=0.16
+t=99 steps=14 evals=113 cost=1 best=1 T=0.15
+t=133 steps=19 evals=153 cost=1 best=1 T=0.15
+t=167 steps=24 evals=193 cost=1 best=1 T=0.15
+t=202 steps=29 evals=233 cost=1 best=1 T=0.15
+t=235 steps=34 evals=273 cost=1 best=1 T=0.15
+t=268 steps=39 evals=313 cost=1 best=1 T=0.15
+t=303 steps=44 evals=353 cost=1 best=1 T=0.15
+RESULT d=15 D=10 group=sl 139 x Z_457 N=1227264360 best=0 evals=377 time=323.5 orbit k=3 m=5 f=0 fix=137
+recomputed cost of best S: 0
+full check from (e,A): reached A 1227264360/1227264360, B 1227264360/1227264360 within 10
+full check from (e,B): reached A 1227264360/1227264360, B 1227264360/1227264360 within 10
+full diameter check: OK
+full check from (e,A): reached A 1227264360/1227264360, B 1227264360/1227264360 within 10
+full check from (e,B): reached A 1227264360/1227264360, B 1227264360/1227264360 within 10
+full diameter check after normalising s_0 = e: OK
+wrote ../frontier/sols/d15D10_sl_139_457_orb3f0_s1.txt
+exit 0 2026-10-24T19:28:40Z
