@@ -10,7 +10,7 @@
   | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** | lift of a 2+2 cubic base over Z3² ⋊ Z8 (not a Haar graph) |
   | (4,10) | 11,748 (Loz) | **11,988** | Haar graph of Z333 ⋊₈₃ Z18 |
   | (5,9) | 27,936 (Loz) | **28,842** | Haar graph of Z437 ⋊₂₆ Z33 |
-  | (5,10) | 90,068 (Loz) | **93,738** | Haar graph of Z919 ⋊₈ Z51 |
+  | (5,10) | 90,068 (Loz) | **95,472** | Haar graph of Z1989 ⋊₄₆₁ Z24 |
 
   The (4,10), (5,9) and (5,10) values may still rise; the last sweeps were still finding solutions.
 - **Exact rebuilds of table records**, proved isomorphic with BLISS:
@@ -66,11 +66,12 @@ Solution files: `sols/rebuild_*.txt`.
 |---|---|---|---|---|
 | (3,8) | 256 (Delorme–Gómez–Quisquater) | **288** (+12.5 %) | 2+2 cubic base (biadjacency ((2,1),(1,2))) over Z3² ⋊_M Z8, M = [[0,2],[1,0]] | `sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt` |
 | (4,10) | 11,748 (Loz) | **11,988** (+2.0 %) | Haar graph of Z333 ⋊₈₃ Z18 (metacyclic) | `sols/d4D10_n11988_haar_meta333_18_83.txt`. Also 11,772 (Z218 ⋊₃ Z27) |
-| (5,10) | 90,068 (Loz) | **93,738** (+4.1 %) | Haar graph of Z919 ⋊₈ Z51 (metacyclic) | `sols/d5D10_n93738_haar_meta919_51_8.txt`. Also 93,704, 93,444, 93,310, 93,240, 93,196, 93,166, 93,120, 93,000, 92,492, 92,318, 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
+| (5,10) | 90,068 (Loz) | **95,472** (+6.0 %) | Haar graph of Z1989 ⋊₄₆₁ Z24 (metacyclic) | `sols/d5D10_n95472_haar_meta1989_24_461.txt`. Also 93,738, 93,704, 93,444, 93,310, 93,240, 93,196, 93,166, 93,120, 93,000, 92,492, 92,318, 91,938, 91,812, 91,756 and 91,728 (SL(2,13) × Z21) |
 | (5,9) | 27,936 (Loz) | **28,842** (+3.2 %) | Haar graph of Z437 ⋊₂₆ Z33 (metacyclic) | `sols/d5D9_n28842_haar_meta437_33_26.txt`. Also 28,560, 28,444, 28,418, 28,094, 27,972 and 27,948 |
 
 All checks pass: lift check, verify_lift.py, and apsp all-pairs, which assumes no symmetry. The Haar graphs also pass
 the repo's build_haar2.py:
+- (5,10) 95,472: sha256 67342fdc…;
 - (5,10) 93,738: sha256 82b66432…;
 - (5,10) 93,444: sha256 d3c643b9…;
 - (5,10) 93,000: sha256 eca54823…;
@@ -117,12 +118,16 @@ Outputs are in `verify/`.
 - Two later pushes (orders 290–348, with every rich group including the composite-modulus and 3-dimensional affine
   families) found nothing above 288. The best was cost 10 at n = 320.
 
-**(5,10) = 93,738, with thirteen smaller orders found on the way.**
+**(5,10) = 95,472, with fourteen smaller orders found on the way.**
+- 95,472 is a Haar graph of Z1989 ⋊₄₆₁ Z24. Connection set (a, j): (0,0), (826,18), (423,7), (1635,11), (993,10).
+  - It came from the sweep N = 47,501–48,500 (36,804 screened candidates).
+  - Seven candidates of order 47,509–47,736 had stalled at cost 1, including the same group Z1989 ⋊ Z24 with the
+    action r = 383. The action r = 461 then solved.
 - 93,738 is a Haar graph of Z919 ⋊₈ Z51. Connection set (a, j): (0,0), (66,6), (262,32), (432,27), (410,7).
   - It came from the re-screened sweep (27,309 candidates, N = 46,723–47,500), on its second attempt at this order.
     In the third sweep the same order had stalled at cost 1.
   - Above it, N = 46,956 stalled at cost 1 on two seeds.
-  - In the sweep N = 47,501–48,500, every annealed candidate so far (N = 47,509 – 47,580) stalled at cost 1.
+
 - 93,444 is a Haar graph of Z1797 ⋊₂₁₂ Z26. Connection set (a, j): (0,0), (864,15), (1592,17), (395,21), (1058,12).
 - It came from the third sweep (35,386 screened candidates, N = 46,501–47,500).
 - In that sweep, N = 46,580 and N = 46,869 stalled at cost 1. Re-screened sweeps (N = 46,723–47,500 and
@@ -202,7 +207,7 @@ went to the small cells, ranked by μ = N e^(−W/N) at the table order (SIZE_LA
 | **(5,9)** | 27936 (Loz) | 174,762 | **28,842** | **new record** (§2.0); above it (N up to 14,700) best cost 2 |
 | (3,10) | 800 (DGQ) | 2,046 | – | near misses at cost 2: n = 812 (2+2 base, Z29 ⋊ Z7) and n = 816 (3+3 base b3_3_0, Z17 ⋊ Z8). Both are **exhaustively** negative (8.3·10⁶ and 3.4·10⁸ assignments, best cost 2). Haar sweep (haar_gen3, N = 401–430): best cost 4. Exhaustive 2+2 scan over all rich groups, orders 804–860, running |
 | **(4,10)** | 11748 (Loz) | 59,048 | **11,988** | **new record** (§2.0): Haar(Z333 ⋊₈₃ Z18) from the haar_gen3 sweep (N = 5,875–6,050). The rich and wide lift sweeps (orders 11750–12000) found nothing |
-| **(5,10)** | 90068 (Loz) | 699,050 | **93,738** | **new record** (§2.0); above it every candidate so far stalls at cost 1 |
+| **(5,10)** | 90068 (Loz) | 699,050 | **95,472** | **new record** (§2.0) |
 | (15,10), (16,10) | 2.30·10⁹, 4.12·10⁹ (Loz) | | – | not run: N > 10⁹ (memory and 32-bit indices); the size law predicts +1 % at best |
 
 ## 3. Structured families: what was tried and why it stops
