@@ -72,7 +72,14 @@ static void *worker(void *arg) {
       uint64_t *t = fr; fr = nx; nx = t;
       level++;
       reached_count_bits += newbits;
-      if (newbits == 0) { ecc_local = -2; break; } /* disconnected */
+      if (newbits == 0) { /* stalled before level D (disconnected lift): every unvisited vertex is unreached */
+        if (unr_at_D < 0) {
+          long long u = 0;
+          for (long long w = 0; w < V; w++) { uint64_t m = (~vis[w]) & full; if (m) { u += __builtin_popcountll(m); while (m) { int i = __builtin_ctzll(m); unr_src[i]++; m &= m - 1; } } }
+          unr_at_D = u;
+        }
+        ecc_local = -2; break;
+      } /* fix found by squad card r1-d8/c1 */
     }
     if (unr_at_D < 0) unr_at_D = 0; /* finished before D */
     pthread_mutex_lock(&mu);
