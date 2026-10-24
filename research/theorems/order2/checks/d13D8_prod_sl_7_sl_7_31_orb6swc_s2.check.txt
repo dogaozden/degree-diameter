@@ -1,0 +1,21 @@
+== solution file research/theorems/order2/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt (sha256 b31195a1f0166c3375809f4fa091089c8bc9b7a9490249be006c85cab102cec3)
+13 8 prod sl 7 sl 7 n 31 N 3499776
+438774 prod[mat(1,0,0,1);mat(1,0,0,1)] z=0
+2600855 prod[mat(5,1,4,1);mat(4,6,3,3)] z=17
+2736720 prod[mat(5,3,3,2);mat(5,1,4,1)] z=9
+2268417 prod[mat(4,4,0,2);mat(5,3,3,2)] z=23
+1381653 prod[mat(2,5,6,5);mat(4,4,0,2)] z=14
+139522 prod[mat(0,2,3,6);mat(2,5,6,5)] z=22
+2437755 prod[mat(4,6,3,3);mat(0,2,3,6)] z=8
+2859684 prod[mat(5,5,1,4);mat(3,6,1,0)] z=27
+2227109 prod[mat(4,3,3,6);mat(5,5,1,4)] z=7
+392006 prod[mat(0,6,1,2);mat(4,3,3,6)] z=11
+834431 prod[mat(1,5,3,2);mat(0,6,1,2)] z=4
+658712 prod[mat(1,3,0,1);mat(1,5,3,2)] z=24
+1908101 prod[mat(3,6,1,0);mat(1,3,0,1)] z=20
+== build_haar2.py (research/frontier/build_haar2.py, unchanged)
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6999552 edges = 45497088 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = daf0ccf91e35dc587d6bed076ba05be225de3cd0aa2c4607032cffe86af6ebb2
+VALID d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 vertices=6999552
