@@ -1,0 +1,5 @@
+p=7 n=42: (diameter, girth, bipartite) -> count over (g, c): {(6, 6, True): 12}
+p=11 n=110: (diameter, girth, bipartite) -> count over (g, c): {(7, 10, True): 40}
+p=19 n=342: (diameter, girth, bipartite) -> count over (g, c): {(9, 12, True): 72, (9, 10, True): 36}
+p=23 n=506: (diameter, girth, bipartite) -> count over (g, c): {(9, 14, True): 44, (10, 12, True): 44, (11, 10, True): 44, (10, 14, True): 88}
+p=31 n=930: (diameter, girth, bipartite) -> count over (g, c): {(12, 12, True): 60, (11, 14, True): 60, (11, 10, True): 60, (12, 14, True): 60}
