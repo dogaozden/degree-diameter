@@ -19,7 +19,8 @@ M_b(Δ, D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bou
    Weyl distance (Theorem 2). So every vertex on one side has the same number of vertices at each distance, with no
    symmetry assumed. That formula was checked against breadth-first search, layer by layer, on 21 buildings: types
    A₂–A₅, B₂–B₄/C₂–C₄ and D₄, over GF(2), GF(3), GF(4), including six with unequal parameters (Hermitian and elliptic
-   polar spaces). It was also checked with the coordinator's all-pairs checker on 9 of them.
+   polar spaces). All 21 also pass the coordinator's all-pairs checker. Pairs from opposite chambers were tested
+   directly in 12 geometries.
 2. **The asymptotic statement is true for every D ≥ 2, not only for odd D, D ≡ 0 mod 4 and D = 6, 12, 30. But it
    follows in one line from a theorem published in August 2026.** Cames van Batenburg–Korsky (arXiv:2608.03965) prove
    lim n(Δ, D)/Δ^D = 1 for general graphs and every D. The doubling n_b(Δ, D) ≥ 2·n(Δ−1, D−1) (REGULARITIES §1.4,
@@ -87,7 +88,7 @@ and 2 below use neither thickness nor finiteness.
 adjacent iff R ∩ R′ ≠ ∅. In flag language, a residue of type J is the set of chambers containing a partial flag of
 type S∖J. So the vertices are the partial flags of type I₂ and of type I₁, adjacent iff together they form a chamber.
 For PG(n, q), a chamber is a complete flag; one side is its odd-dimensional members, the other its even-dimensional
-members. This is CvB–K's "bipartite compatibility graph" C(k, q) when n = 2k.
+members. For n = 2k this is CvB–K's "bipartite compatibility graph", which Isham et al. call C(k, q).
 
 ### 1.2 Facts used
 
@@ -177,10 +178,17 @@ Coxeter complex itself) and for buildings over infinite fields.
 the upper bound is CvB–K's Lemma 2.1 (odd–even transposition sort), and the exact value is Isham et al.'s
 Theorem 6.11.
 (iii) The reviewer's PG(4, q) pair at distance 5 is the case "h odd, different types" of (b): two flags that extend to
-opposite chambers.
+opposite chambers. Explicitly, with basis e₁, …, e₅, take (⟨e₁⟩ ⊂ ⟨e₁, e₂, e₃⟩) and (⟨e₄, e₅⟩ ⊂ ⟨e₂, e₃, e₄, e₅⟩). They
+come from the opposite complete flags ⟨e₁⟩ ⊂ ⟨e₁, e₂⟩ ⊂ … and ⟨e₅⟩ ⊂ ⟨e₅, e₄⟩ ⊂ …, so they are exactly 5 apart.
 (iv) `weyl_all.py` (→ `out/weyl_all.txt`) computes the distance function of Theorem 2 below over all of W for A₂–A₈,
 B₂–B₇, D₄–D₇, G₂, F₄, E₆ and E₇ (2,903,040 elements). It finds eccentricity exactly h from both sides every time, on
 the side that (b) predicts, with d(w₀) = h.
+(v) `opposite_check.py` (→ `out/opposite_check.txt`) tests (b) directly in the real geometries. It samples random
+pairs of chambers that are opposite by linear algebra: V_i + V′_{n+1−i} = V for PG(n, q), and V_i ∩ V′_i^⊥ = 0 for
+polar spaces. It then measures the four distances between their odd and even parts. In 12 geometries (PG(n, q) with
+n = 2–5, Sp, O, O⁻ and U polar spaces), every sampled distance is h or h − 1 exactly as (b) says.
+(vi) All 21 flag graphs below pass the coordinator's all-pairs checker with diameter h (`out/apsp_checks.txt`,
+`out/apsp_checks2.txt`). These include PG(4,3) (31,460 vertices) and Sp(8,2) (160,650).
 
 ### 1.4 Theorem 2 (distance formula) and the distance layers
 
@@ -438,10 +446,18 @@ chamber (C4), so the graph is defined, with degrees ~ q^{a₂}, q^{a₁} (a_i = 
 diameter D given by the same block distance. The Moore bound with this degree is ~ q^{max(a)(D−1)}. Call the lost
 power gap = max(a)(D−1) − (N − min a) ≥ 0.
 
-`partitions.py` (→ `out/partitions.txt`) checks all 2-partitions of A₂–A₆, B₂–B₅, D₄, D₅, F₄ and G₂. gap = 0 occurs
-only for the colour classes of the balanced types. The best non-colour split is A₄ with {s₁, s₄} | {s₂, s₃}
-(diameter 4, gap 1). Every other split loses 3–12 powers of q. A proof would need the analogue of (C1) for general
-parabolic pairs. I expect it to hold for all types.
+`partitions.py` (→ `out/partitions.txt`) checks all 2-partitions of A₂–A₆, B₂–B₅, D₄, D₅, F₄ and G₂ by brute-force
+BFS over all of W.
+
+`partitions2.py` (→ `out/partitions2.txt`) does the same for every crystallographic type of rank ≤ 8: A₂–A₈, B₂–B₈,
+D₄–D₈, E₆, E₇, E₈, F₄, G₂, up to 127 splittings each. It does not enumerate W. An alternating product of parabolic
+subgroups is a Bruhat interval [e, δ], with δ the Demazure product of the longest elements. So a J-vertex has
+eccentricity "the number of blocks after which δ = w₀". On the 13 types they share, the two methods agree.
+
+Result: gap = 0 only for the colour classes of the balanced types (A₂, A₄, A₆, A₈, B₂, B₄, B₆, B₈, E₆, E₈, F₄, G₂).
+The best non-colour split is A₄ with {s₁, s₄} | {s₂, s₃} (diameter 4, gap 1). Every other non-colour split loses at
+least 3 powers of q, and E₈ at least 29. A proof would need the analogue of (C1) for general parabolic pairs. I expect
+it to hold for all types.
 
 ### 2.2 For D ≡ 2 mod 4 the building rate is genuinely worse
 
@@ -464,7 +480,7 @@ it.
 
 | idea | test | result |
 |---|---|---|
-| other splittings of the diagram | partitions.py, 13 types, all 2-partitions | lose ≥ 1 power of q (§2.1) |
+| other splittings of the diagram | partitions.py, partitions2.py: all 2-partitions, all types of rank ≤ 8 | lose ≥ 1 power of q (§2.1) |
 | unbalanced flag graphs as they are (A_odd, C_odd, D_n, E₇, twisted C_n, ³D₄, ²F₄, GQ(s,t)) | §1.5, table_cells.py | max degree is the larger side; lose a power of q; in range 0.8 %–96 % of the table, never above |
 | Kronecker products of two same-h regular flag graphs in range | table_cells.py (K rows) | ≤ 0.80 of the table (D = 3), ≤ 0.62 (D = 4), ≤ 0.30 (D = 6) |
 | Delorme products in range | table_cells.py (P rows) | best (15,8) 10,266,750 = 0.72 of the table, 0.57 of ours |
@@ -519,4 +535,6 @@ The reviewer's own text is not in the repo; these are the gaps I found.
 | general_rates.py | out/general_rates.txt | §1.7(f), general graphs |
 | general_asymptotic_check.py | out/general_asymptotic_check.txt | first-order constants for general graphs |
 | run_checks2.sh | out/apsp_checks2.txt | apsp.c on the other 12 flag graphs of compare_dist.py |
-| partitions.py | out/partitions.txt | §2.1 |
+| opposite_check.py | out/opposite_check.txt | Theorem 1(b) tested directly on random opposite chamber pairs |
+| partitions.py | out/partitions.txt | §2.1, brute force over W |
+| partitions2.py | out/partitions2.txt | §2.1 up to rank 8 incl. E₈, via Demazure products |
