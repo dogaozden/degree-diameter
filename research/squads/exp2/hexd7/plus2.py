@@ -68,8 +68,12 @@ def main():
     opp_lines = [M for M in range(P) if dL[P + M] == 6]
     candA = [M for M in range(P) if dp[P + M] == 5 and dL[P + M] == 6]
     candB = [y for y in range(P) if dL[y] == 5 and dp[y] == 6]
-    CA = greedy_cover(opp_pts, candA, lambda M: pl[M], rng)
-    CB = greedy_cover(opp_lines, candB, lambda y: lp[y], rng)
+    import os
+    if os.environ.get('NOGREEDY'):   # large q: start from a random phi (with phi(p) = L0); plus2ls.c does the rest
+        CA, CB = [], []
+    else:
+        CA = greedy_cover(opp_pts, candA, lambda M: pl[M], rng)
+        CB = greedy_cover(opp_lines, candB, lambda y: lp[y], rng)
     print('q=%d P=%d |B4|-1=%d opposite points %d lines %d; cover sizes |C_A|=%d |C_B|=%d (need <= %d)'
           % (q, P, len(B4p), len(opp_pts), len(opp_lines), len(CA), len(CB), len(B4p)), flush=True)
     if len(CA) > len(B4p) or len(CB) > len(B4L):

@@ -5,20 +5,92 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 
 ## 1. Result
 
-| cell | table | best Haar graph, VALID by build_haar2.py | / table | table construction rebuilt, VALID by apsp.c |
-|---|---|---|---|---|
-| (7,7) | 23,436 | **20,160** (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 | 23,436 = 1.000 (not a raise) |
-| (9,7) | 117,648 | **82,992** (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 | 117,648 = 1.000 (not a raise) |
-| (11,7) | 398,580 | **266,448** (SL(2,13) × Z61, orbit k = 3) | 0.668 | 398,580 = 1.000 (not a raise) |
+| cell | table | **new graph** (apsp.c VALID) | / table | best Haar graph (build_haar2.py VALID) | / table |
+|---|---|---|---|---|---|
+| (7,7) | 23,436 | **23,438** | 1.00009 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
+| (9,7) | 117,648 | **117,650** | 1.00002 | 82,992 (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 |
+| (11,7) | 398,580 | (q = 9 run in progress) | | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
 
-**No cell beaten.** The Haar files (haar_gen3 format) are in `research/frontier/sols/`:
-`d7D7_prod_psl_3_sl_5_7_orb3_s1.txt`, `d9D7_sl_13_19_orb3f0_s1.txt`, `d11D7_sl_13_61_orb3_s1.txt` (plus the lower rung
-`d7D7_sl_8_19_orb3_s1.txt`). Logs with the build_haar2.py verdicts and edge-list sha256 are in `solo_runs/`.
+**Two cells beaten, by 2 vertices each** (the third is running). The new graphs are not Haar graphs. They are 3 copies of
+the generalized hexagon H(q) (the table's own construction), with one point "unhooked" in all three copies and a
+2-vertex gadget added, and a bijection φ chosen by local search (§2). Files in `graphs/`:
 
-The rebuilt table graphs are not Haar graphs, so they have no haar_gen3 file. `hexd7/threecopy.py q OUT` writes the
-edge list (deterministic) and `research/lifts/coordinator_check/apsp.c` checks it (all-pairs BFS, no symmetry assumed).
+- `d7D7_hex5_plus2.phi`, `d9D7_hex7_plus2.phi`: the bijection φ (one line index per point).
+- `*.edges.gz`: the edge lists (apsp.c format: n, then one "a b" per line).
+- `*.apsp.txt`: the apsp.c verdicts and the sha256 of the uncompressed edge lists.
 
-## 2. What the table values are
+To rebuild: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`, then `apsp OUT.edges q+2 7`
+(`research/lifts/coordinator_check/apsp.c`: all-pairs BFS, no symmetry assumed).
+
+| cell | n | max degree | diameter | apsp.c | edge-list sha256 |
+|---|---|---|---|---|---|
+| (7,7) | 23,438 | 7 | 7 | RESULT VALID d=7 D=7 n=23438 | debe7e451970a59f790c0e08830bb2232355c071dd7f9a9074e9c4515bdc049e |
+| (9,7) | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 94303a1b4845c9112504d773c89fe751b136b6efef320d04242c70c46f555385 |
+
+The Haar files (haar_gen3 format, the brief's format) are in `research/frontier/sols/`:
+`d7D7_prod_psl_3_sl_5_7_orb3_s1.txt`, `d9D7_sl_13_19_orb3f0_s1.txt`, `d11D7_sl_11_101_orb5_s1.txt` (plus lower rungs
+`d7D7_sl_8_19_orb3_s1.txt`, `d11D7_sl_13_61_orb3_s1.txt`). Each is VALID by build_haar2.py and by
+check_haar_indep.py. Logs with the build_haar2.py verdicts and edge-list sha256 are in `solo_runs/`.
+
+## 2. The new graphs: 3 copies of H(q), one point unhooked, plus 2
+
+**Base (the table's construction, §3).** Γ is the incidence graph of H(q): points and lines, (q⁶−1)/(q−1) of each,
+degree q+1, diameter 6. Take copies (v, c), c ∈ Z3, and cross edges (y, c) ~ (φ(y), c+1) for every point y, with φ
+any bijection points → lines. This has max degree q+2 and diameter 7 for every φ.
+
+**Change.**
+- Pick a point p and let L0 = φ(p).
+- Delete the three cross edges (p, c) ~ (L0, c+1).
+- Add two vertices: x ~ (p, 0), (p, 1), (p, 2); w ~ (L0, 0), (L0, 1), (L0, 2); and x ~ w.
+
+The copies of p and L0 lose one edge and gain one, x and w have degree 4, so the max degree stays q + 2, and
+n = 6(q⁶−1)/(q−1) + 2.
+
+**Why only two vertices need checking.**
+- *Pairs avoiding p and L0.* The 3-copy proof (§3) reaches every target with the source's own cross edge ("first
+  step") and the target's own cross edge ("last step"). So a pair that involves no copy of p or L0 keeps its routes.
+  This was measured: deleting one cross edge breaks only pairs that contain one of its two endpoints.
+- *x and w.* x is adjacent to (p, c) in every copy, so it reaches each copy within 1 + 6. Likewise w, and x ~ w.
+- *The rest.* The construction is Z3-symmetric, so it suffices to check a = (p, 0) and b = (L0, 1).
+
+**Checking a and b.** The gadget covers most of what they lost:
+- From a, copy 2 is reached by last steps (points) and through x → (p, 2) (lines, ≤ 2 + 5).
+- In copy 1, a reaches the lines and the points within distance 4 of p through x → (p, 1).
+- From b, copy 2 is reached by last steps (lines) and through w → (L0, 2) (points).
+- In copy 0, b reaches the points and the lines within distance 4 of L0 through w → (L0, 0).
+- What remains:
+  - (A*) every point of copy 1 opposite p (distance 6, q⁵ of them) must be within 6 of a;
+  - (B*) every line of copy 0 opposite L0 must be within 6 of b.
+- These depend on φ. A sufficient form:
+  - (A) every point opposite p lies on a line φ(y) with y ≠ p within distance 4 of p (route a → (y,0) → (φ(y),1) →
+    point);
+  - (B) every line opposite L0 contains a point φ⁻¹(M) with M ≠ L0 within distance 4 of L0.
+- Each asks for a cover of q⁵ targets by about 780 (q = 5) or 2,800 (q = 7) choices, with q⁴ = 625 or 2,401 as the
+  fractional optimum.
+
+**Finding φ.** `hexd7/plus2.py` builds φ from greedy covers for (A) and (B) on disjoint domains, then fills the rest
+at random. The greedy covers were slightly too big (843 and 835 for 780 slots at q = 5), so they are truncated.
+`hexd7/plus2ls.c` then counts the vertices beyond distance 7 from a and from b by BFS (exact, all routes). It runs a
+local search that swaps the images of two points: targeted swaps create a route a → y → φ(y) → t for an unreached
+point t, or b → M → φ⁻¹(M) → t for an unreached line t, and the rest are random.
+
+| q | start (vertices missed from a, b) | swaps to 0 | time |
+|---|---|---|---|
+| 5 | 9 + 6 | 32 | 0.2 s |
+| 7 | 165 + 191 | 1,261 | 14 s |
+
+The final graphs were then checked from scratch by apsp.c (all pairs, no symmetry or theory assumed): VALID.
+
+**Remarks.**
+- Several points can be unhooked, each with its own gadget, for +2 per point, as long as the conditions for
+  different points can be met together and the gadget vertices stay within 6 of each other. Not pursued for time
+  (it only moves the ratio by 2/n per point).
+- The same idea should work for every prime power q (so for all the (2k+1)·H(q) cells of the D = 7 column with
+  k = 1). I checked only q = 5 and 7 (and q = 9 below).
+- A first, failed attempt (§5.1) used a non-symmetric gadget on edges inside one copy, with φ fixed. The working
+  version unhooks the same point in all three copies and adapts φ to it.
+
+## 3. What the table values are
 
 All three table values are exactly three copies of a generalized hexagon:
 
@@ -64,7 +136,7 @@ RESULT VALID with D = 7 by apsp.c. With k = 1, 2, 3 this accounts for the whole 
 Applied to our own D = 6 records ((7,6) 9,592, (11,6) 148,944, (13,6) 388,972, (15,6) 870,440), it
 gives nothing above the table.
 
-## 3. Haar search (the required format)
+## 4. Haar search (the required format)
 
 Tool: `research/structured/haar_sym.c` (ORBIT mode, k = 3; copied onto this branch from
 claude/structured-search-orbit-w5dd4f), job queue `tools/orbq.sh`, each solution checked by build_haar2.py. SL-type
@@ -103,15 +175,16 @@ Observations:
   orbit-space ceiling. No group of the right order fits (7,7), (9,7) or (11,7).
 - For larger odd-D cells (bigger orbit spaces) the pairing variant might still be worth a test.
 
-## 4. Attempts to beat the hexagon construction (all negative)
+## 5. Earlier attempts to beat the hexagon construction (negative)
 
-1. **Two extra vertices by a local gadget.** Delete q+1 edges (a_j, b_j) of the 3-copy H(5) graph, add x ~ all a_j,
+1. **Two extra vertices by a local gadget, φ fixed** (superseded by §2). Delete q+1 edges (a_j, b_j) of the 3-copy H(5) graph, add x ~ all a_j,
    w ~ all b_j, x ~ w: degrees stay ≤ 7 and n = 23,438. `hexd7/violations.c` counts ordered pairs at distance > 7.
    Deleting one edge already breaks 626–752 ordered pairs for a cross edge, about 1,250 for an ordinary hexagon
    edge, and 230 for the hexagon copy of a matching edge. The matching edge is cheap because of the 6-cycle
    p, φ(p), p, … through the three copies. With the gadget the best of a short local search over which matching
    edges to delete was 1,100 broken pairs (start 1,186, `hexd7/gadget.py`). The broken pairs are mostly between
-   third parties, which the gadget cannot shorten. Dropped.
+   third parties, which the gadget cannot shorten. Dropped. What fixed it (§2): delete cross edges instead (their loss
+   breaks only pairs with an endpoint), unhook the same point in all three copies, and choose φ to fit.
 2. **More copies (lifts of Γ + doubled matching by a group K, |K| ≥ 4).** In Γ + M' (M ⊂ Γ a perfect matching, M' its
    parallel copy; girth 12 apart from the digons), the walks of length ≤ 6 between two vertices at distance 4 are:
    the geodesic, its M → M' substitutions, and one digon detour (length 6).
@@ -148,10 +221,9 @@ Observations:
    the pairs at distance 6 have ~11 geodesics for 3 voltages, so μ ≈ 125 even with a perfect base. Haar graphs cannot
    carry the 3-copy trick either: it needs a (Δ−1, 6) Haar graph near the Moore bound.
 
-**What would be needed.** A diameter-7 graph whose radius-6 balls cover with multiplicity ~5 and no misses, as the
-hexagon construction does, but with more than 3·|H(q)| vertices. None of the structured families tried here
-(orbit-symmetric Haar graphs, lifts of hexagons, local gadgets) does this.
+**What these show.** Copy designs and lifts are capped at 3·|H(q)|, and so is anything symmetric under the copy
+group. The +2 of §2 comes from breaking the symmetry locally (one point) and spending the freedom in φ there.
 
-## 5. Budget and time
+## 6. Budget and time
 
 (filled in at the end)
