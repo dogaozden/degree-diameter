@@ -2,11 +2,16 @@
 
 Job "beat-16-5" (Opus), branch `claude/beat-16-5-bipartite-px5cxt`. Started 2026-10-24.
 
-**Status (2026-10-24 05:20 UTC): beaten. A 16-regular bipartite graph of diameter 5 on 32,768 vertices**
-(`graphs/d16D5_n32768_rcl_g64_43.edges.gz`, all-pairs check `beat165/check_d16D5_32768.txt`: RESULT VALID d=16 D=5
-n=32768). It is a bipartite version of Mizuno's route-chart lift (arXiv:2606.15860, a general-graph construction):
-controller = a 4-regular Haar graph on SmallGroup(64,43), fiber F₄⁴. Details in §4. Coordinator: please re-check
-independently; `beat165/rcl/buildlift.py` rebuilds it from the group table, S and the chart.
+**Status (2026-10-24 06:25 UTC): beaten. Best: a 16-regular bipartite graph of diameter 5 on 36,864 vertices**
+(`graphs/d16D5_n36864_rcl_pv_c3a4.edges.gz`, check `beat165/check_d16D5_36864.txt`: RESULT VALID d=16 D=5 n=36864,
+D = 4 fails, independent GAP rebuild gives the identical edge list). It is a bipartite version of Mizuno's route-chart
+lift (arXiv:2606.15860, a general-graph construction) with fiber F₄⁴ over a 4-regular bipartite controller on 72+72
+vertices (a permutation-voltage graph: 2+2 base vertices lifted by SmallGroup(36,11) = C₃ × A₄) and a separate chart
+at each base vertex (§4.9). Earlier finds of the same kind, also checked and saved: 32,768 (Haar controller on
+SmallGroup(64,43), one chart, §4.2) and 33,792 (3+3 base vertices lifted by C₂₂, §4.8). Coordinator: please re-check
+independently; `beat165/rcl/buildlift_pvv.py` and `beat165/rcl/rebuild_pvv_gap.g` rebuild the graphs from the group
+table, the controller and the charts.
+
 ## 0. What a winner has to do (counting)
 
 From a vertex, the non-backtracking walks of length ≤ 4 that end on the same side number
@@ -216,3 +221,39 @@ controller one can give each base vertex its own (A, b) for its outgoing a- and 
 forced: A_{w,t⁻¹} = A_{v,t}⁻¹, b_{w,t⁻¹} = A_{v,t}⁻¹ b_{v,t} for w = π_t(v)). The lift stays group-invariant, so one source
 per base vertex still suffices. `rcl/fitqv.c` fits such charts exactly (validated: cost 0 on the order-64 controller
 with the uniform winning chart). Running on the five 66-per-side controllers (12 free (A, b) pairs instead of 2).
+
+**Result: 33,792 vertices.** Controller `rcl/ctrl_k3_m22_2.txt` (format: k m / π_a / π_b / φ_a / φ_b; base vertices
+0, 1, 2 on side A and 3, 4, 5 on side B; group C₂₂ = SmallGroup(22,2), elements numbered by `AsSSortedList` from 0,
+table `rcl/g22_2_table.txt`): π_a = (3 4 5 1 2 0), π_b = (4 5 3 0 1 2), φ_a = (19 5 15 2 15 19), φ_b = (2 5 4 18 11 8),
+σ_t(v, g) = (π_t(v), φ_t[v]·g). Charts `rcl/vchart_k3_m22_2.txt` (12 entries "A rows:b" in the order v0 a, v0 b,
+v1 a, …). The fitter with long annealing runs (30,000 steps per restart) went from 2,177,280 missed (pair, x, y)
+triples to 0 in its first restart (`rcl/fitqvL_k3_2.out`); short restarts (3,000 steps) had stalled at 62,400. Lift
+vertex ((v, g), x) ↦ (22v + g)·256 + x₁ + 4x₂ + 16x₃ + 64x₄. 33,792 vertices, 270,336 edges, 16-regular; apsp VALID at
+D = 5, INVALID at D = 4; the GAP rebuild (`rcl/rebuild_pvv_gap.g`, parameters `rcl/rebuild_pvv_33792.g`) gives the
+identical edge list (`check_d16D5_33792.txt`). Saved as `graphs/d16D5_n33792_rcl_pv_c22.edges.gz`. Distance profile
+from 12 sources: 1, 16, 203, 2449–2474, 16,692, 14,406–14,431 (not vertex-transitive, as expected).
+
+### 4.9 72 per side: 36,864
+
+The broad controller search (`rcl/run_pvb.sh`: `rcl/pvctrl.c` on every group of each order, 200 restarts of hill
+climbing on base permutations and voltages, objective = same-side pairs at distance > 4 plus a penalty for vertices
+without a 4-cycle) found five 2+2 controllers lifted by SmallGroup(36,11) = C₃ × A₄: bipartite, 4-regular, diameter 5,
+a 4-cycle at every vertex, **72 per side** (`rcl/pv_found2_k2.txt`, `rcl/ctrl_k2_m36_1..5.txt`). Per-vertex chart fits
+(`rcl/fitqv.c`, 30,000 steps per restart) reached 0 for the first two within minutes (`rcl/fitqvL_k2m36_*.out`).
+
+- Controller `rcl/ctrl_k2_m36_1.txt`: base vertices 0, 1 (side A), 2, 3 (side B); π_a = (2 3 1 0), π_b = (3 2 0 1),
+  φ_a = (11 34 20 14), φ_b = (3 16 30 13) (elements of SmallGroup(36,11) numbered by `AsSSortedList` from 0, table
+  `rcl/g36_11_table.txt`). Charts `rcl/vchart_k2_m36_1.txt`.
+- Lift: 36,864 vertices, 294,912 edges, 16-regular, bipartite, diameter 5 (apsp, all pairs; D = 4 fails). GAP rebuild
+  identical (sorted-list sha256 4a396bc9…491d550). Uncompressed sha256 0440a260…915c50ec. Saved as
+  `graphs/d16D5_n36864_rcl_pv_c3a4.edges.gz`, check `check_d16D5_36864.txt`. The second controller with its own
+  charts (`rcl/ctrl_k2_m36_2.txt`, `rcl/vchart_k2_m36_2.txt`) also gives a valid 36,864-vertex graph (not saved).
+- Distance profile from 12 sources: 1, 16, 203, 2426 or 2462, 18,228, 15,954 or 15,990.
+- Walks per target: 54,241/18,432 = 2.94 (C(2,3): 3.45).
+
+What limits the next step: only the controller. Chart fits for these controllers take minutes; so a bipartite
+4-regular diameter-5 graph with a 4-cycle at every vertex and N per side gives 512·N vertices, provided the fit
+succeeds. The (4,5) bipartite record is 81 per side (girth 6); 4-cycles cost some of the 121 walks. Search for
+larger controllers continues (2+2 bases at orders 37–48: none at 37–40 so far, best objectives 24–30; 3+3 at
+orders 23–32).
+

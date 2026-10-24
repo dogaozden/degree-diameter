@@ -1,0 +1,26 @@
+# beat-16-5 check, 2026-10-24T06:14Z, cloud container. Edge list built by beat165/rcl/buildlift_pvv.py
+# from SmallGroup(22,2) = C22 (table beat165/rcl/g22_2_table.txt, AsSSortedList order), permutation-voltage controller
+# beat165/rcl/ctrl_k3_m22_2.txt (66 vertices per side), per-base-vertex charts beat165/rcl/vchart_k3_m22_2.txt.
+# Saved as graphs/d16D5_n33792_rcl_pv_c22.edges.gz (first line n, then one edge 'a b' per line; side A = ids < 16896).
+== sha256 of the uncompressed edge list
+e8b0933f6b2facc98437065cc820534240dbe6c14ca68d298578c7234f76d0ce  graphs/d16D5_n33792_rcl_pv_c22.edges
+== apsp (research/theorems/coordinator_check/apsp.c = research/lifts/coordinator_check/apsp.c, all pairs, no symmetry assumed): apsp EDGES 16 5
+n=33792 edges=270336 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=33792
+== same with D = 4 (must fail)
+n=33792 edges=270336 degree min=16 max=16 bipartite=yes diameter=5
+RESULT INVALID
+== independent rebuild in GAP (beat165/rcl/rebuild_pvv_gap.g with parameters beat165/rcl/rebuild_pvv_33792.g:
+   GAP's SmallGroup(22,2) elements and GF(4) arithmetic; duplicate lines removed with sort -u)
+n=33792 edges=270336 degree min=16 max=16 bipartite=yes diameter=5
+RESULT VALID d=16 D=5 n=33792
+sha256 of the sorted edge lists (rebuild vs saved graph):
+8ff387b28376a11c67b8f79210e70cf0ab7141bfea08d1dc4cb385745e059f48  -
+8ff387b28376a11c67b8f79210e70cf0ab7141bfea08d1dc4cb385745e059f48  -
+== distance profile (number of vertices at distance 0..5) from 12 sources (0, 16895, 16896, 33791, 8 random):
+   2 sources: 1 16 203 2469 16692 14411
+   6 sources: 1 16 203 2474 16692 14406
+   1 source:  1 16 203 2460 16692 14420
+   2 sources: 1 16 203 2449 16692 14431
+   1 source:  1 16 203 2458 16692 14422
+   (per-vertex charts: the lift is not vertex-transitive; distance 4 covers the whole own side, distance 5 the rest of the other side)
