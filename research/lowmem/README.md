@@ -38,3 +38,16 @@ haar_sym FAST=1 (7.5 GB).
 - `run1.sh SECS SEED FAM P N [VAR=x ...]`: one (15,10) run (nice 5, K = 8), solution to ../frontier/sols/, log to runs/.
 - `mu_list.py d D LO HI [k] [NMAX]`: SL/PSL(2,p) × Z_n in an order window with μ = N e^(−W/N).
 - `runs/`: logs, and the independent checker outputs (`*.haarcheck2.txt`, `*.haarcheck_sl.txt`).
+
+## (15,10) results (job cell-15-10, 2026-10-24)
+
+All runs: `run1.sh` (k = 3 orbits, m = 5, f = 0; K = 8; defaults otherwise), one thread each, on a box shared with
+1–3 other runs, a checker and Haiku squad jobs (so one evaluation took 1–2 s instead of 0.9 s).
+
+| group | N | vertices | vs table | μ | evaluations | wall | check |
+|---|---|---|---|---|---|---|---|
+| SL(2,139) × Z433 | 1,162,812,840 | 2,325,625,680 | +1.10 % | 5.7 | 17 | 13 s | self OK; haarcheck2 VALID (1,099 s) |
+| SL(2,139) × Z457 | 1,227,264,360 | 2,454,528,720 | +6.70 % | 16.4 | 377 | 324 s | self OK |
+| SL(2,149) × Z373 | 1,233,809,400 | 2,467,618,800 | +7.27 % | 18.2 | 761 | 863 s | self OK |
+
+(Table updated as runs finish; the logs are in runs/.)
