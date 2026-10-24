@@ -58,8 +58,8 @@ Run times: H(5) 4 s to build, 0.4 s to check; H(7) about 1 min and 1 min; H(9) a
 So the table graphs are reproduced exactly, not raised. With k extra edges and copies over Z_(2k+1) (cross edges with
 voltages 1..k) the same proof gives b(Δ + k, D + 1) ≥ (2k+1) · b(Δ, D) for even D. `hexd7/kcopy.py` checks it:
 3, 5 and 7 copies of H(3) (n = 2,184, 3,640, 5,096 at Δ = 5, 6, 7) and 5 copies of H(5) (n = 39,060 at Δ = 8) are all
-RESULT VALID with D = 7 by apsp.c. That is the source of the whole
-D = 7 column. Applied to our own D = 6 records ((7,6) 9,592, (11,6) 148,944, (13,6) 388,972, (15,6) 870,440), it
+RESULT VALID with D = 7 by apsp.c. With k = 1, 2, 3 this accounts for the whole D = 7 column except (6,7) and (8,7).
+Applied to our own D = 6 records ((7,6) 9,592, (11,6) 148,944, (13,6) 388,972, (15,6) 870,440), it
 gives nothing above the table.
 
 ## 3. Haar search (the required format)
@@ -81,6 +81,25 @@ Observations:
   hopeless. Above N = 10,080 only a few group orders exist below the table (10,140; 10,248; 10,416; …).
 - At the table orders μ is 99, 361 and 755, above the first-moment ceiling for any random-like or orbit-symmetric S
   (SIZE_LAW.md, STRUCTURE.md). The Haar route cannot reach these cells, and these runs agree.
+- k = 5 orbits (S = {e} ∪ two α-orbits of size 5) work at D = 7 for Δ = 11. SL(2,11) × Z101 at μ 32 fell in 1 s
+  (7,169 evaluations).
+
+**A new trick for odd D that did not pay here: transpose-closed S** (`research/structured/haar_tsym.c`, `TSYM=1`).
+- At odd D the cost has two conditions, (S⁻¹S)³ = G and (SS⁻¹)³ = G. If an anti-automorphism τ maps S onto itself,
+  then (SS⁻¹)³ = τ((S⁻¹S)³), and the two conditions are one. That halves the number of independent ways to fail.
+- On SL(2,q) × Zn, τ(A, z) = (Aᵀ, z) fixes every S whose matrices are symmetric. τ commutes with α when α is
+  conjugation by a rotation (gᵀg = I) of order 3, which exists for q ≡ ±1 mod 12. For Δ = 11 the fixed part is
+  {t, t⁻¹}, with t a rotation (τ(t) = t⁻¹).
+- Implemented and checked: all sampled costs are even, so the two conditions coincide.
+- But it loses badly. Symmetric matrices are R·diag·Rᵀ, with R in the same rotation torus as α. The orbits then
+  share commuting structure, and 10–30 % of the words of length 4 coincide.
+  - On SL(2,11) × Z103 at (11,7), random symmetric S have median cost 1,600, against 266 for ordinary orbits.
+  - A Python check on SL(2,11) × Z7 shows the same effect: |(S⁻¹S)²| has median 1,245 against 1,405.
+- The variant that avoids symmetric matrices pairs two orbits instead, φ(O_x) = O_y⁻¹ with φ = conjugation by an
+  element of order 4 that commutes with α. It needs a torus with elements of order 3 and 4 and an even number of
+  orbits. It also halves the degrees of freedom, which these cells cannot afford: they already sit near the
+  orbit-space ceiling. No group of the right order fits (7,7), (9,7) or (11,7).
+- For larger odd-D cells (bigger orbit spaces) the pairing variant might still be worth a test.
 
 ## 4. Attempts to beat the hexagon construction (all negative)
 
@@ -91,13 +110,18 @@ Observations:
    p, φ(p), p, … through the three copies. With the gadget the best of a short local search over which matching
    edges to delete was 1,100 broken pairs (start 1,186, `hexd7/gadget.py`). The broken pairs are mostly between
    third parties, which the gadget cannot shorten. Dropped.
-2. **More copies (lifts of Γ + doubled matching by a group K, |K| ≥ 4).** Impossible for Γ = H(q). In Γ + M' (girth 12
-   apart from the digons), the walks of length ≤ 6 between two vertices at distance 4 are the geodesic, its M → M'
-   substitutions, and one digon detour (length 6). If the geodesic contains no matching edge, they realize at most 3
-   voltages (g, g ± δ for cyclic K, and for Z2² a 3-colouring condition that fails because the contracted graph has
-   degree 2q). Every vertex has M-free geodesics of length 4, so the lift has diameter > 7. For a bijection φ not
-   inside Γ, Z4 fails differently: the antipodal copy c+2 needs two cross steps, which leave only ~2q⁴ ≪ q⁵ points in
-   reach. Three copies is the maximum for this base.
+2. **More copies (lifts of Γ + doubled matching by a group K, |K| ≥ 4).** In Γ + M' (M ⊂ Γ a perfect matching, M' its
+   parallel copy; girth 12 apart from the digons), the walks of length ≤ 6 between two vertices at distance 4 are:
+   the geodesic, its M → M' substitutions, and one digon detour (length 6).
+   - With one voltage δ on every digon this fails. If the geodesic contains no matching edge, only g and g ± δ
+     occur, i.e. 3 voltages, and every vertex has matching-free paths of length 4.
+   - General voltages turn this into a colouring condition on the matching. For Z4, every matching-free path of
+     length 4 must see both an odd and an even δ among the matching edges at its five vertices. On top come much
+     harder conditions for the q+1 geodesics of each pair at distance 6. I did not settle this case.
+   - For a bijection φ not inside Γ, with voltage 1 on the cross edges, Z4 fails: the antipodal copy c+2 needs two
+     cross steps, which leave only ~2q⁴ ≪ q⁵ points in reach.
+   A random voltage assignment over Z4 would leave about N·e^(−3.58) ≈ 440 misses per source, so only a very special
+   structure could work.
 3. **Why 2k+1 copies is the limit of every copy design.** Take any number r of copies of Moore graphs of diameter 6
    (of any orders), each vertex with k spare edges, and use only the two mechanisms that cover a whole copy at once:
    F (v has a cross neighbour in the target copy) and L (the target has a cross neighbour in v's copy).
