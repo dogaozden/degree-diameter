@@ -125,3 +125,13 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 23 15:11 PT (harvest): (16,9) 324,164,400 (was 316,679,760), sl 149 n 49; claude/structured-haar-search-ws7bet.
 
 - Oct 23 15:20 PT (coordinator): (3,8) 288 (was 256), (5,9) 28,560 (was 27,936), (5,10) 93,000 (was 90,068): voltage-lifts session finds, rebuilt and checked all-pairs by the coordinator (research/lifts/coordinator_check/).
+
+- Oct 23 17:11 PT (harvest): (9,9) 3,407,040 (was 3,290,112), prod sl 5 psl 13 n 13; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (9,10) 23,142,048 (was 22,178,688), psl 47 n 223; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (11,8) 2,258,520 (was 2,246,940), psl 59 n 11; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (12,9) 33,948,672 (was 32,772,096), sl 257 n 1; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (12,10) 325,832,976 (was 310,628,640), sl 107 n 133; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (13,10) 667,903,200 (was 636,550,992), sl 151 n 97; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (14,10) 1,292,644,080 (was 1,217,130,096), sl 181 n 109; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (15,8) 17,998,512 (was 16,483,200), psl 137 n 7; claude/structured-search-orbit-w5dd4f.
+- Oct 23 17:11 PT (harvest): (15,9) 205,083,600 (was 190,887,072), sl 149 n 31; claude/structured-search-orbit-w5dd4f.
