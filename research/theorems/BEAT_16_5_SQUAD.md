@@ -10,7 +10,17 @@ side (1 + 16·15 + 16·15³ same-side vertices within distance 4).
 
 ## Status (updated as the run goes)
 
-No graph above 31,460 yet. Two new directions tested, both below the target, one with a working pipeline.
+**32,768 > 31,460, but from someone else's graph.** The bipartite double cover G × K₂ of the (16,4) graph G on
+16,384 vertices of Amarel, DeBardeleben, Grosskopf, Job, Lawrence, Monroe and Somasundaram (LANL; communicated to
+the Comellas degree–diameter table on Sep 18, 2026, "graph-lift construction found using the agentic tool URSA")
+is 16-regular, bipartite, on 32,768 vertices, with diameter exactly 5. Two independent all-pairs checks pass:
+apsp.c (RESULT VALID d=16 D=5 n=32768) and a plain BFS from every vertex (`bfs_all.c`). From every vertex the
+same-side vertices at distance 0, 2, 4 number 1 + 203 + 16,180 = 16,384, the whole side. Files:
+`graphs/d16D5_n32768_doublecover_lanl_d16D4.edges.gz` (uncompressed sha256 20401e90…0f23d), builder
+`squad165/double_cover.py`, check `squad165/runs/d16D5_n32768_check.txt`. The squad's literature card (r1 card 6)
+found the lead: Wikipedia's general table lists N(16,4) ≥ 16,384 (note 28). Credit for G is theirs. Ours is only
+the observation, the same kind of credit as the flag graph's 31,460. So by Doğa's rule this is probably not ours
+either, and the run continues for a construction of our own.
 
 ## 1. Weyl-distance graphs of all finite buildings: only the flag graph (negative, complete)
 

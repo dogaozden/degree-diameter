@@ -21,7 +21,7 @@ for m in range(lo, hi + 1):
                 f.write(f"{m}\n" + ' '.join(map(str, T.flatten().tolist())) + '\n')
             out = subprocess.run(['./ctrl_exh', fn, '1'], capture_output=True, text=True).stdout.strip().splitlines()
             last = out[-1]
-            bc = int(last.split('best_cost=')[1].split()[0]); ns = int(last.split('solutions=')[1])
+            bc = int(last.split('best_cost=')[1].split()[0]); ns = int(last.split('solutions=')[1].split()[0])
             key = (bc, -ns)
             if best is None or key < best[0]:
                 best = (key, f'meta {a} {b} {r}', out[0] if ns else '')
