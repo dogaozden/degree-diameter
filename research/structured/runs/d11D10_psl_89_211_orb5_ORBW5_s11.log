@@ -1,0 +1,21 @@
+group psl 89 x Z_211, N=74364840, identity 826276, H order 45, rows 1652552, threads 1, setup 1.57s
+wide rows: HW order 211, rows 352440, setup 2.86s
+alpha: conj by mat(22,77,74,77) (index 177184), z -> 55 z on Z_211
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 44 (+e); mu = 24.12, mu/k = 4.82, fixed-point misses ~ 2.27
+ORBW=5: an uncovered fixed element weighs 5; start energy 65
+start cost=65
+t=30 steps=23 evals=185 cost=15 best=15 T=0.52 energy=15 bestE=15
+t=61 steps=47 evals=377 cost=6 best=6 T=0.18 energy=10 bestE=10
+t=91 steps=71 evals=569 cost=1 best=1 T=0.15 energy=5 bestE=5
+RESULT d=11 D=10 group=psl 89 x Z_211 N=74364840 best=0 evals=609 time=97.9 orbit k=5 m=2 f=1 fix=44
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/d11D10-r1/A2/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+--- haarcheck_psl (research/structured/tools/haarcheck_psl.c), run by squad card A2:
+from (e,A): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+from (e,B): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+VALID d=11 D=10 group=psl 89 x Z_211 N=74364840 vertices=148729680 (distinct generators, 11-regular simple)
+--- pqcheck (research/squads/d11D10-r1/opus/pqcheck.c), run by Opus:
+== /home/user/degree-diameter/research/squads/d11D10-r1/A2/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+from (e,A): reached A 74364840/74364840, B 74364840/74364840, eccentricity 10
+from (e,B): reached A 74364840/74364840, B 74364840/74364840, eccentricity 10
+VALID d=11 D=10 group=psl 89 x Z_211 N=74364840 vertices=148729680 eccA=10 eccB=10 (pqcheck)
