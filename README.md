@@ -2,8 +2,8 @@
 
 New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **60 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
-group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and the 28 small
-enough for it are proved in Lean 4.
+group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
+are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
 
 **See it:** [dogaozden.com/degree-diameter](https://dogaozden.com/degree-diameter/) shows the first eight records in 3D and
 how the search found them (that page predates most of the results below).
