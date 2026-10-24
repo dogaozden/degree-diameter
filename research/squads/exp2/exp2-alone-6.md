@@ -1,7 +1,7 @@
 # exp2-alone-6: report
 
 Worker: one Haiku session, working alone (no subagents). Target: cells (7,7), (9,7), (11,7) of the bipartite (Δ, D) table.
-Start 2026-10-24 16:56 UTC; last search stopped about 17:20 UTC.
+Start 2026-10-24 16:56 UTC; last search stopped about 17:17 UTC.
 
 ## Result
 
@@ -62,8 +62,8 @@ Every reported file was checked by `research/frontier/build_haar2.py` (independe
 
 ## Budget and time
 
-- `research/squads/usage/exp2-alone-6.jsonl` logs the session usage. The last check before this report is in the log; the total is far under the cap (budget_units ≈ 0.01 on the last check; the cap is 1.5).
-- Wall time: about 25 minutes (16:56 to about 17:20 UTC). I stopped there because the remaining candidates had all stalled and the gains left (about +0.02 to +0.05 in ratio) were small.
+- `research/squads/usage/exp2-alone-6.jsonl` logs the session usage. Final check at 17:17 UTC: budget_units = 0.0071 (the cap is 1.5).
+- Wall time: about 21 minutes (16:56 to 17:17 UTC). I stopped there because the remaining candidates had all stalled and the gains left (about +0.02 to +0.05 in ratio) were small.
 
 ## Not done
 
