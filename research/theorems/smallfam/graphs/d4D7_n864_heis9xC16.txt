@@ -1,0 +1,12 @@
+# (4,7) record candidate: 864 vertices (table 840).  Haar graph H(G,S), vertices (g,A),(g,B), edges (g,A) ~ (s g, B).
+# G = Heis(F_9) x| C_16 = SmallGroup(432,233) = ((C3 x C3) : C3) : C16, elements (v, z, j), v = a + b i in F_9 = F_3[i]/(i^2+1),
+#   z in F_3, j in Z_16;  (v,z,j)(w,z',l) = ((v,z) phi^j(w,z'), j+l), (v,z)(w,z') = (v+w, z+z'+2(a b' - b a')),
+#   phi(v,z) = ((1+i) v, -z).
+# S (as (a, b, z, j) with v = a + b i):
+0 0 0 0
+0 2 0 9
+2 1 0 8
+1 2 2 14
+# Same graph from GAP: SmallGroup(432,233), S = elements 0 1 23 122 of AsSSortedList(G) (0-based).
+# Builder: build_d4D7_n864.py (pure Python, BFS from all vertices).  Edge list: d4D7_n864_heis9xC16.edges.gz
+#   (written by the builder; sha256 of the uncompressed list 73231da4081f762588e5d5270bc2ae911807e1f3b204ff5ff79fad4d6779de25).
