@@ -27,13 +27,13 @@ end;;
 
 
 def export(expr, useaut, timeout):
-    key = hashlib.md5(expr.encode()).hexdigest()[:10]
+    key = hashlib.md5((expr + str(os.getpid())).encode()).hexdigest()[:10]
     tab, plan, qmap = (os.path.join(SP, f'named_{x}_{key}.txt') for x in ('tab', 'plan', 'qmap'))
     script = PRELUDE + f'''
 GRP0 := {expr};;
 iso := IsomorphismPermGroup(GRP0);; GRP := Image(iso);;
 el := AsSSortedList(GRP);; nn := Length(el);;
-if nn <= 2000 and not nn in [512, 1024, 1536] then idg := IdGroup(GRP);; else idg := "?";; fi;
+if IdGroupsAvailable(nn) then idg := IdGroup(GRP);; else idg := "?";; fi;
 Print(nn, "|", idg, "|", StructureDescription(GRP), "\\n");
 f := OutputTextFile("{tab}", false);; SetPrintFormattingStatus(f, false);;
 AppendTo(f, nn, " ", Position(el, One(GRP)) - 1, "\\n");;
@@ -79,10 +79,13 @@ def main():
     ap.add_argument('--maxplan', type=float, default=5e7)
     ap.add_argument('--gap-timeout', type=int, default=1800)
     ap.add_argument('--noaut', action='store_true', help='plan up to inner automorphisms only (conjugacy classes)')
+    ap.add_argument('--outdir', default=None, help='write the tsv and solutions here instead of runs/')
     a = ap.parse_args()
     from math import comb
-    outp = os.path.join(HERE, 'runs', f'named_d{a.Delta}D{a.D}.tsv')
-    soldir = os.path.join(HERE, 'runs', f'named_d{a.Delta}D{a.D}_sols')
+    base = a.outdir or os.path.join(HERE, 'runs')
+    os.makedirs(base, exist_ok=True)
+    outp = os.path.join(base, f'named_d{a.Delta}D{a.D}.tsv')
+    soldir = os.path.join(base, f'named_d{a.Delta}D{a.D}_sols')
     os.makedirs(soldir, exist_ok=True)
     for expr in a.exprs:
         try:

@@ -100,6 +100,7 @@ def main():
     ap.add_argument('--gap-timeout', type=int, default=300)
     ap.add_argument('--maxplan', type=float, default=5e6)
     ap.add_argument('--tag', default='')
+    ap.add_argument('--maxgroups', type=int, default=20000, help='skip orders with more groups than this')
     ap.add_argument('--base', default=None, help='lift mode: base file for lx (plan = Aut-orbit reps of the first free voltage)')
     ap.add_argument('--cycles', type=int, default=3, help='lift mode: number of independent cycles of the base (rank filter)')
     ap.add_argument('--abmax', type=int, default=0, help='lift mode: generic lattice bound on |G^ab| (liftbound.py); 0 = off')
@@ -116,6 +117,10 @@ def main():
     soldir = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}_sols' if a.base is None else f'{mode}_D{a.D}_sols')
     os.makedirs(soldir, exist_ok=True)
     for n in range(a.nmin, a.nmax + 1):
+        nr = int(gap(f'Print(NrSmallGroups({n}), "\\n"); QUIT;\n', 600).split()[0])
+        if nr > a.maxgroups:
+            log.write(f'{n}\t*\t-\t-\t-\tskipped-order({nr} groups)\t0\t0\t-\n'); log.flush()
+            continue
         rows = list_groups(n)
         for (i, dsize, inv) in rows:
             if (n, i) in done:

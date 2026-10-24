@@ -1,0 +1,21 @@
+group psl 8 poly x^3+x+1 x Z_5, N=2520, identity 280, H order 45, rows 56, threads 1, setup 0.00s
+start cost=152
+t=30 steps=406552 evals=3252417 cost=8 best=8 T=0.53
+t=60 steps=779218 evals=6233745 cost=8 best=8 T=0.19
+t=90 steps=1098112 evals=8784897 cost=14 best=8 T=0.15
+RESULT d=4 D=9 group=psl 8 poly x^3+x+1 x Z_5 N=2520 best=8 evals=8784897 time=90.0
+group psl 7 x Z_15, N=2520, identity 315, H order 60, rows 42, threads 1, setup 0.00s
+start cost=187
+t=30 steps=406334 evals=3250673 cost=13 best=10 T=0.53
+t=60 steps=717580 evals=5740641 cost=12 best=10 T=0.19
+RESULT d=4 D=9 group=psl 7 x Z_15 N=2520 best=10 evals=7759905 time=90.0
+group sl 5 x Z_21, N=2520, identity 420, H order 42, rows 60, threads 1, setup 0.00s
+start cost=762
+t=30 steps=204401 evals=1635209 cost=40 best=40 T=0.53
+t=60 steps=403908 evals=3231265 cost=40 best=40 T=0.19
+RESULT d=4 D=9 group=sl 5 x Z_21 N=2520 best=40 evals=4948113 time=90.0
+group pgl 7 x Z_8, N=2688, identity 0, H order 56, rows 48, threads 1, setup 0.00s
+start cost=1163
+t=30 steps=223305 evals=1786441 cost=37 best=37 T=0.53
+t=60 steps=454833 evals=3638665 cost=37 best=37 T=0.19
+RESULT d=4 D=9 group=pgl 7 x Z_8 N=2688 best=37 evals=5390705 time=90.0

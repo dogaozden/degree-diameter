@@ -1,0 +1,16 @@
+### Aff(2,5,Filtered(List(ConjugacyClassesSubgroups(GL(2,5)),Representative),H->Size(H)=48)[2])
+Aff(2,5,Filtered(List(ConjugacyClassesSubgroups(GL(2,5)),Representative),H->Size(H)=48)[2])	1200|?|(C5 x C5) : (C24 : C2)	plan=1650	DONE tested 1975050 solutions 0 best_cost 14 best_set 0 5 95 1199 quotient_filtered 774162
+### exit 0
+### Aff(2,7,Filtered(List(ConjugacyClassesSubgroups(GL(2,7)),Representative),H->Size(H)=24)[2])
+Aff(2,7,Filtered(List(ConjugacyClassesSubgroups(GL(2,7)),Representative),H->Size(H)=24)[2])	1176|[ 1176, 215 ]|(C7 x C7) : SL(2,3)	plan=264	DONE tested 309672 solutions 0 best_cost 21 best_set 0 2 45 499 quotient_filtered 17894
+### exit 0
+### Aff(3,3,Group([DiagonalMat([-One(GF(3)),One(GF(3)),One(GF(3))]),PermutationMat((1,2),3,GF(3)),PermutationMat((1,2,3),3,GF(3))]))
+Aff(3,3,Group([DiagonalMat([-One(GF(3)),One(GF(3)),One(GF(3))]),PermutationMat((1,2),3,GF(3)),PermutationMat((1,2,3),3,GF(3))]))	1296|[ 1296, 3490 ]|(C3 x C3 x C3) : (C2 x S4)	plan=2329	DONE tested 3011397 solutions 0 best_cost 41 best_set 0 27 180 371 quotient_filtered 1118355
+### exit 0
+### Aff(4,2,Group(Concatenation(List(GeneratorsOfGroup(GL(2,2)),A->DirectSumMat(A,IdentityMat(2,GF(2)))),List(GeneratorsOfGroup(GL(2,2)),A->DirectSumMat(IdentityMat(2,GF(2)),A)),[PermutationMat((1,3)(2,4),4,GF(2))])))
+Aff(4,2,Group(Concatenation(List(GeneratorsOfGroup(GL(2,2)),A->DirectSumMat(A,IdentityMat(2,GF(2)))),List(GeneratorsOfGroup(GL(2,2)),A->DirectSumMat(IdentityMat(2,GF(2)),A)),[PermutationMat((1,3)(2,4),4,GF(2))])))	1152|[ 1152, 157849 ]|(C2 x C2 x C2 x C2) : ((S3 x S3) : C2)	plan=1974	DONE tested 2268126 solutions 0 best_cost 16 best_set 0 29 107 502 quotient_filtered 975366
+### exit 0
+### Aff(2,5,Filtered(List(ConjugacyClassesSubgroups(GL(2,5)),Representative),H->Size(H)=48)[1])
+Aff(2,5,Filtered(List(ConjugacyClassesSubgroups(GL(2,5)),Representative),H->Size(H)=48)[1])	1200|[ 1200, 947 ]|(C5 x C5) : (((C4 x C2) : C2) : C3)	plan=802	DONE tested 959994 solutions 0 best_cost 15 best_set 0 14 40 444 quotient_filtered 176616
+### exit 0
+### Aff(2,7,Filtered(List(ConjugacyClassesSubgroups(GL(2,7)),Representative),H->Size(H)=24)[5])

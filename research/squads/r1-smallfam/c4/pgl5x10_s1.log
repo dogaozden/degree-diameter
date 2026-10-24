@@ -1,0 +1,7 @@
+group pgl 5 x Z_10, N=1200, identity 0, H order 30, rows 40, threads 1, setup 0.00s
+start cost=240
+t=30 steps=516672 evals=4133377 cost=19 best=17 T=0.53
+t=60 steps=1063994 evals=8511953 cost=22 best=17 T=0.19
+t=90 steps=1577174 evals=12617393 cost=22 best=17 T=0.15
+t=120 steps=2096141 evals=16769129 cost=17 best=17 T=0.15
+RESULT d=4 D=8 group=pgl 5 x Z_10 N=1200 best=17 evals=20860561 time=150.0
