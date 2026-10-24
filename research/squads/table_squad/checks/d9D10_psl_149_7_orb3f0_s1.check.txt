@@ -17,3 +17,18 @@ VALID d=9 D=10 group=psl 149 x Z_7 N=11577300 vertices=23154600 (distinct genera
 real	0m50.157s
 user	0m28.395s
 sys	0m0.022s
+== check_haar_indep.py (research/frontier, independent implementation: own GF(p^k), PSL enumeration, BFS)
+file d9D10_psl_149_7_orb3f0_s1.txt
+header: d=9 D=10 spec=psl 149 NCYC=7 N=11577300
+group order |G|=1653900 (factors [1653900]), x Z_7 -> 11577300; vertices 2N=23154600
+distinct generators (as full group elements): 9 of d=9
+permutations built (29s)
+BFS from A: ecc=10 reached 23154600 of 23154600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36819, 291237, 2128548, 9061891, 9411348, 2219491]
+BFS from B: ecc=10 reached 23154600 of 23154600 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36819, 291221, 2128548, 9066162, 9411348, 2215236]
+every vertex has exactly 9 distinct neighbours: True
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=23154600 (77s)
+
+
+real	1m17.294s
+user	0m30.879s
+sys	0m19.020s
