@@ -294,6 +294,7 @@ with apsp (VALID at D = 5, INVALID at D = 4); the bold records and the 10,368 gr
 | (Δ, 5) | k × q | chart (singular patterns) | controller | m | lift | best (k,5) graph, m |
 |---|---|---|---|---|---|---|
 | (15, 5) | 5 × 3 | `r3/k5q3_for168.txt` (96 of 640) | Haar, Z₂₈ ⋊₁₁ Z₆ (connection set: squad r3-c4) | 168 | **27,216** | 177 (95%) |
+| (15, 5) | 5 × 3 | `r3/cdesc/k5q3_for165.txt` (94 of 640) | Haar, Z₁₁ ⋊₃ Z₁₅ (odd order) | 165 | 26,730 | |
 | (15, 5) | 5 × 3 | `r3/k5q3_pd112.txt` (112 of 640) | Haar, Z₂₆ ⋊₃ Z₆ | 156 | 25,272 | |
 | (15, 5) | 5 × 3 | same | Haar, Z₃₅ ⋊₆ Z₄ | 140 | 22,680 | |
 | (12, 5) | 4 × 3 | `r3/k4q3_diag_s126.txt` (16 of 216) | [[1,3],[3,1]] over Z₅ ⋊₂ Z₈ (base and group: squad r3-c1) | 80 | **12,960** | 81 (99%) |
@@ -420,8 +421,9 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   reverse is (Lemma 2: "U(i₂;i₁) meets U(i₃;i₄)" is symmetric; side B the same). So the uncovered targets are closed
   under inversion, and the walks reaching an involution z = z⁻¹ come in reversal pairs that are singular together (no
   nonbacktracking pattern is its own reverse, since i₂ ≠ i₃). An involution therefore has half as many independent
-  chances, which fits it being the last hole. Groups of odd order avoid this, and at (15,5) the odd orders 165
-  (Z₁₁ ⋊ Z₁₅, Z₃₃ ⋊ Z₅) reach cost 2 with side A fully covered, the two side-B holes being an inverse pair.
+  chances, which fits it being the last hole. Groups of odd order avoid this, and at (15,5) the odd order 165
+  (Z₁₁ ⋊ Z₁₅, Z₃₃ ⋊ Z₅) reached cost 2 with side A fully covered, the two side-B holes being an inverse pair; with the
+  chart re-optimised for it, Z₁₁ ⋊₃ Z₁₅ gives a valid 26,730-vertex graph (below the 27,216 record).
 - **Controllers reach 71–95% of the best known (k, 5) graph** when the chart covers both diagonals: m = 168 of 177 at
   k = 5, q = 3 (88–112 singular of 640); m = 80 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
   (216–230 of 640). With 4-cycles required the old controllers were at 54/81 and 128/177.
