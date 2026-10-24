@@ -33,3 +33,7 @@ Solve rate by the index c = (p-1)/ord(r) of <r> in F_p^*, all Z_p x| Z_k scanned
    c=2    :   9 of  262 groups solve (3.4 %)
    c=3..6 :   4 of  367 groups solve (1.1 %)
    c>6    :   0 of  666 groups solve (0.0 %)
+
+Control for the action order: groups with ord(r) >= 5 only
+   c<=6: 10 of 203 solve (4.9 %)
+   c>6: 0 of 57 solve (0.0 %)

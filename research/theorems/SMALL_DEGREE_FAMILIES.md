@@ -203,6 +203,8 @@ In Z_p ⋊_r Z_k the multipliers form the subgroup ⟨r⟩ of F_p^*. Let c = (p�
 | > 6 | 666 | **0** | 0 % |
 
 - If index did not matter, the chance of 0 solutions out of 666 at the overall rate would be about 4·10⁻⁷.
+- **But this is partly confounded with small action orders.** Restricted to ord(r) ≥ 5 the contrast is 10 of 203
+  (4.9 %) against 0 of 57, i.e. p ≈ 0.06. The evidence is suggestive, not strong.
 - The action may be non-faithful: k > ord(r), giving a central cyclic factor. 7 of the 21 solving groups are like
   that.
 - The structured Δ = 4 records obey the same rule:
@@ -211,8 +213,8 @@ In Z_p ⋊_r Z_k the multipliers form the subgroup ⟨r⟩ of F_p^*. Let c = (p�
   - our (4,10) Z97 ⋊ Z64, c = 3; Z157 ⋊ Z39, c = 4.
 - The random-like Δ = 5 records need not: Z3277 ⋊ Z14 at (5,10) has c = 16 on its Z113 factor.
 
-**Conjecture (strong evidence for Δ = 3):** a Haar graph of Z_p ⋊ Z_k at a record-sized order needs a multiplier
-group of index at most about 6. Together with §3.3, this is the answer to "which (m, k, r) solve" for the small
+**Conjecture (suggestive evidence for Δ = 3):** a Haar graph of Z_p ⋊ Z_k at a record-sized order needs a
+multiplier group of index at most about 6. Together with §3.3, this is the answer to "which (m, k, r) solve" for the small
 cells: a large multiplier group, then the far lower tail decides.
 
 ### 3.3 In the small cells, success is decided by the far lower tail, so search all groups
