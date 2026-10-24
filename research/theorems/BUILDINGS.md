@@ -219,6 +219,12 @@ three random) on 21 buildings:
 Result: **ALL MATCH**, every layer and every vertex. For example, every vertex of the PG(4,3) graph sees
 1, 16, 204, 2,268, 15,525, 13,446 vertices at distances 0–5.
 
+Matching layers is weaker than Theorem 2 itself, so `pairwise_check.py` (→ `out/pairwise_check.txt`) also tests it
+pair by pair in PG(n, q). There the Weyl distance of two complete flags is the permutation w with
+dim(V_i ∩ V′_j) = |{1..i} ∩ w({1..j})|. For random source chambers and every target chamber, it compares the BFS
+distance between their parts (all four combinations) with d_{JK}(w). Over PG(2,3), PG(3,2), PG(3,3), PG(4,2) and
+PG(5,2), that is 2,610,260 pairs, with **0** disagreements.
+
 ### 1.5 Orders, degrees, and which buildings give regular graphs
 
 With E = Σ_w q_w chambers, Γ has E/P_{I₁} vertices of type I₁ (each of degree P_{I₁}) and E/P_{I₂} of type I₂. It is
@@ -337,8 +343,8 @@ best building route. It squares the degree.
 quotient of B_{(D+1)/2}(q) does better, (D+1)(D−1)/2·Δ^(−2/(D+1)). For even D, Isham et al.'s polarity quotient of
 C(D/2, q) is better still. `general_rates.py` → `out/general_rates.txt`. The constants D(D−1), r(D−1) and CvB–K's
 D(2D−1) are confirmed numerically by `general_asymptotic_check.py` → `out/general_asymptotic_check.txt`. For example,
-at D = 5 the B₃ quotient reaches
-0.49 at Δ = 4,913, while H_{5,q} is at 0.09 at Δ ≈ 1.9·10¹². CvB–K's Remark 3.2 asks for the optimal rate. The exact
+at D = 5 the B₃ quotient reaches 0.49 at Δ = 4,913, while H_{5,q} is at 0.09 at Δ ≈ 1.9·10¹². CvB–K's Remark 3.2 asks
+for the optimal rate. The exact
 degree of H_{k,q} used here is Σ_{T} q^{|T|}(q+1)^{|N(T)|}, over non-empty sets T of odd nodes of A_{2k}, where N(T) is
 the set of even nodes adjacent to T. It is the d = 2 layer of Corollary 2 and matches BFS (60 and 204 for k = 2,
 q = 2, 3).
@@ -421,8 +427,9 @@ Searched by an 8-card Haiku squad (research/squads/buildings-r1-lit/c1–c8/note
   - both have order ~ q²¹ and degree (q+1)(q²+1).
 
   So lim sup n(Δ, 7)/Δ⁷ = 1 and lim sup n_b(Δ, 8)/M_b(Δ, 8) = 1. `asymptotic_check.py` gives ratios 0.455 at q = 8,
-  0.827 at q = 32, 0.954 at q = 128 and 0.997 at q = 2048. This seems to have gone unnoticed for 40 years. CvB–K
-  (general) and Sp(8, q) (bipartite, every q, faster) now cover both.
+  0.827 at q = 32, 0.954 at q = 128 and 0.997 at q = 2048. We found no source that states either. The full text of
+  Delorme's J. Graph Theory paper is unread, so he may have noticed it. CvB–K (general) and Sp(8, q) (bipartite,
+  every q, faster) now cover both.
 - ✓ Closest building-theory hit (my own search): Deza–Pankov, "Zigzag structure of thin chamber complexes",
   arXiv:1509.03754. In Coxeter complexes, zigzags (Petrie-polygon-like paths) have length equal to the Coxeter number.
   This is the same Coxeter-element phenomenon, in thin complexes, about zigzag length rather than distances between
@@ -432,7 +439,7 @@ Searched by an 8-card Haiku squad (research/squads/buildings-r1-lit/c1–c8/note
 
 **Verdict.** The statement "lim n_b(Δ, D)/M_b(Δ, D) = 1" is not in print for any D ∉ {2, 3, 4, 6}. It is a one-line
 corollary of CvB–K (August 2026) via the standard doubling, so it should be credited to them. What is ours:
-- Theorem 1 for all types (the type-A case is theirs);
+- Theorem 1 for all types (the type-A case is CvB–K's upper bound plus Isham et al.'s exact value);
 - the observation that Delorme's 1985 product plus Theorem 1 gives every D directly, and, for general graphs,
   re-proves their theorem;
 - the convergence rates, which are much faster than the 2026 constructions give;
@@ -562,6 +569,7 @@ The reviewer's own text is not in the repo; these are the gaps I found.
 | general_asymptotic_check.py | out/general_asymptotic_check.txt | first-order constants for general graphs |
 | run_checks2.sh | out/apsp_checks2.txt | apsp.c on the other 12 flag graphs of compare_dist.py |
 | opposite_check.py | out/opposite_check.txt | Theorem 1(b) tested directly on random opposite chamber pairs |
+| pairwise_check.py | out/pairwise_check.txt | Theorem 2 tested pair by pair in PG(n, q), 2.6 M pairs |
 | partitions.py | out/partitions.txt | §2.1, brute force over W |
 | partitions2.py | out/partitions2.txt | §2.1 up to rank 8 incl. E₈, via Demazure products |
 | partitions3.py | out/partitions3.txt | §2.1 for A_n, B_n, D_n up to rank 20 (pruned by the reduction lemma) |
