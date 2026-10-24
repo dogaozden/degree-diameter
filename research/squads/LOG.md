@@ -88,3 +88,6 @@ c8 wildcard (10,5)/(11,5).
 ### Opus, during round 3
 - Exhaustive (10,5), ORBIT="3 3 1": PSL(2,7) × Z13 (63,776,075 sets): nothing below 7 uncovered. Up to automorphisms
   this group has one class of order-3 conjugation with few fixed points, so it is finished too.
+- Exhaustive (10,5) on SL(2,13), ORBIT="3 3 1": 62,988,724 sets, exact minimum 6 (16 sets), no solution. Three groups
+  enumerated, three floors equal to what annealing found (4, ≥ 7, 6). At D = 5 the annealer reaches the true floor of
+  these orbit spaces, so (10,5) with this symmetry is closed for every group in the window that annealed to ≥ 9.

@@ -1,0 +1,10 @@
+group psl 3 x Z_169, N=2028, identity 507, H order 39, rows 52, threads 1, setup 0.02s
+wide rows: HW order 169, rows 12, setup 0.04s
+alpha: conj by mat(1,2,1,0) (index 10), z -> 22 z on Z_169
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 2 (+e); mu = 53.26, mu/k = 17.75, fixed-point misses ~ 1.78
+start cost=424
+t=30 steps=834927 evals=6679417 cost=12 best=12 T=0.53
+t=60 steps=1664714 evals=13317713 cost=26 best=12 T=0.19
+t=90 steps=2454783 evals=19638265 cost=12 best=12 T=0.15
+t=120 steps=3300619 evals=26404953 cost=24 best=12 T=0.15
+t=150 steps=4232659 evals=33861273 cost=12 best=12 T=0.15
