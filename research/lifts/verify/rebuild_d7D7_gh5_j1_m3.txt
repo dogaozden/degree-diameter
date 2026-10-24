@@ -1,0 +1,20 @@
+check sols/rebuild_d7D7_gh5_j1_m3.txt: group cyc 3 (N=3), base k=7812 E=27342, lift n=23436
+base degrees: min 7 max 7; lift simple (no parallel equal voltages): yes
+RESULT n=23436 Delta=7 diameter=7
+target D=7: VALID
+solution sols/rebuild_d7D7_gh5_j1_m3.txt: group cyc 3 (order 3), base k=7812 with 27342 edges, D=7; lift n=23436
+edges 82026, degree min 7 max 7, repeated edges 0, loops 0
+edge list sha256 41c47cedc0e9c044ae80489a79fd507c7a803f35e34330c1f2db13fd2fb68445
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/rebuild_d7D7_gh5_j1_m3.edges
+bipartite True, connected True
+right translations by 1 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..7811: []
+diameter (fiber representatives + automorphisms) = None
+fiber BFS skipped (--no-bfs): the diameter must come from apsp on the edge list
+SUMMARY n=23436 Delta=7 regular=True bipartite=True diameter=-1 D=7 -> VALID
+n=23436 m=82026 degree min 7 max 7 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=7 (all-pairs, 23436 sources)
+
+real	0m0.339s
+user	0m0.329s
+sys	0m0.000s

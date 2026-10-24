@@ -1,0 +1,23 @@
+check sols/rebuild_d4D7_840_haar_psl5xcyc7.txt: group psl 5 x cyc 7 (N=420), base k=2 E=4, lift n=840
+base degrees: min 4 max 4; lift simple (no parallel equal voltages): yes
+  ecc(0,e) = 7
+  ecc(1,e) = 7
+RESULT n=840 Delta=4 diameter=7
+target D=7: VALID
+solution sols/rebuild_d4D7_840_haar_psl5xcyc7.txt: group psl 5 x cyc 7 (order 420), base k=2 with 4 edges, D=7; lift n=840
+edges 1680, degree min 4 max 4, repeated edges 0, loops 0
+edge list sha256 f3881f8089c66e4fe092327c90a5fc64085fb32117d3ed938f0d56c281865da6
+wrote /tmp/claude-0/-home-user-degree-diameter/ee2ddafa-df45-5cb8-b9ed-a65866641afb/scratchpad/rebuild_d4D7_840_haar_psl5xcyc7.edges
+bipartite True, connected True
+right translations by 2 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [7, 7]
+diameter (fiber representatives + automorphisms) = 7
+networkx all-pairs diameter = 7
+SUMMARY n=840 Delta=4 regular=True bipartite=True diameter=7 D=7 -> VALID
+n=840 m=1680 degree min 4 max 4 repeated 0 loops 0 bipartite yes components 1
+RESULT diameter=7 (all-pairs, 840 sources)
+lift: n=840 edges=1680 degrees=[4] diameter=7
+published: n=840 edges=1680 degrees=[4] diameter=7
+adjacency spectra equal: True
+|Aut| lift = 2520, |Aut| published = 2520
+ISOMORPHIC (BLISS)

@@ -1,0 +1,9 @@
+solution sols/d4D10_n11988_haar_meta333_18_83.txt: group meta 333 18 83 (order 5994), base k=2 with 4 edges, D=10; lift n=11988
+edges 23976, degree min 4 max 4, repeated edges 0, loops 0
+edge list sha256 5018c81c3bf379e8c9bc3f69f3b43360022b89bd2235db7d4b75ed964a443843
+bipartite True, connected True
+right translations by 3 generators of G are automorphisms: True
+ecc((u,1)) for u = 0..1: [10, 10]
+diameter (fiber representatives + automorphisms) = 10
+networkx all-pairs diameter = 10
+SUMMARY n=11988 Delta=4 regular=True bipartite=True diameter=10 D=10 -> VALID
