@@ -113,6 +113,20 @@ of SL(2,q)×Z_n are far from balanced (|Fix| ≈ q, |Anti| ≈ q²). Frobenius o
 
 **2.5 Clumps [PROVED, BEYOND_RANDOM].** For any α of order k, the uncovered set is ⟨α⟩-invariant.
 
+**2.6 Expected twisted-cycle counts [PROVED, up to the words without a singleton orbit].**
+- Setup: S = {x₁, βx₁, …, x_m, βx_m}, with the x_i independent and uniform on G \ Fix(β) (conditioned on
+  distinctness). Let v be a reduced alternating word in which some orbit i occurs exactly once (as x_i or βx_i).
+- Conditioning on the other x's, v(S) = a·y^{±1}·b with y uniform on G \ Fix(β). Hence
+  P(v(S) ∈ Anti(β)) = |a⁻¹Anti(β)b⁻¹ \ Fix(β)| / (N − |Fix(β)|), which lies between
+  (|Anti| − |Fix|)/(N − |Fix|) and |Anti|/(N − |Fix|). That is ρ(1 + O(|Fix|/|Anti| + |Fix|/N)).
+- So the expected number of twisted half-words of length 2j is ρ times the number of such words, plus the
+  contribution of words in which every orbit occurs at least twice. The σ-palindromes among those are excluded; the
+  rest are a fraction that vanishes as m → ∞ for fixed j.
+- Dividing by 8j gives R_j = ρΔ(Δ−1)^{2j−1}/(4j).
+- At (6,8) (m = 3) the measured counts are ρ × words exactly at length 2 on SL(2,25) (2.00 against 2.00), and
+  5–18 % higher at lengths 4 and 6 (§3.1), where words without a singleton orbit are common.
+- What is *not* proved is that the counts are Poisson. They are overdispersed, because cycles come in ⟨α⟩-orbits.
+
 ## 3. Where the old argument fails (measured)
 
 ### 3.1 The word loss is a few Poisson cycles, not a self-averaging fraction
@@ -461,6 +475,7 @@ Going through the table:
 
 **Proved**
 1. Reflection lemma: an involutive symmetry's coincidences are exactly the twisted cycles v·σ(v), v ∈ Anti(β) (§2.1).
+   Their expected number per length is ρ × (number of words) up to the words without a singleton orbit (§2.6).
 2. |Fix(β)|·|Anti(β)| ≥ N, tight for trace-0 conjugation in SL(2,q) and for Frobenius of order 2 on SL(2,q₀²);
    z ↦ −z on Z_n with n even is not tight (§2.2).
 3. At odd D, β* = inversion∘β is a symmetry of each side's binding multiset, so Anti(β) consists of β*-fixed targets.
