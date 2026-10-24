@@ -139,13 +139,25 @@ explicit (files in `chartlift/`). Each lift was built and checked all-pairs:
    pattern polynomials and det A₁·det A₂·det A₃; the product F has degree ≤ 3,036. `integer_witness.py` finds 223
    integer charts at which, for every pattern, the values have gcd 1. So every factor, hence F, is nonzero modulo
    every prime (`runs/integer_witness.out`). By Schwartz–Zippel, F has a non-root over F_q whenever q > 3,036, which
-   is a universal chart. For 3 ≤ q ≤ 3,036, all 471 prime powers, an explicit universal chart is in
+   is a universal chart. For 3 ≤ q ≤ 3,036, all 469 prime powers, an explicit universal chart is in
    `charts/universal/k4_q<q>.txt`, found by `chart_anneal.c` (q ≤ 127) or random search (`universal_large.py`).
    Every chart was rechecked from the walk rules of Lemma 1 (q ≤ 127 in a second, Python implementation). Field
    convention: gf.py's polynomial for q ∈ {4, 8, 9, 16, 25, 27, 32, 49}, otherwise the first monic irreducible.
 3. *Conclusion.* Universal means every nonbacktracking 4-walk reaches the whole target fibre (Lemma 2). So the lift
    of C₅₄ has diameter ≤ 5 for every q ≥ 3: n_b(4q, 5) ≥ 2·54·q⁴ = 108 q⁴. ∎
    q = 2 has no universal chart (Proposition 7.4), but the (8,5) graph gives 2,048 ≥ 1,728.
+
+**Remark 11 (the same shape for other k).** The argument works for any k:
+
+> n_b(kq, 5) ≥ 2 m_k q⁴
+
+whenever C has m_k vertices per side, is k-regular and exact, and a universal k-letter chart over F_q⁴ exists. The
+base K_{k−1,k−1} + doubled perfect matching gives exact controllers for every k we tried (`ctrl_search` with
+`charts/nbonly_k*.flags`, `runs/exact*_z*.volt`): m₃ = 12 (Z₆), m₄ = 54 (Z₁₈), m₅ = 116 (Z₂₉) and m₆ ≥ 200 (Z₄₀). For
+comparison, m_k ≤ k(k−1)³ = 24, 108, 320, 750, since there are that many nonbacktracking 4-walks from a vertex.
+Universal charts need k((k−1)q+1) ≤ (q+1)(q²+1) when the b's are in general position, so for k = 5, 6 the family starts
+at Δ = 20, 30, outside the table. The Schwartz–Zippel step for k ≠ 4 was not carried out; it would need its own
+witnesses and small-q charts.
 
 **Proposition 6 (ceiling).** A chart lift for (Δ, D) = (kq, D) has fibre dimension D − 1, and its controller is
 k-regular with diameter ≤ D. So its order is at most q^(D−1) · Moore_b(k, D), and realistically
