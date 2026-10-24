@@ -102,10 +102,14 @@ Observations:
    - Same-colour pairs (v in copy i, t in copy j) need F or L. So for every pair {i, j}, either every colour-0
      vertex of i has a neighbour in j, or every colour-0 vertex of j has one in i. That is a tournament T0 on the
      copies, and likewise T1 for colour 1.
-   - A colour-0 vertex spends one spare edge per out-arc of T0. A colour-1 vertex spends one per out-arc of T1, and an
-     edge serves an in-arc only when it is one of those same edges. So each copy has degree ≤ 2k in T0.
-   - A tournament needs degree r − 1, so r ≤ 2k + 1. Mixing hexagons of different q does not help: (11,7) from
-     2·H(9) + 2·H(8) would have 415,516 vertices, but an H(9) copy (k = 1) admits only 3 copies in all.
+   - A colour-0 vertex spends one spare edge per out-arc of T0, so out-degrees in T0 are ≤ k. An in-arc j → i of T0
+     lands |colour-0 side of j| edges on the colour-1 side of i, whose capacity k·|side of i| is shared with T1. For
+     copies of equal size this gives in-degree ≤ k, so each copy has degree ≤ 2k in T0.
+   - A tournament needs degree r − 1, so r ≤ 2k + 1 for equal copies. Mixing hexagons of different q does not help.
+     (11,7) from 2·H(9) + 2·H(8) would have 415,516 vertices, but an H(9) side (66,430 vertices, k = 1) can absorb only
+     one H(8) side (37,449), so an H(9) copy still has degree ≤ 2 and r ≤ 3. With two H(9) copies, their free sides
+     can serve only one further copy: 2·132,860 + 74,898 = 340,618 < 398,580. Small copies with many spare edges add
+     too few vertices to matter.
    The other routes (through a neighbour's cross edge) cover only radius-4 balls of about q⁴ out of q⁵ vertices per
    copy, so they cannot replace F or L for a whole copy.
 4. **Other bases.** The construction needs a base of diameter ≤ 6 and degree Δ − 1, and the Moore bound makes H(q) the

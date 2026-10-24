@@ -1,0 +1,11 @@
+group sl 11 x Z_101, N=133320, identity 11110, H order 22, rows 6060, threads 1, setup 0.01s
+wide rows: HW order 202, rows 660, setup 0.02s
+alpha: conj by mat(0,3,7,4) (index 26), z -> 36 z on Z_101
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 32.02, mu/k = 6.40, fixed-point misses ~ 3.78
+start cost=152
+RESULT d=11 D=7 group=sl 11 x Z_101 N=133320 best=0 evals=7169 time=1.0 orbit k=5 m=2 f=1 fix=9
+full diameter check: OK
+wrote ./d11D7_sl_11_101_orb5_s1.txt
+n = 266640 edges = 1466520 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 9701d138d2675816c2b5691ed972dc4241e7962b501dae26f11fe7f3bfab0859
+VALID d=11 D=7 group=sl 11 x Z_101 N=133320 vertices=266640
