@@ -8,3 +8,10 @@ E8 direct          D=30 predicted c= 112   q=1009: q(1-n/M)=105.9519  q=10007: q
 A3 x Opp           D= 4 predicted c=   6   q=1009: q(1-n/M)=5.9753  q=10007: q(1-n/M)=5.9975  q=100003: q(1-n/M)=5.9998
 B5 x Opp           D=10 predicted c=  40   q=1009: q(1-n/M)=39.1909  q=10007: q(1-n/M)=39.9174  q=100003: q(1-n/M)=39.9917
 G2 direct (Moore)  D= 6 predicted c=   0   q=1009: q(1-n/M)=0.0000  q=10007: q(1-n/M)=0.0000  q=100003: q(1-n/M)=0.0000
+Ree-Tits octagons GO(q,q^2): points (1+q)(1+q^3)(1+q^6), lines (1+q^2)(1+q^3)(1+q^6)
+  q=2: Delta=15: product 2|P||L| / M_b(Delta,8) = 0.0452;  quotient |P||L| / M(Delta,7) = 0.0422
+  q=8: Delta=585: product 2|P||L| / M_b(Delta,8) = 0.4559;  quotient |P||L| / M(Delta,7) = 0.4551
+  q=32: Delta=33825: product 2|P||L| / M_b(Delta,8) = 0.8268;  quotient |P||L| / M(Delta,7) = 0.8267
+  q=128: Delta=2113665: product 2|P||L| / M_b(Delta,8) = 0.9540;  quotient |P||L| / M(Delta,7) = 0.9540
+  q=512: Delta=134480385: product 2|P||L| / M_b(Delta,8) = 0.9883;  quotient |P||L| / M(Delta,7) = 0.9883
+  q=2048: Delta=8594130945: product 2|P||L| / M_b(Delta,8) = 0.9971;  quotient |P||L| / M(Delta,7) = 0.9971

@@ -24,3 +24,13 @@ for nm, f, D, c in cases:
     for q in QS:
         n, d = f(q); defic = 1 - Fraction(n, Mb(d, D)); vals.append(f"q={q}: q(1-n/M)={float(q * defic):.4f}")
     print(f"{nm:18s} D={D:2d} predicted c={c:4d}   " + "  ".join(vals))
+
+# Ree-Tits octagons GO(q, q^2), q = 2^(2e+1): Delorme product (bipartite, D = 8) and quotient (general, D <= 7).
+def M(d, D): return 1 + d * sum((d - 1) ** i for i in range(D))
+print("Ree-Tits octagons GO(q,q^2): points (1+q)(1+q^3)(1+q^6), lines (1+q^2)(1+q^3)(1+q^6)")
+for q in (2, 8, 32, 128, 512, 2048):
+    s, t = q, q * q
+    P = (1 + s) * (1 + s * t) * (1 + s * s * t * t); L = (1 + t) * (1 + s * t) * (1 + s * s * t * t)
+    d = (1 + s) * (1 + t)
+    print(f"  q={q}: Delta={d}: product 2|P||L| / M_b(Delta,8) = {2 * P * L / Mb(d, 8):.4f};"
+          f"  quotient |P||L| / M(Delta,7) = {P * L / M(d, 7):.4f}")
