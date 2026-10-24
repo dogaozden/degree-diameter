@@ -1057,6 +1057,35 @@ exdone:
         for (int h = 0; h < 8; h++) printf(" %lld", hist[h]); printf("\n");
         return zero ? 0 : 1;
     }
+    if (getenv("RANDORB") && getenv("CLASSES")) {   /* haar_order2: miss rates of each stabiliser class (ORDER2.md 5.1) */
+        int m = atoi(getenv("RANDORB")); double t0 = now();
+        uint8_t *cls = malloc(N);   /* orbit size under alpha (1..k), or k+1 for free elements of Anti(alpha^(k/2)) */
+        long long csz[MAXD + 2] = {0};
+        for (int x = 0; x < N; x++) {
+            int y = alpha(x), o = 1; while (y != x) { y = alpha(y); o++; }
+            int c = o;
+            if (o == OK_ && OK_ % 2 == 0) { int b = x; for (int i = 0; i < OK_ / 2; i++) b = alpha(b); if (b == ginv(x)) c = OK_ + 1; }
+            cls[x] = (uint8_t)c; csz[c]++;
+        }
+        printf("CLASSES sizes (orbit size: count; %d = free and in Anti(alpha^%d)):", OK_ + 1, OK_ / 2);
+        for (int c = 1; c <= OK_ + 1; c++) if (csz[c]) printf(" %d:%lld", c, csz[c]); printf("\n");
+        uint64_t *SVR[2] = { zalloc64(BITBYTES), zalloc64(BITBYTES) };
+        for (int t = 0; t < m; t++) {
+            for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
+            for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
+            for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
+            long long c = cost_any(C[0], TF, TI, &sc0, SVR, &NOBOUND, 0), miss[MAXD + 2] = {0};
+            for (int sd = 0; sd < (D % 2 ? 2 : 1); sd++) { const uint64_t *V = SVR[sd];
+                for (int g = 0; g < N; g++) { int cov;
+                    if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+                    else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+                    if (!cov) miss[cls[g]]++; } }
+            printf("CLASSES sample %d cost %lld misses", t, c);
+            for (int cc = 1; cc <= OK_ + 1; cc++) if (csz[cc]) printf(" %d:%lld", cc, miss[cc]); printf("\n");
+        }
+        printf("CLASSES done %d samples in %.1f s\n", m, now() - t0);
+        return 0;
+    }
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {

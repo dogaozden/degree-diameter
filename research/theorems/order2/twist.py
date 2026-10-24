@@ -162,6 +162,23 @@ def alpha_perm(G, conj=None, r=1, frob=None):
     return yq * n + (r * z) % n
 
 
+def swapconj_cube(G, cdesc, r3):
+    """beta = alpha^3 for alpha(x1, x2, z) = (c x2 c^-1, x1, r z) on prod G G x Z_n with c^3 = 1:
+    alpha^3(x1, x2, z) = (c^2 x2 c^-2, c x1 c^-1, r^3 z)."""
+    import re
+    Q, n, N = G.Q, G.n, G.N
+    g1, o2 = Q.g1, Q.g2.order
+    c = g1.find(*map(int, re.match(r"mat\((\d+),(\d+),(\d+),(\d+)\)", cdesc).groups()))
+    c2 = int(g1.mul_vec(np.array([c]), np.array([c]))[0])
+    ci = int(g1.inv_vec(np.array([c]))[0]); c2i = int(g1.inv_vec(np.array([c2]))[0])
+    allg = np.arange(N)
+    xq, z = allg // n, allg % n
+    x1, x2 = xq // o2, xq % o2
+    y1 = g1.mul_vec(g1.mul_vec(np.full(N, c2), x2), np.full(N, c2i))
+    y2 = g1.mul_vec(g1.mul_vec(np.full(N, c), x1), np.full(N, ci))
+    return (y1 * o2 + y2) * n + (r3 * z) % n
+
+
 def sigma_of(S, beta):
     pos = {s: i for i, s in enumerate(S)}
     return np.array([pos.get(int(beta[s]), -1) for s in S])
@@ -214,8 +231,10 @@ def main():
     sub = ap.add_subparsers(dest="mode", required=True)
     a1 = sub.add_parser("sol")
     a1.add_argument("file")
-    a1.add_argument("--alpha", required=True, help="conjugating matrix mat(a,b,c,d) as in the haar_sym log")
-    a1.add_argument("--r", type=int, default=1)
+    a1.add_argument("--alpha", default=None, help="conjugating matrix mat(a,b,c,d) as in the haar_sym log")
+    a1.add_argument("--frob", type=int, default=None, help="beta = entrywise Frobenius x -> x^(p^j) (matrix groups)")
+    a1.add_argument("--swapconj", default=None, help="prod G G: beta = alpha^3 for alpha(x1,x2) = (c x2 c^-1, x1), c = mat(..) of order 3")
+    a1.add_argument("--r", type=int, default=1, help="beta on Z_n: z -> r z (for --swapconj give r^3 of the haar run)")
     a1.add_argument("--maxlen", type=int, default=None)
     a1.add_argument("--json", default=None)
     a2 = sub.add_parser("randorb")
@@ -243,14 +262,19 @@ def main():
 
     if A.mode == "sol":
         d, D, G, S = read_solution(A.file)
-        conj = find_conj(G.Q, A.alpha)
-        beta = alpha_perm(G, conj=conj, r=A.r)
+        if A.swapconj is not None:
+            beta = swapconj_cube(G, A.swapconj, A.r)
+        elif A.frob is not None:
+            beta = alpha_perm(G, frob=A.frob, r=A.r)
+        else:
+            beta = alpha_perm(G, conj=find_conj(G.Q, A.alpha), r=A.r)
+        assert np.all(beta[beta] == np.arange(G.N)), "beta is not an involution"
         # the file is normalised by s_0^-1 on the right, (g,A) -> ...: S' = S s_0^-1 is invariant under the
         # conjugate automorphism x -> s0' beta(x) ... ; recover a symmetric frame by trying all right translates
         Sarr = np.array(S)
         inv = G.inv_perm()
         best = None
-        for t in range(G.N):
+        for t in [G.ident] + list(range(G.N)):
             T = G.mul_vec(Sarr, np.full(d, t))       # S t
             Bt = beta[T]
             if set(Bt.tolist()) == set(T.tolist()):
