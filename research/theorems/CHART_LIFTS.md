@@ -413,6 +413,11 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   chart covering both diagonals has 43% of its patterns singular, and Haar controllers stop at m = 300 (9,600 vertices,
   valid, below the table; squad r2-c7). 6 × F₂ at (12,5) now needs m ≥ 325; the (6,2) chart is 40% singular and Haar
   controllers reach cost 2 at m = 200 (squad r2-c8).
+- **The record (4,5) graph as a (12,5) controller.** With a diagonal-covering (4,3) chart any 4-regular diameter-5
+  graph is a candidate, so the 162-vertex (4,5) record graph (m = 81) would give 13,122. It is far off: over 6 proper
+  colourings, all letter relabellings and chart classes 0, 1, 5 the best leaves 414 same-side pairs uncovered
+  (`r3/gen_ctrl_cost.py`). Near-Moore graphs join most distance-4 pairs by a single walk, and 16 singular patterns of
+  216 then miss about 3% of the pairs.
 - **(8,5) beyond 2,048 with Haar controllers**: the (4,2) chart is optimal at 48 singular patterns (Proposition 12(d)),
   and an exhaustive scan over all 128 groups of order 60–81 finds no Haar controller (min cost 4); 2+2 bases reach
   cost 2 at m = 66 (squad r2-c6).
