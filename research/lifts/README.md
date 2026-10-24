@@ -28,6 +28,10 @@ files), `verify/` (checker outputs).
 | `groups.py` | the group specs of a given order that lift.c implements (`--rich`: also aff groups and products of two non-abelian factors) |
 | `summarize.py` | per-cell summary of `runs/*.tsv` |
 | `run_cell.py` | parallel driver for one cell: orders × bases × groups, each job time-limited, results in `runs/TAG.tsv` |
+| `haar_cell.py` | Haar graphs (dipole lifts) with haar_gen3 for one cell: candidates from research/frontier/sizelaw/small_cands.py, RANDSAMPLE screening scored by (p10 + median)/μ(N), annealing of the best |
+| `haar2lift.py` | converts a haar_gen3 solution file to lift.c format (prime fields, meta, cyc) |
+| `verify_haar.sh` | the four checks for a haar_gen3 solution: build_haar2.py, lift check, verify_lift.py, apsp |
+| `exhaust_cell.py` | exhaustive lift search, every assignment, for one cell over small bases and all rich groups |
 | `campaign1.sh`, `campaign2.sh` | the small-cell campaigns of this session (screened rich groups + wide bases; matrix-group Haar sweeps) |
 
 ### lift.c
@@ -36,6 +40,7 @@ files), `verify/` (checker outputs).
 lift search BASE D SECONDS SEED K OUT GROUP...   anneal; writes OUT (solution file) if the cost reaches 0
 lift check  SOL [EDGES]                          exact BFS (integer distances) from every (u,1); optional edge list
 lift sample BASE D M GROUP...                    cost quantiles of M random voltage assignments (screening)
+lift exhaust BASE D OUT GROUP...                 every gauge-fixed assignment; first cost-0 lift to OUT (COUNTALL=1)
 ```
 
 **Groups.** `GROUP := FACTOR [x FACTOR]...`, where FACTOR is one of:
@@ -85,6 +90,12 @@ line per base edge (x white). `lift check`, `verify_lift.py` and `run_cell.py` a
    - the eccentricity of every (u,1), and hence the diameter.
    - `--full` adds a networkx all-pairs diameter (small n). `--no-bfs` skips the eccentricities when k is large.
 3. `./apsp EDGES [threads]`: all-pairs BFS from every vertex on the edge list alone, with no symmetry assumption.
+
+## haar_gen3
+
+`haar_cell.py` and `verify_haar.sh` need a build of the repo's Haar search. Build it into a scratch directory:
+`gcc -O3 -march=native -fopenmp -o SCRATCH/haar_gen3 ../frontier/haar_gen3.c -lm`. Pass it with `--bin`; the repo
+file is not modified.
 
 ## Reproduce the rebuilds
 
