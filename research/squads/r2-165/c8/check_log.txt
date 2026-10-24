@@ -1,0 +1,54 @@
+Card R2-C8 (squad-r2-c8-haiku): bipartite double covers G x K2 of the current general (Delta,4) records, Delta = 10..15.
+Question: is G x K2 a bipartite (Delta,5) graph, and does it beat the bipartite (Delta,5) table value?
+
+Source page: https://web.mat.upc.edu/francesc.comellas/delta-d/desc_g/desc_g4.html (raw HTML fetched with curl;
+the main-record file names were confirmed there). Base files: https://web.mat.upc.edu/francesc.comellas/delta-d/desc_g/adjacencies/adjD4/<file>
+Downloaded copies (untrusted, never executed): /tmp/claude-0/r2c8/dl/
+Cleaned base edge lists and double covers: /tmp/claude-0/r2c8/base_d<Delta>.edges and cover_d<Delta>.edges
+Tools: research/squads/r2-165/c8/parse.py (run with python3 -I), research/theorems/squad165/double_cover.py,
+research/lifts/coordinator_check/apsp.c (apsp EDGES DELTA 5), research/theorems/squad165/bfs_all.c (plain BFS from
+every vertex, used as an independent cross-check of the cover diameters).
+Bipartite (Delta,5) table values are the ones given on the card; they were not checked against a source here.
+
+Base checks (parse.py): simple, symmetric adjacency, connected, non-bipartite, max degree = Delta, vertex count as listed.
+Base diameter (apsp, D = 4 on the base graph): 4 for all six.
+
+Delta  source file                        fmt   base n  base maxdeg  cover n  apsp result line (apsp EDGES DELTA 5)                  bfs_all  table  beats?
+10     deg10_diam4_n2485_adjlist.txt      adj     2485     10          4970   n=4970 edges=24850 ... bipartite=yes diameter=6          max ecc 6  4000   no
+                                                                             RESULT INVALID
+11     deg11_diam4_n3444_adjlist.txt      adj     3444     11          6888   n=6888 edges=37884 ... bipartite=yes diameter=9          max ecc 9  5850   no
+                                                                             RESULT INVALID
+12     graph_d12_D4_n5832.edges           edges   5832     12         11664   n=11664 edges=69984 ... bipartite=yes diameter=5         max ecc 5  8200   yes
+                                                                             RESULT VALID d=12 D=5 n=11664
+13     deg13D4_6646_.edges                edges   6646     13         13292   n=13292 edges=86396 ... bipartite=yes diameter=6          max ecc 6  11480  no
+                                                                             RESULT INVALID
+14     deg14D4_8434_.edges                edges   8434     14         16868   n=16868 edges=117956 ... bipartite=yes diameter=7         max ecc 7  14760  no
+                                                                             RESULT INVALID
+15     deg15_diam4_n11785_adjlist.txt     adj    11785     15         23570   n=23570 edges=176378 ... bipartite=yes diameter=6         max ecc 6  20496  no
+                                                                             RESULT INVALID
+
+Ordered pairs at distance > 5 in the invalid covers (plain BFS histograms):
+  Delta 10: 248500 (all at distance 6)      Delta 11: 7303248 (distance 6: 6494400; 7: 721600; 8: 79704; 9: 7544)
+  Delta 13: 3885604 (all at distance 6)     Delta 14: 1968700 (distance 6: 1968620; 7: 80)
+  Delta 15: 24069764 (all at distance 6)
+Delta 12 histogram: distance 0..5 only; the 11664^2 ordered pairs sum to 136048896 (check passed).
+
+Files (sha256 of each base source download and of each double cover):
+Delta 10  source deg10_diam4_n2485_adjlist.txt  sha256 b86224792efbadf72ebd8d9f503d40e85e6b40174d9596a4aa2daa25a306501d
+Delta 10  cover  cover_d10.edges  sha256 65d92be66ec5f6f41ebd326df1cdce3af14bad39f47bedc46e82e19ba302b64d
+Delta 11  source deg11_diam4_n3444_adjlist.txt  sha256 78df644a0ba3796176a89c33eec861b5dff4b444826a55e88b55e844afffd615
+Delta 11  cover  cover_d11.edges  sha256 4702e701c4cd509511c94d598bd566e59d19904955f383d5de56ea0d552bce59
+Delta 12  source graph_d12_D4_n5832.edges  sha256 2d276a27aa342d3191b1f2001435eff2d94584ff17057e31ab3aac0ac32a142d
+Delta 12  cover  cover_d12.edges  sha256 76c9ef18a3f4618d9ee6d405f0604b5c39ace758ffff54ace7cb5dc3546b08f0
+Delta 13  source deg13D4_6646_.edges  sha256 96f10a2f16af9bd88aed37f256fcfac69101aade4d49f7ddb27a520ab6e85793
+Delta 13  cover  cover_d13.edges  sha256 cbb539cd53b85da4d3d7f554e4df9dc3ff573a5950e4b1656d1ec1f04a0cb49a
+Delta 14  source deg14D4_8434_.edges  sha256 ddd4daae7a661ed870aaa91f37da76f6bb3346821e6c284d47fe3c9a1ac56e60
+Delta 14  cover  cover_d14.edges  sha256 47cfcafa2560da9d50ec94c1c6e50009f27c2d6627212af0e356bf831819ec86
+Delta 15  source deg15_diam4_n11785_adjlist.txt  sha256 256058a2f079e946eb2ac11e044cfbc60e07facfd6885a4a57f6895235d48002
+Delta 15  cover  cover_d15.edges  sha256 36381189e30e0b42876761a3880b9f30672bc7212d87944a7670552201e1d8d0
+
+Commands (sequential, one heavy process at a time):
+  python3 -I research/squads/r2-165/c8/parse.py <source> /tmp/claude-0/r2c8/base_dD.edges --format {adj|edges} --delta D --expect-n N
+  python3 -I research/theorems/squad165/double_cover.py /tmp/claude-0/r2c8/base_dD.edges /tmp/claude-0/r2c8/cover_dD.edges
+  timeout 900 nice -n 10 /tmp/claude-0/r2c8/apsp /tmp/claude-0/r2c8/cover_dD.edges D 5
+  timeout 900 nice -n 10 /tmp/claude-0/r2c8/bfs_all /tmp/claude-0/r2c8/cover_dD.edges

@@ -1,0 +1,35 @@
+Bipartite graph, maximum degree 16, diameter 5, 33,792 vertices (beat-16-5-squad, 2026-10-24).
+Beats 31,460 (PG(4,3) flag graph, arXiv:2608.03965 / 2608.27253) and the 32,768 double cover of the LANL (16,4) graph.
+
+Construction (build_d16D5_n33792.py, self-contained, no repo imports):
+  base K_{3,3} + perfect matching (3+3 vertices, 12 edges); controller = voltage lift by Z_22 (66+66 vertices,
+  4-regular, letters from the base edge); route-chart lift with fibre F_4^4 and the chart in the script
+  (8 singular nonbacktracking patterns, pencil-complete).  Lift vertex ((a_i,g),x) ~ ((b_j,g+v_e), A_c x + lam b_c).
+
+Files:
+  build_d16D5_n33792.py                 rebuilds the edge list from the explicit data
+  d16D5_n33792_k33m_z22.edges.gz        edge list (apsp.c format), md5 of the uncompressed file 491741d82588ee5ebc428448778208ac
+
+Checks (no symmetry assumed):
+  $ python3 build_d16D5_n33792.py out.edges
+  vertices 33792 edges 270336
+  $ apsp out.edges 16 5          (research/lifts/coordinator_check/apsp.c, gcc -O3)
+  n=33792 edges=270336 degree min=16 max=16 bipartite=yes diameter=5
+  RESULT VALID d=16 D=5 n=33792
+  $ bfs_all out.edges            (research/theorems/squad165/bfs_all.c, plain queue BFS from every vertex)
+  n=33792 edges=270336 degree 16..16 bipartite=yes max_ecc=5
+    dist 0: 33792 ordered pairs
+    dist 1: 540672 ordered pairs
+    dist 2: 6859776 ordered pairs
+    dist 3: 83601408 ordered pairs
+    dist 4: 564056064 ordered pairs
+    dist 5: 486807552 ordered pairs
+  (sum = 1,141,899,264 = 33792^2)
+  The same edge set (sorted md5 50ec225f5c9a6dd5881d52be248e099a) came out of the search pipeline
+  (squad165/build_lift_general.py on the annealed controller) and out of the self-contained script.
+
+How it was found: squad165/mlift_chart.c (multi-orbit controller annealer, pattern-aware) on base_k33m.txt with
+Z_22 and the singular-pattern table of the chart relabelled by colour permutation (0,2,1,3) (charts/pat_u8_q02.txt),
+45 s, seed 1; 8 of the 24 colour relabellings reached cost 0.  The chart (charts/chart_u8.txt) was found by squad
+round-2 card 5 (chart_sa.c, research/squads/r2-165/c5/).  Lead that pointed there: with a fake chart in which every
+pattern is nonsingular, the same base and group reach cost 0 at once, so the chart was the bottleneck.
