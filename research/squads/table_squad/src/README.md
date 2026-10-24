@@ -7,7 +7,8 @@ additions; everything else (groups, α choice, cost, checks, solution format) is
   closed under inverses (for k0 = 1) or is a union of blocks O ∪ O⁻¹ of an order-k0 conjugation orbit O.
 - `EXHAUST=1` (with ORBIT): evaluates every S = {e} ∪ (f−1 fixed generators) ∪ (m distinct α-orbits), orbits taken by
   their smallest element. `EXSPLIT=a/b` keeps only combinations whose first orbit index is ≡ a mod b (to run b
-  processes). `EXBOUND=B` (default and maximum 7) abandons a candidate once its cost is ≥ B. Prints every cost-0 S,
+  processes). `EXFIX=i` keeps only the i-th fixed-generator choice (useful when the choices are equivalent, e.g. t and t⁻¹: inverting
+  S swaps the two sides of the Haar graph and preserves the total cost). `EXBOUND=B` (default and maximum 7) abandons a candidate once its cost is ≥ B. Prints every cost-0 S,
   writes the first one (checked by haar_sym's full diameter check, as in RANDORB), and ends with a line
   `EXHAUST ... evaluated=… zero=… min=… counts(0..6,>=7): …`.
 

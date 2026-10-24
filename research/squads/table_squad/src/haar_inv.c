@@ -975,7 +975,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         fprintf(stderr, "EXHAUST: %d orbit representatives, m = %d, %lld fixed-generator choices, ~%.3g S in total, split %d/%d\n", nr, OM, nfixc, tot, ea, eb);
         long long EXB = getenv("EXBOUND") ? atoll(getenv("EXBOUND")) : 7; if (EXB > 7) EXB = 7;
         long long cnt = 0, zero = 0, mincost = NOBOUND, hist[8] = {0}; double t0 = now(), tl = t0; int saved = 0, idx[16];
+        long long EXFIX = getenv("EXFIX") ? atoll(getenv("EXFIX")) : -1;   /* only this fixed-generator choice */
         for (long long fc = 0; fc < nfixc; fc++) {
+            if (EXFIX >= 0 && fc != EXFIX) continue;
             long long r = fc; int bad = 0;
             for (int u = 1; u < OF; u++) { S[u] = FIXG[r % NFIXG]; r /= NFIXG; }
             for (int u = 1; u < OF; u++) for (int w = 1; w < u; w++) if (S[u] == S[w]) bad = 1;
