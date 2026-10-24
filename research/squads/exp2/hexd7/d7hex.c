@@ -25,6 +25,7 @@
          env: BESTK=k best-of-k moves; SKIPFULL=1 skip the internal full check (verify with apsp);
               DROPSEC=s, DROPSTART=t: after t s, whenever the proxy has not fallen 2% in s seconds, drop the worst pair;
               DROP=1: after the search, drop the worst pairs until every freed source is fine
+              OPPFLAGS=1: choose the freed flags (p, M(p)) pairwise opposite (fewer cover conflicts)
               PEXH=p: with probability p (when < 4000 targets remain) try all type-4 candidates for a target
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
@@ -528,7 +529,6 @@ int main(int argc, char **argv) {
         free(dist); free(que); dist = malloc(6 * N + 2 * K + cap); que = malloc(sizeof(int) * (6 * N + 2 * K + cap));
         SHn = calloc(cap, sizeof(int)); SHnb = malloc(sizeof(int *) * cap); for (int s = 0; s < cap; s++) SHnb[s] = malloc(sizeof(int) * 16);
         HXn = calloc(2 * K, sizeof(int)); HX = malloc(sizeof(int *) * 2 * K); for (int h = 0; h < 2 * K; h++) HX[h] = malloc(sizeof(int) * 16);
-        NSH = 1; NSH = 0;
         int base = 6 * N + 2 * K, nb[64];
         int *spare = malloc(sizeof(int) * 2 * K);
         for (int h = 0; h < 2 * K; h++) spare[h] = q + 2 - nbrs(6 * N + h, nb);
@@ -629,6 +629,20 @@ int main(int argc, char **argv) {
             hg_build();
             mind = argc > 9 ? atoi(argv[9]) : 4;
         }
+        if (getenv("OPPFLAGS")) {   /* freed flags pairwise opposite: d(p,p') = d(l,l') = 6, d(p,l') = d(p',l) = 5 */
+            uint8_t **dp_ = malloc(sizeof(uint8_t *) * K), **dl_ = malloc(sizeof(uint8_t *) * K);
+            int placed = 0;
+            for (int tries = 0; tries < 2000000 && placed < K; tries++) {
+                int p = rndi(N), l = PL[p * Q1 + rndi(Q1)], good = 1;
+                for (int i = 0; i < placed && good; i++)
+                    if (dp_[i][p] != 6 || dl_[i][N + l] != 6 || dp_[i][N + l] != 5 || dl_[i][p] != 5) good = 0;
+                if (!good) continue;
+                F[placed] = p; isF[p] = placed + 1; fl[placed] = l;
+                dp_[placed] = malloc(2 * N); hbfs(p, 0, dp_[placed]); dl_[placed] = malloc(2 * N); hbfs(l, 1, dl_[placed]);
+                placed++;
+            }
+            if (placed < K) { fprintf(stderr, "could only place %d opposite flags\n", placed); K = placed; }
+        } else
         for (int j = 0; j < K; j++) {
             int p = -1;
             for (int tries = 0; tries < 100000; tries++) { int c = rndi(N); if (ok[c]) { p = c; break; } }
@@ -684,7 +698,8 @@ int main(int argc, char **argv) {
     fprintf(stderr, "q=%d N=%d K=%d n=%d initial cost %d\n", q, N, K, NV, cost);
     clock_t t0 = clock(); long it = 0, acc = 0;
     int *badlist = malloc(sizeof(int) * NV);
-    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < maxsec) {
+    double bfsec = alg >= 2 ? 0.1 * maxsec : maxsec;   /* after the fast search only a short BFS-based phase */
+    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < bfsec) {
         it++;
         /* pick a freed pair with positive cost, a side, and an uncovered target */
         int j; do { j = rndi(K); } while (per[j] == 0);
