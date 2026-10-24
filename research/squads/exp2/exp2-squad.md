@@ -49,7 +49,30 @@ and dropped), so this job did not run Haar searches at all.
 
 ## What was tried (in order) and what worked
 
-TIMELINE
+Times are UTC on 2026-10-24 (start 16:56).
+
+1. **16:56–17:15, reading.** SIZE_LAW.md, STRUCTURE.md (structured-search branch) and the theory branch say the three
+   cells are above the first-moment ceiling for random-like and orbit-symmetric Haar graphs. The table values factor as
+   3·|H(q)|; the D = 6 notes in research/p4/d6 already had a working H(q) generator (hexgen.c).
+2. **17:15–17:25, the table construction and the first records.** d7hex.c builds X(M); K = 0 reproduces 23,436 with
+   diameter 7 for a random M (the "any M works" lemma). One freed pair with two hubs, M repaired near the pair by a
+   targeted BFS local search (0.4 s): (7,7) **23,438**, then (9,7) **117,650** (31 s), both apsp VALID by 17:25.
+3. **17:28, the algebraic cover** (no search for one pair) → (11,7) **398,582**, apsp VALID at 18:08 (the 400K-vertex
+   apsp needed a priority boost on the shared machine).
+4. **17:35–17:45, several pairs.** Pairwise-opposite freed points leave same-side hubs 8 apart (caught by the full check);
+   fixes: a star layout (K ≤ q+1) and then hub graphs on the hubs' spare degree (PG(2,q−2), then any file). K = 13 at
+   q = 5: **23,462** (apsp VALID).
+5. **17:45–18:00, faster search.** BFS-per-move was far too slow for many pairs (each point sits in several pairs' cover
+   sets). Replaced by an incremental route-count proxy (type-4 and type-2 routes) with targeted swap moves and an exact
+   BFS check when few targets remain.
+6. **17:50, squad round 1** (8 Haiku cards, below).
+7. **18:00–18:30, search improvements.** Type-2 greedy pre-pass (4× faster at q = 5), best-of-k moves, pair dropping
+   (end-of-run and adaptive; the first adaptive version dropped far too eagerly), SKIPFULL (apsp instead of the slow
+   internal check), static coverage through the hub graph (4.5× faster), a super-hub post-processor and exhaustive
+   endgame moves (neither helped).
+8. **18:21, squad round 2** (8 cards).
+9. **Results of the pushes:** (11,7) K = 13 → **398,606** (apsp VALID 18:40); (7,7) K = 24 → **23,484** (apsp VALID 18:48);
+   EXTRA_TIMELINE
 
 ## The squad
 

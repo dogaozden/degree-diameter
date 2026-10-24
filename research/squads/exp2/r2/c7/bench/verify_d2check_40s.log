@@ -1,0 +1,29 @@
+type-2 pre-pass: side A covered 57673 of 75000, side B 56853 of 75000
+pair 0: |S'| = 625, |S| = 625
+pair 23: |S'| = 625, |S| = 625
+algebraic cover installed, conflicts 10530
+verify init: side-A mismatches 0; zeros recount 5464 (A 1832, B 3632), zeros now 5464
+fast search: proxy cost 5464
+verify periodic: side-A mismatches 0; zeros recount 974 (A 353, B 621), zeros now 974
+verify periodic: side-A mismatches 0; zeros recount 674 (A 245, B 429), zeros now 674
+verify periodic: side-A mismatches 0; zeros recount 528 (A 213, B 315), zeros now 528
+verify periodic: side-A mismatches 0; zeros recount 345 (A 138, B 207), zeros now 345
+verify periodic: side-A mismatches 0; zeros recount 202 (A 90, B 112), zeros now 202
+verify periodic: side-A mismatches 0; zeros recount 102 (A 48, B 54), zeros now 102
+verify periodic: side-A mismatches 0; zeros recount 49 (A 21, B 28), zeros now 49
+verify periodic: side-A mismatches 0; zeros recount 22 (A 11, B 11), zeros now 22
+verify periodic: side-A mismatches 0; zeros recount 17 (A 7, B 10), zeros now 17
+fast search done: it 591872 proxy 17 (36.0s)
+verify final: side-A mismatches 0; zeros recount 17 (A 8, B 9), zeros now 17
+q=5 N=3906 K=24 n=23484 initial cost 3
+it 500 acc 10 cost 2  (9.0s)
+it 1000 acc 11 cost 2  (17.6s)
+it 1500 acc 18 cost 1  (26.0s)
+it 2000 acc 18 cost 1  (34.9s)
+
+real	5m0.028s
+user	1m12.745s
+sys	0m0.238s
+done
+
+[exited with code 0]

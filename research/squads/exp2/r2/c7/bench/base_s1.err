@@ -1,0 +1,18 @@
+type-2 pre-pass: side A covered 57673 of 75000, side B 56853 of 75000
+pair 0: |S'| = 625, |S| = 625
+pair 23: |S'| = 625, |S| = 625
+algebraic cover installed, conflicts 10530
+fast search: proxy cost 7207
+it 1048576 proxy 1096 best 1033 (34s)
+it 2097152 proxy 910 best 853 (67s)
+it 3145728 proxy 672 best 612 (100s)
+it 4194304 proxy 623 best 567 (133s)
+it 5242880 proxy 414 best 410 (168s)
+it 6291456 proxy 268 best 254 (201s)
+it 7340032 proxy 139 best 120 (234s)
+it 8388608 proxy 46 best 41 (263s)
+it 9437184 proxy 14 best 13 (292s)
+true cost 0 at proxy 7
+fast search done: it 10076160 proxy 7 (316.6s)
+q=5 N=3906 K=24 n=23484 initial cost 0
+search done: it 0 cost 0 (0.0s)
