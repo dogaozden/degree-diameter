@@ -190,7 +190,32 @@ Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/f
 In every affine case the walk sums are signed sums of powers of one field element. The evidence is the eight cells
 above; exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.4).
 
-### 3.2 In the small cells, success is decided by the far lower tail, so search all groups
+### 3.2 Which (p, k, r) solve: the multiplier group must be large
+
+In Z_p ⋊_r Z_k the multipliers form the subgroup ⟨r⟩ of F_p^*. Let c = (p−1)/ord(r) be its index. Over all
+1,639 groups scanned at Δ = 3, D = 7–10 (`runs/frob_d3_solving_table.txt`):
+
+| index c | groups | solving | rate |
+|---|---|---|---|
+| 1 | 344 | 8 | 2.3 % |
+| 2 | 262 | 9 | 3.4 % |
+| 3–6 | 367 | 4 | 1.1 % |
+| > 6 | 666 | **0** | 0 % |
+
+- If index did not matter, the chance of 0 solutions out of 666 at the overall rate would be about 4·10⁻⁷.
+- The action may be non-faithful: k > ord(r), giving a central cyclic factor. 7 of the 21 solving groups are like
+  that.
+- The structured Δ = 4 records obey the same rule:
+  - Loz's (4,9), c = 2;
+  - Loz's (4,8), c = 2 on Z7 and 6 on Z13;
+  - our (4,10) Z97 ⋊ Z64, c = 3; Z157 ⋊ Z39, c = 4.
+- The random-like Δ = 5 records need not: Z3277 ⋊ Z14 at (5,10) has c = 16 on its Z113 factor.
+
+**Conjecture (strong evidence for Δ = 3):** a Haar graph of Z_p ⋊ Z_k at a record-sized order needs a multiplier
+group of index at most about 6. Together with §3.3, this is the answer to "which (m, k, r) solve" for the small
+cells: a large multiplier group, then the far lower tail decides.
+
+### 3.3 In the small cells, success is decided by the far lower tail, so search all groups
 
 `structure_factor.py` → `runs/structure_factor.txt` measures the uncovered count of random S in the record groups
 and in control groups of the same order that have no solution.
