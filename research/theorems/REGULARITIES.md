@@ -21,9 +21,9 @@ checked.
    The metacyclic records (45 solutions) show no formula for (m, k, r, S) either. What *is* regular is the size:
    the size law of SIZE_LAW.md. Unrelated groups solved the same cell within 3–4 % of each other (§2.2).
 4. **The table itself has three exact regularities.** Its green D = 5 and D = 7 values are (2j+1)·|polygon|, which
-   the polygon-cover theorem explains (proved, and true for any bipartite base of even diameter). Its green D = 8 values are
-   5·⌊(q+5)/2⌋·|GH(q)| in five cells and 15·|GH(11)| in a sixth. Nobody has published that construction; it is the
-   main open lead (§2.1).
+   the polygon-cover theorem explains (proved, and true for any bipartite base of even diameter). Its six green D = 8
+   values are all (2j+1)·(⌊(q−1)/2⌋ + 3(j−1))·|GH(q)| with Δ = q+1+j. Nobody has published that construction; it is
+   the main open lead (§2.1).
 5. **Two simple general bounds,** both proved and checked against every cell: covers with two extra steps
    (D = n+2, ten copies with two matchings) and the doubling n_b(Δ, D) ≥ 2·n(Δ−1, D−1) from the general table. Neither
    beats the table, except that the doubling of Mizuno's (12,4) graph (5,832 vertices, general table) would give
@@ -148,11 +148,11 @@ of odd length ≤ 7 per base target, i.e. 274/m per target copy. With no symmetr
 so the expected number of misses is ≈ 39,216 · 19,608 · m · e^{−274/m}. That is about 20 only at m ≈ 13 (the lifts
 job's estimate of 12). Even with an automorphism group acting freely with a handful of orbits, the same count stops near
 m ≈ 25. The table has m = 30, so the construction is genuinely structured. Its vertex count can be rewritten as
-5·(#flags + 2·#elements of GH(q)) for odd q. A numerical hint: the factor m/5 is (q+1)/2 + 2 for odd q
-and q/2 + 2 for q = 8, and those are |image of a quadratic map x ↦ x² + bx on GF(q)| + 2 (squares for odd q,
-trace-0 elements for even q). That suggests copies indexed by the values of a quadratic form plus two extra
-classes, rather than a group of order m. The one Δ = q+2 value, 15 = 3·5 at q = 11, does not fit the same rule;
-5 = (q−1)/2 there. A structured construction, if found, is the
+5·(#flags + 2·#elements of GH(q)) for odd q. **A formula that fits all six cells** (`d8_formula_out.txt`): m = (2j+1)·(⌊(q−1)/2⌋ + 3(j−1)), i.e.
+3·(q−1)/2 for j = 1 and 5·((q−1)/2 + 3) for j = 2 (q = 8: 5·(3+3)). For odd q, (q−1)/2 is the order of the
+group of nonzero squares of GF(q). So a plausible shape is a lift by Z_{2j+1} × (the squares, or GF(q)*/±1)
+with GH-voltages from a multiplicative coordinate, plus 3(j−1) extra sheets per Z_{2j+1}-copy. That is a guess from the numbers only;
+nothing was built. A structured construction, if found, is the
 natural route to the cells (10,8), (12,8), (14,8), (16,8), which random-like Haar search cannot reach (SIZE_LAW §3.3,
 STRUCTURE.md §6). Not found in this session. Web searches for the source (Delorme–Gómez–Quisquater, the numbers
 themselves) found nothing.
@@ -215,4 +215,5 @@ D = 8 with Δ = 10, 12, 14, 16 (0.10–0.11, the unexplained GH family). The new
 | flags.py, flags_affine.py, cflags.py, bflags.py, buildings.py, walkcount.c | graphs/, runs/*check*, buildings_out.txt | building flag graphs |
 | coset.py | runs/coset_cubic.txt | coset graphs with cyclic stabilisers |
 | nq_stats.py | nq_stats_out.txt | is n tied to q? |
+| d8_formula.py | d8_formula_out.txt | the D = 8 formula on six cells |
 | cells.py, walkhist.py | cells_out.txt, runs/walkhist_C23.txt | per-cell Moore ratios; walk multiplicities in C(2,3) |
