@@ -1,4 +1,4 @@
-/* d7hex.c (copied unchanged from research/squads/exp2/hexd7/ on master, exp2-squad): bipartite (q+2, 7) graphs from the generalized hexagon H(q), exp2-squad, 2026-10-24.
+/* d7hex.c (copy of research/squads/exp2/hexd7/d7hex.c on master, exp2-squad): bipartite (q+2, 7) graphs from the generalized hexagon H(q), exp2-squad, 2026-10-24.
 
    Base construction (reproduces the table value 3|H(q)| = 6(q^6-1)/(q-1) at Delta = q+2, D = 7):
      vertices (v, i), v a point or line of H(q), i in Z3;
@@ -22,11 +22,16 @@
          alg=1 installs the algebraic cover for every pair, then targeted local search, then the full check
          alg=2 additionally runs the fast proxy search (incremental route counts) before the BFS-based search
          alg=3 also runs a type-2 greedy pre-pass before the algebraic covers
+         alg=4 joint algebraic cover: M maps each point to a line with the same membership vector (bits k: point in
+               S'(p_k), line in S(l_k)), leftovers paired by popcount; then the fast proxy search (use with OPPFLAGS)
          env: BESTK=k best-of-k moves; SKIPFULL=1 skip the internal full check (verify with apsp);
               DROPSEC=s, DROPSTART=t: after t s, whenever the proxy has not fallen 2% in s seconds, drop the worst pair;
               DROP=1: after the search, drop the worst pairs until every freed source is fine
               OPPFLAGS=1: choose the freed flags (p, M(p)) pairwise opposite (fewer cover conflicts)
+              GREEDYFLAGS=c: with OPPFLAGS, each new flag is the best of c candidates for the vector mismatch (alg 4)
               PEXH=p: with probability p (when < 4000 targets remain) try all type-4 candidates for a target
+              GROW=Kmax: once solved, add freed pairs one at a time (best of NCAND flags by uncovered targets, opposite
+                to all if OPPGROW=1), hub edges HGDEG each, repair for STEPSEC s; keep if solved, else revert (MAXFAIL)
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
      d7hex super  HEXBIN SOL out.txt seed tries     add super-hubs (new vertices on hubs with spare degree whose freed
@@ -56,6 +61,34 @@ static int NSH = 0, *SHn, **SHnb, *HXn, **HX;
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 static inline int rndi(int n) { return (int)(rnd() % (uint64_t)n); }
+
+/* membership vectors for the joint algebraic cover (alg 4, GREEDYFLAGS): bit k of a point u is set when u is in
+   S'(p_k) (distance 4 from p_k, not via l_k); bit k of a line L when L is in S(l_k) (distance 4 from l_k, not via p_k).
+   A bijection M that maps every point to a line with the same vector installs all K algebraic covers at once. */
+typedef struct { uint64_t a, b; } v128;
+static inline void vset(v128 *v, int k) { if (k < 64) v->a |= 1ULL << k; else v->b |= 1ULL << (k - 64); }
+static inline int vcmp(const v128 *u, const v128 *v) { if (u->b != v->b) return u->b < v->b ? -1 : 1; if (u->a != v->a) return u->a < v->a ? -1 : 1; return 0; }
+static int cmpv(const void *x, const void *y) { return vcmp((const v128 *)x, (const v128 *)y); }
+static long mismatch(const v128 *P, const v128 *L, int n, v128 *tp, v128 *tl) {   /* sum over vectors of |#points - #lines| */
+    memcpy(tp, P, sizeof(v128) * n); memcpy(tl, L, sizeof(v128) * n);
+    qsort(tp, n, sizeof(v128), cmpv); qsort(tl, n, sizeof(v128), cmpv);
+    long mm = 0; int i = 0, j = 0;
+    while (i < n || j < n) {
+        int c = (i >= n) ? 1 : (j >= n) ? -1 : vcmp(&tp[i], &tl[j]);
+        if (c == 0) { v128 v = tp[i]; long a = 0, b = 0; while (i < n && !vcmp(&tp[i], &v)) { i++; a++; } while (j < n && !vcmp(&tl[j], &v)) { j++; b++; } mm += labs(a - b); }
+        else if (c < 0) { v128 v = tp[i]; while (i < n && !vcmp(&tp[i], &v)) { i++; mm++; } }
+        else { v128 v = tl[j]; while (j < n && !vcmp(&tl[j], &v)) { j++; mm++; } }
+    }
+    return mm;
+}
+typedef struct { v128 v; int id; int pc; uint32_t r; } vitem;
+static int cmpitem(const void *x, const void *y) {
+    const vitem *u = x, *w = y; int c = vcmp(&u->v, &w->v); if (c) return c;
+    return u->r < w->r ? -1 : u->r > w->r ? 1 : 0;
+}
+static int cmpitem_pc(const void *x, const void *y) {
+    const vitem *u = x, *w = y; if (u->pc != w->pc) return u->pc - w->pc; return cmpitem(x, y);
+}
 
 /* vertex ids: point (p,i) = i*2N + p; line (l,i) = i*2N + N + l; hub z_j = 6N + j; hub z'_j = 6N + K + j */
 static inline int VP(int p, int i) { return i * 2 * N + p; }
@@ -322,7 +355,8 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
-static int BESTK = 1;
+static int BESTK = 1, nodrop = 0;
+static double repairsec = 30;
 static uint8_t *activeP;   /* adaptive dropping: inactive pairs no longer count and their extra edges are back */
 static long pair_zeros(int k) {
     long z = 0;
@@ -361,8 +395,19 @@ static void hubgraph_static(int k_src, int s) {   /* add (s=+1) or remove (s=-1)
     }
     free(buf);
 }
+static int fsK = -1;
+static void fs_free(void) {   /* release the proxy structures of the previous fast_search call */
+    if (fsK < 0) return;
+    for (int k = 0; k < fsK; k++) { free(cA[k]); free(cB[k]); free(oppA[k]); free(oppB[k]); free(n4p[k]); free(n2p[k]); free(n4l[k]); free(n2l[k]); }
+    free(cA); free(cB); free(oppA); free(oppB); free(noppA); free(noppB); free(n4p); free(n2p); free(n4l); free(n2l);
+    free(nn4p); free(nn2p); free(nn4l); free(nn2l);
+    for (int v = 0; v < N; v++) { free(memP[v]); free(memL[v]); }
+    free(memP); free(memL); free(nmemP); free(nmemL); free(activeP);
+    fsK = -1;
+}
 static long fast_search(double maxsec) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
+    fs_free(); fsK = K;
     activeP = malloc(K + 1); memset(activeP, 1, K + 1);
     cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
     oppA = malloc(sizeof(int *) * K); oppB = malloc(sizeof(int *) * K); noppA = calloc(K, sizeof(int)); noppB = calloc(K, sizeof(int));
@@ -399,7 +444,7 @@ static long fast_search(double maxsec) {
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
-    double dropsec = getenv("DROPSEC") ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
+    double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
     long impref = zeros;
     double dropstart = getenv("DROPSTART") ? atof(getenv("DROPSTART")) : 0;   /* no dropping before this many seconds */
     while (zeros > 0) {
@@ -424,7 +469,7 @@ static long fast_search(double maxsec) {
                     for (int a = 0; a < noppA[kk]; a++) if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     for (int a = 0; a < noppB[kk]; a++) if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
-                if (zeros < lastchk) {   /* exact BFS check of all freed sources */
+                if (zeros < lastchk && (zeros < 64 || zeros * 5 < lastchk * 4)) {   /* exact BFS check of all freed sources (only after real progress) */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
@@ -485,6 +530,141 @@ static long fast_search(double maxsec) {
     return zeros;
 }
 
+
+/* BFS-based targeted local search on the freed sources (exact costs); returns the final cost */
+static int bfs_phase(double bfsec, int *per, int *per2, int *badlist, int cost) {
+    clock_t t0 = clock(); long it = 0, acc = 0;
+    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < bfsec) {
+        it++;
+        /* pick a freed pair with positive cost, a side, and an uncovered target */
+        int j; do { j = rndi(K); } while (per[j] == 0);
+        int p = F[j], lp = M[p];
+        int side = rndi(2);
+        int src = side == 0 ? VP(p, 0) : VL(lp, 0);
+        int nbad = bfs(src, 7, NULL);
+        if (nbad == 0) { side ^= 1; src = side == 0 ? VP(p, 0) : VL(lp, 0); nbad = bfs(src, 7, NULL); }
+        if (nbad == 0) continue;
+        int nb2 = 0; for (int v = 0; v < NV; v++) if (dist[v] > 7) badlist[nb2++] = v;
+        int t = badlist[rndi(nb2)];
+        if (t >= 6 * N) continue;
+        int ti = t / (2 * N), tr = t % (2 * N);
+        int u = -1, w = -1, newl = -1;   /* move: M[u] := newl, previous owner w of newl gets old M[u] */
+        if (side == 0) {
+            if (tr >= N) continue;                       /* expect a point target */
+            int x = tr; (void)ti;
+            int kind = rndi(4);
+            if (kind < 3) {  /* (a=4): u at distance 4 from p, newl through x at distance 5 from p */
+                int cand[64], nc = 0;
+                for (int k = 0; k < Q1; k++) { int l = PL[x * Q1 + k]; if (hdp[j][N + l] == 5) cand[nc++] = l; }
+                if (!nc) continue; newl = cand[rndi(nc)];
+                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdp[j][c] == 4) { u = c; break; } }
+            } else {         /* (a=2): u at distance 2 from p, newl within distance 3 of x */
+                int l1 = PL[x * Q1 + rndi(Q1)]; int y = LP[l1 * Q1 + rndi(Q1)]; newl = PL[y * Q1 + rndi(Q1)];
+                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdp[j][c] == 2) { u = c; break; } }
+            }
+        } else {
+            if (tr < N) continue;                        /* expect a line target */
+            int lt = tr - N;
+            int kind = rndi(4);
+            int y = -1, l2 = -1;
+            if (kind < 3) {  /* line l2 at distance 4 from lp gets preimage y on lt, y at distance 5 from lp */
+                int cand[64], nc = 0;
+                for (int k = 0; k < Q1; k++) { int c = LP[lt * Q1 + k]; if (hdl[j][c] == 5) cand[nc++] = c; }
+                if (!nc) continue; y = cand[rndi(nc)];
+                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 4) { l2 = c; break; } }
+            } else {         /* line l2 at distance 2 from lp gets a preimage within distance 3 of lt */
+                int y1 = LP[lt * Q1 + rndi(Q1)]; int l1 = PL[y1 * Q1 + rndi(Q1)]; y = LP[l1 * Q1 + rndi(Q1)];
+                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 2) { l2 = c; break; } }
+            }
+            if (l2 < 0) continue;
+            u = y; newl = l2;
+        }
+        if (u < 0 || newl < 0) continue;
+        w = Minv[newl];
+        if (w == u || isF[u] || isF[w]) continue;
+        /* apply */
+        int oldl = M[u];
+        M[u] = newl; Minv[newl] = u; M[w] = oldl; Minv[oldl] = w;
+        /* evaluate the targeted pair first; reject cheaply if it got worse, otherwise re-evaluate all pairs */
+        int a0, b0, cj = cost_of(j, &a0, &b0), c2 = -1;
+        if (cj <= per[j]) c2 = total_cost(per2);
+        if (c2 >= 0 && c2 <= cost) { cost = c2; memcpy(per, per2, sizeof(int) * K); acc++; }
+        else { M[u] = oldl; Minv[oldl] = u; M[w] = newl; Minv[newl] = w; }
+        if (it % 500 == 0) fprintf(stderr, "it %ld acc %ld cost %d  (%.1fs)\n", it, acc, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    }
+    fprintf(stderr, "search done: it %ld cost %d (%.1fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    return cost;
+}
+
+
+/* ---------- growth mode (GROW=Kmax): add freed pairs one at a time to a solved configuration ---------- */
+/* opposite targets of a candidate pair (p, l) left uncovered by the type-4 / type-2 routes of the current M */
+static long cand_uncovered(int p, int l, uint8_t *dp, uint8_t *dl, uint8_t *mark, int *buf) {
+    hbfs(p, 0, dp); hbfs(l, 1, dl);
+    memset(mark, 0, 2 * N);
+    for (int u = 0; u < N; u++) {
+        if (isF[u] || u == p) continue;
+        int L = M[u];
+        if (dp[u] == 4 && dp[N + L] == 5) for (int a = 0; a < Q1; a++) { int x = LP[L * Q1 + a]; if (dp[x] == 6) mark[x] = 1; }
+        else if (dp[u] == 2) { int np = ball3_points_of_line(L, buf); for (int a = 0; a < np; a++) if (dp[buf[a]] == 6) mark[buf[a]] = 1; }
+    }
+    for (int L = 0; L < N; L++) {
+        int y = Minv[L]; if (isF[y] || L == l) continue;
+        if (dl[N + L] == 4 && dl[y] == 5) for (int a = 0; a < Q1; a++) { int t = PL[y * Q1 + a]; if (dl[N + t] == 6) mark[N + t] = 1; }
+        else if (dl[N + L] == 2) { int nl = ball3_lines_of_point(y, buf); for (int a = 0; a < nl; a++) if (dl[N + buf[a]] == 6) mark[N + buf[a]] = 1; }
+    }
+    long unc = 0;
+    for (int x = 0; x < N; x++) { if (dp[x] == 6 && !mark[x]) unc++; if (dl[N + x] == 6 && !mark[N + x]) unc++; }
+    return unc;
+}
+static int HGcap = 0;
+static void hg_rebuild_cap(int cap) {   /* adjacency of the hub graph for hubs 0..cap-1 (edge list HGj/HGk) */
+    if (HGcap < cap) {
+        HGL = realloc(HGL, sizeof(int *) * cap); HGP = realloc(HGP, sizeof(int *) * cap);
+        HGLn = realloc(HGLn, sizeof(int) * cap); HGPn = realloc(HGPn, sizeof(int) * cap);
+        for (int j = HGcap; j < cap; j++) { HGL[j] = malloc(sizeof(int) * 16); HGP[j] = malloc(sizeof(int) * 16); }
+        HGcap = cap;
+    }
+    for (int j = 0; j < HGcap; j++) HGLn[j] = HGPn[j] = 0;
+    for (int e = 0; e < HGm; e++) { HGL[HGj[e]][HGLn[HGj[e]]++] = HGk[e]; HGP[HGk[e]][HGPn[HGk[e]]++] = HGj[e]; }
+}
+static int hg_has(int j, int k) { for (int t = 0; t < HGLn[j]; t++) if (HGL[j][t] == k) return 1; return 0; }
+/* same-side hubs must be within 6: hub-graph distance <= 4, or freed points (lines) within hexagon distance 4.
+   Returns the number of same-side pairs involving hub k that violate this. side 0: line-side hubs z, 1: point-side z'. */
+static int hub_violations(int k, int side) {
+    int n2 = 2 * K, *d = malloc(sizeof(int) * n2), *qq = malloc(sizeof(int) * n2), h = 0, t = 0, bad = 0;
+    for (int v = 0; v < n2; v++) d[v] = -1;
+    int s = side == 0 ? k : K + k; d[s] = 0; qq[t++] = s;   /* ids: line-side hub j = j, point-side hub j = K + j */
+    while (h < t) { int v = qq[h++]; if (d[v] >= 4) continue;
+        if (v < K) { for (int a = 0; a < HGLn[v]; a++) { int w = K + HGL[v][a]; if (d[w] < 0) { d[w] = d[v] + 1; qq[t++] = w; } } }
+        else { int j = v - K; for (int a = 0; a < HGPn[j]; a++) { int w = HGP[j][a]; if (d[w] < 0) { d[w] = d[v] + 1; qq[t++] = w; } } } }
+    for (int j = 0; j < K; j++) {
+        if (j == k) continue;
+        int dv = side == 0 ? d[j] : d[K + j];
+        if (dv >= 0 && dv <= 4) continue;
+        int hex = side == 0 ? hdp[k][F[j]] : hdl[k][N + M[F[j]]];
+        if (hex <= 4) continue;
+        bad++;
+    }
+    free(d); free(qq); return bad;
+}
+/* add hub-graph edges for the new pair k: z_k to point-side hubs, z'_k to line-side hubs (spare degree q-1) */
+static void hg_add_new(int k, int deg) {
+    int maxdeg = q - 1;
+    for (int side = 0; side < 2; side++) {
+        int added = 0;
+        for (int att = 0; att < 200 && added < deg && k > 0; att++) {
+            int bj = -1, bd = 99;
+            for (int s = 0; s < 6; s++) { int j = rndi(k); int dj = side == 0 ? HGPn[j] : HGLn[j];
+                if (dj >= maxdeg) continue; if (side == 0 ? hg_has(k, j) : hg_has(j, k)) continue;
+                if (dj < bd) { bd = dj; bj = j; } }
+            if (bj < 0) continue;
+            if (side == 0) { HGj[HGm] = k; HGk[HGm] = bj; } else { HGj[HGm] = bj; HGk[HGm] = k; }
+            HGm++; added++;
+            hg_rebuild_cap(HGcap);
+        }
+    }
+}
 
 /* drop freed pair j: restore its extra edges, delete its two hubs, re-index (the last pair takes index j) */
 static void drop_pair(int j) {
@@ -630,15 +810,36 @@ int main(int argc, char **argv) {
             mind = argc > 9 ? atoi(argv[9]) : 4;
         }
         if (getenv("OPPFLAGS")) {   /* freed flags pairwise opposite: d(p,p') = d(l,l') = 6, d(p,l') = d(p',l) = 5 */
+            /* GREEDYFLAGS=c: each new flag is the best of c opposite candidates for the membership-vector mismatch */
+            int gc = getenv("GREEDYFLAGS") ? atoi(getenv("GREEDYFLAGS")) : 1; if (gc < 1) gc = 1;
             uint8_t **dp_ = malloc(sizeof(uint8_t *) * K), **dl_ = malloc(sizeof(uint8_t *) * K);
-            int placed = 0;
-            for (int tries = 0; tries < 2000000 && placed < K; tries++) {
-                int p = rndi(N), l = PL[p * Q1 + rndi(Q1)], good = 1;
-                for (int i = 0; i < placed && good; i++)
-                    if (dp_[i][p] != 6 || dl_[i][N + l] != 6 || dp_[i][N + l] != 5 || dl_[i][p] != 5) good = 0;
-                if (!good) continue;
-                F[placed] = p; isF[p] = placed + 1; fl[placed] = l;
-                dp_[placed] = malloc(2 * N); hbfs(p, 0, dp_[placed]); dl_[placed] = malloc(2 * N); hbfs(l, 1, dl_[placed]);
+            v128 *mP = calloc(N, sizeof(v128)), *mL = calloc(N, sizeof(v128)), *cP = malloc(sizeof(v128) * N), *cL = malloc(sizeof(v128) * N);
+            v128 *tp = malloc(sizeof(v128) * N), *tl = malloc(sizeof(v128) * N);
+            uint8_t *cdp = malloc(2 * N), *cdl = malloc(2 * N), *bdp = malloc(2 * N), *bdl = malloc(2 * N);
+            int placed = 0; long tries = 0;
+            while (placed < K && tries < 400000000L) {
+                long bestmm = -1; int bp = -1, bl = -1, found = 0;
+                while (found < gc && tries < 400000000L) {
+                    tries++;
+                    int p = rndi(N), l = PL[p * Q1 + rndi(Q1)], good = 1;
+                    for (int i = 0; i < placed && good; i++)
+                        if (dp_[i][p] != 6 || dl_[i][N + l] != 6 || dp_[i][N + l] != 5 || dl_[i][p] != 5) good = 0;
+                    if (!good) continue;
+                    found++;
+                    hbfs(p, 0, cdp); hbfs(l, 1, cdl);
+                    long mm = 0;
+                    if (gc > 1) {
+                        memcpy(cP, mP, sizeof(v128) * N); memcpy(cL, mL, sizeof(v128) * N);
+                        for (int u = 0; u < N; u++) { if (cdp[u] == 4 && cdl[u] == 5) vset(&cP[u], placed); if (cdl[N + u] == 4 && cdp[N + u] == 5) vset(&cL[u], placed); }
+                        mm = mismatch(cP, cL, N, tp, tl);
+                    }
+                    if (bestmm < 0 || mm < bestmm) { bestmm = mm; bp = p; bl = l; uint8_t *t = cdp; cdp = bdp; bdp = t; t = cdl; cdl = bdl; bdl = t; }
+                }
+                if (bp < 0) break;
+                F[placed] = bp; isF[bp] = placed + 1; fl[placed] = bl;
+                dp_[placed] = malloc(2 * N); memcpy(dp_[placed], bdp, 2 * N); dl_[placed] = malloc(2 * N); memcpy(dl_[placed], bdl, 2 * N);
+                for (int u = 0; u < N; u++) { if (bdp[u] == 4 && bdl[u] == 5) vset(&mP[u], placed); if (bdl[N + u] == 4 && bdp[N + u] == 5) vset(&mL[u], placed); }
+                if (gc > 1) fprintf(stderr, "flag %d: (%d,%d) mismatch %ld (tries %ld)\n", placed, bp, bl, bestmm, tries);
                 placed++;
             }
             if (placed < K) { fprintf(stderr, "could only place %d opposite flags\n", placed); K = placed; }
@@ -656,7 +857,42 @@ int main(int argc, char **argv) {
     alloc_graph();
     hdp = malloc(sizeof(uint8_t *) * K); hdl = malloc(sizeof(uint8_t *) * K);
     for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(M[F[j]], 1, hdl[j]); }
-    if (alg) {
+    if (alg == 4 && K > 128) { fprintf(stderr, "alg 4 supports K <= 128\n"); return 1; }
+    if (alg == 4) {   /* joint algebraic cover: M maps each point to a line with the same membership vector */
+        vitem *ip = malloc(sizeof(vitem) * N), *il = malloc(sizeof(vitem) * N); int np = 0, nl = 0;
+        uint8_t *usedL = calloc(N, 1); for (int j = 0; j < K; j++) usedL[M[F[j]]] = 1;
+        for (int u = 0; u < N; u++) if (!isF[u]) { ip[np].v.a = ip[np].v.b = 0; ip[np].id = u; ip[np].r = (uint32_t)rnd(); np++; }
+        for (int L = 0; L < N; L++) if (!usedL[L]) { il[nl].v.a = il[nl].v.b = 0; il[nl].id = L; il[nl].r = (uint32_t)rnd(); nl++; }
+        for (int k = 0; k < K; k++) {
+            for (int a = 0; a < np; a++) { int u = ip[a].id; if (hdp[k][u] == 4 && hdl[k][u] == 5) vset(&ip[a].v, k); }
+            for (int a = 0; a < nl; a++) { int L = il[a].id; if (hdl[k][N + L] == 4 && hdp[k][N + L] == 5) vset(&il[a].v, k); }
+        }
+        for (int a = 0; a < np; a++) ip[a].pc = __builtin_popcountll(ip[a].v.a) + __builtin_popcountll(ip[a].v.b);
+        for (int a = 0; a < nl; a++) il[a].pc = __builtin_popcountll(il[a].v.a) + __builtin_popcountll(il[a].v.b);
+        qsort(ip, np, sizeof(vitem), cmpitem); qsort(il, nl, sizeof(vitem), cmpitem);
+        vitem *lp = malloc(sizeof(vitem) * N), *ll = malloc(sizeof(vitem) * N); int nlp = 0, nll = 0, matched = 0;
+        int i = 0, j = 0;
+        while (i < np || j < nl) {
+            int c = (i >= np) ? 1 : (j >= nl) ? -1 : vcmp(&ip[i].v, &il[j].v);
+            if (c == 0) {
+                v128 v = ip[i].v; int i2 = i, j2 = j;
+                while (i2 < np && !vcmp(&ip[i2].v, &v)) i2++;
+                while (j2 < nl && !vcmp(&il[j2].v, &v)) j2++;
+                int m = (i2 - i < j2 - j) ? i2 - i : j2 - j;
+                for (int t = 0; t < m; t++) { M[ip[i + t].id] = il[j + t].id; matched++; }
+                for (int t = m; t < i2 - i; t++) lp[nlp++] = ip[i + t];
+                for (int t = m; t < j2 - j; t++) ll[nll++] = il[j + t];
+                i = i2; j = j2;
+            } else if (c < 0) lp[nlp++] = ip[i++];
+            else ll[nll++] = il[j++];
+        }
+        qsort(lp, nlp, sizeof(vitem), cmpitem_pc); qsort(ll, nll, sizeof(vitem), cmpitem_pc);
+        for (int t = 0; t < nlp; t++) M[lp[t].id] = ll[t].id;
+        for (int p = 0; p < N; p++) Minv[M[p]] = p;
+        fprintf(stderr, "joint algebraic cover: %d points matched by vector, %d leftovers\n", matched, nlp);
+        free(ip); free(il); free(lp); free(ll); free(usedL);
+    }
+    if (alg && alg != 4) {
         uint8_t *lockp = calloc(N, 1), *lockl = calloc(N, 1);
         for (int j = 0; j < K; j++) { lockp[F[j]] = 1; lockl[M[F[j]]] = 1; }
         if (alg >= 3) type2_prepass(lockp, lockl);
@@ -696,68 +932,73 @@ int main(int argc, char **argv) {
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
     fprintf(stderr, "q=%d N=%d K=%d n=%d initial cost %d\n", q, N, K, NV, cost);
-    clock_t t0 = clock(); long it = 0, acc = 0;
     int *badlist = malloc(sizeof(int) * NV);
     double bfsec = alg >= 2 ? 0.1 * maxsec : maxsec;   /* after the fast search only a short BFS-based phase */
-    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < bfsec) {
-        it++;
-        /* pick a freed pair with positive cost, a side, and an uncovered target */
-        int j; do { j = rndi(K); } while (per[j] == 0);
-        int p = F[j], lp = M[p];
-        int side = rndi(2);
-        int src = side == 0 ? VP(p, 0) : VL(lp, 0);
-        int nbad = bfs(src, 7, NULL);
-        if (nbad == 0) { side ^= 1; src = side == 0 ? VP(p, 0) : VL(lp, 0); nbad = bfs(src, 7, NULL); }
-        if (nbad == 0) continue;
-        int nb2 = 0; for (int v = 0; v < NV; v++) if (dist[v] > 7) badlist[nb2++] = v;
-        int t = badlist[rndi(nb2)];
-        if (t >= 6 * N) continue;
-        int ti = t / (2 * N), tr = t % (2 * N);
-        int u = -1, w = -1, newl = -1;   /* move: M[u] := newl, previous owner w of newl gets old M[u] */
-        if (side == 0) {
-            if (tr >= N) continue;                       /* expect a point target */
-            int x = tr; (void)ti;
-            int kind = rndi(4);
-            if (kind < 3) {  /* (a=4): u at distance 4 from p, newl through x at distance 5 from p */
-                int cand[64], nc = 0;
-                for (int k = 0; k < Q1; k++) { int l = PL[x * Q1 + k]; if (hdp[j][N + l] == 5) cand[nc++] = l; }
-                if (!nc) continue; newl = cand[rndi(nc)];
-                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdp[j][c] == 4) { u = c; break; } }
-            } else {         /* (a=2): u at distance 2 from p, newl within distance 3 of x */
-                int l1 = PL[x * Q1 + rndi(Q1)]; int y = LP[l1 * Q1 + rndi(Q1)]; newl = PL[y * Q1 + rndi(Q1)];
-                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdp[j][c] == 2) { u = c; break; } }
+    cost = bfs_phase(bfsec, per, per2, badlist, cost);
+    if (cost == 0 && getenv("GROW")) {   /* growth: add one freed pair at a time, repair with the fast search, keep it if solved */
+        int KMAX = atoi(getenv("GROW")); double stepsec = getenv("STEPSEC") ? atof(getenv("STEPSEC")) : 120;
+        int ncand = getenv("NCAND") ? atoi(getenv("NCAND")) : 48, hgdeg = getenv("HGDEG") ? atoi(getenv("HGDEG")) : q - 1;
+        int oppgrow = getenv("OPPGROW") ? atoi(getenv("OPPGROW")) : 1, maxfail = getenv("MAXFAIL") ? atoi(getenv("MAXFAIL")) : 6;
+        F = realloc(F, sizeof(int) * (KMAX + 1)); fl = realloc(fl, sizeof(int) * (KMAX + 1));
+        hdp = realloc(hdp, sizeof(uint8_t *) * (KMAX + 1)); hdl = realloc(hdl, sizeof(uint8_t *) * (KMAX + 1));
+        per = realloc(per, sizeof(int) * (KMAX + 1)); per2 = realloc(per2, sizeof(int) * (KMAX + 1));
+        int nvmax = 6 * N + 2 * KMAX + 2;
+        free(dist); free(que); dist = malloc(nvmax); que = malloc(sizeof(int) * nvmax); badlist = realloc(badlist, sizeof(int) * nvmax);
+        HGj = realloc(HGj, sizeof(int) * (KMAX * 8 + 64)); HGk = realloc(HGk, sizeof(int) * (KMAX * 8 + 64));
+        HGcap = HGL ? K : 0;   /* hg_build initialised HGL[0..K-1] */
+        hg_rebuild_cap(KMAX + 1);
+        int *Msave = malloc(sizeof(int) * N), *Minvsave = malloc(sizeof(int) * N), *buf = malloc(sizeof(int) * 4 * Q1 * Q1 * Q1);
+        uint8_t *cdp = malloc(2 * N), *cdl = malloc(2 * N), *bdp = malloc(2 * N), *bdl = malloc(2 * N), *mark = malloc(2 * N);
+        char fn[600];
+        if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
+        int fails = 0; clock_t tg = clock();
+        while (K < KMAX && fails < maxfail) {
+            long best = -1, tries = 0; int bp = -1, bl = -1, found = 0;
+            while (found < ncand && tries < 100000000L) {
+                tries++;
+                int p = rndi(N); if (isF[p]) continue;
+                int l = PL[p * Q1 + rndi(Q1)]; if (isF[Minv[l]]) continue;
+                int good = 1;
+                for (int j = 0; j < K && good; j++) {
+                    if (oppgrow) { if (hdp[j][p] != 6 || hdl[j][N + l] != 6 || hdp[j][N + l] != 5 || hdl[j][p] != 5) good = 0; }
+                    else if (hdp[j][p] < 4 || hdl[j][N + l] < 4) good = 0;
+                }
+                if (!good) continue;
+                found++;
+                long u = cand_uncovered(p, l, cdp, cdl, mark, buf);
+                if (best < 0 || u < best) { best = u; bp = p; bl = l; uint8_t *tt = cdp; cdp = bdp; bdp = tt; tt = cdl; cdl = bdl; bdl = tt; }
             }
-        } else {
-            if (tr < N) continue;                        /* expect a line target */
-            int lt = tr - N;
-            int kind = rndi(4);
-            int y = -1, l2 = -1;
-            if (kind < 3) {  /* line l2 at distance 4 from lp gets preimage y on lt, y at distance 5 from lp */
-                int cand[64], nc = 0;
-                for (int k = 0; k < Q1; k++) { int c = LP[lt * Q1 + k]; if (hdl[j][c] == 5) cand[nc++] = c; }
-                if (!nc) continue; y = cand[rndi(nc)];
-                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 4) { l2 = c; break; } }
-            } else {         /* line l2 at distance 2 from lp gets a preimage within distance 3 of lt */
-                int y1 = LP[lt * Q1 + rndi(Q1)]; int l1 = PL[y1 * Q1 + rndi(Q1)]; y = LP[l1 * Q1 + rndi(Q1)];
-                for (int tries = 0; tries < 200; tries++) { int c = rndi(N); if (hdl[j][N + c] == 2) { l2 = c; break; } }
+            if (bp < 0) { fprintf(stderr, "GROW: no candidate flag (tries %ld)\n", tries); break; }
+            memcpy(Msave, M, sizeof(int) * N); memcpy(Minvsave, Minv, sizeof(int) * N); int HGmsave = HGm;
+            int k = K;
+            F[k] = bp; isF[bp] = k + 1; fl[k] = bl;
+            { int w = Minv[bl], o = M[bp]; M[bp] = bl; Minv[bl] = bp; M[w] = o; Minv[o] = w; }
+            hdp[k] = malloc(2 * N); memcpy(hdp[k], bdp, 2 * N); hdl[k] = malloc(2 * N); memcpy(hdl[k], bdl, 2 * N);
+            K++; NV = 6 * N + 2 * K;
+            hg_rebuild_cap(KMAX + 1); hg_add_new(k, hgdeg);
+            int hv = hub_violations(k, 0) + hub_violations(k, 1);
+            int c = -1;
+            if (hv == 0) {
+                nodrop = 1; fast_search(stepsec); nodrop = 0;
+                c = total_cost(per);
+                if (c > 0) c = bfs_phase(0.25 * stepsec, per, per2, badlist, c);
             }
-            if (l2 < 0) continue;
-            u = y; newl = l2;
+            double el = (double)(clock() - tg) / CLOCKS_PER_SEC;
+            if (c == 0) {
+                fails = 0;
+                fprintf(stderr, "GROW: K=%d n=%d solved (candidate uncovered %ld, hub edges %d, %.0fs)\n", K, NV, best, HGm, el);
+                if (out) { snprintf(fn, sizeof fn, "%s.K%d", out, K); write_sol(fn); }
+            } else {
+                fails++;
+                fprintf(stderr, "GROW: K=%d failed (cost %d, hub violations %d), reverting (%.0fs)\n", K, c, hv, el);
+                K--; NV = 6 * N + 2 * K; isF[bp] = 0; free(hdp[k]); free(hdl[k]);
+                memcpy(M, Msave, sizeof(int) * N); memcpy(Minv, Minvsave, sizeof(int) * N); HGm = HGmsave; hg_rebuild_cap(KMAX + 1);
+            }
         }
-        if (u < 0 || newl < 0) continue;
-        w = Minv[newl];
-        if (w == u || isF[u] || isF[w]) continue;
-        /* apply */
-        int oldl = M[u];
-        M[u] = newl; Minv[newl] = u; M[w] = oldl; Minv[oldl] = w;
-        /* evaluate the targeted pair first; reject cheaply if it got worse, otherwise re-evaluate all pairs */
-        int a0, b0, cj = cost_of(j, &a0, &b0), c2 = -1;
-        if (cj <= per[j]) c2 = total_cost(per2);
-        if (c2 >= 0 && c2 <= cost) { cost = c2; memcpy(per, per2, sizeof(int) * K); acc++; }
-        else { M[u] = oldl; Minv[oldl] = u; M[w] = newl; Minv[newl] = w; }
-        if (it % 500 == 0) fprintf(stderr, "it %ld acc %ld cost %d  (%.1fs)\n", it, acc, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+        cost = total_cost(per);
+        fprintf(stderr, "GROW done: K=%d n=%d cost %d\n", K, NV, cost);
     }
-    fprintf(stderr, "search done: it %ld cost %d (%.1fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    if (getenv("REPAIRSEC")) repairsec = atof(getenv("REPAIRSEC"));
     if (cost > 0 && getenv("DROP")) {   /* salvage: drop the worst pairs until every remaining freed source is fine */
         if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
         while (cost > 0 && K > 0) {
@@ -765,6 +1006,13 @@ int main(int argc, char **argv) {
             drop_pair(w);
             cost = total_cost(per);
             fprintf(stderr, "dropped a pair: K=%d cost %d\n", K, cost);
+            for (int rep = 0; cost > 0 && alg >= 2 && rep < 4; rep++) {   /* the dropped pair's hubs may have carried routes of other pairs: repair */
+                int before = cost;
+                nodrop = 1; fast_search(repairsec); nodrop = 0;
+                cost = total_cost(per);
+                fprintf(stderr, "  after repair: K=%d cost %d\n", K, cost);
+                if (cost > before * 7 / 10) break;   /* repairs stopped paying: drop another pair */
+            }
         }
     }
     if (cost == 0 && getenv("SKIPFULL")) {   /* freed sources verified by BFS; the rest is left to apsp */
