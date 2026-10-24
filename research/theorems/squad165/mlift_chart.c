@@ -19,7 +19,7 @@ int k, ne, EA[64], EB[64], col[64], n, *T, *Inv, e_id, istree[64], volt[64];
 int singA[4][4][4][4], singB[4][4][4][4];
 int nwA[32], wA[32][600][4], lenA[32][600], nwB[32], wB[32][600][4], lenB[32][600], endA[32][600], endB[32][600];
 static inline int mul(int a, int b) { return T[a * n + b]; }
-unsigned char *hit; int DIAGW = 1;
+unsigned char *hit; int DIAGW = 1; int digon_of[64], h_inv = -1;
 int cost(void) {
     int c = 0;
     for (int i = 0; i < k; i++) {
@@ -42,6 +42,16 @@ int cost(void) {
     }
     return c;
 }
+int ncyc = 0, cyc_e[32][4], cyc_side[32], dep_e[32];
+static void apply_cycles(void) {
+    for (int c = 0; c < ncyc; c++) { int *E = cyc_e[c];
+        /* A-side closed walk E0 E1 E2 E3 from a_i: word v3^-1 v2 v1^-1 v0 = e  =>  v3 = v2 v1^-1 v0
+           B-side closed walk from b_j: word v3 v2^-1 v1 v0^-1 = e  =>  v3 = v0 v1^-1 v2 */
+        if (cyc_side[c] == 0) volt[E[3]] = T[volt[E[2]] * n + T[Inv[volt[E[1]]] * n + volt[E[0]]]];
+        else volt[E[3]] = T[volt[E[0]] * n + T[Inv[volt[E[1]]] * n + volt[E[2]]]];
+    }
+}
+static void apply_digons(void) { apply_cycles(); if (h_inv < 0) return; for (int e = 0; e < ne; e++) if (digon_of[e] >= 0) volt[e] = T[volt[digon_of[e]] * n + h_inv]; }
 int parallel_ok(void) { for (int a = 0; a < ne; a++) for (int b = a + 1; b < ne; b++) if (EA[a] == EA[b] && EB[a] == EB[b] && volt[a] == volt[b]) return 0; return 1; }
 /* proper 4-edge-colouring of the bipartite multigraph by peeling perfect matchings (augmenting paths) */
 int used[64], matchB[32], visB[32];
@@ -94,18 +104,58 @@ int main(int argc, char **argv) {
             for (int e4 = 0; e4 < ne; e4++) if (e4 != e3 && EA[e4] == EA[e3]) {
                 if (singB[col[e1]][col[e2]][col[e3]][col[e4]]) continue;
                 int w = nwB[j]++; wB[j][w][0] = e1; wB[j][w][1] = e2; wB[j][w][2] = e3; wB[j][w][3] = e4; lenB[j][w] = 4; endB[j][w] = EB[e4]; } } }
-    do { for (int i = 0; i < ne; i++) volt[i] = istree[i] ? e_id : (int)(xr() % n); } while (!parallel_ok());
+    for (int e = 0; e < ne; e++) digon_of[e] = -1;
+    if (getenv("DIGON")) {
+        for (int x = 0; x < n; x++) if (x != e_id && T[x * n + x] == e_id) { h_inv = x; break; }
+        if (getenv("HINV")) h_inv = atoi(getenv("HINV"));
+        if (h_inv < 0) { printf("no involution in the group\n"); return 8; }
+        for (int e = 0; e < ne; e++) for (int f = 0; f < e; f++)
+            if (EA[e] == EA[f] && EB[e] == EB[f] && digon_of[f] < 0) { int used2 = 0; for (int g = 0; g < ne; g++) if (digon_of[g] == f) used2 = 1;
+                if (!used2) { digon_of[e] = f; break; } }
+        /* a tied edge must not be a spanning-tree edge: re-gauge by freeing it (tree edges stay at e only if untied) */
+        for (int e = 0; e < ne; e++) if (digon_of[e] >= 0 && istree[e]) { printf("tied edge %d is a tree edge; reorder base\n", e); }
+    }
+    int isdep[64] = {0};
+    if (getenv("CYC")) {
+        /* greedy choice: cover every base vertex (both sides) by a closed NB 4-walk with a nonsingular pattern whose
+           last edge is non-tree, not yet dependent, and whose other edges are not dependent edges of later cycles */
+        int covered[64] = {0};
+        for (int side = 0; side < 2; side++) for (int x = 0; x < k; x++) {
+            if (covered[side * k + x]) continue;
+            int found = 0;
+            int nw = side ? nwB[x] : nwA[x];
+            for (int w = 0; w < nw && !found; w++) {
+                int *E = side ? wB[x][w] : wA[x][w]; int L = side ? lenB[x][w] : lenA[x][w], end = side ? endB[x][w] : endA[x][w];
+                if (L != 4 || end != x) continue;
+                if (E[0] == E[3]) continue;
+                for (int r = 0; r < 4 && !found; r++) {   /* try each edge as the dependent one by rotating? keep last edge */
+                    int d = E[3];
+                    if (istree[d] || isdep[d]) break;
+                    int bad = 0; for (int t = 0; t < 3; t++) if (isdep[E[t]]) bad = 1;
+                    if (bad) break;
+                    cyc_side[ncyc] = side; for (int t = 0; t < 4; t++) cyc_e[ncyc][t] = E[t]; dep_e[ncyc] = d; isdep[d] = 1; ncyc++; found = 1;
+                    /* mark covered base vertices along the cycle */
+                    if (side == 0) { covered[EA[E[0]]] = 1; covered[k + EB[E[0]]] = 1; covered[EA[E[1]]] = 1; covered[k + EB[E[2]]] = 1; }
+                    else { covered[k + EB[E[0]]] = 1; covered[EA[E[0]]] = 1; covered[k + EB[E[1]]] = 1; covered[EA[E[2]]] = 1; }
+                }
+            }
+            if (!found) { printf("no usable 4-cycle for base vertex %c%d\n", side ? 'b' : 'a', x); }
+        }
+        printf("forced %d base 4-cycles\n", ncyc);
+    }
+    do { for (int i = 0; i < ne; i++) volt[i] = istree[i] ? e_id : (int)(xr() % n); apply_digons(); } while (!parallel_ok());
     int c = cost(), best = c, bv[64]; memcpy(bv, volt, sizeof volt);
     clock_t t0 = clock(); long it = 0;
-    int free_e[64], nf = 0; for (int i = 0; i < ne; i++) if (!istree[i]) free_e[nf++] = i;
+    int free_e[64], nf = 0; for (int i = 0; i < ne; i++) if (!istree[i] && digon_of[i] < 0 && !isdep[i]) free_e[nf++] = i;
     while (best > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < secs) {
         it++;
         double fr = (double)(clock() - t0) / CLOCKS_PER_SEC / secs; double TT = T0 * pow(0.02, fr);
-        int ei = free_e[xr() % nf], old = volt[ei]; volt[ei] = xr() % n;
-        if (!parallel_ok()) { volt[ei] = old; continue; }
+        int ei = free_e[xr() % nf], old = volt[ei]; int sv[64]; memcpy(sv, volt, sizeof volt); volt[ei] = xr() % n; apply_digons();
+        if (!parallel_ok()) { memcpy(volt, sv, sizeof volt); continue; }
         int c2 = cost();
         if (c2 <= c || exp((c - c2) / TT) > (double)(xr() % 1000000) / 1e6) { c = c2; if (c < best) { best = c; memcpy(bv, volt, sizeof volt); } }
-        else volt[ei] = old;
+        else memcpy(volt, sv, sizeof volt);
+        (void)old;
         if (it % 200000 == 0 && c > best + 20) { memcpy(volt, bv, sizeof volt); c = best; }
     }
     printf("k=%d n=%d m=%d best_cost=%d iters=%ld volt=", k, n, k * n, best, it);

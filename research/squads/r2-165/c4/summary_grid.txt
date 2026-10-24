@@ -1,0 +1,77 @@
+Exhaustive minima (mlift_exh, complete search over all voltage tuples modulo Aut(G); tree voltages fixed to identity).
+Cells: min cost (0 = perfect). m = 2*order(G). Required patterns: c4_p0..p3, c5_p0..p3. Missing cells: none.
+
+group               m   base         c4_p0  c4_p1  c4_p2  c4_p3  c5_p0  c5_p1  c5_p2  c5_p3  |  naut
+g_cyc33              66 base_k2_1        4      4      4      4      6      4      4      4  |  20
+g_cyc33              66 base_k2_2        4      4      4      4      4      4      4      4  |  20
+g_cyc33              66 base_k2_3        4      4      4      4      4      4      6      6  |  20
+g_cyc34              68 base_k2_1        8      8      8      8     12      8      8      8  |  16
+g_cyc34              68 base_k2_2        4      4      4      4      4      4      4      4  |  16
+g_cyc34              68 base_k2_3        8      8      8      8      8      8     12     12  |  16
+g_dih17              68 base_k2_1       36     40     36     40     42     36     36     36  |  272
+g_dih17              68 base_k2_2       17     12     12     17     15     13     13     15  |  272
+g_dih17              68 base_k2_3       40     36     36     36     36     36     42     42  |  272
+g_cyc35              70 base_k2_1        8      8      8      8     12      8      8      8  |  24
+g_cyc35              70 base_k2_2        4      4      4      4      4      4      4      4  |  24
+g_cyc35              70 base_k2_3        8      8      8      8      8      8     12     12  |  24
+g_cyc36              72 base_k2_1        8      8      8      8     13      8      8      8  |  12
+g_cyc36              72 base_k2_2        4      4      4      4      4      4      4      4  |  12
+g_cyc36              72 base_k2_3        8      8      8      8      8      8     13     13  |  12
+g_dih18              72 base_k2_1       42     48     44     48     49     42     42     42  |  108
+g_dih18              72 base_k2_2       22     16     16     22     23     20     20     23  |  108
+g_dih18              72 base_k2_3       48     44     42     42     42     42     49     49  |  108
+g_meta9_4_8          72 base_k2_1       16     18     16     18     18     16     16     16  |  108
+g_meta9_4_8          72 base_k2_2        4      4      4      4      4      4      4      4  |  108
+g_meta9_4_8          72 base_k2_3       18     16     16     16     16     16     18     18  |  108
+g_meta3_12_2         72 base_k2_1        6      6      6      6      8      6      6      6  |  24
+g_meta3_12_2         72 base_k2_2        4      4      4      4      4      4      4      4  |  24
+g_meta3_12_2         72 base_k2_3        6      6      6      6      6      6      8      8  |  24
+g_meta4_9_1          72 base_k2_1        8      8      8      8     13      8      8      8  |  12
+g_meta4_9_1          72 base_k2_2        4      4      4      4      4      4      4      4  |  12
+g_meta4_9_1          72 base_k2_3        8      8      8      8      8      8     13     13  |  12
+g_cyc6xcyc6          72 base_k2_1        8     12      8     12     15      8      8      8  |  288
+g_cyc6xcyc6          72 base_k2_2        8      8      8      8      9      8      8      9  |  288
+g_cyc6xcyc6          72 base_k2_3       12      8      8      8      8      8     15     15  |  288
+g_dih3xcyc6          72 base_k2_1       14     15     16     15     16     14     15     14  |  24
+g_dih3xcyc6          72 base_k2_2        4      4      4      4      4      4      4      4  |  24
+g_dih3xcyc6          72 base_k2_3       15     16     14     14     14     15     16     16  |  24
+g_dih9xcyc2          72 base_k2_1       42     48     44     48     49     42     42     42  |  108
+g_dih9xcyc2          72 base_k2_2       22     16     16     22     23     20     20     23  |  108
+g_dih9xcyc2          72 base_k2_3       48     44     42     42     42     42     49     49  |  108
+g_meta342xcyc3       72 base_k2_1        6      6      6      6      8      6      6      6  |  24
+g_meta342xcyc3       72 base_k2_2        4      4      4      4      4      4      4      4  |  24
+g_meta342xcyc3       72 base_k2_3        6      6      6      6      6      6      8      8  |  24
+
+Per (m, group) minimum over bases and required patterns:
+  m=66  g_cyc33            min=  4  (base_k2_1, pat_c4_p0)
+  m=68  g_cyc34            min=  4  (base_k2_2, pat_c4_p0)
+  m=68  g_dih17            min= 12  (base_k2_2, pat_c4_p1)
+  m=70  g_cyc35            min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_cyc36            min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_cyc6xcyc6        min=  8  (base_k2_1, pat_c4_p0)
+  m=72  g_dih18            min= 16  (base_k2_2, pat_c4_p1)
+  m=72  g_dih3xcyc6        min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_dih9xcyc2        min= 16  (base_k2_2, pat_c4_p1)
+  m=72  g_meta342xcyc3     min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_meta3_12_2       min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_meta4_9_1        min=  4  (base_k2_2, pat_c4_p0)
+  m=72  g_meta9_4_8        min=  4  (base_k2_2, pat_c4_p0)
+
+Consistency: meta_4_9_1 and cyc_36 are both Z36 -> identical rows expected:
+  (no mismatches printed above = all equal)
+
+Optional pattern c4_p4 (partial, base_k2_1 only; two jobs killed by the stop):
+  base_k2_1 g_cyc33 min=4
+  base_k2_1 g_cyc34 min=8
+  base_k2_1 g_cyc35 min=8
+  base_k2_1 g_cyc36 min=8
+  base_k2_1 g_cyc6xcyc6 min=12
+  base_k2_1 g_dih17 min=40
+  base_k2_1 g_dih18 min=48
+  base_k2_1 g_dih9xcyc2 min=48
+  base_k2_1 g_meta3_12_2 min=6
+  base_k2_1 g_meta4_9_1 min=8
+  base_k2_1 g_meta9_4_8 min=18
+
+Required jobs with a result: 312 of 312; cost-0 jobs among all: 0
+MISSING REQUIRED: []

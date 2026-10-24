@@ -10,7 +10,15 @@ side (1 + 16·15 + 16·15³ same-side vertices within distance 4).
 
 ## Status (updated as the run goes)
 
-**32,768 > 31,460, but from someone else's graph.** The bipartite double cover G × K₂ of the (16,4) graph G on
+**33,792 > 31,460, our own construction (06:33 UTC).** A bipartite graph of maximum degree 16 and diameter 5 on
+**33,792** vertices: the route-chart lift (fibre F₄⁴, 16 = 4 letters × 4 scalars) of a 66 + 66 controller, the
+voltage lift of K₃,₃ + perfect matching by Z₂₂. The chart has 8 singular nonbacktracking patterns and is
+pencil-complete (§2.1). apsp.c: RESULT VALID d=16 D=5 n=33792; bfs_all.c: max eccentricity 5, all 33,792² ordered
+pairs accounted for. Files: `graphs/build_d16D5_n33792.py` (self-contained builder with the explicit data),
+`graphs/d16D5_n33792_k33m_z22.edges.gz`, check `graphs/d16D5_n33792_check.txt`. It also beats the 32,768 double
+cover below. Details in §2.2.
+
+Earlier: **32,768 > 31,460, but from someone else's graph.** The bipartite double cover G × K₂ of the (16,4) graph G on
 16,384 vertices of Amarel, DeBardeleben, Grosskopf, Job, Lawrence, Monroe and Somasundaram (LANL; communicated to
 the Comellas degree–diameter table on Sep 18, 2026, "graph-lift construction found using the agentic tool URSA")
 is 16-regular, bipartite, on 32,768 vertices, with diameter exactly 5. Two independent all-pairs checks pass:

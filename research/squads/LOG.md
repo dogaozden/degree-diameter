@@ -71,8 +71,17 @@ Outcomes:
 8. side result (not (16,5)): the double cover of Mizuno's (12,4) graph (5,832) is a bipartite (12,5) graph on
    **11,664** vertices, apsp VALID (table 8,200). Credit for the base graph is Mizuno's. Δ = 10, 11, 13, 14, 15
    covers have diameter 6–9.
-1, 5, 6: pending at time of writing.
+1. no hit (partial, 6 s runs): best 4 at m = 66 (k3_000, Z₂₂); D₁₁ much worse (26–30).
+5. best chart so far: 8 singular patterns, pencil-complete (research/squads/r2-165/c5/best_free_U8_P0.txt, checked
+   with chart_patterns.py); symmetric (P⁴ = I) families and a hard-pencil weight did worse.
+6. no hit, exhaustive over S for 98 metacyclic groups of order 62–80 (split and non-split): best 2 at m = 63, 64
+   and 80 (non-split Z₂₀.Z₄), 4 at m = 66, 70, 72, 78; odd orders (mostly cyclic) 22–50. Positive control at
+   m = 42: cost 0, lift 21,504 apsp VALID.
 
-Kept: the self-pair diagnosis (cards 2 and 7, same as Opus's own at m = 63). Next (Opus): force a 4-cycle at every
-orbit by tying parallel base edges with an involution (v(e′) = v(e)·h makes the digon walk e e′ e e′ trivial), which
-needs even-order groups; then anneal the rest.
+Kept: the self-pair diagnosis (cards 2 and 7, same as Opus's own at m = 63) and card 5's chart.
+Opus, after the round: forcing 4-cycles does not help the annealer. Tying parallel edges with an involution
+(DIGON) and forcing one trivial base closed walk per orbit (CYC) both made the cost much worse (20–120). The LANL
+double controller has exactly one 4-cycle through each vertex (the 4-cycles partition the vertex set). The decisive
+test: with a fake chart in which every pattern is nonsingular, K₃,₃ + perfect matching over Z₂₂ (**m = 66**) reaches
+cost 0 in 2,769 annealing steps. So for that controller the chart is the bottleneck, not the controller. Round 3
+goes after charts fitted to such controllers.
