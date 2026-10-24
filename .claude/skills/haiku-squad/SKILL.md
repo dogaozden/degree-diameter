@@ -15,6 +15,11 @@ Kenaznia's refinements are built in below.
 Whenever **you** judge it would help: you feel stuck, you want breadth, you want fresh ideas, or you just want more hands.
 There's no formula for "stuck". That's your call.
 
+Rules of thumb from earlier runs. They're hints you can use or ignore, not triggers:
+- Two ideas in a row that went nowhere is often a sign it's time for fresh eyes.
+- A long stretch of solo work on one goal (say 45 minutes) can be worth breaking up with a round, even when things feel fine.
+- If two rounds in a row add nothing new, the goal may be exhausted for now; budget is finite (the week was at 86% on Oct 23).
+
 Squads always run in the cloud, as subagents of your cloud session. Never on the coordinator's Mac mini.
 
 ## What the Haikus are for: ideas, not randomness
