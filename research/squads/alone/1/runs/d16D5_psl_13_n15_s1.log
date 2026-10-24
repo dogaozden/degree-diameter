@@ -1,2 +1,10 @@
 group psl 13 x Z_15, N=16380, identity 1170, H order 39, rows 420, threads 1, setup 0.00s
 start cost=1435
+t=30 steps=694267 evals=694268 cost=615 best=615 T=0.53
+t=60 steps=1414749 evals=1414750 cost=615 best=615 T=0.19
+t=90 steps=2104651 evals=2104652 cost=615 best=615 T=0.15
+t=120 steps=2811715 evals=2811716 cost=615 best=615 T=0.15
+t=150 steps=3524735 evals=3524736 cost=615 best=615 T=0.15
+t=180 steps=4234002 evals=4234003 cost=615 best=615 T=0.64
+t=210 steps=4924140 evals=4924141 cost=615 best=615 T=0.23
+RESULT d=16 D=5 group=psl 13 x Z_15 N=16380 best=615 evals=5622754 time=240.0

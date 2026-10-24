@@ -1,2 +1,10 @@
 group psl 17 x Z_7, N=17136, identity 952, H order 63, rows 272, threads 1, setup 0.00s
 start cost=1478
+t=30 steps=1096478 evals=1096479 cost=822 best=822 T=0.53
+t=60 steps=2243613 evals=2243614 cost=822 best=822 T=0.19
+t=90 steps=3335191 evals=3335192 cost=822 best=822 T=0.15
+t=120 steps=4442599 evals=4442600 cost=822 best=822 T=0.15
+t=150 steps=5567780 evals=5567781 cost=822 best=822 T=0.15
+t=180 steps=6669602 evals=6669603 cost=852 best=822 T=0.80
+t=210 steps=7760057 evals=7760058 cost=872 best=822 T=0.28
+RESULT d=16 D=5 group=psl 17 x Z_7 N=17136 best=822 evals=8881797 time=240.0

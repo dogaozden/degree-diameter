@@ -1,2 +1,10 @@
 group sl 13 x Z_8, N=17472, identity 1248, H order 56, rows 312, threads 1, setup 0.00s
 start cost=1404
+t=30 steps=1054290 evals=1054291 cost=908 best=908 T=0.53
+t=60 steps=2098659 evals=2098660 cost=908 best=908 T=0.19
+t=90 steps=3131627 evals=3131628 cost=908 best=908 T=0.15
+t=120 steps=4165435 evals=4165436 cost=908 best=908 T=0.15
+t=150 steps=5199359 evals=5199360 cost=908 best=908 T=0.15
+t=180 steps=6234591 evals=6234592 cost=878 best=878 T=0.77
+t=210 steps=7240603 evals=7240604 cost=878 best=878 T=0.27
+RESULT d=16 D=5 group=sl 13 x Z_8 N=17472 best=878 evals=8265633 time=240.0
