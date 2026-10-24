@@ -267,12 +267,14 @@ For α of order k with α(S) = S, f fixed generators and m orbits of size k:
           × exp( λ · Σ_{β} Σ_{j : R_j(β) > R*} R_j(β)·c_j )
 
 with R_j(β) = ρ_β Δ(Δ−1)^{2j−1}/(4j), c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) and R* ≈ 5. Families with R_j ≤ R* are
-avoided by the search at no measurable cost. Plug μ_A into the effort law.
+avoided by the search at no measurable cost. Plug μ_A into the effort law. `order2/rule.py` implements this and prints
+the 24 worked cases of `out/rule_table.txt`, each with its observed outcome.
 
 The principled form of the twisted-cycle term is the generating-function charge Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats,
 with n* = R_j e^{−μ_A⁰λc_j} cycles left in a solution (§3.1). rule.py prints both forms. The n* half is confirmed on
-all six solutions. The nats half is not: in effort terms it over-predicts the two (6,8) solves (§4, last item). `order2/rule.py` implements this and prints
-the 24 worked cases of `out/rule_table.txt`, each with its observed outcome. In words:
+all six solutions. The nats half is not: in effort terms it over-predicts the two (6,8) solves (last item below).
+
+In words:
 
 1. Clumps of size k divide μ by k (BEYOND_RANDOM).
 2. Each subgroup H of ⟨α⟩ pays for its fixed points at rate e^{−λ/|H|}. This is bounded for Frobenius-type α on
@@ -350,7 +352,8 @@ Divided by the clump size, order 6 is lowest: its p10 is about 6 clumps, against
 order 2.
 
 All three order-6 solutions passed haar_sym's full diameter check (`sols/d13D8_sl_64_13_orb6frob_s*.txt`). They have
-the record's order, so they are not records. `check_np.py` also confirms seed 2 (VALID, diameter 8).
+the record's order, so they are not records. `check_np.py` confirms all three (VALID, diameter 8;
+`checks/d13D8_sl_64_13_orb6frob_s*.check_np.txt`).
 
 **The fixed-point term at every level.** haar_order2's `CLASSES=1` mode samples random symmetric S and records which
 stabiliser class each uncovered element is in. The model says an element whose stabiliser in ⟨α⟩ has order h is
