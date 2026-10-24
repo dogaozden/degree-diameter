@@ -5,6 +5,7 @@ model  : sigma  | H(q) voltage
  f5k   : random bijections                  | (0,0)
  f5kh  : random bijections                  | (0, random)
  t5k   : one 1-factor used twice (tripled flags) | (0,0)
+ d5k   : one random bijection used for both hops (doubled hop) | (0,0)   (d5kh: + random H(q) voltages)
 """
 import random
 import subprocess
@@ -25,6 +26,9 @@ def build(q, k, model, seed, H):
         s2 = perfect_matching(N, nbrs, rng, forbid=s1)
     elif model.startswith('t'):
         s1 = perfect_matching(N, nbrs, rng)
+        s2 = s1
+    elif model.startswith('d'):
+        s1 = list(range(N)); rng.shuffle(s1)
         s2 = s1
     else:
         s1 = list(range(N)); rng.shuffle(s1)
