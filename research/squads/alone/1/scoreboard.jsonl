@@ -1,0 +1,6 @@
+{"idea": "haar_gen3 annealing, D=9 sanity check on SL(2,11) (known record 2640 vertices)", "command": "THREADS=1 haar_gen3 9 5 90 1 1 out sl 11 1", "score": 2, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_12 (N=15840), 60 s", "command": "THREADS=1 haar_gen3 16 5 60 1 1 out sl 11 12", "score": 528, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_4 (N=5280), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 4", "score": 10560, "valid": true}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_6 (N=7920), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 6", "score": 15840, "valid": true}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_8 (N=10560), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 8", "score": 14, "valid": false}
+{"idea": "haar_gen3 D=5 d=16 on SL(2,11) x Z_10 (N=13200), 90 s", "command": "THREADS=1 haar_gen3 16 5 90 1 1 out sl 11 10", "score": 152, "valid": false}
