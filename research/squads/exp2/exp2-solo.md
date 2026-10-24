@@ -157,8 +157,8 @@ The final graphs were then checked from scratch by apsp.c (all pairs, no symmetr
   - So a large set U of points could be unhooked: no two at distance 4, plus gadget-to-gadget distances ≤ 6. The
     gadget vertices have three spare edges each, so they could be wired into their own diameter-6 network (e.g. a
     copy of the incidence graph of H(3)).
-  - That might give hundreds of extra vertices at (11,7) and (13,7) (q = 11 is not 3^e, so not (13,7) by this route).
-    It needs an explicit duality of H(9).
+  - That might give hundreds of extra vertices at (11,7) (q = 9). (13,7) has q = 11, which is not a power of 3, so
+    this route does not apply there. It needs an explicit duality of H(9).
 - A first, failed attempt (§5.1) used a non-symmetric gadget on edges inside one copy, with φ fixed. The working
   version unhooks the same point in all three copies and adapts φ to it.
 
