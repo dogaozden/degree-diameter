@@ -149,6 +149,16 @@ The final graphs were then checked from scratch by apsp.c (all pairs, no symmetr
   m = 12 at q = 5 in seconds; m = 16 stalled at score 2 and m = 30 at about 1,200 (stopped).
   - Exact covers for each gadget, plus a sparse network of extra edges between the gadget vertices (they have three
     spare slots), should allow far-apart gadgets. Not tried; it adds only 2/n per point.
+- **A route to many more vertices when H(q) is self-dual (q = 3^e, e.g. (11,7) with q = 9; not built).**
+  - Let φ be a duality δ: an incidence-preserving bijection points → lines.
+  - For a point z opposite p, the line δ⁻¹(z) is within distance 5 of p. Its point y closest to p is within 4 of p,
+    and z ∈ δ(y). So (A) holds for every point p at once, and dually (B) for every line, as long as the projection
+    points y are not themselves unhooked.
+  - So a large set U of points could be unhooked: no two at distance 4, plus gadget-to-gadget distances ≤ 6. The
+    gadget vertices have three spare edges each, so they could be wired into their own diameter-6 network (e.g. a
+    copy of the incidence graph of H(3)).
+  - That might give hundreds of extra vertices at (11,7) and (13,7) (q = 11 is not 3^e, so not (13,7) by this route).
+    It needs an explicit duality of H(9).
 - A first, failed attempt (§5.1) used a non-symmetric gadget on edges inside one copy, with φ fixed. The working
   version unhooks the same point in all three copies and adapts φ to it.
 
