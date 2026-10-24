@@ -27,9 +27,9 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 |---|---|---|---|---|---|
 | (7,7) | 23,436 | **23,460** | 1.00102 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
 | (9,7) | 117,648 | **117,656** | 1.00007 | 82,992 (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 |
-| (11,7) | 398,580 | (q = 9 run in progress) | | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
+| (11,7) | 398,580 | **398,582** | 1.000005 | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
 
-**Two cells beaten** ((7,7) by 24 vertices, (9,7) by 8; the third is running).
+**All three cells beaten**: (7,7) by 24 vertices, (9,7) by 8, (11,7) by 2.
 - The new graphs are not Haar graphs. They are 3 copies of the generalized hexagon H(q) (the table's own
   construction), with m points "unhooked" in all three copies and a 2-vertex gadget per point (§2).
 - The bijection φ that links the copies is either explicit (exact covers, §2) or found by local search.
@@ -40,7 +40,8 @@ Files in `graphs/`:
 - `*.apsp.txt`: the apsp.c verdicts and the sha256 of the uncompressed edge lists.
 
 To rebuild:
-- m = 1 graphs: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`.
+- m = 1 graphs: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`. For q = 9 add `NOGREEDY=1`, otherwise the
+  unused greedy cover takes very long.
 - m = 4 and 12: `python3 hexd7/plus2.py 5 X.edges` writes X.edges.hfile. Then
   `PHIIN=graphs/d7D7_hex5_plus24.phi plusm X.edges.hfile 12 0 1 OUT.edges` (plusm.c, gadget layout fixed by m).
   This reproduces the edge list byte for byte.
@@ -55,6 +56,7 @@ To rebuild:
 | (9,7), m = 1 | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 94303a1b4845c9112504d773c89fe751b136b6efef320d04242c70c46f555385 |
 | (9,7), m = 1, explicit φ | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 3478bfc0d278f713e7313c71612ba446f74c055339007bc21488ab7837da3cc3 |
 | (9,7), m = 4 | 117,656 | 9 | 7 | RESULT VALID d=9 D=7 n=117656 | 4b4eeee82eb417f0ac0b2a9f7e58e9036234e51a2e2c95c159edec14ddcbbf27 |
+| (11,7), m = 1, explicit φ | 398,582 | 11 | 7 | RESULT VALID d=11 D=7 n=398582 | 72f859aa243d587ed381cb1519918878f5f0c086872646545bec1d34c8b8ce13 |
 
 The Haar files (haar_gen3 format, the brief's format) are in `research/frontier/sols/`:
 `d7D7_prod_psl_3_sl_5_7_orb3_s1.txt`, `d9D7_sl_13_19_orb3f0_s1.txt`, `d11D7_sl_11_101_orb5_s1.txt` (plus lower rungs
@@ -113,9 +115,10 @@ n = 6(q⁶−1)/(q−1) + 2.
 - With it the BFS score from a and b is 0 before any search (plus2ls.c: "start score 0") for q = 5, 7, 9. For q = 3
   the graph (n = 2,186, Δ = 5) is RESULT VALID by apsp.c.
 - So, for every q for which H(q) exists (all prime powers; built and checked here for odd q), there is a bipartite
-  graph of max degree q + 2 and diameter 7 on 6(q⁶−1)/(q−1) + 2 vertices. That is 2 more than every table entry of
-  the form 3·|H(q)| at D = 7, i.e. (7,7), (9,7), (10,7), (11,7) and (13,7). Only (7,7), (9,7) and (11,7) were
-  built and checked here.
+  graph of max degree q + 2 and diameter 7 on 6(q⁶−1)/(q−1) + 2 vertices. By the proof, that is 2 more than every
+  table entry of the form 3·|H(q)| at D = 7, i.e. (7,7), (9,7), (10,7), (11,7) and (13,7). (7,7), (9,7) and (11,7)
+  were built from the explicit φ and checked by apsp.c (q = 5, 7, 9); (10,7) needs q = 8, which hexagon.py does not
+  build (even q).
 
 **Finding φ by search (how the first graphs were made).** `hexd7/plus2.py` builds φ from greedy covers for (A) and
 (B) on disjoint domains, then fills the rest at random. The greedy covers were slightly too big (843 and 835 for
