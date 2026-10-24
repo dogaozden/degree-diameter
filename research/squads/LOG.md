@@ -35,3 +35,35 @@ Outcomes:
 Kept: voltage lifts of small bases (K4,4 when the chart covers the diagonal, K3,3+matching when 4-cycles are needed),
 non-abelian groups (dicyclic) at the frontier. Next: round 2 on all 26 4+4 base classes, exhaustive Z19 for (12,5),
 (15,5) above m = 128, (10,5) to m >= 126, (16,5) above 66.
+
+## 2026-10-24, thm-chartlift round 3 session (session_01DZd593abAfRP1TbgB8wqYh), squad r2-chartlift (22:10–23:10 UTC)
+
+Lead going in (Opus, solo, ~60 min): resumed the cut-off session; found that charts covering BOTH diagonals free the
+controller from 4-cycles, so Haar graphs of metacyclic groups work: (15,5) 25,272 (Z26 x|3 Z6, m=156) and, after
+proving that (4,3) charts can cover both diagonals (star-collineation reduction, exhaustive search), (12,5) 10,368
+(Z16 x|3 Z4, m=64). Both rebuilt and checked (apsp + bfs_all). Cards (folders research/squads/r2-chartlift/c1..c8;
+brief COMMON.md):
+1. (15,5) Haar push, metacyclic orders 157-176 with the 112 chart.
+2. (15,5) better (5,3) charts (fewer than 112 singular, both diagonals, pencils).
+3. (15,5) non-Haar: 2+2 and 3+3 bases at m = 158-176.
+4. (10,5) Haar sweep at orders 126-150 with the 230 (5,2) chart (table needs m >= 126).
+5. (10,5) better (5,2) charts.
+6. (8,5) Haar and small bases at m >= 65 with the 48 (4,2) chart.
+7. (14,5) seven letters over F2: chart + Haar at m >= 462.
+8. (12,5) six letters over F2: chart + Haar at m >= 274.
+
+Outcomes:
+1. (pending at time of writing)
+2. no gain for the record: best chart 106 singular (old annealer); note: two parallel b-vectors force >= 64 singular.
+3. no gain: best cost 6 at m=160 (2+2 over meta:20:4:9/11); 3+3 far worse.
+4. **record: (10,5) 4,032** (Haar Z14 x|9 Z9, m=126), rebuilt and checked here (apsp VALID, bfs_all max_ecc 5); also
+   m=112, 120 valid; other order-126 groups cost 1-17.
+5. (5,2) chart with 216 singular (from 230); second m=126 controller (Z21 x|4 Z6, same 4,032, apsp VALID); m=128 cost 1.
+6. no gain: exhaustive Haar over all 128 groups of order 60-81 fails with the 48 chart (min cost 4); 2+2 best cost 2 at
+   m=66. (The lead then proved 48 is the minimum for (4,2) charts covering both diagonals, r3/dpmin.)
+7. no gain for the record: (7,2) chart 1,314/3,024 singular; Haar m=300 valid (9,600), cost 44 at m=462.
+8. no gain: (6,2) chart 602/1,500 singular; Haar cost 2 at m=200, 31 at m=280.
+
+Kept: Haar graphs of metacyclic groups Z_M x| Z_N with N = 4..9 for diagonal-covering charts; chart quality is the
+bottleneck at q=2 for k >= 6. Next: round r3-chartlift (multi-orbit bases for (12,5), the 92 chart for (15,5), (10,5)
+past 126, star-move charts for (7,2), non-metacyclic groups).

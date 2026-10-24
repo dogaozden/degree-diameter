@@ -279,9 +279,21 @@ included, 729 pairs; only the independent/independent pair has solutions: 72 in 
 charts once each letter's collineation is varied, all with 16 singular patterns, complete pencils and both diagonals;
 outputs `diag_charts_all.out`, `diag_coinc.out`). Up to relabelling the letters there are 7 different singular sets
 (`classify_sing.py`, charts `r3/k4q3_diag_cls0..6.txt`).
-(d) (4,2), (5,2), (5,3): charts covering both diagonals with complete pencils exist, with 48, 216 and 102 singular
-patterns (`charts/c4s2_k4_q2.txt`, squad r2 c5, `r3/k5q3_pd102.txt`). (6,2) and (7,2): 602 of 1,500 and 1,314 of
-3,024 (squad r2 c8, c7; one anneal each).
+(d) (4,2): charts covering both diagonals with complete pencils have **at least 48 singular patterns**, and 48 is
+attained (`charts/c4s2_k4_q2.txt`). `r3/dpmin/dp_min.c` scans all 168⁴ combinations of star collineations for each of
+the 36 pairs of coincidence-free labelled configurations (pencils and singular counts are sums over pairs of letters,
+so this is a few seconds per pair; `dp_min_k4q2.out`): the minimum is 48, reached by 12 pairs, all with w's and b's of
+rank 3 (three collinear points); two tetrahedra need 72. (Coincident configurations were not scanned at q = 2.)
+(e) (5,2), (5,3): such charts exist, with 216 and 92 singular patterns (`r3/k5q2_c5_216.txt` from squad r2 c5,
+`r3/k5q3_pd_star23.txt` from `chart_anneal3 MOVES=star`); the minima are not known. (6,2) and (7,2): 602 of 1,500 and
+1,314 of 3,024 (squad r2 c8, c7; one anneal each).
+
+**Proposition 13 (Haar controllers stop at m = 64 at (12,5); computer).** For each of the 7 classes of (4,3) charts in
+Proposition 12(c) and every group of order 65 to 81 that `r3/mkgroups.py` builds (88 groups: cyclic, Z_a × Z_b,
+dihedral, dicyclic, metacyclic), no Haar graph satisfies Theorem 11: an exhaustive scan of all connection sets (one
+element fixed to the identity; `r3/ctrl_exh.c`, the EXH mode written by squad card r2-c6; log `r3/exh_d12.log`) finds
+minimum cost 2. Order 64 works (Z₁₆ ⋊₃ Z₄ and ⋊₅), so for Haar controllers m = 64 is the end. A Haar graph of order
+82 to 121 would also be a 4-regular bipartite graph of diameter 5 on more than 162 vertices, a (4,5) record.
 
 **Theorem 8 (cubic controllers stop at m = 16; so k = 3 gives at most 32 q⁴).** Let C be cubic and bipartite,
 with same-side distances ≤ 4 and every vertex on a 4-cycle. Then C has at most 16 vertices per side. This is exactly
@@ -343,7 +355,19 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   m = 128 controllers.
 - **Fewer singular patterns help less than expected.** (4,3) charts with 24 singular patterns do no better than 26
   at m = 57 (cost 2 either way, squad r1-c3). The limit there is the controller.
-- Lift/Moore ratios: (12,5) 27%, (15,5) 25%, (8,5) 37%, (16,5) 31%.
+- Lift/Moore ratios: (12,5) 27%, (15,5) 25%, (8,5) 37%, (16,5) 31%. After round 3: (12,5) 10,368 / 32,210 = 32%,
+  (15,5) 25,272 / 82,742 = 31%, (10,5) 4,032 / 14,762 = 27%.
+- **Round 3: which Haar groups win.** With charts covering both diagonals, metacyclic groups Z_M ⋊_t Z_N with N = 4
+  to 9 and a large cyclic normal part win at every cell: Z₂₆ ⋊₃ Z₆ and Z₃₅ ⋊₆ Z₄ at (15,5), Z₁₆ ⋊₃ Z₄ and Z₁₅ ⋊ Z₄ at
+  (12,5), Z₁₄ ⋊₉ Z₉, Z₂₁ ⋊₄ Z₆ at (10,5) (and Z₂₈ ⋊₁₃ Z₄, Z₁₅ ⋊₇ Z₈ at m = 112, 120, squad-reported). Cyclic, abelian and dicyclic groups do badly (costs 20–118).
+  Order-81 groups (odd order, no involutions) are also bad at (12,5) (cost ≥ 16).
+- **The last uncovered target is often a central involution.** At (12,5) order 78 and at (15,5) order 160 the best
+  Haar connection sets leave exactly one target per side uncovered, and it is a central element z of order 2. A
+  likely reason: side-A singularity is invariant under reversing the pattern (U(i₂;i₁) meets U(i₃;i₄) is symmetric),
+  and the reversed walk reaches h⁻¹; for h = z = z⁻¹ the walks come in reversal pairs that are singular together.
+- **Controllers reach 71–88% of the best known (k, 5) graph** when the chart covers both diagonals: m = 156 of 177 at
+  k = 5, q = 3 (92–112 singular of 640); m = 64 of 81 at k = 4, q = 3 (16 of 216); m = 126 of 177 at k = 5, q = 2
+  (216–230 of 640). With 4-cycles required the old controllers were at 54/81 and 128/177.
 
 ### 3.4 Dead ends
 
@@ -355,9 +379,15 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   344 < 396. (15,3) with 5 × F₃ would need the full 42-vertex PG(2,4) incidence graph (376/9 > 41). There every pair
   has a unique common neighbour, but two of the five b's coincide in PG(1,3), so bad pairs occur at every vertex.
 - **k = 2** (Proposition 6.1) and **perfect D = 5 charts** (Proposition 7).
-- **(6,5)**: k = 3, q = 2 needs m ≥ 22 (704 > 684). The best (3,2) chart with complete pencils misses one diagonal
-  vector on one side (8 singular patterns, `charts/r3_k3_q2_s41.txt`), so that side still needs 4-cycles. Cubic
-  controllers then stall at cost 7–8 for m = 22 (`runs/d6_*.out`). **(14,5)**: 7 × F₂ needs m ≥ 462 of at most 576 with a non-universal chart.
+- **(6,5)**: k = 3, q = 2 needs m ≥ 22 (704 > 684). No (3,2) chart covers both diagonals (Proposition 12(b), proved),
+  so one side always needs 4-cycles. Cubic controllers then stall at cost 7–8 for m = 22 (`runs/d6_*.out`).
+- **(14,5) and (12,5) with many letters over F₂.** 7 × F₂ needs m ≥ 462 (the (7,5) record has m = 576); the only (7,2)
+  chart covering both diagonals has 43% of its patterns singular, and Haar controllers stop at m = 300 (9,600 vertices,
+  valid, below the table; squad r2-c7). 6 × F₂ at (12,5) now needs m ≥ 325; the (6,2) chart is 40% singular and Haar
+  controllers reach cost 2 at m = 200 (squad r2-c8).
+- **(8,5) beyond 2,048 with Haar controllers**: the (4,2) chart is optimal at 48 singular patterns (Proposition 12(d)),
+  and an exhaustive scan over all 128 groups of order 60–81 finds no Haar controller (min cost 4); 2+2 bases reach
+  cost 2 at m = 66 (squad r2-c6).
 - **General (non-voltage) controllers** by colour-preserving switches (squad r1-c8): m = 44 at (8,5) and 36 at
   (12,5), far below voltage lifts. **Joint chart + voltage annealing** (r1-c7): cost 2 at m = 57, no gain.
 - **D ≥ 7 with record controllers.** The record (3,8) and (5,8) graphs have no nonbacktracking 7-walk between adjacent
