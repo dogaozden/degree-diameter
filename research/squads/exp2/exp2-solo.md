@@ -7,11 +7,11 @@ Opus alone). Branch `claude/exp2-solo-haar-d7-jroi1u`.
 
 | cell | table | **new graph** (apsp.c VALID) | / table | best Haar graph (build_haar2.py VALID) | / table |
 |---|---|---|---|---|---|
-| (7,7) | 23,436 | **23,438** | 1.00009 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
+| (7,7) | 23,436 | **23,460** | 1.00102 | 20,160 (PSL(2,3) × SL(2,5) × Z7, orbit k = 3) | 0.860 |
 | (9,7) | 117,648 | **117,650** | 1.00002 | 82,992 (SL(2,13) × Z19, orbit k = 3, f = 0) | 0.705 |
 | (11,7) | 398,580 | (q = 9 run in progress) | | 266,640 (SL(2,11) × Z101, orbit k = 5) | 0.669 |
 
-**Two cells beaten, by 2 vertices each** (the third is running). The new graphs are not Haar graphs. They are 3 copies of
+**Two cells beaten** ((7,7) by 24 vertices, (9,7) by 2; the third is running). The new graphs are not Haar graphs. They are 3 copies of
 the generalized hexagon H(q) (the table's own construction), with one point "unhooked" in all three copies and a
 2-vertex gadget added, and a bijection φ chosen by local search (§2). Files in `graphs/`:
 
@@ -24,7 +24,9 @@ To rebuild: `python3 hexd7/plus2.py q OUT.edges 1 graphs/<file>.phi`, then `apsp
 
 | cell | n | max degree | diameter | apsp.c | edge-list sha256 |
 |---|---|---|---|---|---|
-| (7,7) | 23,438 | 7 | 7 | RESULT VALID d=7 D=7 n=23438 | debe7e451970a59f790c0e08830bb2232355c071dd7f9a9074e9c4515bdc049e |
+| (7,7), m = 1 | 23,438 | 7 | 7 | RESULT VALID d=7 D=7 n=23438 | debe7e451970a59f790c0e08830bb2232355c071dd7f9a9074e9c4515bdc049e |
+| (7,7), m = 4 | 23,444 | 7 | 7 | RESULT VALID d=7 D=7 n=23444 | 17b756eb35a7d77dd27760c4f601c92b221cc99b6b6c6ce9154fc34e86a828f9 |
+| (7,7), m = 12 | 23,460 | 7 | 7 | RESULT VALID d=7 D=7 n=23460 | 2ee0fb8fa2e3258e855e595b8769426fbe8947fc26912e02fb9540d0198eb44a |
 | (9,7) | 117,650 | 9 | 7 | RESULT VALID d=9 D=7 n=117650 | 94303a1b4845c9112504d773c89fe751b136b6efef320d04242c70c46f555385 |
 
 The Haar files (haar_gen3 format, the brief's format) are in `research/frontier/sols/`:
@@ -81,10 +83,16 @@ point t, or b → M → φ⁻¹(M) → t for an unreached line t, and the rest a
 
 The final graphs were then checked from scratch by apsp.c (all pairs, no symmetry or theory assumed): VALID.
 
+**Several points (`hexd7/plusm.c`).** Unhook m points p_i, each with its own gadget x_i, w_i, for n = 6P + 2m.
+- The gadget points are p_1 and points collinear with it (pairwise distance ≤ 4); the gadget lines are a line L* and
+  lines meeting it. Then the gadget vertices are within 6 of each other.
+- φ starts random (φ(p_i) = L_i). The score is the number of vertices beyond distance 7 from the 4m sources a_i, b_i,
+  x_i, w_i, computed by bit-parallel BFS (64 sources per pass). The moves are the same targeted swaps.
+- q = 5, m = 4: 23,444 (90 s). m = 12: 23,460 (37,929 moves, 36 s). Both RESULT VALID by apsp.c.
+- Files: `graphs/d7D7_hex5_plus8.*` and `graphs/d7D7_hex5_plus24.*` (edges.gz, phi, apsp.txt). The m = 12 edge list
+  is written by plusm.c directly; rebuild it from the .phi with the same gadget choice.
+
 **Remarks.**
-- Several points can be unhooked, each with its own gadget, for +2 per point, as long as the conditions for
-  different points can be met together and the gadget vertices stay within 6 of each other. Not pursued for time
-  (it only moves the ratio by 2/n per point).
 - The same idea should work for every prime power q (so for all the (2k+1)·H(q) cells of the D = 7 column with
   k = 1). I checked only q = 5 and 7 (and q = 9 below).
 - A first, failed attempt (§5.1) used a non-symmetric gadget on edges inside one copy, with φ fixed. The working

@@ -7,7 +7,7 @@
    Pairs avoiding every p_i, L_i, x_i, w_i keep the routes of the 3-copy proof; by Z3 symmetry it suffices to check
    the sources a_i = (p_i, 0), b_i = (L_i, 1), x_i, w_i. Score = vertices beyond distance 7 from those sources.
    phi starts random (with phi(p_i) = L_i) and is improved by swapping images (targeted, as in plus2ls.c).
-   Usage: plusm HFILE m seconds seed OUT.edges [OUT.phi]  -> writes the edge list when the score reaches 0. */
+   Usage: plusm HFILE m seconds seed OUT.edges [OUT.phi [R]]  (R: cluster radius, default 2)  -> writes the edge list when the score reaches 0. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -76,7 +76,7 @@ static void bfs_inc(int s, int *d) {   /* distances inside one copy of the incid
         else { for (int i = 0; i < K; i++) { int w = PL[(v - P) * K + i]; if (d[w] < 0) { d[w] = d[v] + 1; queue[t++] = w; } } } }
 }
 int main(int argc, char **argv) {
-    if (argc < 6) { fprintf(stderr, "usage: plusm HFILE m seconds seed OUT.edges [OUT.phi]\n"); return 2; }
+    if (argc < 6) { fprintf(stderr, "usage: plusm HFILE m seconds seed OUT.edges [OUT.phi [R]]\n"); return 2; }
     FILE *f = fopen(argv[1], "r"); if (!f || fscanf(f, "%d %d", &P, &q) != 2) return 2; K = q + 1;
     PL = malloc(sizeof(int) * P * K); LP = malloc(sizeof(int) * P * K); int *cnt = calloc(P, sizeof(int));
     for (int l = 0; l < P; l++) for (int i = 0; i < K; i++) { int y; if (fscanf(f, "%d", &y) != 1) return 2; PL[l * K + i] = y; LP[y * K + cnt[y]++] = l; }
@@ -89,8 +89,8 @@ int main(int argc, char **argv) {
     int Lstar = -1; for (int l = 0; l < P && Lstar < 0; l++) if (dp[P + l] == 5) Lstar = l;   /* a line at distance 5 from p_1 */
     bfs_inc(P + Lstar, dl);
     int *candP = malloc(sizeof(int) * P), nP = 0, *candL = malloc(sizeof(int) * P), nL = 0;
-    for (int y = 0; y < P; y++) if (dp[y] <= 2) candP[nP++] = y;
-    for (int l = 0; l < P; l++) if (dl[P + l] <= 2) candL[nL++] = l;
+    int R = argc > 7 ? atoi(argv[7]) : 2;   /* cluster radius: gadget points within R of p_1, gadget lines within R of L* */
+    for (int r = 0; r <= R; r++) { for (int y = 0; y < P; y++) if (dp[y] == r) candP[nP++] = y; for (int l = 0; l < P; l++) if (dl[P + l] == r) candL[nL++] = l; }
     if (m > nP || m > nL) { fprintf(stderr, "m too large (max %d)\n", nP < nL ? nP : nL); return 2; }
     GP = malloc(sizeof(int) * m); GL = malloc(sizeof(int) * m); gidP = malloc(sizeof(int) * P); gidL = malloc(sizeof(int) * P);
     for (int i = 0; i < P; i++) gidP[i] = gidL[i] = -1;
