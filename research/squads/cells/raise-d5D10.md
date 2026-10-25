@@ -139,6 +139,36 @@ spend 30 min on (batch F).
 
 pgl 11 × Z37 (seeds 2 and 3), sl 11 × Z37 (seed 2), psl 11 × Z74 (seed 2).
 
+## Batch F results (30 min each, orbit k = 3, f = 2, finished 11:13 UTC)
+
+| group | N | seed | best | evals |
+|---|---|---|---|---|
+| pgl 11 × Z37 | 48,840 | 2 | 28 | 41.7M |
+| pgl 11 × Z37 | 48,840 | 3 | 28 | 42.0M |
+| psl 11 × Z74 | 48,840 | 2 | 51 | 45.3M |
+| sl 11 × Z37 | 48,840 | 2 | 71 | 43.5M |
+
+The two pgl 11 × Z37 seeds both stop at exactly 28, which suggests a structural floor for that group rather than search noise.
+
+## Batch G: orbit screen on metacyclic groups (60 s each, N = 47,881–48,300, k = 6–60, faithful actions)
+
+16 groups picked by a filter (faithful action of Z_k on Z_m, gcd(r−1, m) ≤ 2, order-3 scaling u exists), e.g. meta
+2179 22 61, meta 4358 11 475, meta 1143 42 2 (the voltage session's N = 48,006 family, r = 2). Best costs: 119 to
+39,201. None close. Metacyclic scalings collide, as the structured-search note predicted.
+
+## Stop assessment (11:20 UTC)
+
+- Solved so far: pgl 19 × Z7 at N = 47,880 (the record). That is the only group in these screens that solved.
+- Random S on the metacyclic leads and the matrix products stalls at cost 1–4 after about 25M evaluations per run.
+- Orbit (k = 3, f = 2) on every other group above 47,880 that I screened stalls at 28 or higher. The closest are the
+  pgl 11 × Z37 family (28) and sl 19 × Z7 (3, but same order 47,880, so it cannot raise the record).
+- Metacyclic orbit screens are far (best ≥ 119).
+
+I'm stopping here: these methods look unlikely to raise the record further within the window, and the next step needs
+more compute than this session has. Untried, for the coordinator: the k = 5 orbit on A5-type bases (structurally blocked
+by the cyclic factor, see above); longer runs of sl 19 × Z7 at order 47,880 with other conjugation classes; and
+orbit screens on PSL(2,q) × Z_n for q with more order-3 classes.
+
 ## Status
 
 Record raised to 95,760 (pgl 19 × Z7, orbit k = 3, f = 2). Next: scan the orbit route over more groups at N > 47,880.
