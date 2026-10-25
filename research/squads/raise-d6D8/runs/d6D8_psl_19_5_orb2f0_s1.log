@@ -1,0 +1,6 @@
+group psl 19 x Z_5, N=17100, identity 855, H order 45, rows 380, threads 1, setup 0.00s
+wide rows: HW order 95, rows 180, setup 0.00s
+alpha: conj by mat(3,16,16,16) (index 1213), z -> 4 z on Z_5
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 19 (+e); mu = 56.60, mu/k = 28.30, fixed-point misses ~ 1.15
+start cost=299
+t=30 steps=188462 evals=1507697 cost=16 best=14 T=0.53

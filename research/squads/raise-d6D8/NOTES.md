@@ -19,3 +19,22 @@ Table value 29,790; Moore bound 195,312. Any Haar graph with 2|G| > 31,680 is a 
 
 ## Log
 (append below: time, what ran, result)
+
+- 08:07-08:22 wave 1 (ORBIT="2 3 0", 900 s, seed 1, THREADS=1), all NO solution:
+  pgl 8 32 (N 16128, fix 15) best 8 after 9.5e7 evals; sl 7 48 (16128, fix 15) best 8; psl 13 15 (16380, fix 11) best 10;
+  psl 11 25 (16500, fix 11) best 14. Plateaus form within ~60-120 s and do not move (same pattern as table-squad).
+  Reference: psl 11 24 (15840, fix 23) solved in 3.3e5 evals (24 s), random-sample min 5 (20k samples) vs 8-12 at 16k.
+
+## Alpha sweep (08:25-08:31): alpha_sweep.sh, ALPHA=index over all Q elements, RANDORB=5000, k=2 m=3 f=0
+(tsv in alpha_sweep/, min = best random sample cost in elements; the winner's default alpha has min 5)
+- psl 11 x Z24 CONTROL (N 15840): best min 4 (index 291), default alpha 557 min 5; 56 valid alphas, min 4..11.
+- pgl 8 x Z32 (16128): best min 14 (106); sl 7 x Z48 (16128): best 17; psl 13 x Z15 (16380): best 10 (index 0);
+  psl 11 x Z25 (16500): best 20. None close to the control: the 16k candidates are not winner-like for any alpha.
+
+## Wider screen 15841-22000 (5000 samples, auto alpha): screen_2_3_0_15841_22000.txt
+- best by min/p1: psl 19 x Z5 (N 17100, mu 56.6): min 18, p1 50; psl 17 x Z7 (17136) min 43; sl 13 x Z8 (17472) min 28;
+  psl 13 x Z16 (17472) min 28; prod psl 3 x psl 7 x Z8 (16128) min 20 (table-squad: floor 5 for this group).
+- Effort-law caveat: wave 1 (15-min runs at N 16k, mu_A ~ 21) used ~8e7 evals each and plateaued at 8-14, far above the law's
+  ~5e6 prediction. So the law is not reliable for these groups; treat predictions as optimistic.
+
+## Wave 2 (started 08:35): 20-min runs, seed 1 and 2 on psl 19 x Z5 (N 17100), seed 1 on sl 13 x Z8 (17472), psl 13 x Z16 (17472).

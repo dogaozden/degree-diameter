@@ -1,0 +1,6 @@
+group sl 13 x Z_8, N=17472, identity 1248, H order 56, rows 312, threads 1, setup 0.00s
+wide rows: HW order 104, rows 168, setup 0.00s
+alpha: conj by mat(9,5,7,4) (index 1580), z -> 3 z on Z_8
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 65.31, mu/k = 32.65, fixed-point misses ~ 1.47
+start cost=8740
+t=30 steps=209529 evals=1676233 cost=16 best=11 T=0.53
