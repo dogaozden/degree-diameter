@@ -41,3 +41,35 @@ Moore bound 10,922. Any Haar graph with N ≥ 1,561 (2N ≥ 3,122) is a new reco
   (scratchpad fam.py / fam2.py; BFS on the Haar graph, both sides, D = 7) runs each family in ~2 s.
 - Validation: it reproduces the record group (S5 × Z13: hit in 0.3 s). Non-cyclic results: no hit for A5×Z2²×Z7,
   A5×Z3×Z9, A5×Z3³ (all order-3 automorphisms with ≤ 3 fixed points), nor S5×Z14, A5×Z28.
+
+### 4. Frobenius Z_p ⋊ Z_3 times abelian factors (exhaustive, fam2.py / sweep2.py)
+- Groups Z_p ⋊ Z_3 (p ≡ 1 mod 3, inner order-3 conjugation, small centraliser) times every abelian A with
+  3p·|A| ∈ [1561, 1700], at most 3 invariant factors. 82 (G, α, M) families with |Fix(α)| ≤ 20 done exhaustively; the
+  6 families with |Fix| = 60–132 were skipped (too slow, and their Fix is far above the record's 6).
+  Smallest |Fix| checked: 3 (Z_43⋊Z_3 × Z_13 and Z_79⋊Z_3 × Z_7, both order 1,677 / 1,659): no hit. Also no hit with
+  |Fix| 6, 9, 12, 15, 18. Full log: raise-d5D7-tools/sweep2_out.txt.
+- Bug found and fixed on the way: a wrong cube root of unity mod 67 and mod 79 gave a non-affine group (order 35,376);
+  corrected (sweep2.py now uses r = 29 and 23).
+
+## Status (end of session)
+- Record **not raised**. Best N checked: none at N ≥ 1561 solvable under the methods above.
+- Families exhausted (all k = 3 orbit-symmetric, exhaustive per (G, α)):
+  - haar_sym grammar, N ∈ [1561, 1700], groups with an order-3 automorphism (~100 candidates, default α and AR).
+  - A5 × abelian (Z2²×Z7, Z3×Z9, Z3³, Z28), S5 × abelian (Z14), PSL/SL/PGL(2,5)×Z14, Z_p ⋊ Z_3 × abelian (above).
+  - Minima for the best of these: 30 (SL(2,5)×Z14), 42 (PSL(2,5)×Z28), 48 (PGL(2,5)×Z14), 52 (meta 133·12·8).
+- Not tried (honest gaps): non-Haar bi-Cayley lifts with a larger base (the record came from a voltage lift session);
+  groups outside the grammar and outside the abelian-factor extensions above (e.g. AΓL(1,8)×Z10, AΓL(1,9)×Z11,
+  PGL(2,7)×Z5 under all α, S4 and A4 products); α with several different z-scalings on the same group beyond the
+  automatic choice; the plain (non-symmetric) search at N ≥ 1561, which the annealer cannot reach (plateau at cost ~30).
+- Judgement: the cell does not move with symmetric-orbit Haar graphs over the groups available here. A raise
+  probably needs a new group source (a generic small-group library) or a non-Haar bi-Cayley/voltage search over a
+  2-vertex base, which is beyond a Haar-worker's remit. Coordinator's call.
+
+## Resume notes (for a fresh session)
+- Binaries: `gcc -O3 -march=native -fopenmp -o haar_sym research/structured/haar_sym.c -lm`.
+- Screen one (G, α) family exhaustively: `ORBIT="3 1 2" RANDORB=300000 ./haar_sym 5 7 1 1 8 /dev/null GROUP n`
+  (min = family optimum). A hit is written with the same command and `out` path.
+- Exact enumerator for perm-group bases × abelian factors: `python3 -I research/squads/cells/raise-d5D7-tools/sweep2.py`
+  (edit the list at the bottom). `fam.py S5 13` reproduces the record (hit in 0.3 s). Verify any hit with
+  `research/frontier/build_haar2.py`.
+- Do not use the annealer in orbit mode for this cell: it stalls on its start plateau within 30 s.
