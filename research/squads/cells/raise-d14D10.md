@@ -27,6 +27,11 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 
 ## Result so far
 
+- **RAISED again: (14,10) >= 1,329,489,288** (N = 664,744,644 = |PSL(2,163) x Z_307|, orbit k=3, m=4, f=2, mu = 20.8,
+  1,649 evals, 1,474 s, fix = 80). Solution research/frontier/sols/d14D10_psl_163_307_orb3_s2_n1329489288.txt; independent
+  check research/structured/runs/d14D10_psl_163_307_orb3_s2.lowmem.txt (haarcheck_psl, VALID d=14 D=10, ecc 10 from both sides).
+  Running record is now 1,329,489,288 (was 1,327,956,432 before this, 1,326,627,120 at the start).
+
 - **RAISED: (14,10) >= 1,327,956,432** (was 1,326,627,120, +1,329,312, +0.10 %). PSL(2,263) x Z_73, N = 663,978,216,
   orbit k=3, m=4, f=2, mu = 20.3, solved in 153 evals (215 s, 4 threads, seed 2). Solution:
   research/frontier/sols/d14D10_psl_263_73_orb3_s2_n1327956432.txt. Checks: research/structured/runs/d14D10_psl_263_73_orb3_s2.lowmem.txt
@@ -49,3 +54,4 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   the unsolved SL(2,151) x Z193 had fix 149 and stuck at cost 3. Queue 2 is therefore PSL first:
   PSL(2,163) x Z_307 (N 664,744,644), PSL(2,199) x Z_169, PSL(2,271) x Z_67, PSL(2,169) x Z_277 (all 3000 s, seed 2).
   Started 08:27 UTC.
+- PSL(2,163) x Z_307 solved (N 664,744,644), see Result so far. Queue 2 continues: PSL(2,199) x Z_169 started 08:53.
