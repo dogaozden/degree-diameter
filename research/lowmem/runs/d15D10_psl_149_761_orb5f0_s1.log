@@ -1,0 +1,17 @@
+start 2026-10-25T12:37:02Z | ORBIT=5 3 0 ORBIT=5 3 0 | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_psl_149_761_orb5f0_s1.txt psl 149 761
+group psl 149 x Z_761, N=1258617900, rows 11100 of 113389 bits (1772 words), memory 0.31 GB per thread, threads 1, setup 1.25s
+alpha: conj by mat(0,148,1,40), z -> 67 z on Z_761
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 74 (+e); mu = 26.44, mu/k = 5.29, fixed-point misses ~ 2.19
+start cost=18 (first eval 1.25s)
+t=37 steps=5 evals=41 cost=9 best=7 T=0.41
+t=68 steps=9 evals=73 cost=8 best=7 T=0.15
+t=98 steps=13 evals=105 cost=8 best=7 T=0.15
+t=135 steps=18 evals=145 cost=8 best=7 T=0.15
+t=171 steps=23 evals=185 cost=6 best=6 T=0.15
+t=206 steps=28 evals=225 cost=2 best=2 T=0.15
+t=241 steps=33 evals=265 cost=2 best=2 T=0.15
+t=272 steps=37 evals=297 cost=2 best=2 T=0.15
+t=302 steps=41 evals=329 cost=2 best=2 T=0.15
+t=339 steps=46 evals=369 cost=2 best=2 T=0.15
+t=375 steps=51 evals=409 cost=2 best=2 T=0.15
+t=405 steps=55 evals=441 cost=2 best=2 T=0.15

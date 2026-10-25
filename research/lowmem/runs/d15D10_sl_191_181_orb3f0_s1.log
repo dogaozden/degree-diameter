@@ -1,0 +1,18 @@
+start 2026-10-25T12:37:02Z | ORBIT=3 5 0  | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_sl_191_181_orb3f0_s1.txt sl 191 181
+group sl 191 x Z_181, N=1261150080, rows 36480 of 34571 bits (541 words), memory 0.32 GB per thread, threads 1, setup 1.26s
+alpha: conj by mat(0,190,1,1), z -> 48 z on Z_181
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 191 (+e); mu = 27.45, mu/k = 9.15, fixed-point misses ~ 0.54
+start cost=23 (first eval 1.22s)
+t=32 steps=4 evals=33 cost=12 best=12 T=0.50
+t=65 steps=8 evals=65 cost=10 best=10 T=0.16
+t=100 steps=12 evals=97 cost=10 best=10 T=0.15
+t=133 steps=16 evals=129 cost=10 best=10 T=0.15
+t=165 steps=20 evals=161 cost=10 best=10 T=0.15
+t=197 steps=24 evals=193 cost=10 best=10 T=0.15
+t=228 steps=28 evals=225 cost=10 best=10 T=0.15
+t=261 steps=32 evals=257 cost=10 best=10 T=0.15
+t=294 steps=36 evals=289 cost=10 best=10 T=0.15
+t=327 steps=40 evals=321 cost=10 best=10 T=0.15
+t=357 steps=44 evals=353 cost=10 best=10 T=0.15
+t=389 steps=48 evals=385 cost=3 best=3 T=0.15
+t=423 steps=52 evals=417 cost=3 best=3 T=0.15

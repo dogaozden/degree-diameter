@@ -1,31 +1,40 @@
 # Squad round d15D10-r2: shared rules (read first)
 
-Goal of the job: beat bipartite (Δ, D) = (15,10), table 2,300,326,510 vertices. Done: 2,325,625,680 (independently VALID)
-and self-checked 2,454,528,720 and 2,467,618,800 (μ = 16.4, 18.2). Opus runs rungs at μ = 23.7, 27.5, 27.8 now; one
-evaluation there costs ~1-2 s, and evaluations-to-solve grow roughly like e^(μ/4). Round 1 (research/squads/d15D10-r1/
-and research/squads/LOG.md) found the defaults K=8, TARGP=70, ORBW=1, ORBIT "3 5 0" fine, alpha choice irrelevant,
-k=5 a tie. Round 2 asks for ideas that cut evaluations-to-solve, tested on the cheap proxy (15,8)
-SL(2,59) x Z43 (N = 8,828,760, mu = 23.0; ~0.01 s per evaluation; baseline solves in ~1,000-6,000 evaluations).
+Goal of the job: beat bipartite (Δ, D) = (15,10), table 2,300,326,510 vertices. We hold 2,325,625,680 (independently VALID)
+and self-checked 2,454,528,720 and 2,467,618,800, all with orbits of size k = 3 (ORBIT="3 5 0") on SL(2,p) x Z_n.
 
-Tool: `research/lowmem/haar_lean` (already built; source haar_lean.c, read its header comment and README.md there).
+NEW IDEA OF THIS ROUND (Opus, 2026-10-25): orbits of size k = 5 (ORBIT="5 3 0": S = 3 orbits of an automorphism alpha of
+order 5) on PSL(2,p) x Z_n. Model (research/structured/STRUCTURE.md section 1): the uncovered set comes in alpha-orbits, so
+P(cost 0) ~ exp(-mu_eff) with mu_eff = mu/k + F, F = |Fix(alpha)| exp(-lambda/k), lambda = W/N ~ 17.6 at (15,10). For k = 3,
+F is tiny but mu/3 is big; for k = 5, mu/5 is smaller but F = |Fix| * 0.03 matters, and |Fix| = (p -+ 1)/2 for PSL (p -+ 1
+for SL), so small p helps (p ~ 60-150 gives F ~ 1-2). First data: at mu ~ 26, random symmetric S have median 6-7
+"units" for k = 5 against ~11 for k = 3, and k = 5 annealing reaches cost 2-5 in ~250 evaluations where k = 3 sits at 10.
+This round maps where k = 5 (and k = 15) works best.
+
+Tool: `research/lowmem/haar_lean` (already built; source haar_lean.c, read its header comment and ../lowmem/README.md).
   Usage: `haar_lean d D seconds seed K outfile sl|psl p n` (G = SL(2,p) or PSL(2,p) times Z_n, p prime, gcd(p,n)=1).
-  Env: `ORBIT="k m f"` (default for d=15: "3 5 0" = 5 free orbits of an automorphism alpha of order 3), `RANDORB=m`
-  (print cost statistics of m random symmetric S, no search), `TARGP`, `ORBW`, `RESTART`, `COOL`, `REHEAT`, `TMIN`, ...
-  Cost = number of group elements not covered; 0 = diameter <= D. mu = N exp(-W/N) is the Poisson difficulty
-  (research/frontier/SIZE_LAW.md); the orbit method's effective difficulty is about mu/3 (research/structured/STRUCTURE.md).
-  `research/lowmem/mu_list.py d D LO HI [k] [NMAX]` lists SL/PSL(2,p) x Z_n with N in [LO,HI] and their mu.
+  Env: ORBIT="k m f" (f + k m = 15), RANDORB=m (cost statistics of m random symmetric S, no search), LEVELS=1 (with
+  RANDORB: one line per sample on stderr: ball sizes, cost, units), TARGP, ORBW, K is the 5th argument, AR (r on Z_n),
+  ATRACE. Cost = number of group elements not covered; 0 = diameter <= D.
+  RANDORB prints e.g. "RANDORB ... min=.. p10=.. median=.. mean=.. mu=.. time=.. units: min=.. p10=.. median=.. mean=.."
+  where units = (uncovered free alpha-orbits) + (uncovered alpha-fixed points): the Poisson count whose P(0) matters.
+  MEDIAN UNITS IS THE MAIN SCORE OF THIS ROUND (lower is better; compare at similar mu).
+  Group lists: `cd research/lowmem && python3 klist.py 15 10 LO HI k [PMIN] [PMAX] [NMAX] 2300326510` lists SL/PSL(2,p) x Z_n
+  usable with orbit size k (order-k element exists, all prime factors of n = 1 mod k), with mu, F, mu_eff, |Fix|, and the
+  gain over the table. For the (15,8) proxy use `python3 klist.py 15 8 8.5e6 9.6e6 k`.
 
-Machine (4 cores, 16 GB) is shared with 3 long Opus searches and a checker. So:
-  - Big runs (N > 10^8, e.g. every (15,10) run) MUST go through the lock, one at a time for the whole squad:
-      `flock /tmp/claude-0/squad-heavy.lock timeout 300 nice -n 10 <command>`
-    Keep each big command short (RANDORB=12..20 takes ~15-40 s at N ~ 1.2e9, one sample ~1-2 s).
-  - Small runs (N < 2*10^7, e.g. (15,8) proxies) go through one of two shared light slots (at most 2 squad proxy runs on
-    the box at once): `research/squads/d15D10-r2/slot.sh timeout 120 nice -n 10 <command>` (it waits for a free slot).
+Machine (4 cores, 15 GB) is shared with 3 long Opus searches. So:
+  - Full-scale runs ((15,10), N ~ 1.2-1.3e9, 0.31 GB, ~1-1.5 s per sample) MUST go through the heavy lock, one at a time
+    for the whole squad:  `flock /tmp/claude-0/squad-heavy.lock timeout 300 nice -n 10 env ... ./haar_lean 15 10 1 SEED 8 /dev/null FAM P N`
+    Keep each command short: RANDORB=24 takes ~30-45 s. At most 8 full-scale commands per card.
+  - Proxy runs ((15,8), N < 2e7, ~0.01 s per evaluation) go through one of two shared light slots:
+    `research/squads/d15D10-r2/slot.sh timeout 130 nice -n 10 env ... ./haar_lean 15 8 120 SEED 8 /dev/null FAM P N`
   - THREADS=1 (the default). No git commits. Write only inside your card folder research/squads/d15D10-r2/<card>/.
-  - Time box: about 15 minutes of wall clock for the whole card.
+    Run commands from research/lowmem (cd there first), save raw output into your folder.
+  - Time box: about 20 minutes of wall clock for the whole card (the lock may make you wait; that is expected).
 Output: append ONE json line to research/squads/d15D10-r2/scoreboard.jsonl (use `>>`, one line, valid JSON):
   {"card": "c5", "idea": "<one line>", "code": "<path or ->", "command": "<exact best command>", "score": <number>,
    "valid": true|false, "next": "<one line>"}
-  plus a short results.txt in your folder (one line per run: group, mu, settings, numbers). Reply to Opus in at most 5 lines.
-If a run writes a solution file with cost 0, keep it in your folder and say so (valid = true means haar_lean's own full
-check passed; Opus re-checks independently).
+  plus a short results.txt in your folder (one line per run: group, k, mu, F, the RANDORB numbers or evals-to-solve).
+  Reply to Opus in at most 5 lines.
+If a run writes a solution file with cost 0 (only when outfile is not /dev/null), keep it in your folder and say so.

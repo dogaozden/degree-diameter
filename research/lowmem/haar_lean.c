@@ -28,7 +28,8 @@
  *      TMIN (0.15), RESTART (0/1), ORBW (weight of an uncovered fixed element, default 1), UCAP (stored uncovered
  *      elements, 65536), DENSEF (frontier size above which a level is done densely, default N/2048),
  *      AR (r on Z_n), ATRACE (trace of the conjugating element), LEVELS=1 (print ball sizes),
- *      RANDORB=m (cost statistics of m random symmetric S, no search), SOLFILE=f (cost + full check of a solution
+ *      RANDORB=m (cost statistics of m random symmetric S, no search; "units" = uncovered free alpha-orbits + uncovered
+ *      fixed points, the Poisson count that decides P(cost 0)), SOLFILE=f (cost + full check of a solution
  *      file's S, no search), BENCH=m (time m evaluations).
  * Build: gcc -O3 -march=native -fopenmp -o haar_lean haar_lean.c -lm
  */
@@ -470,16 +471,21 @@ int main(int argc, char **argv) {
     }
     if (getenv("RANDORB")) {
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m); double sm = 0, t1 = now();
+        double *u = malloc(sizeof(double) * m), su = 0;   /* units = uncovered free alpha-orbits + uncovered fixed points */
         for (int t = 0; t < m; t++) {
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){-1, -1, -1, -1 - ostart(j) - i, -1};
             for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); make_tables(o[i], TF[u], TI[u]); } }
             v[t] = cost(C[0], TF, TI, NOBOUND); sm += v[t];
-            if (LEVELS) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld\n", v[t]); }
+            { long long fm = fixmiss(C[0]); u[t] = (double)(v[t] - fm) / OK_ + fm; su += u[t]; }
+            if (LEVELS) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld units %.1f\n", v[t], u[t]); }
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) saved = write_solution(C[0], out);
         }
         for (int i = 1; i < m; i++) { long long x = v[i]; int j = i - 1; while (j >= 0 && v[j] > x) { v[j + 1] = v[j]; j--; } v[j + 1] = x; }
-        printf("RANDORB d=%d D=%d group=%s %d x Z_%d N=%lld k=%d m=%d f=%d fix=%lld samples=%d min=%lld p10=%lld median=%lld mean=%.2f mu=%.2f time=%.1f\n",
-               d, D, PSL ? "psl" : "sl", P, NC, N, OK_, OM, OF, NFIX, m, v[0], v[m / 10], v[m / 2], sm / m, mu, now() - t1);
+        for (int i = 1; i < m; i++) { double x = u[i]; int j = i - 1; while (j >= 0 && u[j] > x) { u[j + 1] = u[j]; j--; } u[j + 1] = x; }
+        printf("RANDORB d=%d D=%d group=%s %d x Z_%d N=%lld k=%d m=%d f=%d fix=%lld samples=%d min=%lld p10=%lld median=%lld mean=%.2f mu=%.2f time=%.1f"
+               " units: min=%.1f p10=%.1f median=%.1f mean=%.2f\n",
+               d, D, PSL ? "psl" : "sl", P, NC, N, OK_, OM, OF, NFIX, m, v[0], v[m / 10], v[m / 2], sm / m, mu, now() - t1,
+               u[0], u[m / 10], u[m / 2], su / m);
         return 0;
     }
 
