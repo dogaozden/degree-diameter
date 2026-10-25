@@ -36,3 +36,8 @@ q =  8 (11,8): reachable points <=   26487 <   37449 points per copy: True
 q =  9 (12,8): reachable points <=   41009 <   66430 points per copy: True
 q = 11 (14,8): reachable points <=   87297 <  177156 points per copy: True
 q = 13 (16,8): reachable points <=  165097 <  402234 points per copy: True
+
+## Free relabelling of every copy (not in the thesis): tools/omega_anneal.c (swap two points or two lines of one copy; cost = pairs at distance > 8)
+H(2), types ab, seed 1, all sources: cost 0 after 599 moves; the written graph passes: RESULT VALID d=5 D=8 n=1890
+H(3), types aba, HUBONLY=1 (hub sources), seed 2, 2700 s: RESULT types=aba D=8 n=14560 cost=335 best=327 iters=48444
+  (an earlier all-sources run, seed 1, was at 1,992,272 far pairs after 161 moves when it was stopped for being slow)
