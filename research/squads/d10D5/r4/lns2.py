@@ -81,6 +81,13 @@ def step(sig, Sset, secs, seed):
     for x in S:
         for L in T: v = int(sig[x]) == L; m.AddHint(Y[x, L], v); hv[Y[x, L].Index()] = v
     soft = []
+    ands = {}
+    def AND(a, b):
+        key = (a.Index(), b.Index())
+        if key not in ands:
+            v = m.NewBoolVar(''); m.AddImplication(v, a); m.AddImplication(v, b); ands[key] = v
+            hv[v.Index()] = hv.get(a.Index(), False) and hv.get(b.Index(), False); m.AddHint(v, hv[v.Index()])
+        return ands[key]
     def need(lits):
         if lits is True: return
         if not lits: soft.append(None); return
@@ -93,22 +100,30 @@ def step(sig, Sset, secs, seed):
         const = np.zeros(N, bool)
         xs = np.nonzero(PM[p] & ~isfree)[0]; const[PTS[sig[xs[~inS[xs]]]].ravel()] = True
         for w in LOF[p]:
-            if isfreeL[w]: continue
-            z = sinv[w]; us = sinv[LOF[z]]; ok = ~isfree[us] & ~inS[us]; const[us[ok]] = True
+            if isfreeL[w] or inT[w]: continue
+            z = sinv[w]; us = sinv[LOF[z]]; ok = ~isfree[us] & ~inS[us] & ~inT[LOF[z]]; const[us[ok]] = True
         for j in range(k):
             if A[i, j]: const[PTS[sig[F[j]]]] = True
         opp = ~PM[p]; opp[p] = False
         for u in np.nonzero(opp & ~const)[0]:
             u = int(u); lits = [Y[int(x), L] for x in xs[inS[xs]] for L in T if u in PTS[L]]
-            if inS[u]:
-                for w in LOF[p]:
-                    if isfreeL[w]: continue
-                    z = int(sinv[w]); lits += [Y[u, L] for L in T if z in PTS[L]]
+            for w in LOF[p]:
+                w = int(w)
+                if isfreeL[w]: continue
+                if not inT[w]:
+                    if inS[u]:
+                        z = int(sinv[w]); lits += [Y[u, L] for L in T if z in PTS[L]]
+                else:
+                    for z in S:
+                        if inS[u]:
+                            lits += [AND(Y[z, w], Y[u, int(L2)]) for L2 in LOF[z] if inT[L2] and z in PTS[L2]]
+                        elif not isfree[u] and z in PTS[sig[u]]:
+                            lits.append(Y[z, w])
             need(lits)
         l = int(sig[p]); const = np.zeros(N, bool)
         Ms = np.nonzero(LM[l] & ~isfreeL)[0]; Mf = Ms[~inT[Ms]]; const[LOF[sinv[Mf]].ravel()] = True; Mv = Ms[inT[Ms]]
         for y in PTS[l]:
-            if isfree[y]: continue
+            if isfree[y] or inS[y]: continue
             zs = PTS[sig[y]]
             for z in zs:
                 if not isfree[z] and not inS[z]: const[sig[z]] = True
@@ -118,10 +133,20 @@ def step(sig, Sset, secs, seed):
         for mm in np.nonzero(oppl & ~const)[0]:
             mm = int(mm); lits = [Y[int(y), int(M)] for M in Mv for y in S if mm in LOF[y]]
             for y in PTS[l]:
+                y = int(y)
                 if isfree[y]: continue
-                for z in PTS[sig[y]]:
-                    z = int(z)
-                    if not isfree[z] and inS[z] and inT[mm]: lits.append(Y[z, mm])
+                if not inS[y]:
+                    for z in PTS[sig[y]]:
+                        z = int(z)
+                        if not isfree[z] and inS[z] and inT[mm]: lits.append(Y[z, mm])
+                else:
+                    for L2 in T:
+                        for z in PTS[L2]:
+                            z = int(z)
+                            if isfree[z]: continue
+                            if not inS[z]:
+                                if int(sig[z]) == mm: lits.append(Y[y, L2])
+                            elif inT[mm]: lits.append(AND(Y[y, L2], Y[z, mm]))
             need(lits)
     # D1 (FLAGDEL flags): sources are fixed (preimages of lines through p, lines sigma(y) for y on l)
     for i in FD:
@@ -170,13 +195,6 @@ def step(sig, Sset, secs, seed):
                         else: lits += [Y[y2, L2] for L2 in T if zt in PTS[L2]]
                 need(True if ok else lits)
     # coset-0 routes for unmixed pairs touching S (points) or T (lines)
-    ands = {}
-    def AND(a, b):
-        key = (a.Index(), b.Index())
-        if key not in ands:
-            v = m.NewBoolVar(''); m.AddImplication(v, a); m.AddImplication(v, b); ands[key] = v
-            hv[v.Index()] = hv.get(a.Index(), False) and hv.get(b.Index(), False); m.AddHint(v, hv[v.Index()])
-        return ands[key]
     for a, b in UPl:
         if isfree[a] or isfree[b]: continue
         if not inS[a] and not inS[b]:
@@ -213,8 +231,12 @@ secs = float(os.environ.get('SECS', 600)); stp = float(os.environ.get('STEP', 20
 rng = random.Random(int(os.environ.get('SEED', 1)))
 cur, parts = total(sig); print('start', cur, parts, flush=True)
 sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
-banned = isfree.copy()
-for p in F: banned[sinv[LOF[p]]] = True; banned[PTS[sig[p]]] = True
+banned = isfree.copy(); second = np.zeros(N, bool)
+for i, p in enumerate(F):
+    if i in FD: banned[sinv[LOF[p]]] = True; banned[PTS[sig[p]]] = True
+    else: second[sinv[LOF[p]]] = True; second[PTS[sig[p]]] = True
+second &= ~banned
+KZ = int(os.environ.get('KZ', 4))
 def neigh(sig, size):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
@@ -233,8 +255,15 @@ def neigh(sig, size):
             Ms = [int(M) for M in np.nonzero(LM[src])[0]]; rng.shuffle(Ms)
             cand += [int(sinv[M]) for M in Ms[:10]] + [int(w) for w in PTS[t]]
     rng.shuffle(cand)
-    Sset = [x for x in dict.fromkeys(cand) if not banned[x]][:2 * size // 3]
-    rest = [x for x in range(N) if not banned[x] and x not in set(Sset)]; rng.shuffle(rest)
+    Sset = []; kz = KZ
+    for x in dict.fromkeys(cand):
+        if banned[x]: continue
+        if second[x]:
+            if kz <= 0: continue
+            kz -= 1
+        Sset.append(x)
+    Sset = Sset[:2 * size // 3]
+    rest = [x for x in range(N) if not banned[x] and not second[x] and x not in set(Sset)]; rng.shuffle(rest)
     return Sset + rest[:size - len(Sset)], bp, bl
 def write(sig):
     with open(out, 'w') as f:
@@ -242,6 +271,12 @@ def write(sig):
         f.write(' '.join(map(str, sig)) + '\n' + ' '.join(map(str, sig)) + '\n')
         f.write(' '.join(tok[7 + 2 * N:7 + 3 * N]) + '\n' + ' '.join(tok[7 + 3 * N:7 + 4 * N]) + '\n')
         f.write(' '.join(str(3 * v) for v in nu) + '\n')
+def c0count(sig):
+    sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
+    nf = ~isfree
+    rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
+    return int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
+tabu = []
 if os.environ.get('FLIPS'):
     t0 = time.time()
     while cur > 0 and time.time() - t0 < secs:
@@ -258,6 +293,25 @@ if os.environ.get('FLIPS'):
             fl = rng.choice([(y1, s_), (y1, M), (y2, M), (y2, t)])
         if (fl[0], fl[1]) in dele: continue
         fi = fl[1] * 8 + [int(x) for x in PTS[fl[1]]].index(fl[0])
+        if os.environ.get('BESTFLIP'):   # score all flags on the geodesics of up to 3 bad pairs, take the least damaging
+            cands = set()
+            for a, b in [tuple(int(v) for v in x) for x in bp[:3]]:
+                for c in [c for c in range(N) if PM[a, c] and PM[b, c]]:
+                    L1 = [int(L) for L in LOF[a] if c in PTS[L]][0]; L2 = [int(L) for L in LOF[c] if b in PTS[L]][0]
+                    for (x, L) in ((a, L1), (c, L1), (c, L2), (b, L2)):
+                        if (x, L) not in dele: cands.add(L * 8 + [int(y) for y in PTS[L]].index(x))
+            for s_, t in [tuple(int(v) for v in x) for x in bl[:3]]:
+                for M in [int(M) for M in range(N) if LM[s_, M] and LM[M, t]]:
+                    y1 = [int(y) for y in PTS[s_] if y in PTS[M]][0]; y2 = [int(y) for y in PTS[M] if y in PTS[t]][0]
+                    for (x, L) in ((y1, s_), (y1, M), (y2, M), (y2, t)):
+                        if (x, L) not in dele: cands.add(L * 8 + [int(y) for y in PTS[L]].index(x))
+            cands = [f for f in cands if f not in tabu]
+            sc = []
+            for f in cands:
+                nu[f] ^= 1; build_unmixed(nu); sc.append((c0count(sig), rng.random(), f)); nu[f] ^= 1
+            build_unmixed(nu); sc.sort(); fi = sc[0][2]
+            print('  best flip candidates', [(c, f) for c, _, f in sc[:5]], flush=True)
+        tabu.append(fi); tabu[:] = tabu[-30:]
         nu_old = nu.copy(); sig_old = sig.copy(); cur_old = cur
         nu[fi] ^= 1; build_unmixed(nu)
         c1, p1 = total(sig); best = (c1, sig.copy())
