@@ -40,7 +40,18 @@ scripts were launched with `bash tools/orbq.sh JOBS OUTDIR` directly.
 | group | N | seconds | seed | result |
 |---|---|---|---|---|
 | psl 7 × Z1609 | 270,312 | 40 (stopped) | 1 | best 198 |
-| (wave 1 in progress) | | | | |
+| sl 16 × Z67 | 273,360 | 900 | 1 | best 3 (4.0·10⁶ evals), not solved |
+| prod sl 5 × sl 5 × Z19 | 273,600 | 900 | 1 | best 4 (3.3·10⁶ evals), not solved |
+| sl 13 × Z127 | 277,368 | 900 | 1 | best 6 (4.6·10⁶ evals), not solved |
+| pgl 16 × Z67 | 273,360 | 900 | 1 | running at 08:18 |
+| sl 16 × Z67 | 273,360 | 3600 | 2 | running (started 08:18) |
+| sl 8 × Z547 | 275,688 | 1800 | 1 | running (started 08:18) |
+| psl 11 × Z421 | 277,860 | 1800 | 1 | running (started 08:18) |
+
+Reading after wave 1: all three finished runs stalled at cost 3–6 (one to two uncovered orbits or fixed points).
+The record at μ 37.9 needed only 4.4·10⁵ evals, so the step from μ 38 to μ 42–50 costs much more than
+10× in evals. Groups with μ ≈ 38–41 above the record are poor on random-S statistics (psl 7 × Z1609, psl 9 × Z751,
+prod psl 3 × psl 3 × Z1879), so the small steps are not reachable by this orbit recipe at the current budget.
 
 ## Notes for a resumed session
 

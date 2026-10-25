@@ -1,0 +1,5 @@
+group sl 8 poly x^3+x+1 x Z_547, N=275688, identity 30632, H order 9, rows 30632, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 9); using haar_gen3's evaluation
+alpha: conj by mat(5,5,6,4) (index 358), z -> 40 z on Z_547
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 8 (+e); mu = 46.22, mu/k = 15.41, fixed-point misses ~ 0.50
+start cost=340
