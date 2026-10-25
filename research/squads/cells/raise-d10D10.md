@@ -161,3 +161,5 @@ Job files and logs: `../../structured/runs/raise-d10D10-r2/` (`jobs_{a,b,c,d}.tx
 ## Status log
 
 - 2026-10-25 14:25 UTC: searches a–d launched.
+- 2026-10-25 15:55 UTC: no solution yet. Best costs after 40–67k evals (~0.11 s/eval with 4 jobs): psl 71 × 181 seed 3: 5;
+  psl 79 × 131 seed 2 (ORBW 5): 5; seed 1 (ORBW 5): 6; seed 3 (no ORBW): 6. Cost 5 = one uncovered orbit or one fixed point.
