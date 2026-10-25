@@ -39,3 +39,7 @@ checked by haar_sym's full check and by haarcheck_psl. The coordinator's check w
 - 15:2x UTC status (wall-clock, 80–85 evals/s per run): a sl 73×Z31 ORBW=3 seed 21: best 3 at 5.2e4 evals;
   c pgl 73×Z31 seed 1: best 7 at 5.1e4; d psl 79×Z49 seed 5: best 4 at 4.0e4; e prod sl 8×psl 19×Z7 ORBW=3 seed 31: best 16 at 1.4e3 (just started).
   Each run has a 15,840 s budget (about 4.4 h), so about 1.2–1.3 million evaluations.
+- 18:50 UTC status: no solve. a sl 73×Z31 ORBW=3 (seed 21): best 3 at 1.1e6 evals; c pgl 73×Z31 (seed 1): best 3 at 1.1e6;
+  d psl 79×Z49 (seed 5): best 3 at 1.1e6; e prod sl 8×psl 19×Z7 (ORBW=3, seed 31): best 3 at 5.7e5.
+  All four have sat at cost 3 for more than an hour (since about 17:20 UTC): the cost-3 floor is the same as round 1's
+  sl 73×Z31 and psl 79×Z49 runs (round 1: cost 1 and 3). Each run ends at its 15,840 s budget, about 19:35 UTC.
