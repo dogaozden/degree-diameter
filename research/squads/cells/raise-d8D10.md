@@ -70,3 +70,13 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
   prod psl 5×sl 13×Z31 seed 2 at best 6. sl 25×Z259 stopped at 18.
 - Record still 8,003,856 (sl 83×Z7). The plateau at cost 3 (one uncovered orbit) appears at μ ≈ 38–41.
   Resume: research/structured/tools/orbq.sh with queue files in runs/raise-d8D10/q (bash, not exec).
+
+## Final status (12:05 UTC)
+- Best verified record: 8,003,856 vertices, sl 83 × Z7 (research/frontier/sols/d8D10_sl_83_7_orb3_s3.txt).
+  Prior record at the start of the job: 7,818,096. Gain +2.4 %.
+- After the record, the orbit ladders above 4,001,928 (μ 35–41) all stopped at cost ≥ 3 (one uncovered orbit):
+  psl 43×Z103 seed 1 reached 3.1e6 evaluations at cost 3; seeds 2 and 3 at 6–13 after 2.1–2.7e6. prod psl 5×sl 13×Z31
+  (2 seeds, 3.6e3 s each) at 3 and 6. psl 29×Z331 (21), prod psl 5×sl 7×Z199 (15), prod psl 9×psl 9×Z31 (6),
+  sl 25×Z259 (18) all stopped early. Runs were stopped at 12:05 UTC; none is still running.
+- Judgment: the method's wall for this cell is near μ ≈ 38–41 with these groups. The next rung needs more
+  compute than the 6-hour budget gave, or a new group family (SL(3,q) or a different α, as STRUCTURE.md §7 suggests).
