@@ -1,0 +1,33 @@
+# Independent all-pairs check: (13,7) on 1,063,576 vertices (job check-d7big)
+#
+# Graph: research/frontier/sols/d13D7_hex11_R320_n1063576.sol, branch claude/bipartite-13-7-rhq5z1
+#   (R = 320 points, research/d13D7/sets/R320_c8_coords.txt; the .sol's freed set equals sets/R320_c8_idx.txt
+#   exactly, 320 distinct hexgen indices, both in the same code-sorted point order).
+#   The .sol file itself was not rebuilt with hexgen.c / d7hex; the edge list comes from build_d13D7.py.
+# Checker: research/lifts/coordinator_check/apsp.c on origin/master (md5 d2a78960185746dcfd3a8c952892bf8f).
+#
+# Machine: nproc = 4; free -g:
+#   Mem:  total 15, used 0, free 13, shared 0, buff/cache 2, available 15 (GB); Swap 0
+#   kernel 6.18.44-fc-v153 (sandbox VM)
+#
+# Edge list (apsp.c format: first line n, then "u v" per line):
+#   sha256  3d121a75c5562f4d4fc54154301689e4fe88f4b584ee6e8a0bef15293ce3f09e  d13D7_R320.edges
+#   n = 1063576, edges = 6913244 (matches research/d13D7/checks/d13D7_hex11_R320_n1063576.check.txt)
+#
+# Build commands:
+#   git archive origin/claude/bipartite-13-7-rhq5z1 | tar -x -C W13
+#   git archive origin/master | tar -x -C WM
+#   gcc -O2 -o /tmp/apsp WM/research/lifts/coordinator_check/apsp.c
+#   cd W13 && python3 research/d13D7/build_d13D7.py research/d13D7/sets/R320_c8_coords.txt d13D7_R320.edges   (2 min 5 s)
+# Checks (run one after the other, both under nice, started 2026-10-24 23:11:42 UTC):
+#   nice /tmp/apsp d13D7_R320.edges 13 7     (finished 2026-10-25 00:27:41 UTC)
+#   nice /tmp/apsp d13D7_R320.edges 13 6     (negative control, finished 2026-10-25 00:28:51 UTC)
+#   The two runs shared the 4 cores (one process each), so wall times are similar.
+#
+# ---- output of: nice /tmp/apsp d13D7_R320.edges 13 7 ----
+n=1063576 edges=6913244 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1063576
+#
+# ---- output of: nice /tmp/apsp d13D7_R320.edges 13 6 (D lowered by one) ----
+n=1063576 edges=6913244 degree min=13 max=13 bipartite=yes diameter=7
+RESULT INVALID
