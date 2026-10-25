@@ -1,0 +1,7 @@
+group prod sl 4 poly x^2+x+1 sl 31 x Z_1, N=1785600, identity 358050, H order 62, rows 28800, threads 1, setup 0.11s
+wide rows: HW order 186, rows 9600, setup 0.19s
+alpha: conj by prod[mat(3,0,0,2);mat(13,26,19,19)] (index 1322727), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 89 (+e); mu = 38.75, mu/k = 12.92, fixed-point misses ~ 5.02
+start cost=232
+t=30 steps=790 evals=6321 cost=20 best=20 T=0.53
+t=60 steps=1592 evals=12737 cost=18 best=18 T=0.19
