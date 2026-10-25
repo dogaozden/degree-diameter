@@ -1,7 +1,8 @@
 # (15,7) from typed hexagon levels, mirrored surgery and relaxed friendly sets (job cell-15-7, 2026-10-25)
 
-Best: **(15,7) ≥ 2,501,124** (table 2,480,184; master 2,497,075 at the start of the session),
-research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol, check checks/d15D7_hex11_typedrelax_n2501124.check.txt.
+Best: **(15,7) ≥ 2,501,454** (table 2,480,184; master 2,497,075 at the start of the session),
+research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol, check checks/d15D7_hex11_typedrelax2_n2501454.check.txt
+(level types HHDHDHD; the HHDHHDD version 2,501,124 has the full all-pairs run).
 
 ## The graph
 
@@ -20,6 +21,11 @@ levels 3, 4 (B: 2->3 / 2->4 plus two mirrored), so KB = min(|P0|, |P1|) + 1,536 
 P0, P1 the points freed at 0->2, 1->2 and S3, S4 the lines freed at 2->3, 2->4 (the "bottleneck sets"). Any layout with
 seven levels and three matchings per class has the same bound (README of research/squads/cells/d15D7.md, step 2).
 
+The type pattern matters for the relaxation: with HHDHHDD all four bottleneck transitions touch level 2 and supply each
+other's partner covers (coupled, ~190 lost per side). Of the 35 patterns with three D levels, one rotation class
+(HHDHDHD and its rotations) has, for every bottleneck transition j -> j2, a non-bottleneck friendly transition into j
+and one out of j2, so all covers can be designed privately and the bottleneck sets need no coverage condition.
+
 ## Steps and results (all on branch claude/cell-15-7-haar-search-x6ynhl)
 
 | n | what changed | check |
@@ -28,7 +34,8 @@ seven levels and three matchings per class has the same bound (README of researc
 | 2,500,147 | unequal hub sides 10,181 / 9,782 (hub pairs also meet through the levels) | hub BFS |
 | 2,500,749 | relaxed bottleneck sets (collinear / concurrent pairs, RELAXED.md), 2,863 pairs | BFS from hubs + paired vertices |
 | 2,501,008 | partner covers designed into the non-bottleneck friendly sets, 3,898 pairs | same |
-| **2,501,124** | squad round c157b-r2: private covers (design3.py), protected alternation, refill; 4,370 pairs | same + full apsp_mt (see check file) |
+| 2,501,124 | squad round c157b-r2: private covers (design3.py), protected alternation, refill; 4,370 pairs | same + full apsp_mt (see check file) |
+| **2,501,454** | level types HHDHDHD: every bottleneck set's partners get private covers in non-bottleneck sets, so no masks (score_relaxed2.py, design4.py) | BFS from hubs + paired vertices |
 
 ## Files
 
@@ -41,7 +48,9 @@ seven levels and three matchings per class has the same bound (README of researc
 - pack.c: ILS for plain non-collinear / non-concurrent sets (no gain over 8,645 / 8,246).
 - design_cover.py, design3.py (squad c157b-r2 c4): non-bottleneck friendly sets that cover every paired element's partner
   with a private covering element.
-- score_relaxed.py: exact scorer (four bottleneck sets -> covers -> assignment -> drops -> n); v3_drop.py; paired.py;
+- score_relaxed.py: exact scorer for HHDHHDD (four bottleneck sets -> covers -> assignment -> drops -> n);
+  score_relaxed2.py: the same for any type pattern (finds the bottleneck transitions and the cover providers);
+  design4.py: private covers for a provider serving two roles (A-slots and B-slots); v3_drop.py; paired.py;
   mkmasks.py, mkmasks2.py (coverage masks).
 - hubgen.py, hubfix.py, v3_hub.sh: hub graph (random, unequal sides) and aimed 2-switches until the BFS finds no far pair.
 - hubfar.c: bit-parallel BFS from a source list to depth D, prints every pair beyond D.
@@ -51,7 +60,7 @@ seven levels and three matchings per class has the same bound (README of researc
 
 ```
 cc -O2 -o hexgen2 research/d13D7/hexgen2.c -lm && mkdir -p hex && ./hexgen2 11        # hex/hex_q11.bin, sha256 e60db369...
-python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol g.edges g.src
+python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol g.edges g.src
 cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src             # hubs + paired vertices
 cc -O2 -pthread -o apsp_mt research/lifts/coordinator_check/apsp_mt.c && ./apsp_mt g.edges 15 7 4   # all pairs
 ```

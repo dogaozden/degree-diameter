@@ -89,3 +89,11 @@ c4's design3 2,501,077.
 
 Kept: c4's design3.py (in the final scorer), Opus's alternating runs. Lesson: pairs pay only when their coverage is
 uncontested; the searches that ignore the assignment grow raw sets but lose it in drops.
+After the round (Opus): longer alternating runs with protect lists (the sole covers of the other side's partners stay),
+c4's private covers in the scorer, and a singles-only refill: **2,501,124** (0 unservable pairs), BFS from all hubs and
+paired-element vertices clean; full apsp_mt run started. Orbit-level 1-defective search under the order-133 group:
+65 orbits for points and for lines, below the unstructured sets (negative).
+Then (Opus, 13:30–14:05 UTC): the coupling is a property of the level-type pattern. With HHDHHDD all four bottleneck
+transitions touch level 2; the rotation class of HHDHDHD has, for every bottleneck transition, non-bottleneck friendly
+transitions on both sides, so every partner gets a private designed cover and the bottleneck sets need no masks:
+**2,501,454** (BFS-checked). Squad c4's private-cover idea (design3 -> design4) made this work.

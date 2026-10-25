@@ -1,7 +1,8 @@
 # Handoff: job cell-15-7 (resume session 01P3FWCNGZp2xTc6sYGPNtj4, branch claude/cell-15-7-haar-search-x6ynhl, PR #352)
 
 State (details: research/squads/cells/d15D7.md, research/d15D7b/README.md, research/d15D7b/RELAXED.md):
-- (15,7) best **2,501,124** (table 2,480,184; master 2,497,075 at the start; cell-14-7's candidate 2,499,748):
+- (15,7) best **2,501,454** (level types HHDHDHD, research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol; BFS-checked),
+  and **2,501,124** (table 2,480,184; master 2,497,075 at the start; cell-14-7's candidate 2,499,748):
   research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol, check research/d15D7b/checks/d15D7_hex11_typedrelax_n2501124.check.txt
   (theorem + BFS from all hubs and paired-element vertices; a plain apsp_mt all-pairs run was started at 12:52 UTC, see
   the check file for its result). Earlier steps 2,500,147 / 2,500,749 / 2,501,008 are filed too (same check format).
@@ -13,9 +14,9 @@ at 8,645 / 8,246 (squad round c157b-r1, 8 cards, all negative); mirrored sets at
 partial ovoids of H(11); the 756 base is rigid). Relaxed sets: 9,306 points without coverage limits, ~9,117 with them.
 
 If resumed, the most promising directions:
-1. Level-2 slot competition: the unserved pairs all have exactly one covering slot at level 2, taken by another demand
-   (those slots come from the bottleneck sets themselves). A search that counts this capacity (e.g. a penalty for pairs
-   whose partner has a single level-2 cover already claimed) could recover up to ~140 hubs.
+1. With the HHDHDHD pattern the bottleneck sets are free 1-defective sets (no coupling), so any better ILS for large
+   1-defective point / line sets of H(11) counts directly (+1 per element on the smaller of each pair). 10-minute dpack
+   runs give ~9,280 points and ~8,940 lines; the plain (non-collinear) optimum stays at 8,645.
 2. The relaxation is generic: it applies to any friendly transition of a typed construction. (14,7) (5 levels HDHDH,
    cell-14-7's 1,789,588 = 10·177,156 + 2·(|R_L| + 768)) and (16,7) (q = 13, cell-16-7's 4,052,108) should gain several
    hundred vertices each with the same tools (tm3_build.py is written for HHDHHDD; the slot/demand logic is generic).
