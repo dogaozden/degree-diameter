@@ -96,3 +96,14 @@ therefore 348,207,600, not the 337,394,400 in the round-2 brief. The coordinator
 ## Round 2 log (newest last)
 - 15:07 re-check of the 348.2M candidate started (hcsl, hc2).
 - 15:07 wave 1 started: 27 candidates in order of vertex count, one seed each, 2400 s, four at a time.
+- 15:07 348.2M candidate re-checked: hcsl VALID (vertices 348207600, ecc 9), hc2 VALID (same). Bar stays 348,207,600.
+- Results at 2400 s (k=3 m=5 f=1, default settings, seed 1; cost = uncovered elements, 0 = solved):
+  | group | N (vertices) | best cost | evals | note |
+  |---|---|---|---|---|
+  | sl 89 x Z247 | 348,210,720 | 6 | 1,329 | no solve |
+  | sl 61 x Z769 | 349,002,960 | 36 | 1,161 | large cyclic factor, weak |
+  | sl 71 x Z487 | 348,536,160 | 24 | 1,281 | large cyclic factor, weak |
+  | sl 59 x Z853 | 350,275,920 | 42 | 1,129 | large cyclic factor, weak |
+- Interrupted, no result (killed by my own process cleanup, not by the search): sl 293x7 (seed 1), sl 59x859 (seed 1), sl 83x313 (seed 1, stopped by me to keep 4 jobs on 4 cores). Re-queue later.
+- Running at 16:09: sl 83x307 (seed 5, ORBW=3), sl 97x193 (seed 5, ORBW=3), sl 103x163 (seed 1), sl 139x67 (seed 1).
+- Observation: evals/s is lower than round 1 (about 0.55 eval/s with four jobs at 174M, vs about 1.3 in round 1). Large cyclic factors (n > 450) are clearly weaker.
