@@ -82,6 +82,17 @@ sl 29 × Z2 with seeds 3 and 4, plus the two voltage-session metacyclic leads th
 `meta 1257 38 47` (N = 47,766, μ 31.7) and `meta 1143 42 47` (N = 48,006, μ 33.1). Both group specs were checked
 (gcd(r, m) = 1 and r^k ≡ 1 mod m).
 
+## Batch B results (30 min each, finished 09:05 UTC)
+
+| group | N | μ | best | evals |
+|---|---|---|---|---|
+| sl 29 × Z2, seed 3 | 48,720 | 37.3 | 3 | 25.6M |
+| sl 29 × Z2, seed 4 | 48,720 | 37.3 | 2 | 25.6M |
+| meta 1257 38 47 (seed 1) | 47,766 | 31.7 | 1 | 22.4M |
+| meta 1143 42 47 (seed 1) | 48,006 | 33.1 | 1 | 24.6M |
+
+Still none solved. The two metacyclic leads reproduce cost 1, as the voltage session found, and stall there.
+
 ## Status
 
 In progress. No candidate above 47,736 yet.
