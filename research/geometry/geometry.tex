@@ -45,7 +45,7 @@
 
 \title[Doubling in generalized polygons]{Doubling in generalized polygons:\\ large incidence structures of diameter $3$, $4$ and $6$}
 \author{Draft for discussion --- authors to be settled}
-\date{20 October 2026}
+\date{20 October 2026; revised 25 October 2026}
 
 \begin{document}
 
@@ -53,7 +53,7 @@
 Let $n_b(\Delta,D)$ be the largest number of elements (points plus lines) of an incidence structure in which every point lies on at most $\Delta$ lines, every line has at most $\Delta$ points, and any two elements are at distance at most $D$ in the incidence graph. For $D\in\{3,4,6\}$ and $\Delta-1$ a prime power the classical generalized $D$-gons of order $(\Delta-1,\Delta-1)$ attain the Moore bound. For the remaining degrees we adjoin new points and new lines to a classical generalized polygon. The main tool is Delorme's \emph{doubling} of a set of elements, with levels, which we recast as an operation on incidence structures. We show that in a generalized $n$-gon, doubling a set of elements keeps the diameter at most $n$ if and only if every connected component of that set is a tree of diameter at most $n-2$.
 For $D=3$ we add four \emph{hats} to any projective plane of order $q\ge 3$ and obtain $2(q^2+q+6)$ elements at $\Delta=q+2$; in $\PG(2,q)$ a correlation completes it to a regular structure.
 For $D=4$ we show that two elliptic quadrics through a point $x$ of $\Wq(q)$ form a weighted $2$-ovoid of $\AS(q)=P(\Wq(q),x)$, $q$ odd, which gives $(q+2)$-regular structures with $2q^2(q+2)$ elements; we also treat copies of lines (``shadows'') and give a short proof that two orbits of a Singer subgroup form a $2$-ovoid of $\Wq(q)$. For $q$ even the quadrangle $\Qf(4,q)$ has an ovoid and a spread, and doubling them gives $(q+2)$-regular structures with $2(q^2+1)(q+2)$ elements.
-For $D=6$ we extend Delorme's doubling of the split Cayley hexagon $\Hq(q)$ along a Hermitian spread by an explicit set of $q^2(q^2-1)$ lines that meets the counting bound, for every odd $q$ and every even $q\ge4$ (for $q=2$ by a set found by computer), and obtain $2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ elements at $\Delta=q+2$, together with regular versions. The even case needs different hyperplanes and a different formula; it gives no new record in the range $\Delta\le16$.
+For $D=6$ we extend Delorme's doubling of the split Cayley hexagon $\Hq(q)$ along a Hermitian spread by an explicit set of $q^2(q^2-1)$ lines that meets the counting bound, for every odd $q$ and every even $q\ge4$ (for $q=2$ by a set found by computer), and obtain $2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ elements at $\Delta=q+2$, together with regular versions. The even case needs different hyperplanes and a different formula; it gives no new record in the range $\Delta\le16$. The main theorems are also formalised in Lean~4 (Section~\ref{sec:verify}).
 \end{abstract}
 
 \maketitle
@@ -400,7 +400,40 @@ so that $\ell=\{P\}\cup\{X_t\}$, the lines on $A$ are $\lam_\infty$ and the $\la
 \item $M$ contains $P$, $X_t$ ($t\notin T$) and the $H_s$; $Q$ lies on $\lam_\infty$, $\lam_t$ ($t\notin T$) and the $K_s$;
 \item rotation and links as in~\ref{h:plane} and~\ref{h:links}.
 \end{itemize}
-By Lemma~\ref{lem:fh-deg} the elements of degree $q+1$ are the points $\pnt xy1$ ($x\ne0$, $y\notin S$) and $\pnt x10$ ($x\ne0$), and the lines $\lin u1w$ ($u\ne0$, $-w\notin S$) and $\lin10w$ ($w\ne0$).
+By Lemma~\ref{lem:fh-deg} the elements of degree $q+1$ are the points $\pnt xy1$ ($x\ne0$, $y\notin S$) and $\pnt x10$ ($x\ne0$), and the lines $\lin u1w$ ($u\ne0$, $-w\notin S$) and $\lin10w$ ($w\ne0$). Table~\ref{tab:nbrs4} lists the neighbourhood of every element, so that degrees and the cases of Lemmas~\ref{lem:fh-points} and~\ref{lem:fh-dual} can be checked directly in coordinates.
+
+\begin{table}[ht]
+\centering\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lll@{}}
+\toprule
+element & incident elements & degree\\
+\midrule
+$A$ & $\lam_t$ ($t\in\F$), $\lam_\infty$, $K_a$ & $q+2$\\
+$P$ & $\ell$, $\lam_\infty$, $\lin 10w$ ($w\ne0$), $M$ & $q+2$\\
+$X_t$, $t\notin S$ & $\ell$, $\lin w1{-t}$ ($w\in\F$), $M$ & $q+2$\\
+$X_a$ & $\ell$, $\lin w1{-a}$ ($w\ne0$), $M$, $K_a$ & $q+2$\\
+$X_t$, $t\in T$ & $\ell$, $\lin w1{-t}$ ($w\ne0$), $\lam_{\sigma(t)}$, $K_t$ & $q+2$\\
+$\pnt xy1$, $x\ne0$ & $\lin u1{-(ux+y)}$ ($u\in\F$), $\lin10{-x}$, and $K_y$ if $y\in S$ & $q+2$ if $y\in S$, else $q+1$\\
+$\pnt x10$, $x\ne0$ & $\lam_\infty$, $\lin1{-x}w$ ($w\in\F$) & $q+1$\\
+$Q$ & $\lam_\infty$, $\lam_t$ ($t\notin T$), $K_s$ ($s\in S$) & $q+2$\\
+$H_a$ & $\lin w1{-a}$ ($w\in\F$), $M$, $\ell$ & $q+2$\\
+$H_t$, $t\in T$ & $\lin w1{-t}$ ($w\in\F$), $M$, $K_{\sigma(t)}$ & $q+2$\\
+\midrule
+$\ell$ & $P$, $X_t$ ($t\in\F$), $H_a$ & $q+2$\\
+$\lam_\infty$ & $A$, $\pnt x10$ ($x\in\F$), $Q$ & $q+2$\\
+$\lam_t$, $t\notin S$ & $A$, $\pnt xt1$ ($x\in\F$), $Q$ & $q+2$\\
+$\lam_a$ & $A$, $\pnt xa1$ ($x\ne0$), $Q$, $H_a$ & $q+2$\\
+$\lam_t$, $t\in T$ & $A$, $\pnt xt1$ ($x\ne0$), $X_{\sigma^{-1}(t)}$, $H_t$ & $q+2$\\
+$\lin u1w$, $u\ne0$ & $\pnt x{-ux-w}1$ ($x\in\F$), $\pnt{-1/u}10$, and $H_{-w}$ if $-w\in S$ & $q+2$ if $-w\in S$, else $q+1$\\
+$\lin10w$, $w\ne0$ & $\pnt{-w}y1$ ($y\in\F$), $P$ & $q+1$\\
+$M$ & $P$, $X_t$ ($t\notin T$), $H_s$ ($s\in S$) & $q+2$\\
+$K_a$ & $\pnt xa1$ ($x\in\F$), $Q$, $A$ & $q+2$\\
+$K_t$, $t\in T$ & $\pnt xt1$ ($x\in\F$), $Q$, $H_{\sigma^{-1}(t)}$ & $q+2$\\
+\bottomrule
+\end{tabular}
+\caption{The incidences of every element of $\cS(\PG(2,q);A,\ell,(X_s),\sigma)$ in the coordinates of this section ($T=\{0,1,c\}$, $S=T\cup\{a\}$, $\sigma=(0\;c\;1)$, so $\sigma^{-1}(0)=1$, $\sigma^{-1}(1)=c$, $\sigma^{-1}(c)=0$). The completion of Theorem~\ref{thm:fourhat-regular} adds one flag at exactly the elements of degree $q+1$.}\label{tab:nbrs4}
+\end{table}
 
 \begin{lemma}[A correlation]\label{lem:corr}
 The map $\delta\colon\pnt xyz\mapsto\lin xz{-y}$, $\lin uvw\mapsto\pnt uw{-v}$ is a correlation of $\PG(2,q)$ with
@@ -552,6 +585,10 @@ For every odd prime power $q$, $\AS(q)[w,\emptyset]$ with $w$ as in Theorem~\ref
 Theorem~\ref{thm:B} with $(s,t)=(q-1,q+1)$ and $\cM=\emptyset$: every line gains exactly two points, every clone is on the $q+2$ lines of its point, and there are $q^3+(q+2)q^2+2q^2$ elements.
 \end{proof}
 
+\begin{remark}[A normalisation, and the new elements]\label{rem:Acoords}
+The choice $\kappa_1=\tfrac12$, $\kappa_2=\tfrac1{2\varepsilon}$ satisfies $\kappa_1\kappa_2=1/(4\varepsilon)$, so the two quadrics can be taken to be $2X_0X_1=X_2^2-\varepsilon X_3^2$ and $2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2$. In the structure of Corollary~\ref{cor:A1}, the clone of $P=(\kappa_i\Nm(w){:}1{:}w)$ is incident with exactly the $q+2$ lines of $\AS(q)$ on $P$: the fiber $\{(\kappa_i\Nm(w)+\mu,w):\mu\in\F\}$ and, for each $d\in\PG(1,q)$, the line $\{(\kappa_i\Nm(w)+\lambda\det(w,d),\,w+\lambda d):\lambda\in\F\}$. The fiber over $w_0$ gains the clones of $(\kappa_1\Nm(w_0),w_0)$ and $(\kappa_2\Nm(w_0),w_0)$; a line of the second kind gains the clones of its points on the two quadrics, given by the roots of the quadratic in the proof of Theorem~\ref{thm:A}. No other incidence changes.
+\end{remark}
+
 At $q=9,11,13$ this gives $1782$, $3146$, $5070$. Since the structure is regular, no choice of clones and shadows on $\AS(q)$ does better at $\Delta=q+2$. Weights are needed: for $q=3,5$, $\AS(q)$ has no $2$-ovoid without repeated points.
 
 \subsection{A Singer \texorpdfstring{$2$}{2}-ovoid of \texorpdfstring{$\Wq(q)$}{W(q)}}
@@ -611,6 +648,10 @@ Apply Corollary~\ref{cor:B1}. Let $j=\Delta-q-1$. If $q$ is even, $\Qf(4,q)$ has
 \end{proof}
 
 At $q=13$, $\Delta=16$ this gives $n_b(16,4)\ge5440$.
+
+\begin{remark}[The case $\Delta=q+3$ inside $\Wq(q)$]\label{rem:C1W}
+For $q$ odd and $j=2$ the construction can be written in $\Wq(q)$ itself, without passing to $\Qf(4,q)$. In the model of Proposition~\ref{prop:C}, the lines $yK$ ($y\in E^*$) are totally isotropic, as $b(yk_1,yk_2)=\Tr\bigl(d\,\Nm(y)(k_1k_2-k_1k_2)\bigr)=0$ for $k_1,k_2\in K$, so they form a spread $\Sigma$ (the regular spread). By Proposition~\ref{prop:C}, $w=\mathbf 1_{C_a\cup C_{q-a}}$ is a $2$-ovoid, and $2\Sigma$ is a $2$-cover. So $\Wq(q)[w,2\Sigma,\mathrm{id}]$ has diameter $4$, maximum degree $q+3$ and $2(q^2+1)(q+3)$ elements: the clone of $\langle y\rangle\in C_a\cup C_{q-a}$ is on the $q+1$ totally isotropic lines through $\langle y\rangle$, and the two shadow lines over $yK$ each contain the $q+1$ points $\langle yk\rangle$, $k\in K^*$. Joining the clone $c_i$ to the shadow lines $y_{2i},y_{2i+1}$ (indices modulo $2(q^2+1)$) makes it $(q+3)$-regular (Corollary~\ref{cor:B1}). This is the point--line dual of the $\Qf(4,q)$ description, and it is the form formalised in Lean (Section~\ref{sec:verify}).
+\end{remark}
 
 \subsection{Limits of the method}
 \begin{proposition}\label{prop:shadowbound}
@@ -708,6 +749,20 @@ Both are trees of diameter at most $4$: the first is the ball of radius $2$ abou
 Now Theorem~\ref{thm:delorme} applies. The diameter is exactly $6$ by \eqref{eq:proj}, because there are opposite elements of level $-1$: a free point $p$ (level $-1$) has $q^5$ opposite points, and only $(q+1)(q^3+1)<q^5$ points lie in $\cA_0$. For the count: $\cA_2=\{v\}$; $\cA_1$ consists of $q^3+1$ lines and $q+1$ points, $q^3+q+2$ elements; and $\cA_0$ consists of the $q^3+1$ lines of $S$, the $q^2+q$ lines of $\cL_v$, the $|W|$ whiskers and the $(q+1)(q^3+1)$ points of $\Pi$, which is $q^4+2q^3+q^2+2q+2+|W|$ elements.
 \end{proof}
 
+\begin{remark}[The incidences of every version]\label{rem:versions}
+By Definition~\ref{def:doubling}, with $a,b,c\in[m]$, the versions in Theorem~\ref{thm:whisk} are incident as follows.
+\begin{itemize}[leftmargin=1.5em]
+\item $v^{abc}$: the points $p^{ab}$, $p\I v$ (degree $q+1$).
+\item $p^{ab}$, $p\I v$: the lines $v^{ab1},\dots,v^{abm}$, and $L^a$ for the $q$ lines $L\in\cL_v$ on $p$ (degree $q+m$).
+\item $n^{ab}$, $n\in S\setminus\{v\}$: the points $p^a$, $p\I n$ (degree $q+1$).
+\item $p^a$, $p\in\cP_\Pi\setminus\cP(v)$: $n^{a1},\dots,n^{am}$ for the line $n\in S$ on $p$; $w^a$ for every $w\in W$ on $p$; and every other line on $p$ (degree $q+m$).
+\item $L^a$, $L\in\cL_v$: $p^{a1},\dots,p^{am}$ for $p=L\cap v$, and the $q$ other points of $L$ (degree $q+m$).
+\item $w^a$, $w\in W$: $p^a$ for $p=w\cap\Pi$, and the $q$ free points of $w$ (degree $q+1$).
+\item a point $r\notin\Pi$: all $m$ versions of the line of $\cL_v\cup W$ on $r$, if there is one, and every other line on $r$ (degree $q+m$, or $q+1$ if $r$ is free and on no line of $W$).
+\item a line $N\notin\cA_0$: all $m$ versions of its point in $\Pi$, which is not on $v$, and its $q$ other points (degree $q+m$).
+\end{itemize}
+\end{remark}
+
 \subsection{An exact whisker set for every odd \texorpdfstring{$q$}{q}}\label{sec:exactodd}
 For a point $X$ of $\Hq(q)$ in $\Pi$, not on $v$, put
 \[
@@ -726,6 +781,8 @@ Such $c_0,c_1$ exist for every odd $q$.
 \begin{proof}
 $G(a,0)=c_0a^3$, so we need $c_0\ne0$. For $b\ne0$ put $\alpha=a/b$: $G(a,b)=0$ if and only if $c_0\alpha+c_1=1/(\alpha^2+c)$ (note $\alpha^2+c\ne0$). For fixed $\alpha$ this is a line in the $(c_0,c_1)$-plane with $q-1$ points having $c_0\ne0$. The lines for $\alpha=0$ and $\alpha=1$ meet at $c_0=1/(1+c)-1/c=-1/(c(1+c))\ne0$ (note $c\ne-1$ as $-c$ is a non-square). So the $q$ lines cover fewer than $q(q-1)$ of the points with $c_0\ne0$, and some $(c_0,c_1)$ is good.
 \end{proof}
+
+For instance, the following choices are valid (with $\F_9=\F_3[i]$, $i^2=-1$): $(c;c_0,c_1)=(1;1,2)$ for $q=3$, $(2;1,0)$ for $q=5$, $(1;1,0)$ for $q=7$, $(1+i;i,2i)$ for $q=9$, $(1;1,3)$ for $q=11$, $(2;1,1)$ for $q=13$.
 
 \begin{theorem}\label{thm:exact}
 Let $q$ be odd, $-c$ a non-square, and $c_0,c_1$ as in Lemma~\ref{lem:G}. Then
@@ -856,8 +913,12 @@ elements; for $m=2$ this is $2(q+1)(q^4+q^3+q^2+4)$, and for $m=3$ it is $2(q+1)
 \end{theorem}
 
 \begin{proof}
-Start from $\Dbl{\Hq(q)}{m}$ with $W$ exact. For $n\in S\setminus\{v\}$ (level $1$) and $a\in[m]$, the $m$ versions $n^{a1},\dots,n^{am}$ all have the point set $\{p^a:p\I n\}$; for $a,b\in[m]$ the versions $v^{ab1},\dots,v^{abm}$ all have the point set $\{p^{ab}:p\I v\}$. So there are $mq^3+m^2$ classes of $m$ repeated lines. Delete $(m-1)m(q^3-q+m)\le(m-1)(mq^3+m^2)$ lines, at most $m-1$ from each class; by Lemma~\ref{lem:twin} no distance increases, and points and lines are now equal in number. Every point of $\Pi$ is on exactly one line of $S$, so each point loses at most $m-1$ lines. In $\Dbl{\Hq(q)}{m}$ every version has degree between $q+1$ and $q+m$; after the deletion this still holds, so every deficit is at most $r=m-1$. The deficit sum $T$ is at least that of the $m|W|=mq^2(q^2-1)$ whisker versions, each of degree $q+1$, so $T\ge(m-1)mq^2(q^2-1)>2(m-1)(q+m)$. Lemma~\ref{lem:complete} completes the structure; adding flags cannot increase distances. The number of points is $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$, which gives the formula.
+Start from $\Dbl{\Hq(q)}{m}$ with $W$ exact. For $n\in S\setminus\{v\}$ (level $1$) and $a\in[m]$, the $m$ versions $n^{a1},\dots,n^{am}$ all have the point set $\{p^a:p\I n\}$; for $a,b\in[m]$ the versions $v^{ab1},\dots,v^{abm}$ all have the point set $\{p^{ab}:p\I v\}$. So there are $mq^3+m^2$ classes of $m$ repeated lines. Fix a set $R$ of $q$ lines of $S\setminus\{v\}$ and delete the lines $v^{abc}$ with $c\ge2$ and the lines $n^{ab}$ with $b\ge2$ and $n\notin R$: these are $(m-1)m^2+(m-1)m(q^3-q)=(m-1)m(q^3-q+m)$ lines, at most $m-1$ from each class. By Lemma~\ref{lem:twin} no distance increases, and points and lines are now equal in number. Every point of $\Pi$ is on exactly one line of $S$, so each point loses at most $m-1$ lines. In $\Dbl{\Hq(q)}{m}$ every version has degree between $q+1$ and $q+m$; after the deletion this still holds, so every deficit is at most $r=m-1$. The deficit sum $T$ is at least that of the $m|W|=mq^2(q^2-1)$ whisker versions, each of degree $q+1$, so $T\ge(m-1)mq^2(q^2-1)>2(m-1)(q+m)$. Lemma~\ref{lem:complete} completes the structure; adding flags cannot increase distances. The number of points is $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$, which gives the formula.
 \end{proof}
+
+\begin{remark}[What is explicit]
+After the deletion every incidence is explicit (Remark~\ref{rem:versions}). The flags added by Lemma~\ref{lem:complete} are not given by a formula: the lemma proves that they exist, at the elements of degree $q+1$ ($m-1$ at each), and the program \path{research/p4/regular/regularize.py} finds them by a seeded swap procedure. Neither the maximum degree nor the diameter depends on that choice.
+\end{remark}
 
 At $q=5,9,11,13$ and $m=2$, Theorem~\ref{thm:R} gives $9348$, $147500$, $386328$, $866068$ elements, and at $q=13$, $m=3$ it gives $927724$. For these parameters the number of elements exceeds $M_b(q+m,5)$, so the diameter is exactly $6$.
 
@@ -1038,30 +1099,46 @@ Table~\ref{tab:values} lists the resulting values in the range $\Delta\le16$ of 
 \begin{table}[ht]
 \centering\small
 \renewcommand{\arraystretch}{1.12}
-\begin{tabular}{@{}lrrrrrl@{}}
+\begin{tabular}{@{}lrrrrrrl@{}}
 \toprule
-$(\Delta,D)$ & $q$ & $M_b(\Delta,D)$ & table \cite{CW} & new & regular & construction\\
+$(\Delta,D)$ & $q$ & $M_b(\Delta,D)$ & 2013 \cite{MS13} & table \cite{CW} & new & regular & construction\\
 \midrule
-$(11,3)$ & $9$ & $222$ & $190$ & $\mathbf{192}$ & $192$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
-$(13,3)$ & $11$ & $314$ & $274$ & $\mathbf{276}$ & $276$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
-$(15,3)$ & $13$ & $422$ & $374$ & $\mathbf{376}$ & $376$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+$(11,3)$ & $9$ & $222$ & $190$ & $190$ & $\mathbf{192}$ & $192$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+$(13,3)$ & $11$ & $314$ & $270$ & $274$ & $\mathbf{276}$ & $276$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
+$(15,3)$ & $13$ & $422$ & $370$ & $374$ & $\mathbf{376}$ & $376$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
 \midrule
-$(7,4)$ & $5$ & $518$ & $346$ & $\mathbf{359}$ & $350^{\dagger}$ & Thm.~\ref{thm:B}, $\Qf(4,5)$, $21$ shadow lines$^{*}$\\
-$(11,4)$ & $9$ & $2222$ & $1734$ & $\mathbf{1782}$ & $1782$ & Cor.~\ref{cor:A1}, $\AS(9)$\\
-$(13,4)$ & $11$ & $3770$ & $3064$ & $\mathbf{3146}$ & $3146$ & Cor.~\ref{cor:A1}, $\AS(11)$\\
-$(15,4)$ & $13$ & $5910$ & $4946$ & $\mathbf{5070}$ & $5070$ & Cor.~\ref{cor:A1}, $\AS(13)$\\
-$(16,4)$ & $13$ & $7232$ & $5134$ & $\mathbf{5440}$ & $5440$ & Cor.~\ref{cor:B2}, $\Qf(4,13)$, Prop.~\ref{prop:C}\\
+$(7,4)$ & $5$ & $518$ & $346$ & $346$ & $\mathbf{359}$ & $350^{\dagger}$ & Thm.~\ref{thm:B}, $\Qf(4,5)$, $21$ shadow lines$^{*}$\\
+$(11,4)$ & $9$ & $2222$ & $1734$ & $1734$ & $\mathbf{1782}$ & $1782$ & Cor.~\ref{cor:A1}, $\AS(9)$\\
+$(13,4)$ & $11$ & $3770$ & $3064$ & $3064$ & $\mathbf{3146}$ & $3146$ & Cor.~\ref{cor:A1}, $\AS(11)$\\
+$(15,4)$ & $13$ & $5910$ & $4946$ & $4946$ & $\mathbf{5070}$ & $5070$ & Cor.~\ref{cor:A1}, $\AS(13)$\\
+$(16,4)$ & $13$ & $7232$ & $5134$ & $5134$ & $\mathbf{5440}$ & $5440$ & Cor.~\ref{cor:B2}, $\Qf(4,13)$, Prop.~\ref{prop:C}\\
 \midrule
-$(7,6)$ & $5$ & $18662$ & $8992$ & $\mathbf{9592}$ & $9348$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
-$(11,6)$ & $9$ & $222222$ & $142464$ & $\mathbf{148944}$ & $147500$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
-$(13,6)$ & $11$ & $542906$ & $374452$ & $\mathbf{388972}$ & $386328$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
-$(15,6)$ & $13$ & $1158390$ & $842048$ & $\mathbf{870440}$ & $866068$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
-$(16,6)$ & $13$ & $1627232$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}, $m=3$\\
+$(7,6)$ & $5$ & $18662$ & $8992$ & $8992$ & $\mathbf{9592}$ & $9348$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(11,6)$ & $9$ & $222222$ & $142464$ & $142464$ & $\mathbf{148944}$ & $147500$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(13,6)$ & $11$ & $542906$ & $374452$ & $374452$ & $\mathbf{388972}$ & $386328$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(15,6)$ & $13$ & $1158390$ & $842048$ & $842048$ & $\mathbf{870440}$ & $866068$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}\\
+$(16,6)$ & $13$ & $1627232$ & $884062$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}, $m=3$\\
 \bottomrule
 \end{tabular}
-\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``Table'' is the value listed in \cite{CW} (consulted October 2026; for $D=3$ these are the values of \cite{AL20}, for $D=4$ and $D=6$ those of Delorme \cite{D85a,D85b}). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family (data: \protect\path{research/gq4x/graphs/q4_share_q5_n359.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
+\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``2013'' is the value in Table~4 of the 2013 survey \cite{MS13}; ``table'' is the value listed in \cite{CW} (values read in October 2026). They differ only at $(13,3)$ and $(15,3)$, where \cite{AL20} improved $270$ and $370$ to $274$ and $374$; for $D=4$ and $D=6$ both are Delorme's values \cite{D85a,D85b} (Example~\ref{ex:delorme4} and Theorem~\ref{thm:whisk} with $W=\emptyset$). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family; Appendix~\ref{app:74} lists it in coordinates (data: \protect\path{research/gq4x/graphs/q4_share_q5_n359.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
 \label{tab:values}
 \end{table}
+
+\section{Verification}\label{sec:verify}
+
+\subsection{Lean}
+The following statements are proved in Lean~4 (version 4.34.1) with Mathlib, in the library \path{lean/BipartiteDD} of the project repository. For each, \texttt{\#print axioms} lists only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}; there is no \texttt{sorry}, no new axiom and no \texttt{native\_decide}, and finite checks use \texttt{decide}, which the kernel checks. A graph statement always says that the graph is $2$-colourable, that every vertex has at most (for the regular versions: exactly) $\Delta$ neighbours, and that the diameter is at most $D$; statements about record graphs also fix the number of vertices.
+{\sloppy
+\begin{itemize}[leftmargin=1.5em]
+\item Section~\ref{sec:doubling}: Theorem~\ref{thm:delorme}(a)--(c) for any finite graph (\texttt{Doubling.delorme\_levelled}); Lemma~\ref{lem:hat} in both directions for graphs that are bipartite with girth $2n$, diameter $n$ and all degrees at least $2$ (\texttt{Doubling.GenPolygonGraph.condC\_iff\_forestDiam}); the ``if'' direction of Corollary~\ref{cor:hatiff}.
+\item Section~\ref{sec:d3}: Theorem~\ref{thm:fourhat-regular} in every finite projective plane of order $q\ge4$, not only $\PG(2,q)$ (\texttt{Plus2.plus2\_regular\_of\_order}); the graphs of orders $192$, $276$, $376$.
+\item Section~\ref{sec:d4}: Theorem~\ref{thm:B} with and without stand-ins, for every finite structure with the counts of a GQ of order $(s,t)$ and the existence half of the GQ axiom (\texttt{GQST.standin\_gqst}, \texttt{GQST.gqst}), and Corollary~\ref{cor:B1} with its regular completion (\texttt{GQST.regular\_copy\_graph\_fin}); Theorem~\ref{thm:A} and Corollary~\ref{cor:A1}, regular, over every finite field of odd order, in the coordinates of this paper (\texttt{ASq.weighted\_two\_ovoid}, \texttt{ASq.bound\_regular}); Proposition~\ref{prop:C}(b) and Remark~\ref{rem:C1W}, for every field of order $q^4$ ($q$ odd) with a chosen primitive element (\texttt{SingerC.propC}, \texttt{SingerC.corC1}, \texttt{SingerC.Setting.regular\_W3}), instantiated at $q=13$ (\texttt{SingerC.regular5440}); the graphs of orders $359$, $1782$, $3146$, $5070$, $5440$.
+\item Sections~\ref{sec:d6} and~\ref{sec:even}: $\Hq(q)$ in the coordinates of Section~\ref{sec:prelim} is bipartite of girth $12$ and diameter $6$ with all degrees at least $2$, over every finite field (\texttt{Hexagon.genPolygonGraph\_hexagon}, \texttt{HexagonEven.genPolygonGraph\_hexagon\_even}); Lemma~\ref{lem:G}, Lemma~\ref{lem:J}(d), Lemma~\ref{lem:key}, Theorem~\ref{thm:exact}, Theorem~\ref{thm:whisk} for any whisker set, Corollary~\ref{cor:d6} and Theorem~\ref{thm:R} for odd $q$ (\texttt{HexagonD.exists\_goodCubic}, \texttt{nu\_eq\_of\_mem\_sline}, \texttt{key\_identity}, \texttt{theorem4}, \texttt{whiskers\_bound\_hexagon}, \texttt{theoremD}, \texttt{theoremR}); Theorem~\ref{thm:exact2}, Corollary~\ref{cor:even6} and Theorem~\ref{thm:R} for even $q\ge4$ (\texttt{HexagonEven.theorem4\_even}, \texttt{theoremD\_even}, \texttt{theoremR}); $q=2$, $m=2$ with the computer-found whisker set (\texttt{theoremD\_q2}, \texttt{theoremR\_q2}); the graph of order $9592$.
+\end{itemize}\par}
+Not formalised: Theorem~\ref{thm:delorme}(d); Propositions~\ref{prop:count} and~\ref{prop:shadowbound} and Section~\ref{sec:orders}; and the identification of the coordinate models with the classical $\AS(q)$, $\Wq(q)$ and $\Hq(q)$ (the Lean statements are about exactly the coordinates used here, and we cite \cite{P71,PT,T59,VM98} for the identification). The completion in Theorem~\ref{thm:R} is proved in Lean, as here, by an existence argument.
+
+\subsection{Computer checks}
+Every structure in Table~\ref{tab:values} was built explicitly and its incidence graph checked (bipartite, degrees, exact diameter by breadth-first search from every vertex) by at least two independent programs. The coordinate statements of Sections~\ref{sec:d3}--\ref{sec:d6} were also rebuilt from the text and checked: the four-hat structure for every prime power $q\le13$ and every admissible $(a,c)$ (\path{research/plus2/coords/coords.py}); Remark~\ref{rem:Acoords} for $q=3,5,7,9$, Remark~\ref{rem:C1W} for $q=3,5$, the identities of Lemmas~\ref{lem:J} and~\ref{lem:key} symbolically, and Appendix~\ref{app:74} (\path{research/theorems/polish/}).
 
 \section{Open questions}\label{sec:open}
 \begin{enumerate}[leftmargin=1.5em]
@@ -1071,6 +1148,37 @@ $(16,6)$ & $13$ & $1627232$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\re
 \item \emph{Diameter $8$.} The Ree--Tits octagon of order $(2,4)$ has the shape $(q-1,q+1)$ with $q=3$; a weighted $2$-ovoid in it would give a $5$-regular structure of diameter $8$ with $5850$ elements.
 \end{enumerate}
 
+\appendix
+\section{The \texorpdfstring{$(7,4)$}{(7,4)} example in coordinates}\label{app:74}
+Let $\Qf(4,5)$ be the quadric $X_0^2+X_1X_2+X_3X_4=0$ of $\PG(4,5)$ (points written with first non-zero coordinate $1$), and $\cO=\Qf(4,5)\cap\{X_4=2X_3\}$, an elliptic quadric ovoid ($-2$ is a non-square modulo $5$). Take $w=\mathbf 1_\cO$ and the $21$ lines below, each given by its six points; a starred point is replaced by its clone (the stand-in), every other point stands for itself.
+{\small
+\begin{verbatim}
+ 1  (0:0:0:0:1) (0:1:0:0:0)  (0:1:0:0:1) (0:1:0:0:2)  (0:1:0:0:3)  (0:1:0:0:4)
+ 2  (0:0:0:1:0) (0:1:0:0:0)* (0:1:0:1:0) (0:1:0:2:0)  (0:1:0:3:0)  (0:1:0:4:0)
+ 3  (0:0:1:0:0) (1:0:0:2:2)  (1:0:1:2:2) (1:0:2:2:2)  (1:0:3:2:2)  (1:0:4:2:2)
+ 4  (0:0:1:0:1) (1:2:0:3:3)  (1:2:1:3:4) (1:2:2:3:0)  (1:2:3:3:1)  (1:2:4:3:2)
+ 5  (0:0:1:0:2) (1:1:0:2:2)  (1:1:1:2:4) (1:1:2:2:1)  (1:1:3:2:3)  (1:1:4:2:0)
+ 6  (0:0:1:0:4) (1:3:0:3:3)  (1:3:1:3:2) (1:3:2:3:1)  (1:3:3:3:0)  (1:3:4:3:4)
+ 7  (0:0:1:1:0) (1:4:0:4:1)  (1:4:1:0:1) (1:4:2:1:1)  (1:4:3:2:1)  (1:4:4:3:1)
+ 8  (0:0:1:2:0) (1:4:0:3:3)  (1:4:1:0:3) (1:4:2:2:3)  (1:4:3:4:3)  (1:4:4:1:3)
+ 9  (0:0:1:3:0) (1:2:0:4:1)  (1:2:1:2:1) (1:2:2:0:1)  (1:2:3:3:1)* (1:2:4:1:1)
+10  (0:0:1:4:0) (1:4:0:1:4)  (1:4:1:0:4) (1:4:2:4:4)  (1:4:3:3:4)  (1:4:4:2:4)
+11  (0:1:1:1:4) (1:0:3:4:1)  (1:1:4:0:0) (1:2:0:1:4)  (1:3:1:2:3)  (1:4:2:3:2)
+12  (0:1:1:2:2) (1:0:0:1:4)  (1:1:1:3:1) (1:2:2:0:3)  (1:3:3:2:0)  (1:4:4:4:2)
+13  (0:1:1:3:3) (1:0:2:3:3)  (1:1:3:1:1) (1:2:4:4:4)  (1:3:0:2:2)  (1:4:1:0:0)
+14  (0:1:1:4:1) (1:0:2:4:1)  (1:1:3:3:2) (1:2:4:2:3)  (1:3:0:1:4)  (1:4:1:0:0)*
+15  (0:1:2:1:3) (1:0:3:3:3)  (1:1:0:4:1) (1:2:2:0:4)  (1:3:4:1:2)  (1:4:1:2:0)
+16  (0:1:2:2:4) (1:0:3:1:4)  (1:1:0:3:3) (1:2:2:0:2)  (1:3:4:2:1)  (1:4:1:4:0)
+17  (0:1:3:2:1) (1:0:1:3:3)  (1:1:4:0:4) (1:2:2:2:0)  (1:3:0:4:1)  (1:4:3:1:2)
+18  (0:1:3:3:4) (1:0:4:1:4)  (1:1:2:4:3) (1:2:0:2:2)  (1:3:3:0:1)  (1:4:1:3:0)
+19  (0:1:4:1:1) (1:0:4:3:3)  (1:1:3:4:4) (1:2:2:0:0)  (1:3:1:1:1)  (1:4:0:2:2)
+20  (0:1:4:2:3) (1:0:0:3:3)  (1:1:4:0:1) (1:2:3:2:4)  (1:3:2:4:2)  (1:4:1:1:0)
+21  (0:1:4:4:4) (1:0:0:4:1)  (1:1:4:3:0) (1:2:3:2:4)* (1:3:2:1:3)  (1:4:1:0:2)
+\end{verbatim}
+}
+The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:}0)$, $(1{:}2{:}3{:}3{:}1)$, $(1{:}4{:}1{:}0{:}0)$, $(1{:}2{:}3{:}2{:}4)$ of $\cO$, each on exactly two of them (lines $1,2$; $4,9$; $13,14$; $20,21$), where the second line uses the clone. So every point and every clone serves at most one shadow line, and Theorem~\ref{thm:B} with $s=t=5$, $\Delta=7$ gives a structure of diameter $4$, maximum degree $7$ and $156+156+26+21=359$ elements. The list is an optimal solution of the integer program of \path{research/gq4x/q4_share_ilp.py} (HiGHS); \path{research/theorems/polish/q4_359.py} rebuilds the graph from it and checks the degree and the diameter.
+
+
 \begin{thebibliography}{99}
 \bibitem{AS69} R.~W. Ahrens, G.~Szekeres, On a combinatorial generalization of 27 lines associated with a cubic surface, \emph{J. Austral. Math. Soc.} 10 (1969) 485--492.
 \bibitem{AL20} G.~Araujo-Pardo, N.~L\'opez, On new record graphs close to bipartite Moore graphs, \emph{Graphs Combin.} 38 (2022), no.~4, Paper No.~110; arXiv:2005.02427.
@@ -1078,6 +1186,7 @@ $(16,6)$ & $13$ & $1627232$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\re
 \bibitem{CDPS22} M.~Ceria, J.~De Beule, F.~Pavese, V.~Smaldore, On large partial ovoids of symplectic and Hermitian polar spaces, \emph{J. Combin. Des.} 31 (2023) 5--22; arXiv:2203.04553.
 \bibitem{CW} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}, retrieved 20 October 2026.
 \bibitem{CCEM08} A.~Cossidente, C.~Culbert, G.~L. Ebert, G.~Marino, On $m$-ovoids of $W_3(q)$, \emph{Finite Fields Appl.} 14 (2008) 76--84.
+\bibitem{MS13} M.~Miller, J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, \emph{Electron. J. Combin.} Dynamic Survey DS14v2 (2013), Table~4.
 \bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, \emph{European J. Combin.} 6 (1985) 291--302.
 \bibitem{D85b} C.~Delorme, Large bipartite graphs with given degree and diameter, \emph{J. Graph Theory} 9 (1985), no.~3, 325--334, doi:10.1002/jgt.3190090304.
 \bibitem{DF84} C.~Delorme, G.~Farhi, Large graphs with given degree and diameter, Part~I, \emph{IEEE Trans. Comput.} C-33 (1984) 857--860.
