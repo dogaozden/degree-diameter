@@ -63,14 +63,25 @@ Gamma_2(sigma(a)) for every a in R', the remaining points onto the remaining lin
 
 The same sigma and R' work for every r: (13,7) n = 1,062,936 + 2|R'|, (15,7) n = 2,480,184 + 6|R'|.
 
-## Other q (same construction): (16,7) from H(13)
+## Other cells (same construction, other q)
 
-mirror_sa5.py and mirror_build2.py take the hexagon, base set and spread as arguments (any q). At q = 13 the cell-13-7
-base set R792 (research/d13D7/q13/R792_q13_idx.txt, (16,7) n = 4,022,340 + 4|R'|) and its Hermitian spread
-(research/d13D7/q13/S_q13_spread.txt, 2,198 lines in 2x0 + x4 = 0) leave far more room than q = 11: a random line is
-at distance 4 from 169 spread lines, the spread has 1,406 spare lines, and some extra points are at distance 4 from only
-24, 40, 46 or 48 base points (257,298 candidates; at q = 11 the minimum is 60). Restricting the candidates to c <= 40 or
-48 (--cmax) the annealer reaches F = 20 in under three minutes.
+mirror_sa5.py / mirror_build2.py take the hexagon, base set and spread as arguments (any odd q); mirror_sa6.py /
+mirror_build3.py compute point distances by BFS in the incidence graph instead of the bilinear form, which is needed in
+characteristic 2 (q = 8). Base sets and spreads are the cell-13-7 session's (research/d13D7/q57, q8, q13).
+
+| cell | q, copies | base set | spread | extra points F | n | master | check |
+|---|---|---|---|---|---|---|---|
+| (7,7) | 5, 3 | R72 | 126 lines | 8 | **23,596** | 23,580 | apsp_mt all-pairs VALID |
+| (9,7) | 7, 3 | R288 (W(E7) orbit) | 344 lines | 7 | **118,238** | 118,224 | apsp_mt all-pairs VALID |
+| (10,7) | 8, 3 | R217 | 513 lines | 12 | **225,152** | 225,128 | apsp_mt all-pairs VALID |
+| (13,7) | 11, 3 | R756 | 1,332 lines | 12 (same sigma as (14,7)) | 1,064,472 | 1,064,448 | multi.c checks + BFS spot check |
+| (15,7) | 11, 7 | R756 | 1,332 lines | 12 (same sigma) | 2,484,792 | 2,484,720 | see checks/ |
+| (16,7) | 13, 5 | R792 | 2,198 lines | 21 | 4,025,592 | 4,025,508 | multi.c checks + spot check; full apsp_orb in checks/ when done |
+
+At q = 13 there is more room than at q = 11: a random line is at distance 4 from 169 spread lines, the spread has 1,406
+spare lines, and some extra points are at distance 4 from only 24, 40, 46 or 48 base points (257,298 candidates; at
+q = 11 the minimum is 60). Restricting the candidates to c <= 40 or 48 (--cmax) the annealer reaches F = 21 in a few
+minutes; warm restarts did not improve it.
 
 ## Files
 
