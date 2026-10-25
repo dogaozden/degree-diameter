@@ -505,6 +505,8 @@ and in control groups of the same order that have no solution.
   - Loz's (3,9) Z23 ⋊ Z11 has 0.575, because the Δ = 3 bound is tighter: there is only one free a-part.
   - If the Δ = 4 band holds, a group needs B_j/N of roughly 2.5–4 for some pattern. Three data points are only
     suggestive.
+  - The band is at most a necessary condition. The (4,9) near miss C101 : C25 (exhaustively negative, 2 short) sits
+    at N/B_j = 0.377 at its best pattern, inside the band.
 - **A central involution.** The record groups of even order mostly have centre exactly C2 or containing one:
   - Conder's (3,7), our (3,8), all three (4,7) groups, Loz's (4,8), our (4,10) and (5,8);
   - but not PGL(2,5) × Z13 at (5,7) (centre Z13), nor our (5,10) group.
