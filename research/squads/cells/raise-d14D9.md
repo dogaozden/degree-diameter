@@ -45,7 +45,21 @@ Note: `tools/orbq.sh` and `pool.sh` are not executable in this checkout; run the
 
 | group | N | 2N | μ | \|Fix\| | wide rows | result |
 |---|---|---|---|---|---|---|
-| sl 37 × Z1147 | 58,056,552 | 116,113,104 | 14.23 | 35 | yes (HW 222) | pending |
-| sl 31 × Z1951 | 58,061,760 | 116,123,520 | 14.25 | 29 | **no** (fallback, slower) | pending |
+| sl 37 × Z1147 | 58,056,552 | 116,113,104 | 14.23 | 35 | yes (HW 222) | not solved: best 38, 10,241 evals in 1800 s |
+| sl 31 × Z1951 | 58,061,760 | 116,123,520 | 14.25 | 29 | **no** (fallback, slower) | not solved: best 54, 8,641 evals in 1800 s |
 | sl 59 × Z283 | 58,105,560 | 116,211,120 | 14.43 | 59 | yes (HW 118) | **SOLVED** at 441 evals (118 s), VALID by haar_sym, hcsl, hc2. New record. |
-| psl 41 × Z1687 | 58,100,280 | 116,200,560 | 14.41 | 20 | yes (HW 241) | pending |
+| psl 41 × Z1687 | 58,100,280 | 116,200,560 | 14.41 | 20 | yes (HW 241) | not solved: best 24, 9,217 evals in 1800 s |
+
+Wave-1 read: 1 of 4 solved, and the three misses ended far from 0 (best 24–54), so a 30-minute run at μ≈14.3 is
+not reliable. Solve speed depends on the group more than on μ alone. The solved group had the largest |Fix| (59).
+
+### Wave 2 (queued by `driver.sh` from `$SP/q`, 1800 s, seed 1; the driver keeps 4 searches running)
+
+| group | N | 2N | μ | \|Fix\| | status |
+|---|---|---|---|---|---|
+| psl 47 × Z1123 | 58,270,224 | 116,540,448 | 15.1 | – | running (started 07:43) |
+| sl 43 × Z733 | 58,247,112 | 116,494,224 | 15.0 | – | running (started 08:09) |
+| psl 49 × Z991 | 58,270,800 | 116,541,600 | 15.1 | – | queued/running |
+| sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | – | queued |
+| psl 73 × Z301 | 58,536,072 | 117,072,144 | 16.3 | – | queued |
+| psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | – | queued |
