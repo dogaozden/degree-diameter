@@ -1,0 +1,47 @@
+group psl 25 poly x^2+2 x Z_541, N=4219800, identity 162300, H order 13, rows 324600, threads 1, setup 0.16s
+wide rows: no cyclic subgroup of order >= 64 found (best 13); using haar_gen3's evaluation
+alpha: conj by mat(12,24,12,15) (index 6537), z -> 48 z on Z_541
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 24 (+e); mu = 43.77, mu/k = 8.75, fixed-point misses ~ 5.04
+ORBW=5: an uncovered fixed element weighs 5; start energy 170
+start cost=154
+t=30 steps=72 evals=577 cost=50 best=50 T=0.53 energy=50 bestE=50
+t=60 steps=145 evals=1161 cost=50 best=50 T=0.19 energy=50 bestE=50
+t=90 steps=219 evals=1753 cost=50 best=50 T=0.15 energy=50 bestE=50
+t=120 steps=287 evals=2297 cost=50 best=50 T=0.15 energy=50 bestE=50
+t=151 steps=358 evals=2865 cost=50 best=50 T=0.15 energy=50 bestE=50
+t=181 steps=432 evals=3457 cost=80 best=50 T=1.03 energy=80 bestE=50
+t=211 steps=503 evals=4025 cost=40 best=40 T=0.36 energy=40 bestE=40
+t=241 steps=571 evals=4569 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=271 steps=640 evals=5121 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=302 steps=708 evals=5665 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=332 steps=781 evals=6249 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=362 steps=852 evals=6817 cost=40 best=40 T=0.15 energy=40 bestE=40
+t=392 steps=922 evals=7377 cost=112 best=40 T=0.79 energy=120 bestE=40
+t=422 steps=991 evals=7929 cost=82 best=40 T=0.28 energy=90 bestE=40
+t=453 steps=1061 evals=8489 cost=82 best=40 T=0.15 energy=90 bestE=40
+t=483 steps=1126 evals=9009 cost=80 best=40 T=0.15 energy=80 bestE=40
+t=513 steps=1191 evals=9529 cost=80 best=40 T=0.15 energy=80 bestE=40
+t=543 steps=1267 evals=10137 cost=36 best=40 T=0.15 energy=60 bestE=40
+t=573 steps=1337 evals=10697 cost=56 best=40 T=0.63 energy=80 bestE=40
+t=604 steps=1404 evals=11233 cost=56 best=40 T=0.22 energy=80 bestE=40
+t=634 steps=1468 evals=11745 cost=72 best=40 T=0.15 energy=80 bestE=40
+t=664 steps=1536 evals=12289 cost=57 best=40 T=0.15 energy=65 bestE=40
+t=694 steps=1604 evals=12833 cost=57 best=40 T=0.15 energy=65 bestE=40
+t=725 steps=1673 evals=13385 cost=57 best=40 T=0.15 energy=65 bestE=40
+t=755 steps=1743 evals=13945 cost=80 best=40 T=0.59 energy=80 bestE=40
+t=785 steps=1815 evals=14521 cost=67 best=40 T=0.20 energy=75 bestE=40
+t=816 steps=1886 evals=15089 cost=67 best=40 T=0.15 energy=75 bestE=40
+t=846 steps=1965 evals=15721 cost=54 best=40 T=0.15 energy=70 bestE=40
+t=876 steps=2045 evals=16361 cost=54 best=40 T=0.15 energy=70 bestE=40
+t=906 steps=2124 evals=16993 cost=74 best=40 T=0.86 energy=90 bestE=40
+t=936 steps=2194 evals=17553 cost=90 best=40 T=0.30 energy=90 bestE=40
+t=966 steps=2265 evals=18121 cost=90 best=40 T=0.15 energy=90 bestE=40
+t=996 steps=2336 evals=18689 cost=80 best=40 T=0.15 energy=80 bestE=40
+t=1026 steps=2408 evals=19265 cost=64 best=40 T=0.15 energy=80 bestE=40
+t=1056 steps=2480 evals=19841 cost=70 best=40 T=0.15 energy=70 bestE=40
+t=1086 steps=2555 evals=20441 cost=64 best=40 T=0.55 energy=80 bestE=40
+t=1117 steps=2632 evals=21057 cost=64 best=40 T=0.19 energy=80 bestE=40
+t=1147 steps=2713 evals=21705 cost=64 best=40 T=0.15 energy=80 bestE=40
+t=1177 steps=2788 evals=22305 cost=64 best=40 T=0.15 energy=80 bestE=40
+t=1207 steps=2866 evals=22929 cost=64 best=40 T=0.15 energy=80 bestE=40
+t=1237 steps=2940 evals=23521 cost=70 best=40 T=0.67 energy=70 bestE=40

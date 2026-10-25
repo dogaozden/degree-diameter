@@ -1,0 +1,15 @@
+group psl 31 x Z_271, N=4032480, identity 126015, H order 31, rows 130080, threads 1, setup 0.12s
+wide rows: no cyclic subgroup of order >= 64 found (best 31); using haar_gen3's evaluation
+alpha: conj by mat(7,25,8,11) (index 7014), z -> 10 z on Z_271
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 14 (+e); mu = 24.55, mu/k = 4.91, fixed-point misses ~ 2.72
+start cost=105
+t=30 steps=178 evals=1425 cost=10 best=10 T=0.53
+t=60 steps=356 evals=2849 cost=10 best=10 T=0.19
+t=90 steps=536 evals=4289 cost=10 best=10 T=0.15
+RESULT d=10 D=9 group=psl 31 x Z_271 N=4032480 best=0 evals=4545 time=95.8 orbit k=5 m=2 f=0 fix=14
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/a477625a-c770-5298-9170-372ab679235b/scratchpad/out/k5f0_psl31_271/d10D9_psl_31_271_orb5f0_s1.txt
+n = 8064960 edges = 40324800 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = 3f69f5a0db8f9d53b6d25506c51db2970bfb8884cca5a052b50af077c92b7871
+VALID d=10 D=9 group=psl 31 x Z_271 N=4032480 vertices=8064960
