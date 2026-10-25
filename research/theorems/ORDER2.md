@@ -409,18 +409,25 @@ which is (2/k)√μ when balanced. So at odd D:
 - order 2: μ/2 + √μ at best, always worse than order 3's μ/3;
 - order 6: μ/6 + (1/3)√μ + small fixed-point terms, better than order 3 once μ ≳ 15.
 
+G's own involutions add (2/k)·#Inv(G)·e^{−λ/2} at odd D for every order (§4), so they do not change this comparison.
+
 ## 4. The corrected rule
 
 Second-session form. For α of order k with α(S) = S, f fixed generators and m orbits of size k:
 
     μ_A ≈ μ/k  +  Σ_{1 ≠ H ≤ ⟨α⟩} #{x : Stab(x) = H}·(|H|/k)·e^{−λ/|H|}
                +  [D odd]·Σ_{involutions β ∈ ⟨α⟩} (2/k)·( |Anti(β) ∩ Im L_β|·e^{−λ/2−π_β} + |Anti(β) \ Im L_β|·e^{−λ/2} )
+               +  [D odd]·(2/k)·#{involutions of G}·e^{−λ/2}
 
 with π_β = P_ℓ·|Fix(β)|/N palindromic shots (§2.8, §3.5). Anti(β) is taken outside Fix(β), and
-|Im L_β| = N/|Fix(β)|. Then:
+|Im L_β| = N/|Fix(β)|. The last term is THRESHOLD Cor. 5.2 (an involution x = x⁻¹ of G has its words in inverse
+pairs at odd D). The first session's rule.py left it out. It scales as 1/k like μ/k, so it does not change which
+order wins on a given group. It matters in characteristic 2 (SL(2,2^e) has q² − 1 involutions) and for PSL(2,q)
+(about q²/2), and it is negligible for SL(2,q), q odd. Then:
 - **Ranking.** Among symmetries whose spaces are large enough, prefer the smallest μ_A, and estimate the anneal
-  effort with the effort law. On the odd-D screens of `out/rule_table2.txt` the measured p1 is 1.2–1.7 times μ_A
-  where 3,000 samples allow a p1, and the order is right in every group, including the negative controls.
+  effort with the effort law. On the odd-D screens of `out/rule_table2.txt`, the expected cost/2k matches the measured
+  p1 to within 10 % for every order and for random S (3,000-sample screens). It is within the scatter of the
+  16–40-sample screens too. The order is right in every group, including the negative controls.
 - **Existence.** The space must contain a solution: roughly ln(#classes) − μ_A ≳ 0, with
   #classes = #S·|Stab(S)|/|N_E(⟨α⟩)| (§2.7). This is what decided (6,8): order 3 has ln 8,773 = 9.1 against
   μ_A = 12.9, order 2 has ln(3.4·10⁷) = 17.3 against 16.0 (§3.4). The absolute value of e^{−μ_A} is about 6 nats too
@@ -732,27 +739,38 @@ clumps than order 3, because the palindromes remove its Anti penalty. Order 2 st
 `rule.py --second` (`out/rule_table2.txt`). Logs: `runs/r2/ro127_*.log`, `ro149_*.log`, `ro159_*.log`. Samples per
 row: 3,000 at (12,7), 40 at (14,9), 16 at (15,9).
 
-| cell, group (N; μ) | symmetry | rule μ_A | min | p1 | p10 (clumps) |
+| cell, group (N; μ) | symmetry | rule: expected cost/2k | min | p1 | p10 (cost/2k) |
 |---|---|---|---|---|---|
-| (12,7) SL(2,64) (262,080; 154.6) | order 6, Frobenius x ↦ x² | 34.0 | 26.2 | 41.7 | 57.6 |
-| | order 3, Frobenius x ↦ x⁴ | 56.5 | 66.2 | 75.2 | 92.8 |
-| | order 3, conjugation | 56.7 | 61.3 | 79.5 | 98.3 |
-| | order 2, Frobenius x ↦ x⁸ | 90.0 | 124 | 144.5 | 180 |
-| | random | 154.6 | 223 | 247 | 278.5 |
-| (12,7) SL(2,8)² (254,016; 118.3) | order 6, swap∘conj | 28.7 | 27.0 | 35.6 | 50.3 |
-| | order 3, conjugation (c, c′) | 45.6 | 53.0 | 69.3 | 87.5 |
-| | order 2, swap | 70.4 | 99 | 118 | 153 |
-| | random | 118.3 | 175 | 202 | 232 |
-| (14,9) PSL(2,25)² (60,840,000; 29.9) | order 6, swap∘conj, f = 2 | – | 15.0 | – | 19.3 |
-| | order 3, conjugation, f = 2 | – | 29.5 | – | 35.0 |
-| (15,9) SL(2,64)×Z403 (105,618,240; 30.8) | order 6, Frobenius, 6+6+3 | 7.2 | 3.2 | – | 6.3 |
-| | order 3, Frobenius x ↦ x⁴ | 10.7 | 10.3 | – | 13.8 |
+| (12,7) SL(2,64) (262,080; 154.6) | order 6, Frobenius x ↦ x² | 45.5 | 26.2 | 41.7 | 57.6 |
+| | order 3, Frobenius x ↦ x⁴ | 86.3 | 66.2 | 75.2 | 92.8 |
+| | order 3, conjugation | 86.4 | 61.3 | 79.5 | 98.3 |
+| | order 2, Frobenius x ↦ x⁸ | 133.4 | 124 | 144.5 | 180 |
+| | random | 254.1 | 223 | 247 | 278.5 |
+| (12,7) SL(2,8)² (254,016; 118.3) | order 6, swap∘conj | 37.6 | 27.0 | 35.6 | 50.3 |
+| | order 3, conjugation (c, c′) | 71.0 | 53.0 | 69.3 | 87.5 |
+| | order 2, swap | 109.0 | 99 | 118 | 153 |
+| | random | 206.7 | 175 | 201.5 | 232 |
+| (14,9) PSL(2,25)² (60,840,000; 29.9) | order 6, swap∘conj, f = 2 | 18.7 | 15.0 | – | 19.3 |
+| | order 3, conjugation, f = 2 | 35.2 | 29.5 | – | 35.0 |
+| (15,9) SL(2,64)×Z403 (105,618,240; 30.8) | order 6, Frobenius, 6+6+3 | 6.3 | 3.2 | – | 6.3 |
+| | order 3, Frobenius x ↦ x⁴ | 11.1 | 10.3 | – | 13.8 |
+| (13,9) SL(2,64)×Z133 (34,856,640; 49.9) | order 6, Frobenius, e+6+6 | 10.2 | 4.9 | – | 10.5 |
+| | order 3, Frobenius x ↦ x⁴ | 18.5 | 14.8 | – | 18.5 |
+
+The rule column is the expected number of uncovered elements over both sides divided by 2k, the unit of the
+measured columns (`rule.py --second`, column Ecost/2k). It includes G's involutions: 4,095 in SL(2,64) and in
+SL(2,8)², and 106,275 in PSL(2,25)². In clump units, μ_A (column mu_A0) is larger, because involution and
+fixed-point clumps are smaller than 2k.
 
 - In every pair, order 6 has about half the clumps of order 3 (ratio 0.45–0.56 at p1 or p10). The measured order is
   the rule's in every group.
 - The first session's Anti term would have added 3–11 clumps to each order-6 row. Measured, they carry less than one.
-- The product group PSL(2,25)² mixes poorly at (14,9): the order-3 median, 242, is 4× the Poisson value. So it is no
-  candidate, although its order is +4.8 % over the record.
+- With G's involutions included, the expected cost matches the measured p1 to within 10 % for all orders and for
+  random S on both (12,7) groups. Without them, the measured values were 1.2–1.7 times the rule, more for lower
+  orders: the involution term is (2/k)·4,095·e^{−λ/2}, i.e. 33 clumps for order 6 and 66 for order 3 at (12,7).
+- PSL(2,25)² at (14,9) is no candidate, although its order is +4.8 % over the record. Its 106,275 involutions are
+  odd-D targets missed at √p. With that term the rule matches both screens (18.7 against p10 19.3, 35.2 against 35.0).
+  This is THRESHOLD's "PSL loses at odd D", squared; it is not poor mixing of the product.
 
 **Negative control: balance is what matters.** Same group SL(2,64)×Z403 at (15,9), same Frobenius of order 6 on
 SL(2,64). Only the multiplier on Z403 changes, and with it how α³ acts on the cyclic part (16 samples each,
@@ -760,21 +778,24 @@ SL(2,64). Only the multiplier on Z403 changes, and with it how α³ acts on the 
 
 | α³ on Z403 | the involution α³ | rule μ_A | min cost | p10 cost |
 |---|---|---|---|---|
-| fixes Z13, negates Z31 (r = 367) | tight, balanced: \|Fix\| = 6,552, \|Anti\| = 16,120 | 7.2 | 38 | 76 |
-| negates all (r = 212) | tight, unbalanced: \|Fix\| = 504, \|Anti\| = 209,560, π = 0.21 | 36.4 | 1,363 | 1,692 |
-| fixes all (r = 315) | \|Fix\| = 203,112 | 42.4 | 678 | 690 |
+| fixes Z13, negates Z31 (r = 367) | tight, balanced: \|Fix\| = 6,552, \|Anti\| = 16,120 | 7.9 | 38 | 76 |
+| negates all (r = 212) | tight, unbalanced: \|Fix\| = 504, \|Anti\| = 209,560, π = 0.21 | 37.2 | 1,363 | 1,692 |
+| fixes all (r = 315) | \|Fix\| = 203,112 | 43.1 | 678 | 690 |
 
-The unbalanced variants have 18–36 times the minimum cost. The rule orders all three correctly, but underestimates
-the damage of the unbalanced ones by a factor 3–7.
+The unbalanced variants have 18–36 times the minimum cost. The rule orders all three correctly. In expected cost/12
+(6.3, 21.0, 23.9 against the measured minima 3.2, 114, 57), it underestimates the damage of the unbalanced ones by a
+factor 2–5. Why large Anti or Fix sets on a cyclic factor hurt even more than the clump count says is open.
 
 **Candidates near the D = 9 records** (balanced involution, Δ ≥ 12; rule values from `rule.py`):
 - **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
-  211,236,480 vertices, +1.5 % over 208,029,120. Order 6, μ_A = 7.2, about 5·10³ evaluations; order 3, μ_A = 10.7.
+  211,236,480 vertices, +1.5 % over 208,029,120. Order 6: μ_A = 7.9 with the involution term, about 8·10³
+  evaluations. Order 3: μ_A = 12.1, about 6·10⁴.
   Anneal: RESULT-159.
 - **(13,9) SL(2,64)×Z133**, Z133 = Z7×Z19, z ↦ 65z (order 3 mod 7, order 6 mod 19), so α³ fixes Z7 and negates
   Z19. Layout e + 6 + 6. N = 34,856,640, so 69,713,280 vertices, +2.9 %; μ = 49.9.
-  - Rule: order 6, μ_A = 11.0, about 4·10⁴ evaluations; order 3, μ_A = 17.3, about 8·10⁵. The record group
-    SL(2,103)×Z31 has μ_A = 12.0 with order 3, so this is predicted easier than the record was, at a larger N.
+  - Rule, with the involution term: order 6, μ_A = 12.6, about 8·10⁴ evaluations; order 3, μ_A = 20.6, about
+    4·10⁶. The record group SL(2,103)×Z31 (one involution) has μ_A = 12.0 with order 3, so this is about as hard as
+    the record was, at a larger N.
   - Screen (16 samples, `runs/r2/ro139_*.log`): order 6 min 4.9, p10 10.5 clumps; order 3 min 14.8, p10 18.5.
   - Anneal: RESULT-139.
 - (14,9) PSL(2,25)²: +4.8 %, but poor mixing (above).
@@ -826,7 +847,9 @@ the damage of the unbalanced ones by a factor 3–7.
    "odd D: odd orders only" is withdrawn for k ≥ 6.
 7. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
    4.7·10³–3.7·10⁴ evaluations, against 1.7·10⁵ for order 3 (§5.1). Record Δ13·D8 6,999,552 (§5.2).
-8. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly, and every odd-D screen of §5.5.
+8. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly. With G's involutions included (S2),
+   at odd D it predicts the measured lower tail (p1) to within 10 % for orders 6, 3, 2 and random S on SL(2,64) and
+   SL(2,8)², and it matches the smaller screens at (14,9), (15,9) and (13,9) (§5.5).
 
 **Weak patterns**
 1. The long-cycle factor exp(λΣR_j c_j): about right on SL(2,25) in the bulk (1.55 measured against 1.30). On
@@ -834,8 +857,8 @@ the damage of the unbalanced ones by a factor 3–7.
 2. S2 (demoted from the first session's strong item 6). The (6,8) anneal success order (Frobenius 5/6, conjugation
    2/6, r = 11 2/6, r = 23 0/6) matches the charged rule. For Frobenius against conjugation it is the reverse of the
    solution densities, and 5/6 against 2/6 is not significant (p = 0.12). It may be a landscape effect.
-3. S2. At odd D the measured p1 is 1.2–1.7 times the rule's μ_A, more for lower orders (twelve screens,
-   `out/rule_table2.txt`).
+3. S2. Unbalanced involutions on the cyclic factor hurt 2–5 times more than the rule says (negative controls at
+   (15,9), §5.5).
 4. The twisted 12-cycle count is overdispersed (sd ≈ 3 × Poisson); solutions sit below its mean.
 5. Free elements of Anti(α³) are missed 1.2–2.8× more often than generic ones at even D (§5.1). Unexplained.
 
@@ -845,8 +868,8 @@ the damage of the unbalanced ones by a factor 3–7.
 3. Order 4 near the current records: no group with clean fixed-point structure (§5.3).
 4. SL(2,8)²×Z14 at (13,8): its random-symmetric minimum is twice SL(2,7)²×Z31's, and its anneals stall at 3
    uncovered orbits (§5.2).
-5. S2. Product groups at (14,9): PSL(2,25)², +4.8 %, mixes poorly. The order-3 median is 4× the Poisson value and
-   order 6 sits at p10 = 19 clumps (§5.5).
+5. S2. PSL(2,25)² at (14,9), +4.8 %: its 106,275 involutions are odd-D targets, so order 6 sits at p10 = 19 clumps
+   and order 3 at 35, as the rule with the involution term predicts (§5.5).
 6. S2. An apparent law in the order-3 near misses at (6,8), "always exactly two fixed points uncovered", was an
    artefact: all 126 such samples were one class (§3.4).
 
