@@ -1,0 +1,5 @@
+group psl 17 x Z_97, N=237456, identity 13192, H order 17, rows 13968, threads 1, setup 0.01s
+wide rows: HW order 194, rows 1224, setup 0.02s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 35 z on Z_97
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 8 (+e); mu = 48.90, mu/k = 16.30, fixed-point misses ~ 1.06
+start cost=1943
