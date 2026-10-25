@@ -1,0 +1,4 @@
+# k=11, rule R1, cubes with t <= 3 (abbase11.cnf sha256 977604dd1b9b2818...), CaDiCaL + streamed LRAT (lrat-check)
+0,0,0,0,0,0,0,0,0/0,0,0,0,0,0,0,0,0 t=0 --maxt cadical_rc 20 's UNSATISFIABLE' lratcheck_rc 0 VERIFIED wall 79 s
+1,0,0,0,0,0,0,0,0/1,0,0,0,0,0,0,0,0 t=1 --maxt cadical_rc 20 's UNSATISFIABLE' lratcheck_rc 0 VERIFIED wall 162 s
+2,0,0,0,0,0,0,0,0/1,1,0,0,0,0,0,0,0 t=2 --maxt cadical_rc 20 's UNSATISFIABLE' lratcheck_rc 0 VERIFIED wall 835 s
