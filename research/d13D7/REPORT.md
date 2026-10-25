@@ -5,7 +5,7 @@ cut off by the usage limit) and session_0136phW63ksffo3wvN1THJtH (checks, squad 
 
 **Summary.** (13,7) >= **1,064,448** (all-pairs VALID), from three copies of H(11) plus a matching and 756 "surgeries"
 at pairwise opposite points (+2 vertices each). The same surgery, carried to every D = 7 cell of the table that is
-built from generalized hexagons, gives (7,7) 23,580, (9,7) 118,224, (10,7) 225,128, (11,7) 406,298, (12,7) 673,892,
+built from generalized hexagons, gives (7,7) 23,580, (9,7) 118,224, (10,7) 225,128, (11,7) 406,496, (12,7) 673,892,
 (14,7) 1,774,584, (15,7) 2,484,720, (16,7) 4,024,340 (§7; checks in §8). The point sets came from Haiku squads
 (orbit unions of small abelian groups of isometries with an exact orbit-graph clique); for q = 9 an explicit
 duality of H(9) (§7) makes the local-duality condition global.
@@ -176,8 +176,8 @@ internally pairwise opposite, weight = orbit size, edges = orbit pairs that are 
   (q9/plucker.py, dualmap.py); a similitude ψ found by matching an apartment (findpsi.py) carries this onto H(9): an
   explicit duality δ, verified on all 66,430 points and lines (duality9.py, q9/dual_pt2line.txt). With σ = δ the
   local duality holds at EVERY point, so R only has to be non-collinear (at most q^4+q^2+1 = 6,643): ncol_ils.c
-  finds 3,859; hub graph random 8-regular with all same-side distances <= 6 (hubgraph.py); builder tri_dual.c:
-  398,580 + 2·3,859 = **406,298**.
+  finds 3,859 and orbit unions under collineations built from δ² and Frobenius (squad r5 c2) 3,958; hub graph
+  random 8-regular with all same-side distances <= 6 (hubgraph.py); builder tri_dual.c: 398,580 + 2·3,958 = **406,496**.
 
 **More copies (Δ = q+1+r, 2r+1 copies; the cells (12,7), (14,7), (15,7), (16,7)).** Levels Z_{2r+1}, matchings
 (p, i) ~ (σ(p), i+k) for k = 1..r (the same σ). Two levels differ by ±k for some k <= r, and the pair of levels i,
@@ -205,7 +205,7 @@ gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs
 | (7,7) | 23,436 | **23,580** | d7D7_hex5_R72_n23580 | VALID (apsp.c) |
 | (9,7) | 117,648 | **118,224** | d9D7_hex7_R288_n118224 | VALID (apsp.c) |
 | (10,7) | 224,694 | **225,128** | d10D7_hex8_R217_n225128 | VALID (224,862 with 84 points also VALID) |
-| (11,7) | 398,580 | **406,298** | d11D7_hex9_dual_R3859_n406298 | VALID |
+| (11,7) | 398,580 | **406,496** | d11D7_hex9_dual_R3958_n406496 | VALID (406,298 with 3,859 points also VALID) |
 | (12,7) | 664,300 | **673,892** | d12D7_hex9_dual_R2459_n673892 | VALID (level 0 + hubs) |
 | (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs) |
 | (15,7) | 2,480,184 | **2,484,720** | d15D7_hex11_R756_n2484720 | VALID (level 0 + hubs) |
