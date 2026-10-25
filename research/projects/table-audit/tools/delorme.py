@@ -12,6 +12,10 @@
                   hyperplane section, Thas 1980); A2 = one line v of S, A1 = v's points and S, A0 = A1 and its
                   neighbours; levels 2 / 1 / 0 / -1 and the b-fold lift.  Table (7,6) 8992, (11,6) 142464,
                   (13,6) 374452, (15,6) 842048 (b = 2, q = 5, 9, 11, 13); (16,6) 884062 (b = 3, q = 13).
+  d7 q OUT        Delorme 1985 Sec. 9: H(q), an edge uv; subdivide every edge between distance 2 and 3 from {u, v}
+                  (2q^3 new vertices, diameter 7, still bipartite: the subdivided edges form a cut), then q copies of
+                  A0 = {x : min d(x,u), d(x,v) <= 2} (level lift, b = q).  Degree q+1, diameter 7, order
+                  2q(q^4+q^3+3q^2+q+1).  Table (6,7) 8310 (q = 5), (8,7) 40586 (q = 7).
 Base geometries come from moore_build (edge list + point coordinates) in BIN/, written to G/."""
 import os
 import random
@@ -159,10 +163,45 @@ def d6(q, b, out, seed=1):
     print(out, 'H(%d) Hermitian spread lift b=%d: |A0|=%d |A1|=%d |A2|=%d ->' % (q, b, *cnt), m, 'vertices,', len(E2), 'edges')
 
 
+def d7(q, out):
+    n, E, crd, pts_of = geometry('h', q)
+    nbr = [[] for _ in range(n)]
+    for a, b in E:
+        nbr[a].append(b)
+        nbr[b].append(a)
+    u, v = E[0]
+    dist = [-1] * n
+    dist[u] = dist[v] = 0
+    fr = [u, v]
+    while fr:
+        nf = []
+        for x in fr:
+            for y in nbr[x]:
+                if dist[y] < 0:
+                    dist[y] = dist[x] + 1
+                    nf.append(y)
+        fr = nf
+    E2, m = [], n
+    for a, b in E:
+        if {dist[a], dist[b]} == {2, 3}:
+            E2 += [(a, m), (m, b)]
+            m += 1
+        else:
+            E2.append((a, b))
+    assert m - n == 2 * q ** 3
+    lev = [0 if x < n and dist[x] <= 2 else -1 for x in range(m)]
+    assert sum(1 for t in lev if t == 0) == 2 * (q * q + q + 1)
+    m2, E3 = lift(m, E2, lev, q)
+    write_edges(out, m2, E3)
+    print(out, 'H(%d) Sec. 9: %d inserted, |A0| = %d, %d copies ->' % (q, m - n, 2 * (q * q + q + 1), q), m2, 'vertices')
+
+
 if __name__ == '__main__':
     kind = sys.argv[1]
     if kind == 'd3':
         d3(int(sys.argv[2]), sys.argv[3])
+    elif kind == 'd7':
+        d7(int(sys.argv[2]), sys.argv[3])
     elif kind == 'd4':
         d4(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4])
     else:
