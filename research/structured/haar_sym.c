@@ -925,6 +925,17 @@ static void dumpfix(uint64_t **sv) {
             if (!cov) { char buf[1000]; desc_elem(g, buf); fprintf(stderr, "UNCOV-FIX side %d fixidx %lld elem %d: %s\n", t, i, g, buf); } }
     }
 }
+/* FIXHIST=1 (with RANDORB): count, per alpha-fixed element, how many random samples leave it uncovered. */
+static int FIXHIST = 0;
+static void fixcount(uint64_t **sv, long long *cnt) {
+    for (int t = 0; t < (D % 2 ? 2 : 1); t++) {
+        const uint64_t *V = sv[t];
+        for (long long i = -1; i < NFIX; i++) { int g = i < 0 ? ident : FIXL[i], cov;
+            if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+            else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+            cnt[i + 1] += !cov; }
+    }
+}
 /* full diameter check of the current S; f = 0: normalise to S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A))
  * so that the first generator is e, and check again; then write the solution file.  Returns 1 iff written. */
 static int check_and_write(ctx *c0, const char *out) {
@@ -941,6 +952,31 @@ static int check_and_write(ctx *c0, const char *out) {
     for (int i = 0; i < d; i++) { char buf[1000]; desc_elem(S[i], buf); fprintf(f, "%s\n", buf); }
     fclose(f); printf("wrote %s\n", out);
     return 1;
+}
+/* ENDG=1: exhaustive scan of the one-orbit neighbourhood of the current state. Slot j is replaced by every
+ * valid orbit (one representative per orbit, i.e. the smallest element), and the raw cost is taken. Returns 1 iff a
+ * cost-0 replacement was found; S then holds it. *bestraw is the lowest raw cost seen (ties abort via the bound). */
+static int ENDG = 0; static long long ENDGC = 1;
+static int endgame_scan(ctx *c0, int j, long long *bestraw) {
+    long long br = *bestraw; int o[MAXD], keep[MAXD]; long long n = 0;
+    for (int i = 0; i < OK_; i++) keep[i] = S[ostart(j) + i];
+    for (int x = 0; x < N; x++) {
+        if (!orbit_of(x, o)) continue;
+        int mn = x; for (int i = 0; i < OK_; i++) if (o[i] < mn) mn = o[i];
+        if (mn != x || !orbit_free(o, j)) continue;
+        for (int i = 0; i < OK_; i++) mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]);
+        long long bnd = br + 1; double sc; long long r = cost_any(c0, TF, TI, &sc, NULL, &bnd, 0);
+        n++;
+        if (r >= 0 && r < br) br = r;
+        if (r == 0) {
+            for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; SI[ostart(j) + i] = ginv(o[i]); }
+            fprintf(stderr, "ENDG slot %d: cost 0 at orbit rep %d after %lld orbits\n", j, x, n);
+            *bestraw = 0; return 1;
+        }
+    }
+    for (int i = 0; i < OK_; i++) mktab(keep[i], TF[ostart(j) + i], TI[ostart(j) + i]);
+    fprintf(stderr, "ENDG slot %d: scanned %lld orbits, best raw %lld\n", j, n, br);
+    *bestraw = br; return 0;
 }
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
@@ -965,15 +1001,20 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
+        uint64_t *fsv[2] = {NULL, NULL}; long long *fcnt = calloc(NFIX + 1, sizeof(long long));
+        if (getenv("FIXHIST")) { FIXHIST = 1; fsv[0] = zalloc64(BITBYTES); fsv[1] = zalloc64(BITBYTES); }
         for (int t = 0; t < m; t++) {
             for (int u = 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
-            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
+            v[t] = cost_any(C[0], TF, TI, &sc0, FIXHIST ? fsv : NULL, &NOBOUND, 0);
+            if (FIXHIST && v[t] >= 0) fixcount(fsv, fcnt);
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
             sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
             if (getenv("LEVELS") && t < atoi(getenv("LEVELS"))) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld\n", v[t]); }
         }
+        if (FIXHIST) { for (long long i = -1; i < NFIX; i++) { int g = i < 0 ? ident : FIXL[i]; char buf[1000]; desc_elem(g, buf);
+                printf("FIXHIST fixidx %lld elem %d uncovered %lld of %d: %s\n", i, g, fcnt[i + 1], m, buf); } }
         qsort(v, m, sizeof(long long), cmpll);
         printf("RANDORB d=%d D=%d group=%s x Z_%d N=%d k=%d m=%d f=%d fix=%lld samples=%d min=%lld p1=%lld p10=%lld median=%lld mean=%.2f var=%.1f mu=%.2f time=%.1f\nRANDORB hist (cost/k):",
                d, D, Q->spec, ncyc, N, OK_, OM, OF, NFIX, m, v[0], v[m / 100], v[m / 10], v[m / 2], sm / m, sq / m - (sm / m) * (sm / m), mu, now() - t0);
@@ -992,6 +1033,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
     if (getenv("DUMPFIX")) DUMPFIX = atoi(getenv("DUMPFIX"));
+    if (getenv("ENDG")) ENDG = atoi(getenv("ENDG"));
+    if (getenv("ENDGC")) ENDGC = atoll(getenv("ENDGC"));
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
@@ -1040,6 +1083,14 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         }
         steps++; ohash = (ohash ^ (unsigned long long)(cs[bt] * 1000003 + bt * 7 + (c == cs[bt]))) * 1099511628211ULL;
         if (DUMPFIX && c <= 1 && ce < bestE) { fprintf(stderr, "DUMP step=%lld raw=%lld energy=%lld\n", steps, c, ce); dumpfix(SV[bt]); }
+        if (ENDG && c <= ENDGC && ce < bestE) {   /* new best valley: scan every one-orbit replacement of it */
+            long long br = c;
+            fprintf(stderr, "ENDG step=%lld raw=%lld energy=%lld\n", steps, c, ce);
+            for (int jj = 0; jj < OM && best > 0; jj++)
+                if (endgame_scan(C[0], jj, &br)) { c = 0; ce = 0; cE = 0; best = 0; bestE = 0; memcpy(bestS2, S, sizeof(int) * d); break; }
+            for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+            if (best > 0) { cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); collect(C[0]); }   /* restore the context */
+        }
         if (ce < bestE) { best = c; bestE = ce; memcpy(bestS2, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; }
         T = TMAX * pow(0.5, (ONOW - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (ONOW - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {

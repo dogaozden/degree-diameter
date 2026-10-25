@@ -14,4 +14,43 @@ uncovered alpha-fixed elements (dumpfix). Logs in research/structured/runs/raise
   PSL(2,17). It is a generator of the fixed torus Z_9 = C(alpha).
 - Seeds 102, 103: no cost-1 state in the first minutes.
 
+- Seeds 102, 103 (20 min each): cost 3 (one free orbit) all the time, no cost-1 state.
+- So the cost-1 valley is rare in this batch. Seed 101 reached it once in 1500 s.
+
+## Step 2: is the torus element structurally missed? (FIXHIST)
+
+Added `FIXHIST=1` (with RANDORB): counts, per alpha-fixed element, how often a random symmetric S leaves it
+uncovered. 4000 samples each:
+
+| group | |Fix| (+e) | per-element uncovered rate | random median cost | random min |
+|---|---|---|---|---|
+| psl 17 x Z109 (N 266,832, mu 28.4) | 8 (+e) | 0.19 for every element, e included | 407 | 6 |
+| prod sl 5 psl 7 x Z13 (N 262,080, mu 23.6, record) | 17 (+e) | 0.23 for every element | 292 | 3 |
+
+So under random S the torus element is not special. The fixed points are not what separates psl 17 from the
+record; the free-orbit part has the larger mu (9.5 vs 7.9 expected missed orbits), and the annealer does not find
+a zero.
+
+## Step 3: tails of the untried candidates (RANDORB 3000, one core)
+
+| group | N | mu | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|
+| psl 19 x Z79 | 270,180 | 32.2 | 12 | 25 | 66 | 357 |
+| prod psl 5 sl 4 x Z73 | 262,800 | 24.3 | 9 | 33 | 129 | 2178 |
+| prod psl 5 sl 5 x Z37 | 266,400 | 27.9 | 10 | 32 | 93 | 1718 |
+| psl 13 x Z247 | 269,724 | 31.6 | 27 | 76 | 234 | 1703 |
+| psl 11 x Z403 | 265,980 | 27.4 | 53 | 144 | 376 | 2914 |
+| sl 8 x Z523 | 263,592 | 25.0 | 156 | 334 | 697 | 5265 |
+| psl 9 x Z733 / Z739 | 263,880 / 266,040 | 25.3 / 27.5 | 405-580 | ~900 | ~3000 | ~33000 |
+| sl 7 x Z787, pgl 7 x Z787 | 264,432 | 25.9 | 993 / 1153 | | | |
+| prod psl 3 psl 9 x Z61 | 263,520 | 25.0 | 15 | 54 | 319 | 175,680 |
+
+Nothing has a better tail than the record group. psl 19 x Z79 is close to psl 17 x Z109 but has a larger mu.
+
+## Step 4: ENDG, the exhaustive one-orbit scan
+
+Added `ENDG=1` (with `ENDGC=c`): whenever a new best energy is reached at raw cost <= c, the current state is
+checked against every valid orbit replacement of each slot (about 89 k representatives per slot, about 40 s). Test
+on psl 17 with ENDGC=3: 88,940 orbits per slot, best raw 3 (no zero). Found nothing at that state.
+
 (Update below as the runs finish.)
