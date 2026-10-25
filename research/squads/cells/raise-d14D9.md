@@ -82,6 +82,13 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | psl 53 × Z787 | 58,562,244 | 117,124,488 | 16.4 | 26 | not solved: best 12, 12,969 evals in 3600 s |
 | psl 43 × Z1477 | 58,684,164 | 117,368,328 | 16.9 | 20 | not solved: best 18, 14,449 evals in 3600 s |
 | psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | 35 | not solved: best 6, 8,633 evals in 3600 s |
+| sl 49 × Z499 | 58,682,400 | 117,364,800 | 16.9 | – | not solved: best 6, 7,297 evals in 2400 s |
+| sl 41 × Z853 | 58,754,640 | 117,509,280 | 17.3 | – | not solved: best 24, 6,233 evals in 2400 s |
+| sl 61 × Z259 | 58,772,280 | 117,544,560 | 17.3 | – | not solved: best 6, 10,433 evals in 2400 s |
+| psl 41 × Z1723 | 59,340,120 | 118,680,240 | 20.2 | – | not solved at the cut-off: best 48 after 3,713 evals (run ~1300 s in) |
+| psl 43 × Z1483 | 58,922,556 | 117,845,112 | 18.1 | 20 | not solved at the cut-off: best 48 after 5,249 evals (run ~1700 s in) |
+| sl 53 × Z397 | 59,083,128 | 118,166,256 | 18.9 | – | not solved at the cut-off: best 12 after 4,305 evals (run ~1400 s in) |
+| psl 49 × Z1009 | 59,329,200 | 118,658,400 | 20.2 | – | queued, cancelled before start (μ ≈ 20 with the weakest prospects of the queue) |
 | sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | running, best 18 |
 | psl 121 × Z67 | 59,343,240 | 118,686,480 | 20.2 | – | running |
 | psl 53 × Z787 | 58,562,244 | 117,124,488 | 16.4 | – | running at 3600 s budget, best 18 |
