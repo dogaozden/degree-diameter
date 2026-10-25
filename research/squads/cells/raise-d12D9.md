@@ -39,3 +39,9 @@ Stopped sl 37 × 337 (N 17.06M) and psl 53 × 229 (N 17.04M): below the new reco
 Running: psl 47 × Z331 (N 17,174,928, μ 18.7), sl 43 × Z217 (N 17,243,688, μ 19.9), psl 89 × Z49 (N 17,269,560, μ 20.3),
 sl 97 × Z19 (N 17,338,944, μ 21.5). Each 40 min, seed 1, k=3 m=4 f=0.
 Runner: scratchpad run.sh (haar_sym with THREADS=1, nice, timeout; copies logs to research/structured/runs/d12D9_<tag>.log).
+
+### Round 2 result: NEW RECORD 34,677,888 (+1.2 % over 34,264,920, +15.6 % over 30,001,152 table)
+- sl 97 × Z19, N = 17,338,944, k = 3, m = 4, f = 0, seed 1, μ 21.5, |Fix| 95: **solved** at 11,817 evaluations (1,015 s).
+  File: research/frontier/sols/d12D9_sl_97_19_orb3f0_s1.txt. Log: research/structured/runs/d12D9_sl_97_19_orb3f0_s1.log.
+  Checks: haarcheck_sl (frontier/haarcheck_sl.c) VALID and haarcheck2 (frontier/haarcheck2.c) VALID, both d=12 D=9, all 17,338,944 per side reached, ecc 9.
+- Still running at this point: psl 47 × 331 (cost 3), sl 43 × 217 (cost 14), psl 89 × 49 (cost 5).
