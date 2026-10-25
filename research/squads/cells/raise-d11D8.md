@@ -74,10 +74,40 @@ Each solution, if one appears, goes to `research/frontier/sols/d11D8_psl_19_331_
   (slot 0 and slot 1 alike). Four different seeds ending at the same energy 10 suggests the search has plateaued at this
   energy level for psl 19 x Z331 with these moves.
 
-## Status
+## Final status (20:12 UTC): not beaten, runs finished
 
-Running to their scheduled end (~19:40 UTC): seeds 21–24 (`haar_sym_exh2`, EXH on, fixed trigger). No solution above
-2,258,520 yet. Best: raw cost 5 (round 1 and round 2, one uncovered orbit). Round-2 assessment: psl 19 x Z331 with
-orbit-symmetric S and these annealing moves has not solved in ~9 runs of round 1 and ~8 of round 2; the record cell's
-own runs needed about 1.2·10⁶ evaluations for the final step. I do not expect a solution from the remaining time.
-Round-1 and round-2 results so far: best cost 5 (one uncovered orbit), never 0, on psl 19 x Z331.
+No run found a solution above 2,258,520. No file in `research/frontier/sols/` for round 2.
+
+Round-2 final best costs (raw uncovered count; ORBW=5, so an uncovered orbit weighs 5 in energy):
+
+| run | group | budget | final best | note |
+|---|---|---|---|---|
+| EXH2 seed 23 | psl 19 x Z331 | 10800 s, 1.46M evals | **1** | one uncovered α-fixed element, closest yet; did not reach 0 |
+| EXH2 seed 21 | psl 19 x Z331 | 10800 s, 1.82M evals | 10 | |
+| EXH2 seed 22 | psl 19 x Z331 | 10800 s, 1.83M evals | 10 | |
+| EXH2 seed 24 | psl 19 x Z331 | 10800 s, 1.09M evals | 5 | |
+| EXH seed 11 | psl 19 x Z331 | stopped at 5504 s, 0.12M evals | 5 | scan 10 -> 5 |
+| EXH seed 12 | psl 19 x Z331 | stopped at 5504 s, 0.25M evals | 10 | |
+| EXH seed 13 | psl 19 x Z331 | stopped at 5504 s, 0.06M evals | 10 | |
+| EXH seed 15 | psl 19 x Z331 | stopped at 5150 s, 0.19M evals | 5 | |
+| EXH seed 14 | psl 19 x Z331 | stopped early (stall, see log) | — | `_STALLED.log` |
+
+Notes on the runs:
+- The first batch (seeds 11–15) was stopped early (~16:40 UTC) because of the EXH trigger bug. Their budgets are
+  shorter than the printed 16000/14400 s.
+- EXH2 (seeds 21–24) is the fixed trigger (scan only after the best energy improves). It moved the annealer again.
+- The closest run (seed 23, best 1) ended at a single uncovered α-fixed element, which the orbit method
+  handles only by weighting (ORBW=5), not by moves that can fix it. No state dump was saved, so an exhaustive
+  scan from that state was not possible.
+
+## Assessment and what would be next
+
+- Round 1 and round 2 together: about 17 runs on psl 19 x Z331 (N = 1,132,020, the best group above the record). None
+  reached cost 0. The best was one uncovered element (seed 23), after 1.5M evals.
+- The record cell's own solution needed about 1.25M evals in the successful run, so these runs are in the same range,
+  but the other runs stalled at a lower energy plateau (energy 10) for a long time.
+- Stopping here, as allowed: the remaining candidates in the window are worse on random-sample mixing (table in
+  this file), and the one group that is close has not converged after about 2 hours of 4-core time per run.
+- Next steps if someone resumes: (1) dump the best S on each run so an exhaustive scan can start from the cost-1
+  state (seed 23 is the best lead); (2) more seeds on the same group only if the state dump is in place, since the
+  current runs spend most time on the energy-10 plateau.
