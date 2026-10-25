@@ -57,11 +57,20 @@ poolS = collections.defaultdict(list)
 for s in S:
     if s not in excluded: poolS[tS[s]].append(s)
 cntR = collections.Counter(tR.values())
-for t, n in cntR.items(): assert len(poolS[t]) >= n, ('type infeasible', sorted(t), n, len(poolS[t]))
+# R points of a type with too few spread lines are dropped (R' = R minus D plus X); the rest keep their order
+dropped = []
+keepR = []
+left = {t: len(poolS[t]) for t in cntR}
+for r in R:
+    if left[tR[r]] > 0: left[tR[r]] -= 1; keepR.append(r)
+    else: dropped.append(r)
+R = keepR
 f = {}
 for t in poolS: rng.shuffle(poolS[t])
 for r in R: f[r] = poolS[tR[r]].pop()
 for j in range(k): f[Xs[j]] = Ls[j]
+Rp = R + Xs
+Bm = H.Bmat(np.array(Rp), np.array(Rp)); np.fill_diagonal(Bm, 1)
 # mirrored distances check
 # mirrored distances: for every a, the lines of f(R') within distance 4 of f(a) are exactly f of the points of R'
 # orthogonal to a (no collinear pairs, so orthogonal = distance 4)
@@ -97,6 +106,7 @@ assert (sig >= 0).all() and used.all()
 np.savetxt(os.path.join(out, 'sigma.txt'), sig, fmt='%d')
 np.savetxt(os.path.join(out, 'R.txt'), np.array(Rp), fmt='%d')
 with open(os.path.join(out, 'config.txt'), 'w') as g:
-    g.write(f'# mirrored surgery set: |R| = {len(R)} pairwise opposite + {k} extra points; {npairs} distance-4 pairs\n')
+    g.write(f'# mirrored surgery set: {len(R)} points of the base set (dropped {len(dropped)}) + {k} extra points; {npairs} distance-4 pairs\n')
+    g.write('D ' + ' '.join(map(str, dropped)) + '\n')
     g.write('X ' + ' '.join(map(str, Xs)) + '\nL ' + ' '.join(map(str, Ls)) + '\n')
-print(f'|R\'| = {len(Rp)}, distance-4 pairs {npairs}, types used {len(cntR)}; wrote {out}')
+print(f'|R\'| = {len(Rp)} (dropped {len(dropped)} of the base set, added {k}), distance-4 pairs {npairs}, types used {len(cntR)}; wrote {out}')
