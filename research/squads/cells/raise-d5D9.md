@@ -7,14 +7,15 @@ with research/frontier/build_haar2.py this session: VALID (ecc 9 from both sides
 
 ## Status
 
-**New record: 28,918 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_761 ⋊_25 Z_19 (order 14,459),
-seed 2 of the phase-2 runs, found in 10 s. S (as the solution file lists the index and the element (a, j) with
-a = the Z_761 part, j = the Z_19 part): (0,0), (457,18), (647,8), (151,5), (97,5). Checked by build_haar2.py (VALID,
-ecc 9 from both sides, edge-list sha256 2aa4940eb41213417c30b78c905efb899ad945c2b4066925ddbba67360feda7a) and by
-research/lifts/coordinator_check/apsp.c (all-pairs BFS, VALID, n = 28,918, degree 5, diameter 9). Saved as
-research/frontier/sols/d5D9_meta_761_19_25_s2_n28918.txt. Not yet re-checked by the coordinator.
+**New record: 28,920 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_964 ⋊_341 Z_15 (order 14,460),
+seed 2 of phase 3, found in 166 s. S as (a, j) with a ∈ Z_964, j ∈ Z_15: (0,0), (124,6), (810,7), (765,12), (78,4).
+Checked by build_haar2.py (VALID, ecc 9 from both sides, edge-list sha256
+d51b6e90e21c7881bb564ebfe164d86f797c64662b012c49498e3faf37dfaad2) and by research/lifts/coordinator_check/apsp.c
+(all-pairs BFS, VALID, n = 28,920). Saved as research/frontier/sols/d5D9_meta_964_15_341_s2_n28920.txt.
+Previous record in this session: 28,918 (Z_761 ⋊ Z_19, research/frontier/sols/d5D9_meta_761_19_25_s2_n28918.txt).
+Not yet re-checked by the coordinator.
 
-The bar for the next step is |G| ≥ 14,460 (graph ≥ 28,920).
+The bar for the next step is |G| ≥ 14,461 (graph ≥ 28,922).
 
 ## Method
 
@@ -38,5 +39,7 @@ The bar for the next step is |G| ≥ 14,460 (graph ≥ 28,920).
   14,280. Best cost 2 at N = 14,421 (Z_437⋊Z_33), 14,459 (Z_761⋊Z_19, two r), 14,460 (Z_964⋊Z_15, two r),
   14,469 (Z_371⋊Z_39), 14,542 (Z_1322⋊Z_11), 14,607 (Z_541⋊Z_27), 14,634 (Z_542⋊Z_27). Cost 4–8 elsewhere; the
   larger orders (14,735 and up) reached cost 2 at best.
-- Phase 2 (the 8 cost-2 groups at N = 14,421–14,634 with the cost-2 mark above, seeds 2–5, 480 s each; the group list
+- Phase 2 killed after the first solution (the 8 cost-2 groups at N = 14,421–14,634 with the cost-2 mark above, seeds 2–5, 480 s each; the group list
   is `raise_d5D9/phase2_groups.txt`): running.
+- Phase 3 (groups with |G| > 14,459, seeds 2–5, 480 s each; `phase3_groups.txt`, `phase3.log`): Z_964⋊Z_15 solved
+  at 14,460 (seed 2, 166 s) → record 28,920 (see above). Its other seeds, and the other groups, continue.
