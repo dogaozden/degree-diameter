@@ -97,3 +97,7 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   (seed 2, THREADS=2 if memory is tight).
 - 14:29 PSL(2,281) x Z_61 (N 676,726,680, mu 28.7, fix 140), seed 2, THREADS=4: RSS 12.5 GB, running. At 1,709 s:
   2,329 evals, best cost 7.
+- 16:00 PSL(2,281) x Z_61 (N 676,726,680, mu 28.7, fix 140), seed 2, 5400 s: NOT solved. Final best 6 after 7,305 evals
+  (cost 7 from about 1,700 s, 6 from about 5,300 s). A higher fix count than the solved PSL 271 and 331 cases
+  (fix 134, 164), so fixed points are not the whole story; mu 28.7 is near the edge of the 5400 s budget.
+- 16:00 PSL(2,157) x Z_349 retry, seed 2, THREADS=2 (lower memory), 5400 s.
