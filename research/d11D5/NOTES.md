@@ -171,5 +171,6 @@ Results:
    pipeline takes about 10 minutes; W(9)+1 ((12,5) 9,852) and W(11)+1 ((14,5) 17,580) were started at the end.
 7. **(12,5) ≥ 9,852** (W(9) + one pair, graphs/d12D5_n9852_CHECK.md, apsp VALID), by the same pipeline: po7 2,924 -> 32,
    colder po7 -> 16, wpo -> 0 (168 s), nujoint TARGET from the 9,840 nu 113 -> 0 (33 s). W(11) + one pair ((14,5)
-   17,580) was still annealing at the stop (structural cost ~660 after 830 CPU s; one evaluation takes 10 ms there).
+   17,580) reached structural cost 118 (1,700 CPU s anneal, wq/run/W11L.in; one evaluation takes 10 ms there), not
+   low enough for wpo. Extra n = 587 anneals of 1,100 s ended at 160 and 216.
 

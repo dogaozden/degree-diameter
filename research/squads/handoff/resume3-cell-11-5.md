@@ -33,8 +33,8 @@ branch; draft PR #388).
    at one violated parity pair: every sigma swap that would cover it breaks the structure.)
 3. **The same recipe at (14,5)**: W(11) + one pair gives 17,580 > 17,568. Base with the DM sigma and nu:
    research/d11D5/inc/wq/w11_dm.in/.nu. This session: start research/d11D5/inc/wq/run/w11p1.in (cost 5,864), po7
-   900 s -> 508, colder 400 s -> 318; a separate 1,700 s anneal -> 118 (wq/run/W11L.in), then a colder anneal (see
-   wq/run/W11chain2.out for where it stopped). At this size one evaluation takes 10 ms, so the annealer needs a few
+   900 s -> 508, colder 400 s -> 318; a separate 1,700 s anneal -> 118 (wq/run/W11L.in), and a colder 400 s anneal
+   left it at 118. At this size one evaluation takes 10 ms, so the annealer needs a few
    thousand CPU seconds; then wpo (from <= ~30), then `TARGET=1 GCAP=40000000 WMAX=400000 nujoint` with
    NU=wq/run/w11p1.nu, then finish.sh with d = 14.
 4. The counting ceiling of the family is 14,796 at (11,5) (n <= 1,233), so the room is large; what is missing is a
