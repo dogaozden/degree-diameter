@@ -48,3 +48,8 @@ Job "raise2-12-9", Haiku worker, branch `claude/raise-d12d9-bipartite-record-b26
 
 ### Batch 2 (started 15:17 UTC, 2 h each): bar is now N > 17,538,144
 Running: sl 37 × Z349 ORBW=3 seed 1 (N 17,664,984, μ 28.2, |Fix| 36); sl 83 × Z31 ORBW=3 seed 1 (N 17,722,824, μ 29.5, |Fix| 42).
+- Batch 2 status at 17:03 UTC: sl 37 × Z349 ORBW=3 stopped at energy 36 (round 1's bad level, not worth the core).
+  sl 83 × Z31 ORBW=3 seed 1: best 6 at 130k evals (still running at 17:03). sl 43 × Z223 ORBW=3 seed 1: best 12 at 132k evals.
+- psl 73 × Z91 ORBW=3 seed 4 (2 h, N 17,696,952): finished unsolved, best 6 at 230k evals (round 1: best 6, 11, 9).
+- psl 47 × Z343 ORBW=3 seed 1 (N 17,797,584, μ 31.4): best 13 at 41k evals (running). First time this group was tried.
+- psl 73 × Z91 ORBW=3 seed 5 started 17:04 (2 h).
