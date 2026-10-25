@@ -6,6 +6,7 @@ import Mathlib.Data.ZMod.Units
 import Mathlib.Algebra.Field.ZMod
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.FinCases
+import Mathlib.Tactic.NormNum.Prime
 
 /-! # Haar graphs of `SL(2, p) × Z_n` from batch certificates
 
@@ -262,7 +263,7 @@ def mkSL (a b c d : ℕ) : SpecialLinearGroup (Fin 2) (ZMod p) :=
 def gOf (l : Let) : G p n := (mkSL l.e l.f l.g l.h, Multiplicative.ofAdd (l.zw : ZMod n))
 
 /-- The inverse letter, in `ℕ`. -/
-def invLet (p n : ℕ) (l : Let) : Let := ⟨l.h, p - l.f, p - l.g, l.e, n - l.zw⟩
+def invLet (p n : ℕ) (l : Let) : Let := ⟨l.h, (p - l.f) % p, (p - l.g) % p, l.e, (n - l.zw) % n⟩
 
 /-- The determinant condition of a letter. -/
 def DetOK (p : ℕ) (l : Let) : Prop := (l.e : ZMod p) * l.h - l.f * l.g = 1
@@ -320,10 +321,10 @@ theorem letRep_of (Δ L : ℕ) (genL : ℕ → Let) (hsG : ∀ u < Δ, sG u = gO
     obtain ⟨i00, i01, i10, i11⟩ := inv_entries (p := p) (gOf (p := p) (n := n) (genL u)).1
     refine ⟨?_, ?_, ?_, ?_, ?_⟩
     · rw [Prod.fst_inv, i00, h11]
-    · rw [Prod.fst_inv, i01, h01, cast_sub_of_le (hb u hu).1]
-    · rw [Prod.fst_inv, i10, h10, cast_sub_of_le (hb u hu).2.1]
+    · rw [Prod.fst_inv, i01, h01, ZMod.natCast_mod, cast_sub_of_le (hb u hu).1]
+    · rw [Prod.fst_inv, i10, h10, ZMod.natCast_mod, cast_sub_of_le (hb u hu).2.1]
     · rw [Prod.fst_inv, i11, h00]
-    · rw [Prod.snd_inv, toAdd_inv, hz, cast_sub_of_le (hb u hu).2.2]
+    · rw [Prod.snd_inv, toAdd_inv, hz, ZMod.natCast_mod, cast_sub_of_le (hb u hu).2.2]
 
 theorem semN_rep {Δ L : ℕ} {lt : ℕ → ℕ → Let} (hrep : LetRep sG invAt Δ L lt) (dg : ℕ → ℕ) :
     ∀ t ≤ L, (∀ t' < t, dg t' < Δ) →

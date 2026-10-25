@@ -20,7 +20,12 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (16,5) | 33,792 | route-chart lift | building (staged BFS) | LeanAll/D16D5 |
 | (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | building (staged BFS, 2 sources) | LeanAll/D6D8 |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | todo | |
-| D = 8–10 Haar cells | 1.3M … 1.3B | Haar | todo | |
+| (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (packed batch checks, 720 batches) |
+| (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | building | LeanAll/HaarD8D10 |
+| (10,9) | 8,003,856 | Haar, SL(2,83) × Z7 | building | LeanAll/HaarD10D9 |
+| (11,9) | 16,792,080 | Haar, SL(2,61) × Z37 | building | LeanAll/HaarD11D9 |
+| (15,8) | 18,128,880 | Haar, SL(2,109) × Z7 | building | LeanAll/HaarD15D8 |
+| other D = 8–10 Haar cells | 2.3M … 1.3B | Haar (SL, PSL, products) | todo | |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
@@ -40,3 +45,16 @@ Kernel lessons (benchmarks in the session): structural recursion over long range
 `Nat.rec` with the index taken from the recursor's own literal argument); `List.foldl`/`all`/`any` through `brecOn`
 dominate small loops (use `List.rec`); a tree lookup costs about 70 µs per level; each kernel step allocates about
 0.7 kB that stays cached until the declaration ends, so memory, not time, sets the module size.
+
+## Method for the Haar cells (`LeanAll/Swar.lean`, `HaarSwar.lean`, `HaarSL.lean`)
+
+The diameter of a Haar graph of `G = SL(2,p) × Z_n` follows from a cover of `G` by words of `D - 1` letters (existing
+lemmas `haar_ediam_le_odd/even`). The elements are numbered so that batch `b` (fixed `a, c` of the matrix, or fixed `a`
+when `c = 0`) holds `p n` consecutive elements, slot `d n + z`. A batch check (`batchOK`) multiplies all `p n` slot
+words at once with `40`-bit packed fields: the certificate number holds, per slot, the `D - 1` digits of its word
+(4 bits each); the kernel extracts each digit, builds selection masks, multiplies by the selected letter, reduces mod
+`p` (approximate Barrett step, one conditional subtraction, and a check that every field is below `p`) and mod `n`,
+and finally compares with the slot targets (`a`, `c`, the ramps `d` and `z`). `batch_sound` proves that a passing
+batch gives, for every slot, a word whose product has those entries; `cover_of_batches` turns all batches into a cover
+of `G` (the determinant fixes the fourth entry). Certificates come from `haarcert.c` (BFS over the group, every word
+re-evaluated). A batch of about 2,000 slots takes about 0.3 s in the kernel.
