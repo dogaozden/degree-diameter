@@ -153,3 +153,23 @@ so no commuting fixed pair. The price is |Fix(α)|·e^(−λ/7) fixed-point miss
 - Stopped prod psl 11 × psl 23 seeds 5, 6 (N 4,007,520 is below the new bar).
 - Next candidates (k = 3, f = 2, N > 4,021,920): prod psl 3 × psl 25 × Z43 (4,024,800, μ 33.5, seed 1 stalled at 9),
   prod psl 7 × psl 9 × Z67 (4,052,160, μ 36.5), prod sl 5 × sl 8 × Z67 (4,052,160, μ 36.5).
+
+## Final status of round 2 (20:14 UTC)
+- **Best verified record: 8,043,840 vertices**, prod psl 7 × psl 19 × Z7 (N 4,021,920, μ 33.2, ORBIT "3 2 2"; file
+  research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt). Verified by haar_sym's full diameter check and build_haar2.py
+  (VALID, 0 duplicate edges). Previous record 8,003,856 (round 1). Gain +0.5 %.
+- Nothing above it was solved after that. Bar: N > 4,021,920.
+- Runs after the record (all stopped at their budget, none solved):
+  - psl 3 × psl 25 × Z43 (N 4,024,800, μ 33.5): seeds 1–7 (7 runs, 0.6–0.8·10⁶ evals each): best 9, 6, 3, 3, 6, 3, 3. Seed 7 used ORBW=5.
+    Cost 3 is the wall again.
+  - psl 7 × psl 19 × Z7 seed 2 (the second run of the record group): best 3 at 1.1·10⁶ evals, no solve.
+  - psl 7 × psl 9 × Z67 (N 4,052,160, μ 36.5): best 9 at 7.4·10⁵ evals.
+  - sl 5 × sl 8 × Z67 (N 4,052,160, μ 36.5): best 12 at 7.3·10⁵ evals.
+  - sl 3 × sl 11 × Z127 (N 4,023,360, μ 33.3): stopped at 30 after 1e5 evals (large cyclic factor).
+  - k = 7 (Δ = 8 forces m = 1): dead, as above.
+- Judgment: the record moved by one rung. The next rung (N > 4,024,800, μ ≈ 33–36) has few candidates left above the bar, and
+  each seed has about a 1-in-5 to 1-in-3 chance of solving at μ ≈ 33. Going further needs many more core-hours than this session's
+  6 h (about 20 seed-runs of 1.5 h). The cost-3 plateau (one uncovered orbit of size 3) is common to every group here.
+  The likely cause is the two commuting fixed letters (f = 2 in the torus C(α)), which k = 3 with Δ = 8 forces.
+  Routes not run: (i) more seeds on psl 3 × psl 25 × Z43 and on any new group with μ ≈ 33 found by a wider screen;
+  (ii) the cheaper orbit evaluation (STRUCTURE.md §7.4) to get +2 in μ; (iii) SL(3,q) (§7.3), not implemented.
