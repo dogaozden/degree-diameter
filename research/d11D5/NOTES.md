@@ -103,3 +103,12 @@ does not meet every circle of the inversive plane.
   (σ, ν) annealing that keeps the structural cost at 0.
 - Counting bound for this family: the coset +1 classes of a point x are covered only by J+3 walks (≤ 585 endpoints)
   and 2+J+1 walks (≤ 648), so n ≤ 1,233 points per side, i.e. order ≤ 14,796. The 7,020 graph uses 47% of that.
+- Last runs: from squad r2 c3's best regulus start (cost 68) the annealer again stops at 2 (best_y901.in). The
+  remaining pair is again a coset-0 line pair. The ν check on plain W(8) with σ = δ stays at 9 violated parity
+  constraints after about 2,800 s of annealing in total (fin_w8_or*.log).
+
+**Conclusion for this job.** (11,5) stays at 7,020. Within the GQ + parallel-jump family, 7,020 is the maximum at
+Δ = 11 (item 4), and the Z₃-covering escape route has no solutions at small q and none found at q = 7. The
+non-quadrangle extension is the one route with a real chance: its exact structural cost gets to 2 but not 0 by every
+local method tried (annealing, tabu, exhaustive move pairs, σ-CSP). A completion probably needs joint (base, σ, ν)
+optimisation or a two-pair design.
