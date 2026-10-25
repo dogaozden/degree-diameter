@@ -71,3 +71,8 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - Running: b9 prod psl 5 x psl 7 x Z67 (N 675,360, best 15 at 960 s); b10 and b11 psl 47 x Z13, seeds 8 and 9 (started 09:50).
 - Screen (research/frontier/runs/raise-d8D9/ and scratchpad): window 670,801–676,000 with --anyn (n may contain 3), 1000 samples.
 - Record unchanged at 1,341,600 (sl 25 x Z43). 6 hour-long runs above the record so far, none solved; the solved ones were at mu 27.1 and 29.7.
+
+## Wider screen (10:05): window 670,801–676,000, --anyn, 1000 samples
+File: research/frontier/runs/raise-d8D9/screen/screen_anyn_670801_676000.txt. Best p1 is prod psl 3 x psl 7 x Z333 (538),
+prod psl 3 x sl 8 x Z111 (185). Most entries have fixed sets in the thousands (n with factor 3). Nothing new is worth a
+run; the only plausible groups above 670,800 remain psl 47 x Z13 (p1 51) and prod psl 5 x psl 7 x Z67 (p1 105).
