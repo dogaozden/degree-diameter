@@ -14,7 +14,7 @@ col = [set() for _ in range(n)]
 for s in L:
     for a in s: col[a].update(s)
 def concurrent(a, b): return bool(set(L[a]) & set(L[b]))
-K = int(os.environ.get("K", "8"))
+K = int(os.environ.get("K", "9" if os.environ.get("NOINC") else "8"))
 for attempt in range(100000):
     if mode == "absolute":
         ab = [p for p in range(n) if p in L[d_pt[p]]]
@@ -34,7 +34,7 @@ for attempt in range(100000):
         pts.append(rng.choice(c))
     if ok and len(lines) == K: break
 X = n
-Lnew = [s[:] for s in L] + [pts[:] + [X]]
+Lnew = [s[:] for s in L] + [pts[:] + ([] if os.environ.get("NOINC") else [X])]
 for p, li in zip(pts, lines):
     Lnew[li].remove(p); Lnew[li].append(X)
 sigma = d_pt[:] + [n]

@@ -1,0 +1,19 @@
+n=586 dg=9 K=6 files=6 shared_base=1
+  replica 0 start /home/user/degree-diameter/research/d11D5/plus/best_u602.in cost=2
+  replica 1 start /home/user/degree-diameter/research/d11D5/plus/best_v701.in cost=2
+  replica 2 start /home/user/degree-diameter/research/d11D5/plus/best_v702.in cost=2
+  replica 3 start /home/user/degree-diameter/research/d11D5/plus/best_r301.in cost=4
+  replica 4 start /home/user/degree-diameter/research/d11D5/plus/best_r302.in cost=4
+  replica 5 start /home/user/degree-diameter/research/d11D5/plus/best_w801.in cost=8
+t=1070.1 G=0 best=2 (start) slot=0 T=0.30
+status t=60 G=22728 slots: [T=0.30 c=2 acc=0.021] [T=0.55 c=2 acc=0.027] [T=0.99 c=14 acc=0.070] [T=1.81 c=84 acc=0.150] [T=3.30 c=274 acc=0.222] [T=6.00 c=804 acc=0.311] swaps: 0.96 0.07 0.00 0.04 0.04 cross elig=3390 tried=3 acc=1 best=2
+status t=120 G=41640 slots: [T=0.30 c=2 acc=0.022] [T=0.55 c=6 acc=0.030] [T=0.99 c=28 acc=0.071] [T=1.81 c=120 acc=0.162] [T=3.30 c=338 acc=0.241] [T=6.00 c=1092 acc=0.332] swaps: 0.82 0.04 0.00 0.02 0.02 cross elig=6240 tried=9 acc=1 best=2
+status t=180 G=60690 slots: [T=0.30 c=4 acc=0.035] [T=0.55 c=2 acc=0.023] [T=0.99 c=18 acc=0.082] [T=1.81 c=128 acc=0.162] [T=3.30 c=378 acc=0.246] [T=6.00 c=1016 acc=0.342] swaps: 0.57 0.03 0.00 0.01 0.01 cross elig=9090 tried=14 acc=1 best=2
+status t=240 G=82074 slots: [T=0.30 c=2 acc=0.023] [T=0.55 c=14 acc=0.037] [T=0.99 c=22 acc=0.082] [T=1.81 c=148 acc=0.164] [T=3.30 c=492 acc=0.249] [T=6.00 c=1106 acc=0.348] swaps: 0.42 0.04 0.00 0.01 0.01 cross elig=12300 tried=20 acc=1 best=2
+status t=300 G=103530 slots: [T=0.30 c=2 acc=0.026] [T=0.55 c=8 acc=0.035] [T=0.99 c=30 acc=0.082] [T=1.81 c=98 acc=0.168] [T=3.30 c=514 acc=0.253] [T=6.00 c=1142 acc=0.354] swaps: 0.34 0.05 0.00 0.01 0.01 cross elig=15510 tried=27 acc=2 best=2
+status t=360 G=125898 slots: [T=0.30 c=2 acc=0.026] [T=0.55 c=10 acc=0.034] [T=0.99 c=36 acc=0.083] [T=1.81 c=142 acc=0.170] [T=3.30 c=382 acc=0.254] [T=6.00 c=1092 acc=0.356] swaps: 0.28 0.04 0.00 0.01 0.01 cross elig=18870 tried=30 acc=3 best=2
+status t=420 G=147642 slots: [T=0.30 c=2 acc=0.025] [T=0.55 c=12 acc=0.036] [T=0.99 c=40 acc=0.086] [T=1.81 c=152 acc=0.173] [T=3.30 c=412 acc=0.253] [T=6.00 c=1104 acc=0.355] swaps: 0.24 0.03 0.00 0.01 0.01 cross elig=22140 tried=34 acc=4 best=2
+status t=480 G=170520 slots: [T=0.30 c=2 acc=0.025] [T=0.55 c=4 acc=0.038] [T=0.99 c=24 acc=0.086] [T=1.81 c=130 acc=0.175] [T=3.30 c=514 acc=0.249] [T=6.00 c=1242 acc=0.355] swaps: 0.21 0.03 0.00 0.00 0.00 cross elig=25560 tried=40 acc=5 best=2
+status t=540 G=195126 slots: [T=0.30 c=2 acc=0.036] [T=0.55 c=4 acc=0.026] [T=0.99 c=16 acc=0.085] [T=1.81 c=150 acc=0.176] [T=3.30 c=430 acc=0.250] [T=6.00 c=1170 acc=0.356] swaps: 0.24 0.02 0.00 0.00 0.00 cross elig=29250 tried=51 acc=8 best=2
+status t=570 G=206730 slots: [T=0.30 c=2 acc=0.026] [T=0.55 c=4 acc=0.035] [T=0.99 c=28 acc=0.085] [T=1.81 c=118 acc=0.176] [T=3.30 c=512 acc=0.250] [T=6.00 c=1272 acc=0.357] swaps: 0.26 0.02 0.00 0.00 0.00 cross elig=30990 tried=53 acc=8 best=2
+RESULT best=2 G=206730 t=570.0
