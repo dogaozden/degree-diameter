@@ -17,8 +17,8 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (13,5) | 11,486 | unit design | **done** | `nb_13_5_11486`, LeanAll/D13D5 (1,644 sources) |
 | (14,5) | 17,568 | GQ lift, W(11) | **done** | `nb_14_5_17568`, LeanAll/D14D5 (staged orbit BFS, 2,928 sources) |
 | (15,5) | 20,736 | route-chart lift | **done** | `nb_15_5_20736`, LeanAll/D15D5 (staged orbit BFS) |
-| (16,5) | 33,792 | route-chart lift | building (staged orbit BFS) | LeanAll/D16D5 |
-| (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | building (staged orbit BFS, 2 sources) | LeanAll/D6D8 |
+| (16,5) | 33,792 | route-chart lift | **done** | `nb_16_5_33792`, LeanAll/D16D5 (staged orbit BFS) |
+| (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | **done** | `nb_6_8_31680`, LeanAll/D6D8 (staged orbit BFS, 2 sources) |
 | (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (720 batches × 2) |
 | (11,8) | 2,258,520 | Haar, PSL(2,59) × Z11 | **done** | `nb_11_8_2258520`, LeanAll/HaarD11D8 (1,740 sign-normalised batches) |
 | (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | building | LeanAll/HaarD8D10 |
