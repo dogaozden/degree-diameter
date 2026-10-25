@@ -116,3 +116,7 @@ even k, so these are not run.
 **Status (16:37 UTC).** SL 103×313 (2N 683,982,624): failed at cost 1 after 9,985 evaluations, 5,400 s (log
 runs/raise2_13_10/out/d13D10_sl_103_313_orb3_s1.log). PSL 241×49 started in slot B. PSL 131×311 (order 5, f = 3,
 FIXMIN=5) is at cost 5 after 6,009 evaluations, 5,383 s of 12,600 s. No record yet.
+
+**Status (18:08 UTC).** PSL 241×49 (2N 685,866,720): failed at cost 3 after 4,433 evaluations, 5,400 s. SL 191×49 started
+in slot B. PSL 131×311 (order 5, f = 3, FIXMIN=5): cost 1 after 12,433 evaluations, 10,837 s of 12,600 s, so it ends
+about 18:35 UTC unsolved unless it reaches cost 0 first. Next in slot A is SL 137×133. No record yet.
