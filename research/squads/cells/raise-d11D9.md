@@ -31,3 +31,11 @@ groups need `build_haar2.py` instead.
 ## Log
 
 - 2026-10-25 wave 1 (1200 s, seed 1, 4 at a time): 18 SL-only candidates from μ 15.3 to 30.2. Results in the table below.
+
+## Result 1: NEW RECORD (11,9), 16,853,760 vertices (was 16,792,080, +0.36 %)
+
+- Group prod sl 7 × sl 11 × Z_19, |G| = 8,426,880, orbit k = 3, m = 3, f = 2, μ = 15.8. Solved at evaluation 11,545 (wave 1, seed 1, 281 s).
+- Solution: research/frontier/sols/d11D9_prod_sl_7_sl_11_19_orb3_s1.txt. Search log: research/structured/runs/d11D9_prod_sl_7_sl_11_19_orb3_s1.log.
+- Independent check: build_haar2.py (rebuild from definitions): ecc 9 from (e,A) and (e,B), 0 unreached, VALID d=11 D=9,
+  edge list sha256 280a20185193497c49a74d56b8e89929c74a8ca632540b58c6b7c398d9305de3. Log: runs/d11D9_prod_sl_7_sl_11_19_orb3_s1.rebuild.txt.
+- The SL checkers (haarcheck_sl / haarcheck2) do not read prod headers; build_haar2 is the checker for prod groups.
