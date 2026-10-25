@@ -68,7 +68,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
 | (13, 7) | 1,062,936 | **1,064,472** | +0.1% | hexagon cover + hub vertices ¹ | — |
 | (14, 7) | 1,771,560 | **1,789,588** | +1.0% | hexagon cover + hub vertices ¹ | — |
-| (15, 7) | 2,480,184 | **2,501,008** | +0.8% | hexagon cover + hub vertices ¹ | — |
+| (15, 7) | 2,480,184 | **2,501,124** | +0.8% | hexagon cover + hub vertices ¹ | — |
 | (16, 7) | 4,022,340 | **4,052,108** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,760** | +5.7% | evolutionary search | (9,576) |
