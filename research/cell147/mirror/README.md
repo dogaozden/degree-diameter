@@ -58,7 +58,8 @@ Gamma_2(sigma(a)) for every a in R', the remaining points onto the remaining lin
 | 756 (master) | 1,774,584 | coordinator |
 | 757 (one extra point) | **1,774,588** | apsp_orb VALID (checks/d14D7_hex11_mirror757_n1774588.check.txt) |
 | 765 (greedy, k = 9) | 1,774,620 | multi.c spot check (BFS from all damaged vertices and hubs) |
-| 767 (annealing, k = 11) | 1,774,628 | multi.c spot check; full check running |
+| 767 (annealing, k = 11) | **1,774,628** | apsp_orb VALID (checks/d14D7_hex11_mirror767_n1774628.check.txt) |
+| 768 (squad r6 c3, k = 12) | 1,774,632 | multi.c spot check; full check running |
 
 The same sigma and R' work for every r: (13,7) n = 1,062,936 + 2|R'|, (15,7) n = 2,480,184 + 6|R'|.
 
