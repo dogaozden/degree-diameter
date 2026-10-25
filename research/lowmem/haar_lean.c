@@ -33,7 +33,8 @@
  *      file's S, no search), BENCH=m (time m evaluations), ZMAX=t (reject candidate orbits whose z-spectrum
  *      A(S) = max_{xi != 0} |(1/d) sum_u e(xi z_u / n)| exceeds t; ZTRY tries, default 200; see zspec_with),
  *      DUMPUNC=c (with RANDORB: print the uncovered elements of samples with cost <= c, with torus/normaliser flags),
- *      PAIRS=q (with RANDORB: keep the first m-1 orbits for q samples in a row, to see how much a pair decides).
+ *      PAIRS=q (with RANDORB: keep the first m-1 orbits for q samples in a row, to see how much a pair decides),
+ *      DUMPBEST=c (annealing: print the uncovered elements of every new best with cost <= c).
  * Build: gcc -O3 -march=native -fopenmp -o haar_lean haar_lean.c -lm
  */
 #include <stdio.h>
@@ -785,7 +786,16 @@ int main(int argc, char **argv) {
             c = craw[bt]; ce = cs[bt]; cE = bE; CNUNC = NUNCS[bt]; memcpy(CUNC, UNCS[bt], 8 * CNUNC); CTRUE = c;
         }
         steps++;
-        if (ce < bestE) { best = c; bestE = ce; memcpy(bestS, S, sizeof(el) * d); lastimp = now(); lastimpstep = steps; }
+        if (ce < bestE) { best = c; bestE = ce; memcpy(bestS, S, sizeof(el) * d); lastimp = now(); lastimpstep = steps;
+            if (getenv("DUMPBEST") && c <= atoll(getenv("DUMPBEST"))) {   /* uncovered elements of each new best */
+                el gi = ginv(AG);
+                for (long long i = 0; i < CNUNC; i++) {
+                    el x = code2el(CUNC[i]), m = x; m.z = 0; el cj = gmul(gmul(m, AG), ginv(m));
+                    fprintf(stderr, "BESTUNC cost=%lld x=(%d,%d,%d,%d) z=%d tr=%d inT=%d inNT=%d fixed=%d\n", c, x.a, x.b, x.c, x.d, x.z,
+                            (x.a + x.d) % P, geq(cj, AG), geq(cj, gi), geq(alpha(x), x));
+                }
+            }
+        }
         T = TMAX * pow(0.5, (now() - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (now() - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
             lastheat = now(); T = TMAX; memcpy(S, bestS, sizeof(el) * d);

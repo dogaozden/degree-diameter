@@ -1,0 +1,13 @@
+haarcheck2 start 2026-10-25T17:03:23Z on ../frontier/sols/d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt
+file=../frontier/sols/d15D10_sl_109_991_orb5f0_s1_FIXPRE100_EARLYB1.txt d=15 D=10 p=109 n=991 |G|=1283265720 vertices=2566531440
+selfcheck: SL(2,109) index is a bijection onto det-1 matrices (|SL|=1294920), fastmod ok (0.02s)
+generators: 15 read, all in SL(2,109) x Z_991, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 2566531440
+  from (e,A) level 2: new=210  reached=226 / 2566531440
+  from (e,A) level 3: new=2940  reached=3166 / 2566531440
+  from (e,A) level 4: new=41160  reached=44326 / 2566531440
+  from (e,A) level 5: new=575990  reached=620316 / 2566531440
+  from (e,A) level 6: new=8033450  reached=8653766 / 2566531440
+  from (e,A) level 7: new=107806446  reached=116460212 / 2566531440

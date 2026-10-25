@@ -3,3 +3,41 @@ group psl 139 x Z_961, N=1290373140, rows 9660 of 133579 bits (2088 words), memo
 alpha: conj by mat(0,138,1,63), z -> 374 z on Z_961
 ORBIT k=5 m=3 f=0: |Fix(alpha)| = 69 (+e); mu = 41.88, mu/k = 8.38, fixed-point misses ~ 2.23
 start cost=52 (first eval 0.84s)
+t=31 steps=3 evals=25 cost=15 best=15 T=0.52
+t=68 steps=7 evals=57 cost=15 best=15 T=0.15
+t=102 steps=11 evals=89 cost=15 best=15 T=0.15
+t=136 steps=15 evals=121 cost=15 best=15 T=0.15
+t=171 steps=19 evals=153 cost=10 best=10 T=0.15
+t=206 steps=23 evals=185 cost=10 best=10 T=0.15
+t=244 steps=27 evals=217 cost=10 best=10 T=0.15
+t=277 steps=31 evals=249 cost=10 best=10 T=0.15
+t=314 steps=35 evals=281 cost=10 best=10 T=0.15
+t=350 steps=39 evals=313 cost=10 best=10 T=0.15
+t=385 steps=43 evals=345 cost=10 best=10 T=0.15
+t=423 steps=47 evals=377 cost=10 best=10 T=0.15
+t=459 steps=51 evals=409 cost=10 best=10 T=0.15
+t=496 steps=55 evals=441 cost=10 best=10 T=0.15
+t=532 steps=59 evals=473 cost=10 best=10 T=0.15
+t=563 steps=62 evals=497 cost=10 best=10 T=0.15
+t=597 steps=66 evals=529 cost=10 best=10 T=0.15
+t=629 steps=69 evals=553 cost=30 best=10 T=0.74
+t=668 steps=73 evals=585 cost=20 best=10 T=0.19
+t=706 steps=77 evals=617 cost=20 best=10 T=0.15
+t=745 steps=81 evals=649 cost=20 best=10 T=0.15
+t=781 steps=85 evals=681 cost=20 best=10 T=0.15
+t=818 steps=89 evals=713 cost=15 best=10 T=0.15
+t=850 steps=93 evals=745 cost=15 best=10 T=0.15
+t=884 steps=97 evals=777 cost=15 best=10 T=0.15
+t=920 steps=101 evals=809 cost=15 best=10 T=0.15
+t=958 steps=105 evals=841 cost=10 best=10 T=0.15
+t=991 steps=109 evals=873 cost=10 best=10 T=0.15
+t=1026 steps=113 evals=905 cost=10 best=10 T=0.15
+t=1058 steps=117 evals=937 cost=10 best=10 T=0.15
+t=1091 steps=121 evals=969 cost=35 best=10 T=0.62
+t=1126 steps=125 evals=1001 cost=20 best=10 T=0.18
+t=1160 steps=129 evals=1033 cost=5 best=5 T=0.15
+t=1193 steps=133 evals=1065 cost=5 best=5 T=0.15
+t=1227 steps=137 evals=1097 cost=5 best=5 T=0.15
+t=1266 steps=141 evals=1129 cost=5 best=5 T=0.15
+RESULT d=15 D=10 group=psl 139 x Z_961 N=1290373140 best=5 evals=1129 time=1266.1 orbit k=5 m=3 f=0 fix=69 fixchecks=9953
+exit 1 2026-10-25T16:35:29Z
