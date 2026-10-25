@@ -49,3 +49,22 @@ and haarcheck_psl, coordinator check pending). Bar used here: beat 8,362,560, i.
   - C: psl 59 x Z41, ORBW=5 RESTART=1, seed 3
   - D: psl 25 x Z541, ORBW=5 RESTART=1, seed 1 (μ 43.8, fix 24)
   Note: orbq.sh must be run as `bash tools/orbq.sh` (not executable in this checkout).
+
+### 15:16 UTC: NEW RECORD 8,403,360 (sl 41 x Z61, k=5 m=2 f=0)
+
+- Run D-A (jobs_A, ORBW=5 RESTART=1, seed 4): solved at 314,913 evaluations (2,578 s, one thread), after 2 h-scale
+  stall at cost 4 for about 25 minutes. Log: research/structured/runs/d10D9_round2/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.log.
+- Solution: research/frontier/sols/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.txt. N = |SL(2,41) x Z61| = 4,201,680,
+  2N = **8,403,360 vertices**, +0.5 % over 8,362,560 (round 1). μ = 41.5.
+- Checks: haar_sym full diameter check OK (both normalisations); build_haar2.py VALID (8,403,360 vertices, 10-regular,
+  0 duplicate edges, edge-list sha256 d9b7d3b79cf23fd4dea87cba3e1e17c7f36347a9f58aaac1975379e604b846fd).
+- What worked here: ORBW=5 and RESTART=1 together. Round 1's stall on this exact group (best 2, 4 and 2 over 3 seeds
+  of 1 h, ORBW=1) did not have these settings. Only one solve, so the effect is not measured.
+
+Window for the next record: N > 4,201,680 (2N > 8,403,360).
+
+Runs still going at 15:20 (1 h each):
+- psl 59 x Z41 (N 4,209,060, μ 42.4), ORBW=5 RESTART=1 seed 3: best 2 at 15:06. Round 1's best on this group was 5.
+- psl 59 x Z41, ORBW=5, seed 5: best 10.
+- psl 59 x Z41, ORBW=5 RESTART=1, seed 6: started 15:20 (jobs_E).
+- Stopped: psl 25 x Z541 (best 40, the weakest lead).
