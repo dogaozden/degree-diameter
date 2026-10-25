@@ -47,3 +47,11 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
 
 ## Log
 
+- 08:06 UTC: binaries built (research/structured/haar_sym, haar_fast). Screen above (35 candidates).
+- 08:10 UTC: round 1 started, ORBIT="3 4 1", THREADS=1, 7200 s, seed 1, four groups:
+  sl 43 x Z43, prod psl 7 psl 11 x Z31, psl 31 x Z229, prod sl 5 sl 16 x Z7.
+- 10:10 UTC: round 1 ended for sl 43 x Z43 (best 3, 838,105 evals) and prod psl 7 psl 11 x Z31 (best 3, 944,737 evals).
+  psl 31 x Z229 and prod sl 5 sl 16 x Z7 still running (end ~10:12). No solution in round 1.
+- 10:10 UTC: round 2 started, ORBIT="3 4 1" ORBW=3 (uncovered fixed element weighs 3), seed 2, 7200 s:
+  sl 43 x Z43 and prod psl 7 psl 11 x Z31.
+- Live logs are not tracked (ignored, runs/raise13/*.log); checkpoints are committed as *.snap.log.
