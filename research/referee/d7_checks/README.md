@@ -16,7 +16,7 @@ checks.log. Run everything from one scratch directory (the scripts read and writ
 - nums.py: all numbers of §0, §6, §7, §9 (table values, kappa, Corollary 9.x crossovers, slot vectors).
 - cor91.py q r OUT [seed]: the explicit graph of Corollary 9.1 (all levels H, sigma from Prop. 5.2 on an elliptic quadric
   section and Hermitian spread lines, hub graph of Lemma 7.1), written as an edge list.
-- bfs.c (gcc -O2 -o bfs bfs.c): reads "n" and edge lines; checks loops and multiple edges, bipartite, degrees, BFS from
+- bfs.c (gcc -O2 -o bfs bfs.c; bfs_mt.c is the same with OpenMP over sources, gcc -O2 -fopenmp): reads "n" and edge lines; checks loops and multiple edges, bipartite, degrees, BFS from
   every vertex; prints the diameter and the number of ordered pairs at distance > 7.
 
 The record graphs (7,7) and (9,7) were rebuilt with the lab's research/d13D7/hexgen2.c and
