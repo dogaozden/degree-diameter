@@ -80,7 +80,17 @@ elsewhere), or the binary format `BCDA1` (see the header of bcd.c).
    `bcd ... --part i/K --cert part_i.cert`, gzips the certificate and commits it under
    `research/projects/bigcheck-dist/checks/<graph>/` on its own branch.
 3. The coordinator collects the certificates, regenerates reps.txt, runs `bcd_merge.py`, and reruns a few parts of its
-   own choosing to compare certificates line by line.
+   own choosing with `bcd_spotcheck.py` (byte-for-byte comparison of the certificates).
+
+**Worker brief (copy, fill in the brackets).**
+
+    You are worker <i> of <K> for a bcd check of <graph> (project bigcheck-dist). Do only this:
+    1. git fetch origin master && git checkout -B <your-branch> origin/master
+    2. gcc -O3 -march=native -fopenmp -o /tmp/bcd research/projects/bigcheck-dist/bcd.c
+    3. Build the input: <builder command>   (expect sha256 <hex>; stop and report if it differs)
+    4. /tmp/bcd <mode> <input> <d> <D> [--aut <file>] --part <i>/<K> --threads $(nproc) --cert part<i>.cert
+    5. gzip -9 part<i>.cert; commit research/projects/bigcheck-dist/checks/<graph>/part<i>.cert.gz; push.
+    Report the last two lines of bcd's output. Never contact anyone; do not edit anything else.
 
 Cost of a part: (number of sources / 64) passes, each about D · (edges) word operations. Examples on this cloud
 machine (4 cores):
