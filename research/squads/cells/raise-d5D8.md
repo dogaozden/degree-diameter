@@ -110,6 +110,23 @@ Record entering round 2: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
 - Stopped at 28 of 100 (about 1 h in) because the best cost was 17, far behind the top ranks (a1's best was 2).
   The 84 entries at N = 4,896 are distinct groups: their screen statistics are not repeated among the top 200.
 
-## Batch a4 (3,600 s, cores on the two best groups): running at the time of this note
+## Batch a4 (3,600 s, cores on the two best groups): finished, 0 solves
 - `4887 181 27 39` on seeds 4, 5, 6 (cost 1 at 1,800 s on seeds 2 and 3).
 - `4896 51 96 5` on seed 4 (cost 2 at 1,800 s on seeds 2 and 3).
+- Results: 4887 seeds 4/5/6 ended at best 2 / 1 / 1; 4896 seed 4 at best 2. Runs table: `runs/a4.tsv`.
+
+## Round-2 result and stop decision (about 4.5 h in)
+- **Record unchanged: 9,760** (Z_61 ⋊₈ Z_80, N = 4,880). No solve at N ≥ 4,881.
+- Total search this round: about 16 core-hours. 100 runs at 300 s (a1), 4 at 1,800 s (a2), 28 at 240 s (a3, stopped),
+  4 at 3,600 s (a4). Metacyclic and metacyclic × Z_n groups of order 4,881–4,900 only.
+- Closest leads: Z_181 ⋊₃₉ Z_27 at N = 4,887 (cost 1 on 4 runs, 1,800–3,600 s, seeds 2, 3, 5, 6; cost 2 on the others).
+  Z_51 ⋊₅ Z_96 at N = 4,896 (cost 2 on 3 runs).
+- Stop reason: the cost stalls at 1–2 for the strongest candidates even at 3,600 s, and the lower-ranked ones reach
+  only 17+ at 240 s. Seeds and time have not closed the gap. Route-level alternatives were checked from notes and
+  do not look better: non-metacyclic simple/almost-simple families at 4,896 (watch branch: best 3–15 at 1,800 s); larger-base
+  lifts (lift branch §3.5, §2.0; their random model says they lose at this size).
+- Not tried, and the only ideas left with a plausible edge: (a) a full isomorphism dedupe of the metacyclic list, so that
+  no core goes to a repeated group; (b) a different anneal (larger K, longer REHEAT) on the four cost-1/2 groups; (c)
+  the lift.c 2+2 base at n ≥ 9,764 (not tested at this size). Each would need about 4 core-hours to test properly.
+- Recommendation: the coordinator should decide whether to spend (b) or (c). Otherwise this cell is at its
+  practical limit with these tools.
