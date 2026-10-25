@@ -70,7 +70,7 @@ f := OutputTextFile("{plan}", false);; SetPrintFormattingStatus(f, false);;
 if {'true' if single else 'false'} then
   if {'true' if useaut else 'false'} then A := AutomorphismGroup(GRP);; reps := List(Orbits(A, el), o -> o[1]);;
   else reps := el;; fi;
-  for s1 in reps do if s1 <> One(GRP) then AppendTo(f, Position(el, s1) - 1, "\\n");; fi; od;
+  for s1 in reps do AppendTo(f, Position(el, s1) - 1, "\\n");; od;  # lift mode: the identity is a valid first free voltage (lx rejects it on an edge parallel to a tree edge)
 elif {'true' if useaut else 'false'} then
   A := AutomorphismGroup(GRP);;
   for o in Orbits(A, el) do s1 := o[1];;

@@ -1,0 +1,26 @@
+37	1	C37	[37]	1	identity-first	50653	0	420
+38	1	D38	[2]	19	identity-first	54872	0	702
+38	2	C38	[2, 19]	1	identity-first	54872	0	444
+39	1	C13 : C3	[3]	13	identity-first	59319	0	420
+39	2	C39	[3, 13]	1	identity-first	59319	0	480
+40	1	C5 : C8	[8]	5	identity-first	64000	0	450
+40	2	C40	[5, 8]	1	identity-first	64000	0	516
+40	3	C5 : C8	[8]	5	identity-first	64000	0	402
+40	4	C5 : Q8	[2, 2]	10	identity-first	64000	0	510
+40	5	C4 x D10	[2, 4]	5	identity-first	64000	0	540
+40	6	D40	[2, 2]	10	identity-first	64000	0	744
+40	7	C2 x (C5 : C4)	[2, 4]	5	identity-first	64000	0	510
+40	8	(C10 x C2) : C2	[2, 2]	10	identity-first	64000	0	540
+40	9	C20 x C2	[2, 4, 5]	1	identity-first	64000	0	516
+40	10	C5 x D8	[2, 2, 5]	2	identity-first	64000	0	474
+40	11	C5 x Q8	[2, 2, 5]	2	identity-first	64000	0	462
+40	12	C2 x (C5 : C4)	[2, 4]	5	identity-first	64000	0	426
+40	13	C2 x C2 x D10	[2, 2, 2]	5	identity-first	64000	0	756
+40	14	C10 x C2 x C2	[2, 2, 2, 5]	1	identity-first	64000	0	516
+41	1	C41	[41]	1	identity-first	68921	0	552
+42	1	C7 : C6	[2, 3]	7	identity-first	74088	0	462
+42	2	C2 x (C7 : C3)	[2, 3]	7	identity-first	74088	0	450
+42	3	C7 x S3	[2, 7]	3	identity-first	74088	0	492
+42	4	C3 x D14	[2, 3]	7	identity-first	74088	0	480
+42	5	D42	[2]	21	identity-first	74088	0	792
+42	6	C42	[2, 3, 7]	1	identity-first	74088	0	588

@@ -1,0 +1,14 @@
+screen rows with a cost: 48
+  lowest: (10, 'b33_1', 136, 3, 'C17 : C8')
+  lowest: (12, 'b33_2', 136, 3, 'C17 : C8')
+  lowest: (14, 'b33_2', 136, 12, 'C17 : C8')
+  lowest: (20, 'b33_1', 136, 12, 'C17 : C8')
+  lowest: (28, 'b33_1', 135, 4, 'C5 x (C9 : C3)')
+  lowest: (34, 'b33_2', 135, 3, 'C5 x ((C3 x C3) : C3)')
+table 136 3 C17 : C8 /home/user/degree-diameter/research/squads/r2-smallfam/c2/tmp/tab_b33_1_136_3.txt 
+REANNEAL b33_1 order 136 id 3 C17 : C8 seed 2 best=10 secs=60 voltages 108 54 95 89
+REANNEAL b33_1 order 136 id 3 C17 : C8 seed 3 best=10 secs=60 voltages 76 125 84 11
+table 136 3 C17 : C8 /home/user/degree-diameter/research/squads/r2-smallfam/c2/tmp/tab_b33_2_136_3.txt 
+REANNEAL b33_2 order 136 id 3 C17 : C8 seed 2 best=4 secs=60 voltages 39 5 76 64
+REANNEAL b33_2 order 136 id 3 C17 : C8 seed 3 best=4 secs=60 voltages 127 96 92 63
+REANNEAL_DONE

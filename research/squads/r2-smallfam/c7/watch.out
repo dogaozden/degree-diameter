@@ -1,0 +1,9 @@
+killed at 05:00:03 [('531', '/home/user/degree-diameter/research/theorems/smallfam/lannea'), ('18497', '/bin/bash /home/user/degree-diameter/research/squads/r2-smal'), ('32005', 'timeout 1200 nice -n 10 python3 /home/user/degree-diameter/r'), ('32006', 'python3 /home/user/degree-diameter/research/squads/r2-smallf')]
+pairs screened: 226 per base: {'b55_0': 34, 'b55_1': 34, 'b55_2': 34, 'b55_3': 34, 'b55_4': 34, 'b55_5': 34, 'b55_6': 22}
+lowest screen costs: [(16, 'b55_1', '17,1', 'C17'), (20, 'b55_0', '17,1', 'C17'), (20, 'b55_0', '18,2', 'C18'), (24, 'b55_4', '17,1', 'C17'), (28, 'b55_6', '17,1', 'C17'), (30, 'b55_6', '18,2', 'C18')]
+re-anneal pair: b55_1 group 17,1 C17 (screen cost 16)
+reanneal seed 2: RESULT N=17 K=10 D=7 best=20 evals=637256 voltages 3 16 13 11 5 9
+reanneal seed 3: RESULT N=17 K=10 D=7 best=16 evals=716550 voltages 12 4 2 15 9 14
+reanneal seed 4: RESULT N=17 K=10 D=7 best=24 evals=728721 voltages 8 14 4 15 10 16
+min cost seen: 16 | valid: False 
+scoreboard line appended: {"card": "c7", "idea": "lscreen of the fifteen 5+5 bases over orders 17-25 (same lanneal screen, GAP tables cached), then 60 s re-anneals of the lowest-cost pair", "code": "research/squads/r2-smallfam/c7/fastscreen.py", "command": "cd research/theorems/smallfam && timeout 1200 nice -n 10 python3 .../c7/fastscreen.py bases/b55_K.txt 7 17 25 --secs 3 --abmin 1 --abmax 1000000 (K = 0..14, loop in c7/run_loop2.sh); re-anneal: lanneal TABLE bases/BASE.txt 7 60 SEED 8 OUT (seeds 2-4)", "score": 0, "best_cost": 16, "best_group": "17,1 C17 and b55_1", "cell": "(3,7)", "valid": false, "next": "screen the 5+5 bases over orders 17-25 with more seconds per group only for the lowest-cost pairs, and try the 6+6 bases at the same orders", "pairs_screened": "226 of 510", "bases_started": ["b55_0", "b55_1", "b55_2", "b55_3", "b55_4", "b55_5", "b55_6"]}
