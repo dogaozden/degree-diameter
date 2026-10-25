@@ -68,7 +68,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
 | (13, 7) | 1,062,936 | **1,064,472** | +0.1% | hexagon cover + hub vertices ¹ | — |
 | (14, 7) | 1,771,560 | **1,789,588** | +1.0% | hexagon cover + hub vertices ¹ | — |
-| (15, 7) | 2,480,184 | **2,501,124** | +0.8% | hexagon cover + hub vertices ¹ | — |
+| (15, 7) | 2,480,184 | **2,501,491** | +0.9% | hexagon cover + hub vertices ¹ | — |
 | (16, 7) | 4,022,340 | **4,052,108** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,760** | +5.7% | evolutionary search | (9,576) |
@@ -79,7 +79,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (11, 8) | 2,246,940 | **2,258,520** | +0.5% | orbit search (Haar) | — |
 | (13, 8) | 5,314,680 | **6,999,552** | +31.7% | finite geometry | — |
 | (15, 8) | 14,172,480 | **18,128,880** | +27.9% | orbit search (Haar) | — |
-| (5, 9) | 27,936 | **29,480** | +5.5% | evolutionary search | (28,560) |
+| (5, 9) | 27,936 | **29,540** | +5.7% | evolutionary search | (28,560) |
 | (6, 9) | 117,360 | **127,296** | +8.5% | orbit search (Haar) | ✓ |
 | (7, 9) | 400,160 | **462,840** | +15.7% | orbit search (Haar) | ✓ |
 | (8, 9) | 1,091,232 | **1,341,600** | +22.9% | evolutionary search | — |
