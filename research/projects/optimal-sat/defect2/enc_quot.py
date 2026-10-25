@@ -21,7 +21,8 @@ import sys, itertools, json
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 
-def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=False, pb=None):
+def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=False, pb=None,
+          opairs=None, ipairs=None):
     """pb: if a list is given, cardinality and pair conditions are appended to it as linear constraints
     (list of (terms, op, rhs), terms = [(coef, var)]) instead of being encoded as CNF."""
     m = k * (k - 1) // 2
@@ -140,6 +141,10 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=
             pidx = {p: y for y, p in zip(R, pairs)}
             Opairs_ = list(itertools.combinations(O, 2)) if alltr else [(O[i], O[i + 1]) for i in range(len(O) - 1)]
             Ipairs_ = list(itertools.combinations(I, 2)) if alltr else [(I[i], I[i + 1]) for i in range(len(I) - 1)]
+            # callers that fix more structure (e.g. sorted degree sequences) pass the transpositions that still
+            # preserve it; lex-leader is then applied to those generators only
+            if opairs is not None: Opairs_ = opairs
+            if ipairs is not None: Ipairs_ = ipairs
             for (u, v) in Opairs_:
                 sw = lambda t, u=u, v=v: v if t == u else (u if t == v else t)
                 def pi(t, sw=sw):
