@@ -63,3 +63,9 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 - PSL(2,199) x Z_169 (N 665,893,800): 2,964 s, best cost 3 after 1,401 evals, not solved (fix 98). A retry with ORBW=3 is
   in queue 3.
 - PSL(2,271) x Z_67 solved (see Result so far). Queue 2 continues with PSL(2,169) x Z_277; queue 3 chained after it.
+- PSL(2,169) x Z_277 (N 668,489,640, mu 23.0): 2,991 s, best cost 3, 3,017 evals, fix 83. Not solved.
+- PSL(2,257) x Z_79 (N 670,486,272, mu 24.3): 2,965 s, best cost 3, 2,145 evals, fix 128. Not solved.
+  Both stall at cost 3 (one uncovered orbit, or one fixed point at weight 3). Queue 3 continues: PSL(2,173) x Z_259
+  (started 11:32), then PSL(2,331) x Z_37.
+- Pattern so far: solved PSL cases at mu 20.3-21.9 needed 150-1,650 evals; mu 20.8 solved with fix 80. Each unsolved
+  rung ended at cost 3 after about 1,200-3,000 evals.
