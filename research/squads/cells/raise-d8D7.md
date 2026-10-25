@@ -38,6 +38,11 @@ screened worse on the same windows (random min ≥ 40 on the best ones).
 - Wave 2 (3600 s each): psl 17×9 with ORBW=3 (seed 12), psl 17×9 with RESTART=1 (seed 13), pgl 7×65 with ORBW=3
   (seed 12), psl 17×9 plain (seed 14).
 
+- Wave 2 result (3600 s each): psl 17×9 best 3 in all three variants (ORBW=3 seed 12, RESTART=1 seed 13, plain seed 14),
+  about 1.6·10⁸ evals each. pgl 7×65 with ORBW=3 best 9 (worse than plain's 6). None solved. The cost-3 floor on
+  psl 17×9 is the same across seeds and variants, which suggests no orbit-symmetric solution for this α, not a slow search.
+- Wave 3 (3600 s each): sl 7×65 (seed 21), pgl 9×31 (seed 21), sl 9×31 (seed 21), psl 9×61 with RESTART=1 (seed 22).
+
 ## Status
 
 Still searching. Nothing above 43,344 yet.
