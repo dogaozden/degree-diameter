@@ -105,3 +105,6 @@ chart re-optimised for the controller) -> **(10,5) 4,096** twice (Z32 x|9 Z4 and
 So the joint optimisation closed four more squad near misses.
 Lead, also: the exhaustive Haar scan of Proposition 13 finished for all 24 (4,3) chart classes over the 88 groups of
 order 65-81 (r3/exh_d12.log, r3/exh_d12_new.log): no Haar controller at (12,5), minimum cost 2.
+Lead, last (no gain): (10,5) orders 144-160, 50 metacyclic Haar graphs, cost >= 10 after 90 s (r3/alt_10.log); (15,5)
+order 171 stays at cost 2 from the 88 chart too; exact 4-regular controllers (for Theorem 3's constant) not found
+beyond m = 54 (K3,3 + doubled matching over orders 19-27: best cost 2 at m = 57; 2+2 bases over 28-36: cost 4).

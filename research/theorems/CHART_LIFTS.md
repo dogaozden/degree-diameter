@@ -491,4 +491,7 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   start at cost 15 or more (`r3/runs_probe.log`, `r3/alt/d15_*.log`). (12,5) beyond m = 80: K₃,₃ + doubled matching over Z₂₇ (m = 81) ends at
   cost 12, 2+2 bases over Z₄₁ (m = 82) at 8–20, over Z₄₂ and Z₇ ⋊₃ Z₆ (m = 84) at 16–30. (8,5) beyond m = 64: the 2+2
   base over Z₃₃ (m = 66) stays at cost 2 through four rounds (`r3/alt/d8_r2b_z33.log`).
-  (10,5) beyond m = 140: see the end of this list.
+  The order-171 group Z₁₉ ⋊₄ Z₉ also stays at cost 2 when started from the 88-singular chart
+  (`r3/alt/d15_meta_19_9_4_cd88.log`). (10,5) beyond m = 140: 50 metacyclic Haar graphs of orders 144–160 (quotient
+  of order 4 to 12) start at cost 10–90 after 90 s with the 216-singular chart, against 2–4 at orders 128 and 140, so
+  the joint optimisation was not run on them (`r3/alt_10.log`, `r3/alt_run10b.sh`).
