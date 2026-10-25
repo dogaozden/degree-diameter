@@ -92,3 +92,14 @@ edge, i.e. on the collineation chosen per edge; the free row of A_e matters for 
 NVAR` writes NVAR charts per CSP solution with fresh collineations / free rows. Letters of different variants of the
 same solution can be mixed edge by edge without losing backtrack-completeness, so mlift_ejoint2 got a chart move
 that does exactly that (env VARLIST = file listing the variant charts). With it: m = 72 and m = 75 at cost 0.
+
+## The ceiling of this construction is the (4,5) bipartite problem (15:30 UTC)
+
+The controller of a route-chart lift must have diameter ≤ 5 (a controller pair at distance d gives lift pairs at
+distance ≥ d), so it is a bipartite graph of maximum degree 4 and diameter 5: 2m ≤ n_b(4,5). The best known
+(research/frontier/TABLE.md) is 162 vertices, found by this project (research/d5/REPORT.md), and that graph is itself a
+Z_27-lift of K_{3,3} plus a doubled matching, i.e. our controller family at m = 81. So m = 81, 13,122 vertices, is the
+most this construction can give unless the (4,5) bipartite record is beaten too. Fake-chart (every walk good, free
+diagonals) runs find perfect controllers at m = 81 easily (3 of 3 seeds); the real chart must leave, for every controller
+pair at distance 4, one nonsingular walk, and on these near-extremal controllers many pairs have very few walks.
+Fake ceilings: Z_25 0, Z_26 4, Z_27 0, Z_28 4, Z_29 12 (all with free diagonals).
