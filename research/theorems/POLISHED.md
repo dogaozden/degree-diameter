@@ -410,7 +410,9 @@ line rows of the table), checks they agree, and checks degrees, both covering pr
 $G$ and $R$ for every prime power $q\le13$ and every admissible $(a,c)$; removing the rotation or the link
 $H_1\,\mathrm I\,K_0$ gives diameter 4 in every case tested. Lean-checked: the regular version for every finite
 projective plane of order $q\ge4$ with a chosen frame (`Plus2.plus2_regular`, `plus2_regular_of_order`), and the three
-record graphs (`nb_11_3`, `nb_13_3`, `nb_15_3`); see Section 9.
+record graphs (`nb_11_3`, `nb_13_3`, `nb_15_3`). The Lean incidence relation (`Plus2.Frame.inc`) is
+Definition 2.1 in coordinate-free form, rule for rule: the same rotation $X_t\,\mathrm I\,\lambda_{\sigma(t)}$, links,
+$M$, $Q$, $H_s$ and $K_s$ (we compared them for this note). See Section 9.
 
 ---
 
@@ -1006,7 +1008,8 @@ $870440$ (842048). $m=3$, $q=13$: $(16,6)$ $940846$ (884062). These graphs are n
 $m=3$) were built and their exact diameter computed by all-pairs BFS; exactness of $W$ checked on all free points for
 $q=3,5,7$; the identities of Lemmas 6.6–6.7 re-checked symbolically. Lean-checked for every finite field of odd
 characteristic: $H(q)$ in these coordinates is a generalized hexagon in the graph sense
-(`Hexagon.genPolygonGraph_hexagon`), Theorem 6.5 (`HexagonD.theorem4`), Theorem 6.3 for any whisker set
+(`Hexagon.genPolygonGraph_hexagon`), Theorem 6.5 for every admissible $(c,c_0,c_1)$
+(`HexagonD.wset_whiskers`, `exists_unique_wline`; `theorem4` packages it with the count $|W|=q^4-q^2$), Theorem 6.3 for any whisker set
 (`HexagonD.whiskers_bound_hexagon`), Corollary 6.8 (`HexagonD.theoremD`, `theoremD_two`), Lemma 6.4
 (`exists_goodCubic`), Lemma 6.7 (`HexagonD.Identity.key_identity`) and Lemma 6.6(d) (`nu_eq_of_mem_sline`); for even
 $q\ge4$ (`HexagonEven.theorem4_even`, `theoremD_even`) and $q=2$, $m=2$ (`HexagonEven.theoremD_q2`); and the 9592
@@ -1184,9 +1187,9 @@ for every odd prime power, but the library constructs one only for $q=13$ (`sett
 5440 file).
 
 **Section 6 (Theorem D).** For every finite field of odd characteristic: `Hexagon.genPolygonGraph_hexagon` ($H(q)$ in
-the coordinates of §6.1 is a generalized hexagon in the graph sense); `HexagonD.theorem4` (there are $c,c_0,c_1$ with
-$-c$ a non-square and $G$ zero-free such that $W$ of Theorem 6.5 is a whisker set with $|W|+q^2=q^4$ and every free
-point on exactly one line of $W$); `HexagonD.whiskers_bound_hexagon` (Theorem 6.3 for any whisker set);
+the coordinates of §6.1 is a generalized hexagon in the graph sense); `HexagonD.wset_whiskers` and `exists_unique_wline` (for every $c$ with
+$-c$ a non-square and every $(c_0,c_1)$ with $G$ zero-free, $W$ of Theorem 6.5 is a whisker set and every free point is
+on exactly one of its lines), `HexagonD.theorem4` (for some such $c,c_0,c_1$, also $|W|+q^2=q^4$); `HexagonD.whiskers_bound_hexagon` (Theorem 6.3 for any whisker set);
 `HexagonD.theoremD`, `theoremD_two` (Corollary 6.8 for every $m\ge1$, resp. $m=2$, with the exact vertex counts);
 `HexagonD.exists_goodCubic` (Lemma 6.4); `HexagonD.Identity.key_identity` (Lemma 6.7, over any field) and
 `nu_eq_of_mem_sline` (Lemma 6.6(d)). Even $q$: `HexagonEven.genPolygonGraph_hexagon_even` (any finite field),
@@ -1213,7 +1216,8 @@ behind every general theorem cited above were rebuilt from a fresh clone** (Lean
 `lake build <module>` at a time): all exit 0, including `HexagonD.Regular.Final`, `HexagonEven.ThmD`, `HexagonEven.Q2`,
 `HexagonEven.Reg.Final`, `Haar.Main` and the three Haar records, `GQST.StandinMain` and `SingerC.Regular5440`. A
 `#print axioms` run on the 48 theorem names cited in this section gives `[propext, Classical.choice, Quot.sound]` for
-every one (`research/theorems/polish/lean/PolishAxioms.lean`, `.out`, and `BUILD.txt` with the per-module log), and
+every one (`research/theorems/polish/lean/PolishAxioms.lean`, `.out`, and `BUILD.txt` with the per-module log;
+`ExtraAxioms.lean` adds `exists_unique_wline` and `wset_whiskers`, same result), and
 the grep for `sorry`/`admit`/`axiom`/`native_decide` in `lean/BipartiteDD/**.lean` finds nothing. The explicit record
 graphs were rebuilt the same day: `Records.lean`, `Records9592.lean` and all 91 modules they import (one at a time;
 four first attempts were killed for lack of memory and passed on retry), and `#print axioms` on `nb_11_3`, `nb_13_3`,
