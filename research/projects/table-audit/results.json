@@ -425,7 +425,7 @@
   "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
   "construction": "7 copies of H(11) linked by 3 bijections points -> lines",
   "rebuilt": "order",
-  "check": "PENDING (log not complete): apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d15.apsp.txt)",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d15.apsp.txt)",
   "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
  },
  "16,7": {
