@@ -67,3 +67,8 @@ psl 47 × Z337 (N 17,486,256, μ 24.3; no wide rows, so slower per evaluation).
   File: research/frontier/sols/d12D9_psl_71_97_orb3f0_s3.txt. Log: research/structured/runs/d12D9_psl_71_97_orb3f0_s3.log.
   Check: haarcheck_psl VALID d=12 D=9, all 17,355,240 per side reached, ecc 9. (Only PSL low-memory checker applies; no second PSL checker here.)
 - Still running at this point: psl 71 × 97 seed 2 (best 3), psl 139 × 13 (best 18), psl 47 × 337 (best 12, slow evaluation).
+
+### Round 5 (from 09:44 UTC): bar N > 17,355,240 (34,710,480)
+Unsolved, above the bar: psl 139 × 13 best 17 (22.5k evals), psl 47 × 337 best 6 (10.5k evals, haar_gen3 evaluator, no wide rows).
+Stopped unpromising: psl 43 × 439 (best 18 at 20 min, haar_gen3 evaluator); psl 71 × 97 seed 2 (N equal to the record, could only tie).
+Running: pgl 37 × 343 seed 2 (best 8 so far), psl 47 × 337 seed 2, sl 71 × 49 seed 1 (N 17,534,160, μ 25.3).
