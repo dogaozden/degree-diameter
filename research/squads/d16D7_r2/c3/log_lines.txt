@@ -1,0 +1,48 @@
+graph M=6504 E=577179 (header 577179) maxdeg=182
+start: 227 vertices, 0 internal edges, lambda=1.500 pswap=0.300 budget=400.0
+  new best 227 (cpu 0.1 s)
+start polished: 227 (best 227)
+seed0 f=0.00 T=0.2000 ns=223 ein=1 bestn=227
+  new best 228 (cpu 0.4 s)
+  new best 229 (cpu 1.3 s)
+  new best 230 (cpu 3.6 s)
+seed0 f=0.20 T=0.1572 ns=231 ein=1 bestn=230
+seed0 f=0.40 T=0.1236 ns=229 ein=0 bestn=230
+seed0 f=0.60 T=0.0971 ns=230 ein=0 bestn=230
+seed0 f=0.80 T=0.0763 ns=230 ein=0 bestn=230
+seed0 end steps=3517513728 polished=230 best=230
+reheat1 f=0.00 T=0.4500 ns=201 ein=8 bestn=230
+reheat1 f=0.20 T=0.3186 ns=192 ein=9 bestn=230
+reheat1 f=0.40 T=0.2255 ns=220 ein=2 bestn=230
+  new best 231 (cpu 70.6 s)
+reheat1 f=0.60 T=0.1596 ns=230 ein=1 bestn=231
+reheat1 f=0.80 T=0.1130 ns=231 ein=1 bestn=231
+reheat1 end steps=5968363520 polished=230 best=231
+reheat2 f=0.00 T=0.4500 ns=195 ein=20 bestn=231
+reheat2 f=0.20 T=0.3186 ns=191 ein=10 bestn=231
+reheat2 f=0.40 T=0.2255 ns=224 ein=2 bestn=231
+reheat2 f=0.60 T=0.1596 ns=230 ein=0 bestn=231
+reheat2 f=0.80 T=0.1130 ns=231 ein=0 bestn=231
+reheat2 end steps=5914689536 polished=231 best=231
+reheat3 f=0.00 T=0.4500 ns=202 ein=17 bestn=231
+reheat3 f=0.20 T=0.3186 ns=188 ein=9 bestn=231
+reheat3 f=0.40 T=0.2255 ns=220 ein=1 bestn=231
+  new best 232 (cpu 216.2 s)
+reheat3 f=0.60 T=0.1596 ns=230 ein=0 bestn=232
+reheat3 f=0.80 T=0.1130 ns=231 ein=0 bestn=232
+reheat3 end steps=5954797568 polished=231 best=232
+reheat4 f=0.00 T=0.4500 ns=199 ein=17 bestn=232
+reheat4 f=0.20 T=0.3186 ns=194 ein=4 bestn=232
+reheat4 f=0.40 T=0.2255 ns=217 ein=2 bestn=232
+reheat4 f=0.60 T=0.1596 ns=229 ein=0 bestn=232
+reheat4 f=0.80 T=0.1130 ns=231 ein=1 bestn=232
+reheat4 end steps=5904400384 polished=230 best=232
+reheat5 f=0.00 T=0.4500 ns=192 ein=16 bestn=232
+reheat5 f=0.20 T=0.3186 ns=187 ein=4 bestn=232
+reheat5 f=0.40 T=0.2255 ns=213 ein=0 bestn=232
+  new best 233 (cpu 370.6 s)
+reheat5 f=0.60 T=0.1596 ns=233 ein=0 bestn=233
+reheat5 f=0.80 T=0.1130 ns=232 ein=0 bestn=233
+reheat5 end steps=6003490816 polished=233 best=233
+FINAL best=233 cpu=400.1
+233

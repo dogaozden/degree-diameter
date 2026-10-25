@@ -44,3 +44,8 @@ Kept: c1's 242 / 243, verified as (16,7) **4,052,108** (apsp_autw VALID; numpy r
 240 in the order-9 quotient (all methods), and polishing adds 1-2. Opus then ran its own multi-start loop (random
 quotient, fresh annealing seed, 90 s tabu polish). Spin-off of the same construction: (14,7) 1,788,052 and (15,7)
 2,497,075 over H(11) (both VALID).
+Opus follow-up (no squad, 05:27-05:55 UTC): (a) a multi-start loop (random quotient among order 9 / order 3, 12 s
+annealing, 90 s tabu polish): 234-240, stopped; (b) r3 c1's exhaustive light-vertex search (exh3, 3e6 annealing steps per
+choice of the 12 weight-3 quotient vertices, 3 seeds) dumped 14 distinct weight-240 symmetric starts; 90 s tabu polish
+of each: 240 (8), 241 (3), 242 (2), no 243; (c) ARW-style ILS from the two 242 sets (orbset, 4 x 300 s): 242 in all four runs.
+Points stay at 242, so (16,7) stays at 4,052,108.
