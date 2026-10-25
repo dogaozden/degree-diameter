@@ -1,4 +1,5 @@
 import BipartiteDD.Fast
+import BipartiteDD.LeanAll.Look
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.NormNum
 
@@ -43,18 +44,59 @@ theorem allR_spec {f : ℕ → Bool} {lo len : ℕ} (h : allR f lo len = true) :
 theorem allR_one (f : ℕ → Bool) (u : ℕ) : allR f u 1 = (f u && true) := by
   simp [allR_succ, allR]
 
-/-- The tree whose leaf `i` is `f (off + i)`, for `i < 2 ^ k`. -/
-def Tree.gen {α : Type} (f : ℕ → α) : ℕ → ℕ → Tree α
-  | off, 0 => .leaf (f off)
-  | off, k + 1 => .node (Tree.gen f off k) (Tree.gen f (off + 2 ^ k) k)
+/-! List loops by `List.rec` (no `brecOn`): `foldOr`, `allL`, `anyL`, `lenL`; and `bx` for `≠` on `Bool`. -/
 
-/-- Leaf lookup by `Tree.rec`: at a node of depth `k`, bit `k - 1` of `i` picks the side (no subtraction, no
-`if`). On a tree of depth `k` the leaf reached is the one at position `i % 2 ^ k`. -/
-noncomputable def look {α : Type} (t : Tree α) (k i : ℕ) : α :=
-  Tree.rec (motive := fun _ => ℕ → ℕ → α) (fun x _ _ => x)
-    (fun _ _ ihl ihr k i =>
-      cond (Nat.beq (Nat.land (Nat.shiftRight i (Nat.sub k 1)) 1) 0) (ihl (Nat.sub k 1) i)
-        (ihr (Nat.sub k 1) i)) t k i
+/-- `l.foldl (fun acc u => acc ||| f u) init`. -/
+def foldOr (f : ℕ → ℕ) (l : List ℕ) (init : ℕ) : ℕ :=
+  List.rec (motive := fun _ => ℕ → ℕ) (fun acc => acc) (fun u _ ih acc => ih (Nat.lor acc (f u))) l init
+
+theorem foldOr_eq (f : ℕ → ℕ) (l : List ℕ) (init : ℕ) :
+    foldOr f l init = l.foldl (fun acc u => acc ||| f u) init := by
+  induction l generalizing init with
+  | nil => rfl
+  | cons a l ih => exact ih _
+
+/-- `l.all p`. -/
+def allL (p : ℕ → Bool) (l : List ℕ) : Bool :=
+  List.rec (motive := fun _ => Bool) true (fun u _ ih => p u && ih) l
+
+theorem allL_eq (p : ℕ → Bool) (l : List ℕ) : allL p l = l.all p := by
+  induction l with
+  | nil => rfl
+  | cons a l ih => simp only [List.all_cons, ← ih]; rfl
+
+/-- `l.any p`. -/
+def anyL (p : ℕ → Bool) (l : List ℕ) : Bool :=
+  List.rec (motive := fun _ => Bool) false (fun u _ ih => p u || ih) l
+
+theorem anyL_eq (p : ℕ → Bool) (l : List ℕ) : anyL p l = l.any p := by
+  induction l with
+  | nil => rfl
+  | cons a l ih => simp only [List.any_cons, ← ih]; rfl
+
+/-- `l.length`. -/
+def lenL (l : List ℕ) : ℕ :=
+  List.rec (motive := fun _ => ℕ) 0 (fun _ _ ih => Nat.succ ih) l
+
+theorem lenL_eq (l : List ℕ) : lenL l = l.length := by
+  induction l with
+  | nil => rfl
+  | cons a l ih => simp only [List.length_cons, ← ih]; rfl
+
+/-- `a != b` on `Bool`. -/
+def bx (a b : Bool) : Bool := cond a (cond b false true) b
+
+theorem bx_eq (a b : Bool) : bx a b = (a != b) := by cases a <;> cases b <;> rfl
+
+/-- The tree whose leaf `i` is `f (off + i)`, for `i < 2 ^ k`, by `Nat.rec` on the depth. -/
+def Tree.gen {α : Type} (f : ℕ → α) (off k : ℕ) : Tree α :=
+  Nat.rec (motive := fun _ => ℕ → Tree α) (fun off => .leaf (f off))
+    (fun k ih off => .node (ih off) (ih (off + 2 ^ k))) k off
+
+theorem Tree.gen_zero {α : Type} (f : ℕ → α) (off : ℕ) : Tree.gen f off 0 = .leaf (f off) := rfl
+
+theorem Tree.gen_succ {α : Type} (f : ℕ → α) (off k : ℕ) :
+    Tree.gen f off (k + 1) = .node (Tree.gen f off k) (Tree.gen f (off + 2 ^ k) k) := rfl
 
 theorem look_leaf {α : Type} (x : α) (k i : ℕ) : look (.leaf x) k i = x := rfl
 
@@ -73,11 +115,10 @@ theorem look_gen {α : Type} (f : ℕ → α) (k : ℕ) :
   induction k with
   | zero =>
     intro off i
-    simp [Tree.gen, look_leaf, Nat.mod_one]
+    simp [Tree.gen_zero, look_leaf, Nat.mod_one]
   | succ k ih =>
     intro off i
-    show look (Tree.node (Tree.gen f off k) (Tree.gen f (off + 2 ^ k) k)) (k + 1) i = _
-    rw [look_node, ih, ih]
+    rw [Tree.gen_succ, look_node, ih, ih]
     have hb : Nat.land (Nat.shiftRight i k) 1 = i / 2 ^ k % 2 := by
       rw [← Nat.and_one_is_mod]
       show (i >>> k) &&& 1 = (i / 2 ^ k) &&& 1
@@ -109,8 +150,8 @@ def graphF (n : ℕ) (nb : ℕ → List ℕ) : SimpleGraph (Fin n) :=
 /-- The local check on `lo ≤ u < lo + len`: at most `d` neighbours, all `< n`, symmetric, colours differ. -/
 def localOK (d n : ℕ) (nb : ℕ → List ℕ) (c : ℕ → Bool) (lo len : ℕ) : Bool :=
   allR (fun u =>
-    Nat.ble (nb u).length d &&
-    (nb u).all (fun v => Nat.blt v n && (nb v).any (fun w => Nat.beq w u) && (c u != c v))) lo len
+    Nat.ble (lenL (nb u)) d &&
+    allL (fun v => Nat.blt v n && anyL (fun w => Nat.beq w u) (nb v) && bx (c u) (c v)) (nb u)) lo len
 
 /-- What the local check gives, for all vertices. -/
 structure LocalSpec (d n : ℕ) (nb : ℕ → List ℕ) (c : ℕ → Bool) : Prop where
@@ -124,6 +165,7 @@ theorem localSpec_of {d n : ℕ} {nb : ℕ → List ℕ} {c : ℕ → Bool}
   have key : ∀ u < n, (nb u).length ≤ d ∧ ∀ v ∈ nb u, v < n ∧ u ∈ nb v ∧ c u ≠ c v := by
     intro u hu
     have h1 := allR_spec (h u hu) u (le_refl u) (by omega)
+    simp only [lenL_eq, allL_eq, anyL_eq, bx_eq] at h1
     simp only [Bool.and_eq_true, Nat.ble_eq, List.all_eq_true, Nat.blt_eq, List.any_eq_true,
       Nat.beq_eq, bne_iff_ne, ne_eq] at h1
     refine ⟨h1.1, fun v hv => ?_⟩
@@ -182,11 +224,11 @@ theorem degree_le {d : ℕ} {nb : ℕ → List ℕ} {c : ℕ → Bool} (hL : Loc
 /-! ## Bitmask search from a block of sources -/
 
 /-- The start masks: source `lo + j` carries bit `j`. -/
-def initMask (lo k v : ℕ) : ℕ := if Nat.ble lo v && Nat.blt v (lo + k) then 2 ^ (v - lo) else 0
+def initMask (lo k v : ℕ) : ℕ := cond (Nat.ble lo v && Nat.blt v (lo + k)) (2 ^ (v - lo)) 0
 
 /-- One radius step on trees. -/
 noncomputable def stepT (K : ℕ) (nb : ℕ → List ℕ) (cur : Tree ℕ) : Tree ℕ :=
-  Tree.gen (fun v => (nb v).foldl (fun acc u => acc ||| look cur K u) (look cur K v)) 0 K
+  Tree.gen (fun v => foldOr (fun u => look cur K u) (nb v) (look cur K v)) 0 K
 
 /-- The masks after `r` steps. -/
 noncomputable def levelT (K lo k : ℕ) (nb : ℕ → List ℕ) : ℕ → Tree ℕ
@@ -222,7 +264,7 @@ theorem levelT_get {K lo k : ℕ} {nb : ℕ → List ℕ} {d : ℕ} {c : ℕ →
   | succ r ih =>
     intro v hv
     simp only [levelT, stepT, ballM]
-    rw [look_gen_lt _ K v (by omega), ih v hv]
+    rw [look_gen_lt _ K v (by omega), foldOr_eq, ih v hv]
     exact foldl_or_congr _ _ _ (fun u hu => ih u (hL.lt v hv u hu)) _
 
 theorem testBit_foldl_or' (l : List ℕ) (f : ℕ → ℕ) (init w : ℕ) :
@@ -237,13 +279,14 @@ theorem testBit_foldl_or' (l : List ℕ) (f : ℕ → ℕ) (init w : ℕ) :
 theorem testBit_initMask {lo k v j : ℕ} (h : (initMask lo k v).testBit j = true) :
     v = lo + j ∧ j < k := by
   unfold initMask at h
-  split at h
-  · rename_i hc
+  cases hc : (Nat.ble lo v && Nat.blt v (lo + k))
+  · rw [hc] at h
+    simp at h
+  · rw [hc] at h
     simp only [Bool.and_eq_true, Nat.ble_eq, Nat.blt_eq] at hc
-    rw [Nat.testBit_two_pow] at h
+    simp only [cond_true, Nat.testBit_two_pow] at h
     have : v - lo = j := of_decide_eq_true h
     omega
-  · simp at h
 
 theorem edist_of_testBit {nb : ℕ → List ℕ} {d : ℕ} {c : ℕ → Bool} (hL : LocalSpec d n nb c)
     (lo k : ℕ) : ∀ r, ∀ (v : Fin n) (j : ℕ), (ballM nb lo k r v.val).testBit j = true →
@@ -296,6 +339,53 @@ theorem edist_of_bfs' {K D lo k : ℕ} {nb : ℕ → List ℕ} {d : ℕ} {c : �
   have e : (⟨lo + (s - lo), by omega⟩ : Fin n) = ⟨s, hs⟩ := Fin.ext (by simp only; omega)
   rwa [e] at this
 
+/-! ## Staged search: the masks of each radius are data, each step is checked on its own -/
+
+/-- The step from the masks `cur` to the masks `nxt`, checked on `lo ≤ v < lo + len`. -/
+noncomputable def stepOK (K : ℕ) (nb : ℕ → List ℕ) (cur nxt : Tree ℕ) (lo len : ℕ) : Bool :=
+  allR (fun v => Nat.beq (foldOr (fun u => look cur K u) (nb v) (look cur K v)) (look nxt K v)) lo len
+
+theorem stepOK_pt {K : ℕ} {nb : ℕ → List ℕ} {cur nxt : Tree ℕ} {lo len : ℕ}
+    (h : stepOK K nb cur nxt lo len = true) :
+    ∀ v, lo ≤ v → v < lo + len → look nxt K v = foldOr (fun u => look cur K u) (nb v) (look cur K v) := by
+  intro v h1 h2
+  have := allR_spec h v h1 h2
+  simp only [Nat.beq_eq] at this
+  exact this.symm
+
+/-- The full masks, as a tree. -/
+noncomputable def fullT (K k : ℕ) : Tree ℕ := Tree.gen (fun _ => 2 ^ k - 1) 0 K
+
+/-- A chain of mask trees `L 0 = start`, `L (r+1) = step (L r)` (on vertices `< n`), `L D = full`: every source
+`lo + j` (`j < k`) is within `D` of every vertex. -/
+theorem edist_of_staged {K D lo k : ℕ} {nb : ℕ → List ℕ} {d : ℕ} {c : ℕ → Bool}
+    (hL : LocalSpec d n nb c) (hK : n ≤ 2 ^ K) (L : ℕ → Tree ℕ)
+    (h0 : L 0 = Tree.gen (initMask lo k) 0 K) (hD : L D = fullT K k)
+    (hs : ∀ r < D, ∀ v < n, look (L (r + 1)) K v = foldOr (fun u => look (L r) K u) (nb v) (look (L r) K v))
+    (v : Fin n) (s : ℕ) (hs' : s < n) (h1 : lo ≤ s) (h2 : s < lo + k) :
+    (graphF n nb).edist v ⟨s, hs'⟩ ≤ D := by
+  have hlev : ∀ r ≤ D, ∀ v < n, look (L r) K v = ballM nb lo k r v := by
+    intro r
+    induction r with
+    | zero =>
+      intro _ v hv
+      rw [h0, look_gen_lt _ K v (by omega)]
+      rfl
+    | succ r ih =>
+      intro hr v hv
+      rw [hs r (by omega) v hv, foldOr_eq, ih (by omega) v hv]
+      simp only [ballM]
+      exact foldl_or_congr _ _ _ (fun u hu => ih (by omega) u (hL.lt v hv u hu)) _
+  have hv := hlev D (le_refl D) v.val v.isLt
+  rw [hD, fullT, look_gen_lt _ K v.val (by omega)] at hv
+  have hb : (ballM nb lo k D v.val).testBit (s - lo) = true := by
+    rw [← hv, Nat.testBit_two_pow_sub_one]
+    simp only [decide_eq_true_eq]
+    omega
+  obtain ⟨_, he⟩ := edist_of_testBit hL lo k D v (s - lo) hb
+  have e : (⟨lo + (s - lo), by omega⟩ : Fin n) = ⟨s, hs'⟩ := Fin.ext (by simp only; omega)
+  rwa [e] at he
+
 /-! ## Automorphisms -/
 
 /-- `σ` (with inverse `τ`) maps `0 … n-1` into itself, `τ ∘ σ = id`, and `nb (σ v) ⊆ σ (nb v)`;
@@ -303,7 +393,7 @@ checked on `lo ≤ v < lo + len`. -/
 def permOK (n : ℕ) (nb : ℕ → List ℕ) (σ τ : ℕ → ℕ) (lo len : ℕ) : Bool :=
   allR (fun v =>
     Nat.blt (σ v) n && Nat.beq (τ (σ v)) v &&
-    (nb (σ v)).all (fun x => (nb v).any (fun u => Nat.beq (σ u) x))) lo len
+    allL (fun x => anyL (fun u => Nat.beq (σ u) x) (nb v)) (nb (σ v))) lo len
 
 /-- What a passing `permOK` gives. -/
 structure PermSpec (n : ℕ) (nb : ℕ → List ℕ) (σ τ : ℕ → ℕ) : Prop where
@@ -316,6 +406,7 @@ theorem permSpec_of {n : ℕ} {nb : ℕ → List ℕ} {σ τ : ℕ → ℕ}
   have key : ∀ v < n, σ v < n ∧ τ (σ v) = v ∧ ∀ x ∈ nb (σ v), ∃ u ∈ nb v, σ u = x := by
     intro v hv
     have h1 := allR_spec (h v hv) v (le_refl v) (by omega)
+    simp only [allL_eq, anyL_eq] at h1
     simp only [Bool.and_eq_true, Nat.blt_eq, Nat.beq_eq, List.all_eq_true, List.any_eq_true] at h1
     exact ⟨h1.1.1, h1.1.2, h1.2⟩
   exact ⟨fun v hv => (key v hv).1, fun v hv => (key v hv).2.1, fun v hv => (key v hv).2.2⟩
