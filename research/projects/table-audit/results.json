@@ -207,7 +207,7 @@
   "construction": "C168.1 from Conder's census symmcubicgraphs.tar.gz",
   "rebuilt": "yes",
   "check": "apsp.c VALID on C168.1 and on Hafner's mdec3.7 (checks/small.txt)",
-  "notes": "unbeaten by the repo"
+  "notes": "unbeaten by the repo; also Haar graph of meta 14 6 9 found here (graphs/d3D7_n168_meta_14_6_9_x1.sol); not necessarily the holder's graph"
  },
  "4,5": {
   "source": "Hafner (file 4.5, 'Bond-Delorme construction', vertex-transitive, |Aut| = 160) and Loz",
@@ -300,7 +300,7 @@
   "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
   "construction": "H(13) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
   "rebuilt": "yes",
-  "check": "PENDING (log not complete): apsp_mt.c VALID (checks/d6_q13_b2.apsp.txt)"
+  "check": "apsp_mt.c VALID (checks/d6_q13_b2.apsp.txt)"
  },
  "16,6": {
   "source": "Delorme 1985 Sec. 8(b) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
@@ -613,10 +613,10 @@
  },
  "7,5": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 63 9 4 found here (graphs/d7D5_n1134_meta_63_9_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 567 = 3^4\u00b77"
  },
  "7,8": {
@@ -645,10 +645,10 @@
  },
  "8,5": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 19 45 4 found here (graphs/d8D5_n1710_meta_19_45_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 855 = 3^2\u00b75\u00b719"
  },
  "8,8": {

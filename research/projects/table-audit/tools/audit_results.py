@@ -125,7 +125,11 @@ for d, D in LOZ:
 if __name__ == '__main__':
     extra = json.load(open(sys.argv[1])) if len(sys.argv) > 1 else {}
     for k, v in extra.items():
-        R.setdefault(k, {}).update(v)
+        cur = R.setdefault(k, {})
+        if cur.get('rebuilt') == 'yes' and v.get('rebuilt') == 'order':     # keep the holder's own graph, note ours
+            cur['notes'] = (cur.get('notes', '') + '; also ' + v['construction']).lstrip('; ')
+            continue
+        cur.update(v)
     assert len(R) == 112, len(R)
     import re
     for k, v in R.items():          # a check whose log is missing or has no VALID line is not claimed

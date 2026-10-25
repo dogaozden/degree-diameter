@@ -38,7 +38,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (6,10) | 452,032 | Loz | no |  | 524,160 | no traceable construction (data lost) |
 | (7,3) | 80 | Hafner; Loz | yes | apsp.c VALID on Hafner's file and on the Haar graph |  |  |
 | (7,4) | 346 | Delorme-Farhi duplication | yes | apsp.c VALID | 359 |  |
-| (7,5) | 1,134 | Loz | no |  | 1,152 | no traceable construction (data lost) |
+| (7,5) | 1,134 | Loz | order | build_haar2.py + apsp.c VALID | 1,152 | holder's construction lost; order reproduced |
 | (7,6) | 8,992 | Delorme-Farhi duplication | yes | apsp.c VALID | 9,592 |  |
 | (7,7) | 23,436 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 23,580 |  |
 | (7,8) | 80,940 | Loz | no |  | 95,760 | no traceable construction (data lost) |
@@ -46,7 +46,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (7,10) | 1,987,380 | Loz | no |  | 2,237,760 | no traceable construction (data lost) |
 | (8,3) | 114 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,4) | 800 | bipartite Moore graph | yes | apsp.c VALID |  |  |
-| (8,5) | 1,710 | Loz | no |  | 2,048 | no traceable construction (data lost) |
+| (8,5) | 1,710 | Loz | order | build_haar2.py + apsp.c VALID | 2,048 | holder's construction lost; order reproduced |
 | (8,6) | 39,216 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,7) | 40,586 | Delorme, Gomez, Quisquater | yes | apsp.c VALID | 43,344 | attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9 |
 | (8,8) | 201,480 | Loz | no |  | 239,904 | no traceable construction (data lost) |
@@ -103,7 +103,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (15,3) | 374 | Araujo-Pardo-Lopez | yes | apsp.c VALID | 376 |  |
 | (15,4) | 4,946 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,070 |  |
 | (15,5) | 20,496 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 20,736 |  |
-| (15,6) | 842,048 | Delorme-Farhi duplication | yes | PENDING | 870,440 |  |
+| (15,6) | 842,048 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 870,440 |  |
 | (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | order | PENDING | 2,484,720 |  |
 | (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 18,128,880 | does not check out as read: diameter >= 9 |
 | (15,9) | 168,016,334 | Loz | no |  | 208,029,120 | no traceable construction (data lost) |
