@@ -79,4 +79,9 @@ the rotation orbits of order 12 correspond to points b of PG(3,11) off the quadr
 iff the line through them is a secant (B4^2 - 4Q4Q4' a nonzero square). Exhaustive branch and bound: maximum 17 orbits
 (vertex-transitive graph), plus 12 fixed points = 216, maximal (secantclique.c). Phase-class refinements of the same
 rotation (phaseils.c): order 4 gives 192, order 2 gives 207, so c3's better order-4 element must also move V4. Point-level
-ILS seeded from 240 stays at 240. Kept: 240 for (14,7) (1,772,520).
+ILS seeded from 240 stays at 240. Opus also swept c3's 22 sampled isometries of orders 4, 8 and 10 with a C
+orbit-clique search (orbitclique.c, 40 s each): an order-8 element also reaches 240 (30 orbits of 8); order 10 gives up to
+228; the other order-4 elements give 179-216. Kept: 240 for (14,7) (1,772,520, full uhcheck VALID); same flags give
+(13,7) 1,063,416 and (15,7) 2,481,624; orbit packing at q = 13 (17 rotation orbits of 14 + 14 fixed = 252) gives (16,7)
+4,023,348. Squad assessment: the round's decisive contribution was c3's symmetry idea (+55 % over the best local search,
+which plateaued near 155-169 on the raw graph); Opus turned it into an exact secant-graph construction and a fast sweep.
