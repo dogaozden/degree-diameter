@@ -109,6 +109,9 @@ machine (4 cores):
 - (14,7) 1,774,584 (the coordinator's graph, same edge-list sha256): 4 parts, merged, VALID, diameter 7, 357,336
   sources, the same as apsp_orb ([checks/d14D7_n1774584](checks/d14D7_n1774584/README.md)).
 - Merge refuses a missing part and a certificate made with --cost.
+- Matrix-group lifts use a direction-optimizing BFS (push while the frontier is under n/64 vertices, then pull, skipping
+  vertices every source of the pass has reached); counts are identical to the pure pull version. Speed: (11,9)
+  16,792,080 (SL(2,61) × Z37) in 10 s on one thread, haarcheck_sl 6 s.
 - Haar graphs as lifts of the dipole (`haar2lift.py`): the records (6,9) 127,296 (SL(2,17) × Z13), (7,9) 462,840,
   (8,8) 239,904, (9,8) 540,360 (PSL families) come out VALID with diameter exactly D (and fail at D − 1); with one
   generator of the (8,8) graph perturbed, bcd and build_haar2.py both report diameter 9, INVALID.

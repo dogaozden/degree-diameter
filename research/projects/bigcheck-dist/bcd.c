@@ -408,14 +408,16 @@ static void pull_explicit(uint64_t *anyp) {
     }
     *anyp = any;
 }
+static W_T FULLMASK;  /* bits of the sources in the current pass */
 static void pull_lift_mat(uint64_t *anyp) {
-    uint64_t any = 0;
+    uint64_t any = 0; const W_T fm = FULLMASK;
     const int64_t CH = 4096; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
 #pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
     for (int64_t t = 0; t < tasks; t++) {
         int64_t v = t / nch, g0 = (t % nch) * CH, g1 = g0 + CH < M ? g0 + CH : M;
         W_T *out = NX + v * M; const W_T *vis = VIS + v * M;
         for (int64_t g = g0; g < g1; g++) {
+            if (vis[g] == fm) { out[g] = 0; continue; }   /* every source already reached this vertex */
             gel e = gdec(g); W_T acc = 0;
             for (int64_t i = bst[v]; i < bst[v + 1]; i++) acc |= FR[(int64_t)bw[i] * M + genc(gmul(bsel[i], e))];
             acc &= (W_T)~vis[g]; out[g] = acc; any |= acc;
@@ -423,8 +425,31 @@ static void pull_lift_mat(uint64_t *anyp) {
     }
     *anyp = any;
 }
+/* push step for a sparse frontier (matrix groups): every frontier vertex ORs its bits into its unvisited neighbours */
+static void push_lift_mat(uint64_t *anyp) {
+    uint64_t any = 0;
+#pragma omp parallel for schedule(static)
+    for (int64_t x = 0; x < n; x++) NX[x] = 0;
+    const int64_t CH = 4096; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
+#pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
+    for (int64_t t = 0; t < tasks; t++) {
+        int64_t v = t / nch, g0 = (t % nch) * CH, g1 = g0 + CH < M ? g0 + CH : M;
+        const W_T *fr = FR + v * M;
+        for (int64_t g = g0; g < g1; g++) {
+            W_T bits = fr[g]; if (!bits) continue;
+            gel e = gdec(g);
+            for (int64_t i = bst[v]; i < bst[v + 1]; i++) {
+                int64_t y = (int64_t)bw[i] * M + genc(gmul(bsel[i], e));
+                W_T nb = bits & (W_T)~VIS[y];
+                if (nb) { __atomic_fetch_or(&NX[y], nb, __ATOMIC_RELAXED); any |= nb; }
+            }
+        }
+    }
+    *anyp = any;
+}
+static int64_t FRONTIER = 1; /* number of vertices in the current frontier (set by main) */
 static void pull_lift(uint64_t *anyp) {
-    if (GK) { pull_lift_mat(anyp); return; }
+    if (GK) { if (FRONTIER < n / 64) push_lift_mat(anyp); else pull_lift_mat(anyp); return; }
     uint64_t any = 0;
     const int64_t CH = 16384; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
 #pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
@@ -508,7 +533,7 @@ int main(int argc, char **argv) {
     int part_max = 0; int64_t part_unreached = 0;
     for (int64_t b0 = lo; b0 < hi; b0 += WB) {
         int ns = hi - b0 < WB ? (int)(hi - b0) : WB; W_T full = ns == WB ? (W_T)~(W_T)0 : (W_T)((1ULL << ns) - 1);
-        double tb = now();
+        double tb = now(); FULLMASK = full; FRONTIER = ns;
         memset(VIS, 0, sizeof(W_T) * n); memset(FR, 0, sizeof(W_T) * n);
         for (int k = 0; k < ns; k++) { int64_t s = MODE ? (int64_t)reps[b0 + k] * M : (int64_t)reps[b0 + k]; VIS[s] |= (W_T)1 << k; FR[s] |= (W_T)1 << k; }
         int ecc[64] = {0}, lev = 0;
@@ -516,8 +541,10 @@ int main(int argc, char **argv) {
             uint64_t any; if (MODE) pull_lift(&any); else pull_explicit(&any);
             if (!any) break;
             lev++; for (int k = 0; k < ns; k++) if (any >> k & 1) ecc[k] = lev;
-#pragma omp parallel for schedule(static)
-            for (int64_t x = 0; x < n; x++) VIS[x] |= NX[x];
+            int64_t fw = 0;
+#pragma omp parallel for schedule(static) reduction(+ : fw)
+            for (int64_t x = 0; x < n; x++) { VIS[x] |= NX[x]; fw += NX[x] != 0; }
+            FRONTIER = fw;
             W_T *tmp = FR; FR = NX; NX = tmp;
             if (cost_mode && lev == DD) break; /* --cost: unreached = vertices at distance > D */
             if (lev > DD + 2) break; /* already too far; the unreached count below is then a lower bound */
