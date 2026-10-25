@@ -26,7 +26,7 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 
 ## 2. Summary
 
-Of the 112 cells (counts from cells.csv; three big checks ((14,7), (15,7), (16,7)) were still running when this was written, see HANDOFF.md):
+Of the 112 cells (counts from cells.csv; two big checks ((15,7), (16,7)) were still running when this was written, see HANDOFF.md):
 
 - **48 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the 11 Delorme–Farhi cells, the three D = 3
@@ -98,19 +98,26 @@ Conder's census of cubic symmetric graphs (1-arc-regular, |Aut| = 504, girth 12)
 - (16,5) = 27,300, (13,8) and (3,10) = 800: no construction traced (§4).
 
 **Loz orange cells (39).** No voltages, groups, base graphs or adjacency lists survive where I could reach them (thesis
-restricted to Auckland logins, eyal.com.au parked, archive.org blocked here). Many orders have the shape 2·p·k with k
-| p−1 (the order of a Haar graph of Z_p ⋊ Z_k). I tried to reach the exact table orders with Haar graphs
-(`tools/exact_haar.py` driving research/frontier/haar_gen3, then build_haar2.py and apsp.c), 30–180 s per group,
-metacyclic groups of the right order in turn (most non-abelian first): (3,9) 506 (Z23 ⋊ Z11), (4,8) 2,184
-(Z91 ⋊ Z12), (4,9) 4,970 (Z71 ⋊ Z35), (4,10) 11,748 (Z89 ⋊ Z66), (5,5) 336 (Z7 ⋊ Z24), (5,7) 3,110 (Z311 ⋊ Z5),
-(5,8) 9,234 (Z171 ⋊ Z27), (5,9) 27,936 (Z97 ⋊ Z144), (5,10) 90,068 (Z2047 ⋊ Z22), (6,5) 684 (Z57 ⋊ Z6),
-(6,8) 29,790 (Z331 ⋊ Z45), (6,9) 117,360 (Z815 ⋊ Z72), (7,5) 1,134
-(Z63 ⋊ Z9), (7,8) 80,940 (Z1349 ⋊ Z30), (8,5) 1,710 (Z19 ⋊ Z45) and (9,5) 2,496 (Z13 ⋊ Z96) were reached exactly
-(graphs/*.sol, checked in checks/small.txt). (4,8) and (4,9) are cells the repo has not beaten, so the table value
-there is now backed by a checked graph. For
-13 of the 39 cells n/2 = p·k with p prime and k | p−1, the order of Z_p ⋊ Z_k (cells.csv notes give every
-factorization), which fits Loz's published method for general graphs (voltage lifts with metacyclic groups). That is
-a pattern, not a source, but all 16 Loz cells tried so far were reached in a metacyclic group within minutes, which
+restricted to Auckland logins, eyal.com.au parked, archive.org blocked here). For 13 of the 39 cells n/2 = p·k with p
+prime and k | p−1, the order of a Haar graph of Z_p ⋊ Z_k, the kind of group Loz used for general graphs (cells.csv
+notes give every factorization). So I tried to reach the exact table orders with Haar graphs of metacyclic groups of
+order n/2 (`tools/exact_haar.py` driving research/frontier/haar_gen3, most non-abelian groups first, 30–300 s per
+group; each graph rebuilt by build_haar2.py and checked by apsp.c in checks/small.txt). All 16 cells tried so far were
+reached:
+
+| cell | value | group | cell | value | group |
+|---|---:|---|---|---:|---|
+| (3,9) | 506 | Z23 ⋊ Z11 | (5,10) | 90,068 | Z2047 ⋊ Z22 |
+| (4,8) | 2,184 | Z91 ⋊ Z12 | (6,5) | 684 | Z57 ⋊ Z6 |
+| (4,9) | 4,970 | Z71 ⋊ Z35 | (6,8) | 29,790 | Z331 ⋊ Z45 |
+| (4,10) | 11,748 | Z89 ⋊ Z66 | (6,9) | 117,360 | Z815 ⋊ Z72 |
+| (5,5) | 336 | Z7 ⋊ Z24 | (7,5) | 1,134 | Z63 ⋊ Z9 |
+| (5,7) | 3,110 | Z311 ⋊ Z5 | (7,8) | 80,940 | Z1349 ⋊ Z30 |
+| (5,8) | 9,234 | Z171 ⋊ Z27 | (8,5) | 1,710 | Z19 ⋊ Z45 |
+| (5,9) | 27,936 | Z97 ⋊ Z144 | (9,5) | 2,496 | Z13 ⋊ Z96 |
+
+These are graphs of the table's order, not necessarily Loz's graphs. (4,8) and (4,9) are cells the repo has not
+beaten, so the table value there is now backed by a checked graph. That every cell tried was reached within minutes
 makes the remaining Loz values plausible. (8,8), (9,8), (7,9), (6,10) were still being tried when this was written;
 Δ ≥ 10 at D = 9, 10 and the other cells above 10⁶ vertices were not attempted.
 

@@ -96,7 +96,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (14,4) | 4,760 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (14,5) | 14,760 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 17,568 |  |
 | (14,6) | 804,468 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
-| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | PENDING | 1,774,584 |  |
+| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,774,584 |  |
 | (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
 | (14,9) | 95,087,738 | Loz | no |  | 116,068,656 | no traceable construction (data lost) |
 | (14,10) | 1,213,477,190 | Loz | no |  | 1,326,627,120 | no traceable construction (data lost) |
