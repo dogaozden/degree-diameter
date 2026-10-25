@@ -59,3 +59,9 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
 - Stopped as sub-record: sl 83×Z7 seed 2 (best 3 at 1e6 evals) and pgl 83×Z7 (best 2 at 4.5e5), same order, no gain.
 - Running now (N must exceed 4,001,928): prod psl 9×psl 9×Z31 (4,017,600, best 6), prod psl 5×sl 7×Z199 (4,011,840),
   psl 29×Z331 (4,031,580). Logs under runs/raise-d8D10/{J,L,M}.
+- prod psl 9×psl 9×Z31 (4,017,600): ended at 3,600 s, best 6, no solve. psl 29×Z331 (4,031,580): best 21, stopped.
+  prod psl 5×sl 7×Z199 (4,011,840): best 15, stopped. Large cyclic factors (Z199, Z331) do badly here.
+- Running (N must exceed 4,001,928): psl 43×Z103 (4,092,396, μ 41, 3 h budget), sl 25×Z259 (4,040,400, μ 35),
+  prod psl 5×sl 13×Z31 (4,062,240, μ 38, seeds 1 and 2).
+- Candidates checked by hand above 4,001,928 with k = 3 valid cyclic factors (all primes ≡ 1 mod 3): SL/PSL/PGL(2,q)×Z_n
+  for n in {31, 37, 43, 61, 79, 103, 109, 133, 139, 259, 331}; the order window is tight, so few are left at μ ≤ 40.
