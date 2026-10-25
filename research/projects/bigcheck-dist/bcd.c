@@ -404,7 +404,7 @@ typedef uint8_t W_T;   /* WB = 1 uses the bitset functions below instead of W_T 
 #error "WB must be 1, 8, 16, 32 or 64"
 #endif
 static W_T *VIS, *FR, *NX;
-static void pull_explicit(uint64_t *anyp) {
+__attribute__((unused)) static void pull_explicit(uint64_t *anyp) {
     uint64_t any = 0;
 #pragma omp parallel for schedule(dynamic, 8192) reduction(| : any)
     for (int64_t x = 0; x < n; x++) {
@@ -453,7 +453,7 @@ static void push_lift_mat(uint64_t *anyp) {
     *anyp = any;
 }
 static int64_t FRONTIER = 1; /* number of vertices in the current frontier (set by main) */
-static void pull_lift(uint64_t *anyp) {
+__attribute__((unused)) static void pull_lift(uint64_t *anyp) {
     if (GK) { if (FRONTIER < n / 64) push_lift_mat(anyp); else pull_lift_mat(anyp); return; }
     uint64_t any = 0;
     const int64_t CH = 16384; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
