@@ -130,4 +130,9 @@ model (SIZE_LAW) predicts the two to be comparable, so the group, not μ, sets t
   sl 13 × 31 is closed. With a +6.4 % step at stake this was the most valuable cell in this round, and it is closed.
 - psl 19 × 19 (N 64,980, μ 35.4, α = conj(mat(1,3,6,0)) × (z ↦ 7 z)): exhaustive pass started on the same four parts
   (`EXHAUST="p 4 15 …"`, 2.34·10⁸ pairs). Annealing floored at 3 on every seed, and the random tail showed cost 3–5 but
-  nothing at 0–2. This group has 171 involutions, so the odd-D involution misses are the likely floor. Result: pending.
+  nothing at 0–2. This group has 171 involutions, so the odd-D involution misses are the likely floor.
+  **Result: no solution.** All 2.35·10⁸ pairs checked (58,625,499 per part). Minimum cost **3** (about 1,900 pairs),
+  nothing at 0–2. The involution floor is real for this group. psl 19 × 19 is closed.
+- psl 13 × 61 (N 66,612, μ 43.7, α = conj(mat(3,1,6,11)) × (z ↦ 13 z)): exhaustive pass started, 2.5·10⁸ pairs,
+  4 parts. Annealing min 12 and sampled cost ≤ 14 mass about 10⁻⁵, so this is the last family with a plausible tail
+  in the window. Result: pending.
