@@ -654,8 +654,10 @@ well the evidence was recorded.
   checkers, whose output the harvest log copies). This session re-ran every graph (column "this session"). After it,
   every cell has been accepted by at least two separately written programs, or by one program and a Lean proof.
 - **`bigcheck_indep.c` is not in the repository**, nor its validation output, although it was the second checker for
-  every graph above 2·10⁷ vertices. Its report notes that it shares the file conventions with the other checkers, so a
-  shared misreading of the file format would not be caught. This is why `hc_factor.c` was written (§5.3).
+  every graph above 2·10⁷ vertices. This is why `hc_factor.c` was written (§5.3): every large graph now has a second
+  in-repository program. The cloud summary (`research/frontier/runs/cloudcheck/SUMMARY-bigcheck-3-verification-yp7r8n-big3.md`)
+  notes that all checkers read the files with the same conventions. That cannot make an invalid record pass: each
+  checker verifies the graph defined by that reading, which is the one stated in §1.4, and that graph is the record.
 - **The harvest tool** (`labctl`) is not in the repository; its checks are only described in SIZE_LAW.md and old commit
   messages.
 - **`check_haar_indep.py`** had been run on only three current records ((10,9), (11,9), (11,8)); this session ran it on
