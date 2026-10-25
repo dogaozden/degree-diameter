@@ -1,0 +1,35 @@
+# (15,7) n = 2,501,008 = 14*177,156 + 10,594 + 10,230 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; this branch's earlier 2,500,147 and 2,500,749.
+# Same construction as d15D7_hex11_typedrelax_n2500749 (typed levels HHDHHDD of H(11), mirrored surgery 768 on the
+# nine non-friendly transitions, relaxed bottleneck friendly sets, research/d15D7b/RELAXED.md), one more round:
+# bottleneck sets 0->2: 9,058 points (845 pairs), 1->2: 9,062 (859), 2->3: 8,694 lines (1,059), 2->4: 8,697 (1,135);
+# the non-bottleneck friendly sets 5->0, 6->1 (lines) and 3->5, 4->6 (points) are now designed (design_cover.py) to
+# cover every paired element's partner, so pairing is limited only by the level-2 coupling.
+# Solution: research/frontier/sols/d15D7_hex11_typedrelax_n2501008.sol (sha256 7a2743be9f228eac5bcdbe83089b8ccfa5fd293b997c9dc14650c00800ccbc4c).
+# Rebuild: hex_q11.bin as in the other checks (sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19);
+#   python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax_n2501008.sol g.edges g.src
+#   edge list sha256 031abe25293e84336a0b4617f8f4bce9537dbd1b7b77a4cbfd85b613a59dd14f (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
+# Coverage argument as in d15D7_hex11_typedrelax_n2500749.check.txt: theorem for the unaffected non-hub pairs
+# (hypotheses re-checked by tm3_build), BFS from every hub and every paired-element vertex for the rest.
+-- tm3_build.py build:
+free A-slots per level [10594, 10598, 18159, 15074, 15045, 14735, 14727] B-slots [14735, 14727, 18888, 10230, 10233, 15074, 15045] -> hubs 10594 10230
+mirror hypotheses OK: |R'| = 768
+  0->2 (points): 9058 freed, 845 pairs, (R1) and (R2) OK
+  1->2 (points): 9062 freed, 859 pairs, (R1) and (R2) OK
+  2->3 (lines): 8694 freed, 1059 pairs, (R1) and (R2) OK
+  2->4 (lines): 8697 freed, 1135 pairs, (R1) and (R2) OK
+  3->5 (points): 5661 freed, 0 pairs, (R1) and (R2) OK
+  3->6 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->5 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->6 (points): 5632 freed, 0 pairs, (R1) and (R2) OK
+  5->0 (lines): 5721 freed, 0 pairs, (R1) and (R2) OK
+  5->1 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->0 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->1 (lines): 5713 freed, 0 pairs, (R1) and (R2) OK
+friendly hypotheses OK (3898 pairs in all)
+n = 2501008, edges = 18730056, degree min 12 max 15, hub graph edges 81840
+wrote rb.edges
+wrote rb.src: 36387 BFS sources (hubs and paired elements)
+-- hubfar (BFS from all hubs and paired-element vertices, depth 7, 4 threads):
+n=2501008 edges=18730056 degree min=12 max=15 bipartite=yes connected=yes sources=36387 far_pairs=0 max_ecc=7
