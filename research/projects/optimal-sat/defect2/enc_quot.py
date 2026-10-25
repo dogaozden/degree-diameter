@@ -12,13 +12,14 @@ s(c,e1)+s(d,e1)+s(c,e2)+s(d,e2) is odd.
 Normal form: vertex 0 has out-neighbours 1..k-2 and in-neighbours k-1..2k-4 (always possible by relabelling).
 --sym adds lex-leader clauses for adjacent transpositions inside O={1..k-2}, I={k-1..2k-4}, R={2k-3..m-1}
 (row-major order of the a-variables); --signs adds the weighing-matrix signing with a gauge fix.
-usage: enc_quot.py k out.cnf [--signs] [--sym] [--insigns]
+usage: enc_quot.py k out.cnf [--signs] [--sym] [--insigns] [--nf2]
+--nf2: second normal form (Lemma Q2): R labelled by the pairs of O, all arcs between R and O fixed.
 """
 import sys, itertools, json
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 
-def build(k, signs=False, sym=False, insigns=False):
+def build(k, signs=False, sym=False, insigns=False, nf2=False):
     m = k * (k - 1) // 2
     g = k - 2
     pool = IDPool()
@@ -33,6 +34,18 @@ def build(k, signs=False, sym=False, insigns=False):
         cnf.append([a[d, 0]] if d in I else [-a[d, 0]])
     for c, d in itertools.combinations(V, 2):
         cnf.append([-a[c, d], -a[d, c]])
+    if nf2:
+        # Lemma Q2: O and I are independent, no arcs I->O, and y -> O cap O_y is a bijection R -> pairs of O.
+        # Label R = pairs (i,j) of O in lexicographic order; y_(i,j) -> x_i, x_j and no other arcs R -> O.
+        pairs = list(itertools.combinations(O, 2))
+        assert len(pairs) == len(R)
+        for y, (i, j) in zip(R, pairs):
+            for x in O:
+                cnf.append([a[y, x]] if x in (i, j) else [-a[y, x]])
+        for x, x2 in itertools.permutations(O, 2): cnf.append([-a[x, x2]])
+        for z, z2 in itertools.permutations(I, 2): cnf.append([-a[z, z2]])
+        for z in I:
+            for x in O: cnf.append([-a[z, x]])
     for c in V:
         cnf.extend(CardEnc.equals([a[c, d] for d in V if d != c], bound=g, vpool=pool, encoding=EncType.seqcounter).clauses)
         cnf.extend(CardEnc.equals([a[d, c] for d in V if d != c], bound=g, vpool=pool, encoding=EncType.seqcounter).clauses)
@@ -106,15 +119,33 @@ def build(k, signs=False, sym=False, insigns=False):
                 if i == len(seq) - 1: break
                 e2 = pool.id()
                 cnf.append(([-e] if e else []) + [-x, -y, e2]); cnf.append(([-e] if e else []) + [x, y, e2]); e = e2
-        for blk in (O, I, R):
-            for i in range(len(blk) - 1):
-                u, v = blk[i], blk[i + 1]
+        if nf2:
+            pairs = list(itertools.combinations(O, 2))
+            pidx = {p: y for y, p in zip(R, pairs)}
+            for i in range(len(O) - 1):
+                u, v = O[i], O[i + 1]
+                sw = lambda t, u=u, v=v: v if t == u else (u if t == v else t)
+                def pi(t, sw=sw):
+                    if t in pidx.values():
+                        p = pairs[R.index(t)]
+                        q = tuple(sorted((sw(p[0]), sw(p[1]))))
+                        return pidx[q]
+                    return sw(t)
+                lexleader(pi)
+            for i in range(len(I) - 1):
+                u, v = I[i], I[i + 1]
                 lexleader(lambda t, u=u, v=v: v if t == u else (u if t == v else t))
+        else:
+            for blk in (O, I, R):
+                for i in range(len(blk) - 1):
+                    u, v = blk[i], blk[i + 1]
+                    lexleader(lambda t, u=u, v=v: v if t == u else (u if t == v else t))
     return cnf, pool, a
 
 if __name__ == '__main__':
     k = int(sys.argv[1])
-    cnf, pool, a = build(k, signs='--signs' in sys.argv, sym='--sym' in sys.argv, insigns='--insigns' in sys.argv)
+    cnf, pool, a = build(k, signs='--signs' in sys.argv, sym='--sym' in sys.argv, insigns='--insigns' in sys.argv,
+                         nf2='--nf2' in sys.argv)
     cnf.to_file(sys.argv[2])
     with open(sys.argv[2] + '.map', 'w') as f:
         json.dump({'k': k, 'a': [[c, d, v] for (c, d), v in a.items()]}, f)
