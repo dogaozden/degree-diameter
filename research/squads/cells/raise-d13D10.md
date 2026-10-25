@@ -37,7 +37,7 @@ Dropped: PSL(2,125) × Z349 (681,597,000; planner lists it). 125 = 5³ is a prim
 only checker for PSL above 20M (`tools/haarcheck_psl`) is prime-only, so a hit could not be verified. Its job line in
 jobsB.txt is a comment now.
 
-## Status
+## Status (by time)
 
 - **Record now 681,406,800** (SL(2,149) × Z103, k=3 m=4 f=1, μ = 22.8, 857 evals, 1,481 s). Solution:
   `research/frontier/sols/d13D10_sl_149_103_orb3_s1.txt`. Checked by haar_sym's full diameter check and by both
@@ -53,6 +53,27 @@ jobsB.txt is a comment now.
 - Failed rungs (5,400 s each, best cost): SL 167×73 (1, 3,977 evals), SL 101×331 (3, 10,073), SL 97×373 (1, 9,313),
   SL 163×79 (3, 4,153). Each is a 1.5 h rung, so the budget is short for the larger ones.
 - 11:31 UTC: SL 149×103 solved and VALID (681,406,800). Running: PSL 151×199 (queue B), then PSL 211×73.
+
+## Final status (6-hour cap reached, 2026-10-25 13:29 UTC)
+
+Record: **681,406,800** (SL(2,149) × Z103). Cell's table value 617,330,936; this session raised it from 677,714,400 in
+three steps (679,901,688, 679,959,000, 681,406,800), all VALID by an independent checker.
+
+Rungs tried after the last record, each 5,400 s on one thread with seed 1 (best cost in brackets):
+SL 167×73 (1), SL 101×331 (3), SL 97×373 (1), SL 163×79 (3), PSL 151×199 (6), SL 139×127 (3), PSL 211×73 (3, stopped
+at the cap with the search still running). The next rungs by planner order (SL 139×127 is above it) are as the table
+shows; none is left in a queue.
+
+Why it stopped: the 6-hour window ended. Two concurrent runs were the memory limit, so the throughput was about 2 rungs
+per 1.5 h. The failures are normal for μ ≈ 22–25: 1 in 3 or so of these rungs solved in this session, and each
+failure costs 1.5 h. Not stuck, but the next gains are small (+0.2–0.5 % per step) and need compute.
+
+Suggested next steps for a fresh session, most promising first:
+1. Other seeds on the rungs that stalled at cost 1 (SL 167×73, SL 97×373): cost 1 means one uncovered orbit; a second
+   seed or `ORBW=3` is cheap to try.
+2. The planner rungs at μ 23–25 with the lowest predicted evaluations: PSL 173×133 (688.6M) and similar are above the
+   next tier; check `plan_orbit.py` (branch claude/structured-search-orbit-04hefm) first.
+3. Use `FIXMIN=5` (fixed generators of order ≥ 5; branch 04hefm, §9.2), which raised valid counts 1.3–1.5× on other cells.
 
 ## Resume
 
