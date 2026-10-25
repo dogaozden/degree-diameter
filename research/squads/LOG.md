@@ -118,3 +118,41 @@ Kept / what happened next (Opus): verified both sets and rebuilt the graphs: **(
 both apsp VALID. Opus noted that the 217 set has lost the T_3 symmetry (3 of 217 points map into the set), so the core
 works as a basin, not a template. Opus also proved the upper bound 457 for partial ovoids of W(5,8), so there is room
 left. Round 6 tests many structured starts. Did the squad help? Yes: both records come straight from cards c4 and c6.
+
+## 2026-10-25 00:15 UTC, cell-10-7 round 6: structured starts, subgroup orbits, and the H(11) spin-offs
+
+Goal: beat 217 pairwise opposite points of H(8) for (10,7), and raise the H(9) non-collinear set for (11,7). Folder
+research/squads/d10D7-r6/ (README.md, cards.md, scoreboard.jsonl).
+
+Opus finding at the start of the round: the 217 sets found independently by r5/c4 and r5/c3 are the same object. Each
+is a union of two orbits of S7 × C3 ≤ Sp(6,2) × Gal(GF(8)/GF(2)): the 7 GF(2)-points of a maximal partial ovoid of a
+W(5,2) subgeometry (Gram matrix J − I) plus one orbit of 210 points. This is also its full stabiliser. Exact searches
+over unions of orbits give 217 again for S7, A7, S6, L3(2), 7:6, 7:3, S5×S2 and S4×S3, with or without the Frobenius
+(research/d10D7/ovoid/orbsearch.py).
+
+Cards:
+- c1 many T_3 cores, then pov2: 217 only from r5/c4's core with seed 3. Other cores and seeds give 116–134, and
+  33-orbit cores are worse.
+- c2 groups outside Sp(6,2): the Singer 73:3 union (73) grows to 104 under pov2. SL(2,8) wr S3 and its subgroups, the
+  diagonal SL(2,8) and Singer 511 give at most 9.
+- c3 big kicks from 217: every kick (10–50 %, random, regional, crossover) regrows to the identical 217 set.
+- c4 H(9): **4,291** = 613 orbits of the order-7 subgroup of the order-91 element. A k-fixed tabu on the 9,451-orbit
+  graph was started from the 4,277 set.
+- c5 H(5): no gain over 72. Unions of W(E7)-mod-5 orbits give at most 60.
+- c6 H(9), orbit unions of SL(3,9) subgroups: A6 = Ω(3,9) gives 4,249 (exact), 91:3 4,186, L2(7) ≥ 3,913, SL(3,3)
+  793, SU(3,3) 343. A tabu from the A6 union reaches 4,259.
+- c7 H(11) structured: (pending).
+
+Kept / what happened next (Opus):
+- 217 looks like a hard local optimum for (10,7). The best union over every group tried is 217, and every outside point
+  conflicts with at least 9 of its points. The upper bound stays 457.
+- (12,7) **680,068**, apsp VALID: Opus replaced the doubled-H(5) hub graph with the 2-level cover of H(5) carrying the
+  72 B2 hubs of the (7,7) solution. That gives 7,884 hubs per side, against the 7,812 of the doubled H(5).
+- New spin-off cells over H(11), where the table values are 3-, 5- and 7-level hexagon covers. Opus built the Hermitian
+  spread of 1,332 lines and a 135-point partial ovoid, using a new tabu (ovoid/potabu2.c) that computes conflicts on
+  the fly. This gives (13,7) 1,063,206, (14,7) 1,772,100 and (15,7) 2,480,994; their checks are in
+  research/d10D7/checks/hex11_B2_CHECK.md.
+- (11,7) rebuilt with c4's 4,291 set.
+
+Did the squad help? Yes, for (11,7) (c4) and for the negative evidence on 217 (c1, c2, c3). The spin-off ideas and the
+S7 analysis came from Opus.
