@@ -39,16 +39,30 @@ sampled p1 cost; full output not committed). Groups above the record order, sort
 Big cyclic factors (n ≥ 1000, e.g. sl 8 × Z2281, sl 11 × Z871, psl 9 × Z3193) have p1 in the 10³–10⁵ range, and prod-groups
 of order 1.15M with n > 1 have p1 ~ 10⁵–10⁶ (fail, not worth runs).
 
-## Runs
+## Runs (all `ORBIT="3 2 1"`, K = 8, single thread, no solution found)
 
-Launched 2026-10-25, 4 single-thread runs, `ORBIT="3 2 1"`, K = 8, seed 11, 3600 s budget (logs in `research/structured/runs/`,
-prefix `d7D10_`, tag `_orb3_s11`):
+| group | N | μ | seed / options | budget | best cost (evals) | note |
+|---|---|---|---|---|---|---|
+| pgl 19 × Z169 | 1,155,960 | 33.1 | 11 | 3600 s | 12 (3.56 M) | 12 from t ≈ 15 min to the end |
+| sl 19 × Z169 | 1,155,960 | 33.1 | 11 | 3600 s | 5 (3.65 M) | still moving at the end (9 at 28 min, 5 at 41 min) |
+| pgl 19 × Z169 | 1,155,960 | 33.1 | 12, 13 | stopped at ~4 min | 12 (both) | same plateau as seed 11 |
+| pgl 19 × Z169 | 1,155,960 | 33.1 | 14, RESTART=1 | 1800 s | 9 (1.78 M) | RESTART=1 lowers the floor from 12 to 9 |
+| sl 16 × Z283 | 1,154,640 | 32.6 | 11 | stopped at ~11 min | 27 (83 k) | no progress after the first 30 s |
+| psl 19 × Z337 | 1,152,540 | 32.0 | 11 | stopped at ~11 min | 18 (96 k) | no progress after the first 30 s |
 
-| group | N | μ | status |
-|---|---|---|---|
-| pgl 19 × Z169 | 1,155,960 | 33.1 | running, best 12 at ~9 min (s11) |
-| sl 19 × Z169 | 1,155,960 | 33.1 | running, best 16 at ~9 min (s11) |
-| sl 16 × Z283 | 1,154,640 | 32.6 | stopped at ~11 min, best 27 (83k evals), no progress after t = 30 s |
-| psl 19 × Z337 | 1,152,540 | 32.0 | stopped at ~11 min, best 18 (96k evals), stuck from t = 30 s |
+Alpha check on pgl 19 × Z169 (`ALPHA=<index>`, 60 random indices of order 3 in Q): only 3 are of order 3, all with |Fix| = 17 and
+worse sampled tails (min 69–84) than the default α (min 27), so the default stays.
 
-Seeds 12 and 13 of pgl 19 × Z169 started in the two freed cores (same settings, 3600 s).
+## Reading (end of this session's compute so far)
+
+- No group above N = 1,149,120 was solved. The record stays at 2,298,240.
+- Plateaus recur across seeds: pgl 19 × Z169 sits at exactly cost 12 in three seeds, and sl 19 × Z169 at 5 to 16. This looks like a
+  structural floor for these groups at μ ≈ 33 under k = 3 orbits, not a bad seed. Restarts (`RESTART=1`) move the floor a little
+  (9 for pgl 19 × Z169), and sl 19 × Z169 reached 5 with plain annealing.
+- Round 1 saw the same wall: solves at μ ≈ 31 in 5–10 min, nothing at μ ≈ 33 in 30–60 min.
+
+## Next step, running
+
+Four seeds (21–24) of sl 19 × Z169 with `RESTART=1`, 3600 s each (the best open lead, cost 5). Their logs are
+`research/structured/runs/d7D10_sl_19_169_orb3_restart_s2*.log`. A cost-0 result would be a Haar graph of 2,311,920 vertices
+(N = 1,155,960) and needs build_haar2.py (about 22 s), not a new record on its own without that check.
