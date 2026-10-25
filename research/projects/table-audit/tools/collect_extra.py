@@ -4,9 +4,9 @@ for Loz cells.  Writes extra.json for audit_results.py.  Usage: collect_extra.py
 import json, os, sys
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 small = open(os.path.join(HERE, 'checks/small.txt')).read()
-big = os.path.join(HERE, 'checks/haar_big.txt')
-if os.path.exists(big):
-    small += open(big).read()
+for extra_log in ('checks/haar_big.txt', 'checks/haar_huge.txt'):
+    if os.path.exists(os.path.join(HERE, extra_log)):
+        small += open(os.path.join(HERE, extra_log)).read()
 extra = {}
 for k, v in json.load(open(sys.argv[1])).items():
     extra.setdefault(k, {})['notes'] = v
@@ -23,7 +23,10 @@ for path in sys.argv[2:]:
         key = f"{r['d']},{r['D']}"
         e = extra.setdefault(key, {})
         grp = r['spec'] + (f' x Z_{r["zn"]}' if r['zn'] > 1 else '')
-        e.update(rebuilt='order', check='build_haar2.py + apsp%s VALID (checks/%s)' % (('_mt.c', 'haar_big.txt') if r['n'] > 150000 else ('.c', 'small.txt')),
+        chk = ('build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)' if r['n'] > 1000000 else
+               'build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)' if r['n'] > 150000 else
+               'build_haar2.py + apsp.c VALID (checks/small.txt)')
+        e.update(rebuilt='order', check=chk,
                  construction=f'Haar graph of {grp} found here (graphs/{sol}); not necessarily the holder\'s graph',
                  flag='holder\'s construction lost; order reproduced')
 json.dump(extra, open(os.path.join(HERE, 'extra.json'), 'w'), indent=1)

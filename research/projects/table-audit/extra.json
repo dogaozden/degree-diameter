@@ -112,7 +112,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "7,10": {
-  "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181"
+  "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 11041 90 3 found here (graphs/d7D10_n1987380_meta_11041_90_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "8,5": {
   "notes": "n/2 = 855 = 3^2\u00b75\u00b719",
@@ -129,7 +133,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "8,9": {
-  "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421"
+  "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 421 1296 159 found here (graphs/d8D9_n1091232_meta_421_1296_159_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "8,10": {
   "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051"
@@ -149,7 +157,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "9,9": {
-  "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361"
+  "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 1361 1088 28 found here (graphs/d9D9_n2961536_meta_1361_1088_28_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "9,10": {
   "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951"

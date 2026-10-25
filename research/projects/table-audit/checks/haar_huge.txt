@@ -1,0 +1,6 @@
+# Haar graphs above 10^6 vertices: two independent two-BFS checks (right multiplication by G is transitive on each side,
+# so BFS from (e,A) and (e,B) gives the exact diameter): research/frontier/build_haar2.py and tools/meta_haar_check.c.
+# All-pairs (apsp_mt.c) is too slow here for these sizes on 4 cores, except (8,9), which is also in haar_big.txt when done.
+d8D9_n1091232_meta_421_1296_159_x1.sol: build_haar2.py: VALID d=8 D=9 group=meta 421 1296 159 x Z_1 N=545616 vertices=1091232 | meta_haar_check.c: RESULT VALID d=8 D=9 n=1091232
+d7D10_n1987380_meta_11041_90_3_x1.sol: build_haar2.py: VALID d=7 D=10 group=meta 11041 90 3 x Z_1 N=993690 vertices=1987380 | meta_haar_check.c: RESULT VALID d=7 D=10 n=1987380
+d9D9_n2961536_meta_1361_1088_28_x1.sol: build_haar2.py: VALID d=9 D=9 group=meta 1361 1088 28 x Z_1 N=1480768 vertices=2961536 | meta_haar_check.c: RESULT VALID d=9 D=9 n=2961536
