@@ -44,17 +44,17 @@ Errors and corrections found while preparing this version (none affects a theore
 6. **The fourth hat needs $q\ge3$ without coordinates and $q\ge4$ in coordinates.** The coordinate-free statement
    uses four points of a line ($q+1\ge4$); the coordinate version labels them by four field elements $0,1,a,c$
    ($q\ge4$). Both are stated as such below; no table cell has $q=3$.
-7. **Delorme 1985.** Earlier drafts cited [D85a] and Delorme's J. Graph Theory 9 (1985) 325–334 paper jointly, with the caveat that we had not seen the full
-   texts. We have now read [D85a] (European J. Combin. 6 (1985) 291–302). Its §7 states the doubling with levels,
-   with conditions (L0), (L1), (C$_D$), degree $+1$ per doubling and "$(r+1)$-upling" for degree $+r$, and says that
-   bipartite graphs stay bipartite; it gives no proof ("je ne donne pas la preuve"). Its §8(a) is the $W(q)$/spread
-   construction at $D=4$ (Example 3.4) and its §8(b) is the doubling of a generalized hexagon along $q^3+1$ pairwise
-   opposite elements, with exactly the levels of Theorem 6.3 and $W=\emptyset$ (Remark 6.9; at $q=5$ it states
-   $7812+912+2\cdot132+4=8992$). We now cite [D85a] with section numbers, and no longer cite the J. Graph Theory paper, from
-   which nothing here is taken. Tallini's page range (Mitt. Math. Sem. Giessen 201 (1991) 141–147), marked "to be verified" in
-   `geometry.tex`, agrees with independent citing papers and is now given without the caveat. The 2013 values at
-   $\Delta=16$ (5134 at $D=4$, 884062 at $D=6$) are the values of Delorme's doublings with $m=3$, $q=13$ (Example
-   3.4, Remark 6.9).
+7. **Delorme 1985.** Earlier drafts cited [D85a] and Delorme's J. Graph Theory 9 (1985) 325–334 paper jointly, with
+   the caveat that we had not seen the full texts. We have now read [D85a] (European J. Combin. 6 (1985) 291–302). Its
+   §7 states the doubling with levels, with conditions (L0), (L1), (C$_D$), degree $+1$ per doubling and
+   "$(r+1)$-upling" for degree $+r$, and says that bipartite graphs stay bipartite; it gives no proof ("je ne donne
+   pas la preuve"). Its §8(a) is the $W(q)$/spread construction at $D=4$ (Example 3.4) and its §8(b) is the doubling
+   of a generalized hexagon along $q^3+1$ pairwise opposite elements, with exactly the levels of Theorem 6.3 and
+   $W=\emptyset$ (Remark 6.9; at $q=5$ it states $7812+912+2\cdot132+4=8992$). We now cite [D85a] with section
+   numbers, and no longer cite the J. Graph Theory paper, from which nothing here is taken. Tallini's page range
+   (Mitt. Math. Sem. Giessen 201 (1991) 141–147), marked "to be verified" in `geometry.tex`, agrees with independent
+   citing papers and is now given without the caveat. The 2013 values at $\Delta=16$ (5134 at $D=4$, 884062 at $D=6$)
+   are the values of Delorme's doublings with $m=3$, $q=13$ (Example 3.4, Remark 6.9).
 8. **Theorem R is explicit except for the completing anti-flags.** The completion step is an existence argument
    (Lemma 7.2). We now say this plainly: every neighbourhood is listed except the $(m-1)$ completing anti-flags at the
    deficient vertices, and neither the maximum degree nor the diameter depends on that choice.
@@ -152,21 +152,22 @@ J. Graph Theory 9 (1985) paper, the full texts of [BLP09], [CCEM08], [E85], [PT]
 ## 0. Conventions
 
 An *incidence structure* $\mathcal S=(\mathcal P,\mathcal L,\mathrm I)$ has points, lines and a symmetric incidence
-relation; repeated points and repeated lines (same incidences) are allowed. Its *incidence graph* $\Gamma(\mathcal S)$ has vertex set
-$\mathcal P\cup\mathcal L$ and the flags as edges; it is bipartite with the points on one side. Every bipartite graph
-with a chosen 2-colouring is of this form, so
+relation; repeated points and repeated lines (same incidences) are allowed. Its *incidence graph* $\Gamma(\mathcal S)$
+has vertex set $\mathcal P\cup\mathcal L$ and the flags as edges; it is bipartite with the points on one side. Every
+bipartite graph with a chosen 2-colouring is of this form, so
 
 $$n_b(\Delta,D)=\max\{|\mathcal P|+|\mathcal L|:\ \text{every element has at most }\Delta\text{ neighbours},\ \operatorname{diam}\Gamma(\mathcal S)\le D\},$$
 
 $$M_b(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr).$$
 
 Distances $d(x,y)$ are in $\Gamma(\mathcal S)$, and $\operatorname{diam}\mathcal S$ means
-$\operatorname{diam}\Gamma(\mathcal S)$. A few letters have local meanings that differ between sections: $\sigma$ is the
-3-cycle of §2 and the stand-in map $\sigma_\mu$ of §3; $\lambda$ is the level function (§1), the lines $\lambda_t$ (§2),
-a line parameter (§4) and a linear form (§6); $w$ is a word (§1), a weight (§3) and a coordinate pair (§4). *Collinear* points are distinct points on a common line; *concurrent*
-lines are distinct lines on a common point. $\mathbb F=\mathrm{GF}(q)$. Points of $\mathrm{PG}(n,q)$ are written
-$(x_0:\dots:x_n)$; lines of $\mathrm{PG}(2,q)$ are written $[u:v:w]$, with $(x:y:z)\,\mathrm I\,[u:v:w]$ iff
-$ux+vy+wz=0$. $\chi$ is the quadratic character of $\mathbb F$ ($q$ odd), with $\chi(0)=0$.
+$\operatorname{diam}\Gamma(\mathcal S)$. A few letters have local meanings that differ between sections: $\sigma$ is
+the 3-cycle of §2 and the stand-in map $\sigma_\mu$ of §3; $\lambda$ is the level function (§1), the lines $\lambda_t$
+(§2), a line parameter (§4) and a linear form (§6); $w$ is a word (§1), a weight (§3) and a coordinate pair (§4).
+*Collinear* points are distinct points on a common line; *concurrent* lines are distinct lines on a common point.
+$\mathbb F=\mathrm{GF}(q)$. Points of $\mathrm{PG}(n,q)$ are written $(x_0:\dots:x_n)$; lines of $\mathrm{PG}(2,q)$
+are written $[u:v:w]$, with $(x:y:z)\,\mathrm I\,[u:v:w]$ iff $ux+vy+wz=0$. $\chi$ is the quadratic character of
+$\mathbb F$ ($q$ odd), with $\chi(0)=0$.
 
 **Lemma 0.1 (diameter in geometric terms).** Let $\mathcal S$ have no isolated element and $D\ge2$.
 (i) If $D$ is even, $\operatorname{diam}\mathcal S\le D$ iff $d(p,L)\le D-1$ for every anti-flag $(p,L)$.
@@ -221,7 +222,8 @@ Conditions on $\mathcal A$ (with $D\ge2$):
 
 ### 1.2 Delorme's theorem
 
-**Theorem 1.2 (Delorme [D85a, §7], (a)–(c), stated there without proof).** Let $\mathcal S$ have diameter at most $D\ge2$ and let $m\ge2$.
+**Theorem 1.2 (Delorme [D85a, §7], (a)–(c), stated there without proof).** Let $\mathcal S$ have diameter at most
+$D\ge2$ and let $m\ge2$.
 
 - (a) If (C$_D$) holds, $\mathcal S^{(m)}_{\mathcal A}$ has diameter at most $D$.
 - (b) If (L0) and (L1) hold, every version satisfies $\deg x^w\le\deg x+m-1$, with equality only if $x$ is incident
@@ -567,17 +569,17 @@ most one point on $v$. The components are the star $v\cup\{\text{points of }v\}$
 $2(q+1)(q^2+1)+(m-1)\bigl((q^2+1)+(q+1)+m\bigr)$ elements. For $m=2$ this is $2q^3+3q^2+3q+6$: 346, 1734, 3064,
 4946 at $q=5,9,11,13$; for $m=3$, $q=13$ it is $4760+2\cdot187=5134$, the 2013 value at $\Delta=16$.
 
-**Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. 5.13).** For $q$ odd, an ovoid
-$\mathcal O$ of $Q(4,q)$, $w=\mathbf 1_{\mathcal O}$ and maximum degree $q+2$, at most $q^2-q+2$ shadow lines are
-possible: every old point and clone serves at most one shadow line, so a point off $\mathcal O$ is on at most one entry
-of $\mathcal M$ and a point of $\mathcal O$ on at most two. Suppose some $o\in\mathcal O$ is on two entries. They are
-distinct lines: if both were copies of one line $N$, each of the $q$ points of $N$ other than $o$ is off $\mathcal O$,
-has no clone, and would be the stand-in of both entries, giving it degree $q+3$. Each other entry
-$L$ misses $o$ and so has a unique point $y$ collinear with $o$; $y\notin\mathcal O$ (points of an ovoid are
-pairwise non-collinear); the line $oy$ is not an entry of $\mathcal M$ (else $y\notin\mathcal O$ would be on two
-entries), so it is one of the $q-1$ lines on $o$ other than the two entries through $o$, and $y$ is one of its $q$
-points other than $o$; distinct $L$ give distinct $y$. So $|\mathcal M|\le2+q(q-1)$. Otherwise every point is on at
-most one entry, so there are no repeated entries, $\mathcal M$ is a partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]; see also [CDPS22], §1).
+**Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. 5.13).** For $q$ odd, an ovoid $\mathcal O$ of
+$Q(4,q)$, $w=\mathbf 1_{\mathcal O}$ and maximum degree $q+2$, at most $q^2-q+2$ shadow lines are possible: every old
+point and clone serves at most one shadow line, so a point off $\mathcal O$ is on at most one entry of $\mathcal M$
+and a point of $\mathcal O$ on at most two. Suppose some $o\in\mathcal O$ is on two entries. They are distinct lines:
+if both were copies of one line $N$, each of the $q$ points of $N$ other than $o$ is off $\mathcal O$, has no clone,
+and would be the stand-in of both entries, giving it degree $q+3$. Each other entry $L$ misses $o$ and so has a unique
+point $y$ collinear with $o$; $y\notin\mathcal O$ (points of an ovoid are pairwise non-collinear); the line $oy$ is
+not an entry of $\mathcal M$ (else $y\notin\mathcal O$ would be on two entries), so it is one of the $q-1$ lines on
+$o$ other than the two entries through $o$, and $y$ is one of its $q$ points other than $o$; distinct $L$ give
+distinct $y$. So $|\mathcal M|\le2+q(q-1)$. Otherwise every point is on at most one entry, so there are no repeated
+entries, $\mathcal M$ is a partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]; see also [CDPS22], §1).
 
 **Application: $(7,4)\ge359$.** $Q(4,5)$, one clone of each point of an elliptic-quadric ovoid ($w=\mathbf 1_{\mathcal O}$),
 and 21 shadow lines with stand-ins: $2\cdot6\cdot26+26+21=359$, maximum degree 7. Such examples come from an integer
@@ -682,8 +684,8 @@ lines of its point. The order is $q^3+q^2(q+2)+2q^2=2q^2(q+2)$. $\square$
 **Remarks.** Weights are necessary: an integer program shows that $\mathrm{AS}(3)$ has no 1- or 2-ovoid and
 $\mathrm{AS}(5)$ has no $m$-ovoid for $m=1,\dots,4$ (`research/gq4x`). No choice of clones and shadows on
 $\mathrm{AS}(q)$ does better at $\Delta=q+2$: every point of $\mathrm{AS}(q)$, and every clone, is already on
-$t+1=q+2$ lines, so no shadow line can be added, and each line has $q$ points and takes at most 2 clones, so $\sum_pw(p)\le2q^2$. Theorem A beats Delorme's
-$2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
+$t+1=q+2$ lines, so no shadow line can be added, and each line has $q$ points and takes at most 2 clones, so
+$\sum_pw(p)\le2q^2$. Theorem A beats Delorme's $2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
 
 **Cells.** $(11,4)$: $1782$ (2013: 1734); $(13,4)$: $3146$ (3064); $(15,4)$: $5070$ (4946). All regular.
 
@@ -804,11 +806,11 @@ incidence structure of diameter 4 with $2\Delta(q^2+1)$ elements if $q$ is even 
 $2\Delta q^2$ elements otherwise. In particular $n_b(\Delta,4)\ge2q^2\Delta$ for every prime power $q\le\Delta-1$.
 
 *Proof.* Put $j=\Delta-q-1$. In the first two cases we apply Corollary 3.3 in $W(3,q)$ ($s=t=q$, so
-$\Delta-s-1=\Delta-t-1=j$). $q$ even: $W(3,q)$ has an ovoid $\mathcal O_0$ and a spread $\Sigma$
-[PT, 3.4.1]; take $w=j\mathbf 1_{\mathcal O_0}$, $\mathcal M=j\Sigma$. $q$ odd, $j$ even: $w=(j/2)\mathbf 1_{\mathcal O}$
-with $\mathcal O$ a 2-ovoid of Proposition 5.1, $\mathcal M=j\Sigma$. $q$ odd, $j$ odd: then $\Delta\ge q+2$; we apply Corollary 3.3
-in $\mathrm{AS}(q)$ ($s=q-1$, $t=q+1$, so $\Delta-s-1=\Delta-q$ and $\Delta-t-1=\Delta-q-2$) and take $(\Delta-q)/2$ copies of the weighted 2-ovoid of Theorem 4.1 and $\Delta-q-2$ copies of the fibre
-spread. $\square$
+$\Delta-s-1=\Delta-t-1=j$). $q$ even: $W(3,q)$ has an ovoid $\mathcal O_0$ and a spread $\Sigma$ [PT, 3.4.1]; take
+$w=j\mathbf 1_{\mathcal O_0}$, $\mathcal M=j\Sigma$. $q$ odd, $j$ even: $w=(j/2)\mathbf 1_{\mathcal O}$ with $\mathcal O$
+a 2-ovoid of Proposition 5.1, $\mathcal M=j\Sigma$. $q$ odd, $j$ odd: then $\Delta\ge q+2$; we apply Corollary 3.3 in
+$\mathrm{AS}(q)$ ($s=q-1$, $t=q+1$, so $\Delta-s-1=\Delta-q$ and $\Delta-t-1=\Delta-q-2$) and take $(\Delta-q)/2$
+copies of the weighted 2-ovoid of Theorem 4.1 and $\Delta-q-2$ copies of the fibre spread. $\square$
 
 **Cells.** $(16,4)$: $q=13$, $5440=2\cdot170\cdot16$ (2013: 5134), regular. In the range $\Delta\le16$ this is the only
 open cell with $\Delta-3$ an odd prime power. Without stand-ins, $5440$ is the most a copy graph on $W(3,13)$ or
@@ -1059,12 +1061,12 @@ $q|\mathcal A_0|+2k\le2N$ ($k$ the number of components of $\mathcal A_0$; `geom
 single-level part is as large as the counting bound allows for $k=q^3+1$ components:
 $q(2q^4+2q^3+2q+2)+2(q^3+1)=2N$.
 
-**Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of a generalized
-hexagon [D85a, §8(b)]: he takes $q^3+1$ pairwise opposite elements (citing [T80]; here the Hermitian spread $S$), puts
-one of them in $\mathcal A_2$, its neighbours and the others in $\mathcal A_1$, and their neighbours in $\mathcal A_0$,
-so $|\mathcal A_1|=q^3+q+2$ and $|\mathcal A_0|=q^4+2q^3+q^2+2q+2$, exactly as in Theorem 6.3 with $W=\emptyset$; at
-$q=5$ he states $7812+912+2\cdot132+4=8992$. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: $8992$, $142464$,
-$374452$, $842048$ at $q=5,9,11,13$; at $q=13$, $m=3$, it gives $884062$. These are the 2013 table values at
+**Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of a generalized hexagon
+[D85a, §8(b)]: he takes $q^3+1$ pairwise opposite elements (citing [T80]; here the Hermitian spread $S$), puts one of
+them in $\mathcal A_2$, its neighbours and the others in $\mathcal A_1$, and their neighbours in $\mathcal A_0$, so
+$|\mathcal A_1|=q^3+q+2$ and $|\mathcal A_0|=q^4+2q^3+q^2+2q+2$, exactly as in Theorem 6.3 with $W=\emptyset$; at
+$q=5$ he states $7812+912+2\cdot132+4=8992$. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: $8992$,
+$142464$, $374452$, $842048$ at $q=5,9,11,13$; at $q=13$, $m=3$, it gives $884062$. These are the 2013 table values at
 $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
 
 *Worked counts.* $q=5$, $m=2$: $2\cdot6\cdot651=7812$ elements of $H(5)$, $|\mathcal A_0|=1512$ (of which $|W|=600$),
