@@ -46,3 +46,24 @@ Four `haar_sym` runs of sl 16 × Z67, `ORBIT="3 3 0"`, THREADS=1, 9000 s each, l
   Verify with `research/frontier/build_haar2.py` (N ≤ 10M), then move to `research/frontier/sols/` as `d9D8_*`.
 - Check a run with `grep RESULT research/structured/runs/raise_d9D8_r2/*.log`.
 - The binary is `research/structured/haar_sym` (gcc -O3 -march=native -fopenmp; gitignored, rebuild if missing).
+
+## Result (2026-10-25, about 2 h in): three solutions above the record
+
+Seeds 21, 23 and 24 (all sl 16 × Z67, k = 3, f = 0) reached cost 0 (haar_sym RESULT best=0):
+
+| seed | settings | evals | time | vertices |
+|---|---|---|---|---|
+| 23 | RESTART=1 | 5.6·10⁶ | 944 s | 546,720 |
+| 21 | default | 2.4·10⁷ | 3,959 s | 546,720 |
+| 24 | COOL=60 REHEAT=300 | 3.8·10⁷ | 6,269 s | 546,720 |
+
+Independent checks, both VALID, n = 546,720, 9-regular, diameter 8:
+- `research/frontier/build_haar2.py` (eccA = eccB = 8, no duplicate edges; seeds 21, 23, 24)
+- `research/frontier/check_haar_indep.py` (seed 23): eccA = eccB = 8, n = 546,720.
+Saved to `research/frontier/sols/d9D8_sl_16_67_orb3f0_r2s{21,23,24}.txt`.
+Edge-list sha256 for seed 23: ea5e39630486a45771975580532f3dc488b6c0f33a024fc16e547b6da3fe1def.
+The Haar graph has a transitive group action on each side, so the two eccentricities from one vertex per side are the full diameter check.
+
+This beats the 540,360 record by 1.2 % (+6,360 vertices). The coordinator must re-check the record independently before it is recorded.
+
+Seed 22 (default) was still running at cost 1 at 7,320 s when this was written.
