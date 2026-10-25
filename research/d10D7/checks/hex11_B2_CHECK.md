@@ -68,3 +68,9 @@ Solution research/frontier/sols/d16D7_hex13_B2K792_n4025508.sol (sha256
 (sha256 78cfb244d6f491b32be1d7af67f698ac125fc7d6912f90a6b715bc475e3d4bd9; `mkhubs_rand.py 1584 792 8 1 HUBS hg 2`; the
 hub graph alone has diameter 7). `dual/xgen hex/hex_q13.bin SOL HUBS 5 g.edges` gives n = 4,025,508, 32,199,312
 edges.
+- **(14,7) 1,774,584: all-pairs check VALID** (2026-10-25 02:19 UTC). apsp_range was run as four processes covering
+  [0, n) (`checks/run_ranges.sh`):
+      n=1774584 edges=12420576 degree min=13 max=14 bipartite=yes sources [0,443646) eccentricity max=7
+      ... [443646,887292) max=7; [887292,1330938) max=7; [1330938,1774584) max=7
+      RESULT VALID (range) d=14 D=7 n=1774584 (all four)
+  Edge list (`dual/xgen ... 5`) sha256 97e726f453799b8fffabf3fa2c5623b5a33f99b43a8cdd20b2e8d6a7ec454dcb.
