@@ -706,7 +706,7 @@ int main(int argc, char **argv) {
                 if (!ok) random_orbit(j, o);
                 if (!FIXF) { memcpy(cand[t], o, sizeof(el) * OK_); break; }
                 el SS[MAXD]; memcpy(SS, S, sizeof(el) * d); for (int i = 0; i < OK_; i++) SS[ostart(j) + i] = o[i];
-                double t1 = now(); int fh = fixholes(SS, bestfh); tscreen += now() - t1; nscreen++;
+                double t1 = now(); int fh = fixholes(SS, FIXMAX + 1 < bestfh ? FIXMAX + 1 : bestfh); tscreen += now() - t1; nscreen++;
                 if (fh < bestfh) { bestfh = fh; memcpy(cand[t], o, sizeof(el) * OK_); }
                 if (fh <= FIXMAX) break;
             }
