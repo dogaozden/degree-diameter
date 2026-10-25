@@ -43,7 +43,7 @@ scripts were launched with `bash tools/orbq.sh JOBS OUTDIR` directly.
 | sl 16 × Z67 | 273,360 | 900 | 1 | best 3 (4.0·10⁶ evals), not solved |
 | prod sl 5 × sl 5 × Z19 | 273,600 | 900 | 1 | best 4 (3.3·10⁶ evals), not solved |
 | sl 13 × Z127 | 277,368 | 900 | 1 | best 6 (4.6·10⁶ evals), not solved |
-| pgl 16 × Z67 | 273,360 | 900 | 1 | running at 08:18 |
+| pgl 16 × Z67 | 273,360 | 900 | 1 | best 3 (3.9·10⁶ evals), not solved |
 | sl 16 × Z67 | 273,360 | 3600 | 2 | running (started 08:18) |
 | sl 8 × Z547 | 275,688 | 1800 | 1 | running (started 08:18) |
 | psl 11 × Z421 | 277,860 | 1800 | 1 | running (started 08:18) |
