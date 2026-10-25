@@ -158,3 +158,11 @@ Results:
    triples and the true cost drifts up). Pipeline for one more pair (`inc/pipeline.sh`): po7 annealing (T0 8 -> 0.3)
    to <= 20, a colder second anneal if needed, wpo to 0, then nujoint TARGET=1 from the old nu (the switched flags keep
    their bits), then finish.sh. `inc/addpair.py` adds a pair away from the earlier new vertices (starts ~2,000).
+5. **n = 587 is much harder.** A second pair added to the solved 7,032 base (8- and 9-flag switches, SA with T0 3-20,
+   91 points near the first pair frozen, wpo with LMAX 4,000) plateaus at 150-230; two pairs at once into W(8)
+   (squad r4 c4) at 164. Control: ONE pair added to W(8) with the sigma of the 7,020 record (inc2/t1) goes 1,998 -> 10
+   by the same SA in 450 s and -> 0 by wpo in 39 s. So the second pair interferes with the first: every sigma(s) lies
+   on the coverage routes of every new vertex (route (a) needs sigma(s) within distance 3 of the new vertex for all s
+   outside the cover of its pencil), and the two sets of demands on sigma do not separate.
+6. W(7)+1 (n = 401, (10,5) 4,812 if completed): structural 0 (squad r3 c4), nu stage stalled at 6 violated pairs
+   (inc/runs/w7p1_best6.in/.nu); TARGET runs from a random nu were at ~30 when this round stopped.

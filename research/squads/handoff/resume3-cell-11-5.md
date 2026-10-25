@@ -18,4 +18,21 @@ branch; draft PR #388).
 4. Check: research/d11D5/inc/finish.sh (z6lift exact lift cost, edge list, apsp.c).
 
 ## Open (in order)
-(see the end of this file, filled at the stop)
+1. **n = 587 (7,044).** Best structural cost 148 (research/d11D5/inc/inc2/n587_best148.in, a pair added to the 7,032
+   base). Annealing plateaus at 150-230 whatever the start (8- or 9-flag switch, incremental or two pairs at once,
+   T0 3-20, 91 points near the first pair frozen), and wpo drifts up from there. A single pair into W(8) reaches 10
+   then 0 with the same tools, so the two pairs interfere through sigma. Ideas not tried: wpo with weights only on the
+   triples of the newest pair; a lazy SAT/CP model for sigma with the base fixed (each coset +-1 triple (s, v) is one
+   clause over the values of sigma(s) (route a) and of sigma on the points collinear with s (route b)); a design that
+   places the second pair inside the first pair's covering structures.
+2. **(10,5) 4,812** (W(7) + one pair, lift of 12 * 401): structural cost 0 (squad r3 c4, research/d11D5/inc/runs/w7p1_cost0.in).
+   The nu stage gets to ONE violated parity pair in several independent runs (inc/eg/w7t*.in/.nu, w7e*.in/.nu) but
+   not 0; every sigma swap that would give that pair a sigma route breaks the structure. Try more TARGET seeds, or a
+   new structural-0 base (po7 + wpo from research/squads/r3-d11D5/c4/starts) and redo the nu stage.
+3. **The same recipe at other D = 5 cells**: W(9) + one pair gives (12,5) 9,852 > 9,840 and W(11) + one pair gives
+   (14,5) 17,580 > 17,568. Bases with the DM sigma and nu are ready in research/d11D5/inc/wq/ (w9_dm.in/.nu,
+   w11_dm.in/.nu; w7 too). Steps: inc/addpair.py base nu b seed out.in out.nu <n> (no earlier new vertices: pass the
+   old n as the last argument), po7 annealing (T0 20 -> 0.4, ~450 s), wpo, nujoint TARGET=1 from the extended DM nu,
+   finish.sh with d = q + 3.
+4. The counting ceiling of the family is 14,796 at (11,5) (n <= 1,233), so the room is large; what is missing is a
+   structural search that handles several new pairs at once.

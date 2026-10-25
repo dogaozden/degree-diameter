@@ -172,9 +172,9 @@ int main(int argc, char **argv) {
     if (getenv("SIGFIX")) {   /* endgame: sigma swaps that give a violated pair a sigma route, keeping structural 0 */
         int *colp = malloc(4L * n * 128), *ncolp = calloc(n, 4);   /* collinear points of each point */
         for (int p = 0; p < n; p++) for (int j = 0; j < dg; j++) { int l = pt[p * dg + j]; for (int k = 0; k < dg; k++) { int q = ln[l * dg + k]; if (q != p && ncolp[p] < 128) colp[p * 128 + ncolp[p]++] = q; } }
-        int pass = 0;
+        int pass = 0; static int sideA[4096], sideB[4096], tabuA[64]; int nside = 0, ntabu = 0; long sfbest = viol;
         while (viol > 0) { double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break; pass++;
-            long bestc = WS * sc + viol; int ba = -1, bb = -1; long nv0 = nvl; long *vl0 = malloc(8L * nv0); memcpy(vl0, vlist, 8L * nv0);
+            long bestc = WS * sc + viol; int ba = -1, bb = -1; long nv0 = nvl; nside = 0; long *vl0 = malloc(8L * nv0); memcpy(vl0, vlist, 8L * nv0);
             for (long i = 0; i < nv0; i++) { long p = vl0[i]; int s0 = ps[p], t0_ = pt_[p];
                 for (int side = 0; side < 2; side++) { int a = side ? t0_ : s0, b = side ? s0 : t0_;
                     int cand[1024], nc = 0;
@@ -187,17 +187,29 @@ int main(int argc, char **argv) {
                         if (u == x) continue; int lx = sig[x], lu = sig[u]; sig[x] = lu; sig[u] = lx; sinv[lu] = x; sinv[lx] = u;
                         long sc2 = structural(1); long v2 = 0; if (sc2 == 0) for (long q = 0; q < npair; q++) v2 += pbad(q);
                         long c2 = sc2 ? (1L << 40) : v2;
+                        if (getenv("DEBUGC")) printf("cand %d %d structural %ld violated %ld\n", x, u, sc2, v2);
                         if (c2 < bestc) { bestc = c2; ba = x; bb = u; }
+                        if (c2 <= WS * sc + viol + (getenv("NEAR") ? atol(getenv("NEAR")) : 0) && nside < 4096) { int tb = 0; for (int q = 0; q < ntabu; q++) if (tabuA[q] == x || tabuA[q] == u) tb = 1; if (!tb) { sideA[nside] = x; sideB[nside] = u; nside++; } }
                         sig[x] = lx; sig[u] = lu; sinv[lx] = x; sinv[lu] = u; if (ba >= 0 && getenv("FIRST")) break; }
                     if (ba >= 0 && getenv("FIRST")) break; }
                 if (ba >= 0 && getenv("FIRST")) break; }
             free(vl0);
+            if (ba < 0 && getenv("SIDEWAYS") && nside > 0) {   /* plateau move: a random sigma swap that keeps the count */
+                int k = rnd() % nside; ba = sideA[k]; bb = sideB[k]; printf("sideways swap %d %d\n", ba, bb); }
             if (ba < 0) { printf("SIGFIX pass %d: no improving swap (violated %ld)\n", pass, viol); break; }
             int lx = sig[ba], lu = sig[bb]; sig[ba] = lu; sig[bb] = lx; sinv[lu] = ba; sinv[lx] = bb;
-            sc = structural(1); recount(); printf("t=%.0f SIGFIX pass %d swap %d %d -> structural %ld violated %ld\n", el, pass, ba, bb, sc, viol); fflush(stdout);
-            memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n); if (getenv("OUTNU")) savenu(getenv("OUTNU")); if (getenv("OUT")) save(getenv("OUT"));
+            sc = structural(1); recount();
+            tabuA[ntabu % 64] = ba; ntabu++; tabuA[ntabu % 64] = bb; ntabu++; if (ntabu > 64) ntabu = 64;
+            if (getenv("SIDEWAYS")) { /* greedy nu descent on the violated pairs */
+                int again = 1; while (again && viol > 0) { again = 0; long nv1 = nvl; long *vl1 = malloc(8L * nv1); memcpy(vl1, vlist, 8L * nv1);
+                    for (long i = 0; i < nv1 && !again; i++) { long p = vl1[i]; if (vpos[p] < 0) continue;
+                        for (int g = poff[p]; g < poff[p + 1] && !again; g++) for (int j = 0; j < glen[g] && !again; j++) { int fl = gflag[5L * g + j]; long v0 = viol; applyflip(fl); if (viol < v0) again = 1; else applyflip(fl); } }
+                    free(vl1); } }
+            printf("t=%.0f SIGFIX pass %d swap %d %d -> structural %ld violated %ld\n", el, pass, ba, bb, sc, viol); fflush(stdout);
+            if (sc == 0 && viol <= sfbest) { sfbest = viol; memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n); if (getenv("OUTNU")) savenu(getenv("OUTNU")); if (getenv("OUT")) save(getenv("OUT")); }
         }
-        best = WS * sc + viol; memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n);
+        if (viol <= sfbest) { memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n); sfbest = viol; }
+        best = WS * 0 + sfbest;
     }
     if (getenv("POLISH")) {   /* depth-2 ejection search: flip f on a violated pair's walk, then repair each new violation with f' */
         long bestv = viol; int *c1 = malloc(4 * 64), *c2 = malloc(4 * 64); long *nv = malloc(8L * 4096); int round = 0, side = getenv("SIDE") ? atoi(getenv("SIDE")) : 200;
