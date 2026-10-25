@@ -70,3 +70,19 @@ seed 1, 5,121 evals, 2,109 s. File `../../frontier/sols/d12D10_psl_97_361_orb3f0
 Seed-2 round (3,600 s each, unless noted): psl 103×301 (164.44 M): not solved, best 3, 9,193 evals. sl 109×127
 (164.45 M): not solved, best 3, 5,001 evals. psl 113×229 (165.20 M, seed 2): see the end of this file.
 psl 97×361 (164.72 M, seed 1) solved above; its independent PSL check: VALID.
+
+## Final round and where it stopped (13:03 UTC, six-hour window)
+
+Seed-2 psl 113×229 (165.20 M, 3,600 s): not solved, best 3, 4,553 evals.
+Final round (2,700 s each): psl 107×271 (165.98 M): best 6, 5,281 evals; sl 79×337 (166.13 M): best 3, 8,001 evals;
+sl 157×43 (166.40 M): best 6, 2,289 evals; sl 97×181 seed 2 (165.18 M): best 3, 2,593 evals. None solved.
+
+**Stopped.** Current record: **329,972,448 vertices** (sl 103 × Z_151, N = 164,986,224, seed 2, checked by haar_sym,
+`tools/hcsl` and `tools/hc2`). Other verified finds: psl 197 × Z_43 (328,742,568) and psl 97 × Z_361 (329,439,936,
+PSL checker VALID), both in `../../frontier/sols/`.
+
+Why: this cell, with the orbit method at k = 3, m = 4, f = 0, now needs solves in a narrow band (N just above 164.99 M,
+μ ≈ 22–28). Across 19 jobs at μ ≈ 20–33 (900–3,600 s, one to two seeds each), the solves were 3 of 19, and all three were at
+μ ≈ 20–22 in ≤ 900 evals. Above μ ≈ 25 the best costs sat at 3–9 after 2–9k evals. Going further needs many more seeds per
+group (roughly 10–20 hours of single-core time for a few more percent), or a new idea: a different automorphism, or ORBW /
+RESTART variants on the same groups. The coordinator decides whether a bigger model is worth it.
