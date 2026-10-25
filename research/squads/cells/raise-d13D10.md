@@ -144,8 +144,8 @@ Rungs run, all unsolved, with the independent verdicts not reached:
 - SL 103×313 (order 3): cost 1 after 9,985 evals. (2N 683,982,624.)
 - PSL 241×49 (order 3): cost 3 after 4,433 evals. (2N 685,866,720.)
 - SL 191×49 (order 3): cost 3 after 4,449 evals. (2N 682,832,640.)
-- SL 137×133 (order 3): first start exited at 48 s with no cause found (log kept as .early_exit_48s.log); restart at
-  4,800 s was at cost 4 after 2,137 evals when this section was written. Still running; its end will be recorded here.
+- SL 137×133 (order 3, 2N 683,943,456): first start exited at 48 s with no cause found (log kept as
+  .early_exit_48s.log). Restart at 4,800 s ended unsolved: cost 1 after 6,529 evals, 4,804 s (RESULT in the log).
 
 **Next steps for a fresh session, most promising first.**
 1. The k = 5 PSL 131×311 lead: a longer single run from the seed-2 checkpoint (not the same checkpoint again), or ORBW=5
