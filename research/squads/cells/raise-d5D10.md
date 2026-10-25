@@ -93,6 +93,31 @@ sl 29 × Z2 with seeds 3 and 4, plus the two voltage-session metacyclic leads th
 
 Still none solved. The two metacyclic leads reproduce cost 1, as the voltage session found, and stall there.
 
+## Batch D: orbit-symmetric S (k = 3, f = 2) on the top groups, 5 min each (10:05–10:16 UTC)
+
+ORBIT="3 1 2": S = {e, β} ∪ {x, αx, α²x} with β fixed by α, α = conj by an order-3 element × (z ↦ r z).
+
+| group | N | μ | fixed points | best | evals |
+|---|---|---|---|---|---|
+| **pgl 19 × Z7** | 47,880 | 32.3 | 17 | **0 (solved in 289 evals)** | 289 |
+| psl 19 × Z14 | 47,880 | 32.3 | 17 | 8 | 5.0M |
+| sl 29 × Z2 | 48,720 | 37.3 | 59 | 60 | 4.0M |
+| psl 23 × Z8 | 48,576 | 36.4 | 95 | 121 | 6.1M |
+
+Random S on the same groups (batches A–C) stalled at cost 1–2 with 20–28M evaluations. The orbit form solves
+pgl 19 × Z7 at once, so the orbit route is much more efficient here, but it is group-dependent.
+
+## NEW RECORD: (5,10) 95,760 vertices (was 95,472)
+
+- Group PGL(2,19) × Z7, N = 47,880, d = 5, D = 10, S = {e, β} ∪ α-orbit (α = conjugation by an order-3 element × z ↦ 2z).
+- File: `research/frontier/sols/d5D10_n95760_haar_pgl19x7_orb3f2.sol` (header `5 10 pgl 19 n 7 N 47880`).
+- Verification, two independent checkers:
+  - `research/frontier/build_haar2.py`: VALID, n = 95,760, 239,400 edges, 5-regular, bipartite, ecc from A and B = 10.
+    Edge list sha256 `89813309f58e0bba9693dd07b0aaccb283846d6a29a6bb23cc80242148593b5a`.
+  - all-pairs BFS (`research/lifts/apsp.c` from the voltage branch, no symmetry assumed): diameter 10, 95,760 sources,
+    connected, bipartite, 5-regular, no repeated edges or loops.
+
 ## Status
 
-In progress. No candidate above 47,736 yet.
+Record raised to 95,760 (pgl 19 × Z7, orbit k = 3, f = 2). Next: scan the orbit route over more groups at N > 47,880.
+
