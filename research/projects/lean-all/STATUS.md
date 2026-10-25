@@ -29,11 +29,11 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_12_9_34026720`, LeanAll/HaarD12D9 (1,680 batches × 2) |
 | (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_10_10_60141120`, LeanAll/HaarD10D10 (6,240 batches) |
 | (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_9_67742688`, LeanAll/HaarD13D9 (10,608 batches × 2) |
-| (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | building | LeanAll/HaarD14D9 |
+| (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_14_9_116068656`, LeanAll/HaarD14D9 (4,488 batches × 2) |
 | (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_8_6999552`, LeanAll/HaarD13D8 (16,128 batches, HaarProd) |
 | (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_9_9_3499776`, LeanAll/HaarD9D9 (8,064 batches × 2, HaarProd) |
 | (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | **done** | `nb_7_10_2237760`, LeanAll/HaarD7D10 (GF(8) batches, HaarGF8) |
-| (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | queued (streamed: bigcell.py) | LeanAll/HaarD12D10 |
+| (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | building (streamed: bigcell.py) | LeanAll/HaarD12D10 |
 | (15,9), (16,9), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | queued after (12,10) (streamed) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
