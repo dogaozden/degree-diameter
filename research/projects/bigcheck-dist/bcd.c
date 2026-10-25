@@ -331,14 +331,30 @@ static void load_lift(const char *path, char hex[65]) {
     rd_close(&r, hex);
 }
 
-/* ------------------------------------------------------------------ BFS (64 sources per pass) */
-static uint64_t *VIS, *FR, *NX;
+/* ------------------------------------------------------------------ BFS (WB sources per pass)
+ * Compile with -DWB=8, 16 or 32 to use narrower words: 3·WB/8 bytes per vertex instead of 24, WB sources per pass.
+ * The certificates do not depend on WB. */
+#ifndef WB
+#define WB 64
+#endif
+#if WB == 64
+typedef uint64_t W_T;
+#elif WB == 32
+typedef uint32_t W_T;
+#elif WB == 16
+typedef uint16_t W_T;
+#elif WB == 8
+typedef uint8_t W_T;
+#else
+#error "WB must be 8, 16, 32 or 64"
+#endif
+static W_T *VIS, *FR, *NX;
 static void pull_explicit(uint64_t *anyp) {
     uint64_t any = 0;
 #pragma omp parallel for schedule(dynamic, 8192) reduction(| : any)
     for (int64_t x = 0; x < n; x++) {
-        uint64_t acc = 0; for (int64_t i = st[x]; i < st[x + 1]; i++) acc |= FR[adj[i]];
-        acc &= ~VIS[x]; NX[x] = acc; any |= acc;
+        W_T acc = 0; for (int64_t i = st[x]; i < st[x + 1]; i++) acc |= FR[adj[i]];
+        acc &= (W_T)~VIS[x]; NX[x] = acc; any |= acc;
     }
     *anyp = any;
 }
@@ -348,18 +364,18 @@ static void pull_lift(uint64_t *anyp) {
 #pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
     for (int64_t t = 0; t < tasks; t++) {
         int64_t v = t / nch, g0 = (t % nch) * CH, g1 = g0 + CH < M ? g0 + CH : M;
-        uint64_t *out = NX + v * M;
+        W_T *out = NX + v * M;
         for (int64_t g = g0; g < g1; g++) out[g] = 0;
         for (int64_t i = bst[v]; i < bst[v + 1]; i++) {
-            const uint64_t *src = FR + (int64_t)bw[i] * M; int64_t a = ba[i];
+            const W_T *src = FR + (int64_t)bw[i] * M; int64_t a = ba[i];
             /* out[g] |= src[(g + a) mod M] for g in [g0, g1) */
             int64_t split = M - a; /* g < split: g + a; else g + a - M */
             int64_t e1 = g1 < split ? g1 : split;
             for (int64_t g = g0; g < e1; g++) out[g] |= src[g + a];
             for (int64_t g = (g0 > split ? g0 : split); g < g1; g++) out[g] |= src[g + a - M];
         }
-        const uint64_t *vis = VIS + v * M;
-        for (int64_t g = g0; g < g1; g++) { out[g] &= ~vis[g]; any |= out[g]; }
+        const W_T *vis = VIS + v * M;
+        for (int64_t g = g0; g < g1; g++) { out[g] &= (W_T)~vis[g]; any |= out[g]; }
     }
     *anyp = any;
 }
@@ -420,14 +436,14 @@ int main(int argc, char **argv) {
         fprintf(cf, "orbits %" PRId64 "\nreps_sha256 %s\npart %" PRId64 " %" PRId64 " %" PRId64 " %" PRId64 "\n", R, repshex, part, K, lo, hi);
         fflush(cf);
     }
-    VIS = malloc(8 * n); FR = malloc(8 * n); NX = malloc(8 * n);
-    if (!VIS || !FR || !NX) die("out of memory for the BFS arrays (24 bytes per vertex)");
+    VIS = malloc(sizeof(W_T) * n); FR = malloc(sizeof(W_T) * n); NX = malloc(sizeof(W_T) * n);
+    if (!VIS || !FR || !NX) die("out of memory for the BFS arrays (3 words per vertex)");
     int part_max = 0; int64_t part_unreached = 0;
-    for (int64_t b0 = lo; b0 < hi; b0 += 64) {
-        int ns = hi - b0 < 64 ? (int)(hi - b0) : 64; uint64_t full = ns == 64 ? ~0ULL : ((1ULL << ns) - 1);
+    for (int64_t b0 = lo; b0 < hi; b0 += WB) {
+        int ns = hi - b0 < WB ? (int)(hi - b0) : WB; W_T full = ns == WB ? (W_T)~(W_T)0 : (W_T)((1ULL << ns) - 1);
         double tb = now();
-        memset(VIS, 0, 8 * n); memset(FR, 0, 8 * n);
-        for (int k = 0; k < ns; k++) { int64_t s = MODE ? (int64_t)reps[b0 + k] * M : (int64_t)reps[b0 + k]; VIS[s] |= 1ULL << k; FR[s] |= 1ULL << k; }
+        memset(VIS, 0, sizeof(W_T) * n); memset(FR, 0, sizeof(W_T) * n);
+        for (int k = 0; k < ns; k++) { int64_t s = MODE ? (int64_t)reps[b0 + k] * M : (int64_t)reps[b0 + k]; VIS[s] |= (W_T)1 << k; FR[s] |= (W_T)1 << k; }
         int ecc[64] = {0}, lev = 0;
         for (;;) {
             uint64_t any; if (MODE) pull_lift(&any); else pull_explicit(&any);
@@ -435,14 +451,14 @@ int main(int argc, char **argv) {
             lev++; for (int k = 0; k < ns; k++) if (any >> k & 1) ecc[k] = lev;
 #pragma omp parallel for schedule(static)
             for (int64_t x = 0; x < n; x++) VIS[x] |= NX[x];
-            uint64_t *tmp = FR; FR = NX; NX = tmp;
+            W_T *tmp = FR; FR = NX; NX = tmp;
             if (cost_mode && lev == DD) break; /* --cost: unreached = vertices at distance > D */
             if (lev > DD + 2) break; /* already too far; the unreached count below is then a lower bound */
         }
         int64_t un[64] = {0}; int anyun = 0;
 #pragma omp parallel for schedule(static) reduction(| : anyun)
         for (int64_t x = 0; x < n; x++) if (VIS[x] != full) anyun = 1;
-        if (anyun) for (int64_t x = 0; x < n; x++) { uint64_t z = ~VIS[x] & full; while (z) { un[__builtin_ctzll(z)]++; z &= z - 1; } }
+        if (anyun) for (int64_t x = 0; x < n; x++) { uint64_t z = (uint64_t)(W_T)(~VIS[x] & full); while (z) { un[__builtin_ctzll(z)]++; z &= z - 1; } }
         for (int k = 0; k < ns; k++) {
             if (ecc[k] > part_max) part_max = ecc[k];
             part_unreached += un[k];

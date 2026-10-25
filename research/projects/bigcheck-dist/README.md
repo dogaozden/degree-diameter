@@ -101,7 +101,9 @@ machine (4 cores):
 
 ## 5. Limits and next steps
 
-- 24 bytes per vertex for the BFS arrays (64 sources per pass). A lift of 500 M vertices needs 12 GB. For bigger lifts a
-  narrower word (8 or 16 sources per pass) would cut this to 3-6 bytes per vertex; not written yet.
+- BFS arrays: 3 words per vertex. The default word has 64 bits (64 sources per pass, 24 bytes per vertex); compile with
+  `-DWB=8`, `16` or `32` for 3, 6 or 12 bytes per vertex and 8, 16 or 32 sources per pass (a lift of 2·10⁹ vertices
+  fits in 6 GB with WB = 8). Certificates are byte-identical for every WB (tested on the rotation lift and on part 3/2000
+  of the (14,7) check).
 - Vertex ids are 32-bit (n < 4·10⁹).
 - Only cyclic voltage groups in lift mode. Abelian or matrix groups would need a group table or matrix arithmetic.
