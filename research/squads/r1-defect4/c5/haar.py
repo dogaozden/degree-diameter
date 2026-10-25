@@ -24,8 +24,6 @@ Methods.
               sum_g x_g = k; x_0 = 1 (translation). Sound and complete.
 """
 import argparse
-import sys
-import threading
 import time
 from collections import deque
 
@@ -161,8 +159,8 @@ def brute_count(n, k):
     return cnt
 
 
-def sat_search(n, k, timeout):
-    """Complete SAT search. Returns ('SAT', S) | ('UNSAT', None) | ('TIMEOUT', None)."""
+def sat_search(n, k):
+    """Complete SAT search. Returns ('SAT', S) | ('UNSAT', None)."""
     from pysat.card import CardEnc, EncType
     from pysat.solvers import Solver
 
@@ -182,31 +180,19 @@ def sat_search(n, k, timeout):
     card = CardEnc.equals(lits=[x(g) for g in range(n)], bound=k, top_id=top, encoding=EncType.seqcounter)
     cls += card.clauses
 
-    for name in ("cadical153", "glucose4"):
-        try:
-            with Solver(name=name, bootstrap_with=cls) as s:
-                timer = threading.Timer(timeout, s.interrupt)
-                timer.start()
-                try:
-                    res = s.solve_limited(expect_interrupt=True)
-                finally:
-                    timer.cancel()
-                if res is None:
-                    return "TIMEOUT", None
-                if res:
-                    model = s.get_model()
-                    S = sorted(l - 1 for l in model if 0 < l <= n)
-                    return "SAT", S
-                return "UNSAT", None
-        except NotImplementedError:
-            continue
-    raise RuntimeError("no solver with interrupt support")
+    # No in-process time limit: CaDiCaL (pysat) does not support interrupt(), so the wall-clock limit is
+    # enforced by the outer `timeout` command instead.
+    with Solver(name="cadical153", bootstrap_with=cls) as s:
+        if s.solve():
+            model = s.get_model()
+            S = sorted(l - 1 for l in model if 0 < l <= n)
+            return "SAT", S
+        return "UNSAT", None
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--ks", default="5,6,7,8,9,10,11,12,13,14,15,16")
-    ap.add_argument("--timeout", type=float, default=120.0, help="SAT time limit per k, seconds")
     ap.add_argument("--bt-max-k", type=int, default=8, help="run the complete backtracking up to this k")
     args = ap.parse_args()
 
@@ -224,7 +210,7 @@ def main():
         else:
             line += " " * 26
         t0 = time.time()
-        res, S = sat_search(n, k, args.timeout)
+        res, S = sat_search(n, k)
         line += f"  {res:<8} {time.time()-t0:8.2f}s  "
         if res == "SAT":
             if not covers(n, S):

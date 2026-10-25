@@ -15,7 +15,10 @@ Cards and best result (k=6 limit 900 s, machine heavily loaded while the lead's 
 - c3 split by cycle type of the repeat graph (determinant-filtered): k=5 all 29 types done (only the 19-cycle is SAT,
   matching uniqueness), k=6 has 221 types, not finished.
 - c4 CP-SAT (OR-Tools, symmetry level 4): k=5 SAT 4.3 s, k=6 unknown at 880 s.
-- c5 Haar graphs / near-difference sets: no report yet.
+- c5 Haar graphs H(Z_n,S), n = k²−k−1 (diameter 3 iff S−S covers Z_n∖0): k=5 hit S = {0,1,2,6,9} in Z_19
+  (lead re-checked by BFS: 38 vertices, 5-regular, diameter 3); none for k = 6, 7, 8 (backtracking and SAT agree).
+  The lead's independent C search (0,1 ∈ S, prune on excess > 2) agrees and extends it: none for k = 9, 10, 11
+  (k = 11, Z_109: 37 s). Valid, but it only says no cyclic Haar graph; it does not exclude (k,3,−4)-graphs.
 - c6 C backtracking with canonical star: k=5 found (3.4 s), k=6 not exhausted (first of up to 2,675 stars > 850 s).
 - c7 wildcard encoding: k=5 SAT, k=6 timeout.
 - c8 implied local rules from the repeat identity: k=5 SAT, k=6 timeout.
