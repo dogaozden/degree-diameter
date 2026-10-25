@@ -1,0 +1,5 @@
+group sl 17 x Z_139, N=680544, identity 37808, H order 34, rows 20016, threads 1, setup 0.03s
+wide rows: HW order 139, rows 4896, setup 0.05s
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 42 z on Z_139
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 17 (+e); mu = 34.74, mu/k = 11.58, fixed-point misses ~ 1.34
+start cost=380
