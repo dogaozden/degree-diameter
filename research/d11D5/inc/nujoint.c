@@ -180,7 +180,8 @@ int main(int argc, char **argv) {
             if (d <= 0 || urand() < exp(-d / T)) cost += d; else applyflip(fl);
         }
         if (cost < best) { best = cost; memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n);
-            printf("t=%.0f it=%ld cost=%ld (structural %ld, violated %ld) T=%.3f\n", el, it, cost, sc, viol, T); fflush(stdout); }
+            printf("t=%.0f it=%ld cost=%ld (structural %ld, violated %ld) T=%.3f\n", el, it, cost, sc, viol, T); fflush(stdout);
+            if (best < 300 && getenv("OUTNU")) { savenu(getenv("OUTNU")); if (getenv("OUT")) save(getenv("OUT")); } }
     }
     memcpy(nu, bnu, n * dg); memcpy(sig, bsig, 4L * n); for (int i = 0; i < n; i++) sinv[sig[i]] = i;
     sc = structural(1); recount();
