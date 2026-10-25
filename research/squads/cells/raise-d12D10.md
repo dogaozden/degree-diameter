@@ -57,3 +57,9 @@ Reading: at μ ≥ 25 a 1,500 s single-seed run does not reach cost 0 on these g
 
 Next round: only groups with N > 164,371,284 can beat the record. Seed 2–3 runs of 3,600 s on
 psl 103×301 (164.44 M), sl 109×127 (164.45 M), sl 103×151 (164.99 M) and psl 97×361 (164.72 M).
+
+**New record: 329,972,448 vertices** (sl 103 × Z_151, N = 164,986,224, seed 2, 897 evals, 244 s; +1.26 % over the previous
+328,742,568 and +1.28 % over the original 325,832,976).
+- File: `../../frontier/sols/d12D10_sl_103_151_orb3f0_s2.txt`; log: `../../structured/runs/d12D10_sl_103_151_orb3f0_s2.log`.
+- Checks: haar_sym's own full check (both generators reach all N within 10); independent `tools/hcsl` and `tools/hc2`:
+  both VALID (eccA = eccB = 10).
