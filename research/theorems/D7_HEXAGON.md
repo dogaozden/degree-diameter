@@ -60,7 +60,7 @@ Section 10). The cell (8,7) record is a Haar graph and is not discussed here.
 The theorems are:
 
 - **Theorem A** (classical): the level cover with $2r+1$ levels and arbitrary matchings has diameter $\le 7$.
-- **Lemma 3.2 / Theorem 3.3** (assembly): if every "transition" survives the deletion of its freed matching edges with
+- **Lemma 3.3 and Theorem 3.4** (assembly): if every "transition" survives the deletion of its freed matching edges with
   all its pairs still within distance 7, then hub vertices can be attached to the freed slots in any way, and the result
   has diameter 7 as soon as hubs of the same colour are within distance 6.
 - **Theorem C**: a transition whose matching is the restriction of an automorphism of the incidence graph (the identity
@@ -69,7 +69,7 @@ The theorems are:
   points, with equality exactly for the point sets of spreads.
 - **Theorem B**: a transition with an arbitrary matching $M$ survives the deletion at a non-collinear point set $R$ if
   $M(R)$ is non-concurrent and $M$ maps the points collinear with $x$ onto the lines concurrent with $M(x)$, for every
-  $x\in R$. Proposition 5.3 says exactly when such an $M$ exists ("mirrored sets").
+  $x\in R$. Propositions 5.1 and 5.2 say when such an $M$ exists ("mirrored sets").
 
 ---
 
@@ -85,8 +85,8 @@ convenient to write $x = (v, a, w)$ with $v = (x_0,x_1,x_2)$, $a = x_3$, $w = (x
 
 The **split Cayley hexagon** $H = H(q)$ (Tits 1959; we follow [VM98, §2.4.13]) has
 
-- **points**: all $N = (q^6-1)/(q-1)$ points of $Q(6,q)$;
-- **lines**: the lines of $Q(6,q)$ whose Grassmann coordinates $p_{ij} = x_iy_j - x_jy_i$ (for any two spanning points
+- **points**: the set $P$ of all $N = (q^6-1)/(q-1)$ points of $Q(6,q)$;
+- **lines**: the set $L$ of the lines of $Q(6,q)$ whose Grassmann coordinates $p_{ij} = x_iy_j - x_jy_i$ (for any two spanning points
   $x, y$) satisfy
   $$p_{12} = p_{34},\quad p_{54} = p_{32},\quad p_{20} = p_{36},\quad p_{65} = p_{30},\quad p_{01} = p_{35},\quad p_{46} = p_{31};$$
 - **incidence**: containment.
@@ -158,8 +158,8 @@ $H(q)$ contained in $\Pi$ form a spread, for every $q$.
 *Proof.* (a) If $x\ne y$ are points of $Q^-(3,q)$ with $B(x,y) = 0$, then $Q(\lambda x+\mu y) = \lambda\mu B(x,y) = 0$, so
 the line $xy$ lies in $Q^-(3,q)$, which contains no line. So $B(x,y)\ne 0$ and $x, y$ are opposite by (F4).
 (b) is in [Th80] [and was checked by computer for q = 3, 4, 5, Section 10.1, and q = 9, 11, 13 in research/d13D7/tools/].
-(c) A line meeting two lines of $S$ would put them at distance $\le 4$. Each line of $S$ meets $q(q+1)$ other lines, and
-$(q^3+1)(1+q(q+1)) = (q^3+1)(q^2+q+1) = N$ is the number of all lines. (d) $\varphi$ preserves distances. $\square$
+(c) A line meeting two lines of $S$ would put them at distance $\le 4$. So the lines of $S$ together with the
+$q(q+1)$ lines meeting each of them are $(q^3+1)(1+q(q+1)) = (q^3+1)(q^2+q+1) = N$ distinct lines, i.e. all lines. (d) $\varphi$ preserves distances. $\square$
 
 Ovoids of $Q(6,q)$ (equivalently of $H(q)$) exist for $q = 3^h$; they do not exist for $q$ even [Th81] or for $q$ prime
 $\ge 5$ [BGS06]. The largest partial ovoids are not known in general; the lab's record graphs use partial ovoids found by
@@ -196,8 +196,9 @@ are different, and different from the $s_i$. So
 $$(q+1)\lvert F_1\rvert + q\sum_i \lvert C_i\rvert + m\ \le\ N .$$
 Since $m\ge \sum_i\lvert C_i\rvert/(q+1)$, the left side is at least $(q + \tfrac1{q+1})\lvert F\rvert$, which gives
 $\lvert F\rvert\le N(q+1)/(q^2+q+1) = (q+1)(q^3+1)$. Equality forces $F_1 = \emptyset$, $\lvert C_i\rvert = q+1$ (whole
-lines) and $m = q^3+1$; the lines $s_i$ are pairwise opposite (if two met, or were at distance 4, two points of
-different segments would be collinear), so they form a spread. Conversely the point set of a spread is a segment set of
+lines) and $m = q^3+1$. The lines $s_i$ are then pairwise opposite: if $s_i$ and $s_k$ met in a point $z$, then $z\in F$
+would have other points of $F$ on two lines; if $d(s_i,s_k) = 4$, a point of $s_i$ would be collinear (along the line
+joining them) with a point of $s_k$, and would also have other points of $F$ on $s_i$. So they form a spread. Conversely the point set of a spread is a segment set of
 this size. The dual statement is the same proof in $H^D$. $\square$
 
 For comparison, a non-collinear set has at most $q^4+q^2+1$ points (Hoffman's ratio bound on the collinearity graph; the
@@ -207,15 +208,15 @@ bound is attained by distance-2 ovoids), and $(q+1)(q^3+1) = q^4+q^3+q+1$ is lar
 
 ## 2. Level covers
 
-Fix $r\ge 1$ and put $L = 2r+1$; levels are indexed by $j\in\mathbb Z_L$. Each level gets a **type**
+Fix $r\ge 1$; there are $2r+1$ levels, indexed by $j\in\mathbb Z_{2r+1}$. Each level gets a **type**
 $\tau_j\in\{H, D\}$. For a type $\tau$ let
 $$A(H) = P,\quad B(H) = L,\qquad A(D) = L,\quad B(D) = P$$
-(the "points" and "lines" of $H$ or of $H^D$). A **transition** is a pair $t = (j,k)$ with $j\in\mathbb Z_L$,
+(the "points" and "lines" of $H$ or of $H^D$). A **transition** is a pair $t = (j,k)$ with $j\in\mathbb Z_{2r+1}$,
 $1\le k\le r$; its source level is $j$ and its target level is $j+k$. It is **friendly** if $\tau_j\ne\tau_{j+k}$; then
 $A(\tau_j) = B(\tau_{j+k})$.
 
 **Definition 2.1 (level cover).** Given types $\tau$ and, for every transition $t=(j,k)$, a bijection
-$M_t: A(\tau_j)\to B(\tau_{j+k})$, the graph $X = X(\tau, M)$ has vertex set $(P\cup L)\times\mathbb Z_L$ and edges
+$M_t: A(\tau_j)\to B(\tau_{j+k})$, the graph $X = X(\tau, M)$ has vertex set $(P\cup L)\times\mathbb Z_{2r+1}$ and edges
 - $(x,j)\sim(y,j)$ whenever $x$ and $y$ are incident ("level edges");
 - $(a,j)\sim(M_{(j,k)}(a), j+k)$ for every $j$, every $1\le k\le r$ and every $a\in A(\tau_j)$ ("matching edges").
 
@@ -234,7 +235,7 @@ $t=(j,k)$ every vertex of level $j$ is joined to every vertex of level $j+k$ by 
 level edges of levels $j$ and $j+k$ and matching edges of $t$.
 
 *Proof.* Inside a level this is (F1). Every two distinct levels differ by $\pm k$ for some $1\le k\le r$ (as
-$L = 2r+1$), so it is enough to join $(u,j)$ to $(v,j')$, $j' = j+k$, with $M = M_{(j,k)}$:
+there are $2r+1$ levels), so it is enough to join $(u,j)$ to $(v,j')$, $j' = j+k$, with $M = M_{(j,k)}$:
 1. $u\in A(\tau_j)$: $(u,j)\to(M(u),j')\leadsto(v,j')$, length $\le 1+6$.
 2. $u\in B(\tau_j)$, $v\in B(\tau_{j'})$: with $a = M^{-1}(v)$, $(u,j)\leadsto(a,j)\to(v,j')$, length $\le 5+1$ (in $I$,
    elements of different types are at distance $\le 5$).
@@ -266,7 +267,7 @@ points) and $\mathcal A$-hubs "point-side hubs".
 
 *Exact neighbourhoods.* For a level vertex, the neighbourhood is that of Definition 2.1 minus the deleted matching edges
 plus one hub for each used free slot. For hubs:
-$$N(h) = \{(s_j(h), j) : j\in\mathbb Z_L\}\cup N_Y(h),\qquad N(g) = \{(s'_j(g), j): j\in\mathbb Z_L\}\cup N_Y(g).$$
+$$N(h) = \{(s_j(h), j) : j\in\mathbb Z_{2r+1}\}\cup N_Y(h),\qquad N(g) = \{(s'_j(g), j): j\in\mathbb Z_{2r+1}\}\cup N_Y(g).$$
 
 *Degree and order.* Level vertices have degree $\le q+1+r$ (equality when all their free slots are used), hubs have
 degree $2r+1+\deg_Y$. So $X_R^+$ is bipartite with maximum degree $\le q+1+r$ as soon as $Y$ has maximum degree
@@ -316,7 +317,7 @@ the graph $I$ with $\psi(A(\tau_j)) = B(\tau_{j+k})$. The two cases used here:
 - an $H\to H$ transition with $M_t = \varphi\vert_P$ for a duality $\varphi$ ($q = 3^h$); a $D\to D$ transition with
   $M_t = \varphi\vert_L$.
 
-(A friendly transition with $M_t$ a collineation, or an $H\to H$ transition with $M_t$ any duality, is also automorphic.)
+(A friendly transition whose matching is a collineation of $H$, restricted to points or to lines, is also automorphic.)
 
 **Lemma 4.1.** Let $F$ be a segment set of points. For all elements $u, v$ of $H$ there is a point $p\notin F$ with
 $$d(u,p) + d(p,v)\ \le\ 6 .$$
@@ -489,8 +490,9 @@ By Theorem 3.4 the order is $(2r+1)\cdot 2N + K_{\mathcal A} + K_{\mathcal B}$ w
 $K_{\mathcal B}\le\min_j\alpha_j$ and $K_{\mathcal A}\le\min_j\beta_j$, where $\alpha_j$ ($\beta_j$) counts the freed
 elements of the transitions leaving (entering) level $j$. Which transitions are friendly depends on the types.
 
-**All levels of type $H$, one bijection $\sigma$, one freed set $R$ on every transition** (the three-level and
-five-level records over $H(q)$ with $q\ne 3^h$, and with $\sigma$ a duality for $q = 3^h$). Every level has
+**All levels of type $H$, one bijection $\sigma$, one freed set $R$ on every transition** (the three-level records
+(7,7), (9,7), (10,7), (13,7) with $\sigma$ a local duality on $R$, and (11,7), (12,7) with $\sigma$ a duality). Every
+level has
 $\alpha_j = \beta_j = r\lvert R\rvert$, so $K_{\mathcal A} = K_{\mathcal B} = r\lvert R\rvert$ and
 $$\lvert X_R^+\rvert = (2r+1)\cdot 2N + 2r\lvert R\rvert .$$
 Hubs: for $r = 1$ the $\mathcal B$-hub $h_x$ of $x\in R$ is joined to $(x,0),(x,1),(x,2)$ and the $\mathcal A$-hub $g_x$
@@ -571,9 +573,10 @@ Corollary 5.3(b). If $\mathrm{HG}(\lvert R\rvert,\lvert R\rvert; q-1)$ exists, t
 $$n_b(q+2,\,7)\ \ge\ 6N(q) + 2\lvert R\rvert .$$
 Records: $q = 5$: $\lvert R\rvert = 81$ ($R_0$ = 72 pairwise opposite points, 9 extra points, spread lines of
 $q^3+1 = 126$ available), $n = 23{,}598$; $q = 7$: $288 + 7$, $n = 118{,}238$; $q = 8$: $217 + 12$, $n = 225{,}152$;
-$q = 11$: $756 + 12$, $n = 1{,}064{,}472$. Computer: $R_0$ (for $q = 7, 11$ an orbit of a group isomorphic to $W(E_7)$,
-research/cell147/ovoid/; for $q = 5, 8$ from research/d13D7/q57, q8), the extra points $X$, the lines $L_x$, the
-bijection $f$ onto Hermitian spread lines, the hub graph.
+$q = 11$: $756 + 12$, $n = 1{,}064{,}472$. Computer: $R_0$ (for $q = 7, 11$ an orbit of the Weyl group $W(E_7)$ acting on $Q(6,q)$ through the $E_7$ root
+lattice mod $q$, research/cell147/ovoid/ and octo/ on the cell-14-7 branch; being pairwise non-orthogonal in $Q(6,q)$ it is
+a partial ovoid of $H(q)$ by (F4); for $q = 5, 8$ from research/d13D7/q57, q8), the extra points $X$, the lines $L_x$,
+the bijection $f$ onto Hermitian spread lines, the hub graph.
 
 **Corollary 8.2 (duality, $q = 3^h$: (11,7), (12,7)).** Let $q = 3^h$, $\varphi$ a duality, all types $H$, $M_t = \varphi\vert_P$
 for every transition, and $R_t = F$ for every transition, $F$ the point set of a spread (e.g. the Hermitian spread),
