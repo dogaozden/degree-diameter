@@ -72,6 +72,7 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | – | running, best 6 at t=1423 |
 | psl 59 × Z577 | 59,234,820 | 118,469,640 | 19.7 | 29 | not solved: best 4, 15,225 evals in 3600 s |
 | sl 73 × Z151 | 58,730,544 | 117,461,088 | 17.1 | 71 | **SOLVED** at 833 evals (444 s); haar_sym OK, hcsl and hc2 VALID. Sub-record (below 117,837,720). `research/frontier/sols/d14D9_sl_73_151_orb3_s1.txt`, sha256 4931d658da18452d35a63dbbf4c64ed682dff9aa0cf2032812f976b91914356c |
+| sl 83 × Z103 | 58,885,512 | 117,771,024 | 17.9 | 82 | **SOLVED** at 3,993 evals (1,593 s); haar_sym OK, hcsl and hc2 VALID. Sub-record (below 117,837,720). `research/frontier/sols/d14D9_sl_83_103_orb3_s1.txt`, sha256 5ff4f2dc9851bba227fedef6de8681b5d643a8c743a7b70cd3dab7f18dc06ef8 |
 | psl 107 × Z97 | 59,409,396 | 118,818,792 | 20.6 | – | not solved: best 11, 8,553 evals in 3600 s |
 | psl 79 × Z241 | 59,401,680 | 118,803,360 | 20.6 | – | not solved: best 6, 11,673 evals in 3600 s |
 | psl 257 × Z7 | 59,410,176 | 118,820,352 | 20.6 | 128 | not solved: best 20, 9,545 evals in 3600 s |
