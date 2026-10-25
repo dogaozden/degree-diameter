@@ -10,6 +10,7 @@ Branch `claude/hexagon-family-blvamb` (Opus lead, cloud session, started 2026-10
 |---|---|---|---|---|---|
 | (11,7) | 407,162 | **407,192** | H(9), duality matching, 4,306 non-collinear freed points (squad hexfam_r1 c6, ARW from the 4,291 set) | sets/P9_ncol_4306.txt, sols/d11D7_hex9_B2dualK4306_n407192.sol | `n=407192 edges=2239556 degree min=11 max=11 bipartite=yes diameter=7, RESULT VALID d=11 D=7` (checks/d11D7_n407192.sha256) |
 | (7,7) | 23,580 | **23,598** | H(5), 72 pairwise opposite + 9 mixed freed points (THEOREM.md Prop. 6, `ext/extend2.py`), σ from Lemma 3 (`ext/mixsol.py`) | sets/P5_mix81.pairs, sols/d7D7_hex5_mixK81_n23598.sol | `n=23598 edges=82588 degree min=6 max=7 bipartite=yes diameter=7, RESULT VALID d=7 D=7` (checks/d7D7_n23598_apsp.txt; extend5.py) |
+| (9,7) | 118,224 | **118,240** | H(7), 288 pairwise opposite + 8 mixed freed points (extend5.py seed 3, mixsol.py) | sets/P7_mix296.pairs, sols/d9D7_hex7_mixK296_n118240.sol | `n=118240 edges=532058 degree min=7 max=9 bipartite=yes diameter=7, RESULT VALID d=9 D=7` (checks/d9D7_n118240_apsp.txt) |
 | (12,7) | 680,068 | **681,460** | same 4,306 freed points, 5 levels; hub graph = Haar graph of PSL(2,11)×Z13 (Δ 7, D 7, 8,580 per side) | sols/d12D7_hex9_B2dual5K4306_H8580.hubs, hubs/h_psl11x13.txt | `n=681460 edges=4088600 degree min=11 max=12 bipartite=yes diameter=7, RESULT VALID d=12 D=7` (checks/d12D7_n681460_apsp.txt, sha256 file) |
 
 Rebuild (from this folder; hex/ is local, made by `tools/hexgen2 9`):
