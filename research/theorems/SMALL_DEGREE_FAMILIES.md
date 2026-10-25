@@ -251,6 +251,14 @@ How the bound and the truth scale with D (Δ = 3; N = |G|, half the vertex count
 The bound grows with D about as fast as the Moore limit, while the true maximum falls behind from D = 10 on. At
 D = 7, for k ≤ 40, the bound alone rules out a metacyclic Haar graph above the table.
 
+**Δ = 4** (`cyclotable4.py` → `runs/cyclotable4_d4D{8,9}.txt`, k ≤ 10, fibre version):
+- At (4,8), which needs N ≥ 1093, every Z_p ⋊ Z_k with k ∈ {2, 3, 4, 6} has N ≤ 1,014, for any p.
+- At (4,9), which needs N ≥ 2486, the same k are capped at 1,686. So are (k, o) = (8, 2), (8, 4), (9, 3) and
+  (10, 2), at most 2,286.
+- These are exactly the cases with φ(o) ≤ 2: each formal a-part then lives in a lattice of rank ≤ 2.
+- Larger φ(o) allows much more: (5, 5) allows 5,885 and (7, 7) 8,323 at D = 9. So small k is not excluded as such,
+  only small rank.
+
 **Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats the table at
 D = 7, 9 or 10. At D = 8 the family stays at 234 against 256.
 - Every group with N up to the Moore limit (127, 255, 510, 1023) was scanned exhaustively
@@ -430,7 +438,8 @@ against 0.940, 0.953, 0.922, 0.983 for N; `cycloauc.py`). So the answer to "whic
 - one with N/B ≳ 0.8 rarely does.
 
 The conjecture is that the same holds for Δ = 4 and 5. The Δ = 4 bound is computable (`cyclotable4.py`) but costs
-k³ patterns, so it was only tested on small k. At (4,9) every Z_p ⋊ Z_6 is capped at N ≤ 2,126.
+about k³ patterns, so it was tabulated only for k ≤ 10 (§2.3). Where the records are, its ratio N/B_j lies in a
+narrow band (§5).
 
 ### 3.3 In the small cells, success is decided by the far lower tail, so search all groups
 
