@@ -1,0 +1,96 @@
+# raise-d8D9: beat the (8,9) record of 1,326,960 vertices
+
+Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-record-ogr1zr.
+
+## Target and arithmetic
+- Current record: Haar graph of SL(2,19) x Z_97, N = |G| = 663,480, 2N = 1,326,960 (research/frontier/sols/d8D9_sl_19_97_orb3_s2.txt).
+- To beat it: a valid Haar graph with N >= 663,481 (2N >= 1,326,962). Check: a checker output with vertices > 1,326,960.
+- W(8,9) = 6,725,601 (odd D formula, research/structured/tools/mu_plan.py). mu = N exp(-W/N).
+  - record: mu = 26.3. N = 670k: mu = 29.3. N = 680k: mu = 34.4. Each +1 in mu is roughly +0.3 % in N.
+- Candidate groups in [663,481, 690,000] with mu <= 30 (from `orb_screen.py 8 9 663481 690000 "3 2 2" --list`):
+  sl/pgl 16 x 163 (665,040, mu 27.0), prod sl 8 x sl 11 (665,280, mu 27.1), prod psl 3 x psl 7 x 331 (667,296, mu 28.0),
+  prod psl 5 x psl 9 x 31 (669,600, mu 29.1), sl 13 x 307 (670,488, mu 29.5), pgl 25 x 43 / sl 25 x 43 (670,800, mu 29.7).
+
+## Method
+- Orbit search (research/structured, haar_sym), ORBIT="3 2 2": k = 3 automorphism, 2 free orbits + 2 fixed generators.
+  That is d = 2 + 3*2 = 8. The k = 3 family produced most D = 9 records.
+- Screening: `tools/orb_screen.py 8 9 663481 690000 "3 2 2" --samples 2000` ranks groups by the lower tail of random-S cost.
+- Verification: build_haar2.py (<= 20M vertices). Every candidate must pass before it goes into research/frontier/sols/.
+
+## Runs
+- Speed: about 350 evals/s per core at N = 670k (sl 13 x 307, haar_gen3 evaluation). prod sl 8 x sl 11 uses wide rows.
+- b1 (research/frontier/runs/raise-d8D9/b1): prod sl 8 x sl 11 x Z1, 3600 s, seed 1, in progress.
+
+## Status
+- In progress. No new record yet.
+
+## Progress log
+- 07:49 start b1 (seed 1), b2 (seed 2): prod sl 8 x sl 11 x Z1, ORBIT "3 2 2", 3600 s each. b3: sl 16 x Z163, seed 1.
+- ~1500 s: b1 best cost 5 (1.88M evals), b2 best cost 5 (1.76M), b3 best cost 9 (1.79M). Not solved yet.
+- Group screen (random-S tails, samples 2000) is still running at this point.
+- Group screen finished (research/frontier/runs/raise-d8D9/screen/screen_k3f2m2.txt, columns: N, mu, |Fix|, min, p1, p10, median of random-S cost).
+  Top by p1 (lower is better): psl 47 x Z13 (p1 51, mu 31.5); prod sl 8 x sl 11 (p1 52, mu 27.1, |Fix| 107);
+  sl 25 x Z43 (p1 54, mu 29.7); pgl 25 x Z43 (p1 60, mu 29.7); prod sl 4 psl 9 x Z31 and prod psl 5 psl 9 x Z31 (p1 ~80, mu 29.1).
+  sl 16 x Z163 ranks 9th (p1 99) despite the lowest mu. psl 47 x Z13 already reached cost 6 in 2400 s earlier (research/structured/runs).
+- ~1800 s: b1 best 5, b2 best 5, b3 best 9. Still none solved (runs end at 3600 s, about 08:49).
+- Next candidates to run after these: sl 25 x Z43 and psl 47 x Z13 (longer), then more seeds on the best group.
+
+## RECORD: (8,9) 1,330,560 vertices (beats 1,326,960 by 3,600)
+- Group: PROD sl 8 (poly x^3+x+1) x sl 11, Z_1; N = |G| = 665,280; 2N = 1,330,560. Orbit search ORBIT="3 2 2", seed 2, K=8,
+  3,094,273 evals in 2,630 s (run b2, research/frontier/runs/raise-d8D9/b2/).
+- Solution: research/frontier/sols/d8D9_prod_sl_8_sl_11_1_orb3_s2.txt (sha256 of the edge list 15d7aa6b6662c7a3aee6d936f39b7b00e70a145fb8e27c790a6c4143b56f15b9).
+- Checks: haar_sym full diameter check (OK); build_haar2.py VALID d=8 D=9; research/frontier/check_haar_indep.py VALID
+  (BFS from A and B: ecc 9, reached all, 8 distinct neighbours each). Log in the same folder.
+- mu = 27.1 with |Fix(alpha)| = 107. The fixed-point term was large, and it still solved.
+- Still running: b1 (same group, seed 1), b3 (sl 16 x Z163), b4 (sl 25 x Z43). Next: push this group further (more seeds, larger order).
+
+## RECORD 2: (8,9) 1,341,600 vertices (beats 1,330,560)
+- Group: SL(2,25) (poly x^2+2) x Z_43, N = 670,800. Orbit search ORBIT="3 2 2", seed 1, K=8, 1,185,057 evals in 768 s (run b4).
+- Solution: research/frontier/sols/d8D9_sl_25_43_orb3_s1.txt.
+- Checks: build_haar2.py VALID (inside orbq.sh); research/frontier/check_haar_indep.py VALID (ecc 9 from A and B, all vertices reached, 8 distinct neighbours).
+- mu = 29.7, |Fix(alpha)| = 23.
+
+## Status at 08:50
+- Final results of hour-long runs: b1 prod sl 8 x sl 11 seed 1 unsolved (best 2, 4.3M evals); b3 sl 16 x Z163 unsolved (best 9, 4.3M evals).
+- Still running at 08:50: b5 psl 47 x Z13 (N 674,544, best 6 at 930 s), b6 sl 17 x Z139 (N 680,544, best 12 at 900 s).
+- Started 08:50: b7 prod sl 3 x psl 11 x Z43 (N 681,120, mu 35.1), b8 pgl 17 x Z139 (N 680,544, mu 34.7). One hour each.
+- To beat the current record a group must have N > 670,800. Hit only counts with N above that.
+
+## Status at 09:10
+- b5 psl 47 x Z13 (N 674,544): best 5 at 2100 s (flat since ~1500 s). b6 sl 17 x Z139: best 12 (flat). b7 prod sl 3 x psl 11 x Z43: best 12 at 1170 s. b8 pgl 17 x Z139: best 21 at 1170 s.
+- Solved so far: prod sl 8 x sl 11 seed 2 (3.1M evals), sl 25 x Z43 seed 1 (1.2M evals). Failed: prod sl 8 seed 1 (4.3M evals, best 2), sl 16 x Z163 (4.3M, best 9).
+- Plan after these end: psl 47 x Z13 with several seeds and longer runs (it is the only candidate above 670,800 with mu <= 31.5 that has reached cost 5).
+
+## Status at 09:35
+- Finished unsolved: b5 psl 47 x Z13 (N 674,544, best 5, 3.66M evals, fix 23); b6 sl 17 x Z139 (N 680,544, best 12, 3.4M evals).
+- Still running: b7 prod sl 3 x psl 11 x Z43 (best 12), b8 pgl 17 x Z139 (best 21). Started 09:34: b9 prod psl 5 x psl 7 x Z67 (N 675,360, mu 32.0).
+- Record unchanged at 1,341,600 (sl 25 x Z43).
+
+## Status at 09:51
+- Finished unsolved: b7 prod sl 3 x psl 11 x Z43 (N 681,120, best 12, 4.0M evals); b8 pgl 17 x Z139 (N 680,544, best 21, 3.3M evals).
+- Running: b9 prod psl 5 x psl 7 x Z67 (N 675,360, best 15 at 960 s); b10 and b11 psl 47 x Z13, seeds 8 and 9 (started 09:50).
+- Screen (research/frontier/runs/raise-d8D9/ and scratchpad): window 670,801–676,000 with --anyn (n may contain 3), 1000 samples.
+- Record unchanged at 1,341,600 (sl 25 x Z43). 6 hour-long runs above the record so far, none solved; the solved ones were at mu 27.1 and 29.7.
+
+## Wider screen (10:05): window 670,801–676,000, --anyn, 1000 samples
+File: research/frontier/runs/raise-d8D9/screen/screen_anyn_670801_676000.txt. Best p1 is prod psl 3 x psl 7 x Z333 (538),
+prod psl 3 x sl 8 x Z111 (185). Most entries have fixed sets in the thousands (n with factor 3). Nothing new is worth a
+run; the only plausible groups above 670,800 remain psl 47 x Z13 (p1 51) and prod psl 5 x psl 7 x Z67 (p1 105).
+
+## Final status (10:55): stopped; record 1,341,600 vertices (sl 25 x Z43, N 670,800)
+Records this session (each verified by haar_sym's full check, build_haar2.py and check_haar_indep.py):
+1. prod sl 8 x sl 11 (N 665,280, mu 27.1): 1,330,560 vertices, run b2 seed 2 (2,630 s).
+2. sl 25 x Z43 (N 670,800, mu 29.7): 1,341,600 vertices, run b4 seed 1 (768 s). Current record.
+
+Unsolved above the current record (N > 670,800), one-hour runs with ORBIT "3 2 2":
+- psl 47 x Z13 (N 674,544, mu 31.5): seeds 3, 8, 9 -> best 5, 6, 6 (3.6M evals each). The plateau holds across seeds.
+- prod psl 5 x psl 7 x Z67 (N 675,360, mu 32.0): best 15.
+- sl 17 x Z139 (N 680,544, mu 34.7): best 12.
+- pgl 17 x Z139 (N 680,544, mu 34.7): best 21.
+- prod sl 3 x psl 11 x Z43 (N 681,120, mu 35.1): best 12.
+Wider screen (--anyn, 670,801-676,000): nothing with a random-S tail near the groups that solved.
+
+Why I stopped: the solved groups had mu 27-30, the unsolved ones mu 31-35. Costs plateau within each hour. The
+remaining candidates above 670,800 need either much more compute per group or a different structure (other alpha, k = 2,
+or SL(3,q) / larger centralizer families, see STRUCTURE.md section 7). I did not try those. Next step for the coordinator:
+decide whether a longer or bigger-model run on psl 47 x Z13 or an alpha/structure change is worth it.
