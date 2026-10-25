@@ -25,8 +25,10 @@ Errors and corrections found while preparing this version (none affects a theore
    $(15,3)=374$ as "table" values. Those are the later values of Araujo-Pardo and López [AL20] (Graphs Combin. 2022).
    The 2013 survey table (Miller–Širáň, Electron. J. Combin. DS14v2, Table 4) has $270$ and $370$ there. Both columns
    are now shown, here and in `geometry.tex` (Table 4).
-   Every other cell used below has the same value in the survey and in the wiki values read on 2026-10-10
-   (`research/frontier/TABLE.md`).
+   Provenance of the current values: the wiki was read on 2026-10-10 for $(7,4)$, $(7,5)$, $(11,3)$, $(11,4)$,
+   $(13,3)$, $(15,3)$ (`records/bipartite_dd/CANDIDATES.md`), and the 2026-10-20 proofread reports the `geometry.tex`
+   table values as matching the wiki; later sessions could not reach the wiki, and this note did not re-check it
+   (`research/frontier/TABLE.md`). Apart from $(13,3)$ and $(15,3)$ we know of no change since 2013 in the cells below.
 2. **Corollary C1 needs no Klein correspondence.** `NOTE.md` derived the $(16,4)$ graph through $Q(4,q)$ and listed
    the Klein step as not formalised. The same construction is the point–line dual one in $W(3,q)$ itself: one copy of
    each point of the Singer 2-ovoid and two copies of each line of a regular spread (Section 5). We checked this form
@@ -42,7 +44,10 @@ Errors and corrections found while preparing this version (none affects a theore
    uses four points of a line ($q+1\ge4$); the coordinate version labels them by four field elements $0,1,a,c$
    ($q\ge4$). Both are stated as such below; no table cell has $q=3$.
 7. **Delorme's two 1985 papers.** Which of [D85a] and [D85b] contains the doubling with levels and the $D=4,6$ table
-   constructions is not confirmed (we have not seen the full texts). Both are cited.
+   constructions is not confirmed (we have not seen the full texts). Both are cited. Tallini's page range (Mitt. Math. Sem.
+   Giessen 201 (1991) 141–147), marked "to be verified" in `geometry.tex`, agrees with independent citing papers and
+   is now given without the caveat. The 2013 values at $\Delta=16$ (5134 at $D=4$, 884062 at $D=6$) are Delorme's
+   doublings with $m=3$; this is now stated (Example 3.4, Remark 6.9).
 8. **Theorem R is explicit except for the completing anti-flags.** The completion step is an existence argument
    (Lemma 7.2). We now say this plainly: every neighbourhood is listed except the $(m-1)$ completing anti-flags at the
    deficient vertices, and neither the maximum degree nor the diameter depends on that choice.
@@ -59,12 +64,13 @@ Errors and corrections found while preparing this version (none affects a theore
 
 ## Summary of cells
 
-$M_b$ is the bipartite Moore bound. "2013" is the survey table (DS14v2, Table 4, as of March 2013); "wiki" is the
-current CombinatoricsWiki value where it differs. All our graphs were rebuilt and checked by the coordinator.
+$M_b$ is the bipartite Moore bound. "2013" is the survey table [MS13] (DS14v2, Table 4, as of March 2013); "wiki" is
+the current CombinatoricsWiki value [CW], shown only where we know it differs from 2013 (see Change 1 for what was
+checked). All our graphs were rebuilt and checked by the coordinator.
 
 | $(\Delta,D)$ | $M_b$ | 2013 | wiki | ours | regular? | result | status |
 |------|------:|------:|-----:|-------:|--------|------------------------------|----------------|
-| (11,3) | 222 | 190 | 190 | **192** | yes | fourth hat, $q=9$ | paper, computer, Lean |
+| (11,3) | 222 | 190 | | **192** | yes | fourth hat, $q=9$ | paper, computer, Lean |
 | (13,3) | 314 | 270 | 274 | **276** | yes | fourth hat, $q=11$ | paper, computer, Lean |
 | (15,3) | 422 | 370 | 374 | **376** | yes | fourth hat, $q=13$ | paper, computer, Lean |
 | (7,4) | 518 | 346 | | **359** | no (350 regular) | Theorem B on $Q(4,5)$, explicit example | computer, Lean (graph) |
@@ -73,7 +79,7 @@ current CombinatoricsWiki value where it differs. All our graphs were rebuilt an
 | (15,4) | 5910 | 4946 | | **5070** | yes | Theorem A, $q=13$ | paper, computer, Lean |
 | (16,4) | 7232 | 5134 | | **5440** | yes | Prop. C + Cor. C1, $q=13$ | paper, computer, Lean |
 | (7,5) | 3110 | 1134 | | **1152** | yes | Haar lemma, $S_4\times\mathbb Z_{24}$ | paper, computer, Lean |
-| (9,5) | 22222 | 2496 | | **2662** | yes | Haar lemma, Heisenberg group mod 11 | paper, computer, Lean |
+| (9,5) | 9362 | 2496 | | **2662** | yes | Haar lemma, Heisenberg group mod 11 | paper, computer, Lean |
 | (7,6) | 18662 | 8992 | | **9592** | 9348 | Theorem D / R, $q=5$ | paper, computer, Lean |
 | (11,6) | 222222 | 142464 | | **148944** | 147500 | Theorem D / R, $q=9$ | paper, computer, Lean (theorem) |
 | (13,6) | 542906 | 374452 | | **388972** | 386328 | Theorem D / R, $q=11$ | paper, computer, Lean (theorem) |
@@ -82,8 +88,9 @@ current CombinatoricsWiki value where it differs. All our graphs were rebuilt an
 
 "Lean (theorem)": the general theorem is Lean-checked for every $q$, so these orders are Lean-checked lower bounds
 (Section 9); the graphs themselves are too large for a kernel certificate. "Lean (graph)": the specific graph is
-kernel-checked. The 2013 values at $D=4$ and $D=6$ are Delorme's [D85a, D85b]: $2q^3+3q^2+3q+6$ at $D=4$ and
-$2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ at $D=6$, $\Delta=q+2$ (Example 3.4 and Remark 6.9). At $(8,5)$ the Haar lemma
+kernel-checked. The 2013 values at $D=4$ and $D=6$ are Delorme's [D85a, D85b], with $\Delta=q+m$: $m=2$ at
+$\Delta=7,11,13,15$ ($2q^3+3q^2+3q+6$ at $D=4$; $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ at $D=6$) and $m=3$, $q=13$ at
+$\Delta=16$ (5134 and 884062); see Example 3.4 and Remark 6.9. At $(8,5)$ the Haar lemma
 gave $1764>1710$ (Lean-checked), since superseded by a $2048$-vertex lift that is not covered here.
 
 ---
@@ -91,7 +98,7 @@ gave $1764>1710$ (Lean-checked), since superseded by a $2048$-vertex lift that i
 ## 0. Conventions
 
 An *incidence structure* $\mathcal S=(\mathcal P,\mathcal L,\mathrm I)$ has points, lines and a symmetric incidence
-relation; repeated lines are allowed. Its *incidence graph* $\Gamma(\mathcal S)$ has vertex set
+relation; repeated points and repeated lines (same incidences) are allowed. Its *incidence graph* $\Gamma(\mathcal S)$ has vertex set
 $\mathcal P\cup\mathcal L$ and the flags as edges; it is bipartite with the points on one side. Every bipartite graph
 with a chosen 2-colouring is of this form, so
 
@@ -226,11 +233,12 @@ elements of $\mathcal A_0$ (against (L0)), or in $\mathcal A_0$, and then $x,xy,
 component (against Lemma 1.3). Lines likewise. An element of $\mathcal A_1$ would have its $q+1\ge3$ neighbours in
 $\mathcal A_0$ by (L1). $\square$
 
-So pure doubling gains at most 2 elements in a projective plane; the hats of Section 2 double flags and then
+So pure doubling gains at most $2(m-1)$ elements in a projective plane (2 for $m=2$); the hats of Section 2 double flags and then
 *patch* a bounded number of incidences.
 
-**Status.** Paper proof (above; `geometry.tex` §3). Lean-checked: Theorem 1.2(a)–(c) for doubling with levels in
-any graph (`Doubling.delorme_levelled`, `isBipartiteDegDiam_levelled`, `card_levelled_levels`), the hat lemma in both
+**Status.** Paper proof (above; `geometry.tex` §3). Lean-checked, for any finite graph: Theorem 1.2(a)–(c) under
+(L0), (L1) and (C$_D$) together, with the degree bound $\Delta+m-1$ (the "equality only if" clause of (b) and part (d)
+are not formalised) (`Doubling.delorme_levelled`, `isBipartiteDegDiam_levelled`, `card_levelled_levels`), the hat lemma in both
 directions for generalized polygons given as graphs of diameter $n$ and girth $2n$ with all degrees $\ge2$
 (`Doubling.GenPolygonGraph.condC_iff_forestDiam`), and Corollary 1.4's "if" direction (`delorme_levelled_polygon`).
 
@@ -485,24 +493,29 @@ line $v\in\Sigma$, and $\mathcal A_1=\{v\}$, $\mathcal A_0=\Sigma\cup\{\text{poi
 are its points; a point of $v$ meets only $v$ in $\mathcal A_1$, a line of $\Sigma\setminus\{v\}$ nothing. (L0): a
 point off $v$ is on exactly one line of $\Sigma$ and on no other line of $\mathcal A_0$; a line not in $\Sigma$ has at
 most one point on $v$. The components are the star $v\cup\{\text{points of }v\}$ and single lines, so (C$_4$) holds
-(Lemma 1.3). With $m=2$, Theorem 1.2 gives maximum degree $q+2$, diameter 4 and
-$2(q+1)(q^2+1)+(q^2+1)+(q+1)+2=2q^3+3q^2+3q+6$ elements: 346, 1734, 3064, 4946 at $q=5,9,11,13$.
+(Lemma 1.3). Theorem 1.2 gives maximum degree $q+m$, diameter 4 and
+$2(q+1)(q^2+1)+(m-1)\bigl((q^2+1)+(q+1)+m\bigr)$ elements. For $m=2$ this is $2q^3+3q^2+3q+6$: 346, 1734, 3064,
+4946 at $q=5,9,11,13$; for $m=3$, $q=13$ it is $4760+2\cdot187=5134$, the 2013 value at $\Delta=16$.
 
 **Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. 5.13).** For $q$ odd, an ovoid
 $\mathcal O$ of $Q(4,q)$, $w=\mathbf 1_{\mathcal O}$ and maximum degree $q+2$, at most $q^2-q+2$ shadow lines are
 possible: every old point and clone serves at most one shadow line, so a point off $\mathcal O$ is on at most one entry
 of $\mathcal M$ and a point of $\mathcal O$ on at most two; if some $o\in\mathcal O$ is on two entries, each other entry
-$L$ determines its point $y\notin\mathcal O$ collinear with $o$, on one of the $q-1$ further lines on $o$, injectively,
-so $|\mathcal M|\le2+q(q-1)$; otherwise $\mathcal M$ is a partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]).
+$L$ misses $o$ and so has a unique point $y$ collinear with $o$; $y\notin\mathcal O$ (points of an ovoid are
+pairwise non-collinear); the line $oy$ is not an entry of $\mathcal M$ (else $y\notin\mathcal O$ would be on two
+entries), so it is one of the $q-1$ lines on $o$ other than the two entries through $o$, and $y$ is one of its $q$
+points other than $o$; distinct $L$ give distinct $y$. So $|\mathcal M|\le2+q(q-1)$. Otherwise $\mathcal M$ is a
+partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]; see also [CDPS22], §1).
 
 **Application: $(7,4)\ge359$.** $Q(4,5)$, one clone of each point of an elliptic-quadric ovoid ($w=\mathbf 1_{\mathcal O}$),
-and 21 shadow lines with stand-ins: $2\cdot6\cdot26+26+21=359$, maximum degree 7. This is an explicit example found by
-integer programming (HiGHS proves 21 optimal for this family; `research/gq4x/q4_share_ilp.py`, graph
-`research/gq4x/graphs/q4_share_q5_n359.json`); it is not a member of a proved infinite family. The record file
+and 21 shadow lines with stand-ins: $2\cdot6\cdot26+26+21=359$, maximum degree 7. Such examples come from an integer
+program (HiGHS proves 21 optimal for this family; `research/gq4x/q4_share_ilp.py`, earlier optimum in
+`research/gq4x/graphs/q4_share_q5_n359.json`); they are not members of a proved infinite family. The record file
 `records/bipartite_dd/d7D4/359-spec-d7d4-g017-c11.json` (found by evolutionary search) decomposes the same way after
 deleting 21 redundant edges, with stand-ins essential. Every ovoid of $Q(4,p)$, $p$ prime, is an elliptic quadric
-[BGS06], so the choice of ovoid does not matter. Appendix A lists the 21 shadow lines in coordinates, so this graph,
-too, can be checked by hand. Cell: $(7,4)$, 2013: 346, ours 359 (regular: 350 from Theorem A at $q=5$).
+[BGS06], so the choice of ovoid does not matter. Appendix A lists, in coordinates, an optimum of the same integer
+program re-solved for this note (a different set of 21 lines from the earlier file), so that such a graph can be
+checked by hand. Cell: $(7,4)$, 2013: 346, ours 359 (regular: 350 from Theorem A at $q=5$).
 
 **Status.** Paper proof (above; `NOTE.md` §2, `geometry.tex` Theorem 5.4). Computer-checked on many instances
 (`research/gq4`, `research/gq4x`). Lean-checked for every GQ of order $(s,t)$: the version with all stand-ins original
@@ -544,8 +557,8 @@ one on each fibre.
 **Theorem 4.1 (Theorem A).** Let $q$ be odd, $\varepsilon$ a non-square and $\kappa_1\kappa_2=1/(4\varepsilon)$.
 Every line of $\mathrm{AS}(q)$ meets $\mathcal E_{\kappa_1}\setminus\{x\}$ and $\mathcal E_{\kappa_2}\setminus\{x\}$
 in exactly two points in total (a point in both counted twice). The two quadrics meet only in $x$ and
-$e=(0:1:0:0)$. So $w=\mathbf 1_{\mathcal E_{\kappa_1}\setminus x}+\mathbf 1_{\mathcal E_{\kappa_2}\setminus x}$ is a
-weighted 2-ovoid of $\mathrm{AS}(q)$, with $w(e)=2$ and $w\in\{0,1\}$ elsewhere.
+$e=(0:1:0:0)$. So $\varpi=\mathbf 1_{\mathcal E_{\kappa_1}\setminus x}+\mathbf 1_{\mathcal E_{\kappa_2}\setminus x}$ is a
+weighted 2-ovoid of $\mathrm{AS}(q)$, with $\varpi(e)=2$ and $\varpi\in\{0,1\}$ elsewhere.
 
 The choice $\kappa_1=\tfrac12$, $\kappa_2=\tfrac1{2\varepsilon}$ gives the two quadrics
 
@@ -562,7 +575,7 @@ $\{(\kappa_iN(w)+\mu:1:w):\mu\in\mathbb F\}$ and, for each $d\in\mathrm{PG}(1,q)
 $\ell(\kappa_iN(w),w;d)$. The two clones of $e$ are adjacent to the same $q+2$ lines. Changed old neighbourhoods: the
 fibre over $w_0$ gains the clones of $(\kappa_1N(w_0):1:w_0)$ and $(\kappa_2N(w_0):1:w_0)$; the line
 $\ell(a_0,w_0;d)$ gains the clones of its points on $\mathcal E_1$ and on $\mathcal E_2$, which are given by the roots
-$\lambda$ of the quadratic (4.1) below with $\kappa=\kappa_1,\kappa_2$ (two clones in total). Old points are
+$\lambda$ of the quadratic $(\star)$ below with $\kappa=\kappa_1,\kappa_2$ (two clones in total). Old points are
 unchanged. Every vertex has degree $q+2$.
 
 ### 4.3 Proof
@@ -572,7 +585,7 @@ unchanged. Every vertex has degree $q+2$.
 *Lines of type (ii).* Let $B=N(w_0+d)-N(w_0)-N(d)=2(b_0d_1-\varepsilon c_0d_2)$. The point with parameter $\lambda$
 of $\ell(a_0,w_0;d)$ lies on $\mathcal E_\kappa$ iff $a_0+\lambda\rho=\kappa N(w_0+\lambda d)$, i.e.
 
-$$\kappa N(d)\lambda^2+(\kappa B-\rho)\lambda+\kappa N(w_0)-a_0=0. \tag{4.1}$$
+$$\kappa N(d)\lambda^2+(\kappa B-\rho)\lambda+\kappa N(w_0)-a_0=0. \tag{$\star$}$$
 
 As $N(d)\ne0$ this is a quadratic, with $1+\chi(\mathrm{disc}_\kappa)$ roots. A direct expansion gives
 $B^2-4N(w_0)N(d)=4\varepsilon(b_0d_2-c_0d_1)^2=4\varepsilon\rho^2$, hence
@@ -590,7 +603,7 @@ $\chi(\kappa_1)+\chi(\kappa_2)=0$. (If $a_0=a^*$, the line is tangent to both an
 *Intersection.* $\kappa_1\ne\kappa_2$, since $\kappa_1^2=1/(4\varepsilon)$ is impossible for a non-square
 $\varepsilon$. So $\kappa_1N(w)=\kappa_2N(w)$ forces $N(w)=0$, $w=0$, and the common points are $x$ and $e$. $\square$
 
-*Proof of Corollary 4.2.* Theorem 3.2 with $(s,t)=(q-1,q+1)$, $w$ as in Theorem 4.1 and $\mathcal M=\emptyset$: every
+*Proof of Corollary 4.2.* Theorem 3.2 with $(s,t)=(q-1,q+1)$, $w=\varpi$ of Theorem 4.1 and $\mathcal M=\emptyset$: every
 line has $q$ points and gains exactly two clones, every old point is on $q+2$ lines, and every clone is on the $q+2$
 lines of its point. The order is $q^3+q^2(q+2)+2q^2=2q^2(q+2)$. $\square$
 
@@ -646,31 +659,31 @@ So the $(q+1)/2$ sets $C_a\cup C_{q-a}$, $0\le a\le(q-1)/2$, are 2-ovoids of $W(
 pairing $a\leftrightarrow q-a$ has no fixed point, as $2a\equiv-1\pmod{q+1}$ is impossible for $q+1$ even).
 
 *Proof.* Let $L=\langle y,z\rangle_{\mathbb F}$ and $u=sy+tz$ ($s,t\in\mathbb F$). Then
-$\mathrm N(u)=As^2+\beta st+Ct^2$ with $A=\mathrm N(y)$, $C=\mathrm N(z)$, $\beta=y\bar z+\bar yz$, all in $K$. Put
+$\mathrm N(u)=A_1s^2+\tau st+A_2t^2$ with $A_1=\mathrm N(y)$, $A_2=\mathrm N(z)$, $\tau=y\bar z+\bar yz$, all in $K$. Put
 $\theta=y\bar z-\bar yz$. As $\bar\theta=-\theta$, $\theta/d\in K$; write $\theta=dk_0$, $k_0\in K$. Then
 
-$$\mathcal D:=\beta^2-4AC=\theta^2=hk_0^2,\qquad b(y,z)=\mathrm{Tr}(hk_0).$$
+$$\mathcal D:=\tau^2-4A_1A_2=\theta^2=hk_0^2,\qquad b(y,z)=\mathrm{Tr}(hk_0).$$
 
 Fix $\omega\in K^*$ with $\omega'=-\omega$. For $\mu\in K^*$ put $\nu=\omega/\mu$; the kernel of
-$k\mapsto\mathrm{Tr}(\nu k)$ is the line $\mu\mathbb F$. So $\langle u\rangle$ lies in
+$k\mapsto\mathrm{Tr}(\nu k)$ is the $\mathbb F$-subspace $\mu\mathbb F$. So $\langle u\rangle$ lies in
 $C_\mu:=\{\langle u\rangle:\mathrm N(u)\in\mu\mathbb F^*\}$ iff $(s:t)$ is a zero of the binary form
 
-$$f_\nu(s,t)=\mathrm{Tr}(\nu A)s^2+\mathrm{Tr}(\nu\beta)st+\mathrm{Tr}(\nu C)t^2 .$$
+$$f_\nu(s,t)=\mathrm{Tr}(\nu A_1)s^2+\mathrm{Tr}(\nu\tau)st+\mathrm{Tr}(\nu A_2)t^2 .$$
 
-(a) Suppose $f_\nu\equiv0$. Then $A,\beta,C\in\mu\mathbb F$. If $\mathcal D\ne0$, then $hk_0^2=\mathcal D\in\mu^2\mathbb F^*$,
+(a) Suppose $f_\nu\equiv0$. Then $A_1,\tau,A_2\in\mu\mathbb F$. If $\mathcal D\ne0$, then $hk_0^2=\mathcal D\in\mu^2\mathbb F^*$,
 so $h\in(K^*)^2\mathbb F^*=(K^*)^2$ (every element of $\mathbb F^*$ is a square in $K$, since $q-1$ divides
 $(q^2-1)/2$), but $h$ generates $K^*$, which has even order. If $\mathcal D=0$, then
 $\mathrm N(sy+tz)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with $\alpha_0,\beta_0,\gamma_0\in\mathbb F$,
-$\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A\ne0$), which vanishes at $(s:t)=(-\beta_0:2\alpha_0)$:
+$\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A_1\ne0$), which vanishes at $(s:t)=(-\beta_0:2\alpha_0)$:
 impossible, since $\mathrm N(u)\ne0$ for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(D(\nu))\le2$ projective zeros,
-$D(\nu)=\mathrm{Tr}(\nu\beta)^2-4\,\mathrm{Tr}(\nu A)\,\mathrm{Tr}(\nu C)$.
+$D(\nu)=\mathrm{Tr}(\nu\tau)^2-4\,\mathrm{Tr}(\nu A_1)\,\mathrm{Tr}(\nu A_2)$.
 
 (b) Expanding with $\mathrm{Tr}(\nu k)=\nu k+\nu'k'$,
 
-$$D(\nu)=\mathrm{Tr}(\nu^2\mathcal D)+\nu\nu'P,\qquad P=2\beta\beta'-4AC'-4A'C\in\mathbb F .$$
+$$D(\nu)=\mathrm{Tr}(\nu^2\mathcal D)+\nu\nu'P,\qquad P=2\tau\tau'-4A_1A_2'-4A_1'A_2\in\mathbb F .$$
 
-If $L$ is totally isotropic, $\mathrm{Tr}(hk_0)=0$, so $hk_0\in\omega\mathbb F$ and $e:=h\mathcal D=(hk_0)^2\in\omega^2\mathbb F\subseteq\mathbb F$.
-Then $\mathrm{Tr}(h^2\nu'^2\mathcal D)=e(h\nu'^2+h'\nu^2)=hh'\,\mathrm{Tr}(\nu^2\mathcal D)$, and since
+If $L$ is totally isotropic, $\mathrm{Tr}(hk_0)=0$, so $hk_0\in\omega\mathbb F$ and $\eta:=h\mathcal D=(hk_0)^2\in\omega^2\mathbb F\subseteq\mathbb F$.
+Then $\mathrm{Tr}(h^2\nu'^2\mathcal D)=\eta(h\nu'^2+h'\nu^2)=hh'\,\mathrm{Tr}(\nu^2\mathcal D)$, and since
 $(h\nu')(h\nu')'=hh'\nu\nu'$,
 
 $$D(h\nu')=\mathrm N_{K/\mathbb F}(h)\,D(\nu).$$
@@ -787,8 +800,8 @@ cone with vertex $v$ over a conic, with $(q+1)+(q+1)q^2$ points: exactly the num
 $v$ ($q+1$ on $v$, and $q$ more on each of the $q(q+1)$ other lines meeting $v$). If such a point is in $\Pi_z$, then
 $X_0=-cX_4$ and $X_3^2+cX_4^2=0$, so $X_0=X_3=X_4=0$ and the point is on $v$.
 
-(e) If $m\in S_z\cap S_{z'}$, $m\ne v$, then $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$ on $m$, so some point of $m$
-has $X_2=X_5=0$ and is at distance $\le3$ from $v$ by (d); but $m$ and $v$ are opposite by (b), so every point of $m$
+(e) If $\ell\in S_z\cap S_{z'}$, $\ell\ne v$, then $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$ on $\ell$, so some point of $\ell$
+has $X_2=X_5=0$ and is at distance $\le3$ from $v$ by (d); but $\ell$ and $v$ are opposite by (b), so every point of $\ell$
 is at distance 5 from $v$. $\square$
 
 ### 6.2 Delorme's levels and whiskers
@@ -849,8 +862,8 @@ $H(q)$ appears once in this table.
 | point $r\notin\Pi$ ($-1$) | $r$ | all $m$ versions of the line of $\mathcal L_v\cup W$ on $r$ (if any); every other line on $r$ | $q+m$, or $q+1$ if $r$ is free and on no whisker |
 | line $N\notin\mathcal A_0$ ($-1$) | $N$ | all $m$ versions of its point in $\Pi$ (not on $v$); its $q$ other points | $q+m$ |
 
-For $m=2$ ($\Delta=q+2$) the new elements are $\mathcal A_0$ (one extra version each), $\mathcal A_1$ (two more each)
-and $\mathcal A_2$ (four more).
+An element of level $k$ has $m^{k+1}$ versions. For $m=2$ ($\Delta=q+2$) the number of new elements is
+$|\mathcal A_0|+2|\mathcal A_1|+4|\mathcal A_2|$ (Theorem 1.2(c)).
 
 ### 6.3 An exact whisker set for every odd $q$
 
@@ -872,7 +885,7 @@ $c_0t+c_1=1/(t^2+c)$, $t\in\mathbb F$, of the $(c_0,c_1)$-plane; each has $q-1$ 
 $t=0$ and $t=1$ meet at $c_0=1/(1+c)-1/c=-1/(c(1+c))\ne0$ ($c\ne-1$ as $-c$ is a non-square). So these lines cover at
 most $q(q-1)-1$ of the $q(q-1)$ points with $c_0\ne0$. $\square$
 
-One valid choice for each $q$ in the table (smallest in the natural order; $\mathbb F_9=\mathbb F_3[i]$, $i^2=-1$):
+One valid choice for each $q$ in the table ($\mathbb F_9=\mathbb F_3[i]$, $i^2=-1$):
 
 | $q$ | 3 | 5 | 7 | 9 | 11 | 13 |
 |---|---|---|---|---|---|---|
@@ -881,11 +894,11 @@ One valid choice for each $q$ in the table (smallest in the natural order; $\mat
 
 **Theorem 6.5 (exact whiskers).** Let $q$ be odd, $-c$ a non-square, $c_0,c_1$ as in Lemma 6.4. Then
 
-$$W=\bigl\{m\in S_z\setminus\{v\}:\ z\in\mathbb F^2\setminus\{0\},\ \nu(m\cap\Pi)=F(z)\bigr\}$$
+$$W=\bigl\{\ell\in S_z\setminus\{v\}:\ z\in\mathbb F^2\setminus\{0\},\ \nu(\ell\cap\Pi)=F(z)\bigr\}$$
 
 is an exact whisker set: every free point lies on exactly one line of $W$, and $|W|=q^2(q^2-1)$.
 
-(Here $m\cap\Pi$ is one point not on $v$: $m\subseteq\Pi_z$, $m\ne v$, so $m\notin S$ by Lemma 6.1(e) and $m$ is
+(Here $\ell\cap\Pi$ is one point not on $v$: $\ell\subseteq\Pi_z$, $\ell\ne v$, so $\ell\notin S$ by Lemma 6.1(e) and $\ell$ is
 opposite $v$ by Lemma 6.1(b).) The proof uses a complex structure on each $\Pi_z$. Write a point of $\Pi_z$ as
 $x=(x_1,\dots,x_6)$, meaning $(X_0,\dots,X_6)=(-cx_4-\alpha x_2-\beta x_5,x_1,\dots,x_6)$; on $\Pi_z$ the quadratic
 form is $Q_z(x)=x_1x_5+x_2x_6-x_3^2-cx_4^2-\alpha x_2x_4-\beta x_4x_5$, with polar form $B_z$. Put
@@ -918,8 +931,8 @@ $p\in\Pi_z$ iff $z$ lies on the affine line
 
 $$A_p=\{(\alpha,\beta):\ \alpha p_2+\beta p_5=-1\}\subseteq\mathbb F^2\setminus\{0\},$$
 
-which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $m_p(z)$ be the line of $S_z$ on $p$ and
-$X(z)=m_p(z)\cap\Pi$.
+which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ on $p$ and
+$X(z)=\ell_p(z)\cap\Pi$.
 
 **Lemma 6.7 (key identity).** For $z=(\alpha,\beta)\in A_p$,
 
@@ -929,7 +942,7 @@ So $\Phi_p$ is affine on $A_p$, with increment $-p_2^3/(cp_2^2+p_5^2)$ along $(p
 
 *Proof.* Put $\Theta=cp_2^2+p_5^2\ne0$ and $\gamma=-\alpha p_5+c\beta p_2$. On $\Pi_z$ the function
 $\lambda(y)=y_0+cy_4$ equals $-\alpha y_2-\beta y_5$, and $\Pi=\{\lambda=0\}$. We have $\lambda(p)=1$ and
-$\lambda(J_zp)=-\alpha p_5+c\beta p_2=\gamma$. By Lemma 6.6(c), $m_p(z)=\langle p,J_zp\rangle$, so
+$\lambda(J_zp)=-\alpha p_5+c\beta p_2=\gamma$. By Lemma 6.6(c), $\ell_p(z)=\langle p,J_zp\rangle$, so
 $X(z)=\gamma p-J_zp$, with
 
 $$X_2=\gamma p_2-p_5,\quad X_3=\gamma p_3+cp_4+\beta p_5,\quad X_4=\gamma p_4-p_3-\beta p_2,\quad X_5=\gamma p_5+cp_2 .$$
@@ -943,9 +956,9 @@ $\beta\bigl(2\gamma p_2p_5+cp_2^2-p_5^2+(\gamma p_2-p_5)^2\bigr)/((\gamma^2+c)\T
 $(p_5,-p_2)$, $\beta$ changes by $-p_2$. $\square$
 
 *Proof of Theorem 6.5.* Let $p$ be free. The lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on $p$ are exactly the $q$
-lines $m_p(z)$, $z\in A_p$, and they are distinct (a common line would lie in $S_z\cap S_{z'}=\{v\}$); since
+lines $\ell_p(z)$, $z\in A_p$, and they are distinct (a common line would lie in $S_z\cap S_{z'}=\{v\}$); since
 $S_z\cap S_{z'}=\{v\}$, each line of $W$ belongs to a single $S_z$. As
-$F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $m_p(z)\in W$ iff $\Phi_p(z)-(c_0\alpha+c_1\beta)=0$.
+$F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $\ell_p(z)\in W$ iff $\Phi_p(z)-(c_0\alpha+c_1\beta)=0$.
 The left side is affine on $A_p$ with increment
 
 $$-\frac{p_2^3}{\Theta}-(c_0p_5-c_1p_2)=-\frac{G(p_5,-p_2)}{\Theta}\ne0$$
@@ -966,8 +979,8 @@ $n_b(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
 
 With $W$ exact, every element outside $\mathcal A_0$ is incident with exactly one element of $\mathcal A_0$; by the
 counting bound for doublings of a generalized $n$-gon of order $(q,q)$ with $N$ points,
-$q|\mathcal A_0|+2c\le2N$ ($c$ the number of components; `geometry.tex` Prop. 3.6), the single-level part is
-as large as possible ($c=q^3+1$).
+$q|\mathcal A_0|+2k\le2N$ ($k$ the number of components of $\mathcal A_0$; `geometry.tex` Prop. 3.6), the
+single-level part is as large as possible (here $k=q^3+1$).
 
 **Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of $H(q)$ along a
 Hermitian spread [D85a, D85b]. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: $8992$, $142464$,
@@ -1237,7 +1250,8 @@ the 2026-10-20 full build.
 - [T59] J. Tits, Sur la trialité et certains groupes qui s'en déduisent, Publ. Math. IHÉS 2 (1959) 13–60.
 - [T80] J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A 29 (1980) 87–93.
 - [Tal91] G. Tallini, Blocking sets with respect to planes in PG(3,q) and maximal spreads of a nonsingular quadric in
-  PG(4,q), Mitt. Math. Sem. Giessen 201 (1991) 141–147 (page range to be verified).
+  PG(4,q), Mitt. Math. Sem. Giessen 201 (1991) 141–147 (Proceedings of the First International Conference on Blocking
+  Sets, Giessen 1989; pages as cited by Klein–Metsch, Innov. Incidence Geom.).
 - [VM98] H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998.
 - [CW] CombinatoricsWiki, The degree diameter problem for bipartite graphs (values read 2026-10-10).
 
