@@ -989,6 +989,10 @@ Hermitian spread [D85a, D85b]. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4
 $374452$, $842048$ at $q=5,9,11,13$; at $q=13$, $m=3$, it gives $884062$. These are the 2013 table values at
 $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
 
+*Worked counts.* $q=5$, $m=2$: $2\cdot6\cdot651=7812$ elements of $H(5)$, $|\mathcal A_0|=1512$ (of which $|W|=600$),
+$|\mathcal A_1|=132$, $|\mathcal A_2|=1$, so $7812+1512+2\cdot132+4=9592$. $q=13$, $m=3$: $804468$ elements of
+$H(13)$, $|\mathcal A_0|=61544$ ($|W|=28392$), $|\mathcal A_1|=2212$, so $804468+2(61544+3\cdot2212+9)=940846$.
+
 **Cells.** $m=2$: $(7,6)$ $9592$ (2013: 8992), $(11,6)$ $148944$ (142464), $(13,6)$ $388972$ (374452), $(15,6)$
 $870440$ (842048). $m=3$, $q=13$: $(16,6)$ $940846$ (884062). These graphs are not regular (Section 7).
 
@@ -1054,7 +1058,7 @@ every line of $S\setminus\{v\}$.
 if $Q(x)=0$ then $Q(sx+tJ_zx)=(s^2+st+\delta t^2)Q(x)=0$ by (a), and by (b) the line satisfies Tits' equations, so it is
 the line of Lemma 6.10(b). In (d), $s^2+st+\delta t^2\ne0$ for $(s,t)\ne0$. $\square$
 
-Let $p$ be free, normalised by $p_0+p_3+\delta p_4=1$. With $\lambda(y)=y_0+y_3+\delta y_4$ we have
+Let $p$ be free; then $(p_2,p_5)\ne(0,0)$ by Lemma 6.10(d), and we normalise $p_0+p_3+\delta p_4=1$. With $\lambda(y)=y_0+y_3+\delta y_4$ we have
 $\Pi=\{\lambda=0\}$ and $\lambda=\alpha y_2+\beta y_5$ on $\Pi_z$, so $p\in\Pi_z$ iff $z$ lies on the affine line
 $A_p:\ \alpha p_2+\beta p_5=1$ (direction $(p_5,p_2)$). For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ on $p$ and
 $X(z)=\ell_p(z)\cap\Pi$.
@@ -1085,7 +1089,8 @@ increment $p_2^3/\Theta+c_0p_5+c_1p_2=G(p_5,p_2)/\Theta\ne0$, so it vanishes at 
 **Corollary 6.15.** Corollary 6.8 and Theorem 7.3 hold for every even $q\ge4$. For $q=2$ the formula gives no whisker
 set (Lemma 6.11), but an exact whisker set of $12=q^2(q^2-1)$ lines exists: it was found by an integer program
 (`research/evenq/whiskers_raw_q2.json`) and its exactness is kernel-checked (`HexagonEven.q2_exact`); so Corollary 6.8
-and Theorem 7.3 with $m=2$ hold for $q=2$ as well (208 and 192 vertices). Computer checks: $W$ exact for $q=4,8,16$
+and Theorem 7.3 hold for $q=2$ and every $m\ge2$ as well (Lean: $m=2$, 208 and 192 vertices; computer: also $m=3$, 324
+and 270 vertices). Computer checks: $W$ exact for $q=4,8,16$
 and the graphs for $q=2,4,8$ (and $q=16$, $m=2$) built and checked by all-pairs BFS (`research/evenq/`, `geometry.tex`
 Table 3). Lean: `HexagonEven.theorem4_even`, `theoremD_even`, `theoremR` ($q\ge4$), `theoremD_q2`, `theoremR_q2`.
 None of this changes a table cell with
@@ -1337,7 +1342,8 @@ four first attempts were killed for lack of memory and passed on retry), and `#p
   PG(4,q), Mitt. Math. Sem. Giessen 201 (1991) 141–147 (Proceedings of the First International Conference on Blocking
   Sets, Giessen 1989; pages as cited by Klein–Metsch, Innov. Incidence Geom.).
 - [VM98] H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998.
-- [CW] CombinatoricsWiki, The degree diameter problem for bipartite graphs (values read 2026-10-10).
+- [CW] CombinatoricsWiki, The degree diameter problem for bipartite graphs (values read on 2026-10-10 and reported as
+  matching on 2026-10-20; see Change 1).
 
 ---
 

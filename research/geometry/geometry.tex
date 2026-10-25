@@ -550,7 +550,7 @@ Fix a non-square $\varepsilon\in\F$ and let $\Nm(w)=w_1^2-\varepsilon w_2^2$, an
 This is an elliptic quadric of $\PG(3,q)$ through $x$, with tangent plane $x^\perp$ at $x$. So $\cE_\kappa\cap x^\perp=\{x\}$ and $\cE_\kappa\setminus\{x\}=\{(\kappa\Nm(w),w):w\in\F^2\}$ is a set of $q^2$ points of $\AS(q)$.
 
 \begin{theorem}\label{thm:A}
-Let $q$ be odd, $\varepsilon$ a non-square and $\kappa_1\kappa_2=1/(4\varepsilon)$. Then every line of $\AS(q)$ meets $\cE_{\kappa_1}\setminus\{x\}$ and $\cE_{\kappa_2}\setminus\{x\}$ in exactly two points in total, counted with multiplicity. The two quadrics meet only in $x$ and $e=(0,0)$. Hence $w=\mathbf 1_{\cE_{\kappa_1}\setminus x}+\mathbf 1_{\cE_{\kappa_2}\setminus x}$ is a weighted $2$-ovoid of $\AS(q)$ with $w(e)=2$.
+Let $q$ be odd, $\varepsilon$ a non-square and $\kappa_1\kappa_2=1/(4\varepsilon)$. Then every line of $\AS(q)$ meets $\cE_{\kappa_1}\setminus\{x\}$ and $\cE_{\kappa_2}\setminus\{x\}$ in exactly two points in total, a point on both quadrics being counted twice. The two quadrics meet only in $x$ and $e=(0,0)$. Hence $w=\mathbf 1_{\cE_{\kappa_1}\setminus x}+\mathbf 1_{\cE_{\kappa_2}\setminus x}$ is a weighted $2$-ovoid of $\AS(q)$ with $w(e)=2$.
 \end{theorem}
 
 \begin{proof}
@@ -707,7 +707,7 @@ This is the sum of two hyperbolic planes and the binary form $X_3^2+cX_4^2$, whi
 
 (d) Let $y=ae_1+be_6$ be a point of $v$ and let $u$ be a point with $yu$ a line of $\Hq(q)$. The Tits equations $p_{12}=p_{34}$ and $p_{65}=p_{30}$ and the polarity condition give $au_2=0$, $bu_5=0$ and $au_5+bu_2=0$, hence $u_2=u_5=0$. So the points at distance at most $3$ from $v$ satisfy $X_2=X_5=0$. Conversely, $\Qf(6,q)\cap\{X_2=X_5=0\}$ is $X_0X_4=X_3^2$, a cone with vertex $v$ over a conic; it has $(q+1)+(q+1)q^2$ points, which is the number of points at distance at most $3$ from $v$ ($q+1$ on $v$, and $q$ further points on each of the $q(q+1)$ other lines meeting $v$). If such a point also lies in $\Pi_z$, then $X_0=-cX_4$ and $-cX_4^2=X_3^2$, so $X_0=X_3=X_4=0$ and the point is on $v$.
 
-(e) Let $m\in S_z\cap S_{z'}$, $m\ne v$. On $m$, $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$, so the linear map $m\to\F^2$, $X\mapsto(X_2,X_5)$, has a non-trivial kernel, and $m$ has a point with $X_2=X_5=0$. By (d) that point is at distance at most $3$ from $v$. But $m$ and $v$ are opposite by (b), so every point of $m$ is at distance $5$ from $v$.
+(e) Let $\ell\in S_z\cap S_{z'}$, $\ell\ne v$. On $\ell$, $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$, so the linear map $\ell\to\F^2$, $X\mapsto(X_2,X_5)$, has a non-trivial kernel, and $\ell$ has a point with $X_2=X_5=0$. By (d) that point is at distance at most $3$ from $v$. But $\ell$ and $v$ are opposite by (b), so every point of $\ell$ is at distance $5$ from $v$.
 \end{proof}
 
 \subsection{Delorme's doubling and whiskers}
@@ -721,7 +721,7 @@ free points.
 A \emph{whisker set} is a set $W$ of lines of $\Hq(q)$, each opposite $v$ and not in $S$, such that no free point is on two lines of $W$. It is \emph{exact} if every free point is on exactly one line of $W$.
 \end{definition}
 
-A line $m$ opposite $v$ and not in $S$ meets $\Pi$ in one point, which lies on a unique line of $S\setminus\{v\}$, and its other $q$ points are free. So $|W|\le q^3(q^2-1)/q=q^2(q^2-1)$, with equality if and only if $W$ is exact.
+A line $\ell$ opposite $v$ and not in $S$ meets $\Pi$ in one point, which lies on a unique line of $S\setminus\{v\}$, and its other $q$ points are free. So $|W|\le q^3(q^2-1)/q=q^2(q^2-1)$, with equality if and only if $W$ is exact.
 
 \begin{theorem}\label{thm:whisk}
 Let $W$ be a whisker set and $m\ge2$. Put
@@ -787,12 +787,12 @@ For instance, the following choices are valid (with $\F_9=\F_3[i]$, $i^2=-1$): $
 \begin{theorem}\label{thm:exact}
 Let $q$ be odd, $-c$ a non-square, and $c_0,c_1$ as in Lemma~\ref{lem:G}. Then
 \[
-W=\bigl\{\,m\in S_z\setminus\{v\}\;:\; z\in\F^2\setminus\{0\},\ \nu(m\cap\Pi)=F(z)\,\bigr\}
+W=\bigl\{\,\ell\in S_z\setminus\{v\}\;:\; z\in\F^2\setminus\{0\},\ \nu(\ell\cap\Pi)=F(z)\,\bigr\}
 \]
 is an exact whisker set: every free point lies on exactly one line of $W$, and $|W|=q^2(q^2-1)$.
 \end{theorem}
 
-Here $m\cap\Pi$ is a single point not on $v$: $m\subseteq\Pi_z$, $m\ne v$, so $m\notin S$ by Lemma~\ref{lem:herm}(e), and $m$ is opposite $v$ by Lemma~\ref{lem:herm}(b).
+Here $\ell\cap\Pi$ is a single point not on $v$: $\ell\subseteq\Pi_z$, $\ell\ne v$, so $\ell\notin S$ by Lemma~\ref{lem:herm}(e), and $\ell$ is opposite $v$ by Lemma~\ref{lem:herm}(b).
 
 The proof rests on a complex structure on each hyperplane $\Pi_z$ and on an identity that it yields. We use the following notation. A point of $\Pi_z$, $z=(\alpha,\beta)$, is written $x=(x_1,\dots,x_6)$, meaning $(X_0,\dots,X_6)=(-cx_4-\alpha x_2-\beta x_5,\,x_1,\dots,x_6)$. On $\Pi_z$ the quadratic form is
 \[
@@ -822,13 +822,13 @@ For every $z\in\F^2$:
 (d) The first assertions are direct: $\mathrm{num}(J_0x)=x_5(-cx_4)-x_3(-cx_2)=c\,\mathrm{num}(x)$, $\mathrm{den}(J_0x)=cx_5^2+c^2x_2^2=c\,\mathrm{den}(x)$, and the polar forms are $x_2y_3+x_3y_2-x_4y_5-x_5y_4$ and $2cx_2y_2+2x_5y_5$, which vanish for $y=J_0x$. By (c) every line $n\in S\setminus\{v\}$ is $\{ax+bJ_0x\}$ for any point $x$ of $n$, and $\mathrm{num}(ax+bJ_0x)=(a^2+cb^2)\mathrm{num}(x)$, $\mathrm{den}(ax+bJ_0x)=(a^2+cb^2)\mathrm{den}(x)$. The factor $a^2+cb^2$ is non-zero because $-c$ is a non-square. So $\nu$ is constant on $n$.
 \end{proof}
 
-In particular the condition defining $W$ depends only on the line of $S$ that $m$ meets: $\nu$ is a function on the Hermitian spread $S\setminus\{v\}$.
+In particular the condition defining $W$ depends only on the line of $S$ that $\ell$ meets: $\nu$ is a function on the Hermitian spread $S\setminus\{v\}$.
 
 Let $p$ be a free point. By Lemma~\ref{lem:herm}(d), $(p_2,p_5)\ne(0,0)$, and since $p\notin\Pi$ we may normalize $p_0+cp_4=1$. Then $p\in\Pi_z$ if and only if $z$ lies on the affine line
 \[
 A_p=\{(\alpha,\beta):\alpha p_2+\beta p_5=-1\}\subseteq\F^2\setminus\{0\},
 \]
-which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $m_p(z)$ be the line of $S_z$ through $p$ (Lemma~\ref{lem:herm}(b)) and $X(z)=m_p(z)\cap\Pi$.
+which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ through $p$ (Lemma~\ref{lem:herm}(b)) and $X(z)=\ell_p(z)\cap\Pi$.
 
 \begin{lemma}[Key identity]\label{lem:key}
 For $z=(\alpha,\beta)\in A_p$,
@@ -843,7 +843,7 @@ if $p_5=0$ and $z=(-1/p_2,\,s)$, then $\Phi_p(z)=(p_2s+p_3)/(cp_2)$.
 \end{lemma}
 
 \begin{proof}
-Put $\Theta=cp_2^2+p_5^2\ne0$ and $\gamma=-\alpha p_5+c\beta p_2$. Write $p=(p_1,\dots,p_6)$ in the coordinates of $\Pi_z$; then $\alpha p_2+\beta p_5=-1$. For $y\in\Pi_z$ the quantity $\lambda(y)=y_0+cy_4$ equals $-\alpha y_2-\beta y_5$, and $\Pi$ is the set where it vanishes. We have $\lambda(p)=1$ and, by the formula for $J_z$, $\lambda(J_zp)=-\alpha p_5+c\beta p_2=\gamma$. By Lemma~\ref{lem:J}(c), $m_p(z)=\langle p,J_zp\rangle$, so $X(z)=\gamma p-J_zp$. Its coordinates are
+Put $\Theta=cp_2^2+p_5^2\ne0$ and $\gamma=-\alpha p_5+c\beta p_2$. Write $p=(p_1,\dots,p_6)$ in the coordinates of $\Pi_z$; then $\alpha p_2+\beta p_5=-1$. For $y\in\Pi_z$ the quantity $\lambda(y)=y_0+cy_4$ equals $-\alpha y_2-\beta y_5$, and $\Pi$ is the set where it vanishes. We have $\lambda(p)=1$ and, by the formula for $J_z$, $\lambda(J_zp)=-\alpha p_5+c\beta p_2=\gamma$. By Lemma~\ref{lem:J}(c), $\ell_p(z)=\langle p,J_zp\rangle$, so $X(z)=\gamma p-J_zp$. Its coordinates are
 \[
 X_2=\gamma p_2-p_5,\quad X_3=\gamma p_3+cp_4+\beta p_5,\quad X_4=\gamma p_4-p_3-\beta p_2,\quad X_5=\gamma p_5+cp_2 .
 \]
@@ -864,7 +864,7 @@ The identities in Lemmas~\ref{lem:J} and~\ref{lem:key} are polynomial identities
 \end{remark}
 
 \begin{proof}[Proof of Theorem~\ref{thm:exact}]
-Let $p$ be a free point, normalized as above. The lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ through $p$ are exactly the lines $m_p(z)$, $z\in A_p$, and these $q$ lines are distinct: a common line would lie in $S_z\cap S_{z'}=\{v\}$. Since $F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $m_p(z)\in W$ if and only if
+Let $p$ be a free point, normalized as above. The lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ through $p$ are exactly the lines $\ell_p(z)$, $z\in A_p$, and these $q$ lines are distinct: a common line would lie in $S_z\cap S_{z'}=\{v\}$. Since $F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $\ell_p(z)\in W$ if and only if
 \[
 \Phi_p(z)-(c_0\alpha+c_1\beta)=0 .
 \]
@@ -883,7 +883,7 @@ n_b(q+m,6)\ge2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr).
 In particular $n_b(q+2,6)\ge2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ and $n_b(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
 \end{corollary}
 
-By Proposition~\ref{prop:count} an exact whisker set is the most this family can give: with $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$, and equality $q|\cA_0|+2c=2N$ holds ($c=q^3+1$ components).
+By Proposition~\ref{prop:count} an exact whisker set is the most this family can give: with $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$, and equality $q|\cA_0|+2k=2N$ holds, with $k=q^3+1$ components.
 
 \subsection{Regular versions}
 The structure of Theorem~\ref{thm:whisk} with $W$ exact has equally many points and lines in $\cA_0$, but more lines than points in $\cA_1$ and $\cA_2$; it has $(m-1)m(q^3-q+m)$ more lines than points. We remove repeated lines and then add flags.
@@ -1028,13 +1028,13 @@ The $\beta$-terms add up to $\beta\bigl((\gamma+\delta+1)+(\gamma+1)^2\bigr)p_2^
 \begin{theorem}\label{thm:exact2}
 Let $q\ge4$ be even and $c_0,c_1$ as in Lemma~\ref{lem:G2}. Then
 \[
-W=\bigl\{\,m\in S_z\setminus\{v\}\;:\;z\in\F^2\setminus\{0\},\ \nu(m\cap\Pi)=F(z)\,\bigr\}
+W=\bigl\{\,\ell\in S_z\setminus\{v\}\;:\;z\in\F^2\setminus\{0\},\ \nu(\ell\cap\Pi)=F(z)\,\bigr\}
 \]
 is an exact whisker set, so $|W|=q^2(q^2-1)$. For $q=2$ the formula gives none, since no $(c_0,c_1)$ is good (Lemma~\ref{lem:G2}); but an exact whisker set of $12=q^2(q^2-1)$ lines exists, found by computer (data: \path{research/evenq/whiskers_raw_q2.json}, program \path{research/evenq/explore.py}, mode \texttt{raw}). So Theorem~\ref{thm:whisk} has an exact $W$ for every even $q$, with a computer-found $W$ when $q=2$.
 \end{theorem}
 
 \begin{proof}
-As in Theorem~\ref{thm:exact}: the lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on a free point $p$ are the $q$ distinct lines $m_p(z)$, $z\in A_p$, and $m_p(z)\in W$ if and only if $\Phi_p(z)+c_0\alpha+c_1\beta=0$, because $F(z)=c_0\alpha+c_1\beta+\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)$. By Lemma~\ref{lem:key2} the left side is affine on $A_p$ with increment
+As in Theorem~\ref{thm:exact}: the lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on a free point $p$ are the $q$ distinct lines $\ell_p(z)$, $z\in A_p$, and $\ell_p(z)\in W$ if and only if $\Phi_p(z)+c_0\alpha+c_1\beta=0$, because $F(z)=c_0\alpha+c_1\beta+\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)$. By Lemma~\ref{lem:key2} the left side is affine on $A_p$ with increment
 \[
 \frac{p_2^3}{\Theta}+c_0p_5+c_1p_2=\frac{G(p_5,p_2)}{\Theta}\ne0
 \]
@@ -1089,7 +1089,7 @@ M_b(q+2,D)-M_b(q+1,D)=2\sum_{i=1}^{D-1}\bigl((q+1)^i-q^i\bigr)=2(D-1)q^{D-2}+O(q
 \]
 it is $4q+4$ for $D=3$ and $6q^2+10q+6$ for $D=4$. Doubling cannot close this gap. By Proposition~\ref{prop:count}, a doubled set satisfies $|\cA_0|<2N/q$, where $N=q^{D-1}+O(q^{D-2})$ is the number of points; the higher levels are smaller still, since every element of $\cA_1$ has all its $q+1$ neighbors in $\cA_0$. So doubling gains at most $2q^{D-2}+O(q^{D-3})$ elements, roughly a fraction $1/(D-1)$ of the gap.
 \begin{itemize}[leftmargin=1.5em]
-\item $D=3$: the gain is a constant. A pure doubling gains at most $2$ (Proposition~\ref{prop:d3patch}); with patches, three hats gain $8$ \cite{AL20} and four hats gain $10$ (Theorem~\ref{thm:fourhat}).
+\item $D=3$: the gain is a constant. A pure $m$-fold doubling gains at most $2(m-1)$, that is $2$ at $\Delta=q+2$ (Proposition~\ref{prop:d3patch}); with patches, three hats gain $8$ \cite{AL20} and four hats gain $10$ (Theorem~\ref{thm:fourhat}).
 \item $D=4$: the gain is of order $q^2$. Delorme's doubling gains $q^2+q+4$. For even $q$, doubling an ovoid and a spread of $\Qf(4,q)$ gains $2(q^2+1)$ and meets the counting bound of Proposition~\ref{prop:count} with equality (Section~\ref{sec:even4}). For odd $q$, Theorem~\ref{thm:A} uses a different quadrangle, $\AS(q)$, and has $2q^2(q+2)=2(q+1)(q^2+1)+2q^2-2q-2$ elements, which has the order of magnitude of the counting bound $2q^2+O(q)$; Proposition~\ref{prop:shadowbound} limits the shadow-line variant on $\Qf(4,q)$ to at most $q+5$ more.
 \item $D=6$: the gain is of order $q^4$. Delorme's doubling gains $q^4+O(q^3)$; with an exact whisker set (Theorem~\ref{thm:exact} for odd $q$, Theorem~\ref{thm:exact2} for even $q\ge4$, a computer-found set for $q=2$) the gain is $2q^4+4q^3+4q+10$, and the single-level part attains the counting bound with equality.
 \end{itemize}
@@ -1120,7 +1120,7 @@ $(15,6)$ & $13$ & $1158390$ & $842048$ & $842048$ & $\mathbf{870440}$ & $866068$
 $(16,6)$ & $13$ & $1627232$ & $884062$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}, $m=3$\\
 \bottomrule
 \end{tabular}
-\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``2013'' is the value in Table~4 of the 2013 survey \cite{MS13}; ``table'' is the value listed in \cite{CW} (as read on 10 and 20 October 2026; later attempts to reach the page failed). They differ only at $(13,3)$ and $(15,3)$, where \cite{AL20} improved $270$ and $370$ to $274$ and $374$; for $D=4$ and $D=6$ both are Delorme's values \cite{D85a,D85b} (Example~\ref{ex:delorme4} and Theorem~\ref{thm:whisk} with $W=\emptyset$). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family; Appendix~\ref{app:74} lists it in coordinates (data: \protect\path{research/gq4x/graphs/q4_share_q5_n359.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
+\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``2013'' is the value in Table~4 of the 2013 survey \cite{MS13}; ``table'' is the value listed in \cite{CW} (values read on 10 October 2026 and reported as matching on 20 October 2026; later attempts to reach the page failed). They differ only at $(13,3)$ and $(15,3)$, where \cite{AL20} improved $270$ and $370$ to $274$ and $374$; for $D=4$ and $D=6$ both are Delorme's values \cite{D85a,D85b} (Example~\ref{ex:delorme4} and Theorem~\ref{thm:whisk} with $W=\emptyset$). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family; Appendix~\ref{app:74} lists such an example in coordinates (data: \protect\path{research/theorems/polish/q4_359_lines.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
 \label{tab:values}
 \end{table}
 
@@ -1130,9 +1130,9 @@ $(16,6)$ & $13$ & $1627232$ & $884062$ & $884062$ & $\mathbf{940846}$ & $927724$
 The following statements are proved in Lean~4 (version 4.34.1) with Mathlib, in the library \path{lean/BipartiteDD} of the project repository. For each, \texttt{\#print axioms} lists only \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}; there is no \texttt{sorry}, no new axiom and no \texttt{native\_decide}, and finite checks use \texttt{decide}, which the kernel checks. A graph statement always says that the graph is $2$-colourable, that every vertex has at most (for the regular versions: exactly) $\Delta$ neighbours, and that the diameter is at most $D$; statements about record graphs also fix the number of vertices.
 {\sloppy
 \begin{itemize}[leftmargin=1.5em]
-\item Section~\ref{sec:doubling}: Theorem~\ref{thm:delorme}(a)--(c) for any finite graph (\texttt{Doubling.delorme\_levelled}); Lemma~\ref{lem:hat} in both directions for graphs that are bipartite with girth $2n$, diameter $n$ and all degrees at least $2$ (\texttt{Doubling.GenPolygonGraph.condC\_iff\_forestDiam}); the ``if'' direction of Corollary~\ref{cor:hatiff}.
+\item Section~\ref{sec:doubling}: Theorem~\ref{thm:delorme}(a)--(c) for any finite graph, under \ref{L0}, \ref{L1} and \textup{(C$_D$)} together and with the degree bound $\Delta+m-1$ (the ``equality only if'' clause of (b) is not formalised) (\texttt{Doubling.delorme\_levelled}); Lemma~\ref{lem:hat} in both directions for graphs that are bipartite with girth $2n$, diameter $n$ and all degrees at least $2$ (\texttt{Doubling.GenPolygonGraph.condC\_iff\_forestDiam}); the ``if'' direction of Corollary~\ref{cor:hatiff}.
 \item Section~\ref{sec:d3}: Theorem~\ref{thm:fourhat-regular} in every finite projective plane of order $q\ge4$, not only $\PG(2,q)$, with the matching of Remark~\ref{rem:arbplanes} (\texttt{Plus2.plus2\_regular\_of\_order}); the graphs of orders $192$, $276$, $376$.
-\item Section~\ref{sec:d4}: Theorem~\ref{thm:B} with and without stand-ins, for every finite structure with the counts of a GQ of order $(s,t)$ and the existence half of the GQ axiom (\texttt{GQST.standin\_gqst}, \texttt{GQST.gqst}), and Corollary~\ref{cor:B1} with its regular completion (\texttt{GQST.regular\_copy\_graph\_fin}); Theorem~\ref{thm:A} and Corollary~\ref{cor:A1}, regular, over every finite field of odd order, in the coordinates of this paper (\texttt{ASq.weighted\_two\_ovoid}, \texttt{ASq.bound\_regular}); Proposition~\ref{prop:C}(b) and Remark~\ref{rem:C1W}, for every field of order $q^4$ ($q$ odd) with a chosen primitive element (\texttt{SingerC.propC}, \texttt{SingerC.corC1}, \texttt{SingerC.Setting.regular\_W3}), instantiated at $q=13$ (\texttt{SingerC.regular5440}); the graphs of orders $359$, $1782$, $3146$, $5070$, $5440$.
+\item Section~\ref{sec:d4}: Theorem~\ref{thm:B} with and without stand-ins, for every finite structure with the counts of a GQ of order $(s,t)$, at most one line through two points, and the existence half of the GQ axiom (\texttt{GQST.standin\_gqst}, \texttt{GQST.gqst}), and Corollary~\ref{cor:B1} with its regular completion (\texttt{GQST.regular\_copy\_graph\_fin}); Theorem~\ref{thm:A} and Corollary~\ref{cor:A1}, regular, over every finite field of odd order, in the coordinates of this paper (\texttt{ASq.weighted\_two\_ovoid}, \texttt{ASq.bound\_regular}); Proposition~\ref{prop:C}(b) and Remark~\ref{rem:C1W}, for every field of order $q^4$ ($q$ odd) with a chosen primitive element (\texttt{SingerC.propC}, \texttt{SingerC.corC1}, \texttt{SingerC.Setting.regular\_W3}), instantiated at $q=13$ (\texttt{SingerC.regular5440}); the graphs of orders $359$, $1782$, $3146$, $5070$, $5440$.
 \item Sections~\ref{sec:d6} and~\ref{sec:even}: $\Hq(q)$ in the coordinates of Section~\ref{sec:prelim} is bipartite of girth $12$ and diameter $6$ with all degrees at least $2$, over every finite field (\texttt{Hexagon.genPolygonGraph\_hexagon}, \texttt{HexagonEven.genPolygonGraph\_hexagon\_even}); Lemma~\ref{lem:G}, Lemma~\ref{lem:J}(d), Lemma~\ref{lem:key}, Theorem~\ref{thm:exact}, Theorem~\ref{thm:whisk} for any whisker set, Corollary~\ref{cor:d6} and Theorem~\ref{thm:R} for odd $q$ (\texttt{HexagonD.exists\_goodCubic}, \texttt{nu\_eq\_of\_mem\_sline}, \texttt{key\_identity}, \texttt{wset\_whiskers} and \texttt{exists\_unique\_wline} for every admissible $(c,c_0,c_1)$, \texttt{theorem4}, \texttt{whiskers\_bound\_hexagon}, \texttt{theoremD}, \texttt{theoremR}); Theorem~\ref{thm:exact2}, Corollary~\ref{cor:even6} and Theorem~\ref{thm:R} for even $q\ge4$ (\texttt{HexagonEven.theorem4\_even}, \texttt{theoremD\_even}, \texttt{theoremR}); $q=2$, $m=2$ with the computer-found whisker set (\texttt{theoremD\_q2}, \texttt{theoremR\_q2}); the graph of order $9592$.
 \end{itemize}\par}
 Not formalised: Theorem~\ref{thm:delorme}(d); Propositions~\ref{prop:count} and~\ref{prop:shadowbound} and Section~\ref{sec:orders}; and the identification of the coordinate models with the classical $\AS(q)$, $\Wq(q)$ and $\Hq(q)$ (the Lean statements are about exactly the coordinates used here, and we cite \cite{P71,PT,T59,VM98} for the identification). The completion in Theorem~\ref{thm:R} is proved in Lean, as here, by an existence argument. All modules behind these statements, including the record graphs, were rebuilt from a fresh checkout on 25 October 2026, and \texttt{\#print axioms} was run on every theorem named above and on the record theorems (\path{research/theorems/polish/lean/}).
@@ -1176,7 +1176,7 @@ Let $\Qf(4,5)$ be the quadric $X_0^2+X_1X_2+X_3X_4=0$ of $\PG(4,5)$ (points writ
 21  (0:1:4:4:4) (1:0:0:4:1)  (1:1:4:3:0) (1:2:3:2:4)* (1:3:2:1:3)  (1:4:1:0:2)
 \end{verbatim}
 }
-The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:}0)$, $(1{:}2{:}3{:}3{:}1)$, $(1{:}4{:}1{:}0{:}0)$, $(1{:}2{:}3{:}2{:}4)$ of $\cO$, each on exactly two of them (lines $1,2$; $4,9$; $13,14$; $20,21$), where the second line uses the clone. So every point and every clone serves at most one shadow line, and Theorem~\ref{thm:B} with $s=t=5$, $\Delta=7$ gives a structure of diameter $4$, maximum degree $7$ and $156+156+26+21=359$ elements. The list is an optimal solution of the integer program of \path{research/gq4x/q4_share_ilp.py} (HiGHS); \path{research/theorems/polish/q4_359.py} rebuilds the graph from it and checks the degree and the diameter.
+The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:}0)$, $(1{:}2{:}3{:}3{:}1)$, $(1{:}4{:}1{:}0{:}0)$, $(1{:}2{:}3{:}2{:}4)$ of $\cO$, each on exactly two of them (lines $1,2$; $4,9$; $13,14$; $20,21$), where the second line uses the clone. So every point and every clone serves at most one shadow line, and Theorem~\ref{thm:B} with $s=t=5$, $\Delta=7$ gives a structure of diameter $4$, maximum degree $7$ and $156+156+26+21=359$ elements. The list is an optimal solution of the integer program of \path{research/gq4x/q4_share_ilp.py}, re-solved with HiGHS by \path{research/theorems/polish/q4_359.py}, which prints it (\path{research/theorems/polish/q4_359_lines.json}), rebuilds the graph and checks the degree and the diameter; it differs from the optimum stored earlier in \path{research/gq4x/graphs/q4_share_q5_n359.json}.
 
 
 \begin{thebibliography}{99}
@@ -1185,7 +1185,7 @@ The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:
 \bibitem{AL20} G.~Araujo-Pardo, N.~L\'opez, On new record graphs close to bipartite Moore graphs, \emph{Graphs Combin.} 38 (2022), no.~4, Paper No.~110; arXiv:2005.02427.
 \bibitem{BLP09} J.~Bamberg, M.~Law, T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, \emph{Combinatorica} 29 (2009) 1--17.
 \bibitem{CDPS22} M.~Ceria, J.~De Beule, F.~Pavese, V.~Smaldore, On large partial ovoids of symplectic and Hermitian polar spaces, \emph{J. Combin. Des.} 31 (2023) 5--22; arXiv:2203.04553.
-\bibitem{CW} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}, retrieved 20 October 2026.
+\bibitem{CW} Combinatorics Wiki, The degree diameter problem for bipartite graphs, \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}, values read on 10 and 20 October 2026.
 \bibitem{CCEM08} A.~Cossidente, C.~Culbert, G.~L. Ebert, G.~Marino, On $m$-ovoids of $W_3(q)$, \emph{Finite Fields Appl.} 14 (2008) 76--84.
 \bibitem{MS13} M.~Miller, J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, \emph{Electron. J. Combin.} Dynamic Survey DS14v2 (2013), Table~4.
 \bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, \emph{European J. Combin.} 6 (1985) 291--302.
