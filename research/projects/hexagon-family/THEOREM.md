@@ -221,13 +221,42 @@ duality (R2) is the clean sufficient condition; with it, (R1) is necessary (Rema
 
 ## 7. Instances and checks
 
-(see the project HANDOFF.md and research/projects/hexagon-family/checks/ for the graphs built in this project; the
-earlier records are in research/d13D7/, research/d10D7/checks/, research/coordinator_check/)
+All graphs below were rebuilt from their solution files and checked by an all-pairs BFS
+(research/lifts/coordinator_check/apsp_mt.c, no symmetry assumed); the checker prints the exact diameter.
+
+| cell | $q$ | $j$ | freed set | hubs per side | $n$ | check |
+|---|---|---|---|---|---|---|
+| (11,7) | 9 | 1 | 4,306 non-collinear points, $\sigma$ = duality | 4,306 (random degree-8 hub graph) | **407,192** | diameter 7, 11-regular |
+| (12,7) | 9 | 2 | the same 4,306 points | 8,580 (Haar graph of PSL(2,11)×Z13, Δ 7, D 7) | **681,460** | diameter 7 |
+
+Earlier records of this family (pairwise opposite sets): (7,7) 23,580 ($q=5$, 72), (9,7) 118,224 ($q=7$, 288),
+(10,7) 225,128 ($q=8$, 217), (13,7) 1,064,448, (14,7) 1,774,584, (15,7) 2,484,720 ($q=11$, 756), (16,7) 4,025,508
+($q=13$, 792); see research/d13D7/ and research/d10D7/checks/.
+
+**The hub graph in practice.** (R3) only asks for a bipartite graph with same-side distances $\le6$ and degree
+$\le q-j$ on the hubs of opposite owners. For $j=1,2,3$ at $q=11$ random graphs suffice. For $q=9$, $j=2$ ($d=7$,
+up to $2|R|$ hubs per side) random graphs fail, but Haar graphs of non-abelian groups of order $\le 2|R|$ with
+seven generators and diameter 7 are found in seconds by research/frontier/haar_gen3.c (PSL(2,11)×Z13 at 8,580;
+a metacyclic group of order 8,612 = 2·4,306 failed).
 
 ### 7.3 Mixed-set experiment
 `ldual/ldual.c` (random greedy for Lemma 3 pairs; `ldual HEXBIN seed restarts [pure]`): best of 3 restarts,
 $q=3$: 20 (pure 16), $q=4$: 29 (pure 21), $q=5$: 39 (pure 30).
 
-## 8. Lean
+## 8. Lean (lean/BipartiteDD/HexagonD7/, no sorry, standard axioms only; Axioms.out.txt)
 
-(in progress: the abstract Theorem 1 over any incidence structure satisfying (F1), (F2))
+- `Hyp.ediam_le`, `exists_graph` (Defs, Cover, Diam, Main): **Theorem 1** for an arbitrary incidence structure
+  with point–line walks of length $\le5$ and $\ge2$ lines per point and points per line, any $j$, any $\sigma$, $R$,
+  hubs and hub graph satisfying (R1)–(R3) (with (R3) stated as: same-type hubs are within 6 through the hexagon or
+  the hub graph), including the degree bound $q+1+j$ and the order $(2j+1)(|P|+|L|)+|V|+|U|$.
+- `table_family` (Hexagon): for every finite field $F$, $q=|F|$, $j\le q$:
+  $n_b(q+1+j,7)\ge2(2j+1)(q+1)(q^4+q^2+1)$ (the D = 7 table values), over the split Cayley hexagon of the
+  existing library (`genPolygonGraph_hexagon_even`).
+- `exists_local_duality` (Balls, LocalDual): **Lemma 2**, for any incidence structure with no digons and $q+1$
+  lines per point and points per line.
+- `freed_family` (Opposite, Family): for every finite field, $n_b(q+2,7)\ge6(q+1)(q^4+q^2+1)+2(q-1)$: greedy gives
+  $q-1$ pairwise opposite points and lines because $(q-1)(q^2+q+1)^2<(q+1)(q^4+q^2+1)$, and the hub graph is
+  $K_{q-1,q-1}$.
+
+Not formalised: the duality case ($q=3^h$) and the specific large sets (their pairwise-opposite and hub-graph
+conditions are finite checks done by C programs, far too large for the kernel).
