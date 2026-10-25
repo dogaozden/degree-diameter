@@ -7,7 +7,7 @@ Theory: THEOREM.md. Lean: lean/BipartiteDD/HexagonD7/. Squad rounds: research/sq
 
 | cell | record at start | new | freed set | files (sols/, also in research/frontier/sols/) | check (checks/) |
 |---|---|---|---|---|---|
-| (7,7) | 23,580 | **23,598** | H(5): 72 pairwise opposite + 9 added (Prop. 4) | sets/P5_mix81.pairs, d7D7_hex5_mixK81_n23598.sol | apsp_mt all pairs VALID |
+| (7,7) | 23,580 | **23,600** | H(5): 72 pairwise opposite + 10 added (Prop. 4; ext_all.py seed 134, order ovl) | sets/P5_mix82.pairs, d7D7_hex5_mixK82_n23600.sol | apsp_mt all pairs VALID |
 | (9,7) | 118,224 | **118,240** | H(7): 288 + 8 | sets/P7_mix296.pairs, d9D7_hex7_mixK296_n118240.sol | apsp_mt VALID |
 | (10,7) | 225,128 | **225,160** | H(8): 217 + 16 (all-lines scan ext_all.py, seed 2, order ovl) | sets/P8_mix233.pairs, d10D7_hex8_mixK233_n225160.sol | apsp_orb VALID (225,158 from 217 + 15: apsp_mt VALID) |
 | (11,7) | 407,162 | **407,192** | H(9): 4,306 non-collinear points, σ = duality | sets/P9_ncol_4306.txt, d11D7_hex9_B2dualK4306_n407192.sol | apsp_mt VALID |
