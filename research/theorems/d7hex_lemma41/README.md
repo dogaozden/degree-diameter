@@ -43,3 +43,13 @@ Builds the incidence graph of PG(2,s) (s prime) with pendant trees sized exactly
 (s, t, u, K), and checks by BFS that both colour classes have K vertices, the maximum degree is max(s+1+t, u+1), and all
 same-colour distances are <= 6. Also prints kappa(d) for d = 3, 4, 8, 9, 10, 11 (7, 35, 527, 868, 1271, 1938, as quoted).
 Run: `python3 research/theorems/d7hex_lemma41/hg_lemma71.py` (a few seconds).
+
+## Theorem C at a friendly transition for larger q: friendly_test.py, friendly_q7.log, friendly_q11.log
+
+Two levels (H then D), identity matching on points minus F, F = all (q+1)(q^3+1) points of the Hermitian spread (the
+H(q)-lines in a hyperplane x0 = c x4 + e x3 with elliptic section; the script checks that every line off the spread meets
+F at most once, so F is the point set of a spread and a segment set). Main graph, no hubs; checked with apsp_mt.
+
+    ./hexgen2 7 && python3 research/theorems/d7hex_lemma41/friendly_test.py hex/hex_q7.bin fr7.edges && ./apsp_mt fr7.edges 9 7 4
+    ./hexgen2 11 && python3 research/theorems/d7hex_lemma41/friendly_test.py hex/hex_q11.bin fr11.edges && ./apsp_mt fr11.edges 13 7 4
+Results: q = 7 (n = 78,432, |F| = 2,752) and q = 11 (n = 708,624, |F| = 15,984): RESULT VALID, diameter 7.
