@@ -7,41 +7,22 @@ Round-1 solution files and logs are copied into this branch unchanged.
 
 ## Round 2 result so far
 
-**Current record: 118,914,048 vertices** = 2N, N = 59,457,024 = |SL(2,17) × SL(2,23)| (n = 1), orbit search k = 3, m = 4, f = 2, **ORBW = 3**, seed 4, 11,545 evaluations (3,053 s, μ = 20.86, |Fix| = 431). Solution `research/frontier/sols/d14D9_prod_sl_17_23_1_orb3_ORBW3_s4.txt`, sha256 5d6b861781901942d6feee9cec4c1b653f1eee2715496c5a39c8c4d9b13856dc, checked by haar_sym and `tools/haarcheck_prod.py` (VALID, ecc 9 both sides). Previous round-2 record: 117,993,600 (prod sl 4 × sl 16 × Z241, seed 2). The records of 117,895,680 and 117,976,320 are below.
+**Current record: 118,914,048 vertices** = 2N, N = 59,457,024 = |SL(2,17) × SL(2,23)| (n = 1). Orbit search k = 3, m = 4,
+f = 2, **ORBW = 3** (an uncovered fixed element weighs as much as a free orbit), seed 4, 11,545 evaluations (3,053 s,
+μ = 20.86, |Fix| = 431). Solution `research/frontier/sols/d14D9_prod_sl_17_23_1_orb3_ORBW3_s4.txt`, sha256
+5d6b861781901942d6feee9cec4c1b653f1eee2715496c5a39c8c4d9b13856dc. Checked by haar_sym's full diameter check and by
+`tools/haarcheck_prod.py` (VALID, ecc 9 from both sides, all vertices reached, 14 distinct generators).
 
-Earlier round-2 records (kept for the record): 117,895,680 (prod sl 7 × sl 16 × Z43, seed 2), 117,976,320 (prod sl 7 × sl 11 × Z133, seed 2), 117,993,600 (prod sl 4 × sl 16 × Z241, seed 2). OLD TEXT FOLLOWS.
-**Previous: 117,993,600 vertices** = 2N, N = 58,996,800 = |SL(2,4) × SL(2,16) × Z_241|, orbit search k = 3, m = 4,
-f = 2, seed 2, 5,385 evaluations (1,752 s, μ = 18.43, |Fix| = 44). Solution `research/frontier/sols/d14D9_prod_sl_4_16_241_orb3_s2.txt`,
-sha256 of the file in the sols folder (same content as the spool file), checked by `tools/haarcheck_prod.py` (VALID).
-Earlier round-2 records: 117,895,680 (prod sl 7 × sl 16 × Z43, seed 2) and 117,976,320 (prod sl 7 × sl 11 × Z133, seed 2).
+Round-2 records, in order (each checked the same way):
 
-**New record: 117,895,680 vertices** = 2N, N = 58,947,840 = |SL(2,7) × SL(2,16) × Z_43| (GF(16) as x^4+x+1), orbit search
-k = 3, m = 4, f = 2, seed 2, 785 evaluations (112 s, μ = 18.19, |Fix| = 89). Solution file
-`research/frontier/sols/d14D9_prod_sl_7_16_43_orb3_s2.txt`, sha256 eadaab3df868f0594d62f183c153ce9af8c35c520ed72b3c5796fad8178c8555.
-Verified by haar_sym's full diameter check and by the independent `tools/haarcheck_prod.py` (ecc 9 from both sides, all
-117,895,680 vertices reached, 14 distinct generators; log `research/structured/runs/r2/d14D9_prod_sl_7_sl_16_43_orb3_s2.log`).
-Seed 1 on the same group was stopped after 92 s (same N, cannot raise the record). Seed 1 had reached best 6 at 657 evals.
-
-### Round-2 runs (product groups, k = 3, m = 4, f = 2; haar_sym, 1 thread each, 3600 s unless stopped)
-
-| group | N | μ | seed | result |
+| 2N | N | group | seed / ORBW | solution file |
 |---|---|---|---|---|
-| prod sl 7 × sl 16 × Z43 | 58,947,840 | 18.19 | 1 | stopped after 165 s (same N as the record; best 3) |
-| prod sl 7 × sl 16 × Z43 | 58,947,840 | 18.19 | 2 | **SOLVED** at 785 evals (112 s) → record |
-| prod sl 5 × sl 79 × Z1 | 59,155,200 | 19.24 | 1 | not solved: best 8, 11,825 evals |
-| prod sl 5 × sl 79 × Z1 | 59,155,200 | 19.24 | 2 | not solved: best 4, 12,833 evals |
-| prod sl 4 × sl 16 × Z241 | 58,996,800 | 18.43 | 1 | not solved: best 8, 12,665 evals |
-| prod sl 8 × sl 9 × Z163 | 59,149,440 | 19.21 | 1 | not solved: best 2, 8,993 evals |
-| prod sl 7 × sl 11 × Z133 | 58,988,160 | 18.39 | 1 | not solved: best 6, 21,761 evals |
-| prod sl 8 × sl 49 × Z1 | 59,270,400 | 19.84 | 1 | not solved: best 2, 15,385 evals |
-| prod sl 7 × sl 11 × Z133 | 58,988,160 | 18.39 | 2 | **SOLVED** at 3,473 evals (547 s) → record 117,976,320 |
-| prod sl 4 × sl 16 × Z241 | 58,996,800 | 18.43 | 2 | **SOLVED** at 5,385 evals (1,752 s) → record 117,993,600 |
+| 117,895,680 | 58,947,840 | SL(2,7) × SL(2,16) × Z43 | seed 2 | `d14D9_prod_sl_7_16_43_orb3_s2.txt` |
+| 117,976,320 | 58,988,160 | SL(2,7) × SL(2,11) × Z133 | seed 2 | `d14D9_prod_sl_7_11_133_orb3_s2.txt` |
+| 117,993,600 | 58,996,800 | SL(2,4) × SL(2,16) × Z241 | seed 2 | `d14D9_prod_sl_4_16_241_orb3_s2.txt` |
+| **118,914,048** | 59,457,024 | SL(2,17) × SL(2,23) | seed 4, ORBW=3 | `d14D9_prod_sl_17_23_1_orb3_ORBW3_s4.txt` |
 
-Runs still in progress at this commit: prod sl 8 × sl 9 × Z163 seed 2, prod sl 8 × sl 49 × Z1 seed 2, prod sl 4 × sl 16 × Z241 seed 2, prod sl 7 × sl 11 × Z133 seed 2.
-
-Observation so far: the seed-2 solve came fast (785 evals), while the other runs in the same family stalled at cost 2–8 for 10–20k evals. A seed-1 run on the record group also stalled at cost 3 after 1,137 evals, so the solve is seed luck as much as group quality.
-
-Next target: any verified SL-only group with N > 59,457,024.
+Seed 1 on the record groups above was stopped after a few minutes (same N, cannot raise the record).
 
 ## Round 2 plan (started 2026-10-25, about 15:00 UTC)
 
@@ -198,3 +179,32 @@ within 1800–3600 s. Going above μ ≈ 18 in this cell needs much more compute
 large spread between groups). The next worthwhile rung is psl or sl with N ≈ 58.9–59.3 M and |Fix| small
 (psl 109 × Z91 had |Fix| = 53, sl 389 × Z1 had 389, so |Fix| alone does not decide it). Not tried: other seeds on
 psl 109 × Z91 family or on the sub-record groups at higher N, and the SL(3,q) or route-chart ideas in SIZE_LAW.
+
+## Round 2 stop (2026-10-25, about 20:40 UTC, six-hour budget)
+
+**Final record: 118,914,048 vertices** (SL(2,17) × SL(2,23), ORBW = 3, seed 4; file above). Round 2 went from 117,837,720
+to 118,914,048 (+0.9 %).
+
+What worked: product groups SL(2,q1) × SL(2,q2) × Z_n, which round 1 never ran. Screening them with RANDORB (p10 ≲ 40)
+found the solved groups quickly, and most of the solves came on the second seed. Groups at μ 18.2–18.4 solved in
+785–5,400 evaluations (112–1,752 s). `ORBW=3` solved the μ = 20.9 group on its fourth seed, after seeds 1–3 without ORBW
+stalled at cost 2–4.
+
+Not solved, last state (3600 s unless noted): prod sl 5 × sl 79 × Z1 (N 59,155,200; seeds 1–3, best 8, 4, 2); prod sl 8 ×
+sl 9 × Z163 (59,149,440; seeds 1–3, best 2, 2, 8); prod sl 8 × sl 49 × Z1 (59,270,400; seeds 1–5 and ORBW seed 4, best 2–8);
+sl 53 × Z397 (59,083,128; best 6); prod sl 17 × sl 23 × Z1 seed 2 and seed 5 (best 4, 2); prod sl 7 × sl 11 × Z133 seed 1
+(best 6). Runs stalled at cost 2–8 for 10k–15k evaluations; those are the same few uncovered orbits or fixed points.
+
+Screened and rejected (p10 of random symmetric S above 40, or unverifiable): prod sl 4 × sl 8 × Z1951 (p10 186), prod sl 4
+× sl 9 × Z1369 (230), prod sl 5 × sl 7 × Z1471 (516), prod sl 4 × sl 7 × Z2947 (834), prod sl 4 × sl 11 × Z751 (138),
+prod sl 5 × sl 5 × Z4099 (2,172), prod sl 7 × sl 8 × Z349 (72), prod sl 5 × sl 11 × Z373 (114), prod sl 7 × sl 9 × Z247
+(100). PSL factors (psl 81 × Z223 p10 39, prod psl 9 × psl 17 × Z67 p10 42, prod psl 7 × psl 19 × Z103 p10 42) were not run:
+`haarcheck_prod.py` checks SL factors only, so a PSL solve could not be verified in this session.
+
+Next steps, in order:
+1. Any SL-only group with N > 59,457,024 and small p10: the enumeration of SL × SL × Z_n above it (all n with primes ≡ 1 mod 3)
+   gives only large-n candidates, all screened poor so far. A PSL-capable checker (quotient of SL by ±1) would open the PSL
+   candidates above.
+2. More seeds with ORBW = 3 on the sl 17 × sl 23 and sl 8 × sl 49 groups (the ORBW runs stalled at 2–6 at the 3600 s budget).
+3. Compute: the solves took 1–30 minutes, but most runs stalled, so breadth (many groups, one seed each, 900–1800 s) is the
+   better allocation than long single runs.
