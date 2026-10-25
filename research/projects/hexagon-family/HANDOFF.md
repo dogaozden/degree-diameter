@@ -9,7 +9,7 @@ Branch `claude/hexagon-family-blvamb` (Opus lead, cloud session, started 2026-10
 | cell | old record | new | how | files | check |
 |---|---|---|---|---|---|
 | (11,7) | 407,162 | **407,192** | H(9), duality matching, 4,306 non-collinear freed points (squad hexfam_r1 c6, ARW from the 4,291 set) | sets/P9_ncol_4306.txt, sols/d11D7_hex9_B2dualK4306_n407192.sol | `n=407192 edges=2239556 degree min=11 max=11 bipartite=yes diameter=7, RESULT VALID d=11 D=7` (checks/d11D7_n407192.sha256) |
-| (12,7) | 680,068 | **681,460** | same 4,306 freed points, 5 levels; hub graph = Haar graph of PSL(2,11)×Z13 (Δ 7, D 7, 8,580 per side) | sols/d12D7_hex9_B2dual5K4306_H8580.hubs, hubs/h_psl11x13.txt | `RESULT VALID d=12 D=7 n=681460` (checks/d12D7_n681460_apsp.txt, sha256 file) |
+| (12,7) | 680,068 | **681,460** | same 4,306 freed points, 5 levels; hub graph = Haar graph of PSL(2,11)×Z13 (Δ 7, D 7, 8,580 per side) | sols/d12D7_hex9_B2dual5K4306_H8580.hubs, hubs/h_psl11x13.txt | `n=681460 edges=4088600 degree min=11 max=12 bipartite=yes diameter=7, RESULT VALID d=12 D=7` (checks/d12D7_n681460_apsp.txt, sha256 file) |
 
 Rebuild (from this folder; hex/ is local, made by `tools/hexgen2 9`):
 
@@ -45,4 +45,6 @@ ldual/ldual.c (mixed-set greedy), q9/arw.c (ARW for q = 9).
 - q = 11, 13: no improvement on 756 / 792 yet (round 1: point swaps impossible, every outside point of the 756 set is
   orthogonal to 60–78 of its points).
 - q = 9: ARW stalls at 4,306; bigger R also needs a bigger Haar hub graph for (12,7) (any group of order ≤ 2|R|).
-- Lean: Lemma 2 (existence of σ for pairwise opposite R, S) not yet formalised.
+- Lean: done so far also Lemma 2 (`exists_local_duality`), greedy opposite sets, and `freed_family`
+  (n_b(q+2,7) ≥ 6(q+1)(q⁴+q²+1) + 2(q−1) for every finite field). Not formalised: the q = 3^h duality case, and the
+  specific record sets (their pairwise-opposite / hub-graph checks are computer checks, too big for the kernel).
