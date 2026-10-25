@@ -16,7 +16,7 @@ The three constructions (all on the split Cayley hexagon H(q)):
 
 | cell | master | this job | gain | construction | check |
 |---|---|---|---|---|---|
-| (16,7) | 4,052,108 | **4,053,576** | +1,468 | typed HDHDH of H(13) + mirrored 813 on the four non-friendly transitions + relaxed point sets | CHECK16 |
+| (16,7) | 4,052,108 | **4,053,576** | +1,468 | typed HDHDH of H(13) + mirrored 813 on the four non-friendly transitions + relaxed point sets | apsp_w all pairs VALID |
 | (14,7) | 1,789,588 | **1,789,858** | +270 | typed HDHDH of H(11) + mirrored 768 + relaxed line sets | apsp_w all pairs VALID |
 | (10,7) | 225,152 | **225,156** | +4 | mirrored surgery, 3 copies of H(8), mirrored set 231 (squads r1 c5, r2 c1) | apsp_mt all pairs VALID |
 | (13,7) | 1,064,472 | — | | three levels: typed levels give nothing; mirrored set of H(11) not improved (two squad cards) | |
