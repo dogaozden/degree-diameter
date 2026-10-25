@@ -1,0 +1,13 @@
+accepted k 1 online (369, 112) time 1
+accepted k 2 online (15, 108) time 1
+accepted k 3 conc (101, 87) time 2
+accepted k 4 online (96, 375) time 4
+accepted k 5 conc (48, 337) time 17
+  hub anneal k 5 violations 0 edges 37
+BEST_FEAS k 5 flags [(369, 112), (15, 108), (101, 87), (96, 375), (48, 337)]
+accepted k 6 coll (93, 342) time 31
+  hub anneal k 6 violations 0 edges 46
+BEST_FEAS k 6 flags [(369, 112), (15, 108), (101, 87), (96, 375), (48, 337), (93, 342)]
+DONE k 6 best feasible k 6 calls 262 time 32
+FLAGS 369:112 15:108 101:87 96:375 48:337 93:342
+BESTFLAGS 369:112 15:108 101:87 96:375 48:337 93:342

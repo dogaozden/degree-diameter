@@ -1,0 +1,76 @@
+k9_valid k=9 no hub routes: collinear freed pairs=9 concurrent freed-line pairs=12
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    373     42      0    331      6      1
+   1    41     2     2    373     40      0    336      1      2
+   2   225     2     3    375     40      0    331      6      3
+   3    65     3     3    366     33      0    335      3      3
+   4   263     2     3    375     38      0    330      7      3
+   5   283     2     2    372     40      0    336      1      2
+   6   398     2     2    372     41      0    335      2      1
+   7   253     2     2    373     41      0    336      1      2
+   8    19     1     4    377     46      0    320     16      3
+  total point holes 43  total line holes 20
+k9_valid k=9 with hub routes: collinear freed pairs=9 concurrent freed-line pairs=12
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    373     42     35    337      0      0
+   1    41     2     2    373     40     42    337      0      0
+   2   225     2     3    375     40     35    337      0      0
+   3    65     3     3    366     33     28    338      0      0
+   4   263     2     3    375     38     35    337      0      0
+   5   283     2     2    372     40     28    337      0      0
+   6   398     2     2    372     41     42    337      0      0
+   7   253     2     2    373     41     35    337      0      0
+   8    19     1     4    377     46     49    336      0      0
+  total point holes 0  total line holes 0
+k10_orbit_100 k=10 no hub routes: collinear freed pairs=9 concurrent freed-line pairs=12
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    371     39      0    330      6      2
+   1    41     2     2    371     40      0    333      3      2
+   2   225     2     3    373     40      0    328      8      3
+   3    65     3     3    365     32      0    334      3      4
+   4   263     2     3    374     41      0    331      5      4
+   5   283     2     2    371     40      0    334      2      3
+   6   398     2     2    371     39      0    334      2      1
+   7   253     2     2    371     42      0    336      0      2
+   8    19     1     4    376     50      0    320     15      3
+   9   100     0     0    385     44      0    328      6      8
+  total point holes 50  total line holes 32
+k10_orbit_100 k=10 with hub routes: collinear freed pairs=9 concurrent freed-line pairs=12
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    371     39     49    336      0      0
+   1    41     2     2    371     40     28    336      0      0
+   2   225     2     3    373     40     35    336      0      0
+   3    65     3     3    365     32     28    336      1      0
+   4   263     2     3    374     41     42    336      0      0
+   5   283     2     2    371     40     42    336      0      0
+   6   398     2     2    371     39     42    336      0      0
+   7   253     2     2    371     42     21    336      0      0
+   8    19     1     4    376     50     49    335      0      0
+   9   100     0     0    385     44     42    334      0      0
+  total point holes 1  total line holes 0
+k10_orbit_38 k=10 no hub routes: collinear freed pairs=9 concurrent freed-line pairs=13
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    373     41      0    328      8      3
+   1    41     2     2    371     42      0    334      2      2
+   2   225     2     3    374     41      0    329      7      4
+   3    65     3     3    366     33      0    335      2      4
+   4   263     2     3    373     40      0    329      7      4
+   5   283     2     2    371     41      0    334      2      3
+   6   398     2     3    372     42      0    332      4      2
+   7   253     2     2    371     41      0    335      1      2
+   8    19     1     4    375     48      0    323     12      3
+   9    38     0     1    383     46      0    325      9     15
+  total point holes 54  total line holes 42
+k10_orbit_38 k=10 with hub routes: collinear freed pairs=9 concurrent freed-line pairs=13
+  flag  p    kappa  conc  cap_i  cap_ii cap_iii  pts_covered(of 343-freed)  point_holes  line_holes
+   0   266     2     3    373     41     35    336      0      0
+   1    41     2     2    371     42     42    336      0      0
+   2   225     2     3    374     41     42    336      0      0
+   3    65     3     3    366     33     42    336      1      0
+   4   263     2     3    373     40     35    336      0      0
+   5   283     2     2    371     41     42    336      0      0
+   6   398     2     3    372     42     42    336      0      0
+   7   253     2     2    371     41     42    336      0      0
+   8    19     1     4    375     48     42    335      0      0
+   9    38     0     1    383     46     49    334      0      0
+  total point holes 1  total line holes 0

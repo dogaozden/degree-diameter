@@ -1,0 +1,9 @@
+source P target P coset(h mod 3) 0 count 148 example src 0 tgt 1902
+source L target L coset(h mod 3) 0 count 102 example src 2400 tgt 2964
+source PF target P coset(h mod 3) 1 count 2 example src 390 tgt 415
+source P target PF coset(h mod 3) 2 count 2 example src 414 tgt 392
+source PF target P coset(h mod 3) 0 count 1 example src 600 tgt 2382
+source P target PF coset(h mod 3) 0 count 1 example src 2382 tgt 600
+source L target LF coset(h mod 3) 0 count 1 example src 4272 tgt 4599
+source LF target L coset(h mod 3) 0 count 1 example src 4596 tgt 4275
+total 258
