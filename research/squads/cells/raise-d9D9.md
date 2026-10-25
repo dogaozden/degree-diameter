@@ -39,4 +39,13 @@ Reference (the record group, μ 30.5): min 42, p1 51, p10 96, median 203.
 
 Wave 1 (3,000 s each, seed 1, K 8, 4 cores): sl 121 1; prod sl 9 psl 17 1; sl 29 73; prod sl 4 sl 31 1. Status below.
 
-(status updated as runs finish)
+Wave 1 result (all four finished, none reached cost 0; each run ~0.5–1.0·10⁶ evaluations, 3,000 s):
+
+| group | μ | best cost | evals |
+|---|---|---|---|
+| sl 29 73 | 36.9 | **8** | 1.02·10⁶ |
+| sl 121 1 | 35.3 | 10 | 5.3·10⁵ |
+| prod sl 9 psl 17 1 | 33.2 | 14 | 7.4·10⁵ |
+| prod sl 4 sl 31 1 | 38.8 | 16 | 6.9·10⁵ |
+
+Wave 2 (3,600 s each, 4 cores): sl 29 73 seeds 2 and 3; sl 121 1 seed 2; prod sl 9 psl 17 1 seed 2.
