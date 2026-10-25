@@ -30,7 +30,8 @@
  *      TMAX (1.5), TMIN (0.15), COOLSTEPS (steps per halving of T, 4), REHEATSTEPS (steps without gain before a reheat
  *      from the best S, 60), PUSHMAX (push a level iff |list| * d <= PUSHMAX, default min(2^24, N d / 512)), UCAP (65536),
  *      RANDORB=m (cost statistics of m random symmetric S, no search), EVAL=file (cost of the S in a solution file),
- *      START=file (start the search from the S in a solution file; it must have the orbit structure), BENCH=1 (timings).
+ *      START=file (start the search from the S in a solution file; it must have the orbit structure), BENCH=1 (timings),
+ *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements).
  * Output: solution file in haar_gen3 format: "d D sl p n NCYC N NTOT" then d lines "<index> mat(a,b,c,d) z=Z",
  *      first generator e; checked independently by research/frontier/haarcheck_sl.c, haarcheck2.c (SL) and
  *      research/structured/tools/haarcheck_psl.c (PSL).  The current best S is also written to outfile.best after
@@ -445,6 +446,7 @@ int main(int argc, char **argv) {
         int reps = BENCH ? 3 : 1; i64 c = 0;
         for (int r = 0; r < reps; r++) { double t0 = now(); int nu; c = cost(NOBOUND, ULIST[0], UCAP, &nu);
             printf("EVAL %s cost=%lld time=%.3f mu=%.2f\n", getenv("EVAL"), (long long)c, now() - t0, mu);
+            if (getenv("UNCPRINT")) for (int i = 0; i < nu && i < 200; i++) { char b[200]; edesc(eofidx(ULIST[0][i]), b); printf("uncovered %s\n", b); }
             if (BENCH) { fprintf(stderr, "levels:"); for (int l = 0; l <= D - 1; l++) fprintf(stderr, " %d:%.3fs(%lld)", l, TLEV[l], (long long)LEV[l]); fprintf(stderr, "\n"); } }
         return c == 0 ? 0 : 1;
     }
