@@ -35,7 +35,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "5,7": {
-  "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 311 5 6 found here (graphs/d5D7_n3110_meta_311_5_6_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "5,8": {
   "notes": "n/2 = 4617 = 3^5\u00b719",
@@ -45,7 +49,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "5,9": {
-  "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797"
+  "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 97 144 4 found here (graphs/d5D9_n27936_meta_97_144_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "5,10": {
   "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789"
@@ -58,7 +66,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "6,8": {
-  "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331"
+  "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 331 45 4 found here (graphs/d6D8_n29790_meta_331_45_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "6,9": {
   "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163"
@@ -74,7 +86,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "7,8": {
-  "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771"
+  "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 1349 30 159 found here (graphs/d7D8_n80940_meta_1349_30_159_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "7,9": {
   "notes": "n/2 = 200080 = 2^4\u00b75\u00b741\u00b761"
