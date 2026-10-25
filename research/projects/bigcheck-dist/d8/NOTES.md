@@ -116,5 +116,9 @@ and less at D = 9. So octagon-based covers are not competitive for Δ ≤ 16.
 ## 6. Status
 
 Open: the definition of Delorme's 5⌊(q+5)/2⌋ family; a structured voltage design that beats it at q = 7, 9, 11, 13.
-A separate Opus agent is working on the theory (theory/NOTES.md when done). For (10,8), the Haar orbit search is
-being retried with longer runs (HANDOFF.md).
+theory/NOTES.md (a separate Opus agent) proves limits on the designs tried here: with intact copies (incidence
+voltages a coboundary) the voltages reached by every point or every line through the always-present routes number at
+most 2q+9 (Delorme needs 25, 30 at q = 5, 7); a "5 levels × k sheets" structure cannot be certified that way for
+k ≥ 6; SL(3,q)-invariant incidence voltages are coboundaries. So Delorme's graphs must use pair-specific routes,
+most likely the bundles with incidence voltages that break SL(3,q). For (10,8), the Haar orbit search is being
+retried with longer runs (HANDOFF.md).
