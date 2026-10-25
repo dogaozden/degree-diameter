@@ -126,3 +126,33 @@ q = 11 and 13 stays far below the orbit records (144, 201 after 5 min). The q = 
 orbits (14 + 84) on V = Sym^4 ⊥ <n0> (binary quartics), whose 8 "centers" form the rational normal curve. The quartic
 model at q = 11 gives at most 240 (PSL(2,11): 12 only; 2.A5: 60 + 6 × 30), and at q = 5 only 30. Longer q = 9 orbit
 runs on card c6's order-5 isometries: 150 (no gain). GF(9) twisted cyclic groups R^a ⊕ Y^m (70 runs, uni11/q9/): at most 150. **(16,7) 4,023,516: full uhcheck over all 804,468 sources VALID** (03:18 UTC). (13,7) 1,063,416: apsp_cyc VALID (03:31 UTC).
+
+## 2026-10-25 04:35–05:20 UTC, cell-14-7 third session, round 5 (8 cards, one squad): partial ovoids of Q(6,11) above 756
+
+Session 01S9fS5Zi4bymqvTfraD7hJx (resumed job; master already had (14,7) 1,774,584 = 5·|H(11)| + 4·756 from the cell-13-7
+session's 756-point partial ovoid). Goal: a pairwise-opposite point set of H(11) with 757+ points. Brief:
+research/squads/d14D7-r5/BRIEF.md; new tools research/cell147/ovoid/ (orbclq.c: orbit graph + tabu max-weight clique,
+finds the 756 set from scratch in 1–10 s; ovlib.py: all ten maximal tori of SO(7,q), invariant forms, conjugation to the
+standard form; checkset.py). Cards: c1 principal PGL(2,11) on binary sextics · c2 J1 < G2(11) subgroups · c3 octonion
+groups (G2(2), U3(3), 2^3·L3(2)) · c4 normaliser extensions of torus subgroups · c5 unipotent and Borel-type groups · c6
+stabiliser of the 756 set, warm-started long runs · c7 wildcard: algebraic graphs in the affine chart · c8 wildcard:
+Frobenius-twisted groups of the non-split tori.
+
+Scores: c1 756 (S4, A4) · c2 756 (2^3:7:3 exact, Z6, Z7, 7:k) · c3 756 (octonion groups; late) · c4 368 · c5 232 · c6 756
+(stabiliser in N(<h>) has order 120) · c7 181 · c8 756 (twisted C6 in N(C_1332)). Opus: torus sweeps (all cyclic subgroups
+of orders 6–80 of the tori E·H·H, E·E·H, H4·H, E6 (1332), H6 (1330)): 756 again (orders 6–30), never more.
+
+Opus: **the 756 set is one orbit of W(E7) = 2 × Sp(6,2)** acting on the E7 root lattice mod 11 (dreadnaut on the vector
+graph: |Aut| = 2,903,040; W(E7) mod 11 has exactly 7 orbits on the 177,156 points, sizes 756, 10080, 12096, 15120, 30240,
+48384, 60480, and only the 756 orbit is pairwise opposite; the q = 7 record 288 is likewise the W(E7) orbit mod 7). Every
+group above that reached 756 is conjugate into Sp(6,2). Exact orbit cliques for all reflection subgroups of rank 6 of
+W(E7): 756. Every point outside it is orthogonal to at least 60 of its points (60, 62, 70, 74, 76, 78 by orbit). So the
+squad's verdict (756 is a plateau for symmetric searches) is explained, and plain partial ovoids look stuck.
+
+What Opus did next (not a squad result): the surgery theorem needs less than pairwise opposite. R non-collinear, sigma(R)
+non-concurrent and sigma a local duality at every point of R suffice (the (13,7) report's relaxed version); distance-4
+pairs are then allowed when mirrored exactly on the line side. Adding points x to the 756 set (each at distance 4 from
+60–78 of its points) with lines L_x chosen against the Hermitian spread gives a type-matching problem; greedy k = 9,
+annealing k = 11. (14,7) 1,774,620 (k = 9) built by multi.c (local duality and non-concurrency checks, 11,734-source BFS
+spot check: worst eccentricity 7); full check running. Squad assessment: no card beat 756; the round's value was
+breadth (every family lands on the same W(E7) orbit), which pushed Opus off partial ovoids.
