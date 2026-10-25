@@ -169,6 +169,31 @@ not have this regularity, so only sparse midpoint structures transfer. Experimen
 $(R,S)$ built under Lemma 3 reach $|R|=20,29,39$ for $q=3,4,5$, against $16,21,30$ for pairwise opposite greedy;
 both stay far below the structured partial ovoids (72 at $q=5$).
 
+**Proposition 6 (extending a pairwise opposite set by points with midpoints).** Let $R$ be a pairwise opposite
+set of points, $\mathrm{Sp}$ a pairwise opposite set of lines with $|\mathrm{Sp}|\ge|R|$, and let
+$x_1,\dots,x_t$ be pairwise opposite points, none collinear with a point of $R$, and $s_1,\dots,s_t$ pairwise
+opposite lines not in $\mathrm{Sp}$. Each $s_i$ meets at most one line $\ell_i$ of $\mathrm{Sp}$ (two would be at
+distance $\le4$ from each other). For $r\in R$ put $T(r)=\{i: d(r,x_i)=4\}$, and for
+$\ell\in\mathrm{Sp}':=\mathrm{Sp}\setminus\{\ell_1,\dots,\ell_t\}$ put $T(\ell)=\{i: d(\ell,s_i)=4\}$. If
+$$\#\{r\in R: T(r)=T\}\ \le\ \#\{\ell\in\mathrm{Sp}': T(\ell)=T\}\qquad\text{for every }T\subseteq\{1,\dots,t\},$$
+then $R\cup\{x_1,\dots,x_t\}$ satisfies (R1) and, with a suitable $S\subseteq\mathrm{Sp}'$ and $\tau$, the
+conditions of Lemma 3; so all $|R|+t$ points can be freed.
+
+*Proof.* Choose $\tau$ cell by cell: it maps the points of $R$ with pattern $T$ injectively to lines of
+$\mathrm{Sp}'$ with pattern $T$, and $\tau(x_i)=s_i$. (R1): $x_i$ is not collinear with $R$, and two $x$'s are
+opposite. Distances: inside $R$, inside $X$, inside $\tau(R)$ and among the $s_i$ all are 6. For $r\in R$,
+$d(r,x_i)\in\{4,6\}$ and it is 4 iff $i\in T(r)$; for $\ell=\tau(r)$, $d(\ell,s_i)\ne2$ because $\ell\ne\ell_i$, so
+it is 4 iff $i\in T(\ell)=T(r)$. Midpoints: a point collinear with two points of $R\cup X$ is collinear with exactly
+one $r$ and one $x_i$ (two points of $R$, or two of $X$, collinear with it would be at distance $\le4$), so it is
+the midpoint of exactly one pair $(r,x_i)$; dually each midline of $\tau(R)\cup\{s_i\}$ belongs to exactly one pair
+$(\tau r,s_i)$. So $\mu$: midpoint of $(r,x_i)$ $\mapsto$ midline of $(\tau r,s_i)$ is a well defined bijection, and
+Lemma 3 applies. $\square$
+
+The counting condition is cheap to test, so a greedy (`ext/extend2.py`) adds points $x$ with few distance-4
+neighbours in $R$, trying random lines $s$. Every point outside the record sets is at distance 4 from at least
+11 ($q=5$), 30 ($q=7$), 60 ($q=11$), 24 ($q=13$) of their points, and each $s$ is at distance 4 from about $q^2$
+spread lines, so the cells stay populated for a while; see §7 for what it gives.
+
 ## 5. Bounds on $|R|$
 
 **Proposition 4.** Under (R1), $|R|\le q^4+q^2+1$, with equality iff $R$ meets every line in exactly one point (a

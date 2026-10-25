@@ -1,0 +1,12 @@
+E6 roots 72
+E6 D5 {'label': 'E6:D5', 'orbits': 778, 'selfcompat': 71, 'best': 792, 'method': 'exact', 'exact_done': True, 'secs': 0.2, 'sizes': [240, 160, 160, 80, 80, 40, 16, 16]} SCORE SCORE 792 VALID [9s]
+E6 A5A1 {'label': 'E6:A5A1', 'orbits': 843, 'selfcompat': 50, 'best': 792, 'method': 'exact', 'exact_done': True, 'secs': 0.3, 'sizes': [360, 180, 120, 40, 40, 30, 20, 2]} SCORE SCORE 792 VALID [2s]
+E6 A2^3 {'label': 'E6:A2^3', 'orbits': 3607, 'selfcompat': 225, 'best': 792, 'method': 'exact', 'exact_done': True, 'secs': 0.6, 'sizes': [216, 54, 54, 54, 54, 54, 54, 27, 27, 27, 27, 27, 27, 27, 27, 6, 6, 6, 3, 3]} SCORE SCORE 792 VALID [2s]
+E6 D4 {'label': 'E6:D4', 'orbits': 4744, 'selfcompat': 937, 'best': 792, 'method': 'exact-timelimit', 'exact_done': False, 'secs': 42.5, 'sizes': [96, 48, 48, 48, 48, 48, 48, 32, 32, 32, 32, 32, 32, 24, 24, 24, 24, 24, 24, 24]} SCORE SCORE 792 VALID [43s]
+E6 A4A1 no subsystem
+E6 A5 {'label': 'E6:A5', 'orbits': 1555, 'selfcompat': 170, 'best': 792, 'method': 'exact', 'exact_done': True, 'secs': 0.4, 'sizes': [180, 180, 90, 90, 60, 60, 30, 20, 20, 20, 20, 20, 1, 1]} SCORE SCORE 792 VALID [2s]
+E6 A4A2 no subsystem
+E6 A1^6 no subsystem
+E6 A3A1A1 {'label': 'E6:A3A1A1', 'orbits': 13830, 'selfcompat': 4282, 'best': 792, 'method': 'ils', 'exact_done': False, 'secs': 62.9, 'sizes': [48, 48, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24]} SCORE SCORE 792 VALID [64s]
+E6 A1^6 no subsystem
+best 792

@@ -1,0 +1,114 @@
+case target Q'= 1 hint size 71
+domain 1995
+totally singular planes 156
+AtMostOne groups 19188
+hint inside domain 69 in D 69
+
+Starting CP-SAT solver v9.15.6755
+Parameters: max_time_in_seconds: 1200 log_search_progress: true cp_model_presolve: false num_workers: 1
+
+Initial optimization model '': (model_fingerprint: 0xd4a9ef14eabb43a9)
+#Variables: 1'995 (#bools: 1'995 in objective) (1'995 primary variables)
+  - 1'995 Booleans in [0,1]
+#kAtMostOne: 19'188 (#literals: 311'220)
+
+Starting presolve at 0.01s
+The solution hint is complete and is feasible. Its objective value is 69.
+
+Presolve summary:
+  - 0 affine relations were detected.
+
+Presolved optimization model '': (model_fingerprint: 0x5556ab3b7767f844)
+#Variables: 1'995 (#bools: 1'995 in objective) (1'995 primary variables)
+  - 1'995 Booleans in [0,1]
+#kAtMostOne: 19'188 (#literals: 311'220)
+[Symmetry] Graph for symmetry has 21'183 nodes and 311'220 arcs.
+[Symmetry] Symmetry computation done. time: 0.522902 dtime: 0.5749
+[Symmetry] #generators: 6, average support size: 1823.67
+[Symmetry] 6 orbits on 1995 variables with sizes: 720,432,360,360,120,3
+
+Preloading model.
+#Bound   0.61s best:-inf  next:[-0,1995]  initial_domain
+#1       0.61s best:69    next:[70,1995]  complete_hint
+SOL total 72  bound 1998  t=0.6
+
+Starting search at 0.61s with 1 workers.
+1 full problem subsolver: [main]
+
+[Precedences] num_relations=0 num_clauses=0
+[Probing] deterministic_time: 0.114715 (limit: 1) wall_time: 0.17772 (1995/1995)
+[LinearRelaxationBeforeCliqueExpansion] #linear:0 #at_most_ones:19188
+[FinalLinearRelaxation] #linear:19188 #cut_generators:0
+Initial num_bool: 1995
+#Bound   2.25s best:69    next:[70,159]   main
+
+Starting subsolver 'main' hint search at 2.25s
+#Bound   2.35s best:69    next:[70,154]   main
+Starting subsolver 'main' search at 28.86s
+#Bound 983.20s best:69    next:[70,144]   main
+#Bound 984.90s best:69    next:[70,142]   main
+#Bound 989.00s best:69    next:[70,138]   main
+#Bound 991.59s best:69    next:[70,137]   main
+
+Task timing           n [     min,      max]      avg      dev     time         n [     min,      max]      avg      dev    dtime
+      'main':         1 [  19.99m,   19.99m]   19.99m   0.00ns   19.99m         1 [  24.05m,   24.05m]   24.05m   0.00ns   24.05m
+
+Search stats    Bools  Conflicts  Branches  Restarts  BacktrackToRoot  Backtrack  BoolPropag  IntegerPropag
+       'main':  1'995      6'021    42'468         3           35'920     41'941   7'511'099      8'565'363
+
+SAT formula    Fixed  Equiv  Total  VarLeft  BinaryClauses  PermanentClauses  TemporaryClauses
+      'main':      0      0  1'995    1'995              0                 0             6'020
+
+SAT stats    ClassicMinim  LitRemoved  LitRemovedBinary  LitLearned  LitForgotten  Subsumed
+    'main':            84         487         2'207'578   6'444'211             0         1
+
+Vivification    Clauses  Decisions  LitTrue  Subsumed  LitRemoved  DecisionReused  Conflicts
+       'main':        0          0        0         0           0               0          0
+
+Clause deletion    at_true  l_and_not(l)  to_binary  sub_conflict  sub_extra  sub_decisions  sub_eager  sub_vivify  sub_probing  sub_inpro  blocked  eliminated  forgotten  promoted  conflicts
+          'main':        0             0          0             1          0              0          0           0            0          0        0           0          0    11'736      6'021
+
+Lp stats    Component  Iterations  AddedCuts  OPTIMAL  DUAL_F.  DUAL_U.
+   'main':          1   6'172'473          0    1'124   11'342        0
+
+Lp dimension        Final dimension of first component
+       'main':  3250 rows, 1995 columns, 56470 entries
+
+Lp debug    CutPropag  CutEqPropag  Adjust  Overflow  Bad  BadScaling
+   'main':          0            0  12'386         0    0           0
+
+Lp pool    Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened  Cuts/Call
+  'main':       19'188        0        0       0          0      0             0        0/0
+
+Solutions (1)       Num   Rank
+  'complete_hint':    2  [0,1]
+
+Objective bounds     Num
+  'initial_domain':    1
+            'main':    6
+
+Solution repositories    Added  Queried  Synchro
+    'alternative_path':      0        0        0
+      'best_solutions':      1        0        1
+   'fj solution hints':      0        0        0
+
+LRAT_status: NA
+CpSolverResponse summary:
+status: FEASIBLE
+objective: 69
+best_bound: 137
+integers: 2042
+booleans: 1995
+conflicts: 6021
+branches: 42468
+propagations: 7511099
+integer_propagations: 8565363
+restarts: 3
+lp_iterations: 6172473
+walltime: 1200.01
+usertime: 1200.01
+deterministic_time: 1443.13
+gap_integral: 0
+solution_fingerprint: 0x7c255479d9a07fea
+
+STATUS FEASIBLE obj total 72.0 bound total 140.0 wall 1200.0
