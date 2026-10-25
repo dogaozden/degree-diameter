@@ -65,3 +65,7 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
   edge-list sha256 cd5d3aedbaa36ae1d5431dd927395ea2219c1e24c692db2e6776144767331b4f). Check text in runs/raise13/*.check.txt.
   Awaiting the coordinator's independent re-check.
 - Round 2 still running for prod psl 7 psl 11 x Z31, psl 31 x Z229, prod sl 5 sl 16 x Z7 (ORBW=3, seed 2).
+- 10:18 UTC: psl 31 x Z229 (N = 3,407,520, below the new record) stopped after RESULT best 6; not useful any more.
+  Freed cores: sl 79 x Z7 (N = 3,450,720, mu 41.5, fix 77) and psl 81 x Z13 (N = 3,453,840, mu 42.0, fix 80), both
+  ORBW=3 seed 2, 2 h. Still running: prod psl 7 psl 11 x Z31 (N = 3,437,280) and prod sl 5 sl 16 x Z7 (N = 3,427,200),
+  ORBW=3 seed 2. Any N above 3,416,952 beats the new record 6,833,904.
