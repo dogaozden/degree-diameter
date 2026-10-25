@@ -51,3 +51,38 @@ hops) · c13 GQ(11) incidence lifts (needs order 1589) · c15 wildcard · c16 st
 - Opus: affine twists x ↦ a·x + b on Z_N (Bermond–Delorme–Farhi style permutation lifts, tools/affcheck.c) behave
   exactly like random translations (N = 20: 0.15–0.18 misses per (p, x) source for translations, affine hexagon
   edges, all-affine); the star product of c16 (fibre cycles, even N) is in the same range (0.2/source at N = 20).
+
+## 2026-10-25, cell-12-8 (Opus, cloud session, resumed job), round 2: (12,8), the table value is not a valid graph
+
+Opus before the round (≈ 1 h): read Delorme's "Grands graphes de degré et diamètre donnés" (Eur. J. Combin. 1985,
+open on the Comellas site) and rebuilt his general product G ∗ C₁₉ / G ∗ C₃₅ (diameter D+2 / D+3, verified at q = 3),
+then found the actual source of 4,650,100: J. Gómez's PhD thesis (UPC 1986, also on the Comellas site), §2.9.3,
+construction ΩB₁ = 30 copies of the H(9) incidence graph + 664,300 degree-12 "new" vertices. Built as read, it has
+diameter 9 (all-pairs at q = 3, 5; BFS at q = 9), and a 3-line argument shows ≥ 9 for any attachment of the new
+vertices to copies of one base vertex. Round 1's "lift of H(9) + 2 hops by a group of order 35" never existed.
+Valid baseline before the round: Haar SL(2,29) × Z79, 3,848,880 (haar_sym ORBIT="3 4 0", 50 s, build_haar2 VALID).
+Cards: c1 rebuild ΩB₁ independently at q = 3, 5 + alternative readings · c2 read the thesis (proof? conditions?
+publication?) · c3 Haar k = 4 orbits · c4 Haar k = 6 / k = 2 · c5 "twisted hub" repair of ΩB₁ (Z_c lift + hubs) at q = 3
+· c6 bipartite affine star products at q = 3 · c7 wildcard (+2 hub gadget on a Haar graph) · c8 rebuild ΩB₁ at q = 7
+(the (10,8) value 1,176,480).
+
+Outcomes (scoreboard research/squads/d12D8_r2/scoreboard.jsonl):
+- c1: own reading gives diameter 10 (all groups of type a) or 9 (mixed a/b) at q = 3 and q = 5; 64 readings at q = 3
+  and 24 random per-copy port maps: all 9 or 10, none 8. Did not read Opus's code.
+- c8: q = 7, 1,176,480 vertices, 10-regular bipartite: eccentricity 9 (mixed groups) or 10 (all one type) from new
+  vertices; independent scipy BFS agrees.
+- c2: the thesis states D ≤ D₁ + 2 with no proof, conditions only "B₁ bipartite, D₁ even"; elsewhere (§2.11.2) it
+  says a diameter was "not checked". "On large bipartite graphs" (Delorme–Gómez–Quisquater, "submitted") not found
+  published; no erratum found. Thesis p. 46 lists the green (Δ,8) values; its general-graph table has (12,8) =
+  8,370,180 (K₇,₇ Σ₆ H₉, not claimed bipartite).
+- c3: k = 4 worse than k = 3 (best cost 16 on PGL(2,43) × Z25 at μ 40.9; SL(2,q) with g² = −I degenerate).
+- c4: k = 6 and k = 2 random orbit costs 10–1000× the Poisson μ at N ≈ 2M; annealing plateaued (2,731). No solution.
+- c5: twisted hub lifts at q = 3: only c = 6 (every hub meets all copies) is valid (5,824); random twists leave
+  millions of far pairs, local search does not converge. Counting bound c ≤ (q+1)k.
+- c6: bipartite affine lifts of H(3) + 2 matchings: random labels valid up to m = 16 (11,648 vertices); m = 20
+  annealed to 2 uncovered. Far below Haar ((6,8) = 30,576).
+- c7: the "+2 hub gadget" on a tight Haar graph fails at (6,8) (diameter 9 in all 25 trials).
+Kept: the finding (three independent implementations, q = 3, 5, 7, 9) and the k = 3, f = 0 Haar climb. Opus then ran
+k = 3 rungs with ORBW=3: PSL(2,59) × Z19 solved (545,857 evaluations): **3,901,080, build_haar2 VALID**; PSL(2,37) ×
+Z79 (μ 44.1), PSL(2,29) × Z163 (40.6), PSL(2,31) × Z133 (39.1) stopped at one uncovered orbit (cost 3–6).
+Squad value: high for verification (c1, c2, c8 made the invalidity claim independent), nothing new for constructions.
