@@ -1,0 +1,9 @@
+group psl 289 poly x^2+3 x Z_1, N=12068640, identity 41616, H order 48, rows 251430, threads 1, setup 0.80s
+wide rows: HW order 145, rows 83232, setup 1.53s
+alpha: conj by mat(77,253,259,228) (index 5794420), z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 143 (+e); mu = 36.46, mu/k = 12.15, fixed-point misses ~ 2.08
+start cost=52
+t=30 steps=168 evals=1345 cost=18 best=18 T=0.53
+t=60 steps=335 evals=2681 cost=17 best=17 T=0.19
+t=91 steps=504 evals=4033 cost=17 best=17 T=0.15
+RESULT d=9 D=10 group=psl 289 poly x^2+3 x Z_1 N=12068640 best=17 evals=5161 time=120.5 orbit k=3 m=3 f=0 fix=143
