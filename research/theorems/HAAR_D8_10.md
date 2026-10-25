@@ -219,10 +219,11 @@ depends on it; it is used for the D = 7 cover graphs.
 
 | program | written independently of the search? | what it does | exact because of |
 |---|---|---|---|
-| `research/frontier/build_haar2.py` | yes | builds the field from addition/multiplication tables and checks the field axioms (exhaustively for small q, on 20,000 random triples otherwise); enumerates SL/PSL/PGL(2, q) by brute force over all (a, b, c, d) and checks the order against the formula; builds the Δ permutations g ↦ sg of G and checks each is a permutation; BFS from (e, A) and from (e, B); requires every vertex reached within D, maximum degree Δ, no repeated edge; prints the sha256 of the edge list | Lemma 1.2, Cor. 2.3 |
+| `research/frontier/build_haar2.py` | yes | builds the field from addition/multiplication tables and checks associativity, distributivity and commutativity on 20,000 random triples and every inverse; enumerates SL/PSL/PGL(2, q) by brute force over all (a, b, c, d) and checks the order against the formula; builds the Δ permutations g ↦ sg of G and checks each is a permutation; BFS from (e, A) and from (e, B); requires every vertex reached within D, maximum degree Δ, no repeated edge; prints the sha256 of the edge list | Lemma 1.2, Cor. 2.3 |
 | `research/frontier/check_haar_indep.py` | yes (its own field, matrix and enumeration code) | same two searches | Cor. 2.3 |
 | `research/frontier/haarcheck_sl.c`, `research/frontier/haarcheck2.c` | yes (two separate C programs) | G = SL(2, p) × Z_n, p prime only; own indexing of SL(2, p), explicit 2 × 2 products mod p, inverse generators computed as [[d, −b], [−c, a]] and −z; bitset BFS from (e, A) and (e, B), about 4–6 bits of memory per group element | Cor. 2.3 |
 | `research/structured/tools/haarcheck_psl.c` | yes | the same for PSL(2, p) × Z_n, p an odd prime | Cor. 2.3 |
+| `research/theorems/haar_d8_10/hc_factor.c` | yes (written for this note) | SL(2, p) or PSL(2, p) times Z_n, p prime: permutation tables of the matrix factor (§5.3), then the same two searches | Cor. 2.3 |
 | `research/lifts/coordinator_check/apsp.c`, `apsp_mt.c` | yes | BFS from **every** vertex of an edge list; checks simple, maximum degree, bipartite, connected and the exact diameter; no symmetry assumed | definition |
 | `research/lifts/coordinator_check/apsp_orb.c` | yes | as apsp, but BFS from one vertex per orbit of a level shift that it first verifies to be an automorphism | Lemmas 2.1, 2.5 |
 | Lean 4 (`lean/BipartiteDD/Haar/`) | yes | proves `IsBipartiteDegDiam G Δ D` for the specific graph, via Theorem 2.4 and a certificate of words | Thm. 2.4 (formalised) |
@@ -231,13 +232,15 @@ The search programs (`haar_gen3.c`, `haar_fast.c`, `haar_sym.c`) also run a full
 solution. We do not count that check as independent.
 
 **What no checker uses.** None of the checkers uses the orbit symmetry α of §3. The solution files with f = 0 (§3)
-even store a translate S·s₀⁻¹ that is not closed under any automorphism of the searched form; it is closed under the
-conjugate map x ↦ α(x)·α(s₀)s₀⁻¹ instead (Lemma 3.1(ii); checked by `research/theorems/haar_d8_10/orbit_check.py`, §5).
+even store a translate S·s₀⁻¹ that is not closed under any automorphism of the searched form. It is closed under a map
+x ↦ α(x)·c with c ∈ S instead, which is what Lemma 3.1(ii) predicts (c = α(s₀)s₀⁻¹); `orbit_check.py` finds α and c for
+every f = 0 record (§5), and for three of them we also found the s₀ for which the stored set times s₀ is α-closed.
 So the validity of a record does not depend on any claim in §3: the symmetry was a search device only.
 
-**What remains to be trusted.** The programs, their compilers or interpreters, and the hardware. For each record at
-least two implementations written separately agree (§5); for the largest graphs (above about 2·10⁸ vertices) these are
-the C checkers only, because the Python checkers need too much memory there.
+**What remains to be trusted.** The programs, their compilers or interpreters, and the hardware. After this session's
+re-checks, every record has been accepted by at least two separately written programs, or by one program and a Lean
+proof (§5). Above about 2.4·10⁷ vertices only C programs were run, because the Python checkers need too much memory
+there.
 
 ---
 
@@ -280,10 +283,11 @@ x_j ∉ Fix(α) is enough. A search over such S only chooses the f fixed generat
 The automorphisms used for the records in §5 (details per record in the table):
 
 1. **Conjugation times scaling** on G = Q × Z_n: α(x, z) = (gxg⁻¹, rz), with g ∈ Q of order k modulo the centre of Q and
-   r ∈ Z_n^× of multiplicative order k. Here Fix(α) = C_Q(g) × {z : (r − 1)z = 0}. For k = 3 with every prime factor
-   of n congruent to 1 mod 3, r − 1 is a unit mod n and the Z_n-part of Fix(α) is {0}; C_Q(g) is then a torus of order
-   about q. For products Q = Q_1 × Q_2, g = (g_1, g_2). This is the k = 3 recipe of most records, and k = 5 for (11,8)
-   and (11,10).
+   r ∈ Z_n^× of multiplicative order k. Here Fix(α) = C_Q(g) × {z : (r − 1)z = 0}. If r ≢ 1 modulo every prime factor
+   of n (for prime k this is possible exactly when every prime factor of n is ≡ 1 mod k), then r − 1 is a unit mod n and
+   the Z_n-part of Fix(α) is {0}; this holds for every record of this type except (7,8), where n = 14 and z ∈ {0, 7} are
+   fixed. In SL(2, q) or PSL(2, q), C_Q(g) has order about q (a torus when the characteristic does not divide k). For
+   products Q = Q_1 × Q_2, g = (g_1, g_2). This is the k = 3 recipe of most records, and k = 5 for (11,8) and (11,10).
 2. **Order 6 with a swap** on SL(2,7)² × Z_31 (the (13,8) record): α(x_1, x_2, z) = (c x_2 c⁻¹, x_1, 6z) with c of order 3.
    Since 6 has order 6 mod 31 and α² is conjugation by (c, c) times z ↦ 36z = 5z, α has order 6.
 3. **An involution** on PSL(2,11) × Z_24 (the (6,8) record): conjugation by an involution times z ↦ 11z.
@@ -494,7 +498,138 @@ in §5 uses SL(2, q), a product containing SL(2, q), a PSL(2, q) with a cyclic f
 
 ## 5. Records at D = 8, 9, 10
 
-RECORDS-TABLE-PLACEHOLDER
+**Status.** Every entry below is a **computer-checked record, not a theorem**: one explicit graph, checked by programs.
+Where the Lean column has ✓, the same graph (same group and generators, compared against the file) is also proved in
+Lean 4, so for that graph the statement "bipartite, maximum degree ≤ Δ, diameter ≤ D, this many vertices" is a
+kernel-checked theorem. "Gain" is measured against the 2013 table (§1.1). The order is also given as a fraction of the
+bipartite Moore bound.
+
+### 5.1 The records
+
+<!-- TABLE (generated by research/theorems/haar_d8_10/make_table.py from the logs in haar_d8_10/recheck/) -->
+| cell | 2013 table | ours | gain | of Moore bound | group G | orbit structure of S (verified) | Lean | checks before today | this session |
+|---|---:|---:|---:|---:|---|---|:---:|---|---|
+| (3,8) | 256 | **288** | +12.5 % | 56.5 % | lift of a 4-vertex base over Z_3² ⋊ Z_8 (note 1) | – | ✓ | A | A |
+| (5,8) | 9,234 | **9,760** | +5.7 % | 22.3 % | Z_61 ⋊_8 Z_80 | – | (9,576) | B | B, A |
+| (6,8) | 29,790 | **31,680** | +6.3 % | 16.2 % | PSL(2,11) × Z_24 | k = 2, f = 0: 2+2+2 | (30,576) | B | B, I, F, A |
+| (7,8) | 80,940 | **95,760** | +18.3 % | 14.3 % | PSL(2,19) × Z_14 | k = 3: 1+3+3 | ✓ | B ×2 | B, I, F, A |
+| (8,8) | 201,480 | **239,904** | +19.1 % | 12.5 % | PSL(2,17) × Z_49 | k = 3: 1+1+3+3 | ✓ | B ×2 | B, I, F |
+| (9,8) | 449,480 | **540,360** | +20.2 % | 11.3 % | PSL(2,19) × Z_79 | k = 3, f = 0: 3+3+3 | ✓ | B ×2 | B, I, F |
+| (11,8) | 2,246,940 | **2,258,520** | +0.5 % | 10.2 % | PSL(2,59) × Z_11 | k = 5: 1+5+5 | – | B, I, P, G | B, F |
+| (13,8) | 5,314,680 | **6,999,552** | +31.7 % | 9.0 % | SL(2,7)² × Z_31 | k = 6 (swap): 1+6+6 | – | B, G (+3 on a branch) | B, I |
+| (15,8) | 14,172,480 | **18,128,880** | +27.9 % | 8.0 % | SL(2,109) × Z_7 | k = 3, f = 0: 3+3+3+3+3 | – | B, C, G | B, I, F |
+| (5,9) | 27,936 | **29,540** | +5.7 % | 16.9 % | Z_422 ⋊_5 Z_35 | – | (28,560) | B | B, A |
+| (6,9) | 117,360 | **127,296** | +8.5 % | 13.0 % | SL(2,17) × Z_13 | k = 3, f = 0: 3+3 | ✓ | B ×2 | B, I, F, A |
+| (7,9) | 400,160 | **462,840** | +15.7 % | 11.5 % | PSL(2,29) × Z_19 | k = 3: 1+3+3 | ✓ | B ×3 | B, I, F |
+| (8,9) | 1,091,232 | **1,341,600** | +22.9 % | 10.0 % | SL(2,25) × Z_43 | k = 3: 1+1+3+3 | – | B | B, I |
+| (9,9) | 2,961,536 | **3,499,776** | +18.2 % | 9.1 % | PSL(2,7) × SL(2,7) × Z_31 | k = 3, f = 0: 3+3+3 | – | B ×2, G | B, I |
+| (10,9) | 7,057,400 | **8,003,856** | +13.4 % | 8.3 % | SL(2,83) × Z_7 | k = 3: 1+3+3+3 | – | B, I, C, C2, G | B, F |
+| (11,9) | 15,200,448 | **16,792,080** | +10.5 % | 7.6 % | SL(2,61) × Z_37 | k = 3: 1+1+3+3+3 | – | B, I, C, C2, G | B |
+| (12,9) | 30,001,152 | **34,026,720** | +13.4 % | 7.2 % | SL(2,41) × Z_247 | k = 3, f = 0: 3+3+3+3 | – | C, C2, G | C |
+| (13,9) | 50,990,610 | **67,742,688** | +32.9 % | 7.2 % | SL(2,103) × Z_31 | k = 3: 1+3+3+3+3 | – | C, G | C, C2 |
+| (14,9) | 95,087,738 | **116,068,656** | +22.1 % | 6.6 % | SL(2,67) × Z_193 | k = 3: 1+1+3+3+3+3 | – | C, C2, G | C |
+| (15,9) | 168,016,334 | **208,029,120** | +23.8 % | 6.5 % | SL(2,79) × Z_211 | k = 3, f = 0: 3+3+3+3+3 | – | C, C2, G | C |
+| (16,9) | 288,939,118 | **337,394,400** | +16.8 % | 6.1 % | SL(2,151) × Z_49 | k = 3: 1+3+3+3+3+3 | – | C, C2, G (note 3) | – |
+| (4,10) | 11,748 | **12,416** | +5.7 % | 21.0 % | Z_97 ⋊_19 Z_64 | – | ✓ | A | A |
+| (5,10) | 90,068 | **95,472** | +6.0 % | 13.7 % | Z_1989 ⋊_461 Z_24 | – | ✓ | A | A |
+| (6,10) | 452,032 | **524,160** | +16.0 % | 10.7 % | SL(2,5) × PSL(2,7) × Z_13 | k = 3, f = 0: 3+3 | ✓ | B ×2 | B, I |
+| (7,10) | 1,987,380 | **2,237,760** | +12.6 % | 9.3 % | PSL(2,5) × SL(2,8) × Z_37 | k = 3: 1+3+3 | – | B, G | B, I |
+| (8,10) | 6,927,210 | **7,818,096** | +12.9 % | 8.3 % | SL(2,67) × Z_13 | k = 3: 1+1+3+3 | – | C, G | B, I, C2, F |
+| (9,10) | 20,017,260 | **23,975,280** | +19.8 % | 7.8 % | PSL(2,71) × Z_67 | k = 3, f = 0: 3+3+3 | – | P ×2, G | I, P |
+| (10,10) | 50,331,156 | **60,141,120** | +19.5 % | 6.9 % | SL(2,79) × Z_61 | k = 3: 1+3+3+3 | – | C, C2, G | C |
+| (11,10) | 130,592,354 | **148,729,680** | +13.9 % | 6.7 % | PSL(2,89) × Z_211 | k = 5: 1+5+5 | – | P, G | P |
+| (12,10) | 300,383,050 | **325,832,976** | +8.5 % | 6.3 % | SL(2,107) × Z_133 | k = 3, f = 0: 3+3+3+3 | – | C, C2, G | C |
+| (13,10) | 617,330,936 | **677,714,400** | +9.8 % | 6.0 % | SL(2,199) × Z_43 | k = 3: 1+3+3+3+3 | – | C, C2, G | – |
+| (14,10) | 1,213,477,190 | **1,326,627,120** | +9.3 % | 5.8 % | SL(2,139) × Z_247 | k = 3: 1+1+3+3+3+3 | – | C, C2, G | – |
+| (15,10) | 2,300,326,510 | **2,467,618,800** | +7.3 % | 5.5 % | SL(2,149) × Z_373 | k = 3, f = 0: 3+3+3+3+3 | – | C, G | – |
+| (16,10) | 4,119,507,330 | **4,220,872,800** | +2.5 % | 5.1 % | SL(2,151) × Z_613 | k = 3: 1+3+3+3+3+3 | – | C, G | – |
+<!-- /TABLE -->
+
+*Solution files.* `research/frontier/sols/<cell>_…txt`, one per cell; the stems are listed in `make_table.py`. Exceptions:
+(3,8), (4,10) and (5,10) are in `research/lifts/sols/`.
+
+*Orbit structure.* "k = 3: 1+3+3" means that S is closed under an automorphism α of order k of the form in
+Construction 3.2, and α splits S into cycles of the sizes shown (1 = a fixed generator). "f = 0" means no fixed
+generator; such files store a translate (§2.6), which is closed under x ↦ α(x)c instead. Each entry was verified from
+the file alone by `orbit_check.py` (single-factor groups over prime fields) or `orbit_check2.py` (products, GF(25), and
+the order-6 swap of (13,8)); outputs in `recheck/orbit_check.log` and `recheck/orbit_check2.log`. "–" means the graph
+was not found by an orbit search and no symmetry is claimed.
+
+*Checker letters.* B = `build_haar2.py`; I = `check_haar_indep.py`; C = `haarcheck_sl.c`; C2 = `haarcheck2.c`;
+P = `haarcheck_psl.c`; F = `research/theorems/haar_d8_10/hc_factor.c` (written for this note, see §5.3);
+A = all-pairs BFS with `apsp.c` or `apsp_mt.c`, on an edge list built by `research/lifts/coordinator_check/build.py`
+(its own group code) or by `build_haar2.py`, and failing as it should with D − 1; G = `bigcheck_indep.c` (cloud runs;
+its source is not in the repository, §5.2). Each letter is a separately written program (C and C2 are two different C
+programs). "B ×2" means the same program was run twice (by the search session and at harvest, with the same edge-list
+sha256).
+
+*Lean.* ✓ = a theorem `nb_Δ_D_…` in `lean/BipartiteDD/Haar/<dir>/Record*.lean` for this graph, with its own
+`Axioms.out.txt` listing only `propext`, `Classical.choice`, `Quot.sound` (no `sorry`, no `native_decide`). A number in
+brackets is the largest earlier (smaller) graph of the cell proved in Lean. These modules are not imported by the default
+target `lean/BipartiteDD.lean`; build each with `lake build BipartiteDD.Haar.<dir>.<file>` (for example
+`lake build BipartiteDD.Haar.D7D8b.Record`).
+
+**Notes.**
+
+1. (3,8) is the only record here that is not a Haar graph: a 72-fold regular cover of a cubic bipartite multigraph on
+   2 + 2 vertices (edges 0–2 twice, 0–3, 1–2, 1–3 twice), with voltages in Z_3² ⋊_M Z_8, M = [[0, 2], [1, 0]]
+   (`research/lifts/sols/c1r_d3D8_n288_b2_3_0_aff302108_s1.txt`). For a cell this well studied, 288 against 256 is a
+   large jump; the table audit found no source for 256 and no later value (AUDIT.md §3, §8).
+2. (11,10): the table value is 130,592,354 (§6.1), not 0 as the repository README says.
+3. (16,9): the earlier cloud report `research/frontier/runs/cloudcheck/d16D9_sl_151_49_orb3_s1.txt` has a header copied
+   from the (14,10) report (file name and sha256), while its checker output is for the (16,9) graph. The search session's
+   own C and C2 runs (`research/structured/runs/d16D9_sl_151_49_orb3_s1.log`) and this session's runs are for the right
+   file.
+4. The table values at (11,8) and (15,8) are among the D = 8 values from Gómez's ΩH_q that the table audit could not
+   reproduce at diameter 8 (§6.1), and (15,8) repeats the (14,8) value. Our graphs are checked either way; only the size
+   of the gain is in question there.
+
+### 5.2 Gaps in the earlier record-keeping, and what this session did about them
+
+An audit of the logs (2026-10-25) found the following. None of them affects whether a graph is valid; they affect how
+well the evidence was recorded.
+
+- **Single-program cells.** Before today, (5,8), (5,9), (6,8) and (8,9) had only one checker run each (build_haar2 at
+  harvest), and (13,9), (7,10), (8,10), (11,10), (15,10), (16,10) had only one recorded run (a cloud job with two
+  checkers, whose output the harvest log copies). This session re-ran every graph (column "this session"). After it,
+  every cell has been accepted by at least two separately written programs, or by one program and a Lean proof.
+- **`bigcheck_indep.c` is not in the repository**, nor its validation output, although it was the second checker for
+  every graph above 2·10⁷ vertices. Its report notes that it shares the file conventions with the other checkers, so a
+  shared misreading of the file format would not be caught. This is why `hc_factor.c` was written (§5.3).
+- **The harvest tool** (`labctl`) is not in the repository; its checks are only described in SIZE_LAW.md and old commit
+  messages.
+- **`check_haar_indep.py`** had been run on only three current records ((10,9), (11,9), (11,8)); this session ran it on
+  the other 14 Haar records up to 2.4·10⁷ vertices that it can read (it does not read metacyclic groups).
+- **Labels.** The README "Method" column calls (13,8), (7,10), (8,10), (11,10), (15,10) and (16,10) "finite geometry";
+  all six are orbit-search Haar graphs (verified above). It calls (8,9) "evolutionary search"; the file is an orbit-closed
+  Haar graph of SL(2,25) × Z_43. (5,8) and (5,9) are metacyclic Haar graphs; no log in the repository shows how they were
+  found.
+
+### 5.3 The checker written for this note
+
+`research/theorems/haar_d8_10/hc_factor.c` handles G = Q × Z_n with Q = SL(2, p) or PSL(2, p), p prime. It enumerates Q by
+brute force over all (a, b, c, d) ∈ [0, p)⁴ with ad − bc = 1 (for PSL keeping the lexicographically smaller of ±X),
+checks |Q| against the formula, turns each generator (M, t) into two permutation tables of Q (X ↦ MX and X ↦ M⁻¹X),
+checks that both are bijections, and runs the two searches of Corollary 2.3 on Q × Z_n with bitsets. It reads only the
+`mat(…)` and `z=` fields of the file. It reports VALID on the records, and INVALID on a file with one generator altered
+and on the (7,8) file with D lowered to 7 (`recheck/hc_factor_negative.log`).
+
+### 5.4 Cells at D = 8, 9, 10 that we do not beat
+
+| cell | 2013 table | holder (wiki colour) | remark |
+|---|---:|---|---|
+| (4,8) | 2,184 | Loz | a Haar graph of Z_91 ⋊ Z_12 of exactly this order exists (table audit) |
+| (10,8) | 1,176,480 | Delorme–Gómez–Quisquater | value from Gómez's ΩH_7; did not check out at diameter 8 as read (§6.1) |
+| (12,8) | 4,650,100 | Delorme–Gómez–Quisquater | the same |
+| (14,8) | 14,172,480 | Delorme–Gómez–Quisquater | the same |
+| (16,8) | 36,201,060 | Delorme–Gómez–Quisquater | the same |
+| (3,9) | 506 | Loz | a Haar graph of Z_23 ⋊ Z_11 of exactly this order exists (table audit) |
+| (4,9) | 4,970 | Loz | a Haar graph of Z_71 ⋊ Z_35 of exactly this order exists (table audit) |
+| (3,10) | 800 | Delorme–Gómez–Quisquater | no source; a lift of exactly this order was found by the table audit |
+
+The heuristic of §3.5 places (12,8), (14,8) and (16,8) above the first-moment ceiling for random-like and
+orbit-closed S (STRUCTURE.md §6). If the table values there are right, they come from structure that our searches do
+not reproduce.
 
 ---
 
@@ -587,6 +722,10 @@ cc -O3 -o hcsl research/frontier/haarcheck_sl.c
 cc -O3 -o hcpsl research/structured/tools/haarcheck_psl.c
 ./hcpsl research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt
 
+# the checker written for this note (SL(2,p) or PSL(2,p) times Z_n, p prime)
+cc -O3 -o hc_factor research/theorems/haar_d8_10/hc_factor.c
+./hc_factor research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+
 # all-pairs BFS that assumes no symmetry (write the edge list first)
 python3 research/frontier/build_haar2.py research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt /tmp/edges.txt
 cc -O2 -o apsp research/lifts/coordinator_check/apsp.c && ./apsp /tmp/edges.txt 7 8
@@ -601,7 +740,8 @@ python3 research/theorems/haar_d8_10/abound.py
 cd lean && lake exe cache get && lake build BipartiteDD.Haar.Main
 ```
 
-The outputs of this session's re-checks are in `research/theorems/haar_d8_10/recheck/`.
+The outputs of this session's re-checks are in `research/theorems/haar_d8_10/recheck/`, and
+`python3 research/theorems/haar_d8_10/make_table.py` regenerates the table of §5.1 from them.
 
 ---
 

@@ -1,0 +1,69 @@
+=== meta 61 80 8 (5,8): build.py (own group code) + apsp.c (all pairs, no symmetry)
+/tmp/claude-0/-home-user-degree-diameter/df325425-536d-5bb4-92c4-e298c3c8b90f/scratchpad/recheck/d5D8.e 9760 24400
+n=9760 edges=24400 degree min=5 max=5 bipartite=yes diameter=8
+RESULT VALID d=5 D=8 n=9760
+  with D-1:
+RESULT INVALID
+=== meta 422 35 5 (5,9): build.py + apsp.c
+/tmp/claude-0/-home-user-degree-diameter/df325425-536d-5bb4-92c4-e298c3c8b90f/scratchpad/recheck/d5D9.e 29540 73850
+n=29540 edges=73850 degree min=5 max=5 bipartite=yes diameter=9
+RESULT VALID d=5 D=9 n=29540
+  with D-1:
+RESULT INVALID
+=== check_haar_indep d6D8_psl_11_24_orb2f0_s1 17:14:00
+RESULT VALID d=6 D=8 eccA=8 eccB=8 n=31680 (0s)
+
+elapsed 0 s
+=== check_haar_indep d7D8_psl_19_14_orb3_s1 17:14:00
+RESULT VALID d=7 D=8 eccA=8 eccB=8 n=95760 (0s)
+
+elapsed 1 s
+=== check_haar_indep d8D8_psl_17_49_orb3_s1 17:14:01
+RESULT VALID d=8 D=8 eccA=8 eccB=8 n=239904 (0s)
+
+elapsed 0 s
+=== check_haar_indep d9D8_psl_19_79_orb3_s1 17:14:01
+RESULT VALID d=9 D=8 eccA=8 eccB=8 n=540360 (1s)
+
+elapsed 1 s
+=== check_haar_indep d6D9_sl_17_13_orb3f0_s2 17:14:02
+RESULT VALID d=6 D=9 eccA=9 eccB=9 n=127296 (0s)
+
+elapsed 1 s
+=== check_haar_indep d7D9_psl_29_19_orb3_s1 17:14:03
+RESULT VALID d=7 D=9 eccA=9 eccB=9 n=462840 (1s)
+
+elapsed 1 s
+=== check_haar_indep d8D9_sl_25_43_orb3_s1 17:14:04
+RESULT VALID d=8 D=9 eccA=9 eccB=9 n=1341600 (1s)
+
+elapsed 2 s
+=== check_haar_indep d6D10_prod_sl_5_psl_7_13_orb3f0_s1 17:14:06
+RESULT VALID d=6 D=10 eccA=10 eccB=10 n=524160 (1s)
+
+elapsed 1 s
+=== check_haar_indep d7D10_prod_psl_5_sl_8_37_orb3_s15 17:14:07
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2237760 (2s)
+
+elapsed 2 s
+=== check_haar_indep d9D9_prod_psl_7_sl_7_31_orb3f0_s1 17:14:09
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3499776 (4s)
+
+elapsed 5 s
+=== check_haar_indep d13D8_prod_sl_7_sl_7_31_orb6swc_s2 17:14:14
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6999552 (10s)
+
+elapsed 11 s
+=== check_haar_indep d8D10_sl_67_13_orb3_s12 17:14:25
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=7818096 (12s)
+
+elapsed 11 s
+=== check_haar_indep d15D8_sl_109_7_orb3f0_s1 17:14:36
+RESULT VALID d=15 D=8 eccA=8 eccB=8 n=18128880 (106s)
+
+elapsed 106 s
+=== check_haar_indep d9D10_psl_71_67_orb3f0_s1 17:16:22
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=23975280 (71s)
+
+elapsed 72 s
+ALLDONE

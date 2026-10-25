@@ -1,0 +1,37 @@
+=== (3,8) lift over Z_3^2 x|_M Z_8: build.py (own code)
+/tmp/claude-0/-home-user-degree-diameter/df325425-536d-5bb4-92c4-e298c3c8b90f/scratchpad/recheck/e.e 288 432
+n=288 edges=432 degree min=3 max=3 bipartite=yes diameter=8
+RESULT VALID d=3 D=8 n=288
+  with D-1:
+RESULT INVALID
+=== (4,10) meta 97 64 19: build.py
+/tmp/claude-0/-home-user-degree-diameter/df325425-536d-5bb4-92c4-e298c3c8b90f/scratchpad/recheck/e.e 12416 24832
+n=12416 edges=24832 degree min=4 max=4 bipartite=yes diameter=10
+RESULT VALID d=4 D=10 n=12416
+  with D-1:
+RESULT INVALID
+=== (5,10) meta 1989 24 461: build.py
+/tmp/claude-0/-home-user-degree-diameter/df325425-536d-5bb4-92c4-e298c3c8b90f/scratchpad/recheck/e.e 95472 238680
+n=95472 edges=238680 degree min=5 max=5 bipartite=yes diameter=10
+RESULT VALID d=5 D=10 n=95472
+  with D-1:
+RESULT INVALID
+=== d6D8_psl_11_24_orb2f0_s1: edge list from build_haar2.py, then apsp_mt 17:15:25
+n=31680 edges=95040 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=31680
+  with D-1:
+RESULT INVALID
+elapsed 3 s
+=== d7D8_psl_19_14_orb3_s1: edge list from build_haar2.py, then apsp_mt 17:15:28
+n=95760 edges=335160 degree min=7 max=7 bipartite=yes diameter=8
+RESULT VALID d=7 D=8 n=95760
+  with D-1:
+RESULT INVALID
+elapsed 40 s
+=== d6D9_sl_17_13_orb3f0_s2: edge list from build_haar2.py, then apsp_mt 17:16:08
+n=127296 edges=381888 degree min=6 max=6 bipartite=yes diameter=9
+RESULT VALID d=6 D=9 n=127296
+  with D-1:
+RESULT INVALID
+elapsed 94 s
+=== d8D8_psl_17_49_orb3_s1: edge list from build_haar2.py, then apsp_mt 17:17:42

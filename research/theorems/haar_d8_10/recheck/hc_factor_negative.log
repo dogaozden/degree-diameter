@@ -1,0 +1,10 @@
+=== hc_factor on (7,8) with the z of s_1 changed from 6 to 7 (expected INVALID)
+from (e,A): reached A 47880/47880, B 47832/47880 within 8 steps, eccentricity 8
+from (e,B): reached A 47832/47880, B 47880/47880 within 8 steps, eccentricity 8
+INVALID d=7 D=8 group=psl 19 x Z_14 |G|=47880 vertices=95760 (hc_factor)
+exit 1
+=== hc_factor on the (7,8) file with D lowered to 7 (expected INVALID)
+from (e,A): reached A 33956/47880, B 47880/47880 within 7 steps, eccentricity 7
+from (e,B): reached A 47880/47880, B 33820/47880 within 7 steps, eccentricity 7
+INVALID d=7 D=7 group=psl 19 x Z_14 |G|=47880 vertices=95760 (hc_factor)
+exit 1
