@@ -1,0 +1,6 @@
+group prod meta 5 4 2 meta 5 4 2 x Z_1, N=400, identity 0, H order 20, rows 20, threads 1, setup 0.00s
+start cost=300
+t=30 steps=1249735 evals=9997881 cost=26 best=26 T=0.53
+t=60 steps=2859690 evals=22877521 cost=26 best=26 T=0.19
+t=90 steps=4281392 evals=34251137 cost=26 best=26 T=0.15
+RESULT d=3 D=10 group=prod meta 5 4 2 meta 5 4 2 x Z_1 N=400 best=26 evals=46072849 time=120.0
