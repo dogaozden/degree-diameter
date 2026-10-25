@@ -32,5 +32,10 @@ that rules out every group in the window with a large nonabelian factor. A Z3² 
 element trivial on Z_p, with fixed set |C_Q| · p, and on the record group those orbits mostly fail to generate G.
 So the K = 9 idea does not work with the groups available at this order.
 
+Triple and pair products in the window (enumerated; solvable factors SL(2,3)/PSL(2,3) dropped as poor mixers):
+prod psl 5 psl 5 × Z_487 (N 1,753,200, μ 31.2, |Fix| 8): random K = 3 orbits min 225, median 2,373. Dead: the cyclic
+factor 487 is too large for a 3,600-element nonabelian part. The other window groups with small |Fix| are either already
+in round 1's screen or have a cyclic factor of similar size.
+
 Rungs of the K = 3 family (this round, 1 h each, K 8, THREADS 1): see the table at the end (filled in when done).
 
