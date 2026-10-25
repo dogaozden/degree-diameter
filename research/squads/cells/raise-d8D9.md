@@ -43,3 +43,9 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
   (BFS from A and B: ecc 9, reached all, 8 distinct neighbours each). Log in the same folder.
 - mu = 27.1 with |Fix(alpha)| = 107. The fixed-point term was large, and it still solved.
 - Still running: b1 (same group, seed 1), b3 (sl 16 x Z163), b4 (sl 25 x Z43). Next: push this group further (more seeds, larger order).
+
+## RECORD 2: (8,9) 1,341,600 vertices (beats 1,330,560)
+- Group: SL(2,25) (poly x^2+2) x Z_43, N = 670,800. Orbit search ORBIT="3 2 2", seed 1, K=8, 1,185,057 evals in 768 s (run b4).
+- Solution: research/frontier/sols/d8D9_sl_25_43_orb3_s1.txt.
+- Checks: build_haar2.py VALID (inside orbq.sh); research/frontier/check_haar_indep.py VALID (ecc 9 from A and B, all vertices reached, 8 distinct neighbours).
+- mu = 29.7, |Fix(alpha)| = 23.
