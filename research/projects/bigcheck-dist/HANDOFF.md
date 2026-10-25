@@ -32,7 +32,8 @@ Branch: `claude/bigcheck-dist-haiku-2iqw1y` (the harness's designated branch; th
 - Memory (estimate from the code, not measured): about 24n bytes per thread (vis, fr, nx as uint64 per vertex), plus the CSR
   (8n + 16m bytes) and the edge arrays read from the file (16 bytes per edge). The file route tops out at tens of millions
   of vertices, as the brief says.
-- Reference cross-check for lvl20: `apsp_mt` (4 threads, no symmetry) is running; see the result line below.
+- Reference cross-check for lvl20: `apsp_mt` (4 threads, no symmetry, all 100,000 sources) gives diameter 2510 and
+  `RESULT INVALID` at D=99, matching the sharded merge.
 
 ## Trust limits
 
