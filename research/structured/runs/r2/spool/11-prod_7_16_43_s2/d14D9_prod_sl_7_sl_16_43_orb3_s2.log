@@ -1,0 +1,6 @@
+group prod sl 7 sl 16 poly x^4+x+1 x Z_43, N=58947840, identity 7378800, H order 60, rows 982464, threads 1, setup 3.55s
+wide rows: HW order 238, rows 247680, setup 6.50s
+alpha: conj by prod[mat(5,1,0,3);mat(10,15,11,11)] (index 1002395), z -> 6 z on Z_43
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 89 (+e); mu = 18.19, mu/k = 6.06, fixed-point misses ~ 1.22
+start cost=48
+t=30 steps=26 evals=209 cost=14 best=14 T=0.53
