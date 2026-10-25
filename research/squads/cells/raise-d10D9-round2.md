@@ -52,8 +52,7 @@ and haarcheck_psl, coordinator check pending). Bar used here: beat 8,362,560, i.
 
 ### 15:16 UTC: NEW RECORD 8,403,360 (sl 41 x Z61, k=5 m=2 f=0)
 
-- Run D-A (jobs_A, ORBW=5 RESTART=1, seed 4): solved at 314,913 evaluations (2,578 s, one thread), after 2 h-scale
-  stall at cost 4 for about 25 minutes. Log: research/structured/runs/d10D9_round2/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.log.
+- Run D-A (jobs_A, ORBW=5 RESTART=1, seed 4): solved at 314,913 evaluations (2,578 s, one thread), after about 25 minutes at cost 4. Log: research/structured/runs/d10D9_round2/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.log.
 - Solution: research/frontier/sols/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.txt. N = |SL(2,41) x Z61| = 4,201,680,
   2N = **8,403,360 vertices**, +0.5 % over 8,362,560 (round 1). μ = 41.5.
 - Checks: haar_sym full diameter check OK (both normalisations); build_haar2.py VALID (8,403,360 vertices, 10-regular,
@@ -83,10 +82,36 @@ psl 59 x Z41, all runs (1 h each unless noted), ORBW and RESTART as listed:
 - ORBW=5: seed 5 best 10; seed 9 best 2 (no solve); seed 11 best 11; seed 13 best 10.
 - ORBW=5 RESTART=1: seed 3 best 2; seed 6 best 10; seed 7 best 10; seed 8 best 10 (stopped at 1 h);
   seed 10 best 10; seed 12 **solved**.
-- So 1 solve in 11 hour-long runs on this group. The solve is the only one in the ORBW=5 runs on this group.
+- So 1 solve in 12 hour-long runs on this group (round 1's two included).
 
 Dead ends this round: psl 19 x Z1231 (fix 9, best 112 after 9 min), sl 16 x Z1031 (fix 14, best 122 after 9 min),
 psl 25 x Z541 (fix 24, best 40 after 1 h). These came from the random screen (min 110 / 130 / 38) and their annealing
 never got near the others.
 
 Window for the next record: N > 4,209,060 (2N > 8,418,120).
+
+### 18:15 UTC: stopped. Record 8,418,120 stands.
+
+Last rung tried, N > 4,209,060 (μ 44.8 for the candidates below), 1 h per run, stopped early at about 1 h:
+- sl 25 x Z271 (fix 49): seed 1 (ORBW=5 RESTART=1) best 52 at 92,561 evaluations; seed 2 (ORBW=5) best 62 at 53,001.
+- pgl 25 x Z271 (fix 24): seed 2 (ORBW=5 RESTART=1) best 32 at 55,697; seed 3 best 40 at 55,441.
+- Random-S screen had these at min 66 (sl 25) and min 52 (pgl 25). Round-2 annealing did not get below 32.
+
+**Verdict.** The record moved twice this round (8,362,560 → 8,403,360 → 8,418,120), both by orbit search with
+ORBW=5 and RESTART=1 on groups at μ ≈ 41.5–42.4. The next rung (N > 4,209,060, μ ≥ 44) is not reached by the
+candidates that remain: their annealing stalls at cost 30–60, far from a solution, within the budget I had.
+Round 2 used about 3.5 hours of wall clock and roughly 40 core-hours of search (3–4 cores at a time).
+
+Not tried, if the coordinator wants to go on:
+- Longer runs (3–6 h) on psl 59 x Z41 (seeds 3 and 9 reached 2 in 1 h): this would only help a rung above N = 4,209,060 once
+  the group is itself the record, so it is not useful now.
+- Other elements of order 5 as α: choose_alpha takes the first conjugating element it finds (fixed seed), so every seed in
+  this round used the same α per group. ALPHA=<index> would give a different α with the same |Fix|, a cheap way to test
+  whether the stall is in α or in S.
+- A5 x A5 x Z_n (prod psl 5 psl 5, |Fix| = 25, N = 4,215,600): never run. The orbit evaluator is much slower on this path
+  (1500 random samples > 10 min per group), so it needs a long run to tell.
+- Nothing else in the window at μ < 44: psl 19 x Z1231, sl 16 x Z1031, psl 25 x Z541 were tried and dropped.
+
+Files this round: research/frontier/sols/d10D9_sl_41_61_orb5f0_ORBW5RESTART1_s4.txt and
+research/frontier/sols/d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt (both VALID by build_haar2.py); logs in
+research/structured/runs/d10D9_round2/; screen in research/structured/runs/d10D9_screen/screen_k5.txt.
