@@ -936,9 +936,59 @@ static int check_and_write(ctx *c0, const char *out) {
  * the inverses of slots 1..3) and I an alpha-orbit of involutions (slots 7..9). S is inverse-closed, so the odd words
  * are closed under inversion and the uncovered set is invariant under <alpha, x -> x^-1> (orbits of 6). */
 static int INVP = 0, *INVL, NINV = 0;
+/* INVPAIR=2: the pairing is iota(x) = beta(x)^-1 with beta an outer involution of the first (PSL/SL) factor of a prod
+ * group, commuting with alpha, trivial on the second factor and on Z_n; then S^-1 = beta(S) and the uncovered set is
+ * invariant under <alpha, iota>. */
+static int *BETA1 = NULL;
+static int iota_x(int x) {
+    if (INVP != 2) return ginv(x);
+    int xq = x / ncyc, z = x % ncyc, o2 = Q->g2->order;
+    return ginv((BETA1[xq / o2] * o2 + xq % o2) * ncyc + z);
+}
+static int setup_beta(void) {
+    if (Q->type != G_PROD || !(Q->g1->type == G_PSL || Q->g1->type == G_SL)) { fprintf(stderr, "INVPAIR=2 needs prod with a psl/sl first factor\n"); return 0; }
+    grp *G1 = Q->g1; const field *F = G1->F; int q = F->q, o2 = Q->g2->order, h1 = AQ / o2;
+    const uint16_t *H = G1->EL + 4 * (size_t)h1;
+    char *sq = calloc(q, 1); for (int v = 1; v < q; v++) sq[FMUL(F, v, v)] = 1;
+    for (int m = 0; m < q * q * q * q; m++) {
+        int a = m / (q * q * q), b = m / (q * q) % q, c = m / q % q, dd = m % q;
+        int det = FADD(F, FMUL(F, a, dd), F->neg[FMUL(F, b, c)]);
+        if (!det || sq[det]) continue;   /* outer: non-square determinant */
+        /* M H and H M */
+        int MH[4] = { FADD(F, FMUL(F, a, H[0]), FMUL(F, b, H[2])), FADD(F, FMUL(F, a, H[1]), FMUL(F, b, H[3])),
+                      FADD(F, FMUL(F, c, H[0]), FMUL(F, dd, H[2])), FADD(F, FMUL(F, c, H[1]), FMUL(F, dd, H[3])) };
+        int HM[4] = { FADD(F, FMUL(F, H[0], a), FMUL(F, H[1], c)), FADD(F, FMUL(F, H[0], b), FMUL(F, H[1], dd)),
+                      FADD(F, FMUL(F, H[2], a), FMUL(F, H[3], c)), FADD(F, FMUL(F, H[2], b), FMUL(F, H[3], dd)) };
+        int okp = 1, okm = 1; for (int i = 0; i < 4; i++) { if (MH[i] != HM[i]) okp = 0; if (MH[i] != F->neg[HM[i]]) okm = 0; }
+        if (!okp && !(okm && G1->type == G_PSL)) continue;
+        /* M^2 scalar */
+        int M2[4] = { FADD(F, FMUL(F, a, a), FMUL(F, b, c)), FADD(F, FMUL(F, a, b), FMUL(F, b, dd)),
+                      FADD(F, FMUL(F, c, a), FMUL(F, dd, c)), FADD(F, FMUL(F, c, b), FMUL(F, dd, dd)) };
+        if (M2[1] || M2[2] || M2[0] != M2[3]) continue;
+        int idet = F->inv[det], adj[4] = { dd, F->neg[b], F->neg[c], a };
+        BETA1 = malloc(sizeof(int) * G1->order); int bad = 0;
+        for (int x = 0; x < G1->order && !bad; x++) { const uint16_t *E = G1->EL + 4 * (size_t)x;
+            int T[4] = { FADD(F, FMUL(F, a, E[0]), FMUL(F, b, E[2])), FADD(F, FMUL(F, a, E[1]), FMUL(F, b, E[3])),
+                         FADD(F, FMUL(F, c, E[0]), FMUL(F, dd, E[2])), FADD(F, FMUL(F, c, E[1]), FMUL(F, dd, E[3])) };
+            int R[4] = { FADD(F, FMUL(F, T[0], adj[0]), FMUL(F, T[1], adj[2])), FADD(F, FMUL(F, T[0], adj[1]), FMUL(F, T[1], adj[3])),
+                         FADD(F, FMUL(F, T[2], adj[0]), FMUL(F, T[3], adj[2])), FADD(F, FMUL(F, T[2], adj[1]), FMUL(F, T[3], adj[3])) };
+            for (int i = 0; i < 4; i++) R[i] = FMUL(F, R[i], idet);
+            int y = G1->IDXK[mkey(G1, R[0], R[1], R[2], R[3])]; if (y < 0 || y >= G1->order) bad = 1; else BETA1[x] = y; }
+        if (bad) { free(BETA1); BETA1 = NULL; continue; }
+        int ok = 1;
+        for (int t = 0; t < 2000 && ok; t++) { int u = rnd() % G1->order, v = rnd() % G1->order;
+            if (BETA1[qmul(G1, u, v)] != qmul(G1, BETA1[u], BETA1[v])) ok = 0;
+            if (BETA1[BETA1[u]] != u) ok = 0;
+            if (BETA1[qmul(G1, qmul(G1, h1, u), qinv(G1, h1))] != qmul(G1, qmul(G1, h1, BETA1[u]), qinv(G1, h1))) ok = 0; }
+        if (!ok) { free(BETA1); BETA1 = NULL; continue; }
+        fprintf(stderr, "INVPAIR=2: beta = conjugation by mat(%d,%d,%d,%d) (det %d, non-square) on the first factor\n", a, b, c, dd, det);
+        free(sq); return 1;
+    }
+    fprintf(stderr, "INVPAIR=2: no outer involution commuting with alpha found\n"); free(sq); return 0;
+}
 static int inv_pair_from(int x, int which, int *o6) {   /* x in orbit slot `which` (0: O, 1: O^-1); o6 = O, O^-1 */
     int o[MAXD]; if (x < 0 || x == ident || !orbit_of(x, o)) return 0;
-    for (int i = 0; i < 3; i++) { int y = ginv(o[i]); if (which == 0) { o6[i] = o[i]; o6[3 + i] = y; } else { o6[i] = y; o6[3 + i] = o[i]; } }
+    for (int i = 0; i < 3; i++) { int y = iota_x(o[i]); if (which == 0) { o6[i] = o[i]; o6[3 + i] = y; } else { o6[i] = y; o6[3 + i] = o[i]; } }
     for (int i = 0; i < 6; i++) { if (o6[i] == ident) return 0; for (int u = 0; u < i; u++) if (o6[u] == o6[i]) return 0;
         for (int u = 0; u < d; u++) if ((u < 1 || u >= 7) && S[u] == o6[i]) return 0; }
     return 1;
@@ -969,8 +1019,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     INVP = getenv("INVPAIR") ? atoi(getenv("INVPAIR")) : 0;
     if (INVP) {
         if (OK_ != 3 || OM != 3 || OF != 1) { fprintf(stderr, "INVPAIR needs ORBIT=\"3 3 1\"\n"); return 2; }
+        if (INVP == 2 && !setup_beta()) return 2;
         INVL = malloc(sizeof(int) * (N / 3 + 1)); NINV = 0;
-        for (int x = 0; x < N; x++) if (x != ident && gmul(x, x) == ident && alpha(x) != x) { int y = alpha(x), z = alpha(y); if (x < y && x < z) INVL[NINV++] = x; }
+        for (int x = 0; x < N; x++) if (x != ident && iota_x(x) == x && alpha(x) != x) { int y = alpha(x), z = alpha(y); if (x < y && x < z) INVL[NINV++] = x; }
         fprintf(stderr, "INVPAIR: S = {e} + O + O^-1 + alpha-orbit of involutions; %d involution orbits\n", NINV);
         if (!NINV) return 2;
     }

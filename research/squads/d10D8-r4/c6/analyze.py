@@ -24,7 +24,7 @@ PROG = re.compile(r'^t=(\d+) steps=(\d+) evals=(\d+) cost=(-?\d+) best=(-?\d+) T
 CHAIN = re.compile(r'^CHAIN (\d+) min (-?\d+) secs (\d+) evals (\d+)')
 RESUMED = re.compile(r'^resumed from .*evals (\d+), (\d+) s spent, best (\d+)')
 RESULT = re.compile(r'best=(\d+) evals=')
-EXCLUDE_TAGS = {'ORBW3', 'C40', 'ORBW3_RA2', 'FAST', 'RA3'}
+EXCLUDE_TAGS = {'ORBW3', 'C40', 'ORBW3_RA2', 'FAST', 'RA3', 'F15W3'}  # F15W3: ORBW=3 energy (weighted), not raw cost
 
 
 def parse_name(path):
@@ -128,7 +128,7 @@ def collect():
                            best_before=run_best, first=first_of_run, from_ckpt=from_ckpt, excluded=excluded)
                 if from_ckpt:
                     rec['kind'] = 'RB-chain'
-                elif tag in ('F15', 'F30', 'F60'):
+                elif tag in ('F10', 'F15', 'F30', 'F60'):
                     rec['kind'] = 'FRESH-chain'
                 elif tag in ('R1', 'R2'):
                     rec['kind'] = f'RA{tag[1]}-chain'
@@ -250,8 +250,8 @@ def main():
                       src='cycle') for c in use_cycles
                  if c['grp'] == g and c['kind'] == 'FRESH-cycle' and c['complete']]
         fresh[g] = recs
-        for pol in ('F15', 'F30', 'F60', 'RESTART', 'FROMBEST-first'):
-            sub = [r for r in recs if r['policy'] == pol or (pol == 'F15' and r['policy'] == 'F15')]
+        for pol in ('F10', 'F15', 'F30', 'F60', 'RESTART', 'FROMBEST-first'):
+            sub = [r for r in recs if r['policy'] == pol]
             if sub:
                 show_minima(f"  {g:5s} {pol}", sub)
         show_minima(f"  {g:5s} ALL-FRESH", recs)
@@ -311,7 +311,7 @@ def main():
         cum = {c: sum(1 for m in mins if m <= c) / n for c in (7, 8, 9, 10, 12, 15, 18)}
         print("   empirical P(min<=c): " + " ".join(f"{c}:{v:.3f}" for c, v in cum.items()))
         pol_h = {}
-        for pol in ('F15', 'F30', 'F60', 'RESTART', 'FROMBEST-first'):
+        for pol in ('F10', 'F15', 'F30', 'F60', 'RESTART', 'FROMBEST-first'):
             sub = [r for r in pool if r['policy'] == pol]
             if sub:
                 pol_h[pol] = sum(r['dur'] for r in sub) / len(sub) / 3600.0
