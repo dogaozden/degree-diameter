@@ -37,6 +37,30 @@ static int *sig, *sinv;             /* point -> line index, line index -> point 
 static uint8_t *isfreeP, *isfreeLn;  /* freed points / freed lines (by index): no jumps there */
 /* exact-coverage structure of freed flags (p_i on l_i = sigma(p_i)): sigma swaps must keep allowed(x, sigma(x)) */
 static int nfl = 0, flp[64], fll[64]; static uint8_t *inA, *inG, *inPp, *inLl;   /* [i*Np + x] */
+/* relaxed coverage (RELAX=1): sigma swaps are kept only if every freed point still reaches coset 1 of each opposite
+ * point (p-L-x-sigma(x)-u, x ~ p, or p-w-sinv(w)-sigma(u)-u) and dually for freed lines; same test as dmhub.c */
+static int *mk = NULL, stp = 0, patch = 0; static uint8_t *onfl = NULL, *thrfp = NULL;
+static int cover_ok(void) {
+    if (!mk) mk = calloc(2 * Np, sizeof(int));
+    if (!onfl) {   /* PATCH=1: points on a freed line / lines through a freed point count as covered (hub edges patch them) */
+        onfl = calloc(Np, 1); thrfp = calloc(Np, 1);
+        for (int i = 0; i < nfl; i++) { for (int k = 0; k < Q1; k++) { onfl[adj[(Np + fll[i]) * Q1 + k]] = 1; thrfp[adj[flp[i] * Q1 + k] - Np] = 1; } }
+    }
+    for (int i = 0; i < nfl; i++) {
+        int p = flp[i], l = fll[i]; stp++;
+        for (int x = 0; x < Np; x++) if (inPp[i * Np + x] && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
+        for (int a = 0; a < Q1; a++) { int w = adj[p * Q1 + a] - Np; if (isfreeLn[w]) continue; int z = sinv[w];
+            for (int b = 0; b < Q1; b++) { int u = sinv[adj[z * Q1 + b] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
+        for (int u = 0; u < Np; u++) if (u != p && !inPp[i * Np + u] && mk[u] != stp && !(patch && onfl[u])) return 0;
+        stp++;
+        for (int M2 = 0; M2 < Np; M2++) if (inLl[i * Np + M2] && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
+        for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; if (isfreeP[y]) continue; int ly = sig[y];
+            for (int b = 0; b < Q1; b++) { int z = adj[(Np + ly) * Q1 + b]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
+        for (int m = 0; m < Np; m++) if (m != l && !inLl[i * Np + m] && mk[Np + m] != stp && !(patch && thrfp[m])) return 0;
+    }
+    return 1;
+}
+static int relax = 0;
 static int allowed(int x, int M) {
     if (isfreeP[x] || isfreeLn[M]) return 0;
     for (int i = 0; i < nfl; i++) {
@@ -195,6 +219,8 @@ int main(int argc, char **argv) {
         for (int a = 0; a < Q1; a++) { int L = adj[p * Q1 + a] - Np; for (int b = 0; b < Q1; b++) { int x = adj[(Np + L) * Q1 + b]; if (x == p) continue; inPp[i * Np + x] = 1; if (L != l) inA[i * Np + x] = 1; } }
         for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; for (int b = 0; b < Q1; b++) { int M2 = adj[y * Q1 + b] - Np; if (M2 == l) continue; inLl[i * Np + M2] = 1; if (y != p) inG[i * Np + M2] = 1; } }
     }
+    relax = getenv("RELAX") ? atoi(getenv("RELAX")) : 0; patch = getenv("PATCH") ? atoi(getenv("PATCH")) : 0;
+    if (relax) fprintf(stderr, "relaxed coverage at start: %s\n", cover_ok() ? "ok" : "NOT ok");
     if (getenv("CHECKALLOWED")) { int bad = 0; for (int x = 0; x < Np; x++) if (!isfreeP[x] && !allowed(x, sig[x])) bad++; fprintf(stderr, "sigma entries not allowed: %d\n", bad); }
     struct timespec t0; clock_gettime(CLOCK_MONOTONIC, &t0);
     if (getenv("NOROUTE")) route = calloc((size_t)2 * Np * Np, 1); else compute_routes();
@@ -214,13 +240,24 @@ int main(int argc, char **argv) {
     int *bestsig = malloc(sizeof(int) * Np); memcpy(bestsig, sig, sizeof(int) * Np);
     double swapp = getenv("SWAPP") ? atof(getenv("SWAPP")) : 0.0; long nswapacc = 0;
     uint8_t *route_bak = malloc(npairs);
+    double ptarg = getenv("PTARG") ? atof(getenv("PTARG")) : 0.0; static int bla[256], blb[256]; int nbl = 0;
     long it;
     for (it = 0; it < iters && cost > 0; it++) {
         if ((it & 63) == 0) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); if ((ts.tv_sec - t1.tv_sec) + 1e-9 * (ts.tv_nsec - t1.tv_nsec) > secs) break; }
         double temp = T0 * pow(T1 / T0, (double)it / iters);
         if (swapp > 0 && (rnd() >> 11) * (1.0 / 9007199254740992.0) < swapp) {
-            int p1 = rnd() % Np, p2 = rnd() % Np; if (p1 == p2) continue;
-            if (nfl && !(allowed(p1, sig[p2]) && allowed(p2, sig[p1]))) continue;
+            int p1 = rnd() % Np, p2 = rnd() % Np;
+            if (ptarg > 0 && nbl && (rnd() >> 11) * (1.0 / 9007199254740992.0) < ptarg) {
+                /* targeted route: for a bad point pair (a,b) make sigma(a) meet sigma(b); for lines make the preimages collinear */
+                int r = rnd() % nbl, a = bla[r], b = blb[r]; if (rnd() & 1) { int t = a; a = b; b = t; }
+                if (a < Np) { int y = adj[(Np + sig[b]) * Q1 + rnd() % Q1]; int M2 = adj[y * Q1 + rnd() % Q1] - Np; p1 = a; p2 = sinv[M2]; }
+                else { int xb = sinv[b - Np]; int Lz = adj[xb * Q1 + rnd() % Q1]; int z = adj[Lz * Q1 + rnd() % Q1]; p1 = sinv[a - Np]; p2 = z; }
+            }
+            if (p1 == p2) continue;
+            if (nfl && !relax && !(allowed(p1, sig[p2]) && allowed(p2, sig[p1]))) continue;
+            if (nfl && relax) { if (isfreeP[p1] || isfreeP[p2]) continue;
+                int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
+                int ok = cover_ok(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2; if (!ok) continue; }
             memcpy(route_bak, route, npairs);
             int l1 = sig[p1], l2 = sig[p2]; sig[p1] = l2; sig[p2] = l1; sinv[l2] = p1; sinv[l1] = p2;
             free(route); compute_routes();
@@ -234,6 +271,19 @@ int main(int argc, char **argv) {
             continue;
         }
         int f = rnd() % NF;
+        if (ptarg > 0) {   /* targeted: a flag on a geodesic of a currently bad pair (list refreshed every 4096 its) */
+            if ((it & 4095) == 0) { nbl = 0;
+                for (int a = 0; a < V && nbl < 256; a++) { int cls = a >= Np; for (int b = a + 1; b < (cls + 1) * Np && nbl < 256; b++) { size_t i = pidx(a, b); if (cnt[i] != 255 && bad(i)) { bla[nbl] = a; blb[nbl] = b; nbl++; } } } }
+            if (nbl && (rnd() >> 11) * (1.0 / 9007199254740992.0) < ptarg) {
+                int r = rnd() % nbl, a = bla[r], b = blb[r], cand[256], nc = 0;
+                for (int k1 = 0; k1 < Q1; k1++) { int n1 = adj[a * Q1 + k1];
+                    for (int k2 = 0; k2 < Q1; k2++) { int x = adj[n1 * Q1 + k2]; if (x == a) continue;
+                        for (int k3 = 0; k3 < Q1; k3++) { int n2 = adj[x * Q1 + k3]; if (n2 == n1) continue;
+                            for (int k4 = 0; k4 < Q1; k4++) if (adj[n2 * Q1 + k4] == b && nc < 252) {
+                                cand[nc++] = flagof[a * Q1 + k1]; cand[nc++] = flagof[n1 * Q1 + k2]; cand[nc++] = flagof[x * Q1 + k3]; cand[nc++] = flagof[n2 * Q1 + k4]; } } } }
+                if (nc) f = cand[rnd() % nc];
+            }
+        }
         long d = flip_delta(f, 0);
         double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
         if (d <= 0 || u < exp(-d / temp)) {
