@@ -5,7 +5,9 @@
  *             automorphism generators (permutations, or "shift L B" level shifts as in apsp_orb.c). Each generator
  *             is checked edge by edge: a bijection of V that maps every edge to an edge is an automorphism.
  *   lift      a cyclic voltage lift: a base multigraph on NB vertices, each edge "u v a" giving the lift edges
- *             (u, g) ~ (v, g + a mod M) for all g in Z_M. Translations g -> g + h are automorphisms by definition.
+ *             (u, g) ~ (v, g + a mod M) for all g in Z_M. Also "group sl P N" / "group psl P N": voltages in
+ *             SL(2,P) x Z_N or PSL(2,P) x Z_N, edges "u v a b c d z" giving (u, g) ~ (v, s g), s = (mat(a,b,c,d), z)
+ *             (a Haar graph H(G,S) is the lift of the dipole: base vertices 0 = A, 1 = B, one edge 0 1 s per s in S). Translations g -> g + h are automorphisms by definition.
  *             Optional base automorphisms "aut u pi(0..NB-1) c(0..NB-1)" stand for (v, g) -> (pi v, u g + c(v));
  *             each is checked on the base: for every base edge v -> w with voltage a there must be a base edge
  *             pi v -> pi w with voltage u a + c(w) - c(v), and degrees must match. The lift is never written out.
@@ -137,6 +139,35 @@ static int64_t m_edges;     /* number of edges */
 static int64_t *st; static uint32_t *adj;
 /* lift: base CSR with voltages; lift neighbour of (v,g) along (w,a) is (w, g+a mod M) */
 static int64_t NB, M; static int64_t *bst; static uint32_t *bw; static int64_t *ba;
+/* matrix voltage groups: GK = 1 for SL(2,P) x Z_NC, 2 for PSL(2,P) x Z_NC (P an odd prime for PSL); elements are
+   indexed as in research/frontier/haarcheck_sl.c (c-keyed), lift edge (u, g) ~ (v, s g) for a base edge u -> v with
+   voltage s (left multiplication), so right multiplications are automorphisms and one source per base vertex suffices */
+static int GK = 0; static int64_t GP, GNC, GPP; static int64_t *GINV;
+typedef struct { int64_t a, b, c, d, z; } gel;
+static int64_t gmd(int64_t x) { x %= GP; return x < 0 ? x + GP : x; }
+static gel gcanon(gel e) {
+    if (GK == 2) { int neg = e.c ? (e.c > (GP - 1) / 2) : (e.a > (GP - 1) / 2);
+        if (neg) { e.a = gmd(-e.a); e.b = gmd(-e.b); e.c = gmd(-e.c); e.d = gmd(-e.d); } }
+    return e;
+}
+static int64_t genc(gel e) {
+    e = gcanon(e); int64_t k;
+    int64_t cmax = GK == 2 ? (GP - 1) / 2 : GP - 1;
+    if (e.c) k = ((e.c - 1) * GP + e.a) * GP + e.d; else k = cmax * GPP + (e.a - 1) * GP + e.b;
+    return k * GNC + e.z;
+}
+static gel gdec(int64_t g) {
+    gel e; e.z = g % GNC; int64_t k = g / GNC, cmax = GK == 2 ? (GP - 1) / 2 : GP - 1;
+    if (k < cmax * GPP) { e.c = k / GPP + 1; e.a = k / GP % GP; e.d = k % GP; e.b = gmd(gmd(e.a * e.d - 1) * GINV[e.c]); }
+    else { k -= cmax * GPP; e.c = 0; e.a = k / GP + 1; e.b = k % GP; e.d = GINV[e.a]; }
+    return e;
+}
+static gel gmul(gel s, gel g) {
+    gel r = {gmd(s.a * g.a + s.b * g.c), gmd(s.a * g.b + s.b * g.d), gmd(s.c * g.a + s.d * g.c), gmd(s.c * g.b + s.d * g.d), (s.z + g.z) % GNC};
+    return r;
+}
+static gel ginv(gel e) { gel r = {e.d, gmd(-e.b), gmd(-e.c), e.a, (GNC - e.z) % GNC}; return r; }
+static gel *bsel; /* voltage of each base adjacency slot as a matrix (matrix groups) */
 
 static int cmp_u32(const void *a, const void *b) { uint32_t x = *(const uint32_t *)a, y = *(const uint32_t *)b; return x < y ? -1 : x > y; }
 static int cmp_u64(const void *a, const void *b) { uint64_t x = *(const uint64_t *)a, y = *(const uint64_t *)b; return x < y ? -1 : x > y; }
@@ -255,10 +286,20 @@ static void load_lift(const char *path, char hex[65]) {
     rd_t r; rd_open(&r, path); char w[64]; long long x;
     if (!rd_word(&r, w, sizeof w) || strcmp(w, "bcd-lift")) die("lift spec must start with bcd-lift 1");
     if (!rd_long(&r, &x) || x != 1) die("lift spec version must be 1");
-    if (!rd_word(&r, w, sizeof w) || strcmp(w, "group")) die("expected: group cyclic M");
-    if (!rd_word(&r, w, sizeof w) || strcmp(w, "cyclic")) die("only cyclic groups are supported");
-    if (!rd_long(&r, &x) || x < 1) die("bad M");
-    M = x;
+    if (!rd_word(&r, w, sizeof w) || strcmp(w, "group")) die("expected: group cyclic M | group sl P N | group psl P N");
+    if (!rd_word(&r, w, sizeof w)) die("missing group kind");
+    if (!strcmp(w, "cyclic")) { if (!rd_long(&r, &x) || x < 1) die("bad M"); M = x; }
+    else if (!strcmp(w, "sl") || !strcmp(w, "psl")) {
+        GK = strcmp(w, "sl") ? 2 : 1;
+        if (!rd_long(&r, &x) || x < 2) die("bad P"); GP = x;
+        for (int64_t t = 2; t * t <= GP; t++) if (GP % t == 0) die("P must be prime");
+        if (GK == 2 && GP == 2) die("psl needs an odd prime");
+        if (!rd_long(&r, &x) || x < 1) die("bad N"); GNC = x;
+        GPP = GP * GP; M = GP * (GPP - 1) / (GK == 2 ? 2 : 1) * GNC;
+        GINV = malloc(8 * GP); GINV[0] = 0;
+        for (int64_t a = 1; a < GP; a++) { int64_t rr = 1, e = GP - 2, bb = a; while (e) { if (e & 1) rr = rr * bb % GP; bb = bb * bb % GP; e >>= 1; } GINV[a] = rr; }
+        for (int64_t g = 0; g < M; g += M / 4096 + 1) { gel e = gdec(g); if (gmd(e.a * e.d - e.b * e.c) != 1 || genc(e) != g) die("group index self-test failed"); }
+    } else die("group kind must be cyclic, sl or psl");
     if (!rd_word(&r, w, sizeof w) || strcmp(w, "vertices")) die("expected: vertices NB");
     if (!rd_long(&r, &x) || x < 1) die("bad NB");
     NB = x;
@@ -266,13 +307,20 @@ static void load_lift(const char *path, char hex[65]) {
     long long E; if (!rd_long(&r, &E) || E < 0) die("bad E");
     if ((double)NB * (double)M > 4.0e9) die("lift too large for 32-bit vertex ids in this version");
     n = NB * M; m_edges = E * M;
-    int64_t *eu = malloc(8 * E), *ev = malloc(8 * E), *ea = malloc(8 * E);
+    int64_t *eu = malloc(8 * E), *ev = malloc(8 * E), *ea = malloc(8 * E), *eia = malloc(8 * E);
     for (long long i = 0; i < E; i++) {
         long long u, v, a;
-        if (!rd_long(&r, &u) || !rd_long(&r, &v) || !rd_long(&r, &a)) die("short edge list");
+        if (!rd_long(&r, &u) || !rd_long(&r, &v)) die("short edge list");
+        if (GK == 0) { if (!rd_long(&r, &a)) die("short edge list"); }
+        else {
+            long long m4[5]; for (int t = 0; t < 5; t++) if (!rd_long(&r, &m4[t])) die("short edge list (u v a b c d z)");
+            gel e = {gmd(m4[0]), gmd(m4[1]), gmd(m4[2]), gmd(m4[3]), ((m4[4] % GNC) + GNC) % GNC};
+            if (gmd(e.a * e.d - e.b * e.c) != 1) die("voltage matrix does not have determinant 1");
+            a = genc(e); eia[i] = genc(ginv(e));
+        }
         if (u < 0 || v < 0 || u >= NB || v >= NB) die("base vertex out of range");
         if (u == v) die("base loop (the lift would not be bipartite)");
-        eu[i] = u; ev[i] = v; ea[i] = ((a % M) + M) % M;
+        eu[i] = u; ev[i] = v; ea[i] = GK ? a : ((a % M) + M) % M;
     }
     int64_t *deg = calloc(NB + 1, 8);
     for (long long i = 0; i < E; i++) { deg[eu[i]]++; deg[ev[i]]++; }
@@ -281,9 +329,9 @@ static void load_lift(const char *path, char hex[65]) {
     for (long long i = 0; i < E; i++) {
         int64_t u = eu[i], v = ev[i];
         bw[bst[u] + deg[u]] = (uint32_t)v; ba[bst[u] + deg[u]++] = ea[i];
-        bw[bst[v] + deg[v]] = (uint32_t)u; ba[bst[v] + deg[v]++] = (M - ea[i]) % M;
+        bw[bst[v] + deg[v]] = (uint32_t)u; ba[bst[v] + deg[v]++] = GK ? eia[i] : (M - ea[i]) % M;
     }
-    free(eu); free(ev); free(ea); free(deg);
+    free(eu); free(ev); free(ea); free(eia); free(deg);
     /* sort each base adjacency by (w, a); repeated (w, a) = repeated lift edge */
     uint64_t *key = malloc(8 * 2 * (E ? E : 1));
     maxdeg = 0; mindeg = INT64_MAX;
@@ -293,6 +341,7 @@ static void load_lift(const char *path, char hex[65]) {
         qsort(key, k, 8, cmp_u64);
         for (int64_t i = 0; i < k; i++) { bw[bst[v] + i] = (uint32_t)(key[i] / M); ba[bst[v] + i] = (int64_t)(key[i] % M); if (i && key[i] == key[i - 1]) die("repeated lift edge (two base edges with the same ends and voltage)"); }
     }
+    if (GK) { bsel = malloc(sizeof(gel) * (2 * E ? 2 * E : 1)); for (int64_t i = 0; i < 2 * E; i++) bsel[i] = gdec(ba[i]); }
     /* bipartite base */
     int8_t *col = malloc(NB); memset(col, -1, NB); uint32_t *qq = malloc(sizeof(uint32_t) * NB); bip = 1;
     for (int64_t s = 0; s < NB; s++) {
@@ -307,6 +356,7 @@ static void load_lift(const char *path, char hex[65]) {
     while (rd_word(&r, w, sizeof w)) {
         if (!strcmp(w, "end")) break;
         if (strcmp(w, "aut")) die("expected aut or end after the edges");
+        if (GK) die("base automorphisms are only supported for cyclic groups");
         long long u; if (!rd_long(&r, &u)) die("aut needs a unit");
         u = ((u % M) + M) % M;
         { long long a = u, b = M; while (b) { long long t = a % b; a = b; b = t; } if (a != 1) die("aut multiplier is not a unit mod M"); }
@@ -358,7 +408,23 @@ static void pull_explicit(uint64_t *anyp) {
     }
     *anyp = any;
 }
+static void pull_lift_mat(uint64_t *anyp) {
+    uint64_t any = 0;
+    const int64_t CH = 4096; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
+#pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
+    for (int64_t t = 0; t < tasks; t++) {
+        int64_t v = t / nch, g0 = (t % nch) * CH, g1 = g0 + CH < M ? g0 + CH : M;
+        W_T *out = NX + v * M; const W_T *vis = VIS + v * M;
+        for (int64_t g = g0; g < g1; g++) {
+            gel e = gdec(g); W_T acc = 0;
+            for (int64_t i = bst[v]; i < bst[v + 1]; i++) acc |= FR[(int64_t)bw[i] * M + genc(gmul(bsel[i], e))];
+            acc &= (W_T)~vis[g]; out[g] = acc; any |= acc;
+        }
+    }
+    *anyp = any;
+}
 static void pull_lift(uint64_t *anyp) {
+    if (GK) { pull_lift_mat(anyp); return; }
     uint64_t any = 0;
     const int64_t CH = 16384; int64_t nch = (M + CH - 1) / CH, tasks = NB * nch;
 #pragma omp parallel for schedule(dynamic, 1) reduction(| : any)
@@ -421,6 +487,7 @@ int main(int argc, char **argv) {
     int64_t lo = part * R / K, hi = (part + 1) * R / K;
     printf("%s mode %s input %s sha256 %s\n", VERSION, MODE ? "lift" : "explicit", inpath, inhex);
     if (MODE == 0) printf("automorphisms %s sha256 %s (%d generators, each checked edge by edge)\n", autpath ? autpath : "none", authex, nauts);
+    else if (GK) printf("lift: group %s(2,%" PRId64 ") x Z_%" PRId64 " (order %" PRId64 ", left multiplication), base %" PRId64 " vertices\n", GK == 1 ? "SL" : "PSL", GP, GNC, M, NB);
     else printf("lift: group Z_%" PRId64 ", base %" PRId64 " vertices, %d base automorphisms checked on the base\n", M, NB, nauts);
     printf("n=%" PRId64 " edges=%" PRId64 " degree min=%" PRId64 " max=%" PRId64 " bipartite=%s\n", n, m_edges, mindeg, maxdeg, bip ? "yes" : "no");
     printf("orbits %" PRId64 " (representatives sha256 %s); part %" PRId64 "/%" PRId64 " = representatives [%" PRId64 ", %" PRId64 ")  [%.1fs]\n", R, repshex, part, K, lo, hi, t1 - t0);
@@ -430,7 +497,7 @@ int main(int argc, char **argv) {
     if (certpath && !cf) die("cannot write certificate");
     if (cf) {
         fprintf(cf, "bcd-cert 1\nversion %s\nmode %s\ninput_sha256 %s\naut_sha256 %s\nnauts %d\n", VERSION, MODE ? "lift" : "explicit", inhex, authex, nauts);
-        if (MODE) fprintf(cf, "lift M %" PRId64 " NB %" PRId64 "\n", M, NB);
+        if (MODE) fprintf(cf, "lift M %" PRId64 " NB %" PRId64 "%s\n", M, NB, GK == 1 ? " sl" : GK == 2 ? " psl" : "");
         fprintf(cf, "n %" PRId64 "\nedges %" PRId64 "\nmindeg %" PRId64 "\nmaxdeg %" PRId64 "\nbipartite %s\nd %d\nD %d\n", n, m_edges, mindeg, maxdeg, bip ? "yes" : "no", dmax, DD);
         if (cost_mode) fprintf(cf, "cost_mode 1\n");
         fprintf(cf, "orbits %" PRId64 "\nreps_sha256 %s\npart %" PRId64 " %" PRId64 " %" PRId64 " %" PRId64 "\n", R, repshex, part, K, lo, hi);

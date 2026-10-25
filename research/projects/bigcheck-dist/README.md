@@ -13,6 +13,7 @@ Two inputs:
 |---|---|---|---|
 | `explicit` | an edge list (apsp.c text format, or binary `BCDE1`) | permutation generators (`perm ...` or `shift L B`, the level shift of apsp_orb.c), each checked edge by edge | CSR (4 bytes per edge end) + 24 bytes per vertex |
 | `lift` | a cyclic voltage lift: base multigraph with voltages in Z_M, never written out | the Z_M translations (automatic) and base automorphisms `aut u pi c` meaning (v, g) -> (pi v, u g + c(v)), each checked on the base | base only + 24 bytes per lift vertex |
+| `lift` with `group sl P N` / `group psl P N` | a lift with voltages in SL(2,P) × Z_N or PSL(2,P) × Z_N, (u, g) ~ (v, s g); Haar graphs are the lifts of the dipole (`haar2lift.py SOL OUT.spec`) | right multiplications (automatic): one source per base vertex | same |
 
 The steps:
 
@@ -108,6 +109,9 @@ machine (4 cores):
 - (14,7) 1,774,584 (the coordinator's graph, same edge-list sha256): 4 parts, merged, VALID, diameter 7, 357,336
   sources, the same as apsp_orb ([checks/d14D7_n1774584](checks/d14D7_n1774584/README.md)).
 - Merge refuses a missing part and a certificate made with --cost.
+- Haar graphs as lifts of the dipole (`haar2lift.py`): the records (6,9) 127,296 (SL(2,17) × Z13), (7,9) 462,840,
+  (8,8) 239,904, (9,8) 540,360 (PSL families) come out VALID with diameter exactly D (and fail at D − 1); with one
+  generator of the (8,8) graph perturbed, bcd and build_haar2.py both report diameter 9, INVALID.
 
 ## 5. Limits and next steps
 
@@ -116,4 +120,6 @@ machine (4 cores):
   fits in 6 GB with WB = 8). Certificates are byte-identical for every WB (tested on the rotation lift and on part 3/2000
   of the (14,7) check).
 - Vertex ids are 32-bit (n < 4·10⁹).
-- Only cyclic voltage groups in lift mode. Abelian or matrix groups would need a group table or matrix arithmetic.
+- Lift mode supports Z_M and (P)SL(2,P) × Z_N with P prime (element numbering as in research/frontier/haarcheck_sl.c,
+  checked by a self-test at start). Base automorphisms are only supported for Z_M. Other groups (GF(p^k) matrices,
+  products, metacyclic) would need their arithmetic added.
