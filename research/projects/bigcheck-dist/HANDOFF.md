@@ -39,5 +39,9 @@ Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3. Read README.m
   21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC. Earlier PSL(2,23) × Z97
   seeds 11-13 stopped at best 12, 9, 10. Request for more cloud seeds: research/squads/requests/2026-10-25T0550-d10D8-haar.md.
 - An Opus agent works on reconstructing/beating Delorme's 5⌊(q+5)/2⌋ (output: d8/theory/NOTES.md).
+- /tmp/bcdt/big: independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates:
+  (15,10) 2,467,618,800 (SL(2,149) × Z373, branch claude/bipartite-d15-d10-search-h3rdep, sha256 6430a3a4…, WB=8,
+  7.4 GB) and (16,10) 4,386,127,200 (SL(2,151) × Z637, branch claude/bipartite-16-10-cell-kras4l, sha256 f2a70a0d…,
+  WB=1, 1.6 GB; so far checked only by that session's hcheck5). Results go to checks/ when done.
 - Open: a structured (algebraic) voltage design for D = 8 hexagon lifts; reconstruct Delorme's 5⌊(q+5)/2⌋ family, then
   try hub surgery as at D = 7.
