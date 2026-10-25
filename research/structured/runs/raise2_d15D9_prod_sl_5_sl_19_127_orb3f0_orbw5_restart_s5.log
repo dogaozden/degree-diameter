@@ -2,3 +2,62 @@ group prod sl 5 sl 19 x Z_127, N=104241600, identity 17417034, H order 60, rows 
 wide rows: HW order 254, rows 410400, setup 10.59s
 alpha: conj by prod[mat(0,2,2,4);mat(17,4,3,3)] (index 67757), z -> 19 z on Z_127
 ORBIT k=3 m=5 f=0: |Fix(alpha)| = 107 (+e); mu = 24.92, mu/k = 8.31, fixed-point misses ~ 1.34
+ORBW=5: an uncovered fixed element weighs 5; start energy 114
+start cost=90
+t=33 steps=10 evals=81 cost=30 best=30 T=0.48 energy=30 bestE=30
+t=64 steps=19 evals=153 cost=30 best=30 T=0.16 energy=30 bestE=30
+t=98 steps=29 evals=233 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=128 steps=38 evals=305 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=160 steps=47 evals=377 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=193 steps=57 evals=457 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=224 steps=66 evals=529 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=257 steps=75 evals=601 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=290 steps=85 evals=681 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=323 steps=95 evals=761 cost=20 best=20 T=0.15 energy=28 bestE=28
+t=357 steps=105 evals=841 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=388 steps=114 evals=913 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=421 steps=123 evals=985 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=452 steps=132 evals=1057 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=483 steps=141 evals=1129 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=514 steps=150 evals=1201 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=545 steps=159 evals=1273 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=576 steps=168 evals=1345 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=610 steps=177 evals=1417 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=641 steps=186 evals=1489 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=671 steps=195 evals=1561 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=703 steps=205 evals=1641 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=734 steps=214 evals=1713 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=766 steps=223 evals=1785 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=799 steps=232 evals=1857 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=831 steps=241 evals=1929 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=862 steps=249 evals=1993 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=895 steps=257 evals=2057 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=928 steps=266 evals=2129 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=959 steps=274 evals=2193 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=991 steps=282 evals=2257 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1023 steps=290 evals=2321 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1053 steps=298 evals=2385 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1086 steps=307 evals=2457 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1119 steps=316 evals=2529 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1150 steps=324 evals=2593 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1182 steps=333 evals=2665 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1213 steps=341 evals=2729 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1243 steps=349 evals=2793 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1275 steps=357 evals=2857 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1305 steps=365 evals=2921 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1339 steps=374 evals=2993 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1369 steps=382 evals=3057 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1400 steps=390 evals=3121 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1433 steps=399 evals=3193 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1464 steps=408 evals=3265 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1495 steps=417 evals=3337 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1527 steps=426 evals=3409 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1559 steps=435 evals=3481 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1589 steps=443 evals=3545 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1622 steps=452 evals=3617 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1655 steps=461 evals=3689 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1685 steps=469 evals=3753 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1719 steps=478 evals=3825 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1750 steps=486 evals=3889 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1784 steps=495 evals=3961 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=1816 steps=504 evals=4033 cost=18 best=18 T=0.15 energy=18 bestE=18

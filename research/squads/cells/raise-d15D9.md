@@ -76,3 +76,14 @@ run without one leaves no .txt. Logs are copied to research/structured/runs/ as 
   bottleneck.
 
 Logs are copied to research/structured/runs/ as raise2_*.log.
+
+## Status, 18:05 UTC (round 2)
+
+- w2a (restart, seed 2) and w2b (restart, seed 3) finished their 2.5 h budgets: best 8 and 10. No solution.
+- w3a and w3b (ORBW=5 restart, seeds 4 and 5, started 17:35 UTC) still running to about 20:05 UTC; best 12 and 18 so far.
+- w3c and w3d (ORBW=5 restart, seeds 6 and 7, started 18:03 UTC, 1.5 h budget) are the two free cores.
+
+Same group throughout (prod SL(2,5) × SL(2,19) × Z127, N = 104,241,600, μ = 24.92, |Fix| = 107). Across seeds
+and settings, its best cost has stayed at 8 (a plateau, not a solution). Round 1's cell notes record the same
+group at cost 14 after a short run.
+
