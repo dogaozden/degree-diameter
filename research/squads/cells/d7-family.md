@@ -17,7 +17,7 @@ The three constructions (all on the split Cayley hexagon H(q)):
 | cell | master | this job | gain | construction | check |
 |---|---|---|---|---|---|
 | (16,7) | 4,052,108 | **4,053,576** | +1,468 | typed HDHDH of H(13) + mirrored 813 on the four non-friendly transitions + relaxed point sets | apsp_w all pairs VALID |
-| (14,7) | 1,789,588 | **1,789,858** | +270 | typed HDHDH of H(11) + mirrored 768 + relaxed line sets | apsp_w all pairs VALID |
+| (14,7) | 1,789,588 | **1,789,917** | +329 | typed HDHDH of H(11) + mirrored 768 + relaxed line and point sets | CHECK14 |
 | (10,7) | 225,152 | **225,156** | +4 | mirrored surgery, 3 copies of H(8), mirrored set 231 (squads r1 c5, r2 c1) | apsp_mt all pairs VALID |
 | (13,7) | 1,064,472 | — | | three levels: typed levels give nothing; mirrored set of H(11) not improved (two squad cards) | |
 | (11,7), (12,7) | 413,180, 693,500 | — | | H(9) spread construction; typed / relaxed cannot beat it (bound below) | |
@@ -66,11 +66,15 @@ P41 14,800 (38 pairs); line sets unchanged. KB = 15,600, KA = 15,636, n = 4,053,
 between 15,600 line-side and 15,636 point-side hubs (hubgen.py seed 1: 171,600 edges, line-side degree 11,
 point-side degree 10 or 11), all same-side distances <= 6 in the hub graph alone (hubsame.py).
 
-## (14,7): 1,789,858
+## (14,7): 1,789,917
 
 The same layout on H(11) with the mirrored 768 set of the (14,7) 1,774,632 graph. Here the line sets bind (master's
-R_L = 8,246 < R_H = 8,645). Relaxed line sets: L12 8,381 (138 concurrent pairs), L34 8,390 (156), L30 8,388 (333);
-point sets = R_H. KB = KA = 768 + 8,381 = 9,149, n = 1,771,560 + 18,298 = 1,789,858.
+R_L = 8,246 < R_H = 8,645). First version (checked, 1,789,858): relaxed line sets L12 8,381 (138 concurrent pairs),
+L34 8,390 (156), L30 8,388 (333), point sets = R_H; KB = KA = 768 + 8,381 = 9,149. Then two coupled rounds
+(research/d7family/hd5_grow.sh: P23 || P01 -> P41, then L12 || L34 -> L30, 300 s each, protect lists keep every cover
+in use): the point sets, which have slack here, become 1-defective too (8,753-8,827 points, 214-230 pairs), which gives
+the line sets more covers: L12 8,415, L34 8,406, L30 8,467 after drops; KB = 9,183, KA = 9,174,
+n = 1,771,560 + 18,357 = 1,789,917.
 
 ## The relaxed sets on five levels: what limits them
 
@@ -98,9 +102,10 @@ The masks are the bottleneck. A non-collinear point set of H(q) meets at most |P
 q = 11, 51.4 % at q = 13), and the same holds dually, so only about half of the elements can be paired at all, and the
 meeting cell must avoid another half. Without masks dpack grows the sets much further in the same time (H(11) lines
 8,246 -> 8,776 with 1,109 pairs; H(13) points 14,762 -> 15,301 with 1,301 pairs, 150 s each); with masks it gains
-+135 to +145 (H(11) lines) and +25 to +61 (H(13) points). In the seven-level (15,7) layout non-bottleneck friendly sets
-provide private covers (research/d15D7b/README.md); five levels have none, since every level has exactly one friendly
-outgoing transition except level 3 and one friendly incoming except level 1.
++135 to +145 (H(11) lines; +160 to +221 after two coupled rounds) and +25 to +61 (H(13) points). In the
+seven-level (15,7) layout non-bottleneck friendly sets provide private covers (research/d15D7b/README.md); five levels
+have none, since every level has exactly one friendly outgoing transition except level 3 and one friendly incoming
+except level 1.
 
 ## Checks
 
@@ -183,5 +188,18 @@ research/d7family/ (this job):
 - checks/, configs/ (q = 8 mirrored states)
 
 Solutions (research/frontier/sols/): d16D7_hex13_typedrelax_n4053576.sol (names d16D7_hex13_mirror813_n4025592.sol),
-d14D7_hex11_typedrelax_n1789858.sol (names d14D7_hex11_mirror768_n1774632.sol), d10D7_hex8_mirror231_n225156.sol,
+d14D7_hex11_typedrelax_n1789917.sol and the superseded d14D7_hex11_typedrelax_n1789858.sol (both name
+d14D7_hex11_mirror768_n1774632.sol), d10D7_hex8_mirror231_n225156.sol,
 d10D7_hex8_mirror230_n225154.sol (superseded).
+
+## Handoff (end of session, 2026-10-25)
+
+For the coordinator, in order:
+1. (16,7) 4,053,576: research/frontier/sols/d16D7_hex13_typedrelax_n4053576.sol, check
+   research/d7family/checks/d16D7_hex13_typedrelax_n4053576.check.txt (rebuild with tmL_build.py, byte-identical edge
+   list; full all-pairs apsp_w VALID; apsp_mt would take about 9 h on 4 threads).
+2. (14,7) 1,789,917: research/frontier/sols/d14D7_hex11_typedrelax_n1789917.sol, check file of the same name
+   (STATUS14). Fallback 1,789,858 (d14D7_hex11_typedrelax_n1789858.sol, full check VALID).
+3. (10,7) 225,156: research/frontier/sols/d10D7_hex8_mirror231_n225156.sol (multi_sol.py build; apsp_mt VALID).
+Nothing new for (7,7), (9,7), (11,7), (12,7), (13,7); (15,7) not touched. The reasons are above (three levels: only
+the mirrored set counts and it is add-maximal at every q tried; H(9): the 1-defective bound 7,307 against 7,300).
