@@ -68,6 +68,22 @@ so it is a real test.
 | B3 | psl 9 × Z134 | 11 | 3600 s |
 | B4 | sl 9 × Z67 | 11 | 3600 s |
 
+Results (one hour each, not solved):
+
+| queue | group | seed | best cost | evals |
+|---|---|---|---|---|
+| B1, B2 | prod psl 3 × psl 3 × Z333 | 11, 12 | 31,968 (both) | 2.1 × 10⁷ |
+| B3 | psl 9 × Z134 | 11 | 11 | 1.27 × 10⁸ |
+| B4 | sl 9 × Z67 | 11 | 7 | 1.26 × 10⁸ |
+
+The prod group is degenerate (cost ~3 × 10⁴ is the random level): A4 × A4 has almost no mixing, so it is ruled out.
+psl 9 and sl 9 are well behind psl 11 × Z73.
+
+### Phase C (2026-10-25, 10:16 UTC, 90 minutes, four seeds on psl 11 × Z73)
+
+Jobs in `research/squads/cells/raise-d7D8/jobs/C*.jobs` (seeds 21–24, default variant, 5400 s each). These are the
+only candidates left in the window with μ_eff near the record's (15.65 against 16.06).
+
 Results: (pending)
 
 ## How to resume
