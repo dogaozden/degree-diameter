@@ -1,0 +1,14 @@
+# Squad card folders of the chartlift rounds: regenerable bulk stays out of git.
+# Cayley tables written by research/theorems/chartlift/r3/mkgroups.py (up to ~1 MB each; rerun it to rebuild).
+*-chartlift/c*/gtab/
+# Compiled copies of tools whose C sources are in the repo (chartlift/*.c, chartlift/r3/*.c,
+# lifts/coordinator_check/apsp.c) or in the card folder itself (chart_anneal4.c, field_search.c, tabu_chart.c).
+*-chartlift/c*/apsp
+*-chartlift/c*/bfs_all
+*-chartlift/c*/chart_anneal2
+*-chartlift/c*/chart_anneal3
+*-chartlift/c*/chart_anneal4
+*-chartlift/c*/ctrl_exh
+*-chartlift/c*/ctrl_search
+*-chartlift/c*/field_search
+*-chartlift/c*/tabu_chart

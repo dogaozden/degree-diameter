@@ -1,0 +1,48 @@
+order  kind  group              seed1    seed2   
+162    meta  meta_18_9_7        10       -       
+162    meta  meta_27_6_8        20       -       
+162    meta  meta_27_6_10       8        -       
+162    meta  meta_27_6_26       40       -       
+162    meta  meta_54_3_19       8        -       
+164    meta  meta_41_4_9        27       -       
+164    meta  meta_41_4_40       84       -       
+165    meta  meta_33_5_4        2        2       
+168    meta  meta_21_8_8        6        -       
+168    meta  meta_21_8_13       6        -       
+168    meta  meta_21_8_20       18       -       
+168    meta  meta_28_6_3        15       -       
+168    meta  meta_28_6_5        10       -       
+168    meta  meta_28_6_9        4        -       
+168    meta  meta_28_6_11       2        2       
+168    meta  meta_28_6_13       12       -       
+168    meta  meta_28_6_15       11       -       
+168    meta  meta_28_6_27       46       -       
+168    meta  meta_42_4_13       12       -       
+168    meta  meta_42_4_29       10       -       
+168    meta  meta_42_4_41       96       -       
+168    meta  meta_56_3_9        4        -       
+170    meta  meta_17_10_16      17       -       
+157    cyc   cyc_157            64       -       
+158    cyc   cyc_158            64       -       
+159    cyc   cyc_159            -        -       
+161    cyc   cyc_161            -        -       
+162    cyc   cyc_162            -        -       
+163    cyc   cyc_163            -        -       
+164    cyc   cyc_164            -        -       
+165    cyc   cyc_165            -        -       
+166    cyc   cyc_166            -        -       
+167    cyc   cyc_167            -        -       
+168    cyc   cyc_168            -        -       
+169    cyc   cyc_169            -        -       
+170    cyc   cyc_170            -        -       
+162    prod  prod_3_54          -        -       
+162    prod  prod_9_18          -        -       
+164    prod  prod_2_82          -        -       
+168    prod  prod_2_84          -        -       
+169    prod  prod_13_13         -        -       
+
+lowest cost per order (both stages): 157:64, 158:64, 162:8, 164:27, 165:2, 168:2, 170:17
+jobs with stage-1 result: 25 of 41
+cost-0 jobs: none
+verify.log:
+  (none)
