@@ -1,0 +1,13 @@
+# (15,7) 2,484,720 = 7*|H(11)| + 6*756 (job cell-13-7, 2026-10-25 ~00:30-00:42 UTC).  New cell (table 2,480,184).
+# Seven copies of H(11) (levels Z7) joined by (p, i) ~ (sigma(p), i+k), k = 1, 2, 3 (the same sigma); surgery at
+# R = 756 pairwise opposite points (sets/R756_r4c1_idx.txt) with S = the first 756 lines of the Hermitian spread,
+# sigma a local duality on each Gamma_2(r) (random order, seed 1); all six extra edges of each freed (r, i) removed;
+# 3 line-side + 3 point-side hubs per point; hub graph random 8-regular bipartite with all same-side distances <= 6
+# (checked inside multi.c).  Max degree 15 = q+4.
+#   RFILE=multi_t/R756.txt SFILE=sets/S_q11_spread.txt NOCHECK=1 multi hex/hex_q11.bin 3 1 d15D7.edges
+#   or: python3 tools/multi_sol.py build research/frontier/sols/d15D7_hex11_R756_n2484720.sol hex/hex_q11.bin d15D7.edges
+#   (byte-identical edge list)
+# Check: apsp_src.c from all 354,312 level-0 vertices and all 4,536 hubs; (x, i) -> (x, i+1) with hubs fixed is an
+# automorphism, so these eccentricities give the diameter.
+n=2484720 edges=18635400 degree min=15 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2484720 (eccentricities of the 358848 listed sources)
