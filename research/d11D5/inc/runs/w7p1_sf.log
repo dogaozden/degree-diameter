@@ -1,0 +1,17 @@
+n=401 dg=8 parity-candidate pairs 139157 (walks 1164853), active 118446, structural 0, violated 27
+t=0 SIGFIX pass 1 swap 260 118 -> structural 0 violated 26
+t=4 SIGFIX pass 2 swap 30 228 -> structural 0 violated 25
+t=9 SIGFIX pass 3 swap 349 16 -> structural 0 violated 24
+t=13 SIGFIX pass 4 swap 137 161 -> structural 0 violated 23
+t=17 SIGFIX pass 5 swap 233 305 -> structural 0 violated 22
+t=21 SIGFIX pass 6 swap 117 268 -> structural 0 violated 21
+t=24 SIGFIX pass 7 swap 336 112 -> structural 0 violated 20
+t=28 SIGFIX pass 8 swap 379 217 -> structural 0 violated 19
+t=31 SIGFIX pass 9 swap 57 4 -> structural 0 violated 18
+t=35 SIGFIX pass 10 swap 258 109 -> structural 0 violated 17
+t=38 SIGFIX pass 11 swap 80 235 -> structural 0 violated 16
+t=41 SIGFIX pass 12 swap 294 313 -> structural 0 violated 15
+t=43 SIGFIX pass 13 swap 32 302 -> structural 0 violated 14
+t=46 SIGFIX pass 14 swap 386 284 -> structural 0 violated 13
+SIGFIX pass 15: no improving swap (violated 13)
+RESULT best=13 structural=0 violated=13 iters=0

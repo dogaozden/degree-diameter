@@ -163,11 +163,65 @@ int main(int argc, char **argv) {
     long sc = structural(1); recount();
     long nact = 0; for (long p = 0; p < npair; p++) nact += active[p];
     printf("n=%d dg=%d parity-candidate pairs %ld (walks %ld), active %ld, structural %ld, violated %ld\n", n, dg, npair, ngeo, nact, sc, viol); fflush(stdout);
+    if (getenv("LISTV")) for (long i = 0; i < nvl && i < 60; i++) { long p = vlist[i]; printf("violated pair %d %d walks %d\n", ps[p], pt_[p], poff[p + 1] - poff[p]); }
     if (getenv("SCORE")) return 0;
     double secs = getenv("SECS") ? atof(getenv("SECS")) : 60, T0 = getenv("T0") ? atof(getenv("T0")) : 1.0, T1 = getenv("T1") ? atof(getenv("T1")) : 0.05;
     double PS = getenv("PS") ? atof(getenv("PS")) : 0.002; long WS = getenv("WS") ? atol(getenv("WS")) : 50;
     long cost = WS * sc + viol, best = cost; uint8_t *bnu = malloc(n * dg); int *bsig = malloc(4L * n); memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n);
     clock_t t0 = clock(); long it = 0;
+    if (getenv("SIGFIX")) {   /* endgame: sigma swaps that give a violated pair a sigma route, keeping structural 0 */
+        int *colp = malloc(4L * n * 128), *ncolp = calloc(n, 4);   /* collinear points of each point */
+        for (int p = 0; p < n; p++) for (int j = 0; j < dg; j++) { int l = pt[p * dg + j]; for (int k = 0; k < dg; k++) { int q = ln[l * dg + k]; if (q != p && ncolp[p] < 128) colp[p * 128 + ncolp[p]++] = q; } }
+        int pass = 0;
+        while (viol > 0) { double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break; pass++;
+            long bestc = WS * sc + viol; int ba = -1, bb = -1; long nv0 = nvl; long *vl0 = malloc(8L * nv0); memcpy(vl0, vlist, 8L * nv0);
+            for (long i = 0; i < nv0; i++) { long p = vl0[i]; int s0 = ps[p], t0_ = pt_[p];
+                for (int side = 0; side < 2; side++) { int a = side ? t0_ : s0, b = side ? s0 : t0_;
+                    int cand[1024], nc = 0;
+                    if (a < n && b < n) { /* points: want sigma(a) concurrent with sigma(b): sigma(a) := a line through a point of sigma(b) */
+                        int lb = sig[b]; for (int k = 0; k < dg; k++) { int q = ln[lb * dg + k]; for (int j = 0; j < dg; j++) { int m = pt[q * dg + j]; if (m != lb && nc < 1024) cand[nc++] = sinv[m]; } } }
+                    else if (a >= n && b >= n) { /* lines: want sigma^-1(a) collinear with sigma^-1(b): give line a to a point collinear with sigma^-1(b) */
+                        int w = sinv[b - n]; for (int k = 0; k < ncolp[w] && nc < 1024; k++) cand[nc++] = colp[w * 128 + k]; }
+                    else continue;
+                    for (int c = 0; c < nc; c++) { int u = cand[c]; int x = a < n ? a : sinv[a - n];   /* swap sigma(x) and sigma(u) */
+                        if (u == x) continue; int lx = sig[x], lu = sig[u]; sig[x] = lu; sig[u] = lx; sinv[lu] = x; sinv[lx] = u;
+                        long sc2 = structural(1); long v2 = 0; if (sc2 == 0) for (long q = 0; q < npair; q++) v2 += pbad(q);
+                        long c2 = sc2 ? (1L << 40) : v2;
+                        if (c2 < bestc) { bestc = c2; ba = x; bb = u; }
+                        sig[x] = lx; sig[u] = lu; sinv[lx] = x; sinv[lu] = u; if (ba >= 0 && getenv("FIRST")) break; }
+                    if (ba >= 0 && getenv("FIRST")) break; }
+                if (ba >= 0 && getenv("FIRST")) break; }
+            free(vl0);
+            if (ba < 0) { printf("SIGFIX pass %d: no improving swap (violated %ld)\n", pass, viol); break; }
+            int lx = sig[ba], lu = sig[bb]; sig[ba] = lu; sig[bb] = lx; sinv[lu] = ba; sinv[lx] = bb;
+            sc = structural(1); recount(); printf("t=%.0f SIGFIX pass %d swap %d %d -> structural %ld violated %ld\n", el, pass, ba, bb, sc, viol); fflush(stdout);
+            memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n); if (getenv("OUTNU")) savenu(getenv("OUTNU")); if (getenv("OUT")) save(getenv("OUT"));
+        }
+        best = WS * sc + viol; memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n);
+    }
+    if (getenv("POLISH")) {   /* depth-2 ejection search: flip f on a violated pair's walk, then repair each new violation with f' */
+        long bestv = viol; int *c1 = malloc(4 * 64), *c2 = malloc(4 * 64); long *nv = malloc(8L * 4096); int round = 0, side = getenv("SIDE") ? atoi(getenv("SIDE")) : 200;
+        while (viol > 0) {
+            double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break; round++;
+            int improved = 0; long nvl0 = nvl; long *vl0 = malloc(8L * nvl0); memcpy(vl0, vlist, 8L * nvl0);
+            for (long a = 0; a < nvl0 && !improved; a++) { long p = vl0[(a + round) % nvl0]; if (vpos[p] < 0) continue;
+                int n1 = 0; for (int g = poff[p]; g < poff[p + 1]; g++) for (int j = 0; j < glen[g]; j++) { int fl = gflag[5L * g + j]; int dup = 0; for (int c = 0; c < n1; c++) if (c1[c] == fl) dup = 1; if (!dup && n1 < 64) c1[n1++] = fl; }
+                for (int i1 = 0; i1 < n1 && !improved; i1++) { long v0 = viol; applyflip(c1[i1]);
+                    if (viol < v0) { improved = 1; break; }
+                    long k = nvl < 4096 ? nvl : 4096; memcpy(nv, vlist, 8L * k);
+                    for (long b = 0; b < k && !improved; b++) { long q = nv[b]; if (vpos[q] < 0) continue;
+                        int n2 = 0; for (int g = poff[q]; g < poff[q + 1]; g++) for (int j = 0; j < glen[g]; j++) { int fl = gflag[5L * g + j]; int dup = 0; for (int c = 0; c < n2; c++) if (c2[c] == fl) dup = 1; if (!dup && n2 < 64) c2[n2++] = fl; }
+                        for (int i2 = 0; i2 < n2; i2++) { if (c2[i2] == c1[i1]) continue; applyflip(c2[i2]); if (viol < v0) { improved = 1; break; } applyflip(c2[i2]); } }
+                    if (!improved) applyflip(c1[i1]); } }
+            free(vl0);
+            if (!improved) { /* sideways: random flip pair that keeps the count */
+                if (--side < 0) break;
+                long p = vlist[rnd() % nvl]; int g = poff[p] + rnd() % (poff[p + 1] - poff[p]); applyflip(gflag[5L * g + rnd() % glen[g]]); }
+            if (viol < bestv) { bestv = viol; memcpy(bnu, nu, n * dg); printf("t=%.0f round %d violated %ld\n", el, round, viol); fflush(stdout); if (getenv("OUTNU")) savenu(getenv("OUTNU")); }
+        }
+        if (viol <= bestv) memcpy(bnu, nu, n * dg);
+        best = WS * sc + bestv;
+    }
     if (getenv("WMODE")) {   /* clause weighting (breakout): greedy best flip on a violated pair, bump weights at minima */
         wt = malloc(2L * npair); for (long p = 0; p < npair; p++) wt[p] = 1; dacc = calloc(npair, 4); touch = malloc(4L * npair); stamp = calloc(npair, 4);
         wviol = viol; long bumps = 0; int DEC = getenv("DECAY") ? atoi(getenv("DECAY")) : 50; double NOISE = getenv("NOISE") ? atof(getenv("NOISE")) : 0.02;
@@ -187,11 +241,16 @@ int main(int argc, char **argv) {
         }
         best = WS * sc + best;
     }
-    while (best > 0 && !getenv("WMODE")) {
+    while (best > 0 && !getenv("WMODE") && !getenv("POLISH") && !getenv("SIGFIX")) {
         double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break;
         double T = T0 * pow(T1 / T0, el / secs); it++;
         if (urand() < PS) {
-            int a = rnd() % n, b = rnd() % n; if (a == b) continue;
+            int a = rnd() % n, b = rnd() % n;
+            if (getenv("TARGET") && nvl > 0) {   /* targeted: a swap that gives a violated pair a sigma route */
+                long p = vlist[rnd() % nvl]; int s0 = ps[p], t0_ = pt_[p]; if (rnd() & 1) { int z = s0; s0 = t0_; t0_ = z; }
+                if (s0 < n && t0_ < n) { int lb = sig[t0_]; int q = ln[lb * dg + rnd() % dg]; int m = pt[q * dg + rnd() % dg]; a = s0; b = sinv[m]; }
+                else if (s0 >= n && t0_ >= n) { int w = sinv[t0_ - n]; int l = pt[w * dg + rnd() % dg]; int u = ln[l * dg + rnd() % dg]; a = u; b = sinv[s0 - n]; } }
+            if (a == b) continue;
             int la = sig[a], lb = sig[b]; sig[a] = lb; sig[b] = la; sinv[lb] = a; sinv[la] = b;
             long sc2 = structural(1); long v2 = 0; for (long p = 0; p < npair; p++) { int bad = pbad(p); v2 += bad; }
             long c2 = WS * sc2 + v2;
