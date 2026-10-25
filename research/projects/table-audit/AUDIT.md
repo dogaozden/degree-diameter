@@ -31,13 +31,13 @@ Of the 112 cells (counts from cells.csv; five big checks were still running when
 - **48 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the 11 Delorme–Farhi cells, the three D = 3
   AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
-- **21 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+- **26 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) (lifts found by the
-  squad), and the Loz cells (3,9), (5,5), (6,5), (7,5), (8,5) (Haar graphs of Z23 ⋊ Z11, Z7 ⋊ Z24, Z57 ⋊ Z6,
-  Z63 ⋊ Z9, Z19 ⋊ Z45).
+  squad), and 10 Loz cells, (3,9), (4,8), (4,9), (4,10), (5,5), (5,8), (6,5), (7,5), (8,5), (9,5), as Haar graphs of
+  metacyclic groups (graphs/*.sol).
 - **6 do not check out as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q
   (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
-- **37 have no traceable construction**: 34 Loz cells (data lost), (3,10), (13,8), (16,5).
+- **32 have no traceable construction**: 29 Loz cells (data lost; all have D ≥ 7), (3,10), (13,8), (16,5).
 
 No table value was found to be wrong outright: every cell with a construction I could rebuild checks out, and no value
 exceeds its upper bound. The doubtful ones are the six D = 8 cells above. Four of them, (10,8), (12,8), (14,8),
@@ -99,13 +99,17 @@ Conder's census of cubic symmetric graphs (1-arc-regular, |Aut| = 504, girth 12)
 **Loz orange cells (39).** No voltages, groups, base graphs or adjacency lists survive where I could reach them (thesis
 restricted to Auckland logins, eyal.com.au parked, archive.org blocked here). Many orders have the shape 2·p·k with k
 | p−1 (the order of a Haar graph of Z_p ⋊ Z_k). I tried to reach the exact table orders with Haar graphs
-(`tools/exact_haar.py` driving research/frontier/haar_gen3, then build_haar2.py and apsp.c): (3,9) = 506,
-(5,5) = 336, (6,5) = 684, (7,5) = 1,134 and (8,5) = 1,710 were reached exactly (graphs/*.sol, checked in
-checks/small.txt). For
+(`tools/exact_haar.py` driving research/frontier/haar_gen3, then build_haar2.py and apsp.c), 30 s per group, every
+metacyclic group of the right order in turn: (3,9) 506 (Z23 ⋊ Z11), (4,8) 2,184 (Z91 ⋊ Z12), (4,9) 4,970 (Z71 ⋊ Z35),
+(4,10) 11,748 (Z89 ⋊ Z66), (5,5) 336 (Z7 ⋊ Z24), (5,8) 9,234 (Z171 ⋊ Z27), (6,5) 684 (Z57 ⋊ Z6), (7,5) 1,134
+(Z63 ⋊ Z9), (8,5) 1,710 (Z19 ⋊ Z45) and (9,5) 2,496 (Z13 ⋊ Z96) were reached exactly (graphs/*.sol, checked in
+checks/small.txt). (4,8) and (4,9) are cells the repo has not beaten, so the table value there is now backed by a
+checked graph. For
 13 of the 39 cells n/2 = p·k with p prime and k | p−1, the order of Z_p ⋊ Z_k (cells.csv notes give every
 factorization), which fits Loz's published method for general graphs (voltage lifts with metacyclic groups). That is
-a pattern, not a source. The other small Loz cells ((4,8), (4,9), (9,5), (5,7), (5,8), (4,10)) were still being
-searched when this was written (results land in cells.csv through tools/collect_extra.py).
+a pattern, not a source. (5,7) = 3,110 (one candidate group, Z311 ⋊ Z5) failed in 30 s and was being rerun longer, with
+the mid-size cells (5,9), (6,8), (7,8), (5,10), (6,9), when this was written (results reach cells.csv through
+tools/collect_extra.py).
 
 ## 4. Flags
 
@@ -125,9 +129,9 @@ searched when this was written (results land in cells.csv through tools/collect_
    construction in the wiki's own source (Delorme–Gómez–Quisquater, "On large bipartite graphs", never published)
    may differ. Either way these six cells have no checkable graph. (15,8) is the (14,8) value reused; the thesis also
    lists N(15,8) ≥ 14,978,080 ("ΩH₁₁d"), which the wiki does not use.
-2. **No traceable construction:** 34 Loz cells (data lost), (3,10) = 800, (13,8) = 5,314,680 (= 15·|H(11)| at
-   Δ = q+2; not in Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (3,10), (4,8), (4,9), (11,10),
-   (15,10), (16,10).
+2. **No traceable construction:** 29 Loz cells (data lost), (3,10) = 800, (13,8) = 5,314,680 (= 15·|H(11)| at
+   Δ = q+2; not in Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (3,10), (11,10), (15,10),
+   (16,10).
 3. **Attribution:** (6,7) and (8,7) are coloured Delorme–Gómez–Quisquater on the wiki, but their construction and
    exact orders are in Delorme 1985 §9.
 4. **(16,3) = 394:** no source states the construction; a Delorme–Farhi duplication on PG(2,13) gives exactly 394.
