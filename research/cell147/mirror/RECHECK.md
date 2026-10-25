@@ -19,7 +19,7 @@ python3 research/d13D7/tools/multi_sol.py build SOL hex/hex_q{q}.bin OUT.edges
 | (7,7) | 23,598 | d7D7_hex5_mirror81_n23598.sol | 5 | `apsp_mt OUT 7 7` VALID |
 | (9,7) | 118,238 | d9D7_hex7_mirror295_n118238.sol | 7 | `apsp_mt OUT 9 7` VALID |
 | (10,7) | 225,152 | d10D7_hex8_mirror229_n225152.sol | 8 | `apsp_mt OUT 10 7` VALID |
-| (13,7) | 1,064,472 | d13D7_hex11_mirror768_n1064472.sol | 11 | `apsp_orb OUT 13 7 T 3 354312`: see checks/ |
+| (13,7) | 1,064,472 | d13D7_hex11_mirror768_n1064472.sol | 11 | `apsp_orb OUT 13 7 T 3 354312` VALID |
 | (15,7) | 2,484,792 | d15D7_hex11_mirror768_n2484792.sol | 11 | `apsp_orb OUT 15 7 T 7 354312`: see checks/ |
 | (16,7) | 4,025,592 | d16D7_hex13_mirror813_n4025592.sol | 13 | `apsp_orb OUT 16 7 T 5 804468`: see checks/ |
 
