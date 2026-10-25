@@ -31,7 +31,8 @@
  *      RANDORB=m (cost statistics of m random symmetric S, no search; "units" = uncovered free alpha-orbits + uncovered
  *      fixed points, the Poisson count that decides P(cost 0)), SOLFILE=f (cost + full check of a solution
  *      file's S, no search), BENCH=m (time m evaluations), ZMAX=t (reject candidate orbits whose z-spectrum
- *      A(S) = max_{xi != 0} |(1/d) sum_u e(xi z_u / n)| exceeds t; ZTRY tries, default 200; see zspec_with).
+ *      A(S) = max_{xi != 0} |(1/d) sum_u e(xi z_u / n)| exceeds t; ZTRY tries, default 200; see zspec_with),
+ *      DUMPUNC=c (with RANDORB: print the uncovered elements of samples with cost <= c, with torus/normaliser flags).
  * Build: gcc -O3 -march=native -fopenmp -o haar_lean haar_lean.c -lm
  */
 #include <stdio.h>
@@ -690,6 +691,15 @@ int main(int argc, char **argv) {
             for (int u = 0; u < d; u++) make_tables(S[u], TF[u], TI[u]);
             v[t] = cost(C[0], TF, TI, NOBOUND); sm += v[t];
             { long long fm = fixmiss(C[0]); u[t] = (double)(v[t] - fm) / OK_ + fm; su += u[t]; }
+            if (getenv("DUMPUNC") && v[t] <= atoll(getenv("DUMPUNC"))) {   /* structure of the uncovered elements */
+                el g = AG, gi = ginv(AG);
+                for (long long i = 0; i < C[0]->nunc; i++) {
+                    el x = code2el(C[0]->unc[i]), m = x; m.z = 0;
+                    el cj = gmul(gmul(m, g), ginv(m));   /* x g x^-1: = g iff x in T, = g^-1 iff x in N(T) \ T */
+                    printf("UNC sample=%d cost=%lld x=(%d,%d,%d,%d) z=%d tr=%d inT=%d inNT=%d fixed=%d\n", t, v[t], x.a, x.b, x.c, x.d, x.z,
+                           (x.a + x.d) % P, geq(cj, g), geq(cj, gi), geq(alpha(x), x));
+                }
+            }
             if (LEVELS) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld units %.1f A %.3f\n", v[t], u[t], NC > 2 ? zspec_with(-1, 0) : 0.0); }
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) saved = write_solution(C[0], out);
         }
