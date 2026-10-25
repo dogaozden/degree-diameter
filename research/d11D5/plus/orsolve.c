@@ -37,6 +37,7 @@ int main(int argc, char **argv) {
     for (long e = 0; e < neq; e++) for (int k = eqoff[e]; k < eqoff[e + 1]; k++) { int v = eqv[k]; vo[vo_off[v] + cnt[v]++] = -(int)(e + 1); }
     long *corc = malloc(8 * nc); for (long o = 0; o < nor; o++) for (int k = oroff[o]; k < oroff[o + 1]; k++) corc[k] = o;
     x = malloc(NV); for (int i = 0; i < NV; i++) x[i] = rnd() & 1;
+    if (getenv("IN")) { FILE *g = fopen(getenv("IN"), "r"); for (int i = 0; i < NV; i++) { int v; if (fscanf(g, "%d", &v) == 1) x[i] = v & 1; } fclose(g); }
     cval = malloc(nc); ones = calloc(nor, 4); eqval = malloc(neq + 1);
     for (long c = 0; c < nc; c++) { int v = orc[c].nb; for (int t = 0; t < orc[c].nv; t++) v ^= x[orc[c].v[t]]; cval[c] = v; ones[corc[c]] += v; }
     long cost = 0; for (long o = 0; o < nor; o++) cost += orbad(o);
