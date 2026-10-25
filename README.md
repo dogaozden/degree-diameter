@@ -1,6 +1,6 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **69 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **70 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
@@ -69,6 +69,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (13, 7) | 1,062,936 | **1,064,448** | +0.1% | hexagon + hub vertices ¹ | — |
 | (14, 7) | 1,771,560 | **1,774,584** | +0.2% | hexagon cover + hub vertices ¹ | — |
 | (15, 7) | 2,480,184 | **2,484,720** | +0.2% | hexagon cover + hub vertices ¹ | — |
+| (16, 7) | 4,022,340 | **4,025,508** | +0.1% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,576** | +3.7% | voltage lift / metacyclic Haar | ✓ |
 | (6, 8) | 29,790 | **31,680** | +6.3% | orbit search (Haar) ¹ | (30,576) |
