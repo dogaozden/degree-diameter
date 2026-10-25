@@ -82,7 +82,7 @@ sl 157×43 (166.40 M): best 6, 2,289 evals; sl 97×181 seed 2 (165.18 M): best 3
 PSL checker VALID), both in `../../frontier/sols/`.
 
 Why: this cell, with the orbit method at k = 3, m = 4, f = 0, now needs solves in a narrow band (N just above 164.99 M,
-μ ≈ 22–28). Across 19 jobs at μ ≈ 20–33 (900–3,600 s, one to two seeds each), the solves were 3 of 19, and all three were at
-μ ≈ 20–22 in ≤ 900 evals. Above μ ≈ 25 the best costs sat at 3–9 after 2–9k evals. Going further needs many more seeds per
+μ ≈ 22–28). Across 25 jobs at μ ≈ 20–33 (900–3,600 s), 3 solved: psl 197×43 (μ 22.4, 305 evals), sl 103×151 seed 2 (μ 24.5,
+897 evals) and psl 97×361 (μ 23.9, 5,121 evals). The unsolved jobs at μ ≥ 25 ended with best cost 3–9 after 1–9k evals. Going further needs many more seeds per
 group (roughly 10–20 hours of single-core time for a few more percent), or a new idea: a different automorphism, or ORBW /
 RESTART variants on the same groups. The coordinator decides whether a bigger model is worth it.
