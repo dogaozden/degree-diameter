@@ -1,0 +1,10 @@
+raise-d16-9 (Haar, (16,9)), independent checks, 2026-10-25 (Haiku worker, branch claude/raise-d16-9-record-gpc9xc)
+
+Record to beat before: 337,394,400 vertices (sl 151 x Z49, |G| = 168,697,200).
+
+1. sol d16D9_sl_79_343_orb3_s1.txt   sl 79 x Z343, |G| = 169,085,280, vertices 338,170,560 (+0.23 %)
+   haarcheck_sl (hcsl, research/frontier/haarcheck_sl.c):  VALID d=16 D=9 vertices=338170560 eccA=9 eccB=9
+   haarcheck2 (hc2, research/frontier/haarcheck2.c):        VALID d=16 D=9 vertices=338170560 eccA=9 eccB=9 (reached 338170560/338170560)
+2. sol d16D9_sl_107_139_orb3_s1.txt  sl 107 x Z139, |G| = 170,266,104, vertices 340,532,208 (+0.93 %)
+   haarcheck_sl (hcsl): VALID d=16 D=9 group=sl 107 x Z_139 N=170266104 vertices=340532208 eccA=9 eccB=9
+   haarcheck2 (hc2):    VALID d=16 D=9 vertices=340532208 eccA=9 eccB=9

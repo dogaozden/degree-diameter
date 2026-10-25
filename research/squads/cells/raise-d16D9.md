@@ -26,3 +26,11 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 
 ## Log
 (see bottom; newest last)
+
+- 2026-10-25 07:44 wave 1 (haar_sym, k=3 m=5 f=1, THREADS=1, K=8): sl 79x343 solved at 1625 evals (981 s); checked
+  VALID by hcsl and hc2: 338,170,560 vertices (+0.23 % over 337,394,400). Saved research/frontier/sols/d16D9_sl_79_343_orb3_s1.txt.
+- 2026-10-25 ~07:55 sl 107x139 solved at 2841 evals (1190 s); VALID by hcsl and hc2: 340,532,208 vertices (+0.93 %).
+  Saved research/frontier/sols/d16D9_sl_107_139_orb3_s1.txt. Checker outputs: research/frontier/runs/raise_d16D9_checks.txt.
+  Current best: 340,532,208 (sl 107 x Z139).
+- Running: sl 103x157 (+1.69 %, cost 2 at 1,833 evals), sl 89x241 (+0.70 %, cost 2), sl 79x349 (+1.98 %), sl 83x301 (+2.01 %).
+- Notes: stdout of haar_sym is block-buffered when redirected, so logs only show RESULT at exit; solution files appear directly.
