@@ -32,3 +32,15 @@ CHAIN 2 min 18 secs 174 evals 232912 S 74480 434490 344428 31514 562266 28164 47
 chain 3: fresh start (global best 17)
 t=330 steps=48922 evals=391377 cost=19 best=17 T=0.94
 kick 14 chain 3 lbest 19 kicked-to 63 T 0.80
+t=360 steps=55247 evals=441977 cost=27 best=17 T=0.30
+kick 15 chain 3 lbest 19 kicked-to 55 T 0.80
+kick 16 chain 3 lbest 19 kicked-to 183 T 0.80
+t=390 steps=62069 evals=496553 cost=27 best=17 T=0.60
+kick 17 chain 3 lbest 19 kicked-to 169 T 0.80
+t=420 steps=68695 evals=549561 cost=21 best=17 T=0.30
+kick 18 chain 3 lbest 19 kicked-to 82 T 0.80
+kick 19 chain 3 lbest 19 kicked-to 150 T 0.80
+t=450 steps=75113 evals=600905 cost=24 best=17 T=0.60
+kick 20 chain 3 lbest 13 kicked-to 118 T 0.80
+CHAIN 3 min 13 secs 157 evals 256176 S 74480 6920 569115 306560 466112 558361 340975 584395 328629 320068 final
+KICKS 20 CHAINS 3

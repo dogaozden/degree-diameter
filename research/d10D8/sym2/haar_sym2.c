@@ -981,6 +981,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     int nth_ = nth; (void)nth_;
     /* initial S */
     if (OF) S[0] = ident;
+    if (OF && getenv("F0")) {   /* F0=i (cell-10-8 session): the fixed letter is the i-th non-identity alpha-fixed element, not e */
+        int i0 = atoi(getenv("F0")); if (i0 < 1 || i0 > NFIX) { fprintf(stderr, "F0 must be 1..%lld\n", NFIX); return 2; }
+        S[0] = FIXL[i0 - 1]; fprintf(stderr, "F0=%d: fixed letter %d instead of e\n", i0, S[0]); }
     for (int u = 1; u < OF; u++) { if (NFIXG < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
@@ -1034,7 +1037,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         if (f) { int dd = 0; ok = fscanf(f, "CKPT d=%d evals=%lld elapsed=%lf best=%lld", &dd, &e0, &el, &b0) == 4 && dd == d;
             for (int i = 0; ok && i < d; i++) ok = fscanf(f, "%d", &T2[i]) == 1 && T2[i] >= 0 && T2[i] < N;
             fclose(f); }
-        for (int i = 0; ok && i < OF; i++) ok = i == 0 ? T2[0] == ident : alpha(T2[i]) == T2[i];
+        for (int i = 0; ok && i < OF; i++) ok = (i == 0 && !getenv("F0")) ? T2[0] == ident : alpha(T2[i]) == T2[i];
         for (int j = 0; ok && j < OM; j++) for (int i = 0; ok && i < OK_; i++) ok = T2[ostart(j) + (i + 1) % OK_] == alpha(T2[ostart(j) + i]);
         for (int i = 0; ok && i < d; i++) for (int u = 0; u < i; u++) if (T2[u] == T2[i]) ok = 0;
         if (ok) { memcpy(S, T2, sizeof(int) * d); for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }

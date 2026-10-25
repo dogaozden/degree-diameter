@@ -37,3 +37,26 @@ Cards (research/squads/d10D8-r2/scoreboard.jsonl):
   SL(2,32) × Z18, PSL(2,53) × Z8, a Frobenius α on the SL(2,8) factor and twisted PGL groups are all worse.
 Main runs meanwhile: PSL(2,7) × SL(2,8) × Z7 reached cost 7 in 5.8·10⁵ evaluations, below anything PSL(2,23) × Z97
 reached in 4.5·10⁶ (best 9); three main runs moved to that group (one with ORBW=3).
+
+## 2026-10-25 10:50 UTC, cell-10-8 session (resumed), goal (10,8) 1,176,480, round d10D8-r4
+
+(Round r3 was briefed by the previous session but never launched; its brief became card c5 here.)
+Cards (research/squads/d10D8-r4/scoreboard.jsonl; scorer: chain minima of 8-minute fresh-descent runs on
+PSL(2,7) × SL(2,8) × Z7, baseline median 17, best 12):
+- c1 more candidates per step: K = 24 median 16 (best 15), K = 48 median 20 (best 12). Neutral.
+- c2 targeting/temperature: TARGP 95 + TMIN 0.08 median 18; TARGP 50 + flatter T median 21. Neutral or worse.
+- c3 crossover of 20 good states (2 orbits of A + 1 of B, 3,420 sets): best 24, median 99, all worse than both parents
+  (each crossover is a one-orbit replacement of a good state). Negative.
+- c4 replica exchange (4 replicas, T 0.15–1.2): best 15 in 8 min. Not better.
+- c5 explicit hexagon voltages from PG(6,q) coordinates: valid at q = 3 with 19 levels (formula 20); nothing at q = 4.
+  Nothing toward 30+ levels at q = 7.
+- c6 tail analysis of the descent statistics (see below).
+- c7 iterated local search (one random-orbit kick, re-descent from T 0.4/0.8): chain minima 12 13 14 17 18; a kick
+  costs 55–250, so each kick is a restart. Not better.
+- c8 wildcard, larger symmetry on PSL(2,23) × Z97: Z6 = ⟨α, conjugation by the commuting involution⟩ gives random cost
+  ≥ 315 (median 10,934) because s and β(s) share their Z97-part; a single Z3 × Z3 orbit caps the reachable set
+  (min cost 496,991). Negative.
+Also tried by the lead this round: inverse-closed S (INVPAIR, random cost ≥ 5,888: e ∈ S collapses words), exhaustive
+best-response descent (EXDESC: local optima 14–15 in 7–11 min, cost-7 state is an exact local optimum), a non-identity
+α-fixed letter instead of e (F0: RANDORB unchanged, median 128–131).
+Kept: nothing beats plain short fresh descents. The search draws isolated good states; volume is the only lever left.
