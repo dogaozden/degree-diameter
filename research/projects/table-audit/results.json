@@ -1,0 +1,822 @@
+{
+ "3,3": {
+  "source": "classical: incidence graph of PG(2,2)",
+  "construction": "PG(2,q) incidence graph, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(2) (Tits)",
+  "construction": "W(q) incidence graph, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(2) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,3": {
+  "source": "classical: incidence graph of PG(2,3)",
+  "construction": "PG(2,q) incidence graph, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(3) (Tits)",
+  "construction": "W(q) incidence graph, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(3) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,3": {
+  "source": "classical: incidence graph of PG(2,4)",
+  "construction": "PG(2,q) incidence graph, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(4) (Tits)",
+  "construction": "W(q) incidence graph, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(4) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,3": {
+  "source": "classical: incidence graph of PG(2,5)",
+  "construction": "PG(2,q) incidence graph, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(5) (Tits)",
+  "construction": "W(q) incidence graph, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(5) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,3": {
+  "source": "classical: incidence graph of PG(2,7)",
+  "construction": "PG(2,q) incidence graph, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(7) (Tits)",
+  "construction": "W(q) incidence graph, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(7) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,3": {
+  "source": "classical: incidence graph of PG(2,8)",
+  "construction": "PG(2,q) incidence graph, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(8) (Tits)",
+  "construction": "W(q) incidence graph, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(8) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,3": {
+  "source": "classical: incidence graph of PG(2,9)",
+  "construction": "PG(2,q) incidence graph, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(9) (Tits)",
+  "construction": "W(q) incidence graph, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(9) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_9.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,3": {
+  "source": "classical: incidence graph of PG(2,11)",
+  "construction": "PG(2,q) incidence graph, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(11) (Tits)",
+  "construction": "W(q) incidence graph, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(11) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_11.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,3": {
+  "source": "classical: incidence graph of PG(2,13)",
+  "construction": "PG(2,q) incidence graph, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(13) (Tits)",
+  "construction": "W(q) incidence graph, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(13) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_13.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,5": {
+  "source": "Bar-Yehuda-Etzion, Discrete Appl. Math. 37/38 (1992) 29-43, Appendix B; Bond-Delorme, Ars Combin. 25C (1988)",
+  "construction": "two 28-cycles plus (j,0)~(j+F(j mod 4),1), F = (12,0,8,20)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt); also an independent annealed graph (graphs/d3D5_n56_anneal.edges.txt)",
+  "notes": "optimal (Jorgensen 1993; also Feria-Puron-Pineda-Villavicencio 2012)"
+ },
+ "7,3": {
+  "source": "Hafner (adjacency list on his page https://www.math.auckland.ac.nz/~hafner/bipartite/7.3) and Loz",
+  "construction": "Hafner's graph; also a Haar graph of Z5 x| Z8 found here (graphs/d7D3_n80_meta_5_8_2_x1.sol)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on Hafner's file and on the Haar graph (checks/small.txt)",
+  "notes": "optimal (Feria-Puron-Miller-Pineda-Villavicencio 2013, Thm 4.1)"
+ },
+ "3,7": {
+  "source": "Conder-Nedela (census graph C168.1, |Aut| = 504, 1-arc-regular, girth 12); also DGQ, Loz; Conder's file on Hafner's page (mdec3.7)",
+  "construction": "C168.1 from Conder's census symmcubicgraphs.tar.gz",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on C168.1 and on Hafner's mdec3.7 (checks/small.txt)",
+  "notes": "unbeaten by the repo"
+ },
+ "4,5": {
+  "source": "Hafner (file 4.5, 'Bond-Delorme construction', vertex-transitive, |Aut| = 160) and Loz",
+  "construction": "Hafner's adjacency list",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "4,7": {
+  "source": "Hafner (file 4.7, 'Bond-Delorme construction', vertex-transitive, |Aut| = 2520) and Loz",
+  "construction": "Hafner's adjacency list",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,3": {
+  "source": "Feria-Puron-Miller-Pineda-Villavicencio, Discrete Math. 313 (2013) (three Haar graphs Phi_95); Araujo-Pardo-Lopez (2022) Thm 1",
+  "construction": "Phi_95(4,7,16,27,38,52,62,81) etc.; AL graph R_9 = PG(2,9) + 8 vertices",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on all three Phi_95 and on R_9 (checks/small.txt)"
+ },
+ "13,3": {
+  "source": "Araujo-Pardo-Lopez, Graphs Combin. (2022), arXiv:2005.02427, Thm 1 (order 2(q^2+q+5))",
+  "construction": "R_q = PG(2,11) + 8 vertices, rewired (problems/bipartite_dd/lib.py)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "wiki changed 270 -> 274 / 370 -> 374 on 30 Mar 2021; its percentage column was not updated"
+ },
+ "15,3": {
+  "source": "Araujo-Pardo-Lopez, Graphs Combin. (2022), arXiv:2005.02427, Thm 1 (order 2(q^2+q+5))",
+  "construction": "R_q = PG(2,13) + 8 vertices, rewired (problems/bipartite_dd/lib.py)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "wiki changed 270 -> 274 / 370 -> 374 on 30 Mar 2021; its percentage column was not updated"
+ },
+ "16,3": {
+  "source": "wiki: Delorme-Farhi duplication (no paper names this value; Delorme 1985 JGT not read)",
+  "construction": "PG(2,13) plus copies (Delorme-Farhi 1984) of the 14 points of a conic and of its 14 tangent lines; each copy joined to the original neighbours (tools/delorme.py d3)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "a duplication of exactly this order and degree; whether it is the graph the table had in mind is not documented"
+ },
+ "7,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(5) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(9) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "13,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(11) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "15,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(13) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "16,4": {
+  "source": "Delorme 1985 Sec. 8(a) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
+  "construction": "W(13) + spread, tripling (b = 3)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "7,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(5) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(9) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q9_b2.apsp.txt)"
+ },
+ "13,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(11) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q11_b2.apsp.txt)"
+ },
+ "15,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(13) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q13_b2.apsp.txt)"
+ },
+ "16,6": {
+  "source": "Delorme 1985 Sec. 8(b) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
+  "construction": "H(13) + Hermitian spread, tripling (b = 3)",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q13_b3.apsp.txt)"
+ },
+ "10,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(7) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "11,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(8) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "12,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(9) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "13,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of W(9) linked by 3 bijections points -> lines (polygon cover, Z_7 voltages 1..3)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "14,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "9 copies of W(9) linked by 4 bijections points -> lines (polygon cover, Z_9 voltages 1..4)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "15,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of W(11) linked by 3 bijections points -> lines (polygon cover, Z_7 voltages 1..3)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "16,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "none traced (27300 = 10*13*14*15 is the only arithmetic fit found)",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "superseded: repo record 33,792 (route-chart lift) and the A4(3) flag graph 31,460 (Cames van Batenburg-Korsky 2026)"
+ },
+ "6,7": {
+  "source": "Delorme 1985 Sec. 9 (insertion of vertices on edges, then q-1 duplications; order 2q(q^4+q^3+3q^2+q+1)); the wiki colours it Delorme-Gomez-Quisquater",
+  "construction": "H(5), subdivide the 2q^3 edges between distance 2 and 3 from an edge, q copies of the distance <= 2 part",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9"
+ },
+ "8,7": {
+  "source": "Delorme 1985 Sec. 9 (insertion of vertices on edges, then q-1 duplications; order 2q(q^4+q^3+3q^2+q+1)); the wiki colours it Delorme-Gomez-Quisquater",
+  "construction": "H(7), subdivide the 2q^3 edges between distance 2 and 3 from an edge, q copies of the distance <= 2 part",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9"
+ },
+ "7,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(5) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d7.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "9,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(7) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d9.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "10,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(8) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d10.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "11,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(9) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d11.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "12,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(9) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d12.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "13,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(11) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d13.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "14,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(11) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d14.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "15,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of H(11) linked by 3 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d15.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "16,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(13) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d16.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "10,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 30|H(7)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "unbeaten by the repo"
+ },
+ "11,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 30|H(8)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "superseded by a verified repo record"
+ },
+ "12,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 35|H(9)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "unbeaten by the repo"
+ },
+ "13,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 15|H(11)| with Delta = q+1+j, j = 1 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "superseded by a verified repo record"
+ },
+ "14,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 40|H(11)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "unbeaten by the repo"
+ },
+ "15,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 40|H(11)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "the (14,8) graph reused (degree 14 <= 15); unbeaten by the repo"
+ },
+ "16,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "none traced; value = 45|H(13)| with Delta = q+1+j, j = 2 (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "unbeaten by the repo"
+ },
+ "3,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "not a symmetric cubic graph (Conder census); superseded by the repo record 288"
+ },
+ "3,10": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "not a symmetric cubic graph; Conder's 720 (C720.3) and Bar-Yehuda-Etzion's 672 are smaller; unbeaten by the repo"
+ },
+ "3,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "4,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "4,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "4,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "5,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "5,7": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "5,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "5,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "5,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "6,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "6,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "6,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "6,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "7,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "7,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "7,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "7,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "8,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "8,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "8,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "8,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "9,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "9,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "9,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "9,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "10,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "10,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "11,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "11,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "12,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "12,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "13,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "13,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "14,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "14,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "15,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "15,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "16,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ },
+ "16,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": ""
+ }
+}
