@@ -4,3 +4,33 @@ alpha: conj by mat(2,69,29,7) (index 12454), z -> 42 z on Z_181
 ORBIT k=5 m=2 f=0: |Fix(alpha)| = 34 (+e); mu = 46.28, mu/k = 9.26, fixed-point misses ~ 2.37
 ORBW=5: an uncovered fixed element weighs 5; start energy 40
 start cost=32
+t=30 steps=52 evals=417 cost=26 best=21 T=0.53 energy=30 bestE=25
+t=60 steps=106 evals=849 cost=16 best=20 T=0.19 energy=20 bestE=20
+t=91 steps=159 evals=1273 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=121 steps=211 evals=1689 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=151 steps=267 evals=2137 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=181 steps=320 evals=2561 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=211 steps=373 evals=2985 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=241 steps=425 evals=3401 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=272 steps=475 evals=3801 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=302 steps=525 evals=4201 cost=10 best=10 T=1.07 energy=10 bestE=10
+t=332 steps=576 evals=4609 cost=10 best=10 T=0.38 energy=10 bestE=10
+t=363 steps=629 evals=5033 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=393 steps=681 evals=5449 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=423 steps=731 evals=5849 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=453 steps=779 evals=6233 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=484 steps=829 evals=6633 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=514 steps=879 evals=7033 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=544 steps=928 evals=7425 cost=10 best=10 T=1.01 energy=10 bestE=10
+t=574 steps=975 evals=7801 cost=10 best=10 T=0.36 energy=10 bestE=10
+t=605 steps=1024 evals=8193 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=636 steps=1072 evals=8577 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=666 steps=1112 evals=8897 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=696 steps=1155 evals=9241 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=727 steps=1201 evals=9609 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=757 steps=1249 evals=9993 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=787 steps=1295 evals=10361 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=818 steps=1343 evals=10745 cost=10 best=10 T=0.73 energy=10 bestE=10
+t=848 steps=1391 evals=11129 cost=10 best=10 T=0.25 energy=10 bestE=10
+t=879 steps=1440 evals=11521 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=909 steps=1484 evals=11873 cost=10 best=10 T=0.15 energy=10 bestE=10
