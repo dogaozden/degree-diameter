@@ -7,6 +7,7 @@ The "this session" column lists a checker only if its log in recheck/ has a VALI
 """
 import os
 import re
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 R = os.path.join(HERE, "recheck")
@@ -112,12 +113,19 @@ def W(d, D):
 
 def main():
     got = session_checks()
+    warn = []
     print("| cell | 2013 table | ours | gain | of Moore bound | group G | orbit structure of S (verified) | Lean | checks before today | this session |")
     print("|---|---:|---:|---:|---:|---|---|:---:|---|---|")
     for (d, D), t, o, g, st, stem, lean, earlier in ROWS:
         now = ", ".join(sorted(got.get(stem, set()), key=["B", "I", "C", "P", "C2", "F", "A"].index)) or "–"
         print(f"| ({d},{D}) | {t:,} | **{o:,}** | +{100 * (o / t - 1):.1f} % | {100 * o / (2 * W(d, D)):.1f} % | {g} | {st} | "
               f"{lean} | {earlier} | {now} |")
+        # programs in the repository that accepted this graph (G = bigcheck_indep is not in the repository)
+        progs = {x for x in re.findall(r"\b(C2|B|I|C|P|F|A)\b", earlier)} | got.get(stem, set())
+        if len(progs) + (lean == "✓") < 2:
+            warn.append(f"({d},{D}): only {sorted(progs)} in-repo, Lean {lean}")
+    for w_ in warn:
+        print("WARNING", w_, file=sys.stderr)
 
 
 if __name__ == "__main__":

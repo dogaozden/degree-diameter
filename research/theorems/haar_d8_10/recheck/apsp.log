@@ -38,3 +38,9 @@ elapsed 94 s
 n=239904 edges=959616 degree min=8 max=8 bipartite=yes diameter=8
 RESULT VALID d=8 D=8 n=239904
   with D-1:
+RESULT INVALID
+elapsed 392 s
+=== d7D9_psl_29_19_orb3_s1: edge list from build_haar2.py, then apsp_mt 17:24:14
+n=462840 edges=1619940 degree min=7 max=7 bipartite=yes diameter=9
+RESULT VALID d=7 D=9 n=462840
+  with D-1:
