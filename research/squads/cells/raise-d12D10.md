@@ -113,3 +113,53 @@ at ~3,000 evals when it was last seen; one solve is not a measured advantage for
   `tools/hcsl` and `tools/hc2`: both VALID (eccA = eccB = 10).
 - Not checked: build_haar2.py (above 20M vertices); the coordinator re-checks.
 - The same group with ORBW=3 (seed 3) was still running at cost 3 when this solve landed. Solves so far: 2 of the first 12 jobs.
+
+## Round 2: all jobs and where it stopped
+
+Record at the end of round 2: **332,158,176** = 2 · |SL(2,73) × Z_427| (see above). Three verified records this round:
+330,588,720 (psl 89 × Z_469, ORBW=3), 332,158,176 (sl 73 × Z_427, default weight). The 329,972,448 of round 1 is superseded.
+
+All orbit jobs (k = 3, m = 4, f = 0, seed 3, 2400 s, K = 8, THREADS = 1; `spool_r3/`; logs and per-job queue logs there):
+
+| N | group | μ | best cost (ORBW=3 / default) | evals | result |
+|---|---|---|---|---|---|
+| 165,294,360 | psl 89 × Z_469 | 25.3 | 0 (2,521) / 3 (7,033) | | **solved (ORBW=3)** |
+| 165,679,920 | sl 71 × Z_463 | 25.3 | 6 / 3 | 8,000 | not solved |
+| 166,079,088 | sl 73 × Z_427 | 25.3 | 3 / **0** (5,153) | | **solved (default)** |
+| 166,284,888 | sl 67 × Z_553 | | 3 / 3 | 12,000 | not solved |
+| 167,457,696 | psl 97 × Z_367 | | 6 / 3 | 5,300 | not solved |
+| 167,692,140 | psl 109 × Z_259 | | 6 / 6 | 8,000 | not solved |
+| 167,826,960 | sl 71 × Z_469 | | 6 / 9 | 13,300 | not solved |
+| 168,089,064 | sl 67 × Z_559 | | 9 / 9 | 10,700 | not solved |
+| 168,366,828 | psl 83 × Z_589 | | 6 (default) | 8,900 | not solved |
+| 168,412,752 | sl 73 × Z_433 | | 12 (default) | 8,800 | not solved |
+| 168,697,200 | sl 151 × Z_49 | | 4 (default) | 6,400 | not solved |
+| 169,085,280 | sl 79 × Z_343 | | 3 (default) | 9,300 | not solved |
+| 169,428,600 | psl 199 × Z_43 | | 4 (default) | 5,600 | not solved |
+| 169,523,640 | psl 89 × Z_481 | | 9 (default) | 9,000 | not solved |
+| 169,653,636 | psl 107 × Z_277 | | 12 (default) | 6,200 | not solved |
+| 169,720,980 | psl 131 × Z_151 | | 9 (default) | 3,900 | not solved |
+| 169,876,080 | sl 89 × Z_241 | | 12 (default) | 6,500 | not solved |
+| 169,991,304 | psl 167 × Z_73 | | 3 (default) | 5,700 | not solved |
+| 166,332,360 | sl 61 × Z_733 | | 9 (default) | 7,300 | not solved |
+| 166,574,520 | psl 71 × Z_931 | | 3 (default) | 13,400 | not solved |
+| 166,514,520 | sl 59 × Z_811 | | 6 (default) | 7,100 | not solved |
+| 167,051,448 | psl 73 × Z_859 | | 9 (default) | 4,200 | not solved |
+
+The μ column is the same for every group at about 25; it is N e^{−W/N} with W fixed for (12,10), so it moves only slowly.
+
+**Read-out.** Two solves in 23 groups (about 40 jobs at 2,400 s each plus one shorter run). Both solves came at the bottom of the window
+(N = 165.3 M and 166.1 M). At N ≥ 166.3 M no run got below cost 3, and most stalled at 6–12: the free-orbit misses
+(μ/3 ≈ 8) dominate, as STRUCTURE.md predicts. ORBW=3 did not clearly help: one solve each way, and in pairs the weighted
+run was not systematically better. Round-1's open leads were: many more seeds per group, and ORBW/RESTART variants. This
+round tried ORBW=3 (one run per group), new groups and one seed; RESTART=1 was not run.
+
+**Why I stopped.** About six hours of wall time were used (14:23–19:27 UTC). The untried groups above the record are now the
+ones with n > 500 (for example psl 79 × Z_679, sl 61 × Z_739), and a final batch on four of them (n = 733, 811, 859, 931) gave best
+costs 3–9 with no solve. The next step with a real chance is more seeds on the two bottom-of-window groups above the record
+(sl 73 × Z_427 seed 4, psl 89 × Z_481 seed 4, sl 67 × Z_553 seed 4), and RESTART=1 on the cost-3 groups (sl 67 × Z_553, sl 79 × Z_343,
+psl 167 × Z_73, psl 71 × Z_931). Those would need roughly another 3–4 core-hours. Non-Haar (prod) groups were not run: there is no
+independent checker for them yet.
+
+**Checks.** Every record above passed haar_sym's own full diameter check and an independent checker: `tools/haarcheck_psl`
+(psl 89 × Z_469) and `tools/hcsl` + `tools/hc2` (sl 73 × Z_427, both eccentricities 10). The coordinator should re-check both.
