@@ -211,8 +211,9 @@ K cannot exceed about 13 for large q without near-dual matchings.
 cover × Z_K lift with random matchings gives K = 5, a valid lift with 25 copies (18,200 vertices,
 `calib/q3_polycover_Z5xZ5_M25.txt`, checked by apsp), while K = 6 and 7 stay at 298 and 2,224 unreached pairs; with
 these matchings the smallest c_2 is 4, so K = 6 would need multi-hop walks at the worst pairs. Squad card c2 kept
-random hop labels and designed only the flag voltages; that fails already at K = 3 for q = 4 and 5. At q = 4 an
-annealed polygon cover × Z_4 (DGQ's value) is RESULT_PC4.
+random hop labels and designed only the flag voltages; that fails already at K = 3 for q = 4 and 5. At q = 4 the
+annealed polygon cover × Z_4 reaches DGQ's value exactly (20 copies, 54,600 vertices,
+`calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 is RESULT_PC45.
 
 ## 2. Conjectured, with strong evidence
 
@@ -272,6 +273,7 @@ graph, `calib/checks.txt`, `eq/*_check.txt`):
 | 3 | 20 | **22** (16,016 vertices) | squad c6: one duality + one random matching, flag and hop voltages annealed |
 | 3 | 20 | **25** (18,200) | Z_5 polygon cover × Z_5 (DGQ's reading with K = 5 instead of 4), Z_5-parts fixed, Z_5 × Z_5 voltages annealed (qanneal2) |
 | 4 | 20 | 20 (54,600) | squad c3: tann2 on the exact cost, resumed from the 212-unreached file |
+| 4 | 20 | 20 (54,600) | Z_5 polygon cover × Z_4 (DGQ's reading exactly), Z_4 parts annealed (qanneal2) |
 | 4 | 20 | **22** (60,060) | C_7-equivariant lift (eqlift.py), quotient voltages annealed (qanneal2.c) |
 | 5 | 25 | 14 (109,368) | squad c4: tann3 (tann2 without multi-edges) |
 | 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2 |
@@ -326,6 +328,17 @@ labellings) and the class-0 count of §1.4 say that neither family alone, used i
   opposite elements carry exactly K − 1 values, two-to-one like a quadratic map. Squad card c2 annealed flag voltages
   towards "≥ K − 1 distinct geodesic voltages for every opposite pair" and got nowhere near it (q = 4, K = 4: 13.8%
   of opposite pairs still short; q = 5, K = 5: 36%), and no natural such holonomy is known.
+- **A partial design that produces the "+2" (2026-10-25).** In a polygon cover × Z_K lift with zero holonomy, the
+  Z_5-classes −1 and −2 are reached by the guaranteed walks of §1.2: the labels −λ_k(b) of the q+1 lines b through x,
+  the labels −τ_k(a) of the q+1 points a on y, two composite walks (class −1: τ_1(x) − λ_2(s_1 x) and
+  λ_1(y) − τ_2(s_1^{-1} y)) and the cross terms. Suppose the Z_K-labels of matching 1 come from colourings with
+  r = ⌊(q+1)/2⌋ colours C such that the lines through every point and the points on every line carry every colour
+  exactly twice ("two-to-one" colourings). Then the two neighbourhood families give exactly −C in class −1, and
+  making both composites constant (τ_2 = τ_1 − m_2, λ_2 = λ_1 − m_1, which fixes s_2 = s_1∘π for a label-shifting
+  permutation π of the points) adds the two values m_1, m_2 = Z_K \ (−C). So class −1 is covered for every pair
+  exactly when K = r + 2 = ⌊(q+5)/2⌋, DGQ's factor. But the same choice covers class −2 only up to the single value
+  m_1 + m_2, and classes 0, +1, +2 need other walks (holonomy or cancelling walks). It explains the shape of the
+  formula, not the construction; it is untested.
 - (q+3) | P only for q ∈ {4, 11} among prime powers ≤ 13 (§1.3).
 - (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction adding 4q³ − 2
   vertices to H(q) at the same degree. Not reproduced.
@@ -351,7 +364,7 @@ labellings) and the class-0 count of §1.4 say that neither family alone, used i
 | the same with the two hop matchings equal (each point joined twice to one line, Z_5 voltages 1 and 2: "digons" give class-0 walks at distance ≤ 3) | doubled.py, q = 4 | worse than independent matchings: K = 3: 28 unreached against 4; K = 4: 1,140 against 364 |
 | quotient by the negation of the voltage group (a doubled hop with voltages ±φ, flags 0 or N/2; |GH|(⌊N/2⌋+1) vertices, which fits ⌊Δ/2⌋+1) | one-line proof | useless: the mirror of a walk has the negated voltage, so the quotient has diameter ≤ D exactly when the lift does, and the lift has about twice as many vertices |
 | two dualities as hops (q = 3) | squad c6 | worst of three variants at M ≥ 22 (6 unreached at M = 22, where duality + random and random + random reach 0) |
-| near-duality hop matchings (annealed so that collinear points go to concurrent lines) | squad c1, q = 4, 5 | NEAR_DUALITY |
+| near-duality hop matchings (annealed so that collinear points go to concurrent lines) | squad c1, q = 4, 5; `nearfrac.py` | annealing gets 15.5% (q = 4) and 8.0% (q = 5) of collinear pairs onto concurrent lines (random: 1.5%, 0.8%), and 38% / 50% onto opposite lines (random 75% / 80%); far from a duality, and lifts on them are no better than on random matchings (q = 5: M = 12 for both, M = 14 fails for both) |
 | exact SAT for guaranteed-walk label designs | squad c7 (pysat) | only tiny cases solve: j = 2, q = 2 up to M = 7; q = 3 times out; all solutions non-regular |
 | symmetric random lifts (C-equivariant, §2.2) | eqlift.py | same total of unreached pairs as random lifts; useful only because annealing them is fast |
 | squad round r3-d8 (8 strategies) | §4.2 | calibration only; no structure found |
@@ -375,7 +388,7 @@ diameter", Ars Combin. 25-C (1988) 123–132; notes in research/squads/r2-d8/d6/
 
 ### 4.2 Squad round r3-d8 (2026-10-25; research/squads/r3-d8, cards.md, scoreboard.jsonl)
 
-c1 near-duality hops (NEAR_DUALITY_SHORT); c2 holonomy design for the polygon cover × Z_K (fails at K = 3, above);
+c1 near-duality hops (8–16% of collinear pairs to concurrent lines, no gain in lifts); c2 holonomy design for the polygon cover × Z_K (fails at K = 3, above);
 c3 exact-cost annealing at q = 4 (M = 20 valid; 21: 36 unreached); c4 the same at q = 5 (M = 14 valid; 16: 6
 unreached); c5 statistics of optimized lifts against random ones (largest |z| = 3.6, hop-2 labels slightly more often
 distinct around a point; suggestive only); c6 duality hops at q = 3 (M = 22 valid with one duality and one random
@@ -416,3 +429,6 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 | qanneal.c, qanneal2.c | eq/*.txt | annealing of the Z_M part of a quotient base on the exact cost (qanneal2: moves at failing pairs) |
 | doubled.py | (printed, §4) | polygon cover with equal hop matchings |
 | calib/ | calib/checks.txt | squad r3-d8's valid lifts (q = 3, 4, 5), rechecked with liftdiam and apsp.c |
+| class0_nbw.py | (printed, §1.4) | exact number of non-backtracking class-0 walks per pair in a Z_5 cover |
+| nearfrac.py | nearfrac_out.txt | how close a hop matching is to a duality (squad c1's matchings vs random) |
+| qanneal3.c | eq/*.txt, calib/*.txt | qanneal2 plus equivariant hop swaps, one or two matchings, and moves that keep b mod 5 (polygon cover × Z_K) |

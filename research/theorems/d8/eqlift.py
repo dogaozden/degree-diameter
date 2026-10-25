@@ -6,7 +6,7 @@ and go from a point to a line at distance 5.  The lift of H(q) + hops by Z_M tha
 C x Z_M lift of the quotient base (2N/|C| vertices): edge (orbit i, orbit j) gets voltage (a, b), a = C-offset fixed by
 the geometry, b in Z_M free (random here).  Output: liftdiam base "NB |C| M E" + "u v a b".
 
-usage: eqlift.py q order M seed out.txt [holo=1|0] [hopdist=5|any] [singer|g2]
+usage: eqlift.py q order M seed out.txt [holo=1|0] [hopdist=5|any] [singer|g2] [j=2|1] [poly]
   order: the order of h (must divide q^2+q+1 and give a semiregular action; checked).
 """
 import sys
@@ -96,6 +96,8 @@ def mpow(G, k):
 
 
 GEN = sys.argv[8] if len(sys.argv) > 8 else 'singer'
+J = int(sys.argv[9]) if len(sys.argv) > 9 else 2
+POLY = len(sys.argv) > 10 and sys.argv[10] == 'poly'  # Z_M part = Z_5 polygon cover x Z_(M/5): b = (0|1|2) + 5r
 
 
 def el_int(v):
@@ -237,18 +239,23 @@ def targets(sigma, cs):
 
 s1, c1 = build_matching()
 t1 = targets(s1, c1)
-s2, c2 = build_matching(t1)
-t2 = targets(s2, c2)
-assert len(set(t1.tolist())) == N and len(set(t2.tolist())) == N and np.all(t1 != t2)
+if J == 2:
+    s2, c2 = build_matching(t1)
+    t2 = targets(s2, c2)
+    assert len(set(t1.tolist())) == N and len(set(t2.tolist())) == N and np.all(t1 != t2)
 edges = []
 for i in range(NO):
     x0 = preps[i]
-    for k in list(THR[x0]) + [int(t1[x0]), int(t2[x0])]:
+    for k in list(THR[x0]) + ([int(t1[x0]), int(t2[x0])] if J == 2 else [int(t1[x0])]):
         edges.append((i, NO + int(lrep[k]), int(loff[k])))
 with open(OUT, 'w') as fh:
     fh.write(f'{2 * NO} {order} {M} {len(edges)}\n')
     for e, (u, v, a) in enumerate(edges):
-        is_flag = (e % (q + 3)) < q + 1
+        r = e % (q + 1 + J)
+        is_flag = r < q + 1
         b = rng.randrange(M) if (HOLO or not is_flag) else 0
+        if POLY:
+            assert M % 5 == 0
+            b = (0 if is_flag else r - q) + 5 * rng.randrange(M // 5)
         fh.write(f'{u} {v} {a} {b}\n')
 print(f'q {q} |C| {order} orbits {NO} base {2 * NO} edges {len(edges)} M {M} -> {OUT}', flush=True)
