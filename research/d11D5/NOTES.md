@@ -87,3 +87,19 @@ does not meet every circle of the inversive plane.
   form a regulus with 9 totally isotropic transversals (a 9×9 grid in W(8)), so {δ(L_j)} = h covers x*, and
   {L_j} and {y_j} = (L_j ∩ one transversal) cover l*. Take p_j = L_j ∩ t_{π(j)} for a permutation π. Structured
   starts then cost 122–500 before any annealing (`plus/mkreg.py`, `plus/hline.py`).
+
+### Where the one-pair search stands (end of this session)
+
+- Annealing from many starts (spread switches, regulus switches, polarity switches; σ swaps plus flag swaps; hot-vertex
+  targeting; demand-preserving block moves; a demand penalty) reaches structural cost **2** at best, repeatedly
+  (best_f5.in, best_g61.in, best_u602.in) and 4 in many runs. A cost-2 state has one same-side pair left: either a
+  demand pair (L_i, m ∋ p_i) whose σ-preimages are not collinear, or the fibre of x* or l* (cosets ±1 of
+  (x*, x*), which need some σ⁻¹(L_i) on a switch line). Squad r2 card c2 tried all pairs of moves around the failing
+  pair of best_f5.in (185,814 first moves × the second moves of the 11 best, 752,811 in all), and nothing went below 2.
+- Even at structural cost 0 a second stage remains: the flag cocycle ν must satisfy the geodesic parity
+  OR-constraints. With σ fixed to the polarity δ, simulated annealing on plain W(8) stalls at 9 violated constraints
+  (`plus/orsolve.c`, 900 s). The previous session of this job also stalled at 3 with a polarity and a δ-invariant ν.
+  The DM session reached 0 only by annealing σ together with ν (dmfast SWAPP). So a completed +1 base would need joint
+  (σ, ν) annealing that keeps the structural cost at 0.
+- Counting bound for this family: the coset +1 classes of a point x are covered only by J+3 walks (≤ 585 endpoints)
+  and 2+J+1 walks (≤ 648), so n ≤ 1,233 points per side, i.e. order ≤ 14,796. The 7,020 graph uses 47% of that.

@@ -17,3 +17,17 @@ goal moved to > 7,020. Cards (scoreboard: r1-d11D5/scoreboard.jsonl):
 - c8 augmentation of the 7,020 graph: every one of its 38,610 edges is critical (each deletion creates a distance-6 pair), and 20,000 twin-vertex attachments all failed.
 Kept: nothing from the cards directly. c8's "every edge critical" pointed Opus to non-GQ bases for the
 doubled-matching lift: W(8) plus one extra point-line pair (586 + 586), which would give 7,032 (see research/d11D5/NOTES.md).
+Late r1 lines: c2 (invariant Z3 cocycles under tori/Singer/Sylow subgroups) best 8,356; c3 (σ-exemption + joint
+annealing) 6,154; c6 proved that no lift of the 1,782 graph can work (568 vertices lie on no 4-cycle). Squad added
+nothing directly. Opus's own lead (DM lift over W(8) + one extra pair) came from reading c8's "every edge is critical".
+
+## 2026-10-25 17:05 UTC, job cell-11-5 (session_014q81WuY3QXemLJTaF8MiA2), goal: structural cost 0 for W(8)+1 (7,032), round r2-d11D5
+
+Four cards only: the machine was CPU-bound by Opus's annealers. Each card got 1 process. Scoreboard: r2-d11D5/scoreboard.jsonl.
+- c1 tabu search from the cost-2 state best_f5.in: never below 2; flag swaps cost +170 to +240 per move.
+- c2 systematic move pairs on best_f5.in and best_g61.in: 185,814 first moves × 752,811 second moves, best stays 2.
+- c3 multi-start over regulus-switch choices (15,731 starts over 4,160 hyperbolic lines): best start 68, annealed to 4.
+- c4 exact σ-CSP with the base fixed: demand-only SAT is satisfiable but moves 585 points (cost 1,450); every
+  demand-preserving change of up to 6 points (1,442 of them) costs ≥ 34; restricted annealing stays at 2.
+Kept: the cost-2 states are deep local minima. Every independent route (Opus's annealers too) ends at one failing
+demand pair (L_i, m ∋ p_i) or the fibre of x*/l*. The job stopped here (see research/squads/cells/d11D5.md).
