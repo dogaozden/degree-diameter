@@ -102,3 +102,10 @@ n=2501008 edges=18730056 degree min=12 max=15 bipartite=yes diameter=7
 RESULT VALID d=15 D=7 n=2501008
      3892.90 real     28819.05 user       342.19 sys
           1432535040  maximum resident set size
+# (14,7) typed + mirrored (third cell-14-7 session): tm_build.py build on hex_q11.bin (sha256 e60db369...) and d14D7_hex11_typedmirror768_n1789588.sol (sha256 45659e44151058d5a50e09fe3cec7ab3d55198436ce820bf479786e52cff6518); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+e972387619916f3454e8fa74c14807cb0c4c9c4c0243b0e5cb912bdf73f2008e  t14m.edges
+-- apsp_mt t14m.edges 14 7 8, rerun (Sun Oct 25 06:40:37 PDT 2026)
+n=1789588 edges=12518402 degree min=13 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1789588
+     1478.71 real     10987.00 user       130.77 sys
+           926105600  maximum resident set size
