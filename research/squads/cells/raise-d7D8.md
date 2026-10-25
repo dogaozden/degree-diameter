@@ -198,3 +198,53 @@ is a weak lever in this group. Phase B tests the four lowest-min α with 40 minu
 | B4 | sl 11 × Z37 | 12 (min 9) | 204 | 2400 s |
 
 (results appended below as they finish)
+
+### Phase B results (2026-10-25, 15:51–16:31 UTC; not solved)
+
+| queue | ASEED | seed | best cost | evals |
+|---|---|---|---|---|
+| B1 | 18 | 201 | **1** | 8.6 × 10⁷ |
+| B2 | 5 | 202 | **1** | 8.6 × 10⁷ |
+| B3 | 39 | 203 | **1** | 8.5 × 10⁷ |
+| B4 | 12 | 204 | **1** | 8.6 × 10⁷ |
+
+Four different automorphisms, all stop at cost 1, and so do the default α (phase A, two seeds). Across the group,
+about 6 × 10⁸ evaluations at cost ≥ 1 and no cost 0.
+
+## Conclusion of round 2 (stopping)
+
+**No record. Nothing new to verify or add to research/frontier/sols/.** The cell does not move with the orbit method
+in the window 47,881 … 48,840 that round 1 and this round covered:
+
+- **sl 11 × Z37** (N = 48,840, the largest-μ window candidate that is still a real record: 2N = 97,680): a floor at cost 1,
+  seen under 6 α and 5 seeds (~1.2 × 10⁹ evaluations in total across the phases).
+- **psl 11 × Z73, psl 11 × Z74** (same plateau at cost 3 as round 1).
+- Round 1's other groups (pgl 9 × Z67, sl 9 × Z67, psl 9 × Z134, prod psl 3 × psl 3 × Z333) were worse.
+
+The α choice is a weak lever here (random screens over 40 α show the same cost distribution). Cost 1 and cost 3 are
+flat floors, not slow annealing: more seeds, longer time or a different α do not lower them.
+
+**Why I stopped:** the brief allows stopping when the cell will not move with these methods. Here there are three
+independent floors (round 1's psl 11 × Z73 and round 2's sl 11 × Z37 and psl 11 × Z74 at cost 3 and 1, each across
+several seeds), and the groups with a lower μ in the window were screened and are worse. I am not certain no α or
+group will solve, so the statement is about this method's reach, not a proof.
+
+**Not tried (for the coordinator):**
+1. **Diagnose the floor.** Dump the uncovered elements at the cost-1 state of sl 11 × Z37 and check whether they are
+   α-fixed elements (C_G(α) × {0}, |Fix| = 11) that no word of the allowed length reaches. If so, the group is blocked
+   for every α of this type, and only f ≠ 1 or a larger |Fix| change helps. The tool has no uncovered dump; adding one is
+   the first step (haar_sym.c has the uncovered lists in cost_w).
+2. **Fixed generators other than e** (f = 4 with k = 3): S = 4 α-fixed elements ∪ one orbit. Fix(α) is only 11
+   elements, which probably make words collide. Not run.
+3. **SL(3,q) or other groups with small centralizers of order-3 elements** (STRUCTURE.md §7.3): not implemented.
+4. **Voltage lifts with k ≥ 2 orbits** (base multigraph of 7-regular bipartite multigraph on k+k vertices, voltages
+   in a non-abelian group). The route-chart lift (BEAT_16_5_SQUAD.md) needs Δ = 4q and does not apply to Δ = 7. The
+   generic voltage lift has the same first-moment λ = W/N, so I do not expect it to beat the coupon wall, but it was
+   not tested.
+
+## Files on this branch (round 2)
+
+- `research/squads/cells/raise-d7D8-r2/jobs/` (A1–A4, B1–B4 job files) and `runs/` (all logs, RESULT lines).
+- `research/structured/haar_sym.c`: `ASEED=<n>` env override for the automorphism seed (default unchanged; the
+  default run reproduces the 0xC0FFEE α, index 932). Only addition.
+- The α screen output (`aseed_screen_sl11_37.txt`) is in the scratchpad, not in git.
