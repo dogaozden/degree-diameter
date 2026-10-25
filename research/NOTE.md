@@ -4,6 +4,10 @@ Authors: TBD
 
 Draft, 2026-10-18.
 
+> **Superseded (2026-10-25):** see `research/theorems/POLISHED.md` and the revised `research/geometry/geometry.tex`.
+> In particular §7 below is out of date: Theorem B with stand-ins and Corollary C1 (directly in $W(3,q)$) are now Lean-checked,
+> and open problem 3 is settled (at most $q^2-q+2$ shadow lines).
+
 ## Abstract
 
 Let $n_b(\Delta,4)$ be the largest order of a bipartite graph with maximum degree $\Delta$ and diameter 4. When $\Delta-1$ is a prime power, the incidence graph of a generalized quadrangle of order $(\Delta-1,\Delta-1)$ meets the bipartite Moore bound. For the other degrees we add copies of vertices to the incidence graph of a generalized quadrangle (GQ). We prove three results.

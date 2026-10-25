@@ -39,7 +39,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (11, 4) | 1,734 | **1,782** | +2.8% | finite geometry | ✓ |
 | (13, 4) | 3,064 | **3,146** | +2.7% | finite geometry | ✓ |
 | (15, 4) | 4,946 | **5,070** | +2.5% | finite geometry | ✓ |
-| (16, 4) | 5,134 | **5,440** | +6.0% | orbit search (Haar) | ✓ |
+| (16, 4) | 5,134 | **5,440** | +6.0% | finite geometry (Singer orbits) | ✓ |
 | (4, 5) | 160 | **162** | +1.2% | evolutionary search | ✓ |
 | (5, 5) | 336 | **354** | +5.4% | evolutionary search | ✓ |
 | (7, 5) | 1,134 | **1,152** | +1.6% | Haar graph, hand-picked group | ✓ |
