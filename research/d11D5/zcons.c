@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
                 if (nu < 64) u[nu++] = &recs[k]; else always = 1;   /* huge group: treat as fine (counted below) */
             }
             if (always) nalways++;
-            else if (nu == 1) { fatal++; if ((s < half) == (recs[i].t < half)) fatal_same++; else fatal_opp++; }
+            else if (nu == 1) { if (dumpf) fprintf(dumpf, "F %d %d %d %d\n", s, recs[i].t, recs[i].c, bdist[recs[i].t]); fatal++; if ((s < half) == (recs[i].t < half)) fatal_same++; else fatal_opp++; }
             else if (dedup && recs[i].t < s) { /* duplicate of the reversed group */ }
             else if (nu == 2) { if (keepd[bdist[recs[i].t]]) add_eq(u[0], u[1]); }
             else if (nu <= MAXOR) {
