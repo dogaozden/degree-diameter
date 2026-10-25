@@ -4,3 +4,33 @@ alpha: conj by mat(24,12,20,4) (index 20523), z -> 58 z on Z_163
 ORBIT k=3 m=2 f=2: |Fix(alpha)| = 29 (+e); mu = 28.16, mu/k = 9.39, fixed-point misses ~ 0.58
 start cost=303
 t=30 steps=982 evals=7857 cost=18 best=18 T=0.53
+t=60 steps=1930 evals=15441 cost=15 best=15 T=0.19
+t=90 steps=2895 evals=23161 cost=15 best=15 T=0.15
+t=120 steps=3820 evals=30561 cost=15 best=15 T=0.15
+t=150 steps=4812 evals=38497 cost=15 best=15 T=0.15
+t=180 steps=5783 evals=46265 cost=9 best=9 T=0.15
+t=210 steps=6758 evals=54065 cost=9 best=9 T=0.15
+t=240 steps=7756 evals=62049 cost=9 best=9 T=0.15
+t=270 steps=8732 evals=69857 cost=9 best=9 T=0.15
+t=300 steps=9725 evals=77801 cost=9 best=9 T=0.15
+t=330 steps=10680 evals=85441 cost=16 best=9 T=0.70
+t=360 steps=11668 evals=93345 cost=18 best=9 T=0.25
+t=390 steps=12628 evals=101025 cost=13 best=9 T=0.15
+t=420 steps=13618 evals=108945 cost=13 best=9 T=0.15
+t=450 steps=14578 evals=116625 cost=13 best=9 T=0.15
+t=480 steps=15522 evals=124177 cost=9 best=9 T=0.70
+t=510 steps=16484 evals=131873 cost=9 best=9 T=0.25
+t=540 steps=17468 evals=139745 cost=9 best=9 T=0.15
+t=570 steps=18470 evals=147761 cost=9 best=9 T=0.15
+t=600 steps=19418 evals=155345 cost=9 best=9 T=0.15
+t=630 steps=20411 evals=163289 cost=20 best=9 T=0.70
+t=660 steps=21366 evals=170929 cost=15 best=9 T=0.25
+t=690 steps=22329 evals=178633 cost=15 best=9 T=0.15
+t=720 steps=23284 evals=186273 cost=15 best=9 T=0.15
+t=750 steps=24243 evals=193945 cost=15 best=9 T=0.15
+t=780 steps=25237 evals=201897 cost=9 best=9 T=0.70
+t=810 steps=26185 evals=209481 cost=9 best=9 T=0.25
+t=840 steps=27117 evals=216937 cost=9 best=9 T=0.15
+t=870 steps=28108 evals=224865 cost=9 best=9 T=0.15
+t=901 steps=29084 evals=232673 cost=9 best=9 T=0.15
+t=931 steps=30088 evals=240705 cost=16 best=9 T=0.69
