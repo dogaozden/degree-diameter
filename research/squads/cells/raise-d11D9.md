@@ -175,3 +175,13 @@ groups as not run.
   edge-list sha256 459b3467e7b17e228a9f11fedd05fa6a51e4fb16258756aaab1833d691ce352b. Log: runs/d11D9_sl_43_109_orbw3_s3.rebuild.txt.
 - Caveat: one success is not a measured advantage for ORBW=3 (STRUCTURE §8 says the same about (11,8)); the second
   ORBW=3 run (sl 59 × Z43, μ 30.2) was still running at this commit.
+
+### Final status (19:15 UTC, round 2)
+
+- sl 59 × Z43 (ORBW=3, seed 1, μ 30.2): full 8000 s, not solved. Best 6 at 465k evals (|Fix| = 59).
+- No background runs left. Round 2 ends with the record at **17,323,152** (sl 43 × Z109), above round 1's 17,169,600.
+- Best open leads for a next round: (a) more ORBW=3 seeds on sl 43 × Z109-like groups at μ 23–26 (sl 43 solved at 434k evals with ORBW=3,
+  so the cost-2/6 stalls on sl 41 × Z127 (μ 26.6, best 8) and prod sl 4 × sl 13 × Z67 (μ 28.0, best 6) are the next thing to retry with ORBW=3);
+  (b) sl 59 × Z43 (μ 30.2) and prod sl 4 × sl 13 × Z67 need more than 8000 s; (c) prod sl 9 × sl 23 × Z1 (μ 26.5) stalled at 14 with |Fix| = 431: a
+  cyclic factor (or k = 5) is probably needed there.
+- Not tried in round 2: the faster orbit evaluation (STRUCTURE §7.4), k = 5 at this order, and groups with n in 2 or more primes ≡ 1 (mod 3).
