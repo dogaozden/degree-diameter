@@ -109,3 +109,5 @@ median says it would not find anything; not run.
 - PSL(2,17) × Z_95 (same N, |Fix| = 44, α = conj × z ↦ 11z): four seeds × 1200 s launched next.
 - Tooling note: a Monitor that waits with `pgrep -f <pattern>` matches its own command line and never exits. Wait on
   the RESULT line in each log instead.
+- PSL(2,17) × Z_95 (N = 232,560, |Fix| = 44): four seeds × 1200 s, ~3.5·10⁶ evaluations each. Best costs 17, 17, 20, 26. **Not solved.**
+- PSL(2,13) × Z_215 (N = 234,780, |Fix| = 29, 5 trivial, 43 ≡ 1 mod 3): four seeds × 1200 s launched next.
