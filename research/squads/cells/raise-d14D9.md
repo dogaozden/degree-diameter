@@ -63,6 +63,21 @@ Note: `tools/orbq.sh` and `pool.sh` are not executable in this checkout; run the
 Wave-1 read: 1 of 4 solved, and the three misses ended far from 0 (best 24–54), so a 30-minute run at μ≈14.3 is
 not reliable. Solve speed depends on the group more than on μ alone. The solved group had the largest |Fix| (59).
 
+### Waves 3 and 4 (queued by `driver2.sh` / `driver3.sh`, 1800–3600 s, seed 1)
+
+| group | N | 2N | μ | \|Fix\| | result |
+|---|---|---|---|---|---|
+| psl 109 × Z91 | 58,918,860 | 117,837,720 | 18.0 | 53 | **SOLVED** at 6,609 evals (1,524 s), haar_sym OK, haarcheck_psl VALID. **New record.** |
+| sl 389 × Z1 | 58,863,480 | 117,726,960 | 17.8 | 389 | **SOLVED** at 8,265 evals (3,193 s), sub-record (below 117,837,720); SL checkers pending |
+| psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | – | running, best 6 at t=1423 |
+| psl 59 × Z577 | 59,234,820 | 118,469,640 | 19.7 | – | running, best 18 |
+| sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | running, best 18 |
+| psl 121 × Z67 | 59,343,240 | 118,686,480 | 20.2 | – | running |
+| psl 53 × Z787 | 58,562,244 | 117,124,488 | 16.4 | – | running at 3600 s budget, best 18 |
+| psl 47 × Z1129 | 59,204,208 | 118,408,416 | 19.5 | – | running, best 12 |
+| psl 43 × Z1477 | 58,684,164 | 117,368,328 | 16.9 | 42 | running, best 18 |
+| psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | 29 | not solved: best 12, 6,441 evals in 1800 s |
+
 ### Wave 2 (queued by `driver.sh` from `$SP/q`, 1800 s, seed 1; the driver keeps 4 searches running)
 
 | group | N | 2N | μ | \|Fix\| | status |
