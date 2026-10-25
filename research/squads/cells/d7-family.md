@@ -17,7 +17,7 @@ The three constructions (all on the split Cayley hexagon H(q)):
 | cell | master | this job | gain | construction | check |
 |---|---|---|---|---|---|
 | (16,7) | 4,052,108 | **4,053,576** | +1,468 | typed HDHDH of H(13) + mirrored 813 on the four non-friendly transitions + relaxed point sets | apsp_w all pairs VALID |
-| (14,7) | 1,789,588 | **1,789,917** | +329 | typed HDHDH of H(11) + mirrored 768 + relaxed line and point sets | CHECK14 |
+| (14,7) | 1,789,588 | **1,789,917** | +329 | typed HDHDH of H(11) + mirrored 768 + relaxed line and point sets | apsp_w all pairs VALID |
 | (10,7) | 225,152 | **225,156** | +4 | mirrored surgery, 3 copies of H(8), mirrored set 231 (squads r1 c5, r2 c1) | apsp_mt all pairs VALID |
 | (13,7) | 1,064,472 | — | | three levels: typed levels give nothing; mirrored set of H(11) not improved (two squad cards) | |
 | (11,7), (12,7) | 413,180, 693,500 | — | | H(9) spread construction; typed / relaxed cannot beat it (bound below) | |
@@ -148,7 +148,7 @@ sets.
   probe3.py counts, for every candidate (a, y, M) (y collinear with exactly one base point a, line M meeting exactly
   the spread line that becomes sigma(a)), whether the base points of each type at distance 4 / 6 from y fit into the
   usable spread lines of that type at distance 4 / 6 from M: 0 feasible at q = 5 (2,060 candidate y, 3,300 lines M),
-  q = 7 (15,874 y, 18,535 M) and q = 8 (15,338 y, 35,051 M). A partner would have to be annealed together with the
+  q = 7 (15,874 y, 18,535 M), q = 8 (15,338 y, 35,051 M) and q = 11 (99,060 y; partnerscan.py) PARTNER13. A partner would have to be annealed together with the
   extra points (as an extra point that pins sigma of its base point instead of wasting a spread line).
 - **Exhaustive moves on the mirrored configurations.** research/d7family/addscan.py tests every (extra point, line) pair
   for a single addition by the exact type condition (validated: after deleting the last extra point of the q = 5 state
@@ -199,7 +199,7 @@ For the coordinator, in order:
    research/d7family/checks/d16D7_hex13_typedrelax_n4053576.check.txt (rebuild with tmL_build.py, byte-identical edge
    list; full all-pairs apsp_w VALID; apsp_mt would take about 9 h on 4 threads).
 2. (14,7) 1,789,917: research/frontier/sols/d14D7_hex11_typedrelax_n1789917.sol, check file of the same name
-   (STATUS14). Fallback 1,789,858 (d14D7_hex11_typedrelax_n1789858.sol, full check VALID).
+   (full all-pairs apsp_w VALID, rebuild byte-identical). Earlier version 1,789,858 (d14D7_hex11_typedrelax_n1789858.sol, full check VALID).
 3. (10,7) 225,156: research/frontier/sols/d10D7_hex8_mirror231_n225156.sol (multi_sol.py build; apsp_mt VALID).
 Nothing new for (7,7), (9,7), (11,7), (12,7), (13,7); (15,7) not touched. The reasons are above (three levels: only
 the mirrored set counts and it is add-maximal at every q tried; H(9): the 1-defective bound 7,307 against 7,300).
