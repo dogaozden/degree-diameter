@@ -1,0 +1,20 @@
+# (10,7) n = 225152: three copies of H(8) (research/d13D7/multi.c, r = 1) with a mirrored surgery set of 229 points:
+# the cell-13-7 base set research/d13D7/q8/R217_q8_idx.txt (branch claude/bipartite-13-7-rhq5z1) plus 12 extra points,
+# mirrored on its 513-line spread research/d13D7/q8/S_q8_spread.txt (research/cell147/mirror/README.md).
+# H(8): research/d13D7/hexgen2.c (GF(8)).  Characteristic 2: distances by BFS (mirror_sa6.py seed 51, mirror_build3.py).
+# Session 01S9fS5Zi4bymqvTfraD7hJx, 2026-10-25.  State: research/cell147/mirror/configs/state_q8_F12.npz.
+# Solution: research/frontier/sols/d10D7_hex8_mirror229_n225152.sol (multi_sol.py build: IDENTICAL edge file).
+# sha256: 12a145cd7dd241c585002630c04f639cb71a763db85c4892c71b10454572063a  e225152.txt ; 66a11ff04cfeb03d5e64b490352da1662717dd2be4f6025e358b297c0ee486e5  hex_q8.bin
+-- multi.c checks (non-collinear, local duality, non-concurrent) and BFS spot check:
+hub graph attempt 0: OK
+graph: n = 225152, edges = 1125760, max degree 10
+wrote e225152.txt
+q=8 r=1 m=229 n=225152 maxdeg=10 sources=2856 worst_ecc=7 bad=0
+-- full all-pairs check: research/lifts/coordinator_check/apsp_mt.c (BFS from every vertex, no symmetry assumed):
+   apsp_mt e225152.txt 10 7 1
+n=225152 edges=1125760 degree min=10 max=10 bipartite=yes diameter=7
+RESULT VALID d=10 D=7 n=225152
+
+real	1m1.147s
+user	1m0.502s
+sys	0m0.031s
