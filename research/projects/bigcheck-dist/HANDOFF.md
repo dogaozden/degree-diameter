@@ -10,7 +10,7 @@ Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3 (draft PR #318
 - Goal 3 (new constructions in the big D = 8..10 cells): no record yet. The four D = 8 cells we do not hold are
   Delorme's hexagon compounds (5⌊(q+5)/2⌋ copies of H(q)); searched hexagon lifts reach only ~20 copies at q = 5 and
   ~18 at q = 7 (Delorme 25 and 30), so they need an algebraic construction we do not have (d8/NOTES.md).
-  (10,8) by a Haar orbit search is still running. The two unrecorded D = 10 Haar graphs from other sessions,
+  (10,8) by a Haar orbit search reached cost 9, not 0 (runs/d10D8_haar/). The two unrecorded D = 10 Haar graphs from other sessions,
   (15,10) 2,467,618,800 and (16,10) 4,386,127,200, pass an independent bcd check (checks/d10_haar/).
 
 ## Done
@@ -52,20 +52,25 @@ shift, with its own tests and HANDOFF.md. Its "next steps" (implicit level cover
 by bcd (lift mode, -DWB=1). The two checkers agree on its test graphs (README §4). Both branches add
 research/projects/bigcheck-dist/HANDOFF.md, so a merge needs the two handoffs combined.
 
-## Running / next
-- /tmp/hs/runs: (10,8) Haar orbit search on PSL(2,7) × SL(2,8) × Z7 (N = 592,704; cell-10-8's better group), seeds
-  21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC; 24 (plain, 06:30)
-  and 25 (RESTART=1, 07:35, 1.4 h). Best cost so far 9 (s21), 10 (s24). Earlier PSL(2,23) × Z97
-  seeds 11-13 stopped at best 12, 9, 10. Request for more cloud seeds: research/squads/requests/2026-10-25T0550-d10D8-haar.md.
-- Theory (d8/theory/NOTES.md, done): no construction. Proved limits: with intact copies the always-present routes
+## State at the end of the session (09:05 UTC): nothing running
+- (10,8) Haar orbit search (runs/d10D8_haar/README.md): PSL(2,23) × Z97 seeds 11-13 and PSL(2,7) × SL(2,8) × Z7
+  seeds 21-28 (cell-10-8's better group; about 48,000 thread-seconds, 6.9·10⁷ evaluations) all stopped above 0; the best
+  cost was 9. The request for more cloud seeds (research/squads/requests/2026-10-25T0550-d10D8-haar.md) now says the odds
+  look low.
+- Theory (d8/theory/NOTES.md): no construction. Proved limits: with intact copies the always-present routes
   give every point or every line at most 2q+9 voltages (Delorme needs 25, 30 at q = 5, 7); a "5 levels × k sheets"
   lift cannot be certified by them for k ≥ 6; SL(3,q)-invariant incidence voltages are coboundaries; ≤ 10 copies
   "for free" (search). Delorme's graphs therefore need pair-specific routes, most likely bundles (the q+1 geodesics
   between opposite elements) with incidence voltages that take about (q+3)/2 values per bundle.
-- Done: independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates, both VALID
+- Independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates, both VALID
   with diameter 10 (checks/d10_haar/): (15,10) 2,467,618,800 (SL(2,149) × Z373, branch
   claude/bipartite-d15-d10-search-h3rdep, sha256 6430a3a4…, WB=8, 1,936 s) and (16,10) 4,386,127,200 (SL(2,151) × Z637,
   branch claude/bipartite-16-10-cell-kras4l, sha256 f2a70a0d…, WB=1, 1.6 GB, 5,286 s; before this checked only by that
-  session's hcheck5).
-- Open: a structured (algebraic) voltage design for D = 8 hexagon lifts; reconstruct Delorme's 5⌊(q+5)/2⌋ family, then
-  try hub surgery as at D = 7.
+  session's hcheck5). For the coordinator to record if it agrees.
+
+## Next steps (for a fresh session)
+- Checker: lift mode for GF(p^k) matrix groups and direct products (needed to check a PSL(2,7) × SL(2,8) × Z7 Haar
+  graph in lift mode; explicit mode works now, 1.19 M vertices). Base automorphisms for matrix-group lifts.
+- D = 8 hexagon cells: find the bundle mechanism of theory/NOTES.md §9 (incidence voltages, breaking SL(3,q), that
+  split every bundle into about (q+3)/2 values) or the quotient designs of §9.1; then try hub surgery as at D = 7.
+  Search over voltages alone (x2s.c) tops out near 80 % of Delorme's copy count at q = 5.
