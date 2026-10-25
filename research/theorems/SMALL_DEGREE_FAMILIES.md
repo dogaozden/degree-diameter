@@ -257,6 +257,13 @@ whose action order stays bounded can therefore hold only finitely many cells of 
 needs o → ∞, at a rate of at least about D log(Δ−1) / ((Δ−1) log(2D+1)). This is the standard growth argument for
 virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made explicit.
 
+*Prior work.* I did not find the fibre bound of §2.3 in the sources I could check, but I could not read them all.
+- Dougherty and Faber (arXiv:math/9412223) treat abelian Cayley graphs.
+- Macbeth, Šiagiová and Širáň, Discrete Math. 312 (2012) 94–99, "offer a result for Cayley graphs of metacyclic
+  groups for general degree and diameter". I could read only the abstract (the repository returned HTTP 403), so
+  its form is unknown to me.
+- Treat the growth corollary as known in spirit, and the fibre bound as new here unless that paper contains it.
+
 What the records show:
 - The record groups do use large action orders: o = 11 at (3,9), 35 at (4,9), 32 at (4,10).
 - The Δ = 4 records use a different group type at each D (§3.1). So a row-covering family, if one exists, cannot be
@@ -440,11 +447,13 @@ and in control groups of the same order that have no solution.
     F = 40 against a maximum of 41. In Z43 ⋊ Z7 the solutions spread over the top 71 %.
   - So |W_J| decides which groups can solve, while which S solves depends on collisions under reduction mod the
     prime 𝔭.
-- **The Δ = 4 records sit at the same N/B_j.** B_j = k · min_J |W_J| is the fibre bound at the record's own
-  j-pattern (`recordbound.py` → `runs/recordbound_d4.txt`).
-  - Loz's (4,9) Z71 ⋊ Z35 has N/B_j = 0.267, and our (4,10) Z97 ⋊ Z64 has 0.269.
+- **The Δ = 4 records sit in a narrow band of N/B_j.** B_j = k · min_J |W_J| is the fibre bound at the record's
+  own j-pattern (`recordbound.py`, `recordbound_sqf.py` → `runs/recordbound_d4.txt`).
+  - Loz's (4,8) Z91 ⋊₅₁ Z12 has N/B_j = 0.379. Its modulus is composite but squarefree, so the ring is
+    Z[x]/(Φ₂Φ₃), of rank 3, because r has order 2 mod 13 and 3 mod 7.
+  - Loz's (4,9) Z71 ⋊ Z35 has 0.267, and our (4,10) Z97 ⋊ Z64 has 0.269.
   - Loz's (3,9) Z23 ⋊ Z11 has 0.575, because the Δ = 3 bound is tighter: there is only one free a-part.
-  - If the Δ = 4 ratio is stable, B_j/N ≈ 3.7 is a usable target when choosing groups. Two data points are only
+  - If the Δ = 4 band holds, a group needs B_j/N of roughly 2.5–4 for some pattern. Three data points are only
     suggestive.
 - **A central involution.** The record groups of even order mostly have centre exactly C2 or containing one:
   - Conder's (3,7), our (3,8), all three (4,7) groups, Loz's (4,8), our (4,10) and (5,8);
@@ -486,7 +495,7 @@ Why a screen is meaningful:
 | (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
 | (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
 | (4,9) | Haar, every SmallGroup | RESULT_49 | RESULT_49B |
-| (4,7) | Haar, every SmallGroup, 2 s anneal | RESULT_47 | RESULT_47B |
+| (4,7) | Haar, every SmallGroup, 2 s anneal | orders 449–500: all 1,936 groups, 1,365 annealed; order 448: RESULT_448 | no solution; best cost 4 at C2 × (C19 : C12) (456) and C13 : C36 (468), both exhaustively negative (2 and 1 vertices short; `runs/d4D7_sg*_exhaustive.txt`) |
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
 | (3,10) | squad r2: 3+3 bases, orders 134–145; 4+4 bases, 101–106 | ~150 groups | best cost 2 (b33_0 over C17 : C8, re-anneal), 4 (K3,3 over C17 : C8, then exhaustive) |

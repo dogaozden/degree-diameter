@@ -3,3 +3,5 @@ Delta=4 D=10 k=64 o=32 j=(0, 20, 51, 1): B_j = k*min_J|W_J| = 23104; N = 6208, N
 Delta=4 D=10 k=64 o=32 j=(0, 1, 51, 20): B_j = k*min_J|W_J| = 23104; N = 6208, N/B_j = 0.269  (2 s)
 Delta=3 D=9 k=11 o=11 j=(0, 1, 6): B_j = k*min_J|W_J| = 440; N = 253, N/B_j = 0.575  (0 s)
 Delta=4 D=9 k=35 o=35 j=(0, 1, 13, 19): B_j = k*min_J|W_J| = 9310; N = 2485, N/B_j = 0.267  (1 s)
+Delta=4 D=8 Z91 x|_51 Z12: orders of r mod primes {7: 3, 13: 2}, ring Z[x]/(prod Phi_o, o in [2, 3]) of rank 3, period 6; j=(0, 1, 4, 9): B_j = 2880; N = 1092, N/B_j = 0.379
+Delta=4 D=9 Z71 x|_2 Z35: orders of r mod primes {71: 35}, ring Z[x]/(prod Phi_o, o in [35]) of rank 24, period 35; j=(0, 1, 13, 19): B_j = 9310; N = 2485, N/B_j = 0.267
