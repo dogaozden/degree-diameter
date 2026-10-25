@@ -67,3 +67,18 @@ slots in levels j and j'). A hub has one slot per level, so a hub can serve one 
 links. In the (15,7) construction the four bottleneck friendly sets are R_H at 0->2 and 1->2 and R_L at 2->3 and 2->4,
 all touching level 2, so the number of constrained elements in all four sets together is at most the number of hubs of
 each colour (about 10,000).
+
+## In practice (15,7), 2026-10-25
+
+| graph | P0 / P1 (points) | S3 / S4 (lines) | pairs | hubs | n |
+|---|---|---|---|---|---|
+| unrelaxed (master's sets) | 8,645 / 8,645 | 8,246 / 8,246 | 0 | 10,181 + 9,782 | 2,500,147 |
+| first relaxed sets, masks from master's line sets | 8,976 / 8,975 | 8,518 / 8,556 | 2,863 | 10,511 + 10,054 | 2,500,749 |
+| partner covers designed into the other friendly sets | 9,058 / 9,062 | 8,694 / 8,697 | 3,898 | 10,594 + 10,230 | 2,501,008 |
+| private covers (design3.py), alternating runs with protect lists | 9,117 / 9,116 | 8,752 / 8,760 | 4,370 | 10,652 + 10,288 | 2,501,124 |
+
+Limits seen: without any coverage condition the ILS reaches 9,306 points; under the order-133 group the orbit-level
+1-defective optimum found is still 65 orbits (8,645), so symmetric sets do not help here. What remains is competition
+for level-2 slots: every unserved demand in the last rounds had exactly one option, taken by another demand.
+Stars (an element with two partners) do not work: the line-side hub of (r, source level) would need a slot incident with
+both partners.

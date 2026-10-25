@@ -18,6 +18,7 @@ for it in range(20):
     if r.returncode == 0: break
     assert r.returncode == 3, r.stderr
     drops = {}
+    with open(out + '.unserved.all', 'a') as fa: fa.write(open(out + '.unserved').read())
     for line in open(out + '.unserved'):
         j, j2, a, b = map(int, line.split()); k = (j2 - j) % 7
         drops.setdefault((j, k), set()).add(a)          # drop the smaller id of the pair (either end works)
