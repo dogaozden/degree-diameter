@@ -104,3 +104,12 @@ Opus: q = 11 is stuck at 240 for every group tried (also the sub-rotations of si
 phaseils with sub-orbits of size 7 at q = 13 gives 294 (41 x 7 + 7 fixed): (16,7) 4,023,516 (quick check). Squad
 assessment: no gain at q = 11 this round (the 240 sets look like strong local optima of this family); the transfer cards
 gave three more cell improvements.
+
+Late reports and Opus follow-up (01:30–02:10 UTC): c2 (LNS around 240, 2.8M steps, exact refills, branch and bound on
+the union of the two 240 sets) found nothing above 240; every outside point is orthogonal to at least 8 set points.
+**c6 q = 9: 150 flags** from an order-5 isometry of X4 = -8 X0 over GF(9) (146 from earlier seeds); Opus built and
+checked **(11,7) 398,880** and **(12,7) 664,900** (uhcheck all sources + apsp_cyc VALID). Opus: isometries of order
+11k (unipotent part; 45 classes sampled) give at most 221 at q = 11. The 240 isometry was recovered from its
+permutation: g = 1 on the anisotropic plane A and a complex structure J (J^2 = -1) on the hyperbolic V4; the explicit
+element (left multiplication by [[0,1],[-1,0]] on V4 = M2(F_q), det form) reproduces 240 in one 90 s run, but gives
+only 88 at q = 7 (as card c5) and 206–218 at q = 13 (294 stays). Scripts: research/cell147/units/uni11/.
