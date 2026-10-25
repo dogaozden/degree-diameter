@@ -129,3 +129,14 @@ so no commuting fixed pair. The price is |Fix(α)|·e^(−λ/7) fixed-point miss
     mixing is the risk. 40-second smoke test: cost 1996, far from the k = 3 starts, so a long run is needed to judge.
   - pgl/sl 13 × Z1849 (N 4,038,216 family), psl 13 × Z3697 (N 4,037,124): same idea, not run yet.
 - Runs: psl 13 × Z3683, k = 7, f = 1, seeds 1 and 2, 5,400 s each.
+
+### Batch 3 result: k = 7 is dead for Δ = 8 (stopped after 630 s on both seeds)
+- psl 13 × Z3683 (|Fix| = 6, expected misses 1.3): cost stuck at exactly 1996 for 1.8e5 evaluations, both seeds. A constant
+  cost means the moves change nothing: a single α-orbit of 7 generators (m = 1 is forced when Δ = 1 + 7) gives a generating
+  set whose words collide structurally. The k = 7 route needs Δ = 1 + 7m, so Δ = 8 is the only option, and it fails.
+  Other k = 7 candidates in the window (sl/pgl 13 × Z1849, psl 13 × Z3697, psl 7 × sl 7 × Z71 with |Fix| = 97) share the same
+  m = 1 form or the fixed-point problem. Not pursued.
+
+## Batch 4 (running): more seeds on the two best k = 3 product groups
+- prod psl 11 × psl 23 (N 4,007,520, μ 31.7): seed 5 with ORBW=5, seed 6 plain; 5,400 s each.
+- prod psl 7 × psl 19 × Z7 (N 4,021,920, μ 33.2): seeds 1, 2 from batch 2, still at cost 3 at 2,700 s; running to 5,400 s.
