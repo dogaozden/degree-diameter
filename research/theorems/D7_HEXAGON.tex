@@ -882,8 +882,7 @@ levels (``cluster-assisted'', research/squads/cells/d12D7.md §2) & full check \
 (14,7) & 9,014 & 9 & 9 random perfect matchings & BFS in \(Y\), then full check \\
 (15,7) & 10,826 / 10,481 & \(\le 8\) & random, repaired by 2-switches; paths through the levels allowed & BFS from all
 hubs, then full check \\
-(16,7) & 14,884 & \(\le 11\) & voltage graph over \(\mathbb Z_{61}\) & hubcheck.c, then full check (with
-automorphism) \\
+(16,7) & 14,884 & \(\le 11\) & voltage graph over \(\mathbb Z_{61}\) & hubcheck.c, then full check \\
 \end{longtable}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -944,6 +943,29 @@ largest freed set that Theorem C allows, so \(K = r(q+1)(q^3+1)\) is the cap of 
 \end{itemize}
 
 Computer: all these sets, \(\sigma\), and the hub graphs.
+
+\textbf{8.4 Where the exact graphs are.} Each record graph is determined by a solution file (research/frontier/sols/ on
+master) that lists the freed sets, the matchings (or the data that determine them), the slot \(s_j(h)\) of every hub in
+every level, and the hub graph \(Y\); the builder named here turns it into an explicit edge list (which the coordinator
+then checked, Section 10.2). So the neighbourhood of every vertex, including every hub, can be read off.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+cell & solution file (research/frontier/sols/) & builder \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+(7,7) & d7D7\_hex5\_mirror81\_n23598.sol & research/d13D7/tools/multi\_sol.py \\
+(9,7) & d9D7\_hex7\_mirror295\_n118238.sol & same \\
+(10,7) & d10D7\_hex8\_mirror229\_n225152.sol & same \\
+(11,7) & d11D7\_hex9\_spread730\_haarMeta73x100\_n413180.sol, .hubs & research/d10D7/dual/xgen.c \\
+(12,7) & d12D7\_hex9\_spread730\_clhaarZ73Z8xZ5sq\_n693500.sol, .hubs3 & research/squads/d12D7/clhaar/x5gen3.c \\
+(13,7) & d13D7\_hex11\_mirror768\_n1064472.sol & research/d13D7/tools/multi\_sol.py \\
+(14,7) & d14D7\_hex11\_typedmirror768\_n1789588.sol & research/cell147/typedmirror/tm\_build.py \\
+(15,7) & d15D7\_hex11\_typedrelax2\_n2501491.sol & research/d15D7b/tm3\_build.py \\
+(16,7) & d16D7\_hex13\_typed61\_K244\_n4052108.sol & research/squads/cells/d16D7/typed5s\_build.py \\
+\end{longtable}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

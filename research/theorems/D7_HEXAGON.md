@@ -570,7 +570,7 @@ record hub graphs were found by computer and checked:
 | (12,7) | 14,600 | 7 | Haar graph of $(\mathbb Z_{73}\rtimes\mathbb Z_8)\times\mathbb Z_5^2$, with paths through the levels ("cluster-assisted", research/squads/cells/d12D7.md §2) | full check |
 | (14,7) | 9,014 | 9 | 9 random perfect matchings | BFS in $Y$, then full check |
 | (15,7) | 10,826 / 10,481 | $\le 8$ | random, repaired by 2-switches; paths through the levels allowed | BFS from all hubs, then full check |
-| (16,7) | 14,884 | $\le 11$ | voltage graph over $\mathbb Z_{61}$ | hubcheck.c, then full check (with automorphism) |
+| (16,7) | 14,884 | $\le 11$ | voltage graph over $\mathbb Z_{61}$ | hubcheck.c, then full check |
 
 ---
 
@@ -623,6 +623,23 @@ Records:
   $n = 4{,}052{,}108$.
 
 Computer: all these sets, $\sigma$, and the hub graphs.
+
+**8.4 Where the exact graphs are.** Each record graph is determined by a solution file (research/frontier/sols/ on
+master) that lists the freed sets, the matchings (or the data that determine them), the slot $s_j(h)$ of every hub in
+every level, and the hub graph $Y$; the builder named here turns it into an explicit edge list (which the coordinator
+then checked, Section 10.2). So the neighbourhood of every vertex, including every hub, can be read off.
+
+| cell | solution file (research/frontier/sols/) | builder |
+|----------|----------------------------------------------------------|--------------------------------------|
+| (7,7) | d7D7_hex5_mirror81_n23598.sol | research/d13D7/tools/multi_sol.py |
+| (9,7) | d9D7_hex7_mirror295_n118238.sol | same |
+| (10,7) | d10D7_hex8_mirror229_n225152.sol | same |
+| (11,7) | d11D7_hex9_spread730_haarMeta73x100_n413180.sol, .hubs | research/d10D7/dual/xgen.c |
+| (12,7) | d12D7_hex9_spread730_clhaarZ73Z8xZ5sq_n693500.sol, .hubs3 | research/squads/d12D7/clhaar/x5gen3.c |
+| (13,7) | d13D7_hex11_mirror768_n1064472.sol | research/d13D7/tools/multi_sol.py |
+| (14,7) | d14D7_hex11_typedmirror768_n1789588.sol | research/cell147/typedmirror/tm_build.py |
+| (15,7) | d15D7_hex11_typedrelax2_n2501491.sol | research/d15D7b/tm3_build.py |
+| (16,7) | d16D7_hex13_typed61_K244_n4052108.sol | research/squads/cells/d16D7/typed5s_build.py |
 
 ---
 
