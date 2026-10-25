@@ -21,6 +21,14 @@ import sys
 import time
 
 REC = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "records", "bipartite_dd")
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+EXTRA_FILES = [
+    "research/theorems/smallfam/graphs/d4D7_n864_heis9xC16.edges.gz",
+    "research/theorems/chartlift/graphs/d8D5_n2048.edges.gz",
+    "research/cell147/d13D5_n11486.edges.gz",
+    "research/theorems/chartlift/graphs/d15D5_n20736.edges.gz",
+    "research/theorems/graphs/d16D5_n33792_k33m_z22.edges.gz",
+]
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "records_check.csv")
 
 
@@ -42,6 +50,11 @@ def read_graph(path):
     return n, edges
 
 
+def read_n(path):
+    """Vertex count of a record file (from the JSON or the first "n" line / "n=" header)."""
+    return read_graph(path)[0]
+
+
 def check(apsp, scratch, path, threads):
     m = re.search(r"d(\d+)D(\d+)", path)
     delta, D = int(m.group(1)), int(m.group(2))
@@ -56,7 +69,7 @@ def check(apsp, scratch, path, threads):
     lines = res.stdout.strip().splitlines()
     info = next((l for l in lines if l.startswith("n=")), "")
     verdict = next((l for l in lines if l.startswith("RESULT")), "RESULT NO OUTPUT")
-    return dict(file=os.path.relpath(path, REC), delta=delta, D=D, n=n, edges=len(edges), verdict=verdict,
+    return dict(file=os.path.relpath(path, REPO), delta=delta, D=D, n=n, edges=len(edges), verdict=verdict,
                 info=info, seconds=round(time.time() - t0, 1))
 
 
@@ -65,7 +78,13 @@ def main():
     threads = int(sys.argv[3]) if len(sys.argv) > 3 else 1
     limit = int(sys.argv[4]) if len(sys.argv) > 4 else None
     dirs = sys.argv[5:] or sorted(glob.glob(os.path.join(REC, "d*")))
-    rows = []
+    if dirs == ["extra"]:  # plain edge lists kept under research/ for the D=5 and D=7 cells (not in records/)
+        dirs = []
+        extra = [os.path.join(REPO, p) for p in EXTRA_FILES]
+        for path in extra:
+            r = check(apsp, scratch, path, threads)
+            append_row(r)
+            print(r["file"], r["n"], r["verdict"], r["info"], f'{r["seconds"]}s', flush=True)
     for d in dirs:
         d = d if os.path.isabs(d) else os.path.join(REC, os.path.basename(d))
         files = sorted(glob.glob(os.path.join(d, "*.json")) + glob.glob(os.path.join(d, "*.edges.txt")) +
@@ -73,18 +92,24 @@ def main():
         for path in files:
             if "program" in path:
                 continue
-            if limit is not None and path.endswith(".json"):
-                n = json.load(open(path))["output"][0]
-                if n > limit:
-                    continue
+            if limit is not None and read_n(path) > limit:
+                continue
             r = check(apsp, scratch, path, threads)
-            rows.append(r)
+            append_row(r)
             print(r["file"], r["n"], r["verdict"], r["info"], f'{r["seconds"]}s', flush=True)
+
+
+FIELDS = ["file", "delta", "D", "n", "edges", "verdict", "info", "seconds"]
+
+
+def append_row(r):
+    """Append one result as soon as it is known, so a killed run keeps what it finished."""
+    new = not os.path.exists(OUT)
     with open(OUT, "a", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["file", "delta", "D", "n", "edges", "verdict", "info", "seconds"])
-        if f.tell() == 0:
+        w = csv.DictWriter(f, fieldnames=FIELDS)
+        if new:
             w.writeheader()
-        w.writerows(rows)
+        w.writerow(r)
 
 
 if __name__ == "__main__":
