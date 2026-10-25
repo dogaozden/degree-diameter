@@ -39,3 +39,15 @@ Before: 4,838 (one FLAGDEL flag, d10D5_n4838_CHECK.md), 4,836 (9 freed flags, 36
     cd research/squads/d10D5/r4 && gcc -O2 -o gqgen ../../../d10D7/gqgen.c && mkdir -p gq && ./gqgen 7
     python3 build_fd.py gq/gq_q7.bin X.sol "FDSET" x.edges     # independent of dmhub2.c
     gcc -O3 -o apsp ../../../lifts/coordinator_check/apsp.c && ./apsp x.edges 10 5
+
+## Status at the end of session_01QqmMPMEBdPHeTrrfhst9b1 (Oct 25, ~15:25 PT)
+
+- Best verified: **4,840** (FLAGDEL on flags 1 and 6). Pushed with check files.
+- Third conversion {1,6,5} (4,842): coverage + D1 = 0 (state r4/runs/g40_5.sol, H=3 numbering, its hub graph has no
+  hub failures); coset-0 138 -> 9 (strict) -> 7 (penalty) -> 4 (second penalty pass: r4/runs/Q5c8.sol). Best-flip
+  lns2 from the 4-state ran ~12 minutes at the end without closing (r4/runs/Q5L3.log, Q5L4.log, Q5L1.log; it
+  wandered 4-6; the {1,6} case needed 3 lucky flips from 4). To continue: more penalty passes from Q5c8.sol to
+  get <= 3 (`./c0run.sh runs/g40_5.sol runs/Q5c8.sol "1 6 5" runs/X SEED 2 10000000 0.12 0.04 0.7`), then
+  `FLIPS=1 BESTFLIP=1 KZ=8 REPAIRS=10 python3 lns2.py runs/g40_5.sol <best> "1 6 5" out.sol`, then finish_fd.sh and
+  record.sh.
+- Other third flags: {1,6,0} stalls at 3 coverage/D1 holes, {1,6,2} at 2 (with hub failures).

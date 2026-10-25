@@ -1,0 +1,32 @@
+unmixed pairs: points 63 lines 81
+start 4 (4, 0, 0)
+  best flip candidates [(6, 210), (6, 2673), (6, 2905), (7, 3137), (7, 1815)]
+flip 210: after flip 6 (6, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(6, 2905), (6, 2673), (7, 3137), (7, 1815), (8, 2678)]
+flip 2905: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(6, 2673), (7, 1815), (7, 3137), (8, 1626), (8, 1338)]
+flip 2673: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(7, 1815), (7, 3137), (8, 2678), (8, 2196), (8, 1584)]
+flip 1815: after flip 7 (7, 0, 0) -> repaired 7 (cur 4)
+  best flip candidates [(7, 3137), (8, 214), (8, 1626), (8, 1584), (8, 2678)]
+flip 3137: after flip 7 (7, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(8, 1626), (8, 209), (8, 2678), (8, 3094), (8, 1431)]
+flip 1626: after flip 8 (8, 0, 0) -> repaired 7 (cur 4)
+  best flip candidates [(8, 3094), (8, 209), (8, 1338), (8, 1431), (8, 2678)]
+flip 3094: after flip 8 (8, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(8, 2196), (8, 1584), (8, 1338), (8, 214), (8, 209)]
+flip 2196: after flip 8 (8, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(8, 214), (8, 1338), (8, 1584), (8, 1431), (8, 209)]
+flip 214: after flip 8 (8, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(8, 2678), (8, 1431), (8, 209), (8, 1338), (8, 1584)]
+flip 2678: after flip 8 (8, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(8, 1338), (8, 1584), (8, 1431), (8, 209), (9, 3014)]
+flip 1338: after flip 8 (8, 0, 0) -> repaired 7 (cur 4)
+  best flip candidates [(8, 209), (8, 1584), (8, 1431), (9, 3143), (9, 254)]
+flip 209: after flip 8 (8, 0, 0) -> repaired 8 (cur 4)
+  best flip candidates [(8, 1431), (8, 1584), (9, 3143), (9, 1430), (9, 2105)]
+flip 1431: after flip 8 (8, 0, 0) -> repaired 7 (cur 4)
+  best flip candidates [(8, 1584), (9, 2105), (9, 2603), (9, 248), (9, 2195)]
+flip 1584: after flip 8 (8, 0, 0) -> repaired 7 (cur 4)
+|S| 70 model (2, 905, 10173, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 912, 9785, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s

@@ -1,0 +1,66 @@
+unmixed pairs: points 64 lines 79
+start 7 (7, 0, 0)
+  best flip candidates [(8, 377), (9, 2332), (9, 210), (9, 1495), (10, 254)]
+flip 377: after flip 8 (8, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(8, 120), (9, 772), (9, 2332), (9, 210), (10, 248)]
+flip 120: after flip 8 (8, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(9, 2332), (9, 2749), (9, 780), (9, 210), (9, 1030)]
+flip 2332: after flip 9 (9, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(9, 1030), (9, 2749), (9, 210), (9, 780), (10, 248)]
+flip 1030: after flip 9 (9, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(7, 1827), (8, 2865), (9, 248), (9, 2904), (9, 50)]
+flip 1827: after flip 7 (7, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(9, 210), (9, 248), (10, 386), (10, 2673), (10, 432)]
+flip 210: after flip 9 (9, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(9, 248), (10, 432), (10, 2673), (10, 386), (10, 2603)]
+flip 248: after flip 9 (9, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(10, 432), (10, 2105), (10, 2673), (10, 386), (10, 2603)]
+flip 432: after flip 10 (10, 0, 0) -> repaired 6 (cur 7)
+  best flip candidates [(9, 2105), (9, 2603), (9, 2673), (10, 1106), (10, 86)]
+flip 2105: after flip 9 (9, 0, 0) -> repaired 9 (cur 6)
+  best flip candidates [(9, 2673), (9, 2603), (10, 1974), (10, 72), (10, 1106)]
+flip 2673: after flip 9 (9, 0, 0) -> repaired 7 (cur 6)
+  best flip candidates [(9, 2603), (10, 214), (10, 80), (10, 72), (10, 1106)]
+flip 2603: after flip 9 (9, 0, 0) -> repaired 8 (cur 6)
+  best flip candidates [(10, 1117), (10, 1815), (10, 1106), (10, 2196), (10, 80)]
+flip 1117: after flip 10 (10, 0, 0) -> repaired 10 (cur 6)
+  best flip candidates [(10, 1993), (10, 1626), (10, 1106), (10, 80), (10, 86)]
+flip 1993: after flip 10 (10, 0, 0) -> repaired 8 (cur 6)
+  best flip candidates [(10, 1626), (10, 3137), (10, 2196), (10, 1998), (10, 214)]
+flip 1626: after flip 10 (10, 0, 0) -> repaired 10 (cur 6)
+  best flip candidates [(10, 2196), (10, 72), (10, 1974), (10, 1106), (10, 1815)]
+flip 2196: after flip 10 (10, 0, 0) -> repaired 9 (cur 6)
+  best flip candidates [(10, 80), (10, 86), (10, 1815), (10, 72), (10, 1994)]
+flip 80: after flip 10 (10, 0, 0) -> repaired 6 (cur 6)
+  best flip candidates [(6, 1770), (7, 1676), (7, 1168), (7, 2283), (8, 1772)]
+flip 1770: after flip 6 (6, 0, 0) -> repaired 5 (cur 6)
+  best flip candidates [(5, 1676), (6, 1168), (6, 2283), (7, 1171), (7, 2860)]
+flip 1676: after flip 5 (5, 0, 0) -> repaired 4 (cur 5)
+  best flip candidates [(6, 212), (7, 3137), (8, 2678), (8, 1115), (8, 1815)]
+flip 212: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(7, 3137), (8, 1815), (8, 2678), (8, 2905), (8, 214)]
+flip 3137: after flip 7 (7, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(8, 2678), (8, 214), (8, 1115), (8, 1815), (8, 2905)]
+flip 2678: after flip 8 (8, 0, 0) -> repaired 6 (cur 4)
+|S| 70 model (2, 823, 11408, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.8s
+|S| 70 model (2, 897, 12578, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.8s
+|S| 70 model (2, 797, 12878, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.5s
+|S| 70 model (2, 907, 12278, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 6.0s
+|S| 70 model (2, 913, 11658, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 909, 11645, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 829, 10692, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.6s
+|S| 70 model (2, 924, 8274, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 850, 10565, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.9s
+|S| 70 model (2, 831, 8420, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.9s
+|S| 70 model (2, 886, 10038, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.1s
+|S| 70 model (2, 758, 10128, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 856, 6818, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 865, 8602, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 859, 8187, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.5s
+|S| 70 model (2, 895, 10329, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.7s
+|S| 70 model (2, 786, 8408, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 904, 9254, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.5s
+|S| 70 model (2, 957, 8606, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 899, 8390, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 913, 11096, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 791, 8889, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
