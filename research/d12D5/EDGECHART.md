@@ -34,6 +34,7 @@ controller does not need.
 | m | base / group | lift | runs | check |
 |---|---|---|---|---|
 | 66 | K33m / Z_22 | **10,692** | seed 1 of 2, 300 s CPU, started from the 9,720 colour chart | apsp VALID, bfs_all max ecc 5 |
+| 69 | K33m / Z_23 | **11,178** | backtrack-complete chart diag/bt3_k33m_0 held fixed (DIAGBT=1, PV=1), 154k iterations | apsp VALID, bfs_all max ecc 5 |
 
 The colour-chart annealer (mlift_joint3) had reached m = 60 (1 seed of 5) and cost 4 at m = 66.
 
@@ -64,3 +65,20 @@ through w whose two middle edges come from A-perfect vertices has V(e2, e1) = A_
 V(e3, e4) = n_{w,e3}, two lines of the plane π_w: they meet, so the walk is singular. Perfect A-vertices make their
 B-neighbours' walks singular (and kill the A-pencils), so per-edge charts can only trade singular walks between the
 sides, as the annealers find (about 9 % of the 648 walks at best on K33m).
+
+## Backtrack-complete charts by construction (15:00 UTC): research/d12D5/diag/
+
+Annealing never made a chart backtrack-complete (24–38 missing points over the 6 vertices of K33m). A direct
+construction works. Gauge: at every base vertex the four apexes (c_e = A_e⁻¹b_e at A-vertices, b_e at B-vertices) are
+the frame e_0..e_3. The legs from apex e_i are the lines ⟨e_i, q⟩ for q in a "leg triangle" T_i of the quotient plane
+PG(F⁴/e_i), and an edge e from apex i of y to apex j of w is a collineation Ā_e of the quotient planes with
+Ā_e(S) = T_j(w) and Ā_e(T_i(y)) = S (S = the frame triangle): B-legs at w are A_e(C_y \ c_e), A-legs at y are
+A_e⁻¹(P_w \ b_e). So:
+1. `legs.py`: a vertex is complete iff the 6 frame lines and the 12 legs cover PG(3,3); with 98 admissible triangles
+   per apex there are exactly 1,920 complete (T_0..T_3) (meet in the middle over coverage masks of the 24 points off
+   the frame lines).
+2. `csp2.py`: 98×98 triangle compatibility (exists a collineation with the two conditions; 1,652 pairs), then forward
+   checking over the base vertices; any lift A_e of Ā_e with A_e e_i = e_j works (the free e_j-row is random).
+Every chart found this way has exactly 8 singular 4-walks per base vertex (48 of 648 on K33m, 16 of 216 for the
+1-vertex base), no pencil failure and no missing diagonal point, better on all three counts than anything annealed.
+Held fixed (PV = 1), it gave m = 69 at once; the joint moves (PV < 1) destroy completeness.
