@@ -41,3 +41,14 @@ streamed LRAT check. A random sample of 20 cubes (kissat, loaded 4-core machine)
 Hard cubes are those with small t and flat α. Rough total: 10³–10⁴ CPU-hours. The cubes are exhaustive by a
 relabelling argument (sort the degrees; block-transposition lex-leader inside each cube), not by a drat-trim cover
 check. Whichever of the two splits is used, a SAT cube means: decode A and run `signs_gf2.py`.
+
+## Update 12:45 UTC: turnkey workers
+
+    cd research/projects/optimal-sat/defect2
+    bash setup_worker.sh ~/w                 # builds CaDiCaL + lrat-check, base CNF, cube list (245,667 cubes)
+    bash worker.sh ~/w <i> <n> 4             # worker i of n, 4 cubes in parallel; log in ~/w/out/abcubes.log
+
+Each cube runs with a certified LRAT check and a 1-hour limit (CUBE_TIMEOUT). Cubes with t ≤ 3 add the valid
+"vertex 0 has the most directed triangles" constraint; with it t = 0 is solved in 55 s instead of more than 15 min.
+Send back the abcubes.log lines (or push them to a branch). Unsolved cubes go into a second pass, either with more
+time or with a finer split.
