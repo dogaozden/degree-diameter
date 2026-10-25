@@ -1,0 +1,8 @@
+group psl 89 x Z_481, N=169523640, identity 1883596, H order 52, rows 3260070, threads 1, setup 3.73s
+wide rows: HW order 195, rows 869352, setup 9.01s
+alpha: conj by mat(44,22,7,46) (index 346484), z -> 100 z on Z_481
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 44 (+e); mu = 38.41, mu/k = 12.80, fixed-point misses ~ 0.27
+start cost=54
+t=31 steps=14 evals=113 cost=27 best=27 T=0.52
+t=62 steps=28 evals=225 cost=21 best=21 T=0.17
+t=94 steps=42 evals=337 cost=21 best=21 T=0.15
