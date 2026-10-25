@@ -60,10 +60,10 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (4, 7) | 840 | **864** | +2.9% | vertex-transitive (Cayley-type) | — |
 | (5, 7) | 3,110 | **3,120** | +0.3% | voltage lift / metacyclic Haar | ✓ |
 | (6, 7) | 8,310 | **8,880** | +6.9% | orbit search (Haar) | ✓ |
-| (7, 7) | 23,436 | **23,580** | +0.6% | hexagon + hub vertices ¹ | — |
+| (7, 7) | 23,436 | **23,598** | +0.7% | finite geometry ¹ | — |
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
-| (9, 7) | 117,648 | **118,224** | +0.5% | hexagon + hub vertices ¹ | — |
-| (10, 7) | 224,694 | **225,128** | +0.2% | hexagon + hub vertices ¹ | — |
+| (9, 7) | 117,648 | **118,238** | +0.5% | hexagon cover + hub vertices ¹ | — |
+| (10, 7) | 224,694 | **225,152** | +0.2% | hexagon cover + hub vertices ¹ | — |
 | (11, 7) | 398,580 | **413,180** | +3.7% | hexagon cover + hub vertices ¹ | — |
 | (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
 | (13, 7) | 1,062,936 | **1,064,448** | +0.1% | hexagon + hub vertices ¹ | — |
