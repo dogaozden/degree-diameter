@@ -52,9 +52,10 @@ def abfilt(Delta, D, K, inv):
 
 
 def export(n, i, useaut, timeout, single=False):
-    tab = os.path.join(SP, f'tab_{n}_{i}.txt')
-    plan = os.path.join(SP, f'plan_{n}_{i}.txt')
-    qmap = os.path.join(SP, f'qmap_{n}_{i}.txt')
+    pid = os.getpid()       # unique names: concurrent runs may export the same group
+    tab = os.path.join(SP, f'tab_{n}_{i}_{pid}.txt')
+    plan = os.path.join(SP, f'plan_{n}_{i}_{pid}.txt')
+    qmap = os.path.join(SP, f'qmap_{n}_{i}_{pid}.txt')
     script = f'''GRP := SmallGroup({n}, {i});; el := AsSSortedList(GRP);; nn := Length(el);;
 Print(StructureDescription(GRP), "\\n");
 f := OutputTextFile("{tab}", false);; SetPrintFormattingStatus(f, false);;
