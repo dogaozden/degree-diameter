@@ -1,0 +1,19 @@
+# (7,7) n = 23596: three copies of H(5) (research/d13D7/multi.c, r = 1) with a mirrored surgery set of 80 points
+# (the cell-13-7 base set research/d13D7/q57/R72_q5_idx.txt plus 8 extra points mirrored on the
+# spread research/d13D7/q57/S_q5_spread.txt; research/cell147/mirror/README.md).  Session 01S9fS5Zi4bymqvTfraD7hJx, 2026-10-25.
+# State found by mirror_sa5.py seed 31 (--hex hex_q5.bin --rfile R_q5.npy --sfile S_q5.npy); sigma by mirror_build2.py.
+# Solution: research/frontier/sols/d7D7_hex5_mirror80_n23596.sol (multi_sol.py build: IDENTICAL edge file).
+# sha256: 33388cca3301f7b42fb734458b58699487de3953c256ea944240862ca07c2340  e23596.txt ; 72b0a6814e561d4b35230a6af6697b76167b00436f9d23b27e5c423fa96a16d3  hex_q5.bin
+-- multi.c checks (non-collinear, local duality, non-concurrent) and BFS spot check:
+hub graph attempt 0: OK
+graph: n = 23596, edges = 82586, max degree 7
+wrote e23596.txt
+q=5 r=1 m=80 n=23596 maxdeg=7 sources=1664 worst_ecc=7 bad=0
+-- full all-pairs check: research/lifts/coordinator_check/apsp_mt.c (BFS from every vertex, no symmetry assumed):
+   apsp_mt e23596.txt 7 7 1
+n=23596 edges=82586 degree min=7 max=7 bipartite=yes diameter=7
+RESULT VALID d=7 D=7 n=23596
+
+real	0m0.400s
+user	0m0.288s
+sys	0m0.000s

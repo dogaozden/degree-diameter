@@ -63,11 +63,21 @@ Gamma_2(sigma(a)) for every a in R', the remaining points onto the remaining lin
 
 The same sigma and R' work for every r: (13,7) n = 1,062,936 + 2|R'|, (15,7) n = 2,480,184 + 6|R'|.
 
+## Other q (same construction): (16,7) from H(13)
+
+mirror_sa5.py and mirror_build2.py take the hexagon, base set and spread as arguments (any q). At q = 13 the cell-13-7
+base set R792 (research/d13D7/q13/R792_q13_idx.txt, (16,7) n = 4,022,340 + 4|R'|) and its Hermitian spread
+(research/d13D7/q13/S_q13_spread.txt, 2,198 lines in 2x0 + x4 = 0) leave far more room than q = 11: a random line is
+at distance 4 from 169 spread lines, the spread has 1,406 spare lines, and some extra points are at distance 4 from only
+24, 40, 46 or 48 base points (257,298 candidates; at q = 11 the minimum is 60). Restricting the candidates to c <= 40 or
+48 (--cmax) the annealer reaches F = 20 in under three minutes.
+
 ## Files
 
 - hexmod.py: H(q) from hexgen.c output (research/d13D7/hexgen.c), distances.
 - mirror1.py: one extra point. mirrork.py: greedy k. mirror_sa2.py: annealing (cost = type deficit), mirror_sa3.py:
   annealing on k - deficit. inspect_state.py: type statistics of a state.
+- mirror_sa5.py / mirror_build2.py: the same for any q (--hex, --rfile, --sfile; builder args HEXFILE SPREAD.npy).
 - mirror_build.py STATE.npz SEED OUT: re-checks a configuration (non-collinear, pairwise opposite where needed, exact
   mirroring of every distance-4 pair) and writes sigma.txt and R.txt for multi.c.
 - configs/: the configurations (X, L, dropped points) of the graphs above.
