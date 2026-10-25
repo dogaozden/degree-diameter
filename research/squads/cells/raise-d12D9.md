@@ -54,3 +54,10 @@ Running: psl 59 × Z169 (N 17,349,540, μ 21.7), psl 71 × Z97 (N 17,355,240, μ
 psl 83 × Z61 (N 17,436,972, μ 23.4). Each 40 min, seed 1, k=3 m=4 f=0.
 Note for resumers: the in-container clock and the tool "sleep" timings are unreliable; use foreground until-loops with
 an explicit timeout to wait for runs.
+
+Round 3 finished unsolved after 40 min: psl 59 × 169 best 6 (28.7k evals), psl 71 × 97 best 3 (23.7k), pgl 37 × 343 best 6 (48.6k),
+psl 83 × 61 best 6 (22.4k). All above the bar, all unsolved.
+
+### Round 4 (from 08:59 UTC): same bar, N > 17,338,944
+Running: psl 71 × 97 seeds 2 and 3 (N 17,355,240, μ 21.8, best cost 3 in round 3), psl 139 × Z13 (N 17,455,620, μ 23.7),
+psl 47 × Z337 (N 17,486,256, μ 24.3; no wide rows, so slower per evaluation).
