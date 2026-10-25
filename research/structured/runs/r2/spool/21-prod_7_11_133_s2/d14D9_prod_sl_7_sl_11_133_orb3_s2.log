@@ -19,3 +19,9 @@ t=396 steps=315 evals=2521 cost=8 best=8 T=0.15
 t=427 steps=340 evals=2721 cost=8 best=8 T=0.15
 t=457 steps=362 evals=2897 cost=8 best=8 T=0.15
 t=488 steps=387 evals=3097 cost=8 best=8 T=0.15
+t=519 steps=412 evals=3297 cost=4 best=4 T=0.15
+RESULT d=14 D=9 group=prod sl 7 sl 11 x Z_133 N=58988160 best=0 evals=3473 time=546.9 orbit k=3 m=4 f=2 fix=71
+full diameter check: OK
+wrote /home/user/degree-diameter/research/structured/runs/r2/spool/21-prod_7_11_133_s2/d14D9_prod_sl_7_sl_11_133_orb3_s2.txt
+UNCHECKED: > 20M vertices and no low-memory checker for prod
+haarcheck_prod (independent, tools/haarcheck_prod.py): VALID d=14 D=9 vertices=117976320, ecc(e,A)=9 ecc(e,B)=9
