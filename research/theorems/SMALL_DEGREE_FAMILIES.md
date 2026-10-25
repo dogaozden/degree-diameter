@@ -31,6 +31,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - Among the 115 groups the bound leaves open, 21 solve, and the solve rate falls steadily with N/B (§3.2).
    - At Δ = 4 the same bound shows that no Z_p ⋊ Z_k with k ∈ {2, 3, 4, 6} can reach the (4,8) or (4,9) table
      sizes, for any p.
+   - At Δ = 5 it excludes action order 2 (k ≤ 12) at (5,7), (5,8) and (5,9). Action orders 3, 4 and 6 are mostly
+     excluded only from D = 9 on.
 4. **No bounded-order family covers a row** (§2.4).
    - For fixed action order o, metacyclic Haar graphs have N ≤ (2D+1)^((o+1)(Δ−1)): polynomial in D.
    - The records grow like (Δ−1)^D, so any metacyclic family that holds a whole row needs an action order that grows
@@ -99,8 +101,9 @@ The three graphs are pairwise non-isomorphic. In each group all plan solutions f
 
 At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. The exhaustive run
 is complete for orders 421–447 and 449–467. Orders 448 and 468 are partial (500 of 1,396 and 48 of 55 groups);
-this session screened all of 448–500 (§6.2). Above 432 the closest exhaustive results are cost 1 (one vertex short), at three groups of order 440
-(880 vertices): C11 : C40, D8 × (C11 : C5) and C11 : (C5 × Q8). SmallGroup(432,243) is also at cost 1.
+this session screened all of 448–500 (§6.2). Above 432 the closest exhaustive results are cost 1 (one vertex
+short), at three groups of order 440 (880 vertices): C11 : C40, D8 × (C11 : C5) and C11 : (C5 × Q8).
+SmallGroup(432,243) is also at cost 1.
 
 *Is the exhaustive search itself right?* Four checks:
 - **Against igraph.** `hx_check.py` recomputes with igraph the exact diameter of every set on two plan lines of
@@ -264,6 +267,24 @@ D = 7, for k ≤ 40, the bound alone rules out a metacyclic Haar graph above the
 - Larger φ(o) allows much more: (5, 5) allows 5,885 and (7, 7) 8,323 at D = 9. So small k is not excluded as such,
   only small rank.
 
+**Δ = 5** (`cyclotable5.py` → `runs/cyclotable5_d5D{7,8,9}.txt`; only action orders with φ(o) ≤ 2, i.e.
+o ∈ {2, 3, 4, 6}; k ≤ 12 at D = 7 and 8, k ≤ 10 at D = 9). Beating the table needs N ≥ 1,556, 4,618 and 13,969.
+- Action order 2 never gets there: every such group has N ≤ 852, 1,356 and 1,770 at D = 7, 8, 9, for any p.
+- With φ(o) = 2 there are now three formal a-parts, a lattice of rank 6 instead of 4, and that leaves room at
+  small D:
+  - D = 7: only (k, o) = (4, 4) and (6, 6) are excluded. (3, 3), (6, 3), (8, 4), (9, 3), (12, 3), (12, 4) and
+    (12, 6) allow 1,875 to 3,132.
+  - D = 8: (3, 3), (4, 4), (6, 6) and (8, 4) are excluded (at most 4,528). (6, 3), (9, 3) and the three k = 12
+    cases allow 5,736 to 8,364.
+  - D = 9: every case with k ≤ 10 is excluded except (9, 3), which allows 16,902.
+- o = 3 always allows more than o = 6 at the same k. Both use Z[ζ_3], but ζ_6 = −ζ_3² brings in the sign, so walk
+  sums cancel more.
+- So at Δ = 5 small rank stops reaching the table only from D = 8–9 on, later than at Δ = 4, as one expects from the
+  extra free a-part. The growth corollary (§2.4) says it must happen eventually for every fixed o.
+- The patterns are also reduced by permuting the three generators that carry a formal a-part. That permutation,
+  together with the formal coordinates, is an automorphism of U, so the bound does not change. The reduced and the
+  plain computation agree on 7 cases (`cyclotable5_symcheck.py` → `runs/cyclotable5_symcheck.txt`).
+
 **Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats the table at
 D = 7, 9 or 10. At D = 8 the family stays at 234 against 256.
 - Every group with N up to the Moore limit (127, 255, 510, 1023) was scanned exhaustively
@@ -289,9 +310,9 @@ whose action order stays bounded can therefore hold only finitely many cells of 
 
 This crude bound is purely asymptotic. At Δ = 3, D = 10 it is about 194,000 even for o = 1, far above the Moore
 limit of 1,023, so it constrains nothing at D ≤ 10. The fibre bound of §2.3 is the one that bites in the table's
-range. A family that holds a whole row
-needs o → ∞, at a rate of at least about D log(Δ−1) / ((Δ−1) log(2D+1)). This is the standard growth argument for
-virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made explicit.
+range. A family that holds a whole row needs o → ∞, at a rate of at least about D log(Δ−1) / ((Δ−1) log(2D+1)).
+This is the standard growth argument for virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made
+explicit.
 
 *Prior work.* I did not find the fibre bound of §2.3 in the sources I could check, but I could not read them all.
 - Dougherty and Faber (arXiv:math/9412223) treat abelian Cayley graphs.
@@ -417,7 +438,7 @@ Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/f
 In every affine case the walk sums are signed sums of powers of one field element (§2.3 makes this exact).
 - This session adds the near misses. Almost every group that came within cost 5 of a record, in any cell, is of
   the same type:
-  - the ten (4,8) groups of §2.5;
+  - the eleven (4,8) groups of §2.5;
   - the cost-1 groups of order 440 at (4,7): C11 : C40, D8 × (C11 : C5), C11 : (C5 × Q8);
   - C29 : C14 and C2 × (C29 : C7) at (3,10);
   - C17 : C8 on the 3+3 bases and Z29 ⋊ Z7 on the 2+2 base at (3,10).
@@ -486,9 +507,10 @@ and in control groups of the same order that have no solution.
 
 ## 5. Weak patterns
 
-- **Near misses are Frobenius products and extensions.** At (4,8) the ten closest groups (§2.5) are products of
-  two Frobenius-type groups or extensions of C7 or C11 by them, the shape of Loz's (C7 ⋊ C3) × Dic13. The
-  "record-shaped" products screened directly (`frobprod.py`) did no better:
+- **Near misses are Frobenius products and extensions.** At (4,8) the eleven closest groups (§2.5) are products
+  of two Frobenius-type groups, or extensions of a small elementary abelian group (C5, C7, C11, C31 or C5 × C5) by
+  such groups: the shape of Loz's (C7 ⋊ C3) × Dic13. The "record-shaped" products screened directly
+  (`frobprod.py`) did no better:
   - at (4,8), orders 1201–1400 (66 products): best cost 9;
   - at (4,9), orders 2486–2800 (50 products, all in orders missing from the SmallGroups library): best cost 10.
 - **Within a group, which S solves is arithmetic, not counting** (`jfibre.py` → `runs/jfibre_d3.txt`).
@@ -591,7 +613,8 @@ lifts at (4,8) for 2,186–2,208 vertices (none).
 | `onegroup.py`, `onelift.py` | The same for one SmallGroup (Haar or lift; `--identity-only` completes an old run). |
 | `fscreen.py`, `fscreen2.py`, `flscreen.py`, `gtab.c` | Fast all-groups screens: one GAP process per batch exports only generator permutations, `gtab` rebuilds the table in C, and a worker pool anneals. About 1 group/s at N = 1100. `fscreen2.py` re-anneals the low-cost groups. Scratch names are unique per process: two lift screens on the same orders once collided, and the affected groups were only logged as `export-failed` (both sides export identical data, so no cost can be wrong). Those lines were deleted and redone. |
 | `frobprod.py` | Products of two Frobenius-type groups F_q ⋊ C_a (faithful or not), tables built in numpy, for orders the library lacks. |
-| `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `cycloindex.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation. |
+| `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclotable5.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `cycloindex.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation (`cyclotable5_symcheck.py` checks the extra symmetry reduction used at Δ = 5). |
+| `sqfmeta.py` | Every group of a squarefree order, listed by Hölder's theorem as Z_m ⋊_r Z_n (for orders the installed library lacks), filtered by `abfilt` and annealed. `--check` compares the counts with Hölder's formula and GAP. |
 | `cyclocheck.py`, `recordbound.py`, `recordbound_sqf.py` | Independent check of the bound against BFS in real groups; the bound at a record's own pattern (prime and squarefree moduli). |
 | `lozlike.py`, `frobcover.py` | Loz-like metacyclic candidates (small index and central part) screened directly; coverage check of a metacyclic scan against every (p, k, r). |
 | `basegen.py`, `bases/` | All connected cubic bipartite bases with 3+3, 4+4 and 5+5 vertices (3, 6 and 15 multigraphs) and the five simple 6+6 graphs. |
