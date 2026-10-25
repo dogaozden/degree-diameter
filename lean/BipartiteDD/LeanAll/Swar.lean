@@ -16,10 +16,10 @@ These are the facts behind the batch checks of `LeanAll.HaarSwar`. -/
 
 namespace BipartiteDD.LeanAll.Swar
 
-/-- `B` fields `f 0, …, f (B-1)` of `w` bits, field `0` lowest. -/
-def pkF (w : ℕ) (f : ℕ → ℕ) : ℕ → ℕ
-  | 0 => 0
-  | B + 1 => 2 ^ (w * B) * f B + pkF w f B
+/-- `B` fields `f 0, …, f (B-1)` of `w` bits, field `0` lowest (by `Nat.rec`, so that the kernel can evaluate it in
+`B` steps). -/
+def pkF (w : ℕ) (f : ℕ → ℕ) (B : ℕ) : ℕ :=
+  Nat.rec (motive := fun _ => ℕ) 0 (fun B acc => 2 ^ (w * B) * f B + acc) B
 
 @[simp] theorem pkF_zero (w : ℕ) (f : ℕ → ℕ) : pkF w f 0 = 0 := rfl
 
