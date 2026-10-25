@@ -39,15 +39,20 @@ jobsB.txt is a comment now.
 
 ## Status
 
-- **Record now 679,959,000** (PSL(2,251) × Z43, k=3 m=4 f=1, μ = 21.9, 161 evals, 82 s). Solution:
-  `research/frontier/sols/d13D10_psl_251_43_orb3_s1.txt`. Checked by haar_sym's full diameter check and by
-  `tools/haarcheck_psl` (VALID, 13-regular, simple). Log: `research/structured/runs/raise13_10/out/`.
+- **Record now 681,406,800** (SL(2,149) × Z103, k=3 m=4 f=1, μ = 22.8, 857 evals, 1,481 s). Solution:
+  `research/frontier/sols/d13D10_sl_149_103_orb3_s1.txt`. Checked by haar_sym's full diameter check and by both
+  low-memory SL checkers `tools/hcsl` and `tools/hc2` (VALID, 13-regular, simple, ecc 10). Log:
+  `research/structured/runs/raise13_10/out/`.
+- Before it: PSL(2,251) × Z43, 679,959,000 (`d13D10_psl_251_43_orb3_s1.txt`, 161 evals), VALID by `haarcheck_psl`.
 - Earlier the same day: PSL(2,163) × Z157, 679,901,688 (`d13D10_psl_163_157_orb3_s1.txt`, 1,497 evals), also VALID,
   superseded by 251×43.
 - 2026-10-25 07:29 UTC: queues A and B started (SL 131×151 and PSL 163×157 first).
 - 07:53 UTC: PSL 163×157 solved; queue B moved on to PSL 251×43. 07:56 UTC: SL 131×151 killed (below the new record);
   queue A2 (`jobsA2.txt`: SL 167×73, 97×373, 149×103, 101×331, 139×127) started.
 - 08:01 UTC: PSL 251×43 solved and VALID (679,959,000).
+- Failed rungs (5,400 s each, best cost): SL 167×73 (1, 3,977 evals), SL 101×331 (3, 10,073), SL 97×373 (1, 9,313),
+  SL 163×79 (3, 4,153). Each is a 1.5 h rung, so the budget is short for the larger ones.
+- 11:31 UTC: SL 149×103 solved and VALID (681,406,800). Running: PSL 151×199 (queue B), then PSL 211×73.
 
 ## Resume
 
