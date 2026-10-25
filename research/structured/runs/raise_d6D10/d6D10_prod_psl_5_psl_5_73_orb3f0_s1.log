@@ -1,0 +1,45 @@
+group prod psl 5 psl 5 x Z_73, N=262800, identity 44530, H order 15, rows 17520, threads 1, setup 0.02s
+wide rows: HW order 219, rows 1200, setup 0.04s
+alpha: conj by prod[mat(2,2,4,2);mat(1,1,2,3)] (index 2957), z -> 8 z on Z_73
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 24.27, mu/k = 8.09, fixed-point misses ~ 0.41
+start cost=606
+t=30 steps=13979 evals=111833 cost=4 best=4 T=0.53
+t=60 steps=27456 evals=219649 cost=4 best=4 T=0.19
+t=90 steps=40925 evals=327401 cost=4 best=4 T=0.15
+t=120 steps=51457 evals=411657 cost=4 best=4 T=0.15
+t=150 steps=61180 evals=489441 cost=4 best=4 T=0.15
+t=180 steps=73162 evals=585297 cost=19 best=4 T=0.83
+t=210 steps=86494 evals=691953 cost=4 best=4 T=0.29
+t=240 steps=101468 evals=811745 cost=4 best=4 T=0.15
+t=270 steps=115478 evals=923825 cost=4 best=4 T=0.15
+t=300 steps=128290 evals=1026321 cost=4 best=4 T=0.15
+t=330 steps=141766 evals=1134129 cost=9 best=4 T=0.83
+t=360 steps=156384 evals=1251073 cost=9 best=4 T=0.29
+t=390 steps=170203 evals=1361625 cost=9 best=4 T=0.15
+t=420 steps=183777 evals=1470217 cost=4 best=4 T=0.15
+t=450 steps=198259 evals=1586073 cost=4 best=4 T=0.15
+t=480 steps=212899 evals=1703193 cost=12 best=4 T=0.83
+t=510 steps=227230 evals=1817841 cost=10 best=4 T=0.29
+t=540 steps=240900 evals=1927201 cost=4 best=4 T=0.15
+t=570 steps=255972 evals=2047777 cost=4 best=4 T=0.15
+t=600 steps=272055 evals=2176441 cost=4 best=4 T=0.15
+t=630 steps=287546 evals=2300369 cost=10 best=4 T=0.83
+t=660 steps=300105 evals=2400841 cost=4 best=4 T=0.29
+t=690 steps=314101 evals=2512809 cost=4 best=4 T=0.15
+t=720 steps=328498 evals=2627985 cost=4 best=4 T=0.15
+t=750 steps=341952 evals=2735617 cost=4 best=4 T=0.15
+t=780 steps=354516 evals=2836129 cost=13 best=4 T=0.83
+t=810 steps=366292 evals=2930337 cost=10 best=4 T=0.29
+t=840 steps=378223 evals=3025785 cost=4 best=4 T=0.15
+t=870 steps=390924 evals=3127393 cost=4 best=4 T=0.15
+t=900 steps=403534 evals=3228273 cost=4 best=4 T=0.15
+t=930 steps=417027 evals=3336217 cost=7 best=4 T=0.83
+t=960 steps=430225 evals=3441801 cost=4 best=4 T=0.29
+t=990 steps=443843 evals=3550745 cost=4 best=4 T=0.15
+t=1020 steps=456627 evals=3653017 cost=4 best=4 T=0.15
+t=1050 steps=472382 evals=3779057 cost=4 best=4 T=0.15
+t=1080 steps=485960 evals=3887681 cost=7 best=4 T=0.83
+t=1110 steps=498606 evals=3988849 cost=4 best=4 T=0.29
+t=1140 steps=510426 evals=4083409 cost=4 best=4 T=0.15
+t=1170 steps=518892 evals=4151137 cost=4 best=4 T=0.15
+RESULT d=6 D=10 group=prod psl 5 psl 5 x Z_73 N=262800 best=4 evals=4218753 time=1200.0 orbit k=3 m=2 f=0 fix=8

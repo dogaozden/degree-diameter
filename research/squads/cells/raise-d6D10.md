@@ -73,3 +73,13 @@ Next steps for a later session (not done here):
    does not reach at these μ.
 
 Time spent: about 2.5 hours on 4 cores, roughly 1.5·10⁸ orbit evaluations in total.
+
+## Final tally (stopped 2026-10-25 ~10:30)
+
+- Logs of every run in this job: research/structured/runs/raise_d6D10/ (haar_sym RESULT lines; no solution files).
+- psl 17 x Z109 (N = 266,832, 2N = 533,664 would be a new record): 14 runs, 11 of them best = 1, 3 of them best = 3,
+  never 0. About 1.4·10⁸ evaluations on this group alone. All other groups: best cost 3 to 18.
+- Total evaluations in this job: about 2.2·10⁸.
+- No VALID graph above 524,160 was found. Nothing was added to research/frontier/sols/.
+- Decision: stopped here, not because the cell is provably stuck, but because a 3-hour, 4-core search gave no
+  solution and the best group sits at a fixed-point endgame. The "next steps" above are the way forward.
