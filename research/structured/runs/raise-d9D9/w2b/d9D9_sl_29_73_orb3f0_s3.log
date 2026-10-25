@@ -4,3 +4,15 @@ alpha: conj by mat(24,12,20,4) (index 20523), z -> 8 z on Z_73
 ORBIT k=3 m=3 f=0: |Fix(alpha)| = 29 (+e); mu = 36.92, mu/k = 12.31, fixed-point misses ~ 1.65
 start cost=312
 t=30 steps=1242 evals=9937 cost=32 best=32 T=0.53
+t=60 steps=2483 evals=19865 cost=26 best=26 T=0.19
+t=90 steps=3742 evals=29937 cost=26 best=26 T=0.15
+t=120 steps=5076 evals=40609 cost=26 best=26 T=0.15
+t=150 steps=6285 evals=50281 cost=26 best=26 T=0.15
+t=180 steps=7589 evals=60713 cost=26 best=26 T=0.15
+t=210 steps=8901 evals=71209 cost=26 best=26 T=0.62
+t=240 steps=10149 evals=81193 cost=24 best=24 T=0.22
+t=270 steps=11430 evals=91441 cost=24 best=24 T=0.15
+t=300 steps=12697 evals=101577 cost=24 best=24 T=0.15
+t=330 steps=14017 evals=112137 cost=24 best=24 T=0.15
+t=360 steps=15311 evals=122489 cost=24 best=24 T=0.15
+t=390 steps=16478 evals=131825 cost=24 best=24 T=0.59

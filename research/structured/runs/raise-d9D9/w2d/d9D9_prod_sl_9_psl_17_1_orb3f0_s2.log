@@ -4,3 +4,15 @@ alpha: conj by prod[mat(5,4,5,8);mat(7,7,4,9)] (index 1071769), z -> 0 z on Z_1
 ORBIT k=3 m=3 f=0: |Fix(alpha)| = 161 (+e); mu = 33.24, mu/k = 11.08, fixed-point misses ~ 8.62
 start cost=150
 t=30 steps=958 evals=7665 cost=16 best=16 T=0.53
+t=60 steps=1856 evals=14849 cost=16 best=16 T=0.19
+t=90 steps=2809 evals=22473 cost=16 best=16 T=0.15
+t=120 steps=3791 evals=30329 cost=16 best=16 T=0.15
+t=150 steps=4704 evals=37633 cost=16 best=16 T=0.15
+t=180 steps=5678 evals=45425 cost=16 best=16 T=0.79
+t=210 steps=6636 evals=53089 cost=16 best=16 T=0.28
+t=240 steps=7533 evals=60265 cost=16 best=16 T=0.15
+t=270 steps=8437 evals=67497 cost=16 best=16 T=0.15
+t=300 steps=9340 evals=74721 cost=16 best=16 T=0.15
+t=330 steps=10263 evals=82105 cost=16 best=16 T=0.79
+t=360 steps=11184 evals=89473 cost=16 best=16 T=0.28
+t=390 steps=11999 evals=95993 cost=16 best=16 T=0.15
