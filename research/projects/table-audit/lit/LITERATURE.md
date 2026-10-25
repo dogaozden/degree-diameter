@@ -394,3 +394,27 @@ Appendix B also lists (4,8) = 1,540, (4,9) = 3,440, (4,10) = 8,000, (5,5) = 280,
 | (11,3), (13,3), (15,3) | FMP 2013 Φ95 graphs; AL Theorem 1, order 2(q²+q+5) | read |
 | all Loz cells | Loz thesis (restricted), metabelian preprint (missing) | not found; metacyclic order pattern inferred |
 | (13,5) | 2·Mizuno (12,4) via B(H) = 11,664 | built and apsp-valid here; needs coordinator check |
+
+## Addendum (lead, 2026-10-25): José Gómez Martí's PhD thesis (1986)
+
+J. Gómez Martí, "Diámetro y vulnerabilidad en redes de interconexión", PhD thesis, Universitat Politècnica de
+Catalunya, Barcelona 1986 (supervisor M. A. Fiol). Scan on the Comellas mirror:
+https://web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf (no text layer; read as page images).
+**[read: §2.3, 2.7, 2.8.1, 2.8.4, 2.9, 2.10, 2.12, 2.13 and the bibliography]**
+
+- §2.9.3 (thesis p. 43–46, PDF p. 49–52) defines the bipartite compound ΩB₁: 5α copies of a bipartite B₁ of even
+  diameter D₁ (groups of five wired as Fig. 2.21 a or b) and 10 sets of N₁/2 "copies of K₁" (hubs) of degree 2α,
+  N = 5(α+1)N₁, Δ = Δ₁ + 2 with Δ₁ + 2 = 2α + β, claimed D ≤ D₁ + 2. It then lists (p. 46):
+  ΩH₅: N(8,8) ≥ 195,300; ΩH₇: N(10,8) ≥ 1,176,480; ΩH₈: N(11,8) ≥ 2,246,940; ΩH₉: N(12,8) ≥ 4,650,100;
+  ΩH₁₁: N(14,8) ≥ 14,172,480; ΩH₁₁d: N(15,8) ≥ 14,978,080; ΩH₁₃: N(16,8) ≥ 36,201,060.
+  These are exactly the wiki's green D = 8 values (except (13,8), which is not in the thesis, and (15,8), where the
+  wiki has the (14,8) value). The lead's rebuild of ΩB₁ from Fig. 2.21 has the right order but diameter 9
+  (AUDIT.md §4, flag 1).
+- §2.9.1–2.9.2 list B₀Σ₄B₁ / P_qΣ₄H_q values at D = 9, 10 (e.g. N(12,9) ≥ 9,565,920, N(16,10) ≥ 962,948,196), all below
+  today's table.
+- §2.10 mentions that Delorme and Quisquater [19] compose a bipartite graph B "in a digraph, here the tournament T₂"
+  (B(G*)); [19] is "C. Delorme y J. J. Quisquater: Manuscrito sobre grafos densos (por aparecer, 1984)", never found.
+  That is the likely origin of the green D = 5 and D = 7 values (2j+1 copies along a regular tournament), but the
+  thesis does not list those bipartite values.
+- §2.12 adds 4 vertices to P_q (PG(2,q) incidence graph): P_q⁺, degree q+2, diameter 3, 2q²+2q+6 vertices. That is
+  2(q²+q+3): the table's pre-2013 (11,3) = 186, (13,3) = 270, (15,3) = 370.

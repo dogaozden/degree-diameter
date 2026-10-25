@@ -9,8 +9,10 @@ In a type-b group the copy's points take the colour of the lines of a type-a gro
 Every copy vertex gains 2, every hub has degree 2*alpha.  Order 5*alpha*N_1 + 5*N_1 = 5(alpha+1)N_1.
 Thesis: Delta = Delta_1 + 2 with Delta_1 + 2 = 2 alpha + beta, and diameter <= D_1 + 2 (D_1 even).
 Table D = 8 values: Omega H(q): q = 7, 8, 9, 11, 13 (alpha = 5, 5, 6, 7, 8) -> (10,8), (11,8), (12,8), (14,8), (16,8).
-Usage: omega_build.py BASE_EDGES TYPES SIGMA OUT     TYPES e.g. abab; SIGMA = inc (a perfect matching of the
-incidence graph: p_x on l_x), shift:s (l_x = line index (x+s) mod N), or rand:seed."""
+Usage: omega_build.py BASE_EDGES TYPES SIGMA OUT [RELABEL]   TYPES e.g. abab; SIGMA = inc (a perfect matching of the
+incidence graph: p_x on l_x), shift:s (l_x = line index (x+s) mod N), or rand:seed.  RELABEL (a variant outside the
+thesis's notation, to test how much the labelling matters): copy:SEED relabels every copy at random, group:SEED every
+group of 5 copies (same relabelling inside a group)."""
 import random
 import sys
 
@@ -54,8 +56,23 @@ H0 = ncopies * B                 # hubs: n_k(x) = H0 + k*N + x, nbar_k(x) = H0 +
 tot = H0 + 10 * N
 
 
+perm = None                      # optional relabelling (variant, not in the thesis)
+if len(sys.argv) > 5:
+    mode, seed = sys.argv[5].split(':')
+    prng = random.Random(int(seed))
+    perm = []
+    for i in range(ncopies):
+        if mode == 'copy' or i % 5 == 0:
+            pp, ll = list(range(N)), list(range(N))
+            prng.shuffle(pp)
+            prng.shuffle(ll)
+            cur = pp + [N + y for y in ll]
+        perm.append(cur)
+
+
 def cp(g, c, v):                 # vertex v of B_1 in copy c (mod 5) of group g
-    return (5 * g + c % 5) * B + v
+    i = 5 * g + c % 5
+    return i * B + (perm[i][v] if perm else v)
 
 
 with open(out, 'w') as f:
