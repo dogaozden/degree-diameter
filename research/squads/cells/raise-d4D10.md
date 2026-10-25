@@ -21,3 +21,6 @@ Source of the record and its checks: origin/claude/voltage-lifts-search-6lfotq, 
   meta 209 30 26 and meta 418 15 49 (N = 6270) stall at cost 2.
 - Round 3 (started): haar_cell.py sweeps N = 6361–6420, 6421–6480, 6481–6560 (top 12, 300 s, 1 seed each), plus
   one 2400 s seed-4 re-anneal of meta 259 24 97 (N = 6216).
+- Round 3 result: no solve in 6361–6560. Each window 12 anneals of 300 s. Near misses: N = 6394 meta 278 23 45 and
+  meta 139 46 6 at cost 1; N = 6510 meta 217 30 38 at cost 3. The 2400 s seed-4 re-anneal of N = 6216 ended at cost 1.
+- Round 4 (started): the four round-1 windows, resumed to top 30 (18 new candidates each, 300 s, seed 1).
