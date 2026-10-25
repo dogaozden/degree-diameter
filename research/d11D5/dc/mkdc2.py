@@ -42,7 +42,7 @@ r = build(h); sw.append(r); usedL.update(r[0]); usedP.update(r[1])
 for k in range(1, KS):
     for t in range(2000):
         h2 = rand_h(plane)
-        if sum(d_pt[R] in usedL for R in h2) > 1: continue
+        if sum(d_pt[R] in usedL for R in h2) > k: continue
         r = build(h2)
         if r: sw.append(r); usedL.update(r[0]); usedP.update(r[1]); break
     else: print("no second switch", file=sys.stderr); sys.exit(1)

@@ -174,3 +174,29 @@ Results:
    17,580) reached structural cost 118 (1,700 CPU s anneal, wq/run/W11L.in; one evaluation takes 10 ms there), not
    low enough for wpo. Extra n = 587 anneals of 1,100 s ended at 160 and 216.
 
+
+## Round 4 (job resume4-cell-11-5, session_01YVUXzZUE2Fjy42D4zug9Gh, Oct 25-26)
+
+### sigma = delta o C
+
+Let delta be the polarity of W(8) and C a collineation of PG(3,8) outside PGammaSp(4,8). Put sigma(s) = delta(C(s)).
+Then sigma^-1(pencil of v) = C^-1(points of the W-line delta(v)) is a PG-line of PG(3,8), and every PG-line is a covering
+set of W(8) (a point x is collinear with the point where the plane x^perp meets the line). So route (b) of the coset +1
+condition holds for every pair, independently of route (a). If C were symplectic, sigma would be a duality and (a), (b)
+would coincide (the rigidity of sigma = delta, round 3). sigma-concurrency of two points means collinearity in the
+twisted quadrangle W' = C^-1(W), and the coset-0 demands of a switch become conditions on C:
+- (i) the switch lines L_i must stay totally isotropic under C (then sigma(p_i) meets sigma(z) for z in L_i);
+- (ii) C^-1(delta(p_i)) must be a W-line (then sigma^-1(L_i) is collinear with sigma^-1(m) for the lines m through p_i);
+- (iii) for the new point: sigma^-1(pencil of x*) should be a PG-line, which holds when L_i = delta(R_i) for the points
+  R_i of a hyperbolic line h ("regulus switch").
+C(W) and W meet in a linear congruence; a regulus delta(h) inside it forces the parabolic type (all W-lines meeting an
+axis, which is a transversal of the regulus). Random C with (i) for three switch lines find exactly these (73 lines kept).
+
+Effect on the structural cost (plusopt7):
+- W(8) itself: 0 for every C tried. Switched bases: every failure is local to the switch (x*, l*, L_i, p_i).
+- One pair: spread switch with sigma = delta 2,496, random sigma ~2,300, delta o C ~800; 9-flag regulus switch with
+  (i)-(iii) (dc/mkdc.py) 426-602; incident regulus switch (dc/mkdc2.py: 8 regulus lines, the omitted point R_9 gives
+  sigma(C^-1(R_9)) = l* and sigma(x*) = delta(R_9)) 236-302, and then every coset-0 demand and every point-side
+  condition holds; what is left is coset +1 from l* and from the L_i to other lines (line side).
+- Two pairs (mkdc2.py KS=2: the second hyperbolic line in the plane delta(axis)^perp, so one C keeps both switches'
+  lines isotropic): 604-1,310 (earlier two-pair starts: 2,000-5,000).
