@@ -41,3 +41,6 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 - 2026-10-25 08:05-08:21: sl 137x67 solved at 361 evals (350 s), VALID hcsl+hc2: 344,542,944 (+2.12 %). Current best.
   sl 79x349 solved at 1,569 evals (1,083 s), VALID hcsl+hc2: 344,086,080 (+1.98 %). Both saved in research/frontier/sols/.
 - Running: sl 83x301 (cost 12), sl 109x133 (cost 12), sl 101x169 (+3.2 %).
+- 2026-10-25 08:30: sl 101x169 solved at 1,545 evals (1,188 s), VALID hcsl+hc2: 348,207,600 (+3.19 %). Current best. Saved.
+  sl 83x301: no solve (best 12, 2,201 evals).
+- Running: sl 109x133 (cost 6), sl 89x247 (cost 14), sl 83x307 (+2.2 % over 101x169), sl 97x193.
