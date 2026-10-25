@@ -1,6 +1,6 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **65 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **66 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
@@ -60,11 +60,12 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (4, 7) | 840 | **864** | +2.9% | vertex-transitive (Cayley-type) | — |
 | (5, 7) | 3,110 | **3,120** | +0.3% | voltage lift / metacyclic Haar | ✓ |
 | (6, 7) | 8,310 | **8,880** | +6.9% | orbit search (Haar) | ✓ |
-| (7, 7) | 23,436 | **23,552** | +0.5% | hexagon + hub vertices ¹ | — |
+| (7, 7) | 23,436 | **23,580** | +0.6% | hexagon + hub vertices ¹ | — |
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
-| (9, 7) | 117,648 | **117,992** | +0.3% | hexagon + hub vertices ¹ | — |
-| (10, 7) | 224,694 | **224,718** | +0.0% | hexagon + hub vertices ¹ | — |
-| (11, 7) | 398,580 | **400,040** | +0.4% | hexagon + hub vertices ¹ | — |
+| (9, 7) | 117,648 | **118,224** | +0.5% | hexagon + hub vertices ¹ | — |
+| (10, 7) | 224,694 | **225,128** | +0.2% | hexagon + hub vertices ¹ | — |
+| (11, 7) | 398,580 | **407,134** | +2.1% | hexagon + hub vertices ¹ | — |
+| (12, 7) | 664,300 | **679,924** | +2.4% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,576** | +3.7% | voltage lift / metacyclic Haar | ✓ |
 | (6, 8) | 29,790 | **31,680** | +6.3% | orbit search (Haar) ¹ | (30,576) |
