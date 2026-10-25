@@ -6,7 +6,8 @@ QUEUE lines: `MOD:GB` (estimated peak memory; `!MOD:GB` runs `lean` on the modul
 `lake build`), `--` (barrier: everything above finishes before anything below
 starts), `END` (stop once everything above is done), blank or `#` lines are ignored. Lines may be appended at any
 time. Between two barriers jobs start in any order as the budget allows (a large job does not block smaller ones
-after it). Each finished job logs wall time, measured peak RSS and status; a failure logs the tail of its output."""
+after it). The budget can be changed while it runs by writing a number to QUEUE.budget. Each finished job logs
+wall time, measured peak RSS and status; a failure logs the tail of its output."""
 import os, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -57,6 +58,10 @@ def main():
                         f.write(out[-3000:] + '\n')
                 finished.add(k)
                 del running[pid]
+        try:
+            budget = float(open(qpath + '.budget').read().strip())
+        except (OSError, ValueError):
+            pass
         items = parse(qpath)
         first = next((j for j, it in enumerate(items) if type(it) is tuple and j not in finished), len(items))
         for k, it in enumerate(items):

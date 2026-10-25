@@ -12,7 +12,7 @@ covers the diameter needs (D odd: left and right words of D-1 letters; D even: o
   Cover<K>.lean        all batches pass, so every element has a word
   Record.lean          the record theorem
 """
-import argparse, os, re, subprocess, sys
+import argparse, mmap, os, re, subprocess, sys
 
 W = 40
 S_BARRETT = 30
@@ -32,6 +32,17 @@ def read_sol(path):
     return deg, diam, grp == 'psl', p, n, gens
 
 
+
+def chunked(v, bits=None, chunk=4096):
+    """`v` as a balanced tree of short hex literals joined by `+` and `<<<` (a long literal costs time quadratic
+    in its length to elaborate; the kernel evaluates the tree with GMP)."""
+    if bits is None:
+        bits = max(v.bit_length(), 1)
+    if bits <= chunk:
+        return hex(v)
+    h = max(chunk, (bits // 2 // chunk) * chunk)
+    return f'({chunked(v & ((1 << h) - 1), h, chunk)} + {chunked(v >> h, bits - h, chunk)} <<< {h})'
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('sol')
@@ -43,6 +54,10 @@ def main():
     ap.add_argument('--haarcert', default='/tmp/claude-0/work/haarcert')
     ap.add_argument('--source', default='')
     ap.add_argument('--covers-only', action='store_true', help='rewrite only the Cover and Record files')
+    ap.add_argument('--no-bats', action='store_true', help='write Defs, Cover and Record but no Bat modules')
+    ap.add_argument('--bat-modules', default='', help='LO:HI: write only the Bat modules LO <= index < HI (counted '
+                    'over all covers in order), nothing else')
+    ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
     args = ap.parse_args()
     deg, D, psl, p, n, gens = read_sol(args.sol)
     L = D - 1
@@ -59,7 +74,8 @@ def main():
     for kd in kinds:
         out = os.path.join(args.certdir, f'{base}_{kd}.bin')
         if not os.path.exists(out):
-            r = subprocess.run([args.haarcert, args.sol, kd, out], capture_output=True, text=True)
+            r = subprocess.run([args.haarcert, args.sol, kd, out] + (['scan'] if args.scan else []),
+                               capture_output=True, text=True)
             sys.stderr.write(r.stderr)
             if r.returncode != 0:
                 sys.exit(f'haarcert {kd} failed')
@@ -82,8 +98,12 @@ def main():
             return f'∃ Dig, batchOKpm Pm ONES lt{k_} Dig (kindBp {p} {b}) (aBp {p} {b}) (cBp {p} {b}) RD NRD RZ = true'
         return (f'∃ Dig, batchOK Pm ONES lt{k_} Dig (kindB {p} {b}) (aB {p} {b} * ONES) (cond (kindB {p} {b}) RD 0) '
                 f'(cB {p} {b} * ONES) (cond (kindB {p} {b}) 0 RD) RZ = true')
+    bm = tuple(int(x) for x in args.bat_modules.split(':')) if args.bat_modules else None
+    only_bats = bm is not None
+
     def out(name):
-        return open(os.devnull if args.covers_only else os.path.join(args.outdir, name), 'w')
+        skip = args.covers_only or only_bats
+        return open(os.devnull if skip else os.path.join(args.outdir, name), 'w')
     with out('Defs.lean') as f:
         f.write(hdr)
         f.write('import BipartiteDD.LeanAll.HaarPSL\n\n' if psl else 'import BipartiteDD.LeanAll.HaarSL\n\n')
@@ -127,31 +147,41 @@ def main():
     OPSL = ' BipartiteDD.LeanAll.HaarPSL' if psl else ''
 
     def jtree(k_, leaves):
+        # leaves: (term, lo, hi); every bound explicit (implicit ones make the unifier unfold the checks)
         if len(leaves) == 1:
-            return leaves[0]
+            return leaves[0][0]
         h = len(leaves) // 2
-        return f'(range_join (Q := Q{k_}) {jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})'
+        return (f'(range_join (Q := Q{k_}) (lo := {leaves[0][1]}) (mid := {leaves[h][1]}) (hi := {leaves[-1][2]}) '
+                f'{jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})')
     mods = {}
+    gi = 0
     for kd in kinds:
         k_ = K[kd]
-        data = open(certs[kd], 'rb').read()
+        cf = open(certs[kd], 'rb')
+        data = mmap.mmap(cf.fileno(), 0, access=mmap.ACCESS_READ)
         assert len(data) == 5 * G
         mods[kd] = []
         for mi, lo in enumerate(range(0, nb, args.per)):
             hi = min(nb, lo + args.per)
             mod = f'Bat{k_}{mi:03d}'
             mods[kd].append((mod, lo, hi))
-            with out(mod + '.lean') as f:
+            gi += 1
+            if args.covers_only or args.no_bats or (only_bats and not bm[0] <= gi - 1 < bm[1]):
+                continue
+            with open(os.path.join(args.outdir, mod + '.lean'), 'w') as f:
                 f.write(hdr)
                 f.write(f'import BipartiteDD.LeanAll.Range\nimport {M}.Defs\n\n')
                 f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL{OPSL}\n\n')
                 f.write('set_option maxRecDepth 100000\n\n')
                 for b in range(lo, hi):
-                    dig = int.from_bytes(bytes(_spread(data, b * N, N)), 'little')
-                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{hex(dig)}, by decide +kernel⟩\n\n')
-                leaves = [f'(range_one (Q := Q{k_}) b{k_}{b})' for b in range(lo, hi)]
+                    dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
+                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked(dig)}, by decide +kernel⟩\n\n')
+                leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
+    if only_bats:
+        print(f'wrote Bat modules {bm[0]}:{bm[1]} of {gi} to {args.outdir}', file=sys.stderr)
+        return
     # covers: the module range lemmas joined in a balanced tree (range_join), so no large case split
     for kd in kinds:
         k_ = K[kd]
@@ -165,7 +195,7 @@ def main():
                     f'theorem batches{k_} : BatchesOK Pm ONES RD RZ lt{k_} := by\n')
             f.write('  intro b hb\n')
             f.write(f'  have hb\' : b < {nb} := hb\n')
-            f.write(f'  exact {jtree(k_, [f"range{k_}{mod[4:]}" for mod, _, _ in mods[kd]])} b (Nat.zero_le b) hb\'\n\n')
+            f.write(f'  exact {jtree(k_, [(f"range{k_}{mod[4:]}", lo, hi) for mod, lo, hi in mods[kd]])} b (Nat.zero_le b) hb\'\n\n')
             if psl:
                 f.write(f'theorem words{k_} : ∀ x : G {p} {n}, ∃ dg : ℕ → ℕ, (∀ t < Pm.L, dg t < Pm.Δ) ∧ '
                         f'(wordG sG inv{k_} dg Pm.L = x ∨ wordG sG inv{k_} dg Pm.L = gneg * x) :=\n')

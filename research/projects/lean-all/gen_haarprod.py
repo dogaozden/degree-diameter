@@ -42,11 +42,24 @@ def _spread(data, start, N):
 
 
 def jtree(k_, leaves):
+    # leaves: (term, lo, hi); every bound explicit (implicit ones make the unifier unfold the checks)
     if len(leaves) == 1:
-        return leaves[0]
+        return leaves[0][0]
     h = len(leaves) // 2
-    return f'(range_join (Q := Q{k_}) {jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})'
+    return (f'(range_join (Q := Q{k_}) (lo := {leaves[0][1]}) (mid := {leaves[h][1]}) (hi := {leaves[-1][2]}) '
+            f'{jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})')
 
+
+
+def chunked(v, bits=None, chunk=4096):
+    """`v` as a balanced tree of short hex literals joined by `+` and `<<<` (a long literal costs time quadratic
+    in its length to elaborate; the kernel evaluates the tree with GMP)."""
+    if bits is None:
+        bits = max(v.bit_length(), 1)
+    if bits <= chunk:
+        return hex(v)
+    h = max(chunk, (bits // 2 // chunk) * chunk)
+    return f'({chunked(v & ((1 << h) - 1), h, chunk)} + {chunked(v >> h, bits - h, chunk)} <<< {h})'
 
 def main():
     ap = argparse.ArgumentParser()
@@ -183,8 +196,8 @@ def main():
                 f.write('set_option maxRecDepth 100000\n\n')
                 for i in range(lo, hi):
                     dig = int.from_bytes(bytes(_spread(data, i * N, N)), 'little')
-                    f.write(f'theorem b{k_}{i} : {bstmt(k_, i)} :=\n  ⟨{hex(dig)}, by decide +kernel, by decide +kernel⟩\n\n')
-                leaves = [f'(range_one (Q := Q{k_}) b{k_}{i})' for i in range(lo, hi)]
+                    f.write(f'theorem b{k_}{i} : {bstmt(k_, i)} :=\n  ⟨{chunked(dig)}, by decide +kernel, by decide +kernel⟩\n\n')
+                leaves = [(f'(range_one (Q := Q{k_}) (b := {i}) b{k_}{i})', i, i + 1) for i in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ i, {lo} ≤ i → i < {hi} → Q{k_} i :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
     cov = 'cover_prod_pm (by decide)' if psl else 'cover_prod'
@@ -200,7 +213,7 @@ def main():
             f.write(f'theorem batches{k_} : ∀ i < ({q} * {q} - 1) * {q} * {Bx}, Q{k_} i := by\n')
             f.write('  intro i hi\n')
             f.write(f'  have hi\' : i < {nb} := hi\n')
-            f.write(f'  exact {jtree(k_, [f"range{k_}{mod[4:]}" for mod, _, _ in mods[kd]])} i (Nat.zero_le i) hi\'\n\n')
+            f.write(f'  exact {jtree(k_, [(f"range{k_}{mod[4:]}", lo, hi) for mod, lo, hi in mods[kd]])} i (Nat.zero_le i) hi\'\n\n')
             f.write(f'theorem words{k_} : ∀ x : {Kty}, ∃ dg : ℕ → ℕ, (∀ t < Pm1.L, dg t < Pm1.Δ) ∧ '
                     f'wordX sK inv{k_} dg Pm1.L = x :=\n')
             f.write(f'  {cov} sG1 sG2 inv{k_} Pm1 Pm2 Pm1_valid Pm2_valid rfl rfl rfl rfl rfl rfl rfl rfl rfl hO hRD{hnrd} hRZ '

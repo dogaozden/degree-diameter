@@ -1,6 +1,6 @@
 /* haarcert.c: word certificates for Haar graphs of SL(2,p) x Z_n and PSL(2,p) x Z_n (project lean-all).
 
-   usage: haarcert SOLFILE KIND OUT.bin
+   usage: haarcert SOLFILE KIND OUT.bin [scan]
      SOLFILE  research/frontier/sols format: "D D sl|psl p n n N order", then the generators "idx mat(a,b,c,d) z=k"
      KIND     even  : x = s0 * (s1^-1 s2) (s3^-1 s4) ...      (L = D-1 letters, D even)
               left  : x = (s0^-1 s1) (s2^-1 s3) ...            (L = D-1 letters, D odd)
@@ -13,7 +13,9 @@
    For psl (LeanAll/HaarPSL.lean) elements are sign-normalised matrices (c in 1..h, or c = 0 and a in 1..h, with
    h = (p-1)/2) and the batch of (a,b,c,d,z) is a*h + (c-1) if c != 0, p*h + (a-1) if c == 0; the slot in the batch
    is d*n + z if c != 0, b*n + z if c == 0. A word for x may evaluate to x or -x in SL(2,p) x Z_n.
-   Every word is re-evaluated before it is written. */
+   Every word is re-evaluated before it is written.
+   With `scan` the BFS finds each layer by scanning all elements instead of keeping frontier lists (6 bytes per
+   element instead of 22; the parents, hence the words, differ from the default mode). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,7 +87,10 @@ static El el_of(long long k) {
 }
 
 int main(int argc, char **argv) {
-  if (argc != 4) { fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin\n"); return 2; }
+  if (argc != 4 && !(argc == 5 && !strcmp(argv[4], "scan"))) {
+    fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin [scan]\n"); return 2;
+  }
+  int scan = argc == 5;
   FILE *f = fopen(argv[1], "r");
   if (!f) { perror("sol"); return 2; }
   char grp[16], w1[8], w2[8];
@@ -120,24 +125,44 @@ int main(int argc, char **argv) {
   uint32_t *par = malloc(G * sizeof(uint32_t));
   uint8_t *pid = malloc(G);
   if (!lay || !par || !pid) { fprintf(stderr, "out of memory\n"); return 1; }
+  if (G >= (1LL << 32)) { fprintf(stderr, "group too large\n"); return 1; }
   memset(lay, -1, G);
   El one = { 1, 0, 0, 1, 0 };
   long long i0 = idx(one);
   lay[i0] = 0;
-  long long *fr = malloc(G * sizeof(long long)), *nf = malloc(G * sizeof(long long));
-  long long nfr = 1, cnt = 1;
-  fr[0] = i0;
-  for (int l = 1; l <= K; l++) {
-    long long nn = 0;
-    for (long long q = 0; q < nfr; q++) {
-      El x = el_of(fr[q]);
-      for (int k = 0; k < NP; k++) {
-        long long j = idx(mul(x, pr[k]));
-        if (lay[j] < 0) { lay[j] = l; par[j] = (uint32_t)fr[q]; pid[j] = k; nf[nn++] = j; }
+  if (scan) {
+    long long cnt = 1;
+    for (int l = 1; l <= K; l++) {
+      long long nn = 0;
+      for (long long q = 0; q < G; q++) {
+        if (lay[q] != l - 1) continue;
+        El x = el_of(q);
+        for (int k = 0; k < NP; k++) {
+          long long j = idx(mul(x, pr[k]));
+          if (lay[j] < 0) { lay[j] = l; par[j] = (uint32_t)q; pid[j] = k; nn++; }
+        }
       }
+      cnt += nn;
+      fprintf(stderr, "layer %d: %lld new, %lld reached of %lld\n", l, nn, cnt, G);
     }
-    long long *t = fr; fr = nf; nf = t; nfr = nn; cnt += nn;
-    fprintf(stderr, "layer %d: %lld new, %lld reached of %lld\n", l, nn, cnt, G);
+  } else {
+    long long *fr = malloc(G * sizeof(long long)), *nf = malloc(G * sizeof(long long));
+    if (!fr || !nf) { fprintf(stderr, "out of memory\n"); return 1; }
+    long long nfr = 1, cnt = 1;
+    fr[0] = i0;
+    for (int l = 1; l <= K; l++) {
+      long long nn = 0;
+      for (long long q = 0; q < nfr; q++) {
+        El x = el_of(fr[q]);
+        for (int k = 0; k < NP; k++) {
+          long long j = idx(mul(x, pr[k]));
+          if (lay[j] < 0) { lay[j] = l; par[j] = (uint32_t)fr[q]; pid[j] = k; nf[nn++] = j; }
+        }
+      }
+      long long *t = fr; fr = nf; nf = t; nfr = nn; cnt += nn;
+      fprintf(stderr, "layer %d: %lld new, %lld reached of %lld\n", l, nn, cnt, G);
+    }
+    free(fr); free(nf);
   }
   FILE *o = fopen(argv[3], "wb");
   if (!o) { perror("out"); return 2; }
