@@ -71,5 +71,5 @@ but did not pay off.
 | SL(2,109) × Z991 | 1,283,265,720 | 2,566,531,440 | +11.57 % | 37.9 | 5,553 | 8,045 s | self OK; haarcheck2 VALID (955 s) |
 
 Not solved (each run sat on a cost-5 plateau, one uncovered α-orbit): PSL(2,139) × Z961 (μ 41.9, +12.19 %) and
-PSL(2,151) × Z751 (μ 43.3, +12.40 %), about 35,000 evaluations together; PSL(2,199) × Z331 (μ 50.8) was dropped
+PSL(2,151) × Z751 (μ 43.3, +12.40 %), 40,571 evaluations together (11 runs, plateau and restart modes); PSL(2,199) × Z331 (μ 50.8) was dropped
 after a screen (median 9 units after FIXPRE, far too few successes expected in the time left).
