@@ -117,6 +117,28 @@ pgl 19 × Z7 at once, so the orbit route is much more efficient here, but it is 
   - all-pairs BFS (`research/lifts/apsp.c` from the voltage branch, no symmetry assumed): diameter 10, 95,760 sources,
     connected, bipartite, 5-regular, no repeated edges or loops.
 
+## Batch E: orbit screen (k = 3, f = 2), 60 s per group, 22 groups with N ≥ 47,880
+
+Best cost after 60 s (fixed points in brackets). Only the orbit route is shown; random-S results are in batch A–C.
+
+| group | N | best | group | N | best |
+|---|---|---|---|---|---|
+| sl 19 × Z7 | 47,880 | 3 [17] | psl 37 × Z2 | 50,616 | 69 [35] |
+| pgl 11 × Z37 | 48,840 | 28 [11] | sl 37 × Z1 | 50,616 | 46 [35] |
+| psl 11 × Z74 | 48,840 | 51 [11] | pgl 37 × Z1 | 50,616 | 66 [35] |
+| sl 11 × Z37 | 48,840 | 71 [11] | sl 8 × Z95 | 47,880 | 58 [44] |
+| psl 29 × Z4 | 48,720 | 79 [59] | psl 13 × Z44, sl 13 × Z22, pgl 13 × Z22 | 48,048 | 463–4,701 [263] |
+| pgl 29 × Z2 | 48,720 | 96 [59] | psl 17 × Z20, sl 16 × Z12 and the other 17s | 48,960 | 206–378 [179] |
+| sl 23 × Z4 | 48,576 | 112 [95] | psl 27 × Z5 | 49,140 | 101 [134] |
+| pgl 23 × Z4 | 48,576 | 136 [95] | pgl 9 × Z67, sl 9 × Z67 | 48,240 | 205–330 [8–17] |
+
+Only the groups with few fixed points (pgl 11 × Z37, sl 11 × Z37, psl 11 × Z74 with 11 each) are close enough to
+spend 30 min on (batch F).
+
+## Batch F (started 10:44 UTC, 30 min each, orbit k = 3, f = 2)
+
+pgl 11 × Z37 (seeds 2 and 3), sl 11 × Z37 (seed 2), psl 11 × Z74 (seed 2).
+
 ## Status
 
 Record raised to 95,760 (pgl 19 × Z7, orbit k = 3, f = 2). Next: scan the orbit route over more groups at N > 47,880.
