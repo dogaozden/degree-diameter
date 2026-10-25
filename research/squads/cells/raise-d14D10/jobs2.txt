@@ -1,4 +1,6 @@
-# queue 2, started after queue 1: only N above the raised record (663,978,216)
+# queue 2 (chained after queue 1): PSL first, since PSL(2,q) has about q/2 fixed points vs q for SL(2,q)
+# (psl 263 x 73: fix 131, solved; sl 151 x 193: fix 149, cost 3 after 3209 evals). Only N above 663,978,216.
+3 4 2 | 14 10 3000 2 8 psl 163 307
 3 4 2 | 14 10 3000 2 8 psl 199 169
-3 4 2 | 14 10 3000 2 8 sl 137 259
 3 4 2 | 14 10 3000 2 8 psl 271 67
+3 4 2 | 14 10 3000 2 8 psl 169 277

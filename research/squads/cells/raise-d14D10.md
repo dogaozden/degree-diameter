@@ -43,3 +43,9 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 - PSL(2,157) x Z_343 (N = 663,659,724) is below the raised record: skipped (marker log in runs/).
 - queue 2 (jobs2.txt, chained after queue 1): PSL(2,199) x Z_169, SL(2,137) x Z_259, PSL(2,271) x Z_67.
   Rule: only N above the current record is worth a run.
+- queue 1 results: SL(2,151) x Z_193 (seed 2, 3000 s): best cost 3 after 3209 evals, NOT solved (fix = 149).
+  SL(2,137) x Z_259 was stopped after a few minutes (cost not recorded) so the queue could move to PSL candidates.
+- Observation: PSL(2,q) has about q/2 fixed points of alpha, SL(2,q) about q. The solved PSL(2,263) x Z73 had fix 131;
+  the unsolved SL(2,151) x Z193 had fix 149 and stuck at cost 3. Queue 2 is therefore PSL first:
+  PSL(2,163) x Z_307 (N 664,744,644), PSL(2,199) x Z_169, PSL(2,271) x Z_67, PSL(2,169) x Z_277 (all 3000 s, seed 2).
+  Started 08:27 UTC.
