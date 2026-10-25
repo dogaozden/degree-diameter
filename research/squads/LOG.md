@@ -83,3 +83,9 @@ Eight cards (research/squads/d10D5/r4/, scoreboard.jsonl), all aimed at 10 flags
   flag 6 (398, collinear with 65).
 Verdict: the round confirmed with eight independent methods that the 1-hole 10-flag states are local dead ends; no
 card reached 0. Opus's gain came from a different direction during the round (FLAGDEL, below in cells/d10D5.md).
+After the round (Opus): FLAGDEL, i.e. delete a freed flag's own edge and give it 3 hubs per side (+2 per converted
+flag; research/squads/cells/d10D5.md). With one converted flag the pipeline reached coverage and D1 0 quickly; the
+coset-0 endgame stalled at 2 pairs for every annealer and route-surgery search, and was closed by lns2.py (exact
+CP-SAT on sigma with coverage, D1 and all unmixed pairs' routes as constraints, with "best-flip" nu moves):
+**4,838, apsp VALID** (research/squads/d10D5/hubs/checks/d10D5_n4838_CHECK.md). The squad did not contribute to this
+step directly; its eight negative results are what moved the search off the 10th flag.
