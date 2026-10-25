@@ -358,7 +358,7 @@ def main():
         for im in mods:
             f.write(f'import {M}.{im}\n')
         f.write(f'\n/-! The {args.name} record: {n} vertices, degree {args.d}, diameter {args.D}. -/\n\n')
-        f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll.Orbit2\n\n')
+        f.write(f'namespace {ns}\n\nopen BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2\n\n')
         f.write(f'theorem hK : {n} ≤ 2 ^ {K} := by decide\n\n')
         f.write(f'theorem hL : LocalSpec {args.d} {n} nb cl := by\n  apply localSpec_of\n  intro u hu\n')
         case_split(f, 'u', vch, lambda ci, lo, k, ind: f'{ind}exact localOK_one local{ci:02d} u (by omega) (by omega)\n')
