@@ -61,3 +61,14 @@ Wave 2 result (3,600 s each, seed 2 or 3, none reached cost 0):
 
 Wave 3 (3,600 s each, started 09:57 UTC): sl 29 73 with ORBW=3 (seed 4); sl 29 73 with RESTART=1 (seed 5); sl 29 73 (seed 6);
 prod psl 3 sl 13 67 (μ 31.8, the only group between the record and 1,762,560; its random-S min is 78–84, worse than the record's 42).
+
+Wave 3 result (3,600 s each, none reached cost 0; started 09:57 UTC):
+
+| group | μ | variant | seed | best cost | evals |
+|---|---|---|---|---|---|
+| sl 29 73 | 36.9 | RESTART=1 | 5 | **8** | 1.14·10⁶ |
+| sl 29 73 | 36.9 | plain | 6 | 12 | 1.13·10⁶ |
+| sl 29 73 | 36.9 | ORBW=3 | 4 | 18 | 1.12·10⁶ |
+| prod psl 3 sl 13 67 | 31.8 | plain | 1 | 20 | 6.9·10⁵ |
+
+Wave 4 (3,600 s each, started 11:55 UTC, the last planned hour): sl 29 73 with RESTART=1, seeds 7–10.
