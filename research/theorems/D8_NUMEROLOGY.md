@@ -42,7 +42,7 @@ matchings from points to lines ("hops", degree q+1+j) and take an M-fold voltage
      matchings. In the table range the multi-hop walks still add tens per pair, so the reading is not excluded; at
      q = 3 it gives K = 5 (25 copies, more than DGQ's formula) after annealing.
    - (§1.5, new) With one matching, zero holonomy and regular labels, the tight value q + 4 cannot be certified by
-     guaranteed walks for any q ≥ 11 (Theorem 2), so the bound of §1.2 drops to q + 3 there; for q = 7, 8, 9 the
+     guaranteed walks for any q ≥ 9 (Theorem 2), so the bound of §1.2 drops to q + 3 there; for q = 7, 8 the
      same holds when each point and line misses exactly one residue (Theorem 1). Both are spectral inequalities on the
      incidence matrix of H(q). So DGQ's (13,8) = (q+4)·|GH(11)| needs walks or holonomy beyond §1.2, or labels
      that repeat around a point or a line.
@@ -228,12 +228,12 @@ random hop labels and designed only the flag voltages; that fails already at K =
 annealed polygon cover × Z_4 reaches DGQ's value exactly (20 copies, 54,600 vertices,
 `calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 (25 copies) stayed at 3,194 unreached pairs after 13 minutes.
 
-### 1.5 No tight one-matching design: q ≥ 11 in general, q ≥ 7 for one-miss labels (`tight_j1.py` → `tight_j1_out.txt`, `tight_j1_robust.py` → `tight_j1_robust_out.txt`)
+### 1.5 No tight one-matching design: q ≥ 9 in general, q ≥ 7 for one-miss labels (`tight_j1.py` → `tight_j1_out.txt`, `tight_j1_robust.py` → `tight_j1_robust_out.txt`)
 
 §1.2 shows that one hop matching, zero holonomy and regular labels give M ≤ q + 4 if only guaranteed walks are used,
 and §1.3 kills the tight case M = q + 4 when the label classes are equitable. DGQ's (13,8) value is exactly
 (q + 4)·|GH(q)| at q = 11, so the non-equitable case matters. Theorem 1 closes it for q ≥ 7 under one natural
-assumption; Theorem 2 drops the assumption for q ≥ 11.
+assumption; Theorem 2 drops the assumption for q ≥ 9.
 
 *Setting.* M = q + 4; labels t on points, l on lines, same distribution (n_c points and n_c lines with label c;
 automatic, since l(y) = t(s^{-1}(y))),
@@ -267,43 +267,49 @@ where s = a_{−d} + n_{−d} is the number of zeros of N u_d (the left side is 
 s ≤ 2P/(q+1) ≤ P/2 by (i). So the left side is at least 2P(q+1)/(q+3)². For q ≥ 7 this exceeds the right side
 (`tight_j1_out.txt`: 0.160 P against 0.142 P at q = 7, 0.122 P against 0.068 P at q = 11). ∎
 
-*Theorem 2 (no one-miss assumption).* For q ≥ 11 no regular labelling with M = q + 4 has every point–line pair
-covered by guaranteed walks. With §1.2: for q ≥ 11, one matching, zero holonomy, regular labels and guaranteed walks
+*Theorem 2 (no one-miss assumption).* For q ≥ 9 no regular labelling with M = q + 4 has every point–line pair
+covered by guaranteed walks. With §1.2: for q ≥ 9, one matching, zero holonomy, regular labels and guaranteed walks
 give at most q + 3 copies.
 
-*Proof.* Same setting without one-miss. For g ≠ 0 let A_g (B_g) be the points (lines) whose own set X(x) (Y(y))
-misses g. Let κ_d be the points labelled −d that lie on a line labelled d, and ρ_d the lines labelled d that contain a
-point labelled −d (the "coincidences": X(x) or Y(y) repeats a residue); k_d = |κ_d|, r_d = |ρ_d|.
-(a) Counting. |A_g| = P − n_g − (q+1)n_{−g} + k_{−g} and |B_g| = P − n_g − (q+1)n_{−g} + r_g. If A_g and B_g are both
-non-empty, then as in (i) t is constant on A_g, l is constant on B_g, and |A_g|, |B_g| ≤ P/(q+1). Call g of type A if
-A_g is empty and of type B if B_g is empty but A_g is not; there are c_A and c_B of them. For type A, |B_g| = r_g − k_{−g};
-for type B, |A_g| = k_{−g} − r_g. Summing |A_g| over the q + 3 nonzero g (the sum is P + (q+2)n_0 + Σ k) against these
-bounds gives Σ_{g not of type B} k_{−g} + Σ_{g of type B} r_g ≤ S := (2 − c_A − c_B)P/(q+1) − (q+2)n_0, and the line side
-gives the same with A and B (and k, r) exchanged. So c_A + c_B ≤ 2, and there are O(P/q) coincidences.
+*Proof.* Same setting without one-miss; below P = 1 (every count is a fraction of the number of points). For g ≠ 0 let
+A_g (B_g) be the points (lines) whose own set X(x) (Y(y)) misses g. Let κ_d be the points labelled −d that lie on a
+line labelled d, and ρ_d the lines labelled d that contain a point labelled −d (the "coincidences": X(x) or Y(y)
+repeats a residue). By regularity such a point lies on exactly one line labelled d, which is in ρ_d, and such a line
+has exactly one point labelled −d, which is in κ_d; so k_d := |κ_d| = |ρ_d|.
+(a) Counting. |A_g| = 1 − n_g − (q+1)n_{−g} + k_{−g} and |B_g| = 1 − n_g − (q+1)n_{−g} + k_g. If A_g and B_g are both
+non-empty, then as in (i) t is constant on A_g, l is constant on B_g, and |A_g|, |B_g| ≤ 1/(q+1). Call g of type A if
+A_g is empty and of type B if B_g is empty but A_g is not; there are c_A and c_B of them. For type A, |B_g| = k_g − k_{−g};
+for type B, |A_g| = k_{−g} − k_g. Summing |A_g| over the q + 3 nonzero g (the sum is 1 + (q+2)n_0 + Σ k) against these
+bounds gives Σ_{g not of type B} k_{−g} + Σ_{g of type B} k_g ≤ S := (2 − c_A − c_B)/(q+1) − (q+2)n_0, and summing |B_g|
+gives Σ_{g not of type A} k_g + Σ_{g of type A} k_{−g} ≤ S. So c_A + c_B ≤ 2, and there are O(1/q) coincidences.
 (b) Identity. Keeping the coincidences, (ii) becomes N u_d = 1 − π_{−d} − w_{−d} + κ_d and
-N^T w_{−d} = 1 − λ_d − u_d + ρ_d (now π_g, λ_g are the indicators of A_g, B_g, and κ_d, ρ_d are also indicator vectors),
-so (N^T N − I)u_d = q·1 + z_d with z_d = λ_d − μ_d − ρ_d + ν_d, μ_d = N^T π_{−d}, ν_d = N^T κ_d.
-(c) One label. Call d good if d is not of type A and −d is not of type B. Then λ_d has b ≤ P/(q+1) ones, μ_d is 0/1
-with A = (q+1)|A_{−d}| ones (or is 0), ν_d is 0/1 with K = (q+1)k_d ones (the points of κ_d all have label −d), and
-λ_d, ρ_d are disjoint. Expanding the square of this signed sum of 0/1 vectors and dropping the negative cross terms,
-‖z_d − mean‖² ≤ x − x²/P + 2b + 2K + 2⟨λ_d, ν_d⟩ + 2⟨ρ_d, μ_d⟩ ≤ P/4 + 2P/(q+1) + 4K + 2r_d (x = A + r_d − b − K).
-By (iii), s_d(P − s_d)/P ≤ q/(q−1)²·‖z_d − mean‖², where s_d = P − (q+1)n_d is the number of zeros of N u_d; and
-s_d ≤ 2P/(q+1), so the left side is at least s_d(q−1)/(q+1). Hence for every good d
+N^T w_{−d} = 1 − λ_d − u_d + ρ_d (now π_g, λ_g are the indicators of A_g, B_g, and κ_d, ρ_d also stand for indicator
+vectors), so (N^T N − I)u_d = q·1 + z_d with z_d = λ_d − μ_d − ρ_d + ν_d, μ_d = N^T π_{−d}, ν_d = N^T κ_d.
+(c) One label. Call d good if d is not of type A and −d is not of type B. Then λ_d has b_d ≤ 1/(q+1) ones, μ_d is 0/1
+with A_d = (q+1)|A_{−d}| ones (or is 0), and ν_d is 0/1 (the points of κ_d all have label −d) and contains ρ_d, so
+z_d = λ_d − μ_d + ν'_d with ν'_d = ν_d − ρ_d a 0/1 vector with q·k_d ones. Expanding the square and dropping the
+negative cross terms, with x_d = A_d − b_d − qk_d,
 
-  s_d ≤ (q+1)q/(q−1)³ · (P/4 + 2P/(q+1) + 4(q+1)k_d + 2r_d).
+  ‖z_d − mean‖² ≤ b_d + A_d + qk_d + 2⟨λ_d, ν'_d⟩ − x_d² ≤ x_d − x_d² + 4b_d + 2qk_d.
 
-(d) All labels. Σ_{d≠0} s_d = 2P + (q+1)n_0. A d that is not good has s_d ≤ P/(q+1) (if −d is of type B) or
-s_d ≤ 2P/(q+1), so the good d carry at least 2P − (c_B + 2c_A)P/(q+1), while by (a) Σ_good k_d ≤ S and Σ_good r_d ≤ S.
-Summing (c):
+By (iii), s_d(1 − s_d) ≤ q/(q−1)²·‖z_d − mean‖², where s_d = 1 − (q+1)n_d is the number of zeros of N u_d; and
+s_d ≤ 2/(q+1), so the left side is at least s_d(q−1)/(q+1).
+(d) Sum over the good d (at most q + 3 of them). Left: Σ_{d≠0} s_d = 2 + (q+1)n_0, and a d that is not good has
+s_d ≤ 1/(q+1) (if −d is of type B) or s_d ≤ 2/(q+1), so Σ_good s_d ≥ 2 − (c_B + 2c_A)/(q+1). Right: Σ_good k_d ≤ S by
+(a); Σ_good b_d ≤ Σ_{d not of type A} |B_d| ≤ 1 + (q+2)n_0 + S = 1 + (2 − c_A − c_B)/(q+1) =: β by the second sum in
+(a); and X := Σ_good x_d ≥ X_0 := q + 1 − c_A − β, because Σ_good |A_{−d}| ≥ 1 − c_A/(q+1) + Σ_good k_d (the sum of
+|A_g| from (a) minus the g that are left out). Since Σ_good (x_d − x_d²) ≤ X − X²/(q+3), which decreases for
+X ≥ (q+3)/2,
 
-  2P − (c_B + 2c_A)P/(q+1) ≤ (q+1)q/(q−1)³ · ((q+3)(P/4 + 2P/(q+1)) + (4q+6)S).
+  ((q−1)/(q+1))·(2 − (c_B + 2c_A)/(q+1)) ≤ q/(q−1)² · (X_0(1 − X_0/(q+3)) + 4β + 2q(2 − c_A − c_B)/(q+1)).
 
-In the worst case (c_A = c_B = n_0 = 0) the right side is at most (0.33 + 15.4/(q−1))P, which is 1.87P at q = 11 and
-decreases with q, against 2P on the left. `tight_j1_robust_out.txt` checks every case (c_A, c_B) for every q up to
-10^5, and checks the identities of (a)–(c) exactly on random regular labellings of H(3) and H(4). ∎
+This is false in every case (c_A, c_B) for q = 9 and q = 11 (q = 9, c_A = c_B = 0: 1.60 on the left, 1.51 on the
+right; `tight_j1_robust_out.txt` checks every q up to 10^5), and for q ≥ 13 directly: X_0 lies between q − 3 and q, so
+the right side is at most 14.6·q/(q−1)² ≤ 1.32, while the left side is at least 1.46. The identities and the bounds
+of (a)–(c) are also checked exactly on random regular labellings of H(3) and H(4) (856 coincidence points). ∎
 
-At q = 7, 8, 9 the right side is 3.5P, 2.86P, 2.43P, so there the general case is open (the one-miss case is closed
-by Theorem 1).
+At q = 7 and 8 the inequality does not close (2.08 against 1.50, and 1.75 against 1.56), so there the general case
+is open; the one-miss case is closed by Theorem 1.
 
 *Consequence.* DGQ's (13,8) graph, if it is a lift of H(11) plus one matching with 15 copies, either uses walks that
 exist only for special matchings, or holonomy, or labels that repeat around a point or a line. Optimization meets or passes q + 4 at small q (q = 2: 10 copies, q = 3: 7, lanneal);
@@ -353,7 +359,7 @@ Largest tested M with 0 unreached pairs (liftdiam, all sources unless "sampled")
 | j = 2, parallel hops (2-factor of the incidence graph) | 10 (14: 6) | | | | |
 | j = 2, annealing on the exact diameter (lanneal2, finished by squad c3 on Oct 25) | | 20 (21: 36) | | | |
 | j = 1, random (models_j1 free/holo) | 4 (5: 4–10) | 4 (5: 10–16) | 4 (5: squad c6) | (9: ≈2.2M, sampled; squad d8) | q+4: 7, 8, 9, 11 |
-| j = 1, annealing on the exact diameter (lanneal) | 7 (8: 16) | (7, 8: run in progress) | | | |
+| j = 1, annealing on the exact diameter (lanneal; at q = 4 C_7-symmetric qanneal3/4) | 7 (8: 16) | (8: 12, §1.5) | | | |
 
 At q = 3 random structures still reach DGQ's value (20); from q = 5 on the gap opens and grows with q. DGQ's
 construction is structured and valid for all q in the table range.
@@ -505,9 +511,8 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 - A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table.
   (13,8) and (15,8) now hold 6,999,552 and 18,128,880 (group searches), so a j = 3 version would need at least 53
   copies of GH(9) or 52 of GH(11) to matter there.
-- Theory: close §1.5 for q = 7, 8, 9 without the one-miss assumption (Theorem 2 needs q ≥ 11; summing the inequality
-  over all labels instead of bounding each one separately should gain a constant), and look for a spectral version
-  of the j = 2 count of §1.2; the
+- Theory: close §1.5 for q = 7, 8 without the one-miss assumption (Theorem 2 needs q ≥ 9; the loss is in dropping
+  the cross terms of (c)), and look for a spectral version of the j = 2 count of §1.2; the
   combinatorial bound 1 + 2(q+1)(q+4)/(q−3) is far above DGQ's values, and the j = 2 case is not tight, so the §1.5
   argument does not carry over directly.
 
@@ -536,7 +541,7 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 | qanneal3.c | eq/*.txt, calib/*.txt | qanneal2 plus equivariant hop swaps, one or two matchings, and moves that keep b mod 5 (polygon cover × Z_K) |
 | j2bound.py | j2bound_out.txt | §1.2, the two-matching count |
 | tight_j1.py | tight_j1_out.txt | §1.5 Theorem 1 (one-miss labels, q ≥ 7) |
-| tight_j1_robust.py | tight_j1_robust_out.txt | §1.5 Theorem 2 (all regular labels, q ≥ 11): the final inequality in every case, and exact checks of the identities on random regular labellings of H(3), H(4) |
+| tight_j1_robust.py | tight_j1_robust_out.txt | §1.5 Theorem 2 (all regular labels, q ≥ 9): the final inequality in every case, and exact checks of the identities on random regular labellings of H(3), H(4) |
 | qanneal4.c | eq/*.txt | qanneal3 plus repair moves (walks of depth 3 from the source and 4 from the target, matching C-part, one edge's Z-part fixed) |
 | reseed.py | — | copy the Z_M voltages of a solved quotient base into a base with larger M (as a starting point) |
 | expand_lift.py | — | expand a liftdiam base into a plain edge list for apsp.c |
