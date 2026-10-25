@@ -389,49 +389,66 @@ which is (2/k)√μ when balanced. So at odd D:
 
 ## 4. The corrected rule
 
-For α of order k with α(S) = S, f fixed generators and m orbits of size k:
+Second-session form. For α of order k with α(S) = S, f fixed generators and m orbits of size k:
 
-    μ_A ≈ [ μ/k  +  Σ_{1 ≠ H ≤ ⟨α⟩} #{x : Stab(x) = H}·(|H|/k)·e^{−λ/|H|}
-              +  [D odd]·Σ_{involutions β ∈ ⟨α⟩} (2/k)·|Anti(β) \ Fix(β)|·e^{−λ/2} ]
-          × exp( λ · Σ_{β} Σ_{j : R_j(β) > R*} R_j(β)·c_j )
+    μ_A ≈ μ/k  +  Σ_{1 ≠ H ≤ ⟨α⟩} #{x : Stab(x) = H}·(|H|/k)·e^{−λ/|H|}
+               +  [D odd]·Σ_{involutions β ∈ ⟨α⟩} (2/k)·( |Anti(β) ∩ Im L_β|·e^{−λ/2−π_β} + |Anti(β) \ Im L_β|·e^{−λ/2} )
 
-with R_j(β) = ρ_β Δ(Δ−1)^{2j−1}/(4j), c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) and R* ≈ 5. Families with R_j ≤ R* are
-avoided by the search at no measurable cost. Plug μ_A into the effort law. `order2/rule.py` implements this and prints
-the 24 worked cases of `out/rule_table.txt`, each with its observed outcome.
+with π_β = P_ℓ·|Fix(β)|/N palindromic shots (§2.8, §3.5). Anti(β) is taken outside Fix(β), and
+|Im L_β| = N/|Fix(β)|. Then:
+- **Ranking.** Among symmetries whose spaces are large enough, prefer the smallest μ_A, and estimate the anneal
+  effort with the effort law. On the twelve odd-D screens of `out/rule_table2.txt` the measured p1 is 1.2–1.7 times
+  μ_A, and the order is always right.
+- **Existence.** The space must contain a solution: roughly ln(#classes) − μ_A ≳ 0, with
+  #classes = #S·|Stab(S)|/|N_E(⟨α⟩)| (§2.7). This is what decided (6,8): order 3 has ln 8,773 = 9.1 against
+  μ_A = 12.9, order 2 has ln(3.4·10⁷) = 17.3 against 16.0 (§3.4). The absolute value of e^{−μ_A} is off by several
+  nats at (6,8) (2.7 and 5.4 too pessimistic for the two order-2 spaces). So treat this as a screen, and where N is
+  small, count instead: sample the space and group the near misses into classes.
+- **Twisted cycles** (even and odd D, any involution in ⟨α⟩). A solution keeps n* = R_j·e^{−μ_A⁰λc_j} twisted
+  4j-cycles, where R_j = ρ_β Δ(Δ−1)^{2j−1}/(4j) and c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) (§3.1). This holds on 6 anneal
+  solutions and 17 uniform ones. The first session also charged a symmetry Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats, or a
+  penalty factor for families with R_j > R* ≈ 5. **That charge is withdrawn as a statement about P(valid)** (§3.4). It
+  did predict the order of the four-way anneal at (6,8) (§5.4). Keep it, if at all, as a tie-breaker for anneal
+  effort between involutions at small Δ. `rule.py` still prints it (column gfnat), and the first session's table
+  (`out/rule_table.txt`) is unchanged.
 
-The principled form of the twisted-cycle term is the generating-function charge Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats,
-with n* = R_j e^{−μ_A⁰λc_j} cycles left in a solution (§3.1). rule.py prints both forms. The n* half is confirmed on
-all six solutions. The charge (nats) half is confirmed by the four-way test at (6,8) (§5.4): it gets the ranking right
-where the uncharged rule gets it backwards.
+`order2/rule.py` implements both forms: `python3 rule.py` prints the first session's 24 cases (`out/rule_table.txt`)
+and `python3 rule.py --second` the odd-D cases with the palindrome term (`out/rule_table2.txt`).
 
 In words:
 
 1. Clumps of size k divide μ by k (BEYOND_RANDOM).
 2. Each subgroup H of ⟨α⟩ pays for its fixed points at rate e^{−λ/|H|}. This is bounded for Frobenius-type α on
    SL(2,p^e) for every e, and for k = 2, 3 conjugation in SL(2,q).
-3. **Odd D:** every involution in ⟨α⟩ also pays for its Anti set. For k = 2 the Fix and Anti terms together are at
-   least (|Fix| + |Anti|)e^{−λ/2} ≥ 2√μ (by 2.4), reached only by a balanced involution. For conjugation-type
-   involutions it is far more and kills the method. With k = 3 available, no even order should be used at odd D.
-4. **Even D:** an involution's twisted cycles are a Poisson field with means R_j ∝ ρ(Δ−1)^{2j}. The short families
-   are avoided when R_j ≲ 5. The long ones cost e^{λ R_j c_j} each. They are negligible when ρ is tiny (Frobenius
-   involutions, ρ ≈ 1/|SL(2,p^{e/2})|) and about 1.3 at (6,8) with ρ = 1/24.
-5. A symmetry is worth using when the resulting μ_A, and the orbit space ln #S ≈ m ln(N/k) − ln m!, beat the
-   alternatives.
+3. **Odd D:** every involution β in ⟨α⟩ also pays for its Anti elements, at e^{−λ/2} each, except where the
+   palindromic words cover them. Those land on Im L_β, giving π ≈ √λ shots each when β is tight and balanced
+   (|Fix| ≈ |Anti| ≈ √N).
+   - Conjugation-type involutions of SL(2,q)×Z_n are far from balanced: |Anti| ≈ q²·|Anti_Z|, so π ≪ 1 and the term
+     kills the method.
+   - Frobenius-type or swap-type involutions with a balanced cyclic part pay only their fixed points,
+     (2/k)|Fix(β)|e^{−λ/2} ≈ (2/k)√μ.
+   - So order 2 never beats order 3 at odd D (μ/2 + √μ > μ/3), but **order 6 does** (μ/6 + √μ/3 < μ/3 once μ ≳ 15).
+     The first session's "with k = 3 available, no even order should be used at odd D" is withdrawn for k ≥ 6.
+4. **Even D:** no Anti term. An involution's twisted cycles are a Poisson field with means R_j ∝ ρ(Δ−1)^{2j}; the
+   search avoids the short ones. They decide which sets are solutions, not whether any exist (point 5 below).
+5. **Space:** a symmetry is usable only if its orbit space has enough classes (existence condition above). At small
+   Δ and small N this, not μ_A, decides. That is why order 2 beat order 3 at (6,8).
 
-How well it predicts (`out/rule_table.txt`):
-- Every odd-D k = 2 failure in the squad logs gets μ_A ≫ μ (96–136 against μ = 25–67).
-- Every even-D k = 2 failure outside (6,8) gets μ_A 1.8–3.2 times the order-3 value at the same cell and order:
-  (6,10), (7,8), (8,8), (9,8).
-- The order-6 runs at (13,8) are predicted to within their scatter.
-- At (6,8) the four-way test (§5.4, 24 runs) ranks the symmetries exactly as the charged rule does:
-  Frobenius 5/6, conjugation 2/6, r = 11 2/6, r = 23 0/6. The uncharged rule ranks Frobenius last.
-  - Absolute efforts are within the usual factor of 5 for Frobenius (median about 4·10⁵ against 6·10⁶ predicted).
-  - For conjugation, the solved seeds took 10⁵–10⁶ evaluations, and the median is above 3.7·10⁶.
+How well it predicts:
+- `out/rule_table.txt`: every odd-D k = 2 failure in the squad logs gets μ_A ≫ μ (96–136 against μ = 25–67). Every
+  even-D k = 2 failure outside (6,8) gets μ_A 1.8–3.2 times the order-3 value at the same cell and order: (6,10),
+  (7,8), (8,8), (9,8). The order-6 runs at (13,8) are predicted to within their scatter.
+- `out/rule_table2.txt`: at odd D the rule orders order 6 < order 3 < order 2 < random correctly on SL(2,64) and
+  SL(2,8)² at (12,7), and order 6 < order 3 on SL(2,64)×Z403 at (15,9).
+- At (6,8) the rule, with or without the charge, misjudges P(valid) by several nats (§3.4). The four-way anneal test
+  (§5.4) follows the charged ranking, but the solution counts do not.
 
 ### 4.1 Choosing a symmetry: a checklist for future searches
 
-1. **Odd D:** use odd k only (3, or 5 with small fixed sets). Any involution in ⟨α⟩ brings ≥ N/|Fix| Anti targets
-   at rate e^{−λ/2}.
+1. **Odd D:** odd k (3, or 5 with small fixed sets), or k ≥ 6 whose involution β is tight and balanced
+   (|Fix(β)|·|Anti(β)| = N with both near √N). The palindromes then cover Anti(β) (§3.5). Never k = 2. On Z_n,
+   balance means α^{k/2} fixes one part and negates another of about the same size. Example: Z403 = Z13×Z31 with r of
+   order 3 mod 13 and order 6 mod 31, so α³ fixes Z13 and negates Z31.
 2. **Even D:** any k. For every subgroup H ≤ ⟨α⟩, count the elements whose stabiliser is exactly H. Each costs
    (|H|/k)·e^{−λ/|H|}, the miss rate p^{1/|H|} checked in §5.1.
 3. For every involution β ∈ ⟨α⟩, compute ρ = |Anti(β)|/N (≥ 1/|Fix(β)|). Then:
@@ -451,7 +468,10 @@ How well it predicts (`out/rule_table.txt`):
    cyclic quotient. Primes p ≡ 1 mod k work; Z9 does not for k = 6 (its order-3 automorphisms fix Z3); Z2 is harmless.
    Avoid large cyclic factors next to a small simple group (SL(2,5)²×Z247 and SL(2,16)×Z145 screen 3–6× worse than
    the rule's μ_A).
-7. **Screen before annealing:** RANDORB's lower tail in clump units (cost/k) ranks candidates the way the anneals
+7. **When N is small, count the space before trusting μ_A** (second session). Sample 10⁶–10⁷ symmetric sets,
+   group the near misses into classes (`classes68.py`), and compare #classes with the near-miss classes found. At
+   (6,8) this showed that order 3 has no solution at all on SL(2,25) (§3.4).
+8. **Screen before annealing:** RANDORB's lower tail in clump units (cost/k) ranks candidates the way the anneals
    did. All runs of this session (random-symmetric p10 from 60–200 samples; the rule's μ_A; anneal outcome):
 
    | cell, group, order | p10 / k | rule μ_A | anneals |
@@ -658,6 +678,47 @@ Going through the table:
     about 7× fewer evaluations.
   - The effort law predicts about 1.4·10⁴ evaluations. At about 1.2 s each (the (13,10) record run took 1.1 s per
     evaluation at N = 3.3·10⁸) that is 5–20 hours on one core, beyond this session.
+
+### 5.5 Odd D: order 6 against order 3 (second session)
+
+**Prediction** (§3.5, §4): at odd D, an order-6 symmetry whose involution is tight and balanced has fewer uncovered
+clumps than order 3, because the palindromes remove its Anti penalty. Order 2 stays worse than order 3.
+
+**Screens.** Random symmetric sets; cost = uncovered elements on both sides; clumps = cost/2k. The rule column is
+`rule.py --second` (`out/rule_table2.txt`). Logs: `runs/r2/ro127_*.log`, `ro149_*.log`, `ro159_*.log`. Samples per
+row: 3,000 at (12,7), 40 at (14,9), 16 at (15,9).
+
+| cell, group (N; μ) | symmetry | rule μ_A | min | p1 | p10 (clumps) |
+|---|---|---|---|---|---|
+| (12,7) SL(2,64) (262,080; 154.6) | order 6, Frobenius x ↦ x² | 34.0 | 26.2 | 41.7 | 57.6 |
+| | order 3, Frobenius x ↦ x⁴ | 56.5 | 66.2 | 75.2 | 92.8 |
+| | order 3, conjugation | 56.7 | 61.3 | 79.5 | 98.3 |
+| | order 2, Frobenius x ↦ x⁸ | 90.0 | 124 | 144.5 | 180 |
+| | random | 154.6 | 223 | 247 | 278.5 |
+| (12,7) SL(2,8)² (254,016; 118.3) | order 6, swap∘conj | 28.7 | 27.0 | 35.6 | 50.3 |
+| | order 3, conjugation (c, c′) | 45.6 | 53.0 | 69.3 | 87.5 |
+| | order 2, swap | 70.4 | 99 | 118 | 153 |
+| | random | 118.3 | 175 | 202 | 232 |
+| (14,9) PSL(2,25)² (60,840,000; 29.9) | order 6, swap∘conj, f = 2 | – | 15.0 | – | 19.3 |
+| | order 3, conjugation, f = 2 | – | 29.5 | – | 35.0 |
+| (15,9) SL(2,64)×Z403 (105,618,240; 30.8) | order 6, Frobenius, 6+6+3 | 7.2 | 3.2 | – | 6.3 |
+| | order 3, Frobenius x ↦ x⁴ | 10.7 | 10.3 | – | 13.8 |
+
+- In every pair, order 6 has about half the clumps of order 3 (ratio 0.45–0.56 at p1 or p10). The measured order is
+  the rule's in every group.
+- The first session's Anti term would have added 3–11 clumps to each order-6 row. Measured, they carry less than one.
+- The product group PSL(2,25)² mixes poorly at (14,9): the order-3 median, 242, is 4× the Poisson value. So it is no
+  candidate, although its order is +4.8 % over the record.
+
+**Candidates near the D = 9 records** (balanced involution, Δ ≥ 12; rule values from `rule.py`):
+- **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
+  211,236,480 vertices, +1.5 % over 208,029,120. Order 6, μ_A = 7.2, about 5·10³ evaluations; order 3, μ_A = 10.7.
+  Anneal: RESULT-159.
+- (13,9) SL(2,64)×Z133, Z133 = Z7×Z19, with α³ fixing Z7 and negating Z19. +2.9 %, μ = 49.9. Order 6, μ_A = 11.0,
+  about 4·10⁴ evaluations; order 3, μ_A = 17.3, about 8·10⁵. The record group SL(2,103)×Z31 has μ_A = 12.0 with
+  order 3, so this is predicted easier than the record was, at a larger N.
+- (14,9) PSL(2,25)²: +4.8 %, but poor mixing (above).
+- (12,9) and (16,9): no tight balanced group found within +10 % of the record.
 
 ## 6. Ranked conclusions
 

@@ -30,9 +30,17 @@ def words(d, D):
     return sum(d * (d - 1) ** (2 * i) for i in range(k))
 
 
-def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False):
+def palindromes(d, D):
+    """sigma-palindromic A-words of even length <= D - 1 (odd D, no fixed letters): ORDER2.md 2.8."""
+    return sum(d * (d - 1) ** (j - 1) for j in range(1, (D - 1) // 2 + 1))
+
+
+def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None):
     """stab: dict {|H|: number of elements with stabiliser of order |H| in <alpha>} for |H| > 1 (cyclic <alpha>,
-    so a subgroup is determined by its order).  anti: |Anti(beta)| minus its intersection with Fix (k even)."""
+    so a subgroup is determined by its order).  anti: |Anti(beta)| minus its intersection with Fix (k even).
+    fixb: |Fix(beta)| of the involution beta (odd D): the palindromic words land on Im L, |Im L| = N/|Fix(beta)|,
+    giving each of its elements pi = P |Fix(beta)| / N single shots (ORDER2.md 2.8, 3.5).  Without fixb the first
+    session's term (2/k) |Anti| e^(-lambda/2) is used."""
     W = words(d, D)
     lam = W / N
     mu = N * math.exp(-lam)
@@ -45,6 +53,11 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False):
         fixed += cnt * (h / k) * math.exp(-lam / h)
     # odd D: x in Anti(beta) is fixed by beta* = inversion o beta (stabiliser of order 2 in A): 2/k exp(-lambda/2) each
     anti_cost = (2.0 / k) * anti * math.exp(-lam / 2) if (D % 2 and k % 2 == 0) else 0.0
+    anti_old = anti_cost
+    if D % 2 and k % 2 == 0 and anti and fixb:
+        img = min(anti, N / fixb)
+        pi = palindromes(d, D) * fixb / N
+        anti_cost = (2.0 / k) * (img * math.exp(-lam / 2 - pi) + (anti - img) * math.exp(-lam / 2))
     ell = D - 1
     rel = []
     pen = 0.0
@@ -66,7 +79,7 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False):
     penalty = math.exp(lam * pen)
     muA = mu0 * penalty
     evals = 1e5 * math.exp((muA - 13) / 2)
-    out = dict(lam=lam, mu=mu, generic=generic, fixed=fixed, anti=anti_cost, penalty=penalty, muA=muA, evals=evals,
+    out = dict(lam=lam, mu=mu, generic=generic, fixed=fixed, anti=anti_cost, anti_old=anti_old, penalty=penalty, muA=muA, evals=evals,
                mu0=mu0, gf=gf, evals0=1e5 * math.exp((mu0 - 13) / 2), relators=rel)
     return out
 
@@ -105,6 +118,34 @@ CASES = [
 ]
 
 
+# Second session (ORDER2.md 3.5, 5.5): odd-D screens, with |Fix(beta)| for the palindrome term.  Observed = lower
+# tail of random symmetric S in clumps (cost / 2k at odd D), from runs/r2/ro127_*.log, ro149_*.log, ro159_*.log.
+# name, d, D, N, k, stab, anti (outside Fix), fixb = |Fix(beta)|, observed
+CASES2 = [
+    ("(6,9) SL(2,25)xZ4, conj order 2", 6, 9, 62400, 2, {2: 48}, 2596, 48, "Anti missed at 0.69-0.85 sqrt(p)"),
+    ("(6,9) SL(2,25)xZ4, Frobenius order 2", 6, 9, 62400, 2, {2: 240}, 516, 240, "Anti missed at 0.48-0.70 sqrt(p)"),
+    ("(12,7) SL(2,64), Frobenius order 6", 12, 7, 262080, 6, {6: 6, 3: 54, 2: 498}, 456, 504, "p1 41.7, p10 57.6 clumps"),
+    ("(12,7) SL(2,64), Frobenius order 3", 12, 7, 262080, 3, {3: 59}, 0, None, "p1 75.2, p10 92.8"),
+    ("(12,7) SL(2,64), conjugation order 3", 12, 7, 262080, 3, {3: 62}, 0, None, "p1 79.5, p10 98.3"),
+    ("(12,7) SL(2,64), Frobenius order 2", 12, 7, 262080, 2, {2: 503}, 456, 504, "p1 144.5, p10 180"),
+    ("(12,7) SL(2,64), random S", 12, 7, 262080, 1, {}, 0, None, "p1 247 (2-element clumps)"),
+    ("(12,7) SL(2,8)^2, swap-conj order 6", 12, 7, 254016, 6, {6: 9, 3: 72, 2: 495}, 440, 504, "p1 35.6, p10 50.3"),
+    ("(12,7) SL(2,8)^2, conj order 3", 12, 7, 254016, 3, {3: 80}, 0, None, "p1 69.3, p10 87.5"),
+    ("(12,7) SL(2,8)^2, swap order 2", 12, 7, 254016, 2, {2: 503}, 440, 504, "p1 118, p10 153"),
+    ("(15,9) SL(2,64)xZ403, Frobenius order 6, 6+6+3", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 6546}, 16056, 6552, "min 3.2, p10 6.3 clumps (16 samples)"),
+    ("(15,9) SL(2,64)xZ403, Frobenius order 3", 15, 9, 105618240, 3, {3: 59}, 0, None, "min 10.3, p10 13.8 (16 samples)"),
+]
+
+
+def main2():
+    print("second session (ORDER2.md 3.5, 5.5): odd D, mu_A0 = mu/k + fixed + anti, anti with the palindrome term;")
+    print("anti_old = the first session's (2/k)|Anti|e^(-lambda/2)")
+    print(f"{'case':52s} {'lam':>5s} {'mu':>6s} {'mu/k':>6s} {'fixed':>6s} {'anti_old':>8s} {'anti':>6s} {'mu_A0':>6s} {'evals0':>8s}  | observed")
+    for name, d, D, N, k, stab, anti, fixb, obs in CASES2:
+        r = rule(d, D, N, k, stab, anti, fixb=fixb)
+        print(f"{name:52s} {r['lam']:5.2f} {r['mu']:6.1f} {r['generic']:6.2f} {r['fixed']:6.2f} {r['anti_old']:8.2f} {r['anti']:6.2f} {r['mu0']:6.1f} {r['evals0']:8.2g}  | {obs}")
+
+
 def main():
     print(f"{'case':52s} {'lam':>5s} {'mu':>6s} {'mu/k':>6s} {'fixed':>6s} {'anti':>6s} {'pen':>5s} {'mu_A':>6s} {'evals':>8s} {'evals0':>8s} {'gfnat':>5s}  | observed")
     print("  mu_A = (mu/k + fixed + anti) x pen; evals from mu_A (penalised) and evals0 from mu_A without the twisted-cycle")
@@ -117,4 +158,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if sys.argv[1:] == ["--second"]:
+        main2()
+    else:
+        main()
