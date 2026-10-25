@@ -156,3 +156,24 @@ pairs are then allowed when mirrored exactly on the line side. Adding points x t
 annealing k = 11. (14,7) 1,774,620 (k = 9) built by multi.c (local duality and non-concurrency checks, 11,734-source BFS
 spot check: worst eccentricity 7); full check running. Squad assessment: no card beat 756; the round's value was
 breadth (every family lands on the same W(E7) orbit), which pushed Opus off partial ovoids.
+
+## 2026-10-25 05:38–06:40 UTC, cell-14-7 third session, round 6 (8 cards, one squad): mirrored extensions of R756
+
+Goal: maximise F = (extra points) − (dropped base points) in the mirrored surgery (research/cell147/mirror/README.md;
+|R'| = 756 + F, (14,7) n = 1,771,560 + 4|R'|). Opus had F = 11 (annealing). Scorer: mirror_build.py (re-checks
+non-collinearity, opposition and exact mirroring of every distance-4 pair). Brief: research/squads/d14D7-r6/BRIEF.md.
+Cards: c1 smarter annealing moves (C rewrite) · c2 ILP / iterated local search on fixed lines · c3 point sets with no
+triple coverage, then line-only annealing · c4 point-side stars (12 points of a totally singular non-hexagon line) ·
+c5 second Hermitian spreads S(n) · c6 genetic recombination · c7 wildcard: isometric copies of the base set · c8
+wildcard: designed line families.
+
+Scores: **c3 12** (verified, then built: (14,7) **1,774,632**, apsp_orb VALID) · c1 12 · c2 12 · c5 11 (any of 28
+elliptic spreads gives the same plateau; mixing spreads costs 122 spread lines per foreign line) · c6 11 · c7 11 · c4 10
+(stars make every base type a singleton, but the dual star's spread types are random 1/11, so the line side limits) ·
+c8 (see scoreboard). K = 13 was reached by nobody with deficit 0 (c3: cost 1; Opus rerun: no gain).
+
+Kept: c3's two-stage method. Opus then applied the same tools to the other hexagon cells: q = 5 F = 8 ((7,7) 23,596),
+q = 7 F = 7 ((9,7) 118,238), both apsp_mt all-pairs VALID; q = 13 F = 21 ((16,7) 4,025,592, extra points at distance 4
+from only 24–48 base points, spread of 2,198 lines; multi.c checks pass, full check running). Squad assessment: three
+independent methods agree on F = 12 at q = 11; the round confirmed the plateau rather than moving it, but c3's method
+gave the record and c4/c5 explained the limits.
