@@ -1,0 +1,5 @@
+group psl 11 x Z_182, N=120120, identity 10010, H order 42, rows 2860, threads 1, setup 0.01s
+wide rows: HW order 182, rows 660, setup 0.02s
+alpha: conj by mat(5,2,6,7) (index 567), z -> 9 z on Z_182
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
+start cost=63

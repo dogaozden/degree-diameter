@@ -5,3 +5,10 @@ ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 39.84, mu/k = 13.28, fixed-point 
 start cost=48
 t=30 steps=41542 evals=332337 cost=6 best=3 T=0.53
 t=60 steps=84013 evals=672105 cost=3 best=3 T=0.19
+t=90 steps=124223 evals=993785 cost=3 best=3 T=0.15
+t=120 steps=164866 evals=1318929 cost=3 best=3 T=0.15
+t=150 steps=206461 evals=1651689 cost=3 best=3 T=0.15
+t=180 steps=247253 evals=1978025 cost=12 best=3 T=0.75
+RESULT d=8 D=8 group=psl 17 x Z_49 N=119952 best=0 evals=2237841 time=203.7 orbit k=3 m=2 f=2 fix=8
+full diameter check: OK
+wrote runs/raise8/d8D8_psl_17_49_orb3_s1.txt

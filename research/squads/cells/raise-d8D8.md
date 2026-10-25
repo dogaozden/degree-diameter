@@ -20,7 +20,8 @@ Job "raise-8-8" (2026-10-25, Haiku worker). Goal: beat our record 239,904 vertic
 
 | group | |G| | μ | status |
 |---|---|---|---|
-| sl 11 × Z91 / pgl 11 × Z91 | 120,120 | 40.3 | earlier: best 4 after 6e6 (sl) |
+| sl 11 × Z91 / pgl 11 × Z91 | 120,120 | 40.3 | best 3 (sl, 1.2e7 evals) |
+| psl 11 × Z182 (anyn) | 120,120 | 40.3 | sweep 3 |
 | prod sl 7 × psl 9 | 120,960 | 43.0 | earlier: best 8 after 1.4e6 |
 | prod sl 3 × sl 9 × Z7, prod psl 7 × sl 9 | 120,960 | 43.0 | sweep 1 |
 | sl 8 × Z241 | 121,464 | 44.6 | sweep 1 (first 3 s: best 27) |
@@ -46,4 +47,9 @@ Job "raise-8-8" (2026-10-25, Haiku worker). Goal: beat our record 239,904 vertic
   - sl 9 × Z169 (121,680, μ 45.3): best 22. sl 8 × Z241 (121,464, μ 44.6): best 21. psl 9 × Z337 (121,320): best 60–72.
     sl 7 × Z361 and pgl 7 × Z361 (121,296): best 48–66. prod psl 3 × psl 5 × Z169: best 37,477 (fix 719, rejected).
   - Reading: cost floors near 20–70 at μ ≈ 44–45 with a large cyclic factor; the small-|Fix| groups with small n do best.
-- sweep 2 (`runs/raise8/jobs2.txt`, 1200 s per run): sl 11 × Z91 (two seeds, one with ORBW=3), pgl 11 × Z91, prod psl 7 × sl 9 × Z1.
+- sweep 2 (`runs/raise8/jobs2.txt`, 1200 s per run, ~1.2·10⁷ evals each), no solution:
+  - sl 11 × Z91 (120,120): best 3 (seed 3), 6 with ORBW=3 (seed 4). pgl 11 × Z91: best 4.
+  - prod psl 7 × sl 9 × Z1 (120,960): best 6.
+  - Calibration (psl 17 × Z49, the record group): solved again in 55 s and 204 s at 239,904. Not a raise.
+- sweep 3 (`runs/raise8/jobs3.txt`, 1200 s): psl 11 × Z182 (anyn: n = 2·7·13, α = z→9z, |Fix| = 11, μ 40.35), seeds 3, 4
+  and ORBW=3 seed 5; sl 11 × Z91 fresh seed 6.
