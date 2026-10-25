@@ -501,7 +501,7 @@ How well it predicts:
    | (13,8) SL(2,64)×Z13, 6 | 6.2 | 7.9 | 3/3 solved, 4.7·10³–3.7·10⁴ |
    | (15,8) PSL(2,137)×Z7, 3 (record group) | 7.7 | ≈ 11 | solved, 7.8·10⁴ (STRUCTURE) |
    | (13,8) SL(2,7)²×Z31, 6 | 9.5–10.7 | 11.0 | 1/9 solved, 1.3·10⁵ |
-   | (15,8) SL(2,8)²×Z37, 6 + OSUB 3 | 10.7 | 10.4 | RESULT-158 |
+   | (15,8) SL(2,8)²×Z37, 6 + OSUB 3 | 10.7 | 10.4 | 0/2 (second session): best 6 after 7.6·10⁴ and 10 after 5.2·10⁴ |
    | (13,8) SL(2,64)×Z13, 3 | 9–11 | 13.2 | 1/1 solved, 1.7·10⁵; Frobenius 0/1 at 2.6·10⁵ |
    | (13,8) PSL(2,13)²×Z3, 6 | 15.2 | 14.7 | 0/2, best 8 and 21 at 1.1–1.5·10⁵ |
    | (13,8) SL(2,8)²×Z14, 6 | 16–17 | 15.0 | 0/6, best 18–26 at 2–6·10⁴ |
@@ -637,7 +637,7 @@ involutions and order-3 elements in Fix(α); BEYOND_RANDOM §1.4). haar_order2 i
 
 | cell | group, α, layout | N (vs our record) | μ | μ_A (rule) | random symmetric: min, p10 (clumps) | result |
 |---|---|---|---|---|---|---|
-| (15,8) | SL(2,8)²×Z37, swap∘Frobenius, z ↦ 27z; 6 + 6 + 3 (`ORBIT="6 2 0" OSUB=3`) | 9,398,592 (+4.4 %) | 53.4 | 10.4 | 37, 64 (10.7) | RESULT-158 |
+| (15,8) | SL(2,8)²×Z37, swap∘Frobenius, z ↦ 27z; 6 + 6 + 3 (`ORBIT="6 2 0" OSUB=3`) | 9,398,592 (+3.7 % over the current 9,064,440) | 53.4 | 10.4 | 37, 64 (10.7) | second session: 2 seeds, not solved. Best 6 (one orbit) after 76,345 evaluations (85 min), best 10 after 52,081. Stopped for the odd-D runs; checkpoints `runs/ckpt/an158_*.ckpt`, best sets `runs/r2/an158_*.best.txt` |
 | (15,8) | PSL(2,137)×Z7, conjugation order 3; 3·5 (record group, for comparison) | 8,999,256 | 29.9 | ≈ 11 | 12, 23 (7.7) | solved in 7.8·10⁴ (STRUCTURE) |
 | (10,8) open | SL(2,16)×Z145, Frobenius x ↦ x² (order 4), z ↦ 12z; 4 + 4 + 2 | 591,600 (table 588,240) | 66.4 | 17.5 before the twisted penalty | 152, 356 (89) | dead: α² fixes only SL(2,4), so ρ = 1/60 and 15 unavoidable twisted 8-cycles at Δ = 10; plus a large cyclic factor |
 | (10,8) open | SL(2,16)×Z146 and ×Z149, the same | 595,680 / 607,920 | 71 / 87 | – | 220–494 | dead |
@@ -771,9 +771,12 @@ the damage of the unbalanced ones by a factor 3–7.
 - **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
   211,236,480 vertices, +1.5 % over 208,029,120. Order 6, μ_A = 7.2, about 5·10³ evaluations; order 3, μ_A = 10.7.
   Anneal: RESULT-159.
-- (13,9) SL(2,64)×Z133, Z133 = Z7×Z19, with α³ fixing Z7 and negating Z19. +2.9 %, μ = 49.9. Order 6, μ_A = 11.0,
-  about 4·10⁴ evaluations; order 3, μ_A = 17.3, about 8·10⁵. The record group SL(2,103)×Z31 has μ_A = 12.0 with
-  order 3, so this is predicted easier than the record was, at a larger N.
+- **(13,9) SL(2,64)×Z133**, Z133 = Z7×Z19, z ↦ 65z (order 3 mod 7, order 6 mod 19), so α³ fixes Z7 and negates
+  Z19. Layout e + 6 + 6. N = 34,856,640, so 69,713,280 vertices, +2.9 %; μ = 49.9.
+  - Rule: order 6, μ_A = 11.0, about 4·10⁴ evaluations; order 3, μ_A = 17.3, about 8·10⁵. The record group
+    SL(2,103)×Z31 has μ_A = 12.0 with order 3, so this is predicted easier than the record was, at a larger N.
+  - Screen (16 samples, `runs/r2/ro139_*.log`): order 6 min 4.9, p10 10.5 clumps; order 3 min 14.8, p10 18.5.
+  - Anneal: RESULT-139.
 - (14,9) PSL(2,25)²: +4.8 %, but poor mixing (above).
 - (12,9) and (16,9): no tight balanced group found within +10 % of the record.
 
