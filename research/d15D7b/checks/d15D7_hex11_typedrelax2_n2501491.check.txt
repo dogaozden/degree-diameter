@@ -15,7 +15,7 @@
 # Coverage: theorem for the unaffected non-hub pairs (hypotheses re-checked by tm3_build), BFS from every hub and every
 # paired-element vertex for the rest. No plain all-pairs run on this graph in this session (about 8 core-hours); the
 # all-pairs run on the sibling graph d15D7_hex11_typedrelax_n2501124 (same construction, pattern HHDHHDD) is reported in
-# its check file.
+# its check file: RESULT VALID d=15 D=7 (apsp_mt, all 2,501,124 sources).
 -- tm3_build.py build:
 free A-slots per level [10826, 12560, 15588, 12544, 12152, 10839, 15636] B-slots [12361, 10485, 16083, 10481, 12274, 12353, 16108] -> hubs 10826 10481
 mirror hypotheses OK: |R'| = 768

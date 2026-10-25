@@ -4,8 +4,7 @@ State (details: research/squads/cells/d15D7.md, research/d15D7b/README.md, resea
 - (15,7) best **2,501,491** (level types HHDHDHD, research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol; BFS-checked),
   and **2,501,124** (table 2,480,184; master 2,497,075 at the start; cell-14-7's candidate 2,499,748):
   research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol, check research/d15D7b/checks/d15D7_hex11_typedrelax_n2501124.check.txt
-  (theorem + BFS from all hubs and paired-element vertices; a plain apsp_mt all-pairs run was started at 12:52 UTC, see
-  the check file for its result). Earlier steps 2,500,147 / 2,500,749 / 2,501,008 are filed too (same check format).
+  (theorem + BFS from all hubs and paired-element vertices; plain apsp_mt all-pairs run: RESULT VALID d=15 D=7). Earlier steps 2,500,147 / 2,500,749 / 2,501,008 are filed too (same check format).
 - The earlier session's 2,480,280 (7 copies + freed flags) is merged in and superseded.
 
 What limits it: n = 14·177,156 + min(|P0|, |P1|) + min(|S3|, |S4|) + 4·768, where P0, P1 (points freed at 0->2, 1->2) and

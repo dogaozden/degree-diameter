@@ -34,7 +34,7 @@ and one out of j2, so all covers can be designed privately and the bottleneck se
 | 2,500,147 | unequal hub sides 10,181 / 9,782 (hub pairs also meet through the levels) | hub BFS |
 | 2,500,749 | relaxed bottleneck sets (collinear / concurrent pairs, RELAXED.md), 2,863 pairs | BFS from hubs + paired vertices |
 | 2,501,008 | partner covers designed into the non-bottleneck friendly sets, 3,898 pairs | same |
-| 2,501,124 | squad round c157b-r2: private covers (design3.py), protected alternation, refill; 4,370 pairs | same + full apsp_mt (see check file) |
+| 2,501,124 | squad round c157b-r2: private covers (design3.py), protected alternation, refill; 4,370 pairs | same + full apsp_mt: RESULT VALID d=15 D=7 |
 | 2,501,454 | level types HHDHDHD: every bottleneck set's partners get private covers in non-bottleneck sets, so no masks (score_relaxed2.py, design4.py) | BFS from hubs + paired vertices |
 | **2,501,491** | longer ILS runs; constrained hubs with disjoint level sets packed two to a hub | same |
 

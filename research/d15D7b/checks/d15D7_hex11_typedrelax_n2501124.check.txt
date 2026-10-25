@@ -12,7 +12,8 @@
 #   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
 #   cc -O2 -pthread -o apsp_mt research/lifts/coordinator_check/apsp_mt.c && ./apsp_mt g.edges 15 7 4
 # Coverage: theorem for the unaffected non-hub pairs (hypotheses re-checked by tm3_build), BFS from every hub and every
-# paired-element vertex for the rest; and the plain all-pairs run (apsp_mt, all 2,501,124 sources, no symmetry) below.
+# paired-element vertex for the rest; and the plain all-pairs run (apsp_mt, all 2,501,124 sources, no symmetry) below:
+# RESULT VALID d=15 D=7.
 -- tm3_build.py build:
 free A-slots per level [10653, 10652, 18280, 15093, 15096, 14697, 14731] B-slots [14697, 14731, 19001, 10288, 10296, 15093, 15096] -> hubs 10652 10288
 mirror hypotheses OK: |R'| = 768
@@ -34,4 +35,8 @@ wrote rb.edges
 wrote rb.src: 38383 BFS sources (hubs and paired elements)
 -- hubfar (BFS from all 20,940 hubs and 17,443 paired-element vertices, depth 7, 4 threads):
 n=2501124 edges=18731062 degree min=12 max=15 bipartite=yes connected=yes sources=38383 far_pairs=0 max_ecc=7
--- apsp_mt (all sources), 4 threads: RUNNING (started 12:52 UTC); result appended when done.
+-- apsp_mt (research/lifts/coordinator_check/apsp_mt.c, sha256 14bbb6776d7fd6e55c0c00d4afc1d68254bdcd0a98f0477429ea454d11151a10), BFS from every vertex, no symmetry, 4 threads, on the rebuilt edge list:
+== apsp_mt rb.edges 15 7 4 (Sun Oct 25 12:52:02 UTC 2026)
+n=2501124 edges=18731062 degree min=12 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501124
+exit 0 (Sun Oct 25 16:09:55 UTC 2026) wall 11873s
