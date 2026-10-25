@@ -1,0 +1,14 @@
+group sl 97 x Z_373, N=340390848, identity 3473376, H order 49, rows 6946752, threads 1, setup 7.99s
+wide rows: HW order 194, rows 1754592, setup 17.77s
+alpha: conj by mat(55,52,38,43) (index 522480), z -> 88 z on Z_373
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 95 (+e); mu = 22.40, mu/k = 7.47, fixed-point misses ~ 0.39
+start cost=57
+t=32 steps=7 evals=57 cost=12 best=10 T=0.49
+t=66 steps=14 evals=113 cost=7 best=7 T=0.15
+t=99 steps=21 evals=169 cost=7 best=7 T=0.15
+t=132 steps=28 evals=225 cost=6 best=6 T=0.15
+t=166 steps=35 evals=281 cost=6 best=6 T=0.15
+t=200 steps=42 evals=337 cost=6 best=6 T=0.15
+t=234 steps=49 evals=393 cost=6 best=6 T=0.15
+t=268 steps=56 evals=449 cost=6 best=6 T=0.15
+t=300 steps=63 evals=505 cost=6 best=6 T=0.15
