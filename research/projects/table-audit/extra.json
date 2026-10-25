@@ -1,0 +1,131 @@
+{
+ "3,9": {
+  "notes": "n/2 = 253 = 11\u00b723; = |Z_23 x| Z_11| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 23 11 2 found here (graphs/d3D9_n506_meta_23_11_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "4,8": {
+  "notes": "n/2 = 1092 = 2^2\u00b73\u00b77\u00b713"
+ },
+ "4,9": {
+  "notes": "n/2 = 2485 = 5\u00b77\u00b771; = |Z_71 x| Z_35| (k | p-1): fits a Haar graph of that group"
+ },
+ "4,10": {
+  "notes": "n/2 = 5874 = 2\u00b73\u00b711\u00b789"
+ },
+ "5,5": {
+  "notes": "n/2 = 168 = 2^3\u00b73\u00b77",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 7 24 3 found here (graphs/d5D5_n336_meta_7_24_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,7": {
+  "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group"
+ },
+ "5,8": {
+  "notes": "n/2 = 4617 = 3^5\u00b719"
+ },
+ "5,9": {
+  "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797"
+ },
+ "5,10": {
+  "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789"
+ },
+ "6,5": {
+  "notes": "n/2 = 342 = 2\u00b73^2\u00b719; = |Z_19 x| Z_18| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 57 6 7 found here (graphs/d6D5_n684_meta_57_6_7_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "6,8": {
+  "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331"
+ },
+ "6,9": {
+  "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163"
+ },
+ "6,10": {
+  "notes": "n/2 = 226016 = 2^5\u00b77\u00b71009"
+ },
+ "7,5": {
+  "notes": "n/2 = 567 = 3^4\u00b77"
+ },
+ "7,8": {
+  "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771"
+ },
+ "7,9": {
+  "notes": "n/2 = 200080 = 2^4\u00b75\u00b741\u00b761"
+ },
+ "7,10": {
+  "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181"
+ },
+ "8,5": {
+  "notes": "n/2 = 855 = 3^2\u00b75\u00b719"
+ },
+ "8,8": {
+  "notes": "n/2 = 100740 = 2^2\u00b73\u00b75\u00b723\u00b773"
+ },
+ "8,9": {
+  "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421"
+ },
+ "8,10": {
+  "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051"
+ },
+ "9,5": {
+  "notes": "n/2 = 1248 = 2^5\u00b73\u00b713"
+ },
+ "9,8": {
+  "notes": "n/2 = 224740 = 2^2\u00b75\u00b717\u00b7661"
+ },
+ "9,9": {
+  "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361"
+ },
+ "9,10": {
+  "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951"
+ },
+ "10,9": {
+  "notes": "n/2 = 3528700 = 2^2\u00b75^2\u00b77\u00b771^2"
+ },
+ "10,10": {
+  "notes": "n/2 = 25165578 = 2\u00b73\u00b743\u00b7103\u00b7947"
+ },
+ "11,9": {
+  "notes": "n/2 = 7600224 = 2^5\u00b73\u00b717\u00b74657"
+ },
+ "11,10": {
+  "notes": "n/2 = 65296177 = 563\u00b7115979; = |Z_115979 x| Z_563| (k | p-1): fits a Haar graph of that group"
+ },
+ "12,9": {
+  "notes": "n/2 = 15000576 = 2^10\u00b73\u00b719\u00b7257"
+ },
+ "12,10": {
+  "notes": "n/2 = 150191525 = 5^2\u00b711\u00b7546151; = |Z_546151 x| Z_275| (k | p-1): fits a Haar graph of that group"
+ },
+ "13,9": {
+  "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277"
+ },
+ "13,10": {
+  "notes": "n/2 = 308665468 = 2^2\u00b7107\u00b7721181; = |Z_721181 x| Z_428| (k | p-1): fits a Haar graph of that group"
+ },
+ "14,9": {
+  "notes": "n/2 = 47543869 = 467\u00b7101807; = |Z_101807 x| Z_467| (k | p-1): fits a Haar graph of that group"
+ },
+ "14,10": {
+  "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group"
+ },
+ "15,9": {
+  "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group"
+ },
+ "15,10": {
+  "notes": "n/2 = 1150163255 = 5\u00b7101\u00b72277551; = |Z_2277551 x| Z_505| (k | p-1): fits a Haar graph of that group"
+ },
+ "16,9": {
+  "notes": "n/2 = 144469559 = 13\u00b719\u00b7584897; = |Z_584897 x| Z_247| (k | p-1): fits a Haar graph of that group"
+ },
+ "16,10": {
+  "notes": "n/2 = 2059753665 = 3\u00b75\u00b771\u00b71934041; = |Z_1934041 x| Z_1065| (k | p-1): fits a Haar graph of that group"
+ }
+}

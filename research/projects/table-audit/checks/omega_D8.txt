@@ -1,0 +1,38 @@
+# Omega H(q) as read from Gomez 1986 Sec. 2.9.3 / Fig. 2.21 (tools/omega_build.py), checks
+## H(2), H(3): all type patterns, sigma = inc, shift:1, rand:1 (apsp.c, D = 8)
+q=2 types=aa sigma=inc: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=2 types=aa sigma=shift:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=2 types=aa sigma=rand:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=2 types=ab sigma=inc: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=9 RESULT INVALID 
+q=2 types=ab sigma=shift:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=9 RESULT INVALID 
+q=2 types=ab sigma=rand:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=9 RESULT INVALID 
+q=2 types=bb sigma=inc: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=2 types=bb sigma=shift:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=2 types=bb sigma=rand:1: n=1890 edges=4410 degree min=4 max=5 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=aaa sigma=inc: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=aaa sigma=shift:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=aaa sigma=rand:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=aab sigma=inc: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=aab sigma=shift:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=aab sigma=rand:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=aba sigma=inc: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=aba sigma=shift:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=aba sigma=rand:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=abb sigma=inc: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=abb sigma=shift:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=abb sigma=rand:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=9 RESULT INVALID 
+q=3 types=bbb sigma=inc: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=bbb sigma=shift:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+q=3 types=bbb sigma=rand:1: n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=10 RESULT INVALID 
+## H(7), types ababa, sigma = inc: 1,176,480 vertices = table (10,8); eccentricities (tools/ecc.c, distances > 8 listed)
+sources: hub n_0(0) = 980400, nbar_0(0) = 1078440, point 0 of copy 0, line 0 of copy 0
+source 980400: ecc 9, unreached 0, 136080 at distance 9
+source 1078440: ecc 9, unreached 0, 136080 at distance 9
+source 0: ecc 9, unreached 0, 27216 at distance 9
+source 19608: ecc 9, unreached 0, 27216 at distance 9
+## counting bound (tools/omega_bound.py)
+q =  7 (10,8): reachable points <=   16249 <   19608 points per copy: True
+q =  8 (11,8): reachable points <=   26487 <   37449 points per copy: True
+q =  9 (12,8): reachable points <=   41009 <   66430 points per copy: True
+q = 11 (14,8): reachable points <=   87297 <  177156 points per copy: True
+q = 13 (16,8): reachable points <=  165097 <  402234 points per copy: True
