@@ -43,3 +43,14 @@ the hub graph. `d7hex b2` reports "same-side hub violations 25776" for (13,7). T
 which its conservative test rejects; distance 6 is enough. The all-pairs check is what counts.
 
 Checks:
+- sha256: sets/P11_r6c7_756.txt d2544943d51505466ece6f93a4f3afc4107756a683a5c050c2d6eb3315cd4eae, sets/L11_spread.txt
+  5456ee503751ed74c08ffb95ab9110d5c8599f28cd871bbd1ca733824f50f003, d13D7 .sol
+  44d6099531c265851d7029bddd860f2835a33eaf5fe25a6a3f4c564e582bb3f8, d14D7 .hubs
+  85e64b14afcebb2934b6cd9661864a6ebd1b6706df7783542c8b2956605ea298, d15D7 .hubs
+  f3171ef3140100af8af5851c5a54b0aff40ce5e49443a873bb9a30d55c842d5d.
+- **(13,7) 1,064,448: all-pairs check VALID** (2026-10-25 01:18 UTC). The check used `checks/apsp_range.c`, which is
+  apsp.c with the BFS sources restricted to a range, run as three processes covering [0, n):
+      n=1064448 edges=6917400 degree min=11 max=13 bipartite=yes sources [0,354816) eccentricity max=7
+      ... sources [354816,709632) eccentricity max=7; ... sources [709632,1064448) eccentricity max=7
+      RESULT VALID (range) d=13 D=7 n=1064448 (all three)
+  Edge list (`d7hex edges`) sha256 1e499a0f3bda8685f3b6eac8f9ec9f938603c38abde10030abd2c160365a197e.
