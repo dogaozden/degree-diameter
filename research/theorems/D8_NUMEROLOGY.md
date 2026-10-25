@@ -377,7 +377,7 @@ graph, `calib/checks.txt`, `eq/*_check.txt`):
 | 4 | 20 | **22** (60,060) | C_7-equivariant lift (eqlift.py), quotient voltages annealed (qanneal2.c) |
 | 5 | 25 | 14 (109,368) | squad c4: tann3 (tann2 without multi-edges) |
 | 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2; 22 stopped at 30 unreached orbits, 25 at about 45 (focus sources) |
-| 7 | 30 | 20 (784,320; apsp check running) | C_43-equivariant lift (C_43 from G_2(7), order q² − q + 1); qanneal4 took it from 380 to 6 unreached orbit pairs in 40 min, then to 0 in 45 s with all 912 sources in focus |
+| 7 | 30 | 20 (784,320) | C_43-equivariant lift (C_43 from G_2(7), order q² − q + 1); qanneal4 took it from 380 to 6 unreached orbit pairs in 40 min, then to 0 in 45 s with all 912 sources in focus |
 | 9 | 35 | 16 (2,125,760) | C_91-equivariant lift (Singer power), random voltages, no annealing; 18, 20, 22 copies leave 50, 252, 1,164 unreached pairs from one source per orbit (`eq/q9_frontier.sh` → `eq/q9_frontier_out.txt`; checked by liftdiam only, files not kept) |
 
 The symmetric lifts use a cyclic group C of collineations acting semiregularly on points and lines (a Singer-type
@@ -511,6 +511,13 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 - A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table.
   (13,8) and (15,8) now hold 6,999,552 and 18,128,880 (group searches), so a j = 3 version would need at least 53
   copies of GH(9) or 52 of GH(11) to matter there.
+- Theory, the most useful open step: the j = 2 count of §1.2. Its second case allows |B_g| ≤ 4P/(q+1); if that could
+  be replaced by 2P/(q+1), the bound would become 1 + 2(q+1)(q+4)/(q−1) = 33.5, 37, 40.7 at q = 9, 11, 13, below
+  DGQ's 35, 40, 45, and so would prove that DGQ's (12,8), (14,8), (16,8) graphs need holonomy, walks that exist only
+  for special matchings, or labels that repeat around a point or a line. (A bound of 3P/(q+1) would only reach q = 13.)
+  The obstacles are the residues g where the 2-sets {g − t_1(x), g − t_2(x)} (x ∈ A_g) have no common element: they
+  then lie inside a triangle or are two disjoint pairs, and the lines of B_g can have 3 or 4 label pairs. A global count,
+  or a spectral argument as in §1.5, would have to show that such residues are rare.
 - Theory: close §1.5 for q = 7, 8 without the one-miss assumption (Theorem 2 needs q ≥ 9; the loss is in dropping
   the cross terms of (c)), and look for a spectral version of the j = 2 count of §1.2; the
   combinatorial bound 1 + 2(q+1)(q+4)/(q−3) is far above DGQ's values, and the j = 2 case is not tight, so the §1.5
