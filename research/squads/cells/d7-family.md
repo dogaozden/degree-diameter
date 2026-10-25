@@ -114,6 +114,8 @@ outgoing transition except level 3 and one friendly incoming except level 1.
   (R2) for every pair, hub slots distinct, degrees.
 - hubfar.c (from research/d15D7b): BFS from all hubs and both vertices of every paired element (the pairs not covered by
   the theorems), depth 7: 0 far pairs for (14,7) and (16,7).
+- Full runs here (4 threads, shared machine): (14,7) 1,789,858 in 30 min, (16,7) 4,053,576 in 70 min (apsp_w);
+  (10,7) 225,156 in 53 s (apsp_mt). The plain apsp_mt would take about 9 h for (16,7) on 4 threads.
 
 ## Squad rounds (research/squads/LOG.md)
 
@@ -149,8 +151,8 @@ sets.
   (231), q = 11 (768) or q = 13 (813; 47,373 candidate points x 74,528 candidate lines, 25 min). swapscan.py (remove
   one extra, add two) finds no improvement at q = 5, 7, 8: after removing an extra point only 1-27 single additions
   exist and no two of them are compatible; MODE=base (remove a base point, add two) finds none at q = 5, 7, 8 either
-  (at q = 5 no single addition exists after removing any base point). The configurations are
-  local optima for these moves, as the annealers suggested.
+  (at q = 5 no single addition exists after removing any base point). The configurations are local optima for these
+  moves, as the annealers suggested.
 - **More 1-defective growth on five levels at q = 13:** with master's line sets the H(13) line sets gain nothing in
   300 s (0 pairs; every candidate line is blocked), the point sets gain 25-61 each; competing P01 / P41 partners for
   level-1 covers cost 38 + 39 drops when both use the same pair orbit.
@@ -174,6 +176,10 @@ research/d7family/ (this job):
 - hd5_grow.sh: masks + dpack for a list of sets; hd5_drop.py: assignment with drops of unserved pairs, prints n.
 - dpack.c: research/d15D7b/dpack.c plus the FORBID option. hubgen.py, hubfix.py, hubfar.c: from research/d15D7b.
 - hubsame.py: same-side distances in a hub graph. apsp_w.c: the all-pairs checker above.
+- addscan.py, swapscan.py: exhaustive single additions and 1-out / 2-in moves for mirrored configurations; probe3.py,
+  partnerscan.py: partner points (the same test; partnerscan hashes on the zero-slack types and agrees with probe3,
+  e.g. 375,841 feasible partners at q = 5 when only 3 extra points are kept); hexmod.py: copy of research/cell147/mirror/hexmod.py (cell-14-7 branch) for these three.
+- cov.c, mkmain3.py: the skip-a-level coverage experiment (main graph of the typed three-level construction).
 - checks/, configs/ (q = 8 mirrored states)
 
 Solutions (research/frontier/sols/): d16D7_hex13_typedrelax_n4053576.sol (names d16D7_hex13_mirror813_n4025592.sol),
