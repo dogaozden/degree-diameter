@@ -95,3 +95,10 @@ RESULT VALID d=16 D=7 n=4052108
     15425.87 real    111486.36 user      1205.92 sys
           2192506880  maximum resident set size
 == typed done Sun Oct 25 05:10:11 PDT 2026
+# (15,7) typed + mirrored + relaxed sets (cell-15-7 session): tm3_build.py build on hex_q11.bin (sha256 e60db369...) and d15D7_hex11_typedrelax_n2501008.sol (sha256 7a2743be9f228eac5bcdbe83089b8ccfa5fd293b997c9dc14650c00800ccbc4c); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+031abe25293e84336a0b4617f8f4bce9537dbd1b7b77a4cbfd85b613a59dd14f  r15.edges
+-- apsp_mt r15.edges 15 7 8 (Sun Oct 25 05:35:35 PDT 2026)
+n=2501008 edges=18730056 degree min=12 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501008
+     3892.90 real     28819.05 user       342.19 sys
+          1432535040  maximum resident set size

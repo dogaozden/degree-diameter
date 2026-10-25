@@ -205,3 +205,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 25 06:18 PT (harvest): (11,10) 148,729,680 (was 0), psl 89 n 211; claude/cell-11-10-resume-oubzk2.
 - Oct 25 06:18 PT (harvest): (15,10) 2,467,618,800 (was 2,300,326,510), sl 149 n 373; claude/cell-15-10-search-z3q01v.
 - Oct 25 06:18 PT (harvest): (16,10) 4,220,872,800 (was 4,119,507,330), sl 151 n 613; claude/resume-cell-16-10-io255o.
+- Oct 25 06:41 PT (coordinator): (15,7) 2,501,008 (raised, was 2,497,075) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
