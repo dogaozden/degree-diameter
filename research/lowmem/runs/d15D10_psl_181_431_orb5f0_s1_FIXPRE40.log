@@ -3,3 +3,14 @@ group psl 181 x Z_431, N=1277820180, rows 16380 of 78011 bits (1219 words), memo
 alpha: conj by mat(0,180,1,13), z -> 95 z on Z_431
 ORBIT k=5 m=3 f=0: |Fix(alpha)| = 89 (+e); mu = 35.01, mu/k = 7.00, fixed-point misses ~ 2.77
 start cost=43 (first eval 5.81s)
+t=81 steps=1 evals=9 cost=10 best=10 T=0.15
+t=181 steps=2 evals=17 cost=10 best=10 T=0.15
+t=242 steps=3 evals=25 cost=10 best=10 T=0.15
+t=286 steps=5 evals=41 cost=10 best=10 T=0.15
+t=331 steps=7 evals=57 cost=10 best=10 T=0.15
+t=369 steps=8 evals=65 cost=10 best=10 T=0.15
+t=419 steps=9 evals=73 cost=10 best=10 T=0.15
+t=466 steps=10 evals=81 cost=10 best=10 T=0.15
+t=507 steps=11 evals=89 cost=10 best=10 T=0.15
+RESULT d=15 D=10 group=psl 181 x Z_431 N=1277820180 best=10 evals=89 time=506.9 orbit k=5 m=3 f=0 fix=89 fixchecks=1321
+exit 1 2026-10-25T13:05:53Z

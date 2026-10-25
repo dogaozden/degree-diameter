@@ -1,0 +1,4 @@
+group psl 11 x Z_1933661, N=1276216260, rows 60 of 21270271 bits (332348 words), memory 0.32 GB per thread, threads 1, setup 1.40s
+alpha: conj by mat(0,10,1,3), z -> 64596 z on Z_1933661
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 4 (+e); mu = 34.21, mu/k = 6.84, fixed-point misses ~ 0.15
+RANDORB d=15 D=10 group=psl 11 x Z_1933661 N=1276216260 k=5 m=3 f=0 fix=4 samples=16 min=11903026 p10=13202630 median=23233732 mean=36183071.06 mu=34.21 time=21.9 units: min=2380605.2 p10=2640526.0 median=4646746.4 mean=7236614.56

@@ -304,30 +304,44 @@ static int random_orbit_z(int j, el *o) {   /* random_orbit, filtered by ZMAX (b
  * (right multiplication by x is an automorphism; D = 10: depths 4 + 5).  ~20-40 ms against ~1 s for a full evaluation.  Candidates that
  * miss a fixed point are redrawn (up to t times).  Only for even D (the cost counts side B from (e,A)). */
 static int FIXPRE = 0; static long long nfixpre = 0;
-typedef struct { uint64_t *t; int sh; } hset;
-static void hs_init(hset *h, int bits) { h->t = xmalloc(sizeof(uint64_t) << bits); h->sh = 64 - bits; memset(h->t, 0xff, sizeof(uint64_t) << bits); }
-static void hs_clear(hset *h) { memset(h->t, 0xff, sizeof(uint64_t) << (64 - h->sh)); }
-static inline int hs_add(hset *h, uint64_t k) {   /* 1 if new */
-    size_t m = ((size_t)1 << (64 - h->sh)) - 1, i = (size_t)((k * 0x9E3779B97F4A7C15ULL) >> h->sh);
-    while (h->t[i] != ~0ULL) { if (h->t[i] == k) return 0; i = (i + 1) & m; }
+typedef struct { uint32_t *t; int sh; } hset;   /* keys are element codes < N < 2^32 - 1 */
+static void hs_init(hset *h, int bits) { h->t = xmalloc(sizeof(uint32_t) << bits); h->sh = 32 - bits; memset(h->t, 0xff, sizeof(uint32_t) << bits); }
+static void hs_clear(hset *h) { memset(h->t, 0xff, sizeof(uint32_t) << (32 - h->sh)); }
+static inline int hs_add(hset *h, uint32_t k) {   /* 1 if new */
+    uint32_t m = (1u << (32 - h->sh)) - 1, i = (k * 0x9E3779B1u) >> h->sh;
+    while (h->t[i] != ~0u) { if (h->t[i] == k) return 0; i = (i + 1) & m; }
     h->t[i] = k; return 1;
 }
-static inline int hs_has(const hset *h, uint64_t k) {
-    size_t m = ((size_t)1 << (64 - h->sh)) - 1, i = (size_t)((k * 0x9E3779B97F4A7C15ULL) >> h->sh);
-    while (h->t[i] != ~0ULL) { if (h->t[i] == k) return 1; i = (i + 1) & m; }
+static inline int hs_has(const hset *h, uint32_t k) {
+    uint32_t m = (1u << (32 - h->sh)) - 1, i = (k * 0x9E3779B1u) >> h->sh;
+    while (h->t[i] != ~0u) { if (h->t[i] == k) return 1; i = (i + 1) & m; }
     return 0;
 }
-static inline uint64_t ekey(el x) { int r; long long b; el2rc(x, &r, &b); return (uint64_t)r * (uint64_t)L + (uint64_t)b; }
+/* fast arithmetic for fixcheck: Barrett reduction mod P (exact for x < 2^40 / P) and a bijective key
+ * (row, t, z) -> (row P + t) n + z < N without the 64-bit CRT division of el2rc */
+static uint64_t BMP;   /* ceil(2^40 / P) */
+static inline int bmod(uint32_t x) { uint32_t q = (uint32_t)(((uint64_t)x * BMP) >> 40); return (int)(x - q * (uint32_t)P); }
+static inline el gmulf(el x, el y) {
+    el r = { bmod((uint32_t)(x.a * y.a + x.b * y.c)), bmod((uint32_t)(x.a * y.b + x.b * y.d)),
+             bmod((uint32_t)(x.c * y.a + x.d * y.c)), bmod((uint32_t)(x.c * y.b + x.d * y.d)), x.z + y.z };
+    if (r.z >= NC) r.z -= NC;
+    canon(&r); return r;
+}
+static inline uint32_t ekey(el x) {
+    int t = x.a ? bmod((uint32_t)(x.b * INV[x.a])) : bmod((uint32_t)(x.d * INV[x.c]));
+    return ((uint32_t)row_of(x.a, x.c) * (uint32_t)P + (uint32_t)t) * (uint32_t)NC + (uint32_t)x.z;
+}
 static hset FH_SA, FH_SB, FH_R; static el *FBUF1, *FBUF2, *FLA; static long long FCAP;
 static void fix_init(void) {
     int ev = ((D - 1) / 2 + 1) & ~1, od = D - 1 - ev;
     long long pe = 1, po = 1; for (int i = 0; i < ev; i++) pe *= d; for (int i = 0; i < od; i++) po *= d;
     long long big = pe > po ? pe : po;   /* >= size of either ball */
     int be = 10, bo = 10, bb = 10;
-    while ((1LL << be) < 3 * pe && be < 30) be++;
-    while ((1LL << bo) < 3 * po && bo < 30) bo++;
-    while ((1LL << bb) < 3 * big / d + 64 && bb < 30) bb++;
+    while ((1LL << be) < 2 * pe && be < 30) be++;
+    while ((1LL << bo) < 2 * po && bo < 30) bo++;
+    while ((1LL << bb) < 2 * big / d + 64 && bb < 30) bb++;
     hs_init(&FH_R, bo); hs_init(&FH_SA, be); hs_init(&FH_SB, bb);
+    BMP = ((1ULL << 40) + P - 1) / P;
     FCAP = big + 16; FBUF1 = xmalloc(sizeof(el) * FCAP); FBUF2 = xmalloc(sizeof(el) * FCAP); FLA = xmalloc(sizeof(el) * FCAP);
 }
 static long long fixcheck(const el *Sx, const el *SIx) {   /* number of alpha-fixed points (incl. e) not within D-1 of (e,A) */
@@ -338,7 +352,7 @@ static long long fixcheck(const el *Sx, const el *SIx) {   /* number of alpha-fi
     for (int h = 1; h <= ev; h++) {
         n2 = 0;
         for (long long i = 0; i < n1; i++) for (int u = 0; u < d; u++) {
-            el y = gmul(h % 2 ? Sx[u] : SIx[u], FBUF1[i]);
+            el y = gmulf(h % 2 ? Sx[u] : SIx[u], FBUF1[i]);
             if (hs_add(h % 2 ? &FH_SB : &FH_SA, ekey(y))) { FBUF2[n2++] = y; if (!(h % 2)) FLA[nla++] = y; }
         }
         el *t = FBUF1; FBUF1 = FBUF2; FBUF2 = t; n1 = n2;
@@ -348,7 +362,7 @@ static long long fixcheck(const el *Sx, const el *SIx) {   /* number of alpha-fi
     for (int h = 1; h <= od; h++) {
         n2 = 0;
         for (long long i = 0; i < n1; i++) for (int u = 0; u < d; u++) {
-            el y = gmul(h % 2 ? SIx[u] : Sx[u], FBUF1[i]);
+            el y = gmulf(h % 2 ? SIx[u] : Sx[u], FBUF1[i]);
             if (hs_add(h % 2 ? &FH_R : &FH_SB, ekey(y)) && h < od) FBUF2[n2++] = y;
         }
         el *t = FBUF1; FBUF1 = FBUF2; FBUF2 = t; n1 = n2;
@@ -356,7 +370,7 @@ static long long fixcheck(const el *Sx, const el *SIx) {   /* number of alpha-fi
     long long miss = 0;
     for (long long f = -1; f < NFIX; f++) {
         el xi = ginv(f < 0 ? ID : FIXL[f]); int found = 0;
-        for (long long i = 0; i < nla && !found; i++) if (hs_has(&FH_R, ekey(gmul(FLA[i], xi)))) found = 1;
+        for (long long i = 0; i < nla && !found; i++) if (hs_has(&FH_R, ekey(gmulf(FLA[i], xi)))) found = 1;
         if (!found) miss++;
     }
     return miss;
@@ -546,6 +560,7 @@ int main(int argc, char **argv) {
     if (getenv("ZTRY")) ZTRY = atoi(getenv("ZTRY"));
     if (getenv("FIXPRE")) FIXPRE = atoi(getenv("FIXPRE"));
     if (FIXPRE > 0 && D % 2) { fprintf(stderr, "FIXPRE needs even D\n"); FIXPRE = 0; }
+    if (FIXPRE > 0 && N >= 0xffffffffLL) { fprintf(stderr, "FIXPRE needs N < 2^32 - 1\n"); FIXPRE = 0; }
     ZCOS = malloc(sizeof(double) * NC); ZSIN = malloc(sizeof(double) * NC);
     for (int k = 0; k < NC; k++) { ZCOS[k] = cos(2 * M_PI * k / NC); ZSIN[k] = sin(2 * M_PI * k / NC); }
     { for (int u = 0; u < 6; u++) { el x = rand_el(), y = rand_el();

@@ -3,3 +3,14 @@ group psl 149 x Z_761, N=1258617900, rows 11100 of 113389 bits (1772 words), mem
 alpha: conj by mat(0,148,1,40), z -> 67 z on Z_761
 ORBIT k=5 m=3 f=0: |Fix(alpha)| = 74 (+e); mu = 26.44, mu/k = 5.29, fixed-point misses ~ 2.19
 start cost=17 (first eval 6.14s)
+t=74 steps=1 evals=9 cost=17 best=17 T=0.15
+t=151 steps=2 evals=17 cost=15 best=15 T=0.15
+t=209 steps=3 evals=25 cost=15 best=15 T=0.15
+t=256 steps=5 evals=41 cost=15 best=15 T=0.15
+t=290 steps=7 evals=57 cost=15 best=15 T=0.15
+t=334 steps=10 evals=81 cost=15 best=15 T=0.15
+t=394 steps=12 evals=97 cost=5 best=5 T=0.15
+t=428 steps=13 evals=105 cost=5 best=5 T=0.15
+t=481 steps=15 evals=121 cost=5 best=5 T=0.15
+RESULT d=15 D=10 group=psl 149 x Z_761 N=1258617900 best=5 evals=129 time=509.5 orbit k=5 m=3 f=0 fix=74 fixchecks=1120
+exit 1 2026-10-25T13:05:55Z

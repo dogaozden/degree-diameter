@@ -3,3 +3,11 @@ group psl 101 x Z_2441, N=1257359100, rows 5100 of 246541 bits (3853 words), mem
 alpha: conj by mat(0,100,1,22), z -> 583 z on Z_2441
 ORBIT k=5 m=3 f=0: |Fix(alpha)| = 49 (+e); mu = 25.95, mu/k = 5.19, fixed-point misses ~ 1.45
 start cost=47 (first eval 6.12s)
+t=46 steps=1 evals=9 cost=10 best=10 T=0.30
+t=102 steps=2 evals=17 cost=10 best=10 T=0.15
+t=156 steps=3 evals=25 cost=10 best=10 T=0.15
+t=214 steps=4 evals=33 cost=5 best=5 T=0.15
+t=258 steps=7 evals=57 cost=5 best=5 T=0.15
+t=294 steps=10 evals=81 cost=5 best=5 T=0.15
+RESULT d=15 D=10 group=psl 101 x Z_2441 N=1257359100 best=5 evals=97 time=316.8 orbit k=5 m=3 f=0 fix=49 fixchecks=477
+exit 1 2026-10-25T13:02:43Z

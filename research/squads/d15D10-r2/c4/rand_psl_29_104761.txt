@@ -1,0 +1,4 @@
+group psl 29 x Z_104761, N=1275988980, rows 420 of 3038069 bits (47470 words), memory 0.32 GB per thread, threads 1, setup 0.15s
+alpha: conj by mat(0,28,1,5), z -> 29449 z on Z_104761
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 14 (+e); mu = 34.10, mu/k = 6.82, fixed-point misses ~ 0.46
+RANDORB d=15 D=10 group=psl 29 x Z_104761 N=1275988980 k=5 m=3 f=0 fix=14 samples=16 min=431 p10=440 median=1034 mean=115181.31 mu=34.10 time=21.8 units: min=87.0 p10=88.0 median=210.0 mean=23037.01

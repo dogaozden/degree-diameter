@@ -1,0 +1,14 @@
+c4 (round d15D10-r2): PSL(2,p) x Z_n, ORBIT="5 3 0" (k=5), RANDORB=16, seed 24, K=8, THREADS=1, 16 random symmetric S per group, no search, no graph found.
+Columns: group | N | 2N (vertices) | mu | F | |Fix| (klist) | mu_eff | units min/p10/median/mean | cost min/p10/median/mean | s/sample | raw output
+psl 11 x Z1933661   | N 1276216260 | 2N 2552432520 (+10.96%) | mu 34.21 | F 0.15 | 5  | mu_eff 7.00 | units 2380605 / 2640526 / 4646746 / 7236615 | cost 11903026 / 13202630 / 23233732 / 36183071 | 1.37 | rand_psl_11_1933661.txt
+psl 19 x Z373151    | N 1276176420 | 2N 2552352840 (+10.96%) | mu 34.19 | F 0.31 | 10 | mu_eff 7.14 | units 4157 / 5503 / 21852 / 109564 | cost 20781 / 27507 / 109252 / 547817 | 1.22 | rand_psl_19_373151.txt
+psl 29 x Z104761    | N 1275988980 | 2N 2551977960 (+10.94%) | mu 34.10 | F 0.46 | 15 | mu_eff 7.28 | units 87 / 88 / 210 / 23037 | cost 431 / 440 / 1034 / 115181 | 1.36 | rand_psl_29_104761.txt
+psl 31 x Z85751     | N 1275974880 | 2N 2551949760 (+10.94%) | mu 34.09 | F 0.46 | 15 | mu_eff 7.28 | units 68 / 69 / 142 / 22656 | cost 332 / 341 / 698 / 113278 | 1.54 | rand_psl_31_85751.txt
+psl 41 x Z37061     | N 1276380840 | 2N 2552761680 (+10.97%) | mu 34.29 | F 0.61 | 20 | mu_eff 7.47 | units 22 / 23 / 61 / 147.4 | cost 110 / 111 / 297 / 731.4 | 1.43 | rand_psl_41_37061.txt
+psl 59 x Z12431     | N 1276166460 | 2N 2552332920 (+10.96%) | mu 34.19 | F 0.92 | 30 | mu_eff 7.75 | units 7 / 9 / 18 / 57.25 | cost 31 / 41 / 86 / 281.3 | 1.21 | rand_psl_59_12431.txt
+CONTROL psl 101 x Z2441 | N 1257359100 | 2N 2514718200 (+9.3%) | mu 25.95 | F 1.45 | 50 | mu_eff 6.64 | units 2 / 4 / 8 / 7.38 | cost 10 / 16 / 36 / 31.9 | 1.32 | rand_psl_101_2441.txt
+CONTROL psl 149 x Z761  | N 1258617900 | 2N 2517235800 (+9.4%) | mu 26.44 | F 2.19 | 75 | mu_eff 7.47 | units 3 / 4 / 9 / 8.94 | cost 11 / 16 / 34 / 33.4 | 1.31 | rand_psl_149_761.txt
+Notes: s/sample = RANDORB time / 16 (wall times were dominated by lock waits). Score = lowest median units among the six small-p groups = 18 (psl 59 x Z12431).
+Median units / mu_eff (overdispersion, 1.0 = Poisson-like): p59 2.3, p41 8.2, p31 19.5, p29 28.8, p19 ~3060, p11 ~6.6e5, p101 1.2, p149 1.2.
+Caveat: all runs sit at N ~1.27e9, so 2N ~2.55e9 is 10.9% ABOVE the 2,300,326,510 record: these are cost statistics only, not record candidates.
+klist (N in [1.13e9, 1.1502e9], k=5, p 11..149): N <= 1.1502e9 (2N < 2.3003e9) gives mu 3.2-4.4 (mu_eff 0.7-2.3) on the Poisson model.

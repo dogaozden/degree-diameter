@@ -1,0 +1,27 @@
+# c6 results: does the (15,8) proxy reproduce the k=5 advantage in annealing?
+# Runs: cd research/lowmem; slot.sh timeout 130 nice -n 10 env ORBIT=... ./haar_lean 15 8 120 SEED 8 /dev/null psl P N (K=8, THREADS=1, 120 s each)
+# klist.py 15 8 (k=5 | k=3): psl 31 x Z601: N 8942880, mu 27.45, F 1.18 | 0.22, mu_eff 6.67 | 9.37
+#                            psl 19 x Z2671: N 9134820, mu 36.61, F 0.83 | 0.14, mu_eff 8.15 | 12.34
+# Binary note: psl 31 k=5, psl 31 k=3 and psl 19 k=5 ran on haar_lean built 12:41 (no fixchecks in RESULT); psl 19 k=3 ran after
+#   the working-tree rebuild at 12:59 (RESULT has fixchecks=0). RANDORB psl 19 k=5 rechecked on the new binary: identical numbers.
+# group | k | seed | solved | evals | best cost | file
+psl 31 x Z601 | 5 | 1 | yes | 3745 | 0 | run_psl_31_601_k5_s1.txt (14.4 s)
+psl 31 x Z601 | 5 | 2 | yes | 2985 | 0 | run_psl_31_601_k5_s2.txt (10.3 s)
+psl 31 x Z601 | 5 | 3 | yes | 729 | 0 | run_psl_31_601_k5_s3.txt (2.6 s)
+psl 31 x Z601 | 3 | 1 | no | 32401 | 6 | run_psl_31_601_k3_s1.txt
+psl 31 x Z601 | 3 | 2 | no | 32409 | 6 | run_psl_31_601_k3_s2.txt
+psl 31 x Z601 | 3 | 3 | no | 35017 | 7 | run_psl_31_601_k3_s3.txt
+psl 19 x Z2671 | 5 | 1 | no | 43025 | 11 | run_psl_19_2671_k5_s1.txt
+psl 19 x Z2671 | 5 | 2 | no | 43217 | 11 | run_psl_19_2671_k5_s2.txt
+psl 19 x Z2671 | 5 | 3 | no | 37857 | 10 | run_psl_19_2671_k5_s3.txt
+psl 19 x Z2671 | 3 | 1 | no | 36193 | 21 | run_psl_19_2671_k3_s1.txt
+psl 19 x Z2671 | 3 | 2 | no | 46321 | 27 | run_psl_19_2671_k3_s2.txt
+psl 19 x Z2671 | 3 | 3 | no | 46593 | 30 | run_psl_19_2671_k3_s3.txt
+# score (psl 19 x Z2671, k=5, median evals, unsolved = 1e7): 10000000
+# verify re-runs psl 31 x Z601 k=5 (not in the medians; full diameter check OK on all three):
+#   seed 1 solved evals 2137 (verify_psl_31_601_k5_s1.txt); seed 2 solved evals 5401; seed 3 solved evals 729
+# RANDORB (400 random symmetric S, no search; units = Poisson count of uncovered free orbits + fixed points):
+RANDORB psl 31 x Z601 k=5 (mu 27.45): cost min 11 p10 25 median 46; units min 3.0 p10 6.0 median 11.0 mean 52.68
+RANDORB psl 31 x Z601 k=3 (mu 27.45): cost min 15 p10 36 median 54; units min 5.0 p10 12.0 median 18.0 mean 69.68
+RANDORB psl 19 x Z2671 k=5 (mu 36.61): cost min 16 p10 60 median 95; units min 4.0 p10 12.0 median 20.0 mean 202.11
+RANDORB psl 19 x Z2671 k=3 (mu 36.61): cost min 63 p10 102 median 178; units min 21.0 p10 34.0 median 60.0 mean 307.86

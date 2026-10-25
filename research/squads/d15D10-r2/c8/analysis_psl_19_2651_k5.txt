@@ -1,0 +1,22 @@
+file=zs_psl_19_2651.txt samples=1500 n=2651 k=5 z-count=15 lambda=12.90
+orbit check: AR=91 (most common ratio z1/z0), z[kj+i] == AR^i z[kj] for 22500 of 22500 entries
+A: min=0.5044 p10=0.5564 median=0.6027 p90=0.6721 max=0.8122 mean=0.6103
+cost: min=17 median=85.0 mean=704.29 max=199456 distinct=283
+SPEARMAN cost vs A: rho=0.4514  bootstrap95=[0.4029, 0.4953]  p(normal approx)=2.22e-85
+SPEARMAN cost vs predicted factor I0(2*12.9*A^9): rho=0.4514 (identical ranking)
+quartiles of A: Q1=0.5762 Q3=0.6387  n_low=375 n_high=375
+median cost lowest A quartile = 72.0 (mean 527.90, mean f 1.005)
+median cost highest A quartile = 140.0 (mean 1575.36, mean f 1.348)
+ratio high/low: median cost 1.944, mean cost 2.984, mean predicted factor 1.342
+deciles of A (count, mean A, median cost, mean cost, mean f):
+  D1  n= 149  A=0.544  median cost=  72.0  mean cost= 769.50  mean f=   1.003
+  D2  n= 151  A=0.564  median cost=  75.0  mean cost= 511.17  mean f=   1.006
+  D3  n= 150  A=0.576  median cost=  66.5  mean cost= 341.41  mean f=   1.008
+  D4  n= 150  A=0.587  median cost=  75.0  mean cost= 166.32  mean f=   1.011
+  D5  n= 150  A=0.597  median cost=  79.0  mean cost=  90.85  mean f=   1.016
+  D6  n= 150  A=0.609  median cost=  80.0  mean cost= 475.29  mean f=   1.022
+  D7  n= 150  A=0.622  median cost=  81.0  mean cost= 189.95  mean f=   1.032
+  D8  n= 150  A=0.638  median cost=  85.0  mean cost= 777.61  mean f=   1.052
+  D9  n= 150  A=0.657  median cost= 111.5  mean cost= 380.85  mean f=   1.091
+  D10  n= 150  A=0.710  median cost= 283.0  mean cost=3341.69  mean f=   1.750
+per-sample table: samples_psl_19_2651_k5.csv

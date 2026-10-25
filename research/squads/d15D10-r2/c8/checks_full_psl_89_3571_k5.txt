@@ -1,0 +1,11 @@
+file=zs_full_psl_89_3571.txt samples=40 n=3571
+confound: all z_i units mod n: 40 samples, spearman(cost, A) = 0.3246 (all samples: 0.3246)
+observed: median cost low/high quartile = 27.5 / 40.5 (ratio 1.473); mean ratio 6.984
+predicted e=7 lambda=12.5: factor ratio high/low mean 3.418, median 1.789
+predicted e=7 lambda=12.9: factor ratio high/low mean 3.705, median 1.848
+predicted e=7 lambda=17.6: factor ratio high/low mean 11.203, median 2.790
+predicted e=9 lambda=12.5: factor ratio high/low mean 1.478, median 1.160
+predicted e=9 lambda=12.9: factor ratio high/low mean 1.519, median 1.171
+predicted e=9 lambda=17.6: factor ratio high/low mean 2.281, median 1.329
+collision control: spearman(cost, #distinct z) = nan; partial spearman(cost, A | #distinct) = 0.3246
+exponent fit RSS by e: e=3:55.4, e=4:34.3, e=5:17.8, e=6:10.1, e=7:9.5, e=8:12.1, e=9:15.6, e=10:18.8, e=11:21.3, e=12:23.1; best e=7
