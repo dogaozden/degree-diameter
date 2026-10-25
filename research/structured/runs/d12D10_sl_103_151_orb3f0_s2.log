@@ -1,0 +1,19 @@
+group sl 103 x Z_151, N=164986224, identity 1586406, H order 52, rows 3172812, threads 1, setup 7.64s
+wide rows: HW order 206, rows 800904, setup 18.01s
+alpha: conj by mat(35,38,40,67) (index 375166), z -> 32 z on Z_151
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 101 (+e); mu = 24.54, mu/k = 8.18, fixed-point misses ~ 0.54
+start cost=55
+t=31 steps=14 evals=113 cost=13 best=13 T=0.50
+t=62 steps=28 evals=225 cost=10 best=10 T=0.17
+t=94 steps=42 evals=337 cost=9 best=9 T=0.15
+t=124 steps=56 evals=449 cost=9 best=9 T=0.15
+t=155 steps=70 evals=561 cost=8 best=8 T=0.15
+t=185 steps=84 evals=673 cost=8 best=8 T=0.15
+t=217 steps=99 evals=793 cost=7 best=7 T=0.15
+RESULT d=12 D=10 group=sl 103 x Z_151 N=164986224 best=0 evals=897 time=244.1 orbit k=3 m=4 f=0 fix=101
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/2fe76cca-cf2e-5444-b682-d621e6d5e371/scratchpad/raise/out/d12D10_sl_103_151_orb3f0_s2.txt
+VALID d=12 D=10 group=sl 103 x Z_151 N=164986224 vertices=329972448 (distinct generators, 12-regular simple)
+VALID d=12 D=10 vertices=329972448 eccA=10 eccB=10
+independent SL checkers: tools/hcsl VALID (N=164986224, vertices=329972448); tools/hc2 VALID (eccA=10 eccB=10)

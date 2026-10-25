@@ -1,0 +1,14 @@
+group psl 197 x Z_43, N=164371284, identity 830158, H order 49, rows 3354516, threads 1, setup 5.90s
+wide rows: HW order 197, rows 834372, setup 11.05s
+alpha: conj by mat(57,18,68,139) (index 2196224), z -> 6 z on Z_43
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 98 (+e); mu = 23.05, mu/k = 7.68, fixed-point misses ~ 0.51
+start cost=33
+t=31 steps=12 evals=97 cost=13 best=9 T=0.51
+t=62 steps=23 evals=185 cost=6 best=6 T=0.18
+t=93 steps=34 evals=273 cost=6 best=6 T=0.15
+RESULT d=12 D=10 group=psl 197 x Z_43 N=164371284 best=0 evals=305 time=104.5 orbit k=3 m=4 f=0 fix=98
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/2fe76cca-cf2e-5444-b682-d621e6d5e371/scratchpad/raise/out/d12D10_psl_197_43_orb3f0_s1.txt
+VALID d=12 D=10 group=psl 197 x Z_43 N=164371284 vertices=328742568 (distinct generators, 12-regular simple)
+independent PSL checker (research/structured/tools/haarcheck_psl, 2m56s): VALID d=12 D=10 group=psl 197 x Z_43 N=164371284 vertices=328742568
