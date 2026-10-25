@@ -5,7 +5,9 @@
    wired to freed elements incident with the partner, so pairing is allowed only where such freed elements exist.
    Moves: force-insert a random element (dropping the chosen elements that block it), refill the region greedily;
    best set kept, restored when the current falls behind.  Optional PAIRMAX caps the number of pairs.
-   usage: dpack HEXBIN P|L SEED SECONDS START.txt ALLOW.txt|- PAIRMAX OUT.txt   (ALLOW: ids allowed to pair; - = all) */
+   usage: dpack HEXBIN P|L SEED SECONDS START.txt ALLOW.txt|- PAIRMAX OUT.txt [PROTECT.txt]
+   (ALLOW: ids allowed to pair, - = all; PROTECT: elements of START that are never removed, e.g. the only covers of the
+   other sets' partners) */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -13,7 +15,7 @@
 #include <time.h>
 static double wall(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 static int q, N, Q1, *EC, *CE, *cnt, *sol, *pos, ns, npair, pairmax;
-static char *in, *allow;
+static char *in, *allow, *prot;
 static uint64_t rs;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 /* nb(e): chosen elements collinear with e (excluding e) */
@@ -56,7 +58,10 @@ int main(int argc, char **argv) {
     double secs = atof(argv[4]); pairmax = atoi(argv[7]); if (pairmax <= 0) pairmax = 1 << 30;
     cnt = calloc(N, sizeof(int)); in = calloc(N, 1); sol = malloc(sizeof(int) * N); pos = malloc(sizeof(int) * N); allow = malloc(N);
     if (strcmp(argv[6], "-") == 0) memset(allow, 1, N); else { memset(allow, 0, N); FILE *g = fopen(argv[6], "r"); int e; while (fscanf(g, "%d", &e) == 1) allow[e] = 1; fclose(g); }
+    prot = calloc(N, 1);
+    if (argc > 9) { FILE *g = fopen(argv[9], "r"); int e; while (fscanf(g, "%d", &e) == 1) prot[e] = 1; fclose(g); }
     { FILE *g = fopen(argv[5], "r"); int e; while (fscanf(g, "%d", &e) == 1) { if (can_add(e)) add_chk(e); else fprintf(stderr, "start: skipped %d\n", e); } fclose(g); }
+    { int np = 0, miss = 0; for (int e = 0; e < N; e++) if (prot[e]) { np++; if (!in[e]) miss++; } if (np) fprintf(stderr, "protected %d (%d not in the start set)\n", np, miss); }
     int st0 = ns;
     int *perm = malloc(sizeof(int) * N); for (int i = 0; i < N; i++) perm[i] = i;
     for (int i = N - 1; i > 0; i--) { int j = rnd() % (i + 1); int t = perm[i]; perm[i] = perm[j]; perm[j] = t; }
@@ -73,6 +78,7 @@ int main(int argc, char **argv) {
                 FILE *o = fopen(argv[8], "w"); for (int i = 0; i < best; i++) fprintf(o, "%d\n", bs[i]); fclose(o); } }
         int x; do { x = rnd() % N; } while (in[x]);
         int w[64]; int k = nbr(x, w); if (k > 6) continue;
+        { int bl = 0; for (int i = 0; i < k && i < 64; i++) if (prot[w[i]]) bl = 1; if (bl) continue; }
         int nr = 0;
         /* drop blockers: all neighbours (and their partners' pair counts are handled by rem_chk) */
         for (int i = 0; i < k && i < 64; i++) if (in[w[i]]) { rem_chk(w[i]); rm[nr++] = w[i]; }

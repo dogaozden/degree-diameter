@@ -1,0 +1,37 @@
+# (15,7) n = 2,501,124 = 14*177,156 + 10,652 + 10,288 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; this branch's earlier 2,500,147, 2,500,749, 2,501,008.
+# Construction as in d15D7_hex11_typedrelax_n2500749.check.txt (typed levels HHDHHDD of H(11), mirrored surgery 768 on
+# the nine non-friendly transitions, relaxed bottleneck friendly sets, research/d15D7b/RELAXED.md) after squad round
+# c157b-r2: alternating ILS runs (dpack.c with coverage masks and protect lists), private partner covers in the
+# non-bottleneck friendly sets (design3.py, squad card c4), a singles-only refill; 0 unservable pairs.
+# Bottleneck sets: 0->2 9,117 points (969 pairs), 1->2 9,116 (968), 2->3 8,752 lines (1,194), 2->4 8,760 (1,239).
+# Solution: research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol (sha256 1995ba3bb4b7282ba0064d2ccd03056c2959c2bcb38ebbb5e19dc55c6fecf602).
+# Rebuild: hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19 (research/d13D7/hexgen2.c 11);
+#   python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol g.edges g.src
+#   edge list sha256 69558a88c5e7c97a0fbde9bf983d1649fbb9fd220ca2ad209c1f3183f6046f7e (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
+#   cc -O2 -pthread -o apsp_mt research/lifts/coordinator_check/apsp_mt.c && ./apsp_mt g.edges 15 7 4
+# Coverage: theorem for the unaffected non-hub pairs (hypotheses re-checked by tm3_build), BFS from every hub and every
+# paired-element vertex for the rest; and the plain all-pairs run (apsp_mt, all 2,501,124 sources, no symmetry) below.
+-- tm3_build.py build:
+free A-slots per level [10653, 10652, 18280, 15093, 15096, 14697, 14731] B-slots [14697, 14731, 19001, 10288, 10296, 15093, 15096] -> hubs 10652 10288
+mirror hypotheses OK: |R'| = 768
+  0->2 (points): 9117 freed, 969 pairs, (R1) and (R2) OK
+  1->2 (points): 9116 freed, 968 pairs, (R1) and (R2) OK
+  2->3 (lines): 8752 freed, 1194 pairs, (R1) and (R2) OK
+  2->4 (lines): 8760 freed, 1239 pairs, (R1) and (R2) OK
+  3->5 (points): 5680 freed, 0 pairs, (R1) and (R2) OK
+  3->6 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->5 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->6 (points): 5683 freed, 0 pairs, (R1) and (R2) OK
+  5->0 (lines): 5683 freed, 0 pairs, (R1) and (R2) OK
+  5->1 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->0 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->1 (lines): 5717 freed, 0 pairs, (R1) and (R2) OK
+friendly hypotheses OK (4370 pairs in all)
+n = 2501124, edges = 18731062, degree min 12 max 15, hub graph edges 82304
+wrote rb.edges
+wrote rb.src: 38383 BFS sources (hubs and paired elements)
+-- hubfar (BFS from all 20,940 hubs and 17,443 paired-element vertices, depth 7, 4 threads):
+n=2501124 edges=18731062 degree min=12 max=15 bipartite=yes connected=yes sources=38383 far_pairs=0 max_ecc=7
+-- apsp_mt (all sources), 4 threads: RUNNING (started 12:52 UTC); result appended when done.

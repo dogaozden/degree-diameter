@@ -69,3 +69,23 @@ Kept: nothing from the plain-set searches (8,645 / 8,246 look like the cap for t
 order-399 normaliser). Opus meanwhile: a relaxed surgery theorem (research/d15D7b/RELAXED.md) that allows collinear pairs
 in the friendly sets when the hubs of each paired element are wired to freed elements incident with its partner; with it
 the four bottleneck sets grow to ~9,000 points / ~8,600 lines: (15,7) 2,500,749, then 2,501,008 (BFS-checked).
+
+## 2026-10-25 12:05–12:45 UTC, cell-15-7 resume (Opus, session_01P3FWCNGZp2xTc6sYGPNtj4), round 2 (c157b-r2)
+
+Goal: raise the relaxed construction (branch record 2,501,008; the stock scorer re-scores those sets to 2,500,999 because
+its cover design is randomised). Scorer: research/d15D7b/score_relaxed.py (four bottleneck sets -> covers, hub
+assignment, drops -> n). Brief: research/squads/c157b-r2/COMMON.md, CARDS.md. Five cards (c3 = Opus's own alternating
+runs), one process each.
+
+Cards: c1 a stronger ILS for the point sets · c2 the same for the line sets · c4 fewer drops in the assignment ·
+c5 other starting sets · c6 wildcard (interlocking coverage).
+
+Best per card: c1 2,501,023 (pils.c: raw sets grow to 9,177 / 9,171 but drops rise to 191) · c2 2,501,002 (pair-free
+additions only; free pairs raise S3 to 9,156 raw but 909 drops) · **c4 2,501,016 with 0 drops: design3.py gives every
+needed partner a private covering element (no covering element holds two needed elements, and the joining line of a
+pair is never a cover)** · c5 2,500,999 (all six alternative starts score lower: drops 467-583) · c6 2,500,999 (notes
+the overlaps P0 ∩ P1 = 563, S3 ∩ S4 = 471 waste coverage) · Opus c3 (10-minute alternating runs) 2,501,057, with
+c4's design3 2,501,077.
+
+Kept: c4's design3.py (in the final scorer), Opus's alternating runs. Lesson: pairs pay only when their coverage is
+uncontested; the searches that ignore the assignment grow raw sets but lose it in drops.
