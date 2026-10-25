@@ -56,7 +56,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "5,10": {
-  "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789"
+  "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 2047 22 25 found here (graphs/d5D10_n90068_meta_2047_22_25_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "6,5": {
   "notes": "n/2 = 342 = 2\u00b73^2\u00b719; = |Z_19 x| Z_18| (k | p-1): fits a Haar graph of that group",
@@ -73,7 +77,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "6,9": {
-  "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163"
+  "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 815 72 23 found here (graphs/d6D9_n117360_meta_815_72_23_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "6,10": {
   "notes": "n/2 = 226016 = 2^5\u00b77\u00b71009"
