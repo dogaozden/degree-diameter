@@ -419,12 +419,12 @@ Second-session form. For α of order k with α(S) = S, f fixed generators and m 
 with π_β = P_ℓ·|Fix(β)|/N palindromic shots (§2.8, §3.5). Anti(β) is taken outside Fix(β), and
 |Im L_β| = N/|Fix(β)|. Then:
 - **Ranking.** Among symmetries whose spaces are large enough, prefer the smallest μ_A, and estimate the anneal
-  effort with the effort law. On the twelve odd-D screens of `out/rule_table2.txt` the measured p1 is 1.2–1.7 times
-  μ_A, and the order is always right.
+  effort with the effort law. On the odd-D screens of `out/rule_table2.txt` the measured p1 is 1.2–1.7 times μ_A
+  where 3,000 samples allow a p1, and the order is right in every group, including the negative controls.
 - **Existence.** The space must contain a solution: roughly ln(#classes) − μ_A ≳ 0, with
   #classes = #S·|Stab(S)|/|N_E(⟨α⟩)| (§2.7). This is what decided (6,8): order 3 has ln 8,773 = 9.1 against
-  μ_A = 12.9, order 2 has ln(3.4·10⁷) = 17.3 against 16.0 (§3.4). The absolute value of e^{−μ_A} is off by several
-  nats at (6,8) (2.7 and 5.4 too pessimistic for the two order-2 spaces). So treat this as a screen, and where N is
+  μ_A = 12.9, order 2 has ln(3.4·10⁷) = 17.3 against 16.0 (§3.4). The absolute value of e^{−μ_A} is about 6 nats too
+  pessimistic at (6,8), once the short-cycle avoidance is included (§3.4). So treat this as a screen, and where N is
   small, count instead: sample the space and group the near misses into classes.
 - **Twisted cycles** (even and odd D, any involution in ⟨α⟩). A solution keeps n* = R_j·e^{−μ_A⁰λc_j} twisted
   4j-cycles, where R_j = ρ_β Δ(Δ−1)^{2j−1}/(4j) and c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) (§3.1). This holds on 6 anneal

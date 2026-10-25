@@ -4,3 +4,5 @@ alpha: Frobenius x -> x^2 on entries, z -> 65 z on Z_133
 ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 49.88, mu/k = 8.31, fixed-point misses ~ 1.27
 start cost=165
 t=30 steps=25 evals=201 cost=46 best=46 T=0.53
+t=60 steps=49 evals=393 cost=46 best=46 T=0.19
+t=91 steps=73 evals=585 cost=46 best=46 T=0.15
