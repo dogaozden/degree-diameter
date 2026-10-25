@@ -1,1 +1,6 @@
 group psl 131 x Z_311, N=349557780, identity 2648165, H order 33, rows 10592660, threads 1, setup 8.78s
+wide rows: HW order 131, rows 2668380, setup 25.55s
+alpha: conj by mat(44,88,48,99) (index 758014), z -> 6 z on Z_311
+FIXMIN=5: 64 of 64 fixed elements eligible as generators
+ORBIT k=5 m=2 f=3: |Fix(alpha)| = 64 (+e); mu = 35.50, mu/k = 7.10, fixed-point misses ~ 2.60
+start cost=55
