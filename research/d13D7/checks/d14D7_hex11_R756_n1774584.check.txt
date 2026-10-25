@@ -11,3 +11,7 @@
 # automorphism, so these eccentricities give the diameter.
 n=1774584 edges=12422088 degree min=14 max=14 bipartite=yes diameter=7
 RESULT VALID d=14 D=7 n=1774584 (eccentricities of the 357336 listed sources)
+# Second check, 2026-10-25 03:18-03:32 UTC, with the coordinator's research/lifts/coordinator_check/apsp_orb.c on the graph rebuilt
+# from the sol file (multi_sol.py build):  apsp_orb d14D7.edges 14 7 4 5 354312
+n=1774584 edges=12422088 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357336 sources)
+RESULT VALID d=14 D=7 n=1774584

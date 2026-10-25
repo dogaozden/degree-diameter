@@ -215,6 +215,6 @@ gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs
 | (10,7) | 224,694 | **225,128** | d10D7_hex8_R217_n225128 | VALID (224,862 with 84 points also VALID) |
 | (11,7) | 398,580 | 406,514 | d11D7_hex9_dual_R3967_n406514 | VALID (406,496 and 406,298 also VALID); master has 407,162 (cell-10-7 session, 4,291 points) |
 | (12,7) | 664,300 | 673,892 | d12D7_hex9_dual_R2459_n673892 | VALID (level 0 + hubs); master has 680,068 (cell-10-7 session) |
-| (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs) |
+| (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs; also apsp_orb.c, shift checked) |
 | (15,7) | 2,480,184 | **2,484,720** | d15D7_hex11_R756_n2484720 | VALID (level 0 + hubs) |
 | (16,7) | 4,022,340 | **4,025,508** | d16D7_hex13_R792_n4025508 | VALID (level 0 + hubs; 4,024,340 with 500 points also VALID) |
