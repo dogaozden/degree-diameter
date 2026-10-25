@@ -55,3 +55,34 @@ groups need `build_haar2.py` instead.
 - Solution: research/frontier/sols/d11D9_sl_49_73_orb3_s1.txt. Search log: research/structured/runs/d11D9_sl_49_73_orb3_s1.log.
 - Independent check: build_haar2.py VALID: ecc 9 from both sides, 0 unreached, edge-list sha256 0aea5ec6ee8e0dd9547da7514883b8364b6338fba88f6b53a912b4ab123921b2.
   Log: runs/d11D9_sl_49_73_orb3_s1.rebuild.txt. The prime-only SL checkers do not handle GF(49), so build_haar2 is the checker here.
+
+## Wave 1 results (seed 1, 1200 s unless noted; ORBIT="3 3 2", K = 8, THREADS = 1)
+
+| group | |G| | μ | result |
+|---|---|---|---|
+| prod sl 7 × sl 11 × Z19 | 8,426,880 | 15.8 | **solved** (11,545 evals), record 1 |
+| sl 37 × Z169 | 8,554,104 | 19.5 | **solved** (28,417 evals), record 2 |
+| sl 49 × Z73 | 8,584,800 | 20.5 | **solved** (31,033 evals), record 3 |
+| sl 31 × Z283 | 8,422,080 | 15.7 | best 12 (47k evals) |
+| prod sl 5 × sl 8 × Z139 | 8,406,720 | 15.3 | best 6 (24k) |
+| sl 29 × Z349 | 8,501,640 | 17.9 | best 12 (45k) |
+| prod sl 3 × sl 37 × Z7 | 8,503,488 | 18.0 | best 4 (39k) |
+| prod sl 5 × sl 7 × Z211 | 8,507,520 | 18.1 | best 32 (43k) |
+| prod sl 3 × sl 13 × Z163 | 8,543,808 | 19.2 | best 24 (25k) |
+| prod sl 3 × sl 17 × Z73 | 8,577,792 | 20.3 | best 8 (31k, 1136 s) |
+| prod sl 3 × sl 11 × Z271 | 8,585,280 | 20.6 | best 48 (20k) |
+| prod sl 3 × sl 71 × Z1 | 8,588,160 | 20.7 | best 12 (32k) |
+| sl 43 × Z109 | 8,661,576 | 23.3 | best 12 (47k) |
+| sl 41 × Z127 | 8,747,760 | 26.6 | best 10 (49k) |
+| prod sl 5 × sl 7 × Z217 | 8,749,440 | 26.7 | best 38 (55k) |
+| sl 29 × Z361 | 8,793,960 | 28.6 | best 30 (55k) |
+| sl 59 × Z43 | 8,828,760 | 30.2 | best 8 (37k) |
+| sl 107 × Z7 | 8,574,552 | 20.2 | best 2 (stopped by hand after 81 s, 2.7k evals, to free a slot) |
+
+Notes: the three solutions came at evaluations 11k–31k; at μ ≈ 20 the solve rate looks like a few in ten runs, and
+the solved ones were the three smallest-μ-to-|G| ratios with n a prime ≡ 1 (mod 3) or a product with a small factor.
+Stalls at cost 8–12 are common; the k = 3 cost is ≡ fixed-point misses mod 3, so cost 12 is a plausible plateau.
+
+## Wave 2 (seed 2, 2400 s, started 09:11): in progress
+prod sl 3 × sl 71, prod sl 4 × sl 11 × Z109, prod sl 3 × sl 11 × Z271, sl 43 × Z109 (seed 2), then sl 41 × Z127,
+prod sl 5 × sl 7 × Z217, sl 29 × Z361, sl 59 × Z43 (seed 2) and prod sl 8 × sl 11 × Z13.
