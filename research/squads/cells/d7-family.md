@@ -172,7 +172,8 @@ sets.
   half a line in a non-concurrent set, so this only pays if the covers are designed jointly.
 - Partners in the mirrored set (above) inside the mirrored annealer (mirror_sa5/6 with a move "add y collinear with a
   base point a, pin sigma(a) to the spread line meeting M"); each partner is +2 on every cell that uses that q.
-- q = 8 mirrored set: still moving under the annealer (229 -> 230 -> 231 in two rounds).
+- q = 8 mirrored set: moved under the annealer (229 -> 230 -> 231 in two rounds), then eight more seeds from the 231
+  state (T 0.08-0.2, 240-1,200 s, --m 16-24) stayed at 231, and it is add-maximal and 1-out/2-in optimal.
 
 ## Files
 
