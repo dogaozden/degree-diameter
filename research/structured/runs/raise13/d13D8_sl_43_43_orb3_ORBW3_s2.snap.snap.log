@@ -1,0 +1,17 @@
+group sl 43 x Z_43, N=3416952, identity 77658, H order 44, rows 77658, threads 1, setup 0.12s
+wide rows: HW order 172, rows 19866, setup 0.19s
+alpha: conj by mat(26,36,7,18) (index 49586), z -> 6 z on Z_43
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 41 (+e); mu = 36.76, mu/k = 12.25, fixed-point misses ~ 0.93
+ORBW=3: an uncovered fixed element weighs 3; start energy 48
+start cost=48
+t=30 steps=494 evals=3953 cost=9 best=9 T=0.53 energy=9 bestE=9
+t=60 steps=966 evals=7729 cost=9 best=9 T=0.19 energy=9 bestE=9
+t=90 steps=1416 evals=11329 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=120 steps=1851 evals=14809 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=150 steps=2265 evals=18121 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=180 steps=2715 evals=21721 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=210 steps=3153 evals=25225 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=240 steps=3611 evals=28889 cost=6 best=6 T=0.76 energy=6 bestE=6
+RESULT d=13 D=8 group=sl 43 x Z_43 N=3416952 best=0 evals=32177 time=267.3 orbit k=3 m=4 f=1 fix=41
+full diameter check: OK
+wrote d13D8_sl_43_43_orb3_ORBW3_s2.txt
