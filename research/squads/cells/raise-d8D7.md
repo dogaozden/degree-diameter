@@ -43,6 +43,17 @@ screened worse on the same windows (random min ≥ 40 on the best ones).
   psl 17×9 is the same across seeds and variants, which suggests no orbit-symmetric solution for this α, not a slow search.
 - Wave 3 (3600 s each): sl 7×65 (seed 21), pgl 9×31 (seed 21), sl 9×31 (seed 21), psl 9×61 with RESTART=1 (seed 22).
 
-## Status
+- Wave 3 result (3600 s each): pgl 9×31 best 6 (seed 21), sl 9×31 best 6 (seed 21), sl 7×65 best 6 (seed 21),
+  psl 9×61 with RESTART=1 best 12 (seed 22). None solved. About 2.2·10⁸ evals each.
 
-Still searching. Nothing above 43,344 yet.
+## Status: stopped, nothing above 43,344
+
+Three waves (about 12 one-hour runs, roughly 2.5·10⁹ evaluations on 4 cores) over every candidate group with
+N in [21,673, 22,500] and the k = 3, m = 2, f = 2 orbit structure. Best costs: 3 (psl 17×9, three variants and seeds),
+6 (pgl 9×31, sl 9×31, sl 7×65, pgl 7×65 plain), 12 (psl 9×61), 24 (pgl 5×181). Nothing solved.
+
+Why stopped: the cost floors are the same across seeds and variants, the group windows are exhausted, and BEYOND_RANDOM
+§1.5 already puts (8,7) near the orbit-space ceiling. Not proven: each orbit space is still far larger than the
+evaluations spent, so a much longer run on psl 17×9 (cost 3) or pgl 9×31 (cost 6) remains the cheapest next step.
+
+Not tried: k = 2, 4, 5 structures on these groups beyond the random-S screen; Lean/lift routes.
