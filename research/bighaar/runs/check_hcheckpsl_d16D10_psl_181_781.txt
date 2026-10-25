@@ -1,2 +1,10 @@
 checker: hcheckpsl
 command: /tmp/claude-0/-home-user-degree-diameter/44b9d801-e3b0-5931-8a0d-00a602da11d2/scratchpad/bin/hcheckpsl ../../frontier/sols/d16D10_psl_181_781_orb5g_s14.txt
+start: 2026-10-25T15:35:42Z
+sha256 61bda6d680d612f4668db8482bbd8637b8bfa11fcff27378e7045ee709bef12b  /tmp/claude-0/-home-user-degree-diameter/44b9d801-e3b0-5931-8a0d-00a602da11d2/scratchpad/bin/hcheckpsl
+sha256 6286ea4859425b61d14cd89294ef1812979bbf40cc46e64b5c5c79a1e6876306  ../../frontier/sols/d16D10_psl_181_781_orb5g_s14.txt
+# threads=1 bfsA=174.640s bfsB=164.625s total=339.265s maxrss=1108MB
+VALID d=16 D=10 group=psl 181 x Z_781 N=2315493180 vertices=4630986360
+ecc(e,A)=10 ecc(e,B)=10
+exit: 0
+end: 2026-10-25T15:41:21Z (339 s)
