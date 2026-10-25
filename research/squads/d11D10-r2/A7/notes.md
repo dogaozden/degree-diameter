@@ -44,4 +44,39 @@ Commands used for the table above are plain arithmetic (python3 one-liner), no h
 
 ## Screens (RANDORB=30)
 
-RESULTS_PLACEHOLDER
+All four runs finished normally (full RANDORB lines in the logs; none was killed by the 13:24 stop). Slot time used: about 1.5 min
+of the 8 allowed. Gate call form: `gate.sh 300 env -u THREADS ...` with haar_sym unchanged. Cost = uncovered B-side elements.
+
+| run (log) | command (haar_sym args `11 10 60 5 8 /dev/null GROUP n`) | N | Fix (+e) | mu | min | p10 | median | median/mu | mean | time |
+|---|---|---|---|---|---|---|---|---|---|---|
+| s1 | `ORBIT="5 2 1" AFROB=1` psl 32 2281 (Frobenius order 5, Z_n multiplier auto, order 5) | 74,670,816 | 5 | 25.75 | 35 | 55 | 80 | 3.1 | 953 (one large outlier) | 13.5 s |
+| s2 | `ORBIT="5 2 1"` heis 191 11 (scaling zeta of order 5, r = 3 on Z11) | 76,646,581 | 0 | 38.79 | 18,425,580 | 18,457,380 | 21,060,485 | 5.4e5 | 23,245,375 | 4.9 s |
+| s3 | `ORBIT="10 1 1" AFROB=1 AR=2280` psl 32 2281 (alpha = Frobenius x (z -> -z), order 10) | 74,670,816 | 5 | 25.75 | 74,048,832 | 74,048,834 | 74,049,008 | 2.9e6 | 74,110,396 | 7.0 s |
+| s4 | `ORBIT="10 1 1" AR=2` heis 191 11 (zeta of order 10, r = 2 on Z11) | 76,646,581 | 0 | 38.79 | 76,273,920 | 76,273,920 | 76,273,920 | 2.0e6 | 76,318,744 | 4.3 s |
+
+Reading the numbers:
+- s1 is the only run with ordinary samples: median 80 = 3.1 mu (median/k = 16 clumps against mu/k = 5.2). The reference
+  psl 243 x Z11 (k = 5) has median/mu about 1.1 and psl 89 x Z211 about 1.4. So PSL(2,32) x Z2281 has the same mixing defect the
+  card reports for psl 41 x Z2161 (large cyclic factor). Its minimum 35 (1.4 mu) is inside the psl 243 minima range
+  (31-51), but the typical sample is twice as bad as psl 243's and more than twice as bad as psl 89 x Z211.
+- s2 (heis, k = 5): every sample is degenerate, covering about 72 % of B side at the median and 76 % at best; fixed-point count
+  is 0 as predicted, but nilpotent structure kills the covering.
+- s3 (Frobenius, k = 10): covers 0.8 % of B side in every sample. Not diagnosed. One observation: alpha^5 = (id, -1) maps
+  (x, z) to (x, -z), so S contains both, which may be the cause (untested).
+- s4 (heis, k = 10): covers 0.5 % in every sample.
+
+Not screened (analytic reasons, all in the table above or below):
+- pgl 421, psl 421 x Z2, sl 421 (N about 74.6M): an order-5 conjugation has a torus centralizer, so |Fix| is about 210-420 and
+  the expected misses are about 10 or more.
+- prod psl 41 psl 13 x Z2 (about 75.2M): PSL(2,13) has no element of order 5, so alpha = (g, e) and Fix contains
+  C(g) x PSL(2,13), about 21,000 elements.
+- psl 125 x Z79 and psl 125 x Z78 (k = 3, Frobenius of order 3): mu/k = 14.3 and 11.7 against 12.1 for the psl 243 reference;
+  Fix = 60 and 360.
+- heis 421 (N = 74,618,461, Fix 0, mu 25.5): every element has order 421, so haar_sym falls back to a cyclic subgroup of
+  order 1 (about 74.6M one-bit rows), too slow for a screen. Not run; the heis result at N = 76.6M makes it unpromising.
+- meta, agl1: solvable with a large abelian normal subgroup. Not run.
+
+Conclusion: none of the screened groups or automorphisms gives median/mu near 1. The best, PSL(2,32) x Z2281 with k = 5, is
+worse on mixing than psl 89 x Z211 (our 148.7M family) and psl 243 x Z11, so it is not worth annealing. Heis with a scaling
+alpha and the k = 10 Frobenius variant are degenerate. No VALID graph was produced (score 0).
+The coordinator reports the cell solved at 157,835,304 (k = 10, AR = 3, psl 243 x Z11); I have not re-checked that.

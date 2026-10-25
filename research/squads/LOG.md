@@ -62,3 +62,34 @@ other schedule · A5 outer involution AFROBD · A6 conjugation-family fallbacks 
 A8 open wildcard · B1 small-orbit prefilter · B2 speed of a k = 10 sample · B3 theory of the k = 10 excess ·
 B4 prime-power checkers · B5 ball census · B6 cost by class of the orbit generator · B7 tools wildcard ·
 B8 constructions wildcard.
+
+### Round 2 outcomes (best score per card; costs are uncovered elements of psl 243 × Z11, μ = 60.6, unless stated)
+
+- A1 k = 10 pairings (z ↦ 2z): the four Frobenius powers are inequivalent but tie in the bulk (median ≈ 100 = 10
+  clumps); 13 % degenerate. AR = 6/7 reproduce AFROB = 4/3. Lowest 20.
+- A2 degenerate samples: exactly the orbit generators with z = 0 (S inside PSL(2,243) × {0}, cost 71,743,320); `SKIPZ=1`.
+- A3 k = 5 AFROB=2 anneal: never got a gate slot (the gate has no queue; polling jobs starve).
+- A4 k = 5 AFROB=4 anneal: cost 20 at 31 s, never improved (RESTART never fired: REHEATSTEPS 400 > 130 steps).
+- A5 outer involution AFROBD (z ↦ 2z): same bulk as AFROBH (mean ≈ 10 clumps), one sample at cost 10.
+- A6 conjugation fallbacks: psl 71 × Z421 (150.65M) cost 5, psl 79 × Z311 (153.3M) cost 10, 330 s each.
+- A7 other groups: PSL(2,32) × Z2281 mixes badly (median 3.1 μ); heis 191 × Z11 and k = 10 on PSL(2,32) × Z2281 degenerate.
+- A8 twisted Z11-layer orbit S = {(g^k u^−k, k)}: loses about 31 % of its words (min cost 1,870). Dead end. (Its cleanup
+  of "until grep" loops also killed other cards' wait loops.)
+- B1 small-orbit prefilter `PREF=1` by meet in the middle: 0 mismatches against the BFS on 55 targets × 100 samples.
+- B2 speed: a k = 10 sample is 43 % table builds (10 × 22.5 ms) and 57 % BFS; HUGEPG=1 FAST=2 PFD=8 is about 11 % faster.
+- B3 theory: no formal word identities up to length 7; the k = 10 excess comes from generator-specific short coincidences.
+- B4 checkers: haarcheck_pq and pqcheck agree on psl 243 test files (2 valid, 2 corrupted); 62–86 s at 157.8M.
+- B5 ball census: k = 10 with z ↦ 2z falls behind k = 5 from BFS level 4 (−1.1 to −1.5 % at levels 6–8).
+- B6 cost by class of the generator: no data (unquoted env var in its script).
+- **B7 census + RANDORB: z ↦ 3z (order 5) instead of z ↦ 2z cuts the k = 10 bulk from 9.5 to 7.7 clumps.** This was
+  the idea that won.
+- B8 constructions: no non-search route above 148.7M (abelian/bi-circulant ≤ 907,753 per side; blow-ups and lifts far off).
+
+Opus: screened B7's lead at 200 samples (AFROBH and AFROBD with z ↦ 3z: medians 75 and 74 against 100–111; AFROBD had a
+cost-1 sample), merged B1's PREF and A2's SKIPZ into haar_sym (0.22 s per sample instead of 0.45 s), and ran three
+seeds of `ORBIT="10 1 1" AFROB=j AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDB=1 RANDSTOP=1`. Seed 201 hit cost 0 at sample
+751 (165 s): **157,835,304 vertices** (PSL(2,243) × Z11), VALID in haarcheck_pq and pqcheck, +20.9 % over the table,
++6.1 % over round 1. Squad value this round: high. Three cards (B7, A2, B1) supplied the three ingredients of the solve
+within 30 minutes; Opus's own k = 5 Frobenius anneal (48 min, cost 15) and k = 10 z ↦ 2z random search (7,000 samples)
+found nothing. Stopped here: no group with this structure exists between 78.9M and the about 81M that the method could
+still reach (research/squads/cells/d11D10.md, last section).
