@@ -43,3 +43,28 @@ the hub graph. `d7hex b2` reports "same-side hub violations 25776" for (13,7). T
 which its conservative test rejects; distance 6 is enough. The all-pairs check is what counts.
 
 Checks:
+- sha256: sets/P11_r6c7_756.txt d2544943d51505466ece6f93a4f3afc4107756a683a5c050c2d6eb3315cd4eae, sets/L11_spread.txt
+  5456ee503751ed74c08ffb95ab9110d5c8599f28cd871bbd1ca733824f50f003, d13D7 .sol
+  44d6099531c265851d7029bddd860f2835a33eaf5fe25a6a3f4c564e582bb3f8, d14D7 .hubs
+  85e64b14afcebb2934b6cd9661864a6ebd1b6706df7783542c8b2956605ea298, d15D7 .hubs
+  f3171ef3140100af8af5851c5a54b0aff40ce5e49443a873bb9a30d55c842d5d.
+- **(13,7) 1,064,448: all-pairs check VALID** (2026-10-25 01:18 UTC). The check used `checks/apsp_range.c`, which is
+  apsp.c with the BFS sources restricted to a range, run as three processes covering [0, n):
+      n=1064448 edges=6917400 degree min=11 max=13 bipartite=yes sources [0,354816) eccentricity max=7
+      ... sources [354816,709632) eccentricity max=7; ... sources [709632,1064448) eccentricity max=7
+      RESULT VALID (range) d=13 D=7 n=1064448 (all three)
+  Edge list (`d7hex edges`) sha256 1e499a0f3bda8685f3b6eac8f9ec9f938603c38abde10030abd2c160365a197e.
+
+## (16,7) over H(13)
+
+The table's (16,7) value 4,022,340 = 10·402,234 is the 5-level cover of H(13). The same construction applies:
+- lines: sets/L13_spread.txt, 2,198 = q³+1 opposite lines (sha256 12b5cb57a1239671ef6b6e24a92b36418208f6d74cfea545ce2a7ff46c8e991b);
+- points: sets/P13_E7sub_E6_792.txt, 792 pairwise opposite points (sha256
+  2a7933aac3cf83cdb21643f9e19cf0cdcf655957d75af4c7a08654c3e631a5f8). This is the best union of orbits of the reflection
+  subgroup W(E6) ≤ W(E7) acting on E7 ⊗ GF(13) (`ovoid/e7/subq.py 13 E6`, orbits of sizes 72 + 720). W(E7) itself
+  has no pairwise opposite orbit at q = 13. Greedy gives 131.
+Solution research/frontier/sols/d16D7_hex13_B2K792_n4025508.sol (sha256
+56438ae0d1f99fcdc5269d9d3a04c36920a4a9aee7b2805737e9d4cd5c227e76) and hub layout d16D7_hex13_B2K792_n4025508.hubs
+(sha256 78cfb244d6f491b32be1d7af67f698ac125fc7d6912f90a6b715bc475e3d4bd9; `mkhubs_rand.py 1584 792 8 1 HUBS hg 2`; the
+hub graph alone has diameter 7). `dual/xgen hex/hex_q13.bin SOL HUBS 5 g.edges` gives n = 4,025,508, 32,199,312
+edges.

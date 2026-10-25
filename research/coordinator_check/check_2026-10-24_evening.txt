@@ -14,3 +14,6 @@ here from the solution file, and the check is repeated with D lowered by one (mu
 
 == 6:20 PM: cell-10-7 session, d7hex.c (unchanged) on hexgen2 q = 9
 == d11D7_hex9_B2dualK4291_n407162.sol: n=407162 edges=2239391; RESULT VALID d=11 D=7 n=407162 (124 s); with D=6: RESULT INVALID
+== cell-10-7 session, x5gen2.c (unchanged) on hexgen2 q = 9 with the new hub layout
+== d12D7_hex9_B2dual5K4277_n680068.sol (sha256 abe318b7...) + .hubs (sha256 2f8cafba...): edge list sha256 9d14db3f... (same as
+   the session's); n=680068 edges=4076986; RESULT VALID d=12 D=7 n=680068 (411 s)
