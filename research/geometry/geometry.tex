@@ -612,19 +612,19 @@ So the $(q+1)/2$ sets $C_a\cup C_{q-a}$, $0\le a\le(q-1)/2$, are $2$-ovoids of $
 \end{proposition}
 
 \begin{proof}
-Let $L=\langle y,z\rangle_\F$ and $u=sy+tz$. Then $\Nm(u)=As^2+\beta st+Ct^2$ with $A=\Nm(y)$, $C=\Nm(z)$, $\beta=y\bar z+\bar yz$, all in $K$. Put $\theta=y\bar z-\bar yz$; as $\bar\theta=-\theta$, $\theta=dk_0$ with $k_0\in K$, and
+Let $L=\langle y,z\rangle_\F$ and $u=sy+tz$. Then $\Nm(u)=A_1s^2+\tau st+A_2t^2$ with $A_1=\Nm(y)$, $A_2=\Nm(z)$, $\tau=y\bar z+\bar yz$, all in $K$. Put $\theta=y\bar z-\bar yz$; as $\bar\theta=-\theta$, $\theta=dk_0$ with $k_0\in K$, and
 \[
-\mathcal D:=\beta^2-4AC=\theta^2=hk_0^2,\qquad b(y,z)=\Tr(hk_0).
+\mathcal D:=\tau^2-4A_1A_2=\theta^2=hk_0^2,\qquad b(y,z)=\Tr(hk_0).
 \]
 Fix $\omega\in K^*$ with $\omega'=-\omega$. For $\mu\in K^*$ put $\nu=\omega/\mu$; then $\Tr(\nu k)=0$ if and only if $k\in\mu\F$. So $\langle u\rangle$ lies in the class $\{\langle u\rangle:\Nm(u)\in\mu\F^*\}$ if and only if $(s{:}t)$ is a zero of
 \[
-f_\nu(s,t)=\Tr(\nu A)s^2+\Tr(\nu\beta)st+\Tr(\nu C)t^2 .
+f_\nu(s,t)=\Tr(\nu A_1)s^2+\Tr(\nu\tau)st+\Tr(\nu A_2)t^2 .
 \]
-(a) Suppose $f_\nu\equiv0$. Then $A,\beta,C\in\mu\F$. If $\mathcal D\ne0$, then $h=\mathcal D/k_0^2\in\mu^2\F^*/k_0^2$; but $\F^*\subseteq(K^*)^2$, as $q+1$ is even, so $h$ would be a square in $K^*$, which it is not. If $\mathcal D=0$, then $\Nm(u)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with $\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A\ne0$), which vanishes at $(s{:}t)=(-\beta_0:2\alpha_0)$, impossible for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(\operatorname{disc}(\nu))\le2$ zeros, $\operatorname{disc}(\nu)=\Tr(\nu\beta)^2-4\Tr(\nu A)\Tr(\nu C)$.
+(a) Suppose $f_\nu\equiv0$. Then $A_1,\tau,A_2\in\mu\F$. If $\mathcal D\ne0$, then $h=\mathcal D/k_0^2\in\mu^2\F^*/k_0^2$; but $\F^*\subseteq(K^*)^2$, as $q+1$ is even, so $h$ would be a square in $K^*$, which it is not. If $\mathcal D=0$, then $\Nm(u)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with $\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A_1\ne0$), which vanishes at $(s{:}t)=(-\beta_0:2\alpha_0)$, impossible for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(\operatorname{disc}(\nu))\le2$ zeros, $\operatorname{disc}(\nu)=\Tr(\nu\tau)^2-4\Tr(\nu A_1)\Tr(\nu A_2)$.
 
-(b) Expanding, $\operatorname{disc}(\nu)=\Tr(\nu^2\mathcal D)+\nu\nu'P$ with $P=2\beta\beta'-4AC'-4A'C\in\F$. If $L$ is totally isotropic then $hk_0\in\omega\F$, so $e:=h\mathcal D=(hk_0)^2\in\F$, and
+(b) Expanding, $\operatorname{disc}(\nu)=\Tr(\nu^2\mathcal D)+\nu\nu'P$ with $P=2\tau\tau'-4A_1A_2'-4A_1'A_2\in\F$. If $L$ is totally isotropic then $hk_0\in\omega\F$, so $\eta:=h\mathcal D=(hk_0)^2\in\F$, and
 \[
-\Tr(h^2\nu'^2\mathcal D)=e(h\nu'^2+h'\nu^2)=hh'\,\Tr(\nu^2\mathcal D).
+\Tr(h^2\nu'^2\mathcal D)=\eta(h\nu'^2+h'\nu^2)=hh'\,\Tr(\nu^2\mathcal D).
 \]
 Hence $\operatorname{disc}(h\nu')=\Nm_{K/\F}(h)\,\operatorname{disc}(\nu)$. Since $h$ generates $K^*$, $\Nm_{K/\F}(h)$ generates $\F^*$ and is a non-square, so $\chi(\operatorname{disc}(h\nu'))=-\chi(\operatorname{disc}(\nu))$. The class belonging to $h\nu'$ is $\omega/(h\nu')\equiv\mu'/h\equiv(h\mu)^{-1}$ modulo $\F^*$ (using $\mu^{q+1}\in\F^*$); in indices, $a\mapsto q-a$. Scaling $\nu$ by $\F^*$ multiplies the discriminant by a square. So $L$ meets $C_a\cup C_{q-a}$ in $(1+\chi(\operatorname{disc}(\nu)))+(1-\chi(\operatorname{disc}(\nu)))=2$ points. The pairing $a\leftrightarrow q-a$ has no fixed point since $q+1$ is even.
 \end{proof}
