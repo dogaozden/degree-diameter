@@ -1,0 +1,10 @@
+# (3,10) beyond 800: tools/sym_anneal2.c, b = 10 orbits, D = 10, 2700 s each, T0 = 6.0, T1 = 0.1, cycle 200000
+# cost = vertices at distance > 10 summed over the b orbit representatives (0 needed). Command: sym_anneal2 10 c 10 2700 SEED OUT 6.0 0.1 200000
+seed 21: NOTFOUND n=810 b=10 c=81 D=10 best=4 iters=30765056 time=2700.2s
+seed 31: NOTFOUND n=810 b=10 c=81 D=10 best=4 iters=30998528 time=2700.3s
+seed 32: NOTFOUND n=810 b=10 c=81 D=10 best=2 iters=30920704 time=2700.3s
+seed 33: NOTFOUND n=810 b=10 c=81 D=10 best=6 iters=31662080 time=2700.0s
+seed 34: NOTFOUND n=810 b=10 c=81 D=10 best=2 iters=30822400 time=2700.0s
+seed 35: NOTFOUND n=810 b=10 c=81 D=10 best=4 iters=30822400 time=2700.0s
+seed 36: NOTFOUND n=810 b=10 c=81 D=10 best=6 iters=31592448 time=2700.3s
+seed 22: NOTFOUND n=820 b=10 c=82 D=10 best=4 iters=30609408 time=2700.1s
