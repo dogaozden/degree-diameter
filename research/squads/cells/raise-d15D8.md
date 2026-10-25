@@ -232,7 +232,7 @@ Best costs 15 to 18 for all four (sl 25 × Z589, sl 23 × Z757, psl 27 × Z937, 
 |---|---|---|---|---|---|
 | m | sl 25 × Z589 | 18,376,800 | 39.6 | 2.97·10⁵ | 15 |
 | n | sl 23 × Z757 | 18,386,016 | 39.9 | 1.08·10⁵ | 18 |
-| o | psl 27 × Z937 | 18,417,672 | 40.8 | (see log) | (see log) |
+| o | psl 27 × Z937 | 18,417,672 | 40.8 | 1.5·10⁴ | 16 |
 | p | psl 31 × Z619 | 18,421,440 | 40.9 | 5.6·10⁴ | 12 |
 
 None of these solved. Their best costs stay well above the psl 67 × Z61 path, so the wall at μ ≈ 40 is out of reach
