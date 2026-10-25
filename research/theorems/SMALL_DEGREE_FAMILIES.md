@@ -284,6 +284,8 @@ virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made explici
 - Macbeth, Šiagiová and Širáň, Discrete Math. 312 (2012) 94–99, "offer a result for Cayley graphs of metacyclic
   groups for general degree and diameter". I could read only the abstract (the repository returned HTTP 403), so
   its form is unknown to me.
+- Squad card r3-c1 (`research/squads/r3-smallfam/c1/notes.md`) searched further: no matching upper bound in any
+  source it could read, and the 2012 paper was refused by every copy it tried.
 - Treat the growth corollary as known in spirit, and the fibre bound as new here unless that paper contains it.
 
 What the records show:
@@ -517,7 +519,7 @@ Why a screen is meaningful:
 | (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
 | (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
 | (4,9) | Haar, every SmallGroup | RESULT_49 | RESULT_49B |
-| (4,7) | Haar, every SmallGroup, 2 s anneal | orders 449–500: all 1,936 groups, 1,365 annealed; order 448: RESULT_448 | no solution; best cost 4 at C2 × (C19 : C12) (456) and C13 : C36 (468), both exhaustively negative (2 and 1 vertices short; `runs/d4D7_sg*_exhaustive.txt`) |
+| (4,7) | Haar, every SmallGroup, 2 s anneal | orders 449–500: all 1,936 groups, 1,365 annealed; order 448: all 1,396 groups, 758 annealed | no solution; best cost 4 at C2 × (C19 : C12) (456) and C13 : C36 (468), both exhaustively negative (2 and 1 vertices short; `runs/d4D7_sg*_exhaustive.txt`) |
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
 | (3,10) | squad r2: 3+3 bases, orders 134–145; 4+4 bases, 101–106 | ~150 groups | best cost 2 (b33_0 over C17 : C8, re-anneal), 4 (K3,3 over C17 : C8, then exhaustive) |

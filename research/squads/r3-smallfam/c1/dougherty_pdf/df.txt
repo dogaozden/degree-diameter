@@ -1,0 +1,1927 @@
+                                                       THE DEGREE-DIAMETER PROBLEM FOR SEVERAL
+                                                   VARIETIES OF CAYLEY GRAPHS, I: THE ABELIAN CASE
+arXiv:math/9412223v2 [math.CO] 8 Sep 2000
+
+
+
+
+                                                                       Randall Dougherty and Vance Faber
+                                                                              Los Alamos National Laboratory
+                                                                                   Ohio State University
+                                                                                     LizardTech, Inc.
+
+                                                                                       September 8, 2000
+
+                                                  Abstract. We address the degree-diameter problem for Cayley graphs of Abelian groups
+                                                  (Abelian graphs), both directed and undirected. The problem turns out to be closely related
+                                                  to the problem of finding efficient lattice coverings of Euclidean space by shapes such as
+                                                  octahedra and tetrahedra; we exploit this relationship in both directions. For 2 generators
+                                                  (dimensions) these methods yield optimal Abelian graphs with a given diameter k. (The
+                                                  results in two dimensions are not new; they are given in the literature of distributed loop
+                                                  networks.) We find an undirected Abelian graph with 3 generators and a given diameter k
+                                                  which we conjecture to be as large as possible; for the directed case, we obtain partial results.
+                                                  These results are connected to efficient lattice coverings of R3 by octahedra or by tetrahedra;
+                                                  computations on Cayley graphs lead us to such lattice coverings which we conjecture to be
+                                                  optimal. (The problem of finding such optimal coverings can be reduced to a finite number of
+                                                  nonlinear optimization problems.) We discuss the asymptotic behavior of the Abelian degree-
+                                                  diameter problem for large numbers of generators. The graphs obtained here are substantially
+                                                  better than traditional toroidal meshes, but, in the simpler undirected cases, retain certain
+                                                  desirable features such as good routing algorithms, easy constructibility, and the ability to
+                                                  host mesh-connected numerical algorithms without any increase in communication times.
+
+
+
+
+                                            Introduction. The degree-diameter problem for graphs is the following question: What
+                                            is the largest number of vertices a graph (undirected or directed) can have if one is given
+                                            upper bounds on the degree of each vertex and on the diameter of the graph (the maximum
+                                            path-distance from any vertex to any other)? One application for such graphs is in the
+                                            design of interconnection networks for parallel processors, where one wants to have a large
+                                            number of processors without requiring a large number of wires at a single processor or
+                                            incurring long delays in messages from one processor to another. For more information on
+
+                                               The first author was supported by NSF grant number DMS-9158092 and by a fellowship from the Sloan
+                                            Foundation.
+
+                                                                                                                                  Typeset by AMS-TEX
+                                                                                                 1
+2                      RANDALL DOUGHERTY AND VANCE FABER
+
+the (undirected) degree-diameter problem, see Dinneen and Hafner [10]; up-to-date results
+can be found at the following Web site:
+
+         http://www-mat.upc.es/grup de grafs/grafs/taula delta d.html
+
+    A desirable extra property of such networks is that they look identical from any pro-
+cessor; this means that the graphs one uses should be vertex-transitive, i.e., for any two
+vertices x and y there is an automorphism of the graph which maps x to y. Here we will
+restrict ourselves to a special class of vertex-transitive graphs, called Cayley graphs. A
+Cayley graph is specified by a group and a set of generators for this group; the vertices
+of the graph are the elements of the group, and there is an edge from x to y if and only
+if there is a generator g such that y = xg. (It can be shown that every vertex-transitive
+graph is isomorphic to a generalized form of Cayley graph called a Cayley coset graph [19].
+In this paper, though, we will look only at Cayley graphs. For Abelian groups, this is
+no loss of generality since every Cayley coset graph of an Abelian group is isomorphic
+to a Cayley graph of an Abelian group.) In a directed Cayley graph from a group on d
+generators, every vertex has in-degree and out-degree d; if d generators are used to form
+an undirected Cayley graph, then the degree of each vertex is the number of generators
+of order 2 plus twice the number of generators of order greater than 2 (unless there are
+redundant generators). So we will usually talk about Cayley graphs on a given number
+of generators rather than of a given degree; the cases where some generators have order 2
+and hence only contribute 1 rather than 2 to the degree of an undirected Cayley graph
+will be handled separately.
+    The most straightforward approach for trying to find large Cayley graphs of small
+diameter on a given number d of generators is to examine various groups, look at some or
+all possible sets of d generators for such a group, and check whether each such set in fact
+generates the group and, if so, what the diameter of the graph is. But this can be a very
+large task even for relatively small groups and generating sets. In this paper, we will use
+a different approach which facilitates studying many groups and generating sets at once;
+it yields provably optimal results for some families of groups, and good lower and upper
+bounds for others.
+    In its most general form, the idea is as follows. Let F be the free (universal) group
+on d generators. Then, for any group G and any set of d generators for G, there is
+a homomorphism π: F → G which maps the canonical generators for F to the given
+generators for G; clearly π is surjective. Let N be the kernel of π. Then N is a normal
+subgroup of F , and |F : N | = |G|; in fact, G is isomorphic to F/N , and the Cayley graph
+of G with the given generators is isomorphic to the Cayley graph of F/N with the canonical
+generators for F . Let S be the set of elements of F which can be expressed as a word of
+length at most k in the generators. (If one is interested in undirected Cayley graphs, then
+such words may use inverse generators g −1 as well as generators; for the directed case,
+only words using generators and not inverse generators are allowed.)
+Proposition 1. The Cayley graph for G on the given generators has diameter at most k
+if and only if SN = F .
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                             3
+
+Proof. First, suppose SN = F . Let a be an arbitrary element of G; then a = π(x)
+for some x, and x can be written in the form wy with w ∈ S and y ∈ N . Hence,
+a = π(wy) = π(w)π(y) = π(w). Now w can be written as a word of length at most k in
+the generators of F , so a = π(w) can be written as the same word in the corresponding
+generators of G. Since a was arbitrary, the Cayley graph has diameter at most k.
+   Now suppose the Cayley graph has diameter at most k. Let x be any element of F ;
+then π(x) can be written as a word w′ of length at most k in the generators of G. Let w
+be the corresponding word in the generators of F ; then π(w) = w′ = π(x), so π(w−1 x) is
+the identity of G, so w−1 x ∈ N . Hence, x = w(w−1 x) ∈ SN , as desired.              
+   So finding a Cayley graph on d generators with diameter k whose size is as large as
+possible is equivalent to finding a normal subgroup N of F such that SN = F and |F : N |
+is as large as possible. Of course, we immediately get the upper bound |F : N | ≤ |S|, but
+this is probably not attainable.
+   Unfortunately, the collection of normal subgroups of F is so large and varied as to be
+unmanageable. So what we will do instead is restrict ourselves to certain families (usually
+varieties) of groups; this allows us to replace F with a free group for the family in question,
+which may be much easier to work with. For instance, if we only consider the Cayley graphs
+of Abelian groups, then we can replace F with the free Abelian group on d generators,
+which is simply Zd ; the normal subgroups of Zd are well understood and relatively easy to
+work with. It turns out that this reduces the degree-diameter problem for Abelian Cayley
+graphs to interesting problems about lattice coverings of Euclidean space by various shapes.
+Some of these problems can be solved completely, giving optimal Abelian Cayley graphs;
+others are still open.
+   A simple path-counting argument gives upper bounds for the size n of a Cayley graph
+with d generators and diameter limit k: in the directed case,
+
+                                                           dk+1 − 1
+                           n ≤ 1 + d + d2 + · · · + dk =            ,
+                                                             d−1
+
+and in the undirected case,
+
+                                                            k−1     d(2d − 1)k − 1
+             n ≤ 1 + 2d + 2d(2d − 1) + · · · + 2d(2d − 1)         =                .
+                                                                        d−1
+
+(The formulas for d = 1 are k + 1 and 2k + 1.) These limits are well-known and actually
+apply to the degree-diameter problem for arbitrary graphs; they are known as the Moore
+bounds. For d = 1, these limits are attained by simple cycle graphs, which are Cayley
+graphs of cyclic groups.
+    In most cases, we will find that the attainable values for n using Cayley graphs in the
+families we consider do not approach these upper bounds; the equations defining the fami-
+lies force many paths to be redundant. But the extra structure provided by the groups may
+provide compensating advantages in parallel computers, such as good routing algorithms,
+easy constructibility, and the ability to map common problems onto the architecture. In
+4                        RANDALL DOUGHERTY AND VANCE FABER
+
+particular, many of the Cayley graphs of Abelian groups that we discuss in this paper are
+multi-dimensional rectangular meshes with additional connections at the boundary. Thus,
+mesh calculations with natural boundary conditions are trivially mapped into these graphs,
+while the extra connections are utilized only when global communications are being carried
+out. In addition, the mesh nature of these graphs allows the physical construction of the
+network to be carried out with relatively short wires. This will be discussed further below.
+   In a separate paper, we will examine some other varieties of groups for which similar
+analyses of Cayley graphs are feasible.
+   We would like to (and hereby do) thank Michael Dinneen, whose computer work deter-
+mining the diameters of many Cayley graphs yielded some of the specific groups listed here
+and suggested promising families of groups to examine. Thanks also to Francesc Comellas,
+for pointing us to the existing literature on directed loop networks (in particular, the very
+useful survey paper of Bermond, Comellas, and Hsu [3]), and to Alexander Hulpke for
+discussions on automorphisms of Abelian groups.
+Abelian groups. In the rest of this paper, we will examine the Cayley graphs arising
+from Abelian groups. Toroidal meshes and hypercubes are examples of such graphs.
+   The degree-diameter problem for Abelian Cayley graphs has been considered by others.
+In particular, Annexstein and Baumslag [2] show that the number of generators d, diameter
+k, and size n of a directed Abelian Cayley graph satisfy
+
+                                       k ≥ Ω(n1/d );
+
+in fact, if d ≤ n1/d , then
+                                       k ≥ Ω(dn1/d ).
+They also discuss similar results for Cayley graphs of nilpotent groups.
+   In addition, Chung [6] has constructed directed Abelian Cayley graphs G with n = pt −1,
+d = p, and                                                   
+                                                4t log t
+                               k ≤ 2t +
+                                         log p − 2 log(t − 1)
+                              √
+for any positive integer t < p + 1, where p is a prime. (Note that Chung’s examples
+have diameters which are small compared to the number of generators; in contrast, we will
+concentrate here on graphs with a small fixed number of generators and relatively large
+diameters.) Her methods involve estimates of the second eigenvalue of the Laplacian of the
+adjacency matrix of G. For more about estimating the diameter of general graphs from
+knowledge of this eigenvalue, see Chung, Faber, and Manteuffel [7]. This eigenvalue is also
+connected to the sphere packing problem for real lattices; see Urakawa [21].
+   The more specific case of Cayley graphs of cyclic groups has been studied more exten-
+sively; such graphs are usually referred to by some variant of the phrase ‘loop networks.’
+The survey paper of Bernard, Comellas, and Hsu [3] is an excellent guide to the literature
+in this area.
+   We start by taking care of some generalities and notational matters. In this paper we
+will use the symbol + for the group operation(s). Let Zm be the cyclic group of order m
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                               5
+
+(for definiteness, the set {0, 1, . . . , m − 1} with the operation of addition modulo m). The
+groups Zm and the infinite cyclic group Z each have a canonical generator, 1; but they
+also have other sets of generators, and some of these will be important later.
+    When one has groups G1 , G2 , . . . , Gl and a set of generators for each, then one can get a
+set of generators for the product G1 ×G2 ×· · ·×Gl by putting together the given generator
+sets. More precisely, for each i ≤ l and each generator g of Gi , let ei (g) be the element of
+the product group which has the identity element of Gj as its j’th coordinate for all j ≤ l
+except i; the i’th coordinate is g. Then the set of all elements ei (g) is a natural generating
+set for the product group. (The resulting diameter for the product group is the sum of the
+diameters of the groups Gi .) In the case where the groups Gi are cyclic groups with the
+canonical single generators, we write simply ei for the l-tuple with 1 at the i’th coordinate
+and 0 elsewhere.
+    A two-dimensional toroidal mesh is simply the Cayley graph of the group Zm × Zn
+with the canonical generators e1 = (1, 0) and e2 = (0, 1); higher-dimensional meshes are
+obtained from longer products. For the two-dimensional case, the number of vertices is mn,
+the degree is 2 in the directed case and 4 in the undirected case (assuming m, n ≥ 3), and
+the diameter is m + n − 2 in the directed case, ⌊m/2⌋ + ⌊n/2⌋ in the undirected case. The
+calculations in three or more dimensions are analogous.
+    The d-dimensional hypercube is the Cayley graph of the group Zd2 with the canonical
+generators; since one gets bidirectional links in any case, we may as well just talk about
+the undirected version. In this case the size of the graph is exponential in the diameter,
+but only because the degree also grows with d: the size is 2d , the degree is d (not 2d,
+because the generators have order 2), and the diameter is also d.
+    We will see that with a fixed small number d of generators, one can obtain nearly optimal
+results for undirected Abelian Cayley graphs by using a twisted toroidal mesh; the twist
+allows one to multiply the number of nodes in the ordinary toroidal mesh by 2d−1 without
+increasing the diameter. For two dimensions we can get exactly optimal results by slightly
+adjusting this graph; for higher dimensions, the optimal size is still open. For the directed
+case, we can again get optimal results in two dimensions, but the higher-dimensional case
+is again unsolved (and rather strange even in three dimensions).
+    To get these results, we argue as in Proposition 1, but specialize to the case of Abelian
+groups. Hence, instead of the free group on d generators, we can use the free Abelian
+group on d generators, which is simply Zd with the canonical generators ei , 1 ≤ i ≤ d. For
+any Abelian group G generated by g1 , . . . , gd , there is a unique homomorphism from Zd
+onto G which sends ei to gi for all i. Let N be the kernel of this homomorphism; then G
+is isomorphic to Zd /N , and the Cayley graph of G with the given generators is isomorphic
+to the Cayley graph of Zd /N with the canonical generators for Zd .
+    Given a diameter limit k, let Sk be the set of elements of Zd which can be expressed as
+a word of length at most k in the generators ei , which are allowed to occur positively or
+negatively. (The dimension d will be clear from context.) Then Sk can also be described
+as the set of points in Zd at distance at most k from the origin under the l1 (Manhattan)
+metric:
+                        Sk = {(x1 , . . . , xd ) ∈ Zd : |x1 | + · · · + |xd | ≤ k}.
+6                       RANDALL DOUGHERTY AND VANCE FABER
+
+Let Sk′ be the subset of Sk consisting of those elements whose coordinates are all nonneg-
+ative; these are the elements which can be expressed as words of length at most k in the
+generators ei where only positive occurrences of the generators are allowed. Then Sk looks
+like a regular dual d-cube (a square for d = 2, an octahedron for d = 3), while Sk′ looks
+like a right d-simplex (a triangle for d = 2, a tetrahedron for d = 3).
+   Now, by the same proof as for Proposition 1, we get:
+Proposition 2. Let G, N , and g1 , . . . , gd be as above. Then the undirected Cayley graph
+for G and g1 , . . . , gd has diameter at most k if and only if Sk + N = Zd , and the directed
+Cayley graph for G and g1 , . . . , gd has diameter at most k if and only if Sk′ + N = Zd . 
+   So |Sk | and |Sk′ | give upper bounds for the undirected and directed versions of this case
+of the degree-diameter problem. It is not hard to show that
+                                                     
+                                          ′      k+d
+                                       |Sk | =         ,
+                                                  d
+
+so |Sk′ | = k d /d! + O(k d−1 ) for fixed d. For |Sk |, we easily get the asymptotic form |Sk | =
+k d 2d /d! + O(k d−1 ) for fixed d, but exact formulas are harder; Stanton and Cowan [20] give
+several, such as
+                                                 d       
+                                                      i d  k
+                                                X
+                                        |Sk | =     2          .
+                                                i=0
+                                                        i   i
+
+In particular, when d is 1, 2, or 3, the formula for |Sk | is 2k + 1, 2k 2 + 2k + 1, or (4k 3 +
+6k 2 + 8k + 3)/3, respectively.
+Lattice coverings and tilings. Proposition 2 tells us that, to find an optimal undirected
+(directed) Cayley graph of diameter k on d generators, we should look for a subgroup N
+of Zd such that Sk + N (Sk′ + N ) is all of Zd and the index |Zd : N | is as large as possible;
+the largest index we can hope for is |Sk | (|Sk′ |). But the structure of subgroups of Zd
+of finite index (which are all normal, of course) is well known; they are precisely the d-
+dimensional lattices in Zd . Because of this, we will use the letter L instead of N for such
+subgroups of Zd for the rest of this paper.
+   A d-dimensional lattice L in Zd is specified by d linearly independent vectors v1 , . . . , vd
+in Zd ; L is the set of all integral linear combinations of these vectors. We have |Zd : L| =
+| det M |, where M is the d × d matrix whose i’th row is vi , for i = 1, . . . , d.
+   Note that any bounded set contains only finitely many members of L. It follows that,
+if S is a bounded subset of Zd and x is a point in Zd , then there are only finitely many
+v ∈ L such that x ∈ S + v.
+   Also note that L, or indeed the entire group Zd , has a linear ordering ≺ which is
+compatible with addition: x ≺ y implies x + z ≺ y + z. To define ≺, first choose a
+direction (a nonzero vector v in Rd ), and put x ≺ y if y is farther in this direction
+than x is (x · v < y · v). If two vectors are at the same distance in this direction, then
+compare them in a second direction; repeat until all ties are broken. One example of this
+is lexicographic order: compare according to the first coordinate, then according to the
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                  7
+
+second coordinate if the first coordinates are equal, and so on. Or, in this discrete case,
+one can choose the initial direction so that it distinguishes all points and no tie-breaking
+is necessary; for instance, if v = (1, π, π 2, . . . , π d−1 ), then we never have x · v = y · v for
+distinct x, y in Zd , so we can just define x ≺ y to mean x · v < y · v.
+   A lattice covering of Zd by a set S ⊆ Zd is a collection of translates of S by members
+of a lattice L (i.e., {S + v: v ∈ L}) which covers Zd . If the translates are disjoint, so that
+each point of Zd is covered exactly once, then we have a lattice tiling of Zd by S.
+   If we have a lattice covering as above, then |S| ≥ |Zd : L|; if it is a tiling, then |S| =
+ |Zd : L|. So we can measure the extent to which a covering is ‘almost’ a tiling by one of
+two numbers: the density of the covering, which is |Zd : L| /|S| ≥ 1 (this is the average
+number of sets in the covering to which a random point of Zd belongs), or the efficiency
+of the covering, which is |S|/ |Zd : L| ≤ 1. So Proposition 2 tells us that, in order to get
+the best possible Abelian Cayley graph on d generators with diameter k, we must find a
+lattice covering of Zd by Sk or Sk′ whose density (efficiency) is as small (large) as possible.
+We now give one more reformulation of the question.
+Lemma 3. Suppose we have a lattice covering of Zd using a bounded set S and the
+lattice L. Then there is a set T ⊆ S such that the translates of T by L form a lattice tiling
+of Zd .
+Proof. Let ≺ be a linear order of L compatible with addition. Now let T be the set of all
+points in S which are not in any of the sets S + v for v ∈ L, v ≻ 0. We will see that every
+point x is in exactly one of the sets T + v for v ∈ L.
+   Fix x. As noted before, x is in only finitely many of the translates S + v, so let w be
+the ≺-greatest member of L such that x ∈ S + w. Let y = x − w ∈ S. Then y cannot be
+in S + v for v ≻ 0 in L, because, if it were, we would have x = y + w ∈ S + v + w and
+v + w ≻ w, contradicting the maximality of w. So y ∈ T and x ∈ T + w.
+   Now suppose x = y + w = y′ + w′ where w and w′ are distinct members of L and
+y and y′ are in T (and hence in S). Then v = y − y′ = w′ − w is a nonzero member of L,
+so either v ≻ 0 or v ≺ 0. In the former case, y = y′ + v ∈ S + v contradicts y ∈ T ; in the
+latter case, y′ = y − v ∈ S + (−v) contradicts y′ ∈ T .                                  
+   Note that such a set T must be of cardinality |Zd : L|, which is the size of the Cayley
+graph of Zd /L. So the size of the largest undirected (directed) Abelian Cayley graph on
+d generators with diameter k is equal to the size of the largest subset T of Sk (Sk′ ) such
+that there is a lattice tiling of Zd using T .
+Approximation by lattice coverings of real space. The study of lattice coverings
+and lattice tilings is more familiar for Rd than for Zd . We will show that real coverings
+can be approximated to some extent by integer coverings, and vice versa, so that known
+results from the real context can be transferred to the integer lattices we are interested in.
+   The definitions of lattice, lattice covering, and lattice tiling are the same in Rd as in Zd ,
+except that we allow boundaries to be shared in the definition of a tiling. This lets us work
+throughout with closed sets (usually polyhedra with their interiors) instead of having to
+keep some of the boundary points and discard others. Most of the results above for integer
+8                        RANDALL DOUGHERTY AND VANCE FABER
+
+lattices go through verbatim for real lattices, including Lemma 3 and its proof (although
+we will probably use the closure of T rather than T itself in practice). The main difference
+is that the absolute determinant | det M | of the matrix formed from the generators of a
+lattice L is not |Rd : L| (which is infinite). Instead, this determinant is the measure of
+the parallelepiped determined by the generating vectors; this parallelepiped gives a lattice
+tiling of Rd using the lattice L. It follows easily that any other set S which gives a lattice
+tiling using the lattice L must have measure | det M | (barring pathological cases of non-
+measurable sets or positive-measure boundaries). Such a set S is called a fundamental
+region for the lattice L. One can now define the density or efficiency of a covering by
+dividing the measure of the covering set by this determinant or vice versa.
+    One can transform a lattice covering of Zd using S into a lattice covering of Rd by
+replacing each point of S with a unit cube (i.e., replace S with S + U where U is a fixed
+unit d-cube with edges parallel to the coordinate axes); the two coverings will have the
+same density. However, transforming results in the other direction is harder, because
+the real results usually involve actual triangles, octahedra, etc. rather than polycube
+approximations, and the lattices used will often not be integer lattices. We will now
+present results that allow us to get around these difficulties.
+    In Rd , let S̄k be the closed l1 -ball of radius k at the origin:
+
+                           S̄k = {(x1 , . . . , xd ): |x1 | + · · · + |xd | ≤ k}.
+
+Let S̄k′ be the set of nonnegative points in S̄k :
+
+                   S̄k′ = {(x1 , . . . , xd ): x1 , . . . , xd ≥ 0, x1 + · · · + xd ≤ k}.
+
+Let L be any lattice in Rd .
+Proposition 4.
+    (a) If Sk + L covers Zd , then S̄k+d/2 + L covers Rd .
+    (b) If Sk′ + L covers Zd , then S̄k+d
+                                      ′
+                                          + L covers Rd .
+
+Proof. (a) By the triangle inequality for l1 distance, we have S̄k + S̄d/2 ⊆ S̄k+d/2 , so
+Sk + L + S̄d/2 ⊆ S̄k+d/2 + L; therefore, it suffices to show that Zd + S̄d/2 = Rd . For any
+x ∈ Rd , let y be the element of Zd nearest to x (i.e., round each coordinate of x to the
+nearest integer); then x − y is in S̄d/2 , so x is in Zd + S̄d/2 .
+   (b) Similarly, this follows from the fact that Zd + S̄d′ = Rd , which is proved in the same
+way as above (round each coordinate of x downward instead of to the nearest integer). 
+    One can argue in the same way within Zd to get:
+Proposition 5. If L is a lattice in Zd and m is a positive integer, then:
+    (a) If Sk + L covers Zd , then Smk+⌊m/2⌋d + mL covers Zd .
+    (b) If Sk′ + L covers Zd , then Smk+(m−1)d
+                                     ′
+                                               + mL covers Zd .
+            THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                      9
+
+Proof. For (a), clearly Smk +mL covers mZd , so, as in the preceding proposition, it suffices
+to note that mZd + S⌊m/2⌋d covers Zd , because we can just round any member of Zd to
+the nearest member of mZd . Similarly, (b) holds because mZd + S(m−1)d
+                                                                    ′
+                                                                          covers Zd .      
+   Of course, one can get similar results for sets other than Sk and Sk′ .
+   Using Proposition 4, it is easy to get from a covering of Zd using an integer lattice to a
+covering of Rd using a real lattice (and using the real shape S̄k or S̄k′ ); if k is large relative
+to d, then the two coverings have about the same efficiency. We will now show that one
+can move in the other direction as well.
+   First, we give a useful criterion for deciding whether one has a lattice covering of Rd .
+Proposition 6. Suppose S is a nonempty subset of Rd and L is a lattice in Rd . If there
+is an ε > 0 such that S + L covers all points within distance ε of S, then S + L covers Rd .
+Proof. Clearly there is some point x0 in S + L. We will show that, if x ∈ S + L and
+the distance δ(x, y) is less than ε, then y ∈ S + L. Applying this once shows that all
+points within distance ε of x0 are in S + L; applying it again shows that all points within
+distance 2ε of x0 are in S + L; since this can be repeated forever, we find that all points
+of Rd are in S + L.
+   Let x and y be as above. Find v ∈ L such that x ∈ S + v. Then y − v is within
+distance ε of x − v ∈ S, so there is v′ ∈ L such that y − v ∈ S + v′ . Hence, y ∈ S + v′ + v,
+so y ∈ S + L, as desired.                                                                  
+    Using this, we can now show that, if one has a lattice covering using a bounded subset
+of Rd , then one can perturb the lattice slightly and still get a lattice covering using a
+slightly larger subset of Rd .
+Proposition 7. Let S be a bounded subset of Rd , and let L be a lattice in Rd such that
+S + L = Rd ; let v1 , . . . , vd be a list of generators for L. Then there are positive numbers
+η and ρ such that, for all r ∈ (0, 1), if the distance δ(vi , vi′ ) is less than rη for all i ≤ d,
+then S + + L′ = Rd , where L′ is the lattice generated by v1′ , . . . , vd′ and S + is the set of
+points within distance rρ of S.
+Proof. The number of members of L within any bounded part of Rd is finite, so it only
+takes finitely many translates of S by members of L to cover any bounded part of Rd .
+In particular, there is a number M > 0 such that the sets S + a1 v1 + · · · + ad vd for
+(a1 , . . . , ad ) ∈ Zd with |a1 | + · · · + |ad | ≤ M cover all points within distance ρ of S, for
+some ρ > 0. Let η = ρ/M .
+    Let r be any positive number less than 1; we must see that, if S + and L′ are defined
+as above, then S + + L′ = Rd . By the preceding proposition, it will suffice to show that
+S + + L′ covers all points within distance (1 − r)ρ of S + . Suppose y is within distance
+(1 − r)ρ of S + ; then y is within distance (1 − r)ρ + rρ = ρ of S, so there exist integers
+a1 , . . . , ad with |a1 | + · · ·+ |ad | ≤ M and a point x ∈ S such that y = x + a1 v1 + · · · + ad vd .
+                    Pd
+Let x′ = x + i=1 ai (vi − vi′ ); then
+                                   d
+                                   X                           d
+                                                               X
+                             ′
+                      δ(x, x ) ≤         |ai |δ(vi , vi′ ) <         |ai |rη ≤ M rη = rρ,
+                                   i=1                         i=1
+10                       RANDALL DOUGHERTY AND VANCE FABER
+
+so x′ ∈ S + . Since y = x′ + a1 v1′ + · · · + ad vd′ , we have y ∈ S + + L′ , as desired.        
+   Note that, in the above propositions, ‘distance’ need not be Euclidean distance; it can
+be any metric arising from a norm on Rd . For our present purposes, it will be most
+convenient (but not essential) to use l∞ -distance: δ(x, y) = maxi |xi − yi |.
+Theorem 8. Suppose one has a lattice L in Rd such that S̄k +L covers Rd ; let v1 , . . . , vd
+be generators for L. Then there is a constant c such that, for all sufficiently large real
+numbers t, if wi is obtained from tvi by rounding all coordinates to the nearest integer,
+and L̄ is the lattice generated by w1 , . . . , wd , then S̄tk+c +L̄ covers Rd . The same statement
+holds for S̄k′ and S̄tk+c
+                      ′
+                          instead of S̄k and S̄tk+c .
+Proof. For the S̄k case, let S = S̄k and find η and ρ as in the preceding proposition, letting
+the distance δ be the l∞ metric. Let c be any fixed number greater than dρ/2η. Then,
+for any t > c/dρ, if we let r = c/dρt, then r < 1 and 1/2t < rη. If we define wi and L̄ as
+above, and let vi′ = wi /t and L′ = L̄/t, then δ(vi , vi′ ) ≤ 1/2t for each i, so we can conclude
+that S + + L′ covers Rd , where S + is the set of points within distance rρ of S̄k . It is easy
+to see that S + ⊆ S̄k+drρ , so S̄k+drρ + L′ covers Rd . Hence, S̄tk+tdrρ + tL′ covers Rd ; but
+tdrρ = c and tL′ = L̄, so we are done.
+   The proof for S̄k′ is almost the same. Let S = S̄k′ and apply the preceding proposition
+(using the l∞ metric again) to get η and ρ. Fix c > dρ/η. For any t > c/2dρ, if we let
+r = c/2dρt, then r < 1 and 1/2t < rη. Now define wi , L̄, vi′ , L′ , and S + as above, and
+conclude again that S + + L′ covers Rd . One can easily check that S + ⊆ S̄k+2drρ   ′
+                                                                                            − rρu,
+                                     ′                     ′          d        ′          ′
+where u = (1, . . . , 1). Hence, S̄k+2drρ − rρu + L covers R , so S̄k+2drρ + L covers
+Rd + rρu = Rd . Now multiply by t to see that S̄tk+c  ′
+                                                             + L̄ covers Rd .                   
+   Again, it is easy to modify this proof to work for other sets in place of S̄k or S̄k′ . Also,
+the proof is quite effective, allowing one to compute specific values of c and t which work
+for a given lattice L (assuming it is feasible to compute M and ρ).
+   The covering S̄tk + tL has the same efficiency as the covering S̄k + L; since S̄tk+c + L̄ is a
+relatively slight perturbation of S̄tk + tL when t is large, it has almost the same efficiency.
+Since L̄ is an integer lattice, the fact that S̄tk+c + L̄ covers Rd implies that S⌊tk+c⌋ + L̄
+covers Zd ; again the efficiency is almost the same if t is large. Therefore, we can construct
+integer lattice coverings as nearly efficient as desired to a given real lattice covering, thus
+giving asymptotic results for the present case of the degree-diameter problem. The precise
+result is as follows.
+Theorem 9. Let εR be the best possible efficiency for a lattice covering of Rd by S̄1 ,
+and let εZ (k) be the best possible efficiency for a lattice covering of Zd by Sk . Then
+εZ (k) = εR + O(k −1 ). The same applies to S̄1′ and Sk′ .
+Proof. Let L be a lattice giving a lattice covering of Rd by S̄1 with efficiency εR . Let
+v1 , . . . , vd and c be as in Theorem 8. Given a large integer k, let t = k − c, and let L̄ be the
+integer lattice approximating tL as in Theorem 8, generated by w1 , . . . , wd . Since L̄ is an
+integer lattice and S̄t+c + L̄ = Rd , we have Sk + L̄ = Zd . Let M and M̄ be the d×d matrices
+whose rows are vi and wi , respectively; then det M = (2d /d!)εR and det M̄ ≤ |Sk |εZ (k),
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                   11
+
+which implies det(k −1 M̄ ) ≤ (2d /d! + O(k −1 ))εZ (k). But M̄ = tM + O(1) = kM + O(1), so
+k −1 M̄ = M +O(k −1 ), so det(k −1 M̄ ) = det M +O(k −1 ); this implies εZ (k) ≥ εR +O(k −1 ).
+   On the other hand, Proposition 4(a) states that any lattice that gives a covering of Zd
+by Sk also gives a covering of Rd by S̄k+d/2 . If the efficiency of the former is εZ (k),
+then the efficiency of the latter is (|Sk |/ vol(S̄k+d/2 ))εZ (k) = (1 + O(k −1 ))εZ (k); hence,
+(1 + O(k −1 ))εZ (k) ≤ εR , so εZ (k) ≤ εR + O(k −1 ).
+   The same argument works for S̄1′ and Sk′ .                                                 
+   Again, the same applies to other shapes as well. Combining this with the known sizes
+of the sets Sk and Sk′ gives:
+Corollary 10. Let d be a fixed positive integer.
+   (a) If εR is the best possible efficiency for a lattice covering of Rd by S̄1 , then the size
+of the largest possible undirected Cayley graph of an Abelian group on d generators with
+diameter at most k is (2d εR /d!)k d + O(k d−1 ).
+   (b) If ε′R is the best possible efficiency for a lattice covering of Rd by S̄1′ , then the size of
+the largest possible directed Cayley graph of an Abelian group on d generators with diameter
+at most k is (ε′R /d!)k d + O(k d−1 ).                                                             
+    The above assumes that the upper limit εR on the efficiency of a lattice covering of Rd
+by S̄1 is actually attained. To see that this is the case, first note that there is certainly a
+lattice covering with positive efficiency, say ε0 . Now consider the possible sets of generating
+vectors v1 , . . . , vd for a lattice L giving a covering of efficiency at least ε0 . We may assume
+that, if vi is one of the generators and w is an integral linear combination of the other
+generators, then |vi | ≤ |vi + w|; otherwise, just replace vi with vi + w to get a smaller
+set of generating vectors for L, and iterate until no more such reductions are possible. It
+follows that, if, say, v1 is the longest of the vectors vi , then the angle between v1 and
+the hyperplane P spanned by v2 , . . . , vd is bounded below by a positive number (π/3
+for d = 2, somewhat less for higher d). But the distance from v1 to P is at most the
+diameter of S̄1 (i.e., 2), since otherwise S̄1 + L would consist of ‘hyperplanes’ of copies
+of S̄1 with gaps in between. Putting these together, we get a fixed upper bound B on
+the length |v1 |, and hence on all of the lengths vi . But we also have a positive lower
+bound b on the determinant det(v1 , . . . , vd ), namely ε0 vol(S̄1 ). One can now show that
+there is a fixed number M such that, if m1 , . . . , md ∈ Z and |m1 | + · · · + |md | > M , then
+|m1 v1 + · · · + md vd | > 3. Hence, the finitely many translates S̄1 + m1 v1 + · · · + md vd with
+|m1 |+· · ·+|md | ≤ M will have to cover all points at distance ≤ 2 from the origin. Now, the
+set of sequences v1 , . . . , vd with all |vi | ≤ B such that the translates S̄1 +m1 v1 +· · ·+md vd
+for |m1 | + · · · + |md | ≤ M cover all points at distance ≤ 2 from 0 is a compact set, so there
+is a sequence v1 , . . . , vd in this set for which det(v1 , . . . , vd ) is maximal; this sequence of
+vectors generates a lattice covering of Rd by S̄1 (by Proposition 6) with maximal possible
+efficiency. The same argument works for any compact shape of positive volume, such as S̄1′ .
+(Presumably this argument is well known, but the authors were not able to find a reference
+for it.)
+    As we will see in a later section (for the case d = 3, but the argument is general), the
+determination of actual values for εR and ε′R for a particular dimension d can in principle
+12                       RANDALL DOUGHERTY AND VANCE FABER
+
+be reduced to the solution of a finite number of nonlinear optimization problems (each of
+which requires maximizing a degree-d polynomial function over a region which is a convex
+               2
+polytope in Rd ). Unfortunately, this finite number is extremely large, so the actual values
+are not known for d > 2. (For d = 1 we trivially have εR = ε′R = 1. For d = 2 we will see
+below that εR = 1 and ε′R = 2/3.) The computations described in later sections lead us
+to conjecture that, for d = 3, εR = 8/9 and ε′R = 63/125.
+
+Two generators, undirected. We now begin to consider the results that can be obtained
+for specific values of d. As noted previously, the case d = 1 is trivial, so we will start with
+the case of undirected Abelian Cayley graphs on two generators and a given bound k on
+the diameter. The results in this subsection are not new.
+    As noted before, the diameter of the ordinary toroidal mesh Zm × Zn is ⌊m/2⌋ + ⌊n/2⌋.
+Hence, the largest such mesh with diameter ≤ k is the one where m is k rounded up to the
+nearest odd integer and n is k + 1 rounded up to the nearest odd integer. This corresponds
+to the lattice covering of Z2 by Sk using the lattice L = mZ × nZ; the efficiency of this
+covering is mn/(2k 2 + 2k + 1), which tends to 1/2 as k grows large. So one can hope for
+better results.
+    To get these, consider the real rotated square S̄k . There is obviously
+                                                                         √        a lattice tiling
+using this square; it is just a rotated orthogonal grid with spacing 2k between lines. The
+lattice L1 for this tiling is generated by the vectors (k, k) and (−k, k); as expected, the
+corresponding determinant is 2k 2 , which is equal to the area of S̄k .
+    It now follows from the approximation results that we can get lattice coverings of Z2
+using Sk with efficiencies that approach 1 for large k. However, we do not need the general
+results here; since L1 is already an integer lattice, we can simply note that S̄k + L1 = R2
+implies Sk + L1 = Zd . So this gives a lattice covering using Sk whose index is |Z2 : L1 | =
+2k 2 , which is better than that from the best toroidal mesh for all k ≥ 3; for large k, the
+efficiency approaches 1.
+    The corresponding Cayley graph Z2 /L1 turns out to be quite simple to describe. The
+2k×k rectangle {1, . . . , 2k}×{1, . . . , k} contains exactly one point from each coset of L1 , so
+it can serve as a set of vertices for the graph. Adjacent points in the rectangle (horizontally
+and vertically) are connected as in the usual mesh. Horizontally, one has the usual toroidal
+connections at the ends: (1, j) is connected to (2k, j). But vertically, there is an offset of k:
+(i, 1) is connected to (i + k, k) if i ≤ k, or to (i − k, k) if i > k. This is just like a 2k × k
+toroidal mesh, except that the torus is twisted halfway around before the long edges are
+glued together. This twist allows one to double the number of vertices in a k × k toroidal
+mesh while increasing the diameter by at most 1 (there is no increase if k is even).
+    A number of the useful properties of ordinary toroidal meshes apply with very little
+change to twisted toroidal meshes. For instance, since the new mesh is still just a rectan-
+gular mesh with extra connections at the boundary, it is easy to map a simple rectangular
+grid into the mesh, by simply ignoring the boundary connections.
+    Another nice property of toroidal meshes is that it is easy to find a shortest route from
+one node to another: just check for each coordinate separately which of the two possible
+directions gives a shorter path, and put the results together. Finding optimal routes is
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                              13
+
+only slightly more complicated for the twisted toroidal mesh. To see this, consider the
+given 2k × k rectangle as half of a 2k × 2k rectangle; each node (i, j) in the first half has
+a copy (i ± k, j ± k) in the other half. This larger rectangle is then copied periodically
+without further twists to cover Z2 ; in other words, the 2k × k twisted toroidal mesh is
+just a 2k × 2k toroidal mesh where (i, j) and (i ± k, j ± k) are identified as a single node.
+Therefore, to find an optimal route from (i, j) to (i′ , j ′ ) in the twisted mesh, apply the
+ordinary 2k ×2k toroidal mesh routing algorithm to find optimal routes from (i, j) to (i′ , j ′ )
+and to (i′ ± k, j ′ ± k), and choose the shorter of the two.
+   In the real case the lattice L1 gave a perfect tiling of R2 using S̄k , since boundary
+overlap did not count; but in the integer case the boundary overlap reduces the efficiency
+slightly, from 1 to 2k 2 /(2k 2 + 2k + 1). It turns out that if one uses a slightly modified
+lattice, namely the lattice L2 with generating vectors (k, k + 1) and (−k − 1, k), then one
+gets a covering of Z2 by copies of Sk with efficiency 1 (i.e., a tiling). See Figure 1. We
+therefore get:
+Theorem 11 (multiple authors). The largest possible size for the undirected Cayley graph
+of an Abelian group on two generators having diameter k is 2k 2 + 2k + 1.             
+   This result has appeared in various forms in a number of places (usually stated so as to
+apply only to cyclic Cayley graphs, but since the optimal Abelian Cayley graphs turn out
+to be cyclic, the results are basically equivalent). See, for instance, Boesch and Wang [4]
+or Yebra el al. [23]; the Bermond-Comellas-Hsu survey [3] has many additional references.
+   The tiling in Figure 1 is in Yebra el al. [23], among other places; it even appears in native
+artwork of the southwestern United States, and may date back to the ancient Aztecs, who
+did use the stepped diamond shape in temple ornamentation. (This shape is now commonly
+known as the Aztec diamond, a term coined by J. Propp.) However, it is unlikely that the
+Aztecs were motivated by the desire to construct efficient parallel computation networks.
+   It is easy to see that the lattice tiling of Z2 by Sk , or of R2 by the Aztec diamond,
+is unique except for a possible reflection about the line x = y; this just corresponds
+to interchanging the two generators for the Cayley graph. Therefore, the Cayley graph
+attaining the bound in Theorem 11 is unique up to isomorphism.
+   Since the point (2k + 1, 1) is in L2 , we have e2 + L2 = (−2k − 1)(e1 + L2 ) in Z2 /L2 .
+Hence, Z2 /L2 is a cyclic group, generated by e1 + L2 alone. It is isomorphic (not only as
+a group but as a Cayley graph) to Z2k2 +2k+1 with the generating set {1, 2k 2 }. One may
+choose to replace the second generator by its inverse, making the generating set {1, 2k +1};
+other generating sets can be used as well.
+   For layout purposes, one may just arrange the nodes in the form of the diamond Sk and
+connect the boundary nodes as specified by L2 , but it is probably more convenient to use
+the almost-rectangular shape outlined in Figure 1 (a (2k + 1) × k rectangle with an extra
+partial row of length k + 1). The boundary connections are similar to those for the twisted
+toroidal mesh given before, but now there is also a slight twist when connecting the short
+sides; there is a drop of one row when wrapping around from right to left. This layout
+shows that one can embed a rectangular grid into this graph so as to use almost all of the
+nodes.
+14                      RANDALL DOUGHERTY AND VANCE FABER
+
+
+
+
+                Figure 1. Lattice tiling of Z2 using Sk (shown for k = 3).
+
+Two generators, directed. We now describe the largest possible directed Cayley graph
+of an Abelian group on two generators with diameter bounded by k. As in the preceding
+subsection, the two-generator results here are already known.
+   The best toroidal mesh in this case is Zm ×Zm′ , where m = ⌊k/2⌋+1 and n = ⌈k/2⌉+1;
+this gives size mm′ = ⌊(k +2)2 /4⌋, which is about 1/2 of |Sk′ |, so one can hope to do better.
+   However, one is not going to get perfect efficiency in this case. One can easily tile the
+plane with triangles such as S̄k′ if one is allowed to rotate them, but this is not possible
+using only a lattice of translated copies of a triangle. The exact minimum density for a
+lattice covering of the plane by triangles was computed by I. Fáry in 1950; we will give a
+different proof of his result here, and then give the analogue for Z2 .
+Theorem 12 (Fáry [13]). The minimum density for a lattice covering of R2 by triangles
+is 3/2. Equivalently, the maximum efficiency is 2/3.
+Proof. Since the density and efficiency of a lattice covering are invariant under affine
+transformations, it does not matter which triangle we work with, so, for slight convenience,
+let us work with the isosceles right triangle S̄1′ .
+   One can attain the efficiency 2/3 by using the lattice with generating vectors (1/3, 1/3)
+and (2/3, −1/3). This corresponds to a tiling of the plane using an L-tromino that takes
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                  15
+
+
+
+
+                Figure 2. A subset of the triangle S̄1′ which tiles the plane.
+
+up 2/3 of S̄1′ , as shown in Figure 2. Or one can cut off all three corners of the triangle to
+get a hexagon that tiles the plane.
+    Now suppose that we have a lattice covering of R2 using S̄1′ and the lattice L; we must
+show that the efficiency of the covering is at most 2/3. Let ≺ be a linear ordering of L
+compatible with addition which is defined by primarily ordering points (x, y) according
+to the sum x + y (so points that are farther out in the direction (1, 1) come later in the
+ordering) and breaking ties (if any) by distance in some other direction.
+    Let AB be the hypotenuse of S̄1′ . Only finitely many of the L-translates of S̄1′ lie near S̄1′ ;
+of these, the ones of the form S̄1′ + v for v ≻ 0 must cover the points which are near AB on
+the side away from S̄1′ . Since the union of finitely many translates of S̄1′ is closed, AB itself
+is covered by finitely many translates S̄1′ + v with v ≻ 0. Find such a covering of AB with
+as few translates as possible, say S̄1′ + v1 , . . . , S̄1′ + vm , where vi ≻ 0.
+    Note that, since S̄1′ + vi must intersect AB, it contains one of the endpoints A and B
+if and only if the coordinates of vi are not both positive. We may assume that at most
+one of the vectors vi has both coordinates positive. For if there are two such, let them
+be S̄1′ + vi and S̄1′ + vj where vi ≺ vj . Then vj − vi ≻ 0; since vi has both coordinates
+positive, we have
+                            (S̄1′ + vj ) ∩ AB ⊆ (S̄1′ + vj − vi ) ∩ AB.
+
+Furthermore, vj − vi cannot have both coordinates positive, because, if it did, we would
+have
+                          (S̄1′ + vj ) ∩ AB ⊆ (S̄1′ + vi ) ∩ AB,
+
+so S̄1′ +vj would not have been needed in the covering of AB, contradicting the minimality
+of m. So we can replace S̄1′ + vj with S̄1′ + vj − vi to get another covering of AB using
+fewer vectors with both coordinates positive. Repeat this until only one such vector is left.
+   Since each translate S̄1′ + vi is convex, its intersection with AB is a segment or a
+point. Therefore, at most one of these translates can contain A, since otherwise one of the
+intersections (S̄1′ + vi ) ∩ AB would include another such intersection, making the latter
+translate superfluous and contradicting the minimality of m. Similarly, at most one of the
+translates S̄1′ + vi contains B. Putting these facts together, we conclude that we needed
+at most three of the translates S̄1′ + v with v ≻ 0 to cover the segment AB.
+16                       RANDALL DOUGHERTY AND VANCE FABER
+
+    In other words, there are points P and Q on AB such that each of the three segments
+AP , P Q, and QB is covered by one of the translates √     S̄1′ + v with v ≻ 0. Let l1 , l2 , l3 be
+the lengths of these three segments; then l1 + l2 + l3 = 2. Note that, if S̄1′ + v covers AP ,
+then S̄1′ + v covers the entire isosceles right triangle below AP whose hypotenuse is AP ;
+the area of this triangle is l12 /4. Similar statements hold for P Q and QB. So we have three
+disjoint triangles included in S̄1′ which are covered by translates S̄1′ + v with v ≻ 0, and
+the total area of these triangles is (l12 + l22 + l32 )/4.
+    By the proof of (the real version of) Lemma 3, if we let T be the part of S̄1′ which
+is not covered by any translate S̄1′ + v with v ≻ 0, then T gives a lattice tiling of R2
+using L, so the efficiency of the covering using S̄1′ and L is Area(T )/Area(S̄1′ ). We have
+Area(S̄1′ ) = 1/2√and Area(T ) ≤ 1/2 −(l12 +l22 +l32 )/4. A standard minimization shows   √ that,
+                             2     2    2
+if l1 + l2 + l3 = 2, then l1 + l2 + l3 ≥ 2/3 (with equality only when l1 = l2 = l3 = 2/3).
+Therefore, Area(T ) ≤ 1/3, so the efficiency of the covering by S̄1′ and L is at most 2/3. 
+   It now follows from Theorem 9 that the largest possible index |Z2 : L| for an integer
+lattice L giving a lattice covering of Z2 by Sk′ is approximately (2/3)|Sk′ |, or about k 2 /3,
+for large k. However, we can actually get an exact answer rather than an approximation.
+Theorem 13 (mainly Wong and Coppersmith [22]). The largest possible index |Z2 : L|
+for a lattice L giving a lattice covering of Z2 by Sk′ is ⌊(k + 2)2 /3⌋.
+Proof. We will give a discrete form of the proof of Theorem 12. Let a be (k + 2)/3 rounded
+to the nearest integer, and let b = k + 2 − 2a (so b is also about (k + 2)/3). Let Tk be the
+set of (i, j) in Z2 such that i, j ≥ 0, min(i, j) < a, and max(i, j) < a + b. Then Tk ⊆ Sk′ ,
+since any (i, j) in Tk satisfies i + j ≤ a − 1 + a + b − 1 = k. The set Tk looks like the
+L-tromino from Figure 2, and it tiles Z2 using the lattice with generating vectors (a, a)
+and (a + b, −b). Therefore, this lattice gives a covering of Z2 using Sk′ , and its index is
+a(a + 2b), which works out to be ⌊(k + 2)2 /3⌋.
+   Now, suppose we have a lattice covering of Z2 using Sk′ and a lattice L; we must show
+that |Z2 : L| ≤ ⌊(k + 2)2 /3⌋. Define the linear order ≺ of L as before. Let A and B be
+the points (0, k + 1) and (k + 1, 0); then the segment AB contains k + 2 integral points,
+which must be covered by translates Sk′ + v where v ∈ L and v ≻ 0.
+   Let v1 , . . . , vm be a list of as few vectors as possible in L such that vi ≻ 0 and the
+              ′             ′
+translates Sk+1     +vi of Sk+1 cover all of the integral points on AB. Then the same argument
+as for Theorem 12 shows that m is at most 3. Hence, AB can be broken up into three
+segments AP , P ′ Q, and Q′ B (where P and P ′ are adjacent integral points on AB, as are
+Q and Q′ ), each of whose integral points are covered by one of the translates Sk+1       ′
+                                                                                              +v
+with v ≻ 0. Let l1 , l2 , l3 be the numbers of integral points on these segments; then
+l1 + l2 + l3 = k + 2.
+        ′
+   If Sk+1  + v covers the integral points on AP , then it covers all of the integral points in
+the isosceles right triangle below AP and having AP as its hypotenuse. In fact, all of these
+points other than those on AP itself are covered by Sk′ +v; there are (l12 −l1 )/2 such points,
+and they are all in Sk′ . Similarly, the segments P ′ Q and Q′ B give (l22 − l2 )/2 + (l32 − l3 )/2
+more points of Sk′ which are covered by translates Sk′ + v with v ≻ 0.
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                 17
+
+  As in the proof of Lemma 3, let T be the set of points in Sk′ that are not in Sk′ + v for
+any v ≻ 0; then |T | = |Z 2 : L|. The calculations above show that
+
+                        |T | ≤ |Sk′ | + (l1 + l2 + l3 )/2 − (l12 + l22 + l32 )/2.
+
+Here |Sk′ | = (k + 1)(k + 2)/2, and l1 + l2 + l3 is just k + 2. Given l1 + l2 + l3 , we minimize
+l12 + l22 + l32 by making the numbers l1 , l2 , l3 as close to equal as possible; in this case, this
+means that the minimum occurs when two of them are a and the third is b. Therefore,
+
+                                   (k + 1)(k + 2) k + 2 2a2 + b2
+                          |T | ≤                 +     −         ,
+                                         2          2      2
+
+which simplifies to |T | ≤ ⌊(k + 2)2 /3⌋, as desired.                                             
+Corollary 14 (mainly Wong and Coppersmith [22]). The largest possible size for the di-
+rected Cayley graph of an Abelian group on two generators having diameter k is ⌊(k+2)2 /3⌋.
+                                                                                         
+    Again it is hard to be historically accurate here, because different authors have pre-
+sented results in quite different ways; see the Bermond-Comellas-Hsu survey [3] for more
+information and references.
+    Let a, b, and Tk be as in the proof of Theorem 13; then the set Tk gives a suitable
+layout for a network realizing this Cayley graph. In addition to the mesh connections from
+(i, j) to (i + 1, j) and (i, j + 1) within Tk , one will also need wraparound connections from
+(a + b − 1, j) to (0, j + b) for j < a, from (a − 1, j + a) to (0, j) for j < b, from (i, a + b − 1)
+to (i + b, 0) for i < a, and from (i + a, a − 1) to (i, 0) for i < b.
+    In the case a = b, one can use an alternate layout in the form of a 3a × a rectangle,
+with wraparound connections from (3a, j) to (1, j) and from (i, a) to ((i + a) mod a, 1).
+This is just a variant of the twisted toroidal mesh where the long dimension is twisted
+by a factor of 1/3 rather than 1/2; it is convenient for construction and for embedding
+a rectangular grid without boundary connections into the network (although this is not
+particularly useful in the directed case). If a 6= b, then one gets a rectangle with some
+missing nodes or extra nodes along part of one edge, and the cross-connections are slightly
+messier.
+    If k ≡ 1 (mod 3), so that a = b = (k + 2)/3, then one can see from the proof of
+Theorem 13 that the lattice L with generating vectors (a, a) and (a + b, −b) is the unique
+lattice attaining the bound in the theorem, and hence the Cayley graph attaining the bound
+in Corollary 14 is also unique. However, if k 6≡ 1 (mod 3), so that a and b differ by 1,
+then there are two more lattices attaining the bound: the lattice L̃ with generating vectors
+(a, b) and (2a, −a), and the mirror image with generating vectors (b, a) and (−a, 2a). The
+latter two give Cayley graphs that are isomorphic to each other, but not to the Cayley
+graph of Z2 /L (if k > 1), because the Cayley graph of Z2 /L has cycles of length 2a while
+that of Z2 /L̃ does not. Therefore, if k > 0 and k 6≡ 1 (mod 3), then there are exactly two
+Cayley graphs meeting the bound of Corollary 14.
+18                       RANDALL DOUGHERTY AND VANCE FABER
+
+   If k > 1 and k ≡ 1 (mod 3), then the optimal group Z2 /L is not cyclic; it is isomorphic
+to Z3a × Za by an isomorphism sending e1 and e2 to (1, 0) and (3a − 1, 1). On the other
+hand, if k 6≡ 1 (mod 3), then (2a + b, a − b) is in L and a − b = ±1, so e2 is a multiple of e1
+in Z2 /L and hence Z2 /L is cyclic. Similarly, Z2 /L̃ is cyclic, since (3a, b − a) ∈ L̃. One can
+get the corresponding Cayley graphs directly from the cyclic group Z⌊(k+2)2 /3⌋ by using
+the generator pairs {1, (2a + b)/(b − a)} and {1, 3a/(a − b)}, respectively.
+
+Three generators, undirected. For d = 3, we must consider three-dimensional lattice
+tilings by the regular octahedron S̄k and its discrete approximation Sk . These shapes do
+not tile space perfectly, and the best possible efficiency for a lattice covering of R3 by S̄k
+appears to be still open (although there is a good guess, as we shall see). So we will apply
+our results in reverse, using computed results about the degree-diameter problem to obtain
+information about lattice tilings by octahedra.
+    The best three-dimensional toroidal mesh with diameter k is Z2b0 +1 × Z2b1 +1 × Z2b2 +1 ,
+where bi = ⌊(k + i)/3⌋; this has about (8/27)k 3 vertices for large k. This corresponds to
+the covering of R3 by S̄1 using the cubic lattice (2/3)Z3 ; this covering has efficiency 2/9.
+    It turns out that a good lattice to use for coverings with regular octahedra is the body-
+centered cubic lattice, defined most simply as the set Lbcc of points in Z3 whose coordinates
+are all odd or all even. If x is an arbitrary point of R3 , then x lies in or on one of the unit
+cubes with vertices in Z3 ; two opposite corners of this cube will be in Lbcc , say v and w.
+Then each coordinate of x lies between (inclusively) the corresponding coordinates of v
+and w, so, letting δ be the l1 metric on R3 , we have δ(v, x)+δ(x, w) = δ(v, w) = 3. Hence,
+either δ(v, x) ≤ 3/2 or δ(w, x) ≤ 3/2. This shows that |S̄3/2 | + Lbcc = R3 . Now, Lbcc has
+generators (2, 0, 0), (0, 2, 0), and (1, 1, 1), giving a matrix with determinant 4, while the
+volume of S̄3/2 is 9/2, so this lattice covering of R3 has efficiency 8/9. A fundamental
+region for the lattice can be obtained by truncating each of the corners of the octahedron,
+giving an Archimedean solid whose faces are eight regular hexagons and six squares.
+    The same reasoning shows that, for k ≥ 1, one can get a lattice covering of Z3 by Sk
+using the slightly distorted body-centered cubic lattice Lbcc (a1 , a2 , a3 ) with generating
+vectors (2a1 , 0, 0), (0, 2a2 , 0), and (a1 , a2 , a3 ), where ai = ⌊(2k + i)/3⌋. This gives a Cayley
+graph of size 4a1 a2 a3 , or approximately (32/27)k 3 for large k. This is an improvement
+over the best toroidal mesh of diameter k; it is about 4 times as good for large k.
+    One can lay out the Cayley graph for Z3 /Lbcc (a1 , a2 , a3 ) in the form of a 2a1 × 2a2 × a3
+mesh. Opposite 2ai × a3 sides are connected to each other as in the usual toroidal mesh,
+but the toroidal connections between the top and bottom 2a1 ×2a2 sides are twisted in two
+directions: node (j1 , j2 , a3 ) is connected to node (j1 ± a1 , j2 ± a2 , 1), where the signs are
+chosen to give numbers between 1 and 2ai , inclusive. Routing algorithms and embeddings
+of rectangular grids work here just as they did in the two-dimensional version.
+    Two questions now arise. First, can one improve the efficiency by making small adjust-
+ments to the discrete lattice, as we did in the two-generator cases? Second, can one get
+better results by using a completely different lattice? The answers to these questions are
+not immediately clear, so we will approach the problem from another direction.
+    One can write computer programs to examine various groups, choose all (or at least
+             THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                          19
+
+many) possible sets of a certain number of generators for the group, and compute the
+resulting diameters. M. Dinneen has performed many such computations, some using
+exhaustive search of generator sets and others using random sampling, on a number of
+different kinds of groups, resulting in new best-known graphs for the degree-diameter
+problem; see, for instance, Dinneen and Hafner [10]. Some of Dinneen’s earlier unpublished
+computations were for Abelian (usually cyclic) groups of diameter up to 10 on various
+numbers of generators.
+   The authors have written a program to extend these calculations. The program does
+an exhaustive search of generating sets for each Abelian group, but avoids examining
+many generating sets which give Cayley graphs isomorphic to ones already examined;
+for instance, in the case of a cyclic group Zn , one may assume that the first generator
+is a divisor of n. Here ‘exhaustive search’ means that all Abelian groups of size up to
+|Sk | = (4k 3 +6k 2 +8k+3)/3 were examined, so the results definitely give the largest possible
+Cayley graph of an Abelian group with diameter k. The program uses bit manipulations
+adapted from (but simpler than) those of Dougherty and Janwa [11], which gave algorithms
+for diameter computations for Cayley graphs of Abelian groups of exponent 2.
+   It turns out that, for each k for which the calculation has been done so far (up to 14),
+the best Abelian Cayley graph has been obtained from a cyclic group. The results of the
+computation are shown in Table 1. This extends (and corrects an erroneous final entry in)
+a similar table given by Chen and Jia [5].
+
+         k    |Sk | Toroidal Twisted     nc   Generators nc /|Sk | nc / vol(S̄k+3/2 )
+        0      1      1                  1                     1          .222222
+        1      7      3         4        7      1, 2, 3        1          .336000
+        2      25     9         16       21     1, 2, 8     .840000       .367347
+        3      63     27        48       55    1, 5, 21     .873016       .452675
+        4     129     45       108      117   1, 16, 22     .906977       .527423
+        5     231     75       192      203    1, 7, 57     .878788       .554392
+        6     377    125       320      333    1, 9, 73     .883289       .592000
+        7     575    175       500      515   1, 46, 56     .895652       .628944
+        8     833    245       720      737 1, 11, 133      .884754       .644700
+        9     1159   343       1008     1027 1, 13, 157     .886109       .665371
+        10    1561   441       1372     1393 1, 92, 106     .892377       .686940
+        11    2047   567       1792     1815 1, 15, 241     .886663       .696960
+        12    2625   729       2304     2329 1, 17, 273     .887238       .709953
+        13    3303   891       2916     2943 1, 154, 172    .891008       .724015
+        14    4089   1089      3600     3629 1, 19, 381     .887503       .730892
+
+       Table 1. Best undirected Cayley graphs of cyclic groups, three generators.
+
+   The first column is the desired diameter k. The second column gives the largest size one
+could hope for of an undirected Cayley graph of an Abelian group on 3 generators. The
+next two columns give the sizes attained by the best possible ordinary toroidal mesh and
+the twisted toroidal mesh described above. Next comes nc , the computed largest n such
+20                       RANDALL DOUGHERTY AND VANCE FABER
+
+that Zn has three generators giving it an undirected diameter of k. Then comes a triple of
+generators of Znc attaining this diameter (this is not always unique, but only one generator
+set is given here). The final two columns gives the efficiencies of the corresponding lattice
+coverings of Z3 by Sk and of R3 by S̄k+3/2 (see Proposition 4).
+   Some interesting observations can be made from Table 1. First, note that the twisted
+toroidal meshes do almost as well as the optimal cyclic groups. Also note that the numbers
+in the second-to-last column do seem to be getting close to 8/9 for larger k; this provides
+evidence that the body-centered cubic lattice gives the best lattice covering of R3 by S1 .
+   One can confirm this more strongly by reconstructing the lattices L for which Z3 /L gives
+these optimal cyclic groups. For instance, look at k = 10, for which we have the cyclic
+group Z1393 with generating set {1, 92, 106}. There is a unique homomorphism from Z3
+to Z1393 which sends e1 , e2 , e3 to 1, 92, 106, and the desired lattice L is just the kernel of
+this homomorphism; this means that
+
+              L = {(x1 , x2 , x3 ) ∈ Z3 :   x1 + 92x2 + 106x3 ≡ 0   (mod 1393)}.
+
+One can easily find three vectors in L, namely (1393, 0, 0), (92, −1, 0), and (106, 0, −1);
+the matrix with these three vectors as rows has determinant 1393 = |Z 3 : L|, so these
+vectors generate L. Now one can perform elementary operations to reduce these vectors to
+a smaller set of generators for L, such as (7, 7, 7), (8, −7, 6), and (6, 8, −7). These vectors
+are quite close to the vectors (7, 7, 7), (7, −7, 7), and (7, 7, −7), which generate a scaled-up
+body-centered cubic lattice (in fact, the latter lattice gives the twisted toroidal mesh of
+size 1372 mentioned in the table). Similarly, one finds that the other lattices corresponding
+to the generators in Table 1 are almost body-centered cubic.
+   There are definite patterns in Table 1; every third k gives groups and generators of the
+same form. These patterns can be generalized, giving the following result.
+Theorem 15. For all k ≥ 0, there is an undirected Cayley graph on three generators of
+an Abelian (in fact, cyclic) group which has diameter k and size n, where
+                           3       2
+                      (32k + 48k + 54k + 27)/27
+                                                          if k ≡ 0 (mod 3),
+                  n=   (32k 3 + 48k 2 + 78k + 31)/27       if k ≡ 1 (mod 3),
+                     
+                       (32k 3 + 48k 2 + 54k + 11)/27       if k ≡ 2 (mod 3).
+                     
+
+
+Proof. We will show the existence of lattices Lk ⊆ Z3 such that Z3 /Lk is cyclic, Sk + Lk =
+Z3 , and |Z3 : L| is the n specified in the theorem.
+    Let a = ⌈2k/3⌉. For each k, we define Lk by specifying three generating vectors
+v1 , v2 , v3 for it, as follows:
+                    
+                     (a+1, a, a), (a, −a, a+1), (a+1, a−1, −a−1) if k ≡ 0 (mod 3),
+                    
+     v1 , v2 , v3 =   (a, a, a), (a+1, −a, a−1), (a−1, a+1, −a)   if k ≡ 1 (mod 3),
+                    
+                      (a, a, a−1), (a−1, −a, a), (a, a−1, −a)     if k ≡ 2 (mod 3).
+                    
+          THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                            21
+
+   A simple determinant computation shows that |Z3 : Lk | is (2a2 +a+1)(2a+1), 4a3 +3a,
+or (2a2 − a + 1)(2a − 1) in the respective cases k ≡ 0, k ≡ 1, or k ≡ 2 (mod 3). Since
+a is respectively 2k/3, (2k + 1)/3, or (2k + 2)/3, the index |Z3 : Lk | works out to be the
+desired value n.
+   For k ≡ 0 (mod 3), the following vectors are in Lk :
+
+                                       v2 + v3 = (2a+1, −1, 0),
+                       v1 + (2a−1)v2 + 2av3 = (4a2 +2a+1, 0, −1).
+
+Hence, we have e2 = (2a+1)e1 and e3 = (4a2 +2a+1)e1 in Z3 /Lk , so e1 generates Z3 /Lk .
+So Z3 /Lk is isomorphic to Zn , via an isomorphism taking e1 , e2 , e3 to 1, 2a+1, 4a2 +2a+1.
+Similarly, for k ≡ 1 (mod 3) we have
+
+                            av2 + (a−1)v3 = (2a2 −a+1, −1, 0),
+                            (a+1)v2 + av3 = (2a2 +a+1, 0, −1),
+
+so Z3 /Lk is isomorphic to Zn with generators 1, 2a2 −a+1, 2a2 +a+1; and for k ≡ 2
+(mod 3) we have
+
+                                       v2 + v3 = (2a−1, −1, 0),
+                       v1 + (2a−1)v2 + 2av3 = (4a2 −2a+1, 0, −1),
+
+so Z3 /Lk is isomorphic to Zn with generators 1, 2a−1, 4a2 −2a+1.
+    It remains to show that Sk +Lk = Z3 . We will do only the case k ≡ 1 (mod 3) here; the
+other two cases are handled by the same method, but with a few more subcases because
+of less symmetry.
+    For k = 1 one just has to show that Z7 with generators 1, 2, 4 has diameter 1, and this
+is trivial to do directly; so we may assume k > 1 and hence a > 1.
+    Let v4 = v1 − v2 − v3 = (−a, a−1, a+1). Then the vectors ±vi for i = 1, 2, 3, 4 give one
+member of Lk strictly within each of the eight octants of Z3 , and all of the coordinates of
+these vectors have absolute value at most a+1.
+    We must show that each x ∈ Z3 is in Sk + Lk . This is equivalent to showing that there
+is a member w of Lk such that x − w ∈ Sk , which in turn is equivalent to δ(x, w) ≤ k,
+where δ is the l1 (Manhattan) metric on Z3 . Note that if x, y, z are such that each
+coordinate of y is between (inclusively) the corresponding coordinates of x and z, then
+δ(x, y) + δ(y, z) = δ(x, z). From now on, we will state this situation more briefly as “y lies
+between x and z.”
+    Suppose we are given x ∈ Z3 . The idea is to repeatedly reduce x by adding members
+of Lk to it, until one reaches a vector which is within l1 -distance k of 0 or some other
+known member of Lk .
+    The first thing we will do is reduce x to a vector whose coordinates all have absolute
+value at most a+1. Suppose x does not already have this property. Let v be one of
+22                      RANDALL DOUGHERTY AND VANCE FABER
+
+the vectors ±vi (i = 1, 2, 3, 4) such that the coordinates of v have the same signs as the
+corresponding coordinates of x; if a coordinate of x is 0, then either sign is allowed for the
+corresponding coordinate of v. Now look at x′ = x − v. If a coordinate of x has absolute
+value ≤ a+1, then the corresponding coordinate of x′ will also have absolute value ≤ a+1,
+because of the sign matching and the fact that the coordinates of v have absolute value
+≤ a+1. If a coordinate of x has absolute value > a+1, then the corresponding coordinate
+of x′ will be strictly smaller in absolute value. Therefore, repeating this procedure will
+lead after finitely many steps to a vector whose coordinates all have absolute value at most
+a+1.
+   If this new x lies between 0 and one of the vectors ±vi , then we have δ(0, x)+δ(x, ±vi ) =
+δ(0, ±vi ). But all of the vectors ±vi satisfy δ(0, ±vi ) = 2k + 1; since δ(0, x) and δ(x, ±vi )
+are both integers, one of them must be at most k, so we are done with this x.
+   We now break into cases depending on which octant the new x lies in. Since Lk is
+centrosymmetric, we only need to handle the octants containing v1 , v2 , v3 , and v4 . Also,
+Lk is invariant under cyclic permutations of the three coordinates, since these leave v1
+fixed and permute v2 , v3 , v4 ; hence, we may assume that the new x is in the octant of v1
+or the octant of v2 .
+   First suppose that x is now in the octant of v1 (all three coordinates nonnegative). If
+x is between 0 and v1 , we are done. If two or more of the coordinates of x are equal to
+a+1, say (by cyclic symmetry of Lk ) x = (a+1, a+1, r), then we have δ(x, v1 ) ≤ k unless
+k = 4 and r = 0, in which case δ(x, v1 + v3 ) = 4 = k.
+   If x has exactly one coordinate equal to a+1, say x = (a+1, r, s) with 0 ≤ r, s ≤ a, then
+we can subtract v1 from x to get x′ = (1, r−a, s−a), which is in the octant containing
+−v4 . If x′ lies between 0 and −v4 , we are done. If not, then r = 0. Now let x′′ = x′ +v4 =
+(−a+1, −1, s+1), which lies between 0 and −v3 unless s = a, in which case x = (a+1, 0, a)
+and δ(x, v2 ) = a+1 ≤ k.
+   The procedure when x is in the octant of v2 is similar. Either x = (r, s, t) lies between
+0 and v2 , or s = −a−1, or t ≥ a. In the latter cases, let x′ = x − v2 . When s = −a−1, we
+have x′ = (r−a−1, −1, t−a+1); either this lies between 0 and one of the vectors ±vi , or
+x + v3 does. When s ≥ −a but t ≥ a, try x′ − v4 ; either it lies between 0 and some ±vi ,
+or it is (−1, 1, −a), (a, 1, −a), or (a, 1, −a+1). These last three lie within δ-distance k of
+v3 − v1 , v3 , and either v3 + v2 − v1 or v3 + v2 , respectively.                            
+   The authors conjecture that the graphs given by this theorem are actually the largest
+undirected Cayley graphs of Abelian groups on three generators for each diameter k.
+   This conjecture would imply that the lattice covering of R3 by S̄3/2 using the lattice Lbcc
+is optimal; that is, 8/9 is the best possible efficiency for a lattice covering by regular
+octahedra. The latter statement seems quite plausible, but remains unproved at this
+point. We can prove a partial result, though, that a “small” adjustment to Lbcc cannot
+improve the covering:
+Theorem 16. Among those lattices L for which S̄3/2 + L = R3 , the lattice Lbcc is locally
+optimal; that is, for any other lattice L sufficiently near Lbcc such that S̄3/2 + L = R3 , the
+efficiency of the covering using L is less than 8/9.
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                  23
+
+Proof. Let us use the vectors v1 = (1, 1, 1), v2 = (1, −1, 1), and v3 = (1, 1, −1) as gen-
+erating vectors for Lbcc ; then a nearby lattice L will be generated by nearby vectors
+v1′ = (a1 , b1 , c1 ), v2′ = (a2 , b2 , c2 ), and v3′ = (a3 , b3 , c3 ). We can concatenate the three
+vectors v1′ , v2′ , v3′ to get a single vector v′ in R9 ; similarly, let v be the concatenation
+v1 , v2 , v3 . Let F (v′ ) be the determinant of the matrix with rows v1′ , v2′ , v3′ . Note that
+F (v) = 4; we must see that this point is a strict local maximum of F (v′ ) for those points v′
+satisfying the constraint that S̄3/2 + L = R3 . We compute that the gradient of F at the
+point v is g = (0, 2, 2, 2, −2, 0, 2, 0, −2).
+    Using the lattice Lbcc , the point (1/2, 1/2, 1/2), in the center of a face of S̄3/2 , is covered
+by only two copies of S̄3/2 , namely S̄3/2 itself and S̄3/2 + v1 , and it is on the boundary (a
+face) of each of these copies. If the lattice is altered slightly so that these two copies no
+longer touch, then the points in between will not be covered by any copy. In particular, if
+L is near Lbcc but a1 + b1 + c1 > 3, then the point (1/2, 1/2, 1/2 + ε) for small positive ε
+will not be in S̄3/2 + L. So the constraint S̄3/2 + L = R3 gives us the linear inequality
+a1 + b1 + c1 ≤ 3. We will rewrite this as
+                 u1 · v′ ≤ 3,      where u1 = (1, 1, 1, 0, 0, 0, 0, 0, 0).
+
+The same argument for points on the other faces of the octahedron gives inequalities
+
+                 u2 · v′ ≤ 3,      where u2 = (0, 0, 0, 1, −1, 1, 0, 0, 0),
+                 u3 · v′ ≤ 3,      where u3 = (0, 0, 0, 0, 0, 0, 1, 1, −1),
+                        ′
+                 u4 · v ≤ 3,       where u4 = (−1, 1, 1, 1, −1, −1, 1, −1, −1).
+   Next, consider the point (1, 0, 1/2). This is in S̄3/2 + y for four members y of Lbcc ,
+namely 0, v1 , v2 , and v2 + v3 , and it is an edge point of each of these four copies. If the
+lattice is altered slightly, then a gap can open up near this point even if there are no gaps
+between octahedra adjacent at a face as above.
+   Specifically, if v′ is near v, ε is a very small positive number, and we define the point x
+by the linear equations
+                   x · (1, −1, −1) = v1′ · (1, −1, −1) + 3/2 + ε,
+                   x · (−1, −1, 1) = (v2′ + v3′ ) · (−1, −1, 1) + 3/2 + ε,    and
+                   x · (−1, 1, −1) = v2′ · (−1, 1, −1) + 3/2 + ε,
+then x will be a point near (1, 0, 1/2) which is not in S̄3/2 + y for y ∈ {v1′ , v2′ , v2′ + v3′ }.
+Adding up the three given equations yields
+     x · (−1, −1, −1) = v1′ · (1, −1, −1) + v2′ · (−2, 0, 0) + v3′ · (−1, −1, 1) + 9/2 + 3ε.
+If the right hand side of this equation is less than −3/2, then x will not be in S̄3/2 either,
+and hence will not be in S̄3/2 + L. Since ε can be arbitrarily small, in order to have
+S̄3/2 + L = R3 , it is necessary to have
+                   v1′ · (1, −1, −1) + v2′ · (−2, 0, 0) + v3′ · (−1, −1, 1) ≥ −6.
+24                       RANDALL DOUGHERTY AND VANCE FABER
+
+This can be rewritten as
+
+                   u5 · v′ ≤ 6,     where u5 = (−1, 1, 1, 2, 0, 0, 1, 1, −1).
+
+The same argument can be performed using the octahedra around (1, 0, 1/2) in the opposite
+order, and there are 23 other points on the edges of S̄3/2 where the same configuration
+occurs. But one only gets six distinct inequalities from this; the other five are:
+
+                   u6 · v′ ≤ 6,     where u6 = (0, 2, 0, 1, −1, 1, 1, −1, −1),
+                         ′
+                   u7 · v ≤ 6,      where u7 = (−1, 1, 1, 1, −1, 1, 2, 0, 0),
+                         ′
+                   u8 · v ≤ 6,      where u8 = (1, 1, 1, 0, −2, 0, 1, −1, −1),
+                   u9 · v′ ≤ 6,     where u9 = (0, 0, 2, 1, −1, −1, 1, 1, −1),
+                  u10 · v′ ≤ 6,     where u10 = (1, 1, 1, 1, −1, −1, 0, 0, −2).
+
+   Note that all ten of these inequalities are satisfied with equality when v′ = v. Hence,
+they can be rewritten as ui · (v′ − v) ≤ 0 for i = 1, 2, . . . , 10.
+   One can easily check that the vectors u1 , . . . , u7 are linearly independent; their common
+null space (i.e., the set of w such that ui · w = 0 for all i ≤ 7) is generated by the
+independent vectors w1 = (1, 0, −1, 1, 0, −1, 1, 0, 1) and w2 = (−1, 1, 0, −1, −1, 0, −1, 1, 0).
+Also, we have
+
+                 g = u1 + u2 + u3 + u4 = u5 + u8 = u6 + u9 = u7 + u10 .
+
+   Let C be the closed cone consisting of all vectors t in the subspace spanned by u1 , . . . , u7
+such that ui · t ≤ 0 for all i ≤ 10. Then the above equations imply that g · t ≤ 0 for all
+t in C, and equality can hold only when t = 0. In particular, we have g · t0 < 0 for any
+unit vector t0 in C. The set of such t0 is closed and bounded, hence compact, so there
+is a positive number ε such that g · t0 < −ε for all such t0 . It follows that there is a
+neighborhood U of g such that, for any g′ in U and any unit vector t0 in C, g′ · t0 < 0.
+Since C is a cone, we have g′ · t < 0 for all g′ ∈ U and all nonzero t ∈ C.
+   We can compute that, for any real numbers r and s, the deteriminant for the lattice
+given by v + rw1 + sw2 is
+
+                      F (v + rw1 + sw2 ) = 4(1 − r)(1 + s)(1 + r − s).
+
+If |r|+|s| < 1, then the numbers 1−r, 1+s, and 1+r−s are positive numbers with arithmetic
+mean 1, so their geometric mean is at most 1; this means that F (v + rw1 + sw2 ) ≤ 4.
+Equality holds only when the above three numbers are equal, which is when r = s = 0.
+    Let U ′ be a convex neighborhood of v so small that (grad F )(v′ ) ∈ U for all v′ ∈ U ′ .
+Now, any vector v′ sufficiently close to v can be expressed as v + t1 + t2 where t1 is a
+(small) linear combination of w1 and w2 , t2 is a linear combination of u1 , . . . , u7 , and both
+v + t1 and v + t1 + t2 are in U ′ . If v′ satisfies the condition S̄3/2 + L = R3 and is near
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                25
+
+to v, then we must have ui · (v′ − v) ≤ 0 for all i ≤ 10, so ui · t2 ≤ 0 for all i ≤ 10 (since
+ui · t1 = 0), so t2 ∈ C. We have F (v + t1 ) ≤ 4, with equality holding only when t1 = 0.
+If t2 is nonzero, then for any t on the segment from v + t1 to v + t1 + t2 we have t ∈ U ′ ,
+so (grad F )(t) ∈ U , so (grad F )(t) · t2 < 0; it follows that F (v + t1 + t2 ) < F (v + t1 ).
+Therefore, F (v′ ) ≤ F (v), with equality holding only when v′ = v. So v gives a local
+maximum of F , as desired.                                                                  
+
+   It is still possible (though very unlikely) that a lattice quite different from Lbcc gives a
+more efficient covering. Theoretically, the search for an optimal lattice can be set up as a
+large optimization problem and solved once and for all, but this appears to be a formidable
+task.
+   One could begin this task by considering an arbitrary lattice L such that S̄3/2 + L = R3
+and this covering is reasonably efficient (at least as efficient as the covering from Lbcc ). Such
+a lattice is generated by vectors v1 , v2 , v3 , and we can carefully choose these generators
+so as to limit their lengths. In particular, we can choose v1 to be a nonzero member of L
+with minimal length. We can then choose v2 in L whose distance from the subspace of R3
+spanned by v1 is as small as possible (but nonzero), and adjust v2 by subtracting off an
+integer multiple of v1 so as to ensure that the closest integer multiple of v1 to v2 is 0. One
+can similarly choose v3 to be as close as possible to (but not in) the subspace spanned by
+v1 and v2 . These three chosen vectors will be a set of generating vectors for L. In order
+to have S̄3/2 + L = R3 , it is necessary that the length of v1 be no more than the diameter
+of S̄3/2 ; there are similar but slightly larger bounds on the lengths of v2 and v3 . This
+limits our search for v1 , v2 , v3 to a compact subset of nine-dimensional space. We must
+find the point in this subset which maximizes det(v1 , v2 , v3 ) subject to the constraint that
+S̄3/2 + L = R3 .
+   This constraint looks infinitary, but it can actually be reduced to finitely many sets of
+linear inequalities. To see this, note that, using the above upper bounds on the lengths
+of the vectors vi along with the assumed lower bound on the lattice determinant (the
+covering must be at least as efficient as that from Lbcc ), we can get lower bounds on the
+lengths of the vi , the angles between them, and associated quantities such as the distance
+from v3 to the plane spanned by v1 and v2 . These will allow us to get upper bounds on the
+absolute values of integers a1 , a2 , a3 such that S̄3/2 + a1 v1 + a2 v2 + a3 v3 overlaps or almost
+touches S̄3/2 . (In other words, we get an upper bound on the number M from the proof of
+Proposition 7.) So we only have to consider finitely many of the lattice translates of S̄3/2
+when trying to cover the space near S̄3/2 (which is all that is needed, by Proposition 6).
+   There are only finitely many configurations (specifications of arrangements and overlaps)
+for these finitely many translates of S̄3/2 . For each such configuration, the assertion that
+there are no ‘gaps’ in the coverage of the space near S̄3/2 becomes a list of linear inequalities
+like the inequalities ui · v′ ≤ b from the proof of Theorem 16. So we need to optimize a
+cubic function (the lattice determinant) subject to a list of linear inequalities in order to
+find the optimal version of each configuration, and then compare the resulting values to
+find the best configuration.
+   Unfortunately, there is a very large number of possible configurations (for an example
+26                      RANDALL DOUGHERTY AND VANCE FABER
+
+of the possibilities for complicated configurations, see Figure 4 later in this paper), so this
+finite computation appears to be beyond reach at present. Of course, a different approach
+to the problem might lead to a more feasible computation.
+   One might hope to be able to use the arguments of Proposition 7 and Theorem 8
+in reverse, to get an upper bound on the efficiency of lattice coverings of R3 by the
+octahedron S̄1 by showing that any extremely efficient real lattice covering would lead to
+integer lattice coverings more efficient than what the computation actually found. To do
+this, one would fix a value for the distance ρ from Proposition 7, and then use the method
+described above to get an upper bound on the number M from that Proposition. If there
+is actually a lattice covering of R3 by S̄1 using the lattice L generated by v1 , v2 , v3 having
+a specified large determinant (equivalently, a specified large efficiency), then we can round
+the coordinates of these vectors to the nearest multiples of 1/k to get vectors v1′ , v2′ , v3′
+generating a lattice L′ . By Proposition 7, if 1/(2k) is less than η = ρ/M , then we will have
+S̄1+3ρ +L′ = R3 , so S̄k+3kρ +kL′ = R3 . But kL′ is an integer lattice; if n is its determinant,
+then this lattice covering will yield an Abelian Cayley graph on three generators with size n
+and diameter at most k + 3kρ. The fact that L′ is close to L means that we can get a
+lower bound on n from the determinant of L. If the actual computational search showed
+that there is no Abelian Cayley graph of such a size for this diameter, then our original
+assumption that there was a lattice L giving a covering of that efficiency must have been
+false.
+   Unfortunately, the constants involved are such that even the large computation done
+so far does not suffice to get a bound less than 1 for the efficiency of L (even if we are
+optimistic enough to assume that M is as small as 3 or 4). It probably requires searches for
+values of k larger than 500 in order to get actual results from this method; such searches
+are completely out of range at the moment.
+Three generators, directed. For the directed case of three generators, we want to study
+lattice coverings of R3 by the trirectangular tetrahedron S̄k′ . (Since lattice covering effi-
+ciency is affine invariant, it makes no difference which particular tetrahedron we consider.)
+One hopes that one can discretize these coverings to get good lattice coverings of Z3 by Sk′ ,
+and hence good directed Cayley graphs.
+   The best three-dimensional directed toroidal mesh with diameter k is Zb0 +1 × Zb1 +1 ×
+Zb2 +1 , where bi = ⌊(k+i)/3⌋; this has about (1/27)k 3 vertices for large k. This corresponds
+to the covering of R3 by S̄1′ using the cubic lattice (1/3)Z3 ; this covering has efficiency 2/9.
+   It is more difficult to find a candidate for a good covering lattice (or, equivalently, a
+large subset which gives a lattice tiling) for the tetrahedron than it was for the octahedron.
+One possible method is to try to find the three-dimensional analogue of the L-tromino used
+for the triangle; this leads one to consider the tetracube shown on the left of Figure 3. In
+order for the shape to fit into S̄1′ , the edge-length of the subcubes should be 1/4. It is
+easy to see that this shape does indeed tile space, using the lattice generated by (1/2, 0, 0),
+(0, 1/2, 0), and (1/4, 1/4, −1/4) (this is just (1/4)Lbcc ); since the shape has volume 1/16
+while S̄1′ has volume 1/6, we get a lattice covering of R3 by S̄1′ with efficiency 3/8.
+   The discrete form of this shape, scaled by a factor si in the i’th dimension, is a subset
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                  27
+
+
+
+
+              Figure 3. Two subsets of the tetrahedron S̄1′ which tile space.
+
+of Z3 of size 4s1 s2 s3 which gives a lattice tiling of Z3 ; this subset is included in Sk′ , where
+k = s1 + s2 + s3 + max(s1 , s2 , s3 ) − 3. Optimizing this for a given k ≥ 1 gives a subset
+of Sk′ which tiles and has size 4a3 a4 a5 , where ai = ⌊(k + i)/4⌋.
+      One can obtain another lattice covering of R3 by tetrahedra as follows. If one cuts
+off the four corners of a regular tetrahedron at planes passing through the midpoints of
+the edges (so one removes four half-size regular tetrahedra), then what is left is a regular
+octahedron with volume 1/2 that of the tetrahedron. We have a lattice giving a covering
+of R3 by this octahedron with efficiency 8/9; the same lattice therefore gives a covering
+of R3 by the original tetrahedron with efficiency 4/9.
+      If one uses an affine transformation to change the regular tetrahedron to the tetrahedron
+S̄1′ , then the corresponding lattice will be generated by (1/6, 1/6, 1/6), (1/6, −1/2, 1/6), and
+(1/6, 1/6, −1/2). One fundamental region for this lattice is an affinely distorted truncated
+octahedron. Another one can be obtained by the method of Lemma 3, using an ordering ≺
+which orders vectors primarily by the sum of their coordinates; the resulting region is shown
+at the right of Figure 3. This shape consists of 16 cubes of edge-length 1/6, for a total
+volume of 2/27, which, as expected, is 4/9 of vol(S̄1′ ) = 1/6.
+      Discretizing this new shape with scale factors s1 ≤ s2 ≤ s3 gives a subset of Z3 of
+size 16s1 s2 s3 which gives a lattice tiling of Z3 ; this subset is included in Sk′ , where k =
+s1 + 2s2 + 3s3 − 3. Another simple optimization shows that, for any given k ≥ 3, we get a
+subset of Sk′ which tiles and has size 16â3 â4 â6 , where âi = ⌊(k + i)/6⌋. For large k (in fact,
+for all k ≥ 30), this new lattice gives a better covering of Z3 by Sk′ than the preceding one
+did, but for smaller k the preceding one sometimes does better.
+      Aguiló, Fiol, and Garcia [1] also work with this shape, but discretize it in a rotationally
+symmetric way rather than in each dimension separately; the Cayley graphs they obtain
+are slightly larger than the graphs of size 16â3 â4 â6 given above, but still of the form
+(2/27)k 3 + O(k 2 ).
+      In order to see whether these lattice coverings give close-to-optimal Cayley graphs, the
+authors performed a computer search for the best (smallest-diameter) directed Abelian
+Cayley graphs on three generators. This extends similar computations performed by
+Aguiló, Fiol, and Garcia [1] and by Fiduccia, Forcade, and Zito [14]. The latter paper
+also contains a useful upper bound: an Abelian Cayley digraph on three generators with
+28                      RANDALL DOUGHERTY AND VANCE FABER
+
+diameter k has size at most 3(k + 3)3 /25. This improves the obvious upper bound |Sk |
+when k > 7.
+   Comparing the above figures with the output from the authors’ computations gives a
+slight surprise: the best cyclic groups do substantially better than the groups from the
+above coverings. The data are shown in Table 2; here ‘FFZ’ is the Fiduccia-Forcade-Zito
+upper bound, ‘Impr.’ refers to the larger of the sizes obtained from the two improved
+constructions above, ‘AFG’ is the size attained by the Aguiló-Fiol-Garcia construction,
+and the remaining columns are analogous to those of Table 1. The computations were run
+on Abelian groups of sizes up to and including 4871; this means that the entries marked
+with an asterisk in the n′c column (for which the FFZ bound is greater than 4871) have
+not been completely proven optimal, but it is extremely likely that they are.
+   Note that in three cases, k = 7, 31, 33, the best cyclic Cayley graph was not achieved
+using 1 as one of the generators. If one is required to use 1 as a generator (which may
+be useful when actually building the corresponding loop network), then the best one can
+do is size 78 for k = 7 (with generators 1, 6, 49), size 3178 for k = 31 (with generators
+1, 386, 1295), and size 3794 for k = 33 (with generators 1, 469, 2094).
+   There is one other difference between this case and the undirected case: here there
+are values of k for which one can do better with general Abelian groups than with cyclic
+groups. The improved values obtained from non-cyclic groups are shown in Table 3. A
+number of these optimal graphs are actually obtained by applying Proposition 5(b) to
+smaller Cayley graphs; for instance, the Abelian graph for k = 17 is obtained this way
+from the cyclic graph for k = 7, which is the reason that these two graphs give exactly the
+same real-covering efficiency (.504).
+   The values in the n′c column of Table 2 are so much larger than those in the preceding
+two columns that it is clear that the real lattices used for the preceding columns were not
+optimal. This is made explicit in the last column of the table, which gives the efficiency
+of the real lattice covering obtained from the computed integer lattice covering via Propo-
+sition 4(b). For k = 1 and k = 3 these coverings are just (scaled versions of) the two
+coverings we explicitly constructed above; but later coverings obviously do substantially
+better.
+   The best real covering obtained from these computations is that for k = 7, with effi-
+ciency .504. As in the undirected case, we can reconstruct generators for the lattice from
+the given generating set 2, 9, 35 for Z84 ; after simplification, the resulting generating vec-
+tors are (−2, 2, 2), (3, −3, 3), and (4, 3, −1). We now have a computer-assisted proof that
+the lattice generated by these vectors gives a lattice covering of R3 by S̄10   ′
+                                                                                  ; but one can
+obtain useful extra information (as well as, perhaps, more satisfaction) by proving this
+directly.
+
+
+Proposition 17. Let L′7 be the lattice in R3 generated by the vectors (−2, 2, 2), (3, −3, 3),
+                       ′
+and (4, 3, −1); then S̄10 + L′7 = R3 .
+        THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                29
+
+
+k    |Sk′ | FFZ Toroidal Impr. AFG       n′c    Generators   n′c /|Sk′ | n′c / vol(S̄k+3
+                                                                                     ′
+                                                                                         )
+0     1             1             1      1                       1          .222222
+1     4             2      4      4      4           1, 2, 3     1          .375000
+2     10            4      4      7      9           1, 3, 4  .900000       .432000
+3     20            8      16     16     16          1, 4, 5  .800000       .444444
+4     35            12     16     19     27          1, 4, 17 .771428       .472303
+5     56            18     32     31     40          1, 6, 15 .714286       .468750
+6     84            27     32     50     57         1, 13, 33 .678571       .469136
+7    120    120     36     48     56     84          2, 9, 35 .700000       .504000
+8    165    159     48     72     86    111         1, 31, 69 .672727       .500376
+9    220    207     64    128    128    138         1, 11, 78 .627273       .479167
+10   286    263     80    128    134    176         1, 17, 56 .615385       .480655
+11   364    329    100    144    182    217        1, 13, 119 .596154       .474490
+12   455    405    125    192    243    273        1, 14, 153 .600000       .485333
+13   560    491    150    256    252    340        1, 90, 191 .607143       .498047
+14   680    589    180    288    333    395        1, 35, 271 .580882       .482394
+15   816    699    216    432    432    462         1, 29, 97 .566176       .475309
+16   969    823    252    432    441    560       1, 215, 326 .577915       .489867
+17   1140   960    294    500    549    648        1, 76, 237 .568421       .486000
+18   1330   1111   343    576    676    748        1, 41, 147 .562406       .484613
+19   1540   1277   392    600    688    861        1, 27, 463 .559091       .485162
+20   1771   1460   448    768    844    979        1, 22, 351 .552795       .482781
+21   2024   1658   512    1024   1024   1140       1, 45, 196 .563241       .494792
+22   2300   1875   576    1024   1036   1305     1, 246, 1030 .567391       .501120
+23   2600   2109   648    1024   1228   1440      1, 126, 415 .553846       .491579
+24   2925   2361   729    1280   1445   1616       1, 56, 257 .552479       .492608
+25   3276   2634   810    1372   1460   1788     1, 154, 1452 .545788       .488703
+26   3654   2926   900    1600   1715   1963       1, 90, 780 .537219       .482923
+27   4060   3240   1000   2000   2000   2224      1, 425, 704 .547783       .494222
+28   4495   3574   1100   2000   2015   2442     1, 964, 1372 .543270       .491826
+29   4960   3932   1210   2048   2315   2693       1, 39, 942 .542944       .493103
+30   5456   4312   1331   2400   2646   2920      1, 540, 831 .535191       .487520
+31   5984   4716   1452   2400   2664   3220      7, 30, 2277 .538102       .491553
+32   6545   5145   1584   2880   3042   3591∗   1, 1519, 2031 .548663       .502531
+33   7140   5598   1728   3456   3456   3850∗    2, 475, 1177 .539216       .495113
+34   7770   6078   1872   3456   3474   4191∗    1, 748, 2652 .539382       .496437
+35   8436   6584   2028   3456   3906   4468∗    1, 353, 2789 .529635       .488555
+
+      Table 2. Best directed Cayley graphs of cyclic groups, three generators.
+30                         RANDALL DOUGHERTY AND VANCE FABER
+
+
+     k      n′a         Group                   Generators               n′a /|Sk′ | n′a / vol(S̄k+3
+                                                                                                 ′
+                                                                                                     )
+     12    279        Z93 × Z3          (1, 0), (9, 1), (10, 2)       .613187           .496000
+     17    672     Z168 × Z2 × Z2   (2, 1, 0), (9, 0, 0), (35, 0, 1) .589474            .504000
+     18    752       Z188 × Z4         (1, 0), (13, 2), (14, 1)       .565414           .487204
+     19    888     Z222 × Z2 × Z2 (1, 0, 0), (142, 1, 0), (180, 0, 1) .576623           .500376
+     26    1980      Z330 × Z6        (1, 0), (123, 2), (234, 3)      .541872           .487105
+     27    2268    Z252 × Z3 × Z3   (2, 0, 0), (9, 1, 0), (35, 0, 1) .558621            .504000
+     28    2448      Z816 × Z3        (1, 0), (427, 0), (564, 1)      .544605           .493035
+     29    2720    Z680 × Z2 × Z2 (1, 0, 0), (191, 1, 0), (90, 0, 1) .548387            .498047
+     30    2997    Z333 × Z3 × Z3 (1, 0, 0), (31, 1, 0), (180, 0, 1) .549304            .500376
+     35    4500∗     Z300 × Z15        (1, 0), (3, 1), (214, 7)       .533428           .492054
+
+          Table 3. Best directed Cayley graphs of Abelian groups, three generators.
+
+Proof. First, note that the following vectors are in L′7 :
+
+             v1 = (−2, 2, 2)                         v8 = (1, −1, 5)     = v1 + v2
+             v2 = (3, −3, 3)                         v9 = (−1, 1, 7)     = 2v1 + v2
+             v3 = (4, 3, −1)                        v10 = (3, 4, −6)     = v3 − v1 − v2
+             v4 = (6, 1, −3) = v3 − v1              v11 = (−7, 7, 1)     = 2v1 − v2
+             v5 = (5, −5, 1) = v2 − v1              v12 = (−5, −2, 8) = 2v1 + v2 − v3
+             v6 = (1, 6, −4) = v3 − v2              v13 = (−1, 8, −2) = v1 − v2 + v3
+             v7 = (2, 5, 1)    = v1 + v3            v14 = (8, −1, −5) = v3 − 2v1
+
+For each vector vi = (r, s, t), we have 1 ≤ r + s + t ≤ 8; hence, the translated tetrahedron
+   ′
+S̄10  + vi intersects the plane x + y + z = 10. In fact, the intersection is a triangle whose
+vertices have coordinates (10−s−t, s, t), (r, 10−r−t, t), and (r, s, 10−r−s).
+                                           ′
+     Figure 4 shows the upper face of S̄10     . For each i ≤ 14, it indicates which part of this
+                                      ′
+face is covered by the translate S̄10 + vi . (The face is divided up into unit triangles, each
+                                                            ′
+of which is labeled by the value(s) of i for which S̄10       + vi covers that triangle.) Clearly
+                                                       ′                                        ′
+each unit triangle is labeled, so the translates S̄10 + vi cover the entire upper face of S̄10    .
+     In fact, since each vi has coordinates summing to at least 1, the smaller translates
+S̄9′ + vi , i ≤ 14, cover the upper face of S̄10  ′
+                                                    . For any x in this upper face, there is an i
+such that x ∈ S̄9 + vi , so S̄1 + x ⊆ S̄1 + S̄9′ + vi = S̄10
+                    ′           ′            ′                 ′                 ′
+                                                                 + vi . Since S̄11 is the union of
+S̄10 and the sets S̄1 + x for x in the upper face of S̄10 , we have S̄11 ⊆ S̄10 + L′7 , and hence
+   ′                  ′                                   ′             ′      ′
+   ′
+S̄11  + L′7 ⊆ S̄10
+                ′
+                   + L′7 .
+     We now prove by induction that, for all integers k ≥ 10, S̄k′ + L′7 ⊆ S̄10  ′
+                                                                                   + L′7 . The case
+k = 10 is trivial. If it is true for k, then
+               ′
+             S̄k+1 + L′7 = S̄1′ + S̄k′ + L′7 ⊆ S̄1′ + S̄10
+                                                        ′
+                                                           + L′7 = S̄11
+                                                                     ′
+                                                                        + L′7 ⊆ S̄10
+                                                                                  ′
+                                                                                     + L′7 ,
+
+so it is true for k + 1.
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                              31
+
+
+
+                                           (0, 0, 10)
+
+                                              12
+                                            8 12 9
+                                           12    12
+                                            8 8 9 1
+                                         8    9      9
+                                     2   8    8 1 1
+                                    8       8     8    1
+                                  2 82   2 8 1 18 1 1
+                                  8      8     8    8     1
+                                2 2      2 1 1      1     1
+                                5    2      2    1     1        1
+                            2   2 2 2    1 12 1 1      1        1
+                            5   5 5      2    2     1     1         1
+                            5   4 5 1    1 1 1 1 1 1 1          1 1 1
+                        5       5    5      3    10    7        6    11
+                     5 5 4      4 4 5    3  3  3 10 7 7 6       6 6 11 11
+                     14    5    5 5      5    10    10    7       11    13
+                     14 4 4       4 3    3 3  10 3  10 6 6        6 6 13
+                  14    14      4    4     10 3 10     10       6    13    13
+     (10, 0, 0)                                                                  (0, 10, 0)
+
+
+                                                         ′
+                     Figure 4. Coverage of one face of S̄10 under L′7 .
+
+   Finally, for any y ∈ R3 , there is a member w of L′7 such that the coordinates of y − w
+are all positive (e.g., let w be a large multiple of −v7 ). Then y − w ∈ S̄k′ for some k, so
+y ∈ S̄k′ + L′7 and hence y ∈ S̄10
+                                ′
+                                  + L′7 . Therefore, S̄10
+                                                       ′
+                                                          + L′7 = R3 .                    
+                                                          ′
+   This covering has efficiency det(v1 , v2 , v3 )/ vol(S̄10 ) = .504. Hence, Corollary 10(b)
+gives:
+Corollary 18. For all k, there is a directed Cayley graph of an Abelian group on three
+generators which has diameter k and size at least 0.084k 3 + O(k 2 ).               
+   We can now use the method of (the real version of) Lemma 3 to get a fundamen-
+tal region T7′ ⊆ S̄10′
+                        for the lattice L′7 . (Recall that any such region must have volume
+                                                             ′
+det(v1 , v2 , v3 ) = 84.) To do this, just start with S̄10     , look at each of the vectors vi
+                                                           ′                 ′
+(i ≤ 14) defined above, and delete those points of S̄10 which lie in S̄10      + vi . (We have
+vi ≻ 0 for all i if ≺ orders vectors primarily by the sum of coefficients.) What is left is
+the set shown in Figure 5; since this is the union of 84 unit cubes, we know that there is
+                                              ′
+no need to subtract further translates S̄10     + w. This set was obtained independently by
+Fiduccia, Forcade, and Zito [14].
+32                       RANDALL DOUGHERTY AND VANCE FABER
+
+
+
+
+                                                       ′
+               Figure 5. A subset of the tetrahedron S̄10 which tiles space.
+
+   So this set T7′ gives a lattice tiling of R3 using L′7 . This tiling is quite unusual; the
+translates of T7′ fit together in a peculiar way, seeming to wind around each other. One
+interesting fact is that each translate of T7′ is adjacent to (i.e., shares a boundary segment
+of positive area with) 28 other translates, a surprisingly high number. (T7′ itself is adjacent
+to T7′ + vi and T7′ − vi for i ≤ 14.)
+   In many of the tilings we constructed explicitly, there was a polycube fundamental region
+like T7′ , but there was also an alternate fundamental region which was convex; for instance,
+for the optimal covering of R2 by right triangles, one could use either an L-tromino or a
+hexagon as the fundamental region. Clearly L′7 has convex fundamental regions (e.g., its
+Voronoi regions), but it turns out that they are unsuitable for the current problem:
+Proposition 19. There is no convex fundamental region for the lattice L′7 included within
+                  ′
+the tetrahedron S̄10 .
+Proof. Since T7′ gives a lattice tiling of R3 by L′7 , every point of R3 , except for those lying
+on boundaries of the tiling, can be translated by a vector in L′7 to a unique point of T7′ .
+                                                ′
+In particular, if we look at the part of S̄10     lying outside T7′ , then we can break it up into
+finitely many parts (in fact, just cut it along the integer translates of the three coordinate
+planes) which can be translated in a unique way by members of L′7 so as to lie within T7′ .
+   If one does this, one finds that there are parts of T7′ which do not get covered by
+                             ′
+translates of parts of S̄10    \ T7′ . Most of these uncovered parts look like inverted copies
+of S̄1′ (i.e., translates of −S̄1′ ), although there are some larger ones. In particular, the sets
+            THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                         33
+
+(1, 1, 1)− S̄1′ , (8, 1, 1)− S̄1′ , (1, 8, 1)− S̄1′ , and (1, 1, 8)− S̄1′ are not covered by such translates.
+This implies that each of those four sets is disjoint (except for boundaries) from all of the
+                ′
+translates S̄10    + w for w ∈ L′7 \ {0}. It follows that any fundamental region for L′7 included
+          ′
+within S̄10    must include all four of these sets.
+   If the fundamental region is also convex, then it must contain any convex combinations of
+points in those four sets; in particular, it must include the sets (3, 1, 1)−S̄1′ and (1, 3, 3)−S̄1′ .
+But (1, 3, 3) = (3, 1, 1) + v1 , so the v1 -translate of the region overlaps the region itself in a
+set of positive volume, which is impossible for a fundamental region of L′7 . Therefore, no
+fundamental region of L′7 within S̄10         ′
+                                                   can be convex.                                          
+   There is no obvious reason why the lattice L′7 should be exactly optimal for a lattice
+covering of R3 by the tetrahedron S̄10′
+                                        . In the case of undirected graphs on three generators,
+the lattices obtained for each k were not optimal, but were closer and closer approximations
+to the lattice Lbcc , which does appear to be optimal. One would expect something similar
+to occur in the directed case, but it does not; the real lattice efficiencies in the last columns
+of Tables 2 and 3 go up and down irregularly and do not (so far) exceed the value .504
+attained by L′7 .
+   Given this, it seems reasonable to examine L′7 and try to adjust it slightly in order
+to improve its efficiency; there should be some locally optimal lattice which L′7 is an
+approximation to, and we would like to find it. Quite surprisingly, it turns out that no
+adjustment is necessary. Just before submitting the present paper, the authors found a
+recent paper of Forcade and Lamoreaux [15] proving this same result by a method slightly
+different from that presented here.
+                                                                            ′
+Theorem 20 (Forcade and Lamoreaux [15]). Among those lattices L for which S̄10 +L =
+ 3               ′
+R , the lattice L7 is locally optimal.
+Proof. We use the same methods as for Theorem 16. Recall the vectors v1 , . . . , v14 from
+Proposition 18. The vectors v1 , v2 , v3 generate L′7 ; a nearby lattice L will be generated by
+nearby vectors v1′ = (a1 , b1 , c1 ), v2′ = (a2 , b2 , c2 ), and v3′ = (a3 , b3 , c3 ). Again concatenate
+v1′ , v2′ , v3′ and v1 , v2 , v3 to get v′ and v in R9 . Let F (v′ ) be the determinant of the matrix
+with rows v1′ , v2′ , v3′ ; then we have F (v) = 84, and we want to see that F (v′ ) < 84 for any
+other v′ near v for which the corresponding lattice L satisfies S̄10          ′
+                                                                                + L = R3 . We compute
+that the gradient of F at the point v is g = (−6, 15, 21, 8, −6, 14, 12, 12, 0).
+                                                                                                    ′
+     Referring back to Figure 4, we see that the point (1, 1, 8) is on the boundary of S̄10           + vi
+                                                              ′
+for i = 8, 9, 12, as well as on the boundary of S̄10 itself; one can check that no other
+L′7 -translate of S̄10   ′
+                             is near this point. The nearby lattice L contains points 0, v8′ =
+v1′ + v2′ , v9′ = 2v1′ + v2′ , and v12   ′
+                                            = 2v1′ + v2′ − v3′ . For any small positive ε, the point
+(a1 + a2 − ε, 2b1 + b2 − ε, 2c1 + c2 − c3 − ε), which is near (1, 1, 8), will not be in v8′ + S̄10       ′
+
+because its first coordinate is smaller that that of v8′ . By looking at second and third
+coordinates respectively, we see that this point is not in v9′ + S̄10             ′       ′
+                                                                                      or v12     ′
+                                                                                             + S̄10 either.
+                                   ′          3                             ′
+Hence, in order to have S̄10 + L = R , this point must be in S̄10 itself, so we must have
+
+                           a1 + a2 + 2b1 + b2 + 2c1 + c2 − c3 − 3ε ≤ 10.
+34                       RANDALL DOUGHERTY AND VANCE FABER
+
+Since ε can be arbitrarily small, we need
+
+                             a1 + a2 + 2b1 + b2 + 2c1 + c2 − c3 ≤ 10
+                   ′
+in order to have S̄10 + L = R3 . So we have the constraint
+
+                   u1 · v′ ≤ 10,      where u1 = (1, 2, 2, 1, 1, 1, 0, 0, −1).
+
+The same reasoning applied at the points (1, 2, 7), (3, 2, 5), (5, 2, 3), (5, 3, 2), (4, 4, 2),
+(3, 5, 2), (2, 6, 2), (1, 7, 2), (8, 1, 1), (6, 3, 1), (3, 6, 1), and (1, 8, 1) gives the constraints
+
+                   u2 · v′ ≤ 10,      where u2 = (1, 1, 2, 1, 0, 1, 0, 0, 0),
+                   u3 · v′ ≤ 10,      where u3 = (0, 1, 1, 1, 0, 1, 0, 0, 0),
+                   u4 · v′ ≤ 10,      where u4 = (−1, 1, 0, 1, 0, 1, 0, 0, 0),
+                         ′
+                   u5 · v ≤ 10,       where u5 = (−1, 0, 1, 1, 0, 0, 0, 1, 0),
+                         ′
+                   u6 · v ≤ 10,       where u6 = (0, −1, 1, 0, −1, 0, 1, 1, 0),
+                   u7 · v′ ≤ 10,      where u7 = (−1, 1, 1, −1, 0, 0, 1, 1, 0),
+                   u8 · v′ ≤ 10,      where u8 = (1, 0, 1, 0, −1, 0, 1, 1, 0),
+                   u9 · v′ ≤ 10,      where u9 = (0, 2, 1, −1, −1, 0, 1, 0, 0),
+                         ′
+                  u10 · v ≤ 10,       where u10 = (−2, −1, −1, 0, 0, 1, 1, 1, 0),
+                         ′
+                  u11 · v ≤ 10,       where u11 = (−1, 0, −1, 0, 0, 1, 1, 1, 0),
+                  u12 · v′ ≤ 10,      where u12 = (−1, 0, 1, −1, −1, 0, 1, 1, 1),
+                  u13 · v′ ≤ 10,      where u13 = (0, 1, 2, −1, −1, −1, 1, 1, 0).
+
+   Again note that all thirteen of these inequalities are satisfied with equality when v′ = v.
+Hence, they can be rewritten as ui · (v′ − v) ≤ 0 for i = 1, 2, . . . , 13.
+   One can easily check that the vectors u1 , u2 , u4 , u5 , u6 , u7 , u8 , u10 are linearly indepen-
+dent; their common null space is generated by the vector w = (0, 0, 0, 1, 1, −1, 2, −1, 1).
+(The other five vectors ui are also orthogonal to w, so they are linear combinations of the
+eight listed above.) Also, we have
+
+        g = u1 + 4.8u2 + 6.4u4 + u5 + 1.6u6 + 3.2u7 + 3.4u8 + u9 + 1.8u10 + u12 .
+
+   Let C be the closed cone consisting of all vectors t in the subspace spanned by u1 , . . . , u13
+such that ui · t ≤ 0 for all i ≤ 13. Then the above equations imply that g · t ≤ 0 for all
+t in C, and equality can hold only when t = 0. Hence, as in Theorem 16, there is a
+neighborhood U of g such that, for any g′ in U and any nonzero t in C, g′ · t < 0.
+   We can compute that, for any real number r, the determinant for the lattice given by
+v + rw is F (v + rw) = 84 − 12r 2 . Clearly this is at most 84, with equality only when
+r = 0.
+            THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                           35
+
+   Now, any vector v′ close to v can be expressed as v +t1 +t2 where t1 is a small multiple
+of w and t2 is a small linear combination of the vectors u1 , . . . , u13 . The reasoning from
+                                            ′
+Theorem 16 shows that t2 must be in C if S̄10 + L = R3 . Also as in that Theorem, we find
+that F (v + t1 ) ≤ F (v) with equality only when t1 = 0, and F (v + t1 + t2 ) ≤ F (v + t1 )
+with equality only when t2 = 0. Therefore, F (v′ ) ≤ F (v), with equality holding only
+when v′ = v. So v gives a local maximum of F , as desired.                                   
+   This and the computational evidence make it plausible that L′7 actually gives an optimal
+lattice covering of R3 by S̄10
+                            ′
+                               , and hence that the asymptotic formula in Corollary 18 is
+optimal.
+More than three generators. In higher dimensions, analogues of many of the preceding
+constructions exist, but they do not produce lattice coverings as efficient as one would hope
+for.
+    For lattice coverings with the d-dimensional dual cube, one can use the d-dimensional
+body-centered cubic lattice (the set of vectors in Zd whose coordinates are all odd or all
+even). By the same argument as for the three-dimensional case, this lattice gives a lattice
+covering of Rd by S̄d/2 . The efficiency of this covering is 2d−1 / vol(S̄d/2 ) = 2d−1 d!/dd ,
+which is 2d−1 times the efficiency of the covering using the ordinary cubic lattice Zd .
+    As usual, the Cayley graph corresponding to this lattice is a twisted toroidal mesh. For
+                                                                   d−1
+a given number m, one can connect the elements of Z2m                  × Zm as in an ordinary toroidal
+mesh, except that the wraparound connections for the last coordinate are twisted along
+all of the other coordinates: (x1 , . . . , xd−1 , m−1) is connected to (x1 ±m, . . . , xd−1 ±m, 0).
+This gives a graph of diameter ⌊dm/2⌋ and size 2d−1 md , which is about 2d−1 times as
+large as the best ordinary toroidal mesh of this diameter.
+    One can optimize this slightly. Given the dimension d and the desired diameter k, let
+q and r be the quotient and remainder when 2k + 1 is divided by d; we assume k is large
+enough that q > 0. Then a good lattice L to use is the body-centered cubic lattice above
+scaled up by a factor q + 1 in each of the first r coordinates and a factor q in the remaining
+                                                                            d−r
+d−r coordinates. The resulting Zd /L is isomorphic to (Zr2q+2 ×Z2q                )/H with the canonical
+generators, where H is the two-element subgroup {0, (q+1, . . . , q+1, q, . . . , q)} (there are
+                                                                                          d−r−1
+r q+1’s); it can be laid out as a twisted toroidal mesh on Zr2q+2 × Z2q                           × Zq or on
+  r−1       d−r
+Z2q+2 × Z2q × Zq+1 . If q is even and r > 0, this Cayley graph is isomorphic to that of
+Zq+1 × Zr−12q+2 × Z2q
+                        d−r
+                            with the generators e2 , . . . , ed and (1, . . . , 1, q, . . . , q) with r 1’s; if
+                                                                                             d−r−1
+q is odd or r = 0, then it is isomorphic to the Cayley graph of Zr2q+2 × Z2q                        × Zq with
+generators e1 , . . . , ed−1 and (q+1, . . . , q+1, 1, . . . , 1) with r q+1’s. The size of this graph
+is slightly larger than the size of the cyclic Cayley graph constructed by Chen and Jia [5],
+but the ratio of the two sizes tends to 1 for large k.
+    For the directed case, we must consider lattice coverings by d-simplices; as usual, by
+affine invariance, it doesn’t matter which simplex is used. One can show that a lattice for
+covering with a given d-simplex is given by the following generating vectors: for each face
+of the simplex, take a vector which is twice the vector from the centroid of the simplex to
+the centroid of that face. (This gives d + 1 vectors, but they sum to 0, so just take d of
+36                      RANDALL DOUGHERTY AND VANCE FABER
+
+them.) The efficiency of this covering works out to be d!2d /(dd (d + 1)).
+   Unfortunately, in both cases, the efficiency decreases exponentially with d: by Stirling’s
+formula,                                      r      d
+                                   2d−1 d!      πd 2
+                                            ∼
+                                     dd          2 e
+and                                              r         d
+                                     d!2d            2π    2
+                                             ∼                 .
+                                  dd (d + 1)          d    e
+This seems to be the case for all known explicitly constructed lattice coverings by these
+shapes (and by spheres).
+   On the other hand, in 1959 Rogers [18] gave a nonconstructive proof that there exist
+much more efficient lattice coverings by these shapes (or by any convex body) in high
+dimensions; and he gave an even better result for the case of spheres. More recently
+Gritzmann [16] extended the latter result to apply to any convex body with a sufficient
+number of mutually orthogonal hyperplanes of symmetry. (The number required is quite
+small: only ⌊log2 ln d⌋ + 5.) Gritzmann’s result states that there is a constant c (not
+depending on d or on the convex body) such that, for any convex body K in Rd with the
+above number of mutually orthogonal planes of symmetry, there is a lattice covering of Rd
+by K with density at most cd(ln d)1+log2 e .
+   The regular dual d-cube and the regular d-simplex do have the required symmetry
+planes for large enough d. This is clear for the dual d-cube; it has the same d orthogonal
+planes of symmetry as the d-cube it is dual to. For the regular d-simplex, note that the
+perpendicular bisector of an edge is a hyperplane of symmetry, and that edges which do
+not share a vertex have orthogonal directions (the easiest way to see this is to look at the
+regular d-simplex in Rd+1 whose vertices are e1 , . . . , ed+1 , and take dot products), so one
+can find ⌈d/2⌉ mutually orthogonal hyperplanes of symmetry. Therefore, we get lattice
+coverings of the specified density for large d, and by adjusting the constant c we can make
+the bound apply for all d (for these two particular shapes). Therefore, letting c̄ = c−1 , we
+can use Corollary 10 to get:
+Theorem 21. There is a constant c̄ > 0 (not depending on d or k) such that, for any fixed
+d > 1 and for all k, there exist undirected Cayley graphs of Abelian groups on d generators
+having diameter ≤ k and size at least
+
+                                      2d c̄
+                                                  k d + O(k d−1 ),
+                                d!d(ln d)1+log2 e
+
+and there exist directed Cayley graphs of Abelian groups on d generators having diameter
+≤ k and size at least
+                                       c̄
+                                                 k d + O(k d−1 ).
+                               d!d(ln d)1+log2 e
+                                                                                             
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                  37
+
+  The coverings produced by this method are probably fairly strange. We seem to have
+run into this already in three dimensions, for the directed case; for the undirected case it
+apparently happens later.
+Layouts with short wires. The obvious way to lay out a toroidal mesh is as a rectangular
+array with mesh connections between adjacent nodes in the array and with long wires
+connecting opposite ends of the array; these long wires may cause communications delays.
+However, there is a standard trick for rearranging the layout so as to remove the need
+for long wires. In the one-dimensional case, instead of placing the nodes in the order
+1, 2, 3, . . . , n (where i is connected to i + 1 for i = 1, 2, . . . , n−1 and n is connected to 1),
+one can place them in the order 1, n, 2, n−1, 3, n−2, . . . ; then the maximum required wire
+length is only twice the mesh spacing. In higher dimensions, one can apply the same trick
+to each dimension separately, and again the required wire length is twice the mesh spacing.
+    It is not immediately obvious that this interleaving trick can be applied to twisted
+toroidal meshes; a simple interleaving in each dimension would not make the twisted
+cross-connections short. But it is possible to get short-wire layouts for the twisted meshes
+in a similar way. One approach is to perform the interleaving twice on the long dimensions
+of the mesh; for instance, if the mesh has length 16 in one of the long dimensions, then
+the nodes would be arranged in the order
+
+                          1, 9, 16, 8, 2, 10, 15, 7, 3, 11, 14, 6, 4, 12, 13, 5.
+
+Then wires in this dimension would have length at most 4 times the mesh spacing. Now,
+when one does a single interleaving on the short dimension, the twisted cross-connections
+become short as well.
+
+              A B C D                        AaBbC c D
+          8                   4          8                     7           5
+          7                   3          7                     6           4
+          6                   2          6                     5           6
+          5                   1          5                     4           3
+          4                   8          4                     3           7
+          3                   7          3                     2           2
+          2                   6          2                     1           8
+          1                   5          1                     8           1
+              A B C D                        AaBbC c D                         A D B C
+                   (a)                             (b)                             (c)
+
+                  Figure 6. Short-wire layout for a twisted toroidal mesh.
+
+  Another method is shown in Figure 6. Here the idea is to modify the original arrange-
+ment (a) by shearing the mesh (rotating the i’th level in the short dimension by i − 1 units
+38                       RANDALL DOUGHERTY AND VANCE FABER
+
+in each of the long dimensions), as shown in (b), so that the twisted cross-connections
+become (almost) straight. Then one can do an ordinary interleaving in each dimension√to
+get the result shown in (c). This gives a layout in which the maximum wire length is 2 d
+times the mesh spacing.
+   Some of the other Abelian Cayley graphs we have considered can be treated similarly,
+especially the ones which differ only slightly from twisted toroidal meshes. For the optimal
+two-generator undirected Abelian Cayley graph, if one starts with the almost-rectangular
+layout shown in Figure 1 (a (k+1) × (k+1) square next to a k × k square), and performs
+a shear as in Figure 6, then the result is a 2k × (k+1) rectangle with one node left over;
+this can then be interleaved to get a short-wire layout. A more difficult case is the two-
+generator directed graph from Theorem 13 and Corollary 14; here one can start with the
+natural L-shaped layout and perform shears on separate parts to obtain a rectangle with
+dimensions (a + 2b) × a (made up of three subrectangles with different shear patterns)
+where the necessary cross-connections are almost straight across, and hence interleaving
+will give a good layout.
+Generators of order 2. The undirected Cayley graphs produced so far all have even
+degree (twice the number of generators). If one is interested in undirected Cayley graphs
+of odd degree, one will have to use a generator of order 2.
+   Using d unrestricted generators plus one order-2 generator, one can get an undirected
+Abelian Cayley graph of a given diameter which is about twice as large as one can get using
+d unrestricted generators alone. More precisely, if na (d, k) is the size of the largest Abelian
+Cayley graph of diameter k using d generators and n+    a (d, k) is the size of the largest such
+graph using d generators plus one order-2 generator, then
+                             2na (d, k − 1) ≤ n+
+                                               a (d, k) ≤ 2na (d, k).
+
+To see this, first let G be generated by g1 , . . . , gd and ρ where ρ has order 2. If G has
+diameter at most k using these generators, and H is the subgroup of size 2 generated by ρ,
+then G/H is generated by the images gi + H for 1 ≤ i ≤ d with diameter at most k, so
+|G/H| ≤ na (d, k), so |G| ≤ 2na (d, k); hence, n+      a (d, k) ≤ 2na (d, k). On the other hand, if
+G is generated by g1 , . . . , gd with diameter at most k − 1, then G × Z2 is generated by
+(gi , 0) for i = 1, . . . , d and (0, 1), and has diameter at most k using these generators; this
+shows that 2na (d, k − 1) ≤ n+      a (d, k).
+                               +
+    We can also study na (d, k) using the same methods that were used for na (d, k). The
+appropriate free (universal) group to use here is the group Zd × Z2 , with the canonical
+generators (ei , 0) for i = 1, . . . , d and (0, 1). The set of elements of this group which can be
+written as a word of length at most k in the generators is precisely Wk = (Sk ×0)∪(Sk−1 ×1).
+For any Abelian group G with generators g1 , . . . , gd and ρ (ρ of order 2), there is a unique
+homomorphism from Zd ×Z2 to G taking (ei , 0) to gi and (0, 1) to ρ; the Cayley graph of G
+using these generators has diameter at most k if and only if the homomorphism maps Wk
+onto G. So the obvious upper limit for the size of G is |Wk | = |Sk | + |Sk−1 |.
+    We are now led to study quotient groups (Zd × Z2 )/N where N is a (normal) subgroup
+of Zd × Z2 of finite index; we want such an N of largest possible index such that Wk + N =
+Zd × Z2 .
+           THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                             39
+
+   One simple possibility is that N ⊆ Zd × {0}; in this case the resulting group is just
+(Zd /N0 ) × Z2 where N = N0 × {0}. It is easy to see that the diameter of this group is
+precisely one more than the diameter of Zd /N0 using the canonical d generators.
+   Note that N0 is a d-dimensional lattice; let v1 , . . . , vd be a list of generators for this
+lattice. Now let N ′ be the subgroup of Zd × Z2 generated by (vi , 1) for i = 1, . . . , d. Then
+we have
+                       |Zd × Z2 : N ′ | = 2 |Zd : N0 | = |Zd × Z2 : N | .
+
+Furthermore, the diameter of (Zd ×Z2 )/N ′ is at most one more than the diameter of Zd /N0 ,
+which means that it is no larger than the diameter of (Zd × Z2 )/N .
+   This shows that, when trying to determine n+   a (d, k), we may restrict ourselves to study-
+ing subgroups N of Zd × Z2 of finite index which are not included in Zd × {0}.
+   So choose g ∈ Zd such that (g, 1) ∈ N . The subgroup N ∩ (Zd × {0}) is of index 2
+in N and hence of finite index in Zd × Z2 . So we have N ∩ (Zd × {0}) = L × {0} for some
+d-dimensional lattice L. Note that (2g, 0) = 2(g, 1) ∈ N , so 2g ∈ L. (Normally g will not
+be in L; if g ∈ L, then (g, 0) ∈ N , so (0, 1) ∈ N , so the order-2 generator collapses to the
+identity in the quotient group.) Also, we have |Zd × Z2 : N | = |Zd : L|.
+   It is now easy to see that
+
+               (Wk + N ) ∩ (Zd × {0}) = ((Sk + L) ∪ (Sk−1 + g + L)) × {0}.
+
+Hence, in order to have Wk + N = Zd × Z2 , it is necessary to have
+
+(∗)                           (Sk + L) ∪ (Sk−1 + g + L) = Zd .
+
+This necessary condition is also sufficient, because
+
+            (Wk + N ) ∩ (Zd × {1}) = ((Sk−1 + L) ∪ (Sk + g + L)) × {1}
+                                     = (((Sk + L) ∪ (Sk−1 + g + L)) + g) × {1}.
+
+So our goal is to find such a lattice L and extra generator g (with 2g ∈ L) so that (∗) is
+satisfied and |Zd : L| is as large as possible.
+   We are now ready to consider specific values of d. As usual, the case d = 1 is easy. The
+maximal possible value of |Z : L| is |Wk | = 4k, and this value is attained by letting L be
+generated by the element 4k, with g = 2k. This leads to the cyclic Cayley graph on the
+group Z4k with unrestricted generator 1 and order-2 generator 2k.
+   For d = 2 we have a situation very similar to that in Figure 1 (lattice coverings with
+Aztec diamonds), but not identical because we must use two different shapes. The upper
+bound on |Z2 : L| is |Wk | = 4k 2 + 2. For k = 1 this bound is actually attainable; it leads
+to the Cayley graph from Z6 with unrestricted generators 1 and 2 and order-2 generator 3.
+But for k > 1 the pieces Sk and Sk−1 do not fit together well enough to give a perfect
+40                     RANDALL DOUGHERTY AND VANCE FABER
+
+
+
+
+        Figure 7. Lattice covering of Z2 using Sk and Sk−1 (shown for k = 3).
+
+tiling. The best one can do is the lattice L generated by (2k + 1, 1) and (−1, 2k − 1), with
+the extra generator g = (k, k), as shown in Figure 7.
+    The graph of diameter k resulting from this covering is the Cayley graph of the cyclic
+group Z4k2 with unrestricted generators 1 and 2k − 1 and order-2 generator 2k 2 . One can
+get another Cayley graph of this size by using the lattice generated by (2k, 0) and (0, 2k),
+but this graph will not be cyclic; it comes from the group Z2k × Z2k .
+    The outlined shape in Figure 7 (a (2k + 1) × (2k − 1) rectangle with one extra point)
+is a fundamental region which is convenient for an actual layout of nodes in a network.
+Note that a 2k × 2k rectangle (or for that matter, any rectangle with both sides greater
+than 1) will not work as a fundamental region for this lattice. The alternative lattice in
+the previous paragraph does allow one to use a layout which is a 2k × 2k rectangle; in
+fact, this is just a toroidal mesh. However, in either case one will have to make the extra
+connections specified by the order-2 generator.
+    When one moves to d = 3, it becomes harder to get optimal results, so again the
+authors resorted to a computational search. For k = 1 the best graph is the Cayley graph
+of Z8 with unrestricted generators 1, 2, 3 and order-2 generator 4; for k = 2 the best is
+Z26 with unrestricted generators 1, 2, 8 and order-2 generator 13. For 3 ≤ k ≤ 10 the
+optimal results, like those for three generators alone, form a pattern of period 3, as shown
+          THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                          41
+
+in Table 4. (Again the best graphs are all cyclic. This time the parameter a is defined to
+be the integer nearest 2k/3.)
+
+          k mod 3              0                    1                    2
+             a                2k/3              (2k + 1)/3          (2k − 1)/3
+                           (2a, 1, −1)        (2a − 1, −1, 0)     (2a + 1, −1, 0)
+           Lattice
+                          (−1, 2a, −1)          (1, 2a, −1)         (1, 2a, −1)
+         generators
+                            (1, 1, 2a)         (0, 1, 2a − 1)      (0, 1, 2a + 1)
+           Extra
+                        (a, a + 1, a − 1)      (a, a, a − 1)       (a + 1, a, a)
+         generator
+           Cyclic       64k 3 + 108k         64k 3 + 60k − 16    64k 3 + 60k + 16
+         group size           27                     27                  27
+                               1                      1                   1
+        Unrestricted   3      2
+                     4a − 2a + 2a − 1              2a − 1              2a + 1
+         generators
+                     4a3 − 2a2 + 4a − 1           2
+                                               4a − 2a + 1            2
+                                                                   4a + 2a + 1
+          Order-2
+                           4a3 + 3a         4a3 − 4a2 + 3a − 1 4a3 + 4a2 + 3a + 1
+         generator
+
+
+     Table 4. Best undirected Cayley graphs of cyclic groups of diameter k using
+     three generators plus one order-2 generator (3 ≤ k ≤ 10).
+
+  We can now apply the methods in the proof of Theorem 15 to show:
+Theorem 22. For each k ≥ 3, the cyclic undirected Cayley graph using the group and
+generators specified in Table 4 has diameter k.                                  
+   The authors again conjecture that these are actually the optimal such Abelian Cayley
+graphs for all k ≥ 3, not just for 3 ≤ k ≤ 10.
+   For d > 3 one can get reasonably good results by letting L be approximately a cubic
+lattice, with g near the center of one of the cubes; this makes L ∪ (g + L) approximately
+a body-centered cubic lattice. Again, though, the efficiency of this covering decreases
+exponentially with d; one can do much better using the results of Gritzmann [16].
+   One can also consider the possibility of using more than one generator of order 2. For
+instance, one could look at Cayley graphs of degree 2d + 2 obtained by using d unrestricted
+generators and two generators of order 2.
+   However, this is not going to he helpful if one wants to construct large undirected
+Cayley graphs of a given degree and diameter, at least if the diameter is substantially
+larger than the degree. For instance, suppose that the degree is fixed as 2d + 2. If one
+uses d unrestricted generators and two order-2 generators, then the size of the resulting
+undirected Abelian Cayley graph of diameter k is at most 4 times the number of points in
+42                        RANDALL DOUGHERTY AND VANCE FABER
+
+the d-dimensional shape Sk . (More precisely, by the methods used above for one order-2
+generator, one gets a limit of |Sk | + 2|Sk−1 | + |Sk−2 |.) This limit is O(k d ), which is less
+than the O(k d+1 ) one gets by using d + 1 unrestricted generators. The same argument
+shows that using more than two order-2 generators cannot be useful for large k; one gets
+larger graphs by replacing two order-2 generators with one unrestricted generator.
+   If one is interested in the small-diameter case, though (especially when the diameter is
+less than or equal to the degree), then order-2 generators must be considered. The most
+extreme version of this would be to make all of the generators have order 2. This then
+becomes precisely the covering radius problem for binary linear codes; see the surveys by
+Cohen et al. [8,9] for more on this problem. The resulting graphs would be hypercubes
+with additional diagonal connections to reduce the diameter.
+Conclusions. We have shown that one can construct Cayley graphs of Abelian groups
+which have substantially more vertices than traditional toroidal meshes, but retain certain
+desirable features. In particular, routing on the twisted toroidal meshes is easily described
+in almost the same manner as on toroidal meshes, and the twisted toroidal meshes host the
+discrete non-periodic orthogonal grids used in numerical calculations in exactly the same
+way that toroidal meshes do. In addition, we have shown how our d-dimensional meshes can
+be constructed with physical wire lengths that remain constant with increasing diameter
+(and increasing number of vertices) just as the corresponding toroidal meshes can. We
+have given results which are provably optimal in 2 dimensions and probably optimal in 3
+dimensions—the physically interesting cases.
+   In the sequel to this paper, we will show that our methods can be extended to cover
+certain types of nilpotent groups. These groups yield graphs with cardinalities which still
+increase polynomially with diameter for a given degree, but with an exponent which is
+larger than in the Abelian case. One class of groups for which we obtain optimal results
+includes the groups discussed in Draper and Faber [12]. In particular, we show that the
+particular groups analyzed in that paper are not optimal for large diameters.
+
+                                            References
+ 1. F. Aguiló, M. A. Fiol, and C. Garcia, Triple loop networks with small transmission delay, Discrete
+    Math. 167/168 (1997), 3–16.
+ 2. F. Annexstein and M. Baumslag, On the diameter and bisector size of Cayley graphs, Math. Syst.
+    Theory 26 (1993), 271–291.
+ 3. J. C. Bermond, F. Comellas, and D. F. Hsu, Distributed loop computer networks: a survey, J. Parallel
+    Distrib. Comput. 24 (1994), 2–10.
+ 4. F. T. Boesch and J.-F. Wang, Reliable circulant networks with minimum transmission delay, IEEE
+    Trans. Circuits Systems CAS-32 (1985), 1286–1291.
+ 5. S. Chen and X.-D. Jia, Undirected loop networks, Networks 23 (1993), 257–260.
+ 6. F. R. K. Chung, Diameters and eigenvalues, J. Amer. Math. Soc. 2 (1989), 187–196.
+ 7. F. R. K. Chung, V. Faber, and T. A. Manteuffel, An upper bound on the diameter of a graph from
+    eigenvalues associated with its Laplacian, SIAM J. Discrete Math. 7 (1994), 443–457.
+ 8. G. D. Cohen, M. G. Karpovsky, H. F. Mattson, Jr., and J. R. Schatz, Covering radius — survey and
+    recent results, IEEE Trans. Inform. Theory IT-31 (1985), 328–343.
+ 9. G. D. Cohen, S. N Litsyn, A. C. Lobstein, and H. F. Mattson, Jr., Covering radius 1985–1994, Appl.
+    Algebra Engrg. Comm. Comput. 8 (1997), 173–239.
+            THE DEGREE-DIAMETER PROBLEM FOR ABELIAN CAYLEY GRAPHS                                        43
+
+10. M. Dinneen and P. Hafner, New results for the degree/diameter problem, Networks 24 (1994), 359–367.
+11. R. Dougherty and H. Janwa, Covering radius computations for binary cyclic codes, Math. Comp. 57
+    (1991), 415–434.
+12. R. Draper and V. Faber, The diameter and mean diameter of supertoroidal networks, Supercomputing
+    Research Center Technical Report SRC-TR-90-004, 1990.
+13. I. Fáry, Sur la densité des réseaux de domaines convexes, Bull. Soc. Math. France 78 (1950), 152–161.
+14. C. S. Fiduccia, R. W. Forcade, and J. S. Zito, Geometry and diameter bounds of directed Cayley
+    graphs of Abelian groups, SIAM J. Discrete Math. 11 (1998), 157–167.
+15. R. Forcade and J. Lamoreaux, Lattice-simplex coverings and the 84-shape, SIAM J. Discrete Math.
+    13 (2000), 194–201.
+16. P. Gritzmann, Lattice covering of space with symmetric convex bodies, Mathematika 32 (1985), 311–
+    315.
+17. D. Hoylman, The densest lattice packing of tetrahedra, Bull. Amer. Math. Soc. 76 (170), 135–137.
+18. C. Rogers, Lattice coverings of space, Mathematika 6 (1959), 33–39.
+19. G. Sabidussi, Vertex transitive graphs, Monatsh. Math. 68 (1964), 426–438.
+20. R. Stanton and D. Cowan, Note on a “square” functional equation, SIAM Review 12 (1970), 277–279.
+21. H. Urakawa, On the least positive eigenvalue of the Laplacian for the compact quotient of a certain
+    Riemannian symmetric space, Nagoya Math. J. 78 (1980), 137–152.
+22. C. K. Wong and D. Coppersmith, A combinatorial problem related to multimodule memory organiza-
+    tions, J. ACM 21 (1974), 392–402.
+23. J. L. A. Yebra, M. A. Fiol, P. Morillo, and I. Alegre, The diameter of undirected graphs associated to
+    plane tessellations, Ars Combin. 20-B (1985), 159–171.
+
+   LizardTech, Inc., 1008 Western Ave., Seattle, WA 98104
+   E-mail address: rdougherty@lizardtech.com
+
+   LizardTech, Inc., 1008 Western Ave., Seattle, WA 98104
+   E-mail address: vxf@lizardtech.com
+

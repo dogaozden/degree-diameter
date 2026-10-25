@@ -1,0 +1,46 @@
+    The degree-diameter problem, and
+   some Cayley graphs on cyclic groups
+                          Heather Macbeth
+                      The University of Auckland
+                   E-mail: hmac073@ec.auckland.ac.nz
+                                  Supervisor:
+                                Jozef Širáň
+          Department of Mathematics, The Open University
+                    E-mail: j.siran@open.ac.uk
+    Given a graph of diameter k, placing an upper bound d on the degree of
+a graph’s vertices limits the number of vertices that the graph can possess.
+Indeed, straightforward calculation shows that for d ≥ 3, such a graph can have
+                                                   k
+                                                     −1
+order no more than the Moore bound 1 + d (d−1)   d−2     ≈ dk .
+    For a given class of graphs and for some fixed diameter and fixed maximal
+degree, a natural question is thus to determine this maximal possible order ex-
+actly. This so-called degree-diameter problem, a basic problem in graph theory,
+is of interest both mathematically and for its applications to optimisation prob-
+lems for networks (for example in telecommunications) with nodes of limited
+physical capacity. The focus of this project is the degree-diameter problem for
+Cayley graphs. These highly symmetrical graphs arise naturally from the study
+of finite groups. Group theory hence provides powerful tools for investigation
+of the properties of Cayley graphs.
+    For Cayley graphs on abelian groups, computational evidence for small val-
+ues of d suggests that for most k and d > k the maximal possible order is
+                                                       k
+close to a Moore-like upper bound, approximately dk! . However, the best known
+constructions valid for infinitely many values of d yield Cayley graphs of signif-
+icantly smaller order. For the special case of Cayley graphs on cyclic groups,
+and of diameter two, computational evidence still suggests that the maximal
+possible order is close to this theoretical bound 1 + d + 12 d2 . However, the pre-
+vious best construction valid for infinitely many values of d produced graphs of
+                        2
+order approximately d4 .
+    Here, inspired by the observation that both the additive and multiplicative
+groups of the field Zp are cyclic, we outline a new construction for Cayley graphs
+on cyclic groups with diameter two and degree from an infinite set of positive
+                                                          2
+integers d. Graphs in this family have order close to d3 .
+
+
+
+
+                                        1
+
