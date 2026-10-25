@@ -1,0 +1,7 @@
+07:29:06 start d14D10_psl_263_73_orb3_s2
+07:34:36 done  d14D10_psl_263_73_orb3_s2: RESULT d=14 D=10 group=psl 263 x Z_73 N=663978216 best=0 evals=153 time=215.4 orbit k=3 m=4 f=2 fix=131 
+07:34:36 start d14D10_sl_151_193_orb3_s2
+08:25:44 done  d14D10_sl_151_193_orb3_s2: RESULT d=14 D=10 group=sl 151 x Z_193 N=664460400 best=3 evals=3209 time=3001.5 orbit k=3 m=4 f=2 fix=149 
+08:25:44 start d14D10_sl_137_259_orb3_s2
+/home/user/degree-diameter/research/structured/tools/orbq.sh: line 33:  3608 Killed                  env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
+08:26:24 done  d14D10_sl_137_259_orb3_s2: 
