@@ -72,17 +72,23 @@ static void recount(void) {
     for (long g = 0; g < ngeo; g++) { int x = 0; for (int j = 0; j < glen[g]; j++) x ^= nu[gflag[g * 5 + j]]; gpar[g] = x; }
     for (long p = 0; p < npair; p++) { int o = 0; for (int g = poff[p]; g < poff[p + 1]; g++) o += gpar[g]; ones[p] = o; if (pbad(p)) { viol++; vadd(p); } }
 }
-static long flipdelta(int f) {   /* change in violations if nu[f] flips (does not apply) */
-    long d = 0;
-    for (int i = flagoff[f]; i < flagoff[f + 1]; i++) { int g = flaggeo[i]; long p = 0; (void)p; }
+int *gpair;
+uint16_t *wt = NULL; long wviol = 0; int *dacc, *touch;   /* clause weights (WMODE) */
+static int *stamp, stampc = 0;
+static long wdelta(int f) {   /* change of the weighted violation count if nu[f] flips (not applied) */
+    int nt = 0; long d = 0; stampc++;
+    for (int i = flagoff[f]; i < flagoff[f + 1]; i++) { int g = flaggeo[i]; int p = gpair[g];
+        if (stamp[p] != stampc) { stamp[p] = stampc; dacc[p] = 0; touch[nt++] = p; } dacc[p] += gpar[g] ? -1 : 1; }
+    for (int i = 0; i < nt; i++) { int p = touch[i]; if (!active[p]) continue; int k = poff[p + 1] - poff[p];
+        int was = ones[p] == 0 || ones[p] == k; int o2 = ones[p] + dacc[p]; int now = o2 == 0 || o2 == k;
+        if (was != now) d += now ? wt[p] : -(long)wt[p]; }
     return d;
 }
-int *gpair;
 static long applyflip(int f) {
     long d = 0; nu[f] ^= 1;
     for (int i = flagoff[f]; i < flagoff[f + 1]; i++) { int g = flaggeo[i]; long p = gpair[g];
         int was = pbad(p); ones[p] += gpar[g] ? -1 : 1; gpar[g] ^= 1; int now = pbad(p);
-        if (was != now) { if (now) { d++; vadd(p); } else { d--; vdel(p); } } }
+        if (was != now) { if (now) { d++; vadd(p); if (wt) wviol += wt[p]; } else { d--; vdel(p); if (wt) wviol -= wt[p]; } } }
     viol += d; return d;
 }
 static void save(const char *fn) { FILE *g = fopen(fn, "w"); fprintf(g, "%d %d\n", n, dg);
@@ -90,7 +96,6 @@ static void save(const char *fn) { FILE *g = fopen(fn, "w"); fprintf(g, "%d %d\n
     for (int i = 0; i < n; i++) fprintf(g, "%d\n", sig[i]); fclose(g); }
 static void savenu(const char *fn) { FILE *g = fopen(fn, "w"); for (int f = 0; f < n * dg; f++) fprintf(g, "%d\n", nu[f]); fclose(g); }
 int main(int argc, char **argv) {
-    (void)flipdelta;
     if (getenv("SEED")) { rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd(); }
     FILE *f = fopen(argv[1], "r"); if (!f || fscanf(f, "%d %d", &n, &dg) != 2) return 1; V = 2 * n;
     ln = malloc(4L * n * dg); for (int i = 0; i < n * dg; i++) if (fscanf(f, "%d", &ln[i]) != 1) return 1;
@@ -163,7 +168,26 @@ int main(int argc, char **argv) {
     double PS = getenv("PS") ? atof(getenv("PS")) : 0.002; long WS = getenv("WS") ? atol(getenv("WS")) : 50;
     long cost = WS * sc + viol, best = cost; uint8_t *bnu = malloc(n * dg); int *bsig = malloc(4L * n); memcpy(bnu, nu, n * dg); memcpy(bsig, sig, 4L * n);
     clock_t t0 = clock(); long it = 0;
-    while (best > 0) {
+    if (getenv("WMODE")) {   /* clause weighting (breakout): greedy best flip on a violated pair, bump weights at minima */
+        wt = malloc(2L * npair); for (long p = 0; p < npair; p++) wt[p] = 1; dacc = calloc(npair, 4); touch = malloc(4L * npair); stamp = calloc(npair, 4);
+        wviol = viol; long bumps = 0; int DEC = getenv("DECAY") ? atoi(getenv("DECAY")) : 50; double NOISE = getenv("NOISE") ? atof(getenv("NOISE")) : 0.02;
+        best = viol; memcpy(bnu, nu, n * dg);
+        int *cand = malloc(4 * 64);
+        while (viol > 0) {
+            double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break; it++;
+            long p = vlist[rnd() % nvl]; int nc = 0;
+            for (int g = poff[p]; g < poff[p + 1]; g++) for (int j = 0; j < glen[g]; j++) { int fl = gflag[5L * g + j]; int dup = 0; for (int c = 0; c < nc; c++) if (cand[c] == fl) dup = 1; if (!dup && nc < 64) cand[nc++] = fl; }
+            long bd = 1L << 40; int bf = -1, ties = 0;
+            for (int c = 0; c < nc; c++) { long d = wdelta(cand[c]); if (d < bd) { bd = d; bf = cand[c]; ties = 1; } else if (d == bd && rnd() % (++ties) == 0) bf = cand[c]; }
+            if (bd < 0 || urand() < NOISE) applyflip(bf);
+            else { for (long i = 0; i < nvl; i++) { long q = vlist[i]; if (wt[q] < 60000) { wt[q]++; wviol++; } } bumps++;
+                if (bumps % DEC == 0) { wviol = 0; for (long q = 0; q < npair; q++) { if (wt[q] > 1) wt[q]--; } for (long i = 0; i < nvl; i++) wviol += wt[vlist[i]]; } }
+            if (viol < best) { best = viol; memcpy(bnu, nu, n * dg); printf("t=%.0f it=%ld violated=%ld weighted=%ld bumps=%ld\n", el, it, viol, wviol, bumps); fflush(stdout);
+                if (getenv("OUTNU")) savenu(getenv("OUTNU")); }
+        }
+        best = WS * sc + best;
+    }
+    while (best > 0 && !getenv("WMODE")) {
         double el = (double)(clock() - t0) / CLOCKS_PER_SEC; if (el > secs) break;
         double T = T0 * pow(T1 / T0, el / secs); it++;
         if (urand() < PS) {

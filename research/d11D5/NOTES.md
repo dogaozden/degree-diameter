@@ -112,3 +112,39 @@ does not meet every circle of the inversive plane.
 non-quadrangle extension is the one route with a real chance: its exact structural cost gets to 2 but not 0 by every
 local method tried (annealing, tabu, exhaustive move pairs, σ-CSP). A completion probably needs joint (base, σ, ν)
 optimisation or a two-pair design.
+
+## Round 3 (job resume3-cell-11-5, session_018TRrddhVEdN311drmbPpBK, Oct 25 12:15-15:45 PT)
+
+Tools (folder `inc/`):
+- `mkinc.py`: the 8-flag "incident" switch (x* on l*; x* on 8 old lines L_i, l* through the 8 removed points p_i and
+  x*); NOINC=1 gives the 9-flag switch. In the incident switch every point at distance 4 from x* keeps exactly 8
+  geodesics (a geodesic lost through L_i comes back through l*), and only about 25 point pairs and 25 line pairs per
+  side become single-geodesic (the 9-flag switch makes 144). With sigma = delta all of them are sigma-covered.
+- `anal.py` (failure types), `sg.py` (single-geodesic and far pairs, sigma cover), `far.py` (point-line pairs at
+  distance >= 5), `eqcheck.py` (GF(2) consistency of the forced equations from two-geodesic pairs).
+- `nujoint.c`: the nu stage on any base: parity pairs (same-side pairs at distance 4, opposite pairs at distance 5,
+  with >= 2 pure walks and no sigma route), focused nu flips + sigma swaps by simulated annealing, structural cost kept
+  (weight WS). W(8) with sigma = delta: 1,166 violated -> 2 in 150 CPU s. (WMODE, a clause-weighting variant, does not
+  work here: one flip touches ~2,000 geodesics, so weights never pay.)
+- `z6lift.c`: exact cost of a Z6 lift with arbitrary voltages on every flag and both jump copies (bit-parallel BFS,
+  5 ms), plus an annealer and the edge-list export. Checked: the 7,020 solution gives 0, apsp agrees.
+- `finish.sh base.in nu out d D`: DM voltages -> z6lift -> edge list -> apsp.c.
+
+Why sigma = delta is rigid. For a vertex v let Lambda(v) be its pencil. Coset +1 from a point s to a point v is
+reached by (a) d(sigma(s), v) <= 3, (b) s collinear with a point of sigma^-1(Lambda(v)), or (c) sigma(v) meets
+sigma^-1(Lambda(s)). If the base is delta'-symmetric and sigma = delta', (a) and (b) both say d(s, delta'(v)) <= 3 and
+(c) only covers collinear pairs, so every point-line pair at distance >= 5 is a failure. A 9-regular base with 586 + 586
+vertices has at least 586 such pairs (a line's 3-ball holds at most 585 points). Every 9-point covering set of W(8)
+is a PG-line (Bose-Burton; squad c1), so a switched point p_i, whose pencil changes in one line, needs
+sigma^-1(l*) = delta(L_i) or route (c): sigma(p_i) = L_i (`routec.py` applies this to all p_i: starts drop 4x,
+e.g. 2,496 -> 640, but the single-geodesic pairs lose their sigma cover). With a random-like sigma the routes are
+independent and annealing works.
+
+Results:
+1. **Structural cost 0 at n = 586** (W(8) + one pair): squad r3 card c2's clause-weighting search
+   (research/squads/r3-d11D5/c2/wpo.c) from the r2 cost-2 state best_y901.in, 325 CPU s
+   (`inc/runs/w8p1_cost0_c2.in`; 9 old lines changed, sigma = delta on only 7 points). Round r4 card c1 got a second
+   one from best_f5.in in under a minute. Simulated annealing, tabu, LNS, parallel tempering and exhaustive move pairs
+   all stay at 2 on the same states.
+2. **Structural cost 0 at n = 401** (W(7) + one pair, for (10,5)): squad r3 card c4, 7-flag incident switch with the
+   random-like sigma of the 4,800 record, plain po7 annealing (`inc/runs/w7p1_cost0.in`).

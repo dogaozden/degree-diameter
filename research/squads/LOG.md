@@ -31,3 +31,18 @@ Four cards only: the machine was CPU-bound by Opus's annealers. Each card got 1 
   demand-preserving change of up to 6 points (1,442 of them) costs ≥ 34; restricted annealing stays at 2.
 Kept: the cost-2 states are deep local minima. Every independent route (Opus's annealers too) ends at one failing
 demand pair (L_i, m ∋ p_i) or the fibre of x*/l*. The job stopped here (see research/squads/cells/d11D5.md).
+
+## 2026-10-25 19:21 UTC, job resume3-cell-11-5 (session_018TRrddhVEdN311drmbPpBK), goal: structural cost 0 for an n > 585 DM base (W(8)+k), round r3-d11D5
+
+Eight cards, one process each (the machine ran 7-9 heavy processes on 4 cores). Scoreboard: r3-d11D5/scoreboard.jsonl.
+- c1 incident switch (x* on l*) with covering-set sigma (h hyperbolic line, regulus, transversal): 1,420 -> 6. Noted that a
+  9-point dominating set of W(8) must be a PG-line (Bose-Burton), so both covering sets are forced to be lines.
+- **c2 clause weighting (breakout) from the r2 cost-2 states: best_y901.in -> structural cost 0 at n = 586 in 325 CPU s**
+  (r3-d11D5/c2/fail0_y901.in). The first cost-0 base for 7,032. SA, tabu, exhaustive move pairs (r2) never got below 2.
+- c3 two-pair insertions (delta-based): no line by the time the round was cut.
+- **c4 W(7)+1 test case (n = 401): 7-flag incident switch + the random-like sigma of the 4,800 record, plain SA (po7):
+  structural cost 0.** Shows +1 works at all when sigma is not the polarity.
+- c5 large neighbourhood destroy/repair: 2 (no change). c6 parallel tempering + crossover: 2 (no change).
+- c7 Frobenius-equivariant 3-pair insertion: 966 (n = 588). c8 wildcard (sigma(x*) not l*, random bases): 1,506.
+Kept: c2's weighting search and c4's random-sigma recipe. Opus runs the nu stage (inc/nujoint.c) on c2's base and on c4's
+W(7)+1 base, and starts round r4 (more cost-0 bases, n = 587).
