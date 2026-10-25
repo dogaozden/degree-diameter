@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:33:05Z
+file: research/frontier/sols/d9D9_prod_sl_9_sl_9_3_s111.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 784e61b5a42c588c7148f1cfa3c15627c06d7b3bdae29de1d6fd1007f906d776
+header: 9 9 prod sl 9 poly x^2+1 sl 9 poly x^2+1 n 3 N 1555200
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d9D9_prod_sl_9_sl_9_3_s111.txt
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 3110400 edges = 13996800 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 3c99b320c490dd60aabdbfc5fda98ce3bb8b3e166777e3f56e304c566643b737
+VALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_3 N=1555200 vertices=3110400
+(exit 0)
+[exit 0; wall 12s; cpu 13s; peak RSS 409 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d9D9_prod_sl_9_sl_9_3_s111.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d9D9_prod_sl_9_sl_9_3_s111.txt
+header: 9 9 prod sl 9 poly x^2+1 sl 9 poly x^2+1 n 3 N 1555200
+d=9 D=9
+group: SL(2,9) [order 720] x SL(2,9) [order 720] x Z_3; |G| = 1555200, vertices 2|G| = 3110400
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1555200 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.3s]
+BFS from A: ecc=9 reached 3110400 of 3110400 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36442, 267693, 1184260, 1282830, 333913] [0.6s]
+BFS from B: ecc=9 reached 3110400 of 3110400 (unreached 0); level sizes [1, 9, 72, 576, 4604, 36442, 267685, 1184260, 1282838, 333913] [0.8s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.8s
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3110400
+(exit 0)
+[exit 0; wall 1s; cpu 3s; peak RSS 11 MB]

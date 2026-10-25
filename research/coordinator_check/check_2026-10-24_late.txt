@@ -1,0 +1,12 @@
+# Coordinator checks, 2026-10-24 16:04 PDT, Mac mini: all-pairs BFS (apsp.c, no symmetry assumed); each also fails with D-1.
+== research/d10D7/graphs/d10D5_n4800_gqdm_q7.edges.gz: RESULT VALID d=10 D=5 n=4800
+== research/d10D7/graphs/d11D5_n7020_gqdm_q8.edges.gz: RESULT VALID d=11 D=5 n=7020
+== research/d10D7/graphs/d12D5_n9840_gqdm_q9.edges.gz: RESULT VALID d=12 D=5 n=9840
+== research/d10D7/graphs/d14D5_n17568_gqdm_q11.edges.gz: RESULT VALID d=14 D=5 n=17568
+== research/cell147/d13D5_n11486.edges.gz: RESULT VALID d=13 D=5 n=11486
+== d10D7_hex8_K12_n224718.sol (hexgen2.c q=8 + d7hex.c edges from research/d10D7/): RESULT VALID d=10 D=7 n=224718 (30 s); D-1 INVALID
+== d11D7_hex9_dualK28_n398636.sol (hexgen2.c q=9 + d7hex.c edges): RESULT VALID d=11 D=7 n=398636 (about 2 min)
+== side results of the (13,7) session (d7hex.c on master + hexgen.c hexagons q = 5, 7, 9), 2026-10-24 16:17 PDT:
+== d7D7_hex5_R58_n23552: RESULT VALID d=7 D=7 n=23552
+== d9D7_hex7_R172_n117992: RESULT VALID d=9 D=7 n=117992
+== d11D7_hex9_R730_n400040: RESULT VALID d=11 D=7 n=400040

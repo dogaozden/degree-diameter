@@ -1,0 +1,17 @@
+# (14,7) 1,774,584 = 5*|H(11)| + 4*756 (job cell-13-7, 2026-10-25 ~00:17-00:30 UTC).  New cell (table 1,771,560).
+# Five copies of H(11) (levels Z5) joined by (p, i) ~ (sigma(p), i+1) and (p, i) ~ (sigma(p), i+2) (the same sigma);
+# surgery at R = 756 pairwise opposite points (sets/R756_r4c1_idx.txt) with S = the first 756 lines of the Hermitian
+# spread (sets/S_q11_spread.txt), sigma a local duality on each Gamma_2(r) (random order, seed 1), all four extra edges
+# of each freed (r, i) removed; 2 line-side + 2 point-side hubs per point; hub graph random 9-regular bipartite with
+# all same-side distances <= 6 (checked inside multi.c).  Max degree 14 = q+3.
+#   RFILE=multi_t/R756.txt SFILE=sets/S_q11_spread.txt NOCHECK=1 multi hex/hex_q11.bin 2 1 d14D7.edges
+#   or: python3 tools/multi_sol.py build research/frontier/sols/d14D7_hex11_R756_n1774584.sol hex/hex_q11.bin d14D7.edges
+#   (byte-identical edge list)
+# Check: apsp_src.c from all 354,312 level-0 vertices and all 3,024 hubs; (x, i) -> (x, i+1) with hubs fixed is an
+# automorphism, so these eccentricities give the diameter.
+n=1774584 edges=12422088 degree min=14 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1774584 (eccentricities of the 357336 listed sources)
+# Second check, 2026-10-25 03:18-03:32 UTC, with the coordinator's research/lifts/coordinator_check/apsp_orb.c on the graph rebuilt
+# from the sol file (multi_sol.py build):  apsp_orb d14D7.edges 14 7 4 5 354312
+n=1774584 edges=12422088 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357336 sources)
+RESULT VALID d=14 D=7 n=1774584

@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:38:38Z
+file: research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 fb85f80ee8482f726e43cf8038667284c4997b79323ee04eed924f8c8fc5c6ae
+header: 13 8 prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13 N 3302208
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6604416 edges = 42928704 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = 3aad62b851ff9400d73a917ba5f9e02e77a5cb53351db3df72923a51a1d96b58
+VALID d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 vertices=6604416
+(exit 0)
+[exit 0; wall 25s; cpu 25s; peak RSS 874 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d13D8_prod_sl_8_sl_8_13_orb3_s1.txt
+header: 13 8 prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 n 13 N 3302208
+d=13 D=8
+group: SL(2,8) [order 504] x SL(2,8) [order 504] x Z_13; |G| = 3302208, vertices 2|G| = 6604416
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 13 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3302208 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.9s]
+BFS from A: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2036431, 3042500, 1243234] [1.6s]
+BFS from B: ecc=8 reached 6604416 of 6604416 (unreached 0); level sizes [1, 13, 156, 1872, 22386, 257823, 2037983, 3042500, 1241682] [2.3s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 2.3s
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6604416
+(exit 0)
+[exit 0; wall 2s; cpu 9s; peak RSS 11 MB]

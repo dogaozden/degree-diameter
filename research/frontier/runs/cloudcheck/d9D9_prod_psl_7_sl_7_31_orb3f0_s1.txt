@@ -1,0 +1,23 @@
+machine: nproc=4; free -g: total 15G used 0G free 15G avail 15G
+sha256 78a8b933bcc5459651ddd27ffa382eb3ae6c9e2cb62ec565d751fe6fdc7afcae
+################ reference checker: python3 research/frontier/build_haar2.py research/frontier/sols/d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt /tmp/e.txt   [exit 0]
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 3499776 edges = 15748992 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 3e49831dbd593ba0aacd7a5eb7cec38784f9314f981977066ad98fa5f911015f
+VALID d=9 D=9 group=prod psl 7 sl 7 x Z_31 N=1749888 vertices=3499776
+################ bigcheck_indep: /tmp/bci research/frontier/sols/d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt   [exit 0]
+file research/frontier/sols/d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt
+header: 9 9 prod psl 7 sl 7 n 31 N 1749888
+d=9 D=9
+group: PSL(2,7) [order 168] x SL(2,7) [order 336] x Z_31; |G| = 1749888, vertices 2|G| = 3499776
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1749888 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.4s]
+BFS from A: ecc=9 reached 3499776 of 3499776 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36669, 272550, 1271645, 1472657, 440989] [0.7s]
+BFS from B: ecc=9 reached 3499776 of 3499776 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36669, 272688, 1271645, 1472519, 440989] [1.0s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 1.0s
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3499776

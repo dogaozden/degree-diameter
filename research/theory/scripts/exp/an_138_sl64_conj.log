@@ -1,0 +1,63 @@
+group sl 64 poly x^6+x+1 x Z_13, N=3407040, identity 52416, H order 63, rows 54080, threads 1, setup 0.11s
+wide rows: HW order 117, rows 29120, setup 0.20s
+alpha: conj by mat(11,51,29,10) (index 48285), z -> 3 z on Z_13
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 62 (+e); mu = 35.46, mu/k = 11.82, fixed-point misses ~ 1.38
+start cost=67
+t=30 steps=397 evals=3177 cost=18 best=10 T=0.53
+t=60 steps=801 evals=6409 cost=9 best=9 T=0.19
+t=90 steps=1206 evals=9649 cost=9 best=9 T=0.15
+t=120 steps=1642 evals=13137 cost=9 best=9 T=0.15
+t=150 steps=2025 evals=16201 cost=6 best=6 T=0.15
+t=180 steps=2377 evals=19017 cost=6 best=6 T=0.15
+t=210 steps=2726 evals=21809 cost=6 best=6 T=0.15
+t=240 steps=3111 evals=24889 cost=6 best=6 T=0.15
+t=270 steps=3531 evals=28249 cost=6 best=6 T=0.15
+t=300 steps=3908 evals=31265 cost=12 best=6 T=0.63
+t=330 steps=4310 evals=34481 cost=9 best=6 T=0.22
+t=360 steps=4679 evals=37433 cost=9 best=6 T=0.15
+t=390 steps=5037 evals=40297 cost=9 best=6 T=0.15
+t=420 steps=5393 evals=43145 cost=3 best=3 T=0.15
+t=450 steps=5769 evals=46153 cost=3 best=3 T=0.15
+t=481 steps=6138 evals=49105 cost=3 best=3 T=0.15
+t=511 steps=6501 evals=52009 cost=3 best=3 T=0.15
+t=541 steps=6871 evals=54969 cost=3 best=3 T=0.15
+t=571 steps=7248 evals=57985 cost=3 best=3 T=1.39
+t=601 steps=7616 evals=60929 cost=3 best=3 T=0.49
+t=631 steps=7957 evals=63657 cost=3 best=3 T=0.17
+t=661 steps=8309 evals=66473 cost=3 best=3 T=0.15
+t=691 steps=8676 evals=69409 cost=3 best=3 T=0.15
+t=721 steps=9014 evals=72113 cost=13 best=3 T=1.38
+t=751 steps=9381 evals=75049 cost=8 best=3 T=0.49
+t=781 steps=9798 evals=78385 cost=8 best=3 T=0.17
+t=811 steps=10193 evals=81545 cost=8 best=3 T=0.15
+t=841 steps=10567 evals=84537 cost=8 best=3 T=0.15
+t=871 steps=10963 evals=87705 cost=3 best=3 T=1.38
+t=901 steps=11344 evals=90753 cost=7 best=3 T=0.49
+t=931 steps=11741 evals=93929 cost=7 best=3 T=0.17
+t=961 steps=12135 evals=97081 cost=7 best=3 T=0.15
+t=991 steps=12542 evals=100337 cost=7 best=3 T=0.15
+t=1021 steps=12921 evals=103369 cost=3 best=3 T=1.37
+t=1051 steps=13301 evals=106409 cost=9 best=3 T=0.48
+t=1081 steps=13673 evals=109385 cost=9 best=3 T=0.17
+t=1111 steps=14074 evals=112593 cost=9 best=3 T=0.15
+t=1141 steps=14471 evals=115769 cost=9 best=3 T=0.15
+t=1171 steps=14871 evals=118969 cost=15 best=3 T=1.36
+t=1201 steps=15255 evals=122041 cost=13 best=3 T=0.48
+t=1231 steps=15638 evals=125105 cost=11 best=3 T=0.17
+t=1261 steps=16024 evals=128193 cost=11 best=3 T=0.15
+t=1292 steps=16438 evals=131505 cost=11 best=3 T=0.15
+t=1322 steps=16861 evals=134889 cost=3 best=3 T=1.35
+t=1352 steps=17249 evals=137993 cost=16 best=3 T=0.48
+t=1382 steps=17661 evals=141289 cost=10 best=3 T=0.17
+t=1412 steps=18052 evals=144417 cost=7 best=3 T=0.15
+t=1442 steps=18400 evals=147201 cost=7 best=3 T=0.15
+t=1472 steps=18781 evals=150249 cost=3 best=3 T=1.35
+t=1502 steps=19180 evals=153441 cost=7 best=3 T=0.48
+t=1532 steps=19587 evals=156697 cost=7 best=3 T=0.17
+t=1562 steps=20002 evals=160017 cost=8 best=3 T=0.15
+t=1592 steps=20361 evals=162889 cost=8 best=3 T=0.15
+t=1622 steps=20778 evals=166225 cost=3 best=3 T=1.34
+t=1652 steps=21171 evals=169369 cost=4 best=3 T=0.47
+RESULT d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 best=0 evals=170313 time=1661.4 orbit k=3 m=4 f=1 fix=62
+full diameter check: OK
+wrote sol_138_sl64_conj.txt

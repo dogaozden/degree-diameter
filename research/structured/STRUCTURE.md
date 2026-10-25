@@ -163,26 +163,26 @@ plus fixed points (cost ≢ 0 mod 3 means a fixed point is uncovered).
 | (9,8) | 449,480 | 497,904 | **540,360** (+8.5 %) | psl 19 × Z79; 3, 3, 0 | 37.9 | 4.4e+05 | d9D8_psl_19_79_orb3_s1.txt |
 | (11,8) | 2,246,940 | – | **2,258,520** (new cell, table +0.52 %) | psl 59 × Z11; 5, 2, 1 | 60.2 | 1.3e+06 | d11D8_psl_59_11_orb5_ORBW5_s3.txt |
 | (13,8) | 5,314,680 | 6,408,480 | **6,604,416** (+3.1 %) | prod sl 8 sl 8 × Z13; 3, 4, 1 | 23.9 | 5.3e+04 | d13D8_prod_sl_8_sl_8_13_orb3_s1.txt |
-| (15,8) | 14,172,480 | 16,483,200 | **17,998,512** (+9.2 %) | psl 137 × Z7; 3, 5, 0 | 29.9 | 7.8e+04 | d15D8_psl_137_7_orb3f0_s1.txt |
+| (15,8) | 14,172,480 | 16,483,200 | **18,128,880** (+10.0 %) | sl 109 × Z7; 3, 5, 0 | 33.0 | 8.1e+04 | d15D8_sl_109_7_orb3f0_s1.txt |
 | (6,9) | 117,360 | 121,440 | **127,296** (+4.8 %) | sl 17 × Z13; 3, 2, 0 | 29.7 | 6.2e+04 | d6D9_sl_17_13_orb3f0_s2.txt |
 | (7,9) | 400,160 | 416,640 | **462,840** (+11.1 %) | psl 29 × Z19; 3, 2, 1 | 38.2 | 1.5e+06 | d7D9_psl_29_19_orb3_s1.txt |
 | (8,9) | 1,091,232 | 1,245,312 | **1,316,016** (+5.7 %) | sl 37 × Z13; 3, 2, 2 | 23.9 | 2.2e+05 | d8D9_sl_37_13_orb3_s1.txt |
-| (9,9) | 2,961,536 | 3,290,112 | **3,443,328** (+4.7 %) | prod psl 7 psl 7 × Z61; 3, 3, 0 | 25.1 | 4.2e+04 | d9D9_prod_psl_7_psl_7_61_orb3f0_s1.txt |
+| (9,9) | 2,961,536 | 3,290,112 | **3,499,776** (+6.4 %) | prod psl 7 sl 7 × Z31; 3, 3, 0 | 30.5 | 1.3e+06 | d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt |
 | (10,9) | 7,057,400 | 7,488,000 | **8,003,856** (+6.9 %) | sl 83 × Z7; 3, 3, 1 | 22.2 | 2.5e+04 | d10D9_sl_83_7_orb3_s1.txt |
 | (11,9) | 15,200,448 | 16,369,920 | **16,792,080** (+2.6 %) | sl 61 × Z37; 3, 3, 2 | 15.0 | 5e+03 | d11D9_sl_61_37_orb3_s1.txt |
-| (12,9) | 30,001,152 | 32,772,096 | **33,948,672** (+3.6 %) | sl 257 × Z1; 3, 4, 0 | 15.7 | 4.1e+03 | d12D9_sl_257_1_orb3f0_s1.txt |
+| (12,9) | 30,001,152 | 32,772,096 | **34,026,720** (+3.8 %) | sl 41 × Z247; 3, 4, 0 | 16.3 | 3.8e+04 | d12D9_sl_41_247_orb3f0_s1.txt |
 | (13,9) | 50,990,610 | 62,156,160 | **63,872,400** (+2.8 %) | sl 101 × Z31; 3, 4, 1 | 13.3 | 2.8e+02 | d13D9_sl_101_31_orb3_s1.txt |
 | (14,9) | 95,087,738 | 111,482,880 | **116,068,656** (+4.1 %) | sl 67 × Z193; 3, 4, 2 | 14.1 | 3.4e+03 | d14D9_sl_67_193_orb3_s1.txt |
-| (15,9) | 168,016,334 | 190,887,072 | **205,083,600** (+7.4 %) | sl 149 × Z31; 3, 5, 0 | 19.0 | 2.2e+03 | d15D9_sl_149_31_orb3f0_s1.txt |
-| (16,9) | 288,939,118 | 316,679,760 | **324,164,400** (+2.4 %) | sl 149 × Z49; 3, 5, 1 | 7.1 | 9 | d16D9_sl_149_49_orb3_s1.txt |
+| (15,9) | 168,016,334 | 190,887,072 | **208,029,120** (+9.0 %) | sl 79 × Z211; 3, 5, 0 | 24.1 | 1.1e+04 | d15D9_sl_79_211_orb3f0_s1.txt |
+| (16,9) | 288,939,118 | 316,679,760 | **337,394,400** (+6.5 %) | sl 151 × Z49; 3, 5, 1 | 14.4 | 97 | d16D9_sl_151_49_orb3_s1.txt |
 | (6,10) | 452,032 | 506,160 | **524,160** (+3.6 %) | prod sl 5 psl 7 × Z13; 3, 2, 0 | 23.6 | 7.4e+04 | d6D10_prod_sl_5_psl_7_13_orb3f0_s1.txt |
 | (7,10) | 1,987,380 | 2,147,040 | **2,234,400** (+4.1 %) | psl 49 × Z19; 3, 2, 1 | 22.2 | 2.3e+04 | d7D10_psl_49_19_orb3_s1.txt |
 | (8,10) | 6,927,210 | 7,349,616 | **7,802,160** (+6.2 %) | sl 59 × Z19; 3, 2, 2 | 22.4 | 7.4e+04 | d8D10_sl_59_19_orb3_s1.txt |
-| (9,10) | 20,017,260 | 22,178,688 | **23,142,048** (+4.3 %) | psl 47 × Z223; 3, 3, 0 | 20.2 | 1.6e+03 | d9D10_psl_47_223_orb3f0_s1.txt |
+| (9,10) | 20,017,260 | 22,178,688 | **23,975,280** (+8.1 %) | psl 71 × Z67; 3, 3, 0 | 33.2 | 1e+05 | d9D10_psl_71_67_orb3f0_s1.txt |
 | (10,10) | 50,331,156 | 57,868,272 | **60,141,120** (+3.9 %) | sl 79 × Z61; 3, 3, 1 | 15.3 | 8.3e+02 | d10D10_sl_79_61_orb3_s1.txt |
 | (12,10) | 300,383,050 | 310,628,640 | **325,832,976** (+4.9 %) | sl 107 × Z133; 3, 4, 0 | 19.8 | 3.2e+02 | d12D10_sl_107_133_orb3f0_s1.txt |
-| (13,10) | 617,330,936 | 636,550,992 | **667,903,200** (+4.9 %) | sl 151 × Z97; 3, 4, 1 | 16.0 | 8.1e+02 | d13D10_sl_151_97_orb3_s1.txt |
-| (14,10) | 1,213,477,190 | 1,217,130,096 | **1,308,373,248** (+7.5 %) | sl 193 × Z91; 3, 4, 2 | 15.5 | 1.1e+03 | d14D10_sl_193_91_orb3_FAST1_s1.txt |
+| (13,10) | 617,330,936 | 636,550,992 | **677,714,400** (+6.5 %) | sl 199 × Z43; 3, 4, 1 | 20.7 | 5.6e+03 | d13D10_sl_199_43_orb3_s1.txt |
+| (14,10) | 1,213,477,190 | 1,217,130,096 | **1,326,627,120** (+9.0 %) | sl 139 × Z247; 3, 4, 2 | 20.0 | 5.5e+02 | d14D10_sl_139_247_orb3_FAST1_s1.txt |
 
 Graphs above 20M vertices were checked by independent low-memory checkers instead of build_haar2.py, as in
 SIZE_LAW §3.2: SL(2,p) × Z_n by both `../frontier/haarcheck_sl.c` and `../frontier/haarcheck2.c`, PSL(2,p) × Z_n
@@ -350,11 +350,19 @@ group f = 0 needs 521–4.7·10⁴ evaluations; the one f = 3 success needed 3.8
 On PSL(2,23) × Z43 at (9,8), f = 3 had stalled at cost 3 after 1.9·10⁶ evaluations (previous session). The (6,7)
 graph is even above the first-moment estimate 2N_h ≈ 8,747 of mu_plan.py; at D = 7 the Poisson model is crude.
 
-Later rungs (same session, §4 has the current best of each cell): f = 0 kept solving up to μ ≈ 30 at (15,8)
-(PSL(2,137) × Z7, 17,998,512, 7.8·10⁴ evaluations), μ ≈ 38 at (9,8) (PSL(2,19) × Z79, 540,360, 4.4·10⁵), μ ≈ 25 at
-(9,9) (PSL(2,7)² × Z61, 3,443,328, 4.2·10⁴), μ ≈ 20 at (9,10), (12,10) and (15,9) (a few hundred to a few thousand
-evaluations at 0.3–1 s each). Failures so far: (12,9) at μ = 19.9 (SL(2,43) × Z217, cost 6 after 9·10⁴
-evaluations, 40 ms each), (6,9) at μ = 34–35 (cost 3 and 14), (9,9) on PSL(2,5) × SL(2,16) × Z7 (cost 14; 44 fixed points).
+Later rungs (same session, §4 has the current best of each cell; μ at the solved order, evaluations):
+
+| cell | best rung solved | μ | evals | rungs that failed (best cost) |
+|---|---|---|---|---|
+| (9,8) | PSL(2,19) × Z79, 540,360 | 37.9 | 4.4·10⁵ | μ = 42.6 (3), 48.7 (3), 50.3 (3), each ≥ 8·10⁶ evals |
+| (9,9) | PSL(2,7) × SL(2,7) × Z31, 3,499,776 | 30.5 | 1.3·10⁶ | 22.8 (2), 23.7 (14, 44 fixed points), 25.7 (8), 27.3 (14), 28.4 (24, PSL alone), 35–37 (10–18) |
+| (12,9) | SL(2,41) × Z247, 34,026,720 | 16.3 | 3.8·10⁴ | 16.9 (8), 19.9 (6) |
+| (15,8) | SL(2,109) × Z7, 18,128,880 | 33.0 | 8.1·10⁴ | 34.5 (6), 34.7 (3), 35.8 (3) |
+| (15,9) | SL(2,79) × Z211, 208,029,120 | 24.1 | 1.1·10⁴ | 22.1 (6), 27.8 (8) |
+| (6,10) | SL(2,5) × PSL(2,7) × Z13, 524,160 | 23.6 | 7.4·10⁴ | PSL(2,17) × Z109, μ = 28.4: 3 seeds end at cost 1 (one fixed point), 2 seeds with ORBW=3 at cost 3; PSL(2,19) × Z79 (3) |
+
+k = 3, f ≠ 0 (same session): (13,10) SL(2,199) × Z43, 677,714,400, μ = 20.7, 5.6·10³ evaluations at ~1 s; (14,10)
+SL(2,149) × Z199, 1,316,504,400, μ = 17.3, 1.2·10³ evaluations at ~3 s (FAST=1, 7.5 GB).
 
 **(11,8): a new cell** (not f = 0; k = 5, the attempt §7 describes). Table 2,246,940, now **2,258,520** = 2·|PSL(2,59) ×
 Z11|, S = {e} ∪ two α-orbits of size 5, α = conjugation by an element of order 5 times z ↦ 3z. μ = 60.2 (μ/5 = 12.0,
@@ -380,69 +388,3 @@ candidate group either has a quotient without elements of order 5 (PSL(2,17), PS
 |Fix(α)| ≈ 100 (SL(2,5)² × Z41, e^(−λ/5) ≈ 0.16 each), or a cyclic factor of order 451–1,661 (SL(2,9) × Z821,
 SL(2,11) × Z451; random S on those already cost ~300). k = 3 needs μ/3 ≈ 21 there, beyond the wall. Not attempted
 further.
-
-## 9. Third session: testing the clumped-Poisson predictions (BEYOND_RANDOM.md)
-
-Third structured-search session, 2026-10-24, same container type (4 cores, 15 GB, not shared). Input: the theory
-note `research/theory/BEYOND_RANDOM.md` (branch `claude/cd-theory-beyond-random-3ybyf2`): P(valid) ≈ e^(−μ_A) with
-μ_A ≈ μ/k + fixed-point term, the random-S effort law with μ_A in place of μ, odd k only, order 5 at (11,9), (10,10)
-and (11,8), Frobenius as the route to large k, and +5–10 % in the big cells at a few core-hours each.
-
-New tools: `tools/plan_orbit.py` (μ_A, first-moment margin, predicted evaluations and hours per candidate group),
-`tools/effort_check.py` (the effort law on every orbit log), `FIXMIN=o` in haar_sym (fixed generators of order ≥ o
-only; unset, every trajectory is unchanged), and an exact cost-0 count and cost histogram in `RANDORB`.
-
-### 9.1 The effort law, on all earlier runs
-
-`tools/effort_check.py runs/*.log` (output `runs/s3_effort_check_prior.md`) computes μ_A for each of the 77 orbit runs
-of the first two sessions. μ_A = (μ − |Fix| e^(−λ))/k + |Fix| e^(−λ/k), with fixed involutions at odd D at rate
-λ/2k. It then compares the evaluations used with the theory's law 10⁵ e^((μ_A − 13)/2).
-
-- **Solved runs (71):** mean ln(evals/predicted) = −0.31, sd 2.1. A free fit on the 62 solved runs with ≥ 300
-  evaluations gives ln evals = 5.70 + 0.43 μ_A (slope se 0.07, residual sd 2.0). The law's values are 5.01 + 0.5 μ_A.
-  The theory session fitted 5.11 + 0.45 μ_A on 32 of these runs. **The law holds**, within its stated factor-5 scatter.
-- **By band:** μ_A < 5 (the big cells' cheap first rungs, 14 runs) solves faster than the law (mean −1.6). With
-  μ_A ≈ 3 a random symmetric S is valid with probability ≈ e^(−3)/(excess), so a few dozen evaluations suffice,
-  where the law extrapolates to ~600. μ_A 5–8: −0.7 (24 runs); μ_A 8–11: +1.4 (18 runs); μ_A 11–14: +0.4 (9 runs).
-- **Unsolved runs (13)** spent 2–10× the predicted effort (mean ln +1.6): the edge of each ladder, as the theory says.
-
-### 9.2 P(valid) of a random symmetric S, measured
-
-The claim P(valid) ≈ e^(−μ_A) can be checked directly where μ_A is small. On five groups with μ_A ≈ 3–4.5,
-`RANDORB=20000` counts how many random symmetric S are valid (log `runs/s3_poisson_randorb.txt`). Random S on the
-same groups (`RANDSAMPLE=3000`) has median cost 13–23 at μ = 7.5–12.3. At P ≈ e^(−μ) it would be valid about once in
-10⁴–10⁵ samples.
-
-| cell | group | k, f | μ | μ_A | valid / 20,000 | −ln P | −ln P / μ_A | random S median cost |
-|---|---|---|---|---|---|---|---|---|
-| (8,8) | PSL(2,19) × Z31 | 3, 2 | 12.3 | 4.49 | 38 | 6.27 | 1.40 | 22 |
-| (8,8) | PSL(2,17) × Z43 | 3, 2 | 11.4 | 4.19 | 32 | 6.44 | 1.54 | 23 |
-| (8,8) | PSL(2,25) × Z13 | 3, 2 | 7.8 | 3.06 | 162 | 4.82 | 1.57 | 13 |
-| (10,8) | PSL(2,29) × Z41 | 5, 0 | 10.4 | 3.71 | 127 | 5.06 | 1.36 | 15 |
-| (10,8) | SL(2,19) × Z71 | 5, 0 | 7.5 | 3.57 | 127 | 5.06 | 1.42 | 15 |
-
-- **The law holds with the random-S excess ε ≈ 1.4–1.6 in the exponent: P(valid) ≈ e^(−ε μ_A).** ε is the same
-  factor SIZE_LAW measures for random S (1.3–2). k = 5 fits as well as k = 3.
-- At small cost the histogram of cost/k is close to Poisson. For PSL(2,17) × Z43 the counts at 3, 6, 9 and 12
-  uncovered elements (1, 2, 3, 4 free orbits) are 124, 297, 484 and 590. Their ratios give a Poisson mean of ≈ 4.8
-  (the model's μ_A is 4.2). But 9–32 % of the symmetric S are degenerate (cost ≥ 31 orbits: 32 % at k = 3, f = 2 on
-  PSL(2,17) × Z43, 9 % at k = 5, f = 0 on PSL(2,29) × Z41), so the mean cost is ≫ μ_A. Not examined further; the
-  heavy tail of word losses in the theory note's §1.4 is the likely cause. The annealer leaves such S at once.
-- **Fixed generators of large order help** (the theory's item 4.5.3). With `FIXMIN=5` (the second fixed generator is
-  never of order 2 or 3) the valid counts go from 38 to 50, 32 to 49 and 162 to 237: P rises 1.3–1.5×.
-
-### 9.3 Big cells
-
-(runs in progress)
-
-### 9.4 Order 5
-
-(runs in progress)
-
-### 9.5 Frobenius for large k
-
-(runs in progress)
-
-### 9.6 Verdict on the predictions
-
-(runs in progress)

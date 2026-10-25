@@ -1,0 +1,16 @@
+# (13,7) 1,063,576 = 3*|H(11)| + 2*320: three copies of H(11) + matching, 320 surgeries (job cell-13-7, cloud session,
+# 2026-10-24 22:08-22:22 UTC).  R = research/d13D7/sets/R320_c8_coords.txt (e0 + 29 affine lines, squad r1 card c8).
+# Build (independent of hexgen.c, numpy only, 2 min):
+#   python3 research/d13D7/build_d13D7.py research/d13D7/sets/R320_c8_coords.txt d13D7_R320.edges
+# All-pairs check (research/d13D7/apsp_wide.c = research/lifts/coordinator_check/apsp.c with 512 sources per batch,
+# OpenMP; same checks: simple, max degree, bipartite, connected, exact diameter; no symmetry used; 13 min, 4 threads):
+#   OMP_NUM_THREADS=4 apsp_wide d13D7_R320.edges 13 7
+n=1063576 edges=6913244 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1063576
+# apsp_wide was cross-checked against apsp.c on a q=5 graph (n=23,498): same output, and both report diameter 8
+# after deleting one edge.
+# Second rebuild path (exp2 tools): research/frontier/sols/d13D7_hex11_R320_n1063576.sol is the same graph in the
+# d7hex format (hexgen.c indexing; tools/to_d7hex_sol.py):
+#   hexgen 11; d7hex edges hex/hex_q11.bin d13D7_hex11_R320_n1063576.sol out.edges
+# gives an edge list identical to the builder's after relabelling the builder's lines to hexgen's order
+# (6,913,244 edges, checked edge by edge).

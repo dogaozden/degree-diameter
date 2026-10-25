@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:37:47Z
+file: research/frontier/sols/d13D8_prod_sl_7_sl_11_7_s101.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 9aea156e5f81d6ac4623a39b1c7ae78a33007bdb7e76770f935fd3ea4d93d107
+header: 13 8 prod sl 7 sl 11 n 7 N 3104640
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d13D8_prod_sl_7_sl_11_7_s101.txt
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6209280 edges = 40360320 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = c1390148325ab758d9bf9241bf526bc46d8a674049ab586431f36d4f15269046
+VALID d=13 D=8 group=prod sl 7 sl 11 x Z_7 N=3104640 vertices=6209280
+(exit 0)
+[exit 0; wall 26s; cpu 26s; peak RSS 692 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d13D8_prod_sl_7_sl_11_7_s101.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d13D8_prod_sl_7_sl_11_7_s101.txt
+header: 13 8 prod sl 7 sl 11 n 7 N 3104640
+d=13 D=8
+group: SL(2,7) [order 336] x SL(2,11) [order 1320] x Z_7; |G| = 3104640, vertices 2|G| = 6209280
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 13 distinct group elements, all in the group [0.0s]
+neighbour check (full: 3104640 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.8s]
+BFS from A: ecc=8 reached 6209280 of 6209280 (unreached 0); level sizes [1, 13, 156, 1872, 22420, 258740, 1999160, 2844015, 1082903] [1.3s]
+BFS from B: ecc=8 reached 6209280 of 6209280 (unreached 0); level sizes [1, 13, 156, 1872, 22420, 258740, 1998920, 2844015, 1083143] [1.9s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 1.9s
+RESULT VALID d=13 D=8 eccA=8 eccB=8 n=6209280
+(exit 0)
+[exit 0; wall 2s; cpu 7s; peak RSS 11 MB]

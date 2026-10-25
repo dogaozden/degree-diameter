@@ -1,0 +1,29 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T22:22:30Z
+file: research/frontier/sols/d13D10_sl_373_6_s1.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 66d602083eafae9a133dca3a63cbfc69b2bafdcea55eee205d0b468df3e61a09
+header: 13 10 sl 373 n 6 N 311368464
+
+################ reference checker: gcc -O2 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d13D10_sl_373_6_s1.txt
+from (e,A): reached A 311368464/311368464, B 311368464/311368464 within 10, ecc 10
+from (e,B): reached A 311368464/311368464, B 311368464/311368464 within 10, ecc 10
+VALID d=13 D=10 group=sl 373 x Z_6 N=311368464 vertices=622736928 (distinct generators, 13-regular simple)
+(exit 0)
+[exit 0; wall 229s; cpu 228s; peak RSS 224 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d13D10_sl_373_6_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d13D10_sl_373_6_s1.txt
+header: 13 10 sl 373 n 6 N 311368464
+d=13 D=10
+group: SL(2,373) [order 51894744] x Z_6; |G| = 311368464, vertices 2|G| = 622736928
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.2s]
+generators: 13 distinct group elements, all in the group [0.2s]
+neighbour check (full: 311368464 vertices per side): every vertex has 13 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [27.8s]
+BFS from A: ecc=10 reached 622736928 of 622736928 (unreached 0); level sizes [1, 13, 156, 1872, 22464, 269448, 3217522, 36451123, 239022051, 274646008, 69106270] [103.0s]
+BFS from B: ecc=10 reached 622736928 of 622736928 (unreached 0); level sizes [1, 13, 156, 1872, 22464, 269448, 3217546, 36451123, 239026111, 274646008, 69102186] [177.6s]
+max degree = min degree = 13, no repeated edges (checked above)
+elapsed 177.6s
+RESULT VALID d=13 D=10 eccA=10 eccB=10 n=622736928
+(exit 0)
+[exit 0; wall 178s; cpu 702s; peak RSS 151 MB]

@@ -1,0 +1,10 @@
+# Coordinator checks, 2026-10-24 12:15 PDT, Mac mini: all-pairs BFS (research/lifts/coordinator_check/apsp.c), no symmetry assumed; each also fails with D-1.
+== d4D7_n864_heis9xC16.edges: RESULT VALID d=4 D=7 n=864
+== d4D7_n864_sg432_247.edges: RESULT VALID d=4 D=7 n=864
+== d8D5_n2048.edges: RESULT VALID d=8 D=5 n=2048
+== d12D5_n8748_k33m_z18_f3.edges: RESULT VALID d=12 D=5 n=8748
+== d15D5_n20736.edges: RESULT VALID d=15 D=5 n=20736
+== d7D7_hex5_K24rnd_n23484 (d7hex edges, H(5) from hexgen.c): RESULT VALID d=7 D=7 n=23484
+== d11D7_hex9_K13pg23_n398606 (d7hex edges, H(9)): RESULT VALID d=11 D=7 n=398606 (run at 12:13, about 2 minutes)
+== d7D7_hex5_K26rnd_n23488 (d7hex edges, H(5)): RESULT VALID d=7 D=7 n=23488; D-1 INVALID (2026-10-24 14:56 PDT)
+== d9D7_hex7_K21pg24_n117690 (d7hex edges, H(7)): RESULT VALID d=9 D=7 n=117690; D-1 INVALID

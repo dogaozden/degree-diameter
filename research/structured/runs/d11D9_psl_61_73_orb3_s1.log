@@ -1,0 +1,11 @@
+group psl 61 x Z_73, N=8282580, identity 133590, H order 61, rows 135780, threads 1, setup 0.78s
+wide rows: HW order 219, rows 37820, setup 1.87s
+alpha: conj by mat(20,18,50,42) (index 73677), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 29 (+e); mu = 12.36, mu/k = 4.12, fixed-point misses ~ 0.69
+start cost=30
+RESULT d=11 D=9 group=psl 61 x Z_73 N=8282580 best=0 evals=33 time=2.3 orbit k=3 m=3 f=2 fix=29
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outI/d11D9_psl_61_73_orb3_s1.txt
+n = 16565160 edges = 91108380 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 8616ab1378dc231472047db0f1f395486a68ef333db312eb0515a6a15ad55516
+VALID d=11 D=9 group=psl 61 x Z_73 N=8282580 vertices=16565160

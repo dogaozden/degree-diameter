@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:33:41Z
+file: research/frontier/sols/d9D9_prod_sl_9_sl_13_1_s111.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 1b70037bf16236f9f3ff85a4a807dd8c91d6eb5db89e8332f0904a806d7a3c8e
+header: 9 9 prod sl 9 poly x^2+1 sl 13 n 1 N 1572480
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d9D9_prod_sl_9_sl_13_1_s111.txt
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 3144960 edges = 14152320 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 9b8c728debb31b4e76df6bcc46fd51bc1e5a1c0f0ba33e7b0b6df2d404fffdc1
+VALID d=9 D=9 group=prod sl 9 poly x^2+1 sl 13 x Z_1 N=1572480 vertices=3144960
+(exit 0)
+[exit 0; wall 27s; cpu 27s; peak RSS 500 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d9D9_prod_sl_9_sl_13_1_s111.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d9D9_prod_sl_9_sl_13_1_s111.txt
+header: 9 9 prod sl 9 poly x^2+1 sl 13 n 1 N 1572480
+d=9 D=9
+group: SL(2,9) [order 720] x SL(2,13) [order 2184] x Z_1; |G| = 1572480, vertices 2|G| = 3144960
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1572480 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.3s]
+BFS from A: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4603, 36420, 267555, 1192374, 1300249, 343101] [0.5s]
+BFS from B: ecc=9 reached 3144960 of 3144960 (unreached 0); level sizes [1, 9, 72, 576, 4603, 36420, 267499, 1192374, 1300305, 343101] [0.7s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 0.7s
+RESULT VALID d=9 D=9 eccA=9 eccB=9 n=3144960
+(exit 0)
+[exit 0; wall 1s; cpu 3s; peak RSS 11 MB]

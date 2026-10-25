@@ -1,0 +1,13 @@
+group psl 83 x Z_31, N=8861412, identity 105493, H order 62, rows 142926, threads 1, setup 0.23s
+wide rows: HW order 217, rows 40836, setup 0.49s
+alpha: conj by mat(30,57,39,52) (index 207954), z -> 5 z on Z_31
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 41 (+e); mu = 24.20, mu/k = 8.07, fixed-point misses ~ 0.59
+start cost=49
+t=30 steps=271 evals=2169 cost=9 best=3 T=0.53
+RESULT d=15 D=8 group=psl 83 x Z_31 N=8861412 best=0 evals=3417 time=47.6 orbit k=3 m=5 f=0 fix=41
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/pool/30-d15D8/d15D8_psl_83_31_orb3f0_s1.txt
+n = 17722824 edges = 132921180 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = e71f464d382768bf14e9c681aeefa1b6e7bec4819b1527fd2290f2fd956f63c0
+VALID d=15 D=8 group=psl 83 x Z_31 N=8861412 vertices=17722824

@@ -1,0 +1,51 @@
+# Coordinator checks on the Mac mini, Oct 24 night (PT): the big D=7 graphs of the cell-13-7 squad session
+# Machine: Mac mini, 10 cores (4 performance), 16 GB; one check at a time under nice -n 10.
+# Sources: branch claude/bipartite-13-7-rhq5z1 (git archive of research/d13D7 and the .sol files).
+# Builders: research/d13D7/hexgen.c (H(q), hexgen indexing); research/squads/exp2/hexd7/d7hex.c on master (three-copy
+#   hexagon, 'd7hex edges HEXBIN SOL OUT'); research/d13D7/multi.c via research/d13D7/tools/multi_sol.py build SOL HEXBIN OUT
+#   (the multi-level covers; no randomness, the .sol holds sigma, R and the hub graph).
+# Checkers (degree-diameter research/lifts/coordinator_check/): apsp_mt.c (bit-parallel BFS from every vertex, threads)
+#   and apsp_orb.c (first verifies edge by edge that v -> (v + B) mod L*B, hubs fixed, is an automorphism, then BFS from
+#   vertices 0..B-1 and all hubs). Both print the exact diameter, so a separate run with D lowered by one is not needed:
+#   diameter=7 means D=6 fails.
+#
+#   cc -O2 -o hexgen hexgen.c -lm; cc -O2 -o multi multi.c -lm; ./hexgen 11; ./hexgen 13
+#   d7hex edges hex/hex_q11.bin d13D7_hex11_R756_n1064448.sol e1064448.txt
+#   python3 tools/multi_sol.py build d14D7_hex11_R756_n1774584.sol hex/hex_q11.bin e1774584.txt   (and d15D7 ... q11, d16D7 ... q13)
+#   apsp_mt e1064448.txt 13 7 2
+#   apsp_orb e1774584.txt 14 7 8 5 354312;  apsp_orb e2484720.txt 15 7 8 7 354312;  apsp_orb e4025508.txt 16 7 8 5 804468
+#
+# sha256:
+#   e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex/hex_q11.bin
+#   57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a  hex/hex_q13.bin
+#   e96aca7c3500c689cbd8bcd9110018fc8b0c9f2b56f30b0c8454cbbb7e2be864  e1064448.txt
+#   87c25bbafa9f4399968b3ed180ee8fc794e546029cb38912c29e4dee153a0418  e1774584.txt
+#   b944a95d4587ed5ac09e05e1f504aea9dc03e28dca7961595822dd9ff20df1a8  e2484720.txt
+#   1fdb4b7736ef9c5b92c0ebeb6b384874187bc0473f88b8044753d0888bd9d08a  e4025508.txt
+
+-- hexgen 11
+        1.56 real         1.38 user         0.00 sys
+            13352960  maximum resident set size
+-- hexgen 13
+        4.75 real         4.73 user         0.01 sys
+            31670272  maximum resident set size
+-- apsp_mt e1064448.txt 13 7 2 (20:17:20)
+n=1064448 edges=6918912 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1064448
+      692.33 real      1380.44 user         2.61 sys
+           358596608  maximum resident set size
+-- apsp_orb e1774584.txt 14 7 8 5 354312 (20:29:01)
+n=1774584 edges=12422088 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357336 sources)
+RESULT VALID d=14 D=7 n=1774584
+      434.34 real      3226.54 user        35.51 sys
+           922910720  maximum resident set size
+-- apsp_orb e2484720.txt 15 7 8 7 354312 (20:36:15)
+n=2484720 edges=18635400 degree min=15 max=15 bipartite=yes diameter=7 (level shift L=7 B=354312 checked as an automorphism; 358848 sources)
+RESULT VALID d=15 D=7 n=2484720
+      799.11 real      6028.05 user        59.67 sys
+          1428996096  maximum resident set size
+-- apsp_orb e4025508.txt 16 7 8 5 804468 (20:49:34)
+n=4025508 edges=32204064 degree min=16 max=16 bipartite=yes diameter=7 (level shift L=5 B=804468 checked as an automorphism; 807636 sources)
+RESULT VALID d=16 D=7 n=4025508
+     4056.02 real     30214.36 user       320.65 sys
+          2180628480  maximum resident set size

@@ -173,3 +173,26 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 24 10:11 PT (harvest): (8,9) 1,326,960 (was 1,323,696), sl 19 n 97; claude/degree-diameter-table-squad-0xgp3g.
 - Oct 24 11:25 PT (coordinator): (7,7) 23,462, (9,7) 117,650, (11,7) 398,582: the generalized-hexagon construction X(M) of the table (3·|H(q)|, Δ = q+2) plus hub vertices, by the exp2-squad session (squad experiment 2, arm B). The solo arm got (7,7) 23,438. All checked all-pairs by the coordinator (research/squads/exp2/coordinator_check/check_d7_hex.txt).
+- Oct 24 12:15 PT (coordinator): new cells (4,7) 864 (two vertex-transitive graphs, thm-smallfamilies), (12,5) 8,748 and (15,5) 20,736 (route-chart lifts, thm-chartlift); raised (8,5) 2,048 (chart lift), (7,7) 23,484 and (11,7) 398,606 (exp2-squad, hexagon + hubs). All checked all-pairs by the coordinator (research/coordinator_check/check_2026-10-24_noon.txt).
+
+- Oct 24 14:55 PT (harvest): (13,8) 6,999,552 (was 6,814,080), prod sl 7 sl 7 n 31; claude/thm-order2-symmetry-gap-4e2nmi.
+- Oct 24 15:05 PT (coordinator): raised (7,7) 23,488 and (9,7) 117,690 (exp2-squad, hexagon + hubs); (13,8) 6,999,552 (thm-order2, cloud-checked). Squad experiment 2 final: arm B 2.54 units, all three cells beaten with the larger margins; arm A 2.86 units, all three beaten (23,468, 117,656, 398,582); arm C none.
+- Oct 24 16:05 PT (coordinator): new cells (10,5) 4,800, (11,5) 7,020, (14,5) 17,568 (generalized-quadrangle construction, research/d10D7/DM_D5.md), (13,5) 11,486 (research/cell147/), (10,7) 224,718 (hexagon + hubs over H(8)); raised (12,5) 9,840 and (11,7) 398,636. All checked all-pairs by the coordinator (research/coordinator_check/check_2026-10-24_late.txt).
+- Oct 24 16:17 PT (coordinator): raised (7,7) 23,552, (9,7) 117,992 and (11,7) 400,040 (all regular; hexagon construction with R-surgeries, cell-13-7 session); checked all-pairs (research/coordinator_check/check_2026-10-24_late.txt). Pending cloud all-pairs checks: (12,7) 664,412, (13,7) 1,063,730, (14,7) 1,771,870.
+- Oct 24 17:23 PT (coordinator): (7,7) 23,580 (raised, was 23,552); (9,7) 118,224 (raised, was 117,992); (10,7) 225,128 (raised, was 224,718); (11,7) 407,134 (raised, was 400,040) (hexagon constructions, cell-10-7 and cell-13-7 squad sessions); rebuilt and checked all-pairs (research/coordinator_check/check_2026-10-24_evening.txt).
+- Oct 24 17:35 PT (coordinator): (12,7) 679,924 (new cell, was 664,300) (hexagon constructions, cell-10-7 and cell-13-7 squad sessions); rebuilt and checked all-pairs (research/coordinator_check/check_2026-10-24_evening.txt).
+- Oct 24 18:16 PT (coordinator): (11,7) 407,162 (raised, was 407,134) (hexagon constructions, cell-10-7 and cell-13-7 squad sessions); rebuilt and checked all-pairs (research/coordinator_check/check_2026-10-24_evening.txt).
+- Oct 24 18:28 PT (coordinator): (12,7) 680,068 (raised, was 679,924) (hexagon constructions, cell-10-7 and cell-13-7 squad sessions); rebuilt and checked all-pairs (research/coordinator_check/check_2026-10-24_evening.txt).
+- Oct 24 20:14 PT (coordinator): (13,7) 1,063,576 (new cell, was 1,062,936) (hexagon constructions, cell-10-7 and cell-13-7 squad sessions); rebuilt and checked all-pairs by the cloud checker (research/frontier/runs/cloudcheck/).
+- Oct 24 21:13 PT (coordinator): (13,7) 1,064,448 (raised, was 1,063,576); (14,7) 1,774,584 (new cell, was 1,771,560); (15,7) 2,484,720 (new cell, was 2,480,184) (hexagon constructions, cell-13-7 squad session); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-24_night.txt).
+- Oct 24 21:57 PT (coordinator): (16,7) 4,025,508 (new cell, was 4,022,340) (hexagon constructions, cell-13-7 squad session); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-24_night.txt).
+- Oct 24 23:20 PT (coordinator): (14,7) 1,774,628 (raised, was 1,774,584) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 24 23:43 PT (coordinator): (11,7) 413,180 (raised, was 407,162); (12,7) 693,500 (raised, was 680,068) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 25 00:11 PT (coordinator): (14,7) 1,788,052 (raised, was 1,774,628) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 25 00:14 PT (coordinator): (7,7) 23,598 (raised, was 23,580); (9,7) 118,238 (raised, was 118,224); (10,7) 225,152 (raised, was 225,128) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 25 01:11 PT (coordinator): (15,7) 2,497,075 (raised, was 2,484,720) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 25 02:05 PT (coordinator): (13,7) 1,064,472 (raised, was 1,064,448) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+
+- Oct 25 02:15 PT (harvest): (5,8) 9,760 (was 9,576), meta 61 80 8 n 1; claude/raise-d5d8-record-bynegq.
+- Oct 25 02:15 PT (harvest): (5,9) 28,920 (was 28,560), meta 964 15 341 n 1; claude/raise-d5d9-record-jhegor.
+- Oct 25 02:15 PT (harvest): (8,9) 1,341,600 (was 1,326,960), sl 25 poly x^2+2 n 43; claude/raise-d8d9-record-ogr1zr.

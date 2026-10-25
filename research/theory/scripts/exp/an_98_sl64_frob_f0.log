@@ -1,0 +1,13 @@
+group sl 64 poly x^6+x+1 x Z_1, N=262080, identity 4032, H order 63, rows 4160, threads 1, setup 0.01s
+wide rows: HW order 65, rows 4032, setup 0.02s
+alpha: Frobenius x -> x^4 on entries, z -> 0 z on Z_1
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 59 (+e); mu = 27.98, mu/k = 9.33, fixed-point misses ~ 2.85
+start cost=71
+t=30 steps=6379 evals=51033 cost=8 best=7 T=0.53
+t=60 steps=12720 evals=101761 cost=7 best=5 T=0.19
+t=90 steps=18967 evals=151737 cost=7 best=5 T=0.15
+t=120 steps=25209 evals=201673 cost=4 best=4 T=0.15
+RESULT d=9 D=8 group=sl 64 poly x^6+x+1 x Z_1 N=262080 best=0 evals=206305 time=122.8 orbit k=3 m=3 f=0 fix=59
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote sol_98_sl64_frob_f0.txt

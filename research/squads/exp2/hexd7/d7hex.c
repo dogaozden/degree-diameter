@@ -22,8 +22,15 @@
          alg=1 installs the algebraic cover for every pair, then targeted local search, then the full check
          alg=2 additionally runs the fast proxy search (incremental route counts) before the BFS-based search
          alg=3 also runs a type-2 greedy pre-pass before the algebraic covers
+         env: BESTK=k best-of-k moves; SKIPFULL=1 skip the internal full check (verify with apsp);
+              DROPSEC=s, DROPSTART=t: after t s, whenever the proxy has not fallen 2% in s seconds, drop the worst pair;
+              DROP=1: after the search, drop the worst pairs until every freed source is fine
+              OPPFLAGS=1: choose the freed flags (p, M(p)) pairwise opposite (fewer cover conflicts)
+              PEXH=p: with probability p (when < 4000 targets remain) try all type-4 candidates for a target
      d7hex check  HEXBIN SOL                        full eccentricity check of a solution (BFS from level 0 + hubs)
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
+     d7hex super  HEXBIN SOL out.txt seed tries     add super-hubs (new vertices on hubs with spare degree whose freed
+                                                    elements' 4-balls cover a whole side), keep those with ecc <= 7, write edges
    Solution file: line "d7hex q N K n", line "freed p1 .. pK", then N line ids M[0..N-1]. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,6 +50,8 @@ static int *que;
 /* hub graph: line-side hub j ~ point-side hub k (uses the hubs' q-1 spare slots; keeps hubs pairwise close) */
 static int HGm = 0, *HGj, *HGk;          /* edge list */
 static int **HGL, **HGP, *HGLn, *HGPn;   /* adjacency */
+/* super-hubs (mode "super"): new vertices 6N+2K+s adjacent only to hubs */
+static int NSH = 0, *SHn, **SHnb, *HXn, **HX;
 
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
@@ -54,8 +63,10 @@ static inline int VL(int l, int i) { return i * 2 * N + N + l; }
 
 static int nbrs(int v, int *out) {
     int c = 0;
+    if (v >= 6 * N + 2 * K) { int s = v - 6 * N - 2 * K; for (int t = 0; t < SHn[s]; t++) out[c++] = SHnb[s][t]; return c; }
     if (v >= 6 * N) {
         int j = v - 6 * N;
+        if (NSH) { int h = j; for (int t = 0; t < HXn[h]; t++) out[c++] = HX[h][t]; }
         if (j < K) { int p = F[j]; for (int i = 0; i < 3; i++) out[c++] = VP(p, i);
                      if (HGm) for (int t = 0; t < HGLn[j]; t++) out[c++] = 6 * N + K + HGL[j][t]; }
         else { int l = M[F[j - K]]; for (int i = 0; i < 3; i++) out[c++] = VL(l, i);
@@ -311,9 +322,49 @@ static void swapM(int u, int w) {   /* exchange the lines of points u and w, kee
     M[u] = b; M[w] = a; Minv[b] = u; Minv[a] = w;
     pointA(u, +1); pointA(w, +1); lineB(a, +1); lineB(b, +1);
 }
-static int BESTK = 1;
+static int BESTK = 1, nodrop = 0;
+static double repairsec = 30;
+static uint8_t *activeP;   /* adaptive dropping: inactive pairs no longer count and their extra edges are back */
+static long pair_zeros(int k) {
+    long z = 0;
+    for (int a = 0; a < noppA[k]; a++) z += cA[k][oppA[k][a]] == 0;
+    for (int a = 0; a < noppB[k]; a++) z += cB[k][oppB[k][a]] == 0;
+    return z;
+}
+static void hubgraph_static(int k_src, int s);
+static void deactivate(int k) {   /* drop pair k inside the fast search */
+    zeros -= pair_zeros(k);
+    for (int a = 0; a < noppA[k]; a++) cA[k][oppA[k][a]] = 1000;   /* never zero again */
+    for (int a = 0; a < noppB[k]; a++) cB[k][oppB[k][a]] = 1000;
+    if (!getenv("NOHGSTATIC")) hubgraph_static(k, -1);   /* its hubs disappear */
+    activeP[k] = 0;
+    int p = F[k]; isF[p] = 0;               /* p and its line M(p) contribute routes again */
+    pointA(p, +1); lineB(M[p], +1);
+}
+
+/* static coverage through the hub graph (independent of M):
+   side A of pair j: (p_j,0) -> z_j -> z'_k -> (l_k,i) then 3 more steps: points within distance 3 of l_k, at every level;
+   side B of pair k: (l_k,0) -> z'_k -> z_j -> (p_j,i) then 3 more steps: lines within distance 3 of p_j. */
+static void hubgraph_static(int k_src, int s) {   /* add (s=+1) or remove (s=-1) the coverage that pair k_src's hubs give */
+    if (!HGm) return;
+    int *buf = malloc(sizeof(int) * 4 * Q1 * Q1 * Q1);
+    /* pair k_src's point-side hub z'_ksrc helps side A of every line-side neighbour j */
+    for (int t = 0; t < HGPn[k_src]; t++) {
+        int j = HGP[k_src][t]; if (!activeP[j] || j == k_src) continue;
+        int np = ball3_points_of_line(M[F[k_src]], buf);
+        for (int a = 0; a < np; a++) { int x = buf[a]; if (hdp[j][x] == 6) updA(j, x, s); }
+    }
+    /* pair k_src's line-side hub z_ksrc helps side B of every point-side neighbour k */
+    for (int t = 0; t < HGLn[k_src]; t++) {
+        int k = HGL[k_src][t]; if (!activeP[k] || k == k_src) continue;
+        int nl = ball3_lines_of_point(F[k_src], buf);
+        for (int a = 0; a < nl; a++) { int x = buf[a]; if (hdl[k][N + x] == 6) updB(k, x, s); }
+    }
+    free(buf);
+}
 static long fast_search(double maxsec) {
     if (getenv("BESTK")) BESTK = atoi(getenv("BESTK"));
+    activeP = malloc(K + 1); memset(activeP, 1, K + 1);
     cA = malloc(sizeof(uint16_t *) * K); cB = malloc(sizeof(uint16_t *) * K);
     oppA = malloc(sizeof(int *) * K); oppB = malloc(sizeof(int *) * K); noppA = calloc(K, sizeof(int)); noppB = calloc(K, sizeof(int));
     n4p = malloc(sizeof(int *) * K); n2p = malloc(sizeof(int *) * K); n4l = malloc(sizeof(int *) * K); n2l = malloc(sizeof(int *) * K);
@@ -344,14 +395,25 @@ static long fast_search(double maxsec) {
     }
     for (int u = 0; u < N; u++) pointA(u, +1);
     for (int L = 0; L < N; L++) lineB(L, +1);
+    if (!getenv("NOHGSTATIC")) for (int k = 0; k < K; k++) hubgraph_static(k, +1);
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
     clock_t t0 = clock(); long it = 0, best = zeros; double T0 = 0.6;
     int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
+    double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
+    double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
+    long impref = zeros;
+    double dropstart = getenv("DROPSTART") ? atof(getenv("DROPSTART")) : 0;   /* no dropping before this many seconds */
     while (zeros > 0) {
         it++;
         if ((it & 1023) == 0) {
             double el = (double)(clock() - t0) / CLOCKS_PER_SEC;
             if (el > maxsec) break;
+            if (dropsec > 0 && el > dropstart && el - lastimp > dropsec) {   /* stalled: drop the active pair with most uncovered targets */
+                int w = -1; long wz = 0;
+                for (int kk = 0; kk < K; kk++) if (activeP[kk]) { long z = pair_zeros(kk); if (z > wz) { wz = z; w = kk; } }
+                if (w >= 0) { deactivate(w); nactive--; fprintf(stderr, "drop pair %d (%ld uncovered): %d active, proxy %ld (%.0fs)\n", w, wz, nactive, zeros, el); }
+                lastimp = el; best = zeros; impref = zeros; nz = 0;
+            }
             if ((it & ((1 << 20) - 1)) == 0) fprintf(stderr, "it %ld proxy %ld best %ld (%.0fs)\n", it, zeros, best, el);
         }
         double T = T0 * (1.0 - (double)(clock() - t0) / CLOCKS_PER_SEC / maxsec); if (T < 0.05) T = 0.05;
@@ -373,12 +435,29 @@ static long fast_search(double maxsec) {
             side = r >= N; tgt = side ? r - N : r;
             if ((side == 0 ? cA[k][tgt] : cB[k][tgt]) != 0) continue;
         } else {
-            k = rndi(K); side = rndi(2);
+            k = rndi(K); if (!activeP[k]) continue; side = rndi(2);
             int n = side == 0 ? noppA[k] : noppB[k]; int *lst = side == 0 ? oppA[k] : oppB[k]; uint16_t *cc = side == 0 ? cA[k] : cB[k];
             for (int tr = 0; tr < 64; tr++) { int v = lst[rndi(n)]; if (cc[v] == 0) { tgt = v; break; } }
             if (tgt < 0) continue;
         }
         int nbest = BESTK, bu = -1, bw = -1; long bd = 1L << 60;
+        if (zeros <= zcap && pexh > 0 && (double)(rnd() % 1000000) / 1e6 < pexh) {
+            /* endgame: try every type-4 candidate for this target and keep the best */
+            if (side == 0) {
+                for (int a = 0; a < nn4p[k]; a++) { int u = n4p[k][a];
+                    for (int b2 = 0; b2 < Q1; b2++) { int bl = PL[tgt * Q1 + b2], w = Minv[bl];
+                        if (u == w || isF[u] || isF[w]) continue;
+                        long before = zeros; swapM(u, w); long d = zeros - before; swapM(u, w);
+                        if (d < bd) { bd = d; bu = u; bw = w; } } }
+            } else {
+                for (int a = 0; a < nn4l[k]; a++) { int L = n4l[k][a], w = Minv[L];
+                    for (int b2 = 0; b2 < Q1; b2++) { int y = LP[tgt * Q1 + b2];
+                        if (y == w || isF[y] || isF[w]) continue;
+                        long before = zeros; swapM(y, w); long d = zeros - before; swapM(y, w);
+                        if (d < bd) { bd = d; bu = y; bw = w; } } }
+            }
+            nbest = 0;   /* skip the random candidates */
+        }
         for (int cand = 0; cand < nbest; cand++) {
         int u, w, ty4 = rndi(8) != 0;
         if (side == 0) {      /* make some line through (or near) x the image of a point near p */
@@ -401,10 +480,28 @@ static long fast_search(double maxsec) {
         }
         if (bu < 0) continue;
         if (bd <= 0 || (double)(rnd() % 1000000) / 1e6 < exp(-bd / T)) swapM(bu, bw);
-        if (zeros < best) best = zeros;
+        if (zeros < best) { best = zeros; if (best < impref - impref / 50 - 1) { impref = best; lastimp = (double)(clock() - t0) / CLOCKS_PER_SEC; } }
     }
     fprintf(stderr, "fast search done: it %ld proxy %ld (%.1fs)\n", it, zeros, (double)(clock() - t0) / CLOCKS_PER_SEC);
     return zeros;
+}
+
+
+/* drop freed pair j: restore its extra edges, delete its two hubs, re-index (the last pair takes index j) */
+static void drop_pair(int j) {
+    int last = K - 1;
+    isF[F[j]] = 0;
+    if (j != last) { F[j] = F[last]; isF[F[j]] = j + 1; uint8_t *t = hdp[j]; hdp[j] = hdp[last]; hdp[last] = t; t = hdl[j]; hdl[j] = hdl[last]; hdl[last] = t; }
+    int m2 = 0;
+    for (int e = 0; e < HGm; e++) {
+        int a = HGj[e], b = HGk[e];
+        if (a == j || b == j) continue;
+        if (a == last) a = j; if (b == last) b = j;
+        HGj[m2] = a; HGk[m2] = b; m2++;
+    }
+    HGm = m2; K = last; NV = 6 * N + 2 * K;
+    for (int t = 0; t <= K; t++) { HGLn[t] = HGPn[t] = 0; }
+    for (int e = 0; e < HGm; e++) { HGL[HGj[e]][HGLn[HGj[e]]++] = HGk[e]; HGP[HGk[e]][HGPn[HGk[e]]++] = HGj[e]; }
 }
 
 int main(int argc, char **argv) {
@@ -424,6 +521,63 @@ int main(int argc, char **argv) {
         FILE *f = fopen(argv[4], "w"); fprintf(f, "%d\n", NV); int nb[64]; long m = 0;
         for (int v = 0; v < NV; v++) { int c = nbrs(v, nb); for (int k = 0; k < c; k++) if (nb[k] > v) { fprintf(f, "%d %d\n", v, nb[k]); m++; } }
         fclose(f); fprintf(stderr, "wrote %s: n=%d edges=%ld\n", argv[4], NV, m);
+        return 0;
+    }
+    if (!strcmp(argv[1], "super")) {   /* d7hex super HEXBIN SOL OUTEDGES seed tries: add super-hubs, keep those with ecc <= 7 */
+        read_sol(argv[3]);
+        rs ^= (uint64_t)atoll(argv[5]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        int tries = atoi(argv[6]), cap = 4 * K + 64;
+        free(dist); free(que); dist = malloc(6 * N + 2 * K + cap); que = malloc(sizeof(int) * (6 * N + 2 * K + cap));
+        SHn = calloc(cap, sizeof(int)); SHnb = malloc(sizeof(int *) * cap); for (int s = 0; s < cap; s++) SHnb[s] = malloc(sizeof(int) * 16);
+        HXn = calloc(2 * K, sizeof(int)); HX = malloc(sizeof(int *) * 2 * K); for (int h = 0; h < 2 * K; h++) HX[h] = malloc(sizeof(int) * 16);
+        int base = 6 * N + 2 * K, nb[64];
+        int *spare = malloc(sizeof(int) * 2 * K);
+        for (int h = 0; h < 2 * K; h++) spare[h] = q + 2 - nbrs(6 * N + h, nb);
+        /* 4-balls: for line-side hubs, points within distance 4 of the freed point; for point-side hubs, lines within 4 of the freed line */
+        uint8_t **ball = malloc(sizeof(uint8_t *) * 2 * K), *tmp = malloc(2 * N);
+        for (int j = 0; j < K; j++) {
+            ball[j] = malloc(N); hbfs(F[j], 0, tmp); for (int x = 0; x < N; x++) ball[j][x] = tmp[x] <= 4;
+            ball[K + j] = malloc(N); hbfs(M[F[j]], 1, tmp); for (int x = 0; x < N; x++) ball[K + j][x] = tmp[N + x] <= 4;
+        }
+        uint8_t *cov = malloc(N); int added[2] = {0, 0};
+        for (int side = 0; side < 2; side++) {   /* side 0: point-side super-hubs on line-side hubs 0..K-1; side 1: the reverse */
+            int fails = 0;
+            while (fails < tries) {
+                memset(cov, 0, N); int ncov = 0, set[16], ns = 0;
+                while (ns < q + 2 && ncov < N) {
+                    int bh = -1, bg = -1;
+                    for (int h0 = 0; h0 < K; h0++) {
+                        int h = side * K + h0; if (spare[h] <= 0) continue;
+                        int dup = 0; for (int t = 0; t < ns; t++) if (set[t] == h) dup = 1; if (dup) continue;
+                        int g = 0; for (int x = 0; x < N; x++) g += ball[h][x] && !cov[x];
+                        g = g * 16 + (int)(rnd() % 16);
+                        if (g > bg) { bg = g; bh = h; }
+                    }
+                    if (bh < 0 || bg < 16) break;
+                    set[ns++] = bh; for (int x = 0; x < N; x++) if (ball[bh][x] && !cov[x]) { cov[x] = 1; ncov++; }
+                }
+                if (ncov < N) { fails++; continue; }
+                /* tentatively add */
+                int s = NSH, v = base + s; SHn[s] = ns;
+                for (int t = 0; t < ns; t++) { SHnb[s][t] = 6 * N + set[t]; HX[set[t]][HXn[set[t]]++] = v; }
+                NSH++; NV = base + NSH;
+                int e; bfs(v, 7, &e);
+                if (e <= 7) { for (int t = 0; t < ns; t++) spare[set[t]]--; added[side]++; fails = 0;
+                              fprintf(stderr, "super-hub %d (side %d, %d hubs): ecc %d\n", s, side, ns, e); }
+                else { for (int t = 0; t < ns; t++) HXn[set[t]]--; NSH--; NV = base + NSH; fails++; }
+            }
+        }
+        /* eccentricities of all hubs and super-hubs (other vertices can only get closer) */
+        int worst = 0, badh = 0;
+        for (int v = 6 * N; v < NV; v++) { int e; bfs(v, 7, &e); if (e > worst) worst = e; if (e > 7) badh++; }
+        fprintf(stderr, "added %d + %d super-hubs; n = %d; hubs/super-hubs with ecc > 7: %d (worst %d)\n", added[0], added[1], NV, badh, worst);
+        FILE *f = fopen(argv[4], "w"); fprintf(f, "%d\n", NV); long m = 0;
+        for (int v = 0; v < NV; v++) { int c = nbrs(v, nb); for (int k2 = 0; k2 < c; k2++) if (nb[k2] > v) { fprintf(f, "%d %d\n", v, nb[k2]); m++; } }
+        fclose(f); fprintf(stderr, "wrote %s: n=%d edges=%ld\n", argv[4], NV, m);
+        /* record the super-hubs */
+        char fn2[512]; snprintf(fn2, sizeof fn2, "%s.super", argv[4]); f = fopen(fn2, "w");
+        fprintf(f, "superhubs %d\n", NSH); for (int s = 0; s < NSH; s++) { fprintf(f, "%d", SHn[s]); for (int t = 0; t < SHn[s]; t++) fprintf(f, " %d", SHnb[s][t] - 6 * N); fprintf(f, "\n"); }
+        fclose(f);
         return 0;
     }
     if (strcmp(argv[1], "search")) return 1;
@@ -476,6 +630,20 @@ int main(int argc, char **argv) {
             hg_build();
             mind = argc > 9 ? atoi(argv[9]) : 4;
         }
+        if (getenv("OPPFLAGS")) {   /* freed flags pairwise opposite: d(p,p') = d(l,l') = 6, d(p,l') = d(p',l) = 5 */
+            uint8_t **dp_ = malloc(sizeof(uint8_t *) * K), **dl_ = malloc(sizeof(uint8_t *) * K);
+            int placed = 0;
+            for (int tries = 0; tries < 2000000 && placed < K; tries++) {
+                int p = rndi(N), l = PL[p * Q1 + rndi(Q1)], good = 1;
+                for (int i = 0; i < placed && good; i++)
+                    if (dp_[i][p] != 6 || dl_[i][N + l] != 6 || dp_[i][N + l] != 5 || dl_[i][p] != 5) good = 0;
+                if (!good) continue;
+                F[placed] = p; isF[p] = placed + 1; fl[placed] = l;
+                dp_[placed] = malloc(2 * N); hbfs(p, 0, dp_[placed]); dl_[placed] = malloc(2 * N); hbfs(l, 1, dl_[placed]);
+                placed++;
+            }
+            if (placed < K) { fprintf(stderr, "could only place %d opposite flags\n", placed); K = placed; }
+        } else
         for (int j = 0; j < K; j++) {
             int p = -1;
             for (int tries = 0; tries < 100000; tries++) { int c = rndi(N); if (ok[c]) { p = c; break; } }
@@ -515,13 +683,24 @@ int main(int argc, char **argv) {
         }
         fprintf(stderr, "algebraic cover installed, conflicts %ld\n", conflicts);
     }
-    if (alg >= 2) fast_search(maxsec * 0.9);
+    if (alg >= 2) {
+        fast_search(maxsec * 0.9);
+        if (getenv("DROPSEC")) {   /* remove the pairs dropped during the search */
+            if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
+            for (int j = K - 1; j >= 0; j--) if (!activeP[j]) {
+                int last = K - 1; isF[F[j]] = j + 1;   /* drop_pair expects it freed */
+                drop_pair(j); activeP[j] = activeP[last];
+            }
+            fprintf(stderr, "after dropping: K=%d n=%d\n", K, 6 * N + 2 * K);
+        }
+    }
     int *per = malloc(sizeof(int) * K), *per2 = malloc(sizeof(int) * K);
     int cost = total_cost(per);
     fprintf(stderr, "q=%d N=%d K=%d n=%d initial cost %d\n", q, N, K, NV, cost);
     clock_t t0 = clock(); long it = 0, acc = 0;
     int *badlist = malloc(sizeof(int) * NV);
-    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < maxsec) {
+    double bfsec = alg >= 2 ? 0.1 * maxsec : maxsec;   /* after the fast search only a short BFS-based phase */
+    while (cost > 0 && (double)(clock() - t0) / CLOCKS_PER_SEC < bfsec) {
         it++;
         /* pick a freed pair with positive cost, a side, and an uncovered target */
         int j; do { j = rndi(K); } while (per[j] == 0);
@@ -580,6 +759,23 @@ int main(int argc, char **argv) {
         if (it % 500 == 0) fprintf(stderr, "it %ld acc %ld cost %d  (%.1fs)\n", it, acc, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
     }
     fprintf(stderr, "search done: it %ld cost %d (%.1fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC);
+    if (getenv("REPAIRSEC")) repairsec = atof(getenv("REPAIRSEC"));
+    if (cost > 0 && getenv("DROP")) {   /* salvage: drop the worst pairs until every remaining freed source is fine */
+        if (!HGm) { HGL = malloc(sizeof(int *) * (K + 1)); HGP = malloc(sizeof(int *) * (K + 1)); HGLn = calloc(K + 1, sizeof(int)); HGPn = calloc(K + 1, sizeof(int)); HGj = malloc(sizeof(int)); HGk = malloc(sizeof(int)); }
+        while (cost > 0 && K > 0) {
+            int w = 0; for (int j = 1; j < K; j++) if (per[j] > per[w]) w = j;
+            drop_pair(w);
+            cost = total_cost(per);
+            fprintf(stderr, "dropped a pair: K=%d cost %d\n", K, cost);
+            for (int rep = 0; cost > 0 && alg >= 2 && rep < 4; rep++) {   /* the dropped pair's hubs may have carried routes of other pairs: repair */
+                int before = cost;
+                nodrop = 1; fast_search(repairsec); nodrop = 0;
+                cost = total_cost(per);
+                fprintf(stderr, "  after repair: K=%d cost %d\n", K, cost);
+                if (cost > before * 7 / 10) break;   /* repairs stopped paying: drop another pair */
+            }
+        }
+    }
     if (cost == 0 && getenv("SKIPFULL")) {   /* freed sources verified by BFS; the rest is left to apsp */
         printf("RESULT q=%d K=%d n=%d freed sources OK (full check skipped; run apsp)\n", q, K, NV);
         if (out) write_sol(out);

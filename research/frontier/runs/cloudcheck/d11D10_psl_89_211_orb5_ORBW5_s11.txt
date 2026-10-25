@@ -1,0 +1,28 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt  (from branch origin/claude/bipartite-d11-10-cell-i5roaa) sha256 e44542636c773e1289cdf0ef42f6b690dd1a08474e5fd849aec2281d1fbcda8e
+header: 11 10 psl 89 n 211 N 74364840
+
+################ reference checker: /tmp/hpsl research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt (gcc -O3 -o /tmp/hpsl research/structured/tools/haarcheck_psl.c)
+from (e,A): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+from (e,B): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+VALID d=11 D=10 group=psl 89 x Z_211 N=74364840 vertices=148729680 (distinct generators, 11-regular simple)
+(exit 0)
+[exit 0; wall 81s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+header: 11 10 psl 89 n 211 N 74364840
+d=11 D=10
+group: PSL(2,89) [order 352440] x Z_211; |G| = 74364840, vertices 2|G| = 148729680
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 11 distinct group elements, all in the group [0.0s]
+neighbour check (full: 74364840 vertices per side): every vertex has 11 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [6.1s]
+BFS from A: ecc=10 reached 148729680 of 148729680 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109775, 1088060, 10151867, 56354323, 64102087, 16911346] [12.7s]
+BFS from B: ecc=10 reached 148729680 of 148729680 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109775, 1088110, 10151867, 56362927, 64102087, 16902692] [19.0s]
+max degree = min degree = 11, no repeated edges (checked above)
+elapsed 19.0s
+RESULT VALID d=11 D=10 eccA=10 eccB=10 n=148729680
+(exit 0)
+[exit 0; wall 19s]

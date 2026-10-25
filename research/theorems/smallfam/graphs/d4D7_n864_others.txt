@@ -1,0 +1,6 @@
+# Two more (4,7) Haar graphs on 864 vertices, pairwise non-isomorphic with the Heis(F_9) x| C16 one (igraph isomorphism test):
+#   G = SmallGroup(432,247) = (C3 x C3) : (C2 . S4 = SL(2,3) . C2), S = AsSSortedList(G) indices 0 8 50 288 (0-based)
+#       girth 6, |Aut| = 864 (vertex-transitive), edge list d4D7_n864_sg432_247.edges.gz, sha256 (uncompressed) 1b5260c49181b324944d848b6099af86ff65872b6fd8d2fc0b7df8d81aafd81f
+#   G = SmallGroup(432,249) = (C2 x C2) : ((C9 : C3) : C4), S = AsSSortedList(G) indices 0 4 37 360 (0-based)
+#       girth 10, |Aut| = 864 (vertex-transitive), edge list d4D7_n864_sg432_249.edges.gz, sha256 (uncompressed) 104d0369866e5f17255d20d1bc3d952189f4aa36a958989b0c0a0b174d97c601
+# Edges (g,A) ~ (s g, B) with GAP's multiplication; built by GAP (verify/edges_gen.g), checked by apsp (verify/d4D7_n864_apsp.txt).

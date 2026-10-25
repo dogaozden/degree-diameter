@@ -1,0 +1,15 @@
+# chartlift check, 2026-10-24T19:01Z, cloud container
+== python3 graphs/build_d8D5_n2048.py out.edges (self-contained builder; sorted-edge sha256 prefix e46cf88fe3a78543, same as lift.py on the squad's .ctrl controller)
+== apsp.c (coordinator's all-pairs checker):
+n=2048 edges=8192 degree min=8 max=8 bipartite=yes diameter=5
+RESULT VALID d=8 D=5 n=2048
+   with D-1:
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=2048 edges=8192 degree 8..8 bipartite=yes max_ecc=5
+  dist 0: 2048 ordered pairs
+  dist 1: 16384 ordered pairs
+  dist 2: 106496 ordered pairs
+  dist 3: 663552 ordered pairs
+  dist 4: 1988608 ordered pairs
+  dist 5: 1417216 ordered pairs

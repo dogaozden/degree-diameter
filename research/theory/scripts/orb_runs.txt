@@ -1,0 +1,52 @@
+# Every haar_sym ORBIT run logged in research/structured/runs/ on branch claude/structured-haar-search-ws7bet
+# (commit c8e7452): its RESULT line and log file. best=0 means solved; evals = cost evaluations used.
+RESULT d=10 D=10 group=psl 389 x Z_1 N=29431740 best=0 evals=385 time=82.7 orbit k=3 m=3 f=1 fix=194 log=d10D10_psl_389_1_orb3_s1.log
+RESULT d=10 D=10 group=sl 79 x Z_61 N=30070560 best=0 evals=833 time=64.6 orbit k=3 m=3 f=1 fix=77 log=d10D10_sl_79_61_orb3_s1.log
+RESULT d=10 D=8 group=psl 23 x Z_97 N=588984 best=12 evals=2683121 time=2054.4 orbit k=3 m=3 f=1 fix=11 log=d10D8_psl_23_97_orb3_s1.log
+RESULT d=10 D=9 group=psl 59 x Z_37 N=3798420 best=0 evals=1913 time=18.7 orbit k=3 m=3 f=1 fix=29 log=d10D9_psl_59_37_orb3_s1.log
+RESULT d=10 D=9 group=sl 59 x Z_19 N=3901080 best=0 evals=1961 time=22.7 orbit k=3 m=3 f=1 fix=59 log=d10D9_sl_59_19_orb3_s1.log
+RESULT d=10 D=9 group=sl 83 x Z_7 N=4001928 best=0 evals=24609 time=342.1 orbit k=3 m=3 f=1 fix=83 log=d10D9_sl_83_7_orb3_s1.log
+RESULT d=11 D=8 group=psl 59 x Z_11 N=1129260 best=3 evals=3020017 time=7200.0 orbit k=5 m=2 f=1 fix=29 log=d11D8_psl_59_11_orb5_s1.log
+RESULT d=11 D=8 group=psl 59 x Z_11 N=1129260 best=2 evals=1575313 time=3600.0 orbit k=5 m=2 f=1 fix=29 log=d11D8_psl_59_11_orb5_s2.log
+RESULT d=11 D=9 group=psl 257 x Z_1 N=8487168 best=73 evals=12809 time=1503.1 orbit k=3 m=3 f=2 fix=128 log=d11D9_psl_257_1_orb3_s1.log
+RESULT d=11 D=9 group=psl 61 x Z_73 N=8282580 best=0 evals=33 time=2.3 orbit k=3 m=3 f=2 fix=29 log=d11D9_psl_61_73_orb3_s1.log
+RESULT d=11 D=9 group=sl 107 x Z_7 N=8574552 best=2 evals=40649 time=2400.1 orbit k=3 m=3 f=2 fix=107 log=d11D9_sl_107_7_orb3_s1.log
+RESULT d=11 D=9 group=sl 61 x Z_37 N=8396040 best=0 evals=4969 time=247.9 orbit k=3 m=3 f=2 fix=59 log=d11D9_sl_61_37_orb3_s1.log
+RESULT d=13 D=8 group=prod psl 9 poly x^2+1 sl 11 x Z_7 N=3326400 best=1 evals=291481 time=2400.0 orbit k=3 m=4 f=1 fix=107 log=d13D8_prod_psl_9_sl_11_7_orb3_s1.log
+RESULT d=13 D=8 group=prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_13 N=3302208 best=0 evals=53265 time=464.8 orbit k=3 m=4 f=1 fix=80 log=d13D8_prod_sl_8_sl_8_13_orb3_s1.log
+RESULT d=13 D=8 group=psl 37 x Z_133 N=3365964 best=3 evals=315473 time=2400.0 orbit k=3 m=4 f=1 fix=17 log=d13D8_psl_37_133_orb3_s1.log
+RESULT d=13 D=8 group=sl 47 x Z_31 N=3217056 best=0 evals=1545 time=10.0 orbit k=3 m=4 f=1 fix=47 log=d13D8_sl_47_31_orb3_s1.log
+RESULT d=13 D=9 group=psl 397 x Z_1 N=31285188 best=59 evals=3145 time=705.8 orbit k=3 m=4 f=1 fix=197 log=d13D9_psl_397_1_orb3_s1.log
+RESULT d=13 D=9 group=sl 101 x Z_31 N=31936200 best=0 evals=281 time=22.0 orbit k=3 m=4 f=1 fix=101 log=d13D9_sl_101_31_orb3_s1.log
+RESULT d=13 D=9 group=sl 317 x Z_1 N=31854696 best=0 evals=1001 time=264.2 orbit k=3 m=4 f=1 fix=317 log=d13D9_sl_317_1_orb3_s1.log
+RESULT d=14 D=9 group=psl 113 x Z_79 N=56989968 best=0 evals=1449 time=526.4 orbit k=3 m=4 f=2 fix=56 log=d14D9_psl_113_79_orb3_s1.log
+RESULT d=14 D=9 group=sl 383 x Z_1 N=56181504 best=0 evals=257 time=109.5 orbit k=3 m=4 f=2 fix=383 log=d14D9_sl_383_1_orb3_s1.log
+RESULT d=14 D=9 group=sl 67 x Z_193 N=58034328 best=0 evals=3409 time=1155.4 orbit k=3 m=4 f=2 fix=65 log=d14D9_sl_67_193_orb3_s1.log
+RESULT d=16 D=9 group=sl 149 x Z_49 N=162082200 best=0 evals=9 time=8.6 orbit k=3 m=5 f=1 fix=149 log=d16D9_sl_149_49_orb3_s1.log
+RESULT d=16 D=9 group=sl 283 x Z_7 N=158654328 best=0 evals=25 time=40.7 orbit k=3 m=5 f=1 fix=281 log=d16D9_sl_283_7_orb3_s1.log
+RESULT d=7 D=10 group=prod sl 7 psl 19 x Z_1 N=1149120 best=1 evals=439473 time=1500.0 orbit k=3 m=2 f=1 fix=53 log=d7D10_prod_sl_7_psl_19_1_orb3_s1.log
+RESULT d=7 D=10 group=psl 49 poly x^2+1 x Z_19 N=1117200 best=0 evals=22937 time=33.2 orbit k=3 m=2 f=1 fix=23 log=d7D10_psl_49_19_orb3_s1.log
+RESULT d=7 D=9 group=psl 23 x Z_37 N=224664 best=0 evals=182873 time=42.1 orbit k=3 m=2 f=1 fix=11 log=d7D9_psl_23_37_orb3_s1.log
+RESULT d=7 D=9 group=psl 29 x Z_19 N=231420 best=0 evals=1499673 time=611.9 orbit k=3 m=2 f=1 fix=14 log=d7D9_psl_29_19_orb3_s1.log
+RESULT d=8 D=10 group=psl 59 x Z_37 N=3798420 best=0 evals=3889 time=25.6 orbit k=3 m=2 f=2 fix=29 log=d8D10_psl_59_37_orb3_s1.log
+RESULT d=8 D=10 group=psl 83 x Z_13 N=3716076 best=0 evals=361 time=4.3 orbit k=3 m=2 f=2 fix=41 log=d8D10_psl_83_13_orb3_s1.log
+RESULT d=8 D=10 group=sl 59 x Z_19 N=3901080 best=0 evals=74489 time=483.9 orbit k=3 m=2 f=2 fix=59 log=d8D10_sl_59_19_orb3_s1.log
+RESULT d=8 D=10 group=sl 83 x Z_7 N=4001928 best=3 evals=343097 time=2400.0 orbit k=3 m=2 f=2 fix=83 log=d8D10_sl_83_7_orb3_s1.log
+RESULT d=8 D=7 group=pgl 8 poly x^3+x+1 x Z_43 N=21672 best=0 evals=18681 time=0.6 orbit k=3 m=2 f=2 fix=8 log=d8D7_pgl_8_43_orb3_s1.log
+RESULT d=8 D=7 group=psl 13 x Z_19 N=20748 best=0 evals=18273 time=0.4 orbit k=3 m=2 f=2 fix=5 log=d8D7_psl_13_19_orb3_s1.log
+RESULT d=8 D=7 group=sl 8 poly x^3+x+1 x Z_43 N=21672 best=0 evals=11961 time=0.3 orbit k=3 m=2 f=2 fix=8 log=d8D7_sl_8_43_orb3_s1.log
+RESULT d=8 D=9 group=psl 31 x Z_43 N=639840 best=0 evals=7553 time=7.1 orbit k=3 m=2 f=2 fix=14 log=d8D9_psl_31_43_orb3_s1.log
+RESULT d=8 D=9 group=psl 41 x Z_19 N=654360 best=0 evals=448969 time=624.7 orbit k=3 m=2 f=2 fix=20 log=d8D9_psl_41_19_orb3_s1.log
+RESULT d=8 D=9 group=psl 47 x Z_13 N=674544 best=6 evals=1389817 time=2400.0 orbit k=3 m=2 f=2 fix=23 log=d8D9_psl_47_13_orb3_s1.log
+RESULT d=8 D=9 group=sl 37 x Z_13 N=658008 best=0 evals=223985 time=232.2 orbit k=3 m=2 f=2 fix=35 log=d8D9_sl_37_13_orb3_s1.log
+RESULT d=9 D=8 group=sl 27 poly x^3+2x+1 x Z_13 N=255528 best=0 evals=503929 time=100.7 orbit k=3 m=2 f=3 fix=53 log=d9D8_sl_27_13_orb3_s1.log
+RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=19753 time=0.7 orbit k=3 m=2 f=1 fix=8 log=psl17_19_k3_s1.log
+RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=15641 time=0.7 orbit k=3 m=2 f=1 fix=8 log=psl17_19_k3_s2.log
+RESULT d=7 D=8 group=psl 17 x Z_19 N=46512 best=0 evals=17609 time=0.7 orbit k=3 m=2 f=1 fix=8 log=psl17_19_k3_s3.log
+RESULT d=7 D=8 group=psl 13 x Z_43 N=46956 best=0 evals=346777 time=16.9 orbit k=3 m=2 f=1 fix=5 log=psl_13_43_k3_s1.log
+RESULT d=8 D=8 group=psl 17 x Z_49 N=119952 best=0 evals=87673 time=13.2 orbit k=3 m=2 f=2 fix=8 log=psl_17_49_k3_s1.log
+RESULT d=7 D=8 group=psl 19 x Z_14 N=47880 best=0 evals=264425 time=13.0 orbit k=3 m=2 f=1 fix=17 log=psl_19_14_k3_s1.log
+RESULT d=8 D=8 group=psl 23 x Z_19 N=115368 best=0 evals=8241 time=1.1 orbit k=3 m=2 f=2 fix=11 log=psl_23_19_k3_s1.log
+RESULT d=7 D=8 group=sl 11 x Z_37 N=48840 best=1 evals=5925121 time=180.0 orbit k=3 m=2 f=1 fix=11 log=sl_11_37_k3_s1.log
+RESULT d=8 D=8 group=sl 11 x Z_91 N=120120 best=4 evals=6017881 time=600.0 orbit k=3 m=2 f=2 fix=11 log=sl_11_91_k3_s1.log
+RESULT d=8 D=8 group=sl 49 poly x^2+1 x Z_1 N=117600 best=0 evals=1000169 time=224.0 orbit k=3 m=2 f=2 fix=47 log=sl_49_1_k3_s1.log

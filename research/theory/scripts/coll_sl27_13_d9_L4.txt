@@ -1,0 +1,46 @@
+group sl(2,3^3) x Z_13, N = 255528, d = 9, words of length <= 4 with parity 0, 150 samples x 2 sides
+mode         |Fix|-1    words      p10   median     mean      p90
+rand               0     4681    0.51%    0.98%    1.18%    2.05%
+conj              53     4681    2.01%    3.55%    5.70%   12.01%
+frob              23     4681    1.47%    4.08%    7.21%   16.68%
+frob_noinv        22     4681    1.22%    3.27%    5.55%   14.12%
+
+rand: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.013  A: r3 r4 r7 r3 = r6 r4 r7 r6
+    0.013  A: r3 r7 r4 r3 = r6 r7 r4 r6
+    0.013  A: r4 r3 r6 r4 = r7 r3 r6 r7
+    0.013  A: r4 r6 r3 r4 = r7 r6 r3 r7
+    0.013  B: r3 r6 r4 r7 = r4 r7 r3 r6
+    0.013  B: r4 r7 r6 r3 = r6 r3 r4 r7
+    0.013  B: r3 r6 r7 r4 = r7 r4 r3 r6
+    0.013  B: r6 r3 r7 r4 = r7 r4 r6 r3
+
+conj: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    5.920  A: e F2 F3 a0 = F3 F2 e a0
+    5.920  B: e F2 F3 a0 = F3 F2 e a0
+    5.760  A: e F3 F2 a0 = F2 F3 e a0
+    5.760  B: e F3 F2 a0 = F2 F3 e a0
+    5.580  A: F2 e F3 a0 = F3 e F2 a0
+    5.560  B: F2 e F3 a0 = F3 e F2 a0
+    5.507  B: a0 e F2 F3 = a0 F3 F2 e
+    5.500  A: a0 e F2 F3 = a0 F3 F2 e
+
+frob: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    2.200  A: e F3 e a0 = F3 e F3 a0
+    2.200  B: e F3 e a0 = F3 e F3 a0
+    2.120  A: a0 e F3 e = a0 F3 e F3
+    2.120  B: a0 e F3 e = a0 F3 e F3
+    1.880  A: e F2 e a0 = F2 e F2 a0
+    1.880  B: e F2 e a0 = F2 e F2 a0
+    1.847  A: a0 e F2 e = a0 F2 e F2
+    1.827  B: a0 e F2 e = a0 F2 e F2
+
+frob_noinv: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    2.440  A: e F2 e a0 = F2 e F2 a0
+    2.440  B: e F2 e a0 = F2 e F2 a0
+    2.387  A: a0 e F2 e = a0 F2 e F2
+    2.333  B: a0 e F2 e = a0 F2 e F2
+    2.120  A: e F3 e a0 = F3 e F3 a0
+    2.120  B: e F3 e a0 = F3 e F3 a0
+    2.093  A: a0 e F3 e = a0 F3 e F3
+    2.067  B: a0 e F3 e = a0 F3 e F3

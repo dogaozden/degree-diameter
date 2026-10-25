@@ -1,0 +1,16 @@
+# (13,7) n = 1,064,472: three copies of H(11) (multi.c, r = 1) with the mirrored surgery set R' = R756 + 12 points,
+# the same sigma and R' as the (14,7) graph 1,774,632 (checks/d14D7_hex11_mirror768_n1774632.check.txt).
+# Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25.  Master: 1,064,448 (R756).
+# Solution: research/frontier/sols/d13D7_hex11_mirror768_n1064472.sol (multi_sol.py build: IDENTICAL edge file).
+# sha256: 88721d4a4a137731e478840a809eb62e6693c6235b7f5b394c58175cf8a5c48a  e1064472.txt ; e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex_q11.bin
+-- multi.c checks (non-collinear, local duality, non-concurrent) and BFS spot check:
+hub graph attempt 0: OK
+graph: n = 1064472, edges = 6919068, max degree 13
+wrote e_d13D7_1064472.txt
+q=11 r=1 m=768 n=1064472 maxdeg=13 sources=7168 worst_ecc=7 bad=0
+-- full check: research/lifts/coordinator_check/apsp_orb.c (level shift verified as an automorphism, BFS from all
+   354,312 level-0 vertices and all 1,536 hubs), 1 thread:
+== apsp_orb e_d13D7_1064472.txt 13 7 1 3 354312 (Sun Oct 25 07:16:10 UTC 2026)
+n=1064472 edges=6919068 degree min=13 max=13 bipartite=yes diameter=7 (level shift L=3 B=354312 checked as an automorphism; 355848 sources)
+RESULT VALID d=13 D=7 n=1064472
+exit 0 wall 1242s (Sun Oct 25 07:36:52 UTC 2026)

@@ -1,0 +1,7 @@
+group sl 8 poly x^3+x+1 x Z_43, N=21672, identity 2408, H order 43, rows 504, threads 1, setup 0.00s
+wide rows: HW order 129, rows 168, setup 0.01s
+alpha: conj by mat(5,5,6,4) (index 358), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 38.49, mu/k = 12.83, fixed-point misses ~ 2.18
+RANDORB d=8 D=7 group=sl 8 poly x^3+x+1 x Z_43 N=21672 k=3 m=2 f=2 fix=8 samples=1000 min=17 p1=42 p10=95 median=255 mean=1303.77 var=13457717.4 mu=38.49 time=0.1
+RANDORB hist (cost/k): 0 0 0 0 0 1 1 0 1 0 1 2 3 0 2 2 4 3 2 1 3 4 4 8 11 5 4 4 9 7 10 908
+mean ball sizes over 1000 samples: 8.0 56.9 384.5 2446.3 11543.6 21020.2
