@@ -36,3 +36,20 @@ controller does not need.
 | 66 | K33m / Z_22 | **10,692** | seed 1 of 2, 300 s CPU, started from the 9,720 colour chart | apsp VALID, bfs_all max ecc 5 |
 
 The colour-chart annealer (mlift_joint3) had reached m = 60 (1 seed of 5) and cost 4 at m = 66.
+
+## Diagonal pairs for free: backtracking closed walks (14:15 UTC)
+
+A diagonal pair ((u, x), (u, y)) needs y − x in the union of the images of closed walks of length ≤ 4 at u. The
+annealers so far only used nonsingular 4-cycles (a closed NB walk whose voltage is trivial), and the last failures are
+almost always diagonals (BEAT_16_5_SQUAD.md §2.2). But closed walks that backtrack all have linear part I, and
+- u→a→u→b→u (edges e, f at u) reaches x + ⟨c_e, c_f⟩, c_e = A_e⁻¹b_e,
+- u→a→w→a→u (e at u, l ≠ e at a) reaches x + ⟨c_e, A_e⁻¹b_l⟩
+(A side; B side: x + ⟨b_e, b_f⟩ and x + ⟨b_e, A_e c_l⟩). So if these 6 + 12 = 18 planes cover F_3⁴, every diagonal
+pair at u is within distance 4, whatever the controller does. This is a chart-only condition per base vertex
+("backtrack-complete"). It cannot hold over F_4 (those 18 lines of PG(3,4) cover at most 4 + 6·3 + 12·4 = 70 < 85 points) but can over F_3
+(up to 4 + 6·2 + 12·3 = 52 ≥ 40 points of PG(3,3)). Note the 12 lines ⟨c_e, A_e⁻¹b_l⟩ are the legs of the A-side tripods T_e, so a
+vertex whose tripods partition PG(3,3) (all 4-walks through it nonsingular) is automatically backtrack-complete.
+
+`mlift_ejoint2.c` = mlift_ejoint.c + this condition (env DIAGBT=1) + FAKE=1 (all walks, pencils and diagonals good: the
+controller ceiling). Fake ceiling on K33m with free diagonals: m = 72 (Z_24) cost 0 in 8,923 iterations and m = 75
+(Z_25) cost 0, against cost 2 and 6 when diagonals need 4-cycles.

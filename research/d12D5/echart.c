@@ -68,7 +68,14 @@ static int pencil_ok(int p[4], int q[4], int Z[][4], int nz) {
     }
     return 1;
 }
-FILE *pf = NULL; int PW = 4;
+FILE *pf = NULL; int PW = 4, DW = 0, ndm = 0;
+static int plane_cover(int P[][4], int Q[][4], int np) {
+    static unsigned char hit[81]; memset(hit, 0, 81); int cnt = 0;
+    for (int i = 0; i < np; i++) for (int a = 0; a < 3; a++) for (int c = 0; c < 3; c++) {
+        int v = 0, mlt = 1; for (int r = 0; r < 4; r++) { v += ((a * P[i][r] + c * Q[i][r]) % 3) * mlt; mlt *= 3; }
+        if (!hit[v]) { hit[v] = 1; cnt++; } }
+    return cnt;   /* 81 = complete */
+}
 static int cost(int *nsing, int *npen) {
     int s = 0, p = 0, v[4][4], t[4];
     for (int y = 0; y < k; y++) for (int i2 = 0; i2 < 4; i2++) for (int i3 = 0; i3 < 4; i3++) if (i2 != i3) {
@@ -102,7 +109,19 @@ static int cost(int *nsing, int *npen) {
         mv(&Ai[e], b[e], ce); mv(&Ai[f], b[f], cf);
         if (!pencil_ok(ce, cf, Z, nz)) { p++; if (pf) fprintf(pf, "P B %d %d\n", e, f); }
     }
-    *nsing = s; *npen = p; return s + PW * p;
+    int dmiss = 0;
+    for (int y = 0; y < k; y++) { int P[64][4], Q[64][4], np = 0, c1[4];
+        for (int x = 0; x < 4; x++) { int e = atA[y][x]; mv(&Ai[e], b[e], c1);
+            for (int x2 = x + 1; x2 < 4; x2++) { memcpy(P[np], c1, 16); mv(&Ai[atA[y][x2]], b[atA[y][x2]], Q[np++]); }
+            for (int t2 = 0; t2 < 4; t2++) { int l = atB[EB[e]][t2]; if (l != e) { memcpy(P[np], c1, 16); mv(&Ai[e], b[l], Q[np++]); } } }
+        int cv = plane_cover(P, Q, np); dmiss += 81 - cv; if (pf && cv < 81) fprintf(pf, "D A %d %d\n", y, cv); }
+    for (int w = 0; w < k; w++) { int P[64][4], Q[64][4], np = 0, c1[4];
+        for (int x = 0; x < 4; x++) { int e = atB[w][x];
+            for (int x2 = x + 1; x2 < 4; x2++) { memcpy(P[np], b[e], 16); memcpy(Q[np++], b[atB[w][x2]], 16); }
+            for (int t2 = 0; t2 < 4; t2++) { int l = atA[EA[e]][t2]; if (l != e) { memcpy(P[np], b[e], 16); mv(&Ai[l], b[l], c1); mv(&A[e], c1, Q[np++]); } } }
+        int cv = plane_cover(P, Q, np); dmiss += 81 - cv; if (pf && cv < 81) fprintf(pf, "D B %d %d\n", w, cv); }
+    ndm = dmiss;
+    *nsing = s; *npen = p; return s + PW * p + DW * dmiss;
 }
 static void rand_mat(M4 *M, M4 *Mi) { do { for (int r = 0; r < 4; r++) for (int c = 0; c < 4; c++) M->m[r][c] = xr() % 3; } while (!inv(M, Mi)); }
 static void rand_vec(int *x) { do { for (int r = 0; r < 4; r++) x[r] = xr() % 3; } while (!x[0] && !x[1] && !x[2] && !x[3]); }
@@ -129,10 +148,10 @@ int main(int argc, char **argv) {
         if (!read_chart(argv[3])) { fprintf(stderr, "bad chart\n"); return 4; }
         pf = fopen(argv[4], "w"); int s, p; cost(&s, &p);
         fprintf(pf, "# singular %d pencil_fail %d\n", s, p); fclose(pf);
-        printf("singular %d of %d, pencil failures %d of %d\n", s, 2 * k * 108, p, 12 * k); return 0;
+        printf("singular %d of %d, pencil failures %d of %d, diag missing points %d\n", s, 2 * k * 108, p, 12 * k, ndm); return 0;
     }
     double secs = atof(argv[2]); rs ^= (uint64_t)atoll(argv[3]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) xr();
-    if (argc > 4) PW = atoi(argv[4]); const char *out = argc > 5 ? argv[5] : NULL;
+    if (argc > 4) PW = atoi(argv[4]); if (getenv("DW")) DW = atoi(getenv("DW")); const char *out = argc > 5 ? argv[5] : NULL;
     const char *init = getenv("INIT"); if (!(init && read_chart(init))) for (int e = 0; e < ne; e++) { rand_mat(&A[e], &Ai[e]); rand_vec(b[e]); }
     int s, p, c = cost(&s, &p), best = c; M4 bA[64]; int bb[64][4]; memcpy(bA, A, sizeof A); memcpy(bb, b, sizeof b);
     double T = 2.0, t0 = clock(); long it = 0;
@@ -144,11 +163,11 @@ int main(int argc, char **argv) {
         else { int r = xr() % 4, cc = xr() % 4; A[e].m[r][cc] = (A[e].m[r][cc] + 1 + xr() % 2) % 3; if (!inv(&A[e], &Ai[e])) { A[e] = sA; continue; } }
         int s2, p2, c2 = cost(&s2, &p2);
         if (c2 <= c || exp((c - c2) / T) > (xr() % 1000000) / 1e6) { c = c2; s = s2; p = p2;
-            if (c < best) { best = c; memcpy(bA, A, sizeof A); memcpy(bb, b, sizeof b); printf("it %ld cost %d (sing %d pen %d)\n", it, c, s, p); fflush(stdout); } }
+            if (c < best) { best = c; memcpy(bA, A, sizeof A); memcpy(bb, b, sizeof b); printf("it %ld cost %d (sing %d pen %d diagmiss %d)\n", it, c, s, p, ndm); fflush(stdout); } }
         else { A[e] = sA; Ai[e] = sAi; memcpy(b[e], sb, 16); }
     }
     memcpy(A, bA, sizeof A); memcpy(b, bb, sizeof b); for (int e = 0; e < ne; e++) inv(&A[e], &Ai[e]);
-    cost(&s, &p); printf("best_cost %d singular %d pencil_fail %d iters %ld\n", s + PW * p, s, p, it);
+    int cc = cost(&s, &p); printf("best_cost %d singular %d pencil_fail %d diagmiss %d iters %ld\n", cc, s, p, ndm, it);
     if (out) write_chart(out);
     return 0;
 }

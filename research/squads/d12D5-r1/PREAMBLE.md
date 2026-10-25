@@ -1,13 +1,15 @@
 # Squad round 1, cell (12,5): preamble shared by all cards
 
 Goal: a bipartite graph of maximum degree 12 and diameter 5 on as many vertices as possible.
-- Table value 8,200. **Current record 9,840** (our generalized-quadrangle lift, another session). Route-chart lifts so far:
-  8,748 (m = 54) and 9,720 (m = 60). **Beat 9,840: any VALID lift with m ≥ 61** (m = 62 → 10,044, 63 → 10,206,
-  64 → 10,368, 66 → 10,692, 72 → 11,664).
+- Table value 8,200. **Current record 10,692 (m = 66), ours, found this morning with PER-EDGE charts (mlift_ejoint, K33m over Z_22,
+  one 300 s run; research/d12D5/EDGECHART.md).** Before it: 9,840 (GQ lift), 9,720 (m = 60, colour chart).
+  **Beat 10,692: any VALID lift with m ≥ 67** (m = 68 → 11,016, 69 → 11,178, 70 → 11,340, 72 → 11,664, 75 → 12,150,
+  78 → 12,636, 81 → 13,122).
 - With a *fake* chart that makes every pattern nonsingular, K33m reaches cost 0 at m = 66 (Z_22) instantly, cost 2 at
-  m = 72 (Z_24), 6 at m = 75, 12 at m = 81. So the controller alone allows m ≈ 66–72; real charts are the limit.
+  m = 72 (Z_24), 6 at m = 75, 12 at m = 81. The controller alone (fake chart) allows m ≈ 66–72 on K33m; other bases/groups may allow more. Per-edge charts
+  reached the fake-chart ceiling at m = 66, so the ceiling map matters now.
 
-## The construction (route-chart lift; research/d12D5/README.md, research/theorems/BEAT_16_5_SQUAD.md §2)
+## The construction (route-chart lift; research/d12D5/EDGECHART.md, research/theorems/BEAT_16_5_SQUAD.md §2 on branch claude/beat-16-5-squad-jiiwg2)
 
 - **Controller**: a 4-regular bipartite multigraph with m vertices per side, properly 4-edge-coloured (colours 0..3).
   We build it as a voltage lift of a small *base* (k + k vertices, 4k edges, files `base_*.txt`, `bases3/`, `bases4/`)
@@ -67,3 +69,10 @@ Append ONE line of JSON to `research/squads/d12D5-r1/scoreboard.jsonl` (use `>>`
 `{"card": "cK", "idea": "<one line>", "code": "<path>", "command": "<exact best command>", "m": <m>, "best_cost": <int>,
 "score": <lift vertices if apsp VALID else 0>, "valid": true|false, "next": "<one line>"}`
 Then reply in at most 5 lines: best m with cost 0 (and apsp result), best near miss (m, cost), one-line lesson.
+
+## Extra rules (round 1)
+
+- Tools live in /home/user/degree-diameter/research/d12D5/ (absolute path); groups tables you need: generate into your folder.
+- Never use `pkill -f` or `killall` (a pattern can match your own shell or other cards' runs); `timeout` ends runs.
+- Any cost-0 result with m ≥ 67: build the lift, run apsp, put the controller, chart and apsp output in your folder, and
+  say so in your first reply line. That is the most important thing you can find.
