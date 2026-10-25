@@ -478,10 +478,10 @@ static void pull_lift(uint64_t *anyp) {
 
 
 /* ------------------------------------------------------------------ single-source bitset BFS (WB = 1) */
-static uint64_t *BV, *BF, *BN; static int64_t NW;
-static inline int bget(const uint64_t *B, int64_t x) { return (int)(B[x >> 6] >> (x & 63) & 1); }
+__attribute__((unused)) static uint64_t *BV, *BF, *BN; __attribute__((unused)) static int64_t NW;
+__attribute__((unused)) static inline int bget(const uint64_t *B, int64_t x) { return (int)(B[x >> 6] >> (x & 63) & 1); }
 /* neighbours of x into y[] (returns count); deg <= maxdeg */
-static inline int nbrs(int64_t x, int64_t *y) {
+__attribute__((unused)) static inline int nbrs(int64_t x, int64_t *y) {
     int k = 0;
     if (MODE == 0) { for (int64_t i = st[x]; i < st[x + 1]; i++) y[k++] = adj[i]; return k; }
     int64_t v = x / M, g = x % M;
