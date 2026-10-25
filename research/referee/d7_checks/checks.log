@@ -1,0 +1,99 @@
+## python3 hex.py 2
+q 2 points 63 lines 63 expected 63
+line sizes {3}
+degrees {3}
+distance profiles {(np.int64(1), np.int64(3), np.int64(6), np.int64(12), np.int64(24), np.int64(48), np.int64(32))} expected [1, 3, 6, 12, 24, 48, 32]
+F4 violations 0
+## python3 hex.py 3
+q 3 points 364 lines 364 expected 364
+line sizes {4}
+degrees {4}
+distance profiles {(np.int64(1), np.int64(4), np.int64(12), np.int64(36), np.int64(108), np.int64(324), np.int64(243))} expected [1, 4, 12, 36, 108, 324, 243]
+F4 violations 0
+## python3 hex.py 5 (run earlier, log copied)
+q 5 points 3906 lines 3906 expected 3906
+line sizes {6}
+degrees {6}
+distance profiles {(np.int64(1), np.int64(6), np.int64(30), np.int64(150), np.int64(750), np.int64(3750), np.int64(3125))} expected [1, 6, 30, 150, 750, 3750, 3125]
+F4 violations 0
+## python3 tests.py 3
+SL3 action preserves lines (det==1:True): True
+SL3 action preserves lines (det==1:False): False
+hyperplane [0, 2, 2, 2, 0, 1, 0] points 112 H-lines inside 28 expected 28 pairwise opposite True
+spread point set size 112 bound 112 segment True
+Lemma 4.1 on spread points: fails 0
+random maximal segment set seed 0: size 79 (bound 112) segment True Lemma4.1 fails 0
+   + turning point: Lemma4.1 fails 36
+random maximal segment set seed 1: size 76 (bound 112) segment True Lemma4.1 fails 0
+   + turning point: Lemma4.1 fails 36
+random maximal segment set seed 2: size 78 (bound 112) segment True Lemma4.1 fails 0
+   + turning point: Lemma4.1 fails 36
+elliptic quadric section points 10 pairwise opposite True
+lines through ovoid points: 40 Lemma 4.1 (dual) fails 0
+## python3 thmB.py 3 0 10
+R size 10 distance-4 pairs 9
+R* found True
+H3 holds: True
+Theorem B transition (one-matching-edge paths): fails, worst = (0, 7)
+break H3 at one point: fails, worst = (9, 8)
+## python3 thmB.py 3 1 10
+R size 10 distance-4 pairs 17
+R* found True
+H3 holds: True
+Theorem B transition (one-matching-edge paths): fails, worst = (0, 7)
+break H3 at one point: fails, worst = (13, 8)
+## python3 thmB.py 3 2 10
+R size 10 distance-4 pairs 14
+R* found True
+H3 holds: True
+Theorem B transition (one-matching-edge paths): fails, worst = (0, 7)
+break H3 at one point: fails, worst = (7, 8)
+## python3 levels.py
+Theorem A HHH n 2184 degrees {5} (diameter, pairs>7) (7, 0)
+Theorem A HDH n 2184 degrees {5} (diameter, pairs>7) (7, 0)
+Theorem A HDHDH n 3640 degrees {6} (diameter, pairs>7) (7, 0)
+two-level H->D, spread points freed: (7, 0)
+two-level, spread points + one turning point: (8, 432)
+## python3 nums.py
+kappa {3: 7, 4: 35, 5: 78, 6: 169, 7: 315, 8: 527, 9: 868, 10: 1271, 11: 1938, 14: 5187}
+(7, 7) q 5 r 1 base 23436 table 23436 True max form (23436, 5, 1) gain 162
+(9, 7) q 7 r 1 base 117648 table 117648 True max form (117648, 7, 1) gain 590
+(10, 7) q 8 r 1 base 224694 table 224694 True max form (224694, 8, 1) gain 458
+(11, 7) q 9 r 1 base 398580 table 398580 True max form (398580, 9, 1) gain 14600
+(12, 7) q 9 r 2 base 664300 table 664300 True max form (664300, 9, 2) gain 29200
+(13, 7) q 11 r 1 base 1062936 table 1062936 True max form (1062936, 11, 1) gain 1536
+(14, 7) q 11 r 2 base 1771560 table 1771560 True max form (1771560, 11, 2) gain 18028
+(15, 7) q 11 r 3 base 2480184 table 2480184 True max form (2480184, 11, 3) gain 21307
+(16, 7) q 13 r 2 base 4022340 table 4022340 True max form (4022340, 13, 2) gain 29768
+hub sums: 23598 118238 225152 413180 693500 1064472 1789588 2501491 4052108
+Cor 9.3 min attained by: [(5, 'kappa'), (7, 'kappa'), (8, 'kappa'), (9, 'kappa'), (11, 'kappa'), (13, 'kappa'), (16, 'slots'), (17, 'slots'), (19, 'slots'), (23, 'slots'), (25, 'slots'), (27, 'slots')]
+any slots-limited q<=13 or kappa-limited q>=16: []
+Cor 9.1 q>=5 kappa(q-1)>=q^2+1 fails at: [] q=4: 7 17
+Cor 9.2 check: True
+Rem 9.4: 15984 9072 1791240
+(16,7) KB 14884 KA 14884
+(14,7) alpha (9413, 9014, 9413, 16492, 9413) beta (9014, 17290, 9014, 9413, 9014)
+HHDHDHD friendly 12
+ level 0 H out 1 in 2
+ level 1 H out 2 in 1
+ level 2 D out 2 in 2
+ level 3 H out 2 in 1
+ level 4 D out 2 in 2
+ level 5 H out 1 in 2
+ level 6 D out 2 in 2
+[(10, 1271, 1481), (20, 22143, 23704), (40, 365211, 379259)]
+## (7,7) record: hexgen2 5; multi_sol.py build research/frontier/sols/d7D7_hex5_mirror81_n23598.sol hex/hex_q5.bin g77.edges; ./bfs g77.edges
+H(5), r = 1 (3 levels, Delta 7), |R| = 81, full removal, 81 line-side and 81 point-side hubs, hub degree 4, n = 23598
+graph: n = 23598, edges = 82593, max degree 7
+8be0f641a189560586694a849c137acf8a8c24c37fec7ab23ea5ecf204062b7c  g77.edges
+n=23598 m=82593 dup=0 degree min=7 max=7 bipartite=1 diameter=7 pairs>7=0
+## Corollary 9.1 at q = 5, r = 1 (explicit construction): python3 cor91.py 5 1 c91_q5r1.edges; ./bfs c91_q5r1.edges
+q=5 r=1 Delta=7 |R|=26 delta=4 s=2 K=26 n=23488 = 23436 + 52
+n=23488 m=82163 dup=0 degree min=4 max=7 bipartite=1 diameter=7 pairs>7=0
+## Corollary 9.1 for r = 2 at q = 5: python3 cor91.py 5 2 c91_q5r2.edges 3; ./bfs c91_q5r2.edges
+q=5 r=2 Delta=8 |R|=26 delta=3 s=2 K=7 n=39074 = 39060 + 14
+n=39074 m=156071 dup=0 degree min=6 max=8 bipartite=1 diameter=7 pairs>7=0
+## (9,7) record: hexgen2 7; multi_sol.py build research/frontier/sols/d9D7_hex7_mirror295_n118238.sol hex/hex_q7.bin g97.edges; ./bfs g97.edges
+H(7), r = 1 (3 levels, Delta 9), |R| = 295, full removal, 295 line-side and 295 point-side hubs, hub degree 6, n = 118238
+graph: n = 118238, edges = 532071, max degree 9
+b1487ddee47ab3d79af7052a88337e01f846b3a109ec958e7cb5acc3a446562a  g97.edges
