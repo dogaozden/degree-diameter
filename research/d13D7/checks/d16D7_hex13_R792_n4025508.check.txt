@@ -1,0 +1,16 @@
+# (16,7) 4,025,508 = 5*|H(13)| + 4*792 (job cell-13-7, 2026-10-25, built 02:13 UTC).  Table 4,022,340; supersedes 4,024,340.
+# Five copies of H(13) (levels Z5; hexgen 13) joined by (p, i) ~ (sigma(p), i+1) and (p, i) ~ (sigma(p), i+2) (the same
+# sigma); surgery at R = 792 pairwise opposite points of H(13) (q13/R792_q13_idx.txt; squad round 7 card c3: union of
+# 7 orbits of a monomial group of order 1296 of isometries of Q(6,13), generators q13/R792_q13_gen.txt; checked by
+# oppcheck) with S = the first 792 lines of the Hermitian spread of H(13) (q13/S_q13_spread.txt, 2198 lines),
+# sigma a local duality on each Gamma_2(r) (random order, seed 1); all four extra edges of each freed (r, i) removed;
+# 2 line-side + 2 point-side hubs per point; hub graph random 11-regular bipartite with all same-side distances <= 6
+# (checked inside multi.c).  Max degree 16 = q+3.
+#   RFILE=q13/R792_q13_idx.txt SFILE=q13/S_q13_spread.txt NOCHECK=1 multi hex/hex_q13.bin 2 1 d16D7.edges   (tools/run16.sh)
+#   or: python3 tools/multi_sol.py build research/frontier/sols/d16D7_hex13_R792_n4025508.sol hex/hex_q13.bin d16D7.edges
+#   (byte-identical edge list)
+# Check: apsp_src.c from all 804,468 level-0 vertices and all 3,168 hubs; (x, i) -> (x, i+1) with hubs fixed is an
+# automorphism, so these eccentricities give the diameter.  (Full all-pairs on 4M vertices was not run here.)
+n=4025508 edges=32204064 degree min=16 max=16 bipartite=yes diameter=7
+RESULT VALID d=16 D=7 n=4025508 (eccentricities of the 807636 listed sources)
+# research/frontier/sols/d16D7_hex13_R792_n4025508.sol: multi_sol.py build gives the byte-identical edge list. Supersedes 4,024,340.
