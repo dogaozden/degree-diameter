@@ -115,10 +115,10 @@ int main(int argc, char **argv) {
     }
     /* enumerate pure walks of length 4 (same side) and 5 (opposite) between pairs at pure distance 4 / 5 */
     pidx = malloc(4L * V * V); for (long i = 0; i < (long)V * V; i++) pidx[i] = -1;
-    long cap = 1 << 22; long gcap = 1 << 23; ps = malloc(4 * cap); pt_ = malloc(4 * cap); int *pcnt = NULL;
+    long cap = 1 << 22; long gcap = getenv("GCAP") ? atol(getenv("GCAP")) : (1L << 23); ps = malloc(4 * cap); pt_ = malloc(4 * cap); int *pcnt = NULL;
     gflag = malloc(4L * 5 * gcap); glen = malloc(gcap); gpair = malloc(4L * gcap); ngeo = 0; npair = 0;
     /* first pass: walk lists per source, grouped by target */
-    int *wf = malloc(4L * 5 * 70000), *wt = malloc(4L * 70000);
+    int WMAX = getenv("WMAX") ? atoi(getenv("WMAX")) : 70000; int *wf = malloc(4L * 5 * WMAX), *wt = malloc(4L * WMAX);
     for (int s = 0; s < V; s++) {
         int nw = 0; const uint64_t *bs = near + (size_t)s * W64;
         /* walks s=v0 - v1 - v2 - v3 - v4 (- v5); flags recorded as flag ids; no immediate backtracking */
@@ -128,10 +128,10 @@ int main(int argc, char **argv) {
             for (int c = 0; c < dg; c++) { int v3, f3; if (v2 >= n) { v3 = ln[(v2 - n) * dg + c]; f3 = (v2 - n) * dg + c; } else { v3 = n + pt[v2 * dg + c]; f3 = ptslot[v2 * dg + c]; } if (v3 == v1) continue;
               for (int e = 0; e < dg; e++) { int v4, f4; if (v3 >= n) { v4 = ln[(v3 - n) * dg + e]; f4 = (v3 - n) * dg + e; } else { v4 = n + pt[v3 * dg + e]; f4 = ptslot[v3 * dg + e]; } if (v4 == v2) continue;
                 if (v4 > s && !((bs[v4 >> 6] >> (v4 & 63)) & 1)) { /* same side, distance 4 */
-                    int *w = wf + 5 * nw; w[0] = f1; w[1] = f2; w[2] = f3; w[3] = f4; w[4] = -1; wt[nw++] = v4; }
+                    if (nw >= WMAX) { fprintf(stderr, "WMAX\n"); exit(1); } int *w = wf + 5 * nw; w[0] = f1; w[1] = f2; w[2] = f3; w[3] = f4; w[4] = -1; wt[nw++] = v4; }
                 if (sp) for (int h = 0; h < dg; h++) { int v5, f5; if (v4 >= n) { v5 = ln[(v4 - n) * dg + h]; f5 = (v4 - n) * dg + h; } else { v5 = n + pt[v4 * dg + h]; f5 = ptslot[v4 * dg + h]; } if (v5 == v3) continue;
                     if (!((bs[v5 >> 6] >> (v5 & 63)) & 1)) { /* point s, line v5 at distance >= 5 */
-                        int *w = wf + 5 * nw; w[0] = f1; w[1] = f2; w[2] = f3; w[3] = f4; w[4] = f5; wt[nw++] = v5; } }
+                        if (nw >= WMAX) { fprintf(stderr, "WMAX\n"); exit(1); } int *w = wf + 5 * nw; w[0] = f1; w[1] = f2; w[2] = f3; w[3] = f4; w[4] = f5; wt[nw++] = v5; } }
               } } } }
         /* group by target */
         for (int i = 0; i < nw; i++) { int t = wt[i]; long key = (long)s * V + t;
