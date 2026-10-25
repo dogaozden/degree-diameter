@@ -1,0 +1,28 @@
+# (15,7) n = 2,499,748 = 14*177,156 + 2*9,782 -- CANDIDATE: hypotheses, hub graph and a BFS from every hub checked;
+# NO full all-pairs check yet (about 8 core-hours without symmetry; rebuild and run apsp_mt to finish it).
+# Seven-level typed H(11) graph (types HHDHHDD, cell-16-7 session, master 2,497,075) with the mirrored surgery (768
+# elements, sigma of the (14,7) 1,774,632 graph) added on the nine non-friendly transitions (sigma on the six H -> H,
+# sigma^-1 on the three D -> D); 9,782 hubs per side (the line side could take 10,181, but a degree-8 hub graph with
+# unequal sides misses distance 6); hub graph: 8 random perfect matchings, then 73 degree-preserving 2-switches.
+# Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25. Table 2,480,184; master 2,497,075.
+# Solution: research/frontier/sols/d15D7_hex11_typedmirror768_n2499748.sol (sha256 b5077692a8b78d9a2c26ec92e5fd2016f468dd8a13ce742b8c0dbe8f2e49cf3b).
+#   Rebuild (byte-identical to the make run):
+#   python3 research/cell147/typedmirror/tm_build.py build hex_q11.bin research/frontier/sols/d15D7_hex11_typedmirror768_n2499748.sol g.edges
+#   edge list sha256 9048575ec86eb462ebb99c4d5ed861b2cb8f03df96d1331a1a7379654f7aca46; hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19
+# Why the hub BFS completes the argument: pairs of non-hub vertices are covered by the one-transition surgery theorem
+# (d16D7.md; hypotheses re-checked below for every freed element), a hub reaches its whole level-j copy through its
+# level-j neighbour (1 + 6), and the BFS from every hub covers all pairs involving a hub.
+-- tm_build.py make (seed 1):
+hypotheses OK: |R_H| = 8645, |R_L| = 8246, |R'| = 768 (non-collinear, sigma(R') non-concurrent, local duality at all 768)
+free A-slots per level [10181, 10181, 17260, 18058, 18058, 17260, 17260] B-slots [17260, 17260, 18058, 9782, 9782, 18058, 18058] -> at most 10181 9782
+hubs per side 9782 9782
+hub graph seed 1: 152 same-side (ordered) pairs beyond 6
+hub graph: same-side distances <= 6 on both sides
+n = 2499748, edges = 18708296, degree min 13 max 15, hub graph edges 78226
+   (73 accepted 2-switches; last: switch 82: 0 far pairs left)
+-- BFS from all 19,564 hubs, 64 freed points and 64 freed lines per level, 512 random vertices
+   (research/cell147/typedmirror/apsp_src.c), 1 thread:
+== apsp_src t15.edges 15 7 1 spot15_sources (Sun Oct 25 08:58:52 UTC 2026)
+n=2499748 edges=18708296 degree min=13 max=15 bipartite=yes max eccentricity over 20972 sources=7
+SPOT OK d=15 D=7 n=2499748 (sources only)
+exit 0 wall 340s
