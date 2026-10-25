@@ -21,11 +21,11 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | **done** | `nb_6_8_31680`, LeanAll/D6D8 (staged orbit BFS, 2 sources) |
 | (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (720 batches × 2) |
 | (11,8) | 2,258,520 | Haar, PSL(2,59) × Z11 | **done** | `nb_11_8_2258520`, LeanAll/HaarD11D8 (1,740 sign-normalised batches) |
-| (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | building | LeanAll/HaarD8D10 |
+| (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | **done** | `nb_8_10_7818096`, LeanAll/HaarD8D10 (4,488 batches) |
 | (10,9) | 8,003,856 | Haar, SL(2,83) × Z7 | building | LeanAll/HaarD10D9 |
 | (11,9) | 16,792,080 | Haar, SL(2,61) × Z37 | building | LeanAll/HaarD11D9 |
 | (15,8) | 18,128,880 | Haar, SL(2,109) × Z7 | building | LeanAll/HaarD15D8 |
-| (9,10) | 23,975,280 | Haar, PSL(2,71) × Z67 | building | LeanAll/HaarD9D10 |
+| (9,10) | 23,975,280 | Haar, PSL(2,71) × Z67 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_9_10_23975280`, LeanAll/HaarD9D10 (2,520 batches) |
 | (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | building | LeanAll/HaarD12D9 |
 | (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | building | LeanAll/HaarD10D10 |
 | (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | building | LeanAll/HaarD13D9 |
