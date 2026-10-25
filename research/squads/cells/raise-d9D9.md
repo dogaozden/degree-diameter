@@ -37,5 +37,42 @@ prod psl 5 psl 5 × Z_487 (N 1,753,200, μ 31.2, |Fix| 8): random K = 3 orbits m
 factor 487 is too large for a 3,600-element nonabelian part. The other window groups with small |Fix| are either already
 in round 1's screen or have a cyclic factor of similar size.
 
-Rungs of the K = 3 family (this round, 1 h each, K 8, THREADS 1): see the table at the end (filled in when done).
+## K = 3 rungs (this round; K 8, THREADS 1; haar_sym's reported cost; logs in research/structured/runs/raise-d9D9-r2/)
+
+Phase A, 1 h each (seed 21–24):
+
+| group | N | μ | |Fix| | best cost | evals |
+|---|---|---|---|---|---|
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 12 | 1.0·10⁶ |
+| sl 121 1 | 1,771,440 | 35.3 | 119 | 10 | 7.0·10⁵ |
+| prod psl 3 psl 19 43 | 1,764,720 | 33.7 | 26 | 15 | 7.8·10⁵ |
+| prod psl 3 sl 13 67 | 1,755,936 | 31.8 | 35 | 20 | 7.6·10⁵ |
+
+Phase B, 2.5 h each (seeds 25–29; RESTART=1 and plain variants; one ORBW=3 run was stopped at cost 20 after 29 min):
+
+| group | N | μ | seed, variant | best cost | evals |
+|---|---|---|---|---|---|
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 27, RESTART=1 | **5** | 2.5·10⁶ |
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 29, RESTART=1 | 8 | 2.0·10⁶ |
+| sl 121 1 | 1,771,440 | 35.3 | 26, plain | 8 | 1.7·10⁶ |
+| sl 121 1 | 1,771,440 | 35.3 | 25, RESTART=1 | 6 | 1.8·10⁶ |
+
+None reached cost 0. The best run is prod sl 9 psl 17 1 seed 27: cost 5 after 2.5·10⁶ evaluations, stuck at 5 from about
+10 min onward. Nothing was written to research/frontier/sols/, so there is nothing to verify.
+
+## Verdict (round 2, about 4 h of compute on 4 cores)
+
+**Not raised.** The record stays at 3,499,776.
+
+- The K = 3 family reaches a wall at μ ≈ 31–35 for every group in the window. Round 1 and round 2 together: 24 runs, the best
+  cost 5 (prod sl 9 psl 17 1). Only the record group (|Fix| 17) has been solved.
+- K = 9 single-orbit scans (new mode, GENS) failed for the structural reasons in the table above. Cyclic Z_9 needs
+  primes ≡ 1 mod 9 in n, which leaves only SL(2,17)×Z_361 and PSL(2,19)×Z_523 in the window, both with poor mixing.
+- Metacyclic groups and triple products with solvable factors are dead; the surviving triple product A5×A5×Z_487 has
+  random min 225.
+
+Not tried, for the coordinator: the cheaper orbit evaluation of STRUCTURE §7.4 (about +2 in μ); SL(3,q) centralizers
+(STRUCTURE §7.3); k = 3 with f = 3, m = 2. Any of these needs an implementation first. Next cheapest test: several seeds of
+prod sl 9 psl 17 1 with RESTART=1 for another 10 core-hours; its trajectory is the only one that went below 8.
+
 
