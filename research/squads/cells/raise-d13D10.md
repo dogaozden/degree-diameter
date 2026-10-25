@@ -126,3 +126,7 @@ about 18:35 UTC unsolved unless it reaches cost 0 first. Next in slot A is SL 13
 Slot A is now that checkpoint resumed under seed 2 (copied to the _s2 name; jobsA3.txt; 5,400 new seconds, log
 d13D10_psl_131_311_orb5_FIXMIN5_s2.log). The SL 137×133 rung that had just started in slot A was killed (partial log kept,
 cost 27 at start, nothing else). SL 191×49 (order 3) is at cost 3 in slot B. No record yet.
+
+**Status (19:20 UTC).** SL 191×49 (2N 682,832,640, order 3): failed at cost 3 after 4,449 evaluations, 5,400 s. Slot B now runs
+SL 137×133 (jobsB2.txt, fresh log d13D10_sl_137_133_orb3_s1.log; the earlier partial log was overwritten). The seed-2 k=5
+resume is still at cost 1 (about 20:10 UTC end). No record yet.
