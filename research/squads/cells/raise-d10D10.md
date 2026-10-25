@@ -79,6 +79,12 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - Also solved, not a record: PSL(2,179) × Z_11, k = 5, f = 0, μ = 31.5, 44,401 evaluations, 63,086,760 vertices
   (`../../structured/runs/raise-d10D10/d10D10_psl_179_11_orb5f0_s1.log`; solver check only, not recorded).
 
+- **63,854,520** (+6.2 % over 60,141,120, +0.1 % over 63,764,520): PSL(2,59) × Z_311, k = 5, m = 2, f = 0, μ = 37.6,
+  |Fix| = 29, ORBW = 5, seed 2, 27,737 evaluations (1,879 s). File `../../frontier/sols/d10D10_psl_59_311_orb5f0_ORBW5_s2.txt`.
+  Checked by `tools/haarcheck_psl` (both BFS: diameter 10, all 31,927,260 elements reached) and by haar_sym's full check.
+  Log: `../../structured/runs/raise-d10D10/d10D10_psl_59_311_orb5f0_ORBW5_s2.log`.
+  The same group with seed 1 and no ORBW was still at cost 1 at the time of this entry (not yet finished).
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
@@ -92,3 +98,4 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 08:38: g (psl 61 × 281, ORBW=5, seed 2) solved → 63,764,520 (checked by haarcheck_psl above).
 - 08:39: i (psl 59 × 311, ORBW=5, seed 2, 7200 s) and j (psl 71 × 181, ORBW=5, seed 1, 7200 s) launched.
 - 08:50: e (psl 179 × 11) solved → 63,086,760, below the record.
+- 09:11: i (psl 59 × 311, ORBW=5, seed 2) solved → 63,854,520 (checked by haarcheck_psl above). Queues h (no ORBW) and j (psl 71 × 181) still running.
