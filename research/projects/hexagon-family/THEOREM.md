@@ -23,7 +23,7 @@ Condition 2 can be met for $R$ pairwise opposite (a partial ovoid of $Q(6,q)$ wh
 $R$ satisfying 1 when $\mathcal H$ has a duality ($H(q)$, $q=3^h$). We characterise condition 2 combinatorially
 (Lemma 3: the "midpoint structure" of $R$ must occur among the lines too) and bound $|R|$: $|R|\le q^4+q^2+1$
 always, and $|R|\le q^3+1$ for pairwise opposite sets, with $|R|\le q^3$ when $H(q)$ has no ovoid. Lemma 3 also
-lets a maximal pairwise opposite set be extended by points at distance 4 from some of its points (Proposition 6), a
+lets a maximal pairwise opposite set be extended by points at distance 4 from some of its points (Proposition 4), a
 cell-counting criterion that is easy to search; this raised every table cell with a pure record set that we tried
 (§7).
 
@@ -172,7 +172,7 @@ not have this regularity, so only sparse midpoint structures transfer. Experimen
 $(R,S)$ built under Lemma 3 reach $|R|=20,29,39$ for $q=3,4,5$, against $16,21,30$ for pairwise opposite greedy;
 both stay far below the structured partial ovoids (72 at $q=5$).
 
-**Proposition 6 (extending a pairwise opposite set by points with midpoints).** Let $R$ be a pairwise opposite
+**Proposition 4 (extending a pairwise opposite set by points with midpoints).** Let $R$ be a pairwise opposite
 set of points, $\mathrm{Sp}$ a pairwise opposite set of lines with $|\mathrm{Sp}|\ge|R|$, and let
 $x_1,\dots,x_t$ be pairwise opposite points, none collinear with a point of $R$, and $s_1,\dots,s_t$ pairwise
 opposite lines not in $\mathrm{Sp}$. Each $s_i$ meets at most one line $\ell_i$ of $\mathrm{Sp}$ (two would be at
@@ -199,7 +199,7 @@ spread lines, so the cells stay populated for a while; see §7 for what it gives
 
 ## 5. Bounds on $|R|$
 
-**Proposition 4.** Under (R1), $|R|\le q^4+q^2+1$, with equality iff $R$ meets every line in exactly one point (a
+**Proposition 5.** Under (R1), $|R|\le q^4+q^2+1$, with equality iff $R$ meets every line in exactly one point (a
 distance-2 ovoid). Under (C1) the same holds for $\sigma(R)$ (a partial distance-2 spread). So
 $$|R|\le\min\{\text{max partial distance-2 ovoid of }\mathcal H,\ \text{max partial distance-2 spread of }\mathcal H\}.$$
 
@@ -209,7 +209,7 @@ $(q+1)|R|\le|L|=(q+1)(q^4+q^2+1)$. $\square$
 For $H(q)$ distance-2 ovoids are known only for $q=2,3,4$, and the dual $H(q)^D$ has none for $q=2,4$
 (Bishnoi–Ihringer), i.e. $H(2)$ and $H(4)$ have no distance-2 spread; so equality fails for $q=2,4$.
 
-**Proposition 5 (pairwise opposite).** For $H(q)$, a pairwise opposite set has at most $q^3+1$ points, with equality
+**Proposition 6 (pairwise opposite).** For $H(q)$, a pairwise opposite set has at most $q^3+1$ points, with equality
 iff it is an ovoid of $Q(6,q)$.
 
 *Proof.* The generators (totally singular planes) of $Q(6,q)$ are $(q+1)(q^2+1)(q^3+1)$ in number, each point lies on
@@ -245,7 +245,10 @@ duality (R2) is the clean sufficient condition; with it, (R1) is necessary (Rema
 
 - with a duality ($q=3^h$): any partial distance-2 ovoid, $|R|\le q^4+q^2+1$;
 - pairwise opposite: any partial ovoid of $Q(6,q)$, $|R|\le q^3+1$ ($\le q^3$ for $q$ even or prime $>3$);
-- mixed (midpoints allowed, Lemma 3): between the two; no construction beating pairwise opposite sets is known.
+- mixed (midpoints allowed, Lemma 3): between the two. Proposition 4 extends every record pairwise opposite set we
+  tried by a few per cent of points at distance 4 (§7): so the bound $q^3+1$ is not a bound for what the
+  construction needs. We know no better upper bound than $q^4+q^2+1$ for mixed sets without a duality; the largest
+  we found are still below $q^3+1$.
 
 ## 7. Instances and checks
 
