@@ -67,3 +67,17 @@ The Haar graph has a transitive group action on each side, so the two eccentrici
 This beats the 540,360 record by 1.2 % (+6,360 vertices). The coordinator must re-check the record independently before it is recorded.
 
 Seed 22 (default) was still running at cost 1 at 7,320 s when this was written.
+
+## Next rung: prod sl 5 × sl 5 × Z19 (N = 273,600, μ = 42.9), not solved
+
+Three 5,400 s runs, `ORBIT="3 3 0"`, THREADS=1 (seeds 31 default, 32 RESTART=1, 33 COOL=60 REHEAT=300):
+best costs 3, 1 and 3 after about 2.5·10⁷ evaluations each. |Fix(α)| = 35, expected fixed-point misses about 1.9.
+Seed 22 (sl 16 × Z67, default, 9,000 s) also ended at cost 1 without a solution.
+
+## Stopping point (2026-10-25, about 4 h in)
+
+Next rungs above 273,360: prod sl 5 × sl 5 × Z19 (μ 42.9, stalled at cost 1–3 above), sl 13 × Z127 (μ 49, round 1 best 6),
+and the groups with μ > 49 that round 1 screened. The record is now 546,720 vertices (sl 16 × Z67). The remaining rungs
+are harder by μ and by fixed points, and the orbit method with k = 3, f = 0 has no cheap candidate left. Stopping here
+rather than spending the rest of the budget on runs with a low chance. A new attempt would need a different group or
+a different fixed-point treatment, not more seeds on this one.
