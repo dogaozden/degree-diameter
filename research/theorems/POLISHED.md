@@ -1085,7 +1085,10 @@ increment $p_2^3/\Theta+c_0p_5+c_1p_2=G(p_5,p_2)/\Theta\ne0$, so it vanishes at 
 **Corollary 6.15.** Corollary 6.8 and Theorem 7.3 hold for every even $q\ge4$. For $q=2$ the formula gives no whisker
 set (Lemma 6.11), but an exact whisker set of $12=q^2(q^2-1)$ lines exists: it was found by an integer program
 (`research/evenq/whiskers_raw_q2.json`) and its exactness is kernel-checked (`HexagonEven.q2_exact`); so Corollary 6.8
-and Theorem 7.3 with $m=2$ hold for $q=2$ as well (208 and 192 vertices). None of this changes a table cell with
+and Theorem 7.3 with $m=2$ hold for $q=2$ as well (208 and 192 vertices). Computer checks: $W$ exact for $q=4,8,16$
+and the graphs for $q=2,4,8$ (and $q=16$, $m=2$) built and checked by all-pairs BFS (`research/evenq/`, `geometry.tex`
+Table 3). Lean: `HexagonEven.theorem4_even`, `theoremD_even`, `theoremR` ($q\ge4$), `theoremD_q2`, `theoremR_q2`.
+None of this changes a table cell with
 $\Delta\le16$: for $q=2,4,8$ the degree $q+2$ is a Moore degree, and at $\Delta=q+3$ the odd prime power $q+1$ gives
 more.
 
