@@ -50,3 +50,9 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 - 2026-10-25 09:18: sl 89x247 (cost 6, 2,729 evals), sl 83x307 (cost 6, 3,809 evals), sl 97x193 (cost 12, 3,809 evals)
   timed out with no solve (2400 s each). Retrying 83x307 and 97x193 with seed 2. Still running: sl 239x13 (cost 12),
   sl 293x7 (cost 22). Best remains sl 101x169, 348,207,600.
+- 2026-10-25 09:55-11:05: no solve on sl 83x307 (s2, cost 16), 97x193 (s2, s3, s4: cost 6-12), 89x247 (s2 cost 12, s3 cost 6, s4 cost 2),
+  293x7 (s1 cost 12), 239x13 (s1 cost 12), 179x31 (s1, still running at last check).
+- Queue: a worker script (scratchpad worker.sh, four worker lists) runs one 2400 s job per slot and verifies solves
+  automatically with hcsl and hc2; results go to the scratchpad results.txt. Solve rate at 174-177M is about 1 in 4 runs
+  at 2400 s, so waiting on seeds is the bottleneck.
+- Best still: sl 101x169, 348,207,600 vertices (checked).
