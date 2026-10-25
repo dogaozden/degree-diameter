@@ -1,0 +1,51 @@
+group prod psl 11 psl 23 x Z_1, N=4007520, identity 334213, H order 60, rows 66792, threads 1, setup 0.13s
+wide rows: HW order 253, rows 15840, setup 0.25s
+alpha: conj by prod[mat(5,9,5,7);mat(6,8,9,16)] (index 3907387), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 71 (+e); mu = 31.69, mu/k = 10.56, fixed-point misses ~ 1.43
+start cost=45663
+t=30 steps=877 evals=7017 cost=5 best=5 T=0.53
+t=60 steps=1801 evals=14409 cost=5 best=5 T=0.19
+t=90 steps=2731 evals=21849 cost=5 best=5 T=0.15
+t=120 steps=3673 evals=29385 cost=5 best=5 T=0.15
+t=150 steps=4610 evals=36881 cost=5 best=5 T=0.15
+t=180 steps=5544 evals=44353 cost=5 best=5 T=0.66
+t=210 steps=6513 evals=52105 cost=5 best=5 T=0.23
+t=240 steps=7468 evals=59745 cost=5 best=5 T=0.15
+t=270 steps=8411 evals=67289 cost=5 best=5 T=0.15
+t=300 steps=9364 evals=74913 cost=5 best=5 T=0.15
+t=330 steps=10290 evals=82321 cost=9 best=5 T=0.66
+t=360 steps=11230 evals=89841 cost=9 best=5 T=0.23
+t=390 steps=12184 evals=97473 cost=9 best=5 T=0.15
+t=420 steps=13135 evals=105081 cost=7 best=5 T=0.15
+t=450 steps=14081 evals=112649 cost=7 best=5 T=0.15
+t=480 steps=15077 evals=120617 cost=15 best=5 T=0.66
+t=510 steps=16057 evals=128457 cost=9 best=5 T=0.23
+t=540 steps=17074 evals=136593 cost=8 best=5 T=0.15
+t=570 steps=18040 evals=144321 cost=8 best=5 T=0.15
+t=600 steps=19012 evals=152097 cost=7 best=5 T=0.15
+t=630 steps=19959 evals=159673 cost=6 best=5 T=0.66
+t=660 steps=20896 evals=167169 cost=6 best=5 T=0.23
+t=690 steps=21864 evals=174913 cost=6 best=5 T=0.15
+t=720 steps=22802 evals=182417 cost=6 best=5 T=0.15
+t=750 steps=23716 evals=189729 cost=6 best=5 T=0.15
+t=780 steps=24631 evals=197049 cost=24 best=5 T=0.66
+t=810 steps=25581 evals=204649 cost=9 best=5 T=0.23
+t=840 steps=26546 evals=212369 cost=9 best=5 T=0.15
+t=870 steps=27491 evals=219929 cost=9 best=5 T=0.15
+t=900 steps=28459 evals=227673 cost=9 best=5 T=0.15
+t=930 steps=29391 evals=235129 cost=9 best=5 T=0.66
+t=961 steps=30340 evals=242721 cost=7 best=5 T=0.23
+t=991 steps=31268 evals=250145 cost=7 best=5 T=0.15
+t=1021 steps=32188 evals=257505 cost=7 best=5 T=0.15
+t=1051 steps=33084 evals=264673 cost=7 best=5 T=0.15
+t=1081 steps=34050 evals=272401 cost=13 best=5 T=0.65
+t=1111 steps=34943 evals=279545 cost=12 best=5 T=0.23
+t=1141 steps=35870 evals=286961 cost=12 best=5 T=0.15
+t=1171 steps=36825 evals=294601 cost=12 best=5 T=0.15
+t=1201 steps=37772 evals=302177 cost=6 best=5 T=0.15
+t=1231 steps=38663 evals=309305 cost=14 best=5 T=0.65
+t=1261 steps=39545 evals=316361 cost=10 best=5 T=0.23
+t=1291 steps=40420 evals=323361 cost=10 best=5 T=0.15
+t=1321 steps=41337 evals=330697 cost=10 best=5 T=0.15
+t=1351 steps=42281 evals=338249 cost=4 best=4 T=0.15
+RESULT d=8 D=10 group=prod psl 11 psl 23 x Z_1 N=4007520 best=4 evals=345409 time=1379.3 orbit k=3 m=2 f=2 fix=71

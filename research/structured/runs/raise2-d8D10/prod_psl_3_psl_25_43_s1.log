@@ -1,0 +1,74 @@
+group prod psl 3 psl 25 poly x^2+2 x Z_43, N=4024800, identity 1019100, H order 43, rows 93600, threads 1, setup 0.21s
+wide rows: HW order 215, rows 18720, setup 0.34s
+alpha: conj by prod[mat(1,1,2,0);mat(7,1,0,22)] (index 65225), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 35 (+e); mu = 33.47, mu/k = 11.16, fixed-point misses ~ 0.73
+start cost=1119
+t=30 steps=478 evals=3825 cost=15 best=15 T=0.53
+t=60 steps=974 evals=7793 cost=15 best=15 T=0.19
+t=90 steps=1447 evals=11577 cost=15 best=15 T=0.15
+t=120 steps=1914 evals=15313 cost=15 best=15 T=0.15
+t=150 steps=2398 evals=19185 cost=15 best=15 T=0.15
+t=180 steps=2882 evals=23057 cost=15 best=15 T=0.82
+t=210 steps=3348 evals=26785 cost=15 best=15 T=0.29
+t=240 steps=3821 evals=30569 cost=15 best=15 T=0.15
+t=270 steps=4292 evals=34337 cost=15 best=15 T=0.15
+t=300 steps=4761 evals=38089 cost=15 best=15 T=0.15
+t=330 steps=5180 evals=41441 cost=18 best=15 T=0.82
+t=360 steps=5614 evals=44913 cost=17 best=15 T=0.29
+t=390 steps=6078 evals=48625 cost=17 best=15 T=0.15
+t=420 steps=6560 evals=52481 cost=17 best=15 T=0.15
+t=450 steps=7004 evals=56033 cost=15 best=15 T=0.15
+t=480 steps=7441 evals=59529 cost=18 best=15 T=0.81
+t=510 steps=7883 evals=63065 cost=12 best=12 T=0.29
+t=540 steps=8301 evals=66409 cost=12 best=12 T=0.15
+t=571 steps=8698 evals=69585 cost=12 best=12 T=0.15
+t=601 steps=9079 evals=72633 cost=12 best=12 T=0.15
+t=631 steps=9519 evals=76153 cost=12 best=12 T=0.15
+t=661 steps=9895 evals=79161 cost=24 best=12 T=0.78
+t=691 steps=10311 evals=82489 cost=15 best=12 T=0.27
+t=721 steps=10764 evals=86113 cost=12 best=12 T=0.15
+t=751 steps=11216 evals=89729 cost=12 best=12 T=0.15
+t=781 steps=11648 evals=93185 cost=12 best=12 T=0.15
+t=811 steps=12046 evals=96369 cost=23 best=12 T=0.77
+t=841 steps=12450 evals=99601 cost=20 best=12 T=0.27
+t=871 steps=12883 evals=103065 cost=12 best=12 T=0.15
+t=901 steps=13294 evals=106353 cost=12 best=12 T=0.15
+t=931 steps=13704 evals=109633 cost=12 best=12 T=0.15
+t=961 steps=14105 evals=112841 cost=18 best=12 T=0.77
+t=991 steps=14508 evals=116065 cost=12 best=12 T=0.27
+t=1021 steps=14953 evals=119625 cost=12 best=12 T=0.15
+t=1051 steps=15389 evals=123113 cost=12 best=12 T=0.15
+t=1081 steps=15844 evals=126753 cost=12 best=12 T=0.15
+t=1111 steps=16291 evals=130329 cost=15 best=12 T=0.77
+t=1141 steps=16748 evals=133985 cost=15 best=12 T=0.27
+t=1171 steps=17173 evals=137385 cost=15 best=12 T=0.15
+t=1201 steps=17615 evals=140921 cost=12 best=12 T=0.15
+t=1232 steps=18071 evals=144569 cost=12 best=12 T=0.15
+t=1262 steps=18512 evals=148097 cost=20 best=12 T=0.76
+t=1292 steps=18943 evals=151545 cost=15 best=12 T=0.27
+t=1322 steps=19362 evals=154897 cost=15 best=12 T=0.15
+t=1352 steps=19749 evals=157993 cost=15 best=12 T=0.15
+t=1382 steps=20195 evals=161561 cost=15 best=12 T=0.15
+t=1412 steps=20637 evals=165097 cost=12 best=9 T=0.76
+t=1442 steps=21071 evals=168569 cost=9 best=9 T=0.27
+t=1472 steps=21474 evals=171793 cost=9 best=9 T=0.15
+t=1502 steps=21851 evals=174809 cost=9 best=9 T=0.15
+t=1532 steps=22265 evals=178121 cost=9 best=9 T=0.15
+t=1562 steps=22716 evals=181729 cost=27 best=9 T=1.12
+t=1592 steps=23158 evals=185265 cost=20 best=9 T=0.40
+t=1622 steps=23625 evals=189001 cost=18 best=9 T=0.15
+t=1652 steps=24113 evals=192905 cost=9 best=9 T=0.15
+t=1682 steps=24613 evals=196905 cost=9 best=9 T=0.15
+t=1712 steps=25088 evals=200705 cost=9 best=9 T=1.12
+t=1742 steps=25561 evals=204489 cost=9 best=9 T=0.40
+t=1772 steps=26021 evals=208169 cost=9 best=9 T=0.15
+t=1802 steps=26481 evals=211849 cost=9 best=9 T=0.15
+t=1832 steps=26959 evals=215673 cost=9 best=9 T=0.15
+t=1862 steps=27419 evals=219353 cost=9 best=9 T=1.12
+t=1892 steps=27901 evals=223209 cost=9 best=9 T=0.39
+t=1922 steps=28359 evals=226873 cost=9 best=9 T=0.15
+t=1952 steps=28755 evals=230041 cost=9 best=9 T=0.15
+t=1982 steps=29074 evals=232593 cost=9 best=9 T=0.15
+t=2013 steps=29446 evals=235569 cost=15 best=9 T=1.11
+t=2043 steps=29751 evals=238009 cost=12 best=9 T=0.39
+RESULT d=8 D=10 group=prod psl 3 psl 25 poly x^2+2 x Z_43 N=4024800 best=9 evals=238553 time=2047.3 orbit k=3 m=2 f=2 fix=35

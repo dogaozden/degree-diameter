@@ -145,4 +145,11 @@ so no commuting fixed pair. The price is |Fix(α)|·e^(−λ/7) fixed-point miss
 - File: research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt (sha256 b177732333fcc80f0acdded0a1e9dcab1fea64c6e8b6274a3133b41d9d967a02).
   N = 4,021,920 = |PSL(2,7) × PSL(2,19) × Z_7|. ORBIT="3 2 2", μ = 33.2, |Fix(α)| = 26, 790,065 evaluations, 3,823 s.
   Log: research/structured/runs/raise2-d8D10/prod_psl_7_psl_19_7_s1.log (haar_sym: "full diameter check: OK").
-- Independent check: research/frontier/build_haar2.py (≤ 20M vertices reference), log build_haar2_p7_19_7.log. PENDING at the time of writing.
+- Independent check: research/frontier/build_haar2.py, log research/structured/runs/raise2-d8D10/build_haar2_p7_19_7.log:
+  `VALID d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 vertices=8043840` (8-regular, 0 duplicate edges).
+  **Verified. New record: 8,043,840.**
+
+## Bar moves to N > 4,021,920 (vertices > 8,043,840)
+- Stopped prod psl 11 × psl 23 seeds 5, 6 (N 4,007,520 is below the new bar).
+- Next candidates (k = 3, f = 2, N > 4,021,920): prod psl 3 × psl 25 × Z43 (4,024,800, μ 33.5, seed 1 stalled at 9),
+  prod psl 7 × psl 9 × Z67 (4,052,160, μ 36.5), prod sl 5 × sl 8 × Z67 (4,052,160, μ 36.5).
