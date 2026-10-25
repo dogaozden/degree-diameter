@@ -831,3 +831,240 @@ zp2 7 2 6 0 2 1 :: RESULT anneal group=zp2 7 2 6 0 2 1 b=4 n=392 D=8 iters=40000
 zp2 7 2 6 0 3 1 :: RESULT anneal group=zp2 7 2 6 0 3 1 b=4 n=392 D=8 iters=400000 best=120 none
 zp2 7 2 6 0 4 1 :: RESULT anneal group=zp2 7 2 6 0 4 1 b=4 n=392 D=8 iters=400000 best=120 none
 zp2 7 2 6 0 5 1 :: RESULT anneal group=zp2 7 2 6 0 5 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 0 6 1 :: RESULT anneal group=zp2 7 2 6 0 6 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 1 0 1 :: RESULT anneal group=zp2 7 2 6 1 0 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 2 0 1 :: RESULT anneal group=zp2 7 2 6 2 0 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 3 0 1 :: RESULT anneal group=zp2 7 2 6 3 0 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 4 0 1 :: RESULT anneal group=zp2 7 2 6 4 0 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 5 0 1 :: RESULT anneal group=zp2 7 2 6 5 0 1 b=4 n=392 D=8 iters=400000 best=120 none
+zp2 7 2 6 6 0 1 :: RESULT anneal group=zp2 7 2 6 6 0 1 b=4 n=392 D=8 iters=400000 best=126 none
+prod meta 49 1 1 cyc 2 :: RESULT anneal group=prod meta 49 1 1 cyc 2 b=4 n=392 D=8 iters=600000 best=332 none
+prod meta 7 7 1 cyc 2 :: RESULT anneal group=prod meta 7 7 1 cyc 2 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 1 49 0 cyc 2 :: RESULT anneal group=prod meta 1 49 0 cyc 2 b=4 n=392 D=8 iters=600000 best=332 none
+prod zp2 7 1 1 0 0 1 cyc 2 :: RESULT anneal group=prod zp2 7 1 1 0 0 1 cyc 2 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 14 1 1 cyc 7 :: RESULT anneal group=prod meta 14 1 1 cyc 7 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 7 2 1 cyc 7 :: RESULT anneal group=prod meta 7 2 1 cyc 7 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 7 2 6 cyc 7 :: RESULT anneal group=prod meta 7 2 6 cyc 7 b=4 n=392 D=8 iters=400000 best=120 none
+prod meta 2 7 1 cyc 7 :: RESULT anneal group=prod meta 2 7 1 cyc 7 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 1 14 0 cyc 7 :: RESULT anneal group=prod meta 1 14 0 cyc 7 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 7 1 1 cyc 14 :: RESULT anneal group=prod meta 7 1 1 cyc 14 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 1 7 0 cyc 14 :: RESULT anneal group=prod meta 1 7 0 cyc 14 b=4 n=392 D=8 iters=600000 best=356 none
+prod meta 2 1 1 cyc 49 :: RESULT anneal group=prod meta 2 1 1 cyc 49 b=4 n=392 D=8 iters=600000 best=340 none
+prod meta 1 2 0 cyc 49 :: RESULT anneal group=prod meta 1 2 0 cyc 49 b=4 n=392 D=8 iters=600000 best=340 none
+meta 99 1 1 :: RESULT anneal group=meta 99 1 1 b=4 n=396 D=8 iters=600000 best=348 none
+meta 33 3 1 :: RESULT anneal group=meta 33 3 1 b=4 n=396 D=8 iters=600000 best=364 none
+meta 11 9 1 :: RESULT anneal group=meta 11 9 1 b=4 n=396 D=8 iters=600000 best=348 none
+meta 9 11 1 :: RESULT anneal group=meta 9 11 1 b=4 n=396 D=8 iters=600000 best=348 none
+meta 3 33 1 :: RESULT anneal group=meta 3 33 1 b=4 n=396 D=8 iters=600000 best=364 none
+meta 1 99 0 :: RESULT anneal group=meta 1 99 0 b=4 n=396 D=8 iters=600000 best=348 none
+zp2 3 11 1 0 0 1 :: RESULT anneal group=zp2 3 11 1 0 0 1 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 33 1 1 cyc 3 :: RESULT anneal group=prod meta 33 1 1 cyc 3 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 11 3 1 cyc 3 :: RESULT anneal group=prod meta 11 3 1 cyc 3 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 3 11 1 cyc 3 :: RESULT anneal group=prod meta 3 11 1 cyc 3 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 1 33 0 cyc 3 :: RESULT anneal group=prod meta 1 33 0 cyc 3 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 11 1 1 cyc 9 :: RESULT anneal group=prod meta 11 1 1 cyc 9 b=4 n=396 D=8 iters=600000 best=348 none
+prod meta 1 11 0 cyc 9 :: RESULT anneal group=prod meta 1 11 0 cyc 9 b=4 n=396 D=8 iters=600000 best=348 none
+prod meta 9 1 1 cyc 11 :: RESULT anneal group=prod meta 9 1 1 cyc 11 b=4 n=396 D=8 iters=600000 best=348 none
+prod meta 3 3 1 cyc 11 :: RESULT anneal group=prod meta 3 3 1 cyc 11 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 1 9 0 cyc 11 :: RESULT anneal group=prod meta 1 9 0 cyc 11 b=4 n=396 D=8 iters=600000 best=348 none
+prod zp2 3 1 1 0 0 1 cyc 11 :: RESULT anneal group=prod zp2 3 1 1 0 0 1 cyc 11 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 3 1 1 cyc 33 :: RESULT anneal group=prod meta 3 1 1 cyc 33 b=4 n=396 D=8 iters=600000 best=364 none
+prod meta 1 3 0 cyc 33 :: RESULT anneal group=prod meta 1 3 0 cyc 33 b=4 n=396 D=8 iters=600000 best=364 none
+meta 100 1 1 :: RESULT anneal group=meta 100 1 1 b=4 n=400 D=8 iters=600000 best=364 none
+meta 50 2 1 :: RESULT anneal group=meta 50 2 1 b=4 n=400 D=8 iters=600000 best=364 none
+meta 50 2 49 :: RESULT anneal group=meta 50 2 49 b=4 n=400 D=8 iters=1000000 best=792 none
+meta 25 4 1 :: RESULT anneal group=meta 25 4 1 b=4 n=400 D=8 iters=600000 best=364 none
+meta 25 4 7 :: RESULT anneal group=meta 25 4 7 b=4 n=400 D=8 iters=400000 best=200 none
+meta 25 4 18 :: RESULT anneal group=meta 25 4 18 b=4 n=400 D=8 iters=400000 best=200 none
+meta 25 4 24 :: RESULT anneal group=meta 25 4 24 b=4 n=400 D=8 iters=600000 best=360 none
+meta 20 5 1 :: RESULT anneal group=meta 20 5 1 b=4 n=400 D=8 iters=600000 best=404 none
+meta 10 10 1 :: RESULT anneal group=meta 10 10 1 b=4 n=400 D=8 iters=600000 best=380 none
+meta 10 10 9 :: RESULT anneal group=meta 10 10 9 b=4 n=400 D=8 iters=400000 best=146 none
+meta 5 20 1 :: RESULT anneal group=meta 5 20 1 b=4 n=400 D=8 iters=600000 best=404 none
+meta 5 20 2 :: RESULT anneal group=meta 5 20 2 b=4 n=400 D=8 iters=400000 best=102 none
+meta 5 20 3 :: RESULT anneal group=meta 5 20 3 b=4 n=400 D=8 iters=400000 best=102 none
+meta 5 20 4 :: RESULT anneal group=meta 5 20 4 b=4 n=400 D=8 iters=400000 best=92 none
+meta 4 25 1 :: RESULT anneal group=meta 4 25 1 b=4 n=400 D=8 iters=600000 best=364 none
+meta 2 50 1 :: RESULT anneal group=meta 2 50 1 b=4 n=400 D=8 iters=600000 best=364 none
+meta 1 100 0 :: RESULT anneal group=meta 1 100 0 b=4 n=400 D=8 iters=600000 best=364 none
+zp2 2 25 1 0 0 1 :: RESULT anneal group=zp2 2 25 1 0 0 1 b=4 n=400 D=8 iters=600000 best=364 none
+zp2 5 4 0 1 1 0 :: RESULT anneal group=zp2 5 4 0 1 1 0 b=4 n=400 D=8 iters=400000 best=96 none
+zp2 5 4 0 1 2 1 :: RESULT anneal group=zp2 5 4 0 1 2 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 1 2 4 :: RESULT anneal group=zp2 5 4 0 1 2 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 1 3 2 :: RESULT anneal group=zp2 5 4 0 1 3 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 1 3 3 :: RESULT anneal group=zp2 5 4 0 1 3 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 1 4 0 :: RESULT anneal group=zp2 5 4 0 1 4 0 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 0 2 1 1 :: RESULT anneal group=zp2 5 4 0 2 1 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 2 2 0 :: RESULT anneal group=zp2 5 4 0 2 2 0 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 0 2 1 4 :: RESULT anneal group=zp2 5 4 0 2 1 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 2 3 0 :: RESULT anneal group=zp2 5 4 0 2 3 0 b=4 n=400 D=8 iters=400000 best=116 none
+zp2 5 4 0 2 4 2 :: RESULT anneal group=zp2 5 4 0 2 4 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 2 4 3 :: RESULT anneal group=zp2 5 4 0 2 4 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 3 1 2 :: RESULT anneal group=zp2 5 4 0 3 1 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 3 1 3 :: RESULT anneal group=zp2 5 4 0 3 1 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 3 2 0 :: RESULT anneal group=zp2 5 4 0 3 2 0 b=4 n=400 D=8 iters=400000 best=96 none
+zp2 5 4 0 3 3 0 :: RESULT anneal group=zp2 5 4 0 3 3 0 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 0 3 4 1 :: RESULT anneal group=zp2 5 4 0 3 4 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 3 4 4 :: RESULT anneal group=zp2 5 4 0 3 4 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 4 1 0 :: RESULT anneal group=zp2 5 4 0 4 1 0 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 0 4 2 2 :: RESULT anneal group=zp2 5 4 0 4 2 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 4 2 3 :: RESULT anneal group=zp2 5 4 0 4 2 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 4 3 1 :: RESULT anneal group=zp2 5 4 0 4 3 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 0 4 3 4 :: RESULT anneal group=zp2 5 4 0 4 3 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 0 4 4 0 :: RESULT anneal group=zp2 5 4 0 4 4 0 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 0 0 1 :: RESULT anneal group=zp2 5 4 1 0 0 1 b=4 n=400 D=8 iters=600000 best=404 none
+zp2 5 4 1 0 0 2 :: RESULT anneal group=zp2 5 4 1 0 0 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 0 4 :: RESULT anneal group=zp2 5 4 1 0 0 4 b=4 n=400 D=8 iters=400000 best=96 none
+zp2 5 4 1 0 0 3 :: RESULT anneal group=zp2 5 4 1 0 0 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 1 2 :: RESULT anneal group=zp2 5 4 1 0 1 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 1 3 :: RESULT anneal group=zp2 5 4 1 0 1 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 1 4 :: RESULT anneal group=zp2 5 4 1 0 1 4 b=4 n=400 D=8 iters=400000 best=116 none
+zp2 5 4 1 0 2 2 :: RESULT anneal group=zp2 5 4 1 0 2 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 2 3 :: RESULT anneal group=zp2 5 4 1 0 2 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 2 4 :: RESULT anneal group=zp2 5 4 1 0 2 4 b=4 n=400 D=8 iters=400000 best=116 none
+zp2 5 4 1 0 3 2 :: RESULT anneal group=zp2 5 4 1 0 3 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 3 3 :: RESULT anneal group=zp2 5 4 1 0 3 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 3 4 :: RESULT anneal group=zp2 5 4 1 0 3 4 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 0 4 2 :: RESULT anneal group=zp2 5 4 1 0 4 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 4 3 :: RESULT anneal group=zp2 5 4 1 0 4 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 0 4 4 :: RESULT anneal group=zp2 5 4 1 0 4 4 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 1 0 2 :: RESULT anneal group=zp2 5 4 1 1 0 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 1 0 3 :: RESULT anneal group=zp2 5 4 1 1 0 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 1 0 4 :: RESULT anneal group=zp2 5 4 1 1 0 4 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 1 2 0 :: RESULT anneal group=zp2 5 4 1 1 2 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 1 3 4 :: RESULT anneal group=zp2 5 4 1 1 3 4 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 1 1 4 1 :: RESULT anneal group=zp2 5 4 1 1 4 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 2 0 2 :: RESULT anneal group=zp2 5 4 1 2 0 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 2 0 3 :: RESULT anneal group=zp2 5 4 1 2 0 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 2 0 4 :: RESULT anneal group=zp2 5 4 1 2 0 4 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 2 4 4 :: RESULT anneal group=zp2 5 4 1 2 4 4 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 1 2 1 0 :: RESULT anneal group=zp2 5 4 1 2 1 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 2 2 1 :: RESULT anneal group=zp2 5 4 1 2 2 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 3 0 2 :: RESULT anneal group=zp2 5 4 1 3 0 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 3 0 4 :: RESULT anneal group=zp2 5 4 1 3 0 4 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 1 3 1 4 :: RESULT anneal group=zp2 5 4 1 3 1 4 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 1 3 0 3 :: RESULT anneal group=zp2 5 4 1 3 0 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 3 3 1 :: RESULT anneal group=zp2 5 4 1 3 3 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 3 4 0 :: RESULT anneal group=zp2 5 4 1 3 4 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 4 0 2 :: RESULT anneal group=zp2 5 4 1 4 0 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 4 0 3 :: RESULT anneal group=zp2 5 4 1 4 0 3 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 1 4 0 4 :: RESULT anneal group=zp2 5 4 1 4 0 4 b=4 n=400 D=8 iters=400000 best=136 none
+zp2 5 4 1 4 2 4 :: RESULT anneal group=zp2 5 4 1 4 2 4 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 1 4 1 1 :: RESULT anneal group=zp2 5 4 1 4 1 1 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 1 4 3 0 :: RESULT anneal group=zp2 5 4 1 4 3 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 0 0 1 :: RESULT anneal group=zp2 5 4 2 0 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 0 0 2 :: RESULT anneal group=zp2 5 4 2 0 0 2 b=4 n=400 D=8 iters=600000 best=228 none
+zp2 5 4 2 0 0 3 :: RESULT anneal group=zp2 5 4 2 0 0 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 0 0 4 :: RESULT anneal group=zp2 5 4 2 0 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 0 1 1 :: RESULT anneal group=zp2 5 4 2 0 1 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 0 1 3 :: RESULT anneal group=zp2 5 4 2 0 1 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 0 1 4 :: RESULT anneal group=zp2 5 4 2 0 1 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 0 2 3 :: RESULT anneal group=zp2 5 4 2 0 2 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 0 2 1 :: RESULT anneal group=zp2 5 4 2 0 2 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 0 2 4 :: RESULT anneal group=zp2 5 4 2 0 2 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 0 3 1 :: RESULT anneal group=zp2 5 4 2 0 3 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 0 3 3 :: RESULT anneal group=zp2 5 4 2 0 3 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 0 3 4 :: RESULT anneal group=zp2 5 4 2 0 3 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 0 4 1 :: RESULT anneal group=zp2 5 4 2 0 4 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 0 4 3 :: RESULT anneal group=zp2 5 4 2 0 4 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 0 4 4 :: RESULT anneal group=zp2 5 4 2 0 4 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 1 0 1 :: RESULT anneal group=zp2 5 4 2 1 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 1 0 3 :: RESULT anneal group=zp2 5 4 2 1 0 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 1 0 4 :: RESULT anneal group=zp2 5 4 2 1 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 1 1 2 :: RESULT anneal group=zp2 5 4 2 1 1 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 1 2 3 :: RESULT anneal group=zp2 5 4 2 1 2 3 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 2 1 3 0 :: RESULT anneal group=zp2 5 4 2 1 3 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 2 0 1 :: RESULT anneal group=zp2 5 4 2 2 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 2 0 3 :: RESULT anneal group=zp2 5 4 2 2 0 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 2 0 4 :: RESULT anneal group=zp2 5 4 2 2 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 2 1 3 :: RESULT anneal group=zp2 5 4 2 2 1 3 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 2 2 3 2 :: RESULT anneal group=zp2 5 4 2 2 3 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 2 4 0 :: RESULT anneal group=zp2 5 4 2 2 4 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 3 0 3 :: RESULT anneal group=zp2 5 4 2 3 0 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 3 0 1 :: RESULT anneal group=zp2 5 4 2 3 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 3 0 4 :: RESULT anneal group=zp2 5 4 2 3 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 3 1 0 :: RESULT anneal group=zp2 5 4 2 3 1 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 3 2 2 :: RESULT anneal group=zp2 5 4 2 3 2 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 3 4 3 :: RESULT anneal group=zp2 5 4 2 3 4 3 b=4 n=400 D=8 iters=400000 best=116 none
+zp2 5 4 2 4 0 3 :: RESULT anneal group=zp2 5 4 2 4 0 3 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 2 4 0 1 :: RESULT anneal group=zp2 5 4 2 4 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 2 4 0 4 :: RESULT anneal group=zp2 5 4 2 4 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 4 2 0 :: RESULT anneal group=zp2 5 4 2 4 2 0 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 2 4 3 3 :: RESULT anneal group=zp2 5 4 2 4 3 3 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 2 4 4 2 :: RESULT anneal group=zp2 5 4 2 4 4 2 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 0 2 :: RESULT anneal group=zp2 5 4 3 0 0 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 0 0 1 :: RESULT anneal group=zp2 5 4 3 0 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 0 3 :: RESULT anneal group=zp2 5 4 3 0 0 3 b=4 n=400 D=8 iters=600000 best=228 none
+zp2 5 4 3 0 1 2 :: RESULT anneal group=zp2 5 4 3 0 1 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 0 0 4 :: RESULT anneal group=zp2 5 4 3 0 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 0 1 1 :: RESULT anneal group=zp2 5 4 3 0 1 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 1 4 :: RESULT anneal group=zp2 5 4 3 0 1 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 0 2 2 :: RESULT anneal group=zp2 5 4 3 0 2 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 0 2 1 :: RESULT anneal group=zp2 5 4 3 0 2 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 2 4 :: RESULT anneal group=zp2 5 4 3 0 2 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 0 3 2 :: RESULT anneal group=zp2 5 4 3 0 3 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 0 3 1 :: RESULT anneal group=zp2 5 4 3 0 3 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 3 4 :: RESULT anneal group=zp2 5 4 3 0 3 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 0 4 1 :: RESULT anneal group=zp2 5 4 3 0 4 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 0 4 2 :: RESULT anneal group=zp2 5 4 3 0 4 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 0 4 4 :: RESULT anneal group=zp2 5 4 3 0 4 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 1 0 2 :: RESULT anneal group=zp2 5 4 3 1 0 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 1 0 1 :: RESULT anneal group=zp2 5 4 3 1 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 1 0 4 :: RESULT anneal group=zp2 5 4 3 1 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 1 1 3 :: RESULT anneal group=zp2 5 4 3 1 1 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 1 2 2 :: RESULT anneal group=zp2 5 4 3 1 2 2 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 3 1 3 0 :: RESULT anneal group=zp2 5 4 3 1 3 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 2 0 1 :: RESULT anneal group=zp2 5 4 3 2 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 2 0 2 :: RESULT anneal group=zp2 5 4 3 2 0 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 2 0 4 :: RESULT anneal group=zp2 5 4 3 2 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 2 1 2 :: RESULT anneal group=zp2 5 4 3 2 1 2 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 3 2 3 3 :: RESULT anneal group=zp2 5 4 3 2 3 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 2 4 0 :: RESULT anneal group=zp2 5 4 3 2 4 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 3 0 2 :: RESULT anneal group=zp2 5 4 3 3 0 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 3 0 1 :: RESULT anneal group=zp2 5 4 3 3 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 3 0 4 :: RESULT anneal group=zp2 5 4 3 3 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 3 1 0 :: RESULT anneal group=zp2 5 4 3 3 1 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 3 4 2 :: RESULT anneal group=zp2 5 4 3 3 4 2 b=4 n=400 D=8 iters=400000 best=136 none
+zp2 5 4 3 3 2 3 :: RESULT anneal group=zp2 5 4 3 3 2 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 4 0 2 :: RESULT anneal group=zp2 5 4 3 4 0 2 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 3 4 0 1 :: RESULT anneal group=zp2 5 4 3 4 0 1 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 4 0 4 :: RESULT anneal group=zp2 5 4 3 4 0 4 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 3 4 2 0 :: RESULT anneal group=zp2 5 4 3 4 2 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 3 4 3 2 :: RESULT anneal group=zp2 5 4 3 4 3 2 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 3 4 4 3 :: RESULT anneal group=zp2 5 4 3 4 4 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 0 1 :: RESULT anneal group=zp2 5 4 4 0 0 1 b=4 n=400 D=8 iters=400000 best=96 none
+zp2 5 4 4 0 0 2 :: RESULT anneal group=zp2 5 4 4 0 0 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 0 4 :: RESULT anneal group=zp2 5 4 4 0 0 4 b=4 n=400 D=8 iters=800000 best=448 none
+zp2 5 4 4 0 0 3 :: RESULT anneal group=zp2 5 4 4 0 0 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 1 1 :: RESULT anneal group=zp2 5 4 4 0 1 1 b=4 n=400 D=8 iters=400000 best=128 none
+zp2 5 4 4 0 1 2 :: RESULT anneal group=zp2 5 4 4 0 1 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 2 1 :: RESULT anneal group=zp2 5 4 4 0 2 1 b=4 n=400 D=8 iters=400000 best=96 none
+zp2 5 4 4 0 1 3 :: RESULT anneal group=zp2 5 4 4 0 1 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 2 2 :: RESULT anneal group=zp2 5 4 4 0 2 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 2 3 :: RESULT anneal group=zp2 5 4 4 0 2 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 3 1 :: RESULT anneal group=zp2 5 4 4 0 3 1 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 4 0 3 2 :: RESULT anneal group=zp2 5 4 4 0 3 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 3 3 :: RESULT anneal group=zp2 5 4 4 0 3 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 4 1 :: RESULT anneal group=zp2 5 4 4 0 4 1 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 4 0 4 2 :: RESULT anneal group=zp2 5 4 4 0 4 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 0 4 3 :: RESULT anneal group=zp2 5 4 4 0 4 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 1 0 1 :: RESULT anneal group=zp2 5 4 4 1 0 1 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 4 1 0 2 :: RESULT anneal group=zp2 5 4 4 1 0 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 1 0 3 :: RESULT anneal group=zp2 5 4 4 1 0 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 1 2 0 :: RESULT anneal group=zp2 5 4 4 1 2 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 1 3 1 :: RESULT anneal group=zp2 5 4 4 1 3 1 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 4 1 4 4 :: RESULT anneal group=zp2 5 4 4 1 4 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 2 0 1 :: RESULT anneal group=zp2 5 4 4 2 0 1 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 4 2 0 3 :: RESULT anneal group=zp2 5 4 4 2 0 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 2 0 2 :: RESULT anneal group=zp2 5 4 4 2 0 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 2 1 0 :: RESULT anneal group=zp2 5 4 4 2 1 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 2 2 4 :: RESULT anneal group=zp2 5 4 4 2 2 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 2 4 1 :: RESULT anneal group=zp2 5 4 4 2 4 1 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 4 3 0 1 :: RESULT anneal group=zp2 5 4 4 3 0 1 b=4 n=400 D=8 iters=400000 best=136 none
+zp2 5 4 4 3 0 2 :: RESULT anneal group=zp2 5 4 4 3 0 2 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 3 1 1 :: RESULT anneal group=zp2 5 4 4 3 1 1 b=4 n=400 D=8 iters=400000 best=206 none
+zp2 5 4 4 3 0 3 :: RESULT anneal group=zp2 5 4 4 3 0 3 b=4 n=400 D=8 iters=400000 best=130 none
+zp2 5 4 4 3 3 4 :: RESULT anneal group=zp2 5 4 4 3 3 4 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 4 0 1 :: RESULT anneal group=zp2 5 4 4 4 0 1 b=4 n=400 D=8 iters=400000 best=92 none
+zp2 5 4 4 3 4 0 :: RESULT anneal group=zp2 5 4 4 3 4 0 b=4 n=400 D=8 iters=400000 best=102 none
+zp2 5 4 4 4 0 2 :: RESULT anneal group=zp2 5 4 4 4 0 2 b=4 n=400 D=8 iters=400000 best=130 none
