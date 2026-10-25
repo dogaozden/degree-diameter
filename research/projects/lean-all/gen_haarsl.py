@@ -41,6 +41,7 @@ def main():
     ap.add_argument('--certdir', default='/tmp/claude-0/work/certs')
     ap.add_argument('--haarcert', default='/tmp/claude-0/work/haarcert')
     ap.add_argument('--source', default='')
+    ap.add_argument('--covers-only', action='store_true', help='rewrite only the Cover and Record files')
     args = ap.parse_args()
     deg, D, p, n, gens = read_sol(args.sol)
     L = D - 1
@@ -72,7 +73,9 @@ def main():
         return f'⟨{g[0]}, {g[1]}, {g[2]}, {g[3]}, {g[4]}⟩'
     inv_pat = {'even': 'decide (t % 2 = 1)', 'right': 'decide (t % 2 = 1)', 'left': 'decide (t % 2 = 0)'}
     K = {'even': 'E', 'left': 'L', 'right': 'R'}
-    with open(os.path.join(args.outdir, 'Defs.lean'), 'w') as f:
+    def out(name):
+        return open(os.devnull if args.covers_only else os.path.join(args.outdir, name), 'w')
+    with out('Defs.lean') as f:
         f.write(hdr)
         f.write('import BipartiteDD.LeanAll.HaarSL\n\n')
         src = f' ({args.source})' if args.source else ''
@@ -120,7 +123,7 @@ def main():
             hi = min(nb, lo + args.per)
             mod = f'Bat{k_}{mi:03d}'
             mods[kd].append((mod, lo, hi))
-            with open(os.path.join(args.outdir, mod + '.lean'), 'w') as f:
+            with out(mod + '.lean') as f:
                 f.write(hdr)
                 f.write(f'import {M}.Defs\n\n')
                 f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL\n\n')
@@ -134,23 +137,25 @@ def main():
                 f.write('  rcases this with ' + ' | '.join('rfl' for _ in range(lo, hi)) + '\n')
                 f.write('  exacts [' + ', '.join(f'b{k_}{b}' for b in range(lo, hi)) + ']\n')
                 f.write(f'\nend {ns}\n')
-    # covers
+    # covers: the module range lemmas joined in a balanced tree (range_join), so no large case split
+    def tree(k_, ch):
+        if len(ch) == 1:
+            return f'range{k_}{ch[0][0][4:]}'
+        h = len(ch) // 2
+        return f'(range_join (Q := Q{k_}) {tree(k_, ch[:h])} {tree(k_, ch[h:])})'
     for kd in kinds:
         k_ = K[kd]
         with open(os.path.join(args.outdir, f'Cover{k_}.lean'), 'w') as f:
             f.write(hdr)
+            f.write('import BipartiteDD.LeanAll.Range\n')
             for mod, _, _ in mods[kd]:
                 f.write(f'import {M}.{mod}\n')
-            f.write(f'\nnamespace {ns}\n\nopen BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL BipartiteDD.Haar\n\n')
+            f.write(f'\nnamespace {ns}\n\nopen BipartiteDD.LeanAll BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL BipartiteDD.Haar\n\n')
+            f.write(f'def Q{k_} (b : ℕ) : Prop := {bstmt(k_, "b")}\n\n')
             f.write(f'theorem batches{k_} : BatchesOK Pm ONES RD RZ lt{k_} := by\n')
             f.write('  intro b hb\n')
             f.write(f'  have hb\' : b < {nb} := hb\n')
-            ch = mods[kd]
-            f.write('  have : ' + ' ∨ '.join(f'({lo} ≤ b ∧ b < {hi})' for _, lo, hi in ch) + ' := by omega\n')
-            f.write('  rcases this with ' + ' | '.join('h' for _ in ch) + '\n')
-            for mod, lo, hi in ch:
-                f.write(f'  · exact range{k_}{mod[4:]} b h.1 h.2\n')
-            f.write('\n')
+            f.write(f'  exact {tree(k_, mods[kd])} b (Nat.zero_le b) hb\'\n\n')
             f.write(f'theorem words{k_} : ∀ x : G {p} {n}, ∃ dg : ℕ → ℕ, (∀ t < Pm.L, dg t < Pm.Δ) ∧ '
                     f'wordG sG inv{k_} dg Pm.L = x :=\n')
             f.write(f'  cover_of_batches sG inv{k_} Pm Pm_valid rfl rfl rfl hO hRD hRZ letOK{k_} letRep{k_} batches{k_}\n')
