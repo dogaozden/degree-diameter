@@ -17,8 +17,14 @@ Context: the 4,800 DM lift of W(7) plus "hubs" (freed point–line pairs, +4 ver
 - c6 slack in the 4,820 graph: only 4 spare degree units; no vertex can be added; edge surgery fails. Negative.
 - c7 other constructions: GQ(7,9) = T2*(O) Z6 lifts dead (581,923 bad pairs, structural); Z7/Z8 DM on W(7) ~2.4% per
   pair. Negative.
-- c8 Hall-obstruction theory: (pending at time of writing)
+- c8 Hall-obstruction theory: the violator is a point collinear with three freed points off their lines whose
+  freed lines have no common transversal (point triads have 1 or 8 centres, disjoint-line triads 0 or 2 transversals);
+  a pair/triple-condition sampler finds 7 exact flags in 12 s, 8 not in 300 tries; coset-0 stuck at 4.
 Kept: c5's orbit flag set (k = 8) and c1's fast flag search. My own changes during the round: a hub-graph rule that
 counts z_i ~ z'_m as linking z_i to both hubs of p_m (p_m on l_m), so 2 edges per flag pair suffice and up to 9 flags
 fit (out/in-degree ≤ 4 tournament); hub-graph "patch" edges for coverage holes; relaxed coverage (routes, not exact
 matching) found σ for 6 flags quickly. Everyone ended blocked on the coset-0 annealing (6..29 bad pairs).
+Outcome after the round (Opus): the targeted coset-0 route move (σ(v), σ(u) of a bad pair made to meet) plus a short
+hot polish turned c5's 8-flag orbit into a VALID **4,832** (research/squads/d10D5/hubs/checks/d10D5_n4832_CHECK.md).
+Verdict: the round helped decisively (c5's symmetric set is the record's skeleton; c8's theory explains the k ≈ 7
+barrier for unstructured sets; c6/c7 closed two side routes).
