@@ -83,15 +83,24 @@ with polar form $B(X,Y) = Q(X+Y)-Q(X)-Q(Y) = X_0Y_4+X_4Y_0+X_1Y_5+X_5Y_1+X_2Y_6+
 even). The parabolic quadric $Q(6,q)$ is the set of points $\langle x\rangle$ of $\mathrm{PG}(6,q)$ with $Q(x)=0$. It is
 convenient to write $x = (v, a, w)$ with $v = (x_0,x_1,x_2)$, $a = x_3$, $w = (x_4,x_5,x_6)$; then $Q(x) = v\cdot w - a^2$.
 
-The **split Cayley hexagon** $H = H(q)$ (Tits 1959; we follow [VM98, §2.4.13]) has
+The **split Cayley hexagon** $H = H(q)$ (Tits 1959; see [VM98, §2.4]) has
 
 - **points**: the set $P$ of all $N = (q^6-1)/(q-1)$ points of $Q(6,q)$;
 - **lines**: the set $L$ of the lines of $Q(6,q)$ whose Grassmann coordinates $p_{ij} = x_iy_j - x_jy_i$ (for any two spanning points
-  $x, y$) satisfy
-  $$p_{12} = p_{34},\quad p_{54} = p_{32},\quad p_{20} = p_{36},\quad p_{65} = p_{30},\quad p_{01} = p_{35},\quad p_{46} = p_{31};$$
+  $x, y$) satisfy Tits' equations, which for this quadric we write as
+  $$p_{12} = p_{34},\quad p_{54} = p_{32},\quad p_{20} = p_{35},\quad p_{65} = p_{30},\quad p_{01} = p_{36},\quad p_{46} = p_{31};$$
 - **incidence**: containment.
 
-[TO BE CONFIRMED BY THE TESTS: these equations were re-derived by computer for q = 2, 3, 4, 5, Section 10.1.]
+(Labellings of the coordinates differ between sources; this is the form used by all the lab's generators. We checked by
+computer, from scratch, that with this quadric it gives a generalized hexagon of order $(q,q)$ for $q = 2, 3, 4, 5$: right
+numbers of points and lines, $q+1$ on each, incidence graph of diameter 6 and girth 12, Section 10.1. A variant with
+$p_{20} = p_{36}$ and $p_{01} = p_{35}$, which we had first quoted from memory, does not give a generalized hexagon.)
+
+*Example.* For $x = e_0 = (1,0,\dots,0)$ and a point $y$, $p_{0j} = y_j$ and $p_{ij} = 0$ for $i,j\ge 1$; the equations
+reduce to $y_1 = y_2 = y_3 = 0$, and $B(e_0,y) = y_4 = 0$. So the $q+1$ lines through $e_0$ are
+$\langle e_0, \lambda e_5+\mu e_6\rangle$, $(\lambda:\mu)\in\mathrm{PG}(1,q)$: they lie in the totally singular plane
+$\langle e_0, e_5, e_6\rangle$. (In general the lines of $H(q)$ through a point $x$ are the lines through $x$ of a
+totally singular plane $\pi_x\subset x^\perp$.)
 
 $H(q)$ is a generalized hexagon of order $(q,q)$: $N$ points and $N$ lines, $q+1$ points on a line and $q+1$ lines on a
 point. The group $G_2(q)$ acts on it; for instance $g\in SL(3,q)$ acts by $(v,a,w)\mapsto (gv, a, g^{-T}w)$ (this is the
@@ -133,7 +142,8 @@ different types. $\square$
 
 **(F4) Orthogonality.** For points $x, y$ of $H(q)$: $d(x,y)\le 4$ if and only if $B(x,y) = 0$ (the points not opposite
 $x$ are the points of $Q(6,q)$ in the tangent hyperplane $x^\perp$; [VM98, §2.4]; both sides count
-$1+q+q^2+q^3+q^4$ points). [Checked for all pairs at q = 3, 4, Section 10.1.]
+$1+q+q^2+q^3+q^4$ points). We re-checked (F4) by computer for all pairs of points for $q = 2, 3, 4$ and for a sample of
+points for $q = 5$ (Section 10.1); the lab's large computations (research/d13D7/REPORT.md §3) also rely on it.
 
 ### 1.3 Sets of points and lines
 
@@ -157,7 +167,8 @@ $H(q)$ contained in $\Pi$ form a spread, for every $q$.
 
 *Proof.* (a) If $x\ne y$ are points of $Q^-(3,q)$ with $B(x,y) = 0$, then $Q(\lambda x+\mu y) = \lambda\mu B(x,y) = 0$, so
 the line $xy$ lies in $Q^-(3,q)$, which contains no line. So $B(x,y)\ne 0$ and $x, y$ are opposite by (F4).
-(b) is in [Th80] [and was checked by computer for q = 3, 4, 5, Section 10.1, and q = 9, 11, 13 in research/d13D7/tools/].
+(b) is in [Th80]; we also checked it by computer for small $q$ (Section 10.1), and the record builders re-check, for the
+sets they use, the hypotheses of the theorems they apply (Section 10.2).
 (c) A line meeting two lines of $S$ would put them at distance $\le 4$. So the lines of $S$ together with the
 $q(q+1)$ lines meeting each of them are $(q^3+1)(1+q(q+1)) = (q^3+1)(q^2+q+1) = N$ distinct lines, i.e. all lines. (d) $\varphi$ preserves distances. $\square$
 
