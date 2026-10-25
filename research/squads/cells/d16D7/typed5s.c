@@ -141,6 +141,22 @@ int main(int argc, char **argv) {
     fprintf(stderr, "q=%d N=%d L=%d types=%s |G|=%d orbits %d/%d\n", q, N, L, types, m, no[0], no[1]);
     /* unfriendly maps: umap[j][k][o] = (dst orbit, offset) */
     int *usrc[64][4], *udst[64][4], *uoff[64][4];
+    int *ufr[64][4], nufr[64][4]; char *ufro[64][4];   /* freed A-orbits of a non-friendly transition (local duality) */
+    int nPo = 0, nSo = 0, *Po = malloc(sizeof(int) * N), *So = malloc(sizeof(int) * N), unfk = 0;
+    if (make) {   /* optional G-invariant pairwise opposite points (UNFP) and lines (UNFS) for the non-friendly surgery */
+        const char *fn[2] = {getenv("UNFP"), getenv("UNFS")}; unfk = getenv("UNFK") ? atoi(getenv("UNFK")) : 1 << 30;
+        for (int kd = 0; kd < 2; kd++) if (fn[kd]) {
+            FILE *f = fopen(fn[kd], "r"); if (!f) { perror(fn[kd]); return 1; }
+            int *cnt = calloc(no[kd], sizeof(int)), x; char buf[256];
+            while (fgets(buf, sizeof buf, f)) if (buf[0] != '#' && sscanf(buf, "%d", &x) == 1) cnt[orb[kd][x]]++;
+            fclose(f);
+            for (int o = 0; o < no[kd]; o++) { if (cnt[o] == m) { if (kd == 0) Po[nPo++] = o; else So[nSo++] = o; } else if (cnt[o]) { fprintf(stderr, "UNF set %d is not a union of orbits\n", kd); return 1; } }
+            free(cnt);
+        }
+        if (unfk > nPo) unfk = nPo;
+        if (unfk > nSo) unfk = nSo;
+        if (unfk > 0) fprintf(stderr, "non-friendly surgery: %d orbits per transition (from %d point orbits, %d line orbits)\n", unfk, nPo, nSo);
+    }
     int KB = 0, KA = 0, *hBrep = NULL, *hBoff = NULL, *hArep = NULL, *hAoff = NULL, ne = 0, *eB = NULL, *eA = NULL, *eC = NULL;
     if (make) {
         rs ^= (uint64_t)seedv * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd();
@@ -176,10 +192,34 @@ int main(int argc, char **argv) {
         usrc[j][k] = udst[j][k] = uoff[j][k] = NULL;
         if (a == b) continue;
         usrc[j][k] = malloc(sizeof(int) * no[a]); udst[j][k] = malloc(sizeof(int) * no[a]); uoff[j][k] = malloc(sizeof(int) * no[a]);
+        ufr[j][k] = malloc(sizeof(int) * (no[a] + 1)); nufr[j][k] = 0; ufro[j][k] = calloc(no[a], 1);
         if (make) {
-            int *pi = malloc(sizeof(int) * no[b]); for (int i = 0; i < no[b]; i++) pi[i] = i; shuffle(pi, no[b]);
-            for (int o = 0; o < no[a]; o++) { usrc[j][k][o] = o; udst[j][k][o] = pi[o]; uoff[j][k][o] = rndi(m); }
-            free(pi);
+            char *usedA = calloc(no[a], 1), *usedB = calloc(no[b], 1);
+            for (int i = 0; i < unfk; i++) {
+                int oa = a == 0 ? Po[i] : So[i], ob = a == 0 ? So[i] : Po[i];
+                int r = rep[a][oa], tl = rep[b][ob];
+                usrc[j][k][oa] = oa; udst[j][k][oa] = ob; uoff[j][k][oa] = 0; usedA[oa] = usedB[ob] = 1;
+                ufr[j][k][nufr[j][k]++] = oa; ufro[j][k][oa] = 1;
+                /* Gamma_2(r) (kind a) -> Gamma_2(tl) (kind b), a random bijection, extended equivariantly */
+                int G1[64 * 64], G2[64 * 64], n1 = 0, n2 = 0;
+                const int32_t *A1 = a == 0 ? PL : LP, *B1 = a == 0 ? LP : PL, *A2 = b == 0 ? PL : LP, *B2 = b == 0 ? LP : PL;
+                for (int u = 0; u < Q1; u++) { int y = A1[(size_t)r * Q1 + u]; for (int v = 0; v < Q1; v++) { int z = B1[(size_t)y * Q1 + v]; if (z != r) G1[n1++] = z; } }
+                for (int u = 0; u < Q1; u++) { int y = A2[(size_t)tl * Q1 + u]; for (int v = 0; v < Q1; v++) { int z = B2[(size_t)y * Q1 + v]; if (z != tl) G2[n2++] = z; } }
+                if (n1 != n2) { fprintf(stderr, "Gamma_2 sizes differ\n"); return 1; }
+                shuffle(G2, n2);
+                for (int t = 0; t < n1; t++) {
+                    int ou = orb[a][G1[t]], oL = orb[b][G2[t]];
+                    if (usedA[ou] || usedB[oL]) { fprintf(stderr, "local duality orbits overlap (freed set not pairwise opposite?)\n"); return 1; }
+                    usedA[ou] = usedB[oL] = 1; usrc[j][k][ou] = ou; udst[j][k][ou] = oL; uoff[j][k][ou] = mm((long)pos[b][G2[t]] - pos[a][G1[t]]);
+                }
+            }
+            int *ra = malloc(sizeof(int) * no[a]), *rb = malloc(sizeof(int) * no[b]), na = 0, nb2 = 0;
+            for (int o = 0; o < no[a]; o++) if (!usedA[o]) ra[na++] = o;
+            for (int o = 0; o < no[b]; o++) if (!usedB[o]) rb[nb2++] = o;
+            if (na != nb2) { fprintf(stderr, "orbit counts differ\n"); return 1; }
+            shuffle(rb, nb2);
+            for (int i = 0; i < na; i++) { usrc[j][k][ra[i]] = ra[i]; udst[j][k][ra[i]] = rb[i]; uoff[j][k][ra[i]] = rndi(m); }
+            free(ra); free(rb); free(usedA); free(usedB);
         } else {
             char w[32]; int jj, kk, c;
             if (fscanf(fs, "%31s %d %d %d", w, &jj, &kk, &c) != 4 || strcmp(w, "unf") || jj != j || kk != k || c != no[a]) { fprintf(stderr, "bad unf block\n"); return 1; }
@@ -191,6 +231,11 @@ int main(int argc, char **argv) {
                 usrc[j][k][os] = os; udst[j][k][os] = od; uoff[j][k][os] = mm((long)off + pos[b][d] - pos[a][s]);
             }
             free(seen); free(seenb);
+            long fpos = ftell(fs); char w2[32]; int cr;
+            if (fscanf(fs, "%31s", w2) == 1 && !strcmp(w2, "unfR")) {
+                if (fscanf(fs, "%d", &cr) != 1) return 1;
+                for (int i = 0; i < cr; i++) { int x; if (fscanf(fs, "%d", &x) != 1) return 1; int o = orb[a][x]; if (ufro[j][k][o]) { fprintf(stderr, "repeated unfR orbit\n"); return 1; } ufro[j][k][o] = 1; ufr[j][k][nufr[j][k]++] = o; }
+            } else fseek(fs, fpos, SEEK_SET);
         }
     }
     /* free slots per level (as orbit lists), for hubs */
@@ -201,6 +246,11 @@ int main(int argc, char **argv) {
         if (a != b) continue;
         int nr = a == 0 ? nRH : nRL, *ro = a == 0 ? RHo : RLo;
         for (int i = 0; i < nr; i++) { slA[j][nA[j]++] = ro[i]; slB[j2][nB[j2]++] = ro[i]; }
+    }
+    for (int j = 0; j < L; j++) for (int k = 1; k <= R; k++) {
+        int j2 = (j + k) % L, a = akind(j), b = bkind(j2);
+        if (a == b) continue;
+        for (int i = 0; i < nufr[j][k]; i++) { int o = ufr[j][k][i]; slA[j][nA[j]++] = o; slB[j2][nB[j2]++] = udst[j][k][o]; }
     }
     if (make) {
         KB = KA = 1 << 30;
@@ -243,6 +293,7 @@ int main(int argc, char **argv) {
             int j2 = (j + k) % L, a = akind(j), b = bkind(j2); if (a == b) continue;
             fprintf(fo, "unf %d %d %d\n", j, k, no[a]);
             for (int o = 0; o < no[a]; o++) fprintf(fo, "%d %d %d\n", rep[a][o], rep[b][udst[j][k][o]], uoff[j][k][o]);
+            if (nufr[j][k]) { fprintf(fo, "unfR %d\n", nufr[j][k]); for (int i = 0; i < nufr[j][k]; i++) fprintf(fo, "%d\n", rep[a][ufr[j][k][i]]); }
         }
         fprintf(fo, "hubB %d\n", KB);
         for (int k = 0; k < KB; k++) { for (int j = 0; j < L; j++) fprintf(fo, "%s%d %d", j ? " " : "", rep[akind(j)][hBrep[k * L + j]], hBoff[k * L + j]); fprintf(fo, "\n"); }
@@ -274,6 +325,26 @@ int main(int argc, char **argv) {
         int j2 = (j + k) % L, a = akind(j), b = bkind(j2); if (a != b) continue;
         for (int x = 0; x < N; x++) if (inR[a][x]) { freeA[(size_t)j * N + x]++; freeB[(size_t)j2 * N + x]++; }
     }
+    for (int j = 0; j < L; j++) for (int k = 1; k <= R; k++) {   /* non-friendly surgery: check (H1)-(H3), count slots */
+        int j2 = (j + k) % L, a = akind(j), b = bkind(j2); if (a == b || !nufr[j][k]) continue;
+        const int32_t *A1 = a == 0 ? PL : LP, *B1 = a == 0 ? LP : PL, *A2 = b == 0 ? PL : LP, *B2 = b == 0 ? LP : PL;
+        char *inF = calloc(N, 1), *inT = calloc(N, 1); int nf = 0;
+        #define SIG(x) el(b, udst[j][k][orb[a][x]], pos[a][x] + uoff[j][k][orb[a][x]])
+        for (int x = 0; x < N; x++) if (ufro[j][k][orb[a][x]]) { inF[x] = 1; inT[SIG(x)] = 1; nf++; }
+        for (int x = 0; x < N; x++) if (inF[x]) {
+            int y0 = SIG(x); char *g2 = NULL;
+            for (int u = 0; u < Q1; u++) { int y = A1[(size_t)x * Q1 + u]; for (int v = 0; v < Q1; v++) { int z = B1[(size_t)y * Q1 + v]; if (z == x) continue;
+                if (inF[z]) { fprintf(stderr, "H1 fails\n"); return 1; }
+                int sz = SIG(z), ok = 0;   /* H3: sigma(z) at distance 2 from sigma(x) */
+                for (int u2 = 0; u2 < Q1 && !ok; u2++) { int yy = A2[(size_t)y0 * Q1 + u2]; for (int v2 = 0; v2 < Q1; v2++) if (B2[(size_t)yy * Q1 + v2] == sz && sz != y0) { ok = 1; break; } }
+                if (!ok) { fprintf(stderr, "H3 fails\n"); return 1; } } }
+            for (int u2 = 0; u2 < Q1; u2++) { int yy = A2[(size_t)y0 * Q1 + u2]; for (int v2 = 0; v2 < Q1; v2++) { int z2 = B2[(size_t)yy * Q1 + v2]; if (z2 != y0 && inT[z2]) { fprintf(stderr, "H2 fails\n"); return 1; } } }
+            (void)g2;
+            freeA[(size_t)j * N + x]++; freeB[(size_t)j2 * N + y0]++;
+        }
+        fprintf(stderr, "non-friendly transition %d->%d: %d freed, H1-H3 checked\n", j, j2, nf);
+        free(inF); free(inT);
+    }
     FILE *f = fopen(argv[4], "w"); if (!f) { perror(argv[4]); return 1; }
     fprintf(f, "%ld\n", n); long ecount = 0;
     for (int j = 0; j < L; j++) for (int l = 0; l < N; l++) for (int k = 0; k < Q1; k++) { fprintf(f, "%ld %ld\n", VID(j, 0, LP[(size_t)l * Q1 + k]), VID(j, 1, l)); ecount++; }
@@ -282,7 +353,7 @@ int main(int argc, char **argv) {
         for (int x = 0; x < N; x++) {
             int y;
             if (a == b) { if (inR[a][x]) continue; y = x; }
-            else { int o = orb[a][x]; y = el(b, udst[j][k][o], pos[a][x] + uoff[j][k][o]); }
+            else { int o = orb[a][x]; if (ufro[j][k][o]) continue; y = el(b, udst[j][k][o], pos[a][x] + uoff[j][k][o]); }
             fprintf(f, "%ld %ld\n", VID(j, a, x), VID(j2, b, y)); ecount++;
         }
     }
