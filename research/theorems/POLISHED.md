@@ -755,7 +755,7 @@ also kernel-checked (`nb_16_4_v2`). See Section 9.
 
 ## 6. Theorem D: the split Cayley hexagon, Hermitian spreads and whiskers (diameter 6)
 
-Throughout this section $q$ is odd (even $q$: Remark 6.10).
+Throughout §6.1–6.4 $q$ is odd; even $q$ is §6.5.
 
 ### 6.1 Coordinates
 
@@ -989,18 +989,6 @@ Hermitian spread [D85a, D85b]. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4
 $374452$, $842048$ at $q=5,9,11,13$; at $q=13$, $m=3$, it gives $884062$. These are the 2013 table values at
 $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
 
-**Remark 6.10 (even $q$).** In characteristic 2 the quadric $X_0X_4+X_1X_5+X_2X_6+X_3^2=0$ has the nucleus $e_3$,
-and the hyperplanes above contain it. `geometry.tex` §7 uses instead $\Pi_z: X_3=X_0+\delta X_4+\alpha X_2+\beta X_5$
-with $\mathrm{Tr}(\delta)=1$, $\nu(X)=(X_2X_3+X_2X_4+X_4X_5)/(\delta X_2^2+X_2X_5+X_5^2)$,
-$G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3$, and $J_z^2+J_z+\delta=0$; good $(c_0,c_1)$ exist iff $q\ge4$. The proof is
-parallel and is written out there (Lemmas 7.1, 7.3, 7.4 and Theorem 7.5); we do not repeat
-it. For $q=2$ an exact whisker set of 12 lines was found by computer. Even $q$ improves no cell with $\Delta\le16$
-($q+1$ is then a prime power, and $q+3$ is better served by the odd $q+1$).
-
-*Worked counts.* $q=5$, $m=2$: $2\cdot6\cdot651=7812$ elements of $H(5)$, $|\mathcal A_0|=1512$ (of which $|W|=600$),
-$|\mathcal A_1|=132$, $|\mathcal A_2|=1$, so $7812+1512+2\cdot132+4=9592$. $q=13$, $m=3$: $804468$ elements of
-$H(13)$, $|\mathcal A_0|=61544$ ($|W|=28392$), $|\mathcal A_1|=2212$, so $804468+2(61544+3\cdot2212+9)=940846$.
-
 **Cells.** $m=2$: $(7,6)$ $9592$ (2013: 8992), $(11,6)$ $148944$ (142464), $(13,6)$ $388972$ (374452), $(15,6)$
 $870440$ (842048). $m=3$, $q=13$: $(16,6)$ $940846$ (884062). These graphs are not regular (Section 7).
 
@@ -1014,6 +1002,93 @@ characteristic: $H(q)$ in these coordinates is a generalized hexagon in the grap
 (`exists_goodCubic`), Lemma 6.7 (`HexagonD.Identity.key_identity`) and Lemma 6.6(d) (`nu_eq_of_mem_sline`); for even
 $q\ge4$ (`HexagonEven.theorem4_even`, `theoremD_even`) and $q=2$, $m=2$ (`HexagonEven.theoremD_q2`); and the 9592
 graph itself (`nb_7_6`). See Section 9.
+
+### 6.5 Even $q$
+
+Let $q=2^e$, $\mathrm{Tr}$ the absolute trace of $\mathbb F$, and fix $\delta\in\mathbb F$ with $\mathrm{Tr}(\delta)=1$, so
+that $t^2+t+\delta$ is irreducible and $a^2+ab+\delta b^2$ is anisotropic. $Q(6,q)$ is now
+$X_0X_4+X_1X_5+X_2X_6+X_3^2=0$, with nucleus $e_3$ (every hyperplane $X_0+cX_4+\dots=0$ of §6.1 contains it), and
+$H(q)$ is given by the same Tits equations. Instead put
+
+$$\Pi_z:\ X_3=X_0+\delta X_4+\alpha X_2+\beta X_5\qquad(z=(\alpha,\beta)\in\mathbb F^2),\qquad \Pi=\Pi_{(0,0)},$$
+
+$S_z$ the lines of $H(q)$ in $\Pi_z$, and $v=\langle e_1,e_6\rangle\subseteq\Pi_z$ as before.
+
+**Lemma 6.10.** Lemma 6.1 holds verbatim for even $q$ with these $\Pi_z$.
+
+*Proof.* (a) On $\Pi_z$, $X_0X_4+X_1X_5+X_2X_6+X_3^2=(X_0^2+X_0X_4+\delta^2X_4^2)+(X_1+\beta^2X_5)X_5+X_2(X_6+\alpha^2X_2)$.
+The first term is anisotropic ($\mathrm{Tr}(\delta^2)=\mathrm{Tr}(\delta)=1$) and the polar form is non-degenerate on
+$\Pi_z$ (which misses $e_3$), so $\Pi_z\cap Q(6,q)$ is an elliptic quadric $Q^-(5,q)$. (b), (c), (e) are proved as in
+Lemma 6.1. (d) The same three equations give $u_2=u_5=0$ (only signs change); on $X_2=X_5=0$ the quadric is the cone
+$X_0X_4=X_3^2$, and in $\Pi_z$ this becomes $X_0^2+X_0X_4+\delta^2X_4^2=0$, so $X_0=X_4=X_3=0$, a point of $v$. $\square$
+
+So Theorem 6.3 (doubling with whiskers) holds for even $q$ without change; there are $q^3(q^2-1)$ free points and an
+exact whisker set has $q^2(q^2-1)$ lines. For $X\in\Pi$ not on $v$ put
+
+$$\nu(X)=\frac{X_2X_3+X_2X_4+X_4X_5}{\delta X_2^2+X_2X_5+X_5^2},\qquad G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3,\qquad F(z)=\frac{G(\alpha,\beta)}{\alpha^2+\alpha\beta+\delta\beta^2}.$$
+
+The denominator of $\nu$ is anisotropic and vanishes only on $v$.
+
+**Lemma 6.11.** There are $c_0,c_1\in\mathbb F$ with $G$ zero-free on $\mathbb F^2\setminus\{0\}$ iff $q\ge4$.
+
+*Proof.* $G(a,0)=c_0a^3$ needs $c_0\ne0$. For $b\ne0$, $t=a/b$: $G=0$ iff $c_0t+c_1=r(t):=1/(t^2+t+\delta)$, a line in the
+$(c_0,c_1)$-plane with $q-1$ points having $c_0\ne0$. If $q\ge4$ take $\omega\notin\{0,1\}$; then $r(\omega)\ne r(0)$
+(as $\omega^2+\omega\ne0$), so the lines for $t=0,\omega$ meet at $c_0=(r(0)+r(\omega))/\omega\ne0$, and the $q$ lines
+cover fewer than $q(q-1)$ points with $c_0\ne0$. If $q=2$ then $\delta=1$, $r(0)=r(1)=1$, and the lines $c_1=1$,
+$c_0+c_1=1$ contain both points with $c_0=1$. $\square$
+
+On $\Pi_z$ use coordinates $x=(x_0,x_1,x_2,x_4,x_5,x_6)$, with $X_3=x_0+\delta x_4+\alpha x_2+\beta x_5$, and
+
+$$J_zx=\bigl((\delta+1)x_0+\delta\alpha x_2+\delta^2x_4+(\alpha+\delta\beta)x_5,\ \beta x_0+x_1+\alpha\beta x_2+(\alpha+\delta\beta)x_4+\beta^2x_5+x_6,\ x_2+x_5,$$
+$$\qquad x_0+(\alpha+\beta)x_2+\delta x_4+\beta x_5,\ \delta x_2,\ (\alpha+\beta)x_0+\delta x_1+\alpha^2x_2+\delta\alpha x_4+\alpha\beta x_5\bigr).$$
+
+**Lemma 6.12.** With $Q$ the quadratic form and $B$ its polar form: (a) $J_z^2+J_z+\delta=0$, $Q(J_zx)=\delta Q(x)$,
+$B(x,J_zx)=Q(x)$; (b) the six Tits differences of $x\wedge J_zx$ are $Q(x)$ times $1,0,0,\delta,\alpha,\beta$; (c) for
+every point $x$ of $Q(6,q)\cap\Pi_z$, $\langle x,J_zx\rangle$ is the line of $S_z$ on $x$; (d) with
+$\mathrm{num}=X_2X_3+X_2X_4+X_4X_5$, $\mathrm{den}=\delta X_2^2+X_2X_5+X_5^2$ on $\Pi$,
+$\mathrm{num}(sx+tJ_0x)=(s^2+st+\delta t^2)\mathrm{num}(x)$ and likewise for $\mathrm{den}$; so $\nu$ is constant on
+every line of $S\setminus\{v\}$.
+
+*Proof.* (a), (b), (d) are polynomial identities over $\mathbb F_2[\delta,\alpha,\beta,x]$, checked by expansion
+(`research/evenq/proof_J.py`, re-run for this note). (c) $J_z$ has no eigenvector since $t^2+t+\delta$ is irreducible;
+if $Q(x)=0$ then $Q(sx+tJ_zx)=(s^2+st+\delta t^2)Q(x)=0$ by (a), and by (b) the line satisfies Tits' equations, so it is
+the line of Lemma 6.10(b). In (d), $s^2+st+\delta t^2\ne0$ for $(s,t)\ne0$. $\square$
+
+Let $p$ be free, normalised by $p_0+p_3+\delta p_4=1$. With $\lambda(y)=y_0+y_3+\delta y_4$ we have
+$\Pi=\{\lambda=0\}$ and $\lambda=\alpha y_2+\beta y_5$ on $\Pi_z$, so $p\in\Pi_z$ iff $z$ lies on the affine line
+$A_p:\ \alpha p_2+\beta p_5=1$ (direction $(p_5,p_2)$). For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ on $p$ and
+$X(z)=\ell_p(z)\cap\Pi$.
+
+**Lemma 6.13 (key identity, characteristic 2).** For $z=(\alpha,\beta)\in A_p$,
+$$\Phi_p(z):=\nu(X(z))+\frac{\beta^3}{\alpha^2+\alpha\beta+\delta\beta^2}=\frac{p_2p_3+p_2p_4+p_4p_5+\beta p_2^2}{\delta p_2^2+p_2p_5+p_5^2},$$
+which is affine on $A_p$ with increment $p_2^3/\Theta$ along $(p_5,p_2)$, $\Theta=\delta p_2^2+p_2p_5+p_5^2\ne0$.
+
+*Proof.* $\lambda(p)=1$ and $\gamma:=\lambda(J_zp)=\alpha(p_2+p_5)+\delta\beta p_2$. By Lemma 6.12(c),
+$X(z)=\gamma p+J_zp$ (then $\lambda(X)=2\gamma=0$); $X_2=(\gamma+1)p_2+p_5$, $X_5=\delta p_2+\gamma p_5$. Expanding,
+$\mathrm{den}(X)=(\gamma^2+\gamma+\delta)\Theta$ and
+$\mathrm{num}(X)=(\gamma^2+\gamma+\delta)(p_2p_3+p_2p_4+p_4p_5)+\beta\bigl((\gamma+\delta+1)p_2^2+p_5^2\bigr)$, with
+$\gamma^2+\gamma+\delta\ne0$. Solving $\alpha p_2+\beta p_5=1$, $\alpha(p_2+p_5)+\delta\beta p_2=\gamma$ (determinant
+$\Theta$): $\alpha=(\delta p_2+\gamma p_5)/\Theta$, $\beta=((\gamma+1)p_2+p_5)/\Theta$, so
+$\alpha^2+\alpha\beta+\delta\beta^2=(\gamma^2+\gamma+\delta)/\Theta$ and
+$\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)=\beta((\gamma+1)p_2+p_5)^2/((\gamma^2+\gamma+\delta)\Theta)$. The
+$\beta$-terms add to $\beta\bigl((\gamma+\delta+1)+(\gamma+1)^2\bigr)p_2^2/((\gamma^2+\gamma+\delta)\Theta)=\beta p_2^2/\Theta$.
+Along $(p_5,p_2)$, $\beta$ changes by $p_2$. (These expansions are re-checked in `research/evenq/proof_J2.py`.) $\square$
+
+**Theorem 6.14 (exact whiskers, even $q\ge4$).** With $c_0,c_1$ as in Lemma 6.11,
+$W=\{\ell\in S_z\setminus\{v\}:z\ne0,\ \nu(\ell\cap\Pi)=F(z)\}$ is an exact whisker set.
+
+*Proof.* As for Theorem 6.5: the lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on a free $p$ are the $q$ distinct lines
+$\ell_p(z)$, $z\in A_p$, and $\ell_p(z)\in W$ iff $\Phi_p(z)+c_0\alpha+c_1\beta=0$, since
+$F(z)=c_0\alpha+c_1\beta+\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)$. The left side is affine on $A_p$ with
+increment $p_2^3/\Theta+c_0p_5+c_1p_2=G(p_5,p_2)/\Theta\ne0$, so it vanishes at exactly one point. $\square$
+
+**Corollary 6.15.** Corollary 6.8 and Theorem 7.3 hold for every even $q\ge4$. For $q=2$ the formula gives no whisker
+set (Lemma 6.11), but an exact whisker set of $12=q^2(q^2-1)$ lines exists: it was found by an integer program
+(`research/evenq/whiskers_raw_q2.json`) and its exactness is kernel-checked (`HexagonEven.q2_exact`); so Corollary 6.8
+and Theorem 7.3 with $m=2$ hold for $q=2$ as well (208 and 192 vertices). None of this changes a table cell with
+$\Delta\le16$: for $q=2,4,8$ the degree $q+2$ is a Moore degree, and at $\Delta=q+3$ the odd prime power $q+1$ gives
+more.
+
 
 ---
 
@@ -1038,7 +1113,7 @@ $J$; likewise $p$. So at most $2r\Delta<T$ entries $(p',L')$ have $p'$ joined to
 entry $(p',L')$ has neither (it is not $(p,L)$ itself). Replacing $(p,L),(p',L')$ by $(p,L'),(p',L)$ removes a bad
 entry and creates none. So the minimum is 0. $\square$
 
-**Theorem 7.3 (Theorem R).** For every odd prime power $q$ and $m\ge2$ there is a $(q+m)$-regular incidence structure
+**Theorem 7.3 (Theorem R).** For every odd prime power $q$ and $m\ge2$ (even $q$: Corollary 6.15) there is a $(q+m)$-regular incidence structure
 of diameter at most 6 with
 
 $$2(q+1)\bigl(q^4+q^2+1+(m-1)(q^3+m+1)\bigr)$$
