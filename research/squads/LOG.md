@@ -47,3 +47,25 @@ kcopy_hub's for K = 8 (sha256 b9e54f48…) · c6 different bijections: new route
 (10 % at K = 20); hubs missing a copy reach ~9 % of it, so 6 per flag stands.
 
 Kept: c4 and c5 as the verification of the final graph (c5's builder + apsp_sym.c, independent of kcopy_hub.c).
+
+## 2026-10-25 10:40–11:25 UTC, cell-15-7 resume (Opus, session_01P3FWCNGZp2xTc6sYGPNtj4), round 1 (c157b-r1)
+
+Goal: (15,7), branch record 2,500,147 = 14·177,156 + (R_H + 1,536) + (R_L + 1,536) (typed levels + mirrored surgery,
+unequal hub sides, Opus before the round). Every lever was put to the squad: R_H (non-collinear points of H(11), 8,645,
++1 each), R_L (non-concurrent lines, 8,246, +1 each), m (mirrored set, 768, +4 each). Scorer: chkset.py / chkmirror.py.
+Brief: research/squads/c157b-r1/COMMON.md, CARDS.md.
+
+Cards: c1 plain ILS engineering (points) · c2 orbit ILS under the order-7 / order-19 subgroups of the order-133 group
+(points) · c3 the same for lines · c4 orbit searches under other groups (points) · c5 the same for lines · c6 k-fixed tabu
+(points) · c7 mirrored sets beyond 768 · c8 wildcard (algebraic sets, König merges, hyperplane sections).
+
+Best per card: c1 8,645 (no gain; exact region re-solves around RH find no +1; from random 7,629) · c2 8,645 (no gain;
+from scratch 7,889 / 7,961) · c3 8,246 (no gain) · c4 8,645 (Singer normaliser G399 gives another 8,645 set meeting RH in
+6,783 points; other groups 7,432–8,183) · c5 8,163 (C110; no gain) · c6 none feasible at K = 8,646 (penalty 1) · c7 768
+(pairwise-opposite mirrored sets = partial ovoids of H(11), the 756 base is rigid) · c8 8,645 (König merges gain 0;
+hyperplane sections ≤ 1,596).
+
+Kept: nothing from the plain-set searches (8,645 / 8,246 look like the cap for these methods; RH is invariant under the
+order-399 normaliser). Opus meanwhile: a relaxed surgery theorem (research/d15D7b/RELAXED.md) that allows collinear pairs
+in the friendly sets when the hubs of each paired element are wired to freed elements incident with its partner; with it
+the four bottleneck sets grow to ~9,000 points / ~8,600 lines: (15,7) 2,500,749, then 2,501,008 (BFS-checked).
