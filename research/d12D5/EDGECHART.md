@@ -105,7 +105,7 @@ diagonals) runs find perfect controllers at m = 81 easily (3 of 3 seeds); the re
 pair at distance 4, one nonsingular walk, and on these near-extremal controllers many pairs have very few walks.
 Fake ceilings: Z_25 0, Z_26 4, Z_27 0, Z_28 4, Z_29 12 (all with free diagonals).
 
-## m = 81 by fitting the chart to the controller (15:47 UTC)
+## m = 81 by fitting the chart to the controller (15:42 UTC)
 
 Fake-chart runs (FAKE=1 DIAGBT=1) find controllers at m = 81 that are perfect when every walk is good; all four found
 have the same profile: 408 orbit pairs need a 4-walk, 220 have exactly one, 160 two and 28 three. Pools of chart

@@ -39,4 +39,14 @@ Card results (free-diagonal fake ceilings unless said otherwise):
   Opus's exh_k1r.c over 120 chart variants agrees.
 - c5: k = 2 bases fake 4–16 at m = 70–80 (one 10 s zero at m = 76). c6: k3_000 fake 0 at 72, 75 but 8 at 81
   (Opus: 12 at 87). c7: k = 4 below K33m.
+- c6: k3_000 real runs (fixed chart) 4 at m = 75, 12 at m = 78. c7: k = 4 bases fake 0 at m = 72, ≥ 4 at m = 76;
+  real 3–8 at m = 72 (no report sent; files in c7/). c8: variant pools at m = 78 (Z_26) best 4; variants of one CSP
+  solution share only 4–48 of their 48 singular walks.
 Kept: K33m over cyclic groups of odd order is the best family; its fake ceiling is m = 81 (Z_28: 4, Z_29: 12).
+After the round (Opus, 15:30–15:42): the fake-perfect m = 81 controllers are 162-vertex (4,5) bipartite graphs, the
+size of the (4,5) record, so m = 81 is the ceiling of the construction. Chart pools stalled at cost 4 on them; a search
+over the whole chart family with the controller fixed (diag/fit81.py) reached cost 0 on all four controllers:
+13,122 vertices, apsp VALID (four times) and bfs_all.
+Squad value this round: the ceiling maps (c2's Z_25/Z_27 fake zeros, c3's non-cyclic data, c4's exhaustive Haar
+closure, c5–c7 base screens) told Opus where not to look; no card found a record itself, and the decisive ideas
+(variant moves, fitting the chart to an extremal controller) came from Opus reading the near misses.
