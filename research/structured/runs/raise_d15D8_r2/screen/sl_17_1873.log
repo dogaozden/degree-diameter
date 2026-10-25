@@ -1,0 +1,6 @@
+group sl 17 x Z_1873, N=9170208, identity 509456, H order 34, rows 269712, threads 1, setup 0.63s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 114 z on Z_1873
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 17 (+e); mu = 38.55, mu/k = 12.85, fixed-point misses ~ 0.29
+RANDORB d=15 D=8 group=sl 17 x Z_1873 N=9170208 k=3 m=5 f=0 fix=17 samples=300 min=65 p1=69 p10=96 median=156 mean=1988.74 var=180614491.7 mu=38.55 time=26.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 2 2 1 2 2 6 5 4 274

@@ -2,3 +2,5 @@ group sl 27 poly x^3+2x+1 x Z_463, N=9100728, identity 325026, H order 28, rows 
 wide rows: no cyclic subgroup of order >= 64 found (best 28); using haar_gen3's evaluation
 alpha: conj by mat(10,15,2,19) (index 7670), z -> 21 z on Z_463
 ORBIT k=3 m=5 f=0: |Fix(alpha)| = 53 (+e); mu = 34.81, mu/k = 11.60, fixed-point misses ~ 0.84
+RANDORB d=15 D=8 group=sl 27 poly x^3+2x+1 x Z_463 N=9100728 k=3 m=5 f=0 fix=53 samples=300 min=24 p1=33 p10=45 median=68 mean=79.70 var=9100.8 mu=34.81 time=52.7
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 2 0 1 2 11 8 5 12 15 17 11 16 12 25 16 14 11 12 15 16 9 8 10 52

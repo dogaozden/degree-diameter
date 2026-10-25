@@ -125,3 +125,31 @@ untested setting.
    ORBW = 3 and plain, via `tools/orbq.sh`. Any solve is checked with hcsl/hc2 (SL) or haarcheck_psl (PSL)
    and build_haar2.py if N ≤ 10M.
 
+
+### Screen result (300 RANDORB samples per group, k = 3, f = 0; `runs/raise_d15D8_r2/screen/summary.txt`)
+
+Random-S lower tail, μ ≤ 36 and the groups with the best tail at μ ≈ 36–38.5 (2N = Haar order):
+
+| group | N | 2N | μ | fix | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|---|
+| sl 53 × Z61 (solved, round 1) | 9,078,264 | 18,156,528 | 33.7 | 53 | 12 | 17 | 27 | 43 |
+| psl 79 × Z37 | 9,119,760 | 18,239,520 | 35.8 | 38 | 18 | 21 | 28 | 44 |
+| pgl 27 × Z463 | 9,100,728 | 18,201,456 | 34.8 | 26 | 21 | 27 | 45 | 68 |
+| sl 31 × Z307 | 9,136,320 | 18,272,640 | 36.7 | 29 | 21 | 28 | 42 | 63 |
+| sl 37 × Z181 | 9,161,496 | 18,322,992 | 38.1 | 35 | 15 | 30 | 39 | 58 |
+| psl 67 × Z61 | 9,171,228 | 18,342,456 | 38.6 | 32 | 15 | 23 | 34 | 52 |
+| sl 89 × Z13 | 9,163,440 | 18,326,880 | 38.2 | 89 | 19 | 22 | 30 | 46 |
+| sl 29 × Z373 (round 1, failed) | 9,086,280 | 18,172,560 | 34.1 | 29 | 24 | 27 | 39 | 57 |
+| psl 263 (round 1, failed) | 9,095,592 | 18,191,184 | 34.6 | 131 | 18 | 21 | 34 | 51 |
+
+Products with a small A5/A4-type factor were not screened (round 1: psl 5 × psl 11 × Z229 was far too costly).
+
+### Runs started (4000 s each, single thread, orbq.sh; queue logs in `runs/raise_d15D8_r2/out/`)
+
+| job | group | μ | flags | seed |
+|---|---|---|---|---|
+| a | psl 79 × Z37 | 35.8 | ORBW=3 | 5 |
+| b | psl 79 × Z37 | 35.8 | plain | 6 |
+| c | pgl 27 × Z463 | 34.8 | ORBW=3 | 5 |
+| d | sl 31 × Z307 | 36.7 | ORBW=3 | 5 |
+

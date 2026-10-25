@@ -2,3 +2,5 @@ group psl 263 x Z_1, N=9095592, identity 34453, H order 44, rows 206718, threads
 wide rows: HW order 132, rows 68906, setup 2.13s
 alpha: conj by mat(35,26,25,229) (index 2393062), z -> 0 z on Z_1
 ORBIT k=3 m=5 f=0: |Fix(alpha)| = 131 (+e); mu = 34.55, mu/k = 11.52, fixed-point misses ~ 2.06
+RANDORB d=15 D=8 group=psl 263 x Z_1 N=9095592 k=3 m=5 f=0 fix=131 samples=300 min=18 p1=21 p10=34 median=51 mean=60.96 var=1637.8 mu=34.55 time=31.9
+RANDORB hist (cost/k): 0 0 0 0 0 0 3 3 5 10 6 8 13 24 24 27 26 20 22 13 12 17 9 10 5 2 2 1 0 1 0 37
