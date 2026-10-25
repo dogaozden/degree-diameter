@@ -8,7 +8,7 @@ construction, check the graph, and flag entries that do not check out or have no
 - Literature notes (sources read, what is primary and what is inferred): [`lit/LITERATURE.md`](lit/LITERATURE.md).
 - Checks: [`checks/`](checks/), commands in [`checks/CHECKS.md`](checks/CHECKS.md). Builders: [`tools/`](tools/).
 
-STATUS: see the summary below; [`HANDOFF.md`](HANDOFF.md) lists what is still running or open.
+Status and open items: [`HANDOFF.md`](HANDOFF.md).
 
 ## 1. Which table
 
@@ -26,7 +26,21 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 
 ## 2. Summary
 
-SUMMARY_PLACEHOLDER
+Of the 112 cells (counts from cells.csv; five big checks were still running when this was written, see HANDOFF.md):
+
+- **48 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
+  checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the 11 Delorme–Farhi cells, the three D = 3
+  AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
+- **19 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+  holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) (lifts found by the
+  squad), and the Loz cells (3,9), (5,5), (6,5) (Haar graphs of Z23 ⋊ Z11, Z7 ⋊ Z24, Z57 ⋊ Z6).
+- **6 do not check out as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q
+  (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
+- **39 have no traceable construction**: 36 Loz cells (data lost), (3,10), (13,8), (16,5).
+
+No table value was found to be wrong outright: every cell with a construction I could rebuild checks out, and no value
+exceeds its upper bound. The doubtful ones are the six D = 8 cells above. Four of them, (10,8), (12,8), (14,8),
+(16,8), are also cells the repo has not beaten, so the table value is the only claim there.
 
 ## 3. What was rebuilt, family by family
 
@@ -75,16 +89,45 @@ Conder's census of cubic symmetric graphs (1-arc-regular, |Aut| = 504, girth 12)
   points → lines (`tools/xt_build.py`; diameter ≤ n+1 for any bijections, proof in the file header). All 15 reach
   exactly the table value and pass (D = 7 by apsp_orb, up to 4,022,340 vertices). Marked "order": same order, very
   probably the same family, but the original is unavailable.
-- (16,5) = 27,300, the D = 8 cells (Δ = 10..16), (3,8) = 256 and (3,10) = 800: no construction traced (§4).
+- D = 8 (Δ = 10..16 except 13): the values are Gómez's ΩH_q (1986 thesis); my rebuild has the right order but
+  diameter 9 (§4, flag 1).
+- (3,8) = 256: no source; the squad round found two graphs of exactly 256 (a lift of Q₃ over Z₃₂, and a Z₃₂-symmetric
+  annealed graph) and one of 258 (research/squads/table-audit-r1/), all valid.
+- (16,5) = 27,300, (13,8) and (3,10) = 800: no construction traced (§4).
 
 **Loz orange cells (39).** No voltages, groups, base graphs or adjacency lists survive where I could reach them (thesis
 restricted to Auckland logins, eyal.com.au parked, archive.org blocked here). Many orders have the shape 2·p·k with k
 | p−1 (the order of a Haar graph of Z_p ⋊ Z_k). I tried to reach the exact table orders with Haar graphs
-(`tools/exact_haar.py` driving research/frontier/haar_gen3, then build_haar2.py and apsp.c): LOZ_PLACEHOLDER
+(`tools/exact_haar.py` driving research/frontier/haar_gen3, then build_haar2.py and apsp.c): (3,9) = 506, (5,5) = 336 and (6,5) = 684 were reached exactly (graphs/*.sol, checked in checks/small.txt). For
+13 of the 39 cells n/2 = p·k with p prime and k | p−1, the order of Z_p ⋊ Z_k (cells.csv notes give every
+factorization), which fits Loz's published method for general graphs (voltage lifts with metacyclic groups). That is
+a pattern, not a source. The other small Loz cells ((4,8), (4,9), (7,5), (8,5), (9,5), (5,7), (5,8), (4,10)) were
+still being searched when this was written (results land in cells.csv through tools/collect_extra.py).
 
 ## 4. Flags
 
-FLAGS_PLACEHOLDER
+1. **D = 8, Δ = 10..16 (green): does not check out as read.** The values 1,176,480, 2,246,940, 4,650,100,
+   14,172,480 and 36,201,060 are listed verbatim in J. Gómez Martí's PhD thesis (UPC Barcelona, 1986, §2.9.3, p. 45–46)
+   as N(Δ,8) ≥ |ΩH_q|, where ΩB₁ is built from 5α copies of B₁ in groups of five and 10 hub sets ("copies of K₁"),
+   wired as in its Fig. 2.21 (a, b), with Δ = Δ₁ + 2 and a claimed diameter ≤ D₁ + 2. I rebuilt ΩB₁ from the figure
+   (tools/omega_build.py): the order is exactly the table's (ΩH₇ has 1,176,480 vertices), but the diameter is 9.
+   - H(2), H(3), every group pattern, three pairings σ: diameter 9 or 10 (apsp.c, checks/omega_D8.txt).
+   - ΩH₇ at the table order: a hub has eccentricity 9 (136,080 vertices at distance 9), a copy vertex too.
+   - Counting (tools/omega_bound.py): a hub of label x can only reach a point of a copy it does not touch through
+     paths that keep or swap labels at hub hops; within 7 steps these reach at most 16,249 of the 19,608 points of
+     H(7) (q = 8: 26,487 of 37,449; 9: 41,009 of 66,430; 11: 87,297 of 177,156; 13: 165,097 of 402,234), for any
+     pairing σ. So, if hubs are joined to equally labelled vertices as in the thesis's §2.8 notation, ΩH_q has
+     diameter ≥ 9 at every q in the table.
+   This could be my misreading (the figure does not say which vertex each hub uses in each copy), or the
+   construction in the wiki's own source (Delorme–Gómez–Quisquater, "On large bipartite graphs", never published)
+   may differ. Either way these six cells have no checkable graph. (15,8) is the (14,8) value reused; the thesis also
+   lists N(15,8) ≥ 14,978,080 ("ΩH₁₁d"), which the wiki does not use.
+2. **No traceable construction:** 36 Loz cells (data lost), (3,10) = 800, (13,8) = 5,314,680 (= 15·|H(11)| at
+   Δ = q+2; not in Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (3,10), (4,8), (4,9), (11,10),
+   (15,10), (16,10).
+3. **Attribution:** (6,7) and (8,7) are coloured Delorme–Gómez–Quisquater on the wiki, but their construction and
+   exact orders are in Delorme 1985 §9.
+4. **(16,3) = 394:** no source states the construction; a Delorme–Farhi duplication on PG(2,13) gives exactly 394.
 
 ## 5. Outside the brief, for the coordinator
 

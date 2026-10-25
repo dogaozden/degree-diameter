@@ -1,11 +1,9 @@
 (3,5)=56 Bar-Yehuda-Etzion: n=56 edges=84 degree min=3 max=3 bipartite=yes diameter=5 RESULT VALID d=3 D=5 n=56 
-(3,5)=56 annealed (graphs/d3D5_n56_anneal.edges.txt): n=56 edges=84 degree min=3 max=3 bipartite=yes diameter=5 RESULT VALID d=3 D=5 n=56 
 Hafner file 7.3: n=80 edges=280 degree min=7 max=7 bipartite=yes diameter=3 RESULT VALID d=7 D=3 n=80 
 Hafner file 4.5: n=160 edges=320 degree min=4 max=4 bipartite=yes diameter=5 RESULT VALID d=4 D=5 n=160 
 Hafner file 4.7: n=840 edges=1680 degree min=4 max=4 bipartite=yes diameter=7 RESULT VALID d=4 D=7 n=840 
 Hafner file mdec3.7: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7 RESULT VALID d=3 D=7 n=168 
 (7,3)=80 Haar Z5:Z8: n=80 edges=280 degree min=7 max=7 bipartite=yes diameter=3 RESULT VALID d=7 D=3 n=80 
-(3,7)=168 Conder C168.1: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7 RESULT VALID d=3 D=7 n=168 
 (11,3)=190 FMP Phi_95(4,7,16,27,38,52,62,81): n=190 edges=1045 degree min=11 max=11 bipartite=yes diameter=3 RESULT VALID d=11 D=3 n=190 
 (11,3)=190 FMP Phi_95(4,16,30,43,51,62,71,89): n=190 edges=1045 degree min=11 max=11 bipartite=yes diameter=3 RESULT VALID d=11 D=3 n=190 
 (11,3)=190 FMP Phi_95(11,15,21,28,37,40,45,63): n=190 edges=1045 degree min=11 max=11 bipartite=yes diameter=3 RESULT VALID d=11 D=3 n=190 
@@ -28,4 +26,11 @@ Hafner file mdec3.7: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7
 (14,5) 9 copies of W(9): n=14760 edges=103320 degree min=14 max=14 bipartite=yes diameter=5 RESULT VALID d=14 D=5 n=14760 
 (15,5) 7 copies of W(11): n=20496 edges=153720 degree min=15 max=15 bipartite=yes diameter=5 RESULT VALID d=15 D=5 n=20496 
 (7,7) 3 copies of H(5): n=23436 edges=82026 degree min=7 max=7 bipartite=yes diameter=7 (level shift L=3 B=7812 checked as an automorphism; 7812 sources) RESULT VALID d=7 D=7 n=23436 
+(3,5) graphs/d3D5_n56_anneal.edges.txt: n=56 edges=84 degree min=3 max=3 bipartite=yes diameter=5 RESULT VALID d=3 D=5 n=56 
+(3,7) graphs/d3D7_n168_conder_C168.1.edges.txt: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7 RESULT VALID d=3 D=7 n=168 
+(3,8) graphs/d3D8_n256_Q3lift_Z32_squad-c3.edges.txt: n=256 edges=384 degree min=3 max=3 bipartite=yes diameter=8 RESULT VALID d=3 D=8 n=256 
+(3,8) graphs/d3D8_n256_symZ32_squad-c6.edges.txt: n=256 edges=384 degree min=3 max=3 bipartite=yes diameter=8 RESULT VALID d=3 D=8 n=256 
+(3,8) graphs/d3D8_n258_K33lift_Z43_squad-c3.edges.txt: n=258 edges=387 degree min=3 max=3 bipartite=yes diameter=8 RESULT VALID d=3 D=8 n=258 
 (3,9) Haar d3D9_n506_meta_23_11_2_x1.sol: n=506 edges=759 degree min=3 max=3 bipartite=yes diameter=9 RESULT VALID d=3 D=9 n=506 
+(5,5) Haar d5D5_n336_meta_7_24_3_x1.sol: n=336 edges=840 degree min=5 max=5 bipartite=yes diameter=5 RESULT VALID d=5 D=5 n=336 
+(6,5) Haar d6D5_n684_meta_57_6_7_x1.sol: n=684 edges=2052 degree min=6 max=6 bipartite=yes diameter=5 RESULT VALID d=6 D=5 n=684 

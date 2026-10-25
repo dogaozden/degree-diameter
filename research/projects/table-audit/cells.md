@@ -9,8 +9,8 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (3,5) | 56 | Bar-Yehuda-Etzion; Bond-Delorme | yes | apsp.c VALID |  |  |
 | (3,6) | 126 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (3,7) | 168 | Conder-Nedela; Delorme-Gomez-Quisquater; Loz | yes | apsp.c VALID on C168.1 and on Hafner's mdec3.7 |  |  |
-| (3,8) | 256 | Delorme, Gomez, Quisquater | no |  | 288 | no traceable construction |
-| (3,9) | 506 | Loz | no |  |  | no traceable construction (data lost) |
+| (3,8) | 256 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 288 | holder's construction lost; order reproduced |
+| (3,9) | 506 | Loz | order | build_haar2.py + apsp.c VALID |  | holder's construction lost; order reproduced |
 | (3,10) | 800 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
 | (4,3) | 26 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (4,4) | 80 | bipartite Moore graph | yes | apsp.c VALID |  |  |
@@ -22,7 +22,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (4,10) | 11,748 | Loz | no |  | 12,416 | no traceable construction (data lost) |
 | (5,3) | 42 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (5,4) | 170 | bipartite Moore graph | yes | apsp.c VALID |  |  |
-| (5,5) | 336 | Loz | no |  | 354 | no traceable construction (data lost) |
+| (5,5) | 336 | Loz | order | build_haar2.py + apsp.c VALID | 354 | holder's construction lost; order reproduced |
 | (5,6) | 2,730 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (5,7) | 3,110 | Loz | no |  | 3,120 | no traceable construction (data lost) |
 | (5,8) | 9,234 | Loz | no |  | 9,576 | no traceable construction (data lost) |
@@ -30,7 +30,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (5,10) | 90,068 | Loz | no |  | 95,472 | no traceable construction (data lost) |
 | (6,3) | 62 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (6,4) | 312 | bipartite Moore graph | yes | apsp.c VALID |  |  |
-| (6,5) | 684 | Loz | no |  |  | no traceable construction (data lost) |
+| (6,5) | 684 | Loz | order | build_haar2.py + apsp.c VALID |  | holder's construction lost; order reproduced |
 | (6,6) | 7,812 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (6,7) | 8,310 | Delorme, Gomez, Quisquater | yes | apsp.c VALID | 8,880 | attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9 |
 | (6,8) | 29,790 | Loz | no |  | 31,680 | no traceable construction (data lost) |
@@ -65,7 +65,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (10,5) | 4,000 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 4,800 |  |
 | (10,6) | 132,860 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
 | (10,7) | 224,694 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 225,128 |  |
-| (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
+| (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
 | (10,9) | 7,057,400 | Loz | no |  | 8,003,856 | no traceable construction (data lost) |
 | (10,10) | 50,331,156 | Loz | no |  | 60,141,120 | no traceable construction (data lost) |
 | (11,3) | 190 | Feria-Puron-Miller-Pineda-Villavicencio; Araujo-Pardo-Lopez | yes | apsp.c VALID on all three Phi_95 and on R_9 | 192 |  |
@@ -73,7 +73,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (11,5) | 5,850 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 7,020 |  |
 | (11,6) | 142,464 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 148,944 |  |
 | (11,7) | 398,580 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 407,162 |  |
-| (11,8) | 2,246,940 | Delorme, Gomez, Quisquater | no |  | 2,258,520 | no traceable construction |
+| (11,8) | 2,246,940 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 2,258,520 | does not check out as read: diameter >= 9 |
 | (11,9) | 15,200,448 | Loz | no |  | 16,792,080 | no traceable construction (data lost) |
 | (11,10) | 130,592,354 | Loz | no |  |  | no traceable construction (data lost) |
 | (12,3) | 266 | bipartite Moore graph | yes | apsp.c VALID |  |  |
@@ -81,7 +81,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (12,5) | 8,200 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 9,840 |  |
 | (12,6) | 354,312 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
 | (12,7) | 664,300 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 680,068 |  |
-| (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
+| (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
 | (12,9) | 30,001,152 | Loz | no |  | 34,026,720 | no traceable construction (data lost) |
 | (12,10) | 300,383,050 | Loz | no |  | 325,832,976 | no traceable construction (data lost) |
 | (13,3) | 274 | Araujo-Pardo-Lopez | yes | apsp.c VALID | 276 |  |
@@ -96,23 +96,23 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (14,4) | 4,760 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (14,5) | 14,760 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 17,568 |  |
 | (14,6) | 804,468 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
-| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,774,584 |  |
-| (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
+| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | PENDING | 1,774,584 |  |
+| (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
 | (14,9) | 95,087,738 | Loz | no |  | 116,068,656 | no traceable construction (data lost) |
 | (14,10) | 1,213,477,190 | Loz | no |  | 1,326,627,120 | no traceable construction (data lost) |
 | (15,3) | 374 | Araujo-Pardo-Lopez | yes | apsp.c VALID | 376 |  |
 | (15,4) | 4,946 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,070 |  |
 | (15,5) | 20,496 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 20,736 |  |
-| (15,6) | 842,048 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 870,440 |  |
-| (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 2,484,720 |  |
-| (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no |  | 18,128,880 | no traceable construction |
+| (15,6) | 842,048 | Delorme-Farhi duplication | yes | PENDING | 870,440 |  |
+| (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | order | PENDING | 2,484,720 |  |
+| (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 18,128,880 | does not check out as read: diameter >= 9 |
 | (15,9) | 168,016,334 | Loz | no |  | 208,029,120 | no traceable construction (data lost) |
 | (15,10) | 2,300,326,510 | Loz | no |  |  | no traceable construction (data lost) |
 | (16,3) | 394 | Delorme-Farhi duplication | yes | apsp.c VALID | 396 |  |
 | (16,4) | 5,134 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,440 |  |
 | (16,5) | 27,300 | Delorme, Gomez, Quisquater | no |  | 33,792 | no traceable construction |
-| (16,6) | 884,062 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 940,846 |  |
-| (16,7) | 4,022,340 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID |  |  |
-| (16,8) | 36,201,060 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
+| (16,6) | 884,062 | Delorme-Farhi duplication | yes | PENDING | 940,846 |  |
+| (16,7) | 4,022,340 | Delorme, Gomez, Quisquater | order | PENDING |  |  |
+| (16,8) | 36,201,060 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
 | (16,9) | 288,939,118 | Loz | no |  | 337,394,400 | no traceable construction (data lost) |
 | (16,10) | 4,119,507,330 | Loz | no |  |  | no traceable construction (data lost) |

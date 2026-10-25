@@ -87,13 +87,29 @@ for d, q, j in ((7, 5, 1), (9, 7, 1), (10, 8, 1), (11, 9, 1), (12, 9, 2), (13, 1
         rebuilt='order', check='apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d%d.apsp.txt)' % d,
         notes='exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)')
 D8 = {10: (7, 2, 30), 11: (8, 2, 30), 12: (9, 2, 35), 13: (11, 1, 15), 14: (11, 2, 40), 15: (11, 2, 40), 16: (13, 2, 45)}
+GOMEZ = ('J. Gomez Marti, PhD thesis "Diametro y vulnerabilidad en redes de interconexion", UPC Barcelona 1986, '
+         'Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, '
+         'thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, "On large bipartite graphs" (submitted; never found)')
 for d, (q, j, m) in D8.items():
-    put(d, 8, source='wiki: Delorme-Gomez-Quisquater, "On large bipartite graphs" (submitted; never found)',
-        construction='none traced; value = %d|H(%d)| with Delta = q+1+j, j = %d (fits m = (2j+1)(floor((q-1)/2)+3(j-1)))' % (m, q, j),
-        rebuilt='no', check='', flag='no traceable construction',
-        notes=('the (14,8) graph reused (degree 14 <= 15); ' if d == 15 else '') +
+    if d == 13:
+        put(d, 8, source='wiki: Delorme-Gomez-Quisquater (unpublished); not in Gomez 1986',
+            construction='none traced; value = 15|H(11)| with Delta = q+2', rebuilt='no', check='',
+            flag='no traceable construction', notes='superseded by a verified repo record')
+        continue
+    put(d, 8, source=GOMEZ,
+        construction='Omega H(%d): %d copies of H(%d) in groups of 5 plus 10 hubs per point/line pair (degree %d); '
+                     'the thesis lists N(%d,8) >= %s' % (q, m - 5, q, d, d if d != 15 else 14, f'{m * 2 * (q ** 6 - 1) // (q - 1):,}'),
+        rebuilt='no', check='as read, diameter 9 (checks/omega_D8.txt)',
+        flag='does not check out as read: diameter >= 9',
+        notes=('the (14,8) value reused (degree 14 <= 15); the thesis also claims N(15,8) >= 14,978,080 (Omega H_11 d); ' if d == 15 else '') +
+              ('the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most %s of the %s points of a copy it does not touch within 7 steps '
+               '(tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; ' % (
+                   {7: '16,249', 8: '26,487', 9: '41,009', 11: '87,297', 13: '165,097'}[q], f'{(q ** 6 - 1) // (q - 1):,}')) +
               ('unbeaten by the repo' if d in (10, 12, 14, 15, 16) else 'superseded by a verified repo record'))
-put(3, 8, source='wiki: Delorme-Gomez-Quisquater (unpublished)', construction='', rebuilt='no', check='', flag='no traceable construction',
+put(3, 8, source='wiki: Delorme-Gomez-Quisquater (unpublished)',
+    construction='found here (squad table-audit-r1): a lift of the cube Q3 over Z32 (c3) and a Z32-symmetric annealed graph (c6), '
+                 'both 256; also 258 (K33 over Z43)', rebuilt='order', check='apsp.c VALID (checks/small.txt)',
+    flag="holder's construction lost; order reproduced",
     notes='not a symmetric cubic graph (Conder census); superseded by the repo record 288')
 put(3, 10, source='wiki: Delorme-Gomez-Quisquater (unpublished)', construction='', rebuilt='no', check='', flag='no traceable construction',
     notes='not a symmetric cubic graph; Conder\'s 720 (C720.3) and Bar-Yehuda-Etzion\'s 672 are smaller; unbeaten by the repo')
@@ -111,5 +127,12 @@ if __name__ == '__main__':
     for k, v in extra.items():
         R.setdefault(k, {}).update(v)
     assert len(R) == 112, len(R)
+    import re
+    for k, v in R.items():          # a check whose log is missing or has no VALID line is not claimed
+        for log in re.findall(r'checks/([\w.]+\.txt)', v.get('check', '')):
+            path = os.path.join(HERE, 'checks', log)
+            if 'VALID' in v['check'] and (not os.path.exists(path) or 'RESULT VALID' not in open(path).read()):
+                v['check'] = 'PENDING (log not complete): ' + v['check']
+                break
     json.dump(R, open(os.path.join(HERE, 'results.json'), 'w'), indent=1)
     print('results.json', len(R))

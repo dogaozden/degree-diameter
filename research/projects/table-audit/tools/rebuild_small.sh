@@ -23,13 +23,11 @@ chk() { # name file d D
 } > "$P/checks/moore_h_small.txt"
 {
   python3 "$T/small_builders.py" bye 28 4 12,0,8,20 t/bye56.txt >/dev/null; chk "(3,5)=56 Bar-Yehuda-Etzion" t/bye56.txt 3 5
-  chk "(3,5)=56 annealed (graphs/d3D5_n56_anneal.edges.txt)" "$P/graphs/d3D5_n56_anneal.edges.txt" 3 5
   for f in 7.3:7:3 4.5:4:5 4.7:4:7 mdec3.7:3:7; do
     n=${f%%:*}; r=${f#*:}; python3 -I "$T/adjlist2edges.py" "$P/lit/hafner_bipartite/$n" t/hafner_$n.txt >/dev/null
     chk "Hafner file $n" t/hafner_$n.txt ${r%%:*} ${r#*:}
   done
   python3 "$R/research/frontier/build_haar2.py" "$P/graphs/d7D3_n80_meta_5_8_2_x1.sol" t/h80.txt >/dev/null; chk "(7,3)=80 Haar Z5:Z8" t/h80.txt 7 3
-  chk "(3,7)=168 Conder C168.1" "$P/graphs/d3D7_n168_conder_C168.1.edges.txt" 3 7
   for A in 4,7,16,27,38,52,62,81 4,16,30,43,51,62,71,89 11,15,21,28,37,40,45,63; do
     python3 "$T/small_builders.py" phi 95 $A t/phi.txt >/dev/null; chk "(11,3)=190 FMP Phi_95($A)" t/phi.txt 11 3
   done
@@ -45,7 +43,11 @@ chk() { # name file d D
   done
   python3 "$T/xt_build.py" g/h_5.txt 1 t/x7.txt >/dev/null
   printf '(7,7) 3 copies of H(5): '; bin/apsp_orb t/x7.txt 7 7 1 3 7812 | tr '\n' ' '; echo
-  for f in "$P"/graphs/*_x1.sol; do
+  for f in "$P"/graphs/*.edges.txt; do
+    b=$(basename $f); d=$(echo $b | sed 's/^d\([0-9]*\)D.*/\1/'); D=$(echo $b | sed 's/^d[0-9]*D\([0-9]*\)_.*/\1/')
+    chk "($d,$D) graphs/$b" $f $d $D
+  done
+  for f in "$P"/graphs/*.sol; do
     case $f in *d7D3*) continue;; esac
     b=$(basename $f); d=$(echo $b | sed 's/^d\([0-9]*\)D.*/\1/'); D=$(echo $b | sed 's/^d[0-9]*D\([0-9]*\)_.*/\1/')
     python3 "$R/research/frontier/build_haar2.py" $f t/hs.txt >/dev/null; chk "($d,$D) Haar $b" t/hs.txt $d $D

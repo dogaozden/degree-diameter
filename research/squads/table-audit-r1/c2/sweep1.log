@@ -1,0 +1,104 @@
+# N=256 groups=24
+N=256 A=Z8xZ16 x| Z2 diag(7,15) best_diam=16 S=[53, 93, 251] tries=3844
+N=256 A=Z2xZ64 x| Z2 diag(1,1) best_diam=None S=None tries=5240
+N=256 A=Z4xZ32 x| Z2 diag(3,15) best_diam=None S=None tries=4971
+N=256 A=Z4xZ32 x| Z2 diag(3,1) best_diam=None S=None tries=6729
+N=256 A=Z4xZ32 x| Z2 diag(1,31) best_diam=None S=None tries=3691
+N=256 A=Z128xZ1 x| Z2 diag(127,1) best_diam=14 S=[111, 113, 151] tries=2232
+N=256 A=Z4xZ32 x| Z2 diag(3,31) best_diam=16 S=[27, 89, 129] tries=3412
+N=256 A=Z2xZ64 x| Z2 diag(1,63) best_diam=15 S=[19, 21, 239] tries=2814
+N=256 A=Z2xZ64 x| Z2 diag(1,31) best_diam=None S=None tries=4263
+N=256 A=Z8xZ16 x| Z2 diag(7,9) best_diam=None S=None tries=9053
+N=256 A=Z2xZ64 x| Z2 diag(1,33) best_diam=None S=None tries=6417
+N=256 A=Z8xZ16 x| Z2 diag(7,1) best_diam=None S=None tries=8555
+N=256 A=Z8xZ8 x| Z4 diag(1,3) best_diam=None S=None tries=17865
+N=256 A=Z64xZ1 x| Z4 diag(1,1) best_diam=None S=None tries=6819
+N=256 A=Z32xZ1 x| Z8 diag(9,1) best_diam=None S=None tries=11164
+N=256 A=Z64xZ1 x| Z4 diag(63,1) best_diam=None S=None tries=10267
+N=256 A=Z8xZ16 x| Z2 diag(1,7) best_diam=None S=None tries=8748
+N=256 A=Z16xZ1 x| Z16 diag(11,1) best_diam=None S=None tries=15912
+N=256 A=Z2xZ32 x| Z4 diag(1,31) best_diam=None S=None tries=13739
+N=256 A=Z32xZ1 x| Z8 diag(19,1) best_diam=None S=None tries=15437
+N=256 A=Z4xZ8 x| Z8 diag(3,3) best_diam=None S=None tries=17232
+N=256 A=Z8xZ1 x| Z32 diag(7,1) best_diam=None S=None tries=9820
+N=256 A=Z4xZ4 x| Z16 diag(3,1) best_diam=None S=None tries=12287
+N=256 A=Z32xZ1 x| Z8 diag(1,1) best_diam=None S=None tries=10564
+BEST N=256 diam=14 group=(128, 1, 2, 127, 1) S=[111, 113, 151] edges=384 file=/home/user/degree-diameter/research/squads/table-audit-r1/c2/graphs/best_N256_diam14.txt
+# N=260 groups=24
+N=260 A=Z2xZ65 x| Z2 diag(1,14) best_diam=15 S=[131, 136, 254] tries=3778
+N=260 A=Z10xZ13 x| Z2 diag(9,12) best_diam=15 S=[75, 125, 153] tries=2297
+N=260 A=Z10xZ13 x| Z2 diag(9,1) best_diam=15 S=[79, 86, 200] tries=3523
+N=260 A=Z10xZ13 x| Z2 diag(1,12) best_diam=15 S=[13, 96, 190] tries=3085
+N=260 A=Z5xZ26 x| Z2 diag(4,25) best_diam=15 S=[13, 215, 247] tries=2312
+N=260 A=Z130xZ1 x| Z2 diag(129,1) best_diam=15 S=[37, 63, 145] tries=2272
+N=260 A=Z5xZ26 x| Z2 diag(4,1) best_diam=15 S=[118, 183, 194] tries=3466
+N=260 A=Z5xZ26 x| Z2 diag(1,25) best_diam=15 S=[33, 90, 222] tries=3338
+N=260 A=Z2xZ65 x| Z2 diag(1,64) best_diam=15 S=[13, 205, 255] tries=2050
+N=260 A=Z2xZ65 x| Z2 diag(1,51) best_diam=15 S=[151, 192, 198] tries=3261
+N=260 A=Z2xZ65 x| Z2 diag(1,1) best_diam=66 S=[130, 189, 203] tries=1607
+N=260 A=Z4xZ5 x| Z13 diag(1,1) best_diam=None S=None tries=2057
+N=260 A=Z10xZ1 x| Z26 diag(9,1) best_diam=15 S=[13, 94, 192] tries=4173
+N=260 A=Z65xZ1 x| Z4 diag(14,1) best_diam=None S=None tries=3852
+N=260 A=Z65xZ1 x| Z4 diag(51,1) best_diam=None S=None tries=4304
+N=260 A=Z26xZ1 x| Z10 diag(25,1) best_diam=15 S=[55, 116, 154] tries=3482
+N=260 A=Z65xZ1 x| Z4 diag(31,1) best_diam=None S=None tries=6158
+N=260 A=Z5xZ1 x| Z52 diag(3,1) best_diam=None S=None tries=6409
+N=260 A=Z65xZ1 x| Z4 diag(12,1) best_diam=None S=None tries=10358
+N=260 A=Z52xZ1 x| Z5 diag(1,1) best_diam=None S=None tries=1640
+N=260 A=Z65xZ1 x| Z4 diag(27,1) best_diam=None S=None tries=6486
+N=260 A=Z65xZ1 x| Z4 diag(44,1) best_diam=None S=None tries=6756
+N=260 A=Z65xZ1 x| Z4 diag(1,1) best_diam=None S=None tries=1549
+N=260 A=Z5xZ1 x| Z52 diag(4,1) best_diam=None S=None tries=3115
+BEST N=260 diam=15 group=(2, 65, 2, 1, 14) S=[131, 136, 254] edges=390 file=/home/user/degree-diameter/research/squads/table-audit-r1/c2/graphs/best_N260_diam15.txt
+# N=800 groups=24
+N=800 A=Z2xZ200 x| Z2 diag(1,51) best_diam=None S=None tries=3311
+N=800 A=Z4xZ100 x| Z2 diag(3,1) best_diam=None S=None tries=2805
+N=800 A=Z5xZ80 x| Z2 diag(4,9) best_diam=None S=None tries=5391
+N=800 A=Z2xZ200 x| Z2 diag(1,49) best_diam=None S=None tries=2218
+N=800 A=Z8xZ50 x| Z2 diag(3,49) best_diam=None S=None tries=1420
+N=800 A=Z16xZ25 x| Z2 diag(1,24) best_diam=27 S=[92, 425, 758] tries=1575
+N=800 A=Z8xZ50 x| Z2 diag(7,1) best_diam=None S=None tries=3962
+N=800 A=Z2xZ200 x| Z2 diag(1,101) best_diam=None S=None tries=2729
+N=800 A=Z20xZ20 x| Z2 diag(9,19) best_diam=None S=None tries=3870
+N=800 A=Z2xZ200 x| Z2 diag(1,199) best_diam=25 S=[31, 495, 557] tries=1161
+N=800 A=Z10xZ40 x| Z2 diag(9,9) best_diam=None S=None tries=4854
+N=800 A=Z4xZ100 x| Z2 diag(1,99) best_diam=None S=None tries=1532
+N=800 A=Z10xZ40 x| Z2 diag(9,31) best_diam=None S=None tries=2818
+N=800 A=Z2xZ200 x| Z2 diag(1,99) best_diam=None S=None tries=1344
+N=800 A=Z10xZ40 x| Z2 diag(9,19) best_diam=None S=None tries=3265
+N=800 A=Z8xZ50 x| Z2 diag(1,49) best_diam=None S=None tries=2168
+N=800 A=Z5xZ80 x| Z2 diag(4,49) best_diam=None S=None tries=5147
+N=800 A=Z400xZ1 x| Z2 diag(399,1) best_diam=25 S=[163, 361, 595] tries=802
+N=800 A=Z2xZ200 x| Z2 diag(1,149) best_diam=None S=None tries=2251
+N=800 A=Z10xZ40 x| Z2 diag(1,39) best_diam=None S=None tries=3425
+N=800 A=Z8xZ50 x| Z2 diag(7,49) best_diam=25 S=[213, 345, 347] tries=1295
+N=800 A=Z4xZ100 x| Z2 diag(3,99) best_diam=27 S=[43, 505, 603] tries=1771
+N=800 A=Z20xZ20 x| Z2 diag(19,1) best_diam=None S=None tries=5464
+N=800 A=Z5xZ80 x| Z2 diag(4,41) best_diam=22 S=[1, 398, 562] tries=2543
+BEST N=800 diam=22 group=(5, 80, 2, 4, 41) S=[1, 398, 562] edges=1200 file=/home/user/degree-diameter/research/squads/table-audit-r1/c2/graphs/best_N800_diam22.txt
+# N=804 groups=24
+N=804 A=Z2xZ201 x| Z2 diag(1,133) best_diam=69 S=[139, 526, 680] tries=1004
+N=804 A=Z402xZ1 x| Z2 diag(401,1) best_diam=25 S=[47, 651, 793] tries=945
+N=804 A=Z2xZ201 x| Z2 diag(1,1) best_diam=202 S=[403, 584, 622] tries=628
+N=804 A=Z6xZ67 x| Z2 diag(5,66) best_diam=25 S=[35, 251, 747] tries=948
+N=804 A=Z2xZ201 x| Z2 diag(1,68) best_diam=69 S=[403, 416, 790] tries=1068
+N=804 A=Z2xZ201 x| Z2 diag(1,200) best_diam=25 S=[3, 541, 661] tries=967
+N=804 A=Z3xZ134 x| Z2 diag(2,1) best_diam=69 S=[294, 403, 778] tries=1160
+N=804 A=Z6xZ67 x| Z2 diag(5,1) best_diam=69 S=[182, 671, 756] tries=1192
+N=804 A=Z3xZ134 x| Z2 diag(1,133) best_diam=69 S=[21, 346, 726] tries=875
+N=804 A=Z3xZ134 x| Z2 diag(2,133) best_diam=25 S=[205, 371, 631] tries=959
+N=804 A=Z6xZ67 x| Z2 diag(1,66) best_diam=69 S=[192, 443, 746] tries=1004
+N=804 A=Z2xZ67 x| Z6 diag(1,37) best_diam=None S=None tries=7031
+N=804 A=Z3xZ1 x| Z268 diag(2,1) best_diam=None S=None tries=1005
+N=804 A=Z67xZ1 x| Z12 diag(30,1) best_diam=None S=None tries=8577
+N=804 A=Z134xZ1 x| Z6 diag(1,1) best_diam=202 S=[3, 83, 727] tries=710
+N=804 A=Z6xZ1 x| Z134 diag(1,1) best_diam=202 S=[67, 214, 724] tries=638
+N=804 A=Z268xZ1 x| Z3 diag(1,1) best_diam=None S=None tries=619
+N=804 A=Z2xZ67 x| Z6 diag(1,1) best_diam=202 S=[405, 578, 634] tries=661
+N=804 A=Z3xZ1 x| Z268 diag(1,1) best_diam=None S=None tries=578
+N=804 A=Z402xZ1 x| Z2 diag(1,1) best_diam=202 S=[383, 402, 423] tries=610
+N=804 A=Z3xZ67 x| Z4 diag(2,66) best_diam=None S=None tries=1834
+N=804 A=Z67xZ1 x| Z12 diag(37,1) best_diam=None S=None tries=3725
+N=804 A=Z804xZ1 x| Z1 diag(1,1) best_diam=None S=None tries=664
+N=804 A=Z2xZ6 x| Z67 diag(1,1) best_diam=202 S=[97, 372, 402] tries=741
+BEST N=804 diam=25 group=(402, 1, 2, 401, 1) S=[47, 651, 793] edges=1206 file=/home/user/degree-diameter/research/squads/table-audit-r1/c2/graphs/best_N804_diam25.txt
