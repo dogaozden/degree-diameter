@@ -44,15 +44,18 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - **(3,7):** no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving group of
      automorphisms acting freely with at most 8 vertex orbits. All Haar graphs and all lifts of the 2+2, 3+3 and
      4+4 bases were searched exhaustively up to the Moore bound.
-   - **(4,8):** every group of order 1093–1300 was screened, except orders 1152, 1280 and 1296 (7,972 groups). The
-     eleven groups that came within cost 5 (all affine-type, like Loz's group) are exhaustively negative; the
-     closest is cost 1.
+   - **(4,8):** every group of order 1093–1400 was screened, except orders 1152, 1280, 1296 and 1344 (10,168
+     groups). The eleven groups that came within cost 5 (all affine-type, like Loz's group, and all of order
+     ≤ 1240) are exhaustively negative; the closest is cost 1.
    - **(4,9):** the closest group found is C101 : C25 = SmallGroup(2525,3) (5,050 vertices), 2 vertices short and
      exhaustively negative. The library screen of orders 2486–2700 found nothing, and neither did a screen of every
      group of the seven squarefree orders there that the installed library lacks.
+   - **(3,9):** lifts of the 2+2 base over every group of order 127–255, except orders 128 and 192, are
+     exhaustively negative. Those two orders are all that is left to close the 2+2 case up to the Moore bound.
    - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
      closest is SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative
-     (cost 4).
+     (cost 4). Lifts of the 2+2 base over every group of order 201–270 except 256 are exhaustively negative, and
+     lifts of all three 3+3 bases over orders 146–200 (except 192) were screened with nothing below cost 12.
    - **(3,7), (3,9), (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table. Every group up to the Moore bound
      was scanned, and the family maxima are 140, 234, 506 and 660 vertices at D = 7–10.
 6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Most near misses in every cell are affine-type
@@ -375,15 +378,20 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
   (`runs/d3D10_k33_sg136_3_exhaustive.txt`, `_identity.txt`).
   - The voltage-lifts session reports another 3+3 base (their b3_3_0) over Z17 ⋊ Z8 as exhaustively negative at
     cost 2. Our b33_0 reaches the same cost 2 there by annealing (squad card c1), so it is probably the same base.
-- **2+2 lifts at (3,8), (3,9), (3,10):** all groups of orders 73–113, 127 and 129–170, and 201–239
-  (`runs/lift_b22_D*.tsv`): none.
-  - Partial: order 114 (4 of 6), 128 (189 of 2,328) and 240 (43 of 208).
-  - The best are cost 8 (order 80), 12 (order 140), and 2 (Z29 ⋊ Z7 at 812 and C4 × (C11 : C5) at 880).
-  - For (3,9) the Moore bound allows 2+2 lifts up to order 255, so (3,9) is not closed.
-  - (3,10), all 67 groups of order 243 = 3⁵ (972 vertices; the shape of the Haar near miss (486,40)): 55 searched
-    exhaustively, 12 removed by the rigorous filters, no solution, best cost 8 (`runs/lift_b22_D10.tsv`).
-- **(4,8): the best groups of the full screen** (§6.2), all eleven at cost ≤ 5, are exhaustively negative (`onegroup.py`,
-  `runs/d4D8_sg*_exhaustive.txt`):
+- **2+2 lifts at (3,8), (3,9), (3,10)** (`allgroups.py --base bases/b22.txt`, `runs/lift_b22_D{8,9,10}.tsv`): no
+  solution anywhere.
+  - (3,8): every group of order 73–113; order 114 is partial (4 of 6). Best cost 8 (order 80).
+  - (3,9): every group of order 127 and 129–255 except 192. Order 128 is partial (189 of 2,328) and order 192
+    (1,543 groups, 920 of them past the filters) was not run. The Moore bound allows 2+2 lifts up to order 255, so
+    these two orders are all that stands between this and a theorem. Best cost 12 (C7 × (C5 : C4), order 140);
+    over 171–255 (1,176 groups, 889 searched, 522 million assignments) the best is 76.
+  - (3,10): every group of order 201–270 except 256 (56,092 groups, not run). Best cost 2 (Z29 ⋊ Z7 at 812 and
+    C4 × (C11 : C5) at 880); over 240–270 the best is 8. The Moore bound allows orders up to 511.
+  - Order 243 = 3⁵ at (3,10) (972 vertices; the shape of the Haar near miss (486,40), whose index-2 subgroup has
+    order 243): all 67 groups, 55 searched, 12 removed by the rigorous filters, best cost 8.
+- **(4,8): the best groups of the full screen** (§6.2), all eleven at cost ≤ 5, are exhaustively negative
+  (`onegroup.py`, `runs/d4D8_sg*_exhaustive.txt`). The screen of orders 1301–1400 found nothing below cost 20, so it
+  added none:
 
 | group | structure | sets tested | best cost |
 |---|---|---|---|
@@ -495,8 +503,9 @@ and in control groups of the same order that have no solution.
 - So in the small-N cells no averaged quantity can tell which group will solve. That covers μ, the screening score
   and the quotient balance of §4; for the metacyclic groups the bound of §2.3 is the exception.
 - **That is why exhaustive coverage of all groups of the right order found (4,7).** This session applied the same
-  recipe to (4,8) (all groups of order 1093–1300 except 1152, 1280, 1296), (4,7) (448–500), (4,9) (library orders
-  2486–2700 except 2624) and (3,10) (exhaustive to order 600). It found near misses but no record.
+  recipe to (4,8) (all groups of order 1093–1400 except 1152, 1280, 1296, 1344), (4,7) (448–500), (4,9) (library
+  orders 2486–2700 except 2624, and the seven squarefree orders the library lacks) and (3,10) (exhaustive to order
+  600). It found near misses but no record.
 
 ## 4. The metacyclic records of the voltage-lifts session (45 solutions, D ≥ 7)
 
@@ -576,6 +585,7 @@ Why a screen is meaningful:
 |---|---|---|---|
 | (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`) | orders 1093–1200 except 1152: 3,924 groups, of which 2,813 annealed, 861 fail the rank test and 250 the abelianization bound | no solution; the 10 best are exhaustively negative (§2.5) |
 | (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`, tags `_1201`, `_1236`, `_1248`, `_1251`) | orders 1201–1300 except 1280 and 1296: 1201–1235 (1,945 groups, 1,114 annealed), 1236–1250 without 1248 (169), 1248 (1,460 groups, 954 annealed), 1251–1300 (474, 320 annealed) | no solution; best cost 2 at C31 : (C5 × Q8) = SmallGroup(1240,7), exhaustively negative (§2.5); otherwise ≥ 8 |
+| (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`, tag `_1301`) | orders 1301–1400 except 1344: all 2,196 groups, 1,575 annealed, 379 rank > 3, 242 abelianization bound | no solution; best cost 20 (SmallGroup(1320,143) = C2 × (A4 × (C11 : C5))); SL(2,11) reaches 22 |
 | (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
 | (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
 | (4,9) | Haar, every SmallGroup, 5 s anneal, then 2 × 30 s for cost ≤ 10 (`fscreen.py`, `fscreen2.py`) | orders 2486–2700 in the library: 1,029 groups (589 annealed, 161 rank > 3, 279 abelianization bound). Not covered: order 2624 (1,672 groups, C41 by 2-groups) and 54 of the 61 orders the library lacks (the 7 squarefree ones are in the next row) | no solution; best cost 2 after stage 2 at C101 : C25 = SmallGroup(2525,3) (5,050 vertices), exhaustively negative: the normal form (§2.2) has 1,513,200 sets, no solution, best 2 short (`z101.py` → `runs/d4D9_z101x25_exhaustive.txt`) |
@@ -584,9 +594,11 @@ Why a screen is meaningful:
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
 | (3,10) | 2+2 lifts, exhaustive (`allgroups.py --base bases/b22.txt`) | orders 240–270 except 256: all 481 groups (372 searched, 289 million assignments; 68 rank > 3; 41 abelianization bound), all 67 of order 243 included | none; best cost 8 (SmallGroup(240,89) = SL(2,5) . C2 and (243,29)) |
+| (3,9) | 2+2 lifts, exhaustive (`allgroups.py --base bases/b22.txt`) | orders 171–255 except 192: all 1,176 groups (889 searched, 522 million assignments; 167 rank > 3; 120 abelianization bound) | none; best cost 76 (C19 : C9, order 171) |
 | (4,9) | Loz-like Z_p ⋊ Z_k (index ≤ 3, central part ≤ 3, action order ≥ 10; `lozlike.py`, 2 × 30 s; calibration re-finds Loz's group) | N = 2486–3000, 7 groups | best cost 6 (Z37 ⋊ Z72, N = 2664) |
 | (4,8) | Loz-like, 2 × 10 s | N = 1093–1870, 20 groups (most have k > p, missed by the first session's frob scan) | best cost 8 (Z43 ⋊ Z28) |
 | (4,7) | Loz-like, 2 × 5 s | N = 433–1093, 23 groups | best cost 4 (C13 : C36, exhaustively negative), then 6 |
+| (3,10) | lifts of all three 3+3 bases, 4 s anneal (`flscreen.py`) | orders 146–200 except 192, all 667 groups per base (b33_0 and b33_1: 654 annealed, 13 rank > 4; K3,3: 618 annealed, 13 rank > 4, 36 above the lattice bound) | none; best cost 12 (K3,3 over SmallGroup(162,22), a 3-group extended by C2), 26 (b33_1 over C4 × (C13 : C3)) and 28 (b33_0 over C7 × (C7 : C3)) |
 | (3,10) | squad r2: 3+3 bases, orders 134–145; 4+4 bases, 101–106 | ~150 groups | best cost 2 (b33_0 over C17 : C8, re-anneal), 4 (K3,3 over C17 : C8, then exhaustive) |
 | (3,9) | squad r2: 3+3 and 4+4 bases, orders 64–100 | ~180 groups | best cost 32 |
 | (3,7) | squad r2: cube, orders 22–26 (exhaustive, with the identity pass); 5+5 bases, 17–25 (226 of 510 pairs) | – | best cost 8 (cube, exhaustive), 16 (b55_1 over C17) |

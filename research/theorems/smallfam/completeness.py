@@ -13,6 +13,7 @@ for f in sys.argv[1:]:
         if r[1] == '*': skipped.add(int(r[0])); continue
         ids[int(r[0])].add(int(r[1]))
     ns = sorted(set(ids) | skipped)
-    counts = dict(zip(ns, nr(ns)))
+    nq = [n for n in ns if n not in skipped]      # skipped orders may be missing from the library
+    counts = dict(zip(nq, nr(nq)))
     incomplete = [(n, len(ids[n]), counts[n]) for n in ns if n not in skipped and len(ids[n]) != counts[n]]
     print(f'{f}: orders {ns[0]}..{ns[-1]} ({len(ns)} orders); skipped orders: {sorted(skipped)}; incomplete (order, done, total): {incomplete}')
