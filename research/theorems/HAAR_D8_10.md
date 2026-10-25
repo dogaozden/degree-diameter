@@ -385,8 +385,9 @@ Over 32 solved orbit runs, the number of evaluations fits the random-S effort la
 §4.1 with μ_A in place of μ (BEYOND_RANDOM.md §2).
 
 *What does not change.* The number of α-closed sets is about (N/k)^m |Fix(α)|^(f−1)/m!, against about N^(Δ−1) for all
-sets containing e. Setting the expected number of valid sets to 1 gives the same "first-moment ceiling",
-μ ≈ (Δ − f) ln N, in both cases (STRUCTURE.md §1). So in this model orbit-closure makes larger groups *searchable*; it
+sets containing e. Setting the expected number of valid sets to 1 gives a "first-moment ceiling" of
+μ ≈ km·ln N = (Δ − f) ln N for α-closed sets (with P(valid) ≈ e^(−μ/k)) and μ ≈ (Δ − 1) ln N for all sets: essentially
+the same (STRUCTURE.md §1). So in this model orbit-closure makes larger groups *searchable*; it
 does not make larger valid sets *exist*. Cells whose table value lies above that ceiling (for example (12,8), (14,8),
 (16,8)) were not reached, consistent with the model (STRUCTURE.md §6).
 
@@ -489,6 +490,11 @@ in §5 uses SL(2, q), a product containing SL(2, q), a PSL(2, q) with a cyclic f
   graphs (or any graphs) above the table. Each record in §5 is a single graph.
 - **The size law is not a theorem.** The observed orders follow N ≈ Δ(Δ − 1)^(D−2) g_Δ / ln(N/μ\*) with a slowly varying
   μ\* (SIZE_LAW.md; g_Δ = (Δ−1)²/((Δ−1)² − 1)). That is a heuristic fitted to data.
+- **Lift families at D = 8.** research/theorems/D8_NUMEROLOGY.md §1.1 (branch `claude/d8-table-numerology-mi6but`) proves
+  a family statement for lifts: a bipartite graph of even diameter n with j added point–line matchings, lifted over Z_M
+  with constant voltages t_1, …, t_j, has diameter ≤ n + 2 whenever {0} ∪ {±t_k} ∪ {t_k − t_l} ∪ {t_k + t_l} = Z_M. Applied
+  to generalized hexagons it gives diameter-8 graphs, but below the table in every cell. It is not a Haar-graph statement
+  and was not re-checked for this note.
 - **Random-S theorems are in another regime.** research/theory/THRESHOLD.md proves, for every finite group and fixed D
   as Δ → ∞, that a random S of size Δ gives diameter ≤ D with high probability once the number of distinct-letter words
   exceeds (D−1)!·N ln N, and fails below N(ln N − ln ln N − ω(1)). Those proofs use Suen's inequality (in the form stated
@@ -513,7 +519,7 @@ bipartite Moore bound.
 | (5,8) | 9,234 | **9,760** | +5.7 % | 22.3 % | Z_61 ⋊_8 Z_80 | – | (9,576) | B | B, A |
 | (6,8) | 29,790 | **31,680** | +6.3 % | 16.2 % | PSL(2,11) × Z_24 | k = 2, f = 0: 2+2+2 | (30,576) | B | B, I, F, A |
 | (7,8) | 80,940 | **95,760** | +18.3 % | 14.3 % | PSL(2,19) × Z_14 | k = 3: 1+3+3 | ✓ | B ×2 | B, I, F, A |
-| (8,8) | 201,480 | **239,904** | +19.1 % | 12.5 % | PSL(2,17) × Z_49 | k = 3: 1+1+3+3 | ✓ | B ×2 | B, I, F |
+| (8,8) | 201,480 | **239,904** | +19.1 % | 12.5 % | PSL(2,17) × Z_49 | k = 3: 1+1+3+3 | ✓ | B ×2 | B, I, F, A |
 | (9,8) | 449,480 | **540,360** | +20.2 % | 11.3 % | PSL(2,19) × Z_79 | k = 3, f = 0: 3+3+3 | ✓ | B ×2 | B, I, F |
 | (11,8) | 2,246,940 | **2,258,520** | +0.5 % | 10.2 % | PSL(2,59) × Z_11 | k = 5: 1+5+5 | – | B, I, P, G | B, F |
 | (13,8) | 5,314,680 | **6,999,552** | +31.7 % | 9.0 % | SL(2,7)² × Z_31 | k = 6 (swap): 1+6+6 | – | B, G (+3 on a branch) | B, I |
@@ -524,19 +530,19 @@ bipartite Moore bound.
 | (8,9) | 1,091,232 | **1,341,600** | +22.9 % | 10.0 % | SL(2,25) × Z_43 | k = 3: 1+1+3+3 | – | B | B, I |
 | (9,9) | 2,961,536 | **3,499,776** | +18.2 % | 9.1 % | PSL(2,7) × SL(2,7) × Z_31 | k = 3, f = 0: 3+3+3 | – | B ×2, G | B, I |
 | (10,9) | 7,057,400 | **8,003,856** | +13.4 % | 8.3 % | SL(2,83) × Z_7 | k = 3: 1+3+3+3 | – | B, I, C, C2, G | B, F |
-| (11,9) | 15,200,448 | **16,792,080** | +10.5 % | 7.6 % | SL(2,61) × Z_37 | k = 3: 1+1+3+3+3 | – | B, I, C, C2, G | B |
-| (12,9) | 30,001,152 | **34,026,720** | +13.4 % | 7.2 % | SL(2,41) × Z_247 | k = 3, f = 0: 3+3+3+3 | – | C, C2, G | C |
-| (13,9) | 50,990,610 | **67,742,688** | +32.9 % | 7.2 % | SL(2,103) × Z_31 | k = 3: 1+3+3+3+3 | – | C, G | C, C2 |
+| (11,9) | 15,200,448 | **16,792,080** | +10.5 % | 7.6 % | SL(2,61) × Z_37 | k = 3: 1+1+3+3+3 | – | B, I, C, C2, G | B, F |
+| (12,9) | 30,001,152 | **34,026,720** | +13.4 % | 7.2 % | SL(2,41) × Z_247 | k = 3, f = 0: 3+3+3+3 | – | C, C2, G | C, F |
+| (13,9) | 50,990,610 | **67,742,688** | +32.9 % | 7.2 % | SL(2,103) × Z_31 | k = 3: 1+3+3+3+3 | – | C, G | C, C2, F |
 | (14,9) | 95,087,738 | **116,068,656** | +22.1 % | 6.6 % | SL(2,67) × Z_193 | k = 3: 1+1+3+3+3+3 | – | C, C2, G | C |
 | (15,9) | 168,016,334 | **208,029,120** | +23.8 % | 6.5 % | SL(2,79) × Z_211 | k = 3, f = 0: 3+3+3+3+3 | – | C, C2, G | C |
-| (16,9) | 288,939,118 | **337,394,400** | +16.8 % | 6.1 % | SL(2,151) × Z_49 | k = 3: 1+3+3+3+3+3 | – | C, C2, G (note 3) | – |
+| (16,9) | 288,939,118 | **337,394,400** | +16.8 % | 6.1 % | SL(2,151) × Z_49 | k = 3: 1+3+3+3+3+3 | – | C, C2, G (note 3) | C |
 | (4,10) | 11,748 | **12,416** | +5.7 % | 21.0 % | Z_97 ⋊_19 Z_64 | – | ✓ | A | A |
 | (5,10) | 90,068 | **95,472** | +6.0 % | 13.7 % | Z_1989 ⋊_461 Z_24 | – | ✓ | A | A |
 | (6,10) | 452,032 | **524,160** | +16.0 % | 10.7 % | SL(2,5) × PSL(2,7) × Z_13 | k = 3, f = 0: 3+3 | ✓ | B ×2 | B, I |
 | (7,10) | 1,987,380 | **2,237,760** | +12.6 % | 9.3 % | PSL(2,5) × SL(2,8) × Z_37 | k = 3: 1+3+3 | – | B, G | B, I |
 | (8,10) | 6,927,210 | **7,818,096** | +12.9 % | 8.3 % | SL(2,67) × Z_13 | k = 3: 1+1+3+3 | – | C, G | B, I, C2, F |
-| (9,10) | 20,017,260 | **23,975,280** | +19.8 % | 7.8 % | PSL(2,71) × Z_67 | k = 3, f = 0: 3+3+3 | – | P ×2, G | I, P |
-| (10,10) | 50,331,156 | **60,141,120** | +19.5 % | 6.9 % | SL(2,79) × Z_61 | k = 3: 1+3+3+3 | – | C, C2, G | C |
+| (9,10) | 20,017,260 | **23,975,280** | +19.8 % | 7.8 % | PSL(2,71) × Z_67 | k = 3, f = 0: 3+3+3 | – | P ×2, G | I, P, F |
+| (10,10) | 50,331,156 | **60,141,120** | +19.5 % | 6.9 % | SL(2,79) × Z_61 | k = 3: 1+3+3+3 | – | C, C2, G | C, F |
 | (11,10) | 130,592,354 | **148,729,680** | +13.9 % | 6.7 % | PSL(2,89) × Z_211 | k = 5: 1+5+5 | – | P, G | P |
 | (12,10) | 300,383,050 | **325,832,976** | +8.5 % | 6.3 % | SL(2,107) × Z_133 | k = 3, f = 0: 3+3+3+3 | – | C, C2, G | C |
 | (13,10) | 617,330,936 | **677,714,400** | +9.8 % | 6.0 % | SL(2,199) × Z_43 | k = 3: 1+3+3+3+3 | – | C, C2, G | – |
@@ -567,7 +573,8 @@ sha256).
 `Axioms.out.txt` listing only `propext`, `Classical.choice`, `Quot.sound` (no `sorry`, no `native_decide`). A number in
 brackets is the largest earlier (smaller) graph of the cell proved in Lean. These modules are not imported by the default
 target `lean/BipartiteDD.lean`; build each with `lake build BipartiteDD.Haar.<dir>.<file>` (for example
-`lake build BipartiteDD.Haar.D7D8b.Record`).
+`lake build BipartiteDD.Haar.D7D8b.Record`). The Lean builds were not re-run in this session; the `Axioms.out.txt` files
+are those written when each proof was merged.
 
 **Notes.**
 

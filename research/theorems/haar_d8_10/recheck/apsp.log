@@ -35,3 +35,6 @@ RESULT VALID d=6 D=9 n=127296
 RESULT INVALID
 elapsed 94 s
 === d8D8_psl_17_49_orb3_s1: edge list from build_haar2.py, then apsp_mt 17:17:42
+n=239904 edges=959616 degree min=8 max=8 bipartite=yes diameter=8
+RESULT VALID d=8 D=8 n=239904
+  with D-1:
