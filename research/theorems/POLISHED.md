@@ -3,9 +3,10 @@
 Prepared for Ignacio López and Gabriela Araujo-Pardo. Draft of 2026-10-25 (job thm-polish, branch
 `claude/thm-polish-2oddll`). Sources: `research/NOTE.md`, `research/geometry/geometry.tex` and `PROOFREAD.md`,
 `research/plus2/coords/coords.tex`, `research/p4/regular/REPORT.md`, `research/theorems/REGULARITIES.md`,
-`research/gq4*`, `lean/`. Nothing here is a new result: this file restates the lab's earlier theorems with complete
-proofs, writes every construction in projective coordinates, and lists the neighbourhood of every new vertex so that
-degrees and diameter can be checked by hand.
+`research/gq4*`, `lean/`. This file adds no result to the lab's earlier notes: it restates their theorems with
+complete proofs, writes every construction in projective coordinates, and lists the neighbourhood of every added
+vertex so that degrees and diameter can be checked by hand. What we found in the literature about each result, and
+what we did not search, is in the section "Prior art" after the summary table.
 
 For each result we give: **Statement** (in coordinates), **New vertices** (exact neighbourhoods), **Proof**,
 **Cells** (the 2013 table value against ours), **Status**. Status words:
@@ -43,27 +44,39 @@ Errors and corrections found while preparing this version (none affects a theore
 6. **The fourth hat needs $q\ge3$ without coordinates and $q\ge4$ in coordinates.** The coordinate-free statement
    uses four points of a line ($q+1\ge4$); the coordinate version labels them by four field elements $0,1,a,c$
    ($q\ge4$). Both are stated as such below; no table cell has $q=3$.
-7. **Delorme's two 1985 papers.** Which of [D85a] and [D85b] contains the doubling with levels and the $D=4,6$ table
-   constructions is not confirmed (we have not seen the full texts). Both are cited. Tallini's page range (Mitt. Math. Sem.
-   Giessen 201 (1991) 141–147), marked "to be verified" in `geometry.tex`, agrees with independent citing papers and
-   is now given without the caveat. The 2013 values at $\Delta=16$ (5134 at $D=4$, 884062 at $D=6$) are Delorme's
-   doublings with $m=3$; this is now stated (Example 3.4, Remark 6.9).
+7. **Delorme 1985.** Earlier drafts cited [D85a] and Delorme's J. Graph Theory 9 (1985) 325–334 paper jointly, with the caveat that we had not seen the full
+   texts. We have now read [D85a] (European J. Combin. 6 (1985) 291–302). Its §7 states the doubling with levels,
+   with conditions (L0), (L1), (C$_D$), degree $+1$ per doubling and "$(r+1)$-upling" for degree $+r$, and says that
+   bipartite graphs stay bipartite; it gives no proof ("je ne donne pas la preuve"). Its §8(a) is the $W(q)$/spread
+   construction at $D=4$ (Example 3.4) and its §8(b) is the doubling of a generalized hexagon along $q^3+1$ pairwise
+   opposite elements, with exactly the levels of Theorem 6.3 and $W=\emptyset$ (Remark 6.9; at $q=5$ it states
+   $7812+912+2\cdot132+4=8992$). We now cite [D85a] with section numbers, and no longer cite the J. Graph Theory paper, from
+   which nothing here is taken. Tallini's page range (Mitt. Math. Sem. Giessen 201 (1991) 141–147), marked "to be verified" in
+   `geometry.tex`, agrees with independent citing papers and is now given without the caveat. The 2013 values at
+   $\Delta=16$ (5134 at $D=4$, 884062 at $D=6$) are the values of Delorme's doublings with $m=3$, $q=13$ (Example
+   3.4, Remark 6.9).
 8. **Theorem R is explicit except for the completing anti-flags.** The completion step is an existence argument
    (Lemma 7.2). We now say this plainly: every neighbourhood is listed except the $(m-1)$ completing anti-flags at the
    deficient vertices, and neither the maximum degree nor the diameter depends on that choice.
-9. **Printed matching in [AL20].** Already noted in `geometry.tex`: with the index set $\mathbb F\setminus\{0,1,a\}$
-   four vertices keep degree $q+1$; with $\mathbb F^*$ the graph is $(q+2)$-regular as intended. Kept (Remark 2.7).
-10. **Regular fourth hat in arbitrary planes.** `geometry.tex` Remark 4.8 obtained a regular completion in a
-   non-Desarguesian plane only for $q\ge7$. The count used in the Lean proof (each deficient element is incident with
-   exactly $q-4$ deficient elements) gives it for every $q\ge4$ (Section 2.2). The Lean theorem already says so.
-11. **Credit to [ADFL21].** `geometry.tex` did not cite Araujo-Pardo–Dalfó–Fiol–López (line doubling in a GQ, the
-   closest prior use of line copies); it does now, and so does Section 3 here.
+9. **Printed matching in [AL20].** Remark 2.7 (one sentence, citing arXiv v1, p. 8).
+10. **Regular fourth hat in arbitrary planes.** The earlier version of `geometry.tex` Remark 4.8 obtained a regular
+   completion in a non-Desarguesian plane only for $q\ge7$. The count used in the Lean proof (each deficient element is
+   incident with exactly $q-4$ deficient elements) gives it for every $q\ge4$, and at $q=3$ there is nothing to
+   complete (Section 2.2). The revised Remark 4.8 and the Lean theorem ($q\ge4$) say so.
+11. **Credit for copies in a GQ.** Copies of points and lines of a GQ go back to Delorme [D85a, §§7–8]; Araujo-Pardo,
+   Dalfó, Fiol and López [ADFL21] double every line. Section 3 and `geometry.tex` §5.2 now credit both.
 12. **README label for $(16,4)$.** The README listed the 5440 graph under "orbit search (Haar)". It is not a Haar
    graph (its degrees are 14 and 16, and Haar graphs are regular); it is the Singer-orbit construction of Section 5.
    The label now reads "finite geometry (Singer orbits)".
 13. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
    the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
    numbers below refer to the revised, recompiled `geometry.pdf`.
+14. **Referee and literature reports (25 October).** An independent referee report
+   (`research/referee/polish-2026-10-25.md`) found no mathematical error and two one-sentence gaps (Remark 3.5 with
+   repeated entries; the deficit sums in the proof of Theorem 7.3); both are closed. Its other points (credit to
+   Delorme and to the hat matching of [AL20], status words, notation, references) are applied; where we did something
+   else we say why in "Referee response" at the end. The prior-art statements follow the literature check
+   `research/lit/novelty-2026-10-25.md` (section "Prior art" below).
 
 ## Summary of cells
 
@@ -76,13 +89,13 @@ checked). All our graphs were rebuilt and checked by the coordinator.
 | (11,3) | 222 | 190 | | **192** | yes | fourth hat, $q=9$ | paper, computer, Lean |
 | (13,3) | 314 | 270 | 274 | **276** | yes | fourth hat, $q=11$ | paper, computer, Lean |
 | (15,3) | 422 | 370 | 374 | **376** | yes | fourth hat, $q=13$ | paper, computer, Lean |
-| (7,4) | 518 | 346 | | **359** | no (350 regular) | Theorem B on $Q(4,5)$, explicit example | computer, Lean (graph) |
+| (7,4) | 518 | 346 | | **359** | no (350 regular) | Theorem B on $Q(4,5)$, explicit example | paper (Thm B + App. A), computer, Lean (graph) |
 | (11,4) | 2222 | 1734 | | **1782** | yes | Theorem A, $q=9$ | paper, computer, Lean |
 | (13,4) | 3770 | 3064 | | **3146** | yes | Theorem A, $q=11$ | paper, computer, Lean |
 | (15,4) | 5910 | 4946 | | **5070** | yes | Theorem A, $q=13$ | paper, computer, Lean |
 | (16,4) | 7232 | 5134 | | **5440** | yes | Prop. C + Cor. C1, $q=13$ | paper, computer, Lean |
-| (7,5) | 3110 | 1134 | | **1152** | yes | Haar lemma, $S_4\times\mathbb Z_{24}$ | paper, computer, Lean |
-| (9,5) | 9362 | 2496 | | **2662** | yes | Haar lemma, Heisenberg group mod 11 | paper, computer, Lean |
+| (7,5) | 3110 | 1134 | | **1152** | yes | Haar lemma, $S_4\times\mathbb Z_{24}$ | lemma: paper; instance: computer, Lean |
+| (9,5) | 9362 | 2496 | | **2662** | yes | Haar lemma, Heisenberg group mod 11 | lemma: paper; instance: computer, Lean |
 | (7,6) | 18662 | 8992 | | **9592** | 9348 | Theorem D / R, $q=5$ | paper, computer, Lean |
 | (11,6) | 222222 | 142464 | | **148944** | 147500 | Theorem D / R, $q=9$ | paper, computer, Lean (theorem) |
 | (13,6) | 542906 | 374452 | | **388972** | 386328 | Theorem D / R, $q=11$ | paper, computer, Lean (theorem) |
@@ -91,10 +104,48 @@ checked). All our graphs were rebuilt and checked by the coordinator.
 
 "Lean (theorem)": the general theorem is Lean-checked for every $q$, so these orders are Lean-checked lower bounds
 (Section 9); the graphs themselves are too large for a kernel certificate. "Lean (graph)": the specific graph is
-kernel-checked. The 2013 values at $D=4$ and $D=6$ are Delorme's [D85a, D85b], with $\Delta=q+m$: $m=2$ at
+kernel-checked. "Lemma: paper; instance: computer, Lean": the Haar lemma has a written proof, but the covering
+condition for the particular $(G,S)$ is a finite computation (kernel-checked), not written out. The 2013 values at
+$D=4$ and $D=6$ are Delorme's [D85a, §8], with $\Delta=q+m$: $m=2$ at
 $\Delta=7,11,13,15$ ($2q^3+3q^2+3q+6$ at $D=4$; $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ at $D=6$) and $m=3$, $q=13$ at
 $\Delta=16$ (5134 and 884062); see Example 3.4 and Remark 6.9. At $(8,5)$ the Haar lemma
 gave $1764>1710$ (Lean-checked), since superseded by a $2048$-vertex lift that is not covered here.
+
+*Scope.* Not covered by this note: the lab's $(16,3)$ value 396, the $(8,5)$ value 2048, and every $D\ge7$ value.
+
+## Prior art
+
+From the literature check of 2026-10-25 (`research/lit/novelty-2026-10-25.md`; sources: the CombinatoricsWiki
+bipartite page and the 2013 survey, the full text of [D85a], arXiv, Crossref, Zenodo, F. Comellas' tables of
+2026, and web searches). "Nothing found" below means only that these searches returned nothing; it is not evidence of
+novelty. Google Scholar and zbMATH were not queried, and several older papers could not be read ([DF84], Delorme's
+J. Graph Theory 9 (1985) paper, the full texts of [BLP09], [CCEM08], [E85], [PT]).
+
+- *Doubling with levels (§1).* Delorme [D85a, §7] states Theorem 1.2(a)–(c) without proof; the proof in §1.2 is
+  supplied here. That section contains neither Theorem 1.2(d) nor the hat lemma (Lemma 1.3); we did not search for
+  them elsewhere.
+- *Fourth hat (§2).* An extension of the three hats of Araujo-Pardo and López [AL20]. The literature check did not
+  search for it specifically; the bipartite diameter-3 papers after 2013 that it found are [FMP13], [AL20] and
+  arXiv:2404.04680 (abstract only).
+- *Theorem B (§3).* Partial overlap. Delorme [D85a, §7] doubles an arbitrary induced subgraph (so points and lines
+  together), and his $D=4$ construction [D85a, §8(a)] (Example 3.4) copies a spread of $W(q)$; Araujo-Pardo, Dalfó,
+  Fiol and López [ADFL21, Sec. 4] double every line of a GQ. Nothing found for weights larger than one, for line copies
+  attached to stand-ins, or for the bound $n_b(\Delta,4)\ge2q^2\Delta$ for every prime power $q\le\Delta-1$.
+- *Theorem A (§4).* Nothing found: no source gives an ovoid, $m$-ovoid, weighted ovoid or 2-cover of
+  $\mathrm{AS}(q)$, $q$ odd, or one built from two elliptic quadrics through the centre. Closest: weighted
+  $m$-ovoids as a notion and ovoids of Payne-derived quadrangles (Bamberg, Devillers, Schillewaert [BDS12], §7), and
+  $m$-ovoids of $W(3,q)$ [BLP09], [CCEM08].
+- *Proposition C (§5).* Very likely known: 2-ovoids and partitions of $W(3,q)$ into 2-ovoids are in [BLP09], [FWX19],
+  [CCEM08], and the classes $C_a$ are Ebert's partition [E85]. We claim only the short proof. Not re-checked by the
+  literature check.
+- *Theorem D and Theorem R (§§6–7).* Built on Delorme's doubling of the hexagon along a Hermitian spread
+  [D85a, §8(b)], [T80]. The literature check did not search for whisker sets as such. What it found at $D=6$ is for
+  general (non-bipartite) graphs: constructions from $H(q)$ in F. Comellas' table (entries of September–October 2026)
+  and a 2026 preprint of R. Rajiv (Zenodo, doi:10.5281/zenodo.23052995, unrefereed) that frees degree in compounds of
+  hexagon copies by deleting matching edges at pairwise non-collinear points and attaches new vertices.
+- *Haar lemma (§8).* Haar graphs are lifts of a dipole and a standard tool ([HMP02], [EP16], [LS08]). The literature
+  check looked for Haar graphs of $\mathrm{SL}(2,q)$ and $\mathrm{PSL}(2,q)$ at diameters 8–10, not for the groups
+  used here.
 
 ---
 
@@ -109,7 +160,8 @@ $$n_b(\Delta,D)=\max\{|\mathcal P|+|\mathcal L|:\ \text{every element has at mos
 
 $$M_b(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr).$$
 
-Distances $d(x,y)$ are in $\Gamma(\mathcal S)$. *Collinear* points are distinct points on a common line; *concurrent*
+Distances $d(x,y)$ are in $\Gamma(\mathcal S)$, and $\operatorname{diam}\mathcal S$ means
+$\operatorname{diam}\Gamma(\mathcal S)$. (The README writes $N^b(\Delta,D)$ for $n_b(\Delta,D)$.) *Collinear* points are distinct points on a common line; *concurrent*
 lines are distinct lines on a common point. $\mathbb F=\mathrm{GF}(q)$. Points of $\mathrm{PG}(n,q)$ are written
 $(x_0:\dots:x_n)$; lines of $\mathrm{PG}(2,q)$ are written $[u:v:w]$, with $(x:y:z)\,\mathrm I\,[u:v:w]$ iff
 $ux+vy+wz=0$. $\chi$ is the quadratic character of $\mathbb F$ ($q$ odd), with $\chi(0)=0$.
@@ -133,9 +185,10 @@ not already contain the twin, since then it could be shortened). $\square$
 
 ## 1. Doubling with levels, and the hat lemma
 
-Delorme and Farhi [DF84] observed that a *duplicate* of a vertex (a new vertex with the same neighbours) does not
-increase the diameter. Delorme [D85a, D85b] refined this into a doubling with levels and used it for the old
-$D=4$ and $D=6$ table values. We state it for incidence structures.
+A *duplicate* of a vertex (a new vertex with the same neighbours) does not increase the diameter (see [DF84], which
+we have not seen, and [D85a, §7]). Delorme [D85a, §7] refined this into a doubling with levels, stated there without
+proof, and used it for the old $D=4$ and $D=6$ table values [D85a, §8(a),(b)]. We state it for incidence structures
+and supply a proof.
 
 ### 1.1 The operation
 
@@ -166,7 +219,7 @@ Conditions on $\mathcal A$ (with $D\ge2$):
 
 ### 1.2 Delorme's theorem
 
-**Theorem 1.2 (Delorme [D85a, D85b]).** Let $\mathcal S$ have diameter at most $D\ge2$ and let $m\ge2$.
+**Theorem 1.2 (Delorme [D85a, §7], (a)–(c), stated there without proof).** Let $\mathcal S$ have diameter at most $D\ge2$ and let $m\ge2$.
 
 - (a) If (C$_D$) holds, $\mathcal S^{(m)}_{\mathcal A}$ has diameter at most $D$.
 - (b) If (L0) and (L1) hold, every version satisfies $\deg x^w\le\deg x+m-1$, with equality only if $x$ is incident
@@ -298,11 +351,15 @@ $(q+2)$-regular. Hence $n_b(q+2,3)\ge2(q^2+q+6)$, attained by a regular graph.
 
 The construction and proof use only the axioms of a projective plane together with an anti-flag $(A,\ell)$ and four
 points $X_s$ of $\ell$, so the coordinate-free version holds in every projective plane of order $q\ge3$
-(`geometry.tex`, Theorem 4.2), and so does a regular completion, for every $q\ge4$: a deficient point $p$ lies on
-exactly $q-4$ deficient lines (the lines on $p$ other than $Ap$ meet $\ell$ in the $q$ points other than $Ap\cap\ell$,
-four of which are the $X_s$), dually a deficient line has exactly $q-4$ deficient points, and $2(q-4)\le(q-1)(q-3)$,
-so Hall's theorem gives a perfect matching of non-incident deficient pairs (this is the argument of the Lean proof;
-`geometry.tex` Remark 4.8 had the weaker bound $q+1$ and so needed $q\ge7$). The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
+(`geometry.tex`, Theorem 4.2), and so does a regular completion. At $q=3$ there are no deficient elements
+($(q-1)(q-3)=0$: the four $X_s$ are all of $\ell$), so the structure is already $(q+2)$-regular. For $q\ge4$, put
+$N=(q-1)(q-3)$, the number of deficient points and of deficient lines. A deficient point $p$ lies on exactly $q-4$
+deficient lines (the lines on $p$ other than $Ap$ meet $\ell$ in the $q$ points other than $Ap\cap\ell$, four of
+which are the $X_s$), and dually a deficient line has exactly $q-4$ deficient points. So the bipartite graph of
+non-incident pairs between deficient points and deficient lines is regular of degree $N-(q-4)=q^2-5q+7\ge1$, and a
+regular bipartite graph of positive degree has a perfect matching (König); adding it as flags completes the
+structure. (The Lean proof uses the same count with Hall's theorem; the earlier version of `geometry.tex` Remark 4.8
+had the weaker bound $q+1$ and so needed $q\ge7$.) The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
 "crossed", and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$.
 
 ### 2.3 New vertices and every changed neighbourhood
@@ -400,12 +457,14 @@ the flag $(X_a,\lambda_a)$ removed, links $A\,\mathrm I\,K_a$, $H_a\,\mathrm I\,
 $H_1\,\mathrm I\,K_0$; $M$ contains $P$ and $X_t$ ($t\ne0,1$); $Q$ lies on $\lambda_\infty$ and $\lambda_t$
 ($t\ne0,1$). Dictionary with the affine coordinates of [AL20]: $(x,y)=(x:y:1)$, $[m,b]=[m:-1:b]$,
 $L_c=[1:0:-c]$, $L=[0:0:1]$, $P_m=(1:m:0)$; so $L_0=\ell$, $P_0=A$, $(0,s)=X_s$, $[0,s]=\lambda_s$,
-$L=\lambda_\infty$. The completing matching printed in [AL20] is $(x,y)\sim[x,y]$ ($x\ne0$, $y\notin S_{AL}$) and
-$P_i\sim L_i$ for $i\in\mathbb F\setminus\{0,1,a\}$; with this index set $P_1,P_a,L_1,L_a$ keep degree $q+1$. With
-$i\in\mathbb F^*$ the graph is $(q+2)$-regular, as intended. This does not affect the maximum degree or the diameter.
+$L=\lambda_\infty$. In the completing matching of [AL20] (arXiv v1, p. 8; we have not seen the journal version) the
+index set of $P_i\sim L_i$ should be $\mathbb F^*$; with $\mathbb F\setminus\{0,1,a\}$ the four vertices
+$P_1,P_a,L_1,L_a$ keep degree $q+1$, and neither the order nor the diameter is affected.
 
 **Cells.** $q=9,11,13$ give $(11,3)$: $192$ (2013: 190), $(13,3)$: $276$ (2013: 270; wiki 274 [AL20]), $(15,3)$:
-$376$ (2013: 370; wiki 374 [AL20]), all regular. At $q=5$ it gives $72<80=n_b(7,3)$ (optimal value known).
+$376$ (2013: 370; wiki 374 [AL20]), all regular. (The 2013 value 190 at $(11,3)$ is due to Feria-Purón, Miller and
+Pineda-Villavicencio [FMP13] and, independently, [AL20].) At $q=5$ it gives $72<80=n_b(7,3)$, a value known to be
+exact [FMP13].
 
 **Status.** Paper proof (above; `coords.tex`; coordinate-free in `geometry.tex` §4). Computer-checked:
 `research/plus2/coords/coords.py` builds the structure three ways (from (C1)–(C6), from the point rows and from the
@@ -423,9 +482,12 @@ $M$, $Q$, $H_s$ and $K_s$ (we compared them for this note). See Section 9.
 
 A *generalized quadrangle* (GQ) of order $(s,t)$, $s,t\ge1$, has $(s+1)(st+1)$ points and $(t+1)(st+1)$ lines, and
 for every anti-flag $(p,L)$ exactly one point of $L$ is collinear with $p$. Its incidence graph has diameter 4.
-Copies of lines in a GQ appear already in Araujo-Pardo, Dalfó, Fiol and López [ADFL21, Sec. 4], who double every line
-to get biregular graphs (semi-double graphs). Theorem B copies only some lines, with weights, lets a copy attach to
-clones (stand-ins), and combines this with weighted point copies in the spirit of Delorme–Farhi duplication [DF84].
+Copies of points and lines of a GQ go back to Delorme [D85a, §§7–8]: his doubling may copy any induced subgraph,
+points and lines together, and his $D=4$ construction (Example 3.4) doubles a spread. Araujo-Pardo, Dalfó, Fiol and
+López [ADFL21, Sec. 4] double every line to get biregular graphs (semi-double graphs). Theorem B is not a doubling: a
+clone is joined to every old line through its point, so no tree condition on the copied set is needed, and it allows
+weights larger than one, a multiset of lines, and stand-ins. (A level-0 line all of whose points are at level $-1$ is
+exactly a shadow line with $\sigma=\mathrm{id}$.)
 
 ### 3.1 Statement
 
@@ -484,7 +546,7 @@ $(\Delta-t-1)$-cover (every point on exactly $\Delta-t-1$ entries). Then $\mathc
 diameter 4, maximum degree $\Delta$ and $2\Delta(st+1)$ elements. It becomes $\Delta$-regular, with the same order
 and diameter 4, by the following explicit flags: number the clones $c_0,c_1,\dots$ and the shadow lines
 $y_0,\dots,y_{b-1}$ ($b=|\mathcal M|$), put $k=\Delta-t-1$, and join $c_i$ to $y_j$ for
-$j\equiv ik,ik+1,\dots,ik+k-1\pmod b$.
+$j\equiv ik,ik+1,\dots,ik+k-1\pmod b$. (If $b=0$ or $\sum_pw(p)=0$, the structure is already $\Delta$-regular.)
 
 *Proof.* Double counting flags gives $\sum_pw(p)=(\Delta-s-1)(st+1)$ and $|\mathcal M|=(\Delta-t-1)(st+1)$; the
 total is $(s+t+2+\Delta-s-1+\Delta-t-1)(st+1)=2\Delta(st+1)$. Old points and lines have degree $\Delta$, clones
@@ -493,7 +555,8 @@ the blocks $\{ik,\dots,ik+k-1\}$, $i=0,1,\dots$, run through $0,1,\dots,k\sum_pw
 every residue is hit exactly $\Delta-s-1$ times, and within a block the residues are distinct as $k\le b$. Adding
 flags does not increase distances, and two non-collinear old points still share no line. $\square$
 
-**Example 3.4 (Delorme's $D=4$ construction [D85a, D85b], the 2013 values).** In $W(q)$ take a spread $\Sigma$, a
+**Example 3.4 (Delorme's $D=4$ construction [D85a, §8(a)], the 2013 values).** In $W(q)$ (the symplectic quadrangle
+of $\mathrm{PG}(3,q)$, §4.1) take a spread $\Sigma$, a
 line $v\in\Sigma$, and $\mathcal A_1=\{v\}$, $\mathcal A_0=\Sigma\cup\{\text{points of }v\}$. (L1): the elements on $v$
 are its points; a point of $v$ meets only $v$ in $\mathcal A_1$, a line of $\Sigma\setminus\{v\}$ nothing. (L0): a
 point off $v$ is on exactly one line of $\Sigma$ and on no other line of $\mathcal A_0$; a line not in $\Sigma$ has at
@@ -505,12 +568,14 @@ $2(q+1)(q^2+1)+(m-1)\bigl((q^2+1)+(q+1)+m\bigr)$ elements. For $m=2$ this is $2q
 **Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. 5.13).** For $q$ odd, an ovoid
 $\mathcal O$ of $Q(4,q)$, $w=\mathbf 1_{\mathcal O}$ and maximum degree $q+2$, at most $q^2-q+2$ shadow lines are
 possible: every old point and clone serves at most one shadow line, so a point off $\mathcal O$ is on at most one entry
-of $\mathcal M$ and a point of $\mathcal O$ on at most two; if some $o\in\mathcal O$ is on two entries, each other entry
+of $\mathcal M$ and a point of $\mathcal O$ on at most two. Suppose some $o\in\mathcal O$ is on two entries. They are
+distinct lines: if both were copies of one line $N$, each of the $q$ points of $N$ other than $o$ is off $\mathcal O$,
+has no clone, and would be the stand-in of both entries, giving it degree $q+3$. Each other entry
 $L$ misses $o$ and so has a unique point $y$ collinear with $o$; $y\notin\mathcal O$ (points of an ovoid are
 pairwise non-collinear); the line $oy$ is not an entry of $\mathcal M$ (else $y\notin\mathcal O$ would be on two
 entries), so it is one of the $q-1$ lines on $o$ other than the two entries through $o$, and $y$ is one of its $q$
-points other than $o$; distinct $L$ give distinct $y$. So $|\mathcal M|\le2+q(q-1)$. Otherwise $\mathcal M$ is a
-partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]; see also [CDPS22], §1).
+points other than $o$; distinct $L$ give distinct $y$. So $|\mathcal M|\le2+q(q-1)$. Otherwise every point is on at
+most one entry, so there are no repeated entries, $\mathcal M$ is a partial spread and $|\mathcal M|\le q^2-q+1$ (Tallini [Tal91]; see also [CDPS22], §1).
 
 **Application: $(7,4)\ge359$.** $Q(4,5)$, one clone of each point of an elliptic-quadric ovoid ($w=\mathbf 1_{\mathcal O}$),
 and 21 shadow lines with stand-ins: $2\cdot6\cdot26+26+21=359$, maximum degree 7. Such examples come from an integer
@@ -567,19 +632,19 @@ weighted 2-ovoid of $\mathrm{AS}(q)$, with $\varpi(e)=2$ and $\varpi\in\{0,1\}$ 
 
 The choice $\kappa_1=\tfrac12$, $\kappa_2=\tfrac1{2\varepsilon}$ gives the two quadrics
 
-$$\mathcal E_1:\ 2X_0X_1=X_2^2-\varepsilon X_3^2,\qquad \mathcal E_2:\ 2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2 .$$
+$$\mathcal E^{(1)}:\ 2X_0X_1=X_2^2-\varepsilon X_3^2,\qquad \mathcal E^{(2)}:\ 2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2 .$$
 
 **Corollary 4.2 (Corollary A1).** For every odd prime power $q$, adjoining to $\mathrm{AS}(q)$ one clone of each
-point of $\mathcal E_1\setminus\{x\}$ and one of each point of $\mathcal E_2\setminus\{x\}$ (so $e$ gets two clones)
+point of $\mathcal E^{(1)}\setminus\{x\}$ and one of each point of $\mathcal E^{(2)}\setminus\{x\}$ (so $e$ gets two clones)
 gives a $(q+2)$-regular incidence structure of diameter 4 with $2q^2(q+2)$ elements. Hence
 $n_b(q+2,4)\ge2q^2(q+2)$.
 
-**New vertices.** For $P=(\kappa_iN(w):1:w)\in\mathcal E_i\setminus\{x\}$ ($i=1,2$, $w\in\mathbb F^2$), the clone
+**New vertices.** For $P=(\kappa_iN(w):1:w)\in\mathcal E_{\kappa_i}\setminus\{x\}$ ($i=1,2$, $w\in\mathbb F^2$), the clone
 $P^{(i)}$ is adjacent exactly to the $q+2$ lines of $\mathrm{AS}(q)$ through $P$: the fibre
 $\{(\kappa_iN(w)+\mu:1:w):\mu\in\mathbb F\}$ and, for each $d\in\mathrm{PG}(1,q)$, the line
 $\ell(\kappa_iN(w),w;d)$. The two clones of $e$ are adjacent to the same $q+2$ lines. Changed old neighbourhoods: the
 fibre over $w_0$ gains the clones of $(\kappa_1N(w_0):1:w_0)$ and $(\kappa_2N(w_0):1:w_0)$; the line
-$\ell(a_0,w_0;d)$ gains the clones of its points on $\mathcal E_1$ and on $\mathcal E_2$, which are given by the roots
+$\ell(a_0,w_0;d)$ gains the clones of its points on $\mathcal E_{\kappa_1}$ and on $\mathcal E_{\kappa_2}$, which are given by the roots
 $\lambda$ of the quadratic $(\star)$ below with $\kappa=\kappa_1,\kappa_2$ (two clones in total). Old points are
 unchanged. Every vertex has degree $q+2$.
 
@@ -612,9 +677,10 @@ $\varepsilon$. So $\kappa_1N(w)=\kappa_2N(w)$ forces $N(w)=0$, $w=0$, and the co
 line has $q$ points and gains exactly two clones, every old point is on $q+2$ lines, and every clone is on the $q+2$
 lines of its point. The order is $q^3+q^2(q+2)+2q^2=2q^2(q+2)$. $\square$
 
-**Remarks.** Weights are necessary: an integer program shows that $\mathrm{AS}(3)$ has no 1- or 2-ovoid without
-repeated points and $\mathrm{AS}(5)$ has no $m$-ovoid for $m=1,\dots,4$ (`research/gq4x`). The structure is regular,
-so no choice of clones and shadows on $\mathrm{AS}(q)$ does better at $\Delta=q+2$. Theorem A beats Delorme's
+**Remarks.** Weights are necessary: an integer program shows that $\mathrm{AS}(3)$ has no 1- or 2-ovoid and
+$\mathrm{AS}(5)$ has no $m$-ovoid for $m=1,\dots,4$ (`research/gq4x`). No choice of clones and shadows on
+$\mathrm{AS}(q)$ does better at $\Delta=q+2$: every point of $\mathrm{AS}(q)$, and every clone, is already on
+$t+1=q+2$ lines, so no shadow line can be added, and each line has $q$ points and takes at most 2 clones, so $\sum_pw(p)\le2q^2$. Theorem A beats Delorme's
 $2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
 
 **Cells.** $(11,4)$: $1782$ (2013: 1734); $(13,4)$: $3146$ (3064); $(15,4)$: $5070$ (4946). All regular.
@@ -667,37 +733,38 @@ pairing $a\leftrightarrow q-a$ has no fixed point, as $2a\equiv-1\pmod{q+1}$ is 
 $\mathrm N(u)=A_1s^2+\tau st+A_2t^2$ with $A_1=\mathrm N(y)$, $A_2=\mathrm N(z)$, $\tau=y\bar z+\bar yz$, all in $K$. Put
 $\theta=y\bar z-\bar yz$. As $\bar\theta=-\theta$, $\theta/d\in K$; write $\theta=dk_0$, $k_0\in K$. Then
 
-$$\mathcal D:=\tau^2-4A_1A_2=\theta^2=hk_0^2,\qquad b(y,z)=\mathrm{Tr}(hk_0).$$
+$$\mathfrak d:=\tau^2-4A_1A_2=\theta^2=hk_0^2,\qquad b(y,z)=\mathrm{Tr}(hk_0).$$
 
 Fix $\omega\in K^*$ with $\omega'=-\omega$. For $\mu\in K^*$ put $\nu=\omega/\mu$; the kernel of
 $k\mapsto\mathrm{Tr}(\nu k)$ is the $\mathbb F$-subspace $\mu\mathbb F$. So $\langle u\rangle$ lies in
-$C_\mu:=\{\langle u\rangle:\mathrm N(u)\in\mu\mathbb F^*\}$ iff $(s:t)$ is a zero of the binary form
+$\widetilde C_\mu:=\{\langle u\rangle:\mathrm N(u)\in\mu\mathbb F^*\}$ (so $C_a=\widetilde C_{h^a}$) iff $(s:t)$ is a zero
+of the binary form
 
 $$f_\nu(s,t)=\mathrm{Tr}(\nu A_1)s^2+\mathrm{Tr}(\nu\tau)st+\mathrm{Tr}(\nu A_2)t^2 .$$
 
-(a) Suppose $f_\nu\equiv0$. Then $A_1,\tau,A_2\in\mu\mathbb F$. If $\mathcal D\ne0$, then $hk_0^2=\mathcal D\in\mu^2\mathbb F^*$,
+(a) Suppose $f_\nu\equiv0$. Then $A_1,\tau,A_2\in\mu\mathbb F$. If $\mathfrak d\ne0$, then $hk_0^2=\mathfrak d\in\mu^2\mathbb F^*$,
 so $h\in(K^*)^2\mathbb F^*=(K^*)^2$ (every element of $\mathbb F^*$ is a square in $K$, since $q-1$ divides
-$(q^2-1)/2$), but $h$ generates $K^*$, which has even order. If $\mathcal D=0$, then
+$(q^2-1)/2$), but $h$ generates $K^*$, which has even order. If $\mathfrak d=0$, then
 $\mathrm N(sy+tz)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with $\alpha_0,\beta_0,\gamma_0\in\mathbb F$,
 $\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A_1\ne0$), which vanishes at $(s:t)=(-\beta_0:2\alpha_0)$:
-impossible, since $\mathrm N(u)\ne0$ for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(D(\nu))\le2$ projective zeros,
-$D(\nu)=\mathrm{Tr}(\nu\tau)^2-4\,\mathrm{Tr}(\nu A_1)\,\mathrm{Tr}(\nu A_2)$.
+impossible, since $\mathrm N(u)\ne0$ for $u\ne0$. So $f_\nu\not\equiv0$, and it has $1+\chi(\mathrm{disc}(\nu))\le2$ projective zeros,
+$\mathrm{disc}(\nu)=\mathrm{Tr}(\nu\tau)^2-4\,\mathrm{Tr}(\nu A_1)\,\mathrm{Tr}(\nu A_2)$.
 
 (b) Expanding with $\mathrm{Tr}(\nu k)=\nu k+\nu'k'$,
 
-$$D(\nu)=\mathrm{Tr}(\nu^2\mathcal D)+\nu\nu'P,\qquad P=2\tau\tau'-4A_1A_2'-4A_1'A_2\in\mathbb F .$$
+$$\mathrm{disc}(\nu)=\mathrm{Tr}(\nu^2\mathfrak d)+\nu\nu'\Psi,\qquad \Psi=2\tau\tau'-4A_1A_2'-4A_1'A_2\in\mathbb F .$$
 
-If $L$ is totally isotropic, $\mathrm{Tr}(hk_0)=0$, so $hk_0\in\omega\mathbb F$ and $\eta:=h\mathcal D=(hk_0)^2\in\omega^2\mathbb F\subseteq\mathbb F$.
-Then $\mathrm{Tr}(h^2\nu'^2\mathcal D)=\eta(h\nu'^2+h'\nu^2)=hh'\,\mathrm{Tr}(\nu^2\mathcal D)$, and since
+If $L$ is totally isotropic, $\mathrm{Tr}(hk_0)=0$, so $hk_0\in\omega\mathbb F$ and $\eta:=h\mathfrak d=(hk_0)^2\in\omega^2\mathbb F\subseteq\mathbb F$.
+Then $\mathrm{Tr}(h^2\nu'^2\mathfrak d)=\eta(h\nu'^2+h'\nu^2)=hh'\,\mathrm{Tr}(\nu^2\mathfrak d)$, and since
 $(h\nu')(h\nu')'=hh'\nu\nu'$,
 
-$$D(h\nu')=\mathrm N_{K/\mathbb F}(h)\,D(\nu).$$
+$$\mathrm{disc}(h\nu')=\mathrm N_{K/\mathbb F}(h)\,\mathrm{disc}(\nu).$$
 
 $\mathrm N_{K/\mathbb F}(h)=h^{q+1}$ generates $\mathbb F^*$, so it is a non-square and
-$\chi(D(h\nu'))=-\chi(D(\nu))$. The class belonging to $h\nu'$ is $\omega/(h\nu')=-\mu'/h\equiv(h\mu)^{-1}$ modulo
+$\chi(\mathrm{disc}(h\nu'))=-\chi(\mathrm{disc}(\nu))$. The class belonging to $h\nu'$ is $\omega/(h\nu')=-\mu'/h\equiv(h\mu)^{-1}$ modulo
 $\mathbb F^*$ (using $\mu^{q+1}\in\mathbb F^*$); in indices $a\mapsto-a-1\equiv q-a\pmod{q+1}$. Scaling $\nu$ by
-$\mathbb F^*$ multiplies $D$ by a square. So $L$ meets $C_a\cup C_{q-a}$ in
-$(1+\chi(D(\nu)))+(1-\chi(D(\nu)))=2$ points. $\square$
+$\mathbb F^*$ multiplies $\mathrm{disc}$ by a square. So $L$ meets $C_a\cup C_{q-a}$ in
+$(1+\chi(\mathrm{disc}(\nu)))+(1-\chi(\mathrm{disc}(\nu)))=2$ points. $\square$
 
 **Remark (literature).** For $q$ odd, $W(3,q)$ has $m$-ovoids for every even $m$ and $(q+1)/2$-ovoids [BLP09], and
 [FWX19] states, citing [BLP09], that $W(3,p^e)$ ($p$ odd) has a partition into 2-ovoids. Cossidente, Culbert, Ebert and
@@ -734,10 +801,11 @@ $n_b(q+1+j,4)\ge2(q^2+1)(q+1+j)$ for even $j$.
 incidence structure of diameter 4 with $2\Delta(q^2+1)$ elements if $q$ is even or $\Delta-q-1$ is even, and
 $2\Delta q^2$ elements otherwise. In particular $n_b(\Delta,4)\ge2q^2\Delta$ for every prime power $q\le\Delta-1$.
 
-*Proof.* Corollary 3.3 with $j=\Delta-q-1$. $q$ even: $W(3,q)$ has an ovoid $\mathcal O_0$ and a spread $\Sigma$
+*Proof.* Put $j=\Delta-q-1$. In the first two cases we apply Corollary 3.3 in $W(3,q)$ ($s=t=q$, so
+$\Delta-s-1=\Delta-t-1=j$). $q$ even: $W(3,q)$ has an ovoid $\mathcal O_0$ and a spread $\Sigma$
 [PT, 3.4.1]; take $w=j\mathbf 1_{\mathcal O_0}$, $\mathcal M=j\Sigma$. $q$ odd, $j$ even: $w=(j/2)\mathbf 1_{\mathcal O}$
-with $\mathcal O$ a 2-ovoid of Proposition 5.1, $\mathcal M=j\Sigma$. $q$ odd, $j$ odd: then $\Delta\ge q+2$; in
-$\mathrm{AS}(q)$ take $(\Delta-q)/2$ copies of the weighted 2-ovoid of Theorem 4.1 and $\Delta-q-2$ copies of the fibre
+with $\mathcal O$ a 2-ovoid of Proposition 5.1, $\mathcal M=j\Sigma$. $q$ odd, $j$ odd: then $\Delta\ge q+2$; we apply Corollary 3.3
+in $\mathrm{AS}(q)$ ($s=q-1$, $t=q+1$, so $\Delta-s-1=\Delta-q$ and $\Delta-t-1=\Delta-q-2$) and take $(\Delta-q)/2$ copies of the weighted 2-ovoid of Theorem 4.1 and $\Delta-q-2$ copies of the fibre
 spread. $\square$
 
 **Cells.** $(16,4)$: $q=13$, $5440=2\cdot170\cdot16$ (2013: 5134), regular. In the range $\Delta\le16$ this is the only
@@ -770,7 +838,8 @@ $$p_{12}=p_{34},\quad p_{54}=p_{32},\quad p_{20}=p_{35},\quad p_{65}=p_{30},\qua
 
 It is a generalized hexagon of order $(q,q)$ [T59], [VM98, §2.4]: $(q+1)(q^4+q^2+1)$ points and as many lines, any
 two elements at distance $\le6$, girth 12. The lines on a point $y$ are the $q+1$ lines on $y$ in a totally singular
-plane $\pi_y$. Let $v=\langle e_1,e_6\rangle$ (a line of $H(q)$: no Tits equation involves $p_{16}$). Fix
+plane $\pi_y$. Let $v=\langle e_1,e_6\rangle$ (a line of $Q(6,q)$, as $e_1,e_6$ are singular and $B(e_1,e_6)=0$, and
+a line of $H(q)$, as no Tits equation involves $p_{16}$). Fix
 $c\in\mathbb F$ with $-c$ a non-square. For $z=(\alpha,\beta)\in\mathbb F^2$ let
 
 $$\Pi_z:\ X_0+cX_4+\alpha X_2+\beta X_5=0,\qquad \Pi=\Pi_{(0,0)},$$
@@ -845,7 +914,7 @@ is free, it is on no line of $\mathcal L_v$ and on at most one whisker. A line o
 of $\mathcal L_v$ has no point of $\Pi$ other than its point on $v$ (Lemma 6.1(d)), and a whisker has exactly one point
 of $\Pi$, not on $v$. So the components of the substructure on $\mathcal A_0$ are
 
-$$\{v\}\cup\mathcal P(v)\cup\mathcal L_v\qquad\text{and}\qquad \{n\}\cup\mathcal P(n)\cup\{w\in W:w\text{ meets }n\}\quad(n\in S\setminus\{v\}),$$
+$$\{v\}\cup\mathcal P(v)\cup\mathcal L_v\qquad\text{and}\qquad \{n\}\cup\mathcal P(n)\cup\{h\in W:h\text{ meets }n\}\quad(n\in S\setminus\{v\}),$$
 
 trees of diameter 4 (the ball of radius 2 about $v$; a line, its points and the whiskers hanging from them). Lemma 1.3
 gives (C$_6$), and Theorem 1.2 gives degree $\le q+1+(m-1)$, diameter $\le6$ and the count:
@@ -853,17 +922,17 @@ $|\mathcal A_2|=1$, $|\mathcal A_1|=(q^3+1)+(q+1)$, $|\mathcal A_0|=(q^3+1)+(q^2
 exactly 6: a free point $p$ (level $-1$) has $q^5$ opposite points, and only $(q+1)(q^3+1)<q^5$ points lie in
 $\mathcal A_0$, so some opposite point $p'$ has level $-1$ and $d(p,p')\ge6$ by projection. $\square$
 
-**New vertices: the neighbourhood of every version.** Write $x^w$ for the versions ($a,b,c\in[m]$). Every element of
+**New vertices: the neighbourhood of every version.** Write $x^w$ for the versions ($i,j,k\in[m]$). Every element of
 $H(q)$ appears once in this table.
 
 | element (level) | versions | neighbours of the version | degree |
 |---|---|---|---|
-| $v$ (2) | $v^{abc}$ | $p^{ab}$ for the $q+1$ points $p$ of $v$ | $q+1$ |
-| point $p$ of $v$ (1) | $p^{ab}$ | $v^{ab1},\dots,v^{abm}$; $L^a$ for the $q$ lines $L\in\mathcal L_v$ on $p$ | $q+m$ |
-| line $n\in S\setminus\{v\}$ (1) | $n^{ab}$ | $p^a$ for the $q+1$ points $p$ of $n$ | $q+1$ |
-| point $p\in\mathcal P_\Pi\setminus\mathcal P(v)$ (0) | $p^a$ | $n^{a1},\dots,n^{am}$ for the line $n\in S$ on $p$; $w^a$ for each whisker $w$ on $p$; every other line on $p$ | $q+m$ |
-| line $L\in\mathcal L_v$ (0) | $L^a$ | $p^{a1},\dots,p^{am}$ for $p=L\cap v$; the $q$ other points of $L$ | $q+m$ |
-| whisker $w\in W$ (0) | $w^a$ | $p^a$ for $p=w\cap\Pi$; the $q$ free points of $w$ | $q+1$ |
+| $v$ (2) | $v^{ijk}$ | $p^{ij}$ for the $q+1$ points $p$ of $v$ | $q+1$ |
+| point $p$ of $v$ (1) | $p^{ij}$ | $v^{ij1},\dots,v^{ijm}$; $L^i$ for the $q$ lines $L\in\mathcal L_v$ on $p$ | $q+m$ |
+| line $n\in S\setminus\{v\}$ (1) | $n^{ij}$ | $p^i$ for the $q+1$ points $p$ of $n$ | $q+1$ |
+| point $p\in\mathcal P_\Pi\setminus\mathcal P(v)$ (0) | $p^i$ | $n^{i1},\dots,n^{im}$ for the line $n\in S$ on $p$; $h^i$ for each whisker $h$ on $p$; every other line on $p$ | $q+m$ |
+| line $L\in\mathcal L_v$ (0) | $L^i$ | $p^{i1},\dots,p^{im}$ for $p=L\cap v$; the $q$ other points of $L$ | $q+m$ |
+| whisker $h\in W$ (0) | $h^i$ | $p^i$ for $p=h\cap\Pi$; the $q$ free points of $h$ | $q+1$ |
 | point $r\notin\Pi$ ($-1$) | $r$ | all $m$ versions of the line of $\mathcal L_v\cup W$ on $r$ (if any); every other line on $r$ | $q+m$, or $q+1$ if $r$ is free and on no whisker |
 | line $N\notin\mathcal A_0$ ($-1$) | $N$ | all $m$ versions of its point in $\Pi$ (not on $v$); its $q$ other points | $q+m$ |
 
@@ -985,10 +1054,14 @@ $n_b(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
 With $W$ exact, every element outside $\mathcal A_0$ is incident with exactly one element of $\mathcal A_0$; by the
 counting bound for doublings of a generalized $n$-gon of order $(q,q)$ with $N$ points,
 $q|\mathcal A_0|+2k\le2N$ ($k$ the number of components of $\mathcal A_0$; `geometry.tex` Prop. 3.6), the
-single-level part is as large as possible (here $k=q^3+1$).
+single-level part is as large as the counting bound allows for $k=q^3+1$ components:
+$q(2q^4+2q^3+2q+2)+2(q^3+1)=2N$.
 
-**Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of $H(q)$ along a
-Hermitian spread [D85a, D85b]. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: $8992$, $142464$,
+**Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of a generalized
+hexagon [D85a, §8(b)]: he takes $q^3+1$ pairwise opposite elements (citing [T80]; here the Hermitian spread $S$), puts
+one of them in $\mathcal A_2$, its neighbours and the others in $\mathcal A_1$, and their neighbours in $\mathcal A_0$,
+so $|\mathcal A_1|=q^3+q+2$ and $|\mathcal A_0|=q^4+2q^3+q^2+2q+2$, exactly as in Theorem 6.3 with $W=\emptyset$; at
+$q=5$ he states $7812+912+2\cdot132+4=8992$. At $m=2$ it has $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: $8992$, $142464$,
 $374452$, $842048$ at $q=5,9,11,13$; at $q=13$, $m=3$, it gives $884062$. These are the 2013 table values at
 $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
 
@@ -1097,8 +1170,9 @@ and 270 vertices). Computer checks: $W$ exact for $q=4,8,16$
 and the graphs for $q=2,4,8$ (and $q=16$, $m=2$) built and checked by all-pairs BFS (`research/evenq/`, `geometry.tex`
 Table 3). Lean: `HexagonEven.theorem4_even`, `theoremD_even`, `theoremR` ($q\ge4$), `theoremD_q2`, `theoremR_q2`.
 None of this changes a table cell with
-$\Delta\le16$: for $q=2,4,8$ the degree $q+2$ is a Moore degree, and at $\Delta=q+3$ the odd prime power $q+1$ gives
-more.
+$\Delta\le16$, for any $m$: for $q\in\{2,4,8\}$ and $\Delta=q+m\le16$, either $\Delta-1$ is a prime power (a Moore
+cell, attained by $H(\Delta-1)$), or $\Delta\in\{7,11,13,15,16\}$, where Theorem D with the odd $q'=\Delta-2$ (or
+$q'=13$, $m=3$ at $\Delta=16$) gives much more (for instance $9592$ against $4468$ from $q=4$, $m=3$ at $\Delta=7$).
 
 
 ---
@@ -1109,9 +1183,9 @@ The structure of Corollary 6.8 has equally many points and lines in $\mathcal A_
 $\mathcal A_1$ has $q^3+1$ lines and only $q+1$ points, and $\mathcal A_2$ is a line. So it has
 $(m-1)m(q^3-q+m)$ more lines than points. We delete repeated lines and then add anti-flags.
 
-**Lemma 7.1 (repeated lines).** In $H(q)^{(m)}_{\mathcal A}$, for $n\in S\setminus\{v\}$ and $a\in[m]$ the $m$ lines
-$n^{a1},\dots,n^{am}$ all have the point set $\{p^a:p\in n\}$; for $a,b\in[m]$ the lines $v^{ab1},\dots,v^{abm}$ all
-have the point set $\{p^{ab}:p\in v\}$ (table of §6.2). So there are $mq^3+m^2$ classes of $m$ repeated lines.
+**Lemma 7.1 (repeated lines).** In $H(q)^{(m)}_{\mathcal A}$, for $n\in S\setminus\{v\}$ and $i\in[m]$ the $m$ lines
+$n^{i1},\dots,n^{im}$ all have the point set $\{p^i:p\in n\}$; for $i,j\in[m]$ the lines $v^{ij1},\dots,v^{ijm}$ all
+have the point set $\{p^{ij}:p\in v\}$ (table of §6.2). So there are $mq^3+m^2$ classes of $m$ repeated lines.
 
 **Lemma 7.2 (completion).** Let a finite incidence structure have maximum degree $\le\Delta$, every element of degree
 $\ge\Delta-r$, and $\sum_{\text{points}}(\Delta-\deg)=\sum_{\text{lines}}(\Delta-\deg)=:T$. If $T>2r\Delta$, there is a
@@ -1133,12 +1207,14 @@ elements: $2(q+1)(q^4+q^3+q^2+4)$ for $m=2$ and $2(q+1)(q^4+2q^3+q^2+9)$ for $m=
 order exceeds $M_b(q+m,5)$, so the diameter is exactly 6.
 
 *Proof.* Start from Corollary 6.8. Fix a set $R$ of $q$ lines of $S\setminus\{v\}$, and delete the lines
-$v^{abc}$ with $c\ge2$ ($(m-1)m^2$ lines) and $n^{ab}$ with $b\ge2$ for $n\notin R$ ($(m-1)m(q^3-q)$ lines): in total
+$v^{ijk}$ with $k\ge2$ ($(m-1)m^2$ lines) and $n^{ij}$ with $j\ge2$ for $n\notin R$ ($(m-1)m(q^3-q)$ lines): in total
 $(m-1)m(q^3-q+m)$, the excess, so points and lines are now equal in number. Each class of Lemma 7.1 keeps at least one
 line, so by Lemma 0.2(b) no distance between remaining elements increases. After the deletion the degrees are:
-$p^{ab}$ ($p\in v$) $q+1$; $p^a$ on a line $n\notin R$ of $S$: $q+1$; $p^a$ on $n\in R$: $q+m$; $v^{ab1}$, $n^{a1}$
-($n\notin R$), $n^{ab}$ ($n\in R$) and $w^a$ ($w\in W$): $q+1$; all others as in §6.2 ($q+m$). So every deficit is at
-most $r=m-1$, and $T$ is at least the deficit of the $m|W|$ whisker versions:
+$p^{ij}$ ($p\in v$) $q+1$; $p^i$ on a line $n\notin R$ of $S$: $q+1$; $p^i$ on $n\in R$: $q+m$; $v^{ij1}$, $n^{i1}$
+($n\notin R$), $n^{ij}$ ($n\in R$) and $h^i$ ($h\in W$): $q+1$; all others as in §6.2 ($q+m$). So every deficit is at
+most $r=m-1$. Points and lines are equal in number, so both deficit sums equal
+$\Delta|\mathcal P|-|E|=\Delta|\mathcal L|-|E|$ ($\Delta=q+m$, $E$ the set of flags), as Lemma 7.2 requires; and their
+common value $T$ is at least the deficit of the $m|W|$ whisker versions:
 $T\ge(m-1)mq^2(q^2-1)>2(m-1)(q+m)$. Lemma 7.2 completes the structure; added flags join a point to a line, so the
 graph stays bipartite, and they do not increase distances. The number of points is
 $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$. $\square$
@@ -1156,7 +1232,7 @@ behind those values are not regular (their point side is larger).
 **Status.** Paper proof (above; `geometry.tex` Theorem 6.13; `research/p4/regular/REPORT.md`). Computer-checked:
 all five regular graphs are exactly regular with equal sides and diameter exactly 6 (independent all-pairs checks).
 Lean-checked: `HexagonD.theoremR`, `theoremR_two` (every finite field of odd characteristic); `HexagonEven.theoremR`,
-`theoremR_two` (even $q\ge4$; their docstrings wrongly say "odd $q$", the statements are for characteristic 2);
+`theoremR_two` (hypotheses $(2:\mathbb F)=0$ and $|\mathbb F|\ge4$);
 `HexagonEven.theoremR_q2` ($q=2$, $m=2$, 192 vertices). See Section 9.
 
 ---
@@ -1171,6 +1247,11 @@ $G\times\{A,B\}$ and edges $(g,A)\sim(sg,B)$ for $g\in G$, $s\in S$. So
 $$N(g,A)=\{(sg,B):s\in S\},\qquad N(h,B)=\{(s^{-1}h,A):s\in S\},$$
 
 it is bipartite and $|S|$-regular on $2|G|$ vertices, and right multiplication by $G$ acts on it as automorphisms.
+The name is from Hladnik, Marušič and Pisanski [HMP02] (cyclic groups; Estélyi and Pisanski [EP16] for arbitrary
+groups). $H(G,S)$ is the lift of the dipole with $|S|$ parallel edges, with voltages $S$; voltage lifts of small base
+graphs are the standard tool behind many entries of the bipartite table (Loz and Širáň [LS08]; the 2013 survey
+[MS13], §3.4.5). We state Definition 8.1 and Lemma 8.2 so that the records can be checked; the literature check did
+not look for Lemma 8.2 itself.
 
 **Lemma 8.2 (Haar lemma).** If $S\ne\emptyset$ and every element of $G$ is a product $a^{-1}bc^{-1}d$ and also a
 product $ab^{-1}cd^{-1}$ with $a,b,c,d\in S$, then $H(G,S)$ has diameter at most 5.
@@ -1258,7 +1339,7 @@ made $\Delta$-regular with diameter $\le4$ (Corollary 3.3). Record: `nb_7_4` (th
 
 **Section 4 (Theorem A).** For every finite field $\mathbb F$ of odd characteristic, with $q=|\mathbb F|$:
 `ASq.isGQst` (the coordinate model of §4.1 is `GQst` of order $(q-1,q+1)$), `ASq.weighted_two_ovoid` (Theorem 4.1's
-line count, for $\varepsilon$ a non-square and $c_1c_2=1/(4\varepsilon)$), `ASq.bound` and `ASq.bound_regular` (a
+line count, for $\varepsilon$ a non-square and $\kappa_1\kappa_2=1/(4\varepsilon)$), `ASq.bound` and `ASq.bound_regular` (a
 $(q+2)$-regular bipartite graph on $2q^2(q+2)$ vertices of diameter $\le4$). Records: `nb_11_4_v2` (1782),
 `nb_13_4_v2` (3146), `nb_15_4_v2` (5070).
 
@@ -1316,25 +1397,34 @@ four first attempts were killed for lack of memory and passed on retry), and `#p
 
 - [AS69] R. W. Ahrens, G. Szekeres, On a combinatorial generalization of 27 lines associated with a cubic surface,
   J. Austral. Math. Soc. 10 (1969) 485–492.
-- [ADFL21] G. Araujo-Pardo, C. Dalfó, M. A. Fiol, N. López, Bipartite biregular Moore graphs, arXiv:2103.11443
-  (Section 4 doubles every line of a GQ to get biregular graphs; our clones and shadow lines are a weighted,
-  partial version of that idea).
+- [ADFL21] G. Araujo-Pardo, C. Dalfó, M. A. Fiol, N. López, Bipartite biregular Moore graphs, Discrete Math. 344
+  (2021) 112582, doi:10.1016/j.disc.2021.112582; arXiv:2103.11443 (Section 4 doubles every line of a GQ to get
+  biregular graphs).
 - [AL20] G. Araujo-Pardo, N. López, On new record graphs close to bipartite Moore graphs, Graphs Combin. 38 (2022),
   no. 4, Paper 110; arXiv:2005.02427 (three hats, $n_b(q+2,3)\ge2(q^2+q+5)$; Problem 4 asks for diameters 4 and 6).
+  The journal byline is "Gabriela Araujo, Nacho López".
+- [BDS12] J. Bamberg, A. Devillers, J. Schillewaert, Weighted intriguing sets of finite generalised quadrangles,
+  J. Algebraic Combin. 36 (2012) 149–173.
 - [BGS06] S. Ball, P. Govaerts, L. Storme, On ovoids of parabolic quadrics, Des. Codes Cryptogr. 38 (2006) 131–145.
 - [BLP09] J. Bamberg, M. Law, T. Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica 29
   (2009) 1–17.
 - [CCEM08] A. Cossidente, C. Culbert, G. L. Ebert, G. Marino, On $m$-ovoids of $W_3(q)$, Finite Fields Appl. 14 (2008)
   76–84.
 - [CDPS22] M. Ceria, J. De Beule, F. Pavese, V. Smaldore, On large partial ovoids of symplectic and Hermitian polar
-  spaces, J. Combin. Des. 31 (2023) 5–22.
-- [D85a] C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291–302.
-- [D85b] C. Delorme, Large bipartite graphs with given degree and diameter, J. Graph Theory 9 (1985) 325–334.
-  (Which of [D85a], [D85b] contains the doubling with levels and the $D=4,6$ constructions is still to be checked.)
+  spaces, J. Combin. Des. 31 (2023) 5–22 (online November 2022).
+- [D85a] C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291–302 (§7: doubling
+  with levels, stated without proof; §8(a): the $D=4$ construction in $W(q)$; §8(b): the $D=6$ construction in a
+  generalized hexagon).
 - [DF84] C. Delorme, G. Farhi, Large graphs with given degree and diameter, Part I, IEEE Trans. Comput. C-33 (1984)
-  857–860.
+  857–860 (not seen by us).
+- [EP16] A. Estélyi, T. Pisanski, Which Haar graphs are Cayley graphs?, Electron. J. Combin. 23(3) (2016) P3.10.
 - [E85] G. L. Ebert, Partitioning projective geometries into caps, Canad. J. Math. 37 (1985) 1163–1175.
-- [FWX19] T. Feng, Y. Wang, Q. Xiang, On $m$-ovoids of symplectic polar spaces, arXiv:1909.07954.
+- [FMP13] R. Feria-Purón, M. Miller, G. Pineda-Villavicencio, On large bipartite graphs of diameter 3, Discrete
+  Math. 313 (2013), doi:10.1016/j.disc.2012.11.013; arXiv:1203.3588.
+- [FWX19] T. Feng, Y. Wang, Q. Xiang, On $m$-ovoids of symplectic polar spaces, J. Combin. Theory Ser. A 175 (2020)
+  105279; arXiv:1909.07954.
+- [HMP02] M. Hladnik, D. Marušič, T. Pisanski, Cyclic Haar graphs, Discrete Math. 244 (2002).
+- [LS08] E. Loz, J. Širáň, New record graphs in the degree-diameter problem, Australas. J. Combin. 41 (2008) 63–80.
 - [MS13] M. Miller, J. Širáň, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin.
   Dynamic Survey DS14v2 (2013), Table 4 (the "2013" column).
 - [P71] S. E. Payne, Nonisomorphic generalized quadrangles, J. Algebra 18 (1971) 201–212.
