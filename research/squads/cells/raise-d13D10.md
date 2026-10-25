@@ -120,3 +120,9 @@ FIXMIN=5) is at cost 5 after 6,009 evaluations, 5,383 s of 12,600 s. No record y
 **Status (18:08 UTC).** PSL 241×49 (2N 685,866,720): failed at cost 3 after 4,433 evaluations, 5,400 s. SL 191×49 started
 in slot B. PSL 131×311 (order 5, f = 3, FIXMIN=5): cost 1 after 12,433 evaluations, 10,837 s of 12,600 s, so it ends
 about 18:35 UTC unsolved unless it reaches cost 0 first. Next in slot A is SL 137×133. No record yet.
+
+**Status (18:39 UTC).** PSL 131×311 (order 5, f = 3, FIXMIN=5), seed 1: ended at cost 1 after 14,529 evaluations,
+12,604 s, unsolved. Its best configuration (cost 1) is kept in runs/raise2_13_10/out/d13D10_psl_131_311_orb5_FIXMIN5_s1.ckpt.
+Slot A is now that checkpoint resumed under seed 2 (copied to the _s2 name; jobsA3.txt; 5,400 new seconds, log
+d13D10_psl_131_311_orb5_FIXMIN5_s2.log). The SL 137×133 rung that had just started in slot A was killed (partial log kept,
+cost 27 at start, nothing else). SL 191×49 (order 3) is at cost 3 in slot B. No record yet.
