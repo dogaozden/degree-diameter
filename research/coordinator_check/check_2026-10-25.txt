@@ -1,0 +1,16 @@
+# Coordinator checks on the Mac mini, Oct 25 2026 (PT). Each graph is rebuilt from the finder's solution file with
+# hexgen.c output (hex_q11.bin / hex_q13.bin, hashes below) and the builder named per graph; the edge-list hash is
+# compared with the finder's check file; then the checker runs: apsp_orb (level shift verified edge by edge as an
+# automorphism, BFS from level 0 and all hubs) or apsp_mt (BFS from every vertex, no symmetry). Both print the exact
+# diameter. Scratch paths are the coordinator's temporary folder.
+== (14,7) 1,774,628 Sat Oct 24 23:12:05 PDT 2026
+H(11), r = 2 (5 levels, Delta 14), |R| = 767, full removal, 1534 line-side and 1534 point-side hubs, hub degree 9, n = 1774628
+graph: n = 1774628, edges = 12422396, max degree 14
+wrote e1774628.txt
+e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex/hex_q11.bin
+3c6e51896ebd9347be55440016ef17a11f88f723dcbe700a2e029d4a3a6c3f87  e1774628.txt
+8a7eb391dea51476fb625e207ff0cb3924c3cf93bf869cee01fb352295c645e7  m1774628.sol
+n=1774628 edges=12422396 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357380 sources)
+RESULT VALID d=14 D=7 n=1774628
+      437.10 real      3229.33 user        38.04 sys
+           922943488  maximum resident set size
