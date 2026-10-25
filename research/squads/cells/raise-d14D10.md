@@ -92,3 +92,8 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   mu 28.7). Seed 2, 5400 s each. Next on the ladder: PSL(2,163) x Z_313 (677.7M, mu 29.5).
 - Not retried: the round-1 cost-3 stalls (PSL 169x277, 257x79, 173x259, 199x169) are all below 670,890,660 and cannot
   improve the record.
+- 14:27 PSL(2,157) x Z_349 (seed 2, THREADS=4): OOM-killed (kernel) at 14:29 right after setup, no search lines.
+  Single run, 16 GB box: the wide-rows setup plus 4 threads peaks above what fits with other jobs running. Rerun later
+  (seed 2, THREADS=2 if memory is tight).
+- 14:29 PSL(2,281) x Z_61 (N 676,726,680, mu 28.7, fix 140), seed 2, THREADS=4: RSS 12.5 GB, running. At 1,709 s:
+  2,329 evals, best cost 7.
