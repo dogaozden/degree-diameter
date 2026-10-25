@@ -29,6 +29,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - In particular it excludes 658 of the 666 groups whose multiplier group has index > 6. That was the first
      session's main empirical pattern; it is now mostly a theorem.
    - Among the 115 groups the bound leaves open, 21 solve, and the solve rate falls steadily with N/B (§3.2).
+   - At Δ = 4 the same bound shows that no Z_p ⋊ Z_k with k ∈ {2, 3, 4, 6} can reach the (4,8) or (4,9) table
+     sizes, for any p.
 4. **No bounded-order family covers a row** (§2.4).
    - For fixed action order o, metacyclic Haar graphs have N ≤ (2D+1)^((o+1)(Δ−1)): polynomial in D.
    - The records grow like (Δ−1)^D, so any metacyclic family that holds a whole row needs an action order that grows
@@ -42,6 +44,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
      4+4 bases were searched exhaustively up to the Moore bound.
    - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The ten groups that came within
      cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
+   - **(4,9):** the closest group found is C101 : C25 = SmallGroup(2525,3) (5,050 vertices), 2 vertices short and
+     exhaustively negative. The library screen of orders 2486–2700 found nothing.
    - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
      closest is SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative
      (cost 4).
