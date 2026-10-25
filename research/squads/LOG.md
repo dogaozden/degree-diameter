@@ -60,3 +60,12 @@ Also tried by the lead this round: inverse-closed S (INVPAIR, random cost ≥ 5,
 best-response descent (EXDESC: local optima 14–15 in 7–11 min, cost-7 state is an exact local optimum), a non-identity
 α-fixed letter instead of e (F0: RANDORB unchanged, median 128–131).
 Kept: nothing beats plain short fresh descents. The search draws isolated good states; volume is the only lever left.
+
+## 2026-10-25 16:05 UTC, cell-10-8 session, end of the job (no round after r4)
+
+Main runs after r4: fresh descents (RESTARTAFTER=0, COOL 15 s, REHEAT 30 s), from 11:30 with ORBW=3, two runs on
+PSL(2,7) × SL(2,8) × Z7 and two on PSL(2,23) × Z97. 1,321 ORBW=3 descents: four reached energy 6 (two uncovered
+α-orbits, the best ever for this cell; earlier best 7), none reached 0. Tail extrapolation: P(cost 0) ≈ 2.5e-4 per
+50-second descent, about 55 CPU-hours expected (factor 5 either way). The cell is not beaten; see
+research/squads/cells/d10D8.md (status at the top, §8–§9). No second squad round: r4 showed that heuristic variants
+are neutral and the structural variants negative, and the evaluator is near its hardware limit (SPEEDUP.md).

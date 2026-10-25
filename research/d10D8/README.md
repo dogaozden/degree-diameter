@@ -19,7 +19,16 @@ Notes and results: `../squads/cells/d10D8.md`. Squad rounds: `../squads/d10D8-r1
   `ORBIT="3 3 1" CKPT=../runs/X.ckpt ZOPT=1 ./haar_zopt 10 8 1 1 8 out.txt psl 23 97`.
 - `sym2/haar_sym2.c`: `../structured/haar_sym.c` plus `RESTARTAFTER=r` (reheat from the best set of the current
   chain; after r reheats in a row without improving it, start a fresh chain from random orbits; the global best is
-  kept for the output file and the checkpoint). Unset, it behaves exactly like haar_sym.
+  kept for the output file and the checkpoint). Unset, it behaves exactly like haar_sym. Second session additions:
+  - `RESTARTAFTER=0`: every stall starts a fresh chain; each finished chain prints
+    `CHAIN n min <cost or ORBW energy> secs <s> evals <e> S <10 element indices>`.
+  - `INVPAIR=1`: S = {e} ∪ O ∪ O⁻¹ ∪ (α-orbit of involutions); `INVPAIR=2`: S = {e} ∪ O ∪ β(O)⁻¹ ∪ (α-orbit of
+    elements with β(x) = x⁻¹), β an outer involution of the first factor of a prod group commuting with α (both
+    negative, cell notes §8.2 and §8.4).
+  - `EXDESC=1`: exhaustive best-response descent over all α-orbits per slot (cell notes §8.3).
+  - `F0=i`: the α-fixed letter is the i-th non-identity fixed element instead of e (no effect, §8.5).
+- `launch.sh TAG SEED "GROUP" [VAR=x ...]`: starts one ORBIT="3 3 1" run in runs/ (resumable through runs/TAG.ckpt),
+  e.g. `./launch.sh d10D8_psl_23_97_orb3_F15W3_s61 61 "psl 23 97" RESTARTAFTER=0 COOL=15 REHEAT=30 ORBW=3`.
 - `hex/`: hexagon tools copied from the cell-10-7 branch (`hexgen2.c` builds H(q), `hexcheck.c`, `lift2.c` the lift
   annealer) and `lift3.c` = lift2.c plus `HSUB=b` (hexagon voltages restricted to the element indices 0, b, 2b, …).
   `./hexgen2 q` writes `hex/hex_q{q}.bin`; then e.g. `HZERO=1 MCONST=1 GROUP="cyc 10" T="1 4" J=2 D=8 ITERS=0 ./lift3 3`
