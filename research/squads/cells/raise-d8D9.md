@@ -49,3 +49,9 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - Solution: research/frontier/sols/d8D9_sl_25_43_orb3_s1.txt.
 - Checks: build_haar2.py VALID (inside orbq.sh); research/frontier/check_haar_indep.py VALID (ecc 9 from A and B, all vertices reached, 8 distinct neighbours).
 - mu = 29.7, |Fix(alpha)| = 23.
+
+## Status at 08:50
+- Final results of hour-long runs: b1 prod sl 8 x sl 11 seed 1 unsolved (best 2, 4.3M evals); b3 sl 16 x Z163 unsolved (best 9, 4.3M evals).
+- Still running at 08:50: b5 psl 47 x Z13 (N 674,544, best 6 at 930 s), b6 sl 17 x Z139 (N 680,544, best 12 at 900 s).
+- Started 08:50: b7 prod sl 3 x psl 11 x Z43 (N 681,120, mu 35.1), b8 pgl 17 x Z139 (N 680,544, mu 34.7). One hour each.
+- To beat the current record a group must have N > 670,800. Hit only counts with N above that.
