@@ -45,10 +45,21 @@ scripts were launched with `bash tools/orbq.sh JOBS OUTDIR` directly.
 | sl 13 × Z127 | 277,368 | 900 | 1 | best 6 (4.6·10⁶ evals), not solved |
 | pgl 16 × Z67 | 273,360 | 900 | 1 | best 3 (3.9·10⁶ evals), not solved |
 | sl 16 × Z67 | 273,360 | 3600 | 2 | best 1 (1.6·10⁷ evals), not solved; one fixed point left |
-| sl 16 × Z67 | 273,360 | 3600 | 3, ORBW=3 | running (started 09:19) |
-| sl 16 × Z67 | 273,360 | 3600 | 3 | running (started 09:19) |
-| sl 16 × Z67 | 273,360 | 3600 | 4 | running (started 09:19) |
-| sl 16 × Z67 | 273,360 | 3600 | 4, ORBW=3 | running (started 09:19) |
+| sl 16 × Z67 | 273,360 | 3600 | 3 | best 1 (1.6·10⁷ evals), not solved |
+| sl 16 × Z67 | 273,360 | 3600 | 3, ORBW=3 | best 3 (1.6·10⁷ evals), not solved |
+| sl 16 × Z67 | 273,360 | 3600 | 4 | best 3 (1.6·10⁷ evals), not solved |
+| sl 16 × Z67 | 273,360 | 3600 | 4, ORBW=3 | best 3 (1.6·10⁷ evals), not solved |
+
+## Conclusion so far (2026-10-25, about 2.5 h in)
+
+Twelve orbit runs above the record order, N = 270,312 to 277,860, none solved. Best costs: 1 (sl 16 × Z67, 1 h,
+two seeds), 3, 4, 6, 16, 37 for the others. The record's order was solved in 4.4·10⁵ evals at μ 37.9; the
+candidates tried sit at μ 42–50 and need at least 10⁷ evals, which is 10–30 min per run on this box. The three
+1-h sl 16 × Z67 runs show a stall at cost 1–3 (fixed points of α left uncovered), the same pattern as
+(10,8) and (11,8) in STRUCTURE.md §7. This is not a proof that the cell cannot move, but in this session the
+orbit method with k = 3, f = 0 did not reach the next group order. Options the coordinator can decide on:
+(a) hours more per candidate (sl 16 × Z67 is the closest), (b) k = 5 orbit search on a group with few fixed
+points (STRUCTURE.md §7), (c) a bigger model or a squad run (haiku-squad) on this cell.
 | sl 8 × Z547 | 275,688 | 1800 | 1 | best 37 (7.7·10⁵ evals), not solved |
 | psl 11 × Z421 | 277,860 | 1800 | 1 | best 16 (9.7·10⁵ evals), not solved |
 
