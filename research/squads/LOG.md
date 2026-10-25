@@ -13,7 +13,8 @@ Cards and best result (k=6 limit 900 s, machine heavily loaded while the lead's 
 - c1 breadth-first normal form at point 0 (4 repeat cases) + lex-leader: k=5 SAT 0.9 s, **k=6 UNSAT 127 s**, k=7 timeout.
 - c2 explicit repeat-graph variables + symmetry breaking: k=5 SAT, k=6 timeout.
 - c3 split by cycle type of the repeat graph (determinant-filtered): k=5 all 29 types done (only the 19-cycle is SAT,
-  matching uniqueness), k=6 has 221 types, not finished.
+  matching uniqueness), k=6 has 221 types after a spectral filter; a 4-type sample all timed out at 300 s each,
+  so the split is slower than c1's single 127 s run.
 - c4 CP-SAT (OR-Tools, symmetry level 4): k=5 SAT 4.3 s, k=6 unknown at 880 s.
 - c5 Haar graphs H(Z_n,S), n = k²−k−1 (diameter 3 iff S−S covers Z_n∖0): k=5 hit S = {0,1,2,6,9} in Z_19
   (lead re-checked by BFS: 38 vertices, 5-regular, diameter 3); none for k = 6, 7, 8 (backtracking and SAT agree).
