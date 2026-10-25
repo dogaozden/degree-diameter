@@ -34,7 +34,8 @@ controller does not need.
 | m | base / group | lift | runs | check |
 |---|---|---|---|---|
 | 66 | K33m / Z_22 | **10,692** | seed 1 of 2, 300 s CPU, started from the 9,720 colour chart | apsp VALID, bfs_all max ecc 5 |
-| 75 | K33m / Z_25 | **12,150** | 300 variants of bt3_k33m_0 (csp3.py), VARLIST moves (PV 0.9), 2.4M iterations | apsp VALID, bfs_all max ecc 5 |
+| 81 | K33m / Z_27 | **13,122** | chart fitted to a fake-perfect controller (diag/fit81.py), 4 of 4 controllers | apsp VALID, bfs_all max ecc 5 |
+| 75 | K33m / Z_25 | 12,150 | 300 variants of bt3_k33m_0 (csp3.py), VARLIST moves (PV 0.9), 2.4M iterations | apsp VALID, bfs_all max ecc 5 |
 | 72 | K33m / Z_24 | 11,664 | same, 189k iterations (and from the m = 72 near miss in 5.8k) | apsp VALID |
 | 69 | K33m / Z_23 | **11,178** | backtrack-complete chart diag/bt3_k33m_0 held fixed (DIAGBT=1, PV=1), 154k iterations | apsp VALID, bfs_all max ecc 5 |
 
@@ -103,3 +104,13 @@ most this construction can give unless the (4,5) bipartite record is beaten too.
 diagonals) runs find perfect controllers at m = 81 easily (3 of 3 seeds); the real chart must leave, for every controller
 pair at distance 4, one nonsingular walk, and on these near-extremal controllers many pairs have very few walks.
 Fake ceilings: Z_25 0, Z_26 4, Z_27 0, Z_28 4, Z_29 12 (all with free diagonals).
+
+## m = 81 by fitting the chart to the controller (15:47 UTC)
+
+Fake-chart runs (FAKE=1 DIAGBT=1) find controllers at m = 81 that are perfect when every walk is good; all four found
+have the same profile: 408 orbit pairs need a 4-walk, 220 have exactly one, 160 two and 28 three. Pools of chart
+variants left at least 4 uncovered (2,000+ charts screened), because a pool fixes the leg triangles. `diag/fit81.py`
+searches the whole family instead: state = complete assignment per base vertex + compatible collineation per edge; the
+singular walks follow from the state (two legs from different apexes at the middle vertex meet), so the cost needs no
+chart; moves = another collineation on one edge, or a new assignment at one vertex compatible with its neighbours.
+It reached cost 0 for all four controllers within 250–1,600 moves; all four lifts are apsp VALID on 13,122 vertices.
