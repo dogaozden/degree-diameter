@@ -32,3 +32,13 @@ n=693500 edges=4161000 degree min=12 max=12 bipartite=yes diameter=7
 RESULT VALID d=12 D=7 n=693500
       963.09 real      1555.05 user        22.15 sys
            215695360  maximum resident set size
+# Typed claims (cell-16-7 resume session): rebuilt with typed5s_build.py on hexgen output; apsp_mt 8 threads, no symmetry.
+== d14D7_hex11_typed133_K62_n1788052 Sat Oct 24 23:19:27 PDT 2026
+        4.76 real         4.41 user         0.32 sys
+          1520156672  maximum resident set size
+92b25873c43b3a97018d3ab1e7da1547ce6fc3486c7ab27e118fa779fbdc1367  typed/d14D7_hex11_typed133_K62_n1788052.edges
+-- apsp_mt d14D7_hex11_typed133_K62_n1788052 (23:19:32)
+n=1788052 edges=12506921 degree min=12 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1788052
+     1759.10 real     11820.99 user       157.69 sys
+           925728768  maximum resident set size
