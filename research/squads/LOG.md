@@ -177,3 +177,13 @@ q = 7 F = 7 ((9,7) 118,238), both apsp_mt all-pairs VALID; q = 13 F = 21 ((16,7)
 from only 24–48 base points, spread of 2,198 lines; multi.c checks pass, full check running). Squad assessment: three
 independent methods agree on F = 12 at q = 11; the round confirmed the plateau rather than moving it, but c3's method
 gave the record and c4/c5 explained the limits.
+
+Late reports (after 07:00 UTC): c2 (exact best responses on 20k-point and 20k-line samples, iterated local search from the
+k = 11 state) reached F = 12 at k = 12 after 27 perturbations; at k = 13 it stalled at deficit 3. c7 (four random
+isometric copies of the base set, 240 s each): F = 11 on one copy, 10 on the others and on the identity control, so
+moving the base changes F by at most 1. c8 (12 extra points on a conic, a nondegenerate plane section of Q(6,11)):
+F = -35; conic points give base types of size at most 2, but partner lines for the 66 pair types cannot be found
+(deficit 47). Opus: fixed k = 13 with c1's C annealer warm-started from the k = 12 state, 436 s: best deficit 4 (c1's
+own run: 5). So k = 13 with deficit 0 was not reached by any method (best deficits 1, 3, 4, 5); F = 12 stands.
+Round 5 late report: c3's 2^3.L3(2) (1,344 signed Fano frames) subgroups all top out at 756, and exact branch and bound
+is complete for orders 1344, 192, 168, 96, 56 and 48.
