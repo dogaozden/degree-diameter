@@ -1,0 +1,31 @@
+# (14,7) n = 1,774,588: five copies of H(11) (multi.c, r = 2) with the mirrored surgery set R' = R756 + {x}
+# Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25.  Construction: research/cell147/mirror/README.md.
+# R756 = research/d13D7/sets/R756_r4c1_idx.txt (hexgen indexing); x = 32087 (distance 4 from 60 points of R756,
+# non-collinear with all); sigma(R756) = 756 lines of the Hermitian spread x0 + x4 = 0 (60 at distance 4 from
+# sigma(x) = line 149213, 696 opposite to it); sigma maps each midpoint of (x, r) to the connecting line of
+# (sigma(x), sigma(r)) and is a local duality at all 757 points (mirror1.py seed 1).
+# Solution file: research/frontier/sols/d14D7_hex11_mirror757_n1774588.sol (multi_sol.py format).
+# Rebuild (byte-identical edge file, checked):
+#   cc -O2 -fopenmp -o research/d13D7/multi research/d13D7/multi.c ; hexgen 11 (research/d13D7/hexgen.c)
+#   python3 research/d13D7/tools/multi_sol.py build research/frontier/sols/d14D7_hex11_mirror757_n1774588.sol hex_q11.bin e1774588.txt
+# sha256:
+#   e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex_q11.bin
+#   bd4536269171e4886ae06d9fe2fa298071b3677af1dc199274282140cdd3f6f7  e1774588.txt
+#   81a2547de48df8e53ad5f8668a5a141b60673ccb99c22f01a400b9909bb04cc6  d14D7_hex11_mirror757_n1774588.sol
+
+-- multi.c (DUALFILE = sigma, RFILE = R'): its own checks (R' non-collinear, local duality at every point of R',
+   sigma(R') non-concurrent) pass; BFS from all damaged vertices, all hubs and 1024 random vertices:
+H(11), r = 2 (5 levels, Delta 14), |R| = 757, full removal, 1514 line-side and 1514 point-side hubs, hub degree 9, n = 1774588
+hub graph attempt 0: OK
+graph: n = 1774588, edges = 12422116, max degree 14
+wrote e1774588.txt
+q=11 r=2 m=757 n=1774588 maxdeg=14 sources=11622 worst_ecc=7 bad=0
+
+-- full check: research/lifts/coordinator_check/apsp_orb.c (level shift verified edge by edge as an automorphism, then
+   bit-parallel BFS from all 354,312 level-0 vertices and all 3,028 hubs), 3 threads on the cloud container:
+   apsp_orb e1774588.txt 14 7 3 5 354312
+Sun Oct 25 05:08:08 UTC 2026
+n=1774588 edges=12422116 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357340 sources)
+RESULT VALID d=14 D=7 n=1774588
+exit 0 wall 1188s
+Sun Oct 25 05:27:56 UTC 2026

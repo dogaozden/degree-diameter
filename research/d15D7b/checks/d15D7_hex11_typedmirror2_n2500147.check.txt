@@ -1,0 +1,25 @@
+# (15,7) n = 2,500,147 = 14*177,156 + 10,181 + 9,782 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; pending candidate (cell-14-7 session) 2,499,748.
+# Seven typed levels HHDHHDD of the incidence graph of H(11) (cell-16-7 construction), friendly sets R_H (8,645 points)
+# and R_L (8,246 lines) of master's d15D7_hex11_typed133_K62_n2497075.sol, mirrored surgery (768 elements, sigma of
+# d14D7_hex11_mirror768_n1774632.sol) on the nine non-friendly transitions (cell-14-7 session), exactly as in
+# d15D7_hex11_typedmirror768_n2499748.sol, but with UNEQUAL hub sides: 10,181 line-side hubs (the free A-slot minimum)
+# and 9,782 point-side hubs (the free B-slot minimum). Hub graph: random bipartite, point-side degree 8, line-side 7-8
+# (research/d15D7b/hubgen.py seed 1), then 36 + 2 degree-preserving 2-switches aimed at far hub pairs
+# (research/d15D7b/hubfix.py), using distances in the WHOLE graph (hub pairs also meet through the levels).
+# Solution: research/frontier/sols/d15D7_hex11_typedmirror2_n2500147.sol (sha256 dbae9322bb8f81adb249fed975aff9366600df370113e0408895c05e83910fbc;
+#   it lists R_H, R_L and the hub graph explicitly and names the mirror .sol by sha256).
+# Rebuild: cc -O2 -o hexgen2 research/d13D7/hexgen2.c -lm && ./hexgen2 11   (hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19)
+#   python3 research/d15D7b/tm2_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedmirror2_n2500147.sol g.edges
+#   edge list sha256 94c713906f7bfd325aac86801400908bb9ab3539b6c5efe422849a4f6f5bbf16 (rebuild byte-identical to the make run)
+# Why the hub BFS completes the check: pairs of non-hub vertices are covered by the one-transition surgery theorem
+# (research/squads/cells/d16D7.md; research/theorems/MIRRORED_SURGERY.md), whose hypotheses are re-checked for every
+# freed element by tm2_build.py; every pair with a hub is covered by the BFS from all 19,963 hubs below (depth 7, every
+# vertex reached). A full all-pairs apsp_mt run is still to be done.
+-- tm2_build.py build:
+hypotheses OK: |R_H| = 8645, |R_L| = 8246, |R'| = 768 (non-collinear, sigma(R') non-concurrent, local duality at all 768)
+free A-slots per level [10181, 10181, 17260, 18058, 18058, 17260, 17260] B-slots [17260, 17260, 18058, 9782, 9782, 18058, 18058] -> hubs 10181 9782
+n = 2500147, edges = 18711119, degree min 13 max 15, hub graph edges 78256
+wrote /tmp/claude-0/-home-user-degree-diameter/3a40c776-090e-50f8-a72c-99cc9e6252bb/scratchpad/w/rb.edges
+-- hubfar (BFS from all 19,963 hubs, depth 7, 4 threads): research/d15D7b/hubfar.c
+n=2500147 edges=18711119 degree min=13 max=15 bipartite=yes connected=yes sources=19963 far_pairs=0 max_ecc=7
