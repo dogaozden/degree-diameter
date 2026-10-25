@@ -113,3 +113,12 @@ groups as not run.
 ## Results
 
 (none yet)
+
+### Wave 2a progress (14:58 UTC, ~31 min in, 7200 s budget each, no solution yet)
+
+| group | |G| | μ | evals | best cost |
+|---|---|---|---|---|
+| prod sl 3 × sl 11 × Z271 | 8,585,280 | 20.6 | 45k | 48 |
+| prod sl 4 × sl 11 × Z109 | 8,632,800 | 22.2 | 78k | 6 |
+| prod sl 8 × sl 11 × Z13 | 8,648,640 | 22.8 | 109k | 2 |
+| sl 43 × Z109 (seed 2) | 8,661,576 | 23.3 | 123k | 6 |
