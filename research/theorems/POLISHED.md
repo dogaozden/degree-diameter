@@ -51,7 +51,9 @@ Errors and corrections found while preparing this version (none affects a theore
 10. **Regular fourth hat in arbitrary planes.** `geometry.tex` Remark 4.8 obtained a regular completion in a
    non-Desarguesian plane only for $q\ge7$. The count used in the Lean proof (each deficient element is incident with
    exactly $q-4$ deficient elements) gives it for every $q\ge4$ (Section 2.2). The Lean theorem already says so.
-11. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
+11. **Credit to [ADFL21].** `geometry.tex` did not cite Araujo-Pardo–Dalfó–Fiol–López (line doubling in a GQ, the
+   closest prior use of line copies); it does now, and so does Section 3 here.
+12. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
    the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
    numbers below refer to the revised, recompiled `geometry.pdf`.
 
@@ -408,6 +410,9 @@ record graphs (`nb_11_3`, `nb_13_3`, `nb_15_3`); see Section 9.
 
 A *generalized quadrangle* (GQ) of order $(s,t)$, $s,t\ge1$, has $(s+1)(st+1)$ points and $(t+1)(st+1)$ lines, and
 for every anti-flag $(p,L)$ exactly one point of $L$ is collinear with $p$. Its incidence graph has diameter 4.
+Copies of lines in a GQ appear already in Araujo-Pardo, Dalfó, Fiol and López [ADFL21, Sec. 4], who double every line
+to get biregular graphs (semi-double graphs). Theorem B copies only some lines, with weights, lets a copy attach to
+clones (stand-ins), and combines this with weighted point copies in the spirit of Delorme–Farhi duplication [DF84].
 
 ### 3.1 Statement
 
