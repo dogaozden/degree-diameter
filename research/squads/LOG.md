@@ -47,3 +47,23 @@ Z_5 polygon cover. Cards (research/squads/r2-d8/cards.md), scored by liftdiam (e
   random labels.
 Kept: nothing new; d4's state was the only one still improving. Honest verdict: two rounds, 16 strategies, no
 structured idea beat random lifts, and the targeted annealer is the only tool that moved the count much.
+
+## 2026-10-25 ~09:55 UTC, session thm-d8table resumed (claude/d8-table-numerology-mi6but), round r3-d8
+
+Goal: structured lifts of H(q) + 2 hop matchings with diameter 8 and many copies (explain or beat the DGQ D = 8
+cells; DGQ's formula gives 20, 20, 25 copies at q = 3, 4, 5). Scorer liftdiam (exact), valid files rechecked with apsp.c.
+Cards (research/squads/r3-d8/cards.md):
+- c1 near-duality hop matchings (annealed so collinear points go to concurrent lines): no gain over random matchings
+  in the lift tests at q = 5 (M = 12 both; M = 14 fails for both).
+- c2 flag voltages designed for many distinct geodesic voltages, Z_5 polygon cover x Z_K with random hop labels: K = 3
+  fails at q = 4, 5 (designed 192 vs random 196 unreached at q = 5).
+- c3 exact-cost annealing at q = 4: M = 20 valid (DGQ's value); M = 21 at 36 unreached.
+- c4 the same at q = 5: M = 14 valid; M = 16 at 6.
+- c5 statistics of optimized lifts vs random: largest |z| 3.6 (hop-2 labels slightly more often distinct around a point).
+- c6 duality hops at q = 3 with annealed labels: M = 22 valid with one duality + one random matching; two dualities worst.
+- c7 SAT (pysat) for guaranteed-walk label designs: only tiny cases (q = 2, j = 2, M <= 7).
+- c8 wildcard, C_7-equivariant lift at q = 4 (Singer element of SL(3,4)): M = 16 with random voltages.
+Kept: c8's equivariant lifts (generalized to eqlift.py with any semiregular cyclic collineation group, plus a quotient
+annealer qanneal2.c): q = 4 M = 22 and q = 5 M = 20 valid; c6/c3/c4 as calibration (DGQ's formula is passed by
+optimization at q = 3, 4). Following c2, annealing the polygon cover x Z_K myself gave K = 5 at q = 3 (25 copies).
+Verdict: the squad gave calibration data and one useful tool (c8); no structure behind DGQ's numbers.

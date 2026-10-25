@@ -1,10 +1,11 @@
 """Class-0 walks in a Z_5 x B lift whose Z_5 part is the polygon cover (flags 0, hop s_k carries k).
 For a point x and a line y at distance 3, the walks of length <= 7 with Z_5-voltage 0 are the geodesic, the
 "cancelling" walks with two hops of the same matching in opposite directions, and walks with >= 3 hops.
+Expected average for random matchings: 4(q+1)(3q^3+4q^2+2q-1)/(q^4+q^3+q^2+q+1) (two matchings, both directions).
 This script (a) counts the cancelling walks directly for every pair at distance 3, and (b) checks the identity
   sum over pairs = sum_k sum_{u != w} [d(s_k u, s_k w) = 2] g2(d(u,w)) + [d(s_k u, s_k w) = 4] g4(d(u,w)) + (lines)
 with g2(2) = 3q^2 - q, g2(4) = 3q - 1, g2(6) = 2(q+1), g4(2) = q, g4(4) = 1, g4(6) = 0.
-usage: class0.py q seed [dual]   (dual: s_1 = a duality from research/squads/r2-d8/d7/dual_q3_s1.npy, q = 3)"""
+usage: class0.py q seed [dual | base.txt]   (dual: s_1 = a duality from research/squads/r2-d8/d7/dual_q3_s1.npy, q = 3)"""
 import sys
 import random
 import numpy as np
@@ -16,8 +17,18 @@ N = H.N
 Dm, adj = gh.distances(H)
 Dm = Dm.astype(np.int64)
 mats = []
-for k in range(2):
-    if len(sys.argv) > 3 and k == 0:
+if len(sys.argv) > 3 and sys.argv[3] not in ('dual',):
+    # read the two hop matchings from a polygon-cover base file (Z_5 voltage 1 = s_1, 2 = s_2)
+    hop = {1: np.zeros(N, dtype=np.int64), 2: np.zeros(N, dtype=np.int64)}
+    with open(sys.argv[3]) as fh:
+        fh.readline()
+        for line in fh:
+            u, v, a, b = map(int, line.split())
+            if a in (1, 2):
+                hop[a][u] = v - N
+    mats = [hop[1], hop[2]]
+for k in range(2 if not mats else 0):
+    if len(sys.argv) > 3 and sys.argv[3] == 'dual' and k == 0:
         phi = np.load('/home/user/degree-diameter/research/squads/r2-d8/d7/dual_q3_s1.npy')
         s = np.array([int(phi[p]) - N for p in range(N)])
     else:
@@ -28,6 +39,7 @@ g2 = {2: 3 * q * q - q, 4: 3 * q - 1, 6: 2 * (q + 1)}
 g4 = {2: q, 4: 1, 6: 0}
 pred = 0
 direct = 0
+perpair = np.zeros((N, N), dtype=np.int64)
 for s in mats:
     sinv = np.empty(N, dtype=np.int64)
     sinv[s] = pts
@@ -58,7 +70,8 @@ for s in mats:
                 continue
             a = du[U]
             c = Dpl[W][:, ys]              # d(w, y) for each candidate y
-            direct += int(np.sum((a[:, None] + b + c) <= 5))
+            hit = (a[:, None] + b + c) <= 5
+            direct += int(np.sum(hit)); perpair[x, ys] += hit.sum(axis=0)
         # backward first: x ~a~ b1 -> s^{-1}(b1) ~b~ s^{-1}(b2) -> b2 ~c~ y, a odd, b even >= 2, c even
         dxl = Dm[x, N:]
         for b in (2, 4):
@@ -69,7 +82,12 @@ for s in mats:
                 continue
             a = dxl[B1]
             c = Dm[np.ix_(N + B2, N + ys)]
-            direct += int(np.sum((a[:, None] + b + c) <= 5))
+            hit = (a[:, None] + b + c) <= 5
+            direct += int(np.sum(hit)); perpair[x, ys] += hit.sum(axis=0)
 npairs = N * q * q * (q + 1)
-print(f'q {q} seed {seed} matchings {"duality+random" if len(sys.argv) > 3 else "random"}: cancelling walks over '
+vals = perpair[Dm[:N, N:] == 3]
+import collections
+hist = sorted(collections.Counter(vals.tolist()).items())
+print('per-pair cancelling-walk counts (count: number of pairs), min', vals.min(), ':', hist[:12], '...')
+print(f'q {q} seed {seed} matchings {sys.argv[3] if len(sys.argv) > 3 else "random"}: cancelling walks over '
       f'{npairs} pairs at distance 3: direct {direct}, formula {pred}, average {direct / npairs:.3f}')

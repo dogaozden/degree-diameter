@@ -1,0 +1,12 @@
+sample_start pairs=1397760 distinct_hist: d1=17047 d2=517761 d3=862952 bad(<K-1)=17047 frac=0.01220
+sample_final K=3 sample_sources=2730 (incremental bad 8186, fresh bad 8186)
+sample_final pairs=1397760 distinct_hist: d1=8186 d2=491877 d3=897697 bad(<K-1)=8186 frac=0.00586
+EXACT_random_start pairs=2795520 distinct_hist: d1=34094 d2=1035522 d3=1725904 bad(<K-1)=34094 frac=0.01220
+EXACT_designed pairs=2795520 distinct_hist: d1=16372 d2=983754 d3=1795394 bad(<K-1)=16372 frac=0.00586
+geodesic_count_violations 0 (expect 0)
+sample_start pairs=1397760 distinct_hist: d1=5430 d2=245959 d3=818447 d4=327924 bad(<K-1)=251389 frac=0.17985
+sample_final K=4 sample_sources=2730 (incremental bad 196229, fresh bad 196229)
+sample_final pairs=1397760 distinct_hist: d1=2555 d2=193674 d3=833765 d4=367766 bad(<K-1)=196229 frac=0.14039
+EXACT_random_start pairs=2795520 distinct_hist: d1=10860 d2=491918 d3=1636894 d4=655848 bad(<K-1)=502778 frac=0.17985
+EXACT_designed pairs=2795520 distinct_hist: d1=5110 d2=387348 d3=1667530 d4=735532 bad(<K-1)=392458 frac=0.14039
+geodesic_count_violations 0 (expect 0)

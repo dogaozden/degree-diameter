@@ -1,0 +1,586 @@
+# c3 trajectories (card c3, round r3-d8, q=4). Unreached pairs U at distance > 8 (liftdiam definition).
+# Sampled every 30 s by tann2/tann3 (cur = current U, best = best U so far); imp lines = new best multi-free state.
+
+## runA_s1: tann2 (-O3 build), resume start212.txt, M=20, T0=2 T1=0.05 R=2 pswap=0.1 seed=1, budget 400 s
+resumed from ./start212.txt
+initial unreached 212 (list 212)
+t 30 T 1.517 cur 88 best 82 iters 468 acc 285
+t 60 T 1.149 cur 58 best 58 iters 809 acc 460
+t 90 T 0.871 cur 10 best 8 iters 1289 acc 662
+t 120 T 0.660 cur 4 best 2 iters 1820 acc 874
+done: evals 1847 accepted 885 best 0 final_cur 0 time 121.5
+
+## runB_s2: tann2 (-O3 build), resume start212.txt, M=20, T0=1 T1=0.02 R=3 pswap=0.3 seed=2, budget 400 s
+resumed from ./start212.txt
+initial unreached 212 (list 212)
+t 30 T 0.746 cur 34 best 34 iters 479 acc 225
+t 60 T 0.556 cur 6 best 6 iters 873 acc 370
+done: evals 901 accepted 379 best 0 final_cur 0 time 62.4
+
+## fix_s3: tann3 LAM=10, resume runB_s2.txt (U=0, multi=4), M=20, T0=0.6 T1=0.05 R=2 pswap=0.1 seed=3
+resumed from ./runB_s2.txt
+initial unreached 0 multi 4 (list 0) LAM 10.00
+imp t 0.1 unreached 0
+done: evals 2 accepted 2 best_feas 0 best_tot 0.0 final_u 0 final_m 0 time 0.1
+
+## fix_s4: tann3 LAM=10, resume runB_s2.txt (U=0, multi=4), M=20, T0=1.0 T1=0.05 R=3 pswap=0.2 seed=4
+resumed from ./runB_s2.txt
+initial unreached 0 multi 4 (list 0) LAM 10.00
+imp t 0.2 unreached 0
+done: evals 2 accepted 2 best_feas 0 best_tot 0.0 final_u 0 final_m 0 time 0.2
+
+## speed/smoke tests (not part of the record)
+tann2 10 s from start212 (fast build): initial 212 -> best 130 (liftdiam confirmed 130)
+tann3 5 s from start212 LAM=10 seed 7: 212 -> best 154 (multi 0 at best)
+
+## M=21 from M=20 voltages (v->v), start U=598 (start_M21.txt), 270 s budget
+## m21_s5: tann3 LAM=10, T0=2 T1=0.05 R=2 pswap=0.1 seed=5
+resumed from ./start_M21.txt
+initial unreached 598 multi 0 (list 598) LAM 10.00
+imp t 2.2 unreached 594
+imp t 3.6 unreached 590
+imp t 7.5 unreached 586
+imp t 8.0 unreached 584
+imp t 9.8 unreached 572
+imp t 10.2 unreached 558
+imp t 10.9 unreached 556
+imp t 13.9 unreached 554
+imp t 14.3 unreached 552
+imp t 14.8 unreached 544
+imp t 15.2 unreached 542
+imp t 15.6 unreached 540
+imp t 16.0 unreached 536
+imp t 20.0 unreached 534
+imp t 21.8 unreached 530
+imp t 22.5 unreached 526
+imp t 24.5 unreached 524
+imp t 28.4 unreached 518
+t 30 T 1.324 cur_u 518 cur_m 0 best_feas 518 iters 62 acc 43
+imp t 30.6 unreached 516
+imp t 35.8 unreached 508
+imp t 37.2 unreached 506
+imp t 42.1 unreached 504
+imp t 42.6 unreached 498
+imp t 44.1 unreached 496
+imp t 44.7 unreached 494
+imp t 45.2 unreached 488
+imp t 46.3 unreached 480
+imp t 50.8 unreached 476
+imp t 53.9 unreached 468
+imp t 57.8 unreached 462
+t 61 T 0.875 cur_u 462 cur_m 0 best_feas 462 iters 117 acc 70
+imp t 61.2 unreached 460
+imp t 66.7 unreached 454
+imp t 68.4 unreached 452
+imp t 69.0 unreached 446
+imp t 72.5 unreached 444
+imp t 73.6 unreached 442
+imp t 76.1 unreached 440
+imp t 77.4 unreached 436
+imp t 78.1 unreached 434
+imp t 81.3 unreached 432
+imp t 86.5 unreached 426
+imp t 87.0 unreached 424
+imp t 87.6 unreached 422
+imp t 89.0 unreached 418
+imp t 89.6 unreached 412
+t 91 T 0.580 cur_u 412 cur_m 0 best_feas 412 iters 165 acc 97
+imp t 92.9 unreached 406
+imp t 93.9 unreached 404
+imp t 96.1 unreached 402
+imp t 96.9 unreached 400
+imp t 97.4 unreached 398
+imp t 100.0 unreached 396
+imp t 103.2 unreached 390
+imp t 104.6 unreached 386
+imp t 105.1 unreached 380
+imp t 105.8 unreached 376
+imp t 106.4 unreached 370
+imp t 107.7 unreached 368
+imp t 108.3 unreached 366
+imp t 109.7 unreached 364
+imp t 112.4 unreached 362
+imp t 114.0 unreached 360
+imp t 121.3 unreached 356
+t 121 T 0.381 cur_u 356 cur_m 0 best_feas 356 iters 211 acc 123
+imp t 122.8 unreached 352
+imp t 125.1 unreached 348
+imp t 126.4 unreached 346
+imp t 127.2 unreached 344
+imp t 128.7 unreached 338
+imp t 130.7 unreached 334
+imp t 133.4 unreached 332
+imp t 135.0 unreached 328
+imp t 139.2 unreached 324
+imp t 139.9 unreached 320
+imp t 147.5 unreached 318
+imp t 148.2 unreached 316
+imp t 148.6 unreached 314
+imp t 151.3 unreached 304
+imp t 151.9 unreached 300
+t 152 T 0.251 cur_u 300 cur_m 0 best_feas 300 iters 254 acc 147
+imp t 153.3 unreached 294
+imp t 153.7 unreached 292
+imp t 154.2 unreached 290
+imp t 155.0 unreached 288
+imp t 157.8 unreached 284
+imp t 161.0 unreached 282
+imp t 162.8 unreached 280
+imp t 163.2 unreached 278
+imp t 165.1 unreached 274
+imp t 170.7 unreached 272
+imp t 172.9 unreached 270
+imp t 173.3 unreached 268
+imp t 177.8 unreached 266
+imp t 180.4 unreached 264
+t 182 T 0.167 cur_u 264 cur_m 0 best_feas 264 iters 329 acc 174
+imp t 183.2 unreached 258
+imp t 183.5 unreached 256
+imp t 192.1 unreached 252
+imp t 193.8 unreached 244
+imp t 197.2 unreached 242
+imp t 198.4 unreached 240
+imp t 203.1 unreached 238
+imp t 204.2 unreached 232
+imp t 206.1 unreached 230
+imp t 207.2 unreached 226
+imp t 209.0 unreached 220
+imp t 210.5 unreached 218
+t 212 T 0.110 cur_u 218 cur_m 0 best_feas 218 iters 411 acc 202
+imp t 212.4 unreached 216
+imp t 213.9 unreached 210
+imp t 214.6 unreached 208
+imp t 216.1 unreached 206
+imp t 218.9 unreached 204
+imp t 221.2 unreached 200
+imp t 221.4 unreached 196
+imp t 222.0 unreached 194
+imp t 223.9 unreached 192
+imp t 224.5 unreached 188
+imp t 225.0 unreached 186
+imp t 226.3 unreached 184
+imp t 227.1 unreached 182
+imp t 227.5 unreached 180
+imp t 228.6 unreached 178
+imp t 230.8 unreached 176
+imp t 231.3 unreached 172
+imp t 234.7 unreached 170
+imp t 235.0 unreached 168
+imp t 237.5 unreached 166
+imp t 239.1 unreached 164
+imp t 241.8 unreached 162
+t 242 T 0.073 cur_u 162 cur_m 0 best_feas 162 iters 535 acc 256
+imp t 245.3 unreached 160
+imp t 248.0 unreached 158
+imp t 251.3 unreached 154
+imp t 258.3 unreached 152
+imp t 268.2 unreached 150
+done: evals 615 accepted 274 best_feas 150 best_tot 150.0 final_u 150 final_m 0 time 270.0
+
+## m21_s6: tann3 LAM=10, T0=1 T1=0.05 R=3 pswap=0.2 seed=6
+resumed from ./start_M21.txt
+initial unreached 598 multi 0 (list 598) LAM 10.00
+imp t 1.0 unreached 594
+imp t 2.7 unreached 592
+imp t 3.1 unreached 580
+imp t 3.9 unreached 576
+imp t 5.4 unreached 572
+imp t 6.7 unreached 562
+imp t 7.9 unreached 558
+imp t 8.4 unreached 552
+imp t 9.2 unreached 548
+imp t 10.3 unreached 546
+imp t 10.8 unreached 538
+imp t 12.0 unreached 536
+imp t 12.3 unreached 530
+imp t 12.9 unreached 526
+imp t 14.0 unreached 524
+imp t 15.3 unreached 520
+imp t 15.7 unreached 518
+imp t 17.0 unreached 512
+imp t 18.6 unreached 504
+imp t 21.2 unreached 502
+imp t 22.1 unreached 496
+imp t 22.5 unreached 492
+imp t 23.0 unreached 488
+imp t 23.5 unreached 482
+imp t 24.0 unreached 480
+imp t 25.0 unreached 478
+imp t 26.1 unreached 470
+imp t 27.7 unreached 464
+t 30 T 0.715 cur_u 464 cur_m 0 best_feas 464 iters 64 acc 42
+imp t 33.2 unreached 462
+imp t 36.6 unreached 460
+imp t 37.9 unreached 458
+imp t 40.4 unreached 454
+imp t 44.2 unreached 452
+imp t 44.8 unreached 446
+imp t 47.1 unreached 442
+imp t 51.7 unreached 438
+imp t 52.8 unreached 436
+imp t 54.2 unreached 432
+imp t 55.4 unreached 428
+imp t 56.7 unreached 422
+imp t 58.6 unreached 420
+imp t 60.2 unreached 414
+t 61 T 0.509 cur_u 414 cur_m 0 best_feas 414 iters 115 acc 69
+imp t 62.2 unreached 410
+imp t 64.2 unreached 406
+imp t 64.8 unreached 404
+imp t 66.7 unreached 402
+imp t 67.1 unreached 400
+imp t 68.7 unreached 398
+imp t 70.5 unreached 396
+imp t 74.7 unreached 394
+imp t 75.2 unreached 390
+imp t 76.6 unreached 382
+imp t 80.0 unreached 380
+imp t 81.1 unreached 378
+imp t 90.5 unreached 376
+t 91 T 0.364 cur_u 376 cur_m 0 best_feas 376 iters 163 acc 93
+imp t 91.6 unreached 374
+imp t 92.6 unreached 372
+imp t 93.2 unreached 370
+imp t 94.2 unreached 368
+imp t 97.7 unreached 366
+imp t 98.3 unreached 364
+imp t 99.6 unreached 358
+imp t 103.0 unreached 356
+imp t 103.7 unreached 354
+imp t 104.4 unreached 352
+imp t 105.1 unreached 350
+imp t 113.7 unreached 346
+imp t 115.8 unreached 342
+imp t 116.6 unreached 340
+imp t 118.3 unreached 338
+imp t 120.6 unreached 336
+t 121 T 0.260 cur_u 336 cur_m 0 best_feas 336 iters 209 acc 116
+imp t 121.9 unreached 330
+imp t 124.6 unreached 322
+imp t 127.9 unreached 318
+imp t 130.6 unreached 312
+imp t 132.1 unreached 308
+imp t 141.2 unreached 304
+imp t 150.6 unreached 300
+t 152 T 0.186 cur_u 300 cur_m 0 best_feas 300 iters 252 acc 139
+imp t 152.1 unreached 298
+imp t 154.8 unreached 296
+imp t 156.5 unreached 292
+imp t 158.1 unreached 288
+imp t 163.3 unreached 286
+imp t 167.8 unreached 284
+imp t 168.7 unreached 282
+imp t 169.2 unreached 278
+imp t 170.6 unreached 276
+imp t 176.2 unreached 274
+imp t 178.3 unreached 272
+imp t 179.2 unreached 270
+imp t 181.3 unreached 268
+imp t 181.6 unreached 264
+t 182 T 0.133 cur_u 264 cur_m 0 best_feas 264 iters 328 acc 169
+imp t 189.4 unreached 262
+imp t 201.1 unreached 256
+imp t 203.3 unreached 252
+imp t 204.1 unreached 250
+imp t 204.8 unreached 248
+imp t 206.0 unreached 246
+imp t 209.7 unreached 242
+imp t 210.9 unreached 240
+t 212 T 0.095 cur_u 240 cur_m 0 best_feas 240 iters 405 acc 191
+imp t 216.4 unreached 236
+imp t 216.9 unreached 234
+imp t 218.0 unreached 232
+imp t 218.5 unreached 230
+imp t 218.8 unreached 228
+imp t 220.0 unreached 220
+imp t 221.1 unreached 218
+imp t 221.7 unreached 216
+imp t 224.1 unreached 210
+imp t 226.5 unreached 208
+imp t 227.1 unreached 206
+imp t 229.5 unreached 204
+imp t 229.7 unreached 202
+imp t 231.4 unreached 200
+imp t 232.2 unreached 198
+imp t 237.1 unreached 196
+imp t 238.7 unreached 194
+t 242 T 0.068 cur_u 194 cur_m 0 best_feas 194 iters 524 acc 237
+imp t 242.4 unreached 192
+imp t 243.2 unreached 188
+imp t 246.6 unreached 186
+imp t 247.4 unreached 184
+imp t 250.7 unreached 180
+imp t 253.3 unreached 176
+imp t 255.7 unreached 174
+imp t 256.5 unreached 168
+imp t 263.2 unreached 166
+imp t 265.2 unreached 164
+imp t 265.9 unreached 162
+imp t 266.7 unreached 160
+done: evals 605 accepted 264 best_feas 160 best_tot 160.0 final_u 160 final_m 0 time 270.2
+
+## M=22 from M=20 voltages (v->v), start U=1070 (start_M22.txt), 270 s budget
+## m22_s7: tann3 LAM=10, T0=2 T1=0.05 R=2 pswap=0.1 seed=7
+resumed from ./start_M22.txt
+initial unreached 1070 multi 0 (list 1070) LAM 10.00
+imp t 0.4 unreached 1062
+imp t 0.9 unreached 1056
+imp t 1.8 unreached 1054
+imp t 3.4 unreached 1044
+imp t 3.8 unreached 1036
+imp t 4.2 unreached 1032
+imp t 6.9 unreached 1028
+imp t 8.7 unreached 1024
+imp t 10.1 unreached 1014
+imp t 10.6 unreached 1012
+imp t 11.6 unreached 1004
+imp t 12.1 unreached 996
+imp t 14.5 unreached 990
+imp t 14.9 unreached 988
+imp t 15.8 unreached 980
+imp t 16.8 unreached 966
+imp t 17.2 unreached 960
+imp t 18.4 unreached 956
+imp t 19.0 unreached 954
+imp t 20.5 unreached 942
+imp t 21.8 unreached 938
+imp t 22.4 unreached 932
+imp t 23.2 unreached 926
+imp t 23.7 unreached 918
+imp t 24.7 unreached 912
+imp t 26.7 unreached 910
+imp t 27.4 unreached 906
+imp t 28.9 unreached 904
+imp t 29.6 unreached 902
+t 30 T 1.323 cur_u 902 cur_m 0 best_feas 902 iters 60 acc 35
+imp t 31.9 unreached 900
+imp t 34.2 unreached 890
+imp t 38.3 unreached 888
+imp t 38.9 unreached 886
+imp t 40.6 unreached 874
+imp t 41.9 unreached 864
+imp t 43.4 unreached 858
+imp t 44.6 unreached 856
+imp t 48.8 unreached 850
+imp t 49.3 unreached 848
+imp t 51.6 unreached 846
+imp t 52.2 unreached 844
+imp t 54.4 unreached 842
+imp t 55.7 unreached 838
+t 61 T 0.873 cur_u 838 cur_m 0 best_feas 838 iters 109 acc 59
+imp t 62.2 unreached 836
+imp t 64.3 unreached 834
+imp t 65.5 unreached 832
+imp t 67.3 unreached 828
+imp t 68.3 unreached 824
+imp t 68.9 unreached 820
+imp t 69.6 unreached 816
+imp t 73.9 unreached 812
+imp t 75.1 unreached 806
+imp t 76.5 unreached 800
+imp t 81.4 unreached 790
+imp t 84.2 unreached 778
+imp t 85.5 unreached 776
+imp t 86.1 unreached 772
+imp t 88.9 unreached 768
+t 91 T 0.578 cur_u 768 cur_m 0 best_feas 768 iters 154 acc 84
+imp t 92.0 unreached 764
+imp t 92.7 unreached 758
+imp t 93.9 unreached 756
+imp t 95.6 unreached 754
+imp t 99.1 unreached 750
+imp t 101.6 unreached 748
+imp t 102.3 unreached 742
+imp t 103.8 unreached 736
+imp t 108.6 unreached 734
+imp t 110.0 unreached 728
+imp t 112.2 unreached 722
+imp t 114.6 unreached 718
+imp t 115.4 unreached 706
+imp t 116.3 unreached 704
+imp t 117.5 unreached 702
+t 121 T 0.384 cur_u 702 cur_m 0 best_feas 702 iters 197 acc 100
+imp t 122.2 unreached 700
+imp t 124.0 unreached 698
+imp t 130.5 unreached 696
+imp t 137.2 unreached 694
+imp t 141.2 unreached 688
+imp t 146.2 unreached 684
+imp t 147.3 unreached 674
+imp t 147.9 unreached 670
+imp t 148.5 unreached 668
+imp t 149.7 unreached 666
+t 151 T 0.253 cur_u 666 cur_m 0 best_feas 666 iters 236 acc 113
+imp t 155.4 unreached 658
+imp t 157.4 unreached 654
+imp t 159.0 unreached 652
+imp t 163.6 unreached 650
+imp t 165.4 unreached 644
+imp t 167.1 unreached 642
+imp t 169.8 unreached 640
+imp t 171.7 unreached 636
+imp t 173.2 unreached 634
+imp t 174.0 unreached 630
+imp t 175.1 unreached 622
+imp t 176.4 unreached 618
+imp t 177.5 unreached 616
+imp t 179.6 unreached 614
+imp t 180.8 unreached 610
+t 182 T 0.167 cur_u 610 cur_m 0 best_feas 610 iters 306 acc 139
+imp t 182.0 unreached 608
+imp t 183.1 unreached 606
+imp t 183.4 unreached 600
+imp t 184.8 unreached 594
+imp t 190.2 unreached 590
+imp t 192.4 unreached 588
+imp t 192.8 unreached 578
+imp t 196.5 unreached 576
+imp t 197.4 unreached 574
+imp t 200.8 unreached 570
+imp t 201.9 unreached 566
+imp t 203.1 unreached 564
+imp t 203.9 unreached 562
+imp t 206.1 unreached 556
+imp t 210.3 unreached 554
+t 212 T 0.111 cur_u 554 cur_m 0 best_feas 554 iters 382 acc 163
+imp t 213.1 unreached 552
+imp t 213.4 unreached 546
+imp t 215.0 unreached 544
+imp t 219.3 unreached 534
+imp t 220.1 unreached 528
+imp t 221.2 unreached 526
+imp t 221.6 unreached 524
+imp t 222.3 unreached 522
+imp t 222.7 unreached 520
+imp t 223.4 unreached 518
+imp t 226.1 unreached 516
+imp t 227.5 unreached 512
+imp t 228.0 unreached 508
+imp t 229.0 unreached 506
+imp t 229.5 unreached 502
+imp t 230.2 unreached 500
+imp t 232.3 unreached 498
+imp t 237.7 unreached 496
+imp t 238.5 unreached 490
+imp t 240.7 unreached 486
+t 242 T 0.073 cur_u 486 cur_m 0 best_feas 486 iters 499 acc 199
+imp t 245.1 unreached 482
+imp t 246.6 unreached 478
+imp t 248.0 unreached 474
+imp t 263.1 unreached 472
+imp t 264.7 unreached 468
+imp t 267.9 unreached 462
+done: evals 571 accepted 219 best_feas 462 best_tot 462.0 final_u 462 final_m 0 time 270.0
+
+## M=21 continuation from m21_s5.txt (U=150): 240 s
+## m21c_s8: tann3 LAM=10, T0=0.5 T1=0.05 R=2 pswap=0.1 seed=8
+resumed from ./m21_s5.txt
+initial unreached 150 multi 0 (list 150) LAM 10.00
+imp t 3.2 unreached 148
+imp t 5.9 unreached 146
+imp t 9.2 unreached 144
+imp t 10.7 unreached 140
+imp t 13.7 unreached 134
+imp t 24.1 unreached 132
+imp t 24.4 unreached 128
+imp t 25.9 unreached 126
+t 30 T 0.374 cur_u 126 cur_m 0 best_feas 126 iters 116 acc 32
+imp t 33.1 unreached 124
+imp t 34.2 unreached 122
+imp t 42.0 unreached 120
+imp t 51.5 unreached 118
+imp t 54.6 unreached 116
+imp t 56.5 unreached 114
+imp t 58.1 unreached 112
+imp t 59.0 unreached 110
+t 60 T 0.280 cur_u 110 cur_m 0 best_feas 110 iters 231 acc 64
+imp t 60.9 unreached 108
+imp t 69.2 unreached 106
+imp t 70.9 unreached 102
+imp t 73.3 unreached 100
+imp t 76.7 unreached 98
+imp t 78.7 unreached 94
+imp t 82.7 unreached 92
+imp t 84.4 unreached 90
+imp t 89.6 unreached 88
+t 91 T 0.210 cur_u 88 cur_m 0 best_feas 88 iters 349 acc 94
+imp t 93.9 unreached 86
+imp t 94.3 unreached 84
+imp t 103.0 unreached 82
+imp t 108.1 unreached 78
+imp t 110.9 unreached 76
+imp t 116.1 unreached 72
+imp t 116.5 unreached 70
+t 121 T 0.157 cur_u 70 cur_m 0 best_feas 70 iters 456 acc 120
+imp t 129.0 unreached 68
+imp t 132.5 unreached 66
+imp t 141.9 unreached 64
+imp t 149.0 unreached 62
+t 151 T 0.118 cur_u 62 cur_m 0 best_feas 62 iters 589 acc 140
+imp t 154.8 unreached 60
+imp t 157.3 unreached 58
+imp t 159.2 unreached 54
+imp t 160.6 unreached 52
+imp t 175.9 unreached 48
+imp t 176.9 unreached 46
+t 181 T 0.088 cur_u 46 cur_m 0 best_feas 46 iters 710 acc 169
+imp t 195.5 unreached 44
+imp t 197.5 unreached 42
+imp t 201.8 unreached 40
+imp t 207.8 unreached 38
+t 211 T 0.066 cur_u 38 cur_m 0 best_feas 38 iters 846 acc 195
+imp t 219.5 unreached 36
+done: evals 985 accepted 221 best_feas 36 best_tot 36.0 final_u 36 final_m 0 time 240.1
+
+## m21c_s9: tann3 LAM=10, T0=1.0 T1=0.05 R=3 pswap=0.2 seed=9
+resumed from ./m21_s5.txt
+initial unreached 150 multi 0 (list 150) LAM 10.00
+imp t 2.2 unreached 148
+imp t 3.5 unreached 146
+imp t 3.8 unreached 144
+imp t 10.5 unreached 142
+imp t 12.3 unreached 140
+imp t 17.8 unreached 138
+imp t 22.7 unreached 134
+imp t 24.9 unreached 132
+imp t 25.6 unreached 130
+t 30 T 0.687 cur_u 130 cur_m 0 best_feas 130 iters 113 acc 40
+imp t 31.7 unreached 126
+imp t 38.5 unreached 124
+imp t 39.8 unreached 122
+imp t 40.1 unreached 116
+imp t 41.6 unreached 110
+imp t 48.1 unreached 106
+imp t 59.2 unreached 100
+t 60 T 0.472 cur_u 100 cur_m 0 best_feas 100 iters 235 acc 69
+imp t 67.6 unreached 98
+imp t 68.6 unreached 96
+imp t 79.9 unreached 94
+imp t 80.6 unreached 92
+imp t 82.2 unreached 90
+imp t 84.9 unreached 88
+imp t 86.1 unreached 86
+t 90 T 0.324 cur_u 86 cur_m 0 best_feas 86 iters 356 acc 104
+imp t 102.8 unreached 84
+imp t 109.9 unreached 82
+imp t 113.9 unreached 80
+imp t 119.5 unreached 78
+t 120 T 0.223 cur_u 78 cur_m 0 best_feas 78 iters 472 acc 131
+imp t 129.5 unreached 76
+imp t 143.4 unreached 72
+t 150 T 0.153 cur_u 72 cur_m 0 best_feas 72 iters 608 acc 153
+imp t 165.5 unreached 68
+imp t 171.1 unreached 66
+imp t 180.4 unreached 64
+t 180 T 0.105 cur_u 64 cur_m 0 best_feas 64 iters 730 acc 180
+imp t 184.3 unreached 62
+imp t 188.0 unreached 60
+imp t 189.2 unreached 58
+imp t 192.5 unreached 56
+t 210 T 0.072 cur_u 56 cur_m 0 best_feas 56 iters 854 acc 206
+imp t 211.8 unreached 54
+imp t 215.4 unreached 52
+imp t 223.1 unreached 48
+imp t 225.2 unreached 44
+imp t 239.3 unreached 42
+done: evals 978 accepted 229 best_feas 42 best_tot 42.0 final_u 42 final_m 0 time 240.1
