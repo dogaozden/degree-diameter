@@ -111,7 +111,7 @@ def main():
     if os.path.exists(outp):
         for line in open(outp):
             f = line.split('\t')
-            if len(f) > 2 and f[0].isdigit():
+            if len(f) > 2 and f[0].isdigit() and f[1].isdigit():
                 done.add((int(f[0]), int(f[1])))
     log = open(outp, 'a')
     soldir = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'allgroups_d{a.Delta}D{a.D}_sols' if a.base is None else f'{mode}_D{a.D}_sols')

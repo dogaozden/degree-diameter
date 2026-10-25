@@ -1,40 +1,52 @@
-# Formulas behind the small-degree records (thm-smallfamilies, 2026-10-24)
+# Formulas behind the small-degree records (thm-smallfamilies, 2026-10-24/25)
 
-Job "thm-smallfamilies" (Opus). Branch `claude/small-degree-families-g7zllq`. Scripts and outputs are in
+Job "thm-smallfamilies" (Opus), two sessions: branch `claude/small-degree-families-g7zllq` (Oct 24, cut off by the
+usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oct 25). Scripts and outputs are in
 `smallfam/`, and every claim below names its script and saved output.
 - "Table" means research/frontier/TABLE.md. The wiki page has not changed in these cells since January 2012
   (research/lifts/LITERATURE.md §1, voltage-lifts branch).
 - "Haar graph" H(G,S): (g,A) ~ (s·g, B) for s ∈ S, with |S| = Δ and 2|G| vertices.
-- "Exhaustive" means every connection set up to isomorphism was tested (§2.2).
+- "Exhaustive" means every connection set (or voltage assignment) up to isomorphism was tested (§2.2).
+- "Screened" means a short simulated-annealing run per group (hanneal / lanneal). A screen finds solutions where they
+  exist (calibrated on every known record group, §6.1) but it is **not** a proof that none exists.
 
 ## Short answer
 
-1. **New record (4,7) = 864** (table 840, Bond–Delorme). Exactly three 4-regular Haar graphs of diameter 7 on 864
-   vertices exist, one for each of three groups of order 432. The main one is H(Heis(F_9) ⋊ C16, S) with an explicit
-   formula (§1).
-2. **Three of Loz's records have closed forms, and each is the unique Haar graph with its parameters:**
+1. **New record (4,7) = 864** (table 840, Bond–Delorme), from the first session.
+   - There are exactly three 4-regular Haar graphs of diameter 7 on 864 vertices, one for each of three groups of
+     order 432.
+   - The main one is H(Heis(F_9) ⋊ C16, S), with an explicit formula (§1). It is on master.
+   - Nothing larger was found. This session screened Haar graphs of all groups of order 448–500, and Δ = 4 lifts of
+     the 2+2 bases over all groups of order 217–260 (§6).
+2. **Three of Loz's records have closed forms, and each is the unique Haar graph with its parameters** (§2.1):
    - (3,9) 506 = Cay(AGL(1,23), {x ↦ 5x, x ↦ 14x, x ↦ −x+1});
    - (4,8) 2184 = H((C7 ⋊ C3) × Dic13, S);
    - (4,9) 4970 = H(Z71 ⋊ Z35, {1, y, x·y¹³, x⁹·y¹⁹}).
-   "Unique" is checked over every group of the order (§2.1).
-3. **What the record groups have in common.** All of them are, or contain with index 2, a group N ⋊ C_k: an abelian
-   or Heisenberg normal subgroup N, with a cyclic group acting by field multiplication. The graph is then a lift of a
-   circulant or 2+2 base whose voltages turn with the rotation (§2.2).
-   - Our metacyclic records of the voltage-lifts session have the same group type, but their S is random-like.
-   - Which of those groups solved is predicted by N alone. Quotient balance does not predict it (permutation test
-     p = 0.83 and 0.995, against p < 10⁻⁴ for μ; §4).
-4. **No family covers a row.** The Δ = 4 records use a different group type at each diameter:
-   - D = 5: a cyclic lift of a 3+3 base;
-   - D = 7: Heis(F_9) ⋊ C16;
-   - D = 8: (C7 ⋊ C3) × Dic13;
-   - D = 9: Z71 ⋊ Z35;
-   - D = 10: Z97 ⋊ Z64.
-   Within the affine family the exhaustive maxima stay at or below the table (§2.4).
-5. **Complete negatives.**
-   - No cubic Haar graph with more than 168 vertices has diameter 7, and no 2+2 cubic lift does either.
-   - No group of order 254–319 gives a cubic Haar graph of diameter 9 (all 56,092 groups of order 256 included).
-   - No group of order 401–431 gives one of diameter 10.
-   - At (4,8) and (4,9) about 200 structured groups were tested, by me and an 8-Haiku squad; none works (§6).
+3. **Which (p, k, r) can solve: a theorem** (§2.3). For G = Z_p ⋊_r Z_k with o = ord(r), every walk of H(G, S)
+   is the image of a walk in a universal group Z[ζ_o]^(Δ−2) ⋊ Z_k that does not depend on p.
+   - Counting the walk values in each fibre gives a rigorous bound N = pk ≤ B(k, o), valid for every S.
+   - At Δ = 3, D = 7–10 it excludes 1,524 of the 1,639 metacyclic groups ever scanned, and no solving group.
+   - In particular it excludes 658 of the 666 groups whose multiplier group has index > 6. That was the first
+     session's main empirical pattern; it is now mostly a theorem.
+   - Among the 115 groups the bound leaves open, 21 solve, and the solve rate falls steadily with N/B (§3.2).
+4. **No bounded-order family covers a row** (§2.4).
+   - For fixed action order o, metacyclic Haar graphs have N ≤ (2D+1)^((o+1)(Δ−1)): polynomial in D.
+   - The records grow like (Δ−1)^D, so any metacyclic family that holds a whole row needs an action order that grows
+     with D.
+   - The record groups do: o = 11, 35, 32 at (3,9), (4,9), (4,10).
+5. **Complete negatives, new this session** (§2.5):
+   - **(3,7):** no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving group of
+     automorphisms acting freely with at most 6 vertex orbits. All Haar graphs, 2+2 lifts and 3+3 lifts were
+     searched up to the Moore bound.
+   - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The ten groups that came within
+     cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
+   - **(3,10):** no group of order 401–520 (except 512) gives a cubic Haar graph of diameter 10. The closest is
+     SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative (cost 4).
+   - **(3,9) and (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table, since every N up to the Moore bound was
+     scanned.
+6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Every near miss in every cell is an affine-type group:
+   an abelian normal subgroup F_q (or a product of two) with a cyclic or metacyclic group acting by multiplication
+   (§3.1, §5).
 
 ---
 
@@ -61,6 +73,7 @@ Job "thm-smallfamilies" (Opus). Branch `claude/small-degree-families-g7zllq`. Sc
 - igraph agrees.
 - Edge list `graphs/d4D7_n864_heis9xC16.edges.gz`, sha256 (uncompressed)
   73231da4081f762588e5d5270bc2ae911807e1f3b204ff5ff79fad4d6779de25.
+- The coordinator re-checked it all-pairs and recorded it on Oct 24 (research/RESULTS.md).
 
 *The two other graphs* (`graphs/d4D7_n864_others.txt`; apsp VALID). Both are vertex-transitive (|Aut| = 864):
 - SmallGroup(432,247) = (C3 × C3) : (C2 . S4), girth 6;
@@ -69,14 +82,16 @@ Job "thm-smallfamilies" (Opus). Branch `claude/small-degree-families-g7zllq`. Sc
 The three graphs are pairwise non-isomorphic. In each group all plan solutions form a single isomorphism class:
 144, 24 and 24 plan solutions respectively (`isoclasses.py` → `runs/d4D7_sg432_isoclasses.txt`).
 
-*How it was found.* `allgroups.py 4 7 421 546` runs over every SmallGroup of each order:
+*How it was found.* `allgroups.py 4 7 …` runs over every SmallGroup of each order:
 - a rank test;
 - the abelianization bound of §2.2;
 - a GAP export of the multiplication table and an Aut(G)-reduced plan;
 - an exhaustive test of every remaining set with `hx`.
 
-At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. Orders 421–448
-are done so far (`runs/allgroups_d4D7.tsv`); the run continues to 546 and skips order 512 (10,494,213 groups).
+At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. The exhaustive run
+is complete for orders 421–447 and 449–467. Order 448 is partial (500 of 1,396 groups); this session screened all of
+448–500 (§6.2). Above 432 the closest exhaustive results are cost 1 (one vertex short), at three groups of order 440
+(880 vertices): C11 : C40, D8 × (C11 : C5) and C11 : (C5 × Q8). SmallGroup(432,243) is also at cost 1.
 
 *Is the exhaustive search itself right?* Four checks:
 - **Against igraph.** `hx_check.py` recomputes with igraph the exact diameter of every set on two plan lines of
@@ -128,7 +143,8 @@ Two remarks:
 
   So the search space has (k−1)·k·N^{Δ−3} sets, only k² for Δ = 3. For general groups the plan instead takes
   s1 over Aut(G)-orbit representatives, s2 over Stab(s1)-orbit representatives, and the remaining elements over
-  all of G (GAP; `allgroups.py`, `named.py`).
+  all of G (GAP; `allgroups.py`, `named.py`). For lifts, the first free voltage runs over Aut(G)-orbit
+  representatives *including the identity* (see the bug note in §2.5) and the others over all of G (`lx.c`).
 - **Cover structure.** For G = K ⋊ ⟨y⟩ with K normal and y of order k, H(G, S) is a regular K-lift of the
   circulant H(Z_k, S̄), where S̄ is the multiset of j-parts.
   - The edge from (j, A) labelled s = κ_s·y^{j_s} carries the voltage φ^{−(j+j_s)}(κ_s), φ being conjugation by y.
@@ -144,23 +160,152 @@ Two remarks:
   - For lifts of a base with c independent cycles it gives |B|·|G^ab| ≤ the walk endpoints in the Z^c-lift. For
     the 2+2 cubic base that means |G^ab| ≤ 79, 112, 152 at D = 8, 9, 10.
   - The filter never removed a known solution.
+- **Lifts and free actions.** A connected bipartite graph X whose colour-preserving automorphism group contains a
+  subgroup G acting freely on vertices is a regular G-lift of the multigraph X/G. No element can swap the ends of an
+  edge, so G also acts freely on edges and X/G has no loops. So "a lift of some base with b vertices" is the same as
+  "a free colour-preserving action with b orbits".
 
-### 2.3 Complete negatives (all groups, GAP SmallGroups, nothing skipped unless stated)
+### 2.3 Which (p, k, r) can solve: the cyclotomic fibre bound (new)
 
-- **(3,7), Haar:** orders 85–127, every group (`runs/allgroups_d3D7.tsv`). The best is cost 100.
-  **No cubic Haar graph with more than 168 vertices has diameter 7** (2N ≤ 254 by Moore).
-- **(3,7), 2+2 lifts:** orders 43–63, every group (`runs/lift_b22_D7.tsv`). The best is cost 16. Order 42 has
-  exactly one solving group, C2 × (C7:C3), which is Conder's graph. **Conder's 168 is the largest 2+2 cubic lift of
-  diameter 7.**
-- **(3,9), Haar:** every group of every order 254–319 (`runs/allgroups_d3D9.tsv`, completeness in
-  `runs/completeness.txt`), all 56,092 groups of order 256 included: no diameter-9 graph. **No cubic Haar graph
-  with 508–638 vertices has diameter 9.** Orders 320–330 are running.
-- **(3,10), Haar:** orders 401–431 (`runs/allgroups_d3D10.tsv`): none. The best is cost 4, at C29 : C14 and
-  C2 × (C29 : C7) (N = 406). Orders 432–460 are running.
-- **(3,8), (3,9), (3,10), 2+2 lifts:** orders 73–114, 127–168 and 201–224 so far (`runs/lift_b22_D*.tsv`): none.
-  The best are cost 8 (order 80), 12 (order 140) and 2 (Z29 ⋊ Z7, the known near miss at 812).
+Setting: G = Z_p ⋊_r Z_k, p prime, o = ord_p(r) ≥ 2 (so o | k and o | p − 1). Normal form as in §2.2:
+S = {(0,0), (0, j1), (1, j2), (a3, j3), …} with o ∤ j1.
 
-### 2.4 Exhaustive maxima of the affine family F_q ⋊ C_k
+**The universal group.** Let ζ = ζ_o and U = Z[ζ]^(Δ−2) ⋊ Z_k, with product (P; J)(Q; L) = (P + ζ^J Q; J + L). Its
+generators are u_0 = e, u_1 = (0; j1) and u_i = (ε_{i−2}; j_i) for i ≥ 2 (ε_f is the f-th unit vector).
+- r is a primitive o-th root of unity in F_p, so Φ_o(r) = 0 and ζ ↦ r is a ring map Z[ζ] → F_p.
+- Hence φ(P; J) = (P_0(r) + Σ_{f≥1} P_f(r)·a_{f+2}, J) is a group homomorphism U → G with φ(u_i) = s_i.
+- Every walk of H(G, S) from (e, A) or (e, B) is the image of the walk with the same generator sequence in the
+  infinite graph H(U, {u_i}). So φ maps each ball of H(U) onto the ball of the same radius in H(G, S).
+
+The walk values ending at J therefore form a finite set W_J ⊂ Z[ζ]^(Δ−2) that depends on (k, o, j, D) but **not on
+p, r or a3, a4, …**. H(G, S) has diameter ≤ D exactly when each W_J (from both start sides, on both target sides)
+maps onto F_p.
+
+**Theorem (fibre bound).** If H(Z_p ⋊_r Z_k, S) is connected with diameter ≤ D, then p ≤ min_J |W_J| for its
+pattern j. So N = pk ≤ B(k, o) := k · max over admissible j of min_J |W_J|.
+- *Proof:* φ maps W_J onto the p vertices (a, J), a ∈ F_p, of the target side.
+- "Admissible" means o ∤ j1 and gcd(j1, j2, …, k) = 1; otherwise the graph is disconnected.
+- j is taken up to multiplication by units u of Z_k. That is the Galois action ζ ↦ ζ^u, which does not change
+  |W_J|. ∎
+
+**Computation** (`cyclobound.py --fiber`, numpy, exact arithmetic in the power basis of Z[ζ_o]). It was applied to
+all 1,639 groups of the first session's exhaustive Δ = 3 scans (`runs/frob_d3D{7..10}.txt`, every Z_p ⋊ Z_k in the
+scanned ranges). Outputs: `runs/cyclofiber_d3D{7,8,9,10}.txt`, summary `runs/cyclofiber_summary.txt`.
+
+| index c = (p−1)/o | groups | solving | excluded by the bound | left open | solving among open |
+|---|---|---|---|---|---|
+| 1 | 344 | 8 | 315 | 29 | 28 % |
+| 2 | 262 | 9 | 223 | 39 | 23 % |
+| 3–6 | 367 | 4 | 328 | 39 | 10 % |
+| > 6 | 666 | 0 | **658** | 8 | 0 % |
+| all | 1,639 | 21 | **1,524** | 115 | 18 % |
+
+- No solving group is excluded. This is a soundness check of the proof and the code; `cyclosummary.py` asserts it.
+- The first session's conjecture "index > 6 never solves" (0 of 666) is now a theorem for 658 of those groups. The
+  other 8 fail by exhaustive search.
+- The bound excludes these groups one by one, for their actual (k, o, p); it does not prove "index ≤ 6" in general.
+  - Since p = c·o + 1 ≤ B(k, o)/k, the largest index it allows over k ≤ 40 is 5, 8, 10 and 17 at D = 7, 8, 9, 10
+    (`cycloindex.py` → `runs/cycloindex.txt`).
+  - The largest index among actual solutions is 2, 4, 4 and 6.
+  - At D = 7 the bound does give a clean statement: every cubic Haar graph of a Z_p ⋊ Z_k with k ≤ 40 and
+    diameter 7 has index ≤ 5.
+- The simpler version without fibres (`cyclobound.py`, `runs/cyclobound_d3D*.txt`) excludes 1,335 groups, 644 of
+  them with index > 6.
+- Tightness: Loz's Z23 ⋊ Z11 has N = 253 against B(11, 11) = 451. Over k ≤ 40, the largest N the bound allows is
+  497 at D = 9 and 812 at D = 10. The true family maxima are N = 253 and 330. So the bound overshoots by a factor
+  of about 2, as a counting bound must: it ignores collisions under the reduction mod p.
+- Bound tables for every k ≤ 40 and o | k (`cyclotable.py --fiber`, `runs/cyclotable_fiber_d3D{9,10}.txt`). At
+  D = 9, beating 506 requires N ≥ 254, and for k ≤ 40 only seven (k, o) allow it; the largest allowed is Z71 ⋊ Z7
+  (N ≤ 497).
+- The same argument works for F_q ⋊ C_k (r ∈ F_q^*), since ζ ↦ r is still a ring map. For squarefree m, replace
+  Z[ζ_o] by Z[x]/(product of the distinct Φ_{o_i}), where o_i is the order of r mod the i-th prime factor of m.
+  This needs m squarefree, because Φ_o(r) ≡ 0 holds mod p but not always mod p².
+
+**Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats (3,9) or (3,10). Every
+group with N up to the Moore bound (510 and 1023) was scanned exhaustively (`runs/frob_d3D9.txt`, `frob_d3D10.txt`),
+and the family maxima are 506 and 660 vertices.
+
+### 2.4 No bounded-order metacyclic family covers a row (new)
+
+Take G = Z_m ⋊_r Z_k for any m, with o = ord_m(r).
+- Use the universal group (Z[x]/(xᵒ − 1))^(Δ−1) ⋊ Z^(Δ−1). There is no normal form here, so all Δ − 1 non-identity
+  elements get formal a-parts, and the j-part is replaced by the signed generator counts n ∈ Z^(Δ−1).
+- A walk of length ≤ D has |n|₁ ≤ D. Each formal a-part is a sum of at most D terms ±xᵉ, so its o coefficients lie
+  in [−D, D].
+- Hence N ≤ (2D+1)^(Δ−1) · (2D+1)^(o(Δ−1)) = (2D+1)^((o+1)(Δ−1)).
+
+For fixed o this is polynomial in D, while the Moore bound and the records grow like (Δ−1)^D. A metacyclic family
+whose action order stays bounded can therefore hold only finitely many cells of a row. A family that holds a whole row
+needs o → ∞, at a rate of at least about D log(Δ−1) / ((Δ−1) log(2D+1)). This is the standard growth argument for
+virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made explicit.
+
+What the records show:
+- The record groups do use large action orders: o = 11 at (3,9), 35 at (4,9), 32 at (4,10).
+- The Δ = 4 records use a different group type at each D (§3.1). So a row-covering family, if one exists, cannot be
+  a fixed-o metacyclic one; it would have to let o grow with D as Loz's groups do.
+
+### 2.5 Complete negatives (all groups, GAP SmallGroups, nothing skipped unless stated)
+
+Coverage of every run below was re-checked against NrSmallGroups (`completeness.py` → `runs/completeness_resume.txt`).
+
+- **(3,7): every base with at most 6 vertices.** Haar graphs (2 vertices), 2+2 lifts (4) and lifts of all three
+  3+3 bases (6) were searched over every group up to the Moore bound of 254 vertices:
+  - Haar, orders 85–127 (`runs/allgroups_d3D7.tsv`): closest (96,65) and (96,66), 4 vertices short;
+  - 2+2, orders 43–63 (`runs/lift_b22_D7.tsv`): best cost 16, and Conder's group C2 × (C7:C3) at order 42 is the
+    only solving group at the table size;
+  - 3+3 bases b33_0 and b33_1, orders 29–42 (`runs/lift_b33_{0,1}_D7.tsv`), and K3,3, orders 29–42
+    (`runs/lift_b33_2_D7_idfix.tsv`, 100 groups, best cost 6).
+
+  By §2.2 this proves: **no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving
+  group of automorphisms acting freely with at most 6 vertex orbits.** Conder's graph has 4 such orbits.
+- **(3,9), Haar:** every group of every order 254–319 (`runs/allgroups_d3D9.tsv`), all 56,092 groups of order 256
+  included: no diameter-9 graph. **No cubic Haar graph with 508–638 vertices has diameter 9.** At order 320, 34 of
+  1,640 groups were done.
+  - Closest: C17 : C16 (N = 272), 4 vertices short; then C3 × ((C2 × C2) : (C3 : C8)) and C3 × (Q8 : (C3 : C4))
+    (288) and C2 × (C31 : C5) (310), each 9 short.
+  - At odd D, hx reports N + (uncovered) when the first BFS already fails. The first session's coverage summary
+    sorted these raw values, so its "best costs" at D = 7 and 9 were misleading; they are recomputed here.
+- **(3,10), Haar:** every group of every order 401–520 except 512 (`runs/allgroups_d3D10.tsv`; 400 is partial,
+  126 of 221). No diameter-10 graph. **No cubic Haar graph with 802–1,040 vertices has diameter 10, except possibly
+  for groups of order 512.**
+  - Closest: SmallGroup(486,40) = (C3 . ((C9 × C3) : C3)) : C2, at cost 2 (972 vertices). Also cost 4 at
+    C29 : C14 and C2 × (C29 : C7) (406), at (432,243) and at C11 : C40 (440).
+  - Orders 521–600 (not 576): RESULT_521.
+- **(3,10), lifts near 816:** K3,3 over SmallGroup(136,3) = C17 : C8 (squad card c2's lead). 17,608,192
+  assignments plus the identity pass of 2,515,456: no solution, best cost 4
+  (`runs/d3D10_k33_sg136_3_exhaustive.txt`, `_identity.txt`).
+  - The voltage-lifts session reports another 3+3 base (their b3_3_0) over Z17 ⋊ Z8 as exhaustively negative at
+    cost 2. Our b33_0 reaches the same cost 2 there by annealing (squad card c1), so it is probably the same base.
+- **2+2 lifts at (3,8), (3,9), (3,10):** all groups of orders 73–113, 127 and 129–170, and 201–239
+  (`runs/lift_b22_D*.tsv`): none.
+  - Partial: order 114 (4 of 6), 128 (189 of 2,328) and 240 (43 of 208).
+  - The best are cost 8 (order 80), 12 (order 140), and 2 (Z29 ⋊ Z7 at 812 and C4 × (C11 : C5) at 880).
+  - For (3,9) the Moore bound allows 2+2 lifts up to order 255, so (3,9) is not closed.
+- **(4,8): the ten best groups of the full screen** (§6.2) are exhaustively negative (`onegroup.py`,
+  `runs/d4D8_sg*_exhaustive.txt`):
+
+| group | structure | sets tested | best cost |
+|---|---|---|---|
+| (1100,27) | C11 : (C5 × (C5 : C4)) | 2,096,367 | **1** |
+| (1100,26) | (C5 : C4) × (C11 : C5) | 2,379,393 | 3 |
+| (1120,1078) | ((C2 × C2 × C2) : C7) × (C5 : C4) | 1,505,716 | 3 |
+| (1100,18) | C11 : (C5 × (C5 : C4)) | 2,438,631 | 4 |
+| (1134,167) | C7 : (C3 × (C9 : C6)) | 3,815,994 | 4 |
+| (1134,176) | C7 : (((C9 × C3) : C3) : C2) | 1,242,969 | 4 |
+| (1200,485) | (C5 × C5) : (C3 : C16) | 1,242,486 | 4 |
+| (1134,40) | C7 : (((C3 × C3 × C3) : C3) : C2) | 1,911,390 | 5 |
+| (1140,15) | C5 : (C19 : C12) | 978,957 | 5 |
+| (1197,7) | C7 : (C19 : C9) | 693,714 | 5 |
+
+- **Bug found and fixed this session** (by squad card c6). In lift mode `allgroups.py` left the identity out of
+  the plan for the first free voltage.
+  - That is harmless when the first free edge is parallel to a tree edge, since parallel edges need distinct
+    voltages. That holds for b22, b33_0, b33_1 and every b44 except the cube.
+  - It is wrong for K3,3 (b33_2), the cube (b44_5), b55_13, b55_14 and the 6+6 bases.
+  - Of the earlier claims, only K3,3 at (3,7) was affected. It was redone in full above. Every run in this file uses
+    the fixed code or an unaffected base.
+
+### 2.6 Exhaustive maxima of the affine family F_q ⋊ C_k
 
 | family | D = 7 | D = 8 | D = 9 | D = 10 |
 |---|---|---|---|---|
@@ -171,6 +316,7 @@ Two remarks:
 
 Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/frob_d4D8.txt`,
 `runs/affq_d4D7.txt`, `runs/affq_d4D8.txt`, `runs/affq_d4D9.txt`, `runs/d4D9_squares_p79_p83.txt`.
+The Δ = 3 rows are complete up to the Moore bound (§2.3 corollary).
 
 ## 3. Conjectured, with strong evidence
 
@@ -187,35 +333,34 @@ Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/f
 | (4,10) | 12,416 (ours) | dipole | F_97 ⋊ C_64, acting with order 32 |
 | (4,7) | 840 (Bond–Delorme) | dipole | A5 × Z7: the exception |
 
-In every affine case the walk sums are signed sums of powers of one field element. The evidence is the eight cells
-above; exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.4).
+In every affine case the walk sums are signed sums of powers of one field element (§2.3 makes this exact).
+- This session adds the near misses. Every group that came within cost 5 of a record, in any cell, is of the same
+  type:
+  - the ten (4,8) groups of §2.5;
+  - SmallGroup(486,40) and the cost-4 groups at (3,10);
+  - C17 : C8 on 3+3 bases and Z29 ⋊ Z7 on the 2+2 base at (3,10).
+  The only non-affine groups near the top are 3-groups by C2 at (3,10).
+- Exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.6).
 
-### 3.2 Which (p, k, r) solve: the multiplier group must be large
+### 3.2 Solve probability falls with N / B(k, o)
 
-In Z_p ⋊_r Z_k the multipliers form the subgroup ⟨r⟩ of F_p^*. Let c = (p−1)/ord(r) be its index. Over all
-1,639 groups scanned at Δ = 3, D = 7–10 (`runs/frob_d3_solving_table.txt`):
+Among the 115 Δ = 3 metacyclic groups that the fibre bound of §2.3 leaves open (`cycloratio.py`,
+`runs/cyclofiber_summary.txt`):
 
-| index c | groups | solving | rate |
-|---|---|---|---|
-| 1 | 344 | 8 | 2.3 % |
-| 2 | 262 | 9 | 3.4 % |
-| 3–6 | 367 | 4 | 1.1 % |
-| > 6 | 666 | **0** | 0 % |
+| N/B | [0, 0.5) | [0.5, 0.6) | [0.6, 0.7) | [0.7, 0.8) | [0.8, 0.9) | [0.9, 1) |
+|---|---|---|---|---|---|---|
+| open groups | 4 | 9 | 13 | 19 | 17 | 53 |
+| solving | 3 | 4 | 4 | 3 | 1 | 6 |
 
-- If index did not matter, the chance of 0 solutions out of 666 at the overall rate would be about 4·10⁻⁷.
-- **But this is partly confounded with small action orders.** Restricted to ord(r) ≥ 5 the contrast is 10 of 203
-  (4.9 %) against 0 of 57, i.e. p ≈ 0.06. The evidence is suggestive, not strong.
-- The action may be non-faithful: k > ord(r), giving a central cyclic factor. 7 of the 21 solving groups are like
-  that.
-- The structured Δ = 4 records obey the same rule:
-  - Loz's (4,9), c = 2;
-  - Loz's (4,8), c = 2 on Z7 and 6 on Z13;
-  - our (4,10) Z97 ⋊ Z64, c = 3; Z157 ⋊ Z39, c = 4.
-- The random-like Δ = 5 records need not: Z3277 ⋊ Z14 at (5,10) has c = 16 on its Z113 factor.
+As a predictor over all scanned groups, N/B beats N alone at every D (AUC 0.976, 0.991, 0.999, 0.998 at D = 7–10,
+against 0.940, 0.953, 0.922, 0.983 for N; `cycloauc.py`). So the answer to "which (m, k, r) solve" for Δ = 3 is:
+- compute B(k, ord r), which is cheap;
+- a group with N > B cannot solve;
+- one with N/B ≲ 0.6 solves about half the time;
+- one with N/B ≳ 0.8 rarely does.
 
-**Conjecture (suggestive evidence for Δ = 3):** a Haar graph of Z_p ⋊ Z_k at a record-sized order needs a
-multiplier group of index at most about 6. Together with §3.3, this is the answer to "which (m, k, r) solve" for the small
-cells: a large multiplier group, then the far lower tail decides.
+The conjecture is that the same holds for Δ = 4 and 5. The Δ = 4 bound is computable (`cyclotable4.py`) but costs
+k³ patterns, so it was only tested on small k. At (4,9) every Z_p ⋊ Z_6 is capped at N ≤ 2,126.
 
 ### 3.3 In the small cells, success is decided by the far lower tail, so search all groups
 
@@ -234,10 +379,11 @@ and in control groups of the same order that have no solution.
   holds here.
 - Every group, solving or not, is strongly overdispersed. The record groups differ from the controls only in the
   extreme lower tail.
-- So in the small-N cells no averaged quantity, including μ, the screening score or the quotient balance of §4,
-  can tell which group will solve.
-- **That is why exhaustive coverage of all groups of the right order found (4,7).** Annealing over a few families
-  missed it, even though in the right group annealing finds a solution in seconds.
+- So in the small-N cells no averaged quantity can tell which group will solve. That covers μ, the screening score
+  and the quotient balance of §4; for the metacyclic groups the bound of §2.3 is the exception.
+- **That is why exhaustive coverage of all groups of the right order found (4,7).** This session applied the same
+  recipe to (4,8) (all 3,924 groups of order 1093–1200 except 1152), (4,7) (448–500) and (3,10) (to order 600), and
+  found near misses but no record.
 
 ## 4. The metacyclic records of the voltage-lifts session (45 solutions, D ≥ 7)
 
@@ -249,25 +395,77 @@ and in control groups of the same order that have no solution.
   - For large k, many random S already fail the rigorous bound (42 % at Z97 ⋊ Z64).
 - **Which runs solve** (`predict.py`, `predict_test.py` → `runs/predict_out.txt`, `runs/predict_test_out.txt`;
   188 anneal runs in the four cells with both outcomes). The two quotient features do not separate solved from
-  stalled runs (within-cell permutation p = 0.995 and 0.83). μ = N e^{−W/N}, i.e. N, does (p < 10⁻⁴). So "which
-  (m, k, r) solve" is decided by N and the seed; we found no group invariant that matters. This agrees with
-  REGULARITIES.md and SIZE_LAW.md.
+  stalled runs (within-cell permutation p = 0.995 and 0.83). μ = N e^{−W/N}, i.e. N, does (p < 10⁻⁴). Within one
+  cell these runs differ mainly in N, so this agrees with §3.2: the group-level quantity that matters is the bound
+  B(k, o), not quotient balance.
 
 ## 5. Weak patterns
 
+- **Near misses are Frobenius products and extensions.** At (4,8) the ten closest groups (§2.5) are products of
+  two Frobenius-type groups or extensions of C7 or C11 by them, the shape of Loz's (C7 ⋊ C3) × Dic13. The
+  "record-shaped" products screened directly (`frobprod.py`) did no better:
+  - at (4,8), orders 1201–1400 (66 products): best cost 9;
+  - at (4,9), orders 2486–2800 (50 products, all in orders missing from the SmallGroups library): best cost 10.
+- **Within a group, which S solves is arithmetic, not counting** (`jfibre.py` → `runs/jfibre_d3.txt`).
+  - In each solving Δ = 3 group, compare the fibre count F(j) = min_J |W_J| of the solving patterns with that of all
+    admissible patterns.
+  - When p is small (p ≤ 13) the solutions sit at the patterns of largest F.
+  - When p is larger they do not. In Loz's Z23 ⋊ Z11, 90 of the 110 patterns pass F ≥ p, and the 6 solutions have
+    F = 40 against a maximum of 41. In Z43 ⋊ Z7 the solutions spread over the top 71 %.
+  - So |W_J| decides which groups can solve, while which S solves depends on collisions under reduction mod the
+    prime 𝔭.
 - **A central involution.** The record groups of even order mostly have centre exactly C2 or containing one:
   - Conder's (3,7), our (3,8), all three (4,7) groups, Loz's (4,8), our (4,10) and (5,8);
   - but not PGL(2,5) × Z13 at (5,7) (centre Z13), nor our (5,10) group.
   - The faithful version of the (4,8) group (SmallGroup(1092,28), trivial centre) fails.
-  Such a graph is a 2-fold cover of the Haar graph of G/⟨z⟩. We used this to pick (4,8) candidates; none worked
-  (§6).
+  Such a graph is a 2-fold cover of the Haar graph of G/⟨z⟩.
 - **Arithmetic progressions.** The Δ = 3 j-patterns are sometimes arithmetic progressions with the translation on
   the middle element ((3,9): {0, 1, 6} in Z11). This is not a rule (`jpat.py`).
 - **AGL(1,p) Cayley graphs.** Cay(AGL(1,p), {x ↦ gx, x ↦ g⁻¹x, x ↦ −x+1}) for p ≡ 3 (mod 4) gives diameters
   6, 7, 9, 9, 11 for p = 7, 11, 19, 23, 31 (`runs/agl_cayley.txt`). Only p = 23 is a record, so this is not a
   row family.
 
-## 6. Dead ends
+## 6. Dead ends and searches with no record
+
+### 6.1 Cost conventions and screen calibration
+
+Costs: 0 always means a graph of diameter ≤ D.
+- **hanneal** (all Haar screens) reports the number of uncovered vertices. At odd D it is the sum over the two start
+  sides.
+- **hx** (exhaustive Haar) reports the same at even D. At odd D it returns N + (uncovered) when the first BFS already
+  fails, and skips the second; the near-miss counts quoted in §1 and §2.5 subtract N.
+- **lanneal** and **lx** (lifts) count far (source, target) pairs, with one source per base vertex. lx multiplies an
+  early-stopped first source by the number of base vertices.
+
+Why a screen is meaningful:
+
+- hanneal re-finds every known solving group in seconds: Loz's (4,8) group in 1.7k–3k evaluations, the (4,7) groups
+  in 360–1,366, Conder's (3,7) lift (lanneal) in under 3 s.
+- The (4,9) record group is harder. Loz's Z71 ⋊ Z35 needs 47k–79k evaluations, 8–13 s
+  (`runs/hanneal_calibration_d4D9_2485.txt`), and a 5 s screen there reached only cost 2. So (4,9) screens need
+  15 s or more per group.
+- `fscreen.py` and `flscreen.py` re-find Loz's (4,8) group and Conder's lift in their test runs.
+
+### 6.2 This session
+
+| cell | search | coverage | result |
+|---|---|---|---|
+| (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`) | orders 1093–1200 except 1152: 3,924 groups, of which 2,813 annealed, 861 fail the rank test and 250 the abelianization bound | no solution; the 10 best are exhaustively negative (§2.5) |
+| (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
+| (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
+| (4,9) | Haar, every SmallGroup | RESULT_49 | RESULT_49B |
+| (4,7) | Haar, every SmallGroup, 2 s anneal | RESULT_47 | RESULT_47B |
+| (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
+| (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
+| (3,10) | squad r2: 3+3 bases, orders 134–145; 4+4 bases, 101–106 | ~150 groups | best cost 2 (b33_0 over C17 : C8, re-anneal), 4 (K3,3 over C17 : C8, then exhaustive) |
+| (3,9) | squad r2: 3+3 and 4+4 bases, orders 64–100 | ~180 groups | best cost 32 |
+| (3,7) | squad r2: cube, orders 22–26 (exhaustive, with the identity pass); 5+5 bases, 17–25 (226 of 510 pairs) | – | best cost 8 (cube, exhaustive), 16 (b55_1 over C17) |
+| (3,7) | squad r2 wildcard: 2-switch annealing of general cubic bipartite graphs, 170 vertices | – | best 92 (46 pairs at distance 8) |
+
+The voltage-lifts session had also screened 1,538 Haar groups at (4,9) for N = 2,486–2,580 (best cost 10) and rich
+lifts at (4,8) for 2,186–2,208 vertices (none).
+
+### 6.3 Earlier (first session)
 
 | idea | test | result |
 |---|---|---|
@@ -276,26 +474,27 @@ and in control groups of the same order that have no solution.
 | F_q ⋊ C_k Haar at (4,7) and (4,8) | `affq.py` | maximum 800 at (4,7); none at (4,8) (best 4) |
 | the three order-432 groups at (3,10) (864 > 800) | `named.py` | best costs 6–18 |
 | AGL(3,2) at (4,8) | `named.py` | best cost 43 |
-| central-involution metacyclic groups at (4,8) | `named.py` (`runs/centralinv_d4D8.log`) | running |
+| central-involution metacyclic groups at (4,8) | `named.py` (`runs/centralinv_d4D8.log`) | Dic5 × (C11 : C5) best 6 (the run was cut off) |
 | squad r1 (8 Haiku cards; `research/squads/r1-smallfam/`) | Heisenberg 5^{1+2}, 7^{1+2}; affine F_q^n ⋊ H; PSL × C_n; small-abelianization SmallGroups 1093–1140; composite-m metacyclic; perfect-ish groups at (4,9); Δ = 4 lifts of 2+2 bases | none; best costs 6 (Z77 ⋊ Z15), 9, 14, 22 |
 | group-level quotient balance as a predictor of solved runs | `predict_test.py` | p = 0.83–0.995 |
 
-## 7. Tools in `smallfam/` (all new this session)
+## 7. Tools in `smallfam/`
 
 | file | what |
 |---|---|
 | `hx.c` | Exhaustive Haar search over a plan of (s1, s2) pairs, with the remaining elements free, for metacyclic groups or any multiplication table. Includes the quotient filter (QMAP / QFILTER). Validated against igraph (`hx_check.py`). |
 | `lx.c` | Exhaustive voltage-lift search over a small base, for a table group or a metacyclic group; first free voltage from a plan. |
-| `hanneal.c` | Simulated annealing for Haar graphs over any table group, with targeted moves. It reproduces hx's exhaustive optima: Z137 ⋊ Z8 cost 8, Z61 ⋊ Z18 cost 45, … (`runs/screen_d4D8.tsv` against `runs/frob_d4D8.txt`). |
+| `hanneal.c`, `lanneal.c` | Simulated annealing for Haar graphs and for lifts, over any table group, with targeted moves. |
 | `abfilt.c`, `liftbound.py` | Rigorous abelianization bound and generic lattice bound (§2.2). |
-| `allgroups.py` | Every SmallGroup of each order: filters, GAP export (table, Aut(G)-reduced plan, abelianization map), then hx or lx. Resumable; skips orders with too many groups. |
-| `screen.py` | The same group list, but with a short anneal instead of exhaustive search (fast triage). |
-| `named.py`, `named_edges.py` | Exhaustive Haar search for groups given as GAP expressions (`Aff(n,q,H)`, `Meta(m,k,r)`, direct products, …), and the edge-list rebuild for apsp. |
-| `frob_scan.py`, `affq.py`, `squares.py` | The F_q ⋊ C_k families in normal form (q prime, q a prime power, the squares groups). |
-| `heis.py`, `heisq.py` | Explicit models of Heis(F_{p²}) ⋊ C_k; `graphs/build_d4D7_n864.py` is the standalone builder of the record. |
-| `meta.py`, `fibers.py`, `predict.py`, `predict_test.py` | Parsing and re-checking the metacyclic records; fibre balance; the solved/stalled test. |
-| `canon.py`, `isoclasses.py`, `autgroup.py`, `agl_cayley.py`, `jpat.py` | Canonical forms of S, isomorphism classes (BLISS), automorphism groups, the AGL Cayley description, j-patterns. |
-| `summarize.py`, `completeness.py` | Coverage tables of the all-groups runs; per-order completeness against NrSmallGroups (`runs/coverage_summary.md`, `runs/completeness.txt`). |
+| `allgroups.py` | Every SmallGroup of each order: filters, GAP export (table, Aut(G)-reduced plan, abelianization map), then hx or lx. Resumable. Lift-mode plans include the identity (fixed this session). |
+| `onegroup.py`, `onelift.py` | The same for one SmallGroup (Haar or lift; `--identity-only` completes an old run). |
+| `fscreen.py`, `fscreen2.py`, `flscreen.py`, `gtab.c` | Fast all-groups screens: one GAP process per batch exports only generator permutations, `gtab` rebuilds the table in C, and a worker pool anneals. About 1 group/s at N = 1100. `fscreen2.py` re-anneals the low-cost groups. |
+| `frobprod.py` | Products of two Frobenius-type groups F_q ⋊ C_a (faithful or not), tables built in numpy, for orders the library lacks. |
+| `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation. |
+| `basegen.py`, `bases/` | All connected cubic bipartite bases with 3+3, 4+4 and 5+5 vertices (3, 6 and 15 multigraphs) and the five simple 6+6 graphs. |
+| `lift_edges.py`, `verify/apsp` | Edge list of a lift for the independent all-pairs check (Conder's graph re-built and VALID). |
+| `screen.py`, `lscreen.py`, `metascreen.py`, `named.py`, `named_edges.py`, `frob_scan.py`, `affq.py`, `squares.py`, `heis.py`, `heisq.py`, `meta.py`, `fibers.py`, `predict.py`, `predict_test.py`, `canon.py`, `isoclasses.py`, `autgroup.py`, `agl_cayley.py`, `jpat.py`, `summarize.py`, `completeness.py`, `structure_factor.py` | First-session tools (see that session's notes in git history). |
 
-GAP 4.12 with the SmallGroups library (`gap-smallgrp` **and `gap-smallgrp-extra`**, without which orders such as
-1092 and 1096–1140 are missing) was installed from Ubuntu packages in the container.
+GAP 4.12 with the SmallGroups library (`gap-smallgrp` **and `gap-smallgrp-extra`**) was installed from Ubuntu
+packages in the container. Without the extra package, orders such as 1092 and 1096–1140 are missing. Orders above
+2000 are only partly covered: in 2486–2700, 154 orders (2,701 groups) are available and 61 are not.
