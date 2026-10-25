@@ -1,0 +1,12 @@
+# c1, squad round d15D10-r2. Group PSL(2,p) x Z_n, ORBIT="5 3 0" (k=5, m=3, f=0), (15,10), RANDORB=24, seed 21, K=8, THREADS=1.
+# Raw RANDORB lines: rand_psl_P_N.txt in this folder. Columns: p n mu F mu_eff (klist) | units min/p10/median/mean | cost median | s per sample (time/24) | units median / mu_eff
+psl p=11  n=1930441 mu=33.17 F=0.15 mu_eff=6.79 | units 2490924/3657555/6293658/11315019 | cost median 31468286 | 1.43 s | 9.3e5
+psl p=31  n=85621   mu=33.15 F=0.46 mu_eff=7.09 | units 57/74/283/2144.03 | cost median 1411 | 1.22 s | 40
+psl p=41  n=36991   mu=33.12 F=0.61 mu_eff=7.23 | units 13/16/39/404.88 | cost median 191 | 1.47 s | 5.4
+psl p=61  n=11231   mu=33.26 F=0.91 mu_eff=7.57 | units 6/9/15/141.79 | cost median 66 | 1.56 s | 2.0
+psl p=71  n=7121    mu=33.17 F=1.06 mu_eff=7.70 | units 3/7/13/24.50 | cost median 60 | 1.32 s | 1.7
+psl p=181 n=431     mu=35.01 F=2.77 mu_eff=9.77 | units 6/7/10/9.96 | cost median 40 | 1.46 s | 1.0
+# Score: lowest units median at mu >= 33 = 10 (p=181, n=431).
+# Fixed-point misses printed by haar_lean equal F in every run (0.15, 0.46, 0.61, 0.91, 1.06, 2.77), so F is right; the free-orbit part is not.
+# Units track mu_eff only at p=181 (mean 9.96 vs 9.77). The median/mu_eff ratio grows with n = |Z_n|: 1.0 (n=431), 1.7, 2.0, 5.4, 40, ~9e5 (n=1.93e6).
+# The fixed-point term does not explain the gap, so mu_eff misses an n-dependent penalty. The 24-sample medians are noisy: p=181 vs p=71 (10 vs 13) needs a replicate.

@@ -1,0 +1,48 @@
+start 2026-10-25T13:32:57Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=40 | haar_lean 15 10 10800 2 8 ../frontier/sols/d15D10_psl_139_961_orb5f0_s2_FIXPRE40.txt psl 139 961
+group psl 139 x Z_961, N=1290373140, rows 9660 of 133579 bits (2088 words), memory 0.32 GB per thread, threads 1, setup 1.53s
+alpha: conj by mat(0,138,1,63), z -> 374 z on Z_961
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 69 (+e); mu = 41.88, mu/k = 8.38, fixed-point misses ~ 2.23
+start cost=31 (first eval 1.04s)
+t=34 steps=4 evals=33 cost=25 best=25 T=0.47
+t=68 steps=8 evals=65 cost=25 best=25 T=0.15
+t=98 steps=11 evals=89 cost=20 best=20 T=0.15
+t=136 steps=15 evals=121 cost=20 best=20 T=0.15
+t=172 steps=19 evals=153 cost=20 best=20 T=0.15
+t=206 steps=23 evals=185 cost=20 best=20 T=0.15
+t=245 steps=27 evals=217 cost=15 best=15 T=0.15
+t=278 steps=30 evals=241 cost=15 best=15 T=0.15
+t=310 steps=33 evals=265 cost=15 best=15 T=0.15
+t=346 steps=36 evals=289 cost=15 best=15 T=0.15
+t=380 steps=39 evals=313 cost=5 best=5 T=0.15
+t=418 steps=42 evals=337 cost=5 best=5 T=0.15
+t=456 steps=45 evals=361 cost=5 best=5 T=0.15
+t=492 steps=48 evals=385 cost=5 best=5 T=0.15
+t=527 steps=51 evals=409 cost=5 best=5 T=0.15
+t=560 steps=54 evals=433 cost=5 best=5 T=0.15
+t=595 steps=57 evals=457 cost=5 best=5 T=0.15
+t=628 steps=60 evals=481 cost=5 best=5 T=0.15
+t=665 steps=63 evals=505 cost=5 best=5 T=0.15
+t=698 steps=66 evals=529 cost=5 best=5 T=0.15
+t=731 steps=69 evals=553 cost=5 best=5 T=0.15
+t=765 steps=72 evals=577 cost=5 best=5 T=0.15
+t=800 steps=75 evals=601 cost=5 best=5 T=0.15
+t=834 steps=78 evals=625 cost=5 best=5 T=0.15
+t=870 steps=81 evals=649 cost=5 best=5 T=0.15
+t=904 steps=84 evals=673 cost=5 best=5 T=0.15
+t=935 steps=87 evals=697 cost=5 best=5 T=0.15
+t=967 steps=90 evals=721 cost=5 best=5 T=0.15
+t=998 steps=93 evals=745 cost=5 best=5 T=0.15
+t=1037 steps=97 evals=777 cost=5 best=5 T=0.15
+t=1077 steps=101 evals=809 cost=5 best=5 T=0.15
+t=1115 steps=104 evals=833 cost=5 best=5 T=0.15
+t=1150 steps=107 evals=857 cost=5 best=5 T=0.15
+t=1187 steps=110 evals=881 cost=5 best=5 T=0.15
+t=1224 steps=113 evals=905 cost=5 best=5 T=0.15
+t=1260 steps=116 evals=929 cost=5 best=5 T=0.15
+t=1295 steps=119 evals=953 cost=5 best=5 T=0.15
+t=1332 steps=122 evals=977 cost=5 best=5 T=0.15
+t=1366 steps=125 evals=1001 cost=5 best=5 T=0.15
+t=1401 steps=128 evals=1025 cost=5 best=5 T=0.15
+t=1434 steps=131 evals=1049 cost=5 best=5 T=0.15
+RESULT d=15 D=10 group=psl 139 x Z_961 N=1290373140 best=5 evals=1065 time=1454.1 orbit k=5 m=3 f=0 fix=69 fixchecks=10110
+exit 1 2026-10-25T13:57:14Z

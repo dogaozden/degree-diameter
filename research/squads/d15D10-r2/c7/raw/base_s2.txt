@@ -1,0 +1,8 @@
+group psl 19 x Z_2651, N=9066420, rows 180 of 50369 bits (788 words), memory 0.00 GB per thread, threads 1, setup 0.00s
+alpha: conj by mat(0,18,1,4), z -> 91 z on Z_2651
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 9 (+e); mu = 33.08, mu/k = 6.62, fixed-point misses ~ 0.82
+start cost=65 (first eval 0.00s)
+t=30 steps=1408 evals=11265 cost=17 best=11 T=0.53
+t=60 steps=2864 evals=22913 cost=10 best=10 T=0.19
+t=90 steps=4264 evals=34113 cost=6 best=6 T=0.15
+RESULT d=15 D=8 group=psl 19 x Z_2651 N=9066420 best=6 evals=37681 time=100.0 orbit k=5 m=3 f=0 fix=9

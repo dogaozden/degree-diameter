@@ -1,0 +1,13 @@
+group sl 59 x Z_43, N=8828760, rows 3480 of 2537 bits (40 words), memory 0.00 GB per thread, threads 1, setup 0.02s
+alpha: conj by mat(0,58,1,1), z -> 6 z on Z_43
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 59 (+e); mu = 23.00, mu/k = 7.67, fixed-point misses ~ 0.83
+start cost=24 (first eval 0.10s)
+RESULT d=15 D=8 group=sl 59 x Z_43 N=8828760 best=0 evals=925 time=9.0 orbit k=3 m=5 f=0 fix=59
+recomputed cost of best S: 0
+full check from (e,A): reached A 8828760/8828760, B 8828760/8828760 within 8
+full check from (e,B): reached A 8828760/8828760, B 8828760/8828760 within 8
+full diameter check: OK
+full check from (e,A): reached A 8828760/8828760, B 8828760/8828760 within 8
+full check from (e,B): reached A 8828760/8828760, B 8828760/8828760 within 8
+full diameter check after normalising s_0 = e: OK
+wrote /dev/null

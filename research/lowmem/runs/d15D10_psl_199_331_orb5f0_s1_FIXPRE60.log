@@ -1,0 +1,32 @@
+start 2026-10-25T13:15:12Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=60 | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_psl_199_331_orb5f0_s1_FIXPRE60.txt psl 199 331
+group psl 199 x Z_331, N=1304206200, rows 19800 of 65869 bits (1030 words), memory 0.33 GB per thread, threads 1, setup 0.35s
+alpha: conj by mat(0,198,1,61), z -> 64 z on Z_331
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 99 (+e); mu = 50.83, mu/k = 10.17, fixed-point misses ~ 3.30
+start cost=59 (first eval 1.16s)
+t=54 steps=2 evals=17 cost=20 best=20 T=0.23
+t=126 steps=3 evals=25 cost=20 best=20 T=0.15
+t=178 steps=4 evals=33 cost=20 best=20 T=0.15
+t=212 steps=6 evals=49 cost=20 best=20 T=0.15
+t=253 steps=9 evals=73 cost=20 best=20 T=0.15
+t=291 steps=11 evals=89 cost=20 best=20 T=0.15
+t=335 steps=14 evals=113 cost=15 best=15 T=0.15
+t=367 steps=16 evals=129 cost=15 best=15 T=0.15
+t=404 steps=18 evals=145 cost=15 best=15 T=0.15
+t=438 steps=20 evals=161 cost=15 best=15 T=0.15
+t=478 steps=22 evals=177 cost=15 best=15 T=0.15
+t=508 steps=24 evals=193 cost=15 best=15 T=0.15
+t=549 steps=26 evals=209 cost=16 best=15 T=0.15
+t=582 steps=28 evals=225 cost=16 best=15 T=0.15
+t=621 steps=30 evals=241 cost=16 best=15 T=0.15
+t=654 steps=32 evals=257 cost=16 best=15 T=0.15
+t=685 steps=34 evals=273 cost=16 best=15 T=0.15
+t=719 steps=36 evals=289 cost=16 best=15 T=0.15
+t=760 steps=38 evals=305 cost=16 best=15 T=0.15
+t=798 steps=40 evals=321 cost=16 best=15 T=0.15
+t=843 steps=43 evals=345 cost=16 best=15 T=0.15
+t=889 steps=44 evals=353 cost=16 best=15 T=0.15
+t=955 steps=45 evals=361 cost=16 best=15 T=0.15
+t=1016 steps=46 evals=369 cost=16 best=15 T=0.15
+t=1048 steps=47 evals=377 cost=16 best=15 T=0.15
+RESULT d=15 D=10 group=psl 199 x Z_331 N=1304206200 best=15 evals=385 time=1073.5 orbit k=5 m=3 f=0 fix=99 fixchecks=10407
+exit 1 2026-10-25T13:33:08Z

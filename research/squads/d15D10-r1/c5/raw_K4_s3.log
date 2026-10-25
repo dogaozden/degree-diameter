@@ -1,0 +1,7 @@
+group sl 59 x Z_43, N=8828760, rows 3480 of 2537 bits (40 words), memory 0.00 GB per thread, threads 1, setup 0.01s
+alpha: conj by mat(0,58,1,1), z -> 6 z on Z_43
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 59 (+e); mu = 23.00, mu/k = 7.67, fixed-point misses ~ 0.83
+start cost=16 (first eval 0.09s)
+t=30 steps=709 evals=2837 cost=10 best=2 T=0.53
+t=60 steps=1410 evals=5641 cost=3 best=2 T=0.19
+RESULT d=15 D=8 group=sl 59 x Z_43 N=8828760 best=2 evals=5641 time=60.0 orbit k=3 m=5 f=0 fix=59

@@ -1,0 +1,23 @@
+card c7 (orbit k=5 vs k=3). Raw logs: step1.log ((15,10) RANDORB, through squad-heavy.lock), step2.log (proxy (15,8)).
+Binary research/lowmem/haar_lean, 1 thread. RANDORB = 16 random symmetric S, cost = uncovered elements, no annealing.
+
+STEP 1, (15,10), RANDORB=16, seed arg 15, K arg 8
+group          N            mu     orbit  fix   min  p10  median  mean   time
+sl 181 x Z211  1251137160   23.65  5 3 0  179    20   26   38      38.31  36.4s
+sl 181 x Z211  1251137160   23.65  3 5 0  179     9    9   30      27.25  23.8s
+sl 191 x Z181  1261150080   27.45  5 3 0  189    18   18   35      35.00  16.3s
+sl 191 x Z181  1261150080   27.45  3 5 0  191    25   27   34      34.94  19.2s
+median ratio k5/k3: sl 181 x Z211 = 38/30 = 1.267; sl 191 x Z181 = 35/34 = 1.029; mean of the two = 1.148 (the score).
+
+STEP 2, proxy (15,8): psl 31 x Z601 (N 8942880, mu 27.45; p = 31 = 1 mod 5, n = 601 prime = 1 mod 15), 60 s annealing, 1 thread.
+(The card example psl 61 x 79 is unusable: 79 is not 1 mod 15. mu_list.py 15 8 8.5e6 9.6e6 15 300 has no p = +-1 mod 5
+group at mu 20-30; NMAX 1000 gives psl 31 x Z601.)
+orbit   ORBW  seed  best cost  evals
+5 3 0   5     1     5          12505
+3 5 0   1     1     6          11913
+5 3 0   5     2     5          11673
+3 5 0   1     2     4          12385
+Proxy: medians tie (5 vs 5); too small to decide.
+
+Reading: at (15,10) the random-S median is worse for k=5 on sl 181 x Z211 (38 vs 30) and tied on sl 191 x Z181 (35 vs 34),
+where k=5 has the lower tail (min 18 vs 25, p10 18 vs 27). Score 1.148 (lower = k=5 better). No solution found, valid = false.

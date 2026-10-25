@@ -1,0 +1,24 @@
+start 2026-10-25T13:05:53Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=40 | haar_lean 15 10 10800 3 8 ../frontier/sols/d15D10_psl_149_761_orb5f0_s3_FIXPRE40.txt psl 149 761
+group psl 149 x Z_761, N=1258617900, rows 11100 of 113389 bits (1772 words), memory 0.31 GB per thread, threads 1, setup 2.08s
+alpha: conj by mat(0,148,1,40), z -> 67 z on Z_761
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 74 (+e); mu = 26.44, mu/k = 5.29, fixed-point misses ~ 2.19
+start cost=42 (first eval 1.99s)
+t=40 steps=2 evals=17 cost=10 best=10 T=0.38
+t=75 steps=4 evals=33 cost=15 best=10 T=0.15
+t=112 steps=6 evals=49 cost=10 best=10 T=0.15
+t=149 steps=8 evals=65 cost=10 best=10 T=0.15
+t=180 steps=11 evals=89 cost=10 best=10 T=0.15
+t=218 steps=15 evals=121 cost=10 best=10 T=0.15
+t=255 steps=19 evals=153 cost=10 best=10 T=0.15
+t=293 steps=23 evals=185 cost=10 best=10 T=0.15
+t=326 steps=26 evals=209 cost=10 best=10 T=0.15
+RESULT d=15 D=10 group=psl 149 x Z_761 N=1258617900 best=0 evals=217 time=337.3 orbit k=5 m=3 f=0 fix=74 fixchecks=1852
+recomputed cost of best S: 0
+full check from (e,A): reached A 1258617900/1258617900, B 1258617900/1258617900 within 10
+full check from (e,B): reached A 1258617900/1258617900, B 1258617900/1258617900 within 10
+full diameter check: OK
+full check from (e,A): reached A 1258617900/1258617900, B 1258617900/1258617900 within 10
+full check from (e,B): reached A 1258617900/1258617900, B 1258617900/1258617900 within 10
+full diameter check after normalising s_0 = e: OK
+wrote ../frontier/sols/d15D10_psl_149_761_orb5f0_s3_FIXPRE40.txt
+exit 0 2026-10-25T13:11:41Z

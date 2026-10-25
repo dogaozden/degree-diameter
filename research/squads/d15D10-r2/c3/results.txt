@@ -1,0 +1,14 @@
+# c3, card of round d15D10-r2: PSL(2,p) x Z_n, ORBIT="5 3 0" (k=5, m=3), (15,10), RANDORB=24, haar_lean.c unchanged.
+# units = uncovered free alpha-orbits + uncovered alpha-fixed points (median is the score); F from klist.py; sec/sample = RANDORB time / 24.
+psl p=61 n=11231 (composite 11*1021) seed=23 mu=33.26 F=0.91 |Fix|=29(+e) r=676 | units min=7 p10=9 median=17 mean=20.96 | cost median=77 | sec/sample=1.19 | file=rand_psl_61_11231.txt
+psl p=61 n=11251 (prime) seed=23 mu=34.37 F=0.92 |Fix|=29(+e) r=1350 | units min=7 p10=9 median=15 mean=47.96 | cost median=75 | sec/sample=1.29 | file=rand_psl_61_11251.txt
+psl p=59 n=12431 (composite 31*401) seed=23 mu=34.19 F=0.92 |Fix|=29(+e) r=39 | units min=8 p10=10 median=16 mean=251.92 | cost median=72 | sec/sample=1.45 | file=rand_psl_59_12431.txt
+psl p=59 n=12421 (prime) seed=23 mu=33.68 F=0.92 |Fix|=29(+e) r=962 | units min=9 p10=9 median=14 mean=16.33 | cost median=62 | sec/sample=1.35 | file=rand_psl_59_12421.txt
+psl p=89 n=3641 (composite 11*331) seed=23 mu=37.84 F=1.40 |Fix|=44(+e) r=64 | units min=4 p10=8 median=12 mean=12.17 | cost median=53 | sec/sample=1.31 | file=rand_psl_89_3641.txt
+psl p=89 n=3631 (prime) seed=23 mu=35.98 F=1.39 |Fix|=44(+e) r=847 | units min=3 p10=6 median=11 mean=11.54 | cost median=51 | sec/sample=1.37 | file=rand_psl_89_3631.txt
+psl p=89 n=3641 (composite 11*331) seed=57 mu=37.84 F=1.40 |Fix|=44(+e) r=64 | units min=6 p10=10 median=13 mean=15.58 | cost median=56 | sec/sample=1.33 | file=rand_psl_89_3641_seed57.txt
+psl p=89 n=3631 (prime) seed=57 mu=35.98 F=1.39 |Fix|=44(+e) r=847 | units min=6 p10=6 median=10 mean=11.75 | cost median=50 | sec/sample=1.44 | file=rand_psl_89_3631_seed57.txt
+# pairs at same p (composite vs prime, median units): p=61 17 vs 15 (mu 33.26 vs 34.37); p=59 16 vs 14 (mu 34.19 vs 33.68);
+#   p=89 12 (seed 57: 13) vs 11 (seed 57: 10) (mu 37.84 vs 35.98). Composite is ~2 units worse in all three pairs; SE of a 24-sample median ~1.
+# fixed points: r with gcd(r-1,n)=1 exists for every composite n tested, so only z=0 is fixed; printed |Fix| + e = torus size, the same as for prime n: no fixed-point cost.
+# p=89 composite n=3641 contains the prime 11, which divides |PSL(2,89)| = 89*3960 (3960 = 2^3*3^2*5*11); the other composite picks share no factor with |PSL|.

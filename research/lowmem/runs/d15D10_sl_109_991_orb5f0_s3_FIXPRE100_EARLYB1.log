@@ -1,0 +1,10 @@
+start 2026-10-25T17:02:10Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=100 EARLYB=1 | haar_lean 15 10 3300 3 8 ../frontier/sols/d15D10_sl_109_991_orb5f0_s3_FIXPRE100_EARLYB1.txt sl 109 991
+group sl 109 x Z_991, N=1283265720, rows 11880 of 108019 bits (1688 words), memory 0.32 GB per thread, threads 1, setup 1.29s
+alpha: conj by mat(0,108,1,10), z -> 160 z on Z_991
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 109 (+e); mu = 37.86, mu/k = 7.57, fixed-point misses ~ 3.43
+start cost=48 (first eval 1.28s)
+t=39 steps=3 evals=25 cost=21 best=15 T=0.39
+t=81 steps=6 evals=49 cost=21 best=15 T=0.15
+t=113 steps=9 evals=73 cost=15 best=15 T=0.15
+RESULT d=15 D=10 group=sl 109 x Z_991 N=1283265720 best=15 evals=73 time=113.1 orbit k=5 m=3 f=0 fix=109 fixchecks=2519
+exit 1 2026-10-25T17:04:05Z

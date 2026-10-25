@@ -1,0 +1,17 @@
+card c2, round d15D10-r2: PSL(2,p) x Z_n, p = 4 mod 5, (15,10), ORBIT="5 3 0" (k=5, m=3, f=0), RANDORB=24, K=8, THREADS=1, cwd research/lowmem
+candidates: python3 klist.py 15 10 1.27e9 1.29e9 5 59 300 20000 2300326510 | grep '^psl', kept p = 4 mod 5 with mu in [33,38]
+  distinct p = 4 mod 5 in that window: 59, 79, 89, 269 (only 4, so one group per p). p = 139..239 have no valid n in the N window.
+  NOTE: N in [1.27e9, 1.29e9] gives 2N = 2.55e9 to 2.57e9, +10.8% to +11.3% over the record 2,300,326,510. These are units measurements, not record candidates.
+columns: group, n, N, mu, F, mu_eff (klist), |Fix|, seed, units min/p10/median/mean, cost median (mean), sec/sample (time/24)
+psl 59  n 12421  N 1275139860  mu 33.68  F 0.92  mu_eff 7.65  |Fix| 30  seed 22  units min 8.0  p10 12.0 median 21.0 mean 94.96  cost median 101 (mean 469.62)  1.02 s/sample
+psl 79  n 5171   N 1274548080  mu 33.40  F 1.22  mu_eff 7.90  |Fix| 40  seed 22  units min 4.0  p10 6.0  median 10.0 mean 33.50  cost median 50 (mean 163.00)  1.21 s/sample
+psl 79  n 5171   N 1274548080  mu 33.40  F 1.22  mu_eff 7.90  |Fix| 40  seed 23  units min 5.0  p10 6.0  median 11.0 mean 11.58  cost median 46 (mean 50.58)  1.43 s/sample
+psl 89  n 3631   N 1279709640  mu 35.98  F 1.39  mu_eff 8.59  |Fix| 45  seed 22  units min 6.0  p10 7.0  median 11.0 mean 11.58  cost median 51 (mean 53.75)  1.24 s/sample
+psl 89  n 3631   N 1279709640  mu 35.98  F 1.39  mu_eff 8.59  |Fix| 45  seed 23  units min 3.0  p10 6.0  median 11.0 mean 11.54  cost median 51 (mean 51.88)  1.25 s/sample
+psl 269 n 131    N 1274947020  mu 33.59  F 4.12  mu_eff 10.83 |Fix| 135 seed 22  units min 4.0  p10 5.0  median 11.0 mean 10.25  cost median 38 (mean 37.08)  1.33 s/sample
+psl 269 n 131    N 1274947020  mu 33.59  F 4.12  mu_eff 10.83 |Fix| 135 seed 23  units min 7.0  p10 8.0  median 10.0 mean 11.00  cost median 42 (mean 38.17)  1.61 s/sample
+
+score: lowest median units = 10.0 (psl 79 seed 22; psl 269 seed 23). Best p: 269 (pooled mean units 10.6 over two seeds, vs 11.6 for p=89 and 22.5 for p=79, whose seed-22 batch has a heavy tail).
+units vs mu_eff (= mu/5 + F): medians 10-11 for p = 79, 89, 269 (about 0.9-1.4 x mu_eff); p = 59 median 21 (2.7 x), mean 95 (12 x). Units track mu_eff in the mean only at p = 269 (10.6 vs 10.83); the ordering by mu_eff (79 < 89 < 269) is not what the data show.
+no cost-0 solution was sought or found (RANDORB only); no solution file written.
+raw outputs: research/squads/d15D10-r2/c2/rand_psl_59_12421.txt, rand_psl_79_5171.txt, rand_psl_89_3631.txt, rand_psl_269_131.txt (seed 22), rand_psl_79_5171_s23.txt, rand_psl_89_3631_s23.txt, rand_psl_269_131_s23.txt (seed 23)

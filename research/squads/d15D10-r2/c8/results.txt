@@ -1,0 +1,16 @@
+Card c8, squad round d15D10-r2. Question: does the uncovered count (cost) of random orbit-symmetric S correlate with
+A(S) = max_{xi=1..n-1} |(1/15) sum_i exp(2 pi i xi z_i/n)|, z_i = S[i].z?  Binary haar_lean_z.c = copy of research/lowmem/haar_lean.c
+(taken 12:45) + one print in RANDORB: "ZS cost=<cost> z=<z_0> ... <z_14>". Samples: RANDORB, seed 1, f = 0, K = 8, THREADS = 1.
+Score = Spearman(cost, A) on RUN 1.  Every file passes the orbit check z[kj+i] = AR^i z[kj] mod n.
+RUN 1 (proxy k=5) psl 19 x Z2651, ORBIT="5 3 0", N=9066420, lambda=12.52, mu=33.08, F=0.82 | 1500 samples: cost min 17, p10 50, median 85, mean 704 (max 199456); units median 17.0 (mu_eff 7.4), mean 141.7 | A median 0.603 (p10 0.556, p90 0.672, max 0.812) | rho(cost,A)=0.4514, bootstrap95 [0.403, 0.495], p=2e-85 | median cost Q1/Q3 of A: 72/140 (x1.94) | best exponent e=6 (e=9: RSS 1245 vs 941)
+RUN 2 (control k=3) psl 19 x Z2671, ORBIT="3 5 0", N=9134820, mu=36.61, F=0.14 | 1500 samples: cost median 178, mean 3920 (max 3.9e6); units median 60.0 (mu_eff 12.3), mean 1307 | A median 0.658 (max 0.944) | rho=0.7400, bootstrap95 [0.708, 0.767] | median cost Q1/Q3: 132/505 (x3.83) | best exponent e=7 (e=9: RSS 622 vs 451)
+RUN 3 (full scale, heavy lock) psl 89 x Z3571, ORBIT="5 3 0", N=1258563240, mu=26.42, F=1.31 | 40 samples: cost median 28, mean 77.3 (max 1680); units median 8.0 (mu_eff 6.6), mean 16.9 | A median 0.612 (p10 0.558, p90 0.686, max 0.782) | rho=0.3246, bootstrap95 [-0.020, 0.635], p=0.034 | median cost Q1/Q3: 27.5/40.5 (x1.47; predicted x1.33 with lambda 17.6, exponent 9)
+Notes:
+- Top A decile carries the effect in all runs (proxy k=5 median cost 112 -> 283; full scale 28.5 -> 115); deciles in the analysis files.
+- Effect survives the confounds: proxy k=5 rho 0.4510 on the 1121 samples whose z_i are all units mod n; partial rho given #distinct z 0.440 (k=5), 0.735 (k=3). Collision control is void at full scale (all 15 z distinct).
+- 2651 = 11 * 241 is composite, not prime as the brief says; the k=5 requirement (prime factors = 1 mod 5) holds.
+- Exponent: the proxy fits e = 6-7 (= about D-1 for D = 8), better than the fixed 9 in the brief; the full-scale ratio matches e = 9 at lambda 17.6.
+- Proxy baseline sits about 2.3x above the Poisson model (units 17 vs mu_eff 7.4); full scale matches the model (8.0 vs 6.6), so take only correlations and ratios from the proxy.
+- k=5 beats k=3 at the proxy: median units 17 vs 60 at nearly equal N and mu.
+- The repo's haar_lean.c has since gained a ZMAX z-spectrum filter (off by default); this binary predates it and was not rerun against it.
+Files (research/squads/d15D10-r2/c8/): haar_lean_z.c, haar_lean_z, analyze_z.py, checks_z.py, zs_*.txt, analysis_*.txt, checks_*.txt, samples_*.csv
