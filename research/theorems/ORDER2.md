@@ -876,12 +876,12 @@ to μ_A = 16.8 (order 3: 23.6).
 6. S2. **At odd D, order 6 with a tight balanced involution beats order 3**, with about half the clumps in five groups:
    SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9), SL(2,64)×Z403 at (15,9), SL(2,64)×Z133 at (13,9) (§5.5).
    Unbalanced controls are 18–36× worse. The first session's "odd D: odd orders only" is withdrawn for k ≥ 6.
-6b. S2. At odd D, G's involutions are targets at e^{−λ/(2|H|)}, H their stabiliser in ⟨α⟩. This is the CLASSES miss
-   rates at (12,7) (Fix(α) classes: 3.1 and 13.0 misses against 4.4 and 14 predicted). The (15,9) plateau consists
-   of exactly these involutions (§5.5).
-7. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
+7. S2. At odd D, G's involutions are targets at e^{−λ/(2|H|)}, H their stabiliser in ⟨α⟩. This matches the CLASSES
+   miss rates at (12,7) (Fix(α) classes: 3.1 and 13.0 misses against 4.4 and 14 predicted). The (15,9) plateau
+   consists of exactly these involutions (§5.5).
+8. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
    4.7·10³–3.7·10⁴ evaluations, against 1.7·10⁵ for order 3 (§5.1). Record Δ13·D8 6,999,552 (§5.2).
-8. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly. With G's involutions included (S2),
+9. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly. With G's involutions included (S2),
    at odd D it predicts the measured lower tail (p1) to within 10 % for orders 6, 3, 2 and random S on SL(2,64) and
    SL(2,8)², and it matches the smaller screens at (14,9), (15,9) and (13,9) (§5.5).
 
@@ -913,7 +913,7 @@ to μ_A = 16.8 (order 3: 23.6).
 |---|---|---|---|---|
 | (13,10) | SL(2,16)²×Z21, order 6 swap∘conj | 699,148,800 (+3.2 %) | 9.1 | seed 1 at best 4 after 5,900 evaluations (3.6 h; still running at 07:55 UTC), seed 2 stopped at best 6 after 3,265 |
 | (15,8) | SL(2,8)²×Z37, order 6 swap∘Frobenius, 6+6+3 | 18,797,184 (+3.7 %) | 10.4 | 2 seeds, best 6 (76,345 evaluations) and 10 |
-| (15,9) | SL(2,64)×Z403, order 6 Frobenius, 6+6+3 | 211,236,480 (+1.5 %) | 11.2 | 6 seeds. The OSTAB=1 seed reached cost 2 after 4,801 evaluations, with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B; plain seeds stalled at 9 (involutions, §5.5). A scan of all 2,182 sub-orbits from that set (SCANSUB) found no completion. Still running at 07:55 UTC |
+| (15,9) | SL(2,64)×Z403, order 6 Frobenius, 6+6+3 | 211,236,480 (+1.5 %) | 11.2 | 4 seeds (seed 1 resumed with OSTAB=1 after 7,161 evaluations at cost 9; seeds 3 and 4 restarted with OSTAB=1). The OSTAB=1 seed 2 reached cost 2 after 4,801 evaluations, with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B; plain seeds stalled at 9 (involutions, §5.5). A scan of all 2,182 sub-orbits from that set (SCANSUB) found no completion. Still running at 07:55 UTC |
 | (13,9) | SL(2,64)×Z133, order 6 Frobenius | 69,713,280 (+2.9 %) | 16.8 | 2 seeds, best 23 (22,249 evaluations) and 33; stopped |
 
 No new record so far in this session (07:55 UTC); the first session's (13,8) record stands (§5.2). Closest: (15,9) at cost 2 and (13,10) at cost 4.
