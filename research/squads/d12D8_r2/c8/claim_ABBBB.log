@@ -1,0 +1,16 @@
+B1 ecc(point0), ecc(line0): [6. 6.]  #opposite points of point0: 16807  #opposite lines of line0: 16807
+loaded V 1176480 edges 5882400
+new point-type (p0,point0): vertex 980400: ecc 9, counts by distance [1, 10, 84, 615, 4320, 30240, 211680, 305270, 372155, 252105]
+  group 0 type A: adjacent copies [1, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 1 type B: adjacent copies [3, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 2 type B: adjacent copies [3, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 3 type B: adjacent copies [3, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 4 type B: adjacent copies [3, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  overall min over non-adjacent copies: 9
+new line-type (p0,line0): vertex 1000008: ecc 9, counts by distance [1, 10, 84, 615, 4320, 30240, 211680, 305270, 372155, 252105]
+  group 0 type A: adjacent copies [2, 3]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 1 type B: adjacent copies [1, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 2 type B: adjacent copies [1, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 3 type B: adjacent copies [1, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  group 4 type B: adjacent copies [1, 4]; min dist to opposite vertices in NON-adjacent copies = 9; in adjacent copies = 7
+  overall min over non-adjacent copies: 9

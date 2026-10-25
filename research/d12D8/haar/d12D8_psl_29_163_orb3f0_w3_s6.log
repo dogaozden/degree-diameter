@@ -1,0 +1,20 @@
+group psl 29 x Z_163, N=1985340, identity 66178, H order 29, rows 68460, threads 1, setup 0.08s
+wide rows: HW order 163, rows 12180, setup 0.13s
+alpha: conj by mat(1,7,4,0) (index 613), z -> 58 z on Z_163
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 14 (+e); mu = 40.62, mu/k = 13.54, fixed-point misses ~ 0.41
+ORBW=3: an uncovered fixed element weighs 3; start energy 78
+start cost=78
+t=30 steps=1422 evals=11377 cost=15 best=15 T=0.53 energy=15 bestE=15
+t=60 steps=2839 evals=22713 cost=6 best=6 T=0.19 energy=6 bestE=6
+t=90 steps=4283 evals=34265 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=120 steps=5757 evals=46057 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=150 steps=7205 evals=57641 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=180 steps=8682 evals=69457 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=210 steps=10171 evals=81369 cost=22 best=6 T=0.80 energy=24 bestE=6
+t=240 steps=11579 evals=92633 cost=15 best=6 T=0.28 energy=15 bestE=6
+t=270 steps=13046 evals=104369 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=300 steps=14474 evals=115793 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=330 steps=15946 evals=127569 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=360 steps=17381 evals=139049 cost=15 best=6 T=0.79 energy=15 bestE=6
+t=390 steps=18850 evals=150801 cost=10 best=6 T=0.28 energy=12 bestE=6
+RESULT d=12 D=8 group=psl 29 x Z_163 N=1985340 best=6 evals=154737 time=400.0 orbit k=3 m=4 f=0 fix=14

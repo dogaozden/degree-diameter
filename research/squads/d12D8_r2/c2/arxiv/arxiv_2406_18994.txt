@@ -1,0 +1,331 @@
+                                                Table of large graphs with given degree and diameter
+                                                                           Francesc Comellas
+                                                   Departament de Matemàtiques, Universitat Politècnica de Catalunya,
+                                                         Barcelona, Catalonia, Spain francesc.comellas@upc.edu
+
+                                           Abstract: We update the table of large undirected graphs with given degree and
+                                           diameter with results obtained since the publication of the survey by M. Miller and J.
+                                           Širáň in the Electronic Journal of Combinatorics (Dynamic Survey DS14, 2nd. edition.
+arXiv:2406.18994v2 [math.CO] 24 Jan 2026
+
+
+
+
+                                           May 2013).
+                                           Keywords: Large Graphs, Degree-Diameter Problem, Cayley Graphs
+                                           MSC: 05C12, 05C25, 05C35, 05C38, 05C76, 05C90, 90B10.
+
+
+                                           1.   Introduction
+                                               The construction of graphs with the largest possible order for a given maximum
+                                           degree and diameter, known as the (∆, D)-problem, is a question of particular interest
+                                           in graph theory. This problem receives much attention due to its implications in the
+                                           design of topologies in interconnection networks and its relevance to issues such as data
+                                           alignment and the description of cryptographic protocols. Additionally, the (∆, D)-
+                                           problem relates to various graph properties, including regularity, connectivity, and cycle
+                                           structure.
+                                               Hoffman and Singleton introduced the concept of Moore graphs [26], and proved that
+                                           the largest possible order of a graph with maximum degree ∆ (∆ > 2) and diameter D
+                                           is bounded by
+                                                                                                ∆(∆ − 1)D − 2
+                                                    1 + ∆ + ∆(∆ − 1) + . . . + ∆(∆ − 1)D−1 =                     = n(∆, D)
+                                                                                                     ∆−2
+                                           This value is called the Moore bound, and a graph attaining it is known as a Moore graph.
+                                           Different authors have proved that for D ≥ 2 and ∆ ≥ 3, there can only exist Moore
+                                           graphs for D = 2 and ∆ = 3, 7 and 57. For the first two cases the graphs are unique
+                                           and are, respectively, the Petersen’s graph on 10 vertices and the Hoffman–Singleton’s
+                                           graph on 50 vertices. The existence of a Moore graph for D = 2 and ∆ = 57 is not
+                                           known. Thus, it is of interest to find graphs which for a given diameter and maximum
+                                           degree, have a number of vertices as close as possible to the Moore bound.
+                                               The (∆, D) problem for undirected graphs has been approached in different ways.
+                                           It is possible to give bounds to the order of the graphs for a given maximum degree
+                                           and diameter. On the other hand, as the theoretical bounds are difficult to attain,
+                                           most of the work deals with the construction of graphs that, for this given diameter
+                                           and maximum degree, have a number of vertices as close as possible to the theoretical
+                                           bounds.
+                                               Different techniques have been developed depending on the way graphs are generated
+                                           and their parameters are calculated.
+
+                                                                                        1
+    Roughly half of the graphs in Table 1 correspond to Cayley graphs and voltage
+graphs based on a Cayley graph and have been found by computer methods [27, 29, 8, 9].
+The computer is used for generating the graphs and testing for the desired properties.
+    Compounding is another technique that has proven useful in producing (∆, D)
+graphs. This technique generalizes a method introduced by Quisquater [32], which
+involves replacing a single vertex in a bipartite Moore graph with a complete graph.
+Gómez, Fiol and Serra [24] further modified this technique to replace several vertices of
+a given graph with another graph or copies of a graph, rearranging the edges appropri-
+ately (see also [10, 23, 22]). Compound graphs have been a basic tool in constructing
+many large (∆, D) graphs, particularly for small diameters.
+    Other large graphs have been found as graph products or from particular methods.
+Table 1 gives the current state of the art for degrees up to sixteen and diameter up to
+ten.
+
+
+2.   Recent results
+   Details for the following updates and their adjacency lists, and information and
+adjacency lists for most graphs in Table 1 with order less than 20000, can be downloaded
+from [9].
+
+2.1. Addition of vertices
+   The (13, 3) = 856 new graph was obtained in 2021 by Vlad Pelekhaty [30] from the
+graph Q′8 d with degree 13, diameter 3 and 851 vertices described in [22] by adding five
+new vertices and reconnecting several vertices. The resulting graph is regular, has girth
+3 and average distance 2.818817.
+
+2.2. Construction based on a symmetric graph.
+    The (3, 8) = 360 new graph was obtained in 2018 by Jianxiang Chen [7].
+    This graph is derived from the symmetric Foster graph on 144 vertices with diame-
+ter 7 and girth 8 by a complete pairing of its edges as follows:
+Let F be the Foster graph F144A and ∼ a complete pairing relation on its edges, see
+[9]. The new graph, G, is constructed as follows: The vertex set of G is V (F )∪E(F ). If
+v ∈ V (F ) and u ∈ V (F ), then they are not connected in G. If v ∈ V (F ) and u ∈ E(F ),
+then they are connected in G iff v is incident to u in F . If v ∈ E(F ) and u ∈ E(F ),
+then they are connected in G iff v ∼ u by the pairing relation. The graph G is not
+a Cayley graph. It is regular with girth 13 and has average distance 6.122563. The
+SageMath program that produces the graph and the adjacency list can be downloaded
+from [9].
+
+
+
+
+                                            2
+2.3. Semidirect product of cyclic groups
+    M. Abas obtained a Cayley graph (16, 2) = 200 by considering the semidirect prod-
+uct (Z10 ×Z10 )⋊Z2 and generating set X = A∪B ∪B −1 ∪C ∪C −1 , where A = {(0, 0, 1)},
+B = {(1, 0, 1), (1, 3, 1), (1, 7, 1), (5, 0, 1), (5, 2, 1)} and C = {(5, 0, 0), (4, 1, 0), (3, 2, 0)},
+see [1].
+    A Cayley graph (9, 8) = 1697688 from the semidirect product Z72 ⋊1413 Z23579 with
+generating set {[8, 5958], [27, 6086], [37, 22093], [33, 22621], [36, 2717]} was produced by
+A. Rodriguez in 2013, see [33] .
+    The following table provides details of the additional new Cayley graph entries in
+Table 1 obtained by the author from semidirect products of cyclic groups [8, 9].
+
+(∆, D)    order        group                                       generators
+(6, 8)    76 891   Z17 ⋊891 Z4523                          [6,1326],[4,1336],[14,1686]
+(7, 6)    12 264    Z24 ⋊90 Z511                          [13,77],[6,157],[15,50],[12,7]
+(7, 7)    53 020   Z20 ⋊729 Z2651                    [6,894],[17,2271],[18,2411],[10,1210]
+(8, 5)    5 115    Z113 ⋊390 Z196                        [13,277],[1,290],[4.21],[10,258].
+(9, 4)    1 640     Z40 ⋊24 Z41                       [25,28],[14,40],[29,11],[39,12],[20,35]
+(10, 4)   2 331     Z9 ⋊44 Z259                       [8,132],[2,171],[2,71],[4,236],[6,240]
+(10, 5)   13 203    Z81 ⋊22 Z163                  [49,70], [64,134], [[78,95], [45,156], [14,90]
+(11, 5)   19 620   Z36 ⋊434 Z545            [22,21], [30,484], [22,513], [33,116 ], [28,421], [18,285]
+(12, 5)   29 621   Z19 ⋊1205 Z1559          [4,358], [15,963], [12,47], [9,233], [14,645], [12,1195].
+(13, 5)   40 488   Z24 ⋊362 Z1687    [1,1454], [5,1427], [2,1659], [15,837], [13,1606], [19,1105], [12,1029].
+(14, 5)   58 095   Z45 ⋊191 Z1291      [31,28], [32,290], [28,326], [41,665], [18,278], [24,148], [36,259].
+(15, 5)   77 520   Z48 ⋊772 Z1615    [3,482],[28,1131],[31,682],[47,1424],[2,831],[10,300],[23,1068],[24,0].
+
+
+
+2.4. A Cayley graph from a group of order 648
+    In a computational search for optimal graphs in the degree–diameter problem for
+Cayley graphs of order less than 1000, Marston Conder found a (5, 5) = 648 Cayley
+graph arising from the 279th group of order 648 in the SmallGroups database [12].
+Conder considered a generating set S = {a, b, c, x, y}, where a, b, c are involutions and
+x, y are elements of order 9 satisfying x ∗ y = 1, see [9].
+
+
+
+
+                                                     3
+3.   Table of the largest (∆, D) graphs
+
+ D       2          3        4        5          6         7            8             9            10
+∆
+          P    C5 ∗F4       vC       vC      Exoo      Exoo         Chen          Exoo         Conder
+3        10        20       38       70       132       196          360           600           1 250
+     K3 ∗C5     Allwr     Exoo      H3′    H3 (K3 )      Loz          Loz           Loz           Loz
+4        15        41       98      364        740      1 320        3 243         7 575        17 703
+     K3 ∗X8     Exoo      Exoo Conder      H4 (K3 )      Loz         Loz           Loz            Loz
+5        24       72       212   648         2 772      5 516      17 030        57 840        187 056
+     K4 ∗X8     Exoo       Loz      Loz    H5 (K4 )      Loz         Com           Rod             Loz
+6        32      111       390     1 404     7 917     19 383    76 891         331 387       1 253 615
+        HS      Exoo        Sa       DH      Com        Com          Loz            Loz            Loz
+7       50       168       672     2 756   12 264 53 020          249 660      1 223 050      6 007 230
+        P7′ CM, Sa         Loz     Com     H7 (K5 )      Loz         Loz            Loz           Loz
+8       57     253        1 100   5 115     39 672    131 137     734 820      4 243 100    24 897 161
+       P8′ d       Q′8    Com       Rod    H8 (K6 )      Loz        Rod             Loz           Loz
+9       74        585    1 640     8 268    75 893    279 616 1 697 688       12 123 288    65 866 350
+        P9′      Q′8 d    Com      Com     H9 (K6 )      Loz          Loz           Loz           Loz
+10       91       650    2 331 13 203      134 690    583 083    4 293 452    27 997 191   201 038 922
+      Exoo       Q′8 dQ7 (T4 ) Com         H7 (T4 )     Loz           Loz           Loz           Loz
+11     104        715  3 200 19 620        156 864 1 001 268     7 442 328    72 933 102   600 380 000
+          ′
+        P11     Q′8 d+ Q′8 ∗X8   Com H11 (K8 )      Loz               Loz           Loz           Loz
+12      133       786    4 680 29 621 359 772  1 999 500        15 924 326   158 158 875 1 506 252 500
+      MMS         P el Q9 (T4 ) Com        H9 (T4 )      Loz          Loz           Loz           Loz
+13     162       856 6 560 40 488          531 440  3 322 080   29 927 790   249 155 760 3 077 200 700
+          ′
+        P13     Q′8 d+ Q9 (T5 ) Com H13 (K10 ) K1 Σ8 H11              Loz           Loz           Loz
+14      183       916   8 200 58 095 816 294 6 200 460          55 913 932   600 123 780 7 041 746 081
+         ′
+       P13 d (⊗Q2,4 )′ Q11 (T4 ) Com H11 (T4 )      Loz               Loz           Loz            Loz
+15      187     1215 11 712 77 520 1 417 248   8 599 986        90 001 236 1 171 998 164 10 012 349 898
+      Abas     (⊗Q3 )′ Q11 (T5 ) (⊗H3 )′ H11 (T5 ) K1 Σ8 H13        Loz           Loz            Loz
+16     200       1 600 14 640 132 496 1 771 560 14 882 658   140 559 416 2 025 125 476 12 951 451 931
+
+   Table 1: Largest (∆, D)-graphs (January 2026). In bold new results since the
+publication of the 2013 survey [29]. Detailed information and adjacency lists for most
+        of the graphs with order less than 20000 can be downloaded from [9].
+
+
+
+
+                                                  4
+                                        Graphs
+Abas       Graph found by M. Abas [1]
+Allwr      Special graphs found by J. Allwright [2]
+Chen       Graph found by J, Chen [7]
+CM         Cayley graph, ZM⋊A ZN , found by F. Comellas and M. Mitjana
+Com        Cayley graphs, ZM⋊A ZN , found by F. Comellas (this note)
+Conder     Graphs found by M. Conder [11, 12]
+vC         Compound graphs designed by C. von Conta [13]
+DH         Cayley graph, ZM⋊A ZN , found by M. J. Dinneen and P. Hafner [18]
+Exoo       Graphs built by G. Exoo [19, 20].
+Hq         Incidence graph of a regular generalized hexagon [3]
+HS         Hoffman-Singleton graph
+Kn         Complete graph
+Loz        Graphs built by E. Loz [27].
+MMS        Graph built by B. D. McKay, M. Miller, J. Širáň [28]
+P          Petersen graph
+Pel        Graph found by V. Pelekhaty [30]
+Pq         Incidence graph of projective plane [25]
+Qq         Incidence graph of a regular generalized quadrangle [3]
+Rod        Cayley graphs,ZM⋊A ZN , found by A. Rodriguez [33]
+Sa         Cayley graphs,ZM⋊A ZN , found by M. Sampels [34]
+T          Tournament
+                                     Operations
+G∗H        Twisted product of graphs [4]
+Gd         Duplication of some vertices of G [14, 16]
+Gd+        Special duplication of vertices of G [22]
+B′         Quotient of the bipartite graph B by a polarity [14]
+⊗B         The component with polarity of the cartesian product of a bipartite graph
+           B by itself [15]
+B(K)       Substitution of vertices of a bipartite graph B by complete graphs K [10,
+           21, 22, 31]
+B(T )      Compound using a bipartite graph B and a tournament T [23]
+GΣi H      Various compounding operations [24]
+ZM⋊A ZN    Semidirect product of cyclic groups [18]
+
+                    Table 2: Graphs and operations of Table 1.
+
+Acknowledgements
+   We would like to acknowledge the invaluable contributions of Charles Delorme, who
+sadly passed away in 2015. The format of this table and detailed information on the
+graphs and graphs operations are based on his work.
+
+
+
+
+                                         5
+References
+
+ [1] M. Abas. Large networks of diameter two based on Cayley graphs. CSOC 2017:
+     Cybernetics and Mathematics Applications in Intelligent Systems, 225–233.
+
+ [2] J. Allwright. New (Delta, D) graphs discovered by heuristic search. Discrete Appl.
+     Math., 37/38 (1992) 3–8.
+
+ [3] C. T. Benson. Minimal regular graphs of girth eight and twelve, Canad. J. Math.,
+     18 (1966) 1091–1094.
+
+ [4] J. C. Bermond, C. Delorme, G. Fahri. Large graphs with given degree and diameter.
+     II, J. Comb. Theory B 36 (1984) 32–48.
+
+ [5] J. C. Bermond, C. Delorme, J.J. Quisquater. Strategies for interconnection net-
+     works: Some methods from Graph Theory, J. Parallel and Distrib. Comp. 3 (1986)
+     433–449.
+
+ [6] N. Biggs. Algebraic Graph Theory, Cambridge University Press, Cambrige, 1974.
+
+ [7] J. Chen. Personal communication (wswlll@126.com), October 16, 2018.
+
+ [8] F. Comellas. New results on the degree-diameter problem for undirected graphs.
+     Electron. J. Graph Theory Appl. 13 (1) (2025), 211–215.
+
+ [9] F. Comellas. Table of Large Degree/Diameter Graphs, Mendeley Data, V11 (2026),
+     doi: 10.17632/d75dzbjd4k.11
+
+[10] F. Comellas, J. Gómez. New large graphs with given degree and diameter. Graph
+     Theory, Combinatorics and Algorithms, vol 1, Yousef Alavi and Allen Schwenk
+     (Eds.), John Wiley & Sons, Inc.; New York (1995) pp. 221–233.
+
+[11] M. Conder, J. Ma. Arc-transitive abelian regular covers of cubic graphs. J. Algebra.
+     387 (2013) 215–242.
+
+[12] M. Conder. Personal communication, January 18, 2026.
+
+[13] C. von Conta. Torus and other networks as communication networks with up to
+     some hundred points, IEEE Trans. Comput. c-32(1983) 657–666.
+
+[14] C. Delorme. Grands graphes de degré et diamètre donnés, Europ. J. Combina-
+     torics. 6(1985) 291–302.
+
+[15] C. Delorme. Large bipartite graphs with given degree and diameter, J. Graph
+     Theory. 9(1985) 325–334.
+
+[16] C. Delorme, G. Fahri. Large graphs with given degree and diameter. I, IEEE
+     Trans. Comput. c-33(1984) 857–860.
+
+
+                                           6
+[17] M. J. Dinneen. Algebraic Methods for Efficient Network Constructions. Master
+     Thesis, Department of Computer Science, University of Victoria, Victoria, B.C.,
+     Canada, 1991.
+
+[18] M. J. Dinneen, P. Hafner. New results for the degree/diameter problem. Nertworks,
+     24 (1994) 359–367.
+
+[19] G. Exoo. A family of graphs and the degree/diameter problem J. Graph Theory,
+     37 (2001) 118–124.
+
+[20] G. Exoo. https://isu.indstate.edu/~gexoo/DD/index.html. Personal communica-
+     tion (2005-2010).
+
+[21] J. Gómez. On large (∆, 6)-graphs. Networks, 46 (2005) 82–87.
+
+[22] J. Gómez. Some new large (∆, 3)-graphs. Networks, 53 (2009) 1–5.
+
+[23] J. Gómez, M.A. Fiol. Dense compound graphs, Ars Combin., 20-A(1985) 211–237.
+
+[24] J. Gómez, M.A. Fiol, O. Serra. On large (∆, D)-graphs, Discrete Math. 114 (1993)
+     219–235.
+
+[25] W. H. Haemers. Eigenvalue techniques in design and graph theory, Mathematical
+     Centre Tracts 121, Mathematisch Zentrum, Amsterdam, 1980.
+
+[26] A. J. Hoffman, R. R. Singleton. On Moore Graphs with Diameters Two and Three,
+     I.B.M. Jour. 4 (1960) 497–504.
+
+[27] E. Loz, J. Širáň. New record graphs in the degree-diameter problem. Australas. J.
+     Combin. 41 (2006) 63–80.
+
+[28] B. D. McKay, M. Miller, J. Širáň. A note on large graphs of diameter two and
+     given maximum degree. J. Comb. Theory Ser. B. 74 (1998) 110–118.
+
+[29] M. Miller, J. Širáň. Moore graphs and beyond: A survey of the degree/diameter
+     problem, Electron. J. Combin., DS14 (2013) 92 pp.
+
+[30] V. Pelekhaty. Personal communication (vpelekha@ciena.com), August 6, 2021.
+
+[31] G. Pineda-Villavicencio, J. Gómez, M. Miller, H. Pérez-Rosés. New largest known
+     graphs of diameter 6. Networks, 53 (2009) 315–328.
+
+[32] J. J. Quisquater. Structures d’interconnexion: constructions et applications, Thèse
+     d’etat, LRI, Université de Paris Sud, Orsay, July 1987.
+
+[33] A. Rodrı́guez de los Santos. Búsquedas masivas de grafos de gran orden con grado
+     y diámetro acotados. Tesis de maestrı́a. Universidad de la República (Uruguay).
+     Facultad de Ingenierı́a., 2013.
+
+
+                                           7
+[34] M. Sampels. Large networks with small diameter Proc. 23rd Int. Workshop on
+     Graph-Theoretic Concepts in Computer Science (WG ’97), LNCS 1335, pp. 288-
+     302. Springer-Verlag, 1997.
+
+
+
+
+                                      8
+
