@@ -1,0 +1,12 @@
+accepted k 1 rand (28, 197) time 1
+accepted k 2 online (160, 272) time 1
+accepted k 3 rand (194, 334) time 2
+accepted k 4 rand (228, 299) time 3
+accepted k 5 conc (187, 155) time 4
+  hub anneal k 5 violations 0 edges 39
+BEST_FEAS k 5 flags [(28, 197), (160, 272), (194, 334), (228, 299), (187, 155)]
+accepted k 6 online (94, 26) time 40
+  hub anneal k 6 violations 1 edges 48
+DONE k 6 best feasible k 5 calls 382 time 46
+FLAGS 28:197 160:272 194:334 228:299 187:155 94:26
+BESTFLAGS 28:197 160:272 194:334 228:299 187:155
