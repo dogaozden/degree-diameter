@@ -100,6 +100,8 @@ machine (4 cores):
 |---|---:|---:|---:|
 | (14,7) 1,774,584, explicit + level shift | 1.77 M | 357,336 | 4 × 2 min (4 parts) |
 | q = 5 hexagon lifts over Z_25, lift + torus | 195,300 | 252 | 0.1 s |
+| (15,10) Haar, SL(2,149) × Z373, WB = 8, 1 thread | 2.47·10⁹ | 2 | 32 min |
+| (16,10) Haar, SL(2,151) × Z637, WB = 1, 1 thread | 4.39·10⁹ | 2 | 88 min |
 
 ## 4. Tests (research/projects/bigcheck-dist/checks/)
 
@@ -124,13 +126,16 @@ machine (4 cores):
 - Haar graphs as lifts of the dipole (`haar2lift.py`): the records (6,9) 127,296 (SL(2,17) × Z13), (7,9) 462,840,
   (8,8) 239,904, (9,8) 540,360 (PSL families) come out VALID with diameter exactly D (and fail at D − 1); with one
   generator of the (8,8) graph perturbed, bcd and build_haar2.py both report diameter 9, INVALID.
+- Two unrecorded D = 10 Haar candidates from other sessions, as lifts of the dipole on one thread
+  ([checks/d10_haar](checks/d10_haar/README.md)): (15,10) 2,467,618,800 (SL(2,149) × Z373, WB = 8, 32 min) and (16,10)
+  4,386,127,200 (SL(2,151) × Z637, WB = 1, 1.6 GB, 88 min) are VALID with diameter 10.
 
 ## 5. Limits and next steps
 
 - BFS arrays: 3 words per vertex. The default word has 64 bits (64 sources per pass, 24 bytes per vertex); compile with
   `-DWB=8`, `16` or `32` for 3, 6 or 12 bytes per vertex and 8, 16 or 32 sources per pass (a lift of 2·10⁹ vertices
   fits in 6 GB with WB = 8). `-DWB=1` runs one source per pass on three bitsets (3 bits per vertex: 1.6 GB for the
-  4.2·10⁹-vertex (16,10) Haar candidate) with push/pull switching. Certificates are byte-identical for every WB (tested on the rotation lift and on part 3/2000
+  4.4·10⁹-vertex (16,10) Haar candidate) with push/pull switching. Certificates are byte-identical for every WB (tested on the rotation lift and on part 3/2000
   of the (14,7) check).
 - Vertex ids: explicit mode 32-bit (n < 4·10⁹); lift mode 64-bit lift indices (base ids 32-bit), up to 2·10¹¹ vertices.
 - Lift mode supports Z_M and (P)SL(2,P) × Z_N with P prime (element numbering as in research/frontier/haarcheck_sl.c,

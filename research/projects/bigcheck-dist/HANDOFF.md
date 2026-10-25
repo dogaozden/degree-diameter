@@ -54,7 +54,8 @@ research/projects/bigcheck-dist/HANDOFF.md, so a merge needs the two handoffs co
 
 ## Running / next
 - /tmp/hs/runs: (10,8) Haar orbit search on PSL(2,7) × SL(2,8) × Z7 (N = 592,704; cell-10-8's better group), seeds
-  21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC. Earlier PSL(2,23) × Z97
+  21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC; 24 (plain, 06:30)
+  and 25 (RESTART=1, 07:35, 1.4 h). Best cost so far 9 (s21), 10 (s24). Earlier PSL(2,23) × Z97
   seeds 11-13 stopped at best 12, 9, 10. Request for more cloud seeds: research/squads/requests/2026-10-25T0550-d10D8-haar.md.
 - Theory (d8/theory/NOTES.md, done): no construction. Proved limits: with intact copies the always-present routes
   give every point or every line at most 2q+9 voltages (Delorme needs 25, 30 at q = 5, 7); a "5 levels × k sheets"
