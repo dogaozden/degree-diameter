@@ -43,6 +43,31 @@ Jobs in `research/squads/cells/raise-d7D8/jobs/A*.jobs`, logs and any solution i
 | A3 | pgl 9 × Z67 | 11 | default | 3600 s |
 | A4 | psl 11 × Z73 | 13 | RESTART=1 | 3600 s |
 
+Results (all four ran the full hour, about 1.2–1.4 × 10⁸ evaluations each, ~38k/s per thread):
+
+| queue | group | variant | best cost | evals |
+|---|---|---|---|---|
+| A1 | psl 11 × Z73 | default | 3 | 1.38 × 10⁸ |
+| A2 | psl 11 × Z73 | ORBW=3 | 3 | 1.37 × 10⁸ |
+| A3 | pgl 9 × Z67 | default | 4 | 1.23 × 10⁸ |
+| A4 | psl 11 × Z73 | RESTART=1 | 3 | 1.38 × 10⁸ |
+
+Not solved. psl 11 × Z73 sits at cost 3 on every variant, a sign of a structural obstacle at this μ, not just
+too little time (cost 3 ≈ one uncovered orbit or three uncovered fixed points). No solution to verify.
+
+### Phase B (2026-10-25, 09:15 UTC, one hour, four single-thread queues)
+
+Jobs in `research/squads/cells/raise-d7D8/jobs/B*.jobs`. prod psl 3 × psl 3 × Z333 (N = 47,952, so 2N = 95,904
+> 95,760: a record if solved) has the lowest μ in the window (43.5) but μ_eff 17.1 and is solvable-heavy (A4 × A4),
+so it is a real test.
+
+| queue | group | seed | budget |
+|---|---|---|---|
+| B1 | prod psl 3 × psl 3 × Z333 | 11 | 3600 s |
+| B2 | prod psl 3 × psl 3 × Z333 | 12 | 3600 s |
+| B3 | psl 9 × Z134 | 11 | 3600 s |
+| B4 | sl 9 × Z67 | 11 | 3600 s |
+
 Results: (pending)
 
 ## How to resume
