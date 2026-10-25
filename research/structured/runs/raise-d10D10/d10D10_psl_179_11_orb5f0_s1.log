@@ -3,3 +3,47 @@ wide rows: HW order 198, rows 159310, setup 1.74s
 alpha: conj by mat(32,54,168,43) (index 1019036), z -> 3 z on Z_11
 ORBIT k=5 m=2 f=0: |Fix(alpha)| = 89 (+e); mu = 31.48, mu/k = 6.30, fixed-point misses ~ 5.68
 start cost=35
+t=30 steps=50 evals=401 cost=8 best=8 T=0.53
+t=60 steps=101 evals=809 cost=5 best=5 T=0.19
+t=90 steps=154 evals=1233 cost=5 best=5 T=0.15
+t=121 steps=206 evals=1649 cost=5 best=5 T=0.15
+t=151 steps=261 evals=2089 cost=5 best=5 T=0.15
+t=181 steps=315 evals=2521 cost=5 best=5 T=0.15
+t=212 steps=367 evals=2937 cost=5 best=5 T=0.15
+t=242 steps=417 evals=3337 cost=5 best=5 T=0.15
+t=273 steps=468 evals=3745 cost=5 best=5 T=0.15
+t=303 steps=521 evals=4169 cost=16 best=5 T=0.76
+t=333 steps=575 evals=4601 cost=14 best=5 T=0.27
+t=363 steps=627 evals=5017 cost=6 best=5 T=0.15
+t=394 steps=680 evals=5441 cost=6 best=5 T=0.15
+t=424 steps=734 evals=5873 cost=6 best=5 T=0.15
+t=455 steps=788 evals=6305 cost=6 best=5 T=0.15
+t=485 steps=841 evals=6729 cost=6 best=5 T=0.15
+t=515 steps=895 evals=7161 cost=5 best=5 T=1.33
+t=546 steps=945 evals=7561 cost=10 best=5 T=0.46
+t=576 steps=994 evals=7953 cost=6 best=5 T=0.16
+t=606 steps=1044 evals=8353 cost=6 best=5 T=0.15
+t=636 steps=1099 evals=8793 cost=6 best=5 T=0.15
+t=667 steps=1154 evals=9233 cost=6 best=5 T=0.15
+t=697 steps=1208 evals=9665 cost=6 best=5 T=0.15
+t=728 steps=1263 evals=10105 cost=6 best=5 T=0.15
+t=758 steps=1318 evals=10545 cost=5 best=5 T=0.87
+t=789 steps=1371 evals=10969 cost=5 best=5 T=0.30
+t=819 steps=1422 evals=11377 cost=5 best=5 T=0.15
+t=849 steps=1473 evals=11785 cost=5 best=5 T=0.15
+t=879 steps=1525 evals=12201 cost=5 best=5 T=0.15
+t=909 steps=1577 evals=12617 cost=1 best=1 T=0.15
+t=939 steps=1633 evals=13065 cost=1 best=1 T=0.15
+t=970 steps=1688 evals=13505 cost=1 best=1 T=0.15
+t=1000 steps=1743 evals=13945 cost=1 best=1 T=0.15
+t=1031 steps=1797 evals=14377 cost=1 best=1 T=0.15
+t=1061 steps=1851 evals=14809 cost=1 best=1 T=0.15
+t=1091 steps=1905 evals=15241 cost=1 best=1 T=0.15
+t=1121 steps=1958 evals=15665 cost=1 best=1 T=0.15
+t=1151 steps=2012 evals=16097 cost=9 best=1 T=0.70
+t=1182 steps=2066 evals=16529 cost=9 best=1 T=0.24
+t=1212 steps=2119 evals=16953 cost=9 best=1 T=0.15
+t=1242 steps=2171 evals=17369 cost=8 best=1 T=0.15
+t=1272 steps=2221 evals=17769 cost=8 best=1 T=0.15
+t=1302 steps=2271 evals=18169 cost=8 best=1 T=0.15
+t=1332 steps=2325 evals=18601 cost=8 best=1 T=0.15
