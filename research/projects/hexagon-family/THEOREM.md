@@ -21,8 +21,11 @@ $$n_b(q+1+j,\,7)\ \ge\ 2(2j+1)(q+1)(q^4+q^2+1)+2j\,|R| .$$
 
 Condition 2 can be met for $R$ pairwise opposite (a partial ovoid of $Q(6,q)$ when $\mathcal H=H(q)$), and for any
 $R$ satisfying 1 when $\mathcal H$ has a duality ($H(q)$, $q=3^h$). We characterise condition 2 combinatorially
-(Lemma 3) and bound $|R|$: $|R|\le q^4+q^2+1$ always, and $|R|\le q^3+1$ for pairwise opposite sets, with
-$|R|\le q^3$ when $H(q)$ has no ovoid.
+(Lemma 3: the "midpoint structure" of $R$ must occur among the lines too) and bound $|R|$: $|R|\le q^4+q^2+1$
+always, and $|R|\le q^3+1$ for pairwise opposite sets, with $|R|\le q^3$ when $H(q)$ has no ovoid. Lemma 3 also
+lets a maximal pairwise opposite set be extended by points at distance 4 from some of its points (Proposition 6), a
+cell-counting criterion that is easy to search; this raised every table cell with a pure record set that we tried
+(§7).
 
 ## 1. Setting
 

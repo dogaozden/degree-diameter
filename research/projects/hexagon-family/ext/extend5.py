@@ -45,6 +45,15 @@ def refresh():
     A1 = P @ OH                                            # (sample, cells): free lines of cell T in Gamma_4(s)
     cntS = OH.sum(0); cntR = np.bincount(cellR, minlength=ncell).astype(np.float32)
 refresh()
+def write_pairs():
+    bycell = collections.defaultdict(list)
+    for k in range(nS):
+        if free[k]: bycell[cellS[k]].append(int(Sp[k]))
+    pairs = []
+    for j in range(nR): pairs.append((int(R[j]), bycell[cellR[j]].pop()))
+    pairs += list(zip(X, Sx))
+    open(out, 'w').write('\n'.join('%d %d' % p for p in pairs) + '\n')
+    return pairs
 for ps in range(passes):
     for ci in range(len(cand)):
         if not candok[ci]: continue
@@ -72,15 +81,9 @@ for ps in range(passes):
         u, inv = np.unique(np.concatenate([newR, newS]), return_inverse=True)
         cellR = inv[:nR]; cellS = inv[nR:]; ncell = len(u)
         refresh()
+        write_pairs()
         print('added x=%d (|N(x)|=%d) s=%d score %.1f: |X| = %d, cells %d [%.0fs]' % (x, bR.sum(), s, sc.max(), len(X), ncell, time.time() - t0), flush=True)
         if len(X) >= maxadd: break
     if len(X) >= maxadd: break
-# assemble pairs
-bycell = collections.defaultdict(list)
-for k in range(nS):
-    if free[k]: bycell[cellS[k]].append(int(Sp[k]))
-pairs = []
-for j in range(nR): pairs.append((int(R[j]), bycell[cellR[j]].pop()))
-pairs += list(zip(X, Sx))
-open(out, 'w').write('\n'.join('%d %d' % p for p in pairs) + '\n')
+pairs = write_pairs()
 print('RESULT q=%d |R|=%d + |X|=%d = %d [%.0fs]' % (q, nR, len(X), len(pairs), time.time() - t0))
