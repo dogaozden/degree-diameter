@@ -1,0 +1,17 @@
+q=5 N=3906 seed=1
+-- T-A: plain level covers, random bijections
+  plain_HHH: n=23436 edges=82026 degree min=7 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23436 (0.1s)
+  plain_HDH: n=23436 edges=82026 degree min=7 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23436 (0.1s)
+  plain_HHHHH: n=39060 edges=156240 degree min=8 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=39060 (0.4s)
+  plain_HDHDH: n=39060 edges=156240 degree min=8 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=39060 (0.4s)
+-- T-H: pairwise opposite R (partial ovoid), M(R) = spread lines, M a local duality on R
+  opp: |R|=33, pairs of R at distance 4: 0; (H1,H2,H3) for M on R: (True, True, True); for M^-1 on M(R): (True, True, True)
+  opp_HHH: n=23436 edges=81927 degree min=6 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23436 (0.1s)
+  opp_HDHDH: n=39060 edges=152500 degree min=6 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=39060 (0.5s)
+-- negative control: (H3) broken at one r (two values of M swapped), two levels H -> H
+  two-level H->H, intact M: (H1,H2,H3)=(True, True, True): far ordered pairs (d > 7) = 0
+  two-level H->H, broken M: (H1,H2,H3)=(True, True, False): far ordered pairs (d > 7) = 126
+-- T-H mirrored: R = R0 (pairwise opposite) + extra points at distance 4 from R0, distance-4 pattern mirrored
+  mirror_n0_33: |R|=38, pairs of R at distance 4: 28; (H1,H2,H3) for M on R: (True, True, True); for M^-1 on M(R): (True, True, True)
+  mirror_n0_33_HHH: n=23436 edges=81912 degree min=6 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=23436 (0.2s)
+  mirror_n0_33_HDHDH: n=39060 edges=152486 degree min=6 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=39060 (0.4s)

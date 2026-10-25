@@ -1,0 +1,22 @@
+q=3 N=364 seed=1
+-- T-A: plain level covers, random bijections
+  plain_HHH: n=2184 edges=5460 degree min=5 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=2184 (0.0s)
+  plain_HDH: n=2184 edges=5460 degree min=5 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=2184 (0.0s)
+  plain_HHHHH: n=3640 edges=10920 degree min=6 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
+  plain_HDHDH: n=3640 edges=10920 degree min=6 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
+  plain_HHDHHDD: n=5096 edges=17836 degree min=7 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=5096 (0.0s)
+  plain_HHHHHHH: n=5096 edges=17836 degree min=7 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=5096 (0.0s)
+-- T-H: pairwise opposite R (partial ovoid), M(R) = spread lines, M a local duality on R
+  opp: |R|=28, pairs of R at distance 4: 0; (H1,H2,H3) for M on R: (True, True, True); for M^-1 on M(R): (True, True, True)
+  opp_HHH: n=2184 edges=5376 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=2184 (0.0s)
+  opp_HDHDH: n=3640 edges=10236 degree min=4 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
+-- negative control: (H3) broken at one r (two values of M swapped), two levels H -> H
+  two-level H->H, intact M: (H1,H2,H3)=(True, True, True): far ordered pairs (d > 7) = 0
+  two-level H->H, broken M: (H1,H2,H3)=(True, True, False): far ordered pairs (d > 7) = 50
+-- T-H mirrored: R = R0 (pairwise opposite) + extra points at distance 4 from R0, distance-4 pattern mirrored
+  mirror_n0_28: |R|=28, pairs of R at distance 4: 0; (H1,H2,H3) for M on R: (True, True, True); for M^-1 on M(R): (True, True, True)
+  mirror_n0_28_HHH: n=2184 edges=5376 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=2184 (0.0s)
+  mirror_n0_28_HDHDH: n=3640 edges=10241 degree min=4 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)
+  mirror_n0_14: |R|=17, pairs of R at distance 4: 19; (H1,H2,H3) for M on R: (True, True, True); for M^-1 on M(R): (True, True, True)
+  mirror_n0_14_HHH: n=2184 edges=5409 degree min=4 max=5 bipartite=yes diameter=7 | RESULT VALID d=5 D=7 n=2184 (0.0s)
+  mirror_n0_14_HDHDH: n=3640 edges=10283 degree min=4 max=6 bipartite=yes diameter=7 | RESULT VALID d=6 D=7 n=3640 (0.0s)

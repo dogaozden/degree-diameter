@@ -662,7 +662,26 @@ exists. We have not built or checked these graphs; they are left to the lab's se
 
 ### 10.1 Small-$q$ tests of every theorem
 
-[TO BE FILLED IN FROM research/theorems/d7hex_tests/README.md]
+Two independent sets of programs (details, commands and logs in the two README files):
+- research/theorems/d7hex_tests/: builds $H(q)$ from scratch from the coordinates of Section 1.1 ($q = 2,3,4,5$), builds
+  each graph from Definitions 2.1 and 3.1 (asserting that every matching is a bijection), and checks it with
+  research/lifts/coordinator_check/apsp_mt.c (breadth-first search from every vertex; "VALID" = bipartite, maximum degree
+  $\le\Delta$, diameter $\le 7$);
+- research/theorems/d7hex_lemma41/: uses the lab's generator research/d10D7/hexgen2.c and duality finder
+  research/d10D7/dual/dualfind.c; checks Lemma 4.1 directly on all ordered pairs $(u,v)$, and the duality construction.
+
+| statement | what was built | $q$ | result |
+|---|---|---|---|
+| §1.1 coordinates, (F1), (F4), Lemma 1.2(b) | $H(q)$ from Tits' equations; counts, diameter 6, girth 12 (distance profile), (F4) on all pairs ($q\le 4$) or a sample ($q = 5$); Hermitian spread in $x_0 = c x_4 + e x_3$ | 2, 3, 4, 5 | all hold; spreads of 28, 65, 126 pairwise opposite lines |
+| Theorem A | plain level covers with random bijections, types $HHH$, $HDH$, $HHHHH$, $HDHDH$ (and $HHDHHDD$, $HHHHHHH$ for $q = 3, 4$) | 3, 4, 5 | all VALID, $(q+1+r)$-regular |
+| Lemma 4.1 | all ordered pairs, for spread-point sets, three random maximal segment sets, a random maximal (R1) set; points and lines | 3, 4, 5 | 0 failures; each set plus one turning point: 36–320 failing pairs |
+| Theorem C (friendly) | two levels $H\to D$, $D\to H$ and five levels $HDHDH$, main graph without hubs, with: all points of the Hermitian spread (112, 325, 756 $=(q+1)(q^3+1)$), random maximal segment sets, (R1) sets with no hub condition, pencils of a partial ovoid, dual segment sets; 3 seeds | 3, 4, 5 | 108 of 108 VALID; set plus one turning point: 72–1,800 ordered pairs at distance $>7$ (apsp_mt: diameter 8, INVALID) |
+| Theorem C (duality), Cor. 8.2 | all levels $H$, every transition matched by a polarity $\varphi$ of $H(3)$, the 112 spread points freed on every transition, $r = 1, 2$ | 3 | VALID ($n = 2{,}184$ and $3{,}640$); one more point freed: diameter 8 |
+| Theorem B, Prop. 5.2, Cor. 5.3 | $M$ built exactly as in Proposition 5.2, (H1)–(H3) re-checked on it; $R$ pairwise opposite (an ovoid of 28 points at $q = 3$; 23; 33) and mirrored $R$ with pairs at distance 4 (17 points/19 pairs; 26/21; 38/28); types $HHH$ (same $M$, $R$ on all transitions) and $HDHDH$ ($M$ on $H\to H$, $M^{-1}$ on $D\to D$) | 3, 4, 5 | all VALID; breaking (H3) at one point: 50, 76, 126 ordered pairs at distance $>7$ |
+| Theorem 3.4 (hubs) | full graphs with hubs on random free slots and a random hub graph of degree $\le q-r$: $HHH$, $HDH$ ($K$ = slot minimum, 28 and 35), $HDHDH$ ($K$ = 48 and 61, below the slot minimum because the hub degree $q-2$ is small) | 4, 5 | all VALID ($n$ = 8,246, 8,246, 13,746; 23,506, 23,506, 39,182) |
+
+Every positive test passed and every negative control failed. Small $q$ cannot test the hub graphs at the record sizes
+(at $q\le 5$ the hub degree $q-r$ is 1 to 4); for those see Section 10.2.
 
 ### 10.2 The record graphs
 

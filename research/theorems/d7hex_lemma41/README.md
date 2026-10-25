@@ -1,4 +1,4 @@
-# Direct check of Lemma 4.1 of D7_HEXAGON.md (job thm-d7, 2026-10-25)
+# Direct checks of Lemma 4.1 and of the duality construction (D7_HEXAGON.md; job thm-d7, 2026-10-25)
 
 Lemma 4.1: if F is a segment set of points of H(q) (every point of F has its collinear F-points on one line), then for
 all elements u, v there is a point p not in F with d(u,p) + d(p,v) <= 6 (d = distance in the incidence graph).
@@ -22,3 +22,17 @@ Run (about 15 s for q = 5):
 
 Result (lem41_q345.out): 0 failing pairs for every segment set and (R1) set, points and lines, q = 3, 4, 5; every
 negative control fails (36 to 320 ordered pairs).
+
+## Duality test (Corollary 8.2 at q = 3): dual_test.py, dual_q3.log
+
+All levels of type H, every transition matched by a duality phi, and all (q+1)(q^3+1) = 112 points of the Hermitian
+spread of H(3) freed on every transition (main graph, no hubs). phi from the lab's research/d10D7/dual/dualfind.c (at
+q = 3 it finds a polarity; dual_test.py re-checks that phi preserves all incidences); the spread is the set of H(3)-lines
+in the hyperplane x0 = x4 + x3 (28 lines, pairwise opposite, checked by BFS).
+
+    gcc -O2 -o dualfind research/d10D7/dual/dualfind.c && ./dualfind hex/hex_q3.bin d3
+    python3 research/theorems/d7hex_lemma41/dual_test.py hex/hex_q3.bin d3.phi 1 r1.edges && ./apsp_mt r1.edges 5 7 4
+    python3 research/theorems/d7hex_lemma41/dual_test.py hex/hex_q3.bin d3.phi 2 r2.edges && ./apsp_mt r2.edges 6 7 4
+
+Results: r = 1 (3 levels, n = 2,184): RESULT VALID d=5 D=7; r = 2 (5 levels, n = 3,640): RESULT VALID d=6 D=7. Negative
+control (one more point freed, collinear with a spread point off its spread line): diameter 8, RESULT INVALID.

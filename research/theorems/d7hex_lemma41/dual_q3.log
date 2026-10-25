@@ -1,0 +1,21 @@
+q=3 N=364: phi is a duality (checked on all 1456 incidences)
+Hermitian spread in x0 = 1 x4 + 1 x3: 28 lines, pairwise opposite: True; |F| = 112 = (q+1)(q^3+1)
+segment set: True
+levels 3 (all H), r = 1, every transition matched by phi, |F| = 112 freed on every transition: n = 2184, edges = 5124, wrote dual_r1.edges
+-- apsp_mt d=5 D=7 (all sources)
+n=2184 edges=5124 degree min=4 max=5 bipartite=yes diameter=7
+RESULT VALID d=5 D=7 n=2184
+q=3 N=364: phi is a duality (checked on all 1456 incidences)
+Hermitian spread in x0 = 1 x4 + 1 x3: 28 lines, pairwise opposite: True; |F| = 112 = (q+1)(q^3+1)
+segment set: True
+levels 5 (all H), r = 2, every transition matched by phi, |F| = 112 freed on every transition: n = 3640, edges = 9800, wrote dual_r2.edges
+-- apsp_mt d=6 D=7 (all sources)
+n=3640 edges=9800 degree min=4 max=6 bipartite=yes diameter=7
+RESULT VALID d=6 D=7 n=3640
+== negative control: one more point (13), collinear with a spread point off its spread line
+segment set: False
+levels 3 (all H), r = 1, every transition matched by phi, |F| = 113 freed on every transition: n = 2184, edges = 5121, wrote dual_neg.edges
+n=2184 edges=5121 degree min=4 max=5 bipartite=yes diameter=8
+RESULT INVALID
+8dec54bc57fde897999e4324567db68af403f34a35984f8c1fdf66cda2715f75  d3.phi
+fe27933d81d8da7fe4fa53d91a61926dfdefd584b2c9abf2c462a9c6904c7138  hex/hex_q3.bin
