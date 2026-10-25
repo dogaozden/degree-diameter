@@ -26,7 +26,7 @@ The three constructions (all on the split Cayley hexagon H(q)):
 
 Intermediate (16,7) value 4,053,490 = 10·402,234 + 2·(14,762 + 813): master's typed sets with the mirrored 813 set on the
 non-friendly transitions (the +1,382 estimated in research/cell147/typedmirror/README.md); its full check was stopped at
-5 % in favour of the relaxed graph, which contains it as a special case.
+7 % (540 of 7,918 batches) in favour of the relaxed graph, which contains it as a special case.
 
 ## Which construction applies where
 
@@ -63,7 +63,8 @@ KB = 813 + min(P01, L12, P23, P41, L34 + L30 − 813), KA = 813 + min(L30, L12, 
 + KB + KA. With master's sets (P = R_H = 14,762, L = R_L = 14,823) this is 4,053,490. Relaxed point sets (dpack
 from R_H with pairing masks, research/d7family/hd5_masks.py): P01 14,787 (29 collinear pairs), P23 14,823 (61 pairs),
 P41 14,800 (38 pairs); line sets unchanged. KB = 15,600, KA = 15,636, n = 4,053,576. Hub graph: 11 random matchings
-between 15,600 line-side and 15,636 point-side hubs (hubgen.py), all same-side distances <= 6 in the hub graph alone.
+between 15,600 line-side and 15,636 point-side hubs (hubgen.py seed 1: 171,600 edges, line-side degree 11,
+point-side degree 10 or 11), all same-side distances <= 6 in the hub graph alone (hubsame.py).
 
 ## (14,7): 1,789,858
 
@@ -142,6 +143,12 @@ sets.
   usable spread lines of that type at distance 4 / 6 from M: 0 feasible at q = 5 (2,060 candidate y, 3,300 lines M),
   q = 7 (15,874 y, 18,535 M) and q = 8 (15,338 y, 35,051 M). A partner would have to be annealed together with the
   extra points (as an extra point that pins sigma of its base point instead of wasting a spread line).
+- **Exhaustive moves on the mirrored configurations.** research/d7family/addscan.py tests every (extra point, line) pair
+  for a single addition by the exact type condition (validated: after deleting the last extra point of the q = 5 state
+  it finds exactly that pair, and nothing else). No single addition exists at q = 5 (state 81), q = 7 (295), q = 8
+  (231) or q = 11 (768). swapscan.py (remove one extra, add two) finds no improvement at q = 5, 7, 8: after removing an
+  extra point only 1-27 single additions exist and no two of them are compatible. The configurations are local optima
+  for these moves, as the annealers suggested.
 - **More 1-defective growth on five levels at q = 13:** with master's line sets the H(13) line sets gain nothing in
   300 s (0 pairs; every candidate line is blocked), the point sets gain 25-61 each; competing P01 / P41 partners for
   level-1 covers cost 38 + 39 drops when both use the same pair orbit.

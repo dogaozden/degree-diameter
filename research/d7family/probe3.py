@@ -6,7 +6,7 @@ line s_M, which becomes sigma(a) (type of a must equal type of s_M, s_M usable).
 base points of type t (a excluded) at distance 4 / 6 from y are at most the usable spread lines of type t at distance
 4 / 6 from M (s_M and lines meeting M excluded). Prints the feasible (a, y, M) count and the first ones."""
 import sys, os, numpy as np, collections
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'cell147', 'mirror'))   # hexmod.py (branch claude/cell-14-7-record-5d03gb)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # hexmod.py (branch claude/cell-14-7-record-5d03gb)
 from hexmod import Hex
 H = Hex(sys.argv[1]); st = np.load(sys.argv[2]); S = np.load(sys.argv[3]); N = H.N
 R = st['R'].astype(int); X = st['X'].astype(int); L = st['L'].astype(int)
