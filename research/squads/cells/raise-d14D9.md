@@ -7,7 +7,10 @@ Round-1 solution files and logs are copied into this branch unchanged.
 
 ## Round 2 result so far
 
-**Current record: 117,993,600 vertices** = 2N, N = 58,996,800 = |SL(2,4) × SL(2,16) × Z_241|, orbit search k = 3, m = 4,
+**Current record: 118,914,048 vertices** = 2N, N = 59,457,024 = |SL(2,17) × SL(2,23)| (n = 1), orbit search k = 3, m = 4, f = 2, **ORBW = 3**, seed 4, 11,545 evaluations (3,053 s, μ = 20.86, |Fix| = 431). Solution `research/frontier/sols/d14D9_prod_sl_17_23_1_orb3_ORBW3_s4.txt`, sha256 5d6b861781901942d6feee9cec4c1b653f1eee2715496c5a39c8c4d9b13856dc, checked by haar_sym and `tools/haarcheck_prod.py` (VALID, ecc 9 both sides). Previous round-2 record: 117,993,600 (prod sl 4 × sl 16 × Z241, seed 2). The records of 117,895,680 and 117,976,320 are below.
+
+Earlier round-2 records (kept for the record): 117,895,680 (prod sl 7 × sl 16 × Z43, seed 2), 117,976,320 (prod sl 7 × sl 11 × Z133, seed 2), 117,993,600 (prod sl 4 × sl 16 × Z241, seed 2). OLD TEXT FOLLOWS.
+**Previous: 117,993,600 vertices** = 2N, N = 58,996,800 = |SL(2,4) × SL(2,16) × Z_241|, orbit search k = 3, m = 4,
 f = 2, seed 2, 5,385 evaluations (1,752 s, μ = 18.43, |Fix| = 44). Solution `research/frontier/sols/d14D9_prod_sl_4_16_241_orb3_s2.txt`,
 sha256 of the file in the sols folder (same content as the spool file), checked by `tools/haarcheck_prod.py` (VALID).
 Earlier round-2 records: 117,895,680 (prod sl 7 × sl 16 × Z43, seed 2) and 117,976,320 (prod sl 7 × sl 11 × Z133, seed 2).
@@ -38,7 +41,7 @@ Runs still in progress at this commit: prod sl 8 × sl 9 × Z163 seed 2, prod sl
 
 Observation so far: the seed-2 solve came fast (785 evals), while the other runs in the same family stalled at cost 2–8 for 10–20k evals. A seed-1 run on the record group also stalled at cost 3 after 1,137 evals, so the solve is seed luck as much as group quality.
 
-Next target: any verified group with N > 58,996,800.
+Next target: any verified SL-only group with N > 59,457,024.
 
 ## Round 2 plan (started 2026-10-25, about 15:00 UTC)
 
