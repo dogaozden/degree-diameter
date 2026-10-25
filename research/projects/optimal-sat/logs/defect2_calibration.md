@@ -38,3 +38,27 @@ The quotient form uses Theorem Q (SUMMARY.md): oriented graph A on m = k(k-1)/2 
 
 Symmetric searches for k = 11 (`cayley_search.py`, `semireg_search.py`): no Cayley digraph on either group of order 55
 (complete); A with a fixed-point-free automorphism of order 11 or 5: not decided in 900 s each.
+
+## k = 11 cube experiments (kissat, 300 s cap unless noted; machine shared with 2 monolithic runs)
+
+Rules for choosing the base. Each rule must be used for **all** cubes of a split. A cube may omit its rule's extra
+constraint but must never mix two rules.
+- R0, no rule: degree cubes (α, β), with α ≥_lex β by arc reversal (245,667 cubes; `ablist.py`).
+- R1, vertex 0 lies on the most directed triangles: same cube list as R0 (reversal keeps every vertex's triangle
+  count); a cube may add "every vertex on ≤ t = Σα triangles" (`abcube.py --maxt`; cheap only for small t).
+- R2, arc 0→1 lies on the most directed triangles: cubes with β₁ ≤ α₁, no reversal halving (338,049 cubes;
+  `ablist.py --maxtau`); a cube may add "every arc on ≤ α₁ triangles" (`abcube.py base --maxtau α₁`).
+
+| cube | R0 | R1 (--maxt) | R2 (--maxtau) |
+|---|---|---|---|
+| 0^9 / 0^9 (t = 0) | > 900 s | 53 s (certified LRAT: 55 s) | — |
+| 1,0^8 / 1,0^8 (t = 1) | > 900 s | 106 s | — |
+| 4,4,3,2,2,1,1,1,1 / 5,4,2,2,2,2,2,0,0 (t = 19) | > 600 s | > 1200 s | **2.9 s** |
+| 6,2^8 / 5,4,3,2,2,2,2,1,1 | 134 s (96 s) | — | — |
+| 20 random R0 cubes | 16 × ~1 s, 3 s, 19 s, 262 s, > 300 s | — | — |
+| 8 random R2 cubes with α₁ = 6 | — | — | 5.5–8 s each (larger file to parse) |
+| 3 random R2 cubes with α₁ = 4 | — | — | 9 s, 206 s, > 300 s |
+
+Coarse splits that did not work: by t only (t = 36: > 30 min); by the largest triangle count on any arc only
+(`tausplit.py`: M = 0 in 31 s, M = 1 and M = 2 > 15 min); "every vertex on ≤ 2 / ≤ 5 triangles" (`tmax.py le`):
+> 22 / > 52 min.
