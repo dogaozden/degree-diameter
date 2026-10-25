@@ -59,7 +59,8 @@ Best score per card:
 - c3: composite n keeps |Fix| at the torus size but is ~2 units worse than prime n at equal μ in 3 of 3 pairs
   (1–2 SE; suggestive). Best composite psl 89 × Z3641 12, its prime twin psl 89 × Z3631 10–11.
 - c4: small p loses: psl 59 × Z12431 18, psl 41 21–61, psl 29/31 140–210, psl 11 × Z1.9M 4.6·10⁶ (abelian collapse).
-- c5: k = 15 is dead: psl 31 × Z85021 median cost 92,808 (units 6,190) at μ 29.
+- c5: k = 15 is dead: psl 31 × Z85021 median cost 92,808 (units 6,190) at μ 29; psl 29 × Z103951 4,047 units, and a k = 3
+  control on that group 27,159 units: p ≤ 31 with n ~ 10⁵ breaks for every k (the cyclic factor is too big).
 - c6: proxy psl 31 × Z601 (μ 27.45): **k = 5 solved 3/3 (729, 2,985, 3,745 evaluations), k = 3 solved 0/3** (best 6–7
   after 32–35k). psl 19 × Z2671 (μ 36.6): neither solves in 120 s; units 20 vs 60.
 - c7: proxy psl 19 × Z2651 (μ 33): nothing solved in 100 s with any of K 4/8/16, TARGP 40/70/95, ORBW 5 (best 1–10);

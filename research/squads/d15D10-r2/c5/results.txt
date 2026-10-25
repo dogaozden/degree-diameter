@@ -1,0 +1,6 @@
+# c5: ORBIT="15 1 0" (one orbit of size 15, alpha = conj by order-15 element times z -> r z), r of order exactly 15 (r = g^((n-1)/15), checked r^3 != 1, r^5 != 1), RANDORB=24, seed 25, K=8, THREADS=1, heavy lock.
+# columns: group | r | mu | F(model) | |Fix| reported | units min/p10/median/mean | cost median | sec per sample | verdict
+psl 31 n=85021 | r=73656 | mu=29.10 | F=4.64 | 14 (+e) | 4170/4363/6190/1.36e7 | 92808 (min 62494, mean 2.04e8) | 1.48 | BROKEN: cost 40-600x model; model units ~6.6
+psl 29 n=103951 | r=38602 | mu=29.54 | F=4.65 | 14 (+e) | 3307/3508/4047/4414 | 60617 (min 49563, mean 66162) | 0.91 | BROKEN: model units ~6.6; effective rate ln(N/cost)=9.95 vs nominal W/N=17.6
+control k=3 (ORBIT="3 5 0", r auto=13100) psl 29 n=103951 | mu=29.54 | F=0.04 | 14 (+e) | 4084/9431/27159/51327 | 81477 (min 12250, mean 153981) | 0.85 | BROKEN: model units ~9.9; ln(N/cost)=9.65
+not run: the mu>=38 groups (stop rule after the first group, then one p=29 diagnostic and one k=3 control).
