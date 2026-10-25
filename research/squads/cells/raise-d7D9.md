@@ -48,3 +48,16 @@ quotient Z_3 on which the order-3 conjugation is trivial, and the random costs a
 - Current read: these candidates plateau at cost 12–27 (4–9 uncovered orbits) well before the record's μ = 38 solve
   point. The record's group needed 1.5·10⁶ evaluations; these have had 1–2·10⁷ each. If wave 3 also stalls, the
   cell is closed for this method at the orders tested.
+
+## Conclusion (11:26 UTC, 3.5 h of the 6 h budget used)
+
+Wave 3 (seed 3, RESTART=1, 3600 s): psl 13×217 best 27; psl 17×97 best 12 (ORBW=5); psl 41×7 best 18; sl 17×49 best 12 (ORBW=5). Nothing solved.
+
+Total: 12 runs, about 1.6·10⁸ evaluations, on the four smallest-μ prime-field candidates above |G| = 231,420
+(μ 47.9–56.4, k = 3, m = 2, f = 1). Every run plateaued at cost 12–27 (4–9 uncovered orbits) and never reached 0.
+The record's group solved at μ = 38.2 in 1.5·10⁶ evaluations, so these are clearly harder, not just unlucky.
+
+Decision: stop. Within this method (orbit-symmetric S, k = 3, f = 1, m = 2) and these groups, the (7,9) cell does not move
+above 462,840 with our compute. Not tried, for the coordinator: a bigger model, SL(3,q) or other k = 5–7 structures
+(STRUCTURE.md §7 item 3), or a voltage-lift route (research/lifts/, BEAT_16_5_SQUAD.md). Those are the options the
+notes point to for the next step.
