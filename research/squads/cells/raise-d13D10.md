@@ -52,7 +52,8 @@ jobsB.txt is a comment now.
 ## Resume
 
 1. `cd research/structured`, build haar_sym and the checkers (above).
-2. `THREADS=1 OMP_NUM_THREADS=1 setsid nohup nice -n 5 bash tools/orbq.sh runs/raise13_10/jobsA.txt runs/raise13_10/out`
-   and the same for jobsB. Jobs whose log has RESULT are skipped, so restarting is safe.
+2. `THREADS=1 OMP_NUM_THREADS=1 setsid nohup nice -n 5 bash tools/orbq.sh runs/raise13_10/jobsA2.txt runs/raise13_10/out`
+   and the same for jobsB.txt (A2 holds the rungs above the current record). Jobs whose log has RESULT are skipped,
+   so restarting is safe. Before starting a rung, check that its 2N is above the current record.
 3. A solved file goes to `research/frontier/sols/d13D10_<group>_orb3_s<seed>.txt` (copy the solution, keep its log in
    `research/structured/runs/raise13_10/`). Then update the record and the table in this file.
