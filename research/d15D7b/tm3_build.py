@@ -17,13 +17,12 @@ modes:
   sethub SOL HUBEDGES OUT.sol                        put a hub graph (lines "a b", a < KB, b < KA) into a .sol
   build HEXBIN SOL OUT.edges [SOURCES.txt]           re-check every hypothesis, write the edge list, and optionally the
                                                      BFS sources: all hubs and both vertices of every paired element
-SETSPEC: lines "j k FILE" (FILE: ids of the freed points (H source level) or lines (H^D source level), relative to the
+SETSPEC: optional line "T HHDHDHD" (level types; default HHDHHDD), lines "j k FILE" (FILE: ids of the freed points (H source level) or lines (H^D source level), relative to the
 SETSPEC's folder); friendly transitions not listed free nothing."""
 import sys, os, hashlib
 import numpy as np
 
-T = 'HHDHHDD'; L = 7; RM = 3; Delta = 15; DH = Delta - L
-TY = [1 if c == 'D' else 0 for c in T]
+T0 = 'HHDHHDD'; L = 7; RM = 3; Delta = 15; DH = Delta - L   # default type pattern (any 7-letter H/D word works)
 
 
 def load_hex(hexfn):
@@ -45,7 +44,8 @@ def load_mirror(mirfn, N):
 
 
 class Model:
-    def __init__(self, hexfn, mirfn, sets):
+    def __init__(self, hexfn, mirfn, sets, T=T0):
+        self.T = T; TY = [1 if c == 'D' else 0 for c in T]; assert len(T) == L
         self.q, self.N, self.LP, self.PL, self.fp, self.fl = load_hex(hexfn)
         self.Rp, self.sig = load_mirror(mirfn, self.N)
         N = self.N
@@ -195,8 +195,20 @@ def do_assign(M, seed):
             assert ok, 'merged hub with two slots at one level'
             hubs.append(lvl)
         nmerged = sum(1 for m in comp.values() if len(m) > 1)
-        print(f'colour {c}: {len(D)} demands, {len(got)} matched, {len(miss)} not served, {len(hubs)} constrained hubs '
-              f'({nmerged} serve two demands)', flush=True)
+        # pack constrained hubs whose level sets are disjoint into one hub (first fit by level mask)
+        bymask = {}; packed = []
+        for lvl in sorted(hubs, key=lambda d: -len(d)):
+            m = sum(1 << lv_ for lv_ in lvl)
+            tgt = None
+            for hm in list(bymask):
+                if hm & m == 0 and bymask[hm]: tgt = hm; break
+            if tgt is None:
+                packed.append(dict(lvl)); bymask.setdefault(m, []).append(len(packed) - 1)
+            else:
+                h = bymask[tgt].pop(); packed[h].update(lvl); bymask.setdefault(tgt | m, []).append(h)
+        print(f'colour {c}: {len(D)} demands, {len(got)} matched, {len(miss)} not served, {len(hubs)} constrained hub '
+              f'groups ({nmerged} share a fixed slot), packed into {len(packed)} hubs', flush=True)
+        hubs = packed
         for (j, j2, r, x) in miss: bad.add((j, j2, min(r, x), max(r, x)))
         assert len(hubs) <= K, 'more constrained hubs than hubs'
         tab = -np.ones((K, L), np.int64); used = [set() for _ in range(L)]
@@ -216,7 +228,7 @@ def do_assign(M, seed):
 
 def write_sol(fn, M, tables, hubE, setspec_src):
     with open(fn, 'w') as f:
-        f.write(f'typedmirror3 {M.q} {M.N} {T} {14 * M.N + M.KB + M.KA}\n')
+        f.write(f'typedmirror3 {M.q} {M.N} {M.T} {14 * M.N + M.KB + M.KA}\n')
         f.write(f'mirror {setspec_src["mirror"][0]} {setspec_src["mirror"][1]}\n')
         keys = sorted(M.sets)
         f.write(f'sets {len(keys)}\n')
@@ -233,7 +245,7 @@ def write_sol(fn, M, tables, hubE, setspec_src):
 def read_sol(fn):
     d = os.path.dirname(os.path.abspath(fn))
     lines = open(fn).read().split('\n'); i = 0
-    h = lines[i].split(); i += 1; assert h[0] == 'typedmirror3' and h[3] == T
+    h = lines[i].split(); i += 1; assert h[0] == 'typedmirror3' and len(h[3]) == L
     m = lines[i].split(); i += 1; mirfn = os.path.join(d, m[1])
     assert hashlib.sha256(open(mirfn, 'rb').read()).hexdigest() == m[2], 'mirror sol sha256 mismatch'
     ns = int(lines[i].split()[1]); i += 1
@@ -247,7 +259,7 @@ def read_sol(fn):
     tB = np.array([[int(v) for v in lines[i + r].split()] for r in range(KA)], dtype=np.int64); i += KA
     t = lines[i].split(); i += 1; ne = int(t[1])
     he = np.array([[int(v) for v in lines[i + r].split()] for r in range(ne)], dtype=np.int64).reshape(-1, 2)
-    return dict(n=int(h[4]), mirfn=mirfn, mirname=m[1], mirsha=m[2], sets=sets, KB=KB, KA=KA, tabs={1: tA, 0: tB}, he=he)
+    return dict(T=h[3], n=int(h[4]), mirfn=mirfn, mirname=m[1], mirsha=m[2], sets=sets, KB=KB, KA=KA, tabs={1: tA, 0: tB}, he=he)
 
 
 def build(M, S, outfn, srcfn=None):
@@ -318,19 +330,22 @@ def build(M, S, outfn, srcfn=None):
 
 
 def read_setspec(fn):
-    sets = {}; d = os.path.dirname(os.path.abspath(fn))
+    """lines 'j k FILE'; an optional line 'T <7-letter pattern>' sets the level types (default HHDHHDD)."""
+    sets = {}; d = os.path.dirname(os.path.abspath(fn)); T = T0
     for line in open(fn):
         t = line.split()
         if not t or t[0].startswith('#'): continue
+        if t[0] == 'T': T = t[1]; continue
         sets[(int(t[0]), int(t[1]))] = np.loadtxt(os.path.join(d, t[2]), dtype=np.int64).reshape(-1)
-    return sets
+    return sets, T
 
 
 def main():
     mode = sys.argv[1]
     if mode == 'assign':
         hexfn, mirfn, spec, seed, outsol = sys.argv[2:7]
-        M = Model(hexfn, mirfn, read_setspec(spec))
+        sets, T = read_setspec(spec)
+        M = Model(hexfn, mirfn, sets, T)
         tables, bad = do_assign(M, int(seed))
         if bad:
             with open(outsol + '.unserved', 'w') as f:
@@ -350,7 +365,7 @@ def main():
     elif mode == 'build':
         hexfn, solfn, outfn = sys.argv[2:5]; srcfn = sys.argv[5] if len(sys.argv) > 5 else None
         S = read_sol(solfn)
-        M = Model(hexfn, S['mirfn'], S['sets'])
+        M = Model(hexfn, S['mirfn'], S['sets'], S['T'])
         print('free A-slots per level', [len(s) for s in M.A], 'B-slots', [len(s) for s in M.B], '-> hubs', M.KB, M.KA, flush=True)
         build(M, S, outfn, srcfn)
     return 0
