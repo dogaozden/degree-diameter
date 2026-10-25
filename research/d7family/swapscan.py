@@ -3,14 +3,16 @@
 extra point j, remove (x_j, L_j), list ALL feasible single additions (addscan's test), then test every pair of them
 for joint feasibility (points opposite, lines opposite, and the type condition with both added). A feasible pair gives
 k + 1 extra points. Writes the first improved state found (np.savez R, X, L) and stops, or reports none.
-usage: swapscan.py HEXBIN STATE.npz SPREAD.npy OUT.npz [J0 J1]   (only extras J0 <= j < J1)"""
+With MODE=base (env), the removed element is a base point instead (net +1 again when two additions fit).
+usage: swapscan.py HEXBIN STATE.npz SPREAD.npy OUT.npz [J0 J1]   (only extras / base points J0 <= j < J1)"""
 import sys, os, numpy as np, collections, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from hexmod import Hex
 t0 = time.time()
 H = Hex(sys.argv[1]); st = np.load(sys.argv[2]); S = np.load(sys.argv[3]).astype(np.int64); N = H.N; q = H.q
 R0 = st['R'].astype(np.int64); X0 = st['X'].astype(np.int64); L0 = st['L'].astype(np.int64); k0 = len(X0)
-J0, J1 = (int(sys.argv[5]), int(sys.argv[6])) if len(sys.argv) > 6 else (0, k0)
+BASE = os.environ.get('MODE') == 'base'
+J0, J1 = (int(sys.argv[5]), int(sys.argv[6])) if len(sys.argv) > 6 else (0, len(R0) if BASE else k0)
 LP, PL = H.lp.astype(np.int64), H.pl.astype(np.int64)
 inS = np.zeros(N, bool); inS[S] = True
 Sidx = -np.ones(N, np.int64); Sidx[S] = np.arange(len(S))
@@ -75,9 +77,11 @@ def feasible(R, X, L, extra_pts=None):
     return out
 print(f'q={q} k={k0}', flush=True)
 for j in range(J0, J1):
-    X = np.delete(X0, j); L = np.delete(L0, j)
-    A = feasible(R0, X, L)
-    print(f'extra {j}: {len(A)} feasible single additions after removing it; {time.time()-t0:.0f}s', flush=True)
+    if BASE: X, L, Rj = X0, L0, np.delete(R0, j)
+    else: X, L, Rj = np.delete(X0, j), np.delete(L0, j), R0
+    A = feasible(Rj, X, L)
+    if A is None: continue
+    if not BASE or len(A) >= 2 or j % 50 == 0: print(f'{"base" if BASE else "extra"} {j}: {len(A)} feasible single additions after removing it; {time.time()-t0:.0f}s', flush=True)
     if len(A) < 2: continue
     found = None
     for i, (xa, la) in enumerate(A):
@@ -85,14 +89,14 @@ for j in range(J0, J1):
         # candidates for the second addition: the rest of A that are compatible with (xa, la)
         rest = [(xb, lb) for (xb, lb) in A[i + 1:] if pdist_from(xb)[xa] == 6 and lb not in set(np.concatenate(lsplit(la)[2:]).tolist()) and lb != la]
         if not rest: continue
-        B = feasible(R0, X2, L2)
+        B = feasible(Rj, X2, L2)
         if B is None: continue
         Bs = set(B)
         hit = [p for p in rest if p in Bs]
         if hit: found = (X2, L2, hit[0]); break
     if found:
         X2, L2, (xb, lb) = found
-        np.savez(sys.argv[4], R=R0, X=np.append(X2, xb), L=np.append(L2, lb))
-        print(f'IMPROVED: removed extra {j}, added 2 -> k = {k0 + 1}; wrote {sys.argv[4]}', flush=True)
+        np.savez(sys.argv[4], R=Rj, X=np.append(X2, xb), L=np.append(L2, lb))
+        print(f'IMPROVED: removed {"base point" if BASE else "extra"} {j}, added 2 -> |R\'| = {len(Rj) + len(X2) + 1}; wrote {sys.argv[4]}', flush=True)
         sys.exit(0)
 print('no 1-out / 2-in improvement', flush=True)

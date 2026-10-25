@@ -146,9 +146,11 @@ sets.
 - **Exhaustive moves on the mirrored configurations.** research/d7family/addscan.py tests every (extra point, line) pair
   for a single addition by the exact type condition (validated: after deleting the last extra point of the q = 5 state
   it finds exactly that pair, and nothing else). No single addition exists at q = 5 (state 81), q = 7 (295), q = 8
-  (231) or q = 11 (768). swapscan.py (remove one extra, add two) finds no improvement at q = 5, 7, 8: after removing an
-  extra point only 1-27 single additions exist and no two of them are compatible. The configurations are local optima
-  for these moves, as the annealers suggested.
+  (231), q = 11 (768) or q = 13 (813; 47,373 candidate points x 74,528 candidate lines, 25 min). swapscan.py (remove
+  one extra, add two) finds no improvement at q = 5, 7, 8: after removing an extra point only 1-27 single additions
+  exist and no two of them are compatible; MODE=base (remove a base point, add two) finds none at q = 5, 7, 8 either
+  (at q = 5 no single addition exists after removing any base point). The configurations are
+  local optima for these moves, as the annealers suggested.
 - **More 1-defective growth on five levels at q = 13:** with master's line sets the H(13) line sets gain nothing in
   300 s (0 pairs; every candidate line is blocked), the point sets gain 25-61 each; competing P01 / P41 partners for
   level-1 covers cost 38 + 39 drops when both use the same pair orbit.
