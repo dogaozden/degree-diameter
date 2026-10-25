@@ -135,4 +135,41 @@ model (SIZE_LAW) predicts the two to be comparable, so the group, not μ, sets t
   nothing at 0–2. The involution floor is real for this group. psl 19 × 19 is closed.
 - psl 13 × 61 (N 66,612, μ 43.7, α = conj(mat(3,1,6,11)) × (z ↦ 13 z)): exhaustive pass started, 2.5·10⁸ pairs,
   4 parts. Annealing min 12 and sampled cost ≤ 14 mass about 10⁻⁵, so this is the last family with a plausible tail
-  in the window. Result: pending.
+  in the window. **Result: no solution.** All 2.47·10⁸ pairs checked (61,613,326 per part). Minimum cost **12**
+  (about 2,900 pairs), nothing at 0–11. psl 13 × 61 is closed.
+
+### Conclusion of round 2 (stopping here)
+
+**No record. The orbit-symmetric method (ORBIT="3 2 0", f = 0) cannot raise (6,9) with the groups in reach.**
+Exhaustive enumeration was done for every group of order 63,649 to 67,704 that has a usable tail (all of them except the
+ones in the last rows of the tail table):
+
+| group | N | μ | pairs | minimum cost | verdict |
+|---|---|---|---|---|---|
+| sl 11 × 49 | 64,680 | 34.1 | 2.32·10⁸ | 14 | no solution |
+| psl 19 × 19 | 64,980 | 35.4 | 2.35·10⁸ | 3 | no solution (involutions) |
+| psl 13 × 61 | 66,612 | 43.7 | 2.47·10⁸ | 12 | no solution |
+| sl 13 × 31 | 67,704 | 49.9 | 2.55·10⁸ | 6 | no solution |
+
+Not exhausted, and not expected to move: psl 11 × 97 (sampled min 18 in 200k), sl 8 × 127 (46), sl 9 × 91 (62),
+psl 9 × 181 (84), sl 7 × 193 (96), psl 7 × 379 (138). Their sampled minima are far above zero, and the exhausted groups
+reached their annealing plateaus exactly, so those plateaus are the optima too.
+
+Why this is the end of the road for these methods:
+- Within 63,649–67,704 every SL-type group with a large prime q and a small prime n ≡ 1 (mod 3) is now closed:
+  the only others are the small-q or involution-heavy groups above. Any N ≥ 63,649 record must come from a group
+  outside this list.
+- The groups above 68,000 (sl 41 × 1, μ 57.5; others) have μ/3 ≥ 19 and expected exhaustive counts far below 1.
+- PΓL(2,8) × Z_43 (N 65,016) is the one untried candidate in the window. It is not in haar_sym's group families
+  (the field-automorphism semidirect product would need code), and PSL(2,8) has 63 involutions, which is the same floor
+  as psl 19 × 19. Not run.
+
+What would move it (not done here): (a) a new group family in the window with small involution count and a
+larger-than-random tail (SL(3,q)-type, PΓL(2,8)); (b) voltage / route-chart lifts (research/lifts/, BEAT_16_5_SQUAD.md),
+a different program; (c) a k = 5 orbit method at (6,9), which SIZE_LAW and STRUCTURE §2.5 rule out for Δ = 6 with one orbit.
+
+Compute used this round: 4 cores, about 2.5 hours wall clock, roughly 1.0·10⁹ orbit-pair evaluations (four full passes
+of 2.3–2.6·10⁸ each, plus the slices and tail tests). No solution saved to research/frontier/sols/. The record stays at 127,296.
+
+Note on the histogram: `hist cost 63` counts pairs that were fully evaluated above the bound (the early abort is checked
+only at chunk boundaries). It is an artifact of the bin, not a result; zero-cost pairs are never aborted.
