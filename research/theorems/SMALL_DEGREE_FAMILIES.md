@@ -360,6 +360,7 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
 | group | structure | sets tested | best cost |
 |---|---|---|---|
 | (1100,27) | C11 : (C5 × (C5 : C4)) | 2,096,367 | **1** |
+| (1240,7) | C31 : (C5 × Q8), centre C2 | 1,475,741 | 2 |
 | (1100,26) | (C5 : C4) × (C11 : C5) | 2,379,393 | 3 |
 | (1120,1078) | ((C2 × C2 × C2) : C7) × (C5 : C4) | 1,505,716 | 3 |
 | (1100,18) | C11 : (C5 × (C5 : C4)) | 2,438,631 | 4 |
@@ -369,7 +370,6 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
 | (1134,40) | C7 : (((C3 × C3 × C3) : C3) : C2) | 1,911,390 | 5 |
 | (1140,15) | C5 : (C19 : C12) | 978,957 | 5 |
 | (1197,7) | C7 : (C19 : C9) | 693,714 | 5 |
-| (1240,7) | C31 : (C5 × Q8), centre C2 | 1,475,741 | 2 |
 
 - **Bug found and fixed this session** (by squad card c6). In lift mode `allgroups.py` left the identity out of
   the plan for the first free voltage.
@@ -588,7 +588,7 @@ lifts at (4,8) for 2,186–2,208 vertices (none).
 | `abfilt.c`, `liftbound.py` | Rigorous abelianization bound and generic lattice bound (§2.2). |
 | `allgroups.py` | Every SmallGroup of each order: filters, GAP export (table, Aut(G)-reduced plan, abelianization map), then hx or lx. Resumable. Lift-mode plans include the identity (fixed this session). |
 | `onegroup.py`, `onelift.py` | The same for one SmallGroup (Haar or lift; `--identity-only` completes an old run). |
-| `fscreen.py`, `fscreen2.py`, `flscreen.py`, `gtab.c` | Fast all-groups screens: one GAP process per batch exports only generator permutations, `gtab` rebuilds the table in C, and a worker pool anneals. About 1 group/s at N = 1100. `fscreen2.py` re-anneals the low-cost groups. |
+| `fscreen.py`, `fscreen2.py`, `flscreen.py`, `gtab.c` | Fast all-groups screens: one GAP process per batch exports only generator permutations, `gtab` rebuilds the table in C, and a worker pool anneals. About 1 group/s at N = 1100. `fscreen2.py` re-anneals the low-cost groups. Scratch names are unique per process: two lift screens on the same orders once collided, and the affected groups were only logged as `export-failed` (both sides export identical data, so no cost can be wrong). Those lines were deleted and redone. |
 | `frobprod.py` | Products of two Frobenius-type groups F_q ⋊ C_a (faithful or not), tables built in numpy, for orders the library lacks. |
 | `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `cycloindex.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation. |
 | `cyclocheck.py`, `recordbound.py`, `recordbound_sqf.py` | Independent check of the bound against BFS in real groups; the bound at a record's own pattern (prime and squarefree moduli). |

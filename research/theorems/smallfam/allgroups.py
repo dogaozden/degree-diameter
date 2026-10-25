@@ -28,11 +28,12 @@ def gap(script, timeout):
 def list_groups(n, timeout=3600):
     out = os.path.join(SP, f'list_{n}.txt')
     if not os.path.exists(out):
-        gap(f'''f := OutputTextFile("{out}.tmp", false);; SetPrintFormattingStatus(f, false);;
+        tmp = f'{out}.tmp{os.getpid()}'
+        gap(f'''f := OutputTextFile("{tmp}", false);; SetPrintFormattingStatus(f, false);;
 for i in [1..NrSmallGroups({n})] do G := SmallGroup({n}, i);;
   AppendTo(f, i, " ", Size(DerivedSubgroup(G)), " ", JoinStringsWithSeparator(List(AbelianInvariants(G), String), ","), "\\n");; od;
 CloseStream(f);; QUIT;\n''', timeout)
-        os.rename(out + '.tmp', out)
+        os.replace(tmp, out)      # atomic; a concurrent run may have written the same file (same content)
     rows = []
     for line in open(out):
         f = line.split()

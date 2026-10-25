@@ -23,13 +23,14 @@ from allgroups import SP, abfilt, gap, list_groups  # noqa: E402
 
 
 def export_gens(n, ids, timeout=3600):
-    paths = {i: os.path.join(SP, f'gens_{n}_{i}.txt') for i in ids}
+    pid = os.getpid()       # unique names: concurrent screens may export the same group
+    paths = {i: os.path.join(SP, f'gens_{n}_{i}_{pid}.txt') for i in ids}
     script = f'''for i in [{",".join(map(str, ids))}] do
   GRP := SmallGroup({n}, i);; el := AsSSortedList(GRP);; nn := Length(el);; gs := SmallGeneratingSet(GRP);;
-  f := OutputTextFile(Concatenation("{SP}/gens_{n}_", String(i), ".txt.tmp"), false);; SetPrintFormattingStatus(f, false);;
+  f := OutputTextFile(Concatenation("{SP}/gens_{n}_", String(i), "_{pid}.txt.tmp"), false);; SetPrintFormattingStatus(f, false);;
   AppendTo(f, nn, " ", Position(el, One(GRP)) - 1, " ", Length(gs), "\\n");;
   for g in gs do AppendTo(f, JoinStringsWithSeparator(List(el, x -> String(Position(el, x * g) - 1)), " "), "\\n");; od;
-  CloseStream(f);; Exec(Concatenation("mv {SP}/gens_{n}_", String(i), ".txt.tmp {SP}/gens_{n}_", String(i), ".txt"));
+  CloseStream(f);; Exec(Concatenation("mv {SP}/gens_{n}_", String(i), "_{pid}.txt.tmp {SP}/gens_{n}_", String(i), "_{pid}.txt"));
 od; QUIT;
 '''
     gap(script, timeout)
