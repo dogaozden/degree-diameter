@@ -34,6 +34,8 @@ controller does not need.
 | m | base / group | lift | runs | check |
 |---|---|---|---|---|
 | 66 | K33m / Z_22 | **10,692** | seed 1 of 2, 300 s CPU, started from the 9,720 colour chart | apsp VALID, bfs_all max ecc 5 |
+| 75 | K33m / Z_25 | **12,150** | 300 variants of bt3_k33m_0 (csp3.py), VARLIST moves (PV 0.9), 2.4M iterations | apsp VALID, bfs_all max ecc 5 |
+| 72 | K33m / Z_24 | 11,664 | same, 189k iterations (and from the m = 72 near miss in 5.8k) | apsp VALID |
 | 69 | K33m / Z_23 | **11,178** | backtrack-complete chart diag/bt3_k33m_0 held fixed (DIAGBT=1, PV=1), 154k iterations | apsp VALID, bfs_all max ecc 5 |
 
 The colour-chart annealer (mlift_joint3) had reached m = 60 (1 seed of 5) and cost 4 at m = 66.
@@ -82,3 +84,11 @@ A_e⁻¹(P_w \ b_e). So:
 Every chart found this way has exactly 8 singular 4-walks per base vertex (48 of 648 on K33m, 16 of 216 for the
 1-vertex base), no pencil failure and no missing diagonal point, better on all three counts than anything annealed.
 Held fixed (PV = 1), it gave m = 69 at once; the joint moves (PV < 1) destroy completeness.
+
+## Chart variants (15:05 UTC)
+
+Which 4-walks are singular depends on the leg triangles (the vertex assignments) AND on which leg goes with which
+edge, i.e. on the collineation chosen per edge; the free row of A_e matters for neither. `csp3.py BASE NSOL SEED OUT
+NVAR` writes NVAR charts per CSP solution with fresh collineations / free rows. Letters of different variants of the
+same solution can be mixed edge by edge without losing backtrack-completeness, so mlift_ejoint2 got a chart move
+that does exactly that (env VARLIST = file listing the variant charts). With it: m = 72 and m = 75 at cost 0.
