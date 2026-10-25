@@ -1,0 +1,69 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.02s
+wide rows: HW order 252, rows 2352, setup 0.04s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=144
+t=30 steps=7129 evals=57033 cost=15 best=15 T=0.37
+CHAIN 1 min 15 secs 46 evals 84977
+chain 2: fresh start (global best 15)
+t=60 steps=13416 evals=107329 cost=22 best=15 T=0.79
+CHAIN 2 min 22 secs 36 evals 60376
+chain 3: fresh start (global best 15)
+t=90 steps=19777 evals=158217 cost=40 best=15 T=1.06
+t=120 steps=26521 evals=212169 cost=21 best=15 T=0.26
+CHAIN 3 min 21 secs 51 evals 88944
+chain 4: fresh start (global best 15)
+t=150 steps=32899 evals=263193 cost=18 best=15 T=0.69
+t=180 steps=39670 evals=317361 cost=13 best=13 T=0.17
+CHAIN 4 min 13 secs 57 evals 100120
+chain 5: fresh start (global best 13)
+t=210 steps=46017 evals=368137 cost=12 best=12 T=0.59
+CHAIN 5 min 12 secs 34 evals 58280
+chain 6: fresh start (global best 12)
+t=240 steps=52751 evals=422009 cost=22 best=12 T=0.70
+t=270 steps=59026 evals=472209 cost=12 best=12 T=0.18
+CHAIN 6 min 12 secs 62 evals 107176
+chain 7: fresh start (global best 12)
+t=300 steps=65595 evals=524761 cost=34 best=12 T=0.78
+t=330 steps=71591 evals=572729 cost=18 best=12 T=0.19
+CHAIN 7 min 18 secs 51 evals 85048
+chain 8: fresh start (global best 12)
+t=360 steps=78015 evals=624121 cost=23 best=12 T=0.52
+t=390 steps=84574 evals=676593 cost=13 best=12 T=0.15
+CHAIN 8 min 13 secs 59 evals 101368
+chain 9: fresh start (global best 12)
+t=420 steps=90535 evals=724281 cost=21 best=12 T=0.50
+CHAIN 9 min 21 secs 31 evals 50656
+chain 10: fresh start (global best 12)
+t=450 steps=97408 evals=779265 cost=15 best=12 T=0.52
+CHAIN 10 min 15 secs 46 evals 86136
+chain 11: fresh start (global best 12)
+t=480 steps=104424 evals=835393 cost=17 best=12 T=1.09
+t=510 steps=111296 evals=890369 cost=16 best=12 T=0.27
+CHAIN 11 min 16 secs 65 evals 114280
+chain 12: fresh start (global best 12)
+t=540 steps=117596 evals=940769 cost=21 best=12 T=1.35
+CHAIN 12 min 21 secs 32 evals 48552
+chain 13: fresh start (global best 12)
+t=570 steps=123258 evals=986065 cost=48 best=12 T=1.50
+t=600 steps=128412 evals=1027297 cost=25 best=12 T=0.37
+CHAIN 13 min 24 secs 31 evals 42264
+chain 14: fresh start (global best 12)
+t=630 steps=133434 evals=1067473 cost=21 best=12 T=0.39
+CHAIN 14 min 21 secs 55 evals 76320
+chain 15: fresh start (global best 12)
+t=660 steps=138750 evals=1110001 cost=27 best=12 T=1.23
+t=690 steps=144006 evals=1152049 cost=17 best=12 T=0.31
+CHAIN 15 min 17 secs 56 evals 79448
+chain 16: fresh start (global best 12)
+t=720 steps=149440 evals=1195521 cost=22 best=12 T=1.02
+t=750 steps=154591 evals=1236729 cost=16 best=12 T=0.26
+CHAIN 16 min 16 secs 50 evals 68520
+chain 17: fresh start (global best 12)
+t=780 steps=159410 evals=1275281 cost=29 best=12 T=0.63
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.05s
+wide rows: HW order 252, rows 2352, setup 0.10s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+resumed from d10D8_prod_psl_7_sl_8_7_orb3_F15_s21.ckpt: evals 1275265, 780 s spent, best 12
+start cost=12

@@ -932,6 +932,26 @@ static int check_and_write(ctx *c0, const char *out) {
     fclose(f); printf("wrote %s\n", out);
     return 1;
 }
+/* INVPAIR=1 (cell-10-8 session): S = {e} + O + O^-1 + I, where O is an alpha-orbit, O^-1 its inverses (slots 4..6 hold
+ * the inverses of slots 1..3) and I an alpha-orbit of involutions (slots 7..9). S is inverse-closed, so the odd words
+ * are closed under inversion and the uncovered set is invariant under <alpha, x -> x^-1> (orbits of 6). */
+static int INVP = 0, *INVL, NINV = 0;
+static int inv_pair_from(int x, int which, int *o6) {   /* x in orbit slot `which` (0: O, 1: O^-1); o6 = O, O^-1 */
+    int o[MAXD]; if (x < 0 || x == ident || !orbit_of(x, o)) return 0;
+    for (int i = 0; i < 3; i++) { int y = ginv(o[i]); if (which == 0) { o6[i] = o[i]; o6[3 + i] = y; } else { o6[i] = y; o6[3 + i] = o[i]; } }
+    for (int i = 0; i < 6; i++) { if (o6[i] == ident) return 0; for (int u = 0; u < i; u++) if (o6[u] == o6[i]) return 0;
+        for (int u = 0; u < d; u++) if ((u < 1 || u >= 7) && S[u] == o6[i]) return 0; }
+    return 1;
+}
+static void inv_random(int *o3) { int x = INVL[rnd() % NINV]; o3[0] = x; o3[1] = alpha(x); o3[2] = alpha(o3[1]); }
+static int inv_free(const int *o3) { for (int i = 0; i < 3; i++) for (int u = 0; u < 7; u++) if (S[u] == o3[i]) return 0; return 1; }
+static void invpair_random_S(void) {
+    int o6[6], o3[3];
+    for (int u = 1; u < d; u++) S[u] = -1 - u;
+    inv_random(o3); for (int i = 0; i < 3; i++) S[7 + i] = o3[i];
+    while (!inv_pair_from(rnd() % N, 0, o6)) ;
+    for (int i = 0; i < 6; i++) S[1 + i] = o6[i];
+}
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
@@ -946,6 +966,14 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         for (long long i = 0; i < NFIX; i++) { int y = FIXL[i], o = 1; while (y != ident) { y = gmul(y, FIXL[i]); o++; } if (o >= mo) FIXG[NFIXG++] = FIXL[i]; }
         fprintf(stderr, "FIXMIN=%d: %lld of %lld fixed elements eligible as generators\n", mo, NFIXG, NFIX);
     }
+    INVP = getenv("INVPAIR") ? atoi(getenv("INVPAIR")) : 0;
+    if (INVP) {
+        if (OK_ != 3 || OM != 3 || OF != 1) { fprintf(stderr, "INVPAIR needs ORBIT=\"3 3 1\"\n"); return 2; }
+        INVL = malloc(sizeof(int) * (N / 3 + 1)); NINV = 0;
+        for (int x = 0; x < N; x++) if (x != ident && gmul(x, x) == ident && alpha(x) != x) { int y = alpha(x), z = alpha(y); if (x < y && x < z) INVL[NINV++] = x; }
+        fprintf(stderr, "INVPAIR: S = {e} + O + O^-1 + alpha-orbit of involutions; %d involution orbits\n", NINV);
+        if (!NINV) return 2;
+    }
     double W = Wwords(d, D), lam = W / N, mu = N * exp(-lam);
     double nb = D % 2 ? 2 : 1;   /* odd D: two conditions, each with half the targets in inverse pairs; mu is the total */
     fprintf(stderr, "ORBIT k=%d m=%d f=%d: |Fix(alpha)| = %lld (+e); mu = %.2f, mu/k = %.2f, fixed-point misses ~ %.2f\n",
@@ -956,6 +984,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int u = 1; u < OF; u++) { if (NFIXG < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+    if (INVP) invpair_random_S();
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
@@ -964,6 +993,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
+            if (INVP) { invpair_random_S(); for (int u = 1; u < d; u++) mktab(S[u], TF[u], TI[u]); }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
             sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
@@ -980,7 +1010,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     }
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;
     double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
-    int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70;
+    int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70, PINV = getenv("PINV") ? atoi(getenv("PINV")) : 25;
     long long REHEATSTEPS = getenv("REHEATSTEPS") ? atoll(getenv("REHEATSTEPS")) : 400;
     int ORESTART = getenv("RESTART") ? atoi(getenv("RESTART")) : 0;
     if (K > 64) K = 64;
@@ -988,11 +1018,12 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
      * row without improving that chain's best, a fresh chain starts from random orbits (the global best is kept for the
      * output and the checkpoint). Unset: the original behaviour (reheat from the global best, or always fresh with
      * RESTART=1). */
-    int RA = getenv("RESTARTAFTER") ? atoi(getenv("RESTARTAFTER")) : 0, nfail = 0, nchains = 1;
+    int RA = getenv("RESTARTAFTER") ? atoi(getenv("RESTARTAFTER")) : -1, nfail = 0, nchains = 1;   /* RESTARTAFTER=0: every stall starts a fresh chain */
+    double chain_t0 = now(); long long chain_e0 = 0;
     long long lbestE = (1LL << 60); int lbestS[MAXD];
     uint64_t *SV[64][2]; for (int t = 0; t < K; t++) { SV[t][0] = zalloc64(BITBYTES); SV[t][1] = zalloc64(BITBYTES); }
     uint32_t *OTF[64][MAXD], *OTI[64][MAXD];
-    for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
+    for (int t = 0; t < nth; t++) for (int i = 0; i < (INVP ? 6 : OK_); i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
     /* CKPT=path: the best S so far (element indices; alpha and the group are deterministic) is written there every
@@ -1010,6 +1041,51 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
                   evals0 = e0; elapsed0 = el; resumed = 1; rs ^= (unsigned long long)(e0 + 1) * 0x9E3779B97F4A7C15ULL;
                   fprintf(stderr, "resumed from %s: evals %lld, %.0f s spent, best %lld\n", ckpt, e0, el, b0); }
         else if (f) fprintf(stderr, "checkpoint %s unusable, fresh start\n", ckpt); }
+    if (getenv("EXDESC")) {   /* exhaustive coordinate descent (cell-10-8 session): replace one orbit slot at a time by
+        * its best response over ALL alpha-orbits (early abort at the current cost), until no slot improves; then log
+        * the local optimum and start again from random orbits (the first start may come from CKPT). */
+        double te0 = now(); long long gbest = (1LL << 60); int gS[MAXD]; int ndesc = 0; long long nev = 0;
+        uint32_t *XF[MAXD], *XI[MAXD]; for (int i = 0; i < OK_; i++) { XF[i] = malloc(4 * NROWS); XI[i] = malloc(4 * NROWS); }
+        while (!stop_flag && now() - te0 < secs && gbest > 0) {
+            long long cur = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0); double td = now();
+            fprintf(stderr, "EXDESC %d start cost %lld\n", ndesc + 1, cur);
+            int improved = 1, sweeps = 0;
+            while (improved && cur > 0 && !stop_flag) {
+                improved = 0; sweeps++;
+                int perm[MAXD]; for (int j = 0; j < OM; j++) perm[j] = j;
+                for (int j = OM - 1; j > 0; j--) { int r = rnd() % (j + 1), t = perm[j]; perm[j] = perm[r]; perm[r] = t; }
+                for (int pj = 0; pj < OM && cur > 0; pj++) {
+                    int j = perm[pj], o[MAXD], bo[MAXD], found = 0; long long bnd = cur, nc = 0, off = rnd() % N;
+                    for (long long xx = 0; xx < N; xx++) { int x = (int)((xx + off) % N);
+                        if (!orbit_of(x, o)) continue;
+                        if (o[1] < x || o[2] < x) continue;          /* one representative per orbit (k = 3) */
+                        if (!orbit_free(o, j)) continue;
+                        uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
+                        for (int i = 0; i < OK_; i++) { mktab(o[i], XF[i], XI[i]); tf[ostart(j) + i] = XF[i]; ti[ostart(j) + i] = XI[i]; }
+                        long long r = cost_any(C[0], tf, ti, &sc0, NULL, &bnd, 0); nc++;
+                        if (r >= 0 && r < bnd) { bnd = r; memcpy(bo, o, sizeof(int) * OK_); found = 1; if (r == 0) break; }
+                    }
+                    nev += nc;
+                    if (found) { for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = bo[i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+                        fprintf(stderr, "  slot %d: %lld -> %lld (%lld orbits, %.0f s)\n", j, cur, bnd, nc, now() - td); cur = bnd; improved = 1; }
+                    else fprintf(stderr, "  slot %d: no improvement on %lld (%lld orbits, %.0f s)\n", j, cur, nc, now() - td);
+                }
+            }
+            ndesc++;
+            fprintf(stderr, "EXDESC %d local optimum %lld after %d sweeps, %.0f s (total %.0f s, %lld evals)\n", ndesc, cur, sweeps, now() - td, now() - te0, nev);
+            if (cur < gbest) { gbest = cur; memcpy(gS, S, sizeof(int) * d);
+                if (ckpt) { FILE *f = fopen(ckpt, "w"); if (f) { fprintf(f, "CKPT d=%d evals=%lld elapsed=%.1f best=%lld\n", d, nev, now() - te0, gbest);
+                    for (int i = 0; i < d; i++) fprintf(f, "%d%c", gS[i], i + 1 < d ? ' ' : '\n'); fclose(f); } } }
+            if (gbest == 0) break;
+            for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
+            for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+            for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+        }
+        memcpy(S, gS, sizeof(int) * d); for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+        printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld EXDESC descents=%d\n", d, D, Q->spec, ncyc, N, gbest, nev, now() - te0, OK_, OM, OF, NFIX, ndesc);
+        if (gbest == 0 && !check_and_write(C[0], out)) return 1;
+        return gbest == 0 ? 0 : 1;
+    }
     double lastck = now();
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
@@ -1024,9 +1100,16 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     int nslots = OM + (OF > 1 ? OF - 1 : 0);
     char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
     while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
-        int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
+        int slot = rnd() % nslots, isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM), ptype = -1;
+        if (INVP) { ptype = (int)(rnd() % 100) < PINV ? 2 : 0; isorb = 1; j = ptype; fs = -1; }
         for (int t = 0; t < K; t++) {
-            if (isorb) {
+            if (INVP && ptype == 2) { int o3[3], tries = 0; do inv_random(o3); while (!inv_free(o3) && ++tries < 100); memcpy(cand[t], o3, sizeof(int) * 3); }
+            else if (INVP) { int o6[6], ok = 0;
+                if ((int)(rnd() % 100) < TARGP) { int which = rnd() % 2; AVOIDMASK = 0x7e; int x = targeted(ostart(which)); AVOIDMASK = 0;
+                    ok = inv_pair_from(x, which, o6); }
+                while (!ok) ok = inv_pair_from(rnd() % N, 0, o6);
+                memcpy(cand[t], o6, sizeof(int) * 6); }
+            else if (isorb) {
                 int x = -1, o[MAXD]; AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);
                 if ((int)(rnd() % 100) < TARGP) x = targeted(ostart(j));
                 AVOIDMASK = 0;
@@ -1042,7 +1125,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             me = omp_get_thread_num();
 #endif
             ctx *cx = C[me]; uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
-            if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
+            if (INVP && ptype == 0) for (int i = 0; i < 6; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[1 + i] = OTF[me][i]; ti[1 + i] = OTI[me][i]; }
+            else if (isorb) for (int i = 0; i < OK_; i++) { mktab(cand[t][i], OTF[me][i], OTI[me][i]); tf[ostart(j) + i] = OTF[me][i]; ti[ostart(j) + i] = OTI[me][i]; }
             else { mktab(cand[t][0], OTF[me][0], OTI[me][0]); tf[fs] = OTF[me][0]; ti[fs] = OTI[me][0]; }
             double sc; long long r = cost_any(cx, tf, ti, &sc, SV[t], OABORT ? &bound : &NOBOUND, nth > 1);
             if (r >= 0 && ORBW > 1) { craw[t] = r; r += (ORBW - 1) * fixmiss(SV[t]); } else craw[t] = r;
@@ -1054,22 +1138,27 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         int bt = 0; for (int t = 1; t < K; t++) if (cs[t] < cs[bt]) bt = t;
         double bE = (double)cs[bt] / OK_;
         if (bE <= cE || exp((cE - bE) / T) > (rnd() % 1000000) / 1e6) {
-            if (isorb) for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+            if (INVP && ptype == 0) for (int i = 0; i < 6; i++) { int u = 1 + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+            else if (isorb) for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = cand[bt][i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             else { S[fs] = cand[bt][0]; SI[fs] = ginv(S[fs]); mktab(S[fs], TF[fs], TI[fs]); }
             c = craw[bt]; ce = cs[bt]; cE = bE; collect_saved(SV[bt]);
         }
         steps++; ohash = (ohash ^ (unsigned long long)(cs[bt] * 1000003 + bt * 7 + (c == cs[bt]))) * 1099511628211ULL;
         if (ce < bestE) { best = c; bestE = ce; memcpy(bestS2, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; }
-        if (RA > 0 && ce < lbestE) { lbestE = ce; memcpy(lbestS, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; nfail = 0; }
+        if (RA >= 0 && ce < lbestE) { lbestE = ce; memcpy(lbestS, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; nfail = 0; }
         T = TMAX * pow(0.5, (ONOW - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (ONOW - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
-            lastheat = ONOW; T = TMAX; memcpy(S, RA > 0 ? lbestS : bestS2, sizeof(int) * d);
+            lastheat = ONOW; T = TMAX; memcpy(S, RA >= 0 ? lbestS : bestS2, sizeof(int) * d);
             int fresh = ORESTART;
-            if (RA > 0 && ++nfail > RA) { fresh = 1; nfail = 0; lbestE = (1LL << 60); nchains++;
+            if (RA >= 0 && ++nfail > RA) { fresh = 1; nfail = 0;
+                fprintf(stderr, "CHAIN %d min %lld secs %.0f evals %lld S", nchains, lbestE, now() - chain_t0, evals - chain_e0);
+                for (int i = 0; i < d; i++) fprintf(stderr, " %d", lbestS[i]); fprintf(stderr, "\n");
+                chain_t0 = now(); chain_e0 = evals; lbestE = (1LL << 60); nchains++;
                 fprintf(stderr, "chain %d: fresh start (global best %lld)\n", nchains, best); }
             if (fresh) {   /* diversify: fresh random orbits (fixed generators kept) */
                 for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
                 for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+                if (INVP) invpair_random_S();
             }
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
             c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
