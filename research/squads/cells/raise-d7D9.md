@@ -37,3 +37,7 @@ quotient Z_3 on which the order-3 conjugation is trivial, and the random costs a
   The record run got from cost 6 to 0 at 1.5·10⁶ evaluations, so these candidates look harder than μ = 38 did.
 - Wave 2 (runs/raise7_9/launch_wave2.sh, starts when wave 1 ends): seed 2, ORBW=3, 3600 s each, same four groups
   (j2_*.jobs, queue output q2_*.out).
+- 09:24 UTC: wave 1 finished, all four unsolved (5400 s each, seed 1):
+  psl 13×217 best 27 (22.2·10⁶ evals); psl 17×97 best 12 (18.2·10⁶); psl 41×7 best 21 (12.7·10⁶); sl 17×49 best 18 (22.1·10⁶).
+- The launcher script did not start wave 2 (it died while waiting). Wave 2 was started by hand at 09:25 UTC with the same
+  j2_*.jobs files (3600 s each, ORBW=3, seed 2).
