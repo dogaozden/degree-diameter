@@ -56,7 +56,11 @@ research/projects/bigcheck-dist/HANDOFF.md, so a merge needs the two handoffs co
 - /tmp/hs/runs: (10,8) Haar orbit search on PSL(2,7) × SL(2,8) × Z7 (N = 592,704; cell-10-8's better group), seeds
   21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC. Earlier PSL(2,23) × Z97
   seeds 11-13 stopped at best 12, 9, 10. Request for more cloud seeds: research/squads/requests/2026-10-25T0550-d10D8-haar.md.
-- An Opus agent works on reconstructing/beating Delorme's 5⌊(q+5)/2⌋ (output: d8/theory/NOTES.md).
+- Theory (d8/theory/NOTES.md, done): no construction. Proved limits: with intact copies the always-present routes
+  give every point or every line at most 2q+9 voltages (Delorme needs 25, 30 at q = 5, 7); a "5 levels × k sheets"
+  lift cannot be certified by them for k ≥ 6; SL(3,q)-invariant incidence voltages are coboundaries; ≤ 10 copies
+  "for free" (search). Delorme's graphs therefore need pair-specific routes, most likely bundles (the q+1 geodesics
+  between opposite elements) with incidence voltages that take about (q+3)/2 values per bundle.
 - /tmp/bcdt/big: independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates:
   (15,10) 2,467,618,800 (SL(2,149) × Z373, branch claude/bipartite-d15-d10-search-h3rdep, sha256 6430a3a4…, WB=8,
   7.4 GB) and (16,10) 4,386,127,200 (SL(2,151) × Z637, branch claude/bipartite-16-10-cell-kras4l, sha256 f2a70a0d…,
