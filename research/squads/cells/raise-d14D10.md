@@ -101,3 +101,14 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   (cost 7 from about 1,700 s, 6 from about 5,300 s). A higher fix count than the solved PSL 271 and 331 cases
   (fix 134, 164), so fixed points are not the whole story; mu 28.7 is near the edge of the 5400 s budget.
 - 16:00 PSL(2,157) x Z_349 retry, seed 2, THREADS=2 (lower memory), 5400 s.
+
+## Round 2 result
+
+- **RAISED: (14,10) >= 1,350,537,864** (N = 675,268,932 = |PSL(2,157) x Z_349|, orbit k=3, m=4, f=2, mu = 27.6,
+  fix = 77). Solved at 2,897 evals (2,114 s, THREADS=2, seed 2). Solution:
+  research/frontier/sols/d14D10_psl_157_349_orb3_s2_n1350537864.txt. Checks: haar_sym full diameter OK; independent
+  low-memory haarcheck_psl VALID d=14 D=10, 14-regular simple, ecc 10 from both sides (log:
+  research/structured/runs/d14D10_psl_157_349_orb3_s2.log). The coordinator re-checks.
+  Supersedes 1,341,781,320 (PSL(2,331) x Z_37). Session gain so far: +23,910,544 (+1.8 %) over 1,326,627,120.
+- Lesson: fix = 77 (the lowest of the mu 27-29 candidates) solved in 2.9k evals, while PSL(2,281) x Z_61 (fix 140)
+  stalled at cost 6 after 7.3k evals. Low |Fix(alpha)| looks like the better predictor than mu alone at this size.
