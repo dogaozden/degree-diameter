@@ -67,4 +67,4 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | psl 49 × Z991 (GF(49) as x²+1) | 58,270,800 | 116,541,600 | 15.1 | 23 | not solved: best 18, 3,585 evals in 1800 s |
 | sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | 71 | **SOLVED** at 2,977 evals (1,462 s); haar_sym OK, hcsl and hc2 VALID (ecc 9 both sides). Sub-record (below 117,072,144). File `research/frontier/sols/d14D9_sl_71_163_orb3_s1.txt`, sha256 b9b6356afbf18f0ecd9f3adc67ab1e05ad13a54561bff7ee4a924c9f5bb27792. |
 | psl 73 × Z301 | 58,536,072 | 117,072,144 | 16.3 | 35 | **SOLVED** at 4,761 evals (705 s); haar_sym OK, haarcheck_psl VALID. New record. |
-| psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | – | queued |
+| psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | 29 | not solved: best 12, 6,441 evals in 1800 s |
