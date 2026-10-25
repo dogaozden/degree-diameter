@@ -4,8 +4,8 @@ State at the end of the session (details: research/squads/cells/d14D7.md, resear
 research/cell147/mirror/README.md, research/theorems/MIRRORED_SURGERY.md):
 
 - (14,7) best **1,789,588**: master's typed five-level graph (cell-16-7 session, 1,788,052) plus this session's mirrored
-  surgery (768 elements) on its four non-friendly transitions. Plain all-pairs check (apsp_mt): see
-  research/cell147/typedmirror/checks/.
+  surgery (768 elements) on its four non-friendly transitions. Plain all-pairs check (apsp_mt, all sources): VALID
+  (research/cell147/typedmirror/checks/d14D7_hex11_typedmirror768_n1789588.check.txt).
 - (15,7) candidate **2,499,748** (master 2,497,075), same combination on nine non-friendly transitions; hypotheses and
   hub graph checked by the builder, BFS from all hubs; no full check (about 8 core-hours without symmetry).
 - (13,7) **1,064,472** (master table 1,064,448), apsp_orb VALID: the mirrored set with r = 1. Typed levels do not help

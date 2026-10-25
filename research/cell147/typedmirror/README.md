@@ -32,7 +32,8 @@ The hub graph (degree <= 9 = 14 - 5) is 9 random perfect matchings between the t
 distances are <= 6 (checked with bitsets in tm_build.py). The surgeries on different transitions are independent (each
 proof uses only its own two levels), so the diameter argument is the one of d16D7.md, transition by transition.
 The graph has no symmetry left (the order-133 collineation does not preserve R'), so the check is a plain all-pairs
-bit-parallel BFS (apsp_mt, 1,789,588 sources): checks/d14D7_hex11_typedmirror768_n1789588.check.txt.
+bit-parallel BFS (apsp_mt, 1,789,588 sources): RESULT VALID d = 14, D = 7 (3,954 s on 4 threads;
+checks/d14D7_hex11_typedmirror768_n1789588.check.txt).
 
 ## (15,7): 2,499,748 (candidate; spot check only)
 

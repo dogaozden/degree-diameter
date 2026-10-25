@@ -192,4 +192,4 @@ After the rounds (Opus, not a squad result): master meanwhile had (14,7) 1,788,0
 levels, which leave the four non-friendly transitions without surgery. The 768-point mirrored sigma from this round fits
 those transitions (its hypotheses are the one-transition surgery theorem's), giving (14,7) 1,789,588 (both hub sides
 8,246 + 768) and a (15,7) candidate 2,499,748 (nine non-friendly transitions; spot check only). Plain all-pairs check
-for (14,7): research/cell147/typedmirror/checks/. Exact one-pair extension test: no F = 12 state extends to F = 13.
+for (14,7) (apsp_mt, all 1,789,588 sources): VALID. Exact one-pair extension test: no F = 12 state extends to F = 13.
