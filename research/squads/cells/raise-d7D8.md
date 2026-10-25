@@ -84,7 +84,39 @@ psl 9 and sl 9 are well behind psl 11 × Z73.
 Jobs in `research/squads/cells/raise-d7D8/jobs/C*.jobs` (seeds 21–24, default variant, 5400 s each). These are the
 only candidates left in the window with μ_eff near the record's (15.65 against 16.06).
 
-Results: (pending)
+Results (90 minutes each, not solved):
+
+| seed | best cost | evals |
+|---|---|---|
+| 21, 22, 23, 24 | 3 (all four) | 2.08–2.09 × 10⁸ each |
+
+## Status: stopped, no new record (2026-10-25, ~11:50 UTC)
+
+- No Haar graph above 95,760 was found. Nothing new to verify or add to research/frontier/sols/.
+- The only candidate in the window with a favourable μ_eff (psl 11 × Z73, 2N = 96,360) has been run for about
+  1.8 × 10⁹ evaluations over nine seeds and variants (default, ORBW=3, RESTART=1). Every run stopped at best cost 3.
+  Cost 3 is one uncovered orbit or three uncovered α-fixed elements, and it never went lower. That looks like a
+  structural plateau of this α, not slow annealing.
+- The other rungs are worse: pgl 9 × Z67 best 4, sl 9 × Z67 best 7, psl 9 × Z134 best 11, prod psl 3 × psl 3 × Z333
+  degenerate (cost ~3·10⁴), and the earlier sl 11 × Z37 (N 48,840) best 1.
+- What the orbit method can still try: other groups with order 47,881–48,600 whose μ_eff ≤ 16 (none found under the
+  rule that odd primes of n are ≡ 1 mod 3), and a different α (k = 3 with another fixed-point class).
+
+**Recommended next steps (for the coordinator):**
+1. Diagnose the cost-3 plateau on psl 11 × Z73: list the three uncovered elements (which α-orbits or fixed points they
+   are) and check whether a word collision forces them. If it is forced, stop this group for good.
+2. Try a non-orbit route for N 47,881–48,500. The lift and route-chart routes (research/lifts/,
+   research/theorems/BEAT_16_5_SQUAD.md) are the other families; the orbit search has no candidate left here.
+3. A bigger model, if the coordinator wants it, for (1) and (2). Haiku tooling is enough for running the queues.
+
+## How to resume
+
+- Binaries are not in git. Build from research/structured/haar_sym.c:
+  `gcc -O3 -march=native -fopenmp -o haar_sym haar_sym.c -lm` (and `haar_fast.c`); `tools/haarcheck_psl.c` for
+  PSL solutions above 20M vertices.
+- Queue: `research/structured/tools/orbq.sh JOBFILE OUTDIR BIN` (sequential, one line per job, skips finished
+  jobs, runs build_haar2.py on any solution). Run four queues in parallel, each with `THREADS=1`.
+- A solution is saved as research/frontier/sols/d7D8_<group>_orb3_s<seed>.txt only after build_haar2.py says VALID.
 
 ## How to resume
 
