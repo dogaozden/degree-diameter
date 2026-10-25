@@ -10,8 +10,8 @@ Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3 (draft PR #318
 - Goal 3 (new constructions in the big D = 8..10 cells): no record yet. The four D = 8 cells we do not hold are
   Delorme's hexagon compounds (5⌊(q+5)/2⌋ copies of H(q)); searched hexagon lifts reach only ~20 copies at q = 5 and
   ~18 at q = 7 (Delorme 25 and 30), so they need an algebraic construction we do not have (d8/NOTES.md).
-  (10,8) by a Haar orbit search is still running. Two unrecorded D = 10 Haar graphs from other sessions are being
-  rechecked by bcd.
+  (10,8) by a Haar orbit search is still running. The two unrecorded D = 10 Haar graphs from other sessions,
+  (15,10) 2,467,618,800 and (16,10) 4,386,127,200, pass an independent bcd check (checks/d10_haar/).
 
 ## Done
 - **bcd.c + bcd_merge.py** (README.md): checker for explicit graphs and cyclic voltage lifts, verified automorphisms,
@@ -61,9 +61,10 @@ research/projects/bigcheck-dist/HANDOFF.md, so a merge needs the two handoffs co
   lift cannot be certified by them for k ≥ 6; SL(3,q)-invariant incidence voltages are coboundaries; ≤ 10 copies
   "for free" (search). Delorme's graphs therefore need pair-specific routes, most likely bundles (the q+1 geodesics
   between opposite elements) with incidence voltages that take about (q+3)/2 values per bundle.
-- /tmp/bcdt/big: independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates:
-  (15,10) 2,467,618,800 (SL(2,149) × Z373, branch claude/bipartite-d15-d10-search-h3rdep, sha256 6430a3a4…, WB=8,
-  7.4 GB) and (16,10) 4,386,127,200 (SL(2,151) × Z637, branch claude/bipartite-16-10-cell-kras4l, sha256 f2a70a0d…,
-  WB=1, 1.6 GB; so far checked only by that session's hcheck5). Results go to checks/ when done.
+- Done: independent bcd checks (SL lift mode, 1 thread each) of the two unrecorded D = 10 Haar candidates, both VALID
+  with diameter 10 (checks/d10_haar/): (15,10) 2,467,618,800 (SL(2,149) × Z373, branch
+  claude/bipartite-d15-d10-search-h3rdep, sha256 6430a3a4…, WB=8, 1,936 s) and (16,10) 4,386,127,200 (SL(2,151) × Z637,
+  branch claude/bipartite-16-10-cell-kras4l, sha256 f2a70a0d…, WB=1, 1.6 GB, 5,286 s; before this checked only by that
+  session's hcheck5).
 - Open: a structured (algebraic) voltage design for D = 8 hexagon lifts; reconstruct Delorme's 5⌊(q+5)/2⌋ family, then
   try hub surgery as at D = 7.
