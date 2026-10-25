@@ -156,3 +156,18 @@ File: research/frontier/sols/d5D9_meta_346_43_29_s613_n29756.txt (sha256 of the 
 1f1d8ef6d96780894804f60e7220be34bfe0c7aa6d5d44dcd11f86e5036e1e4a).
 Checks: build_haar2.py VALID (ecc 9 from both sides, n = 29,756, max = min degree 5, no repeats); apsp.c VALID
 (bipartite, diameter 9). Coordinator re-check still needed. The next bar is |G| ≥ 14,879 (graph ≥ 29,758).
+
+### Status at the end of round 2 (2026-10-25, about 2.5 h of the 6 h budget)
+
+- **Record: 29,756 vertices** (Z_346 ⋊_29 Z_43, seed 613), up from 29,480 at the start of round 2 and 28,560 before round 1.
+  Solutions in research/frontier/sols/: d5D9_meta_422_35_5_s204_n29540.txt and d5D9_meta_346_43_29_s613_n29756.txt.
+  Both checked by build_haar2.py and apsp.c. The coordinator's re-check is still needed.
+- **Closed:** orbit-symmetric S for Δ = 5 at D = 9 (see the first round-2 section). Odd-q SL/PSL/PGL screen: no lead.
+- **Next bar:** |G| ≥ 14,879 (graph ≥ 29,758). Restarts since 14,878 was solved: 12 runs at 300 s on Z_1241⋊81 (14,892,
+  best 4), Z_496⋊7 (14,880, best 4), Z_1491⋊76 (14,910, best 8); 10 more at 300–600 s on Z_346⋊29 (14,878, the solved group,
+  an equal-order neighbour does not help). Lowest costs for untried groups above 14,878: 4–6.
+- **Where it stands:** the search is heavy-tailed. The two round-2 records came from short restarts on groups that had
+  shown cost 2–4 earlier, and nothing above 14,878 has reached cost 2 in ~40 runs. This is not "truly stuck" yet, but
+  the yield per 300-s run is now low. Options if the coordinator wants more: many more 300-s seeds on the cost-2 groups
+  (the Z_346⋊43 r=29 result came from seed 613 after 3 of 10 runs stayed at cost 2), and the metacyclic groups in the
+  remaining screen tail (about 1,100 untried, p1 ≥ 53).
