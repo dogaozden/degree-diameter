@@ -1,0 +1,15 @@
+m=5 N=2560 init sample-cost=197
+it 2000 T 45.050 cur 188 best 97 acc 1245 valid 1611
+m=5 N=2560 iters=8000 best_cost_run=97 full_far_pairs=2222 (sources=512, far = ordered pairs at distance>5)
+m 5
+shifts 2 3 4 1 0
+A0 1 3 2 3 1 0 0 2 2 1 0 1 2 3 1 3
+b0 131
+A1 0 3 1 0 1 1 1 3 2 1 2 1 3 3 1 3
+b1 124
+M2 1 0 0 3 2 3 1 0 1 3 0 2 2 1 2 0
+t2 226
+M3 1 3 0 3 2 3 3 2 1 0 3 2 1 3 2 1
+t3 57
+M4 1 3 3 0 1 1 2 2 2 2 1 3 3 1 1 0
+t4 5
