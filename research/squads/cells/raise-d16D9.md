@@ -44,3 +44,6 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 - 2026-10-25 08:30: sl 101x169 solved at 1,545 evals (1,188 s), VALID hcsl+hc2: 348,207,600 (+3.19 %). Current best. Saved.
   sl 83x301: no solve (best 12, 2,201 evals).
 - Running: sl 109x133 (cost 6), sl 89x247 (cost 14), sl 83x307 (+2.2 % over 101x169), sl 97x193.
+- 2026-10-25 08:42: sl 109x133 solved at 3,577 evals, |G| 172,224,360 (344,448,720 vertices). Below the current best, so not checked
+  and not recorded. Kept only in the scratchpad.
+- Running: sl 89x247 (cost 6), sl 83x307 (cost 14), sl 97x193 (cost 18), sl 239x13 (+5.2 %).
