@@ -873,7 +873,7 @@ static int choose_alpha(void) {
         if (AQ < 0 || AQ >= Q->order) { fprintf(stderr, "ALPHA out of range (0..%d or e)\n", Q->order - 1); return 0; }
         AQI = qinv(Q, AQ); }
     else {
-        unsigned long long sv = rs; rs = 0xC0FFEEULL; int test[6]; for (int u = 0; u < 6; u++) test[u] = rnd() % Q->order;
+        unsigned long long sv = rs; rs = getenv("ASEED") ? strtoull(getenv("ASEED"), 0, 10) : 0xC0FFEEULL; int test[6]; for (int u = 0; u < 6; u++) test[u] = rnd() % Q->order;
         int found = -1;
         for (int t = 0; t < 20000 && found < 0; t++) {
             int g = rnd() % Q->order, gi = qinv(Q, g), cur[6], ord = 0; memcpy(cur, test, sizeof cur);

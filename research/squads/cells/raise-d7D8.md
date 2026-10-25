@@ -167,3 +167,34 @@ Jobs `jobs/A1–A4.jobs`, logs in `runs/`, k = 3 m = 2 f = 1, K = 8, budget 3600
 | A4 | psl 11 × Z74 | 104 | default |
 
 (results appended below as they finish)
+
+### Phase A results (2026-10-25, finished 15:49 UTC; not solved)
+
+| queue | group | seed | variant | best cost | evals |
+|---|---|---|---|---|---|
+| A1 | sl 11 × Z37 | 101 | default | **1** | 1.28 × 10⁸ |
+| A2 | sl 11 × Z37 | 102 | RESTART=1 | **1** | 1.26 × 10⁸ |
+| A3 | sl 11 × Z37 | 103 | ORBW=3 | 3 | 1.27 × 10⁸ |
+| A4 | psl 11 × Z74 | 104 | default | 3 | 1.29 × 10⁸ |
+
+Two independent seeds of the structured session's group both stop at cost 1 after about 1.3 × 10⁸ evaluations each
+(the structured session's single run got 1 after 5.9·10⁶). Nothing at cost 0. Round 1's psl 11 × Z73 plateau at cost 3
+has the same shape: the orbit search reaches a floor in this group, and more seeds or time on the same α do not move it.
+No solution exists to verify.
+
+### Other α for the same group (`ASEED`, new in haar_sym.c, default unchanged)
+
+`haar_sym.c` picks α as the first order-3 conjugation found by a random search with a fixed seed (0xC0FFEE). The
+`ASEED=<n>` override (added this round) changes that seed, so the automorphism differs while the group, k, m, f and
+|Fix(α)| = 11 do not. The screen `RANDORB=5000` over ASEED 1–39 (`scratchpad/aseed_screen_sl11_37.txt`, not in
+git) gives best-of-5000 min cost from 6 to 18 and p1 from 30 to 33, with no visible dependence on α. So the α class
+is a weak lever in this group. Phase B tests the four lowest-min α with 40 minutes each:
+
+| queue | group | ASEED | seed | budget |
+|---|---|---|---|---|
+| B1 | sl 11 × Z37 | 18 (min 6) | 201 | 2400 s |
+| B2 | sl 11 × Z37 | 5 (min 7) | 202 | 2400 s |
+| B3 | sl 11 × Z37 | 39 (min 9) | 203 | 2400 s |
+| B4 | sl 11 × Z37 | 12 (min 9) | 204 | 2400 s |
+
+(results appended below as they finish)
