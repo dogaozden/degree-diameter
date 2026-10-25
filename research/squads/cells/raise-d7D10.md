@@ -75,7 +75,15 @@ Two solutions at the same order, both VALID by build_haar2.py (diameter 10, 7-re
 | d7D10_sl_25_73_orb3_s2.txt | SL(2,25) × Z73 (GF(25) = GF(5)[x]/(x²+2)) | 2 | 1,928,289 (1,465 s) | 35d028f938f09908973354c19b7e9dae9fdadf0c79621b2b1eb684fca28e26ae |
 | d7D10_pgl_25_73_orb3_s2.txt | PGL(2,25) × Z73 | 2 | 1,327,417 (1,048 s) | 9ee144249480df01c63a09e36a71c708497c924b8fcd614de81a8c4bd6c6df26 |
 
-- Search: `ORBIT="3 2 1"`, K = 8, single thread, μ = 23.9 + ... (N = 1,138,800: μ ≈ 27.8), |Fix(α)| = 23.
+- Search: `ORBIT="3 2 1"`, K = 8, single thread, N = 1,138,800 (μ ≈ 27.8), |Fix(α)| = 23.
 - Checks: haar_sym's own full diameter check (logs in research/structured/runs/d7D10_sl_25_73_orb3_s2.log, d7D10_pgl_25_73_orb3_s2.log); build_haar2.py VALID for both (rebuild outputs in research/structured/runs/*.rebuild.txt).
 - `haarcheck_sl` only accepts prime q, and `haarcheck_psl` only PSL: neither covers GF(25) here, so build_haar2.py is the only independent check for these two.
 - Unsolved, same order and budget: prod psl 7 psl 9 × Z19 (N = 1,149,120) reached cost 1 after 30 min (1.55M evals), and psl 131 × 1 seed 2 reached cost 1 after 30 min.
+
+## Round 4: NEW RECORD (7,10): 2,298,240 vertices (N = 1,149,120)
+
+- File: `research/frontier/sols/d7D10_prod_sl_7_psl_19_1_orb3_s2.txt`. Group SL(2,7) × PSL(2,19), no Z factor, k = 3, m = 2, f = 1, seed 2.
+  Solved after 323,521 evaluations (510 s).
+- build_haar2.py VALID: n = 2,298,240, 7-regular, no duplicates, ecc 10 from both (e,A) and (e,B). Edge-list sha256
+  `d977a1225993a74ae9c26e3c021d40a3e287407595eea0e499c11e74c14cd0fe` (`research/structured/runs/d7D10_prod_sl_7_psl_19_1_orb3_s2.rebuild.txt`).
+- Unsolved at 30 min, same order: prod psl 7 psl 9 × Z19 seed 3 (best 1), prod psl 7 sl 19 seed 2 (best 3), prod sl 5 sl 8 × Z19 seed 2 (best 3).
