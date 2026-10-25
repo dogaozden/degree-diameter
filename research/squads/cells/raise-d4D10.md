@@ -44,11 +44,11 @@ metacyclic × Z_n (n ≥ 2, order m·k·n) is a haar_gen3 family ("meta m k r n"
 - meta 139 46 6 1 (seeds 2 and 3): cost 1. meta 139 23 6 2 (seed 2): cost 1. meta 278 23 45 1 (seed 3): cost 1.
 - Three specs at order 6394 stall at cost 1 across 300–2400 s runs and several seeds.
 
-## Batch 5 (screen N = 6421–6480: 5,500-odd candidates; top 40 annealed 300 s, seed 1): no solve
+## Batch 5 (screen N = 6421–6480: 4179 candidates; top 40 annealed 300 s, seed 1): no solve
 - Best cost 8. Nothing close. Log: logs/q5.tsv; screen: screen_6421_6480.tsv.
 
 ## Status and stop decision (round 2, about 4 h of the 6 h budget used)
-- Total: 200 anneals (60 + 4 + 40 + 4 + 40 plus the 4 re-anneals) over N = 6216–6480. No solve. Every record file is
+- Total: 148 anneals (60 + 4 + 40 + 4 + 40) over N = 6216–6480. No solve. Every record file is
   unchanged; nothing was saved to research/frontier/sols/.
 - Why I stopped:
   - The new family (metacyclic × Z_n, n ≥ 2) was screened at full size (7,835 specs in 6209–6330 and 5,613 in 6331–6420),
