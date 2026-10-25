@@ -65,7 +65,7 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
   not recorded: sl 109x133 (344.4M, seeds 1 and 2 in the scratchpad).
 - Failed at 2400 s each (best cost in brackets): sl 89x247 [s1 6, s2 12, s3 6, s4 2], sl 83x301 [s1 12], sl 83x307
   [s1 6, s2 16, s3 14, s4 16], sl 97x193 [s1 12, s2 12, s3 8, s4 6], sl 293x7 [s1 12, s2 14, s3 10], sl 239x13 [s1 12,
-  s2 4, s3 14], sl 131x79 [s1 18, s2 open], sl 79x361 [s2 32], sl 211x19 [s1 20], sl 179x31 [s1 14, s2 16].
+  s2 4, s3 14], sl 131x79 [s1 18, s2 12], sl 79x361 [s2 32], sl 211x19 [s1 20, s2 18], sl 179x31 [s1 12, s2 16, s3 14].
 - Per-run logs: the scratchpad runs/ folder (not committed). Per-rung statistics above.
 
 ## Stopping reason
