@@ -1,55 +1,47 @@
 # optimal-sat handoff
 
-Read `SUMMARY.md` first (what is proved), then this file (what is running and what to do next).
+Read `SUMMARY.md` first (what is proved), then this file (what is open and how to continue).
 
-## State (2026-10-25, about 09:20 UTC)
+## Done (2026-10-25)
 
-- Main target: **no bipartite (11,3,−2)-graph**, which would give N^b(11,3) ≤ 218 (wiki: 220). By Theorem Q
-  (SUMMARY.md §1) this is the same as: no oriented 9-regular graph A on 55 vertices with
-  (2I+A)(2I+A)ᵀ = (2I+A)ᵀ(2I+A) = 11I + 2J together with a ±1 signing W of A with WWᵀ = 9I.
-  The A-only instance alone would suffice (if it is UNSAT).
-- Done and certified: k = 5..9 (A + signs) and k = 10 (A only), DRAT-verified (logs in `logs/cert/`).
-- k = 11 is **open in this session**:
-  - kissat on the A-only instance (`enc_quot.py 11 --sym --nf2 --ntt --alltr`, sha256 b6101044…) has had about 2.6 CPU-hours.
-  - CaDiCaL on the same CNF streams an LRAT proof into lrat-check (`stream_cert.sh`, about 1.8 CPU-hours so far).
-  - kissat on the signed instance (`--signs --sym --nf2 --ntt --alltr`) has just started.
-  - A sequential certified cube runner (`run_cube.sh` over `cube_list.py 11 2`, 110 cubes) is in the scratchpad.
-  - Two sample cubes needed more than 15 CPU-minutes each (machine oversubscribed).
-- Compute request for the coordinator: `research/squads/requests/2026-10-25T0915-optimal-sat-k11-cubes.md`
-  (110 independent certified cube jobs + a cover check).
-- Solvers are not in the repo. Build: `git clone https://github.com/arminbiere/kissat && cd kissat && ./configure && make`,
-  same for `cadical`; `git clone https://github.com/marijnheule/drat-trim && make` and
-  `gcc -O2 -o lrat-check lrat-check.c`. `pip install python-sat`.
+1. **Upper bounds from published theorems that the wiki table lacks:** N^b(15,3) ≤ 418 (wiki 422) and
+   N^b(7,5) ≤ 3104 (wiki 3106). SUMMARY.md §0.
+2. **Theorem Q** (new): a bipartite (k,3,−2)-graph is the same as an oriented (k−2)-regular graph A on C(k,2)
+   vertices with (2I+A)(2I+A)ᵀ = kI + 2J, plus a weighing-matrix signing W of A (WWᵀ = (k−2)I). Full proof:
+   `defect2/PROOF.md`. It recovers the known "k or k−2 is a square" condition.
+3. **Certified computations** (DRAT, drat-trim VERIFIED): no (k,3,−2)-graph for k = 5..9; for k = 10 not even the
+   oriented graph A exists. Logs: `logs/cert/`. (Δ = 6, 9 had only hand proofs before.)
+4. **k = 9 structure:** A exists (a 3-class scheme built on the Fano plane), but no signing; a 13-square "sphere"
+   certifies it. `defect2/NOTES.md`.
+5. Squad r1 on (k,3,−4) (`research/squads/r1-defect4/`, LOG.md): reproduced k = 6 UNSAT in 127 s; nobody reached
+   k = 7. Defect 4 has long repeat cycles, so there is no small quotient.
 
-## Results so far
+## Open: k = 11 (the (11,3) cell; UNSAT would give N^b(11,3) ≤ 218)
 
-| k | A only | A + signs |
-|---|---|---|
-| 3, 4 | SAT | SAT (the known graphs) |
-| 5–8 | UNSAT (< 1 s) | UNSAT, DRAT verified |
-| 9 | SAT (1.6 s): a 3-class non-symmetric scheme built on the Fano plane | UNSAT (3.6 s), DRAT verified |
-| 10 | UNSAT (163–216 s), DRAT verified | — |
-| 11 | running (> 2.5 CPU-hours) | running |
+- Monolithic A-only runs ran about 7 CPU-hours (kissat) and 5 CPU-hours (CaDiCaL + streamed LRAT check) without an
+  answer; they die with this session.
+- Case split ready for a cluster (rule R1 = "vertex 0 lies on the most directed triangles", 245,667 degree-sequence
+  cubes):
+  - `bash defect2/setup_worker.sh ~/w`
+  - `bash defect2/worker.sh ~/w i n 4` (certified per cube by streamed LRAT).
+  - Request with the recipe: `research/squads/requests/2026-10-25T0915-optimal-sat-k11-cubes.md`.
+  - Done under R1, certified: the t = 0, 1, 2 cubes (and the t ≤ 3 cubes listed in `logs/k11_lowt.log`).
+- Costs: most cubes take seconds; low-t, flat-α cubes take minutes to hours (`logs/defect2_calibration.md`).
+  Rule R2 (base arc on the most triangles) speeds up some hard cubes a lot (20+ min → 3 s) but not all. It needs its
+  own cube list (`ablist.py --maxtau`), and the two rules must not be mixed.
+- If a cube is SAT: decode A from the model and run `defect2/signs_gf2.py` (GF(2) elimination decides the signing;
+  `cegar.py` loops). A signable A would give a 220-vertex (11,3) graph, which is optimal.
 
-What did not help (see `logs/defect2_calibration.md`): RoundingSat, march_cu cubing, the kissat `--unsat` preset,
-and Cayley or semiregular symmetric searches (no Cayley digraph on either group of order 55; order-11 and order-5
-automorphisms not decided in 900 s).
+## Tools
 
-## Decompositions tried for k = 11 (details in defect2/NOTES.md items 10-12 and logs/defect2_calibration.md)
+Solvers are not in the repo:
+- `git clone https://github.com/arminbiere/kissat` (and `cadical`), then `./configure && make`;
+- `git clone https://github.com/marijnheule/drat-trim`, then `make` and `gcc -O2 -o lrat-check lrat-check.c`;
+- `pip install python-sat`.
 
-- 2 rows of B (`cube_list.py`, 110 cubes): sample cubes > 15 CPU-minutes.
-- Degree sequences of B (`ablist.py`, 245,667 cubes after reversal symmetry): 16 of 20 random cubes take about
-  1 s, a few take minutes, some more than 5–20 minutes. The hard ones have few directed triangles at vertex 0
-  (small t, flat α).
-- "Vertex 0 has the most directed triangles" (valid choice, `abcube.py --maxt`, `tmax.py`): t = 0 cube UNSAT in
-  53 s (certified, 55 s), t = 1 cube 106 s; "every vertex on ≤ 2 (resp. 5) triangles" not finished in 10 (40) min.
-- Turnkey cluster workers: `defect2/setup_worker.sh`, `defect2/worker.sh` (see the compute request).
-
-## Next steps
-
-1. Finish k = 11: monolithic runs, or the 110 cubes (`run_cube.sh`, each certified by streamed LRAT), then
-   `cover_check.py`. If any cube is SAT, run `signs_gf2.py` on the model (CEGAR: `cegar.py`).
-2. If UNSAT: write it into SUMMARY.md as "N^b(11,3) ≤ 218" with the hashes and logs; the coordinator re-checks.
-3. Secondary (not promising this session): (k,3,−4) — squad r1 reproduced k = 6 UNSAT in 127 s (card c1) but nobody
-   reached k = 7; the table needs k = 11 and 15. D = 5 defect 6: structure noted (girth 8, three repeats per vertex),
-   no method yet.
+`defect2/`:
+- `enc_quot.py` (main encoder), `PROOF.md` (why it is sound);
+- `certify.sh` (DRAT), `stream_cert.sh` / `run_cube.sh` / `run_abcube.sh` (streamed LRAT);
+- `cube_list.py` + `cover_check.py` (B-row split with a drat-trim cover check), `ablist.py` + `abcube.py`
+  (degree-sequence split);
+- `subcase.py`, `tmax.py`, `tausplit.py` (experiments).
