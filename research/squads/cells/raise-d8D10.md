@@ -34,3 +34,8 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
 
 ## Results
 (none yet)
+
+## Progress log
+- 07:43 UTC (≈ 930 s in): no solve yet. Best cost / evals: C sl 83×Z7 (N 4,001,928, μ 31.1) cost 1 at 2.8e5 evals;
+  A sl 27×Z199 (3,911,544, μ 23.2) cost 3 at 3.1e5; B sl 37×Z79 (3,998,664, μ 30.8) cost 3 at 3.6e5; D sl 29×Z163
+  (3,970,680, μ 28.2) cost 9 at 2.4e5.
