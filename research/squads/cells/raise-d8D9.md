@@ -60,5 +60,26 @@ ORBW or RESTART before this round.
 - sl 17 x Z139 is worse here than round 1 (best 12). Round 1 used default weights; the spread across seeds is large.
   Not pursued further.
 
-## Next (round 2, second block)
-- psl 47 x Z13, ORBW=3, seeds 41-43 at 2 h each, plus seed 44 with RESTART=1 ORBW=3.
+## Second block: psl 47 x Z13 with ORBW=3, 2 h each (no solve)
+| run | best cost | evals |
+|---|---|---|
+| s41 | 6 | 7.9M |
+| s42 | 6 | 7.9M |
+| s43 | 6 | 7.9M |
+| s44 (RESTART=1) | **3** | 7.8M |
+
+Cost 3 is the best of round 2. Cost 3 is stuck for the whole run and never reaches 0. Each run was ~8M evals (2 h).
+
+## Conclusion (round 2)
+Stopped with **no record**; the (8,9) record stays at 1,341,600 (sl 25 x Z43, N = 670,800). Reasons:
+1. No group in the window 670,801 .. 690,000 combines a small cyclic factor, few involutions and a good random-S tail. The
+   best window candidate, psl 47 x Z13, is limited by its ~1,080 involutions (odd D). Its plateau at cost 3-6 holds across
+   seeds and across ORBW=3 and RESTART=1 (8 CPU-hours total in round 2, 3.8M-8M evals per run).
+2. sl 17 x Z139 (the only SL group with few involutions) stalls at cost 20-36 with ORBW=3 and at 36 with default weights,
+   so it is further out than round 1's best of 12 suggested.
+3. k = 7 one-orbit structure is out (random-S minimum 198 over 3,000 samples in the best group).
+4. Every SL group with cyclic factor 500-2,000 in the window has a random-S tail 100-1,000 times worse than sl 25 x Z43.
+
+What would change the verdict: a construction outside the orbit method (voltage lifts or route charts from the round-1
+brief), or a solver that breaks the involution plateau (a symmetric weighting of involution orbits). Neither was tried.
+Verification: nothing was saved to research/frontier/sols/ because no run reached cost 0.
