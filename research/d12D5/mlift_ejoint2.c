@@ -87,10 +87,11 @@ int nwB[32], wB[32][700][4], lenB[32][700], endB[32][700];
 static unsigned char okA[32][700], okB[32][700], penA2[64][64], penB2[64][64];
 static int nsing, npen, ndiag, DIAGBT = 0, FAKE = 0; static unsigned char diagA[32], diagB[32];
 /* union of the 2-spaces <p_i, q_i> covers all of F_3^4? */
-static int planes_cover(const int *p, const int *q, int np) {
+static int missA[32], missB[32], DGRAD = 0, PRUNC = 0;
+static int planes_miss(const int *p, const int *q, int np) {   /* points of F_3^4 NOT in the union of the planes */
     uint64_t m[2] = {1, 0};
     for (int i = 0; i < np; i++) for (int a = 0; a < 3; a++) for (int c = 0; c < 3; c++) setbit(m, ADD[SMUL[a][p[i]]][SMUL[c][q[i]]]);
-    return m[0] == ~0ULL && m[1] == (1ULL << 17) - 1;
+    return 81 - __builtin_popcountll(m[0]) - __builtin_popcountll(m[1]);
 }
 static int eval_chart(void) {
     for (int e = 0; e < ne; e++) { if (!inv_mat(&A[e], &Ai[e]) || !b[e]) return 0; cvec[e] = mv(&Ai[e], b[e]); }
@@ -123,12 +124,12 @@ static int eval_chart(void) {
         for (int x = 0; x < 4; x++) { int e = atA[y][x];
             for (int x2 = x + 1; x2 < 4; x2++) { P[np] = cvec[e]; Q[np++] = cvec[atA[y][x2]]; }
             for (int t = 0; t < 4; t++) { int l = atB[EB[e]][t]; if (l != e) { P[np] = cvec[e]; Q[np++] = mv(&Ai[e], b[l]); } } }
-        diagA[y] = planes_cover(P, Q, np); ndiag += !diagA[y]; }
+        missA[y] = planes_miss(P, Q, np); diagA[y] = !missA[y]; ndiag += !diagA[y]; }
     for (int w = 0; w < k; w++) { int P[64], Q[64], np = 0;
         for (int x = 0; x < 4; x++) { int e = atB[w][x];
             for (int x2 = x + 1; x2 < 4; x2++) { P[np] = b[e]; Q[np++] = b[atB[w][x2]]; }
             for (int t = 0; t < 4; t++) { int l = atA[EA[e]][t]; if (l != e) { P[np] = b[e]; Q[np++] = mv(&A[e], cvec[l]); } } }
-        diagB[w] = planes_cover(P, Q, np); ndiag += !diagB[w]; }
+        missB[w] = planes_miss(P, Q, np); diagB[w] = !missB[w]; ndiag += !diagB[w]; }
     if (FAKE) { memset(okA, 1, sizeof okA); memset(okB, 1, sizeof okB); memset(penA2, 1, sizeof penA2); memset(penB2, 1, sizeof penB2);
         memset(diagA, 1, sizeof diagA); memset(diagB, 1, sizeof diagB); }
     return 1;
@@ -137,8 +138,9 @@ static void rand_gl(mat *M) { mat R; do { for (int j = 0; j < 4; j++) M->c[j] = 
 static int rand_vec(void) { int v; do v = xr() % NV; while (!v); return v; }
 static inline int mul(int a, int b2) { return T[a * n + b2]; }
 unsigned char *hit;
+int cost_g = 0;   /* graded part of the last cost() */
 int cost(void) {
-    int c = 0;
+    int c = 0, cg = 0;
     for (int i = 0; i < k; i++) {
         memset(hit, 0, k * n);
         for (int w = 0; w < nwA[i]; w++) { int *E = wA[i][w], x;
@@ -147,6 +149,8 @@ int cost(void) {
             hit[endA[i][w] * n + x] = 1; }
         if (DIAGBT && diagA[i]) hit[i * n + e_id] = 1;
         for (int t = 0; t < k * n; t++) c += !hit[t];
+        if (PRUNC) for (int t = 0; t < k * n; t++) if (!hit[t]) printf("UNCOV A a%d -> a%d g%d%s\n", i, t / n, t % n, (t / n == i && t % n == e_id) ? " DIAG" : "");
+        if (DGRAD && !hit[i * n + e_id]) cg += missA[i];
     }
     for (int j = 0; j < k; j++) {
         memset(hit, 0, k * n);
@@ -156,8 +160,11 @@ int cost(void) {
             hit[endB[j][w] * n + x] = 1; }
         if (DIAGBT && diagB[j]) hit[j * n + e_id] = 1;
         for (int t = 0; t < k * n; t++) c += !hit[t];
+        if (PRUNC) for (int t = 0; t < k * n; t++) if (!hit[t]) printf("UNCOV B b%d -> b%d g%d%s\n", j, t / n, t % n, (t / n == j && t % n == e_id) ? " DIAG" : "");
+        if (DGRAD && !hit[j * n + e_id]) cg += missB[j];
     }
-    return c;
+    cost_g = cg;
+    return DGRAD ? 100 * c + cg : c;
 }
 int parallel_ok(void) { for (int a = 0; a < ne; a++) for (int b2 = a + 1; b2 < ne; b2++) if (EA[a] == EA[b2] && EB[a] == EB[b2] && volt[a] == volt[b2]) return 0; return 1; }
 int used[64], matchB[32], visB[32];
@@ -196,7 +203,7 @@ static void write_echart(const char *fn, mat *M, int *bv) {
 }
 int main(int argc, char **argv) {
     if (argc < 5) { printf("usage: mlift_ejoint BASE TABLE seconds seed [T0] [PV] [out_prefix]\n"); return 1; }
-    init_f3(); DIAGBT = getenv("DIAGBT") ? atoi(getenv("DIAGBT")) : 0; FAKE = getenv("FAKE") ? atoi(getenv("FAKE")) : 0;
+    init_f3(); DIAGBT = getenv("DIAGBT") ? atoi(getenv("DIAGBT")) : 0; DGRAD = getenv("DGRAD") ? atoi(getenv("DGRAD")) : 0; if (DGRAD) DIAGBT = 1; FAKE = getenv("FAKE") ? atoi(getenv("FAKE")) : 0;
     FILE *f = fopen(argv[1], "r"); if (!f || fscanf(f, "%d", &k) != 1) return 2;
     ne = 4 * k; int dA[32] = {0}, dB[32] = {0};
     for (int i = 0; i < ne; i++) { if (fscanf(f, "%d %d", &EA[i], &EB[i]) != 2) return 3; atA[EA[i]][dA[EA[i]]++] = i; atB[EB[i]][dB[EB[i]]++] = i; }
@@ -207,7 +214,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < n; i++) { int ok = 1; for (int j = 0; j < n; j++) if (T[i * n + j] != j) { ok = 0; break; } if (ok) e_id = i; }
     for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) if (T[i * n + j] == e_id) Inv[i] = j;
     double secs = atof(argv[3]); rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL;
-    double T0 = argc > 5 ? atof(argv[5]) : 2.0, PV = argc > 6 ? atof(argv[6]) : 0.8; const char *out = argc > 7 ? argv[7] : NULL;
+    double T0 = (argc > 5 ? atof(argv[5]) : 2.0) * (getenv("DGRAD") && atoi(getenv("DGRAD")) ? 100 : 1), PV = argc > 6 ? atof(argv[6]) : 0.8; const char *out = argc > 7 ? argv[7] : NULL;
     hit = malloc(k * n + 1);
     colour();
     int seen[64] = {0}, q[64], h = 0, t = 0; seen[0] = 1; q[t++] = 0;
@@ -263,9 +270,10 @@ int main(int argc, char **argv) {
             else { A[e] = sA; b[e] = sb; eval_chart(); }
         }
         if (c < best) { best = c; memcpy(bv, volt, sizeof volt); memcpy(bA, A, sizeof A); memcpy(bb, b, sizeof b); }
-        if (it % 200000 == 0 && c > best + 20) { memcpy(volt, bv, sizeof volt); memcpy(A, bA, sizeof A); memcpy(b, bb, sizeof b); eval_chart(); c = best; }
+        if (it % 200000 == 0 && c > best + 20 * (DGRAD ? 100 : 1)) { memcpy(volt, bv, sizeof volt); memcpy(A, bA, sizeof A); memcpy(b, bb, sizeof b); eval_chart(); c = best; }
     }
     memcpy(A, bA, sizeof A); memcpy(b, bb, sizeof b); eval_chart(); memcpy(volt, bv, sizeof volt);
+    if (getenv("PRUNC")) { PRUNC = 1; cost(); PRUNC = 0; }
     printf("k=%d n=%d m=%d best_cost=%d (recheck %d) chart_singular=%d chart_pencil_viol=%d diag_incomplete=%d iters=%ld chart_moves=%ld volt=",
            k, n, k * n, best, cost(), nsing, npen, ndiag, it, nchart);
     for (int i = 0; i < ne; i++) printf("%d%c", bv[i], i + 1 < ne ? ',' : '\n');

@@ -53,3 +53,14 @@ vertex whose tripods partition PG(3,3) (all 4-walks through it nonsingular) is a
 `mlift_ejoint2.c` = mlift_ejoint.c + this condition (env DIAGBT=1) + FAKE=1 (all walks, pencils and diagonals good: the
 controller ceiling). Fake ceiling on K33m with free diagonals: m = 72 (Z_24) cost 0 in 8,923 iterations and m = 75
 (Z_25) cost 0, against cost 2 and 6 when diagonals need 4-cycles.
+
+## No universal per-edge chart over F_3 (14:50 UTC)
+
+All A-walks through an A-vertex y are nonsingular iff the four tripods T_e (e at y) partition PG(3,3). Disjoint tripods
+are flat with collinear apexes (tripods.py), and then the partition is forced: the apexes c_e lie on a line l_y and
+T_e = (σ_e \ l_y) ∪ {c_e}, where σ_e runs over the 4 planes through l_y. T_e = A_e⁻¹(tripod at b_e in the plane π_w of
+the four b's at the B-end w of e), so A_e maps l_y to the fourth line n_{w,e} of π_w through b_e. Hence every B-walk
+through w whose two middle edges come from A-perfect vertices has V(e2, e1) = A_e2 l_y2 = n_{w,e2} and
+V(e3, e4) = n_{w,e3}, two lines of the plane π_w: they meet, so the walk is singular. Perfect A-vertices make their
+B-neighbours' walks singular (and kill the A-pencils), so per-edge charts can only trade singular walks between the
+sides, as the annealers find (about 9 % of the 648 walks at best on K33m).
