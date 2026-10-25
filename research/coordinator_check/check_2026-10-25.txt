@@ -14,3 +14,21 @@ n=1774628 edges=12422396 degree min=14 max=14 bipartite=yes diameter=7 (level sh
 RESULT VALID d=14 D=7 n=1774628
       437.10 real      3229.33 user        38.04 sys
            922943488  maximum resident set size
+# (11,7) and (12,7): rebuilt in a separate folder with hexgen2.c (q = 9) and the finders' builders xgen.c / x5gen3.c; apsp_mt 2 threads.
+== (11,7) 413,180 Sat Oct 24 23:22:31 PDT 2026
+q=9 N=66430 LV=3 K=7300 hubs 7300 + 7300, n=413180 edges=2272490
+373d279f5b47d41435990350915cdb23056b80abe93fe5ab26875c1694fe05b0  hex/hex_q9.bin
+b66058a630ffd549d2d1af7df197e7e06de9feadd3ef72e961a9b4de69f54b8b  g11.edges
+-- apsp_mt (23:22:31)
+n=413180 edges=2272490 degree min=11 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=413180
+      280.78 real       448.03 user         6.66 sys
+           142819328  maximum resident set size
+== (12,7) 693,500 Sat Oct 24 23:27:12 PDT 2026
+q=9 N=66430 K=7300 hubs 14600 + 14600, n=693500 edges=4161000
+506599aba85193f9f005034796018d1fc5aee2d9c4b65206f60ca6c135cb3ef7  g12.edges
+-- apsp_mt (23:27:13)
+n=693500 edges=4161000 degree min=12 max=12 bipartite=yes diameter=7
+RESULT VALID d=12 D=7 n=693500
+      963.09 real      1555.05 user        22.15 sys
+           215695360  maximum resident set size
