@@ -65,3 +65,9 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - Finished unsolved: b5 psl 47 x Z13 (N 674,544, best 5, 3.66M evals, fix 23); b6 sl 17 x Z139 (N 680,544, best 12, 3.4M evals).
 - Still running: b7 prod sl 3 x psl 11 x Z43 (best 12), b8 pgl 17 x Z139 (best 21). Started 09:34: b9 prod psl 5 x psl 7 x Z67 (N 675,360, mu 32.0).
 - Record unchanged at 1,341,600 (sl 25 x Z43).
+
+## Status at 09:51
+- Finished unsolved: b7 prod sl 3 x psl 11 x Z43 (N 681,120, best 12, 4.0M evals); b8 pgl 17 x Z139 (N 680,544, best 21, 3.3M evals).
+- Running: b9 prod psl 5 x psl 7 x Z67 (N 675,360, best 15 at 960 s); b10 and b11 psl 47 x Z13, seeds 8 and 9 (started 09:50).
+- Screen (research/frontier/runs/raise-d8D9/ and scratchpad): window 670,801–676,000 with --anyn (n may contain 3), 1000 samples.
+- Record unchanged at 1,341,600 (sl 25 x Z43). 6 hour-long runs above the record so far, none solved; the solved ones were at mu 27.1 and 29.7.
