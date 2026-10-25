@@ -67,7 +67,20 @@ reached cost 0 in 204,761 evaluations (9 s). sl 11 × Z35 (N = 46,200) stalled a
 
 ## Batch A: 30 min per run, seed 2, four cores (started 07:46 UTC)
 
-psl 19 × Z14, sl 29 × Z2, psl 23 × Z8, pgl 19 × Z7. Results are appended below when the batch ends.
+| group | N | μ | best after 30 min | evals |
+|---|---|---|---|---|
+| psl 19 × Z14 | 47,880 | 32.3 | 4 | 28.0M |
+| sl 29 × Z2 | 48,720 | 37.3 | 2 | 24.9M |
+| psl 23 × Z8 | 48,576 | 36.4 | 6 | 20.9M |
+| pgl 19 × Z7 | 47,880 | 32.3 | 4 | 27.0M |
+
+None solved. sl 29 × Z2 is the closest (cost 2, μ = 37.3).
+
+## Batch B (started 08:19 UTC, 30 min each)
+
+sl 29 × Z2 with seeds 3 and 4, plus the two voltage-session metacyclic leads that stopped at cost 1 there:
+`meta 1257 38 47` (N = 47,766, μ 31.7) and `meta 1143 42 47` (N = 48,006, μ 33.1). Both group specs were checked
+(gcd(r, m) = 1 and r^k ≡ 1 mod m).
 
 ## Status
 
