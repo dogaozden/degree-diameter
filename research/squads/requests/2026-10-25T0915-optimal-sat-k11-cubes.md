@@ -52,3 +52,15 @@ Each cube runs with a certified LRAT check and a 1-hour limit (CUBE_TIMEOUT). Cu
 "vertex 0 has the most directed triangles" constraint; with it t = 0 is solved in 55 s instead of more than 15 min.
 Send back the abcubes.log lines (or push them to a branch). Unsolved cubes go into a second pass, either with more
 time or with a finer split.
+
+## Update 14:00 UTC: recommended recipe (rule R1)
+
+Use rule R1, "vertex 0 lies on the most directed triangles", with the reversal-halved list `ablist.py` (245,667 cubes).
+`run_abcube.sh` adds the R1 constraint for t ≤ MAXT_BELOW (default 3) and solves without it otherwise. That is
+consistent: a cube may omit its rule's constraint, but the whole split must use one rule. The 8 cubes with t ≤ 3 are
+being certified in the lead's session (see `logs/k11_lowt.log`). Measured costs and the alternative rule R2 are in
+`research/projects/optimal-sat/logs/defect2_calibration.md`.
+
+Expected: most cubes take seconds; a minority of low-t, flat-α cubes take minutes to hours. Do a first pass with
+CUBE_TIMEOUT=600, then a second pass on the leftovers with more time. If leftovers stay hard, split them by rows of B
+the same way `cube_list.py` does.
