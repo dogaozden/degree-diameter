@@ -141,3 +141,10 @@ groups as not run.
   - sl 41 × Z127 (seed 2, μ 26.6)
   - prod sl 3 × sl 11 × Z277 (seed 1, μ 27.8)
   - prod sl 5 × sl 7 × Z217 (seed 1, μ 26.7)
+
+### Wave 2b results (16:29 UTC)
+
+- sl 43 × Z109 (seed 2, μ 23.3): full 7200 s, not solved. Best 2 at 477k evals (one uncovered orbit or two fixed points).
+- prod sl 3 × sl 11 × Z277 (μ 27.8): stopped at 118k evals, best 78 (poor; not a candidate).
+- Running now (started 15:04–16:28, 7200 s each): sl 41 × Z127 (seed 2, best 8 at 366k at 16:27), prod sl 5 × sl 7 × Z217 (seed 1, best 36 at 404k),
+  prod sl 4 × sl 13 × Z67 (seed 1, μ 28.0, N 8,779,680), prod sl 9 × sl 23 × Z1 (seed 1, μ 26.5, N 8,743,680; no cyclic factor).
