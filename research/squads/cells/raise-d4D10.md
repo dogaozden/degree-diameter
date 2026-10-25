@@ -27,7 +27,7 @@ Source of the record and its checks: origin/claude/voltage-lifts-search-6lfotq, 
 - Round 3 finished: sweeps N = 6361–6420, 6421–6480, 6481–6560 gave no solve (12 anneals each).
 - Round 4 finished: the four round-1 windows resumed to top 30 (18 new anneals each, 300 s). No solve.
 - Non-Haar check: lift.c, K_{4,4} base (8 vertices), cyclic groups Z_1500, Z_1520, Z_1552, Z_1553 (n = 12,000 to
-  12,424). After 30 s the costs were 974–1,292 (start 3,326–7,832). That is far from cost 0, so this route was dropped
+  12,424). Final costs after 63 s: 974, 1,100, 1,190, 1,292 for Z_1500, Z_1520, Z_1552, Z_1553 (start 3,326–7,832). That is far from cost 0, so this route was dropped
   before any long run finished. The earlier voltage-lift sweeps only reached n ≈ 11,750 on these bases.
 
 ## Totals and status (Haar, N = 6209–6560)
