@@ -1,6 +1,17 @@
 # bigcheck-dist: handoff
 
-Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3. Read README.md first (the checker).
+Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3 (draft PR #318). Read README.md first (the checker).
+
+## Summary (for Doğa)
+- Goals 1-2 are done: bcd.c checks explicit graphs and voltage lifts (Z_M, SL/PSL(2,p) × Z_n) with verified
+  automorphisms, splits the sources into parts with certificates, merges and spot-checks them; it runs from 64 sources
+  per pass down to one source on 3-bit-per-vertex bitsets, so graphs of several billion vertices fit on this machine.
+  It agrees with apsp.c, apsp_orb.c, build_haar2.py and the Haiku worker's apsp_shard.c on every test.
+- Goal 3 (new constructions in the big D = 8..10 cells): no record yet. The four D = 8 cells we do not hold are
+  Delorme's hexagon compounds (5⌊(q+5)/2⌋ copies of H(q)); searched hexagon lifts reach only ~20 copies at q = 5 and
+  ~18 at q = 7 (Delorme 25 and 30), so they need an algebraic construction we do not have (d8/NOTES.md).
+  (10,8) by a Haar orbit search is still running. Two unrecorded D = 10 Haar graphs from other sessions are being
+  rechecked by bcd.
 
 ## Done
 - **bcd.c + bcd_merge.py** (README.md): checker for explicit graphs and cyclic voltage lifts, verified automorphisms,
