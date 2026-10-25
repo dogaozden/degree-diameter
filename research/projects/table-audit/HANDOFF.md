@@ -1,28 +1,35 @@
 # HANDOFF (table-audit)
 
-Branch `claude/table-audit-1odopy`, draft PR #316. Read AUDIT.md first. cells.csv / cells.md are generated:
+Branch `claude/table-audit-1odopy`, draft PR #316. Read AUDIT.md first. cells.csv, cells.md and the marked parts of
+AUDIT.md (summary, Loz table) are generated:
 `cd tools && python3 collect_extra.py LOZ_NOTES.json RESULTS.jsonl... && python3 audit_results.py ../extra.json &&
-python3 gen_cells.py` (audit_results.py holds the per-cell text; extra.json adds Haar reproductions and the Loz
-group-order notes; a check whose log in checks/ is missing or has no VALID line is printed as PENDING).
+python3 gen_cells.py && python3 fill_audit.py` (audit_results.py holds the per-cell text; extra.json adds the Haar
+reproductions, which must have a .sol in graphs/ and a VALID line in checks/small.txt or checks/haar_big.txt, and the
+Loz group-order notes; a check whose log in checks/ is missing or has no VALID line is printed as PENDING). The
+committed extra.json already holds everything found so far, so `python3 audit_results.py ../extra.json && python3
+gen_cells.py && python3 fill_audit.py` is enough after a new check log lands.
 
 ## Done
 - Live wiki table parsed: lit/wiki_table_2026-10-25.json. Literature: lit/LITERATURE.md (+ lead's addendum on
   Gómez's 1986 thesis).
 - Rebuilt and checked (logs in checks/): 27 Moore cells; (3,5), (7,3), (3,7), (4,5), (4,7); 11 Delorme–Farhi cells;
-  D = 3 AL/FMP cells; (6,7), (8,7) (Delorme 1985 §9); the 15 green D = 5 / D = 7 cells as polygon covers; (3,8) (squad
-  lifts); (3,9), (5,5), (6,5) (Haar graphs, exact order).
+  D = 3 AL/FMP cells; (6,7), (8,7) (Delorme 1985 §9); the 15 green D = 5 / D = 7 cells as polygon covers (except the
+  two still running below); (3,8) (squad lifts).
 - D = 8 green cells: source found (Gómez 1986 thesis, ΩH_q); rebuilt order but diameter 9 with the thesis's labelling
   (checks/omega_D8.txt, tools/omega_bound.py). With a free relabelling of each copy, q = 2 reaches diameter 8
-  (tools/omega_anneal.c); q = 3 was being annealed (see below).
+  (tools/omega_anneal.c); for q = 3 annealing stalled at 327 far hub–vertex pairs after 48,444 moves.
 - (13,5) ≥ 11,664 (B(H) of Mizuno's (12,4) graph) for the coordinator: AUDIT.md §5.
 - Squad round table-audit-r1 logged in research/squads/LOG.md.
+- 20 Loz cells reproduced at exact order as metacyclic Haar graphs (graphs/*.sol; checks/small.txt, haar_big.txt).
 
 ## Running when this was written (scratchpad, will not survive the session)
-- queue1.sh: apsp_mt on (16,6) 884,062; apsp_orb on (14,7), (15,7), (16,7) covers. When each log appears, copy it to
-  checks/ (names in checks/CHECKS.md) and rerun the three generator commands above; PENDING disappears.
-- exact_haar.py r2: (3,10), (7,5), (8,5), (4,8), (9,5), (5,7), (4,9), (5,8), (4,10) at exact order, 30 s per group.
-- sym_anneal (squad c6 code) for (3,10) = 800, b = 8 / 16.
-- omega_anneal on H(3), types aba, 30 min: does any per-copy labelling give ΩH(3) diameter 8?
+- queue1.sh: apsp_orb on the (15,7) and (16,7) covers (the other big checks are done). When a log appears, copy it to
+  checks/ (names in checks/CHECKS.md) and rerun the generators; PENDING disappears. If the session ended first, rebuild
+  and rerun them from checks/CHECKS.md (the (16,7) one takes 1–3 h on 4 cores).
+- exact_haar.py r6: (8,9) (found, Z421 ⋊ Z1296, not yet checked), (7,10), (9,9), 600 s per group, 4 groups each.
+  To add a found graph: copy the .sol to graphs/, run `THREADS=4 sh tools/rebuild_small.sh /tmp/ta` (checks it into
+  haar_big.txt), rerun the generators.
+- (3,10) lifts (squad c3 code), Q3 and Möbius–Kantor bases; best so far 38 unreached pairs.
 
 ## Open
 - Whether ΩH_q with some labelling reaches D = 8 at q = 7..13 (the table's (10,8), (11,8), (12,8), (14,8), (16,8)).
