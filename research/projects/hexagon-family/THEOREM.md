@@ -265,20 +265,30 @@ duality (R2) is the clean sufficient condition; with it, (R1) is necessary (Rema
 
 ## 7. Instances and checks
 
-All graphs below were rebuilt from their solution files and checked by an all-pairs BFS
-(research/lifts/coordinator_check/apsp_mt.c, no symmetry assumed); the checker prints the exact diameter.
+All graphs below were rebuilt from their solution files and checked here by a BFS checker that prints the exact
+diameter: apsp_mt (research/lifts/coordinator_check/apsp_mt.c, all pairs, no symmetry assumed) or apsp_orb (same
+directory: it first verifies that the level shift $(x,i)\mapsto(x,i+1)$ is an automorphism, then runs BFS from every
+vertex of level 0 and from every hub). Files and hashes: HANDOFF.md, checks/.
 
-| cell | $q$ | $j$ | freed set | hubs per side | $n$ | check |
+| cell | $q$ | $j$ | freed set ($|R|$ = pure + added, Prop. 4) | hubs per side | $n$ | check |
 |---|---|---|---|---|---|---|
-| (7,7) | 5 | 1 | 72 pairwise opposite + 9 mixed (Prop. 4) | 81 | **23,598** | diameter 7 |
-| (9,7) | 7 | 1 | 288 + 8 mixed | 296 | **118,240** | diameter 7 |
-| (10,7) | 8 | 1 | 217 + 15 mixed | 232 | **225,158** | diameter 7 |
-| (11,7) | 9 | 1 | 4,306 non-collinear points, $\sigma$ = duality | 4,306 (random degree-8 hub graph) | **407,192** | diameter 7, 11-regular |
-| (12,7) | 9 | 2 | the same 4,306 points | 8,580 (Haar graph of PSL(2,11)×Z13, Δ 7, D 7) | **681,460** | diameter 7 |
-| (13,7) | 11 | 1 | 756 + 12 mixed | 768 | **1,064,472** | diameter 7 (apsp_orb) |
+| (7,7) | 5 | 1 | 72 + 10 | 82 | **23,600** | apsp_mt |
+| (9,7) | 7 | 1 | 288 + 8 | 296 | **118,240** | apsp_mt |
+| (10,7) | 8 | 1 | 217 + 16 | 233 | **225,160** | apsp_orb |
+| (11,7) | 9 | 1 | 4,306 non-collinear points, $\sigma$ = duality | 4,306 (random degree-8 hub graph) | **407,192** | apsp_mt |
+| (12,7) | 9 | 2 | the same 4,306 points | 8,610 (Haar graph of $(\mathbb Z_{41}\rtimes\mathbb Z_{10})\times\mathbb Z_{21}$, Δ 7, D 7) | **681,520** | apsp_orb |
+| (13,7) | 11 | 1 | 756 + 14 | 770 | **1,064,476** | apsp_orb |
+| (14,7) | 11 | 2 | the same 770 | 1,540 (random) | **1,774,640** | apsp_orb (see HANDOFF) |
+| (15,7) | 11 | 3 | the same 770 | 2,310 (random) | **2,484,804** | apsp_orb (see HANDOFF) |
+| (16,7) | 13 | 2 | 792 + 24 | 1,632 (random) | **4,025,604** | apsp_orb (see HANDOFF) |
 
-In progress at the time of writing (see HANDOFF.md for the final state): $q=11$ with 756 + 14 = 770 (round 3, c3:
-all lines scanned) for (13,7), (14,7), (15,7); $q=13$ with 792 + 24 = 816 (round 3, c4) for (16,7).
+The added points: greedy over all lines not in the spread (ext/ext_all.py; q = 5, 7, 8, 11) or greedy plus
+destroy-and-repair from a different pure 792 set (q = 13, squad hexfam_r3 c4). At q = 11, 30 seeds of the all-lines
+greedy give 769 (18) or 770 (12), never more; at q = 7 several hundred seeds give 294–296; at q = 5 one seed of 450
+gives 82. For (12,7), $j=2$ allows two hubs per freed point (8,612 per side); groups of order 8,581–8,612 were scanned
+with research/frontier/haar_gen3.c and the largest Haar graph of diameter 7 found has 8,610 per side (order 8,612: none found for
+$\mathbb Z_{2153}\rtimes\mathbb Z_4$ in a 240 s run; 8,611 $=79\cdot109$ has only the cyclic group, and an abelian
+group with 7 generators reaches at most $\binom{9}{3}^2=7{,}056$ elements in 6 steps).
 
 **$q=16$** (not a table cell: $\Delta=q+2=18$): an elliptic quadric $Q^-(3,16)$ in a 4-space gives 257 pairwise
 opposite points (sets/P16_ell257.txt); random greedy gives at most 180 (4 runs); so

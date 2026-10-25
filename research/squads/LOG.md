@@ -58,5 +58,8 @@ Kept / next (Opus): c3's all-lines scan (ext/ext_all.py), rerun by Opus on 30 se
 ext/logs): 18 seeds give 769, 12 give 770, none 771. Opus built (13,7) 1,064,476, (14,7) 1,774,640, (15,7)
 2,484,804 from the 770 set and (16,7) 4,025,604 from c4's 816 set (checks in research/projects/hexagon-family/checks).
 The greedy is exhausted at q = 11; a gain needs a move that changes R itself or a non-greedy exact search on the
-cells. Stray actions: c1 left a tail -F monitor (killed); c7 and c8 first ended their turns while waiting on a
-monitor and reported later.
+cells. After the round Opus ran the all-lines scan at q = 5, 7, 8 (hundreds of seeds, ext/allscan78): q5 82
+(one seed; (7,7) 23,600), q8 233 ((10,7) 225,160), q7 296 (tie); and a Haar scan of groups of order 8,581-8,612 for
+the (12,7) hub graph: (Z41 x| Z10) x Z21 at 8,610 ((12,7) 681,520). Stray actions: c1 left a tail -F monitor
+(killed); c7 and c8 first ended their turns while waiting on a monitor and reported later; two round-1/2 agents,
+re-woken late, restarted their own searches (killed).
