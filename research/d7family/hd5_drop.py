@@ -29,4 +29,4 @@ last = [l for l in r.stdout.split('\n') if l.startswith('free A-slots')][-1]
 KB, KA = (int(v) for v in last.split('-> hubs')[1].split())
 N = int(np.frombuffer(open(hexfn, 'rb').read(12), np.int32)[1])
 print(last)
-print(f'SCORE n = {10 * 2 * N + KB + KA} (hubs {KB} + {KA}); sets', {nm: len(np.loadtxt(os.path.join(sd, nm + ".txt"))) for nm in NAME.values()})
+print(f'SCORE n = {10 * N + KB + KA} (hubs {KB} + {KA}); sets', {nm: len(np.loadtxt(os.path.join(sd, nm + ".txt"))) for nm in NAME.values()})
