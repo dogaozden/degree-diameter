@@ -13,6 +13,8 @@ non-cyclic group is passed as a permutation whose cycles are its orbits.
 | permq2.py | similitudes sqrt(nu) on V4 with a similitude of A (q = 1 mod 4) | q = 13: ≤ 212 |
 | grpperm.py | subgroups K of SL(2,q) acting by right multiplication on V4 = M2(F_q) | q = 11, K = 2.A5: 2 orbits = 240; q = 5, K = 2.A4: 48; q = 7, K = 2.S4: 48; orders 6–28: q = 7 ≤ 80, q = 11 ≤ 240, q = 13 ≤ 224 |
 | permq3.py | twisted cyclic groups R^a ⊕ Y^m (Y elliptic of order q + 1 in SL(2,q)) | see tw*.log |
+| stab98.py, hyp49.py | stabilizer (order 336) and centers of the q = 7 98 set | — |
+| psl2.py, pgl2.py, psl2sub.py | PSL/PGL(2,q) and subgroups on the quartic model Sym^4 ⊥ <n0> | q = 7: 98 (14 + 84 orbits); q = 11: PSL 12, 2.A5 240; q = 5: 30 |
 | hoffman.py | ratio bound inside one square class (q = 7: 300, too weak to help) | — |
 
 Logs: logs/, kbatch1.log, tw*.log, class4_s3.log. Flag files: flags/ (check with `CHECKONLY=1 ../pack ../../data/gh_q.txt 0 1

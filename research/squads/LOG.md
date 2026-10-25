@@ -122,4 +122,7 @@ subgroups of orders 6–24 give 72–80 (88 stays). Similitudes (sqrt(nu) on V4 
 So 2(q^2 - 1) is a Galois-exceptional (nearfield) phenomenon, not a general construction. Twisted cyclic groups R^a ⊕ Y^m at q = 7 (56 runs) gave at most 88; the one trivial
 case (g = -1, all orbits single points, i.e. plain local search with orbitclique_q) hit **98 points at q = 7** (seed 1;
 other seeds 84–92). Opus built **(9,7) 117,844** (98 units; uhcheck all sources + apsp_cyc VALID). Plain local search at
-q = 11 and 13 stays far below the orbit records (144, 201 after 5 min).
+q = 11 and 13 stays far below the orbit records (144, 201 after 5 min). The q = 7 98 set has stabilizer order 336: it is a union of PSL(2,7)
+orbits (14 + 84) on V = Sym^4 ⊥ <n0> (binary quartics), whose 8 "centers" form the rational normal curve. The quartic
+model at q = 11 gives at most 240 (PSL(2,11): 12 only; 2.A5: 60 + 6 × 30), and at q = 5 only 30. Longer q = 9 orbit
+runs on card c6's order-5 isometries: 150 (no gain).
