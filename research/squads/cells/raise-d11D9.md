@@ -48,3 +48,10 @@ groups need `build_haar2.py` instead.
 - Independent checks: haarcheck_sl and haarcheck2 both VALID (eccA = eccB = 9, 17,108,208 vertices). build_haar2.py VALID:
   ecc 9 from both sides, 0 unreached, edge-list sha256 d01a1283c41fc441de811a629ee4222acb9443db44a9ac2e47ae2f2da5c6befb.
   Log: runs/d11D9_sl_37_169_orb3_s1.rebuild.txt.
+
+## Result 3: NEW RECORD (11,9), 17,169,600 vertices (was 17,108,208, +0.36 %)
+
+- Group sl 49 × Z_73 (SL(2,49) over GF(7)[x]/(x²+1), |G| = 8,584,800), μ = 20.5, orbit k = 3, m = 3, f = 2, solved at evaluation 31,033 (826 s, seed 1).
+- Solution: research/frontier/sols/d11D9_sl_49_73_orb3_s1.txt. Search log: research/structured/runs/d11D9_sl_49_73_orb3_s1.log.
+- Independent check: build_haar2.py VALID: ecc 9 from both sides, 0 unreached, edge-list sha256 0aea5ec6ee8e0dd9547da7514883b8364b6338fba88f6b53a912b4ab123921b2.
+  Log: runs/d11D9_sl_49_73_orb3_s1.rebuild.txt. The prime-only SL checkers do not handle GF(49), so build_haar2 is the checker here.
