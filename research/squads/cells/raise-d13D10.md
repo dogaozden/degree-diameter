@@ -61,11 +61,11 @@ three steps (679,901,688, 679,959,000, 681,406,800), all VALID by an independent
 
 Rungs tried after the last record, each 5,400 s on one thread with seed 1 (best cost in brackets):
 SL 167×73 (1), SL 101×331 (3), SL 97×373 (1), SL 163×79 (3), PSL 151×199 (6), SL 139×127 (3), PSL 211×73 (3, stopped
-at the cap with the search still running). The next rungs by planner order (SL 139×127 is above it) are as the table
-shows; none is left in a queue.
+at the cap with the search still running). SL 131×151 was killed early because it fell below the record. No queue is
+left running.
 
 Why it stopped: the 6-hour window ended. Two concurrent runs were the memory limit, so the throughput was about 2 rungs
-per 1.5 h. The failures are normal for μ ≈ 22–25: 1 in 3 or so of these rungs solved in this session, and each
+per 1.5 h. Over the session, 3 of the 9 rungs run to completion were solved (PSL 163×157, PSL 251×43, SL 149×103), and each
 failure costs 1.5 h. Not stuck, but the next gains are small (+0.2–0.5 % per step) and need compute.
 
 Suggested next steps for a fresh session, most promising first:
