@@ -28,3 +28,9 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - 07:49 start b1 (seed 1), b2 (seed 2): prod sl 8 x sl 11 x Z1, ORBIT "3 2 2", 3600 s each. b3: sl 16 x Z163, seed 1.
 - ~1500 s: b1 best cost 5 (1.88M evals), b2 best cost 5 (1.76M), b3 best cost 9 (1.79M). Not solved yet.
 - Group screen (random-S tails, samples 2000) is still running at this point.
+- Group screen finished (research/frontier/runs/raise-d8D9/screen/screen_k3f2m2.txt, columns: N, mu, |Fix|, min, p1, p10, median of random-S cost).
+  Top by p1 (lower is better): psl 47 x Z13 (p1 51, mu 31.5); prod sl 8 x sl 11 (p1 52, mu 27.1, |Fix| 107);
+  sl 25 x Z43 (p1 54, mu 29.7); pgl 25 x Z43 (p1 60, mu 29.7); prod sl 4 psl 9 x Z31 and prod psl 5 psl 9 x Z31 (p1 ~80, mu 29.1).
+  sl 16 x Z163 ranks 9th (p1 99) despite the lowest mu. psl 47 x Z13 already reached cost 6 in 2400 s earlier (research/structured/runs).
+- ~1800 s: b1 best 5, b2 best 5, b3 best 9. Still none solved (runs end at 3600 s, about 08:49).
+- Next candidates to run after these: sl 25 x Z43 and psl 47 x Z13 (longer), then more seeds on the best group.
