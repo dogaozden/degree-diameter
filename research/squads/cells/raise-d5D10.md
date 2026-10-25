@@ -32,3 +32,16 @@ For k = 5 the z-scaling needs primes p | n with p ≡ 1 (mod 5). Enumerating eve
 q ≤ 100, n ≤ 100, |Q·n| in (47,880, 52,000]: the only one with 5 | |Q| is **SL(2,9) / PGL(2,9) × Z71** (N = 51,120,
 μ ≈ 54.8, μ/5 ≈ 11, ~10 fixed points). `enum.py` is in the scratchpad (not committed).
 
+
+### Tool bug found on the way (fixed, committed `6d381cc`)
+
+`haar_sym` hangs on any k = 5, f = 0 run: with one orbit and no fixed generators, S is the whole orbit, the
+`AVOIDMASK` covers every index, and `walk()` loops forever in the targeted moves (`do j = rnd() % d; while (…)`). gdb
+shows the hot path in `walk` called from `targeted`. The fix bounds the retry (64 tries); the targeting only picks
+candidate elements and the cost evaluation stays exact. Round 1 did not reach this path (its k = 5 was "theory only").
+
+### k = 5 on SL(2,9) × Z71 and PGL(2,9) × Z71 (N = 51,120, μ = 54.9, μ/5 = 11.0, |Fix| = 9)
+
+- Start cost, seed 1: 528 (sl), 25,565 (pgl). Seed 2 starts: 42,600 (sl), 25,580 (pgl). The start cost depends strongly on
+  the seed, unlike the orbit runs on the record group.
+- First patched 150 s run (sl, seed 1): cost 134 after 60 s, flat. Batch of 15 min (seeds 2, 3 sl; seed 1 pgl): in progress.
