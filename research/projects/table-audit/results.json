@@ -549,10 +549,10 @@
  },
  "5,7": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 311 5 6 found here (graphs/d5D7_n3110_meta_311_5_6_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group"
  },
  "5,8": {
@@ -565,10 +565,10 @@
  },
  "5,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 97 144 4 found here (graphs/d5D9_n27936_meta_97_144_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797"
  },
  "5,10": {
@@ -589,10 +589,10 @@
  },
  "6,8": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 331 45 4 found here (graphs/d6D8_n29790_meta_331_45_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331"
  },
  "6,9": {
@@ -621,10 +621,10 @@
  },
  "7,8": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 1349 30 159 found here (graphs/d7D8_n80940_meta_1349_30_159_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771"
  },
  "7,9": {
