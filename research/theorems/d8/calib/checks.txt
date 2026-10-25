@@ -1,0 +1,25 @@
+== calib/q3_j2_M22_c6.txt
+lift_vertices 16016 base 728 group 22x1 degree 6..6 bipartite 1 multi_edges 0 sources 728
+D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+n=16016 edges=48048 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=16016
+== calib/q4_j2_M20_c3.txt
+lift_vertices 54600 base 2730 group 20x1 degree 7..7 bipartite 1 multi_edges 0 sources 2730
+D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+n=54600 edges=191100 degree min=7 max=7 bipartite=yes diameter=8
+RESULT VALID d=7 D=8 n=54600
+== calib/q5_j2_M14_c4.txt
+lift_vertices 109368 base 7812 group 14x1 degree 8..8 bipartite 1 multi_edges 0 sources 7812
+D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+n=109368 edges=437472 degree min=8 max=8 bipartite=yes diameter=8
+RESULT VALID d=8 D=8 n=109368
+== calib/q3_polycover_Z5xZ5_M25.txt
+lift_vertices 18200 base 728 group 5x5 degree 6..6 bipartite 1 multi_edges 0 sources 728
+D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+n=18200 edges=54600 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=18200
+== calib/q4_polycover_Z5xZ4_M20.txt
+lift_vertices 54600 base 2730 group 5x4 degree 7..7 bipartite 1 multi_edges 0 sources 2730
+D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+n=54600 edges=191100 degree min=7 max=7 bipartite=yes diameter=8
+RESULT VALID d=7 D=8 n=54600

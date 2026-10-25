@@ -1,0 +1,26 @@
+# Z_5 polygon cover X of H(q) + 2 random matchings (polycover_counts.py q seed); geodcount = shortest-path counts
+# per distance (min and histogram of #geodesics); nbwalk = non-backtracking walks of length <= 7 along each edge
+== q=3 seed=0
+lift 3640 vertices, sources step 1, diameter 7
+d 6 pairs 841966 min_geodesics 1 hist(1..8,>8): 18 278 1358 5108 13962 30288 53884 80606 | 656464
+d 7 pairs 104588 min_geodesics 31 hist(1..8,>8): 0 0 0 0 0 0 0 0 | 104588
+nbwalk: darts 4368  min_w 19  mean_w 44.14  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4368
+== q=3 seed=1
+lift 3640 vertices, sources step 1, diameter 7
+d 6 pairs 845098 min_geodesics 1 hist(1..8,>8): 32 312 1648 5756 14678 32022 55856 82184 | 652610
+d 7 pairs 108170 min_geodesics 29 hist(1..8,>8): 0 0 0 0 0 0 0 0 | 108170
+nbwalk: darts 4368  min_w 24  mean_w 45.82  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4368
+== q=4 seed=0
+lift 13650 vertices, sources step 1, diameter 7
+d 6 pairs 14704098 min_geodesics 1 hist(1..8,>8): 7716 60700 229444 571052 1082282 1670648 2146934 2330288 | 6605034
+d 7 pairs 3724986 min_geodesics 24 hist(1..8,>8): 0 0 0 0 0 0 0 0 | 3724986
+nbwalk: darts 19110  min_w 15  mean_w 35.70  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 19102
+== q=4 seed=1
+lift 13650 vertices, sources step 1, diameter 7
+d 6 pairs 14701016 min_geodesics 1 hist(1..8,>8): 7632 59146 225790 566632 1078878 1668056 2145540 2331516 | 6617826
+d 7 pairs 3715482 min_geodesics 25 hist(1..8,>8): 0 0 0 0 0 0 0 0 | 3715482
+nbwalk: darts 19110  min_w 14  mean_w 35.37  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 19106
+== q=5 seed=0 (nbwalk only)
+nbwalk: darts 62496  min_w 9  mean_w 31.03  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 4 2 10 18 36 100 116 62210
+== q=7 seed=0 (nbwalk, sources sampled 1 in 97)
+nbwalk: darts 4050  min_w 9  mean_w 26.31  hist w=1..15,>=16: 0 0 0 0 0 0 0 0 3 3 8 16 22 56 62 3880

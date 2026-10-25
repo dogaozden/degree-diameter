@@ -1,0 +1,6 @@
+sample_start pairs=1803160 distinct_hist: d1=7456 d2=460569 d3=1335135 bad(<K-1)=7456 frac=0.00413
+sample_final K=3 sample_sources=600 (incremental bad 820, fresh bad 820)
+sample_final pairs=1803160 distinct_hist: d1=820 d2=456004 d3=1346336 bad(<K-1)=820 frac=0.00045
+EXACT_random_start pairs=24412500 distinct_hist: d1=100084 d2=6226274 d3=18086142 bad(<K-1)=100084 frac=0.00410
+EXACT_designed pairs=24412500 distinct_hist: d1=81256 d2=6136322 d3=18194922 bad(<K-1)=81256 frac=0.00333
+geodesic_count_violations 0 (expect 0)

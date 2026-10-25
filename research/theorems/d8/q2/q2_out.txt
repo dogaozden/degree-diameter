@@ -1,0 +1,8 @@
+# liftdiam checks of the annealed q = 2 lifts (lanneal, holo=1; D = 8)
+q2_j1_M10: lift_vertices 1260 base 126 group 10x1 degree 4..4 bipartite 1 multi_edges 0 sources 126 D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0) 
+q2_j2_M44: lift_vertices 5544 base 126 group 44x1 degree 5..5 bipartite 1 multi_edges 0 sources 126 D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0) 
+# annealing summary (lanneal gh2 j M iters T0=2 seed holo=1): best unreached
+j=1: M=5,6,7,8,9,10: 0 (seeds 1,2); M=11: 4, 12 (seeds 1,2); M=12: 62, 38
+j=2: M=16,20,24,28,36,44: 0 (seed 1); M=52: 16
+q2_j1_M10: n=1260 edges=2520 degree min=4 max=4 bipartite=yes diameter=8 RESULT VALID d=4 D=8 n=1260 
+q2_j2_M44: n=5544 edges=13860 degree min=5 max=5 bipartite=yes diameter=8 RESULT VALID d=5 D=8 n=5544 

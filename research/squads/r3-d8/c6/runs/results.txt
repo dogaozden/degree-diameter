@@ -1,0 +1,54 @@
+variant A RESULT M 18 J 2 seed 1 T0 2 tmax 40 iters 98 focus 73 U 0 valid 1 out runs/A_M18_s1.txt
+  liftdiam A M18 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant B RESULT M 18 J 2 seed 1 T0 2 tmax 40 iters 73 focus 65 U 0 valid 1 out runs/B_M18_s1.txt
+  liftdiam B M18 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 18 J 2 seed 1 T0 2 tmax 40 iters 0 focus 63 U 0 valid 1 out runs/C_M18_s1.txt
+  liftdiam C M18 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 20 J 2 seed 1 T0 2 tmax 40 iters 1058 focus 137 U 0 valid 1 out runs/A_M20_s1.txt
+  liftdiam A M20 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant B RESULT M 20 J 2 seed 1 T0 2 tmax 40 iters 889 focus 126 U 0 valid 1 out runs/B_M20_s1.txt
+  liftdiam B M20 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 20 J 2 seed 1 T0 2 tmax 40 iters 526 focus 107 U 0 valid 1 out runs/C_M20_s1.txt
+  liftdiam C M20 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 20 J 2 seed 2 T0 2 tmax 40 iters 4480 focus 244 U 0 valid 1 out runs/A_M20_s2.txt
+  liftdiam A M20 s2: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant B RESULT M 20 J 2 seed 2 T0 2 tmax 40 iters 2793 focus 206 U 0 valid 1 out runs/B_M20_s2.txt
+  liftdiam B M20 s2: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 20 J 2 seed 2 T0 2 tmax 40 iters 869 focus 116 U 0 valid 1 out runs/C_M20_s2.txt
+  liftdiam C M20 s2: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 22 J 2 seed 1 T0 2 tmax 45 iters 15811 focus 415 U 12 valid 0 out runs/A_M22_s1.txt
+  liftdiam A M22 s1: D 8 unreached_pairs 12 max_ecc 9 worst_src 32 (1)
+variant B RESULT M 22 J 2 seed 1 T0 2 tmax 45 iters 7897 focus 380 U 0 valid 1 out runs/B_M22_s1.txt
+  liftdiam B M22 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 22 J 2 seed 1 T0 2 tmax 45 iters 6337 focus 331 U 0 valid 1 out runs/C_M22_s1.txt
+  liftdiam C M22 s1: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 22 J 2 seed 2 T0 2 tmax 45 iters 9606 focus 342 U 16 valid 0 out runs/A_M22_s2.txt
+  liftdiam A M22 s2: D 8 unreached_pairs 16 max_ecc 9 worst_src 255 (2)
+variant B RESULT M 22 J 2 seed 2 T0 2 tmax 45 iters 6231 focus 341 U 0 valid 1 out runs/B_M22_s2.txt
+  liftdiam B M22 s2: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 22 J 2 seed 2 T0 2 tmax 45 iters 7165 focus 341 U 0 valid 1 out runs/C_M22_s2.txt
+  liftdiam C M22 s2: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 22 J 2 seed 3 T0 2 tmax 45 iters 11950 focus 417 U 6 valid 0 out runs/A_M22_s3.txt
+  liftdiam A M22 s3: D 8 unreached_pairs 6 max_ecc 9 worst_src 53 (1)
+variant B RESULT M 22 J 2 seed 3 T0 2 tmax 45 iters 9003 focus 375 U 0 valid 1 out runs/B_M22_s3.txt
+  liftdiam B M22 s3: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant C RESULT M 22 J 2 seed 3 T0 2 tmax 45 iters 7302 focus 364 U 0 valid 1 out runs/C_M22_s3.txt
+  liftdiam C M22 s3: D 8 unreached_pairs 0 max_ecc 8 worst_src 0 (0)
+variant A RESULT M 24 J 2 seed 1 T0 2 tmax 45 iters 26222 focus 287 U 56 valid 0 out runs/A_M24_s1.txt
+  liftdiam A M24 s1: D 8 unreached_pairs 56 max_ecc 9 worst_src 391 (2)
+variant B RESULT M 24 J 2 seed 1 T0 2 tmax 45 iters 16170 focus 375 U 16 valid 0 out runs/B_M24_s1.txt
+  liftdiam B M24 s1: D 8 unreached_pairs 16 max_ecc 9 worst_src 17 (1)
+variant C RESULT M 24 J 2 seed 1 T0 2 tmax 45 iters 18823 focus 398 U 24 valid 0 out runs/C_M24_s1.txt
+  liftdiam C M24 s1: D 8 unreached_pairs 24 max_ecc 9 worst_src 352 (2)
+variant A RESULT M 24 J 2 seed 2 T0 2 tmax 45 iters 27551 focus 286 U 52 valid 0 out runs/A_M24_s2.txt
+  liftdiam A M24 s2: D 8 unreached_pairs 52 max_ecc 9 worst_src 263 (2)
+variant B RESULT M 24 J 2 seed 2 T0 2 tmax 45 iters 21821 focus 407 U 20 valid 0 out runs/B_M24_s2.txt
+  liftdiam B M24 s2: D 8 unreached_pairs 20 max_ecc 9 worst_src 13 (1)
+variant C RESULT M 24 J 2 seed 2 T0 2 tmax 45 iters 20572 focus 409 U 22 valid 0 out runs/C_M24_s2.txt
+  liftdiam C M24 s2: D 8 unreached_pairs 22 max_ecc 9 worst_src 24 (1)
+variant A RESULT M 24 J 2 seed 3 T0 2 tmax 45 iters 32532 focus 318 U 46 valid 0 out runs/A_M24_s3.txt
+  liftdiam A M24 s3: D 8 unreached_pairs 46 max_ecc 9 worst_src 296 (2)
+variant B RESULT M 24 J 2 seed 3 T0 2 tmax 45 iters 22489 focus 416 U 12 valid 0 out runs/B_M24_s3.txt
+  liftdiam B M24 s3: D 8 unreached_pairs 12 max_ecc 9 worst_src 292 (2)
+variant C RESULT M 24 J 2 seed 3 T0 2 tmax 45 iters 22115 focus 392 U 20 valid 0 out runs/C_M24_s3.txt
+  liftdiam C M24 s3: D 8 unreached_pairs 20 max_ecc 9 worst_src 479 (2)

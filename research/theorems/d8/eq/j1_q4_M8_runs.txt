@@ -1,0 +1,15 @@
+# q = 4, one hop matching (j = 1), M = 8 = q + 4, C_7-equivariant (Singer power) quotient base, base 390 vertices
+# base:  python3 eqlift.py 4 7 8 1 j1_4_8.txt 1 5 singer 1
+# run 1: ./qanneal3 j1_4_8.txt 8 600 0.7 0.05 9 1 out.txt 64 6 0.2 1
+run 1: start full cost 536
+run 1: t 34 it 34362 full cost 310 |F| 64
+run 1: t 142 it 82269 full cost 164 |F| 128
+run 1: final full cost 88 best 88 it 200543 |F| 192
+# run 2: ./qanneal4 j1_4_8.txt 8 1200 0.7 0.05 22 1 out.txt 64 6 0.1 1 1 0.5
+run 2: start full cost 536
+run 2: t 2 it 1196 full cost 262 |F| 64
+run 2: t 27 it 15770 full cost 190 |F| 128
+run 2: t 261 it 124988 full cost 138 |F| 192
+run 2: t 716 it 270486 full cost 30 |F| 256
+run 2: final full cost 12 best 12 it 398075 |F| 283
+# full cost = unreached lift vertices summed over one source per orbit; 0 would mean diameter 8
