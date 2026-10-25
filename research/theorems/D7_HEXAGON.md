@@ -13,7 +13,7 @@ small $q$.
 *File paths* refer to the repository github.com/dogaozden/degree-diameter. Unless marked otherwise they are on the
 master branch (commit c48c976); [b14] marks files on branch claude/cell-14-7-record-5d03gb and [b15] files on branch
 claude/cell-15-7-haar-search-x6ynhl. This note and its tests (research/theorems/D7_HEXAGON.md, d7hex_tests/,
-d7hex_lemma41/) are on branch claude/d7-hexagon-theorems-4w1prt. Appendix A collects remarks for readers of the lab's
+d7hex_lemma41/) are on branch claude/d7-hexagon-theorems-4w1prt. Section 12 collects remarks for readers of the lab's
 per-cell notes.
 
 ## Contents
@@ -30,7 +30,7 @@ per-cell notes.
 9. What is proved for every $q$
 10. Computer checks
 11. Prior art, and what is new
-A. Notes for readers of the lab notes
+12. Appendix: notes for readers of the lab notes
 
 ---
 
@@ -763,7 +763,7 @@ new: it is the routine argument for such level graphs.
 (Definition 3.1, Theorem 3.4); the repair theorems B and C; the use of dual levels ("typed levels") to make transitions
 automorphic; segment sets and Proposition 1.4; mirrored sets (Propositions 5.1, 5.2); and the nine values in Section 0.
 
-## A. Notes for readers of the lab notes
+## 12. Appendix: notes for readers of the lab notes
 
 *What is new relative to the per-cell notes.* Writing the proofs out gave one simplification: Theorem C replaces the
 lab's conditions on freed sets at friendly transitions (non-collinear sets, and the "relaxed sets" with hypotheses (R1),
