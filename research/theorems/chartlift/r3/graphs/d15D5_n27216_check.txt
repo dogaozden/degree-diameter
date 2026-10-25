@@ -1,0 +1,15 @@
+# (15,5) 27,216: builder r3/graphs/build_d15D5_n27216.py (stdlib only); same edge set as lift.py on the Haar controller (voltages r3/graphs/d15D5_n27216.volt, group meta:28:6:11) + r3/k5q3_for168.txt (sorted-edge sha256 equal). Voltages: squad r3-chartlift card c4 (cost 2 with r3/k5q3_pd_star23.txt); chart: controller-aware coordinate descent from that chart (log r3/cdesc/for168.log).
+# edges file sha256 (builder output order): 5531c151e8716f71e282a2e5d88f158fea75a4c8b17f900bd18a83c10660754e
+== apsp.c (all pairs, bit-parallel BFS):
+n=27216 edges=204120 degree min=15 max=15 bipartite=yes diameter=5
+RESULT VALID d=15 D=5 n=27216
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=27216 edges=204120 degree 15..15 bipartite=yes max_ecc=5
+  dist 0: 27216 ordered pairs
+  dist 1: 408240 ordered pairs
+  dist 2: 5171040 ordered pairs
+  dist 3: 62868960 ordered pairs
+  dist 4: 365157072 ordered pairs
+  dist 5: 307078128 ordered pairs

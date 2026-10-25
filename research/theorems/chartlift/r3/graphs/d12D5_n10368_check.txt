@@ -1,0 +1,15 @@
+# (12,5) 10,368: builder r3/graphs/build_d12D5_n10368.py (stdlib only); same edge set as lift.py on r3/runs_d12/d12_h64_meta_16_4_3.ctrl + r3/k4q3_diag_tt.txt (sorted-edge sha256 equal)
+# edges file sha256 (builder output order): 99a720ebd519f5db6a02329089d999cd4d745e78bb1fb9acdbae1d31cd8eb8b6
+== apsp.c (all pairs, bit-parallel BFS):
+n=10368 edges=62208 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=10368
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=10368 edges=62208 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 10368 ordered pairs
+  dist 1: 124416 ordered pairs
+  dist 2: 1202688 ordered pairs
+  dist 3: 11290752 ordered pairs
+  dist 4: 52534656 ordered pairs
+  dist 5: 42332544 ordered pairs

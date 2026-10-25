@@ -1,0 +1,15 @@
+# (12,5) 12,960: builder r3/graphs/build_d12D5_n12960.py (stdlib only); same edge set as lift.py on the controller (voltages r3/graphs/d12D5_n12960.volt: bases4/k4r2_000.txt over meta:5:8:2) + r3/k4q3_diag_s126.txt (sorted-edge sha256 equal). Found by r3/alt348.sh from the near miss of squad card r3-c1 (log r3/alt/d12_r2_m80.log).
+# edges file sha256 (builder output order): 872aed79efd920f7a61cf6577a699c799d18dd048cb2f47410a8659fd2496b3f
+== apsp.c (all pairs, bit-parallel BFS):
+n=12960 edges=77760 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=12960
+== apsp.c with D=4 (must fail):
+RESULT INVALID
+== bfs_all.c (plain BFS from every vertex):
+n=12960 edges=77760 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 12960 ordered pairs
+  dist 1: 155520 ordered pairs
+  dist 2: 1503360 ordered pairs
+  dist 3: 14463360 ordered pairs
+  dist 4: 82464480 ordered pairs
+  dist 5: 69361920 ordered pairs

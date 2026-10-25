@@ -1,0 +1,17 @@
+q=3 k=3 D=7 n=6 targets per side 127, vectors 729, words 729
+t=0.1 best=36276 it=7
+t=0.3 best=29876 it=43
+t=0.5 best=29092 it=73
+t=0.8 best=28128 it=119
+t=1.2 best=27698 it=198
+t=1.4 best=25878 it=240
+t=29.4 best=24858 it=6087
+t=64.1 best=17460 it=12317
+t=117.7 best=17342 it=23834
+t=250.1 best=15808 it=60703
+t=250.3 best=14872 it=60761
+FINAL q=3 k=3 D=7 best=14872 (recomputed 14872) iters=463762
+  |y|=0 uncovered A 486 B 418
+  |y|=2 uncovered A 1656 B 1944
+  |y|=4 uncovered A 4536 B 2916
+  |y|=6 uncovered A 2916 B 0

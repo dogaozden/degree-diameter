@@ -12,6 +12,27 @@ def _factor(q):
             if r != 1: raise ValueError('not a prime power: %d' % q)
             return p, e
 
+def _polymod(a, f, p):
+    """remainder of a modulo monic f, coefficient lists low-to-high, over F_p"""
+    a = a[:]
+    while len(a) >= len(f):
+        c = a[-1] % p
+        if c:
+            sh = len(a) - len(f)
+            for t in range(len(f)): a[sh + t] = (a[sh + t] - c * f[t]) % p
+        a.pop()
+    while a and a[-1] % p == 0: a.pop()
+    return a
+def find_irreducible(p, e):
+    """first monic irreducible polynomial of degree e over F_p (trial division by all monic polys of degree <= e/2)"""
+    import itertools
+    def monics(d): 
+        for tail in itertools.product(range(p), repeat=d): yield list(tail) + [1]
+    for f in monics(e):
+        if f[0] == 0: continue
+        if all(_polymod(f, g, p) for d in range(1, e // 2 + 1) for g in monics(d)): return tuple(f)
+    raise ValueError('no irreducible polynomial')
+
 class GF:
     def __init__(self, q):
         self.q = q; self.p, self.e = _factor(q); p, e = self.p, self.e
@@ -22,7 +43,8 @@ class GF:
         if e == 1:
             self.mul = [[(a * b) % q for b in range(q)] for a in range(q)]
         else:
-            f = IRRED[q]; assert len(f) == e + 1 and f[-1] == 1
+            f = IRRED[q] if q in IRRED else find_irreducible(p, e); assert len(f) == e + 1 and f[-1] == 1
+            self.poly = f
             def pmul(da, db):
                 r = [0] * (2 * e - 1)
                 for i, x in enumerate(da):
@@ -41,11 +63,11 @@ class GF:
                 assert self.mul[a][b] == self.mul[b][a] and self.add[a][b] == self.add[b][a]
         for a in range(1, q): assert self.mul[a][self.inv[a]] == 1
         mult = {1}; g = None
-        for cand in range(2, q):
+        for cand in (range(2, q) if q <= 512 else []):
             x, seen = cand, set()
             while x not in seen: seen.add(x); x = self.mul[x][cand]
             if len(seen) == q - 1: g = cand; break
-        assert q == 2 or g is not None, 'no primitive element: bad irreducible polynomial'
+        assert q == 2 or q > 512 or g is not None, 'no primitive element: bad irreducible polynomial'
 
     # vectors: tuples; matrices: tuples of row tuples
     def vadd(self, u, v): return tuple(self.add[a][b] for a, b in zip(u, v))
