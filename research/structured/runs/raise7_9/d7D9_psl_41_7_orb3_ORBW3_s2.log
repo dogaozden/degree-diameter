@@ -1,0 +1,6 @@
+group psl 41 x Z_7, N=241080, identity 5740, H order 41, rows 5880, threads 1, setup 0.01s
+wide rows: HW order 140, rows 1722, setup 0.01s
+alpha: conj by mat(3,1,34,39) (index 4257), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 20 (+e); mu = 56.40, mu/k = 18.80, fixed-point misses ~ 2.59
+ORBW=3: an uncovered fixed element weighs 3; start energy 249
+start cost=241
