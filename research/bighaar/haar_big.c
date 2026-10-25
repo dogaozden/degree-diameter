@@ -33,7 +33,8 @@
  *      START=file (start the search from the S in a solution file; it must have the orbit structure), BENCH=1 (timings),
  *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements), FIXF=1 (D = 10 only: screen each candidate on the
  *      alpha-fixed elements by meet in the middle, ~0.1 s, and fully evaluate only candidates with at most FIXMAX (0)
- *      fixed holes, trying up to FIXTRY (200) per candidate slot; with EVAL it compares the screen with the full count).
+ *      fixed holes, trying up to FIXTRY (200) per candidate slot; with EVAL it compares the screen with the full count),
+ *      BOUNDCUR=1 (once T is at TMIN, abort every candidate as soon as it is worse than the current S).
  * Output: solution file in haar_gen3 format: "d D sl p n NCYC N NTOT" then d lines "<index> mat(a,b,c,d) z=Z",
  *      first generator e; checked independently by research/frontier/haarcheck_sl.c, haarcheck2.c (SL) and
  *      research/structured/tools/haarcheck_psl.c (PSL).  The current best S is also written to outfile.best after
@@ -607,6 +608,7 @@ int main(int argc, char **argv) {
             AG.a, AG.b, AG.c, AG.d, (long long)AR, (long long)NC, (long long)nfixz, OK_, OM, OF, W, W / NG, mu);
     fprintf(stderr, "setup %.1fs\n", now() - tset);
     if (OF != 1) { fprintf(stderr, "only f = 1 (S = {e} + orbits) is implemented\n"); return 2; }
+    int BOUNDCUR = getenv("BOUNDCUR") ? atoi(getenv("BOUNDCUR")) : 0;
     int FIXF = getenv("FIXF") ? atoi(getenv("FIXF")) : 0, FIXTRY = getenv("FIXTRY") ? atoi(getenv("FIXTRY")) : 200;
     int FIXMAX = getenv("FIXMAX") ? atoi(getenv("FIXMAX")) : 0; i64 nscreen = 0; double tscreen = 0;
     if (FIXF && D != 10) { fprintf(stderr, "FIXF needs D = 10\n"); return 2; }
@@ -673,14 +675,20 @@ int main(int argc, char **argv) {
         (void)candfh;
         AVOID = 0;
         el keep[MAXD]; memcpy(keep, S + ostart(j), sizeof(el) * OK_);
-        i64 bound = NOBOUND, cs[64]; int bt = -1;
+        i64 bound = (BOUNDCUR && T <= TMIN * 1.0001) ? c + 1 : NOBOUND, cs[64]; int bt = -1;
         for (int t = 0; t < K && !stop_flag; t++) {
             for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = cand[t][i]; make_tables(ostart(j) + i); }
             i64 r = cost(bound, ULIST[t], UCAP, &UN[t]); evals++;
             cs[t] = r < 0 ? NOBOUND : r;
             if (r >= 0 && r < bound) { bound = r; bt = t; }
         }
-        if (bt < 0) { for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = keep[i]; make_tables(ostart(j) + i); } break; }
+        if (bt < 0) { for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = keep[i]; make_tables(ostart(j) + i); }
+            if (stop_flag || bound == NOBOUND) break;
+            steps++;   /* BOUNDCUR: no candidate reached the current cost */
+            if (steps - lastimp > REHEATSTEPS) { heat = steps; T = TMAX; lastimp = steps; }
+            fprintf(stderr, "t=%.0f step=%lld evals=%lld slot=%d cand=>%lld cost=%lld best=%lld T=%.2f\n", now() - t0, (long long)steps,
+                    (long long)evals, j, (long long)c, (long long)c, (long long)best, T);
+            continue; }
         double bE = (double)cs[bt] / OK_;
         int acc = bE <= cE || exp((cE - bE) / T) > (double)(rnd() % 1000000) / 1e6;
         if (acc) {

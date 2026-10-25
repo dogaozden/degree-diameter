@@ -1,0 +1,22 @@
+group psl 191 x Z_661, N=2302818240 (2N=4605636480), rows 18240 x 126251 bits (doubled row 3968 words), memory 1.30 GB, threads 1
+alpha: conj by mat(0,190,1,88), z -> 197 z on Z_661 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=17.886 mu=39.29
+setup 0.0s
+FIXF: 94 alpha-fixed elements other than e (0.4s); FIXTRY 200 FIXMAX 0
+start cost=40 (3.6s per eval)
+t=21 step=1 evals=5 slot=1 cand=30 cost=30 best=30 T=1.26 screened=73 (6s) fh=0,0,0,0
+t=40 step=2 evals=9 slot=1 cand=50 cost=30 best=30 T=1.06 screened=175 (14s) fh=0,0,0,0
+t=57 step=3 evals=13 slot=1 cand=30 cost=30 best=30 T=0.89 screened=243 (20s) fh=0,0,0,0
+t=74 step=4 evals=17 slot=2 cand=25 cost=25 best=25 T=0.75 screened=276 (23s) fh=0,0,0,0
+t=91 step=5 evals=21 slot=2 cand=25 cost=25 best=25 T=0.63 screened=319 (29s) fh=0,0,0,0
+t=108 step=6 evals=25 slot=1 cand=40 cost=25 best=25 T=0.53 screened=382 (34s) fh=0,0,0,0
+t=123 step=7 evals=29 slot=0 cand=25 cost=25 best=25 T=0.45 screened=439 (39s) fh=0,0,0,0
+t=140 step=8 evals=33 slot=2 cand=30 cost=25 best=25 T=0.38 screened=501 (45s) fh=0,0,0,0
+t=156 step=9 evals=37 slot=0 cand=35 cost=25 best=25 T=0.32 screened=564 (50s) fh=0,0,0,0
+t=172 step=10 evals=41 slot=0 cand=20 cost=20 best=20 T=0.27 screened=623 (54s) fh=0,0,0,0
+t=186 step=11 evals=45 slot=2 cand=30 cost=20 best=20 T=0.22 screened=670 (58s) fh=0,0,0,0
+t=205 step=12 evals=49 slot=0 cand=30 cost=20 best=20 T=0.19 screened=749 (65s) fh=0,0,0,0
+t=219 step=13 evals=53 slot=2 cand=25 cost=20 best=20 T=0.16 screened=786 (68s) fh=0,0,0,0
+t=234 step=14 evals=57 slot=1 cand=35 cost=20 best=20 T=0.15 screened=830 (72s) fh=0,0,0,0
+t=248 step=15 evals=61 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=265 step=16 evals=65 slot=0 cand=20 cost=20 best=20 T=0.15 screened=937 (82s) fh=0,0,0,0
+t=276 step=17 evals=69 slot=1 cand=>20 cost=20 best=20 T=0.15
