@@ -79,9 +79,9 @@ groups need `build_haar2.py` instead.
 | sl 59 × Z43 | 8,828,760 | 30.2 | best 8 (37k) |
 | sl 107 × Z7 | 8,574,552 | 20.2 | best 2 (stopped by hand after 81 s, 2.7k evals, to free a slot) |
 
-Notes: the three solutions came at evaluations 11k–31k; at μ ≈ 20 the solve rate looks like a few in ten runs, and
-the solved ones were the three smallest-μ-to-|G| ratios with n a prime ≡ 1 (mod 3) or a product with a small factor.
-Stalls at cost 8–12 are common; the k = 3 cost is ≡ fixed-point misses mod 3, so cost 12 is a plausible plateau.
+Notes: the three solutions came at evaluations 11k–31k, with μ 15.8–20.5. Of the 18 wave-1 runs, 3 solved; the other
+15 stopped at best cost 2–48 within 1200 s, with many at 8–12. That is one seed per group, so it says little about
+the solve rate per group. Cost 12 recurred on several groups; a plateau there is not established.
 
 ## Wave 2 (seed 2, 2400 s, started 09:11): in progress
 prod sl 3 × sl 71, prod sl 4 × sl 11 × Z109, prod sl 3 × sl 11 × Z271, sl 43 × Z109 (seed 2), then sl 41 × Z127,
