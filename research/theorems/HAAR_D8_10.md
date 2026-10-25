@@ -12,7 +12,8 @@ and Ignacio López. Draft; corrections welcome.
 - **Heuristic**: a model or a measurement that guided the search. It is not used in any proof.
 
 **The main point, stated plainly.** None of the records at D = 8, 9, 10 comes from a general theorem. Each record is one
-explicit Haar graph H(G, S), found by computer search and checked by computer. What this note proves is:
+explicit graph (a Haar graph H(G, S) in 33 of the 34 cells), found by computer search and checked by computer. What
+this note proves is:
 
 1. the criterion that makes those checks exact (§2): two breadth-first searches, from (e, A) and (e, B), decide the
    diameter of a Haar graph, and the diameter is a covering statement about products of S and S⁻¹ in G;
@@ -229,9 +230,10 @@ depends on it; it is used for the D = 7 cover graphs.
 The search programs (`haar_gen3.c`, `haar_fast.c`, `haar_sym.c`) also run a full two-source check before writing a
 solution. We do not count that check as independent.
 
-**What no checker uses.** None of the checkers uses the orbit symmetry α of §3. Most solution files with f = 0 (§3)
-even store a translate S·s₀⁻¹ that is not itself α-closed (Lemma 3.1(ii)). So the validity of a record does not depend on
-any claim in §3: the symmetry was a search device only.
+**What no checker uses.** None of the checkers uses the orbit symmetry α of §3. The solution files with f = 0 (§3)
+even store a translate S·s₀⁻¹ that is not closed under any automorphism of the searched form; it is closed under the
+conjugate map x ↦ α(x)·α(s₀)s₀⁻¹ instead (Lemma 3.1(ii); checked by `research/theorems/haar_d8_10/orbit_check.py`, §5).
+So the validity of a record does not depend on any claim in §3: the symmetry was a search device only.
 
 **What remains to be trusted.** The programs, their compilers or interpreters, and the hardware. For each record at
 least two implementations written separately agree (§5); for the largest graphs (above about 2·10⁸ vertices) these are
@@ -412,7 +414,7 @@ W(Δ, D) of binding words, is the quantity behind every estimate in §3.5. It us
 (J. Algebra 1 (1964) 114–131) thick generalized n-gons exist only for n ∈ {2, 3, 4, 6, 8}, and a generalized octagon of
 order (s, t) needs 2st to be a perfect square, which fails for s = t. *Cited, not reproved here.* ∎
 
-For scale: our records use between 1.2 % ((16,10)) and 14 % ((7,8)) of W(Δ, D) (§5).
+For scale: the Haar records in §5 have between 5.1 % ((16,10)) and 22 % ((5,8)) of the Moore bound (§5).
 
 ### 4.2 The abelianization bound
 
@@ -498,10 +500,134 @@ RECORDS-TABLE-PLACEHOLDER
 
 ## 6. Prior art, and what is ours
 
-PRIOR-ART-PLACEHOLDER
+Tags: **[read]** the lab read the primary source; **[secondary]** known from a survey, an abstract or a citation only;
+**[inferred]** deduced from table values, not stated anywhere. The literature notes behind this section are
+`research/theory/LITERATURE.md` and `research/projects/table-audit/lit/LITERATURE.md` (branch `claude/table-audit-1odopy`).
+
+### 6.1 Prior art
+
+**Who holds the table at D = 8, 9, 10.** From the wiki's colour key, parsed on 2026-10-25 [read]:
+
+- Most cells are E. Loz's. The survey says Loz, Pérez-Rosés and Pineda-Villavicencio "adapted the voltage-assignment-based
+  method developed by Loz and Širáň for general graphs to the case of bipartite graphs; this resulted in updating more
+  than one third of the table" [read, survey]. Loz–Širáň (Australas. J. Combin. 41 (2008) 63–80) lift small base graphs
+  with voltages in metacyclic groups Z_m ⋊ Z_n found by random search [read]. The bipartite paper (a 2012 preprint) and
+  Loz's thesis (Auckland 2009, restricted access) could not be read, and no graphs survive where we could reach them
+  [secondary]. Many of these table orders factor as 2·p·k with k | p − 1, the order of a Haar graph of Z_p ⋊ Z_k, so
+  these are probably dipole lifts, i.e. Haar graphs of metacyclic groups [inferred]. The lab's table audit found Haar
+  graphs of metacyclic groups at exactly 23 of the Loz orders, 17 of them at D = 8–10: (3,9), (4,8), (4,9), (4,10),
+  (5,8)–(5,10), (6,8)–(6,10), (7,8)–(7,10), (8,8), (8,9), (9,8), (9,9) [computer-checked; AUDIT.md §3]. That shows such graphs exist
+  at those orders, not that they are Loz's.
+- D = 8 with Δ = 10, 11, 12, 14, 15, 16: J. Gómez Martí's thesis (UPC Barcelona, 1986, §2.9.3) lists exactly these values
+  as orders of a compound ΩH_q of generalized hexagons [read]; the wiki credits Delorme–Gómez–Quisquater, "On large
+  bipartite graphs", which was never published [secondary]. The lab's rebuild of ΩH_q as read from the thesis has the
+  right order but diameter 9 (AUDIT.md §4). This may be a misreading of the thesis's figure, so we do not claim the
+  values are wrong. (15,8) reuses the (14,8) value.
+- (13,8) = 5,314,680 = 15·|H(11)| has no traced construction (D8_NUMEROLOGY.md on branch
+  `claude/d8-table-numerology-mi6but` studies these numbers; it proves bounds for natural lift families but does not
+  find the construction).
+- **(11,10).** The survey PDF prints "130 592 1354"; every wiki revision has 130,592,354 (AUDIT.md §1). The repo README
+  lists the table value as 0. The correct comparison is 130,592,354; our 148,729,680 is 13.9 % above it.
+- **After 2013.** The wiki changed only at (13,3) and (15,3) (Araujo-Pardo–López). A literature search found no later
+  paper with a larger bipartite graph at D = 8–10 (AUDIT.md lit §8). The search was not exhaustive.
+
+**Haar graphs and lifts.** Haar graphs: M. Hladnik, D. Marušič, T. Pisanski, *Cyclic Haar graphs*, Discrete Math. 244
+(2002) [secondary]; A. Estélyi, T. Pisanski, *Which Haar graphs are Cayley graphs?*, Electron. J. Combin. 23(3) (2016)
+[read: abstract]. A Haar graph is a regular cover of a dipole (standard voltage-graph theory). In the bipartite
+degree–diameter problem, Haar graphs of cyclic groups appear at D = 3 (Feria-Purón–Miller–Pineda-Villavicencio,
+Discrete Math. 313 (2013), the graphs Φ_m) [read], and dipole lifts over metacyclic groups are probably behind Loz's
+values [inferred].
+
+**Matrix groups.** Cayley graphs of SL(2, p) with random generators are expanders (Bourgain–Gamburd, Ann. of Math. 167
+(2008)) and every generating set gives diameter O((log p)^c) (Helfgott, same volume) [read]. These results do not
+give the constant 1 in diam ≈ log_{Δ−1} |G| that the records need.
+
+**Symmetric connection sets.** Requiring a connection set to be invariant under a group automorphism is an old device.
+The Singer difference sets behind the D = 3 Moore graphs are fixed, up to translation, by the multiplier z ↦ qz of
+order 3 (Hall's multiplier theorem) [classical]. We do not claim the idea is new.
+
+**Elementary statements.** We claim no novelty for Lemma 1.2, Lemma 2.1, Theorem 2.4, Lemma 3.1 or Theorem 4.1; they
+are routine and we include them so that the checks can be audited. Loz's thesis abstract says it "generalizes the
+upper bound for abelian lifts of dipoles" [secondary], so a bound of the type of Theorem 4.3 is probably known in some
+form; ours is stated for every group through G/G′. We have not seen Propositions 3.4 and 4.5 stated, but they are short
+and may be folklore.
+
+### 6.2 What is ours
+
+1. **The graphs of §5.** 34 cells at D = 8, 9, 10 where our graph is larger than the table. All are Haar graphs except
+   (3,8), which is a voltage lift. Most are Haar graphs of SL(2, q), PSL(2, q) or a product of two such groups, times a
+   cyclic group, with 3·10⁴ to 4.2·10⁹ vertices. We have not found earlier use of SL(2, q)-type groups for bipartite
+   records at D ≥ 8. Because Loz's constructions are unavailable, we cannot rule out that the small metacyclic cells
+   ((5,8), (5,9), (4,10), (5,10)) use a method close to his.
+2. **The search.** Simulated annealing over S with a bitset BFS evaluator (`research/frontier/haar_gen3.c`,
+   `research/structured/haar_fast.c`), and orbit-closed S (Construction 3.2, `research/structured/haar_sym.c`) as a search
+   device, with the measured effect of §3.5.
+3. **The checks.** Independent checkers (§2.6), and Lean proofs for the graphs that are small enough (§5).
+4. **The theory notes** (`research/frontier/SIZE_LAW.md`, `research/theory/THRESHOLD.md`, `BEYOND_RANDOM.md`, and
+   `ORDER2.md`): a fitted size law, heuristics for choosing groups and symmetries, and some theorems in the regime D
+   fixed, Δ → ∞. They are not claims of this note.
 
 ---
 
 ## 7. How to re-check
 
-REPRO-PLACEHOLDER
+Everything below runs on a laptop except the largest low-memory checks (about 1.6 GB of memory and 1–2 hours for
+(16,10) on one core).
+
+```bash
+# a Haar record: independent rebuild of the group and the graph, BFS from (e,A) and (e,B)  (Corollary 2.3)
+python3 research/frontier/build_haar2.py research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt
+
+# the same with the independent Python checker
+python3 research/frontier/check_haar_indep.py research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt
+
+# low-memory checkers for SL(2,p) x Z_n and PSL(2,p) x Z_n (p prime), any size
+cc -O3 -o hcsl research/frontier/haarcheck_sl.c
+./hcsl research/frontier/sols/d16D10_sl_151_613_orb3_s1.txt
+cc -O3 -o hcpsl research/structured/tools/haarcheck_psl.c
+./hcpsl research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+
+# all-pairs BFS that assumes no symmetry (write the edge list first)
+python3 research/frontier/build_haar2.py research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt /tmp/edges.txt
+cc -O2 -o apsp research/lifts/coordinator_check/apsp.c && ./apsp /tmp/edges.txt 7 8
+
+# the orbit structure of S (Construction 3.2): finds alpha and prints the cycle sizes of S
+python3 research/theorems/haar_d8_10/orbit_check.py research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt 3
+
+# the numbers A(Delta, D) of Theorem 4.3
+python3 research/theorems/haar_d8_10/abound.py
+
+# Lean (needs elan; downloads Mathlib's cache); build one module at a time
+cd lean && lake exe cache get && lake build BipartiteDD.Haar.Main
+```
+
+The outputs of this session's re-checks are in `research/theorems/haar_d8_10/recheck/`.
+
+---
+
+## Appendix A. One record written out: Δ = 7, D = 8, 95,760 vertices
+
+G = PSL(2, 19) × Z_14, of order 3,420 · 14 = 47,880. Matrices are taken modulo ±I. The file
+`research/frontier/sols/d7D8_psl_19_14_orb3_s1.txt` lists
+
+| | matrix | z |
+|---|---|---|
+| s_0 | [[1, 0], [0, 1]] | 0 |
+| s_1 | [[2, 13], [14, 6]] | 6 |
+| s_2 | [[4, 13], [7, 4]] | 12 |
+| s_3 | [[2, 7], [7, 6]] | 10 |
+| s_4 | [[6, 2], [8, 6]] | 1 |
+| s_5 | [[6, 13], [15, 1]] | 9 |
+| s_6 | [[1, 4], [12, 11]] | 11 |
+
+*Symmetry (computer-checked, `orbit_check.py`).* Let g = [[1, 3], [6, 0]] (determinant 1, order 3 in PSL(2, 19)) and
+α(x, z) = (gxg⁻¹, 9z). Then 9 has order 3 mod 14, α has order 3, and α permutes S as s_0 ↦ s_0,
+s_1 ↦ s_2 ↦ s_3 ↦ s_1 and s_4 ↦ s_5 ↦ s_6 ↦ s_4 (on the z-coordinates: 6 ↦ 12 ↦ 10 ↦ 6 and 1 ↦ 9 ↦ 11 ↦ 1). So S
+is Construction 3.2 with k = 3, f = 1, m = 2.
+
+*Diameter (computer-checked).* By Theorem 2.4(a) with D = 8, diam H(G, S) ≤ 8 means that every element of G is a product
+s_{i_7} s_{i_6}⁻¹ s_{i_5} s_{i_4}⁻¹ s_{i_3} s_{i_2}⁻¹ s_{i_1} of seven letters with alternating signs. There are
+7·6⁶ = 326,592 reduced such words for 47,880 elements. build_haar2.py, check_haar_indep.py and the coordinator's checks
+confirm the covering (§5), and the graph is proved in Lean (`lean/BipartiteDD/Haar/`, §5).
+
+The order is 14.25 % of the bipartite Moore bound 671,846; the table value is 80,940.
