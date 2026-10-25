@@ -1,0 +1,14 @@
+== quotient search qhF_lines 04:37:17
+best_total 240
+t=150 k=80 f=9 bestf=1 best_total=240 it=40911872 restarts=12
+t=180 k=80 f=10 bestf=1 best_total=240 it=49191936 restarts=14
+END t=200.0 best_total=240 last_k=80 bestf(k)=1 it=54795264 restarts=16
+240 orbit-graph vertices
+VALID orbits=240 elements=14640
+== polish qhF_lines 04:40:57
+kbest 0
+t=360 k=241 f=3 bestf=2 it=81774592 restarts=27
+t=390 k=241 f=4 bestf=2 it=88647680 restarts=29
+END t=420.0 kbest=0 last_k=241 bestf(k)=2 it=95469568 restarts=31
+polish wrote no larger set
+== done qhF_lines 04:48:04

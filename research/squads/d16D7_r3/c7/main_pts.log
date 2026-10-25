@@ -1,0 +1,23 @@
+graph M=6504 E=577152 maxdeg=182 blocks=2040
+seed K=240 (maximal), KMIN=3 KMAX=10 NODE_LIMIT=50000 BB_MAXN=256 ILS_ITERS=400 PLOCAL=50 LOCAL_CF=3 PX=30 BIGK=20 PBIG=15
+t=20 it=18648 K=240 best=240 avgC=103.5 avgRem=63.0 local=9292 exact=601966 abort=9 ils=1427 nodes=1953614 impr=0
+t=40 it=33272 K=240 best=240 avgC=102.9 avgRem=62.8 local=16603 exact=1077714 abort=19 ils=2492 nodes=3947716 impr=0
+t=60 it=53222 K=240 best=240 avgC=103.3 avgRem=62.9 local=26537 exact=1721125 abort=25 ils=3994 nodes=5885545 impr=0
+t=80 it=67364 K=240 best=240 avgC=103.2 avgRem=62.8 local=33538 exact=2177132 abort=32 ils=5021 nodes=7890292 impr=0
+t=100 it=85901 K=240 best=240 avgC=103.3 avgRem=62.9 local=42885 exact=2773232 abort=38 ils=6428 nodes=9841350 impr=0
+t=120 it=105214 K=240 best=240 avgC=103.1 avgRem=62.8 local=52429 exact=3398486 abort=48 ils=7851 nodes=11807484 impr=0
+t=140 it=122345 K=240 best=240 avgC=103.0 avgRem=62.8 local=60970 exact=3953343 abort=56 ils=9091 nodes=13802207 impr=0
+t=160 it=137426 K=240 best=240 avgC=103.0 avgRem=62.8 local=68466 exact=4438262 abort=64 ils=10181 nodes=15788085 impr=0
+t=180 it=156000 K=240 best=240 avgC=103.0 avgRem=62.8 local=77728 exact=5037535 abort=69 ils=11549 nodes=17694531 impr=0
+t=200 it=173855 K=240 best=240 avgC=103.0 avgRem=62.8 local=86737 exact=5610724 abort=74 ils=12864 nodes=19713575 impr=0
+t=220 it=194730 K=240 best=240 avgC=103.0 avgRem=62.8 local=97177 exact=6284587 abort=79 ils=14400 nodes=21713961 impr=0
+t=241 it=212519 K=240 best=240 avgC=103.0 avgRem=62.8 local=106180 exact=6856557 abort=88 ils=15731 nodes=23824635 impr=0
+t=260 it=234298 K=240 best=240 avgC=103.1 avgRem=62.8 local=117038 exact=7565471 abort=92 ils=17369 nodes=25764737 impr=0
+t=280 it=254300 K=240 best=240 avgC=103.0 avgRem=62.8 local=127049 exact=8213658 abort=97 ils=18828 nodes=27731310 impr=0
+t=301 it=274001 K=240 best=240 avgC=103.0 avgRem=62.8 local=136962 exact=8847146 abort=100 ils=20294 nodes=29728090 impr=0
+t=320 it=293289 K=240 best=240 avgC=102.9 avgRem=62.8 local=146650 exact=9471797 abort=105 ils=21708 nodes=31682570 impr=0
+t=340 it=309082 K=240 best=240 avgC=102.9 avgRem=62.8 local=154574 exact=9983033 abort=114 ils=22881 nodes=33669985 impr=0
+t=360 it=327330 K=240 best=240 avgC=102.9 avgRem=62.8 local=163712 exact=10572167 abort=118 ils=24191 nodes=35657669 impr=0
+t=380 it=342565 K=240 best=240 avgC=102.9 avgRem=62.7 local=171378 exact=11062341 abort=125 ils=25325 nodes=37622141 impr=0
+t=400 it=360986 K=240 best=240 avgC=103.0 avgRem=62.8 local=180592 exact=11652207 abort=132 ils=26741 nodes=39556286 impr=0
+END t=420.4 it=378669 best=240 last=240 avgC=102.9 avgRem=62.7 local=189461 exact=12222682 abort=139 ils=28035 nodes=41640652 impr=0 plateau_moves=378669 changed=69567 forced=13167
