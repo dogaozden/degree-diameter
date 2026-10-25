@@ -58,7 +58,10 @@ Errors and corrections found while preparing this version (none affects a theore
    exactly $q-4$ deficient elements) gives it for every $q\ge4$ (Section 2.2). The Lean theorem already says so.
 11. **Credit to [ADFL21].** `geometry.tex` did not cite Araujo-Pardo–Dalfó–Fiol–López (line doubling in a GQ, the
    closest prior use of line copies); it does now, and so does Section 3 here.
-12. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
+12. **README label for $(16,4)$.** The README listed the 5440 graph under "orbit search (Haar)". It is not a Haar
+   graph (its degrees are 14 and 16, and Haar graphs are regular); it is the Singer-orbit construction of Section 5.
+   The label now reads "finite geometry (Singer orbits)".
+13. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
    the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
    numbers below refer to the revised, recompiled `geometry.pdf`.
 
