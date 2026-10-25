@@ -76,6 +76,9 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
   Log: `../../structured/runs/raise-d10D10/d10D10_psl_61_281_orb5f0_ORBW5_s2.log`.
   The same group with seed 1 and no ORBW ended at cost 1 after 38,217 evaluations (no solution, 2,499 s).
 
+- Also solved, not a record: PSL(2,179) × Z_11, k = 5, f = 0, μ = 31.5, 44,401 evaluations, 63,086,760 vertices
+  (`../../structured/runs/raise-d10D10/d10D10_psl_179_11_orb5f0_s1.log`; solver check only, not recorded).
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
@@ -87,3 +90,5 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 08:32: b (psl 101 × 61, k = 5, μ 29.7) solved → 62,842,200 (checked by haarcheck_psl above).
 - 08:33: h (psl 59 × 311, k = 5, μ 37.6, 7200 s) launched.
 - 08:38: g (psl 61 × 281, ORBW=5, seed 2) solved → 63,764,520 (checked by haarcheck_psl above).
+- 08:39: i (psl 59 × 311, ORBW=5, seed 2, 7200 s) and j (psl 71 × 181, ORBW=5, seed 1, 7200 s) launched.
+- 08:50: e (psl 179 × 11) solved → 63,086,760, below the record.
