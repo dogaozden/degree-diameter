@@ -598,8 +598,9 @@ $2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
 
 **Status.** Paper proof (above; `NOTE.md` §3, `geometry.tex` Theorem 5.6). Computer-checked: the record graphs
 1782, 3146, 5070 (three checkers, `NOTE.md` §7); the normalised form above rebuilt from these coordinates for
-$q=3,5,7,9$ (regular, diameter 4). Lean-checked for every finite field of odd order: $\mathrm{AS}(q)$ is a GQ of order
-$(q-1,q+1)$ (`ASq.isGQst`), the weighted 2-ovoid (`ASq.weighted_two_ovoid`), the bound and its regular form
+$q=3,5,7,9$ (regular, diameter 4). Lean-checked for every finite field of odd order: the model of §4.1 has the GQ
+counts of order $(q-1,q+1)$, two points on at most one line, and the existence half of the GQ axiom, which is all
+that Theorem B uses (`ASq.isGQst`), the weighted 2-ovoid (`ASq.weighted_two_ovoid`), the bound and its regular form
 (`ASq.bound`, `ASq.bound_regular`); and the three record graphs (`nb_11_4_v2`, `nb_13_4_v2`, `nb_15_4_v2`).
 
 ---
@@ -975,6 +976,10 @@ $G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3$, and $J_z^2+J_z+\delta=0$; good $(c_
 parallel and is written out there (Lemmas 7.1, 7.3, 7.4 and Theorem 7.5); we do not repeat
 it. For $q=2$ an exact whisker set of 12 lines was found by computer. Even $q$ improves no cell with $\Delta\le16$
 ($q+1$ is then a prime power, and $q+3$ is better served by the odd $q+1$).
+
+*Worked counts.* $q=5$, $m=2$: $2\cdot6\cdot651=7812$ elements of $H(5)$, $|\mathcal A_0|=1512$ (of which $|W|=600$),
+$|\mathcal A_1|=132$, $|\mathcal A_2|=1$, so $7812+1512+2\cdot132+4=9592$. $q=13$, $m=3$: $804468$ elements of
+$H(13)$, $|\mathcal A_0|=61544$ ($|W|=28392$), $|\mathcal A_1|=2212$, so $804468+2(61544+3\cdot2212+9)=940846$.
 
 **Cells.** $m=2$: $(7,6)$ $9592$ (2013: 8992), $(11,6)$ $148944$ (142464), $(13,6)$ $388972$ (374452), $(15,6)$
 $870440$ (842048). $m=3$, $q=13$: $(16,6)$ $940846$ (884062). These graphs are not regular (Section 7).
