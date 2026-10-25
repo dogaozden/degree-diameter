@@ -51,3 +51,17 @@ again as a control (prod psl 5 sl 8 × Z37, seed 2).
 
 Reading: the record-order group solves quickly, but the neighbouring orders at μ ≈ 23–24 stall at cost 1–10 within
 15 minutes. A 240 s rung is too short to decide a group. The ladder over the remaining 60+ candidates is still running.
+
+## Round 2: NEW RECORD (7,10): 2,247,960 vertices (previous 2,237,760)
+
+- File: `research/frontier/sols/d7D10_psl_131_1_orb3_s3.txt` (sha256 b4aca323f32309903d00aaabf4912ba47ea73c94ef7e78f051aabedaba9e9d0b).
+- Group: PSL(2,131), no Z factor, N = |PSL(2,131)| = 1,123,980. Structured orbit search `ORBIT="3 2 1"`, K = 8, seed 3:
+  solved after 95,193 evaluations (129 s), μ = 23.9, |Fix(α)| = 65.
+- Checks (all on the same file):
+  - haar_sym's own full diameter check: OK (run log `research/structured/runs/d7D10_psl_131_1_orb3_s3.log`).
+  - `research/frontier/build_haar2.py`: VALID, n = 2,247,960, 7-regular, no duplicate edges, ecc 10 from (e,A) and (e,B), edge-list sha256 `8a068585ebd6d2f60cbb36c4947b715823c3f80ae5b0b32d118b9b5d2b14b9bb` (`research/structured/runs/d7D10_psl_131_1_orb3_s3.rebuild.txt`).
+  - `research/structured/tools/haarcheck_psl.c` (built from source): VALID, ecc 10 from both sides.
+  - The all-pairs checker `research/theorems/coordinator_check/apsp.c` is not run: at 2.2M vertices all-pairs BFS is far too slow. The two-BFS Haar check above is the rule for Haar graphs.
+- Same group, seed 2, 30 min: unsolved (best 2) (`research/structured/runs/d7D10_psl_131_1_orb3_s2_unsolved_30min.log`). Seed 1 900 s: best 1. So success at this μ is seed-dependent.
+
+Also still running at the time of writing: psl 131 seed 2 (30 min), sl 25 × Z73, prod psl 7 psl 9 × Z19 (both 30 min; best so far 3–4).
