@@ -94,3 +94,17 @@ groups · c4 LNS and orbit-level refills from 720: none (720 is locally rigid: n
 Kept / used: 756 -> (13,7) 1,064,448, (14,7) 1,774,584, (15,7) 2,484,720; 500 -> (16,7) 4,024,340; 288 -> (9,7)
 118,224 (VALID); 72 -> (7,7) 23,580 (VALID). Lesson: the orbit method transfers unchanged between fields and gives
 1.5-3x the plain local search at every q; smaller groups (bigger orbit graphs) did better than the larger group.
+
+## 2026-10-25, cell-13-7 (Opus, cloud session_0136phW63ksffo3wvN1THJtH), round 5: orbit unions in GF(8) and in H(9)
+
+Goal: carry the orbit-union method to the two cells it had not reached: (10,7) (pairwise-opposite points of H(8),
+needs GF(8) arithmetic and characteristic-2 transvections) and (11,7) (pairwise non-collinear points of H(9), with
+collineations built from the explicit duality and Frobenius). Brief research/squads/d13D7_r5/BRIEF.md. 2 cards,
+launched 00:07 UTC (Opus's large graph checks needed the rest of the machine).
+
+c1 q = 8: **217** pairwise-opposite points (was 84 by local search; 43 orbits of size 5 + 2 fixed points of an element
+of order 5; 217 recurs in 6 groups) -> (10,7) 225,128, all-pairs VALID. c2 q = 9: **3,958** non-collinear points (was
+3,859; checked by Opus with tools/ncolcheck.py) -> (11,7) 406,496 (all-pairs check running at logging time).
+Lesson: the same method transferred to characteristic 2 and to a collinearity (not orthogonality) constraint with
+little change; gains there are smaller (+2.6x at q = 8, +2.6% for the non-collinear sets, where local search was
+already strong).
