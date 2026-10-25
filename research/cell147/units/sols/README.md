@@ -45,7 +45,7 @@ Base files: H(q) for q = 5, 7, 11, 13 from `research/cell147/gh_build.c` (`./gh_
 | cell | file | vertices | previous | base, j, units | flags per matching | checks |
 |---|---|---|---|---|---|---|
 | (7,7) | d7D7_n23532 | 23,532 | 23,484 (master) | H(5), j = 1, 48 | flags_q5_spread48.txt (spread ILS, C = 2) | uhcheck all sources, apsp_cyc VALID |
-| (9,7) | d9D7_n117824 | 117,824 | 117,650 (master) | H(7), j = 1, 88 | flags_q7_orbit88.txt (order-4 orbits, card r4c5) | uhcheck all sources, apsp_cyc VALID |
+| (9,7) | d9D7_n117844 | 117,844 | 117,650 (master) | H(7), j = 1, 98 | flags_q7_ils98.txt (local search on single points, uni11/orbitclique_q with the identity permutation, seed 1) | uhcheck all sources, apsp_cyc VALID |
 | (10,7) | d10D7_n224946 | 224,946 | 224,694 (table) | H(8), j = 1, 126 | flags_q8_spread126.txt (GF(8) section X4 = X0 + X3, card r4c7) | uhcheck all sources, apsp_cyc VALID |
 | (11,7) | d11D7_n398880 | 398,880 | 398,606 (master) | H(9), j = 1, 150 | flags_q9_orbit5_150.txt (order-5 isometry orbits of X4 = -8 X0 over GF(9), card r4c6) | uhcheck all sources, apsp_cyc VALID |
 | (12,7) | d12D7_n664900 | 664,900 | 664,300 (table) | H(9), j = 2, 300 | flags_q9_orbit5_150.txt | uhcheck all sources, apsp_cyc VALID |
@@ -53,6 +53,6 @@ Base files: H(q) for q = 5, 7, 11, 13 from `research/cell147/gh_build.c` (`./gh_
 | (15,7) | d15D7_n2481624 | 2,481,624 | 2,480,184 (table) | H(11), j = 3, 720 | flags_q11_orbit4_240.txt | uhcheck all sources |
 | (16,7) | d16D7_n4023516 | 4,023,516 | 4,022,340 (table) | H(13), j = 2, 588 | flags_q13_phase294.txt (order-7 phase classes, C = 11) | uhcheck: see d16D7_n4023516_uhcheck.txt |
 
-Superseded files kept for the record: d9D7_n117816 (84 spread flags), d10D7_n224798 (52 units, random scan),
+Superseded files kept for the record: d9D7_n117816 (84 spread flags), d9D7_n117824 (88 orbit flags), d10D7_n224798 (52 units, random scan),
 d11D7_n398856 and d12D7_n664852 (138 GF(9) spread flags), d16D7_n4023348 (252 secant flags). All of them were checked the
 same way when committed.
