@@ -459,6 +459,42 @@ static int fixholes(const el *SS, int stopat) {   /* number of alpha-fixed holes
     return holes;
 }
 
+/* ---------------- ZQ: quality of the Z_n coordinates alone ----------------
+ * The Z_n part of a word depends only on its signed letter counts.  Let A_z = number of non-backtracking walks from
+ * (e,A) of odd length <= D-1 (consecutive letters distinct; W = sum of their counts) whose end has Z_n part z.  If
+ * the quotient parts are random, the expected number of holes is |Q| sum_z exp(-lambda A_z / mean(A)); zq()
+ * returns that divided by mu = N exp(-lambda) (1 = perfectly uniform; larger is worse). */
+static double *ZA, *ZB, *ZT;
+static double zq(const el *SS, double lam) {
+    if (NC == 1) return 1;
+    if (!ZA) { ZA = malloc(sizeof(double) * NC * d); ZB = malloc(sizeof(double) * NC * d); ZT = malloc(sizeof(double) * NC); }
+    for (i64 z = 0; z < NC; z++) ZT[z] = 0;
+    for (i64 x = 0; x < NC * d; x++) ZA[x] = 0;
+    for (int i = 0; i < d; i++) ZA[(i64)i * NC + SS[i].z] += 1;           /* length 1: s_i */
+    for (int i = 0; i < d; i++) ZT[SS[i].z] += 1;
+    double rowsum[1];
+    (void)rowsum;
+    for (int len = 2; len <= D - 1; len++) {
+        int sgn = (len & 1) ? 1 : -1;
+        /* ZB[j][z'] = sum_{i != j} ZA[i][z' - sgn z_j] = (sum_i ZA[i] - ZA[j])[z' - sgn z_j] */
+        for (i64 z = 0; z < NC; z++) { double t = 0; for (int i = 0; i < d; i++) t += ZA[(i64)i * NC + z]; ZB[z] = t; }  /* tmp: totals */
+        double *tot = ZT + 0; (void)tot;
+        static double *TOT; if (!TOT) TOT = malloc(sizeof(double) * NC);
+        for (i64 z = 0; z < NC; z++) TOT[z] = ZB[z];
+        for (int j = 0; j < d; j++) {
+            i64 sh = sgn > 0 ? SS[j].z : (NC - SS[j].z) % NC;
+            double *dst = ZB + (i64)j * NC, *src = ZA + (i64)j * NC;
+            for (i64 z = 0; z < NC; z++) { i64 t = z + sh; if (t >= NC) t -= NC; dst[t] = TOT[z] - src[z]; }
+        }
+        double *tmp = ZA; ZA = ZB; ZB = tmp;
+        if (len & 1) for (int j = 0; j < d; j++) for (i64 z = 0; z < NC; z++) ZT[z] += ZA[(i64)j * NC + z];
+    }
+    double tt = 0; for (i64 z = 0; z < NC; z++) tt += ZT[z];
+    double mean = tt / NC, h = 0;
+    for (i64 z = 0; z < NC; z++) h += exp(-lam * (ZT[z] / mean - 1));
+    return h / NC;
+}
+
 /* ---------------- I/O ---------------- */
 static char SPEC[64];
 static void write_sol(const char *out, el *SS) {
@@ -542,6 +578,7 @@ int main(int argc, char **argv) {
         if (!read_sol(getenv("EVAL"), S)) { fprintf(stderr, "cannot read %s\n", getenv("EVAL")); return 2; }
         if (!eeq(S[0], E_ID)) { el a0 = einv(S[0]); for (int i = 0; i < d; i++) S[i] = emul(S[i], a0); fprintf(stderr, "normalised to S s_0^-1\n"); }
         for (int i = 0; i < d; i++) for (int j = 0; j < i; j++) if (eeq(S[i], S[j])) { fprintf(stderr, "repeated generator\n"); return 2; }
+        if (getenv("ZQONLY")) { printf("ZQ %s zq=%.4f mu=%.2f\n", getenv("EVAL"), zq(S, W / NG), mu); return 0; }
         for (int j = 0; j < d; j++) make_tables(j);
         int reps = BENCH ? 3 : 1; i64 c = 0;
         for (int r = 0; r < reps; r++) { double t0 = now(); int nu; c = cost(NOBOUND, ULIST[0], UCAP, &nu);
@@ -587,9 +624,10 @@ int main(int argc, char **argv) {
         for (int t = 0; t < m && !stop_flag; t++) {
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){0, 0, 0, 0, -1};
             for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+            if (getenv("ZQONLY")) { double q = zq(S, W / NG); v[t] = (i64)(1000 * q); sm += q; continue; }
             for (int j = OF; j < d; j++) make_tables(j);
             int nu; v[t] = cost(NOBOUND, ULIST[0], UCAP, &nu); sm += v[t];
-            fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs)", t, (long long)v[t], now() - t0);
+            fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs) zq %.3f", t, (long long)v[t], now() - t0, zq(S, W / NG));
             if (FIXF) { int fu = 0; for (int i = 0; i < nu; i++) { el x = eofidx(ULIST[0][i]); if (eeq(alpha(x), x)) fu++; }
                 fprintf(stderr, " fixed holes: full %d screen %d%s", fu, fixholes(S, 1 << 30), nu >= UCAP ? " (list capped)" : ""); }
             fprintf(stderr, "\n");

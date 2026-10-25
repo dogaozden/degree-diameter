@@ -1,0 +1,5 @@
+group psl 151 x Z_1331, N=2291183400 (2N=4582366800), rows 11400 x 200981 bits (doubled row 6304 words), memory 1.29 GB, threads 1
+alpha: conj by mat(0,150,1,27), z -> 124 z on Z_1331 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=17.977 mu=35.70
+setup 0.0s
+FIXF: 74 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
+start cost=36 (7.3s per eval)
