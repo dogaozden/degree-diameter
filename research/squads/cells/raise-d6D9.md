@@ -124,4 +124,10 @@ model (SIZE_LAW) predicts the two to be comparable, so the group, not μ, sets t
   The minimum cost over the whole orbit-pair space is **14**, reached by about 4,000 pairs; no pair has cost
   0–13. So for this group and α there is NO orbit-symmetric S (k = 3, m = 2, f = 0) at all. Round 1's annealing
   plateau at 14 was the true optimum, not a search failure. sl 11 × 49 is closed.
-- sl 13 × 31 (N 67,704, μ 49.9): queued after sl 11 × 49, 4 parts.
+- sl 13 × 31 (N 67,704, μ 49.9, α = conj(mat(3,8,0,9)) × (z ↦ 5 z)): 22,564 orbits, 2.55·10⁸ pairs, 4 parts
+  (about 40 min each). **Result: no solution.** All pairs checked (63,638,942 per part); the minimum cost is **6**
+  (about 2,900 pairs), nothing at 0–5. Annealing's plateau at 6 was again the true optimum for this group and α.
+  sl 13 × 31 is closed. With a +6.4 % step at stake this was the most valuable cell in this round, and it is closed.
+- psl 19 × 19 (N 64,980, μ 35.4, α = conj(mat(1,3,6,0)) × (z ↦ 7 z)): exhaustive pass started on the same four parts
+  (`EXHAUST="p 4 15 …"`, 2.34·10⁸ pairs). Annealing floored at 3 on every seed, and the random tail showed cost 3–5 but
+  nothing at 0–2. This group has 171 involutions, so the odd-D involution misses are the likely floor. Result: pending.
