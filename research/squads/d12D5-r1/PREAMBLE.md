@@ -1,8 +1,11 @@
 # Squad round 1, cell (12,5): preamble shared by all cards
 
 Goal: a bipartite graph of maximum degree 12 and diameter 5 on as many vertices as possible.
-- Table value 8,200. **Ours so far: 9,720 (m = 60)** (Opus: 8,748 at 19:31, 9,720 at 19:41 UTC). Beat 9,720 (m ≥ 61); then 10,692 (m = 66).
-- Someone else's graph has 11,664 (double cover of Mizuno's (12,4) graph); m ≥ 73 below would beat it.
+- Table value 8,200. **Current record 9,840** (our generalized-quadrangle lift, another session). Route-chart lifts so far:
+  8,748 (m = 54) and 9,720 (m = 60). **Beat 9,840: any VALID lift with m ≥ 61** (m = 62 → 10,044, 63 → 10,206,
+  64 → 10,368, 66 → 10,692, 72 → 11,664).
+- With a *fake* chart that makes every pattern nonsingular, K33m reaches cost 0 at m = 66 (Z_22) instantly, cost 2 at
+  m = 72 (Z_24), 6 at m = 75, 12 at m = 81. So the controller alone allows m ≈ 66–72; real charts are the limit.
 
 ## The construction (route-chart lift; research/d12D5/README.md, research/theorems/BEAT_16_5_SQUAD.md §2)
 
@@ -29,9 +32,15 @@ Goal: a bipartite graph of maximum degree 12 and diameter 5 on as many vertices 
 | `mlift_joint3` | `INIT_CHART=CHART mlift_joint3 BASE TABLE SECS SEED [T0] [PV] [OUTPREFIX]` | anneals voltages AND chart; writes OUTPREFIX.edges + OUTPREFIX.chart at cost 0 (or with WRITEBEST=1) |
 | `apsp` | `apsp LIFT.edges 12 5` | **the scorer**: independent all-pairs check; must print `RESULT VALID d=12 D=5 n=...` |
 | `sweep_rel.sh` | see the file | all 24 relabellings with mlift_chart (runs 4 at a time: do NOT use it in a squad card) |
+| `mlift_ejoint` | `[INIT_CHART=CHART] mlift_ejoint BASE TABLE SECS SEED [T0] [PV] [OUTPREFIX]` | NEW: like mlift_joint3 but every BASE edge has its own letter (A_e, b_e) (4k letters instead of 4); writes OUTPREFIX.edges ("a b e") + OUTPREFIX.echart |
+| `elift.py` | `python3 elift.py OUTPREFIX.edges OUTPREFIX.echart lift.edges` | lift for mlift_ejoint output (NOT gf3.py) |
+| `bases.py` | `python3 bases.py K OUTDIR` | all connected 4-regular bipartite base multigraphs on K + K vertices |
+| `charts/fake_univ.txt` | pattern table with every pattern nonsingular | use with mlift_chart to test a controller alone (NOT a real chart: never build a lift from it) |
 
 Existing data: charts in `research/d12D5/charts/` (`c3_s1.txt` = 18 singular, pencil-complete; relabellings
 `c3s1_qXX.txt` / `c3s1_chart_qXX.txt`), tables in `research/d12D5/tables/` (z14..z27).
+Groups: `python3 groups.py SPEC OUT` with SPEC `cyc N`, `dih N` (order 2N), `meta M K R` (Z_M ⋊ Z_K, needs R^K ≡ 1 mod M),
+`dicyc N`, `prod SPEC1 / SPEC2`. Write tables into your card folder.
 Known results: K33m (`base_k33m.txt`, K_{3,3} + doubled perfect matching) over Z_18 (m = 54): cost 0 in seconds,
 lift 8,748 VALID. Over Z_20 (m = 60) joint annealing (mlift_joint3) reached cost 0 on 1 of 5 seeds of 150 s (lift 9,720 VALID); over Z_22 (m = 66) the fixed chart gives cost 4.
 
@@ -39,6 +48,7 @@ lift 8,748 VALID. Over Z_20 (m = 60) joint annealing (mlift_joint3) reached cost
 - from `mlift_chart ... PATTERNS=PREFIX_qXX.txt ... OUT.edges`: `python3 gf3.py lift OUT.edges PREFIX_chart_qXX.txt lift.edges`
   (the chart MUST be the relabelled chart matching the pattern file);
 - from `mlift_joint3 ... OUTPREFIX`: `python3 gf3.py lift OUTPREFIX.edges OUTPREFIX.chart lift.edges`;
+- from `mlift_ejoint ... OUTPREFIX`: `python3 elift.py OUTPREFIX.edges OUTPREFIX.echart lift.edges`;
 - then `apsp lift.edges 12 5`. Only `RESULT VALID` counts. Keep the controller, chart and apsp output in your folder
   (delete lift.edges afterwards if it is large; it can be rebuilt).
 
@@ -49,7 +59,7 @@ lift 8,748 VALID. Over Z_20 (m = 60) joint annealing (mlift_joint3) reached cost
   several seeds) over a few long ones: plateaus form fast and new seeds beat long runs.
 - Work only in your card folder `research/squads/d12D5-r1/cK/` (write scripts and outputs there). No git commands.
   No edits outside your folder. No network unless your card says so.
-- Time box: about 35 minutes wall clock, then report.
+- Time box: about 40 minutes wall clock, then report. Keep at most ONE annealer running at a time.
 
 ## Report
 
