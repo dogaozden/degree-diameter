@@ -1,0 +1,13 @@
+k10_orbit_100 k 10 hub pairs 68 vertices 4840 built in 0.0s
+BFS over 840 sources in 3.2s | total failing (source,target) pairs: 258
+i    p     l     | cap_i cap_ii cap_iii Oo_cov | unc_p unc_l | BFS-coset1 pts-fail  model-holes  match
+0    266   64    |   371    39    49   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+1    41    289   |   371    40    28   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+2    225   350   |   373    40    35   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+3    65    202   |   365    32    28   336 |     1     0 | pts: bfs   1 model   1  diff   0 | lines: bfs   0 model   0 diff   0
+4    263   330   |   374    41    42   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+5    283   130   |   371    40    42   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+6    398   292   |   371    39    42   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+7    253   247   |   371    42    21   336 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+8    19    139   |   376    50    49   335 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0
+9    100   366   |   385    44    42   334 |     0     0 | pts: bfs   0 model   0  diff   0 | lines: bfs   0 model   0 diff   0

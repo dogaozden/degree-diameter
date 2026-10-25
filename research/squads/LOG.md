@@ -47,3 +47,20 @@ of l_j). dmhub now builds the hub graph first (exact distances), fills spare deg
 jointly against coverage-with-hub-routes. With c1's 9th flag this gave coverage 0 in ~2 minutes, then dmfast_hub with
 the same hub graph and a hot polish: **4,836 VALID**. Verdict: the cards showed that symmetric and exact routes stop
 at 8; the gain came from co-designing the hub graph, which the cards' negative results pointed to.
+
+## 2026-10-25 ~15:50–16:40 UTC, cell-10-5 resume (session_01NTgHArireuhKVofyqgzKgX), goal (10,5) > 4,836, round 3
+
+Four cards (research/squads/d10D5/r3/, scoreboard.jsonl), all aimed at 10 freed flags (4,840), from the 1-hole
+10-flag states and the valid 9-flag state:
+- c1 tabu finisher (all targeted swaps per step, tabu tenure 20-50, restarts): stays at 1; every one of the 424
+  swaps covering the hole (freed point 65, target 69) costs >= 5.
+- c2 de-crowding (drop the crowded flag 65:202, add uncrowded flags): best 10-flag coverage 4. No graph.
+- c3 uncrowded sets from scratch (pairwise opposite points, disjoint lines): coverage 0 only up to k = 6; exact
+  matchings are worse than for the crowded orbit set. Negative.
+- c4 coverage model + counting: model matches full BFS exactly; counting does not bind (supply ~500 vs 343); the
+  binding issue is patchability/crowding (kappa(65) = 3). Predicts 10 only via a joint re-anneal.
+Opus during the round: flag moves inside the joint annealing (never accepted: a fresh flag costs ~190), beam repair
+with visited-state hashing, reheats, de-crowded and kappa <= 2 flag pairs (worse: 16-27), 10th flags ranked by exact
+matching deficiency over all 3,074 candidates (best deficiency 8 vs 20-33 for the earlier ones; joint coverage still
+5-7). Verdict: the round added understanding but no record; 4,836 stands. 10 flags needs a better finisher
+(compound 2-3 swap ejection chains) or a different symmetric skeleton.
