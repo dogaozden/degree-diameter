@@ -157,3 +157,10 @@ groups as not run.
 - Started 17:02 with ORBW=3 (an uncovered α-fixed element weighs 3; the stalls at cost 2–8 look like fixed-point misses):
   sl 43 × Z109 (seed 3, 8000 s) and sl 59 × Z43 (μ 30.2, seed 1, 8000 s).
 - Budget: session 6 h from 14:20 UTC; stop new launches by ~19:30 and finish verification before the end.
+
+### Wave 2c results (18:28 UTC)
+
+- prod sl 4 × sl 13 × Z67 (μ 28.0): full 7200 s, not solved. Best 6 at 267k evals.
+- prod sl 9 × sl 23 × Z1 (μ 26.5): full 7200 s, not solved. Best 14 at 452k evals (|Fix| = 431: a big fixed-point set, as expected without a cyclic factor).
+- Still running, ORBW=3: sl 43 × Z109 (seed 3) and sl 59 × Z43 (seed 1), both at best 6 at 5200 s, ending about 19:15 UTC.
+- No new launches: the remaining time is too short for a 2-hour run at these μ.
