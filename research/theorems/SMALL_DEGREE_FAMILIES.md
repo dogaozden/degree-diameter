@@ -38,8 +38,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - The record groups do: o = 11, 35, 32 at (3,9), (4,9), (4,10).
 5. **Complete negatives, new this session** (§2.5):
    - **(3,7):** no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving group of
-     automorphisms acting freely with at most 6 vertex orbits. All Haar graphs, 2+2 lifts and 3+3 lifts were
-     searched up to the Moore bound.
+     automorphisms acting freely with at most 8 vertex orbits. All Haar graphs and all lifts of the 2+2, 3+3 and
+     4+4 bases were searched exhaustively up to the Moore bound.
    - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The ten groups that came within
      cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
    - **(3,10):** no group of order 401–520 (except 512) gives a cubic Haar graph of diameter 10. The closest is
@@ -297,16 +297,24 @@ What the records show:
 
 Coverage of every run below was re-checked against NrSmallGroups (`completeness.py` → `runs/completeness_resume.txt`).
 
-- **(3,7): every base with at most 6 vertices.** Haar graphs (2 vertices), 2+2 lifts (4) and lifts of all three
-  3+3 bases (6) were searched over every group giving 168 < n ≤ 254 vertices (254 is the Moore bound):
+- **(3,7): every base with at most 8 vertices.** Haar graphs (2 vertices), 2+2 lifts (4), lifts of all three 3+3
+  bases (6) and lifts of all six 4+4 bases (8) were searched exhaustively over every group giving 168 < n ≤ 254
+  vertices (254 is the Moore bound):
   - Haar, orders 85–127 (`runs/allgroups_d3D7.tsv`): closest (96,65) and (96,66), 4 vertices short;
   - 2+2, orders 43–63 (`runs/lift_b22_D7.tsv`): best cost 16. At order 42 (`runs/lift_b22_D7_order42.tsv`),
     Conder's group C2 × (C7:C3) is the only one of the 6 groups with solutions (24 in the plan);
   - 3+3 bases b33_0 and b33_1, orders 29–42 (`runs/lift_b33_{0,1}_D7.tsv`), and K3,3, orders 29–42
-    (`runs/lift_b33_2_D7_idfix.tsv`, 100 groups, best cost 6).
+    (`runs/lift_b33_2_D7_idfix.tsv`, 100 groups, best cost 6);
+  - all six 4+4 bases b44_0 … b44_5, orders 22–31 (`runs/lift_b44_{0..5}_D7.tsv`): all 37 groups for each base, no
+    rigorous filter used, best costs 8, 24, 16, 8, 8, 8.
+    - The cube b44_5 is the one base here whose first free edge is not parallel to a tree edge; it was run with the
+      fixed plan that includes the identity.
 
   By §2.2 this proves: **no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving
-  group of automorphisms acting freely with at most 6 vertex orbits.** Conder's graph has 4 such orbits.
+  group of automorphisms acting freely with at most 8 vertex orbits.**
+  - A free colour-preserving action has equally many orbits on the two colour classes, so the quotient is an m+m
+    base with m ≤ 4. The lists of such bases are complete (`basegen.py`: 1, 1, 3 and 6 classes for m = 1–4).
+  - Conder's graph has 4 such orbits. Squad referee r3-c4 checked the logic, the base lists and the order ranges.
 - **(3,9), Haar:** every group of every order 254–319 (`runs/allgroups_d3D9.tsv`), all 56,092 groups of order 256
   included: no diameter-9 graph. **No cubic Haar graph with 508–638 vertices has diameter 9.** At order 320, 34 of
   1,640 groups were done.
@@ -526,6 +534,7 @@ Why a screen is meaningful:
 | (3,9) | squad r2: 3+3 and 4+4 bases, orders 64–100 | ~180 groups | best cost 32 |
 | (3,7) | squad r2: cube, orders 22–26 (exhaustive, with the identity pass); 5+5 bases, 17–25 (226 of 510 pairs) | – | best cost 8 (cube, exhaustive), 16 (b55_1 over C17) |
 | (3,7) | squad r2 wildcard: 2-switch annealing of general cubic bipartite graphs, 170 vertices | – | best 92 (46 pairs at distance 8) |
+| (3,7) | lifts of all six 4+4 bases, exhaustive (`allgroups.py --base`, fixed plan) | orders 22–31, all 37 groups per base | none; best cost 8 (proves the 8-orbit theorem of §2.5) |
 
 The voltage-lifts session had also screened 1,538 Haar groups at (4,9) for N = 2,486–2,580 (best cost 10) and rich
 lifts at (4,8) for 2,186–2,208 vertices (none).
