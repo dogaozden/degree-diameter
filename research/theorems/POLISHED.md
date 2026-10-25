@@ -1144,7 +1144,7 @@ graph stays bipartite, and they do not increase distances. The number of points 
 $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$. $\square$
 
 **Neighbourhoods.** Every neighbourhood is that of the table in §6.2, minus the deleted lines listed above, plus the
-$(m-1)$ (for each deficient element, exactly its deficit) completing anti-flags. The completing anti-flags are not
+completing anti-flags: exactly $m-1$ of them at each element of degree $q+1$, none elsewhere. The completing anti-flags are not
 given by a formula: Lemma 7.2 proves they exist, and `research/p4/regular/regularize.py` finds them by a seeded swap
 procedure (it uses its own deletion choice, not necessarily $R$ above). Neither the maximum degree nor the diameter
 depends on that choice.
