@@ -545,6 +545,7 @@ Why a screen is meaningful:
 | cell | search | coverage | result |
 |---|---|---|---|
 | (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`) | orders 1093–1200 except 1152: 3,924 groups, of which 2,813 annealed, 861 fail the rank test and 250 the abelianization bound | no solution; the 10 best are exhaustively negative (§2.5) |
+| (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`, tags `_1201`, `_1236`, `_1248`, `_1251`) | orders 1201–1300 except 1280 and 1296: 1201–1235 (1,945 groups, 1,114 annealed), 1236–1250 without 1248 (169), 1248 (RESULT_1248), 1251–1300 (474, 320 annealed) | no solution; best cost 2 at C31 : (C5 × Q8) = SmallGroup(1240,7), exhaustively negative (§2.5); otherwise ≥ 8 |
 | (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
 | (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
 | (4,9) | Haar, every SmallGroup, 5 s anneal, then 2 × 30 s for cost ≤ 10 (`fscreen.py`, `fscreen2.py`) | orders 2486–2700 in the library: 1,029 groups (589 annealed, 161 rank > 3, 279 abelianization bound). Not covered: order 2624 (1,672 groups, C41 by 2-groups) and the 61 orders the library lacks | no solution; best cost 2 after stage 2 at C101 : C25 = SmallGroup(2525,3) (5,050 vertices), exhaustively negative: the normal form (§2.2) has 1,513,200 sets, no solution, best 2 short (`z101.py` → `runs/d4D9_z101x25_exhaustive.txt`) |
