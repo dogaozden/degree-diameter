@@ -1,0 +1,10 @@
+# (10,7) 225,128 = 3*|H(8)| + 2*217 (job cell-13-7, 2026-10-25 ~00:35 UTC).  New cell (table 224,694).
+# H(8) from research/d13D7/hexgen2.c (GF(8) = bit vectors mod x^3+x+1).  R = 217 pairwise opposite points of H(8)
+# (q8/R217_q8_idx.txt; squad round 5 card c1: 43 orbits of size 5 and 2 fixed points of an element of order 5 of O(7,8),
+# a power of a product of orthogonal transvections; generator research/squads/d13D7_r5/c1/best_gen.txt); S = the first
+# 217 lines of the 513-line spread of H(8) in x3 = x0 + x4 (q8/S_q8_spread.txt); hub graph = circulant of degree 7.
+#   hexgen2 8; RFILE=q8/R217_q8_idx.txt SFILE=q8/S_q8_spread.txt tri hex/hex_q8.bin -1 1 d10D7_R217.edges
+# All-pairs (apsp_wide.c, same checks as apsp.c):
+n=225128 edges=1125640 degree min=10 max=10 bipartite=yes diameter=7
+RESULT VALID d=10 D=7 n=225128   (with D = 6: RESULT INVALID)
+# sol: research/frontier/sols/d10D7_hex8_R217_n225128.sol (d7hex format; round trip identical). Supersedes 224,862.
