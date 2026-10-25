@@ -45,3 +45,12 @@ Runner: scratchpad run.sh (haar_sym with THREADS=1, nice, timeout; copies logs t
   File: research/frontier/sols/d12D9_sl_97_19_orb3f0_s1.txt. Log: research/structured/runs/d12D9_sl_97_19_orb3f0_s1.log.
   Checks: haarcheck_sl (frontier/haarcheck_sl.c) VALID and haarcheck2 (frontier/haarcheck2.c) VALID, both d=12 D=9, all 17,338,944 per side reached, ecc 9.
 - Still running at this point: psl 47 × 331 (cost 3), sl 43 × 217 (cost 14), psl 89 × 49 (cost 5).
+
+Round-2 remaining runs finished unsolved (below the bar after the record, so not useful): psl 47 × 331 best 3 (2210 s),
+sl 43 × 217 best 14, psl 89 × 49 best 5.
+
+### Round 3 (from 08:19 UTC): bar is N > 17,338,944 (34,677,888)
+Running: psl 59 × Z169 (N 17,349,540, μ 21.7), psl 71 × Z97 (N 17,355,240, μ 21.8), pgl 37 × Z343 (N 17,361,288, μ 21.9),
+psl 83 × Z61 (N 17,436,972, μ 23.4). Each 40 min, seed 1, k=3 m=4 f=0.
+Note for resumers: the in-container clock and the tool "sleep" timings are unreliable; use foreground until-loops with
+an explicit timeout to wait for runs.
