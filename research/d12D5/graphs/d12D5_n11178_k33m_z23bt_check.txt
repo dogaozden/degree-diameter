@@ -1,0 +1,18 @@
+Check of the (12,5) graph on 11178 vertices (job cell-12-5, 2026-10-25T15:01Z). K_{3,3} + doubled matching over Z_23, backtrack-complete per-edge chart diag/bt3_k33m_0 held fixed, voltage annealing (mlift_ejoint2 DIAGBT=1 PV=1, seed 233)
+Builder: research/d12D5/graphs/build_d12D5_n11178.py (self-contained). Edge list: graphs/d12D5_n11178_k33m_z23bt.edges.gz
+Controller (a b base-edge): graphs/d12D5_n11178_k33m_z23bt_controller.txt; per-edge chart: graphs/d12D5_n11178_k33m_z23bt_echart.txt
+Uncompressed edge list sha256 b65b23c1517469d8f1284a4f7e2db0f1996f538d680d76485847e0da00aa00d5 (identical, after sorting, to elift.py lift of the search output).
+
+$ apsp d12D5_n11178_k33m_z23bt.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=11178 edges=67068 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=11178
+
+$ bfs_all d12D5_n11178_k33m_z23bt.edges   (plain BFS from every vertex)
+n=11178 edges=67068 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 11178 ordered pairs
+  dist 1: 134136 ordered pairs
+  dist 2: 1296648 ordered pairs
+  dist 3: 12172842 ordered pairs
+  dist 4: 61166016 ordered pairs
+  dist 5: 50166864 ordered pairs
+sum of ordered pairs = 124947684 ; n^2 = 124947684

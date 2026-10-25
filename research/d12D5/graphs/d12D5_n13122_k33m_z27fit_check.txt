@@ -1,0 +1,18 @@
+Check of the (12,5) graph on 13122 vertices (job cell-12-5, 2026-10-25T15:42Z). K_{3,3} + doubled matching over Z_27 (controller = a 162-vertex (4,5) bipartite graph, perfect under the fake chart), backtrack-complete per-edge chart fitted to it (diag/fit81.py, seed 91)
+Builder: research/d12D5/graphs/build_d12D5_n13122.py (self-contained). Edge list: graphs/d12D5_n13122_k33m_z27fit.edges.gz
+Controller (a b base-edge): graphs/d12D5_n13122_k33m_z27fit_controller.txt; per-edge chart: graphs/d12D5_n13122_k33m_z27fit_echart.txt
+Uncompressed edge list sha256 d669d8cd7413f7104fbd2be5a31418a7a21ca6cbf427fa2eec977614db083340 (identical, after sorting, to elift.py lift of the search output).
+
+$ apsp d12D5_n13122_k33m_z27fit.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=13122 edges=78732 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=13122
+
+$ bfs_all d12D5_n13122_k33m_z27fit.edges   (plain BFS from every vertex)
+n=13122 edges=78732 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 13122 ordered pairs
+  dist 1: 157464 ordered pairs
+  dist 2: 1522152 ordered pairs
+  dist 3: 14407956 ordered pairs
+  dist 4: 84558168 ordered pairs
+  dist 5: 71528022 ordered pairs
+sum of ordered pairs = 172186884 ; n^2 = 172186884

@@ -1,0 +1,17 @@
+Check of the (12,5) graph on 8,748 vertices (job cell-12-5, 2026-10-24T19:32Z).
+Builder: research/d12D5/graphs/build_d12D5_n8748.py (self-contained). Edge list: graphs/d12D5_n8748_k33m_z18.edges.gz
+Uncompressed edge list sha256 6786d5776b06a40bda04f7450b2d8cc31dc4526c46e9b38aaf53c099e1a39718 (identical, after sorting, to the search pipeline's output: mlift_chart + gf3.py lift).
+
+$ apsp d12D5_n8748_k33m_z18.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=8748 edges=52488 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=8748
+
+$ bfs_all d12D5_n8748_k33m_z18.edges   (plain BFS from every vertex)
+n=8748 edges=52488 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 8748 ordered pairs
+  dist 1: 104976 ordered pairs
+  dist 2: 1006020 ordered pairs
+  dist 3: 9062928 ordered pairs
+  dist 4: 37248984 ordered pairs
+  dist 5: 29095848 ordered pairs
+sum of ordered pairs = 76527504 = 8748^2

@@ -1,0 +1,25 @@
+  flag side=A block=0 fibre=0 z_count=81 uncovered_points=810
+  flag side=A block=1 fibre=23 z_count=81 uncovered_points=648
+  flag side=A block=1 fibre=51 z_count=81 uncovered_points=6561
+  flag side=A block=2 fibre=41 z_count=81 uncovered_points=6561
+  flag side=A block=2 fibre=46 z_count=81 uncovered_points=972
+  flag side=B block=0 fibre=0 z_count=81 uncovered_points=648
+  flag side=B block=0 fibre=54 z_count=81 uncovered_points=6561
+  flag side=B block=1 fibre=23 z_count=81 uncovered_points=162
+  flag side=B block=2 fibre=15 z_count=81 uncovered_points=6561
+  flag side=B block=2 fibre=46 z_count=81 uncovered_points=972
+  flag side=B block=2 fibre=53 z_count=81 uncovered_points=6561
+  flag side=B block=2 fibre=62 z_count=81 uncovered_points=6561
+lift: m=69 k=3 N=23 lift_vertices=11178 edges=67068 simple 12-regular
+mode=block-reps sources=486
+uncovered_ordered_same_side_pairs(dist>4 or unreached) = 1002294  (unreached=0)
+pair_cost (side,block,fibre) = 12  [sum of z-counts = 972]  diameter=6
+VERDICT: NOT covered
+distance histogram (ordered pairs):
+  dist 0: 11178
+  dist 1: 134136
+  dist 2: 1296648
+  dist 3: 12038706
+  dist 4: 60163722
+  dist 5: 50301000
+  dist 6: 1002294

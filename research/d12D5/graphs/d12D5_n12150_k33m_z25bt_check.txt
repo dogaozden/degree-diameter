@@ -1,0 +1,18 @@
+Check of the (12,5) graph on 12150 vertices (job cell-12-5, 2026-10-25T15:09Z). K_{3,3} + doubled matching over Z_25, backtrack-complete per-edge chart (variants of diag/bt3_k33m_0 with the same leg triangles), voltage annealing with diagonal-preserving chart moves (mlift_ejoint2 DIAGBT=1 VARLIST, seed 75)
+Builder: research/d12D5/graphs/build_d12D5_n12150.py (self-contained). Edge list: graphs/d12D5_n12150_k33m_z25bt.edges.gz
+Controller (a b base-edge): graphs/d12D5_n12150_k33m_z25bt_controller.txt; per-edge chart: graphs/d12D5_n12150_k33m_z25bt_echart.txt
+Uncompressed edge list sha256 71095ab830203c14a61f73fc128ecc68f63a3407544f34bf429b3ad712af7807 (identical, after sorting, to elift.py lift of the search output).
+
+$ apsp d12D5_n12150_k33m_z25bt.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=12150 edges=72900 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=12150
+
+$ bfs_all d12D5_n12150_k33m_z25bt.edges   (plain BFS from every vertex)
+n=12150 edges=72900 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 12150 ordered pairs
+  dist 1: 145800 ordered pairs
+  dist 2: 1409400 ordered pairs
+  dist 3: 13450050 ordered pairs
+  dist 4: 72389700 ordered pairs
+  dist 5: 60215400 ordered pairs
+sum of ordered pairs = 147622500 ; n^2 = 147622500

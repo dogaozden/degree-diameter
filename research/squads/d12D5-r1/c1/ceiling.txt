@@ -1,0 +1,17 @@
+base	group	group_spec	m	seed	cpu_s	best_cost	iters	wall
+k33m	g24_S4	S4 perm	72	1	40	13	13170009	91s
+k33m	g24_cyc	cyc 24	72	1	25	2	8429003	64s
+k33m	g24_z2xz12	prod cyc 2 / cyc 12	72	1	25	7	8252001	68s
+k33m	g24_SL23	SL(2,3) perm	72	1	25	6	7527959	63s
+k33m	g24_dih12	dih 12	72	1	25	20	8183457	64s
+k33m	g24_z2z2z6	prod cyc 2 / prod cyc 2 / cyc 6	72	1	25	12	8361594	57s
+k3_000	g24_cyc	cyc 24	72	1	25	6	8976088	56s
+k3_001	g24_cyc	cyc 24	72	1	25	28	8673356	55s
+k3_002	g24_cyc	cyc 24	72	1	25	8	8880770	57s
+k3_003	g24_cyc	cyc 24	72	1	25	16	5703821	54s
+k3_004	g24_cyc	cyc 24	72	1	25	10	8494142	57s
+k33m	g22_cyc	cyc 22	66	1	25	0	2769	0s
+k33m	g24_cyc	cyc 24	72	2	40	2	13201544	90s
+k33m	g24_cyc	cyc 24	72	3	40	2	13188918	96s
+k33m	g25_cyc	cyc 25	75	1	40	6	12589651	99s
+k33m	g26_cyc	cyc 26	78	1	40	10	12631104	93s

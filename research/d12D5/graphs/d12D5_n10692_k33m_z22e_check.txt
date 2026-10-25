@@ -1,0 +1,18 @@
+Check of the (12,5) graph on 10692 vertices (job cell-12-5, 2026-10-25T14:11Z). K_{3,3} + doubled matching over Z_22, per-edge chart, joint annealing (mlift_ejoint, seed 1, 300 s)
+Builder: research/d12D5/graphs/build_d12D5_n10692.py (self-contained). Edge list: graphs/d12D5_n10692_k33m_z22e.edges.gz
+Controller (a b base-edge): graphs/d12D5_n10692_k33m_z22e_controller.txt; per-edge chart: graphs/d12D5_n10692_k33m_z22e_echart.txt
+Uncompressed edge list sha256 f8b0756aa32fb4a98a34dccdbd8d97165e3ef31263acdf8124e1823adb3f59fb (identical, after sorting, to elift.py lift of the search output).
+
+$ apsp d12D5_n10692_k33m_z22e.edges 12 5   (research/lifts/coordinator_check/apsp.c, all pairs, no symmetry)
+n=10692 edges=64152 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=10692
+
+$ bfs_all d12D5_n10692_k33m_z22e.edges   (plain BFS from every vertex)
+n=10692 edges=64152 degree 12..12 bipartite=yes max_ecc=5
+  dist 0: 10692 ordered pairs
+  dist 1: 128304 ordered pairs
+  dist 2: 1229580 ordered pairs
+  dist 3: 10912968 ordered pairs
+  dist 4: 55919160 ordered pairs
+  dist 5: 46118160 ordered pairs
+sum of ordered pairs = 114318864 ; n^2 = 114318864
