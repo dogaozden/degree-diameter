@@ -60,3 +60,8 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - b5 psl 47 x Z13 (N 674,544): best 5 at 2100 s (flat since ~1500 s). b6 sl 17 x Z139: best 12 (flat). b7 prod sl 3 x psl 11 x Z43: best 12 at 1170 s. b8 pgl 17 x Z139: best 21 at 1170 s.
 - Solved so far: prod sl 8 x sl 11 seed 2 (3.1M evals), sl 25 x Z43 seed 1 (1.2M evals). Failed: prod sl 8 seed 1 (4.3M evals, best 2), sl 16 x Z163 (4.3M, best 9).
 - Plan after these end: psl 47 x Z13 with several seeds and longer runs (it is the only candidate above 670,800 with mu <= 31.5 that has reached cost 5).
+
+## Status at 09:35
+- Finished unsolved: b5 psl 47 x Z13 (N 674,544, best 5, 3.66M evals, fix 23); b6 sl 17 x Z139 (N 680,544, best 12, 3.4M evals).
+- Still running: b7 prod sl 3 x psl 11 x Z43 (best 12), b8 pgl 17 x Z139 (best 21). Started 09:34: b9 prod psl 5 x psl 7 x Z67 (N 675,360, mu 32.0).
+- Record unchanged at 1,341,600 (sl 25 x Z43).
