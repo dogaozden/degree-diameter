@@ -112,3 +112,8 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   Supersedes 1,341,781,320 (PSL(2,331) x Z_37). Session gain so far: +23,910,544 (+1.8 %) over 1,326,627,120.
 - Lesson: fix = 77 (the lowest of the mu 27-29 candidates) solved in 2.9k evals, while PSL(2,281) x Z_61 (fix 140)
   stalled at cost 6 after 7.3k evals. Low |Fix(alpha)| looks like the better predictor than mu alone at this size.
+- 18:22 PSL(2,163) x Z_313 (N 677,736,396, mu 29.5, fix 80): NOT solved. Best 1 after 7,369 evals (5,350 s).
+  Close, but the low-fix choice did not finish: a fixed point or one orbit left uncovered at the end.
+- 18:22 PSL(2,181) x Z_229 (N 678,934,620, mu 30.4, fix ~90), seed 2, THREADS=2, 5,400 s: running.
+  Other candidates above 675,268,932 with q = 1 mod 3: PSL(2,241) x Z_97 (678.9M, fix ~120). Higher N needs
+  more than the budget (mu 33+ at 681M and up).
