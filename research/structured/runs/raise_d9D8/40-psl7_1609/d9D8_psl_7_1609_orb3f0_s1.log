@@ -1,0 +1,7 @@
+group psl 7 x Z_1609, N=270312, identity 33789, H order 7, rows 38616, threads 1, setup 0.07s
+wide rows: no cyclic subgroup of order >= 64 found (best 7); using haar_gen3's evaluation
+alpha: conj by mat(0,3,2,1) (index 15), z -> 250 z on Z_1609
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 2 (+e); mu = 38.12, mu/k = 12.71, fixed-point misses ~ 0.16
+start cost=2078
+t=30 steps=1362 evals=10897 cost=198 best=198 T=0.53
+RESULT d=9 D=8 group=psl 7 x Z_1609 N=270312 best=198 evals=14905 time=40.3 orbit k=3 m=3 f=0 fix=2
