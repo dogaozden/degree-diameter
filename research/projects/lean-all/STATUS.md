@@ -22,16 +22,16 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (720 batches × 2) |
 | (11,8) | 2,258,520 | Haar, PSL(2,59) × Z11 | **done** | `nb_11_8_2258520`, LeanAll/HaarD11D8 (1,740 sign-normalised batches) |
 | (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | **done** | `nb_8_10_7818096`, LeanAll/HaarD8D10 (4,488 batches) |
-| (10,9) | 8,003,856 | Haar, SL(2,83) × Z7 | building | LeanAll/HaarD10D9 |
-| (11,9) | 16,792,080 | Haar, SL(2,61) × Z37 | building | LeanAll/HaarD11D9 |
-| (15,8) | 18,128,880 | Haar, SL(2,109) × Z7 | building | LeanAll/HaarD15D8 |
+| (10,9) | 8,003,856 | Haar, SL(2,83) × Z7 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_10_9_8003856`, LeanAll/HaarD10D9 (6,888 batches × 2) |
+| (11,9) | 16,792,080 | Haar, SL(2,61) × Z37 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_11_9_16792080`, LeanAll/HaarD11D9 (3,720 batches × 2) |
+| (15,8) | 18,128,880 | Haar, SL(2,109) × Z7 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_15_8_18128880`, LeanAll/HaarD15D8 (11,880 batches) |
 | (9,10) | 23,975,280 | Haar, PSL(2,71) × Z67 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_9_10_23975280`, LeanAll/HaarD9D10 (2,520 batches) |
-| (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | building | LeanAll/HaarD12D9 |
-| (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | building | LeanAll/HaarD10D10 |
-| (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | building | LeanAll/HaarD13D9 |
+| (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_12_9_34026720`, LeanAll/HaarD12D9 (1,680 batches × 2) |
+| (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_10_10_60141120`, LeanAll/HaarD10D10 (6,240 batches) |
+| (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_9_67742688`, LeanAll/HaarD13D9 (10,608 batches × 2) |
 | (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | building | LeanAll/HaarD14D9 |
-| (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD13D8 (HaarProd) |
-| (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD9D9 (HaarProd) |
+| (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_8_6999552`, LeanAll/HaarD13D8 (16,128 batches, HaarProd) |
+| (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_9_9_3499776`, LeanAll/HaarD9D9 (8,064 batches × 2, HaarProd) |
 | (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | **done** | `nb_7_10_2237760`, LeanAll/HaarD7D10 (GF(8) batches, HaarGF8) |
 | (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | queued (streamed: bigcell.py) | LeanAll/HaarD12D10 |
 | (15,9), (16,9), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | queued after (12,10) (streamed) | |
