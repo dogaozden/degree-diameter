@@ -1,5 +1,5 @@
 import sys, time, itertools
-sys.path.insert(0, '/tmp/claude-0/-home-user-degree-diameter/dc574623-c6c6-5598-9b3e-ade6117641a7/scratchpad')
+import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fam2 import closure, search
 from fam import perm_mul
 

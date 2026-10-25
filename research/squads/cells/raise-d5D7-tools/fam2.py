@@ -1,7 +1,7 @@
 # Generalized exhaustive k=3 orbit-family search: base = permutation group (closure of generators), G = base x A.
 import itertools, sys, time
 import numpy as np
-sys.path.insert(0, '/tmp/claude-0/-home-user-degree-diameter/dc574623-c6c6-5598-9b3e-ade6117641a7/scratchpad')
+import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fam import perm_mul, perm_inv, apply_map, abelian_order3_autos, ecc_ok, family, inverses, D
 
 def closure(gens):
