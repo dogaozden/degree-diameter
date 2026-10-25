@@ -5,3 +5,43 @@ ORBIT k=5 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 70.86, mu/k = 14.17, fixed-point
 ORBW=5: an uncovered fixed element weighs 5; start energy 770
 start cost=746
 t=30 steps=582 evals=4657 cost=42 best=46 T=0.53 energy=50 bestE=50
+t=60 steps=1204 evals=9633 cost=31 best=31 T=0.19 energy=35 bestE=35
+t=90 steps=1826 evals=14609 cost=31 best=31 T=0.15 energy=35 bestE=35
+t=120 steps=2404 evals=19233 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=150 steps=3017 evals=24137 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=180 steps=3649 evals=29193 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=210 steps=4257 evals=34057 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=240 steps=4893 evals=39145 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=270 steps=5499 evals=43993 cost=21 best=21 T=0.87 energy=25 bestE=25
+t=300 steps=6122 evals=48977 cost=21 best=21 T=0.31 energy=25 bestE=25
+t=330 steps=6741 evals=53929 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=360 steps=7355 evals=58841 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=390 steps=7993 evals=63945 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=420 steps=8607 evals=68857 cost=36 best=21 T=0.87 energy=40 bestE=25
+t=450 steps=9217 evals=73737 cost=35 best=21 T=0.31 energy=35 bestE=25
+t=480 steps=9852 evals=78817 cost=35 best=21 T=0.15 energy=35 bestE=25
+t=510 steps=10468 evals=83745 cost=35 best=21 T=0.15 energy=35 bestE=25
+t=540 steps=11060 evals=88481 cost=31 best=21 T=0.15 energy=35 bestE=25
+t=570 steps=11665 evals=93321 cost=36 best=21 T=0.87 energy=40 bestE=25
+t=600 steps=12251 evals=98009 cost=41 best=21 T=0.31 energy=45 bestE=25
+t=630 steps=12860 evals=102881 cost=40 best=21 T=0.15 energy=40 bestE=25
+t=661 steps=13484 evals=107873 cost=40 best=21 T=0.15 energy=40 bestE=25
+t=691 steps=14080 evals=112641 cost=26 best=21 T=0.15 energy=30 bestE=25
+t=721 steps=14649 evals=117193 cost=43 best=21 T=0.86 energy=55 bestE=25
+t=751 steps=15254 evals=122033 cost=32 best=21 T=0.31 energy=40 bestE=25
+t=781 steps=15867 evals=126937 cost=35 best=21 T=0.15 energy=35 bestE=25
+t=811 steps=16473 evals=131785 cost=35 best=21 T=0.15 energy=35 bestE=25
+t=841 steps=17040 evals=136321 cost=26 best=21 T=0.15 energy=30 bestE=25
+t=871 steps=17593 evals=140745 cost=21 best=21 T=0.86 energy=25 bestE=25
+t=901 steps=18150 evals=145201 cost=21 best=21 T=0.30 energy=25 bestE=25
+t=931 steps=18705 evals=149641 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=961 steps=19290 evals=154321 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=991 steps=19892 evals=159137 cost=21 best=21 T=0.15 energy=25 bestE=25
+t=1021 steps=20500 evals=164001 cost=31 best=21 T=0.86 energy=35 bestE=25
+t=1051 steps=21109 evals=168873 cost=31 best=21 T=0.30 energy=35 bestE=25
+t=1081 steps=21751 evals=174009 cost=31 best=21 T=0.15 energy=35 bestE=25
+t=1111 steps=22377 evals=179017 cost=31 best=21 T=0.15 energy=35 bestE=25
+t=1141 steps=23012 evals=184097 cost=35 best=21 T=0.15 energy=35 bestE=25
+t=1171 steps=23650 evals=189201 cost=21 best=21 T=0.85 energy=25 bestE=25
+t=1201 steps=24291 evals=194329 cost=21 best=21 T=0.30 energy=25 bestE=25
+RESULT d=11 D=8 group=sl 16 poly x^4+x+1 x Z_281 N=1146480 best=21 evals=199009 time=1229.7 orbit k=5 m=2 f=1 fix=14

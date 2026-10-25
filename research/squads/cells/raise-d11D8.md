@@ -19,3 +19,5 @@ k = 5 orbit method (`research/structured/`, STRUCTURE.md §8). Table value 2,246
   sl 16×Z281 (N 1,146,480, fix 14: min 52, p1 71; SL(2,16) has no cyclic subgroup of order ≥ 64, so no wide rows).
   Everything with a cyclic factor of order ≥ 340 or with fix in the thousands is out (min ≥ 70–1,000,000).
   Running (ORBIT="5 2 1" ORBW=5 K=8 THREADS=1, 7200 s each): psl 19×Z331 seeds 1,2; sl 16×Z281 seeds 1,2.
+- 08:25 UTC: at 08:23 psl 19×Z331 seed 1 best 6 (263k evals), seed 2 best 15; sl 16×Z281 stuck at 21–25 (194k evals).
+  Stopped the sl 16×Z281 runs; started psl 19×Z331 seeds 3 and 4 (7200 s each).
