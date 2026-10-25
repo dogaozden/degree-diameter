@@ -121,6 +121,7 @@ int main(int argc, char **argv) {
     int shard = atoi(argv[5]), nshards = atoi(argv[6]);
     int only_n = argc > 7 ? atoi(argv[7]) : -1;
     const char *rpath = argc > 8 ? argv[8] : NULL;
+    FILE *nearfile = getenv("NEARFILE") ? fopen(getenv("NEARFILE"), "a") : NULL;
     static int repn[4096], repi[4096], repc[4096], repv[4096][MAXN];
     int nrep = 0;
     if (rpath) {
@@ -184,6 +185,11 @@ int main(int argc, char **argv) {
                 if (!ok && cost <= NEAR) {
                     nearcount++;
                     if (cost < bestcost) bestcost = cost;
+                    if (nearfile) {
+                        fprintf(nearfile, "NEAR n %d g %d N %d k %d cost %d volt", n_, i_, N, K, cost);
+                        for (int e = 0; e < E; e++) fprintf(nearfile, " %d", volt[e]);
+                        fprintf(nearfile, "\n");
+                    }
                 }
                 if (ok) {
                     found++;

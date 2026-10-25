@@ -28,7 +28,26 @@ SmallGroups library (apt package gap-smallgrp), so the sweeps below are complete
 - `verify_tl.py`: independent rebuild from the table and voltages, all-pairs BFS. Verifies the 288 control: n 288,
   cubic, simple, bipartite, connected, diameter 8.
 
-## Results
+## Results (complete sweeps, every group of the order, every base class)
 
-(see the table below; updated at each push)
+| k (base vertices) | base classes | orders N (n = kN) | groups | voltage space | solutions |
+|---|---|---|---|---|---|
+| 2 (Haar, 3 parallel edges) | 1 | 145–180 (290–360) | 538 | N² per group | **0** |
+| 4 (2+2 base) | 1 | 73–90 (292–360) | 130 | N³ per group | **0** |
+| 6 (3+3 bases) | 3 | 49–60 (294–360) | 62 × 3 | N⁴ per group | **0** |
+| 8 (4+4 bases) | 6 distinct (round 1's 8 files: b8_2≅b8_3, b8_6≅b8_7) | 37–46 (296–368) | 35 | N⁵ per group, first voltage over Aut(G)-orbit reps | see below |
+
+Base classes: enumerated and checked by `enum_bip3.py` (h = 1, 2, 3, 4 give 1, 1, 3, 6 classes up to side swap).
+The k = 6 and k = 8 runs use round 1's base files, which match.
+
+Near misses. `tlift` records, per group, the best cost (unreached vertices at the first failing base source).
+The cost-2 near miss (group 80#3, k = 4, n = 320) is **not** close: the full all-pairs cost (sum of (dist − 8)⁺ over
+ordered pairs) is 800. Annealing with 2-switch moves (`sa_repair.c`, 60 000 iterations, hot schedule) never got
+below 800. So local repair of structured lifts is not a route here.
+
+## Not covered
+
+- k ≥ 10 (n = 10N, N ≤ 36). Needs a base enumeration for 5+5 (my canonical-form script is too slow in Python for h = 5)
+  and about 6 CPU-hours for N = 29–31 alone. Not run.
+- Non-semiregular constructions and graphs with no semiregular colour-preserving group of order ≥ 37.
 
