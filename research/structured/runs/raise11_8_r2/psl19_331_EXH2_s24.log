@@ -5,3 +5,9 @@ ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 61.82, mu/k = 12.36, fixed-point 
 ORBW=5: an uncovered fixed element weighs 5; start energy 125
 start cost=125
 t=30 steps=813 evals=6505 cost=25 best=15 T=0.53 energy=25 bestE=15
+t=60 steps=1552 evals=12417 cost=25 best=15 T=0.19 energy=25 bestE=15
+t=90 steps=2317 evals=18537 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=120 steps=3076 evals=24609 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=150 steps=3843 evals=30745 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=180 steps=4615 evals=36921 cost=15 best=15 T=0.59 energy=15 bestE=15
+EXH slot 0: 226401 candidates in 917 s, cost 7 -> 6 (energy 15 -> 10), best 6
