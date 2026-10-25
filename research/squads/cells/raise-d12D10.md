@@ -50,3 +50,10 @@ sl 103×151 (3), psl 103×301 (3). The one solve, psl 197×43, took 305 evals.
 
 Rung 2 (μ ≈ 25–32, 1500 s, seed 1) running: psl 127×163 (μ 29.8), psl 103×307 (μ 32.2), psl 113×229 (μ 25.1),
 sl 97×181 (μ 25.0). Then queued: psl 151×97 (μ 30.0), sl 101×163 (μ 32.9).
+
+Rung 2 finished (10:22 UTC): 0 solved, best costs 4–9 at μ 25–33 with 1,500 s per job (1–5k evals):
+psl 127×163 (6), psl 103×307 (6), psl 113×229 (4), sl 97×181 (9), psl 151×97 (6), sl 101×163 (6).
+Reading: at μ ≥ 25 a 1,500 s single-seed run does not reach cost 0 on these groups; the rung-1 solve was a lucky draw.
+
+Next round: only groups with N > 164,371,284 can beat the record. Seed 2–3 runs of 3,600 s on
+psl 103×301 (164.44 M), sl 109×127 (164.45 M), sl 103×151 (164.99 M) and psl 97×361 (164.72 M).
