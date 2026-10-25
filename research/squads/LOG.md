@@ -19,3 +19,13 @@ Kept: c5's state; Opus built it (multi.c), checked it with apsp_mt (all pairs, V
 (+2). Next: round 2 applies c5's recipe (full pool, many proposals, low temperature) to q = 5, 7, 11, 13 and continues
 q = 8. The plain-set cards (c6–c8) confirm that master's symmetric sets are hard to beat without relaxation; Opus's own
 1-defective runs (dpack) show the masks, not the search, limit the relaxed sets on five levels.
+
+## 2026-10-25 ~18:50 UTC, job d7-family, round d7fam-r2
+
+Goal: carry r1 card c5's recipe (full line pool, --m 16 --sample 400, low temperature) to the other mirrored sets.
+Cards: c1 H(8) from the 230 state (T 0.1/0.05); c2 H(7) (full pool 19,264); c3 H(5) (full pool 3,780, also from
+scratch); c4 H(11) (lean annealer mirror_sa5c.py, pool 40,000); c5 H(13) (mirror_sa5c, cmax 40-48, T 0.05-0.1).
+Best per card: c1 **231** (seed 201, k = 14 at 46 s); c2 295 (no gain); c3 81 (no gain; from scratch 80); c4 768 (no
+gain); c5 813 (no gain; cmax 40 crashes because the init extra points are not candidates under that cap).
+Kept: c1's state; Opus built it, apsp_mt all pairs VALID: (10,7) 225,156. q = 5, 7, 11, 13 look saturated for this
+annealer (two rounds, different temperatures and pools); q = 8 still moves.
