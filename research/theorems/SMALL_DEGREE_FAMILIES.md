@@ -33,6 +33,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - For fixed action order o, metacyclic Haar graphs have N ≤ (2D+1)^((o+1)(Δ−1)): polynomial in D.
    - The records grow like (Δ−1)^D, so any metacyclic family that holds a whole row needs an action order that grows
      with D.
+   - This is an asymptotic statement only. At D ≤ 10 the crude bound is useless, and the fibre bound of item 3 does
+     the work.
    - The record groups do: o = 11, 35, 32 at (3,9), (4,9), (4,10).
 5. **Complete negatives, new this session** (§2.5):
    - **(3,7):** no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving group of
@@ -253,7 +255,11 @@ Take G = Z_m ⋊_r Z_k for any m, with o = ord_m(r).
 - Hence N ≤ (2D+1)^(Δ−1) · (2D+1)^(o(Δ−1)) = (2D+1)^((o+1)(Δ−1)).
 
 For fixed o this is polynomial in D, while the Moore bound and the records grow like (Δ−1)^D. A metacyclic family
-whose action order stays bounded can therefore hold only finitely many cells of a row. A family that holds a whole row
+whose action order stays bounded can therefore hold only finitely many cells of a row.
+
+This crude bound is purely asymptotic. At Δ = 3, D = 10 it is about 194,000 even for o = 1, far above the Moore
+limit of 1,023, so it constrains nothing at D ≤ 10. The fibre bound of §2.3 is the one that bites in the table's
+range. A family that holds a whole row
 needs o → ∞, at a rate of at least about D log(Δ−1) / ((Δ−1) log(2D+1)). This is the standard growth argument for
 virtually abelian groups (Z_m × ⟨yᵒ⟩ is abelian of index o), made explicit.
 
