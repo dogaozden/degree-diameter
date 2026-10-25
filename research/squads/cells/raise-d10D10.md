@@ -86,6 +86,21 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
   The same group with seed 1 and no ORBW also solved later (72,641 evaluations, 4,849 s) at the same order, 63,854,520:
   an equal-size second solution (`d10D10_psl_59_311_orb5f0_s1.txt`), not a further record.
 
+## Where it stands (2026-10-25, 11:15)
+
+Record: **63,854,520** (PSL(2,59) × Z_311, k = 5, ORBW = 5). Verified by haarcheck_psl. Not run: build_haar2.py (hours,
+> 7 GB at this size); the coordinator should decide whether to run it.
+
+Stopped, and why: the k = 5 route is at its wall for this cell.
+- Every pure group (SL/PSL of prime q with 5 | q ± 1, prime factors of n ≡ 1 mod 5) with μ ≤ 37.6 in N ∈ [30.0M, 32.0M] has
+  been tried; the solved ones are the records above (μ 21.5 → 37.6).
+- The next band is μ ≈ 46: PSL(2,71) × Z_181 (N = 32,384,520, μ 46.3) failed twice with 2 h each (best 10 for seed 1,
+  best 5 for seed 2, ORBW = 5).
+- Higher orders have μ > 50 (for example PSL(2,109) × Z_101, μ ≈ 54), which the k = 3 and k = 5 random-cost evidence does
+  not support. Product groups were not used for records (no low-memory checker above 20M).
+- Not tried: k = 7 (needs f = 3 extra torus letters, the known collision problem), SL(3,q) (not implemented), and
+  voltage lifts (a different program).
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
@@ -101,4 +116,5 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 08:50: e (psl 179 × 11) solved → 63,086,760, below the record.
 - 09:11: i (psl 59 × 311, ORBW=5, seed 2) solved → 63,854,520 (checked by haarcheck_psl above). Queues h (no ORBW) and j (psl 71 × 181) still running.
 - 09:54: h (psl 59 × 311, seed 1, no ORBW) solved at the same order, 63,854,520 (second solution, not a record). j and k (psl 71 × 181, seeds 1 and 2) still running.
-- 10:39: j (psl 71 × 181, ORBW=5, seed 1, μ 46.3, 7200 s) ended at best cost 10 after 95,617 evaluations. Not solved. k (seed 2) still running.
+- 10:39: j (psl 71 × 181, ORBW=5, seed 1, μ 46.3, 7200 s) ended at best cost 10 after 95,617 evaluations. Not solved.
+- 11:12: k (psl 71 × 181, ORBW=5, seed 2) ended at best cost 5 after 95,409 evaluations. Not solved. No search running.
