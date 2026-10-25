@@ -59,3 +59,9 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
   No solution in round 1 (all four groups).
 - 10:12 UTC: round 2b started, ORBIT="3 4 1" ORBW=3, seed 2, 7200 s: psl 31 x Z229 and prod sl 5 sl 16 x Z7.
   Round 2 now has four runs (two started 10:10, two started 10:12).
+- 10:19 UTC: SOLVED. Round 2 (ORBW=3, seed 2) on sl 43 x Z43 (N = 3,416,952): cost 0 after 32,177 evaluations (267 s).
+  Solution research/frontier/sols/d13D8_sl_43_43_orb3_ORBW3_s2.txt, 6,833,904 vertices (+19,824 over 6,814,080, +0.29 %).
+  Checks: haar_sym full diameter check OK; haarcheck_sl VALID; build_haar2.py VALID (13-regular, no duplicate edges,
+  edge-list sha256 cd5d3aedbaa36ae1d5431dd927395ea2219c1e24c692db2e6776144767331b4f). Check text in runs/raise13/*.check.txt.
+  Awaiting the coordinator's independent re-check.
+- Round 2 still running for prod psl 7 psl 11 x Z31, psl 31 x Z229, prod sl 5 sl 16 x Z7 (ORBW=3, seed 2).

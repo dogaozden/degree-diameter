@@ -1,0 +1,11 @@
+haarcheck_sl (independent SL checker, research/frontier/haarcheck_sl.c):
+from (e,A): reached A 3416952/3416952, B 3416952/3416952 within 8, ecc 8
+from (e,B): reached A 3416952/3416952, B 3416952/3416952 within 8, ecc 8
+VALID d=13 D=8 group=sl 43 x Z_43 N=3416952 vertices=6833904 (distinct generators, 13-regular simple)
+
+build_haar2.py:
+ecc from A = 8 unreached 0
+ecc from B = 8 unreached 0
+n = 6833904 edges = 44420376 max degree = 13 min degree = 13 duplicate edges = 0
+edge list sha256 = cd5d3aedbaa36ae1d5431dd927395ea2219c1e24c692db2e6776144767331b4f
+VALID d=13 D=8 group=sl 43 x Z_43 N=3416952 vertices=6833904
