@@ -71,7 +71,13 @@ Best per card:
   room breaks old pairs).
 - c8: q = 3 test bed reaches its cap 4,088 (apsp VALID) and nothing past it (4-main-edge hubs leave most hubs uncovered;
   none of the other 2,520 matching edges can be freed on top of the spread).
-- c5, c7: see below.
+- c5: hubs with 4 main edges are dead: the best hub (level-0 owner removed, its 8 hub neighbours chosen by a coverage
+  search, then swaps in the real graph) still misses 300 targets; the coverage model's floor with 8 neighbours is about
+  232. (Opus's estimate before the round: about 9 % of the skipped level's lines uncovered.)
+- c7: two copies of H(q), each minus a perfect matching, joined by two cross matchings (degree q+1, no hubs): never
+  valid (q = 3: 8.4 % of pairs at distance > 7 after annealing; q = 5: 3.4 %). At q = 11 it would have 708,624
+  vertices, but the small cases are far from working. Side note from the card: any nontrivial voltage lift of H(q)
+  has diameter >= 8 (girth argument).
 
 What Opus kept: c1's group (the cap, now the record) and c3's observation about mixing. Past the cap every attempt
 is strongly negative (also Opus's own tests: deleting spread-line fibres 2.7e9 broken pairs, one extra freed point 82,720,
