@@ -1,0 +1,18 @@
+# Every closed formula and table value of POLISHED.md, recomputed.
+Mb=lambda d,D: 2*sum((d-1)**i for i in range(D))
+cells=[(11,3,222),(13,3,314),(15,3,422),(7,4,518),(11,4,2222),(13,4,3770),(15,4,5910),(16,4,7232),(7,5,3110),(9,5,9362),(7,6,18662),(11,6,222222),(13,6,542906),(15,6,1158390),(16,6,1627232)]
+print("Moore bounds:",all(Mb(d,D)==m for d,D,m in cells))
+print("fourth hat 2(q^2+q+6):",[2*(q*q+q+6) for q in (9,11,13)],"AL20 2(q^2+q+5):",[2*(q*q+q+5) for q in (9,11,13)])
+dD4=lambda q,m:2*(q+1)*(q*q+1)+(m-1)*((q*q+1)+(q+1)+m)
+print("Delorme D=4:",[dD4(q,2) for q in (5,9,11,13)],[2*q**3+3*q*q+3*q+6 for q in (5,9,11,13)],"m=3,q=13:",dD4(13,3))
+print("Theorem A 2q^2(q+2):",[2*q*q*(q+2) for q in (5,9,11,13)],"gain q^2-3q-6:",[2*q*q*(q+2)-(2*q**3+3*q*q+3*q+6)==q*q-3*q-6 for q in range(3,20,2)])
+print("Cor C1 2(q^2+1)(q+3):",[2*(q*q+1)*(q+3) for q in (3,5,13)])
+N=lambda q:(q+1)*(q**4+q*q+1)
+D6=lambda q,m,W:2*N(q)+(m-1)*(q**4+2*q**3+q*q+2*q+2+W+m*(q**3+q+2)+m*m)
+for q in (5,9,11,13): print("D=6 q=%d: Delorme"%q,D6(q,2,0),"Theorem D",D6(q,2,q*q*(q*q-1)))
+print("q=13,m=3: Delorme",D6(13,3,0),"Theorem D",D6(13,3,13*13*168))
+R=lambda q,m:2*(q+1)*(q**4+q*q+1+(m-1)*(q**3+m+1))
+print("Theorem R:",[R(q,2) for q in (5,9,11,13)],R(13,3),"M_b(.,5):",[Mb(d,5) for d in (7,11,13,15,16)])
+print("free points q^3(q^2-1):",all(N(q)-(q+1)-q*q*(q+1)-q**3*(q+1)==q**3*(q*q-1) for q in range(2,30)))
+print("counting bound equality:",all(q*(2*q**4+2*q**3+2*q+2)+2*(q**3+1)==2*N(q) for q in range(2,30)))
+print("Delorme D=6 point side minus line side:",[(m-1)*(q**4-q*q-m*(q**3-q)-m*m) for q,m in ((5,2),(9,2),(11,2),(13,2),(13,3))])
