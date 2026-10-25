@@ -50,8 +50,9 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - **(4,9):** the closest group found is C101 : C25 = SmallGroup(2525,3) (5,050 vertices), 2 vertices short and
      exhaustively negative. The library screen of orders 2486–2700 found nothing, and neither did a screen of every
      group of the seven squarefree orders there that the installed library lacks.
-   - **(3,9):** lifts of the 2+2 base over every group of order 127–255, except orders 128 and 192, are
-     exhaustively negative. Those two orders are all that is left to close the 2+2 case up to the Moore bound.
+   - **(3,9):** no cubic bipartite graph with more than 506 vertices and diameter 9 has a colour-preserving group
+     of automorphisms acting freely with exactly 4 vertex orbits. Lifts of the 2+2 base over every group of order
+     127–255 (the whole range up to the Moore bound) were searched exhaustively.
    - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
      closest is SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative
      (cost 4). Lifts of the 2+2 base over every group of order 201–270 except 256 are exhaustively negative, and
@@ -381,10 +382,14 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
 - **2+2 lifts at (3,8), (3,9), (3,10)** (`allgroups.py --base bases/b22.txt`, `runs/lift_b22_D{8,9,10}.tsv`): no
   solution anywhere.
   - (3,8): every group of order 73–113; order 114 is partial (4 of 6). Best cost 8 (order 80).
-  - (3,9): every group of order 127 and 129–255 except 192. Order 128 is partial (189 of 2,328) and order 192
-    (1,543 groups, 920 of them past the filters) was not run. The Moore bound allows 2+2 lifts up to order 255, so
-    these two orders are all that stands between this and a theorem. Best cost 12 (C7 × (C5 : C4), order 140);
-    over 171–255 (1,176 groups, 889 searched, 522 million assignments) the best is 76.
+  - (3,9): every group of every order 127–255. Orders 128 and 192 were finished at the end of this session, split
+    by group id over four processes (`allgroups.py --idmin/--idmax`; 988 and 920 groups searched, 837 million
+    assignments, best costs 16 and 100). Best cost overall 12 (C7 × (C5 : C4), order 140); over 171–255 (1,176
+    groups, 889 searched, 522 million assignments) the best is 76.
+  - The Moore bound allows 2+2 lifts at (3,9) only up to order 255 (1,022 vertices), and there is only one cubic
+    2+2 base (`basegen.py`). With §2.2 this proves: **no cubic bipartite graph with more than 506 vertices and
+    diameter 9 has a colour-preserving group of automorphisms acting freely with exactly 4 vertex orbits.** Haar
+    graphs (2 orbits) are covered only up to order 319, so this is not yet an "at most 4 orbits" statement.
   - (3,10): every group of order 201–270 except 256 (56,092 groups, not run). Best cost 2 (Z29 ⋊ Z7 at 812 and
     C4 × (C11 : C5) at 880); over 240–270 the best is 8. The Moore bound allows orders up to 511.
   - Order 243 = 3⁵ at (3,10) (972 vertices; the shape of the Haar near miss (486,40), whose index-2 subgroup has
@@ -594,6 +599,7 @@ Why a screen is meaningful:
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
 | (3,10) | 2+2 lifts, exhaustive (`allgroups.py --base bases/b22.txt`) | orders 240–270 except 256: all 481 groups (372 searched, 289 million assignments; 68 rank > 3; 41 abelianization bound), all 67 of order 243 included | none; best cost 8 (SmallGroup(240,89) = SL(2,5) . C2 and (243,29)) |
+| (3,9) | 2+2 lifts, exhaustive, split by group id over 4 processes (`allgroups.py --idmin/--idmax`) | orders 128 (the 2,139 groups left of 2,328; 988 searched in all) and 192 (all 1,543; 920 searched) | none; best cost 16 ((128,90)) and 100; with the next row this closes 127–255 (§2.5) |
 | (3,9) | 2+2 lifts, exhaustive (`allgroups.py --base bases/b22.txt`) | orders 171–255 except 192: all 1,176 groups (889 searched, 522 million assignments; 167 rank > 3; 120 abelianization bound) | none; best cost 76 (C19 : C9, order 171) |
 | (4,9) | Loz-like Z_p ⋊ Z_k (index ≤ 3, central part ≤ 3, action order ≥ 10; `lozlike.py`, 2 × 30 s; calibration re-finds Loz's group) | N = 2486–3000, 7 groups | best cost 6 (Z37 ⋊ Z72, N = 2664) |
 | (4,8) | Loz-like, 2 × 10 s | N = 1093–1870, 20 groups (most have k > p, missed by the first session's frob scan) | best cost 8 (Z43 ⋊ Z28) |

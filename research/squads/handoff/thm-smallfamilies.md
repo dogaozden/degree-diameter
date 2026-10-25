@@ -9,16 +9,18 @@
 ## Where things stand
 
 - Proved: the cyclotomic fibre bound for Z_p ⋊ Z_k (§2.3; tables at Δ = 3, 4, 5), the growth corollary (§2.4),
-  and the (3,7) theorem for free actions with at most 8 orbits (§2.5).
+  the (3,7) theorem for free actions with at most 8 orbits, and the (3,9) one for exactly 4 orbits (§2.5).
 - Complete negatives and screens are listed with their coverage in §2.5 and §6.2.
 
 ## Open items, cheapest first
 
-1. (3,9), lifts of the 2+2 base: everything in 127–255 is exhaustively negative except order 128 (189 of 2,328
-   groups done) and order 192 (1,543 groups, not run). Closing both would make "no 2+2 lift beats 506 at (3,9)" a
-   theorem (`allgroups.py 3 9 N N --base bases/b22.txt --cycles 3 --abmax 112`).
+1. (3,9): done at the end of session 2. Lifts of the 2+2 base over every group of order 127–255 are exhaustively
+   negative, so no cubic bipartite graph with more than 506 vertices and diameter 9 has a free colour-preserving
+   action with exactly 4 orbits. The next step there is Haar graphs of orders 320–511 (order 320 has 34 of 1,640
+   groups done), which would make it "at most 4 orbits".
 2. (3,10): 2+2 lifts are done for 201–270 except 256; 271–511 are open. Haar graphs are done for 401–600 except
-   512 and 576.
+   512 and 576. GAP export, not the search, is the bottleneck for lifts: split an order over processes with
+   `allgroups.py --idmin/--idmax` rather than raising `--threads`.
 3. (4,8): the all-groups screen covers 1093–1400 except 1152, 1280, 1296, 1344. Near misses fade with N (best cost
    1 at 1100, 15 in 1251–1300, about 20 in 1301–1400), so going higher is unlikely to pay.
 4. (4,9): order 2624 and the 54 non-squarefree orders in 2486–2700 that the installed GAP library lacks. They need

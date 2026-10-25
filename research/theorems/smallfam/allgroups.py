@@ -9,7 +9,7 @@ For each order n in [NMIN, NMAX]:
   4. hx runs every remaining set S exhaustively.
 Output: runs/allgroups_d{DELTA}D{D}.tsv, one line per group: n id structure abinv |G'| filter tested solutions best.
 
-Usage: python3 allgroups.py DELTA D NMIN NMAX [--threads T] [--gap-timeout S] [--maxplan M]
+Usage: python3 allgroups.py DELTA D NMIN NMAX [--threads T] [--gap-timeout S] [--maxplan M] [--idmin I --idmax J]
 """
 import argparse
 import os
@@ -106,6 +106,8 @@ def main():
     ap.add_argument('--base', default=None, help='lift mode: base file for lx (plan = Aut-orbit reps of the first free voltage)')
     ap.add_argument('--cycles', type=int, default=3, help='lift mode: number of independent cycles of the base (rank filter)')
     ap.add_argument('--abmax', type=int, default=0, help='lift mode: generic lattice bound on |G^ab| (liftbound.py); 0 = off')
+    ap.add_argument('--idmin', type=int, default=1, help='only group ids in [idmin, idmax] (to split one order over processes)')
+    ap.add_argument('--idmax', type=int, default=10 ** 9)
     a = ap.parse_args()
     mode = 'haar' if a.base is None else 'lift_' + os.path.splitext(os.path.basename(a.base))[0]
     outp = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv' if a.base is None else f'{mode}_D{a.D}{a.tag}.tsv')
@@ -125,7 +127,7 @@ def main():
             continue
         rows = list_groups(n)
         for (i, dsize, inv) in rows:
-            if (n, i) in done:
+            if (n, i) in done or not a.idmin <= i <= a.idmax:
                 continue
             ninv = len([x for x in inv if x > 1])
             if a.base is not None:
