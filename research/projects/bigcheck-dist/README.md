@@ -109,6 +109,8 @@ machine (4 cores):
 - (14,7) 1,774,584 (the coordinator's graph, same edge-list sha256): 4 parts, merged, VALID, diameter 7, 357,336
   sources, the same as apsp_orb ([checks/d14D7_n1774584](checks/d14D7_n1774584/README.md)).
 - Merge refuses a missing part and a certificate made with --cost.
+- `tests/run_tests.sh` reruns the lift/explicit/apsp comparisons (8 seeds), the broken-automorphism test, parts + merge +
+  spot-check, WB = 8 vs 64 certificates and the four Haar records (about 15 s): "ALL TESTS PASSED".
 - d8/sol2spec.py turns an x2s.c solution into a bcd spec (torus and copy-rotation automorphisms included, both checked
   by bcd): an x2s M = 16 solution at q = 5 is VALID (124,992 vertices), and a 5-copy k = 4 solution gets cost 30 from
   bcd and from x2s's own BFS.
