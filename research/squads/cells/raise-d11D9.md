@@ -39,3 +39,12 @@ groups need `build_haar2.py` instead.
 - Independent check: build_haar2.py (rebuild from definitions): ecc 9 from (e,A) and (e,B), 0 unreached, VALID d=11 D=9,
   edge list sha256 280a20185193497c49a74d56b8e89929c74a8ca632540b58c6b7c398d9305de3. Log: runs/d11D9_prod_sl_7_sl_11_19_orb3_s1.rebuild.txt.
 - The SL checkers (haarcheck_sl / haarcheck2) do not read prod headers; build_haar2 is the checker for prod groups.
+
+## Result 2: NEW RECORD (11,9), 17,108,208 vertices (was 16,853,760, +1.5 %)
+
+- Group sl 37 × Z_169, |G| = 8,554,104 (μ = 19.5), orbit k = 3, m = 3, f = 2, solved at evaluation 28,417 (499 s, seed 1).
+  Z_169 = Z_13², and 13 ≡ 1 (mod 3), so the n-condition holds.
+- Solution: research/frontier/sols/d11D9_sl_37_169_orb3_s1.txt. Search log: research/structured/runs/d11D9_sl_37_169_orb3_s1.log.
+- Independent checks: haarcheck_sl and haarcheck2 both VALID (eccA = eccB = 9, 17,108,208 vertices). build_haar2.py VALID:
+  ecc 9 from both sides, 0 unreached, edge-list sha256 d01a1283c41fc441de811a629ee4222acb9443db44a9ac2e47ae2f2da5c6befb.
+  Log: runs/d11D9_sl_37_169_orb3_s1.rebuild.txt.
