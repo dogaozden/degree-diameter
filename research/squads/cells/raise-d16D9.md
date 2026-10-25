@@ -107,3 +107,14 @@ therefore 348,207,600, not the 337,394,400 in the round-2 brief. The coordinator
 - Interrupted, no result (killed by my own process cleanup, not by the search): sl 293x7 (seed 1), sl 59x859 (seed 1), sl 83x313 (seed 1, stopped by me to keep 4 jobs on 4 cores). Re-queue later.
 - Running at 16:09: sl 83x307 (seed 5, ORBW=3), sl 97x193 (seed 5, ORBW=3), sl 103x163 (seed 1), sl 139x67 (seed 1).
 - Observation: evals/s is lower than round 1 (about 0.55 eval/s with four jobs at 174M, vs about 1.3 in round 1). Large cyclic factors (n > 450) are clearly weaker.
+- 16:30-17:11 second batch (2400 s, seed 1 unless noted):
+  | group | N (vertices) | best cost | evals |
+  |---|---|---|---|
+  | sl 83 x Z307 (ORBW=3, seed 5) | 351,026,256 | 30 | 1,465 |
+  | sl 97 x Z193 (ORBW=3, seed 5) | 352,254,336 | 14 | 1,625 |
+  | sl 103 x Z163 | 356,195,424 | 24 | 1,689 |
+  | sl 139 x Z67 | 359,854,320 | 32 | 993 |
+  | sl 109 x Z139 | 359,987,760 | 24 | 2,249 |
+  | sl 79 x Z361 | 355,917,120 | 24 | 1,665 |
+- Still running at 17:11: sl 83x313 (seed 2), sl 131x79 (seed 3), and four 10,000 s seeds on sl 89 x Z247 (seeds 2, 3, RESTART=1 seed 4, ORBW=3 seed 5), started as slots free.
+- Round-2 status: 0 solves above 348,207,600 in 14 finished runs (2400 s each, one seed except the ORBW/RESTART variants). Best cost 6 (sl 89x247). Large n is clearly weaker; the 300-400 range is still at cost 14-32.
