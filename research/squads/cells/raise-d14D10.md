@@ -1,0 +1,34 @@
+# Cell (14,10): raise the record (job raise-14-10)
+
+Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2N, N = |SL(2,139) x Z_247| = 663,313,560
+(research/frontier/sols/d14D10_sl_139_247_orb3_FAST1_s1.txt; orbit k=3, m=4, f=2; found at mu = 20.0 in 553 evals).
+
+## Setup and constraints
+
+- Machine: 4 cores, 15 GB RAM. haar_sym FAST=1 uses about 6.3 GB RSS at N ~ 6.6e8 (setup about 30 s), so only one
+  or at most two such runs fit at once. Parallelism is therefore THREADS=4 inside one process (candidate evaluations
+  are split across threads), not four separate processes.
+- Targets: any N > 663,313,560 (vertices > 1,326,627,120). Order of attack: smallest N above the record first, since mu
+  grows fast with N (mu = N exp(-W/N), W = 14 * 13^8).
+- Wall (STRUCTURE.md, section 3/7): k = 3 orbit search is expected to hit a wall near mu = 45-50 (about N = 6.9e8).
+
+## Candidate queue (orb_screen.py --list, N in [663,313,561, 760,000,000], plain and product groups)
+
+| N | 2N | mu | group |
+|---|---|---|---|
+| 664,460,400 | 1,328,920,800 | 20.6 | SL(2,151) x Z_193 (first probe) |
+| 663,659,724 | 1,327,319,448 | 20.1 | PSL(2,157) x Z_343 |
+| 663,978,216 | 1,327,956,432 | 20.3 | PSL(2,263) x Z_73 |
+| 665,944,944 | 1,331,889,888 | 21.5 | SL(2,137) x Z_259 |
+| 668,104,752 | 1,336,209,504 | 22.8 | SL(2,457) x Z_7 |
+| 668,932,320 | 1,337,864,640 | 23.3 | SL(2,239) x Z_49 |
+| 668,489,640 | 1,336,979,280 | 23.0 | PSL(2,169) x Z_277 |
+| 663,373,728 | 1,326,747,456 | 20.0 | A4 x PSL(2,137) x Z_43 (product, small first factor) |
+
+## Log
+
+- probe 1: SL(2,151) x Z_193 (N = 664,460,400, mu = 20.6), FAST=1, THREADS=4, 600 s: 745 evals (about 0.8 s each,
+  so THREADS=4 is about 4-7x faster per evaluation than the single-thread record runs). Best cost 4, not solved.
+  RSS 9.4 GB during the search: one run at a time.
+- queue 1 (runs/jobs1.txt, orbq.sh, 3000 s per job, seed 2): PSL(2,263) x Z_73, SL(2,151) x Z_193, PSL(2,157) x Z_343,
+  SL(2,137) x Z_259. Started 07:29 UTC. Results appear in runs/ (logs) and are copied to research/frontier/sols/ if VALID.
