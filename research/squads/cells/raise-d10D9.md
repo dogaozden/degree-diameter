@@ -5,9 +5,13 @@ Moore bound 96,855,122.
 
 ## Status
 
-Record to beat: **8,003,856 vertices** = 2·|SL(2,83) × Z7| (sl 83 x Z7, orbit k=3, m=3, f=1, μ = 22.2,
-research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt, build_haar2 VALID, runs in research/structured/runs/).
-This session: see the log below.
+**New record this session: 8,064,960 vertices** = 2·|PSL(2,31) × Z271| (psl 31 x Z271, orbit k=5, m=2, f=0, μ = 24.5),
+research/frontier/sols/d10D9_psl_31_271_orb5f0_s1.txt. build_haar2.py VALID (edge-list sha256
+3f69f5a0db8f9d53b6d25506c51db2970bfb8884cca5a052b50af077c92b7871), haarcheck_psl VALID, found in 4,545 evaluations (96 s).
+It beats the previous record 8,003,856 (sl 83 x Z7, k=3 m=3 f=1, research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt)
+by 61,104 (+0.76 %). Log: research/structured/runs/d10D9_psl_31_271_orb5f0_s1.log.
+
+Window for the next record: N > 4,032,480 (2N > 8,064,960).
 
 ## Method
 
