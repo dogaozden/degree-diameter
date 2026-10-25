@@ -1,0 +1,10 @@
+group psl 31 x Z_127, N=1889760, identity 59055, H order 31, rows 60960, threads 1, setup 0.06s
+wide rows: HW order 254, rows 7440, setup 0.10s
+alpha: conj by mat(3,18,22,29) (index 2967), z -> 19 z on Z_127
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 14 (+e); mu = 22.39, mu/k = 7.46, fixed-point misses ~ 0.34
+start cost=41
+t=30 steps=2316 evals=18529 cost=10 best=3 T=0.53
+RESULT d=12 D=8 group=psl 31 x Z_127 N=1889760 best=0 evals=31401 time=52.2 orbit k=3 m=4 f=0 fix=14
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d12D8_psl_31_127_orb3f0_s1.txt

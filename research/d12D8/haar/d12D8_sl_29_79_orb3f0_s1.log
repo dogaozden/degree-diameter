@@ -1,0 +1,10 @@
+group sl 29 x Z_79, N=1924440, identity 64148, H order 58, rows 33180, threads 1, setup 0.08s
+wide rows: HW order 237, rows 8120, setup 0.14s
+alpha: conj by mat(24,12,20,4) (index 20523), z -> 23 z on Z_79
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 29 (+e); mu = 27.98, mu/k = 9.33, fixed-point misses ~ 0.73
+start cost=49
+t=30 steps=2125 evals=17001 cost=5 best=5 T=0.53
+RESULT d=12 D=8 group=sl 29 x Z_79 N=1924440 best=0 evals=27745 time=50.4 orbit k=3 m=4 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d12D8_sl_29_79_orb3f0_s1.txt
