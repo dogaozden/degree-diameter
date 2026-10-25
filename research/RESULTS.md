@@ -191,3 +191,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 25 00:11 PT (coordinator): (14,7) 1,788,052 (raised, was 1,774,628) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
 - Oct 25 00:14 PT (coordinator): (7,7) 23,598 (raised, was 23,580); (9,7) 118,238 (raised, was 118,224); (10,7) 225,152 (raised, was 225,128) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
 - Oct 25 01:11 PT (coordinator): (15,7) 2,497,075 (raised, was 2,484,720) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).
+- Oct 25 02:05 PT (coordinator): (13,7) 1,064,472 (raised, was 1,064,448) (hexagon constructions); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-25.txt).

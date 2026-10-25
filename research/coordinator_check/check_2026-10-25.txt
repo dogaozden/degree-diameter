@@ -76,3 +76,11 @@ n=2497075 edges=18684239 degree min=13 max=15 bipartite=yes diameter=7
 RESULT VALID d=15 D=7 n=2497075
      3832.80 real     28391.89 user       329.87 sys
           1430224896  maximum resident set size
+# (13,7) mirrored surgery (cell-14-7 third session): multi_sol.py build on hex_q11.bin (hash above), apsp_mt 2 threads, run beside the (16,7) check.
+== d13D7_hex11_mirror768_n1064472 Sun Oct 25 01:12:19 PDT 2026
+wrote d13D7_hex11_mirror768_n1064472.edges
+88721d4a4a137731e478840a809eb62e6693c6235b7f5b394c58175cf8a5c48a  d13D7_hex11_mirror768_n1064472.edges
+n=1064472 edges=6919068 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1064472
+     3163.53 real      5094.21 user        66.53 sys
+           375226368  maximum resident set size
