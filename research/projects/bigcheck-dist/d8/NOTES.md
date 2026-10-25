@@ -2,6 +2,13 @@
 
 bigcheck-dist lead, 2026-10-25. Tools in this folder; checker ../bcd.c.
 
+**Prior work found later in the day:** the cell-10-8 session (Oct 24, branch claude/cell-10-8-search-t6pwvg,
+research/squads/cells/d10D8.md) had already decoded the D = 8 column the same way, proved that H(q) + two arbitrary
+bijections lifted over Z10 with shifts {1, 4} has diameter 8 (10 copies for free), counted the 4q + 17 guaranteed walks
+from a point to a line, estimated ~3·10⁶ uncovered triples for random-like lifts at q = 7, and ran the (10,8) Haar
+orbit search (best cost 7 on PSL(2,7) × SL(2,8) × Z7). Sections 2-3 below overlap with that; sections 3 (rainbow
+family), 4 (bundles and girth 14), 4b (loop design) and the Singer-torus tools are new here.
+
 ## 1. Target cells
 
 At D = 8 the table has, for Δ = q+3, exactly 5·⌊(q+5)/2⌋ copies of the incidence graph of H(q)
