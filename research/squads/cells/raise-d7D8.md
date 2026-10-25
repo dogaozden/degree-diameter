@@ -1,0 +1,169 @@
+# Cell (Δ, D) = (7, 8): raise the record (job raise-7-8)
+
+Worker session on branch `claude/raise-d7d8-record-2irp7i`, started 2026-10-25 (UTC). Goal: beat our own record
+**95,760** vertices (psl 19 × Z14, N = 47,880, 7-regular Haar graph, orbit search k = 3, m = 2, f = 1, found in
+research/structured by claude/structured-haar-search-ws7bet). Table value 80,940. Moore bound 671,846.
+
+## Status (update at every push)
+
+- Baseline reproduced on this box: `ORBIT="3 2 1" haar_sym 7 8 120 1 8 … psl 19 14` → cost 0 after 255,889 evaluations
+  (10.9 s, one thread). Evaluation rate ~23k/s per thread on this box (Xeon 2.1 GHz, AVX-512, 4 cores, 15 GB).
+- Next order is any Haar graph with |G| ≥ 47,881. A result is a record iff 2|G| > 95,760.
+
+## Why these groups
+
+Orbit search (research/structured/STRUCTURE.md §2–3, §7): with α of order 3 (conjugation × z ↦ rz), the reachable
+μ depends on μ_eff = μ/3 + |Fix(α)|·e^(−λ/3), λ = W/N, W(7,8) = 335,923. The record has μ = 43.0, μ_eff ≈ 16.06.
+Groups in the window (N 47,881 … 49,000) checked with the one-step header of haar_sym (`MAXSTEPS=2`):
+
+| group | N | 2N | μ | |Fix| | μ_eff | note |
+|---|---|---|---|---|---|---|
+| psl 11 × Z73 | 48,180 | 96,360 | 45.17 | 5 | 15.65 | prior run (seed 1, 3.9e6 evals) best cost 3 |
+| pgl 9 × Z67 | 48,240 | 96,480 | 45.62 | 8 | 16.09 | new |
+| psl 9 × Z134, sl 9 × Z67 | 48,240 | 96,480 | 45.62 | 17 | 16.98 | not run yet |
+| prod psl 3 × psl 3 × Z333 | 47,952 | 95,904 | 43.49 | 26 | 17.1 | not run yet |
+| psl 23 × Z8, psl 13 × Z44, psl 7 × Z288, sl 8 × Z96, sl 7 × Z144 | 48,048–48,576 | | 44–47 | 95–863 | ≥ 19 | too many fixed points, screened out |
+
+Groups whose odd prime factors of n are ≡ 2 (mod 3) cannot carry an order-3 action on Z_n (e.g. Z11, Z5, Z17), so
+they are excluded from the window (except the trivially acted 2-part, as in the record's Z14).
+
+Earlier (7,8) rungs above the record (structured runs/): sl 11 × Z37 (48,840, μ 50.3) best 1 at 5.9e6 evals;
+psl 19 × Z37 (126,540) irrelevant; sl 37 × Z1 (μ 66) best 10. Nothing in (47,880, 48,840] has been solved yet.
+
+## Campaign log
+
+### Phase A (2026-10-25, 08:03 UTC, one hour, four single-thread queues)
+
+Jobs in `research/squads/cells/raise-d7D8/jobs/A*.jobs`, logs and any solution in `research/squads/cells/raise-d7D8/runs/`.
+
+| queue | group | seed | variant | budget |
+|---|---|---|---|---|
+| A1 | psl 11 × Z73 | 11 | default | 3600 s |
+| A2 | psl 11 × Z73 | 12 | ORBW=3 | 3600 s |
+| A3 | pgl 9 × Z67 | 11 | default | 3600 s |
+| A4 | psl 11 × Z73 | 13 | RESTART=1 | 3600 s |
+
+Results (all four ran the full hour, about 1.2–1.4 × 10⁸ evaluations each, ~38k/s per thread):
+
+| queue | group | variant | best cost | evals |
+|---|---|---|---|---|
+| A1 | psl 11 × Z73 | default | 3 | 1.38 × 10⁸ |
+| A2 | psl 11 × Z73 | ORBW=3 | 3 | 1.37 × 10⁸ |
+| A3 | pgl 9 × Z67 | default | 4 | 1.23 × 10⁸ |
+| A4 | psl 11 × Z73 | RESTART=1 | 3 | 1.38 × 10⁸ |
+
+Not solved. psl 11 × Z73 sits at cost 3 on every variant, a sign of a structural obstacle at this μ, not just
+too little time (cost 3 ≈ one uncovered orbit or three uncovered fixed points). No solution to verify.
+
+### Phase B (2026-10-25, 09:15 UTC, one hour, four single-thread queues)
+
+Jobs in `research/squads/cells/raise-d7D8/jobs/B*.jobs`. prod psl 3 × psl 3 × Z333 (N = 47,952, so 2N = 95,904
+> 95,760: a record if solved) has the lowest μ in the window (43.5) but μ_eff 17.1 and is solvable-heavy (A4 × A4),
+so it is a real test.
+
+| queue | group | seed | budget |
+|---|---|---|---|
+| B1 | prod psl 3 × psl 3 × Z333 | 11 | 3600 s |
+| B2 | prod psl 3 × psl 3 × Z333 | 12 | 3600 s |
+| B3 | psl 9 × Z134 | 11 | 3600 s |
+| B4 | sl 9 × Z67 | 11 | 3600 s |
+
+Results (one hour each, not solved):
+
+| queue | group | seed | best cost | evals |
+|---|---|---|---|---|
+| B1, B2 | prod psl 3 × psl 3 × Z333 | 11, 12 | 31,968 (both) | 2.1 × 10⁷ |
+| B3 | psl 9 × Z134 | 11 | 11 | 1.27 × 10⁸ |
+| B4 | sl 9 × Z67 | 11 | 7 | 1.26 × 10⁸ |
+
+The prod group is degenerate (cost ~3 × 10⁴ is the random level): A4 × A4 has almost no mixing, so it is ruled out.
+psl 9 and sl 9 are well behind psl 11 × Z73.
+
+### Phase C (2026-10-25, 10:16 UTC, 90 minutes, four seeds on psl 11 × Z73)
+
+Jobs in `research/squads/cells/raise-d7D8/jobs/C*.jobs` (seeds 21–24, default variant, 5400 s each). These are the
+only candidates left in the window with μ_eff near the record's (15.65 against 16.06).
+
+Results (90 minutes each, not solved):
+
+| seed | best cost | evals |
+|---|---|---|
+| 21, 22, 23, 24 | 3 (all four) | 2.08–2.09 × 10⁸ each |
+
+## Status: stopped, no new record (2026-10-25, ~11:50 UTC)
+
+- No Haar graph above 95,760 was found. Nothing new to verify or add to research/frontier/sols/.
+- The only candidate in the window with a favourable μ_eff (psl 11 × Z73, 2N = 96,360) has been run for about
+  1.8 × 10⁹ evaluations over nine seeds and variants (default, ORBW=3, RESTART=1). Every run stopped at best cost 3.
+  Cost 3 is one uncovered orbit or three uncovered α-fixed elements, and it never went lower. That looks like a
+  structural plateau of this α, not slow annealing.
+- The other rungs are worse: pgl 9 × Z67 best 4, sl 9 × Z67 best 7, psl 9 × Z134 best 11, prod psl 3 × psl 3 × Z333
+  degenerate (cost ~3·10⁴), and the earlier sl 11 × Z37 (N 48,840) best 1.
+- What the orbit method can still try: other groups with order 47,881–48,600 whose μ_eff ≤ 16 (none found under the
+  rule that odd primes of n are ≡ 1 mod 3), and a different α (k = 3 with another fixed-point class).
+
+**Recommended next steps (for the coordinator):**
+1. Diagnose the cost-3 plateau on psl 11 × Z73: list the three uncovered elements (which α-orbits or fixed points they
+   are) and check whether a word collision forces them. If it is forced, stop this group for good.
+2. Try a non-orbit route for N 47,881–48,500. The lift and route-chart routes (research/lifts/,
+   research/theorems/BEAT_16_5_SQUAD.md) are the other families; the orbit search has no candidate left here.
+3. A bigger model, if the coordinator wants it, for (1) and (2). Haiku tooling is enough for running the queues.
+
+## How to resume
+
+- Binaries are not in git. Build from research/structured/haar_sym.c:
+  `gcc -O3 -march=native -fopenmp -o haar_sym haar_sym.c -lm` (and `haar_fast.c`); `tools/haarcheck_psl.c` for
+  PSL solutions above 20M vertices.
+- Queue: `research/structured/tools/orbq.sh JOBFILE OUTDIR BIN` (sequential, one line per job, skips finished
+  jobs, runs build_haar2.py on any solution). Run four queues in parallel, each with `THREADS=1`.
+- A solution is saved as research/frontier/sols/d7D8_<group>_orb3_s<seed>.txt only after build_haar2.py says VALID.
+
+## How to resume
+
+- Binaries are not in git. Build from research/structured/haar_sym.c:
+  `gcc -O3 -march=native -fopenmp -o haar_sym haar_sym.c -lm` (and `haar_fast.c`); `tools/haarcheck_psl.c` for
+  PSL solutions above 20M vertices.
+- Queue: `research/structured/tools/orbq.sh JOBFILE OUTDIR BIN` (sequential, one line per job, skips finished
+  jobs, runs build_haar2.py on any solution). Run four queues in parallel, each with `THREADS=1`.
+- A solution is saved as research/frontier/sols/d7D8_<group>_orb3_s<seed>.txt only after build_haar2.py says VALID.
+
+---
+
+# Round 2 (job raise2-7-8), branch claude/raise-d7d8-round-2-xtwr95
+
+Record to beat: **95,760** (N = 47,880, psl 19 × Z14, k = 3, m = 2, f = 1). A result is a record iff 2N > 95,760,
+i.e. N ≥ 47,881. Round 1 (above) ran psl 11 × Z73, pgl 9 × Z67, psl 9 × Z134, sl 9 × Z67 and prod psl 3 × psl 3 × Z333
+with no solution. Round 1's best open leads, in its own words: diagnose the cost-3 plateau on psl 11 × Z73; try a route
+it did not try. Round 2 does not repeat round 1's queues.
+
+## Round 2 plan
+
+1. **Lead: sl 11 × Z37 (N = 48,840, 2N = 97,680, μ = 50.3, |Fix(α)| = 11).** The structured session's only run of
+   this group (`research/structured/runs/sl_11_37_k3_s1.log`, 180 s, one seed) reached cost 1 after 5.9·10⁶ evaluations
+   and oscillated between cost 1 and 7. Round 1 never continued it. A new N = 48,840 would be +2.0 % on the record.
+2. **Also N = 48,840:** psl 11 × Z74 (2-part of Z74 trivially acted, same |Fix| = 11) and pgl 11 × Z37 (screen min 27).
+3. Non-orbit routes (lifts, route-chart) do not apply at Δ = 7: the route-chart lift needs Δ = 4q (BEAT_16_5_SQUAD.md),
+   and the voltage lifts there need a base graph with degree-16 walks. Not pursued in this round.
+
+### Screen (tools/orb_screen.py 7 8 47881 48840 "3 2 1" --anyn --samples 300, one run, 4 cores busy)
+
+Lower min and p1 are better. μ is N e^{−W/N}. The list adds groups that round 1 did not run. Round 1's psl 11 × Z73
+has min 27 and pgl 9 × Z67 min 20, both still open (round 1 best 3 and 4). Among N = 48,840 groups: sl 11 × Z37
+min 22 / p1 31 / p10 59 (structured best 1); psl 11 × Z74 min 19 / p1 33 / p10 70; pgl 11 × Z37 min 27.
+Screen-only, not run: sl 7 × Z145 (min 35,271), prod psl 3 × psl 3 × Z339 (min 48,048) and the rest of the list are far
+behind.
+
+## Round 2 campaign log
+
+### Phase A (2026-10-25, 14:49 UTC, one hour, four single-thread queues)
+
+Jobs `jobs/A1–A4.jobs`, logs in `runs/`, k = 3 m = 2 f = 1, K = 8, budget 3600 s each:
+
+| queue | group | seed | variant |
+|---|---|---|---|
+| A1 | sl 11 × Z37 | 101 | default |
+| A2 | sl 11 × Z37 | 102 | RESTART=1 |
+| A3 | sl 11 × Z37 | 103 | ORBW=3 |
+| A4 | psl 11 × Z74 | 104 | default |
+
+(results appended below as they finish)
