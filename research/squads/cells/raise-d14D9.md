@@ -65,6 +65,6 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | psl 47 × Z1123 | 58,270,224 | 116,540,448 | 15.1 | – | running (started 07:43) |
 | sl 43 × Z733 | 58,247,112 | 116,494,224 | 15.0 | – | running (started 08:09) |
 | psl 49 × Z991 | 58,270,800 | 116,541,600 | 15.1 | – | queued/running |
-| sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | – | queued |
+| sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | 71 | **SOLVED** at 2,977 evals (1,462 s), haar_sym OK; below the record, so a sub-record (not a new record). Checkers pending. |
 | psl 73 × Z301 | 58,536,072 | 117,072,144 | 16.3 | 35 | **SOLVED** at 4,761 evals (705 s); haar_sym OK, haarcheck_psl VALID. New record. |
 | psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | – | queued |
