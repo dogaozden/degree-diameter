@@ -13,7 +13,9 @@ research/lifts/coordinator_check/check_2026-10-23.txt). Target: any bipartite cu
   Z_p² ⋊ Z_k, products with a cyclic factor) for |G| = 145..180, i.e. n = 290..360: **1847 groups, 0 solutions**
   (runs/haar_145_180.log).
 - 4-vertex base (the only connected 3-regular bipartite multigraph on 2+2 vertices, bases/b4_0.txt), exhaustive over the
-  3 free voltages, |G| = 73..84 (n = 292..336): see runs/b4_73_84.log.
+  3 free voltages, |G| = 73..84 (n = 292..336): **379 groups, 0 solutions** (runs/b4_73_84.log).
+- 6-vertex bases (bases/b6_0..2, 3 classes), exhaustive over the 4 free voltages, |G| = 49..60 (n = 294..360): running,
+  runs/b6_*.log.
 
 ## Files
 
@@ -24,6 +26,15 @@ research/lifts/coordinator_check/check_2026-10-23.txt). Target: any bipartite cu
 - Solutions are written to the scratchpad (not the repo) until verified; verified finds go to research/frontier/sols/
   (d3D8_ prefix, Haar) or research/lifts/sols/ (lifts), with an apsp VALID line.
 
+## Method notes
+
+- Exhaustive search over the free voltages is slow for bases with 4+ free voltages (b=6: ~20 groups per 4 minutes on 4
+  cores), and the 6-vertex exhaustive sweep was stopped after 20 groups (runs/b6_0.log, all `none`).
+- Annealing (`lift_ex ... anneal SECS SEED`, cost = unreached pairs within D) finds the known 288 lift in about 150
+  iterations (3 seeds, verified by apsp). It is the screen for the larger base graphs; exhaustive only for small cases.
+- Cyclic groups are bad as expected (best cost ~90 on Z_73, Z_74 at b=4).
+
 ## Results and dead ends
 
-(to be filled as runs finish)
+- Haar, |G| = 145..180: none (1847 specs). 4-vertex base, |G| = 73..84: none (379 specs). Both families are the
+  group families the tool can build (metacyclic, Z_p² ⋊ Z_k, products with cyclic factors), not all groups of each order.
