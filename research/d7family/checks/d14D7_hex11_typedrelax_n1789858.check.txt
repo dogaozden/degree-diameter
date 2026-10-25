@@ -1,0 +1,36 @@
+# (14,7) n = 1,789,858 = 10*177,156 + 9,149 + 9,149 (job d7-family, 2026-10-25). Table 1,771,560; master 1,789,588
+# (typed + mirrored 768, research/cell147/typedmirror/README.md). +270.
+# Construction: five levels H D H D H of H(11) (research/squads/cells/d16D7.md), mirrored surgery (sigma, R' = 768 points
+# of research/frontier/sols/d14D7_hex11_mirror768_n1774632.sol) on the four non-friendly transitions, and RELAXED
+# friendly line sets (research/d15D7b/RELAXED.md) at 1->2, 3->4, 3->0: 8,381 / 8,390 / 8,388 lines with 138 / 156 / 333
+# concurrent pairs; master's R_H (8,645 points) at 0->1, 2->3, 4->1. Every pair's four hub conditions (R2) are served
+# by cover slots in the other friendly sets (research/d7family/hd5_masks.py: pairing masks, competitor masks, forbidden
+# meeting points; dpack.c FORBID; tmL_build.py assign). 9,149 + 9,149 hubs, hub graph 9 random perfect matchings
+# (hubgen.py seed 1), all same-side hub distances <= 6 inside the hub graph (hubsame.py).
+# Solution: research/frontier/sols/d14D7_hex11_typedrelax_n1789858.sol (sha256 6ecd2f105c388bd2bf5b30b4d764731fb6ea61cc422af2fc5508bc737c663130);
+#   it names d14D7_hex11_mirror768_n1774632.sol (same folder, on master) by sha256.
+# Rebuild: hex_q11.bin = research/d13D7/hexgen2.c 11 (sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19);
+#   python3 research/d7family/tmL_build.py build hex/hex_q11.bin research/frontier/sols/d14D7_hex11_typedrelax_n1789858.sol g.edges g.src
+#   edge list sha256 8aa4ecc73895839156fa2e30663799306bfbb743ee7e81bc2bf5fbe4280ebb95 (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d7family/hubfar.c && ./hubfar g.edges 7 4 g.src           # hubs + paired vertices
+#   cc -O2 -march=native -pthread -o apsp_w research/d7family/apsp_w.c && ./apsp_w g.edges 14 7 4  # all pairs
+#   (research/lifts/coordinator_check/apsp_mt.c is the same check with 64 sources per batch; not run on this graph here)
+-- tmL_build.py build (re-checks R' non-collinear, sigma(R') non-concurrent, local duality at all 768, (R1)/(R2) for every pair):
+free A-slots per level [9413, 9149, 9413, 16778, 9413] B-slots [9156, 17290, 9149, 9413, 9158] -> hubs 9149 9149
+mirror hypotheses OK: |R'| = 768
+  0->1 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  1->2 (lines): 8381 freed, 138 pairs, (R1) and (R2) OK
+  2->3 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  3->4 (lines): 8390 freed, 156 pairs, (R1) and (R2) OK
+  3->0 (lines): 8388 freed, 333 pairs, (R1) and (R2) OK
+  4->1 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+friendly hypotheses OK (627 pairs in all)
+n = 1789858, edges = 12520585, degree min 12 max 14, hub graph edges 82341
+wrote rb.edges
+wrote rb.src: 20806 BFS sources (hubs and paired elements)
+-- hubfar (BFS from all 18,298 hubs and both vertices of every paired element, depth 7, 4 threads):
+n=1789858 edges=12520585 degree min=12 max=14 bipartite=yes connected=yes sources=20806 far_pairs=0 max_ecc=7
+-- apsp_w (research/d7family/apsp_w.c, sha256 e83933467533f9d2dce1d6fd9c3ed218a5adf295f39935c892eba13747aa4c85): BFS from EVERY vertex, no symmetry,
+   512 sources per batch, 4 threads, Sun Oct 25 16:59:09 UTC 2026 -> Sun Oct 25 17:29:07 UTC 2026 (shared machine):
+n=1789858 edges=12520585 degree min=12 max=14 bipartite=yes diameter=7 (BFS from all 1789858 vertices)
+RESULT VALID d=14 D=7 n=1789858

@@ -1,0 +1,11 @@
+candidates 0, line pool 19000 [1.0s]
+k=0 initial F 0
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d7fam-r1/c4/mirror_sa5.py", line 123, in <module>
+    for nx in good_x(xs, n=3):
+              ~~~~~~^^^^^^^^^
+  File "/home/user/degree-diameter/research/squads/d7fam-r1/c4/mirror_sa5.py", line 84, in good_x
+    ids = rng.integers(nc, size=a.sample)
+  File "numpy/random/_generator.pyx", line 682, in numpy.random._generator.Generator.integers
+  File "numpy/random/_bounded_integers.pyx", line 1334, in numpy.random._bounded_integers._rand_int64
+ValueError: high <= 0

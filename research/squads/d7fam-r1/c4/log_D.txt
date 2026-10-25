@@ -1,0 +1,6 @@
+candidates 0, line pool 19000 [3.2s]
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d7fam-r1/c4/mirror_sa5.py", line 112, in <module>
+    xs = [cidx[int(x)] for x in init[0]]; ls = list(range(len(init[1])))
+          ~~~~^^^^^^^^
+KeyError: 13213
