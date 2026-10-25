@@ -28,3 +28,22 @@ Outcome after the round (Opus): the targeted coset-0 route move (σ(v), σ(u) of
 hot polish turned c5's 8-flag orbit into a VALID **4,832** (research/squads/d10D5/hubs/checks/d10D5_n4832_CHECK.md).
 Verdict: the round helped decisively (c5's symmetric set is the record's skeleton; c8's theory explains the k ≈ 7
 barrier for unstructured sets; c6/c7 closed two side routes).
+
+## 2026-10-25 ~14:50–15:15 UTC, cell-10-5 resume (session_01NTgHArireuhKVofyqgzKgX), goal (10,5) > 4,832, round 2
+
+Five cards (research/squads/d10D5/r2/, scoreboard.jsonl), all aimed at k >= 9 freed flags:
+- c1 order-9/10/12 orbits: order-10 semiregular elements give 0 feasible 10-orbits; order-5 single orbits feasible
+  (360) but no feasible pair; the 8-orbit has no exact one-flag extension (best 395/400). No graph.
+- c2 8-orbit + one flag with relaxed coverage: 3 unpatchable holes remained (hub graph not co-designed). No graph.
+- c3 triad sampler / C local search for 9 flags: deficiency 5; produced a second VALID 4,828 (k = 7, c8's set),
+  confirming the pipeline. No record.
+- c4 mixed hub counts (HLIST): per-flag hub numbers implemented; hub-sourced cost 0 at k = 10 by BFS. Its capacity
+  model (common neighbour / one hop) is superseded by the exact hub-distance rule below.
+- c5 unions of order-4/5 orbits: all 6,960 disjoint pairs of feasible 5-orbits have deficiency >= 20. No graph.
+Kept: c1's best 9th flag (19:139). Opus during the round: same-side hubs only need distance <= 4, and a path of length
+4 inside the hub graph counts, so a degree-4 bipartite hub graph of diameter 4 (up to 40 + 40 hubs, e.g. the incidence
+graph of GQ(3,3)) removes the hub limit; hub edges also give coverage routes ((p_i,0) -> z_i -> z'_j -> (l_j) -> points
+of l_j). dmhub now builds the hub graph first (exact distances), fills spare degree, and anneals sigma and hub edges
+jointly against coverage-with-hub-routes. With c1's 9th flag this gave coverage 0 in ~2 minutes, then dmfast_hub with
+the same hub graph and a hot polish: **4,836 VALID**. Verdict: the cards showed that symmetric and exact routes stop
+at 8; the gain came from co-designing the hub graph, which the cards' negative results pointed to.
