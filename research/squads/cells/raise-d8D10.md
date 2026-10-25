@@ -39,3 +39,10 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
 - 07:43 UTC (≈ 930 s in): no solve yet. Best cost / evals: C sl 83×Z7 (N 4,001,928, μ 31.1) cost 1 at 2.8e5 evals;
   A sl 27×Z199 (3,911,544, μ 23.2) cost 3 at 3.1e5; B sl 37×Z79 (3,998,664, μ 30.8) cost 3 at 3.6e5; D sl 29×Z163
   (3,970,680, μ 28.2) cost 9 at 2.4e5.
+
+## RECORD 1: sl 37 × Z79, 7,997,328 vertices (+2.3 % over 7,818,096)
+- File: research/frontier/sols/d8D10_sl_37_79_orb3_s1.txt (sha256 e2dea96188f6d95b852a4d8cd90f8207eeb0447456baccf4f3ae44e6b0f890fe).
+  Log: research/structured/runs/raise-d8D10/B/d8D10_sl_37_79_orb3_s1.log. ORBIT="3 2 2", μ = 30.8, 586,777 evaluations, 1,533 s.
+- Checks: haar_sym full diameter check OK; orbq queue's build_haar2.py: VALID (ecc 10 both sides, 7,997,328 vertices);
+  tools/hcsl: VALID; tools/hc2: VALID.
+- The ladder is working above μ ≈ 30: each solve took 2–25 min, so the next rung is N > 3,998,664.
