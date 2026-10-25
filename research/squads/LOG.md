@@ -86,3 +86,6 @@ Kept: the finding (three independent implementations, q = 3, 5, 7, 9) and the k 
 k = 3 rungs with ORBW=3: PSL(2,59) × Z19 solved (545,857 evaluations): **3,901,080, build_haar2 VALID**; PSL(2,37) ×
 Z79 (μ 44.1), PSL(2,29) × Z163 (40.6), PSL(2,31) × Z133 (39.1) stopped at one uncovered orbit (cost 3–6).
 Squad value: high for verification (c1, c2, c8 made the invalidity claim independent), nothing new for constructions.
+After the round (Opus): PSL(2,67) × Z13 solved on seed 2 in 76 s (seed 1 stuck at cost 3 for 20 min): **3,909,048,
+build_haar2 VALID**, the job's best valid (12,8) graph. 16 short seeds at μ 37–44 did not solve (best cost 3). No
+round 3: the target 4,650,100 is not a valid graph, and nothing we have reaches it validly (Haar ceiling 4,529,596).

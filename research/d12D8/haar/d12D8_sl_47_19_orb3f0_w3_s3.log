@@ -4,3 +4,17 @@ alpha: conj by mat(44,18,28,4) (index 98023), z -> 7 z on Z_19
 ORBIT k=3 m=4 f=0: |Fix(alpha)| = 47 (+e); mu = 37.45, mu/k = 12.48, fixed-point misses ~ 1.28
 ORBW=3: an uncovered fixed element weighs 3; start energy 48
 start cost=46
+t=30 steps=1848 evals=14785 cost=6 best=6 T=0.53 energy=6 bestE=6
+t=60 steps=3858 evals=30865 cost=9 best=6 T=0.19 energy=9 bestE=6
+t=90 steps=5854 evals=46833 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=120 steps=7672 evals=61377 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=150 steps=9536 evals=76289 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=180 steps=11473 evals=91785 cost=6 best=6 T=1.09 energy=6 bestE=6
+t=210 steps=13414 evals=107313 cost=12 best=6 T=0.39 energy=12 bestE=6
+t=240 steps=15277 evals=122217 cost=7 best=6 T=0.15 energy=9 bestE=6
+t=270 steps=17201 evals=137609 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=300 steps=19149 evals=153193 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=330 steps=21213 evals=169705 cost=12 best=6 T=1.09 energy=12 bestE=6
+t=360 steps=23181 evals=185449 cost=9 best=6 T=0.39 energy=9 bestE=6
+t=390 steps=25045 evals=200361 cost=6 best=6 T=0.15 energy=6 bestE=6
+RESULT d=12 D=8 group=sl 47 x Z_19 N=1971744 best=6 evals=205441 time=400.0 orbit k=3 m=4 f=0 fix=47

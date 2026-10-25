@@ -5,3 +5,24 @@ ORBIT k=3 m=4 f=0: |Fix(alpha)| = 26 (+e); mu = 33.99, mu/k = 11.33, fixed-point
 ORBW=3: an uncovered fixed element weighs 3; start energy 78
 start cost=76
 t=30 steps=1584 evals=12673 cost=9 best=9 T=0.53 energy=9 bestE=9
+t=60 steps=3201 evals=25609 cost=9 best=9 T=0.19 energy=9 bestE=9
+t=90 steps=4946 evals=39569 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=120 steps=6617 evals=52937 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=150 steps=8223 evals=65785 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=180 steps=9820 evals=78561 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=210 steps=11452 evals=91617 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=240 steps=13296 evals=106369 cost=9 best=6 T=0.71 energy=9 bestE=6
+t=270 steps=14934 evals=119473 cost=9 best=6 T=0.25 energy=9 bestE=6
+t=300 steps=16651 evals=133209 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=330 steps=18235 evals=145881 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=360 steps=19942 evals=159537 cost=4 best=6 T=0.15 energy=6 bestE=6
+t=390 steps=21695 evals=173561 cost=9 best=6 T=0.71 energy=9 bestE=6
+t=420 steps=23322 evals=186577 cost=12 best=6 T=0.25 energy=12 bestE=6
+t=450 steps=25117 evals=200937 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=480 steps=26863 evals=214905 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=510 steps=28517 evals=228137 cost=9 best=6 T=0.15 energy=9 bestE=6
+t=540 steps=30250 evals=242001 cost=6 best=6 T=0.71 energy=6 bestE=6
+t=570 steps=32105 evals=256841 cost=6 best=6 T=0.25 energy=6 bestE=6
+t=600 steps=33988 evals=271905 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=630 steps=35848 evals=286785 cost=6 best=6 T=0.15 energy=6 bestE=6
+RESULT d=12 D=8 group=psl 27 poly x^3+2x+1 x Z_199 N=1955772 best=6 evals=291809 time=640.7 orbit k=3 m=4 f=0 fix=26
