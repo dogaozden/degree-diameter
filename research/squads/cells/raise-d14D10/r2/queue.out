@@ -1,0 +1,11 @@
+14:27:38 start d14D10_psl_157_349_orb3_s2
+research/structured/tools/orbq.sh: line 33:  1007 Killed                  env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
+14:29:30 done  d14D10_psl_157_349_orb3_s2: 
+14:29:30 start d14D10_psl_281_61_orb3_s2
+16:00:40 done  d14D10_psl_281_61_orb3_s2: RESULT d=14 D=10 group=psl 281 x Z_61 N=676726680 best=6 evals=7305 time=5346.6 orbit k=3 m=4 f=2 fix=140 
+16:00:47 start d14D10_psl_157_349_orb3_s2
+16:50:54 done  d14D10_psl_157_349_orb3_s2: RESULT d=14 D=10 group=psl 157 x Z_349 N=675268932 best=0 evals=2897 time=2114.2 orbit k=3 m=4 f=2 fix=77 VALID d=14 D=10 group=psl 157 x Z_349 N=675268932 vertices=1350537864 (distinct generators, 14-regular simple) 
+16:51:14 start d14D10_psl_163_313_orb3_s2
+18:22:18 done  d14D10_psl_163_313_orb3_s2: RESULT d=14 D=10 group=psl 163 x Z_313 N=677736396 best=1 evals=7369 time=5350.5 orbit k=3 m=4 f=2 fix=80 
+18:22:33 start d14D10_psl_181_229_orb3_s2
+19:53:36 done  d14D10_psl_181_229_orb3_s2: RESULT d=14 D=10 group=psl 181 x Z_229 N=678934620 best=6 evals=3609 time=5369.2 orbit k=3 m=4 f=2 fix=89 
