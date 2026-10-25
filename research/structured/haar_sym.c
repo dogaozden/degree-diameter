@@ -914,6 +914,17 @@ static long long fixmiss(uint64_t **sv) {
     }
     return m;
 }
+/* DUMPFIX=1: print the uncovered alpha-fixed elements of a saved coverage (same test as fixmiss). */
+static int DUMPFIX = 0;
+static void dumpfix(uint64_t **sv) {
+    for (int t = 0; t < (D % 2 ? 2 : 1); t++) {
+        const uint64_t *V = sv[t];
+        for (long long i = -1; i < NFIX; i++) { int g = i < 0 ? ident : FIXL[i], cov;
+            if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+            else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+            if (!cov) { char buf[1000]; desc_elem(g, buf); fprintf(stderr, "UNCOV-FIX side %d fixidx %lld elem %d: %s\n", t, i, g, buf); } }
+    }
+}
 /* full diameter check of the current S; f = 0: normalise to S s_0^-1 (an isomorphic Haar graph, (g,A) -> (s_0 g, A))
  * so that the first generator is e, and check again; then write the solution file.  Returns 1 iff written. */
 static int check_and_write(ctx *c0, const char *out) {
@@ -980,6 +991,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
+    if (getenv("DUMPFIX")) DUMPFIX = atoi(getenv("DUMPFIX"));
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
@@ -1027,6 +1039,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             c = craw[bt]; ce = cs[bt]; cE = bE; collect_saved(SV[bt]);
         }
         steps++; ohash = (ohash ^ (unsigned long long)(cs[bt] * 1000003 + bt * 7 + (c == cs[bt]))) * 1099511628211ULL;
+        if (DUMPFIX && c <= 1 && ce < bestE) { fprintf(stderr, "DUMP step=%lld raw=%lld energy=%lld\n", steps, c, ce); dumpfix(SV[bt]); }
         if (ce < bestE) { best = c; bestE = ce; memcpy(bestS2, S, sizeof(int) * d); lastimp = ONOW; lastimpstep = steps; }
         T = TMAX * pow(0.5, (ONOW - lastheat) / COOL); if (T < TMIN) T = TMIN;
         if (ONOW - lastimp > REHEAT && steps - lastimpstep > REHEATSTEPS) {
