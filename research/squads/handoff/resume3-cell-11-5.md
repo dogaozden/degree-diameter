@@ -22,7 +22,8 @@ branch; draft PR #388).
 ## Open (in order)
 1. **n = 587 (7,044).** Best structural cost 148 (research/d11D5/inc/inc2/n587_best148.in, a pair added to the 7,032
    base). Annealing plateaus at 150-230 whatever the start (8- or 9-flag switch, incremental or two pairs at once,
-   T0 3-20, 91 points near the first pair frozen), and wpo drifts up from there. A single pair into W(8) reaches 10
+   T0 3-20, 91 points near the first pair frozen, sigma of the new pair crossed with the first, 1,100 s anneals), and
+   wpo drifts up from there. A single pair into W(8) reaches 10
    then 0 with the same tools, so the two pairs interfere through sigma. Ideas not tried: wpo with weights only on the
    triples of the newest pair; a lazy SAT/CP model for sigma with the base fixed (each coset +-1 triple (s, v) is one
    clause over the values of sigma(s) (route a) and of sigma on the points collinear with s (route b)); a design that
@@ -31,9 +32,10 @@ branch; draft PR #388).
    inc/pipeline.sh in about 10 minutes. Needs the coordinator's check. (The first W(7)+1 base, from squad r3 c4, stays
    at one violated parity pair: every sigma swap that would cover it breaks the structure.)
 3. **The same recipe at (14,5)**: W(11) + one pair gives 17,580 > 17,568. Base with the DM sigma and nu:
-   research/d11D5/inc/wq/w11_dm.in/.nu; the run of this session is research/d11D5/inc/wq/run/W11.* (see its .out for
-   where it stopped). Command: `SEED=111 SASECS=900 ./pipeline.sh wq/run/w11p1.in wq/run/w11p1.nu wq/run/W11 14 5`
-   from research/d11D5/inc after `python3 addpair.py wq/w11_dm.in wq/w11_dm.nu b 1 wq/run/w11p1.in wq/run/w11p1.nu 1464`.
-   Evaluations cost 10 ms at this size, so give the annealer 2,000+ CPU s. W(9) and W(7) + one pair are done.
+   research/d11D5/inc/wq/w11_dm.in/.nu. This session: start research/d11D5/inc/wq/run/w11p1.in (cost 5,864), po7
+   900 s -> 508, colder 400 s -> 318; a separate 1,700 s anneal -> 118 (wq/run/W11L.in), then a colder anneal (see
+   wq/run/W11chain2.out for where it stopped). At this size one evaluation takes 10 ms, so the annealer needs a few
+   thousand CPU seconds; then wpo (from <= ~30), then `TARGET=1 GCAP=40000000 WMAX=400000 nujoint` with
+   NU=wq/run/w11p1.nu, then finish.sh with d = 14.
 4. The counting ceiling of the family is 14,796 at (11,5) (n <= 1,233), so the room is large; what is missing is a
    structural search that handles several new pairs at once.
