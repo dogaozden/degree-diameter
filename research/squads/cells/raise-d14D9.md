@@ -3,7 +3,12 @@
 Session: `claude/raise-d14d9-haar-jq8m8d` (Haiku worker, 2026-10-25). Table value 95,087,738 (DS14v2, Table 4).
 Bipartite Moore bound 1,767,416,562.
 
-**Record to beat: 116,068,656 vertices** = 2N, N = 58,034,328 = |SL(2,67) × Z193|, orbit search k=3, m=4, f=2
+**Current best: 116,211,120 vertices** = 2N, N = 58,105,560 = |SL(2,59) × Z283|, orbit search k=3, m=4, f=2
+(`research/frontier/sols/d14D9_sl_59_283_orb3_s1.txt`, μ = 14.43, 441 evaluations, 118 s). Verified by haar_sym's
+diameter check, `tools/hcsl` and `tools/hc2` (both VALID, ecc 9 from both sides). sha256 of the solution file
+4f5834735617679254cb0b788484feaf54082c698fa191c56d2049454fc3d661.
+
+Previous record (the one this job started from): 116,068,656 = 2N, N = 58,034,328 = |SL(2,67) × Z193|
 (`research/frontier/sols/d14D9_sl_67_193_orb3_s1.txt`, μ = 14.14, 3,409 evaluations, 1,155 s).
 
 ## Method
@@ -42,5 +47,5 @@ Note: `tools/orbq.sh` and `pool.sh` are not executable in this checkout; run the
 |---|---|---|---|---|---|---|
 | sl 37 × Z1147 | 58,056,552 | 116,113,104 | 14.23 | 35 | yes (HW 222) | pending |
 | sl 31 × Z1951 | 58,061,760 | 116,123,520 | 14.25 | 29 | **no** (fallback, slower) | pending |
-| sl 59 × Z283 | 58,105,560 | 116,211,120 | 14.43 | 59 | yes (HW 118) | pending |
+| sl 59 × Z283 | 58,105,560 | 116,211,120 | 14.43 | 59 | yes (HW 118) | **SOLVED** at 441 evals (118 s), VALID by haar_sym, hcsl, hc2. New record. |
 | psl 41 × Z1687 | 58,100,280 | 116,200,560 | 14.41 | 20 | yes (HW 241) | pending |
