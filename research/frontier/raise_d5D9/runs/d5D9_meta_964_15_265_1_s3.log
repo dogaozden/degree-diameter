@@ -1,0 +1,18 @@
+group meta 964 15 265 x Z_1, N=14460, identity 0, H order 60, rows 241, threads 1, setup 0.00s
+start cost=14460
+t=30 steps=132649 evals=1061193 cost=4 best=4 T=0.53
+t=60 steps=264873 evals=2118985 cost=4 best=4 T=0.19
+t=90 steps=401860 evals=3214881 cost=4 best=4 T=0.15
+t=120 steps=535347 evals=4282777 cost=4 best=4 T=0.15
+t=150 steps=674038 evals=5392305 cost=4 best=4 T=0.15
+t=180 steps=797405 evals=6379241 cost=4 best=4 T=0.66
+t=210 steps=934714 evals=7477713 cost=2 best=2 T=0.23
+t=240 steps=1071757 evals=8574057 cost=2 best=2 T=0.15
+t=270 steps=1197961 evals=9583689 cost=2 best=2 T=0.15
+t=300 steps=1336991 evals=10695929 cost=2 best=2 T=0.15
+t=330 steps=1473096 evals=11784769 cost=2 best=2 T=0.15
+t=360 steps=1610497 evals=12883977 cost=4 best=2 T=0.84
+t=390 steps=1744146 evals=13953169 cost=4 best=2 T=0.30
+t=420 steps=1881046 evals=15048369 cost=4 best=2 T=0.15
+t=450 steps=2014533 evals=16116265 cost=4 best=2 T=0.15
+RESULT d=5 D=9 group=meta 964 15 265 x Z_1 N=14460 best=2 evals=17112161 time=480.0
