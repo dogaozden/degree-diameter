@@ -51,7 +51,7 @@ Base files: H(q) for q = 5, 7, 11, 13 from `research/cell147/gh_build.c` (`./gh_
 | (12,7) | d12D7_n664900 | 664,900 | 664,300 (table) | H(9), j = 2, 300 | flags_q9_orbit5_150.txt | uhcheck all sources, apsp_cyc VALID |
 | (13,7) | d13D7_n1063416 | 1,063,416 | 1,062,936 (table) | H(11), j = 1, 240 | flags_q11_orbit4_240.txt | uhcheck all sources |
 | (15,7) | d15D7_n2481624 | 2,481,624 | 2,480,184 (table) | H(11), j = 3, 720 | flags_q11_orbit4_240.txt | uhcheck all sources |
-| (16,7) | d16D7_n4023516 | 4,023,516 | 4,022,340 (table) | H(13), j = 2, 588 | flags_q13_phase294.txt (order-7 phase classes, C = 11) | uhcheck: see d16D7_n4023516_uhcheck.txt |
+| (16,7) | d16D7_n4023516 | 4,023,516 | 4,022,340 (table) | H(13), j = 2, 588 | flags_q13_phase294.txt (order-7 phase classes, C = 11) | uhcheck all sources (6,669 s, 4 threads) |
 
 Superseded files kept for the record: d9D7_n117816 (84 spread flags), d9D7_n117824 (88 orbit flags), d10D7_n224798 (52 units, random scan),
 d11D7_n398856 and d12D7_n664852 (138 GF(9) spread flags), d16D7_n4023348 (252 secant flags). All of them were checked the
