@@ -14,3 +14,7 @@ One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct
 - Four untried metacyclic groups at 150 s: best costs 6–16. Stopped the rest of the queue.
 - Long run 1,200 s on Z_422⋊35 (r = 5), seed 204: cost 0 at 220 s → **record 29,540** (N = 14,770), build_haar2 and apsp VALID.
   File research/frontier/sols/d5D9_meta_422_35_5_s204_n29540.txt.
+- Untried groups above 14,770 (600 s each): best cost 2 on Z_346⋊43 r=29; others 4–11. Long runs on Z_346⋊43 r=29 (1,200 s,
+  seeds 401–403) and Z_991⋊15 r=71 (seed 401): no solve.
+- Short restarts on Z_346⋊43 r=29 (seeds 601–604 at 600 s, 611–618 at 300 s): seed 613 cost 0 at 7.8 s → **record 29,756**
+  (N = 14,878). build_haar2 and apsp VALID. File research/frontier/sols/d5D9_meta_346_43_29_s613_n29756.txt.

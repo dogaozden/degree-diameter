@@ -136,3 +136,23 @@ f3004a3b3dec30384cc7747e9d863c593d6c4a521b701c61c4dbf5ee80d73e87).
 Checks: research/frontier/build_haar2.py VALID (ecc 9 from both sides, n = 29,540, max = min degree 5, no repeats);
 research/lifts/coordinator_check/apsp.c (all-pairs BFS) VALID, bipartite, diameter 9.
 Coordinator re-check still needed. The next bar is |G| ≥ 14,771 (graph ≥ 29,542).
+
+### Untried groups just above the new order (600 s each, seed 301)
+
+Groups above N = 14,770 that round 1 never ran, taken from its screen (p1 ≤ 60): Z_346⋊43 r=29 (14,878) best cost **2**
+(r=23: 4); Z_1651⋊9 r=68, r=22 (14,859): 6; Z_1235⋊12 r=7 (14,820): 7; Z_496⋊30 r=7 (14,880): 6; Z_1241⋊12 r=81 and
+r=64 (14,892): 6 and 8. Z_346⋊43 r=29 is the lead for the next bar.
+
+Next: 1,200-s runs on Z_346⋊43 r=29 (seeds 401–403) and Z_991⋊15 r=71 (seed 401).
+
+### New record: 29,756 vertices (round 2, second record)
+
+Haar graph of G = Z_346 ⋊_29 Z_43 (order 14,878; r = 29 is a unit mod 346 with order exactly 43), 5-regular, diameter 9,
+bipartite. S as (a, j), a ∈ Z_346, j ∈ Z_43: (0,0), (249,8), (58,9), (284,41), (265,16).
+Found by haar_sym (FAST=2, K = 8, THREADS=1) at seed 613 after 7.8 s (7.1·10⁵ evaluations), in a short-restart batch of
+eight seeds × 300 s on this group. Earlier seeds on the same group: 10 runs, best cost 2 (none solved), so the solve was
+a heavy-tail event, as in round 1.
+File: research/frontier/sols/d5D9_meta_346_43_29_s613_n29756.txt (sha256 of the edge list
+1f1d8ef6d96780894804f60e7220be34bfe0c7aa6d5d44dcd11f86e5036e1e4a).
+Checks: build_haar2.py VALID (ecc 9 from both sides, n = 29,756, max = min degree 5, no repeats); apsp.c VALID
+(bipartite, diameter 9). Coordinator re-check still needed. The next bar is |G| ≥ 14,879 (graph ≥ 29,758).
