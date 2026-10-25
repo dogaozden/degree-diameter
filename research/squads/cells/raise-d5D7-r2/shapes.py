@@ -11,7 +11,8 @@ from math import comb
 from fam import ecc_ok
 import r2sweep as R
 
-LIMIT = int(os.environ.get("LIMIT", "30000"))
+LIMIT = int(os.environ.get("LIMIT", "5000"))
+FIXMAX = int(os.environ.get("FIXMAX", "40"))   # skip alphas with more fixed points (round 1: small Fix separates good families)
 
 def perm_order(a, idn):   # order of the permutation a
     y = a.copy(); o = 1
@@ -62,6 +63,7 @@ def run(name, spec, k, m, f, verbose=True):
         orb = orbits_of(a, idn)
         fixed = [x[0] for x in orb.get(1, []) if x[0] != e]
         korb = orb.get(k, [])
+        if len(fixed) + 1 > FIXMAX: continue
         ntot = comb(len(fixed), f - 1) * comb(len(korb), m) if f >= 1 else comb(len(korb), m)
         hit = None; tried = 0
         if ntot <= LIMIT:

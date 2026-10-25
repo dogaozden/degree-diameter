@@ -79,36 +79,44 @@ Moore bound 10,922. Any Haar graph with N ≥ 1,561 (2N ≥ 3,122) is a new reco
 Record to beat: still 3,120 (N = 1,560, PGL(2,5) x Z13). Target: any 5-regular bipartite graph on 2N >= 3,122 vertices
 with diameter 7. Round 1's branch is merged in, and round 1's families are not repeated.
 
-Tools (research/squads/cells/raise-d5D7-r2/, logs in its logs/):
+Tools (research/squads/cells/raise-d5D7-r2/; logs in its logs/):
 - `r2sweep.py`: exhaustive family S = {e,t} + alpha-orbit(3), t in Fix(alpha), for any group built from a multiplication
   table (permutation-generated factors x cyclic/abelian factors). alpha ranges over conjugation classes of order-3
   elements (and identity) times every z -> r z with r^3 = 1. Uses round 1's `fam.py` BFS check. Validation: on
   PGL(2,5) x Z13 it reproduces the known hit (|Fix| = 6, 18 s).
-- `shapes.py`: other orbit shapes (k, m, f) = (5,1,0), (4,1,1), (2,2,1), (2,1,3), alpha of order 2, 4, 5. Exhaustive
-  up to 30,000 candidates per family, random sample above.
+- `shapes.py`: other orbit shapes (k, m, f) = (5,1,0), (4,1,1), (2,2,1), (2,1,3), alpha of order 2, 4, 5. Random sample of
+  5,000 candidates per family, families with |Fix| > 40 skipped.
 - `r2frob.py`: outer (Frobenius) order-3 automorphisms of AGL(1,8) x Z_n, which the inner-only sweep cannot produce.
 - `insert_exp.py`, `sa_insert.py`: non-symmetric route (see below).
 
-### Results
-1. **Orbit families, 40 groups of order 1,568..1,692** (batch 1: S4, SL(2,3), A4 x Z_n; PGL(2,7), PSL(2,7), SL(2,7) x Z_n;
-   AGL(1,8), AGammaL(1,8), AGL(1,9), AGammaL(1,9), AGL(1,7), AGL(1,11) x Z_n; S3 x S4, A4 x A4, S3 x A4, A5 x Z27,
-   S5 x Z14, PGL(2,5) x Z14; and the record group as validation). 40 groups, all order-3 alphas, all exhaustive:
-   **no hit**. Smallest |Fix(alpha)| seen: 3 (14 families) and 6, 8, 12 (no hits). Logs: logs/sweep_*.txt.
-   Batch 2 (A4 x Z2 x Z_n, A4 x Z3 x Z_n, S3 x S3 x Z_n, S4 x Z3 x Z_n, A5 x Z2 x Z14, PSL(2,7) x Z2 x Z5,
-   AGL(1,8) x Z2 x Z14, AGL(1,9) x Z2 x Z11, AGL(1,5) x Z_n for n = 79..85, S3 x Z2 x Z131): logs/sweep2_0.txt.
-2. **Outer Frobenius alphas on AGL(1,8) x Z28 and x Z29**: exhaustive, no hit (logs/frob_agl18.txt).
-3. **Other orbit shapes** with alpha of order 2, 4, 5 on the same groups: logs/shapes_*.txt (capped at 30,000
-   candidates per family). See the status line below.
+### Results (all searched, no hit)
+1. **Orbit families (order-3 shape), 66 groups** of order 1,560 (validation) to 1,692, every order-3 alpha, exhaustive:
+   - batch 1 (40 groups): S4, SL(2,3), A4 x Z_n (n = 66..70 and 131..141 as fits); PGL(2,7), PSL(2,7), SL(2,7) x Z_n;
+     AGL(1,8), AGammaL(1,8), AGL(1,9), AGammaL(1,9), AGL(1,7), AGL(1,11) x Z_n; S3 x S4, A4 x A4, S3 x A4 x Z_n;
+     A5 x Z27, S5 x Z14, PGL(2,5) x Z14; S3 x S4 x Z11; plus the record group as validation.
+   - batch 2 (26 groups): A4 x Z2 x Z_n, A4 x Z3 x Z_n, S3 x S3 x Z_n, S4 x Z3 x Z_n, A5 x Z2 x Z14, PSL(2,7) x Z2 x Z5,
+     AGL(1,8) x Z2 x Z14, AGL(1,9) x Z2 x Z11, AGL(1,5) x Z_n for n = 79..85.
+   - Smallest |Fix(alpha)| tried: 3 (14 families); 6, 8, 12 also tried. No family gives cost 0.
+   - Logs: logs/sweep_*.txt, logs/sweep2_0.txt.
+2. **Outer Frobenius alphas on AGL(1,8) x Z28 and x Z29** (conjugates of x -> x^2 composed with inner conjugations and
+   z -> r z): exhaustive, no hit (logs/frob_agl18.txt).
+3. **Other orbit shapes**, alpha of order 2, 4, 5, on the same 66 groups: 164 group x shape runs complete, no hit
+   (logs/shapes_*.txt was a first attempt with a 30,000 cap and was stopped by its timeout; logs/shapes2_*.txt and
+   logs/shapes3_*.txt are the completed capped runs). The record group itself gives no hit for these shapes either.
 4. **Non-symmetric route: insert two vertices into the record.** Remove a 5-matching (a_i, b_i) of the 3,120-vertex
    Haar graph, join one new A-vertex to the b_i and one new B-vertex to the a_i. The result is 5-regular, bipartite,
-   on 3,122 vertices. It has about 1,100 to 1,450 ordered pairs at distance > 7 (random matchings; 6 starts gave 1,106
-   as the best). A bipartite double-edge switch from there changes the count by +284 or more in every one of 40 trials,
-   so the annealer accepted nothing. **Negative result:** the record is too rigid for local repair.
+   on 3,122 vertices. It has 1,106, 1,134 or 1,454 ordered pairs at distance > 7 (three random matchings tried). From
+   there, 39 random valid bipartite double-edge switches each raised the count by at least 284, so the annealer
+   (T0 = 20) accepted nothing. **Negative result:** the record is too rigid for local repair.
 
-### Judgement
-- No candidate >= 3,122 found across ~32 million evaluated S-candidates in symmetric families (exhaustive per family).
-- The orbit lever is spent on the groups it can reach: every new order-3 family with a small fixed set gives cost > 0.
-- Open leads not tried: (a) bi-Cayley / voltage lifts over a base of 4 vertices (2 + 2) with a group of order >= 781
-  (non-Haar, so the symmetric families above do not cover them); (b) non-split extensions and 2-groups of order
-  1,568..1,700, which no grammar here builds; (c) orbit shapes with alpha of order 3 combined with a second
-  outer automorphism. I did not start (a) in this round: it needs a new multi-orbit lift search, not a sweep.
+Total: about 1.3 x 10^8 candidate sets S checked by the BFS test (log counts), no candidate on 2N >= 3,122.
+
+### Judgement and stop
+- The symmetric families I can build (order-3 orbit shape and shapes of order 2, 4, 5, over 66 groups and all
+  inner and Frobenius alphas) are exhausted. None reaches diameter 7 at N >= 1,561.
+- Stopping here, as the brief allows. The methods that could still move the cell are the open leads below, and none
+  is a sweep:
+  (a) bi-Cayley / voltage lifts over a base of 4 vertices (2 + 2) with a group of order >= 781 (non-Haar, so the Haar
+      families above do not cover them). This needs a new multi-orbit lift search.
+  (b) non-split extensions and 2-groups of order 1,568..1,700, which no grammar here builds (needs a small-group library,
+      e.g. GAP, which this box does not have).
