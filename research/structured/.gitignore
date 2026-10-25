@@ -5,5 +5,5 @@ hcsl
 hc2
 haarcheck_psl
 # live anneal logs (rewritten while running); snapshots are committed as *.snap.log
-research/structured/runs/raise13/*.log
-!research/structured/runs/raise13/*.snap.log
+runs/raise13/*.log
+!runs/raise13/*.snap.log
