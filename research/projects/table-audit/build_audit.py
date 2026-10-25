@@ -39,6 +39,16 @@ def load_records():
     return out
 
 
+def repo_files_named(n):
+    """Tracked files (outside records/bipartite_dd, already re-checked) whose file name contains the order n."""
+    import subprocess
+    root = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+    files = subprocess.run(["git", "ls-files"], cwd=root, capture_output=True, text=True).stdout.splitlines()
+    pat = re.compile(r"(?<![0-9])%d(?![0-9])" % n)
+    return [f for f in files if not f.startswith("records/bipartite_dd/") and pat.search(os.path.basename(f))
+            and not f.endswith(".lean") and not f.endswith(".md")]
+
+
 def main():
     cells = list(csv.DictReader(open(os.path.join(HERE, "cells.csv"), encoding="utf-8")))
     moore = load_moore()
@@ -68,7 +78,10 @@ def main():
                 row["notes"] = ("our record exceeds the table value; the table's own construction was not traced"
                                 if c["beaten"] == "yes" else "")
             elif c["beaten"] == "yes":
-                row["notes"] = "beaten by our record, but its graph file was not re-checked in this session"
+                found = repo_files_named(int(c["ours"]))[:2]
+                row["notes"] = ("beaten by our record; the file(s) in the repo were not re-checked: " + ", ".join(found)
+                                if found else "beaten by our record; no graph file for it found in the repo "
+                                              "(the record was built by a generator or certificate not re-run here)")
             else:
                 row["notes"] = "not beaten and no graph of this order found in the repo; construction not traced"
         if c["status"] == "opt":
