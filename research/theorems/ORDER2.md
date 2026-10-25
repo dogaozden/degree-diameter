@@ -56,8 +56,9 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    than e^{−λ/2}, and the Anti penalty nearly vanishes (§3.5). Measured at (12,7): Anti elements of the Frobenius
    involution on SL(2,64) are missed only 1.7× as often as generic ones (predicted 1.9; without palindromes 41).
    The formula also explains the first session's unexplained (6,9) numbers. Consequence: **at odd D an order-6
-   symmetry whose involution is tight and balanced has about half the uncovered clumps of order 3.** Three screens:
-   SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9) (§5.5).
+   symmetry whose involution is tight and balanced has about half the uncovered clumps of order 3.** Screens on four
+   groups: SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9), and SL(2,64)×Z403 at (15,9). On the last one, making
+   the involution unbalanced (only the action on Z403 changes) multiplies the minimum cost by 18–36 (§5.5).
 5. **The fixed points are not the issue** at D = 8: 24 fixed points cost 24·e^{−λ/2} ≈ 1.1 missed elements.
 6. **Corrected rule** (§4). Count uncovered clumps, μ_A = μ/k + Σ_H (fixed points of H at e^{−λ/|H|}) + [odd D]
    (Anti elements of each involution at e^{−λ/2−π}, π = palindromic shots); prefer the symmetry with the smallest μ_A,
@@ -156,8 +157,9 @@ and S ↦ S⁻¹ swaps the sides.) If S is ⟨α⟩-invariant, then T(S) is ⟨�
 ⟨α⟩ in this group E of maps, and only for those once Stab_E(S) = ⟨α⟩. So the valid sets of the symmetric search space
 come in whole **classes** of size |N_E(⟨α⟩)| / |Stab(S)|. If one solution exists, then
 P(random symmetric S is valid) ≥ (class size)/(number of symmetric S).
-- For SL(2,q) the maps with a, b ∈ Fix(α) and ψ normalising ⟨α⟩ already give the whole class. A Lang–Steinberg count
-  for the Frobenius involution, and a direct count for conjugation, give the class sizes at (6,8) on SL(2,25):
+- In the three cases below, the maps with a, b ∈ Fix(α) and ψ normalising ⟨α⟩ already give the whole class. For the
+  two involutions this follows from counting all of N_E (a Lang–Steinberg count for Frobenius, a direct count for
+  conjugation); for order 3, from the sampling frequency below. The class sizes at (6,8) on SL(2,25) are:
   28,800 sets (Frobenius x ↦ x⁵, |Fix| = 120), 2,304 (conjugation by a trace-0 matrix, |Fix| = 24) and 1,536
   (conjugation of order 3; here N_E(⟨α⟩) also contains the maps that invert α).
 - Checks: `order2/classsize68.py` enumerates the classes by brute force (`out/classes68/classsize_bruteforce.txt`). The
@@ -751,6 +753,19 @@ row: 3,000 at (12,7), 40 at (14,9), 16 at (15,9).
 - The first session's Anti term would have added 3–11 clumps to each order-6 row. Measured, they carry less than one.
 - The product group PSL(2,25)² mixes poorly at (14,9): the order-3 median, 242, is 4× the Poisson value. So it is no
   candidate, although its order is +4.8 % over the record.
+
+**Negative control: balance is what matters.** Same group SL(2,64)×Z403 at (15,9), same Frobenius of order 6 on
+SL(2,64). Only the multiplier on Z403 changes, and with it how α³ acts on the cyclic part (16 samples each,
+`runs/r2/ro159_*`):
+
+| α³ on Z403 | the involution α³ | rule μ_A | min cost | p10 cost |
+|---|---|---|---|---|
+| fixes Z13, negates Z31 (r = 367) | tight, balanced: \|Fix\| = 6,552, \|Anti\| = 16,120 | 7.2 | 38 | 76 |
+| negates all (r = 212) | tight, unbalanced: \|Fix\| = 504, \|Anti\| = 209,560, π = 0.21 | 36.4 | 1,363 | 1,692 |
+| fixes all (r = 315) | \|Fix\| = 203,112 | 42.4 | 678 | 690 |
+
+The unbalanced variants have 18–36 times the minimum cost. The rule orders all three correctly, but underestimates
+the damage of the unbalanced ones by a factor 3–7.
 
 **Candidates near the D = 9 records** (balanced involution, Δ ≥ 12; rule values from `rule.py`):
 - **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
