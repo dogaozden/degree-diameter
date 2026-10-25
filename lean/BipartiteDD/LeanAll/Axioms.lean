@@ -5,6 +5,8 @@ import BipartiteDD.LeanAll.D10D5.Record
 import BipartiteDD.LeanAll.D11D5.Record
 import BipartiteDD.LeanAll.D12D5.Record
 import BipartiteDD.LeanAll.D13D5.Record
+import BipartiteDD.LeanAll.HaarD8D9.Record
+import BipartiteDD.LeanAll.HaarD11D8.Record
 
 /-! Axioms used by the lean-all record theorems. Run `lake env lean BipartiteDD/LeanAll/Axioms.lean`. -/
 
@@ -18,3 +20,5 @@ import BipartiteDD.LeanAll.D13D5.Record
 #print axioms nb_11_5_7020
 #print axioms nb_12_5_9840
 #print axioms nb_13_5_11486
+#print axioms nb_8_9_1326960
+#print axioms nb_11_8_2258520

@@ -518,4 +518,96 @@ theorem cover_of_batches_pm [hp : Fact p.Prime] [NeZero n] (hp2 : p ≠ 2) (P : 
 
 end Cover
 
+/-! ## Record forms over the quotient -/
+
+section Record
+
+open BipartiteDD.Haar
+
+theorem isLeftWord_map {K K' : Type*} [Group K] [Group K'] [DecidableEq K'] (f : K →* K') {S : Finset K} {k : ℕ}
+    {x : K} (h : IsLeftWord S k x) : IsLeftWord (S.image f) k (f x) := by
+  obtain ⟨w, hl, hm, hp⟩ := h
+  refine ⟨w.map (fun q => (f q.1, f q.2)), by simpa using hl, ?_, ?_⟩
+  · intro q hq
+    obtain ⟨q', hq', rfl⟩ := List.mem_map.1 hq
+    exact ⟨Finset.mem_image_of_mem f (hm q' hq').1, Finset.mem_image_of_mem f (hm q' hq').2⟩
+  · rw [← hp, map_list_prod, List.map_map, List.map_map]
+    congr 1
+    apply List.map_congr_left
+    intro q _
+    simp
+
+theorem isRightWord_map {K K' : Type*} [Group K] [Group K'] [DecidableEq K'] (f : K →* K') {S : Finset K} {k : ℕ}
+    {x : K} (h : IsRightWord S k x) : IsRightWord (S.image f) k (f x) := by
+  obtain ⟨w, hl, hm, hp⟩ := h
+  refine ⟨w.map (fun q => (f q.1, f q.2)), by simpa using hl, ?_, ?_⟩
+  · intro q hq
+    obtain ⟨q', hq', rfl⟩ := List.mem_map.1 hq
+    exact ⟨Finset.mem_image_of_mem f (hm q' hq').1, Finset.mem_image_of_mem f (hm q' hq').2⟩
+  · rw [← hp, map_list_prod, List.map_map, List.map_map]
+    congr 1
+    apply List.map_congr_left
+    intro q _
+    simp
+
+theorem degDiam_mono {V : Type*} {H : SimpleGraph V} {d d' D : ℕ} (h : BipartiteDD.IsBipartiteDegDiam H d D)
+    (hd : d ≤ d') : BipartiteDD.IsBipartiteDegDiam H d' D :=
+  ⟨h.1, fun v => (h.2.1 v).trans hd, h.2.2⟩
+
+variable {p n : ℕ}
+
+theorem pi_surj (y : PG p n) : ∃ x : G p n, pi x = y := QuotientGroup.mk'_surjective _ y
+
+/-- **The record form over `PSL(2, p) × Z_n`, odd diameter `2k + 1`.** Words in `S` for every element up to sign. -/
+theorem psl_record_odd [hp : Fact p.Prime] [NeZero n] (hp2 : p ≠ 2) (S : Finset (G p n)) (hS : S.Nonempty)
+    (k Δ : ℕ) (hc : S.card ≤ Δ) (hA : ∀ x : G p n, ∃ y, (y = x ∨ y = gneg * x) ∧ IsLeftWord S k y)
+    (hB : ∀ x : G p n, ∃ y, (y = x ∨ y = gneg * x) ∧ IsRightWord S k y) :
+    ∃ H : SimpleGraph (Fin (p * (p * p - 1) * n)), BipartiteDD.IsBipartiteDegDiam H Δ (2 * k + 1) := by
+  classical
+  letI : Fintype (PG p n) := Fintype.ofFinite _
+  have h := record_odd (S.image pi) (hS.image _) k
+    (fun y => by
+      obtain ⟨x, rfl⟩ := pi_surj y
+      obtain ⟨z, hz, hw⟩ := hA x
+      have := isLeftWord_map pi hw
+      rcases hz with rfl | rfl
+      · exact this
+      · rwa [pi_gneg_mul] at this)
+    (fun y => by
+      obtain ⟨x, rfl⟩ := pi_surj y
+      obtain ⟨z, hz, hw⟩ := hB x
+      have := isRightWord_map pi hw
+      rcases hz with rfl | rfl
+      · exact this
+      · rwa [pi_gneg_mul] at this)
+  have e : 2 * Fintype.card (PG p n) = p * (p * p - 1) * n := by
+    rw [Fintype.card_eq_nat_card, ← card_PG hp2]; ring
+  rw [e] at h
+  obtain ⟨H, hH⟩ := h
+  exact ⟨H, degDiam_mono hH (Finset.card_image_le.trans hc)⟩
+
+/-- **The record form over `PSL(2, p) × Z_n`, even diameter `2k + 2`.** -/
+theorem psl_record_even [hp : Fact p.Prime] [NeZero n] (hp2 : p ≠ 2) (S : Finset (G p n)) (k Δ : ℕ)
+    (hc : S.card ≤ Δ) (hA : ∀ x : G p n, ∃ y, (y = x ∨ y = gneg * x) ∧ ∃ s ∈ S, IsLeftWord S k (s⁻¹ * y)) :
+    ∃ H : SimpleGraph (Fin (p * (p * p - 1) * n)), BipartiteDD.IsBipartiteDegDiam H Δ (2 * k + 2) := by
+  classical
+  letI : Fintype (PG p n) := Fintype.ofFinite _
+  have h := record_even (S.image pi) k
+    (fun y => by
+      obtain ⟨x, rfl⟩ := pi_surj y
+      obtain ⟨z, hz, s, hs, hw⟩ := hA x
+      have := isLeftWord_map pi hw
+      rw [map_mul, map_inv] at this
+      refine ⟨pi s, Finset.mem_image_of_mem _ hs, ?_⟩
+      rcases hz with rfl | rfl
+      · exact this
+      · rwa [pi_gneg_mul] at this)
+  have e : 2 * Fintype.card (PG p n) = p * (p * p - 1) * n := by
+    rw [Fintype.card_eq_nat_card, ← card_PG hp2]; ring
+  rw [e] at h
+  obtain ⟨H, hH⟩ := h
+  exact ⟨H, degDiam_mono hH (Finset.card_image_le.trans hc)⟩
+
+end Record
+
 end BipartiteDD.LeanAll.HaarPSL

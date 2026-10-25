@@ -1,7 +1,7 @@
-/* haarcert.c: word certificates for Haar graphs of SL(2,p) x Z_n (project lean-all).
+/* haarcert.c: word certificates for Haar graphs of SL(2,p) x Z_n and PSL(2,p) x Z_n (project lean-all).
 
    usage: haarcert SOLFILE KIND OUT.bin
-     SOLFILE  research/frontier/sols format: "D D sl p n n N order", then the generators "idx mat(a,b,c,d) z=k"
+     SOLFILE  research/frontier/sols format: "D D sl|psl p n n N order", then the generators "idx mat(a,b,c,d) z=k"
      KIND     even  : x = s0 * (s1^-1 s2) (s3^-1 s4) ...      (L = D-1 letters, D even)
               left  : x = (s0^-1 s1) (s2^-1 s3) ...            (L = D-1 letters, D odd)
               right : x = (s0 s1^-1) (s2 s3^-1) ...            (L = D-1 letters, D odd)
@@ -10,13 +10,16 @@
      i = (a*(p-1) + (c-1))*p + d      if c != 0,
      i = p*p*(p-1) + (a-1)*p + b      if c == 0,
    so batch b (p*n slots) covers the indices [b*p*n, (b+1)*p*n). Missing elements abort with an error.
+   For psl (LeanAll/HaarPSL.lean) elements are sign-normalised matrices (c in 1..h, or c = 0 and a in 1..h, with
+   h = (p-1)/2) and the batch of (a,b,c,d,z) is a*h + (c-1) if c != 0, p*h + (a-1) if c == 0; the slot in the batch
+   is d*n + z if c != 0, b*n + z if c == 0. A word for x may evaluate to x or -x in SL(2,p) x Z_n.
    Every word is re-evaluated before it is written. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 
-static int P, NZ, DEG, DIAM;
+static int P, NZ, DEG, DIAM, PSL, HP;
 static int S[16][5];      /* a b c d z */
 
 typedef struct { int a, b, c, d, z; } El;
@@ -35,8 +38,14 @@ static El inv(El x) {
   return r;
 }
 static El gen(int u) { El r = { S[u][0], S[u][1], S[u][2], S[u][3], S[u][4] }; return r; }
+static El neg(El x) { El r = { (P - x.a) % P, (P - x.b) % P, (P - x.c) % P, (P - x.d) % P, x.z }; return r; }
 static long long idx(El x) {
   long long i;
+  if (PSL) {
+    if (x.c != 0 ? x.c > HP : x.a > HP) x = neg(x);
+    if (x.c != 0) return ((long long)x.a * HP + (x.c - 1)) * P * NZ + (long long)x.d * NZ + x.z;
+    return ((long long)P * HP + (x.a - 1)) * P * NZ + (long long)x.b * NZ + x.z;
+  }
   if (x.c != 0) i = ((long long)x.a * (P - 1) + (x.c - 1)) * P + x.d;
   else i = (long long)P * P * (P - 1) + (long long)(x.a - 1) * P + x.b;
   return i * NZ + x.z;
@@ -44,6 +53,17 @@ static long long idx(El x) {
 static int pinv(int x) { for (int y = 1; y < P; y++) if (x * y % P == 1) return y; return -1; }
 static El el_of(long long k) {
   El x;
+  if (PSL) {
+    long long bi = k / ((long long)P * NZ), j = k % ((long long)P * NZ);
+    x.z = (int)(j % NZ);
+    if (bi < (long long)P * HP) {
+      x.a = (int)(bi / HP); x.c = (int)(bi % HP) + 1; x.d = (int)(j / NZ);
+      x.b = (int)((((long long)x.a * x.d - 1) % P + P) % P * pinv(x.c) % P);
+    } else {
+      x.a = (int)(bi - (long long)P * HP) + 1; x.c = 0; x.b = (int)(j / NZ); x.d = pinv(x.a);
+    }
+    return x;
+  }
   long long i = k / NZ;
   x.z = (int)(k % NZ);
   long long half = (long long)P * P * (P - 1);
@@ -70,9 +90,11 @@ int main(int argc, char **argv) {
   if (!f) { perror("sol"); return 2; }
   char grp[16], w1[8], w2[8];
   long long order;
-  if (fscanf(f, "%d %d %15s %d %7s %d %7s %lld", &DEG, &DIAM, grp, &P, w1, &NZ, w2, &order) != 8 || strcmp(grp, "sl")) {
-    fprintf(stderr, "expected 'D D sl p n n N order'\n"); return 2;
+  if (fscanf(f, "%d %d %15s %d %7s %d %7s %lld", &DEG, &DIAM, grp, &P, w1, &NZ, w2, &order) != 8 || (strcmp(grp, "sl") && strcmp(grp, "psl"))) {
+    fprintf(stderr, "expected 'D D sl|psl p n n N order'\n"); return 2;
   }
+  PSL = !strcmp(grp, "psl");
+  HP = (P - 1) / 2;
   for (int u = 0; u < DEG; u++) {
     long long dummy;
     if (fscanf(f, "%lld mat(%d,%d,%d,%d) z=%d", &dummy, &S[u][0], &S[u][1], &S[u][2], &S[u][3], &S[u][4]) != 6) {
@@ -80,7 +102,7 @@ int main(int argc, char **argv) {
     }
   }
   fclose(f);
-  long long G = (long long)P * (P * P - 1) * NZ;
+  long long G = (long long)P * (P * P - 1) * NZ / (PSL ? 2 : 1);
   if (G != order) { fprintf(stderr, "order mismatch %lld %lld\n", G, order); return 2; }
   int kind = !strcmp(argv[2], "even") ? 0 : !strcmp(argv[2], "left") ? 1 : !strcmp(argv[2], "right") ? 2 : -1;
   if (kind < 0) { fprintf(stderr, "bad kind\n"); return 2; }
