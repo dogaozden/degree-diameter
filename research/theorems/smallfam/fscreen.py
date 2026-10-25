@@ -109,7 +109,11 @@ def main():
     for n in orders:
         if n in skip or (n, '*') in done:
             continue
-        nr = int(gap(f'Print(NrSmallGroups({n}), "\\n"); QUIT;\n', 600).split()[0])
+        out = gap(f'if SmallGroupsAvailable({n}) then Print(NrSmallGroups({n}), "\\n"); else Print("-1\\n"); fi; QUIT;\n', 600)
+        nr = int(out.split()[0])
+        if nr < 0:
+            log.write(f'{n}\t*\t-\t-\t-\tnot-in-library\t-\t-\n'); log.flush()
+            continue
         if nr > a.maxgroups:
             log.write(f'{n}\t*\t-\t-\t-\tskipped-order({nr} groups)\t-\t-\n'); log.flush()
             continue

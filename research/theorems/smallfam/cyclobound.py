@@ -115,9 +115,22 @@ def ball_bound(Delta, D, k, o, j):
                 P = np.zeros((0, width), dtype=np.int64)
                 J = np.zeros(0, dtype=np.int64)
             side = nside
-        c = min(len(seen[0]), len(seen[1]))
-        best = c if best is None else min(best, c)
+        if FIBER:
+            # every fibre J of Z_k must hold p distinct elements: p <= min_J count, so N <= k * min_J count
+            for sd in (0, 1):
+                cnt = {}
+                for key in seen[sd]:
+                    jj = int(np.frombuffer(key[-8:], dtype=np.int64)[0])
+                    cnt[jj] = cnt.get(jj, 0) + 1
+                c = k * min(cnt.get(x, 0) for x in range(k))
+                best = c if best is None else min(best, c)
+        else:
+            c = min(len(seen[0]), len(seen[1]))
+            best = c if best is None else min(best, c)
     return best
+
+
+FIBER = False
 
 
 def admissible_js(Delta, k, o):
@@ -152,6 +165,10 @@ def bound(Delta, D, k, o, _cache={}):
 
 
 def main():
+    global FIBER
+    if '--fiber' in sys.argv:
+        FIBER = True
+        sys.argv.remove('--fiber')
     if sys.argv[1] == 'bound':
         Delta, D, k, o = map(int, sys.argv[2:6])
         print(Delta, D, k, o, *bound(Delta, D, k, o))
