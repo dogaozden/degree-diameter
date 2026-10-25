@@ -8,8 +8,8 @@ claude/thm-order2-symmetry-gap-4e2nmi; this branch carries both sessions (rebase
 
 No new record in this session (the first session's (13,8) 6,999,552 stands). Anneals, all resumable from
 research/theorems/order2/runs/ckpt/*.ckpt with the same command plus CKPT= (launch scripts in runs/r2/):
-- (15,9) SL(2,64)×Z403, order 6 (runs/r2/launch_159.sh, launch_159b.sh with OSTAB=1): best cost 2 in the OSTAB seed 2
-  (an159_sl64_403_k6sub3_ostab_s2.ckpt). Only the order-3 pair of SL(2,2) = Fix(α) is uncovered, on side B
+- (15,9) SL(2,64)×Z403, order 6 (runs/r2/launch_159.sh, launch_159b.sh with OSTAB=1): best cost 2 in the OSTAB seed 2,
+  reached at 4,801 evaluations and unchanged to 15,730 (3.8 h) (an159_sl64_403_k6sub3_ostab_s2.ckpt). Only the order-3 pair of SL(2,2) = Fix(α) is uncovered, on side B
   (UNCPRINT=1 lists it). A full scan of the 3-element slot (SCANSUB=1) found no completion. So one of the
   6-orbits must change. Use OSTAB=1: plain energy stalls at the involutions of Fix(α), Fix(α²).
 - (13,10) SL(2,16)²×Z21, order 6: best 4 after 7,697 evaluations in 4.5 h (an1310_sl16sq_21_k6_s1.ckpt), about 2 s per

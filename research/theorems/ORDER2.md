@@ -80,7 +80,7 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    (6,8) alone (§5.3). Order 6 at even D: (13,8) (done), (15,8) with orbits 6+6+3, (13,10) on SL(2,16)²×Z21.
    Order 6 at odd D (new): Δ ≥ 12 with a tight balanced involution, and few involutions of G inside Fix(α),
    Fix(α²) (§4). Best candidate (16,9) on SL(2,8)²×Z703, +5.9 %, μ_A 10.2 (§5.5); (15,9) on SL(2,64)×Z403, +1.5 %,
-   was tried here. Results of this session's runs: end of §6 (no new record at 07:55 UTC; closest (15,9) at cost 2).
+   was tried here. Results of the second session's runs (no new record; closest (15,9) at cost 2): end of §6.
 
 ---
 
@@ -812,7 +812,8 @@ to μ_A = 16.8 (order 3: 23.6).
 - **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
   211,236,480 vertices, +1.5 % over 208,029,120. Order 6: μ_A = 11.2 with the stabiliser-aware involution term,
   about 4·10⁴ evaluations (7.9 and 8·10³ before that term). Order 3: μ_A = 14.5, about 2·10⁵.
-  Anneal (second session): 6 seeds. The OSTAB=1 seed reached cost 2 after 4,801 evaluations, with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B; plain seeds stalled at 9 (involutions, §5.5). A scan of all 2,182 sub-orbits from that set (SCANSUB) found no completion. Still running at 07:55 UTC.
+  Anneal (second session): not solved; best cost 2 after 15,730 evaluations (OSTAB=1 seed). Details in the table at
+  the end of §6.
 - **(13,9) SL(2,64)×Z133**, Z133 = Z7×Z19, z ↦ 65z (order 3 mod 7, order 6 mod 19), so α³ fixes Z7 and negates
   Z19. Layout e + 6 + 6. N = 34,856,640, so 69,713,280 vertices, +2.9 %; μ = 49.9.
   - Rule, with the stabiliser-aware involution term: order 6, μ_A = 16.8, about 7·10⁵ evaluations; order 3,
@@ -913,10 +914,12 @@ to μ_A = 16.8 (order 3: 23.6).
 |---|---|---|---|---|
 | (13,10) | SL(2,16)²×Z21, order 6 swap∘conj | 699,148,800 (+3.2 %) | 9.1 | not solved: seed 1 ran its 4.5-hour budget and ended at best 4 (7,697 evaluations, about 2 s each); seed 2 was stopped at best 6 after 3,265 |
 | (15,8) | SL(2,8)²×Z37, order 6 swap∘Frobenius, 6+6+3 | 18,797,184 (+3.7 %) | 10.4 | 2 seeds, best 6 (76,345 evaluations) and 10 |
-| (15,9) | SL(2,64)×Z403, order 6 Frobenius, 6+6+3 | 211,236,480 (+1.5 %) | 11.2 | 4 seeds (seed 1 resumed with OSTAB=1 after 7,161 evaluations at cost 9; seeds 3 and 4 restarted with OSTAB=1). The OSTAB=1 seed 2 reached cost 2 after 4,801 evaluations, with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B; plain seeds stalled at 9 (involutions, §5.5). A scan of all 2,182 sub-orbits from that set (SCANSUB) found no completion. Still running at 07:55 UTC |
+| (15,9) | SL(2,64)×Z403, order 6 Frobenius, 6+6+3 | 211,236,480 (+1.5 %) | 11.2 | not solved. 4 seeds (seed 1 resumed with OSTAB=1 after 7,161 evaluations at cost 9; seeds 3 and 4 restarted with OSTAB=1). The OSTAB=1 seed 2 reached cost 2 after 4,801 evaluations and ended there after 15,730 (3.8 h), with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B. Plain seeds stalled at 9 (involutions, §5.5); seed 1 ended at 9 (14,658), seeds 3 and 4 at 19 and 18 (about 7,300 each). A scan of all 2,182 sub-orbits from the cost-2 set (SCANSUB) found no completion. The refined rule's median effort is about 4·10⁴ evaluations per seed |
 | (13,9) | SL(2,64)×Z133, order 6 Frobenius | 69,713,280 (+2.9 %) | 16.8 | 2 seeds, best 23 (22,249 evaluations) and 33; stopped |
 
-No new record so far in this session (07:55 UTC); the first session's (13,8) record stands (§5.2). Closest: (15,9) at cost 2 and (13,10) at cost 4.
+No new record in the second session; the first session's (13,8) record stands (§5.2). The closest misses are (15,9) at
+cost 2, where only one clump of special elements is left, and (13,10) at cost 4. All runs can be resumed from
+`runs/ckpt/` with CKPT=.
 
 ## 6b. Next steps (for later sessions)
 
