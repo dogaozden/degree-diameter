@@ -308,7 +308,7 @@ static void load_lift(const char *path, char hex[65]) {
     NB = x;
     if (!rd_word(&r, w, sizeof w) || strcmp(w, "edges")) die("expected: edges E");
     long long E; if (!rd_long(&r, &E) || E < 0) die("bad E");
-    if ((double)NB * (double)M > 4.0e9) die("lift too large for 32-bit vertex ids in this version");
+    if ((double)NB * (double)M > 2.0e11) die("lift too large (more than 2e11 vertices)");  /* lift indices are 64-bit; base ids 32-bit */
     n = NB * M; m_edges = E * M;
     int64_t *eu = malloc(8 * E), *ev = malloc(8 * E), *ea = malloc(8 * E), *eia = malloc(8 * E);
     for (long long i = 0; i < E; i++) {

@@ -128,7 +128,7 @@ machine (4 cores):
   fits in 6 GB with WB = 8). `-DWB=1` runs one source per pass on three bitsets (3 bits per vertex: 1.6 GB for the
   4.2·10⁹-vertex (16,10) Haar candidate) with push/pull switching. Certificates are byte-identical for every WB (tested on the rotation lift and on part 3/2000
   of the (14,7) check).
-- Vertex ids are 32-bit (n < 4·10⁹).
+- Vertex ids: explicit mode 32-bit (n < 4·10⁹); lift mode 64-bit lift indices (base ids 32-bit), up to 2·10¹¹ vertices.
 - Lift mode supports Z_M and (P)SL(2,P) × Z_N with P prime (element numbering as in research/frontier/haarcheck_sl.c,
   checked by a self-test at start). Base automorphisms are only supported for Z_M. Other groups (GF(p^k) matrices,
   products, metacyclic) would need their arithmetic added.
