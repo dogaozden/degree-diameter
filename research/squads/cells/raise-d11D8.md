@@ -26,3 +26,23 @@ k = 5 orbit method (`research/structured/`, STRUCTURE.md §8). Table value 2,246
 - 10:26 UTC: psl 19×Z331 seeds 3, 4 (7200 s) ended unsolved, best 10 (≈1.35M evals). Seeds 5–8 (RESTART=1, 10800 s) running; 5, 6 at best 15 after 280k.
 - 12:11 UTC: RESTART seeds 5, 8 reached best 5 (one free orbit uncovered); seeds 6, 7 best 10. No solution yet
   (~1.2–1.5M evals per run). Seeds 5, 6 end ~13:00, seeds 7, 8 ~13:25.
+
+## Result (13:30 UTC): not beaten
+
+All runs ended without a solution. No VALID graph above 2,258,520 was found, and nothing was saved to `research/frontier/sols/`.
+
+| group | N | μ | fix | runs (seed, budget) | best cost (raw uncovered) | evals each |
+|---|---|---|---|---|---|---|
+| psl 19 × Z331 | 1,132,020 | 61.8 | 9 | 1, 2 (2 h); 3, 4 (2 h); 5, 6, 7, 8 (3 h, RESTART=1) | 6, 6, 10, 10, 5, 10, 10, 5 | 1.3–2.0 M |
+| sl 16 × Z281 | 1,146,480 | 70.9 | 14 | 1, 2 (stopped at 1.9·10⁵ evals) | 21, 25 | 0.19 M |
+
+- Best cost 5 (one free α-orbit uncovered, no fixed element) was reached twice (seeds 5 and 8, RESTART=1). Neither ever reached 0.
+- For comparison, the record cell's seed 3 went down to 6 and then to 0 within about 6·10³ evaluations after about 1.2 M. Our psl 19 × Z331 runs did not complete that last step in ~1.4–2 M evaluations per seed.
+- Screen (`orb_screen.py 11 8 1129260 1200000 "5 2 1" --samples 400`): the record group has the best random-sample statistics (min 19, p1 28). Every other group above 1,129,260 is at min ≥ 37. Cyclic factors ≥ 340, and groups with fix in the hundreds or thousands, are far worse.
+- The μ_eff estimate (μ/5 + |Fix|·e^(−λ/5)) ranks psl 19 × Z331 below the record, but its annealing is harder. The random-sample statistics track annealing difficulty better than μ_eff does here.
+
+## Assessment
+
+These methods have not moved this cell with the groups tried. The next candidates would be: (a) more seeds on psl 19 × Z331 (an orbit space of about 10⁶ S per group, so the remaining uncertainty is mainly seed luck); (b) other k=5 conjugacy/r families for the same group (AR=, ALPHA= overrides in haar_sym); (c) psl 11 × Z1721 (N = 1,135,860, |Fix| = 4, random min 76). Each needs several hours of 4-core time. The budget for this job ended at about 14:00 UTC, so this session stops here.
+
+Run logs: `research/structured/runs/raise11_8/`. Binary built from `research/structured/haar_sym.c` (`gcc -O3 -march=native -fopenmp`).
