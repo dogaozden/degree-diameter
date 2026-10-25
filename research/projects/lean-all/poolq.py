@@ -4,10 +4,12 @@
 usage: poolq.py QUEUE LOG BUDGET_GB MAXJOBS
 QUEUE lines: `MOD:GB` (estimated peak memory; `!MOD:GB` runs `lean` on the module directly instead of
 `lake build`), `--` (barrier: everything above finishes before anything below
-starts), `END` (stop once everything above is done), blank or `#` lines are ignored. Lines may be appended at any
+starts), `END` (stop once everything above is done and the file QUEUE.end exists; without it the pool waits for
+more lines), blank or `#` lines are ignored. Lines may be appended at any
 time. Between two barriers jobs start in any order as the budget allows (a large job does not block smaller ones
 after it). The budget can be changed while it runs by writing a number to QUEUE.budget. Each finished job logs
-wall time, measured peak RSS and status; a failure logs the tail of its output."""
+wall time, measured peak RSS and status; a failure logs the tail of its output. Jobs already logged `ok` in LOG
+count as done when the pool starts (so a restart on the same queue and log does not redo them)."""
 import os, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +45,16 @@ def main():
     os.makedirs('/tmp/claude-0/logs/jobs', exist_ok=True)
     running = {}  # pid -> (index, mod, est, t0, popen, peak)
     started, finished = set(), set()
+    if os.path.exists(log):
+        done = set()
+        for line in open(log):
+            w = line.split()
+            if len(w) >= 3 and w[2] == 'ok':
+                done.add(w[1])
+        for k, it in enumerate(parse(qpath)):
+            if type(it) is tuple and it[0] in done:
+                started.add(k)
+                finished.add(k)
     while True:
         procs = lean_rss_by_ppid()
         for pid, (k, m, est, t0, p, peak) in list(running.items()):
@@ -69,7 +81,9 @@ def main():
                 if first < k:
                     break
                 if it == 'END':
-                    return
+                    if os.path.exists(qpath + '.end'):
+                        return
+                    break
                 continue
             if k in started:
                 continue
