@@ -120,3 +120,12 @@ order 5 (K = 29,540) and 3 (K = 60,028) finds nothing heavier; the normaliser of
 <h, g>: max 756 (another different set) · c3 new block shapes (4+3, 3+2+2): exact optima 720 for orders 45 and 75.
 All re-checked by Opus (oppcheck). Result: no gain; 756 is reached by three unrelated group families and is the exact
 optimum of every orbit graph tried that contains it, so it looks like the ceiling of this method at q = 11.
+
+## 2026-10-25, cell-13-7 (Opus, cloud session_0136phW63ksffo3wvN1THJtH), late results from rounds 2, 3 and 5
+
+Round 5 c2 kept working after its first report: a seeded point ILS (ncol_seed.c) from its 3,958 orbit union reached
+**3,967** pairwise non-collinear points of H(9) (checked by Opus with tools/ncolcheck.py) -> (11,7) 406,514, full
+all-pairs VALID (research/d13D7/checks/d11D7_hex9_dual_R3967_n406514.check.txt). The 406,496 graph from the 3,958 set
+was all-pairs VALID as well. Its warm-started orbit clique for <delta^2> alone reached orbit weight 3,964 (not used).
+Round 2 c7 (fiber-line model, 320) and round 3 c6 (geometric LNS blocks, 397) appended their final lines late; no
+gain. Round 2 c1 was still running a clique search hours after its round closed; Opus stopped it.
