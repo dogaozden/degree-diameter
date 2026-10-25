@@ -85,9 +85,9 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | sl 49 × Z499 | 58,682,400 | 117,364,800 | 16.9 | – | not solved: best 6, 7,297 evals in 2400 s |
 | sl 41 × Z853 | 58,754,640 | 117,509,280 | 17.3 | – | not solved: best 24, 6,233 evals in 2400 s |
 | sl 61 × Z259 | 58,772,280 | 117,544,560 | 17.3 | – | not solved: best 6, 10,433 evals in 2400 s |
-| psl 41 × Z1723 | 59,340,120 | 118,680,240 | 20.2 | – | not solved at the cut-off: best 48 after 3,713 evals (run ~1300 s in) |
-| psl 43 × Z1483 | 58,922,556 | 117,845,112 | 18.1 | 20 | not solved at the cut-off: best 48 after 5,249 evals (run ~1700 s in) |
-| sl 53 × Z397 | 59,083,128 | 118,166,256 | 18.9 | – | not solved at the cut-off: best 12 after 4,305 evals (run ~1400 s in) |
+| psl 41 × Z1723 | 59,340,120 | 118,680,240 | 20.2 | – | not solved: best 42, 6,817 evals in 2400 s |
+| psl 43 × Z1483 | 58,922,556 | 117,845,112 | 18.1 | 20 | not solved: best 42, 7,505 evals in 2400 s |
+| sl 53 × Z397 | 59,083,128 | 118,166,256 | 18.9 | – | not solved: best 6, 7,601 evals in 2400 s |
 | psl 49 × Z1009 | 59,329,200 | 118,658,400 | 20.2 | – | queued, cancelled before start (μ ≈ 20 with the weakest prospects of the queue) |
 | sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | running, best 18 |
 | psl 121 × Z67 | 59,343,240 | 118,686,480 | 20.2 | – | running |
@@ -106,3 +106,19 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | 71 | **SOLVED** at 2,977 evals (1,462 s); haar_sym OK, hcsl and hc2 VALID (ecc 9 both sides). Sub-record (below 117,072,144). File `research/frontier/sols/d14D9_sl_71_163_orb3_s1.txt`, sha256 b9b6356afbf18f0ecd9f3adc67ab1e05ad13a54561bff7ee4a924c9f5bb27792. |
 | psl 73 × Z301 | 58,536,072 | 117,072,144 | 16.3 | 35 | **SOLVED** at 4,761 evals (705 s); haar_sym OK, haarcheck_psl VALID. New record. |
 | psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | 29 | not solved: best 12, 6,441 evals in 1800 s |
+
+## Status at stop (2026-10-25, about 13:15 UTC, session budget reached)
+
+**Final record in this session: 117,837,720 vertices** (psl 109 × Z91, sha256 5ce28d75…, verified by haar_sym and
+haarcheck_psl). The start was 116,068,656; the session added +1.5 % (1,769,064 vertices).
+
+Verified sub-records, all below the record and kept in `research/frontier/sols/`: sl 71 × Z163 (116,655,840),
+sl 389 × Z1 (117,726,960), sl 83 × Z103 (117,771,024), sl 73 × Z151 (117,461,088), and psl 73 × Z301 (117,072,144,
+which was a record at the time). The earlier sl 59 × Z283 record (116,211,120) is kept too.
+
+**Why I stopped.** The 6-hour budget ran out. Last hour of runs at μ = 19–21: none solved (best costs 4–48). Rungs at
+μ = 16–18 gave 4 solves out of about 15 attempts; solves came fast (hundreds to a few thousand evaluations) or not at all
+within 1800–3600 s. Going above μ ≈ 18 in this cell needs much more compute (orbit method: evals ≈ C·e^(μ/4.7) with a
+large spread between groups). The next worthwhile rung is psl or sl with N ≈ 58.9–59.3 M and |Fix| small
+(psl 109 × Z91 had |Fix| = 53, sl 389 × Z1 had 389, so |Fix| alone does not decide it). Not tried: other seeds on
+psl 109 × Z91 family or on the sub-record groups at higher N, and the SL(3,q) or route-chart ideas in SIZE_LAW.
