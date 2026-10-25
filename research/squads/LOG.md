@@ -59,10 +59,13 @@ with the same membership vector, then a growth mode adds pairs one at a time. Fo
 Cards (best score):
 c1 exact joint covers from structure: **max K with mismatch 0 = 4** (one zero quadruple in 10^5 samples; only ~5 % of
 opposite triples are exact; H(2) flags no better) · c2 flag-set local search: mismatch 6,016 at K = 16 (random
-6,000-7,300; about 1 % gain) · c3 leftover matching: no report · c4 q = 5 tuning (old binary): K = 19 then hub-graph
-violations (cap q-1 = 4) · c5 q = 7 tuning: **K = 18 apsp VALID** (117,684; record 117,690 not beaten) · c6 proxy
-(−,−)/(+,+) routes: no report (a K = 22 q = 5 solution left unverified) · c7 more than hubs: none valid (random-M
-trials break diameter 7; hubs are 2 vertices per 3 deleted edges) · c8 new constructions: no report.
+6,000-7,300; about 1 % gain) · c3 leftover matching (late report): greedy matching of leftover points to lines by
+Hamming distance of membership vectors cuts uncovered targets at K = 21 from 66,296 to 22,967; swaps add 0.1 % · c4
+q = 5 tuning: K = 19 apsp VALID (23,474), hub-graph violations at K = 20 · c5 q = 7 tuning: **K = 18 apsp VALID**
+(117,684; record 117,690 not beaten) · c6 proxy (−,−)/(+,+) routes (late report): K = 22 at q = 5 apsp VALID (23,480),
+which the old binary did not solve with the same settings · c7 more than hubs: none valid (random-M trials break
+diameter 7; hubs are 2 vertices per 3 deleted edges) · c8 new constructions (late report): attaching a copy of H(2) to
+X(M) over H(3) leaves 496 pairs at distance 8; no valid graph.
 
 Kept / what happened next (Opus): the cards showed the joint algebraic cover cannot be exact beyond 4 flags in
 H(8). In parallel Opus found two things the cards did not:
@@ -73,3 +76,45 @@ H(8). In parallel Opus found two things the cards did not:
    404,222, all apsp VALID.
 Did the squad help? Indirectly: the c1/c2 negatives closed the joint-cover line quickly, and c5's growth runs gave
 the q = 7 calibration. The records came from Opus's own analysis.
+
+## 2026-10-24 23:20 UTC, cell-10-7 (Opus, `claude/bipartite-10-7-uvpxk9`), round 4: bigger partial ovoids and spreads
+
+Goal: after the B2 condition (research/d10D7/checks/B2_hubs_CHECK.md), the number of freed pairs at q = 5, 7, 8 is set
+by two sizes: a set of pairwise opposite points (a partial ovoid) and a set of pairwise opposite lines (a partial
+spread) of H(q). At q = 9 (duality) it is a set of pairwise non-collinear points. Greedy random gave 39/32 (q=5),
+56/57 (q=7), 67/68 (q=8) and 2,821 (q=9). Folder research/squads/d10D7-r4/ (README.md, cards.md, tools/setcheck.c,
+scoreboard.jsonl).
+
+Cards (best scores, all checked by setcheck):
+c1 H(8) points, k-fixed tabu: **134** (seeds gave 86, 134, 80, 102) · c2 H(8) points, algebra (torus orbits of
+W(5,8) = F_{2^18}*/F_8*, exact max clique over orbits of order 19): 85 · c3 H(8) lines: **513 = q³+1**, the counting
+maximum, from tabu on the orbits of an order-7 hexagon automorphism; the same pipeline on points gave 112 · c4 H(9)
+non-collinear points, min-degree greedy + tabu: **3,911** · c5 H(7): **288 points, 344 lines** · c6 H(5): **72 points,
+126 lines** · c7 "stars" (freed pairs at distance 4, centre w with M(w) = midline): K = 41 apsp VALID at q = 5, more than
+the 32 of greedy opposite sets but less than c6's 72 · c8 wildcard: no gain; noted that one type-4 pair could join a B2
+base (not built).
+
+Kept / what happened next (Opus): the sets were plugged into `d7hex b2` / `b2dual` at once. (10,7) **224,962**
+(K = 134 with a hyperplane spread of 513 lines; Opus built it from the elliptic section, and c3's search confirmed
+513), (9,7) **118,224**, (7,7) **23,580** and (11,7) **406,402** were all apsp VALID. For the 5-level (12,7) graph Opus
+replaced random hub graphs (diameter 8 at 5,642 hubs per side) by two copies of the incidence graph of H(5) joined by
+two matchings, giving 7,812 hubs per side and **(12,7) 679,924**, apsp VALID. Did the squad help? Yes, directly: every
+record of this round uses a set a card found.
+
+## 2026-10-24 23:50 UTC, cell-10-7 round 5: larger partial ovoids of H(8)
+
+Goal: points are the only bottleneck at q = 8 (513 lines exist), so each extra pairwise opposite point of H(8) adds 2
+vertices to (10,7). Folder research/squads/d10D7-r5/ (README.md, cards.md, best134.txt, scoreboard.jsonl).
+
+Cards: c1 ILS and exact closure LNS from the 134 set: no gain (every outside point conflicts with at least 3 set
+points) · c2 more tabu seeds and settings: (see scoreboard) · c3 Hermitian field reduction (513 lines × 9 points
+CSP): (see scoreboard) · c4 orbits of other subgroups as cores, then tabu: **217** (a 93-point core of 31 T_3-orbits,
+then 170 s of k-fixed tabu) · c5 structure of the q = 7 set: the 288 set is one orbit of a stabiliser of order
+1,451,520 = |Sp6(2)| inside the isometry group of Q(6,7), point stabiliser of order 5,040; no torus or Sp6(2) analogue at
+q = 8; tabu inside an elliptic section Q⁻(5,8) gives 126 · c6 H(9) non-collinear: **4,277** = 47 orbits of an order-91
+element of SL(3,9).
+
+Kept / what happened next (Opus): verified both sets and rebuilt the graphs: **(10,7) 225,128** and **(11,7) 407,134**,
+both apsp VALID. Opus noted that the 217 set has lost the T_3 symmetry (3 of 217 points map into the set), so the core
+works as a basin, not a template. Opus also proved the upper bound 457 for partial ovoids of W(5,8), so there is room
+left. Round 6 tests many structured starts. Did the squad help? Yes: both records come straight from cards c4 and c6.
