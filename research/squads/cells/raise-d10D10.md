@@ -69,6 +69,13 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
   `tools/haarcheck_psl` (both BFS: diameter 10, all 31,421,100 elements reached) and by haar_sym's full check.
   Log: `../../structured/runs/raise-d10D10/d10D10_psl_101_61_orb5f0_s1.log`.
 
+- **63,764,520** (+6.0 % over 60,141,120, +1.5 % over 62,842,200): PSL(2,61) × Z_281, k = 5, m = 2, f = 0, μ = 36.9,
+  |Fix| = 29, ORBW = 5 (an uncovered fixed element weighs as much as a free orbit), seed 2, 9,177 evaluations (606 s).
+  File `../../frontier/sols/d10D10_psl_61_281_orb5f0_ORBW5_s2.txt`. Checked by `tools/haarcheck_psl` (both BFS:
+  diameter 10, all 31,882,260 elements reached) and by haar_sym's full check.
+  Log: `../../structured/runs/raise-d10D10/d10D10_psl_61_281_orb5f0_ORBW5_s2.log`.
+  The same group with seed 1 and no ORBW was stuck at cost 1 after 27k evaluations; it was stopped at 08:39.
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
@@ -78,3 +85,5 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 08:19: d (sl 59 × 151, k = 5) solved at μ = 24.3 → 62,006,640 (checked by hcsl and hc2 above).
 - 08:27: g (psl 61 × 281, ORBW=5, seed 2) launched. The seed-1 run of psl 61 × 281 (no ORBW) was stuck at cost 1 after 27k evaluations.
 - 08:32: b (psl 101 × 61, k = 5, μ 29.7) solved → 62,842,200 (checked by haarcheck_psl above).
+- 08:33: h (psl 59 × 311, k = 5, μ 37.6, 7200 s) launched.
+- 08:38: g (psl 61 × 281, ORBW=5, seed 2) solved → 63,764,520 (checked by haarcheck_psl above).
