@@ -244,7 +244,7 @@
  "16,3": {
   "source": "wiki: Delorme-Farhi duplication (no paper names this value; Delorme 1985 JGT not read)",
   "construction": "PG(2,13) plus copies (Delorme-Farhi 1984) of the 14 points of a conic and of its 14 tangent lines; each copy joined to the original neighbours (tools/delorme.py d3)",
-  "rebuilt": "yes",
+  "rebuilt": "order",
   "check": "apsp.c VALID (checks/small.txt)",
   "notes": "a duplication of exactly this order and degree; whether it is the graph the table had in mind is not documented"
  },

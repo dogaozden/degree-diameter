@@ -28,12 +28,12 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 
 Of the 112 cells (counts from cells.csv; two big checks ((15,7), (16,7)) were still running when this was written, see HANDOFF.md):
 
-- **48 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
-  checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the 11 Delorme–Farhi cells, the three D = 3
-  AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
-- **32 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+- **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
+  checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
+  the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
+- **33 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) (lifts found by the
-  squad), and 16 Loz cells, (3,9), (4,8), (4,9), (4,10), (5,5), (5,7), (5,8), (5,9), (5,10), (6,5), (6,8), (6,9),
+  squad), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 16 Loz cells, (3,9), (4,8), (4,9), (4,10), (5,5), (5,7), (5,8), (5,9), (5,10), (6,5), (6,8), (6,9),
   (7,5), (7,8), (8,5), (9,5), as Haar graphs of metacyclic groups (graphs/*.sol).
 - **6 do not check out as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q
   (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
