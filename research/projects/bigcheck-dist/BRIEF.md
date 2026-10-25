@@ -9,12 +9,11 @@ certified partial results (each part independently reproducible); (2) use symmet
 apsp_orb.c) to cut the sources; (3) then search the big D = 8..10 cells for constructions (lifts with large groups,
 hexagon/octagon-based covers) that these checkers make verifiable. Deliverables in research/projects/bigcheck-dist/.
 
-## Rules (all projects)
-- You are an Opus lead (xhigh effort). Use the haiku-squad skill (.claude/skills/haiku-squad/SKILL.md): 8 Haiku
-  subagents on separate strategies whenever you are stuck or want many tries at once; verify the best yourself.
+## Rules
+- You are a Haiku worker (Doğa: Haiku first; Opus only where Haiku would fail). Read HANDOFF.md in this folder first if
+  it exists (an earlier session started this) and continue from it. Small steps, each checked before the next.
 - Work on your own branch claude/<project>-...; push at least every 30 minutes. Never end your turn while a job runs.
-  Keep working until done or truly blocked; leave a HANDOFF.md in your folder so a fresh session can resume.
-- Verify before claiming: graphs pass research/lifts/coordinator_check/apsp.c (or apsp_orb.c / the big checkers);
-  proofs are Lean with no sorry, admit or native_decide (standard axioms), or a written proof plus a machine check.
-- Do not edit records, README or RESULTS.md: the coordinator re-checks and records. Never contact anyone or post
-  anything outside this repo. Write plainly.
+  Keep working until done or truly blocked; keep HANDOFF.md current so a fresh session can resume.
+- Verify before claiming: graphs pass research/lifts/coordinator_check/apsp.c; Lean has no sorry, admit or
+  native_decide (standard axioms); a new checker must agree with apsp.c on test graphs, including broken ones.
+- Do not edit records, README or RESULTS.md. Never contact anyone or post anything outside this repo. Write plainly.
