@@ -12,8 +12,6 @@ uncovered alpha-fixed elements (dumpfix). Logs in research/structured/runs/raise
 - Run seed 101 (ORBIT="3 2 0" ORBW=3 RESTART=1, 1500 s): first cost-1 state, uncovered fixed element
   **elem 85020 = mat(3,3,15,4), z = 0**. Trace 7, det 1, nonsplit torus; x^3 has trace -1, so x has order 9 in
   PSL(2,17). It is a generator of the fixed torus Z_9 = C(alpha).
-- Seeds 102, 103: no cost-1 state in the first minutes.
-
 - Seeds 102, 103 (20 min each): cost 3 (one free orbit) all the time, no cost-1 state.
 - So the cost-1 valley is rare in this batch. Seed 101 reached it once in 1500 s.
 
@@ -53,4 +51,28 @@ Added `ENDG=1` (with `ENDGC=c`): whenever a new best energy is reached at raw co
 checked against every valid orbit replacement of each slot (about 89 k representatives per slot, about 40 s). Test
 on psl 17 with ENDGC=3: 88,940 orbits per slot, best raw 3 (no zero). Found nothing at that state.
 
-(Update below as the runs finish.)
+ENDG batch (4 seeds, 2400 s each, plateau scan at raw cost <= 3, at most 10 scans per run, 5000 steps apart):
+- 40 scans in total. In 12 of them the best one-orbit neighbour of the state was cost 1; in 28 it was cost 3.
+  No neighbour was cost 0 (over 40 x 2 x 88,940 orbit replacements).
+- All 4 runs ended at best 3 after about 1.2e7 evaluations each.
+
+## Tally for round 2
+
+- Runs: 3 DUMP runs (1500 s), 1 ENDG test, 4 ENDG runs (2400 s): about 7.5e7 orbit evaluations on psl 17 x Z109.
+  Round 1 added about 1.4e8 on the same group.
+- Solutions above 524,160: **none.** Nothing was added to research/frontier/sols/.
+- Screen of the window 262,081 to 272,400 (RANDORB 2000, partial, cut short): research/structured/runs/raise_d6D10_r2/screen_window_partial.txt.
+
+## Decision
+
+I stopped here. The cell has not been proved stuck, but these methods give no zero:
+- psl 17 x Z109 is at a floor of cost 1 to 3 (one free orbit or one fixed element missed). Random S shows the fixed
+  elements are missed uniformly (about 19 %), so no element is structurally blocked. The exhaustive one-orbit
+  neighbourhood of the floor has no cost-0 member.
+- The other candidates in the window have worse tails or larger mu than the record group.
+
+Suggested next steps for a later session (not done here):
+1. Exhaustive two-orbit moves at the cost-1 floor (pairs from the best 1-orbit neighbours), which the one-orbit scan
+   does not cover.
+2. A route-chart or voltage lift (research/theorems/BEAT_16_5_SQUAD.md) for (6,10); the orbit search at this mu does
+   not reach zero in these runs.

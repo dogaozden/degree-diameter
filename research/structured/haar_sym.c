@@ -956,7 +956,7 @@ static int check_and_write(ctx *c0, const char *out) {
 /* ENDG=1: exhaustive scan of the one-orbit neighbourhood of the current state. Slot j is replaced by every
  * valid orbit (one representative per orbit, i.e. the smallest element), and the raw cost is taken. Returns 1 iff a
  * cost-0 replacement was found; S then holds it. *bestraw is the lowest raw cost seen (ties abort via the bound). */
-static int ENDG = 0; static long long ENDGC = 1;
+static int ENDG = 0, nscan = 0; static long long ENDGC = 1, ENDGMAX = 10, ENDGSPACE = 5000, lastscan = -1000000000LL;
 static int endgame_scan(ctx *c0, int j, long long *bestraw) {
     long long br = *bestraw; int o[MAXD], keep[MAXD]; long long n = 0;
     for (int i = 0; i < OK_; i++) keep[i] = S[ostart(j) + i];
@@ -1035,6 +1035,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (getenv("DUMPFIX")) DUMPFIX = atoi(getenv("DUMPFIX"));
     if (getenv("ENDG")) ENDG = atoi(getenv("ENDG"));
     if (getenv("ENDGC")) ENDGC = atoll(getenv("ENDGC"));
+    if (getenv("ENDGMAX")) ENDGMAX = atoll(getenv("ENDGMAX"));
+    if (getenv("ENDGSPACE")) ENDGSPACE = atoll(getenv("ENDGSPACE"));
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
@@ -1083,9 +1085,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         }
         steps++; ohash = (ohash ^ (unsigned long long)(cs[bt] * 1000003 + bt * 7 + (c == cs[bt]))) * 1099511628211ULL;
         if (DUMPFIX && c <= 1 && ce < bestE) { fprintf(stderr, "DUMP step=%lld raw=%lld energy=%lld\n", steps, c, ce); dumpfix(SV[bt]); }
-        if (ENDG && c <= ENDGC && ce < bestE) {   /* new best valley: scan every one-orbit replacement of it */
-            long long br = c;
-            fprintf(stderr, "ENDG step=%lld raw=%lld energy=%lld\n", steps, c, ce);
+        if (ENDG && c <= ENDGC && ce <= bestE && steps - lastscan >= ENDGSPACE && nscan < ENDGMAX) {   /* valley state: scan every one-orbit replacement */
+            long long br = c; lastscan = steps; nscan++;
+            fprintf(stderr, "ENDG step=%lld raw=%lld energy=%lld scan %d\n", steps, c, ce, nscan);
             for (int jj = 0; jj < OM && best > 0; jj++)
                 if (endgame_scan(C[0], jj, &br)) { c = 0; ce = 0; cE = 0; best = 0; bestE = 0; memcpy(bestS2, S, sizeof(int) * d); break; }
             for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
