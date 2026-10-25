@@ -1,0 +1,15 @@
+group pgl 7 x Z_361, N=121296, identity 0, H order 57, rows 2128, threads 1, setup 0.02s
+wide rows: HW order 152, rows 798, setup 0.04s
+alpha: conj by mat(1,0,4,2) (index 25), z -> 68 z on Z_361
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 5 (+e); mu = 44.03, mu/k = 14.68, fixed-point misses ~ 0.43
+start cost=60678
+t=30 steps=32731 evals=261849 cost=48 best=48 T=0.53
+t=60 steps=64483 evals=515865 cost=48 best=48 T=0.19
+t=90 steps=96110 evals=768881 cost=48 best=48 T=0.15
+t=120 steps=128418 evals=1027345 cost=48 best=48 T=0.15
+t=150 steps=160402 evals=1283217 cost=48 best=48 T=0.15
+t=180 steps=192688 evals=1541505 cost=54 best=48 T=0.81
+t=210 steps=224980 evals=1799841 cost=48 best=48 T=0.28
+t=240 steps=257183 evals=2057465 cost=48 best=48 T=0.15
+t=270 steps=289169 evals=2313353 cost=48 best=48 T=0.15
+RESULT d=8 D=8 group=pgl 7 x Z_361 N=121296 best=48 evals=2576961 time=300.0 orbit k=3 m=2 f=2 fix=5
