@@ -66,7 +66,7 @@ def total(sig):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
     rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
-    c0b = int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
+    c0b = 0 if os.environ.get('NOC0') else int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
     cov = lns.cover(F, sig, A)
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
     return c0b + cov + dd, (c0b, cov, dd)
@@ -195,7 +195,7 @@ def step(sig, Sset, secs, seed):
                         else: lits += [Y[y2, L2] for L2 in T if zt in PTS[L2]]
                 need(True if ok else lits)
     # coset-0 routes for unmixed pairs touching S (points) or T (lines)
-    for a, b in UPl:
+    for a, b in ([] if os.environ.get('NOC0') else UPl):
         if isfree[a] or isfree[b]: continue
         if not inS[a] and not inS[b]:
             if not LM[sig[a], sig[b]]: soft.append(None)
@@ -205,7 +205,7 @@ def step(sig, Sset, secs, seed):
         else:
             x, o = (a, b) if inS[a] else (b, a)
             need([Y[x, L] for L in T if LM[L, sig[o]]])
-    for s_, t in ULl:
+    for s_, t in ([] if os.environ.get('NOC0') else ULl):
         ps, pt = int(sinv[s_]), int(sinv[t])
         if isfree[ps] or isfree[pt]: continue
         if not inT[s_] and not inT[t]:
