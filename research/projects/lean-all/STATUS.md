@@ -18,7 +18,7 @@ Status values: `open` (not started), `claimed` (someone is working on it), `part
 | 10 | (13, 6) | 388,972 | finite geometry | — | A | open |  |
 | 11 | (15, 6) | 870,440 | finite geometry | — | A | open |  |
 | 12 | (16, 6) | 940,846 | finite geometry | — | A | open |  |
-| 13 | (4, 7) | 864 | vertex-transitive (Cayley-type) | — | A | claimed | Haar graph of Heis(F_9) ⋊ C_16 (`research/theorems/smallfam/graphs/build_d4D7_n864.py`); see HANDOFF.md. |
+| 13 | (4, 7) | 864 | vertex-transitive (Cayley-type) | — | A | partial | Haar graph of Heis(F_9) ⋊ C_16 (`research/theorems/smallfam/graphs/build_d4D7_n864.py`); group encoding not written yet, see HANDOFF.md. |
 | 14 | (7, 7) | 23,580 | hexagon + hub vertices ¹ | — | A | open |  |
 | 15 | (9, 7) | 118,224 | hexagon + hub vertices ¹ | — | A | open |  |
 | 16 | (10, 7) | 225,128 | hexagon + hub vertices ¹ | — | A | open |  |

@@ -20,4 +20,11 @@ Read first: `research/projects/lean-all/BRIEF.md`, then `STATUS.md` in this fold
 
 - The construction is in `research/theorems/smallfam/graphs/build_d4D7_n864.py`: Haar graph of `G = Heis(F_9) ⋊ C_16` (SmallGroup(432,233)) with `S` of 4 elements. Two other 864-vertex candidates (SmallGroup(432,247), (432,249)) are in the same folder.
 - The Lean route is the D=7 lemma `BipartiteDD.Haar.haar_isBipartiteDegDiam7_of_equiv` (`lean/BipartiteDD/Haar/Diam7.lean`), which needs both six-letter covers over `G`. The pattern to copy is `lean/BipartiteDD/Haar/D5D7b/` (record 3120): `Group`, `Words`, `Check` (certificate tables), `Stage*`, `Cover`, `Record`, `Axioms`.
-- Metacyclic `Z_m ⋊_r Z_n` (all 432-order options) gave no valid covering `S` in a random and hill-climb search (best 849 of 864 in the A/B words). A search over `Z_3^3 ⋊_M Z_16` (M in GL(3,3) with M^16 = I) is in progress; see below.
+- Metacyclic `Z_m ⋊_r Z_n` (all 432-order options) gave no valid covering `S` in a random and hill-climb search (best 849 of 864 in the A/B words). - Affine groups `Z_3^3 ⋊_M Z_16` (M in GL(3,3), M^16 = I, about 4,400 matrices, 6 random restarts with hill-climb each) also gave no valid covering `S`. So the 864-vertex record needs one of the three non-metacyclic groups in `build_d4D7_n864.py` / `graphs/`.
+- Lean's `Z_m ⋊ Z_n` structures (`Haar/Heis11.lean` is the model for an explicit `Group` instance with `ring` proofs) can encode Heis(F_9) ⋊ C_16 as `(v : ZMod 3 × ZMod 3, z : ZMod 3, j : ZMod 16)` with `Λ(j) = (1+i)^j`, `σ(j) = (-1)^j`. The associativity needs `Λ(j+l) = Λ(j)Λ(l)` (check by `decide` over `ZMod 16`) and `ω(Λ j a, Λ j b) = (-1)^j ω(a,b)` (N(1+i) = -1).
+- Next: write `lean/BipartiteDD/Haar/D4D7/Group.lean` (Group instance, `enc : Grp ≃ Fin 432`), generate `Words`/`Check`/`Stage*`/`Cover` from the `S` in the builder with a Python generator (base-4 codes, 6 letters), then `Record.lean` with `haar_isBipartiteDegDiam7_of_equiv`.
+
+## Build facts
+
+- `lake build BipartiteDD.Haar.Diam7` succeeded (EXIT 0) after Mathlib compiled from source (about 1,100 Lake jobs).
+- The default `lake build BipartiteDD` ran out of memory (Lean exit 137) on heavy Stage modules (`G5022_s*`, `G3122_local`). Do not run the default target. Build only the modules you touch.
