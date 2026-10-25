@@ -1,0 +1,11 @@
+# binaries, vendored libraries and bulky intermediate specs stay out of git (rebuild/regenerate from the scripts)
+*.spec
+!c7/best_M17_s3.spec
+x2s
+x2mc
+tabu
+tabu2
+pylib/
+__pycache__/
+*.so
+coll.txt

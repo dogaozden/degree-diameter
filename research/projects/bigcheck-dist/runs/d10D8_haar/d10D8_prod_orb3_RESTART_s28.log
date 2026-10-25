@@ -1,0 +1,60 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.04s
+wide rows: HW order 252, rows 2352, setup 0.08s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=565
+t=30 steps=4455 evals=35641 cost=22 best=21 T=0.53
+t=60 steps=8918 evals=71345 cost=15 best=15 T=0.19
+t=90 steps=13390 evals=107121 cost=15 best=15 T=0.15
+t=120 steps=17700 evals=141601 cost=13 best=13 T=0.15
+t=150 steps=21573 evals=172585 cost=13 best=13 T=0.15
+t=180 steps=26054 evals=208433 cost=13 best=13 T=0.15
+t=210 steps=30431 evals=243449 cost=12 best=12 T=0.15
+t=240 steps=34982 evals=279857 cost=12 best=12 T=0.15
+t=270 steps=39244 evals=313953 cost=12 best=12 T=0.15
+t=300 steps=43715 evals=349721 cost=12 best=12 T=0.15
+t=330 steps=48159 evals=385273 cost=12 best=12 T=0.15
+t=360 steps=52488 evals=419905 cost=45 best=12 T=1.02
+t=390 steps=57120 evals=456961 cost=22 best=12 T=0.36
+t=420 steps=61739 evals=493913 cost=18 best=12 T=0.15
+t=450 steps=66309 evals=530473 cost=18 best=12 T=0.15
+t=480 steps=71052 evals=568417 cost=18 best=12 T=0.15
+t=510 steps=75844 evals=606753 cost=10 best=10 T=1.02
+t=540 steps=80611 evals=644889 cost=10 best=10 T=0.36
+t=570 steps=85065 evals=680521 cost=10 best=10 T=0.15
+t=600 steps=89707 evals=717657 cost=10 best=10 T=0.15
+t=630 steps=93986 evals=751889 cost=10 best=10 T=0.15
+t=660 steps=98464 evals=787713 cost=33 best=10 T=1.37
+t=690 steps=102672 evals=821377 cost=24 best=10 T=0.48
+t=720 steps=106944 evals=855553 cost=13 best=10 T=0.17
+t=750 steps=111274 evals=890193 cost=13 best=10 T=0.15
+t=780 steps=115387 evals=923097 cost=13 best=10 T=0.15
+t=810 steps=119527 evals=956217 cost=41 best=10 T=1.37
+t=840 steps=123803 evals=990425 cost=22 best=10 T=0.48
+t=870 steps=128168 evals=1025345 cost=16 best=10 T=0.17
+t=900 steps=132548 evals=1060385 cost=16 best=10 T=0.15
+t=930 steps=137071 evals=1096569 cost=16 best=10 T=0.15
+t=960 steps=141332 evals=1130657 cost=24 best=10 T=1.37
+t=990 steps=145737 evals=1165897 cost=17 best=10 T=0.48
+t=1020 steps=150017 evals=1200137 cost=17 best=10 T=0.17
+t=1050 steps=154333 evals=1234665 cost=17 best=10 T=0.15
+t=1080 steps=158458 evals=1267665 cost=16 best=10 T=0.15
+t=1110 steps=162786 evals=1302289 cost=30 best=10 T=1.37
+t=1140 steps=169477 evals=1355817 cost=17 best=10 T=0.48
+t=1170 steps=176318 evals=1410545 cost=18 best=10 T=0.17
+t=1200 steps=183097 evals=1464777 cost=18 best=10 T=0.15
+t=1230 steps=189771 evals=1518169 cost=17 best=10 T=0.15
+t=1260 steps=196445 evals=1571561 cost=20 best=10 T=1.37
+t=1290 steps=203256 evals=1626049 cost=22 best=10 T=0.48
+t=1320 steps=210066 evals=1680529 cost=22 best=10 T=0.17
+t=1350 steps=216690 evals=1733521 cost=22 best=10 T=0.15
+t=1380 steps=223547 evals=1788377 cost=22 best=10 T=0.15
+t=1410 steps=230111 evals=1840889 cost=25 best=10 T=1.37
+t=1440 steps=236815 evals=1894521 cost=26 best=10 T=0.48
+t=1470 steps=243711 evals=1949689 cost=19 best=10 T=0.17
+t=1500 steps=250156 evals=2001249 cost=19 best=10 T=0.15
+t=1530 steps=256993 evals=2055945 cost=12 best=10 T=0.15
+t=1560 steps=263853 evals=2110825 cost=61 best=10 T=1.36
+t=1590 steps=270538 evals=2164305 cost=22 best=10 T=0.48
+t=1620 steps=277388 evals=2219105 cost=22 best=10 T=0.17
+RESULT d=10 D=8 group=prod psl 7 sl 8 poly x^3+x+1 x Z_7 N=592704 best=10 evals=2273841 time=1650.0 orbit k=3 m=3 f=1 fix=26

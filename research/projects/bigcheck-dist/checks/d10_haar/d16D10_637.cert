@@ -1,0 +1,23 @@
+bcd-cert 1
+version bcd 1.0
+mode lift
+input_sha256 6ceac8449a78f2b4d09a07fc4b1197edfbe3978b0f6017bbd8b55a1d97cdf491
+aut_sha256 none
+nauts 0
+lift M 2193063600 NB 2 sl
+n 4386127200
+edges 35089017600
+mindeg 16
+maxdeg 16
+bipartite yes
+d 16
+D 10
+orbits 2
+reps_sha256 82c1315e6c757f33c4a77ca58b2a184f5a88614470c05ec77f3d28918db6b8ae
+part 0 1 0 2
+src 0 ecc 10 unreached 0
+src 1 ecc 10 unreached 0
+part_max_ecc 10
+part_unreached 0
+part_status OK
+end
