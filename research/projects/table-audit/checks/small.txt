@@ -26,6 +26,7 @@ Hafner file mdec3.7: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7
 (14,5) 9 copies of W(9): n=14760 edges=103320 degree min=14 max=14 bipartite=yes diameter=5 RESULT VALID d=14 D=5 n=14760 
 (15,5) 7 copies of W(11): n=20496 edges=153720 degree min=15 max=15 bipartite=yes diameter=5 RESULT VALID d=15 D=5 n=20496 
 (7,7) 3 copies of H(5): n=23436 edges=82026 degree min=7 max=7 bipartite=yes diameter=7 (level shift L=3 B=7812 checked as an automorphism; 7812 sources) RESULT VALID d=7 D=7 n=23436 
+(3,10) graphs/d3D10_n800_symZ80_b10.edges.txt: n=800 edges=1200 degree min=3 max=3 bipartite=yes diameter=10 RESULT VALID d=3 D=10 n=800 
 (3,5) graphs/d3D5_n56_anneal.edges.txt: n=56 edges=84 degree min=3 max=3 bipartite=yes diameter=5 RESULT VALID d=3 D=5 n=56 
 (3,7) graphs/d3D7_n168_conder_C168.1.edges.txt: n=168 edges=252 degree min=3 max=3 bipartite=yes diameter=7 RESULT VALID d=3 D=7 n=168 
 (3,8) graphs/d3D8_n256_Q3lift_Z32_squad-c3.edges.txt: n=256 edges=384 degree min=3 max=3 bipartite=yes diameter=8 RESULT VALID d=3 D=8 n=256 

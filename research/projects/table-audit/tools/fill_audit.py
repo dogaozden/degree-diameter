@@ -16,8 +16,8 @@ summary = f"""Of the 112 cells (counts from cells.csv{'; checks still running wh
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
   the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
 - **{len(order)} reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
-  holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) (lifts found by the
-  squad), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and {len(loz_o)} Loz cells as Haar graphs of metacyclic
+  holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
+  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and {len(loz_o)} Loz cells as Haar graphs of metacyclic
   groups (§3).
 - **{len(d8)} do not check out as read**: {', '.join(cell(r) for r in d8)}. Their values are Gómez's ΩH_q
   (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).

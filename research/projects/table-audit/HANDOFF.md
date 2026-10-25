@@ -21,6 +21,8 @@ gen_cells.py && python3 fill_audit.py` is enough after a new check log lands.
 - (13,5) ≥ 11,664 (B(H) of Mizuno's (12,4) graph) for the coordinator: AUDIT.md §5.
 - Squad rounds table-audit-r1 and r2 logged in research/squads/LOG.md; r2 (all on (3,10) = 800) found nothing at
   800 (closest: symmetric SA with b = 10, c = 80, 8 unreached pairs summed over orbit representatives).
+- (3,10) = 800 reproduced at exact order after r2: tools/sym_anneal2.c (the r1 c6 annealer plus an exhaustive polish)
+  at b = 10, c = 80 found graphs/d3D10_n800_symZ80_b10.edges.txt in 41 min (apsp.c VALID, checks/small.txt).
 - 23 Loz cells reproduced at exact order as metacyclic Haar graphs (graphs/*.sol; checks/small.txt, haar_big.txt,
   haar_huge.txt).
 
@@ -28,14 +30,14 @@ gen_cells.py && python3 fill_audit.py` is enough after a new check log lands.
 - apsp_orb on the (16,7) cover (4,022,340 vertices, 804,468 sources; about 3 h on 4 cores). When the log appears, copy
   it to checks/x7_d16.apsp.txt and rerun the generators; PENDING disappears. If the session ended first, rebuild and
   rerun it from checks/CHECKS.md.
-- One 45-min sym_anneal run for (3,10) at b = 10, c = 80 (research/squads/table-audit-r1/c6/sym_anneal.c). A cost-0
-  output must still pass apsp.c.
+- sym_anneal2 at (3,10) with n = 810 (b = 10, c = 81) and 820 (c = 82), 45 min each. Either would beat the table
+  (800); a cost-0 output must pass apsp.c and then goes to the coordinator, not into records.
 
 ## Open
 - Whether ΩH_q with some labelling reaches D = 8 at q = 7..13 (the table's (10,8), (11,8), (12,8), (14,8), (16,8);
   (15,8) repeats the (14,8) value).
   A Z₅-symmetric labelling would let apsp_orb-style checks run from one copy per group. Overlaps bigcheck-dist goal 3.
-- (13,8) = 15·|H(11)|, (16,5) = 27,300, (3,10) = 800: no source. Delorme–Gómez 2002 (EJC, open archive; ScienceDirect
+- (13,8) = 15·|H(11)|, (16,5) = 27,300, (3,10) = 800: no source ((3,10) now has a graph of that order). Delorme–Gómez 2002 (EJC, open archive; ScienceDirect
   blocks scripts here) and the never-published DGQ paper are the places to look.
 - Loz data: try web.archive.org from a machine that can reach it (.../www.eyal.com.au/wiki/The_Degree/Diameter_Problem
   and its bipartite subpage); the thesis (Auckland 2009) is restricted to university logins.

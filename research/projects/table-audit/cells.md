@@ -11,7 +11,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (3,7) | 168 | Conder-Nedela; Delorme-Gomez-Quisquater; Loz | yes | apsp.c VALID on C168.1 and on Hafner's mdec3.7 |  |  |
 | (3,8) | 256 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 288 | holder's construction lost; order reproduced |
 | (3,9) | 506 | Loz | order | build_haar2.py + apsp.c VALID |  | holder's construction lost; order reproduced |
-| (3,10) | 800 | Delorme, Gomez, Quisquater | no |  |  | no traceable construction |
+| (3,10) | 800 | Delorme, Gomez, Quisquater | order | apsp.c VALID |  | holder's construction lost; order reproduced |
 | (4,3) | 26 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (4,4) | 80 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (4,5) | 160 | Hafner; Loz | yes | apsp.c VALID | 162 |  |
