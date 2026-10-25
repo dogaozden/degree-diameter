@@ -69,3 +69,5 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
   Freed cores: sl 79 x Z7 (N = 3,450,720, mu 41.5, fix 77) and psl 81 x Z13 (N = 3,453,840, mu 42.0, fix 80), both
   ORBW=3 seed 2, 2 h. Still running: prod psl 7 psl 11 x Z31 (N = 3,437,280) and prod sl 5 sl 16 x Z7 (N = 3,427,200),
   ORBW=3 seed 2. Any N above 3,416,952 beats the new record 6,833,904.
+- 11:11 UTC (about 1 h into round 2b): no solution. Best costs: prod psl 7 psl 11 x Z31 3 (4.7e5 evals),
+  prod sl 5 sl 16 x Z7 6 (4.8e5), sl 79 x Z7 4 (3.9e5), psl 81 x Z13 6 (2.7e5). Runs end about 12:12 UTC.
