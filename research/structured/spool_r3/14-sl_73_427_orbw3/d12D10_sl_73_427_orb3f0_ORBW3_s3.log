@@ -1,0 +1,12 @@
+group sl 73 x Z_427, N=166079088, identity 2244312, H order 63, rows 2636176, threads 1, setup 5.40s
+wide rows: HW order 252, rows 659044, setup 13.32s
+alpha: conj by mat(55,55,15,19) (index 297052), z -> 74 z on Z_427
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 71 (+e); mu = 27.40, mu/k = 9.13, fixed-point misses ~ 0.39
+ORBW=3: an uncovered fixed element weighs 3; start energy 30
+start cost=30
+t=30 steps=16 evals=129 cost=21 best=15 T=0.52 energy=21 bestE=15
+t=61 steps=32 evals=257 cost=18 best=15 T=0.18 energy=18 bestE=15
+t=92 steps=48 evals=385 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=122 steps=64 evals=513 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=153 steps=81 evals=649 cost=18 best=15 T=0.15 energy=18 bestE=15
+t=184 steps=97 evals=777 cost=15 best=15 T=0.15 energy=15 bestE=15
