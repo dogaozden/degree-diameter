@@ -257,8 +257,19 @@ All graphs below were rebuilt from their solution files and checked by an all-pa
 
 | cell | $q$ | $j$ | freed set | hubs per side | $n$ | check |
 |---|---|---|---|---|---|---|
+| (7,7) | 5 | 1 | 72 pairwise opposite + 9 mixed (Prop. 4) | 81 | **23,598** | diameter 7 |
+| (9,7) | 7 | 1 | 288 + 8 mixed | 296 | **118,240** | diameter 7 |
+| (10,7) | 8 | 1 | 217 + 15 mixed | 232 | **225,158** | diameter 7 |
 | (11,7) | 9 | 1 | 4,306 non-collinear points, $\sigma$ = duality | 4,306 (random degree-8 hub graph) | **407,192** | diameter 7, 11-regular |
 | (12,7) | 9 | 2 | the same 4,306 points | 8,580 (Haar graph of PSL(2,11)×Z13, Δ 7, D 7) | **681,460** | diameter 7 |
+| (13,7) | 11 | 1 | 756 + 12 mixed | 768 | **1,064,472** | diameter 7 (apsp_orb) |
+
+In progress at the time of writing (see HANDOFF.md for the final state): $q=11$ with 756 + 14 = 770 (round 3, c3:
+all lines scanned) for (13,7), (14,7), (15,7); $q=13$ with 792 + 24 = 816 (round 3, c4) for (16,7).
+
+**$q=16$** (not a table cell: $\Delta=q+2=18$): an elliptic quadric $Q^-(3,16)$ in a 4-space gives 257 pairwise
+opposite points (sets/P16_ell257.txt); random greedy gives at most 180 (4 runs); so
+$n_b(18,7)\ge6\cdot17\cdot65{,}793+2\cdot257=6{,}711{,}400$ by Theorem 1 with Lemma 2 and the Hermitian spread (graph not built).
 
 Earlier records of this family (pairwise opposite sets): (7,7) 23,580 ($q=5$, 72), (9,7) 118,224 ($q=7$, 288),
 (10,7) 225,128 ($q=8$, 217), (13,7) 1,064,448, (14,7) 1,774,584, (15,7) 2,484,720 ($q=11$, 756), (16,7) 4,025,508
