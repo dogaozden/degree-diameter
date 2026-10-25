@@ -140,3 +140,9 @@ so no commuting fixed pair. The price is |Fix(α)|·e^(−λ/7) fixed-point miss
 ## Batch 4 (running): more seeds on the two best k = 3 product groups
 - prod psl 11 × psl 23 (N 4,007,520, μ 31.7): seed 5 with ORBW=5, seed 6 plain; 5,400 s each.
 - prod psl 7 × psl 19 × Z7 (N 4,021,920, μ 33.2): seeds 1, 2 from batch 2, still at cost 3 at 2,700 s; running to 5,400 s.
+
+## RECORD CANDIDATE 2: prod psl 7 × psl 19 × Z7, 8,043,840 vertices (+0.5 % over 8,003,856)
+- File: research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt (sha256 b177732333fcc80f0acdded0a1e9dcab1fea64c6e8b6274a3133b41d9d967a02).
+  N = 4,021,920 = |PSL(2,7) × PSL(2,19) × Z_7|. ORBIT="3 2 2", μ = 33.2, |Fix(α)| = 26, 790,065 evaluations, 3,823 s.
+  Log: research/structured/runs/raise2-d8D10/prod_psl_7_psl_19_7_s1.log (haar_sym: "full diameter check: OK").
+- Independent check: research/frontier/build_haar2.py (≤ 20M vertices reference), log build_haar2_p7_19_7.log. PENDING at the time of writing.
