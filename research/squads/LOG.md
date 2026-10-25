@@ -62,3 +62,8 @@ Kept: wpo only from low cost (<= ~20); SA first. Opus's own n = 587 runs (a pair
 single pair added to W(8) with the same SA reaches 12 (and r4 c3 reached 4). A second pair interferes with the first
 through sigma globally (every sigma(s) is on the coverage routes of every new vertex), so n = 587 needs a better
 structural search than SA + wpo. The squad added the decisive tool (wpo) in r3; in r4 it added nothing new.
+After r4 (Opus alone): the one-pair pipeline (inc/pipeline.sh: po7, wpo, nujoint TARGET, finish.sh) gave the side
+results (10,5) 4,812 (W(7)+1) and (12,5) 9,852 (W(9)+1) in about 10 minutes each, both apsp VALID. A control showed that
+one pair added to W(8) with the 7,020 sigma anneals to 10 and wpo finishes it in 39 s, while a second pair on any
+solved n = 586 base stays at 150-400.
+
