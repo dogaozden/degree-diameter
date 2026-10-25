@@ -164,3 +164,14 @@ groups as not run.
 - prod sl 9 × sl 23 × Z1 (μ 26.5): full 7200 s, not solved. Best 14 at 452k evals (|Fix| = 431: a big fixed-point set, as expected without a cyclic factor).
 - Still running, ORBW=3: sl 43 × Z109 (seed 3) and sl 59 × Z43 (seed 1), both at best 6 at 5200 s, ending about 19:15 UTC.
 - No new launches: the remaining time is too short for a 2-hour run at these μ.
+
+## Result 5 (round 2): NEW RECORD (11,9), 17,323,152 vertices (was 17,297,280, +0.15 %)
+
+- Group sl 43 × Z_109 (SL(2,43) × Z_109), |G| = 8,661,576 (μ = 23.3), orbit k = 3, m = 3, f = 2, **ORBW=3**
+  (an uncovered α-fixed element weighs 3). Solved at evaluation 433,953 (6522 s, seed 3). |Fix(α)| = 41.
+  The same group with ORBW=1 (seed 2, 7200 s, 477k evals) stalled at cost 2: the ORBW=3 change is what closed it.
+- Solution: research/frontier/sols/d11D9_sl_43_109_orbw3_s3.txt. Search log: research/structured/runs/d11D9_sl_43_109_orbw3_s3.log.
+- Independent check: build_haar2.py VALID: ecc 9 from (e,A) and (e,B), 0 unreached, 11-regular, 0 duplicate edges,
+  edge-list sha256 459b3467e7b17e228a9f11fedd05fa6a51e4fb16258756aaab1833d691ce352b. Log: runs/d11D9_sl_43_109_orbw3_s3.rebuild.txt.
+- Caveat: one success is not a measured advantage for ORBW=3 (STRUCTURE §8 says the same about (11,8)); the second
+  ORBW=3 run (sl 59 × Z43, μ 30.2) was still running at this commit.
