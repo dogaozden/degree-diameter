@@ -32,7 +32,15 @@ Record to beat: **67,742,688** vertices = 2·|SL(2,103) × Z_31| (N = 33,871,344
 | sl 61 × Z_151, seed 1 | 34,264,920 | 27,913 | 20 | no solution |
 | sl 89 × Z_49, seed 1 | 34,539,120 | 53,417 | 14 | no solution |
 
-Round 2 (started 09:42, 2 h each): sl 53×Z_229 seeds 3 (RESTART=1), 4, 5 (RESTART=1); sl 89×Z_49 seed 2.
+Round 2 (09:42–11:42, 2 h each), no solution:
+| job | evals | best cost |
+|---|---|---|
+| sl 53 × Z_229, seed 3 (RESTART=1) | 40,457 | 24 |
+| sl 53 × Z_229, seed 4 | 40,881 | 24 |
+| sl 53 × Z_229, seed 5 (RESTART=1) | 40,121 | 18 |
+| sl 89 × Z_49, seed 2 | 45,273 | 16 |
+
+Round 3 (11:42, 1.5 h each): sl 53 × Z_229 seeds 6 and 7 (RESTART=1); sl 89 × Z_49 seed 3; sl 59 × Z_169 seed 1 (μ_A 16.4).
 Costs were flat for the last hour in most runs. The 103 record needed about 10k evaluations, so 2 h at 0.18 s per
 evaluation (about 40k evaluations) is not yet decisive for these groups.
 
