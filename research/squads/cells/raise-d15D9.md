@@ -106,3 +106,26 @@ Next steps for a resumed session:
 - Round 1 and round 2 both found nothing at N ≈ 1.04e8 in about 3 h per run. The honest read is that this cell
   needs either many more core-hours or a structural change (e.g. a group with a smaller fixed-point set at k = 3).
 
+
+## Final, 20:03 UTC (round 2)
+
+All runs have finished their budgets. None wrote a solution file (solution files are written only on cost 0).
+
+| run | group | N | setting | evals | best cost |
+|---|---|---|---|---|---|
+| w1a | prod SL(2,5) × SL(2,13) × Z397, s1 | 104,045,760 | plain | 24,873 | 20 |
+| w1b | prod SL(2,5) × SL(2,19) × Z127, s1 | 104,241,600 | plain | 25,113 | 8 |
+| w1c | SL(2,53) × Z703, s1 | 104,623,272 | plain | 14,873 | 24 |
+| w1d | SL(2,41) × Z1519, s1 | 104,628,720 | plain | 15,689 | 42 |
+| w2a | prod SL(2,5) × SL(2,19) × Z127, s2 | 104,241,600 | RESTART=1 | 20,609 | 8 |
+| w2b | prod SL(2,5) × SL(2,19) × Z127, s3 | 104,241,600 | RESTART=1 | 20,721 | 10 |
+| w3a | prod SL(2,5) × SL(2,19) × Z127, s4 | 104,241,600 | ORBW=5 RESTART=1 | 21,009 | 6 |
+| w3b | prod SL(2,5) × SL(2,19) × Z127, s5 | 104,241,600 | ORBW=5 RESTART=1 | 20,905 | 6 |
+| w3c | prod SL(2,5) × SL(2,19) × Z127, s6 | 104,241,600 | ORBW=5 RESTART=1 | 12,609 | 12 |
+| w3d | prod SL(2,5) × SL(2,19) × Z127, s7 | 104,241,600 | ORBW=5 RESTART=1 | 12,745 | 12 |
+
+Result: no VALID find at N ≥ 104,014,561, so the (15,9) record stays at 208,029,120 vertices. The best-cost floor across
+all settings on the lowest-μ admissible group is 6 (ORBW=5, seeds 4 and 5), and 6 is not a solution.
+
+Next steps are listed in the status section above. ORBW=5 is the most promising lever; it is worth many more seeds
+and longer runs on prod SL(2,5) × SL(2,19) × Z127.
