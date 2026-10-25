@@ -29,12 +29,13 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | building | LeanAll/HaarD12D9 |
 | (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | building | LeanAll/HaarD10D10 |
 | (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | building | LeanAll/HaarD13D9 |
+| (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | building | LeanAll/HaarD14D9 |
 | (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD13D8 (HaarProd) |
 | (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD9D9 (HaarProd) |
-| (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | generating | LeanAll/HaarD14D9 |
-| (15,9), (16,9), (12,10), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | todo (same pipeline; disk and time) | |
-| (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | todo (needs GF(8) arithmetic) | |
-| (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | todo; the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
+| (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | building | LeanAll/HaarD7D10 (HaarGF8) |
+| (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | queued (streamed: bigcell.py) | LeanAll/HaarD12D10 |
+| (15,9), (16,9), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | queued after (12,10) (streamed) | |
+| (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
@@ -89,4 +90,13 @@ every generated file (the generators and certificate programs are deterministic)
 Builds: `poolq.py` runs a queue file (memory budget, barriers between stages, jobs may be appended while it runs;
 `!MOD` runs `lean` directly on a module whose imports are built, which saves the lake start-up of about 3 s per job).
 Rates seen here: about 3,000–5,000 slots per second per core, depending on the degree and the batch size.
+
+`GF8.lean` and `HaarGF8.lean` give the second factor `SL(2,8)` of the (7,10) cell: `GF8` is `Fin 8` with xor addition
+and multiplication modulo `x³ + x + 1` (ring axioms by `decide`); a packed state holds each entry's bits spaced three
+apart, so integer products carry nothing between coefficients, and `red8` (fieldwise: parity, then `x³ = x + 1`,
+`x⁴ = x² + x`) reduces them; the field-level identity `red1_sp` is checked over all 4,096 cases.
+
+Records of generated cells that are not committed are listed in `axioms_big.txt` (the `#print axioms` output of each
+record theorem, from the build here). `bigcell.py` streams the largest cells: it writes the batch modules a chunk at a
+time, queues them, and deletes each source once its module is built.
 

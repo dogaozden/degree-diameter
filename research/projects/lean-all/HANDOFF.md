@@ -11,9 +11,10 @@ Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
 2. **Graphs up to about 35,000 vertices**: orbit BFS in the kernel (`Orbit.lean`, `Orbit2.lean`, generators
    `gen_orbit.py`, `gen_orbit2.py`, automorphisms from nauty via `auts.py`).
-3. **Haar graphs** of `SL(2,p) × Z_n`, `PSL(2,p) × Z_n`, `SL(2,p) × Z_n × SL(2,q)` and `PSL(2,p) × Z_n × SL(2,q)`:
-   packed batch checks (`Swar.lean`, `HaarSwar.lean`, `HaarSL.lean`, `HaarPSL.lean`, `HaarProd.lean`), certificates
-   from `haarcert.c` / `haarcert_prod.c`, Lean files from `gen_haarsl.py` / `gen_haarprod.py`.
+3. **Haar graphs** of `SL(2,p) × Z_n`, `PSL(2,p) × Z_n`, `SL(2,p) × Z_n × SL(2,q)`, `PSL(2,p) × Z_n × SL(2,q)` and
+   `PSL(2,p) × Z_n × SL(2,8)`: packed batch checks (`Swar.lean`, `HaarSwar.lean`, `HaarSL.lean`, `HaarPSL.lean`,
+   `HaarProd.lean`, `GF8.lean`, `HaarGF8.lean`), certificates from `haarcert.c` / `haarcert_prod.c`, Lean files from
+   `gen_haarsl.py` / `gen_haarprod.py`.
 
 ## How to build a Haar cell
 
@@ -39,13 +40,16 @@ Things that cost time here, now avoided by the generators:
 - editing an imported library file (`HaarSL.lean`, `HaarPSL.lean`, …) makes lake rebuild every generated module above
   it; add new lemmas in new files.
 
+Records of generated cells whose files are not committed: `axioms_big.txt` (written by `axwatch.py`, which watches
+the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regenerate the files.
+
 ## What is left
 
 - The cells still building or queued (see `STATUS.md`).
-- Large SL cells (15,9), (16,9), (12,10), (13,10), (14,10): same pipeline. The generated sources take about
-  10 bytes per group element per cover (hex), the oleans about 0.6 of that; (14,10) needs about 6.6 GB of source,
-  so generate, build and delete the sources in chunks (the direct-lean jobs only need the oleans of the imports).
-- (7,10) `PSL(2,5) × SL(2,8) × Z37`: needs GF(8) arithmetic in the packed check (spaced 3-bit digits, parity and
-  reduction by `x³ = x + 1`) and a concrete field of order 8; not started.
+- Large SL cells (12,10), (15,9), (16,9), (13,10), (14,10): `bigcell.py CELL QUEUE LOG --need GB --clean` streams
+  them through a running `poolq.py` (writes the batch modules a chunk at a time, deletes each source once built,
+  and with `--clean` deletes the batch oleans and certificates after the axioms check). The generated sources take
+  about 10 bytes per group element per cover and the oleans about 0.8 of that; (14,10) needs about 5.3 GB of oleans
+  at once, so free disk first (older cells' batch oleans, `.lake/build/ir`).
 - Hexagon D = 7 cells: the hexagon-family project (branch `claude/hexagon-family-blvamb`) has a Lean certificate
   theorem for these constructions; the instances are theirs.
