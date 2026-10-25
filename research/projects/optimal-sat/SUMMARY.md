@@ -106,13 +106,16 @@ k = 11 (`cayley_search.py 11`); none on Z₃₆ for k = 9 either.
 
 ## 3. k = 11: status (open; partial computations)
 
-The question "is there a bipartite (11,3,−2)-graph?" (equivalently N^b(11,3) ≤ 218 or not) is **not settled**.
-What has been computed (all with the quotient encoder; UNSAT results below are not yet certified unless marked):
-- A-only, monolithic (`--sym --nf2 --ntt --alltr`): kissat > 4.5 CPU-hours, CaDiCaL with streamed LRAT check
-  > 3.5 CPU-hours, kissat on the signed instance > 2 CPU-hours: no answer yet (logs in the scratchpad; see HANDOFF).
-- Sub-cases at vertex 0 (`subcase.py`), all UNSAT: B 3-regular (18 s), B 4-regular (195 s),
-  α = β = (5,5,4,4,4,4,4,3,3) (225 s), and 22 random degree-sequence cubes out of 245,667 (one more timed out).
+The question "is there a bipartite (11,3,−2)-graph?" (equivalently: is N^b(11,3) ≤ 218?) is **not settled**.
+- Monolithic A-only runs (`--sym --nf2 --ntt --alltr`, sha256 b6101044…): kissat about 7 CPU-hours, CaDiCaL with a
+  streamed LRAT check about 5 CPU-hours, kissat on the signed instance about 3 CPU-hours; no answer.
+- Case split by the degree sequences (α, β) of B (the 9×9 block of arcs from O to I at vertex 0), with a choice
+  rule for the base vertex. Under rule R1 (vertex 0 lies on the most directed triangles; 245,667 cubes):
+  - **certified** (CaDiCaL + LRAT, lrat-check VERIFIED): the cubes with t = 0 and t = 1 directed triangles at
+    vertex 0. The 6 cubes with t = 2, 3 are being checked; see `logs/k11_lowt.log`.
+  - Uncertified kissat runs, all UNSAT: B 3-regular (18 s), B 4-regular (195 s), α = β = (5,5,4,4,4,4,4,3,3)
+    (225 s), and 22 of 23 random cubes (one timed out).
+  - Costs and the alternative rule R2 are in `logs/defect2_calibration.md`.
 - No Cayley digraph on either group of order 55 satisfies the A-conditions (complete search).
-- The full degree-sequence split (`ablist.py`, `abcube.py`, `run_abcube.sh`) and the B-row split (`cube_list.py`,
-  `run_cube.sh`, `cover_check.py`) are ready for a cluster. Estimate: 10³–10⁴ CPU-hours. Request:
-  `research/squads/requests/2026-10-25T0915-optimal-sat-k11-cubes.md`.
+- Ready for a cluster: `defect2/setup_worker.sh` and `defect2/worker.sh` (estimate 10²–10⁴ CPU-hours, dominated by
+  low-t, flat-α cubes). Request: `research/squads/requests/2026-10-25T0915-optimal-sat-k11-cubes.md`.
