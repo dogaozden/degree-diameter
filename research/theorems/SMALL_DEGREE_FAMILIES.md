@@ -201,6 +201,9 @@ scanned ranges). Outputs: `runs/cyclofiber_d3D{7,8,9,10}.txt`, summary `runs/cyc
 | all | 1,639 | 21 | **1,524** | 115 | 18 % |
 
 - No solving group is excluded. This is a soundness check of the proof and the code; `cyclosummary.py` asserts it.
+- A direct check (`cyclocheck.py` → `runs/cyclocheck.txt`) uses a BFS in the actual group G, written independently
+  of the bound code. For 50 random (group, S) pairs (Δ = 3 at D = 7 and 9, Δ = 4 at D = 6), the number of distinct
+  ball elements in every fibre J never exceeds |W_J|: 0 violations.
 - The first session's conjecture "index > 6 never solves" (0 of 666) is now a theorem for 658 of those groups. The
   other 8 fail by exhaustive search.
 - The bound excludes these groups one by one, for their actual (k, o, p); it does not prove "index ≤ 6" in general.
@@ -295,6 +298,8 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
   - Partial: order 114 (4 of 6), 128 (189 of 2,328) and 240 (43 of 208).
   - The best are cost 8 (order 80), 12 (order 140), and 2 (Z29 ⋊ Z7 at 812 and C4 × (C11 : C5) at 880).
   - For (3,9) the Moore bound allows 2+2 lifts up to order 255, so (3,9) is not closed.
+  - (3,10), all 67 groups of order 243 = 3⁵ (972 vertices; the shape of the Haar near miss (486,40)): 55 searched
+    exhaustively, 12 removed by the rigorous filters, no solution, best cost 8 (`runs/lift_b22_D10.tsv`).
 - **(4,8): the ten best groups of the full screen** (§6.2) are exhaustively negative (`onegroup.py`,
   `runs/d4D8_sg*_exhaustive.txt`):
 
