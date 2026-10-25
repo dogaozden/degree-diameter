@@ -1,0 +1,10 @@
+c8 wildcard: flag-only lifts. Matchings M1, M2 carry voltage 0 (cls 0, sheet-preserving); GQ flags carry all voltage (cls 1).
+Generator: python3 mk.py q m seed fzero OUT   (mode fzero). Checks: baselift eval FILE 6 (all sources).
+q=13: random m=14 (seed 3): VALID(all sources)  -> runs/q13_m14_fzero.base   (best VALID q=13)
+      random m=15 (seed 3): uncovered 6; targeted anneal on failing sources: still 6 over all sources
+      random m=16 (seed 3): uncovered 24; anneal with NSRC=400 did not change the full count
+q=7:  m=16 annealed 60 s (MOVES=v): VALID(all sources) -> runs/q7_m16_fzero_ann.base (best VALID q=7)
+      m=20 annealed 90 s: uncovered 356 (not valid); random m=17: 350, m=18: 698
+q=11: random m=12 (seed 5): VALID(all sources) -> runs/q11_m12_fzero.base; m=13: uncovered 2; m=14: 16
+Control (flags 0, matchings annealed): random m=16 uncovered 13630; annealed 60 s uncovered 2266 (bad).
+Control (standard: all edges annealed, from gq.random_design): random VALID to 12 at q=13 (COMMON.md).

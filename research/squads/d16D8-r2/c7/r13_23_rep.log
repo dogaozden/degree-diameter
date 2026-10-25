@@ -1,0 +1,33 @@
+start full uncovered 824 (k=23, P=2, act=sample NSRC=800 K=1 EPOCH=100 NODES=100000)
+t=10 steps=24 moves=24 acc=24 T=0.466 Ucur=764 act=800 best(full)=824
+t=20 steps=52 moves=52 acc=52 T=0.434 Ucur=690 act=800 best(full)=824
+t=30 steps=79 moves=79 acc=79 T=0.404 Ucur=626 act=800 best(full)=824
+full check t=40 steps=100 acc=100 full=666 best=666
+t=41 steps=102 moves=102 acc=102 T=0.376 Ucur=664 act=800 best(full)=666
+t=51 steps=133 moves=133 acc=133 T=0.351 Ucur=588 act=800 best(full)=666
+t=61 steps=166 moves=166 acc=165 T=0.327 Ucur=502 act=800 best(full)=666
+t=71 steps=198 moves=198 acc=197 T=0.304 Ucur=432 act=800 best(full)=666
+full check t=74 steps=200 acc=199 full=478 best=478
+t=82 steps=221 moves=221 acc=220 T=0.283 Ucur=432 act=800 best(full)=478
+t=92 steps=251 moves=251 acc=249 T=0.264 Ucur=371 act=800 best(full)=478
+t=102 steps=281 moves=281 acc=279 T=0.246 Ucur=294 act=800 best(full)=478
+full check t=110 steps=300 acc=297 full=312 best=312
+t=112 steps=304 moves=304 acc=301 T=0.229 Ucur=304 act=800 best(full)=312
+t=122 steps=336 moves=336 acc=331 T=0.213 Ucur=230 act=800 best(full)=312
+t=132 steps=361 moves=361 acc=356 T=0.199 Ucur=174 act=800 best(full)=312
+t=143 steps=387 moves=387 acc=381 T=0.185 Ucur=130 act=800 best(full)=312
+full check t=150 steps=400 acc=394 full=194 best=194
+t=153 steps=408 moves=408 acc=402 T=0.172 Ucur=179 act=800 best(full)=194
+t=163 steps=437 moves=437 acc=431 T=0.160 Ucur=122 act=800 best(full)=194
+t=173 steps=464 moves=464 acc=458 T=0.149 Ucur=71 act=800 best(full)=194
+t=183 steps=495 moves=495 acc=488 T=0.139 Ucur=23 act=800 best(full)=194
+full check t=187 steps=500 acc=493 full=86 best=86
+t=194 steps=520 moves=520 acc=513 T=0.129 Ucur=46 act=800 best(full)=86
+t=204 steps=546 moves=546 acc=539 T=0.121 Ucur=0 act=800 best(full)=86
+full check t=206 steps=546 acc=539 full=28 best=28
+full check t=214 steps=561 acc=554 full=10 best=10
+t=214 steps=562 moves=562 acc=555 T=0.112 Ucur=8 act=800 best(full)=10
+full check t=219 steps=568 acc=561 full=6 best=6
+full check t=222 steps=571 acc=564 full=2 best=2
+full check t=224 steps=572 acc=565 full=0 best=0
+RESULT V=4760 k=23 D=6 best=0 steps=572 moves=572 acc=565 secs=224 out=r13_23_rep.base (full check 0: run baselift eval to confirm)

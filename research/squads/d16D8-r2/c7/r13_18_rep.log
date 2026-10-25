@@ -1,0 +1,5 @@
+start full uncovered 58 (k=18, P=3, act=sample NSRC=800 K=1 EPOCH=100 NODES=100000)
+t=10 steps=26 moves=26 acc=26 T=0.823 Ucur=4 act=800 best(full)=58
+full check t=13 steps=28 acc=28 full=2 best=2
+full check t=14 steps=29 acc=29 full=0 best=0
+RESULT V=4760 k=18 D=6 best=0 steps=29 moves=29 acc=29 secs=14 out=r13_18_rep.base (full check 0: run baselift eval to confirm)
