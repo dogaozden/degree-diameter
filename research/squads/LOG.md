@@ -125,4 +125,4 @@ other seeds 82–96; 4 of 57 short runs reach 98). Opus built **(9,7) 117,844** 
 q = 11 and 13 stays far below the orbit records (144, 201 after 5 min). The q = 7 98 set has stabilizer order 336: it is a union of PSL(2,7)
 orbits (14 + 84) on V = Sym^4 ⊥ <n0> (binary quartics), whose 8 "centers" form the rational normal curve. The quartic
 model at q = 11 gives at most 240 (PSL(2,11): 12 only; 2.A5: 60 + 6 × 30), and at q = 5 only 30. Longer q = 9 orbit
-runs on card c6's order-5 isometries: 150 (no gain).
+runs on card c6's order-5 isometries: 150 (no gain). GF(9) twisted cyclic groups R^a ⊕ Y^m (70 runs, uni11/q9/): at most 150.
