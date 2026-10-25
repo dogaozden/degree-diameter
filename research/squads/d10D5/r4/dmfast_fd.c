@@ -98,6 +98,64 @@ static int d1_ok(void) {   /* FLAGDEL D1 condition (same as dmhub2.c d1_cost), f
     }
     return 1;
 }
+static int cover_count(void) {   /* RELAX=2: number of coverage holes (cover_ok without early exit) */
+    int nh = 0;
+    if (!mk) mk = calloc(2 * Np, sizeof(int));
+    if (!onfl) {   /* PATCH=1: points on a freed line / lines through a freed point count as covered (hub edges patch them) */
+        onfl = calloc(Np, 1); thrfp = calloc(Np, 1);
+        for (int i = 0; i < nfl; i++) { for (int k = 0; k < Q1; k++) { onfl[adj[(Np + fll[i]) * Q1 + k]] = 1; thrfp[adj[flp[i] * Q1 + k] - Np] = 1; } }
+    }
+    for (int i = 0; i < nfl; i++) {
+        int p = flp[i], l = fll[i]; stp++;
+        for (int x = 0; x < Np; x++) if (inPp[i * Np + x] && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
+        for (int a = 0; a < Q1; a++) { int w = adj[p * Q1 + a] - Np; if (isfreeLn[w]) continue; int z = sinv[w];
+            for (int b = 0; b < Q1; b++) { int u = sinv[adj[z * Q1 + b] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
+        if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[i][j]) for (int k = 0; k < Q1; k++) mk[adj[(Np + fll[j]) * Q1 + k]] = stp;
+        for (int u = 0; u < Np; u++) if (u != p && !inPp[i * Np + u] && mk[u] != stp && !(patch && onfl[u])) nh++;
+        stp++;
+        for (int M2 = 0; M2 < Np; M2++) if (inLl[i * Np + M2] && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
+        for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; if (isfreeP[y]) continue; int ly = sig[y];
+            for (int b = 0; b < Q1; b++) { int z = adj[(Np + ly) * Q1 + b]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
+        if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[j][i]) for (int k = 0; k < Q1; k++) mk[Np + adj[flp[j] * Q1 + k] - Np] = stp;
+        for (int m = 0; m < Np; m++) if (m != l && !inLl[i * Np + m] && mk[Np + m] != stp && !(patch && thrfp[m])) nh++;
+    }
+    return nh;
+}
+static int d1_count(void) {   /* RELAX=2: number of D1 holes */
+    int nh = 0;
+    if (!fdn) return 0;
+    if (!mk) mk = calloc(2 * Np, sizeof(int));
+    for (int f = 0; f < fdn; f++) {
+        int p = fdp[f], l = fdl[f];
+        for (int a = 0; a < Q1; a++) {
+            int L = adj[p * Q1 + a] - Np; if (L == l || isfreeLn[L]) continue;
+            int v = sinv[L], von = 0; for (int b = 0; b < Q1; b++) if (adj[(Np + l) * Q1 + b] == v) von = 1;
+            if (von) continue;
+            stp++;
+            for (int b = 0; b < Q1; b++) { int L1 = adj[v * Q1 + b] - Np; for (int c = 0; c < Q1; c++) { int x = adj[(Np + L1) * Q1 + c]; if (x == v || isfreeP[x]) continue;
+                int lx = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + lx) * Q1 + k]] = stp; } }
+            for (int b = 0; b < Q1; b++) { int L2 = adj[v * Q1 + b] - Np; if (isfreeLn[L2]) continue; int z = sinv[L2];
+                for (int k = 0; k < Q1; k++) { int u = sinv[adj[z * Q1 + k] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
+            for (int b = 0; b < Q1; b++) { int u = adj[(Np + l) * Q1 + b]; if (u == p) continue;
+                if (isfreeP[u]) { int co = 0; for (int c = 0; c < Q1 && !co; c++) for (int d = 0; d < Q1; d++) if (adj[u * Q1 + c] == adj[v * Q1 + d]) { co = 1; break; } if (co) continue; }
+                if (mk[u] != stp) nh++; }
+        }
+        for (int a = 0; a < Q1; a++) {
+            int y = adj[(Np + l) * Q1 + a]; if (y == p || isfreeP[y]) continue;
+            int sl = sig[y], thr = 0; for (int b = 0; b < Q1; b++) if (adj[p * Q1 + b] == Np + sl) thr = 1;
+            if (thr) continue;
+            stp++;
+            for (int b = 0; b < Q1; b++) { int y2 = adj[(Np + sl) * Q1 + b]; for (int c = 0; c < Q1; c++) { int M2 = adj[y2 * Q1 + c] - Np; if (M2 == sl || isfreeLn[M2]) continue;
+                int w = sinv[M2]; for (int k = 0; k < Q1; k++) mk[adj[w * Q1 + k]] = stp; } }
+            for (int b = 0; b < Q1; b++) { int y2 = adj[(Np + sl) * Q1 + b]; if (isfreeP[y2]) continue; int ly = sig[y2];
+                for (int k = 0; k < Q1; k++) { int z = adj[(Np + ly) * Q1 + k]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
+            for (int b = 0; b < Q1; b++) { int t = adj[p * Q1 + b] - Np; if (t == l) continue;
+                if (isfreeLn[t]) { int co = 0; for (int c = 0; c < Q1 && !co; c++) for (int d = 0; d < Q1; d++) if (adj[(Np + t) * Q1 + c] == adj[(Np + sl) * Q1 + d]) { co = 1; break; } if (co) continue; }
+                if (mk[Np + t] != stp) nh++; }
+        }
+    }
+    return nh;
+}
 static int relax = 0;
 static int allowed(int x, int M) {
     if (isfreeP[x] || isfreeLn[M]) return 0;
@@ -249,6 +307,38 @@ static void write_out(long best, uint8_t *bestnu, int *bestsig) {
     fclose(g);
 }
 
+/* EJECT=d: depth-limited search over nu flips (exact flip_delta): take a bad pair, try every flag on its geodesics,
+   recurse on the remaining bad pairs while the cost stays within the slack. */
+static long ej_cost; static long ej_nodes = 0;
+static int first_bad(int *a0, int *b0, int skip) {
+    int c = 0;
+    for (int a = 0; a < V; a++) { int cls = a >= Np; for (int b = a + 1; b < (cls + 1) * Np; b++) { size_t i = pidx(a, b); if (cnt[i] != 255 && bad(i)) { if (c++ == skip) { *a0 = a; *b0 = b; return 1; } } } }
+    return 0;
+}
+static int geo_flags(int a, int b, int *cand) {
+    int nc = 0;
+    for (int k1 = 0; k1 < Q1; k1++) { if (delf[flagof[a * Q1 + k1]]) continue; int n1 = adj[a * Q1 + k1];
+        for (int k2 = 0; k2 < Q1; k2++) { if (delf[flagof[n1 * Q1 + k2]]) continue; int x = adj[n1 * Q1 + k2]; if (x == a) continue;
+            for (int k3 = 0; k3 < Q1; k3++) { if (delf[flagof[x * Q1 + k3]]) continue; int n2 = adj[x * Q1 + k3]; if (n2 == n1) continue;
+                for (int k4 = 0; k4 < Q1; k4++) if (adj[n2 * Q1 + k4] == b && !delf[flagof[n2 * Q1 + k4]] && nc < 252) {
+                    cand[nc++] = flagof[a * Q1 + k1]; cand[nc++] = flagof[n1 * Q1 + k2]; cand[nc++] = flagof[x * Q1 + k3]; cand[nc++] = flagof[n2 * Q1 + k4]; } } } }
+    return nc;
+}
+static int eject(int depth, long slack) {
+    if (ej_cost == 0) return 1;
+    if (depth == 0) return 0;
+    int a, b; if (!first_bad(&a, &b, 0)) return ej_cost == 0;
+    int cand[256]; int nc = geo_flags(a, b, cand);
+    for (int t = 0; t < nc; t++) {
+        int f = cand[t]; int dup = 0; for (int u = 0; u < t; u++) if (cand[u] == f) dup = 1; if (dup) continue;
+        long d = flip_delta(f, 0); ej_nodes++;
+        if (ej_cost + d > slack) continue;
+        flip_delta(f, 1); nu[f] ^= 1; ej_cost += d;
+        if (eject(depth - 1, slack)) return 1;
+        long d2 = flip_delta(f, 0); flip_delta(f, 1); nu[f] ^= 1; ej_cost += d2;
+    }
+    return 0;
+}
 int main(int argc, char **argv) {
     q = atoi(argv[1]); if (getenv("NPOLY")) NP = atoi(getenv("NPOLY")); load_hex();
     if (getenv("SEED")) rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL;
@@ -305,8 +395,9 @@ int main(int argc, char **argv) {
     double swapp = getenv("SWAPP") ? atof(getenv("SWAPP")) : 0.0; long nswapacc = 0;
     uint8_t *route_bak = malloc(npairs);
     double ptarg = getenv("PTARG") ? atof(getenv("PTARG")) : 0.0; static int bla[256], blb[256]; int nbl = 0;
-    long it;
-    for (it = 0; it < iters && cost > 0; it++) {
+    long it; long covpen = relax == 2 ? cover_count() + d1_count() : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
+    if (relax == 2) { fprintf(stderr, "penalty mode: coverage+D1 holes %ld, weight %ld\n", covpen, penw); if (covpen) best = 1L << 40; }
+    for (it = 0; it < iters && (cost > 0 || covpen > 0); it++) {
         if ((it & 63) == 0) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); if ((ts.tv_sec - t1.tv_sec) + 1e-9 * (ts.tv_nsec - t1.tv_nsec) > secs) break; }
         double temp = T0 * pow(T1 / T0, (double)it / iters);
         if (swapp > 0 && (rnd() >> 11) * (1.0 / 9007199254740992.0) < swapp) {
@@ -319,18 +410,23 @@ int main(int argc, char **argv) {
             }
             if (p1 == p2) continue;
             if (nfl && !relax && !(allowed(p1, sig[p2]) && allowed(p2, sig[p1]))) continue;
-            if (nfl && relax) { if (isfreeP[p1] || isfreeP[p2]) continue;
+            long cov2 = 0;
+            if (nfl && relax == 1) { if (isfreeP[p1] || isfreeP[p2]) continue;
                 int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
                 int ok = cover_ok() && d1_ok(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2; if (!ok) continue; }
+            if (nfl && relax == 2) { if (isfreeP[p1] || isfreeP[p2]) continue;
+                int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
+                cov2 = cover_count() + d1_count(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2;
+                if (cov2 > covpen + 3) continue; }
             memcpy(route_bak, route, npairs);
             int l1 = sig[p1], l2 = sig[p2]; sig[p1] = l2; sig[p2] = l1; sinv[l2] = p1; sinv[l1] = p2;
             free(route); compute_routes();
             long nc = 0; for (size_t i = 0; i < npairs; i++) if (cnt[i] != 255 && bad(i)) nc++;
             nc /= 2;
-            long d = nc - cost;
+            long d = nc - cost + (relax == 2 ? penw * (cov2 - covpen) : 0);
             double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
-            if (d <= 0 || u < exp(-d / temp)) { cost = nc; nswapacc++;
-                if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); } }
+            if (d <= 0 || u < exp(-d / temp)) { cost = nc; if (relax == 2) covpen = cov2; nswapacc++;
+                if (cost + penw * covpen < best && covpen == 0) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); } }
             else { sig[p1] = l1; sig[p2] = l2; sinv[l1] = p1; sinv[l2] = p2; memcpy(route, route_bak, npairs); }
             continue;
         }
@@ -352,8 +448,19 @@ int main(int argc, char **argv) {
         double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
         if (d <= 0 || u < exp(-d / temp)) {
             flip_delta(f, 1); nu[f] ^= 1; cost += d;
-            if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld temp %.3f cost %ld\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); }
+            if (cost < best && covpen == 0) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld temp %.3f cost %ld\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); }
         }
+    }
+    if (getenv("EJECT") && best > 0 && best < 64) {
+        /* restore the best state and recompute routes/counts, then the ejection search */
+        memcpy(sig, bestsig, sizeof(int) * Np); for (int p = 0; p < Np; p++) sinv[sig[p]] = p; memcpy(nu, bestnu, NF);
+        free(route); compute_routes(); for (int s2 = 0; s2 < V; s2++) count_source(s2);
+        ej_cost = 0; for (size_t i = 0; i < npairs; i++) if (cnt[i] != 255 && bad(i)) ej_cost++; ej_cost /= 2;
+        int D = atoi(getenv("EJECT")); long sl = getenv("EJSLACK") ? atol(getenv("EJSLACK")) : 3;
+        fprintf(stderr, "eject: start cost %ld depth %d slack +%ld\n", ej_cost, D, sl);
+        for (int dd = 1; dd <= D && ej_cost > 0; dd++) { long c0 = ej_cost; if (eject(dd, c0 + sl)) break; fprintf(stderr, "eject depth %d: no solution (%ld nodes)\n", dd, ej_nodes); }
+        fprintf(stderr, "eject: final cost %ld (%ld nodes)\n", ej_cost, ej_nodes);
+        if (ej_cost < best) { best = ej_cost; memcpy(bestnu, nu, NF); }
     }
     printf("RESULT dmfast q %d iters %ld best %ld (of %ld opposite pairs) swaps accepted %ld\n", q, it, best, opp, nswapacc);
     memcpy(sig, bestsig, sizeof(int) * Np);
