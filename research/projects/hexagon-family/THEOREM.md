@@ -239,9 +239,24 @@ up to $2|R|$ hubs per side) random graphs fail, but Haar graphs of non-abelian g
 seven generators and diameter 7 are found in seconds by research/frontier/haar_gen3.c (PSL(2,11)×Z13 at 8,580;
 a metacyclic group of order 8,612 = 2·4,306 failed).
 
-### 7.3 Mixed-set experiment
-`ldual/ldual.c` (random greedy for Lemma 3 pairs; `ldual HEXBIN seed restarts [pure]`): best of 3 restarts,
-$q=3$: 20 (pure 16), $q=4$: 29 (pure 21), $q=5$: 39 (pure 30).
+### 7.3 Mixed sets (Lemma 3 beyond pairwise opposite sets)
+- `ldual/ldual.c` (random greedy for Lemma 3 pairs; `ldual HEXBIN seed restarts [pure]`), best of 3 restarts:
+  $q=3$: 20 (pure 16), $q=4$: 29 (pure 21), $q=5$: 39 (pure 30).
+- Squad hexfam_r2 c7 (local search on pairs): $q=4$: 35, $q=5$: 48 (the structured pure set at $q=5$ has 72).
+- **End-to-end check at $q=4$** (H(4) has no duality): the 35-set of c7 (research/squads/hexfam_r2/c7/runs/
+  q4mix_s1_best_35.txt) satisfies Lemma 3 with 56 midpoints (`ldual/mixbuild.py`, an independent checker); $\sigma$
+  built as in the proof of Lemma 3 satisfies (R2) at all 35 points; the 3-level graph with all 35 points freed and
+  hubs for 3 of them ($K_{3,3}$ hub graph) has $n=8{,}196$, degrees 5–6 and **diameter 7** (apsp, all pairs).
+  So Theorem 1 really does work for freed points at distance 4 from each other when $\sigma$ is a local duality
+  but not a duality.
+- For comparison, pure partial ovoids by ARW (`prod/mis.c` on the orthogonality graph, 90 s): $q=4$: 31,
+  $q=5$: 61 (structured: 72).
+
+### 7.4 Non-collinear sets by local search (calibration for $q=9$)
+ARW (`prod/mis.c` on the collinearity graph, 60 s) reaches the Hoffman bound $q^4+q^2+1$ for $q=3$ (91) and $q=4$
+(273), i.e. finds distance-2 ovoids, but only 484/651 at $q=5$ and 1,544/2,451 at $q=7$; at $q=9$ the best is
+4,306/6,643 (65%). Whether $H(9)$ has a distance-2 ovoid is open as far as we know; one would give
+$(11,7)\ \ge 411{,}866$ and $(12,7)\ \ge 690{,}872$ (with a hub graph of $2\cdot6643$ per side).
 
 ## 8. Lean (lean/BipartiteDD/HexagonD7/, no sorry, standard axioms only; Axioms.out.txt)
 
