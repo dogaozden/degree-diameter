@@ -19,3 +19,17 @@ min 14 to 33, p1 36 to 63. So the record group has the better tail, and the cand
 ## Attempts
 
 (filled in below as runs finish)
+
+### Batch 1 (2026-10-25 07:32–07:52, orbit k=3, m=2, f=0, K=8, 1200 s per run, one core each)
+
+| group | N (2N) | mu | fix | result (best cost) | evals |
+|---|---|---|---|---|---|
+| sl 11 x Z199 | 262,680 (525,360) | 24.2 | 11 | 18 (stuck at ~6 orbits) | 5.8e6 |
+| psl 13 x Z241 | 263,172 (526,344) | 24.6 | 5 | 6 | 7.2e6 |
+| prod psl 5 psl 5 x Z73 | 262,800 (525,600) | 24.3 | 8 | 4 | 4.2e6 |
+| psl 17 x Z109 | 266,832 (533,664) | 28.4 | 8 | 3 (one fixed point or one orbit) | 5.9e6 (still running) |
+
+Reading: the record group solved in 7.4e4 and 2.1e5 evaluations (both at mu 23.6). None of the four μ ≈ 24–28
+candidates has solved after 4–7·10⁶ evaluations. Random-S tails back this up: the record group's p1/p10 are
+16/37 against 36–63 / 132–202 for these. So group quality matters more than μ here, and the fit
+evals ≈ e^(μ/4.5) is too optimistic for these groups.
