@@ -1,0 +1,39 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.22s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+SEQ 0 71743320
+SEQ 1 60
+SEQ 2 75
+SEQ 3 132
+SEQ 4 50
+SEQ 5 564
+SEQ 6 131
+SEQ 7 71743320
+SEQ 8 170
+SEQ 9 130
+SEQ 10 71743320
+SEQ 11 90
+SEQ 12 80
+SEQ 13 61
+SEQ 14 71743320
+SEQ 15 35
+SEQ 16 111
+SEQ 17 90
+SEQ 18 74
+SEQ 19 22
+SEQ 20 100
+SEQ 21 51
+SEQ 22 65
+SEQ 23 83
+SEQ 24 131
+SEQ 25 102
+SEQ 26 114
+SEQ 27 111
+SEQ 28 63
+SEQ 29 82
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=30 min=22 p1=22 p10=51 median=100 mean=9565868.57 var=594774687199689.1 mu=60.61 time=36.2
+RANDORB hist (cost/k): 0 0 1 1 0 2 4 2 3 2 2 3 0 4 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 5
+RANDORB cost0=0 of 30 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+VARIANT fast=1 wide=0 nH=61 pfd=8 hugepg=0 seqhash=bf05356a9ba51e6e ms_per_sample=1208.22
+ORBPROF pfd=8 per sample: random_orbit 0.04 ms, tables 912.31 ms (91.23 ms each, 10.0 per sample), cost_any 295.84 ms; BFS levels ms: L1=0.01 L2=0.04 L3=0.16 L4=1.14 L5=9.45 L6=66.89 L7=67.02 L8=65.85 L9=80.08

@@ -1,0 +1,34 @@
+=== k10 AFROB=1 AFROBH AR=2
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.83s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+CENSUS k=10 AR=2 AFROB=1 AFROBD=0 AQ=0 N=78917652 lambda=14.0794 |Fix|=3: [len 1: 3 orbits] [len 2: 4 orbits] [len 5: 48 orbits] [len 10: 7891740 orbits]
+CENSUS model: clumps_generic=6.061 small_misses=1.015 P_small=0.3623 P0_model=0.000844  E[uncovered elements]=62.04
+=== k10 AFROB=1 AFROBD AR=2
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.54s
+alpha: conj by diag(1,-1) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+CENSUS k=10 AR=2 AFROB=1 AFROBD=1 AQ=-1 N=78917652 lambda=14.0794 |Fix|=1: [len 1: 1 orbits] [len 2: 5 orbits] [len 5: 48 orbits] [len 10: 7891740 orbits]
+CENSUS model: clumps_generic=6.061 small_misses=0.586 P_small=0.5566 P0_model=0.0013  E[uncovered elements]=61.67
+=== k10 AFROB=1 AFROBH AR=3
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 3.11s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 3 z on Z_11
+CENSUS k=10 AR=3 AFROB=1 AFROBD=0 AQ=0 N=78917652 lambda=14.0794 |Fix|=3: [len 1: 3 orbits] [len 2: 4 orbits] [len 5: 536 orbits] [len 10: 7891496 orbits]
+CENSUS model: clumps_generic=6.061 small_misses=1.443 P_small=0.2362 P0_model=0.000551  E[uncovered elements]=64.17
+=== RANDORB k10 AFROBH AR=3 (60 samples)
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.08s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 3 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=60 min=31 p1=31 p10=47 median=87 mean=11957619.33 var=714866003954021.5 mu=60.61 time=27.4
+RANDORB hist (cost/k): 0 0 0 3 4 7 4 7 6 2 4 4 3 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13
+RANDORB cost0=0 of 60 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 1 0 0 0 0 1
+=== RANDORB k10 AFROBH AR=2 (60 samples, control)
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.36s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=60 min=24 p1=24 p10=70 median=110 mean=11965828.52 var=714671836140527.1 mu=60.61 time=25.6
+RANDORB hist (cost/k): 0 0 1 1 1 0 2 8 8 5 4 5 3 3 2 3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13
+RANDORB cost0=0 of 60 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1

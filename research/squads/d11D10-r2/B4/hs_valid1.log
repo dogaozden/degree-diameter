@@ -1,0 +1,9 @@
+group psl 243 poly x^5+2x+1 x Z_1, N=7174332, identity 29403, H order 61, rows 117612, threads 1, setup 0.34s
+wide rows: HW order 122, rows 58806, setup 0.60s
+alpha: Frobenius x -> x^3 on entries, z -> 0 z on Z_1
+ORBIT k=5 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 0.00, mu/k = 0.00, fixed-point misses ~ 0.07
+start cost=0
+RESULT d=16 D=8 group=psl 243 poly x^5+2x+1 x Z_1 N=7174332 best=0 evals=1 time=0.0 orbit k=5 m=3 f=1 fix=11
+full diameter check: OK
+wrote /home/user/degree-diameter/research/squads/d11D10-r2/B4/d16D8_psl_243_1_orb5_frob1_s1.txt
+exit=0

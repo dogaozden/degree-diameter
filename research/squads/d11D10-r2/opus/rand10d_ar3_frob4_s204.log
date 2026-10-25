@@ -1,0 +1,6 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.35s
+wide rows: HW order 122, rows 646866, setup 4.47s
+alpha: conj by diag(1,-1) after the Frobenius
+alpha: Frobenius x -> x^81 on entries, z -> 3 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 1 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.49
+PREF: 6 small-orbit targets ( size 1: 1 size 2: 5 ), setup 2.75s

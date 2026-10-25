@@ -1,0 +1,11 @@
+haarcheck_pq corrupt_repeat_from_s1 rc=1
+pqcheck corrupt_repeat_from_s1 rc=1
+haarcheck_pq d16D8_psl_243_1_orb5_frob1_s1 rc=0
+pqcheck d16D8_psl_243_1_orb5_frob1_s1 rc=0
+CHAIN_SMALL_DONE
+haarcheck_pq corrupt_breakdet_from_s2 rc=1
+pqcheck corrupt_breakdet_from_s2 rc=1
+haarcheck_pq d16D8_psl_243_1_plain_s2 rc=0
+pqcheck d16D8_psl_243_1_plain_s2 rc=0
+CHAIN_SMALL_DONE
+chainB gate exit=0

@@ -1,0 +1,13 @@
+start frob1 12:51:27
+start frob3 13:00:52 (chain b)
+done frob1 rc=0 13:03:10
+start frob2 13:03:10
+done frob2 rc=0 13:10:48
+start frob3 13:10:48
+start frob4 13:10:56 (chain c)
+start low3 13:12:48
+done frob4 rc=0 13:16:11 (chain c)
+CHAINC_DONE 13:16:11
+start low4 13:16:36
+done low3 rc=0 13:18:11
+done low4 rc=0 13:18:29

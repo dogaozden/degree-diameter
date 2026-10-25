@@ -1,0 +1,13 @@
+mode k10 seed 1 maxlen 5: B-walks 111111, walks with a pair adjacency 34850 (31.4%)
+  duplicated walks (same value, same generator): 1250; of these with a flagged walk in group: 910
+  groups with all members flagged: 770, mixed: 80, none flagged: 340
+mode k10 seed 2 maxlen 5: B-walks 111111, walks with a pair adjacency 34850 (31.4%)
+  duplicated walks (same value, same generator): 850; of these with a flagged walk in group: 140
+  groups with all members flagged: 0, mixed: 140, none flagged: 710
+mode k10 seed 3 maxlen 5: B-walks 111111, walks with a pair adjacency 34850 (31.4%)
+  duplicated walks (same value, same generator): 260; of these with a flagged walk in group: 40
+  groups with all members flagged: 40, mixed: 0, none flagged: 220
+mode k5 seed 1 maxlen 5: B-walks 111111, walks with a pair adjacency 0 (0.0%)
+  duplicated walks (same value, same generator): 95; of these with a flagged walk in group: 0
+  groups with all members flagged: 0, mixed: 0, none flagged: 95
+=== done pair ===

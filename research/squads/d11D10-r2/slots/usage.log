@@ -26,3 +26,75 @@
 12:47:45 free slot3 pid 2416 rc=0
 12:50:24 take slot3 pid 4658: env -u THREADS ORBIT=5 2 1 ORBW=10 RESTART=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 330 6 8 /home/user/degree-diameter/research/squads/d11D10-r2/A6/d11D10_psl_71_421_orb5_A6_s6.txt psl 71 421
 12:50:25 take slot4 pid 4689: env -u THREADS ORBIT=5 2 1 ORBW=10 RESTART=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 330 6 8 /home/user/degree-diameter/research/squads/d11D10-r2/A6/d11D10_psl_79_311_orb5_A6_s6.txt psl 79 311
+12:56:16 free slot3 pid 4658 rc=1
+12:56:16 take slot3 pid 7081: env ORBIT=5 3 1 AFROB=1 /home/user/degree-diameter/research/structured/haar_sym 16 8 60 1 8 /home/user/degree-diameter/research/squads/d11D10-r2/B4/d16D8_psl_243_1_orb5_frob1_s1.txt psl 243 1
+12:56:18 free slot3 pid 7081 rc=0
+12:56:18 take slot3 pid 5186: bash -c cd /home/user/degree-diameter/research/squads/d11D10-r2/A4 && env ORBIT="5 2 1" AFROB=4 ORBW=8 RESTART=1 TARGP=50 COOL=40 ./haar_sym_A4 11 10 600 4 12 /home/user/degree-diameter/research/squads/d11D10-r2/A4/d11D10_psl_243_11_orb5_frob4_s4.txt psl 243 11
+12:56:18 free slot4 pid 4689 rc=1
+12:56:19 take slot4 pid 10733: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=100 PREF=1 PREFCHECK=1 RANDLOG=/home/user/degree-diameter/research/squads/d11D10-r2/B1/valB.txt /home/user/degree-diameter/research/squads/d11D10-r2/B1/haar_sym_B1 11 10 60 7 8 /dev/null psl 243 11
+12:57:36 free slot4 pid 10733 rc=0
+12:57:36 take slot4 pid 14148: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=1000 DUMP=1 HISTFIRST=0 HISTMIN=1000000 TRHIST=4 /home/user/degree-diameter/research/squads/d11D10-r2/A2/haar_sym_A2 11 10 60 7 8 /dev/null psl 243 1
+12:58:27 free slot4 pid 14148 rc=0
+12:58:27 take slot4 pid 8662: bash /home/user/degree-diameter/research/squads/d11D10-r2/B6/run_all.sh
+12:58:30 free slot4 pid 8662 rc=0
+12:58:31 take slot4 pid 10782: bash /home/user/degree-diameter/research/squads/d11D10-r2/B3/run_ident.sh
+12:58:34 free slot4 pid 10782 rc=0
+12:58:35 take slot4 pid 10238: env -u THREADS ORBIT=10 1 1 AFROB=1 AR=2280 RANDORB=30 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 32 2281
+12:58:46 free slot4 pid 10238 rc=0
+12:58:46 take slot4 pid 16550: env -u THREADS ORBIT=10 1 1 AR=2 RANDORB=30 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null heis 191 11
+12:59:00 free slot4 pid 16550 rc=0
+12:59:01 take slot4 pid 16669: bash /home/user/degree-diameter/research/squads/d11D10-r2/A8/run_twist.sh
+13:00:23 free slot4 pid 16669 rc=0
+13:00:23 take slot4 pid 13372: env -u THREADS python3 -I /home/user/degree-diameter/research/squads/d11D10-r2/B4/runtimed.py /home/user/degree-diameter/research/squads/d11D10-r2/B4/logs/big_haarcheck_pq.log /home/user/degree-diameter/research/squads/d11D10-r2/tools/haarcheck_pq /home/user/degree-diameter/research/squads/d11D10-r2/B4/big_psl_243_11_r11_s1.txt
+13:01:49 free slot4 pid 13372 rc=1
+13:01:49 take slot4 pid 5543: env ORBIT=10 1 1 AFROB=1 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 243 11
+13:03:10 free slot4 pid 5543 rc=0
+13:03:10 take slot4 pid 11596: bash /home/user/degree-diameter/research/squads/d11D10-r2/B2/sweep.sh
+13:06:29 free slot3 pid 5186 rc=1
+13:06:29 take slot3 pid 30208: bash /home/user/degree-diameter/research/squads/d11D10-r2/A1/run_all2.sh
+13:06:44 free slot4 pid 11596 rc=0
+13:06:44 take slot4 pid 13371: env -u THREADS python3 -I /home/user/degree-diameter/research/squads/d11D10-r2/B4/runtimed.py /home/user/degree-diameter/research/squads/d11D10-r2/B4/logs/big_pqcheck.log /home/user/degree-diameter/research/squads/d11D10-r2/tools/pqcheck /home/user/degree-diameter/research/squads/d11D10-r2/B4/big_psl_243_11_r11_s1.txt
+13:07:47 free slot4 pid 13371 rc=1
+13:07:48 take slot4 pid 6018: bash /home/user/degree-diameter/research/squads/d11D10-r2/B5/run_census.sh
+13:08:24 free slot4 pid 6018 rc=0
+13:08:24 take slot4 pid 29984: bash /home/user/degree-diameter/research/squads/d11D10-r2/B3/run_all_b3.sh
+13:09:27 free slot4 pid 29984 rc=0
+13:09:30 take slot4 pid 7110: /home/user/degree-diameter/research/structured/haar_sym 16 8 60 2 8 /home/user/degree-diameter/research/squads/d11D10-r2/B4/d16D8_psl_243_1_plain_s2.txt psl 243 1
+13:09:31 free slot4 pid 7110 rc=0
+13:09:32 take slot4 pid 25949: env ORBIT=10 1 1 AFROB=2 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 243 11
+13:10:48 free slot4 pid 25949 rc=0
+13:10:48 take slot4 pid 5600: env ORBIT=10 1 1 AFROB=3 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 243 11
+13:11:34 free slot3 pid 30208 rc=0
+13:11:35 take slot3 pid 907: bash /home/user/degree-diameter/research/squads/d11D10-r2/B7/census_run3.sh
+13:12:08 free slot4 pid 5600 rc=0
+13:12:08 take slot4 pid 6515: bash /home/user/degree-diameter/research/squads/d11D10-r2/B3/run_levels40.sh
+13:13:09 free slot4 pid 6515 rc=0
+13:13:11 take slot4 pid 12295: /home/user/degree-diameter/research/squads/d11D10-r2/B4/chainA.sh
+13:13:30 free slot4 pid 12295 rc=0
+13:13:34 take slot4 pid 4729: /home/user/degree-diameter/research/squads/d11D10-r2/B4/chain_small.sh /home/user/degree-diameter/research/squads/d11D10-r2/B4/corrupt_breakdet_from_s2.txt /home/user/degree-diameter/research/squads/d11D10-r2/B4/d16D8_psl_243_1_plain_s2.txt
+13:13:54 free slot4 pid 4729 rc=0
+13:13:55 take slot4 pid 27463: bash -c cd /home/user/degree-diameter/research/squads/d11D10-r2/A2 && env -u THREADS ORBIT='10 1 1' AFROB=1 AFROBH='0 1 2 0' AR=2 RANDORB=100 DUMP=1 HISTFIRST=2 HISTMIN=1000000 /home/user/degree-diameter/research/squads/d11D10-r2/A2/haar_sym_A2 11 10 60 7 8 /dev/null psl 243 11 > lift_A_unrestricted.log 2>&1; env -u THREADS ORBIT='10 1 1' AFROB=1 AFROBH='0 1 2 0' AR=2 SKIPORD=122 RANDORB=100 DUMP=1 HISTFIRST=0 HISTMIN=1000000 /home/user/degree-diameter/research/squads/d11D10-r2/A2/haar_sym_A2 11 10 60 7 8 /dev/null psl 243 11 > lift_B_skip122.log 2>&1; env -u THREADS ORBIT='10 1 1' AFROB=1 AFROBH='0 1 2 0' AR=2 SKIPORD=61 RANDORB=100 DUMP=1 HISTFIRST=0 HISTMIN=1000000 /home/user/degree-diameter/research/squads/d11D10-r2/A2/haar_sym_A2 11 10 60 7 8 /dev/null psl 243 11 > lift_C_skip61.log 2>&1; echo done > alldone.marker
+13:14:56 free slot3 pid 907 rc=0
+13:14:57 take slot3 pid 5739: env ORBIT=10 1 1 AFROB=4 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 243 11
+13:16:11 free slot3 pid 5739 rc=0
+13:16:15 take slot3 pid 9336: bash -c cd /home/user/degree-diameter/research/squads/d11D10-r2/A2 && env -u THREADS ORBIT='10 1 1' AFROB=1 AFROBH='0 1 2 0' AR=2 SKIPZ=1 RANDORB=100 DUMP=1 HISTFIRST=0 HISTMIN=1000000000000 /home/user/degree-diameter/research/squads/d11D10-r2/A2/haar_sym_A2 11 10 60 7 8 /dev/null psl 243 11 > lift_D_skipz.log 2>&1
+13:16:18 take slot4 pid 8080: bash /home/user/degree-diameter/research/squads/d11D10-r2/B3/run_pair.sh
+13:16:22 free slot4 pid 8080 rc=0
+13:16:28 take slot4 pid 10235: env -u THREADS ORBIT=5 2 1 AFROB=1 RANDORB=30 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null psl 32 2281
+13:16:45 free slot4 pid 10235 rc=0
+13:16:45 take slot4 pid 9729: env -u THREADS ORBIT=5 2 1 RANDORB=30 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 5 8 /dev/null heis 191 11
+13:16:57 free slot4 pid 9729 rc=0
+13:16:59 take slot4 pid 7242: env SHOWLOW=25 ORBIT=10 1 1 AFROB=3 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/squads/d11D10-r2/A5/haar_sym_A5 11 10 60 5 8 /dev/null psl 243 11
+13:17:15 free slot3 pid 9336 rc=0
+13:17:16 take slot3 pid 9590: env SHOWLOW=25 ORBIT=10 1 1 AFROB=4 AFROBD=1 AR=2 RANDORB=150 /home/user/degree-diameter/research/squads/d11D10-r2/A5/haar_sym_A5 11 10 60 5 8 /dev/null psl 243 11
+13:18:11 free slot4 pid 7242 rc=0
+13:18:29 free slot3 pid 9590 rc=0
+13:19:17 take slot3 pid 10552: env ORBIT=10 1 1 AFROB=1 AFROBD=1 AR=3 RANDORB=200 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 41 8 /dev/null psl 243 11
+13:19:17 take slot4 pid 10550: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=3 RANDORB=200 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 41 8 /dev/null psl 243 11
+13:19:23 free slot2 pid 2075 rc=137
+13:20:46 free slot3 pid 10552 rc=0
+13:20:51 free slot4 pid 10550 rc=0
+13:21:17 free slot0 pid 1405 rc=1
+13:21:26 take slot0 pid 10964: env ORBIT=10 1 1 AFROB=2 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 202 8 opus/d11D10_psl_243_11_orb10_frob2d_ar3_s202.txt psl 243 11
+13:21:26 take slot1 pid 10966: env ORBIT=10 1 1 AFROB=4 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 204 8 opus/d11D10_psl_243_11_orb10_frob4d_ar3_s204.txt psl 243 11
+13:21:26 take slot2 pid 10962: env ORBIT=10 1 1 AFROB=1 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 201 8 opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt psl 243 11

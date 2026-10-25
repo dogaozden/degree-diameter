@@ -1,0 +1,48 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.28s
+wide rows: HW order 122, rows 646866, setup 5.24s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 7 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+SAMPLE 0 108
+SAMPLE 1 151
+SAMPLE 2 1000000
+SAMPLE 3 1000000
+SAMPLE 4 61
+SAMPLE 5 71
+SAMPLE 6 91
+SAMPLE 7 125
+SAMPLE 8 466
+SAMPLE 9 172
+SAMPLE 10 44
+SAMPLE 11 111
+SAMPLE 12 80
+SAMPLE 13 41
+SAMPLE 14 6196
+SAMPLE 15 130
+SAMPLE 16 91
+SAMPLE 17 432
+SAMPLE 18 60
+SAMPLE 19 131
+SAMPLE 20 130
+SAMPLE 21 90
+SAMPLE 22 1000000
+SAMPLE 23 35
+SAMPLE 24 131
+SAMPLE 25 70
+SAMPLE 26 120
+SAMPLE 27 152
+SAMPLE 28 70
+SAMPLE 29 70
+SAMPLE 30 111
+SAMPLE 31 91
+SAMPLE 32 60
+SAMPLE 33 70
+SAMPLE 34 63
+SAMPLE 35 80
+SAMPLE 36 51
+SAMPLE 37 85
+SAMPLE 38 61
+SAMPLE 39 121
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=40 min=35 p1=35 p10=60 median=91 mean=75255.55 var=69337580255.2 mu=60.61 time=19.1
+RANDORB hist (cost/k): 0 0 0 1 2 1 5 5 3 4 1 2 3 4 0 2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 6
+RANDORB cost0=0 of 40 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0

@@ -1,0 +1,7 @@
+group heis 191 x Z_11, N=76646581, identity 0, H order 11, rows 6967871, threads 1, setup 3.69s
+wide rows: HW order 191, rows 401291, setup 7.58s
+alpha: heis scaling a=7 b=7, z -> 2 z on Z_11 (order 10)
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 0 (+e); mu = 38.79, mu/k = 3.88, fixed-point misses ~ 0.23
+RANDORB d=11 D=10 group=heis 191 x Z_11 N=76646581 k=10 m=1 f=1 fix=0 samples=30 min=76273920 p1=76273920 p10=76273920 median=76273920 mean=76318744.00 var=13059741344.0 mu=38.79 time=4.3
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30
+RANDORB cost0=0 of 30 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

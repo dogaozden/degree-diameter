@@ -1,0 +1,20 @@
+[   0.23s]   start A level 1: new 16, reached A 1 B 16
+[   0.23s]   start A level 2: new 239, reached A 240 B 16
+[   0.23s]   start A level 3: new 3570, reached A 240 B 3586
+[   0.25s]   start A level 4: new 53025, reached A 53265 B 3586
+[   0.38s]   start A level 5: new 750582, reached A 53265 B 754168
+[   1.38s]   start A level 6: new 5743457, reached A 5796722 B 754168
+[   3.78s]   start A level 7: new 6420164, reached A 5796722 B 7174332
+[   6.24s]   start A level 8: new 1377610, reached A 7174332 B 7174332
+[   6.24s] from (e,A): reached A 7174332/7174332, B 7174332/7174332, eccentricity 8
+[   6.24s]   start B level 1: new 16, reached A 16 B 1
+[   6.24s]   start B level 2: new 239, reached A 16 B 240
+[   6.25s]   start B level 3: new 3570, reached A 3586 B 240
+[   6.26s]   start B level 4: new 53026, reached A 3586 B 53266
+[   6.38s]   start B level 5: new 750582, reached A 754168 B 53266
+[   7.39s]   start B level 6: new 5743200, reached A 754168 B 5796466
+[   9.82s]   start B level 7: new 6420164, reached A 7174332 B 5796466
+[  12.20s]   start B level 8: new 1377866, reached A 7174332 B 7174332
+[  12.20s] from (e,B): reached A 7174332/7174332, B 7174332/7174332, eccentricity 8
+[  12.20s] VALID d=16 D=8 group=psl 243 x Z_1 N=7174332 vertices=14348664 eccA=8 eccB=8 (pqcheck)
+RUNTIMED wall=12.20s user=11.35s sys=0.06s maxrss_MB=117 rc=0 cmd=/home/user/degree-diameter/research/squads/d11D10-r2/tools/pqcheck

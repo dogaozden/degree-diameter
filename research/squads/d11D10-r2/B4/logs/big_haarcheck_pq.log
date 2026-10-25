@@ -1,0 +1,5 @@
+[  48.22s] group=psl q=243 p=3 e=5 n=11 |G|=78917652 vertices=157835304 d=11 D=10
+[  48.22s] from (e,A): ecc=11 unreached=0
+[  85.57s] from (e,B): ecc=11 unreached=0
+[  85.57s] INVALID d=11 D=10 vertices=157835304 eccA=11 eccB=11 reason=diameter
+RUNTIMED wall=85.58s user=70.81s sys=0.19s maxrss_MB=40 rc=1 cmd=/home/user/degree-diameter/research/squads/d11D10-r2/tools/haarcheck_pq

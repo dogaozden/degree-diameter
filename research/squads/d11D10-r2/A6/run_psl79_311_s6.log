@@ -4,3 +4,14 @@ alpha: conj by mat(11,66,63,19) (index 70768), z -> 6 z on Z_311
 ORBIT k=5 m=2 f=1: |Fix(alpha)| = 39 (+e); mu = 38.86, mu/k = 7.77, fixed-point misses ~ 2.20
 ORBW=10: an uncovered fixed element weighs 10; start energy 120
 start cost=57
+t=31 steps=12 evals=97 cost=26 best=26 T=0.51 energy=35 bestE=35
+t=61 steps=24 evals=193 cost=25 best=25 T=0.18 energy=25 bestE=25
+t=93 steps=37 evals=297 cost=25 best=25 T=0.15 energy=25 bestE=25
+t=125 steps=49 evals=393 cost=25 best=25 T=0.15 energy=25 bestE=25
+t=155 steps=61 evals=489 cost=16 best=25 T=0.15 energy=25 bestE=25
+t=186 steps=73 evals=585 cost=11 best=11 T=0.15 energy=20 bestE=20
+t=217 steps=85 evals=681 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=247 steps=97 evals=777 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=278 steps=110 evals=881 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=308 steps=122 evals=977 cost=10 best=10 T=0.15 energy=10 bestE=10
+RESULT d=11 D=10 group=psl 79 x Z_311 N=76655280 best=10 evals=1049 time=331.4 orbit k=5 m=2 f=1 fix=39

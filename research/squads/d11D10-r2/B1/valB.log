@@ -1,0 +1,10 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.52s
+wide rows: HW order 122, rows 646866, setup 5.19s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+PREF: 55 small-orbit targets ( size 1: 3 size 2: 4 size 5: 48 ), setup 11.81s
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=100 min=24 p1=31 p10=63 median=111 mean=10052968.14 var=619534405923260.4 mu=60.61 time=51.0
+RANDORB hist (cost/k): 0 0 1 2 3 2 4 8 10 11 6 9 3 6 7 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 21
+RANDORB cost0=0 of 100 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 1
+RANDORB pref rejected=68 of 100 (0.6800) targets=55 check: mismatches=0 violations=0

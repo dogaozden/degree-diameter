@@ -1,0 +1,8 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.26s
+wide rows: HW order 122, rows 646866, setup 4.48s
+levels: 11 111 1111 11109 110996 1102374 10350473 59537526 78917587 cost 65
+levels: 11 111 1111 11111 110996 1102655 10354840 59565752 78917580 cost 72
+levels: 11 111 1111 11107 110966 1102144 10348605 59552010 78917567 cost 85
+RANDSAMPLE d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 samples=40 min=51 p1=51 p10=55 median=63
+=== done random40 ===
+=== all B3 jobs done ===

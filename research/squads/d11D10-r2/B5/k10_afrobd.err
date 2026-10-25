@@ -1,0 +1,9 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.37s
+wide rows: HW order 122, rows 646866, setup 4.57s
+alpha: conj by diag(1,-1) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 1 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.49
+levels: 11 111 1111 11091 110451 1092001 10217983 59000415 78917590 cost 62
+levels: 11 111 1111 11111 111001 1099911 10313891 59321756 78917596 cost 56
+levels: 11 111 1051 9871 88906 667868 4383874 29318464 77381990 cost 1535662
+levels: 11 111 1111 11111 111041 1101431 10329371 59361416 78917582 cost 70

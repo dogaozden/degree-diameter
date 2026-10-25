@@ -1,0 +1,26 @@
+[   0.40s]   start A level 1: new 11, reached A 1 B 11
+[   0.41s]   start A level 2: new 110, reached A 111 B 11
+[   0.42s]   start A level 3: new 1100, reached A 111 B 1111
+[   0.43s]   start A level 4: new 11000, reached A 11111 B 1111
+[   0.47s]   start A level 5: new 109935, reached A 11111 B 111046
+[   0.68s]   start A level 6: new 1092248, reached A 1103359 B 111046
+[   1.79s]   start A level 7: new 10251321, reached A 1103359 B 10362367
+[   5.22s]   start A level 8: new 58488008, reached A 59591367 B 10362367
+[  15.38s]   start A level 9: new 68555220, reached A 59591367 B 78917587
+[  27.59s]   start A level 10: new 19326285, reached A 78917652 B 78917587
+[  30.98s]   start A level 11: new 65, reached A 78917652 B 78917652
+[  30.98s] from (e,A): reached A 78917652/78917652, B 78917652/78917652, eccentricity 11
+[  30.99s]   start B level 1: new 11, reached A 11 B 1
+[  31.00s]   start B level 2: new 110, reached A 11 B 111
+[  31.01s]   start B level 3: new 1100, reached A 1111 B 111
+[  31.02s]   start B level 4: new 11000, reached A 1111 B 11111
+[  31.06s]   start B level 5: new 109935, reached A 111046 B 11111
+[  31.29s]   start B level 6: new 1092254, reached A 111046 B 1103365
+[  32.30s]   start B level 7: new 10251321, reached A 10362367 B 1103365
+[  36.10s]   start B level 8: new 58484977, reached A 10362367 B 59588342
+[  45.87s]   start B level 9: new 68555220, reached A 78917587 B 59588342
+[  58.16s]   start B level 10: new 19329310, reached A 78917587 B 78917652
+[  62.30s]   start B level 11: new 65, reached A 78917652 B 78917652
+[  62.30s] from (e,B): reached A 78917652/78917652, B 78917652/78917652, eccentricity 11
+[  62.30s] INVALID d=11 D=10 group=psl 243 x Z_11 vertices=157835304 eccA=11 eccB=11 (pqcheck)
+RUNTIMED wall=62.31s user=58.40s sys=0.15s maxrss_MB=168 rc=1 cmd=/home/user/degree-diameter/research/squads/d11D10-r2/tools/pqcheck

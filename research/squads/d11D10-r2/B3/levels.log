@@ -1,0 +1,31 @@
+=== k=10 AFROB=1 AFROBH=0 1 2 0 AR=2 (one orbit, alpha order 10) ===
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.21s
+wide rows: HW order 122, rows 646866, setup 4.98s
+alpha: conj by mat(0,1,2,0) (index 0) after the Frobenius
+alpha: Frobenius x -> x^3 on entries, z -> 2 z on Z_11
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 3 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.98
+levels: 11 111 1111 11111 110291 1027361 5634966 7174255 7174332 cost 71743320
+levels: 11 111 1111 11071 110196 1088916 10182671 58866386 78917592 cost 60
+levels: 11 111 1111 11091 110681 1095891 10254221 59065566 78917577 cost 75
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=10 m=1 f=1 fix=3 samples=3 min=60 p1=60 p10=60 median=75 mean=23914485.00 var=1143798728728650.0 mu=60.61 time=1.2
+RANDORB hist (cost/k): 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+RANDORB cost0=0 of 3 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+=== k=5 AFROB=1 ORBIT=5 2 1 (Frobenius, z -> 3z) ===
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.18s
+wide rows: HW order 122, rows 646866, setup 4.80s
+alpha: Frobenius x -> x^3 on entries, z -> 3 z on Z_11
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 60.61, mu/k = 12.12, fixed-point misses ~ 0.72
+levels: 11 111 1111 11101 110771 1099156 10312916 59423201 78917582 cost 70
+levels: 11 111 1111 11111 111051 1103311 10363596 59586740 78917581 cost 71
+levels: 11 111 1111 11111 111026 1102941 10354522 59545145 78917611 cost 41
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=5 m=2 f=1 fix=11 samples=3 min=41 p1=41 p10=41 median=70 mean=60.67 var=193.6 mu=60.61 time=1.6
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+RANDORB cost0=0 of 3 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+=== plain random S ===
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 2.84s
+wide rows: HW order 122, rows 646866, setup 5.32s
+levels: 11 111 1111 11111 111041 1103070 10358200 59569993 78917572 cost 80
+levels: 11 111 1111 11107 110931 1101284 10332761 59458184 78917578 cost 74
+levels: 11 111 1111 11109 111021 1102870 10355201 59553279 78917591 cost 61
+RANDSAMPLE d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 samples=3 min=61 p1=61 p10=61 median=74
+=== done ===

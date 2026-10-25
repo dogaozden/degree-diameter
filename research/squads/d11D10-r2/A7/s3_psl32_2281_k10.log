@@ -1,0 +1,7 @@
+group psl 32 poly x^5+x^2+1 x Z_2281, N=74670816, identity 2262752, H order 33, rows 2262752, threads 1, setup 2.40s
+wide rows: no cyclic subgroup of order >= 64 found (best 33); using haar_gen3's evaluation
+alpha: Frobenius x -> x^2 on entries, z -> 2280 z on Z_2281
+ORBIT k=10 m=1 f=1: |Fix(alpha)| = 5 (+e); mu = 25.75, mu/k = 2.58, fixed-point misses ~ 1.35
+RANDORB d=11 D=10 group=psl 32 poly x^5+x^2+1 x Z_2281 N=74670816 k=10 m=1 f=1 fix=5 samples=30 min=74048832 p1=74048832 p10=74048834 median=74049008 mean=74110396.37 var=21829068786.2 mu=25.75 time=7.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30
+RANDORB cost0=0 of 30 (P=0); cost counts 0..40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

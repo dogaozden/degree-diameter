@@ -1,0 +1,35 @@
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c: In function 'cost_with':
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:488:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  488 |         if (save) memcpy(save[0], c->V[1], 8 * (size_t)R); return N - cnt[1]; }
+      |         ^~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:488:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  488 |         if (save) memcpy(save[0], c->V[1], 8 * (size_t)R); return N - cnt[1]; }
+      |                                                            ^~~~~~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c: In function 'orbit_main':
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:1014:9: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+ 1014 |         for (int h = 0; h < 32; h++) printf(" %lld", hist[h]); printf("\n");
+      |         ^~~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:1014:64: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+ 1014 |         for (int h = 0; h < 32; h++) printf(" %lld", hist[h]); printf("\n");
+      |                                                                ^~~~~~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:1109:22: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+ 1109 |                      for (int i = 0; i < d; i++) fprintf(f, "%d%c", bestS2[i], i + 1 < d ? ' ' : '\n'); fclose(f); rename(tmp, ckpt); }
+      |                      ^~~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:1109:105: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+ 1109 |                      for (int i = 0; i < d; i++) fprintf(f, "%d%c", bestS2[i], i + 1 < d ? ' ' : '\n'); fclose(f); rename(tmp, ckpt); }
+      |                                                                                                         ^~~~~~
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c: In function 'parse_group':
+/home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:262:49: warning: '%s' directive output may be truncated writing up to 399 bytes into a region of size 395 [-Wformat-truncation=]
+  262 |         snprintf(G->spec, sizeof G->spec, "prod %s %s", G->g1->spec, G->g2->spec);
+      |                                                 ^~
+In file included from /usr/include/stdio.h:980,
+                 from /home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:49:
+In function 'snprintf',
+    inlined from 'parse_group' at /home/user/degree-diameter/research/squads/d11D10-r2/B6/haar_sym_B6.c:262:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 7 and 805 bytes into a destination of size 400
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~

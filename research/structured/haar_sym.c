@@ -905,8 +905,11 @@ static int choose_alpha(void) {
 static long long cost_any(ctx *c, uint32_t **tf, uint32_t **ti, double *sec, uint64_t **save, const volatile long long *bp, int strict) {
     return WIDE ? cost_w(c, tf, ti, sec, save, bp, strict) : cost_fast(c, tf, ti, sec, save, bp, strict);
 }
+static int SKIPZ = -1;   /* SKIPZ=1: no orbit generator with z = 0 (k = 10 on psl 243 x Z11: S would lie in Q x {0}; card A2) */
 static int random_orbit(int j, int *o) {   /* random valid orbit for slot j (or -1: any) */
-    for (int tries = 0; tries < 100000; tries++) { int x = rnd() % N; if (orbit_of(x, o) && orbit_free(o, j)) return 1; }
+    if (SKIPZ < 0) SKIPZ = getenv("SKIPZ") ? atoi(getenv("SKIPZ")) : 0;
+    for (int tries = 0; tries < 100000; tries++) { int x = rnd() % N; if (SKIPZ && ncyc > 1 && x % ncyc == 0) continue;
+        if (orbit_of(x, o) && orbit_free(o, j)) return 1; }
     return 0;
 }
 /* ORBW=w: an uncovered alpha-fixed element weighs w instead of 1 (w = k: every uncovered alpha-orbit counts 1).
@@ -940,6 +943,78 @@ static int check_and_write(ctx *c0, const char *out) {
     fclose(f); printf("wrote %s\n", out);
     return 1;
 }
+/* ---------------- PREF=1 (RANDORB, D even): small-orbit prefilter by meet in the middle (card B1) ----------------
+ * Walks of odd length <= D-1 from (e,A) reach the B-side elements W = U4 X5, U4 = {s_a s_b^-1 s_c s_d^-1} (words of length 4),
+ * X5 = U4 s_e (length 5; e in S pads shorter words), and U4 is closed under inverses. So t is covered iff u t lies in X5 for
+ * some u in U4. Coverage is alpha-invariant (S is alpha-invariant), so one representative per alpha-orbit of size < OK_
+ * suffices. Such orbits lie in z = 0 (z -> AR z has no cycle shorter than OK_ on Z_n except at z with short AR-orbit).
+ * A sample with an uncovered target has cost >= 1: it is rejected before any table is built (value 1, or RANDB). */
+static int PREFON = 0, PREFCHK = 0;
+static int *PT = NULL, *PTS = NULL; static long long NPT = 0;   /* targets (least element of its alpha-orbit) and orbit sizes */
+static int *PU4 = NULL, NU4 = 0, *PX5L = NULL, NX5 = 0; static uint64_t *PX5B = NULL; static int *covb = NULL;
+static int PREF_SIV[MAXD], PREF_P2[MAXD * MAXD];
+static int pref_zlen(int z) {   /* length of the orbit of z under z -> AR z on Z_ncyc (stops at OK_) */
+    int y = z, L = 0; do { y = (int)((long long)AR * y % ncyc); L++; } while (y != z && L < OK_);
+    return L;
+}
+static int small_orbit_least(int g) {   /* orbit size s < OK_ if g is the least element of its alpha-orbit, else 0 */
+    int y = g;
+    for (int i = 1; i < OK_; i++) { y = alpha(y); if (y == g) return i; if (y < g) return 0; }
+    return 0;
+}
+static void pref_targets(void) {
+    long long cap = 1024; int *Tg = malloc(sizeof(int) * cap), *Ts = malloc(sizeof(int) * cap); NPT = 0;
+    for (int z = 0; z < ncyc; z++) {
+        if (pref_zlen(z) >= OK_) continue;             /* every alpha-orbit through (x, z) has size OK_ */
+        for (int xq = 0; xq < Q->order; xq++) {
+            int g = xq * ncyc + z, s;
+            if (g == ident || !(s = small_orbit_least(g))) continue;
+            if (NPT == cap) { cap *= 2; Tg = realloc(Tg, sizeof(int) * cap); Ts = realloc(Ts, sizeof(int) * cap); }
+            Tg[NPT] = g; Ts[NPT++] = s;
+        }
+    }
+    PT = malloc(sizeof(int) * (NPT + 1)); PTS = malloc(sizeof(int) * (NPT + 1)); long long n = 0;
+    int pmax = getenv("PREFMAX") ? atoi(getenv("PREFMAX")) : OK_ - 1;   /* PREFMAX=s: only orbits of size <= s */
+    for (int s = 1; s < OK_ && s <= pmax; s++) for (long long k = 0; k < NPT; k++) if (Ts[k] == s) { PT[n] = Tg[k]; PTS[n++] = s; }   /* smallest orbits first */
+    NPT = n;
+    free(Tg); free(Ts);
+}
+static void pref_setup(void) {
+    double t0 = now(); pref_targets();
+    PU4 = malloc(sizeof(int) * (size_t)d * d * d * d);
+    PX5L = malloc(sizeof(int) * (size_t)d * d * d * d * d);
+    PX5B = zalloc64(8 * ((size_t)N / 64 + 1));
+    covb = malloc(sizeof(int) * (size_t)(NPT + 1));
+    fprintf(stderr, "PREF: %lld small-orbit targets (", NPT);
+    for (int s = 1; s < OK_; s++) { long long c = 0; for (long long k = 0; k < NPT; k++) c += PTS[k] == s; if (c) fprintf(stderr, " size %d: %lld", s, c); }
+    fprintf(stderr, " ), setup %.2fs\n", now() - t0);
+}
+static inline int cov_of(const uint64_t *V, int g) {   /* bit of element g in a covered bitset of the active layout */
+    if (WIDE) { uint32_t pw = POSW[g]; return (int)((V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1); }
+    int ps = POS[g]; return (int)((V[ps >> 6] >> (ps & 63)) & 1);
+}
+/* 1 iff every target is covered from (e,A) within D-1 (0: some target is uncovered, so the sample has cost >= 1).
+ * cov (optional): coverage of every target, no early exit. Only group products (d^4 + d^5 + targets x d^4 at most), no tables. */
+static int pref_eval(int *cov) {
+    for (int i = 0; i < d; i++) PREF_SIV[i] = ginv(S[i]);
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) PREF_P2[a * d + b] = gmul(S[a], PREF_SIV[b]);
+    NU4 = 0;
+    for (int p = 0; p < d * d; p++) for (int q = 0; q < d * d; q++) PU4[NU4++] = gmul(PREF_P2[p], PREF_P2[q]);
+    NX5 = 0;
+    for (int i = 0; i < NU4; i++) for (int j = 0; j < d; j++) {
+        int x = gmul(PU4[i], S[j]); uint64_t bit = 1ULL << (x & 63); uint64_t *w = PX5B + (x >> 6);
+        if (!(*w & bit)) { *w |= bit; PX5L[NX5++] = x; }
+    }
+    int all = 1;
+    for (long long k = 0; k < NPT; k++) {
+        int c = 0;
+        for (int i = 0; i < NU4 && !c; i++) { int y = gmul(PU4[i], PT[k]); c = (int)((PX5B[y >> 6] >> (y & 63)) & 1); }
+        if (cov) cov[k] = c;
+        if (!c) { all = 0; if (!cov) break; }
+    }
+    for (int i = 0; i < NX5; i++) PX5B[PX5L[i] >> 6] = 0;   /* clear X5 */
+    return all;
+}
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
@@ -967,13 +1042,28 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
+        PREFON = getenv("PREF") ? atoi(getenv("PREF")) : 0; PREFCHK = getenv("PREFCHECK") ? atoi(getenv("PREFCHECK")) : 0;
+        if (PREFON && D % 2) { fprintf(stderr, "PREF needs D even\n"); return 2; }
+        if (PREFON) pref_setup();
+        FILE *rlog = getenv("RANDLOG") ? fopen(getenv("RANDLOG"), "w") : NULL; long long nrej = 0, pmis = 0, pviol = 0;
         int m = atoi(getenv("RANDORB")), saved = 0, RANDB = getenv("RANDB") != NULL; long long RANDBV = RANDB ? atoll(getenv("RANDB")) : 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
             for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
-            for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
-            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, RANDB ? &RANDBV : &NOBOUND, 0);   /* RANDB=b: abort a sample once its cost reaches b */
-            if (v[t] < 0) v[t] = RANDBV;
+            for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+            int pass = PREFON ? pref_eval(PREFCHK ? covb : NULL) : 1;   /* PREF: tables are built only for samples that pass */
+            if (PREFON && !pass && !PREFCHK) { v[t] = RANDB ? RANDBV : 1; nrej++; }   /* an uncovered target: cost >= 1 */
+            else {
+                for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) mktab(S[ostart(j) + i], TF[ostart(j) + i], TI[ostart(j) + i]);
+                v[t] = cost_any(C[0], TF, TI, &sc0, NULL, RANDB && !PREFCHK ? &RANDBV : &NOBOUND, 0);   /* RANDB=b: abort a sample once its cost reaches b */
+                if (v[t] < 0) v[t] = RANDBV;
+                if (PREFCHK) {   /* PREF check: each target's MITM coverage vs the full BFS, and the verdict vs the full cost */
+                    int mis = 0, fa = 1;
+                    for (long long k = 0; k < NPT; k++) { int fc = cov_of(C[0]->V[1], PT[k]); mis += fc != covb[k]; fa &= fc; }
+                    mis += fa != pass; pmis += mis; pviol += (!pass && v[t] == 0); nrej += !pass;
+                }
+            }
+            if (rlog) fprintf(rlog, "%d %lld %d\n", t, v[t], pass);
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); fflush(stdout); saved = check_and_write(C[0], out);
                 if (saved && getenv("RANDSTOP")) { m = t + 1; break; } }
             if (RANDB && t % 500 == 499) { long long nb = 0; for (int u = 0; u <= t; u++) nb += v[u] < RANDBV; printf("RANDORB progress %d samples, %lld below %lld, %.1f s\n", t + 1, nb, RANDBV, now() - t0); fflush(stdout); }
@@ -987,6 +1077,8 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         { long long z = 0; for (int t = 0; t < m; t++) z += v[t] == 0;   /* v is sorted */
           printf("RANDORB cost0=%lld of %d (P=%.4g); cost counts 0..%d:", z, m, (double)z / m, 4 * OK_);
           for (int c0 = 0, t = 0; c0 <= 4 * OK_; c0++) { long long cnt = 0; while (t < m && v[t] < c0) t++; while (t < m && v[t] == c0) { cnt++; t++; } printf(" %lld", cnt); } printf("\n"); }
+        if (PREFON) printf("RANDORB pref rejected=%lld of %d (%.4f) targets=%lld check: mismatches=%lld violations=%lld\n", nrej, m, (double)nrej / m, NPT, pmis, pviol);
+        if (rlog) fclose(rlog);
         return 0;
     }
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;
