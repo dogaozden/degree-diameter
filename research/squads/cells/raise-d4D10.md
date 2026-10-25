@@ -39,3 +39,26 @@ metacyclic × Z_n (n ≥ 2, order m·k·n) is a haar_gen3 family ("meta m k r n"
 
 ## Batch 4 (started 17:00 UTC): 2400 s, seeds 2–3, the N = 6394 cost-1 specs
   meta 139 46 6 1 (seeds 2, 3); meta 139 23 6 2 (seed 2); meta 278 23 45 1 (seed 3). Log: logs/q4.tsv.
+
+## Batch 4 result (2400 s, seeds 2–3, N = 6394): no solve
+- meta 139 46 6 1 (seeds 2 and 3): cost 1. meta 139 23 6 2 (seed 2): cost 1. meta 278 23 45 1 (seed 3): cost 1.
+- Three specs at order 6394 stall at cost 1 across 300–2400 s runs and several seeds.
+
+## Batch 5 (screen N = 6421–6480: 5,500-odd candidates; top 40 annealed 300 s, seed 1): no solve
+- Best cost 8. Nothing close. Log: logs/q5.tsv; screen: screen_6421_6480.tsv.
+
+## Status and stop decision (round 2, about 4 h of the 6 h budget used)
+- Total: 200 anneals (60 + 4 + 40 + 4 + 40 plus the 4 re-anneals) over N = 6216–6480. No solve. Every record file is
+  unchanged; nothing was saved to research/frontier/sols/.
+- Why I stopped:
+  - The new family (metacyclic × Z_n, n ≥ 2) was screened at full size (7,835 specs in 6209–6330 and 5,613 in 6331–6420),
+    and the best of it reached cost 2 (6270) and cost 1 (6394). It did not beat the metacyclic n = 1 candidates by a margin.
+  - Order 6394 has three specs stuck at cost 1 across 300–2400 s runs and several seeds; the window above 6394 is at cost 8 or more.
+  - The window 6421–6480 screens worse and its top 40 are far off.
+- The cell is not moving further with these methods (Haar anneal over the existing families, with haar_gen3 and the
+  current screen score).
+- Untried, for the coordinator (in order of my estimate):
+  (a) longer runs (≥ 3600 s, 4 seeds) at N = 6394 for the three cost-1 specs, or any solve there would be a record (n = 12,788);
+  (b) non-Haar: lift.c with a 2+2 or dipole-plus-matching base at n > 12,416 (round 1 and round 2 did not run it there);
+  (c) group families outside the haar_gen3 grammar: Z_p² ⋊ Z_k (affine, Heisenberg) and non-split products.
+- No solve, so nothing needs verifying. Scripts and logs are in research/squads/cells/raise-d4D10-round2/.
