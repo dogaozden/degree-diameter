@@ -45,4 +45,7 @@ RESULT VALID d=15 D=7 n=2484720
       799.11 real      6028.05 user        59.67 sys
           1428996096  maximum resident set size
 -- apsp_orb e4025508.txt 16 7 8 5 804468 (20:49:34)
-(running at the time of the first commit; result appended when done)
+n=4025508 edges=32204064 degree min=16 max=16 bipartite=yes diameter=7 (level shift L=5 B=804468 checked as an automorphism; 807636 sources)
+RESULT VALID d=16 D=7 n=4025508
+     4056.02 real     30214.36 user       320.65 sys
+          2180628480  maximum resident set size

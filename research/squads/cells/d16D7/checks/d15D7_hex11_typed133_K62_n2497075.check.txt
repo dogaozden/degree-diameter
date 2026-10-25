@@ -1,0 +1,18 @@
+# (15,7) 2,497,075 = 14*177,156 + 133*(65 + 62) (job cell-16-7, resume session, 2026-10-25, built 05:14 UTC; a spin-off of
+# the (16,7) construction, research/squads/cells/d16D7.md). Table 2,480,184; best earlier candidate 2,484,720.
+# Seven copies of the incidence graph of H(11) (hexgen2 11), level types H H D H H D D (levels 2, 5, 6 read as the dual
+# hexagon), matchings (a, j) ~ (M_k(a), j+k) for k = 1, 2, 3: identity on the 12 friendly transitions (every level has at
+# least one friendly outgoing and one friendly incoming transition), G-equivariant bijections on the other 9 (nothing freed
+# there). Freed: the same sets as for (14,7): R_H = 65 orbits (8,645 non-collinear points), R_L = 62 orbits (8,246
+# non-concurrent lines) of G = <g>, g of order 133 in SL(3,11), g = [[8,1,10],[0,8,1],[7,4,4]]. Hubs: 65 line-side and 62
+# point-side orbits, each hub joined to one free slot in each of the 7 levels; hub graph a voltage graph over Z_133 of
+# degree <= 8 (= 15 - 7), all same-side distances <= 6 (hubcheck; make seed 2). Max degree 15.
+#   ./typed5s edges hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typed133_K62_n2497075.sol g.edges g.aut
+#   or python3 research/squads/cells/d16D7/typed5s_build.py hex/hex_q11.bin SOL g.edges   (byte-identical)
+#   edge list sha256 e34bc359c5e731f28b8301be5b99c862ed2eaf136150a0b45633f214d7a6ff9f; .sol sha256
+#   349d274c5848ae9863b05797d78d675227a984260c6957b5fc504a25bc590eca; hex_q11.bin sha256
+#   e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19
+# Check: apsp_autw (automorphism checked edge by edge; BFS from one vertex per cycle, 18,775 sources), 05:15 UTC:
+#   ./apsp_autw g.edges 15 7 2 g.aut
+n=2497075 edges=18684239 degree min=13 max=15 bipartite=yes diameter=7 (permutation checked as an automorphism; 18775 sources = cycles, longest 133)
+RESULT VALID d=15 D=7 n=2497075
