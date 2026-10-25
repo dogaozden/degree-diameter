@@ -1,0 +1,29 @@
+# Moore-bound cells, rebuilt and checked by apsp.c (apsp_mt.c for n > 50000). Generated in this session; see check_moore.sh.
+# D=3: PG(2,q) incidence graph; D=4: W(q) incidence graph; D=6: H(q) incidence graph (research/evenq/hexq.py).
+D=3 q=2  Delta=3  n=14:     RESULT VALID d=3 D=3 n=14
+D=3 q=3  Delta=4  n=26:     RESULT VALID d=4 D=3 n=26
+D=3 q=4  Delta=5  n=42:     RESULT VALID d=5 D=3 n=42
+D=3 q=5  Delta=6  n=62:     RESULT VALID d=6 D=3 n=62
+D=3 q=7  Delta=8  n=114:    RESULT VALID d=8 D=3 n=114
+D=3 q=8  Delta=9  n=146:    RESULT VALID d=9 D=3 n=146
+D=3 q=9  Delta=10 n=182:    RESULT VALID d=10 D=3 n=182
+D=3 q=11 Delta=12 n=266:    RESULT VALID d=12 D=3 n=266
+D=3 q=13 Delta=14 n=366:    RESULT VALID d=14 D=3 n=366
+D=4 q=2  Delta=3  n=30:     RESULT VALID d=3 D=4 n=30
+D=4 q=3  Delta=4  n=80:     RESULT VALID d=4 D=4 n=80
+D=4 q=4  Delta=5  n=170:    RESULT VALID d=5 D=4 n=170
+D=4 q=5  Delta=6  n=312:    RESULT VALID d=6 D=4 n=312
+D=4 q=7  Delta=8  n=800:    RESULT VALID d=8 D=4 n=800
+D=4 q=8  Delta=9  n=1170:   RESULT VALID d=9 D=4 n=1170
+D=4 q=9  Delta=10 n=1640:   RESULT VALID d=10 D=4 n=1640
+D=4 q=11 Delta=12 n=2928:   RESULT VALID d=12 D=4 n=2928
+D=4 q=13 Delta=14 n=4760:   RESULT VALID d=14 D=4 n=4760
+D=6 q=2  Delta=3  n=126:    RESULT VALID d=3 D=6 n=126
+D=6 q=3  Delta=4  n=728:    RESULT VALID d=4 D=6 n=728
+D=6 q=4  Delta=5  n=2730:   RESULT VALID d=5 D=6 n=2730
+D=6 q=5  Delta=6  n=7812:   RESULT VALID d=6 D=6 n=7812
+D=6 q=7  Delta=8  n=39216:  RESULT VALID d=8 D=6 n=39216
+D=6 q=8  Delta=9  n=74898:  RESULT VALID d=9 D=6 n=74898
+D=6 q=9  Delta=10 n=132860: RESULT VALID d=10 D=6 n=132860   (apsp_mt, 4 threads)
+D=6 q=11 Delta=12 n=354312: pending (apsp_mt running)
+D=6 q=13 Delta=14 n=804468: pending (to be built and checked)

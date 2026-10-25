@@ -27,11 +27,12 @@ def prime_power(q):
     return False
 
 # Our best values from the README results table: "| (Delta, D) | Table | Ours | ..."
-ours = {}
+ours, readme_table = {}, {}
 for line in open(os.path.join(ROOT, "README.md"), encoding="utf-8"):
     m = re.match(r"^\|\s*\((\d+),\s*(\d+)\)[^|]*\|\s*([\d,]+)\s*\|\s*\**([\d,]+)\**\s*\|", line)
     if m:
         d, D = int(m.group(1)), int(m.group(2))
+        readme_table[(d, D)] = int(m.group(3).replace(",", ""))
         ours[(d, D)] = int(m.group(4).replace(",", ""))
 
 # Holders recorded in TABLE.md (survey Table 4 + wiki colour key where read) and README "Where the old records come from".
@@ -55,7 +56,7 @@ def status(d, D):
         return "opt"
     return "open"
 
-rows = []
+rows, flags = [], []
 for D in range(3, 11):
     for d in range(3, 17):
         t = TABLE[d][D - 3]
@@ -77,6 +78,8 @@ for D in range(3, 11):
         rows.append(dict(delta=d, D=D, table=t, moore=mb, status=st, ours=o, beaten=beaten,
                          holder=holder, source=SOURCE, notes=""))
         assert t <= mb, (d, D, t, mb)
+        if (d, D) in readme_table and readme_table[(d, D)] != t:
+            flags.append(f"({d},{D}): heuristic.py/TABLE.md value {t} != README table column {readme_table[(d, D)]}")
 
 out = os.path.join(os.path.dirname(__file__), "cells.csv")
 with open(out, "w", newline="", encoding="utf-8") as f:
@@ -86,4 +89,5 @@ with open(out, "w", newline="", encoding="utf-8") as f:
 from collections import Counter
 print(Counter(r["status"] for r in rows), "beaten:", Counter(r["beaten"] for r in rows))
 print("cells:", len(rows), "ours parsed:", len(ours))
+print("README table-column mismatches:", flags)
 print("unbeaten open:", [(r["delta"], r["D"]) for r in rows if r["beaten"] == "no"])
