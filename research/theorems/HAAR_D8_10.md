@@ -85,8 +85,10 @@ where `inl g ~ inr h` iff `h * g⁻¹ ∈ S`).
 
 *Geometric reading.* Call the A-vertices points and the B-vertices lines. The line (h, B) is incident with the points
 (s⁻¹h, A), s ∈ S, so H(G, S) is the incidence graph of the incidence structure whose blocks are the right translates
-S⁻¹h of S⁻¹ (the development of S⁻¹). At D = 3 with |G| = Δ² − Δ + 1, Theorem 2.4(b) below says exactly that every
-non-identity element of G is s⁻¹t for a unique pair (s, t), i.e. S is a planar difference set; for example
+S⁻¹h of S⁻¹ (the development of S⁻¹). At D = 3 with |G| = Δ² − Δ + 1, counting shows that S⁻¹S = G holds iff every
+non-identity element of G is s⁻¹t for a unique pair (s, t), i.e. S is a planar difference set; then the structure is a
+symmetric 2-design with λ = 1, i.e. a projective plane, any two lines meet, and SS⁻¹ = G follows, so Theorem 2.4(b)
+below holds; for example
 H(Z_7, {0, 1, 3}) is the incidence graph of the Fano plane, and Theorem 4.1 holds with equality there. We say "order of
 G" for |G|; the graph has 2|G| vertices.
 
@@ -243,8 +245,8 @@ solution. We do not count that check as independent.
 **What no checker uses.** None of the checkers uses the orbit symmetry α of §3. A solution file with f = 0 (§3) stores
 T = S·s₀⁻¹ for an α-closed S and some s₀ ∈ S (Lemma 3.1(ii)), and T is not closed under any automorphism of the
 searched form (computer-checked: `orbit_check.py` tries this first, exhaustively over the conjugating element and the
-scaling). Instead α(T)·c = T for c = α(s₀)s₀⁻¹, which lies in T because α(s₀) ∈ S; indeed
-α(S s₀⁻¹)·α(s₀)s₀⁻¹ = S s₀⁻¹. `orbit_check.py` finds such α and c ∈ T for every f = 0 record (§5), and for three of
+scaling). Instead α(T)·τ = T for τ = α(s₀)s₀⁻¹, which lies in T because α(s₀) ∈ S; indeed
+α(S s₀⁻¹)·α(s₀)s₀⁻¹ = S s₀⁻¹. `orbit_check.py` finds such α and τ ∈ T for every f = 0 record (§5), and for three of
 them we also found s₀ explicitly. So the validity of a record does not depend on any claim in §3: the symmetry was a
 search device only.
 
@@ -298,7 +300,7 @@ The automorphisms used for the records in §5 (details per record in the table):
    p | n (for prime k this is possible exactly when every prime factor of n is ≡ 1 mod k), then r − 1 is a unit mod n
    and the Z_n-part of Fix(α) is {0}; this holds for every k = 3 and k = 5 record except (7,8), where n = 14 and
    z ∈ {0, 7} are fixed. For g of order k ≥ 3 with the characteristic not dividing k, |C_{SL(2,q)}(g)| = q ± 1 (a
-   torus) and the centraliser of its image in PSL(2, q) has order (q ± 1)/2. For products Q = Q_1 × Q_2,
+   torus) and, for q odd, the centraliser of its image in PSL(2, q) has order (q ± 1)/2 (for q even, PSL = SL). For products Q = Q_1 × Q_2,
    g = (g_1, g_2) and the centraliser is the product of the two. This is the k = 3 recipe of most records, and k = 5
    for (11,8) and (11,10).
 2. **Order 6 with a swap** on SL(2,7)² × Z_31 (the (13,8) record): α(x_1, x_2, z) = (c x_2 c⁻¹, x_1, 6z) with c of order 3.
@@ -366,8 +368,8 @@ converse is clear. ∎
 evaluated with the sign pattern of its position in w (A-pattern if it starts at an odd position, B-pattern if at an
 even one). If ⟨α⟩ contains an involution β, v(S) ∈ Anti(β) and v* ≠ v, then by (a) the word w′ obtained by replacing v
 by v* has the same value as w. If w′ is reduced, two distinct binding words share a value; if not, that value is also
-the value of a shorter reduced word. By (b), Anti(β) has at least |G|/|Fix(β)| elements; for conjugation in
-SL(2, q) × Z_n that is a fraction of order 1/q of the group. A group of odd order contains no involution (Lagrange),
+the value of a shorter reduced word. By (b), Anti(β) has at least |G|/|Fix(β)| elements; for conjugation times a scaling on
+SL(2, q) × Z_n whose Z_n-part of Fix(β) is bounded, that is a fraction of order 1/q of the group. A group of odd order contains no involution (Lagrange),
 and by (c) even the elementwise condition α(u) = u⁻¹ is then confined to the elements of order ≤ 2 in Fix(α). Odd k
 still gives exact relations from (b): if N_α(u) = e for the value u of an even block of length L, then
 u⁻¹ = α(u)α²(u)⋯α^(k−1)(u), so the reversed block (value u⁻¹, length L) and a block of length (k − 1)L, possibly not
@@ -407,11 +409,12 @@ needs about μ/k "independent chances to fail" instead of μ.
 Over 32 solved orbit runs, the number of evaluations fits the random-S effort law of research/frontier/SIZE_LAW.md
 §4.1 with μ_A in place of μ (BEYOND_RANDOM.md §2).
 
-*What does not change.* With e ∈ S, the number of α-closed sets is about (N/k)^m/m! · C(|Fix(α)|, f − 1) (with f = 0 the
-count is of translates containing e), against C(N − 1, Δ − 1) ≈ N^(Δ−1)/(Δ − 1)! for all sets containing e. Setting the
-expected number of valid sets to 1 gives a "first-moment ceiling" of μ ≈ km·ln N = (Δ − f) ln N for α-closed sets (with
-P(valid) ≈ e^(−μ/k)) and μ ≈ (Δ − 1) ln N for all sets, to leading order: the two agree up to the dropped factorials and
-the |Fix(α)| term, which are not negligible at the sizes of §5 (STRUCTURE.md §1; BEYOND_RANDOM.md §1.5 computes the
+*What does not change.* For f ≥ 1 (so e ∈ S) the number of α-closed sets is about (N/k)^m/m! · C(|Fix(α)| − 1, f − 1);
+for f = 0 there are about (N/k)^m/m! α-closed sets, giving about Δ times as many translates containing e. All sets
+containing e number C(N − 1, Δ − 1) ≈ N^(Δ−1)/(Δ − 1)!. Setting the expected number of valid sets to 1 gives a
+"first-moment ceiling" of μ ≈ km·ln N = (Δ − f) ln N for α-closed sets (with P(valid) ≈ e^(−μ/k)) and μ ≈ (Δ − 1) ln N
+for all sets, to leading order. The two differ by (f − 1)·ln N, by the |Fix(α)| term (they agree when |Fix(α)|^k ≈ N)
+and by factorials, which are not negligible at the sizes of §5 (STRUCTURE.md §1; BEYOND_RANDOM.md §1.5 computes the
 margins). So in this model orbit-closure makes larger groups *searchable*; it
 does not make larger valid sets *exist*. Cells whose table value lies above that ceiling (for example (12,8), (14,8),
 (16,8)) were not reached, consistent with the model (STRUCTURE.md §6).
@@ -442,15 +445,17 @@ W(Δ, D) of binding words, is the quantity behind every estimate in §3.5. It us
 *Proof.* Suppose |G| = W(Δ, D). The proof of Theorem 4.1 shows that the reduced A-words of the binding parity and length
 ≤ D − 1 cover G; there are exactly W(Δ, D) of them, so their values are pairwise distinct.
 
-*Girth.* Suppose H(G, S) has a cycle of length 2c < 2D. Every cycle passes through an A-vertex, and a right translation
-moves it to (e, A). The two arcs of the cycle from (e, A) to the opposite vertex are distinct paths of length c, hence
-two distinct reduced A-words of length c with the same value. Their last letters differ, because the two arcs enter
-the opposite vertex along different edges and the edges at a vertex carry different letters. If c ≡ D − 1 (mod 2),
-then c ≤ D − 1 contradicts distinctness. Otherwise c ≤ D − 2; since Δ ≥ 3 there is a letter t different from both last
-letters, and appending t gives two distinct reduced words of length c + 1 ≤ D − 1, of the binding parity, with the same
+*Girth.* Suppose H(G, S) has a cycle of length 2γ < 2D. Every cycle passes through an A-vertex, and a right translation
+moves it to (e, A). The two arcs of the cycle from (e, A) to the opposite vertex are distinct paths of length γ, hence
+two distinct reduced A-words of length γ with the same value. Their last letters differ, because the two arcs enter
+the opposite vertex along different edges and the edges at a vertex carry different letters. If γ ≡ D − 1 (mod 2),
+then γ ≤ D − 1 contradicts distinctness. Otherwise γ ≤ D − 2; since Δ ≥ 3 there is a letter t different from both last
+letters, and appending t gives two distinct reduced words of length γ + 1 ≤ D − 1, of the binding parity, with the same
 value, again a contradiction. So the girth is at least 2D. A finite graph of minimum degree ≥ 2 has a cycle, and a
-bipartite graph of diameter ≤ D containing a cycle has girth ≤ 2D; so the girth is 2D, and then the diameter is
-exactly D.
+graph of diameter ≤ D containing a cycle has girth ≤ 2D + 1 (on a shortest cycle C of length ≥ 2D + 2, two vertices at
+distance D + 1 along C would be joined by a shorter path, which closes a shorter cycle), hence girth ≤ 2D when it is
+bipartite. So the girth is 2D, and then the diameter is exactly D, since two opposite vertices of a shortest cycle are
+at distance D.
 
 *Polygons.* A bipartite graph with diameter D, girth 2D and all degrees ≥ 3 is the incidence graph of a thick
 generalized D-gon (Tits' definition); here of order (Δ − 1, Δ − 1). By the Feit–Higman theorem (J. Algebra 1 (1964)
@@ -528,12 +533,12 @@ in §5 uses SL(2, q), a product containing SL(2, q), a PSL(2, q) with a cyclic f
 
 research/theorems/D8_NUMEROLOGY.md §1.1 (branch `claude/d8-table-numerology-mi6but`) proves the following; it is stated
 here with its hypotheses and was not re-checked for this note. Let B be a bipartite graph with colour classes P and L of
-equal size and diameter at most 2c. Let s_1, …, s_j be bijections P → L, let t_1, …, t_j ∈ Z_M, and form the lift with
+equal size and diameter at most δ, δ even. Let s_1, …, s_j be bijections P → L, let t_1, …, t_j ∈ Z_M, and form the lift with
 vertex set V(B) × Z_M, edges (u, z) ~ (v, z) for uv ∈ E(B), and (p, z) ~ (s_k(p), z + t_k). If
 
 {0} ∪ {±t_k} ∪ {t_k − t_l : k ≠ l} ∪ {t_k + t_l : k ≤ l} = Z_M (note k = l is allowed in the last set),
 
-then the lift has diameter at most 2c + 2. Applied to generalized hexagons (2c = 6) it gives diameter-8 graphs, but
+then the lift has diameter at most δ + 2. Applied to generalized hexagons (δ = 6) it gives diameter-8 graphs, but
 below the table in every cell.
 
 ### 4.5 What we cannot prove
@@ -604,7 +609,7 @@ bipartite Moore bound.
 
 *Orbit structure.* "k = 3: 1+3+3" means that S is closed under an automorphism α of order k of the form in
 Construction 3.2, and α splits S into cycles of the sizes shown (1 = a fixed generator). "f = 0" means no fixed
-generator; such files store a translate (§2.6), which is closed under x ↦ α(x)c instead. Each entry was verified from
+generator; such files store a translate (§2.6), which is closed under x ↦ α(x)τ instead. Each entry was verified from
 the file alone by `orbit_check.py` (single-factor groups over prime fields) or `orbit_check2.py` (products, GF(25), and
 the order-6 swap of (13,8)); outputs in `recheck/orbit_check.log` and `recheck/orbit_check2.log`. "–" means the graph
 was not found by an orbit search and no symmetry is claimed.
@@ -832,10 +837,12 @@ The order is 14.25 % of the bipartite Moore bound 671,846; the table value is 80
 ## Appendix B. Internal review
 
 Before release, §§1–4 and Appendix A were refereed by a separate Claude session that had not written them, with brute-force
-checks on small groups (Theorem 2.4 against BFS from every vertex in 8,640 cases on 18 groups; Lemma 3.1 and
-Proposition 3.4 for every automorphism of 16 small groups; Theorem 4.3 and Corollary 4.4 in several thousand cases). Its
-report, with 28 findings, is `research/theorems/haar_d8_10/REFEREE_2026-10-25.md` (line numbers refer to an earlier
-draft). It found no false theorem. All findings were addressed in this version: the overstated summary of
-Proposition 3.4, the description of A(Δ, D) as a polynomial (it is a quasi-polynomial of period 2), the missing girth
-step in Corollary 4.2, heuristic statements that had been worded as consequences of propositions, and a number of
-notational and wording points.
+checks on small groups (Theorem 2.4 against BFS from every vertex in 8,640 cases on 18 groups; Lemma 3.1 on 8 groups
+with all their automorphisms; Proposition 3.4 for every automorphism of 16 small groups; Theorem 4.3 and Corollary 4.4 in several thousand cases). Its
+first report, with 28 findings, is `research/theorems/haar_d8_10/REFEREE_2026-10-25.md`, and its second pass on the
+revision is `REFEREE2_2026-10-25.md` (line numbers refer to earlier drafts). It found no false labelled statement; one
+remark (A(Δ, D) "a polynomial in D") was false and is corrected (it is a quasi-polynomial of period 2). The other
+findings were the overstated summary of Proposition 3.4, the missing girth step in Corollary 4.2 (now proved),
+heuristic statements worded as consequences of propositions, and notation. All were addressed; the second pass
+confirmed the rewritten proofs and left only wording points, which this version also fixes, except that some letters
+(k, c) still have more than one meaning in different sections.
