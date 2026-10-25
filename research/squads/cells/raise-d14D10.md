@@ -117,3 +117,19 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 - 18:22 PSL(2,181) x Z_229 (N 678,934,620, mu 30.4, fix ~90), seed 2, THREADS=2, 5,400 s: running.
   Other candidates above 675,268,932 with q = 1 mod 3: PSL(2,241) x Z_97 (678.9M, fix ~120). Higher N needs
   more than the budget (mu 33+ at 681M and up).
+- 19:52 PSL(2,181) x Z_229 (N 678,934,620, mu 30.4, fix 89), seed 2, THREADS=2, 5,400 s: NOT solved. Best 6 after
+  3,609 evals. Stopped here.
+
+## Round 2 summary and stop reason
+
+- Record: (14,10) >= 1,350,537,864 (N 675,268,932, PSL(2,157) x Z_349, fix 77, VALID by haarcheck_psl). Round 1 had
+  1,341,781,320. Gain this round: +8,756,544 (+0.65 %).
+- Tried above 670,890,660 (all orbit k=3, m=4, f=2, seed 2): PSL(2,157) x Z_349 SOLVED; PSL(2,281) x Z_61 best 6
+  (7,305 evals); PSL(2,163) x Z_313 best 1 (7,369 evals); PSL(2,181) x Z_229 best 6 (3,609 evals). Not tried: PSL(2,241)
+  x Z_97 (678.9M, fix ~120), larger N (mu 33+, one 5,400 s run is not enough).
+- Stopped at the 6-hour mark, not because the cell is exhausted. Next steps, in order: (1) more seeds on PSL(2,163) x
+  Z_313 (best 1 is close; a longer run or seed 3 may solve it); (2) PSL(2,241) x Z_97 at fix ~120; (3) retry the
+  OOM-killed-at-setup case (none needed this round).
+- Lesson: at mu 27-30, |Fix(alpha)| decided which rungs solve: fix 77 solved in 2.9k evals, fix 80 reached cost 1,
+  fix 89 and 140 stalled at 6. For PSL(2,q), fix = (q-1)/2 when q = 1 mod 3 and (q+1)/2 when q = 2 mod 3.
+- Machine: one run at a time (16 GB). THREADS=2 still reached 13.2 GB RSS at N ~ 6.8e8; THREADS=4 OOM-killed at setup.
