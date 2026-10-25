@@ -50,3 +50,8 @@ do not help (c6, c7). Opus meanwhile solved μ 30.9 and μ 35.7 on PSL(2,151) ×
 (4,547,938,800 and 4,582,366,800 vertices), and moved the main line to PSL(2,191) × Z661 with the screen (which removes
 c4's 4 fixed holes). No round 3: the machine (4 cores, memory-bandwidth bound) is the limit now, and the remaining ideas
 (k = 7 with a fixed generator, an orbit quotient of the BFS) are code, not cards.
+Follow-up card (one Haiku, 14:15–15:30 UTC): an independent OpenMP checker for H(PSL(2,p) × Z_n, S), written from the
+definitions (research/squads/d16D10-r2/checker/hcheckpsl.c). 27/27 verdicts and all eccentricities agree with
+haarcheck_psl on 7 valid and 20 corrupted files; 400/400 random instances agree with a naive BFS. At N = 2.3e9 it takes
+~340 s on one core against ~3,100–3,600 s for haarcheck_psl, so it became the first check of every (16,10) find
+(Opus read the code: canonical index, edges, labels and the VALID condition are right). Kept.
