@@ -62,3 +62,9 @@ Running: sl 37 × Z349 ORBW=3 seed 1 (N 17,664,984, μ 28.2, |Fix| 36); sl 83 ×
 - Same group, seeds 4 (2 h, best 6 at 230k evals), 6 (stopped at N tie, best 9). Seed 5 is the first success in this group (round 1: 3 seeds, none).
 - Bar is now N > 17,696,952.
 - Unsolved in batch 2: sl 83 × Z31 (ORBW=3, best 6 at 148k evals), sl 43 × Z223 (best 12 at 157k), psl 47 × Z343 (N 17,797,584, μ 31.4, best 13 at 125k, still running).
+
+### Batch 3 (from 17:19 UTC): bar N > 17,696,952
+- psl 47 × Z343 ORBW=3 seed 1 (N 17,797,584, μ 31.4): best 6 at 160k evals, still running at 18:20 (2 h budget, ends ~19:02).
+- sl 83 × Z31 ORBW=3 seed 2 (N 17,722,824, μ 29.5): best 6 at 26k evals (started 18:03, ends ~20:03).
+- sl 43 × Z223 ORBW=3 seed 2: stuck at energy 24 after 20 min (seed 1 reached 12), stopped at 18:25.
+- psl 73 × Z91 seed 6 stopped at 17:55 (N equal to the record, could only tie).
