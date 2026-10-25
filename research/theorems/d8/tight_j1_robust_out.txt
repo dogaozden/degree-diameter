@@ -1,0 +1,23 @@
+part 1: q=3, M=17, 3 random regular labellings: all identities hold; max of LHS/RHS in the spectral inequality 0.330
+part 1: q=4, M=21, 2 random regular labellings: all identities hold; max of LHS/RHS in the spectral inequality 0.377
+part 2: final inequality (P = 1); "ok" = contradiction, i.e. no design
+  q   worst case (c_A, c_B)   upper bound   lower bound   ok   analytic 0.33 + 15.4/(q-1)
+   5   (0, 0)                  6.2500        2.0000        False   nan
+   7   (0, 0)                  3.5000        2.0000        False   nan
+   8   (0, 0)                  2.8630        2.0000        False   nan
+   9   (0, 0)                  2.4258        2.0000        False   nan
+  11   (0, 0)                  1.8700        2.0000        True   1.8700
+  13   (0, 0)                  1.5347        2.0000        True   1.6133
+  16   (0, 0)                  1.2267        2.0000        True   1.3567
+  17   (0, 0)                  1.1538        2.0000        True   1.2925
+  19   (0, 0)                  1.0360        2.0000        True   1.1856
+  23   (0, 0)                  0.8727        2.0000        True   1.0300
+  25   (0, 0)                  0.8138        2.0000        True   0.9717
+  27   (0, 0)                  0.7650        2.0000        True   0.9223
+  29   (0, 0)                  0.7239        2.0000        True   0.8800
+  31   (0, 0)                  0.6889        2.0000        True   0.8433
+  32   (0, 0)                  0.6732        2.0000        True   0.8268
+  64   (0, 0)                  0.4471        2.0000        True   0.5744
+ 128   (0, 0)                  0.3451        2.0000        True   0.4513
+1024   (0, 0)                  0.2615        2.0000        True   0.3451
+every integer q in [11, 100000], all (c_A, c_B): contradiction fails for 0 cases []

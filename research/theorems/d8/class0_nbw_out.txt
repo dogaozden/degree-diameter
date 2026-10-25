@@ -12,3 +12,7 @@ d(x,y) = 1: pairs 756, NBW to the same Z_5-copy: min 11, mean 28.8, smallest val
 d(x,y) = 3: pairs 18900, NBW to the same Z_5-copy: min 12, mean 29.5, smallest values [(12, 4), (13, 2), (14, 11), (15, 18), (16, 43), (17, 57)]
 d(x,y) = 5: pairs 472500, NBW to the same Z_5-copy: min 35, mean 54.4, smallest values [(35, 3), (36, 12), (37, 38), (38, 93), (39, 215), (40, 448)]
 == q=7 source_step=13
+d(x,y) = 1: pairs 12072, NBW to the same Z_5-copy: min 5, mean 23.3, smallest values [(5, 1), (7, 1), (8, 2), (9, 9), (10, 11), (11, 32)]
+d(x,y) = 3: pairs 591528, NBW to the same Z_5-copy: min 3, mean 23.8, smallest values [(3, 1), (7, 12), (8, 29), (9, 107), (10, 300), (11, 649)]
+d(x,y) = 5: pairs 28984872, NBW to the same Z_5-copy: min 51, mean 72.8, smallest values [(51, 1), (53, 3), (54, 31), (55, 122), (56, 565), (57, 1749)]
+# q=7: the run ended before the d = 5 line was printed; the d = 1 and d = 3 lines are complete for the sampled sources

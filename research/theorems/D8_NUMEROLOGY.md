@@ -22,7 +22,8 @@ matchings from points to lines ("hops", degree q+1+j) and take an M-fold voltage
    while the REGULARITIES formula 3⌊(q−1)/2⌋ breaks the cap at q = 13 (unless it needs q ≡ 3 mod 4).
 4. **What is special about DGQ's numbers is their growth, not their size (new, §2.2–2.3).** At small q, plain
    optimization passes DGQ's formula: 25 copies at q = 3 and 22 at q = 4 (formula 20 at both), all checked by an
-   all-pairs BFS; at q = 5 it has reached 20 so far (formula 25). But the number of short walks
+   all-pairs BFS; at q = 5 and q = 7 it reaches 20 (formulas 25 and 30), and at q = 9 random symmetric lifts give 16
+   (formula 35). The number of short walks
    between a point and a line is about 250–310 for every DGQ cell, nearly independent of q, and generic lifts get one
    copy per 13–20 walks, while DGQ's M = 5(q+5)/2 grows linearly and uses one copy per 7–8.6 walks. So DGQ's
    construction must use walk families whose size grows with q (lines through a point, points on a line, the q+1
@@ -40,9 +41,11 @@ matchings from points to lines ("hops", degree q+1+j) and take an M-fold voltage
      distance 3 for any matchings that are not close to dualities, so for large q such a lift needs near-dual
      matchings. In the table range the multi-hop walks still add tens per pair, so the reading is not excluded; at
      q = 3 it gives K = 5 (25 copies, more than DGQ's formula) after annealing.
-   - (§1.5, new) With one matching, the tight value q + 4 cannot be certified by guaranteed walks for any q ≥ 7,
-     equitable or not, as long as each point and line misses exactly one residue (a spectral inequality on the
-     incidence matrix of H(q)). So DGQ's (13,8) = (q+4)·|GH(11)| needs walks or holonomy beyond §1.2.
+   - (§1.5, new) With one matching, zero holonomy and regular labels, the tight value q + 4 cannot be certified by
+     guaranteed walks for any q ≥ 11 (Theorem 2), so the bound of §1.2 drops to q + 3 there; for q = 7, 8, 9 the
+     same holds when each point and line misses exactly one residue (Theorem 1). Both are spectral inequalities on the
+     incidence matrix of H(q). So DGQ's (13,8) = (q+4)·|GH(11)| needs walks or holonomy beyond §1.2, or labels
+     that repeat around a point or a line.
 6. **No table cell beaten.**
 
 ---
@@ -205,10 +208,17 @@ the two random matchings by a duality raises the average of c_2 to 30 and the pe
 
 The walks of type (c) are not negligible in the table range. `class0_nbw.py` counts all non-backtracking walks of
 length ≤ 7 from (x, 0) to (y, 0) in the Z_5 cover itself (an upper bound for K at each pair): for random matchings the
-mean over pairs at distance 3 is 44, 35, 30 at q = 3, 4, 5 and the minimum 17, 14, 12 (q = 4, 5 sampled). Each
+mean over pairs at distance 3 is 45, 35, 30, 24 at q = 3, 4, 5, 7 and the minimum 23, 14, 12, 3 (q ≥ 4 sampled). Each
 three-hop pattern contributes O(1/q), but there are many patterns. So counting alone does not exclude K = 6–9 for
 q ≤ 13; it shows that the class-0 walks are few (tens per pair, against K ≈ q/2) and must be coordinated, and that
 K cannot exceed about 13 for large q without near-dual matchings.
+
+*The other classes.* With zero holonomy, the guaranteed walks of §1.2 reach the Z_5-classes +1 and +2 only through
+τ_1(x), λ_1(y) and the two composites (class +1: four values) and τ_2(x), λ_2(y), τ_1(x) + λ_1(y) (class +2: three
+values). So a polygon cover × Z_K certified by guaranteed walks has K ≤ 3; DGQ's K = 6–9 needs flag holonomy (the
+q+1 geodesics between opposite elements then give rich families t_k(x) + G(s_k x, y)) or walks that depend on the
+matchings, in three of the five classes (0, +1, +2); only the classes −1 and −2 have rich guaranteed families
+(the q+1 lines through x and the q+1 points on y).
 
 *Experiments.* At q = 3 the reading works beyond DGQ's value: annealing (qanneal2.c) the Z_K parts of a polygon
 cover × Z_K lift with random matchings gives K = 5, a valid lift with 25 copies (18,200 vertices,
@@ -218,20 +228,21 @@ random hop labels and designed only the flag voltages; that fails already at K =
 annealed polygon cover × Z_4 reaches DGQ's value exactly (20 copies, 54,600 vertices,
 `calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 (25 copies) stayed at 3,194 unreached pairs after 13 minutes.
 
-### 1.5 No tight one-matching design for q ≥ 7, equitable or not (`tight_j1.py` → `tight_j1_out.txt`)
+### 1.5 No tight one-matching design: q ≥ 11 in general, q ≥ 7 for one-miss labels (`tight_j1.py` → `tight_j1_out.txt`, `tight_j1_robust.py` → `tight_j1_robust_out.txt`)
 
 §1.2 shows that one hop matching, zero holonomy and regular labels give M ≤ q + 4 if only guaranteed walks are used,
 and §1.3 kills the tight case M = q + 4 when the label classes are equitable. DGQ's (13,8) value is exactly
-(q + 4)·|GH(q)| at q = 11, so the non-equitable case matters. Here it is closed for q ≥ 7, under one natural
-assumption.
+(q + 4)·|GH(q)| at q = 11, so the non-equitable case matters. Theorem 1 closes it for q ≥ 7 under one natural
+assumption; Theorem 2 drops the assumption for q ≥ 11.
 
-*Setting.* M = q + 4; labels t on points, l on lines, same distribution (n_c points and n_c lines with label c),
+*Setting.* M = q + 4; labels t on points, l on lines, same distribution (n_c points and n_c lines with label c;
+automatic, since l(y) = t(s^{-1}(y))),
 regular (distinct on the lines through a point and on the points of a line), every point–line pair covered by
 {0, t(x), l(y), t(x) + l(y)} ∪ X(x) ∪ Y(y) with X(x) = {t(x)} ∪ −l(N(x)), Y(y) = {l(y)} ∪ −t(N(y)). *One-miss*: X(x)
 consists of q + 2 distinct nonzero residues for every point (so it misses exactly one nonzero residue e(x)), and Y(y)
 likewise misses exactly one f(y).
 
-*Theorem.* For q ≥ 7 there is no such design.
+*Theorem 1.* For q ≥ 7 there is no such design.
 
 *Proof.* (i) Structure. The lines through x carry exactly the labels Z_M* \ {−e(x), −t(x)}, once each; the points on
 y carry Z_M* \ {−f(y), −l(y)}. Counting flags with line label d gives (q+1)n_d = P − a_{−d} − n_{−d}, where
@@ -256,16 +267,47 @@ where s = a_{−d} + n_{−d} is the number of zeros of N u_d (the left side is 
 s ≤ 2P/(q+1) ≤ P/2 by (i). So the left side is at least 2P(q+1)/(q+3)². For q ≥ 7 this exceeds the right side
 (`tight_j1_out.txt`: 0.160 P against 0.142 P at q = 7, 0.122 P against 0.068 P at q = 11). ∎
 
-*On the one-miss assumption.* In any regular design with M = q + 4 the counting of §1.2 has total slack
-2P/(q+1) − (q+2)n_0 (n_0 = number of points labelled 0): at most two residues are covered by every point or every
-line, n_0 ≤ 2P/((q+1)(q+2)), and the coincidences t(x) = −l(b) (b ∋ x) on the other residues number at most
-2P/(q+1). So all but O(P/q) points and lines are one-miss. Making the spectral step robust to these few defects
-would remove the assumption; this was not done.
+*Theorem 2 (no one-miss assumption).* For q ≥ 11 no regular labelling with M = q + 4 has every point–line pair
+covered by guaranteed walks. With §1.2: for q ≥ 11, one matching, zero holonomy, regular labels and guaranteed walks
+give at most q + 3 copies.
+
+*Proof.* Same setting without one-miss. For g ≠ 0 let A_g (B_g) be the points (lines) whose own set X(x) (Y(y))
+misses g. Let κ_d be the points labelled −d that lie on a line labelled d, and ρ_d the lines labelled d that contain a
+point labelled −d (the "coincidences": X(x) or Y(y) repeats a residue); k_d = |κ_d|, r_d = |ρ_d|.
+(a) Counting. |A_g| = P − n_g − (q+1)n_{−g} + k_{−g} and |B_g| = P − n_g − (q+1)n_{−g} + r_g. If A_g and B_g are both
+non-empty, then as in (i) t is constant on A_g, l is constant on B_g, and |A_g|, |B_g| ≤ P/(q+1). Call g of type A if
+A_g is empty and of type B if B_g is empty but A_g is not; there are c_A and c_B of them. For type A, |B_g| = r_g − k_{−g};
+for type B, |A_g| = k_{−g} − r_g. Summing |A_g| over the q + 3 nonzero g (the sum is P + (q+2)n_0 + Σ k) against these
+bounds gives Σ_{g not of type B} k_{−g} + Σ_{g of type B} r_g ≤ S := (2 − c_A − c_B)P/(q+1) − (q+2)n_0, and the line side
+gives the same with A and B (and k, r) exchanged. So c_A + c_B ≤ 2, and there are O(P/q) coincidences.
+(b) Identity. Keeping the coincidences, (ii) becomes N u_d = 1 − π_{−d} − w_{−d} + κ_d and
+N^T w_{−d} = 1 − λ_d − u_d + ρ_d (now π_g, λ_g are the indicators of A_g, B_g, and κ_d, ρ_d are also indicator vectors),
+so (N^T N − I)u_d = q·1 + z_d with z_d = λ_d − μ_d − ρ_d + ν_d, μ_d = N^T π_{−d}, ν_d = N^T κ_d.
+(c) One label. Call d good if d is not of type A and −d is not of type B. Then λ_d has b ≤ P/(q+1) ones, μ_d is 0/1
+with A = (q+1)|A_{−d}| ones (or is 0), ν_d is 0/1 with K = (q+1)k_d ones (the points of κ_d all have label −d), and
+λ_d, ρ_d are disjoint. Expanding the square of this signed sum of 0/1 vectors and dropping the negative cross terms,
+‖z_d − mean‖² ≤ x − x²/P + 2b + 2K + 2⟨λ_d, ν_d⟩ + 2⟨ρ_d, μ_d⟩ ≤ P/4 + 2P/(q+1) + 4K + 2r_d (x = A + r_d − b − K).
+By (iii), s_d(P − s_d)/P ≤ q/(q−1)²·‖z_d − mean‖², where s_d = P − (q+1)n_d is the number of zeros of N u_d; and
+s_d ≤ 2P/(q+1), so the left side is at least s_d(q−1)/(q+1). Hence for every good d
+
+  s_d ≤ (q+1)q/(q−1)³ · (P/4 + 2P/(q+1) + 4(q+1)k_d + 2r_d).
+
+(d) All labels. Σ_{d≠0} s_d = 2P + (q+1)n_0. A d that is not good has s_d ≤ P/(q+1) (if −d is of type B) or
+s_d ≤ 2P/(q+1), so the good d carry at least 2P − (c_B + 2c_A)P/(q+1), while by (a) Σ_good k_d ≤ S and Σ_good r_d ≤ S.
+Summing (c):
+
+  2P − (c_B + 2c_A)P/(q+1) ≤ (q+1)q/(q−1)³ · ((q+3)(P/4 + 2P/(q+1)) + (4q+6)S).
+
+In the worst case (c_A = c_B = n_0 = 0) the right side is at most (0.33 + 15.4/(q−1))P, which is 1.87P at q = 11 and
+decreases with q, against 2P on the left. `tight_j1_robust_out.txt` checks every case (c_A, c_B) for every q up to
+10^5, and checks the identities of (a)–(c) exactly on random regular labellings of H(3) and H(4). ∎
+
+At q = 7, 8, 9 the right side is 3.5P, 2.86P, 2.43P, so there the general case is open (the one-miss case is closed
+by Theorem 1).
 
 *Consequence.* DGQ's (13,8) graph, if it is a lift of H(11) plus one matching with 15 copies, either uses walks that
-exist only for special matchings, or holonomy, or labels that waste walks (not one-miss: some point sees a residue
-twice or sees 0), or labels that repeat around a point. Optimization meets or passes q + 4 at small q (q = 2: 10 copies, q = 3: 7, lanneal);
-at q = 4, exact-cost annealing of 8 = q + 4 copies (C_7-symmetric, qanneal3/qanneal4) stops at J1_Q4 unreached orbits.
+exist only for special matchings, or holonomy, or labels that repeat around a point or a line. Optimization meets or passes q + 4 at small q (q = 2: 10 copies, q = 3: 7, lanneal);
+at q = 4, exact-cost annealing of 8 = q + 4 copies (C_7-symmetric, qanneal3/qanneal4) stops at 88 and 12 unreached pairs (one source per orbit) in two runs of 10 and 20 minutes (`eq/j1_q4_M8_runs.txt`).
 
 ## 2. Conjectured, with strong evidence
 
@@ -329,7 +371,8 @@ graph, `calib/checks.txt`, `eq/*_check.txt`):
 | 4 | 20 | **22** (60,060) | C_7-equivariant lift (eqlift.py), quotient voltages annealed (qanneal2.c) |
 | 5 | 25 | 14 (109,368) | squad c4: tann3 (tann2 without multi-edges) |
 | 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2; 22 stopped at 30 unreached orbits, 25 at about 45 (focus sources) |
-| 7 | 30 | 20 copies: 6 unreached orbits left after 40 min (RESULT_Q7_FINAL) | C_43-equivariant lift + qanneal2, then qanneal4 |
+| 7 | 30 | 20 (784,320; apsp check running) | C_43-equivariant lift (C_43 from G_2(7), order q² − q + 1); qanneal4 took it from 380 to 6 unreached orbit pairs in 40 min, then to 0 in 45 s with all 912 sources in focus |
+| 9 | 35 | 16 (2,125,760) | C_91-equivariant lift (Singer power), random voltages, no annealing; 18, 20, 22 copies leave 50, 252, 1,164 unreached pairs from one source per orbit (`eq/q9_frontier.sh` → `eq/q9_frontier_out.txt`; checked by liftdiam only, files not kept) |
 
 The symmetric lifts use a cyclic group C of collineations acting semiregularly on points and lines (a Singer-type
 element of SL(3,q) ⊂ G_2(q), order q² + q + 1 or a divisor, or an element of order q² − q + 1 found as a random product
@@ -453,8 +496,8 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 - Done on 2026-10-25: exact-cost annealing at q = 3, 4, 5 (§2.2) and a SAT search for guaranteed-walk designs (only
   q = 2 solves). The open question is no longer "can anything reach DGQ's values" (at q ≤ 4 optimization passes
   them) but "what scales like 2.5q": a design for the families of §2.3 that keeps working as q grows.
-- Concrete next tests: (a) symmetric lifts with larger groups at q = 7 (the C_43 run got to 6 unreached orbits at 20 copies in 40 minutes), to see
-  whether optimization alone approaches 30 there; (b) for q = 9 (self-dual H(9), the (12,8) cell) a duality as one hop
+- Concrete next tests: (a) symmetric lifts at q = 7 beyond 20 copies (the C_43 run reached 20 in about 45 minutes;
+  22 and 24 need longer runs or larger groups), to see whether optimization alone approaches 30 there; (b) for q = 9 (self-dual H(9), the (12,8) cell) a duality as one hop
   matching gives many more class-0 walks (§1.4: at q = 3 the per-pair minimum of cancelling walks goes from 4 to 15–22).
   At q = 3 this did not help the annealer (polygon cover × Z_6 failed with and without a duality: 500 and 298
   unreached), so class 0 is not what limits small q; whether it limits q = 9 is open, and a duality would not explain
@@ -462,8 +505,9 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 - A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table.
   (13,8) and (15,8) now hold 6,999,552 and 18,128,880 (group searches), so a j = 3 version would need at least 53
   copies of GH(9) or 52 of GH(11) to matter there.
-- Theory: make §1.5 robust to the O(P/q) defects (it would then say that no regular one-matching design certified by
-  guaranteed walks reaches q + 4 for q ≥ 7), and look for a spectral version of the j = 2 count of §1.2; the
+- Theory: close §1.5 for q = 7, 8, 9 without the one-miss assumption (Theorem 2 needs q ≥ 11; summing the inequality
+  over all labels instead of bounding each one separately should gain a constant), and look for a spectral version
+  of the j = 2 count of §1.2; the
   combinatorial bound 1 + 2(q+1)(q+4)/(q−3) is far above DGQ's values, and the j = 2 case is not tight, so the §1.5
   argument does not carry over directly.
 
@@ -490,3 +534,11 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 | class0_nbw.py | class0_nbw_out.txt | exact number of non-backtracking class-0 walks per pair in a Z_5 cover |
 | nearfrac.py | nearfrac_out.txt | how close a hop matching is to a duality (squad c1's matchings vs random) |
 | qanneal3.c | eq/*.txt, calib/*.txt | qanneal2 plus equivariant hop swaps, one or two matchings, and moves that keep b mod 5 (polygon cover × Z_K) |
+| j2bound.py | j2bound_out.txt | §1.2, the two-matching count |
+| tight_j1.py | tight_j1_out.txt | §1.5 Theorem 1 (one-miss labels, q ≥ 7) |
+| tight_j1_robust.py | tight_j1_robust_out.txt | §1.5 Theorem 2 (all regular labels, q ≥ 11): the final inequality in every case, and exact checks of the identities on random regular labellings of H(3), H(4) |
+| qanneal4.c | eq/*.txt | qanneal3 plus repair moves (walks of depth 3 from the source and 4 from the target, matching C-part, one edge's Z-part fixed) |
+| reseed.py | — | copy the Z_M voltages of a solved quotient base into a base with larger M (as a starting point) |
+| expand_lift.py | — | expand a liftdiam base into a plain edge list for apsp.c |
+| eq/q9_frontier.sh | eq/q9_frontier_out.txt | q = 9, C_91-equivariant random lifts at M = 16, 18, 20, 22 |
+| — | eq/j1_q4_M8_runs.txt | q = 4, one matching, M = 8 = q + 4: the two annealing runs (§1.5) |
