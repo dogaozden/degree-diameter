@@ -1,0 +1,6 @@
+group meta 25 4 7 x Z_4, N=400, identity 0, H order 50, rows 8, threads 1, setup 0.00s
+start cost=270
+t=30 steps=4421596 evals=35372769 cost=159 best=159 T=0.53
+t=60 steps=8230638 evals=65845105 cost=159 best=159 T=0.19
+t=90 steps=11725548 evals=93804385 cost=159 best=159 T=0.15
+RESULT d=3 D=10 group=meta 25 4 7 x Z_4 N=400 best=159 evals=114828761 time=120.0
