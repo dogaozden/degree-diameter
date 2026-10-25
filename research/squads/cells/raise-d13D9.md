@@ -40,13 +40,43 @@ Round 2 (09:42–11:42, 2 h each), no solution:
 | sl 53 × Z_229, seed 5 (RESTART=1) | 40,121 | 18 |
 | sl 89 × Z_49, seed 2 | 45,273 | 16 |
 
-Round 3 (11:42, 1.5 h each): sl 53 × Z_229 seeds 6 and 7 (RESTART=1); sl 89 × Z_49 seed 3; sl 59 × Z_169 seed 1 (μ_A 16.4).
+Round 3 (11:42, 1.5 h each), no solution:
+| job | evals | best cost |
+|---|---|---|
+| sl 53 × Z_229, seed 6 | 29,257 | 18 |
+| sl 53 × Z_229, seed 7 (RESTART=1) | 30,857 | 18 |
+| sl 89 × Z_49, seed 3 | 32,425 | 18 |
+| sl 59 × Z_169, seed 1 | 33,497 | 30 |
+
+## Result
+
+**No record yet.** In about 5.5 h on 4 cores: 13 orbit runs (≈ 5·10⁵ cost evaluations in total) on four groups
+just above 67,742,688 vertices. No run reached cost 0. Best costs: 12 (sl 53×Z_229), 14 (sl 89×Z_49, 1st seed), 16 (sl 89×Z_49, 2nd),
+18 (several), 20 (sl 61×Z_151), 24 and above. Logs are in `research/squads/cells/raise-d13D9-runs/`.
+
+Read of the data: the four candidates sit at the wall that the planner's μ_A ≈ 13 predicts only loosely. The 103
+record was found after 10.7k evaluations on one seed, and its neighbour sl 101×Z_31 after 281. Those are lucky
+runs (heavy-tailed), and 13 runs at 3–5·10⁴ evaluations each with no success is the typical outcome here, not a
+bug: the smoke test reproduced sl 101×Z_31 in 321 evaluations with the same binary. The cell is not moved with these
+methods within this budget. The next steps, in order, are below.
+
+## Next steps (for a fresh session or a bigger model)
+
+1. Many more seeds on sl 53×Z_229 and sl 89×Z_49 (the two lowest μ_A candidates, both with best cost 12–18). Each run
+   is ≈ 2 h on one core; a success rate near 1 in 10 would need about 10–20 more runs.
+2. Use the sl 103×Z_31 record's own solution space: its neighbours in N (e.g. sl 103×Z_31 with a different α, or
+   sl 101×Z_31 with a larger Z-factor) are below the threshold and do not help directly.
+3. Groups with μ_A ≤ 14 and 2N ≥ 67.74M do not exist beyond the four above (planner, SL only at odd D, k = 3 and 5,
+   with and without Frobenius, n ≤ 400). Anything larger needs μ_A ≥ 16 (more than 10⁶ evaluations).
+4. A better evaluation cost (the Speedup route in research/structured/SPEEDUP.md) would make the 10⁶-evaluation
+   candidates reachable; that is a different program.
+
 Costs were flat for the last hour in most runs. The 103 record needed about 10k evaluations, so 2 h at 0.18 s per
 evaluation (about 40k evaluations) is not yet decisive for these groups.
 
 ## Status
 
-- Round 1 (07:41–09:41): no solution. Round 2 started 09:42.
+- Rounds 1–3 (07:41–13:12): no solution. Pool stopped (STOP file). Record stays at 67,742,688.
 
 ## Notes for a resume
 
