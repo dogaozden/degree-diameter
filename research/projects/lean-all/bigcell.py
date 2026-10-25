@@ -140,7 +140,7 @@ def main():
     os.makedirs(os.path.dirname(tf), exist_ok=True)
     open(tf, 'w').write(f'import {P}Record\n#print axioms {theorem}\n#check @{theorem}\n')
     r = subprocess.run(['lake', 'env', 'lean', tf], capture_output=True, text=True, env=ENV)
-    out = (r.stdout + r.stderr).strip()
+    out = ' | '.join(l.strip() for l in (r.stdout + r.stderr).strip().split('\n'))
     say(out)
     with open(os.path.join(HERE, 'axioms_big.txt'), 'a') as f:
         f.write(f'{args.cell} ({time.strftime("%Y-%m-%d %H:%M")}): {out}\n')
