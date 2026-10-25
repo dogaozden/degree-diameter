@@ -28,3 +28,14 @@ checked by haar_sym's full check and by haarcheck_psl. The coordinator's check w
 
 - (start) 15:1x UTC: haar_sym, hc2, hcsl and tools/haarcheck_psl built here. Runs a (sl 73×Z31, ORBW=3, seed 21),
   b (psl 289×Z1, seed 1), c (pgl 73×Z31, seed 1) started, 4.4 h each, 1 thread each. Screen running in background.
+- Screen (500 random symmetric S per group, N in (12,049,801, 12,200,000], μ 36.0–42.2): ranking by (p1+p10)/2:
+  psl 79×Z49 (μ 36.8, min 16, p1 21, p10 36, fix 38) > prod sl 8×psl 19×Z7 (μ 36.3, min 17, p1 24, p10 34) >
+  sl 73×Z31 (μ 36.0, min 18, p1 24, p10 37) > pgl 73×Z31 (μ 36.0, min 19, p1 25, p10 38) > psl 53×Z163 (μ 39.0, min 18, p1 27, p10 44).
+  psl 289×Z1 (μ 36.5, min 21, p1 31, fix 143) is weak. Calibration (round 1, psl 151×Z7, the record): min 13, p1 19, p10 33.
+  No new candidate beats the calibration on the screen; the screen does not rule out a solve in them.
+- 15:10 UTC: psl 289 run stopped after 120 s (screen weak).
+- 15:12 UTC: started d = psl 79×Z49 seed 5 (plain). Screen done.
+- 15:19 UTC: started e = prod sl 8×psl 19×Z7 seed 31, ORBW=3.
+- 15:2x UTC status (wall-clock, 80–85 evals/s per run): a sl 73×Z31 ORBW=3 seed 21: best 3 at 5.2e4 evals;
+  c pgl 73×Z31 seed 1: best 7 at 5.1e4; d psl 79×Z49 seed 5: best 4 at 4.0e4; e prod sl 8×psl 19×Z7 ORBW=3 seed 31: best 16 at 1.4e3 (just started).
+  Each run has a 15,840 s budget (about 4.4 h), so about 1.2–1.3 million evaluations.
