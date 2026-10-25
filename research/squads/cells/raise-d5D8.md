@@ -46,23 +46,24 @@ Status: **record raised to 9,760** (Haar graph of Z_61 ⋊₈ Z_80, |G| = 4,880)
 - Only |G| ≥ 4,881 can beat 9,760. Lower orders were stopped (killed) at the switch.
 
 ### Batch a3 (600 s, seed 1, K = 8): top 40 by screen with N ≥ 4,881 (N 4,920–4,970)
-- 0 solved. Costs at the end: 28 of 40 at cost 1–5 (best 1 for 14 runs), the rest 2–5. Groups with the most
-  cost-1 stalls are listed in the batch a4 input.
+- 0 solved. Best cost over the run: 2 (4 runs), 3 (18), 4 (11), 5 (5), 6 (2). None reached cost 1.
 - Screen values: the best p1 for N ≥ 4,881 was 19–22 (the record group had 16), so these orders are harder in the screen.
 
-### Batch a4 (done): the 30 N ≥ 4,881 candidates that stalled at best cost 1, seed 2, 600 s each
-- 0 solved. Best costs: 1 for most, 2–3 for the rest.
+### Batch a4 (done): all 30 N ≥ 4,881 candidates of batches a1 and a3, rerun with seed 2, 600 s each
+- 0 solved. Best cost: 1 (1 run), 2 (5), 3 (7), 4 (11), 5 (4), 6 (2).
+- Note: the list was meant to hold only the cost-1 candidates, but the filter read the seed column, so it took all 30.
+  The cost-1 filter was not applied.
 - Tables: `runs/a1.tsv`, `runs/a3.tsv`, `runs/a4.tsv` in the session scratchpad (not in the repo).
 
 ## Status at the end of this session (2026-10-25, about 6 h)
 - **Record: 9,760** (Z_61 ⋊₈ Z_80, N = 4,880), verified twice. Pushed.
-- Since then: 40 + 30 further metacyclic candidates at N = 4,881–4,970 (600 s each, two seeds) and no solve.
-- Total compute on the N ≥ 4,881 search: about 70 runs of 600 s on 4 cores. The record came from the first batch
-  (1 solve in 24 runs, seed 1); the next 70 runs found none.
+- Since then: 40 + 30 further metacyclic candidates at N = 4,881–4,970 (600 s each) and no solve.
+- Total compute on the N ≥ 4,881 search: about 70 runs of 600 s on 4 cores. The record came from batch a1 (1 solve in
+  24 runs, seed 1); batches a3 and a4 (70 runs) found none.
 - Not tried: longer runs (1800 s+) on the cost-1 candidates; more seeds on the best-screened groups of N 4,881–4,900;
   non-metacyclic families at these orders (the watch branch's SL/PSL runs at 4,620–4,896 stalled at cost 2–9, so they are
   weak); base graphs with more than 2 vertices (lift.c, research/lifts) at N ≥ 4,881.
 - The lifts branch's notes say the 4,761–4,900 sweep ran 600 s per run. Our new orders 4,881–4,970 are above it.
 - Recommendation for a fresh session: keep the metacyclic screen (enum_meta.py, screen.py, anneal.py). Give each
-  candidate with best cost ≤ 1 a 1800 s run on two new seeds, and sweep N = 4,881–4,900 more widely (about 1,000
+  candidate that reaches cost ≤ 2 a 1800 s run on two new seeds, and sweep N = 4,881–4,900 more widely (about 1,000
   candidates, 600 s each, roughly 4 h on 4 cores).
