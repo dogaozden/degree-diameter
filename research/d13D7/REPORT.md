@@ -213,4 +213,4 @@ gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs
 | (12,7) | 664,300 | **673,892** | d12D7_hex9_dual_R2459_n673892 | VALID (level 0 + hubs) |
 | (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs) |
 | (15,7) | 2,480,184 | **2,484,720** | d15D7_hex11_R756_n2484720 | VALID (level 0 + hubs) |
-| (16,7) | 4,022,340 | 4,024,340 | d16D7_hex13_R500_n4024340 | pending (level 0 + hubs) |
+| (16,7) | 4,022,340 | **4,024,340** | d16D7_hex13_R500_n4024340 | VALID (level 0 + hubs) |
