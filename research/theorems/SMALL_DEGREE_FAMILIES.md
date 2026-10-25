@@ -221,6 +221,18 @@ scanned ranges). Outputs: `runs/cyclofiber_d3D{7,8,9,10}.txt`, summary `runs/cyc
   Z[ζ_o] by Z[x]/(product of the distinct Φ_{o_i}), where o_i is the order of r mod the i-th prime factor of m.
   This needs m squarefree, because Φ_o(r) ≡ 0 holds mod p but not always mod p².
 
+How the bound and the truth scale with D (Δ = 3; N = |G|, half the vertex count):
+
+| D | Moore limit on N | largest N the fibre bound allows (k ≤ 40) | true maximum over Z_p ⋊ Z_k | table / 2 |
+|---|---|---|---|---|
+| 7 | 127 | 84 (Z7 ⋊ Z12) | 70 | 84 |
+| 8 | 255 | 203 (Z29 ⋊ Z7) | 117 | 128 (ours: 144) |
+| 9 | 511 | 497 (Z71 ⋊ Z7) | 253 (Loz) | 253 |
+| 10 | 1023 | 812 (Z29 ⋊ Z28) | 330 | 400 |
+
+The bound grows with D about as fast as the Moore limit, while the true maximum falls behind from D = 10 on. At
+D = 7 the bound alone already rules out a metacyclic Haar graph above the table.
+
 **Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats (3,9) or (3,10). Every
 group with N up to the Moore bound (510 and 1023) was scanned exhaustively (`runs/frob_d3D9.txt`, `frob_d3D10.txt`),
 and the family maxima are 506 and 660 vertices.
