@@ -69,3 +69,16 @@ t=1909 steps=3450 evals=27601 cost=1 best=1 T=0.15
 t=1939 steps=3506 evals=28049 cost=1 best=1 T=0.15
 t=1969 steps=3561 evals=28489 cost=1 best=1 T=0.15
 t=1999 steps=3616 evals=28929 cost=1 best=1 T=0.15
+t=2030 steps=3673 evals=29385 cost=1 best=1 T=0.15
+t=2060 steps=3726 evals=29809 cost=16 best=1 T=1.01
+t=2090 steps=3780 evals=30241 cost=8 best=1 T=0.35
+t=2121 steps=3833 evals=30665 cost=3 best=1 T=0.15
+t=2151 steps=3887 evals=31097 cost=3 best=1 T=0.15
+t=2181 steps=3940 evals=31521 cost=3 best=1 T=0.15
+t=2211 steps=3996 evals=31969 cost=3 best=1 T=0.15
+t=2241 steps=4053 evals=32425 cost=3 best=1 T=0.15
+RESULT d=10 D=10 group=psl 101 x Z_61 N=31421100 best=0 evals=32761 time=2263.9 orbit k=5 m=2 f=0 fix=49
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise-d10D10/d10D10_psl_101_61_orb5f0_s1.txt
+VALID d=10 D=10 group=psl 101 x Z_61 N=31421100 vertices=62842200 (distinct generators, 10-regular simple)

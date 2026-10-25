@@ -64,6 +64,11 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
   Checked by `tools/hcsl` and `tools/hc2` (both SL low-memory checkers, both BFS: diameter 10, all vertices reached)
   and by haar_sym's own full check. Log: `../../structured/runs/raise-d10D10/d10D10_sl_59_151_orb5f0_s1.log`.
 
+- **62,842,200** (+4.5 % over 60,141,120, +1.3 % over 62,006,640): PSL(2,101) × Z_61, k = 5, m = 2, f = 0, μ = 29.7,
+  |Fix| = 49, 32,761 evaluations (2,264 s). File `../../frontier/sols/d10D10_psl_101_61_orb5f0_s1.txt`. Checked by
+  `tools/haarcheck_psl` (both BFS: diameter 10, all 31,421,100 elements reached) and by haar_sym's full check.
+  Log: `../../structured/runs/raise-d10D10/d10D10_psl_101_61_orb5f0_s1.log`.
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
@@ -71,3 +76,5 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 07:55: c (psl 61 × 271, k = 5) solved at μ = 21.5 → 61,495,320 (new record, checked above).
 - 07:57: queue a (sl 163 × 7, μ 17.3) stopped: below the new record. Queues e (psl 179 × 11, μ 31.5) and f (psl 61 × 281, μ 36.9) launched.
 - 08:19: d (sl 59 × 151, k = 5) solved at μ = 24.3 → 62,006,640 (checked by hcsl and hc2 above).
+- 08:27: g (psl 61 × 281, ORBW=5, seed 2) launched. The seed-1 run of psl 61 × 281 (no ORBW) was stuck at cost 1 after 27k evaluations.
+- 08:32: b (psl 101 × 61, k = 5, μ 29.7) solved → 62,842,200 (checked by haarcheck_psl above).
