@@ -35,6 +35,16 @@ What did not help (see `logs/defect2_calibration.md`): RoundingSat, march_cu cub
 and Cayley or semiregular symmetric searches (no Cayley digraph on either group of order 55; order-11 and order-5
 automorphisms not decided in 900 s).
 
+## Decompositions tried for k = 11 (details in defect2/NOTES.md items 10-12 and logs/defect2_calibration.md)
+
+- 2 rows of B (`cube_list.py`, 110 cubes): sample cubes > 15 CPU-minutes.
+- Degree sequences of B (`ablist.py`, 245,667 cubes after reversal symmetry): 16 of 20 random cubes take about
+  1 s, a few take minutes, some more than 5–20 minutes. The hard ones have few directed triangles at vertex 0
+  (small t, flat α).
+- "Vertex 0 has the most directed triangles" (valid choice, `abcube.py --maxt`, `tmax.py`): t = 0 cube UNSAT in
+  53 s (certified, 55 s), t = 1 cube 106 s; "every vertex on ≤ 2 (resp. 5) triangles" not finished in 10 (40) min.
+- Turnkey cluster workers: `defect2/setup_worker.sh`, `defect2/worker.sh` (see the compute request).
+
 ## Next steps
 
 1. Finish k = 11: monolithic runs, or the 110 cubes (`run_cube.sh`, each certified by streamed LRAT), then
