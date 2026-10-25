@@ -85,3 +85,22 @@ orbit-clique search (orbitclique.c, 40 s each): an order-8 element also reaches 
 (13,7) 1,063,416 and (15,7) 2,481,624; orbit packing at q = 13 (17 rotation orbits of 14 + 14 fixed = 252) gives (16,7)
 4,023,348. Squad assessment: the round's decisive contribution was c3's symmetry idea (+55 % over the best local search,
 which plateaued near 155-169 on the raw graph); Opus turned it into an exact secant-graph construction and a fast sweep.
+
+## 2026-10-25 00:36–01:10 UTC, cell-14-7 second session, round 4 (8 cards, one squad): structured partial ovoids
+
+Goal: beat N = 240 points (flags per matching) at q = 11 and transfer the orbit method to the other D = 7 cells. Brief:
+research/squads/d14D7-r4/BRIEF.md. Cards: c1 two-generator groups · c2 large-neighbourhood search around 240 · c3 product
+groups rotation x (X,Y)-action on V4 · c4 q = 13 orbits (16,7) · c5 q = 5, 7 (7,7), (9,7) · c6 q = 9 orbits (11,7),
+(12,7) · c7 GF(8) spread for (10,7) · c8 wildcard (Singer-type elements).
+
+Best per card: c1 240 (cyclic order-8 group; 17 subgroup systems of 8 commuting pairs, none above) · c3 216 (no product
+group above) · c8 240 (order-37/111 elements give no independent orbits; the 240 sets are rigid: no (1,2)-swap, and the
+union of the two 240 sets has maximum independent set exactly 240) · **c4 280 at q = 13** (order-7 sub-rotation of the
+anisotropic plane + 14 fixed points; (16,7) 4,023,460, quick check) · **c5 (9,7) 117,824** (88 flags from an order-4 power
+of an order-8 isometry; uhcheck + apsp_cyc VALID; q = 5 stays 48) · **c7 (10,7) 224,946** (GF(8) elliptic section
+X4 = X0 + X3, 513-line spread, 126 flags; full uhcheck; Opus apsp_cyc VALID) · c2, c6: see below.
+
+Opus: q = 11 is stuck at 240 for every group tried (also the sub-rotations of sizes 6, 3: 216, 211). Following c4,
+phaseils with sub-orbits of size 7 at q = 13 gives 294 (41 x 7 + 7 fixed): (16,7) 4,023,516 (quick check). Squad
+assessment: no gain at q = 11 this round (the 240 sets look like strong local optima of this family); the transfer cards
+gave three more cell improvements.
