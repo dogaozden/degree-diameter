@@ -1,0 +1,27 @@
+group sl 16 poly x^4+x+1 x Z_283, N=1154640, identity 67920, H order 17, rows 67920, threads 1, setup 0.08s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+alpha: conj by mat(10,4,4,11) (index 2612), z -> 44 z on Z_283
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 32.65, mu/k = 10.88, fixed-point misses ~ 0.46
+start cost=788
+t=30 steps=446 evals=3569 cost=36 best=36 T=0.53
+t=60 steps=944 evals=7553 cost=36 best=36 T=0.19
+t=90 steps=1413 evals=11305 cost=36 best=36 T=0.15
+t=120 steps=1915 evals=15321 cost=31 best=31 T=0.15
+t=150 steps=2356 evals=18849 cost=27 best=27 T=0.15
+t=180 steps=2771 evals=22169 cost=27 best=27 T=0.15
+t=210 steps=3261 evals=26089 cost=27 best=27 T=0.15
+t=240 steps=3761 evals=30089 cost=27 best=27 T=0.15
+t=270 steps=4268 evals=34145 cost=27 best=27 T=0.15
+t=300 steps=4749 evals=37993 cost=30 best=27 T=0.77
+t=330 steps=5284 evals=42273 cost=27 best=27 T=0.27
+t=360 steps=5791 evals=46329 cost=27 best=27 T=0.15
+t=390 steps=6323 evals=50585 cost=27 best=27 T=0.15
+t=420 steps=6824 evals=54593 cost=27 best=27 T=0.15
+t=450 steps=7297 evals=58377 cost=27 best=27 T=0.76
+t=481 steps=7812 evals=62497 cost=27 best=27 T=0.27
+t=511 steps=8298 evals=66385 cost=27 best=27 T=0.15
+t=541 steps=8774 evals=70193 cost=27 best=27 T=0.15
+t=571 steps=9257 evals=74057 cost=27 best=27 T=0.15
+t=601 steps=9726 evals=77809 cost=27 best=27 T=0.76
+t=631 steps=10205 evals=81641 cost=27 best=27 T=0.27
+RESULT d=7 D=10 group=sl 16 poly x^4+x+1 x Z_283 N=1154640 best=27 evals=83097 time=641.5 orbit k=3 m=2 f=1 fix=14

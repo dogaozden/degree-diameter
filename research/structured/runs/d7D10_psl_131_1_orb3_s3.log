@@ -1,0 +1,13 @@
+group psl 131 x Z_1, N=1123980, identity 8515, H order 33, rows 34060, threads 1, setup 0.06s
+wide rows: HW order 131, rows 8580, setup 0.10s
+alpha: conj by mat(51,5,40,81) (index 867260), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 65 (+e); mu = 23.88, mu/k = 7.96, fixed-point misses ~ 1.83
+start cost=43
+t=30 steps=2628 evals=21025 cost=12 best=4 T=0.53
+t=60 steps=5438 evals=43505 cost=3 best=3 T=0.19
+t=90 steps=8261 evals=66089 cost=3 best=3 T=0.15
+t=120 steps=11069 evals=88553 cost=3 best=3 T=0.15
+RESULT d=7 D=10 group=psl 131 x Z_1 N=1123980 best=0 evals=95193 time=128.7 orbit k=3 m=2 f=1 fix=65
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/294a623b-2cc3-5484-a41d-3760a5e556e6/scratchpad/sols/d7D10_L_psl131_s3_s3.txt
+EXIT 0

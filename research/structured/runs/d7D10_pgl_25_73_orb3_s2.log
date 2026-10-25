@@ -1,0 +1,43 @@
+group pgl 25 poly x^2+2 x Z_73, N=1138800, identity 0, H order 26, rows 43800, threads 1, setup 0.04s
+wide rows: HW order 219, rows 5200, setup 0.08s
+alpha: conj by mat(1,14,1,23) (index 8446), z -> 8 z on Z_73
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 23 (+e); mu = 27.83, mu/k = 9.28, fixed-point misses ~ 0.70
+start cost=569400
+t=30 steps=4878 evals=39025 cost=6 best=3 T=0.53
+t=60 steps=9805 evals=78441 cost=6 best=3 T=0.19
+t=90 steps=14751 evals=118009 cost=7 best=3 T=0.15
+t=120 steps=19518 evals=156145 cost=6 best=3 T=0.15
+t=150 steps=24535 evals=196281 cost=6 best=3 T=0.15
+t=180 steps=29453 evals=235625 cost=10 best=3 T=0.77
+t=210 steps=34343 evals=274745 cost=8 best=3 T=0.27
+t=240 steps=39373 evals=314985 cost=6 best=3 T=0.15
+t=270 steps=44272 evals=354177 cost=6 best=3 T=0.15
+t=300 steps=49239 evals=393913 cost=6 best=3 T=0.15
+t=330 steps=54264 evals=434113 cost=11 best=3 T=0.77
+t=360 steps=59123 evals=472985 cost=4 best=3 T=0.27
+t=390 steps=64087 evals=512697 cost=4 best=3 T=0.15
+t=420 steps=69053 evals=552425 cost=4 best=3 T=0.15
+t=450 steps=74027 evals=592217 cost=3 best=3 T=0.15
+t=480 steps=78995 evals=631961 cost=12 best=3 T=0.77
+t=510 steps=83968 evals=671745 cost=4 best=3 T=0.27
+t=540 steps=88682 evals=709457 cost=3 best=3 T=0.15
+t=570 steps=93250 evals=746001 cost=3 best=3 T=0.15
+t=600 steps=97831 evals=782649 cost=3 best=3 T=0.15
+t=630 steps=102632 evals=821057 cost=21 best=3 T=0.77
+t=660 steps=107402 evals=859217 cost=7 best=3 T=0.27
+t=690 steps=112105 evals=896841 cost=7 best=3 T=0.15
+t=720 steps=116796 evals=934369 cost=6 best=3 T=0.15
+t=750 steps=121558 evals=972465 cost=5 best=3 T=0.15
+t=780 steps=126191 evals=1009529 cost=3 best=3 T=0.77
+t=810 steps=130662 evals=1045297 cost=6 best=3 T=0.27
+t=840 steps=135250 evals=1082001 cost=3 best=3 T=0.15
+t=870 steps=139434 evals=1115473 cost=3 best=3 T=0.15
+t=900 steps=143613 evals=1148905 cost=3 best=3 T=0.15
+t=930 steps=147843 evals=1182745 cost=16 best=3 T=0.77
+t=960 steps=152290 evals=1218321 cost=3 best=3 T=0.27
+t=990 steps=156945 evals=1255561 cost=3 best=3 T=0.15
+t=1020 steps=161596 evals=1292769 cost=3 best=3 T=0.15
+RESULT d=7 D=10 group=pgl 25 poly x^2+2 x Z_73 N=1138800 best=0 evals=1327417 time=1048.3 orbit k=3 m=2 f=1 fix=23
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/294a623b-2cc3-5484-a41d-3760a5e556e6/scratchpad/sols/d7D10_L_pgl25_73_s2_s2.txt
+EXIT 0
