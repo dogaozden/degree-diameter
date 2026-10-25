@@ -1,0 +1,507 @@
+# Haar graphs of diameter 8, 9 and 10: what is proved and what is computed
+
+Doğa Özden's degree–diameter lab, with Claude Code (job `thm-haar`, 2026-10-25). Written for Gabriela Araujo-Pardo
+and Ignacio López. Draft; corrections welcome.
+
+**Labels.** Every statement below carries one of three labels.
+
+- **Theorem, Proposition, Lemma, Corollary**: complete proof in this note, or a cited standard result named in place
+  (marked *cited*).
+- **Computer-checked**: a statement about one explicit graph, verified by programs. The programs and their logs are
+  named. Some of these graphs also have a Lean 4 proof (kernel-checked, standard axioms only).
+- **Heuristic**: a model or a measurement that guided the search. It is not used in any proof.
+
+**The main point, stated plainly.** None of the records at D = 8, 9, 10 comes from a general theorem. Each record is one
+explicit Haar graph H(G, S), found by computer search and checked by computer. What this note proves is:
+
+1. the criterion that makes those checks exact (§2): two breadth-first searches, from (e, A) and (e, B), decide the
+   diameter of a Haar graph, and the diameter is a covering statement about products of S and S⁻¹ in G;
+2. the structural facts behind the orbit-closed connection sets that the search used (§3);
+3. general upper bounds and a few exact counting facts (§4).
+
+The records table is in §5, prior art in §6, and the commands to re-check everything in §7.
+
+## Contents
+
+0. Summary of statements
+1. Setting and notation
+2. The covering criterion, and why the symmetric checks are exact
+3. Orbit-closed connection sets
+4. Counting bounds and family statements
+5. Records at D = 8, 9, 10
+6. Prior art, and what is ours
+7. How to re-check
+
+---
+
+## 0. Summary of statements
+
+| # | statement | label |
+|---|---|---|
+| Lemma 1.2 | H(G,S) is bipartite, simple, Δ-regular, of order 2\|G\|; right translations act regularly on each side | Lemma |
+| Lemma 2.1 | the diameter is the largest eccentricity over one vertex from each orbit of any automorphism group | Lemma |
+| Prop. 2.2 | distances from (e,A) and (e,B) are word lengths in S and S⁻¹ | Proposition |
+| Cor. 2.3 | diam H(G,S) = max(ecc(e,A), ecc(e,B)) | Corollary |
+| Thm. 2.4 | covering criterion: D = 2k needs S(S⁻¹S)^(k−1) = G; D = 2k+1 needs (S⁻¹S)^k = G and (SS⁻¹)^k = G | Theorem |
+| Lemma 2.5 | an edge-preserving bijection of a finite graph is an automorphism (used by the level-shift checker) | Lemma |
+| Lemma 3.1 | H(G,S) ≅ H(G, a·ψ(S)^(±1)·b) for a, b ∈ G, ψ ∈ Aut(G) | Lemma |
+| Prop. 3.3 | if α(S) = S, then α acts on H(G,S) fixing (e,A), (e,B); every uncovered set is a union of α-orbits | Proposition |
+| Prop. 3.4 | an involution in the symmetry group forces word coincidences on at least \|G\|/\|Fix\| elements; odd order avoids this | Proposition |
+| §3.5 | why orbit-closed S makes larger groups searchable | Heuristic, measured |
+| Thm. 4.1 | \|G\| ≤ Σ_{j<D} (Δ−1)^j (the bipartite Moore bound, per side); strict for D = 8, 9, 10 and Δ ≥ 3 | Theorem (strictness cited) |
+| Thm. 4.3 | \|G/G′\| ≤ A(Δ,D), a polynomial in D for fixed Δ | Theorem |
+| Cor. 4.4 | the same for abelian groups, for Q × Z_n with Q perfect, and for metacyclic groups | Corollary |
+| Prop. 4.5 | at odd D, the binding words hitting an involution come in pairs | Proposition |
+| §5 | 34 cells at D = 8, 9, 10 where our graph is larger than the 2013 table | Computer-checked (12 also in Lean, at the record or at an earlier value) |
+
+---
+
+## 1. Setting and notation
+
+### 1.1 The problem
+
+N^b(Δ, D) is the largest order of a bipartite graph with maximum degree at most Δ and diameter at most D. The bipartite
+Moore bound is
+
+$$N^b(\Delta,D) \le M^b(\Delta,D) = 2\sum_{j=0}^{D-1}(\Delta-1)^j .$$
+
+"The table" means Table 4 of M. Miller and J. Širáň, *Moore graphs and beyond: a survey of the degree/diameter
+problem*, Electron. J. Combin. Dynamic Survey DS14v2 (2013), which the Combinatorics Wiki reproduces. At D = 8, 9, 10
+the wiki values equal the survey values (checked against the live wiki page on 2026-10-25,
+`research/projects/table-audit/AUDIT.md` §1 on branch `claude/table-audit-1odopy`).
+
+### 1.2 Haar graphs
+
+**Definition 1.1.** Let G be a finite group with identity e and order N, and let S ⊆ G with |S| = Δ. The *Haar graph*
+H(G, S) has vertex set G × {A, B}, and (g, A) is adjacent to (sg, B) for every g ∈ G and s ∈ S.
+
+*Conventions.* Some authors join (g, A) to (gs, B). The map (g, X) ↦ (g⁻¹, X) is an isomorphism from our H(G, S) to
+that graph built with S⁻¹, and H(G, S⁻¹) ≅ H(G, S) by Lemma 3.1(iv), so the two conventions give isomorphic graphs.
+H(G, S) is also the regular G-cover (derived graph) of the dipole with Δ parallel edges carrying the voltages s ∈ S.
+For G = Z_n these are the cyclic Haar graphs of Hladnik, Marušič and Pisanski. All our files and checkers use the
+left convention of Definition 1.1 (`research/frontier/build_haar2.py`, header; `lean/BipartiteDD/Haar/GraphD.lean`,
+where `inl g ~ inr h` iff `h * g⁻¹ ∈ S`).
+
+For h ∈ G let ρ_h be the right translation ρ_h(g, X) = (gh, X).
+
+**Lemma 1.2.** Let |S| = Δ ≥ 1.
+
+(a) H(G, S) is bipartite with parts G × {A} and G × {B}, simple, Δ-regular, and has 2N vertices.
+
+(b) Each ρ_h is an automorphism, and {ρ_h : h ∈ G} acts regularly (transitively, with trivial stabilisers) on each part.
+
+(c) H(G, S) is connected if and only if S⁻¹S generates G.
+
+*Proof.* (a) Edges join the two parts by definition. The neighbours of (g, A) are (sg, B), s ∈ S, and sg = s′g forces
+s = s′, so there are exactly Δ of them. The neighbours of (h, B) are (s⁻¹h, A), s ∈ S, again Δ distinct vertices.
+
+(b) If (g, A) ~ (sg, B) then (gh, A) ~ (sgh, B), so ρ_h maps edges to edges; its inverse is ρ_{h⁻¹}. On G × {X},
+ρ_h(e, X) = (h, X), and ρ_h fixes a vertex only if h = e.
+
+(c) By Proposition 2.2 below, the A-vertices joined to (e, A) by a walk are the (x, A) with x in the union of the sets
+(S⁻¹S)^j, j ≥ 0. That union contains e and is closed under products, so in the finite group G it is the subgroup
+generated by S⁻¹S. Every B-vertex (h, B) is adjacent to the A-vertex (s⁻¹h, A). So the graph is connected iff that
+subgroup is G (use (b) to move any vertex to (e, A) or (e, B)). ∎
+
+### 1.3 Words
+
+For X, Y ⊆ G write XY = {xy : x ∈ X, y ∈ Y}, X⁻¹ = {x⁻¹ : x ∈ X}, X⁰ = {e} and X^j = X·X^(j−1). Since
+e ∈ S⁻¹S, we have (S⁻¹S)^i ⊆ (S⁻¹S)^j for i ≤ j, and likewise for SS⁻¹.
+
+An *A-word* of length L is a sequence (t_1, …, t_L) of letters t_i ∈ S, with value
+
+$$w(S) = \cdots\, t_4^{-1}\, t_3\, t_2^{-1}\, t_1 \qquad(\text{signs } +,-,+,-,\dots \text{ read from the right}).$$
+
+A *B-word* has the opposite signs: w(S) = ⋯ t_3⁻¹ t_2 t_1⁻¹. A word is *reduced* if t_{i+1} ≠ t_i for all i. There are
+Δ(Δ−1)^(L−1) reduced words of each kind and length L ≥ 1. Walks in H(G, S) that start at (e, A) correspond exactly to
+A-words, and a walk backtracks exactly when its word is not reduced (Proposition 2.2).
+
+Throughout, ℓ = D − 1 and
+
+$$W(\Delta,D)=\sum_{j=0}^{D-1}(\Delta-1)^j = \tfrac12 M^b(\Delta,D).$$
+
+### 1.4 The groups
+
+- SL(2, q), PSL(2, q) = SL(2, q)/{±I} and PGL(2, q) = GL(2, q)/(scalars), of orders q(q² − 1), q(q² − 1)/gcd(2, q − 1)
+  and q(q² − 1). For q = p^e with e > 1 the field is GF(p)[x]/(f), with f named in the file (for example
+  `sl 25 poly x^2+2`); a field element c_0 + c_1 x + ⋯ is written as the integer c_0 + c_1 p + ⋯.
+- Direct products Q × Z_n and Q_1 × Q_2 × Z_n with Q, Q_i of the types above (file spec `prod Q1 Q2 n <n>`).
+- Metacyclic groups Z_m ⋊_r Z_k: pairs (a, j) ∈ Z_m × Z_k with (a, j)(b, l) = (a + r^j b, j + l), where r^k ≡ 1 (mod m).
+  The order is mk.
+
+*File format* (`research/frontier/sols/*.txt`). The header is `Δ D <group> n <n> N <|G|>`, then Δ lines
+`<index> mat(a,b,c,d) z=Z` for the element ([[a, b], [c, d]], Z) of Q × Z_n (`prod[mat(…);mat(…)] z=Z` for products,
+`meta(a=…,j=…)` for metacyclic groups; the index is the search program's own and is ignored by the checkers). The first
+listed element is e in every file; by Lemma 3.1 this is no loss of generality.
+
+---
+
+## 2. The covering criterion, and why the symmetric checks are exact
+
+This section is what a referee needs in order to trust the record checks. Every check of a Haar graph in §5 computes
+the eccentricities of exactly two vertices, (e, A) and (e, B). Lemma 2.1 and Lemma 1.2(b) say why that gives the
+diameter, and Theorem 2.4 says what is being verified in group-theoretic terms.
+
+For a vertex v of a graph X, ecc(v) = max_u d(v, u), with d(v, u) = ∞ if there is no path. diam X = max_v ecc(v).
+
+**Lemma 2.1 (orbit representatives).** Let Γ be a group of automorphisms of a finite graph X, and let R be a set of
+vertices that meets every Γ-orbit. Then diam X = max_{r ∈ R} ecc(r).
+
+*Proof.* "≥" is clear. Let u, v be vertices. Choose γ ∈ Γ and r ∈ R with γ(u) = r. Automorphisms preserve distances,
+so d(u, v) = d(γu, γv) = d(r, γv) ≤ ecc(r). ∎
+
+**Proposition 2.2 (distances from the two base vertices).** Let S ≠ ∅. For x ∈ G and j ≥ 0:
+
+| statement | condition |
+|---|---|
+| d((e,A), (x,A)) ≤ 2j | x ∈ (S⁻¹S)^j |
+| d((e,A), (x,B)) ≤ 2j + 1 | x ∈ S(S⁻¹S)^j |
+| d((e,B), (x,B)) ≤ 2j | x ∈ (SS⁻¹)^j |
+| d((e,B), (x,A)) ≤ 2j + 1 | x ∈ S⁻¹(SS⁻¹)^j |
+
+*Proof.* A walk of length L from (e, A) passes through (g_0, A), (g_1, B), (g_2, A), … with g_0 = e,
+g_i = t_i g_{i−1} for odd i and g_i = t_i⁻¹ g_{i−1} for even i, where t_i ∈ S is the letter used at step i. Every choice
+of letters gives a walk. So the endpoints of the walks of length exactly 2j are the vertices (x, A) with
+x ∈ (S⁻¹S)^j, and those of length exactly 2j + 1 are the (x, B) with x ∈ S(S⁻¹S)^j. If d((e, A), (x, A)) = 2i ≤ 2j,
+a shortest path followed by j − i back-and-forth steps along one edge is a walk of length exactly 2j; conversely a walk
+of length 2j bounds the distance by 2j. The same holds for odd lengths. From (e, B) the first step goes to (t_1⁻¹, A),
+the second to (t_2 t_1⁻¹, B), and so on, which gives the last two rows. The walk backtracks at step i + 1 exactly when
+t_{i+1} = t_i, i.e. when its word is not reduced. ∎
+
+**Corollary 2.3 (two sources suffice).** diam H(G, S) = max(ecc(e, A), ecc(e, B)).
+
+*Proof.* Lemma 2.1 with Γ = {ρ_h} and R = {(e, A), (e, B)}, which meets both orbits by Lemma 1.2(b). ∎
+
+**Theorem 2.4 (covering criterion).** Let S ≠ ∅ and D ≥ 2.
+
+(a) If D = 2k, then diam H(G, S) ≤ D if and only if S(S⁻¹S)^(k−1) = G.
+
+(b) If D = 2k + 1, then diam H(G, S) ≤ D if and only if (S⁻¹S)^k = G and (SS⁻¹)^k = G.
+
+*Proof.* (a) Suppose diam ≤ 2k. For x ∈ G, d((e, A), (x, B)) is odd (the graph is bipartite) and at most 2k, hence at
+most 2(k − 1) + 1, so x ∈ S(S⁻¹S)^(k−1) by Proposition 2.2. Conversely, suppose S(S⁻¹S)^(k−1) = G. Then
+d((e, A), (x, B)) ≤ 2k − 1 for every x, and applying ρ_g, d((g, A), (h, B)) = d((e, A), (hg⁻¹, B)) ≤ 2k − 1 for all
+g, h. Fix s ∈ S. For two A-vertices, (g′, A) is adjacent to (sg′, B), so d((g, A), (g′, A)) ≤ d((g, A), (sg′, B)) + 1
+≤ 2k. For two B-vertices, (h′, B) is adjacent to (s⁻¹h′, A), so d((h, B), (h′, B)) ≤ d((s⁻¹h′, A), (h, B)) + 1 ≤ 2k.
+
+(b) Suppose diam ≤ 2k + 1. Distances between vertices on the same side are even, hence at most 2k, so
+(S⁻¹S)^k = G and (SS⁻¹)^k = G by Proposition 2.2. Conversely, if both hold, then by Proposition 2.2 and ρ_g all
+same-side distances are at most 2k. For (g, A) and (h, B), (g, A) is adjacent to (sg, B), so
+d((g, A), (h, B)) ≤ 1 + d((sg, B), (h, B)) ≤ 2k + 1. ∎
+
+*Remarks.*
+
+1. In terms of reduced words (Proposition 2.2): for D = 2k every x ∈ G must be the value of a reduced A-word of odd
+   length ≤ D − 1; for D = 2k + 1 every x must be the value of a reduced A-word of even length ≤ D − 1 **and** of a
+   reduced B-word of even length ≤ D − 1. These are the "binding words". Their number, W(Δ, D), is computed in §4.
+2. At even D a single search from (e, A) decides the diameter. The checkers run both searches at every D; that is
+   more than needed and is exact by Corollary 2.3.
+3. At odd D the second condition is the first one for S⁻¹. If some ψ ∈ Aut(G) and a ∈ G satisfy ψ(S) = aS⁻¹, then
+   ψ(S)⁻¹ψ(S) = SS⁻¹, so ψ maps (S⁻¹S)^k onto (SS⁻¹)^k and the two conditions are equivalent. (If ψ(S) = S⁻¹a, then
+   ψ maps (S⁻¹S)^k onto a⁻¹(SS⁻¹)^k a, with the same conclusion.) For abelian G, ψ = inversion always works. No checker
+   uses this.
+4. The sufficiency directions of (a) and (b) are formalised in Lean as `haar_ediam_le_even` and `haar_ediam_le_odd`
+   (`lean/BipartiteDD/Haar/GraphD.lean`). The Lean record proofs supply, for every x ∈ G, an explicit word; the kernel
+   checks the words (`decide +kernel`, no `native_decide`).
+
+**Lemma 2.5 (edge-preserving bijections).** Let X be a finite graph and φ a bijection of its vertex set that maps every
+edge to an edge. Then φ is an automorphism.
+
+*Proof.* φ induces an injective map from the finite edge set to itself, which is therefore a bijection. So every edge
+is the image of an edge, and φ⁻¹ also maps edges to edges. ∎
+
+This is what the level-shift checker `apsp_orb.c` relies on: it verifies edge by edge that a cyclic shift of the
+vertex labels maps edges to edges, and then runs BFS from one vertex per orbit (Lemma 2.1). No D = 8–10 record in §5
+depends on it; it is used for the D = 7 cover graphs.
+
+### 2.6 What each checker computes, and which statement makes it exact
+
+| program | written independently of the search? | what it does | exact because of |
+|---|---|---|---|
+| `research/frontier/build_haar2.py` | yes | builds the field from addition/multiplication tables and checks the field axioms (exhaustively for small q, on 20,000 random triples otherwise); enumerates SL/PSL/PGL(2, q) by brute force over all (a, b, c, d) and checks the order against the formula; builds the Δ permutations g ↦ sg of G and checks each is a permutation; BFS from (e, A) and from (e, B); requires every vertex reached within D, maximum degree Δ, no repeated edge; prints the sha256 of the edge list | Lemma 1.2, Cor. 2.3 |
+| `research/frontier/check_haar_indep.py` | yes (its own field, matrix and enumeration code) | same two searches | Cor. 2.3 |
+| `research/frontier/haarcheck_sl.c`, `research/frontier/haarcheck2.c` | yes (two separate C programs) | G = SL(2, p) × Z_n, p prime only; own indexing of SL(2, p), explicit 2 × 2 products mod p, inverse generators computed as [[d, −b], [−c, a]] and −z; bitset BFS from (e, A) and (e, B), about 4–6 bits of memory per group element | Cor. 2.3 |
+| `research/structured/tools/haarcheck_psl.c` | yes | the same for PSL(2, p) × Z_n, p an odd prime | Cor. 2.3 |
+| `research/lifts/coordinator_check/apsp.c`, `apsp_mt.c` | yes | BFS from **every** vertex of an edge list; checks simple, maximum degree, bipartite, connected and the exact diameter; no symmetry assumed | definition |
+| `research/lifts/coordinator_check/apsp_orb.c` | yes | as apsp, but BFS from one vertex per orbit of a level shift that it first verifies to be an automorphism | Lemmas 2.1, 2.5 |
+| Lean 4 (`lean/BipartiteDD/Haar/`) | yes | proves `IsBipartiteDegDiam G Δ D` for the specific graph, via Theorem 2.4 and a certificate of words | Thm. 2.4 (formalised) |
+
+The search programs (`haar_gen3.c`, `haar_fast.c`, `haar_sym.c`) also run a full two-source check before writing a
+solution. We do not count that check as independent.
+
+**What no checker uses.** None of the checkers uses the orbit symmetry α of §3. Most solution files with f = 0 (§3)
+even store a translate S·s₀⁻¹ that is not itself α-closed (Lemma 3.1(ii)). So the validity of a record does not depend on
+any claim in §3: the symmetry was a search device only.
+
+**What remains to be trusted.** The programs, their compilers or interpreters, and the hardware. For each record at
+least two implementations written separately agree (§5); for the largest graphs (above about 2·10⁸ vertices) these are
+the C checkers only, because the Python checkers need too much memory there.
+
+---
+
+## 3. Orbit-closed connection sets
+
+### 3.1 Isomorphisms
+
+**Lemma 3.1.** Let a, b ∈ G and ψ ∈ Aut(G). Each of the following maps is an isomorphism.
+
+(i) H(G, S) → H(G, aS): (g, A) ↦ (g, A), (h, B) ↦ (ah, B).
+
+(ii) H(G, S) → H(G, Sb): (g, A) ↦ (b⁻¹g, A), (h, B) ↦ (h, B).
+
+(iii) H(G, S) → H(G, ψ(S)): (g, X) ↦ (ψ(g), X).
+
+(iv) H(G, S) → H(G, S⁻¹): (g, A) ↦ (g, B), (h, B) ↦ (h, A).
+
+Hence H(G, a·ψ(S)·b) and H(G, a·ψ(S)⁻¹·b) are isomorphic to H(G, S).
+
+*Proof.* Each map is a bijection; we check that the edge {(g, A), (sg, B)} of H(G, S) goes to an edge.
+(i) Its image is {(g, A), (asg, B)}, an edge of H(G, aS). (ii) Its image is {(b⁻¹g, A), (sg, B)}, and
+sg = (sb)(b⁻¹g). (iii) Its image is {(ψ(g), A), (ψ(s)ψ(g), B)}. (iv) Its image is {(g, B), (sg, A)}, and in
+H(G, S⁻¹) the vertex (sg, A) is adjacent to (s⁻¹·sg, B) = (g, B). Both graphs have NΔ edges, so the image of the
+edge set is the whole edge set. ∎
+
+So one may always assume e ∈ S (replace S by S·s₀⁻¹ for some s₀ ∈ S), which every solution file does.
+
+### 3.2 The construction
+
+**Construction 3.2.** Let α ∈ Aut(G) have order k ≥ 2, and write O(x) = {x, α(x), …, α^(k−1)(x)} and
+Fix(α) = {x : α(x) = x}. Choose
+
+- a set F ⊆ Fix(α) with |F| = f (the *fixed generators*), and
+- elements x_1, …, x_m whose orbits O(x_j) have size exactly k and are pairwise distinct (hence pairwise disjoint and
+  disjoint from F).
+
+Put S = F ∪ O(x_1) ∪ ⋯ ∪ O(x_m). Then α(S) = S and |S| = Δ = f + km. If k is prime, every orbit has size 1 or k, so
+x_j ∉ Fix(α) is enough. A search over such S only chooses the f fixed generators and the m orbit representatives.
+
+The automorphisms used for the records in §5 (details per record in the table):
+
+1. **Conjugation times scaling** on G = Q × Z_n: α(x, z) = (gxg⁻¹, rz), with g ∈ Q of order k modulo the centre of Q and
+   r ∈ Z_n^× of multiplicative order k. Here Fix(α) = C_Q(g) × {z : (r − 1)z = 0}. For k = 3 with every prime factor
+   of n congruent to 1 mod 3, r − 1 is a unit mod n and the Z_n-part of Fix(α) is {0}; C_Q(g) is then a torus of order
+   about q. For products Q = Q_1 × Q_2, g = (g_1, g_2). This is the k = 3 recipe of most records, and k = 5 for (11,8)
+   and (11,10).
+2. **Order 6 with a swap** on SL(2,7)² × Z_31 (the (13,8) record): α(x_1, x_2, z) = (c x_2 c⁻¹, x_1, 6z) with c of order 3.
+   Since 6 has order 6 mod 31 and α² is conjugation by (c, c) times z ↦ 36z = 5z, α has order 6.
+3. **An involution** on PSL(2,11) × Z_24 (the (6,8) record): conjugation by an involution times z ↦ 11z.
+
+### 3.3 Equivariance
+
+**Proposition 3.3.** Let α ∈ Aut(G) with α(S) = S, and let α̂(g, X) = (α(g), X).
+
+(a) α̂ is an automorphism of H(G, S) that fixes (e, A) and (e, B). Together with the right translations it generates a
+group isomorphic to G ⋊ ⟨α⟩ (α̂ ρ_h α̂⁻¹ = ρ_{α(h)}).
+
+(b) For every j ≥ 0 the sets (S⁻¹S)^j, S(S⁻¹S)^j, (SS⁻¹)^j and S⁻¹(SS⁻¹)^j are α-invariant. Hence for each r ≥ 0 the
+set U of elements x such that (x, X) is at distance > r from (e, Y) (any fixed X, Y ∈ {A, B}) is a union of ⟨α⟩-orbits.
+
+(c) If k = ord(α) is prime, then |U| ≡ |U ∩ Fix(α)| (mod k).
+
+(d) α permutes the letters of S by some permutation σ. Applying σ letterwise maps reduced A-words (B-words) of length
+L bijectively to reduced A-words (B-words) of length L, and (σw)(S) = α(w(S)).
+
+*Proof.* (a) The edge {(g, A), (sg, B)} maps to {(α(g), A), (α(s)α(g), B)}, an edge because α(s) ∈ S; α̂ is a
+bijection with inverse (α⁻¹)^. It fixes (e, X) because α(e) = e. And α̂ρ_hα̂⁻¹(g, X) = (α(α⁻¹(g)h), X) =
+(gα(h), X). (b) α((S⁻¹S)^j) = (α(S)⁻¹α(S))^j = (S⁻¹S)^j, and similarly for the others; U is the complement of one of
+these sets (Proposition 2.2), so it is α-invariant. (c) The ⟨α⟩-orbits in U have size 1 (the points of Fix(α)) or k.
+(d) σ is a bijection of S, so it preserves "t_{i+1} ≠ t_i", and α is a homomorphism. ∎
+
+So imposing α(S) = S does not reduce the number of binding words, and it does not make any element more likely to
+be covered. What it changes is that coverage events are tied together along orbits: an element is covered exactly
+when all of its orbit is.
+
+### 3.4 Involutions in the symmetry group, and why odd order was preferred
+
+For an automorphism β put Anti(β) = {u ∈ G : β(u) = u⁻¹}.
+
+**Proposition 3.4.**
+
+(a) *(Reflection.)* Let β ∈ Aut(G) with β² = id and β(S) = S, inducing σ on S. Let v = (t_1, …, t_{2j}) be a letter
+sequence of even length and let v* = (σ(t_{2j}), …, σ(t_1)). Evaluate both with the same sign pattern (both as A-words,
+or both as B-words). Then v*(S) = β(v(S))⁻¹. Hence v*(S) = v(S) if and only if v(S) ∈ Anti(β). The sequence v* is
+reduced iff v is, and v* = v iff t_{2j+1−i} = σ(t_i) for all i.
+
+(b) *(Uncertainty.)* Let α ∈ Aut(G) have order k and put N_α(u) = u·α(u)⋯α^(k−1)(u). Then
+|{u ∈ G : N_α(u) = e}| ≥ |G|/|Fix(α)|. For an involution β this reads |Fix(β)|·|Anti(β)| ≥ |G|.
+
+(c) *(Odd order.)* If α has odd order, then Anti(α) = {u ∈ Fix(α) : u² = e}.
+
+*Proof.* (a) As A-words, v(S) = t_{2j}⁻¹ t_{2j−1} ⋯ t_2⁻¹ t_1, so v(S)⁻¹ = t_1⁻¹ t_2 ⋯ t_{2j−1}⁻¹ t_{2j}, which is the
+A-word value of the reversed sequence (t_{2j}, …, t_1). Applying β letterwise gives β(v(S)⁻¹) = v*(S). The B-word case
+is the same computation with all signs flipped. The other claims are immediate (σ is a bijection, so
+σ(t_{i+1}) ≠ σ(t_i) iff t_{i+1} ≠ t_i).
+
+(b) Let L(x) = x⁻¹α(x). The product N_α(L(x)) telescopes to x⁻¹α^k(x) = e. And L(x) = L(y) iff
+yx⁻¹ = α(y)α(x)⁻¹ = α(yx⁻¹), i.e. iff y ∈ Fix(α)x. So the fibres of L are the cosets Fix(α)x, and L has
+|G|/|Fix(α)| distinct values, all with N_α = e. For k = 2, N_β(u) = e iff β(u) = u⁻¹.
+
+(c) If α(u) = u⁻¹ then α²(u) = α(u)⁻¹ = u. Since k is odd, α = (α²)^((k+1)/2), so α(u) = u, and then u = u⁻¹. The
+converse is clear. ∎
+
+*What this means for the search.* If ⟨α⟩ contains an involution β, then by (a) any binding word containing an
+even block v with v(S) ∈ Anti(β) and v* ≠ v takes the same value as the word with v replaced by v*: two distinct words,
+one value. By (b), Anti(β) has at least |G|/|Fix(β)| elements; for conjugation in SL(2, q) × Z_n that is a fraction
+about 1/q of the group. By (c), a symmetry group of odd order contains no involution, and even the elementwise
+condition α(u) = u⁻¹ is confined to involutions inside Fix(α). Odd k still has exact coincidences from (b), but they
+equate blocks of different lengths (for k = 3, a block of 2 letters with a block of 4), which cost far fewer words.
+How many words each mechanism costs in practice is **heuristic** (research/theory/BEYOND_RANDOM.md §1.4, §4.2).
+
+Two records show that "prefer odd k" is a heuristic preference, not a theorem. At (6,8) an involution won, and at
+(13,8) an automorphism of order 6 won (research/theorems/ORDER2.md on branch `claude/thm-order2-symmetry-wejgw7`).
+There, the coincidences of (a) occur on a few short cycles of the graph that a solution can avoid, rather than as a
+fixed fraction of all words (ORDER2.md §2.1, §3.1).
+
+### 3.5 Why orbit-closed sets help the search (heuristic)
+
+Everything in this subsection is a model or a measurement. None of it is used in §2, §4 or §5.
+
+*Model.* Treat the W binding words as W independent uniform elements of G. The expected number of uncovered elements
+is then μ = N e^(−W/N), and a random S is valid with probability about e^(−μ). For α-closed S with α of prime order k,
+the uncovered set is a union of orbits (Proposition 3.3), and the model gives P(valid) ≈ e^(−μ_A) with
+
+$$\mu_A \approx \frac{\mu}{k} + \sum_{x\in \mathrm{Fix}(\alpha)\setminus\{e\}} e^{-\lambda/k},\qquad \lambda = W/N,$$
+
+because a free orbit is missed with probability e^(−λ) but there are only about N/k of them, while the words hitting a
+fixed point come in groups of k (BEYOND_RANDOM.md §1.2, which also gives the corrections at odd D). So the search
+needs about μ/k "independent chances to fail" instead of μ.
+
+*Measurement.* On identical groups, seeds and wall-clock budgets (research/structured/STRUCTURE.md §3, log
+`research/structured/runs/cmp1.txt`):
+
+| cell | group | N | μ | random S: solved / runs | orbit-closed, k = 3: solved / runs |
+|---|---|---|---|---|---|
+| (7,8) | PSL(2,19) × Z_13 | 44,460 | 23.3 | 1/4 | 4/4 (737 to 3,620 evaluations) |
+| (7,8) | PSL(2,17) × Z_19 | 46,512 | 34.0 | 0/4 (best cost 6 after 1.2–1.6·10⁶ evaluations) | 4/4 (1.7–5.8·10⁴) |
+| (7,8) | PSL(2,19) × Z_14 | 47,880 | 43.0 | 0/4 (best 9–10) | 1/4 (2.3·10⁵) |
+
+Over 32 solved orbit runs, the number of evaluations fits the random-S effort law of research/frontier/SIZE_LAW.md
+§4.1 with μ_A in place of μ (BEYOND_RANDOM.md §2).
+
+*What does not change.* The number of α-closed sets is about (N/k)^m |Fix(α)|^(f−1)/m!, against about N^(Δ−1) for all
+sets containing e. Setting the expected number of valid sets to 1 gives the same "first-moment ceiling",
+μ ≈ (Δ − f) ln N, in both cases (STRUCTURE.md §1). So in this model orbit-closure makes larger groups *searchable*; it
+does not make larger valid sets *exist*. Cells whose table value lies above that ceiling (for example (12,8), (14,8),
+(16,8)) were not reached, consistent with the model (STRUCTURE.md §6).
+
+---
+
+## 4. Counting bounds and family statements
+
+### 4.1 The per-side Moore bound
+
+**Theorem 4.1.** If |S| = Δ ≥ 2 and diam H(G, S) ≤ D, then |G| ≤ W(Δ, D) = Σ_{j=0}^{D−1} (Δ − 1)^j.
+
+*Proof.* A shortest path never backtracks, so by Proposition 2.2 every element at distance L from (e, A) is the value of
+a reduced A-word of length L, and there are at most Δ(Δ − 1)^(L−1) of them for L ≥ 1.
+If D = 2k, Theorem 2.4(a) puts every x ∈ G at odd distance ≤ 2k − 1 from (e, A), so
+
+$$|G| \le \sum_{i=0}^{k-1}\Delta(\Delta-1)^{2i} = \sum_{i=0}^{k-1}\big[(\Delta-1)^{2i}+(\Delta-1)^{2i+1}\big] = \sum_{j=0}^{2k-1}(\Delta-1)^j .$$
+
+If D = 2k + 1, Theorem 2.4(b) puts every (x, A) at even distance ≤ 2k from (e, A), so
+
+$$|G| \le 1+\sum_{i=1}^{k}\Delta(\Delta-1)^{2i-1} = 1+\sum_{i=1}^{k}\big[(\Delta-1)^{2i-1}+(\Delta-1)^{2i}\big] = \sum_{j=0}^{2k}(\Delta-1)^j . \qquad ∎$$
+
+Theorem 4.1 is exactly the bipartite Moore bound 2|G| ≤ M^b(Δ, D); we include it because the same count, the number
+W(Δ, D) of binding words, is the quantity behind every estimate in §3.5. It uses only one of the two conditions at odd D.
+
+**Corollary 4.2 (cited).** For Δ ≥ 3 and D ∈ {8, 9, 10}, the inequality in Theorem 4.1 is strict.
+
+*Proof.* Equality means 2|G| = M^b(Δ, D), i.e. H(G, S) is a bipartite Moore graph: Δ-regular of diameter D and girth
+2D. Such a graph is the incidence graph of a generalized D-gon of order (Δ − 1, Δ − 1). By the Feit–Higman theorem
+(J. Algebra 1 (1964) 114–131) thick generalized n-gons exist only for n ∈ {2, 3, 4, 6, 8}, and a generalized octagon of
+order (s, t) needs 2st to be a perfect square, which fails for s = t. *Cited, not reproved here.* ∎
+
+For scale: our records use between 1.2 % ((16,10)) and 14 % ((7,8)) of W(Δ, D) (§5).
+
+### 4.2 The abelianization bound
+
+For Δ ≥ 1 and D ≥ 2 let ε = 1 if D is even and ε = 0 if D is odd, and
+
+$$A(\Delta,D) = \#\Big\{c\in\mathbb Z^{\Delta} : \textstyle\sum_i c_i=\varepsilon,\ \sum_i |c_i|\le D-1\Big\}.$$
+
+**Theorem 4.3.** Let G′ be the commutator subgroup of G. If |S| = Δ and diam H(G, S) ≤ D, then
+|G/G′| ≤ A(Δ, D), and hence |G| ≤ |G′|·A(Δ, D).
+
+*Proof.* Write G/G′ additively and let π : G → G/G′ be the quotient map. For an A-word with letters t_1, …, t_L,
+π(w(S)) = Σ_{s ∈ S} c_s π(s), where c_s is the number of positive occurrences of s minus the number of negative ones.
+Since the signs alternate starting with +, Σ_s c_s = 1 for L odd and 0 for L even, and Σ_s |c_s| ≤ L. By Theorem 2.4
+(remark 1), every x ∈ G is the value of an A-word of length L ≤ D − 1 with L ≡ D − 1 (mod 2), so Σ_s c_s = ε.
+Hence π maps onto G/G′ from a set of values indexed by at most A(Δ, D) vectors c. ∎
+
+A(Δ, D) is a polynomial in D of degree Δ − 1 for fixed Δ, while W(Δ, D) is exponential in D. Values (computed by a
+short dynamic program, `research/theorems/haar_d8_10/abound.py`):
+
+| Δ | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A(Δ, 8) | 48 | 216 | 780 | 2,376 | 6,328 | 15,128 | 33,111 | 67,360 | 128,876 | 234,048 | 406,458 | 679,056 | 1,096,740 | 1,719,376 |
+| A(Δ, 9) | 61 | 309 | 1,251 | 4,251 | 12,559 | 33,111 | 79,459 | 176,251 | 365,751 | 716,959 | 1,337,961 | 2,392,209 | 4,119,501 | 6,862,501 |
+| A(Δ, 10) | 75 | 420 | 1,875 | 7,002 | 22,645 | 65,080 | 169,515 | 406,390 | 907,753 | 1,907,940 | 3,803,865 | 7,241,430 | 13,235,895 | 23,335,504 |
+
+**Corollary 4.4.** Under the hypotheses of Theorem 4.3:
+
+(i) if G is abelian, |G| ≤ A(Δ, D);
+
+(ii) if G = Q × Z_n with Q perfect (Q = Q′), then n ≤ A(Δ, D). This applies to Q = SL(2, q) and PSL(2, q) with
+q ≥ 4, and to direct products of such groups;
+
+(iii) if G = Z_m ⋊_r Z_k, then G′ = (r − 1)Z_m × {0} and k·gcd(m, r − 1) ≤ A(Δ, D).
+
+*Proof.* (i) G′ = 1. (ii) G′ = Q′ × {0} = Q × {0}, so G/G′ ≅ Z_n. SL(2, q) is perfect for q ≥ 4 and PSL(2, q) is simple
+for q ≥ 4 (standard); a direct product of perfect groups is perfect. (iii) Conjugating (a, 0) by (0, 1) gives (ra, 0),
+so G′ contains the commutators ((r − 1)a, 0), i.e. (r − 1)Z_m × {0}. That subgroup is normal (it is stable under
+multiplication by r), and the quotient is Z_g × Z_k with g = gcd(m, r − 1) and trivial action (r ≡ 1 mod g), which is
+abelian. So G′ = (r − 1)Z_m × {0} and |G/G′| = gk. ∎
+
+For example, the (8,8) record PSL(2,17) × Z_49 has n = 49 ≤ A(8,8) = 15,128, and the metacyclic records have
+|G/G′| = 80, 70, 64, 24 at (5,8), (5,9), (4,10), (5,10), against A = 780, 1,251, 420, 1,875. The point of the
+corollary is the converse direction: at small Δ an abelian group, or a group with a large abelian quotient, cannot
+reach record size. For instance an abelian Haar graph of degree 8 and diameter 8 has at most 2·15,128 = 30,256
+vertices, against the table's 201,480. This is why every record uses a group with a large perfect part or a large
+commutator subgroup.
+
+### 4.3 Odd diameter: inverse pairs
+
+**Proposition 4.5.** Let i ≥ 1. Reversal (t_1, …, t_{2i}) ↦ (t_{2i}, …, t_1) is a fixed-point-free involution on the
+reduced A-words of length 2i, and it inverts values. Hence for every x ∈ G the number of reduced A-words of length 2i
+with value x equals the number with value x⁻¹, and for an involution x (x² = e ≠ x) that number is even. The same holds
+for B-words.
+
+*Proof.* The value inverts by the computation in Proposition 3.4(a) (with σ = id). Reversal keeps a word reduced. A
+reduced word of even length 2i is never its own reversal, since that would force t_i = t_{i+1}. If x = x⁻¹, reversal
+permutes the words with value x without fixed points. ∎
+
+At odd D the binding words have even length (Theorem 2.4(b)), so an involution receives its words in pairs.
+**Heuristically** it is then missed with probability about e^(−λ/2) instead of e^(−λ), which is why PSL(2, q) alone
+(about q²/2 involutions) is a poor choice at odd D and SL(2, q) (one involution, −I) a good one
+(research/theory/THRESHOLD.md §3, Corollary 5.2 for a proved version in the regime D fixed, Δ → ∞). Every odd-D record
+in §5 uses SL(2, q), a product containing SL(2, q), a PSL(2, q) with a cyclic factor of odd order, or a metacyclic group.
+
+### 4.4 What we cannot prove
+
+- **No infinite family at fixed D.** We have no theorem that produces, for D ∈ {8, 9, 10}, an infinite family of Haar
+  graphs (or any graphs) above the table. Each record in §5 is a single graph.
+- **The size law is not a theorem.** The observed orders follow N ≈ Δ(Δ − 1)^(D−2) g_Δ / ln(N/μ\*) with a slowly varying
+  μ\* (SIZE_LAW.md; g_Δ = (Δ−1)²/((Δ−1)² − 1)). That is a heuristic fitted to data.
+- **Random-S theorems are in another regime.** research/theory/THRESHOLD.md proves, for every finite group and fixed D
+  as Δ → ∞, that a random S of size Δ gives diameter ≤ D with high probability once the number of distinct-letter words
+  exceeds (D−1)!·N ln N, and fails below N(ln N − ln ln N − ω(1)). Those proofs use Suen's inequality (in the form stated
+  by Yadin) and are not reproduced here. They say nothing about fixed Δ ≤ 16, the regime of the records.
+
+---
+
+## 5. Records at D = 8, 9, 10
+
+RECORDS-TABLE-PLACEHOLDER
+
+---
+
+## 6. Prior art, and what is ours
+
+PRIOR-ART-PLACEHOLDER
+
+---
+
+## 7. How to re-check
+
+REPRO-PLACEHOLDER
