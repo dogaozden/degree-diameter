@@ -18,3 +18,13 @@ metacyclic × Z_n (n ≥ 2, order m·k·n) is a haar_gen3 family ("meta m k r n"
 - Batch 1 (queue1.txt): top 40 overall plus 20 more with n ≥ 2, 300 s each, seed 1, 4 cores, THREADS=1, nice.
   Round-1 near misses excluded (N = 6216 meta 259 24 97, 6270 meta 209 30 26, 6270 meta 418 15 49, 6275 meta 251 25 4,
   6321 meta 301 21 23).
+
+## Batch 1 result (60 anneals, 300 s, seed 1, N = 6216–6330 and the new family)
+- No solve. 25 of the 60 were metacyclic × Z_n (n ≥ 2). Cost distribution: 2 at cost 2 (min), 1 at 3, 6 at 4, 4 at 5,
+  9 at 6, 9 at 7, 6 at 8, 4 at 9, the rest higher.
+- Best: N = 6270 meta 209 15 26 2 (cost 2, new family); N = 6328 meta 113 56 2 1 (cost 2); N = 6321 meta 301 21 4 1 (cost 3).
+- Log: logs/q1.tsv. The new family is not clearly better than the metacyclic n = 1 ones on this screen-and-anneal budget.
+- Monitor note: a watch loop with `pgrep -f "haar_gen3 4 10"` matches its own command line and never ends. Use a line count on the log.
+
+## Batch 2 (started 15:49 UTC): 1200 s re-anneals, seed 2, of the cost-2/3 near misses and the round-1 cost-1 N = 6394 candidate
+  meta 209 15 26 2 (6270); meta 113 56 2 1 (6328); meta 301 21 4 1 (6321); meta 278 23 45 1 (6394). Log: logs/q2.tsv.
