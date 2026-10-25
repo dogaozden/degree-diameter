@@ -39,3 +39,41 @@ verified as an automorphism, BFS from all 132,864 orbit representatives, RESULT 
 Files: research/squads/d12D7/graphs/, research/squads/d12D7/opus/gadget.c, gadgetK.c, symcheck.c; write-up
 research/squads/cells/d12D7.md. So the squad mattered: the record came from one card's side measurement, not from its
 main score.
+
+## 2026-10-25, cell-12-7 (Opus, resumed session claude/cell-12-7-resume-qxt4bj), round d12D7-r2: reach the cap, get past it
+
+Before the round (Opus alone, about 1 hour): resumed from 664,304; master had 680,068 (cell-10-7 session). Opus found
+(1) that freed points need not be pairwise non-collinear (a freed point has two hop points on each geodesic, at distance 2
+and 4, so only collinear paths on two lines are forbidden; the 730-line Hermitian spread gives 7,300 freed points, the
+maximum, against 4,291 before), (2) that the main graph alone then has diameter 7, so hubs may take owners from different
+freed points at different levels, and (3) the cluster-assisted Haar hub graph (coset clusters on spread lines; every
+relation is a left multiplication, so one weighted BFS from e decides all hub pairs; research/squads/d12D7/clhaar/).
+Records on the way: 681,460, 683,452, 691,660, 693,100 (all checked; 683,452 and 693,100 plain all-pairs VALID). The
+cap of the construction is 693,500 (14,600 hubs per side). Spin-off: (11,7) 413,180 (cap of the 3-level version).
+
+Cards (preamble and cards: research/squads/d12D7-r2/): c1 order-14,600 groups (Z73 normal) · c2 order 14,520 with
+mixing order-20 subgroups · c3 other orders in (14,400, 14,600] · c4 freeing matching edges beyond the spread ·
+c5 hubs with 4 main edges · c6 non-Haar hub graphs past 14,400 · c7 wildcard: a different construction · c8 wildcard:
+q = 3 test bed.
+
+Best per card:
+- c1: **14,600 = the cap**: Gamma = (Z73 x| Z8) x Z5^2, order-20 subgroups Z4 x Z5 and their Z73-conjugates, clhaarP cost 0
+  in seconds. Opus rebuilt the graph from the card's layout: srccheck SOURCES OK, then plain all-pairs (apsp_mt)
+  **RESULT VALID d=12 D=7 n=693,500, 12-regular.**
+- c2: 14,520: GF(11)^2 x| SL(2,5) (order-20 subgroups = translation conjugates of Dic5); Opus rebuild, srccheck OK
+  (693,340).
+- c3: 14,560 (Z728 x| Z20), 14,500 (Z145 x| Z100), 14,440 (GF(361) x| C40), card's srccheck OK. Stalled: 14,580, 14,540
+  (order-20 part acts on Z727 only by a sign), 14,480. Card's summary: cost 0 comes fast when the order-20 subgroups act
+  with large order on every normal layer.
+- c4: no extra matching edge frees with zero damage (40 extra points, both shifts, and 25 single edges all break pairs;
+  cheapest about 1.3k pairs per edge).
+- c6: no layout above 14,400 (200 extra hubs per side miss about 1,300 same-side hubs each; removing Haar edges to make
+  room breaks old pairs).
+- c8: q = 3 test bed reaches its cap 4,088 (apsp VALID) and nothing past it (4-main-edge hubs leave most hubs uncovered;
+  none of the other 2,520 matching edges can be freed on top of the spread).
+- c5, c7: see below.
+
+What Opus kept: c1's group (the cap, now the record) and c3's observation about mixing. Past the cap every attempt
+is strongly negative (also Opus's own tests: deleting spread-line fibres 2.7e9 broken pairs, one extra freed point 82,720,
+one deleted non-freed point fibre 1,568,770). The squad's main win was filling the last 1,100 hub slots per side
+with groups Opus had not tried. Beating 693,500 needs a different family.
