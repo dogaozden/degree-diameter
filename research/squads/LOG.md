@@ -78,3 +78,19 @@ Lesson: the jump came from changing the symmetry class searched, not from more l
 LNS cards early (CPU needed for graph checks) once 720 was verified.
 Next: round 4 (4 cards): orbit unions beyond 720 at q = 11, and the same method at q = 13, 7, 5 for the other
 hexagon cells ((16,7), (9,7), (7,7)), plus LNS from 720.
+
+## 2026-10-24/25, cell-13-7 (Opus, cloud session_0136phW63ksffo3wvN1THJtH), round 4: orbit unions at q = 11, 13, 7, 5
+
+Goal: evolve round 3's winner (orbit unions + exact orbit-graph clique) and carry it to the other hexagon cells:
+q = 11 (beat 720; (13,7), (14,7), (15,7)), q = 13 ((16,7)), q = 7, 5 ((9,7), (7,7)). Brief
+research/squads/d13D7_r4/BRIEF.md. Launched 23:38 UTC with 4 cards only (the brief's "about 4 heavy runs at once";
+Opus's graph checks needed the CPU).
+
+Cards and best (verified by Opus with oppcheck): c1 q = 11 new group shapes: **756** (the order-15 subgroup <a b^2> of
+round 3's Z15 x Z5) · c2 q = 13: **500** (was 168; cyclic group of order 30; commuting pairs <= 434) · c3 q = 7: **288**
+(was 172; cyclic order 9, exact) and q = 5: **72** (was 58; cyclic order 18, exact); both plateau over hundreds of
+groups · c4 LNS and orbit-level refills from 720: none (720 is locally rigid: no outside point blocked by fewer than
+45 set points).
+Kept / used: 756 -> (13,7) 1,064,448, (14,7) 1,774,584, (15,7) 2,484,720; 500 -> (16,7) 4,024,340; 288 -> (9,7)
+118,224 (VALID); 72 -> (7,7) 23,580 (VALID). Lesson: the orbit method transfers unchanged between fields and gives
+1.5-3x the plain local search at every q; smaller groups (bigger orbit graphs) did better than the larger group.

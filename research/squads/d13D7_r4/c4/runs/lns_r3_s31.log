@@ -1,0 +1,24 @@
+selftest point 0: perp size 16104 (scan 16104) ok
+selftest point 20459: perp size 16104 (scan 16104) ok
+selftest point 66455: perp size 16104 (scan 16104) ok
+initial |R| = 720
+[31s] |R|=720 best=720 sweeps=7 sw_impr=0 sw_plat=0 hub=664/0/0 lns=1436/0/0 fb=2100
+[63s] |R|=720 best=720 sweeps=14 sw_impr=0 sw_plat=0 hub=1281/0/0 lns=2919/0/0 fb=4200
+[97s] |R|=720 best=720 sweeps=21 sw_impr=0 sw_plat=0 hub=1925/0/0 lns=4375/0/0 fb=6300
+[128s] |R|=720 best=720 sweeps=28 sw_impr=0 sw_plat=0 hub=2570/0/0 lns=5830/0/0 fb=8400
+[159s] |R|=720 best=720 sweeps=35 sw_impr=0 sw_plat=0 hub=3177/0/0 lns=7323/0/0 fb=10500
+[191s] |R|=720 best=720 sweeps=42 sw_impr=0 sw_plat=0 hub=3795/0/0 lns=8805/0/0 fb=12600
+[222s] |R|=720 best=720 sweeps=49 sw_impr=0 sw_plat=0 hub=4382/0/0 lns=10318/0/0 fb=14700
+[253s] |R|=720 best=720 sweeps=56 sw_impr=0 sw_plat=0 hub=4984/0/0 lns=11816/0/0 fb=16800
+[285s] |R|=720 best=720 sweeps=63 sw_impr=0 sw_plat=0 hub=5571/0/0 lns=13329/0/0 fb=18900
+[316s] |R|=720 best=720 sweeps=70 sw_impr=0 sw_plat=0 hub=6214/0/0 lns=14786/0/0 fb=21000
+[347s] |R|=720 best=720 sweeps=77 sw_impr=0 sw_plat=0 hub=6846/0/0 lns=16254/0/0 fb=23100
+[378s] |R|=720 best=720 sweeps=84 sw_impr=0 sw_plat=0 hub=7465/0/0 lns=17735/0/0 fb=25200
+[409s] |R|=720 best=720 sweeps=91 sw_impr=0 sw_plat=0 hub=8110/0/0 lns=19190/0/0 fb=27300
+[442s] |R|=720 best=720 sweeps=99 sw_impr=0 sw_plat=0 hub=8821/0/0 lns=20879/0/0 fb=29700
+[473s] |R|=720 best=720 sweeps=106 sw_impr=0 sw_plat=0 hub=9440/0/0 lns=22360/0/0 fb=31800
+[506s] |R|=720 best=720 sweeps=114 sw_impr=0 sw_plat=0 hub=10177/0/0 lns=24023/0/0 fb=34200
+[540s] |R|=720 best=720 sweeps=122 sw_impr=0 sw_plat=0 hub=10906/0/0 lns=25694/0/0 fb=36600
+[571s] |R|=720 best=720 sweeps=129 sw_impr=0 sw_plat=0 hub=11524/0/0 lns=27176/0/0 fb=38700
+done: |R| 720 best 720 | sweeps 136 tries 97920 impr 0 plateau 0 | hub 12057 impr 0 plateau 0 | lns 28583 impr 0 plateau 0 | fallback 40640
+blocks 138560: mean |C| 17.45, max |C| 164, mean nodes 1.0, node-limit hits 0
