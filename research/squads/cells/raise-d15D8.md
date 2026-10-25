@@ -225,3 +225,22 @@ Groups above the new bar, lowest μ among those screened (tails are weaker than 
 
 Best costs 15 to 18 for all four (sl 25 × Z589, sl 23 × Z757, psl 27 × Z937, psl 31 × Z619). These are well behind the wave-3 path
 (psl 67 × Z61 reached cost 3 before its solve), so a solve before the budget ends (about 20:07 UTC) looks unlikely. The runs are left to finish.
+
+### Final wave result (5400 s each, 18:36–20:06 UTC; no solve)
+
+| job | group | 2N | μ | evals | best cost |
+|---|---|---|---|---|---|
+| m | sl 25 × Z589 | 18,376,800 | 39.6 | 2.97·10⁵ | 15 |
+| n | sl 23 × Z757 | 18,386,016 | 39.9 | 1.08·10⁵ | 18 |
+| o | psl 27 × Z937 | 18,417,672 | 40.8 | (see log) | (see log) |
+| p | psl 31 × Z619 | 18,421,440 | 40.9 | 5.6·10⁴ | 12 |
+
+None of these solved. Their best costs stay well above the psl 67 × Z61 path, so the wall at μ ≈ 40 is out of reach
+for these groups in this budget.
+
+### Where this leaves the cell (end of round 2)
+
+- **Record for this branch: 18,342,456** (psl 67 × Z61, seed 6, verified by haar_sym, haarcheck_psl and build_haar2.py).
+- Leads not yet exhausted: psl 67 × Z61 at more seeds (one seed of two solved; the other reached cost 3), and the screened
+  groups at μ 38–40 with longer budgets. The μ ≈ 40 groups need more than the 5400 s budget here.
+- Wave 1–3 runs that were stopped (j, k, l) and the final-wave logs are in `runs/raise_d15D8_r2/out/`.
