@@ -49,3 +49,18 @@ Logs and solution files are in the scratchpad until verified; copies of the logs
 - Seeds matter: (11,8) failed on seeds 1 and 2 and solved on seed 3 (STRUCTURE §7). A group that stalls at cost
   1–3 for one seed is not necessarily dead.
 - Do not use `pkill -f` with a job name in your own command line: it kills the shell. Use `ps` and `kill <pid>`.
+
+## Status, 16:32 UTC (round 2)
+
+| job | group | N | μ | best cost | evals | state |
+|---|---|---|---|---|---|---|
+| w1a | prod SL(2,5) × SL(2,13) × Z397, seed 1 | 104,045,760 | 24.17 | 20 | 17,225 | running (budget ends ~17:29) |
+| w1b | prod SL(2,5) × SL(2,19) × Z127, seed 1 | 104,241,600 | 24.92 | 8 | 17,321 | running, flat since ~14:50 |
+| w1c | SL(2,53) × Z703, seed 1 | 104,623,272 | 26.45 | 24 | 14,873 | budget ended, no solution |
+| w1d | SL(2,41) × Z1519, seed 1 | 104,628,720 | 26.47 | 42 | 15,689 | budget ended, no solution |
+| w2a | prod SL(2,5) × SL(2,19) × Z127, seed 2, RESTART=1 | 104,241,600 | 24.92 | 8 | 8,329 | running (budget ends ~18:14) |
+| w2b | prod SL(2,5) × SL(2,19) × Z127, seed 3, RESTART=1 | 104,241,600 | 24.92 | 10 | 8,329 | running (budget ends ~18:14) |
+
+Nothing has reached cost 0 yet. The 5×19×127 group is the most promising (costs 8–10 across seeds), but the
+searches stall at 8, the same stall pattern as round 1. The solution files are only written on cost 0; a finished
+run without one leaves no .txt. Logs are copied to research/structured/runs/ as raise2_*.log.
