@@ -88,6 +88,7 @@ static unsigned char okA[32][700], okB[32][700], penA2[64][64], penB2[64][64];
 static int nsing, npen, ndiag, DIAGBT = 0, FAKE = 0; static unsigned char diagA[32], diagB[32];
 /* union of the 2-spaces <p_i, q_i> covers all of F_3^4? */
 static int missA[32], missB[32], DGRAD = 0, PRUNC = 0;
+static int nvar = 0; static mat *VA = NULL; static int *Vb = NULL;   /* VARLIST: per-edge letters of chart variants */
 static int planes_miss(const int *p, const int *q, int np) {   /* points of F_3^4 NOT in the union of the planes */
     uint64_t m[2] = {1, 0};
     for (int i = 0; i < np; i++) for (int a = 0; a < 3; a++) for (int c = 0; c < 3; c++) setbit(m, ADD[SMUL[a][p[i]]][SMUL[c][q[i]]]);
@@ -241,6 +242,10 @@ int main(int argc, char **argv) {
     if (getenv("INIT_ECHART")) { if (!load_echart(getenv("INIT_ECHART"))) { printf("cannot read echart\n"); return 8; } }
     else if (getenv("INIT_CHART")) { if (!load_colour_chart(getenv("INIT_CHART"))) { printf("cannot read chart\n"); return 8; } }
     else { for (int e = 0; e < ne; e++) { rand_gl(&A[e]); b[e] = rand_vec(); } }
+    if (getenv("VARLIST")) { FILE *vl = fopen(getenv("VARLIST"), "r"); char fn[1024]; mat sA2[64]; int sb2[64]; memcpy(sA2, A, sizeof sA2); memcpy(sb2, b, sizeof sb2);
+        VA = malloc(sizeof(mat) * ne * 4096); Vb = malloc(sizeof(int) * ne * 4096);
+        while (vl && nvar < 4096 && fscanf(vl, "%1023s", fn) == 1) { if (!load_echart(fn)) continue; for (int e = 0; e < ne; e++) { VA[nvar * ne + e] = A[e]; Vb[nvar * ne + e] = b[e]; } nvar++; }
+        if (vl) fclose(vl); memcpy(A, sA2, sizeof sA2); memcpy(b, sb2, sizeof sb2); printf("loaded %d chart variants\n", nvar); }
     if (!eval_chart()) { printf("chart not invertible\n"); return 8; }
     if (getenv("INIT_VOLT")) { char *s = getenv("INIT_VOLT"); for (int i = 0; i < ne; i++) { volt[i] = atoi(s) % n; s = strchr(s, ','); if (!s) break; s++; } }
     else do { for (int i = 0; i < ne; i++) volt[i] = istree[i] ? e_id : (int)(xr() % n); } while (!parallel_ok());
@@ -260,10 +265,11 @@ int main(int argc, char **argv) {
         } else {
             nchart++;
             int e = xr() % ne; mat sA = A[e]; int sb = b[e];
-            int mv_t = xr() % 3;
+            int mv_t = nvar ? 3 : xr() % 3;
+            if (mv_t == 3) { int r = xr() % nvar; A[e] = VA[r * ne + e]; b[e] = Vb[r * ne + e]; }
             if (mv_t == 0) { int cc = xr() % 4, row = xr() % 4; int v = A[e].c[cc], old = coord(v, row), nw = (old + 1 + xr() % 2) % 3; A[e].c[cc] = v + (nw - old) * P3[row]; }
             else if (mv_t == 1) { int row = xr() % 4; int v = b[e], old = coord(v, row), nw = (old + 1 + xr() % 2) % 3; b[e] = v + (nw - old) * P3[row]; }
-            else b[e] = rand_vec();
+            else if (mv_t == 2) b[e] = rand_vec();
             if (!eval_chart()) { A[e] = sA; b[e] = sb; eval_chart(); continue; }
             c2 = cost();
             if (c2 <= c || exp((c - c2) / TT) > (double)(xr() % 1000000) / 1e6) c = c2;

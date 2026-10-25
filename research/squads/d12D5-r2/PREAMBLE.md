@@ -1,8 +1,9 @@
 # Squad round 2, cell (12,5): preamble shared by all cards
 
 Goal: a bipartite graph of maximum degree 12 and diameter 5 on as many vertices as possible.
-**Record: 10,692 (ours, m = 66).** Beat it: any VALID lift with m ≥ 67 (68 → 11,016, 69 → 11,178, 70 → 11,340,
-72 → 11,664, 75 → 12,150, 76 → 12,312, 78 → 12,636, 80 → 12,960).
+**Record: 11,178 (ours, m = 69: K33m over Z_23 with chart diag/bt3_k33m_0 held FIXED, DIAGBT=1, PV=1.0, 154k iterations,
+seed 233; found 15:08 UTC).** Beat it: any VALID lift with m ≥ 70 (70 → 11,340, 72 → 11,664, 75 → 12,150,
+76 → 12,312, 78 → 12,636, 80 → 12,960, 81 → 13,122, 84 → 13,608).
 
 ## Construction (read research/d12D5/EDGECHART.md first)
 
@@ -34,7 +35,8 @@ nearly fixed (PV = 0.97): random chart moves destroy the backtrack-completeness 
 | tables | `tables/z14.txt` .. `z33.txt` (cyclic) |
 
 Round-1 facts: K33m over cyclic groups beats non-cyclic ones; with the old (diagonals need 4-cycles) criterion the
-best real result at m = 69 was cost 4; the new chart gave cost 2 at m = 69 in one 300 s run.
+best real result at m = 69 was cost 4; the new chart held fixed gave the record at m = 69 in seconds.
+Exact command of the record: `WRITEBEST=1 DIAGBT=1 INIT_ECHART=/home/user/degree-diameter/research/d12D5/diag/bt3_k33m_0.echart timeout 1500 nice /home/user/degree-diameter/research/d12D5/mlift_ejoint2 /home/user/degree-diameter/research/d12D5/base_k33m.txt /home/user/degree-diameter/research/d12D5/tables/z23.txt 200 233 2 1.0 OUTPREFIX`.
 
 ## Rules
 
