@@ -3,3 +3,11 @@ alpha: conj by mat(0,180,1,13), z -> 5 z on Z_781 (fixed z: 1); ORBIT k=5 m=3 f=
 setup 0.0s
 FIXF: 89 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
 start cost=46 (3.4s per eval)
+t=16 step=1 evals=5 slot=1 cand=25 cost=25 best=25 T=1.26 screened=40 (2s) fh=0,0,0,0
+t=29 step=2 evals=9 slot=1 cand=25 cost=25 best=25 T=1.06 screened=79 (5s) fh=0,0,0,0
+t=41 step=3 evals=13 slot=0 cand=40 cost=40 best=25 T=0.89 screened=104 (6s) fh=0,0,0,0
+t=55 step=4 evals=17 slot=2 cand=35 cost=35 best=25 T=0.75 screened=165 (10s) fh=0,0,0,0
+t=69 step=5 evals=21 slot=0 cand=50 cost=35 best=25 T=0.63 screened=206 (13s) fh=0,0,0,0
+t=85 step=6 evals=25 slot=0 cand=40 cost=35 best=25 T=0.53 screened=288 (17s) fh=0,0,0,0
+t=99 step=7 evals=29 slot=2 cand=25 cost=25 best=25 T=0.45 screened=340 (21s) fh=0,0,0,0
+t=111 step=8 evals=33 slot=0 cand=20 cost=20 best=20 T=0.38 screened=362 (22s) fh=0,0,0,0
