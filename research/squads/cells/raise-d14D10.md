@@ -30,7 +30,7 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 - **RAISED: (14,10) >= 1,341,781,320** (N = 670,890,660 = |PSL(2,331) x Z_37|, orbit k=3, m=4, f=2, mu = 24.5, 641 evals,
   821 s, fix = 164). Solution research/frontier/sols/d14D10_psl_331_37_orb3_s2_n1341781320.txt; independent check
   research/structured/runs/d14D10_psl_331_37_orb3_s2.lowmem.txt (haarcheck_psl, VALID d=14 D=10, ecc 10 both sides).
-  Supersedes 1,333,450,080 (PSL(2,271) x Z_67). Start 1,326,627,120, so this session: +15,153,... see the log.
+  Supersedes 1,333,450,080 (PSL(2,271) x Z_67). Start of session 1,326,627,120, so this session gained +15,154,200 (+1.14 %) in 5 solved steps.
 
 - **RAISED: (14,10) >= 1,333,450,080** (N = 666,725,040 = |PSL(2,271) x Z_67|, orbit k=3, m=4, f=2, mu = 21.9, 169 evals,
   234 s, fix = 134). Solution research/frontier/sols/d14D10_psl_271_67_orb3_s2_n1333450080.txt; independent check
