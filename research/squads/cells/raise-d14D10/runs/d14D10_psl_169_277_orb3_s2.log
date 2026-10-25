@@ -1,0 +1,25 @@
+group psl 169 poly x^2+2 x Z_277, N=668489640, identity 3932292, H order 42, rows 15916420, threads 4, setup 16.45s
+alpha: conj by mat(3,0,152,9) (index 71470), z -> 116 z on Z_277
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 83 (+e); mu = 22.99, mu/k = 7.66, fixed-point misses ~ 0.27
+start cost=30
+t=34 steps=3 evals=25 cost=9 best=9 T=0.46
+t=65 steps=6 evals=49 cost=9 best=9 T=0.16
+t=103 steps=10 evals=81 cost=9 best=9 T=0.15
+t=143 steps=14 evals=113 cost=9 best=9 T=0.15
+t=181 steps=18 evals=145 cost=9 best=9 T=0.15
+t=218 steps=22 evals=177 cost=9 best=9 T=0.15
+t=258 steps=26 evals=209 cost=6 best=6 T=0.15
+t=296 steps=30 evals=241 cost=6 best=6 T=0.15
+t=335 steps=34 evals=273 cost=6 best=6 T=0.15
+t=374 steps=38 evals=305 cost=6 best=6 T=0.15
+t=413 steps=42 evals=337 cost=6 best=6 T=0.15
+t=443 steps=45 evals=361 cost=6 best=6 T=0.15
+t=475 steps=48 evals=385 cost=6 best=6 T=0.15
+t=506 steps=51 evals=409 cost=6 best=6 T=0.15
+t=537 steps=54 evals=433 cost=6 best=6 T=0.15
+t=577 steps=58 evals=465 cost=6 best=6 T=0.15
+t=614 steps=62 evals=497 cost=6 best=6 T=0.15
+t=644 steps=65 evals=521 cost=6 best=6 T=0.15
+t=684 steps=69 evals=553 cost=6 best=6 T=0.15
+t=723 steps=73 evals=585 cost=6 best=6 T=0.15
+t=755 steps=76 evals=609 cost=6 best=6 T=0.15
