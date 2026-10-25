@@ -1,0 +1,24 @@
+12:32:26 take slot1 pid 1261: env ORBIT=5 2 1 AFROB=1 RANDORB=16 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:32:26 take slot0 pid 1270: env ORBIT=5 2 1 AFROB=2 RANDORB=16 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:32:26 take slot2 pid 1275: env ORBIT=5 2 1 AFROB=4 RANDORB=16 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:32:26 take slot3 pid 1273: env ORBIT=5 2 1 AFROB=3 RANDORB=16 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:32:44 free slot3 pid 1273 rc=0
+12:32:44 free slot2 pid 1275 rc=0
+12:32:44 free slot1 pid 1261 rc=0
+12:32:45 free slot0 pid 1270 rc=0
+12:33:12 take slot0 pid 1405: env ORBIT=5 2 1 AFROB=3 ORBW=5 CKPT=opus/psl243_11_frob3_s1.ckpt /home/user/degree-diameter/research/structured/haar_sym 11 10 10800 1 8 opus/d11D10_psl_243_11_orb5_frob3_s1.txt psl 243 11
+12:33:12 take slot1 pid 1407: env ORBIT=5 2 1 AFROB=1 ORBW=5 CKPT=opus/psl243_11_frob1_s2.ckpt /home/user/degree-diameter/research/structured/haar_sym 11 10 10800 2 8 opus/d11D10_psl_243_11_orb5_frob1_s2.txt psl 243 11
+12:35:23 take slot2 pid 1568: env ORBIT=10 1 1 AFROB=1 AR=2 RANDORB=24 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:35:23 take slot3 pid 1570: env ORBIT=10 1 1 AFROB=1 AR=6 RANDORB=24 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:35:43 free slot2 pid 1568 rc=0
+12:35:43 free slot3 pid 1570 rc=0
+12:37:26 take slot2 pid 1710: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=40 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 opus/d11D10_psl_243_11_k10_randorb.txt psl 243 11
+12:37:58 free slot2 pid 1710 rc=0
+12:39:09 take slot2 pid 1820: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=200 RANDB=30 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 9 8 opus/d11D10_psl_243_11_k10_randb.txt psl 243 11
+12:40:41 free slot2 pid 1820 rc=0
+12:41:15 take slot2 pid 1929: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=100 RANDB=1 PROFILE=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 11 8 opus/d11D10_psl_243_11_k10_randb.txt psl 243 11
+12:42:10 free slot2 pid 1929 rc=0
+12:42:17 take slot2 pid 1991: env BENCH=10 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 11 8 /dev/null psl 243 11
+12:42:29 free slot2 pid 1991 rc=0
+12:42:53 take slot1 pid 2073: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=19000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 101 8 opus/d11D10_psl_243_11_orb10_frob1h_s101.txt psl 243 11
+12:42:53 take slot2 pid 2075: env ORBIT=10 1 1 AFROB=3 AFROBH=0 1 2 0 AR=2 RANDORB=19000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 103 8 opus/d11D10_psl_243_11_orb10_frob3h_s103.txt psl 243 11

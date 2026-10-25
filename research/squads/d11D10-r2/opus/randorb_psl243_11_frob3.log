@@ -1,0 +1,7 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 4.24s
+wide rows: HW order 122, rows 646866, setup 8.69s
+alpha: Frobenius x -> x^27 on entries, z -> 3 z on Z_11
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 60.61, mu/k = 12.12, fixed-point misses ~ 0.72
+RANDORB d=11 D=10 group=psl 243 poly x^5+2x+1 x Z_11 N=78917652 k=5 m=2 f=1 fix=11 samples=16 min=31 p1=31 p10=40 median=56 mean=57.75 var=264.1 mu=60.61 time=6.1
+RANDORB hist (cost/k): 0 0 0 0 0 0 1 0 1 2 3 4 0 2 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0
+RANDORB cost0=0 of 16 (P=0); cost counts 0..20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

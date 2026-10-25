@@ -792,7 +792,8 @@ static int alpha(int x) {
     if (Q->type == G_HEIS && (AHA || AHB)) {
         const field *F = Q->F; int q = F->q, a = xq / (q * q), b = xq / q % q, c = xq % q;
         yq = (FMUL(F, AHA, a) * q + FMUL(F, AHB, b)) * q + FMUL(F, FMUL(F, AHA, AHB), c);
-    } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq; yq = Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])]; }
+    } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq; yq = Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])];
+        if (AQ >= 0) yq = qmul(Q, qmul(Q, AQ, yq), AQI); }   /* AFROBH: then conjugation by h */
     else if (Q->type == G_META && AMU) yq = (int)((long long)AMU * (xq / Q->k) % Q->m) * Q->k + xq % Q->k;
     else yq = AQ >= 0 ? qmul(Q, qmul(Q, AQ, xq), AQI) : xq;
     return yq * ncyc + (int)((long long)AR * z % ncyc);
@@ -851,10 +852,14 @@ static int choose_alpha(void) {
     if (getenv("AFROB")) {   /* field automorphism x -> x^(p^j) of GF(p^e), order e/gcd(e,j); matrix groups only */
         if (!(Q->type == G_SL || Q->type == G_PSL || Q->type == G_PGL) || Q->F->k == 1) { fprintf(stderr, "AFROB needs sl/psl/pgl over GF(p^e), e > 1\n"); return 0; }
         const field *F = Q->F; int e = F->k, j = atoi(getenv("AFROB")); AFROB = j;
-        if (e / gcdi(e, j) != k) { fprintf(stderr, "Frobenius^%d has order %d, not %d\n", j, e / gcdi(e, j), k); return 0; }
+        if (k % (e / gcdi(e, j))) { fprintf(stderr, "Frobenius^%d has order %d, not dividing %d\n", j, e / gcdi(e, j), k); return 0; }   /* alpha = Frob x (z -> rz) has order lcm */
         FROBT = malloc(2 * (size_t)F->q);
         for (int x = 0; x < F->q; x++) { int y = 1; for (int t = 0; t < j; t++) for (int u = 0; u < F->p; u++) ; int pw = 1; for (int t = 0; t < j; t++) pw *= F->p;
             y = 1; for (int t = 0; t < pw; t++) y = FMUL(F, y, x); FROBT[x] = (uint16_t)(x ? y : 0); }
+        if (getenv("AFROBH")) {   /* AFROBH="a b c d": alpha_Q = conj(h) o Frobenius, h = mat(a,b,c,d) in Q (entries as integers) */
+            int a, b, c, dd; if (sscanf(getenv("AFROBH"), "%d %d %d %d", &a, &b, &c, &dd) != 4 || a >= F->q || b >= F->q || c >= F->q || dd >= F->q
+                || (AQ = Q->IDXK[mkey(Q, a, b, c, dd)]) < 0) { fprintf(stderr, "AFROBH: no such element\n"); return 0; }
+            AQI = qinv(Q, AQ); fprintf(stderr, "alpha: conj by mat(%d,%d,%d,%d) (index %d) after the Frobenius\n", a, b, c, dd, AQ); }
         fprintf(stderr, "alpha: Frobenius x -> x^%d on entries, z -> %d z on Z_%d\n", (int)pow(F->p, j), AR, ncyc);
         return 1;
     }
@@ -959,13 +964,16 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
-        int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
+        int m = atoi(getenv("RANDORB")), saved = 0, RANDB = getenv("RANDB") != NULL; long long RANDBV = RANDB ? atoll(getenv("RANDB")) : 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
             for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
-            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
-            if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
+            v[t] = cost_any(C[0], TF, TI, &sc0, NULL, RANDB ? &RANDBV : &NOBOUND, 0);   /* RANDB=b: abort a sample once its cost reaches b */
+            if (v[t] < 0) v[t] = RANDBV;
+            if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); fflush(stdout); saved = check_and_write(C[0], out);
+                if (saved && getenv("RANDSTOP")) { m = t + 1; break; } }
+            if (RANDB && t % 500 == 499) { long long nb = 0; for (int u = 0; u <= t; u++) nb += v[u] < RANDBV; printf("RANDORB progress %d samples, %lld below %lld, %.1f s\n", t + 1, nb, RANDBV, now() - t0); fflush(stdout); }
             sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
             if (getenv("LEVELS") && t < atoi(getenv("LEVELS"))) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld\n", v[t]); }
         }

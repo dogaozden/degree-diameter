@@ -1,0 +1,27 @@
+group psl 243 poly x^5+2x+1 x Z_11, N=78917652, identity 323433, H order 61, rows 1293732, threads 1, setup 4.00s
+wide rows: HW order 122, rows 646866, setup 8.11s
+alpha: Frobenius x -> x^27 on entries, z -> 3 z on Z_11
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 60.61, mu/k = 12.12, fixed-point misses ~ 0.72
+ORBW=5: an uncovered fixed element weighs 5; start energy 55
+start cost=55
+t=32 steps=12 evals=97 cost=25 best=25 T=0.49 energy=25 bestE=25
+t=64 steps=24 evals=193 cost=25 best=25 T=0.17 energy=25 bestE=25
+t=95 steps=37 evals=297 cost=25 best=25 T=0.15 energy=25 bestE=25
+t=126 steps=49 evals=393 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=157 steps=61 evals=489 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=187 steps=73 evals=585 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=218 steps=86 evals=689 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=249 steps=98 evals=785 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=281 steps=111 evals=889 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=311 steps=123 evals=985 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=342 steps=135 evals=1081 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=374 steps=147 evals=1177 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=405 steps=159 evals=1273 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=435 steps=171 evals=1369 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=466 steps=183 evals=1465 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=499 steps=196 evals=1569 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=530 steps=208 evals=1665 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=560 steps=220 evals=1761 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=592 steps=233 evals=1865 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=624 steps=246 evals=1969 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=656 steps=259 evals=2073 cost=15 best=15 T=0.15 energy=15 bestE=15
