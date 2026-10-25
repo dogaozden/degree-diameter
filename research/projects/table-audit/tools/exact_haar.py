@@ -46,14 +46,18 @@ def specs(N):
     return [(m, 1) for m in metas(N)] + s + [('cyc', N)]
 
 haar, outdir, secs = sys.argv[1], sys.argv[2], int(sys.argv[3])
+MAXSPECS = int(os.environ.get('MAXSPECS', '100000'))   # try at most this many group specs per cell
+SEEDS = int(os.environ.get('SEEDS', '1'))             # seeds per spec
 os.makedirs(outdir, exist_ok=True)
 args = list(map(int, sys.argv[4:]))
 for i in range(0, len(args), 3):
     d, D, NN = args[i:i + 3]
     N = NN // 2
-    for spec, n in specs(N):
+    found = False
+    for spec, n in [sn for sn in specs(N)][:MAXSPECS]:
+      for seed in range(1, SEEDS + 1):
         sol = f'{outdir}/d{d}D{D}_n{NN}_{spec.replace(" ", "_")}_x{n}.sol'
-        cmd = [haar, str(d), str(D), str(secs), '1', '8', sol] + spec.split() + [str(n)]
+        cmd = [haar, str(d), str(D), str(secs), str(seed), '8', sol] + spec.split() + [str(n)]
         try:
             r = subprocess.run(['nice', '-n', '10'] + cmd, capture_output=True, text=True, timeout=secs + 60)
             txt = r.stdout + r.stderr
@@ -61,9 +65,12 @@ for i in range(0, len(args), 3):
             txt = 'timeout'
         ok = 'full diameter check: OK' in txt and os.path.exists(sol)
         best = [l for l in txt.splitlines() if l.startswith('RESULT')]
-        rec = dict(d=d, D=D, n=NN, spec=spec, zn=n, ok=ok, result=best[-1] if best else txt[-200:], sol=sol if ok else None)
+        rec = dict(d=d, D=D, n=NN, spec=spec, zn=n, seed=seed, ok=ok, result=best[-1] if best else txt[-200:], sol=sol if ok else None)
         with open(f'{outdir}/results.jsonl', 'a') as f:
             f.write(json.dumps(rec) + '\n')
         print(json.dumps(rec), flush=True)
         if ok:
+            found = True
             break
+      if found:
+        break

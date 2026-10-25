@@ -7,13 +7,25 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "4,8": {
-  "notes": "n/2 = 1092 = 2^2\u00b73\u00b77\u00b713"
+  "notes": "n/2 = 1092 = 2^2\u00b73\u00b77\u00b713",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 91 12 25 found here (graphs/d4D8_n2184_meta_91_12_25_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "4,9": {
-  "notes": "n/2 = 2485 = 5\u00b77\u00b771; = |Z_71 x| Z_35| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 2485 = 5\u00b77\u00b771; = |Z_71 x| Z_35| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 71 35 2 found here (graphs/d4D9_n4970_meta_71_35_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "4,10": {
-  "notes": "n/2 = 5874 = 2\u00b73\u00b711\u00b789"
+  "notes": "n/2 = 5874 = 2\u00b73\u00b711\u00b789",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 89 66 11 found here (graphs/d4D10_n11748_meta_89_66_11_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "5,5": {
   "notes": "n/2 = 168 = 2^3\u00b73\u00b77",
@@ -26,7 +38,11 @@
   "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group"
  },
  "5,8": {
-  "notes": "n/2 = 4617 = 3^5\u00b719"
+  "notes": "n/2 = 4617 = 3^5\u00b719",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 171 27 4 found here (graphs/d5D8_n9234_meta_171_27_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "5,9": {
   "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797"
@@ -83,7 +99,11 @@
   "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051"
  },
  "9,5": {
-  "notes": "n/2 = 1248 = 2^5\u00b73\u00b713"
+  "notes": "n/2 = 1248 = 2^5\u00b73\u00b713",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 13 96 2 found here (graphs/d9D5_n2496_meta_13_96_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "9,8": {
   "notes": "n/2 = 224740 = 2^2\u00b75\u00b717\u00b7661"
