@@ -1,0 +1,8 @@
+source: https://web.mat.upc.edu/francesc.comellas/delta-d/desc_g/adjacencies/adjD4/graph_d12_D4_n5832.edges
+sha256 2d276a27aa342d3191b1f2001435eff2d94584ff17057e31ab3aac0ac32a142d
+H itself (apsp.c 12 4; 'INVALID' only because H is not bipartite):
+n=5832 edges=34992 degree min=12 max=12 bipartite=no diameter=4
+RESULT INVALID
+B(H) built by tools/closed_double.py, sha256 7c9f83f6fca886e7a4fcc3af7e1ab959c3f3e4e03f332592fecd9bbcee8d9457:
+n=11664 edges=75816 degree min=13 max=13 bipartite=yes diameter=5
+RESULT VALID d=13 D=5 n=11664
