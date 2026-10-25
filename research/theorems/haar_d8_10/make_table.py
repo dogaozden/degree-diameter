@@ -107,6 +107,17 @@ def session_checks():
     return got
 
 
+# printed names of the checkers (the letters above are internal; in the note they would clash with the sides A, B,
+# the group G, the fixed set F, the identity I and the polynomial P)
+NAME = {"B": "bh2", "I": "ind", "C": "hsl", "C2": "hc2", "P": "hpsl", "F": "hcf", "A": "apsp", "G": "big"}
+# a second reference value for the gain: (15,8), where Gómez's thesis lists 14,978,080 (HAAR_D8_10.md §6.1, note 4)
+ALT = {(15, 8): 14978080}
+
+
+def names(txt):
+    return re.sub(r"\b(C2|B|I|C|P|F|A|G)\b", lambda m: NAME[m.group(1)], txt)
+
+
 def W(d, D):
     return sum((d - 1) ** j for j in range(D))
 
@@ -117,9 +128,12 @@ def main():
     print("| cell | 2013 table | ours | gain | of Moore bound | group G | orbit structure of S (verified) | Lean | checks before today | this session |")
     print("|---|---:|---:|---:|---:|---|---|:---:|---|---|")
     for (d, D), t, o, g, st, stem, lean, earlier in ROWS:
-        now = ", ".join(sorted(got.get(stem, set()), key=["B", "I", "C", "P", "C2", "F", "A"].index)) or "–"
-        print(f"| ({d},{D}) | {t:,} | **{o:,}** | +{100 * (o / t - 1):.1f} % | {100 * o / (2 * W(d, D)):.1f} % | {g} | {st} | "
-              f"{lean} | {earlier} | {now} |")
+        now = ", ".join(NAME[x] for x in sorted(got.get(stem, set()), key=["B", "I", "C", "P", "C2", "F", "A"].index)) or "–"
+        gain = f"+{100 * (o / t - 1):.1f} %"
+        if (d, D) in ALT:
+            gain += f" (+{100 * (o / ALT[(d, D)] - 1):.1f} %, note 4)"
+        print(f"| ({d},{D}) | {t:,} | **{o:,}** | {gain} | {100 * o / (2 * W(d, D)):.1f} % | {g} | {st} | "
+              f"{lean} | {names(earlier)} | {now} |")
         # programs in the repository that accepted this graph (G = bigcheck_indep is not in the repository)
         progs = {x for x in re.findall(r"\b(C2|B|I|C|P|F|A)\b", earlier)} | got.get(stem, set())
         if len(progs) + (lean == "✓") < 2:
