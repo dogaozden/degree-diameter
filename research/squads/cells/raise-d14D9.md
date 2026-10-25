@@ -70,7 +70,17 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | psl 109 × Z91 | 58,918,860 | 117,837,720 | 18.0 | 53 | **SOLVED** at 6,609 evals (1,524 s), haar_sym OK, haarcheck_psl VALID. **New record.** |
 | sl 389 × Z1 | 58,863,480 | 117,726,960 | 17.8 | 389 | **SOLVED** at 8,265 evals (3,193 s); haar_sym OK, hcsl and hc2 VALID. Sub-record (below 117,837,720). `research/frontier/sols/d14D9_sl_389_1_orb3_s1.txt`, sha256 2580f519d97bf3b299af5341e8652ef9389544af5c7e13ca3f45762dc7c7af64 |
 | psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | – | running, best 6 at t=1423 |
-| psl 59 × Z577 | 59,234,820 | 118,469,640 | 19.7 | – | running, best 18 |
+| psl 59 × Z577 | 59,234,820 | 118,469,640 | 19.7 | 29 | not solved: best 4, 15,225 evals in 3600 s |
+| sl 73 × Z151 | 58,730,544 | 117,461,088 | 17.1 | 71 | **SOLVED** at 833 evals (444 s); haar_sym OK, hcsl and hc2 VALID. Sub-record (below 117,837,720). `research/frontier/sols/d14D9_sl_73_151_orb3_s1.txt`, sha256 4931d658da18452d35a63dbbf4c64ed682dff9aa0cf2032812f976b91914356c |
+| psl 107 × Z97 | 59,409,396 | 118,818,792 | 20.6 | – | not solved: best 11, 8,553 evals in 3600 s |
+| psl 79 × Z241 | 59,401,680 | 118,803,360 | 20.6 | – | not solved: best 6, 11,673 evals in 3600 s |
+| psl 257 × Z7 | 59,410,176 | 118,820,352 | 20.6 | 128 | not solved: best 20, 9,545 evals in 3600 s |
+| psl 121 × Z67 | 59,343,240 | 118,686,480 | 20.2 | – | not solved: best 6, 9,177 evals in 3600 s |
+| sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | not solved: best 12, 11,105 evals in 3600 s |
+| psl 47 × Z1129 | 59,204,208 | 118,408,416 | 19.5 | 23 | not solved: best 12, 12,209 evals in 3600 s |
+| psl 53 × Z787 | 58,562,244 | 117,124,488 | 16.4 | 26 | not solved: best 12, 12,969 evals in 3600 s |
+| psl 43 × Z1477 | 58,684,164 | 117,368,328 | 16.9 | 20 | not solved: best 18, 14,449 evals in 3600 s |
+| psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | 35 | not solved: best 6, 8,633 evals in 3600 s |
 | sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | running, best 18 |
 | psl 121 × Z67 | 59,343,240 | 118,686,480 | 20.2 | – | running |
 | psl 53 × Z787 | 58,562,244 | 117,124,488 | 16.4 | – | running at 3600 s budget, best 18 |
