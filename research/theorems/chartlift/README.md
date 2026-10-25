@@ -45,4 +45,7 @@ covered, so no 4-cycles needed), (4,3) 26, (4,4) 22 (the squad's `chart_u8_squad
 | r3/gen_ctrl_cost.py | score any k-regular graph (JSON or edge list) as a controller for a diagonal-covering chart |
 | r3/make_haar_builder.py | self-contained builder for a lift of a Haar graph of a metacyclic group (group law as a formula) |
 | r3/allk_family.py | checks for Theorem 14 (pattern relabelling for k <= 8, exact controllers) |
+| r3/alt_opt.sh | `r3/alt_opt.sh q k BASE GROUPFILE CHART ROUNDS T_ctrl T_chart OUTDIR`: alternate voltage annealing (chart fixed) and controller-aware chart descent until cost 0; r3/alt_opt2.sh adds env MAXC (stop after round 1 if the cost is above it) |
+| r3/alt348.sh | the (4,3) version: score the voltages against all 348 labelled singular sets (r3/flags43/) instead of a chart descent |
+| r3/alt_run10.sh, r3/alt_run10b.sh, r3/alt_run15.sh | one-group drivers for (10,5) and (15,5) Haar queues (job lists r3/alt_jobs_10*.txt, r3/alt_jobs_15.txt; summaries r3/alt_10.log, r3/alt_15.log; run folders r3/alt/) |
 | r3/graphs/ | builders, edge files and check outputs of the round-3 records |

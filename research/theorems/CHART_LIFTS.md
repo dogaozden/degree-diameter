@@ -21,7 +21,7 @@ apsp.c (the coordinator's checker; it also reports INVALID with D = 4, so the di
 
 Z_M ⋊_t Z_N is the metacyclic group of pairs (x, y) with (x₁, y₁)(x₂, y₂) = (x₁ + t^{y₁} x₂ mod M, y₁ + y₂ mod N);
 a Haar graph of a group G with connection set S = {s₀, …, s_{k−1}} joins a_g to b_{s g}, and the edge from s_c gets
-letter c. The (10,5) controller came from squad round r2, card c4; the (12,5) base and group from round r3, card c1
+letter c. The (10,5) group came from squad round r3, card c6 (details below); the (12,5) base and group from round r3, card c1
 (cost 4 with one chart class; alternating voltage annealing with scoring against all 348 labelled singular sets of
 Proposition 12(c) closed it in one round); the (15,5) connection set from round r3, card c4 (it stalled at cost 2; the lead then
 re-optimised the chart for that controller, below); all rebuilt and checked here. Also found and checked: (15,5)
@@ -229,6 +229,12 @@ comparison, m_k ≤ k(k−1)³ = 24, 108, 320, 750, since there are that many no
 Universal charts need k((k−1)q+1) ≤ (q+1)(q²+1) when the b's are in general position, so for k = 5, 6 the family starts
 at Δ = 20, 30, outside the table. The Schwartz–Zippel step for k ≠ 4 is Theorem 14 (round 3); small-q charts for
 k ≠ 4 were not searched.
+Round 3 looked for an exact 4-regular controller with m > 54, which would raise the 108 of Theorem 3 for every q ≥ 3
+at once (m = 66 would give 132 q⁴). None was found in short runs (20 s each, `charts/nbonly_k4.flags`):
+K₃,₃ + doubled matching over all 28 groups of order 19–27 that `mkgroups.py` builds (best cost 2 at m = 57, then 4 at
+m = 60, `r3/runs_exact4k.log`), the two 2+2 bases over the groups of order 28–36 (best cost 4 at m = 56–60,
+`r3/runs_exact4r.log`), and Haar graphs of 5 groups of order 56 (cost ≥ 6, `r3/runs_exact4h.log`). So m₄ = 54 is still
+the largest known.
 
 **Theorem 14 (every k, large q; round 3).** For every k ≥ 3 and every prime power q > q₀(k) = 28k(k−1)³ + 4(k−1)
 there is a universal k-letter chart over F_q⁴. Hence n_b(kq, 5) ≥ 2 m q⁴ for every exact k-regular bipartite
@@ -421,7 +427,10 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
 - **Non-abelian groups at the frontier:** dicyclic groups (orders 28 and 64) give the (8,5) m = 56 and (15,5)
   m = 128 controllers.
 - **Fewer singular patterns help less than expected.** (4,3) charts with 24 singular patterns do no better than 26
-  at m = 57 (cost 2 either way, squad r1-c3). The limit there is the controller.
+  at m = 57 (cost 2 either way, squad r1-c3). The limit there is the controller. Round 3 shows the same from the
+  other side: every chart that the joint optimisation re-fitted to a controller has *more* singular patterns than the
+  chart it started from (216 → 218, 226 and 238 at (10,5); 92 → 96 at (15,5)), yet it covers that controller. Which
+  patterns are singular matters more than how many.
 - Lift/Moore ratios: (12,5) 27%, (15,5) 25%, (8,5) 37%, (16,5) 31%. After round 3: (12,5) 10,368 / 32,210 = 32%,
   (15,5) 25,272 / 82,742 = 31%, (10,5) 4,032 / 14,762 = 27%; latest (12,5) 12,960 / 32,210 = 40%, (15,5) 27,216 /
   82,742 = 33%, (10,5) 4,480 / 14,762 = 30%.
@@ -476,3 +485,10 @@ and the 9,576-vertex 5-regular (5,8) graph are rebuilt in `chartlift/controllers
   4-cycles did at D = 5.
 - **(16,5) beyond 66 on K₃,₃ + matching**: even a hypothetical zero-singular chart leaves cost 2 at m = 69 and 72
   (`runs/k4univ/`). The limit is the controller's 4-cycles and diameter, not the chart.
+- **Round 3, past the records, with the joint optimisation** (`r3/alt_opt.sh`, `r3/alt348.sh`; run folders
+  `r3/alt/`, final costs after 3–4 rounds). (15,5) beyond m = 168: the order-171 Haar graphs of Z₁₉ ⋊₄ Z₉, Z₁₉ ⋊₇ Z₉
+  and Z₅₇ ⋊₇ Z₃ end at cost 2, 4 and 4, and the nine Haar graphs tried at orders 172–180 (metacyclic and dicyclic)
+  start at cost 15 or more (`r3/runs_probe.log`, `r3/alt/d15_*.log`). (12,5) beyond m = 80: K₃,₃ + doubled matching over Z₂₇ (m = 81) ends at
+  cost 12, 2+2 bases over Z₄₁ (m = 82) at 8–20, over Z₄₂ and Z₇ ⋊₃ Z₆ (m = 84) at 16–30. (8,5) beyond m = 64: the 2+2
+  base over Z₃₃ (m = 66) stays at cost 2 through four rounds (`r3/alt/d8_r2b_z33.log`).
+  (10,5) beyond m = 140: see the end of this list.
