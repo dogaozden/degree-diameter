@@ -28,6 +28,7 @@ static int *hv;             /* flag (l,k) voltage */
 static int *sig, *sinv, *mv0, *mv1;
 static int nfree, freep[64], isfree[4096];
 static int H = 2;
+static int nhg = 0, hgA[4096], hgB[4096];   /* hub graph edges: line-side hub index, point-side hub index (0..H*nfree-1) */
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 static double urand(void) { return (rnd() >> 11) * (1.0 / 9007199254740992.0); }
@@ -53,6 +54,10 @@ static void build(void) {
         for (int t = 0; t < H; t++) { for (int h = 0; h < M; h++) { eu[nE] = hub; ev[nE] = l * M + h; nE++; } hub++; }
     }
     nV = hub;
+    for (int e = 0; e < nhg; e++) {   /* line-side hub (i,s) = base + i*2H + s, point-side hub (j,t) = base + j*2H + H + t */
+        int a = hgA[e], b = hgB[e], base = 2 * N * M;
+        eu[nE] = base + (a / H) * 2 * H + a % H; ev[nE] = base + (b / H) * 2 * H + H + b % H; nE++;
+    }
     memset(deg, 0, sizeof(int) * nV);
     for (int i = 0; i < nE; i++) { deg[eu[i]]++; deg[ev[i]]++; }
     st[0] = 0; for (int i = 0; i < nV; i++) st[i + 1] = st[i] + deg[i];
@@ -96,6 +101,7 @@ static void write_sol(const char *fn, long c) {
     fprintf(f, "\nmv0"); for (int p = 0; p < N; p++) fprintf(f, " %d", mv0[p]);
     fprintf(f, "\nmv1"); for (int p = 0; p < N; p++) fprintf(f, " %d", mv1[p]);
     fprintf(f, "\nnu"); for (int i = 0; i < N * Q1; i++) fprintf(f, " %d", hv[i]);
+    fprintf(f, "\nhubgraph"); for (int e = 0; e < nhg; e++) fprintf(f, " %d %d", hgA[e], hgB[e]);
     fprintf(f, "\n"); fclose(f);
 }
 
@@ -104,19 +110,20 @@ static void write_sol(const char *fn, long c) {
  * opposite lines m of a freed line l need l-y-M-sinv(M)-m (M ~ l) or l-y-sigma(y)-z-sigma(z) = m. */
 static int *isfreeL, *mark, stamp = 0;
 static int **pperp, *npperp, **popp, *npopp, **lperp, *nlperp, **lopp, *nlopp;
+static int nunc = 0, uncI[1 << 16], uncT[1 << 16];   /* uncovered: freed index i (+nfree for line side), target */
 static long cover_cost(void) {
-    long tot = 0;
+    long tot = 0; nunc = 0;
     for (int i = 0; i < nfree; i++) {
         int p = freep[i]; stamp++;
         for (int a = 0; a < npperp[i]; a++) { int x = pperp[i][a]; if (isfree[x]) continue; int l = sig[x]; for (int k = 0; k < Q1; k++) mark[pts[l * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int w = lof[p * Q1 + a]; if (isfreeL[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[lof[z * Q1 + b]]; if (!isfree[u]) mark[u] = stamp; } }
-        for (int a = 0; a < npopp[i]; a++) if (mark[popp[i][a]] != stamp) tot++;
+        for (int a = 0; a < npopp[i]; a++) if (mark[popp[i][a]] != stamp) { tot++; if (nunc < (1 << 16)) { uncI[nunc] = i; uncT[nunc++] = popp[i][a]; } }
         int l = sig[p]; stamp++;
         for (int a = 0; a < nlperp[i]; a++) { int M2 = lperp[i][a]; if (isfreeL[M2]) continue; int y = sinv[M2]; for (int k = 0; k < Q1; k++) mark[N + lof[y * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int y = pts[l * Q1 + a]; if (isfree[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = pts[ly * Q1 + b]; if (!isfree[z]) mark[N + sig[z]] = stamp; } }
-        for (int a = 0; a < nlopp[i]; a++) if (mark[N + lopp[i][a]] != stamp) tot++;
+        for (int a = 0; a < nlopp[i]; a++) if (mark[N + lopp[i][a]] != stamp) { tot++; if (nunc < (1 << 16)) { uncI[nunc] = nfree + i; uncT[nunc++] = lopp[i][a]; } }
     }
     return tot;
 }
@@ -150,6 +157,10 @@ int main(int argc, char **argv) {
     if (getenv("FREE")) { char *s = getenv("FREE"), *e; for (;;) { long x = strtol(s, &e, 10); if (e == s) break; freep[nfree++] = (int)x; s = e; } }
     else if (getenv("NFREE")) { int k = atoi(getenv("NFREE")); int l = rnd() % N; for (int i = 0; i < k && i < Q1; i++) freep[nfree++] = pts[l * Q1 + i]; }
     for (int i = 0; i < nfree; i++) isfree[freep[i]] = 1;
+    if (getenv("X0")) {     /* freed lines = lines through point X0 (pairwise concurrent): sigma(p_i) = i-th line on X0 */
+        int x0 = atoi(getenv("X0"));
+        for (int i = 0; i < nfree; i++) { int l = lof[x0 * Q1 + i], p = freep[i], o = sinv[l]; int t = sig[p]; sig[p] = l; sig[o] = t; sinv[l] = p; sinv[t] = o; }
+    }
     /* focus set: points collinear with a freed point, and preimages of lines concurrent with a freed line */
     int *focus = malloc(sizeof(int) * N), nfoc = 0; char *inf = calloc(N, 1);
     for (int i = 0; i < nfree; i++) for (int x = 0; x < N; x++) if (!isfree[x] && !inf[x] && collinear(x, freep[i])) { inf[x] = 1; focus[nfoc++] = x; }
@@ -174,17 +185,66 @@ int main(int argc, char **argv) {
     double cT0 = getenv("CT0") ? atof(getenv("CT0")) : 0.5;
     if (covit) {
         long cc = cover_cost(); printf("cover cost initial %ld\n", cc);
+        int *bsig = malloc(sizeof(int) * N); long bcc = cc; memcpy(bsig, sig, sizeof(int) * N);
         for (long it = 0; it < covit && cc > 0; it++) {
             double T = cT0 * pow(0.02 / cT0, (double)it / covit);
-            int x, y; do { int i = rnd() % nfree; x = (rnd() & 1) ? pperp[i][rnd() % npperp[i]] : sinv[lperp[i][rnd() % nlperp[i]]]; } while (isfree[x]);
-            do { y = rnd() % N; } while (y == x || isfree[y]);
+            int x, y;
+            if (nunc && urand() < 0.7) {   /* repair one uncovered target */
+                int r = rnd() % nunc, i = uncI[r], t = uncT[r];
+                if (i < nfree) {   /* point t opposite freed p_i: sigma(x) := a line through t, x ~ p_i */
+                    do { x = pperp[i][rnd() % npperp[i]]; } while (isfree[x]);
+                    y = sinv[lof[t * Q1 + rnd() % Q1]];
+                } else {           /* line t opposite freed line: sinv(M) := a point on t, M ~ freed line */
+                    i -= nfree; int M2; do { M2 = lperp[i][rnd() % nlperp[i]]; } while (isfreeL[M2]);
+                    x = sinv[M2]; y = pts[t * Q1 + rnd() % Q1];
+                }
+                if (isfree[x] || isfree[y] || x == y) continue;
+            } else {
+                do { int i = rnd() % nfree; x = (rnd() & 1) ? pperp[i][rnd() % npperp[i]] : sinv[lperp[i][rnd() % nlperp[i]]]; } while (isfree[x]);
+                do { y = rnd() % N; } while (y == x || isfree[y]);
+            }
             int t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y;
             long c2 = cover_cost();
             if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) cc = c2;
-            else { t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y; }
+            else { t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y; cover_cost(); }
+            if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); }
             if (it % 100000 == 0) { printf("cover it %ld T %.3f cost %ld\n", it, T, cc); fflush(stdout); }
         }
+        memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p; cc = cover_cost();
         printf("cover cost final %ld\n", cc);
+        if (getenv("SHOWUNC")) for (int r = 0; r < nunc && r < 60; r++) printf("UNC %s freed#%d target %d\n", uncI[r] < nfree ? "pt" : "ln", uncI[r] % nfree, uncT[r]);
+    }
+    /* hub graph: same-side hubs of non-collinear freed points (non-concurrent freed lines) need a common neighbour */
+    if (nfree >= 2 && !getenv("NOHUBG")) {
+        int K = H * nfree, spare = Q1 + 2 - M;
+        static char A2[256][256], needA[256][256], needB[256][256]; memset(A2, 0, sizeof A2);
+        long nneed = 0;
+        for (int a = 0; a < K; a++) for (int a2 = 0; a2 < K; a2++) {
+            int i = a / H, j = a2 / H; needA[a][a2] = needB[a][a2] = 0; if (i == j) continue;
+            if (!collinear(freep[i], freep[j])) { needA[a][a2] = 1; nneed++; }
+            int li = sig[freep[i]], lj = sig[freep[j]], conc = 0;
+            for (int x = 0; x < Q1 && !conc; x++) for (int y = 0; y < Q1; y++) if (pts[li * Q1 + x] == pts[lj * Q1 + y]) { conc = 1; break; }
+            if (!conc) { needB[a][a2] = 1; nneed++; }
+        }
+        int dA[256] = {0}, dB[256] = {0};
+        #define HGCOST() ({ long cst = 0; for (int a = 0; a < K; a++) for (int a2 = a + 1; a2 < K; a2++) { \
+            if (needA[a][a2]) { int ok = 0; for (int b = 0; b < K; b++) if (A2[a][b] && A2[a2][b]) { ok = 1; break; } cst += !ok; } \
+            if (needB[a][a2]) { int ok = 0; for (int b = 0; b < K; b++) if (A2[b][a] && A2[b][a2]) { ok = 1; break; } cst += !ok; } } cst; })
+        long hc = HGCOST(), hbest = hc; static char Abest[256][256]; memcpy(Abest, A2, sizeof A2);
+        for (long it = 0; it < 400000 && hc > 0; it++) {
+            int a = rnd() % K, b = rnd() % K; double T = 1.0 * pow(0.01, (double)it / 400000);
+            if (A2[a][b]) { A2[a][b] = 0; dA[a]--; dB[b]--; }
+            else { if (dA[a] >= spare || dB[b] >= spare) { /* swap out a random edge of the full end */
+                    int a3 = a, b3 = b; if (dA[a] >= spare) { do b3 = rnd() % K; while (!A2[a][b3]); A2[a][b3] = 0; dA[a]--; dB[b3]--; }
+                    if (dB[b] >= spare) { do a3 = rnd() % K; while (!A2[a3][b]); A2[a3][b] = 0; dA[a3]--; dB[b]--; } }
+                A2[a][b] = 1; dA[a]++; dB[b]++; }
+            long h2 = HGCOST();
+            if (h2 <= hc || urand() < exp(-(h2 - hc) / T)) { hc = h2; if (hc < hbest) { hbest = hc; memcpy(Abest, A2, sizeof A2); } }
+            else { memcpy(A2, Abest, sizeof A2); hc = hbest; for (int x = 0; x < K; x++) { dA[x] = dB[x] = 0; } for (int x = 0; x < K; x++) for (int y = 0; y < K; y++) if (A2[x][y]) { dA[x]++; dB[y]++; } }
+        }
+        memcpy(A2, Abest, sizeof A2);
+        for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) if (A2[a][b]) { hgA[nhg] = a; hgB[nhg] = b; nhg++; }
+        printf("hub graph: %ld needed same-side pairs (ordered), uncovered %ld, %d hub-hub edges\n", nneed, hbest, nhg);
     }
     build(); long per[3]; long c = cost_eval(per);
     printf("q %d N %d freed %d hubs/side %d -> n %d; initial cost %ld (point src %ld, line src %ld, hub src %ld); focus %d\n", q, N, nfree, H, nV, c, per[0], per[1], per[2], nfoc);

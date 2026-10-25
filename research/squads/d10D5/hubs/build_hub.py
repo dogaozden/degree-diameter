@@ -30,6 +30,11 @@ for p in free:
         for _ in range(H):
             for h in range(M): E.append((hub, x * M + h))
             hub += 1
+hg = list(map(int, rows.get('hubgraph', [])))
+base = 2 * N * M
+for e in range(0, len(hg), 2):
+    a, b = hg[e], hg[e + 1]
+    E.append((base + (a // H) * 2 * H + a % H, base + (b // H) * 2 * H + H + b % H))
 body = f'{hub}\n' + ''.join(f'{a} {b}\n' for a, b in E)
 open(out, 'w').write(body)
 print('n', hub, 'edges', len(E), 'sha256', hashlib.sha256(body.encode()).hexdigest())
