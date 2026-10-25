@@ -1,0 +1,44 @@
+group sl 64 poly x^6+x+1 x Z_403, N=105618240, identity 1624896, H order 63, rows 1676480, threads 1, setup 6.25s
+wide rows: HW order 217, rows 486720, setup 14.18s
+alpha: Frobenius x -> x^2 on entries, z -> 367 z on Z_403
+OSUB=3: 6546 elements with alpha-orbit of size 3 (2182 orbits)
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 30.80, mu/k = 5.13, fixed-point misses ~ 0.98
+OSTAB: 6606 non-free elements weighted by |Stab|
+start cost=218
+t=37 steps=3 evals=25 cost=71 best=71 T=0.42
+t=70 steps=6 evals=49 cost=67 best=67 T=0.15
+t=105 steps=9 evals=73 cost=67 best=67 T=0.15
+t=137 steps=12 evals=97 cost=67 best=67 T=0.15
+t=168 steps=15 evals=121 cost=40 best=40 T=0.15
+t=203 steps=18 evals=145 cost=40 best=40 T=0.15
+t=236 steps=21 evals=169 cost=24 best=24 T=0.15
+t=270 steps=24 evals=193 cost=26 best=24 T=0.15
+t=308 steps=27 evals=217 cost=26 best=24 T=0.15
+t=345 steps=30 evals=241 cost=26 best=24 T=0.15
+t=381 steps=33 evals=265 cost=26 best=24 T=0.15
+t=422 steps=37 evals=297 cost=26 best=24 T=0.15
+t=457 steps=40 evals=321 cost=26 best=24 T=0.15
+t=492 steps=43 evals=345 cost=26 best=24 T=0.15
+t=530 steps=46 evals=369 cost=26 best=24 T=0.15
+t=563 steps=49 evals=393 cost=26 best=24 T=0.15
+t=594 steps=52 evals=417 cost=26 best=24 T=0.15
+t=632 steps=55 evals=441 cost=26 best=24 T=0.15
+t=685 steps=58 evals=465 cost=26 best=24 T=0.15
+t=724 steps=61 evals=489 cost=26 best=24 T=0.15
+t=758 steps=64 evals=513 cost=28 best=24 T=0.15
+t=795 steps=67 evals=537 cost=28 best=24 T=0.15
+t=832 steps=70 evals=561 cost=28 best=24 T=0.15
+t=870 steps=73 evals=585 cost=28 best=24 T=0.15
+t=907 steps=76 evals=609 cost=28 best=24 T=0.15
+t=943 steps=79 evals=633 cost=28 best=24 T=0.15
+t=978 steps=82 evals=657 cost=28 best=24 T=0.15
+t=1014 steps=85 evals=681 cost=28 best=24 T=0.15
+t=1053 steps=88 evals=705 cost=28 best=24 T=0.15
+t=1087 steps=91 evals=729 cost=27 best=24 T=0.15
+t=1123 steps=94 evals=753 cost=27 best=24 T=0.15
+t=1156 steps=97 evals=777 cost=27 best=24 T=0.15
+t=1191 steps=100 evals=801 cost=27 best=24 T=0.15
+t=1221 steps=103 evals=825 cost=36 best=24 T=0.15
+t=1259 steps=106 evals=849 cost=36 best=24 T=0.15
+t=1294 steps=109 evals=873 cost=36 best=24 T=0.15
+t=1329 steps=112 evals=897 cost=36 best=24 T=0.15

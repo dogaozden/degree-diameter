@@ -1,0 +1,45 @@
+group sl 64 poly x^6+x+1 x Z_403, N=105618240, identity 1624896, H order 63, rows 1676480, threads 1, setup 6.30s
+wide rows: HW order 217, rows 486720, setup 14.37s
+alpha: Frobenius x -> x^2 on entries, z -> 367 z on Z_403
+OSUB=3: 6546 elements with alpha-orbit of size 3 (2182 orbits)
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 30.80, mu/k = 5.13, fixed-point misses ~ 0.98
+OSTAB: 6606 non-free elements weighted by |Stab|
+start cost=1292
+t=31 steps=3 evals=25 cost=80 best=80 T=0.51
+t=67 steps=6 evals=49 cost=51 best=51 T=0.15
+t=99 steps=9 evals=73 cost=55 best=55 T=0.15
+t=133 steps=12 evals=97 cost=55 best=55 T=0.15
+t=171 steps=15 evals=121 cost=55 best=55 T=0.15
+t=210 steps=18 evals=145 cost=55 best=55 T=0.15
+t=245 steps=21 evals=169 cost=55 best=55 T=0.15
+t=279 steps=24 evals=193 cost=55 best=55 T=0.15
+t=317 steps=27 evals=217 cost=42 best=55 T=0.15
+t=352 steps=30 evals=241 cost=42 best=55 T=0.15
+t=386 steps=33 evals=265 cost=19 best=19 T=0.15
+t=424 steps=36 evals=289 cost=19 best=19 T=0.15
+t=457 steps=39 evals=313 cost=19 best=19 T=0.15
+t=495 steps=42 evals=337 cost=19 best=19 T=0.15
+t=529 steps=45 evals=361 cost=19 best=19 T=0.15
+t=563 steps=48 evals=385 cost=19 best=19 T=0.15
+t=599 steps=51 evals=409 cost=19 best=19 T=0.15
+t=633 steps=54 evals=433 cost=19 best=19 T=0.15
+t=677 steps=57 evals=457 cost=19 best=19 T=0.15
+t=717 steps=60 evals=481 cost=19 best=19 T=0.15
+t=751 steps=63 evals=505 cost=19 best=19 T=0.15
+t=784 steps=66 evals=529 cost=19 best=19 T=0.15
+t=819 steps=69 evals=553 cost=19 best=19 T=0.15
+t=854 steps=72 evals=577 cost=19 best=19 T=0.15
+t=890 steps=75 evals=601 cost=19 best=19 T=0.15
+t=921 steps=78 evals=625 cost=19 best=19 T=0.15
+t=954 steps=81 evals=649 cost=19 best=19 T=0.15
+t=988 steps=84 evals=673 cost=19 best=19 T=0.15
+t=1024 steps=87 evals=697 cost=19 best=19 T=0.15
+t=1058 steps=90 evals=721 cost=19 best=19 T=0.15
+t=1094 steps=93 evals=745 cost=19 best=19 T=0.15
+t=1124 steps=96 evals=769 cost=19 best=19 T=0.15
+t=1161 steps=99 evals=793 cost=19 best=19 T=0.15
+t=1195 steps=102 evals=817 cost=19 best=19 T=0.15
+t=1227 steps=105 evals=841 cost=19 best=19 T=0.15
+t=1261 steps=108 evals=865 cost=19 best=19 T=0.15
+t=1297 steps=111 evals=889 cost=19 best=19 T=0.15
+t=1333 steps=114 evals=913 cost=19 best=19 T=0.15
