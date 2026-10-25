@@ -100,7 +100,7 @@ Last rung tried, N > 4,209,060 (μ 44.8 for the candidates below), 1 h per run, 
 **Verdict.** The record moved twice this round (8,362,560 → 8,403,360 → 8,418,120), both by orbit search with
 ORBW=5 and RESTART=1 on groups at μ ≈ 41.5–42.4. The next rung (N > 4,209,060, μ ≥ 44) is not reached by the
 candidates that remain: their annealing stalls at cost 30–60, far from a solution, within the budget I had.
-Round 2 used about 3.5 hours of wall clock and roughly 40 core-hours of search (3–4 cores at a time).
+Round 2 used about 3.5 hours of wall clock and roughly 20 core-hours of search (about 22 one-hour runs, 3–4 cores at a time).
 
 Not tried, if the coordinator wants to go on:
 - Longer runs (3–6 h) on psl 59 x Z41 (seeds 3 and 9 reached 2 in 1 h): this would only help a rung above N = 4,209,060 once
