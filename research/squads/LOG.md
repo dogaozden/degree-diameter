@@ -50,3 +50,7 @@ over the whole chart family with the controller fixed (diag/fit81.py) reached co
 Squad value this round: the ceiling maps (c2's Z_25/Z_27 fake zeros, c3's non-cyclic data, c4's exhaustive Haar
 closure, c5–c7 base screens) told Opus where not to look; no card found a record itself, and the decisive ideas
 (variant moves, fitting the chart to an extremal controller) came from Opus reading the near misses.
+Last probe (Opus, 15:45–16:00): controllers beyond m = 81 with the fake chart and free diagonals, i.e. bipartite (4,5)
+graphs above 162: K33m over Z_28 (4 seeds) 6–8, Z_2×Z_14 14, Dic_7 10, D_14 34, Z_29 12; k = 2 bases over Z_41
+6–20 and Z_42 6. Nothing reached 0, consistent with 162 being hard to beat. Job stopped here: m = 81 is the
+construction's ceiling (research/squads/cells/d12D5.md).
