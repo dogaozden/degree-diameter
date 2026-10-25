@@ -118,6 +118,11 @@ give 248 for (3,8) and 672 for (3,10), and Hafner's page gives 720 for (3,10).
 
 The DGQ paper; the Delorme–Quisquater 1986 LRI report; the full text of Delorme–Gómez 2002. Without these I have no
 source for the D = 5, D = 7 (except (6,7) and (8,7)) or D = 8 green cells, nor for (3,8), (3,10) or (16,5).
+(The D = 8 source was found later in Gómez's thesis; see the addendum.) Retried by the lead at 08:00 UTC: CORE and
+Semantic Scholar still return 429, core.ac.uk search 403, and OpenAlex has no abstract or repository copy of
+Delorme–Gómez 2002. HAL has Bermond–Delorme–Quisquater, "Grands graphes de degré et diamètre fixés", Ann. Discrete
+Math. 17 (1983) 65–73 (inria.hal.science/hal-02435537); its first pages (abstract, Theorem 1) are about general
+graphs, not bipartite ones, so it was not used.
 
 ## 2. Delorme–Farhi duplications (brown cells)
 

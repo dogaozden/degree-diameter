@@ -32,14 +32,14 @@ Of the 112 cells (counts from cells.csv; checks still running when this was writ
 - **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
   the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
-- **40 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
-  holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) (lifts found by the
-  squad), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 23 Loz cells as Haar graphs of metacyclic
+- **41 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+  holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
+  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 23 Loz cells as Haar graphs of metacyclic
   groups (§3).
 - **6 do not check out as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q
   (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
-- **19 have no traceable construction**: 16 Loz cells (data lost: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)),
-  and (3,10), (13,8), (16,5).
+- **18 have no traceable construction**: 16 Loz cells (data lost: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)),
+  and (13,8), (16,5).
 <!-- /SUMMARY -->
 
 No table value was found to be wrong outright: every cell with a construction I could rebuild checks out, and no value
@@ -92,13 +92,19 @@ Conder's census of cubic symmetric graphs (1-arc-regular, |Aut| = 504, girth 12)
 - D = 5, Δ = 10..15 (6 cells) and D = 7, Δ = 7, 9..16 (9 cells): every value is exactly (2j+1)·|GQ(q)| or
   (2j+1)·|H(q)| with Δ = q+1+j. I built 2j+1 copies of the polygon's incidence graph joined by j bijections
   points → lines (`tools/xt_build.py`; diameter ≤ n+1 for any bijections, proof in the file header). All 15 reach
-  exactly the table value and pass (D = 7 by apsp_orb, up to 4,022,340 vertices). Marked "order": same order, very
+  exactly the table value; 14 pass (D = 7 by apsp_orb, up to 2,480,184 vertices) and the (16,7) check (4,022,340
+  vertices) was still running when this was written (see the summary). Marked "order": same order, very
   probably the same family, but the original is unavailable.
 - D = 8 (Δ = 10..16 except 13): the values are Gómez's ΩH_q (1986 thesis); my rebuild has the right order but
   diameter 9 (§4, flag 1).
 - (3,8) = 256: no source; the squad round found two graphs of exactly 256 (a lift of Q₃ over Z₃₂, and a Z₃₂-symmetric
   annealed graph) and one of 258 (research/squads/table-audit-r1/), all valid.
-- (16,5) = 27,300, (13,8) and (3,10) = 800: no construction traced (§4).
+- (3,10) = 800: no source. After squad round r2 (research/squads/table-audit-r2/, closest 8), a 41-min run of the
+  same Z_c-symmetric annealer at b = 10 orbits, c = 80 found a graph of exactly 800: a Z₈₀-lift of a cubic bipartite
+  multigraph on 5 + 5 vertices, edge orbits (a, b, t) meaning (a, i) ~ (b, i + t): (0,9,65) (0,8,23) (0,6,34)
+  (1,7,11) (1,5,76) (1,8,17) (2,5,62) (2,9,55) (2,8,30) (3,6,55) (3,9,24) (3,7,49) (4,6,5) (4,7,46) (4,5,30)
+  (graphs/d3D10_n800_symZ80_b10.edges.txt; apsp.c VALID, and a separate Python BFS check gives diameter 10).
+- (16,5) = 27,300 and (13,8): no construction traced (§4).
 
 **Loz orange cells (39).** No voltages, groups, base graphs or adjacency lists survive where I could reach them (thesis
 restricted to Auckland logins, eyal.com.au parked, archive.org blocked here). For 13 of the 39 cells n/2 = p·k with p
@@ -159,9 +165,9 @@ their exact order.
    construction in the wiki's own source (Delorme–Gómez–Quisquater, "On large bipartite graphs", never published)
    may differ. Either way these six cells have no checkable graph. (15,8) is the (14,8) value reused; the thesis also
    lists N(15,8) ≥ 14,978,080 ("ΩH₁₁d"), which the wiki does not use.
-2. **No traceable construction:** 16 Loz cells (data lost), (3,10) = 800, (13,8) = 5,314,680 (= 15·|H(11)| at
-   Δ = q+2; not in Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (3,10), (11,10), (15,10),
-   (16,10).
+2. **No traceable construction:** 16 Loz cells (data lost), (13,8) = 5,314,680 (= 15·|H(11)| at Δ = q+2; not in
+   Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (11,10), (15,10), (16,10). (3,10) = 800 has no
+   source either, but a graph of exactly that order was found here (§3), so the value now has a checked graph.
 3. **Attribution:** (6,7) and (8,7) are coloured Delorme–Gómez–Quisquater on the wiki, but their construction and
    exact orders are in Delorme 1985 §9.
 4. **(16,3) = 394:** no source states the construction; a Delorme–Farhi duplication on PG(2,13) gives exactly 394.
@@ -182,6 +188,9 @@ their exact order.
 - For the D = 8 cells (10,8), (12,8), (14,8), (16,8), which the repo has not beaten, the table value rests on a
   construction that does not check out as read (§4). A checked graph of order ≥ the table value there would settle
   it either way.
+- **(3,10) = 800** is a cell the repo has not beaten. Its value had no source and no graph; there is now a checked
+  graph of exactly 800 (graphs/d3D10_n800_symZ80_b10.edges.txt, §3). It equals the table value, so it is not a record.
+  Runs at 810 and 820 with the same method were started after it.
 
 ## 6. The wiki's own consistency
 
