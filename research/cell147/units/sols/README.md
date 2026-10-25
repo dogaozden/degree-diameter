@@ -1,6 +1,16 @@
 # Solution files (cell (14,7) and related DGQ cells), type-2 units
 
-## d14D7_n1771870: bipartite (14,7) on 1,771,870 vertices (table 1,771,560)
+## d14D7_n1772520 (current best): bipartite (14,7) on 1,772,520 vertices (table 1,771,560, +960)
+
+Same base and file formats as below; 480 type-2 units = the 240 flags of `flags_q11_orbit4_240.txt` (a partial ovoid of
+the elliptic section X4 = -X0: 60 orbits of size 4 of an order-4 isometry, squad card r3c3; each flag = a point and the
+Hermitian-spread line through it) used on BOTH matchings; circulant hub graph of degree 9 (randhub.py, NU 480, seed 1).
+Rebuild: `gunzip -k sols/d14D7_n1772520.state.gz && python3 unit_edges2.py ../data/gh_11.txt sols/d14D7_n1772520.state
+sols/d14D7_n1772520.units sols/d14D7_n1772520.hubs d14D7_n1772520.edges` (12,407,640 edges, sha256 in .edges.sha256).
+Checks: `d14D7_n1772520_uhcheck.txt` (all 354,312 base sources + 960 new vertices: 0 pairs beyond 7); independent
+apsp_cyc: `d14D7_n1772520_apsp_cyc.txt`.
+
+## d14D7_n1771870 (earlier): bipartite (14,7) on 1,771,870 vertices (table 1,771,560)
 
 DGQ polygon cover of H(11) (research/cell147/gh_build.c, `./gh_build 11`, sha256 e3a4d834...6eb9d) with 2 matchings over
 Z5, plus 155 type-2 units (75 on matching 1, 80 on matching 2; README.md one level up) and a hub graph.

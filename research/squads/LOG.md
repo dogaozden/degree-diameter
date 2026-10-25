@@ -61,3 +61,22 @@ through p) never conflict on the line side and the packing is a partial ovoid in
 points, degree 1,342): ILS finds 152 in 60 s (spreadpack.c) against 91 for the best card. Squad assessment: the cell
 cards (c9–c16) turned the trick into new highs in all eight other DGQ D = 7 cells within one round; the packing cards
 gave +15 % over random, and the structural hint that led to the spread construction (+67 %).
+
+## 2026-10-24 23:20–00:10 UTC, cell-14-7 second session, round 3 (8 cards, one squad): partial ovoids inside E (q = 11)
+
+Goal: more flags per matching than the Hermitian-spread packing (155 = a partial ovoid of the elliptic quadric E =
+Q^-(5,11), X4 = -X0, found by local search). Brief: research/squads/d14D7-r3/BRIEF.md (graph E11.graph, map E11.map,
+scorer pack CHECKONLY). Cards: c1 ARW ILS · c2 fixed-k tabu · c3 cyclic orbits of isometries of O^-(6,11) · c4 algebraic
+seeds (elliptic 3-space sections) · c5 annealing · c6 GF(9) spread packings for (11,7), (12,7) · c7 q = 13 for (16,7)
+· c8 wildcard (several elliptic sections).
+
+Best per card: c2 159 (216 when seeded from Opus's set; no 217) · **c3 240** (60 orbits of an order-4 isometry; order 12
+gave 204, order 6 210, order 3 162) · c4 169 · c8 155 (union of five sections, no gain) · c6 (12,7) 664,852 and (11,7)
+398,852 (GF(9) spread, 136-138 flags per matching; full uhcheck) · c1, c5, c7: see below.
+
+Opus: c3's order-12 idea solved exactly. E's space is A ⊥ V4 (A = (x0,x3) anisotropic, V4 = (x1,x2,x5,x6) hyperbolic);
+the rotation orbits of order 12 correspond to points b of PG(3,11) off the quadric of V4, and two orbits are compatible
+iff the line through them is a secant (B4^2 - 4Q4Q4' a nonzero square). Exhaustive branch and bound: maximum 17 orbits
+(vertex-transitive graph), plus 12 fixed points = 216, maximal (secantclique.c). Phase-class refinements of the same
+rotation (phaseils.c): order 4 gives 192, order 2 gives 207, so c3's better order-4 element must also move V4. Point-level
+ILS seeded from 240 stays at 240. Kept: 240 for (14,7) (1,772,520).
