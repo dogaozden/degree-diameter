@@ -68,3 +68,32 @@ Running: sl 37 × Z349 ORBW=3 seed 1 (N 17,664,984, μ 28.2, |Fix| 36); sl 83 ×
 - sl 83 × Z31 ORBW=3 seed 2 (N 17,722,824, μ 29.5): best 6 at 26k evals (started 18:03, ends ~20:03).
 - sl 43 × Z223 ORBW=3 seed 2: stuck at energy 24 after 20 min (seed 1 reached 12), stopped at 18:25.
 - psl 73 × Z91 seed 6 stopped at 17:55 (N equal to the record, could only tie).
+
+### Final state (stopped 19:56 UTC, about 5 h of the 6 h allowance)
+**Record: 35,393,904 vertices** = 2 · |PSL(2,73) × Z91|, k = 3, m = 4, f = 0, ORBW=3, seed 5
+(`research/frontier/sols/d12D9_psl_73_91_orb3f0_orbw3_s5.txt`, checked by haarcheck_psl VALID; the only low-memory PSL checker here,
+so the coordinator's re-check is the second independent one).
+Steps this round: 35,068,320 (round 1, sl 71×49) → 35,076,288 (sl 47×169, ORBW=3, seed 6, 18.5k evals, checked by haarcheck_sl and haarcheck2)
+→ 35,393,904 (psl 73×91, ORBW=3, seed 5, 111k evals, checked by haarcheck_psl).
+
+**What ORBW=3 did.** Two solves out of 14 orbit runs in this round, both with ORBW=3, and none of the default-ORBW controls
+(sl 47×169 seed 6, psl 73×91 round 1, and the other default runs) solved in this round. That is a small sample, not a measured effect, but
+it is the first success on sl 47×169 (round 1 had five default seeds, all unsolved).
+
+**Unsolved above the bar (N > 17,696,952), with best cost:**
+- psl 47×Z343 (N 17,797,584, μ 31.4, |Fix| 23): seed 1 best 6 at 176k evals (2 h), seed 2 best 18 (stopped, stuck).
+- sl 83×Z31 (N 17,722,824, μ 29.5, |Fix| 83): seed 1 best 8 (2 h), seed 2 best 6 at 152k evals (2 h).
+- sl 43×Z223 (N 17,720,472, μ 29.5, |Fix| 41): seed 1 best 12 at 157k evals (2 h), seed 2 best 24 (stopped, stuck).
+
+**Stopped as ties (N equal to a record I already had):** sl 47×Z169 seeds 7 and default seed 6 (best 12); psl 73×Z91 seed 6 (best 9).
+Stopped as hopeless: sl 37×Z349 (energy 36, the same level round 1 found).
+
+**Reading.** Past μ ≈ 25 the orbit search at k = 3 stalls at cost 6–12 for 2 h runs (about 150k evaluations). Only one run in five
+solved at μ ≈ 25–29 in this round (psl 73×91 seed 5, 111k evals). Each further step needs more seeds than this session could give.
+
+**What I would try next (not done):**
+1. More seeds of psl 73×91 with ORBW=3 (its one success came from seed 5 after two failures): roughly 1 in 3 seeds, so maybe 6 seeds for another success, but
+   the bar is now N > 17,696,952, so only a group above it counts (psl 73×91 itself can no longer give a record).
+2. A PGL(2,p) or GF(q) checker, so that the pgl/sl 64 groups (N ≈ 17.56M, below the current bar) could be used at all.
+3. A search change rather than more seeds: targeted moves on the uncovered set (replace an orbit that covers an uncovered element),
+   instead of random orbit replacement. Not attempted here; it is a code change, not a parameter run.
