@@ -33,3 +33,9 @@ annealing runs at ~10 evaluations/s per process at N ≈ 1.7·10⁷ with four pr
   Check: haarcheck_psl (low-memory PSL checker): VALID d=12 D=9, both sides reach all 17,132,460 per side, ecc 9.
   Not yet re-checked by build_haar2.py (too large: ~2·10⁷ vertices, hours and > 7 GB).
 - Others at 40 min budget: psl 53 × 229 best 3, psl 47 × 331 best 3, sl 37 × 337 best 14 (still running at this point).
+
+### Round 2 (from 08:00 UTC): bar is now N > 17,132,460
+Stopped sl 37 × 337 (N 17.06M) and psl 53 × 229 (N 17.04M): below the new record, a solution there would not count.
+Running: psl 47 × Z331 (N 17,174,928, μ 18.7), sl 43 × Z217 (N 17,243,688, μ 19.9), psl 89 × Z49 (N 17,269,560, μ 20.3),
+sl 97 × Z19 (N 17,338,944, μ 21.5). Each 40 min, seed 1, k=3 m=4 f=0.
+Runner: scratchpad run.sh (haar_sym with THREADS=1, nice, timeout; copies logs to research/structured/runs/d12D9_<tag>.log).
