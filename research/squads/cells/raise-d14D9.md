@@ -5,6 +5,17 @@ claude/raise-d14d9-haar-jq8m8d, notes below) left a verified record of **117,837
 research/frontier/sols/d14D9_psl_109_91_orb3_s1.txt). This round starts from 117,837,720, so a new record needs N > 58,918,860.
 Round-1 solution files and logs are copied into this branch unchanged.
 
+## Round 2 result so far
+
+**New record: 117,895,680 vertices** = 2N, N = 58,947,840 = |SL(2,7) × SL(2,16) × Z_43| (GF(16) as x^4+x+1), orbit search
+k = 3, m = 4, f = 2, seed 2, 785 evaluations (112 s, μ = 18.19, |Fix| = 89). Solution file
+`research/frontier/sols/d14D9_prod_sl_7_16_43_orb3_s2.txt`, sha256 eadaab3df868f0594d62f183c153ce9af8c35c520ed72b3c5796fad8178c8555.
+Verified by haar_sym's full diameter check and by the independent `tools/haarcheck_prod.py` (ecc 9 from both sides, all
+117,895,680 vertices reached, 14 distinct generators; log `research/structured/runs/r2/d14D9_prod_sl_7_sl_16_43_orb3_s2.log`).
+Seed 1 on the same group was stopped after 92 s (same N, cannot raise the record). Seed 1 had reached best 6 at 657 evals.
+
+Next target: any group with N > 58,947,840 (queue items 12–14 and the screen list below).
+
 ## Round 2 plan (started 2026-10-25, about 15:00 UTC)
 
 - Round 1 ran the seed-1 orbit rungs over psl and sl groups from μ 14 to 20 and stopped at μ 19–21 with nothing solved.

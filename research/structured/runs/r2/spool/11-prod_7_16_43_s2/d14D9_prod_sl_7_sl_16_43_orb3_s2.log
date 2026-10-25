@@ -4,3 +4,10 @@ alpha: conj by prod[mat(5,1,0,3);mat(10,15,11,11)] (index 1002395), z -> 6 z on 
 ORBIT k=3 m=4 f=2: |Fix(alpha)| = 89 (+e); mu = 18.19, mu/k = 6.06, fixed-point misses ~ 1.22
 start cost=48
 t=30 steps=26 evals=209 cost=14 best=14 T=0.53
+t=61 steps=55 evals=441 cost=8 best=8 T=0.18
+t=91 steps=81 evals=649 cost=6 best=6 T=0.15
+RESULT d=14 D=9 group=prod sl 7 sl 16 poly x^4+x+1 x Z_43 N=58947840 best=0 evals=785 time=111.6 orbit k=3 m=4 f=2 fix=89
+full diameter check: OK
+wrote /home/user/degree-diameter/research/structured/runs/r2/spool/11-prod_7_16_43_s2/d14D9_prod_sl_7_sl_16_43_orb3_s2.txt
+UNCHECKED: > 20M vertices and no low-memory checker for prod
+haarcheck_prod (independent, tools/haarcheck_prod.py): VALID d=14 D=9 vertices=117895680, ecc(e,A)=9 ecc(e,B)=9
