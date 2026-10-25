@@ -37,26 +37,34 @@ for y in range(N):
     for s_ in ls:
         for t in ls:
             if s_ != t and (y, s_) not in dele and (y, t) not in dele: Cl[s_, t] = 1; Pl[s_, t] = fp[y, s_] ^ fp[y, t]
+_NG = {}
 def unmixed(P, C, opp):
-    PC = P * C; odd = PC @ C + C @ PC - 2 * (PC @ PC); ng = C @ C
-    return opp & ((odd == 0) | (odd == ng))
+    Cf = C.astype(np.float64); PC = (P * C).astype(np.float64)
+    odd = np.rint(PC @ Cf + Cf @ PC - 2 * (PC @ PC)).astype(np.int64)
+    key = id(C)
+    if key not in _NG: _NG[key] = np.rint(Cf @ Cf).astype(np.int64)
+    return opp & ((odd == 0) | (odd == _NG[key]))
 oppP = ~PM; np.fill_diagonal(oppP, False); oppL = ~LM; np.fill_diagonal(oppL, False)
+_IA = []; _IC = []; _FA = []; _FC = []; _JS = []; _JT = []; _GS = []; _GT = []
+for l in range(N):
+    pl = [int(x) for x in PTS[l]]
+    for ka, a in enumerate(pl):
+        for kc, c in enumerate(pl):
+            if Cp[a, c]: _IA.append(a); _IC.append(c); _FA.append(l * 8 + ka); _FC.append(l * 8 + kc)
+fidx = {}
+for l in range(N):
+    for kk in range(8): fidx[int(PTS[l][kk]), l] = l * 8 + kk
+for y in range(N):
+    ls = [int(x) for x in LOF[y]]
+    for s_ in ls:
+        for t in ls:
+            if Cl[s_, t]: _JS.append(s_); _JT.append(t); _GS.append(fidx[y, s_]); _GT.append(fidx[y, t])
+_IA, _IC, _FA, _FC = map(np.array, (_IA, _IC, _FA, _FC)); _JS, _JT, _GS, _GT = map(np.array, (_JS, _JT, _GS, _GT))
 def build_unmixed(nu):
     global UP, UL, UPl, ULl
-    fp = {}
-    for l in range(N):
-        for kk in range(8): fp[int(PTS[l][kk]), l] = int(nu[l * 8 + kk])
     Pp.fill(0); Pl.fill(0)
-    for l in range(N):
-        pl = [int(x) for x in PTS[l]]
-        for a in pl:
-            for c in pl:
-                if Cp[a, c]: Pp[a, c] = fp[a, l] ^ fp[c, l]
-    for y in range(N):
-        ls = [int(x) for x in LOF[y]]
-        for s_ in ls:
-            for t in ls:
-                if Cl[s_, t]: Pl[s_, t] = fp[y, s_] ^ fp[y, t]
+    Pp[_IA, _IC] = nu[_FA] ^ nu[_FC]
+    Pl[_JS, _JT] = nu[_GS] ^ nu[_GT]
     UP = unmixed(Pp, Cp, oppP); UL = unmixed(Pl, Cl, oppL)
     UPl = [tuple(x) for x in np.argwhere(np.triu(UP))]; ULl = [tuple(x) for x in np.argwhere(np.triu(UL))]
 build_unmixed(nu)
@@ -275,8 +283,15 @@ def c0count(sig):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
     rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
-    return int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
+    bP = UP & ~rP; bL = UL & ~rL
+    n = int(bP.sum() // 2 + bL.sum() // 2)
+    if not os.environ.get('WSCORE'): return n
+    mv = ~banned          # movable points (second-order points count as movable)
+    mvl = mv[sinv]        # line holders movable
+    hardP = bP & ~mv[:, None] & ~mv[None, :]; hardL = bL & ~mvl[:, None] & ~mvl[None, :]
+    return n + 10 * int(hardP.sum() // 2 + hardL.sum() // 2)
 tabu = []
+gbest = [cur]
 if os.environ.get('FLIPS'):
     t0 = time.time()
     while cur > 0 and time.time() - t0 < secs:
@@ -323,8 +338,10 @@ if os.environ.get('FLIPS'):
             c2, p2 = total(new)
             if c2 < best[0]: best = (c2, new)
         print('flip %d: after flip %d %s -> repaired %d (cur %d)' % (fi, c1, p1, best[0], cur_old), flush=True)
-        if best[0] <= cur_old:
-            sig, cur = best[1], best[0]; write(sig)
+        FT = float(os.environ.get('FLIPT', 0))
+        if best[0] <= cur_old or (FT > 0 and rng.random() < np.exp(-(best[0] - cur_old) / FT)):
+            sig, cur = best[1], best[0]
+            if cur <= gbest[0]: gbest[0] = cur; write(sig)
         else:
             nu[:] = nu_old; sig = sig_old; cur = cur_old; build_unmixed(nu)
 t0 = time.time()
