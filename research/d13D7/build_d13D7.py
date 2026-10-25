@@ -14,7 +14,7 @@ Construction.
    Gamma_2(S_j) (the 132 lines meeting S_j), in sorted order; the remaining points go to the remaining lines in sorted
    order.  For each j the three matching edges at (R_j, i) are deleted; a new vertex v_j is joined to (R_j, 0),
    (R_j, 1), (R_j, 2) and a new vertex u_j to (S_j, 0), (S_j, 1), (S_j, 2).  v_j ~ u_k for k - j in a set C of 10
-   residues mod m (so v-v and u-u pairs are close).  Max degree 13, order 1,062,936 + 2m.
+   residues mod m with 3(C - C) = Z_m (so all v-v and u-u pairs are within 6; hub_offsets).  Max degree 13, order 1,062,936 + 2m.
  * R: the points listed in R_FILE (coordinates); S: the first m lines, in canonical order, of the Hermitian spread
    {lines of H inside n^perp}, n = (1,0,0,0,1,0,0) (1332 pairwise opposite lines).
 Canonical orders: points by code sum x_i 11^i (first nonzero coordinate 1); lines by their sorted tuple of point
@@ -122,6 +122,27 @@ def hexagon():
     return P, np.array(lines, dtype=np.int64)
 
 
+def hub_offsets(m):
+    """10 residues C mod m (the circulant v_j ~ u_{j+c}) with 3(C - C) = Z_m, so that every two v's and every two u's
+    are within distance 6 through the hub graph.  The fixed set C_OFFSETS does this for m <= ~600; for larger m a
+    deterministic random search (seed 1) is used."""
+    if m <= 10:
+        return list(range(m))
+    def covers(C):
+        D = {(a - b) % m for a in C for b in C}
+        D2 = {(x + y) % m for x in D for y in D}
+        return len({(x + y) % m for x in D2 for y in D}) == m
+    C = sorted({c % m for c in C_OFFSETS})
+    if len(C) == 10 and covers(C):
+        return C
+    rng = np.random.default_rng(1)
+    for _ in range(10000):
+        C = sorted(int(c) for c in rng.choice(m, 10, replace=False))
+        if covers(C):
+            return C
+    raise SystemExit('no hub offsets with 3(C-C) = Z_m')
+
+
 def bil(X, Y):
     return (X[..., 0] * Y[..., 4] + X[..., 4] * Y[..., 0] + X[..., 1] * Y[..., 5] + X[..., 5] * Y[..., 1]
             + X[..., 2] * Y[..., 6] + X[..., 6] * Y[..., 2] - 2 * X[..., 3] * Y[..., 3]) % q
@@ -194,7 +215,7 @@ def main():
     for j in range(m):
         for i in range(3):
             E.append(np.array([[6 * N + j, 2 * N * i + R[j]], [6 * N + m + j, 2 * N * i + N + S[j]]]))
-        offs = sorted({c % m for c in C_OFFSETS}) if m > 10 else list(range(m))
+        offs = hub_offsets(m)
         for c in offs:
             E.append(np.array([[6 * N + j, 6 * N + m + (j + c) % m]]))
     E = np.concatenate(E)

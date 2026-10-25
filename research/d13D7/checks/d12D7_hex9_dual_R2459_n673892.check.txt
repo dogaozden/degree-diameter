@@ -1,0 +1,15 @@
+# (12,7) 673,892 = 5*|H(9)| + 9,592 (job cell-13-7, 2026-10-24/25 ~23:55-00:00 UTC).  New cell (table 664,300).
+# Five copies of H(9) (levels Z5) joined by (p, i) ~ (delta(p), i+1) and (p, i) ~ (delta(p), i+2), delta = the explicit
+# duality of H(9) (q9/dual_pt2line.txt).  Surgery at R = 2,459 pairwise non-collinear points (q9/R2459_noncollinear_idx.txt,
+# the first 2,459 of the ncol_ils set): all extra edges at R removed; 2 line-side hubs per point joined to (r, i) for
+# all i (4,918) and 4,674 point-side hubs joined to (delta(r), i) for all i; hub graph = the bipartite (7,6) graph of
+# 9,592 vertices from research/p4/hats/graphs/hex_q5_delorme_whisk600_n9592.json (sides 4,918 / 4,674, max degree 7,
+# diameter 6), q9/hub_d7D6_9592.txt.  Max degree 12 = q+3.
+#   HP=4674 NSFILE=q9/hub_d7D6_9592.txt DUALFILE=q9/dual_pt2line.txt RFILE=q9/R2459_noncollinear_idx.txt NOCHECK=1 \
+#     multi hex/hex_q9.bin 2 1 d12D7.edges
+#   or: python3 tools/multi_sol.py build research/frontier/sols/d12D7_hex9_dual_R2459_n673892.sol hex/hex_q9.bin d12D7.edges
+#   (round trip checked identical)
+# Check: research/d13D7/apsp_src.c (apsp_wide with a source list) from all 132,860 level-0 vertices and all 9,592 hubs.
+# (x, i) -> (x, i+1) with hubs fixed is an automorphism of this graph, so these eccentricities give the diameter.
+n=673892 edges=4041888 degree min=11 max=12 bipartite=yes diameter=7
+RESULT VALID d=12 D=7 n=673892 (eccentricities of the 142452 listed sources)
