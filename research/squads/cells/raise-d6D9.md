@@ -33,3 +33,9 @@ Every new record needs N ≥ 63,649 (vertices = 2N).
   Odd D and PSL: PSL(2,q) has ~q²/4 involutions, each missed with prob about e^(−λ/2), so a floor of a few
   misses is expected (STRUCTURE §2.6, §5). SL(2,q) has only −I. That may explain the plateau at 3.
 - Wave 3 (queued): sl 13 × 31 (N 67704, μ 49.9, large q so small |Fix|), seeds 1, 2 at 1200 s.
+- Wave 3 results: sl 13 × 31 (N 67704, μ 49.9, |Fix| 11): seeds 1, 2 at 1200 s (14M evals each), seed 3 at 570 s: all
+  **best 6**; ORBW=3 seeds 1, 2 at 570 s: best 6. sl 11 × 49 seed 2 at 1200 s: best 14 (24M evals so far).
+  psl 19 × 19 with ORBW=3 at 900 s: best 3. Stopped the plain psl 19 × 19 runs at 1200 s (stuck at 3 on all seeds).
+- Status at 09:10: no candidate has reached cost 0. The plateaus (3 for psl 19 × 19, 6 for sl 13 × 31, 14 for sl 11 × 49)
+  are the same across seeds and ORBW weights, which points to a structural floor, not too little search.
+  Queued 90-minute runs of sl 13 × 31 (seeds 3, 4; ORBW=3 seeds 1, 2) as the last attempt on this family.
