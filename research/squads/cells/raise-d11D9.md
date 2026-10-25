@@ -131,3 +131,13 @@ groups as not run.
 - Independent check: build_haar2.py VALID: ecc 9 from (e,A) and (e,B), 0 unreached, 11-regular, 0 duplicate edges,
   edge-list sha256 a51d7f96174920381a935a1b0b7b2fd22e285c23672c8cd28716c787f8eaf9a8. Log: runs/d11D9_prod_sl_8_sl_11_13_orb3_s1.rebuild.txt.
 - Wave 2a's other runs were still going at 14:59 (see the progress table above).
+
+### Wave 2b (15:04 UTC): bar raised to 17,297,280 (|G| > 8,648,640)
+
+- prod sl 3 × sl 11 × Z271 (8,585,280) and prod sl 4 × sl 11 × Z109 (8,632,800) were stopped: both are below the new bar.
+  Their last progress: best 48 (46k evals) and 6 (79k evals); not solved.
+- Still running (started 15:04 unless noted, 7200 s each):
+  - sl 43 × Z109 (seed 2, μ 23.3, from 14:26, best 6 at 125k evals at 14:59)
+  - sl 41 × Z127 (seed 2, μ 26.6)
+  - prod sl 3 × sl 11 × Z277 (seed 1, μ 27.8)
+  - prod sl 5 × sl 7 × Z217 (seed 1, μ 26.7)
