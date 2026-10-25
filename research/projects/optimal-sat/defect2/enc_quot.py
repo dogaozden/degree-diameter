@@ -21,7 +21,9 @@ import sys, itertools, json
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 
-def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=False):
+def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=False, pb=None):
+    """pb: if a list is given, cardinality and pair conditions are appended to it as linear constraints
+    (list of (terms, op, rhs), terms = [(coef, var)]) instead of being encoded as CNF."""
     m = k * (k - 1) // 2
     g = k - 2
     pool = IDPool()
@@ -53,6 +55,10 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=
         for z in I:
             for x in O: cnf.append([-a[z, x]])
     for c in V:
+        if pb is not None:
+            pb.append(([(1, a[c, d]) for d in V if d != c], '=', g))
+            pb.append(([(1, a[d, c]) for d in V if d != c], '=', g))
+            continue
         cnf.extend(CardEnc.equals([a[c, d] for d in V if d != c], bound=g, vpool=pool, encoding=EncType.seqcounter).clauses)
         cnf.extend(CardEnc.equals([a[d, c] for d in V if d != c], bound=g, vpool=pool, encoding=EncType.seqcounter).clauses)
     def counter(ys):
@@ -81,6 +87,10 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=
                 u, v = (a[c, e], a[d, e]) if direction == 'out' else (a[e, c], a[e, d])
                 cnf.append([-y, u]); cnf.append([-y, v]); cnf.append([y, -u, -v])
                 ys.append(y); Y[direction, c, d, e] = y
+            if pb is not None:
+                # 2(a_cd + a_dc) + sum_e y_e = 2  (off-diagonal entry of (2I+A)(2I+A)^T resp. (2I+A)^T(2I+A))
+                pb.append(([(2, a[c, d]), (2, a[d, c])] + [(1, y) for y in ys], '=', 2))
+                continue
             s1, s2, s3 = counter(ys)
             cnf.append([-s3])
             cnf.append([-adj, -s1])        # adjacent: none

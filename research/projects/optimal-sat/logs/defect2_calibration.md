@@ -23,3 +23,18 @@ The quotient form uses Theorem Q (SUMMARY.md): oriented graph A on m = k(k-1)/2 
 | 9 | 36 | **SAT** 1.1 s | UNSAT 148 s | none (so the signing is what fails at k = 9) |
 | 10 | 45 | running | — | none (W(45,8) impossible: odd order needs square weight) |
 | 11 | 55 | running | running | open |
+
+## Other things tried on the A-only instance (2026-10-25, machine partly loaded)
+
+| method | k = 9 (SAT) | k = 10 (UNSAT) |
+|---|---|---|
+| kissat, `--sym --nf2` | 1.7 s | 211 s |
+| kissat, `--sym --nf2 --ntt --alltr` | 1.6 s | 163 s |
+| kissat `--unsat` preset, same CNF | — | 210 s (loaded machine; no clear gain) |
+| CaDiCaL + LRAT (binary), same CNF | — | 551 s (loaded), proof 218 MB |
+| RoundingSat (OPB, linear pair equalities, `enc_pb.py`) | 1.5 s | not done in 25 min |
+| cube-and-conquer, 2 rows of B (86 cubes) | — | about 10 s per cube, about 5× the monolithic work |
+| march_cu lookahead cubing, depth 8 | — | 7 min just to cube (37 cubes) |
+
+Symmetric searches for k = 11 (`cayley_search.py`, `semireg_search.py`): no Cayley digraph on either group of order 55
+(complete); A with a fixed-point-free automorphism of order 11 or 5: not decided in 900 s each.
