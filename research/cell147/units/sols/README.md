@@ -49,7 +49,7 @@ Base files: H(q) for q = 5, 7, 11, 13 from `research/cell147/gh_build.c` (`./gh_
 | (10,7) | d10D7_n224946 | 224,946 | 224,694 (table) | H(8), j = 1, 126 | flags_q8_spread126.txt (GF(8) section X4 = X0 + X3, card r4c7) | uhcheck all sources, apsp_cyc VALID |
 | (11,7) | d11D7_n398880 | 398,880 | 398,606 (master) | H(9), j = 1, 150 | flags_q9_orbit5_150.txt (order-5 isometry orbits of X4 = -8 X0 over GF(9), card r4c6) | uhcheck all sources, apsp_cyc VALID |
 | (12,7) | d12D7_n664900 | 664,900 | 664,300 (table) | H(9), j = 2, 300 | flags_q9_orbit5_150.txt | uhcheck all sources, apsp_cyc VALID |
-| (13,7) | d13D7_n1063416 | 1,063,416 | 1,062,936 (table) | H(11), j = 1, 240 | flags_q11_orbit4_240.txt | uhcheck all sources |
+| (13,7) | d13D7_n1063416 | 1,063,416 | 1,062,936 (table) | H(11), j = 1, 240 | flags_q11_orbit4_240.txt | uhcheck all sources, apsp_cyc VALID |
 | (15,7) | d15D7_n2481624 | 2,481,624 | 2,480,184 (table) | H(11), j = 3, 720 | flags_q11_orbit4_240.txt | uhcheck all sources |
 | (16,7) | d16D7_n4023516 | 4,023,516 | 4,022,340 (table) | H(13), j = 2, 588 | flags_q13_phase294.txt (order-7 phase classes, C = 11) | uhcheck all sources (6,669 s, 4 threads) |
 
