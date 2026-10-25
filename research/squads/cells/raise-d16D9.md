@@ -47,3 +47,6 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 - 2026-10-25 08:42: sl 109x133 solved at 3,577 evals, |G| 172,224,360 (344,448,720 vertices). Below the current best, so not checked
   and not recorded. Kept only in the scratchpad.
 - Running: sl 89x247 (cost 6), sl 83x307 (cost 14), sl 97x193 (cost 18), sl 239x13 (+5.2 %).
+- 2026-10-25 09:18: sl 89x247 (cost 6, 2,729 evals), sl 83x307 (cost 6, 3,809 evals), sl 97x193 (cost 12, 3,809 evals)
+  timed out with no solve (2400 s each). Retrying 83x307 and 97x193 with seed 2. Still running: sl 239x13 (cost 12),
+  sl 293x7 (cost 22). Best remains sl 101x169, 348,207,600.
