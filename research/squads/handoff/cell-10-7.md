@@ -15,8 +15,8 @@ research/d10D7/checks/.
 | (12,7) | 664,300 | 680,068 | apsp VALID |
 | (13,7) | 1,062,936 | 1,064,448 | apsp VALID (source ranges, apsp_range.c) |
 | (14,7) | 1,771,560 | 1,774,584 | apsp VALID (source ranges) |
-| (15,7) | 2,480,184 | 2,484,720 | see hex11_B2_CHECK.md |
-| (16,7) | 4,022,340 | 4,025,508 | see hex11_B2_CHECK.md |
+| (15,7) | 2,480,184 | 2,484,720 | symmetric check VALID (level 0 + hubs); full apsp not run |
+| (16,7) | 4,022,340 | 4,025,508 | candidate: partial check only (hubs + 12,800 base vertices) |
 
 All of these are the table's hexagon covers with every matching equal to one bijection M, plus hub vertices for
 "freed pairs" (B2 condition, research/d10D7/checks/B2_hubs_CHECK.md). The gain is set by a partial ovoid of H(q):

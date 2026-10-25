@@ -74,3 +74,16 @@ edges.
       ... [443646,887292) max=7; [887292,1330938) max=7; [1330938,1774584) max=7
       RESULT VALID (range) d=14 D=7 n=1774584 (all four)
   Edge list (`dual/xgen ... 5`) sha256 97e726f453799b8fffabf3fa2c5623b5a33f99b43a8cdd20b2e8d6a7ec454dcb.
+- **(16,7) 4,025,508: partial check only.** Edge list sha256 cdf677814fcc7dcfa083ce038dd432e44d67fe72d8034dbfab2dd16e7da45db3. With apsp_range, 2026-10-25 02:34 UTC:
+  all 3,168 hubs (sources [4022340, n)), the points 0..6399 of level 0 and the lines 402234..408633 of level 0 have
+  eccentricity 7. The graph is connected and bipartite, with degree min 13 and max 16. A full check (all of level 0
+  plus the hubs, valid by the level shift; or all-pairs) needs about 6 core-hours and was not run in this session.
+  Treat (16,7) as a candidate until the coordinator checks it.
+- **(15,7) 2,484,720: symmetric check VALID** (2026-10-25 02:4x UTC). The map (v, i) -> (v, i+1) is an automorphism
+  of the 7-level graph and fixes every hub (all matchings equal M; hubs are adjacent to their owner in all levels).
+  Every vertex is therefore equivalent to a level-0 vertex or to a hub. apsp_range was run from all of level 0
+  ([0, 354312), four processes) and from all hubs ([2480184, n)):
+      n=2484720 edges=18635400 degree min=15 max=15 bipartite=yes, eccentricity max=7 in all five ranges,
+      RESULT VALID (range) d=15 D=7 n=2484720
+  The graph is 15-regular. A check with no symmetry assumed (all n sources, about 8 core-hours here) was not run in
+  this session. Edge list (`dual/xgen ... 7`) sha256 ea5a1611505148962079fb297a539460b1e0108d4a869a243da76b3a62e264d4.
