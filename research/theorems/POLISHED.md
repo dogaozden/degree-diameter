@@ -21,9 +21,10 @@ For each result we give: **Statement** (in coordinates), **New vertices** (exact
 
 Errors and corrections found while preparing this version (none affects a theorem or a record value):
 
-1. **The 2013 baseline at $D=3$.** The README and Table 1 of `geometry.tex` list $(13,3)=274$ and $(15,3)=374$ as
-   "table" values. Those are the later values of Araujo-Pardo and López [AL20] (Graphs Combin. 2022). The 2013 survey
-   table (Miller–Širáň, Electron. J. Combin. DS14v2, Table 4) has $270$ and $370$ there. Both columns are now shown.
+1. **The 2013 baseline at $D=3$.** The README and the values table of `geometry.tex` list $(13,3)=274$ and
+   $(15,3)=374$ as "table" values. Those are the later values of Araujo-Pardo and López [AL20] (Graphs Combin. 2022).
+   The 2013 survey table (Miller–Širáň, Electron. J. Combin. DS14v2, Table 4) has $270$ and $370$ there. Both columns
+   are now shown, here and in `geometry.tex` (Table 4).
    Every other cell used below has the same value in the survey and in the wiki values read on 2026-10-10
    (`research/frontier/TABLE.md`).
 2. **Corollary C1 needs no Klein correspondence.** `NOTE.md` derived the $(16,4)$ graph through $Q(4,q)$ and listed
@@ -33,7 +34,7 @@ Errors and corrections found while preparing this version (none affects a theore
 3. **Lean status in `NOTE.md` §7 is out of date.** Theorem B *with* stand-ins is now in Lean (`GQST.standin_gqst`),
    and so are the regular versions; see Section 9.
 4. **`NOTE.md` open problem 3** ($q^2+1$ shadow lines on $Q(4,q)$ with one ovoid of clones, $q$ odd) is settled
-   negatively by `geometry.tex`, Proposition `prop:shadowbound` (at most $q^2-q+2$). `NOTE.md` is superseded on this point.
+   negatively by `geometry.tex`, Proposition 5.13 (at most $q^2-q+2$). `NOTE.md` is superseded on this point.
 5. **Theorem A in nicer coordinates.** The pair $\kappa_1=1/2$, $\kappa_2=1/(2\varepsilon)$ satisfies
    $\kappa_1\kappa_2=1/(4\varepsilon)$, so the two quadrics can be written $2X_0X_1=X_2^2-\varepsilon X_3^2$ and
    $2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2$. Same theorem; checked by computer for $q=3,5,7,9$ (`polish/thmA.py`).
@@ -47,6 +48,9 @@ Errors and corrections found while preparing this version (none affects a theore
    deficient vertices, and neither the maximum degree nor the diameter depends on that choice.
 9. **Printed matching in [AL20].** Already noted in `geometry.tex`: with the index set $\mathbb F\setminus\{0,1,a\}$
    four vertices keep degree $q+1$; with $\mathbb F^*$ the graph is $(q+2)$-regular as intended. Kept (Remark 2.7).
+10. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
+   the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
+   numbers below refer to the revised, recompiled `geometry.pdf`.
 
 ## Summary of cells
 
@@ -54,7 +58,7 @@ $M_b$ is the bipartite Moore bound. "2013" is the survey table (DS14v2, Table 4,
 current CombinatoricsWiki value where it differs. All our graphs were rebuilt and checked by the coordinator.
 
 | $(\Delta,D)$ | $M_b$ | 2013 | wiki | ours | regular? | result | status |
-|---|---:|---:|---:|---:|---|---|---|
+|------|------:|------:|-----:|-------:|--------|------------------------------|----------------|
 | (11,3) | 222 | 190 | 190 | **192** | yes | fourth hat, $q=9$ | paper, computer, Lean |
 | (13,3) | 314 | 270 | 274 | **276** | yes | fourth hat, $q=11$ | paper, computer, Lean |
 | (15,3) | 422 | 370 | 374 | **376** | yes | fourth hat, $q=13$ | paper, computer, Lean |
@@ -278,8 +282,8 @@ $(q+2)$-regular. Hence $n_b(q+2,3)\ge2(q^2+q+6)$, attained by a regular graph.
 
 The construction and proof use only the axioms of a projective plane together with an anti-flag $(A,\ell)$ and four
 points $X_s$ of $\ell$, so the coordinate-free version holds in every projective plane of order $q\ge3$
-(`geometry.tex`, Theorem `thm:fourhat`); the regular completion in an arbitrary plane needs $q\ge7$ (Hall's theorem,
-`geometry.tex`, remark "Arbitrary planes"). The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
+(`geometry.tex`, Theorem 4.2); the regular completion in an arbitrary plane needs $q\ge7$ (Hall's theorem,
+`geometry.tex`, Remark 4.8). The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
 "crossed", and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$.
 
 ### 2.3 New vertices and every changed neighbourhood
@@ -351,18 +355,18 @@ or $L$ is not on $A$.
 
 *Lines (Lemma 2.6).* Any two lines $L\ne N$ are concurrent.
 
-- (Λ1) Both in $\mathrm{PG}(2,q)$, $p=L\cap N$. If both incidences survive, use $p$. Otherwise, say $p=X_s$,
+- (N1) Both in $\mathrm{PG}(2,q)$, $p=L\cap N$. If both incidences survive, use $p$. Otherwise, say $p=X_s$,
   $L=\lambda_s$, and $N=\ell$ or $N=[w:1:-s]$, $w\ne0$. If $N=[w:1:-s]$: $H_s$. If $N=\ell$, $s=a$: $H_a$. If
   $N=\ell$, $s\in T$: $X_{\sigma^{-1}(s)}$ (rotation).
-- (Λ2) $M$ and $L$. $L$ on $P$ ($L=\ell,\lambda_\infty$ or $[1:0:w]$): $P$. $L=\lambda_t$, $t\notin S$: $X_t$.
+- (N2) $M$ and $L$. $L$ on $P$ ($L=\ell,\lambda_\infty$ or $[1:0:w]$): $P$. $L=\lambda_t$, $t\notin S$: $X_t$.
   $L=\lambda_s$, $s\in S$: $H_s$. $L=[u:1:w]$, $u\ne0$: it meets $\ell$ in $X_r$, $r=-w$ (F4); use $X_r$ if
   $r\notin T$, and $H_r$ if $r\in T$ ($H_r$ is on $[u:1:-r]$ and on $M$).
-- (Λ3) $K_s$ and $L$. $L$ not on $A$ ($L=\ell$ or $[u:v:w]$, $u\ne0$): $L\cap\lambda_s=(x:s:1)$ (F1, F4), which is on
+- (N3) $K_s$ and $L$. $L$ not on $A$ ($L=\ell$ or $[u:v:w]$, $u\ne0$): $L\cap\lambda_s=(x:s:1)$ (F1, F4), which is on
   $K_s$, and its incidence with $L$ survives. $L=\lambda_s$: $(1:s:1)$. $L=\lambda_\infty$ or $\lambda_t$, $t\notin T$:
   $Q$. $L=\lambda_t$, $t\in T\setminus\{s\}$, $s=a$: $A$. $L=\lambda_t$, $t\in T\setminus\{s\}$, $s\in T$: if
   $t=\sigma(s)$, $X_s$ (on $\lambda_{\sigma(s)}$ and $K_s$); if $t=\sigma^{-1}(s)$, $H_t$ (on $\lambda_t$ and on
   $K_{\sigma(t)}=K_s$).
-- (Λ4) Two new lines. $K_s,K_{s'}$: $Q$. $M,K_a$: $X_a$. $M,K_t$ ($t\in T$): $H_{\sigma^{-1}(t)}$.
+- (N4) Two new lines. $K_s,K_{s'}$: $Q$. $M,K_a$: $X_a$. $M,K_t$ ($t\in T$): $H_{\sigma^{-1}(t)}$.
 
 *Conclusion.* By Lemmas 2.4–2.6, $G$ has diameter $\le3$; adding the filler cannot increase it (Lemma 0.2). The
 graphs are bipartite and not complete bipartite ($A\notin\ell$), so the diameter is exactly 3. $\square$
@@ -473,7 +477,7 @@ most one point on $v$. The components are the star $v\cup\{\text{points of }v\}$
 (Lemma 1.3). With $m=2$, Theorem 1.2 gives maximum degree $q+2$, diameter 4 and
 $2(q+1)(q^2+1)+(q^2+1)+(q+1)+2=2q^3+3q^2+3q+6$ elements: 346, 1734, 3064, 4946 at $q=5,9,11,13$.
 
-**Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. `prop:shadowbound`).** For $q$ odd, an ovoid
+**Remark 3.5 (limit of shadow lines on $Q(4,q)$, `geometry.tex` Prop. 5.13).** For $q$ odd, an ovoid
 $\mathcal O$ of $Q(4,q)$, $w=\mathbf 1_{\mathcal O}$ and maximum degree $q+2$, at most $q^2-q+2$ shadow lines are
 possible: every old point and clone serves at most one shadow line, so a point off $\mathcal O$ is on at most one entry
 of $\mathcal M$ and a point of $\mathcal O$ on at most two; if some $o\in\mathcal O$ is on two entries, each other entry
@@ -489,7 +493,7 @@ deleting 21 redundant edges, with stand-ins essential. Every ovoid of $Q(4,p)$, 
 [BGS06], so the choice of ovoid does not matter. Appendix A lists the 21 shadow lines in coordinates, so this graph,
 too, can be checked by hand. Cell: $(7,4)$, 2013: 346, ours 359 (regular: 350 from Theorem A at $q=5$).
 
-**Status.** Paper proof (above; `NOTE.md` §2, `geometry.tex` Theorem `thm:B`). Computer-checked on many instances
+**Status.** Paper proof (above; `NOTE.md` §2, `geometry.tex` Theorem 5.4). Computer-checked on many instances
 (`research/gq4`, `research/gq4x`). Lean-checked for every GQ of order $(s,t)$: the version with all stand-ins original
 and arbitrary point and line multiplicities (`GQST.gqst`), the version with stand-ins (`GQST.standin_gqst`), and the
 regular completion (`GQST.regular_copy_graph`); the 359 graph itself (`nb_7_4`). See Section 9.
@@ -586,7 +590,7 @@ $2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
 
 **Cells.** $(11,4)$: $1782$ (2013: 1734); $(13,4)$: $3146$ (3064); $(15,4)$: $5070$ (4946). All regular.
 
-**Status.** Paper proof (above; `NOTE.md` §3, `geometry.tex` Theorem `thm:A`). Computer-checked: the record graphs
+**Status.** Paper proof (above; `NOTE.md` §3, `geometry.tex` Theorem 5.6). Computer-checked: the record graphs
 1782, 3146, 5070 (three checkers, `NOTE.md` §7); the normalised form above rebuilt from these coordinates for
 $q=3,5,7,9$ (regular, diameter 4). Lean-checked for every finite field of odd order: $\mathrm{AS}(q)$ is a GQ of order
 $(q-1,q+1)$ (`ASq.isGQst`), the weighted 2-ovoid (`ASq.weighted_two_ovoid`), the bound and its regular form
@@ -710,7 +714,7 @@ spread. $\square$
 open cell with $\Delta-3$ an odd prime power. Without stand-ins, $5440$ is the most a copy graph on $W(3,13)$ or
 $Q(4,13)$ of maximum degree 16 can have (each line takes at most 2 clones and each point at most 2 shadow lines).
 
-**Status.** Paper proof (above; `NOTE.md` §5, `geometry.tex` Proposition `prop:C`). Computer-checked: exactly the pairs
+**Status.** Paper proof (above; `NOTE.md` §5, `geometry.tex` Proposition 5.9). Computer-checked: exactly the pairs
 $\{a,q-a\}$ are 2-ovoids for $q=3,5,7,11,13$ (`research/gq4y/w3_singer.py`) and $q=9,25,27$
 (`w3_singer_pp.py`); the 5440 graph (three checkers); the $W(3,q)$ form of Corollary 5.2 for $q=3,5$. Lean-checked,
 in exactly this cyclic model and directly in $W(3,q)$ (no Klein correspondence): for every field $E$ of order $q^4$,
@@ -724,7 +728,7 @@ also kernel-checked (`nb_16_4_v2`). See Section 9.
 
 ## 6. Theorem D: the split Cayley hexagon, Hermitian spreads and whiskers (diameter 6)
 
-Throughout this section $q$ is odd (even $q$: Remark 6.9).
+Throughout this section $q$ is odd (even $q$: Remark 6.10).
 
 ### 6.1 Coordinates
 
@@ -950,7 +954,7 @@ $n_b(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
 
 With $W$ exact, every element outside $\mathcal A_0$ is incident with exactly one element of $\mathcal A_0$; by the
 counting bound for doublings of a generalized $n$-gon of order $(q,q)$ with $N$ points,
-$q|\mathcal A_0|+2c\le2N$ ($c$ the number of components; `geometry.tex` Prop. `prop:count`), the single-level part is
+$q|\mathcal A_0|+2c\le2N$ ($c$ the number of components; `geometry.tex` Prop. 3.6), the single-level part is
 as large as possible ($c=q^3+1$).
 
 **Remark 6.9 (Delorme's construction: the 2013 values).** $W=\emptyset$ is Delorme's doubling of $H(q)$ along a
@@ -962,7 +966,7 @@ $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
 and the hyperplanes above contain it. `geometry.tex` §7 uses instead $\Pi_z: X_3=X_0+\delta X_4+\alpha X_2+\beta X_5$
 with $\mathrm{Tr}(\delta)=1$, $\nu(X)=(X_2X_3+X_2X_4+X_4X_5)/(\delta X_2^2+X_2X_5+X_5^2)$,
 $G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3$, and $J_z^2+J_z+\delta=0$; good $(c_0,c_1)$ exist iff $q\ge4$. The proof is
-parallel and is written out there (Lemmas `lem:herm2`, `lem:J2`, `lem:key2`, Theorem `thm:exact2`); we do not repeat
+parallel and is written out there (Lemmas 7.1, 7.3, 7.4 and Theorem 7.5); we do not repeat
 it. For $q=2$ an exact whisker set of 12 lines was found by computer. Even $q$ improves no cell with $\Delta\le16$
 ($q+1$ is then a prime power, and $q+3$ is better served by the odd $q+1$).
 
@@ -1031,7 +1035,7 @@ depends on that choice.
 ($q=13$, $m=3$). Each beats the 2013 value of its cell (8992, 142464, 374452, 842048, 884062), and Delorme's graphs
 behind those values are not regular (their point side is larger).
 
-**Status.** Paper proof (above; `geometry.tex` Theorem `thm:R`; `research/p4/regular/REPORT.md`). Computer-checked:
+**Status.** Paper proof (above; `geometry.tex` Theorem 6.13; `research/p4/regular/REPORT.md`). Computer-checked:
 all five regular graphs are exactly regular with equal sides and diameter exactly 6 (independent all-pairs checks).
 Lean-checked: `HexagonD.theoremR`, `theoremR_two` (every finite field of odd characteristic); `HexagonEven.theoremR`,
 `theoremR_two` (even $q\ge4$; their docstrings wrongly say "odd $q$", the statements are for characteristic 2);
