@@ -3,7 +3,7 @@
 Let o = ord_p(r) (o | k, o | p-1).  Normal form (frob_scan.py): S = {(0,0), (0,j1), (1,j2), (a3,j3), ...} with
 o not dividing j1.  r is a primitive o-th root of unity in F_p, so P(r) depends only on P mod Phi_o.  Put
     U = Z[zeta_o]^F x| Z_k,   (P; J)(Q; L) = (P + zeta^J Q; J + L),   F = Delta - 2,
-    u_0 = e, u_1 = (0; j1), u_i = (eps_{i-1}; j_i) for i >= 2.
+    u_0 = e, u_1 = (0; j1), u_i = (eps_{i-2}; j_i) for i >= 2.
 phi(P; J) = (sum_f P_f(r) a_{f+2}, J) (a_2 = 1) is a homomorphism U -> G with phi(u_i) = s_i, and maps the ball of
 radius D around (e,A) (resp. (e,B)) of the infinite Haar graph H(U, {u_i}) ONTO the ball in H(G, S).  So
     N = |G| <= B(k, o, j) := min over start side and target side of the ball counts in H(U),
@@ -153,7 +153,7 @@ def admissible_js(Delta, k, o):
 
 
 def bound(Delta, D, k, o, _cache={}):
-    key = (Delta, D, k, o)
+    key = (Delta, D, k, o, FIBER)
     if key not in _cache:
         b, bj = -1, None
         for j in admissible_js(Delta, k, o):
