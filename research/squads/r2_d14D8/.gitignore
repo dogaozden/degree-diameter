@@ -1,0 +1,13 @@
+# generated base graphs, runs and binaries are rebuildable from the commands in scoreboard.jsonl; keep code, notes, logs
+c*/**
+!c*/
+!c*/**/
+!c*/**/*.py
+!c*/**/*.c
+!c*/**/*.sh
+!c*/**/*.md
+!c*/**/*.tsv
+!c*/**/*.jsonl
+!c*/**/*.log
+!c*/**/*.out
+!c*/**/*.err

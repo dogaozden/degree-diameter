@@ -1,0 +1,11 @@
+start k=5 m=25 sample=126 cost=588 T=1.00
+it 500 k=5 cost=518 acc=0.056 sample=126 t=19s
+it 1000 k=5 cost=470 acc=0.042 sample=126 t=39s
+it 1500 k=5 cost=435 acc=0.039 sample=126 t=58s
+it 2000 k=5 cost=407 acc=0.035 sample=126 t=77s
+it 2500 k=5 cost=391 acc=0.032 sample=126 t=95s
+it 3000 k=5 cost=391 acc=0.030 sample=126 t=113s
+it 3500 k=5 cost=379 acc=0.027 sample=126 t=131s
+it 4000 k=5 cost=375 acc=0.024 sample=126 t=150s
+it 4500 k=5 cost=365 acc=0.023 sample=126 t=168s
+it 5000 k=5 cost=358 acc=0.021 sample=126 t=186s

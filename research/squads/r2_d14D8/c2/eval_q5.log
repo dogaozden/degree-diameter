@@ -1,0 +1,19 @@
+q=5 k=5 m=25 h=opt seed=1 : COST 34030 sources 3906 bad 3906 worst_src 1025 worst 22 maxdeg 8 lift_vertices 195300
+q=5 k=5 m=25 h=rand seed=1 : COST 34155 sources 3906 bad 3904 worst_src 729 worst 24 maxdeg 8 lift_vertices 195300
+q=5 k=5 m=25 h=opt seed=2 : COST 33574 sources 3906 bad 3904 worst_src 998 worst 20 maxdeg 8 lift_vertices 195300
+q=5 k=5 m=25 h=rand seed=2 : COST 33597 sources 3906 bad 3905 worst_src 544 worst 22 maxdeg 8 lift_vertices 195300
+q=5 k=5 m=25 h=opt seed=3 : COST 33375 sources 3906 bad 3906 worst_src 2707 worst 21 maxdeg 8 lift_vertices 195300
+q=5 k=5 m=25 h=rand seed=3 : COST 33213 sources 3906 bad 3905 worst_src 821 worst 22 maxdeg 8 lift_vertices 195300
+q=5 k=6 m=30 h=opt seed=1 : COST 179900 sources 3906 bad 3906 worst_src 751 worst 76 maxdeg 8 lift_vertices 234360
+q=5 k=6 m=30 h=rand seed=1 : COST 181028 sources 3906 bad 3906 worst_src 43 worst 86 maxdeg 8 lift_vertices 234360
+q=5 k=6 m=30 h=opt seed=2 : COST 181011 sources 3906 bad 3906 worst_src 2625 worst 98 maxdeg 8 lift_vertices 234360
+q=5 k=6 m=30 h=rand seed=2 : COST 182137 sources 3906 bad 3906 worst_src 3171 worst 79 maxdeg 8 lift_vertices 234360
+q=5 k=6 m=30 h=opt seed=3 : COST 180475 sources 3906 bad 3906 worst_src 3548 worst 75 maxdeg 8 lift_vertices 234360
+q=5 k=6 m=30 h=rand seed=3 : COST 180463 sources 3906 bad 3906 worst_src 1134 worst 77 maxdeg 8 lift_vertices 234360
+q=5 k=7 m=35 h=opt seed=1 : COST 616713 sources 3906 bad 3906 worst_src 544 worst 220 maxdeg 8 lift_vertices 273420
+q=5 k=7 m=35 h=rand seed=1 : COST 619878 sources 3906 bad 3906 worst_src 3070 worst 261 maxdeg 8 lift_vertices 273420
+q=5 k=7 m=35 h=opt seed=2 : COST 616948 sources 3906 bad 3906 worst_src 3070 worst 224 maxdeg 8 lift_vertices 273420
+q=5 k=7 m=35 h=rand seed=2 : COST 620706 sources 3906 bad 3906 worst_src 2625 worst 228 maxdeg 8 lift_vertices 273420
+q=5 k=7 m=35 h=opt seed=3 : COST 615763 sources 3906 bad 3906 worst_src 2625 worst 219 maxdeg 8 lift_vertices 273420
+q=5 k=7 m=35 h=rand seed=3 : COST 618038 sources 3906 bad 3906 worst_src 1114 worst 236 maxdeg 8 lift_vertices 273420
+EVAL_DONE

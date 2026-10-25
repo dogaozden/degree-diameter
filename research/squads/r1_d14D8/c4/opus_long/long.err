@@ -1,0 +1,11 @@
+start m=17 sample=40 cost=0
+  sample clean at m=17 (it 1): full COST over reps = 0 (bad reps 0)
+it 200 m=18 cost=1 acc=0.995 t=158s
+  sample clean at m=18 (it 216): full COST over reps = 17 (bad reps 17)
+  added 8 bad reps to the sample (now 57)
+it 400 m=18 cost=5 acc=0.998 t=370s
+it 600 m=18 cost=1 acc=0.995 t=566s
+  sample clean at m=18 (it 696): full COST over reps = 17 (bad reps 17)
+  added 8 bad reps to the sample (now 74)
+it 800 m=18 cost=10 acc=0.996 t=818s
+it 1000 m=18 cost=4 acc=0.995 t=1080s

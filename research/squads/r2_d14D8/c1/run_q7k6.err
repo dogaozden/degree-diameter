@@ -1,0 +1,5 @@
+start k=6 m=30 sample=32 cost=3840 T=0.60
+it 500 k=6 cost=3172 acc=0.364 sample=32 t=30s
+it 1000 k=6 cost=2866 acc=0.305 sample=32 t=60s
+it 1500 k=6 cost=2661 acc=0.263 sample=32 t=92s
+it 2000 k=6 cost=2517 acc=0.230 sample=32 t=124s

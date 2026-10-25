@@ -1,0 +1,18 @@
+# generated base graphs and binaries (rebuild with the commands in scoreboard.jsonl)
+*.npz
+*.npy
+*.gz
+c1/runs/
+c2/scratch_q7/
+c2/best_q11_m14.txt
+c4/base_rand40.txt
+c4/init_rand*.txt
+c6/best_base_m72.txt
+c3/best_q5_m20_partial_cost892.txt
+**/sa4
+**/sa_v3
+**/symsa
+**/pvlift
+**/liftevalbig
+**/liftevalw_fix
+c4/opus_long/*.txt
