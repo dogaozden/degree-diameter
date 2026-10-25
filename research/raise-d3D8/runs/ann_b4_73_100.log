@@ -1089,3 +1089,54 @@ prod zp2 5 2 1 0 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 0 0 4 cyc 2 b=4
 prod zp2 5 2 1 0 1 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 0 1 4 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
 prod zp2 5 2 1 0 2 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 0 2 4 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
 prod zp2 5 2 1 0 3 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 0 3 4 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 1 1 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 1 0 4 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 1 2 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 2 0 4 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 1 0 4 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 0 4 4 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 1 3 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 3 0 4 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 1 4 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 1 4 0 4 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 2 2 1 3 cyc 2 :: RESULT anneal group=prod zp2 5 2 2 2 1 3 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 2 1 2 3 cyc 2 :: RESULT anneal group=prod zp2 5 2 2 1 2 3 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 2 3 4 3 cyc 2 :: RESULT anneal group=prod zp2 5 2 2 3 4 3 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 2 4 3 3 cyc 2 :: RESULT anneal group=prod zp2 5 2 2 4 3 3 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 3 1 2 2 cyc 2 :: RESULT anneal group=prod zp2 5 2 3 1 2 2 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 3 2 1 2 cyc 2 :: RESULT anneal group=prod zp2 5 2 3 2 1 2 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 3 3 4 2 cyc 2 :: RESULT anneal group=prod zp2 5 2 3 3 4 2 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 3 4 3 2 cyc 2 :: RESULT anneal group=prod zp2 5 2 3 4 3 2 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 4 0 0 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 0 1 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 4 0 0 4 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 0 4 cyc 2 b=4 n=400 D=8 iters=1000000 best=792 none
+prod zp2 5 2 4 0 1 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 1 1 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 4 0 2 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 2 1 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 4 0 3 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 3 1 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 4 0 4 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 0 4 1 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 4 1 0 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 1 0 1 cyc 2 b=4 n=400 D=8 iters=400000 best=112 none
+prod zp2 5 2 4 2 0 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 2 0 1 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod zp2 5 2 4 3 0 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 3 0 1 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod meta 25 1 1 cyc 4 :: RESULT anneal group=prod meta 25 1 1 cyc 4 b=4 n=400 D=8 iters=600000 best=364 none
+prod zp2 5 2 4 4 0 1 cyc 2 :: RESULT anneal group=prod zp2 5 2 4 4 0 1 cyc 2 b=4 n=400 D=8 iters=400000 best=146 none
+prod meta 5 5 1 cyc 4 :: RESULT anneal group=prod meta 5 5 1 cyc 4 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 1 25 0 cyc 4 :: RESULT anneal group=prod meta 1 25 0 cyc 4 b=4 n=400 D=8 iters=600000 best=364 none
+prod meta 20 1 1 cyc 5 :: RESULT anneal group=prod meta 20 1 1 cyc 5 b=4 n=400 D=8 iters=600000 best=404 none
+prod zp2 5 1 1 0 0 1 cyc 4 :: RESULT anneal group=prod zp2 5 1 1 0 0 1 cyc 4 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 10 2 1 cyc 5 :: RESULT anneal group=prod meta 10 2 1 cyc 5 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 10 2 9 cyc 5 :: RESULT anneal group=prod meta 10 2 9 cyc 5 b=4 n=400 D=8 iters=400000 best=146 none
+prod meta 5 4 1 cyc 5 :: RESULT anneal group=prod meta 5 4 1 cyc 5 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 5 4 2 cyc 5 :: RESULT anneal group=prod meta 5 4 2 cyc 5 b=4 n=400 D=8 iters=400000 best=102 none
+prod meta 4 5 1 cyc 5 :: RESULT anneal group=prod meta 4 5 1 cyc 5 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 5 4 3 cyc 5 :: RESULT anneal group=prod meta 5 4 3 cyc 5 b=4 n=400 D=8 iters=400000 best=102 none
+prod meta 5 4 4 cyc 5 :: RESULT anneal group=prod meta 5 4 4 cyc 5 b=4 n=400 D=8 iters=400000 best=96 none
+prod meta 2 10 1 cyc 5 :: RESULT anneal group=prod meta 2 10 1 cyc 5 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 1 20 0 cyc 5 :: RESULT anneal group=prod meta 1 20 0 cyc 5 b=4 n=400 D=8 iters=600000 best=404 none
+prod zp2 2 5 1 0 0 1 cyc 5 :: RESULT anneal group=prod zp2 2 5 1 0 0 1 cyc 5 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 10 1 1 cyc 10 :: RESULT anneal group=prod meta 10 1 1 cyc 10 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 5 2 1 cyc 10 :: RESULT anneal group=prod meta 5 2 1 cyc 10 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 2 5 1 cyc 10 :: RESULT anneal group=prod meta 2 5 1 cyc 10 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 1 10 0 cyc 10 :: RESULT anneal group=prod meta 1 10 0 cyc 10 b=4 n=400 D=8 iters=600000 best=380 none
+prod meta 5 2 4 cyc 10 :: RESULT anneal group=prod meta 5 2 4 cyc 10 b=4 n=400 D=8 iters=400000 best=112 none
+prod meta 5 1 1 cyc 20 :: RESULT anneal group=prod meta 5 1 1 cyc 20 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 1 5 0 cyc 20 :: RESULT anneal group=prod meta 1 5 0 cyc 20 b=4 n=400 D=8 iters=600000 best=404 none
+prod meta 4 1 1 cyc 25 :: RESULT anneal group=prod meta 4 1 1 cyc 25 b=4 n=400 D=8 iters=600000 best=364 none
+prod meta 2 2 1 cyc 25 :: RESULT anneal group=prod meta 2 2 1 cyc 25 b=4 n=400 D=8 iters=600000 best=364 none
+prod meta 1 4 0 cyc 25 :: RESULT anneal group=prod meta 1 4 0 cyc 25 b=4 n=400 D=8 iters=600000 best=364 none
+prod zp2 2 1 1 0 0 1 cyc 25 :: RESULT anneal group=prod zp2 2 1 1 0 0 1 cyc 25 b=4 n=400 D=8 iters=600000 best=364 none
+prod meta 2 1 1 cyc 50 :: RESULT anneal group=prod meta 2 1 1 cyc 50 b=4 n=400 D=8 iters=600000 best=364 none
+prod meta 1 2 0 cyc 50 :: RESULT anneal group=prod meta 1 2 0 cyc 50 b=4 n=400 D=8 iters=600000 best=364 none

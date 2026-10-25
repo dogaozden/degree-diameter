@@ -26,6 +26,9 @@ research/lifts/coordinator_check/check_2026-10-23.txt). Target: any bipartite cu
 - Solutions are written to the scratchpad (not the repo) until verified; verified finds go to research/frontier/sols/
   (d3D8_ prefix, Haar) or research/lifts/sols/ (lifts), with an apsp VALID line.
 
+- 4-vertex base, annealing (6 s per group, 1 seed), |G| = 73..100 (n = 292..400): **1142 groups, 0 solutions**;
+  best cost 10 (runs/ann_b4_73_100.log).
+
 ## Method notes
 
 - Exhaustive search over the free voltages is slow for bases with 4+ free voltages (b=6: ~20 groups per 4 minutes on 4
