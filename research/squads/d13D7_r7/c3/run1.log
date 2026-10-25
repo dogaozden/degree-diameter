@@ -1,0 +1,76 @@
+[    4.1s] dihedral |G|=144 orders=[2, 2, 12] norb=4455 K=602 w=312 opt=False skip=None | dihedral: two reflections in a non-degenerate plane; times an element of order 12 on the c
+[   12.1s] decomp |G|=48 orders=[2, 2, 2] norb=10264 K=2220 w=318 opt=False skip=None | decomp 5+2: block5 sub3: non-commuting orders 2,2; block2 sub2: cyclic order 2
+[   12.5s] dihedral |G|=14 orders=[2, 2] norb=45137 K=45137 w=0 opt=None skip=K=45137 > kmax | dihedral: two reflections in a non-degenerate plane
+[   13.3s] frame |G|=768 orders=[8, 6, 2] norb=1603 K=178 w=490 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+NEW BEST 490 frame basis of dim 4: non-commuting signed permutations of the frame; times an element of order 2 on the complementary block (dim 3)
+[   13.7s] block |G|=14 orders=[2, 2] norb=30941 K=30941 w=0 opt=None skip=K=30941 > kmax | block dim 3: non-commuting elements of O(E) of orders 2,2
+[   14.2s] decomp |G|=16 orders=[2, 4, 2] norb=35899 K=23131 w=0 opt=None skip=K=23131 > kmax | decomp 5+2: block5 sub2: non-commuting orders 2,4; block2 sub2: cyclic order 2
+[   28.0s] decomp |G|=98 orders=[7, 2, 7] norb=6683 K=2640 w=405 opt=False skip=None | decomp 3+4: block3 sub2: non-commuting orders 7,2; block4 sub2: cyclic order 7
+[   50.3s] dihedral |G|=84 orders=[2, 2, 3] norb=10437 K=4241 w=350 opt=False skip=None | dihedral: two reflections in a non-degenerate plane; times an element of order 3 on the co
+[   60.1s] block |G|=1092 orders=[6, 3] norb=2773 K=1289 w=170 opt=False skip=None | block dim 3: non-commuting elements of O(E) of orders 6,3
+[   66.7s] decomp |G|=84 orders=[2, 7, 2, 2] norb=6641 K=1516 w=396 opt=False skip=None | decomp 3+2+2: block3 sub2: cyclic order 2; block2 sub2: cyclic order 7; block2 sub2: non-c
+[   67.2s] mono |G|=1296 orders=[18, 18] norb=822 K=7 w=792 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+NEW BEST 792 monomial hyperbolic-plane group: two non-commuting monomial isometries
+[   67.6s] dihedral |G|=8 orders=[2, 2] norb=66643 K=59503 w=0 opt=None skip=K=59503 > kmax | dihedral: two reflections in a non-degenerate plane
+[   91.2s] decomp |G|=36 orders=[2, 3, 3, 2] norb=14127 K=5475 w=416 opt=False skip=None | decomp 3+2+2: block3 sub3: cyclic order 2; block2 sub2: cyclic order 3; block2 sub2: non-c
+[   91.6s] frame |G|=24 orders=[2, 3] norb=21815 K=11119 w=0 opt=None skip=K=11119 > kmax | frame basis of dim 3: non-commuting signed permutations of the frame
+[   92.3s] decomp |G|=294 orders=[7, 2, 3, 7] norb=1823 K=133 w=371 opt=True skip=None | decomp 2+2+3: block2 sub2: cyclic order 7; block2 sub2: non-commuting orders 2,3; block3 s
+[   92.7s] frame |G|=24 orders=[2, 3] norb=25672 K=14537 w=0 opt=None skip=K=14537 > kmax | frame basis of dim 3: non-commuting signed permutations of the frame
+[  135.2s] block |G|=48 orders=[2, 12, 2] norb=16768 K=7296 w=336 opt=False skip=None | block dim 2: non-commuting elements of O(E) of orders 2,12; times an element of order 2 on
+[  135.7s] block |G|=14 orders=[2, 2] norb=30942 K=15642 w=0 opt=None skip=K=15642 > kmax | block dim 3: non-commuting elements of O(E) of orders 2,2
+[  136.1s] block |G|=6 orders=[2, 3] norb=83388 K=73868 w=0 opt=None skip=K=73868 > kmax | block dim 2: non-commuting elements of O(E) of orders 2,3
+[  136.5s] mono |G|=576 orders=[12, 24] norb=1147 K=64 w=220 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  136.9s] dihedral |G|=28 orders=[2, 2] norb=30941 K=30941 w=0 opt=None skip=K=30941 > kmax | dihedral: two reflections in a non-degenerate plane
+[  149.1s] frame |G|=48 orders=[6, 6] norb=11758 K=3009 w=465 opt=False skip=None | frame basis of dim 4: non-commuting signed permutations of the frame
+[  149.5s] frame |G|=8 orders=[4, 2] norb=58915 K=37495 w=0 opt=None skip=K=37495 > kmax | frame basis of dim 3: non-commuting signed permutations of the frame
+[  155.2s] decomp |G|=168 orders=[12, 2, 7] norb=4930 K=860 w=323 opt=False skip=None | decomp 5+2: block5 sub2: non-commuting orders 12,2; block2 sub2: cyclic order 7
+[  156.2s] mono |G|=1728 orders=[4, 4] norb=482 K=23 w=171 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  170.1s] block |G|=56 orders=[4, 2, 7] norb=9859 K=3057 w=292 opt=False skip=None | block dim 2: non-commuting elements of O(E) of orders 4,2; times an element of order 7 on 
+[  171.3s] block |G|=42 orders=[7, 2, 3] norb=15065 K=9129 w=0 opt=None skip=K=9129 > kmax | block dim 2: non-commuting elements of O(E) of orders 7,2; times an element of order 3 on 
+[  177.3s] dihedral |G|=84 orders=[2, 2, 14] norb=6186 K=960 w=396 opt=False skip=None | dihedral: two reflections in a non-degenerate plane; times an element of order 14 on the c
+[  188.8s] block |G|=1092 orders=[7, 7] norb=2721 K=1276 w=312 opt=False skip=None | block dim 3: non-commuting elements of O(E) of orders 7,7
+[  192.8s] block |G|=78 orders=[3, 3, 2] norb=6353 K=293 w=170 opt=False skip=None | block dim 3: non-commuting elements of O(E) of orders 3,3; times an element of order 2 on 
+[  193.7s] decomp |G|=24 orders=[2, 3, 2, 2] norb=24162 K=14150 w=0 opt=None skip=K=14150 > kmax | decomp 3+2+2: block3 sub3: cyclic order 2; block2 sub2: non-commuting orders 3,2; block2 s
+[  194.3s] dihedral |G|=392 orders=[2, 2, 14] norb=2309 K=185 w=230 opt=True skip=None | dihedral: two reflections in a non-degenerate plane; times an element of order 14 on the c
+[  199.0s] decomp |G|=192 orders=[4, 2, 12, 2] norb=4593 K=457 w=312 opt=False skip=None | decomp 2+2+3: block2 sub2: cyclic order 4; block2 sub2: non-commuting orders 2,12; block3 
+[  200.2s] decomp |G|=784 orders=[4, 7, 2, 2] norb=1169 K=56 w=230 opt=True skip=None | decomp 3+2+2: block3 sub3: cyclic order 4; block2 sub2: cyclic order 7; block2 sub2: non-c
+[  201.1s] frame |G|=384 orders=[6, 6, 2] norb=1878 K=156 w=490 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+[  205.5s] decomp |G|=168 orders=[2, 14, 2, 3] norb=3455 K=391 w=396 opt=False skip=None | decomp 3+2+2: block3 sub2: cyclic order 2; block2 sub2: cyclic order 14; block2 sub2: non-
+[  206.3s] frame |G|=384 orders=[8, 8, 2] norb=1721 K=155 w=604 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+[  221.0s] frame |G|=48 orders=[6, 4] norb=11229 K=3242 w=448 opt=False skip=None | frame basis of dim 4: non-commuting signed permutations of the frame
+[  222.3s] dihedral |G|=12 orders=[2, 2] norb=49898 K=45138 w=0 opt=None skip=K=45138 > kmax | dihedral: two reflections in a non-degenerate plane
+[  226.7s] decomp |G|=196 orders=[14, 2, 7] norb=3606 K=586 w=416 opt=False skip=None | decomp 3+4: block3 sub3: cyclic order 14; block4 sub2: non-commuting orders 2,7
+[  228.3s] dihedral |G|=24 orders=[2, 2, 3] norb=22479 K=11847 w=0 opt=None skip=K=11847 > kmax | dihedral: two reflections in a non-degenerate plane; times an element of order 3 on the co
+[  235.8s] decomp |G|=56 orders=[2, 7, 2, 2] norb=11790 K=1890 w=396 opt=False skip=None | decomp 3+2+2: block3 sub2: non-commuting orders 2,7; block2 sub2: cyclic order 2; block2 s
+[  236.1s] frame |G|=8 orders=[4, 2] norb=51271 K=31801 w=0 opt=None skip=K=31801 > kmax | frame basis of dim 4: non-commuting signed permutations of the frame
+[  236.5s] frame |G|=1344 orders=[4, 6, 7] norb=515 K=19 w=344 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+[  236.8s] frame |G|=24 orders=[4, 3] norb=19042 K=10026 w=0 opt=None skip=K=10026 > kmax | frame basis of dim 3: non-commuting signed permutations of the frame
+[  244.5s] decomp |G|=112 orders=[2, 7, 2, 4] norb=6221 K=1190 w=350 opt=False skip=None | decomp 2+2+3: block2 sub2: cyclic order 2; block2 sub2: non-commuting orders 7,2; block3 s
+[  245.2s] mono |G|=864 orders=[3, 24] norb=495 K=1 w=36 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  245.5s] mono |G|=432 orders=[24, 12] norb=1216 K=14 w=228 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  246.3s] frame |G|=384 orders=[6, 3, 2] norb=1873 K=178 w=490 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+[  246.9s] block |G|=168 orders=[2, 3, 14] norb=2696 K=113 w=360 opt=True skip=None | block dim 3: non-commuting elements of O(E) of orders 2,3; times an element of order 14 on
+[  247.7s] mono |G|=1728 orders=[24, 4] norb=270 K=1 w=36 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  261.3s] decomp |G|=84 orders=[3, 2, 2] norb=7829 K=2669 w=396 opt=False skip=None | decomp 2+5: block2 sub2: cyclic order 3; block5 sub3: non-commuting orders 2,2
+[  266.2s] block |G|=168 orders=[2, 2, 14] norb=3979 K=495 w=424 opt=False skip=None | block dim 2: non-commuting elements of O(E) of orders 2,2; times an element of order 14 on
+[  269.6s] mono |G|=48 orders=[2, 4] norb=8465 K=1087 w=240 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  270.9s] mono |G|=144 orders=[12, 12] norb=3136 K=40 w=468 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  271.7s] mono |G|=432 orders=[12, 12] norb=1059 K=11 w=230 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  296.1s] decomp |G|=36 orders=[6, 2, 2] norb=15114 K=5350 w=384 opt=False skip=None | decomp 3+4: block3 sub3: cyclic order 6; block4 sub2: non-commuting orders 2,2
+[  297.5s] block |G|=48 orders=[2, 2, 2] norb=17950 K=10026 w=0 opt=None skip=K=10026 > kmax | block dim 2: non-commuting elements of O(E) of orders 2,2; times an element of order 2 on 
+[  298.4s] dihedral |G|=28 orders=[2, 2, 2] norb=22703 K=13217 w=0 opt=None skip=K=13217 > kmax | dihedral: two reflections in a non-degenerate plane; times an element of order 2 on the co
+[  298.9s] block |G|=24 orders=[6, 2, 2] norb=26947 K=21167 w=0 opt=None skip=K=21167 > kmax | block dim 2: non-commuting elements of O(E) of orders 6,2; times an element of order 2 on 
+[  299.3s] mono |G|=648 orders=[9, 6] norb=768 K=19 w=459 opt=True skip=None | monomial hyperbolic-plane group: two non-commuting monomial isometries
+[  300.1s] frame |G|=16 orders=[2, 2, 2] norb=33535 K=17617 w=0 opt=None skip=K=17617 > kmax | frame basis of dim 3: non-commuting signed permutations of the frame; times an element of 
+[  314.5s] decomp |G|=84 orders=[3, 2, 2, 2] norb=8229 K=2883 w=385 opt=False skip=None | decomp 3+2+2: block3 sub2: cyclic order 3; block2 sub2: cyclic order 2; block2 sub2: non-c
+[  315.3s] dihedral |G|=28 orders=[2, 2, 2] norb=22794 K=12684 w=0 opt=None skip=K=12684 > kmax | dihedral: two reflections in a non-degenerate plane; times an element of order 2 on the co
+[  316.1s] block |G|=28 orders=[2, 2] norb=23207 K=11222 w=0 opt=None skip=K=11222 > kmax | block dim 3: non-commuting elements of O(E) of orders 2,2
+[  317.0s] frame |G|=224 orders=[8, 8, 14] norb=2115 K=97 w=376 opt=True skip=None | frame basis of dim 4: non-commuting signed permutations of the frame; times an element of 
+[  323.6s] frame |G|=112 orders=[4, 2, 14] norb=5131 K=1095 w=266 opt=False skip=None | frame basis of dim 3: non-commuting signed permutations of the frame; times an element of 
+[  332.8s] block |G|=96 orders=[2, 2, 4] norb=8395 K=1944 w=360 opt=False skip=None | block dim 2: non-commuting elements of O(E) of orders 2,2; times an element of order 4 on 
+[  333.8s] frame |G|=672 orders=[6, 4, 14] norb=1191 K=84 w=328 opt=True skip=None | frame basis of dim 3: non-commuting signed permutations of the frame; times an element of 
+[  334.3s] decomp |G|=12 orders=[2, 2, 2] norb=44830 K=37494 w=0 opt=None skip=K=37494 > kmax | decomp 2+5: block2 sub2: non-commuting orders 2,2; block5 sub2: cyclic order 2
+[  345.7s] block |G|=156 orders=[6, 4] norb=4958 K=1290 w=170 opt=False skip=None | block dim 3: non-commuting elements of O(E) of orders 6,4
+[  353.7s] dihedral |G|=98 orders=[2, 2, 7] norb=6449 K=1555 w=364 opt=False skip=None | dihedral: two reflections in a non-degenerate plane; times an element of order 7 on the co
+[  390.8s] decomp |G|=56 orders=[2, 2, 2] norb=15569 K=6281 w=362 opt=False skip=None | decomp 3+4: block3 sub2: non-commuting orders 2,2; block4 sub3: cyclic order 2
+done: evaluated 73, repeats 29, no-group draws 37, sampled 139, best this run 792, cpu 420.7s wall 390.8s
