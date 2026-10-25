@@ -153,3 +153,14 @@ Products with a small A5/A4-type factor were not screened (round 1: psl 5 × psl
 | c | pgl 27 × Z463 | 34.8 | ORBW=3 | 5 |
 | d | sl 31 × Z307 | 36.7 | ORBW=3 | 5 |
 
+
+### Wave 1 results (4000 s each, 14:34–15:41 UTC; no solve)
+
+| job | group | μ | flags | seed | evals | best cost |
+|---|---|---|---|---|---|---|
+| b | psl 79 × Z37 | 35.8 | plain | 6 | 1.30·10⁵ | **3** |
+| a | psl 79 × Z37 | 35.8 | ORBW=3 | 5 | 1.30·10⁵ | 6 |
+| c | pgl 27 × Z463 | 34.8 | ORBW=3 | 5 | 3.5·10⁴ | 7 |
+| d | sl 31 × Z307 | 36.7 | ORBW=3 | 5 | 1.0·10⁵ | 9 |
+
+psl 79 × Z37 with plain S reached cost 3 (one uncovered orbit or fixed point) and is the best lead so far.
