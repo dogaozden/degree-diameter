@@ -109,6 +109,10 @@ machine (4 cores):
 - (14,7) 1,774,584 (the coordinator's graph, same edge-list sha256): 4 parts, merged, VALID, diameter 7, 357,336
   sources, the same as apsp_orb ([checks/d14D7_n1774584](checks/d14D7_n1774584/README.md)).
 - Merge refuses a missing part and a certificate made with --cost.
+- Cross-check with the Haiku worker's independent sharded checker (branch claude/bigcheck-dist-haiku-2iqw1y,
+  apsp_shard.c) on its level-cover test graphs (L levels of B vertices, offsets s): L,B,offsets = 8,12,{0,1};
+  12,30,{0,1,4}; 20,500,{0,1}; 16,300,{0,1,5} give diameters 8, 9, 260, 37 in apsp.c, bcd explicit, bcd explicit with
+  `shift L B`, and apsp_shard; odd L is reported non-bipartite and offsets {0} disconnected by all of them.
 - `tests/run_tests.sh` reruns the lift/explicit/apsp comparisons (8 seeds), the broken-automorphism test, parts + merge +
   spot-check, WB = 8 vs 64 certificates and the four Haar records (about 15 s): "ALL TESTS PASSED".
 - d8/sol2spec.py turns an x2s.c solution into a bcd spec (torus and copy-rotation automorphisms included, both checked

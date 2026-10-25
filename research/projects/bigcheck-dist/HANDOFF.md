@@ -34,6 +34,13 @@ Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3. Read README.m
 - Prior work found later: the cell-10-8 session (Oct 24, claude/cell-10-8-search-t6pwvg) covered the D = 8 decoding,
   a Z10 lemma (10 copies free), the guaranteed-walk count and Haar runs; credited in d8/NOTES.md.
 
+## Parallel work on this project
+The coordinator also gave this project to a Haiku worker (master commit 4b54aa07, branch
+claude/bigcheck-dist-haiku-2iqw1y): apsp_shard.c, a sharded all-pairs checker for explicit edge lists with the level
+shift, with its own tests and HANDOFF.md. Its "next steps" (implicit level covers, single-source bitsets) are covered
+by bcd (lift mode, -DWB=1). The two checkers agree on its test graphs (README §4). Both branches add
+research/projects/bigcheck-dist/HANDOFF.md, so a merge needs the two handoffs combined.
+
 ## Running / next
 - /tmp/hs/runs: (10,8) Haar orbit search on PSL(2,7) × SL(2,8) × Z7 (N = 592,704; cell-10-8's better group), seeds
   21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC. Earlier PSL(2,23) × Z97
