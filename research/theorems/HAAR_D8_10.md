@@ -89,9 +89,8 @@ Marušič and Pisanski. All our files and checkers use the left convention of De
 S⁻¹h of S⁻¹ (the development of S⁻¹). At D = 3 with |G| = Δ² − Δ + 1, counting shows that S⁻¹S = G holds iff every
 non-identity element of G is s⁻¹t for a unique pair (s, t), i.e. S is a planar difference set; then any two points lie
 on exactly one block, the structure is a projective plane, any two lines meet, and SS⁻¹ = G follows, so Theorem 2.4(b)
-below holds; for example
-H(Z_7, {0, 1, 3}) is the incidence graph of the Fano plane, and Theorem 4.1 holds with equality there. We say "order of
-G" for |G|; the graph has 2|G| vertices.
+below holds; for example H(Z_7, {0, 1, 3}) is the incidence graph of the Fano plane, and Theorem 4.1 holds with equality
+there. We say "order of G" for |G|; the graph has 2|G| vertices.
 
 For h ∈ G let ρ_h be the right translation ρ_h(g, X) = (gh, X).
 
@@ -144,8 +143,9 @@ $$W(\Delta,D)=\sum_{j=0}^{D-1}(\Delta-1)^j = \tfrac12 M^b(\Delta,D).$$
 
 *File format* (`research/frontier/sols/*.txt`). The header is `Δ D <group> n <n> N <|G|>`, then Δ lines
 `<index> mat(a,b,c,d) z=Z` for the element ([[a, b], [c, d]], Z) of Q × Z_n (`prod[mat(…);mat(…)] z=Z` for products,
-`meta(a=…,j=…)` for metacyclic groups, whose header `meta m k r` means Z_m ⋊_r Z_ℓ with ℓ = k; the index is the search program's own and is ignored by the checkers). The first
-listed element is e in every file; by Lemma 3.1 this is no loss of generality.
+`meta(a=…,j=…)` for metacyclic groups, whose header `meta m k r` means Z_m ⋊_r Z_ℓ with ℓ = k; the index is the
+search program's own and is ignored by the checkers). The first listed element is e in every file; by Lemma 3.1 this is
+no loss of generality.
 
 ---
 
@@ -303,9 +303,9 @@ The automorphisms used for the records in §5 (details per record in the table):
    z ∈ {0, 7} are fixed. Let g ∈ SL(2, q) have order k ≥ 3 modulo the centre {±I}, with the characteristic not
    dividing k (for q odd and k = 3, g itself may have order 6, as in Appendix A). Then |C_{SL(2,q)}(g)| = q ± 1 (a
    torus) and, for q odd, the centraliser of the image of g in PSL(2, q) has order (q ± 1)/2 (for q even, PSL = SL).
-   The reason for the factor 1/2 rather than 2: X centralises the image of g iff XgX⁻¹ = ±g, and XgX⁻¹ = −g would
-   give tr g = −tr g, i.e. tr g = 0; but tr g = 0 gives g² = −I (Cayley–Hamilton), so the image of g would have
-   order ≤ 2. Hence only the sign + occurs, and the PSL centraliser is C_{SL(2,q)}(g)/{±I}. For products
+   Why (q ± 1)/2 and not q ± 1: X ∈ SL(2, q) centralises the image of g iff XgX⁻¹ = ±g, and XgX⁻¹ = −g would give
+   tr g = −tr g, i.e. tr g = 0; but tr g = 0 gives g² = −I (Cayley–Hamilton), so the image of g would have order
+   ≤ 2. Hence only the sign + occurs, and the PSL centraliser is C_{SL(2,q)}(g)/{±I}. For products
    Q = Q_1 × Q_2, g = (g_1, g_2) and the centraliser is the product of the two. This is the k = 3 recipe of most
    records, and k = 5 for (11,8) and (11,10).
 2. **Order 6 with a swap** on SL(2,7)² × Z_31 (the (13,8) record): α(x_1, x_2, z) = (g x_2 g⁻¹, x_1, 6z) with g of order 3.
@@ -562,8 +562,8 @@ z − t_i, and since s_i is a bijection its far end can be prescribed. Let u be 
 line–point pair is a point–line pair with d replaced by −d, which is again in the set, so we may take u, v to be two
 points, a point and a line, or two lines. Each entry below is a walk from u to v: "≤ a" is a path of length ≤ a inside
 the current copy, "h" a hop, "1" an edge of a copy, and the intermediate targets are chosen so that the walk ends at v
-(for example, for two lines and d = t_i + t_j: inside copy z to the point s_i⁻¹(m), where m is a line on s_j⁻¹(v);
-hop to m; one edge to s_j⁻¹(v); hop to v).
+(for example, for two lines and d = t_i + t_j: inside copy z to the point s_i⁻¹(m), where m is a line through the
+point s_j⁻¹(v); hop to m; one edge to s_j⁻¹(v); hop to v).
 
 | d | point to point | point to line | line to line |
 |---|---|---|---|
@@ -587,9 +587,9 @@ which are below the table in every cell.
   μ\* (SIZE_LAW.md; g_Δ = (Δ−1)²/((Δ−1)² − 1)). That is a heuristic fitted to data.
 - **Random-S theorems are in another regime.** research/theory/THRESHOLD.md proves, for every finite group and fixed D
   as Δ → ∞, that a random S of size Δ gives diameter ≤ D with high probability once the number of distinct-letter words
-  exceeds (1 + η)(D−1)!·N ln N for a fixed η > 0, and fails below N(ln N − ln ln N − ω(1)). The two bounds differ by the factor (D − 1)!,
-  so this is a window, not a sharp threshold. Those proofs use Suen's inequality (in the form stated
-  by Yadin) and are not reproduced here. They say nothing about fixed Δ ≤ 16, the regime of the records.
+  exceeds (1 + η)(D−1)!·N ln N for a fixed η > 0, and fails below N(ln N − ln ln N − ω(1)). The two bounds differ by
+  the factor (D − 1)!, so this is a window, not a sharp threshold. Those proofs use Suen's inequality (in the form
+  stated by Yadin) and are not reproduced here. They say nothing about fixed Δ ≤ 16, the regime of the records.
 
 ---
 
@@ -848,9 +848,10 @@ degree-diameter problem for several varieties of Cayley graphs, I: the Abelian c
 x ↦ x⁻¹α(x) is a bijection; see D. Gorenstein, *Finite Groups*, Ch. 10). Proposition 3.4(a) and Proposition 4.5 were
 not part of the novelty check either; they are short and may well be folklore. Proposition 4.6 (§4.4) is of the same
 kind as the cyclic multi-level products over generalized polygons in C. Delorme, Eur. J. Combin. 6 (1985) 291–302,
-§3–4 [read], and the compound graphs of J. Gómez, M. A. Fiol, Ars Combin. 20-A (1985) 211–237 [meta]; the closest form
-the novelty check names is R. Rajiv's compounds of polygon incidence graphs with point-to-line matchings (Zenodo, 30 Sep
-2026, https://doi.org/10.5281/zenodo.23052995; an unrefereed preprint; general graphs, diameter n) [read]. We claim no novelty for it.
+§3–4 [read], and the compound graphs of J. Gómez, M. A. Fiol, Ars Combin. 20-A (1985) 211–237 [meta]. A close recent
+relative, named in the novelty check (claim 2), is R. Rajiv's compounds of polygon incidence graphs with point-to-line
+matchings (Zenodo, 30 Sep 2026, https://doi.org/10.5281/zenodo.23052995; an unrefereed preprint; general graphs,
+diameter n) [read]. We claim no novelty for Proposition 4.6.
 
 ### 6.2 What this note contributes
 
