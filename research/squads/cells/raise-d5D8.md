@@ -107,4 +107,9 @@ Record entering round 2: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
   `4896 51 96 5`: best cost 2 at both seeds. `runs/a2.tsv`.
 
 ## Batch a3 (240 s, seed 1, K = 8, 4 workers): screen ranks 101–200 (N = 4,884–4,900)
-- Running at the time of this note. The 84 entries at N = 4,896 are distinct groups: their screen statistics are not repeated among the top 200.
+- Stopped at 28 of 100 (about 1 h in) because the best cost was 17, far behind the top ranks (a1's best was 2).
+  The 84 entries at N = 4,896 are distinct groups: their screen statistics are not repeated among the top 200.
+
+## Batch a4 (3,600 s, cores on the two best groups): running at the time of this note
+- `4887 181 27 39` on seeds 4, 5, 6 (cost 1 at 1,800 s on seeds 2 and 3).
+- `4896 51 96 5` on seed 4 (cost 2 at 1,800 s on seeds 2 and 3).
