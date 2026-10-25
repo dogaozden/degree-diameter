@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/user/degree-diameter/research/d15D7 && ulimit -s unlimited && FLAGS=/home/user/degree-diameter/research/squads/c157-r2/c3/cal_s1_20.txt timeout 900 nice -n 10 /home/user/degree-diameter/research/squads/c157-r1/c6/cover_match2 hex/hex_q11.bin 20 1 12 /home/user/degree-diameter/research/squads/c157-r2/c3/K20_cal.sol /home/user/degree-diameter/research/squads/c157-r2/c3/none20.hg 2 > /home/user/degree-diameter/research/squads/c157-r2/c3/K20_cal.out 2> /home/user/degree-diameter/research/squads/c157-r2/c3/K20_cal.err
+echo "exit=$?" >> /home/user/degree-diameter/research/squads/c157-r2/c3/K20_cal.out
