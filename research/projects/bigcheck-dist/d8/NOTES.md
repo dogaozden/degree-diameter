@@ -84,6 +84,19 @@ girth-14 Moore bound 2(q⁷−1)/(q−1) for degree q+1: for q = 2 this is 378 <
 cannot exist, and for larger q it would be a cage-quality graph (none is known). So bundles cannot be rainbow
 everywhere; any construction at Delorme's level must use them only partly, or cover in another way.
 
+## 4b. A "loop" design (∗-product with step sizes)
+
+Writing Delorme's ∗-product H ∗ C_m with automorphism voltages k ↦ g + ψk and gauging the multipliers away gives an
+equivalent cyclic lift: every vertex u of H(q) gets a loop with an odd voltage c(u) (lift edges (u,k) ~ (u, k ± c(u))),
+incidence voltages are even, m is even, and the lift is bipartite by parity (colour = side(u) + k mod 2), Δ = q+3.
+Along a geodesic, a loop step at the i-th vertex adds ±c(w_i), so coverage becomes a sumset condition. The bottleneck
+is again point-line pairs at H-distance 5: even fibres are reached only by the geodesic with 0 or 2 loop steps (72
+signed pairs of the 6 labels) and q walks of length 7, so m/2 ≤ 73 + q, a much larger bound than Delorme's count —
+but it needs, on every such geodesic, the six labels' signed pair sums to cover 2Z_m nearly without repetition.
+Random τ-invariant labels are far worse than two bijections (x2l.c, q = 5: cost 372, 4,278, 13,652 at m = 10, 16,
+20, against 8 and 70 at M = 16, 20 for the bijection design), because each bottleneck pair has only ~80 walks instead of
+~200. So this design is only useful with an exact algebraic labelling, which we do not have.
+
 ## 5. Octagons
 
 The generalized octagons are GO(q, q²) and duals for q = 2^(2e+1). Only GO(2,4) (1,755 points, 2,925 lines, incidence
