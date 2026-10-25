@@ -1,0 +1,39 @@
+# (15,7) n = 2,501,491 = 14*177,156 + 10,826 + 10,481 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; this branch's earlier 2,500,147 ... 2,501,124, 2,501,454.
+# NEW level-type pattern HHDHDHD (instead of master's HHDHHDD). Its four bottleneck friendly transitions are 0->2, 5->6
+# (points) and 2->3, 6->1 (lines), and every one of them has a NON-bottleneck friendly transition into its source level
+# and out of its target level, so every paired element's partner gets a private covering element in a designed
+# non-bottleneck set (research/d15D7b/score_relaxed2.py, design_cover.py + design4.py). The bottleneck sets therefore
+# need no coverage mask: 0->2 9,294 points, 5->6 9,314, 2->3 8,965 lines, 6->1 8,977 before drops (dpack.c without mask, 10 + 15 min); constrained hubs with disjoint level sets are packed two to a hub (tm3_build.py assign).
+# Mirrored surgery (768, sigma of d14D7_hex11_mirror768_n1774632.sol) on the nine non-friendly transitions as before;
+# relaxed surgery theorem research/d15D7b/RELAXED.md (it is per transition, so it holds for any type pattern).
+# Solution: research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol (sha256 e2fb3fbe82d122fb59335e5ff6b3c707b3bccaa0ac0ff6bd974c5ede78898d68); the .sol header carries the pattern.
+# Rebuild: hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19 (research/d13D7/hexgen2.c 11);
+#   python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol g.edges g.src
+#   edge list sha256 ea06a8d07265f68ee9c5dd5b2ab9e298bdaa2d6a241c1e2931ebf51351b21541 (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
+# Coverage: theorem for the unaffected non-hub pairs (hypotheses re-checked by tm3_build), BFS from every hub and every
+# paired-element vertex for the rest. No plain all-pairs run on this graph in this session (about 8 core-hours); the
+# all-pairs run on the sibling graph d15D7_hex11_typedrelax_n2501124 (same construction, pattern HHDHHDD) is reported in
+# its check file.
+-- tm3_build.py build:
+free A-slots per level [10826, 12560, 15588, 12544, 12152, 10839, 15636] B-slots [12361, 10485, 16083, 10481, 12274, 12353, 16108] -> hubs 10826 10481
+mirror hypotheses OK: |R'| = 768
+  0->2 (points): 9290 freed, 1227 pairs, (R1) and (R2) OK
+  1->2 (points): 6025 freed, 0 pairs, (R1) and (R2) OK
+  1->4 (points): 5767 freed, 0 pairs, (R1) and (R2) OK
+  2->3 (lines): 8945 freed, 1526 pairs, (R1) and (R2) OK
+  2->5 (lines): 5875 freed, 0 pairs, (R1) and (R2) OK
+  3->4 (points): 5739 freed, 0 pairs, (R1) and (R2) OK
+  3->6 (points): 6037 freed, 0 pairs, (R1) and (R2) OK
+  4->5 (lines): 5710 freed, 0 pairs, (R1) and (R2) OK
+  4->0 (lines): 5674 freed, 0 pairs, (R1) and (R2) OK
+  5->6 (points): 9303 freed, 1271 pairs, (R1) and (R2) OK
+  6->0 (lines): 5919 freed, 0 pairs, (R1) and (R2) OK
+  6->1 (lines): 8949 freed, 1553 pairs, (R1) and (R2) OK
+friendly hypotheses OK (5577 pairs in all)
+n = 2501491, edges = 18744232, degree min 13 max 15, hub graph edges 83848
+wrote rb.edges
+wrote rb.src: 43615 BFS sources (hubs and paired elements)
+-- hubfar (BFS from all 21,307 hubs and 22308 paired-element vertices, depth 7, 4 threads):
+n=2501491 edges=18744232 degree min=13 max=15 bipartite=yes connected=yes sources=43615 far_pairs=0 max_ecc=7

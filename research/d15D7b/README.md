@@ -1,7 +1,7 @@
 # (15,7) from typed hexagon levels, mirrored surgery and relaxed friendly sets (job cell-15-7, 2026-10-25)
 
-Best: **(15,7) ≥ 2,501,454** (table 2,480,184; master 2,497,075 at the start of the session),
-research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol, check checks/d15D7_hex11_typedrelax2_n2501454.check.txt
+Best: **(15,7) ≥ 2,501,491** (table 2,480,184; master 2,497,075 at the start of the session),
+research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol, check checks/d15D7_hex11_typedrelax2_n2501491.check.txt
 (level types HHDHDHD; the HHDHHDD version 2,501,124 has the full all-pairs run).
 
 ## The graph
@@ -35,7 +35,8 @@ and one out of j2, so all covers can be designed privately and the bottleneck se
 | 2,500,749 | relaxed bottleneck sets (collinear / concurrent pairs, RELAXED.md), 2,863 pairs | BFS from hubs + paired vertices |
 | 2,501,008 | partner covers designed into the non-bottleneck friendly sets, 3,898 pairs | same |
 | 2,501,124 | squad round c157b-r2: private covers (design3.py), protected alternation, refill; 4,370 pairs | same + full apsp_mt (see check file) |
-| **2,501,454** | level types HHDHDHD: every bottleneck set's partners get private covers in non-bottleneck sets, so no masks (score_relaxed2.py, design4.py) | BFS from hubs + paired vertices |
+| 2,501,454 | level types HHDHDHD: every bottleneck set's partners get private covers in non-bottleneck sets, so no masks (score_relaxed2.py, design4.py) | BFS from hubs + paired vertices |
+| **2,501,491** | longer ILS runs; constrained hubs with disjoint level sets packed two to a hub | same |
 
 ## Files
 
@@ -60,7 +61,7 @@ and one out of j2, so all covers can be designed privately and the bottleneck se
 
 ```
 cc -O2 -o hexgen2 research/d13D7/hexgen2.c -lm && mkdir -p hex && ./hexgen2 11        # hex/hex_q11.bin, sha256 e60db369...
-python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol g.edges g.src
+python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol g.edges g.src
 cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src             # hubs + paired vertices
 cc -O2 -pthread -o apsp_mt research/lifts/coordinator_check/apsp_mt.c && ./apsp_mt g.edges 15 7 4   # all pairs
 ```

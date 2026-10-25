@@ -195,8 +195,20 @@ def do_assign(M, seed):
             assert ok, 'merged hub with two slots at one level'
             hubs.append(lvl)
         nmerged = sum(1 for m in comp.values() if len(m) > 1)
-        print(f'colour {c}: {len(D)} demands, {len(got)} matched, {len(miss)} not served, {len(hubs)} constrained hubs '
-              f'({nmerged} serve two demands)', flush=True)
+        # pack constrained hubs whose level sets are disjoint into one hub (first fit by level mask)
+        bymask = {}; packed = []
+        for lvl in sorted(hubs, key=lambda d: -len(d)):
+            m = sum(1 << lv_ for lv_ in lvl)
+            tgt = None
+            for hm in list(bymask):
+                if hm & m == 0 and bymask[hm]: tgt = hm; break
+            if tgt is None:
+                packed.append(dict(lvl)); bymask.setdefault(m, []).append(len(packed) - 1)
+            else:
+                h = bymask[tgt].pop(); packed[h].update(lvl); bymask.setdefault(tgt | m, []).append(h)
+        print(f'colour {c}: {len(D)} demands, {len(got)} matched, {len(miss)} not served, {len(hubs)} constrained hub '
+              f'groups ({nmerged} share a fixed slot), packed into {len(packed)} hubs', flush=True)
+        hubs = packed
         for (j, j2, r, x) in miss: bad.add((j, j2, min(r, x), max(r, x)))
         assert len(hubs) <= K, 'more constrained hubs than hubs'
         tab = -np.ones((K, L), np.int64); used = [set() for _ in range(L)]

@@ -1,7 +1,7 @@
 # Handoff: job cell-15-7 (resume session 01P3FWCNGZp2xTc6sYGPNtj4, branch claude/cell-15-7-haar-search-x6ynhl, PR #352)
 
 State (details: research/squads/cells/d15D7.md, research/d15D7b/README.md, research/d15D7b/RELAXED.md):
-- (15,7) best **2,501,454** (level types HHDHDHD, research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol; BFS-checked),
+- (15,7) best **2,501,491** (level types HHDHDHD, research/frontier/sols/d15D7_hex11_typedrelax2_n2501491.sol; BFS-checked),
   and **2,501,124** (table 2,480,184; master 2,497,075 at the start; cell-14-7's candidate 2,499,748):
   research/frontier/sols/d15D7_hex11_typedrelax_n2501124.sol, check research/d15D7b/checks/d15D7_hex11_typedrelax_n2501124.check.txt
   (theorem + BFS from all hubs and paired-element vertices; a plain apsp_mt all-pairs run was started at 12:52 UTC, see
