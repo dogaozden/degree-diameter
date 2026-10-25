@@ -42,8 +42,9 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
      4+4 bases were searched exhaustively up to the Moore bound.
    - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The ten groups that came within
      cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
-   - **(3,10):** no group of order 401–520 (except 512) gives a cubic Haar graph of diameter 10. The closest is
-     SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative (cost 4).
+   - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
+     closest is SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative
+     (cost 4).
    - **(3,7), (3,9), (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table. Every group up to the Moore bound
      was scanned, and the family maxima are 140, 234, 506 and 660 vertices at D = 7–10.
 6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Most near misses in every cell are affine-type
@@ -322,12 +323,13 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
     (288) and C2 × (C31 : C5) (310), each 9 short.
   - At odd D, hx reports N + (uncovered) when the first BFS already fails. The first session's coverage summary
     sorted these raw values, so its "best costs" at D = 7 and 9 were misleading; they are recomputed here.
-- **(3,10), Haar:** every group of every order 401–520 except 512 (`runs/allgroups_d3D10.tsv`; 400 is partial,
-  126 of 221). No diameter-10 graph. **No cubic Haar graph with 802–1,040 vertices has diameter 10, except possibly
-  for groups of order 512.**
+- **(3,10), Haar:** every group of every order 401–600 except 512 and 576 (`runs/allgroups_d3D10.tsv`; 400 is
+  partial, 126 of 221). No diameter-10 graph. **No cubic Haar graph with 802–1,200 vertices has diameter 10, except
+  possibly for groups of order 512 or 576.**
   - Closest: SmallGroup(486,40) = (C3 . ((C9 × C3) : C3)) : C2, at cost 2 (972 vertices). Also cost 4 at
     C29 : C14 and C2 × (C29 : C7) (406), at (432,243) and at C11 : C40 (440).
-  - Orders 521–600 (not 576): RESULT_521.
+  - Orders 521–600 (1,438 groups, 583 searched): the closest is only cost 12, (C5 × C5) : SL(2,3) (600), so the
+    near misses get worse beyond 520.
 - **(3,10), lifts near 816:** K3,3 over SmallGroup(136,3) = C17 : C8 (squad card c2's lead). 17,608,192
   assignments plus the identity pass of 2,515,456: no solution, best cost 4
   (`runs/d3D10_k33_sg136_3_exhaustive.txt`, `_identity.txt`).
@@ -450,8 +452,8 @@ and in control groups of the same order that have no solution.
 - So in the small-N cells no averaged quantity can tell which group will solve. That covers μ, the screening score
   and the quotient balance of §4; for the metacyclic groups the bound of §2.3 is the exception.
 - **That is why exhaustive coverage of all groups of the right order found (4,7).** This session applied the same
-  recipe to (4,8) (all 3,924 groups of order 1093–1200 except 1152), (4,7) (448–500) and (3,10) (to order 600), and
-  found near misses but no record.
+  recipe to (4,8) (all groups of order 1093–1300 except 1152, 1280, 1296), (4,7) (448–500), (4,9) (library orders
+  2486–2700 except 2624) and (3,10) (exhaustive to order 600). It found near misses but no record.
 
 ## 4. The metacyclic records of the voltage-lifts session (45 solutions, D ≥ 7)
 
