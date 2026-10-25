@@ -25,7 +25,17 @@ Screen: tools/orb_screen.py 9 10 11987641 12190000 "3 3 0" --samples 300 (log ru
 | psl 151 × Z7 | 12,049,800 | 35.7 | screened |
 | psl 79 × Z49 | 12,077,520 | 36.8 | screened |
 
+## Screen (tools/orb_screen.py, 300 random symmetric S per group, μ ≤ 41; log research/structured/runs/raise_d9D10_screen/)
+
+Calibration: the record group psl 71 × Z67 gives min 15, p1 19, p10 32, median 56 (fix 35).
+Top of the ranking by (p1+p10)/2 among N > 11,987,640: psl 151×Z7 (μ 35.7; min 13, p1 19, p10 33, fix 74);
+psl 79×Z49 (μ 36.8; min 16, p1 21, p10 36, fix 38); prod sl 8×psl 19×Z7 (μ 36.3; min 19, p1 24, p10 34, fix 80);
+sl 229 (μ 34.1; fix 227, bad); prod psl 5×sl 16×Z49 (μ 33.5). Last place: psl 41×Z349 (p1 33, p10 55).
+
 ## Log
 
 - 2026-10-25 07:24 UTC: baseline confirmed. haar_sym built. Screen started (RANDORB 300 per group, μ ≤ 41).
   Runs A and B started at 07:25 UTC, 4 h each.
+- 07:35 UTC: run A (psl 41×Z349, best 15 after 2.2e4 evals) stopped: weakest on the screen.
+  Started C psl 151×Z7, D psl 79×Z49, E prod sl 8×psl 19×Z7 (4 h each, seed 1, K 8).
+  Run B (sl 43×Z151) still going, best 6 after 2.6e4 evals.
