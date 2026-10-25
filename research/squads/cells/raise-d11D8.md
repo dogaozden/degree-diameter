@@ -60,6 +60,16 @@ Each solution, if one appears, goes to `research/frontier/sols/d11D8_psl_19_331_
   (15,953 of 15,960), but 56,137 here is about a quarter of 226k. Not yet explained. Check the candidate count on the first
   scan from a live run; if it stays low, the scan is incomplete and EXH results must not be trusted.
 
+- ~16:10–16:40 UTC: a bug in the EXH trigger. It fired whenever cost <= EXHT and EXHGAP (900 s) had passed. A scan
+  takes about 15 minutes, so the next scan started at once, and the annealer never ran again. Seeds 11, 12, 13 and 15
+  rescanned the same local optimum for about 30 minutes (step counts barely moved: seed 11 went 14,464 -> 14,465).
+  The runs were stopped at about 16:40 UTC. Their logs are kept; their best costs were 5, 10, 10, 5.
+- Fix (`haar_sym.c`): a scan now runs only when the best energy has improved since the last scan (`lastexhE`), and
+  EXHGAP defaults to 0. Built as `haar_sym_exh2`.
+- ~16:42 UTC: four runs on psl 19 x Z331 with the fixed trigger: seeds 21–24, 10800 s each (`EXH2` logs). They end
+  about 19:40 UTC.
+
 ## Status
 
-Running (seeds 11, 12, 13, 15). No solution above 2,258,520 yet.
+Running: seeds 21–24 (`haar_sym_exh2`, EXH on, fixed trigger). No solution above 2,258,520 yet.
+Round-1 and round-2 results so far: best cost 5 (one uncovered orbit), never 0, on psl 19 x Z331.
