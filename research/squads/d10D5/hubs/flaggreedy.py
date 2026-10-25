@@ -62,7 +62,9 @@ def matching(flags):
 flags = []
 fails = 0
 cands = [(p, l) for p in range(N) for l in lof[p]]
-while fails < tries:
+import os
+kmax = int(os.environ.get('KMAX', '999'))
+while fails < tries and len(flags) < kmax:
     p, l = rng.choice(cands)
     if any(p == f or l == g for f, g in flags): fails += 1; continue
     sz, _ = matching(flags + [(p, l)])
