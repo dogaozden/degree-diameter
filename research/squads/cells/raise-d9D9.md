@@ -72,3 +72,31 @@ Wave 3 result (3,600 s each, none reached cost 0; started 09:57 UTC):
 | prod psl 3 sl 13 67 | 31.8 | plain | 1 | 20 | 6.9·10⁵ |
 
 Wave 4 (3,600 s each, started 11:55 UTC, the last planned hour): sl 29 73 with RESTART=1, seeds 7–10.
+
+Wave 4 result (3,600 s each, RESTART=1, seeds 7–10, sl 29 73, finished 13:01 UTC): best costs 12, 14, 18, 12. None reached cost 0.
+
+## Verdict (session stopped at about 6 h)
+
+**Not raised.** The record stays at 3,499,776. No candidate with |G| above 1,749,888 reached cost 0.
+
+What was tried: 16 annealing runs (3,000–3,600 s each, one thread, about 1.1·10⁶ evaluations per hour-long run) on
+five group orders with μ from 31.8 to 38.8, all with k = 3, m = 3, f = 0:
+
+- sl 29 73 (μ 36.9), 12 runs over seeds, RESTART and ORBW variants: best cost 6 (seed 3, 1 h). Its runs stay at cost 6–18;
+  the trajectories flatten after about 0.5·10⁶ evaluations.
+- sl 121 1 (μ 35.3), prod sl 9 psl 17 1 (μ 33.2), prod sl 4 sl 31 1 (μ 38.8), prod psl 3 sl 13 67 (μ 31.8): best costs 10, 10, 16, 20.
+
+Why it stalled: the record's group (μ 30.5) had random-S minimum 42 and reached cost 0 after 1.26·10⁶ evaluations on
+a lucky seed. Every group above it has a worse random-S minimum (36–516) and a larger |Fix(α)| (29–161), which the
+notes in STRUCTURE.md §2–3 identify as the k = 3 wall. Going from 30.5 to 36.9 in μ is about +1 % in |G|, which is
+small, but it reaches the regime where this method stops finding zeros within an hour.
+
+Options not tried (for the coordinator): many more core-hours at μ 31–33 (the leader's stats are better there, but
+no candidate exists between 1,749,888 and 1,755,936 besides prod psl 3 sl 13 67); the metacyclic / voltage route
+(research/lifts/); k = 3 with f = 3, m = 2; and SL(3,q)-type centralizers (STRUCTURE.md §7.3, not implemented).
+
+## Files
+
+- Screen: runs/raise-d9D9/screen_1p75_1p80.txt (all candidates with |G| in [1,749,889, 1,800,000]).
+- Logs: runs/raise-d9D9/w1*, w2*, w3*, w4_* (each with queue log and per-run log).
+- No solution was found, so nothing was written to research/frontier/sols/.
