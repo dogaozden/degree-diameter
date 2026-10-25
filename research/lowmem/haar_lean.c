@@ -30,7 +30,8 @@
  *      AR (r on Z_n), ATRACE (trace of the conjugating element), LEVELS=1 (print ball sizes),
  *      RANDORB=m (cost statistics of m random symmetric S, no search; "units" = uncovered free alpha-orbits + uncovered
  *      fixed points, the Poisson count that decides P(cost 0)), SOLFILE=f (cost + full check of a solution
- *      file's S, no search), BENCH=m (time m evaluations).
+ *      file's S, no search), BENCH=m (time m evaluations), ZMAX=t (reject candidate orbits whose z-spectrum
+ *      A(S) = max_{xi != 0} |(1/d) sum_u e(xi z_u / n)| exceeds t; ZTRY tries, default 200; see zspec_with).
  * Build: gcc -O3 -march=native -fopenmp -o haar_lean haar_lean.c -lm
  */
 #include <stdio.h>
@@ -272,6 +273,100 @@ static int random_orbit(int j, el *o) {
     for (int tries = 0; tries < 100000; tries++) { el x = rand_el(); if (orbit_of(x, o) && orbit_free(o, j)) return 1; }
     return 0;
 }
+/* z-spectrum filter (ZMAX): A(S) = max over xi != 0 of |(1/d) sum_u exp(2 pi i xi z_u / n)|.  Most binding words have
+ * length D-1, so the number of words with z-part z varies like 1 + 2 A^(D-1) cos(..), which multiplies the uncovered count
+ * by about I0(2 lambda A^(D-1)); for big n random S often have A ~ 0.7.  ZMAX=t rejects candidate orbits with A > t. */
+static double ZMAX = 0; static int ZTRY = 200; static double *ZCOS, *ZSIN;
+static double zspec_with(int j, const el *o) {   /* A of S with orbit j replaced by o (j < 0: S as is) */
+    int zs[MAXD]; for (int u = 0; u < d; u++) zs[u] = S[u].z;
+    if (j >= 0) for (int i = 0; i < OK_; i++) zs[ostart(j) + i] = o[i].z;
+    double best = 0;
+    for (int xi = 1; xi <= NC / 2; xi++) {
+        double re = 0, im = 0;
+        for (int u = 0; u < d; u++) { int k = (int)((long long)xi * zs[u] % NC); re += ZCOS[k]; im += ZSIN[k]; }
+        double a = re * re + im * im; if (a > best) best = a;
+    }
+    return sqrt(best) / d;
+}
+static int random_orbit_z(int j, el *o) {   /* random_orbit, filtered by ZMAX (best of ZTRY if none passes) */
+    if (ZMAX <= 0 || NC < 3) return random_orbit(j, o);
+    el bo[MAXD]; double ba = 2;
+    for (int t = 0; t < ZTRY; t++) {
+        if (!random_orbit(j, o)) return 0;
+        double a = zspec_with(j, o); if (a <= ZMAX) return 1;
+        if (a < ba) { ba = a; memcpy(bo, o, sizeof(el) * OK_); }
+    }
+    memcpy(o, bo, sizeof(el) * OK_); return 1;
+}
+/* fixed-point prefilter (FIXPRE=t): an alpha-fixed x is missed with probability e^(-lambda/k), not e^(-lambda), so for
+ * k >= 5 the fixed points are a large part of mu_eff.  fixcheck() tests them exactly and cheaply by meeting in the middle:
+ * (x,B) is within D-1 of (e,A) iff some A-side y within an even depth ev of (e,A) has y x^-1 within od = D-1-ev of (e,B)
+ * (right multiplication by x is an automorphism; D = 10: depths 4 + 5).  ~20-40 ms against ~1 s for a full evaluation.  Candidates that
+ * miss a fixed point are redrawn (up to t times).  Only for even D (the cost counts side B from (e,A)). */
+static int FIXPRE = 0; static long long nfixpre = 0;
+typedef struct { uint64_t *t; int sh; } hset;
+static void hs_init(hset *h, int bits) { h->t = xmalloc(sizeof(uint64_t) << bits); h->sh = 64 - bits; memset(h->t, 0xff, sizeof(uint64_t) << bits); }
+static void hs_clear(hset *h) { memset(h->t, 0xff, sizeof(uint64_t) << (64 - h->sh)); }
+static inline int hs_add(hset *h, uint64_t k) {   /* 1 if new */
+    size_t m = ((size_t)1 << (64 - h->sh)) - 1, i = (size_t)((k * 0x9E3779B97F4A7C15ULL) >> h->sh);
+    while (h->t[i] != ~0ULL) { if (h->t[i] == k) return 0; i = (i + 1) & m; }
+    h->t[i] = k; return 1;
+}
+static inline int hs_has(const hset *h, uint64_t k) {
+    size_t m = ((size_t)1 << (64 - h->sh)) - 1, i = (size_t)((k * 0x9E3779B97F4A7C15ULL) >> h->sh);
+    while (h->t[i] != ~0ULL) { if (h->t[i] == k) return 1; i = (i + 1) & m; }
+    return 0;
+}
+static inline uint64_t ekey(el x) { int r; long long b; el2rc(x, &r, &b); return (uint64_t)r * (uint64_t)L + (uint64_t)b; }
+static hset FH_SA, FH_SB, FH_R; static el *FBUF1, *FBUF2, *FLA; static long long FCAP;
+static void fix_init(void) {
+    int ev = ((D - 1) / 2 + 1) & ~1, od = D - 1 - ev;
+    long long pe = 1, po = 1; for (int i = 0; i < ev; i++) pe *= d; for (int i = 0; i < od; i++) po *= d;
+    long long big = pe > po ? pe : po;   /* >= size of either ball */
+    int be = 10, bo = 10, bb = 10;
+    while ((1LL << be) < 3 * pe && be < 30) be++;
+    while ((1LL << bo) < 3 * po && bo < 30) bo++;
+    while ((1LL << bb) < 3 * big / d + 64 && bb < 30) bb++;
+    hs_init(&FH_R, bo); hs_init(&FH_SA, be); hs_init(&FH_SB, bb);
+    FCAP = big + 16; FBUF1 = xmalloc(sizeof(el) * FCAP); FBUF2 = xmalloc(sizeof(el) * FCAP); FLA = xmalloc(sizeof(el) * FCAP);
+}
+static long long fixcheck(const el *Sx, const el *SIx) {   /* number of alpha-fixed points (incl. e) not within D-1 of (e,A) */
+    int ev = ((D - 1) / 2 + 1) & ~1, od = D - 1 - ev;   /* even part (A side from (e,A)) + odd part (from (e,B)) */
+    hs_clear(&FH_SA); hs_clear(&FH_SB); hs_clear(&FH_R);
+    /* even ball from (e,A): A-side elements at distance 0, 2, .., ev */
+    long long nla = 0, n1 = 1, n2; FBUF1[0] = ID; hs_add(&FH_SA, ekey(ID)); FLA[nla++] = ID;
+    for (int h = 1; h <= ev; h++) {
+        n2 = 0;
+        for (long long i = 0; i < n1; i++) for (int u = 0; u < d; u++) {
+            el y = gmul(h % 2 ? Sx[u] : SIx[u], FBUF1[i]);
+            if (hs_add(h % 2 ? &FH_SB : &FH_SA, ekey(y))) { FBUF2[n2++] = y; if (!(h % 2)) FLA[nla++] = y; }
+        }
+        el *t = FBUF1; FBUF1 = FBUF2; FBUF2 = t; n1 = n2;
+    }
+    /* odd ball from (e,B): A-side elements at distance 1, 3, .., od into FH_R */
+    hs_clear(&FH_SB); n1 = 1; FBUF1[0] = ID; hs_add(&FH_SB, ekey(ID));
+    for (int h = 1; h <= od; h++) {
+        n2 = 0;
+        for (long long i = 0; i < n1; i++) for (int u = 0; u < d; u++) {
+            el y = gmul(h % 2 ? SIx[u] : Sx[u], FBUF1[i]);
+            if (hs_add(h % 2 ? &FH_R : &FH_SB, ekey(y)) && h < od) FBUF2[n2++] = y;
+        }
+        el *t = FBUF1; FBUF1 = FBUF2; FBUF2 = t; n1 = n2;
+    }
+    long long miss = 0;
+    for (long long f = -1; f < NFIX; f++) {
+        el xi = ginv(f < 0 ? ID : FIXL[f]); int found = 0;
+        for (long long i = 0; i < nla && !found; i++) if (hs_has(&FH_R, ekey(gmul(FLA[i], xi)))) found = 1;
+        if (!found) miss++;
+    }
+    return miss;
+}
+static long long fixcheck_with(int j, const el *o) {   /* fixcheck of S with orbit j replaced by o */
+    el Sx[MAXD], SIx[MAXD]; memcpy(Sx, S, sizeof(el) * d);
+    if (j >= 0) for (int i = 0; i < OK_; i++) Sx[ostart(j) + i] = o[i];
+    for (int u = 0; u < d; u++) SIx[u] = ginv(Sx[u]);
+    return fixcheck(Sx, SIx);
+}
 static long long ipow_mod(long long b, long long e, long long m) { long long r = 1 % m; b %= m; while (e) { if (e & 1) r = r * b % m; b = b * b % m; e >>= 1; } return r; }
 static int gcdi(int a, int b) { while (b) { int t = a % b; a = b; b = t; } return a < 0 ? -a : a; }
 static int order_mod_pm(el g) {     /* order of the matrix part of g modulo +-I (conjugation order) */
@@ -447,10 +542,28 @@ int main(int argc, char **argv) {
         return 0;
     }
     if (!choose_alpha()) return 2;
+    if (getenv("ZMAX")) ZMAX = atof(getenv("ZMAX"));
+    if (getenv("ZTRY")) ZTRY = atoi(getenv("ZTRY"));
+    if (getenv("FIXPRE")) FIXPRE = atoi(getenv("FIXPRE"));
+    if (FIXPRE > 0 && D % 2) { fprintf(stderr, "FIXPRE needs even D\n"); FIXPRE = 0; }
+    ZCOS = malloc(sizeof(double) * NC); ZSIN = malloc(sizeof(double) * NC);
+    for (int k = 0; k < NC; k++) { ZCOS[k] = cos(2 * M_PI * k / NC); ZSIN[k] = sin(2 * M_PI * k / NC); }
     { for (int u = 0; u < 6; u++) { el x = rand_el(), y = rand_el();
         if (!geq(alpha(gmul(x, y)), gmul(alpha(x), alpha(y)))) { fprintf(stderr, "alpha is not an automorphism\n"); return 2; }
         el w = x; for (int i = 0; i < OK_; i++) w = alpha(w); if (!geq(w, x)) { fprintf(stderr, "alpha^k != 1\n"); return 2; } } }
     find_fix();
+    if (FIXPRE > 0 || getenv("FIXTEST")) fix_init();
+    if (getenv("FIXTEST")) {   /* validation: fixcheck against the full evaluation's uncovered fixed points */
+        int m = atoi(getenv("FIXTEST")), bad = 0; double tf = 0, tc = 0;
+        for (int t = 0; t < m; t++) {
+            for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); make_tables(o[i], TF[u], TI[u]); } }
+            double t1 = now(); long long a = fixcheck(S, SI); tf += now() - t1;
+            t1 = now(); long long c = cost(C[0], TF, TI, NOBOUND); tc += now() - t1; long long b = fixmiss(C[0]);
+            printf("FIXTEST cost=%lld fixmiss(full)=%lld fixcheck=%lld %s\n", c, b, a, a == b ? "ok" : "MISMATCH"); if (a != b) bad++;
+        }
+        printf("FIXTEST %d samples, %d mismatches, fixcheck %.3f s, cost %.3f s per sample\n", m, bad, tf / m, tc / m);
+        return 0;
+    }
     double nb = D % 2 ? 2 : 1;
     fprintf(stderr, "ORBIT k=%d m=%d f=%d: |Fix(alpha)| = %lld (+e); mu = %.2f, mu/k = %.2f, fixed-point misses ~ %.2f\n",
             OK_, OM, OF, NFIX, mu, mu / OK_, nb * (NFIX + 1) * exp(-lam / OK_));
@@ -458,7 +571,7 @@ int main(int argc, char **argv) {
     if (OF) S[0] = ID;
     for (int u = 1; u < OF; u++) { int ok; el x; do { x = FIXL[rnd() % NFIX]; ok = 1; for (int v = 0; v < u; v++) if (geq(S[v], x)) ok = 0; } while (!ok); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = (el){-1, -1, -1, -1 - u, -1};
-    for (int j = 0; j < OM; j++) { el o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
+    for (int j = 0; j < OM; j++) { el o[MAXD]; if (!random_orbit_z(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); make_tables(S[i], TF[i], TI[i]); }
     if (getenv("BENCH")) {
         int m = atoi(getenv("BENCH")); LEVELS = 1; double t1 = now(); long long c = 0;
@@ -474,10 +587,14 @@ int main(int argc, char **argv) {
         double *u = malloc(sizeof(double) * m), su = 0;   /* units = uncovered free alpha-orbits + uncovered fixed points */
         for (int t = 0; t < m; t++) {
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){-1, -1, -1, -1 - ostart(j) - i, -1};
-            for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); make_tables(o[i], TF[u], TI[u]); } }
+            for (int fp = 0; fp < (FIXPRE > 0 ? FIXPRE : 1); fp++) {
+                for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit_z(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); } }
+                if (FIXPRE <= 0 || fixcheck(S, SI) == 0) break;
+            }
+            for (int u = 0; u < d; u++) make_tables(S[u], TF[u], TI[u]);
             v[t] = cost(C[0], TF, TI, NOBOUND); sm += v[t];
             { long long fm = fixmiss(C[0]); u[t] = (double)(v[t] - fm) / OK_ + fm; su += u[t]; }
-            if (LEVELS) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld units %.1f\n", v[t], u[t]); }
+            if (LEVELS) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld units %.1f A %.3f\n", v[t], u[t], NC > 2 ? zspec_with(-1, 0) : 0.0); }
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) saved = write_solution(C[0], out);
         }
         for (int i = 1; i < m; i++) { long long x = v[i]; int j = i - 1; while (j >= 0 && v[j] > x) { v[j + 1] = v[j]; j--; } v[j + 1] = x; }
@@ -511,12 +628,21 @@ int main(int argc, char **argv) {
         int slot = (int)(rnd() % nslots), isorb = slot < OM, j = slot, fs = isorb ? -1 : 1 + (slot - OM);
         for (int t = 0; t < K; t++) {
             if (isorb) {
-                el x, o[MAXD]; int ok = 0;
-                AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);
-                if ((int)(rnd() % 100) < TARGP && targeted(&x) && !geq(x, ID) && orbit_of(x, o) && orbit_free(o, j)) ok = 1;
-                AVOIDMASK = 0;
-                if (!ok) random_orbit(j, o);
-                memcpy(cand[t], o, sizeof(el) * OK_);
+                el x, o[MAXD], bo[MAXD]; long long bm = LLONG_MAX;
+                for (int fp = 0; fp < (FIXPRE > 0 ? FIXPRE : 1); fp++) {
+                    int ok = 0;
+                    AVOIDMASK = 0; for (int i = 0; i < OK_; i++) AVOIDMASK |= 1u << (ostart(j) + i);
+                    for (int tr = 0; tr < (ZMAX > 0 ? 20 : 1) && !ok; tr++)
+                        if ((int)(rnd() % 100) < TARGP && targeted(&x) && !geq(x, ID) && orbit_of(x, o) && orbit_free(o, j)
+                            && (ZMAX <= 0 || zspec_with(j, o) <= ZMAX)) ok = 1;
+                    AVOIDMASK = 0;
+                    if (!ok) random_orbit_z(j, o);
+                    if (FIXPRE <= 0) { memcpy(bo, o, sizeof(el) * OK_); break; }
+                    long long fm = fixcheck_with(j, o); nfixpre++;
+                    if (fm < bm) { bm = fm; memcpy(bo, o, sizeof(el) * OK_); }
+                    if (fm == 0) break;
+                }
+                memcpy(cand[t], bo, sizeof(el) * OK_);
             } else { int ok; el x; do { x = FIXL[rnd() % NFIX]; ok = 1; for (int v = 0; v < d; v++) if (v != fs && geq(S[v], x)) ok = 0; } while (!ok); cand[t][0] = x; }
         }
         long long bound = NOBOUND;
@@ -562,8 +688,8 @@ int main(int argc, char **argv) {
     }
     memcpy(S, bestS, sizeof(el) * d);
     for (int u = 0; u < d; u++) { SI[u] = ginv(S[u]); make_tables(S[u], TF[u], TI[u]); }
-    printf("RESULT d=%d D=%d group=%s %d x Z_%d N=%lld best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld\n",
-           d, D, PSL ? "psl" : "sl", P, NC, N, best, evals, now() - t0, OK_, OM, OF, NFIX);
+    printf("RESULT d=%d D=%d group=%s %d x Z_%d N=%lld best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld fixchecks=%lld\n",
+           d, D, PSL ? "psl" : "sl", P, NC, N, best, evals, now() - t0, OK_, OM, OF, NFIX, nfixpre);
     if (best == 0) { long long c2 = cost(C[0], TF, TI, NOBOUND); printf("recomputed cost of best S: %lld\n", c2); if (c2 != 0 || !write_solution(C[0], out)) return 1; }
     return best == 0 ? 0 : 1;
 }

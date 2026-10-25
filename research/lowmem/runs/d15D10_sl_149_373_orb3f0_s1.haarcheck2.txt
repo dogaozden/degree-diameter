@@ -1,0 +1,31 @@
+haarcheck2 start 2026-10-25T12:35:20Z on ../frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt
+file=../frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt d=15 D=10 p=149 n=373 |G|=1233809400 vertices=2467618800
+selfcheck: SL(2,149) index is a bijection onto det-1 matrices (|SL|=3307800), fastmod ok (0.04s)
+generators: 15 read, all in SL(2,149) x Z_373, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 2467618800
+  from (e,A) level 2: new=210  reached=226 / 2467618800
+  from (e,A) level 3: new=2940  reached=3166 / 2467618800
+  from (e,A) level 4: new=41160  reached=44326 / 2467618800
+  from (e,A) level 5: new=576090  reached=620416 / 2467618800
+  from (e,A) level 6: new=8039153  reached=8659569 / 2467618800
+  from (e,A) level 7: new=107794349  reached=116453918 / 2467618800
+  from (e,A) level 8: new=884668878  reached=1001122796 / 2467618800
+  from (e,A) level 9: new=1125436006  reached=2126558802 / 2467618800
+  from (e,A) level 10: new=341059998  reached=2467618800 / 2467618800
+  done in 468.91s, eccA=10, reached 2467618800 / 2467618800
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 2467618800
+  from (e,B) level 2: new=210  reached=226 / 2467618800
+  from (e,B) level 3: new=2940  reached=3166 / 2467618800
+  from (e,B) level 4: new=41160  reached=44326 / 2467618800
+  from (e,B) level 5: new=576090  reached=620416 / 2467618800
+  from (e,B) level 6: new=8039113  reached=8659529 / 2467618800
+  from (e,B) level 7: new=107794349  reached=116453878 / 2467618800
+  from (e,B) level 8: new=884625062  reached=1001078940 / 2467618800
+  from (e,B) level 9: new=1125436006  reached=2126514946 / 2467618800
+  from (e,B) level 10: new=341103854  reached=2467618800 / 2467618800
+  done in 603.86s, eccB=10, reached 2467618800 / 2467618800
+VALID d=15 D=10 vertices=2467618800 eccA=10 eccB=10
+exit 0 after 1072 s, 2026-10-25T12:53:12Z
