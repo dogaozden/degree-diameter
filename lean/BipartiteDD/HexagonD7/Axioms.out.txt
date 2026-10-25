@@ -10,3 +10,4 @@
 'BipartiteDD.HexagonD7.exists_disjoint_ballsL' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD7.exists_local_duality' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD7.freed_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonD7.certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
