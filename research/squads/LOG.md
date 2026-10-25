@@ -89,3 +89,5 @@ coset-0 endgame stalled at 2 pairs for every annealer and route-surgery search, 
 CP-SAT on sigma with coverage, D1 and all unmixed pairs' routes as constraints, with "best-flip" nu moves):
 **4,838, apsp VALID** (research/squads/d10D5/hubs/checks/d10D5_n4838_CHECK.md). The squad did not contribute to this
 step directly; its eight negative results are what moved the search off the 10th flag.
+Later the same session: a second FLAGDEL flag (398:292) on top of the 4,838 state gave **4,840, apsp VALID**
+(research/squads/d10D5/hubs/checks/d10D5_n4840_CHECK.md), again closed by lns2.py best-flip moves (4 -> 3 -> 1 -> 0).
