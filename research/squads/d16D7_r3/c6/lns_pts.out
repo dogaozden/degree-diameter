@@ -1,0 +1,30 @@
+start weight 240 size 34
+it 50 |R|=118 current 240 exact 49 timeouts 1 t=12
+it 100 |R|=105 current 240 exact 95 timeouts 5 t=34
+it 150 |R|=42 current 240 exact 144 timeouts 6 t=43
+it 200 |R|=53 current 240 exact 192 timeouts 8 t=56
+it 250 |R|=127 current 240 exact 241 timeouts 9 t=64
+it 300 |R|=122 current 240 exact 290 timeouts 10 t=78
+it 350 |R|=93 current 240 exact 339 timeouts 11 t=85
+it 400 |R|=64 current 240 exact 387 timeouts 13 t=96
+it 450 |R|=118 current 240 exact 436 timeouts 14 t=103
+it 500 |R|=104 current 240 exact 483 timeouts 17 t=117
+it 550 |R|=81 current 240 exact 531 timeouts 19 t=129
+it 600 |R|=58 current 240 exact 581 timeouts 19 t=135
+it 650 |R|=52 current 240 exact 631 timeouts 19 t=140
+it 700 |R|=87 current 240 exact 681 timeouts 19 t=144
+it 750 |R|=122 current 240 exact 731 timeouts 19 t=152
+it 800 |R|=172 current 240 exact 781 timeouts 19 t=161
+it 850 |R|=177 current 240 exact 828 timeouts 22 t=177
+it 900 |R|=58 current 240 exact 878 timeouts 22 t=189
+it 950 |R|=94 current 240 exact 928 timeouts 22 t=195
+it 1000 |R|=117 current 240 exact 977 timeouts 23 t=203
+it 1050 |R|=117 current 240 exact 1027 timeouts 23 t=213
+it 1100 |R|=118 current 240 exact 1077 timeouts 23 t=220
+it 1150 |R|=68 current 240 exact 1126 timeouts 24 t=236
+it 1200 |R|=89 current 240 exact 1175 timeouts 25 t=246
+it 1250 |R|=184 current 240 exact 1222 timeouts 28 t=261
+it 1300 |R|=65 current 240 exact 1268 timeouts 32 t=276
+it 1350 |R|=103 current 240 exact 1314 timeouts 36 t=297
+END iters 1371 improvements 0 exact 1334 timeouts 37 best 240 size 34
+rc=0

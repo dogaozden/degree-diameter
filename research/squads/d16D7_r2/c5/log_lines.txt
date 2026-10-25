@@ -1,0 +1,25 @@
+loaded orbit graph n=6504, quotient n=2136
+[quot] start W=192
+[quot] t=0.00 it=2 W=195 n=67
+[quot] t=0.00 it=4 W=198 n=68
+[quot] t=0.00 it=8 W=201 n=69
+[quot] t=0.00 it=9 W=207 n=71
+[quot] t=0.00 it=25 W=210 n=72
+[quot] t=0.00 it=27 W=213 n=73
+[quot] t=0.00 it=47 W=215 n=73
+[quot] t=0.00 it=48 W=218 n=74
+[quot] t=0.00 it=121 W=221 n=75
+[quot] t=0.00 it=218 W=224 n=76
+[quot] t=0.02 it=3193 W=225 n=77
+[quot] t=0.05 it=7708 W=228 n=78
+[quot] t=0.23 it=34673 W=231 n=79
+[quot] t=1.85 it=277364 W=234 n=80
+[quot] t=4.08 it=609197 W=237 n=81
+[quot] t=74.11 it=11087047 W=239 n=81
+[quot] t=74.25 it=11107915 W=240 n=82
+[quot] done it=29189120 best W=240 cpu=200.00
+lifted symmetric set: 240 orbit vertices (quotient weight 240), independent=1
+[orbit] start W=240
+[orbit] done it=24615424 best W=240 cpu=200.00
+final: sym=240 best=240 independent=1 cpu=400.09
+exit=0

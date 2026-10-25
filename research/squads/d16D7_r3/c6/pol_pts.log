@@ -1,0 +1,12 @@
+seed size 240 f(seed)=0
+start k=241 f=1
+t=30 k=241 f=2 bestf=1 it=6752256 restarts=2
+t=60 k=241 f=1 bestf=1 it=13480960 restarts=4
+t=90 k=241 f=3 bestf=1 it=20200448 restarts=6
+t=120 k=241 f=1 bestf=1 it=26929152 restarts=8
+t=150 k=241 f=1 bestf=1 it=33610752 restarts=11
+t=180 k=241 f=2 bestf=1 it=40414208 restarts=13
+t=210 k=241 f=3 bestf=1 it=46955520 restarts=15
+t=240 k=241 f=2 bestf=1 it=53687296 restarts=17
+t=270 k=241 f=2 bestf=1 it=60462080 restarts=20
+END t=300.0 kbest=0 last_k=241 bestf(k)=1 it=67075072 restarts=22

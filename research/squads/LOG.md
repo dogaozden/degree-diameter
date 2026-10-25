@@ -15,8 +15,8 @@ Cards: c1 ARW iterated local search · c2 k-fixed penalty tabu · c3 simulated a
 multistart + (1,2)-swaps · c5 search invariant under an order-3 automorphism (from an order-183 collineation), then
 polish · c6 LNS with exact branch-and-bound refills · c7 wildcard (memetic) · c8 geometric wildcard.
 
-Best per card (points / lines, all re-scored by Opus with ogscore.py): c1 234 / 233 · c2 235 / 237 · c3 232 / – · c4 221 /
-221 · c5 – · c6 229 / – · c7 231 / 231 · c8 **240 / 240** (sets invariant under a group of order 9 on the orbit graph, h of
+Best per card (points / lines, all re-scored by Opus with ogscore.py; final reports): c1 234 / 233 · c2 235 / 237 · c3
+233 / 233 · c4 221 / 221 · c5 237 / 240 · c6 229 / 227 · c7 232 / 232 · c8 **240 / 240** (sets invariant under a group of order 9 on the orbit graph, h of
 order 183 and a Frobenius map, annealed in the 573/588-vertex quotient for 8 s, then expanded).
 
 Kept: c2's 235/237 gave the first verified record, **4,051,254** (with 2 orbits of local-duality surgery on the non-friendly
@@ -34,11 +34,11 @@ Launched 04:21 UTC, 8 Haiku cards.
 
 Cards and best (points / lines, re-scored by Opus; "q" = quotient level before polishing): c1 order-9 quotient, weighted
 annealing, exhaustive choice of the light quotient vertices, then k-fixed tabu polish: **242 / 243** · c2 order-9
-quotient, k-fixed tabu: q 240 / 243 (stopped before polishing) · c3 <F> quotient: q 240 / 241 (stopped) · c4 <h>
-quotient + tabu polish: 241 / 242 · c5 <hF> quotient + polish: 242 / 241 · c6 exact branch and bound on the order-9
-quotient: incumbents 240 / 242, no proof reported · c7 symmetry-breaking LNS from the 240s: no gain · c8 found psi =
+quotient, k-fixed tabu, polish: 240 / 243 · c3 <F> quotient + polish: 240 / 241 · c4 <h> quotient + tabu polish:
+241 / 242 · c5 <hF> quotient + polish: 242 / 240 · c6 exact branch and bound on the order-9 quotient: did not close
+(root bound ~1032), exact-repair LNS found 240 locally optimal; 240 / 242 · c7 symmetry-breaking LNS from the 240s: no gain · c8 found psi =
 (A, tau) with psi g psi^-1 = g^-1 (tau: (v,a,w) -> (w,-a,v)); the order-18 quotient (98 / 122 vertices) gives only 192 /
-226: too constrained.
+226, 236 / 228 after polishing: too constrained.
 
 Kept: c1's 242 / 243, verified as (16,7) **4,052,108** (apsp_autw VALID; numpy rebuild identical). Points look capped at
 240 in the order-9 quotient (all methods), and polishing adds 1-2. Opus then ran its own multi-start loop (random

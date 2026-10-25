@@ -222,7 +222,13 @@ static void save_best(ILS *S, int *best, int *bestn) {
     *bestn = S->ns;
     memcpy(best, S->sol, sizeof(int) * S->ns);
 }
-static int ils_run(ILS *S, double tlim, int *best, int *bestn, const char *tag) {
+static void write_set(const char *fn, const int *s, int ns) {
+    FILE *f = fopen(fn, "w");
+    if (!f) return;
+    for (int i = 0; i < ns; i++) fprintf(f, "%d\n", s[i]);
+    fclose(f);
+}
+static int ils_run(ILS *S, double tlim, int *best, int *bestn, const char *tag, const char *outfn) {
     int Wcur = S->W, Wbest = S->W;
     save_best(S, best, bestn);
     double t0 = cpu();
@@ -256,6 +262,7 @@ static int ils_run(ILS *S, double tlim, int *best, int *bestn, const char *tag) 
             Wcur = Wn;
             if (Wcur > Wbest) {
                 Wbest = Wcur; save_best(S, best, bestn);
+                if (outfn) write_set(outfn, best, *bestn);
                 fprintf(stderr, "[%s] t=%.2f it=%ld W=%d n=%d\n", tag, cpu() - t0, it, Wbest, *bestn);
             }
         } else {
@@ -288,16 +295,15 @@ int main(int argc, char **argv) {
     for (int v = 0; v < Gq->n; v++) qpush(Sq, v);
     process_queue(Sq);
     int *bq = malloc(sizeof(int) * Gq->n), nbq = 0;
-    int Wq = ils_run(Sq, T1, bq, &nbq, "quot");
+    int Wq = ils_run(Sq, T1, bq, &nbq, "quot", NULL);
     int *lift = malloc(sizeof(int) * Og->n), nl = 0;
     for (int i = 0; i < nbq; i++)
         for (int j = 0; j < nmem[bq[i]]; j++) lift[nl++] = mem[bq[i]][j];
     int okl = independent(Og, lift, nl);
     fprintf(stderr, "lifted symmetric set: %d orbit vertices (quotient weight %d), independent=%d\n", nl, Wq, okl);
     if (!okl) { fprintf(stderr, "lift not independent: bug\n"); return 2; }
-    FILE *fo = fopen(argv[6], "w");
-    for (int i = 0; i < nl; i++) fprintf(fo, "%d\n", lift[i]);
-    fclose(fo);
+    write_set(argv[6], lift, nl);
+    write_set(argv[7], lift, nl);   /* valid fallback deliverable until phase 2 improves it */
 
     /* phase 2: unrestricted ILS on the orbit graph from the lifted set */
     ILS *So = ils_new(Og);
@@ -305,13 +311,11 @@ int main(int argc, char **argv) {
     for (int v = 0; v < Og->n; v++) qpush(So, v);
     process_queue(So);
     int *bo = malloc(sizeof(int) * Og->n), nbo = 0;
-    int Wo = ils_run(So, T2, bo, &nbo, "orbit");
+    int Wo = ils_run(So, T2, bo, &nbo, "orbit", argv[7]);
     int oko = independent(Og, bo, nbo);
     fprintf(stderr, "final: sym=%d best=%d independent=%d cpu=%.2f\n", nl, Wo, oko, cpu());
     if (!oko) { fprintf(stderr, "final set not independent: bug\n"); return 3; }
-    fo = fopen(argv[7], "w");
-    for (int i = 0; i < nbo; i++) fprintf(fo, "%d\n", bo[i]);
-    fclose(fo);
+    write_set(argv[7], bo, nbo);
     printf("sym=%d best=%d\n", nl, Wo);
     return 0;
 }
