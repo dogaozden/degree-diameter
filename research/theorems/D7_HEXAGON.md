@@ -165,14 +165,11 @@ points for $q = 5$ (Section 10.1); the lab's large computations (research/d13D7/
 - *non-collinear* if no two of its points are collinear (a partial distance-2 ovoid);
 - a *partial ovoid* if its points are pairwise opposite; an *ovoid* if moreover it has $q^3+1$ points.
 
-We follow [VM98]: an ovoid of a generalized hexagon is a distance-3 ovoid (pairwise opposite points), and "partial
-distance-2 ovoid" means a non-collinear set (as in [BI16]). Ovoids of the polar space $Q(6,q)$, which also appear below,
-are related to ovoids of $H(q)$ by (F4).
-
 Dually, a set of lines is *non-concurrent*, a *partial spread* (pairwise opposite lines), or a *spread* ($q^3+1$
 pairwise opposite lines).
 
-By (F4), partial ovoids of $H(q)$ are exactly the sets of pairwise non-orthogonal points of $Q(6,q)$, i.e. partial ovoids
+We follow [VM98]: an ovoid of a generalized hexagon is a distance-3 ovoid (pairwise opposite points), and "partial
+distance-2 ovoid" means a non-collinear set (as in [BI16]). By (F4), partial ovoids of $H(q)$ are exactly the sets of pairwise non-orthogonal points of $Q(6,q)$, i.e. partial ovoids
 of the polar space $Q(6,q)$.
 
 **Lemma 1.2 (standard examples).**
@@ -234,7 +231,7 @@ this size. The dual statement is the same proof in $H^D$. $\square$
 
 For comparison, a non-collinear set has at most $N/(q+1) = q^4+q^2+1$ points (each line contains at most one of its
 points; equality means a distance-2 ovoid, a point set meeting every line exactly once; distance-2 ovoids of $H(q)$ are
-known only for $q = 2, 3, 4$ [DWVM08], as cited in [BI16], so this bound is not expected to be reached in general), and
+known only for $q = 2, 3, 4$ [DWVM08], as cited in [BI16], so equality is not known to occur for $q\ge 5$), and
 $(q+1)(q^3+1) = q^4+q^3+q+1$ is larger by $q^3-q^2+q$.
 
 ---
@@ -525,7 +522,8 @@ By Theorem 3.4 the order is $(2r+1)\cdot 2N + K_{\mathcal A} + K_{\mathcal B}$ w
 $K_{\mathcal B}\le\min_j\alpha_j$ and $K_{\mathcal A}\le\min_j\beta_j$, where $\alpha_j$ ($\beta_j$) counts the freed
 elements of the transitions leaving (entering) level $j$. Which transitions are friendly depends on the types.
 *Notation for freed sets:* $R_t$ in general (Definition 3.1); $F$ or $F_t$ for freed sets at automorphic transitions
-(segment sets, Theorem B); $R$ or $R_{j\to j'}$ for freed sets at transitions repaired by Theorem C.
+(segment sets, Theorem B); $R$ or $R_{j\to j'}$ for freed sets at transitions repaired by Theorem C. (In the all-$H$
+layout just below, $R$ is the common freed set of every transition, whichever theorem repairs it.)
 
 **All levels of type $H$, one bijection $\sigma$, one freed set $R$ on every transition** (the three-level records
 (7,7), (9,7), (10,7), (13,7) with $\sigma$ a local duality on $R$, and the duality records (11,7) with three levels and
@@ -614,8 +612,7 @@ hubs of each colour are attached (Definition 3.1 allows $K < \lvert R\rvert$; th
 graph $Y$ has maximum degree $\le q-1$ and satisfies (HG) of Theorem 3.4 (for instance, if it is an
 $\mathrm{HG}(K,K;q-1)$), then
 $$n_b(q+2,\,7)\ \ge\ 6N(q) + 2K .$$
-The records take $K = \lvert R\rvert$.
-Records: $q = 5$: $\lvert R\rvert = 81$ ($R_0$ = 72 pairwise opposite points, 9 extra points, spread lines of
+Records ($K = \lvert R\rvert$): $q = 5$: $\lvert R\rvert = 81$ ($R_0$ = 72 pairwise opposite points, 9 extra points, spread lines of
 $q^3+1 = 126$ available), $n = 23{,}598$; $q = 7$: $288 + 7$, $n = 118{,}238$; $q = 8$: $217 + 12$, $n = 225{,}152$;
 $q = 11$: $756 + 12$, $n = 1{,}064{,}472$. Computer: $R_0$ (for $q = 7, 11$ an orbit of the Weyl group $W(E_7)$ acting on $Q(6,q)$ through the $E_7$ root
 lattice mod $q$, research/cell147/ovoid/ and octo/ [b14]; being pairwise non-orthogonal in $Q(6,q)$ it is
@@ -710,12 +707,15 @@ ingredients that are classical (elliptic quadric sections, the Hermitian spread,
 (11,7) 399,634 and (12,7) 664,930; Corollary 9.3 gives (14,7) 1,773,296 and (16,7) 4,026,216 (table values in Section 0).
 None of them covers (15,7) ($q = 11$, $r = 3$).
 
-The record values exceed these because the hub graphs found by computer are much larger than $\kappa$, and the line sets
-found by computer (8,246 and 14,823 lines at $q = 11, 13$) are much larger than $(q+1)(q^2+1)$ (1,464 and 2,380); the
-mirrored sets of Corollary 8.1 (81, 295, 229 and 768 points at $q = 5, 7, 8, 11$) are also larger than $q^2+1$ (26, 50,
-65 and 122). (At $q = 13$ the record uses only 122
-elements on the non-friendly transitions, fewer than $q^2+1 = 170$.) For $q = 3^h$ the sets are already optimal for Theorem B (Proposition 1.4) and only the hub graphs are
-found by computer.
+The record values exceed these as follows. For $r = 1$ (Corollary 9.1, limited by $q^2+1$ when $q\ge 5$), the mirrored
+sets of Corollary 8.1 (81, 295, 229 and 768 points at $q = 5, 7, 8, 11$) are larger than $q^2+1$ (26, 50, 65 and 122).
+For $q = 9$ (Corollary 9.2, limited by $\kappa$), the hub graphs found by computer have 7,300 and 14,600 hubs per colour,
+against $\kappa(8) = 527$ and $\kappa(7) = 315$; the sets are already optimal for Theorem B (Proposition 1.4). For the
+typed layouts at $q = 11, 13$ both limits of Corollary 9.3 are passed: the hub graphs have 9,014 and 14,884 hubs per
+colour (against $\kappa(9) = 868$ and $\kappa(11) = 1{,}938$), and the line sets found by computer (8,246 and 14,823
+lines) are much larger than $(q+1)(q^2+1)$ (1,464 and 2,380). At $q = 11$ the mirrored set (768 points) is also larger
+than $q^2+1 = 122$; at $q = 13$ the record uses only 122 elements on the non-friendly transitions, fewer than
+$q^2+1 = 170$.
 
 **Remark 9.4 (consequences of Theorem B not yet built).** Theorem B allows friendly sets that are much larger than the
 non-collinear and non-concurrent sets used in the (14,7)–(16,7) records: up to $(q+1)(q^3+1)$ (Proposition 1.4), e.g.
@@ -756,7 +756,8 @@ Every positive test passed and every negative control failed. Small $q$ cannot t
 ### 10.2 The record graphs
 
 Each record graph was rebuilt by the lab's coordinator (on a separate machine) from its solution file with the builder
-of the session that found it (so the edge list is the finder's: its hash equals the finder's), which also re-checks the
+of the session that found it (so the edge list is produced by the finder's own builder, not by an independent
+re-implementation), which also re-checks the
 hypotheses ((H1)–(H3) at every freed element, non-collinearity or the partner condition of the friendly sets, degrees,
 the hub graph). What is independent of the finder is the check of that edge list, by
 research/lifts/coordinator_check/apsp_mt.c: simple graph, maximum degree $\le\Delta$, bipartite, connected, and a
@@ -889,22 +890,26 @@ search for them specifically, and they may well be known.
 
 This revision applies the referee report research/referee/d7-2026-10-25.md (branch
 claude/referee-d7-hexagon-theorems-hewag2) and the literature check research/lit/novelty-2026-10-25.md (branch
-claude/novelty-literature-check-4i5frp). No results were added. Issues 1, 2(a), 2(b), 3, 5–9 and 13–18 are fixed as
-the report suggests (issue 16 by moving Section 12 to research/theorems/D7_HEXAGON_lab_remarks.md). The front matter's "new lower bounds" and the column "ours" were also reworded, following the
-literature check's rule never to say "new". Where we did something else:
+claude/novelty-literature-check-4i5frp). No results were added. Issues 1, 2(a), 2(b), 3, 6–9 and 13–18 are fixed as the
+report suggests (issue 16 by moving Section 12 to research/theorems/D7_HEXAGON_lab_remarks.md). Following the literature
+check's rule never to say "new", the front matter's "new lower bounds" and the column "ours" of Section 0 were also
+reworded. Where we did something else:
 
 - *Issue 2(c), [De85a, §3] at Corollary 8.2.* We read §3 of [De85a]. Its graphs have vertex set
   $\mathbb Z/m\mathbb Z\times Q^k$ ($Q$ the points) with adjacency given by the duality; they are not copies of $I$ joined
   by matchings, so the all-$H$ duality level graph is not of that kind. [De85a, §3] is cited after Corollary 8.2 as a
-  related use of a duality, with this difference stated. §8(b) and §9 are cited as suggested.
+  related use of a duality, with this difference stated. §8(b) and §9 are cited as suggested (§9 also at Corollary 9.1).
 - *Issue 4.* The general bound for every $r$ (needed for (15,7)) would be a new statement, and this revision adds none.
   Section 9 now only evaluates the existing Corollaries 9.1–9.3 at the nine cells: they exceed the 2013 table in eight
   cells, all but (15,7). The referee's general bound, and its build at $q = 5$, are left for a later version.
-- *Issue 9 (done; a note on letters).* The letters are swapped: Theorem B is now the automorphic-transition theorem (Section 4) and Theorem C the
+- *Issue 5.* The suggested wording says that the hub graphs found by computer are much larger than $\kappa$. At $q = 8$
+  the record hub graph (229 hubs per colour) is smaller than $\kappa(7) = 315$; what limits Corollary 9.1 there is
+  $q^2+1$. The paragraph now names the limiting quantity for each family of cells.
+- *Issue 9 (done; a note on letters).* Theorem B is now the automorphic-transition theorem (Section 4) and Theorem C the
   local-duality theorem (Section 5). The referee report, the literature check and the lab's earlier notes use the old
   letters.
-- *Issue 10.* We could not consult [VM98] from our environment, so we do not cite a section number for the coordinate form;
-  the note relies on the computer check of Section 10.1 and on the referee's independent check.
+- *Issue 10.* We could not consult [VM98] from our environment, so we do not cite a section number for the coordinate
+  form; the note relies on the computer check of Section 10.1 and on the referee's independent check.
 - *Issue 11.* Lemma 1.2(d) and [Th81] are cited for the existence of ovoids, and the remark on distance-2 ovoids is added.
   We could not access [Th80], so the result number there is not given.
 - *Issue 12.* We kept $n_b(\Delta,D)$, because $N$ already denotes the number of points of the hexagon, and added the
