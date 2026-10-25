@@ -9,7 +9,7 @@ d = os.path.dirname(os.path.abspath(spec))
 files = {}
 for line in open(spec):
     t = line.split()
-    if t and not t[0].startswith('#'): files[(int(t[0]), int(t[1]))] = os.path.join(d, t[2])
+    if t and not t[0].startswith('#') and t[0] != 'T': files[(int(t[0]), int(t[1]))] = os.path.join(d, t[2])
 T = 'HHDHHDD'
 for it in range(20):
     r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tm3_build.py'), 'assign',

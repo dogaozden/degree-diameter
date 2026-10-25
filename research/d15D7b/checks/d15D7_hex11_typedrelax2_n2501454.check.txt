@@ -1,0 +1,39 @@
+# (15,7) n = 2,501,454 = 14*177,156 + 10,808 + 10,462 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; this branch's earlier 2,500,147 ... 2,501,124.
+# NEW level-type pattern HHDHDHD (instead of master's HHDHHDD). Its four bottleneck friendly transitions are 0->2, 5->6
+# (points) and 2->3, 6->1 (lines), and every one of them has a NON-bottleneck friendly transition into its source level
+# and out of its target level, so every paired element's partner gets a private covering element in a designed
+# non-bottleneck set (research/d15D7b/score_relaxed2.py, design_cover.py + design4.py). The bottleneck sets therefore
+# need no coverage mask: 0->2 9,272 points, 5->6 9,282, 2->3 8,926 lines, 6->1 8,938 (dpack.c without mask, 10 min).
+# Mirrored surgery (768, sigma of d14D7_hex11_mirror768_n1774632.sol) on the nine non-friendly transitions as before;
+# relaxed surgery theorem research/d15D7b/RELAXED.md (it is per transition, so it holds for any type pattern).
+# Solution: research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol (sha256 b14dd92cabec6ad12fc19c6d88be6ed10c5174712e3a7d497221df37470cc165); the .sol header carries the pattern.
+# Rebuild: hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19 (research/d13D7/hexgen2.c 11);
+#   python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax2_n2501454.sol g.edges g.src
+#   edge list sha256 6717b0253aa3e276011c11a1397612b6afe7ebffa983e1a18e8ee2ce0666937f (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
+# Coverage: theorem for the unaffected non-hub pairs (hypotheses re-checked by tm3_build), BFS from every hub and every
+# paired-element vertex for the rest. No plain all-pairs run on this graph in this session (about 8 core-hours); the
+# all-pairs run on the sibling graph d15D7_hex11_typedrelax_n2501124 (same construction, pattern HHDHHDD) is reported in
+# its check file.
+-- tm3_build.py build:
+free A-slots per level [10808, 12455, 15618, 12496, 12156, 10818, 15551] B-slots [12332, 10462, 16057, 10462, 12159, 12373, 16057] -> hubs 10808 10462
+mirror hypotheses OK: |R'| = 768
+  0->2 (points): 9272 freed, 1192 pairs, (R1) and (R2) OK
+  1->2 (points): 6017 freed, 0 pairs, (R1) and (R2) OK
+  1->4 (points): 5670 freed, 0 pairs, (R1) and (R2) OK
+  2->3 (lines): 8926 freed, 1460 pairs, (R1) and (R2) OK
+  2->5 (lines): 5924 freed, 0 pairs, (R1) and (R2) OK
+  3->4 (points): 5721 freed, 0 pairs, (R1) and (R2) OK
+  3->6 (points): 6007 freed, 0 pairs, (R1) and (R2) OK
+  4->5 (lines): 5681 freed, 0 pairs, (R1) and (R2) OK
+  4->0 (lines): 5707 freed, 0 pairs, (R1) and (R2) OK
+  5->6 (points): 9282 freed, 1218 pairs, (R1) and (R2) OK
+  6->0 (lines): 5857 freed, 0 pairs, (R1) and (R2) OK
+  6->1 (lines): 8926 freed, 1494 pairs, (R1) and (R2) OK
+friendly hypotheses OK (5364 pairs in all)
+n = 2501454, edges = 18744064, degree min 13 max 15, hub graph edges 83696
+wrote rb.edges
+wrote rb.src: 42726 BFS sources (hubs and paired elements)
+-- hubfar (BFS from all 21,270 hubs and 21,456 paired-element vertices, depth 7, 4 threads):
+n=2501454 edges=18744064 degree min=13 max=15 bipartite=yes connected=yes sources=42726 far_pairs=0 max_ecc=7
