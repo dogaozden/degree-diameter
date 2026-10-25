@@ -1,0 +1,14 @@
+# Annealing runs that did not reach diameter 8 (Oct 25). full cost = unreached lift vertices summed over one source per orbit.
+# q = 7, C_43 (G_2) equivariant, M = 22, structure seed 7:  python3 eqlift.py 7 43 22 7 base.txt 1 5 g2
+#   ./qanneal4 base.txt 8 4500 0.15 0.01 51 2 out.txt 912 12 0.1 2 1 0.5
+q7 M22 s7: start full cost 1432
+q7 M22 s7: final full cost 332 best 332 it 16497 |F| 912
+#   (seeding instead with the M = 20 solution's voltages via reseed.py starts at 1568 unreached pairs, random voltages at 1432)
+# q = 7, same with structure seed 8:  python3 eqlift.py 7 43 22 8 base.txt 1 5 g2
+#   ./qanneal4 base.txt 8 3600 0.15 0.01 52 1 out.txt 912 12 0.1 2 1 0.5
+q7 M22 s8: start full cost 1586
+q7 M22 s8: final full cost 416 best 416 it 7023 |F| 912
+# q = 5, C_31 (Singer) equivariant, Z_5 polygon cover x Z_5 (DGQ's reading, M = 25):  python3 eqlift.py 5 31 25 2 base.txt 1 5 singer 2 poly
+#   ./qanneal4 base.txt 8 3600 0.5 0.02 61 1 out.txt 252 8 0 2 5 0.5   (STEP 5: moves keep the Z_5 part)
+q5 poly25: start full cost 1706
+q5 poly25: final full cost 580 best 580 it 169326 |F| 252

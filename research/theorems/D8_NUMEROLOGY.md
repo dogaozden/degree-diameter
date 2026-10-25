@@ -21,9 +21,9 @@ matchings from points to lines ("hops", degree q+1+j) and take an M-fold voltage
    the table also caps what their construction gives at other (q, j); for one matching M = q + 4 fits every cap,
    while the REGULARITIES formula 3⌊(q−1)/2⌋ breaks the cap at q = 13 (unless it needs q ≡ 3 mod 4).
 4. **What is special about DGQ's numbers is their growth, not their size (new, §2.2–2.3).** At small q, plain
-   optimization passes DGQ's formula: 25 copies at q = 3 and 22 at q = 4 (formula 20 at both), all checked by an
-   all-pairs BFS; at q = 5 and q = 7 it reaches 20 (formulas 25 and 30), and at q = 9 random symmetric lifts give 16
-   (formula 35). The number of short walks
+   optimization passes DGQ's formula: 25 copies at q = 3 and 22 at q = 4 (formula 20 at both). From q = 5 on it falls
+   behind: 20 copies at q = 5 and at q = 7 (formulas 25 and 30; all these lifts are checked by an all-pairs BFS), and
+   at q = 9 random symmetric lifts give 16 (formula 35). The number of short walks
    between a point and a line is about 250–310 for every DGQ cell, nearly independent of q, and generic lifts get one
    copy per 13–20 walks, while DGQ's M = 5(q+5)/2 grows linearly and uses one copy per 7–8.6 walks. So DGQ's
    construction must use walk families whose size grows with q (lines through a point, points on a line, the q+1
@@ -376,8 +376,8 @@ graph, `calib/checks.txt`, `eq/*_check.txt`):
 | 4 | 20 | 20 (54,600) | Z_5 polygon cover × Z_4 (DGQ's reading exactly), Z_4 parts annealed (qanneal2) |
 | 4 | 20 | **22** (60,060) | C_7-equivariant lift (eqlift.py), quotient voltages annealed (qanneal2.c) |
 | 5 | 25 | 14 (109,368) | squad c4: tann3 (tann2 without multi-edges) |
-| 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2; 22 stopped at 30 unreached orbits, 25 at about 45 (focus sources) |
-| 7 | 30 | 20 (784,320) | C_43-equivariant lift (C_43 from G_2(7), order q² − q + 1); qanneal4 took it from 380 to 6 unreached orbit pairs in 40 min, then to 0 in 45 s with all 912 sources in focus |
+| 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2; 22 stopped at 30 unreached orbits (two runs), 25 at about 45 (focus sources); DGQ's own reading, polygon cover × Z_5 = 25 copies, stopped at 580 after 60 min (`eq/unsolved_runs.txt`) |
+| 7 | 30 | 20 (784,320) | C_43-equivariant lift (C_43 from G_2(7), order q² − q + 1); qanneal4 took it from 380 to 6 unreached orbit pairs in 40 min, then to 0 in 45 s with all 912 sources in focus; 22 copies: 332 and 416 unreached pairs after 75 and 60 min (two structures, `eq/unsolved_runs.txt`) |
 | 9 | 35 | 16 (2,125,760) | C_91-equivariant lift (Singer power), random voltages, no annealing; 18, 20, 22 copies leave 50, 252, 1,164 unreached pairs from one source per orbit (`eq/q9_frontier.sh` → `eq/q9_frontier_out.txt`; checked by liftdiam only, files not kept) |
 
 The symmetric lifts use a cyclic group C of collineations acting semiregularly on points and lines (a Singer-type
@@ -503,7 +503,8 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
   q = 2 solves). The open question is no longer "can anything reach DGQ's values" (at q ≤ 4 optimization passes
   them) but "what scales like 2.5q": a design for the families of §2.3 that keeps working as q grows.
 - Concrete next tests: (a) symmetric lifts at q = 7 beyond 20 copies (the C_43 run reached 20 in about 45 minutes;
-  22 and 24 need longer runs or larger groups), to see whether optimization alone approaches 30 there; (b) for q = 9 (self-dual H(9), the (12,8) cell) a duality as one hop
+  at 22 copies two runs of an hour stopped at 332 and 416 unreached pairs, and the Singer group C_57 is not
+  semiregular on H(7)), to see whether optimization alone approaches 30 there; (b) for q = 9 (self-dual H(9), the (12,8) cell) a duality as one hop
   matching gives many more class-0 walks (§1.4: at q = 3 the per-pair minimum of cancelling walks goes from 4 to 15–22).
   At q = 3 this did not help the annealer (polygon cover × Z_6 failed with and without a duality: 500 and 298
   unreached), so class 0 is not what limits small q; whether it limits q = 9 is open, and a duality would not explain
@@ -516,8 +517,10 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
   DGQ's 35, 40, 45, and so would prove that DGQ's (12,8), (14,8), (16,8) graphs need holonomy, walks that exist only
   for special matchings, or labels that repeat around a point or a line. (A bound of 3P/(q+1) would only reach q = 13.)
   The obstacles are the residues g where the 2-sets {g − t_1(x), g − t_2(x)} (x ∈ A_g) have no common element: they
-  then lie inside a triangle or are two disjoint pairs, and the lines of B_g can have 3 or 4 label pairs. A global count,
-  or a spectral argument as in §1.5, would have to show that such residues are rare.
+  then lie inside a triangle or are two disjoint pairs, and the lines of B_g can have 3 or 4 label pairs. Labels with
+  t_2 = φ(t_1) for a fixed involution φ of Z_M (still regular) allow the point side of the two-pair configuration for
+  many g at once, so a purely local argument will not do; a global count, or a spectral argument as in §1.5, would
+  have to show that such residues are rare.
 - Theory: close §1.5 for q = 7, 8 without the one-miss assumption (Theorem 2 needs q ≥ 9; the loss is in dropping
   the cross terms of (c)), and look for a spectral version of the j = 2 count of §1.2; the
   combinatorial bound 1 + 2(q+1)(q+4)/(q−3) is far above DGQ's values, and the j = 2 case is not tight, so the §1.5
@@ -554,3 +557,4 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 | expand_lift.py | — | expand a liftdiam base into a plain edge list for apsp.c |
 | eq/q9_frontier.sh | eq/q9_frontier_out.txt | q = 9, C_91-equivariant random lifts at M = 16, 18, 20, 22 |
 | — | eq/j1_q4_M8_runs.txt | q = 4, one matching, M = 8 = q + 4: the two annealing runs (§1.5) |
+| — | eq/unsolved_runs.txt | q = 7 at 22 copies and q = 5 polygon cover × Z_5: commands and final costs (§2.2) |
