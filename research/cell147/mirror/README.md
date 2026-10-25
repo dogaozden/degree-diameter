@@ -71,7 +71,7 @@ characteristic 2 (q = 8). Base sets and spreads are the cell-13-7 session's (res
 
 | cell | q, copies | base set | spread | extra points F | n | master | check |
 |---|---|---|---|---|---|---|---|
-| (7,7) | 5, 3 | R72 | 126 lines | 8 | **23,596** | 23,580 | apsp_mt all-pairs VALID |
+| (7,7) | 5, 3 | R72 | 126 lines | 9 | **23,598** | 23,580 | apsp_mt all-pairs VALID |
 | (9,7) | 7, 3 | R288 (W(E7) orbit) | 344 lines | 7 | **118,238** | 118,224 | apsp_mt all-pairs VALID |
 | (10,7) | 8, 3 | R217 | 513 lines | 12 | **225,152** | 225,128 | apsp_mt all-pairs VALID |
 | (13,7) | 11, 3 | R756 | 1,332 lines | 12 (same sigma as (14,7)) | 1,064,472 | 1,064,448 | multi.c checks + BFS spot check |
