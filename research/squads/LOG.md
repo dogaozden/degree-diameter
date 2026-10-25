@@ -113,3 +113,10 @@ checked **(11,7) 398,880** and **(12,7) 664,900** (uhcheck all sources + apsp_cy
 permutation: g = 1 on the anisotropic plane A and a complex structure J (J^2 = -1) on the hyperbolic V4; the explicit
 element (left multiplication by [[0,1],[-1,0]] on V4 = M2(F_q), det form) reproduces 240 in one 90 s run, but gives
 only 88 at q = 7 (as card c5) and 206–218 at q = 13 (294 stays). Scripts: research/cell147/units/uni11/.
+
+Opus, 02:00–02:30 UTC: the square-class points of E form the group (T × SL(2,q))/±1, and two of them conflict iff
+their quotient (u, Y) has tr Y = u + 1/u. Right orbits of a subgroup K ≤ SL(2,q) without unipotents are then
+independent. **The 240 set is two cosets of K = 2.A5** (order 120 = q^2 - 1 at q = 11; 132 orbits, at most 2
+compatible), and 48 at q = 5 is two cosets of 2.A4 (order 24). At q = 7, 2.S4 (order 48) fits only one coset, and
+subgroups of orders 6–24 give 72–80 (88 stays). Similitudes (sqrt(nu) on V4 times a similitude of A) at q = 13: at most 212.
+So 2(q^2 - 1) is a Galois-exceptional (nearfield) phenomenon, not a general construction.
