@@ -51,3 +51,7 @@ M = 2I + A with MMᵀ = MᵀM = kI + 2J, W the signed A with WWᵀ = gI.
 11. Sub-cases run with kissat (`subcase.py`): B 4-regular at vertex 0 (t = 36) is UNSAT (195 s). "B has 36 arcs" and
     "rows of B have 4 ones" were not finished in 30 and 25 CPU-minutes, so fixing the column sums is what makes a
     sub-case easy. B 3-regular (t = 27): running.
+12. The hard part is a small number of triangles. Degree cubes with t = 0 and t = 1 time out at 15 min, but with the
+    extra (valid) choice "vertex 0 lies on the most directed triangles", so every vertex has at most t, they are
+    UNSAT in 53 s (t = 0: no directed triangle anywhere) and 106 s (t = 1). `tmax.py` splits the whole instance into
+    "every vertex on ≤ T−1 triangles" and "vertex 0 on ≥ T triangles".
