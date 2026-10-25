@@ -115,3 +115,9 @@ elapsed 759.4s
 RESULT VALID d=16 D=10 eccA=10 eccB=10 n=4220872800
 (exit 0)
 [exit 0; wall 759s]
+== d5D9_meta_422_35_5_s204_n29540 (origin/claude/raise2-5-9-record-lt2t4o, 08:24 PT)
+ecc from A = 9 unreached 0
+ecc from B = 9 unreached 0
+n = 29540 edges = 73850 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = f3004a3b3dec30384cc7747e9d863c593d6c4a521b701c61c4dbf5ee80d73e87
+VALID d=5 D=9 group=meta 422 35 5 x Z_1 N=14770 vertices=29540
