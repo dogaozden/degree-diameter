@@ -131,12 +131,12 @@ lines) of a generalized hexagon of order \((q,q)\). The 2013 table (Miller--Šir
 \(\Delta = q+1+r\), the value \((2r+1)\cdot 2N(q)\); this is the order of the level cover of Section 2.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1500}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2000}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1500}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0722}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0825}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1031}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1134}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2887}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3402}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 cell \((\Delta,7)\)
@@ -288,9 +288,15 @@ it.
 \hypertarget{sets-of-points-and-lines}{%
 \subsubsection{1.3 Sets of points and lines}\label{sets-of-points-and-lines}}
 
-\textbf{Definition 1.1.} A set of points of \(H\) is - \emph{non-collinear} if no two of its points are collinear (a
-partial distance-2 ovoid); - a \emph{partial ovoid} if its points are pairwise opposite; an \emph{ovoid} if moreover it
-has \(q^3+1\) points.
+\textbf{Definition 1.1.} A set of points of \(H\) is
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{non-collinear} if no two of its points are collinear (a partial distance-2 ovoid);
+\item
+  a \emph{partial ovoid} if its points are pairwise opposite; an \emph{ovoid} if moreover it has \(q^3+1\) points.
+\end{itemize}
 
 Dually, a set of lines is \emph{non-concurrent}, a \emph{partial spread} (pairwise opposite lines), or a \emph{spread}
 (\(q^3+1\) pairwise opposite lines).
@@ -298,20 +304,39 @@ Dually, a set of lines is \emph{non-concurrent}, a \emph{partial spread} (pairwi
 By (F4), partial ovoids of \(H(q)\) are exactly the sets of pairwise non-orthogonal points of \(Q(6,q)\), i.e.~partial
 ovoids of the polar space \(Q(6,q)\).
 
-\textbf{Lemma 1.2 (standard examples).} (a) If \(\Sigma\) is a 3-space of \(\mathrm{PG}(6,q)\) with
-\(\Sigma\cap Q(6,q)\) an elliptic quadric \(Q^-(3,q)\), its \(q^2+1\) points form a partial ovoid of \(H(q)\), for every
-\(q\). (b) (Hermitian spread {[}Th80{]}.) If \(\Pi\) is a hyperplane with \(\Pi\cap Q(6,q)\) an elliptic quadric
-\(Q^-(5,q)\), the lines of \(H(q)\) contained in \(\Pi\) form a spread, for every \(q\). (c) If \(S\) is a spread, every
-line not in \(S\) meets exactly one line of \(S\). (d) If \(q = 3^h\) and \(\varphi\) is a duality, \(\varphi(S)\) is an
-ovoid for every spread \(S\).
+\textbf{Lemma 1.2 (standard examples).}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  If \(\Sigma\) is a 3-space of \(\mathrm{PG}(6,q)\) with \(\Sigma\cap Q(6,q)\) an elliptic quadric \(Q^-(3,q)\), its
+  \(q^2+1\) points form a partial ovoid of \(H(q)\), for every \(q\).
+\item
+  (Hermitian spread {[}Th80{]}.) If \(\Pi\) is a hyperplane with \(\Pi\cap Q(6,q)\) an elliptic quadric \(Q^-(5,q)\),
+  the lines of \(H(q)\) contained in \(\Pi\) form a spread, for every \(q\).
+\item
+  If \(S\) is a spread, every line not in \(S\) meets exactly one line of \(S\).
+\item
+  If \(q = 3^h\) and \(\varphi\) is a duality, \(\varphi(S)\) is an ovoid for every spread \(S\).
+\end{enumerate}
 
 \emph{Proof.} (a) If \(x\ne y\) are points of \(Q^-(3,q)\) with \(B(x,y) = 0\), then
 \(Q(\lambda x+\mu y) = \lambda\mu B(x,y) = 0\), so the line \(xy\) lies in \(Q^-(3,q)\), which contains no line. So
-\(B(x,y)\ne 0\) and \(x, y\) are opposite by (F4). (b) is in {[}Th80{]}; we also checked it by computer for small \(q\)
-(Section 10.1), and the record builders re-check, for the sets they use, the hypotheses of the theorems they apply
-(Section 10.2). (c) A line meeting two lines of \(S\) would put them at distance \(\le 4\). So the lines of \(S\)
-together with the \(q(q+1)\) lines meeting each of them are \((q^3+1)(1+q(q+1)) = (q^3+1)(q^2+q+1) = N\) distinct lines,
-i.e.~all lines. (d) \(\varphi\) preserves distances. \(\square\)
+\(B(x,y)\ne 0\) and \(x, y\) are opposite by (F4).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  is in {[}Th80{]}; we also checked it by computer for small \(q\) (Section 10.1), and the record builders re-check, for
+  the sets they use, the hypotheses of the theorems they apply (Section 10.2).
+\item
+  A line meeting two lines of \(S\) would put them at distance \(\le 4\). So the lines of \(S\) together with the
+  \(q(q+1)\) lines meeting each of them are \((q^3+1)(1+q(q+1)) = (q^3+1)(q^2+q+1) = N\) distinct lines, i.e.~all lines.
+  (d) \(\varphi\) preserves distances. \(\square\)
+\end{enumerate}
 
 Ovoids of \(Q(6,q)\) (equivalently of \(H(q)\)) exist for \(q = 3^h\); they do not exist for \(q\) even {[}Th81{]} or
 for \(q\) prime \(\ge 5\) {[}BGS06{]}. The largest partial ovoids are not known in general; the lab's record graphs use
@@ -327,11 +352,22 @@ of \(F\setminus\{p\}\) that are collinear with \(p\) all lie on one line through
 \(G\setminus\{\ell\}\) that meet \(\ell\) all pass through one point of \(\ell\).
 
 So a segment set is a disjoint union of ``segments'' (sets of \(\ge 2\) points on a line) and isolated points, such that
-no two points from different pieces are collinear. Examples: - every non-collinear set; - every set in which each point
-is collinear with at most one other point of the set (the ``relaxed sets'' (R1) of the lab notes); - every subset of the
-point set of a partial spread (points on distinct lines of a partial spread are not collinear, since the lines are
-opposite); - dually: the set of all lines through the points of a partial ovoid (lines through distinct points of a
-partial ovoid never meet).
+no two points from different pieces are collinear. Examples:
+
+\begin{itemize}
+\tightlist
+\item
+  every non-collinear set;
+\item
+  every set in which each point is collinear with at most one other point of the set (the ``relaxed sets'' (R1) of the
+  lab notes);
+\item
+  every subset of the point set of a partial spread (points on distinct lines of a partial spread are not collinear,
+  since the lines are opposite);
+\item
+  dually: the set of all lines through the points of a partial ovoid (lines through distinct points of a partial ovoid
+  never meet).
+\end{itemize}
 
 \textbf{Proposition 1.4 (size of segment sets).} A segment set \(F\) has \(\lvert F\rvert\le (q+1)(q^3+1)\), with
 equality if and only if \(F\) is the point set of a spread. Dually, a dual segment set has at most \((q+1)(q^3+1)\)
@@ -367,8 +403,16 @@ Fix \(r\ge 1\); there are \(2r+1\) levels, indexed by \(j\in\mathbb Z_{2r+1}\). 
 
 \textbf{Definition 2.1 (level cover).} Given types \(\tau\) and, for every transition \(t=(j,k)\), a bijection
 \(M_t: A(\tau_j)\to B(\tau_{j+k})\), the graph \(X = X(\tau, M)\) has vertex set \((P\cup L)\times\mathbb Z_{2r+1}\) and
-edges - \((x,j)\sim(y,j)\) whenever \(x\) and \(y\) are incident (``level edges''); - \((a,j)\sim(M_{(j,k)}(a), j+k)\)
-for every \(j\), every \(1\le k\le r\) and every \(a\in A(\tau_j)\) (``matching edges'').
+edges
+
+\begin{itemize}
+\tightlist
+\item
+  \((x,j)\sim(y,j)\) whenever \(x\) and \(y\) are incident (``level edges'');
+\item
+  \((a,j)\sim(M_{(j,k)}(a), j+k)\) for every \(j\), every \(1\le k\le r\) and every \(a\in A(\tau_j)\) (``matching
+  edges'').
+\end{itemize}
 
 Colour the vertices \((a,j)\), \(a\in A(\tau_j)\), with colour \(\mathcal A\) and the vertices \((b,j)\),
 \(b\in B(\tau_j)\), with colour \(\mathcal B\). Level edges and matching edges join different colours, so \(X\) is
@@ -386,11 +430,20 @@ transition \(t=(j,k)\) every vertex of level \(j\) is joined to every vertex of 
 \(\le 7\) that uses only level edges of levels \(j\) and \(j+k\) and matching edges of \(t\).
 
 \emph{Proof.} Inside a level this is (F1). Every two distinct levels differ by \(\pm k\) for some \(1\le k\le r\) (as
-there are \(2r+1\) levels), so it is enough to join \((u,j)\) to \((v,j')\), \(j' = j+k\), with \(M = M_{(j,k)}\): 1.
-\(u\in A(\tau_j)\): \((u,j)\to(M(u),j')\leadsto(v,j')\), length \(\le 1+6\). 2. \(u\in B(\tau_j)\),
-\(v\in B(\tau_{j'})\): with \(a = M^{-1}(v)\), \((u,j)\leadsto(a,j)\to(v,j')\), length \(\le 5+1\) (in \(I\), elements
-of different types are at distance \(\le 5\)). 3. \(u\in B(\tau_j)\), \(v\in A(\tau_{j'})\): pick \(b\in\Gamma_1(v)\)
-and \(a = M^{-1}(b)\): \((u,j)\leadsto(a,j)\to(b,j')\to(v,j')\), length \(\le 5+1+1\). \(\square\)
+there are \(2r+1\) levels), so it is enough to join \((u,j)\) to \((v,j')\), \(j' = j+k\), with \(M = M_{(j,k)}\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(u\in A(\tau_j)\): \((u,j)\to(M(u),j')\leadsto(v,j')\), length \(\le 1+6\).
+\item
+  \(u\in B(\tau_j)\), \(v\in B(\tau_{j'})\): with \(a = M^{-1}(v)\), \((u,j)\leadsto(a,j)\to(v,j')\), length \(\le 5+1\)
+  (in \(I\), elements of different types are at distance \(\le 5\)).
+\item
+  \(u\in B(\tau_j)\), \(v\in A(\tau_{j'})\): pick \(b\in\Gamma_1(v)\) and \(a = M^{-1}(b)\):
+  \((u,j)\leadsto(a,j)\to(b,j')\to(v,j')\), length \(\le 5+1+1\). \(\square\)
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -443,16 +496,35 @@ degree \(\le q-r\), and its order is \[\lvert X_R^+\rvert = (2r+1)\cdot 2N + K_{
 
 Whether \(t\) is repaired depends only on \(M_t\) and \(R_t\) (not on the other transitions, and not on the hubs).
 
-\textbf{Lemma 3.3 (hubs).} Let \(X_R^+\) be as in Definition 3.1. Then - every hub is within distance 7 of every level
-vertex; - every \(\mathcal B\)-hub is within distance 7 of every \(\mathcal A\)-hub.
+\textbf{Lemma 3.3 (hubs).} Let \(X_R^+\) be as in Definition 3.1. Then
+
+\begin{itemize}
+\tightlist
+\item
+  every hub is within distance 7 of every level vertex;
+\item
+  every \(\mathcal B\)-hub is within distance 7 of every \(\mathcal A\)-hub.
+\end{itemize}
 
 \emph{Proof.} A \(\mathcal B\)-hub \(h\) and a level vertex \((v,j)\): \(h\to(s_j(h),j)\leadsto(v,j)\) inside level
 \(j\), length \(\le 1+6\). The level copies are never touched by the surgery. A \(\mathcal B\)-hub \(h\) and an
 \(\mathcal A\)-hub \(g\): in level \(0\), \(s_0(h)\in A(\tau_0)\) and \(s'_0(g)\in B(\tau_0)\) have different types, so
 \(h\to(s_0(h),0)\leadsto(s'_0(g),0)\to g\) has length \(\le 1+5+1\). \(\square\)
 
-\textbf{Theorem 3.4 (assembly).} Suppose - (T) every transition \(t\) is repaired by \(R_t\), and - (HG) any two
-\(\mathcal B\)-hubs, and any two \(\mathcal A\)-hubs, are within distance 6 in \(X_R^+\).
+\textbf{Theorem 3.4 (assembly).} Suppose
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\Alph{enumi})}
+  \setcounter{enumi}{19}
+  \tightlist
+  \item
+    every transition \(t\) is repaired by \(R_t\), and
+  \end{enumerate}
+\item
+  (HG) any two \(\mathcal B\)-hubs, and any two \(\mathcal A\)-hubs, are within distance 6 in \(X_R^+\).
+\end{itemize}
 
 Then \(X_R^+\) has diameter \(\le 7\). If moreover \(Y\) has maximum degree \(\le q-r\), then
 \[n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + K_{\mathcal A} + K_{\mathcal B}.\]
@@ -473,10 +545,16 @@ So everything reduces to geometric conditions under which one transition is repa
 automorphism}\label{theorem-c-transitions-that-extend-to-an-automorphism}}
 
 A transition \(t = (j,k)\) is \textbf{automorphic} if \(M_t\) is the restriction to \(A(\tau_j)\) of an automorphism
-\(\psi\) of the graph \(I\) with \(\psi(A(\tau_j)) = B(\tau_{j+k})\). The two cases used here: - a \emph{friendly}
-transition with \(M_t = \mathrm{id}\) (\(\psi = \mathrm{id}\); \(A(\tau_j) = B(\tau_{j+k})\)); - an \(H\to H\)
-transition with \(M_t = \varphi\vert_P\) for a duality \(\varphi\) (\(q = 3^h\)); a \(D\to D\) transition with
-\(M_t = \varphi\vert_L\).
+\(\psi\) of the graph \(I\) with \(\psi(A(\tau_j)) = B(\tau_{j+k})\). The two cases used here:
+
+\begin{itemize}
+\tightlist
+\item
+  a \emph{friendly} transition with \(M_t = \mathrm{id}\) (\(\psi = \mathrm{id}\); \(A(\tau_j) = B(\tau_{j+k})\));
+\item
+  an \(H\to H\) transition with \(M_t = \varphi\vert_P\) for a duality \(\varphi\) (\(q = 3^h\)); a \(D\to D\)
+  transition with \(M_t = \varphi\vert_L\).
+\end{itemize}
 
 (A friendly transition whose matching is a collineation of \(H\), restricted to points or to lines, is also
 automorphic.)
@@ -545,13 +623,22 @@ three edges are deleted, and the distance in the two levels is \(> 7\). (In the 
 level or through hubs might still exist; in the lab's five-level graph over \(H(9)\) with the 7,300 spread points freed
 and no hubs, freeing one more point left 82,720 ordered pairs at distance \(> 7\), research/squads/cells/d12D7.md §2.)
 
-\textbf{Corollary 4.3.} The following transitions are repaired: 1. a friendly transition with \(M_t = \mathrm{id}\) and
-\(R_t\) a non-collinear set of points (if \(\tau_j = H\)) or a non-concurrent set of lines (if \(\tau_j = D\)) --- the
-``one-transition theorem at friendly transitions'' of the lab notes; 2. the same with \(R_t\) a set in which every
-element has at most one partner (collinear, resp. concurrent element of \(R_t\)) --- the relaxed sets (R1) of
-research/d15D7b/RELAXED.md, \textbf{without} its hub condition (R2); 3. an \(H\to H\) transition with \(M_t\) a duality
-and \(R_t\) any subset of the points of a partial spread (research/squads/cells/d12D7.md §2; e.g.~all \((q+1)(q^3+1)\)
-points of the Hermitian spread, \(q=3^h\)).
+\textbf{Corollary 4.3.} The following transitions are repaired:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  a friendly transition with \(M_t = \mathrm{id}\) and \(R_t\) a non-collinear set of points (if \(\tau_j = H\)) or a
+  non-concurrent set of lines (if \(\tau_j = D\)) --- the ``one-transition theorem at friendly transitions'' of the lab
+  notes;
+\item
+  the same with \(R_t\) a set in which every element has at most one partner (collinear, resp. concurrent element of
+  \(R_t\)) --- the relaxed sets (R1) of research/d15D7b/RELAXED.md, \textbf{without} its hub condition (R2);
+\item
+  an \(H\to H\) transition with \(M_t\) a duality and \(R_t\) any subset of the points of a partial spread
+  (research/squads/cells/d12D7.md §2; e.g.~all \((q+1)(q^3+1)\) points of the Hermitian spread, \(q=3^h\)).
+\end{enumerate}
 
 \emph{Why the lab's (R2) was not needed.} The lab proof of the relaxed theorem (RELAXED.md, cases 4 and 5) only used
 paths whose matching edge sits at a point collinear with the freed point \(r\). When \(r\) has a partner \(x\) and the
@@ -569,26 +656,47 @@ For transitions that are not automorphic (an \(H\to H\) transition when \(q\ne 3
 matching is not a duality) we only ask \(M_t\) to behave like a duality near the freed elements.
 
 \textbf{Theorem B (one-transition surgery).} Let \(t = (j,k)\) be any transition, \(M = M_t\), and
-\(R = R_t\subseteq A(\tau_j)\). Suppose - (H1) no two elements of \(R\) are at distance 2 (non-collinear, resp.
-non-concurrent); - (H2) no two elements of \(M(R)\) are at distance 2; - (H3) \(M(\Gamma_2(x)) = \Gamma_2(M(x))\) for
-every \(x\in R\) (\emph{\(M\) is a local duality at \(x\)} when \(M\) maps points to lines: it maps the points collinear
-with \(x\) onto the lines concurrent with \(M(x)\)).
+\(R = R_t\subseteq A(\tau_j)\). Suppose
+
+\begin{itemize}
+\tightlist
+\item
+  (H1) no two elements of \(R\) are at distance 2 (non-collinear, resp. non-concurrent);
+\item
+  (H2) no two elements of \(M(R)\) are at distance 2;
+\item
+  (H3) \(M(\Gamma_2(x)) = \Gamma_2(M(x))\) for every \(x\in R\) (\emph{\(M\) is a local duality at \(x\)} when \(M\)
+  maps points to lines: it maps the points collinear with \(x\) onto the lines concurrent with \(M(x)\)).
+\end{itemize}
 
 Then \(t\) is repaired.
 
 \emph{Proof.} Write \(j' = j+k\); ``\(\mathrm A\)'' and ``\(\mathrm B\)'' refer to \(A(\tau_j), B(\tau_j)\) in level
 \(j\) and to \(A(\tau_{j'}), B(\tau_{j'})\) in level \(j'\). Elements of different types are at distance \(\le 5\) in
-\(I\). Take \((u,j)\) and \((v,j')\). 1. \(u\in \mathrm A\), \(u\notin R\): \((u,j)\to(M(u),j')\leadsto(v,j')\):
-\(\le 1+6\). 2. \(u\in\mathrm B\), \(v\in\mathrm A\): the \(q+1\ge 2\) neighbours of \(v\) are pairwise at distance 2,
-so by (H2) at most one is in \(M(R)\); take \(b\in\Gamma_1(v)\setminus M(R)\) and \(a = M^{-1}(b)\notin R\):
-\((u,j)\leadsto(a,j)\to(b,j')\to(v,j')\): \(\le 5+1+1\). 3. \(u\in\mathrm B\), \(v\in\mathrm B\setminus M(R)\):
-\((u,j)\leadsto(M^{-1}(v),j)\to(v,j')\): \(\le 5+1\). 4. \(u\in\mathrm B\), \(v = M(x)\), \(x\in R\): by (F3) there is
-\(z\in\Gamma_2(x)\) with \(d(z,u)\le 3\) (\(x\) and \(u\) have different types). By (H1) \(z\notin R\); by (H3)
-\(M(z)\in\Gamma_2(v)\): \((v,j')\leadsto(M(z),j')\to(z,j)\leadsto(u,j)\): \(\le 2+1+3\). 5. \(u = x\in R\),
-\(v\in\mathrm A\): by (F3) there is \(w\in\Gamma_2(M(x))\) with \(d(w,v)\le 3\); by (H3) \(w = M(z)\) with
-\(z\in\Gamma_2(x)\), and \(z\notin R\) by (H1): \((x,j)\leadsto(z,j)\to(w,j')\leadsto(v,j')\): \(\le 2+1+3\). 6.
-\(u = x\in R\), \(v\in\mathrm B\): the same path, now with \(d(w,v)\le 4\) by (F3) (\(M(x)\) and \(v\) have the same
-type): \(\le 2+1+4\).
+\(I\). Take \((u,j)\) and \((v,j')\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(u\in \mathrm A\), \(u\notin R\): \((u,j)\to(M(u),j')\leadsto(v,j')\): \(\le 1+6\).
+\item
+  \(u\in\mathrm B\), \(v\in\mathrm A\): the \(q+1\ge 2\) neighbours of \(v\) are pairwise at distance 2, so by (H2) at
+  most one is in \(M(R)\); take \(b\in\Gamma_1(v)\setminus M(R)\) and \(a = M^{-1}(b)\notin R\):
+  \((u,j)\leadsto(a,j)\to(b,j')\to(v,j')\): \(\le 5+1+1\).
+\item
+  \(u\in\mathrm B\), \(v\in\mathrm B\setminus M(R)\): \((u,j)\leadsto(M^{-1}(v),j)\to(v,j')\): \(\le 5+1\).
+\item
+  \(u\in\mathrm B\), \(v = M(x)\), \(x\in R\): by (F3) there is \(z\in\Gamma_2(x)\) with \(d(z,u)\le 3\) (\(x\) and
+  \(u\) have different types). By (H1) \(z\notin R\); by (H3) \(M(z)\in\Gamma_2(v)\):
+  \((v,j')\leadsto(M(z),j')\to(z,j)\leadsto(u,j)\): \(\le 2+1+3\).
+\item
+  \(u = x\in R\), \(v\in\mathrm A\): by (F3) there is \(w\in\Gamma_2(M(x))\) with \(d(w,v)\le 3\); by (H3) \(w = M(z)\)
+  with \(z\in\Gamma_2(x)\), and \(z\notin R\) by (H1): \((x,j)\leadsto(z,j)\to(w,j')\leadsto(v,j')\): \(\le 2+1+3\).
+\item
+  \(u = x\in R\), \(v\in\mathrm B\): the same path, now with \(d(w,v)\le 4\) by (F3) (\(M(x)\) and \(v\) have the same
+  type): \(\le 2+1+4\).
+\end{enumerate}
 
 These cases cover all pairs (\(u\in\mathrm A\setminus R\): 1; \(u\in R\): 5, 6; \(u\in\mathrm B\): 2, 3, 4). \(\square\)
 
@@ -615,9 +723,16 @@ at distance 4 let \(\mathrm{mid}(\ell,m)\) be the unique line concurrent with bo
 So \(M(R)\) must \emph{mirror} the distance-4 structure of \(R\). The converse, in the form used for the records:
 
 \textbf{Proposition 5.2 (mirrored sets).} Let \(R\) be a non-collinear set of points, \(R^*\) a non-concurrent set of
-lines and \(f: R\to R^*\) a bijection such that - (M1) every point is collinear with at most two points of \(R\), and
-every line is concurrent with at most two lines of \(R^*\); - (M2) for \(x\ne y\in R\): \(d(x,y) = 4\) if and only if
-\(d(f(x),f(y)) = 4\).
+lines and \(f: R\to R^*\) a bijection such that
+
+\begin{itemize}
+\tightlist
+\item
+  (M1) every point is collinear with at most two points of \(R\), and every line is concurrent with at most two lines of
+  \(R^*\);
+\item
+  (M2) for \(x\ne y\in R\): \(d(x,y) = 4\) if and only if \(d(f(x),f(y)) = 4\).
+\end{itemize}
 
 Then there is a bijection \(M: P\to L\) with \(M\vert_R = f\) satisfying (H1)--(H3) for \(R\). One such \(M\) is:
 \(M(x) = f(x)\) for \(x\in R\); \(M(\mathrm{mid}(x,y)) = \mathrm{mid}(f(x),f(y))\) for \(x,y\in R\) at distance 4; for
@@ -638,13 +753,21 @@ private sets of different \(x\) are disjoint. So the pieces define a bijection \
 \(\lvert P\setminus (R\cup U)\rvert = \lvert L\setminus(R^*\cup U^*)\rvert\), it extends to a bijection \(P\to L\).
 (H1), (H2) are the hypotheses on \(R\) and \(R^*\). \(\square\)
 
-\textbf{Corollary 5.3.} (a) (Pairwise opposite sets; research/d13D7/REPORT.md.) If \(R\) is a partial ovoid and \(R^*\)
-a partial spread with \(\lvert R\rvert = \lvert R^*\rvert\), every bijection \(f\) satisfies (M1), (M2) (there are no
-pairs at distance 4). (b) (Mirrored sets; research/cell147/mirror/.) Let \(R = R_0\cup X\) and
-\(R^* = f(R_0)\cup\{L_x : x\in X\}\) with \(R_0\), \(X\) partial ovoids, \(f(R_0)\) and \(\{L_x\}\) partial spreads,
-\(R\) non-collinear, \(R^*\) non-concurrent. Then (M1) holds automatically (three points of \(R\) collinear with one
-point would be pairwise at distance 4, but two of them lie in \(R_0\) or two in \(X\), which are pairwise opposite), and
-(M2) says: for \(r\in R_0\) and \(x\in X\), \(d(r,x) = 4\) if and only if \(d(f(r), L_x) = 4\).
+\textbf{Corollary 5.3.}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  (Pairwise opposite sets; research/d13D7/REPORT.md.) If \(R\) is a partial ovoid and \(R^*\) a partial spread with
+  \(\lvert R\rvert = \lvert R^*\rvert\), every bijection \(f\) satisfies (M1), (M2) (there are no pairs at distance 4).
+\item
+  (Mirrored sets; research/cell147/mirror/.) Let \(R = R_0\cup X\) and \(R^* = f(R_0)\cup\{L_x : x\in X\}\) with
+  \(R_0\), \(X\) partial ovoids, \(f(R_0)\) and \(\{L_x\}\) partial spreads, \(R\) non-collinear, \(R^*\)
+  non-concurrent. Then (M1) holds automatically (three points of \(R\) collinear with one point would be pairwise at
+  distance 4, but two of them lie in \(R_0\) or two in \(X\), which are pairwise opposite), and (M2) says: for
+  \(r\in R_0\) and \(x\in X\), \(d(r,x) = 4\) if and only if \(d(f(r), L_x) = 4\).
+\end{enumerate}
 
 In (b) the matching condition is a bipartite assignment problem: each \(r\in R_0\) has a ``type'', the set of \(x\in X\)
 at distance 4 from it, and must be sent to a spread line of the same type with respect to the lines \(L_x\). The record
@@ -726,11 +849,11 @@ Taking \(t = d-s-1\) and \(u = d-1\), Lemma 7.1 gives hub graphs with up to
 but far below what the records need. The record hub graphs were found by computer and checked:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1134}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1031}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0619}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.4124}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3093}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 cell
@@ -796,19 +919,26 @@ largest freed set that Theorem C allows, so \(K = r(q+1)(q^3+1)\) is the cap of 
 (\(D\to D\)) with freed sets \(R\) (resp. \(\sigma(R)\)) satisfying Theorem B. If
 \(\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};q-r)\) exists with \(K_{\mathcal B}\le\min\alpha_j\),
 \(K_{\mathcal A}\le\min\beta_j\) (Section 6), then
-\[n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + K_{\mathcal A} + K_{\mathcal B}.\] Records: - (14,7), \(q = 11\), \(HDHDH\):
-all friendly point sets equal one non-collinear set of 8,645 points, all friendly line sets one non-concurrent set of
-8,246 lines (both unions of orbits of an order-133 collineation), and the 768-point mirrored set of Corollary 8.1 on the
-four non-friendly transitions. \(\alpha = (9413, 9014, 9413, 16492, 9413)\),
-\(\beta = (9014, 17290, 9014, 9413, 9014)\), \(K_{\mathcal A} = K_{\mathcal B} = 9{,}014\): \(n = 1{,}789{,}588\). -
-(15,7), \(q = 11\), \(HHDHDHD\): twelve friendly sets with 5,674--9,303 elements each; in the four bottleneck sets some
-elements have one partner (5,577 pairs in all), so these are segment sets but not non-collinear; the 768-point mirrored
-set on the nine non-friendly transitions. \(K_{\mathcal B} = 10{,}826\), \(K_{\mathcal A} = 10{,}481\):
-\(n = 2{,}501{,}491\). (The graph also satisfies the lab's unnecessary hub condition (R2).) - (16,7), \(q = 13\),
-\(HDHDH\): a non-collinear set of 14,762 points and a non-concurrent set of 14,823 lines (unions of orbits of an
-order-61 element of \(SL(3,13)\)), and on the four non-friendly transitions a pairwise opposite set of 122 points (resp.
-lines) with \(\sigma\) as in Corollary 5.3(a). \(K_{\mathcal A} = K_{\mathcal B} = 14{,}762 + 122 = 14{,}884\):
-\(n = 4{,}052{,}108\).
+\[n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + K_{\mathcal A} + K_{\mathcal B}.\] Records:
+
+\begin{itemize}
+\tightlist
+\item
+  (14,7), \(q = 11\), \(HDHDH\): all friendly point sets equal one non-collinear set of 8,645 points, all friendly line
+  sets one non-concurrent set of 8,246 lines (both unions of orbits of an order-133 collineation), and the 768-point
+  mirrored set of Corollary 8.1 on the four non-friendly transitions. \(\alpha = (9413, 9014, 9413, 16492, 9413)\),
+  \(\beta = (9014, 17290, 9014, 9413, 9014)\), \(K_{\mathcal A} = K_{\mathcal B} = 9{,}014\): \(n = 1{,}789{,}588\).
+\item
+  (15,7), \(q = 11\), \(HHDHDHD\): twelve friendly sets with 5,674--9,303 elements each; in the four bottleneck sets
+  some elements have one partner (5,577 pairs in all), so these are segment sets but not non-collinear; the 768-point
+  mirrored set on the nine non-friendly transitions. \(K_{\mathcal B} = 10{,}826\), \(K_{\mathcal A} = 10{,}481\):
+  \(n = 2{,}501{,}491\). (The graph also satisfies the lab's unnecessary hub condition (R2).)
+\item
+  (16,7), \(q = 13\), \(HDHDH\): a non-collinear set of 14,762 points and a non-concurrent set of 14,823 lines (unions
+  of orbits of an order-61 element of \(SL(3,13)\)), and on the four non-friendly transitions a pairwise opposite set of
+  122 points (resp. lines) with \(\sigma\) as in Corollary 5.3(a).
+  \(K_{\mathcal A} = K_{\mathcal B} = 14{,}762 + 122 = 14{,}884\): \(n = 4{,}052{,}108\).
+\end{itemize}
 
 Computer: all these sets, \(\sigma\), and the hub graphs.
 
@@ -858,19 +988,26 @@ they are left to the lab's search sessions.
 \subsubsection{\texorpdfstring{10.1 Small-\(q\) tests of every
 theorem}{10.1 Small-q tests of every theorem}}\label{small-q-tests-of-every-theorem}}
 
-Two independent sets of programs (details, commands and logs in the two README files): -
-research/theorems/d7hex\_tests/: builds \(H(q)\) from scratch from the coordinates of Section 1.1 (\(q = 2,3,4,5\)),
-builds each graph from Definitions 2.1 and 3.1 (asserting that every matching is a bijection), and checks it with
-research/lifts/coordinator\_check/apsp\_mt.c (breadth-first search from every vertex; ``VALID'' = bipartite, maximum
-degree \(\le\Delta\), diameter \(\le 7\)); - research/theorems/d7hex\_lemma41/: uses the lab's generator
-research/d10D7/hexgen2.c and duality finder research/d10D7/dual/dualfind.c; checks Lemma 4.1 directly on all ordered
-pairs \((u,v)\), and the duality construction.
+Two independent sets of programs (details, commands and logs in the two README files):
+
+\begin{itemize}
+\tightlist
+\item
+  research/theorems/d7hex\_tests/: builds \(H(q)\) from scratch from the coordinates of Section 1.1 (\(q = 2,3,4,5\)),
+  builds each graph from Definitions 2.1 and 3.1 (asserting that every matching is a bijection), and checks it with
+  research/lifts/coordinator\_check/apsp\_mt.c (breadth-first search from every vertex; ``VALID'' = bipartite, maximum
+  degree \(\le\Delta\), diameter \(\le 7\));
+\item
+  research/theorems/d7hex\_lemma41/: uses the lab's generator research/d10D7/hexgen2.c and duality finder
+  research/d10D7/dual/dualfind.c; checks Lemma 4.1 directly on all ordered pairs \((u,v)\), and the duality
+  construction.
+\end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1373}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5098}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0588}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2941}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 statement

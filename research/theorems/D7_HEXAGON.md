@@ -42,7 +42,7 @@ the number of points (and of lines) of a generalized hexagon of order $(q,q)$. T
 DS14v2) has, for $\Delta = q+1+r$, the value $(2r+1)\cdot 2N(q)$; this is the order of the level cover of Section 2.
 
 | cell $(\Delta,7)$ | $q$, $r$ | table (2013) | ours | construction (this note) | parameters |
-|---|---|---:|---:|---|---|
+|-------|--------|---------:|----------:|----------------------------|---------------------------------|
 | (7,7) | 5, 1 | 23,436 | **23,598** | 3 levels, one local duality (Cor. 8.1) | $\lvert R\rvert = 81$ (72 pairwise opposite + 9) |
 | (9,7) | 7, 1 | 117,648 | **118,238** | same | $\lvert R\rvert = 295$ (288 + 7) |
 | (10,7) | 8, 1 | 224,694 | **225,152** | same | $\lvert R\rvert = 229$ (217 + 12) |
@@ -561,7 +561,7 @@ $7\le K\le\kappa(d)$. This is enough for the general statements of Section 9 but
 record hub graphs were found by computer and checked:
 
 | cell | hubs per colour | hub degree | hub graph | (HG) checked by |
-|---|---|---|---|---|
+|-----------|----------|------|----------------------------------------|------------------------------|
 | (7,7), (9,7), (10,7), (13,7) | 81, 295, 229, 768 | $q-1$ | random $(q-1)$-regular, retried until same-colour distances $\le 6$ in $Y$ | research/d13D7/multi.c (BFS in $Y$), then the full all-pairs check |
 | (11,7) | 7,300 | 8 | Haar graph of $\mathbb Z_{73}\rtimes\mathbb Z_{100}$, diameter 7 | build_haar2.py, then full check |
 | (12,7) | 14,600 | 7 | Haar graph of $(\mathbb Z_{73}\rtimes\mathbb Z_8)\times\mathbb Z_5^2$, with paths through the levels ("cluster-assisted", research/squads/cells/d12D7.md §2) | full check |
@@ -671,7 +671,7 @@ Two independent sets of programs (details, commands and logs in the two README f
   research/d10D7/dual/dualfind.c; checks Lemma 4.1 directly on all ordered pairs $(u,v)$, and the duality construction.
 
 | statement | what was built | $q$ | result |
-|---|---|---|---|
+|--------------|----------------------------------------------------|------|------------------------------|
 | §1.1 coordinates, (F1), (F4), Lemma 1.2(b) | $H(q)$ from Tits' equations; counts, diameter 6, girth 12 (distance profile), (F4) on all pairs ($q\le 4$) or a sample ($q = 5$); Hermitian spread in $x_0 = c x_4 + e x_3$ | 2, 3, 4, 5 | all hold; spreads of 28, 65, 126 pairwise opposite lines |
 | Theorem A | plain level covers with random bijections, types $HHH$, $HDH$, $HHHHH$, $HDHDH$ (and $HHDHHDD$, $HHHHHHH$ for $q = 3, 4$) | 3, 4, 5 | all VALID, $(q+1+r)$-regular |
 | Lemma 4.1 | all ordered pairs, for spread-point sets, three random maximal segment sets, a random maximal (R1) set; points and lines | 3, 4, 5 | 0 failures; each set plus one turning point: 36–320 failing pairs |
@@ -693,7 +693,7 @@ bit-parallel breadth-first search from **every** vertex, no symmetry assumed. Al
 research/coordinator_check/check_2026-10-25.txt:
 
 | cell | $n$ | apsp_mt output (all sources) |
-|---|---:|---|
+|----------|------------:|----------------------------------------|
 | (7,7) | 23,598 | RESULT VALID d=7 D=7 n=23598 |
 | (9,7) | 118,238 | RESULT VALID d=9 D=7 n=118238 |
 | (10,7) | 225,152 | RESULT VALID d=10 D=7 n=225152 |
