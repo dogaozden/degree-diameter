@@ -87,3 +87,13 @@ stopped without a verdict.
 Results so far (unsolved): sl 47 × 169 seed 1 best 6 (30k evals), seed 2 best 8 (21.6k), psl 73 × 91 best 8 (25k evals, μ 28.9),
 sl 43 × 223 best 18 (12k, μ 29.5), sl 37 × 349 best 36 (9.5k, μ 28.2, stopped).
 Running: sl 47 × 169 seeds 2 and 3 (3600 s), psl 73 × 91, sl 43 × 223.
+
+### Round 6 and 7 results so far (all unsolved above the bar 17,534,160)
+- sl 47 × Z169 (N 17,538,144, μ 25.4, |Fix| 47): seeds 1–4 best 6, 8, 6, 8 (30k–46k evals each, 40–60 min). Seed 5 at 10 (running).
+- psl 73 × Z91 (N 17,696,952, μ 28.9, |Fix| 35): seed 1 best 6 (52k evals, 60 min), seed 2 best 11 (55k), seed 3 at 15 (running).
+- sl 43 × Z223 (N 17,720,472, μ 29.5): best 12 (38k evals, 60 min).
+- sl 83 × Z31 (N 17,722,824, μ 29.5): best 10–12 at 30 min (running).
+- sl 37 × Z349 (N 17,664,984, μ 28.2): best 36 at 9.5k evals (stopped).
+Reading: at μ ≥ 25 the success rate per 40-minute run fell well below one in five across these groups; the sl 71 × 49 success
+(μ 25.3, seed 2) came from one of two seeds and was the last success. This is consistent with the STRUCTURE.md wall (cost falls
+slowly past μ ≈ 25; each further +1 in μ needs several times more evaluations).
