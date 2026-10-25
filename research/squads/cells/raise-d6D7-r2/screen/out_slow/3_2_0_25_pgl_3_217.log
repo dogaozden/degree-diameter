@@ -1,0 +1,6 @@
+group pgl 3 x Z_217, N=5208, identity 0, H order 62, rows 84, threads 1, setup 0.01s
+wide rows: HW order 217, rows 24, setup 0.01s
+alpha: conj by mat(0,1,2,1) (index 22), z -> 25 z on Z_217
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 122.46, mu/k = 40.82, fixed-point misses ~ 1.72
+RANDORB d=6 D=7 group=pgl 3 x Z_217 N=5208 k=3 m=2 f=0 fix=2 samples=2000000 min=588 p1=726 p10=1068 median=5844 mean=5048.45 var=8580400.6 mu=122.46 time=14.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2000000

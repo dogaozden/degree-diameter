@@ -1,0 +1,6 @@
+group psl 7 x Z_31, N=5208, identity 651, H order 62, rows 84, threads 1, setup 0.00s
+wide rows: HW order 217, rows 24, setup 0.00s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 25 z on Z_31
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 122.46, mu/k = 40.82, fixed-point misses ~ 1.72
+RANDORB d=6 D=7 group=psl 7 x Z_31 N=5208 k=3 m=2 f=0 fix=2 samples=15000000 min=24 p1=128 p10=274 median=686 mean=1750.71 var=7170469.4 mu=122.46 time=96.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 3716 0 0 0 0 0 0 0 0 0 0 0 0 0 8954 0 3638 1909 0 7117 3680 7193 0 14963793

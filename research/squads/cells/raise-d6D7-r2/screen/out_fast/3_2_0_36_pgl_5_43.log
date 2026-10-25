@@ -1,0 +1,6 @@
+group pgl 5 x Z_43, N=5160, identity 0, H order 43, rows 120, threads 1, setup 0.00s
+wide rows: HW order 215, rows 24, setup 0.00s
+alpha: conj by mat(1,4,3,3) (index 94), z -> 36 z on Z_43
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 117.17, mu/k = 39.06, fixed-point misses ~ 3.40
+RANDORB d=6 D=7 group=pgl 5 x Z_43 N=5160 k=3 m=2 f=0 fix=5 samples=15000000 min=46 p1=139 p10=312 median=5163 mean=4133.29 var=8977058.6 mu=117.17 time=105.1
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10242 0 0 0 0 0 0 0 0 0 0 10241 0 20551 0 0 14958966
