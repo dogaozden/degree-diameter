@@ -73,3 +73,42 @@ Moore bound 10,922. Any Haar graph with N ≥ 1,561 (2N ≥ 3,122) is a new reco
   (edit the list at the bottom). `fam.py S5 13` reproduces the record (hit in 0.3 s). Verify any hit with
   `research/frontier/build_haar2.py`.
 - Do not use the annealer in orbit mode for this cell: it stalls on its start plateau within 30 s.
+
+## Round 2 (branch claude/raise-d5d7-round2-la1n4w)
+
+Record to beat: still 3,120 (N = 1,560, PGL(2,5) x Z13). Target: any 5-regular bipartite graph on 2N >= 3,122 vertices
+with diameter 7. Round 1's branch is merged in, and round 1's families are not repeated.
+
+Tools (research/squads/cells/raise-d5D7-r2/, logs in its logs/):
+- `r2sweep.py`: exhaustive family S = {e,t} + alpha-orbit(3), t in Fix(alpha), for any group built from a multiplication
+  table (permutation-generated factors x cyclic/abelian factors). alpha ranges over conjugation classes of order-3
+  elements (and identity) times every z -> r z with r^3 = 1. Uses round 1's `fam.py` BFS check. Validation: on
+  PGL(2,5) x Z13 it reproduces the known hit (|Fix| = 6, 18 s).
+- `shapes.py`: other orbit shapes (k, m, f) = (5,1,0), (4,1,1), (2,2,1), (2,1,3), alpha of order 2, 4, 5. Exhaustive
+  up to 30,000 candidates per family, random sample above.
+- `r2frob.py`: outer (Frobenius) order-3 automorphisms of AGL(1,8) x Z_n, which the inner-only sweep cannot produce.
+- `insert_exp.py`, `sa_insert.py`: non-symmetric route (see below).
+
+### Results
+1. **Orbit families, 40 groups of order 1,568..1,692** (batch 1: S4, SL(2,3), A4 x Z_n; PGL(2,7), PSL(2,7), SL(2,7) x Z_n;
+   AGL(1,8), AGammaL(1,8), AGL(1,9), AGammaL(1,9), AGL(1,7), AGL(1,11) x Z_n; S3 x S4, A4 x A4, S3 x A4, A5 x Z27,
+   S5 x Z14, PGL(2,5) x Z14; and the record group as validation). 40 groups, all order-3 alphas, all exhaustive:
+   **no hit**. Smallest |Fix(alpha)| seen: 3 (14 families) and 6, 8, 12 (no hits). Logs: logs/sweep_*.txt.
+   Batch 2 (A4 x Z2 x Z_n, A4 x Z3 x Z_n, S3 x S3 x Z_n, S4 x Z3 x Z_n, A5 x Z2 x Z14, PSL(2,7) x Z2 x Z5,
+   AGL(1,8) x Z2 x Z14, AGL(1,9) x Z2 x Z11, AGL(1,5) x Z_n for n = 79..85, S3 x Z2 x Z131): logs/sweep2_0.txt.
+2. **Outer Frobenius alphas on AGL(1,8) x Z28 and x Z29**: exhaustive, no hit (logs/frob_agl18.txt).
+3. **Other orbit shapes** with alpha of order 2, 4, 5 on the same groups: logs/shapes_*.txt (capped at 30,000
+   candidates per family). See the status line below.
+4. **Non-symmetric route: insert two vertices into the record.** Remove a 5-matching (a_i, b_i) of the 3,120-vertex
+   Haar graph, join one new A-vertex to the b_i and one new B-vertex to the a_i. The result is 5-regular, bipartite,
+   on 3,122 vertices. It has about 1,100 to 1,450 ordered pairs at distance > 7 (random matchings; 6 starts gave 1,106
+   as the best). A bipartite double-edge switch from there changes the count by +284 or more in every one of 40 trials,
+   so the annealer accepted nothing. **Negative result:** the record is too rigid for local repair.
+
+### Judgement
+- No candidate >= 3,122 found across ~32 million evaluated S-candidates in symmetric families (exhaustive per family).
+- The orbit lever is spent on the groups it can reach: every new order-3 family with a small fixed set gives cost > 0.
+- Open leads not tried: (a) bi-Cayley / voltage lifts over a base of 4 vertices (2 + 2) with a group of order >= 781
+  (non-Haar, so the symmetric families above do not cover them); (b) non-split extensions and 2-groups of order
+  1,568..1,700, which no grammar here builds; (c) orbit shapes with alpha of order 3 combined with a second
+  outer automorphism. I did not start (a) in this round: it needs a new multi-orbit lift search, not a sweep.
