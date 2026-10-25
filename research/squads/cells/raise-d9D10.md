@@ -50,3 +50,6 @@ sl 229 (μ 34.1; fix 227, bad); prod psl 5×sl 16×Z49 (μ 33.5). Last place: ps
   all 12,049,800 per side reached. Log: research/structured/runs/d9D10_psl_151_7_orb3f0_s1.log.
   Not yet re-checked by build_haar2.py (too heavy above 10M; the coordinator's check is pending).
 - 10:17: stopped run F (psl 151×Z7 ORBW=3, same group, no longer useful) and run B (sl 43×Z151, N below the new record).
+- 10:17 UTC: draft PR #350 opened for the branch.
+- 10:58 UTC: running E prod sl 8×psl 19×Z7 (N 12,065,760; cost 3, 4.97e5 evals), G psl 79×Z49 ORBW=3 seed 2 (N 12,077,520;
+  best 3, 1.65e5), H psl 79×Z49 seed 3 (best 4, 1.66e5). All above the new record's order, so any solve is a new record.
