@@ -1,0 +1,45 @@
+group prod psl 7 sl 9 poly x^2+1 x Z_1, N=120960, identity 15192, H order 56, rows 2160, threads 1, setup 0.00s
+wide rows: HW order 70, rows 1728, setup 0.01s
+alpha: conj by prod[mat(1,4,1,5);mat(3,5,7,8)] (index 36286), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 53 (+e); mu = 42.95, mu/k = 14.32, fixed-point misses ~ 3.82
+start cost=352
+t=30 steps=12750 evals=102001 cost=20 best=11 T=0.53
+t=60 steps=24786 evals=198289 cost=13 best=11 T=0.19
+t=90 steps=36983 evals=295865 cost=11 best=11 T=0.15
+t=120 steps=47714 evals=381713 cost=9 best=9 T=0.15
+t=150 steps=59997 evals=479977 cost=9 best=9 T=0.15
+t=180 steps=72779 evals=582233 cost=9 best=9 T=0.15
+t=210 steps=84828 evals=678625 cost=9 best=9 T=0.15
+t=240 steps=97559 evals=780473 cost=9 best=9 T=0.15
+t=270 steps=109603 evals=876825 cost=12 best=9 T=1.29
+t=300 steps=122019 evals=976153 cost=15 best=9 T=0.46
+t=330 steps=133311 evals=1066489 cost=15 best=9 T=0.16
+t=360 steps=144500 evals=1156001 cost=15 best=9 T=0.15
+t=390 steps=156533 evals=1252265 cost=15 best=9 T=0.15
+t=420 steps=168609 evals=1348873 cost=32 best=9 T=1.29
+t=450 steps=181285 evals=1450281 cost=11 best=9 T=0.46
+t=480 steps=193350 evals=1546801 cost=11 best=9 T=0.16
+t=510 steps=204847 evals=1638777 cost=11 best=9 T=0.15
+t=540 steps=216211 evals=1729689 cost=11 best=9 T=0.15
+t=570 steps=227409 evals=1819273 cost=9 best=9 T=1.29
+t=600 steps=238192 evals=1905537 cost=11 best=9 T=0.46
+t=630 steps=249099 evals=1992793 cost=11 best=9 T=0.16
+t=660 steps=259441 evals=2075529 cost=11 best=9 T=0.15
+t=690 steps=271009 evals=2168073 cost=11 best=9 T=0.15
+t=720 steps=282138 evals=2257105 cost=14 best=9 T=1.29
+t=750 steps=293095 evals=2344761 cost=5 best=5 T=0.46
+t=780 steps=304682 evals=2437457 cost=5 best=5 T=0.16
+t=810 steps=315736 evals=2525889 cost=5 best=5 T=0.15
+t=840 steps=326025 evals=2608201 cost=5 best=5 T=0.15
+t=870 steps=336940 evals=2695521 cost=5 best=5 T=0.15
+t=900 steps=348067 evals=2784537 cost=26 best=5 T=0.64
+t=930 steps=359886 evals=2879089 cost=12 best=5 T=0.23
+t=960 steps=371393 evals=2971145 cost=12 best=5 T=0.15
+t=990 steps=382778 evals=3062225 cost=9 best=5 T=0.15
+t=1020 steps=394175 evals=3153401 cost=9 best=5 T=0.15
+t=1050 steps=405468 evals=3243745 cost=10 best=5 T=0.64
+t=1080 steps=417672 evals=3341377 cost=10 best=5 T=0.23
+t=1110 steps=431026 evals=3448209 cost=10 best=5 T=0.15
+t=1140 steps=443755 evals=3550041 cost=10 best=5 T=0.15
+t=1170 steps=457038 evals=3656305 cost=10 best=5 T=0.15
+RESULT d=8 D=8 group=prod psl 7 sl 9 poly x^2+1 x Z_1 N=120960 best=5 evals=3761793 time=1200.0 orbit k=3 m=2 f=2 fix=53

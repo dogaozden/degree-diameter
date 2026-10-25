@@ -4,3 +4,43 @@ alpha: conj by mat(5,2,6,7) (index 567), z -> 9 z on Z_182
 ORBIT k=3 m=2 f=2: |Fix(alpha)| = 11 (+e); mu = 40.35, mu/k = 13.45, fixed-point misses ~ 0.83
 ORBW=3: an uncovered fixed element weighs 3; start energy 657
 start cost=655
+t=30 steps=37506 evals=300049 cost=9 best=9 T=0.53 energy=9 bestE=9
+t=60 steps=74208 evals=593665 cost=12 best=9 T=0.19 energy=12 bestE=9
+t=90 steps=108449 evals=867593 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=120 steps=141406 evals=1131249 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=150 steps=173639 evals=1389113 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=180 steps=211896 evals=1695169 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=210 steps=251521 evals=2012169 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=240 steps=291593 evals=2332745 cost=15 best=3 T=0.79 energy=15 bestE=3
+t=270 steps=331139 evals=2649113 cost=9 best=3 T=0.28 energy=9 bestE=3
+t=300 steps=370009 evals=2960073 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=330 steps=409649 evals=3277193 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=360 steps=449755 evals=3598041 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=390 steps=490848 evals=3926785 cost=9 best=3 T=0.79 energy=9 bestE=3
+t=420 steps=531064 evals=4248513 cost=9 best=3 T=0.28 energy=9 bestE=3
+t=450 steps=571950 evals=4575601 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=480 steps=610817 evals=4886537 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=510 steps=651006 evals=5208049 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=540 steps=691235 evals=5529881 cost=6 best=3 T=0.79 energy=6 bestE=3
+t=570 steps=731315 evals=5850521 cost=9 best=3 T=0.28 energy=9 bestE=3
+t=600 steps=771467 evals=6171737 cost=7 best=3 T=0.15 energy=9 bestE=3
+t=630 steps=812186 evals=6497489 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=660 steps=853425 evals=6827401 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=690 steps=893681 evals=7149449 cost=12 best=3 T=0.79 energy=12 bestE=3
+t=720 steps=932329 evals=7458633 cost=6 best=3 T=0.28 energy=6 bestE=3
+t=750 steps=971188 evals=7769505 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=780 steps=1011119 evals=8088953 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=810 steps=1049421 evals=8395369 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=840 steps=1089813 evals=8718505 cost=6 best=3 T=0.79 energy=6 bestE=3
+t=870 steps=1129918 evals=9039345 cost=6 best=3 T=0.28 energy=6 bestE=3
+t=900 steps=1169256 evals=9354049 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=930 steps=1209444 evals=9675553 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=960 steps=1249249 evals=9993993 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=990 steps=1288249 evals=10305993 cost=9 best=3 T=0.79 energy=9 bestE=3
+t=1020 steps=1328676 evals=10629409 cost=12 best=3 T=0.28 energy=12 bestE=3
+t=1050 steps=1367709 evals=10941673 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=1080 steps=1407489 evals=11259913 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=1110 steps=1447070 evals=11576561 cost=9 best=3 T=0.15 energy=9 bestE=3
+t=1140 steps=1487857 evals=11902857 cost=15 best=3 T=0.79 energy=15 bestE=3
+t=1170 steps=1524733 evals=12197865 cost=9 best=3 T=0.28 energy=9 bestE=3
+RESULT d=8 D=8 group=psl 11 x Z_182 N=120120 best=3 evals=12506073 time=1200.0 orbit k=3 m=2 f=2 fix=11
