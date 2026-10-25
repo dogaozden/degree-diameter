@@ -39,3 +39,7 @@ sl 229 (μ 34.1; fix 227, bad); prod psl 5×sl 16×Z49 (μ 33.5). Last place: ps
 - 07:35 UTC: run A (psl 41×Z349, best 15 after 2.2e4 evals) stopped: weakest on the screen.
   Started C psl 151×Z7, D psl 79×Z49, E prod sl 8×psl 19×Z7 (4 h each, seed 1, K 8).
   Run B (sl 43×Z151) still going, best 6 after 2.6e4 evals.
+- 09:25 UTC: no solution yet. Best costs (evals): C psl 151×Z7 cost 1 (2.9e5), B sl 43×Z151 cost 3 (3.2e5),
+  E prod sl 8×psl 19×Z7 cost 3 (2.7e5), D psl 79×Z49 cost 6 (4.4e5). About 0.02–0.03 s per eval.
+  The runs end at about 11:35–11:45 UTC (4 h each); the first-moment wall for this method is μ ≈ 40–45 (SIZE_LAW §2.3),
+  so these μ values (35–37) are within reach but need more evals than we have.
