@@ -74,7 +74,8 @@ L34 8,390 (156), L30 8,388 (333), point sets = R_H; KB = KA = 768 + 8,381 = 9,14
 (research/d7family/hd5_grow.sh: P23 || P01 -> P41, then L12 || L34 -> L30, 300 s each, protect lists keep every cover
 in use): the point sets, which have slack here, become 1-defective too (8,753-8,827 points, 214-230 pairs), which gives
 the line sets more covers: L12 8,415, L34 8,406, L30 8,467 after drops; KB = 9,183, KA = 9,174,
-n = 1,771,560 + 18,357 = 1,789,917.
+n = 1,771,560 + 18,357 = 1,789,917. A third round (450 s per set) left L12, the binding set, at 8,415 and moved L34 to
+8,410 (at most +4), so it was not built.
 
 ## The relaxed sets on five levels: what limits them
 
@@ -148,7 +149,8 @@ sets.
   probe3.py counts, for every candidate (a, y, M) (y collinear with exactly one base point a, line M meeting exactly
   the spread line that becomes sigma(a)), whether the base points of each type at distance 4 / 6 from y fit into the
   usable spread lines of that type at distance 4 / 6 from M: 0 feasible at q = 5 (2,060 candidate y, 3,300 lines M),
-  q = 7 (15,874 y, 18,535 M), q = 8 (15,338 y, 35,051 M) and q = 11 (99,060 y; partnerscan.py) PARTNER13. A partner would have to be annealed together with the
+  q = 7 (15,874 y, 18,535 M), q = 8 (15,338 y, 35,051 M) and q = 11 (99,060 y;
+  partnerscan.py); the q = 13 scan did not finish in the session. A partner would have to be annealed together with the
   extra points (as an extra point that pins sigma of its base point instead of wasting a spread line).
 - **Exhaustive moves on the mirrored configurations.** research/d7family/addscan.py tests every (extra point, line) pair
   for a single addition by the exact type condition (validated: after deleting the last extra point of the q = 5 state
