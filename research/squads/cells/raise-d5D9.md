@@ -127,7 +127,7 @@ entry for the outcome).
 
 ### New record: 29,540 vertices (round 2)
 
-Haar graph of G = Z_422 ⋊_5 Z_35 (order 14,770, metacyclic, r = 5 has order 35 mod 422? see the file header), 5-regular,
+Haar graph of G = Z_422 ⋊_5 Z_35 (order 14,770; r = 5 is a unit mod 422 with order exactly 35), 5-regular,
 diameter 9, bipartite. S as (a, j), a ∈ Z_422, j ∈ Z_35: (0,0), (318,34), (101,22), (327,1), (290,8).
 Found by haar_sym (FAST=2, K = 8, THREADS=1) at seed 204 after 220 s and 2.3·10⁷ evaluations, a long run (1,200 s
 budget) on a group that had reached cost 2 in round 1 at 150 s.
