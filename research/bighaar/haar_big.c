@@ -31,7 +31,9 @@
  *      from the best S, 60), PUSHMAX (push a level iff |list| * d <= PUSHMAX, default min(2^24, N d / 512)), UCAP (65536),
  *      RANDORB=m (cost statistics of m random symmetric S, no search), EVAL=file (cost of the S in a solution file),
  *      START=file (start the search from the S in a solution file; it must have the orbit structure), BENCH=1 (timings),
- *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements).
+ *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements), FIXF=1 (D = 10 only: screen each candidate on the
+ *      alpha-fixed elements by meet in the middle, ~0.1 s, and fully evaluate only candidates with at most FIXMAX (0)
+ *      fixed holes, trying up to FIXTRY (200) per candidate slot; with EVAL it compares the screen with the full count).
  * Output: solution file in haar_gen3 format: "d D sl p n NCYC N NTOT" then d lines "<index> mat(a,b,c,d) z=Z",
  *      first generator e; checked independently by research/frontier/haarcheck_sl.c, haarcheck2.c (SL) and
  *      research/structured/tools/haarcheck_psl.c (PSL).  The current best S is also written to outfile.best after
@@ -359,6 +361,104 @@ static int targeted(el *x) {
     return 0;
 }
 
+/* ---------------- FIXF: screen candidates on the alpha-fixed elements (meet in the middle) ----------------
+ * An alpha-fixed hole costs 1 but is uncovered with probability ~exp(-lambda/k) (the words reaching it come in
+ * alpha-orbits of size k), so at k = 5 the last holes are fixed ones.  x (B side) is within D-1 = 2h+1 of (e,A) iff
+ * v x is in Y_(h+1) for some v in V = (S S^-1)^(h/2) ... precisely: Y_9 = {s9 s8^-1 s7 s6^-1 y : y in Y_5}, so
+ * x in Y_9 iff s6 s7^-1 s8 s9^-1 x in Y_5 for some s6..s9 in S.  Only D = 10 is implemented (Y_5 = S X_4,
+ * X_4 = S^-1 S S^-1 S, V_4 = S S^-1 S S^-1).  For an alpha-fixed x, v x in Y_5 iff alpha(v) x in Y_5, so only one v
+ * per alpha-orbit of V_4 is tried.  ~0.1 s per candidate at |S| = 16. */
+static el *FIXE; static int NFIX;                 /* alpha-fixed elements other than e */
+static i64 *HT, *HT2; static i64 HTCAP, HT2CAP;   /* open-addressing sets of element indices */
+static el *XL, *VL; static int NXL, NVL;
+static inline u64 hmix(u64 x) { x ^= x >> 33; x *= 0xff51afd7ed558ccdULL; x ^= x >> 33; x *= 0xc4ceb9fe1a85ec53ULL; x ^= x >> 33; return x; }
+static inline int hadd(i64 *T, i64 cap, i64 k) {
+    u64 h = hmix((u64)k) & (u64)(cap - 1);
+    while (T[h] != -1) { if (T[h] == k) return 0; h = (h + 1) & (u64)(cap - 1); }
+    T[h] = k; return 1;
+}
+static inline int hhas(const i64 *T, i64 cap, i64 k) {
+    u64 h = hmix((u64)k) & (u64)(cap - 1);
+    while (T[h] != -1) { if (T[h] == k) return 1; h = (h + 1) & (u64)(cap - 1); }
+    return 0;
+}
+static void fix_setup(void) {
+    i64 cap = 1024; NFIX = 0; FIXE = malloc(sizeof(el) * cap);
+    for (i64 z = 0; z < NC; z++) {
+        if (NC > 1 && (i64)((__int128)AR * z % NC) != z) continue;
+        for (i64 r = 0; r < R; r++) for (int t = 0; t < P; t++) {
+            el x = eofidx(r * L + crt(t, z));
+            if (eeq(x, E_ID) || !eeq(alpha(x), x)) continue;
+            if (NFIX == cap) { cap *= 2; FIXE = realloc(FIXE, sizeof(el) * cap); }
+            FIXE[NFIX++] = x;
+        }
+    }
+    int dd = d; i64 n5 = (i64)dd * dd * dd * dd * dd, n4 = (i64)dd * dd * dd * dd;
+    HTCAP = 1; while (HTCAP < 2 * n5) HTCAP <<= 1;
+    HT2CAP = 1; while (HT2CAP < 2 * n4) HT2CAP <<= 1;
+    HT = malloc(sizeof(i64) * HTCAP); HT2 = malloc(sizeof(i64) * HT2CAP);
+    XL = malloc(sizeof(el) * n4); VL = malloc(sizeof(el) * n4);
+}
+/* fast arithmetic for the screen: Barrett reduction mod p (exact for v < 2^20 when p < 2^9) and packed keys */
+static u64 BMP;
+static inline int fmd(u32 v) { return (int)(v - (u32)(((u64)v * BMP) >> 40) * (u32)P); }
+static inline el femul(el x, el y) {
+    el r; r.a = fmd((u32)(x.a * y.a + x.b * y.c)); r.b = fmd((u32)(x.a * y.b + x.b * y.d));
+    r.c = fmd((u32)(x.c * y.a + x.d * y.c)); r.d = fmd((u32)(x.c * y.b + x.d * y.d));
+    r.z = x.z + y.z; if (r.z >= NC) r.z -= NC;
+    return canon(r);
+}
+static inline i64 fkey(el x) { return (i64)x.a | (i64)x.b << 9 | (i64)x.c << 18 | (i64)x.d << 27 | (i64)x.z << 36; }
+static int fixholes(const el *SS, int stopat) {   /* number of alpha-fixed holes of S (stops counting at stopat) */
+    if (P < 512 && NC < ((i64)1 << 27)) {
+        if (!BMP) BMP = (((u64)1 << 40) + P - 1) / P;
+        el SI[MAXD]; for (int i = 0; i < d; i++) SI[i] = einv(SS[i]);
+        memset(HT2, 0xff, sizeof(i64) * HT2CAP); NXL = 0;
+        for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = femul(SI[a], SS[b]);
+            for (int c = 0; c < d; c++) { el abc = femul(ab, SI[c]);
+                for (int e4 = 0; e4 < d; e4++) { el x = femul(abc, SS[e4]); if (hadd(HT2, HT2CAP, fkey(x))) XL[NXL++] = x; } } }
+        memset(HT, 0xff, sizeof(i64) * HTCAP);
+        for (int s = 0; s < d; s++) for (int i = 0; i < NXL; i++) hadd(HT, HTCAP, fkey(femul(SS[s], XL[i])));
+        memset(HT2, 0xff, sizeof(i64) * HT2CAP); NVL = 0;
+        for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = femul(SS[a], SI[b]);
+            for (int c = 0; c < d; c++) { el abc = femul(ab, SS[c]);
+                for (int e4 = 0; e4 < d; e4++) { el v = femul(abc, SI[e4]); i64 iv = fkey(v);
+                    if (!hadd(HT2, HT2CAP, iv)) continue;
+                    el w = v; int rep = 1;
+                    for (int k = 1; k < OK_ && rep; k++) { w = alpha(w); if (fkey(w) < iv) rep = 0; }
+                    if (rep) VL[NVL++] = v; } } }
+        int holes = 0;
+        for (int f = 0; f < NFIX && holes < stopat; f++) {
+            int hit = 0;
+            for (int i = 0; i < NVL && !hit; i++) hit = hhas(HT, HTCAP, fkey(femul(VL[i], FIXE[f])));
+            if (!hit) holes++;
+        }
+        return holes;
+    }
+    el SI[MAXD]; for (int i = 0; i < d; i++) SI[i] = einv(SS[i]);
+    memset(HT2, 0xff, sizeof(i64) * HT2CAP); NXL = 0;
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = emul(SI[a], SS[b]);
+        for (int c = 0; c < d; c++) { el abc = emul(ab, SI[c]);
+            for (int e4 = 0; e4 < d; e4++) { el x = emul(abc, SS[e4]); if (hadd(HT2, HT2CAP, eidx(x))) XL[NXL++] = x; } } }
+    memset(HT, 0xff, sizeof(i64) * HTCAP);
+    for (int s = 0; s < d; s++) for (int i = 0; i < NXL; i++) hadd(HT, HTCAP, eidx(emul(SS[s], XL[i])));
+    memset(HT2, 0xff, sizeof(i64) * HT2CAP); NVL = 0;
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = emul(SS[a], SI[b]);
+        for (int c = 0; c < d; c++) { el abc = emul(ab, SS[c]);
+            for (int e4 = 0; e4 < d; e4++) { el v = emul(abc, SI[e4]); i64 iv = eidx(v);
+                if (!hadd(HT2, HT2CAP, iv)) continue;
+                el w = v; int rep = 1;                 /* keep v iff it has the smallest index in its alpha-orbit */
+                for (int k = 1; k < OK_ && rep; k++) { w = alpha(w); if (eidx(w) < iv) rep = 0; }
+                if (rep) VL[NVL++] = v; } } }
+    int holes = 0;
+    for (int f = 0; f < NFIX && holes < stopat; f++) {
+        int hit = 0;
+        for (int i = 0; i < NVL && !hit; i++) hit = hhas(HT, HTCAP, eidx(emul(VL[i], FIXE[f])));
+        if (!hit) holes++;
+    }
+    return holes;
+}
+
 /* ---------------- I/O ---------------- */
 static char SPEC[64];
 static void write_sol(const char *out, el *SS) {
@@ -448,6 +548,15 @@ int main(int argc, char **argv) {
             printf("EVAL %s cost=%lld time=%.3f mu=%.2f\n", getenv("EVAL"), (long long)c, now() - t0, mu);
             if (getenv("UNCPRINT")) for (int i = 0; i < nu && i < 200; i++) { char b[200]; edesc(eofidx(ULIST[0][i]), b); printf("uncovered %s\n", b); }
             if (BENCH) { fprintf(stderr, "levels:"); for (int l = 0; l <= D - 1; l++) fprintf(stderr, " %d:%.3fs(%lld)", l, TLEV[l], (long long)LEV[l]); fprintf(stderr, "\n"); } }
+        if (getenv("FIXF")) {   /* compare the screen with the full evaluation on the alpha-fixed elements */
+            if (getenv("ORBIT")) sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF);
+            choose_alpha(); fix_setup();
+            int nu; cost(NOBOUND, ULIST[0], UCAP, &nu); int fu = 0;
+            for (int i = 0; i < nu; i++) { el x = eofidx(ULIST[0][i]); if (eeq(alpha(x), x)) fu++; }
+            double t1 = now(); int fh = fixholes(S, 1 << 30);
+            printf("FIXF %d fixed elements (k=%d): screen says %d fixed holes (%.3f s), full evaluation %d of %d holes fixed\n",
+                   NFIX, OK_, fh, now() - t1, fu, nu);
+        }
         return c == 0 ? 0 : 1;
     }
     if (getenv("ORBIT")) { if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3) { fprintf(stderr, "ORBIT=\"k m f\"\n"); return 2; } }
@@ -461,6 +570,10 @@ int main(int argc, char **argv) {
             AG.a, AG.b, AG.c, AG.d, (long long)AR, (long long)NC, (long long)nfixz, OK_, OM, OF, W, W / NG, mu);
     fprintf(stderr, "setup %.1fs\n", now() - tset);
     if (OF != 1) { fprintf(stderr, "only f = 1 (S = {e} + orbits) is implemented\n"); return 2; }
+    int FIXF = getenv("FIXF") ? atoi(getenv("FIXF")) : 0, FIXTRY = getenv("FIXTRY") ? atoi(getenv("FIXTRY")) : 200;
+    int FIXMAX = getenv("FIXMAX") ? atoi(getenv("FIXMAX")) : 0; i64 nscreen = 0; double tscreen = 0;
+    if (FIXF && D != 10) { fprintf(stderr, "FIXF needs D = 10\n"); return 2; }
+    if (FIXF) { double t1 = now(); fix_setup(); fprintf(stderr, "FIXF: %d alpha-fixed elements other than e (%.1fs); FIXTRY %d FIXMAX %d\n", NFIX, now() - t1, FIXTRY, FIXMAX); }
     S[0] = E_ID;
     for (int u = OF; u < d; u++) S[u] = (el){0, 0, 0, 0, -1};
     if (getenv("START")) {
@@ -476,7 +589,10 @@ int main(int argc, char **argv) {
             for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
             for (int j = OF; j < d; j++) make_tables(j);
             int nu; v[t] = cost(NOBOUND, ULIST[0], UCAP, &nu); sm += v[t];
-            fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs)\n", t, (long long)v[t], now() - t0);
+            fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs)", t, (long long)v[t], now() - t0);
+            if (FIXF) { int fu = 0; for (int i = 0; i < nu; i++) { el x = eofidx(ULIST[0][i]); if (eeq(alpha(x), x)) fu++; }
+                fprintf(stderr, " fixed holes: full %d screen %d%s", fu, fixholes(S, 1 << 30), nu >= UCAP ? " (list capped)" : ""); }
+            fprintf(stderr, "\n");
             if (v[t] == 0 && strcmp(out, "/dev/null")) { write_sol(out, S); printf("RANDORB sample %d has cost 0, wrote %s\n", t, out); }
             if (stop_flag) { m = t + 1; break; }
         }
@@ -501,12 +617,22 @@ int main(int argc, char **argv) {
     while (!stop_flag && now() - t0 < secs && best > 0) {
         int j = (int)(rnd() % nslots);
         AVOID = 0; for (int i = 0; i < OK_; i++) AVOID |= 1ULL << (ostart(j) + i);
+        int candfh[64];
         for (int t = 0; t < K; t++) {
-            el x, o[MAXD]; int ok = 0;
-            if ((int)(rnd() % 100) < TARGP && targeted(&x)) ok = !eeq(x, E_ID) && orbit_of(x, o) && orbit_free(o, j);
-            if (!ok) random_orbit(j, o);
-            memcpy(cand[t], o, sizeof(el) * OK_);
+            int bestfh = 1 << 30;
+            for (int tr = 0; tr < (FIXF ? FIXTRY : 1); tr++) {
+                el x, o[MAXD]; int ok = 0;
+                if ((int)(rnd() % 100) < TARGP && targeted(&x)) ok = !eeq(x, E_ID) && orbit_of(x, o) && orbit_free(o, j);
+                if (!ok) random_orbit(j, o);
+                if (!FIXF) { memcpy(cand[t], o, sizeof(el) * OK_); break; }
+                el SS[MAXD]; memcpy(SS, S, sizeof(el) * d); for (int i = 0; i < OK_; i++) SS[ostart(j) + i] = o[i];
+                double t1 = now(); int fh = fixholes(SS, bestfh); tscreen += now() - t1; nscreen++;
+                if (fh < bestfh) { bestfh = fh; memcpy(cand[t], o, sizeof(el) * OK_); }
+                if (fh <= FIXMAX) break;
+            }
+            candfh[t] = bestfh;
         }
+        (void)candfh;
         AVOID = 0;
         el keep[MAXD]; memcpy(keep, S + ostart(j), sizeof(el) * OK_);
         i64 bound = NOBOUND, cs[64]; int bt = -1;
@@ -531,8 +657,10 @@ int main(int argc, char **argv) {
             c = cost(NOBOUND, UNC, UCAP, &NUNC); evals++; cE = (double)c / OK_; lastimp = steps;
             fprintf(stderr, "reheat at step %lld: back to best S, cost %lld\n", (long long)steps, (long long)c);
         }
-        fprintf(stderr, "t=%.0f step=%lld evals=%lld slot=%d cand=%lld cost=%lld best=%lld T=%.2f\n", now() - t0, (long long)steps,
+        fprintf(stderr, "t=%.0f step=%lld evals=%lld slot=%d cand=%lld cost=%lld best=%lld T=%.2f", now() - t0, (long long)steps,
                 (long long)evals, j, (long long)cs[bt], (long long)c, (long long)best, T);
+        if (FIXF) { fprintf(stderr, " screened=%lld (%.0fs) fh=", (long long)nscreen, tscreen); for (int t = 0; t < K; t++) fprintf(stderr, "%s%d", t ? "," : "", candfh[t]); }
+        fprintf(stderr, "\n");
     }
     printf("RESULT d=%d D=%d group=%s x Z_%lld N=%lld vertices=%lld best=%lld evals=%lld steps=%lld time=%.1f orbit k=%d m=%d f=%d mu=%.2f\n",
            d, D, SPEC, (long long)NC, (long long)NG, (long long)(2 * NG), (long long)best, (long long)evals, (long long)steps, now() - t0, OK_, OM, OF, mu);
