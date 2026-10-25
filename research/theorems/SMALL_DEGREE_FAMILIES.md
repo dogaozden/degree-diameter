@@ -311,12 +311,18 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
 |---|---|---|---|---|
 | Δ=3, Z_p ⋊ Z_k (p prime) | 140 | 234 | **506** | 660 |
 | Δ=3, F_q ⋊ C_k (q = p^e, e ≥ 2) | – | – | – | 702 (F_27 ⋊ C13) |
-| Δ=4, Z_p ⋊ Z_k, N above the table | none (best cost 2: Z31 ⋊ Z15, Z37 ⋊ Z12) | none for N = 1093–1870 (best 8) | squares groups p = 79, 83 fail | – |
+| Δ=4, Z_p ⋊ Z_k with k ≤ p, N above the table | none (best cost 2: Z31 ⋊ Z15, Z37 ⋊ Z12) | none for N = 1093–1870 (best 8) | squares groups p = 79, 83 fail | – |
 | Δ=4, F_q ⋊ C_k | 800 (F_25 ⋊ C16) | none for N = 1093–1700 (best cost 4: F_49 ⋊ C24, N = 1176) | none for N = 2486–2688 (partial; best 44 uncovered) | – |
 
 Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/frob_d4D8.txt`,
 `runs/affq_d4D7.txt`, `runs/affq_d4D8.txt`, `runs/affq_d4D9.txt`, `runs/d4D9_squares_p79_p83.txt`.
-The Δ = 3 rows are complete up to the Moore bound (§2.3 corollary).
+- The Δ = 3 rows are complete up to the Moore bound (§2.3 corollary; `frobcover.py` checks that every (p, k, r) is
+  present).
+- The Δ = 4 rows are not complete. `frob_scan.py` now restricts to k ≤ p, so groups with a large central part were
+  never scanned at Δ = 4: 809 of the 1,179 Z_p ⋊ Z_k with N = 1093–1870 are missing from `runs/frob_d4D8.txt`.
+  - Below N = 1200 they are covered by the all-groups screen (§6.2).
+  - Above that, the Loz-like ones are screened in §6.2 (`lozlike.py`).
+  - The rest have small action order.
 
 ## 3. Conjectured, with strong evidence
 
@@ -414,6 +420,12 @@ and in control groups of the same order that have no solution.
     F = 40 against a maximum of 41. In Z43 ⋊ Z7 the solutions spread over the top 71 %.
   - So |W_J| decides which groups can solve, while which S solves depends on collisions under reduction mod the
     prime 𝔭.
+- **The Δ = 4 records sit at the same N/B_j.** B_j = k · min_J |W_J| is the fibre bound at the record's own
+  j-pattern (`recordbound.py` → `runs/recordbound_d4.txt`).
+  - Loz's (4,9) Z71 ⋊ Z35 has N/B_j = 0.267, and our (4,10) Z97 ⋊ Z64 has 0.269.
+  - Loz's (3,9) Z23 ⋊ Z11 has 0.575, because the Δ = 3 bound is tighter: there is only one free a-part.
+  - If the Δ = 4 ratio is stable, B_j/N ≈ 3.7 is a usable target when choosing groups. Two data points are only
+    suggestive.
 - **A central involution.** The record groups of even order mostly have centre exactly C2 or containing one:
   - Conder's (3,7), our (3,8), all three (4,7) groups, Loz's (4,8), our (4,10) and (5,8);
   - but not PGL(2,5) × Z13 at (5,7) (centre Z13), nor our (5,10) group.
