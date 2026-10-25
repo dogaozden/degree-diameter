@@ -68,3 +68,25 @@ Runs still going at 15:20 (1 h each):
 - psl 59 x Z41, ORBW=5, seed 5: best 10.
 - psl 59 x Z41, ORBW=5 RESTART=1, seed 6: started 15:20 (jobs_E).
 - Stopped: psl 25 x Z541 (best 40, the weakest lead).
+
+### 17:05 UTC: NEW RECORD 8,418,120 (psl 59 x Z41, k=5 m=2 f=0), replaces 8,403,360
+
+- Seed 12 (ORBW=5 RESTART=1), solved at 226,153 evaluations (1,849 s, one thread). Log:
+  research/structured/runs/d10D9_round2/d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.log
+- Solution: research/frontier/sols/d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt. N = |PSL(2,59) x Z41| = 4,209,060,
+  2N = **8,418,120 vertices**, μ = 42.4, |Fix(α)| = 29.
+- Checks: haar_sym full diameter check OK (both normalisations); build_haar2.py VALID (8,418,120 vertices, 10-regular,
+  0 duplicate edges, edge-list sha256 4fd054322f8ab27f06f42e4673ca5ef6a302a9f258b150fd5a50a644f0d8ccd1).
+
+psl 59 x Z41, all runs (1 h each unless noted), ORBW and RESTART as listed:
+- ORBW=1 (round 1): seed 1 best 5, seed 2 best 8.
+- ORBW=5: seed 5 best 10; seed 9 best 2 (no solve); seed 11 best 11; seed 13 best 10.
+- ORBW=5 RESTART=1: seed 3 best 2; seed 6 best 10; seed 7 best 10; seed 8 best 10 (stopped at 1 h);
+  seed 10 best 10; seed 12 **solved**.
+- So 1 solve in 11 hour-long runs on this group. The solve is the only one in the ORBW=5 runs on this group.
+
+Dead ends this round: psl 19 x Z1231 (fix 9, best 112 after 9 min), sl 16 x Z1031 (fix 14, best 122 after 9 min),
+psl 25 x Z541 (fix 24, best 40 after 1 h). These came from the random screen (min 110 / 130 / 38) and their annealing
+never got near the others.
+
+Window for the next record: N > 4,209,060 (2N > 8,418,120).
