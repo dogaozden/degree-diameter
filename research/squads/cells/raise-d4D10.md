@@ -28,3 +28,14 @@ metacyclic × Z_n (n ≥ 2, order m·k·n) is a haar_gen3 family ("meta m k r n"
 
 ## Batch 2 (started 15:49 UTC): 1200 s re-anneals, seed 2, of the cost-2/3 near misses and the round-1 cost-1 N = 6394 candidate
   meta 209 15 26 2 (6270); meta 113 56 2 1 (6328); meta 301 21 4 1 (6321); meta 278 23 45 1 (6394). Log: logs/q2.tsv.
+
+## Batch 2 result (1200 s, seed 2): no solve
+- 6270 meta 209 15 26 2: cost 2. 6328 meta 113 56 2 1: cost 2. 6321 meta 301 21 4 1: cost 3. 6394 meta 278 23 45 1: cost 1.
+
+## Batch 3 (screen N = 6331–6420: 5,613 candidates; top 40 annealed 300 s, seed 1): no solve
+- Best: N = 6394 meta 139 46 6 1 (cost 1) and N = 6394 meta 139 23 6 2 (cost 1). The rest are cost 4 and up.
+- Order 6394 now has three specs stuck at cost 1 (meta 278 23 45 1 and the two above). This order is the best lead.
+- Log: logs/q3.tsv; screen: screen_6331_6420.tsv; queue: queue3.txt.
+
+## Batch 4 (started 17:00 UTC): 2400 s, seeds 2–3, the N = 6394 cost-1 specs
+  meta 139 46 6 1 (seeds 2, 3); meta 139 23 6 2 (seed 2); meta 278 23 45 1 (seed 3). Log: logs/q4.tsv.
