@@ -25,7 +25,7 @@
  * Usage: haar_lean d D seconds seed K outfile sl|psl p n
  * Env: ORBIT="k m f" (default "3 d/3 0" if 3 | d, else "3 (d-1)/3 1" or "3 (d-2)/3 2"), THREADS (candidates in
  *      parallel, one bitset pair each), TARGP (default 70), COOL (20), REHEAT (150), REHEATSTEPS (400), TMAX (1.5),
- *      TMIN (0.15), RESTART (0/1), ORBW (weight of an uncovered fixed element, default 1), UCAP (stored uncovered
+ *      TMIN (0.15), RESTART (0/1), EARLYB (1: bound each step's candidates by cost + 6.9 T k + 1), ORBW (weight of an uncovered fixed element, default 1), UCAP (stored uncovered
  *      elements, 65536), DENSEF (frontier size above which a level is done densely, default N/2048),
  *      AR (r on Z_n), ATRACE (trace of the conjugating element), LEVELS=1 (print ball sizes),
  *      RANDORB=m (cost statistics of m random symmetric S, no search; "units" = uncovered free alpha-orbits + uncovered
@@ -707,7 +707,7 @@ int main(int argc, char **argv) {
     double TMAX = getenv("TMAX") ? atof(getenv("TMAX")) : 1.5, TMIN = getenv("TMIN") ? atof(getenv("TMIN")) : 0.15;
     int TARGP = getenv("TARGP") ? atoi(getenv("TARGP")) : 70, ORBW = getenv("ORBW") ? atoi(getenv("ORBW")) : 1;
     long long REHEATSTEPS = getenv("REHEATSTEPS") ? atoll(getenv("REHEATSTEPS")) : 400;
-    int ORESTART = getenv("RESTART") ? atoi(getenv("RESTART")) : 0;
+    int ORESTART = getenv("RESTART") ? atoi(getenv("RESTART")) : 0, EARLYB = getenv("EARLYB") ? atoi(getenv("EARLYB")) : 0;
     tent *OTF[64][MAXD], *OTI[64][MAXD];
     for (int t = 0; t < K; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = xmalloc(sizeof(tent) * (size_t)R); OTI[t][i] = xmalloc(sizeof(tent) * (size_t)R); }
     long long *UNCS[64]; long long NUNCS[64]; for (int t = 0; t < K; t++) UNCS[t] = xmalloc(8 * (size_t)UCAP);
@@ -741,7 +741,9 @@ int main(int argc, char **argv) {
                 memcpy(cand[t], bo, sizeof(el) * OK_);
             } else { int ok; el x; do { x = FIXL[rnd() % NFIX]; ok = 1; for (int v = 0; v < d; v++) if (v != fs && geq(S[v], x)) ok = 0; } while (!ok); cand[t][0] = x; }
         }
-        long long bound = NOBOUND;
+        /* EARLYB: a candidate more than 6.9 T k above the current cost is accepted with probability < 1e-3, so its
+         * last level may stop there (most candidates then stop early) */
+        long long bound = EARLYB && ORBW <= 1 ? c + (long long)ceil(6.9 * T * OK_) + 1 : NOBOUND;
         #pragma omp parallel for schedule(dynamic, 1) if (nth > 1)
         for (int t = 0; t < K; t++) {
             int me = 0;
