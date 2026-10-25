@@ -34,7 +34,8 @@
  *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements), FIXF=1 (D = 10 only: screen each candidate on the
  *      alpha-fixed elements by meet in the middle, ~0.1 s, and fully evaluate only candidates with at most FIXMAX (0)
  *      fixed holes, trying up to FIXTRY (200) per candidate slot; with EVAL it compares the screen with the full count),
- *      BOUNDCUR=1 (once T is at TMIN, abort every candidate as soon as it is worse than the current S).
+ *      BOUNDCUR=1 (once T is at TMIN, abort every candidate as soon as it is worse than the current S), FIX2=1 (the
+ *      faster screen: s^-1 v x in X_4 instead of building Y_5).
  * Output: solution file in haar_gen3 format: "d D sl p n NCYC N NTOT" then d lines "<index> mat(a,b,c,d) z=Z",
  *      first generator e; checked independently by research/frontier/haarcheck_sl.c, haarcheck2.c (SL) and
  *      research/structured/tools/haarcheck_psl.c (PSL).  The current best S is also written to outfile.best after
@@ -146,6 +147,7 @@ static inline void prefetch_row(const u64 *C, u64 **tab, i64 w) {
 }
 /* one dense level: T = (S or S^-1) . C over all rows.  Per 512-bit chunk the d source windows are ORed in a register;
  * the doubled target row is built in a thread buffer and streamed out with non-temporal stores. */
+static int LEVPOP, CURLEV; static i64 POPC[64];   /* LEVPOP=1: count the elements of every pulled level */
 static void pull_level(const u64 *C, u64 *T, u64 **tab) {
     #pragma omp parallel num_threads(NTH)
     {
@@ -163,6 +165,9 @@ static void pull_level(const u64 *C, u64 *T, u64 **tab) {
                 _mm512_store_si512((void *)(acc + h), a);
             }
             acc[LW - 1] &= LASTMASK; for (i64 u = LW; u < LW8 + 8; u++) acc[u] = 0;
+            if (LEVPOP) { i64 pc = 0; for (i64 u = 0; u < LW; u++) pc += __builtin_popcountll(acc[u]);
+                #pragma omp atomic
+                POPC[CURLEV] += pc; }
             memcpy(rb, acc, 8 * LW); memset(rb + LW, 0, 8 * (RW - LW));
             if (!r) memcpy(rb + base, acc, 8 * LW);
             else {   /* second copy at bit L: word base + u = acc[u] << r | acc[u-1] >> (64 - r) */
@@ -286,6 +291,7 @@ static i64 cost(i64 bound, i64 *unc, int ucap, int *nunc) {
             LEV[lev] = n;
         } else {
             listmode = 0;
+            CURLEV = lev; POPC[lev] = 0;
             pull_level(BUF[cur], BUF[cur ^ 1], sideS ? PS : PI);
             cur ^= 1; LEV[lev] = -1;
         }
@@ -410,7 +416,40 @@ static inline el femul(el x, el y) {
     return canon(r);
 }
 static inline i64 fkey(el x) { return (i64)x.a | (i64)x.b << 9 | (i64)x.c << 18 | (i64)x.d << 27 | (i64)x.z << 36; }
+static i64 *HT3;
+static int fixholes2(const el *SS, int stopat) {
+    /* as fixholes, without building Y_5: v x in Y_5 = S X_4 iff s^-1 v x in X_4 for some s in S; X_4 (~54K elements)
+     * stays in cache and covered fixed elements exit at their first hit */
+    if (!BMP) BMP = (((u64)1 << 40) + P - 1) / P;
+    if (!HT3) HT3 = malloc(sizeof(i64) * HT2CAP);
+    el SI[MAXD]; for (int i = 0; i < d; i++) SI[i] = einv(SS[i]);
+    double tp0 = now();
+    memset(HT2, 0xff, sizeof(i64) * HT2CAP); NXL = 0;
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = femul(SI[a], SS[b]);
+        for (int c = 0; c < d; c++) { el abc = femul(ab, SI[c]);
+            for (int e4 = 0; e4 < d; e4++) { el x = femul(abc, SS[e4]); if (hadd(HT2, HT2CAP, fkey(x))) NXL++; } } }
+    double tp1 = now();
+    memset(HT3, 0xff, sizeof(i64) * HT2CAP); NVL = 0;
+    for (int a = 0; a < d; a++) for (int b = 0; b < d; b++) { el ab = femul(SS[a], SI[b]);
+        for (int c = 0; c < d; c++) { el abc = femul(ab, SS[c]);
+            for (int e4 = 0; e4 < d; e4++) { el v = femul(abc, SI[e4]); i64 iv = fkey(v);
+                if (!hadd(HT3, HT2CAP, iv)) continue;
+                el w = v; int rep = 1;
+                for (int k = 1; k < OK_ && rep; k++) { w = alpha(w); if (fkey(w) < iv) rep = 0; }
+                if (rep) VL[NVL++] = v; } } }
+    double tp2 = now(); i64 tries = 0;
+    int holes = 0;
+    for (int f = 0; f < NFIX && holes < stopat; f++) {
+        int hit = 0;
+        for (int i = 0; i < NVL && !hit; i++) { el y = femul(VL[i], FIXE[f]);
+            for (int s = 0; s < d && !hit; s++) { tries++; hit = hhas(HT2, HT2CAP, fkey(femul(SI[s], y))); } }
+        if (!hit) holes++;
+    }
+    if (getenv("FIXPROF")) fprintf(stderr, "fixholes2: X4 %d %.4fs, V4 %d %.4fs, checks %lld %.4fs\n", NXL, tp1 - tp0, NVL, tp2 - tp1, (long long)tries, now() - tp2);
+    return holes;
+}
 static int fixholes(const el *SS, int stopat) {   /* number of alpha-fixed holes of S (stops counting at stopat) */
+    if (P < 512 && NC < ((i64)1 << 27) && getenv("FIX2")) return fixholes2(SS, stopat);
     if (P < 512 && NC < ((i64)1 << 27)) {
         if (!BMP) BMP = (((u64)1 << 40) + P - 1) / P;
         el SI[MAXD]; for (int i = 0; i < d; i++) SI[i] = einv(SS[i]);
@@ -558,7 +597,7 @@ int main(int argc, char **argv) {
     PUSHMAX = (i64)1 << 24; if (NG * (i64)d / 512 < PUSHMAX) PUSHMAX = NG * (i64)d / 512;   /* push ~ 8 word ops per bit-set */
     if (getenv("PUSHMAX")) PUSHMAX = atoll(getenv("PUSHMAX"));
     if (getenv("UCAP")) UCAP = atoi(getenv("UCAP"));
-    BENCH = getenv("BENCH") ? atoi(getenv("BENCH")) : 0;
+    BENCH = getenv("BENCH") ? atoi(getenv("BENCH")) : 0; LEVPOP = getenv("LEVPOP") ? atoi(getenv("LEVPOP")) : 0;
     double tset = now();
     for (int b = 0; b < 2; b++) { BUF[b] = aligned_alloc(64, (size_t)(R * RW * 8)); if (!BUF[b]) { fprintf(stderr, "out of memory\n"); return 2; } }
     LISTCAP = PUSHMAX + 64; LIST = malloc(sizeof(i64) * LISTCAP);
@@ -630,6 +669,7 @@ int main(int argc, char **argv) {
             for (int j = OF; j < d; j++) make_tables(j);
             int nu; v[t] = cost(NOBOUND, ULIST[0], UCAP, &nu); sm += v[t];
             fprintf(stderr, "RANDORB sample %d cost %lld (%.1fs) zq %.3f", t, (long long)v[t], now() - t0, zq(S, W / NG));
+            if (LEVPOP) fprintf(stderr, " pop7 %lld pop8 %lld", (long long)POPC[7], (long long)POPC[8]);
             if (FIXF) { int fu = 0; for (int i = 0; i < nu; i++) { el x = eofidx(ULIST[0][i]); if (eeq(alpha(x), x)) fu++; }
                 fprintf(stderr, " fixed holes: full %d screen %d%s", fu, fixholes(S, 1 << 30), nu >= UCAP ? " (list capped)" : ""); }
             fprintf(stderr, "\n");
