@@ -35,3 +35,19 @@ M = 2I + A with MMᵀ = MᵀM = kI + 2J, W the signed A with WWᵀ = gI.
   13 squares form a quadrangulated sphere (15 vertices, 26 edges, 13 faces, Euler characteristic 2); adding their
   equations gives 0 = 1.
 - CEGAR (`cegar.py 9`): two cuts (15 and 9 squares) and the A-only instance becomes UNSAT, 2 s in total.
+
+## More facts (k = 11 unless said)
+
+8. A is normal, its real eigenvalues are 9 and possibly −2 ± √11 (the only real points of |λ+2|² = 11), and complex
+   eigenvalues come in conjugate pairs with conjugate eigenvectors. So the undirected graph G = A + Aᵀ has
+   characteristic polynomial (x − 18)(x² + 8x − 28)^r · h(x)² with h ∈ Z[x] (every eigenvalue other than 18 and
+   −4 ± 2√11 has even multiplicity).
+9. Local 2-factor lemma at every vertex, in all four directions. For y ∈ R(u), its in-neighbours inside R(u), read
+   as pairs of O(u), form a 2-regular graph on O(u) \ (P_y ∪ {x : x → y}). So the number c_y of in-neighbours of y
+   in O(u) is in {0,1,2,3,4,7}; likewise a_y = |O(y) ∩ I(u)| ∈ {0,1,2,3,4,7}, and |N⁻(z) ∩ O| ∉ {7,8}.
+10. Counting at a vertex u (t = number of arcs O→I = directed triangles through u):
+    Σ_x C(α_x,2) + Σ_y C(a_y,2) = 72 and Σ_z C(β_z,2) + Σ_y C(c_y,2) = 72, with Σα = Σβ = t and
+    Σa = Σc = 81 − t. Convexity then gives t ≤ 39.
+11. Sub-cases run with kissat (`subcase.py`): B 4-regular at vertex 0 (t = 36) is UNSAT (195 s). "B has 36 arcs" and
+    "rows of B have 4 ones" were not finished in 30 and 25 CPU-minutes, so fixing the column sums is what makes a
+    sub-case easy. B 3-regular (t = 27): running.

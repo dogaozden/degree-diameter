@@ -4,7 +4,8 @@ exactly r in-neighbours in O (B is r-regular). A SAT answer is an oriented graph
 UNSAT only excludes this sub-case. Uses the same lex-leader clauses as enc_quot.py --sym --nf2 --alltr; that is sound
 because both sub-case constraints are invariant under relabelling O and I.
 usage: subcase.py k r out.cnf        (B r-regular)
-       subcase.py k t:T out.cnf      (B has exactly T arcs, i.e. T directed triangles through vertex 0)"""
+       subcase.py k t:T out.cnf      (B has exactly T arcs, i.e. T directed triangles through vertex 0)
+       subcase.py k row:r out.cnf    (every row of B has r ones; columns free)"""
 import sys
 from pysat.card import CardEnc, EncType
 from enc_quot import build
@@ -12,7 +13,11 @@ from enc_quot import build
 k = int(sys.argv[1]); spec = sys.argv[2]; g = k - 2
 cnf, pool, a = build(k, sym=True, nf2=True, ntt=True, alltr=True)
 O = list(range(1, g + 1)); I = list(range(g + 1, 2 * g + 1))
-if spec.startswith('t:'):
+if spec.startswith('row:'):
+    r = int(spec[4:])   # only the row sums (out-degree of each x in O into I) fixed to r; column sums free
+    for x in O:
+        cnf.extend(CardEnc.equals([a[x, z] for z in I], bound=r, vpool=pool, encoding=EncType.seqcounter).clauses)
+elif spec.startswith('t:'):
     T = int(spec[2:])
     cnf.extend(CardEnc.equals([a[x, z] for x in O for z in I], bound=T, vpool=pool, encoding=EncType.totalizer).clauses)
 else:
