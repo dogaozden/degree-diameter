@@ -62,3 +62,10 @@ Screen: `orb_screen.py 10 9 4001929 4060000 "3 3 1" --fams sl,psl,pgl --samples 
 - 08:50 UTC: psl 31 x Z281 (k=5 f=0, μ 39.0) solved on its first seed at 88,921 evaluations: 8,362,560 vertices.
   Stopped as obsolete: psl 49 x Z71 (N = 4,174,800, best 6), psl 29 x Z343 (k=3, N = 4,177,740, best 30), prod psl 5 psl 9 x Z193
   (k=3, N = 4,168,800, best 38).
+- 09:00–10:00 UTC: the rung N > 4,181,280 (2N > 8,362,560). One hour, one seed each, no solution:
+  - sl 41 x Z61, k=5 f=0 (N = 4,201,680, μ 41.5): best 2 (616,689 evals)
+  - pgl 41 x Z61, k=5 f=0 (same N): best 13
+  - psl 59 x Z41, k=5 f=0 (N = 4,209,060, μ 42.4): best 8
+  - psl 61 x Z37, k=3 f=1 (N = 4,198,020, μ 41.0): best 12
+  Next round (started 09:55 UTC): sl 41 x Z61 k=5 seeds 2 and 3, psl 59 x Z41 k=5 seed 2, psl 31 x Z283 k=3 seed 1 (μ 42.7).
+  Logs in the scratchpad (out/) and not yet in the repo unless a run solves.
