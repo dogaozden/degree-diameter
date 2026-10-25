@@ -22,7 +22,8 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    as the rule says), but there are too few sets. The order-2 spaces (three orbits of 2) are much larger:
    2.68·10⁶ classes for the Frobenius involution, of which exactly one is a solution, and 3.42·10⁷ for the
    conjugation involution, of which about 40–60 are (17 valid sets in 10⁷ uniform samples, 14 distinct classes).
-   This makes the first session's point 3 exact. It replaces the twisted-cycle "charge" as the explanation.
+   This makes the first session's point 3 exact. The twisted cycles (point 3 below) explain why order 2 is not ruined
+   by its involution. They do not explain why it beats order 3.
 2. **The gap in BEYOND_RANDOM is "self-averaging".** BEYOND_RANDOM §4.2 computed the mean word loss of an involution,
    δ ≈ ρℓ²/8 with ρ ≥ 1/|Fix(β)|. For both (6,8) winners (ρ ≈ 1/24, ℓ = 7) that is about 25 % of the binding words,
    which would be fatal. The mean is right. What fails is the next step: "each even subword is an essentially fresh
@@ -35,15 +36,17 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    - twisted 12-cycles: mean 65–80, each nearly free (0.06 % of the words).
 
    BEYOND_RANDOM's estimate gives P(valid) ≈ e^{−72} for conjugation on SL(2,25); the measured value is e^{−13.3}.
-3. **What the twisted cycles do not do (second session).** The first session's rule charges a symmetry
-   Σ R_j(1 − e^{−x_j}) nats for avoiding its twisted cycles and read the four-way test at (6,8) as confirming it
-   (Frobenius 5/6 seeds, conjugation 2/6). The solution counts say otherwise. Measured P(valid) per random symmetric
-   set is 1.7·10⁻⁶ = e^{−13.3} for conjugation and 3.7·10⁻⁷ = e^{−14.8} for Frobenius. The charged rule predicted
-   e^{−23.8} and e^{−22.0}: about 10 and 7 nats too pessimistic, and in the wrong order. Conjugation has more
-   solutions, not fewer, although the annealer found the single Frobenius class more often. So the charge
-   is not a statement about how many solutions exist. The 5/6 against 2/6 anneal difference is not significant (Fisher
-   p = 0.12) and may be a landscape effect: the conjugation space has 118 near misses (cost 1–3) per 17 solutions in
-   10⁷ samples, the Frobenius space none (§3.4).
+3. **What the twisted cycles cost, measured (second session).** The first session's rule charges a symmetry
+   Σ_j R_j(1 − e^{−x_j}) nats for its twisted cycles and read the four-way test at (6,8) as confirming it. Counting
+   solutions in 10⁷ uniform samples per symmetry (§3.4) gives a sharper picture.
+   - **Short cycles: paid, as avoidance.** On PSL(2,11)×Z24, doubling the twisted-cycle density (r = 23 instead of
+     11) empties the lower tail: no set below cost 9, against 2 solutions and 450 sets of cost ≤ 8.
+   - **Long cycles and the absolute level: not as charged.** One formula fits all four order-2 spaces to within
+     0.4 nats: P(valid) ≈ P(no twisted 4- or 8-cycle)·e^{−(μ_A⁰ − 6)}. The charged rule is 7–10 nats too
+     pessimistic.
+   - **It gets one comparison backwards.** On SL(2,25), conjugation has 4.6 times the solution density of Frobenius
+     (≈ 50 classes against 1), although the annealer found the Frobenius class more often (5/6 seeds against 2/6,
+     Fisher p = 0.12).
 4. **Even D matters for order 2, and odd D allows order 6 (second session).** At odd D each side's word set is
    inverse-closed, so β* = ι∘β is a symmetry and every element of Anti(β) is a target whose words come in pairs:
    missed at rate √p instead of p. The first session concluded that even orders are excluded at odd D. That holds for
@@ -58,10 +61,10 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
 5. **The fixed points are not the issue** at D = 8: 24 fixed points cost 24·e^{−λ/2} ≈ 1.1 missed elements.
 6. **Corrected rule** (§4). Count uncovered clumps, μ_A = μ/k + Σ_H (fixed points of H at e^{−λ/|H|}) + [odd D]
    (Anti elements of each involution at e^{−λ/2−π}, π = palindromic shots); prefer the symmetry with the smallest μ_A,
-   **provided its orbit space has enough classes**. Roughly, ln(#classes) must exceed μ_A by a margin. Twisted
-   cycles matter only through which sets are solutions, not how many. The rule ranks symmetries for an annealing
-   search. Its absolute P(valid) = e^{−μ_A} can be off by several nats (2.7 and 5.4 nats too pessimistic for the two
-   order-2 spaces at (6,8)), so at small N measure the space directly: 10⁷ samples cost 13 minutes.
+   **provided its orbit space has enough classes**. Roughly, ln(#classes) must exceed μ_A by a margin.
+   Short twisted cycles (μ_A⁰λc_j ≳ 1) are paid as avoidance, −ln P(none); long ones are free. The absolute
+   P(valid) = e^{−μ_A} was about 6 nats too pessimistic at (6,8), so at small N measure the space directly: 10⁷
+   samples cost 4–13 minutes.
 7. **Prediction tested: even orders win at even D when every involution in ⟨α⟩ has a large centralizer.** Order 6
    (the Frobenius x ↦ x² of GF(64), whose cube x ↦ x⁸ is an involution fixing SL(2,8)) on the (13,8) record group
    SL(2,64)×Z13:
@@ -330,11 +333,16 @@ space contain a solution at all? At N = 15,600 the spaces are small enough to me
 counts into class counts. All on SL(2,25), (6,8), f = 0 (`runs/r2/`, `out/classes68/`; the order-3 sample of
 2·10⁷ is STRUCTURE's `research/structured/runs/d6D8_sl_25_1_orb3f0_rand.log`):
 
-| symmetry | symmetric sets | class size | classes | valid classes | P(valid) per set | rule μ_A⁰ → P | charged μ_A → P |
-|---|---|---|---|---|---|---|---|
-| order 3, conjugation (two orbits of 3) | 1.348·10⁷ | 1,536 | 8,773 | **0** (best cost 2) | 0 | 12.9 → 2.5·10⁻⁶ (0.02 classes) | – |
-| order 2, Frobenius x ↦ x⁵ | 7.725·10¹⁰ | 28,800 | 2.68·10⁶ | **1** | 3.7·10⁻⁷ (e^{−14.8}) | 20.2 → 1.7·10⁻⁹ | 22.0 → 2.8·10⁻¹⁰ |
-| order 2, conjugation (trace 0) | 7.870·10¹⁰ | 2,304 | 3.42·10⁷ | **≈ 40–60** | 1.7·10⁻⁶ (e^{−13.3}) | 16.0 → 1.1·10⁻⁷ | 23.8 → 4.6·10⁻¹¹ |
+| symmetry | symmetric sets | class size | classes | valid classes | P(valid) per set (−ln) | μ_A⁰ | avoid 4-, 8-cycles | μ_A⁰ + avoid − 6 | charged μ_A |
+|---|---|---|---|---|---|---|---|---|---|
+| SL(2,25), order 3, conjugation (two orbits of 3) | 1.348·10⁷ | 1,536 | 8,773 | **0** (best cost 2) | 0 | 12.9 | – | – | – |
+| SL(2,25), order 2, Frobenius x ↦ x⁵ | 7.725·10¹⁰ | 28,800 | 2.68·10⁶ | **1** | 3.7·10⁻⁷ (14.8) | 20.2 | 0.84 | 15.0 | 22.0 |
+| SL(2,25), order 2, conjugation (trace 0) | 7.870·10¹⁰ | 2,304 | 3.42·10⁷ | **≈ 40–60** | 1.7·10⁻⁶ (13.3) | 16.0 | 3.35 | 13.4 | 23.8 |
+| PSL(2,11)×Z24, conjugation, z ↦ 11z | 8.239·10¹⁰ | – | – | – | 2·10⁻⁷ (15.4; 14.1–17.5) | 17.7 | 3.24 | 15.0 | 25.9 |
+| PSL(2,11)×Z24, conjugation, z ↦ 23z | 8.239·10¹⁰ | – | – | – | < 3·10⁻⁷ (> 15.0); no set below cost 9 | 17.7 | 5.8 | 17.5 | 34.2 |
+
+"avoid 4-, 8-cycles" is −ln P(a random symmetric set has no twisted 4- or 8-cycle), taken from the census of §3.1
+(3.5 %, 3.9 % and 0.3 %) and from Poisson for Frobenius (R₁ + R₂ = 0.06 + 0.78).
 
 How each entry was measured:
 - **Order 3.** 10⁶ uniform samples (`runs/r2/nearmiss6_k3_sl25.log`). A class of 1,536 sets is hit Poisson(114)
@@ -353,18 +361,30 @@ How each entry was measured:
   14 distinct classes. From P(valid) and the class size that is 58 classes; capture–recapture on 14 of 17 gives about
   40. The two anneal solutions s3 and s4 of §5.4 are different classes (no map between them), and the table-squad's
   record is one of the 14.
+- **PSL(2,11)×Z24.** 10⁷ uniform samples for each r (`runs/r2/ro68_psl11x24_r{11,23}_1e7.log`). With r = 11:
+  2 solutions, and 450 sets of cost ≤ 8. With r = 23, which doubles Anti and so the twisted-cycle density: no
+  solution and no set below cost 9; p1 is 60 against 31.
 
 What this shows:
 1. **Order 3 lost at (6,8) because its space is too small, not because order 2 is cheap.** Per set, order 3 is better:
    its rate of sets with cost ≤ 6 is 6.8·10⁻⁴, against 1.6·10⁻⁴ for conjugation and 7·10⁻⁶ for Frobenius. Its
    space simply has 4,000 times fewer classes than conjugation's, and its rule value predicts 0.02 solution classes.
-2. **The charged rule is wrong about existence.** It predicts a P(valid) e^{1.8} times lower for conjugation
-   (ρ = 1/24) than for Frobenius (ρ = 1/120). The opposite holds: 4.6 times higher. Its absolute levels are 7 and 10
-   nats too pessimistic. The uncharged rule gets the order of the two right, but is still 2.7 and 5.4 nats too pessimistic.
+2. **The charge is half right.** One offset fits all four order-2 spaces:
+   P(valid) ≈ P(no twisted 4- or 8-cycle) × e^{−(μ_A⁰ − 6)}. Measured against this model:
+   conjugation 13.3 against 13.4, Frobenius 14.8 against 15.0, r = 11 15.4 against 15.0 (in −ln P), and r = 23 with
+   0.25 expected hits and none seen. The short cycles are paid as avoidance, as the first session said. They are
+   expensive, μ_A⁰λc_j ≈ 40 and 2 for 4- and 8-cycles, so a solution must have none or nearly none (§3.1). Two other
+   things in the charged rule do not show:
+   - the long cycles' charge, Σ_{cheap j} R_j(1 − e^{−x_j}) ≈ 4.5 nats for conjugation, 1 for Frobenius. With it,
+     the fit spreads over 3 nats;
+   - its absolute level: the Poisson baseline e^{−μ_A⁰} is about 6 nats too pessimistic at the extreme tail (item 3).
+
+   On SL(2,25) the fixed points (120 against 24, 4.2 nats) outweigh the avoidance difference (2.5 nats). So conjugation
+   has 4.6 times the solution density of Frobenius, the reverse of the charged rule's order.
 3. **The lower tail is much fatter than Poisson.** Conjugation: P(cost 0)/P(cost 2) = 17/66 in the sample. A Poisson
    clump count with mean 16 would give 1/16. Frobenius: the one solution class is isolated, with no set of cost 1–3 in
-   10⁷ samples and the next classes at cost 4. So e^{−μ_A} is a poor estimate of P(valid). The effort law, calibrated
-   on anneals, is a separate empirical statement.
+   10⁷ samples and the next classes at cost 4. So e^{−μ_A} is a poor estimate of P(valid), here by about 6 nats. The
+   effort law, calibrated on anneals, is a separate empirical statement.
 4. **Anneal success is not existence.** The annealer found the single Frobenius class in 5 of 6 seeds and the ~50
    conjugation classes in 2 of 6 (§5.4). Plain random sampling finds a conjugation solution every 45 s, ten times
    faster than those anneals (2 in 900 s). For Frobenius the anneals were 4 times faster than sampling.
@@ -406,11 +426,11 @@ with π_β = P_ℓ·|Fix(β)|/N palindromic shots (§2.8, §3.5). Anti(β) is ta
   small, count instead: sample the space and group the near misses into classes.
 - **Twisted cycles** (even and odd D, any involution in ⟨α⟩). A solution keeps n* = R_j·e^{−μ_A⁰λc_j} twisted
   4j-cycles, where R_j = ρ_β Δ(Δ−1)^{2j−1}/(4j) and c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}) (§3.1). This holds on 6 anneal
-  solutions and 17 uniform ones. The first session also charged a symmetry Σ_j R_j(1 − e^{−μ_A⁰λc_j}) nats, or a
-  penalty factor for families with R_j > R* ≈ 5. **That charge is withdrawn as a statement about P(valid)** (§3.4). It
-  did predict the order of the four-way anneal at (6,8) (§5.4). Keep it, if at all, as a tie-breaker for anneal
-  effort between involutions at small Δ. `rule.py` still prints it (column gfnat), and the first session's table
-  (`out/rule_table.txt`) is unchanged.
+  solutions and 17 uniform ones. Charge the families with x_j = μ_A⁰λc_j ≳ 1 their avoidance price,
+  −ln P(no such cycle), which is ≈ Σ R_j for Poisson counts (§3.4). Do not charge the cheap long families: the first
+  session's R_j(1 − e^{−x_j}) for them (≈ 4.5 nats for conjugation at (6,8)) is not seen in the solution counts.
+  `rule.py` still prints the first session's full charge (column gfnat), and its table (`out/rule_table.txt`) is
+  unchanged.
 
 `order2/rule.py` implements both forms: `python3 rule.py` prints the first session's 24 cases (`out/rule_table.txt`)
 and `python3 rule.py --second` the odd-D cases with the palindrome term (`out/rule_table2.txt`).
@@ -429,8 +449,8 @@ In words:
      (2/k)|Fix(β)|e^{−λ/2} ≈ (2/k)√μ.
    - So order 2 never beats order 3 at odd D (μ/2 + √μ > μ/3), but **order 6 does** (μ/6 + √μ/3 < μ/3 once μ ≳ 15).
      The first session's "with k = 3 available, no even order should be used at odd D" is withdrawn for k ≥ 6.
-4. **Even D:** no Anti term. An involution's twisted cycles are a Poisson field with means R_j ∝ ρ(Δ−1)^{2j}; the
-   search avoids the short ones. They decide which sets are solutions, not whether any exist (point 5 below).
+4. **Even D:** no Anti term. An involution's twisted cycles are a Poisson field with means R_j ∝ ρ(Δ−1)^{2j}.
+   Solutions avoid the short ones, which costs −ln P(none) ≈ Σ_{short} R_j. The long ones are free.
 5. **Space:** a symmetry is usable only if its orbit space has enough classes (existence condition above). At small
    Δ and small N this, not μ_A, decides. That is why order 2 beat order 3 at (6,8).
 
@@ -440,8 +460,8 @@ How well it predicts:
   (7,8), (8,8), (9,8). The order-6 runs at (13,8) are predicted to within their scatter.
 - `out/rule_table2.txt`: at odd D the rule orders order 6 < order 3 < order 2 < random correctly on SL(2,64) and
   SL(2,8)² at (12,7), and order 6 < order 3 on SL(2,64)×Z403 at (15,9).
-- At (6,8) the rule, with or without the charge, misjudges P(valid) by several nats (§3.4). The four-way anneal test
-  (§5.4) follows the charged ranking, but the solution counts do not.
+- At (6,8) the absolute level e^{−μ_A⁰} is about 6 nats pessimistic. With the short-cycle avoidance price and that one
+  offset, the rule fits all four order-2 spaces to within 0.4 nats (§3.4).
 
 ### 4.1 Choosing a symmetry: a checklist for future searches
 
@@ -649,15 +669,17 @@ term. "μ_A⁰" is without it, and "+ charge" adds the generating-function charg
 
 ### 5.3 Where else order 2, or another even order, should win
 
-By the rule, an even order beats order 3 only if both of these hold:
-- D is even;
-- either the order-3 orbit space is starved (two orbits at small N) and the involution's 8-cycles are avoidable
-  (R₂ = ρΔ(Δ−1)³/8 ≲ 5, i.e. |Fix(β)| ≳ 20, 40, 70 for Δ = 6, 7, 8), or the even order is larger than 3 with
-  bounded fixed-point costs (Frobenius or swap type, checklist §4.1).
+By the rule (second-session form), an even order beats order 3 in one of two ways:
+- **order 2**, at even D only, where the order-3 space is starved. Two orbits at small N leave too few classes to
+  contain a solution (§3.4). The involution's 8-cycles must also be avoidable: R₂ = ρΔ(Δ−1)³/8 ≲ 5, i.e.
+  |Fix(β)| ≳ 20, 40, 70 for Δ = 6, 7, 8;
+- **order 6 or more**, with bounded fixed-point costs (Frobenius or swap type, checklist §4.1), at even D, or at odd D
+  if the involution α^{k/2} is tight and balanced (§3.5, §5.5).
 
 Going through the table:
 - **Order 2:** only (6,8). At (6,10), (7,8), (8,8) and (9,8) order 3 has room. There μ/2 against μ/3 is 2–8 nats of
-  μ_A, which matches the squad's failures (`out/rule_table.txt`). At odd D: never (§3.2).
+  μ_A, which matches the squad's failures (`out/rule_table.txt`). At odd D: never (μ/2 + √μ > μ/3 even with
+  palindromes, §3.5).
 - **Order 4:** needs a Frobenius of order 4 (SL(2,16), SL(2,81)) or conjugation by an element whose square has a
   large centralizer. Near the records, the cyclic factors either have no automorphism of order 4 (primes ≡ 3 mod 4)
   or leave α² trivial on them, which puts thousands of elements in Fix(α²). Checked by hand: (8,8), (9,8), (8,10),
@@ -666,14 +688,16 @@ Going through the table:
 - **Order 6:** needs Δ ≥ 12 for two orbits.
   - (12,8), (14,8) and (16,8) are above the first-moment ceiling even with μ/6.
   - (13,8): done (§5.2), and (15,8) with the mixed layout 6+6+3 (§5.2b).
+  - Odd D, Δ ≥ 12: (15,9) on SL(2,64)×Z403 and (13,9) on SL(2,64)×Z133 (§5.5).
   - The D = 10 cells need groups of order about 10⁸–10⁹. The Frobenius type SL(2,729) is 16 % too big for (13,10),
     but the swap type fits: SL(2,16)²×Z21, below.
 - **Order 8 and up:** needs Δ ≥ 16 for two orbits; no candidate group.
 - **(13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ 5z), r of order 6 (Z21 = Z3 × Z7). The
   random symmetric screen (16 samples, `runs/ro1310_sl16sq_21_k6.txt`) gives min 23 and p10 26 at μ = 35.5. That is
-  4.3 clumps, better than SL(2,64)×Z13 (6.2), which solved in about 10⁴ evaluations. Anneal (2 threads, 0.57 s per
-  evaluation, 4-hour budget): RESULT-1310.
-  - N = 349,574,400, so 699,148,800 vertices, +4.7 % over our 667,903,200.
+  4.3 clumps, better than SL(2,64)×Z13 (6.2), which solved in about 10⁴ evaluations. The first session's anneal was
+  cut off. Second session: RESULT-1310.
+  - N = 349,574,400, so 699,148,800 vertices, +3.2 % over the current record 677,714,400 (+4.7 % over the
+    667,903,200 of the first session).
   - μ = 36.4. The rule gives μ_A ≈ 9.1 for order 6 (fixed points 3.0) against ≈ 13 for order 3 at the same N, which is
     about 7× fewer evaluations.
   - The effort law predicts about 1.4·10⁴ evaluations. At about 1.2 s each (the (13,10) record run took 1.1 s per

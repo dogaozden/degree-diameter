@@ -2,3 +2,8 @@ group psl 11 x Z_24, N=15840, identity 1320, H order 60, rows 264, threads 1, se
 wide rows: HW order 132, rows 120, setup 0.01s
 alpha: conj by mat(5,1,7,6) (index 557), z -> 11 z on Z_24
 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 33.29, mu/k = 16.64, fixed-point misses ~ 1.10
+NEAR sample 2662329 cost 0 S: 14494 mat(5,5,9,7) z=22 5690 mat(2,5,6,10) z=2 399 mat(0,2,5,5) z=15 5397 mat(2,4,4,3) z=21 14891 mat(5,7,4,8) z=11 15697 mat(5,10,5,8) z=1 | uncovered:
+NEAR sample 9836091 cost 0 S: 3429 mat(1,7,10,5) z=21 7863 mat(3,2,8,2) z=15 6502 mat(2,8,6,8) z=22 5306 mat(2,4,1,8) z=2 15755 mat(5,10,7,1) z=11 673 mat(0,3,7,6) z=1 | uncovered:
+RANDORB d=6 D=8 group=psl 11 x Z_24 N=15840 k=2 m=3 f=0 fix=23 samples=10000000 min=0 p1=31 p10=70 median=564 mean=3198.40 var=17382482.4 mu=33.29 time=237.1
+RANDORB hist (cost/k): 2 7 46 158 417 822 1617 2595 3996 5888 8136 10724 13454 16746 20126 23246 26911 29975 32796 36393 39345 41450 43701 45585 47514 48975 50184 51675 52042 52544 53838 9239092
+RANDORB cost0=2 of 10000000 (P=2e-07); cost counts 0..8: 2 0 5 2 21 25 83 75 237
