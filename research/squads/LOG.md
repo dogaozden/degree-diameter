@@ -55,8 +55,8 @@ definitions (research/squads/d16D10-r2/checker/hcheckpsl.c). 27/27 verdicts and 
 haarcheck_psl on 7 valid and 20 corrupted files; 400/400 random instances agree with a naive BFS. At N = 2.3e9 it takes
 ~340 s on one core against ~3,100–3,600 s for haarcheck_psl, so it became the first check of every (16,10) find
 (Opus read the code: canonical index, edges, labels and the VALID condition are right). Kept.
-Outcome of the job (17:30 UTC): (16,10) 4,708,566,360 (PSL(2,179) × Z821, μ 59.4; hcheckpsl VALID, haarcheck_psl
-running), after 4,547,938,800 → 4,582,366,800 → 4,605,636,480 → 4,630,986,360 → 4,675,313,280 the same afternoon.
+Outcome of the job (18:18 UTC): (16,10) 4,708,566,360 (PSL(2,179) × Z821, μ 59.4; hcheckpsl VALID, haarcheck_psl
+VALID), after 4,547,938,800 → 4,582,366,800 → 4,605,636,480 → 4,630,986,360 → 4,675,313,280 the same afternoon.
 Squad contribution, honestly: round 2 found nothing itself but confirmed the shape rules within the hour; the checker
 card made verification ~10× cheaper, which freed a core for the search. The finds came from Opus's FIXF screen and
 the group-shape screen.
