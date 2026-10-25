@@ -97,3 +97,28 @@ Running: sl 47 × 169 seeds 2 and 3 (3600 s), psl 73 × 91, sl 43 × 223.
 Reading: at μ ≥ 25 the success rate per 40-minute run fell well below one in five across these groups; the sl 71 × 49 success
 (μ 25.3, seed 2) came from one of two seeds and was the last success. This is consistent with the STRUCTURE.md wall (cost falls
 slowly past μ ≈ 25; each further +1 in μ needs several times more evaluations).
+
+## Final state (stopped 13:16 UTC, about 5h35m of the 6-hour allowance)
+
+**Record: 35,068,320 vertices** = 2 · |SL(2,71) × Z49|, k = 3, m = 4, f = 0 (sol file `d12D9_sl_71_49_orb3f0_s2.txt`), checked
+by haarcheck_sl and haarcheck2 (both VALID). Previous record in this session chain: 34,026,720 (SL(2,41) × Z247).
+
+Steps: 34,264,920 (psl 61 × 151) → 34,677,888 (sl 97 × 19) → 34,710,480 (psl 71 × 97) → 35,068,320 (sl 71 × 49). Table 30,001,152.
+
+**Unsolved above the bar (N > 17,534,160), with best cost and μ, all k=3 m=4 f=0, 40–60 min each:**
+- sl 47 × Z169 (N 17,538,144, μ 25.4): five seeds, best 6, 8, 6, 8, 10 (seed 3 at 46k evals).
+- psl 73 × Z91 (N 17,696,952, μ 28.9): three seeds, best 6, 11, 9 (53–55k evals each).
+- sl 43 × Z223 (μ 29.5): best 12 (38k evals). sl 83 × Z31 (μ 29.5): best 8 (37k evals). sl 37 × Z349 (μ 28.2): best 36 (stopped).
+- Not checkable here, not run beyond one attempt: pgl 47 × Z169 (killed), sl 64 × Z67 (GF(64), killed), pgl 71 × Z49 (killed; N ties the bar).
+
+**Ruled out / not used:** random-sample screening with orb_screen.py (≈0.5 s per sample, too slow for ~60 groups); haar_gen3-evaluator groups
+(psl 43 × 439, psl 47 × 337 seed 2: slower, both stalled at cost 18).
+
+**What I think is stuck:** above μ ≈ 25 the orbit annealing at this order is seed-dependent, roughly one solve per 3–5 runs of
+40 min at μ 21–25, and none in the μ 28–30 runs. Each further gain needs a larger budget per cell, or a new group family
+(for example, a PGL or GF(q) checker so pgl and sl 64 groups can be used), not more seeds of the same groups.
+
+**What would settle it next:** (1) a PGL(2,p) × Z_n checker (haarcheck_psl-style) so pgl 47 × 169, pgl 37 × 343 and pgl 71 × 49
+(tied) become usable; (2) longer runs (2–4 h) on sl 47 × 169 and psl 73 × 91 with fresh seeds; (3) a GF(2^6) checker for sl 64 × 67 (μ 25.9).
+
+No Haar solution above 35,068,320 was found. All verified solutions are in research/frontier/sols/d12D9_*.

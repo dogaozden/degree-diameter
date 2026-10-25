@@ -1,0 +1,86 @@
+group psl 71 x Z_97, N=17355240, identity 241045, H order 36, rows 482090, threads 1, setup 0.78s
+wide rows: HW order 194, rows 89460, setup 1.44s
+alpha: conj by mat(2,41,31,68) (index 10468), z -> 35 z on Z_97
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 35 (+e); mu = 21.82, mu/k = 7.27, fixed-point misses ~ 0.78
+start cost=119
+t=31 steps=36 evals=289 cost=18 best=18 T=0.52
+t=61 steps=77 evals=617 cost=15 best=15 T=0.18
+t=92 steps=117 evals=937 cost=15 best=15 T=0.15
+t=122 steps=157 evals=1257 cost=15 best=15 T=0.15
+t=152 steps=193 evals=1545 cost=15 best=15 T=0.15
+t=183 steps=230 evals=1841 cost=15 best=15 T=0.15
+t=213 steps=266 evals=2129 cost=15 best=15 T=0.15
+t=243 steps=300 evals=2401 cost=12 best=12 T=0.15
+t=274 steps=336 evals=2689 cost=12 best=12 T=0.15
+t=304 steps=370 evals=2961 cost=12 best=12 T=0.15
+t=334 steps=399 evals=3193 cost=12 best=12 T=0.15
+t=364 steps=430 evals=3441 cost=12 best=12 T=0.15
+t=394 steps=465 evals=3721 cost=12 best=12 T=0.15
+t=425 steps=500 evals=4001 cost=12 best=12 T=0.15
+t=455 steps=538 evals=4305 cost=6 best=6 T=0.15
+t=485 steps=571 evals=4569 cost=6 best=6 T=0.15
+t=516 steps=609 evals=4873 cost=6 best=6 T=0.15
+t=546 steps=645 evals=5161 cost=6 best=6 T=0.15
+t=576 steps=680 evals=5441 cost=6 best=6 T=0.15
+t=607 steps=717 evals=5737 cost=6 best=6 T=0.15
+t=637 steps=756 evals=6049 cost=6 best=6 T=0.15
+t=667 steps=794 evals=6353 cost=6 best=6 T=0.15
+t=697 steps=831 evals=6649 cost=6 best=6 T=0.15
+t=728 steps=869 evals=6953 cost=6 best=6 T=0.15
+t=758 steps=910 evals=7281 cost=6 best=6 T=0.15
+t=788 steps=949 evals=7593 cost=6 best=6 T=0.57
+t=818 steps=985 evals=7881 cost=6 best=6 T=0.20
+t=849 steps=1024 evals=8193 cost=6 best=6 T=0.15
+t=879 steps=1063 evals=8505 cost=6 best=6 T=0.15
+t=909 steps=1102 evals=8817 cost=6 best=6 T=0.15
+t=940 steps=1144 evals=9153 cost=6 best=6 T=0.15
+t=970 steps=1188 evals=9505 cost=6 best=6 T=0.15
+t=1001 steps=1226 evals=9809 cost=6 best=6 T=0.15
+t=1031 steps=1263 evals=10105 cost=6 best=6 T=0.15
+t=1061 steps=1304 evals=10433 cost=3 best=3 T=0.15
+t=1091 steps=1342 evals=10737 cost=3 best=3 T=0.15
+t=1122 steps=1379 evals=11033 cost=3 best=3 T=0.15
+t=1153 steps=1419 evals=11353 cost=3 best=3 T=0.15
+t=1183 steps=1455 evals=11641 cost=3 best=3 T=0.15
+t=1213 steps=1496 evals=11969 cost=3 best=3 T=0.15
+t=1243 steps=1531 evals=12249 cost=3 best=3 T=0.15
+t=1273 steps=1563 evals=12505 cost=3 best=3 T=0.15
+t=1304 steps=1604 evals=12833 cost=3 best=3 T=0.15
+t=1334 steps=1646 evals=13169 cost=3 best=3 T=0.15
+t=1364 steps=1685 evals=13481 cost=3 best=3 T=1.17
+t=1394 steps=1720 evals=13761 cost=3 best=3 T=0.41
+t=1425 steps=1760 evals=14081 cost=3 best=3 T=0.15
+t=1455 steps=1795 evals=14361 cost=3 best=3 T=0.15
+t=1485 steps=1832 evals=14657 cost=3 best=3 T=0.15
+t=1516 steps=1869 evals=14953 cost=3 best=3 T=0.15
+t=1547 steps=1907 evals=15257 cost=3 best=3 T=0.15
+t=1577 steps=1950 evals=15601 cost=3 best=3 T=0.15
+t=1607 steps=1991 evals=15929 cost=3 best=3 T=0.15
+t=1638 steps=2031 evals=16249 cost=3 best=3 T=0.15
+t=1669 steps=2072 evals=16577 cost=3 best=3 T=0.15
+t=1699 steps=2111 evals=16889 cost=3 best=3 T=0.58
+t=1729 steps=2151 evals=17209 cost=3 best=3 T=0.20
+t=1760 steps=2191 evals=17529 cost=3 best=3 T=0.15
+t=1790 steps=2231 evals=17849 cost=3 best=3 T=0.15
+t=1821 steps=2270 evals=18161 cost=3 best=3 T=0.15
+t=1852 steps=2306 evals=18449 cost=3 best=3 T=0.15
+t=1882 steps=2343 evals=18745 cost=3 best=3 T=0.15
+t=1913 steps=2376 evals=19009 cost=3 best=3 T=0.15
+t=1943 steps=2409 evals=19273 cost=3 best=3 T=0.15
+t=1974 steps=2443 evals=19545 cost=3 best=3 T=0.15
+t=2004 steps=2477 evals=19817 cost=3 best=3 T=1.50
+t=2034 steps=2511 evals=20089 cost=3 best=3 T=0.52
+t=2065 steps=2547 evals=20377 cost=3 best=3 T=0.18
+t=2095 steps=2586 evals=20689 cost=3 best=3 T=0.15
+t=2126 steps=2625 evals=21001 cost=3 best=3 T=0.15
+t=2156 steps=2666 evals=21329 cost=3 best=3 T=0.15
+t=2186 steps=2702 evals=21617 cost=3 best=3 T=0.15
+t=2216 steps=2739 evals=21913 cost=3 best=3 T=0.15
+t=2246 steps=2775 evals=22201 cost=3 best=3 T=0.15
+t=2277 steps=2810 evals=22481 cost=3 best=3 T=0.15
+t=2308 steps=2852 evals=22817 cost=3 best=3 T=0.15
+t=2338 steps=2891 evals=23129 cost=3 best=3 T=1.02
+t=2369 steps=2929 evals=23433 cost=3 best=3 T=0.36
+t=2399 steps=2964 evals=23713 cost=3 best=3 T=0.15
+RESULT d=12 D=9 group=psl 71 x Z_97 N=17355240 best=3 evals=23729 time=2400.7 orbit k=3 m=4 f=0 fix=35
+exit 1
