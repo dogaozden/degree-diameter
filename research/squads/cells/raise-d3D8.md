@@ -29,6 +29,9 @@ research/lifts/coordinator_check/check_2026-10-23.txt). Target: any bipartite cu
 - 4-vertex base, annealing (6 s per group, 1 seed), |G| = 73..100 (n = 292..400): **1142 groups, 0 solutions**;
   best cost 10 (runs/ann_b4_73_100.log).
 
+- 6-vertex bases (b6_0, b6_1, b6_2), annealing (8 s per group, 1 seed), |G| = 49..60 (n = 294..360): **1086 runs
+  (362 per base), 0 solutions**; best cost 12 (runs/ann_b6_*_49_60.log).
+
 ## Method notes
 
 - Exhaustive search over the free voltages is slow for bases with 4+ free voltages (b=6: ~20 groups per 4 minutes on 4
