@@ -212,8 +212,8 @@ would have other points of $F$ on two lines; if $d(s_i,s_k) = 4$, a point of $s_
 joining them) with a point of $s_k$, and would also have other points of $F$ on $s_i$. So they form a spread. Conversely the point set of a spread is a segment set of
 this size. The dual statement is the same proof in $H^D$. $\square$
 
-For comparison, a non-collinear set has at most $q^4+q^2+1$ points (Hoffman's ratio bound on the collinearity graph; the
-bound is attained by distance-2 ovoids), and $(q+1)(q^3+1) = q^4+q^3+q+1$ is larger by $q^3-q^2+q$.
+For comparison, a non-collinear set has at most $q^4+q^2+1$ points (Hoffman's ratio bound on the collinearity graph, whose
+smallest eigenvalue is $-(q+1)$; equality would need a distance-2 ovoid, a point set meeting every line exactly once), and $(q+1)(q^3+1) = q^4+q^3+q+1$ is larger by $q^3-q^2+q$.
 
 ---
 
@@ -629,18 +629,18 @@ Theorems A, B, C and 3.4 hold for every prime power $q$ (the proofs only use (F1
 line and two lines on a point). What is not known in general is how large the sets can be made and whether large hub
 graphs exist; Lemma 1.2 and Lemma 7.1 give explicit choices. With $\kappa(d)$ as in Section 7:
 
-**Corollary 9.1 (every $q$, three levels).** With $R$ the $q^2+1$ points of an elliptic quadric $Q^-(3,q)$ section
+**Corollary 9.1 (every $q\ge 4$, three levels).** With $R$ the $q^2+1$ points of an elliptic quadric $Q^-(3,q)$ section
 (Lemma 1.2(a)) and $R^*$ any $q^2+1$ lines of the Hermitian spread (Corollary 5.3(a)):
 $$n_b(q+2,\,7)\ \ge\ 6N(q) + 2\min\bigl(q^2+1,\ \kappa(q-1)\bigr),$$
 which is $6N(q)+2(q^2+1)$ for every $q\ge 5$.
 
-**Corollary 9.2 ($q = 3^h$).** For every $r\ge 1$ with $r<q$:
+**Corollary 9.2 ($q = 3^h$).** For every $r$ with $1\le r\le q-3$ (Corollary 8.2 with Lemma 7.1):
 $n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + 2\min\bigl(r(q+1)(q^3+1),\ \kappa(q-r)\bigr)$.
 
-**Corollary 9.3 (every $q$, typed levels $HDHDH$).** Friendly point sets: the point set of the Hermitian spread
+**Corollary 9.3 (every $q\ge 5$, typed levels $HDHDH$).** Friendly point sets: the point set of the Hermitian spread
 ($(q+1)(q^3+1)$ points); friendly line sets: the lines through the points of an elliptic quadric section
-($(q+1)(q^2+1)$ lines, a dual segment set); non-friendly: $m = q^2+1$ as in Corollary 9.1. Then
-$K_{\mathcal A}, K_{\mathcal B}\le (q+1)(q^2+1) + q^2+1 = (q+2)(q^2+1)$ and
+($(q+1)(q^2+1)$ lines, a dual segment set); non-friendly: $m = q^2+1$ as in Corollary 9.1. By the table of Section 6 the smallest slot counts are
+$\min_j\alpha_j = \min_j\beta_j = (q+1)(q^2+1) + q^2+1 = (q+2)(q^2+1)$, so
 $$n_b(q+3,\,7)\ \ge\ 10N(q) + 2\min\bigl((q+2)(q^2+1),\ \kappa(q-2)\bigr).$$
 
 The record values exceed these because the sets found by computer are of order $q^4$ (non-collinear sets of 8,645 and
@@ -714,10 +714,10 @@ runs above assume none.)
 *Classical.* Generalized hexagons and their incidence graphs (Tits 1959); the split Cayley hexagon in $Q(6,q)$, its
 dualities for $q = 3^h$, and the Hermitian spread (Tits; Thas 1980; Van Maldeghem's book [VM98]). Building large
 bipartite graphs of given degree and diameter from several copies of the incidence graph of a generalized polygon joined by
-matchings ("duplication", levels) is due to Delorme [De85a, De85b]; the D = 4 and D = 6 values of the 2013 table come from
-his constructions, and the D = 7 values with $\Delta\ge 9$ (and (7,7)) have exactly the form $(2r+1)\cdot 2N(q)$ of
-Theorem A. [We have not yet checked which reference the table cites for each D = 7 cell.] Theorem A is the routine
-argument for such covers.
+matchings ("duplication", levels) goes back to Delorme [De85a, De85b] (with Farhi [DF84] for duplication in general);
+several of the old D = 4 and D = 6 values of the 2013 table come from these constructions. The D = 7 values with
+$\Delta\ge 9$, and (7,7), have exactly the form $(2r+1)\cdot 2N(q)$ of Theorem A. We have not checked which reference
+the table cites for each D = 7 cell, and we do not claim Theorem A as new: it is the routine argument for such covers.
 
 *New here (as far as we know).* Deleting matching edges at freed elements and reattaching the freed slots to hub vertices
 (Definition 3.1, Theorem 3.4); the repair theorems B and C; the use of dual levels ("typed levels") to make transitions
@@ -726,6 +726,8 @@ automorphic; segment sets and Proposition 1.4; mirrored sets (Propositions 5.1, 
 ## References
 
 - [BGS06] S. Ball, P. Govaerts, L. Storme, On ovoids of parabolic quadrics, Des. Codes Cryptogr. 38 (2006) 131–145.
+- [DF84] C. Delorme, G. Farhi, Large graphs with given degree and diameter, Part I, IEEE Trans. Computers C-33 (1984)
+  857–860.
 - [De85a] C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291–302.
 - [De85b] C. Delorme, Large bipartite graphs with given degree and diameter, J. Graph Theory 9 (1985) 325–334.
 - [MS13] M. Miller, J. Širáň, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin.,
