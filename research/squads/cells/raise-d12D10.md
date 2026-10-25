@@ -105,3 +105,11 @@ prime factors ≡ 1 mod 3, n ≤ 500 (round 1's untried sl/psl groups; prod and 
 
 Note on ORBW=3: this solve used ORBW=3. The same group with the default weight (job 11-psl_89_469_def, seed 3) was at cost 6
 at ~3,000 evals when it was last seen; one solve is not a measured advantage for ORBW=3.
+
+**New record: 332,158,176 vertices** = 2 · |SL(2,73) × Z_427|, N = 166,079,088, seed 3, default weight (no ORBW), 5,153 evals,
+960 s, μ = 25.3, |Fix| = 71. This beats 330,588,720 (psl 89 × Z_469, above).
+- File: `../../frontier/sols/d12D10_sl_73_427_orb3f0_s3.txt`; log: `../../structured/runs/d12D10_sl_73_427_orb3f0_s3.log`.
+- Checks: haar_sym full diameter check (both generators reach all N within 10; normalised s₀ = e); independent
+  `tools/hcsl` and `tools/hc2`: both VALID (eccA = eccB = 10).
+- Not checked: build_haar2.py (above 20M vertices); the coordinator re-checks.
+- The same group with ORBW=3 (seed 3) was still running at cost 3 when this solve landed. Solves so far: 2 of the first 12 jobs.

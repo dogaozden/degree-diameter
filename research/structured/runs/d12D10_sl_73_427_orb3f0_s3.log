@@ -1,0 +1,42 @@
+group sl 73 x Z_427, N=166079088, identity 2244312, H order 63, rows 2636176, threads 1, setup 3.64s
+wide rows: HW order 252, rows 659044, setup 8.83s
+alpha: conj by mat(55,55,15,19) (index 297052), z -> 74 z on Z_427
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 71 (+e); mu = 27.40, mu/k = 9.13, fixed-point misses ~ 0.39
+start cost=30
+t=31 steps=21 evals=169 cost=19 best=15 T=0.51
+t=62 steps=41 evals=329 cost=12 best=12 T=0.18
+t=92 steps=61 evals=489 cost=12 best=12 T=0.15
+t=123 steps=81 evals=649 cost=9 best=9 T=0.15
+t=154 steps=101 evals=809 cost=9 best=9 T=0.15
+t=185 steps=121 evals=969 cost=9 best=9 T=0.15
+t=215 steps=142 evals=1137 cost=9 best=9 T=0.15
+t=246 steps=163 evals=1305 cost=9 best=9 T=0.15
+t=276 steps=183 evals=1465 cost=9 best=9 T=0.15
+t=307 steps=204 evals=1633 cost=9 best=9 T=0.15
+t=338 steps=224 evals=1793 cost=9 best=9 T=0.15
+t=368 steps=245 evals=1961 cost=9 best=9 T=0.15
+t=399 steps=266 evals=2129 cost=9 best=9 T=0.15
+t=429 steps=287 evals=2297 cost=9 best=9 T=0.15
+t=461 steps=308 evals=2465 cost=9 best=9 T=0.15
+t=492 steps=329 evals=2633 cost=9 best=9 T=0.15
+t=523 steps=350 evals=2801 cost=9 best=9 T=0.15
+t=553 steps=371 evals=2969 cost=9 best=9 T=0.15
+t=583 steps=392 evals=3137 cost=9 best=9 T=0.15
+t=614 steps=413 evals=3305 cost=9 best=9 T=0.15
+t=645 steps=434 evals=3473 cost=9 best=9 T=0.15
+t=676 steps=455 evals=3641 cost=9 best=9 T=0.15
+t=707 steps=476 evals=3809 cost=9 best=9 T=1.04
+t=738 steps=497 evals=3977 cost=6 best=6 T=0.36
+t=769 steps=518 evals=4145 cost=6 best=6 T=0.15
+t=800 steps=539 evals=4313 cost=6 best=6 T=0.15
+t=830 steps=560 evals=4481 cost=3 best=3 T=0.15
+t=861 steps=581 evals=4649 cost=3 best=3 T=0.15
+t=892 steps=601 evals=4809 cost=3 best=3 T=0.15
+t=923 steps=621 evals=4969 cost=3 best=3 T=0.15
+t=954 steps=640 evals=5121 cost=3 best=3 T=0.15
+RESULT d=12 D=10 group=sl 73 x Z_427 N=166079088 best=0 evals=5153 time=960.1 orbit k=3 m=4 f=0 fix=71
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote spool_r3/15-sl_73_427_def/d12D10_sl_73_427_orb3f0_s3.txt
+VALID d=12 D=10 group=sl 73 x Z_427 N=166079088 vertices=332158176 (distinct generators, 12-regular simple)
+VALID d=12 D=10 vertices=332158176 eccA=10 eccB=10
