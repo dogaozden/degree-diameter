@@ -19,9 +19,9 @@ The three constructions (all on the split Cayley hexagon H(q)):
 | (16,7) | 4,052,108 | **4,053,576** | +1,468 | typed HDHDH of H(13) + mirrored 813 on the four non-friendly transitions + relaxed point sets | apsp_w all pairs VALID |
 | (14,7) | 1,789,588 | **1,789,917** | +329 | typed HDHDH of H(11) + mirrored 768 + relaxed line and point sets | apsp_w all pairs VALID |
 | (10,7) | 225,152 | **225,156** | +4 | mirrored surgery, 3 copies of H(8), mirrored set 231 (squads r1 c5, r2 c1) | apsp_mt all pairs VALID |
-| (13,7) | 1,064,472 | — | | three levels: typed levels give nothing; mirrored set of H(11) not improved (two squad cards) | |
+| (13,7) | 1,064,472 | — | | three levels: typed levels give nothing; the H(11) mirrored set is add-maximal (exhaustive scan) and two squad cards did not improve it | |
 | (11,7), (12,7) | 413,180, 693,500 | — | | H(9) spread construction; typed / relaxed cannot beat it (bound below) | |
-| (7,7), (9,7) | 23,598, 118,238 | — | | three levels; mirrored sets of H(5), H(7) not improved (four squad cards) | |
+| (7,7), (9,7) | 23,598, 118,238 | — | | three levels; the H(5), H(7) mirrored sets are add-maximal and 1-out/2-in optimal (exhaustive scans), four squad cards did not improve them | |
 | (15,7) | 2,501,124 | not touched | | another session works on it | |
 
 Intermediate (16,7) value 4,053,490 = 10·402,234 + 2·(14,762 + 813): master's typed sets with the mirrored 813 set on the
