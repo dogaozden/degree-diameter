@@ -86,3 +86,22 @@ Why: this cell, with the orbit method at k = 3, m = 4, f = 0, now needs solves i
 897 evals) and psl 97×361 (μ 23.9, 5,121 evals). The unsolved jobs at μ ≥ 25 ended with best cost 3–9 after 1–9k evals. Going further needs many more seeds per
 group (roughly 10–20 hours of single-core time for a few more percent), or a new idea: a different automorphism, or ORBW /
 RESTART variants on the same groups. The coordinator decides whether a bigger model is worth it.
+
+## Round 2 (job raise2-12-10, branch claude/raise-d12d10-record-r2-gkgabg)
+
+Starting record (as given in the round-2 brief): 325,832,976. Round 1's branch reports 329,972,448 (sl 103 × Z_151),
+so that is the bar this round started from; the coordinator should reconcile the two numbers.
+
+Queue: `research/structured/spool_r3/` (pool.sh, 4 slots, 2400 s per job, seed 3, k = 3, m = 4, f = 0). Two variants per
+group: ORBW=3 (uncovered fixed element weighs 3) and the default. Groups: N in (164,986,224, 166,100,000], prime q, n with all
+prime factors ≡ 1 mod 3, n ≤ 500 (round 1's untried sl/psl groups; prod and pgl groups are not run, no checker for them).
+
+**New record: 330,588,720 vertices** = 2 · |PSL(2,89) × Z_469|, N = 165,294,360, seed 3, ORBW=3, 2,521 evals, 839 s,
+μ = 25.3, |Fix| = 44.
+- File: `../../frontier/sols/d12D10_psl_89_469_orb3f0_ORBW3_s3.txt`; log: `../../structured/runs/d12D10_psl_89_469_orb3f0_ORBW3_s3.log`.
+- Checks: haar_sym's own full diameter check (both generators reach all N within 10; normalised s₀ = e); independent
+  `tools/haarcheck_psl` (the queue's checker, ~4 min): VALID, 330,588,720 vertices.
+- Not checked: build_haar2.py (above 20M vertices); the coordinator re-checks.
+
+Note on ORBW=3: this solve used ORBW=3. The same group with the default weight (job 11-psl_89_469_def, seed 3) was at cost 6
+at ~3,000 evals when it was last seen; one solve is not a measured advantage for ORBW=3.

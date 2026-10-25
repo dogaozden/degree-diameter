@@ -1,0 +1,37 @@
+group psl 89 x Z_469, N=165294360, identity 1836604, H order 63, rows 2623720, threads 1, setup 5.93s
+wide rows: HW order 201, rows 822360, setup 12.03s
+alpha: conj by mat(44,22,7,46) (index 346484), z -> 37 z on Z_469
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 44 (+e); mu = 25.32, mu/k = 8.44, fixed-point misses ~ 0.24
+ORBW=3: an uncovered fixed element weighs 3; start energy 60
+start cost=60
+t=33 steps=13 evals=105 cost=9 best=9 T=0.49 energy=9 bestE=9
+t=64 steps=25 evals=201 cost=6 best=6 T=0.17 energy=6 bestE=6
+t=94 steps=37 evals=297 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=125 steps=49 evals=393 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=156 steps=61 evals=489 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=186 steps=73 evals=585 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=219 steps=86 evals=689 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=251 steps=99 evals=793 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=283 steps=111 evals=889 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=314 steps=123 evals=985 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=345 steps=135 evals=1081 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=376 steps=147 evals=1177 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=406 steps=159 evals=1273 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=438 steps=171 evals=1369 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=468 steps=182 evals=1457 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=501 steps=194 evals=1553 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=533 steps=206 evals=1649 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=565 steps=218 evals=1745 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=597 steps=230 evals=1841 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=629 steps=242 evals=1937 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=659 steps=253 evals=2025 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=691 steps=264 evals=2113 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=721 steps=274 evals=2193 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=754 steps=285 evals=2281 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=787 steps=296 evals=2369 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=818 steps=307 evals=2457 cost=3 best=3 T=0.15 energy=3 bestE=3
+RESULT d=12 D=10 group=psl 89 x Z_469 N=165294360 best=0 evals=2521 time=838.7 orbit k=3 m=4 f=0 fix=44
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote spool_r3/10-psl_89_469_orbw3/d12D10_psl_89_469_orb3f0_ORBW3_s3.txt
+VALID d=12 D=10 group=psl 89 x Z_469 N=165294360 vertices=330588720 (distinct generators, 12-regular simple)
