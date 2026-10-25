@@ -29,7 +29,7 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 Of the 112 cells (counts from cells.csv; two big checks ((15,7), (16,7)) were still running when this was written, see HANDOFF.md):
 
 <!-- SUMMARY -->
-Of the 112 cells (counts from cells.csv; checks still running when this was written: (15,7), (16,7)):
+Of the 112 cells (counts from cells.csv; checks still running when this was written: (16,7)):
 
 - **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
