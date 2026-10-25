@@ -69,7 +69,15 @@ Each solution, if one appears, goes to `research/frontier/sols/d11D8_psl_19_331_
 - ~16:42 UTC: four runs on psl 19 x Z331 with the fixed trigger: seeds 21–24, 10800 s each (`EXH2` logs). They end
   about 19:40 UTC.
 
+- ~17:00–18:10 UTC: seeds 21–23 reached best energy 10 (raw cost 10) and stayed there for about an hour of annealing
+  (about 7·10⁵ evals each); seed 24 reached raw cost 6. Every scan since then found no better orbit at energy 10
+  (slot 0 and slot 1 alike). Four different seeds ending at the same energy 10 suggests the search has plateaued at this
+  energy level for psl 19 x Z331 with these moves.
+
 ## Status
 
-Running: seeds 21–24 (`haar_sym_exh2`, EXH on, fixed trigger). No solution above 2,258,520 yet.
+Running to their scheduled end (~19:40 UTC): seeds 21–24 (`haar_sym_exh2`, EXH on, fixed trigger). No solution above
+2,258,520 yet. Best: raw cost 5 (round 1 and round 2, one uncovered orbit). Round-2 assessment: psl 19 x Z331 with
+orbit-symmetric S and these annealing moves has not solved in ~9 runs of round 1 and ~8 of round 2; the record cell's
+own runs needed about 1.2·10⁶ evaluations for the final step. I do not expect a solution from the remaining time.
 Round-1 and round-2 results so far: best cost 5 (one uncovered orbit), never 0, on psl 19 x Z331.
