@@ -67,3 +67,12 @@ n=225152 edges=1125760 degree min=10 max=10 bipartite=yes diameter=7
 RESULT VALID d=10 D=7 n=225152
        64.02 real       103.04 user         1.45 sys
             73416704  maximum resident set size
+== d15D7_hex11_typed133_K62_n2497075 Sat Oct 24 23:48:51 PDT 2026
+        6.84 real         6.32 user         0.45 sys
+          1765425152  maximum resident set size
+e34bc359c5e731f28b8301be5b99c862ed2eaf136150a0b45633f214d7a6ff9f  typed/d15D7_hex11_typed133_K62_n2497075.edges
+-- apsp_mt d15D7_hex11_typed133_K62_n2497075 (23:48:58)
+n=2497075 edges=18684239 degree min=13 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2497075
+     3832.80 real     28391.89 user       329.87 sys
+          1430224896  maximum resident set size
