@@ -19,5 +19,5 @@ checks.log. Run everything from one scratch directory (the scripts read and writ
 - bfs.c (gcc -O2 -o bfs bfs.c; bfs_mt.c is the same with OpenMP over sources, gcc -O2 -fopenmp): reads "n" and edge lines; checks loops and multiple edges, bipartite, degrees, BFS from
   every vertex; prints the diameter and the number of ordered pairs at distance > 7.
 
-The record graphs (7,7) and (9,7) were rebuilt with the lab's research/d13D7/hexgen2.c and
+The record graphs (7,7), (9,7) and (10,7) were rebuilt with the lab's research/d13D7/hexgen2.c and
 research/d13D7/tools/multi_sol.py (multi.c) from the solution files on master and checked with bfs.c.

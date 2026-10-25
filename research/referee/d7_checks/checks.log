@@ -98,3 +98,8 @@ H(7), r = 1 (3 levels, Delta 9), |R| = 295, full removal, 295 line-side and 295 
 graph: n = 118238, edges = 532071, max degree 9
 b1487ddee47ab3d79af7052a88337e01f846b3a109ec958e7cb5acc3a446562a  g97.edges
 n=118238 m=532071 dup=0 degree min=9 max=9 bipartite=1 diameter=7 pairs>7=0
+## (10,7) record (q = 8, characteristic 2): hexgen2 8; multi_sol.py build research/frontier/sols/d10D7_hex8_mirror229_n225152.sol hex/hex_q8.bin g107.edges; ./bfs_mt g107.edges
+H(8), r = 1 (3 levels, Delta 10), |R| = 229, full removal, 229 line-side and 229 point-side hubs, hub degree 7, n = 225152
+graph: n = 225152, edges = 1125760, max degree 10
+12a145cd7dd241c585002630c04f639cb71a763db85c4892c71b10454572063a  g107.edges
+n=225152 m=1125760 dup=0 degree min=10 max=10 bipartite=1 diameter=7 pairs>7=0
