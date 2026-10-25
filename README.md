@@ -60,7 +60,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (4, 7) | 840 | **864** | +2.9% | vertex-transitive (Cayley-type) | — |
 | (5, 7) | 3,110 | **3,120** | +0.3% | voltage lift / metacyclic Haar | ✓ |
 | (6, 7) | 8,310 | **8,880** | +6.9% | orbit search (Haar) | ✓ |
-| (7, 7) | 23,436 | **23,598** | +0.7% | finite geometry ¹ | — |
+| (7, 7) | 23,436 | **23,598** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
 | (9, 7) | 117,648 | **118,238** | +0.5% | hexagon cover + hub vertices ¹ | — |
 | (10, 7) | 224,694 | **225,152** | +0.2% | hexagon cover + hub vertices ¹ | — |
