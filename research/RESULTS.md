@@ -198,3 +198,5 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 25 02:15 PT (harvest): (8,9) 1,341,600 (was 1,326,960), sl 25 poly x^2+2 n 43; claude/raise-d8d9-record-ogr1zr.
 
 - Oct 25 03:17 PT (harvest): (5,9) 28,938 (was 28,920), meta 371 39 16 n 1; claude/raise-d5d9-record-jhegor.
+
+- Oct 25 04:16 PT (harvest): (5,9) 29,480 (was 28,938), meta 335 44 8 n 1; claude/raise-d5d9-record-jhegor.
