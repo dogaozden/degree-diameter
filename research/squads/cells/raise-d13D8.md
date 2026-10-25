@@ -75,3 +75,6 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
   best 6 (956,425 evals). No solution. sl 79 x Z7 (best 4) and psl 81 x Z13 (best 6) end about 12:18 UTC.
   Round 3 started 12:11 UTC: prod sl 5 sl 16 x Z7, ORBW=3, seed 3, 5400 s (the only fresh run on a candidate
   that beats 3,416,952 in N with a seed not yet tried).
+- 12:18 UTC: round 2b, last results: psl 81 x Z13 best 6 (603,425 evals), sl 79 x Z7 best 3 (875,969 evals). No solution.
+- 12:19 UTC: round 3 seeds, ORBW=3, 5400 s each: sl 79 x Z7 (seed 3) and prod psl 7 psl 11 x Z31 (seed 3), plus
+  prod sl 5 sl 16 x Z7 (seed 3, started 12:11). All end by about 13:45 UTC, leaving time for the write-up before 14:06.

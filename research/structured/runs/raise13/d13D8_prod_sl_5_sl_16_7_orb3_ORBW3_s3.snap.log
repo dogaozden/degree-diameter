@@ -4,3 +4,19 @@ alpha: conj by prod[mat(3,1,2,1);mat(10,15,11,11)] (index 316955), z -> 2 z on Z
 ORBIT k=3 m=4 f=1: |Fix(alpha)| = 89 (+e); mu = 38.16, mu/k = 12.72, fixed-point misses ~ 2.01
 ORBW=3: an uncovered fixed element weighs 3; start energy 51
 start cost=45
+t=30 steps=511 evals=4089 cost=15 best=12 T=0.53 energy=15 bestE=12
+t=60 steps=1022 evals=8177 cost=13 best=12 T=0.19 energy=15 bestE=12
+t=90 steps=1543 evals=12345 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=120 steps=2041 evals=16329 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=150 steps=2540 evals=20321 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=180 steps=3088 evals=24705 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=210 steps=3622 evals=28977 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=240 steps=4117 evals=32937 cost=3 best=3 T=0.81 energy=3 bestE=3
+t=270 steps=4594 evals=36753 cost=12 best=3 T=0.28 energy=12 bestE=3
+t=300 steps=5042 evals=40337 cost=10 best=3 T=0.15 energy=12 bestE=3
+t=330 steps=5619 evals=44953 cost=10 best=3 T=0.15 energy=12 bestE=3
+t=360 steps=6155 evals=49241 cost=10 best=3 T=0.15 energy=12 bestE=3
+t=390 steps=6708 evals=53665 cost=7 best=3 T=0.80 energy=9 bestE=3
+t=420 steps=7265 evals=58121 cost=7 best=3 T=0.28 energy=9 bestE=3
+t=450 steps=7839 evals=62713 cost=7 best=3 T=0.15 energy=9 bestE=3
+t=480 steps=8429 evals=67433 cost=7 best=3 T=0.15 energy=9 bestE=3
