@@ -2,6 +2,7 @@
 # Sequential job queue for haar_sym.  Each line:  k m f [VAR=x ...] | d D seconds seed K GROUP... n
 # e.g.  3 2 2 | 8 7 600 1 8 psl 13 19        5 2 1 ORBW=5 RESTART=1 | 11 8 7200 3 8 psl 59 11
 # (extra VAR=x are passed to haar_sym and appended to the tag; f = 0 runs are tagged orb<k>f0)
+# Restartable: a job whose log has no RESULT is rerun and resumes from OUTDIR/<tag>.ckpt (haar_sym CKPT).
 # Solutions go to OUTDIR/d<d>D<D>_<group>_orb<k>_s<seed>.txt, logs next to them; a solved job is checked with
 # build_haar2.py (verdict appended to the log).  Lines starting with # are skipped; a job whose log already has
 # RESULT is skipped (restartable).  usage: orbq.sh JOBFILE OUTDIR [BIN]
@@ -17,7 +18,9 @@ while IFS= read -r line; do
   log=$OUT/$tag.log; sol=$OUT/$tag.txt
   grep -q RESULT "$log" 2>/dev/null && continue
   echo "$(date +%H:%M:%S) start $tag" >&2
-  env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
+  # CKPT: haar_sym saves the best S every 60 s and resumes from it if the job is restarted (log is appended)
+  [ -s "$log" ] && echo "=== restarted $(date +%F_%T), resuming from $tag.ckpt if present" >> "$log"
+  env ORBIT="$k $m $f" CKPT="$OUT/$tag.ckpt" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp >> "$log" 2>&1
   if [ -s "$sol" ]; then
     fam=$(head -1 "$sol" | awk '{print $3}'); NN=$(head -1 "$sol" | awk '{print $NF}')
     big=0; [[ "$NN" =~ ^[0-9]+$ ]] && [ "$NN" -gt 10000000 ] && big=1

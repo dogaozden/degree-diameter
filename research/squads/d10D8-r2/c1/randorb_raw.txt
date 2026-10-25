@@ -1,0 +1,23 @@
+## spec=[pgl 27 31]
+RANDORB d=10 D=8 group=pgl 27 poly x^3+2x+1 x Z_31 N=609336 k=3 m=3 f=1 fix=26 samples=3000 min=46 p1=73 p10=105 median=186 mean=37717.43 var=10025974921.7 mu=89.07 time=2.2
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
+## rc=0
+## spec=[sl 32 19]
+RANDORB d=10 D=8 group=sl 32 poly x^5+x^2+1 x Z_19 N=621984 k=3 m=3 f=1 fix=32 samples=3000 min=55 p1=90 p10=117 median=175 mean=298.56 var=970335.0 mu=108.81 time=2.1
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
+## rc=0
+## spec=[sl 27 31]
+RANDORB d=10 D=8 group=sl 27 poly x^3+2x+1 x Z_31 N=609336 k=3 m=3 f=1 fix=53 samples=3000 min=52 p1=72 p10=102 median=162 mean=788.53 var=145432657.7 mu=89.07 time=1.8
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
+## rc=0
+## spec=[pgl 32 19]
+RANDORB d=10 D=8 group=pgl 32 poly x^5+x^2+1 x Z_19 N=621984 k=3 m=3 f=1 fix=32 samples=3000 min=61 p1=85 p10=116 median=178 mean=484.10 var=116395546.2 mu=108.81 time=2.1
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
+## rc=0
+## spec=[psl 23 97]
+RANDORB d=10 D=8 group=psl 23 x Z_97 N=588984 k=3 m=3 f=1 fix=11 samples=3000 min=36 p1=54 p10=82 median=138 mean=920.21 var=85588952.4 mu=63.46 time=1.9
+RANDORB cost0=0 of 3000 (P=0); cost counts 0..12: 0 0 0 0 0 0 0 0 0 0 0 0 0
+## rc=0
+## driver CPU (bash times, user sys):
+0m0.000s 0m0.005s
+0m9.999s 0m0.019s

@@ -1,0 +1,8 @@
+group psl 25 poly x^2+2 x Z_73, N=569400, identity 21900, H order 13, rows 43800, threads 1, setup 0.21s
+wide rows: HW order 219, rows 2600, setup 0.25s
+alpha: conj by mat(14,23,17,15) (index 7767), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 44.81, mu/k = 14.94, fixed-point misses ~ 0.51
+start cost=114
+t=30 steps=6455 evals=51641 cost=9 best=9 T=0.53
+t=60 steps=15615 evals=124921 cost=9 best=9 T=0.30
+t=90 steps=24215 evals=193721 cost=9 best=9 T=0.30
