@@ -6,7 +6,7 @@ cut off by the usage limit) and session_0136phW63ksffo3wvN1THJtH (checks, squad 
 **Summary.** (13,7) >= **1,064,448** (all-pairs VALID), from three copies of H(11) plus a matching and 756 "surgeries"
 at pairwise opposite points (+2 vertices each). The same surgery, carried to every D = 7 cell of the table that is
 built from generalized hexagons, gives (7,7) 23,580, (9,7) 118,224, (10,7) 225,128, (11,7) 406,514, (12,7) 673,892,
-(14,7) 1,774,584, (15,7) 2,484,720, (16,7) 4,024,340 (§7; checks in §8). The point sets came from Haiku squads
+(14,7) 1,774,584, (15,7) 2,484,720, (16,7) 4,025,508 (§7; checks in §8). The point sets came from Haiku squads
 (orbit unions of small abelian groups of isometries with an exact orbit-graph clique); for q = 9 an explicit
 duality of H(9) (§7) makes the local-duality condition global.
 
@@ -196,8 +196,11 @@ extras, so fewer of them is fine. multi.c builds these (tested all-pairs: 5 copi
   <= 6, so it is the lab's bipartite (7,6) graph of 9,592 vertices (research/p4/hats, sides 4,918 / 4,674): 4,918
   line-side and 4,674 point-side hubs, 664,300 + 9,592 = **673,892**.
 - (14,7): 1,771,560 + 4·756 = **1,774,584**; (15,7): 2,480,184 + 6·756 = **2,484,720** (q = 11, the 756 set).
-- (16,7): q = 13, R = 500 pairwise opposite points of H(13) (orbits of a cyclic group of order 30, squad r4 c2):
-  4,022,340 + 4·500 = **4,024,340**.
+- (16,7): q = 13, R = 792 pairwise opposite points of H(13) (7 orbits of a monomial group of order 1296 on the three
+  hyperbolic planes, squad r7 c3; exact optimum of its orbit graph): 4,022,340 + 4·792 = **4,025,508**. With x3 = 1 the
+  products (x0x4, x1x5, x2x6) of its points are a permutation of (0,0,1) (36 points), (3,12,12) (162), (3,3,8) (324)
+  or (9,9,9) (270), and within each product class (x0, x1, x2) runs over a union of cosets of mu_3^3 (2, 4 and 10
+  cosets of 27). The earlier 500 points (a cyclic group of order 30, squad r4 c2) gave 4,024,340, also VALID.
 For these graphs (x, i) -> (x, i+1) (hubs fixed) is an automorphism, so BFS from all level-0 vertices and all hubs
 gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs.
 
@@ -214,4 +217,4 @@ gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs
 | (12,7) | 664,300 | 673,892 | d12D7_hex9_dual_R2459_n673892 | VALID (level 0 + hubs); master has 680,068 (cell-10-7 session) |
 | (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs) |
 | (15,7) | 2,480,184 | **2,484,720** | d15D7_hex11_R756_n2484720 | VALID (level 0 + hubs) |
-| (16,7) | 4,022,340 | **4,024,340** | d16D7_hex13_R500_n4024340 | VALID (level 0 + hubs) |
+| (16,7) | 4,022,340 | **4,025,508** | d16D7_hex13_R792_n4025508 | VALID (level 0 + hubs; 4,024,340 with 500 points also VALID) |

@@ -143,8 +143,8 @@ decomposition 416, dihedral 396 · c1 warm-started subgroup tabu: 536 from the o
 by Opus to subgroups of c3's group, no gain over 792 (orders 162, 108, 81, 54 exact) · c2 block pairs from q - 1 = 12
 and q + 1 = 14: best 494 (a of order 12 on dim 5, b of order 3) · c4 point-level tabu/ILS from the 500 set: no gain;
 every point outside it conflicts with at least 20 members, so point moves cannot extend such orbit unions.
-Opus re-checked 792 with oppcheck and started the (16,7) rebuild: 4,025,508 = 5 * 804,468 + 4 * 792 (check running at
-logging time). The same monomial family gave only 720 at q = 11 in round 6; Opus re-ran it at q = 11 with a larger closure cap
+Opus re-checked 792 with oppcheck and rebuilt (16,7): 4,025,508 = 5 * 804,468 + 4 * 792, VALID from all level-0
+vertices and hubs (research/d13D7/checks/d16D7_hex13_R792_n4025508.check.txt; +3,168 over the table, was +2,000). The same monomial family gave only 720 at q = 11 in round 6; Opus re-ran it at q = 11 with a larger closure cap
 (research/squads/d13D7_r7/opus_q11mono/, 56 groups): 720 again, the exact optimum for five different groups, so it
 does not carry over to (13,7). Structure of the 792 set: with x3 = 1 the products (x0x4, x1x5, x2x6) are a
 permutation of (0,0,1), (3,12,12), (3,3,8) or (9,9,9), and in each class (x0, x1, x2) is a union of cosets of mu_3^3.
