@@ -1,0 +1,420 @@
+grown n=800 M=1200 greedy-initial unreached(ordered)=4960 (pairs 2480) evals=2401 t=0.5
+  new best 4912 at it=45 t=0
+  new best 4884 at it=55 t=0
+  new best 4870 at it=307 t=0
+  new best 4856 at it=336 t=0
+  new best 4852 at it=355 t=0
+  new best 4844 at it=418 t=0
+  new best 4836 at it=453 t=0
+  new best 4824 at it=809 t=0
+  new best 4810 at it=861 t=0
+  new best 4776 at it=1240 t=0
+  new best 4740 at it=1305 t=0
+  new best 4714 at it=1403 t=0
+  new best 4712 at it=1465 t=0
+  new best 4690 at it=1585 t=0
+  new best 4684 at it=1814 t=0
+it=2000 evals=3670 t=0 cur=4684 best=4684 acc=19
+  new best 4670 at it=2515 t=0
+  new best 4656 at it=2630 t=0
+  new best 4626 at it=2706 t=0
+  new best 4584 at it=2715 t=0
+  new best 4562 at it=2758 t=0
+  new best 4522 at it=3017 t=0
+  new best 4494 at it=3397 t=0
+  new best 4486 at it=3405 t=0
+  new best 4468 at it=3773 t=1
+  new best 4462 at it=3910 t=1
+it=4000 evals=4934 t=1 cur=4462 best=4462 acc=30
+  new best 4438 at it=4376 t=1
+  new best 4436 at it=4721 t=1
+  new best 4426 at it=4957 t=1
+  new best 4422 at it=5099 t=1
+  new best 4402 at it=5313 t=1
+  new best 4396 at it=5390 t=1
+  new best 4376 at it=5670 t=1
+it=6000 evals=6200 t=1 cur=4376 best=4376 acc=38
+  new best 4342 at it=6007 t=1
+  new best 4318 at it=6890 t=1
+  new best 4276 at it=7354 t=1
+  new best 4272 at it=7856 t=1
+  new best 4270 at it=7893 t=1
+it=8000 evals=7493 t=1 cur=4270 best=4270 acc=44
+  new best 4252 at it=8560 t=1
+  new best 4240 at it=8598 t=1
+  new best 4226 at it=9135 t=1
+  new best 4224 at it=9983 t=1
+it=10000 evals=8767 t=1 cur=4224 best=4224 acc=50
+  new best 4212 at it=10079 t=1
+  new best 4180 at it=10393 t=2
+  new best 4178 at it=10638 t=2
+  new best 4172 at it=10748 t=2
+  new best 4148 at it=10836 t=2
+  new best 4134 at it=11578 t=2
+it=12000 evals=10037 t=2 cur=4134 best=4134 acc=60
+  new best 4126 at it=12180 t=2
+  new best 4124 at it=12297 t=2
+  new best 4106 at it=12305 t=2
+  new best 4076 at it=12424 t=2
+  new best 4074 at it=12693 t=2
+  new best 4054 at it=13683 t=2
+  new best 4050 at it=13752 t=2
+  new best 4036 at it=13947 t=2
+it=14000 evals=11299 t=2 cur=4036 best=4036 acc=68
+  new best 4034 at it=14003 t=2
+  new best 4024 at it=14392 t=2
+  new best 4004 at it=14971 t=2
+  new best 4002 at it=15041 t=2
+  new best 3996 at it=15365 t=2
+it=16000 evals=12597 t=2 cur=3998 best=3996 acc=76
+  new best 3988 at it=16017 t=2
+  new best 3986 at it=16321 t=2
+  new best 3956 at it=16462 t=2
+  new best 3950 at it=16486 t=2
+  new best 3944 at it=16732 t=2
+it=18000 evals=13835 t=3 cur=3948 best=3944 acc=83
+  new best 3936 at it=18296 t=3
+  new best 3922 at it=19744 t=3
+  new best 3920 at it=19825 t=3
+it=20000 evals=15112 t=3 cur=3920 best=3920 acc=89
+  new best 3892 at it=20052 t=3
+  new best 3886 at it=20436 t=3
+  new best 3858 at it=20813 t=3
+  new best 3840 at it=21632 t=3
+it=22000 evals=16349 t=3 cur=3840 best=3840 acc=95
+it=24000 evals=17625 t=3 cur=3840 best=3840 acc=97
+  new best 3828 at it=24002 t=3
+  new best 3822 at it=24237 t=3
+  new best 3814 at it=24445 t=4
+  new best 3810 at it=24554 t=4
+  new best 3786 at it=24972 t=4
+  new best 3752 at it=25363 t=4
+  new best 3738 at it=25970 t=4
+it=26000 evals=18871 t=4 cur=3738 best=3738 acc=107
+  new best 3736 at it=26119 t=4
+  new best 3730 at it=26397 t=4
+  new best 3704 at it=26401 t=4
+  new best 3694 at it=26534 t=4
+  new best 3668 at it=27101 t=4
+  new best 3662 at it=27584 t=4
+  new best 3644 at it=27757 t=4
+it=28000 evals=20142 t=4 cur=3644 best=3644 acc=114
+  new best 3642 at it=28557 t=4
+  new best 3602 at it=28659 t=4
+  new best 3592 at it=29108 t=4
+  new best 3582 at it=29720 t=4
+  new best 3578 at it=29863 t=4
+it=30000 evals=21376 t=4 cur=3578 best=3578 acc=119
+  new best 3572 at it=30315 t=4
+  new best 3570 at it=30581 t=4
+  new best 3566 at it=31156 t=4
+  new best 3558 at it=31303 t=5
+  new best 3552 at it=31877 t=5
+it=32000 evals=22671 t=5 cur=3556 best=3552 acc=126
+  new best 3546 at it=32308 t=5
+  new best 3534 at it=32519 t=5
+  new best 3528 at it=33134 t=5
+  new best 3512 at it=33361 t=5
+it=34000 evals=23963 t=5 cur=3512 best=3512 acc=130
+  new best 3508 at it=34841 t=5
+  new best 3506 at it=35267 t=5
+it=36000 evals=25236 t=5 cur=3506 best=3506 acc=133
+  new best 3492 at it=36810 t=5
+  new best 3488 at it=37325 t=5
+it=38000 evals=26495 t=5 cur=3488 best=3488 acc=135
+  new best 3478 at it=39032 t=6
+  new best 3464 at it=39995 t=6
+it=40000 evals=27759 t=6 cur=3464 best=3464 acc=138
+  new best 3456 at it=40052 t=6
+it=42000 evals=29035 t=6 cur=3458 best=3456 acc=142
+  new best 3430 at it=42339 t=6
+it=44000 evals=30284 t=6 cur=3434 best=3430 acc=145
+  new best 3420 at it=44540 t=6
+  new best 3416 at it=44686 t=6
+  new best 3410 at it=45461 t=6
+  new best 3378 at it=45788 t=6
+it=46000 evals=31580 t=6 cur=3380 best=3378 acc=151
+  new best 3372 at it=46136 t=7
+  new best 3370 at it=46603 t=7
+  new best 3360 at it=46759 t=7
+  new best 3358 at it=46815 t=7
+  new best 3350 at it=47973 t=7
+it=48000 evals=32859 t=7 cur=3350 best=3350 acc=158
+it=50000 evals=34082 t=7 cur=3356 best=3350 acc=160
+  new best 3338 at it=51027 t=7
+it=52000 evals=35360 t=7 cur=3338 best=3338 acc=161
+  new best 3332 at it=52627 t=7
+  new best 3324 at it=53519 t=7
+  new best 3322 at it=53705 t=8
+  new best 3310 at it=53769 t=8
+it=54000 evals=36618 t=8 cur=3310 best=3310 acc=167
+  new best 3286 at it=54039 t=8
+  new best 3280 at it=54312 t=8
+  new best 3276 at it=55795 t=8
+it=56000 evals=37875 t=8 cur=3276 best=3276 acc=170
+  new best 3272 at it=56874 t=8
+  new best 3264 at it=57640 t=8
+it=58000 evals=39135 t=8 cur=3264 best=3264 acc=172
+  new best 3252 at it=58927 t=8
+it=60000 evals=40395 t=8 cur=3252 best=3252 acc=175
+  new best 3246 at it=61322 t=9
+  new best 3230 at it=61507 t=9
+  new best 3220 at it=61806 t=9
+it=62000 evals=41643 t=9 cur=3220 best=3220 acc=179
+  new best 3218 at it=62159 t=9
+  new best 3216 at it=62510 t=9
+  new best 3210 at it=63791 t=9
+it=64000 evals=42920 t=9 cur=3212 best=3210 acc=185
+it=66000 evals=44191 t=9 cur=3214 best=3210 acc=186
+  new best 3204 at it=66184 t=9
+  new best 3202 at it=67364 t=9
+it=68000 evals=45439 t=9 cur=3202 best=3202 acc=188
+it=70000 evals=46727 t=10 cur=3202 best=3202 acc=188
+  new best 3192 at it=70243 t=10
+  new best 3190 at it=70515 t=10
+  new best 3160 at it=71064 t=10
+  new best 3152 at it=71538 t=10
+  new best 3142 at it=71863 t=10
+it=72000 evals=47968 t=10 cur=3142 best=3142 acc=195
+  new best 3140 at it=72443 t=10
+  new best 3112 at it=72794 t=10
+it=74000 evals=49260 t=10 cur=3112 best=3112 acc=197
+  new best 3110 at it=74679 t=10
+  new best 3076 at it=75033 t=10
+it=76000 evals=50508 t=11 cur=3076 best=3076 acc=199
+  new best 3066 at it=76543 t=11
+  new best 3058 at it=76558 t=11
+it=78000 evals=51808 t=11 cur=3058 best=3058 acc=202
+  new best 3046 at it=78331 t=11
+  new best 3028 at it=78883 t=11
+  new best 3024 at it=79017 t=11
+  new best 3022 at it=79674 t=11
+  new best 3010 at it=79739 t=11
+it=80000 evals=53060 t=11 cur=3010 best=3010 acc=207
+it=82000 evals=54333 t=11 cur=3010 best=3010 acc=207
+  new best 2994 at it=83318 t=12
+  new best 2966 at it=83648 t=12
+it=84000 evals=55616 t=12 cur=2966 best=2966 acc=209
+  new best 2956 at it=84857 t=12
+it=86000 evals=56883 t=12 cur=2956 best=2956 acc=210
+  new best 2950 at it=86101 t=12
+  new best 2946 at it=86814 t=12
+  new best 2910 at it=87508 t=12
+it=88000 evals=58155 t=12 cur=2910 best=2910 acc=213
+  new best 2900 at it=89230 t=12
+it=90000 evals=59403 t=13 cur=2900 best=2900 acc=215
+  new best 2892 at it=90075 t=13
+it=92000 evals=60638 t=13 cur=2892 best=2892 acc=216
+  new best 2862 at it=93139 t=13
+it=94000 evals=61891 t=13 cur=2862 best=2862 acc=218
+  new best 2858 at it=95778 t=13
+  new best 2856 at it=95844 t=13
+it=96000 evals=63174 t=13 cur=2856 best=2856 acc=220
+  new best 2844 at it=96008 t=13
+it=98000 evals=64455 t=14 cur=2844 best=2844 acc=221
+  new best 2840 at it=98249 t=14
+  new best 2832 at it=99294 t=14
+it=100000 evals=65703 t=14 cur=2832 best=2832 acc=223
+  new best 2818 at it=100736 t=14
+  new best 2810 at it=101890 t=14
+it=102000 evals=66964 t=14 cur=2810 best=2810 acc=225
+it=104000 evals=68192 t=15 cur=2810 best=2810 acc=225
+it=106000 evals=69443 t=15 cur=2810 best=2810 acc=225
+  new best 2806 at it=106789 t=15
+it=108000 evals=70734 t=15 cur=2806 best=2806 acc=226
+it=110000 evals=71996 t=15 cur=2806 best=2806 acc=226
+  new best 2796 at it=110777 t=16
+it=112000 evals=73267 t=16 cur=2796 best=2796 acc=227
+it=114000 evals=74509 t=16 cur=2798 best=2796 acc=229
+it=116000 evals=75749 t=16 cur=2798 best=2796 acc=229
+  new best 2792 at it=116085 t=16
+it=118000 evals=77008 t=16 cur=2792 best=2792 acc=231
+it=120000 evals=78282 t=17 cur=2792 best=2792 acc=231
+  new best 2786 at it=121015 t=17
+it=122000 evals=79515 t=17 cur=2786 best=2786 acc=232
+it=124000 evals=80792 t=17 cur=2786 best=2786 acc=232
+it=126000 evals=81980 t=18 cur=2786 best=2786 acc=232
+  new best 2772 at it=126961 t=18
+it=128000 evals=83230 t=18 cur=2772 best=2772 acc=234
+it=130000 evals=84478 t=18 cur=2772 best=2772 acc=235
+it=132000 evals=85762 t=18 cur=2772 best=2772 acc=235
+it=134000 evals=87041 t=19 cur=2772 best=2772 acc=235
+it=136000 evals=88273 t=19 cur=2772 best=2772 acc=235
+  new best 2766 at it=137819 t=19
+it=138000 evals=89523 t=19 cur=2766 best=2766 acc=237
+it=140000 evals=90771 t=19 cur=2766 best=2766 acc=237
+it=142000 evals=92054 t=20 cur=2766 best=2766 acc=237
+  new best 2764 at it=142716 t=20
+it=144000 evals=93342 t=20 cur=2764 best=2764 acc=238
+  new best 2754 at it=144877 t=20
+  new best 2752 at it=145741 t=20
+it=146000 evals=94580 t=20 cur=2752 best=2752 acc=240
+  new best 2744 at it=146241 t=20
+it=148000 evals=95885 t=21 cur=2744 best=2744 acc=242
+  new best 2738 at it=148896 t=21
+it=150000 evals=97140 t=21 cur=2738 best=2738 acc=244
+it=152000 evals=98402 t=21 cur=2738 best=2738 acc=244
+  new best 2724 at it=152245 t=21
+it=154000 evals=99638 t=21 cur=2724 best=2724 acc=246
+it=156000 evals=100910 t=22 cur=2726 best=2724 acc=247
+it=158000 evals=102150 t=22 cur=2726 best=2724 acc=247
+it=160000 evals=103415 t=22 cur=2726 best=2724 acc=247
+it=162000 evals=104680 t=23 cur=2724 best=2724 acc=249
+  new best 2720 at it=162012 t=23
+  new best 2716 at it=163888 t=23
+it=164000 evals=105962 t=23 cur=2716 best=2716 acc=251
+it=166000 evals=107235 t=23 cur=2716 best=2716 acc=251
+  new best 2712 at it=166462 t=23
+it=168000 evals=108502 t=23 cur=2712 best=2712 acc=252
+it=170000 evals=109779 t=24 cur=2712 best=2712 acc=252
+it=172000 evals=111036 t=24 cur=2712 best=2712 acc=252
+  new best 2710 at it=172171 t=24
+  new best 2674 at it=172892 t=24
+it=174000 evals=112295 t=24 cur=2674 best=2674 acc=254
+  new best 2628 at it=174273 t=24
+it=176000 evals=113609 t=25 cur=2628 best=2628 acc=255
+it=178000 evals=114861 t=25 cur=2628 best=2628 acc=255
+  new best 2626 at it=178024 t=25
+it=180000 evals=116123 t=25 cur=2626 best=2626 acc=256
+it=182000 evals=117411 t=25 cur=2626 best=2626 acc=256
+  new best 2612 at it=182679 t=25
+it=184000 evals=118663 t=26 cur=2612 best=2612 acc=257
+it=186000 evals=119900 t=26 cur=2612 best=2612 acc=257
+  new best 2600 at it=187982 t=26
+it=188000 evals=121163 t=26 cur=2600 best=2600 acc=258
+it=190000 evals=122442 t=26 cur=2600 best=2600 acc=259
+  new best 2598 at it=191014 t=27
+  new best 2594 at it=191909 t=27
+it=192000 evals=123723 t=27 cur=2594 best=2594 acc=261
+it=194000 evals=124985 t=27 cur=2594 best=2594 acc=261
+it=196000 evals=126220 t=27 cur=2596 best=2594 acc=262
+it=198000 evals=127491 t=28 cur=2596 best=2594 acc=262
+it=200000 evals=128762 t=28 cur=2596 best=2594 acc=262
+  new best 2590 at it=200389 t=28
+it=202000 evals=130000 t=28 cur=2590 best=2590 acc=263
+it=204000 evals=131263 t=28 cur=2590 best=2590 acc=263
+  new best 2580 at it=204838 t=29
+it=206000 evals=132515 t=29 cur=2580 best=2580 acc=264
+it=208000 evals=133763 t=29 cur=2580 best=2580 acc=264
+it=210000 evals=135024 t=29 cur=2580 best=2580 acc=264
+  new best 2572 at it=210041 t=29
+it=212000 evals=136298 t=30 cur=2572 best=2572 acc=265
+it=214000 evals=137570 t=30 cur=2572 best=2572 acc=265
+it=216000 evals=138824 t=30 cur=2572 best=2572 acc=265
+it=218000 evals=140081 t=30 cur=2572 best=2572 acc=265
+it=220000 evals=141318 t=31 cur=2572 best=2572 acc=266
+it=222000 evals=142586 t=31 cur=2572 best=2572 acc=266
+it=224000 evals=143894 t=31 cur=2572 best=2572 acc=267
+it=226000 evals=145175 t=31 cur=2572 best=2572 acc=267
+it=228000 evals=146410 t=32 cur=2572 best=2572 acc=268
+  new best 2570 at it=228172 t=32
+it=230000 evals=147691 t=32 cur=2570 best=2570 acc=269
+it=232000 evals=148955 t=32 cur=2570 best=2570 acc=269
+it=234000 evals=150212 t=33 cur=2570 best=2570 acc=269
+  new best 2550 at it=235217 t=33
+it=236000 evals=151485 t=33 cur=2550 best=2550 acc=270
+  new best 2544 at it=236414 t=33
+it=238000 evals=152732 t=33 cur=2544 best=2544 acc=271
+it=240000 evals=154006 t=33 cur=2544 best=2544 acc=271
+it=242000 evals=155281 t=34 cur=2544 best=2544 acc=271
+it=244000 evals=156525 t=34 cur=2544 best=2544 acc=271
+it=246000 evals=157781 t=34 cur=2544 best=2544 acc=271
+it=248000 evals=159047 t=35 cur=2544 best=2544 acc=271
+it=250000 evals=160338 t=35 cur=2544 best=2544 acc=271
+it=252000 evals=161631 t=35 cur=2544 best=2544 acc=271
+it=254000 evals=162916 t=35 cur=2544 best=2544 acc=271
+it=256000 evals=164170 t=36 cur=2544 best=2544 acc=271
+it=258000 evals=165432 t=36 cur=2544 best=2544 acc=271
+it=260000 evals=166660 t=36 cur=2544 best=2544 acc=271
+it=262000 evals=167905 t=37 cur=2544 best=2544 acc=271
+it=264000 evals=169169 t=37 cur=2544 best=2544 acc=271
+it=266000 evals=170406 t=37 cur=2544 best=2544 acc=271
+it=268000 evals=171682 t=37 cur=2544 best=2544 acc=271
+  new best 2534 at it=268137 t=37
+it=270000 evals=172937 t=38 cur=2534 best=2534 acc=272
+  new best 2528 at it=270020 t=38
+it=272000 evals=174206 t=38 cur=2528 best=2528 acc=273
+it=274000 evals=175486 t=38 cur=2528 best=2528 acc=274
+it=276000 evals=176790 t=38 cur=2528 best=2528 acc=274
+it=278000 evals=178020 t=39 cur=2528 best=2528 acc=274
+it=280000 evals=179244 t=39 cur=2528 best=2528 acc=275
+it=282000 evals=180498 t=39 cur=2528 best=2528 acc=276
+  new best 2518 at it=282988 t=39
+it=284000 evals=181785 t=40 cur=2518 best=2518 acc=277
+it=286000 evals=183059 t=40 cur=2518 best=2518 acc=278
+it=288000 evals=184329 t=40 cur=2518 best=2518 acc=278
+it=290000 evals=185569 t=40 cur=2518 best=2518 acc=278
+it=292000 evals=186838 t=41 cur=2518 best=2518 acc=278
+it=294000 evals=188097 t=41 cur=2518 best=2518 acc=278
+it=296000 evals=189386 t=41 cur=2518 best=2518 acc=278
+it=298000 evals=190625 t=41 cur=2518 best=2518 acc=278
+it=300000 evals=191885 t=42 cur=2518 best=2518 acc=278
+it=302000 evals=193166 t=42 cur=2518 best=2518 acc=278
+it=304000 evals=194417 t=42 cur=2518 best=2518 acc=279
+it=306000 evals=195666 t=43 cur=2518 best=2518 acc=279
+  new best 2508 at it=306359 t=43
+it=308000 evals=196928 t=43 cur=2508 best=2508 acc=280
+  new best 2506 at it=309683 t=43
+it=310000 evals=198205 t=43 cur=2506 best=2506 acc=281
+it=312000 evals=199463 t=43 cur=2506 best=2506 acc=281
+  new best 2492 at it=312104 t=43
+it=314000 evals=200730 t=44 cur=2492 best=2492 acc=282
+it=316000 evals=201970 t=44 cur=2492 best=2492 acc=282
+it=318000 evals=203238 t=44 cur=2492 best=2492 acc=282
+it=320000 evals=204491 t=44 cur=2492 best=2492 acc=282
+it=322000 evals=205784 t=45 cur=2492 best=2492 acc=282
+it=324000 evals=207028 t=45 cur=2492 best=2492 acc=282
+it=326000 evals=208281 t=45 cur=2492 best=2492 acc=282
+it=328000 evals=209563 t=46 cur=2492 best=2492 acc=282
+it=330000 evals=210836 t=46 cur=2492 best=2492 acc=282
+it=332000 evals=212129 t=46 cur=2492 best=2492 acc=282
+it=334000 evals=213402 t=46 cur=2492 best=2492 acc=282
+it=336000 evals=214679 t=47 cur=2492 best=2492 acc=282
+it=338000 evals=215918 t=47 cur=2492 best=2492 acc=282
+it=340000 evals=217176 t=47 cur=2492 best=2492 acc=282
+it=342000 evals=218422 t=47 cur=2492 best=2492 acc=282
+it=344000 evals=219692 t=48 cur=2492 best=2492 acc=282
+it=346000 evals=220965 t=48 cur=2492 best=2492 acc=282
+it=348000 evals=222171 t=48 cur=2492 best=2492 acc=282
+it=350000 evals=223452 t=49 cur=2492 best=2492 acc=282
+it=352000 evals=224727 t=49 cur=2492 best=2492 acc=282
+it=354000 evals=225992 t=49 cur=2492 best=2492 acc=282
+it=356000 evals=227246 t=49 cur=2492 best=2492 acc=282
+it=358000 evals=228534 t=50 cur=2492 best=2492 acc=282
+it=360000 evals=229791 t=50 cur=2492 best=2492 acc=282
+it=362000 evals=231075 t=50 cur=2492 best=2492 acc=282
+it=364000 evals=232322 t=50 cur=2492 best=2492 acc=282
+it=366000 evals=233595 t=51 cur=2492 best=2492 acc=282
+it=368000 evals=234871 t=51 cur=2492 best=2492 acc=282
+it=370000 evals=236152 t=51 cur=2492 best=2492 acc=282
+it=372000 evals=237413 t=52 cur=2492 best=2492 acc=282
+it=374000 evals=238668 t=52 cur=2492 best=2492 acc=282
+it=376000 evals=239941 t=52 cur=2492 best=2492 acc=282
+it=378000 evals=241223 t=52 cur=2492 best=2492 acc=282
+it=380000 evals=242475 t=53 cur=2492 best=2492 acc=282
+it=382000 evals=243739 t=53 cur=2492 best=2492 acc=282
+it=384000 evals=245011 t=53 cur=2492 best=2492 acc=282
+it=386000 evals=246305 t=53 cur=2492 best=2492 acc=282
+it=388000 evals=247562 t=54 cur=2492 best=2492 acc=282
+it=390000 evals=248831 t=54 cur=2492 best=2492 acc=282
+it=392000 evals=250107 t=54 cur=2492 best=2492 acc=282
+it=394000 evals=251396 t=55 cur=2492 best=2492 acc=282
+it=396000 evals=252673 t=55 cur=2492 best=2492 acc=282
+it=398000 evals=253914 t=55 cur=2492 best=2492 acc=282
+it=400000 evals=255173 t=55 cur=2492 best=2492 acc=282
+it=402000 evals=256468 t=56 cur=2492 best=2492 acc=282
+it=404000 evals=257739 t=56 cur=2492 best=2492 acc=282
+it=406000 evals=259034 t=56 cur=2492 best=2492 acc=282
+it=408000 evals=260289 t=57 cur=2492 best=2492 acc=282
+it=410000 evals=261545 t=57 cur=2492 best=2492 acc=282
+it=412000 evals=262819 t=57 cur=2492 best=2492 acc=282
+it=414000 evals=264091 t=57 cur=2492 best=2492 acc=282
+it=416000 evals=265369 t=58 cur=2492 best=2492 acc=282
+it=418000 evals=266649 t=58 cur=2492 best=2492 acc=282
+it=420000 evals=267904 t=58 cur=2492 best=2492 acc=282
+it=422000 evals=269175 t=59 cur=2492 best=2492 acc=282
+it=424000 evals=270435 t=59 cur=2492 best=2492 acc=282
+it=426000 evals=271719 t=59 cur=2492 best=2492 acc=282
+it=428000 evals=272996 t=59 cur=2492 best=2492 acc=282
+it=430000 evals=274247 t=60 cur=2492 best=2492 acc=282
+done n=800 best_ordered=2492 best_pairs=1246 iters=431845 evals=275406 acc=282 skip=158839 -> g2_test.edges

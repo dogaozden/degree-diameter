@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 51, in <module>
+    auts=automorphisms(adj,D,limit=limit,timeout=150)
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 44, in automorphisms
+    rec()
+    ~~~^^
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 40, in rec
+    rec()
+    ~~~^^
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 40, in rec
+    rec()
+    ~~~^^
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 40, in rec
+    rec()
+    ~~~^^
+  [Previous line repeated 993 more times]
+  File "/home/user/degree-diameter/research/squads/table-audit-r1/c7/auts3.py", line 37, in rec
+    if not np.array_equal(D[t][img], Du[idx]): continue
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/numpy/_core/numeric.py", line 2537, in array_equal
+    return builtins.bool((asanyarray(a1 == a2)).all())
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+RecursionError: maximum recursion depth exceeded

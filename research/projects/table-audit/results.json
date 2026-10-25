@@ -1,0 +1,822 @@
+{
+ "3,3": {
+  "source": "classical: incidence graph of PG(2,2)",
+  "construction": "PG(2,q) incidence graph, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(2) (Tits)",
+  "construction": "W(q) incidence graph, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(2) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,3": {
+  "source": "classical: incidence graph of PG(2,3)",
+  "construction": "PG(2,q) incidence graph, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(3) (Tits)",
+  "construction": "W(q) incidence graph, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "4,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(3) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 3",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,3": {
+  "source": "classical: incidence graph of PG(2,4)",
+  "construction": "PG(2,q) incidence graph, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(4) (Tits)",
+  "construction": "W(q) incidence graph, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "5,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(4) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 4",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,3": {
+  "source": "classical: incidence graph of PG(2,5)",
+  "construction": "PG(2,q) incidence graph, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(5) (Tits)",
+  "construction": "W(q) incidence graph, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "6,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(5) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 5",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,3": {
+  "source": "classical: incidence graph of PG(2,7)",
+  "construction": "PG(2,q) incidence graph, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(7) (Tits)",
+  "construction": "W(q) incidence graph, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "8,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(7) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 7",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,3": {
+  "source": "classical: incidence graph of PG(2,8)",
+  "construction": "PG(2,q) incidence graph, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(8) (Tits)",
+  "construction": "W(q) incidence graph, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "9,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(8) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 8",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_h_small.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,3": {
+  "source": "classical: incidence graph of PG(2,9)",
+  "construction": "PG(2,q) incidence graph, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(9) (Tits)",
+  "construction": "W(q) incidence graph, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "10,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(9) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 9",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_9.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,3": {
+  "source": "classical: incidence graph of PG(2,11)",
+  "construction": "PG(2,q) incidence graph, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(11) (Tits)",
+  "construction": "W(q) incidence graph, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "12,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(11) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 11",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_11.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,3": {
+  "source": "classical: incidence graph of PG(2,13)",
+  "construction": "PG(2,q) incidence graph, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,4": {
+  "source": "classical: incidence graph of the generalized quadrangle W(13) (Tits)",
+  "construction": "W(q) incidence graph, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/moore_pg_w.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "14,6": {
+  "source": "classical: incidence graph of the split Cayley hexagon H(13) (Tits 1959)",
+  "construction": "H(q) incidence graph from Tits coordinates, q = 13",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/h_13.apsp.txt)",
+  "notes": "bipartite Moore graph, optimal"
+ },
+ "3,5": {
+  "source": "Bar-Yehuda-Etzion, Discrete Appl. Math. 37/38 (1992) 29-43, Appendix B; Bond-Delorme, Ars Combin. 25C (1988)",
+  "construction": "two 28-cycles plus (j,0)~(j+F(j mod 4),1), F = (12,0,8,20)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt); also an independent annealed graph (graphs/d3D5_n56_anneal.edges.txt)",
+  "notes": "optimal (Jorgensen 1993; also Feria-Puron-Pineda-Villavicencio 2012)"
+ },
+ "7,3": {
+  "source": "Hafner (adjacency list on his page https://www.math.auckland.ac.nz/~hafner/bipartite/7.3) and Loz",
+  "construction": "Hafner's graph; also a Haar graph of Z5 x| Z8 found here (graphs/d7D3_n80_meta_5_8_2_x1.sol)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on Hafner's file and on the Haar graph (checks/small.txt)",
+  "notes": "optimal (Feria-Puron-Miller-Pineda-Villavicencio 2013, Thm 4.1)"
+ },
+ "3,7": {
+  "source": "Conder-Nedela (census graph C168.1, |Aut| = 504, 1-arc-regular, girth 12); also DGQ, Loz; Conder's file on Hafner's page (mdec3.7)",
+  "construction": "C168.1 from Conder's census symmcubicgraphs.tar.gz",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on C168.1 and on Hafner's mdec3.7 (checks/small.txt)",
+  "notes": "unbeaten by the repo; also Haar graph of meta 14 6 9 found here (graphs/d3D7_n168_meta_14_6_9_x1.sol); not necessarily the holder's graph"
+ },
+ "4,5": {
+  "source": "Hafner (file 4.5, 'Bond-Delorme construction', vertex-transitive, |Aut| = 160) and Loz",
+  "construction": "Hafner's adjacency list",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "4,7": {
+  "source": "Hafner (file 4.7, 'Bond-Delorme construction', vertex-transitive, |Aut| = 2520) and Loz",
+  "construction": "Hafner's adjacency list",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,3": {
+  "source": "Feria-Puron-Miller-Pineda-Villavicencio, Discrete Math. 313 (2013) (three Haar graphs Phi_95); Araujo-Pardo-Lopez (2022) Thm 1",
+  "construction": "Phi_95(4,7,16,27,38,52,62,81) etc.; AL graph R_9 = PG(2,9) + 8 vertices",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID on all three Phi_95 and on R_9 (checks/small.txt)"
+ },
+ "13,3": {
+  "source": "Araujo-Pardo-Lopez, Graphs Combin. (2022), arXiv:2005.02427, Thm 1 (order 2(q^2+q+5))",
+  "construction": "R_q = PG(2,11) + 8 vertices, rewired (problems/bipartite_dd/lib.py)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "wiki changed 270 -> 274 / 370 -> 374 on 30 Mar 2021; its percentage column was not updated"
+ },
+ "15,3": {
+  "source": "Araujo-Pardo-Lopez, Graphs Combin. (2022), arXiv:2005.02427, Thm 1 (order 2(q^2+q+5))",
+  "construction": "R_q = PG(2,13) + 8 vertices, rewired (problems/bipartite_dd/lib.py)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "wiki changed 270 -> 274 / 370 -> 374 on 30 Mar 2021; its percentage column was not updated"
+ },
+ "16,3": {
+  "source": "wiki: Delorme-Farhi duplication (no paper names this value; Delorme 1985 JGT not read)",
+  "construction": "PG(2,13) plus copies (Delorme-Farhi 1984) of the 14 points of a conic and of its 14 tangent lines; each copy joined to the original neighbours (tools/delorme.py d3)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "a duplication of exactly this order and degree; whether it is the graph the table had in mind is not documented"
+ },
+ "7,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(5) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(9) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "13,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(11) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "15,4": {
+  "source": "Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)",
+  "construction": "W(13) + spread {<X,AX>}; doubling of A0 = spread + points of one spread line, A1 = that line",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "16,4": {
+  "source": "Delorme 1985 Sec. 8(a) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
+  "construction": "W(13) + spread, tripling (b = 3)",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "7,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(5) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)"
+ },
+ "11,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(9) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q9_b2.apsp.txt)"
+ },
+ "13,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(11) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q11_b2.apsp.txt)"
+ },
+ "15,6": {
+  "source": "Delorme 1985 Sec. 8(b) (example q = 5: 7812 + 912 + 2(132) + 4 = 8992)",
+  "construction": "H(13) + Hermitian spread (Thas 1980); doubling A0 > A1 > A2",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q13_b2.apsp.txt)"
+ },
+ "16,6": {
+  "source": "Delorme 1985 Sec. 8(b) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
+  "construction": "H(13) + Hermitian spread, tripling (b = 3)",
+  "rebuilt": "yes",
+  "check": "apsp_mt.c VALID (checks/d6_q13_b3.apsp.txt)"
+ },
+ "10,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(7) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "11,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(8) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "12,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of W(9) linked by 2 bijections points -> lines (polygon cover, Z_5 voltages 1..2)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "13,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of W(9) linked by 3 bijections points -> lines (polygon cover, Z_7 voltages 1..3)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "14,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "9 copies of W(9) linked by 4 bijections points -> lines (polygon cover, Z_9 voltages 1..4)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "15,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of W(11) linked by 3 bijections points -> lines (polygon cover, Z_7 voltages 1..3)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "notes": "the value is exactly (2j+1)|GQ(q)| with Delta = q+1+j; the cover has diameter <= 5 for any bijections (proof in tools/xt_build.py); the original paper is unavailable, so this is a construction of the same order, probably the same family"
+ },
+ "16,5": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "none traced (27300 = 10*13*14*15 is the only arithmetic fit found)",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "superseded: repo record 33,792 (route-chart lift) and the A4(3) flag graph 31,460 (Cames van Batenburg-Korsky 2026)"
+ },
+ "6,7": {
+  "source": "Delorme 1985 Sec. 9 (insertion of vertices on edges, then q-1 duplications; order 2q(q^4+q^3+3q^2+q+1)); the wiki colours it Delorme-Gomez-Quisquater",
+  "construction": "H(5), subdivide the 2q^3 edges between distance 2 and 3 from an edge, q copies of the distance <= 2 part",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9"
+ },
+ "8,7": {
+  "source": "Delorme 1985 Sec. 9 (insertion of vertices on edges, then q-1 duplications; order 2q(q^4+q^3+3q^2+q+1)); the wiki colours it Delorme-Gomez-Quisquater",
+  "construction": "H(7), subdivide the 2q^3 edges between distance 2 and 3 from an edge, q copies of the distance <= 2 part",
+  "rebuilt": "yes",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9"
+ },
+ "7,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(5) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d7.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "9,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(7) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d9.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "10,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(8) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d10.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "11,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(9) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d11.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "12,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(9) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d12.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "13,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "3 copies of H(11) linked by 1 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d13.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "14,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(11) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d14.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "15,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "7 copies of H(11) linked by 3 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d15.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "16,7": {
+  "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "5 copies of H(13) linked by 2 bijections points -> lines",
+  "rebuilt": "order",
+  "check": "apsp_orb.c VALID (level shift checked as an automorphism; checks/x7_d16.apsp.txt)",
+  "notes": "exactly (2j+1)|H(q)|, Delta = q+1+j; diameter <= 7 for any bijections (hexd7 Lemma, tools/xt_build.py)"
+ },
+ "10,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(7): 25 copies of H(7) in groups of 5 plus 10 hubs per point/line pair (degree 10); the thesis lists N(10,8) >= 1,176,480",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 16,249 of the 19,608 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; unbeaten by the repo"
+ },
+ "11,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(8): 25 copies of H(8) in groups of 5 plus 10 hubs per point/line pair (degree 11); the thesis lists N(11,8) >= 2,246,940",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 26,487 of the 37,449 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; superseded by a verified repo record"
+ },
+ "12,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(9): 30 copies of H(9) in groups of 5 plus 10 hubs per point/line pair (degree 12); the thesis lists N(12,8) >= 4,650,100",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 41,009 of the 66,430 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; unbeaten by the repo"
+ },
+ "13,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished); not in Gomez 1986",
+  "construction": "none traced; value = 15|H(11)| with Delta = q+2",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction",
+  "notes": "superseded by a verified repo record"
+ },
+ "14,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(11): 35 copies of H(11) in groups of 5 plus 10 hubs per point/line pair (degree 14); the thesis lists N(14,8) >= 14,172,480",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 87,297 of the 177,156 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; unbeaten by the repo"
+ },
+ "15,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(11): 35 copies of H(11) in groups of 5 plus 10 hubs per point/line pair (degree 15); the thesis lists N(14,8) >= 14,172,480",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the (14,8) value reused (degree 14 <= 15); the thesis also claims N(15,8) >= 14,978,080 (Omega H_11 d); the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 87,297 of the 177,156 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; unbeaten by the repo"
+ },
+ "16,8": {
+  "source": "J. Gomez Marti, PhD thesis \"Diametro y vulnerabilidad en redes de interconexion\", UPC Barcelona 1986, Sec. 2.9.3 (graphs Omega H_q, Fig. 2.21; scan at web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf, thesis p. 44-46); wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",
+  "construction": "Omega H(13): 40 copies of H(13) in groups of 5 plus 10 hubs per point/line pair (degree 16); the thesis lists N(16,8) >= 36,201,060",
+  "rebuilt": "no",
+  "check": "as read, diameter 9 (checks/omega_D8.txt)",
+  "flag": "does not check out as read: diameter >= 9",
+  "notes": "the thesis claims D <= D_1 + 2 = 8, but under my reading of Fig. 2.21 a hub reaches at most 165,097 of the 402,234 points of a copy it does not touch within 7 steps (tools/omega_bound.py), and Omega H(7) built at 1,176,480 vertices has eccentricity 9; unbeaten by the repo"
+ },
+ "3,8": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "found here (squad table-audit-r1): a lift of the cube Q3 over Z32 (c3) and a Z32-symmetric annealed graph (c6), both 256; also 258 (K33 over Z43)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "not a symmetric cubic graph (Conder census); superseded by the repo record 288"
+ },
+ "3,10": {
+  "source": "wiki: Delorme-Gomez-Quisquater (unpublished)",
+  "construction": "found here (lead, after squad table-audit-r2): a Z80-lift of a cubic bipartite base multigraph on 5 + 5 vertices (squads/table-audit-r1/c6/sym_anneal.c, b = 10, c = 80, seed 11; graphs/d3D10_n800_symZ80_b10.edges.txt)",
+  "rebuilt": "order",
+  "check": "apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "not a symmetric cubic graph; Conder's 720 (C720.3) and Bar-Yehuda-Etzion's 672 are smaller; unbeaten by the repo"
+ },
+ "3,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 23 11 2 found here (graphs/d3D9_n506_meta_23_11_2_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 253 = 11\u00b723; = |Z_23 x| Z_11| (k | p-1): fits a Haar graph of that group"
+ },
+ "4,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 91 12 25 found here (graphs/d4D8_n2184_meta_91_12_25_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 1092 = 2^2\u00b73\u00b77\u00b713"
+ },
+ "4,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 71 35 2 found here (graphs/d4D9_n4970_meta_71_35_2_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 2485 = 5\u00b77\u00b771; = |Z_71 x| Z_35| (k | p-1): fits a Haar graph of that group"
+ },
+ "4,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 89 66 11 found here (graphs/d4D10_n11748_meta_89_66_11_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 5874 = 2\u00b73\u00b711\u00b789"
+ },
+ "5,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 7 24 3 found here (graphs/d5D5_n336_meta_7_24_3_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 168 = 2^3\u00b73\u00b77"
+ },
+ "5,7": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 311 5 6 found here (graphs/d5D7_n3110_meta_311_5_6_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group"
+ },
+ "5,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 171 27 4 found here (graphs/d5D8_n9234_meta_171_27_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 4617 = 3^5\u00b719"
+ },
+ "5,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 97 144 4 found here (graphs/d5D9_n27936_meta_97_144_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797"
+ },
+ "5,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 2047 22 25 found here (graphs/d5D10_n90068_meta_2047_22_25_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789"
+ },
+ "6,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 57 6 7 found here (graphs/d6D5_n684_meta_57_6_7_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 342 = 2\u00b73^2\u00b719; = |Z_19 x| Z_18| (k | p-1): fits a Haar graph of that group"
+ },
+ "6,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 331 45 4 found here (graphs/d6D8_n29790_meta_331_45_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331"
+ },
+ "6,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 815 72 23 found here (graphs/d6D9_n117360_meta_815_72_23_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163"
+ },
+ "6,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 1009 224 39 found here (graphs/d6D10_n452032_meta_1009_224_39_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 226016 = 2^5\u00b77\u00b71009"
+ },
+ "7,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 63 9 4 found here (graphs/d7D5_n1134_meta_63_9_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 567 = 3^4\u00b77"
+ },
+ "7,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 1349 30 159 found here (graphs/d7D8_n80940_meta_1349_30_159_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771"
+ },
+ "7,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 2501 80 3 found here (graphs/d7D9_n400160_meta_2501_80_3_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 200080 = 2^4\u00b75\u00b741\u00b761"
+ },
+ "7,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 11041 90 3 found here (graphs/d7D10_n1987380_meta_11041_90_3_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181"
+ },
+ "8,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 19 45 4 found here (graphs/d8D5_n1710_meta_19_45_4_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 855 = 3^2\u00b75\u00b719"
+ },
+ "8,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 365 276 3 found here (graphs/d8D8_n201480_meta_365_276_3_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 100740 = 2^2\u00b73\u00b75\u00b723\u00b773"
+ },
+ "8,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 421 1296 159 found here (graphs/d8D9_n1091232_meta_421_1296_159_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421"
+ },
+ "8,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051"
+ },
+ "9,5": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 13 96 2 found here (graphs/d9D5_n2496_meta_13_96_2_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 1248 = 2^5\u00b73\u00b713"
+ },
+ "9,8": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 661 340 71 found here (graphs/d9D8_n449480_meta_661_340_71_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 224740 = 2^2\u00b75\u00b717\u00b7661"
+ },
+ "9,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "Haar graph of meta 1361 1088 28 found here (graphs/d9D9_n2961536_meta_1361_1088_28_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
+  "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361"
+ },
+ "9,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951"
+ },
+ "10,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 3528700 = 2^2\u00b75^2\u00b77\u00b771^2"
+ },
+ "10,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 25165578 = 2\u00b73\u00b743\u00b7103\u00b7947"
+ },
+ "11,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 7600224 = 2^5\u00b73\u00b717\u00b74657"
+ },
+ "11,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 65296177 = 563\u00b7115979; = |Z_115979 x| Z_563| (k | p-1): fits a Haar graph of that group"
+ },
+ "12,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 15000576 = 2^10\u00b73\u00b719\u00b7257"
+ },
+ "12,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 150191525 = 5^2\u00b711\u00b7546151; = |Z_546151 x| Z_275| (k | p-1): fits a Haar graph of that group"
+ },
+ "13,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277"
+ },
+ "13,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 308665468 = 2^2\u00b7107\u00b7721181; = |Z_721181 x| Z_428| (k | p-1): fits a Haar graph of that group"
+ },
+ "14,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 47543869 = 467\u00b7101807; = |Z_101807 x| Z_467| (k | p-1): fits a Haar graph of that group"
+ },
+ "14,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group"
+ },
+ "15,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group"
+ },
+ "15,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 1150163255 = 5\u00b7101\u00b72277551; = |Z_2277551 x| Z_505| (k | p-1): fits a Haar graph of that group"
+ },
+ "16,9": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 144469559 = 13\u00b719\u00b7584897; = |Z_584897 x| Z_247| (k | p-1): fits a Haar graph of that group"
+ },
+ "16,10": {
+  "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
+  "construction": "no voltages, groups or base graphs published",
+  "rebuilt": "no",
+  "check": "",
+  "flag": "no traceable construction (data lost)",
+  "notes": "n/2 = 2059753665 = 3\u00b75\u00b771\u00b71934041; = |Z_1934041 x| Z_1065| (k | p-1): fits a Haar graph of that group"
+ }
+}

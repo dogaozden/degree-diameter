@@ -1,0 +1,6 @@
+group meta 5 4 2 x Z_20, N=400, identity 0, H order 20, rows 20, threads 1, setup 0.00s
+start cost=300
+t=30 steps=1344062 evals=10752497 cost=94 best=94 T=0.53
+t=60 steps=2653461 evals=21227689 cost=94 best=94 T=0.19
+t=90 steps=3863592 evals=30908737 cost=94 best=94 T=0.15
+RESULT d=3 D=10 group=meta 5 4 2 x Z_20 N=400 best=94 evals=41732905 time=120.0
