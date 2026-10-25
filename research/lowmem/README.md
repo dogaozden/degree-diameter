@@ -51,3 +51,21 @@ All runs: `run1.sh` (k = 3 orbits, m = 5, f = 0; K = 8; defaults otherwise), one
 | SL(2,149) × Z373 | 1,233,809,400 | 2,467,618,800 | +7.27 % | 18.2 | 761 | 863 s | self OK |
 
 (Table updated as runs finish; the logs are in runs/.)
+
+## Second session (2026-10-25): orbits of size 5 on PSL(2,p) × Z_n, FIXPRE
+
+`ORBIT="5 3 0"` (S = 3 orbits of an automorphism of order 5) on PSL(2,p) × Z_n with p ≈ 130–200 and n a prime of a few
+hundred, plus `FIXPRE=40`: before each full evaluation an exact meet-in-the-middle test (`fixcheck2`: even ball of
+depth 4 from (e,A) keyed by the torus coset invariant (y g y⁻¹, z), odd ball of depth 5 from (e,B) streamed past it)
+checks that every α-fixed point is covered, ~0.05 s against ~1.3 s, and redraws the candidate if not. Why k = 5 wins at
+(15,10) and what the squad measured: ../squads/cells/d15D10.md. `klist.py d D LO HI k` lists the usable groups.
+Other new options: `RANDORB` prints "units" (uncovered α-orbits + uncovered fixed points); `FIXTEST=m` validates
+fixcheck/fixcheck2 against the evaluator; `ZMAX` (z-spectrum filter) and `L5DEF` (depth-5 ball deficit filter) exist
+but did not pay off.
+
+| group | N | vertices | vs table | μ | evaluations | wall | check |
+|---|---|---|---|---|---|---|---|
+| SL(2,149) × Z373 (k = 3) | 1,233,809,400 | 2,467,618,800 | +7.27 % | 18.2 | 761 | 863 s | self OK; haarcheck2 VALID (1,072 s) |
+| PSL(2,149) × Z761 | 1,258,617,900 | 2,517,235,800 | +9.43 % | 26.4 | 217 | 337 s | self OK |
+| PSL(2,181) × Z431 | 1,277,820,180 | 2,555,640,360 | +11.10 % | 35.0 | 217 | 413 s | self OK; haarcheck_psl VALID (2,021 s) |
+
