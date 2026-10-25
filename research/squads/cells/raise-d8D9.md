@@ -47,5 +47,18 @@ ORBW or RESTART before this round.
 - psl 47 x Z13, RESTART=1, seed 33: stopped early (replaced by the sl 17 runs).
 - sl 17 x Z139, ORBIT "3 2 2", ORBW=3, seeds 35 and 36. sl 17 x Z139, ORBIT "3 2 2", seed 37 (default weights).
 
-## Status
-- In progress at the time of writing; results appended below.
+## Results, round 2 first hour (1 h each, no solve)
+| run | group | N | weights | best cost | evals |
+|---|---|---|---|---|---|
+| s31 | psl 47 x Z13 | 674,544 | ORBW=3 | **3** | 3.84M |
+| s35 | sl 17 x Z139 | 680,544 | ORBW=3 | 20 | 3.46M |
+| s36 | sl 17 x Z139 | 680,544 | ORBW=3 | 30 | 3.53M |
+| s37 | sl 17 x Z139 | 680,544 | default | 36 | 3.53M |
+
+- psl 47 x Z13 with ORBW=3 beats round 1's plateau (5-6 in 3.6M evals, default weights). Cost 3 is one orbit of 3 or
+  fixed elements left. This is the lead for round 2.
+- sl 17 x Z139 is worse here than round 1 (best 12). Round 1 used default weights; the spread across seeds is large.
+  Not pursued further.
+
+## Next (round 2, second block)
+- psl 47 x Z13, ORBW=3, seeds 41-43 at 2 h each, plus seed 44 with RESTART=1 ORBW=3.
