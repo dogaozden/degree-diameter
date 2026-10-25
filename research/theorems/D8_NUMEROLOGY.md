@@ -216,7 +216,7 @@ cover × Z_K lift with random matchings gives K = 5, a valid lift with 25 copies
 these matchings the smallest c_2 is 4, so K = 6 would need multi-hop walks at the worst pairs. Squad card c2 kept
 random hop labels and designed only the flag voltages; that fails already at K = 3 for q = 4 and 5. At q = 4 the
 annealed polygon cover × Z_4 reaches DGQ's value exactly (20 copies, 54,600 vertices,
-`calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 is RESULT_PC45.
+`calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 (25 copies) stayed at 3,194 unreached pairs after 13 minutes.
 
 ### 1.5 No tight one-matching design for q ≥ 7, equitable or not (`tight_j1.py` → `tight_j1_out.txt`)
 
@@ -328,8 +328,8 @@ graph, `calib/checks.txt`, `eq/*_check.txt`):
 | 4 | 20 | 20 (54,600) | Z_5 polygon cover × Z_4 (DGQ's reading exactly), Z_4 parts annealed (qanneal2) |
 | 4 | 20 | **22** (60,060) | C_7-equivariant lift (eqlift.py), quotient voltages annealed (qanneal2.c) |
 | 5 | 25 | 14 (109,368) | squad c4: tann3 (tann2 without multi-edges) |
-| 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2 |
-| 7 | 30 | RESULT_Q7 | C_43-equivariant lift + qanneal2 |
+| 5 | 25 | 20 (156,240) | C_31-equivariant lift + qanneal2; 22 stopped at 30 unreached orbits, 25 at about 45 (focus sources) |
+| 7 | 30 | 20 copies: 6 unreached orbits left after 40 min (RESULT_Q7_FINAL) | C_43-equivariant lift + qanneal2, then qanneal4 |
 
 The symmetric lifts use a cyclic group C of collineations acting semiregularly on points and lines (a Singer-type
 element of SL(3,q) ⊂ G_2(q), order q² + q + 1 or a divisor, or an element of order q² − q + 1 found as a random product
@@ -453,12 +453,19 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 - Done on 2026-10-25: exact-cost annealing at q = 3, 4, 5 (§2.2) and a SAT search for guaranteed-walk designs (only
   q = 2 solves). The open question is no longer "can anything reach DGQ's values" (at q ≤ 4 optimization passes
   them) but "what scales like 2.5q": a design for the families of §2.3 that keeps working as q grows.
-- Concrete next tests: (a) symmetric lifts with larger groups at q = 7 (the C_43 run reached RESULT_Q7_SHORT), to see
+- Concrete next tests: (a) symmetric lifts with larger groups at q = 7 (the C_43 run got to 6 unreached orbits at 20 copies in 40 minutes), to see
   whether optimization alone approaches 30 there; (b) for q = 9 (self-dual H(9), the (12,8) cell) a duality as one hop
-  matching makes every pair at distance 3 have ≥ 22 cancelling walks at q = 3 (§1.4): a polygon cover × Z_7 design with
-  a duality could explain the (12,8) cell and might be improvable, but it would not explain q = 7, 11, 13.
-- A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table,
-  and if it extends to j = 3 it would beat (13,8) and (15,8).
+  matching gives many more class-0 walks (§1.4: at q = 3 the per-pair minimum of cancelling walks goes from 4 to 15–22).
+  At q = 3 this did not help the annealer (polygon cover × Z_6 failed with and without a duality: 500 and 298
+  unreached), so class 0 is not what limits small q; whether it limits q = 9 is open, and a duality would not explain
+  q = 7, 11, 13 anyway.
+- A construction reaching 5(⌊Δ/2⌋ + 1)·|GH(q)| for all q would also give values at q = 16, 17, 19 outside the table.
+  (13,8) and (15,8) now hold 6,999,552 and 18,128,880 (group searches), so a j = 3 version would need at least 53
+  copies of GH(9) or 52 of GH(11) to matter there.
+- Theory: make §1.5 robust to the O(P/q) defects (it would then say that no regular one-matching design certified by
+  guaranteed walks reaches q + 4 for q ≥ 7), and look for a spectral version of the j = 2 count of §1.2; the
+  combinatorial bound 1 + 2(q+1)(q+4)/(q−3) is far above DGQ's values, and the j = 2 case is not tight, so the §1.5
+  argument does not carry over directly.
 
 ## Scripts and outputs (research/theorems/d8/)
 
@@ -480,6 +487,6 @@ eqlift.py). Every valid file was rechecked here with liftdiam and with apsp.c (`
 | qanneal.c, qanneal2.c | eq/*.txt | annealing of the Z_M part of a quotient base on the exact cost (qanneal2: moves at failing pairs) |
 | doubled.py | (printed, §4) | polygon cover with equal hop matchings |
 | calib/ | calib/checks.txt | squad r3-d8's valid lifts (q = 3, 4, 5), rechecked with liftdiam and apsp.c |
-| class0_nbw.py | (printed, §1.4) | exact number of non-backtracking class-0 walks per pair in a Z_5 cover |
+| class0_nbw.py | class0_nbw_out.txt | exact number of non-backtracking class-0 walks per pair in a Z_5 cover |
 | nearfrac.py | nearfrac_out.txt | how close a hop matching is to a duality (squad c1's matchings vs random) |
 | qanneal3.c | eq/*.txt, calib/*.txt | qanneal2 plus equivariant hop swaps, one or two matchings, and moves that keep b mod 5 (polygon cover × Z_K) |
