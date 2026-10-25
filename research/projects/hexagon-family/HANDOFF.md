@@ -11,8 +11,8 @@ Theory: THEOREM.md. Lean: lean/BipartiteDD/HexagonD7/. Squad rounds: research/sq
 | (9,7) | 118,224 | **118,240** | H(7): 288 + 8 | sets/P7_mix296.pairs, d9D7_hex7_mixK296_n118240.sol | apsp_mt VALID |
 | (10,7) | 225,128 | **225,160** | H(8): 217 + 16 (all-lines scan ext_all.py, seed 2, order ovl) | sets/P8_mix233.pairs, d10D7_hex8_mixK233_n225160.sol | apsp_orb VALID (225,158 from 217 + 15: apsp_mt VALID) |
 | (11,7) | 407,162 | **407,192** | H(9): 4,306 non-collinear points, σ = duality | sets/P9_ncol_4306.txt, d11D7_hex9_B2dualK4306_n407192.sol | apsp_mt VALID |
-| (12,7) | 680,068 | **681,460** | same 4,306; 5 levels; Haar hub graph PSL(2,11)×Z13 (8,580/side) | d12D7_hex9_B2dual5K4306_H8580.hubs (frontier: ..._n681460.{sol,hubs}) | apsp_mt VALID |
-| (13,7) | 1,064,448 | **1,064,476** | H(11): 756 + 14 | sets/P11_mix770.pairs, d13D7_hex11_mixK770_n1064476.sol | PENDING (apsp_orb L=3) |
+| (12,7) | 680,068 | **681,520** | same 4,306; 5 levels; Haar hub graph of (Z41 ⋊ Z10) × Z21 (8,610/side; r = 4) | hubs/h_meta41x10x21.txt, d12D7_hex9_B2dual5K4306_H8610.hubs (frontier: ..._n681520.{sol,hubs}) | apsp_orb VALID (681,460 with PSL(2,11)×Z13: apsp_mt VALID) |
+| (13,7) | 1,064,448 | **1,064,476** | H(11): 756 + 14 | sets/P11_mix770.pairs, d13D7_hex11_mixK770_n1064476.sol | apsp_orb VALID (35 min, 1 thread) |
 | (14,7) | 1,774,584 | **1,774,640** | same 770, 5 levels | d14D7_hex11_mixK770_n1774640.hubs (+ the (13,7) .sol) | PENDING (apsp_orb L=5) |
 | (15,7) | 2,484,720 | **2,484,804** | same 770, 7 levels | d15D7_hex11_mixK770_n2484804.hubs (+ the (13,7) .sol) | PENDING (apsp_orb L=7) |
 | (16,7) | 4,025,508 | **4,025,604** | H(13): 792 + 24, 5 levels | sets/P13_mix816.pairs, d16D7_hex13_mixK816_n4025604.{sol,hubs} | PENDING (apsp_orb L=5) |
@@ -37,7 +37,12 @@ automorphism, then runs BFS from every vertex of level 0 and every hub; usage `a
     ./tools/apsp_orb e15.txt 15 7 3 7 354312
     ./tools/xgen hex/hex_q13.bin sols/d16D7_hex13_mixK816_n4025604.sol sols/d16D7_hex13_mixK816_n4025604.hubs 5 e16.txt
     ./tools/apsp_orb e16.txt 16 7 3 5 804468
-    # (11,7), (12,7): see research/d10D7 (d7hex b2dual, x5gen2); (11,7): apsp_mt e407192.txt 11 7 3
+    # (11,7): ./tools/d7hex edges hex/hex_q9.bin sols/d11D7_hex9_B2dualK4306_n407192.sol e11.txt; apsp_mt e11.txt 11 7 3
+    # (12,7): hub graph from the Haar solution (research/frontier/build_haar2.py hubs/h_meta41x10x21.txt hg.edges:
+    #   VALID d=7 D=7 N=8610); hub j (each side) owned by freed point j mod 4306, hub edge j ~ k from Haar edge (j, 8610+k)
+    gcc -O2 -o tools/x5gen2 ../../d10D7/dual/x5gen2.c
+    ./tools/x5gen2 hex/hex_q9.bin sols/d11D7_hex9_B2dualK4306_n407192.sol sols/d12D7_hex9_B2dual5K4306_H8610.hubs e12.txt
+    ./tools/apsp_orb e12.txt 12 7 3 5 132860
 
 hex/hex_q11.bin sha256 e60db369..., hex_q13.bin 57aa5dfc... (tools/hexgen2 output, deterministic).
 
@@ -69,6 +74,6 @@ the counts, and the hub graph give the graph). Not formalised: a duality of H(3^
 - q = 11: the extension greedy is exhausted at 770 (every order stalls at 13–14 added points). A gain needs a move that
   changes R itself, or an exact search over the cells (squad r3 c8: CP-SAT on a 600-pair pool, too small).
 - q = 13: 816; more seeds/resumes of the c4 repair from other 792 sets might add a few.
-- q = 9: 4,306 vs 6,643. (12,7) could take 2 hubs for each of the 4,306 points (8,612/side) with a Haar graph of order
-  8,581–8,612: scan in hubs/scan (run.sh, scan.log); PSL(2,11)×Z13 (8,580) is the best found so far.
+- q = 9: 4,306 vs 6,643. (12,7) uses 8,610 of the 8,612 possible hubs per side (hubs/scan: groups of order
+  8,581–8,612; order 8,612 = 4·2,153 metacyclic fails, 8,611 has only the cyclic group).
 - Pending checks: see the table; outputs go to checks/d1{3,4,5,6}D7_n*_apsp.txt.

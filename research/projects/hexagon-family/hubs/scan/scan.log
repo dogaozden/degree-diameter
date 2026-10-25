@@ -1,0 +1,10 @@
+== 8612 meta 2153 4 232 1
+t=210 steps=26957 evals=1725249 cost=1078 best=1078 T=0.25
+RESULT d=7 D=7 group=meta 2153 4 232 x Z_1 N=8612 best=1078 evals=1915201 time=240.0
+== 8610 meta 41 10 4 21
+full diameter check: OK
+wrote h_meta_41_10_4_21.txt
+== 8610 meta 41 5 10 42
+stopped after 8610 (found); 8611 has only abelian groups, 8612 meta failed
+t=120 steps=90927 evals=5819329 cost=2 best=2 T=0.15
+RESULT d=7 D=7 group=meta 41 5 10 x Z_42 N=8610 best=2 evals=6612609 time=136.9
