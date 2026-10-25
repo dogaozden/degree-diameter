@@ -49,3 +49,27 @@ state again and again, 5 times out of 7 runs, and never gets to 0. A single fixe
 probability about e^(-λ/3) ≈ 0.05 per random S, so this is most likely the endgame barrier, not a structural
 impossibility. But it is the closest any run has come, so psl 17 gets the remaining compute.
 Diagnosing which element it is would need a haar_sym change (dump the uncovered codes at cost 1); not done.
+
+### Batch 3 (08:55–09:45): psl 17 x Z109 seeds, large-cyclic screen
+
+- psl 17 x Z109 got about 8 more RESTART=1 runs (2000 s each, 5–10·10⁶ evals), plus one ORBW=3 run. Best cost
+  is 1 in 5 runs and 3 in the others. Nothing reached 0.
+- The screen of the full window with the cyclic cap raised to n ≤ 3000 (`orb_screen.py --nmax 3000`) gave new
+  candidates (psl 7 × Z1561 at N = 262,248, sl 8 × Z523 at 263,592, sl 5 × Z2191, psl 9 × Z733, …). Their
+  random-S minima are 156 to 40,000 against 3 for the record group, so none were run. Groups with large
+  cyclic factors mix badly, as STRUCTURE.md §5 already says.
+
+## Status and what would move it
+
+No solution above 524,160 yet. Every μ ≈ 24–32 group tried is above the wall for this α within about 1e7
+evaluations per run. Only psl 17 × Z109 approaches 0, and only in its endgame (one α-fixed element uncovered).
+
+Next steps for a later session (not done here):
+1. Make haar_sym dump the uncovered elements at cost 1 (psl 17), to see whether it is always the same fixed
+   element. If it is, the α or the group is structurally blocked; if not, run many more seeds.
+2. A cheaper endgame: when the cost is 1 (a fixed point), try exact moves on the fixed generators instead of
+   whole orbits.
+3. Route-chart or lift constructions (research/theorems/BEAT_16_5_SQUAD.md) for (6,10), which the orbit search
+   does not reach at these μ.
+
+Time spent: about 2.5 hours on 4 cores, roughly 1.5·10⁸ orbit evaluations in total.
