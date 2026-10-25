@@ -11,3 +11,6 @@ here from the solution file, and the check is repeated with D lowered by one (mu
 == cell-10-7 session, 5-level cover: hexagon from hexgen2.c (q = 9), edges from research/d10D7/dual/x5gen2.c
 == d12D7_hex9_B2dual5K3911_n679924.sol (sha256 c0656ff6...) + .hubs (sha256 57befa05...): n=679924 edges=4079494;
    RESULT VALID d=12 D=7 n=679924 (411 s); with D=6: RESULT INVALID
+
+== 6:20 PM: cell-10-7 session, d7hex.c (unchanged) on hexgen2 q = 9
+== d11D7_hex9_B2dualK4291_n407162.sol: n=407162 edges=2239391; RESULT VALID d=11 D=7 n=407162 (124 s); with D=6: RESULT INVALID

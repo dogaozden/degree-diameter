@@ -108,3 +108,15 @@ search found 47 pairwise compatible orbits: 47·91 = 4,277. n = 6·66,430 + 2·4
 apsp (all pairs), 2026-10-25 00:1x UTC: n=407134 edges=2239237 degree min=11 max=11 bipartite=yes diameter=7,
 RESULT VALID d=11 D=7 n=407134. Edge list sha256 92a0f3059f15a39b1f9d710fe83dc608cf77abea8bbb452e2547ef510384af6f
 (`./d7hex edges hex/hex_q9.bin SOL g.edges` on the saved solution gives the same hash).
+
+## (11,7) 407,162: the duality M with 4,291 freed pairs (squad round 6, card c4)
+
+The same construction, with 4,291 pairwise non-collinear points of H(9) (research/d10D7/sets/P9_r6c4_4291.txt, sha256
+1f89b0559a2fe4328b0fe1a268ab36873563e14b8563dcbe958cda3a3b9a5aeb, setcheck VALID). The set is 613 orbits of size 7 of
+the order-7 subgroup of the order-91 element. Card r6/c4 found it with a k-fixed tabu search on the orbit graph,
+started from the 4,277 set. n = 6·66,430 + 2·4,291 = 407,162.
+    B2PTS=sets/P9_r6c4_4291.txt ./d7hex b2dual hex/hex_q9.bin dual/x9_dual_K28.sol 1 OUT.sol 8 0
+    file research/frontier/sols/d11D7_hex9_B2dualK4291_n407162.sol (sha256 b0c6b953f0dcafadfe7b256769a86b9aaca20bfccc2cf3708e1d0c05677f0e95)
+apsp (all pairs), 2026-10-25 00:4x UTC: n=407162 edges=2239391 degree min=11 max=11 bipartite=yes diameter=7,
+RESULT VALID d=11 D=7 n=407162. Edge list sha256 4783da76ba68dcaaa4a182374e50cf77ca0ab77bbfbba8e4922782ae0a76e19e
+(a rebuild from the saved solution gives the same hash).
