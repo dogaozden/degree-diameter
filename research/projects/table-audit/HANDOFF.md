@@ -27,16 +27,16 @@ gen_cells.py && python3 fill_audit.py` is enough after a new check log lands.
 - 23 Loz cells reproduced at exact order as metacyclic Haar graphs (graphs/*.sol; checks/small.txt, haar_big.txt,
   haar_huge.txt).
 
-## Running when this was written (scratchpad, will not survive the session)
-- sym_anneal2 at (3,10) with n = 810 (b = 10, c = 81), seeds 31 and 32, 45 min each. Earlier 45-min runs at 810
-  (seed 21) and 820 (c = 82, seed 22) stopped at cost 4. A cost-0 output would beat the table (800); it must pass
-  apsp.c and then goes to the coordinator, not into records.
+## Running when this was written
+Nothing. Every check in checks/ is complete.
 
 ## Open
 - Whether ΩH_q with some labelling reaches D = 8 at q = 7..13 (the table's (10,8), (11,8), (12,8), (14,8), (16,8);
   (15,8) repeats the (14,8) value).
   A Z₅-symmetric labelling would let apsp_orb-style checks run from one copy per group. Overlaps bigcheck-dist goal 3.
-- (13,8) = 15·|H(11)|, (16,5) = 27,300, (3,10) = 800: no source ((3,10) now has a graph of that order). Delorme–Gómez 2002 (EJC, open archive; ScienceDirect
+- (13,8) = 15·|H(11)|, (16,5) = 27,300, (3,10) = 800: no source ((3,10) now has a graph of that order).
+- (3,10) above 800: tools/sym_anneal2.c at b = 10 reached cost 2 at 810 (7 runs of 45 min) and 4 at 820 (1 run);
+  checks/d3D10_beyond800.txt. Longer runs or other (b, c) splits are the next try. Delorme–Gómez 2002 (EJC, open archive; ScienceDirect
   blocks scripts here) and the never-published DGQ paper are the places to look.
 - Loz data: try web.archive.org from a machine that can reach it (.../www.eyal.com.au/wiki/The_Degree/Diameter_Problem
   and its bipartite subpage); the thesis (Auckland 2009) is restricted to university logins.

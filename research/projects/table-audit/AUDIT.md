@@ -189,7 +189,8 @@ their exact order.
   it either way.
 - **(3,10) = 800** is a cell the repo has not beaten. Its value had no source and no graph; there is now a checked
   graph of exactly 800 (graphs/d3D10_n800_symZ80_b10.edges.txt, §3). It equals the table value, so it is not a record.
-  Runs at 810 and 820 with the same method were started after it.
+  Going past it did not work: seven 45-min runs at 810 (c = 81) stopped at cost 2 to 6, one at 820 (c = 82) at 4
+  (checks/d3D10_beyond800.txt).
 
 ## 6. The wiki's own consistency
 
