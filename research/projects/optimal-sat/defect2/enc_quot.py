@@ -13,13 +13,14 @@ Normal form: vertex 0 has out-neighbours 1..k-2 and in-neighbours k-1..2k-4 (alw
 --sym adds lex-leader clauses for adjacent transpositions inside O={1..k-2}, I={k-1..2k-4}, R={2k-3..m-1}
 (row-major order of the a-variables); --signs adds the weighing-matrix signing with a gauge fix.
 usage: enc_quot.py k out.cnf [--signs] [--sym] [--insigns] [--nf2]
+--ntt: add 'no transitive triangle' clauses (implied by Lemma Q2 at every vertex).
 --nf2: second normal form (Lemma Q2): R labelled by the pairs of O, all arcs between R and O fixed.
 """
 import sys, itertools, json
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 
-def build(k, signs=False, sym=False, insigns=False, nf2=False):
+def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False):
     m = k * (k - 1) // 2
     g = k - 2
     pool = IDPool()
@@ -34,6 +35,10 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False):
         cnf.append([a[d, 0]] if d in I else [-a[d, 0]])
     for c, d in itertools.combinations(V, 2):
         cnf.append([-a[c, d], -a[d, c]])
+    if ntt:
+        # Lemma Q2 at every vertex = no transitive triangle (a->b, a->c, b->c); implied, added for propagation.
+        for p, q, r in itertools.permutations(V, 3):
+            cnf.append([-a[p, q], -a[p, r], -a[q, r]])
     if nf2:
         # Lemma Q2: O and I are independent, no arcs I->O, and y -> O cap O_y is a bijection R -> pairs of O.
         # Label R = pairs (i,j) of O in lexicographic order; y_(i,j) -> x_i, x_j and no other arcs R -> O.
@@ -145,7 +150,7 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False):
 if __name__ == '__main__':
     k = int(sys.argv[1])
     cnf, pool, a = build(k, signs='--signs' in sys.argv, sym='--sym' in sys.argv, insigns='--insigns' in sys.argv,
-                         nf2='--nf2' in sys.argv)
+                         nf2='--nf2' in sys.argv, ntt='--ntt' in sys.argv)
     cnf.to_file(sys.argv[2])
     with open(sys.argv[2] + '.map', 'w') as f:
         json.dump({'k': k, 'a': [[c, d, v] for (c, d), v in a.items()]}, f)
