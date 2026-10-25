@@ -1,0 +1,7 @@
+group sl 16 poly x^4+x+1 x Z_281, N=1146480, identity 67440, H order 17, rows 67440, threads 1, setup 0.05s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+alpha: conj by mat(10,0,2,12) (index 2546), z -> 86 z on Z_281
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 70.86, mu/k = 14.17, fixed-point misses ~ 2.16
+ORBW=5: an uncovered fixed element weighs 5; start energy 415
+start cost=395
+t=30 steps=604 evals=4833 cost=31 best=35 T=0.53 energy=35 bestE=35
