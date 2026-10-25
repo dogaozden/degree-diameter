@@ -12,3 +12,14 @@ t=256 steps=15 evals=121 cost=5 best=5 T=0.15
 t=294 steps=18 evals=145 cost=5 best=5 T=0.15
 t=337 steps=21 evals=169 cost=5 best=5 T=0.15
 t=372 steps=24 evals=193 cost=5 best=5 T=0.15
+t=413 steps=27 evals=217 cost=0 best=0 T=0.15
+RESULT d=15 D=10 group=psl 181 x Z_431 N=1277820180 best=0 evals=217 time=413.4 orbit k=5 m=3 f=0 fix=89 fixchecks=3240
+recomputed cost of best S: 0
+full check from (e,A): reached A 1277820180/1277820180, B 1277820180/1277820180 within 10
+full check from (e,B): reached A 1277820180/1277820180, B 1277820180/1277820180 within 10
+full diameter check: OK
+full check from (e,A): reached A 1277820180/1277820180, B 1277820180/1277820180 within 10
+full check from (e,B): reached A 1277820180/1277820180, B 1277820180/1277820180 within 10
+full diameter check after normalising s_0 = e: OK
+wrote ../frontier/sols/d15D10_psl_181_431_orb5f0_s3_FIXPRE40.txt
+exit 0 2026-10-25T13:12:57Z

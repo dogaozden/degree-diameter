@@ -1,0 +1,5 @@
+start 2026-10-25T13:15:12Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=60 | haar_lean 15 10 10800 1 8 ../frontier/sols/d15D10_psl_199_331_orb5f0_s1_FIXPRE60.txt psl 199 331
+group psl 199 x Z_331, N=1304206200, rows 19800 of 65869 bits (1030 words), memory 0.33 GB per thread, threads 1, setup 0.35s
+alpha: conj by mat(0,198,1,61), z -> 64 z on Z_331
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 99 (+e); mu = 50.83, mu/k = 10.17, fixed-point misses ~ 3.30
+start cost=59 (first eval 1.16s)
