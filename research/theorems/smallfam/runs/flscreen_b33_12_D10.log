@@ -1,0 +1,33 @@
+Terminated
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 125, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 119, in main
+    drain(False)
+    ~~~~~^^^^^^^
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 78, in drain
+    n, i, st, res = fu.result()
+                    ~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 453, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 42, in run_one
+    os.remove(tab)
+    ~~~~~~~~~^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-user-degree-diameter/b0dda455-de6a-56ff-a7ef-af02eb599aa1/scratchpad/ltab_148_1.txt'
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 125, in <module>
+    main()
+    ~~~~^^
+  File "/home/user/degree-diameter/research/theorems/smallfam/flscreen.py", line 100, in main
+    for (i, dsize, inv) in list_groups(n):
+                           ~~~~~~~~~~~^^^
+  File "/home/user/degree-diameter/research/theorems/smallfam/allgroups.py", line 35, in list_groups
+    os.rename(out + '.tmp', out)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/claude-0/-home-user-degree-diameter/b0dda455-de6a-56ff-a7ef-af02eb599aa1/scratchpad/list_160.txt.tmp' -> '/tmp/claude-0/-home-user-degree-diameter/b0dda455-de6a-56ff-a7ef-af02eb599aa1/scratchpad/list_160.txt'

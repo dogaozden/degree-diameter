@@ -1,0 +1,25 @@
+phase1 base 0 done 04:50:40
+phase1 base 1 done 04:53:59
+Terminated
+phase1 base 2 done 04:55:42
+phase1 base 3 done 04:58:44
+phase1 base 4 done 05:01:39
+phase1 base 5 done 05:04:08
+phase1 done 05:04:08
+lowest-cost screened pairs (cost, base, n, id, structure, voltages):
+   (32, 'b44_5', 68, 1, 'C17 : C4', '57 39 10 61 18')
+   (40, 'b44_3', 66, 1, 'C11 x S3', '12 62 23 45 13')
+   (46, 'b44_1', 66, 1, 'C11 x S3', '17 51 20 40 13')
+   (50, 'b44_4', 66, 4, 'C66', '46 52 10 12 43')
+   (52, 'b44_2', 66, 1, 'C11 x S3', '61 51 53 65 41')
+   (52, 'b44_5', 65, 1, 'C65', '28 32 25 36 31')
+   (52, 'b44_5', 67, 1, 'C67', '16 57 39 30 38')
+   (54, 'b44_4', 65, 1, 'C65', '61 41 39 28 40')
+   (56, 'b44_5', 66, 4, 'C66', '16 40 10 31 30')
+   (60, 'b44_3', 65, 1, 'C65', '24 12 39 53 40')
+   (65, 'b44_4', 66, 1, 'C11 x S3', '60 15 20 29 52')
+   (68, 'b44_5', 68, 2, 'C68', '5 22 23 37 8')
+re-anneal b44_5 order 68 id 1 C17 : C4 (screen cost 32)
+RESULT N=68 K=8 D=9 best=68 evals=569857 voltages 54 20 64 12 14
+RESULT N=68 K=8 D=9 best=46 evals=607649 voltages 32 40 16 18 66
+reanneal done

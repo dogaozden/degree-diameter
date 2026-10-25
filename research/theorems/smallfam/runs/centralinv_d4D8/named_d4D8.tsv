@@ -1,0 +1,9 @@
+Meta(55,20,14)	1100|[ 1100, 17 ]|(C11 : C5) x (C5 : C4)	plan=2352	DONE tested 2580144 solutions 0 best_cost 6 best_set 0 1 28 650 quotient_filtered 1228152
+Meta(95,12,64)	1140|[ 1140, 2 ]|(C5 : C4) x (C19 : C3)	plan=1422	DONE tested 1616814 solutions 0 best_cost 13 best_set 0 1 14 749 quotient_filtered 821004
+Meta(95,12,84)	1140|[ 1140, 3 ]|C5 : (C19 : C12)	plan=1197	DONE tested 1360989 solutions 0 best_cost 41 best_set 0 1 12 295 quotient_filtered 736179
+Meta(143,8,109)	1144|[ 1144, 6 ]|C11 : (C13 : C8)	plan=1148	DONE tested 1309868 solutions 0 best_cost 22 best_set 0 1 10 38 quotient_filtered 712916
+Meta(183,6,74)	1098|[ 1098, 8 ]|(C61 : C3) x S3	plan=835	DONE tested 914325 solutions 0 best_cost 17 best_set 0 1 6 357 quotient_filtered 394509
+DirectProduct(Meta(7,6,3), Meta(7,4,6))	1176|[ 1176, 82 ]|(C7 : C4) x (C7 : C6)	plan=2519	DONE tested 2954787 solutions 0 best_cost 12 best_set 0 29 173 409 quotient_filtered 1974879
+DirectProduct(Aff(1,8,Group([[Z(8)]])), Meta(5,4,4))	1120|[ 1120, 914 ]|(C5 : C4) x ((C2 x C2 x C2) : C7)	plan=1462	DONE tested 1633054 solutions 0 best_cost 9 best_set 0 161 345 492 quotient_filtered 930798
+Meta(217,6,191)	1302|[ 1302, 15 ]|C2 x (C7 : (C31 : C3))	plan=1282	DONE tested 1665318 solutions 0 best_cost 260 best_set 0 1 6 337 quotient_filtered 643952
+Meta(217,6,149)	1302|[ 1302, 16 ]|C2 x (C7 : (C31 : C3))	plan=1282	DONE tested 1665318 solutions 0 best_cost 257 best_set 0 1 6 31 quotient_filtered 643952

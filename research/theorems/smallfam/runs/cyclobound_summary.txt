@@ -1,0 +1,26 @@
+index   groups  solving  excluded_by_bound  open  solving_among_open  rate_among_open
+1          344        8                239   105                   8  7.6 %
+2          262        9                170    92                   9  9.8 %
+3..6       367        4                282    85                   4  4.7 %
+>6         666        0                644    22                   0  0.0 %
+all       1639       21               1335   304                  21  6.9 %
+
+open groups with index > 6: 22; by action order o: {3: 1, 5: 12, 7: 4, 8: 2, 9: 1, 10: 1, 11: 1}
+
+N/B range     open groups  solving  rate
+[0.0, 0.4)            6        3   50.0 %
+[0.4, 0.5)           21        9   42.9 %
+[0.5, 0.6)           38        3    7.9 %
+[0.6, 0.7)           41        2    4.9 %
+[0.7, 0.8)           57        1    1.8 %
+[0.8, 0.9)           71        2    2.8 %
+[0.9, 1.0)           70        1    1.4 %
+
+d3D7  open groups=  30 solving=10  AUC(N)=0.925  AUC(N/B)=0.805  AUC(p)=0.537
+d3D7  all  groups=  83 solving=10  AUC(N)=0.940  AUC(N/B)=0.947  AUC(p)=0.712
+d3D8  open groups=  44 solving= 4  AUC(N)=0.891  AUC(N/B)=0.906  AUC(p)=0.491
+d3D8  all  groups= 173 solving= 4  AUC(N)=0.953  AUC(N/B)=0.978  AUC(p)=0.610
+d3D9  open groups=  73 solving= 3  AUC(N)=0.886  AUC(N/B)=0.990  AUC(p)=0.350
+d3D9  all  groups= 392 solving= 3  AUC(N)=0.922  AUC(N/B)=0.998  AUC(p)=0.448
+d3D10 open groups= 157 solving= 4  AUC(N)=0.971  AUC(N/B)=0.989  AUC(p)=0.413
+d3D10 all  groups= 991 solving= 4  AUC(N)=0.983  AUC(N/B)=0.998  AUC(p)=0.474

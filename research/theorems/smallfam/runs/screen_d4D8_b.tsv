@@ -1,0 +1,79 @@
+1150	1	C23 x D50	[2, 23]	25	pass 8404 of 17296	261	0 394 1073 951
+1150	2	-	[2, 25]	23	|G/G'|=50 outside [5,48] (heuristic skip)	-	-
+1150	3	-	[2]	575	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1150	4	-	[2, 23, 25]	1	|G/G'|=1150 outside [5,48] (heuristic skip)	-	-
+1150	5	-	[2, 5, 5]	23	|G/G'|=50 outside [5,48] (heuristic skip)	-	-
+1150	6	-	[2, 5, 23]	5	|G/G'|=230 outside [5,48] (heuristic skip)	-	-
+1150	7	C5 x D230	[2, 5]	115	pass 170 of 220	809	0 1149 113 661
+1150	8	C23 x ((C5 x C5) : C2)	[2, 23]	25	pass 8404 of 17296	275	0 741 113 35
+1150	9	-	[2]	575	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1150	10	-	[2, 5, 5, 23]	1	rank>3	-	-
+1151	1	-	[1151]	1	|G/G'|=1151 outside [5,48] (heuristic skip)	-	-
+1152	*	-	-	-	skipped-order(157877 groups)	-	-
+1153	1	-	[1153]	1	|G/G'|=1153 outside [5,48] (heuristic skip)	-	-
+1154	1	-	[2]	577	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1154	2	-	[2, 577]	1	|G/G'|=1154 outside [5,48] (heuristic skip)	-	-
+1155	1	(C7 : C3) x (C11 : C5)	[3, 5]	77	pass 576 of 680	6	0 244 376 1109
+1155	2	-	[3, 5, 7]	11	|G/G'|=105 outside [5,48] (heuristic skip)	-	-
+1155	3	-	[3, 5, 11]	7	|G/G'|=165 outside [5,48] (heuristic skip)	-	-
+1155	4	-	[3, 5, 7, 11]	1	rank>3	-	-
+1156	1	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	2	-	[4, 289]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	3	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	4	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	5	-	[2, 2, 289]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	6	-	[4, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	7	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	8	-	[4, 17, 17]	1	|G/G'|=1156 outside [5,48] (heuristic skip)	-	-
+1156	9	-	[4, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	10	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	11	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	12	-	[4]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	13	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	14	-	[2, 2, 17]	17	|G/G'|=68 outside [5,48] (heuristic skip)	-	-
+1156	15	-	[2, 2]	289	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1156	16	-	[2, 2, 17, 17]	1	rank>3	-	-
+1157	1	-	[13, 89]	1	|G/G'|=1157 outside [5,48] (heuristic skip)	-	-
+1158	1	C193 : C6	[2, 3]	193	pass 43 of 56	169	0 974 453 291
+1158	2	C2 x (C193 : C3)	[2, 3]	193	pass 43 of 56	169	0 734 927 375
+1158	3	-	[2, 193]	3	|G/G'|=386 outside [5,48] (heuristic skip)	-	-
+1158	4	C3 x D386	[2, 3]	193	pass 43 of 56	945	0 1025 723 292
+1158	5	-	[2]	579	|G/G'|=2 outside [5,48] (heuristic skip)	-	-
+1158	6	-	[2, 3, 193]	1	|G/G'|=1158 outside [5,48] (heuristic skip)	-	-
+1159	1	-	[19, 61]	1	|G/G'|=1159 outside [5,48] (heuristic skip)	-	-
+1160	1	-	[8, 29]	5	|G/G'|=232 outside [5,48] (heuristic skip)	-	-
+1160	2	C5 x (C29 : C8)	[5, 8]	29	pass 6128 of 11480	290	0 389 893 742
+1160	3	C5 : (C29 : C8)	[8]	145	pass 88 of 120	889	0 445 893 662
+1160	4	-	[5, 8, 29]	1	|G/G'|=1160 outside [5,48] (heuristic skip)	-	-
+1160	5	C5 x (C29 : C8)	[5, 8]	29	pass 6128 of 11480	40	0 323 426 429
+1160	6	-	[8, 29]	5	|G/G'|=232 outside [5,48] (heuristic skip)	-	-
+1160	7	C5 : (C29 : C8)	[8]	145	pass 88 of 120	241	0 293 813 44
+1160	8	C5 : (C29 : C8)	[8]	145	pass 88 of 120	241	0 226 942 662
+1160	9	C5 : (C29 : C8)	[8]	145	pass 88 of 120	144	0 760 884 1038
+1160	10	C5 : (C29 : C8)	[8]	145	pass 88 of 120	38	0 1137 893 46
+1160	11	(C5 : C4) x D58	[2, 4]	145	pass 68 of 120	556	0 889 205 392
+1160	12	D10 x (C29 : C4)	[2, 4]	145	pass 68 of 120	547	0 240 812 1038
+1160	13	C5 : (C4 x D58)	[2, 4]	145	pass 68 of 120	584	0 1079 889 573
+1160	14	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	15	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	16	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	17	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	18	C5 x (C29 : Q8)	[2, 2, 5]	58	pass 820 of 1540	558	0 52 893 662
+1160	19	C20 x D58	[2, 4, 5]	29	pass 5024 of 11480	559	0 760 893 662
+1160	20	C5 x D232	[2, 2, 5]	58	pass 820 of 1540	819	0 1005 893 351
+1160	21	C10 x (C29 : C4)	[2, 4, 5]	29	pass 5024 of 11480	558	0 85 893 662
+1160	22	C5 x (C29 : D8)	[2, 2, 5]	58	pass 820 of 1540	559	0 760 893 662
+1160	23	-	[2, 2, 29]	10	|G/G'|=116 outside [5,48] (heuristic skip)	-	-
+1160	24	-	[2, 4, 29]	5	|G/G'|=232 outside [5,48] (heuristic skip)	-	-
+1160	25	-	[2, 2, 29]	10	|G/G'|=116 outside [5,48] (heuristic skip)	-	-
+1160	26	-	[2, 4, 29]	5	|G/G'|=232 outside [5,48] (heuristic skip)	-	-
+1160	27	-	[2, 2, 29]	10	|G/G'|=116 outside [5,48] (heuristic skip)	-	-
+1160	28	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	29	C4 x D290	[2, 4]	145	pass 68 of 120	944	0 206 844 414
+1160	30	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	31	C2 x (C5 : (C29 : C4))	[2, 4]	145	pass 68 of 120	944	0 206 893 1113
+1160	32	-	[2, 2]	290	|G/G'|=4 outside [5,48] (heuristic skip)	-	-
+1160	33	-	[2, 4, 5, 29]	1	rank>3	-	-
+1160	34	-	[2, 2, 5, 29]	2	rank>3	-	-
+1160	35	-	[2, 2, 5, 29]	2	rank>3	-	-
+1160	36	C5 : (C2 x (C29 : C4))	[2, 4]	145	pass 68 of 120	72	0 765 729 982
