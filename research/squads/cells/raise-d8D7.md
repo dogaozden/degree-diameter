@@ -33,6 +33,11 @@ screened worse on the same windows (random min ≥ 40 on the best ones).
   best 10, psl 9×61 best 12. None solved.
 - Wave 1 (3600 s each, seed 11, logs in the scratchpad): psl 17×9, pgl 7×65, psl 9×61, pgl 5×181.
 
+- Wave 1 result (3600 s each, seed 11, ~1.6–2.3·10⁸ evals each): psl 17×9 best 3, pgl 7×65 best 6, psl 9×61 best 12,
+  pgl 5×181 best 24. None solved.
+- Wave 2 (3600 s each): psl 17×9 with ORBW=3 (seed 12), psl 17×9 with RESTART=1 (seed 13), pgl 7×65 with ORBW=3
+  (seed 12), psl 17×9 plain (seed 14).
+
 ## Status
 
 Still searching. Nothing above 43,344 yet.
