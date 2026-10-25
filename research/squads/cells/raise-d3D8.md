@@ -32,6 +32,18 @@ research/lifts/coordinator_check/check_2026-10-23.txt). Target: any bipartite cu
 - 6-vertex bases (b6_0, b6_1, b6_2), annealing (8 s per group, 1 seed), |G| = 49..60 (n = 294..360): **1086 runs
   (362 per base), 0 solutions**; best cost 12 (runs/ann_b6_*_49_60.log).
 
+- 8-vertex bases (b8_0..7, 8 classes), annealing (8 s per group, 1 seed), |G| = 37..46 (n = 296..368): **1368 runs,
+  0 solutions**. Best cost 8, but only for cyclic groups (Z_37); the best non-cyclic group is at cost 14 (runs/ann_b8_*).
+
+## Current assessment (2026-10-25, about 3 h in)
+
+No record. Every family the tool can build (Haar |G| = 145..180; b=4 |G| = 73..100; b=6 |G| = 49..60; b=8 |G| = 37..46)
+gave no solution. Non-cyclic near misses sit at cost 12–20 (unreached pairs), far from zero, so a longer anneal of the
+same groups is not a good use of compute. The next lever is a different group family (groups not built from metacyclic,
+Z_p² ⋊ Z_k or cyclic products, e.g. PSL(2,7) or SL(2,3)-based), or a structured construction. Both are beyond what the
+existing spec families reach. Coordinator: this cell should go to an Opus session, or it can be closed as "no further
+gain from the lift and Haar annealing families at (3,8)".
+
 ## Method notes
 
 - Exhaustive search over the free voltages is slow for bases with 4+ free voltages (b=6: ~20 groups per 4 minutes on 4
