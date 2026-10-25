@@ -97,3 +97,19 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
 - **Products of two nonabelian groups with no cyclic factor** (n = 1) were never run. In the window (N = 4,001,929–4,200,000,
   tools/orb_screen.py … --list) the only one with μ ≤ 33 is `prod psl 11 psl 23 1`: N = 4,007,520, μ = 31.7, |Fix(α)| = 71.
   Smoke test: α = conjugation by a pair of order-3 elements (both factors move), 260 evaluations/s, no degenerate fixed set.
+
+## Round 2, batch 1: prod psl 11 × psl 23 (n = 1), N = 4,007,520, μ 31.7, k = 3, f = 2, 4 runs × 3000 s
+| run | setting | best | evals | result |
+|---|---|---|---|---|
+| s1 | plain | 3 | 7.5e5 | no solve |
+| s2 | plain | 3 | 7.5e5 | no solve |
+| s3 | RESTART=1 | 6 | 7.5e5 | no solve |
+| s4 | ORBW=5 | 3 | 7.4e5 | no solve |
+Logs: research/structured/runs/raise2-d8D10/p11_23_s{1..4}.log. Cost 3 = one uncovered orbit plateau, the same wall as round 1
+at μ ≈ 38–41. Round 1's sl 83 × Z7 (μ 31.1) solved in 3.5e5 evaluations, so this group mixes worse than the cyclic one at equal μ.
+Note: the group has |Fix(α)| = 71 and α is found by haar_sym's random search (index 3907387).
+
+## Round 2, batch 2 (started; 5400 s each, 4 cores)
+- prod psl 7 × psl 19 × Z7 (N 4,021,920, μ 33.2), seeds 1, 2.
+- prod psl 3 × psl 25 × Z43 (N 4,024,800, μ 33.5), seed 1.
+- prod psl 3 × sl 19 × Z49 (N 4,021,920, μ 33.2), seed 1.
