@@ -12,7 +12,8 @@ research/theorems/order2/runs/ckpt/*.ckpt with the same command plus CKPT= (laun
   (an159_sl64_403_k6sub3_ostab_s2.ckpt). Only the order-3 pair of SL(2,2) = Fix(α) is uncovered, on side B
   (UNCPRINT=1 lists it). A full scan of the 3-element slot (SCANSUB=1) found no completion. So one of the
   6-orbits must change. Use OSTAB=1: plain energy stalls at the involutions of Fix(α), Fix(α²).
-- (13,10) SL(2,16)²×Z21, order 6: best 4 (an1310_sl16sq_21_k6_s1.ckpt), about 2.2 s per evaluation on one thread.
+- (13,10) SL(2,16)²×Z21, order 6: best 4 after 7,697 evaluations in 4.5 h (an1310_sl16sq_21_k6_s1.ckpt), about 2 s per
+  evaluation on one thread; the rule's median is 1.4·10⁴ evaluations.
 - (15,8) SL(2,8)²×Z37, 6+6+3: best 6 (an158_*_s1.ckpt). (13,9) SL(2,64)×Z133: best 23; out of reach by the refined
   rule (μ_A 16.8).
 

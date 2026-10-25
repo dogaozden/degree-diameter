@@ -732,7 +732,7 @@ Going through the table:
 - **(13,10) on SL(2,16)²×Z21**, with α = swap∘conj(order 3) × (z ↦ 5z), r of order 6 (Z21 = Z3 × Z7). The
   random symmetric screen (16 samples, `runs/ro1310_sl16sq_21_k6.txt`) gives min 23 and p10 26 at μ = 35.5. That is
   4.3 clumps, better than SL(2,64)×Z13 (6.2), which solved in about 10⁴ evaluations. The first session's anneal was
-  cut off. Second session: seed 1 at best 4 after 5,900 evaluations (3.6 h; still running at 07:55 UTC), seed 2 stopped at best 6 after 3,265 (table at the end of §6).
+  cut off. Second session: not solved: seed 1 ran its 4.5-hour budget and ended at best 4 (7,697 evaluations, about 2 s each); seed 2 was stopped at best 6 after 3,265 (table at the end of §6).
   - N = 349,574,400, so 699,148,800 vertices, +3.2 % over the current record 677,714,400 (+4.7 % over the
     667,903,200 of the first session).
   - μ = 36.4. The rule gives μ_A ≈ 9.1 for order 6 (fixed points 3.0) against ≈ 13 for order 3 at the same N, which is
@@ -911,7 +911,7 @@ to μ_A = 16.8 (order 3: 23.6).
 
 | cell | group, symmetry | vertices (vs record) | rule μ_A | outcome |
 |---|---|---|---|---|
-| (13,10) | SL(2,16)²×Z21, order 6 swap∘conj | 699,148,800 (+3.2 %) | 9.1 | seed 1 at best 4 after 5,900 evaluations (3.6 h; still running at 07:55 UTC), seed 2 stopped at best 6 after 3,265 |
+| (13,10) | SL(2,16)²×Z21, order 6 swap∘conj | 699,148,800 (+3.2 %) | 9.1 | not solved: seed 1 ran its 4.5-hour budget and ended at best 4 (7,697 evaluations, about 2 s each); seed 2 was stopped at best 6 after 3,265 |
 | (15,8) | SL(2,8)²×Z37, order 6 swap∘Frobenius, 6+6+3 | 18,797,184 (+3.7 %) | 10.4 | 2 seeds, best 6 (76,345 evaluations) and 10 |
 | (15,9) | SL(2,64)×Z403, order 6 Frobenius, 6+6+3 | 211,236,480 (+1.5 %) | 11.2 | 4 seeds (seed 1 resumed with OSTAB=1 after 7,161 evaluations at cost 9; seeds 3 and 4 restarted with OSTAB=1). The OSTAB=1 seed 2 reached cost 2 after 4,801 evaluations, with only the order-3 pair {c, c⁻¹} of SL(2,2) = Fix(α) uncovered on side B; plain seeds stalled at 9 (involutions, §5.5). A scan of all 2,182 sub-orbits from that set (SCANSUB) found no completion. Still running at 07:55 UTC |
 | (13,9) | SL(2,64)×Z133, order 6 Frobenius | 69,713,280 (+2.9 %) | 16.8 | 2 seeds, best 23 (22,249 evaluations) and 33; stopped |
