@@ -1,3 +1,5 @@
+# (15,8) proxy, psl 19 x Z2651, N=9066420; ORBIT=5 3 0 (k=5 m=3 f=0), |Fix(alpha)|=9, mu=33.08, mu/k=6.62, fixed-point misses ~0.82. 100 s per run, seeds 1 and 2, outfile /dev/null.
+# columns: setting, K, env, seed, solved?, evals (candidate evaluations, K per step), best (uncovered elements at the end, raw), time (s)
 base	K=8	TARGP=70 ORBW=1	seed=1	solved=no	evals=37257	best=6	time=100.0
 base	K=8	TARGP=70 ORBW=1	seed=2	solved=no	evals=37681	best=6	time=100.0
 K4	K=4	TARGP=70 ORBW=1	seed=1	solved=no	evals=34929	best=5	time=100.0
@@ -12,4 +14,12 @@ W5	K=8	TARGP=70 ORBW=5	seed=1	solved=no	evals=46081	best=5	time=100.0
 W5	K=8	TARGP=70 ORBW=5	seed=2	solved=no	evals=40521	best=10	time=100.0
 TM03	K=8	TARGP=70 ORBW=1 TMIN=0.3	seed=1	solved=no	evals=42385	best=5	time=100.0
 TM03	K=8	TARGP=70 ORBW=1 TMIN=0.3	seed=2	solved=no	evals=45897	best=6	time=100.0
-DONE 1792933700
+
+# SUMMARY (score = median evals-to-solve, unsolved = 1e7; ranked by median best cost, lower is better)
+# K4	K=4	TARGP=70 ORBW=1	solved 0/2	score=10000000	median best=3.0	best per seed=[5, 1]	evals per seed=[34929, 30597]
+# K16	K=16	TARGP=70 ORBW=1	solved 0/2	score=10000000	median best=5.0	best per seed=[5, 5]	evals per seed=[30689, 33921]
+# TM03	K=8	TARGP=70 ORBW=1 TMIN=0.3	solved 0/2	score=10000000	median best=5.5	best per seed=[5, 6]	evals per seed=[42385, 45897]
+# T95	K=8	TARGP=95 ORBW=1	solved 0/2	score=10000000	median best=6.0	best per seed=[7, 5]	evals per seed=[31409, 37073]
+# base	K=8	TARGP=70 ORBW=1	solved 0/2	score=10000000	median best=6.0	best per seed=[6, 6]	evals per seed=[37257, 37681]
+# W5	K=8	TARGP=70 ORBW=5	solved 0/2	score=10000000	median best=7.5	best per seed=[5, 10]	evals per seed=[46081, 40521]
+# T40	K=8	TARGP=40 ORBW=1	solved 0/2	score=10000000	median best=8.0	best per seed=[6, 10]	evals per seed=[31481, 32161]
