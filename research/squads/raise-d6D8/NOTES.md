@@ -45,3 +45,10 @@ Table value 29,790; Moore bound 195,312. Any Haar graph with 2|G| > 31,680 is a 
 ## Wave 4 (queued, starts after WAVE3_DONE, 5400 s, ORBW=3): psl 19xZ5 seed 3; sl 13xZ8 seed 2; prod sl3xsl9xZ1 seed 2;
    prod psl3xsl7xZ4 seed 2. Diagnostic: does the plateau move with ORBW=3? Results go to runs/*_orbw3_*.log.
 Draft of the cell write-up: research/squads/cells/raise-d6D8.md.
+
+## Wave 4 (09:30-11:00, 5400 s, ORBW=3): psl 19xZ5 s3 best 10; sl 13xZ8 s2 best 8; prod sl3xsl9xZ1 s2 best 10;
+   prod psl3xsl7xZ4 s2 best 9. No solution. ORBW=3 does not move the plateaus.
+
+## FINAL (11:00): stopped. No record raised. Total compute about 10 core-hours. Verdict and evidence in
+   research/squads/cells/raise-d6D8.md. Best plateau above 15,840: 8 (sl 13xZ8, psl 19xZ5). Winner group is special.
+   Not tried (need new code): non-cyclic abelian factors, metacyclic/Heisenberg k=2, random S above 15,840.

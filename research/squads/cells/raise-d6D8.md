@@ -14,7 +14,9 @@
 | 1 | sl 7×Z48 (16128), pgl 8×Z32 (16128), psl 13×Z15 (16380), psl 11×Z25 (16500) | 900 s | 8, 8, 10, 14 |
 | 2 | psl 19×Z5 (17100) seeds 1, 2; sl 13×Z8 (17472); psl 13×Z16 (17472) | 1200 s | 10 / 8, 9, 13 |
 | 3 | psl 17×Z7 (17136), psl 23×Z3 (18216), sl 11×Z13 (17160), psl 11×Z26 (17160), prod sl3×sl9 (17280), psl 9×Z48 (17280), prod psl3×sl7×Z4 (16128), prod psl3×psl7×Z9 (18144), sl 9×Z24 (17280), prod psl3×sl4×Z23 (16560) | 600 s | 9 (best), others 14–26 |
-| 4 | psl 19×Z5, sl 13×Z8, prod sl3×sl9×Z1, prod psl3×sl7×Z4 with ORBW = 3 | 5400 s | see the bottom of this file |
+| 4 | psl 19×Z5 (seed 3), sl 13×Z8 (seed 2), prod sl3×sl9×Z1 (seed 2), prod psl3×sl7×Z4 (seed 2), all with ORBW = 3 | 5400 s | 10, 8, 10, 9 (2.6e8–2.9e8 evaluations each) |
+
+Total compute in this session: about 10 core-hours (single thread, four at a time). No run reached cost 0.
 
 Protocol that is known to work here: `ORBIT="2 3 0" THREADS=1 ./haar_sym 6 8 <secs> <seed> 8 out.txt psl 11 24` (the
 record was 24 s). Plateaus form within 1–2 minutes at N ≥ 16k and then stay put (the same pattern as the table squad's rounds 2–6).
@@ -39,8 +41,18 @@ record was 24 s). Plateaus form within 1–2 minutes at N ≥ 16k and then stay 
   orbit space (N/3)²/2 is too small for μ/3 ≈ 9.4 to leave a solution; one orbit (m = 1) is hopeless at Δ = 6.
 - Random S (no symmetry) reached 30,576 (SL(2,13)×Z7) only; the orbit method is the only route that beat it.
 
-## Verdict (so far)
-Within this session's budget, the orbit method with k = 2 has no valid S above 15,840 on any group I could screen
-(PSL/SL/PGL(2,q) × Z_n and the small products in the 15,841–22,000 window). The plateaus at cost 8–10 look like a floor for
-these groups, not a lack of time. The remaining routes I did not try (non-cyclic abelian factors, metacyclic/Heisenberg
-groups with k = 2, a Frobenius-type α of order 2 at this size) are not supported by the existing tools without new code.
+## Verdict
+I stopped the search. No record was raised, and I'm confident this method will not move the (6,8) cell past 31,680 on the
+groups it can reach:
+- 17 distinct groups with |G| from 16,128 to 18,216 were run with the k = 2 orbit method (plain and ORBW = 3), up to
+  90 minutes each, and all plateaued at cost 8–26. The best plateau is 8 (sl 13×Z8, psl 19×Z5, prod psl3×sl7×Z4), and none
+  moved toward 0 with longer runs or with ORBW = 3.
+- The record group PSL(2,11)×Z24 solved in 3·10⁵ evaluations, and its random-sample statistics are clearly better than any
+  group above 15,840. No α on any candidate closes that gap.
+- So the 31,680 record looks like a lucky point of the k = 2 method, not the start of a ladder. The 15,900–15,990 window
+  holds only degenerate groups, so there is no smaller rung either.
+
+Routes I did not try, because the existing tools don't support them without new code: non-cyclic abelian factors,
+metacyclic or Heisenberg groups with k = 2 (solvable groups usually do badly here), and random S (no symmetry) above 15,840
+(random annealing topped out at 30,576). If a later session wants to continue, these are the places to start, and the
+screen in `research/squads/raise-d6D8/` gives the baseline numbers to beat.
