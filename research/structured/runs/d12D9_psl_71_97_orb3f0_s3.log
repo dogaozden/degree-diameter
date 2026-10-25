@@ -1,0 +1,55 @@
+group psl 71 x Z_97, N=17355240, identity 241045, H order 36, rows 482090, threads 1, setup 0.83s
+wide rows: HW order 194, rows 89460, setup 1.40s
+alpha: conj by mat(2,41,31,68) (index 10468), z -> 35 z on Z_97
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 35 (+e); mu = 21.82, mu/k = 7.27, fixed-point misses ~ 0.78
+start cost=54
+t=31 steps=39 evals=313 cost=23 best=23 T=0.51
+t=62 steps=80 evals=641 cost=12 best=12 T=0.18
+t=92 steps=121 evals=969 cost=12 best=12 T=0.15
+t=123 steps=161 evals=1289 cost=12 best=12 T=0.15
+t=153 steps=202 evals=1617 cost=12 best=12 T=0.15
+t=183 steps=243 evals=1945 cost=12 best=12 T=0.15
+t=214 steps=285 evals=2281 cost=12 best=12 T=0.15
+t=244 steps=324 evals=2593 cost=12 best=12 T=0.15
+t=275 steps=366 evals=2929 cost=12 best=12 T=0.15
+t=305 steps=406 evals=3249 cost=12 best=12 T=0.15
+t=335 steps=445 evals=3561 cost=12 best=12 T=0.15
+t=366 steps=486 evals=3889 cost=12 best=12 T=0.99
+t=396 steps=528 evals=4225 cost=12 best=12 T=0.34
+t=427 steps=567 evals=4537 cost=12 best=12 T=0.15
+t=457 steps=606 evals=4849 cost=12 best=12 T=0.15
+t=488 steps=649 evals=5193 cost=12 best=12 T=0.15
+t=518 steps=687 evals=5497 cost=12 best=12 T=0.15
+t=548 steps=725 evals=5801 cost=12 best=12 T=0.15
+t=578 steps=765 evals=6121 cost=12 best=12 T=0.15
+t=608 steps=808 evals=6465 cost=12 best=12 T=0.15
+t=639 steps=852 evals=6817 cost=11 best=11 T=0.15
+t=670 steps=893 evals=7145 cost=11 best=11 T=0.15
+t=700 steps=932 evals=7457 cost=11 best=11 T=0.15
+t=731 steps=971 evals=7769 cost=11 best=11 T=0.15
+t=761 steps=1014 evals=8113 cost=11 best=11 T=0.15
+t=792 steps=1058 evals=8465 cost=4 best=4 T=0.15
+t=822 steps=1102 evals=8817 cost=4 best=4 T=0.15
+t=852 steps=1146 evals=9169 cost=4 best=4 T=0.15
+t=883 steps=1189 evals=9513 cost=4 best=4 T=0.15
+t=913 steps=1232 evals=9857 cost=4 best=4 T=0.15
+t=944 steps=1278 evals=10225 cost=4 best=4 T=0.15
+t=974 steps=1321 evals=10569 cost=4 best=4 T=0.15
+t=1004 steps=1363 evals=10905 cost=4 best=4 T=0.15
+t=1034 steps=1406 evals=11249 cost=4 best=4 T=0.15
+t=1065 steps=1447 evals=11577 cost=4 best=4 T=1.21
+t=1095 steps=1495 evals=11961 cost=6 best=4 T=0.43
+t=1126 steps=1540 evals=12321 cost=6 best=4 T=0.15
+t=1156 steps=1583 evals=12665 cost=6 best=4 T=0.15
+t=1187 steps=1627 evals=13017 cost=6 best=4 T=0.15
+t=1217 steps=1669 evals=13353 cost=6 best=4 T=0.15
+t=1248 steps=1709 evals=13673 cost=6 best=4 T=0.15
+RESULT d=12 D=9 group=psl 71 x Z_97 N=17355240 best=0 evals=13745 time=1254.8 orbit k=3 m=4 f=0 fix=35
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/2e2f9f76-c024-5e89-bfbf-0e4058abe474/scratchpad/runs/psl_71_97_s3.txt
+exit 0
+SOLUTION_FOUND psl_71_97_s3 N=17355240 fam=psl
+done
+--- independent check (after the search):
+VALID d=12 D=9 group=psl 71 x Z_97 N=17355240 vertices=34710480 (distinct generators, 12-regular simple)

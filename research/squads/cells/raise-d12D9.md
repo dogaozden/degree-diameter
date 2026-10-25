@@ -61,3 +61,9 @@ psl 83 × 61 best 6 (22.4k). All above the bar, all unsolved.
 ### Round 4 (from 08:59 UTC): same bar, N > 17,338,944
 Running: psl 71 × 97 seeds 2 and 3 (N 17,355,240, μ 21.8, best cost 3 in round 3), psl 139 × Z13 (N 17,455,620, μ 23.7),
 psl 47 × Z337 (N 17,486,256, μ 24.3; no wide rows, so slower per evaluation).
+
+### Round 4 result: NEW RECORD 34,710,480 (+0.1 % over 34,677,888)
+- psl 71 × Z97, N = 17,355,240, k = 3, m = 4, f = 0, seed 3, μ 21.8, |Fix| 35: **solved** at 13,745 evaluations (1,255 s).
+  File: research/frontier/sols/d12D9_psl_71_97_orb3f0_s3.txt. Log: research/structured/runs/d12D9_psl_71_97_orb3f0_s3.log.
+  Check: haarcheck_psl VALID d=12 D=9, all 17,355,240 per side reached, ecc 9. (Only PSL low-memory checker applies; no second PSL checker here.)
+- Still running at this point: psl 71 × 97 seed 2 (best 3), psl 139 × 13 (best 18), psl 47 × 337 (best 12, slow evaluation).
