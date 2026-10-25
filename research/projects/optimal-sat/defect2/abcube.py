@@ -7,7 +7,7 @@ inside blocks of equal alpha and for the transpositions of I inside blocks of eq
 as enc_quot.py.
 Soundness: relabel O so that alpha is non-increasing and I so that beta is non-increasing; every solution lies in the
 cube of its (alpha, beta), and inside a cube the block permutations are symmetries, so lex-leader for them is sound.
-usage: abcube.py base k base.cnf
+usage: abcube.py base k base.cnf [--maxtau M]
        abcube.py cube base.cnf a1,..,a9/b1,..,b9 out.cnf [--maxt]   (--maxt did not help: 3x larger CNF, test cube unsolved in 20 min)
 --maxt: vertex 0 has the maximum number of directed triangles, so add "every vertex lies on at most t = sum(alpha)
         directed triangles" (a valid choice of base vertex; it removes the cubes with small t far more easily)."""
@@ -15,12 +15,19 @@ import sys, itertools, json
 from pysat.formula import IDPool
 from pysat.card import CardEnc, EncType
 
-def write_base(k, path):
+def write_base(k, path, maxtau=None):
+    """maxtau = M: also add the max-tau rule's constraint 'every arc lies on at most M directed triangles'; such a
+    base may only be used for cubes with alpha_1 = M."""
     from enc_quot import build
     cnf, pool, a = build(k, sym=False, nf2=True, ntt=True)
+    meta = {'k': k, 'nv': cnf.nv, 'a': [[c, d, v] for (c, d), v in a.items()]}
+    if maxtau is not None:
+        extra, top = maxtau_clauses(meta, maxtau, cnf.nv + 1)
+        cnf.extend(extra)
+        meta['nv'] = max(top, cnf.nv); meta['maxtau'] = maxtau
     cnf.to_file(path)
-    json.dump({'k': k, 'nv': cnf.nv, 'a': [[c, d, v] for (c, d), v in a.items()]}, open(path + '.map.json', 'w'))
-    print(f'base: vars={cnf.nv} clauses={len(cnf.clauses)}')
+    json.dump(meta, open(path + '.map.json', 'w'))
+    print(f'base: vars={cnf.nv} clauses={len(cnf.clauses)} maxtau={maxtau}')
 
 def cube_clauses(meta, al, be):
     k = meta['k']; g = k - 2; m = k * (k - 1) // 2
@@ -75,13 +82,38 @@ def maxt_clauses(meta, t, start):
         out += CardEnc.atmost(lits, bound=t, vpool=pool, encoding=EncType.seqcounter).clauses
     return out, pool.top
 
-def write_cube(base, spec, outp, maxt=False):
+def maxtau_clauses(meta, bound, start):
+    """Rule 'max-tau': the base arc 0 -> 1 lies on the most directed triangles among all arcs, so every arc u -> x lies
+    on at most bound = alpha_1 directed triangles u -> x -> z -> u. (Use for ALL cubes or for none, never mixed with
+    the max-t rule.)"""
+    k = meta['k']; m = k * (k - 1) // 2
+    a = {(c, d): v for c, d, v in meta['a']}
+    pool = IDPool(start_from=start)
+    out = []; tri = {}
+    def T(p, q, r):
+        key = min((p, q, r), (q, r, p), (r, p, q))
+        if key not in tri:
+            v = pool.id(); tri[key] = v; x, y, z = key
+            out.extend([[-v, a[x, y]], [-v, a[y, z]], [-v, a[z, x]], [v, -a[x, y], -a[y, z], -a[z, x]]])
+        return tri[key]
+    for u in range(m):
+        for x in range(m):
+            if u == x: continue
+            lits = [T(u, x, z) for z in range(m) if z not in (u, x)]
+            out.extend(CardEnc.atmost(lits, bound=bound, vpool=pool, encoding=EncType.seqcounter).clauses)
+    return out, pool.top
+
+def write_cube(base, spec, outp, maxt=False, maxtau=False):
     meta = json.load(open(base + '.map.json'))
     al, be = spec.split('/'); al = list(map(int, al.split(','))); be = list(map(int, be.split(',')))
     assert al == sorted(al, reverse=True) and be == sorted(be, reverse=True) and sum(al) == sum(be)
+    if 'maxtau' in meta: assert al[0] == meta['maxtau'] and be[0] <= al[0], 'wrong base for this cube'
     extra, top = cube_clauses(meta, al, be)
     if maxt:
         e2, top = maxt_clauses(meta, sum(al), top + 1)
+        extra += e2
+    if maxtau:
+        e2, top = maxtau_clauses(meta, al[0], top + 1)
         extra += e2
     with open(base) as fin, open(outp, 'w') as fo:
         hdr = fin.readline().split()
@@ -90,5 +122,7 @@ def write_cube(base, spec, outp, maxt=False):
         for c in extra: fo.write(' '.join(map(str, c)) + ' 0\n')
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'base': write_base(int(sys.argv[2]), sys.argv[3])
-    else: write_cube(sys.argv[2], sys.argv[3], sys.argv[4], maxt='--maxt' in sys.argv)
+    if sys.argv[1] == 'base':
+        mt = int(sys.argv[sys.argv.index('--maxtau') + 1]) if '--maxtau' in sys.argv else None
+        write_base(int(sys.argv[2]), sys.argv[3], mt)
+    else: write_cube(sys.argv[2], sys.argv[3], sys.argv[4], maxt='--maxt' in sys.argv, maxtau='--maxtau' in sys.argv)

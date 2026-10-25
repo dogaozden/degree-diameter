@@ -11,7 +11,9 @@ NOTES.md / PROOF.md:
   - (alpha, beta) satisfies Gale-Ryser (a 0/1 matrix with these margins exists);
   - alpha >= beta lexicographically: reversing all arcs maps a solution to a solution (Theorem Q is symmetric under
     transposition) and swaps O and I at vertex 0, so B becomes B^T and the cube (alpha, beta) becomes (beta, alpha).
-usage: ablist.py out.txt      (one cube per line: a1,..,a9/b1,..,b9)"""
+usage: ablist.py out.txt [--maxtau]     (one cube per line: a1,..,a9/b1,..,b9)
+--maxtau: rule 'arc 0->1 lies on the most directed triangles' instead of the reversal halving: keep beta_1 <= alpha_1
+          (beta_j counts the triangles on the arc z_j -> 0) and no alpha >= beta restriction."""
 import sys
 vals = [9, 6, 5, 4, 3, 2, 1, 0]
 def parts(t, n=9):
@@ -41,6 +43,7 @@ with open(sys.argv[1], 'w') as f:
         P = [a for a in parts(t) if ok(a)]
         for a in P:
             for b in P:
-                if a >= b and gale_ryser(a, b):
+                keep = (b[0] <= a[0]) if '--maxtau' in sys.argv else (a >= b)
+                if keep and gale_ryser(a, b):
                     f.write(','.join(map(str, a)) + '/' + ','.join(map(str, b)) + '\n'); n += 1
 print(n, 'cubes')
