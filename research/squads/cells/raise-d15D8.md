@@ -164,3 +164,15 @@ Products with a small A5/A4-type factor were not screened (round 1: psl 5 × psl
 | d | sl 31 × Z307 | 36.7 | ORBW=3 | 5 | 1.0·10⁵ | 9 |
 
 psl 79 × Z37 with plain S reached cost 3 (one uncovered orbit or fixed point) and is the best lead so far.
+
+### Wave 2, first solve: 18,239,520 vertices at (15,8) (psl 79 × Z37, plain S, seed 7)
+
+- Graph: Haar graph of G = PSL(2,79) × Z37, |G| = N = 9,119,760, |S| = 15 = 3·5 (5 free orbits of an order-3 automorphism, f = 0),
+  2N = **18,239,520** vertices, 15-regular, 136,796,400 edges, no duplicate edges. μ = 35.8, Fix = 38.
+- Found after 121,985 evaluations at 6000 s budget (solved at 3,778 s).
+- Verification so far:
+  - haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
+  - `research/structured/tools/haarcheck_psl` (low-memory PSL checker, orbq.sh): VALID d=15 D=8.
+  - build_haar2.py: running at the time of this entry (`runs/raise_d15D8_r2/verify/psl79_37_s7.build_haar2.txt`).
+- Saved as `research/frontier/sols/d15D8_psl_79_37_orb3f0_s7.txt` (run log `runs/raise_d15D8_r2/out/e/d15D8_psl_79_37_orb3f0_s7.log`).
+- Gain over the round-1 bar 18,156,528: +83,000 vertices (+0.46 %).

@@ -123,3 +123,15 @@ t=3525 steps=14255 evals=114041 cost=9 best=3 T=0.15
 t=3555 steps=14367 evals=114937 cost=15 best=3 T=0.82
 t=3585 steps=14485 evals=115881 cost=9 best=3 T=0.29
 t=3615 steps=14606 evals=116849 cost=9 best=3 T=0.15
+t=3645 steps=14726 evals=117809 cost=9 best=3 T=0.15
+t=3676 steps=14844 evals=118753 cost=9 best=3 T=0.15
+t=3706 steps=14958 evals=119665 cost=3 best=3 T=0.81
+t=3736 steps=15076 evals=120609 cost=3 best=3 T=0.29
+t=3766 steps=15198 evals=121585 cost=3 best=3 T=0.15
+RESULT d=15 D=8 group=psl 79 x Z_37 N=9119760 best=0 evals=121985 time=3778.2 orbit k=3 m=5 f=0 fix=38
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise_d15D8_r2/out/e/d15D8_psl_79_37_orb3f0_s7.txt
+n = 18239520 edges = 136796400 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = 3603a869bf5961200d0d34a4354e6f574d84e4d09d3ea1cf075234103a57f35b
+VALID d=15 D=8 group=psl 79 x Z_37 N=9119760 vertices=18239520
