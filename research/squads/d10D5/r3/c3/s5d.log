@@ -1,0 +1,6 @@
+relaxed coverage at start: ok
+q=7 opposite pairs 137200, with route 18700 (13.6%), initial cost 11 (0.008%)  [setup 0.0s]
+it 490323 temp 0.343 cost 10
+it 589761 temp 0.318 cost 9 (swap)
+it 589917 temp 0.318 cost 8
+RESULT dmfast q 7 iters 3000000 best 8 (of 137200 opposite pairs) swaps accepted 76

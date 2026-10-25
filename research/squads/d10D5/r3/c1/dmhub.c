@@ -237,6 +237,144 @@ static void hub_graph_block(void) {
     }
 }
 
+/* ---- TABU finisher (round 3, card c1): tabu search on cover_cost() from the current state (needs HGFIRST=1 so that
+ * hubadj is set). Neighbourhood for the current holes (copied before evaluating, since cover_cost overwrites uncI/uncT):
+ * sigma swaps (x,y) that give a hole its covering line/point: point hole t of freed p_i: x in pperp(p_i) not freed,
+ * y = sinv of a line through t; line hole t of freed l_i: x = sinv(M), M concurrent with l_i not freed, y a point of t;
+ * hub edits that give a hole its patch route: point hole t: line-side hubs of i -> point-side hubs of each freed j with
+ * t on l_j; line hole t: line-side hubs of j -> point-side hubs of i for each freed j with freep[j] on t (with degree-cap
+ * removals). Hub moves are feasible only if hg_dist_cost() stays 0. Best non-tabu move per step (aspiration if it beats
+ * the best); the reverse assignment / hub pair is tabu for TTEN steps. Restart from the best state (plus one random
+ * sigma swap) after TREST steps without improvement. */
+typedef struct { int type, x, y, ne; int ea[4], eb[4], ev[4]; } TMove;   /* type 0: sigma swap (x,y); type 1: hub edits */
+static long tabuHub[256][256];
+static long *tabuPt;   /* tabuPt[p*N+L]: point p must not get line L before this step */
+
+static void hubadj_from_A2(void) {
+    int Kh = hgK; memset(hubadj, 0, sizeof hubadj);
+    for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) hubadj[u / H][v / H] = 1;
+}
+static void sig_swap(int x, int y) { int t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y; }
+
+static int tabu_hubmoves(TMove *cand, int cap, int nc, int a, int b) {
+    int Kh = hgK, spareh = Q1 + 2 - M;
+    if (hgA2[a][b]) return nc;
+    static int za[256], zb[256]; int nza = 0, nzb = 0, da = 0, db = 0;
+    for (int z = 0; z < Kh; z++) { da += hgA2[a][z] != 0; db += hgA2[z][b] != 0; }
+    if (da >= spareh) for (int z = 0; z < Kh; z++) if (hgA2[a][z]) za[nza++] = z;
+    if (db >= spareh) for (int z = 0; z < Kh; z++) if (hgA2[z][b]) zb[nzb++] = z;
+    if (!nza) { za[0] = -1; nza = 1; }
+    if (!nzb) { zb[0] = -1; nzb = 1; }
+    for (int p = 0; p < nza; p++) for (int r = 0; r < nzb; r++) {
+        if (nc >= cap) return nc;
+        TMove *m = &cand[nc++]; m->type = 1; m->x = a; m->y = b; m->ne = 1; m->ea[0] = a; m->eb[0] = b; m->ev[0] = 1;
+        if (za[p] >= 0) { m->ea[m->ne] = a; m->eb[m->ne] = za[p]; m->ev[m->ne] = 0; m->ne++; }
+        if (zb[r] >= 0) { m->ea[m->ne] = zb[r]; m->eb[m->ne] = b; m->ev[m->ne] = 0; m->ne++; }
+    }
+    return nc;
+}
+
+static int tabu_gen(TMove *cand, int cap, int nh, const int *hI, const int *hT) {
+    int nc = 0;
+    for (int r = 0; r < nh; r++) {
+        int i = hI[r], t = hT[r];
+        if (i < nfree) {                                    /* point hole: target t opposite freed point p_i */
+            for (int a = 0; a < npperp[i]; a++) { int x = pperp[i][a]; if (isfree[x]) continue;
+                for (int k = 0; k < Q1; k++) { int y = sinv[lof[t * Q1 + k]]; if (y == x || isfree[y] || nc >= cap) continue;
+                    cand[nc].type = 0; cand[nc].x = x; cand[nc].y = y; cand[nc].ne = 0; nc++; } }
+            for (int j = 0; j < nfree; j++) { int on = 0;
+                for (int k = 0; k < Q1; k++) if (pts[sig[freep[j]] * Q1 + k] == t) on = 1;
+                if (on) for (int s = 0; s < H; s++) for (int u = 0; u < H; u++) nc = tabu_hubmoves(cand, cap, nc, i * H + s, j * H + u); }
+        } else {                                            /* line hole: target t opposite freed line l_ii */
+            int ii = i - nfree;
+            for (int a = 0; a < nlperp[ii]; a++) { int M2 = lperp[ii][a]; if (isfreeL[M2]) continue; int x = sinv[M2]; if (isfree[x]) continue;
+                for (int k = 0; k < Q1; k++) { int y = pts[t * Q1 + k]; if (y == x || isfree[y] || nc >= cap) continue;
+                    cand[nc].type = 0; cand[nc].x = x; cand[nc].y = y; cand[nc].ne = 0; nc++; } }
+            for (int j = 0; j < nfree; j++) { int on = 0;
+                for (int k = 0; k < Q1; k++) if (lof[freep[j] * Q1 + k] == t) on = 1;
+                if (on) for (int s = 0; s < H; s++) for (int u = 0; u < H; u++) nc = tabu_hubmoves(cand, cap, nc, j * H + s, ii * H + u); }
+        }
+    }
+    return nc;
+}
+
+/* cover cost after move m (state restored), -1 if the move makes the hub-distance cost nonzero */
+static long tabu_eval(TMove *m) {
+    if (m->type == 0) { sig_swap(m->x, m->y); long c = cover_cost(); sig_swap(m->x, m->y); return c; }
+    char old[4];
+    for (int e = 0; e < m->ne; e++) { old[e] = hgA2[m->ea[e]][m->eb[e]]; hgA2[m->ea[e]][m->eb[e]] = m->ev[e]; }
+    hubadj_from_A2();
+    long c = hg_dist_cost() ? -1 : cover_cost();
+    for (int e = m->ne - 1; e >= 0; e--) hgA2[m->ea[e]][m->eb[e]] = old[e];
+    hubadj_from_A2();
+    return c;
+}
+static int tabu_is_tabu(TMove *m, long step) {
+    if (m->type == 0) return tabuPt[(size_t)m->x * N + sig[m->y]] > step || tabuPt[(size_t)m->y * N + sig[m->x]] > step;
+    for (int e = 0; e < m->ne; e++) if (tabuHub[m->ea[e]][m->eb[e]] > step) return 1;
+    return 0;
+}
+static void tabu_apply(TMove *m, long step, int TTEN) {
+    if (m->type == 0) { int L0 = sig[m->x], L1 = sig[m->y]; sig_swap(m->x, m->y);
+        tabuPt[(size_t)m->x * N + L0] = step + TTEN; tabuPt[(size_t)m->y * N + L1] = step + TTEN; }
+    else { for (int e = 0; e < m->ne; e++) { hgA2[m->ea[e]][m->eb[e]] = m->ev[e]; tabuHub[m->ea[e]][m->eb[e]] = step + TTEN; }
+        hubadj_from_A2(); }
+}
+
+static void tabu_run(long TS, double TSECS, int TTEN, long TREST, int TSAMP) {
+    tabuPt = calloc((size_t)N * N, sizeof(long)); memset(tabuHub, 0, sizeof tabuHub);
+    int cap = 1 << 16; TMove *cand = malloc(sizeof(TMove) * cap); int *feas = malloc(sizeof(int) * cap);
+    int *bestSig = malloc(sizeof(int) * N); static char bestA2[256][256];
+    long cc = cover_cost(), best = cc, lastimp = 0, nrest = 0, ncsum = 0;
+    memcpy(bestSig, sig, sizeof(int) * N); memcpy(bestA2, hgA2, sizeof bestA2);
+    printf("tabu: start cover cost %ld, hub-distance cost %ld, tenure %d, restart after %ld\n", cc, hg_dist_cost(), TTEN, TREST);
+    for (int r = 0; r < nunc && r < 8; r++) printf("  hole %s freed#%d target %d\n", uncI[r] < nfree ? "point" : "line", uncI[r] % nfree, uncT[r]);
+    fflush(stdout);
+    struct timespec t0, t1; clock_gettime(CLOCK_MONOTONIC, &t0); double el = 0;
+    long step;
+    for (step = 1; step <= TS && cc > 0; step++) {
+        if ((step & 15) == 0) { clock_gettime(CLOCK_MONOTONIC, &t1); el = (t1.tv_sec - t0.tv_sec) + 1e-9 * (t1.tv_nsec - t0.tv_nsec); if (el > TSECS) break; }
+        int hI[256], hT[256], nh = nunc < 256 ? nunc : 256;
+        for (int r = 0; r < nh; r++) { hI[r] = uncI[r]; hT[r] = uncT[r]; }
+        int nc = tabu_gen(cand, cap, nh, hI, hT); ncsum += nc;
+        if (TSAMP > 0 && nc > TSAMP) {   /* evaluate a random subset of the candidates (speed) */
+            for (int c = 0; c < TSAMP; c++) { int j = c + rnd() % (nc - c); TMove tmp = cand[c]; cand[c] = cand[j]; cand[j] = tmp; }
+            nc = TSAMP; }
+        long bestv = -1; int npick = 0, pick = -1, nfeas = 0;
+        for (int c = 0; c < nc; c++) {
+            long v = tabu_eval(&cand[c]);
+            if (v < 0) continue;
+            feas[nfeas++] = c;
+            if (tabu_is_tabu(&cand[c], step) && v >= best) continue;
+            if (pick < 0 || v < bestv) { bestv = v; pick = c; npick = 1; }
+            else if (v == bestv) { npick++; if (rnd() % npick == 0) pick = c; }
+        }
+        if (pick < 0) { if (!nfeas) { lastimp = -1; continue; } pick = feas[rnd() % nfeas]; }
+        tabu_apply(&cand[pick], step, TTEN);
+        cc = cover_cost();
+        if (cc < best) { best = cc; lastimp = step; memcpy(bestSig, sig, sizeof(int) * N); memcpy(bestA2, hgA2, sizeof bestA2);
+            printf("tabu step %ld: new best cover cost %ld (move type %d)\n", step, best, cand[pick].type); fflush(stdout); }
+        if (getenv("TDEBUG") && step <= 60) printf("  dbg step %ld: cands %d feasible %d picked cost %ld type %d holes %d -> cc %ld\n", step, nc, nfeas, bestv, cand[pick].type, nh, cc);
+        if (step % 2000 == 0) { printf("tabu step %ld cc %ld best %ld cands %.0f restarts %ld t %.0fs\n", step, cc, best,
+                (double)ncsum / step, nrest, el); fflush(stdout); }
+        if (step - lastimp > TREST) {
+            memcpy(sig, bestSig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p;
+            memcpy(hgA2, bestA2, sizeof bestA2); hubadj_from_A2();
+            int x, y; do x = rnd() % N; while (isfree[x]); do y = rnd() % N; while (isfree[y] || y == x);
+            sig_swap(x, y); cc = cover_cost(); lastimp = step; nrest++;
+        }
+    }
+    /* final state: the best one seen */
+    memcpy(sig, bestSig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p;
+    memcpy(hgA2, bestA2, sizeof bestA2); hubadj_from_A2();
+    nhg = 0; for (int a = 0; a < hgK; a++) for (int b = 0; b < hgK; b++) if (hgA2[a][b]) { hgA[nhg] = a; hgB[nhg] = b; nhg++; }
+    cc = cover_cost();
+    printf("tabu: %ld steps, %ld restarts, best cover cost %ld (final %ld), hub-distance cost %ld, hub-hub edges %d, %.0fs\n",
+           step - 1, nrest, best, cc, hg_dist_cost(), nhg, el);
+    if (cc == 0) printf("TABU SUCCESS: cover cost 0\n");
+    fflush(stdout);
+}
+
 int main(int argc, char **argv) {
     if (argc < 4) { fprintf(stderr, "usage: dmhub GQBIN SOLIN OUTPREFIX\n"); return 1; }
     if (getenv("SEED")) rs ^= strtoull(getenv("SEED"), 0, 10) * 0x9E3779B97F4A7C15ULL;
@@ -404,6 +542,15 @@ int main(int argc, char **argv) {
             else { memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p; cc = cover_cost(); printf("repair failed, best %ld\n", bestc); }
         }
         if (getenv("SHOWUNC")) for (int r = 0; r < nunc && r < 60; r++) printf("UNC %s freed#%d target %d\n", uncI[r] < nfree ? "pt" : "ln", uncI[r] % nfree, uncT[r]);
+    }
+    if (getenv("TABU")) {   /* card c1: tabu finisher on the coverage cost (needs HGFIRST=1, i.e. the hub graph) */
+        if (!usehubadj) { fprintf(stderr, "TABU needs HGFIRST=1 and a hub graph\n"); return 1; }
+        long TS = getenv("TSTEPS") ? atol(getenv("TSTEPS")) : 1000000000L;
+        double TSECS = getenv("TSECS") ? atof(getenv("TSECS")) : 600;
+        int TTEN = getenv("TTEN") ? atoi(getenv("TTEN")) : 30;
+        long TREST = getenv("TRESTART") ? atol(getenv("TRESTART")) : 3000;
+        int TSAMP = getenv("TSAMP") ? atoi(getenv("TSAMP")) : 0;
+        tabu_run(TS, TSECS, TTEN, TREST, TSAMP);
     }
     if (!getenv("HGFIRST")) hub_graph_block();
     build(); long per[3]; long c = cost_eval(per);

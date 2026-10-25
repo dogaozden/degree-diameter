@@ -17,7 +17,7 @@ def search(k, rng):
         if not cand: continue
         pts.append(p); lns.append(rng.choice(cand))
     return list(zip(pts, lns)) if len(pts) == k else None
-if __name__ == '__main__':
+if __name__ == "__main__":
     k, seed, tries = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
     rng = random.Random(seed); best = None; seen = {}
     for t in range(tries):
