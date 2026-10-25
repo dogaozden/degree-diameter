@@ -1,6 +1,6 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **70 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **73 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
@@ -68,7 +68,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
 | (13, 7) | 1,062,936 | **1,064,472** | +0.1% | hexagon cover + hub vertices ¹ | — |
 | (14, 7) | 1,771,560 | **1,788,052** | +0.9% | hexagon cover + hub vertices ¹ | — |
-| (15, 7) | 2,480,184 | **2,497,075** | +0.7% | hexagon cover + hub vertices ¹ | — |
+| (15, 7) | 2,480,184 | **2,501,008** | +0.8% | hexagon cover + hub vertices ¹ | — |
 | (16, 7) | 4,022,340 | **4,052,108** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
 | (5, 8) | 9,234 | **9,760** | +5.7% | evolutionary search | (9,576) |
@@ -98,9 +98,12 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (8, 10) | 6,927,210 | **7,818,096** | +12.9% | finite geometry ¹ | — |
 | (9, 10) | 20,017,260 | **23,975,280** | +19.8% | orbit search (Haar) | — |
 | (10, 10) | 50,331,156 | **60,141,120** | +19.5% | orbit search (Haar) | — |
+| (11, 10) | 0 | **148,729,680** | new | finite geometry ¹ | — |
 | (12, 10) | 300,383,050 | **325,832,976** | +8.5% | orbit search (Haar) | — |
 | (13, 10) | 617,330,936 | **677,714,400** | +9.8% | orbit search (Haar) | — |
 | (14, 10) | 1,213,477,190 | **1,326,627,120** | +9.3% | orbit search (Haar) | — |
+| (15, 10) | 2,300,326,510 | **2,467,618,800** | +7.3% | finite geometry ¹ | — |
+| (16, 10) | 4,119,507,330 | **4,220,872,800** | +2.5% | finite geometry ¹ | — |
 
 ¹ Found in a session that could call squads of Claude Haiku helpers (see [Opus with Haiku squads](#opus-with-haiku-squads)).
 ² (3, 8): 288 against 256 is a large jump for a well-studied cell; a literature check for newer values is pending.
