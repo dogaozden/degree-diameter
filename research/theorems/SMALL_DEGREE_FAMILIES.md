@@ -31,8 +31,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - Among the 115 groups the bound leaves open, 21 solve, and the solve rate falls steadily with N/B (§3.2).
    - At Δ = 4 the same bound shows that no Z_p ⋊ Z_k with k ∈ {2, 3, 4, 6} can reach the (4,8) or (4,9) table
      sizes, for any p.
-   - At Δ = 5 it excludes action order 2 (k ≤ 12) at (5,7), (5,8) and (5,9). Action orders 3, 4 and 6 are mostly
-     excluded only from D = 9 on.
+   - At Δ = 5 it excludes action order 2 (k ≤ 12; k ≤ 10 at D = 9) at (5,7), (5,8) and (5,9). Action orders 3,
+     4 and 6 are mostly excluded only from D = 9 on.
 4. **No bounded-order family covers a row** (§2.4).
    - For fixed action order o, metacyclic Haar graphs have N ≤ (2D+1)^((o+1)(Δ−1)): polynomial in D.
    - The records grow like (Δ−1)^D, so any metacyclic family that holds a whole row needs an action order that grows
@@ -48,7 +48,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
      eleven groups that came within cost 5 (all affine-type, like Loz's group) are exhaustively negative; the
      closest is cost 1.
    - **(4,9):** the closest group found is C101 : C25 = SmallGroup(2525,3) (5,050 vertices), 2 vertices short and
-     exhaustively negative. The library screen of orders 2486–2700 found nothing.
+     exhaustively negative. The library screen of orders 2486–2700 found nothing, and neither did a screen of every
+     group of the seven squarefree orders there that the installed library lacks.
    - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
      closest is SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative
      (cost 4).
@@ -268,8 +269,11 @@ D = 7, for k ≤ 40, the bound alone rules out a metacyclic Haar graph above the
   only small rank.
 
 **Δ = 5** (`cyclotable5.py` → `runs/cyclotable5_d5D{7,8,9}.txt`; only action orders with φ(o) ≤ 2, i.e.
-o ∈ {2, 3, 4, 6}; k ≤ 12 at D = 7 and 8, k ≤ 10 at D = 9). Beating the table needs N ≥ 1,556, 4,618 and 13,969.
-- Action order 2 never gets there: every such group has N ≤ 852, 1,356 and 1,770 at D = 7, 8, 9, for any p.
+o ∈ {2, 3, 4, 6}; k ≤ 12 at D = 7 and 8, k ≤ 10 at D = 9). Beating the table needs N ≥ 1,556, 4,618 and 13,969;
+beating our own records 3,120, 9,576 and 28,560 (research/RESULTS.md) needs 1,561, 4,789 and 14,281. Every
+statement below holds for both thresholds.
+- Action order 2 never gets there in this k range: every such group has N ≤ 852, 1,356 and 1,770 at D = 7, 8, 9,
+  for any p.
 - With φ(o) = 2 there are now three formal a-parts, a lattice of rank 6 instead of 4, and that leaves room at
   small D:
   - D = 7: only (k, o) = (4, 4) and (6, 6) are excluded. (3, 3), (6, 3), (8, 4), (9, 3), (12, 3), (12, 4) and
@@ -279,14 +283,16 @@ o ∈ {2, 3, 4, 6}; k ≤ 12 at D = 7 and 8, k ≤ 10 at D = 9). Beating the tab
   - D = 9: every case with k ≤ 10 is excluded except (9, 3), which allows 16,902.
 - o = 3 always allows more than o = 6 at the same k. Both use Z[ζ_3], but ζ_6 = −ζ_3² brings in the sign, so walk
   sums cancel more.
-- So at Δ = 5 small rank stops reaching the table only from D = 8–9 on, later than at Δ = 4, as one expects from the
-  extra free a-part. The growth corollary (§2.4) says it must happen eventually for every fixed o.
+- So at Δ = 5 small rank is mostly excluded only from D = 9 on (at Δ = 4 already at D = 8), as one expects from
+  the extra free a-part. The growth corollary (§2.4) says that for every fixed o it must happen eventually.
+- The 29 saved metacyclic Δ = 5 solutions of the voltage-lifts session (D = 8–10, `runs/meta_parse_check.txt`) all
+  have o ≥ 11, far from this regime.
 - The patterns are also reduced by permuting the three generators that carry a formal a-part. That permutation,
   together with the formal coordinates, is an automorphism of U, so the bound does not change. The reduced and the
   plain computation agree on 7 cases (`cyclotable5_symcheck.py` → `runs/cyclotable5_symcheck.txt`).
 
-**Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats the table at
-D = 7, 9 or 10. At D = 8 the family stays at 234 against 256.
+**Corollary (Δ = 3, complete for this family).** No cubic Haar graph of any Z_p ⋊_r Z_k (p prime) beats the
+table at D = 7, 9 or 10. At D = 8 the family stays at 234 against 256.
 - Every group with N up to the Moore limit (127, 255, 510, 1023) was scanned exhaustively
   (`runs/frob_d3D{7,8,9,10}.txt`; `frobcover.py` confirms that every (p, k, r) is present).
 - The family maxima are 140, 234, 506 and 660 vertices.
@@ -444,7 +450,8 @@ In every affine case the walk sums are signed sums of powers of one field elemen
   - C17 : C8 on the 3+3 bases and Z29 ⋊ Z7 on the 2+2 base at (3,10).
 
   There are two exceptions: SmallGroup(486,40), a 3-group extended by C2 and the closest group at (3,10), and
-  SmallGroup(432,243), a near miss at both (3,10) and (4,7).
+  SmallGroup(432,243), a near miss at both (3,10) and (4,7). The best K3,3 lift at (3,10) over orders 146–200,
+  over SmallGroup(162,22) = (C3 . ((C3 × C3) : C3)) : C2, has the same shape as (486,40), but reaches only cost 12.
 - Exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.6).
 
 ### 3.2 Solve probability falls with N / B(k, o)
@@ -571,11 +578,12 @@ Why a screen is meaningful:
 | (4,8) | Haar, every SmallGroup, 3 s anneal (`fscreen.py`, tags `_1201`, `_1236`, `_1248`, `_1251`) | orders 1201–1300 except 1280 and 1296: 1201–1235 (1,945 groups, 1,114 annealed), 1236–1250 without 1248 (169), 1248 (1,460 groups, 954 annealed), 1251–1300 (474, 320 annealed) | no solution; best cost 2 at C31 : (C5 × Q8) = SmallGroup(1240,7), exhaustively negative (§2.5); otherwise ≥ 8 |
 | (4,8) | Frobenius products A × B (`frobprod.py`), index ≤ 6, central part ≤ 3 | orders 1201–1400, 66 groups | best cost 9 (S3 × (C29 : C7), 1218) |
 | (4,9) | Frobenius products, index ≤ 6, central part ≤ 2, 15 s | orders 2486–2800, 50 groups (orders missing from the library) | best cost 10 (D5 × (C23 : C11), 2530) |
-| (4,9) | Haar, every SmallGroup, 5 s anneal, then 2 × 30 s for cost ≤ 10 (`fscreen.py`, `fscreen2.py`) | orders 2486–2700 in the library: 1,029 groups (589 annealed, 161 rank > 3, 279 abelianization bound). Not covered: order 2624 (1,672 groups, C41 by 2-groups) and the 61 orders the library lacks | no solution; best cost 2 after stage 2 at C101 : C25 = SmallGroup(2525,3) (5,050 vertices), exhaustively negative: the normal form (§2.2) has 1,513,200 sets, no solution, best 2 short (`z101.py` → `runs/d4D9_z101x25_exhaustive.txt`) |
+| (4,9) | Haar, every SmallGroup, 5 s anneal, then 2 × 30 s for cost ≤ 10 (`fscreen.py`, `fscreen2.py`) | orders 2486–2700 in the library: 1,029 groups (589 annealed, 161 rank > 3, 279 abelianization bound). Not covered: order 2624 (1,672 groups, C41 by 2-groups) and 54 of the 61 orders the library lacks (the 7 squarefree ones are in the next row) | no solution; best cost 2 after stage 2 at C101 : C25 = SmallGroup(2525,3) (5,050 vertices), exhaustively negative: the normal form (§2.2) has 1,513,200 sets, no solution, best 2 short (`z101.py` → `runs/d4D9_z101x25_exhaustive.txt`) |
+| (4,9) | Haar, every group of the 7 squarefree orders in 2486–2700 that the installed library lacks (2490, 2530, 2562, 2590, 2618, 2622, 2670), listed by Hölder's theorem as Z_m ⋊_r Z_n (`sqfmeta.py`; the counts agree with Hölder's formula on 28 orders and with GAP on the 19 of them it has, `runs/sqfmeta_count_check.txt`), 2 × 15 s | all 84 groups: 64 annealed, 20 removed by the abelianization bound | none; best cost 10, D5 × (C23 : C11) (2530), then 12, D7 × (C61 : C3) (2562), and 14, Z5 × AGL(1,23). In six of the seven orders every action order is at most 6 (`runs/sqfmeta_d4D9.tsv`) |
 | (4,7) | Haar, every SmallGroup, 2 s anneal | orders 449–500: all 1,936 groups, 1,365 annealed; order 448: all 1,396 groups, 758 annealed | no solution; best cost 4 at C2 × (C19 : C12) (456) and C13 : C36 (468), both exhaustively negative (2 and 1 vertices short; `runs/d4D7_sg*_exhaustive.txt`) |
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
-| (3,10) | 2+2 lifts, exhaustive | all 67 groups of order 243 | none; best cost 8 |
+| (3,10) | 2+2 lifts, exhaustive (`allgroups.py --base bases/b22.txt`) | orders 240–270 except 256: all 481 groups (372 searched, 289 million assignments; 68 rank > 3; 41 abelianization bound), all 67 of order 243 included | none; best cost 8 (SmallGroup(240,89) = SL(2,5) . C2 and (243,29)) |
 | (4,9) | Loz-like Z_p ⋊ Z_k (index ≤ 3, central part ≤ 3, action order ≥ 10; `lozlike.py`, 2 × 30 s; calibration re-finds Loz's group) | N = 2486–3000, 7 groups | best cost 6 (Z37 ⋊ Z72, N = 2664) |
 | (4,8) | Loz-like, 2 × 10 s | N = 1093–1870, 20 groups (most have k > p, missed by the first session's frob scan) | best cost 8 (Z43 ⋊ Z28) |
 | (4,7) | Loz-like, 2 × 5 s | N = 433–1093, 23 groups | best cost 4 (C13 : C36, exhaustively negative), then 6 |
@@ -623,4 +631,5 @@ lifts at (4,8) for 2,186–2,208 vertices (none).
 
 GAP 4.12 with the SmallGroups library (`gap-smallgrp` **and `gap-smallgrp-extra`**) was installed from Ubuntu
 packages in the container. Without the extra package, orders such as 1092 and 1096–1140 are missing. Orders above
-2000 are only partly covered: in 2486–2700, 154 orders (2,701 groups) are available and 61 are not.
+2000 are only partly covered: in 2486–2700, 154 orders (2,701 groups) are available and 61 are not. Seven of
+the 61 are squarefree; `sqfmeta.py` lists their groups directly.
