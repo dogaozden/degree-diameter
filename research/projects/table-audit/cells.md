@@ -108,7 +108,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 18,128,880 | does not check out as read: diameter >= 9 |
 | (15,9) | 168,016,334 | Loz | no |  | 208,029,120 | no traceable construction (data lost) |
 | (15,10) | 2,300,326,510 | Loz | no |  |  | no traceable construction (data lost) |
-| (16,3) | 394 | Delorme-Farhi duplication | yes | apsp.c VALID | 396 |  |
+| (16,3) | 394 | Delorme-Farhi duplication | order | apsp.c VALID | 396 |  |
 | (16,4) | 5,134 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,440 |  |
 | (16,5) | 27,300 | Delorme, Gomez, Quisquater | no |  | 33,792 | no traceable construction |
 | (16,6) | 884,062 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 940,846 |  |

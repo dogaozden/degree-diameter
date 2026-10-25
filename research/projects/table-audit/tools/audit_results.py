@@ -51,7 +51,7 @@ for d, q in ((13, 11), (15, 13)):
 put(16, 3, source='wiki: Delorme-Farhi duplication (no paper names this value; Delorme 1985 JGT not read)',
     construction='PG(2,13) plus copies (Delorme-Farhi 1984) of the 14 points of a conic and of its 14 tangent lines; '
                  'each copy joined to the original neighbours (tools/delorme.py d3)',
-    rebuilt='yes', check='apsp.c VALID (checks/small.txt)',
+    rebuilt='order', check='apsp.c VALID (checks/small.txt)',
     notes='a duplication of exactly this order and degree; whether it is the graph the table had in mind is not documented')
 for d, q in ((7, 5), (11, 9), (13, 11), (15, 13)):
     put(d, 4, source='Delorme, Europ. J. Combin. 6 (1985) 291-302, Sec. 8(a) (example q = 5: 312 + 34 = 346)',
