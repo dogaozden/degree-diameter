@@ -1,0 +1,11 @@
+|G| = 1296; start set 792 points; union of G-orbits: True (6 orbits)
+subgroups found by order: [(3, 49), (6, 255), (9, 24), (12, 13), (18, 79), (24, 5), (36, 30), (48, 4), (54, 9), (81, 3), (108, 12), (162, 12), (324, 5), (648, 3), (1296, 1)]
+order 162: 12 subgroups, using 1
+h162_s2_3: order 162, orbits 2820, good K=82, start weight 792 (0.3s), running wclq2
+RUN h162_s2_3: weight 792 (start 792) K=82 optimal=True valid=True wall 0.3s; warm start: clique of weight 792 (8 vertices)
+order 48: 4 subgroups, using 1
+h48_s2_3: order 48, orbits 18404, good K=5961, start weight 792 (14.2s), running wclq2
+RUN h48_s2_3: weight 792 (start 792) K=5961 optimal=False valid=True wall 39.5s; exact search cut at 5.0 s after 483328 nodes (best 792); local search; local search: 1374070 iterations, best 792
+order 81: 3 subgroups, using 1
+h81_s2_3: order 81, orbits 5194, good K=436, start weight 792 (0.8s), running wclq2
+RUN h81_s2_3: weight 792 (start 792) K=436 optimal=True valid=True wall 0.8s; warm start: clique of weight 792 (16 vertices)

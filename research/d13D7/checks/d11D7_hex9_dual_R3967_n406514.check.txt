@@ -1,0 +1,10 @@
+# (11,7) 406,514 = 3*|H(9)| + 2*3967 (job cell-13-7, 2026-10-25 ~01:50-01:56 UTC).
+# Three copies of H(9) + matching sigma = the explicit duality delta of H(9) (q9/dual_pt2line.txt; REPORT.md §7), so the
+# local-duality condition holds at every point; R = 3,967 pairwise NON-COLLINEAR points (q9/R3967_noncollinear_idx.txt,
+# squad round 5 card c2, later run: seeded point ILS from its 3,958 orbit union; checked by tools/ncolcheck.py); hub graph random 8-regular bipartite with all same-side
+# distances <= 6 (q9/hub_3967_d8.txt, tools/hubgraph.py 3967 8 2 out.txt).
+#   NSFILE=q9/hub_3967_d8.txt NOCHECK=1 tri_dual hex/hex_q9.bin q9/dual_pt2line.txt q9/R3967_noncollinear_idx.txt 1 out.edges
+# All-pairs (research/d13D7/apsp_wide.c, same checks as apsp.c, no symmetry used):
+n=406514 edges=2235827 degree min=11 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=406514
+# d7hex format: research/frontier/sols/d11D7_hex9_dual_R3967_n406514.sol (round trip identical). Supersedes 406,496.

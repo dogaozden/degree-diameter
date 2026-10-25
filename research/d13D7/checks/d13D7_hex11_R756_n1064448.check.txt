@@ -1,0 +1,14 @@
+# (13,7) 1,064,448 = 3*|H(11)| + 2*756 (job cell-13-7, 2026-10-25 ~00:00-00:16 UTC).
+# R = research/d13D7/sets/R756_r4c1_coords.txt: 756 pairwise opposite points of H(11) (squad round 4 card c1: union of
+# orbits of the order-15 group <a b^2>, a, b the commuting generators of round 3 (orders 15 on a 5-dim U, 5 on U^perp);
+# generators research/squads/d13D7_r4/c1/best_gen.txt); checked by tools/oppcheck (BFS) and a numpy B check.
+# S = the first 756 lines of the Hermitian spread; local dualities on the disjoint Gamma_2's; hub circulant with
+# offsets [26, 108, 188, 235, 353, 382, 565, 619, 712, 715] (3(C-C) = Z_756, build_d13D7.hub_offsets).
+# Build (independent of hexgen.c, numpy only):
+#   python3 research/d13D7/build_d13D7.py research/d13D7/sets/R756_r4c1_coords.txt d13D7_R756.edges
+# All-pairs (research/d13D7/apsp_wide.c = apsp.c with 512-source batches; same checks; no symmetry used):
+n=1064448 edges=6918912 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1064448
+# Second rebuild path: research/frontier/sols/d13D7_hex11_R756_n1064448.sol (d7hex format, hexgen indexing):
+#   hexgen 11; d7hex edges hex/hex_q11.bin d13D7_hex11_R756_n1064448.sol out.edges
+# gives the same edge set after relabelling the builder's lines to hexgen's order (checked edge by edge).

@@ -1,0 +1,12 @@
+# (10,7) 224,862 = 3*|H(8)| + 2*84 (side result of job cell-13-7, 2026-10-24 ~23:45 UTC).  New cell (table 224,694).
+# H(8) from research/d13D7/hexgen2.c (hexgen.c plus GF(4), GF(8): bit vectors mod x^3+x+1); its incidence graph has the
+# distance profile of a generalized hexagon of order (8,8) from every tested point.  R = 84 pairwise opposite points
+# (q8/R84_q8_idx.txt, tools/povoid_ils2.c with GF(8) arithmetic; its start-up check confirms B(x,y) = 0 iff
+# distance <= 4 on 20 points); S = the first 84 of the 513 lines of H(8) in the elliptic hyperplane x3 = x0 + x4
+# (q8/S_q8_spread.txt); hub graph = circulant of degree q-1 = 7.
+#   hexgen2 8; RFILE=q8/R84_q8_idx.txt SFILE=q8/S_q8_spread.txt tri hex/hex_q8.bin -1 1 d10D7_R84.edges
+# All-pairs (apsp_wide.c, same checks as apsp.c):
+n=224862 edges=1124310 degree min=10 max=10 bipartite=yes diameter=7
+RESULT VALID d=10 D=7 n=224862   (with D = 6: RESULT INVALID)
+# d7hex format: research/frontier/sols/d10D7_hex8_R84_n224862.sol (hexgen2 8 for the hexagon file); d7hex edges
+# rebuilds an identical edge list.

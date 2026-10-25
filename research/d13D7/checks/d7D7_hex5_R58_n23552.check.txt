@@ -1,0 +1,9 @@
+# (7,7) 23,552 = 3*|H(5)| + 2*58 (side result of job cell-13-7, 2026-10-24 ~22:55 UTC).
+# Three copies of H(5) + matching, 58 surgeries: R = 58 pairwise opposite points of H(5) (partial ovoid of Q(6,5),
+# research/d13D7/q57/R58_q5_idx.txt, tools/povoid_ils 40 s), S = the first 58 lines of the Hermitian spread of H(5)
+# (q57/S_q5_spread.txt), local dualities on the disjoint Gamma_2's, hub graph = circulant of degree q-1 = 4.
+#   hexgen 5; RFILE=q57/R_q5_ils.txt SFILE=q57/S_q5_spread.txt tri hex/hex_q5.bin -1 1 d7D7_R58.edges
+# All-pairs, research/lifts/coordinator_check/apsp.c on the edge list rebuilt from the d7hex sol
+# (d7hex edges hex/hex_q5.bin research/frontier/sols/d7D7_hex5_R58_n23552.sol out.edges):
+RESULT VALID d=7 D=7 n=23552   (with D = 6: RESULT INVALID)
+# Previous best (7,7): 23,488 (exp2-squad, 26 freed pairs); table 23,436.

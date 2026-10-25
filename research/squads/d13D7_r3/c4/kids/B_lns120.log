@@ -1,0 +1,9 @@
+selftest point 0: perp size 16104 (scan 16104) ok
+selftest point 13229: perp size 16104 (scan 16104) ok
+selftest point 152857: perp size 16104 (scan 16104) ok
+initial |R| = 364
+[30s] it 49207 |R|=364 best=364 improv=0 plateau=24686 fibre=9909 skipped=0 avg|C|=4.8
+[60s] it 98643 |R|=364 best=364 improv=0 plateau=49511 fibre=19711 skipped=0 avg|C|=4.8
+[90s] it 147667 |R|=364 best=364 improv=0 plateau=74086 fibre=29590 skipped=0 avg|C|=4.8
+[120s] it 198698 |R|=364 best=364 improv=0 plateau=99717 fibre=39682 skipped=0 avg|C|=4.8
+done: 198698 iterations, best 364, improv 0, plateau 99717, fibre 39682, skipped 0, avg|C| 4.8

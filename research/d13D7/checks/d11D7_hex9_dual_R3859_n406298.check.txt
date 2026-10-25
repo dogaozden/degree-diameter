@@ -1,0 +1,13 @@
+# (11,7) 406,298 = 3*|H(9)| + 2*3859 (side result of job cell-13-7, 2026-10-24 ~23:00-23:14 UTC).
+# Three copies of H(9) + matching sigma = an explicit DUALITY delta of H(9) (research/d13D7/q9/dual_pt2line.txt; built by
+# q9/plucker.py, dualmap.py, findpsi.py, duality9.py: line Plucker vectors span g2 (14-dim), its form has a 7-dim
+# radical in characteristic 3, the quotient sends lines to points, then a similitude onto H(9); verified on all
+# 66,430 points and lines).  With a duality the local-duality condition holds at every point, so the surgery set R
+# only has to be NON-COLLINEAR: R = q9/R3859_noncollinear_idx.txt (3859 points, no two on a line; tools/ncol_ils.c,
+# 120 s).  Hub graph: random 8-regular bipartite, all same-side distances <= 6 (q9/hub_3859_d8.txt, tools/hubgraph.py).
+#   NSFILE=q9/hub_3859_d8.txt NOCHECK=1 tri_dual hex/hex_q9.bin q9/dual_pt2line.txt q9/R3859_noncollinear_idx.txt 1 out.edges
+# All-pairs (research/d13D7/apsp_wide.c, same checks as apsp.c, no symmetry used):
+n=406298 edges=2234639 degree min=11 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=406298
+# d7hex format: research/frontier/sols/d11D7_hex9_dual_R3859_n406298.sol; d7hex edges rebuilds an identical edge list.
+# Previous best (11,7): 400,040 (this job, ovoid of Q(6,9)); 398,606 (exp2); table 398,580.

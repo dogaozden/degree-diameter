@@ -1,0 +1,9 @@
+# (9,7) 117,992 = 3*|H(7)| + 2*172 (side result of job cell-13-7, 2026-10-24 ~23:02 UTC).
+# Three copies of H(7) + matching, 172 surgeries: R = 172 pairwise opposite points of H(7) (partial ovoid of Q(6,7),
+# research/d13D7/q57/R172_q7_idx.txt, tools/povoid_ils 60 s), S = the first 172 lines of the Hermitian spread of H(7)
+# (q57/S_q7_spread.txt), local dualities on the disjoint Gamma_2's, hub graph = circulant of degree q-1 = 6.
+#   hexgen 7; RFILE=q57/R172_q7_idx.txt SFILE=q57/S_q7_spread.txt tri hex/hex_q7.bin -1 1 d9D7_R172.edges
+# All-pairs, research/lifts/coordinator_check/apsp.c, on the edge list rebuilt from the d7hex sol
+# (d7hex edges hex/hex_q7.bin research/frontier/sols/d9D7_hex7_R172_n117992.sol out.edges):
+RESULT VALID d=9 D=7 n=117992   (with D = 6: RESULT INVALID)
+# Previous best (9,7): 117,690 (exp2-squad, 21 freed pairs); table 117,648.

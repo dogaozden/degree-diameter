@@ -1,0 +1,52 @@
+start: k = 99 cost = 0; bucket sizes cnt=0..6: 0 146 677 2200 5333 10016 15815
+[0.1s] it 6: feasible k = 100
+[0.1s] it 7: feasible k = 101
+[0.1s] it 79: feasible k = 102
+[0.1s] it 80: feasible k = 103
+[0.1s] it 81: feasible k = 104
+[0.1s] it 91: feasible k = 105
+[0.1s] it 92: feasible k = 106
+[0.1s] it 93: feasible k = 107
+[0.1s] it 94: feasible k = 108
+[0.1s] it 161: feasible k = 109
+[0.1s] it 208: feasible k = 110
+[0.1s] it 369: feasible k = 111
+[0.1s] it 421: feasible k = 112
+[0.1s] it 435: feasible k = 113
+[0.1s] it 436: feasible k = 114
+[0.1s] it 596: feasible k = 115
+[0.1s] it 597: feasible k = 116
+[0.2s] it 712: feasible k = 117
+[0.2s] it 722: feasible k = 118
+[0.2s] it 780: feasible k = 119
+[0.2s] it 1131: feasible k = 120
+[0.2s] it 1132: feasible k = 121
+[0.2s] it 1391: feasible k = 122
+[0.2s] it 1480: feasible k = 123
+[0.2s] it 1608: feasible k = 124
+[0.2s] it 1609: feasible k = 125
+[0.2s] it 1667: feasible k = 126
+[0.2s] it 1673: feasible k = 127
+[0.2s] it 1725: feasible k = 128
+[0.3s] it 1940: feasible k = 129
+[0.3s] it 2666: feasible k = 130
+[0.3s] it 2779: feasible k = 131
+[0.5s] it 5957: feasible k = 132
+[1.6s] it 24102: feasible k = 133
+[4.6s] it 67584: feasible k = 134
+[20s] it 358286 k=135 cost=2 best_k=134 acc=65422 improve=1756
+[21.9s] it 395223: feasible k = 135
+[22.3s] it 403281: feasible k = 136
+[40s] it 732304 k=137 cost=2 best_k=136 acc=131530 improve=3694
+[60s] it 1099484 k=137 cost=1 best_k=136 acc=196298 improve=5749
+[62.2s] it 1137198: feasible k = 137
+[80s] it 1612958 k=138 cost=1 best_k=137 acc=260532 improve=8071
+[100s] it 2188668 k=138 cost=2 best_k=137 acc=327395 improve=10518
+[120s] it 2656236 k=138 cost=2 best_k=137 acc=392772 improve=12489
+[140s] it 2938662 k=138 cost=4 best_k=137 acc=456974 improve=13809
+[160s] it 3382407 k=138 cost=1 best_k=137 acc=521519 improve=15795
+[180s] it 3823203 k=138 cost=3 best_k=137 acc=587198 improve=17707
+[200s] it 4302257 k=138 cost=2 best_k=137 acc=649289 improve=19773
+[220s] it 4760340 k=138 cost=4 best_k=137 acc=712805 improve=21768
+done: iters 5101666 accepted 777117 best_k 137 final k 138 cost 3 (check 3)
+best 137

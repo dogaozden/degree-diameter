@@ -1,0 +1,37 @@
+dir 0: 1 0 0 9 0  pivot 0  Q=2 (nonsquare)
+dir 1: 0 1 0 1 4  pivot 1  Q=7 (nonsquare)
+tangent(0,1)=1 rhoOK=1
+tangent(1,0)=1 rhoOK=1
+direction 0: same-direction degree 6710
+direction 1: same-direction degree 6710
+graph: 29282 vertices, average degree 7370.0
+  size 2 at iter 1, restart 1, cpu 0.0 s
+  size 3 at iter 2, restart 1, cpu 0.0 s
+  size 4 at iter 3, restart 1, cpu 0.0 s
+  size 5 at iter 4, restart 1, cpu 0.0 s
+  size 6 at iter 5, restart 1, cpu 0.0 s
+  size 7 at iter 6, restart 1, cpu 0.0 s
+  size 8 at iter 7, restart 1, cpu 0.0 s
+  size 9 at iter 8, restart 1, cpu 0.0 s
+  size 10 at iter 9, restart 1, cpu 0.0 s
+  size 11 at iter 10, restart 1, cpu 0.0 s
+  size 12 at iter 11, restart 1, cpu 0.0 s
+  size 13 at iter 12, restart 1, cpu 0.0 s
+  size 14 at iter 15, restart 1, cpu 0.0 s
+  size 15 at iter 16, restart 1, cpu 0.0 s
+  size 16 at iter 19, restart 1, cpu 0.0 s
+  size 17 at iter 21, restart 1, cpu 0.0 s
+  size 18 at iter 22, restart 1, cpu 0.0 s
+  size 19 at iter 26, restart 1, cpu 0.0 s
+  size 20 at iter 49, restart 1, cpu 0.0 s
+  size 21 at iter 51, restart 1, cpu 0.0 s
+  size 22 at iter 53, restart 1, cpu 0.0 s
+  size 23 at iter 54, restart 1, cpu 0.0 s
+  size 24 at iter 55, restart 1, cpu 0.0 s
+  size 25 at iter 56, restart 1, cpu 0.0 s
+  size 26 at iter 57, restart 1, cpu 0.0 s
+  size 27 at iter 58, restart 1, cpu 0.0 s
+  size 28 at iter 59, restart 1, cpu 0.0 s
+  size 29 at iter 60, restart 1, cpu 0.0 s
+done: best clique = 29 lines, iterations 1265152, restarts 63, cpu 150.0 s
+clique verified: yes

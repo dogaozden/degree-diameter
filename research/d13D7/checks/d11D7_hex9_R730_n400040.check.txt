@@ -1,0 +1,12 @@
+# (11,7) 400,040 = 3*|H(9)| + 2*730 (side result of job cell-13-7, 2026-10-24 22:3x-22:5x UTC).
+# Three copies of H(9) + one matching, 730 surgeries at an OVOID of Q(6,9) (730 pairwise opposite points of H(9),
+# research/d13D7/q9/ovoid9_idx.txt: 10 orbits of an element of order 73 of O(7,9), q9/orb73.py) with the Hermitian
+# spread of H(9) (730 pairwise opposite lines in n^perp, n = (1,0,0,0,1+al,0,0), q9/spread9.py); local dualities on the
+# disjoint sets Gamma_2(r); hub graph = circulant of degree q-1 = 8.  Built by research/d13D7/tri.c:
+#   hexgen 9; RFILE=q9/R730.txt SFILE=q9/S730.txt tri hex/hex_q9.bin -1 7 d11D7_R730.edges
+#   (internal BFS from all 7,888 damaged/new vertices + 2,048 random: worst eccentricity 7)
+# All-pairs (research/d13D7/apsp_wide.c, same checks as research/lifts/coordinator_check/apsp.c):
+n=400040 edges=2200220 degree min=11 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=400040
+# The same graph as research/frontier/sols/d11D7_hex9_R730_n400040.sol (d7hex format): d7hex edges rebuilds an
+# identical edge list (checked edge by edge).  Previous best (11,7): 398,606 (exp2); table 398,580.

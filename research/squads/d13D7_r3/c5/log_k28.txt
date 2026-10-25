@@ -1,0 +1,9 @@
+initial |K| = 29, m = 62, f = 381
+[0.1s] it 1: fixed-k 28: new best m=74 (f=382)
+[13s] fixed-k 28 it 65536 m=65 best=382 swaps=1 kicks=65535
+[27s] fixed-k 28 it 131072 m=68 best=382 swaps=1 kicks=131071
+[30s] it 147392 |K|=28 m=65 f=373 best=382 add=0 swap=1 drop=0 pert=147391
+[40s] fixed-k 28 it 196608 m=65 best=382 swaps=1 kicks=196607
+[54s] fixed-k 28 it 262144 m=74 best=382 swaps=1 kicks=262143
+done: 294720 iterations, best f=382 (|K|=28) add=0 swap=1 drop=0 pert=294719; best clique check 1
+best 382
