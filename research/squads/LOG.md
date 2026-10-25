@@ -46,3 +46,15 @@ Eight cards, one process each (the machine ran 7-9 heavy processes on 4 cores). 
 - c7 Frobenius-equivariant 3-pair insertion: 966 (n = 588). c8 wildcard (sigma(x*) not l*, random bases): 1,506.
 Kept: c2's weighting search and c4's random-sigma recipe. Opus runs the nu stage (inc/nujoint.c) on c2's base and on c4's
 W(7)+1 base, and starts round r4 (more cost-0 bases, n = 587).
+
+## 2026-10-25 19:52 UTC, job resume3-cell-11-5 (session_018TRrddhVEdN311drmbPpBK), goal: more cost-0 bases and n = 587, round r4-d11D5
+
+Four cards (r4-d11D5/scoreboard.jsonl). Meanwhile Opus finished the nu stage on r3 c2's base: **(11,5) 7,032, apsp VALID**
+(research/d11D5/graphs/d11D5_n7032_CHECK.md).
+- c1 wpo from the other r2 cost-2/4 states: 7 more cost-0 bases at n = 586 (f5, g61, u602, d1s13, h71, h72, m81), each in
+  1-3 minutes. Stopped once 7,032 was verified.
+- c2 n = 587 on top of fail0_y901 (second switch, SA, then wpo): wpo from cost 214 drifted up to 626; told to anneal longer first.
+- c3 random-sigma incident switch on W(8) (r3 c4's recipe): SA 1,828 -> 4 in 400 s; stopped (n = 586 already solved).
+- c4 two insertions at once (genk.py k = 2, start 3,780): SA to ~470 in 450 s.
+Kept: wpo only from low cost (<= ~20); SA first. Opus's own n = 587 pipeline (inc/pipeline.sh) adds a pair to the solved
+7,032 base so the old nu stays valid on the untouched flags.
