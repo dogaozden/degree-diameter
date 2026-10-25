@@ -11,6 +11,8 @@ Source: `hcheckpsl.c`. Binary: `hcheckpsl`.
     ./hcheckpsl --selftest                    # index, Barrett and BFS self-tests; exit 0 iff all pass
     VERBOSE=1 THREADS=2 ./hcheckpsl FILE      # also prints per-step BFS timing on stderr (does not change the computation)
 
+Note: the VERBOSE per-step print was added after tests 1-3 had run. It only adds stderr output behind an env var. The self-test and one valid file were re-run on the final binary (same results); the synthetic timing used the final binary.
+
 Output format:
 
     VALID d=10 D=10 group=psl 389 x Z_1 N=29431740 vertices=58863480
@@ -78,7 +80,17 @@ Test 4, timing (THREADS=2):
   hcpsl 28.3 s. Caveat: n = 1 is the worst case for this block layout (each block carries one z value, so each (block, generator)
   product is paid per vertex).
 
-PENDING_SYNTH
+Full-size timing, THREADS=2 (`VERBOSE=1`, `nice -n 10`, `timeout 600`, 2 GB cap). Instance: `synthetic/synth_psl_151_1321_d16.txt`,
+p = 151, n = 1321, d = 16, N = 2,273,969,400 (same p, n and N as the d16D10_psl_151_1321 target; the d16D10 files were not run).
+Generators are random, so the verdict is INVALID (diameter 11 > D = 10, ecc 11/11, exit 1); only the timing matters here.
+
+* Total 236.4 s wall: BFS from (e,A) 120.0 s, BFS from (e,B) 116.4 s. Max RSS 1088 MB.
+* Per step (BFS from (e,A)): steps 0-6 together 4.3 s; step 7 18.8 s; step 8 41.4 s; step 9 37.7 s; step 10 10.9 s; step 11 0.7 s.
+  Level sizes 16, 240, 3600, 53994, 809385, 12100993, 174644451, 1578406569, 2098511921, 683407603, 27 sum to 2N (connected).
+* Projection to N = 2.3e9 (+1.2%): about 240 s at THREADS=2 for both BFS. This is the measured time at the target size, not a model.
+  Every vertex is expanded once per BFS (2N x d = 7.3e10 target checks), i.e. about 3.2 ns per check per thread.
+* Do not extrapolate from the n = 1 case above: there each (block, generator) product is paid per vertex (about 22 ns per check
+  per thread). Scaling 13.2 s by N and d would give about 27 minutes, about 7x too pessimistic.
 
 ## Files
 
