@@ -1,0 +1,8 @@
+# (7,7) 23,580 = 3*|H(5)| + 2*72 (side result of job cell-13-7, 2026-10-24 ~23:52 UTC).
+# R = 72 pairwise opposite points of H(5) (research/d13D7/q57/R72_q5_idx.txt; squad round 4 card c3, union of orbits
+# of a group of isometries with exact orbit-graph clique), S = first 72 lines of the Hermitian spread of H(5);
+# hub graph = circulant of degree 4 (tri.c seed 2; seed 1 left hub pairs 8 apart and was rejected by its BFS).
+#   RFILE=q57/R72_q5_idx.txt SFILE=q57/S_q5_spread.txt tri hex/hex_q5.bin -1 2 d7D7_R72.edges
+# All-pairs research/lifts/coordinator_check/apsp.c:
+RESULT VALID d=7 D=7 n=23580   (with D = 6: RESULT INVALID)
+# sol: research/frontier/sols/d7D7_hex5_R72_n23580.sol (d7hex format; round trip identical). Supersedes 23,552.

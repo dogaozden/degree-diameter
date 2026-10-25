@@ -397,6 +397,7 @@ static void hubgraph_static(int k_src, int s) {   /* add (s=+1) or remove (s=-1)
     free(buf);
 }
 static int fsK = -1;
+static double T0override = 0;   /* growth rounds cool down: round r starts at T0/(r+1) */
 static void fs_free(void) {   /* release the proxy structures of the previous fast_search call */
     if (fsK < 0) return;
     for (int k = 0; k < fsK; k++) { free(cA[k]); free(cB[k]); free(oppA[k]); free(oppB[k]); free(n4p[k]); free(n2p[k]); free(n4l[k]); free(n2l[k]); }
@@ -442,8 +443,8 @@ static long fast_search(double maxsec) {
     for (int L = 0; L < N; L++) lineB(L, +1);
     if (!getenv("NOHGSTATIC")) for (int k = 0; k < K; k++) hubgraph_static(k, +1);
     fprintf(stderr, "fast search: proxy cost %ld\n", zeros);
-    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = getenv("T0") ? atof(getenv("T0")) : 0.6;
-    int zcap = 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
+    clock_t t0 = clock(); long it = 0, best = zeros; double T0 = T0override > 0 ? T0override : getenv("T0") ? atof(getenv("T0")) : 0.6;
+    int zcap = getenv("ZCAP") ? atoi(getenv("ZCAP")) : 4000; long *zl = malloc(sizeof(long) * zcap); int nz = 0; long lastchk = 1L << 60;
     double pexh = getenv("PEXH") ? atof(getenv("PEXH")) : 0;   /* probability of an exhaustive endgame move */
     double dropsec = (getenv("DROPSEC") && !nodrop) ? atof(getenv("DROPSEC")) : 0, lastimp = 0; int nactive = K;
     long impref = zeros;
@@ -470,7 +471,7 @@ static long fast_search(double maxsec) {
                     for (int a = 0; a < noppA[kk]; a++) if (cA[kk][oppA[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + oppA[kk][a];
                     for (int a = 0; a < noppB[kk]; a++) if (cB[kk][oppB[kk][a]] == 0 && nz < zcap) zl[nz++] = (long)kk * 2 * N + N + oppB[kk][a];
                 }
-                if (zeros < lastchk && (zeros < 64 || zeros * 5 < lastchk * 4)) {   /* exact BFS check of all freed sources (only after real progress) */
+                if (zeros < 600 && zeros < lastchk && (zeros < 64 || zeros * 5 < lastchk * 4)) {   /* exact BFS check of all freed sources (only after real progress) */
                     lastchk = zeros; long tc = 0; for (int kk = 0; kk < K; kk++) { int a, b; tc += cost_of(kk, &a, &b); }
                     if (tc == 0) { fprintf(stderr, "true cost 0 at proxy %ld\n", zeros); break; }
                 }
@@ -667,6 +668,29 @@ static void hg_add_new(int k, int deg) {
     }
 }
 
+
+/* hub graph: union of hdeg perfect matchings between K line-side and K point-side hubs, no repeated edge
+   (each new matching starts random and is repaired by random swaps) */
+static void hub_matchings(int K_, int hdeg) {
+    HGj = malloc(sizeof(int) * (K_ * hdeg + 1)); HGk = malloc(sizeof(int) * (K_ * hdeg + 1)); HGm = 0;
+    int *perm = malloc(sizeof(int) * (K_ + 1));
+    char **adj = malloc(sizeof(char *) * K_); for (int j = 0; j < K_; j++) adj[j] = calloc(K_, 1);
+    for (int d = 0; d < hdeg && d < K_; d++) {
+        for (int j = 0; j < K_; j++) perm[j] = j;
+        for (int j = K_ - 1; j > 0; j--) { int r = rndi(j + 1), t = perm[j]; perm[j] = perm[r]; perm[r] = t; }
+        for (int pass = 0; pass < 1000; pass++) {
+            int bad = 0;
+            for (int j = 0; j < K_; j++) if (adj[j][perm[j]]) {
+                bad++;
+                for (int tr = 0; tr < 100; tr++) { int r = rndi(K_); if (!adj[j][perm[r]] && !adj[r][perm[j]]) { int t = perm[j]; perm[j] = perm[r]; perm[r] = t; break; } }
+            }
+            if (!bad) break;
+        }
+        for (int j = 0; j < K_; j++) { if (adj[j][perm[j]]) continue; adj[j][perm[j]] = 1; HGj[HGm] = j; HGk[HGm] = perm[j]; HGm++; }
+    }
+    for (int j = 0; j < K_; j++) free(adj[j]); free(adj); free(perm);
+}
+
 /* drop freed pair j: restore its extra edges, delete its two hubs, re-index (the last pair takes index j) */
 static void drop_pair(int j) {
     int last = K - 1;
@@ -749,8 +773,11 @@ static int grow_loop(const char *out, int *per, int *per2, int *badlist) {
             int c = -1;
             if (hv == 0) {
                 long prev = -1;
+                double t0base = getenv("T0") ? atof(getenv("T0")) : 0.3;
                 for (int r = 0; r < rounds; r++) {   /* keep searching while the proxy still falls by 30% per round */
+                    T0override = t0base / (r + 1);
                     nodrop = 1; long zz = fast_search(stepsec); nodrop = 0;
+                    T0override = 0;
                     if (zz == 0 || (prev >= 0 && zz * 10 > prev * 7)) break;
                     prev = zz;
                 }
@@ -848,6 +875,100 @@ int main(int argc, char **argv) {
         char fn2[512]; snprintf(fn2, sizeof fn2, "%s.super", argv[4]); f = fopen(fn2, "w");
         fprintf(f, "superhubs %d\n", NSH); for (int s = 0; s < NSH; s++) { fprintf(f, "%d", SHn[s]); for (int t = 0; t < SHn[s]; t++) fprintf(f, " %d", SHnb[s][t] - 6 * N); fprintf(f, "\n"); }
         fclose(f);
+        return 0;
+    }
+    if (!strcmp(argv[1], "b2dual")) {   /* d7hex b2dual HEXBIN SOL seed OUT.sol hubdeg [checkcost]
+        M is taken from SOL (a duality phi: then M(B2(p)) = B2(M(p)) for EVERY point p). Freed points: a greedy maximal
+        set of pairwise non-collinear points (distance >= 4), freed lines M(p); hub graph = union of hubdeg random
+        perfect matchings. Every freed source is covered by type-2 routes (see checks/B2_hubs_CHECK.md). */
+        read_sol(argv[3]);
+        rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        const char *outb = argv[5]; int hdeg = atoi(argv[6]), checkcost = argc > 7 ? atoi(argv[7]) : 1;
+        uint8_t *cand = malloc(N); memset(cand, 1, N); int ncand = N, *sel = malloc(sizeof(int) * N), ns = 0;
+        int *order = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) order[v] = v;
+        for (int v = N - 1; v > 0; v--) { int r = rndi(v + 1), t = order[v]; order[v] = order[r]; order[r] = t; }
+        if (getenv("B2PTS")) {   /* a given set of pairwise non-collinear points instead of the greedy one */
+            FILE *sf = fopen(getenv("B2PTS"), "r"); int x; while (sf && fscanf(sf, "%d", &x) == 1) { if (!cand[x]) { fprintf(stderr, "given point %d collinear with an earlier one\n", x); return 1; }
+                sel[ns++] = x; cand[x] = 0; for (int a = 0; a < Q1; a++) { int L = PL[x * Q1 + a]; for (int b = 0; b < Q1; b++) cand[LP[L * Q1 + b]] = 0; } }
+            if (sf) fclose(sf);
+            memset(cand, 0, N);
+        }
+        for (int t = 0; t < N; t++) {
+            int p = order[t]; if (!cand[p]) continue;
+            sel[ns++] = p; cand[p] = 0; ncand--;
+            for (int a = 0; a < Q1; a++) { int L = PL[p * Q1 + a]; for (int b = 0; b < Q1; b++) { int y = LP[L * Q1 + b]; if (cand[y]) { cand[y] = 0; ncand--; } } }
+        }
+        K = ns; F = malloc(sizeof(int) * (K + 1)); isF = calloc(N, sizeof(int)); fl = malloc(sizeof(int) * (K + 1));
+        for (int k = 0; k < K; k++) { F[k] = sel[k]; isF[F[k]] = k + 1; fl[k] = M[F[k]]; }
+        hub_matchings(K, hdeg);
+        hg_build(); HGcap = K;
+        NV = 6 * N + 2 * K; free(dist); free(que); alloc_graph();
+        printf("b2dual: q=%d K=%d n=%d (pairwise non-collinear freed points, hub-graph degree %d)\n", q, K, NV, hdeg);
+        if (checkcost) {
+            hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));
+            int bad = 0;
+            for (int j = 0; j < K; j++) { int a, b; bad += bfs(VP(F[j], 0), 7, NULL) + bfs(VL(fl[j], 0), 7, NULL); (void)a; (void)b; }
+            printf("freed-source cost %d\n", bad);
+        }
+        write_sol(outb);
+        return 0;
+    }
+    if (!strcmp(argv[1], "b2")) {   /* d7hex b2 HEXBIN K seed OUT.sol hubdeg [restarts]: the B2 construction
+        Freed pairs (p_k, l_k) with the points pairwise opposite and the lines pairwise opposite; M(p_k) = l_k and M maps
+        the q(q+1) points at distance 2 from p_k onto the q(q+1) lines at distance 2 from l_k (random bijection); the
+        rest of M is random. Then every point is within distance 3 of a line M(u), u at distance 2 from p_k (side A
+        by type-2 routes), and every line within distance 3 of a point M^-1(L), L at distance 2 from l_k (side B). */
+        int Kw = atoi(argv[3]); rs ^= (uint64_t)atoll(argv[4]) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        const char *outb = argv[5]; int hdeg = atoi(argv[6]), restarts = argc > 7 ? atoi(argv[7]) : 20;
+        uint8_t *tmpd = malloc(2 * N), *cand = malloc(2 * N); int *best[2], nbest[2] = {0, 0}, *cur = malloc(sizeof(int) * N);
+        for (int side = 0; side < 2; side++) {   /* 0: pairwise opposite points, 1: pairwise opposite lines (exact greedy) */
+            best[side] = malloc(sizeof(int) * N);
+            const char *setf = getenv(side ? "B2LINES" : "B2PTS");
+            if (setf) {   /* a given set (checked pairwise opposite below) instead of the greedy */
+                FILE *sf = fopen(setf, "r"); int x; while (sf && fscanf(sf, "%d", &x) == 1 && nbest[side] < N) best[side][nbest[side]++] = x; if (sf) fclose(sf);
+                for (int i = 0; i < nbest[side]; i++) { hbfs(best[side][i], side, tmpd); for (int j = 0; j < nbest[side]; j++) if (j != i && tmpd[side ? N + best[side][j] : best[side][j]] != 6) { fprintf(stderr, "given %s %d and %d are not opposite\n", side ? "lines" : "points", best[side][i], best[side][j]); return 1; } }
+                fprintf(stderr, "side %d: %d given pairwise opposite %s\n", side, nbest[side], side ? "lines" : "points");
+                continue;
+            }
+            for (int r = 0; r < restarts; r++) {
+                int ncur = 0, ncand = N; memset(cand, 1, N);
+                while (ncand > 0 && ncur < Kw) {
+                    int pick = rndi(ncand), x = -1; for (int v = 0; v < N; v++) if (cand[v] && pick-- == 0) { x = v; break; }
+                    cur[ncur++] = x; hbfs(x, side, tmpd);
+                    ncand = 0; for (int v = 0; v < N; v++) { if (cand[v] && tmpd[side ? N + v : v] != 6) cand[v] = 0; ncand += cand[v]; }
+                }
+                if (ncur > nbest[side]) { nbest[side] = ncur; memcpy(best[side], cur, sizeof(int) * ncur); }
+            }
+            fprintf(stderr, "side %d: %d pairwise opposite %s (best of %d greedy runs)\n", side, nbest[side], side ? "lines" : "points", restarts);
+        }
+        K = nbest[0] < nbest[1] ? nbest[0] : nbest[1]; if (K > Kw) K = Kw;
+        F = malloc(sizeof(int) * (K + 1)); isF = calloc(N, sizeof(int)); fl = malloc(sizeof(int) * (K + 1));
+        M = malloc(sizeof(int) * N); Minv = malloc(sizeof(int) * N); for (int v = 0; v < N; v++) M[v] = Minv[v] = -1;
+        for (int k = 0; k < K; k++) { F[k] = best[0][k]; fl[k] = best[1][k]; isF[F[k]] = k + 1; M[F[k]] = fl[k]; Minv[fl[k]] = F[k]; }
+        /* B2 assignments */
+        int b2p[256], b2l[256];
+        for (int k = 0; k < K; k++) {
+            hbfs(F[k], 0, tmpd); int np = 0; for (int v = 0; v < N; v++) if (tmpd[v] == 2) b2p[np++] = v;
+            hbfs(fl[k], 1, tmpd); int nl = 0; for (int v = 0; v < N; v++) if (tmpd[N + v] == 2) b2l[nl++] = v;
+            if (np != nl) { fprintf(stderr, "B2 sizes differ\n"); return 1; }
+            for (int i = np - 1; i > 0; i--) { int j = rndi(i + 1), t = b2l[i]; b2l[i] = b2l[j]; b2l[j] = t; }
+            for (int i = 0; i < np; i++) { if (M[b2p[i]] >= 0 || Minv[b2l[i]] >= 0) { fprintf(stderr, "B2 overlap at pair %d\n", k); return 1; } M[b2p[i]] = b2l[i]; Minv[b2l[i]] = b2p[i]; }
+        }
+        /* the rest at random */
+        int *fp_ = malloc(sizeof(int) * N), *fl_ = malloc(sizeof(int) * N), nfp = 0, nfl = 0;
+        for (int v = 0; v < N; v++) { if (M[v] < 0) fp_[nfp++] = v; if (Minv[v] < 0) fl_[nfl++] = v; }
+        for (int i = nfl - 1; i > 0; i--) { int j = rndi(i + 1), t = fl_[i]; fl_[i] = fl_[j]; fl_[j] = t; }
+        for (int i = 0; i < nfp; i++) { M[fp_[i]] = fl_[i]; Minv[fl_[i]] = fp_[i]; }
+        hub_matchings(K, hdeg);   /* hub graph: union of hdeg random perfect matchings */
+        hg_build();
+        NV = 6 * N + 2 * K; alloc_graph();
+        hdp = malloc(sizeof(uint8_t *) * (K + 1)); hdl = malloc(sizeof(uint8_t *) * (K + 1));
+        for (int j = 0; j < K; j++) { hdp[j] = malloc(2 * N); hbfs(F[j], 0, hdp[j]); hdl[j] = malloc(2 * N); hbfs(fl[j], 1, hdl[j]); }
+        int hv = 0; for (int j = 0; j < K; j++) hv += hub_violations(j, 0) + hub_violations(j, 1);
+        int *per = malloc(sizeof(int) * (K + 1));
+        int cost = total_cost(per);
+        printf("RESULT b2 q=%d K=%d n=%d hub-graph degree %d, same-side hub violations %d, freed-source cost %d\n", q, K, NV, hdeg, hv, cost);
+        write_sol(outb);
         return 0;
     }
     if (!strcmp(argv[1], "grow")) {   /* d7hex grow HEXBIN SOL OUT seed: resume the growth mode (GROW=Kmax etc.) from a solution */

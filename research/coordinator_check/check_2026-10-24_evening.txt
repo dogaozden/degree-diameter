@@ -1,0 +1,10 @@
+Coordinator all-pairs checks, 2026-10-24 evening (Mac mini, one core, nice). Checker: research/lifts/coordinator_check/apsp.c
+(bit-parallel BFS from every vertex, no symmetry assumed; checks degree <= d, bipartite, diameter <= D). Each graph is rebuilt
+here from the solution file, and the check is repeated with D lowered by one (must fail).
+
+== side results of the (13,7) session: hexagons from hexgen.c (q = 5, 7), edges from master's research/squads/exp2/hexd7/d7hex.c
+== d7D7_hex5_R72_n23580.sol: n=23580 edges=82530; RESULT VALID d=7 D=7 n=23580; with D=6: RESULT INVALID
+== d9D7_hex7_R288_n118224.sol: n=118224 edges=532008; RESULT VALID d=9 D=7 n=118224 (6 s); with D=6: RESULT INVALID
+== cell-10-7 session: hexagons from hexgen2.c (q = 8, 9), edges from research/d10D7/d7hex.c (branch claude/bipartite-10-7-uvpxk9)
+== d10D7_hex8_B2K217_n225128.sol: n=225128 edges=1125423; RESULT VALID d=10 D=7 n=225128 (30 s); with D=6: RESULT INVALID
+== d11D7_hex9_B2dualK4277_n407134.sol: n=407134 edges=2239237; RESULT VALID d=11 D=7 n=407134 (124 s); with D=6: RESULT INVALID
