@@ -1,0 +1,12 @@
+meta 1 37 0 :: RESULT anneal group=meta 1 37 0 b=8 n=296 D=8 iters=200000 best=52 none
+meta 37 1 1 :: RESULT anneal group=meta 37 1 1 b=8 n=296 D=8 iters=200000 best=52 none
+meta 19 2 1 :: RESULT anneal group=meta 19 2 1 b=8 n=304 D=8 iters=200000 best=56 none
+meta 38 1 1 :: RESULT anneal group=meta 38 1 1 b=8 n=304 D=8 iters=200000 best=56 none
+meta 19 2 18 :: RESULT anneal group=meta 19 2 18 b=8 n=304 D=8 iters=200000 best=158 none
+meta 2 19 1 :: RESULT anneal group=meta 2 19 1 b=8 n=304 D=8 iters=200000 best=66 none
+meta 1 38 0 :: RESULT anneal group=meta 1 38 0 b=8 n=304 D=8 iters=200000 best=56 none
+prod meta 19 1 1 cyc 2 :: RESULT anneal group=prod meta 19 1 1 cyc 2 b=8 n=304 D=8 iters=200000 best=66 none
+prod meta 1 19 0 cyc 2 :: RESULT anneal group=prod meta 1 19 0 cyc 2 b=8 n=304 D=8 iters=200000 best=66 none
+prod meta 1 2 0 cyc 19 :: RESULT anneal group=prod meta 1 2 0 cyc 19 b=8 n=304 D=8 iters=200000 best=56 none
+prod meta 2 1 1 cyc 19 :: RESULT anneal group=prod meta 2 1 1 cyc 19 b=8 n=304 D=8 iters=200000 best=56 none
+meta 39 1 1 :: RESULT anneal group=meta 39 1 1 b=8 n=312 D=8 iters=200000 best=86 none
