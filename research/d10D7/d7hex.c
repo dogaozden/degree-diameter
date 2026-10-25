@@ -37,6 +37,7 @@
      d7hex edges  HEXBIN SOL out.txt                write "n" then edges "u v" (for research/lifts/coordinator_check/apsp.c)
      d7hex super  HEXBIN SOL out.txt seed tries     add super-hubs (new vertices on hubs with spare degree whose freed
                                                     elements' 4-balls cover a whole side), keep those with ecc <= 7, write edges
+                                                    (env SUPERBFS=1: skip the cover test, keep every candidate whose BFS ecc <= 7)
    Solution file: line "d7hex q N K n", line "freed p1 .. pK", then N line ids M[0..N-1]. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -853,7 +854,7 @@ int main(int argc, char **argv) {
                     if (bh < 0 || bg < 16) break;
                     set[ns++] = bh; for (int x = 0; x < N; x++) if (ball[bh][x] && !cov[x]) { cov[x] = 1; ncov++; }
                 }
-                if (ncov < N) { fails++; continue; }
+                if (ncov < N && !getenv("SUPERBFS")) { fails++; continue; }   /* SUPERBFS=1: let the BFS decide (hub-graph routes count) */
                 /* tentatively add */
                 int s = NSH, v = base + s; SHn[s] = ns;
                 for (int t = 0; t < ns; t++) { SHnb[s][t] = 6 * N + set[t]; HX[set[t]][HXn[set[t]]++] = v; }
