@@ -64,3 +64,22 @@ with visited-state hashing, reheats, de-crowded and kappa <= 2 flag pairs (worse
 matching deficiency over all 3,074 candidates (best deficiency 8 vs 20-33 for the earlier ones; joint coverage still
 5-7). Verdict: the round added understanding but no record; 4,836 stands. 10 flags needs a better finisher
 (compound 2-3 swap ejection chains) or a different symmetric skeleton.
+
+## 2026-10-25 ~19:30–20:10 UTC, cell-10-5 resume 3 (session_01QqmMPMEBdPHeTrrfhst9b1), goal (10,5) > 4,836, round 4
+
+Opus before the round: an exact CP-SAT large-neighbourhood search for the coverage phase (r4/lns.py; the model is
+exact, routes with two variable assignments are AND terms). On both 1-hole 10-flag states every neighbourhood tried
+(80-160 points, and one 279-point model for 15 minutes) is optimal at 1 hole. Filling the 12-13 unused hub slots of
+those states (r4/fillhub.py, 80 hub edges) does not help: the hole targets lie on no freed line.
+Eight cards (research/squads/d10D5/r4/, scoreboard.jsonl), all aimed at 10 flags (4,840):
+- c1 ejection chains (route counts, last-route losses, 3-level exact lns_step chains): 1.
+- c2 other 10th flags on the valid 9-flag state + dmhub: 5 (147:219).
+- c3 second family (r2/c3 7 flags + 291:47 + 172:301): 9 flags stall at 5.
+- c4 alternating hub-graph rewiring and LNS: 1; hub edges provably cannot cover these holes (targets on no freed line).
+- c5 replace the crowded flag 65:202 by another: 9 at best.
+- c6 iterated local search (1-3 swap kicks + exact CP-SAT repair, 174 iterations): 1.
+- c7 Hungarian (linear assignment) breakout on the whole sigma: 1.
+- c8 relaxation analysis: flag 3 (65) alone is satisfiable by 20 single swaps, each breaking >= 9 targets, mostly of
+  flag 6 (398, collinear with 65).
+Verdict: the round confirmed with eight independent methods that the 1-hole 10-flag states are local dead ends; no
+card reached 0. Opus's gain came from a different direction during the round (FLAGDEL, below in cells/d10D5.md).
