@@ -192,6 +192,17 @@ static long flip_delta(int f, int apply) {
     return d;
 }
 
+static void write_out(long best, uint8_t *bestnu, int *bestsig) {
+    if (!getenv("OUT")) return;
+    FILE *g = fopen(getenv("OUT"), "w"); int NF = Np * Q1;
+    fprintf(g, "%d 2 6 7 %ld\ncyc 6\n", q, best);
+    for (int t = 0; t < 2; t++) { for (int p = 0; p < Np; p++) fprintf(g, "%d ", bestsig[p]); fprintf(g, "\n"); }
+    for (int p = 0; p < Np; p++) fprintf(g, "1 "); fprintf(g, "\n");
+    for (int p = 0; p < Np; p++) fprintf(g, "4 "); fprintf(g, "\n");
+    for (int i = 0; i < NF; i++) fprintf(g, "%d ", 3 * bestnu[i]); fprintf(g, "\n");
+    fclose(g);
+}
+
 int main(int argc, char **argv) {
     q = atoi(argv[1]); if (getenv("NPOLY")) NP = atoi(getenv("NPOLY")); load_hex();
     if (getenv("SEED")) rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL;
@@ -266,7 +277,7 @@ int main(int argc, char **argv) {
             long d = nc - cost;
             double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
             if (d <= 0 || u < exp(-d / temp)) { cost = nc; nswapacc++;
-                if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); } }
+                if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); } }
             else { sig[p1] = l1; sig[p2] = l2; sinv[l1] = p1; sinv[l2] = p2; memcpy(route, route_bak, npairs); }
             continue;
         }
@@ -288,7 +299,7 @@ int main(int argc, char **argv) {
         double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
         if (d <= 0 || u < exp(-d / temp)) {
             flip_delta(f, 1); nu[f] ^= 1; cost += d;
-            if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld temp %.3f cost %ld\n", it, temp, cost); }
+            if (cost < best) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld temp %.3f cost %ld\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); }
         }
     }
     printf("RESULT dmfast q %d iters %ld best %ld (of %ld opposite pairs) swaps accepted %ld\n", q, it, best, opp, nswapacc);
