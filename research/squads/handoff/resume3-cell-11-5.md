@@ -3,9 +3,10 @@
 Session session_018TRrddhVEdN311drmbPpBK, branch claude/cell-11-5-bipartite-search-lyemfs (continues the round-2
 branch; draft PR #388).
 
-## Result
+## Results
 - **(11,5) ≥ 7,032** (was 7,020): DM Z6 lift of W(8) plus one point-line pair. research/d11D5/graphs/d11D5_n7032_CHECK.md
   (apsp.c VALID, diameter exactly 5, 11-regular, bipartite, 38,676 edges, sha256 4355f145...). Needs the coordinator's check.
+- **(10,5) ≥ 4,812** (was 4,800, side result): W(7) plus one pair, research/d11D5/graphs/d10D5_n4812_CHECK.md.
 
 ## How (the pipeline that works)
 1. Base with n > 585: W(8) + a point-line switch (research/d11D5/inc/mkinc.py, addpair.py, w8r/genk.py).
@@ -25,10 +26,9 @@ branch; draft PR #388).
    triples of the newest pair; a lazy SAT/CP model for sigma with the base fixed (each coset +-1 triple (s, v) is one
    clause over the values of sigma(s) (route a) and of sigma on the points collinear with s (route b)); a design that
    places the second pair inside the first pair's covering structures.
-2. **(10,5) 4,812** (W(7) + one pair, lift of 12 * 401): structural cost 0 (squad r3 c4, research/d11D5/inc/runs/w7p1_cost0.in).
-   The nu stage gets to ONE violated parity pair in several independent runs (inc/eg/w7t*.in/.nu, w7e*.in/.nu) but
-   not 0; every sigma swap that would give that pair a sigma route breaks the structure. Try more TARGET seeds, or a
-   new structural-0 base (po7 + wpo from research/squads/r3-d11D5/c4/starts) and redo the nu stage.
+2. **(10,5) ≥ 4,812 done** (side result, research/d11D5/graphs/d10D5_n4812_CHECK.md, apsp VALID): W(7) + one pair by
+   inc/pipeline.sh in about 10 minutes. Needs the coordinator's check. (The first W(7)+1 base, from squad r3 c4, stays
+   at one violated parity pair: every sigma swap that would cover it breaks the structure.)
 3. **The same recipe at other D = 5 cells**: W(9) + one pair gives (12,5) 9,852 > 9,840 and W(11) + one pair gives
    (14,5) 17,580 > 17,568. Bases with the DM sigma and nu are ready in research/d11D5/inc/wq/ (w9_dm.in/.nu,
    w11_dm.in/.nu; w7 too). Steps: inc/addpair.py base nu b seed out.in out.nu <n> (no earlier new vertices: pass the

@@ -164,5 +164,8 @@ Results:
    by the same SA in 450 s and -> 0 by wpo in 39 s. So the second pair interferes with the first: every sigma(s) lies
    on the coverage routes of every new vertex (route (a) needs sigma(s) within distance 3 of the new vertex for all s
    outside the cover of its pencil), and the two sets of demands on sigma do not separate.
-6. W(7)+1 (n = 401, (10,5) 4,812 if completed): structural 0 (squad r3 c4), nu stage stalled at 6 violated pairs
-   (inc/runs/w7p1_best6.in/.nu); TARGET runs from a random nu were at ~30 when this round stopped.
+6. **(10,5) ≥ 4,812** (W(7) + one pair, graphs/d10D5_n4812_CHECK.md, apsp VALID). The first W(7)+1 base (squad r3 c4)
+   got stuck at one violated parity pair in several nu runs (every sigma swap that would cover it broke the structure).
+   A fresh base made by `inc/pipeline.sh` (addpair kind b on W(7) with the 4,800 sigma, po7 annealing straight to
+   structural 0, nujoint TARGET=1 from the 4,800 nu) went to 0 in 160 CPU s. So for ONE pair on W(q) the whole
+   pipeline takes about 10 minutes; W(9)+1 ((12,5) 9,852) and W(11)+1 ((14,5) 17,580) were started at the end.
