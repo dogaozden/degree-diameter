@@ -1,0 +1,114 @@
+group psl 17 x Z_109, N=266832, identity 14824, H order 17, rows 15696, threads 1, setup 0.01s
+wide rows: HW order 218, rows 1224, setup 0.03s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 45 z on Z_109
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 28.35, mu/k = 9.45, fixed-point misses ~ 0.43
+ORBW=3: an uncovered fixed element weighs 3; start energy 7875
+start cost=7873
+ENDG step=1574 raw=3 energy=3 scan 1
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=30 steps=1574 evals=12593 cost=3 best=3 T=0.52 energy=3 bestE=3
+ENDG step=6574 raw=3 energy=3 scan 2
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=68 steps=6574 evals=52593 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=11574 raw=3 energy=3 scan 3
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=106 steps=11574 evals=92593 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=16574 raw=3 energy=3 scan 4
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=143 steps=16574 evals=132593 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=21574 raw=3 energy=3 scan 5
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=180 steps=21574 evals=172593 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=28107 raw=3 energy=3 scan 6
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=216 steps=28107 evals=224857 cost=3 best=3 T=0.43 energy=3 bestE=3
+ENDG step=33107 raw=3 energy=3 scan 7
+ENDG slot 0: scanned 88940 orbits, best raw 1
+ENDG slot 1: scanned 88940 orbits, best raw 1
+t=253 steps=33107 evals=264857 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=38107 raw=3 energy=3 scan 8
+ENDG slot 0: scanned 88940 orbits, best raw 1
+ENDG slot 1: scanned 88940 orbits, best raw 1
+t=290 steps=38107 evals=304857 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=43107 raw=3 energy=3 scan 9
+ENDG slot 0: scanned 88940 orbits, best raw 1
+ENDG slot 1: scanned 88940 orbits, best raw 1
+t=325 steps=43107 evals=344857 cost=3 best=3 T=0.15 energy=3 bestE=3
+ENDG step=58388 raw=3 energy=3 scan 10
+ENDG slot 0: scanned 88940 orbits, best raw 3
+ENDG slot 1: scanned 88940 orbits, best raw 3
+t=377 steps=58388 evals=467105 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=407 steps=78275 evals=626201 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=437 steps=97997 evals=783977 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=467 steps=119962 evals=959697 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=497 steps=142461 evals=1139689 cost=6 best=3 T=0.84 energy=6 bestE=3
+t=527 steps=164346 evals=1314769 cost=1 best=3 T=0.30 energy=3 bestE=3
+t=557 steps=185658 evals=1485265 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=587 steps=207844 evals=1662753 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=617 steps=229003 evals=1832025 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=647 steps=249792 evals=1998337 cost=9 best=3 T=0.84 energy=9 bestE=3
+t=677 steps=272131 evals=2177049 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=707 steps=294324 evals=2354593 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=737 steps=315625 evals=2525001 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=767 steps=338373 evals=2706985 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=797 steps=361124 evals=2888993 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=827 steps=382074 evals=3056593 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=857 steps=403612 evals=3228897 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=887 steps=425670 evals=3405361 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=917 steps=447958 evals=3583665 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=947 steps=469593 evals=3756745 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=977 steps=490758 evals=3926065 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1007 steps=512350 evals=4098801 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=1037 steps=533682 evals=4269457 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=1067 steps=555904 evals=4447233 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1097 steps=577412 evals=4619297 cost=6 best=3 T=0.84 energy=6 bestE=3
+t=1127 steps=599729 evals=4797833 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1157 steps=619341 evals=4954729 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=1187 steps=641402 evals=5131217 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1217 steps=663573 evals=5308585 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1247 steps=686734 evals=5493873 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=1277 steps=708290 evals=5666321 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1307 steps=730596 evals=5844769 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1337 steps=752294 evals=6018353 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1367 steps=776662 evals=6213297 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1397 steps=799051 evals=6392409 cost=16 best=3 T=0.84 energy=18 bestE=3
+t=1427 steps=821326 evals=6570609 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1457 steps=843444 evals=6747553 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1487 steps=866630 evals=6933041 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1517 steps=888909 evals=7111273 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1547 steps=911701 evals=7293609 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=1577 steps=933967 evals=7471737 cost=4 best=3 T=0.30 energy=6 bestE=3
+t=1607 steps=955796 evals=7646369 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1637 steps=977671 evals=7821369 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1667 steps=1000262 evals=8002097 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1697 steps=1022563 evals=8180505 cost=4 best=3 T=0.84 energy=6 bestE=3
+t=1727 steps=1045429 evals=8363433 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1757 steps=1065777 evals=8526217 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1787 steps=1088188 evals=8705505 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1817 steps=1109841 evals=8878729 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1847 steps=1131678 evals=9053425 cost=1 best=3 T=0.84 energy=3 bestE=3
+t=1877 steps=1152964 evals=9223713 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=1907 steps=1175330 evals=9402641 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1937 steps=1196813 evals=9574505 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1967 steps=1218786 evals=9750289 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=1997 steps=1241300 evals=9930401 cost=6 best=3 T=0.84 energy=6 bestE=3
+t=2027 steps=1262817 evals=10102537 cost=1 best=3 T=0.30 energy=3 bestE=3
+t=2057 steps=1284009 evals=10272073 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=2087 steps=1305728 evals=10445825 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=2117 steps=1327502 evals=10620017 cost=1 best=3 T=0.15 energy=3 bestE=3
+t=2147 steps=1350594 evals=10804753 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=2177 steps=1372903 evals=10983225 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=2207 steps=1394110 evals=11152881 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=2237 steps=1417008 evals=11336065 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=2267 steps=1439831 evals=11518649 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=2297 steps=1462440 evals=11699521 cost=3 best=3 T=0.84 energy=3 bestE=3
+t=2327 steps=1484481 evals=11875849 cost=3 best=3 T=0.30 energy=3 bestE=3
+t=2357 steps=1507079 evals=12056633 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=2387 steps=1530109 evals=12240873 cost=3 best=3 T=0.15 energy=3 bestE=3
+RESULT d=6 D=10 group=psl 17 x Z_109 N=266832 best=3 evals=12316217 time=2400.0 orbit k=3 m=2 f=0 fix=8
