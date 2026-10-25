@@ -71,3 +71,7 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
   ORBW=3 seed 2. Any N above 3,416,952 beats the new record 6,833,904.
 - 11:11 UTC (about 1 h into round 2b): no solution. Best costs: prod psl 7 psl 11 x Z31 3 (4.7e5 evals),
   prod sl 5 sl 16 x Z7 6 (4.8e5), sl 79 x Z7 4 (3.9e5), psl 81 x Z13 6 (2.7e5). Runs end about 12:12 UTC.
+- 12:11 UTC: round 2b results (ORBW=3, seed 2, 2 h): prod psl 7 psl 11 x Z31 best 3 (905,553 evals), prod sl 5 sl 16 x Z7
+  best 6 (956,425 evals). No solution. sl 79 x Z7 (best 4) and psl 81 x Z13 (best 6) end about 12:18 UTC.
+  Round 3 started 12:11 UTC: prod sl 5 sl 16 x Z7, ORBW=3, seed 3, 5400 s (the only fresh run on a candidate
+  that beats 3,416,952 in N with a seed not yet tried).
