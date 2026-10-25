@@ -36,3 +36,15 @@ Job "raise2-12-9", Haiku worker, branch `claude/raise-d12d9-bipartite-record-b26
 ### Batch 1 (started 15:03 UTC, 2 h each, 4 parallel)
 - sl 47×169 ORBW=3 seed 6 and seed 7; sl 47×169 ORBW=1 seed 6 (control); psl 73×91 ORBW=3 seed 4.
 (results appended below as they finish)
+
+### Batch 1 result: NEW RECORD 35,076,288 (+8,000 over round 1's 35,068,320)
+- sl 47 x Z169, N = 17,538,144, k = 3, m = 4, f = 0, **ORBW=3**, seed 6, μ 25.4, |Fix| 47: **solved** at 18,537 evaluations (796 s).
+  File: research/frontier/sols/d12D9_sl_47_169_orb3f0_orbw3_s6.txt. Log: research/structured/runs/d12D9r2_sl47_169_orbw3_s6.log.
+  Checks: haarcheck_sl VALID and haarcheck2 VALID, both d=12 D=9, all 17,538,144 per side reached, ecc 9 (35,076,288 vertices).
+  This is the first success with ORBW=3 on a group that round 1 had failed (5 seeds, default ORBW, best 6–10).
+- Same group, ORBW=3 seed 7 (2 h budget): best 12 at ~20k evals, stopped as a tie-only run once the record was equal to N. Default-ORBW seed 6 (control): best 12, stopped the same way.
+- psl 73 × Z91 ORBW=3 seed 4 (N 17,696,952): best 12 at 22.5k evals at last check.
+- Reading: one success out of three ORBW=3 runs versus zero out of 5 default runs on this group. Too few runs to call it a measured effect.
+
+### Batch 2 (started 15:17 UTC, 2 h each): bar is now N > 17,538,144
+Running: sl 37 × Z349 ORBW=3 seed 1 (N 17,664,984, μ 28.2, |Fix| 36); sl 83 × Z31 ORBW=3 seed 1 (N 17,722,824, μ 29.5, |Fix| 42).

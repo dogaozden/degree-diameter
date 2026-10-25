@@ -1,0 +1,35 @@
+group psl 73 x Z_91, N=17696952, identity 239148, H order 63, rows 280904, threads 1, setup 0.34s
+wide rows: HW order 252, rows 70226, setup 1.14s
+alpha: conj by mat(16,3,55,56) (index 82837), z -> 9 z on Z_91
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 35 (+e); mu = 28.93, mu/k = 9.64, fixed-point misses ~ 0.85
+ORBW=3: an uncovered fixed element weighs 3; start energy 96
+start cost=96
+t=30 steps=112 evals=897 cost=24 best=24 T=0.53 energy=24 bestE=24
+t=60 steps=229 evals=1833 cost=18 best=18 T=0.19 energy=18 bestE=18
+t=90 steps=345 evals=2761 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=121 steps=463 evals=3705 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=151 steps=578 evals=4625 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=181 steps=684 evals=5473 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=211 steps=792 evals=6337 cost=21 best=18 T=0.77 energy=21 bestE=18
+t=241 steps=902 evals=7217 cost=24 best=18 T=0.27 energy=24 bestE=18
+t=271 steps=1007 evals=8057 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=302 steps=1118 evals=8945 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=332 steps=1227 evals=9817 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=362 steps=1336 evals=10689 cost=33 best=18 T=0.74 energy=33 bestE=18
+t=392 steps=1432 evals=11457 cost=24 best=18 T=0.26 energy=24 bestE=18
+t=422 steps=1536 evals=12289 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=452 steps=1642 evals=13137 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=483 steps=1754 evals=14033 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=513 steps=1864 evals=14913 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=543 steps=1970 evals=15761 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=573 steps=2076 evals=16609 cost=18 best=12 T=0.95 energy=18 bestE=12
+t=604 steps=2177 evals=17417 cost=18 best=12 T=0.33 energy=18 bestE=12
+t=634 steps=2280 evals=18241 cost=18 best=12 T=0.15 energy=18 bestE=12
+t=664 steps=2382 evals=19057 cost=18 best=12 T=0.15 energy=18 bestE=12
+t=694 steps=2491 evals=19929 cost=18 best=12 T=0.15 energy=18 bestE=12
+t=724 steps=2596 evals=20769 cost=12 best=12 T=0.92 energy=12 bestE=12
+t=754 steps=2704 evals=21633 cost=12 best=12 T=0.33 energy=12 bestE=12
+t=785 steps=2816 evals=22529 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=815 steps=2926 evals=23409 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=845 steps=3033 evals=24265 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=875 steps=3148 evals=25185 cost=12 best=12 T=0.91 energy=12 bestE=12
