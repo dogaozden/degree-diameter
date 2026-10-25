@@ -7,15 +7,15 @@ with research/frontier/build_haar2.py this session: VALID (ecc 9 from both sides
 
 ## Status
 
-**New record: 28,938 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_371 ⋊_16 Z_39 (order 14,469),
-seed 5 of phase 3, found in 0.5 s. S as (a, j), a ∈ Z_371, j ∈ Z_39: (0,0), (61,3), (92,33), (119,34), (331,15).
+**New record: 29,214 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_541 ⋊_28 Z_27 (order 14,607),
+seed 13 of phase 5, found in 43 s. S as (a, j), a ∈ Z_541, j ∈ Z_27: (0,0), (20,1), (71,3), (13,8), (301,15).
 Checked by build_haar2.py (VALID, ecc 9 from both sides, edge-list sha256
-0849e297221652b523ee83e7ff4ff85f19c1a636ea3a6d27b1d31df7b21bd677) and by research/lifts/coordinator_check/apsp.c
-(all-pairs BFS, VALID, n = 28,938). Saved as research/frontier/sols/d5D9_meta_371_39_16_s5_n28938.txt.
-Earlier records in this session: 28,920 (Z_964 ⋊ Z_15, sols/d5D9_meta_964_15_341_s2_n28920.txt) and 28,918
-(Z_761 ⋊ Z_19, sols/d5D9_meta_761_19_25_s2_n28918.txt). Not yet re-checked by the coordinator.
+ca25affb0c331f9f557fc9319490bdc5b54bb32cc6722669c12c30bf773dddeb) and by research/lifts/coordinator_check/apsp.c
+(all-pairs BFS, VALID, n = 29,214). Saved as research/frontier/sols/d5D9_meta_541_27_28_s13_n29214.txt.
+Earlier records in this session: 28,938 (Z_371 ⋊ Z_39), 28,920 (Z_964 ⋊ Z_15), 28,918 (Z_761 ⋊ Z_19). Not yet
+re-checked by the coordinator.
 
-The bar for the next step is |G| ≥ 14,470 (graph ≥ 28,940).
+The bar for the next step is |G| ≥ 14,608 (graph ≥ 29,216).
 
 ## Method
 
@@ -53,3 +53,5 @@ The bar for the next step is |G| ≥ 14,470 (graph ≥ 28,940).
 - Phase 5 (6 cost-2 groups above 14,469 — 1322⋊11·81, 541⋊27·28, 542⋊27·25, 1321⋊11·205, 1322⋊11·9, 1324⋊11·293 —
   seeds 6–13, 150 s each; `phase5_jobs.txt`, `phase5.log`): running. Heavy-tailed: short restarts are the cheapest
   way to see a solve (the 14,469 record came in 0.5 s on seed 5, while seeds 2–4 stayed at cost 2 for 480 s).
+- Phase 5 result: Z_541⋊Z_27 solved at 14,607 (seed 13, 43 s) → record 29,214. Other seeds of that group and the other
+  five groups: see `phase5.log`.
