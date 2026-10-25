@@ -13,9 +13,9 @@ Theory: THEOREM.md. Lean: lean/BipartiteDD/HexagonD7/. Squad rounds: research/sq
 | (11,7) | 407,162 | **407,192** | H(9): 4,306 non-collinear points, σ = duality | sets/P9_ncol_4306.txt, d11D7_hex9_B2dualK4306_n407192.sol | apsp_mt VALID |
 | (12,7) | 680,068 | **681,520** | same 4,306; 5 levels; Haar hub graph of (Z41 ⋊ Z10) × Z21 (8,610/side; r = 4) | hubs/h_meta41x10x21.txt, d12D7_hex9_B2dual5K4306_H8610.hubs (frontier: ..._n681520.{sol,hubs}) | apsp_orb VALID (681,460 with PSL(2,11)×Z13: apsp_mt VALID) |
 | (13,7) | 1,064,448 | **1,064,476** | H(11): 756 + 14 | sets/P11_mix770.pairs, d13D7_hex11_mixK770_n1064476.sol | apsp_orb VALID (35 min, 1 thread) |
-| (14,7) | 1,774,584 | **1,774,640** | same 770, 5 levels | d14D7_hex11_mixK770_n1774640.hubs (+ the (13,7) .sol) | PENDING (apsp_orb L=5) |
+| (14,7) | 1,774,584 | **1,774,640** | same 770, 5 levels | d14D7_hex11_mixK770_n1774640.hubs (+ the (13,7) .sol) | apsp_orb VALID (38 min, 2 threads) |
 | (15,7) | 2,484,720 | **2,484,804** | same 770, 7 levels | d15D7_hex11_mixK770_n2484804.hubs (+ the (13,7) .sol) | PENDING (apsp_orb L=7) |
-| (16,7) | 4,025,508 | **4,025,604** | H(13): 792 + 24, 5 levels | sets/P13_mix816.pairs, d16D7_hex13_mixK816_n4025604.{sol,hubs} | PENDING (apsp_orb L=5) |
+| (16,7) | 4,025,508 | **4,025,604** | H(13): 792 + 24, 5 levels | sets/P13_mix816.pairs, d16D7_hex13_mixK816_n4025604.{sol,hubs} | apsp_orb VALID (38 min, 2 threads) |
 
 Also checked: (13,7) 1,064,472 from the 768 set (sols/d13D7_hex11_mixK768_n1064472.sol, apsp_orb VALID), superseded.
 apsp_orb (research/lifts/coordinator_check/apsp_orb.c) first verifies that the level shift (x, i) -> (x, i+1) is an
