@@ -140,3 +140,31 @@ t=4059 steps=7595 evals=60761 cost=7 best=1 T=0.15
 t=4090 steps=7652 evals=61217 cost=1 best=1 T=1.44
 t=4120 steps=7709 evals=61673 cost=1 best=1 T=0.51
 t=4150 steps=7766 evals=62129 cost=1 best=1 T=0.18
+t=4180 steps=7823 evals=62585 cost=1 best=1 T=0.15
+t=4211 steps=7879 evals=63033 cost=1 best=1 T=0.15
+t=4241 steps=7936 evals=63489 cost=1 best=1 T=0.15
+t=4271 steps=7991 evals=63929 cost=1 best=1 T=0.15
+t=4301 steps=8048 evals=64385 cost=1 best=1 T=0.15
+t=4331 steps=8106 evals=64849 cost=1 best=1 T=0.56
+t=4361 steps=8164 evals=65313 cost=1 best=1 T=0.20
+t=4391 steps=8222 evals=65777 cost=1 best=1 T=0.15
+t=4422 steps=8279 evals=66233 cost=1 best=1 T=0.15
+t=4452 steps=8338 evals=66705 cost=1 best=1 T=0.15
+t=4482 steps=8396 evals=67169 cost=1 best=1 T=0.15
+t=4512 steps=8453 evals=67625 cost=1 best=1 T=1.47
+t=4542 steps=8509 evals=68073 cost=12 best=1 T=0.52
+t=4572 steps=8566 evals=68529 cost=11 best=1 T=0.18
+t=4602 steps=8623 evals=68985 cost=11 best=1 T=0.15
+t=4633 steps=8681 evals=69449 cost=7 best=1 T=0.15
+t=4663 steps=8737 evals=69897 cost=7 best=1 T=0.15
+t=4693 steps=8788 evals=70305 cost=7 best=1 T=0.15
+t=4723 steps=8843 evals=70745 cost=7 best=1 T=0.15
+t=4753 steps=8900 evals=71201 cost=1 best=1 T=0.63
+t=4784 steps=8958 evals=71665 cost=1 best=1 T=0.22
+t=4814 steps=9015 evals=72121 cost=1 best=1 T=0.15
+t=4844 steps=9071 evals=72569 cost=1 best=1 T=0.15
+RESULT d=10 D=10 group=psl 59 x Z_311 N=31927260 best=0 evals=72641 time=4849.0 orbit k=5 m=2 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise-d10D10/d10D10_psl_59_311_orb5f0_s1.txt
+VALID d=10 D=10 group=psl 59 x Z_311 N=31927260 vertices=63854520 (distinct generators, 10-regular simple)
