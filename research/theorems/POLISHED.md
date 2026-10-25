@@ -71,8 +71,8 @@ Errors and corrections found while preparing this version (none affects a theore
 13. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
    the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
    numbers below refer to the revised, recompiled `geometry.pdf`.
-14. **Referee and literature reports (25 October).** An independent referee report
-   (`research/referee/polish-2026-10-25.md`) found no mathematical error and two one-sentence gaps (Remark 3.5 with
+14. **Referee and literature reports (25 October).** An independent referee report (file `polish-2026-10-25.md`
+   in `research/referee/`) found no mathematical error and two one-sentence gaps (Remark 3.5 with
    repeated entries; the deficit sums in the proof of Theorem 7.3); both are closed. Its other points (credit to
    Delorme and to the hat matching of [AL20], status words, notation, references) are applied; where we did something
    else we say why in "Referee response" at the end. The prior-art statements follow the literature check
@@ -85,7 +85,7 @@ the current CombinatoricsWiki value [CW], shown only where we know it differs fr
 checked). All our graphs were rebuilt and checked by the coordinator.
 
 | $(\Delta,D)$ | $M_b$ | 2013 | wiki | ours | regular? | result | status |
-|------|------:|------:|-----:|-------:|--------|------------------------------|----------------|
+|------|------:|------:|-----:|-------:|--------|--------------------------|----------------------------|
 | (11,3) | 222 | 190 | | **192** | yes | fourth hat, $q=9$ | paper, computer, Lean |
 | (13,3) | 314 | 270 | 274 | **276** | yes | fourth hat, $q=11$ | paper, computer, Lean |
 | (15,3) | 422 | 370 | 374 | **376** | yes | fourth hat, $q=13$ | paper, computer, Lean |
@@ -161,7 +161,9 @@ $$n_b(\Delta,D)=\max\{|\mathcal P|+|\mathcal L|:\ \text{every element has at mos
 $$M_b(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr).$$
 
 Distances $d(x,y)$ are in $\Gamma(\mathcal S)$, and $\operatorname{diam}\mathcal S$ means
-$\operatorname{diam}\Gamma(\mathcal S)$. (The README writes $N^b(\Delta,D)$ for $n_b(\Delta,D)$.) *Collinear* points are distinct points on a common line; *concurrent*
+$\operatorname{diam}\Gamma(\mathcal S)$. A few letters have local meanings that differ between sections: $\sigma$ is the
+3-cycle of §2 and the stand-in map $\sigma_\mu$ of §3; $\lambda$ is the level function (§1), the lines $\lambda_t$ (§2),
+a line parameter (§4) and a linear form (§6); $w$ is a word (§1), a weight (§3) and a coordinate pair (§4). *Collinear* points are distinct points on a common line; *concurrent*
 lines are distinct lines on a common point. $\mathbb F=\mathrm{GF}(q)$. Points of $\mathrm{PG}(n,q)$ are written
 $(x_0:\dots:x_n)$; lines of $\mathrm{PG}(2,q)$ are written $[u:v:w]$, with $(x:y:z)\,\mathrm I\,[u:v:w]$ iff
 $ux+vy+wz=0$. $\chi$ is the quadratic character of $\mathbb F$ ($q$ odd), with $\chi(0)=0$.
@@ -1484,3 +1486,39 @@ $6+1=7$; old points $6$ or $7$; clones $6$ or $7$; shadow lines $6$. Order $156+
 Theorem 3.2(a). The list was produced by `research/theorems/polish/q4_359.py` (HiGHS proves 21 optimal for this
 family), which also rebuilds the graph and checks maximum degree 7 and diameter 4. Lean checks the record file of the
 same order (`nb_7_4`), which has the same shape (Section 3), not this particular list.
+
+---
+
+## Referee response
+
+Response to the referee report of 2026-10-25 (`research/referee/polish-2026-10-25.md`). Issues 1, 4–6, 8–13, 17, 18
+are applied as suggested. On the others:
+
+- **Issue 2 (Delorme 1985, §8(b)).** We read §8(b) of [D85a] ourselves. It takes $q^3+1$ elements of a generalized
+  hexagon at mutual distance 6 (citing Thas [T80]), puts one of them in $\mathcal A_2$, its neighbours and the
+  others in $\mathcal A_1$, and their neighbours in $\mathcal A_0$, with $|\mathcal A_1|=q^3+q+2$,
+  $|\mathcal A_0|=q^4+2q^3+q^2+2q+2$ and $7812+912+2\cdot132+4=8992$ at $q=5$. This is Theorem 6.3 with
+  $W=\emptyset$, so Remark 6.9 now says so with the section number, and the caveat is resolved. All [D85b] citations
+  are removed (nothing here is taken from it); [DF84] is cited as unseen.
+- **Issue 3 ([DF84]).** We could not access [DF84] either; the sentence now rests on [D85a, §7] and says that [DF84]
+  was not seen.
+- **Issue 7.** Applied in the note (König's criterion, and $q\ge3$ with the remark that at $q=3$ nothing is deficient).
+  In `geometry.tex` Remark 4.8 we kept the written-out Hall argument (it names its criterion) and the hypothesis
+  $q\ge4$, which matches the Lean theorem.
+- **Issue 14 (README).** (a) nothing to do; (b), (c), (e) are footnotes in the README (³, ⁴, ⁵) rather than changed
+  values, so that the "Gain" column still compares with the best value known to us (274, 374); (d) is the scope
+  sentence under the summary table. The (16,4) label was already corrected (Change 12). We did not change the README's
+  notation; §0 now says that $\operatorname{diam}\mathcal S$ means $\operatorname{diam}\Gamma(\mathcal S)$ and we keep
+  $n_b$ throughout.
+- **Issue 15 (notation).** Applied: version letters $i,j,k$ and whiskers $h$ in §§6.2 and 7, $\widetilde C_\mu$,
+  $\Psi$, $\mathrm{disc}(\nu)$ and $\mathfrak d$ in the proof of Proposition 5.1, $\mathcal E^{(1)},\mathcal E^{(2)}$
+  in §4, $\kappa_1\kappa_2$ in §9, $W(q)$ explained at Example 3.4, and the remark on $\operatorname{diam}$. We did not
+  rename $\sigma$, $\lambda$ or $w$, which keep the names used in `geometry.tex`, `coords.tex` and the Lean sources;
+  §0 lists their local meanings instead.
+- **Issue 16 (Lean docstrings).** The lab's rule for Lean work is additive files only (`CLAUDE.md`), so we left
+  `HexagonEven/Reg/Final.lean` unchanged for the coordinator to decide. The note no longer mentions the docstrings;
+  §7 states the hypotheses of `HexagonEven.theoremR` ($(2:\mathbb F)=0$, $|\mathbb F|\ge4$) instead.
+- **Issue 19 (references).** Applied ([ADFL21], [FWX19] published versions; [AL20] byline noted; [CDPS22] online
+  date; [FMP13], [HMP02], [EP16], [LS08] added, with a paragraph after Definition 8.1). We give [HMP02] without page
+  numbers, which we did not verify.
+

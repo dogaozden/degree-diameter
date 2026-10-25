@@ -75,7 +75,7 @@ Our constructions all have the same shape. We start from a classical generalized
 
 \smallskip\noindent\textbf{Results.}
 \begin{itemize}[leftmargin=1.5em]
-\item \emph{Doubling} (Section~\ref{sec:doubling}). We describe Delorme's doubling with levels \cite{D85a,D85b} as an operation $\cS\mapsto\Dbl{\cS}{m}$ on incidence structures, prove Delorme's diameter theorem and its converse (Theorem~\ref{thm:delorme}), and show (Lemma~\ref{lem:hat} and Corollary~\ref{cor:hatiff}) that in a generalized $n$-gon the doubling has diameter at most $n$ if and only if each component of the doubled set is a tree of diameter at most $n-2$. This explains why diameter~$3$ needs extra ``patch'' incidences and why diameters $4$ and $6$ do not.
+\item \emph{Doubling} (Section~\ref{sec:doubling}). We describe Delorme's doubling with levels \cite[\S7]{D85a} as an operation $\cS\mapsto\Dbl{\cS}{m}$ on incidence structures, prove Delorme's diameter theorem (stated without proof in \cite[\S7]{D85a}) and its converse (Theorem~\ref{thm:delorme}), and show (Lemma~\ref{lem:hat} and Corollary~\ref{cor:hatiff}) that in a generalized $n$-gon the doubling has diameter at most $n$ if and only if each component of the doubled set is a tree of diameter at most $n-2$. This explains why diameter~$3$ needs extra ``patch'' incidences and why diameters $4$ and $6$ do not.
 \item \emph{Diameter $3$} (Section~\ref{sec:d3}). A fourth hat in any projective plane of order $q\ge3$ (Theorem~\ref{thm:fourhat}), completing the construction of Araujo-Pardo and L\'opez \cite{AL20}: $n_b(q+2,3)\ge 2(q^2+q+6)$, with a regular version in $\PG(2,q)$.
 \item \emph{Diameter $4$} (Section~\ref{sec:d4}). A weighted $2$-ovoid of $\AS(q)$ formed by two elliptic quadrics (Theorem~\ref{thm:A}); clones and shadow lines in any generalized quadrangle (Theorem~\ref{thm:B}); a $2$-ovoid of $\Wq(q)$ from a Singer subgroup (Proposition~\ref{prop:C}); regular structures of every degree $\Delta\ge q+1$ and every prime power $q$ (Corollary~\ref{cor:B2}; for even $q$ it uses an ovoid and a spread of $\Qf(4,q)$, see Section~\ref{sec:even4}).
 \item \emph{Diameter $6$} (Section~\ref{sec:d6}). Delorme's doubling of $\Hq(q)$ along a Hermitian spread, extended by an explicit exact set of $q^2(q^2-1)$ ``whisker'' lines for every odd $q$ (Theorem~\ref{thm:exact}), and regular versions (Theorem~\ref{thm:R}).
@@ -170,7 +170,7 @@ $\Hq(q)$ is a generalized hexagon of order $(q,q)$. For a point $x$, the conditi
 
 \section{Doubling with levels}\label{sec:doubling}
 
-Delorme and Farhi \cite{DF84} observed that a \emph{duplicate} of an element (a new element incident with exactly the same elements) does not increase the diameter. Delorme \cite{D85a,D85b} refined this into a doubling of a whole set of elements, with levels, and used it to build the largest bipartite graphs then known of diameters $4$ and $6$. We recast it as an operation on incidence structures.\footnote{Note for co-authors: the full texts of Delorme's two 1985 papers \cite{D85a,D85b} have not been read by the authors of this draft. Our earlier notes attribute the doubling with levels and the bipartite constructions for $D=4,6$ to \cite{D85a}, Sections~7--8; the abstract of \cite{D85b} also describes bipartite constructions. Please check which paper contains which construction; no section numbers are claimed here.}
+A \emph{duplicate} of an element (a new element incident with exactly the same elements) does not increase the diameter (see \cite{DF84}, which we have not seen, and \cite[\S7]{D85a}). Delorme \cite[\S7]{D85a} refined this into a doubling of a whole set of elements, with levels, stated there without proof, and used it to build the largest bipartite graphs then known of diameters $4$ and $6$ \cite[\S8(a),(b)]{D85a}. We recast it as an operation on incidence structures and supply a proof.
 
 \subsection{The operation}
 Let $\cS=(\cP,\cL,\I)$ be an incidence structure, $m\ge2$ an integer, and
@@ -195,7 +195,7 @@ For a single level ($r=0$, $\cA=\cA_0$) and $m=2$, write $x=x^1$ and $x'=x^2$ fo
 \[
 y'\ \text{for every } y\in\cA \text{ with } y\I x,\qquad\text{and}\qquad y\ \text{for every } y\notin\cA \text{ with } y\I x.
 \]
-If $\cA$ contains no flag, $x'$ is a duplicate of $x$ in the sense of \cite{DF84}. In general $x'$ is \emph{not} a duplicate: inside $\cA$ the copies are incident with copies, outside $\cA$ with originals.
+If $\cA$ contains no flag, $x'$ is a duplicate of $x$. In general $x'$ is \emph{not} a duplicate: inside $\cA$ the copies are incident with copies, outside $\cA$ with originals.
 
 The map $x^w\mapsto x$ preserves incidence, so
 \begin{equation}\label{eq:proj}
@@ -213,7 +213,7 @@ Consider the following conditions on $\cA$, where $D\ge2$.
 \item\label{CD} For any two elements $x,y$ (possibly $x=y$) in the same connected component of the substructure induced on $\cA_0$, there is an element $z\notin\cA_0$ with $\dd(x,z)+\dd(z,y)\le D$.
 \end{enumerate}
 
-\begin{theorem}[Delorme {\cite{D85a,D85b}}]\label{thm:delorme}
+\begin{theorem}[Delorme {\cite[\S7]{D85a}}, (a)--(c), stated there without proof]\label{thm:delorme}
 Let $\cS$ be an incidence structure of diameter at most $D$, $D\ge2$, and let $m\ge2$.
 \begin{enumerate}[label=\textup{(\alph*)}]
 \item If $\cA$ satisfies \ref{CD}, then $\Dbl{\cS}{m}$ has diameter at most $D$.
@@ -460,7 +460,7 @@ In any projective plane of order $q\ge4$ a regular completion also exists. Let $
 \end{remark}
 
 \begin{remark}[The three-hat structure of {\cite{AL20}}]\label{rem:al}
-In the same coordinates, the structure of Araujo-Pardo and L\'opez uses the hats $S_{AL}=\{0,1,a\}$, no rotation, and links $A\I K_a$, $H_a\I\ell$, $H_0\I K_1$, $H_1\I K_0$; it removes only the flag $(X_a,\lam_a)$, and $M$ contains $P$ and $X_t$ for $t\notin\{0,1\}$, $Q$ lies on $\lam_\infty$ and $\lam_t$ for $t\notin\{0,1\}$. (In their affine coordinates $(x,y)=\pnt xy1$, $[m,b]=\lin m{-1}b$, $L_c=\lin10{-c}$, $L=\lin001$, $P_m=\pnt1m0$; so $L_0=\ell$, $P_0=A$, $(0,s)=X_s$, $[0,s]=\lam_s$ and $L=\lam_\infty$.) It has $2(q^2+q+5)$ elements and diameter $3$ for $q\ge3$ \cite{AL20}; the proof is a case analysis like that of Lemma~\ref{lem:fh-points}. Its elements of degree $q+1$ are the points $(x,y)$, $x\ne0$, $y\notin S_{AL}$, and $P_i$, $i\ne0$, and the lines $[x,y]$, $x\ne0$, $y\notin S_{AL}$, and $L_i$, $i\ne0$. The completing matching printed in \cite{AL20} is $(x,y)\sim[x,y]$ together with $P_i\sim L_i$ for $i\in\F\setminus\{0,1,a\}$; with this index set the four elements $P_1,P_a,L_1,L_a$ keep degree $q+1$. Taking $i\in\F^*$ instead (the pairs $P_i\notin L_i$ are always non-incident) gives a $(q+2)$-regular structure, as intended. This affects neither the maximum degree nor the diameter.
+In the same coordinates, the structure of Araujo-Pardo and L\'opez uses the hats $S_{AL}=\{0,1,a\}$, no rotation, and links $A\I K_a$, $H_a\I\ell$, $H_0\I K_1$, $H_1\I K_0$; it removes only the flag $(X_a,\lam_a)$, and $M$ contains $P$ and $X_t$ for $t\notin\{0,1\}$, $Q$ lies on $\lam_\infty$ and $\lam_t$ for $t\notin\{0,1\}$. (In their affine coordinates $(x,y)=\pnt xy1$, $[m,b]=\lin m{-1}b$, $L_c=\lin10{-c}$, $L=\lin001$, $P_m=\pnt1m0$; so $L_0=\ell$, $P_0=A$, $(0,s)=X_s$, $[0,s]=\lam_s$ and $L=\lam_\infty$.) It has $2(q^2+q+5)$ elements and diameter $3$ for $q\ge3$ \cite{AL20}; the proof is a case analysis like that of Lemma~\ref{lem:fh-points}. Its elements of degree $q+1$ are the points $(x,y)$, $x\ne0$, $y\notin S_{AL}$, and $P_i$, $i\ne0$, and the lines $[x,y]$, $x\ne0$, $y\notin S_{AL}$, and $L_i$, $i\ne0$. The completing matching printed in \cite{AL20} (arXiv v1, p.~8; we have not seen the journal version) is $(x,y)\sim[x,y]$ together with $P_i\sim L_i$ for $i\in\F\setminus\{0,1,a\}$; with this index set the four elements $P_1,P_a,L_1,L_a$ keep degree $q+1$. Taking $i\in\F^*$ instead (the pairs $P_i\notin L_i$ are always non-incident) gives a $(q+2)$-regular structure, as intended. This affects neither the maximum degree nor the diameter.
 \end{remark}
 
 \begin{remark}[Hats as doubled flags]\label{rem:al-doubling}
@@ -476,7 +476,7 @@ All proofs above use only the axioms of a projective plane, so Theorem~\ref{thm:
 By Lemma~\ref{lem:diam}, an incidence structure without isolated elements has diameter at most $4$ exactly when, for every anti-flag $(p,L)$, some point of $L$ is collinear with $p$. Every generalized quadrangle has this property, with a unique such point.
 
 \subsection{Doubling in quadrangles}
-By Lemma~\ref{lem:hat}, in a generalized quadrangle a set $\cA_0$ satisfies \textup{(C$_4$)} exactly when its components are single elements, flags or stars. The following is Delorme's construction \cite{D85a,D85b} in this language.
+By Lemma~\ref{lem:hat}, in a generalized quadrangle a set $\cA_0$ satisfies \textup{(C$_4$)} exactly when its components are single elements, flags or stars. The following is Delorme's construction \cite[\S8(a)]{D85a} in this language.
 
 \begin{example}[Delorme]\label{ex:delorme4}
 Let $\Sigma$ be a spread of $\Wq(q)$, let $v\in\Sigma$, and let $\cP(v)$ be the set of points of $v$. Put
@@ -495,7 +495,7 @@ More generally, let $\cO$ be an ovoid of $\Qf(4,q)$ and $\cM$ a set of lines suc
 \end{remark}
 
 \subsection{Clones and shadow lines}
-The next construction is not a doubling: it adjoins several copies of points and copies of lines that are attached to copies of points. Copies of lines in a generalized quadrangle appear already in Araujo-Pardo, Dalf\'o, Fiol and L\'opez \cite[Sec.~4]{ADFL21}, who double every line to obtain biregular graphs (semi-double graphs); here only some lines are copied, with weights, and a copy may be attached to clones.
+Copies of points and lines of a generalized quadrangle go back to Delorme \cite[\S\S7--8]{D85a}: his doubling may copy any induced subgraph, points and lines together, and his $D=4$ construction (Example~\ref{ex:delorme4}) doubles a spread. Araujo-Pardo, Dalf\'o, Fiol and L\'opez \cite[Sec.~4]{ADFL21} double every line to obtain biregular graphs (semi-double graphs). The next construction is not a doubling: a clone is joined to every old line through its point, so no tree condition on the copied set is needed, and it allows weights larger than one, a multiset of lines, and stand-ins (a copy of a line attached to clones). A level-$0$ line all of whose points are at level $-1$ is exactly a shadow line with $\sigma=\mathrm{id}$.
 
 \begin{definition}[Clones and shadows]\label{def:clones}
 Let $\cS=(\cP,\cL,\I)$ be a generalized quadrangle of order $(s,t)$. Let $w\colon\cP\to\mathbb Z_{\ge0}$ be a weight and $\cM$ a finite multiset of lines. For each entry $\mu$ of $\cM$, with underlying line $L_\mu$, choose for every point $p\I L_\mu$ a \emph{stand-in} $\sigma_\mu(p)\in\{p,p^1,\dots,p^{w(p)}\}$. The structure $\cS[w,\cM,\sigma]$ has
@@ -659,7 +659,7 @@ Let $q$ be odd, $\cO$ an ovoid of $\Qf(4,q)$, $w=\mathbf 1_\cO$, and let $\cS'=\
 \end{proposition}
 
 \begin{proof}
-By Theorem~\ref{thm:B}(b) every old point and every clone serves at most one shadow line. So a point outside $\cO$ is on at most one entry of $\cM$, and a point $o\in\cO$ on at most two (one served by $o$, one by its clone). In particular $\cM$ has no repeated line. If some $o\in\cO$ is on two lines $L_1,L_2\in\cM$, then every other $L\in\cM$ misses $o$, and its unique point $y$ collinear with $o$ is not in $\cO$ (points of an ovoid are pairwise non-collinear). The line $oy$ is not in $\cM$, since $y$ is on at most one line of $\cM$, so $oy$ is one of the $q-1$ lines on $o$ other than $L_1,L_2$, and $y$ is one of its $q$ points other than $o$. Distinct $L$ give distinct $y$, so $|\cM|\le2+q(q-1)$. Otherwise $\cM$ is a partial spread of $\Qf(4,q)$ and $|\cM|\le q^2-q+1$ (Tallini \cite{Tal91}).
+By Theorem~\ref{thm:B}(b) every old point and every clone serves at most one shadow line. So a point outside $\cO$ is on at most one entry of $\cM$, and a point $o\in\cO$ on at most two (one served by $o$, one by its clone). In particular $\cM$ has no repeated line: a line has $q$ points outside $\cO$ (an ovoid meets it in one point), and each of them would be on two entries. If some $o\in\cO$ is on two lines $L_1,L_2\in\cM$, then every other $L\in\cM$ misses $o$, and its unique point $y$ collinear with $o$ is not in $\cO$ (points of an ovoid are pairwise non-collinear). The line $oy$ is not in $\cM$, since $y$ is on at most one line of $\cM$, so $oy$ is one of the $q-1$ lines on $o$ other than $L_1,L_2$, and $y$ is one of its $q$ points other than $o$. Distinct $L$ give distinct $y$, so $|\cM|\le2+q(q-1)$. Otherwise $\cM$ is a partial spread of $\Qf(4,q)$ and $|\cM|\le q^2-q+1$ (Tallini \cite{Tal91}).
 \end{proof}
 
 So these structures have at most $2(q+1)(q^2+1)+(q^2+1)+(q^2-q+2)=2q^2(q+2)+q+5$ elements; to beat Corollary~\ref{cor:A1} one needs $|\cM|\ge q^2-2q-2$. For $q=5$ there is a set $\cM$ of $21$ lines with suitable stand-ins (an explicit example, checked by computer), giving $n_b(7,4)\ge359$; we do not know whether $q^2-2q-2$ lines are possible for $q\ge9$. In particular, $q^2+1$ shadow lines (which would give $2(q^2+1)(q+2)$ elements) are impossible for odd $q$.
@@ -735,7 +735,7 @@ Then $\cA$ satisfies \ref{L0}, \ref{L1} and \textup{(C$_6$)}. Hence $\Dbl{\Hq(q)
 elements.
 \end{theorem}
 
-For $W=\emptyset$ this is Delorme's construction \cite{D85a,D85b}; at $m=2$ it gives $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements, the previous table values $8992$, $142464$, $374452$, $842048$ at $\Delta=7,11,13,15$, and at $q=13$, $m=3$ the value $884062$ at $\Delta=16$.
+For $W=\emptyset$ this is Delorme's construction \cite[\S8(b)]{D85a} (he takes $q^3+1$ pairwise opposite elements \cite{T80}, one of them in $\cA_2$, its neighbours and the others in $\cA_1$, their neighbours in $\cA_0$, and states $7812+912+2\cdot132+4=8992$ at $q=5$); at $m=2$ it gives $2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements, the previous table values $8992$, $142464$, $374452$, $842048$ at $\Delta=7,11,13,15$, and at $q=13$, $m=3$ the value $884062$ at $\Delta=16$.
 
 \begin{proof}
 \ref{L1}, $i=1$: the elements incident with $v$ are its points, which are in $\cA_1$; a point of $v$ is incident with exactly one element of $\cA_2$, a line of $S\setminus\{v\}$ with none.
@@ -1101,7 +1101,7 @@ Table~\ref{tab:values} lists the resulting values in the range $\Delta\le16$ of 
 \renewcommand{\arraystretch}{1.12}
 \begin{tabular}{@{}lrrrrrrl@{}}
 \toprule
-$(\Delta,D)$ & $q$ & $M_b(\Delta,D)$ & 2013 \cite{MS13} & table \cite{CW} & new & regular & construction\\
+$(\Delta,D)$ & $q$ & $M_b(\Delta,D)$ & 2013 \cite{MS13} & table \cite{CW} & ours & regular & construction\\
 \midrule
 $(11,3)$ & $9$ & $222$ & $190$ & $190$ & $\mathbf{192}$ & $192$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
 $(13,3)$ & $11$ & $314$ & $270$ & $274$ & $\mathbf{276}$ & $276$ & Thm.~\ref{thm:fourhat}, \ref{thm:fourhat-regular}\\
@@ -1120,7 +1120,7 @@ $(15,6)$ & $13$ & $1158390$ & $842048$ & $842048$ & $\mathbf{870440}$ & $866068$
 $(16,6)$ & $13$ & $1627232$ & $884062$ & $884062$ & $\mathbf{940846}$ & $927724$ & Cor.~\ref{cor:d6}, Thm.~\ref{thm:R}, $m=3$\\
 \bottomrule
 \end{tabular}
-\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``2013'' is the value in Table~4 of the 2013 survey \cite{MS13}; ``table'' is the value listed in \cite{CW} (values read on 10 October 2026 and reported as matching on 20 October 2026; later attempts to reach the page failed). They differ only at $(13,3)$ and $(15,3)$, where \cite{AL20} improved $270$ and $370$ to $274$ and $374$; for $D=4$ and $D=6$ both are Delorme's values \cite{D85a,D85b} (Example~\ref{ex:delorme4} and Theorem~\ref{thm:whisk} with $W=\emptyset$). ``New'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family; Appendix~\ref{app:74} lists such an example in coordinates (data: \protect\path{research/theorems/polish/q4_359_lines.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
+\caption{Values for $\Delta\le16$ with $\Delta-1$ not a prime power. ``2013'' is the value in Table~4 of the 2013 survey \cite{MS13}; ``table'' is the value listed in \cite{CW} (values read on 10 October 2026 and reported as matching on 20 October 2026; later attempts to reach the page failed). They differ only at $(13,3)$ and $(15,3)$, where \cite{AL20} improved $270$ and $370$ to $274$ and $374$; for $D=4$ and $D=6$ both are Delorme's values \cite[\S8]{D85a} (Example~\ref{ex:delorme4} and Theorem~\ref{thm:whisk} with $W=\emptyset$). ``Ours'' is the largest structure in this paper; ``regular'' the largest $\Delta$-regular one. $^{*}$An explicit example, not a member of a proved infinite family; Appendix~\ref{app:74} lists such an example in coordinates (data: \protect\path{research/theorems/polish/q4_359_lines.json}). $^{\dagger}$Corollary~\ref{cor:A1} at $q=5$ (data: \protect\path{research/gq4x/graphs/as_w2_q5_n350.json}). The cells $(7,3)$ and $(16,3)$ are not improved: Theorem~\ref{thm:fourhat} gives $72<80$ at $(7,3)$. All structures in the table were also built explicitly and their incidence graphs checked by computer. Every row uses an odd $q$. For $\Delta\le16$ the even prime powers $q\in\{2,4,8\}$ give smaller values in both the ``new'' and the ``regular'' columns for $D=4$ and $D=6$ (Section~\ref{sec:even}), so the table is unchanged.}
 \label{tab:values}
 \end{table}
 
@@ -1181,7 +1181,7 @@ The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:
 
 \begin{thebibliography}{99}
 \bibitem{AS69} R.~W. Ahrens, G.~Szekeres, On a combinatorial generalization of 27 lines associated with a cubic surface, \emph{J. Austral. Math. Soc.} 10 (1969) 485--492.
-\bibitem{ADFL21} G.~Araujo-Pardo, C.~Dalf\'o, M.~A. Fiol, N.~L\'opez, Bipartite biregular Moore graphs, arXiv:2103.11443.
+\bibitem{ADFL21} G.~Araujo-Pardo, C.~Dalf\'o, M.~A. Fiol, N.~L\'opez, Bipartite biregular Moore graphs, \emph{Discrete Math.} 344 (2021) 112582; arXiv:2103.11443.
 \bibitem{AL20} G.~Araujo-Pardo, N.~L\'opez, On new record graphs close to bipartite Moore graphs, \emph{Graphs Combin.} 38 (2022), no.~4, Paper No.~110; arXiv:2005.02427.
 \bibitem{BLP09} J.~Bamberg, M.~Law, T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, \emph{Combinatorica} 29 (2009) 1--17.
 \bibitem{CDPS22} M.~Ceria, J.~De Beule, F.~Pavese, V.~Smaldore, On large partial ovoids of symplectic and Hermitian polar spaces, \emph{J. Combin. Des.} 31 (2023) 5--22; arXiv:2203.04553.
@@ -1189,7 +1189,6 @@ The $21$ lines are pairwise disjoint except at the four points $(0{:}1{:}0{:}0{:
 \bibitem{CCEM08} A.~Cossidente, C.~Culbert, G.~L. Ebert, G.~Marino, On $m$-ovoids of $W_3(q)$, \emph{Finite Fields Appl.} 14 (2008) 76--84.
 \bibitem{MS13} M.~Miller, J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, \emph{Electron. J. Combin.} Dynamic Survey DS14v2 (2013), Table~4.
 \bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, \emph{European J. Combin.} 6 (1985) 291--302.
-\bibitem{D85b} C.~Delorme, Large bipartite graphs with given degree and diameter, \emph{J. Graph Theory} 9 (1985), no.~3, 325--334, doi:10.1002/jgt.3190090304.
 \bibitem{DF84} C.~Delorme, G.~Farhi, Large graphs with given degree and diameter, Part~I, \emph{IEEE Trans. Comput.} C-33 (1984) 857--860.
 \bibitem{E85} G.~L. Ebert, Partitioning projective geometries into caps, \emph{Canad. J. Math.} 37 (1985) 1163--1175.
 \bibitem{FH64} W.~Feit, G.~Higman, The nonexistence of certain generalized polygons, \emph{J. Algebra} 1 (1964) 114--131.

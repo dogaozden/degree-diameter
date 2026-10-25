@@ -32,10 +32,10 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (Δ, D) | Table | Ours | Gain | Method | Lean |
 |---|---:|---:|---:|---|:---:|
 | (11, 3) | 190 | **192** | +1.1% | finite geometry | ✓ |
-| (13, 3) | 274 | **276** | +0.7% | finite geometry | ✓ |
-| (15, 3) | 374 | **376** | +0.5% | finite geometry | ✓ |
+| (13, 3) | 274 ³ | **276** | +0.7% | finite geometry | ✓ |
+| (15, 3) | 374 ³ | **376** | +0.5% | finite geometry | ✓ |
 | (16, 3) | 394 | **396** | +0.5% | finite geometry | ✓ |
-| (7, 4) | 346 | **359** | +3.8% | evolutionary search | ✓ |
+| (7, 4) | 346 | **359** | +3.8% | evolutionary search ⁴ | ✓ |
 | (11, 4) | 1,734 | **1,782** | +2.8% | finite geometry | ✓ |
 | (13, 4) | 3,064 | **3,146** | +2.7% | finite geometry | ✓ |
 | (15, 4) | 4,946 | **5,070** | +2.5% | finite geometry | ✓ |
@@ -53,10 +53,10 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (15, 5) | 20,496 | **20,736** | +1.2% | route-chart lift | — |
 | (16, 5) ² | 27,300 | **33,792** | +23.8% | route-chart lift ¹ | — |
 | (7, 6) | 8,992 | **9,592** | +6.7% | finite geometry | ✓ |
-| (11, 6) | 142,464 | **148,944** | +4.5% | finite geometry | — |
-| (13, 6) | 374,452 | **388,972** | +3.9% | finite geometry | — |
-| (15, 6) | 842,048 | **870,440** | +3.4% | finite geometry | — |
-| (16, 6) | 884,062 | **940,846** | +6.4% | finite geometry | — |
+| (11, 6) | 142,464 | **148,944** | +4.5% | finite geometry | — ⁵ |
+| (13, 6) | 374,452 | **388,972** | +3.9% | finite geometry | — ⁵ |
+| (15, 6) | 842,048 | **870,440** | +3.4% | finite geometry | — ⁵ |
+| (16, 6) | 884,062 | **940,846** | +6.4% | finite geometry | — ⁵ |
 | (4, 7) | 840 | **864** | +2.9% | vertex-transitive (Cayley-type) | — |
 | (5, 7) | 3,110 | **3,120** | +0.3% | voltage lift / metacyclic Haar | ✓ |
 | (6, 7) | 8,310 | **8,880** | +6.9% | orbit search (Haar) | ✓ |
@@ -109,6 +109,12 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 ² (3, 8): 288 against 256 is a large jump for a well-studied cell; a literature check for newer values is pending.
 (16, 5): beats the table's 27,300 and also two larger graphs we know of, the bipartite flag graph of PG(4,3) (31,460;
 Cames van Batenburg–Korsky, 2026) and a double cover of LANL's (16, 4) graph (32,768).
+³ At (13, 3) and (15, 3) this column shows the wiki values of Araujo-Pardo and López (Graphs Combin. 2022); the 2013
+survey table has 270 and 370. The gains are against 274 and 374.
+⁴ The 359 graph decomposes as the generalized-quadrangle copy construction of Theorem B
+([`research/theorems/POLISHED.md`](research/theorems/POLISHED.md), §3 and Appendix A).
+⁵ The general theorem behind these graphs (Theorem D, with Theorem R for the regular versions) is proved in Lean for
+every q, so these orders are Lean-checked lower bounds; the graphs themselves are too large for a kernel certificate.
 
 The first eight records (Oct 10, 2026) were checked against the literature
 ([`records/bipartite_dd/CANDIDATES.md`](records/bipartite_dd/CANDIDATES.md)). For the later ones, a literature check for
