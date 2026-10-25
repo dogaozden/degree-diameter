@@ -7,6 +7,7 @@
  *   d = f + k m + s.  E.g. ORBIT="6 2 0" OSUB=3 gives d = 15 with no fixed letter.  The annealer moves it like an orbit.
  *   CLASSES=1 (with RANDORB): miss rate of each stabiliser class.  BESTOUT=path: best S of an unsolved run.
  *   OSTAB=1: annealing energy counts uncovered alpha-orbits (each uncovered x weighs |Stab(x)|), generalising ORBW=k.
+ *   NEARDUMP=c (with RANDORB): print S and the uncovered elements of every sample of cost <= c (cost 0: solutions).
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -1141,6 +1142,19 @@ exdone:
             if (OSUB) { int o[MAXD]; for (int i = 0; i < OSUB; i++) S[subst() + i] = -1 - subst() - i; random_sub(o); for (int i = 0; i < OSUB; i++) { S[subst() + i] = o[i]; mktab(o[i], TF[subst() + i], TI[subst() + i]); } }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
             if (v[t] == 0 && !saved && strcmp(out, "/dev/null")) { printf("RANDORB sample %d has cost 0\n", t); saved = check_and_write(C[0], out); }
+            if (getenv("NEARDUMP") && v[t] <= atoll(getenv("NEARDUMP"))) {   /* haar_order2: list a near miss (cost 0: a solution) */
+                static uint64_t *NV[2] = {0, 0}; if (!NV[0]) { NV[0] = zalloc64(BITBYTES); NV[1] = zalloc64(BITBYTES); }
+                cost_any(C[0], TF, TI, &sc0, NV, &NOBOUND, 0);
+                char buf[1000]; printf("NEAR sample %d cost %lld S:", t, v[t]);
+                for (int i = 0; i < d; i++) { desc_elem(S[i], buf); printf(" %s", buf); }
+                printf(" | uncovered:");
+                for (int sd = 0; sd < (D % 2 ? 2 : 1); sd++) { const uint64_t *V = NV[sd];
+                    for (int g = 0; g < N; g++) { int cov;
+                        if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+                        else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+                        if (!cov) { desc_elem(g, buf); printf(" %s%s", D % 2 ? (sd ? "B:" : "A:") : "", buf); } } }
+                printf("\n");
+            }
             sm += v[t]; sq += (double)v[t] * v[t]; hist[v[t] / OK_ < 31 ? v[t] / OK_ : 31]++;
             if (getenv("LEVELS") && t < atoi(getenv("LEVELS"))) { fprintf(stderr, "levels:"); for (int h = 0; h < D - 1; h++) fprintf(stderr, " %lld", C[0]->lev[h]); fprintf(stderr, " cost %lld\n", v[t]); }
         }

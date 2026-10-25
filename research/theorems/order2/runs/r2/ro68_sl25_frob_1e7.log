@@ -1,0 +1,11 @@
+group sl 25 poly x^2+2 x Z_1, N=15600, identity 600, H order 26, rows 600, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: Frobenius x -> x^5 on entries, z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 119 (+e); mu = 29.82, mu/k = 14.91, fixed-point misses ~ 5.25
+RANDORB sample 2641310 has cost 0
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/a6c59fab-444e-5347-94c2-554d7c4d893d/scratchpad/runs/ro68_frob_1e7.txt
+RANDORB d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 k=2 m=3 f=0 fix=119 samples=10000000 min=0 p1=34 p10=75 median=321 mean=1000.05 var=3283512.8 mu=29.82 time=764.5
+RANDORB hist (cost/k): 1 0 36 84 282 515 1083 1769 2745 3886 5566 7780 9994 12329 14500 17262 20325 23198 26425 28529 31561 34022 35698 38319 41023 42900 45133 45986 46729 48157 49801 9364362
+RANDORB cost0=1 of 10000000 (P=1e-07); cost counts 0..8: 1 0 0 0 11 25 33 51 121
