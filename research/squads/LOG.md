@@ -41,7 +41,7 @@ Scorer `research/d16D8/baselift eval FILE 6` (all sources). Folder `research/squ
 | c2 | Z_5 x Z_k level skeleton (D=5 cover with k sheets) | 5 (k=1 only) | 10 | 5 |
 | c3 | algebraic flag voltages (PG(1,q) parameter, Singer index, dlog) | 14 (random flags) | 16 | 12 |
 | c4 | designs invariant under a semiregular C ≤ PSp(4,q), order (q²+1)/2 | **28** | 20 | 24 |
-| c5 | other level skeletons (L, t1, t2) x k sheets | k = 1 only | | |
+| c5 | other level skeletons (L, t1, t2) x k sheets | 10 (k = 1 only; (10,1,4)) | 10 | |
 | c6 | rainbow colouring (q+3 = 2(k-1)) with Z_5 skeleton | 0 (refuted) | 18 (injective, no levels) | |
 | c7 | targeted repair: change one edge on a walk to fix an uncovered triple | **23** | 18 | |
 | c8 | voltages on flags only (matchings 0) | 14 | 16 | 12 |
@@ -49,7 +49,8 @@ Scorer `research/d16D8/baselift eval FILE 6` (all sources). Folder `research/squ
 Opus checked c4 (m=28) and c7 (m=23) at q=13: baselift VALID(all sources), and research/d16D8/checkgq.py confirms
 W(13) flags + exactly two point->line perfect matchings. Kept: symmetry (c4) and targeted repair (c7), the only ideas
 above random (random designs: VALID to m = 12-14). Refuted: every level skeleton with more than one sheet (worse than
-unstructured lifts), algebraic flag voltages (they act like potentials), the rainbow hypothesis. Opus side results:
+unstructured lifts; c5's late report: pure skeletons with k = 1 are VALID for (L,t1,t2) = (5,1,2), (6,1,2), (7,1,2),
+(7,1,3), (8,1,3), (10,1,4) and fail for (9,1,3), (11,1,3), (12,1,5); no k >= 2 design is VALID), algebraic flag voltages (they act like potentials), the rainbow hypothesis. Opus side results:
 typed levels (H and its dual, identity on friendly transitions) anneal worse than untyped (1026 vs 118 uncovered at
 q=3, m=25); a local "full-coverage" design search (research/d16D8/localdes.c) reaches only m = 12 (q=7) and 16 (q=13);
 Z_k-covers whose geodesics between every opposite pair hit all k sheets do not appear to exist even for k = (q+1)/2
