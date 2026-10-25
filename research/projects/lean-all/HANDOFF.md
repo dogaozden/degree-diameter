@@ -29,7 +29,7 @@ rows 22–41. Records are not edited in README.md, RESULTS.md or the records the
 - Finite-geometry rows (13,8), (8,9), (7,10), (8,10): not started; the family theorem for those constructions is not in lean/.
 
 ## Next steps (if continued)
-1. Ask the coordinator whether a per-group certificate of about 26 h (single core, parallel builds maybe 7 h) is worth it
-   for (11,8) alone, or whether the family route is preferred.
+1. Decide whether a per-group certificate for (11,8) (about 26 h on one core, maybe 7 h with four parallel builds) is
+   worth its time, or whether the family route is preferred. The coordinator reads this file; no one else is contacted.
 2. Look for a family-level covering argument for the orbit-search Haar rows; check STATUS.md before claiming.
 3. Finite-geometry rows: read the existing lean/BipartiteDD/GQST and SingerC files for a general statement first.
