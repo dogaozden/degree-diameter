@@ -5,13 +5,13 @@ Moore bound 96,855,122.
 
 ## Status
 
-**New record: 8,334,480 vertices** = 2·|PSL(2,41) × Z121| (psl 41 x Z121, orbit k=5, m=2, f=0, μ = 37.4),
-research/frontier/sols/d10D9_psl_41_121_orb5f0_s2.txt (seed 2). build_haar2.py VALID (edge-list sha256
-c389da106681b74203b4a3cef560264903a82ec4848a74df305984b89c08fb9c), haarcheck_psl VALID. Found after 131,481 evaluations
-(758 s, one thread). Log: research/structured/runs/d10D9_psl_41_121_orb5f0_s2.log.
-It beats 8,306,760 (psl 29 x Z341, research/frontier/sols/d10D9_psl_29_341_orb5f0_s1.txt) by 27,720 (+0.3 %).
+**New record: 8,362,560 vertices** = 2·|PSL(2,31) × Z281| (psl 31 x Z281, orbit k=5, m=2, f=0, μ = 39.0),
+research/frontier/sols/d10D9_psl_31_281_orb5f0_s1.txt. build_haar2.py VALID (edge-list sha256
+e02e5fb43ef1ad895d35c03ff92cdcd58a0f30a0782ecba861db2a5c46b4f33d), haarcheck_psl VALID. Found after 88,921 evaluations
+(1,913 s, one thread). Log: research/structured/runs/d10D9_psl_31_281_orb5f0_s1.log.
+It beats 8,334,480 (psl 41 x Z121, research/frontier/sols/d10D9_psl_41_121_orb5f0_s2.txt) by 28,080 (+0.3 %).
 
-Window for the next record: N > 4,167,240 (2N > 8,334,480).
+Window for the next record: N > 4,181,280 (2N > 8,362,560).
 
 ## Method
 
@@ -59,3 +59,6 @@ Screen: `orb_screen.py 10 9 4001929 4060000 "3 3 1" --fams sl,psl,pgl --samples 
 - 08:26–08:40 UTC: psl 41 x Z121 (k=5 f=0) solved on seed 2 at 131,481 evaluations: 8,334,480 vertices. Seed 1 (best 4)
   was stopped as obsolete. Still running: psl 31 x Z281 (k=5 f=0, N = 4,181,280, best 21 at 5 min). sl 23 x Z343 (k=3,
   N = 4,165,392, best 54) is below the new bar and was stopped.
+- 08:50 UTC: psl 31 x Z281 (k=5 f=0, μ 39.0) solved on its first seed at 88,921 evaluations: 8,362,560 vertices.
+  Stopped as obsolete: psl 49 x Z71 (N = 4,174,800, best 6), psl 29 x Z343 (k=3, N = 4,177,740, best 30), prod psl 5 psl 9 x Z193
+  (k=3, N = 4,168,800, best 38).
