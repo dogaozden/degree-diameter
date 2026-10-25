@@ -306,7 +306,7 @@
   "source": "Delorme 1985 Sec. 8(b) sets with Sec. 7 tripling, q = 13 (arithmetic matches; not stated in the paper)",
   "construction": "H(13) + Hermitian spread, tripling (b = 3)",
   "rebuilt": "yes",
-  "check": "PENDING (log not complete): apsp_mt.c VALID (checks/d6_q13_b3.apsp.txt)"
+  "check": "apsp_mt.c VALID (checks/d6_q13_b3.apsp.txt)"
  },
  "10,5": {
   "source": "wiki: Delorme-Gomez-Quisquater, \"On large bipartite graphs\" (submitted; never found)",

@@ -26,7 +26,7 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 
 ## 2. Summary
 
-Of the 112 cells (counts from cells.csv; five big checks were still running when this was written, see HANDOFF.md):
+Of the 112 cells (counts from cells.csv; three big checks ((14,7), (15,7), (16,7)) were still running when this was written, see HANDOFF.md):
 
 - **48 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the 11 Delorme–Farhi cells, the three D = 3
@@ -125,6 +125,9 @@ tools/collect_extra.py).
      H(7) (q = 8: 26,487 of 37,449; 9: 41,009 of 66,430; 11: 87,297 of 177,156; 13: 165,097 of 402,234), for any
      pairing σ. So, if hubs are joined to equally labelled vertices as in the thesis's §2.8 notation, ΩH_q has
      diameter ≥ 9 at every q in the table.
+   - If every copy may be relabelled freely (the thesis does not describe this), the counting argument no longer
+     applies. Annealing over such relabellings (tools/omega_anneal.c) reaches diameter 8 for H(2) (1,890 vertices,
+     599 moves) but not for H(3): it stalled at 327 hub–vertex pairs at distance > 8 after 48,444 moves.
    This could be my misreading (the figure does not say which vertex each hub uses in each copy), or the
    construction in the wiki's own source (Delorme–Gómez–Quisquater, "On large bipartite graphs", never published)
    may differ. Either way these six cells have no checkable graph. (15,8) is the (14,8) value reused; the thesis also
