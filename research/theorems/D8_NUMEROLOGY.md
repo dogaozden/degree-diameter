@@ -40,6 +40,9 @@ matchings from points to lines ("hops", degree q+1+j) and take an M-fold voltage
      distance 3 for any matchings that are not close to dualities, so for large q such a lift needs near-dual
      matchings. In the table range the multi-hop walks still add tens per pair, so the reading is not excluded; at
      q = 3 it gives K = 5 (25 copies, more than DGQ's formula) after annealing.
+   - (§1.5, new) With one matching, the tight value q + 4 cannot be certified by guaranteed walks for any q ≥ 7,
+     equitable or not, as long as each point and line misses exactly one residue (a spectral inequality on the
+     incidence matrix of H(q)). So DGQ's (13,8) = (q+4)·|GH(11)| needs walks or holonomy beyond §1.2.
 6. **No table cell beaten.**
 
 ---
@@ -215,6 +218,49 @@ random hop labels and designed only the flag voltages; that fails already at K =
 annealed polygon cover × Z_4 reaches DGQ's value exactly (20 copies, 54,600 vertices,
 `calib/q4_polycover_Z5xZ4_M20.txt`, checked by apsp); Z_5 × Z_5 at q = 4 is RESULT_PC45.
 
+### 1.5 No tight one-matching design for q ≥ 7, equitable or not (`tight_j1.py` → `tight_j1_out.txt`)
+
+§1.2 shows that one hop matching, zero holonomy and regular labels give M ≤ q + 4 if only guaranteed walks are used,
+and §1.3 kills the tight case M = q + 4 when the label classes are equitable. DGQ's (13,8) value is exactly
+(q + 4)·|GH(q)| at q = 11, so the non-equitable case matters. Here it is closed for q ≥ 7, under one natural
+assumption.
+
+*Setting.* M = q + 4; labels t on points, l on lines, same distribution (n_c points and n_c lines with label c),
+regular (distinct on the lines through a point and on the points of a line), every point–line pair covered by
+{0, t(x), l(y), t(x) + l(y)} ∪ X(x) ∪ Y(y) with X(x) = {t(x)} ∪ −l(N(x)), Y(y) = {l(y)} ∪ −t(N(y)). *One-miss*: X(x)
+consists of q + 2 distinct nonzero residues for every point (so it misses exactly one nonzero residue e(x)), and Y(y)
+likewise misses exactly one f(y).
+
+*Theorem.* For q ≥ 7 there is no such design.
+
+*Proof.* (i) Structure. The lines through x carry exactly the labels Z_M* \ {−e(x), −t(x)}, once each; the points on
+y carry Z_M* \ {−f(y), −l(y)}. Counting flags with line label d gives (q+1)n_d = P − a_{−d} − n_{−d}, where
+a_g = #{x : e(x) = g}; the line side gives the same with b_g = #{y : f(y) = g}, so a_g = b_g. If a_g > 0, take x with
+e(x) = g and y with f(y) = g: the only walk left for the residue g is t(x) + l(y), so t is constant (= α_g) on
+P_g = {x : e(x) = g}. Hence a_g ≤ n_{α_g} ≤ P/(q+1).
+(ii) Two identities. Let N be the point–line incidence matrix, u_d, w_c the indicators of the lines with label d and of
+the points with label c, π_g and λ_g those of P_g and L_g = {y : f(y) = g}. By (i),
+N u_d = 1 − π_{−d} − w_{−d} and N^T w_c = 1 − λ_{−c} − u_{−c}. Applying N^T to the first and using the second,
+
+  (N^T N − I) u_d = q·1 + λ_d − μ,   μ = N^T π_{−d}.
+
+μ is a 0/1 vector with (q+1)a_{−d} ones (the points of P_{−d} all have label α_{−d}, so no line meets two of them).
+(iii) Spectrum. N^T N has eigenvalues (q+1)², 3q, q, 0 with the constants as the first eigenspace. Writing u_d in
+eigencomponents, N u_d minus its mean has squared norm 3q‖u_1‖² + q‖u_2‖² = 3q‖z_1‖²/(3q−1)² + q‖z_2‖²/(q−1)²,
+where z = λ_d − μ minus its mean. So
+
+  s(P − s)/P ≤ q/(q−1)² · (√(a_d(P − a_d)/P) + √(|μ|(P − |μ|)/P))² ≤ q/(q−1)² · (√(P/(q+1)) + √(P/4))²,
+
+where s = a_{−d} + n_{−d} is the number of zeros of N u_d (the left side is the variance of the 0/1 vector N u_d).
+(iv) Choice of d. Σ_d s_d = Σ a + Σ n = 2P over the q + 3 nonzero d, so some d has s ≥ 2P/(q+3); also
+s ≤ 2P/(q+1) ≤ P/2 by (i). So the left side is at least 2P(q+1)/(q+3)². For q ≥ 7 this exceeds the right side
+(`tight_j1_out.txt`: 0.160 P against 0.142 P at q = 7, 0.122 P against 0.068 P at q = 11). ∎
+
+*Consequence.* DGQ's (13,8) graph, if it is a lift of H(11) plus one matching with 15 copies, either uses walks that
+exist only for special matchings, or holonomy, or labels that waste walks (not one-miss: some point sees a residue
+twice or sees 0), or labels that repeat around a point. Optimization meets or passes q + 4 at small q (q = 2: 10 copies, q = 3: 7, lanneal);
+at q = 4, exact-cost annealing of 8 = q + 4 copies (C_7-symmetric, qanneal3/qanneal4) stops at J1_Q4 unreached orbits.
+
 ## 2. Conjectured, with strong evidence
 
 ### 2.1 The six cells and what the table allows elsewhere (`numerology_out.txt`)
@@ -257,7 +303,7 @@ Largest tested M with 0 unreached pairs (liftdiam, all sources unless "sampled")
 | j = 2, Z_5 × Z_k, polygon-cover Z_5 part, random Z_k (f5kh) | 15 (20: 12) | 10 (15: 10) | 10 (15: 178) | | |
 | j = 2, random Z_M, 300 label seeds (squad d5) | 20 (21: none of 300) | | | | |
 | j = 2, parallel hops (2-factor of the incidence graph) | 10 (14: 6) | | | | |
-| j = 2, annealing on the exact diameter (lanneal2) | | (20: run in progress) | | | |
+| j = 2, annealing on the exact diameter (lanneal2, finished by squad c3 on Oct 25) | | 20 (21: 36) | | | |
 | j = 1, random (models_j1 free/holo) | 4 (5: 4–10) | 4 (5: 10–16) | 4 (5: squad c6) | (9: ≈2.2M, sampled; squad d8) | q+4: 7, 8, 9, 11 |
 | j = 1, annealing on the exact diameter (lanneal) | 7 (8: 16) | (7, 8: run in progress) | | | |
 
@@ -328,17 +374,16 @@ labellings) and the class-0 count of §1.4 say that neither family alone, used i
   opposite elements carry exactly K − 1 values, two-to-one like a quadratic map. Squad card c2 annealed flag voltages
   towards "≥ K − 1 distinct geodesic voltages for every opposite pair" and got nowhere near it (q = 4, K = 4: 13.8%
   of opposite pairs still short; q = 5, K = 5: 36%), and no natural such holonomy is known.
-- **A partial design that produces the "+2" (2026-10-25).** In a polygon cover × Z_K lift with zero holonomy, the
-  Z_5-classes −1 and −2 are reached by the guaranteed walks of §1.2: the labels −λ_k(b) of the q+1 lines b through x,
-  the labels −τ_k(a) of the q+1 points a on y, two composite walks (class −1: τ_1(x) − λ_2(s_1 x) and
-  λ_1(y) − τ_2(s_1^{-1} y)) and the cross terms. Suppose the Z_K-labels of matching 1 come from colourings with
-  r = ⌊(q+1)/2⌋ colours C such that the lines through every point and the points on every line carry every colour
-  exactly twice ("two-to-one" colourings). Then the two neighbourhood families give exactly −C in class −1, and
-  making both composites constant (τ_2 = τ_1 − m_2, λ_2 = λ_1 − m_1, which fixes s_2 = s_1∘π for a label-shifting
-  permutation π of the points) adds the two values m_1, m_2 = Z_K \ (−C). So class −1 is covered for every pair
-  exactly when K = r + 2 = ⌊(q+5)/2⌋, DGQ's factor. But the same choice covers class −2 only up to the single value
-  m_1 + m_2, and classes 0, +1, +2 need other walks (holonomy or cancelling walks). It explains the shape of the
-  formula, not the construction; it is untested.
+- **A tempting design for the "+2" fails (2026-10-25).** In a polygon cover × Z_K lift with zero holonomy, the Z_5-class
+  −1 is reached by guaranteed walks (§1.2): the labels −λ_1(b) of the q+1 lines b through x, the labels −τ_1(a) of
+  the q+1 points a on y, two composite walks τ_1(x) − λ_2(s_1 x) and λ_1(y) − τ_2(s_1^{-1} y), and one cross term. If
+  the labels of matching 1 come from "two-to-one" colourings with r = ⌊(q+1)/2⌋ colours C (every point sees every
+  colour on exactly two of its lines, every line on exactly two of its points), both neighbourhood families give
+  exactly −C, and the two composites would add the missing two values if both were constant, which would make
+  K = r + 2 = ⌊(q+5)/2⌋, DGQ's factor. But both composites constant means τ_2 = τ_1 − m_2 and λ_2 = λ_1 − m_1, and
+  τ_2, λ_2 must have the same distribution, so C would be invariant under the shift m_1 − m_2 ≠ 0: impossible in
+  Z_K for |C| < K. With one composite constant this design covers class −1 for K = r + 1 only. The shape
+  "⌊(q+1)/2⌋ + 2" stays unexplained.
 - (q+3) | P only for q ∈ {4, 11} among prime powers ≤ 13 (§1.3).
 - (6,7) = |GH(5)| + 4·5³ − 2 and (8,7) = |GH(7)| + 4·7³ − 2 (Δ = q+1): a DGQ D = 7 construction adding 4q³ − 2
   vertices to H(q) at the same degree. Not reproduced.
