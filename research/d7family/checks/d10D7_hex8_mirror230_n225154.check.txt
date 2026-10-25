@@ -1,0 +1,18 @@
+# (10,7) n = 225,154 = 3*74,898 + 2*230 (job d7-family, 2026-10-25). Table 224,694; master 225,152 (mirror229).
+# Construction: research/cell147/mirror/README.md (mirrored surgery, 3 copies of H(8), r = 1) with a 230-point mirrored
+# set: base R217 + 13 extra points (squad d7fam-r1 card c5: mirror_sa6 annealing from state_q8_F12 with the full line
+# pool, --m 16 --sample 400, T 0.1, seed 101). Configuration research/d7family/configs/state_q8_F13.npz.
+# Solution: research/frontier/sols/d10D7_hex8_mirror230_n225154.sol (sha256 51cec223e394e9667609e6d95178bf102f57293577156476299c070ac9348a7e)
+# Rebuild: hex_q8.bin = research/d13D7/hexgen2.c 8 (sha256 66a11ff04cfeb03d5e64b490352da1662717dd2be4f6025e358b297c0ee486e5);
+#   cc -O2 -fopenmp -o research/d13D7/multi research/d13D7/multi.c
+#   python3 research/d13D7/tools/multi_sol.py build research/frontier/sols/d10D7_hex8_mirror230_n225154.sol hex/hex_q8.bin g.edges
+#   edge list sha256 bd399bdd7eaaaeffae99dce0093068149688aec0c12aa7eb5ada48d69bd7388c (rebuild byte-identical)
+# (the .sol was exported from the graph built by: mirror_build3.py state_q8_F13.npz 1 cfg hex_q8.bin S_q8.npy;
+#  DUALFILE=cfg/sigma.txt RFILE=cfg/R.txt NOCHECK=1 multi hex_q8.bin 1 1 g.edges)
+# mirror_build3.py: |R'| = 230 (dropped 0 of the base set, added 13), distance-4 pairs 261, types used 71
+-- apsp_mt (research/lifts/coordinator_check/apsp_mt.c), BFS from every vertex, no symmetry, 2 threads:
+n=225154 edges=1125770 degree min=10 max=10 bipartite=yes diameter=7
+RESULT VALID d=10 D=7 n=225154
+-- apsp_w (research/d7family/apsp_w.c), same graph:
+n=225154 edges=1125770 degree min=10 max=10 bipartite=yes diameter=7 (BFS from all 225154 vertices)
+RESULT VALID d=10 D=7 n=225154
