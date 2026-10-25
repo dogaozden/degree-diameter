@@ -9,6 +9,7 @@
  *   OSTAB=1: annealing energy counts uncovered alpha-orbits (each uncovered x weighs |Stab(x)|), generalising ORBW=k.
  *   NEARDUMP=c (with RANDORB): print S and the uncovered elements of every sample of cost <= c (cost 0: solutions).
  *   UNCPRINT=1: at the end of an unsolved run, list the uncovered elements of the best S with their alpha-orbit sizes.
+ *   SCANSUB=1 (with CKPT and OSUB): try every orbit of size OSUB in the sub slot of the checkpointed S; write a solution.
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -1206,6 +1207,24 @@ exdone:
     long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
 #define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
     fprintf(stderr, "start cost=%lld\n", c);
+    if (getenv("SCANSUB") && OSUB) {   /* haar_order2: try every sub-orbit in the OSUB slot of the (resumed) S */
+        long long tried = 0, found = 0; double ts = now(); char *seen = calloc(N, 1);
+        for (long long q = 0; q < NSUB && !found; q++) {
+            int x = SUBL[q]; if (seen[x]) continue;
+            int o[MAXD]; o[0] = x; seen[x] = 1; for (int i = 1; i < OSUB; i++) { o[i] = alpha(o[i - 1]); seen[o[i]] = 1; }
+            int ok = 1; for (int i = 0; i < OSUB && ok; i++) for (int u = 0; u < subst(); u++) if (S[u] == o[i]) { ok = 0; break; }
+            if (!ok) continue;
+            uint32_t *tf[MAXD], *ti[MAXD]; memcpy(tf, TF, sizeof(uint32_t *) * d); memcpy(ti, TI, sizeof(uint32_t *) * d);
+            for (int i = 0; i < OSUB; i++) { mktab(o[i], OTF[0][i], OTI[0][i]); tf[subst() + i] = OTF[0][i]; ti[subst() + i] = OTI[0][i]; }
+            long long bound = 1; double sc; long long r = cost_any(C[0], tf, ti, &sc, NULL, &bound, 0); tried++;
+            if (r == 0) { found = 1; for (int i = 0; i < OSUB; i++) { int u = subst() + i; S[u] = o[i]; SI[u] = ginv(S[u]); mktab(S[u], TF[u], TI[u]); }
+                          fprintf(stderr, "SCANSUB: sub-orbit %lld gives cost 0\n", tried); }
+            if (tried % 200 == 0) fprintf(stderr, "SCANSUB %lld tried, %.0f s\n", tried, now() - ts);
+        }
+        fprintf(stderr, "SCANSUB done: %lld sub-orbits tried in %.1f s, solution %s\n", tried, now() - ts, found ? "found" : "none");
+        if (found) return check_and_write(C[0], out) ? 0 : 1;
+        return 1;
+    }
     int nslots = OM + (OF > 1 ? OF - 1 : 0) + (OSUB ? 1 : 0);
     char obuf[96]; int OABORT = getenv("ABORT") ? atoi(getenv("ABORT")) : 1;
     while (!stop_flag && ONOW - t0 < secs && best > 0 && (!OMAXSTEPS || steps < OMAXSTEPS)) {
