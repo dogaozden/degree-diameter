@@ -113,3 +113,19 @@ Note: the group has |Fix(α)| = 71 and α is found by haar_sym's random search (
 - prod psl 7 × psl 19 × Z7 (N 4,021,920, μ 33.2), seeds 1, 2.
 - prod psl 3 × psl 25 × Z43 (N 4,024,800, μ 33.5), seed 1.
 - prod psl 3 × sl 19 × Z49 (N 4,021,920, μ 33.2), seed 1.
+
+### Batch 2 interim (stopped early)
+- prod psl 3 × psl 25 × Z43 (seed 1): best 9 after 2.4e5 evals. Stopped at 2,000 s.
+- prod psl 3 × sl 19 × Z49 (seed 1): best 11 after 2.7e5 evals. Stopped at 2,000 s.
+- prod psl 7 × psl 19 × Z7 (seeds 1, 2): cost 3 plateau at 4e5 evals, same wall as batch 1. Running to 5,400 s.
+
+## Round 2, batch 3: k = 7 (new route; round 1 used k = 3 only)
+Reason: with k = 3 and Δ = 8 the two fixed letters (f = 2) must lie in C(α), an abelian torus, so they commute and their words
+collide. That is the probable source of the cost-3 wall at μ 31–33 in every group tried. k = 7 gives Δ = 1 + 7 (f = 1: only e),
+so no commuting fixed pair. The price is |Fix(α)|·e^(−λ/7) fixed-point misses, so the group must have a small centralizer of α.
+- Screen (tools/orb_screen.py … "7 1 1" --list) lists many groups where α cannot exist (7 ∤ |Q|). Filtered to 7 | |Q|:
+  - prod psl 7 × sl 7 × Z71 (N 4,007,808, μ 31.7): smoke test |Fix| = 97, expected misses ≈ 18. Rejected.
+  - psl 13 × Z3683 (N 4,021,836, μ 33.2): |Fix| = 6, expected misses ≈ 1.3. Best candidate. Cyclic factor is big (29 · 127), so
+    mixing is the risk. 40-second smoke test: cost 1996, far from the k = 3 starts, so a long run is needed to judge.
+  - pgl/sl 13 × Z1849 (N 4,038,216 family), psl 13 × Z3697 (N 4,037,124): same idea, not run yet.
+- Runs: psl 13 × Z3683, k = 7, f = 1, seeds 1 and 2, 5,400 s each.
