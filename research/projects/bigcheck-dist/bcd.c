@@ -241,7 +241,8 @@ static void uf_union(uint32_t a, uint32_t b) { a = uf_find(a); b = uf_find(b); i
 static int nauts;
 
 static void check_perm_bijection(const uint32_t *p, int64_t len) {
-    uint8_t *seen = calloc(len, 1);
+    if (len <= 0 || len > 4000000000LL) die("bad permutation length");
+    uint8_t *seen = calloc((size_t)len, 1);
     for (int64_t i = 0; i < len; i++) { if (p[i] >= len || seen[p[i]]) die("automorphism is not a permutation"); seen[p[i]] = 1; }
     free(seen);
 }
@@ -343,7 +344,8 @@ static void load_lift(const char *path, char hex[65]) {
     }
     if (GK) { bsel = malloc(sizeof(gel) * (2 * E ? 2 * E : 1)); for (int64_t i = 0; i < 2 * E; i++) bsel[i] = gdec(ba[i]); }
     /* bipartite base */
-    int8_t *col = malloc(NB); memset(col, -1, NB); uint32_t *qq = malloc(sizeof(uint32_t) * NB); bip = 1;
+    if (NB <= 0 || NB > 4000000000LL) die("bad NB");
+    int8_t *col = malloc((size_t)NB); memset(col, -1, (size_t)NB); uint32_t *qq = malloc(sizeof(uint32_t) * (size_t)NB); bip = 1;
     for (int64_t s = 0; s < NB; s++) {
         if (col[s] >= 0) continue;
         int64_t h = 0, t = 0; col[s] = 0; qq[t++] = (uint32_t)s;
