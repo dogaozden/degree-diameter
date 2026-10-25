@@ -173,6 +173,7 @@ psl 79 × Z37 with plain S reached cost 3 (one uncovered orbit or fixed point) a
 - Verification so far:
   - haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
   - `research/structured/tools/haarcheck_psl` (low-memory PSL checker, orbq.sh): VALID d=15 D=8.
-  - build_haar2.py: running at the time of this entry (`runs/raise_d15D8_r2/verify/psl79_37_s7.build_haar2.txt`).
+  - build_haar2.py: VALID d=15 D=8, ecc 8 from both sides, 0 unreached, edge-list sha256 `3603a869bf5961200d0d34a4354e6f574d84e4d09d3ea1cf075234103a57f35b` (same as haar_sym's log). `runs/raise_d15D8_r2/verify/psl79_37_s7.build_haar2.txt`.
+- **Standing (15,8) record for this branch: 18,239,520.**
 - Saved as `research/frontier/sols/d15D8_psl_79_37_orb3f0_s7.txt` (run log `runs/raise_d15D8_r2/out/e/d15D8_psl_79_37_orb3f0_s7.log`).
 - Gain over the round-1 bar 18,156,528: +83,000 vertices (+0.46 %).
