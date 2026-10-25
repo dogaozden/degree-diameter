@@ -1,0 +1,23 @@
+group prod psl 13 psl 13 x Z_3, N=3577392, identity 255762, H order 42, rows 85176, threads 1, setup 0.33s
+wide rows: HW order 91, rows 39312, setup 0.45s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(2,6,6,12) (index 331), z -> 2 z on Z_3
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 64.29, mu/k = 10.71, fixed-point misses ~ 0.97
+start cost=165
+t=30 steps=255 evals=2041 cost=36 best=36 T=0.53
+t=60 steps=537 evals=4297 cost=36 best=36 T=0.19
+t=90 steps=869 evals=6953 cost=28 best=28 T=0.15
+t=120 steps=1222 evals=9777 cost=15 best=15 T=0.15
+t=150 steps=1560 evals=12481 cost=15 best=15 T=0.15
+t=180 steps=1919 evals=15353 cost=15 best=15 T=0.15
+t=211 steps=2265 evals=18121 cost=15 best=15 T=0.15
+t=241 steps=2597 evals=20777 cost=15 best=15 T=0.15
+t=271 steps=2954 evals=23633 cost=15 best=15 T=0.97
+t=301 steps=3304 evals=26433 cost=15 best=15 T=0.34
+t=331 steps=3655 evals=29241 cost=15 best=15 T=0.15
+t=361 steps=4005 evals=32041 cost=15 best=15 T=0.15
+t=391 steps=4324 evals=34593 cost=15 best=15 T=0.15
+t=421 steps=4584 evals=36673 cost=34 best=15 T=0.96
+t=451 steps=4840 evals=38721 cost=29 best=15 T=0.34
+t=481 steps=5141 evals=41129 cost=29 best=15 T=0.15
+t=511 steps=5484 evals=43873 cost=12 best=12 T=0.15
+t=541 steps=5807 evals=46457 cost=8 best=8 T=0.15

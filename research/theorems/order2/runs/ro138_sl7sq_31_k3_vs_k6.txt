@@ -1,0 +1,5 @@
+alpha: conj by prod[mat(2,4,0,4);mat(2,0,3,4)] (index 40078), z -> 5 z on Z_31
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 35 (+e); mu = 49.36, mu/k = 16.45, fixed-point misses ~ 0.87
+RANDORB d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 k=3 m=4 f=1 fix=35 samples=200 min=25 p1=33 p10=51 median=82 mean=734.94 var=31753418.3 mu=49.36 time=1.7
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 49.36, mu/k = 8.23, fixed-point misses ~ 0.93
+RANDORB d=13 D=8 group=prod sl 7 sl 7 x Z_31 N=3499776 k=6 m=2 f=1 fix=5 samples=200 min=30 p1=41 p10=57 median=110 mean=822.97 var=7035560.0 mu=49.36 time=1.9
