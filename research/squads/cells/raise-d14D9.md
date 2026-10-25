@@ -7,6 +7,11 @@ Round-1 solution files and logs are copied into this branch unchanged.
 
 ## Round 2 result so far
 
+**Current record: 117,993,600 vertices** = 2N, N = 58,996,800 = |SL(2,4) × SL(2,16) × Z_241|, orbit search k = 3, m = 4,
+f = 2, seed 2, 5,385 evaluations (1,752 s, μ = 18.43, |Fix| = 44). Solution `research/frontier/sols/d14D9_prod_sl_4_16_241_orb3_s2.txt`,
+sha256 of the file in the sols folder (same content as the spool file), checked by `tools/haarcheck_prod.py` (VALID).
+Earlier round-2 records: 117,895,680 (prod sl 7 × sl 16 × Z43, seed 2) and 117,976,320 (prod sl 7 × sl 11 × Z133, seed 2).
+
 **New record: 117,895,680 vertices** = 2N, N = 58,947,840 = |SL(2,7) × SL(2,16) × Z_43| (GF(16) as x^4+x+1), orbit search
 k = 3, m = 4, f = 2, seed 2, 785 evaluations (112 s, μ = 18.19, |Fix| = 89). Solution file
 `research/frontier/sols/d14D9_prod_sl_7_16_43_orb3_s2.txt`, sha256 eadaab3df868f0594d62f183c153ce9af8c35c520ed72b3c5796fad8178c8555.
@@ -26,12 +31,14 @@ Seed 1 on the same group was stopped after 92 s (same N, cannot raise the record
 | prod sl 8 × sl 9 × Z163 | 59,149,440 | 19.21 | 1 | not solved: best 2, 8,993 evals |
 | prod sl 7 × sl 11 × Z133 | 58,988,160 | 18.39 | 1 | not solved: best 6, 21,761 evals |
 | prod sl 8 × sl 49 × Z1 | 59,270,400 | 19.84 | 1 | not solved: best 2, 15,385 evals |
+| prod sl 7 × sl 11 × Z133 | 58,988,160 | 18.39 | 2 | **SOLVED** at 3,473 evals (547 s) → record 117,976,320 |
+| prod sl 4 × sl 16 × Z241 | 58,996,800 | 18.43 | 2 | **SOLVED** at 5,385 evals (1,752 s) → record 117,993,600 |
 
 Runs still in progress at this commit: prod sl 8 × sl 9 × Z163 seed 2, prod sl 8 × sl 49 × Z1 seed 2, prod sl 4 × sl 16 × Z241 seed 2, prod sl 7 × sl 11 × Z133 seed 2.
 
 Observation so far: the seed-2 solve came fast (785 evals), while the other runs in the same family stalled at cost 2–8 for 10–20k evals. A seed-1 run on the record group also stalled at cost 3 after 1,137 evals, so the solve is seed luck as much as group quality.
 
-Next target: any group with N > 58,947,840 (queue items 12–14 and the screen list below).
+Next target: any verified group with N > 58,996,800.
 
 ## Round 2 plan (started 2026-10-25, about 15:00 UTC)
 

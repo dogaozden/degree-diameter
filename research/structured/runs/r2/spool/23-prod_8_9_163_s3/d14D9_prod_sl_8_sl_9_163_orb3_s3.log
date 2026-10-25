@@ -1,0 +1,29 @@
+group prod sl 8 poly x^3+x+1 sl 9 poly x^2+1 x Z_163, N=59149440, identity 6583896, H order 56, rows 1056240, threads 1, setup 5.79s
+wide rows: HW order 163, rows 362880, setup 10.86s
+alpha: conj by prod[mat(0,4,7,1);mat(0,6,6,1)] (index 18046), z -> 58 z on Z_163
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 161 (+e); mu = 19.21, mu/k = 6.40, fixed-point misses ~ 2.23
+start cost=82tt=34 steps=7 evals=57 cost=16 best=16 T=0.47tt=67 steps=14 evals=113 cost=18 best=16 T=0.15tt=101 steps=21 evals=169 cost=18 best=16 T=0.1t=t=132 steps=28 evals=225 cost=18 best=16 T=0.1t=t=165 steps=36 evals=289 cost=18 best=16 T=0.1t=t=196 steps=43 evals=345 cost=18 best=16 T=0.1t=t=229 steps=51 evals=409 cost=18 best=16 T=0.1t=t=260 steps=58 evals=465 cost=18 best=16 T=0.1t=t=292 steps=65 evals=521 cost=18 best=16 T=0.1t=t=325 steps=72 evals=577 cost=18 best=16 T=0.1t=t=358 steps=80 evals=641 cost=18 best=16 T=0.15tt=389 steps=87 evals=697 cost=18 best=16 T=0.15
+t=423 steps=95 evals=761 cost=18 best=16 T=0.15
+t=454 steps=102 evals=817 cost=11 best=11 T=0.15
+t=487 steps=109 evals=873 cost=11 best=11 T=0.15
+t=519 steps=116 evals=929 cost=11 best=11 T=0.15
+t=553 steps=124 evals=993 cost=11 best=11 T=0.15
+t=584 steps=132 evals=1057 cost=11 best=11 T=0.15
+t=616 steps=140 evals=1121 cost=12 best=11 T=0.15
+t=648 steps=148 evals=1185 cost=12 best=11 T=0.15
+t=682 steps=156 evals=1249 cost=12 best=11 T=0.15
+t=713 steps=163 evals=1305 cost=12 best=11 T=0.15
+t=747 steps=171 evals=1369 cost=12 best=11 T=0.15
+t=777 steps=178 evals=1425 cost=12 best=11 T=0.15
+t=811 steps=186 evals=1489 cost=12 best=11 T=0.15
+t=841 steps=193 evals=1545 cost=12 best=11 T=0.15
+t=875 steps=201 evals=1609 cost=12 best=11 T=0.15
+t=905 steps=208 evals=1665 cost=12 best=11 T=0.15
+t=935 steps=215 evals=1721 cost=12 best=11 T=0.15
+t=968 steps=222 evals=1777 cost=12 best=11 T=0.15
+t=1002 steps=229 evals=1833 cost=12 best=11 T=0.15
+t=1036 steps=237 evals=1897 cost=12 best=11 T=0.15
+t=1069 steps=246 evals=1969 cost=12 best=11 T=0.15
+.15
+t=1074 steps=325 evals=2601 cost=14 best=14 T=0.15
+t=1107 steps=333 evals=2665 cost=14 best=14 T=0.15
