@@ -76,3 +76,21 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 File: research/frontier/runs/raise-d8D9/screen/screen_anyn_670801_676000.txt. Best p1 is prod psl 3 x psl 7 x Z333 (538),
 prod psl 3 x sl 8 x Z111 (185). Most entries have fixed sets in the thousands (n with factor 3). Nothing new is worth a
 run; the only plausible groups above 670,800 remain psl 47 x Z13 (p1 51) and prod psl 5 x psl 7 x Z67 (p1 105).
+
+## Final status (10:55): stopped; record 1,341,600 vertices (sl 25 x Z43, N 670,800)
+Records this session (each verified by haar_sym's full check, build_haar2.py and check_haar_indep.py):
+1. prod sl 8 x sl 11 (N 665,280, mu 27.1): 1,330,560 vertices, run b2 seed 2 (2,630 s).
+2. sl 25 x Z43 (N 670,800, mu 29.7): 1,341,600 vertices, run b4 seed 1 (768 s). Current record.
+
+Unsolved above the current record (N > 670,800), one-hour runs with ORBIT "3 2 2":
+- psl 47 x Z13 (N 674,544, mu 31.5): seeds 3, 8, 9 -> best 5, 6, 6 (3.6M evals each). The plateau holds across seeds.
+- prod psl 5 x psl 7 x Z67 (N 675,360, mu 32.0): best 15.
+- sl 17 x Z139 (N 680,544, mu 34.7): best 12.
+- pgl 17 x Z139 (N 680,544, mu 34.7): best 21.
+- prod sl 3 x psl 11 x Z43 (N 681,120, mu 35.1): best 12.
+Wider screen (--anyn, 670,801-676,000): nothing with a random-S tail near the groups that solved.
+
+Why I stopped: the solved groups had mu 27-30, the unsolved ones mu 31-35. Costs plateau within each hour. The
+remaining candidates above 670,800 need either much more compute per group or a different structure (other alpha, k = 2,
+or SL(3,q) / larger centralizer families, see STRUCTURE.md section 7). I did not try those. Next step for the coordinator:
+decide whether a longer or bigger-model run on psl 47 x Z13 or an alpha/structure change is worth it.
