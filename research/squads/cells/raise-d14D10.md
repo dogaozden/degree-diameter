@@ -25,6 +25,14 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 | 668,489,640 | 1,336,979,280 | 23.0 | PSL(2,169) x Z_277 |
 | 663,373,728 | 1,326,747,456 | 20.0 | A4 x PSL(2,137) x Z_43 (product, small first factor) |
 
+## Result so far
+
+- **RAISED: (14,10) >= 1,327,956,432** (was 1,326,627,120, +1,329,312, +0.10 %). PSL(2,263) x Z_73, N = 663,978,216,
+  orbit k=3, m=4, f=2, mu = 20.3, solved in 153 evals (215 s, 4 threads, seed 2). Solution:
+  research/frontier/sols/d14D10_psl_263_73_orb3_s2_n1327956432.txt. Checks: research/structured/runs/d14D10_psl_263_73_orb3_s2.lowmem.txt
+  (tools/haarcheck_psl, independent low-memory BFS from both sides, VALID d=14 D=10, ecc 10). build_haar2.py not run
+  (above its memory limit); the coordinator re-checks.
+
 ## Log
 
 - probe 1: SL(2,151) x Z_193 (N = 664,460,400, mu = 20.6), FAST=1, THREADS=4, 600 s: 745 evals (about 0.8 s each,
@@ -32,3 +40,6 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   RSS 9.4 GB during the search: one run at a time.
 - queue 1 (runs/jobs1.txt, orbq.sh, 3000 s per job, seed 2): PSL(2,263) x Z_73, SL(2,151) x Z_193, PSL(2,157) x Z_343,
   SL(2,137) x Z_259. Started 07:29 UTC. Results appear in runs/ (logs) and are copied to research/frontier/sols/ if VALID.
+- PSL(2,157) x Z_343 (N = 663,659,724) is below the raised record: skipped (marker log in runs/).
+- queue 2 (jobs2.txt, chained after queue 1): PSL(2,199) x Z_169, SL(2,137) x Z_259, PSL(2,271) x Z_67.
+  Rule: only N above the current record is worth a run.
