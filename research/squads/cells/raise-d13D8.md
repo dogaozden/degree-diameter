@@ -55,3 +55,7 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
 - 10:10 UTC: round 2 started, ORBIT="3 4 1" ORBW=3 (uncovered fixed element weighs 3), seed 2, 7200 s:
   sl 43 x Z43 and prod psl 7 psl 11 x Z31.
 - Live logs are not tracked (ignored, runs/raise13/*.log); checkpoints are committed as *.snap.log.
+- 10:10 UTC: round 1 ended for psl 31 x Z229 (best 3, 1,234,185 evals) and prod sl 5 sl 16 x Z7 (best 4, 1,019,801 evals).
+  No solution in round 1 (all four groups).
+- 10:12 UTC: round 2b started, ORBIT="3 4 1" ORBW=3, seed 2, 7200 s: psl 31 x Z229 and prod sl 5 sl 16 x Z7.
+  Round 2 now has four runs (two started 10:10, two started 10:12).

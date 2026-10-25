@@ -1,0 +1,6 @@
+group prod sl 5 sl 16 poly x^4+x+1 x Z_7, N=3427200, identity 572880, H order 60, rows 57120, threads 1, setup 0.15s
+wide rows: HW order 238, rows 14400, setup 0.33s
+alpha: conj by prod[mat(3,1,2,1);mat(10,15,11,11)] (index 316955), z -> 2 z on Z_7
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 89 (+e); mu = 38.16, mu/k = 12.72, fixed-point misses ~ 2.01
+ORBW=3: an uncovered fixed element weighs 3; start energy 87
+start cost=87
