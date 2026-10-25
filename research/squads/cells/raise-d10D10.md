@@ -74,7 +74,7 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
   File `../../frontier/sols/d10D10_psl_61_281_orb5f0_ORBW5_s2.txt`. Checked by `tools/haarcheck_psl` (both BFS:
   diameter 10, all 31,882,260 elements reached) and by haar_sym's full check.
   Log: `../../structured/runs/raise-d10D10/d10D10_psl_61_281_orb5f0_ORBW5_s2.log`.
-  The same group with seed 1 and no ORBW was stuck at cost 1 after 27k evaluations; it was stopped at 08:39.
+  The same group with seed 1 and no ORBW ended at cost 1 after 38,217 evaluations (no solution, 2,499 s).
 
 ## Status log
 
