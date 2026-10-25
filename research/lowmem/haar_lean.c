@@ -32,7 +32,8 @@
  *      fixed points, the Poisson count that decides P(cost 0)), SOLFILE=f (cost + full check of a solution
  *      file's S, no search), BENCH=m (time m evaluations), ZMAX=t (reject candidate orbits whose z-spectrum
  *      A(S) = max_{xi != 0} |(1/d) sum_u e(xi z_u / n)| exceeds t; ZTRY tries, default 200; see zspec_with),
- *      DUMPUNC=c (with RANDORB: print the uncovered elements of samples with cost <= c, with torus/normaliser flags).
+ *      DUMPUNC=c (with RANDORB: print the uncovered elements of samples with cost <= c, with torus/normaliser flags),
+ *      PAIRS=q (with RANDORB: keep the first m-1 orbits for q samples in a row, to see how much a pair decides).
  * Build: gcc -O3 -march=native -fopenmp -o haar_lean haar_lean.c -lm
  */
 #include <stdio.h>
@@ -683,9 +684,14 @@ int main(int argc, char **argv) {
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m); double sm = 0, t1 = now();
         double *u = malloc(sizeof(double) * m), su = 0;   /* units = uncovered free alpha-orbits + uncovered fixed points */
         for (int t = 0; t < m; t++) {
-            for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){-1, -1, -1, -1 - ostart(j) - i, -1};
+            int pairs = getenv("PAIRS") ? atoi(getenv("PAIRS")) : 0;   /* PAIRS=q: keep orbits 0..m-2 for q samples in a row */
+            for (int j = 0; j < OM; j++) if (!(pairs > 0 && t % pairs != 0 && j < OM - 1))
+                for (int i = 0; i < OK_; i++) S[ostart(j) + i] = (el){-1, -1, -1, -1 - ostart(j) - i, -1};
             for (int fp = 0; fp < (FIXPRE > 0 ? FIXPRE : 1); fp++) {
-                for (int j = 0; j < OM; j++) { el o[MAXD]; random_orbit_z(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); } }
+                for (int j = 0; j < OM; j++) {
+                    if (pairs > 0 && t % pairs != 0 && j < OM - 1) continue;
+                    if (pairs > 0 && t % pairs == 0 && fp > 0 && j < OM - 1) continue;
+                    el o[MAXD]; random_orbit_z(j, o); for (int i = 0; i < OK_; i++) { int u = ostart(j) + i; S[u] = o[i]; SI[u] = ginv(o[i]); } }
                 if (FIXPRE <= 0 || (FIX2OK && FIXV == 2 && L5DEF < 0 ? fixcheck2(S, SI) : fixcheck(S, SI)) == 0) break;
             }
             for (int u = 0; u < d; u++) make_tables(S[u], TF[u], TI[u]);

@@ -1,0 +1,45 @@
+start 2026-10-25T15:50:41Z | ORBIT=5 3 0 ORBIT=5 3 0 FIXPRE=100 EARLYB=1 | haar_lean 15 10 10800 2 8 ../frontier/sols/d15D10_sl_109_991_orb5f0_s2_FIXPRE100_EARLYB1.txt sl 109 991
+group sl 109 x Z_991, N=1283265720, rows 11880 of 108019 bits (1688 words), memory 0.32 GB per thread, threads 1, setup 1.52s
+alpha: conj by mat(0,108,1,10), z -> 160 z on Z_991
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 109 (+e); mu = 37.86, mu/k = 7.57, fixed-point misses ~ 3.43
+start cost=26 (first eval 1.34s)
+t=39 steps=3 evals=25 cost=20 best=20 T=0.38
+t=77 steps=6 evals=49 cost=20 best=20 T=0.15
+t=113 steps=9 evals=73 cost=15 best=15 T=0.15
+t=147 steps=12 evals=97 cost=15 best=15 T=0.15
+t=184 steps=15 evals=121 cost=15 best=15 T=0.15
+t=222 steps=18 evals=145 cost=15 best=15 T=0.15
+t=257 steps=21 evals=169 cost=15 best=15 T=0.15
+t=294 steps=24 evals=193 cost=15 best=15 T=0.15
+t=329 steps=27 evals=217 cost=15 best=15 T=0.15
+t=370 steps=30 evals=241 cost=15 best=15 T=0.15
+t=406 steps=33 evals=265 cost=15 best=15 T=0.15
+t=443 steps=36 evals=289 cost=15 best=15 T=0.15
+t=480 steps=39 evals=313 cost=15 best=15 T=0.15
+t=519 steps=42 evals=337 cost=15 best=15 T=0.15
+t=551 steps=45 evals=361 cost=15 best=15 T=0.15
+t=583 steps=48 evals=385 cost=15 best=15 T=0.15
+t=618 steps=51 evals=409 cost=15 best=15 T=0.15
+t=654 steps=54 evals=433 cost=15 best=15 T=0.15
+t=687 steps=57 evals=457 cost=15 best=15 T=0.15
+t=722 steps=60 evals=481 cost=15 best=15 T=0.15
+t=759 steps=63 evals=505 cost=15 best=15 T=0.15
+t=797 steps=66 evals=529 cost=10 best=10 T=0.15
+t=834 steps=69 evals=553 cost=10 best=10 T=0.15
+t=865 steps=72 evals=577 cost=10 best=10 T=0.15
+t=898 steps=75 evals=601 cost=10 best=10 T=0.15
+t=931 steps=78 evals=625 cost=10 best=10 T=0.15
+t=972 steps=82 evals=657 cost=10 best=10 T=0.15
+t=1007 steps=85 evals=681 cost=10 best=10 T=0.15
+t=1042 steps=88 evals=705 cost=10 best=10 T=0.15
+t=1077 steps=91 evals=729 cost=10 best=10 T=0.15
+t=1109 steps=94 evals=753 cost=10 best=10 T=0.15
+t=1143 steps=97 evals=777 cost=10 best=10 T=0.15
+t=1174 steps=100 evals=801 cost=10 best=10 T=0.15
+t=1206 steps=103 evals=825 cost=10 best=10 T=0.15
+t=1243 steps=107 evals=857 cost=6 best=6 T=0.15
+t=1279 steps=110 evals=881 cost=6 best=6 T=0.15
+t=1315 steps=113 evals=905 cost=6 best=6 T=0.15
+t=1352 steps=116 evals=929 cost=6 best=6 T=0.15
+t=1387 steps=119 evals=953 cost=6 best=6 T=0.15
+t=1427 steps=122 evals=977 cost=6 best=6 T=0.15
