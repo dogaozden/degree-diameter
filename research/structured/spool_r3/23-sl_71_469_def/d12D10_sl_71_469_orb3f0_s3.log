@@ -1,0 +1,7 @@
+group sl 71 x Z_469, N=167826960, identity 2330930, H order 63, rows 2663920, threads 1, setup 3.76s
+wide rows: HW order 252, rows 665980, setup 10.54s
+alpha: conj by mat(37,69,29,33) (index 191374), z -> 37 z on Z_469
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 71 (+e); mu = 32.58, mu/k = 10.86, fixed-point misses ~ 0.42
+start cost=51
+t=32 steps=22 evals=177 cost=15 best=15 T=0.50
+t=62 steps=43 evals=345 cost=15 best=15 T=0.17
