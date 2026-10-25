@@ -116,3 +116,17 @@ The next attempts (ORBW=3 on psl 31 × Z79 and psl 23 × Z193, four 75-minute ru
 3. Above μ ≈ 33, the k = 3 orbit method with plain annealing plateaued in this session. Routes not tried here:
    ORBW weighting on the μ ≈ 38–42 groups beyond the final round, k = 5 orbits (fixed-point counts are large in the
    window, see SIZE_LAW), and metacyclic/voltage lifts (research/lifts/).
+
+## Final round: ORBW=3 at μ ≈ 38–40 (75 min each, unsolved)
+
+| group | N | μ | seed | best |
+|---|---|---|---|---|
+| psl 23 × Z193 | 1,171,896 | 38.7 | 2 | 9 (4.76 M evals) |
+| psl 31 × Z79 | 1,175,520 | 39.9 | 2 | 3 (5.75 M evals) |
+| psl 31 × Z79 | 1,175,520 | 39.9 | 3 | 6 (5.76 M evals) |
+| psl 31 × Z79 | 1,175,520 | 39.9 | 4 | 3 (5.74 M evals) |
+
+Stopped here. Total work this session: about 4.5 h of single-core search time on four cores, about 80 candidate runs
+(the full ladder over the 69 candidates in N = 1,118,881–1,200,000 at 4–15 min each, plus the 30–75 min follow-ups).
+The record is 2,298,240 vertices (N = 1,149,120). The cell's next rung needs either a larger compute budget at μ ≈ 33–36
+or one of the untried routes in "What a fresh session should do next". The coordinator may want a larger model for that.
