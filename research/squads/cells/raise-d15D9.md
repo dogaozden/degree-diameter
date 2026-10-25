@@ -1,0 +1,51 @@
+# Cell (Δ, D) = (15, 9): raise job raise-15-9, round 2 (branch claude/raise-d15d9-record-r2-0c41x5)
+
+Goal: beat our record 208,029,120 vertices, i.e. a Haar graph with N = |G| ≥ 104,014,561 (2N vertices). Table value
+168,016,334. Current record: SL(2,79) × Z211, N = 104,014,560, 15-regular, diameter 9
+(research/frontier/sols/d15D9_sl_79_211_orb3f0_s1.txt; orbit search, k = 3, m = 5, f = 0, 10,833 evals).
+
+Any VALID group just above that order is a new record, so the target is N ≥ 104,014,561, not a big jump. Round 1
+(branch claude/raise-d15d9-record-sx33j8, notes in research/squads/cells/raise-d15D9.md on that branch and in the
+runs/ logs copied here) tried five runs, all cut off around 400 s with cost still above 0; no solution. Its best open
+lead was prod SL(2,5) × SL(2,19) × Z127 at cost 14 (697 evals). Round 2 uses 2 h–3 h runs, since the record itself
+needed about 10⁴ evals.
+
+## Method (unchanged from round 1)
+
+- `haar_sym` (research/structured/haar_sym.c, built with `gcc -O3 -march=native -fopenmp`), `ORBIT="3 5 0"` (f = 0,
+  five free α-orbits of size 3, no identity), `THREADS=1`, K = 8, one process per core, `nice -n 5`.
+- Candidates from `tools/orb_screen.py 15 9 104014561 106500000 "3 5 0" --list --nmax 2000`, filtered to admissible
+  families: no PSL/PGL factors (involutions, odd D), no characteristic 2 (SL(2,2^e)), no SL(2,3) factor (α = −I
+  there, trivial), Z_n with all prime factors ≡ 1 mod 3. Lowest μ among the rest:
+
+  | group | N | μ | |Fix(α)| | notes |
+  |---|---|---|---|---|
+  | prod SL(2,5) × SL(2,13) × Z397 | 104,045,760 | 24.17 | 71 | round 1 cost 50 at 737 evals |
+  | prod SL(2,5) × SL(2,19) × Z127 | 104,241,600 | 24.92 | 107 | round 1 cost 14 at 697 evals (best lead) |
+  | SL(2,53) × Z703 | 104,623,272 | 26.45 | 53 | new |
+  | SL(2,41) × Z1519 | 104,628,720 | 26.47 | 41 | new |
+  | prod SL(2,5) × SL(2,11) × Z661 | 104,702,400 | 26.8 | | next |
+  | SL(2,47) × Z1009 | 104,709,984 | 26.8 | | next |
+  | SL(2,49) × Z889 (GF(49)) | 104,546,400 | 26.1 | 47 | needs a checker for non-prime q; round 1 cost 48 |
+
+- Verification: `haarcheck_prod` (products), `hcsl` + `hc2` (SL(2,p) × Z_n), `haarcheck_psl` (PSL). A VALID find is
+  saved to research/frontier/sols/d15D9_<spec>_orb3f0_s<seed>.txt only after both checks say VALID.
+
+## Round 2, wave 1 (started 14:28 container time, 3 h each, seed 1)
+
+Logs and solution files are in the scratchpad until verified; copies of the logs go to research/structured/runs/.
+
+| job | group | N | μ | |Fix| | status |
+|---|---|---|---|---|---|
+| w1a | prod SL(2,5) × SL(2,13) × Z397 | 104,045,760 | 24.17 | 71 | running |
+| w1b | prod SL(2,5) × SL(2,19) × Z127 | 104,241,600 | 24.92 | 107 | running |
+| w1c | SL(2,53) × Z703 | 104,623,272 | 26.45 | 53 | running |
+| w1d | SL(2,41) × Z1519 | 104,628,720 | 26.47 | 41 | running |
+
+## Notes for a resumed session
+
+- Each eval is about 0.45–0.5 s at N ≈ 1e8 on one core. 1e4 evals ≈ 1.4 h. Each 10× in evals ≈ +2.6 % in N
+  (SIZE_LAW §4.1, STRUCTURE §6), so the reachable μ at a fixed budget only moves slowly.
+- Seeds matter: (11,8) failed on seeds 1 and 2 and solved on seed 3 (STRUCTURE §7). A group that stalls at cost
+  1–3 for one seed is not necessarily dead.
+- Do not use `pkill -f` with a job name in your own command line: it kills the shell. Use `ps` and `kill <pid>`.
