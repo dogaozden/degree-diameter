@@ -42,8 +42,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
      cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
    - **(3,10):** no group of order 401–520 (except 512) gives a cubic Haar graph of diameter 10. The closest is
      SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative (cost 4).
-   - **(3,9) and (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table, since every N up to the Moore bound was
-     scanned.
+   - **(3,7), (3,9), (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table. Every group up to the Moore bound
+     was scanned, and the family maxima are 140, 234, 506 and 660 vertices at D = 7–10.
 6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Every near miss in every cell is an affine-type group:
    an abelian normal subgroup F_q (or a product of two) with a cyclic or metacyclic group acting by multiplication
    (§3.1, §5).
@@ -231,11 +231,13 @@ How the bound and the truth scale with D (Δ = 3; N = |G|, half the vertex count
 | 10 | 1023 | 812 (Z29 ⋊ Z28) | 330 | 400 |
 
 The bound grows with D about as fast as the Moore limit, while the true maximum falls behind from D = 10 on. At
-D = 7 the bound alone already rules out a metacyclic Haar graph above the table.
+D = 7, for k ≤ 40, the bound alone rules out a metacyclic Haar graph above the table.
 
-**Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats (3,9) or (3,10). Every
-group with N up to the Moore bound (510 and 1023) was scanned exhaustively (`runs/frob_d3D9.txt`, `frob_d3D10.txt`),
-and the family maxima are 506 and 660 vertices.
+**Corollary (complete for this family).** No Haar graph of any Z_p ⋊_r Z_k (p prime) beats the table at
+D = 7, 9 or 10. At D = 8 the family stays at 234 against 256.
+- Every group with N up to the Moore limit (127, 255, 510, 1023) was scanned exhaustively
+  (`runs/frob_d3D{7,8,9,10}.txt`; `frobcover.py` confirms that every (p, k, r) is present).
+- The family maxima are 140, 234, 506 and 660 vertices.
 
 ### 2.4 No bounded-order metacyclic family covers a row (new)
 
