@@ -23,3 +23,8 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 
 ## Status
 - In progress. No new record yet.
+
+## Progress log
+- 07:49 start b1 (seed 1), b2 (seed 2): prod sl 8 x sl 11 x Z1, ORBIT "3 2 2", 3600 s each. b3: sl 16 x Z163, seed 1.
+- ~1500 s: b1 best cost 5 (1.88M evals), b2 best cost 5 (1.76M), b3 best cost 9 (1.79M). Not solved yet.
+- Group screen (random-S tails, samples 2000) is still running at this point.
