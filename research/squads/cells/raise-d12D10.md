@@ -43,3 +43,10 @@ sl 109×127, sl 233×13, psl 103×301.
 Remaining rung-1 jobs (sl 131×73, sl 103×151, sl 109×127, sl 233×13, psl 103×301) are still queued or running.
 Observation: the first three unsolved groups plateaued at best cost 2–3 after ~1,300 evals. Solved and unsolved runs
 at nearly the same μ look like a group effect, so the next rungs should screen groups before raising μ.
+
+Rung 1 finished (08:08 UTC): 1 solved, 9 unsolved (best costs 2–5 at μ ≈ 20–22, 900 s, 1–3k evals each):
+sl 79×331 (3), psl 137×127 (3), sl 139×61 (2), psl 293×13 (2), sl 131×73 (3), sl 233×13 (5), sl 109×127 (5),
+sl 103×151 (3), psl 103×301 (3). The one solve, psl 197×43, took 305 evals.
+
+Rung 2 (μ ≈ 25–32, 1500 s, seed 1) running: psl 127×163 (μ 29.8), psl 103×307 (μ 32.2), psl 113×229 (μ 25.1),
+sl 97×181 (μ 25.0). Then queued: psl 151×97 (μ 30.0), sl 101×163 (μ 32.9).
