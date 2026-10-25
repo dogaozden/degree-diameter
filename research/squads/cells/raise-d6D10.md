@@ -33,3 +33,19 @@ Reading: the record group solved in 7.4e4 and 2.1e5 evaluations (both at mu 23.6
 candidates has solved after 4–7·10⁶ evaluations. Random-S tails back this up: the record group's p1/p10 are
 16/37 against 36–63 / 132–202 for these. So group quality matters more than μ here, and the fit
 evals ≈ e^(μ/4.5) is too optimistic for these groups.
+
+### Batch 2 (07:52–08:55, same settings; RESTART=1 variants, longer runs)
+
+| group | N (2N) | mu | fix | runs | best cost | evals per run |
+|---|---|---|---|---|---|---|
+| prod psl 5 psl 5 x Z73 | 262,800 (525,600) | 24.3 | 8 | 3 (plain x2, RESTART x1) | 4 | 4–6e6 |
+| prod psl 5 sl 5 x Z37 | 266,400 (532,800) | 27.9 | 17 | 1 | 5 | 5.8e6 |
+| psl 17 x Z109 | 266,832 (533,664) | 28.4 | 8 | 7 (plain, ORBW=3, RESTART x5) | **1** in 5 runs, never 0 | 5–9e6 |
+| psl 19 x Z79 | 270,180 (540,360) | 32.2 | 8 | 1 | 3 | 9.7e6 |
+| psl 13 x Z247 | 269,724 (539,448) | 31.6 | 5 | 1 (stopped) | 15 | 4e6 |
+
+Cost 1 with fixed points (ORBW=3, energy 3) means exactly one α-fixed element uncovered. psl 17 reaches this
+state again and again, 5 times out of 7 runs, and never gets to 0. A single fixed point is missed with
+probability about e^(-λ/3) ≈ 0.05 per random S, so this is most likely the endgame barrier, not a structural
+impossibility. But it is the closest any run has come, so psl 17 gets the remaining compute.
+Diagnosing which element it is would need a haar_sym change (dump the uncovered codes at cost 1); not done.
