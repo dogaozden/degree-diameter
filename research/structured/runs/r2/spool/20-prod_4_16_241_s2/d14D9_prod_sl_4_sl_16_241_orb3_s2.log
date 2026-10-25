@@ -1,0 +1,65 @@
+group prod sl 4 poly x^2+x+1 sl 16 poly x^4+x+1 x Z_241, N=58996800, identity 11857200, H order 51, rows 1156800, threads 1, setup 2.17s
+wide rows: HW order 241, rows 244800, setup 3.98s
+alpha: conj by prod[mat(1,1,1,0);mat(10,15,11,11)] (index 72155), z -> 15 z on Z_241
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 44 (+e); mu = 18.43, mu/k = 6.14, fixed-point misses ~ 0.61
+start cost=51
+t=32 steps=15 evals=121 cost=23 best=23 T=0.50
+t=62 steps=29 evals=233 cost=23 best=23 T=0.17
+t=93 steps=44 evals=353 cost=9 best=9 T=0.15
+t=123 steps=58 evals=465 cost=9 best=9 T=0.15
+t=154 steps=73 evals=585 cost=9 best=9 T=0.15
+t=187 steps=89 evals=713 cost=9 best=9 T=0.15
+t=219 steps=103 evals=825 cost=9 best=9 T=0.15
+t=250 steps=119 evals=953 cost=9 best=9 T=0.15
+t=281 steps=135 evals=1081 cost=9 best=9 T=0.15
+t=311 steps=149 evals=1193 cost=9 best=9 T=0.15
+t=344 steps=164 evals=1313 cost=9 best=9 T=0.15
+t=374 steps=178 evals=1425 cost=9 best=9 T=0.15
+t=405 steps=193 evals=1545 cost=9 best=9 T=0.15
+t=436 steps=208 evals=1665 cost=9 best=9 T=0.15
+t=467 steps=222 evals=1777 cost=9 best=9 T=0.15
+t=499 steps=237 evals=1897 cost=9 best=9 T=0.15
+t=529 steps=250 evals=2001 cost=9 best=9 T=0.15
+t=561 steps=265 evals=2121 cost=6 best=6 T=0.15
+t=594 steps=280 evals=2241 cost=6 best=6 T=0.15
+t=625 steps=296 evals=2369 cost=6 best=6 T=0.15
+t=657 steps=311 evals=2489 cost=6 best=6 T=0.15
+t=688 steps=324 evals=2593 cost=6 best=6 T=0.15
+t=719 steps=334 evals=2673 cost=6 best=6 T=0.15
+t=752 steps=345 evals=2761 cost=6 best=6 T=0.15
+t=784 steps=354 evals=2833 cost=6 best=6 T=0.15
+t=814 steps=364 evals=2913 cost=6 best=6 T=0.15
+t=845 steps=374 evals=2993 cost=6 best=6 T=0.15
+t=878 steps=384 evals=3073 cost=6 best=6 T=0.15
+t=911 steps=395 evals=3161 cost=6 best=6 T=0.15
+t=943 steps=405 evals=3241 cost=6 best=6 T=0.15
+t=975 steps=416 evals=3329 cost=6 best=6 T=0.15
+t=1006 steps=426 evals=3409 cost=6 best=6 T=0.15
+t=1040 steps=436 evals=3489 cost=6 best=6 T=0.15
+t=1070 steps=446 evals=3569 cost=6 best=6 T=0.15
+t=1103 steps=457 evals=3657 cost=6 best=6 T=0.15
+t=1136 steps=468 evals=3745 cost=6 best=6 T=0.15
+t=1168 steps=478 evals=3825 cost=6 best=6 T=0.15
+t=1200 steps=488 evals=3905 cost=6 best=6 T=0.15
+t=1231 steps=498 evals=3985 cost=6 best=6 T=0.15
+t=1263 steps=508 evals=4065 cost=6 best=6 T=0.15
+t=1293 steps=518 evals=4145 cost=6 best=6 T=0.15
+t=1325 steps=529 evals=4233 cost=6 best=6 T=0.15
+t=1356 steps=539 evals=4313 cost=6 best=6 T=0.15
+t=1388 steps=549 evals=4393 cost=6 best=6 T=0.15
+t=1419 steps=560 evals=4481 cost=6 best=6 T=0.15
+t=1450 steps=570 evals=4561 cost=6 best=6 T=0.15
+t=1482 steps=581 evals=4649 cost=6 best=6 T=0.15
+t=1514 steps=592 evals=4737 cost=6 best=6 T=0.15
+t=1545 steps=603 evals=4825 cost=6 best=6 T=0.15
+t=1577 steps=615 evals=4921 cost=6 best=6 T=0.15
+t=1608 steps=625 evals=5001 cost=6 best=6 T=0.15
+t=1638 steps=634 evals=5073 cost=6 best=6 T=0.15
+t=1670 steps=645 evals=5161 cost=6 best=6 T=0.15
+t=1701 steps=655 evals=5241 cost=6 best=6 T=1.03
+t=1734 steps=666 evals=5329 cost=6 best=6 T=0.33
+RESULT d=14 D=9 group=prod sl 4 poly x^2+x+1 sl 16 poly x^4+x+1 x Z_241 N=58996800 best=0 evals=5385 time=1752.0 orbit k=3 m=4 f=2 fix=44
+full diameter check: OK
+wrote /home/user/degree-diameter/research/structured/runs/r2/spool/20-prod_4_16_241_s2/d14D9_prod_sl_4_sl_16_241_orb3_s2.txt
+UNCHECKED: > 20M vertices and no low-memory checker for prod
+haarcheck_prod (independent, tools/haarcheck_prod.py): VALID d=14 D=9 vertices=117993600, ecc(e,A)=9 ecc(e,B)=9
