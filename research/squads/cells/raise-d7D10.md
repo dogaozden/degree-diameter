@@ -113,5 +113,6 @@ The next attempts (ORBW=3 on psl 31 × Z79 and psl 23 × Z193, four 75-minute ru
 
 1. Rebuild the binaries (see Resume) and check the three records above with build_haar2.py before building on them.
 2. The current record is 2,298,240 (SL(2,7) × PSL(2,19), file `d7D10_prod_sl_7_psl_19_1_orb3_s2.txt`).
-3. Above μ ≈ 33, the orbit method with random S seems to be at its wall; other routes are the cost-sharing
-   orbit variants (ORBW), k = 5 with a small centralizer (none found for this order window), or lifts (research/lifts).
+3. Above μ ≈ 33, the k = 3 orbit method with plain annealing plateaued in this session. Routes not tried here:
+   ORBW weighting on the μ ≈ 38–42 groups beyond the final round, k = 5 orbits (fixed-point counts are large in the
+   window, see SIZE_LAW), and metacyclic/voltage lifts (research/lifts/).
