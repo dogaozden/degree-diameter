@@ -81,3 +81,18 @@ Same construction as 404,222 with a larger set of pairwise non-collinear points 
     file research/frontier/sols/d11D7_hex9_B2dualK3911_n406402.sol
 apsp (all pairs), 2026-10-24 23:4x UTC: n=406402 edges=2235211 degree min=11 max=11 bipartite=yes diameter=7,
 RESULT VALID d=11 D=7 n=406402. Edge list sha256 f0d850ede1cdb0425619e2b543be1b0085b3e4b6bbe2b21646e9530a61302010.
+
+## (10,7) 225,128: 217 freed pairs (squad round 5, card c4)
+
+Same construction as 224,962, but with a larger set of pairwise opposite points of H(8): 217 points
+(research/d10D7/sets/P8_r5c4_217.txt, sha256 afdff00e5b38fd5fa47acec8dfc96d5030443c5b0de099c4fee3056c7f6026b6,
+setcheck VALID). Card r5/c4 took the orbits of the order-3 subgroup of the norm-1 torus (order 513) of W(5,8) and ran a
+tabu search on the orbit graph, which gave 31 orbits (93 points). A k-fixed tabu search started from that set then
+grew it to 217. The 513-line spread is unchanged. n = 6·37,449 + 2·217 = 225,128.
+    B2PTS=sets/P8_r5c4_217.txt B2LINES=sets/L8_spread513.txt ./d7hex b2 hex/hex_q8.bin 1000 3 OUT.sol 6 1
+    file research/frontier/sols/d10D7_hex8_B2K217_n225128.sol (sha256 5b8448d0242bb376da25433dd44810c6fda0d2aeefd0609169f9686eae932935)
+d7hex's own hub test reported "same-side hub violations 2212". That test is conservative: it counts only hub-graph
+paths and ignores routes through the main graph. The all-pairs check below is what counts.
+apsp (all pairs), 2026-10-25 00:1x UTC: n=225128 edges=1125423 degree min=9 max=10 bipartite=yes diameter=7,
+RESULT VALID d=10 D=7 n=225128. Edge list sha256 ea850090549331d2396141cab45d7be422782623193f77e56cfe67a5d4107a07
+(`./d7hex edges hex/hex_q8.bin SOL g.edges` on the saved solution gives the same hash).
