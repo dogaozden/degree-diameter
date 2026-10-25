@@ -153,6 +153,8 @@ int main(int argc, char **argv) {
         for (int o = 0; o < NO; o++) { t_[j][o] = rnd() % KA; va_[j][o] = rnd() % K; }
     }
     for (int i = 0; i < NO * (q + 1); i++) vf[i] = rnd() % K;
+    int flags0 = getenv("FLAGS0") != NULL;
+    if (flags0) for (int i = 0; i < NO * (q + 1); i++) vf[i] = 0;
     if (init && !load_sol(init)) { fprintf(stderr, "cannot read %s\n", init); return 1; }
     DEG = q + 1 + R; NBX = C * 2 * N; bw = malloc(sizeof(int) * (size_t)NBX * DEG); ba = malloc(sizeof(int) * (size_t)NBX * DEG);
     NL = (int64_t)NBX * K; VIS = malloc(8 * NL); FR = malloc(8 * NL); NX = malloc(8 * NL);
@@ -160,6 +162,32 @@ int main(int argc, char **argv) {
     for (int o = 0; o < NO; o++) { SRC[o] = prep[o]; SRC[NO + o] = N + lrep[o]; }
     build_base();
     double t0 = omp_get_wtime();
+    if (getenv("ANALYZE")) {
+        /* failed (source, target) pairs by base distance in X (no lift) */
+        int *dist = malloc(sizeof(int) * NBX), *qq = malloc(sizeof(int) * NBX); long hist[32] = {0}, tot = 0;
+        cost_eval(D);  /* leaves VIS for the last batch only; redo per batch below */
+        for (int b0 = 0; b0 < NSRC; b0 += 64) {
+            int ns = NSRC - b0 < 64 ? NSRC - b0 : 64;
+            memset(VIS, 0, 8 * NL); memset(FR, 0, 8 * NL);
+            for (int i = 0; i < ns; i++) { int64_t s0 = (int64_t)SRC[b0 + i] * K; VIS[s0] |= 1ULL << i; FR[s0] |= 1ULL << i; }
+            for (int lev = 1; lev <= D; lev++) {
+                for (int v = 0; v < NBX; v++) { uint64_t *out = NX + (int64_t)v * K; const uint64_t *vis = VIS + (int64_t)v * K;
+                    for (int g = 0; g < K; g++) out[g] = 0;
+                    for (int s2 = 0; s2 < DEG; s2++) { const uint64_t *src = FR + (int64_t)bw[(int64_t)v * DEG + s2] * K; int a = ba[(int64_t)v * DEG + s2];
+                        for (int g = 0; g < K; g++) out[g] |= src[(g + a) % K]; }
+                    for (int g = 0; g < K; g++) out[g] &= ~vis[g]; }
+                for (int64_t x = 0; x < NL; x++) VIS[x] |= NX[x];
+                uint64_t *t = FR; FR = NX; NX = t;
+            }
+            for (int i = 0; i < ns; i++) {
+                int src = SRC[b0 + i]; for (int v = 0; v < NBX; v++) dist[v] = -1; int h = 0, t = 0; dist[src] = 0; qq[t++] = src;
+                while (h < t) { int x = qq[h++]; for (int s2 = 0; s2 < DEG; s2++) { int y = bw[(int64_t)x * DEG + s2]; if (dist[y] < 0) { dist[y] = dist[x] + 1; qq[t++] = y; } } }
+                for (int v = 0; v < NBX; v++) for (int g = 0; g < K; g++) if (!(VIS[(int64_t)v * K + g] >> i & 1)) { hist[dist[v] < 31 ? dist[v] : 31]++; tot++; }
+            }
+        }
+        printf("failed pairs %ld by base distance:", tot); for (int d = 0; d < 32; d++) if (hist[d]) printf(" d%d:%ld", d, hist[d]); printf("\n");
+        return 0;
+    }
     long long cur = cost_eval(D), best = cur;
     fprintf(stderr, "q=%d N=%d torus %d orbits %d; C=%d r=%d k=%d D=%d: lift %lld vertices (Δ=%d), %d sources; initial cost %lld [%.2fs/eval]\n",
             q, N, KA, NO, C, R, K, D, (long long)NL, DEG, NSRC, cur, omp_get_wtime() - t0);
@@ -167,7 +195,7 @@ int main(int argc, char **argv) {
     int NF = NO * (q + 1), NM = R * NO;
     for (long it = 1; it <= iters && best > 0; it++) {
         double T = T0 * (1.0 - (double)it / iters) + 1e-9;
-        int mv = rnd() % 100; int j = 0, o = 0, o2 = 0, old1 = 0, old2 = 0, idx = 0;
+        int mv = rnd() % 100; if (flags0 && mv < 60) mv = 60 + rnd() % 40; int j = 0, o = 0, o2 = 0, old1 = 0, old2 = 0, idx = 0;
         if (mv < 60) { idx = rnd() % NF; old1 = vf[idx]; vf[idx] = rnd() % K; if (vf[idx] == old1) vf[idx] = (old1 + 1) % K; }
         else if (mv < 80) { idx = rnd() % NM; j = idx / NO; o = idx % NO; old1 = va_[j][o]; va_[j][o] = (old1 + 1 + rnd() % (K - 1)) % K; }
         else if (mv < 92) { j = rnd() % R; o = rnd() % NO; old1 = t_[j][o]; t_[j][o] = rnd() % KA; }

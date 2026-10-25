@@ -30,6 +30,8 @@
  * Usage:
  *   bcd explicit EDGES d D [--aut FILE] [--part i/K] [--threads T] [--cert FILE] [--reps FILE] [--count]
  *   bcd lift SPEC d D [--part i/K] [--threads T] [--cert FILE] [--reps FILE] [--count]
+ * --cost stops every BFS after D levels, so "unreached" counts the vertices at distance > D (a search score; the
+ * certificate is then marked by "cost_mode 1" and bcd_merge.py refuses it).
  * --count stops after the orbit computation (prints the number of representatives); --reps writes the sorted
  * representative list (one per line; its sha256 is the reps_sha256 in every certificate).
  * Build: cc -O3 -march=native -fopenmp -o bcd bcd.c
@@ -371,7 +373,7 @@ int main(int argc, char **argv) {
     double t0 = now();
     if (!strcmp(argv[1], "explicit")) MODE = 0; else if (!strcmp(argv[1], "lift")) MODE = 1; else die("mode must be explicit or lift");
     const char *inpath = argv[2]; int dmax = atoi(argv[3]), DD = atoi(argv[4]);
-    const char *autpath = NULL, *certpath = NULL, *repspath = NULL; int64_t part = 0, K = 1; int count_only = 0;
+    const char *autpath = NULL, *certpath = NULL, *repspath = NULL; int64_t part = 0, K = 1; int count_only = 0, cost_mode = 0;
     for (int i = 5; i < argc; i++) {
         if (!strcmp(argv[i], "--aut") && i + 1 < argc) autpath = argv[++i];
         else if (!strcmp(argv[i], "--part") && i + 1 < argc) { if (sscanf(argv[++i], "%" SCNd64 "/%" SCNd64, &part, &K) != 2 || K < 1 || part < 0 || part >= K) die("bad --part i/K"); }
@@ -379,6 +381,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--cert") && i + 1 < argc) certpath = argv[++i];
         else if (!strcmp(argv[i], "--reps") && i + 1 < argc) repspath = argv[++i];
         else if (!strcmp(argv[i], "--count")) count_only = 1;
+        else if (!strcmp(argv[i], "--cost")) cost_mode = 1;
         else die("unknown option");
     }
     if (MODE == 1 && autpath) die("--aut is for explicit mode; lift automorphisms go in the spec");
@@ -413,6 +416,7 @@ int main(int argc, char **argv) {
         fprintf(cf, "bcd-cert 1\nversion %s\nmode %s\ninput_sha256 %s\naut_sha256 %s\nnauts %d\n", VERSION, MODE ? "lift" : "explicit", inhex, authex, nauts);
         if (MODE) fprintf(cf, "lift M %" PRId64 " NB %" PRId64 "\n", M, NB);
         fprintf(cf, "n %" PRId64 "\nedges %" PRId64 "\nmindeg %" PRId64 "\nmaxdeg %" PRId64 "\nbipartite %s\nd %d\nD %d\n", n, m_edges, mindeg, maxdeg, bip ? "yes" : "no", dmax, DD);
+        if (cost_mode) fprintf(cf, "cost_mode 1\n");
         fprintf(cf, "orbits %" PRId64 "\nreps_sha256 %s\npart %" PRId64 " %" PRId64 " %" PRId64 " %" PRId64 "\n", R, repshex, part, K, lo, hi);
         fflush(cf);
     }
@@ -432,6 +436,7 @@ int main(int argc, char **argv) {
 #pragma omp parallel for schedule(static)
             for (int64_t x = 0; x < n; x++) VIS[x] |= NX[x];
             uint64_t *tmp = FR; FR = NX; NX = tmp;
+            if (cost_mode && lev == DD) break; /* --cost: unreached = vertices at distance > D */
             if (lev > DD + 2) break; /* already too far; the unreached count below is then a lower bound */
         }
         int64_t un[64] = {0}; int anyun = 0;
@@ -449,6 +454,7 @@ int main(int argc, char **argv) {
     int ok = part_unreached == 0 && part_max <= DD;
     if (cf) { fprintf(cf, "part_max_ecc %d\npart_unreached %" PRId64 "\npart_status %s\nend\n", part_max, part_unreached, ok ? "OK" : "FAIL"); fclose(cf); }
     printf("part %" PRId64 "/%" PRId64 ": %" PRId64 " sources, max eccentricity %d, unreached %" PRId64 "  [%.1fs]\n", part, K, hi - lo, part_max, part_unreached, now() - t0);
+    if (cost_mode) { printf("COST %" PRId64 " (pairs (source, vertex) at distance > %d, summed over the %" PRId64 " sources of this part)\n", part_unreached, DD, hi - lo); return 0; }
     if (K == 1) {
         int valid = ok && bip && maxdeg <= dmax;
         printf("diameter=%d (all %" PRId64 " orbit representatives)\n", part_unreached ? -1 : part_max, R);

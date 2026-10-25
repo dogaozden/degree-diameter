@@ -36,6 +36,8 @@ def read_cert(path):
             srcs.append((int(t[0]), int(t[2]), int(t[4])))
         elif key == "part":
             head["part"] = tuple(int(x) for x in val.split())
+        elif key == "cost_mode":
+            raise SystemExit(f"{path}: made with --cost (a search score, not a check)")
         elif key in ("part_max_ecc", "part_unreached", "part_status"):
             tail[key] = val
         else:
