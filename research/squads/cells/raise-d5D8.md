@@ -94,3 +94,13 @@ Record entering round 2: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
 - Metacyclic × Z_n, n ≥ 2 (`enum_meta_cyc.py`): 1,631.
 - Screened with `screen.py`, 4,000 random S per group, 30 s on 4 cores. Best p1 is 20 (N = 4,887, Z_181 ⋊₃₉ Z_27 ... see TSV).
   Round 1 reported best p1 19–22 for N ≥ 4,881, so the pool is no better than round 1's.
+
+## Batch a1 (300 s, seed 1, K = 8, 4 workers): top 100 by screen, N = 4,884–4,900
+- Result: **0 solves**. Best cost 2 (2 groups), cost 3 (8), 4 (7), 5 (12), 6 (10), 7 (5), ...
+- Cost-2 groups: `4887 181 27 39` (Z_181 ⋊₃₉ Z_27) and `4896 51 96 5` (Z_51 ⋊₅ Z_96).
+- The top-100 list was 63 × N = 4,896 and 28 × N = 4,884. The canonical reduction is incomplete, so many entries are
+  probably the same group under different factorisations. A later pass should dedupe by an isomorphism test.
+- Tables: `research/squads/raise_d5D8/runs/screen_4881_4900.tsv` (all 2,207 groups) and `runs/a1.tsv`.
+
+## Batch a2 (1,800 s, seeds 2 and 3, K = 8): the two cost-2 groups of a1
+- Running at the time of this note; result below when the runs finish.
