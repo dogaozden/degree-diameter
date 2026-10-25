@@ -5,7 +5,9 @@ to continue.
 
 ## What is proved
 
-Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms
+30 of the README records without a Lean ✓ are kernel-checked (table in `STATUS.md`): 18 with their Lean files
+committed (`Axioms.lean`), and 12 large Haar cells whose generated files are not committed (`axioms_big.txt`,
+regenerate with `cells.txt`, compare with `manifests/`). Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms
 (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`). Three methods:
 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
@@ -45,7 +47,8 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- The cells still building or queued (see `STATUS.md`).
+- The cells still building when this was written: (16,9), (13,10), (14,10), streamed by `bigcell.py` one after
+  another (`/tmp/claude-0/work/chain.sh` in the session that started them).
 - Large SL cells (12,10), (15,9), (16,9), (13,10), (14,10): `bigcell.py CELL QUEUE LOG --need GB --clean` streams
   them through a running `poolq.py` (writes the batch modules a chunk at a time, deletes each source once built,
   and with `--clean` deletes the batch oleans and certificates after the axioms check). The generated sources take
