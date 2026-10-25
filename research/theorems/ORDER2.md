@@ -1,9 +1,11 @@
 # ORDER2: why an order-2 symmetry won at (6,8), and where even orders win
 
-Job "thm-order2", 2026-10-24, one Opus cloud session (4 cores). Branch `claude/thm-order2-symmetry-gap-4e2nmi`.
+Job "thm-order2", two Opus cloud sessions (4 cores each): 2026-10-24 (branch `claude/thm-order2-symmetry-gap-4e2nmi`,
+cut off by the usage limit) and 2026-10-25 (branch `claude/thm-order2-symmetry-wejgw7`, which carries both).
 Scripts, logs and saved outputs are in `order2/` (list in §7). Builds on `research/theory/BEYOND_RANDOM.md`
 (branch `claude/cd-theory-beyond-random-3ybyf2`) and on the table-squad log (`research/squads/LOG.md`, branch
-`claude/degree-diameter-table-squad-0xgp3g`).
+`claude/degree-diameter-table-squad-0xgp3g`). The second session added §2.7–2.8, §3.4–3.5, §5.5 and revised the
+short answer, §4 and §6; where it overturns a claim of the first session, the old text says so.
 
 Notation as in BEYOND_RANDOM: G of order N, S of size Δ, H(G,S) with edges (g,A) ~ (sg,B), ℓ = D − 1, W the number
 of binding words, λ = W/N, μ = N e^{−λ} (haar_sym's μ). α is an automorphism with α(S) = S, k its order, μ_A the
@@ -13,49 +15,67 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
 
 ## Short answer
 
-1. **The gap is "self-averaging".** BEYOND_RANDOM §4.2 computed the mean word loss of an involution,
+1. **Why order 2 beat order 3 at (6,8): order 3 runs out of sets.** Valid symmetric sets come in classes of
+   equivalent Haar graphs (S ↦ a·ψ(S)^{±1}·b, §2.7). On SL(2,25) at (6,8) the order-3 space (two orbits of 3) has
+   only **8,773 classes**. 10⁶ uniform samples hit every class about 114 times, so the census is complete: the best
+   class has cost 2 and no class has cost 0 (§3.4). Per set, order 3 is the *better* symmetry (fewer uncovered clumps,
+   as the rule says), but there are too few sets. The order-2 spaces (three orbits of 2) are much larger:
+   2.68·10⁶ classes for the Frobenius involution, of which exactly one is a solution, and 3.42·10⁷ for the
+   conjugation involution, of which about 40–60 are (17 valid sets in 10⁷ uniform samples, 14 distinct classes).
+   This makes the first session's point 3 exact. It replaces the twisted-cycle "charge" as the explanation.
+2. **The gap in BEYOND_RANDOM is "self-averaging".** BEYOND_RANDOM §4.2 computed the mean word loss of an involution,
    δ ≈ ρℓ²/8 with ρ ≥ 1/|Fix(β)|. For both (6,8) winners (ρ ≈ 1/24, ℓ = 7) that is about 25 % of the binding words,
    which would be fatal. The mean is right. What fails is the next step: "each even subword is an essentially fresh
    random element, so the loss is self-averaging". Each coincidence is one *twisted cycle* v·σ(v) of the graph, and
-   the same cycle acts at every position of every word. So the loss is carried by a few Poisson-distributed cycles,
-   and the short ones carry most of it:
-   - twisted 4-cycles: mean 0.16–0.5 per random symmetric S at (6,8). Each one multiplies the cost about 2–4 times
-     (measured);
-   - twisted 8-cycles: mean about 4. Each multiplies the cost by e^{0.10–0.16} (fitted; predicted e^{0.13});
+   the same cycle acts at every position of every word. So the loss sits in a few Poisson-distributed cycles,
+   and a solution simply avoids the short ones:
+   - twisted 4-cycles: mean 0.16–0.5 per random symmetric S at (6,8); none in any solution found;
+   - twisted 8-cycles: mean about 4.2; the 17 uniformly sampled conjugation solutions have 0.76 on average (eight
+     have none), as the n* law of §3.1 predicts (0.46);
    - twisted 12-cycles: mean 65–80, each nearly free (0.06 % of the words).
 
-   4-cycles carry half the mean loss and 8-cycles a third. A search simply avoids both. **Both (6,8) record sets have
-   no twisted 4-cycle and no twisted 8-cycle**, a class that holds about 4 % of random symmetric S (§3.1).
-2. **Even D matters.** At odd D each side's word set is also inverse-closed. Then β* is a symmetry of it, and every
-   element of Anti(β), at least N/|Fix(β)| of them, becomes an extra fixed target missed with probability ≈ e^{−λ/2}.
-   No choice of S avoids this. At even D the term is absent. Measured: elements of Anti(β) are missed at the generic
-   rate at even D (ratio 1.00–1.10) and 2–27 times more often at odd D (§3.2). That is why every k = 2 run at odd D
-   failed: squad rounds 1–2 at D = 5, (6,7), (6,9), (7,9) and (8,7).
-3. **Small Δ matters twice.** With Δ = 6, order 3 leaves only two orbits. Its orbit space at N ≈ 15,840 has about
-   e^{16} sets, which is at its first-moment ceiling. Order 2 gives three orbits, about e^{25} sets. Small Δ also keeps the
-   twisted 8-cycles few enough to avoid: their mean is ρΔ(Δ−1)³/8.
-4. **The fixed points are not the issue** at D = 8: 24 fixed points cost 24·e^{−λ/2} ≈ 1.1 missed elements.
-5. **Corrected rule** (§4). An involution β in ⟨α⟩ costs nothing beyond its fixed points at even D, as long as its
-   short twisted cycles are rare: Poisson means R_j = ρΔ(Δ−1)^{2j−1}/(4j) of order a few or less. It then pays only
-   for its long twisted cycles, a factor ≈ exp(λ Σ_{j > j*} R_j c_j) on μ_A, with
-   c_j = 2j(ℓ−2j+1)/(Δ(Δ−1)^{2j−1}). At odd D it also pays (|Fix(β)| + |Anti(β)|)(2/k) e^{−λ/2}. That is at least
-   2√μ for k = 2 (AM–GM with |Fix|·|Anti| ≥ N), and in practice much more.
-6. **Prediction tested: even orders win at even D when every involution in ⟨α⟩ has a large centralizer.** Order 6
+   BEYOND_RANDOM's estimate gives P(valid) ≈ e^{−72} for conjugation on SL(2,25); the measured value is e^{−13.3}.
+3. **What the twisted cycles do not do (second session).** The first session's rule charges a symmetry
+   Σ R_j(1 − e^{−x_j}) nats for avoiding its twisted cycles and read the four-way test at (6,8) as confirming it
+   (Frobenius 5/6 seeds, conjugation 2/6). The solution counts say otherwise. Measured P(valid) per random symmetric
+   set is 1.7·10⁻⁶ = e^{−13.3} for conjugation and 3.7·10⁻⁷ = e^{−14.8} for Frobenius. The charged rule predicted
+   e^{−23.8} and e^{−22.0}: about 10 and 7 nats too pessimistic, and in the wrong order. Conjugation has more
+   solutions, not fewer, although the annealer found the single Frobenius class more often. So the charge
+   is not a statement about how many solutions exist. The 5/6 against 2/6 anneal difference is not significant (Fisher
+   p = 0.12) and may be a landscape effect: the conjugation space has 118 near misses (cost 1–3) per 17 solutions in
+   10⁷ samples, the Frobenius space none (§3.4).
+4. **Even D matters for order 2, and odd D allows order 6 (second session).** At odd D each side's word set is
+   inverse-closed, so β* = ι∘β is a symmetry and every element of Anti(β) is a target whose words come in pairs:
+   missed at rate √p instead of p. The first session concluded that even orders are excluded at odd D. That holds for
+   k = 2 (order 3 always wins) and for conjugation-type involutions, but not in general. **σ-palindromic words always
+   land in Anti(β)**, on the image of the Lang map u ↦ β(u)⁻¹u (§2.8). For a tight, balanced involution
+   (|Fix(β)| = |Anti(β)| = √N) each Anti element gets about √λ extra shots, so it is missed at e^{−λ/2−√λ} rather
+   than e^{−λ/2}, and the Anti penalty nearly vanishes (§3.5). Measured at (12,7): Anti elements of the Frobenius
+   involution on SL(2,64) are missed only 1.7× as often as generic ones (predicted 1.9; without palindromes 41).
+   The formula also explains the first session's unexplained (6,9) numbers. Consequence: **at odd D an order-6
+   symmetry whose involution is tight and balanced has about half the uncovered clumps of order 3.** Three screens:
+   SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9) (§5.5).
+5. **The fixed points are not the issue** at D = 8: 24 fixed points cost 24·e^{−λ/2} ≈ 1.1 missed elements.
+6. **Corrected rule** (§4). Count uncovered clumps, μ_A = μ/k + Σ_H (fixed points of H at e^{−λ/|H|}) + [odd D]
+   (Anti elements of each involution at e^{−λ/2−π}, π = palindromic shots); prefer the symmetry with the smallest μ_A,
+   **provided its orbit space has enough classes**. Roughly, ln(#classes) must exceed μ_A by a margin. Twisted
+   cycles matter only through which sets are solutions, not how many. The rule ranks symmetries for an annealing
+   search. Its absolute P(valid) = e^{−μ_A} can be off by several nats (2.7 and 5.4 nats too pessimistic for the two
+   order-2 spaces at (6,8)), so at small N measure the space directly: 10⁷ samples cost 13 minutes.
+7. **Prediction tested: even orders win at even D when every involution in ⟨α⟩ has a large centralizer.** Order 6
    (the Frobenius x ↦ x² of GF(64), whose cube x ↦ x⁸ is an involution fixing SL(2,8)) on the (13,8) record group
    SL(2,64)×Z13:
    - 3 of 3 seeds solved, in 4,665, 9,625 and 37,185 evaluations;
    - order 3 needed 170,313 evaluations (one seed, BEYOND_RANDOM);
    - the rule predicted ≈ 10⁴ and 1.1·10⁵ (§5.1).
 
-   The old rule ("odd k is required") would have excluded order 6.
-
-   **New record Δ13·D8 = 6,999,552 vertices** (was 6,814,080, +2.7 %). Order 6 on SL(2,7)²×Z31, with
-   α(x₁, x₂, z) = (c x₂ c⁻¹, x₁, 6z) and c of order 3, ORBIT="6 2 1". Three independent checks passed: haar_sym's full
-   check, `research/frontier/build_haar2.py` (VALID, edge sha256 daf0ccf9…), and this job's `order2/check_np.py`
-   (VALID) (§5.2).
-7. **Where else order 2 should win:** by the rule, nowhere else in the current table. It needs D even, an order-3
-   space with only two orbits, and few twisted 8-cycles; (6,8) is the only such cell. Even orders above 2 need
-   Frobenius-type groups, which exist near the records only at (13,8) (§5.3).
+   **Record Δ13·D8 = 6,999,552 vertices** (first session; was 6,814,080, +2.7 %; harvested and cloud-checked by the
+   coordinator). Order 6 on SL(2,7)²×Z31, with α(x₁, x₂, z) = (c x₂ c⁻¹, x₁, 6z) and c of order 3, ORBIT="6 2 1".
+   Four independent checks passed (§5.2).
+8. **Where else:** order 2 only where order 3 is starved, i.e. Δ = 6 at small N; in the current table that is
+   (6,8) alone (§5.3). Order 6 at even D: (13,8) (done), (15,8) with orbits 6+6+3, (13,10) on SL(2,16)²×Z21.
+   Order 6 at odd D (new): Δ ≥ 12 with a tight balanced involution, best candidate (15,9) on SL(2,64)×Z403,
+   +1.5 % (§5.5). Results of this session's runs: RESULTS-SUMMARY.
 
 ---
 
@@ -127,6 +147,34 @@ of SL(2,q)×Z_n are far from balanced (|Fix| ≈ q, |Anti| ≈ q²). Frobenius o
   5–18 % higher at lengths 4 and 6 (§3.1), where words without a singleton orbit are common.
 - What is *not* proved is that the counts are Poisson. They are overdispersed, because cycles come in ⟨α⟩-orbits.
 
+**2.7 Classes [PROVED].** For a ∈ G, b ∈ G and ψ ∈ Aut(G), the maps T(x) = a·ψ(x)·b and T(x) = a·ψ(x)⁻¹·b
+give isomorphic Haar graphs: H(G, T(S)) ≅ H(G, S). (Left and right translations relabel one side, ψ relabels both,
+and S ↦ S⁻¹ swaps the sides.) If S is ⟨α⟩-invariant, then T(S) is ⟨α⟩-invariant for every T that normalises
+⟨α⟩ in this group E of maps, and only for those once Stab_E(S) = ⟨α⟩. So the valid sets of the symmetric search space
+come in whole **classes** of size |N_E(⟨α⟩)| / |Stab(S)|. If one solution exists, then
+P(random symmetric S is valid) ≥ (class size)/(number of symmetric S).
+- For SL(2,q) the maps with a, b ∈ Fix(α) and ψ normalising ⟨α⟩ already give the whole class. A Lang–Steinberg count
+  for the Frobenius involution, and a direct count for conjugation, give the class sizes at (6,8) on SL(2,25):
+  28,800 sets (Frobenius x ↦ x⁵, |Fix| = 120), 2,304 (conjugation by a trace-0 matrix, |Fix| = 24) and 1,536
+  (conjugation of order 3; here N_E(⟨α⟩) also contains the maps that invert α).
+- Checks: `order2/classsize68.py` enumerates the classes by brute force (`out/classes68/classsize_bruteforce.txt`). The
+  order-3 value 1,536 also matches the sampling frequency (114 expected hits per class in 10⁶ samples, 101–138
+  observed, §3.4). `symmetry68.py` finds |Stab(S)| = 2 (identity and β) for every (6,8) solution, so none is
+  secretly more symmetric.
+
+**2.8 Palindromes land on the Lang image [PROVED].** Let β be an involution with β(S) = S, inducing σ on the letters,
+and let w be a σ-palindromic A-word of even length 2m: its letters satisfy s_{2m+1−i} = σ(s_i). Then
+w(S) = β(v)⁻¹·v, where v = s_m^{∓} ⋯ s_1 is the right half of w. So w(S) lies in the image of the Lang map
+L(x) = β(x)⁻¹x. L is constant exactly on the cosets Fix(β)·x, so |Im L| = N/|Fix(β)|, and Im L ⊆ Anti(β), with
+equality iff the bound |Fix|·|Anti| ≥ N of 2.2 is tight.
+- *Proof:* the left half of w is β applied to the right half, reversed and inverted, which is β(v)⁻¹. Then
+  β(β(v)⁻¹v) = v⁻¹β(v) = (β(v)⁻¹v)⁻¹, so w(S) ∈ Anti(β). And L(x) = L(y) ⟺ yx⁻¹ ∈ Fix(β). ∎
+- With f = 0 there are P_ℓ = Σ_{j=1}^{ℓ/2} Δ(Δ−1)^{j−1} such words of length ≤ ℓ. If their half-words are spread over G,
+  each element of Im L receives about π = P_ℓ·|Fix(β)|/N of them. These are single shots: a palindrome is its own
+  β*-image. For a tight, balanced involution (|Fix| = |Anti| = √N) this gives π ≈ √(λΔ/(Δ−1)), because
+  P_ℓ² ≈ W·Δ/(Δ−1).
+- This only matters at odd D, where the A-words of length ℓ = D − 1 have even length and β* acts on them (2.3).
+
 ## 3. Where the old argument fails (measured)
 
 ### 3.1 The word loss is a few Poisson cycles, not a self-averaging fraction
@@ -187,6 +235,17 @@ At Δ = 6 an 8-cycle is expensive (μ_A⁰λc₂ ≈ 2.2), so solutions keep abo
 Δ = 13 it is nearly free (0.07), so solutions keep the random rate. Twisted cycles come in ⟨α⟩-orbits, which
 overdisperses the counts (12 = two orbits of 6).
 
+**Second session: the n* law on an unbiased sample.** The solutions above were found by annealing, which could
+prefer some sets. Sampling 10⁷ uniform conjugation-symmetric sets on SL(2,25) at (6,8) gives 17 solutions in 14
+distinct classes (§3.4; census `out/classes68/sl25_conj_randorb_census.txt`):
+- twisted 4-cycles: none in any of the 17;
+- twisted 8-cycles: eight solutions have 0, five have 1, four have 2. The mean is 0.76, against 4.2 for random
+  symmetric sets and n* = 0.46;
+- twisted 12-cycles: mean 53, against 72 for random sets and n* = 61.
+
+So solutions avoid twisted cycles, as the n* law says. What fails is the step from there to an additive charge on
+the number of solutions (§3.4).
+
 **Why the mean misleads.** The mean loss is Σ_j R_j c_j = (ρ/2) Σ_j (ℓ − 2j + 1), which is BEYOND_RANDOM's ρℓ²/8.
 The weights ℓ − 2j + 1 = 6, 4, 2 put half of it on 4-cycles and a third on 8-cycles. Those terms are a product of a
 rare event (R_j small) and a large effect (c_j large). The "fresh random subword" picture counts the same cycle once
@@ -240,14 +299,20 @@ So at odd D an involution adds (2/k)·|Anti(β)|·e^{−λ/2} expected misses, u
 μ/2 ≈ 12–34 (`out/rule_table.txt`). It is the same mechanism as "PSL loses at odd D" (THRESHOLD Cor. 5.2, involution
 targets). An involutive symmetry manufactures N/|Fix| such targets in any group.
 
+*Second session:* the deficit below √p is quantitative. Palindromic words land on the image of the Lang map (2.8), so
+only that part of Anti(β) gets the extra shots. With Z4 the bound of 2.2 is not tight, |Im L| = N/|Fix| is half of
+|Anti|, and half of the Anti elements get no palindromes at all. That predicts 0.51·√p for Frobenius and 0.74·√p for
+conjugation, against 0.48–0.70 and 0.69–0.85 measured (§3.5). For a tight, balanced involution the palindromes cancel
+nearly the whole term (§3.5, §5.5).
+
 ### 3.3 Which assumption failed, in the brief's terms
 
 | suspected assumption | verdict |
 |---|---|
 | the involution's fixed points | not the problem: \|Fix\|·e^{−λ/2} ≈ 1.1 at (6,8). Fixed points are paired as predicted (Fix/√p ≈ 0.8–1.06) |
-| the Anti set | its size is right (tight uncertainty bound), but it enters twice. **At even D it matters only through twisted cycles, which are rare and avoidable when short. At odd D it is a set of unavoidable extra targets.** The old argument merged the two and treated the first as self-averaging |
-| small Δ | yes, twice: k = 3 has only two orbits at Δ = 6 (orbit space ≈ e^{16} at N ≈ 15,840), and the twisted 8-cycle mean ρΔ(Δ−1)³/8 ≈ 4 is small enough to avoid |
-| even D | yes: it removes the Anti-target term entirely |
+| the Anti set | its size is right (tight uncertainty bound), but it enters twice. **At even D it matters only through twisted cycles, which are rare and avoidable when short. At odd D it is a set of extra targets**, unavoidable for conjugation-type involutions and nearly cancelled by palindromic words for tight balanced ones (§3.5). The old argument merged the two and treated the first as self-averaging |
+| small Δ | yes, and this decides (6,8): at Δ = 6 order 3 has two orbits, and on SL(2,25) its space has 8,773 classes, none a solution (§3.4). The twisted 8-cycle mean ρΔ(Δ−1)³/8 ≈ 4 is also small enough to avoid |
+| even D | yes for order 2: it removes the Anti-target term. For order 6 with a balanced involution, odd D is fine too (§5.5) |
 
 The same error decided BEYOND_RANDOM's ranking of **Z6** (§4.2 there): "(Frobenius of order 2) × (conjugation of
 order 3) … inherits the σ reflections, at rate about 1/q₀² … ranks it below plain k = 3".
@@ -257,6 +322,70 @@ order 3) … inherits the σ reflections, at rate about 1/q₀² … ranks it be
   and disappears with f = 0 or the OSUB layout.
 - The order-6 Frobenius x ↦ x² of GF(64) is exactly such a Z6: its square has order 3 (x ↦ x⁴) and its cube is the
   Frobenius involution x ↦ x⁸. It beat order 3 by 5–35× in evaluations on the same group (§5.1).
+
+### 3.4 Existence: counting the solution classes at (6,8) (second session)
+
+Everything above is about typical sets. Whether a symmetry *can* win is a question about the extreme tail: does the
+space contain a solution at all? At N = 15,600 the spaces are small enough to measure, and §2.7 turns the sample
+counts into class counts. All on SL(2,25), (6,8), f = 0 (`runs/r2/`, `out/classes68/`; the order-3 sample of
+2·10⁷ is STRUCTURE's `research/structured/runs/d6D8_sl_25_1_orb3f0_rand.log`):
+
+| symmetry | symmetric sets | class size | classes | valid classes | P(valid) per set | rule μ_A⁰ → P | charged μ_A → P |
+|---|---|---|---|---|---|---|---|
+| order 3, conjugation (two orbits of 3) | 1.348·10⁷ | 1,536 | 8,773 | **0** (best cost 2) | 0 | 12.9 → 2.5·10⁻⁶ (0.02 classes) | – |
+| order 2, Frobenius x ↦ x⁵ | 7.725·10¹⁰ | 28,800 | 2.68·10⁶ | **1** | 3.7·10⁻⁷ (e^{−14.8}) | 20.2 → 1.7·10⁻⁹ | 22.0 → 2.8·10⁻¹⁰ |
+| order 2, conjugation (trace 0) | 7.870·10¹⁰ | 2,304 | 3.42·10⁷ | **≈ 40–60** | 1.7·10⁻⁶ (e^{−13.3}) | 16.0 → 1.1·10⁻⁷ | 23.8 → 4.6·10⁻¹¹ |
+
+How each entry was measured:
+- **Order 3.** 10⁶ uniform samples (`runs/r2/nearmiss6_k3_sl25.log`). A class of 1,536 sets is hit Poisson(114)
+  times, so every class is seen. Grouping the near misses by class (`classes68.trace_invariant`): one class at cost 2
+  (126 hits), one at 3, two at 4, one at 5 and one at 6. Nothing at 0 or 1. STRUCTURE's 2·10⁷ samples agree (min 2;
+  2,322 samples at cost 2 = the same single class). The cost-2 class leaves two fixed points of α uncovered. So no
+  order-3 solution with f = 0 exists on SL(2,25). Every automorphism of order 3 is conjugate to this α, so this is a
+  statement about the group, not about one α.
+- **Frobenius.** 10⁷ uniform samples (`runs/r2/ro68_sl25_frob_1e7.log`): one solution. It and the five anneal
+  solutions of §5.4 are one class: `symmetry68.py --to` finds two explicit maps T with T(S₁) = S₂ for every pair, and
+  |Stab| = 2 for each (`out/classes68/sl25_frob_explicit_maps.txt`). Six independent draws all landing in one class
+  make a single class by far the likeliest (two classes would give this with probability 1/32). One class means
+  P(valid) = 28,800/7.725·10¹⁰ = 3.7·10⁻⁷. The direct count, 1 in 10⁷, is consistent with that (95 % interval
+  2.5·10⁻⁹ to 5.6·10⁻⁷).
+- **Conjugation.** 10⁷ uniform samples (`runs/r2/ro68_sl25_conj_1e7.log`, solutions in `…_dump.log`): 17 solutions in
+  14 distinct classes. From P(valid) and the class size that is 58 classes; capture–recapture on 14 of 17 gives about
+  40. The two anneal solutions s3 and s4 of §5.4 are different classes (no map between them), and the table-squad's
+  record is one of the 14.
+
+What this shows:
+1. **Order 3 lost at (6,8) because its space is too small, not because order 2 is cheap.** Per set, order 3 is better:
+   its rate of sets with cost ≤ 6 is 6.8·10⁻⁴, against 1.6·10⁻⁴ for conjugation and 7·10⁻⁶ for Frobenius. Its
+   space simply has 4,000 times fewer classes than conjugation's, and its rule value predicts 0.02 solution classes.
+2. **The charged rule is wrong about existence.** It predicts a P(valid) e^{1.8} times lower for conjugation
+   (ρ = 1/24) than for Frobenius (ρ = 1/120). The opposite holds: 4.6 times higher. Its absolute levels are 7 and 10
+   nats too pessimistic. The uncharged rule gets the order of the two right, but is still 2.7 and 5.4 nats too pessimistic.
+3. **The lower tail is much fatter than Poisson.** Conjugation: P(cost 0)/P(cost 2) = 17/66 in the sample. A Poisson
+   clump count with mean 16 would give 1/16. Frobenius: the one solution class is isolated, with no set of cost 1–3 in
+   10⁷ samples and the next classes at cost 4. So e^{−μ_A} is a poor estimate of P(valid). The effort law, calibrated
+   on anneals, is a separate empirical statement.
+4. **Anneal success is not existence.** The annealer found the single Frobenius class in 5 of 6 seeds and the ~50
+   conjugation classes in 2 of 6 (§5.4). Plain random sampling finds a conjugation solution every 45 s, ten times
+   faster than those anneals (2 in 900 s). For Frobenius the anneals were 4 times faster than sampling.
+
+### 3.5 Odd D: palindromes cancel the Anti penalty of a tight involution (second session)
+
+By 2.8, each Anti element in Im L gets π = P_ℓ|Fix(β)|/N single shots on top of its λ/2 paired ones. So it is missed
+with probability e^{−λ/2−π}; Anti elements outside Im L are missed with e^{−λ/2}. Checks:
+
+| case | \|Fix\|, \|Anti\|, \|Im L\| | P_ℓ | π on Im L | predicted Anti miss rate | measured |
+|---|---|---|---|---|---|
+| (6,9) SL(2,25)×Z4, Frobenius | 240, 516, 260 | 936 | 3.6 | 0.51 √p (half of Anti in Im L) | 0.48–0.70 √p (§3.2) |
+| (6,9) SL(2,25)×Z4, conjugation | 48, 2,596, 1,300 | 936 | 0.72 | 0.74 √p | 0.69–0.85 √p |
+| (12,7) SL(2,64), α³ = Frobenius x ↦ x⁸ (order 6) | 504, 520, 520 (tight, balanced) | 1,596 | 3.07 | 1.9 × generic | 1.7 × generic (`runs/r2/classes127_sl64_k6frob.log`, best 10 % of 600) |
+
+Without the palindromes the last row would be 41 × generic. For a tight balanced involution the Anti term of the
+rule becomes (2/k)·√N·e^{−λ/2−π} ≈ (2/k)·√μ·e^{−√λ}. That is the first session's term times e^{−√λ}: 0.07 at (12,7)
+(λ = 7.4), 0.02–0.03 at the D = 9 record sizes (λ ≈ 13–16). The cost left is the fixed points of the involution, (2/k)·|Fix(β)|·e^{−λ/2},
+which is (2/k)√μ when balanced. So at odd D:
+- order 2: μ/2 + √μ at best, always worse than order 3's μ/3;
+- order 6: μ/6 + (1/3)√μ + small fixed-point terms, better than order 3 once μ ≳ 15.
 
 ## 4. The corrected rule
 

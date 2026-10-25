@@ -1,0 +1,15 @@
+group sl 64 poly x^6+x+1 x Z_403, N=105618240, identity 1624896, H order 63, rows 1676480, threads 1, setup 5.00s
+wide rows: HW order 217, rows 486720, setup 11.30s
+alpha: Frobenius x -> x^2 on entries, z -> 367 z on Z_403
+OSUB=3: 6546 elements with alpha-orbit of size 3 (2182 orbits)
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 30.80, mu/k = 5.13, fixed-point misses ~ 0.98
+start cost=158
+t=33 steps=5 evals=41 cost=82 best=82 T=0.47
+t=68 steps=11 evals=89 cost=46 best=46 T=0.15
+t=100 steps=16 evals=129 cost=41 best=41 T=0.15
+t=131 steps=21 evals=169 cost=41 best=41 T=0.15
+t=165 steps=27 evals=217 cost=33 best=33 T=0.15
+t=199 steps=33 evals=265 cost=33 best=33 T=0.15
+t=235 steps=39 evals=313 cost=33 best=33 T=0.15
+t=265 steps=44 evals=353 cost=33 best=33 T=0.15
+t=302 steps=50 evals=401 cost=33 best=33 T=0.15
