@@ -967,7 +967,7 @@ it.
   credits Exoo–Jajcay for the Haar-graph construction itself.
 - **#3 (values behind master).** The table keeps the values of commit `294fc94`, which the README still shows; §5 says
   so and names the two larger graphs recorded later in `research/RESULTS.md`. Which values go out is for the
-  coordinator to decide; this revision adds no results. If the new values are adopted, the edits are the ones the
+  coordinator to decide; this revision adds no results. If the later values are adopted, the edits are the ones the
   report lists.
 - **#4 (f = 0 orbit column).** Fixed by a check rather than by rewording. `s0_check.py` (its own arithmetic) solves
   α(s₀)s₀⁻¹ = τ in all 11 files. It finds |C_Q(g)| solutions in the matrix part of each, the same counts as the
