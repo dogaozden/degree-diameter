@@ -87,3 +87,22 @@ Same group throughout (prod SL(2,5) × SL(2,19) × Z127, N = 104,241,600, μ = 2
 and settings, its best cost has stayed at 8 (a plateau, not a solution). Round 1's cell notes record the same
 group at cost 14 after a short run.
 
+
+## Status, 19:33 UTC (round 2)
+
+- w3c and w3d (ORBW=5 restart, seeds 6 and 7) finished their 1.5 h budgets: best 12 and 12. No solution.
+- w3a and w3b (ORBW=5 restart, seeds 4 and 5) still running to about 20:05 UTC. Best 6 each (seed 4 at 6 after about
+  8,000 evals; seed 5 at 6). Both wander between 6 and 30 in cost. Nothing has reached cost 0.
+
+Summary of the round so far: on the lowest-μ admissible group (prod SL(2,5) × SL(2,19) × Z127, N = 104,241,600),
+best costs across seeds and settings were 8 (plain orbit search, seed 1), 8 (restart, seed 2), 10 (restart, seed 3),
+6 (ORBW=5 restart, seeds 4 and 5), 12 (ORBW=5 restart, seeds 6 and 7). Other candidates: 5×13×397 best 20;
+SL(2,53)×Z703 best 24; SL(2,41)×Z1519 best 42. No candidate in this round reached cost 0, so the cell is not raised.
+
+Next steps for a resumed session:
+- ORBW=5 is the best lever seen so far (it reached 6 where the plain runs stalled at 8). Give it more seeds and
+  more budget on 5×19×127 (2 h+ each); the plateau at 6 suggests fixed-point misses are still the bottleneck.
+- SL(2,49) × Z889 (μ 26.1) needs a low-memory checker for GF(49) before any find can be saved.
+- Round 1 and round 2 both found nothing at N ≈ 1.04e8 in about 3 h per run. The honest read is that this cell
+  needs either many more core-hours or a structural change (e.g. a group with a smaller fixed-point set at k = 3).
+
