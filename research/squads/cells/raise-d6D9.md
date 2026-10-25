@@ -95,8 +95,8 @@ one α, is there ANY orbit-symmetric S (ORBIT="3 2 0", f = 0)? That is decided b
   α-orbit of size 3 once (21,000–23,000 orbits for N ≈ 64k), then evaluates every unordered pair with the same
   bitset cost as the annealer, aborting at cost ≥ bound. Zero-cost pairs are written through `check_and_write`
   (full diameter check, then s₀ = e normalisation). Pairs are split across processes by pair index.
-- Speed: about 44 µs per pair at N ≈ 64k on this box. Full pass = 2.2–2.6 · 10⁸ pairs ≈ 40–50 core-minutes per 10⁸... i.e.
-  about 45 min wall on 4 cores per group.
+- Speed: about 44 µs per pair at N ≈ 64k on this box. A full pass is 2.2–2.6 · 10⁸ pairs, about 45 min wall
+  on 4 cores per group.
 - Check on the record group (sl 17 × 13): part 0 of 2000 (112k pairs, 5 s) found 4 zero-cost pairs, all passing the
   full check. So the mode works and P(cost 0) ≈ 3·10⁻⁵ there, consistent with the record having been found.
 
@@ -120,5 +120,8 @@ model (SIZE_LAW) predicts the two to be comparable, so the group, not μ, sets t
 ### Exhaustive runs (this round)
 
 - sl 11 × 49 (N 64,680, α = conj(mat(7,8,8,3)) × (z ↦ 18 z)): 21,556 orbits, 2.32·10⁸ pairs, 4 parts.
-  (results below when finished)
+  **Result: no solution.** All 2.32·10⁸ pairs were checked (4 parts, 58,079,948 each, about 31 min per part).
+  The minimum cost over the whole orbit-pair space is **14**, reached by about 4,000 pairs; no pair has cost
+  0–13. So for this group and α there is NO orbit-symmetric S (k = 3, m = 2, f = 0) at all. Round 1's annealing
+  plateau at 14 was the true optimum, not a search failure. sl 11 × 49 is closed.
 - sl 13 × 31 (N 67,704, μ 49.9): queued after sl 11 × 49, 4 parts.
