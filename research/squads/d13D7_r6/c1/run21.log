@@ -1,0 +1,56 @@
+[    0.3s] frame |G|=960 orders=[4, 8, 5] norb=330 K=17 w=170 opt=True skip=None
+[    0.5s] block |G|=600 orders=[3, 5, 10] norb=502 K=29 w=222 opt=True skip=None
+[    0.7s] mono |G|=200 orders=[2, 4] norb=1379 K=76 w=260 opt=True skip=None
+[    2.2s] frame |G|=40 orders=[2, 4, 5] norb=4748 K=544 w=336 opt=True skip=None
+NEW BEST 336 frame basis of dim 4: non-commuting signed permutations of the frame; times an element of order 5 on the complementary block (dim 3)
+[    2.5s] frame |G|=360 orders=[3, 2, 15] norb=681 K=41 w=720 opt=True skip=None
+NEW BEST 720 frame basis of dim 3: non-commuting signed permutations of the frame; times an element of order 15 on the complementary block (dim 4)
+[    2.8s] mono |G|=1000 orders=[10, 10] norb=272 K=7 w=120 opt=True skip=None
+[    2.9s] mono |G|=150 orders=[3, 6] norb=1216 K=19 w=255 opt=True skip=None
+[    3.7s] frame |G|=128 orders=[8, 4, 2] norb=2238 K=375 w=372 opt=True skip=None
+[   22.3s] frame |G|=40 orders=[4, 2, 5] norb=6354 K=2192 w=280 opt=False skip=None
+[   38.3s] block |G|=1320 orders=[2, 3] norb=1609 K=805 w=122 opt=False skip=None
+[   57.2s] frame |G|=48 orders=[2, 3, 2] norb=6204 K=2078 w=298 opt=False skip=None
+[   57.5s] block |G|=600 orders=[3, 5, 10] norb=498 K=41 w=720 opt=True skip=None
+[   81.5s] block |G|=40 orders=[2, 5, 4] norb=6698 K=3074 w=282 opt=False skip=None
+[   81.8s] frame |G|=18 orders=[2, 3, 3] norb=12882 K=9736 w=0 opt=None skip=K=9736 > kmax
+[   97.4s] block |G|=96 orders=[2, 2, 4] norb=4393 K=991 w=184 opt=False skip=None
+[   97.5s] mono |G|=500 orders=[10, 10] norb=447 K=11 w=270 opt=True skip=None
+[   97.6s] mono |G|=1500 orders=[6, 10] norb=159 K=1 w=30 opt=True skip=None
+[  114.1s] frame |G|=48 orders=[2, 2, 6] norb=5340 K=1468 w=294 opt=False skip=None
+[  114.8s] mono |G|=50 orders=[2, 5] norb=3576 K=414 w=370 opt=True skip=None
+[  115.1s] mono |G|=1500 orders=[10, 10] norb=175 K=1 w=30 opt=True skip=None
+[  156.5s] block |G|=24 orders=[2, 2, 3] norb=10418 K=6546 w=314 opt=False skip=None
+[  156.9s] frame |G|=768 orders=[4, 8, 2] norb=835 K=94 w=356 opt=True skip=None
+[  182.8s] frame |G|=16 orders=[8, 2] norb=11819 K=4368 w=404 opt=False skip=None
+[  199.2s] block |G|=1320 orders=[2, 5] norb=1709 K=794 w=220 opt=False skip=None
+[  199.7s] mono |G|=200 orders=[4, 2] norb=1218 K=132 w=219 opt=True skip=None
+[  239.8s] frame |G|=16 orders=[4, 2, 2] norb=14573 K=7585 w=342 opt=False skip=None
+[  239.9s] frame |G|=24 orders=[3, 4] norb=12145 K=10165 w=0 opt=None skip=K=10165 > kmax
+[  261.1s] block |G|=50 orders=[2, 5, 5] norb=5318 K=2666 w=720 opt=False skip=None
+[  292.9s] block |G|=24 orders=[3, 2, 4] norb=9743 K=5240 w=332 opt=False skip=None
+[  326.0s] frame |G|=24 orders=[2, 3] norb=8785 K=4765 w=308 opt=False skip=None
+[  326.1s] block |G|=20 orders=[2, 2] norb=17570 K=16106 w=0 opt=None skip=K=16106 > kmax
+[  342.7s] frame |G|=48 orders=[2, 6, 4] norb=4961 K=1183 w=280 opt=False skip=None
+[  342.8s] mono |G|=1500 orders=[6, 6] norb=176 K=5 w=150 opt=True skip=None
+[  342.9s] mono |G|=1000 orders=[2, 20] norb=354 K=21 w=235 opt=True skip=None
+[  343.2s] frame |G|=16 orders=[4, 2, 2] norb=15512 K=9716 w=0 opt=None skip=K=9716 > kmax
+[  359.8s] block |G|=1320 orders=[4, 2] norb=1753 K=805 w=122 opt=False skip=None
+[  360.1s] block |G|=12 orders=[2, 3, 2] norb=19221 K=14769 w=0 opt=None skip=K=14769 > kmax
+[  360.4s] frame |G|=576 orders=[6, 6, 3] norb=579 K=74 w=720 opt=True skip=None
+[  362.8s] block |G|=72 orders=[2, 3, 6] norb=2978 K=816 w=756 opt=True skip=None
+NEW BEST 756 block dim 3: two non-commuting elements of O(E) of small orders; times an element of order 6 on the complementary block (dim 4)
+[  381.8s] block |G|=110 orders=[5, 2] norb=3967 K=1466 w=232 opt=False skip=None
+[  396.3s] frame |G|=96 orders=[4, 6, 2] norb=4074 K=1085 w=330 opt=False skip=None
+[  397.3s] mono |G|=30 orders=[15, 2] norb=6020 K=701 w=252 opt=True skip=None
+[  397.6s] mono |G|=500 orders=[4, 4] norb=486 K=24 w=720 opt=True skip=None
+[  411.7s] frame |G|=80 orders=[2, 4, 10] norb=3466 K=628 w=318 opt=False skip=None
+[  411.9s] mono |G|=1000 orders=[2, 4] norb=268 K=5 w=102 opt=True skip=None
+[  412.1s] block |G|=1980 orders=[3, 5, 3] norb=581 K=48 w=220 opt=True skip=None
+[  412.2s] mono |G|=1000 orders=[10, 10] norb=258 K=8 w=105 opt=True skip=None
+[  417.6s] block |G|=1320 orders=[3, 6, 2] norb=934 K=135 w=220 opt=True skip=None
+[  417.9s] block |G|=360 orders=[2, 2, 15] norb=1081 K=65 w=132 opt=True skip=None
+[  418.0s] mono |G|=1200 orders=[20, 6] norb=172 K=1 w=30 opt=True skip=None
+[  453.0s] block |G|=36 orders=[2, 6, 3] norb=7921 K=5039 w=428 opt=False skip=None
+done: evaluated 51, repeats 7, no-group draws 11, sampled 69, best this run 756, cpu 453.0s
+EXIT 0

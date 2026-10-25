@@ -108,3 +108,15 @@ of order 5; 217 recurs in 6 groups) -> (10,7) 225,128, all-pairs VALID. c2 q = 9
 Lesson: the same method transferred to characteristic 2 and to a collinearity (not orthogonality) constraint with
 little change; gains there are smaller (+2.6x at q = 8, +2.6% for the non-collinear sets, where local search was
 already strong).
+
+## 2026-10-25, cell-13-7 (Opus, cloud session_0136phW63ksffo3wvN1THJtH), round 6: beyond 756 at q = 11?
+
+Goal: more than 756 pairwise-opposite points of H(11) ((13,7) +2, (14,7) +4, (15,7) +6 per point). Brief
+research/squads/d13D7_r6/BRIEF.md; 3 cards, launched 00:47 UTC (the (16,7) check needed the rest of the machine).
+
+c1 non-abelian groups (closure <= 2000): **756** again, a different set (block group of order 72, exact optimum);
+order 360 and 600 groups give 720 · c2 warm starts: tabu from the 756 clique on the orbit graphs of the subgroups of
+order 5 (K = 29,540) and 3 (K = 60,028) finds nothing heavier; the normaliser of <h> (order 19,200) and 19 overgroups
+<h, g>: max 756 (another different set) · c3 new block shapes (4+3, 3+2+2): exact optima 720 for orders 45 and 75.
+All re-checked by Opus (oppcheck). Result: no gain; 756 is reached by three unrelated group families and is the exact
+optimum of every orbit graph tried that contains it, so it looks like the ceiling of this method at q = 11.
