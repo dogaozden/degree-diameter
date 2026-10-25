@@ -1,0 +1,12 @@
+group psl 263 x Z_1, N=9095592, identity 34453, H order 44, rows 206718, threads 1, setup 0.70s
+wide rows: HW order 132, rows 68906, setup 1.27s
+alpha: conj by mat(35,26,25,229) (index 2393062), z -> 0 z on Z_1
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 131 (+e); mu = 34.55, mu/k = 11.52, fixed-point misses ~ 2.06
+start cost=67
+t=30 steps=102 evals=817 cost=18 best=13 T=0.53
+t=60 steps=206 evals=1649 cost=17 best=13 T=0.19
+t=90 steps=320 evals=2561 cost=13 best=13 T=0.15
+t=120 steps=425 evals=3401 cost=13 best=13 T=0.15
+t=151 steps=536 evals=4289 cost=13 best=13 T=0.15
+t=181 steps=641 evals=5129 cost=13 best=13 T=0.63
+t=211 steps=745 evals=5961 cost=10 best=10 T=0.22

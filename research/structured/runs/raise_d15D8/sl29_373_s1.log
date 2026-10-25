@@ -1,0 +1,12 @@
+group sl 29 x Z_373, N=9086280, identity 302876, H order 58, rows 156660, threads 1, setup 0.48s
+wide rows: no cyclic subgroup of order >= 64 found (best 58); using haar_gen3's evaluation
+alpha: conj by mat(24,12,20,4) (index 20523), z -> 88 z on Z_373
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 29 (+e); mu = 34.07, mu/k = 11.36, fixed-point misses ~ 0.47
+start cost=36
+t=30 steps=211 evals=1689 cost=21 best=13 T=0.53
+t=60 steps=407 evals=3257 cost=18 best=13 T=0.19
+t=90 steps=603 evals=4825 cost=12 best=12 T=0.15
+t=120 steps=810 evals=6481 cost=12 best=12 T=0.15
+t=150 steps=1010 evals=8081 cost=12 best=12 T=0.15
+t=181 steps=1214 evals=9713 cost=12 best=12 T=0.15
+t=211 steps=1405 evals=11241 cost=9 best=9 T=0.15
