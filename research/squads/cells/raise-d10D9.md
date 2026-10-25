@@ -69,3 +69,24 @@ Screen: `orb_screen.py 10 9 4001929 4060000 "3 3 1" --fams sl,psl,pgl --samples 
   - psl 61 x Z37, k=3 f=1 (N = 4,198,020, μ 41.0): best 12
   Next round (started 09:55 UTC): sl 41 x Z61 k=5 seeds 2 and 3, psl 59 x Z41 k=5 seed 2, psl 31 x Z283 k=3 seed 1 (μ 42.7).
   Logs in the scratchpad (out/) and not yet in the repo unless a run solves.
+
+## Status at stop (2026-10-25, about 11:00 UTC)
+
+**Record: 8,362,560 vertices** (psl 31 x Z281, k=5 m=2 f=0; research/frontier/sols/d10D9_psl_31_281_orb5f0_s1.txt).
+Previous records this session: 8,334,480 (psl 41 x Z121, seed 2), 8,306,760 (psl 29 x Z341), 8,064,960 (psl 31 x Z271).
+All four k=5 f=0 or k=3 f=1 structures worked at μ ≈ 22–39 once they were tried. At μ ≈ 41–42 they stall.
+
+**Stuck above 4,181,280 (2N > 8,362,560).** About 3 hours on this rung, roughly 5 million evaluations in total, no
+solution. Final best costs (one hour each unless noted):
+- sl 41 x Z61, k=5 f=0 (N = 4,201,680, μ 41.5): best 2 (seed 1, 616,689 evals), 2 (seed 2, 589,561), 4 (seed 3, 593,785)
+- pgl 41 x Z61, k=5 f=0 (same N): best 13
+- psl 59 x Z41, k=5 f=0 (N = 4,209,060, μ 42.4): best 8 (seed 1), 5 (seed 2, 582,521)
+- psl 61 x Z37, k=3 f=1 (N = 4,198,020, μ 41.0): best 12
+- psl 31 x Z283, k=3 f=1 (N = 4,211,040, μ 42.7): best 30
+- psl 49 x Z71 (N = 4,174,800; below the rung, stopped at 6), prod psl 5 psl 9 x Z193 (k=3, 38), psl 29 x Z343 (k=3, 30): stopped as obsolete
+- sl 23 x Z343 (k=3, N = 4,165,392): 54, obsolete
+
+**Verdict.** I am stuck with these methods on this rung. The next step (sl 41 x Z61, k=5, seeds 1 to 3 at best 2 to 4)
+is likely to need far more evaluations than we have, or a different group in the window. A bigger model could try a
+new structure (e.g. a larger k or a non-orbit α) but that is the coordinator's call. Candidates for the next rung are in
+the list above; the only SL/PSL/PGL groups in the window with the order-5 condition are the ones already run.
