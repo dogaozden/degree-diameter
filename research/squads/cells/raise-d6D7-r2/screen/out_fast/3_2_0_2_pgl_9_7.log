@@ -1,0 +1,6 @@
+group pgl 9 poly x^2+1 x Z_7, N=5040, identity 0, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.00s
+alpha: conj by mat(1,7,8,7) (index 574), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 8 (+e); mu = 104.58, mu/k = 34.86, fixed-point misses ~ 4.95
+RANDORB d=6 D=7 group=pgl 9 poly x^2+1 x Z_7 N=5040 k=3 m=2 f=0 fix=8 samples=15000000 min=52 p1=116 p10=221 median=5040 mean=3358.23 var=8560423.8 mu=104.58 time=315.6
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7008 0 0 0 13866 0 3445 0 6935 0 13758 0 0 0 14954988
