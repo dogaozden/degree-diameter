@@ -14,7 +14,7 @@ research/d10D7/checks/.
 | (11,7) | 398,580 | 407,162 | apsp VALID |
 | (12,7) | 664,300 | 680,068 | apsp VALID |
 | (13,7) | 1,062,936 | 1,064,448 | apsp VALID (source ranges, apsp_range.c) |
-| (14,7) | 1,771,560 | 1,774,584 | see hex11_B2_CHECK.md |
+| (14,7) | 1,771,560 | 1,774,584 | apsp VALID (source ranges) |
 | (15,7) | 2,480,184 | 2,484,720 | see hex11_B2_CHECK.md |
 | (16,7) | 4,022,340 | 4,025,508 | see hex11_B2_CHECK.md |
 
