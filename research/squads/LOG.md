@@ -46,3 +46,6 @@ Cards (best per card, unreached ordered pairs unless noted):
 Kept: nothing new; (3,10) = 800 stays unreproduced and untraced. The closest approaches are symmetric (c1, c3), so
 a next round would run c1's (10, 80) and (12, 67) splits for minutes rather than seconds, and Haar graphs over the
 order-400 groups c4 did not cover. Files: research/squads/table-audit-r2/.
+Follow-up (lead, same morning): one 41-min run of c1's best setting (r1 c6 sym_anneal, b = 10, c = 80, T0 = 6,
+seed 11) reached cost 0, so (3,10) = 800 is now reproduced (research/projects/table-audit/graphs/
+d3D10_n800_symZ80_b10.edges.txt, apsp.c VALID). Seven runs at 810 and one at 820 stopped at cost 2–6.
