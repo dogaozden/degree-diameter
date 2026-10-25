@@ -1,0 +1,15 @@
+restart 1 cpu 0.0s best 210 (A-mindeg)
+restart 2 cpu 0.0s best 214 (B-grasp-r2)
+restart 22 cpu 0.2s best 215 (C-noise0.5)
+restart 32 cpu 0.2s best 220 (C-noise2.0)
+restart 15049 cpu 110.5s best 221 (A-mindeg)
+done: restarts 57058 best 221 found by A-mindeg
+variant A-mindeg      runs   7133 mean 210.67 max 221
+variant B-grasp-r2    runs   7133 mean 210.39 max 220
+variant B-grasp-r3    runs   7132 mean 210.16 max 220
+variant B-grasp-r4    runs   7132 mean 209.90 max 220
+variant B-grasp-r5    runs   7132 mean 209.70 max 220
+variant C-noise0.5    runs   7132 mean 210.67 max 220
+variant C-noise1.0    runs   7132 mean 210.70 max 220
+variant C-noise2.0    runs   7132 mean 210.38 max 220
+lines rc=0

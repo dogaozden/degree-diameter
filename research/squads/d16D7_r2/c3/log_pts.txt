@@ -1,0 +1,44 @@
+graph M=6504 E=577152 (header 577152) maxdeg=182
+start: 224 vertices, 0 internal edges, lambda=1.500 pswap=0.300 budget=400.0
+  new best 224 (cpu 0.1 s)
+start polished: 224 (best 224)
+seed0 f=0.00 T=0.2000 ns=222 ein=0 bestn=224
+  new best 225 (cpu 0.3 s)
+  new best 226 (cpu 0.5 s)
+  new best 227 (cpu 0.8 s)
+  new best 228 (cpu 1.0 s)
+  new best 229 (cpu 1.7 s)
+  new best 231 (cpu 3.5 s)
+  new best 232 (cpu 5.6 s)
+seed0 f=0.20 T=0.1572 ns=232 ein=0 bestn=232
+seed0 f=0.40 T=0.1236 ns=232 ein=0 bestn=232
+seed0 f=0.60 T=0.0971 ns=232 ein=0 bestn=232
+seed0 f=0.80 T=0.0763 ns=232 ein=0 bestn=232
+seed0 end steps=3529310208 polished=232 best=232
+reheat1 f=0.00 T=0.4500 ns=198 ein=12 bestn=232
+reheat1 f=0.20 T=0.3186 ns=195 ein=7 bestn=232
+reheat1 f=0.40 T=0.2255 ns=219 ein=0 bestn=232
+reheat1 f=0.60 T=0.1596 ns=232 ein=0 bestn=232
+reheat1 f=0.80 T=0.1130 ns=232 ein=0 bestn=232
+reheat1 end steps=6059196416 polished=232 best=232
+reheat2 f=0.00 T=0.4500 ns=204 ein=5 bestn=232
+reheat2 f=0.20 T=0.3186 ns=189 ein=6 bestn=232
+reheat2 f=0.40 T=0.2255 ns=216 ein=1 bestn=232
+  new best 233 (cpu 146.5 s)
+reheat2 f=0.60 T=0.1596 ns=231 ein=0 bestn=233
+reheat2 f=0.80 T=0.1130 ns=232 ein=0 bestn=233
+reheat2 end steps=5948768256 polished=232 best=233
+reheat3 f=0.00 T=0.4500 ns=194 ein=21 bestn=233
+reheat3 f=0.20 T=0.3186 ns=194 ein=5 bestn=233
+reheat3 f=0.40 T=0.2255 ns=212 ein=1 bestn=233
+reheat3 f=0.60 T=0.1596 ns=230 ein=0 bestn=233
+reheat3 f=0.80 T=0.1130 ns=231 ein=0 bestn=233
+reheat3 end steps=6097534976 polished=231 best=233
+reheat4 f=0.00 T=0.4500 ns=203 ein=19 bestn=233
+reheat4 f=0.20 T=0.3186 ns=187 ein=2 bestn=233
+reheat4 f=0.40 T=0.2255 ns=220 ein=3 bestn=233
+reheat4 f=0.60 T=0.1596 ns=230 ein=1 bestn=233
+reheat4 f=0.80 T=0.1130 ns=230 ein=0 bestn=233
+reheat4 end steps=6101598208 polished=230 best=233
+reheat5 f=0.00 T=0.4500 ns=196 ein=13 bestn=233
+reheat5 f=0.20 T=0.3186 ns=197 ein=7 bestn=233

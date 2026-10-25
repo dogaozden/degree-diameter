@@ -1,0 +1,27 @@
+seed size 224 f(seed)=0
+start k=225 f=1
+FOUND independent set k=225 t=0.0 it=6581
+FOUND independent set k=226 t=0.0 it=6666
+FOUND independent set k=227 t=0.0 it=6818
+FOUND independent set k=228 t=0.2 it=64842
+FOUND independent set k=229 t=0.5 it=140537
+FOUND independent set k=230 t=0.6 it=159937
+FOUND independent set k=231 t=1.6 it=445875
+FOUND independent set k=232 t=1.7 it=451871
+FOUND independent set k=233 t=2.6 it=701761
+FOUND independent set k=234 t=4.2 it=1119107
+FOUND independent set k=235 t=15.9 it=4312874
+t=30 k=236 f=1 bestf=1 it=8096768 restarts=2
+t=60 k=236 f=1 bestf=1 it=16270336 restarts=4
+t=90 k=236 f=1 bestf=1 it=24573952 restarts=7
+t=120 k=236 f=1 bestf=1 it=32813056 restarts=10
+t=150 k=236 f=1 bestf=1 it=41232384 restarts=13
+t=180 k=236 f=1 bestf=1 it=49634304 restarts=16
+t=210 k=236 f=7 bestf=1 it=57856000 restarts=18
+t=240 k=236 f=1 bestf=1 it=65946624 restarts=21
+t=270 k=236 f=1 bestf=1 it=74128384 restarts=24
+t=300 k=236 f=2 bestf=1 it=82477056 restarts=27
+t=330 k=236 f=1 bestf=1 it=90977280 restarts=29
+t=360 k=236 f=1 bestf=1 it=99770368 restarts=32
+t=390 k=236 f=1 bestf=1 it=107921408 restarts=35
+END t=420.0 kbest=235 last_k=236 bestf(k)=1 it=116508672 restarts=38

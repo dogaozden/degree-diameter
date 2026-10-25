@@ -1,0 +1,114 @@
+graph M=6504 E_header=577179 E_closure=577179
+seed size=227
+after initial local search size=227
+NEW BEST t=3.79 iter=743490 size=228 basin=0
+NEW BEST t=3.91 iter=761022 size=229 basin=0
+t=5.0 iter=981504 cur=229 basin=229 global=229 restarts=0 accepted=970475 worse_acc=8391 reverts=1851
+BASIN 0 end t=8.98 iter=1761022 basin_best=229 global=229
+t=10.0 iter=1966080 cur=227 basin=228 global=229 restarts=1 accepted=1948124 worse_acc=14064 reverts=2739
+BASIN 1 end t=14.65 iter=2941422 basin_best=228 global=229
+NEW BEST t=14.84 iter=2980212 size=230 basin=2
+t=15.0 iter=3015168 cur=230 basin=230 global=230 restarts=2 accepted=2985554 worse_acc=22955 reverts=4617
+BASIN 2 end t=19.58 iter=3980212 basin_best=230 global=230
+t=20.0 iter=4067840 cur=226 basin=227 global=230 restarts=3 accepted=4028586 worse_acc=29958 reverts=5056
+t=25.0 iter=5097472 cur=228 basin=228 global=230 restarts=3 accepted=5045362 worse_acc=39745 reverts=7744
+BASIN 3 end t=26.80 iter=5473970 basin_best=228 global=230
+NEW BEST t=26.96 iter=5508643 size=231 basin=4
+NEW BEST t=27.02 iter=5521289 size=232 basin=4
+t=30.0 iter=6169088 cur=232 basin=232 global=232 restarts=4 accepted=6106111 worse_acc=47950 reverts=8667
+BASIN 4 end t=31.70 iter=6521289 basin_best=232 global=232
+t=35.0 iter=7205376 cur=224 basin=224 global=232 restarts=5 accepted=7130632 worse_acc=56852 reverts=10472
+t=40.0 iter=8236544 cur=227 basin=227 global=232 restarts=5 accepted=8150928 worse_acc=65287 reverts=12440
+BASIN 5 end t=42.04 iter=8646827 basin_best=227 global=232
+t=45.0 iter=9237504 cur=232 basin=232 global=232 restarts=6 accepted=9142746 worse_acc=72344 reverts=13126
+NEW BEST t=45.92 iter=9413670 size=233 basin=6
+t=50.0 iter=10218496 cur=233 basin=233 global=233 restarts=6 accepted=10114766 worse_acc=78573 reverts=13455
+BASIN 6 end t=51.08 iter=10413670 basin_best=233 global=233
+t=55.0 iter=11183616 cur=229 basin=230 global=233 restarts=7 accepted=11067228 worse_acc=87715 reverts=15839
+BASIN 7 end t=57.24 iter=11617320 basin_best=230 global=233
+t=60.0 iter=12097536 cur=229 basin=231 global=233 restarts=8 accepted=11970332 worse_acc=95592 reverts=17512
+BASIN 8 end t=64.02 iter=12859347 basin_best=231 global=233
+t=65.0 iter=13050880 cur=227 basin=227 global=233 restarts=9 accepted=12914013 worse_acc=102096 reverts=18120
+t=70.0 iter=14011392 cur=227 basin=228 global=233 restarts=9 accepted=13864525 worse_acc=109745 reverts=20097
+BASIN 9 end t=72.26 iter=14458654 basin_best=228 global=233
+t=75.0 iter=15000576 cur=226 basin=226 global=233 restarts=10 accepted=14842092 worse_acc=117893 reverts=21552
+t=80.0 iter=15931904 cur=229 basin=229 global=233 restarts=10 accepted=15762535 worse_acc=124853 reverts=21985
+BASIN 10 end t=80.54 iter=16032750 basin_best=229 global=233
+t=85.0 iter=16918016 cur=224 basin=224 global=233 restarts=11 accepted=16737038 worse_acc=133373 reverts=24029
+BASIN 11 end t=85.59 iter=17039615 basin_best=224 global=233
+t=90.0 iter=17911808 cur=232 basin=232 global=233 restarts=12 accepted=17721143 worse_acc=140408 reverts=24455
+BASIN 12 end t=93.95 iter=18647158 basin_best=232 global=233
+t=95.0 iter=18855424 cur=226 basin=226 global=233 restarts=13 accepted=18656793 worse_acc=146605 reverts=25084
+BASIN 13 end t=99.60 iter=19699847 basin_best=226 global=233
+t=100.0 iter=19773440 cur=224 basin=225 global=233 restarts=14 accepted=19563730 worse_acc=154846 reverts=27189
+t=105.0 iter=20751360 cur=230 basin=231 global=233 restarts=14 accepted=20532707 worse_acc=161232 reverts=27448
+BASIN 14 end t=108.37 iter=21373544 basin_best=231 global=233
+t=110.0 iter=21712896 cur=222 basin=223 global=233 restarts=15 accepted=21484796 worse_acc=168151 reverts=28518
+BASIN 15 end t=113.87 iter=22395785 basin_best=223 global=233
+t=115.0 iter=22616576 cur=227 basin=227 global=233 restarts=16 accepted=22377063 worse_acc=176356 reverts=30489
+BASIN 16 end t=119.01 iter=23399600 basin_best=227 global=233
+t=120.0 iter=23597056 cur=226 basin=227 global=233 restarts=17 accepted=23347550 worse_acc=183397 reverts=31166
+t=125.0 iter=24611840 cur=228 basin=228 global=233 restarts=17 accepted=24353128 worse_acc=190505 reverts=32761
+BASIN 17 end t=128.90 iter=25377380 basin_best=228 global=233
+t=130.0 iter=25611264 cur=230 basin=230 global=233 restarts=18 accepted=25345276 worse_acc=196587 reverts=33668
+BASIN 18 end t=133.67 iter=26394516 basin_best=230 global=233
+t=135.0 iter=26655744 cur=228 basin=228 global=233 restarts=19 accepted=26381725 worse_acc=202920 reverts=34153
+BASIN 19 end t=139.18 iter=27467449 basin_best=228 global=233
+t=140.0 iter=27616768 cur=230 basin=230 global=233 restarts=20 accepted=27333909 worse_acc=209698 reverts=35264
+t=145.0 iter=28584960 cur=233 basin=233 global=233 restarts=20 accepted=28293027 worse_acc=215951 reverts=35578
+BASIN 20 end t=149.06 iter=29426579 basin_best=233 global=233
+t=150.0 iter=29600768 cur=224 basin=225 global=233 restarts=21 accepted=29301308 worse_acc=221125 reverts=36025
+BASIN 21 end t=154.16 iter=30431902 basin_best=225 global=233
+t=155.0 iter=30615552 cur=226 basin=227 global=233 restarts=22 accepted=30305854 worse_acc=228803 reverts=37665
+BASIN 22 end t=159.54 iter=31496167 basin_best=227 global=233
+t=160.0 iter=31592448 cur=227 basin=227 global=233 restarts=23 accepted=31273264 worse_acc=235698 reverts=38058
+t=165.0 iter=32596480 cur=228 basin=229 global=233 restarts=23 accepted=32266596 worse_acc=244239 reverts=39881
+BASIN 23 end t=167.44 iter=33068151 basin_best=229 global=233
+t=170.0 iter=33566720 cur=229 basin=229 global=233 restarts=24 accepted=33226966 worse_acc=251683 reverts=40891
+BASIN 24 end t=173.98 iter=34346143 basin_best=229 global=233
+t=175.0 iter=34569216 cur=226 basin=226 global=233 restarts=25 accepted=34220216 worse_acc=258279 reverts=41444
+BASIN 25 end t=179.65 iter=35350628 basin_best=226 global=233
+t=180.0 iter=35414016 cur=230 basin=230 global=233 restarts=26 accepted=35056093 worse_acc=265261 reverts=42764
+t=185.0 iter=36310016 cur=232 basin=232 global=233 restarts=26 accepted=35942739 worse_acc=271514 reverts=43101
+BASIN 26 end t=185.73 iter=36456216 basin_best=232 global=233
+t=190.0 iter=37285888 cur=224 basin=225 global=233 restarts=27 accepted=36907299 worse_acc=280261 reverts=44817
+t=195.0 iter=38255616 cur=231 basin=231 global=233 restarts=27 accepted=37867210 worse_acc=288212 reverts=46351
+BASIN 27 end t=198.34 iter=38912302 basin_best=231 global=233
+t=200.0 iter=39218688 cur=228 basin=229 global=233 restarts=28 accepted=38820442 worse_acc=295787 reverts=47382
+BASIN 28 end t=204.01 iter=39935098 basin_best=229 global=233
+t=205.0 iter=40128000 cur=229 basin=230 global=233 restarts=29 accepted=39718537 worse_acc=303064 reverts=48214
+BASIN 29 end t=209.21 iter=40943709 basin_best=230 global=233
+t=210.0 iter=41093632 cur=226 basin=227 global=233 restarts=30 accepted=40673673 worse_acc=311211 reverts=49789
+BASIN 30 end t=214.73 iter=41958735 basin_best=227 global=233
+t=215.0 iter=42004992 cur=225 basin=226 global=233 restarts=31 accepted=41576028 worse_acc=317562 reverts=50236
+t=220.0 iter=42958848 cur=225 basin=226 global=233 restarts=31 accepted=42516264 worse_acc=327721 reverts=53466
+BASIN 31 end t=220.08 iter=42975460 basin_best=226 global=233
+t=225.0 iter=43956736 cur=227 basin=227 global=233 restarts=32 accepted=43502429 worse_acc=335338 reverts=54093
+BASIN 32 end t=226.82 iter=44262807 basin_best=227 global=233
+t=230.0 iter=44843520 cur=228 basin=228 global=233 restarts=33 accepted=44377526 worse_acc=343488 reverts=55938
+BASIN 33 end t=232.35 iter=45270419 basin_best=228 global=233
+t=235.0 iter=45804032 cur=231 basin=231 global=233 restarts=34 accepted=45326797 worse_acc=351772 reverts=57416
+BASIN 34 end t=239.33 iter=46621167 basin_best=231 global=233
+t=240.0 iter=46755328 cur=226 basin=226 global=233 restarts=35 accepted=46269114 worse_acc=358389 reverts=57885
+t=245.0 iter=47688704 cur=226 basin=226 global=233 restarts=35 accepted=47193710 worse_acc=365188 reverts=59483
+BASIN 35 end t=245.16 iter=47720180 basin_best=226 global=233
+t=250.0 iter=48669696 cur=224 basin=226 global=233 restarts=36 accepted=48164770 worse_acc=371993 reverts=59880
+BASIN 36 end t=252.11 iter=49080037 basin_best=226 global=233
+t=255.0 iter=49682944 cur=229 basin=229 global=233 restarts=37 accepted=49169053 worse_acc=378772 reverts=60921
+BASIN 37 end t=258.25 iter=50342126 basin_best=229 global=233
+t=260.0 iter=50688512 cur=228 basin=229 global=233 restarts=38 accepted=50167235 worse_acc=384300 reverts=61743
+BASIN 38 end t=263.31 iter=51357181 basin_best=229 global=233
+t=265.0 iter=51673088 cur=225 basin=225 global=233 restarts=39 accepted=51141968 worse_acc=391412 reverts=62695
+BASIN 39 end t=268.78 iter=52375552 basin_best=225 global=233
+t=270.0 iter=52616704 cur=231 basin=231 global=233 restarts=40 accepted=52074953 worse_acc=399749 reverts=64409
+BASIN 40 end t=273.91 iter=53388075 basin_best=231 global=233
+t=275.0 iter=53574144 cur=227 basin=227 global=233 restarts=41 accepted=53024196 worse_acc=405936 reverts=64956
+t=280.0 iter=54563328 cur=229 basin=229 global=233 restarts=41 accepted=54002350 worse_acc=414534 reverts=66926
+BASIN 41 end t=284.83 iter=55503498 basin_best=229 global=233
+t=285.0 iter=55541760 cur=228 basin=228 global=233 restarts=42 accepted=54972256 worse_acc=421137 reverts=67924
+t=290.0 iter=56575488 cur=232 basin=232 global=233 restarts=42 accepted=55996752 worse_acc=428075 reverts=68129
+BASIN 42 end t=290.72 iter=56727975 basin_best=232 global=233
+t=295.0 iter=57590784 cur=226 basin=227 global=233 restarts=43 accepted=57001623 worse_acc=436235 reverts=69655
+BASIN 43 end t=295.68 iter=57732093 basin_best=227 global=233
+done: iters=58564608 global=233 restarts=44 accepted=57964952 worse_acc=443358 reverts=70205 cpu=300.0
+wrote 233 vertices to c1/best_lines.txt
