@@ -292,10 +292,12 @@ static void load_lift(const char *path, char hex[65]) {
     if (!strcmp(w, "cyclic")) { if (!rd_long(&r, &x) || x < 1) die("bad M"); M = x; }
     else if (!strcmp(w, "sl") || !strcmp(w, "psl")) {
         GK = strcmp(w, "sl") ? 2 : 1;
-        if (!rd_long(&r, &x) || x < 2) die("bad P"); GP = x;
+        if (!rd_long(&r, &x) || x < 2) die("bad P");
+        GP = x;
         for (int64_t t = 2; t * t <= GP; t++) if (GP % t == 0) die("P must be prime");
         if (GK == 2 && GP == 2) die("psl needs an odd prime");
-        if (!rd_long(&r, &x) || x < 1) die("bad N"); GNC = x;
+        if (!rd_long(&r, &x) || x < 1) die("bad N");
+        GNC = x;
         GPP = GP * GP; M = GP * (GPP - 1) / (GK == 2 ? 2 : 1) * GNC;
         GINV = malloc(8 * GP); GINV[0] = 0;
         for (int64_t a = 1; a < GP; a++) { int64_t rr = 1, e = GP - 2, bb = a; while (e) { if (e & 1) rr = rr * bb % GP; bb = bb * bb % GP; e >>= 1; } GINV[a] = rr; }
@@ -342,7 +344,7 @@ static void load_lift(const char *path, char hex[65]) {
         qsort(key, k, 8, cmp_u64);
         for (int64_t i = 0; i < k; i++) { bw[bst[v] + i] = (uint32_t)(key[i] / M); ba[bst[v] + i] = (int64_t)(key[i] % M); if (i && key[i] == key[i - 1]) die("repeated lift edge (two base edges with the same ends and voltage)"); }
     }
-    if (GK) { bsel = malloc(sizeof(gel) * (2 * E ? 2 * E : 1)); for (int64_t i = 0; i < 2 * E; i++) bsel[i] = gdec(ba[i]); }
+    if (GK) { bsel = malloc(sizeof(gel) * (E > 0 ? 2 * E : 1)); for (int64_t i = 0; i < 2 * E; i++) bsel[i] = gdec(ba[i]); }
     /* bipartite base */
     if (NB <= 0 || NB > 4000000000LL) die("bad NB");
     int8_t *col = malloc((size_t)NB); memset(col, -1, (size_t)NB); uint32_t *qq = malloc(sizeof(uint32_t) * (size_t)NB); bip = 1;
@@ -487,7 +489,7 @@ static inline int nbrs(int64_t x, int64_t *y) {
     else for (int64_t i = bst[v]; i < bst[v + 1]; i++) { int64_t h = g + ba[i]; if (h >= M) h -= M; y[k++] = (int64_t)bw[i] * M + h; }
     return k;
 }
-static int64_t bfs_bits(int64_t src, int DD, int cost_mode, int *eccp) {
+__attribute__((unused)) static int64_t bfs_bits(int64_t src, int DD, int cost_mode, int *eccp) {
     memset(BV, 0, 8 * NW); memset(BF, 0, 8 * NW);
     BV[src >> 6] |= 1ULL << (src & 63); BF[src >> 6] |= 1ULL << (src & 63);
     int64_t frontier = 1, reached = 1; int lev = 0;
