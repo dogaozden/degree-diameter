@@ -53,3 +53,27 @@ sl 229 (μ 34.1; fix 227, bad); prod psl 5×sl 16×Z49 (μ 33.5). Last place: ps
 - 10:17 UTC: draft PR #350 opened for the branch.
 - 10:58 UTC: running E prod sl 8×psl 19×Z7 (N 12,065,760; cost 3, 4.97e5 evals), G psl 79×Z49 ORBW=3 seed 2 (N 12,077,520;
   best 3, 1.65e5), H psl 79×Z49 seed 3 (best 4, 1.66e5). All above the new record's order, so any solve is a new record.
+- 12:18–13:13 UTC (final rung): G psl 79×Z49 ORBW=3 seed 2, 2 h: best 3 (4.9e5 evals); H psl 79×Z49 seed 3, 2 h: best 4;
+  I sl 73×Z31 ORBW=3 seed 1, 1.5 h: best 1 (3.5e5 evals, one fixed element uncovered); J psl 79×Z49 ORBW=3 seed 4, 55 min:
+  best 3 (1.9e5); K prod sl 8×psl 19×Z7 ORBW=3 seed 2, 55 min: best 4 (1.1e5); E prod sl 8×psl 19×Z7 seed 1, 4 h: best 3 (6.0e5).
+
+## Status at 13:13 UTC
+
+**Record: 24,099,600 vertices (psl 151 × Z7), up from 23,975,280. No further solve.** All runs stopped; no process left running.
+Draft PR #350 is open for the branch. The coordinator's independent check of the record is pending.
+
+What we know about the next rung (N > 12,049,800, μ > 35.7):
+- Every run above that order stalled at best cost 1–4 after 1–5·10⁵ evals (μ ≈ 36–37), in the same way as the wall SIZE_LAW §2.3 and STRUCTURE §5 describe.
+  ORBW=3 did not clearly help here (sl 73×Z31 reached cost 1 with a fixed element uncovered, but no more).
+- At N ≈ 12M one eval is ~0.024 s, so one 4-hour single-thread run is about 6·10⁵ evals. The record needed 4.3·10⁵.
+  Going higher needs several times more evals per run, which is a few more core-days than this session's 6 hours allowed.
+- Not tried: RESTART=1 reheats from random orbits on psl 151 × Z7 at higher μ, the k=5 orbit ladder, longer seeds on
+  psl 79 × Z49 (cost 3 in several seeds), and the Haar-lift routes in research/theorems/BEAT_16_5_SQUAD.md.
+  A bigger model would be the next step if this route is still wanted (per the brief, the coordinator decides).
+
+## Files
+
+- research/frontier/sols/d9D10_psl_151_7_orb3f0_s1.txt (record, sha256 d78ef086…c654)
+- research/structured/runs/d9D10_psl_151_7_orb3f0_s1.log (its run log)
+- research/structured/runs/raise9-10/ (all queue files and run logs of this session)
+- research/structured/runs/raise_d9D10_screen/ (screen output)
