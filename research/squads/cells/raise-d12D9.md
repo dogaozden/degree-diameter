@@ -72,3 +72,10 @@ psl 47 × Z337 (N 17,486,256, μ 24.3; no wide rows, so slower per evaluation).
 Unsolved, above the bar: psl 139 × 13 best 17 (22.5k evals), psl 47 × 337 best 6 (10.5k evals, haar_gen3 evaluator, no wide rows).
 Stopped unpromising: psl 43 × 439 (best 18 at 20 min, haar_gen3 evaluator); psl 71 × 97 seed 2 (N equal to the record, could only tie).
 Running: pgl 37 × 343 seed 2 (best 8 so far), psl 47 × 337 seed 2, sl 71 × 49 seed 1 (N 17,534,160, μ 25.3).
+
+### Round 5 result: NEW RECORD 35,068,320 (+1.0 % over 34,710,480)
+- sl 71 × Z49, N = 17,534,160, k = 3, m = 4, f = 0, seed 2, μ 25.3, |Fix| 71: **solved** at 23,473 evaluations (1,674 s).
+  File: research/frontier/sols/d12D9_sl_71_49_orb3f0_s2.txt. Log: research/structured/runs/d12D9_sl_71_49_orb3f0_s2.log.
+  Checks: haarcheck_sl VALID and haarcheck2 VALID, both d=12 D=9, all 17,534,160 per side reached, ecc 9.
+- The same group, seed 1 (40 min, 34.6k evals) ended at best 2. Seed matters: this is a ~1-in-2 group at μ 25.
+- Unsolved above the old bar: pgl 71 × 49 best 9, sl 47 × 169 best 6.
