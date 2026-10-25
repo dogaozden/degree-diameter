@@ -37,3 +37,21 @@ few percent while μ climbs from 33 toward the orbit method's wall (μ ≈ 45–
 ## Log
 
 (see the bottom; newest last)
+
+### Tier 1 (ORBIT 3 5 0, seed 1, 4000 s each, 4 in parallel): no solve
+
+| group | N | μ | Fix | best cost | evals |
+|---|---|---|---|---|---|
+| sl 29 × Z373 | 9,086,280 | 34.1 | 29 | 3 | 197k |
+| sl 53 × Z61 | 9,078,264 | 33.7 | 53 | 3 | 223k |
+| psl 263 | 9,095,592 | 34.5 | 131 | 4 | 108k |
+| psl 43 × Z229 | 9,098,628 | 34.7 | 20 | 6 | 209k |
+
+Cost 3 with one or two fixed-point misses is the same stall the orbit notes describe (§3, §7). Four 4000 s runs
+(about 7·10⁵ evaluations in total) did not reach cost 0 at these orders.
+
+### Tier 2 (ORBW=3, 4000 s each, 4 in parallel), started
+
+`runs/raise_d15D8/tier2.sh`: sl 29×Z373 (seed 2), sl 53×Z61 (seed 2), sl 29×Z373 with RESTART=1 (seed 3),
+psl 263 (seed 2). ORBW=3 weights an uncovered α-fixed element as much as a free orbit; the (11,8) cell was
+solved with it.
