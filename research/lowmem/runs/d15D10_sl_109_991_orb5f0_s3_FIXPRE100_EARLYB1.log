@@ -4,3 +4,7 @@ alpha: conj by mat(0,108,1,10), z -> 160 z on Z_991
 ORBIT k=5 m=3 f=0: |Fix(alpha)| = 109 (+e); mu = 37.86, mu/k = 7.57, fixed-point misses ~ 3.43
 start cost=48 (first eval 1.28s)
 t=39 steps=3 evals=25 cost=21 best=15 T=0.39
+t=81 steps=6 evals=49 cost=21 best=15 T=0.15
+t=113 steps=9 evals=73 cost=15 best=15 T=0.15
+RESULT d=15 D=10 group=sl 109 x Z_991 N=1283265720 best=15 evals=73 time=113.1 orbit k=5 m=3 f=0 fix=109 fixchecks=2519
+exit 1 2026-10-25T17:04:05Z

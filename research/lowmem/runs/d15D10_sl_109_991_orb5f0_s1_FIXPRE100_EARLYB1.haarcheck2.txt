@@ -11,3 +11,21 @@ BFS from (e,A):
   from (e,A) level 5: new=575990  reached=620316 / 2566531440
   from (e,A) level 6: new=8033450  reached=8653766 / 2566531440
   from (e,A) level 7: new=107806446  reached=116460212 / 2566531440
+  from (e,A) level 8: new=900989192  reached=1017449404 / 2566531440
+  from (e,A) level 9: new=1174880329  reached=2192329733 / 2566531440
+  from (e,A) level 10: new=374201707  reached=2566531440 / 2566531440
+  done in 475.96s, eccA=10, reached 2566531440 / 2566531440
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 2566531440
+  from (e,B) level 2: new=210  reached=226 / 2566531440
+  from (e,B) level 3: new=2940  reached=3166 / 2566531440
+  from (e,B) level 4: new=41160  reached=44326 / 2566531440
+  from (e,B) level 5: new=575990  reached=620316 / 2566531440
+  from (e,B) level 6: new=8033450  reached=8653766 / 2566531440
+  from (e,B) level 7: new=107806446  reached=116460212 / 2566531440
+  from (e,B) level 8: new=900947536  reached=1017407748 / 2566531440
+  from (e,B) level 9: new=1174880329  reached=2192288077 / 2566531440
+  from (e,B) level 10: new=374243363  reached=2566531440 / 2566531440
+  done in 479.10s, eccB=10, reached 2566531440 / 2566531440
+VALID d=15 D=10 vertices=2566531440 eccA=10 eccB=10
+exit 0 after 955 s, 2026-10-25T17:19:18Z
