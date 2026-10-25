@@ -77,3 +77,13 @@ sl 32 × Z277 (N = 9,067,872; GF(32) as `poly x^5+x^2+1`, no wide rows, so slowe
 - sl 32 × Z277 (GF(32), seed 1): cost 4 at 5·10⁴ evaluations, the best of tier 3. Still running.
 
 ### Tier 4 (started, 3600 s): sl 32 × Z277 seed 2 and sl 53 × Z61 ORBW=3 seed 4.
+
+### Tier 4 results
+
+- **sl 53 × Z61, ORBW=3, seed 4: cost 0 after 2.07·10⁵ evaluations** (μ = 33.7, Fix = 53).
+  haar_sym's own full diameter check: OK (both the direct and s₀ = e normalised forms).
+  Candidate: 2N = **18,156,528** vertices, i.e. above the record 18,128,880 by +0.15 %.
+  Solution file: `runs/raise_d15D8/sl53_61_orbw3_s4.sol`. Independent verification in progress
+  (build_haar2.py, haarcheck_sl.c, haarcheck2.c); this entry is updated when they finish.
+- sl 32 × Z277 (GF(32)), seeds 1 and 2: best cost 4 and 6 after 1·10⁵ and 0.99·10⁵ evaluations. Not solved.
+- sl 32 × Z277 and sl 53 × Z61 (seed 2 / seed 3) earlier: see above tiers.
