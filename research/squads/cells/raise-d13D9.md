@@ -25,11 +25,20 @@ Record to beat: **67,742,688** vertices = 2·|SL(2,103) × Z_31| (N = 33,871,344
 
 ## Runs (round 1, 2 h per job)
 
-See the table at the end (updated as runs finish).
+| job | N | evals (2 h) | best cost | result |
+|---|---|---|---|---|
+| sl 53 × Z_229, seed 1 | 34,080,696 | 48,625 | 24 | no solution |
+| sl 53 × Z_229, seed 2 | 34,080,696 | 49,081 | 12 | no solution |
+| sl 61 × Z_151, seed 1 | 34,264,920 | 27,913 | 20 | no solution |
+| sl 89 × Z_49, seed 1 | 34,539,120 | 53,417 | 14 | no solution |
+
+Round 2 (started 09:42, 2 h each): sl 53×Z_229 seeds 3 (RESTART=1), 4, 5 (RESTART=1); sl 89×Z_49 seed 2.
+Costs were flat for the last hour in most runs. The 103 record needed about 10k evaluations, so 2 h at 0.18 s per
+evaluation (about 40k evaluations) is not yet decisive for these groups.
 
 ## Status
 
-- Round 1 started 07:41 (container time), jobs in `scratchpad/pool13/`.
+- Round 1 (07:41–09:41): no solution. Round 2 started 09:42.
 
 ## Notes for a resume
 
