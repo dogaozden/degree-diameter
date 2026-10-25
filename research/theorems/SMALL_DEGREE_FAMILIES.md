@@ -42,8 +42,8 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
    - **(3,7):** no cubic bipartite graph with more than 168 vertices and diameter 7 has a colour-preserving group of
      automorphisms acting freely with at most 8 vertex orbits. All Haar graphs and all lifts of the 2+2, 3+3 and
      4+4 bases were searched exhaustively up to the Moore bound.
-   - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The ten groups that came within
-     cost 5 (all affine-type products like Loz's group) are exhaustively negative; the closest is cost 1.
+   - **(4,8):** all 3,924 groups of order 1093–1200 except order 1152 were screened. The eleven groups that came within
+     cost 5 (all affine-type, like Loz's group) are exhaustively negative; the closest is cost 1.
    - **(4,9):** the closest group found is C101 : C25 = SmallGroup(2525,3) (5,050 vertices), 2 vertices short and
      exhaustively negative. The library screen of orders 2486–2700 found nothing.
    - **(3,10):** no group of order 401–600 (except 512 and 576) gives a cubic Haar graph of diameter 10. The
@@ -354,7 +354,7 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
   - For (3,9) the Moore bound allows 2+2 lifts up to order 255, so (3,9) is not closed.
   - (3,10), all 67 groups of order 243 = 3⁵ (972 vertices; the shape of the Haar near miss (486,40)): 55 searched
     exhaustively, 12 removed by the rigorous filters, no solution, best cost 8 (`runs/lift_b22_D10.tsv`).
-- **(4,8): the ten best groups of the full screen** (§6.2) are exhaustively negative (`onegroup.py`,
+- **(4,8): the best groups of the full screen** (§6.2), all eleven at cost ≤ 5, are exhaustively negative (`onegroup.py`,
   `runs/d4D8_sg*_exhaustive.txt`):
 
 | group | structure | sets tested | best cost |
@@ -369,6 +369,7 @@ Coverage of every run below was re-checked against NrSmallGroups (`completeness.
 | (1134,40) | C7 : (((C3 × C3 × C3) : C3) : C2) | 1,911,390 | 5 |
 | (1140,15) | C5 : (C19 : C12) | 978,957 | 5 |
 | (1197,7) | C7 : (C19 : C9) | 693,714 | 5 |
+| (1240,7) | C31 : (C5 × Q8), centre C2 | 1,475,741 | 2 |
 
 - **Bug found and fixed this session** (by squad card c6). In lift mode `allgroups.py` left the identity out of
   the plan for the first free voltage.
