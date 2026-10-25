@@ -65,3 +65,8 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
   prod psl 5×sl 13×Z31 (4,062,240, μ 38, seeds 1 and 2).
 - Candidates checked by hand above 4,001,928 with k = 3 valid cyclic factors (all primes ≡ 1 mod 3): SL/PSL/PGL(2,q)×Z_n
   for n in {31, 37, 43, 61, 79, 103, 109, 133, 139, 259, 331}; the order window is tight, so few are left at μ ≤ 40.
+- 10:10 UTC: prod psl 5×sl 13×Z31 seed 1 (N 4,062,240, μ 38): 3,600 s, best 3, 7.2e5 evals, no solve.
+  psl 43×Z103 (N 4,092,396, μ 41): seeds 1 and 2 at best 3 and 9 after about 1e6 and 6e5 evals; seed 3 started (3 h).
+  prod psl 5×sl 13×Z31 seed 2 at best 6. sl 25×Z259 stopped at 18.
+- Record still 8,003,856 (sl 83×Z7). The plateau at cost 3 (one uncovered orbit) appears at μ ≈ 38–41.
+  Resume: research/structured/tools/orbq.sh with queue files in runs/raise-d8D10/q (bash, not exec).
