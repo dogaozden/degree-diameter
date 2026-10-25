@@ -29,8 +29,15 @@ Opus lead session, 2026-10-25, branch claude/bigcheck-dist-h6r1g3. Read README.m
   Frobenius symmetry (impossible: it fixes points but no lines), point-point jumps, GA, product structure all no better
   than plain annealing.
 
+- bcd lift mode also takes SL(2,p) × Z_n and PSL(2,p) × Z_n voltages (Haar graphs = lifts of the dipole,
+  haar2lift.py); tested on four records and a perturbed graph; 10 s for (11,9) 16.8 M on one thread.
+- Prior work found later: the cell-10-8 session (Oct 24, claude/cell-10-8-search-t6pwvg) covered the D = 8 decoding,
+  a Z10 lemma (10 copies free), the guaranteed-walk count and Haar runs; credited in d8/NOTES.md.
+
 ## Running / next
-- /tmp/hs: haar_sym orbit search for (10,8) on PSL(2,23) × Z97 (N = 588,984 > 588,240 needed), seed 11, 3 h, 1 thread
-  (an earlier 34-min run reached cost 12; STRUCTURE.md estimates ~2·10⁷ evaluations).
+- /tmp/hs/runs: (10,8) Haar orbit search on PSL(2,7) × SL(2,8) × Z7 (N = 592,704; cell-10-8's better group), seeds
+  21, 22 (RESTART=1) and 23 (haar_sym2 RESTARTAFTER=2 ORBW=3), ~2.7 h each, started 06:00 UTC. Earlier PSL(2,23) × Z97
+  seeds 11-13 stopped at best 12, 9, 10. Request for more cloud seeds: research/squads/requests/2026-10-25T0550-d10D8-haar.md.
+- An Opus agent works on reconstructing/beating Delorme's 5⌊(q+5)/2⌋ (output: d8/theory/NOTES.md).
 - Open: a structured (algebraic) voltage design for D = 8 hexagon lifts; reconstruct Delorme's 5⌊(q+5)/2⌋ family, then
   try hub surgery as at D = 7.
