@@ -132,3 +132,25 @@ SL 137×133. The first start (jobsB2.txt) ended after 48 s with RESULT best 12 a
 as d13D10_sl_137_133_orb3_s1.early_exit_48s.log. Restarted with jobsB3.txt at 4,800 s; it is running (log
 d13D10_sl_137_133_orb3_s1.log). The seed-2 k=5
 resume is still at cost 1 (about 20:10 UTC end). No record yet.
+
+## Round-2 result (20:11 UTC)
+
+**No record in round 2.** The bar stays 681,406,800 (SL(2,149) × Z103, round 1). Nothing above it has been solved.
+
+Rungs run, all unsolved, with the independent verdicts not reached:
+- PSL 131×311, k = 5, f = 3, FIXMIN=5, seed 1: cost 1 after 14,529 evals, 12,604 s. (N = 349,557,780; 2N 699,115,560.)
+- PSL 131×311, same, resumed from the seed-1 checkpoint under seed 2: cost 1 after 20,698 evals, 18,007 s total. Two
+  seeds, about 35,000 evals, both stuck at cost 1 on one group: the best k = 5 lead so far.
+- SL 103×313 (order 3): cost 1 after 9,985 evals. (2N 683,982,624.)
+- PSL 241×49 (order 3): cost 3 after 4,433 evals. (2N 685,866,720.)
+- SL 191×49 (order 3): cost 3 after 4,449 evals. (2N 682,832,640.)
+- SL 137×133 (order 3): first start exited at 48 s with no cause found (log kept as .early_exit_48s.log); restart at
+  4,800 s was at cost 4 after 2,137 evals when this section was written. Still running; its end will be recorded here.
+
+**Next steps for a fresh session, most promising first.**
+1. The k = 5 PSL 131×311 lead: a longer single run from the seed-2 checkpoint (not the same checkpoint again), or ORBW=5
+   (an uncovered fixed element weighs as much as a free orbit), to see whether the cost-1 state is a fixed-element miss.
+   First, log which orbit or fixed element stays uncovered.
+2. Untried groups above the record: PSL(2,173) × Z133 (688.6M, predicted about 2.5 h), PSL(2,281) × Z31 (687.8M). The
+   PGL(2,q) × Z_n rungs need an independent PGL checker before any hit can count.
+3. PSL(2,125) × Z349 (681.6M): needs a prime-power PSL checker; the current haarcheck_psl is prime-only.
