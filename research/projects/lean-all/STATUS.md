@@ -15,17 +15,26 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (11,5) | 7,020 | GQ lift, W(8) | **done** | `nb_11_5_7020`, LeanAll/D11D5 (1,170 sources) |
 | (12,5) | 9,840 | GQ lift, W(9) | **done** | `nb_12_5_9840`, LeanAll/D12D5 (1,640 sources) |
 | (13,5) | 11,486 | unit design | **done** | `nb_13_5_11486`, LeanAll/D13D5 (1,644 sources) |
-| (14,5) | 17,568 | GQ lift, W(11) | building (staged BFS) | LeanAll/D14D5 |
-| (15,5) | 20,736 | route-chart lift | building (staged BFS) | LeanAll/D15D5 |
-| (16,5) | 33,792 | route-chart lift | building (staged BFS) | LeanAll/D16D5 |
-| (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | building (staged BFS, 2 sources) | LeanAll/D6D8 |
-| (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | todo | |
-| (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (packed batch checks, 720 batches) |
+| (14,5) | 17,568 | GQ lift, W(11) | **done** | `nb_14_5_17568`, LeanAll/D14D5 (staged orbit BFS, 2,928 sources) |
+| (15,5) | 20,736 | route-chart lift | **done** | `nb_15_5_20736`, LeanAll/D15D5 (staged orbit BFS) |
+| (16,5) | 33,792 | route-chart lift | building (staged orbit BFS) | LeanAll/D16D5 |
+| (6,8) | 31,680 | Haar, PSL(2,11) × Z24 | building (staged orbit BFS, 2 sources) | LeanAll/D6D8 |
+| (8,9) | 1,326,960 | Haar, SL(2,19) × Z97 | **done** | `nb_8_9_1326960`, LeanAll/HaarD8D9 (720 batches × 2) |
+| (11,8) | 2,258,520 | Haar, PSL(2,59) × Z11 | **done** | `nb_11_8_2258520`, LeanAll/HaarD11D8 (1,740 sign-normalised batches) |
 | (8,10) | 7,818,096 | Haar, SL(2,67) × Z13 | building | LeanAll/HaarD8D10 |
 | (10,9) | 8,003,856 | Haar, SL(2,83) × Z7 | building | LeanAll/HaarD10D9 |
 | (11,9) | 16,792,080 | Haar, SL(2,61) × Z37 | building | LeanAll/HaarD11D9 |
 | (15,8) | 18,128,880 | Haar, SL(2,109) × Z7 | building | LeanAll/HaarD15D8 |
-| other D = 8–10 Haar cells | 2.3M … 1.3B | Haar (SL, PSL, products) | todo | |
+| (9,10) | 23,975,280 | Haar, PSL(2,71) × Z67 | building | LeanAll/HaarD9D10 |
+| (12,9) | 34,026,720 | Haar, SL(2,41) × Z247 | building | LeanAll/HaarD12D9 |
+| (10,10) | 60,141,120 | Haar, SL(2,79) × Z61 | building | LeanAll/HaarD10D10 |
+| (13,9) | 67,742,688 | Haar, SL(2,103) × Z31 | building | LeanAll/HaarD13D9 |
+| (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD13D8 (HaarProd) |
+| (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD9D9 (HaarProd) |
+| (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | generating | LeanAll/HaarD14D9 |
+| (15,9), (16,9), (12,10), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | todo (same pipeline; disk and time) | |
+| (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | todo (needs GF(8) arithmetic) | |
+| (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | todo; the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
@@ -58,3 +67,26 @@ and finally compares with the slot targets (`a`, `c`, the ramps `d` and `z`). `b
 batch gives, for every slot, a word whose product has those entries; `cover_of_batches` turns all batches into a cover
 of `G` (the determinant fixes the fourth entry). Certificates come from `haarcert.c` (BFS over the group, every word
 re-evaluated). A batch of about 2,000 slots takes about 0.3 s in the kernel.
+
+`HaarPSL.lean` does the same for `PSL(2,p) × Z_n` (the quotient of `SL(2,p) × Z_n` by `(-1, 0)`): batches run over
+sign-normalised matrices only (`c` in `1 … (p-1)/2`, or `c = 0` and `a` in `1 … (p-1)/2`) and the final comparison
+accepts either sign through fieldwise equality masks (`batchOKpm`, `batch_sound_pm`, `cover_of_batches_pm`); the record
+forms map words to the quotient (`psl_record_odd/even`).
+
+`HaarProd.lean` handles `SL(2,p) × Z_n × SL(2,q)` and `PSL(2,p) × Z_n × SL(2,q)`. A batch fixes the second matrix and
+runs over the slots of the first factor as before; the same certificate is checked twice, once with the first factor's
+letters against the ramp targets and once with the second factor's letters (same digits and shifts) against constant
+targets (`word_const`, from the general `batch_sound`). The covers of the first factor are restated keeping the
+certificate (`cover_of_batches_ex`, `cover_of_batches_pm_ex`).
+
+Generated files (`gen_haarsl.py`, `gen_haarprod.py`): `Defs` (letters, parameters, constants, the batch predicate),
+`Bat*` (one theorem per batch, the certificate number is the witness and `decide +kernel` checks it; the module's
+range lemma joins the batches by a balanced tree of `range_join`/`range_one` from `LeanAll/Range.lean`, no case
+splits), `Cover*` (the range lemmas joined the same way) and `Record`. Cells whose generated files are too large to
+commit are listed in `cells.txt` with the command that writes them, and `manifests/<Cell>.sha256` holds the sha256 of
+every generated file (the generators and certificate programs are deterministic).
+
+Builds: `poolq.py` runs a queue file (memory budget, barriers between stages, jobs may be appended while it runs;
+`!MOD` runs `lean` directly on a module whose imports are built, which saves the lake start-up of about 3 s per job).
+Rates seen here: about 3,000–5,000 slots per second per core, depending on the degree and the batch size.
+

@@ -2,7 +2,8 @@
 """Run `lake build MOD` jobs under a memory budget, from a queue file that may grow while it runs (run from lean/).
 
 usage: poolq.py QUEUE LOG BUDGET_GB MAXJOBS
-QUEUE lines: `MOD:GB` (estimated peak memory), `--` (barrier: everything above finishes before anything below
+QUEUE lines: `MOD:GB` (estimated peak memory; `!MOD:GB` runs `lean` on the module directly instead of
+`lake build`), `--` (barrier: everything above finishes before anything below
 starts), `END` (stop once everything above is done), blank or `#` lines are ignored. Lines may be appended at any
 time. Between two barriers jobs start in any order as the budget allows (a large job does not block smaller ones
 after it). Each finished job logs wall time, measured peak RSS and status; a failure logs the tail of its output."""
@@ -10,6 +11,16 @@ import os, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from poolbuild import ENV, lean_rss_by_ppid, tree_rss  # noqa: E402
+
+
+def lean_env():
+    env = dict(ENV)
+    env['LEAN_PATH'] = subprocess.run(['lake', 'env', 'printenv', 'LEAN_PATH'], capture_output=True, text=True,
+                                      env=ENV).stdout.strip()
+    return env
+
+
+LENV = lean_env()
 
 
 def parse(path):
@@ -34,7 +45,8 @@ def main():
     while True:
         procs = lean_rss_by_ppid()
         for pid, (k, m, est, t0, p, peak) in list(running.items()):
-            peak = max(peak, tree_rss(pid, procs))
+            own = procs.get(pid, ('', 0, 0))[2] if m.startswith('!') else 0
+            peak = max(peak, own + tree_rss(pid, procs))
             running[pid] = (k, m, est, t0, p, peak)
             if p.poll() is not None:
                 out = open(f'/tmp/claude-0/logs/jobs/{m}.out').read()
@@ -61,7 +73,15 @@ def main():
             if running and (used + est > budget or len(running) >= maxjobs):
                 continue
             fo = open(f'/tmp/claude-0/logs/jobs/{m}.out', 'w')
-            p = subprocess.Popen(['lake', 'build', m], stdout=fo, stderr=subprocess.STDOUT, text=True, env=ENV)
+            if m.startswith('!'):
+                # direct `lean` run: no lake startup or trace check (the module's imports must be built already)
+                rel = m[1:].replace('.', '/')
+                out = f'.lake/build/lib/lean/{rel}'
+                os.makedirs(os.path.dirname(out), exist_ok=True)
+                cmd = ['lean', f'{rel}.lean', '-o', f'{out}.olean', '-i', f'{out}.ilean']
+                p = subprocess.Popen(cmd, stdout=fo, stderr=subprocess.STDOUT, text=True, env=LENV)
+            else:
+                p = subprocess.Popen(['lake', 'build', m], stdout=fo, stderr=subprocess.STDOUT, text=True, env=ENV)
             running[p.pid] = (k, m, est, time.time(), p, 0)
             started.add(k)
         time.sleep(1)

@@ -1,0 +1,19 @@
+# Generated Haar cells of lean-all: one line per cell, the command (run from lean/) that writes its Lean files.
+# Build haarcert / haarcert_prod first:
+#   gcc -O2 -o /tmp/claude-0/work/haarcert research/projects/lean-all/haarcert.c
+#   gcc -O2 -o /tmp/claude-0/work/haarcert_prod research/projects/lean-all/haarcert_prod.c
+# Both are deterministic, so the files match manifests/<Cell>.sha256 (sha256sum -c from lean/).
+# Cells marked [committed] have their generated files in the repository.
+HaarD8D9   [committed] python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d8D9_sl_19_97_orb3_s2.txt BipartiteDD/LeanAll/HaarD8D9 BipartiteDD.LeanAll.HaarD8D9 nb_8_9_1326960 --source research/frontier/sols/d8D9_sl_19_97_orb3_s2.txt
+HaarD11D8  [committed] python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d11D8_psl_59_11_orb5_ORBW5_s3.txt BipartiteDD/LeanAll/HaarD11D8 BipartiteDD.LeanAll.HaarD11D8 nb_11_8_2258520 --source research/frontier/sols/d11D8_psl_59_11_orb5_ORBW5_s3.txt
+HaarD8D10  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt BipartiteDD/LeanAll/HaarD8D10 BipartiteDD.LeanAll.HaarD8D10 nb_8_10_7818096 --source research/frontier/sols/d8D10_sl_67_13_orb3_s12.txt
+HaarD10D9  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt BipartiteDD/LeanAll/HaarD10D9 BipartiteDD.LeanAll.HaarD10D9 nb_10_9_8003856 --source research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt
+HaarD11D9  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt BipartiteDD/LeanAll/HaarD11D9 BipartiteDD.LeanAll.HaarD11D9 nb_11_9_16792080 --source research/frontier/sols/d11D9_sl_61_37_orb3_s1.txt
+HaarD15D8  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d15D8_sl_109_7_orb3f0_s1.txt BipartiteDD/LeanAll/HaarD15D8 BipartiteDD.LeanAll.HaarD15D8 nb_15_8_18128880 --source research/frontier/sols/d15D8_sl_109_7_orb3f0_s1.txt
+HaarD9D10  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt BipartiteDD/LeanAll/HaarD9D10 BipartiteDD.LeanAll.HaarD9D10 nb_9_10_23975280 --per 10 --source research/frontier/sols/d9D10_psl_71_67_orb3f0_s1.txt
+HaarD12D9  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d12D9_sl_41_247_orb3f0_s1.txt BipartiteDD/LeanAll/HaarD12D9 BipartiteDD.LeanAll.HaarD12D9 nb_12_9_34026720 --per 5 --source research/frontier/sols/d12D9_sl_41_247_orb3f0_s1.txt
+HaarD10D10 python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d10D10_sl_79_61_orb3_s1.txt BipartiteDD/LeanAll/HaarD10D10 BipartiteDD.LeanAll.HaarD10D10 nb_10_10_60141120 --per 10 --source research/frontier/sols/d10D10_sl_79_61_orb3_s1.txt
+HaarD13D9  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d13D9_sl_103_31_orb3_s1.txt BipartiteDD/LeanAll/HaarD13D9 BipartiteDD.LeanAll.HaarD13D9 nb_13_9_67742688 --per 16 --source research/frontier/sols/d13D9_sl_103_31_orb3_s1.txt
+HaarD14D9  python3 ../research/projects/lean-all/gen_haarsl.py ../research/frontier/sols/d14D9_sl_67_193_orb3_s1.txt BipartiteDD/LeanAll/HaarD14D9 BipartiteDD.LeanAll.HaarD14D9 nb_14_9_116068656 --per 5 --source research/frontier/sols/d14D9_sl_67_193_orb3_s1.txt
+HaarD13D8  python3 ../research/projects/lean-all/gen_haarprod.py ../research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt BipartiteDD/LeanAll/HaarD13D8 BipartiteDD.LeanAll.HaarD13D8 nb_13_8_6999552 --source research/frontier/sols/d13D8_prod_sl_7_sl_7_31_orb6swc_s2.txt
+HaarD9D9   python3 ../research/projects/lean-all/gen_haarprod.py ../research/frontier/sols/d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt BipartiteDD/LeanAll/HaarD9D9 BipartiteDD.LeanAll.HaarD9D9 nb_9_9_3499776 --source research/frontier/sols/d9D9_prod_psl_7_sl_7_31_orb3f0_s1.txt
