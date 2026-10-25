@@ -2,6 +2,7 @@ import BipartiteDD.HexagonD7.Hexagon
 import BipartiteDD.HexagonD7.Family
 import BipartiteDD.HexagonD7.Certificate
 import BipartiteDD.HexagonD7.Mixed
+import BipartiteDD.HexagonD7.Midpoints
 
 /-! Axiom check for the diameter-7 hexagon construction (project hexagon-family). -/
 
@@ -21,3 +22,5 @@ import BipartiteDD.HexagonD7.Mixed
 #print axioms BipartiteDD.HexagonD7.exists_r2_iff
 #print axioms BipartiteDD.HexagonD7.duality_r2
 #print axioms BipartiteDD.HexagonD7.certificate_mixed
+#print axioms BipartiteDD.HexagonD7.cntG_eq_of_near
+#print axioms BipartiteDD.HexagonD7.exists_r2_of_near

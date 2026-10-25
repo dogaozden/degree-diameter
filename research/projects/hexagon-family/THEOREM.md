@@ -340,6 +340,11 @@ $(11,7)\ \ge 411{,}866$ and $(12,7)\ \ge 690{,}872$ (with a hub graph of $2\cdot
 
 - `exists_r2_iff` (Mixed): **Lemma 3′** (both directions) for any finite incidence structure; `duality_r2`: the
   point part of a duality satisfies (R2) everywhere (Corollary).
+- `exists_r2_of_near` (Midpoints): Lemma 3 when every point is collinear with at most two points of $R$ (and
+  dually), as in Proposition 4: if $\tau$ maps the *near graph* of $R$ (pairs at distance 4) onto that of $S$, two
+  points of $R$ have at most one common collinear point (and dually), and $|\Gamma_2(r)|=|\Gamma_2(\tau r)|$,
+  $|P|=|L|$, then $\tau$ extends to $\sigma$ with (R2). The counts of Lemma 3′ are computed from the near graph
+  (`cntG_pair`, `cntG_single`, `cntG_eq_of_near`), once for an abstract relation and used for points and for lines.
 - `certificate_mixed` (Mixed): for every finite field $F$, $q=|F|$, $j\le q$, sets $R$ (no two collinear), $S$ (no
   two concurrent), $\tau:R\to S$ with the counts of Lemma 3′, hubs with at most $j$ per owner and a bipartite hub
   graph of degree $\le q-j$ with same-side distances $\le6$: a bipartite graph of maximum degree $q+1+j$ and

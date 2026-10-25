@@ -63,10 +63,11 @@ hub graph and writes PREFIX.sol (3 levels, d7hex format) and PREFIX_LV5/7.hubs.
 
 ## Lean (lean/BipartiteDD/HexagonD7/, standard axioms only, Axioms.out.txt)
 
-Build: `cd lean && lake build BipartiteDD.HexagonD7.Mixed` (PATH=$HOME/.elan/bin), axioms:
+Build: `cd lean && lake build BipartiteDD.HexagonD7.Midpoints` (PATH=$HOME/.elan/bin), axioms:
 `lake env lean BipartiteDD/HexagonD7/Axioms.lean`. Theorem 1 (`Hyp.ediam_le`, `exists_graph`), `table_family`,
 Lemma 2 (`exists_local_duality`), `freed_family`, `certificate` (pairwise opposite, 3 levels), Lemma 3' (`exists_r2_iff`,
-both directions), duality case (`duality_r2`), `certificate_mixed` (any j, mixed sets: the three finite checks on R/S,
+both directions), duality case (`duality_r2`), Lemma 3 for midpoints shared by two points, i.e. Prop. 4
+(`exists_r2_of_near`, Midpoints.lean), `certificate_mixed` (any j, mixed sets: the three finite checks on R/S,
 the counts, and the hub graph give the graph). Not formalised: a duality of H(3^h); the finite checks of the actual sets.
 
 ## Open / next

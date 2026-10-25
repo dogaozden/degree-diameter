@@ -14,3 +14,5 @@
 'BipartiteDD.HexagonD7.exists_r2_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD7.duality_r2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.HexagonD7.certificate_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonD7.cntG_eq_of_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.HexagonD7.exists_r2_of_near' depends on axioms: [propext, Classical.choice, Quot.sound]
