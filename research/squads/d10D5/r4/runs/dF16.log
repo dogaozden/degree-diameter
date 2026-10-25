@@ -1,0 +1,10 @@
+unmixed pairs: points 80 lines 73
+start 34 (10, 0, 24)
+  best flip candidates [(11, 344), (11, 1329), (11, 2017), (12, 650), (12, 383)]
+flip 344: after flip 35 (11, 0, 24) -> repaired 30 (cur 34)
+  best flip candidates [(11, 360), (12, 2300), (13, 954), (13, 488), (13, 1329)]
+flip 360: after flip 29 (11, 0, 18) -> repaired 29 (cur 30)
+  best flip candidates [(11, 488), (12, 1329), (12, 1210), (13, 3101), (13, 954)]
+flip 488: after flip 29 (11, 0, 18) -> repaired 29 (cur 29)
+  best flip candidates [(12, 1649), (12, 1329), (13, 1656), (13, 889), (13, 954)]
+flip 1649: after flip 30 (12, 0, 18) -> repaired 30 (cur 29)

@@ -1,0 +1,8 @@
+unmixed pairs: points 76 lines 70
+start 4 (4, 0, 0)
+  best flip candidates [(6, 152), (6, 602), (6, 700), (6, 2134), (6, 1088)]
+flip 152: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(6, 1088), (6, 700), (6, 2134), (6, 602), (6, 1399)]
+flip 1088: after flip 6 (6, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(6, 1399), (6, 700), (6, 602), (6, 2134), (8, 1055)]
+flip 1399: after flip 6 (6, 0, 0) -> repaired 4 (cur 4)

@@ -1,0 +1,23 @@
+unmixed pairs: points 76 lines 70
+start 4 (4, 0, 0)
+  best flip candidates [(6, 700), (6, 1399), (6, 2134), (6, 602), (6, 1088)]
+flip 700: after flip 6 (6, 0, 0) -> repaired 4 (cur 4)
+  best flip candidates [(5, 1399), (6, 2134), (6, 152), (6, 1088), (7, 3047)]
+flip 1399: after flip 5 (5, 0, 0) -> repaired 3 (cur 4)
+  best flip candidates [(5, 715), (5, 1088), (5, 152), (6, 1084), (6, 128)]
+flip 715: after flip 5 (5, 0, 0) -> repaired 4 (cur 3)
+  best flip candidates [(5, 1088), (5, 152), (6, 2337), (6, 1084), (6, 1164)]
+flip 1088: after flip 5 (5, 0, 0) -> repaired 5 (cur 3)
+  best flip candidates [(5, 152), (6, 128), (6, 1164), (6, 1084), (6, 2337)]
+flip 152: after flip 5 (5, 0, 0) -> repaired 3 (cur 3)
+  best flip candidates [(3, 1684), (4, 1251), (5, 1250), (5, 3112), (5, 1978)]
+flip 1684: after flip 3 (3, 0, 0) -> repaired 1 (cur 3)
+  best flip candidates [(5, 1026), (5, 483), (5, 1030), (5, 1742), (6, 2347)]
+flip 1026: after flip 5 (5, 0, 0) -> repaired 2 (cur 1)
+  best flip candidates [(5, 483), (5, 1742), (5, 1030), (6, 2947), (6, 2676)]
+flip 483: after flip 5 (5, 0, 0) -> repaired 1 (cur 1)
+  best flip candidates [(2, 1306), (2, 1738), (4, 2451), (4, 2980), (5, 550)]
+flip 1306: after flip 2 (2, 0, 0) -> repaired 2 (cur 1)
+  best flip candidates [(2, 1738), (4, 2980), (4, 2451), (5, 550), (6, 1921)]
+flip 1738: after flip 2 (2, 0, 0) -> repaired 0 (cur 1)
+final 0 (0, 0, 0)

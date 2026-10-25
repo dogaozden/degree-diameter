@@ -1,0 +1,11 @@
+unmixed pairs: points 67 lines 73
+start 11 (11, 0, 0)
+  best flip candidates [(12, 2168), (12, 2243), (13, 1892), (13, 1329), (13, 2327)]
+flip 2168: after flip 12 (12, 0, 0) -> repaired 12 (cur 11)
+  best flip candidates [(12, 2243), (13, 1667), (13, 1892), (13, 2327), (13, 1329)]
+flip 2243: after flip 12 (12, 0, 0) -> repaired 11 (cur 11)
+  best flip candidates [(13, 1667), (13, 171), (13, 1892), (13, 765), (13, 1617)]
+flip 1667: after flip 13 (13, 0, 0) -> repaired 13 (cur 11)
+  best flip candidates [(13, 1617), (13, 1892), (13, 1329), (13, 765), (13, 171)]
+flip 1617: after flip 13 (13, 0, 0) -> repaired 13 (cur 11)
+  best flip candidates [(13, 1892), (13, 765), (13, 171), (13, 1329), (14, 1015)]

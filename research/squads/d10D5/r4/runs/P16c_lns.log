@@ -1,0 +1,12 @@
+unmixed pairs: points 73 lines 78
+start 7 (7, 0, 0)
+  best flip candidates [(8, 3129), (8, 1062), (9, 733), (9, 1617), (9, 1332)]
+flip 3129: after flip 8 (8, 0, 0) -> repaired 8 (cur 7)
+  best flip candidates [(8, 1062), (9, 2168), (9, 1617), (9, 1332), (9, 201)]
+flip 1062: after flip 8 (8, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(9, 1617), (9, 201), (9, 2087), (9, 2083), (9, 2168)]
+flip 1617: after flip 9 (9, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(9, 1332), (9, 201), (9, 2087), (9, 2083), (9, 2168)]
+flip 1332: after flip 9 (9, 0, 0) -> repaired 7 (cur 7)
+  best flip candidates [(8, 2142), (8, 387), (9, 321), (9, 201), (9, 391)]
+flip 2142: after flip 8 (8, 0, 0) -> repaired 7 (cur 7)
