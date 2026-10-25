@@ -13,18 +13,20 @@ pat = re.compile(r"RESULT .* best=(\d+) evals=(\d+) time=([\d.]+)")
 os.makedirs(OUTDIR, exist_ok=True)
 
 def run(line):
-    N, m, k, r = line.split()
-    tag = f"N{N}_m{m}_k{k}_r{r}_s{SEED}"
+    f = line.split()
+    N, m, k, r = f[:4]
+    n = f[4] if len(f) > 4 else "1"
+    tag = f"N{N}_m{m}_k{k}_r{r}_n{n}_s{SEED}"
     out = os.path.join(OUTDIR, f"sol_{tag}.txt")
     log = os.path.join(OUTDIR, f"log_{tag}.txt")
     env = dict(os.environ, THREADS="1")
     with open(log, "w") as lf:
         p = subprocess.run(["nice", "-n", "5", "timeout", str(int(float(SECS)) + 120), HAAR, "5", "8", SECS, SEED,
-                            K, out, "meta", m, k, r, "1"], stdout=subprocess.PIPE, stderr=lf, text=True, env=env)
+                            K, out, "meta", m, k, r, n], stdout=subprocess.PIPE, stderr=lf, text=True, env=env)
     mt = pat.search(p.stdout)
     best = mt.group(1) if mt else "NA"
     solved = os.path.exists(out) and os.path.getsize(out) > 0
-    return f"{N}\t{m}\t{k}\t{r}\t{SEED}\t{best}\t{'SOLVED' if solved else 'no'}\t{p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ''}"
+    return f"{N}\t{m}\t{k}\t{r}\t{n}\t{SEED}\t{best}\t{'SOLVED' if solved else 'no'}\t{p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ''}"
 
 lines = [l for l in open(CANDS) if l.strip()]
 with ThreadPoolExecutor(int(WORKERS)) as ex, open(RES, "a") as f:

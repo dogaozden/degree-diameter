@@ -1,6 +1,6 @@
 # raise-d5D8: beat 9,576 at (Δ, D) = (5, 8)
 
-Status: in progress (Haiku worker, job raise-5-8). Notes are kept current so a fresh session can resume.
+Status: **record raised to 9,760** (Haar graph of Z_61 ⋊₈ Z_80, |G| = 4,880). Search continues for |G| ≥ 4,881.
 
 ## Baseline
 - Ours: 9,576 = Haar graph of Z266 ⋊₁₇ Z18 (|G| = 4,788, S = {(0,0),(51,5),(129,13),(156,5),(110,11)}),
@@ -28,3 +28,19 @@ Status: in progress (Haiku worker, job raise-5-8). Notes are kept current so a f
   `apsp EDGES` (assumption-free all-pairs BFS; source from research/lifts/apsp.c on origin/claude/voltage-lifts-search-6lfotq).
 
 ## Batch log
+
+### Batch a1 (600 s per run, seed 1, K = 8, 4 workers): top 24 by screen, N 4816–4920
+- Result: **SOLVED** at N = 4880, Z_61 ⋊₈ Z_80 (`meta 61 80 8`), 9,760 vertices. The other 11 finished runs stalled at cost 1–3.
+
+### Record: 9,760 (new)
+- Solution: `research/frontier/sols/d5D8_n9760_haar_meta61_80_8_s1.txt` (haar_gen3 format, `d D spec n NCYC N NTOT`).
+  S = {(0,0), (17,76), (45,49), (0,16), (11,62)} in meta(a, j) coordinates, from the haar_gen3 description lines.
+- Verification:
+  1. `research/frontier/build_haar2.py` (groups rebuilt from definitions with numpy): VALID, n = 9760, 24,400 edges,
+     5-regular, no repeated edges, ecc from A = 8, from B = 8, 0 unreached. Edge-list sha256 de5d9e3d…fd82cb.
+  2. `apsp` (assumption-free all-pairs BFS, research/lifts/apsp.c from claude/voltage-lifts-search-6lfotq):
+     n = 9760, bipartite, connected, 9,760 sources, **diameter 8**.
+- Beats 9,576 by 184 vertices (+1.9 %). Table 9,234; Moore 43,690.
+
+### Next
+- Only |G| ≥ 4,881 can beat 9,760. Lower orders were stopped (killed) at the switch.

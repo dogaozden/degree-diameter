@@ -14,21 +14,23 @@ WORKERS = int(sys.argv[5]) if len(sys.argv) > 5 else 4
 pat = re.compile(r"min=(\d+) p1=(\d+) p10=(\d+) median=(\d+)")
 
 def run(line):
-    N, m, k, r = line.split()
+    f = line.split()
+    N, m, k, r = f[:4]
+    n = f[4] if len(f) > 4 else "1"
     env = {"RANDSAMPLE": SAMPLES, "THREADS": "1", "PATH": "/usr/bin:/bin"}
     try:
         p = subprocess.run(["nice", "-n", "5", "timeout", "120", HAAR, "5", "8", "1", "1", "8",
-                            "/dev/null", "meta", m, k, r, "1"], capture_output=True, text=True, env=env)
+                            "/dev/null", "meta", m, k, r, n], capture_output=True, text=True, env=env)
         mt = pat.search(p.stdout)
         if not mt:
             return None
-        return (int(N), int(m), int(k), int(r)) + tuple(int(x) for x in mt.groups())
+        return (int(N), int(m), int(k), int(r), int(n)) + tuple(int(x) for x in mt.groups())
     except Exception:
         return None
 
 lines = [l for l in open(GROUPS) if l.strip()]
 with ThreadPoolExecutor(WORKERS) as ex, open(OUT, "w") as f:
-    f.write("N\tm\tk\tr\tmin\tp1\tp10\tmedian\n")
+    f.write("N\tm\tk\tr\tn\tmin\tp1\tp10\tmedian\n")
     for res in ex.map(run, lines):
         if res:
             f.write("\t".join(map(str, res)) + "\n")
