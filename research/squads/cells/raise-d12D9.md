@@ -79,3 +79,11 @@ Running: pgl 37 × 343 seed 2 (best 8 so far), psl 47 × 337 seed 2, sl 71 × 49
   Checks: haarcheck_sl VALID and haarcheck2 VALID, both d=12 D=9, all 17,534,160 per side reached, ecc 9.
 - The same group, seed 1 (40 min, 34.6k evals) ended at best 2. Seed matters: this is a ~1-in-2 group at μ 25.
 - Unsolved above the old bar: pgl 71 × 49 best 9, sl 47 × 169 best 6.
+
+### Round 6 (from 10:40 UTC): bar N > 17,534,160 (35,068,320)
+Only prime-field SL/PSL groups can be checked here (haarcheck_sl.c is prime-only, haarcheck_psl.c is PSL-only, build_haar2.py
+is too slow at 3·10⁷ vertices). So pgl 47 × 169, pgl 71 × 49 (ties the bar anyway) and sl 64 × 67 (GF(64), no checker) were
+stopped without a verdict.
+Results so far (unsolved): sl 47 × 169 seed 1 best 6 (30k evals), seed 2 best 8 (21.6k), psl 73 × 91 best 8 (25k evals, μ 28.9),
+sl 43 × 223 best 18 (12k, μ 29.5), sl 37 × 349 best 36 (9.5k, μ 28.2, stopped).
+Running: sl 47 × 169 seeds 2 and 3 (3600 s), psl 73 × 91, sl 43 × 223.
