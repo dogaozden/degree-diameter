@@ -23,3 +23,23 @@ psl 137×127, sl 79×331, psl 293×13, sl 139×61 (first four, running 07:21 UTC
 sl 109×127, sl 233×13, psl 103×301.
 
 (Log entries below are added as runs finish.)
+
+## Results (rung 1, seed 1, 900 s per job, k = 3, m = 4, f = 0)
+
+| group | N | 2N | μ | best cost | evals | result |
+|---|---|---|---|---|---|---|
+| sl 79 × Z331 | 163,169,760 | 326,339,520 | 20.4 | 3 | 2,913 | not solved |
+| psl 137 × Z127 | 163,272,216 | 326,544,432 | 20.6 | 3 | 1,305 | not solved |
+| sl 139 × Z61 | 163,814,280 | 327,628,560 | 21.8 | 2 | 1,233 | not solved |
+| psl 293 × Z13 | 163,497,516 | 326,995,032 | 21.1 | 2 | 1,273 | not solved |
+| **psl 197 × Z43** | **164,371,284** | **328,742,568** | 22.4 | **0** | **305** | **solved** |
+
+**New record: 328,742,568 vertices** (+0.95 % over 325,832,976).
+- File: `../../frontier/sols/d12D10_psl_197_43_orb3f0_s1.txt`; log: `../../structured/runs/d12D10_psl_197_43_orb3f0_s1.log`.
+- Checks: haar_sym's own full diameter check (both (e,A) and (e,B) reach all 164,371,284 elements within 10, normalised
+  s₀ = e); independent `tools/haarcheck_psl` (2m56s): VALID.
+- Not checked: build_haar2.py (above 20M vertices it is too slow for this box); the coordinator re-checks.
+
+Remaining rung-1 jobs (sl 131×73, sl 103×151, sl 109×127, sl 233×13, psl 103×301) are still queued or running.
+Observation: the first three unsolved groups plateaued at best cost 2–3 after ~1,300 evals. Solved and unsolved runs
+at nearly the same μ look like a group effect, so the next rungs should screen groups before raising μ.
