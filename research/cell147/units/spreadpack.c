@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
     fprintf(stderr, "orthogonality graph on E: degree %d (first vertex)\n", deg[0]);
     if (getenv("DUMP")) {   /* DUMP=prefix: prefix.graph ("n m", then edges "i j", i<j, 0-based vertices of E) and
                                prefix.map (line i: hexagon point id of vertex i, its spread line id, its 7 coordinates) */
-        char fn[512]; snprintf(fn, sizeof fn, "%s.graph", getenv("DUMP")); FILE *g = fopen(fn, "w"); long m2 = 0;
+        char fn[512]; snprintf(fn, sizeof fn, "%s.graph", getenv("DUMP")); FILE *g = fopen(getenv("NOGRAPH") ? "/dev/null" : fn, "w"); long m2 = 0;
         for (int i = 0; i < nE; i++) m2 += deg[i]; fprintf(g, "%d %ld\n", nE, m2 / 2);
         for (int i = 0; i < nE; i++) for (int e = 0; e < deg[i]; e++) if (adj[i][e] > i) fprintf(g, "%d %d\n", i, adj[i][e]);
         fclose(g); snprintf(fn, sizeof fn, "%s.map", getenv("DUMP")); g = fopen(fn, "w");

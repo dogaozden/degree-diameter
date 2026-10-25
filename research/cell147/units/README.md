@@ -42,6 +42,16 @@ orthogonality graph of E (degree q(q^2+1)) finds 48 (q = 5), 84 (q = 7), 155 (q 
 best local searches on flags. (At q = 3 the optimum, 28, is an ovoid of H(3) with a dual spread instead; ovoids of H(q)
 exist only for q = 3^h.) Flag sets: sols/flags_q*_spread*.txt.
 
+**Orbit packings (secantclique.c, phaseils.c, orbitclique.c).** Partial ovoids that are unions of orbits of an
+isometry of E do better at q = 11. E's 6-space is A ⊥ V4 with A = (x0,x3) anisotropic and V4 = (x1,x2,x5,x6)
+hyperbolic. The rotations of A (order q+1) have orbits O_b = {[a:b] : N(a) = Q4(b)}, one per point b of PG(3,q) off the
+quadric Q4 = 0. Two orbits are compatible iff B4(b,b')^2 - 4 Q4(b) Q4(b') is a nonzero square, i.e. the line bb' is a
+secant. The maximum is 17 orbits at q = 11, proven by exhaustive branch and bound (the graph is vertex-transitive); with 12
+fixed points [0:b] (b singular) this gives 216, which is maximal. Isometries that also move V4 do better. A random
+order-4 element (squad card r3c3) and an order-8 element give 240 = 60 x 4 = 30 x 8 by clique search on their orbit
+compatibility graphs. That is the current (14,7) packing. At q = 5, 7 plain local search wins (48, 84 against 36, 72
+for rotation orbits); at q = 13 the rotation orbits give 252 (17 x 14 + 14, not proven optimal) against 205.
+
 ## The unit
 
 A unit (p, t) on that lift deletes the 5 lifted copies of the matching edge (p, l), l = sigma_t(p), and adds two new
