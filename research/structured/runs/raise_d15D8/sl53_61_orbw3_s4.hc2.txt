@@ -1,0 +1,25 @@
+file=/root/work/verify/cand.txt d=15 D=8 p=53 n=61 |G|=9078264 vertices=18156528
+selfcheck: SL(2,53) index is a bijection onto det-1 matrices (|SL|=148824), fastmod ok (0.00s)
+generators: 15 read, all in SL(2,53) x Z_61, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=15  reached=16 / 18156528
+  from (e,A) level 2: new=210  reached=226 / 18156528
+  from (e,A) level 3: new=2940  reached=3166 / 18156528
+  from (e,A) level 4: new=41112  reached=44278 / 18156528
+  from (e,A) level 5: new=558106  reached=602384 / 18156528
+  from (e,A) level 6: new=5305307  reached=5907691 / 18156528
+  from (e,A) level 7: new=8517203  reached=14424894 / 18156528
+  from (e,A) level 8: new=3731634  reached=18156528 / 18156528
+  done in 3.57s, eccA=8, reached 18156528 / 18156528
+BFS from (e,B):
+  from (e,B) level 1: new=15  reached=16 / 18156528
+  from (e,B) level 2: new=210  reached=226 / 18156528
+  from (e,B) level 3: new=2940  reached=3166 / 18156528
+  from (e,B) level 4: new=41112  reached=44278 / 18156528
+  from (e,B) level 5: new=558106  reached=602384 / 18156528
+  from (e,B) level 6: new=5305461  reached=5907845 / 18156528
+  from (e,B) level 7: new=8517203  reached=14425048 / 18156528
+  from (e,B) level 8: new=3731480  reached=18156528 / 18156528
+  done in 3.51s, eccB=8, reached 18156528 / 18156528
+VALID d=15 D=8 vertices=18156528 eccA=8 eccB=8

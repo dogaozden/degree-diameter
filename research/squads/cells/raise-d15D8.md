@@ -87,3 +87,20 @@ sl 32 × Z277 (N = 9,067,872; GF(32) as `poly x^5+x^2+1`, no wide rows, so slowe
   (build_haar2.py, haarcheck_sl.c, haarcheck2.c); this entry is updated when they finish.
 - sl 32 × Z277 (GF(32)), seeds 1 and 2: best cost 4 and 6 after 1·10⁵ and 0.99·10⁵ evaluations. Not solved.
 - sl 32 × Z277 and sl 53 × Z61 (seed 2 / seed 3) earlier: see above tiers.
+
+### RECORD: 18,156,528 vertices at (15,8) (sl 53 × Z61, ORBW=3, seed 4)
+
+Beats the standing record 18,128,880 by +27,648 vertices (+0.15 %).
+
+- Graph: Haar graph of G = SL(2,53) × Z61, |G| = N = 9,078,264, |S| = 15 = 3·5 (5 free orbits of an order-3 automorphism, f = 0),
+  2N = 18,156,528 vertices, 15-regular, 136,173,960 edges, no duplicate edges.
+- Verification (all pass, all report d = 15, D = 8):
+  - haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
+  - build_haar2.py (edge-list sha256 `5cd1a1ad900db9fd82d6155d4e342339157bf2078a142affa83298d6ce25e8d7`): VALID.
+  - `research/frontier/haarcheck_sl.c` (hcsl): VALID, reached 9,078,264 / 9,078,264 from each side, ecc 8.
+  - `research/frontier/haarcheck2.c` (hc2): VALID, reached 18,156,528 / 18,156,528, ecc 8 both sides.
+- Saved as `research/frontier/sols/d15D8_sl_53_61_orbw3f0_s4.txt`. Logs and checker outputs are in
+  `research/structured/runs/raise_d15D8/sl53_61_orbw3_s4.*`.
+- Search: μ = 33.7, Fix = 53, ORBW=3 (uncovered fixed element weighs 3), seed 4, solved after 2.07·10⁵ evaluations in 3565 s.
+  The other runs of the same group ended at best cost 3 (seed 1, no ORBW) and 3 (ORBW=3, seed 2), with no solve.
+  The solve is one seed, not a measured advantage for ORBW=3.
