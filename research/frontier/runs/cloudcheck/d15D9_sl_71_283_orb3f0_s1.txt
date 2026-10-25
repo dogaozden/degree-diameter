@@ -1,0 +1,27 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T23:17:17Z
+file: research/frontier/sols/d15D9_sl_71_283_orb3f0_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ c84691f); sha256 c2c3b791d302c3e13f0bc514bc54557416f96d1bde05e3d56b2227cfa1b2e70b
+header: 15 9 sl 71 n 283 N 101268720
+
+################ reference checker: gcc -O3 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d15D9_sl_71_283_orb3f0_s1.txt
+from (e,A): reached A 101268720/101268720, B 101268720/101268720 within 9, ecc 9
+from (e,B): reached A 101268720/101268720, B 101268720/101268720 within 9, ecc 9
+VALID d=15 D=9 group=sl 71 x Z_283 N=101268720 vertices=202537440 (distinct generators, 15-regular simple)
+[exit 0; wall 89s; cpu 88s; peak RSS 74 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d15D9_sl_71_283_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d15D9_sl_71_283_orb3f0_s1.txt
+header: 15 9 sl 71 n 283 N 101268720
+d=15 D=9
+group: SL(2,71) [order 357840] x Z_283; |G| = 101268720, vertices 2|G| = 202537440
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 15 distinct group elements, all in the group [0.0s]
+neighbour check (full: 101268720 vertices per side): every vertex has 15 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [12.5s]
+BFS from A: ecc=9 reached 202537440 of 202537440 (unreached 0); level sizes [1, 15, 210, 2940, 41136, 573906, 7728583, 67460079, 93498790, 33231780] [24.0s]
+BFS from B: ecc=9 reached 202537440 of 202537440 (unreached 0); level sizes [1, 15, 210, 2940, 41136, 573906, 7728307, 67460079, 93499066, 33231780] [35.4s]
+max degree = min degree = 15, no repeated edges (checked above)
+elapsed 35.4s
+RESULT VALID d=15 D=9 eccA=9 eccB=9 n=202537440
+[exit 0; wall 35s; cpu 139s; peak RSS 50 MB]

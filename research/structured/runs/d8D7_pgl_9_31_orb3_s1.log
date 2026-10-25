@@ -1,0 +1,8 @@
+group pgl 9 poly x^2+1 x Z_31, N=22320, identity 0, H order 62, rows 360, threads 1, setup 0.00s
+wide rows: HW order 248, rows 90, setup 0.00s
+alpha: conj by mat(1,7,8,7) (index 574), z -> 5 z on Z_31
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 47.64, mu/k = 15.88, fixed-point misses ~ 2.32
+start cost=239
+t=30 steps=191046 evals=1528369 cost=15 best=9 T=0.53
+t=60 steps=371577 evals=2972617 cost=15 best=9 T=0.19
+t=90 steps=552618 evals=4420945 cost=15 best=9 T=0.15

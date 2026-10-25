@@ -1,0 +1,10 @@
+group psl 47 x Z_223, N=11571024, identity 241063, H order 47, rows 246192, threads 1, setup 0.30s
+wide rows: HW order 223, rows 51888, setup 0.59s
+alpha: conj by mat(10,20,25,36) (index 21927), z -> 39 z on Z_223
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 20.24, mu/k = 6.75, fixed-point misses ~ 0.29
+start cost=5489
+RESULT d=9 D=10 group=psl 47 x Z_223 N=11571024 best=0 evals=1553 time=22.0 orbit k=3 m=3 f=0 fix=23
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oA/d9D10_psl_47_223_orb3f0_s1.txt
+VALID d=9 D=10 group=psl 47 x Z_223 N=11571024 vertices=23142048 (distinct generators, 9-regular simple)

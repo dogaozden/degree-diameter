@@ -1,0 +1,30 @@
+from (e,A): reached A 4001928/4001928, B 4001928/4001928 within 9, ecc 9
+from (e,B): reached A 4001928/4001928, B 4001928/4001928 within 9, ecc 9
+VALID d=10 D=9 group=sl 83 x Z_7 N=4001928 vertices=8003856 (distinct generators, 10-regular simple)
+file=q/outG/d10D9_sl_83_7_orb3_s1.txt d=10 D=9 p=83 n=7 |G|=4001928 vertices=8003856
+selfcheck: SL(2,83) index is a bijection onto det-1 matrices (|SL|=571704), fastmod ok (0.02s)
+generators: 10 read, all in SL(2,83) x Z_7, all distinct
+selfcheck: generator inverses verified
+BFS from (e,A):
+  from (e,A) level 1: new=10  reached=11 / 8003856
+  from (e,A) level 2: new=90  reached=101 / 8003856
+  from (e,A) level 3: new=810  reached=911 / 8003856
+  from (e,A) level 4: new=7290  reached=8201 / 8003856
+  from (e,A) level 5: new=65115  reached=73316 / 8003856
+  from (e,A) level 6: new=548813  reached=622129 / 8003856
+  from (e,A) level 7: new=2897580  reached=3519709 / 8003856
+  from (e,A) level 8: new=3445734  reached=6965443 / 8003856
+  from (e,A) level 9: new=1038413  reached=8003856 / 8003856
+  done in 2.19s, eccA=9, reached 8003856 / 8003856
+BFS from (e,B):
+  from (e,B) level 1: new=10  reached=11 / 8003856
+  from (e,B) level 2: new=90  reached=101 / 8003856
+  from (e,B) level 3: new=810  reached=911 / 8003856
+  from (e,B) level 4: new=7290  reached=8201 / 8003856
+  from (e,B) level 5: new=65115  reached=73316 / 8003856
+  from (e,B) level 6: new=548851  reached=622167 / 8003856
+  from (e,B) level 7: new=2897580  reached=3519747 / 8003856
+  from (e,B) level 8: new=3445696  reached=6965443 / 8003856
+  from (e,B) level 9: new=1038413  reached=8003856 / 8003856
+  done in 1.91s, eccB=9, reached 8003856 / 8003856
+VALID d=10 D=9 vertices=8003856 eccA=9 eccB=9

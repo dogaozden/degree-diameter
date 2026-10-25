@@ -1,0 +1,9 @@
+group prod psl 5 sl 5 x Z_7, N=50400, identity 8540, H order 42, rows 1200, threads 1, setup 0.00s
+wide rows: HW order 210, rows 240, setup 0.01s
+alpha: conj by prod[mat(1,4,1,0);mat(3,4,2,3)] (index 3812), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 64.24, mu/k = 21.41, fixed-point misses ~ 1.95
+start cost=47040
+t=30 steps=79485 evals=635881 cost=8 best=7 T=0.53
+t=60 steps=159749 evals=1277993 cost=6 best=6 T=0.19
+t=90 steps=241467 evals=1931737 cost=6 best=6 T=0.15
+t=120 steps=324670 evals=2597361 cost=6 best=6 T=0.15

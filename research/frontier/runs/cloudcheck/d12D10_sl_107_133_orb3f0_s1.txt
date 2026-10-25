@@ -1,0 +1,27 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T23:20:07Z
+file: research/frontier/sols/d12D10_sl_107_133_orb3f0_s1.txt  (from branch claude/structured-search-orbit-w5dd4f @ 80bdfeb03); sha256 befd7f3c88840368d69a363dca5d9c147b09e205c252c7bc5820f79fc8ceff1d
+header: 12 10 sl 107 n 133 N 162916488
+
+################ reference checker: gcc -O3 -o /tmp/hsl research/frontier/haarcheck_sl.c && /tmp/hsl research/frontier/sols/d12D10_sl_107_133_orb3f0_s1.txt
+from (e,A): reached A 162916488/162916488, B 162916488/162916488 within 10, ecc 10
+from (e,B): reached A 162916488/162916488, B 162916488/162916488 within 10, ecc 10
+VALID d=12 D=10 group=sl 107 x Z_133 N=162916488 vertices=325832976 (distinct generators, 12-regular simple)
+[exit 0; wall 124s; cpu 123s; peak RSS 118 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d12D10_sl_107_133_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d12D10_sl_107_133_orb3f0_s1.txt
+header: 12 10 sl 107 n 133 N 162916488
+d=12 D=10
+group: SL(2,107) [order 1224936] x Z_133; |G| = 162916488, vertices 2|G| = 325832976
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 12 distinct group elements, all in the group [0.0s]
+neighbour check (full: 162916488 vertices per side): every vertex has 12 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [13.5s]
+BFS from A: ecc=10 reached 325832976 of 325832976 (unreached 0); level sizes [1, 12, 132, 1449, 15906, 174531, 1905432, 19709804, 121926013, 143030692, 39069004] [28.5s]
+BFS from B: ecc=10 reached 325832976 of 325832976 (unreached 0); level sizes [1, 12, 132, 1449, 15906, 174531, 1905422, 19709804, 121921427, 143030692, 39073600] [43.7s]
+max degree = min degree = 12, no repeated edges (checked above)
+elapsed 43.7s
+RESULT VALID d=12 D=10 eccA=10 eccB=10 n=325832976
+[exit 0; wall 44s; cpu 172s; peak RSS 79 MB]

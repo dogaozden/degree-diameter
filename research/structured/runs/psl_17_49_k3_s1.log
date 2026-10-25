@@ -1,0 +1,8 @@
+group psl 17 x Z_49, N=119952, identity 6664, H order 63, rows 1904, threads 1, setup 0.00s
+wide rows: HW order 196, rows 612, setup 0.01s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 18 z on Z_49
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 8 (+e); mu = 39.84, mu/k = 13.28, fixed-point misses ~ 0.62
+start cost=48
+RESULT d=8 D=8 group=psl 17 x Z_49 N=119952 best=0 evals=87673 time=13.2 orbit k=3 m=2 f=2 fix=8
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/d8/d8D8_psl_17_49_k3_s1.txt

@@ -1,0 +1,13 @@
+group sl 41 x Z_163, N=11227440, identity 267320, H order 42, rows 267320, threads 1, setup 0.29s
+wide rows: HW order 163, rows 68880, setup 0.53s
+alpha: conj by mat(36,39,31,4) (index 62105), z -> 58 z on Z_163
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 41 (+e); mu = 13.09, mu/k = 4.36, fixed-point misses ~ 0.44
+start cost=40
+t=30 steps=241 evals=1929 cost=6 best=1 T=0.53
+t=60 steps=442 evals=3537 cost=3 best=1 T=0.19
+RESULT d=9 D=10 group=sl 41 x Z_163 N=11227440 best=0 evals=3793 time=65.1 orbit k=3 m=3 f=0 fix=41
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/838cf652-86bc-5ad0-a891-5e14ec699678/scratchpad/q/oA/d9D10_sl_41_163_orb3f0_s1.txt
+VALID d=9 D=10 group=sl 41 x Z_163 N=11227440 vertices=22454880 (distinct generators, 9-regular simple)
+VALID d=9 D=10 vertices=22454880 eccA=10 eccB=10

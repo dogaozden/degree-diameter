@@ -1,0 +1,11 @@
+group sl 59 x Z_19, N=3901080, identity 65018, H order 60, rows 65018, threads 1, setup 0.11s
+wide rows: HW order 228, rows 17110, setup 0.19s
+alpha: conj by mat(5,36,27,53) (index 19497), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 59 (+e); mu = 15.85, mu/k = 5.28, fixed-point misses ~ 1.91
+start cost=44
+RESULT d=10 D=9 group=sl 59 x Z_19 N=3901080 best=0 evals=1961 time=22.7 orbit k=3 m=3 f=1 fix=59
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outG/d10D9_sl_59_19_orb3_s1.txt
+n = 7802160 edges = 39010800 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = 05eb9e189373376751ee3ad35363b6c7792b7455f2a14b07c09a70ab8ed8dd29
+VALID d=10 D=9 group=sl 59 x Z_19 N=3901080 vertices=7802160

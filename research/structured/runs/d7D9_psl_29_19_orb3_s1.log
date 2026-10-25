@@ -1,0 +1,31 @@
+group psl 29 x Z_19, N=231420, identity 7714, H order 57, rows 4060, threads 1, setup 0.01s
+wide rows: HW order 133, rows 1740, setup 0.01s
+alpha: conj by mat(1,7,4,0) (index 613), z -> 7 z on Z_19
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 38.19, mu/k = 12.73, fixed-point misses ~ 1.65
+start cost=144
+t=30 steps=9601 evals=76809 cost=14 best=14 T=0.53
+t=60 steps=18820 evals=150561 cost=14 best=14 T=0.19
+t=90 steps=28250 evals=226001 cost=14 best=14 T=0.15
+t=120 steps=37489 evals=299913 cost=12 best=12 T=0.15
+t=150 steps=47518 evals=380145 cost=12 best=12 T=0.15
+t=180 steps=57124 evals=456993 cost=12 best=12 T=0.15
+t=210 steps=66706 evals=533649 cost=12 best=12 T=0.15
+t=240 steps=75960 evals=607681 cost=12 best=12 T=0.15
+t=270 steps=84933 evals=679465 cost=18 best=12 T=0.60
+t=300 steps=94650 evals=757201 cost=6 best=6 T=0.21
+t=330 steps=104450 evals=835601 cost=6 best=6 T=0.15
+t=360 steps=114777 evals=918217 cost=6 best=6 T=0.15
+t=390 steps=124306 evals=994449 cost=6 best=6 T=0.15
+t=420 steps=133235 evals=1065881 cost=6 best=6 T=0.15
+t=450 steps=142557 evals=1140457 cost=6 best=6 T=0.64
+t=480 steps=151332 evals=1210657 cost=6 best=6 T=0.23
+t=510 steps=160902 evals=1287217 cost=6 best=6 T=0.15
+t=540 steps=169262 evals=1354097 cost=6 best=6 T=0.15
+t=570 steps=177086 evals=1416689 cost=6 best=6 T=0.15
+t=600 steps=184470 evals=1475761 cost=6 best=6 T=0.64
+RESULT d=7 D=9 group=psl 29 x Z_19 N=231420 best=0 evals=1499673 time=611.9 orbit k=3 m=2 f=1 fix=14
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/3eceb95b-8ad3-596d-91d8-944ec5b540f8/scratchpad/q/outB/d7D9_psl_29_19_orb3_s1.txt
+n = 462840 edges = 1619940 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = c97b6b64b0455f7a814c9a9e0393340a890475119d4c96802bdc9b9984df3aad
+VALID d=7 D=9 group=psl 29 x Z_19 N=231420 vertices=462840

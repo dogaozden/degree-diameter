@@ -1,0 +1,31 @@
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+date: 2026-10-23T21:49:46Z
+file: research/frontier/sols/d9D10_sl_81_19_s111.txt  (from branch claude/structured-haar-search-ws7bet @ c8e7452); sha256 2093f7133e3d63cba223f574e85c72ea2c8c94770abae43d25051ab8355aee60
+header: 9 10 sl 81 poly x^4+x+2 n 19 N 10095840
+
+################ reference checker (haarcheck_sl/psl do not read this family): python3 research/frontier/build_haar2.py research/frontier/sols/d9D10_sl_81_19_s111.txt
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 20191680 edges = 90862560 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = cbe689b80d30736f78529a29900190ee8492aa5554ff713430203cd0c637e28c
+VALID d=9 D=10 group=sl 81 poly x^4+x+2 x Z_19 N=10095840 vertices=20191680
+(exit 0)
+[exit 0; wall 59s; cpu 59s; peak RSS 1164 MB]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d9D10_sl_81_19_s111.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d9D10_sl_81_19_s111.txt
+header: 9 10 sl 81 poly x^4+x+2 n 19 N 10095840
+d=9 D=10
+group: SL(2,81) [order 531360] x Z_19; |G| = 10095840, vertices 2|G| = 20191680
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 9 distinct group elements, all in the group [0.0s]
+neighbour check (full: 10095840 vertices per side): every vertex has 9 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [0.8s]
+BFS from A: ecc=10 reached 20191680 of 20191680 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36809, 290566, 2095809, 8284051, 7962637, 1516542] [1.8s]
+BFS from B: ecc=10 reached 20191680 of 20191680 (unreached 0); level sizes [1, 9, 72, 576, 4608, 36809, 290538, 2095809, 8285091, 7962637, 1515530] [2.9s]
+max degree = min degree = 9, no repeated edges (checked above)
+elapsed 2.9s
+RESULT VALID d=9 D=10 eccA=10 eccB=10 n=20191680
+(exit 0)
+[exit 0; wall 3s; cpu 11s; peak RSS 11 MB]

@@ -1,0 +1,46 @@
+group sl(2,5^2) x Z_31, N = 483600, d = 7, words of length <= 4 with parity 0, 150 samples x 2 sides
+mode         |Fix|-1    words      p10   median     mean      p90
+rand               0     1555    0.00%    0.26%    0.54%    1.03%
+conj              23     1555    0.00%    1.54%    2.53%    4.63%
+frob2            119     1555    0.00%    1.03%    3.30%   13.05%
+conj2             23     1555    1.29%    2.83%    7.91%   16.85%
+
+rand: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.020  A: r1 r4 r5 r6 = r5 r6 r1 r4
+    0.020  A: r4 r1 r5 r6 = r5 r6 r4 r1
+    0.020  A: r1 r4 r6 r5 = r6 r5 r1 r4
+    0.020  A: r4 r1 r6 r5 = r6 r5 r4 r1
+    0.020  B: r1 r5 r6 r1 = r4 r5 r6 r4
+    0.020  B: r1 r6 r5 r1 = r4 r6 r5 r4
+    0.020  B: r5 r1 r4 r5 = r6 r1 r4 r6
+    0.020  B: r5 r4 r1 r5 = r6 r4 r1 r6
+
+conj: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    1.080  A: e a0 e b0 = a2 e a1 b0
+    1.080  B: e a0 e b0 = a1 e a2 b0
+    1.020  A: a0 e b0 e = a0 b1 e b2
+    1.020  B: a0 e b0 e = a0 b2 e b1
+    1.000  A: a0 a2 a1 b0 = a1 a2 a0 b0
+    0.987  B: a0 a2 a1 b0 = a1 a2 a0 b0
+    0.960  A: a0 b0 b2 b1 = a0 b1 b2 b0
+    0.960  B: a0 b0 b2 b1 = a0 b1 b2 b0
+
+frob2: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    0.707  A: e a0 a2 b0 = a2 a0 e b0
+    0.707  A: e a0 a1 b0 = a1 a0 e b0
+    0.707  B: e a0 a2 b0 = a2 a0 e b0
+    0.707  B: e a0 a1 b0 = a1 a0 e b0
+    0.673  A: a0 e b0 b2 = a0 b2 b0 e
+    0.673  A: a0 e b0 b1 = a0 b1 b0 e
+    0.673  B: a0 e b0 b2 = a0 b2 b0 e
+    0.673  B: a0 e b0 b1 = a0 b1 b0 e
+
+conj2: most common coinciding pairs (count per sample, both sides; letters i_1 i_2 ...):
+    1.260  B: e a0 b0 c0 = a2 e b0 c0
+    1.260  B: e a0 b0 c0 = a1 e b0 c0
+    1.253  A: e a0 b0 c0 = a2 e b0 c0
+    1.253  A: e a0 b0 c0 = a1 e b0 c0
+    1.180  B: a0 b0 e c0 = a0 b0 c2 e
+    1.180  B: a0 b0 e c0 = a0 b0 c1 e
+    1.160  A: a0 e b0 c0 = a0 b2 e c0
+    1.160  A: a0 e b0 c0 = a0 b1 e c0

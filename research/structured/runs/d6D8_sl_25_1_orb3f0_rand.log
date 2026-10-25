@@ -1,0 +1,5 @@
+group sl 25 poly x^2+2 x Z_1, N=15600, identity 600, H order 26, rows 600, threads 1, setup 0.00s
+alpha: conj by mat(13,12,7,16) (index 8407), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 23 (+e); mu = 29.82, mu/k = 9.94, fixed-point misses ~ 2.98
+RANDORB d=6 D=8 group=sl 25 poly x^2+2 x Z_1 N=15600 k=3 m=2 f=0 fix=23 samples=20000000 min=2 p1=17 p10=44 median=182 mean=688.25 var=3527963.6 mu=29.82 time=1603.9
+RANDORB hist (cost/k): 2322 9191 18203 40907 56865 89893 131726 138417 157012 208165 190236 237775 219583 250715 287501 292625 244353 257207 258049 194372 259154 235493 288203 223586 204194 213942 210238 197999 196081 181625 190425 14313943
