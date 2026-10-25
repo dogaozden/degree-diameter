@@ -185,7 +185,7 @@ static void pull_level(const u64 *C, u64 *T, u64 **tab) {
 /* last level: count B-side zeros of S . C; abort (return -1) once the count reaches *bound.  Uncovered elements go
  * to unc[0..ucap) (first ucap of them, *nunc = count stored). */
 static i64 last_level(const u64 *C, u64 **tab, i64 bound, i64 *unc, int ucap, int *nunc) {
-    volatile int abort_ = 0; i64 tot = 0; int nu = 0;
+    volatile int abort_ = 0; i64 tot = 0; i64 nu = 0;   /* 64-bit: a candidate can leave > 2^31 elements uncovered */
     __m512i ones = _mm512_set1_epi64(-1);
     /* mask of the last chunk: words >= LW invalid, word LW-1 partial */
     u64 lm[8]; i64 hl = (LW - 1) / 8 * 8;
@@ -212,7 +212,7 @@ static i64 last_level(const u64 *C, u64 **tab, i64 bound, i64 *unc, int ucap, in
                     u64 zw[8]; _mm512_storeu_si512((void *)zw, zz);
                     for (int u = 0; u < 8; u++) { u64 x = zw[u];
                         while (x) { int b = __builtin_ctzll(x); x &= x - 1; zr++;
-                            int k;
+                            i64 k;
                             #pragma omp atomic capture
                             k = nu++;
                             if (k < ucap) unc[k] = w * L + (h + u) * 64 + b; } }
@@ -224,7 +224,7 @@ static i64 last_level(const u64 *C, u64 **tab, i64 bound, i64 *unc, int ucap, in
                 if (t >= bound) abort_ = 1; }
         }
     }
-    *nunc = nu < ucap ? nu : ucap;
+    *nunc = nu < ucap ? (int)nu : ucap;
     return abort_ ? -1 : tot;
 }
 static const i64 NOBOUND = (i64)1 << 62;
