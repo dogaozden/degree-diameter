@@ -84,3 +84,20 @@ untried, and one family round 1 never screened.
    3109⋊1652 floor 12 (reached within 30 s, then flat); 3109⋊2511 floor 12 (same); 1843⋊501 best 39; 1591⋊371 best 44.
    The floors are reached in seconds and never move, so the cost is structural for these α (fixed-point misses), not a
    slow search. None solved.
+
+3b. **Second tier and status.** Tier 1 (44 specs, min ≤ 60, 60 s each) and tier 2 (160 specs, min 61–150, 45 s each):
+   best floors 12 (3109 family), 14, 18 (2413⋊9 1119; 991⋊22 at 20), then 24 and up. Floors are reached in seconds and
+   stay flat; the random-screen minimum is only a weak predictor (967⋊23 had min 46 and floor 14). Logs and
+   specs: `raise2-d8D7/sweeps/`. Solutions: none (no `.sol` files written).
+
+## Status: stopped, nothing above 43,344
+
+Round 2 covered: (a) metacyclic groups in the window under ORBIT "3 2 2" (all 3,827 specs screened; 204 annealed, 60 s
+to 1,200 s each); (b) lifts over 2+2 and 3+3 degree-8 bases at the target orders (calibrated, far behind Haar); (c) the SL(2,8)
+family (only n = 43 is in range, and it is the record). Best costs: 12 (meta 3109⋊7, 20 min flat), 14, 18.
+
+Why stopped: the floors are structural (reached in seconds, unchanged for 20 min, consistent across two seeds
+and two r-values of the same group). With the same α, longer runs do not move them. What remains untested:
+other α structures on metacyclic groups (k = 2, 4, 5 with m and f as in round 1), 3+3 lifts at larger N, and
+groups with a prime factor ≡ 2 (mod 3) in m (which raises |Fix(α)|). Each of these is a separate program; I did
+not judge any of them likely enough for a Haiku run to be worth it.

@@ -1,0 +1,7 @@
+group meta 967 23 873 x Z_1, N=22241, identity 0, H order 23, rows 967, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 23); using haar_gen3's evaluation
+alpha: meta scaling a -> 142 a, z -> 0 z on Z_1
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 22 (+e); mu = 46.45, mu/k = 15.48, fixed-point misses ~ 5.88
+start cost=25816
+t=30 steps=37524 evals=300193 cost=34 best=34 T=0.53
+RESULT d=8 D=7 group=meta 967 23 873 x Z_1 N=22241 best=34 evals=593137 time=60.0 orbit k=3 m=2 f=2 fix=22
