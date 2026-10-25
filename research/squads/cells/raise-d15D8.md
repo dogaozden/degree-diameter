@@ -177,3 +177,23 @@ psl 79 × Z37 with plain S reached cost 3 (one uncovered orbit or fixed point) a
 - **Standing (15,8) record for this branch: 18,239,520.**
 - Saved as `research/frontier/sols/d15D8_psl_79_37_orb3f0_s7.txt` (run log `runs/raise_d15D8_r2/out/e/d15D8_psl_79_37_orb3f0_s7.log`).
 - Gain over the round-1 bar 18,156,528: +83,000 vertices (+0.46 %).
+
+### Wave 2 results (6000 s each, 15:41–17:21 UTC)
+
+| job | group | μ | seed | evals | best cost |
+|---|---|---|---|---|---|
+| e | psl 79 × Z37 | 35.8 | 7 | 1.22·10⁵ (solved at 3,778 s) | **0 — solved, 18,239,520** |
+| f | psl 79 × Z37 | 35.8 | 8 | 1.90·10⁵ | 3 |
+| g | sl 37 × Z181 | 38.1 | 5 | 1.88·10⁵ | 6 |
+| h | psl 67 × Z61 | 38.6 | 5 | 1.94·10⁵ | 3 |
+
+### Wave 3 (6000 s each, started 17:21 UTC; all plain S, k = 3, f = 0)
+
+| job | group | N | 2N | μ | seed |
+|---|---|---|---|---|---|
+| i | psl 67 × Z61 | 9,171,228 | 18,342,456 | 38.6 | 6 |
+| j | psl 67 × Z61 | 9,171,228 | 18,342,456 | 38.6 | 7 |
+| k | psl 37 × Z361 | 9,136,188 | 18,272,376 | 36.7 | 5 |
+| l | psl 31 × Z613 | 9,121,440 | 18,242,880 | 35.9 | 5 |
+
+Every group above has 2N > 18,239,520, so any solve beats the current record.
