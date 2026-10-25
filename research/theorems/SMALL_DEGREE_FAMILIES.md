@@ -44,9 +44,10 @@ usage limit) and its continuation `claude/thm-smallfamilies-formulas-49l6io` (Oc
      SmallGroup(486,40) at cost 2. K3,3 lifted over C17 : C8 (816 vertices) is exhaustively negative (cost 4).
    - **(3,7), (3,9), (3,10):** no Z_p ⋊ Z_k cubic Haar graph beats the table. Every group up to the Moore bound
      was scanned, and the family maxima are 140, 234, 506 and 660 vertices at D = 7–10.
-6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Every near miss in every cell is an affine-type group:
-   an abelian normal subgroup F_q (or a product of two) with a cyclic or metacyclic group acting by multiplication
-   (§3.1, §5).
+6. **No new record in (3,7), (3,9), (3,10), (4,8) or (4,9).** Most near misses in every cell are affine-type
+   groups: an abelian normal subgroup F_q (or a product of two) with a cyclic or metacyclic group acting by
+   multiplication (§3.1, §5). The exceptions are SmallGroup(486,40) at (3,10), a 3-group extended by C2, and
+   SmallGroup(432,243) at (4,7).
 
 ---
 
@@ -89,8 +90,8 @@ The three graphs are pairwise non-isomorphic. In each group all plan solutions f
 - an exhaustive test of every remaining set with `hx`.
 
 At order 432 all 775 groups were handled: 572 searched, 182 failing the rank test, 21 the bound. The exhaustive run
-is complete for orders 421–447 and 449–467. Order 448 is partial (500 of 1,396 groups); this session screened all of
-448–500 (§6.2). Above 432 the closest exhaustive results are cost 1 (one vertex short), at three groups of order 440
+is complete for orders 421–447 and 449–467. Orders 448 and 468 are partial (500 of 1,396 and 48 of 55 groups);
+this session screened all of 448–500 (§6.2). Above 432 the closest exhaustive results are cost 1 (one vertex short), at three groups of order 440
 (880 vertices): C11 : C40, D8 × (C11 : C5) and C11 : (C5 × Q8). SmallGroup(432,243) is also at cost 1.
 
 *Is the exhaustive search itself right?* Four checks:
