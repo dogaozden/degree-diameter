@@ -383,7 +383,8 @@ static void load_lift(const char *path, char hex[65]) {
 
 /* ------------------------------------------------------------------ BFS (WB sources per pass)
  * Compile with -DWB=8, 16 or 32 to use narrower words: 3·WB/8 bytes per vertex instead of 24, WB sources per pass.
- * The certificates do not depend on WB. */
+ * -DWB=1: one source per pass with three bitsets (3 bits per vertex), for lifts of billions of vertices with few
+ * sources (Haar graphs: 2). The certificates do not depend on WB. */
 #ifndef WB
 #define WB 64
 #endif
@@ -393,10 +394,10 @@ typedef uint64_t W_T;
 typedef uint32_t W_T;
 #elif WB == 16
 typedef uint16_t W_T;
-#elif WB == 8
-typedef uint8_t W_T;
+#elif WB == 8 || WB == 1
+typedef uint8_t W_T;   /* WB = 1 uses the bitset functions below instead of W_T arrays */
 #else
-#error "WB must be 8, 16, 32 or 64"
+#error "WB must be 1, 8, 16, 32 or 64"
 #endif
 static W_T *VIS, *FR, *NX;
 static void pull_explicit(uint64_t *anyp) {
@@ -471,6 +472,61 @@ static void pull_lift(uint64_t *anyp) {
     *anyp = any;
 }
 
+
+/* ------------------------------------------------------------------ single-source bitset BFS (WB = 1) */
+static uint64_t *BV, *BF, *BN; static int64_t NW;
+static inline int bget(const uint64_t *B, int64_t x) { return (int)(B[x >> 6] >> (x & 63) & 1); }
+/* neighbours of x into y[] (returns count); deg <= maxdeg */
+static inline int nbrs(int64_t x, int64_t *y) {
+    int k = 0;
+    if (MODE == 0) { for (int64_t i = st[x]; i < st[x + 1]; i++) y[k++] = adj[i]; return k; }
+    int64_t v = x / M, g = x % M;
+    if (GK) { gel e = gdec(g); for (int64_t i = bst[v]; i < bst[v + 1]; i++) y[k++] = (int64_t)bw[i] * M + genc(gmul(bsel[i], e)); }
+    else for (int64_t i = bst[v]; i < bst[v + 1]; i++) { int64_t h = g + ba[i]; if (h >= M) h -= M; y[k++] = (int64_t)bw[i] * M + h; }
+    return k;
+}
+static int64_t bfs_bits(int64_t src, int DD, int cost_mode, int *eccp) {
+    memset(BV, 0, 8 * NW); memset(BF, 0, 8 * NW);
+    BV[src >> 6] |= 1ULL << (src & 63); BF[src >> 6] |= 1ULL << (src & 63);
+    int64_t frontier = 1, reached = 1; int lev = 0;
+    int64_t *ybuf_all = malloc(sizeof(int64_t) * (maxdeg + 1) * omp_get_max_threads());
+    for (;;) {
+        int64_t add = 0;
+        if (frontier < n / 64) {           /* push */
+            memset(BN, 0, 8 * NW);
+#pragma omp parallel for schedule(dynamic, 256) reduction(+ : add)
+            for (int64_t w = 0; w < NW; w++) {
+                uint64_t bits = BF[w]; int64_t *yb = ybuf_all + (maxdeg + 1) * omp_get_thread_num();
+                while (bits) { int64_t x = w * 64 + __builtin_ctzll(bits); bits &= bits - 1;
+                    int k = nbrs(x, yb);
+                    for (int i = 0; i < k; i++) { int64_t y = yb[i]; uint64_t m1 = 1ULL << (y & 63);
+                        if (!(BV[y >> 6] & m1)) { uint64_t old = __atomic_fetch_or(&BN[y >> 6], m1, __ATOMIC_RELAXED); if (!(old & m1)) add++; } } }
+            }
+        } else {                           /* pull */
+#pragma omp parallel for schedule(dynamic, 64) reduction(+ : add)
+            for (int64_t w = 0; w < NW; w++) {
+                uint64_t out = 0, vis = BV[w]; int64_t *yb = ybuf_all + (maxdeg + 1) * omp_get_thread_num();
+                int64_t xe = w * 64 + 64 < n ? w * 64 + 64 : n;
+                for (int64_t x = w * 64; x < xe; x++) {
+                    if (vis >> (x & 63) & 1) continue;
+                    int k = nbrs(x, yb);
+                    for (int i = 0; i < k; i++) if (bget(BF, yb[i])) { out |= 1ULL << (x & 63); break; }
+                }
+                BN[w] = out; add += __builtin_popcountll(out);
+            }
+        }
+        if (!add) break;
+        lev++;
+#pragma omp parallel for schedule(static)
+        for (int64_t w = 0; w < NW; w++) BV[w] |= BN[w];
+        uint64_t *t = BF; BF = BN; BN = t; frontier = add; reached += add;
+        if (cost_mode && lev == DD) break;
+        if (lev > DD + 2) break;
+    }
+    free(ybuf_all);
+    *eccp = lev; return n - reached;
+}
+
 int main(int argc, char **argv) {
     if (argc < 5) {
         fprintf(stderr, "usage: bcd explicit EDGES d D [--aut FILE] [--part i/K] [--threads T] [--cert FILE] [--reps FILE] [--count]\n"
@@ -528,9 +584,21 @@ int main(int argc, char **argv) {
         fprintf(cf, "orbits %" PRId64 "\nreps_sha256 %s\npart %" PRId64 " %" PRId64 " %" PRId64 " %" PRId64 "\n", R, repshex, part, K, lo, hi);
         fflush(cf);
     }
+    int part_max = 0; int64_t part_unreached = 0;
+#if WB == 1
+    NW = (n + 63) / 64; BV = malloc(8 * NW); BF = malloc(8 * NW); BN = malloc(8 * NW);
+    if (!BV || !BF || !BN) die("out of memory for the BFS bitsets (3 bits per vertex)");
+    for (int64_t b0 = lo; b0 < hi; b0++) {
+        double tb = now(); int ecc1; int64_t s0 = MODE ? (int64_t)reps[b0] * M : (int64_t)reps[b0];
+        int64_t un1 = bfs_bits(s0, DD, cost_mode, &ecc1);
+        if (ecc1 > part_max) part_max = ecc1;
+        part_unreached += un1;
+        if (cf) { fprintf(cf, "src %u ecc %d unreached %" PRId64 "\n", reps[b0], ecc1, un1); fflush(cf); }
+        fprintf(stderr, "source %" PRId64 " of [%" PRId64 ",%" PRId64 "): ecc %d, unreached %" PRId64 " [%.1fs]\n", b0, lo, hi, ecc1, un1, now() - tb);
+    }
+#else
     VIS = malloc(sizeof(W_T) * n); FR = malloc(sizeof(W_T) * n); NX = malloc(sizeof(W_T) * n);
     if (!VIS || !FR || !NX) die("out of memory for the BFS arrays (3 words per vertex)");
-    int part_max = 0; int64_t part_unreached = 0;
     for (int64_t b0 = lo; b0 < hi; b0 += WB) {
         int ns = hi - b0 < WB ? (int)(hi - b0) : WB; W_T full = ns == WB ? (W_T)~(W_T)0 : (W_T)((1ULL << ns) - 1);
         double tb = now(); FULLMASK = full; FRONTIER = ns;
@@ -561,6 +629,7 @@ int main(int argc, char **argv) {
         if (cf) fflush(cf);
         fprintf(stderr, "batch %" PRId64 "-%" PRId64 " of [%" PRId64 ",%" PRId64 "): levels %d, max ecc so far %d, unreached %" PRId64 " [%.1fs]\n", b0, b0 + ns, lo, hi, lev, part_max, part_unreached, now() - tb);
     }
+#endif
     int ok = part_unreached == 0 && part_max <= DD;
     if (cf) { fprintf(cf, "part_max_ecc %d\npart_unreached %" PRId64 "\npart_status %s\nend\n", part_max, part_unreached, ok ? "OK" : "FAIL"); fclose(cf); }
     printf("part %" PRId64 "/%" PRId64 ": %" PRId64 " sources, max eccentricity %d, unreached %" PRId64 "  [%.1fs]\n", part, K, hi - lo, part_max, part_unreached, now() - t0);
