@@ -55,3 +55,27 @@ q=3, m=25); a local "full-coverage" design search (research/d16D8/localdes.c) re
 Z_k-covers whose geodesics between every opposite pair hit all k sheets do not appear to exist even for k = (q+1)/2
 (research/d16D8/geocov.c plateaus at 14% of pairs missing a sheet, q=5, k=3). Next: symmetric + repair on the hexagon
 itself (H(5) with C_31, H(7) with C_19; research/d16D8/hexsym.py, symbase.py, symrepair.c).
+
+## 2026-10-25 13:22–13:55 UTC, cell-16-8 resume (Opus, cloud, session_01CooNNbQpdKF6QpgaAQ3ukA), round 3
+
+Goal as before. Round 3 put round 2's two winners (C-invariant designs + targeted repair) on the hexagon itself, with
+Opus's new tools research/d16D8/hexsym.py (semiregular C ≤ SL(3,q) ≤ G2(q), verified to preserve H(q)), symbase.py
+and symrepair.c. Side targets: 27 copies of H(5) ((8,8) record), 31 of H(7) ((10,8) record). Folder
+research/squads/d16D8-r3/.
+
+| card | idea | best VALID m | DGQ count |
+|---|---|---|---|
+| c1 | H(5), C_31, symrepair, reheats | – (m=22: 10 orbit-source misses) | 25 |
+| c2 | H(5) + equivariant matching moves | – (worse than plain at m=22) | 25 |
+| c3 | H(7), C_19, active-set symrepair, warm starts | 17 | 30 |
+| c4 | H(3), C_13, warm-start chain | 31 | 20 |
+| c5 | W(13), C_85 (testbed) | 32 | 45 |
+| c6 | W(q) scaling with symrepair | 21 (q=7), 27 (q=11) | 30, 40 |
+| c7 | twisted invariance psi(g.e) = u psi(e) | 11 (W(13)); no gain over untwisted | |
+| c8 | H(5): zero flags, M2 = g^K M1, related voltages | 20 (plain random flags); all structured variants worse | 25 |
+
+Opus re-checked c3, c4, c5, c6 and c8 (baselift VALID(all sources) and checkhex.py / checkgq.py structure checks).
+Verdict: on hexagons the best method falls behind DGQ as q grows (31 vs 20 at q=3, 20 vs 25 at q=5, 17 vs 30 at q=7),
+exactly as the counting model m ≈ c·W/ln(S·N·m) with c ≈ 1.3-1.7 predicts (research/squads/cells/d16D8.md §1). No
+record, and no side record. The job stops here: the cell needs DGQ's (unpublished) structure or a new derandomized
+construction, not more search.

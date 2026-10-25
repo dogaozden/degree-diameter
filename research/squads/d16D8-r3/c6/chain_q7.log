@@ -1,0 +1,27 @@
+== chain q=7 start=q7_m16_s1_rep.base m=16 maxm=30 secs=20 seeds=3 13:16:57
+q=7 m=17 from=16 seed=1 orbit-best=0 :: RESULT V=800 k=17 D=6 best=0 steps=13 moves=13 acc=8 secs=0 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m17_s1_rep.base (full check 0: run baselift eval to confirm)
+   full check: V=800 k=17 E=4000 D=6 lift_vertices=13600 sources=800 uncovered=0 time=0.03s VALID(all sources)
+   VALID m=17 (q=7) design=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m17_s1_rep.base
+q=7 m=18 from=17 seed=1 orbit-best=0 :: RESULT V=800 k=18 D=6 best=0 steps=23 moves=23 acc=14 secs=0 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m18_s1_rep.base (full check 0: run baselift eval to confirm)
+   full check: V=800 k=18 E=4000 D=6 lift_vertices=14400 sources=800 uncovered=0 time=0.02s VALID(all sources)
+   VALID m=18 (q=7) design=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m18_s1_rep.base
+q=7 m=19 from=18 seed=1 orbit-best=0 :: RESULT V=800 k=19 D=6 best=0 steps=44 moves=44 acc=10 secs=0 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m19_s1_rep.base (full check 0: run baselift eval to confirm)
+   full check: V=800 k=19 E=4000 D=6 lift_vertices=15200 sources=800 uncovered=0 time=0.02s VALID(all sources)
+   VALID m=19 (q=7) design=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m19_s1_rep.base
+q=7 m=20 from=19 seed=1 orbit-best=0 :: RESULT V=800 k=20 D=6 best=0 steps=319 moves=314 acc=42 secs=0 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m20_s1_rep.base (full check 0: run baselift eval to confirm)
+   full check: V=800 k=20 E=4000 D=6 lift_vertices=16000 sources=800 uncovered=0 time=0.02s VALID(all sources)
+   VALID m=20 (q=7) design=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m20_s1_rep.base
+q=7 m=21 from=20 seed=1 orbit-best=2 :: RESULT V=800 k=21 D=6 best=2 steps=15918 moves=15790 acc=141 secs=20 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m21_s1_rep.base
+q=7 m=21 from=20 seed=2 orbit-best=0 :: RESULT V=800 k=21 D=6 best=0 steps=4132 moves=4111 acc=100 secs=7 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m21_s2_rep.base (full check 0: run baselift eval to confirm)
+   full check: V=800 k=21 E=4000 D=6 lift_vertices=16800 sources=800 uncovered=0 time=0.03s VALID(all sources)
+   VALID m=21 (q=7) design=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m21_s2_rep.base
+q=7 m=22 from=21 seed=1 orbit-best=12 :: RESULT V=800 k=22 D=6 best=12 steps=10297 moves=10195 acc=42 secs=20 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m22_s1_rep.base
+q=7 m=22 from=21 seed=2 orbit-best=10 :: RESULT V=800 k=22 D=6 best=10 steps=11860 moves=11732 acc=55 secs=20 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m22_s2_rep.base
+q=7 m=22 from=21 seed=3 orbit-best=20 :: RESULT V=800 k=22 D=6 best=20 steps=14907 moves=14798 acc=27 secs=20 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m22_s3_rep.base
+STOP q=7: no VALID seed at m=22 (largest VALID so far m=21, base=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m21_s2_rep.base)
+END q=7 largest VALID m=21 base=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_m21_s2_rep.base 13:18:25
+== chain q=7 tag=t60 start=q7_m21_s2_rep.base m=21 maxm=22 secs=60 seeds=2 13:20:43
+q=7 m=22 from=21 seed=1 orbit-best=8 :: RESULT V=800 k=22 D=6 best=8 steps=22817 moves=22558 acc=99 secs=60 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_t60_m22_s1_rep.base
+q=7 m=22 from=21 seed=2 orbit-best=4 :: RESULT V=800 k=22 D=6 best=4 steps=20551 moves=20371 acc=77 secs=60 out=/home/user/degree-diameter/research/squads/d16D8-r3/c6/q7_t60_m22_s2_rep.base
+STOP q=7: no VALID seed at m=22 (largest VALID so far m=21, base=q7_m21_s2_rep.base)
+END q=7 largest VALID m=21 base=q7_m21_s2_rep.base 13:22:44
