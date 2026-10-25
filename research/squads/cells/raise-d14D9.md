@@ -3,12 +3,17 @@
 Session: `claude/raise-d14d9-haar-jq8m8d` (Haiku worker, 2026-10-25). Table value 95,087,738 (DS14v2, Table 4).
 Bipartite Moore bound 1,767,416,562.
 
-**Current best: 117,072,144 vertices** = 2N, N = 58,536,072 = |PSL(2,73) × Z301|, orbit search k=3, m=4, f=2
+**Current best: 117,837,720 vertices** = 2N, N = 58,918,860 = |PSL(2,109) × Z91|, orbit search k=3, m=4, f=2
+(`research/frontier/sols/d14D9_psl_109_91_orb3_s1.txt`, μ ≈ 18.0, 6,609 evaluations, 1,524 s). Verified by haar_sym's
+diameter check and `tools/haarcheck_psl` (VALID, 14-regular simple). sha256 of the solution file
+5ce28d75552724a814639d080018cd55415f673ca2330d20b7f4b8468bc76b4c.
+
+Before it: **117,072,144** = 2N, N = 58,536,072 = |PSL(2,73) × Z301|, orbit search k=3, m=4, f=2
 (`research/frontier/sols/d14D9_psl_73_301_orb3_s1.txt`, μ = 16.3, 4,761 evaluations, 705 s). Verified by haar_sym's
 diameter check and `tools/haarcheck_psl` (VALID, 14-regular simple). sha256 of the solution file
 464a608415b4794c57b07bacfe4d512976fea778b9fdb2bd4a4633e9415db38c.
 
-Before it: **116,211,120** = 2N, N = 58,105,560 = |SL(2,59) × Z283|, orbit search k=3, m=4, f=2
+Before that: **116,211,120** = 2N, N = 58,105,560 = |SL(2,59) × Z283|, orbit search k=3, m=4, f=2
 (`research/frontier/sols/d14D9_sl_59_283_orb3_s1.txt`, μ = 14.43, 441 evaluations, 118 s). Verified by haar_sym's
 diameter check, `tools/hcsl` and `tools/hc2` (both VALID, ecc 9 from both sides). sha256 of the solution file
 4f5834735617679254cb0b788484feaf54082c698fa191c56d2049454fc3d661.
