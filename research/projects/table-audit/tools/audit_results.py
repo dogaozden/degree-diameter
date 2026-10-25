@@ -113,7 +113,7 @@ put(3, 8, source='wiki: Delorme-Gomez-Quisquater (unpublished)',
     notes='not a symmetric cubic graph (Conder census); superseded by the repo record 288')
 put(3, 10, source='wiki: Delorme-Gomez-Quisquater (unpublished)',
     construction='found here (lead, after squad table-audit-r2): a Z80-lift of a cubic bipartite base multigraph on 5 + 5 '
-                 'vertices (sym_anneal2, b = 10, c = 80; graphs/d3D10_n800_symZ80_b10.edges.txt)',
+                 'vertices (squads/table-audit-r1/c6/sym_anneal.c, b = 10, c = 80, seed 11; graphs/d3D10_n800_symZ80_b10.edges.txt)',
     rebuilt='order', check='apsp.c VALID (checks/small.txt)', flag="holder's construction lost; order reproduced",
     notes='not a symmetric cubic graph; Conder\'s 720 (C720.3) and Bar-Yehuda-Etzion\'s 672 are smaller; unbeaten by the repo')
 
