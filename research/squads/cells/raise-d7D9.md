@@ -41,3 +41,10 @@ quotient Z_3 on which the order-3 conjugation is trivial, and the random costs a
   psl 13×217 best 27 (22.2·10⁶ evals); psl 17×97 best 12 (18.2·10⁶); psl 41×7 best 21 (12.7·10⁶); sl 17×49 best 18 (22.1·10⁶).
 - The launcher script did not start wave 2 (it died while waiting). Wave 2 was started by hand at 09:25 UTC with the same
   j2_*.jobs files (3600 s each, ORBW=3, seed 2).
+- 10:25 UTC: wave 2 finished, all unsolved (ORBW=3, seed 2, 3600 s): psl 13×217 best 27; psl 17×97 best 15;
+  psl 41×7 best 15; sl 17×49 best 12. About 1.3·10⁸ evaluations over the eight runs so far, no run solved.
+- Wave 3 (10:25 UTC, seed 3, RESTART=1, 3600 s): psl 17×97 and sl 17×49 with ORBW=5; psl 13×217 and psl 41×7 with
+  ORBW=3 (j3_*.jobs, q3_*.out). A first version of the j3 jobs had k = 5 by mistake (Δ = 11); corrected before start.
+- Current read: these candidates plateau at cost 12–27 (4–9 uncovered orbits) well before the record's μ = 38 solve
+  point. The record's group needed 1.5·10⁶ evaluations; these have had 1–2·10⁷ each. If wave 3 also stalls, the
+  cell is closed for this method at the orders tested.
