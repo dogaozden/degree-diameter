@@ -148,3 +148,13 @@ Results:
    all stay at 2 on the same states.
 2. **Structural cost 0 at n = 401** (W(7) + one pair, for (10,5)): squad r3 card c4, 7-flag incident switch with the
    random-like sigma of the 4,800 record, plain po7 annealing (`inc/runs/w7p1_cost0.in`).
+3. **(11,5) ≥ 7,032**, checked with apsp.c (graphs/d11D5_n7032_CHECK.md). Base: W(8) with one 9-flag switch and
+   no other change; sigma random-like (equal to the polarity on 7 points). nu stage: nujoint annealing from a random
+   nu (263,462 active parity pairs, about 1,070 violated at random) to 34 in ~200 CPU s, then SIGFIX FIRST=1 (greedy
+   sigma swaps that give a violated pair a sigma route, structural cost kept at 0) to 2, then targeted annealing
+   (TARGET=1: with probability PS = 0.02 the move is such a sigma swap, accepted by Metropolis) to 0 in 670 moves.
+   Plain annealing alone stalled at 5-30 on four runs; the sigma moves aimed at violated pairs are what finish it.
+4. Clause weighting is good from cost <= ~20 and bad from cost in the hundreds (weights spread over hundreds of
+   triples and the true cost drifts up). Pipeline for one more pair (`inc/pipeline.sh`): po7 annealing (T0 8 -> 0.3)
+   to <= 20, a colder second anneal if needed, wpo to 0, then nujoint TARGET=1 from the old nu (the switched flags keep
+   their bits), then finish.sh. `inc/addpair.py` adds a pair away from the earlier new vertices (starts ~2,000).
