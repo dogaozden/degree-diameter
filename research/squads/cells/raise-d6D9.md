@@ -39,3 +39,46 @@ Every new record needs N ≥ 63,649 (vertices = 2N).
 - Status at 09:10: no candidate has reached cost 0. The plateaus (3 for psl 19 × 19, 6 for sl 13 × 31, 14 for sl 11 × 49)
   are the same across seeds and ORBW weights, which points to a structural floor, not too little search.
   Queued 90-minute runs of sl 13 × 31 (seeds 3, 4; ORBW=3 seeds 1, 2) as the last attempt on this family.
+- Wave 4 (final): sl 13 × 31 seeds 3, 4 at 90 min: **best 6** after 42M and 28M evals. ORBW=3 at 1235 s: best 6.
+  psl 27 × 7 (N 68,796, μ 56.9, char 3, |Fix| n/a): best 18 after 6.6M evals. Stopped everything at 09:50.
+
+## Conclusion (09:50, about 2 h of search)
+
+**No record. The orbit method (k=3, m=2, f=0) is stuck in this cell with the groups it can reach.**
+Every group of order 63,649 to 68,880 with every prime of n ≡ 1 mod 3 was tried, except the products (not tried,
+they are small-factor and unlikely to help) and PGL twins (same order as SL, more involutions):
+
+| group | N | μ | best cost | evals | note |
+|---|---|---|---|---|---|
+| psl 19 × 19 | 64,980 | 35.4 | **3** | 6–11M per seed, 4 seeds + 1 ORBW | floor (involutions) |
+| sl 11 × 49 | 64,680 | 34.1 | 14 | 25M | |
+| psl 11 × 97 | 64,020 | 31.2 | 18 | 7M | |
+| psl 13 × 61 | 66,612 | 43.7 | 12 | 6M | |
+| sl 13 × 31 | 67,704 | 49.9 | **6** | 14M, 14M, 42M, 28M, +2 ORBW | free-orbit wall (μ/k ≈ 16.6) |
+| sl 9 × 91 | 65,520 | 38.0 | 62 | 6M | |
+| psl 9 × 181 | 65,160 | 36.3 | 84 | 7M | |
+| sl 41 × 1 | 68,880 | 57.5 | 24 | 3M | |
+| psl 27 × 7 | 68,796 | 56.9 | 18 | 6.6M | |
+| sl 8 × 127 | 64,008 | 31.1 | 46 | 9M | small q |
+| sl 7 × 193 | 64,848 | 34.8 | 96 | 7M | small q |
+| psl 7 × 379 | 63,672 | 29.7 | 138 | 0.7M | small q |
+
+Why I think it is stuck and not under-searched:
+- The record's own group solved at μ 29.7 in ~6e4 evals. Nothing at μ 31–36 solved in 6–40M evals, and most stalled 5–50× above
+  the record's count. Group family dominates μ.
+- The plateaus are the same across seeds and across the ORBW weight, so they look like floors, not bad luck.
+- psl 19 × 19: PSL(2,19) has about 90 involutions, each missed with probability about e^(−λ/2) ≈ 0.02 (λ = W/N ≈ 7.7).
+  That gives about 2 expected misses, which fits the floor of 3. The SL(2,q) groups have only −I.
+- sl 13 × 31: μ/k ≈ 16.6 free-orbit misses at the start. The search reaches 2 uncovered orbits and stops. This is the
+  μ ≈ 45–50 wall in STRUCTURE §6 for this budget.
+
+What would move it (not tried; each needs more than these tools):
+1. A group of order 63,649–70,000 with fewer involutions and a small centralizer of an order-3 element (SL(3,q)-type or
+   SL(2,q) × SL(2,r) products), so k = 3 is usable at μ ≈ 35–40. STRUCTURE §7.3 and §8 point the same way.
+2. A voltage (metacyclic or route-chart) lift of a Moore or small-cell base graph (research/lifts/, research/theorems/BEAT_16_5_SQUAD.md).
+   That is a different program. Ask the coordinator whether an Opus session should take it.
+3. A diagnostic: dump the uncovered set of the 6-cost sl 13 × 31 state. If it is always the same element set (for example the
+   central −I or the α-fixed elements of one torus), a structural fix may exist.
+
+Compute used: about 2 h wall clock, 4 slots, roughly 3·10⁸ evaluations in total. All solution-free: nothing was saved to
+research/frontier/sols/, and the (6,9) record stays at 127,296.
