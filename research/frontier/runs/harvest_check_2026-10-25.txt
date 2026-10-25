@@ -28,3 +28,90 @@ ecc from B = 9 unreached 0
 n = 29480 edges = 73700 max degree = 5 min degree = 5 duplicate edges = 0
 edge list sha256 = 079dad1f55bc9426caa314b74c21f3367d47e677df833e069ec5f6f49113d996
 VALID d=5 D=9 group=meta 335 44 8 x Z_1 N=14740 vertices=29480
+== d11D10_psl_89_211_orb5_ORBW5_s11 (origin/claude/cell-11-10-resume-oubzk2, 06:18 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt  (from branch origin/claude/bipartite-d11-10-cell-i5roaa) sha256 e44542636c773e1289cdf0ef42f6b690dd1a08474e5fd849aec2281d1fbcda8e
+header: 11 10 psl 89 n 211 N 74364840
+
+################ reference checker: /tmp/hpsl research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt (gcc -O3 -o /tmp/hpsl research/structured/tools/haarcheck_psl.c)
+from (e,A): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+from (e,B): reached A 74364840/74364840, B 74364840/74364840 within 10, ecc 10
+VALID d=11 D=10 group=psl 89 x Z_211 N=74364840 vertices=148729680 (distinct generators, 11-regular simple)
+(exit 0)
+[exit 0; wall 81s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d11D10_psl_89_211_orb5_ORBW5_s11.txt
+header: 11 10 psl 89 n 211 N 74364840
+d=11 D=10
+group: PSL(2,89) [order 352440] x Z_211; |G| = 74364840, vertices 2|G| = 148729680
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 11 distinct group elements, all in the group [0.0s]
+neighbour check (full: 74364840 vertices per side): every vertex has 11 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [6.1s]
+BFS from A: ecc=10 reached 148729680 of 148729680 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109775, 1088060, 10151867, 56354323, 64102087, 16911346] [12.7s]
+BFS from B: ecc=10 reached 148729680 of 148729680 (unreached 0); level sizes [1, 11, 110, 1100, 11000, 109775, 1088110, 10151867, 56362927, 64102087, 16902692] [19.0s]
+max degree = min degree = 11, no repeated edges (checked above)
+elapsed 19.0s
+RESULT VALID d=11 D=10 eccA=10 eccB=10 n=148729680
+(exit 0)
+[exit 0; wall 19s]
+== d15D10_sl_149_373_orb3f0_s1 (origin/claude/cell-15-10-search-z3q01v, 06:18 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 14G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt  (from branch origin/claude/bipartite-d15-d10-search-h3rdep) sha256 6430a3a4e15d3d4881b22ace8f717e455c74996b16c9aaeb34d8fd2faf6e8efa
+header: 15 10 sl 149 n 373 N 1233809400
+
+################ reference checker: /tmp/hsl research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt (gcc -O3 -o /tmp/hsl research/frontier/haarcheck_sl.c)
+from (e,A): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10, ecc 10
+from (e,B): reached A 1233809400/1233809400, B 1233809400/1233809400 within 10, ecc 10
+VALID d=15 D=10 group=sl 149 x Z_373 N=1233809400 vertices=2467618800 (distinct generators, 15-regular simple)
+(exit 0)
+[exit 0; wall 1092s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d15D10_sl_149_373_orb3f0_s1.txt
+header: 15 10 sl 149 n 373 N 1233809400
+d=15 D=10
+group: SL(2,149) [order 3307800] x Z_373; |G| = 1233809400, vertices 2|G| = 2467618800
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 15 distinct group elements, all in the group [0.0s]
+neighbour check (full: 1233809400 vertices per side): every vertex has 15 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [145.3s]
+BFS from A: ecc=10 reached 2467618800 of 2467618800 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 576090, 8039153, 107794349, 884668878, 1125436006, 341059998] [288.3s]
+BFS from B: ecc=10 reached 2467618800 of 2467618800 (unreached 0); level sizes [1, 15, 210, 2940, 41160, 576090, 8039113, 107794349, 884625062, 1125436006, 341103854] [427.9s]
+max degree = min degree = 15, no repeated edges (checked above)
+elapsed 427.9s
+RESULT VALID d=15 D=10 eccA=10 eccB=10 n=2467618800
+(exit 0)
+[exit 0; wall 428s]
+== d16D10_sl_151_613_orb3_s1 (origin/claude/resume-cell-16-10-io255o, 06:18 PT)
+machine: vm; nproc=4; free -g: total 15G used 0G free 15G avail 15G; Linux 6.18.44-fc-v153; gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+file: research/frontier/sols/d16D10_sl_151_613_orb3_s1.txt  (from branch origin/claude/bipartite-16-10-cell-kras4l) sha256 dacc28e3266211d411b1dcfaa4643360ccd482ef22dbb6a6614f32cc8046f8a8
+header: 16 10 sl 151 n 613 N 2110436400
+
+################ reference checker: /tmp/hsl research/frontier/sols/d16D10_sl_151_613_orb3_s1.txt (gcc -O3 -o /tmp/hsl research/frontier/haarcheck_sl.c)
+from (e,A): reached A 2110436400/2110436400, B 2110436400/2110436400 within 10, ecc 10
+from (e,B): reached A 2110436400/2110436400, B 2110436400/2110436400 within 10, ecc 10
+VALID d=16 D=10 group=sl 151 x Z_613 N=2110436400 vertices=4220872800 (distinct generators, 16-regular simple)
+(exit 0)
+[exit 0; wall 1952s]
+
+################ bigcheck_indep: gcc -O2 -fopenmp -o /tmp/bci research/frontier/bigcheck_indep.c && /tmp/bci research/frontier/sols/d16D10_sl_151_613_orb3_s1.txt   (stdout; per-level progress on stderr omitted)
+file research/frontier/sols/d16D10_sl_151_613_orb3_s1.txt
+header: 16 10 sl 151 n 613 N 2110436400
+d=16 D=10
+group: SL(2,151) [order 3442800] x Z_613; |G| = 2110436400, vertices 2|G| = 4220872800
+threads: 4
+numbering self-test passed (bijection onto the group, class invariance, associativity) [0.0s]
+generators: 16 distinct group elements, all in the group [0.0s]
+neighbour check (full: 2110436400 vertices per side): every vertex has 16 distinct neighbours: yes
+adjacency symmetry check (s^-1 (s g) = g): ok [259.2s]
+BFS from A: ecc=10 reached 4220872800 of 4220872800 (unreached 0); level sizes [1, 16, 240, 3591, 53730, 803679, 11989248, 172270197, 1510955432, 1937358917, 587437749] [513.9s]
+BFS from B: ecc=10 reached 4220872800 of 4220872800 (unreached 0); level sizes [1, 16, 240, 3591, 53730, 803679, 11989266, 172270197, 1510943480, 1937358917, 587449683] [759.4s]
+max degree = min degree = 16, no repeated edges (checked above)
+elapsed 759.4s
+RESULT VALID d=16 D=10 eccA=10 eccB=10 n=4220872800
+(exit 0)
+[exit 0; wall 759s]
