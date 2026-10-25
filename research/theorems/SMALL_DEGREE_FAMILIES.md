@@ -399,12 +399,15 @@ Files: `runs/frob_d3D*.txt`, `runs/affq_d3D*.txt`, `runs/frob_d4D7.txt`, `runs/f
 | (4,7) | 840 (Bond–Delorme) | dipole | A5 × Z7: the exception |
 
 In every affine case the walk sums are signed sums of powers of one field element (§2.3 makes this exact).
-- This session adds the near misses. Every group that came within cost 5 of a record, in any cell, is of the same
-  type:
+- This session adds the near misses. Almost every group that came within cost 5 of a record, in any cell, is of
+  the same type:
   - the ten (4,8) groups of §2.5;
-  - SmallGroup(486,40) and the cost-4 groups at (3,10);
-  - C17 : C8 on 3+3 bases and Z29 ⋊ Z7 on the 2+2 base at (3,10).
-  The only non-affine groups near the top are 3-groups by C2 at (3,10).
+  - the cost-1 groups of order 440 at (4,7): C11 : C40, D8 × (C11 : C5), C11 : (C5 × Q8);
+  - C29 : C14 and C2 × (C29 : C7) at (3,10);
+  - C17 : C8 on the 3+3 bases and Z29 ⋊ Z7 on the 2+2 base at (3,10).
+
+  There are two exceptions: SmallGroup(486,40), a 3-group extended by C2 and the closest group at (3,10), and
+  SmallGroup(432,243), a near miss at both (3,10) and (4,7).
 - Exhaustive searches of this family show it does not reach beyond the table in the other cells (§2.6).
 
 ### 3.2 Solve probability falls with N / B(k, o)
@@ -530,6 +533,10 @@ Why a screen is meaningful:
 | (4,7) | Haar, every SmallGroup, 2 s anneal | orders 449–500: all 1,936 groups, 1,365 annealed; order 448: all 1,396 groups, 758 annealed | no solution; best cost 4 at C2 × (C19 : C12) (456) and C13 : C36 (468), both exhaustively negative (2 and 1 vertices short; `runs/d4D7_sg*_exhaustive.txt`) |
 | (4,7) | lifts of the 4-regular 2+2 base ((2,2),(2,2)), 3 s (`flscreen.py`) | orders 217–260 except 256, 693 groups | best cost 8 (orders 220, 224); 216 (= 864) reaches 6 |
 | (3,10) | Haar, exhaustive | orders 453–520 except 512 (2,218 groups) | none; best cost 2, SmallGroup(486,40) |
+| (3,10) | 2+2 lifts, exhaustive | all 67 groups of order 243 | none; best cost 8 |
+| (4,9) | Loz-like Z_p ⋊ Z_k (index ≤ 3, central part ≤ 3, action order ≥ 10; `lozlike.py`, 2 × 30 s; calibration re-finds Loz's group) | N = 2486–3000, 7 groups | best cost 6 (Z37 ⋊ Z72, N = 2664) |
+| (4,8) | Loz-like, 2 × 10 s | N = 1093–1870, 20 groups (most have k > p, missed by the first session's frob scan) | best cost 8 (Z43 ⋊ Z28) |
+| (4,7) | Loz-like, 2 × 5 s | N = 433–1093, 23 groups | best cost 4 (C13 : C36, exhaustively negative), then 6 |
 | (3,10) | squad r2: 3+3 bases, orders 134–145; 4+4 bases, 101–106 | ~150 groups | best cost 2 (b33_0 over C17 : C8, re-anneal), 4 (K3,3 over C17 : C8, then exhaustive) |
 | (3,9) | squad r2: 3+3 and 4+4 bases, orders 64–100 | ~180 groups | best cost 32 |
 | (3,7) | squad r2: cube, orders 22–26 (exhaustive, with the identity pass); 5+5 bases, 17–25 (226 of 510 pairs) | – | best cost 8 (cube, exhaustive), 16 (b55_1 over C17) |
@@ -564,7 +571,9 @@ lifts at (4,8) for 2,186–2,208 vertices (none).
 | `onegroup.py`, `onelift.py` | The same for one SmallGroup (Haar or lift; `--identity-only` completes an old run). |
 | `fscreen.py`, `fscreen2.py`, `flscreen.py`, `gtab.c` | Fast all-groups screens: one GAP process per batch exports only generator permutations, `gtab` rebuilds the table in C, and a worker pool anneals. About 1 group/s at N = 1100. `fscreen2.py` re-anneals the low-cost groups. |
 | `frobprod.py` | Products of two Frobenius-type groups F_q ⋊ C_a (faithful or not), tables built in numpy, for orders the library lacks. |
-| `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation. |
+| `cyclobound.py`, `cyclotable.py`, `cyclotable4.py`, `cyclosummary.py`, `cycloratio.py`, `cycloauc.py`, `cycloindex.py`, `jfibre.py`, `metabound.py` | The bounds of §2.3–2.4 and their evaluation. |
+| `cyclocheck.py`, `recordbound.py`, `recordbound_sqf.py` | Independent check of the bound against BFS in real groups; the bound at a record's own pattern (prime and squarefree moduli). |
+| `lozlike.py`, `frobcover.py` | Loz-like metacyclic candidates (small index and central part) screened directly; coverage check of a metacyclic scan against every (p, k, r). |
 | `basegen.py`, `bases/` | All connected cubic bipartite bases with 3+3, 4+4 and 5+5 vertices (3, 6 and 15 multigraphs) and the five simple 6+6 graphs. |
 | `lift_edges.py`, `verify/apsp` | Edge list of a lift for the independent all-pairs check (Conder's graph re-built and VALID). |
 | `screen.py`, `lscreen.py`, `metascreen.py`, `named.py`, `named_edges.py`, `frob_scan.py`, `affq.py`, `squares.py`, `heis.py`, `heisq.py`, `meta.py`, `fibers.py`, `predict.py`, `predict_test.py`, `canon.py`, `isoclasses.py`, `autgroup.py`, `agl_cayley.py`, `jpat.py`, `summarize.py`, `completeness.py`, `structure_factor.py` | First-session tools (see that session's notes in git history). |
