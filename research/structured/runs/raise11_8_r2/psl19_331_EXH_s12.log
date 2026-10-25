@@ -1,0 +1,9 @@
+group psl 19 x Z_331, N=1132020, identity 56601, H order 19, rows 59580, threads 1, setup 0.09s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+alpha: conj by mat(8,1,9,6) (index 2726), z -> 64 z on Z_331
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 61.82, mu/k = 12.36, fixed-point misses ~ 1.40
+ORBW=5: an uncovered fixed element weighs 5; start energy 100
+start cost=92
+t=30 steps=489 evals=3913 cost=35 best=25 T=0.53 energy=35 bestE=25
+t=60 steps=969 evals=7753 cost=25 best=25 T=0.19 energy=25 bestE=25
+t=90 steps=1446 evals=11569 cost=25 best=25 T=0.15 energy=25 bestE=25
