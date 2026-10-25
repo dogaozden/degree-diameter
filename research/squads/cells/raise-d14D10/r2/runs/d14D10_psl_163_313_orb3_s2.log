@@ -1,1 +1,19 @@
 group psl 163 x Z_313, N=677736396, identity 4132539, H order 41, rows 16530156, threads 2, setup 25.58s
+wide rows: HW order 163, rows 4157892, setup 55.61s
+alpha: conj by mat(66,95,147,98) (index 1755820), z -> 98 z on Z_313
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 80 (+e); mu = 29.47, mu/k = 9.82, fixed-point misses ~ 0.28
+start cost=57
+t=35 steps=6 evals=49 cost=15 best=15 T=0.45
+t=68 steps=12 evals=97 cost=15 best=15 T=0.15
+t=101 steps=18 evals=145 cost=15 best=15 T=0.15
+t=135 steps=24 evals=193 cost=6 best=6 T=0.15
+t=169 steps=30 evals=241 cost=6 best=6 T=0.15
+t=204 steps=36 evals=289 cost=6 best=6 T=0.15
+t=238 steps=42 evals=337 cost=6 best=6 T=0.15
+t=271 steps=48 evals=385 cost=6 best=6 T=0.15
+t=306 steps=54 evals=433 cost=6 best=6 T=0.15
+t=340 steps=60 evals=481 cost=6 best=6 T=0.15
+t=374 steps=66 evals=529 cost=6 best=6 T=0.15
+t=408 steps=72 evals=577 cost=6 best=6 T=0.15
+t=438 steps=77 evals=617 cost=6 best=6 T=0.15
+t=473 steps=83 evals=665 cost=6 best=6 T=0.15
