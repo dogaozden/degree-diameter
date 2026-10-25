@@ -75,8 +75,8 @@ characteristic 2 (q = 8). Base sets and spreads are the cell-13-7 session's (res
 | (9,7) | 7, 3 | R288 (W(E7) orbit) | 344 lines | 7 | **118,238** | 118,224 | apsp_mt all-pairs VALID |
 | (10,7) | 8, 3 | R217 | 513 lines | 12 | **225,152** | 225,128 | apsp_mt all-pairs VALID |
 | (13,7) | 11, 3 | R756 | 1,332 lines | 12 (same sigma as (14,7)) | **1,064,472** | 1,064,448 | apsp_orb VALID |
-| (15,7) | 11, 7 | R756 | 1,332 lines | 12 (same sigma) | 2,484,792 | 2,484,720 | see checks/ |
-| (16,7) | 13, 5 | R792 | 2,198 lines | 21 | 4,025,592 | 4,025,508 | multi.c checks + spot check; full apsp_orb in checks/ when done |
+| (15,7) | 11, 7 | R756 | 1,332 lines | 12 (same sigma) | 2,484,792 | 2,484,720 | apsp_orb VALID (superseded: typed levels 2,497,075) |
+| (16,7) | 13, 5 | R792 | 2,198 lines | 21 | 4,025,592 | 4,025,508 | multi.c checks + spot check; full check stopped (superseded: typed levels 4,052,108, cell-16-7) |
 
 At q = 13 there is more room than at q = 11: a random line is at distance 4 from 169 spread lines, the spread has 1,406
 spare lines, and some extra points are at distance 4 from only 24, 40, 46 or 48 base points (257,298 candidates; at

@@ -52,4 +52,8 @@ Every pair is covered; the graph is bipartite (points and line-side hubs on one 
 R = a pairwise-opposite base set (in H(q) = split Cayley hexagon: points pairwise non-orthogonal in Q(6,q)) plus extra
 points X, sigma(R) = lines of a spread plus one line per extra point, with the distance-4 relations matched type by
 type (research/cell147/mirror/README.md). Checked instances (apsp_orb / apsp_mt all sources): (14,7) 1,774,632,
-1,774,628, 1,774,588; (13,7) 1,064,472; (7,7) 23,598; (9,7) 118,238; (10,7) 225,152.
+1,774,628, 1,774,588; (13,7) 1,064,472; (15,7) 2,484,792; (7,7) 23,598; (9,7) 118,238; (10,7) 225,152.
+
+The hypotheses (N1), (N2), (L) are the same as (H1)–(H3) of the one-transition surgery theorem for typed levels
+(research/squads/cells/d16D7.md), so the same sigma also frees 768 elements on every non-friendly transition of the
+typed constructions: (14,7) 1,789,588 and (15,7) 2,499,748 (research/cell147/typedmirror/README.md).

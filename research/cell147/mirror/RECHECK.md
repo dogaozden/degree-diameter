@@ -20,10 +20,13 @@ python3 research/d13D7/tools/multi_sol.py build SOL hex/hex_q{q}.bin OUT.edges
 | (9,7) | 118,238 | d9D7_hex7_mirror295_n118238.sol | 7 | `apsp_mt OUT 9 7` VALID |
 | (10,7) | 225,152 | d10D7_hex8_mirror229_n225152.sol | 8 | `apsp_mt OUT 10 7` VALID |
 | (13,7) | 1,064,472 | d13D7_hex11_mirror768_n1064472.sol | 11 | `apsp_orb OUT 13 7 T 3 354312` VALID |
-| (15,7) | 2,484,792 | d15D7_hex11_mirror768_n2484792.sol | 11 | `apsp_orb OUT 15 7 T 7 354312`: see checks/ |
-| (16,7) | 4,025,592 | d16D7_hex13_mirror813_n4025592.sol | 13 | `apsp_orb OUT 16 7 T 5 804468`: see checks/ |
+| (15,7) | 2,484,792 | d15D7_hex11_mirror768_n2484792.sol | 11 | `apsp_orb OUT 15 7 T 7 354312` VALID (superseded) |
+| (16,7) | 4,025,592 | d16D7_hex13_mirror813_n4025592.sol | 13 | multi.c checks only (full check stopped; superseded) |
 
 apsp_orb and apsp_mt are research/lifts/coordinator_check/apsp_orb.c and apsp_mt.c. For apsp_orb the level shift
 (x, i) -> (x, i+1) with hubs fixed is verified edge by edge before the BFS (level size B = 2|H(q)|).
 
 The (13,7), (14,7) 1,774,632 and (15,7) graphs share one sigma and one R' (768 points); only r differs.
+
+The (14,7) 1,789,588 and (15,7) 2,499,748 graphs (typed levels plus this sigma) are built by
+research/cell147/typedmirror/tm_build.py; see research/cell147/typedmirror/README.md.

@@ -69,7 +69,7 @@ cc -O2 -pthread -o apsp_mt research/lifts/coordinator_check/apsp_mt.c && ./apsp_
 ## Next steps
 
 K is set by the line sets: |R_L| + 768 on four of the ten slot counts. Larger non-concurrent line sets (no G-invariance
-is needed any more) raise n by 2 per line until |R_L| reaches |R_H| = 8,645 (then both sets must grow). A greedy
-completion of R_L adds only about ten lines (a random line has all 12 points uncovered with probability about
-0.44^12), so this needs a real search. The same combination applies to (15,7) (types HHDHHDD, nine non-friendly
+is needed any more) raise n by 2 per line until |R_L| reaches |R_H| = 8,645 (then both sets must grow). Master's R_L and
+R_H are already maximal (no line can be added to R_L, no point to R_H; checked here), so this needs exchange moves
+(local search on 177,156 elements), not a greedy completion. The same combination applies to (15,7) (types HHDHHDD, nine non-friendly
 transitions) and (16,7) (q = 13, where the 813-point mirrored set beats the 2 orbits (122 elements) used now).

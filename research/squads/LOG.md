@@ -187,3 +187,9 @@ F = -35; conic points give base types of size at most 2, but partner lines for t
 own run: 5). So k = 13 with deficit 0 was not reached by any method (best deficits 1, 3, 4, 5); F = 12 stands.
 Round 5 late report: c3's 2^3.L3(2) (1,344 signed Fano frames) subgroups all top out at 756, and exact branch and bound
 is complete for orders 1344, 192, 168, 96, 56 and 48.
+
+After the rounds (Opus, not a squad result): master meanwhile had (14,7) 1,788,052 from the cell-16-7 session's typed
+levels, which leave the four non-friendly transitions without surgery. The 768-point mirrored sigma from this round fits
+those transitions (its hypotheses are the one-transition surgery theorem's), giving (14,7) 1,789,588 (both hub sides
+8,246 + 768) and a (15,7) candidate 2,499,748 (nine non-friendly transitions; spot check only). Plain all-pairs check
+for (14,7): research/cell147/typedmirror/checks/. Exact one-pair extension test: no F = 12 state extends to F = 13.
