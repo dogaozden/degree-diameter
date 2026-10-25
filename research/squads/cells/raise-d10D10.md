@@ -101,3 +101,4 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - 08:50: e (psl 179 × 11) solved → 63,086,760, below the record.
 - 09:11: i (psl 59 × 311, ORBW=5, seed 2) solved → 63,854,520 (checked by haarcheck_psl above). Queues h (no ORBW) and j (psl 71 × 181) still running.
 - 09:54: h (psl 59 × 311, seed 1, no ORBW) solved at the same order, 63,854,520 (second solution, not a record). j and k (psl 71 × 181, seeds 1 and 2) still running.
+- 10:39: j (psl 71 × 181, ORBW=5, seed 1, μ 46.3, 7200 s) ended at best cost 10 after 95,617 evaluations. Not solved. k (seed 2) still running.
