@@ -1,0 +1,9 @@
+group psl 23 x Z_331, N=2009832, identity 83743, H order 23, rows 87384, threads 1, setup 0.22s
+wide rows: no cyclic subgroup of order >= 64 found (best 23); using haar_gen3's evaluation
+alpha: conj by mat(10,17,17,6) (index 5422), z -> 31 z on Z_331
+ORBIT k=6 m=2 f=0: |Fix(alpha)| = 11 (+e); mu = 46.90, mu/k = 7.82, fixed-point misses ~ 2.03
+start cost=4980
+t=30 steps=329 evals=2633 cost=2731 best=2731 T=0.53
+t=60 steps=662 evals=5297 cost=2731 best=2731 T=0.19
+t=90 steps=968 evals=7745 cost=2731 best=2731 T=0.15
+RESULT d=12 D=8 group=psl 23 x Z_331 N=2009832 best=2731 evals=8993 time=104.7 orbit k=6 m=2 f=0 fix=11

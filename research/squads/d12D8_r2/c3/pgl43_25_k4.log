@@ -1,0 +1,19 @@
+group pgl 43 x Z_25, N=1986600, identity 0, H order 55, rows 36120, threads 1, setup 0.25s
+wide rows: HW order 220, rows 9030, setup 0.35s
+alpha: conj by mat(1,6,31,33) (index 12170), z -> 7 z on Z_25
+ORBIT k=4 m=3 f=0: |Fix(alpha)| = 43 (+e); mu = 40.92, mu/k = 10.23, fixed-point misses ~ 2.96
+start cost=993300
+t=30 steps=1343 evals=10745 cost=41 best=39 T=0.53
+t=60 steps=2523 evals=20185 cost=41 best=39 T=0.19
+t=90 steps=3749 evals=29993 cost=16 best=16 T=0.15
+t=120 steps=4578 evals=36625 cost=16 best=16 T=0.15
+t=150 steps=5577 evals=44617 cost=16 best=16 T=0.15
+t=180 steps=6878 evals=55025 cost=16 best=16 T=0.15
+t=210 steps=8360 evals=66881 cost=16 best=16 T=0.15
+t=240 steps=9973 evals=79785 cost=16 best=16 T=1.12
+t=270 steps=11560 evals=92481 cost=16 best=16 T=0.39
+t=300 steps=13123 evals=104985 cost=16 best=16 T=0.15
+t=330 steps=14526 evals=116209 cost=16 best=16 T=0.15
+t=360 steps=15777 evals=126217 cost=16 best=16 T=0.15
+t=390 steps=17269 evals=138153 cost=40 best=16 T=1.11
+RESULT d=12 D=8 group=pgl 43 x Z_25 N=1986600 best=16 evals=151225 time=420.0 orbit k=4 m=3 f=0 fix=43

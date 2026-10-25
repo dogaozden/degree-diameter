@@ -1,0 +1,6 @@
+group psl 23 x Z_331, N=2009832, identity 83743, H order 23, rows 87384, threads 1, setup 0.25s
+wide rows: no cyclic subgroup of order >= 64 found (best 23); using haar_gen3's evaluation
+alpha: conj by mat(9,20,12,14) (index 4957), z -> 330 z on Z_331
+ORBIT k=2 m=6 f=0: |Fix(alpha)| = 23 (+e); mu = 46.90, mu/k = 23.45, fixed-point misses ~ 0.12
+RANDORB d=12 D=8 group=psl 23 x Z_331 N=2009832 k=2 m=6 f=0 fix=23 samples=40 min=514 p1=514 p10=655 median=2243 mean=33090.00 var=8668592457.4 mu=46.90 time=1.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 40
