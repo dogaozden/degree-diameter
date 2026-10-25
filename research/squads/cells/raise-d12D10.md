@@ -66,3 +66,7 @@ psl 103×301 (164.44 M), sl 109×127 (164.45 M), sl 103×151 (164.99 M) and psl 
 
 Also solved (below the record, kept as a valid cell solution): **psl 97 × Z_361**, N = 164,719,968, 329,439,936 vertices,
 seed 1, 5,121 evals, 2,109 s. File `../../frontier/sols/d12D10_psl_97_361_orb3f0_s1.txt`, log in `../../structured/runs/`.
+
+Seed-2 round (3,600 s each, unless noted): psl 103×301 (164.44 M): not solved, best 3, 9,193 evals. sl 109×127
+(164.45 M): not solved, best 3, 5,001 evals. psl 113×229 (165.20 M, seed 2): see the end of this file.
+psl 97×361 (164.72 M, seed 1) solved above; its independent PSL check: VALID.
