@@ -40,6 +40,7 @@ static int nfl = 0, flp[64], fll[64]; static uint8_t *inA, *inG, *inPp, *inLl;  
 /* relaxed coverage (RELAX=1): sigma swaps are kept only if every freed point still reaches coset 1 of each opposite
  * point (p-L-x-sigma(x)-u, x ~ p, or p-w-sinv(w)-sigma(u)-u) and dually for freed lines; same test as dmhub.c */
 static int *mk = NULL, stp = 0, patch = 0; static uint8_t *onfl = NULL, *thrfp = NULL;
+static char hadj[64][64]; static int usehadj = 0;   /* HUBADJ="i:j ...": line-side hubs of flag i ~ point-side hubs of flag j */
 static int cover_ok(void) {
     if (!mk) mk = calloc(2 * Np, sizeof(int));
     if (!onfl) {   /* PATCH=1: points on a freed line / lines through a freed point count as covered (hub edges patch them) */
@@ -51,11 +52,13 @@ static int cover_ok(void) {
         for (int x = 0; x < Np; x++) if (inPp[i * Np + x] && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
         for (int a = 0; a < Q1; a++) { int w = adj[p * Q1 + a] - Np; if (isfreeLn[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[adj[z * Q1 + b] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
+        if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[i][j]) for (int k = 0; k < Q1; k++) mk[adj[(Np + fll[j]) * Q1 + k]] = stp;
         for (int u = 0; u < Np; u++) if (u != p && !inPp[i * Np + u] && mk[u] != stp && !(patch && onfl[u])) return 0;
         stp++;
         for (int M2 = 0; M2 < Np; M2++) if (inLl[i * Np + M2] && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
         for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; if (isfreeP[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = adj[(Np + ly) * Q1 + b]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
+        if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[j][i]) for (int k = 0; k < Q1; k++) mk[Np + adj[flp[j] * Q1 + k] - Np] = stp;
         for (int m = 0; m < Np; m++) if (m != l && !inLl[i * Np + m] && mk[Np + m] != stp && !(patch && thrfp[m])) return 0;
     }
     return 1;
@@ -231,6 +234,8 @@ int main(int argc, char **argv) {
         for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; for (int b = 0; b < Q1; b++) { int M2 = adj[y * Q1 + b] - Np; if (M2 == l) continue; inLl[i * Np + M2] = 1; if (y != p) inG[i * Np + M2] = 1; } }
     }
     relax = getenv("RELAX") ? atoi(getenv("RELAX")) : 0; patch = getenv("PATCH") ? atoi(getenv("PATCH")) : 0;
+    if (getenv("HUBADJ")) { char *s = getenv("HUBADJ"), *e; usehadj = 1;
+        for (;;) { long i = strtol(s, &e, 10); if (e == s || *e != ':') break; s = e + 1; long j = strtol(s, &e, 10); s = e; hadj[i][j] = 1; } }
     if (relax) fprintf(stderr, "relaxed coverage at start: %s\n", cover_ok() ? "ok" : "NOT ok");
     if (getenv("CHECKALLOWED")) { int bad = 0; for (int x = 0; x < Np; x++) if (!isfreeP[x] && !allowed(x, sig[x])) bad++; fprintf(stderr, "sigma entries not allowed: %d\n", bad); }
     struct timespec t0; clock_gettime(CLOCK_MONOTONIC, &t0);

@@ -110,6 +110,7 @@ static void write_sol(const char *fn, long c) {
  * opposite lines m of a freed line l need l-y-M-sinv(M)-m (M ~ l) or l-y-sigma(y)-z-sigma(z) = m. */
 static int *isfreeL, *mark, stamp = 0;
 static int **pperp, *npperp, **popp, *npopp, **lperp, *nlperp, **lopp, *nlopp;
+static char hubadj[64][64]; static int usehubadj = 0;   /* group adjacency: line-side hubs of i ~ point-side hubs of j */
 static int nunc = 0, uncI[1 << 16], uncT[1 << 16];   /* uncovered: freed index i (+nfree for line side), target */
 static long cover_cost(void) {
     long tot = 0; nunc = 0;
@@ -118,17 +119,118 @@ static long cover_cost(void) {
         for (int a = 0; a < npperp[i]; a++) { int x = pperp[i][a]; if (isfree[x]) continue; int l = sig[x]; for (int k = 0; k < Q1; k++) mark[pts[l * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int w = lof[p * Q1 + a]; if (isfreeL[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[lof[z * Q1 + b]]; if (!isfree[u]) mark[u] = stamp; } }
+        if (usehubadj) for (int j = 0; j < nfree; j++) if (hubadj[i][j]) { int lj = sig[freep[j]]; for (int k = 0; k < Q1; k++) mark[pts[lj * Q1 + k]] = stamp; }
         for (int a = 0; a < npopp[i]; a++) if (mark[popp[i][a]] != stamp) { tot++; if (nunc < (1 << 16)) { uncI[nunc] = i; uncT[nunc++] = popp[i][a]; } }
         int l = sig[p]; stamp++;
         for (int a = 0; a < nlperp[i]; a++) { int M2 = lperp[i][a]; if (isfreeL[M2]) continue; int y = sinv[M2]; for (int k = 0; k < Q1; k++) mark[N + lof[y * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int y = pts[l * Q1 + a]; if (isfree[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = pts[ly * Q1 + b]; if (!isfree[z]) mark[N + sig[z]] = stamp; } }
+        if (usehubadj) for (int j = 0; j < nfree; j++) if (hubadj[j][i]) { int pj = freep[j]; for (int k = 0; k < Q1; k++) mark[N + lof[pj * Q1 + k]] = stamp; }
         for (int a = 0; a < nlopp[i]; a++) if (mark[N + lopp[i][a]] != stamp) { tot++; if (nunc < (1 << 16)) { uncI[nunc] = nfree + i; uncT[nunc++] = lopp[i][a]; } }
     }
     return tot;
 }
 
+/* exact hub-graph cost (HGDIST=1): nodes 0..K-1 line-side hubs, K..2K-1 point-side hubs; edges: hub-graph edges
+ * (weight 1) and lift shortcuts: twins 2, collinear freed points 4 (line side), concurrent freed lines 4 (point side),
+ * line-side hub of i to point-side hub of j weight 3 when p_i lies on l_j.  Same-side pairs must be within 4. */
+static int hgK; static char (*hgA2)[256]; static char (*hgColl)[64], (*hgConc)[64], (*hgOn)[64], (*hgReq)[64];
+static long hg_dist_cost(void) {
+    int K = hgK, n = 2 * K; static int adjn[512][256], adjw[512][256], deg2[512], dist[512];
+    for (int x = 0; x < n; x++) deg2[x] = 0;
+    #define ADDE(u, v, w) do { adjn[u][deg2[u]] = v; adjw[u][deg2[u]++] = w; adjn[v][deg2[v]] = u; adjw[v][deg2[v]++] = w; } while (0)
+    for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) {
+        if (hgA2[a][b]) ADDE(a, K + b, 1);
+        else if (hgOn[a / H][b / H]) ADDE(a, K + b, 3);
+    }
+    for (int a = 0; a < K; a++) for (int a2 = a + 1; a2 < K; a2++) {
+        int i = a / H, j = a2 / H;
+        if (i == j) { ADDE(a, a2, 2); ADDE(K + a, K + a2, 2); continue; }
+        if (hgColl[i][j]) ADDE(a, a2, 4);
+        if (hgConc[i][j]) ADDE(K + a, K + a2, 4);
+    }
+    long cst = 0;
+    for (int s0 = 0; s0 < n; s0++) {
+        for (int x = 0; x < n; x++) dist[x] = 99; dist[s0] = 0;
+        for (int d = 0; d < 4; d++) for (int x = 0; x < n; x++) if (dist[x] == d)
+            for (int e = 0; e < deg2[x]; e++) { int y = adjn[x][e], nd = d + adjw[x][e]; if (nd < dist[y]) dist[y] = nd; }
+        int lo = s0 < K ? 0 : K;
+        for (int y = lo; y < lo + K; y++) if (y > s0 && dist[y] > 4) cst++;
+    }
+    for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) if (hgReq[i][j]) { int ok = 0;
+        for (int s1 = 0; s1 < H && !ok; s1++) for (int t1 = 0; t1 < H; t1++) if (hgA2[i * H + s1][j * H + t1]) { ok = 1; break; } cst += 2 * !ok; }
+    return cst;
+}
+
 static int collinear(int a, int b) { for (int i = 0; i < Q1; i++) for (int j = 0; j < Q1; j++) if (lof[a * Q1 + i] == lof[b * Q1 + j]) return 1; return 0; }
+
+static int hg_noreq = 0;
+static void hub_graph_block(void) {
+    /* hub graph: same-side hubs of non-collinear freed points (non-concurrent freed lines) need a common neighbour */
+    if (nfree >= 2 && !getenv("NOHUBG")) {
+        int K = H * nfree, spare = Q1 + 2 - M;
+        static char A2[256][256], needA[256][256], needB[256][256]; memset(A2, 0, sizeof A2);
+        long nneed = 0;
+        for (int a = 0; a < K; a++) for (int a2 = 0; a2 < K; a2++) {
+            int i = a / H, j = a2 / H; needA[a][a2] = needB[a][a2] = 0; if (i == j) continue;
+            if (!collinear(freep[i], freep[j])) { needA[a][a2] = 1; nneed++; }
+            int li = sig[freep[i]], lj = sig[freep[j]], conc = 0;
+            for (int x = 0; x < Q1 && !conc; x++) for (int y = 0; y < Q1; y++) if (pts[li * Q1 + x] == pts[lj * Q1 + y]) { conc = 1; break; }
+            if (!conc) { needB[a][a2] = 1; nneed++; }
+        }
+        int dA[256] = {0}, dB[256] = {0};
+        /* pair (a, a2) of line-side hubs is fine if they share a point-side neighbour, or one of them is adjacent to a
+           point-side hub of a freed line through the other's freed point (z - (l_j, h) - (p, h') - z', length 4).
+           Same for point-side hubs with the roles swapped. on[i][j] = freed point i lies on freed line j. */
+        /* coverage holes that a hub edge can patch: point u opposite freed p_i, uncovered, on freed line l_j -> an edge
+           between the line-side hubs of i and the point-side hubs of j; line m opposite l_i through freed p_j -> an edge
+           between the point-side hubs of i and the line-side hubs of j.  req[i][j] = 1 (line-side i, point-side j). */
+        static char req[64][64]; memset(req, 0, sizeof req); long nreq = 0, unpatch = 0;
+        if (!hg_noreq) cover_cost(); else nunc = 0;
+        for (int r = 0; r < nunc; r++) { int i = uncI[r], t = uncT[r], got = 0;
+            if (i < nfree) { for (int j = 0; j < nfree; j++) for (int x = 0; x < Q1; x++) if (pts[sig[freep[j]] * Q1 + x] == t) { if (!req[i][j]) nreq++; req[i][j] = 1; got = 1; } }
+            else { i -= nfree; for (int j = 0; j < nfree; j++) for (int x = 0; x < Q1; x++) if (pts[t * Q1 + x] == freep[j]) { if (!req[j][i]) nreq++; req[j][i] = 1; got = 1; } }
+            if (!got) unpatch++; }
+        printf("coverage holes %d: %ld group edges required, %ld holes not patchable by hub edges\n", nunc, nreq, unpatch);
+        static char on[64][64]; for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) { on[i][j] = 0;
+            for (int x = 0; x < Q1; x++) if (pts[sig[freep[j]] * Q1 + x] == freep[i]) on[i][j] = 1; }
+        #define HGCOST() ({ long cst = 0; for (int a = 0; a < K; a++) for (int a2 = a + 1; a2 < K; a2++) { \
+            if (needA[a][a2]) { int ok = 0; for (int b = 0; b < K && !ok; b++) { if (A2[a][b] && A2[a2][b]) ok = 1; \
+                    else if (A2[a][b] && on[a2 / H][b / H]) ok = 1; else if (A2[a2][b] && on[a / H][b / H]) ok = 1; } cst += !ok; } \
+            if (needB[a][a2]) { int ok = 0; for (int b = 0; b < K && !ok; b++) { if (A2[b][a] && A2[b][a2]) ok = 1; \
+                    else if (A2[b][a] && on[b / H][a2 / H]) ok = 1; else if (A2[b][a2] && on[b / H][a / H]) ok = 1; } cst += !ok; } } \
+            for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) if (req[i][j]) { int ok = 0; \
+                for (int s1 = 0; s1 < H && !ok; s1++) for (int t1 = 0; t1 < H; t1++) if (A2[i * H + s1][j * H + t1]) { ok = 1; break; } cst += 2 * !ok; } cst; })
+        static char coll2[64][64], conc2[64][64];
+        for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) { coll2[i][j] = i != j && collinear(freep[i], freep[j]); int li = sig[freep[i]], lj = sig[freep[j]], cc2 = 0;
+            for (int x = 0; x < Q1 && !cc2; x++) for (int y = 0; y < Q1; y++) if (pts[li * Q1 + x] == pts[lj * Q1 + y]) { cc2 = 1; break; } conc2[i][j] = i != j && cc2; }
+        hgK = K; hgA2 = A2; hgColl = coll2; hgConc = conc2; hgOn = on; hgReq = req;
+        int hgdist = getenv("HGDIST") ? atoi(getenv("HGDIST")) : 0;
+        #define HGC() (hgdist ? hg_dist_cost() : HGCOST())
+        long hc = HGC(), hbest = hc; static char Abest[256][256]; memcpy(Abest, A2, sizeof A2);
+        long hgit = getenv("HGIT") ? atol(getenv("HGIT")) : 400000;
+        for (long it = 0; it < hgit && hc > 0; it++) {
+            int a = rnd() % K, b = rnd() % K; double T = 1.0 * pow(0.01, (double)it / hgit);
+            if (A2[a][b]) { A2[a][b] = 0; dA[a]--; dB[b]--; }
+            else { if (dA[a] >= spare || dB[b] >= spare) { /* swap out a random edge of the full end */
+                    int a3 = a, b3 = b; if (dA[a] >= spare) { do b3 = rnd() % K; while (!A2[a][b3]); A2[a][b3] = 0; dA[a]--; dB[b3]--; }
+                    if (dB[b] >= spare) { do a3 = rnd() % K; while (!A2[a3][b]); A2[a3][b] = 0; dA[a3]--; dB[b]--; } }
+                A2[a][b] = 1; dA[a]++; dB[b]++; }
+            long h2 = HGC();
+            if (h2 <= hc || urand() < exp(-(h2 - hc) / T)) { hc = h2; if (hc < hbest) { hbest = hc; memcpy(Abest, A2, sizeof A2); } }
+            else { memcpy(A2, Abest, sizeof A2); hc = hbest; for (int x = 0; x < K; x++) { dA[x] = dB[x] = 0; } for (int x = 0; x < K; x++) for (int y = 0; y < K; y++) if (A2[x][y]) { dA[x]++; dB[y]++; } }
+        }
+        memcpy(A2, Abest, sizeof A2);
+        if (getenv("HGFILL")) {   /* use the remaining spare degree: random extra hub edges (more coverage routes, never longer distances) */
+            int da[256] = {0}, db[256] = {0}; for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) if (A2[a][b]) { da[a]++; db[b]++; }
+            for (int t = 0; t < 200000; t++) { int a = rnd() % K, b = rnd() % K; if (!A2[a][b] && da[a] < spare && db[b] < spare && a / H != b / H) { A2[a][b] = 1; da[a]++; db[b]++; } }
+        }
+        for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) if (A2[a][b]) { hgA[nhg] = a; hgB[nhg] = b; nhg++; }
+        if (getenv("PRINTHUBADJ")) { printf("HUBADJ"); static char seen[64][64]; memset(seen, 0, sizeof seen);
+            for (int e = 0; e < nhg; e++) { int i = hgA[e] / H, j = hgB[e] / H; if (!seen[i][j]) { seen[i][j] = 1; printf(" %d:%d", i, j); } } printf("\n"); }
+        printf("hub graph: %ld needed same-side pairs (ordered), uncovered %ld, %d hub-hub edges\n", nneed, hbest, nhg);
+    }
+}
 
 int main(int argc, char **argv) {
     if (argc < 4) { fprintf(stderr, "usage: dmhub GQBIN SOLIN OUTPREFIX\n"); return 1; }
@@ -186,14 +288,42 @@ int main(int argc, char **argv) {
         for (int m2 = 0; m2 < N; m2++) if (m2 != l) { int conc = 0; for (int a = 0; a < Q1 && !conc; a++) for (int b = 0; b < Q1; b++) if (pts[l * Q1 + a] == pts[m2 * Q1 + b]) { conc = 1; break; }
             if (conc) lperp[i][nlperp[i]++] = m2; else lopp[i][nlopp[i]++] = m2; }
     }
+    if (getenv("HGFIRST") && !getenv("HUBG_IN")) { hg_noreq = 1; hub_graph_block(); usehubadj = 1; for (int e = 0; e < nhg; e++) hubadj[hgA[e] / H][hgB[e] / H] = 1; }
     long covit = getenv("COVIT") ? atol(getenv("COVIT")) : 0;
     double cT0 = getenv("CT0") ? atof(getenv("CT0")) : 0.5;
     if (covit) {
-        long cc = cover_cost(); printf("cover cost initial %ld\n", cc);
+        /* joint mode (HGFIRST): cost = coverage (with hub routes) + HW * hub-distance cost; hub edges are rewired too */
+        double phub = (usehubadj && getenv("PHUB")) ? atof(getenv("PHUB")) : 0.0; long HW = getenv("HW") ? atol(getenv("HW")) : 2;
+        long hd = usehubadj ? hg_dist_cost() : 0;
+        long cc = cover_cost() + HW * hd; printf("cover cost initial %ld (hub-distance part %ld)\n", cc, hd);
         int *bsig = malloc(sizeof(int) * N); long bcc = cc; memcpy(bsig, sig, sizeof(int) * N);
+        static char bA2[256][256], sA2[256][256]; if (usehubadj) memcpy(bA2, hgA2, sizeof bA2);
+        int Kh = hgK, spareh = Q1 + 2 - M;
         for (long it = 0; it < covit && cc > 0; it++) {
             double T = cT0 * pow(0.02 / cT0, (double)it / covit);
             int x, y;
+            if (phub > 0 && urand() < phub) {   /* hub-graph move: toggle an edge, targeted at an uncovered target's patch */
+                int a, b;
+                if (nunc && urand() < 0.7) { int r = rnd() % nunc, i = uncI[r], t = uncT[r], js[64], nj = 0;
+                    if (i < nfree) { for (int j = 0; j < nfree; j++) for (int k = 0; k < Q1; k++) if (pts[sig[freep[j]] * Q1 + k] == t) js[nj++] = j;
+                        if (!nj) continue; int j = js[rnd() % nj]; a = i * H + rnd() % H; b = j * H + rnd() % H; }
+                    else { i -= nfree; for (int j = 0; j < nfree; j++) for (int k = 0; k < Q1; k++) if (pts[t * Q1 + k] == freep[j]) js[nj++] = j;
+                        if (!nj) continue; int j = js[rnd() % nj]; a = j * H + rnd() % H; b = i * H + rnd() % H; }
+                    if (hgA2[a][b]) continue;
+                } else { a = rnd() % Kh; b = rnd() % Kh; }
+                memcpy(sA2, hgA2, sizeof sA2);
+                if (hgA2[a][b]) hgA2[a][b] = 0;
+                else { int da = 0, db = 0; for (int z = 0; z < Kh; z++) { da += hgA2[a][z]; db += hgA2[z][b]; }
+                    if (da >= spareh) { int z; do z = rnd() % Kh; while (!hgA2[a][z]); hgA2[a][z] = 0; }
+                    if (db >= spareh) { int z; do z = rnd() % Kh; while (!hgA2[z][b]); hgA2[z][b] = 0; }
+                    hgA2[a][b] = 1; }
+                memset(hubadj, 0, sizeof hubadj); for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) hubadj[u / H][v / H] = 1;
+                long hd2 = hg_dist_cost(), c2 = cover_cost() + HW * hd2;
+                if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) { cc = c2; hd = hd2; }
+                else { memcpy(hgA2, sA2, sizeof sA2); memset(hubadj, 0, sizeof hubadj); for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) hubadj[u / H][v / H] = 1; cover_cost(); }
+                if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); memcpy(bA2, hgA2, sizeof bA2); }
+                continue;
+            }
             if (nunc && urand() < 0.7) {   /* repair one uncovered target */
                 int r = rnd() % nunc, i = uncI[r], t = uncT[r];
                 if (i < nfree) {   /* point t opposite freed p_i: sigma(x) := a line through t, x ~ p_i */
@@ -209,68 +339,25 @@ int main(int argc, char **argv) {
                 do { y = rnd() % N; } while (y == x || isfree[y]);
             }
             int t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y;
-            long c2 = cover_cost();
+            long c2 = cover_cost() + HW * hd;
             if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) cc = c2;
             else { t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y; cover_cost(); }
-            if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); }
+            if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); if (usehubadj) memcpy(bA2, hgA2, sizeof bA2); }
             if (it % 100000 == 0) { printf("cover it %ld T %.3f cost %ld\n", it, T, cc); fflush(stdout); }
         }
-        memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p; cc = cover_cost();
+        memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p;
+        if (usehubadj) { memcpy(hgA2, bA2, sizeof bA2); memset(hubadj, 0, sizeof hubadj); nhg = 0;
+            for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) { hubadj[u / H][v / H] = 1; hgA[nhg] = u; hgB[nhg] = v; nhg++; }
+            hd = hg_dist_cost(); printf("hub graph after joint annealing: %d edges, distance cost %ld\n", nhg, hd); }
+        cc = cover_cost();
         printf("cover cost final %ld\n", cc);
         if (getenv("SHOWUNC")) for (int r = 0; r < nunc && r < 60; r++) printf("UNC %s freed#%d target %d\n", uncI[r] < nfree ? "pt" : "ln", uncI[r] % nfree, uncT[r]);
     }
-    /* hub graph: same-side hubs of non-collinear freed points (non-concurrent freed lines) need a common neighbour */
-    if (nfree >= 2 && !getenv("NOHUBG")) {
-        int K = H * nfree, spare = Q1 + 2 - M;
-        static char A2[256][256], needA[256][256], needB[256][256]; memset(A2, 0, sizeof A2);
-        long nneed = 0;
-        for (int a = 0; a < K; a++) for (int a2 = 0; a2 < K; a2++) {
-            int i = a / H, j = a2 / H; needA[a][a2] = needB[a][a2] = 0; if (i == j) continue;
-            if (!collinear(freep[i], freep[j])) { needA[a][a2] = 1; nneed++; }
-            int li = sig[freep[i]], lj = sig[freep[j]], conc = 0;
-            for (int x = 0; x < Q1 && !conc; x++) for (int y = 0; y < Q1; y++) if (pts[li * Q1 + x] == pts[lj * Q1 + y]) { conc = 1; break; }
-            if (!conc) { needB[a][a2] = 1; nneed++; }
-        }
-        int dA[256] = {0}, dB[256] = {0};
-        /* pair (a, a2) of line-side hubs is fine if they share a point-side neighbour, or one of them is adjacent to a
-           point-side hub of a freed line through the other's freed point (z - (l_j, h) - (p, h') - z', length 4).
-           Same for point-side hubs with the roles swapped. on[i][j] = freed point i lies on freed line j. */
-        /* coverage holes that a hub edge can patch: point u opposite freed p_i, uncovered, on freed line l_j -> an edge
-           between the line-side hubs of i and the point-side hubs of j; line m opposite l_i through freed p_j -> an edge
-           between the point-side hubs of i and the line-side hubs of j.  req[i][j] = 1 (line-side i, point-side j). */
-        static char req[64][64]; memset(req, 0, sizeof req); long nreq = 0, unpatch = 0;
-        cover_cost();
-        for (int r = 0; r < nunc; r++) { int i = uncI[r], t = uncT[r], got = 0;
-            if (i < nfree) { for (int j = 0; j < nfree; j++) for (int x = 0; x < Q1; x++) if (pts[sig[freep[j]] * Q1 + x] == t) { if (!req[i][j]) nreq++; req[i][j] = 1; got = 1; } }
-            else { i -= nfree; for (int j = 0; j < nfree; j++) for (int x = 0; x < Q1; x++) if (pts[t * Q1 + x] == freep[j]) { if (!req[j][i]) nreq++; req[j][i] = 1; got = 1; } }
-            if (!got) unpatch++; }
-        printf("coverage holes %d: %ld group edges required, %ld holes not patchable by hub edges\n", nunc, nreq, unpatch);
-        static char on[64][64]; for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) { on[i][j] = 0;
-            for (int x = 0; x < Q1; x++) if (pts[sig[freep[j]] * Q1 + x] == freep[i]) on[i][j] = 1; }
-        #define HGCOST() ({ long cst = 0; for (int a = 0; a < K; a++) for (int a2 = a + 1; a2 < K; a2++) { \
-            if (needA[a][a2]) { int ok = 0; for (int b = 0; b < K && !ok; b++) { if (A2[a][b] && A2[a2][b]) ok = 1; \
-                    else if (A2[a][b] && on[a2 / H][b / H]) ok = 1; else if (A2[a2][b] && on[a / H][b / H]) ok = 1; } cst += !ok; } \
-            if (needB[a][a2]) { int ok = 0; for (int b = 0; b < K && !ok; b++) { if (A2[b][a] && A2[b][a2]) ok = 1; \
-                    else if (A2[b][a] && on[b / H][a2 / H]) ok = 1; else if (A2[b][a2] && on[b / H][a / H]) ok = 1; } cst += !ok; } } \
-            for (int i = 0; i < nfree; i++) for (int j = 0; j < nfree; j++) if (req[i][j]) { int ok = 0; \
-                for (int s1 = 0; s1 < H && !ok; s1++) for (int t1 = 0; t1 < H; t1++) if (A2[i * H + s1][j * H + t1]) { ok = 1; break; } cst += 2 * !ok; } cst; })
-        long hc = HGCOST(), hbest = hc; static char Abest[256][256]; memcpy(Abest, A2, sizeof A2);
-        long hgit = getenv("HGIT") ? atol(getenv("HGIT")) : 400000;
-        for (long it = 0; it < hgit && hc > 0; it++) {
-            int a = rnd() % K, b = rnd() % K; double T = 1.0 * pow(0.01, (double)it / hgit);
-            if (A2[a][b]) { A2[a][b] = 0; dA[a]--; dB[b]--; }
-            else { if (dA[a] >= spare || dB[b] >= spare) { /* swap out a random edge of the full end */
-                    int a3 = a, b3 = b; if (dA[a] >= spare) { do b3 = rnd() % K; while (!A2[a][b3]); A2[a][b3] = 0; dA[a]--; dB[b3]--; }
-                    if (dB[b] >= spare) { do a3 = rnd() % K; while (!A2[a3][b]); A2[a3][b] = 0; dA[a3]--; dB[b]--; } }
-                A2[a][b] = 1; dA[a]++; dB[b]++; }
-            long h2 = HGCOST();
-            if (h2 <= hc || urand() < exp(-(h2 - hc) / T)) { hc = h2; if (hc < hbest) { hbest = hc; memcpy(Abest, A2, sizeof A2); } }
-            else { memcpy(A2, Abest, sizeof A2); hc = hbest; for (int x = 0; x < K; x++) { dA[x] = dB[x] = 0; } for (int x = 0; x < K; x++) for (int y = 0; y < K; y++) if (A2[x][y]) { dA[x]++; dB[y]++; } }
-        }
-        memcpy(A2, Abest, sizeof A2);
-        for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) if (A2[a][b]) { hgA[nhg] = a; hgB[nhg] = b; nhg++; }
-        printf("hub graph: %ld needed same-side pairs (ordered), uncovered %ld, %d hub-hub edges\n", nneed, hbest, nhg);
-    }
+    if (getenv("HUBG_IN")) {   /* reuse the hub graph of an earlier dmhub solution (same FREE order and H) */
+        FILE *g = fopen(getenv("HUBG_IN"), "r"); char w[64]; nhg = 0;
+        while (g && fscanf(g, "%63s", w) == 1) if (!strcmp(w, "hubgraph")) { int a, b; while (fscanf(g, "%d %d", &a, &b) == 2) { hgA[nhg] = a; hgB[nhg] = b; nhg++; } break; }
+        if (g) fclose(g); printf("hub graph loaded: %d edges\n", nhg);
+    } else if (!getenv("HGFIRST")) hub_graph_block();
     build(); long per[3]; long c = cost_eval(per);
     printf("q %d N %d freed %d hubs/side %d -> n %d; initial cost %ld (point src %ld, line src %ld, hub src %ld); focus %d\n", q, N, nfree, H, nV, c, per[0], per[1], per[2], nfoc);
     fflush(stdout);
