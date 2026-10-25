@@ -122,3 +122,12 @@ groups as not run.
 | prod sl 4 × sl 11 × Z109 | 8,632,800 | 22.2 | 78k | 6 |
 | prod sl 8 × sl 11 × Z13 | 8,648,640 | 22.8 | 109k | 2 |
 | sl 43 × Z109 (seed 2) | 8,661,576 | 23.3 | 123k | 6 |
+
+## Result 4 (round 2): NEW RECORD (11,9), 17,297,280 vertices (was 17,169,600, +0.75 %)
+
+- Group prod sl 8 × sl 11 × Z_13 (SL(2,8) with x³+x+1, SL(2,11), Z_13), |G| = 8,648,640 (μ = 22.8), orbit k = 3,
+  m = 3, f = 2. Solved at evaluation 109,745 (1884 s, seed 1, wave 2a). |Fix(α)| = 107.
+- Solution: research/frontier/sols/d11D9_prod_sl_8_sl_11_13_orb3_s1.txt. Search log: research/structured/runs/d11D9_prod_sl_8_sl_11_13_orb3_s1.log.
+- Independent check: build_haar2.py VALID: ecc 9 from (e,A) and (e,B), 0 unreached, 11-regular, 0 duplicate edges,
+  edge-list sha256 a51d7f96174920381a935a1b0b7b2fd22e285c23672c8cd28716c787f8eaf9a8. Log: runs/d11D9_prod_sl_8_sl_11_13_orb3_s1.rebuild.txt.
+- Wave 2a's other runs were still going at 14:59 (see the progress table above).
