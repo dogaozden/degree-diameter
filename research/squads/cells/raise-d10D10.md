@@ -51,7 +51,16 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 - c: k = 5, f = 0, psl 61 × 271, μ 21.5, 1800 s
 - d: k = 5, f = 0, sl 59 × 151, μ 24.3, 2400 s
 
+## Records
+
+- **61,495,320** (+2.3 % over 60,141,120): PSL(2,61) × Z_271, k = 5, m = 2, f = 0, μ = 21.5, |Fix| = 29, 1,217 evaluations
+  (orbit search, 78 s). File `../../frontier/sols/d10D10_psl_61_271_orb5f0_s1.txt`. Checked by `tools/haarcheck_psl`
+  (independent low-memory BFS from (e,A) and (e,B): all 30,747,660 elements reached within 10, 31 s) and by haar_sym's
+  own full check. build_haar2.py was not run (hours and > 7 GB above 20M vertices).
+  Log: `../../structured/runs/raise-d10D10/d10D10_psl_61_271_orb5f0_s1.log`.
+
 ## Status log
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
 - 07:23–07:53: screens finished (see table). Queues a–d launched at 07:54.
+- 07:55: b (psl 61 × 271, k = 5) solved at μ = 21.5 → 61,495,320 (new record, checked above). Queues a, b, d still running.

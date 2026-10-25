@@ -3,3 +3,10 @@ wide rows: no cyclic subgroup of order >= 64 found (best 61); using haar_gen3's 
 alpha: conj by mat(7,44,57,36) (index 26897), z -> 10 z on Z_271
 ORBIT k=5 m=2 f=0: |Fix(alpha)| = 29 (+e); mu = 21.46, mu/k = 4.29, fixed-point misses ~ 1.76
 start cost=15
+t=30 steps=57 evals=457 cost=5 best=4 T=0.53
+t=60 steps=116 evals=929 cost=5 best=2 T=0.19
+RESULT d=10 D=10 group=psl 61 x Z_271 N=30747660 best=0 evals=1217 time=78.1 orbit k=5 m=2 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise-d10D10/d10D10_psl_61_271_orb5f0_s1.txt
+VALID d=10 D=10 group=psl 61 x Z_271 N=30747660 vertices=61495320 (distinct generators, 10-regular simple)

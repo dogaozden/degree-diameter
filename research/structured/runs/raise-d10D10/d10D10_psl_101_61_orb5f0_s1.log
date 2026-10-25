@@ -3,3 +3,8 @@ wide rows: HW order 183, rows 171700, setup 2.85s
 alpha: conj by mat(38,25,34,41) (index 385046), z -> 9 z on Z_61
 ORBIT k=5 m=2 f=0: |Fix(alpha)| = 49 (+e); mu = 29.72, mu/k = 5.94, fixed-point misses ~ 3.12
 start cost=36
+t=30 steps=51 evals=409 cost=13 best=10 T=0.53
+t=60 steps=105 evals=841 cost=10 best=10 T=0.18
+t=91 steps=159 evals=1273 cost=7 best=7 T=0.15
+t=122 steps=212 evals=1697 cost=5 best=5 T=0.15
+t=152 steps=266 evals=2129 cost=4 best=4 T=0.15
