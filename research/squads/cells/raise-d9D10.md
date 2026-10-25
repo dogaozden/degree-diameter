@@ -43,3 +43,10 @@ sl 229 (μ 34.1; fix 227, bad); prod psl 5×sl 16×Z49 (μ 33.5). Last place: ps
   E prod sl 8×psl 19×Z7 cost 3 (2.7e5), D psl 79×Z49 cost 6 (4.4e5). About 0.02–0.03 s per eval.
   The runs end at about 11:35–11:45 UTC (4 h each); the first-moment wall for this method is μ ≈ 40–45 (SIZE_LAW §2.3),
   so these μ values (35–37) are within reach but need more evals than we have.
+- **10:16 UTC: NEW RECORD (9,10): psl 151 × Z7, 24,099,600 vertices** (N = 12,049,800, orbit k=3 m=3 f=0, fix 74, μ 35.7,
+  seed 1, 425,161 evals, 9,648 s). Previous record 23,975,280 (psl 71 × Z67). File: research/frontier/sols/d9D10_psl_151_7_orb3f0_s1.txt
+  (sha256 d78ef086c9c0f2ed5a26dc8fb9193208c94557b535ef669eb349d4c50ccac654). Checks: haar_sym full check OK (both
+  normalisations), orbq's haarcheck_psl VALID, and an independent re-run of tools/haarcheck_psl: ecc 10 from (e,A) and (e,B),
+  all 12,049,800 per side reached. Log: research/structured/runs/d9D10_psl_151_7_orb3f0_s1.log.
+  Not yet re-checked by build_haar2.py (too heavy above 10M; the coordinator's check is pending).
+- 10:17: stopped run F (psl 151×Z7 ORBW=3, same group, no longer useful) and run B (sl 43×Z151, N below the new record).
