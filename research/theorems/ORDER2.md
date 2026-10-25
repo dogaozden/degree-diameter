@@ -736,8 +736,8 @@ Going through the table:
 clumps than order 3, because the palindromes remove its Anti penalty. Order 2 stays worse than order 3.
 
 **Screens.** Random symmetric sets; cost = uncovered elements on both sides; clumps = cost/2k. The rule column is
-`rule.py --second` (`out/rule_table2.txt`). Logs: `runs/r2/ro127_*.log`, `ro149_*.log`, `ro159_*.log`. Samples per
-row: 3,000 at (12,7), 40 at (14,9), 16 at (15,9).
+`rule.py --second` (`out/rule_table2.txt`). Logs: `runs/r2/ro127_*.log`, `ro149_*.log`, `ro159_*.log`,
+`ro139_*.log`. Samples per row: 3,000 at (12,7), 40 at (14,9), 16 at (15,9) and (13,9).
 
 | cell, group (N; μ) | symmetry | rule: expected cost/2k | min | p1 | p10 (cost/2k) |
 |---|---|---|---|---|---|
@@ -762,7 +762,7 @@ measured columns (`rule.py --second`, column Ecost/2k). It includes G's involuti
 SL(2,8)², and 106,275 in PSL(2,25)². In clump units, μ_A (column mu_A0) is larger, because involution and
 fixed-point clumps are smaller than 2k.
 
-- In every pair, order 6 has about half the clumps of order 3 (ratio 0.45–0.56 at p1 or p10). The measured order is
+- In every pair, order 6 has about half the clumps of order 3 (ratio 0.46–0.57 at p1 or p10). The measured order is
   the rule's in every group.
 - The first session's Anti term would have added 3–11 clumps to each order-6 row. Measured, they carry less than one.
 - With G's involutions included, the expected cost matches the measured p1 to within 10 % for all orders and for
@@ -798,7 +798,7 @@ factor 2–5. Why large Anti or Fix sets on a cyclic factor hurt even more than 
     the record was, at a larger N.
   - Screen (16 samples, `runs/r2/ro139_*.log`): order 6 min 4.9, p10 10.5 clumps; order 3 min 14.8, p10 18.5.
   - Anneal: RESULT-139.
-- (14,9) PSL(2,25)²: +4.8 %, but poor mixing (above).
+- (14,9) PSL(2,25)²: +4.8 %, but its 106,275 involutions rule it out (above).
 - (12,9) and (16,9): no tight balanced group found within +10 % of the record.
 
 ## 6. Ranked conclusions
