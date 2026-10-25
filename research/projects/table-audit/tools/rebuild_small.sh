@@ -54,10 +54,11 @@ chk() { # name file d D
     python3 "$R/research/frontier/build_haar2.py" $f t/hs.txt >/dev/null; chk "($d,$D) Haar $b" t/hs.txt $d $D
   done
 } > "$P/checks/small.txt"
-# Haar graphs above 150,000 vertices: threaded all-pairs check into checks/haar_big.txt
+# Haar graphs of 150,000 to 1,200,000 vertices: threaded all-pairs check into checks/haar_big.txt
 gcc -O2 -pthread -o bin/apsp_mt "$R/research/lifts/coordinator_check/apsp_mt.c" 2>/dev/null
 for f in "$P"/graphs/*.sol; do
   b=$(basename $f); n=$(echo $b | sed 's/^d[0-9]*D[0-9]*_n\([0-9]*\)_.*/\1/'); [ "$n" -le 150000 ] && continue
+  [ "$n" -gt 1200000 ] && continue    # larger Haar graphs: two-BFS checks in checks/haar_huge.txt
   grep -q "$b.*RESULT VALID" "$P/checks/haar_big.txt" 2>/dev/null && continue
   d=$(echo $b | sed 's/^d\([0-9]*\)D.*/\1/'); D=$(echo $b | sed 's/^d[0-9]*D\([0-9]*\)_.*/\1/')
   python3 "$R/research/frontier/build_haar2.py" $f t/hb.txt >/dev/null
