@@ -49,8 +49,18 @@ chk() { # name file d D
   done
   for f in "$P"/graphs/*.sol; do
     case $f in *d7D3*) continue;; esac
+    n=$(echo $(basename $f) | sed 's/^d[0-9]*D[0-9]*_n\([0-9]*\)_.*/\1/'); [ "$n" -gt 150000 ] && continue
     b=$(basename $f); d=$(echo $b | sed 's/^d\([0-9]*\)D.*/\1/'); D=$(echo $b | sed 's/^d[0-9]*D\([0-9]*\)_.*/\1/')
     python3 "$R/research/frontier/build_haar2.py" $f t/hs.txt >/dev/null; chk "($d,$D) Haar $b" t/hs.txt $d $D
   done
 } > "$P/checks/small.txt"
+# Haar graphs above 150,000 vertices: threaded all-pairs check into checks/haar_big.txt
+gcc -O2 -pthread -o bin/apsp_mt "$R/research/lifts/coordinator_check/apsp_mt.c" 2>/dev/null
+for f in "$P"/graphs/*.sol; do
+  b=$(basename $f); n=$(echo $b | sed 's/^d[0-9]*D[0-9]*_n\([0-9]*\)_.*/\1/'); [ "$n" -le 150000 ] && continue
+  grep -q "$b.*RESULT VALID" "$P/checks/haar_big.txt" 2>/dev/null && continue
+  d=$(echo $b | sed 's/^d\([0-9]*\)D.*/\1/'); D=$(echo $b | sed 's/^d[0-9]*D\([0-9]*\)_.*/\1/')
+  python3 "$R/research/frontier/build_haar2.py" $f t/hb.txt >/dev/null
+  printf '(%s,%s) Haar %s: ' $d $D $b >> "$P/checks/haar_big.txt"; bin/apsp_mt t/hb.txt $d $D ${THREADS:-4} | tr '\n' ' ' >> "$P/checks/haar_big.txt"; echo >> "$P/checks/haar_big.txt"
+done
 grep -c "RESULT VALID" "$P/checks/moore_pg_w.txt" "$P/checks/moore_h_small.txt" "$P/checks/small.txt"
