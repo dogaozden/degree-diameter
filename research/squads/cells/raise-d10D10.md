@@ -170,3 +170,27 @@ Job files and logs: `../../structured/runs/raise-d10D10-r2/` (`jobs_{a,b,c,d}.tx
   psl 71 × 181 seed 6 at best 6 after 31k. Stopped at 17:05.
 - 2026-10-25 17:05 UTC: psl 79 × 131 seed 2 (ORBW 5) still at best 5 after 82k evals (ends 3 h). New runs with ORBW = 10
   (fixed points weigh more): psl 79 × 131 seeds 7 and 8, psl 71 × 181 seed 7, 8000 s each.
+- 2026-10-25 19:18 UTC: ORBW = 10 runs ended (8000 s each, 60–100k evals): psl 79 × 131 seed 7 best 5, seed 8 best 10;
+  psl 71 × 181 seed 7 best 5. psl 71 × 181 seed 9 (ORBW 5, 8000 s) still running, at best 5 after 73k evals (ends ~19:48).
+  No solution in round 2 so far. Record stays **63,854,520** (round 1).
+
+## Where it stands (round 2)
+
+- Total round-2 search: about 10 jobs of 2–3 h on psl 79 × 131 and psl 71 × 181 (N = 32.29M and 32.38M, μ 44 and 46),
+  plus two RESTART runs. Total ≈ 0.9M evaluations at N ≈ 32M, no solution. Best cost reached: 5 (one uncovered orbit
+  or one fixed point) in 9 runs; never below 5.
+- The near misses are structural: the annealing stalls at cost 5 at the same floor for every seed, group, and weight
+  (ORBW 1, 5, 10). Round 1 reached the same floor on psl 71 × 181.
+- What was not tried: a smarter endgame than annealing (for example, exhaustively scanning one orbit replacement
+  around a cost-5 state; one evaluation ≈ 0.1 s, so a full scan of N ≈ 3·10⁷ is out of reach), k = 7 (f = 3 torus letters,
+  the known collision problem), SL(3,q) (not implemented), voltage lifts, and prime-power PSL(2,81) × Z121 (no
+  low-memory checker for GF(81) at > 20M). PSL(2,41) × Z941 and PSL(2,31) × Z2161 were screened and rejected (large
+  cyclic factor: random medians 105 and 151).
+
+## Stop reason
+
+The k = 5, f = 0 route is at its wall for N in (31.93M, 32.4M) with these tools and this budget: every candidate group
+tried (psl 79 × 131, psl 71 × 181) stalls at cost 5 after 50–100k evaluations. Gains would need roughly 3–5× more
+evaluations per group (≈ 10⁶ in total, 20–30 core-hours at 0.1 s per evaluation), more than one Haiku session has.
+Recommendation for the coordinator: a bigger model or a new route (SL(3,q) or endgame search) is worth more than more
+seeds of these groups.
