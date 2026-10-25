@@ -637,10 +637,10 @@
  },
  "7,10": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 11041 90 3 found here (graphs/d7D10_n1987380_meta_11041_90_3_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181"
  },
  "8,5": {
@@ -661,10 +661,10 @@
  },
  "8,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 421 1296 159 found here (graphs/d8D9_n1091232_meta_421_1296_159_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421"
  },
  "8,10": {
@@ -693,10 +693,10 @@
  },
  "9,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 1361 1088 28 found here (graphs/d9D9_n2961536_meta_1361_1088_28_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361"
  },
  "9,10": {

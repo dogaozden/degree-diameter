@@ -43,14 +43,14 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (7,7) | 23,436 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 23,580 |  |
 | (7,8) | 80,940 | Loz | order | build_haar2.py + apsp.c VALID | 95,760 | holder's construction lost; order reproduced |
 | (7,9) | 400,160 | Loz | order | build_haar2.py + apsp_mt.c VALID | 462,840 | holder's construction lost; order reproduced |
-| (7,10) | 1,987,380 | Loz | no |  | 2,237,760 | no traceable construction (data lost) |
+| (7,10) | 1,987,380 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 2,237,760 | holder's construction lost; order reproduced |
 | (8,3) | 114 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,4) | 800 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,5) | 1,710 | Loz | order | build_haar2.py + apsp.c VALID | 2,048 | holder's construction lost; order reproduced |
 | (8,6) | 39,216 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,7) | 40,586 | Delorme, Gomez, Quisquater | yes | apsp.c VALID | 43,344 | attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9 |
 | (8,8) | 201,480 | Loz | order | build_haar2.py + apsp_mt.c VALID | 239,904 | holder's construction lost; order reproduced |
-| (8,9) | 1,091,232 | Loz | no |  | 1,326,960 | no traceable construction (data lost) |
+| (8,9) | 1,091,232 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 1,326,960 | holder's construction lost; order reproduced |
 | (8,10) | 6,927,210 | Loz | no |  | 7,818,096 | no traceable construction (data lost) |
 | (9,3) | 146 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (9,4) | 1,170 | bipartite Moore graph | yes | apsp.c VALID |  |  |
@@ -58,7 +58,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (9,6) | 74,898 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (9,7) | 117,648 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 118,224 |  |
 | (9,8) | 449,480 | Loz | order | build_haar2.py + apsp_mt.c VALID | 540,360 | holder's construction lost; order reproduced |
-| (9,9) | 2,961,536 | Loz | no |  | 3,499,776 | no traceable construction (data lost) |
+| (9,9) | 2,961,536 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 3,499,776 | holder's construction lost; order reproduced |
 | (9,10) | 20,017,260 | Loz | no |  | 23,975,280 | no traceable construction (data lost) |
 | (10,3) | 182 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (10,4) | 1,640 | bipartite Moore graph | yes | apsp.c VALID |  |  |
