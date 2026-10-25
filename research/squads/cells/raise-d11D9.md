@@ -148,3 +148,12 @@ groups as not run.
 - prod sl 3 × sl 11 × Z277 (μ 27.8): stopped at 118k evals, best 78 (poor; not a candidate).
 - Running now (started 15:04–16:28, 7200 s each): sl 41 × Z127 (seed 2, best 8 at 366k at 16:27), prod sl 5 × sl 7 × Z217 (seed 1, best 36 at 404k),
   prod sl 4 × sl 13 × Z67 (seed 1, μ 28.0, N 8,779,680), prod sl 9 × sl 23 × Z1 (seed 1, μ 26.5, N 8,743,680; no cyclic factor).
+
+### Wave 2c results (17:02 UTC)
+
+- sl 41 × Z127 (seed 2, μ 26.6): full 7200 s, not solved. Best 8 at 513k evals (fixed points, |Fix| = 41).
+- prod sl 5 × sl 7 × Z217 (seed 1, μ 26.7): full 7200 s, not solved. Best 36 at 567k evals.
+- Still running: prod sl 4 × sl 13 × Z67 (μ 28.0, best 12 at 76k at 16:55) and prod sl 9 × sl 23 × Z1 (μ 26.5, best 14 at 126k at 16:55).
+- Started 17:02 with ORBW=3 (an uncovered α-fixed element weighs 3; the stalls at cost 2–8 look like fixed-point misses):
+  sl 43 × Z109 (seed 3, 8000 s) and sl 59 × Z43 (μ 30.2, seed 1, 8000 s).
+- Budget: session 6 h from 14:20 UTC; stop new launches by ~19:30 and finish verification before the end.
