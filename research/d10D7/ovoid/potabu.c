@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     for (int l = 0; l < N; l++) for (int j = 0; j <= q; j++) { int p = LP[l * (q + 1) + j]; PL[p * (q + 1) + pc[p]++] = l; }
     DEG = q * (q + 1) * (1 + q * q); NB = malloc(sizeof(int) * (long)N * DEG);
     int *mark = calloc(N, sizeof(int)), stamp = 0;
-    for (int p = 0; p < N; p++) { stamp++; mark[p] = stamp; int d = 0; int lev1[64]; int n1 = 0;
+    for (int p = 0; p < N; p++) { stamp++; mark[p] = stamp; int d = 0; int lev1[2048]; int n1 = 0;
         for (int a = 0; a <= q; a++) { int l = PL[p * (q + 1) + a]; for (int b = 0; b <= q; b++) { int x = LP[l * (q + 1) + b]; if (mark[x] != stamp) { mark[x] = stamp; NB[(long)p * DEG + d++] = x; lev1[n1++] = x; } } }
         for (int i = 0; i < n1; i++) { int x = lev1[i]; for (int a = 0; a <= q; a++) { int l = PL[x * (q + 1) + a]; for (int b = 0; b <= q; b++) { int y = LP[l * (q + 1) + b]; if (mark[y] != stamp) { mark[y] = stamp; NB[(long)p * DEG + d++] = y; } } } }
         if (d != DEG) { fprintf(stderr, "deg %d != %d at %d\n", d, DEG, p); return 1; } }
