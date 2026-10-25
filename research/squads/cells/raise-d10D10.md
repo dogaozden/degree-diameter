@@ -63,4 +63,4 @@ Job files and logs: `../../structured/runs/raise-d10D10/` (`jobs_{a,b,c,d}.txt`,
 
 - 2026-10-25 07:20: started. Compiled haar_sym and the three checkers. Screens launched.
 - 07:23–07:53: screens finished (see table). Queues a–d launched at 07:54.
-- 07:55: b (psl 61 × 271, k = 5) solved at μ = 21.5 → 61,495,320 (new record, checked above). Queues a, b, d still running.
+- 07:55: c (psl 61 × 271, k = 5) solved at μ = 21.5 → 61,495,320 (new record, checked above). Queues a, b, d still running.
