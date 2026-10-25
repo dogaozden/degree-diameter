@@ -1,0 +1,5 @@
+group sl 16 poly x^4+x+1 x Z_283, N=1154640, identity 67920, H order 17, rows 67920, threads 1, setup 0.08s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+alpha: conj by mat(10,4,4,11) (index 2612), z -> 44 z on Z_283
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 32.65, mu/k = 10.88, fixed-point misses ~ 0.46
+start cost=788

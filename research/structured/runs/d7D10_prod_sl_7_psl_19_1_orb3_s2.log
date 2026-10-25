@@ -1,0 +1,26 @@
+group prod sl 7 psl 19 x Z_1, N=1149120, identity 143811, H order 63, rows 18240, threads 1, setup 0.07s
+wide rows: HW order 152, rows 7560, setup 0.13s
+alpha: conj by prod[mat(6,6,1,0);mat(1,15,5,0)] (index 1129061), z -> 0 z on Z_1
+ORBIT k=3 m=2 f=1: |Fix(alpha)| = 53 (+e); mu = 30.90, mu/k = 10.30, fixed-point misses ~ 1.62
+start cost=41
+t=30 steps=2238 evals=17905 cost=12 best=6 T=0.53
+t=60 steps=4504 evals=36033 cost=3 best=3 T=0.19
+t=90 steps=6806 evals=54449 cost=3 best=3 T=0.15
+t=120 steps=9101 evals=72809 cost=3 best=3 T=0.15
+t=150 steps=11411 evals=91289 cost=3 best=3 T=0.15
+t=180 steps=13810 evals=110481 cost=3 best=3 T=0.15
+t=210 steps=16175 evals=129401 cost=12 best=3 T=0.85
+t=240 steps=18413 evals=147305 cost=3 best=3 T=0.30
+t=270 steps=20788 evals=166305 cost=3 best=3 T=0.15
+t=300 steps=23139 evals=185113 cost=3 best=3 T=0.15
+t=330 steps=25601 evals=204809 cost=3 best=3 T=0.15
+t=360 steps=28097 evals=224777 cost=13 best=3 T=0.84
+t=390 steps=30515 evals=244121 cost=7 best=3 T=0.30
+t=420 steps=32993 evals=263945 cost=7 best=3 T=0.15
+t=450 steps=35456 evals=283649 cost=7 best=3 T=0.15
+t=480 steps=37982 evals=303857 cost=6 best=3 T=0.15
+t=510 steps=40417 evals=323337 cost=17 best=3 T=0.84
+RESULT d=7 D=10 group=prod sl 7 psl 19 x Z_1 N=1149120 best=0 evals=323521 time=510.4 orbit k=3 m=2 f=1 fix=53
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/294a623b-2cc3-5484-a41d-3760a5e556e6/scratchpad/sols/d7D10_L_prod_sl7_psl19_1_s2_s2.txt
+EXIT 0
