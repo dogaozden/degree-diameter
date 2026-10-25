@@ -1,6 +1,14 @@
 # (Δ, D) = (13, 7): beating 1,062,936 by surgery on the three-copy hexagon graph
 
-Job "cell-13-7" (Opus + Haiku squads), 2026-10-24, cloud session. Status: see §5 for the current best and its checks.
+Job "cell-13-7" (Opus + Haiku squads), Oct 24-25 2026: session_01B5ncdSzNVqpurrFTwEi94n (theorem, 320-point set,
+cut off by the usage limit) and session_0136phW63ksffo3wvN1THJtH (checks, squad rounds 2-5, generalizations).
+
+**Summary.** (13,7) >= **1,064,448** (all-pairs VALID), from three copies of H(11) plus a matching and 756 "surgeries"
+at pairwise opposite points (+2 vertices each). The same surgery, carried to every D = 7 cell of the table that is
+built from generalized hexagons, gives (7,7) 23,580, (9,7) 118,224, (10,7) 225,128, (11,7) 406,298, (12,7) 673,892,
+(14,7) 1,774,584, (15,7) 2,484,720, (16,7) 4,024,340 (§7; checks in §8). The point sets came from Haiku squads
+(orbit unions of small abelian groups of isometries with an exact orbit-graph clique); for q = 9 an explicit
+duality of H(9) (§7) makes the local-duality condition global.
 
 ## 1. Where the table value comes from
 
@@ -157,8 +165,8 @@ internally pairwise opposite, weight = orbit size, edges = orbit pairs that are 
 **Other q, three copies (Δ = q+2): the cells (7,7), (9,7), (10,7), (11,7).** Nothing in §2 depends on q = 11.
 - (7,7) = 23,436 + 2·72 = **23,580**; (9,7) = 117,648 + 2·288 = **118,224** (partial ovoids of Q(6,5), Q(6,7) from
   orbit unions, squad r4 c3; earlier 58 and 172 from povoid_ils gave 23,552 and 117,992).
-- (10,7) = 224,694 + 2·84 = **224,862** (new cell): H(8) from hexgen2.c (GF(4), GF(8) added), partial ovoid from
-  povoid_ils2.c (GF(q) arithmetic), the 513-line spread of H(8) in the elliptic hyperplane x3 = x0 + x4 (in
+- (10,7) = 224,694 + 2·217 = **225,128** (new cell): H(8) from hexgen2.c (GF(4), GF(8) added), partial ovoid of
+  217 points from orbit unions in GF(8) (squad r5 c1; 84 from povoid_ils2.c gave 224,862), the 513-line spread of H(8) in the elliptic hyperplane x3 = x0 + x4 (in
   characteristic 2 every n^perp contains the nucleus, so the hyperplane must miss it).
 - (11,7), q = 9: Q(6,9) has ovoids; one is a union of 10 orbits of an element of order 73 (q9/orb73.py: all subgroups
   of order 73 of O(7,9) are conjugate and the dual of the Hermitian spread is invariant under one), which with the
@@ -193,12 +201,12 @@ gives the exact diameter (apsp_src.c); the coordinator may prefer full all-pairs
 | cell | table | ours | check file (research/d13D7/checks/) | status |
 |---|---|---|---|---|
 | (13,7) | 1,062,936 | 1,063,730 | d13D7_hex11_R397_n1063730 | VALID |
-| (13,7) | 1,062,936 | 1,064,448 | d13D7_hex11_R756_n1064448 | pending |
-| (7,7) | 23,436 | 23,580 | d7D7_hex5_R72_n23580 | VALID (apsp.c) |
-| (9,7) | 117,648 | 118,224 | d9D7_hex7_R288_n118224 | VALID (apsp.c) |
-| (10,7) | 224,694 | 224,862 | d10D7_hex8_R84_n224862 | VALID |
-| (11,7) | 398,580 | 406,298 | d11D7_hex9_dual_R3859_n406298 | VALID |
-| (12,7) | 664,300 | 673,892 | d12D7_hex9_dual_R2459_n673892 | pending (level 0 + hubs) |
-| (14,7) | 1,771,560 | 1,774,584 | d14D7_hex11_R756_n1774584 | pending (level 0 + hubs) |
+| (13,7) | 1,062,936 | **1,064,448** | d13D7_hex11_R756_n1064448 | VALID |
+| (7,7) | 23,436 | **23,580** | d7D7_hex5_R72_n23580 | VALID (apsp.c) |
+| (9,7) | 117,648 | **118,224** | d9D7_hex7_R288_n118224 | VALID (apsp.c) |
+| (10,7) | 224,694 | **225,128** | d10D7_hex8_R217_n225128 | VALID (224,862 with 84 points also VALID) |
+| (11,7) | 398,580 | **406,298** | d11D7_hex9_dual_R3859_n406298 | VALID |
+| (12,7) | 664,300 | **673,892** | d12D7_hex9_dual_R2459_n673892 | VALID (level 0 + hubs) |
+| (14,7) | 1,771,560 | **1,774,584** | d14D7_hex11_R756_n1774584 | VALID (level 0 + hubs) |
 | (15,7) | 2,480,184 | 2,484,720 | d15D7_hex11_R756_n2484720 | pending (level 0 + hubs) |
 | (16,7) | 4,022,340 | 4,024,340 | d16D7_hex13_R500_n4024340 | pending (level 0 + hubs) |
