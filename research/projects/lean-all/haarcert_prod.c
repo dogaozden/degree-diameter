@@ -1,8 +1,8 @@
 /* haarcert_prod.c: word certificates for Haar graphs of SL(2,p) x SL(2,q) x Z_n and PSL(2,p) x SL(2,q) x Z_n
-   (project lean-all, LeanAll/HaarProd.lean).
+   (project lean-all, LeanAll/HaarProd.lean), and of PSL(2,p) x SL(2,8) x Z_n (LeanAll/HaarGF8.lean).
 
    usage: haarcert_prod SOLFILE KIND OUT.bin
-     SOLFILE  research/frontier/sols format: "D D prod sl|psl p sl q n n N order", then the generators
+     SOLFILE  research/frontier/sols format: "D D prod sl|psl p sl q [poly x^3+x+1] n n N order", then the generators
               "idx prod[mat(a,b,c,d);mat(a,b,c,d)] z=k"
      KIND     even | left | right, as in haarcert.c
    Output: 5 bytes per element in slot order, the field sum_t digit_t << (4 t).
@@ -11,13 +11,27 @@
              PSL: B = p h + h sign-normalised batches, h = (p-1)/2, as for psl in haarcert.c), and
      b2, j2: the batch of A2 in SL(2,q) (a2 (q-1) + c2 - 1 if c2 != 0, q (q-1) + a2 - 1 if c2 == 0) and its free
              entry (d2 if c2 != 0, b2 if c2 == 0).
+   With q = 8 and "poly x^3+x+1" the second factor is SL(2, GF(8)), entries as 3-bit codes (bit i = coefficient
+   of x^i), products modulo x^3 + x + 1.
    Every word is re-evaluated before it is written (up to the sign of A1 for psl). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 
-static int P, Q, NZ, DEG, DIAM, PSL, HP;
+static int P, Q, NZ, DEG, DIAM, PSL, HP, F8;
+
+/* the second factor's field: Z/Q, or GF(8) when F8 */
+static int qmul(int a, int b) {
+  if (!F8) return a * b % Q;
+  int r = 0;
+  for (int i = 0; i < 3; i++) if (b >> i & 1) r ^= a << i;
+  for (int i = 4; i >= 3; i--) if (r >> i & 1) r ^= 0xb << (i - 3);
+  return r;
+}
+static int qadd(int a, int b) { return F8 ? a ^ b : (a + b) % Q; }
+static int qneg(int a) { return F8 ? a : (Q - a) % Q; }
+static int qinv(int a) { for (int y = 1; y < Q; y++) if (qmul(a, y) == 1) return y; return -1; }
 static long long B1, NS;  /* batches of the first factor, slots per batch */
 static int S[16][9];
 
@@ -29,15 +43,15 @@ static El mul(El x, El y) {
   r.b = (x.a * y.b + x.b * y.d) % P;
   r.c = (x.c * y.a + x.d * y.c) % P;
   r.d = (x.c * y.b + x.d * y.d) % P;
-  r.a2 = (x.a2 * y.a2 + x.b2 * y.c2) % Q;
-  r.b2 = (x.a2 * y.b2 + x.b2 * y.d2) % Q;
-  r.c2 = (x.c2 * y.a2 + x.d2 * y.c2) % Q;
-  r.d2 = (x.c2 * y.b2 + x.d2 * y.d2) % Q;
+  r.a2 = qadd(qmul(x.a2, y.a2), qmul(x.b2, y.c2));
+  r.b2 = qadd(qmul(x.a2, y.b2), qmul(x.b2, y.d2));
+  r.c2 = qadd(qmul(x.c2, y.a2), qmul(x.d2, y.c2));
+  r.d2 = qadd(qmul(x.c2, y.b2), qmul(x.d2, y.d2));
   r.z = (x.z + y.z) % NZ;
   return r;
 }
 static El inv(El x) {
-  El r = { x.d, (P - x.b) % P, (P - x.c) % P, x.a, x.d2, (Q - x.b2) % Q, (Q - x.c2) % Q, x.a2, (NZ - x.z) % NZ };
+  El r = { x.d, (P - x.b) % P, (P - x.c) % P, x.a, x.d2, qneg(x.b2), qneg(x.c2), x.a2, (NZ - x.z) % NZ };
   return r;
 }
 static El gen(int u) {
@@ -77,9 +91,9 @@ static El el_of(long long k) {
   long long half2 = (long long)Q * (Q - 1);
   if (b2 < half2) {
     x.a2 = (int)(b2 / (Q - 1)); x.c2 = (int)(b2 % (Q - 1)) + 1; x.d2 = (int)j2;
-    x.b2 = (int)((((long long)x.a2 * x.d2 - 1) % Q + Q) % Q * pinv(x.c2, Q) % Q);
+    x.b2 = qmul(qadd(qmul(x.a2, x.d2), qneg(1)), qinv(x.c2));
   } else {
-    x.a2 = (int)(b2 - half2) + 1; x.c2 = 0; x.b2 = (int)j2; x.d2 = pinv(x.a2, Q);
+    x.a2 = (int)(b2 - half2) + 1; x.c2 = 0; x.b2 = (int)j2; x.d2 = qinv(x.a2);
   }
   return x;
 }
@@ -88,12 +102,19 @@ int main(int argc, char **argv) {
   if (argc != 4) { fprintf(stderr, "usage: haarcert_prod SOLFILE even|left|right OUT.bin\n"); return 2; }
   FILE *f = fopen(argv[1], "r");
   if (!f) { perror("sol"); return 2; }
-  char g0[16], g1[16], g2[16], w1[8], w2[8];
+  char g0[16], g1[16], g2[16], w1[32], w2[8];
   long long order;
-  if (fscanf(f, "%d %d %15s %15s %d %15s %d %7s %d %7s %lld", &DEG, &DIAM, g0, g1, &P, g2, &Q, w1, &NZ, w2, &order) != 11
+  if (fscanf(f, "%d %d %15s %15s %d %15s %d %31s", &DEG, &DIAM, g0, g1, &P, g2, &Q, w1) != 8
       || strcmp(g0, "prod") || (strcmp(g1, "sl") && strcmp(g1, "psl")) || strcmp(g2, "sl")) {
-    fprintf(stderr, "expected 'D D prod sl|psl p sl q n n N order'\n"); return 2;
+    fprintf(stderr, "expected 'D D prod sl|psl p sl q [poly x^3+x+1] n n N order'\n"); return 2;
   }
+  if (!strcmp(w1, "poly")) {
+    if (fscanf(f, "%31s %7s", w1, w2) != 2 || strcmp(w1, "x^3+x+1") || Q != 8) {
+      fprintf(stderr, "only GF(8) = F2[x]/(x^3+x+1)\n"); return 2;
+    }
+    F8 = 1;
+  }
+  if (fscanf(f, "%d %7s %lld", &NZ, w2, &order) != 3) { fprintf(stderr, "bad header\n"); return 2; }
   PSL = !strcmp(g1, "psl");
   HP = (P - 1) / 2;
   B1 = PSL ? (long long)P * HP + HP : (long long)P * P - 1;
@@ -103,6 +124,10 @@ int main(int argc, char **argv) {
     if (fscanf(f, "%lld prod[mat(%d,%d,%d,%d);mat(%d,%d,%d,%d)] z=%d", &dummy, &S[u][0], &S[u][1], &S[u][2],
                &S[u][3], &S[u][4], &S[u][5], &S[u][6], &S[u][7], &S[u][8]) != 10) {
       fprintf(stderr, "bad generator line %d\n", u); return 2;
+    }
+    if (qadd(qmul(S[u][4], S[u][7]), qneg(qmul(S[u][5], S[u][6]))) != 1 ||
+        ((S[u][0] * S[u][3] - S[u][1] * S[u][2]) % P + P) % P != 1) {
+      fprintf(stderr, "generator %d: determinant is not 1\n", u); return 2;
     }
   }
   fclose(f);
