@@ -110,3 +110,9 @@ VALID d=14 D=10 group=sl 139 x Z_247 |G|=663313560 vertices=1326627120 (hc_facto
 elapsed 630 s
 === hc_factor d15D10_sl_149_373_orb3f0_s1 17:55:36
 (worker restart at about 18:05 UTC killed the runs after this point)
+=== hc_factor d16D10_sl_151_613_orb3_s1 18:13:40
+from (e,A): reached A 2110436400/2110436400, B 2110436400/2110436400 within 10 steps, eccentricity 10
+from (e,B): reached A 2110436400/2110436400, B 2110436400/2110436400 within 10 steps, eccentricity 10
+VALID d=16 D=10 group=sl 151 x Z_613 |G|=2110436400 vertices=4220872800 (hc_factor)
+elapsed 1862 s
+ALLDONE

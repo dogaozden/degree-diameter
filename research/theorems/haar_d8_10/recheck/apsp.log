@@ -45,3 +45,11 @@ n=462840 edges=1619940 degree min=7 max=7 bipartite=yes diameter=9
 RESULT VALID d=7 D=9 n=462840
   with D-1:
 (worker restart at about 18:05 UTC killed the runs after this point)
+=== d6D10_prod_sl_5_psl_7_13_orb3f0_s1: edge list from build_haar2.py, then apsp_mt 18:24:15
+n=524160 edges=1572480 degree min=6 max=6 bipartite=yes diameter=10
+RESULT VALID d=6 D=10 n=524160
+  with D-1:
+=== d9D8_psl_19_79_orb3_s1: edge list from build_haar2.py, then apsp_mt 18:24:15
+n=540360 edges=2431620 degree min=9 max=9 bipartite=yes diameter=8
+RESULT VALID d=9 D=8 n=540360
+  with D-1:
