@@ -16,7 +16,7 @@ Also valid, below the record: Z_421 ⋊_48 Z_35 at 14,735 (graph 29,470; seed 16
 not saved as a file).
 Earlier records in this session: 29,214 (Z_541 ⋊ Z_27), 28,938, 28,920, 28,918. Not yet re-checked by the coordinator.
 
-The bar for the next step is |G| ≥ 14,741 (graph ≥ 29,482).
+Next bar: |G| ≥ 14,741 (graph ≥ 29,482). Session stopped at that bar (see the log: no further solve).
 
 ## Method
 
@@ -58,3 +58,21 @@ The bar for the next step is |G| ≥ 14,741 (graph ≥ 29,482).
   five groups: see `phase5.log`.
 - Phase 6 (8 groups with |G| ≥ 14,607, seeds 14–19, 150 s each; `phase6_groups.txt`, `phase6.log`): two solves so far,
   Z_421⋊Z_35 at 14,735 (seed 16, 0.8 s) and Z_335⋊Z_44 at 14,740 (seed 17, 68 s) → record 29,480.
+- Phase 7 (12 screened groups above 14,740, seeds 21–25, 150 s each): no solve. Best cost 2 at 14,770 (Z_1055⋊Z_14 and Z_422⋊Z_35 at 14,770 in the phase-7 run, not 14,740 ones).
+- Phase 8 (Z_1055⋊Z_14, Z_422⋊Z_35, Z_422⋊Z_11, Z_1055⋊Z_14 second r; seeds 26–37, 150 s each): no solve; best cost 2 (5 runs), then 4, 6, 8.
+- Phase 9 (16 untried screened groups above 14,740, seeds 40–41, 150 s each): no solve; costs 4–16, mostly 10–16.
+
+## Where this stands
+
+- **Record: 29,480 vertices** (Haar graph of Z_335 ⋊ Z_44, S listed above), up from 28,560. Verified by two independent
+  checkers (build_haar2.py, apsp.c). Files: research/frontier/sols/d5D9_*_s*_n*.txt (five solutions this session;
+  the 29,480 one is the latest). Coordinator re-check still needed.
+- **What worked:** screening random-generator cost statistics over all candidate metacyclic and SL/PSL groups of
+  order (14,280, 15,186]; annealing with haar_gen3 at 150–480 s runs and many seeds, since solve times are heavy-tailed
+  (0.5 s to 315 s on the same group).
+- **Where it stopped:** above |G| ≈ 14,740 the best groups stay at cost 2 after many seeds. The tooling does not reach
+  the next group order. The size law predicted 27,460 for this cell; our solves sit well above that, so the law's
+  band is not a reliable wall for this cell.
+- **Not tried:** voltage lifts over larger base graphs and symmetric (orbit) S for these orders (the orbit search is the
+  brief's main method for D = 7–10; it was not run here), longer per-seed runs on the cost-2 groups at 14,770, and a
+  second annealing variant. These are the next steps if the coordinator wants more.

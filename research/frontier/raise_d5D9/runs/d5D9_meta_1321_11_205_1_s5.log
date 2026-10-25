@@ -1,3 +1,18 @@
 group meta 1321 11 205 x Z_1, N=14531, identity 0, H order 11, rows 1321, threads 1, setup 0.00s
 start cost=130
 t=30 steps=30006 evals=240049 cost=4 best=4 T=0.53
+t=60 steps=60753 evals=486025 cost=4 best=4 T=0.19
+t=90 steps=90165 evals=721321 cost=4 best=4 T=0.15
+t=120 steps=119494 evals=955953 cost=4 best=4 T=0.15
+t=150 steps=148023 evals=1184185 cost=4 best=4 T=0.15
+t=180 steps=178095 evals=1424761 cost=6 best=4 T=0.64
+t=210 steps=208645 evals=1669161 cost=2 best=2 T=0.23
+t=240 steps=237980 evals=1903841 cost=2 best=2 T=0.15
+t=270 steps=268690 evals=2149521 cost=2 best=2 T=0.15
+t=300 steps=296828 evals=2374625 cost=2 best=2 T=0.15
+t=330 steps=325681 evals=2605449 cost=2 best=2 T=0.15
+t=360 steps=355943 evals=2847545 cost=2 best=2 T=0.53
+t=390 steps=386360 evals=3090881 cost=2 best=2 T=0.19
+t=420 steps=416842 evals=3334737 cost=2 best=2 T=0.15
+t=450 steps=445530 evals=3564241 cost=2 best=2 T=0.15
+RESULT d=5 D=9 group=meta 1321 11 205 x Z_1 N=14531 best=2 evals=3798177 time=480.0
