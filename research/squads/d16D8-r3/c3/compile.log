@@ -1,0 +1,38 @@
+In function 'dfs',
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'dfs' at symrepair_act.c:174:9,
+    inlined from 'make_move' at symrepair_act.c:191:5,
+    inlined from 'main' at symrepair_act.c:267:22:
+symrepair_act.c:160:56: warning: iteration 12 invokes undefined behavior [-Waggressive-loop-optimizations]
+  160 |         for (int i = 0; i < depth; i++) { FE[n][i] = wE[i]; FS[n][i] = wS[i]; }
+      |                                                      ~~^~~
+symrepair_act.c:160:27: note: within this loop
+  160 |         for (int i = 0; i < depth; i++) { FE[n][i] = wE[i]; FS[n][i] = wS[i]; }
+      |                         ~~^~~~~~~
+symrepair_act.c:157:54: warning: iteration 12 invokes undefined behavior [-Waggressive-loop-optimizations]
+  157 |         for (int i = 0; i < depth; i++) s += (long)wS[i] * ec[wE[i]];
+      |                                                    ~~^~~
+symrepair_act.c:157:27: note: within this loop
+  157 |         for (int i = 0; i < depth; i++) s += (long)wS[i] * ec[wE[i]];
+      |                         ~~^~~~~~~
+In function 'build_orbits',
+    inlined from 'main' at symrepair_act.c:228:5:
+symrepair_act.c:99:17: warning: argument 1 range [18446744071562067968, 18446744073709551615] exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+   99 |     int *fill = calloc(norb, sizeof(int));
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from symrepair_act.c:23:
+/usr/include/stdlib.h: In function 'main':
+/usr/include/stdlib.h:675:14: note: in a call to allocation function 'calloc' declared here
+  675 | extern void *calloc (size_t __nmemb, size_t __size)
+      |              ^~~~~~

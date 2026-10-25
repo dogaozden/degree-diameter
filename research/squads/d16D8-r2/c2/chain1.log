@@ -1,0 +1,10 @@
+== q7 k4 continuation:
+V=800 k=20 E=4000 D=6 lift_vertices=16000 sources=800 uncovered=3930 time=0.04s
+wrote t13_k2_B.base V=4760 m=10 E=38080
+== q13 k2 random skeleton, full check:
+V=4760 k=10 E=38080 D=6 lift_vertices=47600 sources=4760 uncovered=5594 time=1.68s
+== q13 k3 anneal (NSRC=200, 150 s):
+RESULT V=4760 k=15 D=6 best=851 it=1283 sources=200 out=t13_k3_B_out.base
+== q13 k3 full check:
+V=4760 k=15 E=38080 D=6 lift_vertices=71400 sources=4760 uncovered=24050 time=1.52s
+CHAIN1_DONE

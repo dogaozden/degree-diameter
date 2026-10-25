@@ -1,0 +1,9 @@
+start full uncovered 22 (k=22, P=2, act=sample NSRC=800 K=1 EPOCH=100 NODES=100000)
+full check t=11 steps=13 acc=13 full=10 best=10
+t=12 steps=14 moves=14 acc=14 T=0.895 Ucur=8 act=800 best(full)=10
+full check t=16 steps=18 acc=18 full=6 best=6
+full check t=19 steps=21 acc=21 full=4 best=4
+full check t=22 steps=23 acc=23 full=2 best=2
+t=23 steps=24 moves=24 acc=24 T=0.803 Ucur=0 act=800 best(full)=2
+full check t=25 steps=24 acc=24 full=0 best=0
+RESULT V=4760 k=22 D=6 best=0 steps=24 moves=24 acc=24 secs=25 out=r13_22b_rep.base (full check 0: run baselift eval to confirm)

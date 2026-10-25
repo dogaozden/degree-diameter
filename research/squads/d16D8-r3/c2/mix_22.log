@@ -1,0 +1,13 @@
+GROUP ok: r=31, point orbits 126, flag classes 756, matching classes 126+126
+start U=292 (k=22, P=2, PMIX=0.60,0.15,0.15,0.10 K=1 NODES=100000 T0=1.00 T1=0.10)
+t=10 steps=39 acc=17 T=0.822 U=206 best=206 prop=25/3/6/4 acc=11/3/1/2
+t=20 steps=82 acc=31 T=0.676 U=164 best=164 prop=57/9/7/8 acc=22/6/1/2
+t=30 steps=126 acc=37 T=0.558 U=148 best=148 prop=83/12/14/15 acc=26/7/1/3
+t=40 steps=169 acc=43 T=0.460 U=138 best=138 prop=110/19/19/19 acc=31/8/1/3
+t=51 steps=211 acc=47 T=0.379 U=132 best=132 prop=139/24/24/21 acc=33/8/2/4
+t=61 steps=254 acc=50 T=0.312 U=126 best=126 prop=162/32/30/27 acc=35/8/2/5
+t=71 steps=297 acc=52 T=0.256 U=122 best=122 prop=184/43/38/29 acc=37/8/2/5
+t=81 steps=337 acc=58 T=0.211 U=110 best=110 prop=210/49/42/33 acc=42/8/2/6
+t=91 steps=381 acc=61 T=0.174 U=108 best=108 prop=238/54/50/35 acc=44/9/2/6
+t=101 steps=423 acc=64 T=0.143 U=102 best=102 prop=263/59/55/42 acc=47/9/2/6
+t=111 steps=478 acc=69 T=0.118 U=98 best=98 prop=298/67/63/46 acc=51/10/2/6

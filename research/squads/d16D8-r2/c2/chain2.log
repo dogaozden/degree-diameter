@@ -1,0 +1,11 @@
+== q7 k2 B anneal 60 s:
+RESULT V=800 k=10 D=6 best=12 it=2750 sources=800 out=t7_k2_B_out.base
+V=800 k=10 E=4000 D=6 lift_vertices=8000 sources=800 uncovered=12 time=0.04s
+== q13 k2 B anneal 150 s (NSRC=300):
+RESULT V=4760 k=10 D=6 best=250 it=1112 sources=300 out=t13_k2_B_out.base
+== q13 k2 full check:
+V=4760 k=10 E=38080 D=6 lift_vertices=47600 sources=4760 uncovered=5334 time=1.50s
+== q7 k3 B anneal 60 s:
+RESULT V=800 k=15 D=6 best=790 it=2259 sources=800 out=t7_k3_B_out.base
+V=800 k=15 E=4000 D=6 lift_vertices=12000 sources=800 uncovered=790 time=0.05s
+CHAIN2_DONE

@@ -1,0 +1,11 @@
+start cost 12 (sources 800, movable edges 4000)
+t=15 it=776 acc=551 T=1.329 cur=76 best=12
+t=30 it=1650 acc=1126 T=0.883 cur=52 best=12
+t=45 it=2576 acc=1678 T=0.587 cur=42 best=12
+t=60 it=3486 acc=2226 T=0.390 cur=16 best=12
+t=75 it=4416 acc=2743 T=0.259 cur=12 best=12
+t=90 it=5377 acc=3310 T=0.172 cur=10 best=10
+t=105 it=6304 acc=3829 T=0.114 cur=8 best=8
+RESULT V=800 k=10 D=6 best=8 it=6616 sources=800 out=t7_k2_B_c2.base
+V=800 k=10 E=4000 D=6 lift_vertices=8000 sources=800 uncovered=8 time=0.02s
+K2_DONE

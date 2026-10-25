@@ -1,0 +1,27 @@
+start full uncovered 1230 (k=24, P=2, act=sample NSRC=800 K=1 EPOCH=100 NODES=100000)
+t=10 steps=28 moves=28 acc=27 T=0.465 Ucur=828 act=800 best(full)=1230
+t=21 steps=61 moves=61 acc=60 T=0.433 Ucur=732 act=800 best(full)=1230
+t=31 steps=94 moves=94 acc=93 T=0.404 Ucur=660 act=800 best(full)=1230
+full check t=35 steps=100 acc=99 full=1030 best=1030
+t=41 steps=120 moves=120 acc=119 T=0.376 Ucur=855 act=800 best(full)=1030
+t=51 steps=152 moves=152 acc=151 T=0.350 Ucur=785 act=800 best(full)=1030
+t=61 steps=183 moves=183 acc=182 T=0.326 Ucur=701 act=800 best(full)=1030
+full check t=69 steps=200 acc=199 full=840 best=840
+t=71 steps=211 moves=211 acc=210 T=0.304 Ucur=810 act=800 best(full)=840
+t=82 steps=250 moves=250 acc=249 T=0.283 Ucur=727 act=800 best(full)=840
+t=92 steps=289 moves=289 acc=288 T=0.264 Ucur=636 act=800 best(full)=840
+full check t=96 steps=300 acc=299 full=718 best=718
+t=102 steps=321 moves=321 acc=319 T=0.246 Ucur=668 act=800 best(full)=718
+t=112 steps=358 moves=358 acc=356 T=0.229 Ucur=580 act=800 best(full)=718
+t=122 steps=393 moves=393 acc=390 T=0.213 Ucur=511 act=800 best(full)=718
+full check t=126 steps=400 acc=397 full=610 best=610
+t=132 steps=422 moves=422 acc=419 T=0.199 Ucur=551 act=800 best(full)=610
+t=142 steps=457 moves=457 acc=454 T=0.185 Ucur=472 act=800 best(full)=610
+t=152 steps=494 moves=494 acc=491 T=0.173 Ucur=389 act=800 best(full)=610
+full check t=157 steps=500 acc=497 full=472 best=472
+t=163 steps=522 moves=522 acc=519 T=0.161 Ucur=429 act=800 best(full)=472
+t=173 steps=557 moves=557 acc=554 T=0.150 Ucur=360 act=800 best(full)=472
+t=183 steps=592 moves=592 acc=589 T=0.140 Ucur=288 act=800 best(full)=472
+full check t=187 steps=600 acc=597 full=370 best=370
+t=193 steps=622 moves=622 acc=619 T=0.130 Ucur=321 act=800 best(full)=370
+t=203 steps=657 moves=657 acc=654 T=0.121 Ucur=247 act=800 best(full)=370

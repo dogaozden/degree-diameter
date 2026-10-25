@@ -1,0 +1,11 @@
+start cost 8 (sources 800, movable edges 4000)
+t=15 it=926 acc=665 T=1.482 cur=74 best=8
+t=30 it=1833 acc=1284 T=1.098 cur=52 best=8
+t=45 it=2705 acc=1837 T=0.814 cur=44 best=8
+t=60 it=3623 acc=2381 T=0.603 cur=32 best=8
+t=75 it=4490 acc=2895 T=0.447 cur=8 best=8
+RESULT V=800 k=10 D=6 best=0 it=5187 sources=800 out=t7_k2_B_c4.base
+V=800 k=10 E=4000 D=6 lift_vertices=8000 sources=800 uncovered=0 time=0.02s VALID(all sources)
+wrote t11_k1_B.base V=2928 m=5 E=20496
+V=2928 k=5 E=20496 D=6 lift_vertices=14640 sources=2928 uncovered=0 time=0.07s VALID(all sources)
+K2B_DONE
