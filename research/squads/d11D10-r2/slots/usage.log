@@ -22,3 +22,7 @@
 12:42:29 free slot2 pid 1991 rc=0
 12:42:53 take slot1 pid 2073: env ORBIT=10 1 1 AFROB=1 AFROBH=0 1 2 0 AR=2 RANDORB=19000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 101 8 opus/d11D10_psl_243_11_orb10_frob1h_s101.txt psl 243 11
 12:42:53 take slot2 pid 2075: env ORBIT=10 1 1 AFROB=3 AFROBH=0 1 2 0 AR=2 RANDORB=19000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 103 8 opus/d11D10_psl_243_11_orb10_frob3h_s103.txt psl 243 11
+12:47:10 take slot3 pid 2416: env ORBIT=10 1 1 AFROB=1 AFROBD=1 AR=2 RANDORB=60 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 7 8 /dev/null psl 243 11
+12:47:45 free slot3 pid 2416 rc=0
+12:50:24 take slot3 pid 4658: env -u THREADS ORBIT=5 2 1 ORBW=10 RESTART=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 330 6 8 /home/user/degree-diameter/research/squads/d11D10-r2/A6/d11D10_psl_71_421_orb5_A6_s6.txt psl 71 421
+12:50:25 take slot4 pid 4689: env -u THREADS ORBIT=5 2 1 ORBW=10 RESTART=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 330 6 8 /home/user/degree-diameter/research/squads/d11D10-r2/A6/d11D10_psl_79_311_orb5_A6_s6.txt psl 79 311

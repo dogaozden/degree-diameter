@@ -47,3 +47,18 @@ screen: median 66 at μ 60.6, the best ratio to μ of any group, 11 α-fixed ele
 PSL(2,101) × Z151 (155.6M, μ 48.6) reached two uncovered α-fixed elements after 3,601 evaluations and is being
 continued from its checkpoint plus a second seed; PSL(2,243) × Z11 (157.8M) runs alongside.
 Opus wrote research/squads/d11D10-r1/opus/pqcheck.c, a third independent checker (SL/PSL over any GF(q)).
+
+## 2026-10-25 12:55 UTC, cell-11-10 resumed (Opus, cloud session), round 2: PSL(2,243) × Z11 (157.8M)
+
+The first session (round 1, 148,729,680 vertices) was cut off by the usage limit; its two long runs were lost (no
+checkpoints were committed). This session works on branch claude/cell-11-10-resume-oubzk2 and commits checkpoints.
+New in haar_sym: `AFROBH` / `AFROBD` (conjugation by a GF(3)-rational involution after the Frobenius of GF(3^5), giving an
+automorphism of order 10 of PSL(2,243) × Z11 with z ↦ 2z; Fix = 3 or 1 elements), so ORBIT="10 1 1" (S = {e} ∪ one
+orbit of size 10, clumps of 10, μ/10 = 6.1); `RANDB` / `RANDSTOP` turn RANDORB into a random search.
+Files: research/squads/d11D10-r2/{PREAMBLE.md, CARDS.md, scoreboard.jsonl}.
+
+Cards: A1 k = 10 pairing screen · A2 degenerate k = 10 samples · A3 k = 5 Frobenius anneal AFROB=2 · A4 k = 5 AFROB=4
+other schedule · A5 outer involution AFROBD · A6 conjugation-family fallbacks (150.7M, 153.3M) · A7 other groups ·
+A8 open wildcard · B1 small-orbit prefilter · B2 speed of a k = 10 sample · B3 theory of the k = 10 excess ·
+B4 prime-power checkers · B5 ball census · B6 cost by class of the orbit generator · B7 tools wildcard ·
+B8 constructions wildcard.

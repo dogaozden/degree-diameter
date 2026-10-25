@@ -784,7 +784,7 @@ static int cmpll(const void *a, const void *b) { long long x = *(const long long
 /* ---------------- ORBIT mode: S = {e} + fixed generators + alpha-orbits ---------------- */
 static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of orbits m, fixed generators f (incl. e) */
 static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0;   /* AFROB = j: entries x -> x^(p^j) */
-static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
+static uint16_t *FROBT; static int AFROBD = 0;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
 static int *FIXG; static long long NFIXG;           /* those eligible as fixed generators (FIXMIN) */
 static int alpha(int x) {
@@ -792,7 +792,9 @@ static int alpha(int x) {
     if (Q->type == G_HEIS && (AHA || AHB)) {
         const field *F = Q->F; int q = F->q, a = xq / (q * q), b = xq / q % q, c = xq % q;
         yq = (FMUL(F, AHA, a) * q + FMUL(F, AHB, b)) * q + FMUL(F, FMUL(F, AHA, AHB), c);
-    } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq; yq = Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])];
+    } else if (AFROB) { const uint16_t *E = Q->EL + 4 * (size_t)xq;   /* AFROBD: then conj by diag(1,-1) (outer for q = 3 mod 4) */
+        yq = AFROBD ? Q->IDXK[mkey(Q, FROBT[E[0]], Q->F->neg[FROBT[E[1]]], Q->F->neg[FROBT[E[2]]], FROBT[E[3]])]
+                    : Q->IDXK[mkey(Q, FROBT[E[0]], FROBT[E[1]], FROBT[E[2]], FROBT[E[3]])];
         if (AQ >= 0) yq = qmul(Q, qmul(Q, AQ, yq), AQI); }   /* AFROBH: then conjugation by h */
     else if (Q->type == G_META && AMU) yq = (int)((long long)AMU * (xq / Q->k) % Q->m) * Q->k + xq % Q->k;
     else yq = AQ >= 0 ? qmul(Q, qmul(Q, AQ, xq), AQI) : xq;
@@ -856,6 +858,7 @@ static int choose_alpha(void) {
         FROBT = malloc(2 * (size_t)F->q);
         for (int x = 0; x < F->q; x++) { int y = 1; for (int t = 0; t < j; t++) for (int u = 0; u < F->p; u++) ; int pw = 1; for (int t = 0; t < j; t++) pw *= F->p;
             y = 1; for (int t = 0; t < pw; t++) y = FMUL(F, y, x); FROBT[x] = (uint16_t)(x ? y : 0); }
+        if (getenv("AFROBD")) { AFROBD = 1; fprintf(stderr, "alpha: conj by diag(1,-1) after the Frobenius\n"); }
         if (getenv("AFROBH")) {   /* AFROBH="a b c d": alpha_Q = conj(h) o Frobenius, h = mat(a,b,c,d) in Q (entries as integers) */
             int a, b, c, dd; if (sscanf(getenv("AFROBH"), "%d %d %d %d", &a, &b, &c, &dd) != 4 || a >= F->q || b >= F->q || c >= F->q || dd >= F->q
                 || (AQ = Q->IDXK[mkey(Q, a, b, c, dd)]) < 0) { fprintf(stderr, "AFROBH: no such element\n"); return 0; }

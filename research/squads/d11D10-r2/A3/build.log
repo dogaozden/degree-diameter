@@ -1,0 +1,15 @@
+haar_sym_A3.c: In function 'parse_group':
+haar_sym_A3.c:262:49: warning: '%s' directive output may be truncated writing up to 399 bytes into a region of size 395 [-Wformat-truncation=]
+  262 |         snprintf(G->spec, sizeof G->spec, "prod %s %s", G->g1->spec, G->g2->spec);
+      |                                                 ^~
+In file included from /usr/include/stdio.h:980,
+                 from haar_sym_A3.c:49:
+In function 'snprintf',
+    inlined from 'parse_group' at haar_sym_A3.c:262:9:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 7 and 805 bytes into a destination of size 400
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
