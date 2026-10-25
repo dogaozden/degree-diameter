@@ -164,6 +164,23 @@ static long hg_dist_cost(void) {
 
 static int collinear(int a, int b) { for (int i = 0; i < Q1; i++) for (int j = 0; j < Q1; j++) if (lof[a * Q1 + i] == lof[b * Q1 + j]) return 1; return 0; }
 
+static void setup_flag(int i) {   /* (re)compute the perp / opposite lists of freed flag i */
+    int p = freep[i], l = sig[p]; npperp[i] = npopp[i] = nlperp[i] = nlopp[i] = 0;
+    for (int x = 0; x < N; x++) if (x != p) { if (collinear(x, p)) pperp[i][npperp[i]++] = x; else popp[i][npopp[i]++] = x; }
+    for (int m2 = 0; m2 < N; m2++) if (m2 != l) { int conc = 0; for (int a = 0; a < Q1 && !conc; a++) for (int b = 0; b < Q1; b++) if (pts[l * Q1 + a] == pts[m2 * Q1 + b]) { conc = 1; break; }
+        if (conc) lperp[i][nlperp[i]++] = m2; else lopp[i][nlopp[i]++] = m2; }
+}
+static void update_hg_rel(int i) {  /* refresh the lift shortcuts of flag i in the hub-distance model */
+    if (!hgColl) return;
+    for (int j = 0; j < nfree; j++) {
+        int c = (i != j) && collinear(freep[i], freep[j]); hgColl[i][j] = hgColl[j][i] = c;
+        int li = sig[freep[i]], lj = sig[freep[j]], cc2 = 0;
+        for (int x = 0; x < Q1 && !cc2; x++) for (int y = 0; y < Q1; y++) if (pts[li * Q1 + x] == pts[lj * Q1 + y]) { cc2 = 1; break; }
+        hgConc[i][j] = hgConc[j][i] = (i != j) && cc2;
+        hgOn[i][j] = 0; hgOn[j][i] = 0;
+        for (int x = 0; x < Q1; x++) { if (pts[sig[freep[j]] * Q1 + x] == freep[i]) hgOn[i][j] = 1; if (pts[sig[freep[i]] * Q1 + x] == freep[j]) hgOn[j][i] = 1; }
+    }
+}
 static int hg_noreq = 0;
 static void hub_graph_block(void) {
     /* hub graph: same-side hubs of non-collinear freed points (non-concurrent freed lines) need a common neighbour */
@@ -304,6 +321,7 @@ int main(int argc, char **argv) {
         int *bsig = malloc(sizeof(int) * N); long bcc = cc; memcpy(bsig, sig, sizeof(int) * N);
         static char bA2[256][256], sA2[256][256]; if (usehubadj) memcpy(bA2, hgA2, sizeof bA2);
         int Kh = hgK, spareh = Q1 + 2 - M;
+        double pflag = getenv("PFLAG") ? atof(getenv("PFLAG")) : 0.0; long nflagacc = 0; int bfree[64]; memcpy(bfree, freep, sizeof(int) * nfree);
         double csecs = getenv("CSECS") ? atof(getenv("CSECS")) : 0; struct timespec ct0, ct1; clock_gettime(CLOCK_MONOTONIC, &ct0); double frac = 0;
         for (long it = 0; it < covit && cc > 0; it++) {
             if (csecs > 0) { if ((it & 4095) == 0) { clock_gettime(CLOCK_MONOTONIC, &ct1); frac = ((ct1.tv_sec - ct0.tv_sec) + 1e-9 * (ct1.tv_nsec - ct0.tv_nsec)) / csecs; } if (frac >= 1) break; }
@@ -329,7 +347,21 @@ int main(int argc, char **argv) {
                 long hd2 = hg_dist_cost(), c2 = cover_cost() + HW * hd2;
                 if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) { cc = c2; hd = hd2; }
                 else { memcpy(hgA2, sA2, sizeof sA2); memset(hubadj, 0, sizeof hubadj); for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) hubadj[u / H][v / H] = 1; cover_cost(); }
-                if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); memcpy(bA2, hgA2, sizeof bA2); }
+                if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); memcpy(bA2, hgA2, sizeof bA2); memcpy(bfree, freep, sizeof(int) * nfree); }
+                continue;
+            }
+            if (pflag > 0 && urand() < pflag) {   /* flag move: replace freed flag i by a random new flag (p2 on l2) */
+                int i = rnd() % nfree, p = freep[i], l = sig[p], p2 = rnd() % N, l2 = lof[p2 * Q1 + rnd() % Q1];
+                if (isfree[p2] || isfreeL[l2]) continue;
+                int o = sinv[l2], t2 = sig[p2];
+                isfree[p] = 0; isfreeL[l] = 0;
+                sig[p2] = l2; sig[o] = t2; sinv[l2] = p2; sinv[t2] = o;
+                freep[i] = p2; isfree[p2] = 1; isfreeL[l2] = 1; setup_flag(i); update_hg_rel(i);
+                long hd2 = usehubadj ? hg_dist_cost() : 0, c2 = cover_cost() + HW * hd2;
+                if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) { cc = c2; hd = hd2; nflagacc++; }
+                else { isfree[p2] = 0; isfreeL[l2] = 0; sig[o] = l2; sig[p2] = t2; sinv[l2] = o; sinv[t2] = p2;
+                    freep[i] = p; isfree[p] = 1; isfreeL[l] = 1; setup_flag(i); update_hg_rel(i); cover_cost(); }
+                if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); if (usehubadj) memcpy(bA2, hgA2, sizeof bA2); memcpy(bfree, freep, sizeof(int) * nfree); }
                 continue;
             }
             if (nunc && urand() < 0.7) {   /* repair one uncovered target */
@@ -350,10 +382,14 @@ int main(int argc, char **argv) {
             long c2 = cover_cost() + HW * hd;
             if (c2 <= cc || urand() < exp(-(c2 - cc) / T)) cc = c2;
             else { t = sig[x]; sig[x] = sig[y]; sig[y] = t; sinv[sig[x]] = x; sinv[sig[y]] = y; cover_cost(); }
-            if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); if (usehubadj) memcpy(bA2, hgA2, sizeof bA2); }
+            if (cc < bcc) { bcc = cc; memcpy(bsig, sig, sizeof(int) * N); if (usehubadj) memcpy(bA2, hgA2, sizeof bA2); memcpy(bfree, freep, sizeof(int) * nfree); }
             if (it % 100000 == 0) { printf("cover it %ld T %.3f cost %ld\n", it, T, cc); fflush(stdout); }
         }
         memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p;
+        if (pflag > 0) { for (int i = 0; i < nfree; i++) { isfree[freep[i]] = 0; isfreeL[sig[freep[i]]] = 0; }   /* sig[] is already the best one */
+            memcpy(freep, bfree, sizeof(int) * nfree); memset(isfreeL, 0, sizeof(int) * N); for (int x = 0; x < N; x++) isfree[x] = 0;
+            for (int i = 0; i < nfree; i++) { isfree[freep[i]] = 1; isfreeL[sig[freep[i]]] = 1; } for (int i = 0; i < nfree; i++) { setup_flag(i); update_hg_rel(i); }
+            printf("flag moves accepted %ld; flags now:", nflagacc); for (int i = 0; i < nfree; i++) printf(" %d:%d", freep[i], sig[freep[i]]); printf("\n"); }
         if (usehubadj) { memcpy(hgA2, bA2, sizeof bA2); memset(hubadj, 0, sizeof hubadj); nhg = 0;
             for (int u = 0; u < Kh; u++) for (int v = 0; v < Kh; v++) if (hgA2[u][v]) { hubadj[u / H][v / H] = 1; hgA[nhg] = u; hgB[nhg] = v; nhg++; }
             hd = hg_dist_cost(); printf("hub graph after joint annealing: %d edges, distance cost %ld\n", nhg, hd); }
