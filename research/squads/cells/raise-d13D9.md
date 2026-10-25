@@ -50,13 +50,13 @@ Round 3 (11:42, 1.5 h each), no solution:
 
 ## Result
 
-**No record yet.** In about 5.5 h on 4 cores: 13 orbit runs (≈ 5·10⁵ cost evaluations in total) on four groups
+**No record yet.** In about 5.5 h on 4 cores: 12 orbit runs (≈ 4·10⁵ cost evaluations in total) on four groups
 just above 67,742,688 vertices. No run reached cost 0. Best costs: 12 (sl 53×Z_229), 14 (sl 89×Z_49, 1st seed), 16 (sl 89×Z_49, 2nd),
 18 (several), 20 (sl 61×Z_151), 24 and above. Logs are in `research/squads/cells/raise-d13D9-runs/`.
 
 Read of the data: the four candidates sit at the wall that the planner's μ_A ≈ 13 predicts only loosely. The 103
 record was found after 10.7k evaluations on one seed, and its neighbour sl 101×Z_31 after 281. Those are lucky
-runs (heavy-tailed), and 13 runs at 3–5·10⁴ evaluations each with no success is the typical outcome here, not a
+runs (heavy-tailed), and 12 runs at 3–5·10⁴ evaluations each with no success is the typical outcome here, not a
 bug: the smoke test reproduced sl 101×Z_31 in 321 evaluations with the same binary. The cell is not moved with these
 methods within this budget. The next steps, in order, are below.
 
