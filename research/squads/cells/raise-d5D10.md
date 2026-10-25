@@ -44,4 +44,13 @@ candidate elements and the cost evaluation stays exact. Round 1 did not reach th
 
 - Start cost, seed 1: 528 (sl), 25,565 (pgl). Seed 2 starts: 42,600 (sl), 25,580 (pgl). The start cost depends strongly on
   the seed, unlike the orbit runs on the record group.
-- First patched 150 s run (sl, seed 1): cost 134 after 60 s, flat. Batch of 15 min (seeds 2, 3 sl; seed 1 pgl): in progress.
+- Patched runs: sl seed 1 (150 s), sl seeds 2 and 3 and pgl seed 1 (stopped at 180 s, ~0.8M evaluations each).
+  **SL plateau at exactly 134 for seeds 2 and 3 from 30 s on, with no change to 180 s.** PGL stuck at 25,560.
+  Identical plateaus across seeds point at a structural floor, not search noise. Verdict: no k = 5 solution on this
+  group in this budget. The only k = 5 group above 47,880 with these constraints is dead.
+
+## Random-S (no symmetry) on the closest non-orbit candidates, 1 h per run (started 14:57 UTC)
+
+Round 1's closest non-orbit point was sl 29 × Z2 (N = 48,720, μ 37.3): cost 2 after 30 min. Round 2 runs:
+`haar_gen3 5 10 3600 SEED 8 … sl 29 2` for seeds 11, 12, 13, and `psl 11 73` (N = 48,180) for seed 21. Logs and
+solution files in the scratchpad until results come in.
