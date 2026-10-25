@@ -48,7 +48,10 @@ Errors and corrections found while preparing this version (none affects a theore
    deficient vertices, and neither the maximum degree nor the diameter depends on that choice.
 9. **Printed matching in [AL20].** Already noted in `geometry.tex`: with the index set $\mathbb F\setminus\{0,1,a\}$
    four vertices keep degree $q+1$; with $\mathbb F^*$ the graph is $(q+2)$-regular as intended. Kept (Remark 2.7).
-10. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
+10. **Regular fourth hat in arbitrary planes.** `geometry.tex` Remark 4.8 obtained a regular completion in a
+   non-Desarguesian plane only for $q\ge7$. The count used in the Lean proof (each deficient element is incident with
+   exactly $q-4$ deficient elements) gives it for every $q\ge4$ (Section 2.2). The Lean theorem already says so.
+11. **`geometry.tex` revised to match** (25 October): the 2013 column, the coordinate tables and remarks of this note,
    the explicit deletion in Theorem R, a Verification section (what Lean covers) and the $(7,4)$ appendix. Theorem
    numbers below refer to the revised, recompiled `geometry.pdf`.
 
@@ -282,8 +285,11 @@ $(q+2)$-regular. Hence $n_b(q+2,3)\ge2(q^2+q+6)$, attained by a regular graph.
 
 The construction and proof use only the axioms of a projective plane together with an anti-flag $(A,\ell)$ and four
 points $X_s$ of $\ell$, so the coordinate-free version holds in every projective plane of order $q\ge3$
-(`geometry.tex`, Theorem 4.2); the regular completion in an arbitrary plane needs $q\ge7$ (Hall's theorem,
-`geometry.tex`, Remark 4.8). The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
+(`geometry.tex`, Theorem 4.2), and so does a regular completion, for every $q\ge4$: a deficient point $p$ lies on
+exactly $q-4$ deficient lines (the lines on $p$ other than $Ap$ meet $\ell$ in the $q$ points other than $Ap\cap\ell$,
+four of which are the $X_s$), dually a deficient line has exactly $q-4$ deficient points, and $2(q-4)\le(q-1)(q-3)$,
+so Hall's theorem gives a perfect matching of non-incident deficient pairs (this is the argument of the Lean proof;
+`geometry.tex` Remark 4.8 had the weaker bound $q+1$ and so needed $q\ge7$). The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag
 "crossed", and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$.
 
 ### 2.3 New vertices and every changed neighbourhood
