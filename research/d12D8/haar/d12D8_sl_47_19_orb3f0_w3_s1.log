@@ -1,0 +1,35 @@
+group sl 47 x Z_19, N=1971744, identity 41078, H order 57, rows 34592, threads 1, setup 0.08s
+wide rows: HW order 228, rows 8648, setup 0.14s
+alpha: conj by mat(44,18,28,4) (index 98023), z -> 7 z on Z_19
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 47 (+e); mu = 37.45, mu/k = 12.48, fixed-point misses ~ 1.28
+ORBW=3: an uncovered fixed element weighs 3; start energy 75
+start cost=75
+t=30 steps=1867 evals=14937 cost=10 best=7 T=0.53 energy=12 bestE=9
+t=60 steps=3866 evals=30929 cost=6 best=4 T=0.19 energy=6 bestE=6
+t=90 steps=5755 evals=46041 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=120 steps=7691 evals=61529 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=150 steps=9647 evals=77177 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=180 steps=11498 evals=91985 cost=4 best=4 T=0.15 energy=6 bestE=6
+t=210 steps=13285 evals=106281 cost=15 best=4 T=0.56 energy=15 bestE=6
+t=240 steps=15247 evals=121977 cost=7 best=4 T=0.20 energy=9 bestE=6
+t=270 steps=17134 evals=137073 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=300 steps=18923 evals=151385 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=330 steps=20737 evals=165897 cost=6 best=4 T=0.15 energy=6 bestE=6
+t=360 steps=22505 evals=180041 cost=15 best=4 T=0.56 energy=15 bestE=6
+t=390 steps=24318 evals=194545 cost=9 best=4 T=0.20 energy=9 bestE=6
+t=420 steps=26093 evals=208745 cost=7 best=4 T=0.15 energy=9 bestE=6
+t=450 steps=27893 evals=223145 cost=9 best=4 T=0.15 energy=9 bestE=6
+t=480 steps=29752 evals=238017 cost=7 best=4 T=0.15 energy=9 bestE=6
+t=510 steps=31665 evals=253321 cost=7 best=4 T=0.56 energy=9 bestE=6
+t=540 steps=33598 evals=268785 cost=9 best=4 T=0.20 energy=9 bestE=6
+t=570 steps=35412 evals=283297 cost=9 best=4 T=0.15 energy=9 bestE=6
+t=600 steps=37300 evals=298401 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=630 steps=39168 evals=313345 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=660 steps=41072 evals=328577 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=690 steps=42992 evals=343937 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=720 steps=45004 evals=360033 cost=3 best=3 T=0.15 energy=3 bestE=3
+t=750 steps=46942 evals=375537 cost=7 best=3 T=1.41 energy=9 bestE=3
+t=780 steps=48937 evals=391497 cost=12 best=3 T=0.50 energy=12 bestE=3
+t=810 steps=50684 evals=405473 cost=6 best=3 T=0.18 energy=6 bestE=3
+t=840 steps=52768 evals=422145 cost=6 best=3 T=0.15 energy=6 bestE=3
+t=870 steps=54624 evals=436993 cost=6 best=3 T=0.15 energy=6 bestE=3
