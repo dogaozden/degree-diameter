@@ -44,3 +44,11 @@ Status: **record raised to 9,760** (Haar graph of Z_61 ⋊₈ Z_80, |G| = 4,880)
 
 ### Next
 - Only |G| ≥ 4,881 can beat 9,760. Lower orders were stopped (killed) at the switch.
+
+### Batch a3 (600 s, seed 1, K = 8): top 40 by screen with N ≥ 4,881 (N 4,920–4,970)
+- 0 solved. Costs at the end: 28 of 40 at cost 1–5 (best 1 for 14 runs), the rest 2–5. Groups with the most
+  cost-1 stalls are listed in the batch a4 input.
+- Screen values: the best p1 for N ≥ 4,881 was 19–22 (the record group had 16), so these orders are harder in the screen.
+
+### Batch a4 (in progress): the 30 N ≥ 4,881 candidates that stalled at best cost 1, seed 2, 600 s each
+- Tables: `runs/a1.tsv`, `runs/a3.tsv`, `runs/a4.tsv` in the session scratchpad (not in the repo).
