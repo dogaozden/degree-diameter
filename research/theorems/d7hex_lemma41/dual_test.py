@@ -1,4 +1,4 @@
-"""Corollary 8.2 / Theorem C test with a duality (job thm-d7): all levels of type H, every transition (j, j+k) matched by
+"""Corollary 8.2 / Theorem B (Theorem C before the 25 October revision) test with a duality (job thm-d7): all levels of type H, every transition (j, j+k) matched by
 a duality phi (p, j) ~ (phi(p), j+k), and F = all points of the Hermitian spread freed on every transition.
 Hexagon: research/d10D7/hexgen2.c output; duality: research/d10D7/dual/dualfind.c output (.phi: 2N ints, phi(p) at p).
 usage: python3 dual_test.py HEXBIN PHIFILE r OUT.edges [extra_point]

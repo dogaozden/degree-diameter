@@ -1,4 +1,4 @@
-"""Theorem C at a friendly transition for larger q (job thm-d7): two levels, level 0 of type H and level 1 of type D,
+"""Theorem B (Theorem C before the 25 October revision) at a friendly transition for larger q (job thm-d7): two levels, level 0 of type H and level 1 of type D,
 matching (p, 0) ~ (p, 1) for every point p not in F, F = all points of the Hermitian spread (q prime). Main graph, no hubs.
 usage: python3 friendly_test.py HEXBIN OUT.edges   (hexagon from research/d10D7/hexgen2.c)"""
 import sys

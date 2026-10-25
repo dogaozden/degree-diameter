@@ -44,7 +44,7 @@ Builds the incidence graph of PG(2,s) (s prime) with pendant trees sized exactly
 same-colour distances are <= 6. Also prints kappa(d) for d = 3, 4, 8, 9, 10, 11 (7, 35, 527, 868, 1271, 1938, as quoted).
 Run: `python3 research/theorems/d7hex_lemma41/hg_lemma71.py` (a few seconds).
 
-## Theorem C at a friendly transition for larger q: friendly_test.py, friendly_q7.log, friendly_q11.log
+## Theorem B (automorphic transitions; Theorem C before the 25 October revision) at a friendly transition for larger q: friendly_test.py, friendly_q7.log, friendly_q11.log
 
 Two levels (H then D), identity matching on points minus F, F = all (q+1)(q^3+1) points of the Hermitian spread (the
 H(q)-lines in a hyperplane x0 = c x4 + e x3 with elliptic section; the script checks that every line off the spread meets
