@@ -43,3 +43,32 @@ checked by haar_sym's full check and by haarcheck_psl. The coordinator's check w
   d psl 79×Z49 (seed 5): best 3 at 1.1e6; e prod sl 8×psl 19×Z7 (ORBW=3, seed 31): best 3 at 5.7e5.
   All four have sat at cost 3 for more than an hour (since about 17:20 UTC): the cost-3 floor is the same as round 1's
   sl 73×Z31 and psl 79×Z49 runs (round 1: cost 1 and 3). Each run ends at its 15,840 s budget, about 19:35 UTC.
+
+## Final status (19:44 UTC): no new record
+
+All four 15,840 s runs finished with no solution (every run is still at cost 3 at the end):
+
+| run | group | N | seed / flags | best cost | evals |
+|---|---|---|---|---|---|
+| a | sl 73 × Z31 | 12,057,264 | 21, ORBW=3 | 3 | 1.33e6 |
+| c | pgl 73 × Z31 | 12,057,264 | 1 | 3 | 1.30e6 |
+| d | psl 79 × Z49 | 12,077,520 | 5 | 3 | 1.32e6 |
+| e | prod sl 8 × psl 19 × Z7 | 12,065,760 | 31, ORBW=3 | 3 | 0.72e6 |
+| b | psl 289 × Z1 | 12,068,640 | 1 (killed at 120 s) | 17 | 5e3 |
+
+Record stands at 24,099,600 (round 1, psl 151 × Z7). No new record in this round.
+
+What this round shows:
+- Four different groups with N in (12.05M, 12.08M] all stall at cost 3 (one orbit uncovered, or one fixed element) after
+  0.7–1.3 million evaluations, with the plateau reached by about 17:20 UTC. Round 1's psl 151×Z7 solved at 4.3e5 evals,
+  so the N = 12.05M band is not uniformly hard; the solve is a lucky draw.
+- The screen does not separate these groups from round 1's calibration group by much (min 16–19 vs 13).
+- psl 289 × Z1 (PSL over GF(17²)) screened badly (fixed set 143, p1 31) and was stopped.
+
+Suggested next steps (for the coordinator):
+- The round-1 psl 151 × Z7 record is still the bar. A new record needs N > 12,049,800 with cost 0; the band above it is
+  already screened (research/structured/runs/raise9-10-r2/screen/).
+- More seeds on psl 151×Z7-like groups at N just above 12,049,800 would be the next-best use of compute; each 4.4 h run here
+  gives about 1.3e6 evals, and round 1 needed 4.3e5 for its solve.
+- The orbit method's plateau at cost 3 from 17:20 UTC onward suggests that a different annealing move (targeted moves on
+  uncovered elements) or a different α is needed for the next rung. Not tried in this round.
