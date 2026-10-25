@@ -84,7 +84,16 @@ girth-14 Moore bound 2(q⁷−1)/(q−1) for degree q+1: for q = 2 this is 378 <
 cannot exist, and for larger q it would be a cage-quality graph (none is known). So bundles cannot be rainbow
 everywhere; any construction at Delorme's level must use them only partly, or cover in another way.
 
-## 5. Status
+## 5. Octagons
+
+The generalized octagons are GO(q, q²) and duals for q = 2^(2e+1). Only GO(2,4) (1,755 points, 2,925 lines, incidence
+graph of 4,680 vertices with degrees 5 and 3, diameter 8) has small degree; the next one has degree 65. Covers of
+GO(2,4) with the lines' two spare degrees used (line-line edges kept bipartite by a parity layer, 9,360 base vertices,
+Δ = 5) have, by the same walk count as above (about 5·4⁸ reduced walks of length 9 from a vertex, coupon-collector
+redundancy ≈ 13), room for about 5 fibre copies at D = 10, i.e. ≈ 47,000 vertices against our (5,10) record 95,472,
+and less at D = 9. So octagon-based covers are not competitive for Δ ≤ 16.
+
+## 6. Status
 
 Open: the definition of Delorme's 5⌊(q+5)/2⌋ family; a structured voltage design that beats it at q = 7, 9, 11, 13.
 A separate Opus agent is working on the theory (theory/NOTES.md when done). For (10,8), the Haar orbit search is
