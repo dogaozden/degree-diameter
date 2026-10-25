@@ -1,0 +1,18 @@
+START f5 19:52:04 cap=1500
+END f5 rc=0 19:52:57 best state saved to out_f5.in (true cost 0)
+START g61 19:52:57 cap=1500
+END g61 rc=0 19:55:59 best state saved to out_g61.in (true cost 0)
+START u602 19:55:59 cap=1500
+END u602 rc=0 19:56:58 best state saved to out_u602.in (true cost 0)
+START d1s13 19:56:58 cap=1500
+END d1s13 rc=0 19:58:25 best state saved to out_d1s13.in (true cost 0)
+START h71 19:58:25 cap=1500
+END h71 rc=0 20:01:36 best state saved to out_h71.in (true cost 0)
+START h72 20:01:36 cap=1500
+END h72 rc=0 20:03:42 best state saved to out_h72.in (true cost 0)
+START m81 20:03:42 cap=1500
+END m81 rc=0 20:04:29 best state saved to out_m81.in (true cost 0)
+START m82 20:04:29 cap=1500
+Terminated
+END m82 rc=143 20:04:50 t=0 ev=0 acc=0 bumps=0 cur_true=2 cur_w=2 best=2 nfail=2 hotp=2 maxW=1
+START m83 20:04:50 cap=1500

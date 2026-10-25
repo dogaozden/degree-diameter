@@ -6,7 +6,7 @@ s=$1; nu=$2; P=$3; d=$4; D=$5
 cost() { SCORE=1 /tmp/po7 $1 | tail -1 | grep -oE "cost=[0-9]+" | cut -d= -f2; }
 cp $s $P.s0.in
 if [ "$(cost $P.s0.in)" != "0" ]; then
-  SECS=${SASECS:-600} SEED=${SEED:-1} T0=8 T1=0.3 PF=0.3 PH=0.7 OUT=$P.sa.in OUT0=$P.sa0.in /tmp/po7 $P.s0.in > $P.sa.log 2>&1
+  SECS=${SASECS:-600} SEED=${SEED:-1} T0=20 T1=0.4 PF=0.3 PH=0.7 OUT=$P.sa.in OUT0=$P.sa0.in /tmp/po7 $P.s0.in > $P.sa.log 2>&1
   [ -f $P.sa0.in ] && cp $P.sa0.in $P.sa.in
   echo "SA -> $(cost $P.sa.in)"
   if [ "$(cost $P.sa.in)" -gt 20 ]; then

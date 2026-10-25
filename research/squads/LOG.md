@@ -53,8 +53,12 @@ Four cards (r4-d11D5/scoreboard.jsonl). Meanwhile Opus finished the nu stage on 
 (research/d11D5/graphs/d11D5_n7032_CHECK.md).
 - c1 wpo from the other r2 cost-2/4 states: 7 more cost-0 bases at n = 586 (f5, g61, u602, d1s13, h71, h72, m81), each in
   1-3 minutes. Stopped once 7,032 was verified.
-- c2 n = 587 on top of fail0_y901 (second switch, SA, then wpo): wpo from cost 214 drifted up to 626; told to anneal longer first.
+- c2 n = 587 on top of fail0_y901 (second switch, SA, then wpo): SA 1,904 -> 214; wpo from 214 drifted up to 626; longer
+  SA (T0 3-8, 600 s) stays at 214-218.
 - c3 random-sigma incident switch on W(8) (r3 c4's recipe): SA 1,828 -> 4 in 400 s; stopped (n = 586 already solved).
-- c4 two insertions at once (genk.py k = 2, start 3,780): SA to ~470 in 450 s.
-Kept: wpo only from low cost (<= ~20); SA first. Opus's own n = 587 pipeline (inc/pipeline.sh) adds a pair to the solved
-7,032 base so the old nu stays valid on the untouched flags.
+- c4 two insertions at once into W(8) with the 7,020 sigma (genk.py k = 2, start 3,814): SA 392, colder SA 164, no further gain.
+Kept: wpo only from low cost (<= ~20); SA first. Opus's own n = 587 runs (a pair added to the solved 7,032 base, 9- and
+8-flag switches, T0 3-20, 91 points near the first pair frozen, wpo with LMAX 4000) all plateau at 150-230, while a
+single pair added to W(8) with the same SA reaches 12 (and r4 c3 reached 4). A second pair interferes with the first
+through sigma globally (every sigma(s) is on the coverage routes of every new vertex), so n = 587 needs a better
+structural search than SA + wpo. The squad added the decisive tool (wpo) in r3; in r4 it added nothing new.

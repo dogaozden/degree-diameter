@@ -32,7 +32,7 @@ for s in range(V):
             if not ok:
                 key = (c, "PP" if s < n and t < n else "LL" if s >= n and t >= n else "PL", min(dist[s, t], 9), int(P[4][s, t] if same else P[5][s, t]))
                 cnt[key] += 1
-                if len(ex) < 40: ex.append((s, t, key))
+                if len(ex) < 4000: ex.append((s, t, key))
 print("total", sum(cnt.values()))
 for k, v in sorted(cnt.items(), key=lambda x: -x[1])[:30]: print(k, v)
 for e in ex[:int(sys.argv[2]) if len(sys.argv) > 2 else 10]: print(e)
