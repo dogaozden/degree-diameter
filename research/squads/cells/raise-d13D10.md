@@ -112,3 +112,7 @@ SL 97×373 (680,781,696). Both are below 681,406,800, so a success would not bea
 **Ruled out.** k = 2, 4, 6: STRUCTURE.md (§0, §2) says involutions give word collisions, and the theory note states the
 law for odd k only. The planner's model would give k = 4 and k = 6 smaller μ_A, but that model has not been tested on
 even k, so these are not run.
+
+**Status (16:37 UTC).** SL 103×313 (2N 683,982,624): failed at cost 1 after 9,985 evaluations, 5,400 s (log
+runs/raise2_13_10/out/d13D10_sl_103_313_orb3_s1.log). PSL 241×49 started in slot B. PSL 131×311 (order 5, f = 3,
+FIXMIN=5) is at cost 5 after 6,009 evaluations, 5,383 s of 12,600 s. No record yet.
