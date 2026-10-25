@@ -12,3 +12,5 @@ One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct
 - Round 1's generator dropped all odd-q SL/PSL/PGL groups (prime_power bug). Screened the corrected list: no candidate
   better than round 1's second tier; annealing at 120–300 s on the top four: costs 10–18.
 - Four untried metacyclic groups at 150 s: best costs 6–16. Stopped the rest of the queue.
+- Long run 1,200 s on Z_422⋊35 (r = 5), seed 204: cost 0 at 220 s → **record 29,540** (N = 14,770), build_haar2 and apsp VALID.
+  File research/frontier/sols/d5D9_meta_422_35_5_s204_n29540.txt.

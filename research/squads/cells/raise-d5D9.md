@@ -124,3 +124,15 @@ with best cost 16 (Z_738⋊20·125, N = 14,760), 6 (Z_345⋊44·7, N = 15,180), 
 Round 1 reached cost 2 at N = 14,770 on Z_422⋊35 (r = 5: 4 runs; r = 11: 2 runs) and Z_1055⋊14 (r = 199: 1 run), each
 at 150 s. Those were the only near-misses above 14,740. Four 1,200-s runs with fresh seeds were started (see the LOG
 entry for the outcome).
+
+### New record: 29,540 vertices (round 2)
+
+Haar graph of G = Z_422 ⋊_5 Z_35 (order 14,770, metacyclic, r = 5 has order 35 mod 422? see the file header), 5-regular,
+diameter 9, bipartite. S as (a, j), a ∈ Z_422, j ∈ Z_35: (0,0), (318,34), (101,22), (327,1), (290,8).
+Found by haar_sym (FAST=2, K = 8, THREADS=1) at seed 204 after 220 s and 2.3·10⁷ evaluations, a long run (1,200 s
+budget) on a group that had reached cost 2 in round 1 at 150 s.
+File: research/frontier/sols/d5D9_meta_422_35_5_s204_n29540.txt (sha256 of the edge list
+f3004a3b3dec30384cc7747e9d863c593d6c4a521b701c61c4dbf5ee80d73e87).
+Checks: research/frontier/build_haar2.py VALID (ecc 9 from both sides, n = 29,540, max = min degree 5, no repeats);
+research/lifts/coordinator_check/apsp.c (all-pairs BFS) VALID, bipartite, diameter 9.
+Coordinator re-check still needed. The next bar is |G| ≥ 14,771 (graph ≥ 29,542).
