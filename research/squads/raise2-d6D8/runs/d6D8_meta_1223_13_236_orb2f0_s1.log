@@ -5,3 +5,10 @@ ORBIT k=2 m=3 f=0: |Fix(alpha)| = 12 (+e); mu = 34.18, mu/k = 17.09, fixed-point
 start cost=100
 t=30 steps=29718 evals=237745 cost=14 best=12 T=0.53
 t=60 steps=61019 evals=488153 cost=12 best=12 T=0.19
+t=90 steps=89825 evals=718601 cost=12 best=12 T=0.15
+t=120 steps=119594 evals=956753 cost=12 best=12 T=0.15
+t=150 steps=148324 evals=1186593 cost=12 best=12 T=0.15
+t=180 steps=178863 evals=1430905 cost=14 best=11 T=0.74
+t=210 steps=208406 evals=1667249 cost=14 best=11 T=0.26
+t=240 steps=232000 evals=1856001 cost=14 best=11 T=0.15
+RESULT d=6 D=8 group=meta 1223 13 236 x Z_1 N=15899 best=11 evals=1993641 time=258.4 orbit k=2 m=3 f=0 fix=12
