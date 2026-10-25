@@ -141,7 +141,9 @@ Cards:
 - c5 H(5): no gain over 72. Unions of W(E7)-mod-5 orbits give at most 60.
 - c6 H(9), orbit unions of SL(3,9) subgroups: A6 = Ω(3,9) gives 4,249 (exact), 91:3 4,186, L2(7) ≥ 3,913, SL(3,3)
   793, SU(3,3) 343. A tabu from the A6 union reaches 4,259.
-- c7 H(11) structured: (pending).
+- c7 H(11), structured: **756** pairwise opposite points. W(E7) mod 11 (7 reflections with Gram = E7 Cartan matrix) has
+  7 orbits on the points of Q(6,11). Exactly one of them, of size 756, is pairwise opposite, and it is maximal. Unions
+  over every reflection subsystem tried also cap at 756. Tabu from it found nothing more. Plain tabu gives 135.
 
 Kept / what happened next (Opus):
 - 217 looks like a hard local optimum for (10,7). The best union over every group tried is 217, and every outside point
@@ -154,5 +156,7 @@ Kept / what happened next (Opus):
   research/d10D7/checks/hex11_B2_CHECK.md.
 - (11,7) rebuilt with c4's 4,291 set.
 
-Did the squad help? Yes, for (11,7) (c4) and for the negative evidence on 217 (c1, c2, c3). The spin-off ideas and the
-S7 analysis came from Opus.
+Opus then ran c7's pipeline for other q. At q = 7 it gives exactly the 288 orbit. At q = 13 no W(E7)-orbit is
+pairwise opposite, but unions over the E6 and A5 subsystems give 792 (greedy 131), which is used for (16,7).
+Did the squad help? Yes, for (11,7) (c4) and for the negative evidence on 217 (c1, c2, c3), and decisively for the
+H(11) spin-offs (c7's E7 construction, 5.6 times the tabu result). The spin-off cells and the S7 analysis came from Opus.

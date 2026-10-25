@@ -18,23 +18,28 @@ construction, without the duality.
 Sets (q = 11, both checked by `research/squads/d10D7-r4/tools/setcheck`):
 - lines: research/d10D7/sets/L11_spread.txt, the 1,332 = q³+1 H(11)-lines inside a hyperplane with an elliptic
   section of Q(6,11), pairwise opposite (`sets/hspread.py hex/hex_q11.bin 11 11 1 1`);
-- points: research/d10D7/sets/P11_tabu_s1.txt, 135 pairwise opposite points (`ovoid/potabu2`, a k-fixed tabu that
-  computes conflicts on the fly; greedy gives 103).
-So K = 135. `d7hex b2` pairs them and builds M; the solution is research/frontier/sols/d13D7_hex11_B2K135_n1063206.sol.
+- points: research/d10D7/sets/P11_r6c7_756.txt, 756 pairwise opposite points. Squad card r6/c7 built it from the
+  E7 lattice mod 11: the Weyl group W(E7) acts on E7 ⊗ GF(11), which carries a non-degenerate 7-dimensional quadratic
+  form. The card took an exact maximum-weight clique over compatible orbits of a subgroup, then mapped the result to
+  Q(6,11) by an isometry. The set is maximal: no point of H(11) is opposite to all 756. For comparison, a k-fixed tabu
+  search (`ovoid/potabu2.c`) reaches only 135, and greedy 103. The q = 7 analogue is the 288 set.
+So K = 756. `d7hex b2` pairs them and builds M; the solution is research/frontier/sols/d13D7_hex11_B2K756_n1064448.sol.
 
 | cell | table | n | hubs | hub graph | file |
 |---|---|---|---|---|---|
-| (13,7) | 1,062,936 | 1,063,206 | 135 + 135 | d7hex, degree 8 (≤ 10) | d13D7_hex11_B2K135_n1063206.sol |
-| (14,7) | 1,771,560 | 1,772,100 | 270 + 270 | random, degree 8 (≤ 9), diameter 6 | d14D7_hex11_B2K135_n1772100.hubs |
-| (15,7) | 2,480,184 | 2,480,994 | 405 + 405 | random, degree 7 (≤ 8), diameter 6 | d15D7_hex11_B2K135_n2480994.hubs |
+| (13,7) | 1,062,936 | 1,064,448 | 756 + 756 | d7hex, degree 8 (≤ 10) | d13D7_hex11_B2K756_n1064448.sol |
+| (14,7) | 1,771,560 | 1,774,584 | 1,512 + 1,512 | random, degree 8 (≤ 9), diameter 7 | d14D7_hex11_B2K756_n1774584.hubs |
+| (15,7) | 2,480,184 | 2,484,720 | 2,268 + 2,268 | random, degree 8 (≤ 8), diameter 7 | d15D7_hex11_B2K756_n2484720.hubs |
 
 The (14,7) and (15,7) graphs use the same .sol (M and freed points) as (13,7):
     gcc -O3 -o hexgen2 hexgen2.c && ./hexgen2 11
-    ./d7hex edges hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K135_n1063206.sol g13.edges
+    ./d7hex edges hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K756_n1064448.sol g13.edges
     gcc -O2 -o dual/xgen dual/xgen.c
-    dual/xgen hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K135_n1063206.sol ../frontier/sols/d14D7_hex11_B2K135_n1772100.hubs 5 g14.edges
-    dual/xgen hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K135_n1063206.sol ../frontier/sols/d15D7_hex11_B2K135_n2480994.hubs 7 g15.edges
-Hub layouts: `python3 dual/mkhubs_rand.py 270 135 8 1 HUBS hg.edges 2` and `... 405 135 7 1 HUBS hg.edges 3`. The hub
-graphs alone have diameter 6 (apsp), so every two hubs are within 6 through the hub graph.
+    dual/xgen hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K756_n1064448.sol ../frontier/sols/d14D7_hex11_B2K756_n1774584.hubs 5 g14.edges
+    dual/xgen hex/hex_q11.bin ../frontier/sols/d13D7_hex11_B2K756_n1064448.sol ../frontier/sols/d15D7_hex11_B2K756_n2484720.hubs 7 g15.edges
+Hub layouts: `python3 dual/mkhubs_rand.py 1512 756 8 1 HUBS hg.edges 2` and `... 2268 756 8 1 HUBS hg.edges 3`. Each
+hub graph on its own is bipartite with diameter 7 (apsp), so any two same-side hubs are within 6 of each other through
+the hub graph. `d7hex b2` reports "same-side hub violations 25776" for (13,7). That counts pairs at hub-graph distance 6,
+which its conservative test rejects; distance 6 is enough. The all-pairs check is what counts.
 
 Checks:
