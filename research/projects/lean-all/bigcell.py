@@ -27,10 +27,13 @@ def queue_append(qpath, lines):
     os.replace(tmp, qpath)
 
 
-def log_status(log):
+def log_status(log, start=0):
+    """Modules logged ok / failed after the first `start` lines of the log."""
     ok, fail = set(), set()
     if os.path.exists(log):
-        for l in open(log):
+        for i, l in enumerate(open(log)):
+            if i < start:
+                continue
             m = re.match(r'\d\d:\d\d:\d\d (\S+) (ok|FAIL)', l)
             if m:
                 (ok if m.group(2) == 'ok' else fail).add(m.group(1).lstrip('!'))
@@ -66,6 +69,7 @@ def main():
     man = os.path.join(HERE, 'manifests', args.cell + '.sha256')
     os.makedirs(os.path.dirname(man), exist_ok=True)
     say = lambda s: print(f'{time.strftime("%H:%M:%S")} {args.cell}: {s}', flush=True)
+    start = sum(1 for _ in open(args.log)) if os.path.exists(args.log) else 0   # earlier runs do not count
 
     # 1. Defs, Cover, Record (and the certificates); stale Bat sources from an earlier run are removed
     if os.path.isdir(outdir):
@@ -100,7 +104,7 @@ def main():
     pending = []   # (module name, path) generated, not yet deleted
     s = 0
     while s < nmods or pending:
-        ok, fail = log_status(args.log)
+        ok, fail = log_status(args.log, start)
         bad = [mn for mn, _ in pending if mn in fail]
         if bad:
             sys.exit(f'failed: {bad[:5]}')
@@ -129,7 +133,7 @@ def main():
     # 3. covers and record
     queue_append(args.queue, ['--'] + [f'!{P}{c}:3.5' for c in covers] + ['--', f'!{P}Record:3', '--'])
     while True:
-        ok, fail = log_status(args.log)
+        ok, fail = log_status(args.log, start)
         if P + 'Record' in ok:
             break
         if any(P + c in fail for c in covers) or P + 'Record' in fail:

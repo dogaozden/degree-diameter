@@ -58,6 +58,8 @@ def main():
     ap.add_argument('--bat-modules', default='', help='LO:HI: write only the Bat modules LO <= index < HI (counted '
                     'over all covers in order), nothing else')
     ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
+    ap.add_argument('--blocks', action='store_true', help='RD, RZ (and NRD) as sums of p blocks of n fields '
+                    '(LeanAll/Blocks.lean), for large batches')
     args = ap.parse_args()
     deg, D, psl, p, n, gens = read_sol(args.sol)
     L = D - 1
@@ -106,7 +108,8 @@ def main():
         return open(os.devnull if skip else os.path.join(args.outdir, name), 'w')
     with out('Defs.lean') as f:
         f.write(hdr)
-        f.write('import BipartiteDD.LeanAll.HaarPSL\n\n' if psl else 'import BipartiteDD.LeanAll.HaarSL\n\n')
+        f.write('import BipartiteDD.LeanAll.HaarPSL\n' if psl else 'import BipartiteDD.LeanAll.HaarSL\n')
+        f.write('import BipartiteDD.LeanAll.Blocks\n\n' if args.blocks else '\n')
         src = f' ({args.source})' if args.source else ''
         f.write(f'/-! The Haar graph of `{grpname}(2,{p}) × Z{n}`{src}: degree {deg}, diameter {D}, '
                 f'{2 * G} vertices. Generators, letter tables, batch parameters ({nb} batches of {N} slots, '
@@ -127,13 +130,31 @@ def main():
         f.write('theorem Pm_valid : Pm.valid := by decide\n\n')
         f.write(f'def ONES : ℕ := (2 ^ ({W} * {N}) - 1) / (2 ^ {W} - 1)\n\n')
         f.write(f'theorem hO : ONES = pkF Pm.w (fun _ => 1) Pm.N := (pkF_one_eq {W} {N} (by norm_num)).symm\n\n')
-        f.write(f'/-- `pkF {W} (fun j => j / {n}) {N}`. -/\ndef RD : ℕ := {hex(rd)}\n\n')
-        f.write(f'/-- `pkF {W} (fun j => j % {n}) {N}`. -/\ndef RZ : ℕ := {hex(rz)}\n\n')
-        f.write(f'theorem hRD : RD = pkF Pm.w (fun j => j / {n}) Pm.N := by decide +kernel\n\n')
-        f.write(f'theorem hRZ : RZ = pkF Pm.w (fun j => j % {n}) Pm.N := by decide +kernel\n\n')
-        if psl:
-            f.write(f'/-- `pkF {W} (fun j => ({p} - j / {n}) % {p}) {N}`. -/\ndef NRD : ℕ := {hex(nrd)}\n\n')
-            f.write(f'theorem hNRD : NRD = pkF Pm.w (fun j => ({p} - j / {n}) % {p}) Pm.N := by decide +kernel\n\n')
+        if args.blocks:
+            rzn = sum(z << (W * z) for z in range(n))
+            f.write(f'def ONESn : ℕ := (2 ^ ({W} * {n}) - 1) / (2 ^ {W} - 1)\n\n')
+            f.write(f'theorem hOn : ONESn = pkF Pm.w (fun _ => 1) {n} := (pkF_one_eq {W} {n} (by norm_num)).symm\n\n')
+            f.write(f'/-- `pkF {W} (fun z => z) {n}`. -/\ndef RZn : ℕ := {hex(rzn)}\n\n')
+            f.write(f'theorem hRZn : RZn = pkF Pm.w (fun z => z) {n} := by decide +kernel\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j / {n}) {N}`, by blocks. -/\ndef RD : ℕ := blk {W} {n} (fun d => d * ONESn) {p}\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j % {n}) {N}`, by blocks. -/\ndef RZ : ℕ := blk {W} {n} (fun _ => RZn) {p}\n\n')
+            f.write(f'theorem hRD : RD = pkF Pm.w (fun j => j / {n}) Pm.N := by\n'
+                    f'  rw [show Pm.N = {p} * {n} from rfl, ramp_div _ _ _ (by norm_num), ← hOn]; rfl\n\n')
+            f.write(f'theorem hRZ : RZ = pkF Pm.w (fun j => j % {n}) Pm.N := by\n'
+                    f'  rw [show Pm.N = {p} * {n} from rfl, ramp_mod, ← hRZn]; rfl\n\n')
+            if psl:
+                f.write(f'def NRD : ℕ := blk {W} {n} (fun d => ({p} - d) % {p} * ONESn) {p}\n\n')
+                f.write(f'theorem hNRD : NRD = pkF Pm.w (fun j => ({p} - j / {n}) % {p}) Pm.N := by\n'
+                        f'  rw [show Pm.N = {p} * {n} from rfl, ramp_neg _ _ _ _ (by norm_num), ← hOn]; rfl\n\n')
+        else:
+            f.write(f'/-- `pkF {W} (fun j => j / {n}) {N}`. -/\ndef RD : ℕ := {hex(rd)}\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j % {n}) {N}`. -/\ndef RZ : ℕ := {hex(rz)}\n\n')
+            f.write(f'theorem hRD : RD = pkF Pm.w (fun j => j / {n}) Pm.N := by decide +kernel\n\n')
+            f.write(f'theorem hRZ : RZ = pkF Pm.w (fun j => j % {n}) Pm.N := by decide +kernel\n\n')
+            if psl:
+                f.write(f'/-- `pkF {W} (fun j => ({p} - j / {n}) % {p}) {N}`. -/\ndef NRD : ℕ := {hex(nrd)}\n\n')
+                f.write(f'theorem hNRD : NRD = pkF Pm.w (fun j => ({p} - j / {n}) % {p}) Pm.N := by decide +kernel\n\n')
+
         f.write(f'theorem detOK : ∀ u < {deg}, DetOK {p} (genL u) := by decide\n\n')
         f.write(f'theorem genB : ∀ u < {deg}, (genL u).f ≤ {p} ∧ (genL u).g ≤ {p} ∧ (genL u).zw ≤ {n} := by decide\n\n')
         for kd in kinds:
