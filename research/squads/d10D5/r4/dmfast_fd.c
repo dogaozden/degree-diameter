@@ -38,6 +38,7 @@ static uint8_t *isfreeP, *isfreeLn;  /* freed points / freed lines (by index): n
 /* exact-coverage structure of freed flags (p_i on l_i = sigma(p_i)): sigma swaps must keep allowed(x, sigma(x)) */
 static uint8_t *delf = NULL, *ngeo = NULL; static int fdn = 0, fdp[64], fdl[64];   /* FLAGDEL: deleted flag edges, geodesic counts */
 static int nfl = 0, flp[64], fll[64]; static uint8_t *inA, *inG, *inPp, *inLl;   /* [i*Np + x] */
+static char isfd[64];   /* FLAGDEL flag i: coverage may not use its deleted edge (point side: inA instead of inPp; line side: inG instead of inLl) */
 /* relaxed coverage (RELAX=1): sigma swaps are kept only if every freed point still reaches coset 1 of each opposite
  * point (p-L-x-sigma(x)-u, x ~ p, or p-w-sinv(w)-sigma(u)-u) and dually for freed lines; same test as dmhub.c */
 static int *mk = NULL, stp = 0, patch = 0; static uint8_t *onfl = NULL, *thrfp = NULL;
@@ -50,13 +51,13 @@ static int cover_ok(void) {
     }
     for (int i = 0; i < nfl; i++) {
         int p = flp[i], l = fll[i]; stp++;
-        for (int x = 0; x < Np; x++) if (inPp[i * Np + x] && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
+        for (int x = 0; x < Np; x++) if ((isfd[i] ? inA[i * Np + x] : inPp[i * Np + x]) && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
         for (int a = 0; a < Q1; a++) { int w = adj[p * Q1 + a] - Np; if (isfreeLn[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[adj[z * Q1 + b] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
         if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[i][j]) for (int k = 0; k < Q1; k++) mk[adj[(Np + fll[j]) * Q1 + k]] = stp;
         for (int u = 0; u < Np; u++) if (u != p && !inPp[i * Np + u] && mk[u] != stp && !(patch && onfl[u])) return 0;
         stp++;
-        for (int M2 = 0; M2 < Np; M2++) if (inLl[i * Np + M2] && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
+        for (int M2 = 0; M2 < Np; M2++) if ((isfd[i] ? inG[i * Np + M2] : inLl[i * Np + M2]) && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
         for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; if (isfreeP[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = adj[(Np + ly) * Q1 + b]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
         if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[j][i]) for (int k = 0; k < Q1; k++) mk[Np + adj[flp[j] * Q1 + k] - Np] = stp;
@@ -107,13 +108,13 @@ static int cover_count(void) {   /* RELAX=2: number of coverage holes (cover_ok 
     }
     for (int i = 0; i < nfl; i++) {
         int p = flp[i], l = fll[i]; stp++;
-        for (int x = 0; x < Np; x++) if (inPp[i * Np + x] && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
+        for (int x = 0; x < Np; x++) if ((isfd[i] ? inA[i * Np + x] : inPp[i * Np + x]) && !isfreeP[x]) { int L = sig[x]; for (int k = 0; k < Q1; k++) mk[adj[(Np + L) * Q1 + k]] = stp; }
         for (int a = 0; a < Q1; a++) { int w = adj[p * Q1 + a] - Np; if (isfreeLn[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[adj[z * Q1 + b] - Np]; if (!isfreeP[u]) mk[u] = stp; } }
         if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[i][j]) for (int k = 0; k < Q1; k++) mk[adj[(Np + fll[j]) * Q1 + k]] = stp;
         for (int u = 0; u < Np; u++) if (u != p && !inPp[i * Np + u] && mk[u] != stp && !(patch && onfl[u])) nh++;
         stp++;
-        for (int M2 = 0; M2 < Np; M2++) if (inLl[i * Np + M2] && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
+        for (int M2 = 0; M2 < Np; M2++) if ((isfd[i] ? inG[i * Np + M2] : inLl[i * Np + M2]) && !isfreeLn[M2]) { int y = sinv[M2]; for (int k = 0; k < Q1; k++) mk[Np + adj[y * Q1 + k] - Np] = stp; }
         for (int a = 0; a < Q1; a++) { int y = adj[(Np + l) * Q1 + a]; if (isfreeP[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = adj[(Np + ly) * Q1 + b]; if (!isfreeP[z]) mk[Np + sig[z]] = stp; } }
         if (usehadj) for (int j = 0; j < nfl; j++) if (hadj[j][i]) for (int k = 0; k < Q1; k++) mk[Np + adj[flp[j] * Q1 + k] - Np] = stp;
@@ -362,7 +363,7 @@ int main(int argc, char **argv) {
     if (getenv("FREE")) { char *s = getenv("FREE"), *e; for (;;) { long x = strtol(s, &e, 10); if (e == s) break; isfreeP[x] = 1; isfreeLn[sig[x]] = 1; flp[nfl] = x; fll[nfl] = sig[x]; nfl++; s = e; } }
     delf = calloc((size_t)Np * Q1, 1);
     if (getenv("FDSET")) { char *s2 = getenv("FDSET"), *e2; for (;;) { long ii = strtol(s2, &e2, 10); if (e2 == s2) break; s2 = e2;
-        int p = flp[ii], l = fll[ii]; fdp[fdn] = p; fdl[fdn++] = l;
+        int p = flp[ii], l = fll[ii]; fdp[fdn] = p; fdl[fdn++] = l; isfd[ii] = 1;
         for (int k = 0; k < Q1; k++) if (adj[p * Q1 + k] == Np + l) delf[flagof[p * Q1 + k]] = 1; }
         fprintf(stderr, "FLAGDEL: %d flag edges deleted\n", fdn); }
     inA = calloc((size_t)64 * Np, 1); inG = calloc((size_t)64 * Np, 1); inPp = calloc((size_t)64 * Np, 1); inLl = calloc((size_t)64 * Np, 1);

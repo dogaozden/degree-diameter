@@ -163,13 +163,18 @@ static long cover_cost(void) {
     long tot = 0; nunc = 0;
     for (int i = 0; i < nfree; i++) {
         int p = freep[i]; stamp++;
-        for (int a = 0; a < npperp[i]; a++) { int x = pperp[i][a]; if (isfree[x]) continue; int l = sig[x]; for (int k = 0; k < Q1; k++) mark[pts[l * Q1 + k]] = stamp; }
+        int fdi = flagdel && fdset[i], lo = sig[p];   /* FLAGDEL flag: its own deleted edge p-l carries no coverage route */
+        for (int a = 0; a < npperp[i]; a++) { int x = pperp[i][a]; if (isfree[x]) continue;
+            if (fdi) { int on = 0; for (int k = 0; k < Q1; k++) if (pts[lo * Q1 + k] == x) on = 1; if (on) continue; }
+            int l = sig[x]; for (int k = 0; k < Q1; k++) mark[pts[l * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int w = lof[p * Q1 + a]; if (isfreeL[w]) continue; int z = sinv[w];
             for (int b = 0; b < Q1; b++) { int u = sinv[lof[z * Q1 + b]]; if (!isfree[u]) mark[u] = stamp; } }
         if (usehubadj) for (int j = 0; j < nfree; j++) if (hubadj[i][j]) { int lj = sig[freep[j]]; for (int k = 0; k < Q1; k++) mark[pts[lj * Q1 + k]] = stamp; }
         for (int a = 0; a < npopp[i]; a++) if (mark[popp[i][a]] != stamp) { tot++; if (nunc < (1 << 16)) { uncI[nunc] = i; uncT[nunc++] = popp[i][a]; } }
         int l = sig[p]; stamp++;
-        for (int a = 0; a < nlperp[i]; a++) { int M2 = lperp[i][a]; if (isfreeL[M2]) continue; int y = sinv[M2]; for (int k = 0; k < Q1; k++) mark[N + lof[y * Q1 + k]] = stamp; }
+        for (int a = 0; a < nlperp[i]; a++) { int M2 = lperp[i][a]; if (isfreeL[M2]) continue;
+            if (fdi) { int th = 0; for (int k = 0; k < Q1; k++) if (lof[p * Q1 + k] == M2) th = 1; if (th) continue; }
+            int y = sinv[M2]; for (int k = 0; k < Q1; k++) mark[N + lof[y * Q1 + k]] = stamp; }
         for (int a = 0; a < Q1; a++) { int y = pts[l * Q1 + a]; if (isfree[y]) continue; int ly = sig[y];
             for (int b = 0; b < Q1; b++) { int z = pts[ly * Q1 + b]; if (!isfree[z]) mark[N + sig[z]] = stamp; } }
         if (usehubadj) for (int j = 0; j < nfree; j++) if (hubadj[j][i]) { int pj = freep[j]; for (int k = 0; k < Q1; k++) mark[N + lof[pj * Q1 + k]] = stamp; }

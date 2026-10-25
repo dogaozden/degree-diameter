@@ -8,7 +8,7 @@ unmixed pairs with both ends variable use AND terms.  env: SECS STEP SIZE SEED""
 import sys, os, time, random
 import numpy as np
 from ortools.sat.python import cp_model
-import lns, d1
+import lns, d1, coverfd
 
 st, c0, fds, out = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 S0 = lns.read_sol(st); F = S0['F']; k = len(F); FD = set(int(x) for x in fds.split())
@@ -75,7 +75,7 @@ def total(sig):
     nf = ~isfree
     rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
     c0b = 0 if os.environ.get('NOC0') else int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
-    cov = lns.cover(F, sig, A)
+    cov = coverfd.cover(F, sig, A, FD)
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
     return c0b + cov + dd, (c0b, cov, dd)
 
@@ -106,7 +106,9 @@ def step(sig, Sset, secs, seed):
     isfreeL = np.zeros(N, bool); isfreeL[sig[F]] = True
     for i, p in enumerate(F):
         const = np.zeros(N, bool)
-        xs = np.nonzero(PM[p] & ~isfree)[0]; const[PTS[sig[xs[~inS[xs]]]].ravel()] = True
+        okx = PM[p] & ~isfree
+        if i in FD: okx[PTS[sig[p]]] = False   # FLAGDEL: no route through the deleted own edge p - l
+        xs = np.nonzero(okx)[0]; const[PTS[sig[xs[~inS[xs]]]].ravel()] = True
         for w in LOF[p]:
             if isfreeL[w] or inT[w]: continue
             z = sinv[w]; us = sinv[LOF[z]]; ok = ~isfree[us] & ~inS[us] & ~inT[LOF[z]]; const[us[ok]] = True
@@ -129,7 +131,9 @@ def step(sig, Sset, secs, seed):
                             lits.append(Y[z, w])
             need(lits)
         l = int(sig[p]); const = np.zeros(N, bool)
-        Ms = np.nonzero(LM[l] & ~isfreeL)[0]; Mf = Ms[~inT[Ms]]; const[LOF[sinv[Mf]].ravel()] = True; Mv = Ms[inT[Ms]]
+        okM = LM[l] & ~isfreeL
+        if i in FD: okM[LOF[p]] = False
+        Ms = np.nonzero(okM)[0]; Mf = Ms[~inT[Ms]]; const[LOF[sinv[Mf]].ravel()] = True; Mv = Ms[inT[Ms]]
         for y in PTS[l]:
             if isfree[y] or inS[y]: continue
             zs = PTS[sig[y]]
