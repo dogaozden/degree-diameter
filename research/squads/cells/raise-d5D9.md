@@ -7,15 +7,16 @@ with research/frontier/build_haar2.py this session: VALID (ecc 9 from both sides
 
 ## Status
 
-**New record: 29,214 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_541 ⋊_28 Z_27 (order 14,607),
-seed 13 of phase 5, found in 43 s. S as (a, j), a ∈ Z_541, j ∈ Z_27: (0,0), (20,1), (71,3), (13,8), (301,15).
+**New record: 29,480 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_335 ⋊_8 Z_44 (order 14,740),
+seed 17 of phase 6, found in 68 s. S as (a, j), a ∈ Z_335, j ∈ Z_44: (0,0), (267,25), (204,41), (57,24), (68,17).
 Checked by build_haar2.py (VALID, ecc 9 from both sides, edge-list sha256
-ca25affb0c331f9f557fc9319490bdc5b54bb32cc6722669c12c30bf773dddeb) and by research/lifts/coordinator_check/apsp.c
-(all-pairs BFS, VALID, n = 29,214). Saved as research/frontier/sols/d5D9_meta_541_27_28_s13_n29214.txt.
-Earlier records in this session: 28,938 (Z_371 ⋊ Z_39), 28,920 (Z_964 ⋊ Z_15), 28,918 (Z_761 ⋊ Z_19). Not yet
-re-checked by the coordinator.
+079dad1f55bc9426caa314b74c21f3367d47e677df833e069ec5f6f49113d996) and by research/lifts/coordinator_check/apsp.c
+(all-pairs BFS, VALID, n = 29,480). Saved as research/frontier/sols/d5D9_meta_335_44_8_s17_n29480.txt.
+Also valid, below the record: Z_421 ⋊_48 Z_35 at 14,735 (graph 29,470; seed 16, 0.8 s; build_haar2 and apsp VALID,
+not saved as a file).
+Earlier records in this session: 29,214 (Z_541 ⋊ Z_27), 28,938, 28,920, 28,918. Not yet re-checked by the coordinator.
 
-The bar for the next step is |G| ≥ 14,608 (graph ≥ 29,216).
+The bar for the next step is |G| ≥ 14,741 (graph ≥ 29,482).
 
 ## Method
 
@@ -55,3 +56,5 @@ The bar for the next step is |G| ≥ 14,608 (graph ≥ 29,216).
   way to see a solve (the 14,469 record came in 0.5 s on seed 5, while seeds 2–4 stayed at cost 2 for 480 s).
 - Phase 5 result: Z_541⋊Z_27 solved at 14,607 (seed 13, 43 s) → record 29,214. Other seeds of that group and the other
   five groups: see `phase5.log`.
+- Phase 6 (8 groups with |G| ≥ 14,607, seeds 14–19, 150 s each; `phase6_groups.txt`, `phase6.log`): two solves so far,
+  Z_421⋊Z_35 at 14,735 (seed 16, 0.8 s) and Z_335⋊Z_44 at 14,740 (seed 17, 68 s) → record 29,480.
