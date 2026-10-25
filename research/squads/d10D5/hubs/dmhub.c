@@ -208,7 +208,12 @@ static void hub_graph_block(void) {
         int hgdist = getenv("HGDIST") ? atoi(getenv("HGDIST")) : 0;
         #define HGC() (hgdist ? hg_dist_cost() : HGCOST())
         long hc = HGC(), hbest = hc; static char Abest[256][256]; memcpy(Abest, A2, sizeof A2);
-        long hgit = getenv("HGIT") ? atol(getenv("HGIT")) : 400000;
+        if (getenv("HUBG_IN")) {   /* load the hub graph of an earlier dmhub solution instead of annealing one */
+            FILE *g = fopen(getenv("HUBG_IN"), "r"); char w[64]; memset(A2, 0, sizeof A2);
+            while (g && fscanf(g, "%63s", w) == 1) if (!strcmp(w, "hubgraph")) { int a, b; while (fscanf(g, "%d %d", &a, &b) == 2) A2[a][b] = 1; break; }
+            if (g) fclose(g); hc = hbest = HGC(); memcpy(Abest, A2, sizeof A2);
+        }
+        long hgit = getenv("HUBG_IN") ? 0 : (getenv("HGIT") ? atol(getenv("HGIT")) : 400000);
         for (long it = 0; it < hgit && hc > 0; it++) {
             int a = rnd() % K, b = rnd() % K; double T = 1.0 * pow(0.01, (double)it / hgit);
             if (A2[a][b]) { A2[a][b] = 0; dA[a]--; dB[b]--; }
@@ -221,7 +226,7 @@ static void hub_graph_block(void) {
             else { memcpy(A2, Abest, sizeof A2); hc = hbest; for (int x = 0; x < K; x++) { dA[x] = dB[x] = 0; } for (int x = 0; x < K; x++) for (int y = 0; y < K; y++) if (A2[x][y]) { dA[x]++; dB[y]++; } }
         }
         memcpy(A2, Abest, sizeof A2);
-        if (getenv("HGFILL")) {   /* use the remaining spare degree: random extra hub edges (more coverage routes, never longer distances) */
+        if (getenv("HGFILL") && !getenv("HUBG_IN")) {   /* use the remaining spare degree: random extra hub edges (more coverage routes, never longer distances) */
             int da[256] = {0}, db[256] = {0}; for (int a = 0; a < K; a++) for (int b = 0; b < K; b++) if (A2[a][b]) { da[a]++; db[b]++; }
             for (int t = 0; t < 200000; t++) { int a = rnd() % K, b = rnd() % K; if (!A2[a][b] && da[a] < spare && db[b] < spare && a / H != b / H) { A2[a][b] = 1; da[a]++; db[b]++; } }
         }
@@ -288,7 +293,7 @@ int main(int argc, char **argv) {
         for (int m2 = 0; m2 < N; m2++) if (m2 != l) { int conc = 0; for (int a = 0; a < Q1 && !conc; a++) for (int b = 0; b < Q1; b++) if (pts[l * Q1 + a] == pts[m2 * Q1 + b]) { conc = 1; break; }
             if (conc) lperp[i][nlperp[i]++] = m2; else lopp[i][nlopp[i]++] = m2; }
     }
-    if (getenv("HGFIRST") && !getenv("HUBG_IN")) { hg_noreq = 1; hub_graph_block(); usehubadj = 1; for (int e = 0; e < nhg; e++) hubadj[hgA[e] / H][hgB[e] / H] = 1; }
+    if (getenv("HGFIRST")) { hg_noreq = 1; hub_graph_block(); usehubadj = 1; for (int e = 0; e < nhg; e++) hubadj[hgA[e] / H][hgB[e] / H] = 1; }
     long covit = getenv("COVIT") ? atol(getenv("COVIT")) : 0;
     double cT0 = getenv("CT0") ? atof(getenv("CT0")) : 0.5;
     if (covit) {
@@ -299,8 +304,11 @@ int main(int argc, char **argv) {
         int *bsig = malloc(sizeof(int) * N); long bcc = cc; memcpy(bsig, sig, sizeof(int) * N);
         static char bA2[256][256], sA2[256][256]; if (usehubadj) memcpy(bA2, hgA2, sizeof bA2);
         int Kh = hgK, spareh = Q1 + 2 - M;
+        double csecs = getenv("CSECS") ? atof(getenv("CSECS")) : 0; struct timespec ct0, ct1; clock_gettime(CLOCK_MONOTONIC, &ct0); double frac = 0;
         for (long it = 0; it < covit && cc > 0; it++) {
-            double T = cT0 * pow(0.02 / cT0, (double)it / covit);
+            if (csecs > 0) { if ((it & 4095) == 0) { clock_gettime(CLOCK_MONOTONIC, &ct1); frac = ((ct1.tv_sec - ct0.tv_sec) + 1e-9 * (ct1.tv_nsec - ct0.tv_nsec)) / csecs; } if (frac >= 1) break; }
+            else frac = (double)it / covit;
+            double T = cT0 * pow(0.02 / cT0, frac);
             int x, y;
             if (phub > 0 && urand() < phub) {   /* hub-graph move: toggle an edge, targeted at an uncovered target's patch */
                 int a, b;
@@ -351,13 +359,53 @@ int main(int argc, char **argv) {
             hd = hg_dist_cost(); printf("hub graph after joint annealing: %d edges, distance cost %ld\n", nhg, hd); }
         cc = cover_cost();
         printf("cover cost final %ld\n", cc);
+        if (cc > 0 && getenv("REPAIR")) {   /* beam search over sequences of targeted sigma swaps (hub graph fixed) */
+            int B = getenv("BEAM") ? atoi(getenv("BEAM")) : 60, depth = getenv("RDEPTH") ? atoi(getenv("RDEPTH")) : 3;
+            int (*beam)[512] = malloc(sizeof(int[512]) * B * 2 + 16), (*nb)[512] = malloc(sizeof(int[512]) * B * 2 + 16);
+            long *bc = malloc(sizeof(long) * (B + 1)), *nbc = malloc(sizeof(long) * (B * 2 + 16)); int nbeam = 1, nnb;
+            memcpy(beam[0], sig, sizeof(int) * N); bc[0] = cc; long bestc = cc; int found = 0;
+            /* visited states (64-bit hashes of sigma, open addressing) so the beam does not undo its own swaps */
+            size_t HS = 1 << 22; uint64_t *vis2 = calloc(HS, 8);
+            #define SIGHASH() ({ uint64_t h_ = 1469598103934665603ULL; for (int p_ = 0; p_ < N; p_++) { h_ ^= (uint64_t)sig[p_] + 0x9E3779B97F4A7C15ULL * (p_ + 1); h_ *= 1099511628211ULL; } h_ | 1; })
+            #define VISIT(h) ({ size_t i_ = (h) & (HS - 1); int new_ = 1; while (vis2[i_]) { if (vis2[i_] == (h)) { new_ = 0; break; } i_ = (i_ + 1) & (HS - 1); } if (new_) vis2[i_] = (h); new_; })
+            { uint64_t h0 = SIGHASH(); VISIT(h0); }
+            for (int d = 0; d < depth && !found; d++) {
+                nnb = 0;
+                for (int s0 = 0; s0 < nbeam && !found; s0++) {
+                    memcpy(sig, beam[s0], sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p;
+                    cover_cost(); int nu0 = nunc, ui[64], ut[64]; for (int r = 0; r < nu0 && r < 64; r++) { ui[r] = uncI[r]; ut[r] = uncT[r]; }
+                    for (int r = 0; r < nu0 && r < 64 && !found; r++) {
+                        int i = ui[r], t = ut[r];
+                        int xs[64], nx = 0, ys[64], ny = 0;
+                        if (i < nfree) { for (int a = 0; a < npperp[i]; a++) if (!isfree[pperp[i][a]]) xs[nx++] = pperp[i][a]; for (int k = 0; k < Q1; k++) ys[ny++] = sinv[lof[t * Q1 + k]]; }
+                        else { int ii = i - nfree; for (int a = 0; a < nlperp[ii] && nx < 64; a++) if (!isfreeL[lperp[ii][a]]) xs[nx++] = sinv[lperp[ii][a]]; for (int k = 0; k < Q1; k++) ys[ny++] = pts[t * Q1 + k]; }
+                        for (int a = 0; a < nx && !found; a++) for (int b = 0; b < ny && !found; b++) {
+                            int x = xs[a], y = ys[b]; if (x == y || isfree[x] || isfree[y]) continue;
+                            int tt = sig[x]; sig[x] = sig[y]; sig[y] = tt; sinv[sig[x]] = x; sinv[sig[y]] = y;
+                            uint64_t hh = SIGHASH();
+                            if (!VISIT(hh)) { tt = sig[x]; sig[x] = sig[y]; sig[y] = tt; sinv[sig[x]] = x; sinv[sig[y]] = y; continue; }
+                            long c2 = cover_cost();
+                            if (c2 == 0) { found = 1; break; }
+                            /* keep the B best children */
+                            if (nnb < 2 * B) { memcpy(nb[nnb], sig, sizeof(int) * N); nbc[nnb++] = c2; }
+                            else { int w = 0; for (int z = 1; z < nnb; z++) if (nbc[z] > nbc[w]) w = z; if (c2 < nbc[w] || (c2 == nbc[w] && (rnd() & 1))) { memcpy(nb[w], sig, sizeof(int) * N); nbc[w] = c2; } }
+                            tt = sig[x]; sig[x] = sig[y]; sig[y] = tt; sinv[sig[x]] = x; sinv[sig[y]] = y;
+                        }
+                    }
+                }
+                if (found) break;
+                /* select B best children as the next beam */
+                for (int a = 0; a < nnb; a++) for (int b = a + 1; b < nnb; b++) if (nbc[b] < nbc[a]) { long tc = nbc[a]; nbc[a] = nbc[b]; nbc[b] = tc; int tmp[512]; memcpy(tmp, nb[a], sizeof(int) * N); memcpy(nb[a], nb[b], sizeof(int) * N); memcpy(nb[b], tmp, sizeof(int) * N); }
+                nbeam = nnb < B ? nnb : B; for (int a = 0; a < nbeam; a++) { memcpy(beam[a], nb[a], sizeof(int) * N); bc[a] = nbc[a]; }
+                if (nbeam && bc[0] < bestc) bestc = bc[0];
+                printf("repair depth %d: beam %d, best child cost %ld\n", d + 1, nbeam, nbeam ? bc[0] : -1); fflush(stdout);
+            }
+            if (found) { for (int p = 0; p < N; p++) sinv[sig[p]] = p; cc = cover_cost(); printf("repair: cover cost %ld\n", cc); }
+            else { memcpy(sig, bsig, sizeof(int) * N); for (int p = 0; p < N; p++) sinv[sig[p]] = p; cc = cover_cost(); printf("repair failed, best %ld\n", bestc); }
+        }
         if (getenv("SHOWUNC")) for (int r = 0; r < nunc && r < 60; r++) printf("UNC %s freed#%d target %d\n", uncI[r] < nfree ? "pt" : "ln", uncI[r] % nfree, uncT[r]);
     }
-    if (getenv("HUBG_IN")) {   /* reuse the hub graph of an earlier dmhub solution (same FREE order and H) */
-        FILE *g = fopen(getenv("HUBG_IN"), "r"); char w[64]; nhg = 0;
-        while (g && fscanf(g, "%63s", w) == 1) if (!strcmp(w, "hubgraph")) { int a, b; while (fscanf(g, "%d %d", &a, &b) == 2) { hgA[nhg] = a; hgB[nhg] = b; nhg++; } break; }
-        if (g) fclose(g); printf("hub graph loaded: %d edges\n", nhg);
-    } else if (!getenv("HGFIRST")) hub_graph_block();
+    if (!getenv("HGFIRST")) hub_graph_block();
     build(); long per[3]; long c = cost_eval(per);
     printf("q %d N %d freed %d hubs/side %d -> n %d; initial cost %ld (point src %ld, line src %ld, hub src %ld); focus %d\n", q, N, nfree, H, nV, c, per[0], per[1], per[2], nfoc);
     fflush(stdout);
