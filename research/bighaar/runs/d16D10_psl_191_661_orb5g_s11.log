@@ -1,0 +1,67 @@
+group psl 191 x Z_661, N=2302818240 (2N=4605636480), rows 18240 x 126251 bits (doubled row 3968 words), memory 1.30 GB, threads 1
+alpha: conj by mat(0,190,1,88), z -> 197 z on Z_661 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=17.886 mu=39.29
+setup 0.0s
+FIXF: 94 alpha-fixed elements other than e (0.3s); FIXTRY 200 FIXMAX 0
+start cost=5 (4.8s per eval)
+t=19 step=1 evals=5 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=32 step=2 evals=9 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=47 step=3 evals=13 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=60 step=4 evals=17 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=72 step=5 evals=21 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=84 step=6 evals=25 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=99 step=7 evals=29 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=110 step=8 evals=33 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=121 step=9 evals=37 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=134 step=10 evals=41 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=145 step=11 evals=45 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=159 step=12 evals=49 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=172 step=13 evals=53 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=185 step=14 evals=57 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=196 step=15 evals=61 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=209 step=16 evals=65 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=222 step=17 evals=69 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=233 step=18 evals=73 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=248 step=19 evals=77 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=260 step=20 evals=81 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=273 step=21 evals=85 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=285 step=22 evals=89 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=298 step=23 evals=93 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=310 step=24 evals=97 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=323 step=25 evals=101 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=335 step=26 evals=105 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=351 step=27 evals=109 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=364 step=28 evals=113 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=378 step=29 evals=117 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=393 step=30 evals=121 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=407 step=31 evals=125 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=419 step=32 evals=129 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=432 step=33 evals=133 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=444 step=34 evals=137 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=455 step=35 evals=141 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=468 step=36 evals=145 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=482 step=37 evals=149 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=493 step=38 evals=153 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=507 step=39 evals=157 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=518 step=40 evals=161 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=530 step=41 evals=165 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=542 step=42 evals=169 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=555 step=43 evals=173 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=569 step=44 evals=177 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=580 step=45 evals=181 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=593 step=46 evals=185 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=603 step=47 evals=189 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=614 step=48 evals=193 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=625 step=49 evals=197 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=637 step=50 evals=201 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=648 step=51 evals=205 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=664 step=52 evals=209 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=678 step=53 evals=213 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=691 step=54 evals=217 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=703 step=55 evals=221 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=719 step=56 evals=225 slot=1 cand=>5 cost=5 best=5 T=0.15
+t=733 step=57 evals=229 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=750 step=58 evals=233 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=765 step=59 evals=237 slot=2 cand=>5 cost=5 best=5 T=0.15
+t=782 step=60 evals=241 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=804 step=61 evals=245 slot=0 cand=>5 cost=5 best=5 T=0.15
+t=821 step=62 evals=249 slot=0 cand=>5 cost=5 best=5 T=0.15
