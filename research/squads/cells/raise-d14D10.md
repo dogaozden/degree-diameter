@@ -27,6 +27,11 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 
 ## Result so far
 
+- **RAISED: (14,10) >= 1,341,781,320** (N = 670,890,660 = |PSL(2,331) x Z_37|, orbit k=3, m=4, f=2, mu = 24.5, 641 evals,
+  821 s, fix = 164). Solution research/frontier/sols/d14D10_psl_331_37_orb3_s2_n1341781320.txt; independent check
+  research/structured/runs/d14D10_psl_331_37_orb3_s2.lowmem.txt (haarcheck_psl, VALID d=14 D=10, ecc 10 both sides).
+  Supersedes 1,333,450,080 (PSL(2,271) x Z_67). Start 1,326,627,120, so this session: +15,153,... see the log.
+
 - **RAISED: (14,10) >= 1,333,450,080** (N = 666,725,040 = |PSL(2,271) x Z_67|, orbit k=3, m=4, f=2, mu = 21.9, 169 evals,
   234 s, fix = 134). Solution research/frontier/sols/d14D10_psl_271_67_orb3_s2_n1333450080.txt; independent check
   research/structured/runs/d14D10_psl_271_67_orb3_s2.lowmem.txt (haarcheck_psl, VALID d=14 D=10, ecc 10 both sides).
@@ -69,3 +74,8 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
   (started 11:32), then PSL(2,331) x Z_37.
 - Pattern so far: solved PSL cases at mu 20.3-21.9 needed 150-1,650 evals; mu 20.8 solved with fix 80. Each unsolved
   rung ended at cost 3 after about 1,200-3,000 evals.
+- PSL(2,173) x Z_259 (N 670,491,948): 2,990 s, best 3, 3,145 evals, fix 86. Not solved.
+- PSL(2,331) x Z_37 (N 670,890,660, mu 24.5): SOLVED in 641 evals (821 s), see Result so far. Queue 3 is finished.
+- Session stop: about 6 hours of work (06:50 to 12:55 UTC). The queue is empty. Next candidates, all above
+  670,890,660 and PSL-first: PSL(2,157) x Z_349 (675.3M, mu 27.6), PSL(2,281) x Z_61 (676.7M, mu 28.7),
+  PSL(2,163) x Z_313 (677.7M, mu 29.5). Expect 3,000-7,000 evals at this mu, about 1-2 h each on one run.
