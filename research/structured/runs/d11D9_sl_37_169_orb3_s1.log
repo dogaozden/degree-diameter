@@ -1,0 +1,26 @@
+group sl 37 x Z_169, N=8554104, identity 225108, H order 52, rows 164502, threads 1, setup 0.37s
+wide rows: HW order 247, rows 34632, setup 0.58s
+alpha: conj by mat(18,23,6,18) (index 25462), z -> 22 z on Z_169
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 35 (+e); mu = 19.54, mu/k = 6.51, fixed-point misses ~ 0.95
+start cost=170
+t=30 steps=194 evals=1553 cost=12 best=12 T=0.53
+t=60 steps=410 evals=3281 cost=12 best=12 T=0.19
+t=90 steps=606 evals=4849 cost=12 best=12 T=0.15
+t=120 steps=814 evals=6513 cost=12 best=12 T=0.15
+t=150 steps=1024 evals=8193 cost=12 best=12 T=0.15
+t=180 steps=1236 evals=9889 cost=12 best=12 T=0.79
+t=211 steps=1464 evals=11713 cost=12 best=12 T=0.28
+t=241 steps=1671 evals=13369 cost=12 best=12 T=0.15
+t=271 steps=1888 evals=15105 cost=6 best=6 T=0.15
+t=301 steps=2113 evals=16905 cost=6 best=6 T=0.15
+t=331 steps=2330 evals=18641 cost=6 best=6 T=0.15
+t=361 steps=2560 evals=20481 cost=6 best=6 T=0.15
+t=391 steps=2774 evals=22193 cost=6 best=6 T=0.15
+t=421 steps=2998 evals=23985 cost=6 best=6 T=0.59
+t=451 steps=3208 evals=25665 cost=6 best=6 T=0.21
+t=481 steps=3426 evals=27409 cost=6 best=6 T=0.15
+RESULT d=11 D=9 group=sl 37 x Z_169 N=8554104 best=0 evals=28417 time=499.0 orbit k=3 m=3 f=2 fix=35
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/af0fa66c-2d88-5763-bd6d-8f71b3b7ffd5/scratchpad/out/d11D9_sl_37_169_orb3_s1.txt
+CHECK hcsl: VALID d=11 D=9 group=sl 37 x Z_169 N=8554104 vertices=17108208 (distinct generators, 11-regular simple)
+CHECK hc2:  VALID d=11 D=9 vertices=17108208 eccA=9 eccB=9

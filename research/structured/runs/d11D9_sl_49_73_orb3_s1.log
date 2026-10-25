@@ -1,0 +1,37 @@
+group sl 49 poly x^2+1 x Z_73, N=8584800, identity 171696, H order 50, rows 171696, threads 1, setup 0.32s
+wide rows: HW order 219, rows 39200, setup 0.57s
+alpha: conj by mat(19,9,47,38) (index 46058), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 47 (+e); mu = 20.55, mu/k = 6.85, fixed-point misses ~ 1.28
+start cost=128
+t=30 steps=93 evals=745 cost=14 best=14 T=0.53
+t=60 steps=208 evals=1665 cost=12 best=12 T=0.19
+t=90 steps=343 evals=2745 cost=12 best=12 T=0.15
+t=120 steps=482 evals=3857 cost=8 best=8 T=0.15
+t=151 steps=625 evals=5001 cost=8 best=8 T=0.15
+t=181 steps=767 evals=6137 cost=8 best=8 T=0.15
+t=211 steps=913 evals=7305 cost=8 best=8 T=0.15
+t=241 steps=1061 evals=8489 cost=8 best=8 T=0.15
+t=271 steps=1202 evals=9617 cost=6 best=6 T=0.15
+t=301 steps=1351 evals=10809 cost=6 best=6 T=0.15
+t=331 steps=1491 evals=11929 cost=6 best=6 T=0.15
+t=362 steps=1630 evals=13041 cost=6 best=6 T=0.15
+t=392 steps=1771 evals=14169 cost=6 best=6 T=0.15
+t=422 steps=1908 evals=15265 cost=6 best=6 T=0.56
+t=452 steps=2047 evals=16377 cost=8 best=6 T=0.20
+t=482 steps=2187 evals=17497 cost=8 best=6 T=0.15
+t=512 steps=2330 evals=18641 cost=8 best=6 T=0.15
+t=542 steps=2479 evals=19833 cost=8 best=6 T=0.15
+t=572 steps=2633 evals=21065 cost=2 best=2 T=0.56
+t=602 steps=2775 evals=22201 cost=2 best=2 T=0.20
+t=632 steps=2928 evals=23425 cost=2 best=2 T=0.15
+t=663 steps=3079 evals=24633 cost=2 best=2 T=0.15
+t=693 steps=3232 evals=25857 cost=2 best=2 T=0.15
+t=723 steps=3382 evals=27057 cost=2 best=2 T=0.72
+t=753 steps=3525 evals=28201 cost=2 best=2 T=0.25
+t=783 steps=3673 evals=29385 cost=2 best=2 T=0.15
+t=813 steps=3817 evals=30537 cost=2 best=2 T=0.15
+RESULT d=11 D=9 group=sl 49 poly x^2+1 x Z_73 N=8584800 best=0 evals=31033 time=826.0 orbit k=3 m=3 f=2 fix=47
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/af0fa66c-2d88-5763-bd6d-8f71b3b7ffd5/scratchpad/out/d11D9_sl_49_73_orb3_s1.txt
+CHECK hcsl: only 'sl p' (p prime) headers: 11 9 sl 49 poly x^2+1 n 73 N 8584800
+CHECK hc2:  INVALID d=0 D=0 vertices=0 eccA=na eccB=na reason=unparseable header
