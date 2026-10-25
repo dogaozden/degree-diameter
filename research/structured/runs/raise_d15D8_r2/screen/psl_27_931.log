@@ -1,0 +1,6 @@
+group psl 27 poly x^3+2x+1 x Z_931, N=9149868, identity 326781, H order 57, rows 160524, threads 1, setup 0.45s
+wide rows: HW order 247, rows 37044, setup 0.88s
+alpha: conj by mat(17,8,19,23) (index 9334), z -> 30 z on Z_931
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 26 (+e); mu = 37.42, mu/k = 12.47, fixed-point misses ~ 0.43
+RANDORB d=15 D=8 group=psl 27 poly x^3+2x+1 x Z_931 N=9149868 k=3 m=5 f=0 fix=26 samples=300 min=24 p1=42 p10=57 median=88 mean=194.20 var=747546.8 mu=37.42 time=7.0
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 1 0 0 1 0 1 5 1 4 6 6 7 8 10 11 13 15 13 10 17 12 12 8 139
