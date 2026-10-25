@@ -1,0 +1,28 @@
+Rebuild of 2026-10-25 (thm-polish), Lean 4.34.1, Mathlib d13f23b7 (lake exe cache get), 4 cores, 15 GB.
+One 'lake build <module>' per line, sequential, from a fresh clone (no .lake). Exit codes and UTC times:
+exit 0 BipartiteDD.Doubling.Polygon 17:09:27
+exit 0 BipartiteDD.Doubling.HatConverse 17:09:31
+exit 0 BipartiteDD.Doubling.Theorem1 17:09:32
+exit 0 BipartiteDD.Plus2.Exists 17:09:51
+exit 0 BipartiteDD.Regular.Plus2 17:10:25
+exit 0 BipartiteDD.GQST.Main 17:10:26
+exit 0 BipartiteDD.GQST.Regular 17:10:27
+exit 0 BipartiteDD.GQST.StandinMain 17:10:35
+exit 0 BipartiteDD.ASq.Main 17:11:14
+exit 0 BipartiteDD.Regular.ASq 17:11:26
+exit 0 BipartiteDD.SingerC.W3Main 17:13:07
+exit 0 BipartiteDD.SingerC.Regular5440 17:13:21
+exit 0 BipartiteDD.Hexagon.Main 17:14:39
+exit 0 BipartiteDD.HexagonD.TheoremD 17:16:44
+exit 0 BipartiteDD.HexagonD.Identity.Key 17:17:20
+exit 0 BipartiteDD.HexagonD.Regular.Final 17:18:06
+exit 0 BipartiteDD.HexagonEven.ThmD 17:29:51
+exit 0 BipartiteDD.HexagonEven.Q2 17:31:23
+exit 0 BipartiteDD.HexagonEven.Reg.Final 17:31:29
+exit 0 BipartiteDD.Haar.Main 17:31:36
+exit 0 BipartiteDD.Haar.Record1152 17:32:54
+exit 0 BipartiteDD.Haar.Record2662 17:36:22
+exit 0 BipartiteDD.Haar.Record1764 17:37:52
+
+grep -rnE '\bsorry\b|\badmit\b|^\s*axiom |native_decide' lean/BipartiteDD --include=*.lean:
+(no output = no matches)

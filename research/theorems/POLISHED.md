@@ -1194,10 +1194,16 @@ its description); a general existence lemma for `SingerC.Setting`; Theorem R's c
 paper, non-constructively.
 
 **Build provenance.** A full `lake build` of the library passed on 2026-10-20 (`lean/CHECK.txt`, 9115 jobs; heavy
-record modules rebuilt one at a time). The modules added after that date (`HexagonD/Regular`, `HexagonEven`,
-`Haar/GraphD`, on which the current `Haar.Main` depends) are covered by their own sessions' builds and committed
-`Axioms.out.txt` files, not by that full build. The record modules for the Haar graphs, `nb_7_6`,
-`GQST.StandinMain` and `SingerC.Regular5440` are outside the default build target and are built explicitly.
+record modules rebuilt one at a time). Several modules were added after that date (`HexagonD/Regular`,
+`HexagonEven`, `Haar/GraphD`, on which the current `Haar.Main` depends). **For this note (2026-10-25) the 23 modules
+behind every general theorem cited above were rebuilt from a fresh clone** (Lean 4.34.1, Mathlib `d13f23b7`, one
+`lake build <module>` at a time): all exit 0, including `HexagonD.Regular.Final`, `HexagonEven.ThmD`, `HexagonEven.Q2`,
+`HexagonEven.Reg.Final`, `Haar.Main` and the three Haar records, `GQST.StandinMain` and `SingerC.Regular5440`. A
+`#print axioms` run on the 48 theorem names cited in this section gives `[propext, Classical.choice, Quot.sound]` for
+every one (`research/theorems/polish/lean/PolishAxioms.lean`, `.out`, and `BUILD.txt` with the per-module log), and
+the grep for `sorry`/`admit`/`axiom`/`native_decide` in `lean/BipartiteDD/**.lean` finds nothing. The explicit record
+graphs of `Records.lean` and `Records9592.lean` (192, 276, 376, 359, 1782, 3146, 5070, 5440, 9592) were covered by
+the 2026-10-20 full build.
 
 ---
 
