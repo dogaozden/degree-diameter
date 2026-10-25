@@ -54,7 +54,9 @@ Each solution, if one appears, goes to `research/frontier/sols/d11D8_psl_19_331_
 - ~15:45 UTC: seed 14 stopped (its log had not advanced past t=30 for several minutes). The log shows one EXH slot-0
   scan of 56,137 candidates in 300 s, `no better orbit (energy 10)`, and then nothing: it was in the slot-1 scan. Killed,
   log kept as `psl19_331_EXH_s14_STALLED.log`. Replaced by seed 15 (14400 s, sols path `..._EXH_s15.txt`).
-- Open check: a full scan of psl 19 x Z331 should count about N/5 = 226k orbit representatives. The (7,8) test matched N/k
+- Scan check (resolved for live runs): a live run's slot-0 scan counted 226,401 candidates (= N/5) in 958 s, with no
+  better orbit at energy 10. So full scans are complete. The 56,137 count from the killed seed 14 is still unexplained and
+  is not used for any result. The (7,8) test matched N/k
   (15,953 of 15,960), but 56,137 here is about a quarter of 226k. Not yet explained. Check the candidate count on the first
   scan from a live run; if it stays low, the scan is incomplete and EXH results must not be trusted.
 
