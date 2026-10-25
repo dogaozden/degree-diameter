@@ -163,6 +163,19 @@ midpoints $z$ with $r\in\Gamma_2(z)$, and $\Gamma_2(\tau r)$ the midlines $\mu(z
 $\mu$ and the rest of $\Gamma_2(r)$ (non-midpoints, which lie in no other $\Gamma_2(s)$) bijectively onto the rest of
 $\Gamma_2(\tau r)$; the remaining points onto the remaining lines. $\square$
 
+**Lemma 3′ (counting form; this is the version proved in Lean).** Let $R$ have no two collinear points and $S$ no
+two concurrent lines, $\tau:R\to S$ a bijection. The *type* of a point $p$ is $\Gamma_2(p)\cap R$, the type of a
+line $\ell$ is $\{r\in R:\tau(r)\in\Gamma_2(\ell)\}$. Then $\tau$ extends to a bijection $\sigma:P\to L$ with (R2)
+at every $r\in R$ iff for every $T\subseteq R$
+$$\#\{p\notin R:\ \text{type}(p)=T\}=\#\{\ell\notin S:\ \text{type}(\ell)=T\}.$$
+
+*Proof.* (R2) says exactly that $\sigma$ maps each point outside $R$ to a line outside $S$ of the same type; so
+$\sigma$ restricts to bijections of the type classes, and conversely bijections of the type classes, together with
+$\tau$ on $R$, give $\sigma$. $\square$
+
+For $|T|\ge2$ the classes are the midpoints and midlines of Lemma 3; for $|T|\le1$ the counts follow from those and
+$|\Gamma_2(r)|=|\Gamma_2(\tau r)|=q(q+1)$, $|P|=|L|$. Lemma 2 is the case with no midpoints.
+
 So in general (R1)–(R2) ask for a configuration "$R$ together with its midpoints" that occurs both among the points
 of $\mathcal H$ and among the lines of $\mathcal H$ (the points of the dual hexagon). Pairwise opposite sets have no
 midpoints and occur on both sides trivially; with a duality every configuration does. For $H(q)$, $q\ne3^h$, the
@@ -315,5 +328,13 @@ $(11,7)\ \ge 411{,}866$ and $(12,7)\ \ge 690{,}872$ (with a hub graph of $2\cdot
   $q-1$ pairwise opposite points and lines because $(q-1)(q^2+q+1)^2<(q+1)(q^4+q^2+1)$, and the hub graph is
   $K_{q-1,q-1}$.
 
-Not formalised: the duality case ($q=3^h$) and the specific large sets (their pairwise-opposite and hub-graph
+- `exists_r2_iff` (Mixed): **Lemma 3′** (both directions) for any finite incidence structure; `duality_r2`: the
+  point part of a duality satisfies (R2) everywhere (Corollary).
+- `certificate_mixed` (Mixed): for every finite field $F$, $q=|F|$, $j\le q$, sets $R$ (no two collinear), $S$ (no
+  two concurrent), $\tau:R\to S$ with the counts of Lemma 3′, hubs with at most $j$ per owner and a bipartite hub
+  graph of degree $\le q-j$ with same-side distances $\le6$: a bipartite graph of maximum degree $q+1+j$ and
+  diameter $\le7$ on $2(2j+1)(q+1)(q^4+q^2+1)+|V|+|U|$ vertices. This covers every graph of §7 with $q\ne9$ (the
+  $q=9$ ones use the duality of $H(9)$, which is not formalised).
+
+Not formalised: the existence of a duality of $H(3^h)$ and the specific large sets (their pairwise-opposite and hub-graph
 conditions are finite checks done by C programs, far too large for the kernel).
