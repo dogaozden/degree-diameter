@@ -100,3 +100,12 @@ RANDORB with k = 7: min 788, median 2608, mean 1.9·10⁵ over 2000 random singl
 group (small Q with large cyclic factor). Exhaustive k = 7 search is cheap (N/7 ≈ 33k orbits, about 2.5 min), but the
 median says it would not find anything; not run.
 
+
+## Run log (round 2)
+
+- SL(2,16) × Z_57 (N = 232,560, μ = 40.05, |Fix| = 44, k = 3, m = 2, f = 1, α = conj(order 3) × z ↦ 7z): four
+  seeds × 1200 s, one thread each (~2·10⁶ evaluations per run). Best costs 16, 16, 23, 23. **Not solved.** The record
+  group reached 0 at 1.5·10⁶ evaluations, so this order is harder than the calibration suggested, not just unlucky.
+- PSL(2,17) × Z_95 (same N, |Fix| = 44, α = conj × z ↦ 11z): four seeds × 1200 s launched next.
+- Tooling note: a Monitor that waits with `pgrep -f <pattern>` matches its own command line and never exits. Wait on
+  the RESULT line in each log instead.
