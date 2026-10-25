@@ -1,0 +1,32 @@
+start m=12 D=10 sample=40 cost=0 PT=0.50
+  sample clean at m=12 (it 4): full COST over reps = 0 (bad reps 0) t=3s
+  sample clean at m=13 (it 5): full COST over reps = 2 (bad reps 2) t=8s
+  added 2 bad reps (now 42)
+  sample clean at m=13 (it 33): full COST over reps = 0 (bad reps 0) t=13s
+  sample clean at m=14 (it 34): full COST over reps = 2 (bad reps 2) t=17s
+  added 2 bad reps (now 44)
+  sample clean at m=14 (it 67): full COST over reps = 0 (bad reps 0) t=24s
+  sample clean at m=15 (it 68): full COST over reps = 2 (bad reps 2) t=28s
+  added 2 bad reps (now 46)
+it 100 m=15 cost=2 acc=0.500 targeted 3/52 t=31s
+it 200 m=15 cost=1 acc=0.490 targeted 3/104 t=37s
+  sample clean at m=15 (it 339): full COST over reps = 2 (bad reps 2) t=46s
+  added 2 bad reps (now 48)
+it 400 m=15 cost=1 acc=0.515 targeted 4/197 t=51s
+  sample clean at m=15 (it 412): full COST over reps = 1 (bad reps 1) t=55s
+  added 1 bad reps (now 49)
+it 500 m=15 cost=1 acc=0.520 targeted 5/244 t=62s
+  sample clean at m=15 (it 505): full COST over reps = 0 (bad reps 0) t=66s
+  sample clean at m=16 (it 626): full COST over reps = 14 (bad reps 14) t=79s
+  added 8 bad reps (now 57)
+it 700 m=16 cost=3 acc=0.520 targeted 9/344 t=87s
+  sample clean at m=16 (it 725): full COST over reps = 10 (bad reps 10) t=95s
+  added 8 bad reps (now 65)
+it 800 m=16 cost=2 acc=0.527 targeted 13/389 t=106s
+  sample clean at m=16 (it 852): full COST over reps = 10 (bad reps 10) t=113s
+  added 8 bad reps (now 73)
+  sample clean at m=16 (it 971): full COST over reps = 8 (bad reps 8) t=131s
+  added 8 bad reps (now 81)
+it 1100 m=16 cost=1 acc=0.525 targeted 19/540 t=146s
+  sample clean at m=16 (it 1126): full COST over reps = 8 (bad reps 8) t=151s
+  added 8 bad reps (now 89)

@@ -1,0 +1,12 @@
+q5 m13 seed7 proj:lin:rand sample300_cost 0 all_cost 4
+q5 m13 seed11 proj:lin:rand sample300_cost 0 all_cost 4
+q5 m13 seed13 proj:lin:rand sample300_cost 1
+q5 m14 seed7 proj:lin:rand sample300_cost 0 all_cost 16
+q5 m14 seed11 proj:lin:rand sample300_cost 2
+q5 m14 seed13 proj:lin:rand sample300_cost 2
+q5 m13 seed7 rand:rand:rand sample300_cost 0 all_cost 1
+q5 m13 seed11 rand:rand:rand sample300_cost 0 all_cost 1
+q5 m13 seed13 rand:rand:rand sample300_cost 0 all_cost 1
+q5 m14 seed7 rand:rand:rand sample300_cost 0 all_cost 4
+q5 m14 seed11 rand:rand:rand sample300_cost 0 all_cost 6
+q5 m14 seed13 rand:rand:rand sample300_cost 0 all_cost 2

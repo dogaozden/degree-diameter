@@ -1,0 +1,41 @@
+start m=17 D=10 sample=40 cost=0 PT=0.50
+  sample clean at m=17 (it 9): full COST over reps = 0 (bad reps 0) t=2s
+it 100 m=18 cost=1 acc=0.490 targeted 2/52 t=6s
+  sample clean at m=18 (it 136): full COST over reps = 95 (bad reps 89) t=9s
+  added 8 bad reps (now 48)
+it 200 m=18 cost=5 acc=0.575 targeted 27/108 t=13s
+it 300 m=18 cost=4 acc=0.610 targeted 39/151 t=19s
+it 400 m=18 cost=2 acc=0.625 targeted 43/187 t=25s
+it 500 m=18 cost=1 acc=0.608 targeted 50/240 t=30s
+  sample clean at m=18 (it 510): full COST over reps = 69 (bad reps 66) t=32s
+  added 8 bad reps (now 56)
+it 600 m=18 cost=3 acc=0.642 targeted 77/284 t=40s
+  sample clean at m=18 (it 718): full COST over reps = 49 (bad reps 47) t=50s
+  added 8 bad reps (now 64)
+it 800 m=18 cost=4 acc=0.655 targeted 106/367 t=58s
+  sample clean at m=18 (it 848): full COST over reps = 54 (bad reps 54) t=63s
+  added 8 bad reps (now 72)
+it 900 m=18 cost=4 acc=0.657 targeted 128/419 t=68s
+it 1000 m=18 cost=2 acc=0.651 targeted 146/472 t=77s
+  sample clean at m=18 (it 1294): full COST over reps = 76 (bad reps 71) t=98s
+  added 8 bad reps (now 80)
+it 1300 m=18 cost=7 acc=0.614 targeted 158/626 t=99s
+  sample clean at m=18 (it 1378): full COST over reps = 51 (bad reps 49) t=110s
+  added 8 bad reps (now 88)
+it 1400 m=18 cost=5 acc=0.625 targeted 195/682 t=113s
+  sample clean at m=18 (it 1488): full COST over reps = 58 (bad reps 55) t=124s
+  added 8 bad reps (now 96)
+it 1500 m=18 cost=8 acc=0.626 targeted 217/736 t=126s
+it 1600 m=18 cost=4 acc=0.631 targeted 239/783 t=139s
+it 1700 m=18 cost=3 acc=0.630 targeted 250/832 t=150s
+it 1800 m=18 cost=5 acc=0.626 targeted 252/876 t=160s
+it 1900 m=18 cost=3 acc=0.620 targeted 255/925 t=169s
+it 2000 m=18 cost=1 acc=0.614 targeted 261/980 t=178s
+it 2200 m=18 cost=1 acc=0.605 targeted 268/1073 t=196s
+  sample clean at m=18 (it 2391): full COST over reps = 86 (bad reps 83) t=214s
+  added 8 bad reps (now 104)
+it 2500 m=18 cost=2 acc=0.599 targeted 305/1234 t=230s
+it 2700 m=18 cost=1 acc=0.596 targeted 317/1331 t=252s
+it 2800 m=18 cost=2 acc=0.595 targeted 320/1376 t=264s
+it 2900 m=18 cost=1 acc=0.592 targeted 324/1427 t=273s
+it 3000 m=18 cost=2 acc=0.591 targeted 328/1468 t=285s
