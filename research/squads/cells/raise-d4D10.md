@@ -24,3 +24,27 @@ Source of the record and its checks: origin/claude/voltage-lifts-search-6lfotq, 
 - Round 3 result: no solve in 6361–6560. Each window 12 anneals of 300 s. Near misses: N = 6394 meta 278 23 45 and
   meta 139 46 6 at cost 1; N = 6510 meta 217 30 38 at cost 3. The 2400 s seed-4 re-anneal of N = 6216 ended at cost 1.
 - Round 4 (started): the four round-1 windows, resumed to top 30 (18 new candidates each, 300 s, seed 1).
+- Round 3 finished: sweeps N = 6361–6420, 6421–6480, 6481–6560 gave no solve (12 anneals each).
+- Round 4 finished: the four round-1 windows resumed to top 30 (18 new anneals each, 300 s). No solve.
+- Non-Haar check: lift.c, K_{4,4} base (8 vertices), cyclic groups Z_1500, Z_1520, Z_1552, Z_1553 (n = 12,000 to
+  12,424). After 30 s the costs were 974–1,292 (start 3,326–7,832). That is far from cost 0, so this route was dropped
+  before any long run finished. The earlier voltage-lift sweeps only reached n ≈ 11,750 on these bases.
+
+## Totals and status (Haar, N = 6209–6560)
+- About 150 anneals of 300 s (rounds 1, 3, 4) plus 4 re-anneals of 1200–2400 s (round 2 and the seed-4 run).
+- Best costs: N = 6216 meta 259 24 97 at cost 1 (stalled over seeds 1–4, up to 2400 s); N = 6394 meta 278 23 45 and
+  meta 139 46 6 at cost 1 (300 s, one seed each, not re-annealed yet); N = 6270 at cost 2.
+- No new Haar solution above N = 6208. No file saved to research/frontier/sols/ (nothing verified).
+
+## Stop decision
+Stopped after about 3.5 h of the 6 h budget. Reasons:
+- The record's own order (6208) came from about the 10th anneal of a broad pass. Haar sweeps above it have now run
+  about 150 anneals over N = 6209–6560 without a solve, and the closest candidates stall at cost 1 even on long runs.
+- The non-Haar K_{4,4} lift is far off (cost ~1000 after 30 s).
+- Untried, for the coordinator: (a) re-anneal the cost-1 candidates at N = 6394 for 1200 s with 2 seeds; (b) non-metabelian
+  groups (sl/psl/pgl × Z_n) at N = 6209–6330, annealed with more seeds, since the (5,7) and (5,8) lessons say the
+  metacyclic score understates them; (c) lift.c with a 2+2 or dipole-plus-matching base at n > 12,416 (none was run there).
+
+## Files
+- research/squads/cells/raise-d4D10.md (this file). The search scripts are in origin/claude/voltage-lifts-search-6lfotq,
+  research/lifts; they were run from a scratch worktree and are not committed here.
