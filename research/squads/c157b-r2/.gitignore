@@ -1,0 +1,19 @@
+# regenerable or large squad artifacts (hexagon copies, orbit graphs, permutations, masks, solution copies, work dirs)
+*.bin
+perm_*.txt
+*_pts.txt
+*_lines.txt
+allow_*.txt
+*.sol
+*.sol.unserved
+*.edges
+*.src
+sigma.txt
+best_sigma.txt
+work*/
+sc_*/
+__pycache__/
+*.npy
+w1/
+w2/
+des/

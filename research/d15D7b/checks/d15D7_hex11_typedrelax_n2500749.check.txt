@@ -1,0 +1,43 @@
+# (15,7) n = 2,500,749 = 14*177,156 + 10,511 + 10,054 (job cell-15-7, resume session, 2026-10-25). Table 2,480,184;
+# master 2,497,075; this branch's earlier 2,500,147.
+# Seven typed levels HHDHHDD of the incidence graph of H(11) (cell-16-7), mirrored surgery (768 elements, sigma of
+# d14D7_hex11_mirror768_n1774632.sol) on the nine non-friendly transitions (cell-14-7), and NEW: the four bottleneck
+# friendly sets are "relaxed" (research/d15D7b/RELAXED.md): they may contain collinear pairs of points (0->2: 8,976
+# points, 664 pairs; 1->2: 8,975, 682 pairs) or concurrent pairs of lines (2->3: 8,518, 682 pairs; 2->4: 8,556, 835
+# pairs), every element with at most one partner (R1), and the two hubs of every paired element r with partner x are
+# wired to freed elements incident with x at the other level of the transition (R2). The other eight friendly sets are
+# master's R_H (8,645) / R_L (8,246) or a collineation image of them (both non-collinear / non-concurrent).
+# Solution: research/frontier/sols/d15D7_hex11_typedrelax_n2500749.sol (sha256 42fc3c244cf94663e3371f68e750a7c32cee438bb61d852c1bf9e75902e60791):
+#   all twelve friendly sets, the hub slot table (one slot per level per hub) and the hub graph, explicitly; names the
+#   mirror .sol (same folder) by sha256.
+# Rebuild: cc -O2 -o hexgen2 research/d13D7/hexgen2.c -lm && ./hexgen2 11   (hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19)
+#   python3 research/d15D7b/tm3_build.py build hex/hex_q11.bin research/frontier/sols/d15D7_hex11_typedrelax_n2500749.sol g.edges g.src
+#   edge list sha256 b8c92c9c8091c62c2693168e1f0d42461d8dff933115d6ebe863119afcf4c67d (rebuild byte-identical)
+#   cc -O2 -pthread -o hubfar research/d15D7b/hubfar.c && ./hubfar g.edges 7 4 g.src
+# Why this covers every pair: pairs of non-hub vertices in which neither vertex is a paired element at one of the two
+# levels of its relaxed transition are covered by the one-transition surgery theorem (d16D7.md / MIRRORED_SURGERY.md;
+# RELAXED.md explains why only those vertices' routes change); tm3_build re-checks every hypothesis ((R1), (R2), the
+# mirrored hypotheses, degrees, simple graph). Every pair with a hub or with a paired-element vertex is covered by the
+# BFS below: 31,995 sources = all 20,565 hubs and all 11,430 vertices (r, j), (r, j2) of paired elements, depth 7,
+# every vertex reached. A plain all-pairs apsp_mt run is still to be done.
+-- tm3_build.py build:
+free A-slots per level [10512, 10511, 17842, 18058, 18058, 17260, 17260] B-slots [17260, 17260, 18719, 10054, 10092, 18058, 18058] -> hubs 10511 10054
+mirror hypotheses OK: |R'| = 768
+  0->2 (points): 8976 freed, 664 pairs, (R1) and (R2) OK
+  1->2 (points): 8975 freed, 682 pairs, (R1) and (R2) OK
+  2->3 (lines): 8518 freed, 682 pairs, (R1) and (R2) OK
+  2->4 (lines): 8556 freed, 835 pairs, (R1) and (R2) OK
+  3->5 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  3->6 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->5 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  4->6 (points): 8645 freed, 0 pairs, (R1) and (R2) OK
+  5->0 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  5->1 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->0 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+  6->1 (lines): 8246 freed, 0 pairs, (R1) and (R2) OK
+friendly hypotheses OK (2863 pairs in all)
+n = 2500749, edges = 18716266, degree min 12 max 15, hub graph edges 80432
+wrote /tmp/claude-0/-home-user-degree-diameter/3a40c776-090e-50f8-a72c-99cc9e6252bb/scratchpad/v3/rb3.edges
+wrote /tmp/claude-0/-home-user-degree-diameter/3a40c776-090e-50f8-a72c-99cc9e6252bb/scratchpad/v3/rb3.src: 31995 BFS sources (hubs and paired elements)
+-- hubfar (BFS from the 31,995 sources, depth 7, 4 threads):
+n=2500749 edges=18716266 degree min=12 max=15 bipartite=yes connected=yes sources=31995 far_pairs=0 max_ecc=7

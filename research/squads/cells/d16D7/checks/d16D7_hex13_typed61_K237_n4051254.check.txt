@@ -1,0 +1,24 @@
+# (16,7) 4,051,254 = 10*402,234 + 2*61*237 (job cell-16-7, resume session, 2026-10-25, built 04:03 UTC). Table 4,022,340;
+# best earlier candidate 4,025,508 (cell-13-7 session, not yet on master).
+# Five copies of the incidence graph of H(13) (hexgen2 13) with level types H D H D H (levels 1 and 3 read as the dual
+# hexagon), matchings (a, j) ~ (M_k(a), j+k), k = 1, 2: identity on the six friendly transitions (0->1, 1->2, 2->3, 3->4,
+# 3->0, 4->1), G-equivariant bijections on the other four. Surgery: the friendly edges at R_H (235 orbits = 14,335
+# pairwise non-collinear points; squad d16D7_r2 card c2) and R_L (237 orbits = 14,457 pairwise non-concurrent lines;
+# card c2) are deleted; on each non-friendly transition 2 orbits (122 elements) of pairwise opposite elements are freed
+# with an equivariant local duality (popp.c). 237 line-side + 237 point-side hub orbits (one free slot per level each),
+# hub graph a voltage graph over Z_61 (degree <= 11, all same-side distances <= 6 by hubcheck). G = <g>, g of order 61 in
+# SL(3,13) acting as (v,a,w) -> (gv, a, g^-T w); (x, j) -> (gx, j), hub (k,t) -> (k,t+1) is an automorphism.
+# Theory: research/squads/cells/d16D7.md.
+#   gcc -O2 -o typed5s research/squads/cells/d16D7/typed5s.c
+#   ./typed5s edges hex/hex_q13.bin research/frontier/sols/d16D7_hex13_typed61_K237_n4051254.sol g.edges g.aut
+#   (typed5s also re-checks (H1)-(H3) of the non-friendly surgery: "122 freed, H1-H3 checked" for 0->2, 1->3, 2->4, 4->0)
+#   or: python3 research/squads/cells/d16D7/typed5s_build.py hex/hex_q13.bin SOL g.edges   (independent numpy rebuild,
+#   byte-identical; edge list sha256 78946e62b6b67ed48be5a1bcb25b67f688185e85c5f2201e0ccb86b7a8fcfcc6)
+#   sha256 of the .sol de4245dab44b398565f7d650ba9b4d04d908029c6e26cd65fb43a207886f5687, of hex_q13.bin (hexgen2 13)
+#   57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a
+# Check: apsp_autw.c (research/squads/cells/d16D7/; apsp_orb.c with an arbitrary permutation, int32 adjacency, 512 sources
+# per batch): simple graph, degrees, bipartite, connected; the permutation g.aut is checked to be a bijection mapping every
+# edge to an edge; BFS from one vertex per cycle (66,414 sources) gives the exact diameter.
+#   ./apsp_autw g.edges 16 7 2 g.aut      (04:04-04:15 UTC, 2 threads)
+n=4051254 edges=32395331 degree min=14 max=16 bipartite=yes diameter=7 (permutation checked as an automorphism; 66414 sources = cycles, longest 61)
+RESULT VALID d=16 D=7 n=4051254
