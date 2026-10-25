@@ -87,3 +87,31 @@ Two solutions at the same order, both VALID by build_haar2.py (diameter 10, 7-re
 - build_haar2.py VALID: n = 2,298,240, 7-regular, no duplicates, ecc 10 from both (e,A) and (e,B). Edge-list sha256
   `d977a1225993a74ae9c26e3c021d40a3e287407595eea0e499c11e74c14cd0fe` (`research/structured/runs/d7D10_prod_sl_7_psl_19_1_orb3_s2.rebuild.txt`).
 - Unsolved at 30 min, same order: prod psl 7 psl 9 × Z19 seed 3 (best 1), prod psl 7 sl 19 seed 2 (best 3), prod sl 5 sl 8 × Z19 seed 2 (best 3).
+
+## Round 5: no solve above N = 1,149,120 (30–60 min runs)
+
+Single-thread runs, `ORBIT="3 2 1"`, seed as shown (best cost in brackets):
+
+| group | N | μ | budget | result |
+|---|---|---|---|---|
+| sl 19 × Z169 (s2) | 1,155,960 | 33.1 | 30 min | best 9 |
+| pgl 19 × Z169 (s2) | 1,155,960 | 33.1 | 30 min | best 12 |
+| psl 19 × Z337 (s2) | 1,152,540 | 32.0 | 30 min | best 18 |
+| prod psl 3 × sl 11 × Z73 (s2) | 1,156,320 | 33.2 | 30 min | best 13 |
+| prod psl 5 × sl 27 × 1 (s1) | 1,179,360 | 41.5 | 60 min | best 8 (fix = 161) |
+| psl 23 × Z193 (s1) | 1,171,896 | 38.7 | 60 min | best 6 (fix = 11) |
+| psl 31 × Z79 (s1) | 1,175,520 | 39.9 | 60 min | best 3 (fix = 14) |
+| sl 17 × Z241 (s1) | 1,179,936 | 41.8 | 60 min | best 21 |
+
+Also at N = 1,149,120 (not above the record): prod psl 7 × psl 9 × Z19 seed 3, 30 min, best 1 (cost-1 plateau; 1.48M evals).
+
+Reading: the ladder has reached the wall of this method, roughly μ ≈ 30–34 with ~10⁶ evaluations (about 15–25 min on one core
+for a solve, and a clear plateau above that). Groups at μ ≈ 38–42 plateau at cost 3–21 after 3–5 M evaluations.
+The next attempts (ORBW=3 on psl 31 × Z79 and psl 23 × Z193, four 75-minute runs) are in the table of the final round.
+
+## What a fresh session should do next
+
+1. Rebuild the binaries (see Resume) and check the three records above with build_haar2.py before building on them.
+2. The current record is 2,298,240 (SL(2,7) × PSL(2,19), file `d7D10_prod_sl_7_psl_19_1_orb3_s2.txt`).
+3. Above μ ≈ 33, the orbit method with random S seems to be at its wall; other routes are the cost-sharing
+   orbit variants (ORBW), k = 5 with a small centralizer (none found for this order window), or lifts (research/lifts).
