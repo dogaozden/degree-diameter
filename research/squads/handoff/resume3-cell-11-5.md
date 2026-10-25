@@ -7,6 +7,7 @@ branch; draft PR #388).
 - **(11,5) ≥ 7,032** (was 7,020): DM Z6 lift of W(8) plus one point-line pair. research/d11D5/graphs/d11D5_n7032_CHECK.md
   (apsp.c VALID, diameter exactly 5, 11-regular, bipartite, 38,676 edges, sha256 4355f145...). Needs the coordinator's check.
 - **(10,5) ≥ 4,812** (was 4,800, side result): W(7) plus one pair, research/d11D5/graphs/d10D5_n4812_CHECK.md.
+- **(12,5) ≥ 9,852** (was 9,840, side result): W(9) plus one pair, research/d11D5/graphs/d12D5_n9852_CHECK.md.
 
 ## How (the pipeline that works)
 1. Base with n > 585: W(8) + a point-line switch (research/d11D5/inc/mkinc.py, addpair.py, w8r/genk.py).
@@ -29,10 +30,10 @@ branch; draft PR #388).
 2. **(10,5) ≥ 4,812 done** (side result, research/d11D5/graphs/d10D5_n4812_CHECK.md, apsp VALID): W(7) + one pair by
    inc/pipeline.sh in about 10 minutes. Needs the coordinator's check. (The first W(7)+1 base, from squad r3 c4, stays
    at one violated parity pair: every sigma swap that would cover it breaks the structure.)
-3. **The same recipe at other D = 5 cells**: W(9) + one pair gives (12,5) 9,852 > 9,840 and W(11) + one pair gives
-   (14,5) 17,580 > 17,568. Bases with the DM sigma and nu are ready in research/d11D5/inc/wq/ (w9_dm.in/.nu,
-   w11_dm.in/.nu; w7 too). Steps: inc/addpair.py base nu b seed out.in out.nu <n> (no earlier new vertices: pass the
-   old n as the last argument), po7 annealing (T0 20 -> 0.4, ~450 s), wpo, nujoint TARGET=1 from the extended DM nu,
-   finish.sh with d = q + 3.
+3. **The same recipe at (14,5)**: W(11) + one pair gives 17,580 > 17,568. Base with the DM sigma and nu:
+   research/d11D5/inc/wq/w11_dm.in/.nu; the run of this session is research/d11D5/inc/wq/run/W11.* (see its .out for
+   where it stopped). Command: `SEED=111 SASECS=900 ./pipeline.sh wq/run/w11p1.in wq/run/w11p1.nu wq/run/W11 14 5`
+   from research/d11D5/inc after `python3 addpair.py wq/w11_dm.in wq/w11_dm.nu b 1 wq/run/w11p1.in wq/run/w11p1.nu 1464`.
+   Evaluations cost 10 ms at this size, so give the annealer 2,000+ CPU s. W(9) and W(7) + one pair are done.
 4. The counting ceiling of the family is 14,796 at (11,5) (n <= 1,233), so the room is large; what is missing is a
    structural search that handles several new pairs at once.
