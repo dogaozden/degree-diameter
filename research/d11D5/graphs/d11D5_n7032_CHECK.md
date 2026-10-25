@@ -5,9 +5,11 @@ whose edges are doubled with voltages 1 and 4; base flag (p, l) has voltage 3*nu
 (x, h) = 6x + h (x < 586 points, 586 <= x < 1172 lines). 11-regular, bipartite, 12 * 586 = 7,032 vertices.
 Previous best: 7,020 (W(8) itself, research/d10D7/checks/d11D5_n7020_CHECK.md); table (DS14v2): 5,850.
 
-Base: W(8) (gq_q8.bin numbering of research/d11D5/w8.json) with a 9-flag switch (point 585 = x* on 9 old lines,
-line 585 = l* through their 9 removed points) and later flag swaps; sigma differs from the polarity on all but 7
-points. Found by: r2 annealing (cost 2) -> squad r3 card c2's clause-weighting search wpo (structural cost 0) ->
+Base: W(8) (point and line numbering of research/d11D5/w8.json) with one 9-flag switch and nothing else: the new
+point 585 (x*) replaces point p_i on old line L_i for 9 pairwise disjoint lines L_i (21, 73, 133, 166, 184, 395, 420,
+503, 514), and the new line 585 (l*) holds the 9 removed points (219, 132, 366, 544, 136, 227, 341, 537, 361). All
+other lines are those of W(8). sigma agrees with the polarity of W(8) on only 7 points; sigma(x*) = line 420 (a line
+through x*), sigma(1) = l*. Found by: r2 annealing (cost 2) -> squad r3 card c2's clause-weighting search wpo (structural cost 0) ->
 inc/nujoint.c (nu by simulated annealing; SIGFIX sigma swaps; targeted-sigma annealing, TARGET=1).
 
 Files (this folder): `d11D5_n7032_dmplus1.in` (base and sigma, plusopt format: "n dg", n lines of point ids, n sigma
