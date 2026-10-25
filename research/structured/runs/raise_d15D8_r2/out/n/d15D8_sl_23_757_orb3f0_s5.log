@@ -3,3 +3,14 @@ wide rows: no cyclic subgroup of order >= 64 found (best 46); using haar_gen3's 
 alpha: conj by mat(11,12,8,13) (index 6080), z -> 27 z on Z_757
 ORBIT k=3 m=5 f=0: |Fix(alpha)| = 23 (+e); mu = 39.85, mu/k = 13.28, fixed-point misses ~ 0.39
 start cost=90
+t=31 steps=40 evals=321 cost=24 best=24 T=0.52
+t=61 steps=87 evals=697 cost=24 best=24 T=0.18
+t=91 steps=144 evals=1153 cost=24 best=24 T=0.15
+t=122 steps=216 evals=1729 cost=24 best=24 T=0.15
+t=152 steps=288 evals=2305 cost=18 best=18 T=0.15
+t=182 steps=348 evals=2785 cost=18 best=18 T=0.15
+t=212 steps=413 evals=3305 cost=18 best=18 T=0.15
+t=242 steps=481 evals=3849 cost=18 best=18 T=0.15
+t=273 steps=546 evals=4369 cost=18 best=18 T=0.15
+t=303 steps=606 evals=4849 cost=18 best=18 T=0.15
+t=333 steps=677 evals=5417 cost=18 best=18 T=0.62
