@@ -71,3 +71,12 @@ dropped k = 15, tiny p, composite n where a prime one exists. Opus also wrote FI
 of the α-fixed points before each full evaluation, 0.06 s against 1.3 s; validated against the evaluator on 60 samples),
 which removes F from the exponent at the price of e^F cheap tests per candidate, and ZMAX (z-spectrum filter, not used
 yet: small n makes it unnecessary). What I did next: four k = 5 FIXPRE runs at μ = 26.4, 35.0, 41.9, 43.3.
+After round 2 (Opus alone, no third round: all four cores were busy with production runs). Results with k = 5 and
+FIXPRE: **2,517,235,800** (PSL(2,149) × Z761, μ 26.4, 217 evaluations), **2,555,640,360** (PSL(2,181) × Z431,
+μ 35.0, 217 evaluations; haarcheck_psl VALID), **2,566,531,440** (SL(2,109) × Z991, μ 37.9, 5,553 evaluations).
+The rungs at μ 41.9 and 43.3 (+12.2 %, +12.4 %) did not solve in ~35,000 evaluations: every run sat on a cost-5
+plateau. A cheap proxy experiment showed targeted moves don't matter at k = 5 (TARGP 0 vs 70); PAIRS showed that some
+orbit pairs are bad for every third orbit (short relations, visible as a deficit in the depth-5 ball). EARLYB (bounded
+last level) made full evaluations ~20 % faster. Did the squad help? Yes, for mapping: the round-2 cards told me where
+k = 5 works (p ≈ 130–200, small prime n), killed k = 15 and small p in one round, and confirmed the k = 5 advantage on the
+proxy with solve counts; the records themselves came from Opus's runs on the groups the squad picked out.
