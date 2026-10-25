@@ -163,3 +163,10 @@ Job files and logs: `../../structured/runs/raise-d10D10-r2/` (`jobs_{a,b,c,d}.tx
 - 2026-10-25 14:25 UTC: searches a–d launched.
 - 2026-10-25 15:55 UTC: no solution yet. Best costs after 40–67k evals (~0.11 s/eval with 4 jobs): psl 71 × 181 seed 3: 5;
   psl 79 × 131 seed 2 (ORBW 5): 5; seed 1 (ORBW 5): 6; seed 3 (no ORBW): 6. Cost 5 = one uncovered orbit or one fixed point.
+- 2026-10-25 16:25 UTC: a mistake: `kill` by the pattern "10800 3 8" also stopped psl 71 × 181 seed 3 (log ends at best 5,
+  89,849 evals, not a full 3 h). Both seed-3 jobs were stopped at 2 h (psl 79 × 131 seed 1 at best 6, psl 79 × 131 seed 3
+  without ORBW at best 5, 61,857 evals).
+- 2026-10-25 16:25 UTC: RESTART=1 (fresh random S at each reheat): psl 79 × 131 seeds 4, 5 stayed at 15 after 20k evals;
+  psl 71 × 181 seed 6 at best 6 after 31k. Stopped at 17:05.
+- 2026-10-25 17:05 UTC: psl 79 × 131 seed 2 (ORBW 5) still at best 5 after 82k evals (ends 3 h). New runs with ORBW = 10
+  (fixed points weigh more): psl 79 × 131 seeds 7 and 8, psl 71 × 181 seed 7, 8000 s each.
