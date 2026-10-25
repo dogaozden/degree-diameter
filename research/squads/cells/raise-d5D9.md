@@ -46,4 +46,10 @@ The bar for the next step is |G| ≥ 14,470 (graph ≥ 28,940).
 - Phase 3 (groups with |G| > 14,459, seeds 2–5, 480 s each; `phase3_groups.txt`, `phase3.log`): Z_964⋊Z_15 solved at 14,460
   (seeds 2 and 4, 161–166 s); Z_371⋊Z_39 solved at 14,469 (seed 5, 0.5 s) → record 28,938. The other 14,460+ groups
   ended at cost 2–4 after 480 s.
-- Phase 4 (40 more screened groups above 14,459, one seed, 300 s each; `phase4_groups.txt`, `phase4.log`): queued.
+- Phase 4 (40 more screened groups above 14,459, one seed, 300 s each; `phase4_groups.txt`, `phase4.log`): no
+  solution; costs 2–14, mostly 6–10. The second screen tier is much worse than the first, so screen rank is only a
+  weak guide beyond the top ~40. (A first launch failed because the group lines lacked the cyclic factor "1"; fixed
+  and re-run.)
+- Phase 5 (6 cost-2 groups above 14,469 — 1322⋊11·81, 541⋊27·28, 542⋊27·25, 1321⋊11·205, 1322⋊11·9, 1324⋊11·293 —
+  seeds 6–13, 150 s each; `phase5_jobs.txt`, `phase5.log`): running. Heavy-tailed: short restarts are the cheapest
+  way to see a solve (the 14,469 record came in 0.5 s on seed 5, while seeds 2–4 stayed at cost 2 for 480 s).
