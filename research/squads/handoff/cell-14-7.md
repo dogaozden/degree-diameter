@@ -13,9 +13,10 @@ If resumed, the most promising directions:
 1. q = 13 / (16,7): the annealer stalls at F = 21 but there is much more room (spread 2,198 lines, extra points at
    distance 4 from 24–48 base points). A better search (c3's two-stage method, ILP on fixed lines) should give more;
    each point is +4 at (16,7). Tools: mirror_sa5.py / mirror_build2.py with --hex hex_q13.bin, R792, S_q13.
-2. q = 11 / (14,7): beyond F = 12 needs co-designed structure on both sides. One idea: move R756 by an isometry so
-   that its stabiliser meets the hexagon's G2(11) in a large group H (e.g. a G2(2) built from the split octonions),
-   fix a Hermitian spread invariant under H, and look for H-orbits of extra points and lines whose cross relations
-   match (orbit-level types).
+2. q = 11 / (14,7): beyond F = 12 needs co-designed structure on both sides. Tested and negative: making the 756 set
+   G2(2)-symmetric inside the hexagon's own automorphism group (research/cell147/octo/: octonion model, H of order 96
+   fixing R* and a Hermitian spread). Orbit-level extensions then need exact pattern matching per orbit, which random-looking
+   neighbourhoods never satisfy. A real gain needs extra points whose base neighbourhoods are unions of cosets of a
+   subgroup, or a different base set.
 3. The other D = 7 hexagon cells take the same tools in minutes (q = 5, 7, 8: small F; q = 9 uses a true duality).
 Scratch files are not kept: rebuild hexagons with research/d13D7/hexgen.c / hexgen2.c, graphs from the .sol files.
