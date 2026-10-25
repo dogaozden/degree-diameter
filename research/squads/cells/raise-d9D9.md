@@ -49,3 +49,15 @@ Wave 1 result (all four finished, none reached cost 0; each run ~0.5–1.0·10�
 | prod sl 4 sl 31 1 | 38.8 | 16 | 6.9·10⁵ |
 
 Wave 2 (3,600 s each, 4 cores): sl 29 73 seeds 2 and 3; sl 121 1 seed 2; prod sl 9 psl 17 1 seed 2.
+
+Wave 2 result (3,600 s each, seed 2 or 3, none reached cost 0):
+
+| group | μ | seed | best cost | evals |
+|---|---|---|---|---|
+| sl 29 73 | 36.9 | 3 | **6** | 1.19·10⁶ |
+| sl 29 73 | 36.9 | 2 | 8 | 1.23·10⁶ |
+| sl 121 1 | 35.3 | 2 | 10 | 6.4·10⁵ |
+| prod sl 9 psl 17 1 | 33.2 | 2 | 10 | 8.8·10⁵ |
+
+Wave 3 (3,600 s each, started 09:57 UTC): sl 29 73 with ORBW=3 (seed 4); sl 29 73 with RESTART=1 (seed 5); sl 29 73 (seed 6);
+prod psl 3 sl 13 67 (μ 31.8, the only group between the record and 1,762,560; its random-S min is 78–84, worse than the record's 42).

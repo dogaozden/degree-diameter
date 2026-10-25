@@ -1,0 +1,5 @@
+group prod psl 3 sl 13 x Z_67, N=1755936, identity 449436, H order 42, rows 41808, threads 1, setup 0.14s
+wide rows: HW order 201, rows 8736, setup 0.21s
+alpha: conj by prod[mat(1,0,1,1);mat(8,2,4,6)] (index 10105), z -> 29 z on Z_67
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 35 (+e); mu = 31.79, mu/k = 10.60, fixed-point misses ~ 1.89
+start cost=12124
