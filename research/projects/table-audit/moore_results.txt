@@ -25,5 +25,5 @@ D=6 q=5  Delta=6  n=7812:   RESULT VALID d=6 D=6 n=7812
 D=6 q=7  Delta=8  n=39216:  RESULT VALID d=8 D=6 n=39216
 D=6 q=8  Delta=9  n=74898:  RESULT VALID d=9 D=6 n=74898
 D=6 q=9  Delta=10 n=132860: RESULT VALID d=10 D=6 n=132860   (apsp_mt, 4 threads)
-D=6 q=11 Delta=12 n=354312: pending (apsp_mt running)
+D=6 q=11 Delta=12 n=354312: RESULT VALID d=12 D=6 n=354312   (apsp_mt, 4 threads)
 D=6 q=13 Delta=14 n=804468: pending (to be built and checked)
