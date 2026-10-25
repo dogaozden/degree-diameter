@@ -43,3 +43,47 @@ check Oct 24 16:05 PT). Table value 5,850 (DS14v2); Moore bound 22,222. The firs
    length 4 between opposite points do not exist for a duality (rare otherwise). This gives order
    4(2p+1)(q+1)(q²+1) at Δ = q+1+2p. At Δ = 11 the maximum is p = 1, q = 8, i.e. 7,020. Beating it inside this
    family needs geodesics that cover Z₃ (item 2) or a different base.
+5. **Squad round r1-d11D5 (8 Haiku cards), all negative.** Algebraic cubic-character cocycles on W(7) score at
+   random level (15,503). Invariant cocycles under tori, Singer cycles and Sylow subgroups reach 8,356 at best. Joint
+   σ/ν annealing with exemptions reaches 6,154. Mixed chart lifts over F₃ are valid only up to 2,916, and over F₄/F₂
+   none is valid. No lift of the 1,782-vertex (11,4) graph can work: 568 of its vertices lie on no 4-cycle, which
+   forces ≥ 301,872 far pairs at order 4. Exact walk-count bounds rule out W(5)+5/Z23, W(4)+6/Z42 and W(3)+7/Z88.
+   Every one of the 38,610 edges of the 7,020 graph is critical. (research/squads/r1-d11D5/scoreboard.jsonl)
+
+## The open lead: doubled-matching lifts over NON-quadrangle bases
+
+The DM theorem does not need a generalized quadrangle. For any bipartite base B (9-regular, n points, n lines)
+with a point→line bijection σ whose edges are doubled (Z₆ voltages 1 and 4, base flags 3ν), the classes of the lift
+are as follows:
+- a class reached by a walk that uses a jump gets both Z₂ sheets for free (switch the copy at one jump);
+- coset ±1 classes always contain a jump, so they only need reachability in the Z₃ quotient, i.e. a walk of length ≤ 5;
+- coset 0 needs pure distance ≤ 2 (then a 2-cycle is inserted), or a jumped zero-sum walk
+  (x→σ(x)→·→σ(y)→y, i.e. σ(x), σ(y) concurrent), or ≥ 2 pure geodesics, which leave a parity OR-constraint on ν.
+So `plus/plusopt*.c` scores a base by the number of (source, target, coset) triples that fail these structural
+conditions (bit-parallel, 4 ms per evaluation, checked against zcons). It anneals σ and degree-preserving flag swaps.
+A base with cost 0 then needs ν for the OR-constraints (`plus/orsolve.c`, simulated annealing). The lift has
+12n vertices.
+
+W(8) itself (n = 585) scores 0. **One extra pair (n = 586, lift 7,032)** is made by a 9-flag switch: flags
+(p_i, L_i) become (x*, L_i) and (p_i, l*). The spread-type switch starts at 2,496, and annealing brings that down to 38, 6, 4, and
+then **2** in several independent runs. The last failure is always a single same-side pair at pure distance 4 with one
+geodesic and no σ-concurrency (a line pair in most runs). None of the following removes it: single σ-swaps, two-step
+σ-swaps, all single flag swaps near the pair, or a penalty on the number of "demand" pairs.
+The polarity-symmetric switch (9 absolute points of the Suzuki–Tits ovoid) starts lower (≈1,620), but its new
+point can only reach, in cosets ±1, the points collinear with the 9 chosen ovoid points. A 9-subset of the ovoid
+does not meet every circle of the inversive plane.
+
+### Structure of the one-pair switch (spread type, σ = δ to start)
+
+- The switch makes the 72 line pairs (L_i, m ∋ p_i) and the 72 point pairs (p_i, z ∈ L_i \ p_i) single-geodesic.
+  These "demands" need σ⁻¹(L_i) ~ σ⁻¹(m) and σ(p_i) ~ σ(z) (concurrent or collinear). With σ = δ all 144 hold
+  automatically: δ maps the lines through p_i to the points of the line δ(p_i), and the points of L_i to the lines
+  through δ(L_i). The last failure in every annealed run was one of these demands.
+- With σ = δ, a switch line L_i has no coset +1 walk to the lines meeting δ(p_i). Swapping σ(p_i) ↔ σ(y_i) for some
+  y_i ∈ L_i keeps every demand and removes these failures (2,496 → ≈1,450). Swapping σ(δ(L_i)) ↔ σ(δ(m_i)) for a
+  line m_i through p_i lets the points collinear with δ(L_i) reach p_i (→ ≈550).
+- The new vertices need covering sets. In W(q) every plane of PG(3,q) is a point-perp, so a PG-line blocks all of
+  them. Choose L_j = δ(R_j) for the 9 points R_j of a hyperbolic PG-line h. For all 4,160 such h the lines δ(R_j)
+  form a regulus with 9 totally isotropic transversals (a 9×9 grid in W(8)), so {δ(L_j)} = h covers x*, and
+  {L_j} and {y_j} = (L_j ∩ one transversal) cover l*. Take p_j = L_j ∩ t_{π(j)} for a permutation π. Structured
+  starts then cost 122–500 before any annealing (`plus/mkreg.py`, `plus/hline.py`).
