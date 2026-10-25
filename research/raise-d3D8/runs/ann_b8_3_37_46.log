@@ -128,3 +128,7 @@ meta 4 11 1 :: RESULT anneal group=meta 4 11 1 b=8 n=352 D=8 iters=400000 best=1
 meta 2 22 1 :: RESULT anneal group=meta 2 22 1 b=8 n=352 D=8 iters=400000 best=156 none
 meta 1 44 0 :: RESULT anneal group=meta 1 44 0 b=8 n=352 D=8 iters=400000 best=170 none
 zp2 2 11 1 0 0 1 :: RESULT anneal group=zp2 2 11 1 0 0 1 b=8 n=352 D=8 iters=400000 best=162 none
+prod meta 22 1 1 cyc 2 :: RESULT anneal group=prod meta 22 1 1 cyc 2 b=8 n=352 D=8 iters=400000 best=156 none
+prod meta 11 2 10 cyc 2 :: RESULT anneal group=prod meta 11 2 10 cyc 2 b=8 n=352 D=8 iters=200000 best=280 none
+prod meta 11 2 1 cyc 2 :: RESULT anneal group=prod meta 11 2 1 cyc 2 b=8 n=352 D=8 iters=400000 best=156 none
+prod meta 2 11 1 cyc 2 :: RESULT anneal group=prod meta 2 11 1 cyc 2 b=8 n=352 D=8 iters=400000 best=162 none
