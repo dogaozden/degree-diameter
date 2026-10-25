@@ -79,3 +79,16 @@ Branch: claude/raise-d14d10-record-2b14g4. Start point: record 1,326,627,120 = 2
 - Session stop: about 6 hours of work (06:50 to 12:55 UTC). The queue is empty. Next candidates, all above
   670,890,660 and PSL-first: PSL(2,157) x Z_349 (675.3M, mu 27.6), PSL(2,281) x Z_61 (676.7M, mu 28.7),
   PSL(2,163) x Z_313 (677.7M, mu 29.5). Expect 3,000-7,000 evals at this mu, about 1-2 h each on one run.
+
+## Round 2 (job raise2-14-10, branch claude/raise-d14d10-record-2-3vy08n)
+
+- Start point: the round-1 record 1,341,781,320 (N = 670,890,660, PSL(2,331) x Z_37, fix 164, VALID). The round-2
+  brief's 1,326,627,120 is out of date: round 1 had already raised it. Round 1 branch merged into this branch (merge
+  commit, no rebase).
+- Bar to beat: any N > 670,890,660 (vertices > 1,341,781,320).
+- Machine note: two haar_sym runs at N ~ 6.8e8 were OOM-killed during the wide-rows setup (one process reached 9.4 GB
+  RSS, the 16 GB box has no room for two). Only one run at a time, THREADS=4.
+- Queue (runs/ in r2/): PSL(2,157) x Z_349 (N 675,268,932, mu 27.6, fix 77), then PSL(2,281) x Z_61 (N 676,726,680,
+  mu 28.7). Seed 2, 5400 s each. Next on the ladder: PSL(2,163) x Z_313 (677.7M, mu 29.5).
+- Not retried: the round-1 cost-3 stalls (PSL 169x277, 257x79, 173x259, 199x169) are all below 670,890,660 and cannot
+  improve the record.
