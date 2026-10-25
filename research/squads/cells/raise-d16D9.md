@@ -34,3 +34,7 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
   Current best: 340,532,208 (sl 107 x Z139).
 - Running: sl 103x157 (+1.69 %, cost 2 at 1,833 evals), sl 89x241 (+0.70 %, cost 2), sl 79x349 (+1.98 %), sl 83x301 (+2.01 %).
 - Notes: stdout of haar_sym is block-buffered when redirected, so logs only show RESULT at exit; solution files appear directly.
+- 2026-10-25 ~08:00 sl 89x241: no solve (best 2 after 2,225 evals, 1,800 s).
+- 2026-10-25 ~08:05 sl 103x157 solved at 3,617 evals (1,715 s); VALID by hcsl and hc2: 343,083,936 vertices (+1.69 %).
+  Saved research/frontier/sols/d16D9_sl_103_157_orb3_s1.txt. Current best: 343,083,936.
+- Running: sl 79x349, sl 83x301 (cost 12 at ~500 evals), sl 109x133 (+2.09 %), sl 137x67 (+2.12 %).
