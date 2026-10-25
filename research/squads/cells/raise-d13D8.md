@@ -78,3 +78,34 @@ The screen ranks random symmetric S only. mu_A is the model's effective mean (SI
 - 12:18 UTC: round 2b, last results: psl 81 x Z13 best 6 (603,425 evals), sl 79 x Z7 best 3 (875,969 evals). No solution.
 - 12:19 UTC: round 3 seeds, ORBW=3, 5400 s each: sl 79 x Z7 (seed 3) and prod psl 7 psl 11 x Z31 (seed 3), plus
   prod sl 5 sl 16 x Z7 (seed 3, started 12:11). All end by about 13:45 UTC, leaving time for the write-up before 14:06.
+
+## Final status (13:50 UTC, end of the 6-hour budget)
+
+Record: **6,833,904 vertices**, SL(2,43) x Z_43 (N = 3,416,952), k = 3, m = 4, f = 1, conjugation orbits, ORBW=3,
+seed 2 (cost 0 after 32,177 evaluations, 267 s). Solution: research/frontier/sols/d13D8_sl_43_43_orb3_ORBW3_s2.txt.
+Checks: haar_sym full diameter check OK; haarcheck_sl VALID; build_haar2.py VALID (edge-list sha256 cd5d3aed...).
+
+All anneal runs (ORBIT="3 4 1", THREADS=1; every RESULT line is in the snapshot logs under runs/raise13/):
+
+| group | N | mu | round | seed | ORBW | best cost | evals |
+|---|---|---|---|---|---|---|---|
+| sl 43 x Z43 | 3,416,952 | 36.8 | 1 | 1 | 1 | 3 | 8.4e5 |
+| prod psl 7 psl 11 x Z31 | 3,437,280 | 39.6 | 1 | 1 | 1 | 3 | 9.4e5 |
+| psl 31 x Z229 | 3,407,520 | 35.5 | 1 | 1 | 1 | 3 | 1.2e6 |
+| prod sl 5 sl 16 x Z7 | 3,427,200 | 38.2 | 1 | 1 | 1 | 4 | 1.0e6 |
+| sl 43 x Z43 | 3,416,952 | 36.8 | 2 | 2 | 3 | **0 (solved)** | 3.2e4 |
+| psl 31 x Z229 | 3,407,520 | 35.5 | 2 | 2 | 3 | 6 | 7e4 |
+| prod psl 7 psl 11 x Z31 | 3,437,280 | 39.6 | 2 | 2 | 3 | 3 | 9.1e5 |
+| prod sl 5 sl 16 x Z7 | 3,427,200 | 38.2 | 2 | 2 | 3 | 6 | 9.6e5 |
+| sl 79 x Z7 | 3,450,720 | 41.5 | 2 | 2 | 3 | 3 | 8.8e5 |
+| psl 81 x Z13 | 3,453,840 | 42.0 | 2 | 2 | 3 | 6 | 6.0e5 |
+| prod sl 5 sl 16 x Z7 | 3,427,200 | 38.2 | 3 | 3 | 3 | 3 | 7.5e5 |
+| sl 79 x Z7 | 3,450,720 | 41.5 | 3 | 3 | 3 | 3 | 6.8e5 |
+| prod psl 7 psl 11 x Z31 | 3,437,280 | 39.6 | 3 | 3 | 3 | 3 | 7.3e5 |
+
+Reading: the one solve came from ORBW=3 (fixed-point weight) on the group whose default-weight runs stalled at
+cost 3 for two hours. Other groups stalled at cost 3-6 after 6e5-1.2e6 evaluations with either weighting. The
+next rung (N in (3,416,952, 3,450,000]) needs about 10x the evaluations we spent, by the mu-rule. Not reached
+within the 6-hour budget.
+
+Stopped: psl 31 x Z229 (N below the new record, so it could not help after the solve).
