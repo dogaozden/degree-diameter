@@ -1,0 +1,11 @@
+n=586 dg=9 cost=10 (check 10) hot points=8 hot vertices=9
+t=0 ev=0 acc=0 bumps=0 cur_true=10 cur_w=10 best=10 nfail=10 hotp=8 maxW=1
+NEW BEST true=8 t=4 ev=2710 bumps=3 w=24
+NEW BEST true=6 t=5 ev=2973 bumps=3 w=20
+NEW BEST true=4 t=6 ev=3635 bumps=4 w=20
+NEW BEST true=2 t=10 ev=6411 bumps=8 w=18
+t=30 ev=19419 acc=35 bumps=26 cur_true=2 cur_w=10 best=2 nfail=2 hotp=2 maxW=9
+NEW BEST true=0 t=39 ev=25620 bumps=35 w=0
+FAIL0 reached t=39 ev=25620 bumps=35
+RESULT best=0 cur_true=0 ev=25620 acc=53 bumps=35 maxW=9
+best state saved to inc2/t1_w.in (true cost 0)
