@@ -55,3 +55,17 @@ Cost 3 with one or two fixed-point misses is the same stall the orbit notes desc
 `runs/raise_d15D8/tier2.sh`: sl 29×Z373 (seed 2), sl 53×Z61 (seed 2), sl 29×Z373 with RESTART=1 (seed 3),
 psl 263 (seed 2). ORBW=3 weights an uncovered α-fixed element as much as a free orbit; the (11,8) cell was
 solved with it.
+
+### Tier 2 (ORBW=3 for three runs, 4000 s each): no solve
+
+| run | group | best cost | evals |
+|---|---|---|---|
+| sl29_373_orbw3_s2 | sl 29 × Z373 | 3 | 190k |
+| sl53_61_orbw3_s2 | sl 53 × Z61 | 3 | 214k |
+| sl29_373_orbw3_restart_s3 (RESTART=1) | sl 29 × Z373 | 6 | 189k |
+| psl263_orbw3_s2 | psl 263 | 6 | 103k |
+
+### Tier 3 (μ ≈ 33.2, the two orders closest to the record's μ), started
+
+`runs/raise_d15D8/tier3.sh`: prod psl 5 × psl 11 × Z229 (N = 9,068,400; seeds 1, 2 and an ORBW=3 seed 3) and
+sl 32 × Z277 (N = 9,067,872; GF(32) as `poly x^5+x^2+1`, no wide rows, so slower per evaluation).
