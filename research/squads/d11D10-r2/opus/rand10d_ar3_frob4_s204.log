@@ -4,3 +4,5 @@ alpha: conj by diag(1,-1) after the Frobenius
 alpha: Frobenius x -> x^81 on entries, z -> 3 z on Z_11
 ORBIT k=10 m=1 f=1: |Fix(alpha)| = 1 (+e); mu = 60.61, mu/k = 6.06, fixed-point misses ~ 0.49
 PREF: 6 small-orbit targets ( size 1: 1 size 2: 5 ), setup 2.75s
+RANDORB progress 500 samples, 0 below 1, 105.4 s
+./gate.sh: line 26: 10993 Killed                  nice -n 10 timeout "$SECS" "$@"

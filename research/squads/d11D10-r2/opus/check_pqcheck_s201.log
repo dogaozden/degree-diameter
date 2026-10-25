@@ -1,0 +1,23 @@
+  start A level 1: new 11, reached A 1 B 11
+  start A level 2: new 110, reached A 111 B 11
+  start A level 3: new 1100, reached A 111 B 1111
+  start A level 4: new 11000, reached A 11111 B 1111
+  start A level 5: new 109930, reached A 11111 B 111041
+  start A level 6: new 1092050, reached A 1103161 B 111041
+  start A level 7: new 10241260, reached A 1103161 B 10352301
+  start A level 8: new 58411824, reached A 59514985 B 10352301
+  start A level 9: new 68565351, reached A 59514985 B 78917652
+  start A level 10: new 19402667, reached A 78917652 B 78917652
+from (e,A): reached A 78917652/78917652, B 78917652/78917652, eccentricity 10
+  start B level 1: new 11, reached A 11 B 1
+  start B level 2: new 110, reached A 11 B 111
+  start B level 3: new 1100, reached A 1111 B 111
+  start B level 4: new 11000, reached A 1111 B 11111
+  start B level 5: new 109930, reached A 111041 B 11111
+  start B level 6: new 1092095, reached A 111041 B 1103206
+  start B level 7: new 10241260, reached A 10352301 B 1103206
+  start B level 8: new 58412342, reached A 10352301 B 59515548
+  start B level 9: new 68565351, reached A 78917652 B 59515548
+  start B level 10: new 19402104, reached A 78917652 B 78917652
+from (e,B): reached A 78917652/78917652, B 78917652/78917652, eccentricity 10
+VALID d=11 D=10 group=psl 243 x Z_11 N=78917652 vertices=157835304 eccA=10 eccB=10 (pqcheck)

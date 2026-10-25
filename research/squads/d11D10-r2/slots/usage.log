@@ -98,3 +98,14 @@
 13:21:26 take slot0 pid 10964: env ORBIT=10 1 1 AFROB=2 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 202 8 opus/d11D10_psl_243_11_orb10_frob2d_ar3_s202.txt psl 243 11
 13:21:26 take slot1 pid 10966: env ORBIT=10 1 1 AFROB=4 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 204 8 opus/d11D10_psl_243_11_orb10_frob4d_ar3_s204.txt psl 243 11
 13:21:26 take slot2 pid 10962: env ORBIT=10 1 1 AFROB=1 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 /home/user/degree-diameter/research/structured/haar_sym 11 10 60 201 8 opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt psl 243 11
+13:24:20 free slot2 pid 10962 rc=0
+13:24:39 free slot0 pid 10964 rc=137
+13:24:39 free slot1 pid 10966 rc=137
+13:24:40 take slot0 pid 11475: /usr/bin/time -v tools/haarcheck_pq opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+13:24:40 take slot1 pid 11477: /usr/bin/time -v tools/pqcheck opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+13:24:40 free slot0 pid 11475 rc=127
+13:24:40 free slot1 pid 11477 rc=127
+13:24:49 take slot0 pid 11530: tools/haarcheck_pq opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+13:24:49 take slot1 pid 11532: tools/pqcheck opus/d11D10_psl_243_11_orb10_frob1d_ar3_s201.txt
+13:25:36 free slot1 pid 11532 rc=0
+13:25:45 free slot0 pid 11530 rc=0

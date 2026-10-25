@@ -1,0 +1,13 @@
+# d11D10_psl_243_11_orb10_frob1d_ar3_s201: 157,835,304 vertices, Haar graph H(PSL(2,243) x Z11, S), |S| = 11, D = 10 (2026-10-25, session cell-11-10 resumed)
+# search: haar_sym ORBIT="10 1 1" AFROB=1 AFROBD=1 AR=3 SKIPZ=1 PREF=1 PREFMAX=2 RANDORB=100000 RANDB=1 RANDSTOP=1 haar_sym 11 10 60 201 8 OUT psl 243 11 (sample 751, 164.6 s)
+# haar_sym's own full diameter check: OK
+## research/squads/d11D10-r2/tools/haarcheck_pq (card B2 of round 1)
+group=psl q=243 p=3 e=5 n=11 |G|=78917652 vertices=157835304 d=11 D=10
+from (e,A): ecc=10 unreached=0
+from (e,B): ecc=10 unreached=0
+VALID d=11 D=10 vertices=157835304 eccA=10 eccB=10
+## research/squads/d11D10-r2/tools/pqcheck (= research/squads/d11D10-r1/opus/pqcheck.c)
+from (e,A): reached A 78917652/78917652, B 78917652/78917652, eccentricity 10
+from (e,B): reached A 78917652/78917652, B 78917652/78917652, eccentricity 10
+VALID d=11 D=10 group=psl 243 x Z_11 N=78917652 vertices=157835304 eccA=10 eccB=10 (pqcheck)
+## python: 11 generators, all det 1 over GF(3)[x]/(x^5+2x+1), distinct modulo +-1
