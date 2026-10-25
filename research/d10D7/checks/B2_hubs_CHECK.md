@@ -96,3 +96,15 @@ paths and ignores routes through the main graph. The all-pairs check below is wh
 apsp (all pairs), 2026-10-25 00:1x UTC: n=225128 edges=1125423 degree min=9 max=10 bipartite=yes diameter=7,
 RESULT VALID d=10 D=7 n=225128. Edge list sha256 ea850090549331d2396141cab45d7be422782623193f77e56cfe67a5d4107a07
 (`./d7hex edges hex/hex_q8.bin SOL g.edges` on the saved solution gives the same hash).
+
+## (11,7) 407,134: the duality M with 4,277 freed pairs (squad round 5, card c6)
+
+Same construction as 406,402, but with 4,277 pairwise non-collinear points of H(9) (research/d10D7/sets/P9_r5c6_4277.txt,
+sha256 7c8243ead6054f0ba9a5cf94f5a6b63a7f18c82c0ac841ecf72ee32ba218f4d5, setcheck VALID). Card r5/c6 used an element
+g of SL(3,9) of order 91, acting on H(9) as (v, a, w) -> (gv, a, g^-T w). It has 730 orbits of size 91, and a tabu
+search found 47 pairwise compatible orbits: 47·91 = 4,277. n = 6·66,430 + 2·4,277 = 407,134.
+    B2PTS=sets/P9_r5c6_4277.txt ./d7hex b2dual hex/hex_q9.bin dual/x9_dual_K28.sol 1 OUT.sol 8 0
+    file research/frontier/sols/d11D7_hex9_B2dualK4277_n407134.sol (sha256 abe318b79b5fcc43417894fced2de0204ab53ba2f42ba7baeaee789dec8dd124)
+apsp (all pairs), 2026-10-25 00:1x UTC: n=407134 edges=2239237 degree min=11 max=11 bipartite=yes diameter=7,
+RESULT VALID d=11 D=7 n=407134. Edge list sha256 92a0f3059f15a39b1f9d710fe83dc608cf77abea8bbb452e2547ef510384af6f
+(`./d7hex edges hex/hex_q9.bin SOL g.edges` on the saved solution gives the same hash).
