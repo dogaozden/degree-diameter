@@ -13,6 +13,7 @@ Normal form: vertex 0 has out-neighbours 1..k-2 and in-neighbours k-1..2k-4 (alw
 --sym adds lex-leader clauses for adjacent transpositions inside O={1..k-2}, I={k-1..2k-4}, R={2k-3..m-1}
 (row-major order of the a-variables); --signs adds the weighing-matrix signing with a gauge fix.
 usage: enc_quot.py k out.cnf [--signs] [--sym] [--insigns] [--nf2]
+--alltr: with --nf2 --sym, lex-leader for all transpositions of O and of I (not only adjacent ones).
 --ntt: add 'no transitive triangle' clauses (implied by Lemma Q2 at every vertex).
 --nf2: second normal form (Lemma Q2): R labelled by the pairs of O, all arcs between R and O fixed.
 """
@@ -20,7 +21,7 @@ import sys, itertools, json
 from pysat.formula import CNF, IDPool
 from pysat.card import CardEnc, EncType
 
-def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False):
+def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False, alltr=False):
     m = k * (k - 1) // 2
     g = k - 2
     pool = IDPool()
@@ -127,8 +128,9 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False):
         if nf2:
             pairs = list(itertools.combinations(O, 2))
             pidx = {p: y for y, p in zip(R, pairs)}
-            for i in range(len(O) - 1):
-                u, v = O[i], O[i + 1]
+            Opairs_ = list(itertools.combinations(O, 2)) if alltr else [(O[i], O[i + 1]) for i in range(len(O) - 1)]
+            Ipairs_ = list(itertools.combinations(I, 2)) if alltr else [(I[i], I[i + 1]) for i in range(len(I) - 1)]
+            for (u, v) in Opairs_:
                 sw = lambda t, u=u, v=v: v if t == u else (u if t == v else t)
                 def pi(t, sw=sw):
                     if t in pidx.values():
@@ -137,8 +139,7 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False):
                         return pidx[q]
                     return sw(t)
                 lexleader(pi)
-            for i in range(len(I) - 1):
-                u, v = I[i], I[i + 1]
+            for (u, v) in Ipairs_:
                 lexleader(lambda t, u=u, v=v: v if t == u else (u if t == v else t))
         else:
             for blk in (O, I, R):
@@ -150,7 +151,8 @@ def build(k, signs=False, sym=False, insigns=False, nf2=False, ntt=False):
 if __name__ == '__main__':
     k = int(sys.argv[1])
     cnf, pool, a = build(k, signs='--signs' in sys.argv, sym='--sym' in sys.argv, insigns='--insigns' in sys.argv,
-                         nf2='--nf2' in sys.argv, ntt='--ntt' in sys.argv)
+                         nf2='--nf2' in sys.argv, ntt='--ntt' in sys.argv,
+                         alltr='--alltr' in sys.argv)
     cnf.to_file(sys.argv[2])
     with open(sys.argv[2] + '.map', 'w') as f:
         json.dump({'k': k, 'a': [[c, d, v] for (c, d), v in a.items()]}, f)

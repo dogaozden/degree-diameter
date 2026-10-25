@@ -27,7 +27,9 @@ Every other cell of the wiki's upper-bound table (Δ ≤ 16, D ≤ 10) agrees wi
 A bipartite (k,3,−2)-graph is a bipartite graph with maximum degree k, diameter 3 and 2(k²−k) vertices (two less than
 the bipartite Moore bound). They exist for k = 3, 4 and for no 5 ≤ k ≤ 10 (Delorme et al. 2009). **k = 11 is the
 first open case, and it is exactly the (11,3) cell: excluding it gives N^b(11,3) ≤ 218** (defect 3 is impossible by
-regularity and parity, as above).
+regularity and parity, as above). Feria-Purón's PhD thesis (Newcastle, March 2015, Table 3.2; read from the Newcastle
+repository, figshare file 54314375) still lists N(11,3,B) ≤ M − 2 as the best bound, and its table treats (15,3) as
+≤ M (it does not use Bruck–Ryser there either).
 
 Call the two sides points and lines.
 
@@ -93,3 +95,11 @@ See `logs/defect2_calibration.md` for timings. Encoders in `defect2/`:
 Cross-checks: all three encoders give SAT for k = 3, 4 and UNSAT for k = 5, 6 (and the quotient encoder for
 k = 5..9), matching the literature. For k = 9 the oriented graph A exists (A-only instance is SAT; its underlying
 graph is strongly regular with parameters (36,14,4,6)); the weighing-matrix signing is what fails.
+`lift_verify.py` rebuilds the k = 3, 4 graphs from (A, W) and checks degree, order and diameter 3 by BFS.
+
+Certified (kissat DRAT proof, drat-trim VERIFIED; logs in `logs/`):
+- k = 5, 6, 7, 8, 9: no (k,3,−2)-graph (A + signs, `--signs --sym --nf2`); k = 9 proof 20 MB, check 12 s.
+- k = 10: not even the oriented graph A exists (`--sym --nf2`, A only): solve 216 s, proof 103 MB, check 1055 s.
+
+Not Cayley: no Cayley digraph on Z₅₅ or Z₁₁ ⋊ Z₅ (the two groups of order 55) satisfies the A-conditions for
+k = 11 (`cayley_search.py 11`); none on Z₃₆ for k = 9 either.
