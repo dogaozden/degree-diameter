@@ -1,0 +1,5 @@
+group sl 9 poly x^2+1 x Z_7, N=5040, identity 504, H order 56, rows 90, threads 1, setup 0.00s
+wide rows: HW order 70, rows 72, setup 0.00s
+alpha: conj by mat(4,7,8,7) (index 386), z -> 2 z on Z_7
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 17 (+e); mu = 104.58, mu/k = 34.86, fixed-point misses ~ 9.89
+start cost=334
