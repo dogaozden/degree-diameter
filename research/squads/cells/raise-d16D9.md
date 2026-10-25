@@ -38,3 +38,6 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
 - 2026-10-25 ~08:05 sl 103x157 solved at 3,617 evals (1,715 s); VALID by hcsl and hc2: 343,083,936 vertices (+1.69 %).
   Saved research/frontier/sols/d16D9_sl_103_157_orb3_s1.txt. Current best: 343,083,936.
 - Running: sl 79x349, sl 83x301 (cost 12 at ~500 evals), sl 109x133 (+2.09 %), sl 137x67 (+2.12 %).
+- 2026-10-25 08:05-08:21: sl 137x67 solved at 361 evals (350 s), VALID hcsl+hc2: 344,542,944 (+2.12 %). Current best.
+  sl 79x349 solved at 1,569 evals (1,083 s), VALID hcsl+hc2: 344,086,080 (+1.98 %). Both saved in research/frontier/sols/.
+- Running: sl 83x301 (cost 12), sl 109x133 (cost 12), sl 101x169 (+3.2 %).
