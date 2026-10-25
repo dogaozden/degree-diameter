@@ -84,3 +84,14 @@ n=1064472 edges=6919068 degree min=13 max=13 bipartite=yes diameter=7
 RESULT VALID d=13 D=7 n=1064472
      3163.53 real      5094.21 user        66.53 sys
            375226368  maximum resident set size
+# (16,7) typed levels on H(13) (cell-16-7 session): typed5s_build.py on hex_q13.bin (sha256 57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a), apsp_mt 8 threads, no symmetry assumed.
+== d16D7_hex13_typed61_K244_n4052108 Sun Oct 25 00:52:51 PDT 2026
+       12.83 real        11.92 user         0.80 sys
+          2406793216  maximum resident set size
+719fedec44ab7559941fd8b23d58c085b07c34122957648d4143ddfddeb22006  typed/d16D7_hex13_typed61_K244_n4052108.edges
+-- apsp_mt d16D7_hex13_typed61_K244_n4052108 (00:53:05)
+n=4052108 edges=32401980 degree min=14 max=16 bipartite=yes diameter=7
+RESULT VALID d=16 D=7 n=4052108
+    15425.87 real    111486.36 user      1205.92 sys
+          2192506880  maximum resident set size
+== typed done Sun Oct 25 05:10:11 PDT 2026
