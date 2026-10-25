@@ -1,9 +1,9 @@
 # hexagon-family: handoff
 
-Branch `claude/hexagon-family-blvamb` (Opus lead, cloud session, 2026-10-25 04:30–). Brief: BRIEF.md. Draft PR #331.
+Branch `claude/hexagon-family-blvamb` (Opus lead, cloud session, 2026-10-25 04:30–12:15 UTC). Brief: BRIEF.md. Draft PR #331.
 Theory: THEOREM.md. Lean: lean/BipartiteDD/HexagonD7/. Squad rounds: research/squads/hexfam_r1..r3 (LOG.md).
 
-## Graphs (all checked here; records/README/RESULTS not edited)
+## Graphs (all nine checked here; records/README/RESULTS not edited)
 
 | cell | record at start | new | freed set | files (sols/, also in research/frontier/sols/) | check (checks/) |
 |---|---|---|---|---|---|
@@ -27,7 +27,8 @@ automorphism, then runs BFS from every vertex of level 0 and every hub; usage `a
     gcc -O3 -o tools/d7hex ../../d10D7/d7hex.c -lm
     gcc -O3 -o tools/xgen ../../d10D7/dual/xgen.c
     gcc -O3 -pthread -o tools/apsp_orb ../../lifts/coordinator_check/apsp_orb.c
-    # 3 levels: (7,7) (9,7) (10,7) (13,7)
+    # 3 levels: (7,7) (9,7) (10,7) (13,7); for q = 5, 7, 8 use hex_q5/7/8.bin, the sols/d7D7.., d9D7.., d10D7.. files and
+    #   ./tools/apsp_mt EDGES d 7 3 (or apsp_orb EDGES d 7 3 3 2N with N = (q+1)(q^4+q^2+1))
     ./tools/d7hex edges hex/hex_q11.bin sols/d13D7_hex11_mixK770_n1064476.sol e13.txt
     ./tools/apsp_orb e13.txt 13 7 3 3 354312
     # 5 / 7 levels: (14,7) (15,7) (16,7)
@@ -68,12 +69,16 @@ Build: `cd lean && lake build BipartiteDD.HexagonD7.Midpoints` (PATH=$HOME/.elan
 Lemma 2 (`exists_local_duality`), `freed_family`, `certificate` (pairwise opposite, 3 levels), Lemma 3' (`exists_r2_iff`,
 both directions), duality case (`duality_r2`), Lemma 3 for midpoints shared by two points, i.e. Prop. 4
 (`exists_r2_of_near`, Midpoints.lean), `certificate_mixed` (any j, mixed sets: the three finite checks on R/S,
-the counts, and the hub graph give the graph). Not formalised: a duality of H(3^h); the finite checks of the actual sets.
+the counts, and the hub graph give the graph). Not formalised: a duality of H(3^h); the finite checks of the actual sets;
+the girth facts that `exists_r2_of_near` takes as hypotheses (two points of R have at most one common collinear point,
+dually for lines; true in every generalized hexagon).
 
 ## Open / next
 
+- Destroy-and-repair on the all-lines state (ext/ext_lns.py: remove 1-3 added pairs, greedy re-add, plateau moves),
+  40 min each: q5 82 (130k iterations), q7 296 (14.6k), q8 233 (3.1k), q11 770 (205); no gain (ext/lns/*_summary.txt).
 - q = 11: the extension greedy is exhausted at 770 (every order stalls at 13–14 added points). A gain needs a move that
   changes R itself, or an exact search over the cells (squad r3 c8: CP-SAT on a 600-pair pool, too small).
 - q = 13: 816; more seeds/resumes of the c4 repair from other 792 sets might add a few.
 - q = 9: 4,306 vs 6,643. (12,7) uses 8,610 of the 8,612 possible hubs per side (hubs/scan: groups of order
-  8,581–8,612; order 8,612 = 4·2,153 metacyclic fails, 8,611 has only the cyclic group).
+  8,581–8,612; for 8,612 = 4·2,153 none found in 240 s, 8,611 has only the cyclic group).
