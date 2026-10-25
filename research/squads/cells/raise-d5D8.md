@@ -103,4 +103,8 @@ Record entering round 2: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
 - Tables: `research/squads/raise_d5D8/runs/screen_4881_4900.tsv` (all 2,207 groups) and `runs/a1.tsv`.
 
 ## Batch a2 (1,800 s, seeds 2 and 3, K = 8): the two cost-2 groups of a1
-- Running at the time of this note; result below when the runs finish.
+- Result: **0 solves**. `4887 181 27 39`: best cost 1 at seeds 2 and 3 (1,800 s each), so it stalls at cost 1 again.
+  `4896 51 96 5`: best cost 2 at both seeds. `runs/a2.tsv`.
+
+## Batch a3 (240 s, seed 1, K = 8, 4 workers): screen ranks 101–200 (N = 4,884–4,900)
+- Running at the time of this note. The 84 entries at N = 4,896 are distinct groups: their screen statistics are not repeated among the top 200.
