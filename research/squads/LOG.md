@@ -20,7 +20,7 @@ Kept: c5's state; Opus built it (multi.c), checked it with apsp_mt (all pairs, V
 q = 8. The plain-set cards (c6–c8) confirm that master's symmetric sets are hard to beat without relaxation; Opus's own
 1-defective runs (dpack) show the masks, not the search, limit the relaxed sets on five levels.
 
-## 2026-10-25 ~18:50 UTC, job d7-family, round d7fam-r2
+## 2026-10-25 ~17:05 UTC, job d7-family, round d7fam-r2
 
 Goal: carry r1 card c5's recipe (full line pool, --m 16 --sample 400, low temperature) to the other mirrored sets.
 Cards: c1 H(8) from the 230 state (T 0.1/0.05); c2 H(7) (full pool 19,264); c3 H(5) (full pool 3,780, also from
