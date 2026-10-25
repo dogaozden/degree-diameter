@@ -18,14 +18,15 @@ Read `SUMMARY.md` first (what is proved), then this file (what is open and how t
 
 ## Open: k = 11 (the (11,3) cell; UNSAT would give N^b(11,3) ≤ 218)
 
-- Monolithic A-only runs ran about 7 CPU-hours (kissat) and 5 CPU-hours (CaDiCaL + streamed LRAT check) without an
-  answer; they die with this session.
+- Monolithic A-only runs: 8.1 CPU-hours (kissat) and 6.9 CPU-hours (CaDiCaL + streamed LRAT check) without an
+  answer; stopped at session end (`logs/k11_monolithic.md`).
 - Case split ready for a cluster (rule R1 = "vertex 0 lies on the most directed triangles", 245,667 degree-sequence
   cubes):
   - `bash defect2/setup_worker.sh ~/w`
   - `bash defect2/worker.sh ~/w i n 4` (certified per cube by streamed LRAT).
   - Request with the recipe: `research/squads/requests/2026-10-25T0915-optimal-sat-k11-cubes.md`.
-  - Done under R1, certified: the t = 0, 1, 2 cubes (and the t ≤ 3 cubes listed in `logs/k11_lowt.log`).
+  - Done under R1, certified: 6 of the 8 cubes with t ≤ 3 (`logs/k11_lowt.log`). Two t = 3 cubes
+    (2,1,0⁷ / 1,1,1,0⁶ and 1,1,1,0⁶ / 1,1,1,0⁶) were unresolved after about 55 min each.
 - Costs: most cubes take seconds; low-t, flat-α cubes take minutes to hours (`logs/defect2_calibration.md`).
   Rule R2 (base arc on the most triangles) speeds up some hard cubes a lot (20+ min → 3 s) but not all. It needs its
   own cube list (`ablist.py --maxtau`), and the two rules must not be mixed.

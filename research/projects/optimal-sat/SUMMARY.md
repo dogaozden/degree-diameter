@@ -107,12 +107,14 @@ k = 11 (`cayley_search.py 11`); none on Z₃₆ for k = 9 either.
 ## 3. k = 11: status (open; partial computations)
 
 The question "is there a bipartite (11,3,−2)-graph?" (equivalently: is N^b(11,3) ≤ 218?) is **not settled**.
-- Monolithic A-only runs (`--sym --nf2 --ntt --alltr`, sha256 b6101044…): kissat about 7 CPU-hours, CaDiCaL with a
-  streamed LRAT check about 5 CPU-hours, kissat on the signed instance about 3 CPU-hours; no answer.
+- Monolithic A-only runs (`--sym --nf2 --ntt --alltr`, sha256 b6101044…): kissat 8.1 CPU-hours, CaDiCaL with a
+  streamed LRAT check 6.9 CPU-hours, kissat on the signed instance about 4 CPU-hours; no answer
+  (`logs/k11_monolithic.md`).
 - Case split by the degree sequences (α, β) of B (the 9×9 block of arcs from O to I at vertex 0), with a choice
   rule for the base vertex. Under rule R1 (vertex 0 lies on the most directed triangles; 245,667 cubes):
-  - **certified** (CaDiCaL + LRAT, lrat-check VERIFIED): the cubes with t = 0 and t = 1 directed triangles at
-    vertex 0. The 6 cubes with t = 2, 3 are being checked; see `logs/k11_lowt.log`.
+  - **certified** (CaDiCaL + LRAT, lrat-check VERIFIED): 6 of the 8 cubes with t ≤ 3 directed triangles at
+    vertex 0 (all with t ≤ 2, and 2 of the 4 with t = 3). The other two t = 3 cubes were stopped after about 55 min.
+    See `logs/k11_lowt.log`.
   - Uncertified kissat runs, all UNSAT: B 3-regular (18 s), B 4-regular (195 s), α = β = (5,5,4,4,4,4,4,3,3)
     (225 s), and 22 of 23 random cubes (one timed out).
   - Costs and the alternative rule R2 are in `logs/defect2_calibration.md`.
