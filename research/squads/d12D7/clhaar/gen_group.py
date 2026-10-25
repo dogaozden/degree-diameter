@@ -1,7 +1,7 @@
 """Group data for clhaar: Gamma = G1 x Z_n with G1 = SL(2,p) or PSL(2,p) (p prime), plus candidate subgroups of a
 given order h (each with a designated involution for the co-owner pairing).
 
-Usage: python3 gen_group.py sl|psl p n h NSUB seed OUT.grp
+Usage: python3 gen_group.py sl|psl|pgl q n h NSUB seed OUT.grp     (q prime, or q = 9 = GF(3)[i]/(i^2+1))
 Output (text): "N1 n h nsub", then N1 lines of the G1 multiplication table (N1 ints each), then nsub lines
 "c e_1 ... e_h": c = the designated involution (Gamma index), then the h elements (Gamma indices, x = a*n + z).
 Subgroups: products A x B (A <= G1, B <= Z_n) with |A||B| = h, A taken from closures of random element pairs and
@@ -11,26 +11,39 @@ import sys, random, itertools
 def main():
     kind, p, n, h, nsub, seed, out = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5]), int(sys.argv[6]), sys.argv[7]
     rng = random.Random(seed)
-    els = []
-    for a, b, c, d in itertools.product(range(p), repeat=4):
-        if (a * d - b * c) % p == 1:
-            els.append((a, b, c, d))
-    if kind == "psl":   # identify M with -M: keep the representative with the first nonzero entry <= (p-1)/2
-        def canon(m):
-            for x in m:
-                if x:
-                    return m if x <= (p - 1) // 2 else tuple((-y) % p for y in m)
-            return m
-        els = sorted(set(canon(m) for m in els))
+    q = p
+    if q == 9:   # GF(9) = {a + 3b} = a + b i, i^2 = -1
+        def fadd(x, y): return (x % 3 + y % 3) % 3 + 3 * ((x // 3 + y // 3) % 3)
+        def fmul(x, y):
+            a, b, c, d = x % 3, x // 3, y % 3, y // 3
+            return (a * c - b * d) % 3 + 3 * ((a * d + b * c) % 3)
     else:
-        canon = lambda m: m
+        def fadd(x, y): return (x + y) % q
+        def fmul(x, y): return (x * y) % q
+    fneg = {x: next(y for y in range(q) if fadd(x, y) == 0) for x in range(q)}
+    units = [x for x in range(1, q)]
+    def det(m): a, b, c, d = m; return fadd(fmul(a, d), fneg[fmul(b, c)])
+    if kind in ("sl", "psl"):
+        raw = [m for m in itertools.product(range(q), repeat=4) if det(m) == 1]
+    else:
+        raw = [m for m in itertools.product(range(q), repeat=4) if det(m) != 0]
+    if kind == "psl":
+        scal = [x for x in units if fmul(x, x) == 1]
+    elif kind == "pgl":
+        scal = units
+    else:
+        scal = [1]
+    def canon(m):
+        return min(tuple(fmul(s, y) for y in m) for s in scal)
+    els = sorted(set(canon(m) for m in raw))
     idx = {m: i for i, m in enumerate(els)}
     N1 = len(els)
     def mul(x, y):
         a, b, c, d = x; e, f, g, k = y
-        return canon(((a * e + b * g) % p, (a * f + b * k) % p, (c * e + d * g) % p, (c * f + d * k) % p))
+        return canon((fadd(fmul(a, e), fmul(b, g)), fadd(fmul(a, f), fmul(b, k)), fadd(fmul(c, e), fmul(d, g)), fadd(fmul(c, f), fmul(d, k))))
     T = [[idx[mul(x, y)] for y in els] for x in els]
     eid = idx[canon((1, 0, 0, 1))]
+    p = q
     inv = [None] * N1
     for i in range(N1):
         for j in range(N1):
