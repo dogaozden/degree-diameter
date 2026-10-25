@@ -5,3 +5,11 @@ ORBIT k=3 m=4 f=0: |Fix(alpha)| = 35 (+e); mu = 28.19, mu/k = 9.40, fixed-point 
 ORBW=3: an uncovered fixed element weighs 3; start energy 192
 start cost=180
 t=31 steps=41 evals=329 cost=54 best=54 T=0.52 energy=54 bestE=54
+t=61 steps=80 evals=641 cost=54 best=54 T=0.18 energy=54 bestE=54
+t=92 steps=120 evals=961 cost=54 best=54 T=0.15 energy=54 bestE=54
+t=122 steps=163 evals=1305 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=152 steps=203 evals=1625 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=183 steps=247 evals=1977 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=213 steps=288 evals=2305 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=244 steps=329 evals=2633 cost=36 best=36 T=0.15 energy=36 bestE=36
+RESULT d=12 D=9 group=sl 37 x Z_349 N=17664984 best=36 evals=2921 time=271.5 orbit k=3 m=4 f=0 fix=35

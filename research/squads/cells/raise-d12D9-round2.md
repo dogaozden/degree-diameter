@@ -53,3 +53,12 @@ Running: sl 37 × Z349 ORBW=3 seed 1 (N 17,664,984, μ 28.2, |Fix| 36); sl 83 ×
 - psl 73 × Z91 ORBW=3 seed 4 (2 h, N 17,696,952): finished unsolved, best 6 at 230k evals (round 1: best 6, 11, 9).
 - psl 47 × Z343 ORBW=3 seed 1 (N 17,797,584, μ 31.4): best 13 at 41k evals (running). First time this group was tried.
 - psl 73 × Z91 ORBW=3 seed 5 started 17:04 (2 h).
+
+### Batch 2 result: NEW RECORD 35,393,904 (+0.9 % over 35,076,288)
+- psl 73 × Z91, N = 17,696,952, k = 3, m = 4, f = 0, **ORBW=3**, seed 5, μ 28.9, |Fix| 35: **solved** at 110,761 evaluations (3,377 s).
+  File: research/frontier/sols/d12D9_psl_73_91_orb3f0_orbw3_s5.txt. Log: research/structured/runs/d12D9r2_psl73_91_orbw3_s5.log.
+  Checks: haarcheck_psl (the only low-memory PSL checker) VALID, d=12 D=9, all 17,696,952 per side reached, ecc 9.
+  Also the search's own full diameter check passed. A second independent checker is not available for PSL above 20M vertices here.
+- Same group, seeds 4 (2 h, best 6 at 230k evals), 6 (stopped at N tie, best 9). Seed 5 is the first success in this group (round 1: 3 seeds, none).
+- Bar is now N > 17,696,952.
+- Unsolved in batch 2: sl 83 × Z31 (ORBW=3, best 6 at 148k evals), sl 43 × Z223 (best 12 at 157k), psl 47 × Z343 (N 17,797,584, μ 31.4, best 13 at 125k, still running).
