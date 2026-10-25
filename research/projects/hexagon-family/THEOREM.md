@@ -278,9 +278,9 @@ vertex of level 0 and from every hub). Files and hashes: HANDOFF.md, checks/.
 | (11,7) | 9 | 1 | 4,306 non-collinear points, $\sigma$ = duality | 4,306 (random degree-8 hub graph) | **407,192** | apsp_mt |
 | (12,7) | 9 | 2 | the same 4,306 points | 8,610 (Haar graph of $(\mathbb Z_{41}\rtimes\mathbb Z_{10})\times\mathbb Z_{21}$, Δ 7, D 7) | **681,520** | apsp_orb |
 | (13,7) | 11 | 1 | 756 + 14 | 770 | **1,064,476** | apsp_orb |
-| (14,7) | 11 | 2 | the same 770 | 1,540 (random) | **1,774,640** | apsp_orb (see HANDOFF) |
-| (15,7) | 11 | 3 | the same 770 | 2,310 (random) | **2,484,804** | apsp_orb (see HANDOFF) |
-| (16,7) | 13 | 2 | 792 + 24 | 1,632 (random) | **4,025,604** | apsp_orb (see HANDOFF) |
+| (14,7) | 11 | 2 | the same 770 | 1,540 (random) | **1,774,640** | apsp_orb |
+| (15,7) | 11 | 3 | the same 770 | 2,310 (random) | **2,484,804** | apsp_orb |
+| (16,7) | 13 | 2 | 792 + 24 | 1,632 (random) | **4,025,604** | apsp_orb |
 
 The added points: greedy over all lines not in the spread (ext/ext_all.py; q = 5, 7, 8, 11) or greedy plus
 destroy-and-repair from a different pure 792 set (q = 13, squad hexfam_r3 c4). At q = 11, 30 seeds of the all-lines
