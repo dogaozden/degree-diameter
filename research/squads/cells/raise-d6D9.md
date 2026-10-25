@@ -82,3 +82,43 @@ What would move it (not tried; each needs more than these tools):
 
 Compute used: about 2 h wall clock, 4 slots, roughly 3·10⁸ evaluations in total. All solution-free: nothing was saved to
 research/frontier/sols/, and the (6,9) record stays at 127,296.
+
+## Round 2 (job raise2-6-9): exhaustive orbit pairs
+
+Record to beat: **127,296** (N = 63,648). A new record needs N ≥ 63,649 (any N above it, e.g. 63,649 or 64,680).
+Round 1 ended with no candidate solved; it sampled and annealed. Round 2 asks a different question: for one group and
+one α, is there ANY orbit-symmetric S (ORBIT="3 2 0", f = 0)? That is decided by enumerating all pairs of α-orbits.
+
+### Tools
+
+- `research/structured/haar_sym.c`, new mode `EXHAUST="part nparts bound prefix"` (with `ORBIT="3 2 0"`): lists every
+  α-orbit of size 3 once (21,000–23,000 orbits for N ≈ 64k), then evaluates every unordered pair with the same
+  bitset cost as the annealer, aborting at cost ≥ bound. Zero-cost pairs are written through `check_and_write`
+  (full diameter check, then s₀ = e normalisation). Pairs are split across processes by pair index.
+- Speed: about 44 µs per pair at N ≈ 64k on this box. Full pass = 2.2–2.6 · 10⁸ pairs ≈ 40–50 core-minutes per 10⁸... i.e.
+  about 45 min wall on 4 cores per group.
+- Check on the record group (sl 17 × 13): part 0 of 2000 (112k pairs, 5 s) found 4 zero-cost pairs, all passing the
+  full check. So the mode works and P(cost 0) ≈ 3·10⁻⁵ there, consistent with the record having been found.
+
+### Cost tails (RANDORB, 200k random orbit pairs each; bins are cost/3 as in the tool)
+
+| group | N | μ | min | cost ≤ 2 | cost 3–5 | cost 6–8 | cost ≤ 14 (bins 0–4) | note |
+|---|---|---|---|---|---|---|---|---|
+| sl 17 × 13 (record) | 63,648 | 29.7 | 0 | 8 | 4 | 106 | 355 | reference |
+| sl 11 × 49 | 64,680 | 34.1 | 14 | 0 | 0 | 0 | 5 | |
+| sl 13 × 31 | 67,704 | 49.9 | 6 (100k: 6) | 0 | 0 | 5 (per 100k) | 5 (per 100k) | |
+| psl 19 × 19 | 64,980 | 35.4 | 3 | 0 | 7 | 19 | | involution floor |
+| psl 11 × 97 | 64,020 | 31.2 | 18 | 0 | 0 | 0 | 0 | |
+| sl 8 × 127 | 64,008 | 31.1 | 46 | 0 | 0 | 0 | 0 | |
+| psl 13 × 61 | 66,612 | 43.7 | 12 | 0 | 0 | 0 | 2 | |
+| sl 7 × 193 | 64,848 | 34.8 | 96 | | | | 0 | |
+| sl 9 × 91 | 65,520 | 38.0 | 62 (100k) | | | | 0 | |
+
+Reading: the record's group is about 70× richer in low-cost pairs than sl 11 × 49 at cost ≤ 14. The Poisson
+model (SIZE_LAW) predicts the two to be comparable, so the group, not μ, sets the tail. This is the same finding as round 1.
+
+### Exhaustive runs (this round)
+
+- sl 11 × 49 (N 64,680, α = conj(mat(7,8,8,3)) × (z ↦ 18 z)): 21,556 orbits, 2.32·10⁸ pairs, 4 parts.
+  (results below when finished)
+- sl 13 × 31 (N 67,704, μ 49.9): queued after sl 11 × 49, 4 parts.

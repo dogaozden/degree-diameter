@@ -952,6 +952,39 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
     double sc0;
+    if (getenv("EXHAUST")) {   /* exhaustive: every pair of alpha-orbits (ORBIT="k 2 0"); EXHAUST="part nparts bound prefix" */
+        int part = 0, nparts = 1; long long B = 15; char pre[480] = "exhaust";
+        if (OM != 2 || OF != 0) { fprintf(stderr, "EXHAUST needs ORBIT=\"k 2 0\"\n"); return 2; }
+        sscanf(getenv("EXHAUST"), "%d %d %lld %479s", &part, &nparts, &B, pre);
+        int *R = malloc(sizeof(int) * (size_t)N * OK_), M = 0;   /* orbit representatives, each listed once */
+        for (int x = 0; x < N; x++) { int o[MAXD]; if (!orbit_of(x, o)) continue; int mn = x;
+            for (int i = 0; i < OK_; i++) if (o[i] < mn) mn = o[i];
+            if (mn != x) continue; memcpy(R + (size_t)M * OK_, o, sizeof(int) * OK_); M++; }
+        fprintf(stderr, "EXHAUST: %d orbits of size %d, %.4g pairs, part %d of %d, cost bound %lld\n",
+                M, OK_, (double)M * (M - 1) / 2, part, nparts, B);
+        long long hist[64] = {0}, pairs = 0, nsol = 0, cnt = 0, bound; double t0 = now();
+        for (int i = 0; i < M; i++) {
+            for (int t = 0; t < OK_; t++) { int x = R[(size_t)i * OK_ + t]; S[t] = x; SI[t] = ginv(x); mktab(x, TF[t], TI[t]); }
+            for (int j = i + 1; j < M; j++) {
+                if (cnt++ % nparts != part) continue;
+                for (int t = 0; t < OK_; t++) { int x = R[(size_t)j * OK_ + t]; S[OK_ + t] = x; SI[OK_ + t] = ginv(x); mktab(x, TF[OK_ + t], TI[OK_ + t]); }
+                pairs++;
+                double sc; bound = B;
+                long long c = cost_any(C[0], TF, TI, &sc, NULL, &bound, 0);
+                if (c >= 0) hist[c < 63 ? c : 63]++;
+                if (c == 0 && nsol < 5) {
+                    char fn[600]; snprintf(fn, sizeof fn, "%s_p%d_%lld.txt", pre, part, nsol); nsol++;
+                    printf("EXHAUST zero cost: orbits %d %d -> %s\n", i, j, fn); fflush(stdout);
+                    check_and_write(C[0], fn);
+                    for (int t = 0; t < OK_; t++) { int x = R[(size_t)i * OK_ + t]; S[t] = x; SI[t] = ginv(x); mktab(x, TF[t], TI[t]); }
+                }
+                if (pairs % 20000000 == 0) fprintf(stderr, "EXHAUST part %d: %lld pairs, i=%d of %d, %.0f s\n", part, pairs, i, M, now() - t0);
+            }
+        }
+        printf("EXHAUST part %d/%d: M=%d pairs=%lld solutions=%lld time=%.1f s\n", part, nparts, M, pairs, nsol, now() - t0);
+        for (int c = 0; c < 64; c++) if (hist[c]) printf("EXHAUST hist cost %d: %lld\n", c, hist[c]);
+        return 0;
+    }
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
