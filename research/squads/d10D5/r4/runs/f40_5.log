@@ -1,0 +1,43 @@
+FLAGDEL on 3 flags
+coverage holes 0: 0 group edges required, 0 holes not patchable by hub edges
+hub graph: 918 needed same-side pairs (ordered), uncovered 33, 82 hub-hub edges
+cover cost initial 24 (hub-distance part 33)
+cover it 0 T 0.120 cost 24
+cover it 100000 T 0.114 cost 11
+cover it 200000 T 0.109 cost 7
+cover it 300000 T 0.104 cost 7
+cover it 400000 T 0.099 cost 6
+cover it 500000 T 0.094 cost 5
+cover it 600000 T 0.089 cost 5
+cover it 700000 T 0.085 cost 5
+cover it 800000 T 0.080 cost 4
+cover it 900000 T 0.076 cost 4
+cover it 1000000 T 0.072 cost 4
+cover it 1100000 T 0.069 cost 4
+cover it 1300000 T 0.062 cost 4
+cover it 1400000 T 0.059 cost 3
+cover it 1500000 T 0.056 cost 3
+cover it 1600000 T 0.053 cost 3
+cover it 1700000 T 0.050 cost 3
+cover it 1800000 T 0.047 cost 3
+cover it 1900000 T 0.045 cost 3
+cover it 2000000 T 0.043 cost 3
+cover it 2100000 T 0.041 cost 3
+cover it 2200000 T 0.039 cost 2
+cover it 2300000 T 0.037 cost 2
+cover it 2400000 T 0.035 cost 2
+cover it 2500000 T 0.033 cost 2
+cover it 2600000 T 0.031 cost 2
+cover it 2700000 T 0.030 cost 2
+cover it 2800000 T 0.028 cost 2
+cover it 3000000 T 0.025 cost 2
+cover it 3100000 T 0.024 cost 2
+cover it 3200000 T 0.023 cost 2
+cover it 3300000 T 0.022 cost 2
+cover it 3400000 T 0.020 cost 2
+hub graph after joint annealing: 82 edges, distance cost 33
+cover cost final 2
+UNC ln freed#4 target 211
+q 7 N 400 freed 9 hubs/side 3 -> n 4854; initial cost 266 (point src 126, line src 140, hub src 0); focus 293
+cover cost 2
+final cost 266 (point src 126, line src 140, hub src 0) n 4854
