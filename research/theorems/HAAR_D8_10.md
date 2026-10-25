@@ -314,8 +314,8 @@ The automorphisms used for the records in §5 (details per record in the table):
 group of order |G|·ord(α), isomorphic to G ⋊ ⟨α⟩ via h ↦ ρ_{h⁻¹}, α ↦ α̂ (note ρ_hρ_{h′} = ρ_{h′h} and
 α̂ρ_hα̂⁻¹ = ρ_{α(h)}).
 
-(b) For every j ≥ 0 the sets (S⁻¹S)^j, S(S⁻¹S)^j, (SS⁻¹)^j and S⁻¹(SS⁻¹)^j are α-invariant. For every radius ρ ≥ 0 and
-X, Y ∈ {A, B}, the set U of elements x such that (x, X) is at distance > ρ from (e, Y) is a union of ⟨α⟩-orbits.
+(b) For every j ≥ 0 the sets (S⁻¹S)^j, S(S⁻¹S)^j, (SS⁻¹)^j and S⁻¹(SS⁻¹)^j are α-invariant. For every integer ℓ ≥ 0 and
+X, Y ∈ {A, B}, the set U of elements x such that (x, X) is at distance > ℓ from (e, Y) is a union of ⟨α⟩-orbits.
 
 (c) If k = ord(α) is prime, then |U| ≡ |U ∩ Fix(α)| (mod k).
 
@@ -369,10 +369,10 @@ by v* has the same value as w. If w′ is reduced, two distinct binding words sh
 the value of a shorter reduced word. By (b), Anti(β) has at least |G|/|Fix(β)| elements; for conjugation in
 SL(2, q) × Z_n that is a fraction of order 1/q of the group. A group of odd order contains no involution (Lagrange),
 and by (c) even the elementwise condition α(u) = u⁻¹ is then confined to the elements of order ≤ 2 in Fix(α). Odd k
-still gives exact relations from (b): if N_α(u) = e for the value u of a block of length L, then
-u⁻¹ = α(u)α²(u)⋯α^(k−1)(u), so the reversed block (length L) and a block of length (k − 1)L, possibly not reduced, have
-the same value. That these relations cost far fewer binding words than
-the reflections of (a), and how many words each mechanism costs in practice, is **heuristic and measured**
+still gives exact relations from (b): if N_α(u) = e for the value u of an even block of length L, then
+u⁻¹ = α(u)α²(u)⋯α^(k−1)(u), so the reversed block (value u⁻¹, length L) and a block of length (k − 1)L, possibly not
+reduced, have the same value. That these relations cost far fewer binding words than the reflections of (a), and how
+many words each mechanism costs in practice, is **heuristic and measured**
 (research/theory/BEYOND_RANDOM.md §1.4, §4.2).
 
 Two records show that "prefer odd k" is a heuristic preference, not a theorem. At (6,8) an involution won, and at
@@ -503,9 +503,9 @@ For example, the (8,8) record PSL(2,17) × Z_49 has n = 49 ≤ A(8,8) = 15,128, 
 |G/G′| = 80, 70, 64, 24 at (5,8), (5,9), (4,10), (5,10), against A = 780, 1,251, 420, 1,875. Used as an obstruction,
 the corollary says that at small Δ an abelian group, or a group with a large abelian quotient, cannot reach record
 size. For instance an abelian Haar graph of degree 8 and diameter 8 has at most 2·15,128 = 30,256 vertices, against the
-table's 201,480. It forces only |G′| ≥ |G|/A(Δ, D) (at least 8 at (8,8), at least 91 at (16,10)); that the record groups
-have perfect parts of order 10²–10⁷ is a search choice, guided by the heuristics of §3.5 and §4.3, not a consequence of
-Theorem 4.3.
+table's 201,480. It forces only |G′| ≥ |G|/A(Δ, D) (at least 8 at (8,8), at least 91 at (16,10)); that the SL/PSL-type record
+groups have perfect parts of order 660 to 7.9·10⁶ (and the metacyclic ones commutator subgroups of order 61 to 1,989) is
+a search choice, guided by the heuristics of §3.5 and §4.3, not a consequence of Theorem 4.3.
 
 ### 4.3 Odd diameter: inverse pairs
 
@@ -828,3 +828,14 @@ words for 47,880 elements. build_haar2.py, check_haar_indep.py and the coordinat
 confirm the covering (§5), and the graph is proved in Lean (`lean/BipartiteDD/Haar/`, §5).
 
 The order is 14.25 % of the bipartite Moore bound 671,846; the table value is 80,940.
+
+## Appendix B. Internal review
+
+Before release, §§1–4 and Appendix A were refereed by a separate Claude session that had not written them, with brute-force
+checks on small groups (Theorem 2.4 against BFS from every vertex in 8,640 cases on 18 groups; Lemma 3.1 and
+Proposition 3.4 for every automorphism of 16 small groups; Theorem 4.3 and Corollary 4.4 in several thousand cases). Its
+report, with 28 findings, is `research/theorems/haar_d8_10/REFEREE_2026-10-25.md` (line numbers refer to an earlier
+draft). It found no false theorem. All findings were addressed in this version: the overstated summary of
+Proposition 3.4, the description of A(Δ, D) as a polynomial (it is a quasi-polynomial of period 2), the missing girth
+step in Corollary 4.2, heuristic statements that had been worded as consequences of propositions, and a number of
+notational and wording points.
