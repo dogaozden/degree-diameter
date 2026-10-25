@@ -1,0 +1,23 @@
+group prod sl 4 poly x^2+x+1 sl 16 poly x^4+x+1 x Z_241, N=58996800, identity 11857200, H order 51, rows 1156800, threads 1, setup 2.17s
+wide rows: HW order 241, rows 244800, setup 3.98s
+alpha: conj by prod[mat(1,1,1,0);mat(10,15,11,11)] (index 72155), z -> 15 z on Z_241
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 44 (+e); mu = 18.43, mu/k = 6.14, fixed-point misses ~ 0.61
+start cost=51
+t=32 steps=15 evals=121 cost=23 best=23 T=0.50
+t=62 steps=29 evals=233 cost=23 best=23 T=0.17
+t=93 steps=44 evals=353 cost=9 best=9 T=0.15
+t=123 steps=58 evals=465 cost=9 best=9 T=0.15
+t=154 steps=73 evals=585 cost=9 best=9 T=0.15
+t=187 steps=89 evals=713 cost=9 best=9 T=0.15
+t=219 steps=103 evals=825 cost=9 best=9 T=0.15
+t=250 steps=119 evals=953 cost=9 best=9 T=0.15
+t=281 steps=135 evals=1081 cost=9 best=9 T=0.15
+t=311 steps=149 evals=1193 cost=9 best=9 T=0.15
+t=344 steps=164 evals=1313 cost=9 best=9 T=0.15
+t=374 steps=178 evals=1425 cost=9 best=9 T=0.15
+t=405 steps=193 evals=1545 cost=9 best=9 T=0.15
+t=436 steps=208 evals=1665 cost=9 best=9 T=0.15
+t=467 steps=222 evals=1777 cost=9 best=9 T=0.15
+t=499 steps=237 evals=1897 cost=9 best=9 T=0.15
+t=529 steps=250 evals=2001 cost=9 best=9 T=0.15
+t=561 steps=265 evals=2121 cost=6 best=6 T=0.15

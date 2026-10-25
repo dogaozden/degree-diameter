@@ -14,6 +14,23 @@ Verified by haar_sym's full diameter check and by the independent `tools/haarche
 117,895,680 vertices reached, 14 distinct generators; log `research/structured/runs/r2/d14D9_prod_sl_7_sl_16_43_orb3_s2.log`).
 Seed 1 on the same group was stopped after 92 s (same N, cannot raise the record). Seed 1 had reached best 6 at 657 evals.
 
+### Round-2 runs (product groups, k = 3, m = 4, f = 2; haar_sym, 1 thread each, 3600 s unless stopped)
+
+| group | N | μ | seed | result |
+|---|---|---|---|---|
+| prod sl 7 × sl 16 × Z43 | 58,947,840 | 18.19 | 1 | stopped after 165 s (same N as the record; best 3) |
+| prod sl 7 × sl 16 × Z43 | 58,947,840 | 18.19 | 2 | **SOLVED** at 785 evals (112 s) → record |
+| prod sl 5 × sl 79 × Z1 | 59,155,200 | 19.24 | 1 | not solved: best 8, 11,825 evals |
+| prod sl 5 × sl 79 × Z1 | 59,155,200 | 19.24 | 2 | not solved: best 4, 12,833 evals |
+| prod sl 4 × sl 16 × Z241 | 58,996,800 | 18.43 | 1 | not solved: best 8, 12,665 evals |
+| prod sl 8 × sl 9 × Z163 | 59,149,440 | 19.21 | 1 | not solved: best 2, 8,993 evals |
+| prod sl 7 × sl 11 × Z133 | 58,988,160 | 18.39 | 1 | not solved: best 6, 21,761 evals |
+| prod sl 8 × sl 49 × Z1 | 59,270,400 | 19.84 | 1 | not solved: best 2, 15,385 evals |
+
+Runs still in progress at this commit: prod sl 8 × sl 9 × Z163 seed 2, prod sl 8 × sl 49 × Z1 seed 2, prod sl 4 × sl 16 × Z241 seed 2, prod sl 7 × sl 11 × Z133 seed 2.
+
+Observation so far: the seed-2 solve came fast (785 evals), while the other runs in the same family stalled at cost 2–8 for 10–20k evals. A seed-1 run on the record group also stalled at cost 3 after 1,137 evals, so the solve is seed luck as much as group quality.
+
 Next target: any group with N > 58,947,840 (queue items 12–14 and the screen list below).
 
 ## Round 2 plan (started 2026-10-25, about 15:00 UTC)
