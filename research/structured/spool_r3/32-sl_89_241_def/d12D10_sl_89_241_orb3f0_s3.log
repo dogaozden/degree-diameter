@@ -1,0 +1,11 @@
+group sl 89 x Z_241, N=169876080, identity 1887512, H order 45, rows 3775024, threads 1, setup 3.97s
+wide rows: HW order 241, rows 704880, setup 9.07s
+alpha: conj by mat(6,46,9,84) (index 51540), z -> 15 z on Z_241
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 89 (+e); mu = 39.73, mu/k = 13.24, fixed-point misses ~ 0.55
+start cost=34
+t=32 steps=11 evals=89 cost=12 best=12 T=0.49
+t=64 steps=22 evals=177 cost=12 best=12 T=0.16
+t=96 steps=33 evals=265 cost=12 best=12 T=0.15
+t=126 steps=43 evals=345 cost=12 best=12 T=0.15
+t=157 steps=53 evals=425 cost=12 best=12 T=0.15
+t=187 steps=63 evals=505 cost=12 best=12 T=0.15

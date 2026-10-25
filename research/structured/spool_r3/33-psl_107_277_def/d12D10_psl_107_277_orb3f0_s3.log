@@ -1,0 +1,10 @@
+group psl 107 x Z_277, N=169653636, identity 1570867, H order 54, rows 3141734, threads 1, setup 7.08s
+wide rows: HW order 107, rows 1585548, setup 13.95s
+alpha: conj by mat(5,25,12,103) (index 54154), z -> 116 z on Z_277
+ORBIT k=3 m=4 f=0: |Fix(alpha)| = 53 (+e); mu = 38.89, mu/k = 12.96, fixed-point misses ~ 0.33
+start cost=57
+t=31 steps=10 evals=81 cost=21 best=21 T=0.51
+t=62 steps=20 evals=161 cost=21 best=21 T=0.18
+t=92 steps=30 evals=241 cost=21 best=21 T=0.15
+t=124 steps=40 evals=321 cost=13 best=13 T=0.15
+t=155 steps=50 evals=401 cost=13 best=13 T=0.15
