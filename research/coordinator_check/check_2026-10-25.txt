@@ -116,3 +116,10 @@ n=2501124 edges=18731062 degree min=12 max=15 bipartite=yes diameter=7
 RESULT VALID d=15 D=7 n=2501124
      3913.30 real     28862.32 user       340.29 sys
           1432584192  maximum resident set size
+# (15,7) 2,501,491, relaxed sets round 2 (cell-15-7 session): tm3_build.py (branch version of 08:15) build on hex_q11.bin and d15D7_hex11_typedrelax2_n2501491.sol (sha256 e2fb3fbe82d122fb...); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+ea06a8d07265f68ee9c5dd5b2ab9e298bdaa2d6a241c1e2931ebf51351b21541  r15c.edges
+-- apsp_mt r15c.edges 15 7 8 (Sun Oct 25 08:11:53 PDT 2026)
+n=2501491 edges=18744232 degree min=13 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501491
+     3982.41 real     29279.46 user       344.66 sys
+          1432977408  maximum resident set size
