@@ -36,7 +36,8 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_12_10_325832976`, LeanAll/HaarD12D10 (11,448 batches, streamed) |
 | (15,9) | 208,029,120 | Haar, SL(2,79) × Z211 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_15_9_208029120`, LeanAll/HaarD15D9 (6,240 batches × 2, streamed) |
 | (16,9) | 337,394,400 | Haar, SL(2,151) × Z49 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_16_9_337394400`, LeanAll/HaarD16D9 (22,800 batches × 2, streamed) |
-| (13,10), (14,10) | 677,714,400; 1,326,627,120 | Haar, SL(2,199) × Z43; SL(2,139) × Z247 | building in turn (streamed) | |
+| (13,10) | 677,714,400 | Haar, SL(2,199) × Z43 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_10_677714400`, LeanAll/HaarD13D10 (39,600 batches, streamed) |
+| (14,10) | 1,326,627,120 | Haar, SL(2,139) × Z247 | building (streamed) | LeanAll/HaarD14D10 |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
