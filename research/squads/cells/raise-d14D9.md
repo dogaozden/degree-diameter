@@ -62,9 +62,9 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 
 | group | N | 2N | μ | \|Fix\| | status |
 |---|---|---|---|---|---|
-| psl 47 × Z1123 | 58,270,224 | 116,540,448 | 15.1 | – | running (started 07:43) |
-| sl 43 × Z733 | 58,247,112 | 116,494,224 | 15.0 | – | running (started 08:09) |
-| psl 49 × Z991 | 58,270,800 | 116,541,600 | 15.1 | – | queued/running |
+| psl 47 × Z1123 | 58,270,224 | 116,540,448 | 15.1 | 23 | not solved: best 18, 6,945 evals in 1800 s |
+| sl 43 × Z733 | 58,247,112 | 116,494,224 | 15.0 | 41 | not solved: best 18, 5,161 evals in 1800 s |
+| psl 49 × Z991 (GF(49) as x²+1) | 58,270,800 | 116,541,600 | 15.1 | 23 | not solved: best 18, 3,585 evals in 1800 s |
 | sl 71 × Z163 | 58,327,920 | 116,655,840 | 15.3 | 71 | **SOLVED** at 2,977 evals (1,462 s); haar_sym OK, hcsl and hc2 VALID (ecc 9 both sides). Sub-record (below 117,072,144). File `research/frontier/sols/d14D9_sl_71_163_orb3_s1.txt`, sha256 b9b6356afbf18f0ecd9f3adc67ab1e05ad13a54561bff7ee4a924c9f5bb27792. |
 | psl 73 × Z301 | 58,536,072 | 117,072,144 | 16.3 | 35 | **SOLVED** at 4,761 evals (705 s); haar_sym OK, haarcheck_psl VALID. New record. |
 | psl 59 × Z571 | 58,618,860 | 117,237,720 | 16.6 | – | queued |
