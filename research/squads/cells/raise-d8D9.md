@@ -55,3 +55,8 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
 - Still running at 08:50: b5 psl 47 x Z13 (N 674,544, best 6 at 930 s), b6 sl 17 x Z139 (N 680,544, best 12 at 900 s).
 - Started 08:50: b7 prod sl 3 x psl 11 x Z43 (N 681,120, mu 35.1), b8 pgl 17 x Z139 (N 680,544, mu 34.7). One hour each.
 - To beat the current record a group must have N > 670,800. Hit only counts with N above that.
+
+## Status at 09:10
+- b5 psl 47 x Z13 (N 674,544): best 5 at 2100 s (flat since ~1500 s). b6 sl 17 x Z139: best 12 (flat). b7 prod sl 3 x psl 11 x Z43: best 12 at 1170 s. b8 pgl 17 x Z139: best 21 at 1170 s.
+- Solved so far: prod sl 8 x sl 11 seed 2 (3.1M evals), sl 25 x Z43 seed 1 (1.2M evals). Failed: prod sl 8 seed 1 (4.3M evals, best 2), sl 16 x Z163 (4.3M, best 9).
+- Plan after these end: psl 47 x Z13 with several seeds and longer runs (it is the only candidate above 670,800 with mu <= 31.5 that has reached cost 5).
