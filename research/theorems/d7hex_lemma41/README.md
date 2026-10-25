@@ -36,3 +36,10 @@ in the hyperplane x0 = x4 + x3 (28 lines, pairwise opposite, checked by BFS).
 
 Results: r = 1 (3 levels, n = 2,184): RESULT VALID d=5 D=7; r = 2 (5 levels, n = 3,640): RESULT VALID d=6 D=7. Negative
 control (one more point freed, collinear with a spread point off its spread line): diameter 8, RESULT INVALID.
+
+## Hub graphs of Lemma 7.1: hg_lemma71.py, hg_lemma71.out
+
+Builds the incidence graph of PG(2,s) (s prime) with pendant trees sized exactly as in the proof of Lemma 7.1 for several
+(s, t, u, K), and checks by BFS that both colour classes have K vertices, the maximum degree is max(s+1+t, u+1), and all
+same-colour distances are <= 6. Also prints kappa(d) for d = 3, 4, 8, 9, 10, 11 (7, 35, 527, 868, 1271, 1938, as quoted).
+Run: `python3 research/theorems/d7hex_lemma41/hg_lemma71.py` (a few seconds).
