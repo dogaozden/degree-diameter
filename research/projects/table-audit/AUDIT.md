@@ -26,8 +26,6 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 
 ## 2. Summary
 
-Of the 112 cells (counts from cells.csv; two big checks ((15,7), (16,7)) were still running when this was written, see HANDOFF.md):
-
 <!-- SUMMARY -->
 Of the 112 cells (counts from cells.csv; checks still running when this was written: (16,7)):
 
@@ -110,9 +108,11 @@ order n/2 (`tools/exact_haar.py` driving research/frontier/haar_gen3, most non-a
 group; each graph rebuilt by build_haar2.py and checked by apsp.c in checks/small.txt, apsp_mt.c in
 checks/haar_big.txt above 150,000 vertices, and above 10⁶ vertices by build_haar2.py plus an independent C checker,
 tools/meta_haar_check.c, both doing BFS from the identity on each side, which is exact for Haar graphs since right
-multiplication is transitive on each side; checks/haar_huge.txt). All 16 cells tried so far were
+multiplication is transitive on each side; checks/haar_huge.txt).
+
 <!-- LOZ -->
-All 23 Loz cells tried were reached:
+23 of the 24 Loz cells tried were reached ((10,9) was tried in one nearly cyclic group,
+Z355 ⋊ Z9940, for 900 s and stopped at cost 86):
 
 | cell | value | group | cell | value | group |
 |---|---:|---|---|---:|---|
@@ -130,9 +130,12 @@ All 23 Loz cells tried were reached:
 | (6,9) | 117,360 | Z815 ⋊ Z72 |  |  |  |
 
 These are graphs of the table's order, not necessarily Loz's graphs. (4,8) and (4,9) are cells the repo has not
-beaten, so the table value there is now backed by a checked graph. That every cell tried was reached, mostly within
-minutes, makes the remaining Loz values plausible. Not reproduced here: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10) (about 10⁶ to
-4.1·10⁹ vertices; only the smallest few were tried).
+beaten, so the table value there is now backed by a checked graph. That nearly every cell tried was reached, mostly
+within minutes, makes the remaining Loz values plausible. Not reproduced here: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)
+(7·10⁶ to 4.1·10⁹ vertices). They are not out of reach: research/frontier/SIZE_LAW.md §3.2 found random connection
+sets in SL(2,q) × Z_n valid at or just above the table order in several of these cells (e.g. (13,9) at 51,424,320,
+(10,10) at 50,596,416, (12,9) at 30,580,704), so these Loz values are easy to match in size, just not checked here at
+their exact order.
 <!-- /LOZ -->
 
 ## 4. Flags
