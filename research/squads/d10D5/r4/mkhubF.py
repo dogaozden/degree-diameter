@@ -8,9 +8,10 @@ import sys, random, collections
 import lns
 S = lns.read_sol(sys.argv[1]); fd = set(int(x) for x in sys.argv[2].split()); out = sys.argv[3]
 rng = random.Random(int(sys.argv[4]) if len(sys.argv) > 4 else 1)
-F = S['F']; k = len(F); H0 = S['H']; assert H0 == 2; H = 3
+F = S['F']; k = len(F); H0 = S['H']; H = 3
 hg = [int(x) for x in S['rows']['hubgraph']]
-E = set((H * (hg[e] // 2) + hg[e] % 2, H * (hg[e + 1] // 2) + hg[e + 1] % 2) for e in range(0, len(hg), 2))
+if H0 == 2: E = set((H * (hg[e] // 2) + hg[e] % 2, H * (hg[e + 1] // 2) + hg[e + 1] % 2) for e in range(0, len(hg), 2))
+else: E = set((hg[e], hg[e + 1]) for e in range(0, len(hg), 2))
 on = lambda h: h % H < 2 or h // H in fd
 def degA(a): return sum(1 for x, y in E if x == a)
 def degB(b): return sum(1 for x, y in E if y == b)

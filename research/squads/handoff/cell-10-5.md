@@ -6,9 +6,10 @@ session_01QqmMPMEBdPHeTrrfhst9b1 (Oct 25 afternoon, round 4; this file).
 
 ## Best verified result
 
-**4,836** (DM lift of W(7) with 9 freed flags, 36 hubs): research/squads/d10D5/hubs/graphs/d10D5_n4836_gqdm_flags9.sol,
-check research/squads/d10D5/hubs/checks/d10D5_n4836_CHECK.md (apsp VALID). Table 4,000; master has 4,800.
-(Round 4 status at the end of this file.)
+**4,838** (round 4): the 4,836 graph with one freed flag converted to FLAGDEL (its own flag edge deleted, 3 hubs per
+side): research/squads/d10D5/hubs/graphs/d10D5_n4838_flagdel1.{sol,edges.gz,lift2.sol}, check
+research/squads/d10D5/hubs/checks/d10D5_n4838_CHECK.md (apsp VALID, rebuilt independently by r4/build_fd.py).
+Before: 4,836 (9 freed flags, 36 hubs; d10D5_n4836_CHECK.md). Table 4,000; master has 4,800.
 
 ## Where things stand
 
