@@ -32,3 +32,8 @@ quotient Z_3 on which the order-3 conjugation is trivial, and the random costs a
 
 - 2026-10-25 07:54: four 5400 s single-thread searches (orbq.sh, seed 1, K = 8), one per candidate above:
   runs/raise7_9/j_*.jobs, queue output q_*.out, logs and solutions in runs/raise7_9/.
+- 08:50 UTC (t = 3330 s of 5400): all four wave-1 runs stalled. Best costs unchanged since t = 1830 s:
+  psl 13×217: 44; psl 17×97: 12 (four uncovered orbits); psl 41×7: 21; sl 17×49: 18. Evaluations 8–14·10⁶ per run.
+  The record run got from cost 6 to 0 at 1.5·10⁶ evaluations, so these candidates look harder than μ = 38 did.
+- Wave 2 (runs/raise7_9/launch_wave2.sh, starts when wave 1 ends): seed 2, ORBW=3, 3600 s each, same four groups
+  (j2_*.jobs, queue output q2_*.out).
