@@ -3,3 +3,25 @@ wide rows: HW order 84, rows 47642, setup 0.23s
 alpha: conj by mat(1,33,62,48) (index 229730), z -> 2 z on Z_7
 ORBIT k=3 m=2 f=2: |Fix(alpha)| = 83 (+e); mu = 31.13, mu/k = 10.38, fixed-point misses ~ 1.66
 start cost=150632
+t=30 steps=544 evals=4353 cost=6 best=4 T=0.53
+t=60 steps=1104 evals=8833 cost=6 best=4 T=0.19
+t=90 steps=1668 evals=13345 cost=6 best=4 T=0.15
+t=120 steps=2233 evals=17865 cost=6 best=4 T=0.15
+t=150 steps=2784 evals=22273 cost=6 best=4 T=0.15
+t=180 steps=3345 evals=26761 cost=15 best=4 T=0.59
+t=210 steps=3915 evals=31321 cost=10 best=4 T=0.21
+t=240 steps=4486 evals=35889 cost=10 best=4 T=0.15
+t=270 steps=5035 evals=40281 cost=9 best=4 T=0.15
+t=300 steps=5583 evals=44665 cost=9 best=4 T=0.15
+t=330 steps=6130 evals=49041 cost=9 best=4 T=0.59
+t=360 steps=6691 evals=53529 cost=9 best=4 T=0.21
+t=390 steps=7260 evals=58081 cost=6 best=4 T=0.15
+t=420 steps=7828 evals=62625 cost=6 best=4 T=0.15
+t=450 steps=8382 evals=67057 cost=6 best=4 T=0.15
+t=480 steps=8945 evals=71561 cost=13 best=4 T=0.59
+t=510 steps=9506 evals=76049 cost=12 best=4 T=0.21
+t=541 steps=10050 evals=80401 cost=6 best=4 T=0.15
+t=571 steps=10597 evals=84777 cost=6 best=4 T=0.15
+t=601 steps=11146 evals=89169 cost=6 best=4 T=0.15
+t=631 steps=11696 evals=93569 cost=16 best=4 T=0.59
+t=661 steps=12241 evals=97929 cost=11 best=4 T=0.21
