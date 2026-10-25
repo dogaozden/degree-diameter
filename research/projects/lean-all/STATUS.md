@@ -32,7 +32,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (14,9) | 116,068,656 | Haar, SL(2,67) × Z193 | building | LeanAll/HaarD14D9 |
 | (13,8) | 6,999,552 | Haar, SL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD13D8 (HaarProd) |
 | (9,9) | 3,499,776 | Haar, PSL(2,7) × SL(2,7) × Z31 | building | LeanAll/HaarD9D9 (HaarProd) |
-| (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | building | LeanAll/HaarD7D10 (HaarGF8) |
+| (7,10) | 2,237,760 | Haar, PSL(2,5) × SL(2,8) × Z37 | **done** | `nb_7_10_2237760`, LeanAll/HaarD7D10 (GF(8) batches, HaarGF8) |
 | (12,10) | 325,832,976 | Haar, SL(2,107) × Z133 | queued (streamed: bigcell.py) | LeanAll/HaarD12D10 |
 | (15,9), (16,9), (13,10), (14,10) | 208M … 1.33B | Haar, SL(2,p) × Z_n | queued after (12,10) (streamed) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
