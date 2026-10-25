@@ -56,3 +56,20 @@ Table value 288,939,118. Bar to beat: |G| > 168,697,200.
   automatically with hcsl and hc2; results go to the scratchpad results.txt. Solve rate at 174-177M is about 1 in 4 runs
   at 2400 s, so waiting on seeds is the bottleneck.
 - Best still: sl 101x169, 348,207,600 vertices (checked).
+
+## Final state (session end, 2026-10-25 ~13:30)
+- **Best verified: sl 101 x Z169, |G| = 174,103,800, 348,207,600 vertices** (+3.19 % over 337,394,400), checked by
+  hcsl and hc2. File research/frontier/sols/d16D9_sl_101_169_orb3_s1.txt.
+- All verified solves saved (both checkers, research/frontier/runs/raise_d16D9_checks.txt): sl 79x343 (338.2M), sl 107x139
+  (340.5M), sl 103x157 (343.1M), sl 137x67 (344.5M), sl 79x349 (344.1M), sl 101x169 (348.2M). Below the best and
+  not recorded: sl 109x133 (344.4M, seeds 1 and 2 in the scratchpad).
+- Failed at 2400 s each (best cost in brackets): sl 89x247 [s1 6, s2 12, s3 6, s4 2], sl 83x301 [s1 12], sl 83x307
+  [s1 6, s2 16, s3 14, s4 16], sl 97x193 [s1 12, s2 12, s3 8, s4 6], sl 293x7 [s1 12, s2 14, s3 10], sl 239x13 [s1 12,
+  s2 4, s3 14], sl 131x79 [s1 18, s2 open], sl 79x361 [s2 32], sl 211x19 [s1 20], sl 179x31 [s1 14, s2 16].
+- Per-run logs: the scratchpad runs/ folder (not committed). Per-rung statistics above.
+
+## Stopping reason
+The 6-hour budget is used. Next rungs (|G| above 174.1M, i.e. vertices above 348.2M) are failing at 2400 s per seed at
+roughly one solve per 4-6 runs, with evaluation counts that grow with N (about 1.5k-4k evaluations per solve at
++2-3 %). A next step needs longer runs (several hours per seed) on the rungs at 174-176M (sl 89x247, sl 83x307,
+sl 97x193), or Opus-level changes (a different alpha or a larger fixed set) as SIZE_LAW predicts a wall.
