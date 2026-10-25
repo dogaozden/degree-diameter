@@ -256,6 +256,12 @@ where s = a_{−d} + n_{−d} is the number of zeros of N u_d (the left side is 
 s ≤ 2P/(q+1) ≤ P/2 by (i). So the left side is at least 2P(q+1)/(q+3)². For q ≥ 7 this exceeds the right side
 (`tight_j1_out.txt`: 0.160 P against 0.142 P at q = 7, 0.122 P against 0.068 P at q = 11). ∎
 
+*On the one-miss assumption.* In any regular design with M = q + 4 the counting of §1.2 has total slack
+2P/(q+1) − (q+2)n_0 (n_0 = number of points labelled 0): at most two residues are covered by every point or every
+line, n_0 ≤ 2P/((q+1)(q+2)), and the coincidences t(x) = −l(b) (b ∋ x) on the other residues number at most
+2P/(q+1). So all but O(P/q) points and lines are one-miss. Making the spectral step robust to these few defects
+would remove the assumption; this was not done.
+
 *Consequence.* DGQ's (13,8) graph, if it is a lift of H(11) plus one matching with 15 copies, either uses walks that
 exist only for special matchings, or holonomy, or labels that waste walks (not one-miss: some point sees a residue
 twice or sees 0), or labels that repeat around a point. Optimization meets or passes q + 4 at small q (q = 2: 10 copies, q = 3: 7, lanneal);
