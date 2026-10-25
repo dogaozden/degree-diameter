@@ -725,7 +725,10 @@ int main(int argc, char **argv) {
         if (bt < 0) { for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = keep[i]; make_tables(ostart(j) + i); }
             if (stop_flag || bound == NOBOUND) break;
             steps++;   /* BOUNDCUR: no candidate reached the current cost */
-            if (steps - lastimp > REHEATSTEPS) { heat = steps; T = TMAX; lastimp = steps; }
+            if (steps - lastimp > REHEATSTEPS) {   /* as below: back to the best S, then reheat */
+                heat = steps; T = TMAX; memcpy(S, bestS, sizeof(el) * d); for (int u = 0; u < d; u++) make_tables(u);
+                c = cost(NOBOUND, UNC, UCAP, &NUNC); evals++; cE = (double)c / OK_; lastimp = steps;
+                fprintf(stderr, "reheat at step %lld: back to best S, cost %lld\n", (long long)steps, (long long)c); }
             fprintf(stderr, "t=%.0f step=%lld evals=%lld slot=%d cand=>%lld cost=%lld best=%lld T=%.2f\n", now() - t0, (long long)steps,
                     (long long)evals, j, (long long)c, (long long)c, (long long)best, T);
             continue; }
