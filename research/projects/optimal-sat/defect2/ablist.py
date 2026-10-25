@@ -8,7 +8,9 @@ NOTES.md / PROOF.md:
     S_z empty, so CI(z,z') = |N^-(z) cap N^-(z')| = beta_z' must be 2; same for rows);
   - sum_x C(alpha_x,2) <= 72 - (lower bound for sum_y C(a_y,2)), using sum_y a_y = 81 - t and the vertex sums
     2(9 - alpha_x) of the edge weighting a on the pairs of O (NOTES item 10); same for beta;
-  - (alpha, beta) satisfies Gale-Ryser (a 0/1 matrix with these margins exists).
+  - (alpha, beta) satisfies Gale-Ryser (a 0/1 matrix with these margins exists);
+  - alpha >= beta lexicographically: reversing all arcs maps a solution to a solution (Theorem Q is symmetric under
+    transposition) and swaps O and I at vertex 0, so B becomes B^T and the cube (alpha, beta) becomes (beta, alpha).
 usage: ablist.py out.txt      (one cube per line: a1,..,a9/b1,..,b9)"""
 import sys
 vals = [9, 6, 5, 4, 3, 2, 1, 0]
@@ -39,6 +41,6 @@ with open(sys.argv[1], 'w') as f:
         P = [a for a in parts(t) if ok(a)]
         for a in P:
             for b in P:
-                if gale_ryser(a, b):
+                if a >= b and gale_ryser(a, b):
                     f.write(','.join(map(str, a)) + '/' + ','.join(map(str, b)) + '\n'); n += 1
 print(n, 'cubes')

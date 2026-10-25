@@ -8,7 +8,9 @@ as enc_quot.py.
 Soundness: relabel O so that alpha is non-increasing and I so that beta is non-increasing; every solution lies in the
 cube of its (alpha, beta), and inside a cube the block permutations are symmetries, so lex-leader for them is sound.
 usage: abcube.py base k base.cnf
-       abcube.py cube base.cnf a1,..,a9/b1,..,b9 out.cnf"""
+       abcube.py cube base.cnf a1,..,a9/b1,..,b9 out.cnf [--maxt]   (--maxt did not help: 3x larger CNF, test cube unsolved in 20 min)
+--maxt: vertex 0 has the maximum number of directed triangles, so add "every vertex lies on at most t = sum(alpha)
+        directed triangles" (a valid choice of base vertex; it removes the cubes with small t far more easily)."""
 import sys, itertools, json
 from pysat.formula import IDPool
 from pysat.card import CardEnc, EncType
@@ -52,11 +54,35 @@ def cube_clauses(meta, al, be):
                 lexleader(lambda t, u=u, v=v: v if t == u else (u if t == v else t))
     return out, pool.top
 
-def write_cube(base, spec, outp):
+def maxt_clauses(meta, t, start):
+    """Vertex 0 is chosen with the maximum number of directed triangles (a valid choice of base vertex), so every
+    vertex v lies on at most t = sum(alpha) directed triangles v->x->z->v."""
+    k = meta['k']; m = k * (k - 1) // 2
+    a = {(c, d): v for c, d, v in meta['a']}
+    pool = IDPool(start_from=start)
+    out = []; tri = {}
+    for v in range(m):
+        for x in range(m):
+            for z in range(m):
+                if len({v, x, z}) < 3: continue
+                key = min((v, x, z), (x, z, v), (z, v, x))
+                if key not in tri:
+                    q = pool.id(); tri[key] = q
+                    p, r, s_ = key
+                    out += [[-q, a[p, r]], [-q, a[r, s_]], [-q, a[s_, p]], [q, -a[p, r], -a[r, s_], -a[s_, p]]]
+    for v in range(1, m):
+        lits = [tri[min((v, x, z), (x, z, v), (z, v, x))] for x in range(m) for z in range(m) if len({v, x, z}) == 3]
+        out += CardEnc.atmost(lits, bound=t, vpool=pool, encoding=EncType.seqcounter).clauses
+    return out, pool.top
+
+def write_cube(base, spec, outp, maxt=False):
     meta = json.load(open(base + '.map.json'))
     al, be = spec.split('/'); al = list(map(int, al.split(','))); be = list(map(int, be.split(',')))
     assert al == sorted(al, reverse=True) and be == sorted(be, reverse=True) and sum(al) == sum(be)
     extra, top = cube_clauses(meta, al, be)
+    if maxt:
+        e2, top = maxt_clauses(meta, sum(al), top + 1)
+        extra += e2
     with open(base) as fin, open(outp, 'w') as fo:
         hdr = fin.readline().split()
         fo.write(f'p cnf {max(top, int(hdr[2]))} {int(hdr[3]) + len(extra)}\n')
@@ -65,4 +91,4 @@ def write_cube(base, spec, outp):
 
 if __name__ == '__main__':
     if sys.argv[1] == 'base': write_base(int(sys.argv[2]), sys.argv[3])
-    else: write_cube(sys.argv[2], sys.argv[3], sys.argv[4])
+    else: write_cube(sys.argv[2], sys.argv[3], sys.argv[4], maxt='--maxt' in sys.argv)

@@ -28,3 +28,16 @@ Check it with `signs_gf2.py` (needs the model decoded; see `cegar.py`), and tell
 
 ## Report
 Append the 110 lines to `research/projects/optimal-sat/logs/k11_cubes.log` on a branch, or send them to the lead.
+
+## Update 11:40 UTC: a better split (degree-sequence cubes)
+
+`defect2/ablist.py` lists 245,667 cubes (α, β) = sorted row and column sums of the 9×9 block B (arcs O→I at
+vertex 0). The pruning rules are proved in NOTES.md. `defect2/abcube.py` builds a cube from a shared base CNF
+(`abcube.py base 11 base.cnf`) in under a second. `defect2/run_abcube.sh base.cnf '<cube>' out/` solves it with a
+streamed LRAT check. A random sample of 20 cubes (kissat, loaded 4-core machine):
+- 16 took about 1 s;
+- the others took 3 s, 19 s and 262 s, and one was > 300 s.
+
+Hard cubes are those with small t and flat α. Rough total: 10³–10⁴ CPU-hours. The cubes are exhaustive by a
+relabelling argument (sort the degrees; block-transposition lex-leader inside each cube), not by a drat-trim cover
+check. Whichever of the two splits is used, a SAT cube means: decode A and run `signs_gf2.py`.
