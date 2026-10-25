@@ -50,3 +50,12 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
   Also no solve yet: sl 83×Z7 seed 2 (best 3), pgl 83×Z7 (best 2), prod psl 9 × psl 9 × Z31 (best 6); sl 23×Z331 stopped at 25.
   Started sl 83×Z7 seed 3 (K queue). Products with a large cyclic factor (prod sl 5 sl 7 199, prod psl 5 sl 8 133) mix badly.
   The 2 sub-record runs (sl 27×Z199, sl 29×Z163) stopped: both below the record.
+
+## RECORD 2: sl 83 × Z7, 8,003,856 vertices (+0.05 % over 7,997,328; +2.4 % over 7,818,096 of the Opus squad)
+- File: research/frontier/sols/d8D10_sl_83_7_orb3_s3.txt (sha256 57ec279aebb28d56e8a124c4e66889efd97ec238392e4fb83f01f754eaaaec22).
+  Log: research/structured/runs/raise-d8D10/K/d8D10_sl_83_7_orb3_s3.log. ORBIT="3 2 2", μ = 31.1, 352,729 evaluations, 1,177 s.
+- Checks: haar_sym full diameter check OK; orbq's build_haar2.py VALID (ecc 10 both sides, 8,003,856 vertices);
+  tools/hcsl VALID; tools/hc2 VALID (ecc 10 both sides).
+- Stopped as sub-record: sl 83×Z7 seed 2 (best 3 at 1e6 evals) and pgl 83×Z7 (best 2 at 4.5e5), same order, no gain.
+- Running now (N must exceed 4,001,928): prod psl 9×psl 9×Z31 (4,017,600, best 6), prod psl 5×sl 7×Z199 (4,011,840),
+  psl 29×Z331 (4,031,580). Logs under runs/raise-d8D10/{J,L,M}.

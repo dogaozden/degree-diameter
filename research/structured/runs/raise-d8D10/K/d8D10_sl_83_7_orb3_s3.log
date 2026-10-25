@@ -35,3 +35,16 @@ t=870 steps=32595 evals=260761 cost=4 best=1 T=0.17
 t=900 steps=33723 evals=269785 cost=4 best=1 T=0.15
 t=930 steps=34814 evals=278513 cost=4 best=1 T=0.15
 t=960 steps=35919 evals=287353 cost=1 best=1 T=1.40
+t=990 steps=37013 evals=296105 cost=9 best=1 T=0.49
+t=1020 steps=38125 evals=305001 cost=9 best=1 T=0.17
+t=1050 steps=39244 evals=313953 cost=6 best=1 T=0.15
+t=1080 steps=40375 evals=323001 cost=3 best=1 T=0.15
+t=1110 steps=41503 evals=332025 cost=1 best=1 T=1.39
+t=1140 steps=42682 evals=341457 cost=1 best=1 T=0.49
+t=1170 steps=43848 evals=350785 cost=1 best=1 T=0.17
+RESULT d=8 D=10 group=sl 83 x Z_7 N=4001928 best=0 evals=352729 time=1176.7 orbit k=3 m=2 f=2 fix=83
+full diameter check: OK
+wrote /home/user/degree-diameter/research/structured/runs/raise-d8D10/K/d8D10_sl_83_7_orb3_s3.txt
+n = 8003856 edges = 32015424 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 487b1997b01b7d5c54d655fc759a4d717991301fe24a67194865ad14a7c5610d
+VALID d=8 D=10 group=sl 83 x Z_7 N=4001928 vertices=8003856
