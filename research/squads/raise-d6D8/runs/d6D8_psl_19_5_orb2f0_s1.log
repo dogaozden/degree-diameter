@@ -4,3 +4,42 @@ alpha: conj by mat(3,16,16,16) (index 1213), z -> 4 z on Z_5
 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 19 (+e); mu = 56.60, mu/k = 28.30, fixed-point misses ~ 1.15
 start cost=299
 t=30 steps=188462 evals=1507697 cost=16 best=14 T=0.53
+t=60 steps=373613 evals=2988905 cost=16 best=14 T=0.19
+t=90 steps=556370 evals=4450961 cost=16 best=14 T=0.15
+t=120 steps=741432 evals=5931457 cost=16 best=14 T=0.15
+t=150 steps=929991 evals=7439929 cost=16 best=14 T=0.15
+t=180 steps=1114830 evals=8918641 cost=18 best=14 T=0.54
+t=210 steps=1298198 evals=10385585 cost=17 best=14 T=0.19
+t=240 steps=1489111 evals=11912889 cost=14 best=14 T=0.15
+t=270 steps=1672928 evals=13383425 cost=14 best=14 T=0.15
+t=300 steps=1848283 evals=14786265 cost=10 best=10 T=0.15
+t=330 steps=2017254 evals=16138033 cost=16 best=10 T=0.15
+t=360 steps=2197672 evals=17581377 cost=13 best=10 T=0.15
+t=390 steps=2378884 evals=19031073 cost=13 best=10 T=0.15
+t=420 steps=2532621 evals=20260969 cost=12 best=10 T=0.15
+t=450 steps=2715240 evals=21721921 cost=16 best=10 T=0.83
+t=480 steps=2891752 evals=23134017 cost=16 best=10 T=0.29
+t=510 steps=3076200 evals=24609601 cost=16 best=10 T=0.15
+t=540 steps=3257935 evals=26063481 cost=16 best=10 T=0.15
+t=570 steps=3440798 evals=27526385 cost=16 best=10 T=0.15
+t=600 steps=3609177 evals=28873417 cost=17 best=10 T=0.83
+t=630 steps=3780620 evals=30244961 cost=16 best=10 T=0.29
+t=660 steps=3962571 evals=31700569 cost=16 best=10 T=0.15
+t=690 steps=4144063 evals=33152505 cost=16 best=10 T=0.15
+t=720 steps=4318486 evals=34547889 cost=16 best=10 T=0.15
+t=750 steps=4493084 evals=35944673 cost=10 best=10 T=0.83
+t=780 steps=4658568 evals=37268545 cost=16 best=10 T=0.29
+t=810 steps=4831533 evals=38652265 cost=16 best=10 T=0.15
+t=840 steps=5007129 evals=40057033 cost=16 best=10 T=0.15
+t=870 steps=5180233 evals=41441865 cost=16 best=10 T=0.15
+t=900 steps=5343527 evals=42748217 cost=16 best=10 T=0.83
+t=930 steps=5529071 evals=44232569 cost=13 best=10 T=0.29
+t=960 steps=5715808 evals=45726465 cost=13 best=10 T=0.15
+t=990 steps=5897866 evals=47182929 cost=13 best=10 T=0.15
+t=1020 steps=6064532 evals=48516257 cost=13 best=10 T=0.15
+t=1050 steps=6241636 evals=49933089 cost=15 best=10 T=0.83
+t=1080 steps=6412471 evals=51299769 cost=15 best=10 T=0.29
+t=1110 steps=6588510 evals=52708081 cost=15 best=10 T=0.15
+t=1140 steps=6771431 evals=54171449 cost=15 best=10 T=0.15
+t=1170 steps=6948261 evals=55586089 cost=15 best=10 T=0.15
+RESULT d=6 D=8 group=psl 19 x Z_5 N=17100 best=10 evals=57027609 time=1200.0 orbit k=2 m=3 f=0 fix=19

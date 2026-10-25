@@ -38,3 +38,10 @@ Table value 29,790; Moore bound 195,312. Any Haar graph with 2|G| > 31,680 is a 
   ~5e6 prediction. So the law is not reliable for these groups; treat predictions as optimistic.
 
 ## Wave 2 (started 08:35): 20-min runs, seed 1 and 2 on psl 19 x Z5 (N 17100), seed 1 on sl 13 x Z8 (17472), psl 13 x Z16 (17472).
+
+## Wave 2 (08:35-08:59, 1200 s): psl 19xZ5 seed1 best 10, seed2 best 8; sl 13xZ8 best 9; psl 13xZ16 best 13. No solution.
+## Wave 3 (09:08-09:33, 600 s, one seed each): psl 17xZ7 14; psl 23xZ3 22; sl 11xZ13 20; psl 11xZ26 23; prod sl3xsl9 9;
+   psl 9xZ48 19; prod psl3xsl7xZ4 9; prod psl3xpsl7xZ9 26; sl 9xZ24 21; prod psl3xsl4xZ23 21. No solution.
+## Wave 4 (queued, starts after WAVE3_DONE, 5400 s, ORBW=3): psl 19xZ5 seed 3; sl 13xZ8 seed 2; prod sl3xsl9xZ1 seed 2;
+   prod psl3xsl7xZ4 seed 2. Diagnostic: does the plateau move with ORBW=3? Results go to runs/*_orbw3_*.log.
+Draft of the cell write-up: research/squads/cells/raise-d6D8.md.

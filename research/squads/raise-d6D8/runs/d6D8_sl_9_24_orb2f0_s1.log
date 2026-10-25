@@ -1,0 +1,21 @@
+group sl 9 poly x^2+1 x Z_24, N=17280, identity 1728, H order 60, rows 288, threads 1, setup 0.00s
+wide rows: HW order 120, rows 144, setup 0.00s
+alpha: conj by mat(0,7,4,0) (index 54), z -> 11 z on Z_24
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 15 (+e); mu = 60.70, mu/k = 30.35, fixed-point misses ~ 0.95
+start cost=8725
+t=30 steps=246709 evals=1973673 cost=24 best=24 T=0.53
+t=60 steps=494545 evals=3956361 cost=30 best=24 T=0.19
+t=90 steps=729493 evals=5835945 cost=30 best=24 T=0.15
+t=120 steps=953693 evals=7629545 cost=30 best=24 T=0.15
+t=150 steps=1178793 evals=9430345 cost=30 best=24 T=0.15
+t=180 steps=1417541 evals=11340329 cost=22 best=22 T=0.64
+t=210 steps=1659424 evals=13275393 cost=22 best=22 T=0.23
+t=240 steps=1905203 evals=15241625 cost=25 best=22 T=0.15
+t=270 steps=2134860 evals=17078881 cost=22 best=22 T=0.15
+t=300 steps=2383089 evals=19064713 cost=22 best=22 T=0.15
+t=330 steps=2638597 evals=21108777 cost=22 best=21 T=0.70
+t=360 steps=2889372 evals=23114977 cost=27 best=21 T=0.25
+t=390 steps=3126657 evals=25013257 cost=27 best=21 T=0.15
+t=420 steps=3374780 evals=26998241 cost=27 best=21 T=0.15
+t=450 steps=3627780 evals=29022241 cost=22 best=21 T=0.15
+t=480 steps=3878846 evals=31030769 cost=22 best=21 T=0.83

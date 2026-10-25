@@ -4,3 +4,42 @@ alpha: conj by mat(2,2,4,11) (index 277), z -> 7 z on Z_16
 ORBIT k=2 m=3 f=0: |Fix(alpha)| = 23 (+e); mu = 65.31, mu/k = 32.65, fixed-point misses ~ 1.47
 start cost=8834
 t=30 steps=362960 evals=2903681 cost=16 best=13 T=0.53
+t=60 steps=711789 evals=5694313 cost=18 best=13 T=0.19
+t=90 steps=1051892 evals=8415137 cost=18 best=13 T=0.15
+t=120 steps=1414530 evals=11316241 cost=18 best=13 T=0.15
+t=150 steps=1757248 evals=14057985 cost=18 best=13 T=0.15
+t=180 steps=2116920 evals=16935361 cost=15 best=13 T=0.56
+t=210 steps=2470747 evals=19765977 cost=15 best=13 T=0.20
+t=240 steps=2833520 evals=22668161 cost=15 best=13 T=0.15
+t=270 steps=3181618 evals=25452945 cost=15 best=13 T=0.15
+t=300 steps=3520353 evals=28162825 cost=15 best=13 T=0.15
+t=330 steps=3848999 evals=30791993 cost=18 best=13 T=0.56
+t=360 steps=4150552 evals=33204417 cost=18 best=13 T=0.20
+t=390 steps=4488434 evals=35907473 cost=18 best=13 T=0.15
+t=420 steps=4796561 evals=38372489 cost=24 best=13 T=0.15
+t=450 steps=5141545 evals=41132361 cost=21 best=13 T=0.15
+t=480 steps=5483659 evals=43869273 cost=17 best=13 T=0.56
+t=510 steps=5846239 evals=46769913 cost=17 best=13 T=0.20
+t=540 steps=6175642 evals=49405137 cost=21 best=13 T=0.15
+t=570 steps=6515501 evals=52124009 cost=21 best=13 T=0.15
+t=600 steps=6846267 evals=54770137 cost=21 best=13 T=0.15
+t=630 steps=7175257 evals=57402057 cost=22 best=13 T=0.56
+t=660 steps=7527056 evals=60216449 cost=19 best=13 T=0.20
+t=690 steps=7855513 evals=62844105 cost=18 best=13 T=0.15
+t=720 steps=8197506 evals=65580049 cost=18 best=13 T=0.15
+t=750 steps=8543102 evals=68344817 cost=18 best=13 T=0.15
+t=780 steps=8851096 evals=70808769 cost=16 best=13 T=0.56
+t=810 steps=9179864 evals=73438913 cost=19 best=13 T=0.20
+t=840 steps=9533247 evals=76265977 cost=19 best=13 T=0.15
+t=870 steps=9845103 evals=78760825 cost=13 best=13 T=0.15
+t=900 steps=10172761 evals=81382089 cost=26 best=13 T=0.15
+t=930 steps=10535277 evals=84282217 cost=18 best=13 T=0.56
+t=960 steps=10890801 evals=87126409 cost=20 best=13 T=0.20
+t=990 steps=11248572 evals=89988577 cost=20 best=13 T=0.15
+t=1020 steps=11589583 evals=92716665 cost=20 best=13 T=0.15
+t=1050 steps=11908640 evals=95269121 cost=20 best=13 T=0.15
+t=1080 steps=12214065 evals=97712521 cost=15 best=13 T=0.56
+t=1110 steps=12581828 evals=100654625 cost=15 best=13 T=0.20
+t=1140 steps=12900294 evals=103202353 cost=15 best=13 T=0.15
+t=1170 steps=13243088 evals=105944705 cost=16 best=13 T=0.15
+RESULT d=6 D=8 group=psl 13 x Z_16 N=17472 best=13 evals=108738913 time=1200.0 orbit k=2 m=3 f=0 fix=23
