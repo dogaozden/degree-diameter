@@ -35,7 +35,7 @@ def palindromes(d, D):
     return sum(d * (d - 1) ** (j - 1) for j in range(1, (D - 1) // 2 + 1))
 
 
-def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None, invol=0):
+def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None, invol=0, invstab=None):
     """stab: dict {|H|: number of elements with stabiliser of order |H| in <alpha>} for |H| > 1 (cyclic <alpha>,
     so a subgroup is determined by its order).  anti: |Anti(beta)| minus its intersection with Fix (k even).
     fixb: |Fix(beta)| of the involution beta (odd D): the palindromic words land on Im L, |Im L| = N/|Fix(beta)|,
@@ -43,7 +43,11 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None, invol=
     session's term (2/k) |Anti| e^(-lambda/2) is used.
     invol: number of involutions of G (odd D): each is fixed by inversion, so its words come in pairs and it is missed
     at e^(-lambda/2); in a free alpha-orbit it forms a clump of k elements per side (THRESHOLD Cor. 5.2).  Adds
-    (2/k) invol e^(-lambda/2) clumps.  Also returned: ecost = expected cost / 2k, the unit of RANDORB's cost/2k."""
+    (2/k) invol e^(-lambda/2) clumps.  Also returned: ecost = expected cost / 2k, the unit of RANDORB's cost/2k.
+    invstab: {|H|: number of involutions of G whose stabiliser in <alpha> is H} (odd D; replaces invol).  Such an
+    involution is fixed by H and by inversion, so its words come in 2|H|-tuples: missed at e^(-lambda/(2|H|)), a clump
+    of k/|H| elements per side, (2|H|/k) e^(-lambda/(2|H|)) clumps each.  The involutions with |H| > 1 are also counted
+    in stab; at odd D they are moved from the stab term to this one."""
     W = words(d, D)
     lam = W / N
     mu = N * math.exp(-lam)
@@ -51,6 +55,9 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None, invol=
     generic = mu / k
     # formula (1) of BEYOND_RANDOM: sides * sum_x |Stab(x)|/|A| exp(-lambda/|Stab(x)|), |A| = k (even D), 2k (odd D,
     # with inversion); for x fixed by H <= <alpha> this is |H|/k exp(-lambda/|H|) at both parities
+    if D % 2 and invstab:
+        stab = {h: c - invstab.get(h, 0) for h, c in stab.items()}
+        invol = 0
     fixed = 0.0
     for h, cnt in stab.items():
         fixed += cnt * (h / k) * math.exp(-lam / h)
@@ -62,10 +69,14 @@ def rule(d, D, N, k, stab, anti=0, avoid=AVOID, verbose=False, fixb=None, invol=
         pi = palindromes(d, D) * fixb / N
         anti_cost = (2.0 / k) * (img * math.exp(-lam / 2 - pi) + (anti - img) * math.exp(-lam / 2))
     inv_cost = (2.0 / k) * invol * math.exp(-lam / 2) if D % 2 else 0.0
+    inv_el = 2 * invol * math.exp(-lam / 2) if D % 2 else 0.0          # expected uncovered involutions, both sides
+    if D % 2 and invstab:
+        inv_cost = sum((2.0 * h / k) * c * math.exp(-lam / (2 * h)) for h, c in invstab.items())
+        inv_el = sum(2 * c * math.exp(-lam / (2 * h)) for h, c in invstab.items())
     # expected uncovered elements over both sides / 2k (odd D) or / k (even D): generic, fixed, Anti, involutions
     sides = 2 if D % 2 else 1
     ecost = (sides * mu + sides * sum(cnt * math.exp(-lam / h) for h, cnt in stab.items())
-             + (anti_cost * k if anti_cost else 0.0) + (sides * invol * math.exp(-lam / 2) if D % 2 else 0.0)) / (sides * k)
+             + (anti_cost * k if anti_cost else 0.0) + inv_el) / (sides * k)
     ell = D - 1
     rel = []
     pen = 0.0
@@ -131,26 +142,27 @@ CASES = [
 # tail of random symmetric S in clumps (cost / 2k at odd D), from runs/r2/ro127_*.log, ro149_*.log, ro159_*.log.
 # name, d, D, N, k, stab, anti (outside Fix), fixb = |Fix(beta)|, observed
 CASES2 = [
-    # name, d, D, N, k, stab, anti (outside Fix), fixb = |Fix(beta)|, invol = involutions of G, observed (cost/2k)
-    ("(6,9) SL(2,25)xZ4, conj order 2", 6, 9, 62400, 2, {2: 48}, 2596, 48, 3, "Anti missed at 0.69-0.85 sqrt(p)"),
-    ("(6,9) SL(2,25)xZ4, Frobenius order 2", 6, 9, 62400, 2, {2: 240}, 516, 240, 3, "Anti missed at 0.48-0.70 sqrt(p)"),
-    ("(12,7) SL(2,64), Frobenius order 6", 12, 7, 262080, 6, {6: 6, 3: 54, 2: 498}, 456, 504, 4095, "p1 41.7, p10 57.6"),
-    ("(12,7) SL(2,64), Frobenius order 3", 12, 7, 262080, 3, {3: 59}, 0, None, 4095, "p1 75.2, p10 92.8"),
-    ("(12,7) SL(2,64), conjugation order 3", 12, 7, 262080, 3, {3: 62}, 0, None, 4095, "p1 79.5, p10 98.3"),
-    ("(12,7) SL(2,64), Frobenius order 2", 12, 7, 262080, 2, {2: 503}, 456, 504, 4095, "p1 144.5, p10 180"),
-    ("(12,7) SL(2,64), random S", 12, 7, 262080, 1, {}, 0, None, 4095, "p1 247, p10 278.5"),
-    ("(12,7) SL(2,8)^2, swap-conj order 6", 12, 7, 254016, 6, {6: 9, 3: 72, 2: 495}, 440, 504, 4095, "p1 35.6, p10 50.3"),
-    ("(12,7) SL(2,8)^2, conj order 3", 12, 7, 254016, 3, {3: 80}, 0, None, 4095, "p1 69.3, p10 87.5"),
-    ("(12,7) SL(2,8)^2, swap order 2", 12, 7, 254016, 2, {2: 503}, 440, 504, 4095, "p1 118, p10 153"),
-    ("(12,7) SL(2,8)^2, random S", 12, 7, 254016, 1, {}, 0, None, 4095, "p1 201.5, p10 232"),
-    ("(14,9) PSL(2,25)^2, swap-conj order 6 (f=2)", 14, 9, 60840000, 6, {6: 11, 3: 132, 2: 7788}, 7474, 7800, 106275, "min 15.0, p10 19.3 (40 samples)"),
-    ("(14,9) PSL(2,25)^2, conj order 3 (f=2)", 14, 9, 60840000, 3, {3: 143}, 0, None, 106275, "min 29.5, p10 35.0 (40 samples)"),
-    ("(15,9) SL(2,64)xZ403, Frobenius order 6, 6+6+3", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 6546}, 16056, 6552, 4095, "min 3.2, p10 6.3 (16 samples)"),
-    ("(15,9) SL(2,64)xZ403, Frobenius order 3", 15, 9, 105618240, 3, {3: 59}, 0, None, 4095, "min 10.3, p10 13.8 (16 samples)"),
-    ("(15,9) ... order 6, alpha^3 negates Z403 (r=212)", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 498}, 520 * 403 - 64, 504, 4095, "min 113.6, p10 141"),
-    ("(15,9) ... order 6, alpha^3 fixes Z403 (r=315)", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 504 * 403 - 6}, 520 - 64, 504 * 403, 4095, "min 56.5, p10 57.5"),
-    ("(13,9) SL(2,64)xZ133, Frobenius order 6, e+6+6", 13, 9, 34856640, 6, {6: 6, 3: 54, 2: 3522}, 520 * 19 - 64, 504 * 7, 4095, "min 4.9, p10 10.5 (16 samples)"),
-    ("(13,9) SL(2,64)xZ133, Frobenius order 3", 13, 9, 34856640, 3, {3: 59}, 0, None, 4095, "min 14.8, p10 18.5 (16 samples)"),
+    # name, d, D, N, k, stab, anti (outside Fix), fixb = |Fix(beta)|, invol = involutions of G,
+    # invstab = involutions of G by stabiliser order in <alpha>, observed (cost/2k)
+    ("(6,9) SL(2,25)xZ4, conj order 2", 6, 9, 62400, 2, {2: 48}, 2596, 48, 3, {2: 3}, "Anti missed at 0.69-0.85 sqrt(p)"),
+    ("(6,9) SL(2,25)xZ4, Frobenius order 2", 6, 9, 62400, 2, {2: 240}, 516, 240, 3, {2: 3}, "Anti missed at 0.48-0.70 sqrt(p)"),
+    ("(12,7) SL(2,64), Frobenius order 6", 12, 7, 262080, 6, {6: 6, 3: 54, 2: 498}, 456, 504, 4095, {6: 3, 3: 12, 2: 60, 1: 4020}, "p1 41.7, p10 57.6"),
+    ("(12,7) SL(2,64), Frobenius order 3", 12, 7, 262080, 3, {3: 59}, 0, None, 4095, {3: 15, 1: 4080}, "p1 75.2, p10 92.8"),
+    ("(12,7) SL(2,64), conjugation order 3", 12, 7, 262080, 3, {3: 62}, 0, None, 4095, {1: 4095}, "p1 79.5, p10 98.3"),
+    ("(12,7) SL(2,64), Frobenius order 2", 12, 7, 262080, 2, {2: 503}, 456, 504, 4095, {2: 63, 1: 4032}, "p1 144.5, p10 180"),
+    ("(12,7) SL(2,64), random S", 12, 7, 262080, 1, {}, 0, None, 4095, {1: 4095}, "p1 247, p10 278.5"),
+    ("(12,7) SL(2,8)^2, swap-conj order 6", 12, 7, 254016, 6, {6: 9, 3: 72, 2: 495}, 440, 504, 4095, {2: 63, 1: 4032}, "p1 35.6, p10 50.3"),
+    ("(12,7) SL(2,8)^2, conj order 3", 12, 7, 254016, 3, {3: 80}, 0, None, 4095, {1: 4095}, "p1 69.3, p10 87.5"),
+    ("(12,7) SL(2,8)^2, swap order 2", 12, 7, 254016, 2, {2: 503}, 440, 504, 4095, {2: 63, 1: 4032}, "p1 118, p10 153"),
+    ("(12,7) SL(2,8)^2, random S", 12, 7, 254016, 1, {}, 0, None, 4095, {1: 4095}, "p1 201.5, p10 232"),
+    ("(14,9) PSL(2,25)^2, swap-conj order 6 (f=2)", 14, 9, 60840000, 6, {6: 11, 3: 132, 2: 7788}, 7474, 7800, 106275, {6: 1, 3: 2, 2: 324, 1: 105948}, "min 15.0, p10 19.3 (40 samples)"),
+    ("(14,9) PSL(2,25)^2, conj order 3 (f=2)", 14, 9, 60840000, 3, {3: 143}, 0, None, 106275, {3: 3, 1: 106272}, "min 29.5, p10 35.0 (40 samples)"),
+    ("(15,9) SL(2,64)xZ403, Frobenius order 6, 6+6+3", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 6546}, 16056, 6552, 4095, {6: 3, 3: 12, 2: 60, 1: 4020}, "min 3.2, p10 6.3 (16 samples)"),
+    ("(15,9) SL(2,64)xZ403, Frobenius order 3", 15, 9, 105618240, 3, {3: 59}, 0, None, 4095, {3: 15, 1: 4080}, "min 10.3, p10 13.8 (16 samples)"),
+    ("(15,9) ... order 6, alpha^3 negates Z403 (r=212)", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 498}, 520 * 403 - 64, 504, 4095, {6: 3, 3: 12, 2: 60, 1: 4020}, "min 113.6, p10 141"),
+    ("(15,9) ... order 6, alpha^3 fixes Z403 (r=315)", 15, 9, 105618240, 6, {6: 6, 3: 54, 2: 504 * 403 - 6}, 520 - 64, 504 * 403, 4095, {6: 3, 3: 12, 2: 60, 1: 4020}, "min 56.5, p10 57.5"),
+    ("(13,9) SL(2,64)xZ133, Frobenius order 6, e+6+6", 13, 9, 34856640, 6, {6: 6, 3: 54, 2: 3522}, 520 * 19 - 64, 504 * 7, 4095, {6: 3, 3: 12, 2: 60, 1: 4020}, "min 4.9, p10 10.5 (16 samples)"),
+    ("(13,9) SL(2,64)xZ133, Frobenius order 3", 13, 9, 34856640, 3, {3: 59}, 0, None, 4095, {3: 15, 1: 4080}, "min 14.8, p10 18.5 (16 samples)"),
 ]
 
 
@@ -159,8 +171,8 @@ def main2():
     print("the palindrome term, inv = G's own involutions (THRESHOLD Cor. 5.2); anti_old = the first session's anti term;")
     print("E[cost]/2k = expected uncovered elements over both sides / 2k, the unit of the observed RANDORB columns")
     print(f"{'case':50s} {'lam':>5s} {'mu':>6s} {'mu/k':>6s} {'fixed':>6s} {'anti_old':>8s} {'anti':>6s} {'inv':>6s} {'mu_A0':>6s} {'Ecost/2k':>8s} {'evals0':>8s}  | observed (cost/2k)")
-    for name, d, D, N, k, stab, anti, fixb, invol, obs in CASES2:
-        r = rule(d, D, N, k, stab, anti, fixb=fixb, invol=invol)
+    for name, d, D, N, k, stab, anti, fixb, invol, invstab, obs in CASES2:
+        r = rule(d, D, N, k, stab, anti, fixb=fixb, invol=invol, invstab=invstab)
         print(f"{name:50s} {r['lam']:5.2f} {r['mu']:6.1f} {r['generic']:6.2f} {r['fixed']:6.2f} {r['anti_old']:8.2f} {r['anti']:6.2f} {r['inv']:6.2f} {r['mu0']:6.1f} {r['ecost']:8.1f} {r['evals0']:8.2g}  | {obs}")
 
 

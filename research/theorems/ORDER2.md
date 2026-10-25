@@ -78,8 +78,9 @@ clumped Poisson mean (BEYOND_RANDOM formula (1)). For an involution β: σ is th
    Four independent checks passed (§5.2).
 8. **Where else:** order 2 only where order 3 is starved, i.e. Δ = 6 at small N; in the current table that is
    (6,8) alone (§5.3). Order 6 at even D: (13,8) (done), (15,8) with orbits 6+6+3, (13,10) on SL(2,16)²×Z21.
-   Order 6 at odd D (new): Δ ≥ 12 with a tight balanced involution, best candidate (15,9) on SL(2,64)×Z403,
-   +1.5 % (§5.5). Results of this session's runs: RESULTS-SUMMARY.
+   Order 6 at odd D (new): Δ ≥ 12 with a tight balanced involution, and few involutions of G inside Fix(α),
+   Fix(α²) (§4). Best candidate (16,9) on SL(2,8)²×Z703, +5.9 %, μ_A 10.2 (§5.5); (15,9) on SL(2,64)×Z403, +1.5 %,
+   was tried here. Results of this session's runs: RESULTS-SUMMARY.
 
 ---
 
@@ -409,7 +410,10 @@ which is (2/k)√μ when balanced. So at odd D:
 - order 2: μ/2 + √μ at best, always worse than order 3's μ/3;
 - order 6: μ/6 + (1/3)√μ + small fixed-point terms, better than order 3 once μ ≳ 15.
 
-G's own involutions add (2/k)·#Inv(G)·e^{−λ/2} at odd D for every order (§4), so they do not change this comparison.
+G's own free involutions add (2/k)·#Inv(G)·e^{−λ/2} at odd D for every order (§4), so they do not change this
+comparison. The involutions inside Fix(α^j) do: for a Frobenius-type α on SL(2,2^e) they cost about 3–4 clumps at the
+D = 9 sizes (§4, §5.5). For the swap type on SL(2,q)² in characteristic 2, Fix(α) and Fix(α²) are odd-order tori with
+no involutions.
 
 ## 4. The corrected rule
 
@@ -417,13 +421,19 @@ Second-session form. For α of order k with α(S) = S, f fixed generators and m 
 
     μ_A ≈ μ/k  +  Σ_{1 ≠ H ≤ ⟨α⟩} #{x : Stab(x) = H}·(|H|/k)·e^{−λ/|H|}
                +  [D odd]·Σ_{involutions β ∈ ⟨α⟩} (2/k)·( |Anti(β) ∩ Im L_β|·e^{−λ/2−π_β} + |Anti(β) \ Im L_β|·e^{−λ/2} )
-               +  [D odd]·(2/k)·#{involutions of G}·e^{−λ/2}
+               +  [D odd]·Σ_{H ≤ ⟨α⟩} #{involutions x of G with Stab(x) = H}·(2|H|/k)·e^{−λ/(2|H|)}
 
 with π_β = P_ℓ·|Fix(β)|/N palindromic shots (§2.8, §3.5). Anti(β) is taken outside Fix(β), and
-|Im L_β| = N/|Fix(β)|. The last term is THRESHOLD Cor. 5.2 (an involution x = x⁻¹ of G has its words in inverse
-pairs at odd D). The first session's rule.py left it out. It scales as 1/k like μ/k, so it does not change which
-order wins on a given group. It matters in characteristic 2 (SL(2,2^e) has q² − 1 involutions) and for PSL(2,q)
-(about q²/2), and it is negligible for SL(2,q), q odd. Then:
+|Im L_β| = N/|Fix(β)|. The fixed-point term (second) then counts only the non-involutions.
+- The last term is THRESHOLD Cor. 5.2: at odd D an involution x = x⁻¹ of G has its words in inverse pairs. The first
+  session's rule.py left it out.
+- An involution that is also fixed by H ≤ ⟨α⟩ has stabiliser H × ⟨ι⟩, so its words come in 2|H|-tuples. It is
+  missed at e^{−λ/(2|H|)}. For k = 6 the involutions inside Fix(α) are missed at e^{−λ/12}, about 0.3 each at
+  (15,9). They are the last targets an anneal fails to cover (§5.5).
+- For free involutions (H = 1) the term scales as 1/k like μ/k, so it does not change which order wins. The ones
+  inside Fix(α^j) can.
+- It matters in characteristic 2 (SL(2,2^e) has q² − 1 involutions, and SL(2,2) ⊂ Fix of a Frobenius has three)
+  and for PSL(2,q) (about q²/2). It is negligible for SL(2,q), q odd. Then:
 - **Ranking.** Among symmetries whose spaces are large enough, prefer the smallest μ_A, and estimate the anneal
   effort with the effort law. On the odd-D screens of `out/rule_table2.txt`, the expected cost/2k matches the measured
   p1 to within 10 % for every order and for random S (3,000-sample screens). It is within the scatter of the
@@ -786,20 +796,41 @@ The unbalanced variants have 18–36 times the minimum cost. The rule orders all
 (6.3, 21.0, 23.9 against the measured minima 3.2, 114, 57), it underestimates the damage of the unbalanced ones by a
 factor 2–5. Why large Anti or Fix sets on a cyclic factor hurt even more than the clump count says is open.
 
+**What stops the (15,9) anneal.** Seed 1 sat at cost 9 from about 1,400 evaluations on.
+`UNCPRINT=1` (a new haar_order2 option) lists the uncovered elements of its best set
+(`runs/r2/uncprint_159_s1.txt`). All nine are involutions of SL(2,64):
+- on side B, one involution inside Fix(α) = SL(2,2) (α-orbit 1) and one α-orbit of two inside Fix(α²) = SL(2,4);
+- on side A, one α-orbit of six free involutions.
+
+These are the classes the stabiliser-aware involution term (§4) predicts to be hardest. The three involutions of
+SL(2,2) are missed at e^{−λ/12} = 0.29 each, the twelve of SL(2,4) \ SL(2,2) at e^{−λ/6} = 0.08. With that term the
+rule's μ_A for (15,9) is 11.2 instead of 7.9 (about 4·10⁴ evaluations instead of 8·10³), and 14.5 for order 3. So
+order 6 still wins, but the first prediction of the anneal effort was 5× too low. The same correction raises (13,9)
+to μ_A = 16.8 (order 3: 23.6).
+
 **Candidates near the D = 9 records** (balanced involution, Δ ≥ 12; rule values from `rule.py`):
 - **(15,9) SL(2,64)×Z403**, Z403 = Z13×Z31, z ↦ 367z (order 3 mod 13, order 6 mod 31). N = 105,618,240, so
-  211,236,480 vertices, +1.5 % over 208,029,120. Order 6: μ_A = 7.9 with the involution term, about 8·10³
-  evaluations. Order 3: μ_A = 12.1, about 6·10⁴.
+  211,236,480 vertices, +1.5 % over 208,029,120. Order 6: μ_A = 11.2 with the stabiliser-aware involution term,
+  about 4·10⁴ evaluations (7.9 and 8·10³ before that term). Order 3: μ_A = 14.5, about 2·10⁵.
   Anneal: RESULT-159.
 - **(13,9) SL(2,64)×Z133**, Z133 = Z7×Z19, z ↦ 65z (order 3 mod 7, order 6 mod 19), so α³ fixes Z7 and negates
   Z19. Layout e + 6 + 6. N = 34,856,640, so 69,713,280 vertices, +2.9 %; μ = 49.9.
-  - Rule, with the involution term: order 6, μ_A = 12.6, about 8·10⁴ evaluations; order 3, μ_A = 20.6, about
-    4·10⁶. The record group SL(2,103)×Z31 (one involution) has μ_A = 12.0 with order 3, so this is about as hard as
-    the record was, at a larger N.
+  - Rule, with the stabiliser-aware involution term: order 6, μ_A = 16.8, about 7·10⁵ evaluations; order 3,
+    μ_A = 23.6. The record group SL(2,103)×Z31 (one involution) has μ_A = 12.0 with order 3. So this group is harder
+    than the record's, because of SL(2,64)'s involutions.
   - Screen (16 samples, `runs/r2/ro139_*.log`): order 6 min 4.9, p10 10.5 clumps; order 3 min 14.8, p10 18.5.
-  - Anneal: RESULT-139.
+  - Anneal (second session): 2 seeds, stopped unsolved at best 23 (22,249 evaluations, 64 min) and 33 (4,113), when
+    the involution analysis above showed them out of reach. Checkpoints `runs/ckpt/an139_*.ckpt`.
 - (14,9) PSL(2,25)²: +4.8 %, but its 106,275 involutions rule it out (above).
-- (12,9) and (16,9): no tight balanced group found within +10 % of the record.
+- **(16,9) SL(2,8)²×Z703**, Z703 = Z19×Z37, α = swap∘conj (c of order 3, C(c) of order 9) × (z ↦ 11z: order 3
+  mod 19, order 6 mod 37). α³ fixes Z19 and negates Z37 (tight, nearly balanced). Fix(α) and Fix(α²) are odd-order
+  tori, so they hold no involutions. Layout e + 6 + 6 + 3.
+  - N = 178,573,248, so 357,146,496 vertices, +5.9 % over 337,394,400; μ = 37.5.
+  - Rule: order 6, μ_A = 10.2, about 2.4·10⁴ evaluations; order 3, 14.2.
+  - Screen (16 samples, `runs/r2/ro169_sl8sq_703_k6.log`): min 51, p10 90 (4.3 and 7.5 in cost/12; rule 7.7).
+  - At about 2.9 s per evaluation that is 1–2 days of one core, or about 5 hours on four threads: a job for a later
+    session. The best odd-D candidate found.
+- (12,9): no tight balanced group found within +10 % of the record.
 
 ## 6. Ranked conclusions
 
@@ -842,9 +873,12 @@ factor 2–5. Why large Anti or Fix sets on a cyclic factor hurt even more than 
 5. S2. At odd D, an involution's Anti elements are missed at e^{−λ/2−π}, with π = P_ℓ|Fix(β)|/N palindromic shots on
    the Lang image and none elsewhere. Three checks within 15 % (§3.5). So conjugation-type order 2 stays dead at odd D
    (first session; 16 squad runs). A tight, balanced involution pays almost nothing for Anti.
-6. S2. **At odd D, order 6 with a tight balanced involution beats order 3**, with about half the clumps in four groups:
-   SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9), SL(2,64)×Z403 at (15,9) (§5.5). The first session's
-   "odd D: odd orders only" is withdrawn for k ≥ 6.
+6. S2. **At odd D, order 6 with a tight balanced involution beats order 3**, with about half the clumps in five groups:
+   SL(2,64) and SL(2,8)² at (12,7), PSL(2,25)² at (14,9), SL(2,64)×Z403 at (15,9), SL(2,64)×Z133 at (13,9) (§5.5).
+   Unbalanced controls are 18–36× worse. The first session's "odd D: odd orders only" is withdrawn for k ≥ 6.
+6b. S2. At odd D, G's involutions are targets at e^{−λ/(2|H|)}, H their stabiliser in ⟨α⟩. This is the CLASSES miss
+   rates at (12,7) (Fix(α) classes: 3.1 and 13.0 misses against 4.4 and 14 predicted). The (15,9) plateau consists
+   of exactly these involutions (§5.5).
 7. Even orders work at even D when every involution in ⟨α⟩ has a large centralizer. Order 6 on SL(2,64)×Z13: 3/3 seeds,
    4.7·10³–3.7·10⁴ evaluations, against 1.7·10⁵ for order 3 (§5.1). Record Δ13·D8 6,999,552 (§5.2).
 8. The corrected rule (§4) ranks every k = 2 run in the squad logs correctly. With G's involutions included (S2),
@@ -877,9 +911,11 @@ factor 2–5. Why large Anti or Fix sets on a cyclic factor hurt even more than 
 
 ## 6b. Next steps (for later sessions)
 
-1. **Odd D with order 6** (S2, §5.5): (15,9) on SL(2,64)×Z403 if this session did not finish it, and (13,9) on
-   SL(2,64)×Z133 (+2.9 %, μ_A 11.0, about 4·10⁴ evaluations at about 0.4 s each). Both are Frobenius type with
-   a cyclic part balanced as Z_{n₁}×Z_{n₂}, α³ fixing one factor and negating the other.
+1. **Odd D with order 6** (S2, §5.5): **(16,9) on SL(2,8)²×Z703** (+5.9 %, μ_A 10.2, about 2.4·10⁴ evaluations at
+   about 3 s each, so use four threads and checkpoints). It is swap type, so no involutions sit in Fix(α) or
+   Fix(α²). Then (15,9) on SL(2,64)×Z403 (+1.5 %, μ_A 11.2; checkpoints `runs/ckpt/an159_*.ckpt`). (13,9) on
+   SL(2,64)×Z133 is out of reach (μ_A 16.8) because of SL(2,64)'s involutions. A swap-type group for (13,9) would need
+   |G|²·n ≈ 3.4·10⁷ with a balanced Z_n; none was found.
 2. **Order 6 at the big even-D cells**, where compute is the limit: (13,10) on SL(2,16)²×Z21 (§5.3; checkpoints in
    `runs/ckpt/an1310_*.ckpt`, resumable with CKPT=). The same swap construction gives candidates at (14,10)
    (SL(2,16)²×Z42, Δ = 6+6+2 with OSUB=2).
@@ -926,9 +962,11 @@ box, where more hands add no compute. The candidate lists came out of the rule i
 - S2: `classes68.py` (stabiliser in Fix², class invariant from trace multisets; distinct classes among solution files),
   `symmetry68.py` (the full symmetry group of S ⊂ SL(2,q) by linear algebra over GF(q); `--to FILE2` lists the maps
   T with T(S) = S₂), `classsize68.py` (class size in the symmetric space, by brute force).
-- S2: `rule.py --second` (odd-D cases with the palindrome term → `out/rule_table2.txt`).
+- S2: `rule.py --second` (odd-D cases with the palindrome term, G's involutions by stabiliser, and the expected cost
+  in RANDORB's units → `out/rule_table2.txt`).
 - S2: `src/haar_order2.c` mode `NEARDUMP=c` (with RANDORB): prints S and the uncovered elements of every sample of
-  cost ≤ c, including solutions.
+  cost ≤ c, including solutions. `UNCPRINT=1`: at the end of an unsolved run (or a resumed checkpoint with a
+  1-second budget), lists the uncovered elements of the best S with their α-orbit sizes.
 - S2: `runs/r2/` (this session's logs, launch scripts, near-miss dumps, screens), `runs/ckpt/` (anneal checkpoints),
   `out/classes68/` (class censuses, explicit maps, brute-force class sizes), `sols/d68/` (adds the uniform-sample
   solutions).

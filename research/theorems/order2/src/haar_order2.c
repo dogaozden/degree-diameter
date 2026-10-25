@@ -8,6 +8,7 @@
  *   CLASSES=1 (with RANDORB): miss rate of each stabiliser class.  BESTOUT=path: best S of an unsolved run.
  *   OSTAB=1: annealing energy counts uncovered alpha-orbits (each uncovered x weighs |Stab(x)|), generalising ORBW=k.
  *   NEARDUMP=c (with RANDORB): print S and the uncovered elements of every sample of cost <= c (cost 0: solutions).
+ *   UNCPRINT=1: at the end of an unsolved run, list the uncovered elements of the best S with their alpha-orbit sizes.
  *   Everything else is haar_inv unchanged.
  * haar_sym: haar_fast plus structured (automorphism-invariant) generator sets and the Heisenberg family.
  *   ORBIT="k m f": S = {e} + (f-1) generators fixed by an automorphism alpha + m alpha-orbits of size k (d = f + k m),
@@ -1270,6 +1271,18 @@ exdone:
     if (OVCLOCK > 0 || OMAXSTEPS) fprintf(stderr, "TRACE steps=%lld hash=%016llx best=%lld evals=%lld\n", steps, ohash, best, evals);
     printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld evals=%lld time=%.1f orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, best, evals, now() - t0, OK_, OM, OF, NFIX);
     if (best == 0 && !check_and_write(C[0], out)) return 1;
+    if (best > 0 && getenv("UNCPRINT")) {   /* haar_order2: list the uncovered elements of the best S, with alpha-orbit sizes */
+        static uint64_t *UV[2] = {0, 0}; if (!UV[0]) { UV[0] = zalloc64(BITBYTES); UV[1] = zalloc64(BITBYTES); }
+        long long cc = cost_any(C[0], TF, TI, &sc0, UV, &NOBOUND, 0); char buf[1000];
+        fprintf(stderr, "UNCPRINT cost %lld:", cc);
+        for (int sd = 0; sd < (D % 2 ? 2 : 1); sd++) { const uint64_t *V = UV[sd];
+            for (int g = 0; g < N; g++) { int cov;
+                if (WIDE) { uint32_t pw = POSW[g]; cov = (V[4 * (size_t)(pw >> 9) + ((pw & 511) >> 6)] >> (pw & 63)) & 1; }
+                else { int ps = POS[g]; cov = (V[ps >> 6] >> (ps & 63)) & 1; }
+                if (!cov) { int y = alpha(g), o = 1; while (y != g) { y = alpha(y); o++; }
+                    desc_elem(g, buf); fprintf(stderr, " %s%s[orbit %d%s]", D % 2 ? (sd ? "B:" : "A:") : "", buf, o, ginv(g) == g ? ",involution" : ""); } } }
+        fprintf(stderr, "\n");
+    }
     if (best > 0 && getenv("BESTOUT")) {   /* haar_order2: write the best S of an unsolved run (solution-file format) */
         FILE *f = fopen(getenv("BESTOUT"), "w");
         if (f) { fprintf(f, "%d %d %s n %d N %d best %lld\n", d, D, Q->spec, ncyc, N, best);
