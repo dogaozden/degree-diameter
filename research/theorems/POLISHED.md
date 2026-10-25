@@ -29,14 +29,14 @@ Errors and corrections found while preparing this version (none affects a theore
 2. **Corollary C1 needs no Klein correspondence.** `NOTE.md` derived the $(16,4)$ graph through $Q(4,q)$ and listed
    the Klein step as not formalised. The same construction is the point–line dual one in $W(3,q)$ itself: one copy of
    each point of the Singer 2-ovoid and two copies of each line of a regular spread (Section 5). We checked this form
-   by computer for $q=3,5$ (scratch script, orders 120 and 416, diameter 4).
+   by computer for $q=3,5$ (`research/theorems/polish/c1w3.py`: orders 120 and 416, diameter 4).
 3. **Lean status in `NOTE.md` §7 is out of date.** Theorem B *with* stand-ins is now in Lean (`GQST.standin_gqst`),
    and so are the regular versions; see Section 9.
 4. **`NOTE.md` open problem 3** ($q^2+1$ shadow lines on $Q(4,q)$ with one ovoid of clones, $q$ odd) is settled
    negatively by `geometry.tex`, Proposition `prop:shadowbound` (at most $q^2-q+2$). `NOTE.md` is superseded on this point.
 5. **Theorem A in nicer coordinates.** The pair $\kappa_1=1/2$, $\kappa_2=1/(2\varepsilon)$ satisfies
    $\kappa_1\kappa_2=1/(4\varepsilon)$, so the two quadrics can be written $2X_0X_1=X_2^2-\varepsilon X_3^2$ and
-   $2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2$. Same theorem; checked by computer for $q=3,5,7,9$.
+   $2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2$. Same theorem; checked by computer for $q=3,5,7,9$ (`polish/thmA.py`).
 6. **The fourth hat needs $q\ge3$ without coordinates and $q\ge4$ in coordinates.** The coordinate-free statement
    uses four points of a line ($q+1\ge4$); the coordinate version labels them by four field elements $0,1,a,c$
    ($q\ge4$). Both are stated as such below; no table cell has $q=3$.
@@ -486,8 +486,8 @@ integer programming (HiGHS proves 21 optimal for this family; `research/gq4x/q4_
 `research/gq4x/graphs/q4_share_q5_n359.json`); it is not a member of a proved infinite family. The record file
 `records/bipartite_dd/d7D4/359-spec-d7d4-g017-c11.json` (found by evolutionary search) decomposes the same way after
 deleting 21 redundant edges, with stand-ins essential. Every ovoid of $Q(4,p)$, $p$ prime, is an elliptic quadric
-[BGS06], so the choice of ovoid does not matter. Cell: $(7,4)$, 2013: 346, ours 359 (regular: 350 from Theorem A at
-$q=5$).
+[BGS06], so the choice of ovoid does not matter. Appendix A lists the 21 shadow lines in coordinates, so this graph,
+too, can be checked by hand. Cell: $(7,4)$, 2013: 346, ours 359 (regular: 350 from Theorem A at $q=5$).
 
 **Status.** Paper proof (above; `NOTE.md` §2, `geometry.tex` Theorem `thm:B`). Computer-checked on many instances
 (`research/gq4`, `research/gq4x`). Lean-checked for every GQ of order $(s,t)$: the version with all stand-ins original
@@ -892,7 +892,7 @@ for $z=0$, $J_0x=(-x_6,x_5,-cx_4,x_3,-cx_2,cx_1)$.
 instance, for $z=0$: $Q_0(J_0x)=cx_2x_6+cx_1x_5-c^2x_4^2-cx_3^2=cQ_0(x)$, and $p_{12}=x_1x_5+x_2x_6$,
 $p_{34}=x_3^2+cx_4^2$, so $p_{12}-p_{34}=Q_0(x)$; in (d), $\mathrm{num}(J_0x)=c\,\mathrm{num}(x)$,
 $\mathrm{den}(J_0x)=c\,\mathrm{den}(x)$, and the polar forms $x_2y_3+x_3y_2-x_4y_5-x_5y_4$ and $2cx_2y_2+2x_5y_5$
-vanish at $y=J_0x$). We re-checked all of them with sympy for this note. (c) $J_z$ has no eigenvector ($-c$ is a
+vanish at $y=J_0x$). We re-checked all of them with sympy for this note (`polish/jz.py`). (c) $J_z$ has no eigenvector ($-c$ is a
 non-square), so $x,J_zx$ span a line; if $Q_z(x)=0$, then by (a) the whole line is singular and by (b) its Grassmann
 coordinates satisfy Tits' equations, so it is a line of $H(q)$ in $\Pi_z$ through $x$, the one of Lemma 6.1(b). (d)
 By (c), a line $n\in S\setminus\{v\}$ is $\{sx+tJ_0x\}$ for any of its points $x$, and $s^2+ct^2\ne0$. $\square$
@@ -1214,3 +1214,50 @@ record modules rebuilt one at a time). The modules added after that date (`Hexag
   PG(4,q), Mitt. Math. Sem. Giessen 201 (1991) 141–147 (page range to be verified).
 - [VM98] H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998.
 - [CW] CombinatoricsWiki, The degree diameter problem for bipartite graphs (values read 2026-10-10).
+
+---
+
+## Appendix A. The $(7,4)$ example in coordinates
+
+$Q(4,5)$: the quadric $X_0^2+X_1X_2+X_3X_4=0$ of $\mathrm{PG}(4,5)$, with its $156$ points and $156$ lines (points are
+written with first non-zero coordinate 1). Ovoid $\mathcal O=Q(4,5)\cap\{X_4=2X_3\}$ ($-2$ is a non-square mod 5), an
+elliptic quadric with 26 points. The structure:
+
+- the incidence graph of $Q(4,5)$ (312 vertices, all of degree 6);
+- one clone $o'$ of each $o\in\mathcal O$, joined to the 6 lines on $o$ (26 vertices; every line gains exactly one
+  clone, as $\mathcal O$ is an ovoid);
+- 21 shadow lines, one for each line below, joined to its six points, except that a starred point is replaced by its
+  clone (the stand-in).
+
+```
+ 1  (0:0:0:0:1) (0:1:0:0:0)  (0:1:0:0:1) (0:1:0:0:2)  (0:1:0:0:3)  (0:1:0:0:4)
+ 2  (0:0:0:1:0) (0:1:0:0:0)* (0:1:0:1:0) (0:1:0:2:0)  (0:1:0:3:0)  (0:1:0:4:0)
+ 3  (0:0:1:0:0) (1:0:0:2:2)  (1:0:1:2:2) (1:0:2:2:2)  (1:0:3:2:2)  (1:0:4:2:2)
+ 4  (0:0:1:0:1) (1:2:0:3:3)  (1:2:1:3:4) (1:2:2:3:0)  (1:2:3:3:1)  (1:2:4:3:2)
+ 5  (0:0:1:0:2) (1:1:0:2:2)  (1:1:1:2:4) (1:1:2:2:1)  (1:1:3:2:3)  (1:1:4:2:0)
+ 6  (0:0:1:0:4) (1:3:0:3:3)  (1:3:1:3:2) (1:3:2:3:1)  (1:3:3:3:0)  (1:3:4:3:4)
+ 7  (0:0:1:1:0) (1:4:0:4:1)  (1:4:1:0:1) (1:4:2:1:1)  (1:4:3:2:1)  (1:4:4:3:1)
+ 8  (0:0:1:2:0) (1:4:0:3:3)  (1:4:1:0:3) (1:4:2:2:3)  (1:4:3:4:3)  (1:4:4:1:3)
+ 9  (0:0:1:3:0) (1:2:0:4:1)  (1:2:1:2:1) (1:2:2:0:1)  (1:2:3:3:1)* (1:2:4:1:1)
+10  (0:0:1:4:0) (1:4:0:1:4)  (1:4:1:0:4) (1:4:2:4:4)  (1:4:3:3:4)  (1:4:4:2:4)
+11  (0:1:1:1:4) (1:0:3:4:1)  (1:1:4:0:0) (1:2:0:1:4)  (1:3:1:2:3)  (1:4:2:3:2)
+12  (0:1:1:2:2) (1:0:0:1:4)  (1:1:1:3:1) (1:2:2:0:3)  (1:3:3:2:0)  (1:4:4:4:2)
+13  (0:1:1:3:3) (1:0:2:3:3)  (1:1:3:1:1) (1:2:4:4:4)  (1:3:0:2:2)  (1:4:1:0:0)
+14  (0:1:1:4:1) (1:0:2:4:1)  (1:1:3:3:2) (1:2:4:2:3)  (1:3:0:1:4)  (1:4:1:0:0)*
+15  (0:1:2:1:3) (1:0:3:3:3)  (1:1:0:4:1) (1:2:2:0:4)  (1:3:4:1:2)  (1:4:1:2:0)
+16  (0:1:2:2:4) (1:0:3:1:4)  (1:1:0:3:3) (1:2:2:0:2)  (1:3:4:2:1)  (1:4:1:4:0)
+17  (0:1:3:2:1) (1:0:1:3:3)  (1:1:4:0:4) (1:2:2:2:0)  (1:3:0:4:1)  (1:4:3:1:2)
+18  (0:1:3:3:4) (1:0:4:1:4)  (1:1:2:4:3) (1:2:0:2:2)  (1:3:3:0:1)  (1:4:1:3:0)
+19  (0:1:4:1:1) (1:0:4:3:3)  (1:1:3:4:4) (1:2:2:0:0)  (1:3:1:1:1)  (1:4:0:2:2)
+20  (0:1:4:2:3) (1:0:0:3:3)  (1:1:4:0:1) (1:2:3:2:4)  (1:3:2:4:2)  (1:4:1:1:0)
+21  (0:1:4:4:4) (1:0:0:4:1)  (1:1:4:3:0) (1:2:3:2:4)* (1:3:2:1:3)  (1:4:1:0:2)
+```
+
+*What to check by hand* (Theorem 3.2(b) with $s=t=5$, $\Delta=7$): each listed line lies on the quadric; the 21 lines
+are pairwise disjoint except at the four ovoid points $(0:1:0:0:0)$, $(1:2:3:3:1)$, $(1:4:1:0:0)$, $(1:2:3:2:4)$, each
+on exactly two of them (lines 1 and 2, 4 and 9, 13 and 14, 20 and 21), and on the second of the two the point is
+replaced by its clone. So every old point and every clone serves at most one shadow line. Degrees: old lines
+$6+1=7$; old points $6$ or $7$; clones $6$ or $7$; shadow lines $6$. Order $156+156+26+21=359$; diameter 4 by
+Theorem 3.2(a). The list was produced by `research/theorems/polish/q4_359.py` (HiGHS proves 21 optimal for this
+family), which also rebuilds the graph and checks maximum degree 7 and diameter 4. Lean checks the record file of the
+same order (`nb_7_4`), which has the same shape (Section 3), not this particular list.
