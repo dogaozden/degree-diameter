@@ -27,7 +27,7 @@ TLS). I parsed its values, cell colours (the wiki's holder key) and its upper-bo
 ## 2. Summary
 
 <!-- SUMMARY -->
-Of the 112 cells (counts from cells.csv; checks still running when this was written: (16,7)):
+Of the 112 cells (counts from cells.csv):
 
 - **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
@@ -92,16 +92,15 @@ Conder's census of cubic symmetric graphs (1-arc-regular, |Aut| = 504, girth 12)
 - D = 5, Δ = 10..15 (6 cells) and D = 7, Δ = 7, 9..16 (9 cells): every value is exactly (2j+1)·|GQ(q)| or
   (2j+1)·|H(q)| with Δ = q+1+j. I built 2j+1 copies of the polygon's incidence graph joined by j bijections
   points → lines (`tools/xt_build.py`; diameter ≤ n+1 for any bijections, proof in the file header). All 15 reach
-  exactly the table value; 14 pass (D = 7 by apsp_orb, up to 2,480,184 vertices) and the (16,7) check (4,022,340
-  vertices) was still running when this was written (see the summary). Marked "order": same order, very
+  exactly the table value and pass (D = 7 by apsp_orb, up to 4,022,340 vertices). Marked "order": same order, very
   probably the same family, but the original is unavailable.
 - D = 8 (Δ = 10..16 except 13): the values are Gómez's ΩH_q (1986 thesis); my rebuild has the right order but
   diameter 9 (§4, flag 1).
 - (3,8) = 256: no source; the squad round found two graphs of exactly 256 (a lift of Q₃ over Z₃₂, and a Z₃₂-symmetric
   annealed graph) and one of 258 (research/squads/table-audit-r1/), all valid.
 - (3,10) = 800: no source. After squad round r2 (research/squads/table-audit-r2/, closest 8), a 41-min run of the
-  same Z_c-symmetric annealer at b = 10 orbits, c = 80 found a graph of exactly 800: a Z₈₀-lift of a cubic bipartite
-  multigraph on 5 + 5 vertices, edge orbits (a, b, t) meaning (a, i) ~ (b, i + t): (0,9,65) (0,8,23) (0,6,34)
+  round-r1 Z_c-symmetric annealer (research/squads/table-audit-r1/c6/sym_anneal.c, seed 11) at b = 10 orbits,
+  c = 80 found a graph of exactly 800: a Z₈₀-lift of a simple cubic bipartite graph on 5 + 5 vertices, edge orbits (a, b, t) meaning (a, i) ~ (b, i + t): (0,9,65) (0,8,23) (0,6,34)
   (1,7,11) (1,5,76) (1,8,17) (2,5,62) (2,9,55) (2,8,30) (3,6,55) (3,9,24) (3,7,49) (4,6,5) (4,7,46) (4,5,30)
   (graphs/d3D10_n800_symZ80_b10.edges.txt; apsp.c VALID, and a separate Python BFS check gives diameter 10).
 - (16,5) = 27,300 and (13,8): no construction traced (§4).
