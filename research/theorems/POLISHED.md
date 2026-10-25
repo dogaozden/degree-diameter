@@ -1215,8 +1215,10 @@ behind every general theorem cited above were rebuilt from a fresh clone** (Lean
 `#print axioms` run on the 48 theorem names cited in this section gives `[propext, Classical.choice, Quot.sound]` for
 every one (`research/theorems/polish/lean/PolishAxioms.lean`, `.out`, and `BUILD.txt` with the per-module log), and
 the grep for `sorry`/`admit`/`axiom`/`native_decide` in `lean/BipartiteDD/**.lean` finds nothing. The explicit record
-graphs of `Records.lean` and `Records9592.lean` (192, 276, 376, 359, 1782, 3146, 5070, 5440, 9592) were covered by
-the 2026-10-20 full build.
+graphs were rebuilt the same day: `Records.lean`, `Records9592.lean` and all 91 modules they import (one at a time;
+four first attempts were killed for lack of memory and passed on retry), and `#print axioms` on `nb_11_3`, `nb_13_3`,
+`nb_15_3`, `nb_7_4`, `nb_11_4_v2`, `nb_13_4_v2`, `nb_15_4_v2`, `nb_16_4_v2`, `nb_7_6` gives the same three axioms
+(`polish/lean/RecordAxioms.lean`, `.out`).
 
 ---
 
