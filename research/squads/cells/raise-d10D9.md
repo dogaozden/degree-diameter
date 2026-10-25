@@ -5,13 +5,14 @@ Moore bound 96,855,122.
 
 ## Status
 
-**New record this session: 8,064,960 vertices** = 2·|PSL(2,31) × Z271| (psl 31 x Z271, orbit k=5, m=2, f=0, μ = 24.5),
-research/frontier/sols/d10D9_psl_31_271_orb5f0_s1.txt. build_haar2.py VALID (edge-list sha256
-3f69f5a0db8f9d53b6d25506c51db2970bfb8884cca5a052b50af077c92b7871), haarcheck_psl VALID, found in 4,545 evaluations (96 s).
-It beats the previous record 8,003,856 (sl 83 x Z7, k=3 m=3 f=1, research/frontier/sols/d10D9_sl_83_7_orb3_s1.txt)
-by 61,104 (+0.76 %). Log: research/structured/runs/d10D9_psl_31_271_orb5f0_s1.log.
+**New record: 8,306,760 vertices** = 2·|PSL(2,29) × Z341| (psl 29 x Z341, orbit k=5, m=2, f=0, μ = 35.9),
+research/frontier/sols/d10D9_psl_29_341_orb5f0_s1.txt. build_haar2.py VALID (edge-list sha256
+0c7269a94a7dd41310aff0ea569904bcf7b6781d6ca53fb3825447fbdbb3b163), haarcheck_psl VALID. Found after 206,057 evaluations
+(1,167 s, one thread). Log: research/structured/runs/d10D9_psl_29_341_orb5f0_s1.log.
+It beats 8,064,960 (psl 31 x Z271, k=5 m=2 f=0, research/frontier/sols/d10D9_psl_31_271_orb5f0_s1.txt, 4,545 evaluations)
+by 241,800 (+3.0 %) and the original 8,003,856 by 303,000 (+3.8 %). Both are sol files in the same format.
 
-Window for the next record: N > 4,032,480 (2N > 8,064,960).
+Window for the next record: N > 4,153,380 (2N > 8,306,760).
 
 ## Method
 
@@ -51,3 +52,8 @@ Screen: `orb_screen.py 10 9 4001929 4060000 "3 3 1" --fams sl,psl,pgl --samples 
   - sl 23 x Z331, k=3 m=3 f=1: cost 38 at 330 s, still running (no cyclic subgroup of order ≥ 64: slower evaluator)
   - psl 31 x Z271, k=5 m=2 f=0 (order-5 automorphism exists since 31 ≡ 1 mod 5, 271 ≡ 1 mod 5): cost 10 at 30 s
 - Not yet solved. Next: more seeds, and the k=5 f=0 structure on the other groups with q ≡ ±1 mod 5 (psl 29 x Z331).
+- 08:00–08:20 UTC: four runs on the next window (k=5 f=0 on psl 29 x Z341, psl 41 x Z121; k=3 f=1 on sl 25 x Z259 and
+  pgl 25 x Z259, all N ≤ 4.04M except psl 41). psl 29 x Z341 (k=5) solved at 206,057 evaluations: 8,306,760 vertices.
+  The k=3 runs on N = 4,040,400 were stopped as obsolete (below the new bar). Best costs at 19 min: psl 41 x Z121 (k=5)
+  4, psl 29 x Z341 10 (solved later), pgl 25 x Z259 12, sl 25 x Z259 24.
+- Still running: psl 41 x Z121 (k=5 f=0, N = 4,167,240; the only candidate above 8,306,760 in this window).
