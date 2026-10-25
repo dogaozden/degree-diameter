@@ -64,3 +64,35 @@ t=1740 steps=252555 evals=2020441 cost=5 best=5 T=0.32
 t=1770 steps=256604 evals=2052833 cost=5 best=5 T=0.15
 t=1800 steps=260947 evals=2087577 cost=5 best=5 T=0.15
 t=1830 steps=265283 evals=2122265 cost=5 best=5 T=0.15
+t=1860 steps=269342 evals=2154737 cost=5 best=5 T=0.89
+t=1890 steps=273580 evals=2188641 cost=5 best=5 T=0.32
+t=1920 steps=277972 evals=2223777 cost=5 best=5 T=0.15
+t=1950 steps=282416 evals=2259329 cost=5 best=5 T=0.15
+t=1980 steps=287187 evals=2297497 cost=5 best=5 T=0.15
+t=2010 steps=291852 evals=2334817 cost=5 best=5 T=0.89
+t=2040 steps=296249 evals=2369993 cost=5 best=5 T=0.32
+t=2070 steps=300890 evals=2407121 cost=5 best=5 T=0.15
+t=2100 steps=305597 evals=2444777 cost=5 best=5 T=0.15
+t=2130 steps=310186 evals=2481489 cost=18 best=5 T=0.15
+t=2160 steps=314908 evals=2519265 cost=5 best=5 T=0.89
+t=2190 steps=319725 evals=2557801 cost=5 best=5 T=0.32
+t=2220 steps=324584 evals=2596673 cost=5 best=5 T=0.15
+t=2250 steps=329304 evals=2634433 cost=5 best=5 T=0.15
+t=2280 steps=334023 evals=2672185 cost=5 best=5 T=0.15
+t=2310 steps=338644 evals=2709153 cost=14 best=5 T=0.89
+t=2340 steps=343249 evals=2745993 cost=14 best=5 T=0.31
+t=2370 steps=347768 evals=2782145 cost=14 best=5 T=0.15
+t=2400 steps=352442 evals=2819537 cost=14 best=5 T=0.15
+t=2430 steps=357067 evals=2856537 cost=14 best=5 T=0.15
+t=2460 steps=361221 evals=2889769 cost=5 best=5 T=0.89
+t=2490 steps=365739 evals=2925913 cost=5 best=5 T=0.31
+t=2520 steps=370310 evals=2962481 cost=5 best=5 T=0.15
+t=2550 steps=374927 evals=2999417 cost=5 best=5 T=0.15
+t=2580 steps=379500 evals=3036001 cost=5 best=5 T=0.15
+t=2610 steps=383803 evals=3070425 cost=5 best=5 T=0.89
+RESULT d=8 D=9 group=prod sl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 best=0 evals=3094273 time=2630.1 orbit k=3 m=2 f=2 fix=107
+full diameter check: OK
+wrote research/frontier/runs/raise-d8D9/b2/d8D9_prod_sl_8_sl_11_1_orb3_s2.txt
+n = 1330560 edges = 5322240 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 15d7aa6b6662c7a3aee6d936f39b7b00e70a145fb8e27c790a6c4143b56f15b9
+VALID d=8 D=9 group=prod sl 8 poly x^3+x+1 sl 11 x Z_1 N=665280 vertices=1330560

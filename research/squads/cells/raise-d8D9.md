@@ -34,3 +34,12 @@ Job "raise-8-9" (Haar worker, Haiku 5.5, 2026-10-25). Branch: claude/raise-d8d9-
   sl 16 x Z163 ranks 9th (p1 99) despite the lowest mu. psl 47 x Z13 already reached cost 6 in 2400 s earlier (research/structured/runs).
 - ~1800 s: b1 best 5, b2 best 5, b3 best 9. Still none solved (runs end at 3600 s, about 08:49).
 - Next candidates to run after these: sl 25 x Z43 and psl 47 x Z13 (longer), then more seeds on the best group.
+
+## RECORD: (8,9) 1,330,560 vertices (beats 1,326,960 by 3,600)
+- Group: PROD sl 8 (poly x^3+x+1) x sl 11, Z_1; N = |G| = 665,280; 2N = 1,330,560. Orbit search ORBIT="3 2 2", seed 2, K=8,
+  3,094,273 evals in 2,630 s (run b2, research/frontier/runs/raise-d8D9/b2/).
+- Solution: research/frontier/sols/d8D9_prod_sl_8_sl_11_1_orb3_s2.txt (sha256 of the edge list 15d7aa6b6662c7a3aee6d936f39b7b00e70a145fb8e27c790a6c4143b56f15b9).
+- Checks: haar_sym full diameter check (OK); build_haar2.py VALID d=8 D=9; research/frontier/check_haar_indep.py VALID
+  (BFS from A and B: ecc 9, reached all, 8 distinct neighbours each). Log in the same folder.
+- mu = 27.1 with |Fix(alpha)| = 107. The fixed-point term was large, and it still solved.
+- Still running: b1 (same group, seed 1), b3 (sl 16 x Z163), b4 (sl 25 x Z43). Next: push this group further (more seeds, larger order).
