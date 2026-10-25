@@ -1,0 +1,22 @@
+# (14,7) n = 1,789,588 = 10*177,156 + 2*(8,246 + 768): typed five-level H(11) graph (types HDHDH, cell-16-7 session,
+# master 1,788,052) with the mirrored surgery (768 elements, sigma of the (14,7) 1,774,632 graph) added on the four
+# non-friendly transitions 4->0, 0->2, 2->4 (sigma) and 1->3 (sigma^-1); 9,014 hubs per side, hub graph = 9 random
+# perfect matchings. Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25. Table 1,771,560; master 1,788,052.
+# Solution: research/frontier/sols/d14D7_hex11_typedmirror768_n1789588.sol (sha256 45659e44151058d5a50e09fe3cec7ab3d55198436ce820bf479786e52cff6518)
+#   names d14D7_hex11_typed133_K62_n1788052.sol and d14D7_hex11_mirror768_n1774632.sol (with their sha256) and lists
+#   the hub graph. Rebuild (three builds, byte-identical):
+#   python3 research/cell147/typedmirror/tm_build.py build hex_q11.bin research/frontier/sols/d14D7_hex11_typedmirror768_n1789588.sol g.edges
+#   edge list sha256 e972387619916f3454e8fa74c14807cb0c4c9c4c0243b0e5cb912bdf73f2008e; hex_q11.bin (hexgen2 11) sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19
+-- tm_build.py checks (every hypothesis of the one-transition surgery theorem, hub graph distances, degrees):
+hypotheses OK: |R_H| = 8645, |R_L| = 8246, |R'| = 768 (non-collinear, sigma(R') non-concurrent, local duality at all 768)
+free A-slots per level [9413, 9014, 9413, 16492, 9413] B-slots [9014, 17290, 9014, 9413, 9014] -> hubs 9014 9014
+hub graph: same-side distances <= 6 on both sides
+n = 1789588, edges = 12518402, degree min 13 max 14, hub graph edges 81087
+-- spot check (research/cell147/typedmirror/apsp_src.c: BFS from 256 hubs, 640 freed vertices on all levels, 384 random):
+n=1789588 edges=12518402 degree min=13 max=14 bipartite=yes max eccentricity over 1280 sources=7
+SPOT OK d=14 D=7 n=1789588 (sources only)
+-- full check: research/lifts/coordinator_check/apsp_mt.c (no symmetry assumed: BFS from all 1,789,588 vertices), 4 threads:
+== apsp_mt tm1.edges 14 7 4 (Sun Oct 25 08:49:41 UTC 2026)
+n=1789588 edges=12518402 degree min=13 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1789588
+exit 0 wall 3954s (Sun Oct 25 09:55:35 UTC 2026)

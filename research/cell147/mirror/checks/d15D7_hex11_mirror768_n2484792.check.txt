@@ -1,0 +1,18 @@
+# (15,7) n = 2,484,792: seven copies of H(11) (multi.c, r = 3) with the mirrored surgery set R' = R756 + 12 points,
+# the same sigma and R' as the (14,7) graph 1,774,632 (checks/d14D7_hex11_mirror768_n1774632.check.txt).
+# Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25.  Master at the time: 2,484,720 (R756); master now has
+# 2,497,075 (typed levels, cell-16-7), so this graph is superseded; it is kept as a checked instance of the theorem.
+# Solution: research/frontier/sols/d15D7_hex11_mirror768_n2484792.sol (multi_sol.py build: IDENTICAL edge file).
+# sha256: a823153daf2d7de0ae87e029777f3cfa246c9e035176348c4601cee27b5c245e  e_d15D7_2484792.txt ; e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex_q11.bin
+-- multi.c checks (non-collinear, local duality, non-concurrent) and BFS spot check:
+H(11), r = 3 (7 levels, Delta 15), |R| = 768, full removal, 2304 line-side and 2304 point-side hubs, hub degree 8, n = 2484792
+hub graph attempt 0: OK
+graph: n = 2484792, edges = 18635940, max degree 15
+wrote e_d15D7_2484792.txt
+q=11 r=3 m=768 n=2484792 maxdeg=15 sources=16384 worst_ecc=7 bad=0
+-- full check: research/lifts/coordinator_check/apsp_orb.c (level shift verified as an automorphism, BFS from all
+   354,312 level-0 vertices and all 4,608 hubs), 1 thread:
+== apsp_orb e_d15D7_2484792.txt 15 7 1 7 354312 (Sun Oct 25 07:36:52 UTC 2026)
+n=2484792 edges=18635940 degree min=15 max=15 bipartite=yes diameter=7 (level shift L=7 B=354312 checked as an automorphism; 358920 sources)
+RESULT VALID d=15 D=7 n=2484792
+exit 0 wall 4961s (Sun Oct 25 08:59:33 UTC 2026)

@@ -1,0 +1,8 @@
+RESULT q=11 orbits=35444 good=29540 density=0.6212 best=756 norb_used=156 exact=0 pairs_orthogonal=0 time=88.7
+
+--- stderr ---
+points 177156, generators 1, orbits 35444 (max size 5), good orbits 29540 [1.1s]
+orbit sizes (size:count/good): 1:16/16 5:35428/29524
+compatibility graph: K=29540 edges=271016242 density 0.6212 [28.6s]
+warm start: 756 points read, 156 orbits inside (weight 756)
+  tabu: 1734400 iterations, 26 restarts, 60.0s

@@ -1,0 +1,29 @@
+# (14,7) n = 1,774,632: five copies of H(11) (multi.c, r = 2) with the mirrored surgery set R' = R756 + 12 points
+# Session 01S9fS5Zi4bymqvTfraD7hJx (job cell-14-7), 2026-10-25.  Construction: research/cell147/mirror/README.md.
+# Configuration: squad round r6 card c3 (research/squads/d14D7-r6/c3/: extra points with no base point near three of them,
+# then line-only annealing); state research/cell147/mirror/configs/state_k12_r6c3.npz, X and L in configs/k12_r6c3.txt;
+# sigma by mirror_build.py configs/state_k12_r6c3.npz 1 OUT (nothing dropped).
+# Solution file: research/frontier/sols/d14D7_hex11_mirror768_n1774632.sol (multi_sol.py format).
+# Rebuild (IDENTICAL edge file, checked):
+#   python3 research/d13D7/tools/multi_sol.py build research/frontier/sols/d14D7_hex11_mirror768_n1774632.sol hex_q11.bin e1774632.txt
+# sha256:
+#   e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex_q11.bin
+#   c64f3c7265f5cfac8a8d3d88a8d81891793cfe4800c6e54ae3aa00c3456158ee  e1774632.txt
+#   5c8d9b2a9f00534dc052374dea0c793099fd8990f5c02c0702d0a3f13453c320  d14D7_hex11_mirror768_n1774632.sol
+
+-- multi.c (DUALFILE = sigma, RFILE = R'): its own checks (R' non-collinear, local duality at every point of R',
+   sigma(R') non-concurrent) pass; BFS from all damaged vertices, all hubs and 1024 random vertices:
+H(11), r = 2 (5 levels, Delta 14), |R| = 768, full removal, 1536 line-side and 1536 point-side hubs, hub degree 9, n = 1774632
+hub graph attempt 0: OK
+graph: n = 1774632, edges = 12422424, max degree 14
+wrote e1774632.txt
+q=11 r=2 m=768 n=1774632 maxdeg=14 sources=11776 worst_ecc=7 bad=0
+
+-- full check: research/lifts/coordinator_check/apsp_orb.c (level shift verified edge by edge as an automorphism, then
+   bit-parallel BFS from all 354,312 level-0 vertices and all 3,072 hubs), 3 threads on the cloud container:
+   apsp_orb e1774632.txt 14 7 3 5 354312
+Sun Oct 25 06:00:30 UTC 2026
+n=1774632 edges=12422424 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357384 sources)
+RESULT VALID d=14 D=7 n=1774632
+exit 0 wall 2110s
+Sun Oct 25 06:35:40 UTC 2026
