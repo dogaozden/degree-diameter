@@ -13,3 +13,7 @@ Source of the record and its checks: origin/claude/voltage-lifts-search-6lfotq, 
   round 1: a = 6209–6240, b = 6241–6270, c = 6271–6300, d = 6301–6360; --top 12, --secs 300, --seeds 1.
 
 ## Log
+- Round 1 (haar_cell.py, 4 windows, 48 anneals of 300 s, 1 seed): no solve in 6209–6360.
+  Near misses: N = 6216 meta 259 24 97 at cost 1; N = 6270 meta 209 30 26 and meta 418 15 49 and N = 6275
+  meta 251 25 4 at cost 2; N = 6321 meta 301 21 23 at cost 3.
+- Round 2 (haar_gen3 directly, 1200 s each, 4 cores): re-anneal of the cost-1 and cost-2 near misses with seeds 2–3.
