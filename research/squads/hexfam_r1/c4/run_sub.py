@@ -40,7 +40,7 @@ if __name__ == '__main__':
         if B is None:
             print(name, 'no subsystem', flush=True); continue
         perms = [G.perm(reflection_matrix(b, q)) for b in B]
-        wgt, pts, info = evaluate(G, perms, cap, tl=60, label=name)
+        wgt, pts, info = evaluate(G, perms, cap, tl=float(__import__("os").environ.get("TL", "15")), label=name)
         ok, ext = check_set(G, pts) if pts else (True, 0)
         print(name, 'orbits', info['orbits'], 'selfcompat', info['selfcompat'], 'best', wgt, 'exact' if info['exact'] else 'TIMELIMIT',
               'sizes', info['sizes'][:12], 'valid', ok, '[%.0fs]' % (time.time() - t0), flush=True)

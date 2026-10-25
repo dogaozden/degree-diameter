@@ -1,0 +1,33 @@
+[     3s] geometry loaded: N=177156 L=177156 |R|=756 |Sp|=1332 non-spread=175824
+[    12s] spread pattern CSR built: nnz=21274704 (mean 121.0 per line)
+[    14s] candidates 76608, |N(x)| range 60..78
+[    14s] initial state ready; ncell=1
+[    15s] added x=115475 |N(x)|=60 s=0 (conc spread 66686, free 1331) score 902.4 feasible-lines 175824 | |X|=1 cells=2, K=757
+[    15s] tested 1, alive 69575
+[    16s] added x=99096 |N(x)|=60 s=80 (conc spread 162503, free 1330) score 896.3 feasible-lines 159841 | |X|=2 cells=4, K=758
+[    16s] tested 2, alive 63206
+[    16s] added x=83210 |N(x)|=62 s=19659 (conc spread 19664, free 1329) score 889.3 feasible-lines 145320 | |X|=3 cells=7, K=759
+[    16s] tested 3, alive 57400
+[    17s] added x=89781 |N(x)|=62 s=41195 (conc spread 46560, free 1328) score 879.9 feasible-lines 132117 | |X|=4 cells=11, K=760
+[    17s] tested 4, alive 52109
+[    18s] added x=51908 |N(x)|=74 s=75223 (conc spread 48437, free 1327) score 864.4 feasible-lines 112377 | |X|=5 cells=16, K=761
+[    18s] tested 5, alive 47376
+[    19s] added x=106671 |N(x)|=60 s=65311 (conc spread 89121, free 1326) score 851.5 feasible-lines 106730 | |X|=6 cells=24, K=762
+[    19s] tested 6, alive 42999
+[    20s] added x=118762 |N(x)|=62 s=88138 (conc spread 170583, free 1325) score 835.9 feasible-lines 90967 | |X|=7 cells=32, K=763
+[    20s] tested 7, alive 39006
+[    21s] added x=70739 |N(x)|=62 s=48761 (conc spread 135818, free 1324) score 819.1 feasible-lines 60957 | |X|=8 cells=46, K=764
+[    21s] tested 8, alive 35412
+[    22s] added x=124831 |N(x)|=60 s=151625 (conc spread 168706, free 1323) score 783.8 feasible-lines 2115 | |X|=9 cells=65, K=765
+[    22s] tested 9, alive 32167
+[    23s] added x=99863 |N(x)|=60 s=143776 (conc spread 83199, free 1322) score 755.0 feasible-lines 2057 | |X|=10 cells=90, K=766
+[    23s] tested 10, alive 29221
+[    23s] added x=84679 |N(x)|=62 s=97949 (conc spread 162964, free 1321) score 724.0 feasible-lines 1622 | |X|=11 cells=114, K=767
+[    23s] tested 11, alive 26517
+[    24s] added x=51380 |N(x)|=60 s=166905 (conc spread 116839, free 1320) score 662.7 feasible-lines 4 | |X|=12 cells=147, K=768
+[    24s] tested 12, alive 24041
+[    25s] added x=71178 |N(x)|=60 s=54582 (conc spread 44764, free 1319) score 621.4 feasible-lines 2 | |X|=13 cells=183, K=769
+[    25s] tested 14, alive 21852
+[    27s] added x=13397 |N(x)|=60 s=146451 (conc spread 38121, free 1318) score 576.7 feasible-lines 1 | |X|=14 cells=223, K=770
+[    27s] tested 606, alive 19356
+[    40s] RESULT order=ovl seed=7 |R|=756 + |X|=14 = 770; tested 19962 candidates; stalled=True; time-limit=False

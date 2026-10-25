@@ -36,6 +36,27 @@ Goal: as r1 (q = 9 now 4,306). Cards and best score:
   q = 4 35-set passes Lemma 3 (56 midpoints) and gives a diameter-7 graph (checked by Opus).
 - c8 wildcard, tensor split GF(q)^3 (x) GF(q)^2 + 1 with SO3: q11 122, q13 326 (dead end).
 Kept / next (Opus): the squad result that mattered is c7's: mixed freed sets really work (Lemma 3). Opus turned it
-into Proposition 6 (add pairwise opposite points x with lines s_x to a record pure set, S chosen inside the spread
+into Proposition 4 of THEOREM.md (add pairwise opposite points x with lines s_x to a record pure set, S chosen inside the spread
 by cell counting): (7,7) 23,596 (72 + 8), all-pairs VALID; runs at q = 7, 8, 11, 13 in progress. Unions of the
 distinct 792 / 756 sets (ARW on their union, 7,419 and 2,123 points) give nothing above 792 / 756.
+
+## 2026-10-25 06:45–07:45 UTC, hexagon-family (Opus lead), round hexfam_r3
+Goal: evolve the extension (THEOREM.md Prop. 4: add points x with lines s_x to a pure record set R, cell counting
+in the spread). Score = K from ext/mixsol.py (Lemma 3 check, sigma, (R2)). Bars: q11 768, q13 815, q8 232, q7 296,
+q5 81. Cards and best score:
+- c1 q11, destroy-and-repair on the added pairs (remove 1-3, greedy re-add, 20k sampled lines), from 769: 769.
+- c2 q11, relaxed Lemma 3 greedy (added points may be at distance 4 from each other): 767; relaxation fires rarely.
+- c3 q11, greedy over ALL 175,824 non-spread lines (no sampling), candidates ranked by overlap with covered R-points:
+  **770** (756 + 14). Every order stalls at 13-14 added points: no candidate keeps a feasible line.
+- c4 q13, extension from a different pure 792 set (E6 + A3A1A1 type) and a repair resume: **816** (792 + 24).
+- c5 q11, R moved by reflections, other 756 set, Hermitian spread: 768 for every position; plateau at 12 adds.
+- c6 q5/q7/q8, destroy-and-repair ILS over all non-spread lines: 81 / 296 / 232 (ties).
+- c7 q11, exchange (remove one R-point, add pairs): 768; no single-removal fixer exists in its 300-line sample.
+- c8 q13, disjoint-neighbourhood CP-SAT on a pool of 600 pairs: 798. Notes min |N(x) cap R| = 24 at q = 13, so a
+  disjoint family is limited by the line side, not by R.
+Kept / next (Opus): c3's all-lines scan (ext/ext_all.py), rerun by Opus on 30 seeds at q = 11 (ext/allscan, logs in
+ext/logs): 18 seeds give 769, 12 give 770, none 771. Opus built (13,7) 1,064,476, (14,7) 1,774,640, (15,7)
+2,484,804 from the 770 set and (16,7) 4,025,604 from c4's 816 set (checks in research/projects/hexagon-family/checks).
+The greedy is exhausted at q = 11; a gain needs a move that changes R itself or a non-greedy exact search on the
+cells. Stray actions: c1 left a tail -F monitor (killed); c7 and c8 first ended their turns while waiting on a
+monitor and reported later.
