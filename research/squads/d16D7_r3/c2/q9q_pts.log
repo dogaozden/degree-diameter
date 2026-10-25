@@ -1,0 +1,33 @@
+quotient n=573 weight=9 heavy=555 (induced maxdeg 139) light=18
+start k=1 f=0
+FOUND k=1 heavy_w=9 light_avail=18 greedy_total=42 exact_total=42 t=0.0 it=1
+FOUND k=2 heavy_w=18 light_avail=18 greedy_total=51 exact_total=51 t=0.0 it=2
+FOUND k=3 heavy_w=27 light_avail=18 greedy_total=60 exact_total=60 t=0.0 it=3
+FOUND k=4 heavy_w=36 light_avail=17 greedy_total=66 exact_total=66 t=0.0 it=4
+FOUND k=5 heavy_w=45 light_avail=15 greedy_total=69 exact_total=69 t=0.0 it=5
+FOUND k=6 heavy_w=54 light_avail=15 greedy_total=78 exact_total=78 t=0.0 it=6
+FOUND k=7 heavy_w=63 light_avail=15 greedy_total=87 exact_total=87 t=0.0 it=7
+FOUND k=8 heavy_w=72 light_avail=15 greedy_total=96 exact_total=96 t=0.0 it=8
+FOUND k=9 heavy_w=81 light_avail=15 greedy_total=105 exact_total=105 t=0.0 it=9
+FOUND k=10 heavy_w=90 light_avail=14 greedy_total=114 exact_total=114 t=0.0 it=10
+FOUND k=11 heavy_w=99 light_avail=14 greedy_total=123 exact_total=123 t=0.0 it=11
+FOUND k=12 heavy_w=108 light_avail=13 greedy_total=132 exact_total=132 t=0.0 it=12
+FOUND k=13 heavy_w=117 light_avail=11 greedy_total=135 exact_total=135 t=0.0 it=13
+FOUND k=14 heavy_w=126 light_avail=11 greedy_total=144 exact_total=144 t=0.0 it=14
+FOUND k=15 heavy_w=135 light_avail=10 greedy_total=150 exact_total=150 t=0.0 it=15
+FOUND k=16 heavy_w=144 light_avail=10 greedy_total=159 exact_total=159 t=0.0 it=16
+FOUND k=17 heavy_w=153 light_avail=10 greedy_total=168 exact_total=168 t=0.0 it=18
+FOUND k=18 heavy_w=162 light_avail=10 greedy_total=177 exact_total=177 t=0.0 it=19
+FOUND k=19 heavy_w=171 light_avail=8 greedy_total=180 exact_total=180 t=0.0 it=23
+FOUND k=20 heavy_w=180 light_avail=7 greedy_total=186 exact_total=186 t=0.0 it=24
+FOUND k=21 heavy_w=189 light_avail=6 greedy_total=192 exact_total=192 t=0.0 it=26
+FOUND k=22 heavy_w=198 light_avail=6 greedy_total=201 exact_total=201 t=0.0 it=27
+FOUND k=23 heavy_w=207 light_avail=8 greedy_total=216 exact_total=216 t=0.0 it=50
+FOUND k=24 heavy_w=216 light_avail=7 greedy_total=222 exact_total=222 t=0.0 it=358
+FOUND k=25 heavy_w=225 light_avail=8 greedy_total=234 exact_total=234 t=0.0 it=13180
+FOUND k=25 heavy_w=225 light_avail=9 greedy_total=237 exact_total=237 t=14.5 it=7057637
+t=30 k=26 f=4 bestf=1 it=14914560 restarts=14 events=375 bestG=237 bestE=237
+t=60 k=26 f=7 bestf=1 it=30390272 restarts=30 events=775 bestG=237 bestE=237
+FOUND k=25 heavy_w=225 light_avail=10 greedy_total=240 exact_total=240 t=79.3 it=40230389
+t=90 k=26 f=8 bestf=1 it=45642752 restarts=45 events=1150 bestG=240 bestE=240
+END t=120.0 bestG=240 (k=25) bestE=240 (k=25) it=61385728 restarts=61 events=1550

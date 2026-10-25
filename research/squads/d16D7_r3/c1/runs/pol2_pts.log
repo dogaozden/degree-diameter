@@ -1,0 +1,19 @@
+seed size 240 f(seed)=0
+start k=241 f=1
+FOUND independent set k=241 t=0.0 it=2
+FOUND independent set k=242 t=0.0 it=8
+t=30 k=243 f=1 bestf=1 it=2741248 restarts=0
+t=60 k=243 f=2 bestf=1 it=5468160 restarts=1
+t=90 k=243 f=1 bestf=1 it=8281088 restarts=2
+t=120 k=243 f=1 bestf=1 it=10906624 restarts=3
+t=150 k=243 f=1 bestf=1 it=13694976 restarts=4
+t=180 k=243 f=2 bestf=1 it=16488448 restarts=5
+t=210 k=243 f=1 bestf=1 it=19266560 restarts=6
+t=240 k=243 f=1 bestf=1 it=22003712 restarts=7
+t=270 k=243 f=1 bestf=1 it=24727552 restarts=8
+t=300 k=243 f=2 bestf=1 it=27485184 restarts=9
+t=330 k=243 f=3 bestf=1 it=30259200 restarts=10
+t=360 k=243 f=1 bestf=1 it=32996352 restarts=10
+t=390 k=243 f=1 bestf=1 it=35800064 restarts=11
+END t=420.0 kbest=242 last_k=243 bestf(k)=1 it=38565888 restarts=12
+kbest 242

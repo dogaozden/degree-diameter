@@ -1,0 +1,5 @@
+graph M=6504 E=577152 maxdeg=182 blocks=2040
+seed K=240 (maximal), KMIN=14 KMAX=22 NODE_LIMIT=256 BB_MAXN=256 ILS_ITERS=500 PLOCAL=50 LOCAL_CF=3 PX=50
+t=20 it=4219 K=240 best=240 avgC=475.2 avgRem=139.6 local=2123 exact=12258 abort=273 ils=3498 nodes=146330 impr=0
+t=40 it=8466 K=240 best=240 avgC=473.4 avgRem=139.5 local=4248 exact=24589 abort=500 ils=6993 nodes=282114 impr=0
+END t=60.0 it=12517 best=240 last=240 avgC=474.4 avgRem=139.6 local=6246 exact=36013 abort=720 ils=10370 nodes=412037 impr=0 plateau_moves=12517 changed=886 forced=43

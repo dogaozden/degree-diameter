@@ -1,0 +1,17 @@
+# (16,7) 4,052,108 = 10*402,234 + 2*61*244 (job cell-16-7, resume session, 2026-10-25, built 05:21 UTC). Table 4,022,340.
+# Supersedes 4,051,254 (same construction, larger freed sets). Construction: research/squads/cells/d16D7.md and the
+# 4,051,254 check file next to this one. Freed: R_H = 242 orbits (14,762 non-collinear points) and R_L = 243 orbits
+# (14,823 non-concurrent lines) of the order-61 collineation g = [[5,2,0],[12,5,2],[12,0,5]] (squad d16D7_r3 card c1:
+# sets symmetric under a group of order 9 annealed in the 573/588-vertex quotient, exhaustive choice of the light quotient
+# vertices, then k-fixed tabu polish), plus 2 orbits of local-duality surgery on each non-friendly transition
+# (typed5s re-checks (H1)-(H3): "122 freed, H1-H3 checked" for 0->2, 1->3, 2->4, 4->0). 244 + 244 hub orbits, hub voltage
+# graph over Z_61 of degree <= 11 with all same-side distances <= 6 (hubcheck). Max degree 16.
+#   ./typed5s edges hex/hex_q13.bin research/frontier/sols/d16D7_hex13_typed61_K244_n4052108.sol g.edges g.aut
+#   or python3 research/squads/cells/d16D7/typed5s_build.py hex/hex_q13.bin SOL g.edges   (byte-identical)
+#   edge list sha256 719fedec44ab7559941fd8b23d58c085b07c34122957648d4143ddfddeb22006; .sol sha256
+#   caf915e0b70fbc5337608d63221e61917aa2738a52307caa8846f94f533fdef5; hex_q13.bin (hexgen2 13) sha256
+#   57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a
+# Check: apsp_autw (automorphism checked edge by edge; BFS from one vertex per cycle, 66,428 sources), 05:22-05:27 UTC:
+#   ./apsp_autw g.edges 16 7 2 g.aut
+n=4052108 edges=32401980 degree min=14 max=16 bipartite=yes diameter=7 (permutation checked as an automorphism; 66428 sources = cycles, longest 61)
+RESULT VALID d=16 D=7 n=4052108

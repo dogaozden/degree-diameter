@@ -1,0 +1,14 @@
+quotient 2032 vertices: heavy 2002 (weight 3), light 30
+seed heavy size 76 f(seed)=0
+FOUND k=76 light=12 total=240 best=240 t=0.0 it=0
+start k=77 f=1
+FOUND k=77 light=5 total=236 best=240 t=0.1 it=30286
+FOUND k=78 light=2 total=236 best=240 t=8.2 it=2293232
+FOUND k=79 light=2 total=239 best=240 t=16.1 it=4435086
+t=30 k=80 f=12 bestf=1 best_total=240 it=8225792 restarts=1
+t=60 k=80 f=11 bestf=1 best_total=240 it=16382976 restarts=3
+t=90 k=80 f=14 bestf=1 best_total=240 it=24600576 restarts=6
+t=120 k=80 f=9 bestf=1 best_total=240 it=32671744 restarts=9
+t=150 k=80 f=9 bestf=1 best_total=240 it=40911872 restarts=12
+t=180 k=80 f=10 bestf=1 best_total=240 it=49191936 restarts=14
+END t=200.0 best_total=240 last_k=80 bestf(k)=1 it=54795264 restarts=16

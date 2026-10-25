@@ -1,0 +1,13 @@
+quotient 2087 vertices: heavy 2045 (weight 3), light 42
+seed heavy size 78 f(seed)=0
+FOUND k=78 light=6 total=240 best=240 t=0.0 it=0
+start k=79 f=2
+FOUND k=79 light=1 total=238 best=240 t=4.9 it=1248819
+FOUND k=80 light=1 total=241 best=241 t=11.9 it=3075693
+t=30 k=81 f=10 bestf=1 best_total=241 it=7728128 restarts=1
+t=60 k=81 f=7 bestf=1 best_total=241 it=15611904 restarts=4
+t=90 k=81 f=10 bestf=1 best_total=241 it=23298048 restarts=6
+t=120 k=81 f=14 bestf=1 best_total=241 it=31086592 restarts=9
+t=150 k=81 f=14 bestf=1 best_total=241 it=38799360 restarts=11
+t=180 k=81 f=14 bestf=1 best_total=241 it=46654464 restarts=14
+END t=200.0 best_total=241 last_k=81 bestf(k)=1 it=51791872 restarts=16

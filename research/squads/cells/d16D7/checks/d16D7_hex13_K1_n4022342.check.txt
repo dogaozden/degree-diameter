@@ -1,0 +1,12 @@
+# d16D7_hex13_K1_n4022342 (cell-16-7 session, 2026-10-24T18:50Z)
+# rebuild: gcc -O2 -o hexgen research/p4/d6/hexgen.c && mkdir -p hex && ./hexgen 13; gcc -O2 -o d16hex d16hex.c -lm
+#          d16hex edges hex/hex_q13.bin SOL out.edges; chk7 out.edges 16 7 THREADS <mode>
+== d16hex sample (freed sources + hubs + 20 random level-0 sources, BFS on the implicit graph):
+q=13 n=4022342 K=1 maxdeg=16 freed+hub sources: worst ecc 7, bad 0 (2.9s)
+sample of 20 level-0 sources: worst ecc 7, bad 0
+RESULT VALID n=4022342
+== chk7 on the written edge list: the freed point and line at all 5 levels, both hubs, 2046 random sources:
+n=4022342 edges=32178725 degree min=5 max=16 bipartite=yes
+sources: 2057 (list)
+max eccentricity over the 2057 sources = 7, bad passes 0
+RESULT VALID d=16 D=7 n=4022342 (list sources)
