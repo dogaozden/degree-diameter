@@ -14,3 +14,24 @@ graphs/*.edges
 runs/**/*.sol
 runs/**/*.sol.K*
 checks/tmp/
+# binaries and regenerable intermediates (2026-10-25)
+apsp_range
+dual/apsp_sym
+dual/dualfind
+dual/hubecc
+dual/hubfix
+dual/x5gen
+dual/x5gen2
+dual/xgen
+ovoid/potabu
+ovoid/potabu2
+ovoid/h9/qmis
+ovoid/e7/*.pkl
+dual/*.phi
+dual/*.abs
+dual/hg*.txt
+dual/hubs_*.txt
+dual/x9_dual_K28*.sol
+runs/**/*.log
+runs/**/*.out
+runs/b2/*.txt

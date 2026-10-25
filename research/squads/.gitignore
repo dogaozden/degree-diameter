@@ -1,0 +1,9 @@
+# Squad card folders (d10D7-rN/cN/): only source code is committed; run outputs, binaries, logs and data stay local.
+# Record sets are copied to research/d10D7/sets/ and solutions to research/frontier/sols/.
+d10D7-r*/c*/**
+!d10D7-r*/c*/**/
+!d10D7-r*/c*/**/*.c
+!d10D7-r*/c*/**/*.py
+!d10D7-r*/c*/**/*.sh
+!d10D7-r*/c*/**/*.md
+d10D7-r*/tools/setcheck

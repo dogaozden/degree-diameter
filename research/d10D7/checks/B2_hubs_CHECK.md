@@ -120,3 +120,6 @@ started from the 4,277 set. n = 6·66,430 + 2·4,291 = 407,162.
 apsp (all pairs), 2026-10-25 00:4x UTC: n=407162 edges=2239391 degree min=11 max=11 bipartite=yes diameter=7,
 RESULT VALID d=11 D=7 n=407162. Edge list sha256 4783da76ba68dcaaa4a182374e50cf77ca0ab77bbfbba8e4922782ae0a76e19e
 (a rebuild from the saved solution gives the same hash).
+
+Note: `dual/x9_dual_K28.sol` in the b2dual commands above is not committed separately. It is the same file as
+research/frontier/sols/d11D7_hex9_dualK28_n398636.sol (sha256 ec5a8edba02bc45f515d7cb70f39620873fbe1d455cc7d92a11d0b75818c3173); copy it to dual/x9_dual_K28.sol before rebuilding.
