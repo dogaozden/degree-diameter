@@ -111,3 +111,17 @@ median says it would not find anything; not run.
   the RESULT line in each log instead.
 - PSL(2,17) × Z_95 (N = 232,560, |Fix| = 44): four seeds × 1200 s, ~3.5·10⁶ evaluations each. Best costs 17, 17, 20, 26. **Not solved.**
 - PSL(2,13) × Z_215 (N = 234,780, |Fix| = 29, 5 trivial, 43 ≡ 1 mod 3): four seeds × 1200 s launched next.
+- PSL(2,13) × Z_215 (N = 234,780, |Fix| = 29): four seeds × 1200 s, ~4.2·10⁶ evaluations each. Best costs 32, 32, 32, 34. **Not solved.**
+
+## Conclusion of round 2 (stopped at about 1.5 h of the 6 h budget)
+
+No record. The record stays at 462,840 (|G| = 231,420). Every order in (231,420, 236,964] that has acceptable random-sample
+mixing was annealed with the k = 3, m = 2, f = 1 orbit search, four seeds × 20 min each: SL(2,16) × Z_57, PSL(2,17) × Z_95,
+PSL(2,13) × Z_215 (about 1.2·10⁷ evaluations in total, best cost 16–34). The rest of the window either has a small Q with a
+large cyclic factor (SL(2,8) × Z_463 and its relatives: random median ≥ 2500), or fixed points or trivial action too large
+(|Fix| ≥ 53 with median ≥ 6000). The k = 7 route (single α-orbit) was checked only on SL(2,8) × Z_463 and mixes badly.
+
+Recommendation for the coordinator: this cell does not move further with the orbit search at this budget. The first-moment
+ceiling μ ≈ 4 ln N puts N ≈ 237k at the edge for random-like sets, and the window's candidates sit above the solvable μ
+(≈ 38–42 here). Options that were not tried: SL(3,q) structures (STRUCTURE.md §7 item 3), voltage lifts over Moore-type
+bases (research/lifts/, BEAT_16_5_SQUAD.md), or fixed-point weighting (ORBW) on the 44-fixed-point groups.
