@@ -63,3 +63,6 @@ psl 103×301 (164.44 M), sl 109×127 (164.45 M), sl 103×151 (164.99 M) and psl 
 - File: `../../frontier/sols/d12D10_sl_103_151_orb3f0_s2.txt`; log: `../../structured/runs/d12D10_sl_103_151_orb3f0_s2.log`.
 - Checks: haar_sym's own full check (both generators reach all N within 10); independent `tools/hcsl` and `tools/hc2`:
   both VALID (eccA = eccB = 10).
+
+Also solved (below the record, kept as a valid cell solution): **psl 97 × Z_361**, N = 164,719,968, 329,439,936 vertices,
+seed 1, 5,121 evals, 2,109 s. File `../../frontier/sols/d12D10_psl_97_361_orb3f0_s1.txt`, log in `../../structured/runs/`.
