@@ -203,7 +203,7 @@ Every group above has 2N > 18,239,520, so any solve beats the current record.
 - Graph: Haar graph of G = PSL(2,67) × Z61, |G| = N = 9,171,228, |S| = 15 = 3·5 (5 free orbits of an order-3 automorphism, f = 0),
   2N = **18,342,456**, 15-regular. μ = 38.6, Fix = 32. Solved after 134,025 evaluations (4,322 s, run i in `runs/raise_d15D8_r2/out/i/`).
 - haar_sym full diameter check (direct and s₀ = e): OK. haarcheck_psl: VALID d=15 D=8.
-- build_haar2.py: running at the time of this entry (`runs/raise_d15D8_r2/verify/psl67_61_s6.build_haar2.txt`).
+- build_haar2.py: VALID d=15 D=8, ecc 8 from both sides, 0 unreached, edge-list sha256 `14e46c7bcbaae6943e8a65af0367505a0b90708dcb2cb326265b7677fa28c7b5` (`runs/raise_d15D8_r2/verify/psl67_61_s6.build_haar2.txt`).
 - Saved as `research/frontier/sols/d15D8_psl_67_61_orb3f0_s6.txt`.
 - **Standing (15,8) record for this branch: 18,342,456** (+1.0 % over 18,156,528, +0.6 % over 18,239,520).
 
@@ -220,3 +220,8 @@ Groups above the new bar, lowest μ among those screened (tails are weaker than 
 | n | sl 23 × Z757 | 9,193,008 | 18,386,016 | 39.9 | 5 |
 | o | psl 27 × Z937 | 9,208,836 | 18,417,672 | 40.8 | 5 |
 | p | psl 31 × Z619 | 9,210,720 | 18,421,440 | 40.9 | 5 |
+
+### Final wave status (19:06 UTC, of 5400 s)
+
+Best costs 15 to 18 for all four (sl 25 × Z589, sl 23 × Z757, psl 27 × Z937, psl 31 × Z619). These are well behind the wave-3 path
+(psl 67 × Z61 reached cost 3 before its solve), so a solve before the budget ends (about 20:07 UTC) looks unlikely. The runs are left to finish.
