@@ -35,7 +35,7 @@ SmallGroups library (apt package gap-smallgrp), so the sweeps below are complete
 | 2 (Haar, 3 parallel edges) | 1 | 145–180 (290–360) | 538 | N² per group | **0** |
 | 4 (2+2 base) | 1 | 73–90 (292–360) | 130 | N³ per group | **0** |
 | 6 (3+3 bases) | 3 | 49–60 (294–360) | 62 × 3 | N⁴ per group | **0** |
-| 8 (4+4 bases) | 6 distinct (round 1's 8 files: b8_2≅b8_3, b8_6≅b8_7) | 37–46 (296–368) | 35 | N⁵ per group, first voltage over Aut(G)-orbit reps | see below |
+| 8 (4+4 bases) | 6 distinct (round 1's 8 files: b8_2≅b8_3, b8_6≅b8_7) | 37–46 (296–368) | 35 | N⁵ per group, first voltage over Aut(G)-orbit reps | **0** (all 280 base × group runs) |
 
 Base classes: enumerated and checked by `enum_bip3.py` (h = 1, 2, 3, 4 give 1, 1, 3, 6 classes up to side swap).
 The k = 6 and k = 8 runs use round 1's base files, which match.
