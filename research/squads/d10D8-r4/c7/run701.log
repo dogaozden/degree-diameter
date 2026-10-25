@@ -1,0 +1,43 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.04s
+wide rows: HW order 252, rows 2352, setup 0.09s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=145
+kick 1 chain 1 lbest 21 kicked-to 115 T 0.40
+t=30 steps=5138 evals=41105 cost=23 best=21 T=0.32
+kick 2 chain 1 lbest 19 kicked-to 69 T 0.40
+t=60 steps=10238 evals=81905 cost=24 best=19 T=0.20
+kick 3 chain 1 lbest 19 kicked-to 115 T 0.40
+t=90 steps=15555 evals=124441 cost=19 best=19 T=0.15
+kick 4 chain 1 lbest 19 kicked-to 118 T 0.40
+kick 5 chain 1 lbest 19 kicked-to 79 T 0.40
+t=120 steps=20095 evals=160761 cost=27 best=19 T=0.20
+kick 6 chain 1 lbest 19 kicked-to 83 T 0.40
+t=150 steps=24373 evals=194985 cost=14 best=14 T=0.15
+kick 7 chain 1 lbest 14 kicked-to 210 T 0.40
+t=180 steps=28633 evals=229065 cost=23 best=14 T=0.15
+kick 8 chain 1 lbest 14 kicked-to 169 T 0.40
+kick 9 chain 1 lbest 14 kicked-to 147 T 0.40
+t=210 steps=32436 evals=259489 cost=28 best=14 T=0.31
+kick 10 chain 1 lbest 14 kicked-to 170 T 0.40
+t=240 steps=36549 evals=292393 cost=21 best=14 T=0.15
+kick 11 chain 1 lbest 14 kicked-to 247 T 0.40
+kick 12 chain 1 lbest 14 kicked-to 104 T 0.40
+t=270 steps=40984 evals=327873 cost=23 best=14 T=0.31
+CHAIN 1 min 14 secs 286 evals 344865 S 74480 577806 404386 173732 137487 177359 259350 524905 517 517473
+chain 2: fresh start (global best 14)
+t=300 steps=44894 evals=359153 cost=21 best=14 T=0.58
+kick 13 chain 2 lbest 19 kicked-to 201 T 0.40
+t=330 steps=48791 evals=390329 cost=18 best=14 T=0.20
+kick 14 chain 2 lbest 18 kicked-to 123 T 0.40
+t=360 steps=52657 evals=421257 cost=24 best=14 T=0.17
+kick 15 chain 2 lbest 17 kicked-to 102 T 0.40
+t=390 steps=57257 evals=458057 cost=26 best=14 T=0.27
+kick 16 chain 2 lbest 17 kicked-to 139 T 0.40
+t=420 steps=61685 evals=493481 cost=12 best=12 T=0.15
+kick 17 chain 2 lbest 12 kicked-to 109 T 0.40
+t=450 steps=65383 evals=523065 cost=24 best=12 T=0.18
+kick 18 chain 2 lbest 12 kicked-to 91 T 0.40
+kick 19 chain 2 lbest 12 kicked-to 81 T 0.40
+CHAIN 2 min 12 secs 194 evals 211744 S 74480 153617 542707 124923 168165 41182 12140 508072 337088 94373 final
+KICKS 19 CHAINS 2
