@@ -64,8 +64,8 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
 | (9, 7) | 117,648 | **118,224** | +0.5% | hexagon + hub vertices ¹ | — |
 | (10, 7) | 224,694 | **225,128** | +0.2% | hexagon + hub vertices ¹ | — |
-| (11, 7) | 398,580 | **407,162** | +2.2% | hexagon + hub vertices ¹ | — |
-| (12, 7) | 664,300 | **680,068** | +2.4% | hexagon cover + hub vertices ¹ | — |
+| (11, 7) | 398,580 | **413,180** | +3.7% | hexagon cover + hub vertices ¹ | — |
+| (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
 | (13, 7) | 1,062,936 | **1,064,448** | +0.1% | hexagon + hub vertices ¹ | — |
 | (14, 7) | 1,771,560 | **1,774,628** | +0.2% | hexagon cover + hub vertices ¹ | — |
 | (15, 7) | 2,480,184 | **2,484,720** | +0.2% | hexagon cover + hub vertices ¹ | — |
