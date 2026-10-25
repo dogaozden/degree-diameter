@@ -44,7 +44,7 @@ def main():
     ap.add_argument('--abmaxorder', type=int, default=10**9, help='skip groups with |G/G\'| above this')
     a = ap.parse_args()
     skip = {int(x) for x in a.skip.split(',') if x}
-    outp = os.path.join(HERE, 'runs', f'screen_d{a.Delta}D{a.D}{a.tag}.tsv')
+    outp = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'screen_d{a.Delta}D{a.D}{a.tag}.tsv')
     done = set()
     if os.path.exists(outp):
         for line in open(outp):

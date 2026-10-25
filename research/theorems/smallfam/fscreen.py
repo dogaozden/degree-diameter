@@ -76,7 +76,7 @@ def main():
     a = ap.parse_args()
     skip = {int(x) for x in a.skip.split(',') if x}
     orders = [int(x) for x in a.orders.split(',') if x] or list(range(a.nmin, a.nmax + 1))
-    outp = os.path.join(HERE, 'runs', f'fscreen_d{a.Delta}D{a.D}{a.tag}.tsv')
+    outp = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'fscreen_d{a.Delta}D{a.D}{a.tag}.tsv')
     done = set()
     if os.path.exists(outp):
         for line in open(outp):

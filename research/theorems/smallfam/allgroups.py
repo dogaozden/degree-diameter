@@ -106,7 +106,7 @@ def main():
     ap.add_argument('--abmax', type=int, default=0, help='lift mode: generic lattice bound on |G^ab| (liftbound.py); 0 = off')
     a = ap.parse_args()
     mode = 'haar' if a.base is None else 'lift_' + os.path.splitext(os.path.basename(a.base))[0]
-    outp = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv' if a.base is None else f'{mode}_D{a.D}{a.tag}.tsv')
+    outp = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'allgroups_d{a.Delta}D{a.D}{a.tag}.tsv' if a.base is None else f'{mode}_D{a.D}{a.tag}.tsv')
     done = set()
     if os.path.exists(outp):
         for line in open(outp):
@@ -114,7 +114,7 @@ def main():
             if len(f) > 2 and f[0].isdigit():
                 done.add((int(f[0]), int(f[1])))
     log = open(outp, 'a')
-    soldir = os.path.join(HERE, 'runs', f'allgroups_d{a.Delta}D{a.D}_sols' if a.base is None else f'{mode}_D{a.D}_sols')
+    soldir = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'allgroups_d{a.Delta}D{a.D}_sols' if a.base is None else f'{mode}_D{a.D}_sols')
     os.makedirs(soldir, exist_ok=True)
     for n in range(a.nmin, a.nmax + 1):
         nr = int(gap(f'Print(NrSmallGroups({n}), "\\n"); QUIT;\n', 600).split()[0])

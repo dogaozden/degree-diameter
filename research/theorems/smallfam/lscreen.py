@@ -17,7 +17,7 @@ a = ap.parse_args()
 bname = os.path.splitext(os.path.basename(a.base))[0]
 nfree = sum(1 for l in open(a.base) if l.strip() and not l.startswith('#') and len(l.split()) == 2)
 lat = int(subprocess.run(['python3', os.path.join(HERE, 'liftbound.py'), a.base, str(a.D)], capture_output=True, text=True).stdout.split('<=')[-1])
-outp = os.path.join(HERE, 'runs', f'lscreen_{bname}_D{a.D}.tsv')
+outp = os.path.join(os.environ.get('OUTDIR', os.path.join(HERE, 'runs')), f'lscreen_{bname}_D{a.D}.tsv')
 done = set()
 if os.path.exists(outp):
     for l in open(outp):
