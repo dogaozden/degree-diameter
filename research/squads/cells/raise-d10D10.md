@@ -194,3 +194,5 @@ tried (psl 79 × 131, psl 71 × 181) stalls at cost 5 after 50–100k evaluation
 evaluations per group (≈ 10⁶ in total, 20–30 core-hours at 0.1 s per evaluation), more than one Haiku session has.
 Recommendation for the coordinator: a bigger model or a new route (SL(3,q) or endgame search) is worth more than more
 seeds of these groups.
+- 2026-10-25 19:48 UTC: psl 71 × 181 seed 9 ended at best 5 after 102,393 evaluations. All round-2 jobs have ended.
+  Final: no solution, record unchanged at 63,854,520.
