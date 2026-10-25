@@ -24,3 +24,5 @@ k = 5 orbit method (`research/structured/`, STRUCTURE.md §8). Table value 2,246
 - 10:01 UTC: psl 19×Z331 seeds 1, 2 (7200 s) ended unsolved: best 6 (≈1.35M evals each; cost = raw uncovered count,
   so one free orbit + one fixed element left). Seeds 3, 4 still running (best 10). Started seeds 5, 6 with RESTART=1, 10800 s.
 - 10:26 UTC: psl 19×Z331 seeds 3, 4 (7200 s) ended unsolved, best 10 (≈1.35M evals). Seeds 5–8 (RESTART=1, 10800 s) running; 5, 6 at best 15 after 280k.
+- 12:11 UTC: RESTART seeds 5, 8 reached best 5 (one free orbit uncovered); seeds 6, 7 best 10. No solution yet
+  (~1.2–1.5M evals per run). Seeds 5, 6 end ~13:00, seeds 7, 8 ~13:25.
