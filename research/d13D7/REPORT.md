@@ -91,7 +91,11 @@ the only bottleneck. Ovoids of Q(6,q) (q³+1 points) exist only for q = 3^h; for
 | elliptic 3-space section Q⁻(3,11) (maximal, not extendable) | 122 | 1,063,180 |
 | iterated local search (povoid_ils), penalty annealing, LNS (squad r1 c2, c5) | 133–136 | ≤ 1,063,208 |
 | ILS seeded with pieces of 16 elliptic sections (r1 c6) | 282 | 1,063,500 |
-| **e4 + k parallel affine lines** (r1 c3: k = 22; r1 c8: k = 29) | 1 + 11k = 320 | **1,063,576** |
+| e4 + k parallel affine lines (r1 c3: k = 22; r1 c8: k = 29) | 1 + 11k = 320 | 1,063,576 |
+| orbits of one element of order 44 of O(7,11) (r2 c4) | 364 | 1,063,664 |
+| LNS with exact repair from the 320 set (r2 c6): drop e4, add 62 points at infinity, ... | 397 | 1,063,730 |
+| orbits of <a> x <b>, a of order 15 on a 5-dim U, b of order 5 on U^perp (r3 c3) | 720 | 1,064,376 |
+| **orbits of the order-15 subgroup <a b^2> (r4 c1)** | **756** | **1,064,448** |
 
 *The fibration (squad round 1, card c3; card c8 independently).* The points opposite e4 = (0,0,0,0,1,0,0) are the
 affine points x = (1, a, b, c, c² − ae − bf, e, f), and B(x, x′) = Q′(Δ) with Q′(a,b,c,e,f) = c² − ae − bf. Take
