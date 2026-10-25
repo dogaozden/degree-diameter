@@ -69,3 +69,11 @@ solved with it.
 
 `runs/raise_d15D8/tier3.sh`: prod psl 5 × psl 11 × Z229 (N = 9,068,400; seeds 1, 2 and an ORBW=3 seed 3) and
 sl 32 × Z277 (N = 9,067,872; GF(32) as `poly x^5+x^2+1`, no wide rows, so slower per evaluation).
+
+### Tier 3 results so far (about 1840 s)
+
+- prod psl 5 × psl 11 × Z229 (three runs, seeds 1, 2 and ORBW=3 seed 3): costs in the thousands (2214–3474)
+  after 6.5·10⁴ evaluations. PSL(2,5) = A5 as a factor makes the orbit energy far too high. Stopped.
+- sl 32 × Z277 (GF(32), seed 1): cost 4 at 5·10⁴ evaluations, the best of tier 3. Still running.
+
+### Tier 4 (started, 3600 s): sl 32 × Z277 seed 2 and sl 53 × Z61 ORBW=3 seed 4.
