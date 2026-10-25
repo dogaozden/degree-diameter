@@ -46,3 +46,7 @@ psl 49×Z67 best 6 (all after ~19–23k evals).
 - Checks: haar_sym full diameter check OK; orbq queue's build_haar2.py: VALID (ecc 10 both sides, 7,997,328 vertices);
   tools/hcsl: VALID; tools/hc2: VALID.
 - The ladder is working above μ ≈ 30: each solve took 2–25 min, so the next rung is N > 3,998,664.
+- 08:27 UTC: sl 83×Z7 seed 1 (N 4,001,928, μ 31.1) ended at 3,600 s, best cost 1, 1.09e6 evals, no solve.
+  Also no solve yet: sl 83×Z7 seed 2 (best 3), pgl 83×Z7 (best 2), prod psl 9 × psl 9 × Z31 (best 6); sl 23×Z331 stopped at 25.
+  Started sl 83×Z7 seed 3 (K queue). Products with a large cyclic factor (prod sl 5 sl 7 199, prod psl 5 sl 8 133) mix badly.
+  The 2 sub-record runs (sl 27×Z199, sl 29×Z163) stopped: both below the record.
