@@ -64,3 +64,15 @@ Logs and solution files are in the scratchpad until verified; copies of the logs
 Nothing has reached cost 0 yet. The 5×19×127 group is the most promising (costs 8–10 across seeds), but the
 searches stall at 8, the same stall pattern as round 1. The solution files are only written on cost 0; a finished
 run without one leaves no .txt. Logs are copied to research/structured/runs/ as raise2_*.log.
+
+## Status, 17:35 UTC (round 2)
+
+- w1a (prod SL(2,5) × SL(2,13) × Z397, seed 1) finished its 3 h budget: best cost 20 after 24,873 evals. No solution.
+- w1b (prod SL(2,5) × SL(2,19) × Z127, seed 1) finished: best cost 8 after 25,113 evals. No solution.
+- w2a and w2b (same group, RESTART=1, seeds 2 and 3) still running to about 18:14 UTC; best 8 and 10.
+- w3a and w3b (same group, ORBW=5 RESTART=1, seeds 4 and 5, 2.5 h each, started 17:35 UTC) are the new attempt. ORBW=5
+  makes an uncovered α-fixed element weigh 5 in the annealing energy (STRUCTURE §7 solved (11,8) this way). The best
+  costs of the runs so far sit at 8 and 10, which are not multiples of 3, so uncovered fixed elements are the likely
+  bottleneck.
+
+Logs are copied to research/structured/runs/ as raise2_*.log.
