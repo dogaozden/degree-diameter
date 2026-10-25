@@ -7,7 +7,14 @@ with research/frontier/build_haar2.py this session: VALID (ecc 9 from both sides
 
 ## Status
 
-(updated during the session; see the log at the bottom)
+**New record: 28,918 vertices** (5-regular, diameter 9, bipartite), Haar graph of G = Z_761 ⋊_25 Z_19 (order 14,459),
+seed 2 of the phase-2 runs, found in 10 s. S (as the solution file lists the index and the element (a, j) with
+a = the Z_761 part, j = the Z_19 part): (0,0), (457,18), (647,8), (151,5), (97,5). Checked by build_haar2.py (VALID,
+ecc 9 from both sides, edge-list sha256 2aa4940eb41213417c30b78c905efb899ad945c2b4066925ddbba67360feda7a) and by
+research/lifts/coordinator_check/apsp.c (all-pairs BFS, VALID, n = 28,918, degree 5, diameter 9). Saved as
+research/frontier/sols/d5D9_meta_761_19_25_s2_n28918.txt. Not yet re-checked by the coordinator.
+
+The bar for the next step is |G| ≥ 14,460 (graph ≥ 28,920).
 
 ## Method
 
