@@ -74,18 +74,19 @@
 Draft of 25 October 2026, written for Ignacio López and Gabriela Araujo-Pardo by the degree--diameter lab
 (github.com/dogaozden/degree-diameter; Claude Code sessions coordinated by Doğa Özden).
 
-This note states and proves the constructions behind the lab's new lower bounds for the bipartite degree--diameter
-problem at diameter 7 (cells (7,7), (9,7)--(16,7)). Everything below is meant to be checkable by hand: the geometric
-hypotheses are stated in the language of the hexagon, and the neighbourhood of every vertex of every graph is given
-explicitly (Definitions 2.1 and 3.1). Where a step depends on a computer search (the specific large sets and the
-auxiliary ``hub graphs'' behind the record values), we say so and give the check. Section 10 lists the computer tests of
-every theorem on small \(q\).
+This note states and proves the constructions behind the lab's lower bounds for the bipartite degree--diameter problem
+at diameter 7 (cells (7,7), (9,7)--(16,7)), which exceed the values of the 2013 table. Everything below is meant to be
+checkable by hand: the geometric hypotheses are stated in the language of the hexagon, and the neighbourhood of every
+vertex of every graph is given explicitly (Definitions 2.1 and 3.1). Where a step depends on a computer search (the
+specific large sets and the auxiliary ``hub graphs'' behind the record values), we say so and give the check. Section 10
+lists the computer tests of every theorem on small \(q\).
 
 \emph{File paths} refer to the repository github.com/dogaozden/degree-diameter. Unless marked otherwise they are on the
 master branch (commit c48c976); {[}b14{]} marks files on branch claude/cell-14-7-record-5d03gb and {[}b15{]} files on
 branch claude/cell-15-7-haar-search-x6ynhl. This note and its tests (research/theorems/D7\_HEXAGON.md, d7hex\_tests/,
-d7hex\_lemma41/) are on branch claude/d7-hexagon-theorems-4w1prt. Section 12 collects remarks for readers of the lab's
-per-cell notes.
+d7hex\_lemma41/) are on branch claude/d7-hexagon-theorems-4w1prt. Section 11 compares the constructions with the
+literature; the closest prior work is a 2026 preprint of R. Rajiv {[}Ra26{]} (deleted matching edges and hub vertices,
+for general graphs of diameters 4 and 6).
 
 \hypertarget{contents}{%
 \subsection{Contents}\label{contents}}
@@ -103,9 +104,9 @@ per-cell notes.
 \item
   Surgery and hubs: the general assembly theorem
 \item
-  Theorem C: transitions that extend to an automorphism (friendly and duality transitions)
+  Theorem B: transitions that extend to an automorphism (friendly and duality transitions)
 \item
-  Theorem B: local dualities; mirrored sets
+  Theorem C: local dualities; mirrored sets
 \item
   Typed level layouts and slot counts
 \item
@@ -117,9 +118,7 @@ per-cell notes.
 \item
   Computer checks
 \item
-  Prior art, and what is new
-\item
-  Appendix: notes for readers of the lab notes
+  Prior art
 \end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -128,10 +127,12 @@ per-cell notes.
 \subsection{0. Results}\label{results}}
 
 Notation: \(n_b(\Delta, D)\) is the largest order of a bipartite graph with maximum degree \(\le \Delta\) and diameter
-\(\le D\). For a prime power \(q\) put \[N = N(q) = \frac{q^6-1}{q-1} = (q+1)(q^4+q^2+1),\] the number of points (and of
-lines) of a generalized hexagon of order \((q,q)\). In the 2013 table {[}MS13, Table 4{]} each cell below has the value
+\(\le D\) (the lab's README writes \(N^b(\Delta,D)\); here \(N\) is reserved for the number of points of the hexagon).
+For a prime power \(q\) put \[N = N(q) = \frac{q^6-1}{q-1} = (q+1)(q^4+q^2+1),\] the number of points (and of lines) of
+a generalized hexagon of order \((q,q)\). In the 2013 table {[}MS13, Table 4{]} each cell below has the value
 \((2r+1)\cdot 2N(q)\), with \(\Delta = q+1+r\) for the \((q,r)\) listed (the largest value of this form for that
-\(\Delta\)); this is the order of the level graph of Section 2.
+\(\Delta\)); this is the order of the level graph of Section 2. The CombinatoricsWiki table {[}CW{]} credits these cells
+to Delorme, Gómez and Quisquater {[}DGQ{]}.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0722}}
@@ -148,9 +149,9 @@ cell \((\Delta,7)\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 table (2013)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-ours
+this note
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-construction (this note)
+construction
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 parameters
 \end{minipage} \\
@@ -180,9 +181,11 @@ All nine graphs were rebuilt by the lab's coordinator from their solution files 
 from every vertex (no symmetry assumed): bipartite, maximum degree \(\Delta\), diameter 7 (logs in
 research/coordinator\_check/, Section 10). The cell (8,7) record is a Haar graph and is not discussed here.
 
-Our comparison is with the 2013 table only. We could not read the current CombinatoricsWiki table from our environment
-(the page returns HTTP 503), and a literature search found no later values for these cells; we would be grateful to hear
-of any.
+The comparison is with the 2013 table. The CombinatoricsWiki table {[}CW{]} (as of January 2012) has the same values at
+\(D = 7\), and the lab's literature search (research/lit/novelty-2026-10-25.md; sources listed in Section 11) found no
+later bipartite values for these cells; a value published outside those sources cannot be excluded, and we would be
+grateful to hear of any. The table of general graphs at \(D = 7\) was updated in 2026 with much larger values (for
+instance \((16,7)\): 14,995,367 {[}Co26{]}); those graphs are not bipartite and are not comparable with the values here.
 
 The theorems are:
 
@@ -195,15 +198,16 @@ The theorems are:
   edges with all its pairs still within distance 7, then hub vertices can be attached to the freed slots in any way, and
   the result has diameter at most 7 as soon as hubs of the same colour are within distance 6.
 \item
-  \textbf{Theorem C}: a transition whose matching is the restriction of an automorphism of the incidence graph (the
+  \textbf{Theorem B}: a transition whose matching is the restriction of an automorphism of the incidence graph (the
   identity between \(H\) and its dual, or a duality of \(H\)) survives the deletion at any \emph{segment set}: a point
   set in which every point is collinear with other points of the set along at most one line. Such sets have at most
   \((q+1)(q^3+1)\) points, with equality exactly for the point sets of spreads; and a transition of this kind is
   repaired only if its freed set is a segment set (Remark 4.2).
 \item
-  \textbf{Theorem B}: a transition with an arbitrary matching \(M\) survives the deletion at a non-collinear point set
+  \textbf{Theorem C}: a transition with an arbitrary matching \(M\) survives the deletion at a non-collinear point set
   \(R\) if \(M(R)\) is non-concurrent and \(M\) maps the points collinear with \(x\) onto the lines concurrent with
-  \(M(x)\), for every \(x\in R\). Propositions 5.1 and 5.2 say when such an \(M\) exists (``mirrored sets'').
+  \(M(x)\), for every \(x\in R\). Proposition 5.1 gives a necessary condition for such an \(M\), and Proposition 5.2 a
+  sufficient one (``mirrored sets'').
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -255,8 +259,8 @@ The \textbf{dual hexagon} \(H^D\) has the lines of \(H\) as points and the point
 of \(H\) is an isomorphism \(H\to H^D\), i.e.~a bijection \(\varphi\) of \(P\cup L\) with \(\varphi(P) = L\),
 \(\varphi(L) = P\), preserving incidence. \(H(q)\) has a duality if and only if \(q = 3^h\) ({[}Ti59{]}; {[}VM98, Ch.
 3{]}). For \(q = 9\) we use an explicit duality found by computer (research/d10D7/dual/dualfind.c: it extends a polarity
-of the subhexagon \(H(3)\) over \(\mathbb F_3\subset\mathbb F_9\) by propagation along geodesics and then checks that
-all \(N(q+1)\) incidences are preserved).
+of the subhexagon \(H(3)\) over \(\mathbb F_3\subset\mathbb F_9\) by propagation along geodesics, and then checks that
+\(\varphi\) is a bijection of \(P\cup L\) swapping \(P\) and \(L\) and preserving all \(N(q+1)\) incidences).
 
 \hypertarget{the-incidence-graph-and-distances}{%
 \subsubsection{1.2 The incidence graph and distances}\label{the-incidence-graph-and-distances}}
@@ -308,6 +312,10 @@ We re-checked (F4) by computer for all pairs of points for \(q = 2, 3, 4\) and f
   a \emph{partial ovoid} if its points are pairwise opposite; an \emph{ovoid} if moreover it has \(q^3+1\) points.
 \end{itemize}
 
+We follow {[}VM98{]}: an ovoid of a generalized hexagon is a distance-3 ovoid (pairwise opposite points), and ``partial
+distance-2 ovoid'' means a non-collinear set (as in {[}BI16{]}). Ovoids of the polar space \(Q(6,q)\), which also appear
+below, are related to ovoids of \(H(q)\) by (F4).
+
 Dually, a set of lines is \emph{non-concurrent}, a \emph{partial spread} (pairwise opposite lines), or a \emph{spread}
 (\(q^3+1\) pairwise opposite lines).
 
@@ -323,8 +331,9 @@ ovoids of the polar space \(Q(6,q)\).
   If \(\Sigma\) is a 3-space of \(\mathrm{PG}(6,q)\) with \(\Sigma\cap Q(6,q)\) an elliptic quadric \(Q^-(3,q)\), its
   \(q^2+1\) points form a partial ovoid of \(H(q)\), for every \(q\).
 \item
-  (Hermitian spread {[}Th80{]}.) If \(\Pi\) is a hyperplane with \(\Pi\cap Q(6,q)\) an elliptic quadric \(Q^-(5,q)\),
-  the lines of \(H(q)\) contained in \(\Pi\) form a spread, for every \(q\).
+  (Hermitian spread {[}Th80{]}; sets of \(q^3+1\) pairwise opposite elements of \(H(q)\) were already used in a
+  degree--diameter construction by Delorme {[}De85a, §8(b){]}.) If \(\Pi\) is a hyperplane with \(\Pi\cap Q(6,q)\) an
+  elliptic quadric \(Q^-(5,q)\), the lines of \(H(q)\) contained in \(\Pi\) form a spread, for every \(q\).
 \item
   If \(S\) is a spread, every line not in \(S\) meets exactly one line of \(S\).
 \item
@@ -348,11 +357,11 @@ ovoids of the polar space \(Q(6,q)\).
   (d) \(\varphi\) preserves distances. \(\square\)
 \end{enumerate}
 
-Ovoids of \(Q(6,q)\) (equivalently of \(H(q)\)) exist for \(q = 3^h\); they do not exist for \(q\) even {[}Th81{]} or
-for \(q\) prime \(\ge 5\) {[}BGS06{]}. The largest partial ovoids are not known in general; the lab's record graphs use
-partial ovoids found by computer (Section 8).
+Ovoids of \(Q(6,q)\) (equivalently of \(H(q)\)) exist for \(q = 3^h\) (Lemma 1.2(d); {[}Th81{]}); they do not exist for
+\(q\) even {[}Th81{]} or for \(q\) prime \(\ge 5\) {[}BGS06{]}. The largest partial ovoids are not known in general; the
+lab's record graphs use partial ovoids found by computer (Section 8).
 
-The following class of sets is the one that matters for Theorem C. It contains the non-collinear sets and the point sets
+The following class of sets is the one that matters for Theorem B. It contains the non-collinear sets and the point sets
 of partial spreads.
 
 \textbf{Definition 1.3 (segment sets).} A set \(F\) of points is a \emph{segment set} if for every \(p\in F\) the points
@@ -399,8 +408,9 @@ of \(F\) on \(\ell_i\). So they form a spread. Conversely the point set of a spr
 dual statement is the same proof in \(H^D\). \(\square\)
 
 For comparison, a non-collinear set has at most \(N/(q+1) = q^4+q^2+1\) points (each line contains at most one of its
-points; equality means a distance-2 ovoid, a point set meeting every line exactly once), and
-\((q+1)(q^3+1) = q^4+q^3+q+1\) is larger by \(q^3-q^2+q\).
+points; equality means a distance-2 ovoid, a point set meeting every line exactly once; distance-2 ovoids of \(H(q)\)
+are known only for \(q = 2, 3, 4\) {[}DWVM08{]}, as cited in {[}BI16{]}, so this bound is not expected to be reached in
+general), and \((q+1)(q^3+1) = q^4+q^3+q+1\) is larger by \(q^3-q^2+q\).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -434,8 +444,9 @@ bipartite. The neighbourhoods are:
 \[N_X(b,j) = \Gamma_1(b)\times\{j\}\ \cup\ \{(M_{(j-k,k)}^{-1}(b), j-k) : 1\le k\le r\}\qquad (b\in B(\tau_j)).\] So
 \(X\) is \((q+1+r)\)-regular of order \((2r+1)\cdot 2N\).
 
-When all levels have type \(H\) and all \(M_t\) equal one bijection \(\sigma: P\to L\), this is the graph whose order is
-the table value (for \(r=1\): three copies of \(I\) joined by \((p,i)\sim(\sigma(p),i+1)\)).
+When all levels have type \(H\) and all \(M_t\) equal one bijection \(\sigma: P\to L\), this graph has the order of the
+table value (for \(r=1\): three copies of \(I\) joined by \((p,i)\sim(\sigma(p),i+1)\)); the table credits these cells
+to {[}DGQ{]} (Section 11).
 
 \textbf{Theorem A (level graph).} For all types and all bijections \(M_t\), \(X(\tau, M)\) has diameter at most 7. More
 precisely: two vertices of one level are joined by a path of length \(\le 6\) inside that level, and for every
@@ -555,9 +566,9 @@ So everything reduces to geometric conditions under which one transition is repa
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{theorem-c-transitions-that-extend-to-an-automorphism}{%
-\subsection{4. Theorem C: transitions that extend to an
-automorphism}\label{theorem-c-transitions-that-extend-to-an-automorphism}}
+\hypertarget{theorem-b-transitions-that-extend-to-an-automorphism}{%
+\subsection{4. Theorem B: transitions that extend to an
+automorphism}\label{theorem-b-transitions-that-extend-to-an-automorphism}}
 
 A transition \(t = (j,k)\) is \textbf{automorphic} if \(M_t\) is the restriction to \(A(\tau_j)\) of an automorphism
 \(\psi\) of the graph \(I\) with \(\psi(A(\tau_j)) = B(\tau_{j+k})\). The two cases used here:
@@ -618,7 +629,7 @@ point of \(F\) on the line \(s\) through it, then no point \(p\ne p_0\) collinea
 
 The cases with \(u\) a line and \(v\) a point are (c), (d) with \(u\) and \(v\) exchanged. \(\square\)
 
-\textbf{Theorem C.} Let \(t = (j,k)\) be an automorphic transition. If \(A(\tau_j) = P\) and \(R_t\) is a segment set of
+\textbf{Theorem B.} Let \(t = (j,k)\) be an automorphic transition. If \(A(\tau_j) = P\) and \(R_t\) is a segment set of
 points, or \(A(\tau_j) = L\) and \(R_t\) is a dual segment set of lines, then \(t\) is repaired.
 
 \emph{Proof.} Let \(\psi\) be the automorphism of \(I\) extending \(M = M_t\), \(j' = j+k\), and take \((u,j)\),
@@ -629,7 +640,7 @@ length \(d(u,a) + 1 + d(\psi(a),v) = d(u,a) + 1 + d(a,\psi^{-1}(v))\), since \(\
 (same graph \(I\), points and lines exchanged; a dual segment set of \(H\) is a segment set of \(H^D\)). \(\square\)
 
 \textbf{Remark 4.2 (the converse).} An automorphic transition is repaired (Definition 3.2) \emph{if and only if} its
-freed set is a segment set (dual segment set for lines). The ``if'' is Theorem C. For ``only if'', suppose that
+freed set is a segment set (dual segment set for lines). The ``if'' is Theorem B. For ``only if'', suppose that
 \(p, p', p''\in R_t\) turn at \(p'\) (\(p - m - p' - m' - p''\), \(m\ne m'\)), take a line \(u\ne m'\) through \(p''\).
 Then \(d(p,u) = 5\) with the unique geodesic \(p - m - p' - m' - p'' - u\). A path from \((u,j)\) to \((\psi(p),j')\)
 inside the two levels uses an odd number \(2h+1\) of matching edges of \(t\), and (transporting the segments in level
@@ -647,7 +658,8 @@ and no hubs, freeing one more point left 82,720 ordered pairs at distance \(> 7\
 \item
   a friendly transition with \(M_t = \mathrm{id}\) and \(R_t\) a non-collinear set of points (if \(\tau_j = H\)) or a
   non-concurrent set of lines (if \(\tau_j = D\)) --- the ``one-transition theorem at friendly transitions'' of the lab
-  notes;
+  notes. For general (non-bipartite) graphs of diameter \(n\) built from copies of the incidence graph of a generalized
+  \(n\)-gon, the same deletion at a non-collinear or non-concurrent set is Lemma 5 of {[}Ra26{]} (Section 11);
 \item
   the same with \(R_t\) a set in which every element has at most one partner (collinear, resp. concurrent element of
   \(R_t\)) --- the relaxed sets (R1) of research/d15D7b/RELAXED.md, \textbf{without} its hub condition (R2);
@@ -658,13 +670,14 @@ and no hubs, freeing one more point left 82,720 ordered pairs at distance \(> 7\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{theorem-b-local-dualities}{%
-\subsection{5. Theorem B: local dualities}\label{theorem-b-local-dualities}}
+\hypertarget{theorem-c-local-dualities}{%
+\subsection{5. Theorem C: local dualities}\label{theorem-c-local-dualities}}
 
-For transitions that are not automorphic (an \(H\to H\) transition when \(q\ne 3^h\), or any \(H\to H\) transition whose
-matching is not a duality) we only ask \(M_t\) to behave like a duality near the freed elements.
+For transitions that are not automorphic (an \(H\to H\) or \(D\to D\) transition when \(q\ne 3^h\), or any such
+transition whose matching is not the restriction of a duality) we only ask \(M_t\) to behave like a duality near the
+freed elements.
 
-\textbf{Theorem B (one-transition surgery).} Let \(t = (j,k)\) be any transition, \(M = M_t\), and
+\textbf{Theorem C (one-transition surgery).} Let \(t = (j,k)\) be any transition, \(M = M_t\), and
 \(R = R_t\subseteq A(\tau_j)\). Suppose
 
 \begin{itemize}
@@ -709,9 +722,9 @@ Then \(t\) is repaired.
 
 These cases cover all pairs (\(u\in\mathrm A\setminus R\): 1; \(u\in R\): 5, 6; \(u\in\mathrm B\): 2, 3, 4). \(\square\)
 
-For a friendly transition with \(M = \mathrm{id}\), (H3) holds at every element and (H2) is (H1), so Theorem B gives
-Corollary 4.3.1 again; Theorem C is stronger there. Theorem B is needed for non-automorphic transitions. We now describe
-its hypotheses for an \(H\to H\) transition (\(M: P\to L\)); the \(D\to D\) case is the same with \(M^{-1}\).
+For a friendly transition with \(M = \mathrm{id}\), (H3) holds at every element and (H2) is (H1), so Theorem C gives
+Corollary 4.3(1) again; Theorem B is stronger there. Theorem C is needed for non-automorphic transitions. We now
+describe its hypotheses for an \(H\to H\) transition (\(M: P\to L\)); the \(D\to D\) case is the same with \(M^{-1}\).
 
 For two points \(x, y\) at distance 4 let \(\mathrm{mid}(x,y)\) be the unique point collinear with both; for two lines
 at distance 4 let \(\mathrm{mid}(\ell,m)\) be the unique line concurrent with both.
@@ -766,6 +779,8 @@ private sets of different \(x\) are disjoint. So the pieces define a bijection \
 \item
   (Pairwise opposite sets; research/d13D7/REPORT.md.) If \(R\) is a partial ovoid and \(R^*\) a partial spread with
   \(\lvert R\rvert = \lvert R^*\rvert\), every bijection \(f\) satisfies (S1), (S2) (there are no pairs at distance 4).
+  (Pairwise opposite sets of \(q^3+1\) elements of \(H(q)\) appear in a degree--diameter construction already in
+  {[}De85a, §8(b){]}, where they are duplicated to raise the degree at diameter 6.)
 \item
   (Mirrored sets; research/cell147/mirror/.) Let \(R_0\) and \(X\) be disjoint partial ovoids, \(f_0: R_0\to S_0\) a
   bijection onto a partial spread \(S_0\), and \(x\mapsto L_x\) an injective map from \(X\) onto a partial spread
@@ -789,13 +804,15 @@ one was re-checked by the builder (non-collinearity, non-concurrency, and (H3) a
 By Theorem 3.4 the order is \((2r+1)\cdot 2N + K_{\mathcal A} + K_{\mathcal B}\) with
 \(K_{\mathcal B}\le\min_j\alpha_j\) and \(K_{\mathcal A}\le\min_j\beta_j\), where \(\alpha_j\) (\(\beta_j\)) counts the
 freed elements of the transitions leaving (entering) level \(j\). Which transitions are friendly depends on the types.
+\emph{Notation for freed sets:} \(R_t\) in general (Definition 3.1); \(F\) or \(F_t\) for freed sets at automorphic
+transitions (segment sets, Theorem B); \(R\) or \(R_{j\to j'}\) for freed sets at transitions repaired by Theorem C.
 
 \textbf{All levels of type \(H\), one bijection \(\sigma\), one freed set \(R\) on every transition} (the three-level
 records (7,7), (9,7), (10,7), (13,7) with \(\sigma\) a local duality on \(R\), and the duality records (11,7) with three
 levels and (12,7) with five). Every level has \(\alpha_j = \beta_j = r\lvert R\rvert\), so
 \(K_{\mathcal A} = K_{\mathcal B} = r\lvert R\rvert\) and \[\lvert X_R^+\rvert = (2r+1)\cdot 2N + 2r\lvert R\rvert .\]
 Hubs: for \(r = 1\) the \(\mathcal B\)-hub \(h_x\) of \(x\in R\) is joined to \((x,0),(x,1),(x,2)\) and the
-\(\mathcal A\)-hub \(g_x\) to \((\sigma(x),0),(\sigma(x),1),(\sigma(x),2)\), plus \(q-1\) hub-graph edges each.
+\(\mathcal A\)-hub \(g_x\) to \((\sigma(x),0),(\sigma(x),1),(\sigma(x),2)\), plus at most \(q-1\) hub-graph edges each.
 
 \textbf{Types \(HDHDH\) (\(r = 2\)).} Transitions \(j\to j+1\) and \(j\to j+2\). Friendly: \(0\to1\), \(2\to3\),
 \(4\to1\) (\(H\to D\), points freed) and \(1\to2\), \(3\to4\), \(3\to0\) (\(D\to H\), lines freed). Not friendly:
@@ -904,32 +921,38 @@ rather than proved in general: the specific sets, the bijection \(f\), and the h
 proved for all \(q\).
 
 \textbf{Corollary 8.1 (three levels, one local duality: (7,7), (9,7), (10,7), (13,7)).} Let \(r = 1\), all types \(H\),
-\(M_t = \sigma\) for all three transitions and \(R_t = R\) for all three, with \((R,\sigma)\) as in Proposition 5.2 /
-Corollary 5.3(b). If the hub graph \(Y\) (with \(\lvert R\rvert\) hubs of each colour) has maximum degree \(\le q-1\)
-and satisfies (HG) of Theorem 3.4 (for instance, if it is an \(\mathrm{HG}(\lvert R\rvert,\lvert R\rvert;q-1)\)), then
-\[n_b(q+2,\,7)\ \ge\ 6N(q) + 2\lvert R\rvert .\] Records: \(q = 5\): \(\lvert R\rvert = 81\) (\(R_0\) = 72 pairwise
-opposite points, 9 extra points, spread lines of \(q^3+1 = 126\) available), \(n = 23{,}598\); \(q = 7\): \(288 + 7\),
-\(n = 118{,}238\); \(q = 8\): \(217 + 12\), \(n = 225{,}152\); \(q = 11\): \(756 + 12\), \(n = 1{,}064{,}472\).
-Computer: \(R_0\) (for \(q = 7, 11\) an orbit of the Weyl group \(W(E_7)\) acting on \(Q(6,q)\) through the \(E_7\) root
-lattice mod \(q\), research/cell147/ovoid/ and octo/ {[}b14{]}; being pairwise non-orthogonal in \(Q(6,q)\) it is a
-partial ovoid of \(H(q)\) by (F4); for \(q = 5, 8\) from research/d13D7/q57 and q8 {[}b14{]}), the extra points \(X\),
-the lines \(L_x\), the bijection \(f\) onto Hermitian spread lines, the hub graph.
+\(M_t = \sigma\) for all three transitions and \(R_t = R\) for all three, with \((R,\sigma)\) as in Proposition 5.2 (for
+instance from Corollary 5.3(a) or (b)). Every level has \(\lvert R\rvert\) free slots of each colour. If
+\(K\le\lvert R\rvert\) hubs of each colour are attached (Definition 3.1 allows \(K < \lvert R\rvert\); the unused slots
+stay free) and the hub graph \(Y\) has maximum degree \(\le q-1\) and satisfies (HG) of Theorem 3.4 (for instance, if it
+is an \(\mathrm{HG}(K,K;q-1)\)), then \[n_b(q+2,\,7)\ \ge\ 6N(q) + 2K .\] The records take \(K = \lvert R\rvert\).
+Records: \(q = 5\): \(\lvert R\rvert = 81\) (\(R_0\) = 72 pairwise opposite points, 9 extra points, spread lines of
+\(q^3+1 = 126\) available), \(n = 23{,}598\); \(q = 7\): \(288 + 7\), \(n = 118{,}238\); \(q = 8\): \(217 + 12\),
+\(n = 225{,}152\); \(q = 11\): \(756 + 12\), \(n = 1{,}064{,}472\). Computer: \(R_0\) (for \(q = 7, 11\) an orbit of the
+Weyl group \(W(E_7)\) acting on \(Q(6,q)\) through the \(E_7\) root lattice mod \(q\), research/cell147/ovoid/ and octo/
+{[}b14{]}; being pairwise non-orthogonal in \(Q(6,q)\) it is a partial ovoid of \(H(q)\) by (F4); for \(q = 5, 8\) from
+research/d13D7/q57 and q8 {[}b14{]}), the extra points \(X\), the lines \(L_x\) (pairwise opposite, not in the Hermitian
+spread), the bijection \(f_0\) onto Hermitian spread lines, the hub graph.
 
 \textbf{Corollary 8.2 (duality, \(q = 3^h\): (11,7), (12,7)).} Let \(q = 3^h\), \(\varphi\) a duality, all types \(H\),
 \(M_t = \varphi\vert_P\) for every transition, and \(R_t = F\) for every transition, \(F\) the point set of a spread
-(e.g.~the Hermitian spread), \(\lvert F\rvert = (q+1)(q^3+1)\). By Theorem C every transition is repaired. Every level
+(e.g.~the Hermitian spread), \(\lvert F\rvert = (q+1)(q^3+1)\). By Theorem B every transition is repaired. Every level
 has \(r\lvert F\rvert\) free slots of each colour. If \(K\le r(q+1)(q^3+1)\) hubs of each colour are attached and the
 hub graph \(Y\) has maximum degree \(\le q-r\) and satisfies (HG) (for instance, if it is an \(\mathrm{HG}(K,K;q-r)\)),
 then \[n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + 2K .\] Records (\(q = 9\), \(\lvert F\rvert = 7{,}300\)): \(r = 1\),
 \(K = 7{,}300\): \(n = 413{,}180\); \(r = 2\), \(K = 14{,}600\): \(n = 693{,}500\). By Proposition 1.4 and Remark 4.2 no
 larger freed set leaves every transition repaired, so within this construction, and as long as condition (T) of Theorem
 3.4 is required, \(K = r(q+1)(q^3+1)\) is the cap. Computer: the duality \(\varphi\) of \(H(9)\) (explicit, verified),
-the hub graphs. Proved: the freed set and its size, for every \(q = 3^h\).
+the hub graphs. Proved: the freed set and its size, for every \(q = 3^h\). (Delorme {[}De85a, §3{]} also uses a duality
+of a generalized quadrangle or hexagon to build cyclic multi-level graphs, on the vertex set
+\(\mathbb Z/m\mathbb Z\times Q^k\) with \(Q\) the point set and \((a,x_1,\dots,x_k)\) adjacent to
+\((a+1,x_2,\dots,x_k,y)\) for \(y\) on the line \(f(x_1)\). Those graphs are not copies of \(I\) joined by matchings, so
+the level graph here is not of that form.)
 
 \textbf{Corollary 8.3 (typed levels: (14,7), (15,7), (16,7)).} Let the types be \(HDHDH\) (\(r = 2\)) or \(HHDHDHD\)
 (\(r = 3\)), let every friendly transition carry \(M_t = \mathrm{id}\) and a segment set (points) or dual segment set
 (lines) \(F_t\), and let the non-friendly transitions carry \(M_t = \sigma\) (\(H\to H\)) or \(\sigma^{-1}\)
-(\(D\to D\)) with freed sets \(R\) (resp. \(\sigma(R)\)) satisfying Theorem B. If \(K_{\mathcal B}\le\min\alpha_j\),
+(\(D\to D\)) with freed sets \(R\) (resp. \(\sigma(R)\)) satisfying Theorem C. If \(K_{\mathcal B}\le\min\alpha_j\),
 \(K_{\mathcal A}\le\min\beta_j\) (Section 6) and the hub graph \(Y\) has maximum degree \(\le q-r\) and satisfies (HG)
 (for instance, if it is an \(\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};q-r)\)), then
 \[n_b(q+1+r,\,7)\ \ge\ (2r+1)\cdot 2N(q) + K_{\mathcal A} + K_{\mathcal B}.\] Records:
@@ -984,13 +1007,18 @@ cell & solution file (research/frontier/sols/) & builder \\
 \subsection{\texorpdfstring{9. What is proved for every
 \(q\)}{9. What is proved for every q}}\label{what-is-proved-for-every-q}}
 
-Theorems A, B, C and 3.4 hold for every prime power \(q\) (the proofs only use (F1)--(F3), and at least two points on a
-line and two lines on a point). What is not known in general is how large the sets can be made and whether large hub
-graphs exist; Lemma 1.2 and Lemma 7.1 give explicit choices. With \(\kappa(\delta)\) as in Section 7:
+Theorems A, B, C and 3.4, Lemma 4.1 and Proposition 1.4 hold for every generalized hexagon of order \((q,q)\), in
+particular for \(H(q)\) and its dual for every prime power \(q\): the proofs only use (F1)--(F3), and at least two
+points on a line and two lines on a point. Only (F4) and Lemma 1.2 are specific to \(H(q)\). What is not known in
+general is how large the sets can be made and whether large hub graphs exist; Lemma 1.2 and Lemma 7.1 give explicit
+choices. With \(\kappa(\delta)\) as in Section 7:
 
 \textbf{Corollary 9.1 (every \(q\ge 4\), three levels).} With \(R\) the \(q^2+1\) points of an elliptic quadric
-\(Q^-(3,q)\) section (Lemma 1.2(a)) and \(R^*\) any \(q^2+1\) lines of the Hermitian spread (Corollary 5.3(a)):
-\[n_b(q+2,\,7)\ \ge\ 6N(q) + 2\min\bigl(q^2+1,\ \kappa(q-1)\bigr),\] which is \(6N(q)+2(q^2+1)\) for every \(q\ge 5\).
+\(Q^-(3,q)\) section (Lemma 1.2(a)), \(R^*\) any \(q^2+1\) lines of the Hermitian spread and \(\sigma\) as in
+Proposition 5.2 (Corollary 5.3(a)), Corollary 8.1 with \(K = \min(q^2+1,\kappa(q-1))\) and the hub graph of Lemma 7.1
+gives \[n_b(q+2,\,7)\ \ge\ 6N(q) + 2\min\bigl(q^2+1,\ \kappa(q-1)\bigr),\] which is \(6N(q)+2(q^2+1)\) for every
+\(q\ge 5\). At \(q = 4\) (\(\kappa(3) = 7 < 17\)) it gives \(6N(4)+14 = 8{,}204\), below the table's \((6,7) = 8{,}310\)
+(Delorme's construction {[}De85a, §9{]}, Section 11); the corollary improves the table only for \(q\ge 5\).
 
 \textbf{Corollary 9.2 (\(q = 3^h\)).} For every \(r\) with \(1\le r\le q-3\) (Corollary 8.2 with Lemma 7.1; here
 \(\kappa(q-r) < q^4 < r(q+1)(q^3+1)\), so the hub graph is the only limit):
@@ -1003,12 +1031,20 @@ the smallest slot counts are \(\min_j\alpha_j = \min_j\beta_j = (q+1)(q^2+1) + q
 \[n_b(q+3,\,7)\ \ge\ 10N(q) + 2\min\bigl((q+2)(q^2+1),\ \kappa(q-2)\bigr).\] The minimum is \(\kappa(q-2)\) for
 \(q\le 13\) and \((q+2)(q^2+1)\) for \(q\ge 16\).
 
-The record values exceed these because the sets found by computer are of order \(q^4\) (non-collinear sets of 8,645 and
-14,762 points at \(q = 11, 13\), against \(q^4 = 14{,}641\), \(28{,}561\)) and the hub graphs found by computer are much
-larger than \(\kappa\). For \(q = 3^h\) the sets are already optimal for Theorem C (Proposition 1.4) and only the hub
+Evaluated at the cells of Section 0, these corollaries already exceed the 2013 table in eight of the nine cells, with
+ingredients that are classical (elliptic quadric sections, the Hermitian spread, a duality of \(H(3^h)\) {[}Ti59{]}) or
+explicit (Lemma 7.1): Corollary 9.1 gives (7,7) 23,488, (9,7) 117,748, (10,7) 224,824, (13,7) 1,063,180; Corollary 9.2
+gives (11,7) 399,634 and (12,7) 664,930; Corollary 9.3 gives (14,7) 1,773,296 and (16,7) 4,026,216 (table values in
+Section 0). None of them covers (15,7) (\(q = 11\), \(r = 3\)).
+
+The record values exceed these because the hub graphs found by computer are much larger than \(\kappa\), and the line
+sets found by computer (8,246 and 14,823 lines at \(q = 11, 13\)) are much larger than \((q+1)(q^2+1)\) (1,464 and
+2,380); the mirrored sets of Corollary 8.1 (81, 295, 229 and 768 points at \(q = 5, 7, 8, 11\)) are also larger than
+\(q^2+1\) (26, 50, 65 and 122). (At \(q = 13\) the record uses only 122 elements on the non-friendly transitions, fewer
+than \(q^2+1 = 170\).) For \(q = 3^h\) the sets are already optimal for Theorem B (Proposition 1.4) and only the hub
 graphs are found by computer.
 
-\textbf{Remark 9.4 (consequences of Theorem C not yet built).} Theorem C allows friendly sets that are much larger than
+\textbf{Remark 9.4 (consequences of Theorem B not yet built).} Theorem B allows friendly sets that are much larger than
 the non-collinear and non-concurrent sets used in the (14,7)--(16,7) records: up to \((q+1)(q^3+1)\) (Proposition 1.4),
 e.g. the 15,984 points of the Hermitian spread of \(H(11)\) against 8,645, and the \(12\cdot 756 = 9{,}072\) lines
 through the 756-point partial ovoid of \(H(11)\) against 8,246 (non-concurrent). In the \(HDHDH\) layout with these sets
@@ -1067,16 +1103,16 @@ Theorem A & plain level graphs with random bijections, types \(HHH\), \(HDH\), \
 \(HHHHHHH\) for \(q = 3, 4\)) & 3, 4, 5 & all VALID, \((q+1+r)\)-regular \\
 Lemma 4.1 & all ordered pairs, for spread-point sets, three random maximal segment sets, a random maximal (R1) set;
 points and lines & 3, 4, 5 & 0 failures; each set plus one turning point: 36--320 failing pairs \\
-Theorem C (friendly) & two levels \(H\to D\), \(D\to H\) and five levels \(HDHDH\), main graph without hubs, with: all
+Theorem B (friendly) & two levels \(H\to D\), \(D\to H\) and five levels \(HDHDH\), main graph without hubs, with: all
 points of the Hermitian spread (112, 325, 756 \(=(q+1)(q^3+1)\)), random maximal segment sets, (R1) sets with no hub
 condition, pencils of a partial ovoid, dual segment sets; 3 seeds & 3, 4, 5 & 108 of 108 VALID; set plus one turning
 point: 72--1,800 ordered pairs at distance \(>7\) (apsp\_mt: diameter 8, INVALID) \\
-Theorem C (friendly, larger \(q\)) & two levels \(H\to D\), all \((q+1)(q^3+1)\) points of the Hermitian spread freed
+Theorem B (friendly, larger \(q\)) & two levels \(H\to D\), all \((q+1)(q^3+1)\) points of the Hermitian spread freed
 (2,752 and 15,984 points), main graph & 7, 11 & VALID (\(n\) = 78,432 and 708,624; all sources) \\
-Theorem C (duality), Cor. 8.2 & all levels \(H\), every transition matched by a polarity \(\varphi\) of \(H(3)\), the
+Theorem B (duality), Cor. 8.2 & all levels \(H\), every transition matched by a polarity \(\varphi\) of \(H(3)\), the
 112 spread points freed on every transition, \(r = 1, 2\) & 3 & VALID (\(n = 2{,}184\) and \(3{,}640\)); one more point
 freed: diameter 8 \\
-Theorem B, Prop. 5.2, Cor. 5.3 & \(M\) built exactly as in Proposition 5.2, (H1)--(H3) re-checked on it; \(R\) pairwise
+Theorem C, Prop. 5.2, Cor. 5.3 & \(M\) built exactly as in Proposition 5.2, (H1)--(H3) re-checked on it; \(R\) pairwise
 opposite (an ovoid of 28 points at \(q = 3\); 23; 33) and mirrored \(R\) with pairs at distance 4 (17 points/19 pairs;
 26/21; 38/28); types \(HHH\) (same \(M\), \(R\) on all transitions) and \(HDHDH\) (\(M\) on \(H\to H\), \(M^{-1}\) on
 \(D\to D\)) & 3, 4, 5 & all VALID; breaking (H3) at one point: 50, 76, 126 ordered pairs at distance \(>7\) \\
@@ -1091,9 +1127,10 @@ Every positive test passed and every negative control failed. Small \(q\) cannot
 \hypertarget{the-record-graphs}{%
 \subsubsection{10.2 The record graphs}\label{the-record-graphs}}
 
-Each record graph was rebuilt by the lab's coordinator (on a separate machine) from its solution file with the session's
-builder, which also re-checks the hypotheses ((H1)--(H3) at every freed element, non-collinearity or the partner
-condition of the friendly sets, degrees, the hub graph). The edge list was then checked by
+Each record graph was rebuilt by the lab's coordinator (on a separate machine) from its solution file with the builder
+of the session that found it (so the edge list is the finder's: its hash equals the finder's), which also re-checks the
+hypotheses ((H1)--(H3) at every freed element, non-collinearity or the partner condition of the friendly sets, degrees,
+the hub graph). What is independent of the finder is the check of that edge list, by
 research/lifts/coordinator\_check/apsp\_mt.c: simple graph, maximum degree \(\le\Delta\), bipartite, connected, and a
 bit-parallel breadth-first search from \textbf{every} vertex, no symmetry assumed. All nine runs are in
 research/coordinator\_check/check\_2026-10-25.txt:
@@ -1117,53 +1154,85 @@ cell & \(n\) & apsp\_mt output (all sources) \\
 \end{longtable}
 
 (The finders' own checks were partly reduced by symmetry, e.g.~an order-61 automorphism for (16,7); the coordinator's
-runs above assume none.)
+runs above assume none.) For a lower bound this is the relevant check: the edge list is a graph, and its order, degree
+and diameter are verified directly. In addition, the referee of this note rebuilt (7,7), (9,7) and (10,7) with the same
+builders and checked them with a separate breadth-first-search program (research/referee/d7\_checks/ on branch
+claude/referee-d7-hexagon-theorems-hewag2): same edge-list hashes, diameter 7.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{prior-art-and-what-is-new}{%
-\subsection{11. Prior art, and what is new}\label{prior-art-and-what-is-new}}
+\hypertarget{prior-art}{%
+\subsection{11. Prior art}\label{prior-art}}
+
+This section follows the lab's literature check (research/lit/novelty-2026-10-25.md, 25 October 2026). The sources
+searched were: the CombinatoricsWiki bipartite table {[}CW{]} and the survey {[}MS13{]}; the full text of {[}De85a{]};
+the arXiv and Zenodo APIs and Crossref abstracts (2012--2026); F. Comellas' tables of general graphs, January and
+October 2026 versions {[}Co26{]}; and web searches on each claim. Google Scholar and zbMATH were not queried, and
+{[}GF85{]}, {[}DGQ{]} and the full text of {[}De85b{]} could not be read. ``Nothing found'' below means only that these
+searches returned nothing; it is not a claim that a result is new.
 
 \emph{Classical.} Generalized hexagons and their incidence graphs {[}Ti59{]}; the split Cayley hexagon in \(Q(6,q)\),
-its dualities for \(q = 3^h\), and the Hermitian spread ({[}Ti59{]}, {[}Th80{]}, {[}VM98{]}).
+its dualities for \(q = 3^h\), and the Hermitian spread ({[}Ti59{]}, {[}Th80{]}, {[}VM98{]}). Non-collinear sets and
+partial ovoids are the partial distance-2 and distance-3 ovoids of \(H(q)\) ({[}VM98{]}, {[}BI16{]}).
 
-The level graph of Definition 2.1 is a bipartite analogue of the \emph{star product} of Bermond, Delorme and Farhi
-{[}BDF82, BDF84{]} (see {[}MS13, §3.3.2{]}): copies of \(I\) indexed by the vertices of the complete graph \(K_{2r+1}\),
-oriented as a regular tournament, and for each arc a perfect matching between one colour class of the tail copy and the
-other colour class of the head copy. The survey credits the constructions of large bipartite graphs mainly to Delorme's
-bipartite versions of the star product and of compounding {[}De85a, De85b{]}, to the partial Cayley graphs of Bond and
-Delorme, and to the voltage lifts of Loz, Pérez-Rosés and Pineda-Villavicencio, which updated about a third of the table
-{[}MS13, §3.4.5{]}. The D = 7 values with \(\Delta\ge 9\), and (7,7), have exactly the form \((2r+1)\cdot 2N(q)\) of
-Theorem A; the survey's table does not name the source of each cell, and we have not determined it. We do not claim
-Theorem A as new: it is the routine argument for such level graphs.
+\emph{The base graphs.} The level graph of Definition 2.1 is a bipartite analogue of the \emph{star product} of Bermond,
+Delorme and Farhi {[}BDF82, BDF84{]} (see {[}MS13, §3.3.2{]}): copies of \(I\) indexed by the vertices of the complete
+graph \(K_{2r+1}\), oriented as a regular tournament, and for each arc a perfect matching between one colour class of
+the tail copy and the other colour class of the head copy. For general graphs, compounds of copies of a graph along a
+tournament, one matching per arc, are due to Gómez and Fiol {[}GF85{]} (the operation ``B(T)'' of {[}Co26{]}). The
+survey credits the constructions of large bipartite graphs mainly to Delorme's bipartite versions of the star product
+and of compounding {[}De85a, De85b{]}, to the partial Cayley graphs of Bond and Delorme, and to the voltage lifts of
+Loz, Pérez-Rosés and Pineda-Villavicencio, which updated about a third of the table {[}MS13, §3.4.5{]}. The colour key
+of {[}CW{]} credits the \(D = 7\) cells with \(\Delta = 6,\dots,16\) to C. Delorme, J. Gómez and J.-J. Quisquater, ``On
+large bipartite graphs'' {[}DGQ{]}, marked ``submitted''; the literature check found no published version. The cells
+(7,7) and (9,7)--(16,7) have exactly the form \((2r+1)\cdot 2N(q)\) of Theorem A. The values \((6,7) = 8{,}310\) and
+\((8,7) = 40{,}586\) equal the order \(2q(q^4+q^3+3q^2+q+1)\) (\(q = 5, 7\)) of Delorme's construction {[}De85a, §9{]}:
+vertices inserted on \(2q^3\) edges of the incidence graph of a generalized hexagon, then a vertex set duplicated
+\(q-1\) times, which gives a bipartite graph of degree \(q+1\) and diameter 7. We do not claim Theorem A: it is the
+routine argument for such level graphs. Delorme also builds cyclic multi-level graphs from a duality {[}De85a, §3{]}
+(compared with Definition 2.1 after Corollary 8.2) and uses sets of \(q^3+1\) pairwise opposite elements of \(H(q)\),
+citing {[}Th80{]}, to raise the degree at diameter 6 {[}De85a, §8(b){]}. A statement of the same ``any bijection'' kind
+as Theorem A, for a graph of diameter 5 on the points of a generalized hexagon, is in {[}Ra26b{]}.
 
-\emph{New here (as far as we know).} Deleting matching edges at freed elements and reattaching the freed slots to hub
-vertices (Definition 3.1, Theorem 3.4); the repair theorems B and C; the use of dual levels (``typed levels'') to make
-transitions automorphic; segment sets and Proposition 1.4; mirrored sets (Propositions 5.1, 5.2); and the nine values in
-Section 0.
+\emph{Surgery and hubs: the closest prior work.} R. Rajiv's preprint {[}Ra26{]} (Zenodo, 30 September 2026, unrefereed)
+builds compounds of \(m\) copies of the incidence graph of a generalized \(n\)-gon along a tournament, with
+type-changing matchings (point to line) and type-preserving matchings (point to point, line to line) {[}Ra26, Definition
+3{]}. Its Lemma 5 deletes the type-preserving matching edges at a pairwise non-collinear (or non-concurrent) set and
+keeps the diameter, with a shortest-path proof; its Theorem 3 attaches new vertices, each joined to one point and one
+line of every copy, connected by a graph \(Y\). In the language of this note these are: friendly transitions with
+\(M_t = \mathrm{id}\) (the mechanism of typed levels), Corollary 4.3(1) (the non-collinear case of Theorem B at friendly
+transitions), and hubs as in Definition 3.1 and Theorem 3.4. The setting differs (general graphs of diameter
+\(n = 4, 6\), not bipartite graphs of diameter 7; hubs with one point slot and one line slot per copy, not hubs of one
+colour), but the ideas are the same, and {[}Ra26{]} is about three weeks older than the lab's diameter-7 work. Comellas'
+table of general graphs {[}Co26{]} records, on 2 October 2026, a (4,6) graph obtained from \(H(3)\) by deleting
+incidence edges ``to free degree'' and using the freed capacity to attach new vertices, each to one point and one line;
+and, on 7--15 October 2026, graphs of diameter 6 by Bhakar and by Yugeswardeenoo that subdivide hexagon edges (often
+along a Hermitian spread) and join the new vertices by an external graph. Replacing or adding vertices in hexagon-based
+graphs of diameter 6 is older {[}CG94, GPB99, PGMP09{]}. Theorem B at a duality transition (Corollary 4.3(3)) is the
+friendly case transported by \(\varphi\), so the overlap with {[}Ra26{]} covers it too in the non-collinear case.
 
-\hypertarget{appendix-notes-for-readers-of-the-lab-notes}{%
-\subsection{12. Appendix: notes for readers of the lab notes}\label{appendix-notes-for-readers-of-the-lab-notes}}
+\emph{Nothing found in the sources searched} on:
 
-\emph{What is new relative to the per-cell notes.} Writing the proofs out gave one simplification: Theorem C replaces
-the lab's conditions on freed sets at friendly transitions (non-collinear sets, and the ``relaxed sets'' with hypotheses
-(R1), (R2) of research/d15D7b/RELAXED.md) by the single, weaker condition of being a segment set. The lab's (12,7) notes
-(research/squads/cells/d12D7.md §2) state the same condition for transitions matched by a duality and check it by
-computer at \(q = 9\); Theorem C proves it and transfers it to friendly transitions. The record graphs are unaffected
-(they satisfy the stronger hypotheses and were checked by computer in full), but larger sets are now allowed (Remark
-9.4).
+\begin{itemize}
+\tightlist
+\item
+  bipartite graphs of diameter 7 made of \(2r+1\) copies of \(I(q)\) plus hub vertices, with hubs of one colour
+  (Definition 3.1 and Theorem 3.4 in this form);
+\item
+  typed levels used as the 2-colouring of a bipartite graph of diameter 7 (Section 6); the type-preserving and
+  type-changing matchings themselves are in {[}Ra26{]};
+\item
+  Theorem C and mirrored sets: local dualities at non-automorphic transitions (Propositions 5.1, 5.2). {[}Ra26{]} never
+  cuts a type-changing matching, and {[}De85a{]} and {[}Ra26c{]} use global dualities of \(H(3^h)\) only;
+\item
+  freed sets with collinear pairs: segment sets and Theorem B beyond non-collinear sets ({[}Ra26, Lemma 5{]} requires
+  pairwise non-collinear sets);
+\item
+  bipartite values at \(D = 7\) later than the 2013 table, including the nine values of Section 0.
+\end{itemize}
 
-\emph{Why the lab's (R2) was not needed.} The lab proof of the relaxed theorem (RELAXED.md, cases 4 and 5) only used
-paths whose matching edge sits at a point collinear with the freed point \(r\). When \(r\) has a partner \(x\) and the
-target is a line \(u\) with \(d(r,u) = 5\) and geodesic \(r - y - x - y_2 - w_2 - u\), the only such point is \(x\)
-(freed), and (R2) supplies a hub. The path through \(w_2\) (at distance 4 from \(r\)) avoids this: \(w_2\) is collinear
-with \(x\), so it is not freed (else \(x\) would have two partners), and \((r,j')\leadsto(w_2,j')\to(w_2,j)\to(u,j)\)
-has length \(4+1+1 = 6\). This is the first step of the proof of Lemma 4.1 (a point and a line at distance 5: three
-points in a row on the geodesic).
-
-\emph{Hubs in Theorem B.} The earlier version of Theorem B (research/d13D7/REPORT.md §2, with \(R\) pairwise opposite)
-routed case 6 through the hub of \(x\) in two levels. The route of case 6 in the proof of Theorem B uses no hub, which
-is what lets hubs take their slots from different freed elements in different levels (Definition 3.1).
+Proposition 1.4 (the size of segment sets) and the converse in Remark 4.2 are elementary; the literature check did not
+search for them specifically, and they may well be known.
 
 \hypertarget{references}{%
 \subsection{References}\label{references}}
@@ -1179,12 +1248,47 @@ is what lets hubs take their slots from different freed elements in different le
 \item
   {[}BGS06{]} S. Ball, P. Govaerts, L. Storme, On ovoids of parabolic quadrics, Des. Codes Cryptogr. 38 (2006) 131--145.
 \item
+  {[}BI16{]} A. Bishnoi, F. Ihringer, Some non-existence results for distance-\(j\) ovoids in small generalized
+  polygons, arXiv:1606.07288.
+\item
+  {[}CG94{]} F. Comellas, J. Gómez, New large graphs with given degree and diameter, arXiv:math/9411218.
+\item
+  {[}Co26{]} F. Comellas, Table of large graphs with given degree and diameter, arXiv:2406.18994v2 (24 January 2026);
+  and the online tables with descriptions of the graphs, \url{https://web.mat.upc.edu/francesc.comellas/delta-d/} (pages
+  desc\_g6.html and desc\_g7.html, entries of September--October 2026).
+\item
+  {[}CW{]} CombinatoricsWiki, The Degree Diameter Problem for Bipartite Graphs,
+  \url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs} (table as of January 2012).
+\item
   {[}De85a{]} C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291--302.
 \item
   {[}De85b{]} C. Delorme, Large bipartite graphs with given degree and diameter, J. Graph Theory 9 (1985) 325--334.
 \item
+  {[}DGQ{]} C. Delorme, J. Gómez, J.-J. Quisquater, On large bipartite graphs, submitted (cited in {[}CW{]}; no
+  published version found).
+\item
+  {[}DWVM08{]} A. De Wispelaere, H. Van Maldeghem, Some new two-character sets in PG(5,\(q^2\)) and a distance-2 ovoid
+  in the generalized hexagon H(4), Discrete Math. 308 (2008) 2976--2983.
+\item
+  {[}GF85{]} J. Gómez, M. A. Fiol, Dense compound graphs, Ars Combin. 20-A (1985) 211--237.
+\item
+  {[}GPB99{]} J. Gómez, I. Pelayo, C. Balbuena, New large graphs with given degree and diameter six, Networks 34 (1999)
+  154--161.
+\item
   {[}MS13{]} M. Miller, J. Širáň, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J.
   Combin., Dynamic Survey DS14 (2nd ed., 2013).
+\item
+  {[}PGMP09{]} G. Pineda-Villavicencio, J. Gómez, M. Miller, H. Pérez-Rosés, New largest known graphs of diameter 6,
+  Networks 53 (2009) 315--328.
+\item
+  {[}Ra26{]} R. Rajiv, New lower bounds for the degree-diameter problem from generalized quadrangles and hexagons,
+  Zenodo preprint, 30 September 2026, \url{https://doi.org/10.5281/zenodo.23052995}.
+\item
+  {[}Ra26b{]} R. Rajiv, Partial folds of the split Cayley hexagon H(9) and large graphs of diameter five, Zenodo
+  preprint, 30 September 2026, \url{https://doi.org/10.5281/zenodo.23056128}.
+\item
+  {[}Ra26c{]} R. Rajiv, Large graphs of diameter five from a duality of order four of the split Cayley hexagon H(9),
+  Zenodo preprint, 23 September 2026, \url{https://doi.org/10.5281/zenodo.22907863}.
 \item
   {[}Th80{]} J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A 29 (1980)
   87--93.
@@ -1194,6 +1298,43 @@ is what lets hubs take their slots from different freed elements in different le
   {[}Ti59{]} J. Tits, Sur la trialité et certains groupes qui s'en déduisent, Publ. Math. IHÉS 2 (1959) 13--60.
 \item
   {[}VM98{]} H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998.
+\end{itemize}
+
+\hypertarget{referee-response}{%
+\subsection{Referee response}\label{referee-response}}
+
+This revision applies the referee report research/referee/d7-2026-10-25.md (branch
+claude/referee-d7-hexagon-theorems-hewag2) and the literature check research/lit/novelty-2026-10-25.md (branch
+claude/novelty-literature-check-4i5frp). No results were added. Issues 1, 2(a), 2(b), 3, 5--9 and 13--18 are fixed as
+the report suggests (issue 16 by moving Section 12 to research/theorems/D7\_HEXAGON\_lab\_remarks.md). The front
+matter's ``new lower bounds'' and the column ``ours'' were also reworded, following the literature check's rule never to
+say ``new''. Where we did something else:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Issue 2(c), {[}De85a, §3{]} at Corollary 8.2.} We read §3 of {[}De85a{]}. Its graphs have vertex set
+  \(\mathbb Z/m\mathbb Z\times Q^k\) (\(Q\) the points) with adjacency given by the duality; they are not copies of
+  \(I\) joined by matchings, so the all-\(H\) duality level graph is not of that kind. {[}De85a, §3{]} is cited after
+  Corollary 8.2 as a related use of a duality, with this difference stated. §8(b) and §9 are cited as suggested.
+\item
+  \emph{Issue 4.} The general bound for every \(r\) (needed for (15,7)) would be a new statement, and this revision adds
+  none. Section 9 now only evaluates the existing Corollaries 9.1--9.3 at the nine cells: they exceed the 2013 table in
+  eight cells, all but (15,7). The referee's general bound, and its build at \(q = 5\), are left for a later version.
+\item
+  \emph{Issue 9 (done; a note on letters).} The letters are swapped: Theorem B is now the automorphic-transition theorem
+  (Section 4) and Theorem C the local-duality theorem (Section 5). The referee report, the literature check and the
+  lab's earlier notes use the old letters.
+\item
+  \emph{Issue 10.} We could not consult {[}VM98{]} from our environment, so we do not cite a section number for the
+  coordinate form; the note relies on the computer check of Section 10.1 and on the referee's independent check.
+\item
+  \emph{Issue 11.} Lemma 1.2(d) and {[}Th81{]} are cited for the existence of ovoids, and the remark on distance-2
+  ovoids is added. We could not access {[}Th80{]}, so the result number there is not given.
+\item
+  \emph{Issue 12.} We kept \(n_b(\Delta,D)\), because \(N\) already denotes the number of points of the hexagon, and
+  added the README's notation in Section 0. The freed-set convention is stated at the start of Section 6, and the
+  terminology for ovoids after Definition 1.1.
 \end{itemize}
 
 \end{document}

@@ -711,8 +711,9 @@ ingredients that are classical (elliptic quadric sections, the Hermitian spread,
 None of them covers (15,7) ($q = 11$, $r = 3$).
 
 The record values exceed these because the hub graphs found by computer are much larger than $\kappa$, and the line sets
-found by computer (8,246 and 14,823 lines at $q = 11, 13$) are much larger than $(q+1)(q^2+1)$ (1,464 and 2,380); at
-$q = 11$ the mirrored set (768 points) is also much larger than $q^2+1 = 122$. (At $q = 13$ the record uses only 122
+found by computer (8,246 and 14,823 lines at $q = 11, 13$) are much larger than $(q+1)(q^2+1)$ (1,464 and 2,380); the
+mirrored sets of Corollary 8.1 (81, 295, 229 and 768 points at $q = 5, 7, 8, 11$) are also larger than $q^2+1$ (26, 50,
+65 and 122). (At $q = 13$ the record uses only 122
 elements on the non-friendly transitions, fewer than $q^2+1 = 170$.) For $q = 3^h$ the sets are already optimal for Theorem B (Proposition 1.4) and only the hub graphs are
 found by computer.
 
@@ -856,10 +857,10 @@ search for them specifically, and they may well be known.
   arXiv:1606.07288.
 - [CG94] F. Comellas, J. Gómez, New large graphs with given degree and diameter, arXiv:math/9411218.
 - [Co26] F. Comellas, Table of large graphs with given degree and diameter, arXiv:2406.18994v2 (24 January 2026); and the
-  online tables with descriptions of the graphs, https://web.mat.upc.edu/francesc.comellas/delta-d/ (pages desc_g6.html
+  online tables with descriptions of the graphs, <https://web.mat.upc.edu/francesc.comellas/delta-d/> (pages desc_g6.html
   and desc_g7.html, entries of September–October 2026).
 - [CW] CombinatoricsWiki, The Degree Diameter Problem for Bipartite Graphs,
-  http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs (table as of January 2012).
+  <http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs> (table as of January 2012).
 - [De85a] C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291–302.
 - [De85b] C. Delorme, Large bipartite graphs with given degree and diameter, J. Graph Theory 9 (1985) 325–334.
 - [DGQ] C. Delorme, J. Gómez, J.-J. Quisquater, On large bipartite graphs, submitted (cited in [CW]; no published version
@@ -874,11 +875,11 @@ search for them specifically, and they may well be known.
 - [PGMP09] G. Pineda-Villavicencio, J. Gómez, M. Miller, H. Pérez-Rosés, New largest known graphs of diameter 6,
   Networks 53 (2009) 315–328.
 - [Ra26] R. Rajiv, New lower bounds for the degree-diameter problem from generalized quadrangles and hexagons, Zenodo
-  preprint, 30 September 2026, https://doi.org/10.5281/zenodo.23052995.
+  preprint, 30 September 2026, <https://doi.org/10.5281/zenodo.23052995>.
 - [Ra26b] R. Rajiv, Partial folds of the split Cayley hexagon H(9) and large graphs of diameter five, Zenodo preprint,
-  30 September 2026, https://doi.org/10.5281/zenodo.23056128.
+  30 September 2026, <https://doi.org/10.5281/zenodo.23056128>.
 - [Ra26c] R. Rajiv, Large graphs of diameter five from a duality of order four of the split Cayley hexagon H(9), Zenodo
-  preprint, 23 September 2026, https://doi.org/10.5281/zenodo.22907863.
+  preprint, 23 September 2026, <https://doi.org/10.5281/zenodo.22907863>.
 - [Th80] J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A 29 (1980) 87–93.
 - [Th81] J. A. Thas, Ovoids and spreads of finite classical polar spaces, Geom. Dedicata 10 (1981) 135–143.
 - [Ti59] J. Tits, Sur la trialité et certains groupes qui s'en déduisent, Publ. Math. IHÉS 2 (1959) 13–60.
@@ -888,8 +889,8 @@ search for them specifically, and they may well be known.
 
 This revision applies the referee report research/referee/d7-2026-10-25.md (branch
 claude/referee-d7-hexagon-theorems-hewag2) and the literature check research/lit/novelty-2026-10-25.md (branch
-claude/novelty-literature-check-4i5frp). No results were added. Issues 1, 2(a), 2(b), 3, 5–8, 13–18 are fixed as the
-report suggests. The front matter's "new lower bounds" and the column "ours" were also reworded, following the
+claude/novelty-literature-check-4i5frp). No results were added. Issues 1, 2(a), 2(b), 3, 5–9 and 13–18 are fixed as
+the report suggests (issue 16 by moving Section 12 to research/theorems/D7_HEXAGON_lab_remarks.md). The front matter's "new lower bounds" and the column "ours" were also reworded, following the
 literature check's rule never to say "new". Where we did something else:
 
 - *Issue 2(c), [De85a, §3] at Corollary 8.2.* We read §3 of [De85a]. Its graphs have vertex set
@@ -899,7 +900,7 @@ literature check's rule never to say "new". Where we did something else:
 - *Issue 4.* The general bound for every $r$ (needed for (15,7)) would be a new statement, and this revision adds none.
   Section 9 now only evaluates the existing Corollaries 9.1–9.3 at the nine cells: they exceed the 2013 table in eight
   cells, all but (15,7). The referee's general bound, and its build at $q = 5$, are left for a later version.
-- *Issue 9.* The letters are swapped: Theorem B is now the automorphic-transition theorem (Section 4) and Theorem C the
+- *Issue 9 (done; a note on letters).* The letters are swapped: Theorem B is now the automorphic-transition theorem (Section 4) and Theorem C the
   local-duality theorem (Section 5). The referee report, the literature check and the lab's earlier notes use the old
   letters.
 - *Issue 10.* We could not consult [VM98] from our environment, so we do not cite a section number for the coordinate form;
@@ -909,4 +910,3 @@ literature check's rule never to say "new". Where we did something else:
 - *Issue 12.* We kept $n_b(\Delta,D)$, because $N$ already denotes the number of points of the hexagon, and added the
   README's notation in Section 0. The freed-set convention is stated at the start of Section 6, and the terminology for
   ovoids after Definition 1.1.
-- *Issue 16.* Section 12 is moved to research/theorems/D7_HEXAGON_lab_remarks.md.
