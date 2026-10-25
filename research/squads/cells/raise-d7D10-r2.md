@@ -61,8 +61,34 @@ worse sampled tails (min 69–84) than the default α (min 27), so the default s
   (9 for pgl 19 × Z169), and sl 19 × Z169 reached 5 with plain annealing.
 - Round 1 saw the same wall: solves at μ ≈ 31 in 5–10 min, nothing at μ ≈ 33 in 30–60 min.
 
-## Next step, running
+## sl 19 × Z169 with RESTART=1 (seeds 21–24, 3600 s each, finished)
 
-Four seeds (21–24) of sl 19 × Z169 with `RESTART=1`, 3600 s each (the best open lead, cost 5). Their logs are
-`research/structured/runs/d7D10_sl_19_169_orb3_restart_s2*.log`. A cost-0 result would be a Haar graph of 2,311,920 vertices
-(N = 1,155,960) and needs build_haar2.py (about 22 s), not a new record on its own without that check.
+| seed | best cost | evals |
+|---|---|---|
+| 21 | 6 | 3.64 M |
+| 22 | 10 | 3.59 M |
+| 23 | 6 | 3.60 M |
+| 24 | 6 | 3.62 M |
+
+No solve. The floor for sl 19 × Z169 at μ = 33.1 is 5–6 in every run, the best one being plain annealing (seed 11, cost 5).
+Those are the closest results of the round, and still 5 uncovered orbits from a solution.
+
+## Stop decision (round 2)
+
+I stopped here rather than run more seeds of the same groups. Reasons:
+
+1. Four groups above the record order were tried with about 4 h of single-core time in total (60-minute runs, 3.5 M
+   evaluations each, plus restarts). None solved. Best costs: 5 (sl 19 × Z169), 9 (pgl 19 × Z169 with RESTART), 18 (psl 19 × Z337),
+   27 (sl 16 × Z283).
+2. The plateaus repeat across seeds (pgl 19 × Z169 at 12 in three seeds; sl 19 × Z169 at 5–10 in five runs), which points at a
+   floor of the k = 3 orbit method at μ ≈ 33, not at a bad seed.
+3. The sampled screen (300 random S per group) gives no group above the record with a lower tail than the record group
+   (p1 ≈ 24 at μ = 30.9). Above μ ≈ 32 every candidate is 2–3× worse.
+
+What would move the cell (not tried here): a higher compute budget at μ ≈ 33–35 on sl 19 × Z169 (the one group whose
+cost was still moving at 60 min), k = 5 orbits (Δ = 2 + 5 with f = 2, which SIZE_LAW rates as weak), or voltage lifts
+(research/lifts/). Those are for the coordinator to decide.
+
+## Result
+
+No new record. The record stays at 2,298,240 (`d7D10_prod_sl_7_psl_19_1_orb3_s2.txt`, verified in this session by build_haar2.py).
