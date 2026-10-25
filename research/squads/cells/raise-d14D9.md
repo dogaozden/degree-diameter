@@ -68,7 +68,7 @@ not reliable. Solve speed depends on the group more than on μ alone. The solved
 | group | N | 2N | μ | \|Fix\| | result |
 |---|---|---|---|---|---|
 | psl 109 × Z91 | 58,918,860 | 117,837,720 | 18.0 | 53 | **SOLVED** at 6,609 evals (1,524 s), haar_sym OK, haarcheck_psl VALID. **New record.** |
-| sl 389 × Z1 | 58,863,480 | 117,726,960 | 17.8 | 389 | **SOLVED** at 8,265 evals (3,193 s), sub-record (below 117,837,720); SL checkers pending |
+| sl 389 × Z1 | 58,863,480 | 117,726,960 | 17.8 | 389 | **SOLVED** at 8,265 evals (3,193 s); haar_sym OK, hcsl and hc2 VALID. Sub-record (below 117,837,720). `research/frontier/sols/d14D9_sl_389_1_orb3_s1.txt`, sha256 2580f519d97bf3b299af5341e8652ef9389544af5c7e13ca3f45762dc7c7af64 |
 | psl 71 × Z331 | 59,222,520 | 118,445,040 | 19.6 | – | running, best 6 at t=1423 |
 | psl 59 × Z577 | 59,234,820 | 118,469,640 | 19.7 | – | running, best 18 |
 | sl 47 × Z571 | 59,256,096 | 118,512,192 | 19.8 | – | running, best 18 |
