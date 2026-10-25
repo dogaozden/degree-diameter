@@ -85,6 +85,8 @@ int main(int argc, char **argv) {
     capor = 1 << 16; oroff = malloc((capor + 1) * sizeof(int)); oroff[0] = 0; caporc = 1 << 20; orc = malloc(caporc * sizeof(cls_t)); nor = 0; norc = 0;
     long fatal = 0, nzero = 0, nalways = 0, nbig = 0, groups = 0; long fatal_same = 0, fatal_opp = 0;
     int nsrc = getenv("SOURCES") ? atoi(getenv("SOURCES")) : V;
+    FILE *dumpf = getenv("DUMPUNREACHED") ? fopen(getenv("DUMPUNREACHED"), "w") : NULL;
+    int stopafter = getenv("STRUCTONLY") != NULL; int dedup = getenv("DEDUP") != NULL;
     int half = V / 2;
     for (int s = 0; s < nsrc; s++) {
         nrec = 0; npv = 0; dfs(s, 0, -1, 0); cur_s = s;
@@ -105,6 +107,7 @@ int main(int argc, char **argv) {
             }
             if (always) nalways++;
             else if (nu == 1) { fatal++; if ((s < half) == (recs[i].t < half)) fatal_same++; else fatal_opp++; }
+            else if (dedup && recs[i].t < s) { /* duplicate of the reversed group */ }
             else if (nu == 2) { if (keepd[bdist[recs[i].t]]) add_eq(u[0], u[1]); }
             else if (nu <= MAXOR) {
                 if (nor + 2 > capor) { capor *= 2; oroff = realloc(oroff, (capor + 1) * sizeof(int)); }
@@ -115,13 +118,15 @@ int main(int argc, char **argv) {
             i = j;
         }
         /* targets never reached at some coset: walks must reach every (t, c) with t of the right side */
-        for (int t = 0; t < V; t++) for (int cc = 0; cc < K; cc++) if (!seen[t * K + cc]) { nzero++; }
+        for (int t = 0; t < V; t++) for (int cc = 0; cc < K; cc++) if (!seen[t * K + cc]) { nzero++; if (dumpf) fprintf(dumpf, "%d %d %d %d\n", s, t, cc, bdist[t]); }
         free(seen);
     }
+    if (dumpf) fclose(dumpf);
     printf("groups=%ld unreached(t,coset)=%ld FATAL(one class)=%ld [same side %ld, opposite %ld] always-ok=%ld equations=%ld OR-constraints=%ld big=%ld\n",
            groups, nzero, fatal, fatal_same, fatal_opp, nalways, neq, nor, nbig); fflush(stdout);
     if (nzero || fatal) { printf("STRUCTURE FAILS (some lifted pair is unreachable whatever the variables)\n"); }
     if (neq == 0) { printf("no equations\n"); }
+    if (stopafter) return 0;
     /* Gaussian elimination, random order */
     int W = (NV + 63) / 64;
     uint64_t **piv = calloc(NV, sizeof(uint64_t *)); uint8_t *pivrhs = calloc(NV, 1); int rank = 0; long contra = -1;
@@ -176,7 +181,8 @@ int main(int argc, char **argv) {
         for (int k = 0; k < NV; k++) fputc('0' + x0[k], g); fputc('\n', g);
         for (int i = 0; i < nfree; i++) { for (int k = 0; k < NV; k++) fputc('0' + nsb[i][k], g); fputc('\n', g); } fclose(g);
         sprintf(fn, "%s.or", argv[2]); g = fopen(fn, "wb"); fwrite(&nor, 8, 1, g); fwrite(oroff, 4, nor + 1, g); fwrite(orc, sizeof(cls_t), norc, g); fclose(g);
-        printf("wrote %s.sol and %s.or\n", argv[2], argv[2]);
+        sprintf(fn, "%s.eq", argv[2]); g = fopen(fn, "wb"); fwrite(&neq, 8, 1, g); fwrite(eqoff, 4, neq + 1, g); fwrite(eqv, 4, eqoff[neq], g); fwrite(eqrhs, 1, neq, g); fclose(g);
+        printf("wrote %s.sol, %s.or and %s.eq\n", argv[2], argv[2], argv[2]);
     }
     return 0;
 }

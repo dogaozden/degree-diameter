@@ -48,6 +48,14 @@ int main(int argc, char **argv) {
     /* flag index lookup (point, line) */
     #define FL(p, l) flagidx(p, l)
     int onlypts = getenv("ONLYPTS") != NULL;
+    /* SIGMA=file: N ints, point -> line (a bijection).  Pairs covered by the walks P-s(P)-R-s(Q)-Q (resp. the
+       line version) of the triple matching are exempt: point pairs with concurrent s(P), s(Q); line pairs with
+       collinear s^-1(A), s^-1(B). */
+    int *sig = NULL, *sinv = NULL; long nexP = 0, nexL = 0;
+    if (getenv("SIGMA")) { sig = malloc(4L * N); sinv = malloc(4L * L); FILE *g2 = fopen(getenv("SIGMA"), "r");
+        for (int i = 0; i < N; i++) if (fscanf(g2, "%d", &sig[i]) != 1) { fprintf(stderr, "short SIGMA\n"); return 1; } fclose(g2);
+        for (int i = 0; i < L; i++) sinv[i] = -1; for (int i = 0; i < N; i++) sinv[sig[i]] = i;
+        for (int i = 0; i < L; i++) if (sinv[i] < 0) { fprintf(stderr, "SIGMA not a bijection\n"); return 1; } }
     long cap = (long)N * N / 2 + (onlypts ? 0 : (long)L * L / 2) + 16;
     gf = malloc(4L * cap * Q1 * 4); gs = malloc(cap * Q1 * 4);
     npairs = 0; long g = 0;
@@ -56,6 +64,7 @@ int main(int argc, char **argv) {
     (void)fpl;
     for (int P = 0; P < N; P++) for (int Q = P + 1; Q < N; Q++) {
         if (colline[(long)P * N + Q] >= 0) continue;
+        if (sig && concpt[(long)sig[P] * L + sig[Q]] >= 0) { nexP++; continue; }
         for (int i = 0; i < Q1; i++) {
             int L1 = lp[P * Q1 + i]; int R = -1;
             for (int k = 0; k < Q1; k++) { int r = pl[L1 * Q1 + k]; if (r != P && colline[(long)r * N + Q] >= 0) { R = r; break; } }
@@ -70,6 +79,7 @@ int main(int argc, char **argv) {
     int nptpairs = npairs;
     if (!onlypts) for (int A = 0; A < L; A++) for (int B = A + 1; B < L; B++) {
         if (concpt[(long)A * L + B] >= 0) continue;
+        if (sig && colline[(long)sinv[A] * N + sinv[B]] >= 0) { nexL++; continue; }
         for (int i = 0; i < Q1; i++) {
             int P1 = pl[A * Q1 + i]; int K = -1, P2 = -1;
             for (int k = 0; k < Q1; k++) { int l = lp[P1 * Q1 + k]; if (l != A && concpt[(long)l * L + B] >= 0) { K = l; break; } }
@@ -91,7 +101,7 @@ int main(int argc, char **argv) {
     long cost = 0;
     for (long e = 0; e < ngeo; e++) { int s = 0; for (int k = 0; k < 4; k++) s += gs[e * 4 + k] * nu[gf[e * 4 + k]]; val[e] = ((s % a) + a) % a; cnt[(e / Q1) * a + val[e]]++; }
     long bp = 0, bl = 0; for (int p = 0; p < npairs; p++) { int m = missing(p); cost += m; if (m) { if (p < nptpairs) bp++; else bl++; } }
-    printf("W(%d) a=%d flags=%d point pairs=%d line pairs=%d cost=%ld (bad point pairs %ld, line pairs %ld)\n", q, a, F, nptpairs, npairs - nptpairs, cost, bp, bl);
+    printf("W(%d) a=%d flags=%d point pairs=%d line pairs=%d (exempt by SIGMA: %ld, %ld) cost=%ld (bad point pairs %ld, line pairs %ld)\n", q, a, F, nptpairs, npairs - nptpairs, nexP, nexL, cost, bp, bl);
     if (getenv("SCORE")) return 0;
     double secs = getenv("SECS") ? atof(getenv("SECS")) : 60, T0 = getenv("T0") ? atof(getenv("T0")) : 1.0, T1 = getenv("T1") ? atof(getenv("T1")) : 0.05;
     long best = cost; uint8_t *bestnu = malloc(F); memcpy(bestnu, nu, F);
