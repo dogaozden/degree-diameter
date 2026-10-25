@@ -119,4 +119,7 @@ their quotient (u, Y) has tr Y = u + 1/u. Right orbits of a subgroup K ≤ SL(2,
 independent. **The 240 set is two cosets of K = 2.A5** (order 120 = q^2 - 1 at q = 11; 132 orbits, at most 2
 compatible), and 48 at q = 5 is two cosets of 2.A4 (order 24). At q = 7, 2.S4 (order 48) fits only one coset, and
 subgroups of orders 6–24 give 72–80 (88 stays). Similitudes (sqrt(nu) on V4 times a similitude of A) at q = 13: at most 212.
-So 2(q^2 - 1) is a Galois-exceptional (nearfield) phenomenon, not a general construction.
+So 2(q^2 - 1) is a Galois-exceptional (nearfield) phenomenon, not a general construction. Twisted cyclic groups R^a ⊕ Y^m at q = 7 (56 runs) gave at most 88; the one trivial
+case (g = -1, all orbits single points, i.e. plain local search with orbitclique_q) hit **98 points at q = 7** (seed 1;
+other seeds 84–92). Opus built **(9,7) 117,844** (98 units; uhcheck all sources + apsp_cyc VALID). Plain local search at
+q = 11 and 13 stays far below the orbit records (144, 201 after 5 min).
