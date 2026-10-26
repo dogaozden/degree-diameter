@@ -74,3 +74,18 @@ Record to beat: **288** (round 2 did not beat it). Tools: `research/raise-d3D8-r
 - Candidates per run: 4.1e7 (N = 29), 5.7e7 (N = 31), 1.6e8 (N = 33); about 1.5 µs each.
 - Next: orders 30, 34, 35 (launched, driver `runs/k10_driver_b.log`). Order 36 (14 groups) and order 32 (51 groups)
   are open; their cost is 5–20× this batch.
+
+### Round 3 result: k = 10, orders 30, 34, 35 (complete, 105 base × group runs)
+
+- Order 30: 4 groups × 15 bases. Order 34: 2 groups × 15 bases. Order 35: 1 group × 15 bases.
+- **0 solutions.** Best near-miss cost 1 for most order-30 groups and cost 2 for a few runs at orders 30, 34 and 35.
+- Combined with orders 29, 31, 33: **k = 10 is exhausted for n = 290, 300, 310, 330, 340, 350** (all groups of those
+  orders, all 15 bases, D = 8). Every n in 290..350 that is 10·N is now closed for semiregular colour-preserving lifts with k ≤ 10.
+
+### Status and what is still open
+
+- Order 36 (14 groups, n = 360) is open. Estimated cost is about 13 CPU-hours for k = 10. Not run this round.
+- Order 32 (51 groups, n = 320) is open, with a similar cost. Not run.
+- k = 12 (48 bases, 7 free voltages each, n = 300..360) is open; too costly for exhaustive search with this tool.
+- Non-semiregular constructions and k ≥ 12 are not covered.
+- No record raised. The table value stays 256 (DGQ); our record stays 288.
