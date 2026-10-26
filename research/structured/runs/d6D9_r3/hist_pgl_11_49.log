@@ -1,0 +1,6 @@
+group pgl 11 x Z_49, N=64680, identity 0, H order 49, rows 1320, threads 1, setup 0.00s
+wide rows: HW order 245, rows 264, setup 0.01s
+alpha: conj by mat(1,7,3,0) (index 800), z -> 18 z on Z_49
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 11 (+e); mu = 34.06, mu/k = 11.35, fixed-point misses ~ 1.94
+RANDORB d=6 D=9 group=pgl 11 x Z_49 N=64680 k=3 m=2 f=0 fix=11 samples=200000 min=8 p1=60 p10=149 median=64680 mean=38288.92 var=1350128347.3 mu=34.06 time=16.1
+RANDORB hist (cost/k): 0 0 3 4 6 4 5 25 52 44 78 69 86 111 161 116 253 325 326 288 390 447 497 416 522 459 513 553 726 564 689 192268

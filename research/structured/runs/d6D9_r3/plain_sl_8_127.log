@@ -1,0 +1,7 @@
+group sl 8 poly x^3+x+1 x Z_127, N=64008, identity 7112, H order 9, rows 7112, threads 1, setup 0.01s
+wide rows: HW order 254, rows 252, setup 0.02s
+start cost=3282
+t=30 steps=70680 evals=565441 cost=56 best=56 T=0.53
+t=60 steps=142446 evals=1139569 cost=56 best=56 T=0.19
+t=90 steps=212943 evals=1703545 cost=56 best=56 T=0.15
+RESULT d=6 D=9 group=sl 8 poly x^3+x+1 x Z_127 N=64008 best=56 evals=2270433 time=120.0
