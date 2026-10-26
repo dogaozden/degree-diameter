@@ -1,0 +1,114 @@
+Syntax warning: Unbound global variable in export.g:22
+    cc := Filtered(ConjugacyClassesSubgroups(G), x -> Size(Representative(x)) \
+= h and Size(Core(G, Representative(x))) = 1);
+                                                                              \
+  ^
+Syntax warning: Unbound global variable in export.g:22
+    cc := Filtered(ConjugacyClassesSubgroups(G), x -> Size(Representative(x)) \
+= h and Size(Core(G, Representative(x))) = 1);
+                                                                              \
+                  ^
+CASE PSL27xZ7 |G|=1176 h=3 classes=1
+EXPORT PSL27xZ7_1_1 perSide=392 candidates=56742
+CASE PSL28xZ3 |G|=1512 h=4 classes=1
+EXPORT PSL28xZ3_1_1 perSide=378 candidates=6154
+CASE A5xZ18 |G|=1080 h=3 classes=2
+EXPORT A5xZ18_1_1 perSide=360 candidates=2724690
+EXPORT A5xZ18_1_2 perSide=360 candidates=7140
+EXPORT A5xZ18_2_2 perSide=360 candidates=118029
+CASE SL25xZ9 |G|=1080 h=3 classes=2
+EXPORT SL25xZ9_1_1 perSide=360 candidates=2724690
+EXPORT SL25xZ9_1_2 perSide=360 candidates=7140
+EXPORT SL25xZ9_2_2 perSide=360 candidates=118029
+CASE A5xS3xZ3 |G|=1080 h=3 classes=5
+SKIP A5xS3xZ3_1_1 perSide=360 candidates=43482073170
+EXPORT A5xS3xZ3_1_2 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_1_3 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_1_4 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_1_5 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_2_2 perSide=360 candidates=2724690
+EXPORT A5xS3xZ3_2_3 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_2_4 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_2_5 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_3_3 perSide=360 candidates=118029
+EXPORT A5xS3xZ3_3_4 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_3_5 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_4_4 perSide=360 candidates=118029
+EXPORT A5xS3xZ3_4_5 perSide=360 candidates=7140
+EXPORT A5xS3xZ3_5_5 perSide=360 candidates=16698
+CASE A5xA5 |G|=3600 h=9 classes=1
+EXPORT A5xA5_1_1 perSide=400 candidates=372
+CASE A5xA5_10 |G|=3600 h=10 classes=8
+SKIP A5xA5_10_1_1 perSide=360 candidates=50067460
+EXPORT A5xA5_10_1_2 perSide=360 candidates=0
+EXPORT A5xA5_10_1_3 perSide=360 candidates=4060
+EXPORT A5xA5_10_1_4 perSide=360 candidates=0
+EXPORT A5xA5_10_1_5 perSide=360 candidates=0
+EXPORT A5xA5_10_1_6 perSide=360 candidates=4060
+EXPORT A5xA5_10_1_7 perSide=360 candidates=0
+EXPORT A5xA5_10_1_8 perSide=360 candidates=0
+SKIP A5xA5_10_2_2 perSide=360 candidates=50067460
+EXPORT A5xA5_10_2_3 perSide=360 candidates=0
+EXPORT A5xA5_10_2_4 perSide=360 candidates=4060
+EXPORT A5xA5_10_2_5 perSide=360 candidates=4060
+EXPORT A5xA5_10_2_6 perSide=360 candidates=0
+EXPORT A5xA5_10_2_7 perSide=360 candidates=0
+EXPORT A5xA5_10_2_8 perSide=360 candidates=0
+EXPORT A5xA5_10_3_3 perSide=360 candidates=5588
+EXPORT A5xA5_10_3_4 perSide=360 candidates=0
+EXPORT A5xA5_10_3_5 perSide=360 candidates=0
+EXPORT A5xA5_10_3_6 perSide=360 candidates=4060
+EXPORT A5xA5_10_3_7 perSide=360 candidates=0
+EXPORT A5xA5_10_3_8 perSide=360 candidates=0
+EXPORT A5xA5_10_4_4 perSide=360 candidates=5588
+EXPORT A5xA5_10_4_5 perSide=360 candidates=4060
+EXPORT A5xA5_10_4_6 perSide=360 candidates=0
+EXPORT A5xA5_10_4_7 perSide=360 candidates=0
+EXPORT A5xA5_10_4_8 perSide=360 candidates=0
+EXPORT A5xA5_10_5_5 perSide=360 candidates=5588
+EXPORT A5xA5_10_5_6 perSide=360 candidates=0
+EXPORT A5xA5_10_5_7 perSide=360 candidates=0
+EXPORT A5xA5_10_5_8 perSide=360 candidates=0
+EXPORT A5xA5_10_6_6 perSide=360 candidates=5588
+EXPORT A5xA5_10_6_7 perSide=360 candidates=0
+EXPORT A5xA5_10_6_8 perSide=360 candidates=0
+EXPORT A5xA5_10_7_7 perSide=360 candidates=7
+EXPORT A5xA5_10_7_8 perSide=360 candidates=0
+EXPORT A5xA5_10_8_8 perSide=360 candidates=7
+CASE A5xZ12 |G|=720 h=2 classes=2
+EXPORT A5xZ12_1_1 perSide=360 candidates=6567708
+EXPORT A5xZ12_1_2 perSide=360 candidates=955860
+EXPORT A5xZ12_2_2 perSide=360 candidates=6567708
+CASE PSL27xZ5 |G|=840 h=2 classes=1
+EXPORT PSL27xZ5_1_1 perSide=420 candidates=6102160
+CASE S6 |G|=720 h=2 classes=3
+EXPORT S6_1_1 perSide=360 candidates=6567708
+EXPORT S6_1_2 perSide=360 candidates=955860
+EXPORT S6_1_3 perSide=360 candidates=955860
+EXPORT S6_2_2 perSide=360 candidates=6567708
+EXPORT S6_2_3 perSide=360 candidates=955860
+EXPORT S6_3_3 perSide=360 candidates=1336748
+CASE A6xZ2 |G|=720 h=2 classes=2
+EXPORT A6xZ2_1_1 perSide=360 candidates=1336748
+EXPORT A6xZ2_1_2 perSide=360 candidates=955860
+EXPORT A6xZ2_2_2 perSide=360 candidates=1336748
+CASE S5xZ6 |G|=720 h=2 classes=4
+SKIP S5xZ6_1_1 perSide=360 candidates=20401752
+EXPORT S5xZ6_1_2 perSide=360 candidates=955860
+EXPORT S5xZ6_1_3 perSide=360 candidates=955860
+EXPORT S5xZ6_1_4 perSide=360 candidates=955860
+SKIP S5xZ6_2_2 perSide=360 candidates=20401752
+EXPORT S5xZ6_2_3 perSide=360 candidates=955860
+EXPORT S5xZ6_2_4 perSide=360 candidates=955860
+EXPORT S5xZ6_3_3 perSide=360 candidates=6567708
+EXPORT S5xZ6_3_4 perSide=360 candidates=955860
+EXPORT S5xZ6_4_4 perSide=360 candidates=6567708
+CASE S5xZ7 |G|=840 h=2 classes=2
+SKIP S5xZ7_1_1 perSide=420 candidates=42804496
+EXPORT S5xZ7_1_2 perSide=420 candidates=1521520
+SKIP S5xZ7_2_2 perSide=420 candidates=12849200
+CASE PGL29 |G|=720 h=2 classes=2
+EXPORT PGL29_1_1 perSide=360 candidates=1600060
+EXPORT PGL29_1_2 perSide=360 candidates=955860
+EXPORT PGL29_2_2 perSide=360 candidates=1336748
+ALLDONE

@@ -1,0 +1,33 @@
+CAND 0 base(full 7-regular) cost 6174
+trial 0 tbest -1 final cur 17666 pen 48
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^0*b1^1*a2^1*b2^0
+CAND 1 base(full 7-regular) cost 6174
+trial 1 tbest -1 final cur 17712 pen 56
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^1*b1^0*a2^0*b2^1
+CAND 2 base(full 7-regular) cost 32928
+trial 2 tbest -1 final cur 37878 pen 53
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^0*b1^1*a2^1*b2^0 +1*a1^1*b1^0*a2^0*b2^1
+CAND 3 base(full 7-regular) cost 14700
+trial 3 tbest -1 final cur 27850 pen 60
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^2*b1^0*a2^0*b2^1
+CAND 4 base(full 7-regular) cost 14700
+trial 4 tbest -1 final cur 25178 pen 86
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^0*b1^2*a2^1*b2^0
+CAND 5 base(full 7-regular) cost 14112
+trial 5 tbest -1 final cur 35564 pen 61
+  F = +1*a1^2*b1^1*a2^0*b2^0
+  G = +1*a1^0*b1^1*a2^1*b2^0
+CAND 6 base(full 7-regular) cost 6174
+trial 6 tbest -1 final cur 17684 pen 52
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^1*b1^2*a2^0*b2^0 +1*a1^0*b1^1*a2^1*b2^0
+CAND 7 base(full 7-regular) cost 6174
+trial 7 tbest -1 final cur 17804 pen 42
+  F = +1*a1^1*b1^1*a2^0*b2^0
+  G = +1*a1^0*b1^1*a2^1*b2^0 +1*a1^1*b1^2*a2^0*b2^0
+GLOBAL_BEST -1

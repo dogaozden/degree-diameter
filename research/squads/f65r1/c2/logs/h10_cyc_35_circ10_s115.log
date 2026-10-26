@@ -1,0 +1,4 @@
+base bases/circ10.txt: k=20 E=60 Delta=6 free=41; group cyc 35 N=35; lift n=700; D=5
+start cost=766
+t=30 steps=21817 evals=174601 cost=188 best=188 T=0.53
+RESULT base=bases/circ10.txt D=5 Delta=6 k=20 group=cyc 35 N=35 n=700 best=188 evals=174601 time=30.0
