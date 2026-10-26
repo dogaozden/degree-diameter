@@ -43,3 +43,22 @@ psl 23 x Z111, ORBIT "3 2 2":
 - s1: default weights
 - s2: ORBW=3
 - s3: ORBW=3, RESTART=1
+
+### psl 23 x Z111 annealing, first 27 min (t = 1650 s)
+| run | weights | best cost | evals |
+|---|---|---|---|
+| s1 | default | 18 | 2.56M |
+| s2 | ORBW=3 | 12 | 2.44M |
+| s3 | ORBW=3, RESTART=1 | 15 | 2.51M |
+
+Plateau well above 0, and worse than psl 47 x Z13's 6 at the same evals. The random minimum (30) looked like the
+record's, but the annealer does not follow it.
+
+## k = 5 (f = 3, m = 1): tried, dead
+The Poisson heuristic (misses per orbit ~ mu/k) suggested k = 5 at mu ~ 39 could beat k = 3 at mu ~ 31. The k = 5
+orbit structure is valid for Delta = 8 only with m = 1, and one orbit gives too little freedom:
+- `orb_screen 8 9 670801 690000 "5 1 3"` (default filter, n <= 400): 9 candidates, best min 120 (prod psl 5 x sl 4 x Z191).
+- sl 11 x Z521 (N 687,720, the only order-5 SL with prime 1 mod 5 in window): |Fix| 9, min 3,770 (3000 samples). Dead.
+- psl 11 x Z1021 (N 673,860): |Fix| 4, min 35,320. Dead.
+- sl 19 x Z101 (N 690,840, just above the window): |Fix| 19, min 150. Dead.
+Compare k = 3 m = 2 with min 28-30 on the record and psl 23 x Z111. So k = 5 is out for Delta = 8.
