@@ -520,7 +520,11 @@ $|T|\le 2(q+1)(q^2+1)/(2q+1)$, i.e. at most 86 for $q = 9$ and 127 for $q = 11$.
 such sets of size 66 for $q = 9$ (squad card r2c1; 30 pairs) and 87 for $q = 11$ (card r2c2), against 51 and 70 for
 partial ovoids. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
 6 partner pairs, $25+25$ hubs): with the hub rule the graph is valid (1,610 vertices, apsp), with the same sets and a hub
-assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/).
+assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/). Card r3c4 tested the final form (only
+the $\mathcal A$-hub condition, $\mathcal B$-hubs placed arbitrarily, many partner pairs): five levels over $Q(4,5)$ with
+23 lines and 6 pairs (1,610 vertices) and over $Q(4,7)$ with 41 lines and 15 pairs (4,086 vertices) are valid, and moving
+the level-$j$ slot of one $\mathcal A$-hub off the partner line gives diameter 6 in both cases
+(research/squads/gqd5-r3/c4/).
 
 ---
 
@@ -764,6 +768,7 @@ bipartite, maximum degree, exact diameter.
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |
 | $(8,5)$-type, $q = 5$, $r = 2$, $n = 1{,}596$ and $1{,}600$ | build_typed.py 5 2 HHDHD (and card c7 independently) | VALID |
 | $(8,5)$-type, $q = 5$, relaxed line sets, $n = 1{,}610$ | squad card r2c7 (research/squads/gqd5-r2/c7/ld23.edges) | VALID; without the hub rule diameter 6 |
+| relaxed sets, A-hub rule only, $q = 5, 7$, $n = 1{,}610$ and $4{,}086$ | squad card r3c4 (research/squads/gqd5-r3/c4/) | VALID; rule broken for one line: diameter 6 |
 | 32 level graphs, $q\le 5$ | test_basic.py | all diameter 5 (Theorem A) |
 | Theorem E vs brute force | test_basic.py | agree on 720 transitions |
 | triads | triads.py | 0/2 in $Q(4,q)$, 1/$(q+1)$ in $W(q)$, $q = 3,5,7$ |

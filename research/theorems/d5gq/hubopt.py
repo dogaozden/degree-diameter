@@ -52,11 +52,19 @@ def search(D0, KB, KA, delta, seed=0, iters=3000, verbose=False):
     Eall = delta * min(KA, KB)
     stB = [h for h in range(KB) for _ in range(Eall // KB + (1 if h < Eall % KB else 0))]
     stA = [g for g in range(KA) for _ in range(Eall // KA + (1 if g < Eall % KA else 0))]
-    while True:
-        rng.shuffle(stA)
-        Y = set(zip(stB, stA))
-        if len(Y) == Eall: break
-    Y = list(Y)
+    rng.shuffle(stA)
+    Y = list(zip(stB, stA))
+    # remove multiple edges by double-edge swaps (a plain rejection loop can run for ever when degrees are large)
+    for _ in range(100000):
+        cnt = {}
+        for e in Y: cnt[e] = cnt.get(e, 0) + 1
+        dup = [i for i, e in enumerate(Y) if cnt[e] > 1]
+        if not dup: break
+        i = rng.choice(dup); j = rng.randrange(len(Y))
+        (h1, g1), (h2, g2) = Y[i], Y[j]
+        if h1 != h2 and g1 != g2 and (h1, g2) not in cnt and (h2, g1) not in cnt:
+            Y[i], Y[j] = (h1, g2), (h2, g1)
+    assert len(set(Y)) == len(Y)
     cost, _ = bad_pairs(D0, KB, KA, Y)
     T = 1.0
     for it in range(iters):

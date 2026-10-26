@@ -898,7 +898,13 @@ r2c7 tested the rule independently at \(q = 5\) (five levels \(HHDHD\)
 over \(Q(4,5)\), 23 freed lines with 6 partner pairs, \(25+25\) hubs):
 with the hub rule the graph is valid (1,610 vertices, apsp), with the
 same sets and a hub assignment ignoring the rule it has diameter 6
-(research/squads/gqd5-r2/c7/).
+(research/squads/gqd5-r2/c7/). Card r3c4 tested the final form (only the
+\(\mathcal A\)-hub condition, \(\mathcal B\)-hubs placed arbitrarily,
+many partner pairs): five levels over \(Q(4,5)\) with 23 lines and 6
+pairs (1,610 vertices) and over \(Q(4,7)\) with 41 lines and 15 pairs
+(4,086 vertices) are valid, and moving the level-\(j\) slot of one
+\(\mathcal A\)-hub off the partner line gives diameter 6 in both cases
+(research/squads/gqd5-r3/c4/).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1309,6 +1315,9 @@ build\_typed.py 5 2 HHDHD (and card c7 independently) & VALID \\
 \((8,5)\)-type, \(q = 5\), relaxed line sets, \(n = 1{,}610\) & squad
 card r2c7 (research/squads/gqd5-r2/c7/ld23.edges) & VALID; without the
 hub rule diameter 6 \\
+relaxed sets, A-hub rule only, \(q = 5, 7\), \(n = 1{,}610\) and
+\(4{,}086\) & squad card r3c4 (research/squads/gqd5-r3/c4/) & VALID;
+rule broken for one line: diameter 6 \\
 32 level graphs, \(q\le 5\) & test\_basic.py & all diameter 5 (Theorem
 A) \\
 Theorem E vs brute force & test\_basic.py & agree on 720 transitions \\

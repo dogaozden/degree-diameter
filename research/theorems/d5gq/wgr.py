@@ -109,15 +109,8 @@ def main():
         Bh, Ah = st['Bh'], st['Ah']
         print('resumed from', os.environ['RESUME'])
     print('E=%d K_B=%d K_A=%d (order %d)' % (E, KB, KA, L * 2 * N + KB + KA)); sys.stdout.flush()
-    # provisional hub graph: random, refined at the end
     delta = q - r
-    Eall = delta * min(KA, KB)
-    stB = [h for h in range(KB) for _ in range(Eall // KB + (1 if h < Eall % KB else 0))]
-    stA = [g for g in range(KA) for _ in range(Eall // KA + (1 if g < Eall % KA else 0))]
-    while True:
-        rng.shuffle(stA); Y = set(zip(stB, stA))
-        if len(Y) == Eall: break
-    Y = sorted(Y)
+    Y = []          # the hub graph is chosen at the end (repairs must not depend on it)
     # ---- sources: endpoints of deleted non-friendly edges
     per = 2 * N
     def vid(j, kind, e): return j * per + (e if kind == 'P' else N + e)
