@@ -43,3 +43,14 @@ used the squad for independent re-implementation of the negative results instead
 - v3 abelian lemma |(S−S)+(S−S)| ≤ 271: proof checked, general formula N(d) = 1 + d(d−1) + d·C(d,2) + C(d,2)·C(d−1,2)
   confirmed by brute force; 271 is attained (Z1009, and the standard basis of Z⁶).
 Kept: the order-343 theorem (no Haar graph on 686 vertices at (6,5)) now has two independent implementations.
+
+## 2026-10-26 18:40 UTC: job fresh-6-5, director's close (no round 3)
+After f65r1 (search, 16 cards) and f65r2 (verification, 3 cards) the director ran the decisive checks himself and stopped
+early. Results (details in research/squads/cells/d6D5.md): no record; (6,5) stays at 684. New: counting bounds for
+abelian (|G| ≤ 271) and generalized dihedral (|A| ≤ 131) Haar graphs; exhaustive orderly search (haarex2) shows no Haar
+graph with 343 ≤ |G| ≤ 351, while 684 is attained by the Haar graph of C6×(C19⋊C3); the old "cost 2" wall is the true
+optimum of the best groups (351, 355); the exact optimum, written as a 3+3 lift, is a strict local minimum of the lift
+space. No third round: every remaining direction either reduces to the Haar family or sat at 4× its optimum, and the
+squad had nothing well aimed left to try. Measured value of the squad this job: round 1 produced no lead (all 16
+directions negative, two starved of CPU); round 2's independent re-implementations were useful (they confirm the
+order-343 theorem). The decisive steps were again the director's own exhaustive tools.
