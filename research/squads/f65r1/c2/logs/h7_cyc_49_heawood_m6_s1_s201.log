@@ -1,0 +1,6 @@
+base bases/heawood_m6_s1.txt: k=14 E=42 Delta=6 free=29; group cyc 49 N=49; lift n=686; D=5
+start cost=470
+t=30 steps=377382 evals=3021665 cost=82 best=82 T=0.53
+t=60 steps=772222 evals=6183016 cost=82 best=82 T=0.19
+t=90 steps=1158749 evals=9277851 cost=82 best=82 T=0.54
+RESULT base=bases/heawood_m6_s1.txt D=5 Delta=6 k=14 group=cyc 49 N=49 n=686 best=82 evals=12335135 time=120.0

@@ -1,0 +1,5 @@
+base bases/c321.txt: k=6 E=18 Delta=6 free=13; group meta 13 9 3 N=117; lift n=702; D=5
+start cost=284
+t=30 steps=178899 evals=1431354 cost=40 best=32 T=0.53
+t=60 steps=414640 evals=3317282 cost=40 best=32 T=0.19
+RESULT base=bases/c321.txt D=5 Delta=6 k=6 group=meta 13 9 3 N=117 n=702 best=32 evals=3317282 time=60.0

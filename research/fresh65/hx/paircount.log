@@ -1,0 +1,58 @@
+Syntax warning: Unbound global variable in /tmp/claude-0/paircount.g:6
+    elms := AsSSortedList(K); e := One(K); elms := Concatenation([e], Filtered\
+(elms, x -> x <> e));
+                                                                              \
+                 ^
+Syntax warning: Unbound global variable in /tmp/claude-0/paircount.g:7
+    permOn := List(GeneratorsOfGroup(P), p -> PermList(List(elms, x -> Positio\
+n(elms, Image(PreImagesRepresentative(iso, p), x)))));
+                                                            ^^^^
+Syntax warning: Unbound global variable in /tmp/claude-0/paircount.g:7
+    permOn := List(GeneratorsOfGroup(P), p -> PermList(List(elms, x -> Positio\
+n(elms, Image(PreImagesRepresentative(iso, p), x)))));
+                                                                              \
+  ^^^^
+Syntax warning: Unbound global variable in /tmp/claude-0/paircount.g:7
+    permOn := List(GeneratorsOfGroup(P), p -> PermList(List(elms, x -> Positio\
+n(elms, Image(PreImagesRepresentative(iso, p), x)))));
+                                                                              \
+                                      ^^^
+PC 344 1 |Aut|=7224 pairs=455 C43 : C8
+PC 344 3 |Aut|=14448 pairs=449 C43 : Q8
+PC 344 4 |Aut|=7224 pairs=464 C4 x D86
+PC 344 5 |Aut|=14448 pairs=449 D344
+PC 344 6 |Aut|=14448 pairs=449 C2 x (C43 : C4)
+PC 344 7 |Aut|=7224 pairs=464 C43 : D8
+PC 344 9 |Aut|=336 pairs=833 C43 x D8
+PC 344 10 |Aut|=1008 pairs=479 C43 x Q8
+PC 344 11 |Aut|=43344 pairs=224 C2 x C2 x D86
+PC 346 1 |Aut|=29756 pairs=174 D346
+PC 348 1 |Aut|=336 pairs=964 C29 x (C3 : C4)
+PC 348 2 |Aut|=3248 pairs=652 C3 x (C29 : C4)
+PC 348 3 |Aut|=9744 pairs=619 C3 : (C29 : C4)
+PC 348 5 |Aut|=1624 pairs=277 C3 x (C29 : C4)
+PC 348 6 |Aut|=4872 pairs=211 C3 : (C29 : C4)
+PC 348 7 |Aut|=4872 pairs=382 S3 x D58
+PC 348 8 |Aut|=672 pairs=387 C29 x A4
+PC 348 9 |Aut|=3248 pairs=652 C6 x D58
+PC 348 10 |Aut|=336 pairs=964 C58 x S3
+PC 348 11 |Aut|=9744 pairs=619 D348
+PC 350 1 |Aut|=3000 pairs=392 C7 x D50
+PC 350 2 |Aut|=840 pairs=530 C25 x D14
+PC 350 3 |Aut|=21000 pairs=332 D350
+PC 350 5 |Aut|=20160 pairs=104 C5 x C5 x D14
+PC 350 6 |Aut|=480 pairs=785 C35 x D10
+PC 350 7 |Aut|=3360 pairs=497 C5 x D70
+PC 350 8 |Aut|=72000 pairs=110 C7 x ((C5 x C5) : C2)
+PC 350 9 |Aut|=504000 pairs=71 (C5 x C5) : D14
+PC 351 1 |Aut|=1404 pairs=605 C13 : C27
+PC 351 3 |Aut|=2808 pairs=355 C9 x (C13 : C3)
+PC 351 4 |Aut|=2808 pairs=355 C13 : (C9 : C3)
+PC 351 5 |Aut|=2808 pairs=355 C13 : (C9 : C3)
+PC 351 6 |Aut|=8424 pairs=351 C3 x (C13 : C9)
+PC 351 7 |Aut|=4212 pairs=541 C13 : (C9 : C3)
+PC 351 8 |Aut|=8424 pairs=281 C13 : ((C3 x C3) : C3)
+PC 351 10 |Aut|=5184 pairs=194 C13 x ((C3 x C3) : C3)
+PC 351 11 |Aut|=648 pairs=587 C13 x (C9 : C3)
+PC 351 12 |Aut|=2106 pairs=109 (C3 x C3 x C3) : C13
+PC 351 13 |Aut|=67392 pairs=106 C3 x C3 x (C13 : C3)

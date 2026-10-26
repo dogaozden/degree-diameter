@@ -1,0 +1,21 @@
+# exported coset tables and group tables are large and regenerable from the GAP scripts
+bc/orb/
+bc/orb2/
+bc/orb_skip/
+bc/simple/
+bc/*.txt
+hx/*.txt
+seeds/*.txt
+tools/apsp
+tools/bicoset
+tools/haarex
+tools/lift
+tools/__pycache__/
+bc/orbf3/
+hx2/*.txt
+tools/haarex2
+tools/invhaar
+bc/nonsplit/
+hx2/c253*.log
+tools/liftseed
+ls/*.txt

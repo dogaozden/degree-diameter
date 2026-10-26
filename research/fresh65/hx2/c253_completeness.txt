@@ -1,0 +1,6 @@
+Completeness test, C23:C11 = SmallGroup(253,1) (valid Haar sets are plentiful at this order):
+haarex2 (orderly, pruned): DONE N=253 pairs=0..231 sets=11308587 Acovered=277770 valid=62471 minA=0
+  first valid: VALID S = 0 1 2 3 31 84
+haarex (unpruned, Aut-pair normalisation only): 231 of 231 pairs run, 3,672,948 VALID lines
+  first valid: VALID S = 0 1 2 3 31 84
+Both find valid sets; full logs not kept (526 MB and 5 MB of VALID lines).

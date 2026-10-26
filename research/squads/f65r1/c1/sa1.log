@@ -1,0 +1,16 @@
+BASE cost 476 after 200 draws
+trial 0 tbest -1 final cur 11668 pen 46
+  F = +2*a1^2*b1^1*a2^0*b2^0
+  G = +2*a1^1*b1^1*a2^0*b2^0 +4*a1^1*b1^0*a2^2*b2^0 +6*a1^0*b1^1*a2^2*b2^0 +5*a1^0*b1^0*a2^1*b2^2
+BASE cost 462 after 86 draws
+trial 1 tbest -1 final cur 10456 pen 47
+  F = +6*a1^2*b1^1*a2^0*b2^0
+  G = +6*a1^0*b1^0*a2^2*b2^1 +2*a1^0*b1^0*a2^2*b2^1 +6*a1^1*b1^1*a2^0*b2^0 +6*a1^0*b1^0*a2^0*b2^2
+BASE cost 294 after 374 draws
+trial 2 tbest -1 final cur 10654 pen 51
+  F = +4*a1^1*b1^2*a2^0*b2^0 +1*a1^0*b1^1*a2^0*b2^0
+  G = +3*a1^0*b1^2*a2^1*b2^0 +4*a1^0*b1^0*a2^1*b2^1 +6*a1^1*b1^2*a2^0*b2^0 +6*a1^0*b1^0*a2^1*b2^1
+BASE cost 294 after 22 draws
+trial 3 tbest -1 final cur 9776 pen 63
+  F = +3*a1^1*b1^2*a2^0*b2^0 +2*a1^1*b1^2*a2^0*b2^0
+  G = +1*a1^0*b1^0*a2^1*b2^1 +1*a1^1*b1^1*a2^0*b2^0

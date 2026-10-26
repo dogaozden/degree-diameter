@@ -1,0 +1,16 @@
+iteration 0: rep=49 pool=145 sets=17666220
+iteration 1: rep=98 pool=96 sets=3321960
+iteration 2: rep=1 pool=47 sets=178365
+iteration 3: rep=7 pool=5 sets=5
+group order n=147, K=6
+total sets checked (reduced enumeration) = 21166550
+min uncovered, cond1 = 0
+sets satisfying cond1 = 13598382
+min uncovered, cond2 among cond1 sets = 0
+sets satisfying both = 12039006
+iteration-0 sets skipped by stabiliser reduction = 0 (stabiliser order 42, use_stab=0)
+brute-force cross checks = 21, mismatches = 0
+
+real	3m8.415s
+user	1m20.264s
+sys	0m2.322s

@@ -1,0 +1,52 @@
+loaded n=684 m=2052
+init cost 292
+t=0s it=0 cur=292 best=292
+t=2s it=16384 cur=235 best=178
+t=4s it=32768 cur=211 best=171
+t=6s it=49152 cur=194 best=171
+t=8s it=65536 cur=216 best=171
+t=10s it=81920 cur=190 best=171
+t=12s it=98304 cur=183 best=171
+t=14s it=114688 cur=217 best=168
+t=16s it=131072 cur=199 best=163
+t=18s it=147456 cur=178 best=163
+t=20s it=163840 cur=193 best=163
+t=22s it=180224 cur=170 best=163
+t=24s it=196608 cur=173 best=163
+t=26s it=212992 cur=152 best=144
+t=28s it=229376 cur=144 best=144
+t=30s it=245760 cur=144 best=144
+t=32s it=262144 cur=145 best=144
+t=34s it=278528 cur=145 best=144
+t=36s it=294912 cur=144 best=144
+t=38s it=311296 cur=144 best=144
+t=40s it=327680 cur=144 best=144
+t=42s it=344064 cur=145 best=144
+t=44s it=360448 cur=144 best=144
+t=46s it=376832 cur=144 best=144
+t=48s it=393216 cur=144 best=144
+t=50s it=409600 cur=145 best=144
+t=51s it=425984 cur=144 best=144
+t=53s it=442368 cur=145 best=144
+t=55s it=458752 cur=145 best=144
+t=57s it=475136 cur=144 best=144
+t=59s it=491520 cur=144 best=144
+t=61s it=507904 cur=145 best=144
+t=63s it=524288 cur=144 best=144
+t=65s it=540672 cur=144 best=144
+t=67s it=557056 cur=144 best=144
+t=69s it=573440 cur=144 best=144
+t=71s it=589824 cur=144 best=144
+t=73s it=606208 cur=144 best=144
+t=75s it=622592 cur=144 best=144
+t=77s it=638976 cur=144 best=144
+t=79s it=655360 cur=144 best=144
+t=81s it=671744 cur=144 best=144
+t=83s it=688128 cur=144 best=144
+t=84s it=704512 cur=144 best=144
+t=86s it=720896 cur=144 best=144
+t=88s it=737280 cur=144 best=144
+done it=750080 best=144
+RESULT best_cost=144 n=686 K=6 XY=0 iters=750080
+wrote runC.best.edges
+matching (deleted edges a-b): 20-434 13-423 271-379 266-406 318-623 306-468

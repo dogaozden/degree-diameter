@@ -1,0 +1,6 @@
+base bases/h8_r2.txt: k=16 E=48 Delta=6 free=33; group meta 11 4 10 N=44; lift n=704; D=5
+start cost=515
+t=30 steps=28191 evals=225584 cost=130 best=130 T=0.53
+t=60 steps=56858 evals=454920 cost=130 best=130 T=0.19
+t=90 steps=80374 evals=643048 cost=130 best=130 T=0.60
+RESULT base=bases/h8_r2.txt D=5 Delta=6 k=16 group=meta 11 4 10 N=44 n=704 best=130 evals=861872 time=120.0
