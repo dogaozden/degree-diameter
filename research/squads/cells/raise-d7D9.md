@@ -159,3 +159,18 @@ each). Its open leads: (a) ORBW fixed-point weighting on the 44-fixed-point grou
   - psl 17×95 (N 232,560, |Fix| 44): start cost 23,160 (energy), best 26 at t = 180 s
   - psl 13×215 (N 234,780, |Fix| 29): best 32 at t = 180 s
   - psl 41×7 (N 241,080, |Fix| 20): best 21 at t = 180 s
+
+## Full window screen, round 3 (orb_screen.py 7 9 231421 245000 "3 2 1" --nmax 3000, RANDORB 1000 samples)
+
+Saved as research/squads/cells/raise-d7D9_screen_window_2026-10-26.txt (rank-free list, one row per group, sorted by N).
+The earlier round-2 summary listed only the chosen candidates. This list shows that the lowest-μ orders in the window
+have poor random mixing: psl 9 × 643 (μ 38.3, min 594), sl 7 × 691 (μ 39.4, min 690, median 13,444), psl 7 × 1381
+(μ 39.1, min 3,858), pgl 5 × 1933 (μ 39.1, min 17,802), sl 8 × 463 (μ 41.4, min 246, median 2,838). Small Q with a large
+cyclic factor, as in round 2. The record group has calibration min 42, p10 93, median 227.
+
+Candidates with good mixing (min ≤ 110 and p10 ≤ 400) that round 1 or 2 did not run:
+- **sl 13 × 109** (N 238,056, μ 50.1, |Fix| 11): min 102, p1 146, p10 266, median 802. Not tried by anyone.
+- **pgl 13 × 109** (N 238,056, μ 50.1, |Fix| 11): min 104, p1 134, p10 262, median 1,099. Not tried.
+- **psl 25 × 31** (N 241,800, μ 58.0, |Fix| 11): min 53, p1 89, p10 168, median 431. Not tried; μ is high.
+Already tried by rounds 1–2 (best costs): psl 17×97 (12), psl 13×217 (27), psl 41×7 (18–21), sl 17×49 (12), psl 13×215 (32),
+sl 16×57 (15–16), psl 17×95 (17).
