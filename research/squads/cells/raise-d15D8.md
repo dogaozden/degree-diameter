@@ -358,3 +358,16 @@ Any solve in wave 3 beats the record (18,403,200), since all four groups have N 
 - Saved as `research/frontier/sols/d15D8_pgl_31_311_orb5f0_ORBW5_s1.txt` (+ `.log`).
 - Gain over the previous record 18,403,200: +107,520 (+0.58 %).
 - Wave 3 still running: psl 41 × Z271 (two seeds) and sl 61 × Z41 have N above this one, so any solve from them beats 18,510,720.
+
+### Wave 3 result: NEW RECORD 18,666,480 vertices at (15,8) (psl 41 × Z271, k = 5, m = 3, f = 0, ORBW=5, seed 1)
+
+- Graph: Haar graph of G = PSL(2,41) × Z271, |G| = N = 9,333,240, |S| = 15 = 5·3 (3 free orbits of an order-5
+  automorphism, f = 0), 2N = **18,666,480**, 15-regular, 139,998,600 edges, no duplicate edges. μ = 48.7, |Fix(α)| = 19.
+  α = conjugation by mat(0,8,5,7) × (z ↦ 10z on Z_271).
+- Found after 217,721 evaluations (5,127.3 s, run `runs/raise_d15D8_r3/out/w3a/`).
+- Verification: haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
+  build_haar2.py: **VALID d=15 D=8**, 18,666,480 vertices, edge-list sha256
+  `29fecae24a0509321267f3de2b33aa37b5a9337c0e0ebc0ecc723a41a1e21d8d`.
+- Saved as `research/frontier/sols/d15D8_psl_41_271_orb5f0_ORBW5_s1.txt` (+ `.log`).
+- Gain over the previous record 18,510,720: +155,760 (+0.84 %).
+- Still running: sl 61 × Z41 (N 9,303,720; below this N, so it no longer beats the record), psl 41 × Z271 seed 2 (same N, cannot beat), pgl 61 × Z41 (N 9,303,720; below this N).

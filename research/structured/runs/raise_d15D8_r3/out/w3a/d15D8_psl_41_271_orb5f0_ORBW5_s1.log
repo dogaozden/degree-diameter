@@ -173,3 +173,11 @@ t=4995 steps=26522 evals=212177 cost=5 best=5 T=0.15 energy=5 bestE=5
 t=5025 steps=26682 evals=213457 cost=46 best=5 T=0.61 energy=50 bestE=5
 t=5055 steps=26841 evals=214729 cost=10 best=5 T=0.21 energy=10 bestE=5
 t=5086 steps=27000 evals=216001 cost=10 best=5 T=0.15 energy=10 bestE=5
+t=5116 steps=27156 evals=217249 cost=10 best=5 T=0.15 energy=10 bestE=5
+RESULT d=15 D=8 group=psl 41 x Z_271 N=9333240 best=0 evals=217721 time=5127.3 orbit k=5 m=3 f=0 fix=19
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise_d15D8_r3/out/w3a/d15D8_psl_41_271_orb5f0_ORBW5_s1.txt
+n = 18666480 edges = 139998600 max degree = 15 min degree = 15 duplicate edges = 0
+edge list sha256 = 29fecae24a0509321267f3de2b33aa37b5a9337c0e0ebc0ecc723a41a1e21d8d
+VALID d=15 D=8 group=psl 41 x Z_271 N=9333240 vertices=18666480
