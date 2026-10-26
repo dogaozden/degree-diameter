@@ -159,3 +159,31 @@ round 2 ended, and their results are not on the branch. They are the first thing
 - 05:08 sl 89 x Z247 seeds 13 (RESTART=1) and 14 (ORBW=3), 10,000 s each: best cost 6 both (6,177 and 6,089 evals). No solve.
   Four 10,000 s seeds on this group (11, 12, 13, 14) all end at cost 6, i.e. two uncovered orbits; the plateau is consistent.
 - 05:12 two more seeds on sl 89 x Z247 (23: ORBW=2 RESTART=1; 24: RESTART=1), 6,500 s each.
+- 07:01 sl 89 x Z247 seeds 23 (ORBW=2, RESTART=1) and 24 (RESTART=1), 6,500 s each: best cost 12 both (3,761 and 3,721 evals). No solve.
+- 07:14 sl 83 x Z307 (seed 21, RESTART=1, 10,000 s): best 14 (6,313 evals). No solve.
+- 07:14 sl 97 x Z193 (seed 22, RESTART=1, 10,000 s): best 10 (6,753 evals). No solve.
+
+## Round 3 final state (session end, 2026-10-26 ~07:15)
+- **No solve above the bar.** Best recorded remains **sl 101 x Z169, 348,207,600** (round 2, checked by hcsl and hc2).
+  sl 89 x Z247 (348,210,720, +3,120) is the closest rung; it stalled at cost 6 in four 10,000 s seeds (11, 12, 13, 14).
+- Full round-3 search, all k = 3 (3 5 1) unless marked:
+  | group | N (vertices) | runs | best cost |
+  |---|---|---|---|
+  | sl 89 x Z247 | 348,210,720 | 4 x 10,000 s (seeds 11, 12 RESTART=1, 13 RESTART=1, 14 ORBW=3) | 6 (all four) |
+  | sl 89 x Z247 | 348,210,720 | 2 x 6,500 s (seed 23 ORBW=2 RESTART=1, seed 24 RESTART=1) | 12 (both) |
+  | sl 83 x Z307 | 351,026,256 | 1 x 10,000 s (seed 21 RESTART=1) | 14 |
+  | sl 97 x Z193 | 352,254,336 | 1 x 10,000 s (seed 22 RESTART=1) | 10 |
+  | sl 157 x Z45 | 348,276,240 | 1 x 2,400 s, k=4 f=0 | 287,389,760 (dropped) |
+  | sl 191 x Z25 | 348,384,000 | 1 x 2,400 s, k=4 f=0 | 132,574,040 (dropped) |
+- Round 3 total: about 9 runs, 2 k=4 f=0 runs dropped, all k=3 runs at their plateaus.
+
+## Stopping reason
+The 6-hour budget is used. The cell has not moved above 348,207,600 with these methods:
+- The bar is set by sl 89 x Z247 (348.21M) and sl 97 x Z193 (352.3M), whose best costs (6 and 10) sit at the same plateau that
+  round 2 found at 348-352M. Long runs (10,000 s, about 6,000 evaluations) do not reduce the cost below 6.
+- The k = 4, f = 0 shape fails (cost near the start value; the graph is not connected under this S), so the shape
+  with fewer fixed points is unavailable at this size. k = 5 needs primes ≡ 1 mod 5 in n; no group in the 348-360M range
+  has that and a small n. Both remaining ideas are STRUCTURE §7 items (a group with a smaller centralizer, or SL(3,q)).
+- Next step for the coordinator: record 348,207,600 (sl 101 x Z169, round 2) in the table; it is the bar. A new search
+  family (SL(3,q) regular-semisimple, or a different α for sl 89 x Z247 with a fixed set of size ≤ 60) is the only route left
+  with a real chance of +1 % over the bar.
