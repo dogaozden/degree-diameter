@@ -44,7 +44,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (5, 5) | 336 | **354** | +5.4% | evolutionary search | ✓ |
 | (7, 5) | 1,134 | **1,152** | +1.6% | Haar graph, hand-picked group | ✓ |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
-| (9, 5) | 2,496 | **2,662** | +6.7% | Haar graph, hand-picked group | ✓ |
+| (9, 5) | 2,496 | **2,756** | +10.4% | Haar graph, squad search | (2,662) |
 | (10, 5) | 4,000 | **4,800** | +20.0% | generalized quadrangle construction ¹ | — |
 | (11, 5) | 5,850 | **7,020** | +20.0% | generalized quadrangle construction ¹ | — |
 | (12, 5) | 8,200 | **9,840** | +20.0% | generalized quadrangle construction ¹ | — |
