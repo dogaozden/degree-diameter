@@ -123,3 +123,13 @@ in order of N. Candidate screen and run logs are in the session scratchpad; this
   edge-list sha256 `66486a07…d`); all-pairs BFS `research/lifts/coordinator_check/apsp.c` (no symmetry assumed):
   `n=95964 edges=239910 degree 5 5 bipartite=yes diameter=10`, VALID.
 - New bar for further rounds: N > 47,982.
+
+## Round 3 screen and first anneal queue (summary)
+
+- Screen: all 13,099 metacyclic candidates with k ≥ 10 in N = 47,881–48,400 (k < 10 is ~10× slower per screen and
+  none of the known records use it), `RANDSAMPLE=1000`, score (p10 + median)/μ(N). Ranking: meta 1143×42 (r 47) first.
+- Queue 1: top 40 by score, 300 s each, seed 1, K = 8. 24 at 300 s; results below are the best costs at N > 47,880.
+  One solve: 727×66 (r 34), N = 47,982, the new record. Cost 1 at N > 47,982: 1847×26 (r 123, N 48,022),
+  982×49 (r 3, N 48,118). Cost 2: 1143×42 (r 47 and r 38, N 48,006), 2667×18 (r 164, N 48,006), 3694×13, 2189×22,
+  2009×24 (r 68), 3719×13, 491×98.
+- Queue 2 (running): 1200 s, seed 2, the cost ≤ 2 candidates above 47,982.
