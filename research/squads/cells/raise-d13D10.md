@@ -178,3 +178,13 @@ at 6,529 evals) and the k = 5 PSL 131×311 at cost 1 (35k evals). This is the sa
 
 **Setup.** Binaries built from the merged sources: `haar_sym` (research/structured), `tools/hcsl`, `tools/hc2` (SL checkers
 from ../frontier/haarcheck_sl.c and haarcheck2.c), `tools/haarcheck_psl`. Two runs at a time (≈3.4 GB RSS each), THREADS=1.
+
+**RECORD (round 3, 02:26 UTC): 683,943,456** = 2·|SL(2,137) × Z133|, k = 3, m = 4, f = 1, ORBW = 3.
+File `research/frontier/sols/d13D10_sl_137_133_orb3_ORBW3_s2.txt`. Found at 9,402 evals from the round-2 checkpoint
+(cost 1, one uncovered α-fixed element) under seed 2 with ORBW=3, in 7,116 s of total run time. Log
+`research/structured/runs/raise3_13_10/out/d13D10_sl_137_133_orb3_ORBW3_s2.log`. Checks: haar_sym's full diameter check OK;
+independent low-memory checkers `tools/hcsl` and `tools/hc2` both VALID (13-regular, simple, eccA = eccB = 10).
+Previous record 681,406,800 (SL 149×103) is superseded by +0.4 %.
+
+Lesson: ORBW=3 turns the "one uncovered fixed element" stall into a solve, as ORBW=5 did at (11,8). Same-cell rungs
+(SL 103×313 and the rest of the cost-1 list) should get ORBW=3 first.
