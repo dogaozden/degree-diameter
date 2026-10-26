@@ -39,3 +39,9 @@ graph with N > 1,149,120.
 - 2026-10-26: imported round-2 solutions, runs and notes; built `research/structured/haar_sym` and
   `tools/haarcheck_psl` from the committed sources; re-verified the record (VALID). Launched the four runs above
   (scratchpad `runs/`, logs copied to `research/structured/runs/` when they finish).
+- 2026-10-26, order-2 screen (`orb_screen.py 7 10 1100000 1160000 "2 3 1" --samples 200 --nmax 1000`, 5 min): NEGATIVE.
+  Sampled p1 of random symmetric S at N ≈ 1.10–1.16 M: the record group prod sl 7 psl 19 (μ 30.9, |Fix| 159) has p1 31, against
+  p1 ≈ 24 for the same group under k = 3 (round 2). Groups at μ 32–34 have p1 in the hundreds or thousands (e.g. psl 23 × Z191 942,
+  pgl 27 × Z59 298). Involutions bring many fixed points and word collisions, so k = 2 is dropped for this cell.
+- Checkpoint 2026-10-26 (t ≈ 330 s of 6900 s): sl 19 × Z169 seeds 41 and 42 at cost 9, pgl 19 × Z169 RESTART at 12,
+  sl 19 × Z169 ORBW=3 at 9.
