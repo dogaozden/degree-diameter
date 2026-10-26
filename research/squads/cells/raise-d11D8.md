@@ -41,3 +41,36 @@ the only group above the record that is competitive, on new seeds, with the best
   The plateau at energy 10 seen in round 2 appears again. Logs and best-state dumps (`runs/raise11_8_r3/*.dump`) are
   committed with `git add -f`; the live logs are no longer tracked while runs are running.
 - 04:02 UTC: second batch, seeds 35–38, 9000 s each, same command (`launch2.sh`).
+- 06:31 UTC: batch 2 (seeds 35–38, 9000 s each, about 1.47M evals) finished. Best raw costs 10, 10, 10, 10. No solution.
+
+## Final status (06:31 UTC): not beaten
+
+No run found a cost-0 orbit set for any group with N > 1,129,260. The record 2,258,520 stands.
+
+| run | group | budget | evals | best cost |
+|---|---|---|---|---|
+| r3 seed 31 | psl 19 × Z331 | 9600 s | 1.63M | 10 |
+| r3 seed 32 | psl 19 × Z331 | 9600 s | 1.64M | 6 |
+| r3 seed 33 | psl 19 × Z331 | 9600 s | 1.64M | 10 |
+| r3 seed 34 | psl 19 × Z331 | 9600 s | 1.64M | 10 |
+| r3 seeds 35–38 | psl 19 × Z331 | 9000 s | ~1.47M each | 10, 10, 10, 10 |
+
+Across rounds 1–3: 21 plain or near-plain annealing runs (and the round-2 EXH runs) on psl 19 × Z331, best raw cost 1
+(round 2, seed 23, one uncovered α-fixed element). Nothing in round 3 reached cost 0.
+
+## Why I stopped
+
+- Every group above the record that is competitive has been screened (round 1, all 60 candidates at k = 5) and
+  psl 19 × Z331 is the only one close enough to try. The others have worse random-sample statistics (min ≥ 52).
+- k = 2 and k = 3 are ruled out for this (Δ, μ) (`research/structured/STRUCTURE.md`); k = 10 with one orbit has too few
+  candidates.
+- The annealer plateaus at energy 10 on psl 19 × Z331 in most runs, and 8 more seeds in round 3 did the same. More seeds
+  on this group are a long shot with no change in method. I judge this cell will not move further with these methods in
+  this budget. The one thing that could change that is a new search method (for example a two-slot move or a faster
+  evaluator), not more of the same.
+
+## Next steps if someone resumes
+
+1. A two-slot exhaustive move from the best saved state (`runs/raise11_8_r3/psl19_331_s32.dump`, cost 6), to test whether
+   the plateau has a neighbour one step further out.
+2. A faster evaluator (the record run ran at about 375 evals/s, this container at about 170), which would double the seeds.
