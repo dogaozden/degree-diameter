@@ -189,3 +189,8 @@ Checkers: prime-q SL uses `tools/hcsl` and `tools/hc2`, prime-q PSL uses `tools/
 sl 49) has no independent checker yet; a solve there needs one before it can be recorded.
 
 *Status:* (see the entries below, appended as runs finish.)
+
+*Checker for prime powers:* `tools/haarcheck_pp.c` (generic GF(q), same definitions and BFS as `frontier/haarcheck_sl.c`,
+field built as in haar_sym.c, header polynomial checked against it). Verified: VALID on the prime record sl 73 × Z_427
+(ecc 10 from both sides), and VALID on a GF(8) test cell sl 8 × Z_19 (d7 D8, build_haar2.py also VALID). `orbq.sh` still
+sends prime-power headers to hcsl/hc2 (prime-only); a prime-power solve must be checked with `haarcheck_pp` by hand.
