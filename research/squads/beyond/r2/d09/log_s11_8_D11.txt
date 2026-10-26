@@ -1,0 +1,7 @@
+group sl 11 x Z_8, N=10560, identity 880, H order 44, rows 240, threads 1, setup 0.00s
+wide rows: HW order 88, rows 120, setup 0.01s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 1 z on Z_8
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 95 (+e); mu = 2.40, mu/k = 0.80, fixed-point misses ~ 11.72
+start cost=20160
+t=30 steps=41749 evals=333993 cost=352 best=352 T=0.53
+RESULT d=4 D=11 group=sl 11 x Z_8 N=10560 best=352 evals=730785 time=60.0 orbit k=3 m=1 f=1 fix=95

@@ -1,0 +1,8 @@
+group psl 11 x Z_15, N=9900, identity 825, H order 55, rows 180, threads 1, setup 0.00s
+wide rows: HW order 165, rows 60, setup 0.02s
+alpha: conj by mat(5,2,6,7) (index 567), z -> 1 z on Z_15
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 89 (+e); mu = 1.29, mu/k = 0.43, fixed-point misses ~ 9.12
+start cost=18484
+t=30 steps=25484 evals=203873 cost=7296 best=7296 T=0.53
+t=60 steps=50287 evals=402297 cost=7296 best=7296 T=0.19
+RESULT d=4 D=11 group=psl 11 x Z_15 N=9900 best=7296 evals=402297 time=60.0 orbit k=3 m=1 f=1 fix=89

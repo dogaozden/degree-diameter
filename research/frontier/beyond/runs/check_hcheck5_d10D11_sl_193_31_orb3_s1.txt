@@ -1,0 +1,12 @@
+checker: hcheck5
+command: ./bin/hcheck5 runs/d10D11_sl_193_31_orb3_s1.out
+start: 2026-10-26T15:45:55Z
+sha256 3a7b900da7e82ab45eb674630b2696c52538a16ad2f57710ce26926770ca7a6d  ./bin/hcheck5
+sha256 88c28bc1a5846a56d7c365fc8c90ac939136c30a5b474476ce8c8b167472cfd7  runs/d10D11_sl_193_31_orb3_s1.out
+loaded runs/d10D11_sl_193_31_orb3_s1.out: d=10 D=11 p=193 n=31 N=222854784; idx-column mismatches=9
+generators distinct: yes
+from (e,A): all reached within 11, ecc 11 (46.953 s)
+from (e,B): all reached within 11, ecc 11 (62.424 s)
+VALID d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 threads=2 time=109.377 bfs_A=46.953 bfs_B=62.424
+exit: 0
+end: 2026-10-26T15:47:46Z (111 s)

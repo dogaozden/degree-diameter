@@ -1,0 +1,28 @@
+== q=13 r=3 start 16:36:31
+H(13): 402234 points, 402234 lines, every point on 14 lines, every line has 14 points
+lift: r=3 M=7 n=5631276 target degree 17 (built in 21.2 s)
+structure (degree 17, simple, bipartite, symmetric): ok
+  level 0 done: 5631276 (vertex,source-set) incomplete
+  level 1 done: 5631276 (vertex,source-set) incomplete
+  level 2 done: 5631276 (vertex,source-set) incomplete
+  level 3 done: 5631276 (vertex,source-set) incomplete
+  level 4 done: 5631276 (vertex,source-set) incomplete
+  level 5 done: 5631276 (vertex,source-set) incomplete
+  level 6 done: 5631276 (vertex,source-set) incomplete
+  level 7 done: 0 (vertex,source-set) incomplete
+RESULT q=13 r=3 n=5631276 degree=17 sources=64 max_ecc=7 time=26.5s
+== end 16:36:58
+== q=13 r=4 start 16:36:58
+H(13) loaded from hex_q13.bin: 402234 points, 402234 lines
+lift: r=4 M=9 n=7240212 target degree 18 (built in 0.1 s)
+structure (degree 18, simple, bipartite, symmetric): ok
+  level 0 done: 7240212 (vertex,source-set) incomplete
+  level 1 done: 7240212 (vertex,source-set) incomplete
+  level 2 done: 7240212 (vertex,source-set) incomplete
+  level 3 done: 7240212 (vertex,source-set) incomplete
+  level 4 done: 7240212 (vertex,source-set) incomplete
+  level 5 done: 7240212 (vertex,source-set) incomplete
+  level 6 done: 7240212 (vertex,source-set) incomplete
+  level 7 done: 0 (vertex,source-set) incomplete
+RESULT q=13 r=4 n=7240212 degree=18 sources=64 max_ecc=7 time=7.1s
+== end 16:37:06

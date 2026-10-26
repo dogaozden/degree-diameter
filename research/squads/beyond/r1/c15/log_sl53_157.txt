@@ -1,0 +1,15 @@
+group sl 53 x Z_157, N=23365368, identity 432692, H order 54, rows 432692, threads 1, setup 2.60s
+wide rows: HW order 157, rows 148824, setup 4.43s
+alpha: conj by mat(24,10,30,28) (index 67923), z -> 12 z on Z_157
+ORBIT k=3 m=5 f=2: |Fix(alpha)| = 53 (+e); mu = 111.30, mu/k = 37.10, fixed-point misses ~ 0.91
+start cost=138
+t=31 steps=12 evals=97 cost=85 best=85 T=0.51
+t=63 steps=25 evals=201 cost=85 best=85 T=0.17
+t=94 steps=39 evals=313 cost=80 best=80 T=0.15
+t=125 steps=55 evals=441 cost=69 best=69 T=0.15
+t=156 steps=74 evals=593 cost=69 best=69 T=0.15
+t=186 steps=90 evals=721 cost=69 best=69 T=0.15
+t=217 steps=107 evals=857 cost=69 best=69 T=0.15
+t=248 steps=124 evals=993 cost=69 best=69 T=0.15
+t=279 steps=140 evals=1121 cost=69 best=69 T=0.15
+RESULT d=17 D=8 group=sl 53 x Z_157 N=23365368 best=69 evals=1217 time=300.6 orbit k=3 m=5 f=2 fix=53

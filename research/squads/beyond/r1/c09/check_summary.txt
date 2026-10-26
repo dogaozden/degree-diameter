@@ -1,0 +1,9 @@
+Card c09, level graphs of H(q) (Theorem A), lift7.c.
+Full all-pairs (research/lifts/coordinator_check/apsp.c, outputs in small/check_q*_r*.txt), D = 7 expected and found:
+q=3 r=1 n=2184 d=5 VALID D=7; q=3 r=2 n=3640 d=6 VALID D=7; q=3 r=3 n=5096 d=7 VALID D=7;
+q=4 r=1 n=8190 d=6 VALID D=7; q=4 r=2 n=13650 d=7 VALID D=7; q=4 r=3 n=19110 d=8 VALID D=7.
+Sampled bit-parallel BFS (lift7 ... bfs 40, 40 random sources, full structure check of all vertices):
+RESULT q=13 r=3 n=5631276 degree=17 sources=40 max_ecc=7 (cell 17,7)
+RESULT q=13 r=4 n=7240212 degree=18 sources=40 max_ecc=7 (cell 18,7)
+Cells 19,7 and 20,7: builds were not finished in this session (killed at the wall-time limit / stopped on the director's request); no check of my own.
+H(16) incidence graph (lift7 16 0 1 bfs 1, cached as hex_q16.bin): n=2236962 degree=17 one source max_ecc=6 (consistent with generalized hexagon diameter 6); log in q16_H_check.log

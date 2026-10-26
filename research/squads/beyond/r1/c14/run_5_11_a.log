@@ -1,0 +1,11 @@
+group sl 16 poly x^4+x+1 x Z_31, N=126480, identity 7440, H order 62, rows 2040, threads 1, setup 0.11s
+wide rows: HW order 155, rows 816, setup 0.14s
+alpha: conj by mat(2,10,9,2) (index 665), z -> 30 z on Z_31
+ORBIT k=2 m=2 f=1: |Fix(alpha)| = 15 (+e); mu = 2.00, mu/k = 1.00, fixed-point misses ~ 0.13
+start cost=26770
+t=30 steps=16841 evals=134729 cost=70 best=70 T=0.53
+t=60 steps=25013 evals=200105 cost=70 best=70 T=0.19
+t=90 steps=31615 evals=252921 cost=70 best=70 T=0.15
+t=120 steps=37581 evals=300649 cost=70 best=70 T=0.15
+t=150 steps=42757 evals=342057 cost=70 best=70 T=0.15
+RESULT d=5 D=11 group=sl 16 poly x^4+x+1 x Z_31 N=126480 best=70 evals=351401 time=157.6 orbit k=2 m=2 f=1 fix=15
