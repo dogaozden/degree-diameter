@@ -177,6 +177,11 @@ static void exact(int nth) {
         char nm[64]; sprintf(nm, "swap of blocks %d and %d", first[ty], B);
         ok &= check_map(img, nm);
     }
+    if (getenv("OMEGA_NEGTEST") && alpha > 1 && types[0] != types[1]) {   /* the checker must reject this map */
+        for (int i = 0; i < N; i++) { img[i] = i; if (i < K0) { int c = i / (2 * n1), v = i % (2 * n1), cb = c / 5;
+            if (cb < 2) img[i] = (5 * (1 - cb) + c % 5) * 2 * n1 + v; } }
+        check_map(img, "negative test: swap of blocks 0 and 1 (different types)");
+    }
     if (!ok) { printf("  symmetry check failed; no exact result\n"); return; }
     nsrc = 0; srcs = malloc(sizeof(int) * (2 * n1 + 4 * n1));
     for (int bar = 0; bar < 2; bar++) for (int t = 0; t < n1; t++) srcs[nsrc++] = K0 + 5 * bar * n1 + t;

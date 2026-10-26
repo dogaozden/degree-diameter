@@ -13,7 +13,7 @@ the sessions under review was used, except the audit's labelling files for the o
 | claim (write-up's numbering) | verdict |
 |---|---|
 | 1. The (12,8) value 4,650,100 is \|ΩH₉\|, 12-regular, bipartite, 27,900,600 edges | **Correct.** Thesis p. 46 lists "ΩH₉ : N(12,8) ≥ 4 650 100". My build: 4,650,100 vertices, all of degree 12, 27,900,600 edges, bipartite. The wiki table (fetched today) has 4,650,100 at (12,8), coloured "Graphs found by C. Delorme, J. Gómez, and J. J. Quisquater". |
-| 2. ΩH₉ has diameter 9, not 8 | **Correct.** "Not 8" is proved (Theorems 1 and 2, no computation needed), and I reproduced it with my own code at the actual order. "Exactly 9" (both block types present) I also reproduced exactly with my own code, with no assumption on the hexagon's automorphisms: ΩH₉ and ΩH₇ (BFS from every orbit of machine-checked automorphisms), and ΩH₃ and ΩH₅ (all pairs). With one block type the diameter is 10. |
+| 2. ΩH₉ has diameter 9, not 8 | **Correct.** "Not 8" is proved (Theorems 1 and 2, no computation needed), and I reproduced it with my own code at the actual order. "Exactly 9" (both block types present) I also reproduced exactly with my own code, with no assumption on the hexagon's automorphisms: ΩH₉ and ΩH₇ in both readings (reading 1 with one random σ; BFS from every orbit of machine-checked automorphisms), and ΩH₃ and ΩH₅ (all pairs). With one block type the diameter is 10. |
 | 3. A copy of K₁ is joined only to vertices with its own label t; no reading gives diameter 8 | **The reading is right**: the thesis says this explicitly in §2.8.9, which §2.9.3 cites for its copies of K₁. **"No reading" needs a qualifier**: no reading that keeps one labelling for all copies. A separate labelling per copy is not in the thesis, but it does give diameter 8 at q = 3 (I re-checked the audit's graph). |
 | 4. Every D = 8 thesis value has eccentricity 9 | **Correct** for ΩH₅, ΩH₇, ΩH₈, ΩH₉, ΩH₁₁, ΩH₁₃: I rebuilt all six at their thesis orders and every K₁-vertex tested has eccentricity 9 in both readings. ΩH₁₁d (N(15,8) ≥ 14,978,080) is not defined in §2.9.3 and nobody checked it; the wiki's (15,8) entry is 14,172,480 = \|ΩH₁₁\|, so it is covered. |
 | Theorem 1 | **Correct.** It is more general than stated: under reading 2 it refutes D ≤ D₁ + 2 for every B₁, not only the hexagons. |
@@ -227,7 +227,9 @@ rotation (copy 5B+i → 5B+i+1, K(t,k) → K(t,k+1), all blocks at once) and the
 automorphisms. It then runs BFS from every K(t, 0) and K(t, 0̄) and from every vertex of the first copy of each block
 type: 117,648 sources, 64 at a time. Every vertex of ΩH₇ is in the orbit of one of them, so the largest eccentricity
 is the diameter. Result: **diameter 9**, for reading 2 (ababa) and for reading 1 (ababa, one random σ). Every one of
-the 117,648 sources has eccentricity exactly 9. Log: end of `logs/omega_q7.txt`.
+the 117,648 sources has eccentricity exactly 9. Log: end of `logs/omega_q7.txt`. The same mode reproduces the
+all-pairs diameters at q = 3 and 5. As a negative test, it rejects a swap of an a-block with a b-block, which is not
+an automorphism (`logs/omega_q3_q5_allpairs.txt`).
 
 Cheaper checks agree. BFS from one vertex of each of the 6 classes under H(7)'s automorphisms, the rotation and the
 block swaps gives 9 for ababa and aabbb, and 10 when all blocks are of type a (K₁-vertex to K₁-vertex). 2,000 random
@@ -257,8 +259,9 @@ At q = 9 (blocks aaabbb, as in the write-up) my distance profile from K(0,0) is 
 **Exact diameter of ΩH₉** (reading 2, aaabbb; `omegaref ... exact 4`, 18 minutes): the rotation and the four block
 swaps are automorphisms, checked on all 27,900,600 edges. BFS from all 398,580 orbit representatives (every
 K(t, 0) and K(t, 0̄), and every vertex of copies 0 and 15) gives eccentricity exactly 9 for each, so **diameter 9**.
+The same run under reading 1 with a random σ (32 minutes) also gives **diameter 9**, every source with eccentricity 9.
 This agrees with the write-up's orbit computation, which used different symmetries (a Singer cycle and a transvection
-of H(9)).
+of H(9)) and, for reading 1, a Singer-equivariant σ.
 
 q = 3 and 5 (all pairs, no symmetry, `logs/omega_q3_q5_allpairs.txt`, built by `omegalab.py` with every copy
 labelled the same): ΩH₃ (14,560) and ΩH₅ (195,300, the thesis's (8,8) value) have **diameter 9** with both block types

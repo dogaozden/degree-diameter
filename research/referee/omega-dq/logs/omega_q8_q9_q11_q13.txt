@@ -107,3 +107,16 @@ Omega H_9 reading 2 types aaabbb sigma id: vertices 4650100 (copies 30 x 132860 
   eccentricity of K1-vertex sources: 9:132860
   eccentricity of copy-vertex sources: 9:265720
   DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 3985800 = K(t=0, k=0))
+
+# exact diameter of Omega H_9, reading 1, random sigma (omegaref mode exact, 4 threads, 1909 s)
+Omega H_9 reading 1 types aaabbb sigma rand:1: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 1: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 3 and 4: bijection, maps every edge to an edge
+  swap of blocks 3 and 5: bijection, maps every edge to an edge
+  398580 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:132860
+  eccentricity of copy-vertex sources: 9:265720
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 3985800 = K(t=0, k=0))
