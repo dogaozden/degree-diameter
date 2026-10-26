@@ -48,3 +48,4 @@ graph with N > 1,149,120.
 - Checkpoint 2026-10-26 (t ≈ 810 s): all four runs at best 9 (pgl 19 × Z169 RESTART at 9 too; seeds 41/42 cost 9–18 now). No solve yet.
 - Checkpoint 2026-10-26 (t ≈ 1710 s, about 2.6 M evals each): all four runs still at best 9 (seed 41, 42, 45 at cost 9; pgl 19 × Z169 RESTART at 9 best, now 22). No solve.
 - Checkpoint 2026-10-26 (t ≈ 2160 s, about 3.3 M evals each): best 9 for seeds 41, 42, pgl RESTART; the ORBW=3 run (seed 45) has best 6 (energy 9). No solve.
+- Checkpoint 2026-10-26 (t ≈ 3810 s, about 6 M evals each): best 9 (seeds 41, 42), pgl 19 × Z169 RESTART now best 8, ORBW=3 (seed 45) best 6. No solve.
