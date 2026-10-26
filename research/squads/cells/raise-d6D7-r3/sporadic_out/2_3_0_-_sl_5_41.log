@@ -1,0 +1,6 @@
+group sl 5 x Z_41, N=4920, identity 820, H order 41, rows 120, threads 1, setup 0.00s
+wide rows: HW order 246, rows 20, setup 0.00s
+alpha: conj by mat(3,0,0,2) (index 70), z -> 40 z on Z_41
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 3 (+e); mu = 92.88, mu/k = 46.44, fixed-point misses ~ 1.10
+RANDORB d=6 D=7 group=sl 5 x Z_41 N=4920 k=2 m=3 f=0 fix=3 samples=1000000 min=362 p1=734 p10=1568 median=3558 mean=3874.64 var=3896147.2 mu=92.88 time=4.9
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1000000

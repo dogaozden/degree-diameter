@@ -1,0 +1,6 @@
+group heis 17 x Z_1, N=4913, identity 0, H order 17, rows 289, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 17); using haar_gen3's evaluation
+alpha: heis scaling a=16 b=1, z -> 0 z on Z_1 (order 1)
+ORBIT k=2 m=1 f=4: |Fix(alpha)| = 16 (+e); mu = 92.23, mu/k = 46.11, fixed-point misses ~ 4.66
+RANDORB d=6 D=7 group=heis 17 x Z_1 N=4913 k=2 m=1 f=4 fix=16 samples=1000000 min=4948 p1=4980 p10=5052 median=5212 mean=5534.49 var=1026640.1 mu=92.23 time=49.9
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1000000

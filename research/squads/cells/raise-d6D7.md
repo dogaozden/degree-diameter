@@ -88,3 +88,45 @@ it does not point to a route.
 2. Voltage lifts of a small bipartite base (research/lifts/, route-chart lifts) with non-cyclic voltage groups of
    order 4,441 to 5,300. Not run.
 3. Groups outside orb_screen's families (csl, tpgl, larger central products) in the same window.
+
+## Round 3, raise3-6-7 (branch claude/raise-d6d7-round-3-dhhj7z)
+
+**Result: no record. The record stays 8,880** (sl 5 × Z37, N = 4,440). No sample with cost 0 at N ≥ 4,441 in any screen below.
+Scripts, job lists and logs: `raise-d6D7-r3/` (see its README). Round 2's notes are above, unchanged.
+
+Method check first: haar_sym with ORBIT "3 2 0" on sl 5 × Z37 (the record group) returns cost 0 within 2·10⁵ samples, so the
+screen can see a solution when one exists.
+
+Round 3 covered what round 2 did not: orbit orders 2, 4, 5, 6 (round 2 had only 2 and 3), metacyclic groups, and Heisenberg groups.
+
+| family / α | jobs, samples | smallest minimum (uncovered) | notes |
+|---|---|---|---|
+| metacyclic Z_m ⋊_r Z_K, K ≥ 12, gcd(r−1,m)=1, α = (u a, j) of order 2 (`2 3 0`) | 171, 10⁵ | 44 | the first pass, stopped after 171 of 3,145 jobs (too slow) |
+| metacyclic, α of order 3 (`3 2 0`), 4 (`4 1 2`), 5 (`5 1 1`), 6 (`6 1 0`) | 2,091, 3·10⁴ | **400** | every orbit space here is small, so the minimum is essentially exact |
+| psl 9×13, psl 7×29, sl 5×41, pgl 5×41, sl 4×85, psl 5×85, pgl 4×85, sl 17, pgl 17, α of order 4 (`4 1 2`) | 9, 10⁶ | 70 (pgl 17) | exact-size spaces; psl 9×13 192, psl 7×29 276, sl 5×41 2,668 |
+| α of order 5 (`5 1 1`): sl 5×41, pgl 5×41 | 2, 10⁶ | 85 (pgl 5×41) | one orbit plus one fixed element: about N choices, so exhaustive |
+| α of order 6 (`6 1 0`): psl 11×7 | 1, 10⁶ | 166 | psl 9×13, sl 9×7, sl 17: no conjugation of order 6 |
+| α of order 2 (`2 2 2`, `2 3 0`, `2 1 4`): psl 11×7, psl 9×13, sl 5×43, sl 5×41, heis 17 | 5, 10⁶ | 58 (psl 11×7, `2 2 2`) | sampled, not exhaustive |
+| Heisenberg H(q) × Z_n (heis 5×37, 5×41, 7×13, 17): orbit orders 2, 3, 4 | 6 | 1,296 (heis 7×13, `3 2 0`) | four jobs refused by haar_sym ("not enough fixed elements") |
+
+Reading. The best of every new family is far from zero, and the k = 3 psl 11×7 minimum of 14 from round 2 is still the closest
+any orbit space has come. Metacyclic groups are out for orbit orders 3 to 6. The order-4 and order-5 spaces at N ≈ 4,700–5,100
+are exhausted, with minima 70 to 276 (k = 4) and 85 to 96 (k = 5) uncovered. Heisenberg groups have too few fixed elements for these
+α types, and the one that ran was poor (1,296 or more).
+
+Why these numbers say no, in brief. The first-moment count (round 2) gives about N²/18 · e^(−μ/3) orbit sets at k = 3. At k = 4
+and k = 5 the spaces are smaller (about N·|Fix| and N sets), and the same μ_eff ≈ 18 applies, so the expected number of solutions
+is smaller still. This is a heuristic; it does not rule out a structured solution. It says the orbit method has no slack left
+in the N = 4,441 to 5,300 window at this degree.
+
+Open leads, none tried this round:
+1. **Voltage lifts with two orbits per side** (base 2 + 2, multiplicities [[a, 6−a], [6−a, a]], voltage group G of order
+   2,221 to 2,650, N = 4|G| ≥ 8,884). This is the only route here that could beat 8,880 without a single cyclic orbit structure.
+   Needs a new evaluator (4 BFS roots instead of 2). Not built this round.
+2. Groups outside orb_screen's families and haar_sym's group types (central products, tpgl, Z_n ⋊ Q).
+3. Verify the single-class assumption for order-3 elements in PSL(2,q). It holds for PSL(2,p) (Aut = PGL(2,p), and order-3
+   elements of PGL lie in PSL), so the only open part is composite q.
+
+Stop criterion. Round 3 has measured every orbit-order and metacyclic family the tools support in the window. Nothing reached zero.
+The cell is not expected to move further with the orbit or metacyclic-orbit methods. The next step is lead 1, which is a new
+search code, a bigger job than these screens.

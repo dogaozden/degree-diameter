@@ -1,0 +1,6 @@
+group heis 7 x Z_13, N=4459, identity 0, H order 13, rows 343, threads 1, setup 0.00s
+wide rows: HW order 91, rows 49, setup 0.00s
+alpha: heis scaling a=2 b=2, z -> 3 z on Z_13 (order 3)
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 0 (+e); mu = 55.84, mu/k = 18.61, fixed-point misses ~ 0.46
+RANDORB d=6 D=7 group=heis 7 x Z_13 N=4459 k=3 m=2 f=0 fix=0 samples=1000000 min=1296 p1=1302 p10=1368 median=1926 mean=3645.26 var=5584416.2 mu=55.84 time=13.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1000000
