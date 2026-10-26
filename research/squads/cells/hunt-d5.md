@@ -24,18 +24,18 @@ negative results for every group that came close (below).
 
 Certificates are in `research/squads/hunt-d5/certs/` (README there: method, sizes, positive controls).
 
-- **(5,5): no Haar graph for any group of order 193–240** (all 863 groups) [241–255: end-of-job note], by
+- **(5,5): no Haar graph for any group of order 193–255** (all 1,028 groups; order 256 has 56,092 groups), by
   exhaustive search over all S ∋ e (`haar5 exhp`, probe-accelerated, exact for cost 0; positive control order 176 finds
   our 352-vertex graph; coverage checked group by group across the director's and the cards' logs). The squads' lifts of
-  small bases stayed at cost ≥ 12. So a (5,5) graph above 2·192 vertices needs a group of order ≥ 241 (where the size
-  law already gives mu ≈ 58) or a non-Haar construction.
+  small bases stayed at cost ≥ 12. So a (5,5) Haar graph above 2·192 vertices needs a group of order ≥ 256 (where the
+  size law already gives mu ≈ 67) or a non-Haar construction.
 - **(6,5)**: no Haar graph for **every group of order 351** (all 14), SmallGroup(343,4), (355,1) = C71 ⋊ C5,
   (357,1) = C17 × (C7 ⋊ C3), (360,51) = C3 × SL(2,5), (360,88) and (360,136) (`haar5 complete` / `haar5 cert`,
   orbit-rank normalization). These are all the groups that reached cost ≤ 6 in the (6,5) screens (355/1, 351/5 and
   360/51 had cost 2; 360/136 had cost 4 in 31 of 31 seeds, each a different S).
 - **(7,5)**: no Haar graph for SmallGroup(609,1) = C3 × (C29 ⋊ C7), (610,2) = C2 × (C61 ⋊ C5), (615,1) =
-  C3 × (C41 ⋊ C5), (618,1) = C103 ⋊ C6 and (618,2) = C2 × (C103 ⋊ C3) [610,1: end-of-job note]: complete coset-pattern
-  searches (next item; 2.2·10¹⁰, 7.6·10⁹, 1.3·10¹⁰, 5.0·10⁹ and 5.0·10⁹ sets). These are the groups with the best near
+  C3 × (C41 ⋊ C5), (618,1) = C103 ⋊ C6, (618,2) = C2 × (C103 ⋊ C3) and (610,1) = C61 ⋊ C10: complete coset-pattern
+  searches (next item; 2.2·10¹⁰, 7.6·10⁹, 1.3·10¹⁰, 5.0·10⁹, 5.0·10⁹ and 7.6·10⁹ sets). These are the groups with the best near
   misses: 610/2 and 615/1 had cost 2 in the farms (three and five times), 609/1 has the most even coset patterns of all
   (7,5) candidates. The exact searches got to cost 2 in three 609 patterns, never 0. SmallGroup(612,5) = C9 × (C17 ⋊ C4):
   its 29,274 best pattern classes have no solution (partial). The other groups of order 606–618 have only order-2
@@ -84,7 +84,7 @@ squads found the right groups (screens), the director's farms and exact tools cl
 - (7,5): every group of order 606–618 that came close is now proved empty (above); the rest stay at cost ≥ 7 in the
   screens (order-2 actions, small p, |G/G'| = 2). Above 618 mu grows by about 0.5 per order. So a larger (7,5) graph
   from this family needs a group these methods did not reach, or it is not a Haar graph.
-- (5,5): Haar graphs are exhausted up to order 240; at Δ = 5 the size law is less favourable than at Δ = 9 (no
+- (5,5): Haar graphs are exhausted up to order 255; at Δ = 5 the size law is less favourable than at Δ = 9 (no
   solution even at mu ≈ 33), and lifts of small bases stay at cost ≥ 12.
 - Lifts of a GQ plus matchings: too few walks to the collinear points (counting); annealing far from 0.
 - K_{Δ,Δ} lifts, small-base lifts with free voltages: costs 12–200, the restricted (Haar) voltages anneal better.

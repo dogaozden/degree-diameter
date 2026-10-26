@@ -10,6 +10,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 |---|---|---|---|
 | d5_haar_orders_193_203.log, d5_haar_orders_204_215.log | (5,5): S ∋ e, all 4-subsets, every group of order 193–215 (179 groups, `haar5 exhp`) | 5.5–8.7·10⁷ per group | no Haar graph of diameter ≤ 5 |
 | d5_haar_orders_216_240.log | (5,5): the same for every group of order 216–240 (director queue `tools/exhp_list.sh` plus round-3/4/5 cards); with the row above, **all 863 groups of order 193–240** (coverage checked group by group) | 8.7·10⁷–1.3·10⁸ per group | **no Haar graph of diameter ≤ 5** |
+| d5_haar_orders_241_255.log | (5,5): the same for every group of order 241–255 (165 groups); so **no Haar graph for any group of order 193–255** (1,028 groups). Order 256 (56,092 groups) not attempted | 1.4·10⁸–1.7·10⁸ per group | none |
 | d5_haar_order_176_positive_control.log | the same search on order 176 | | finds SmallGroup(176,15) (our 352-vertex graph): the search works |
 | d6_haar_355_1_C71xC5.log | (6,5): S ⊇ {e, r}, r one representative per Aut(G)-orbit (5 orbits), all 4-subsets (`haar5 complete`) | 5 × 6.4·10⁸ | none: C71 ⋊ C5 has no (6,5) Haar graph |
 | d6_haar_351_12_F27xC13.log | the same for SmallGroup(351,12) = F₂₇ ⋊ C13 (5 orbits) | 5 × 6.0·10⁸ | none |
@@ -19,6 +20,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d6_haar_360_136.log, d6_haar_360_88.log | (6,5) SmallGroup(360,136) and (360,88), both of shape (C3 × C3) ⋊ (C5 ⋊ Q8) with |G/G'| = 4 (farms: cost 4 in 31 of 31 seeds, and cost 6): `haar5 cert` from rank 0 | 7.2·10⁸ each | none |
 | d6_haar_343_4.log | (6,5) SmallGroup(343,4) | 6.1·10⁸ | none |
 | d7_haar_609_1_summary.txt (full log d7_haar_609_1_coset_patterns.log.gz, patterns d7_patterns_609_1.txt.gz) | (7,5) SmallGroup(609,1) = C3 × (C29 ⋊ C7) = `meta 29 7 16 3` (best mu_J of all (7,5) candidates; farms: cost 4): every coset pattern (21,279 classes in Z7 × Z3) | 2.2·10¹⁰ | **none** (three patterns reach cost 2) |
+| d7_haar_610_1_coset_patterns.log | (7,5) SmallGroup(610,1) = C61 ⋊ C10 = `meta 61 10 3 1` (faithful action): every coset pattern (599 classes) | 7.6·10⁹ | none (best 28) |
 | d7_haar_610_2_coset_patterns.log (patterns: d7_patterns_610_2.txt) | (7,5) SmallGroup(610,2) = C2 × (C61 ⋊ C5) = `meta 61 10 9 1`: every coset pattern (599 classes), normalized S inside each (`haar5 prod`, see below) | 7.6·10⁹ | **none: no (7,5) Haar graph on this group** |
 | d7_haar_615_1_coset_patterns.log (patterns: d7_patterns_615_1.txt) | (7,5) SmallGroup(615,1) = C3 × (C41 ⋊ C5) = `meta 41 15 10 1` (cost 2 five times in about 1,000 farm seeds): every coset pattern (3,935 classes) | 1.3·10¹⁰ | **none** |
 | d7_haar_618_1_coset_patterns.log | (7,5) SmallGroup(618,1) = C103 ⋊ C6 = `meta 103 6 47 1` (faithful action): every coset pattern (75 classes) | 5.0·10⁹ | none (best 71) |
