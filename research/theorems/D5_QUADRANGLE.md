@@ -78,7 +78,7 @@ breadth-first search from every vertex (§15).
 
 **What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts and
 route-chart lifts) in $(10,5)$, $(11,5)$, $(12,5)$, $(14,5)$, $(15,5)$, $(16,5)$, and far below at $\Delta\le 9$. At
-$(15,5)$ the best graph of this kind we built has 20,696 vertices (20,713 expected with the best relaxed set), short of
+$(15,5)$ the best graph of this kind we built has 20,713 vertices (relaxed set of 87 lines of $Q(4,11)$), 23 short of
 the lab's 20,736; §14 explains which quantity limits it.
 
 ---
@@ -735,7 +735,7 @@ the lab's value before this note (README, research/RESULTS.md).
 | (12,5) | 8,200 | 8,430 ($q=8$, $r=3$) | — | **9,840** | doubled-matching lift of $W(9)$ |
 | (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,636** | 11,486 | — |
 | (14,5) | 14,760 | 14,812 ($q=9$, $r=4$) | — | **17,568** | doubled-matching lift of $W(11)$ |
-| (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,696 ($q=11$, $r=3$) | **20,736** | route-chart lift |
+| (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,713 ($q=11$, $r=3$) | **20,736** | route-chart lift |
 | (16,5) | 27,300 | 26,453 ($q=11$, $r=4$) | — | **33,792** | route-chart lift |
 
 At $\Delta\le 9$ (cells $(5,5)$–$(9,5)$) the level graphs have $6N(q)$ or $10N(q)$ vertices for small $q$ (e.g.
@@ -747,7 +747,7 @@ $K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2
 sets on the $D\to H$ arcs. The lab's value needs $K_{\mathcal A}+K_{\mathcal B}\ge 241$, i.e. $b\ge 111$ when $c = 2$. For
 partial ovoids of $W(11)$ this is exactly Tallini's bound $q^2-q+1$ (best found: 70). Relaxed sets (§7) are not limited by
 Tallini's theorem, and Proposition 7.2 puts no limit on their number of pairs; counting allows up to 127 points, but the
-best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives about 20,713. So we would need
+best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives 20,713 (built and checked, §15). So we would need
 relaxed sets of $W(11)$ about a quarter larger than any we found, or several more freed points on every non-friendly arc
 (each one on each of the ten $H\to H$ arcs adds 4 vertices). Third-level routing gives such points at $q = 5$ and $7$
 (§12), but we did not get it to work at $q = 11$ in this session.
@@ -764,7 +764,8 @@ bipartite, maximum degree, exact diameter.
 | $(13,5)$, $n = 11{,}636$ | graphs/d13D5_q9_relaxed66_n11636.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges; hub rule checked (check_rule.py) |
 | $(13,5)$, $n = 11{,}627$ | graphs/d13D5_q9_relaxed_n11627.* | VALID; independent rebuild identical |
 | $(13,5)$, $n = 11{,}621$ | graphs/d13D5_q9_typed_n11621.* (json; rebuild with build_typed.py) | VALID |
-| $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID (beats the table, not the lab) |
+| $(15,5)$-type, $q = 11$, $n = 20{,}713$ | graphs/d15D5type_q11_relaxed87_n20713.json (relaxed set of 87 lines; rebuild with sol2edges.py) | VALID (beats the table, not the lab) |
+| $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID |
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |
 | $(8,5)$-type, $q = 5$, $r = 2$, $n = 1{,}596$ and $1{,}600$ | build_typed.py 5 2 HHDHD (and card c7 independently) | VALID |
 | $(8,5)$-type, $q = 5$, relaxed line sets, $n = 1{,}610$ | squad card r2c7 (research/squads/gqd5-r2/c7/ld23.edges) | VALID; without the hub rule diameter 6 |

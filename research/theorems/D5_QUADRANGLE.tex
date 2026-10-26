@@ -220,8 +220,9 @@ breadth-first search from every vertex (§15).
 below the lab's values (doubled-matching lifts and route-chart lifts) in
 \((10,5)\), \((11,5)\), \((12,5)\), \((14,5)\), \((15,5)\), \((16,5)\),
 and far below at \(\Delta\le 9\). At \((15,5)\) the best graph of this
-kind we built has 20,696 vertices (20,713 expected with the best relaxed
-set), short of the lab's 20,736; §14 explains which quantity limits it.
+kind we built has 20,713 vertices (relaxed set of 87 lines of
+\(Q(4,11)\)), 23 short of the lab's 20,736; §14 explains which quantity
+limits it.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1245,7 +1246,7 @@ doubled-matching lift of \(W(9)\) \\
 --- \\
 (14,5) & 14,760 & 14,812 (\(q=9\), \(r=4\)) & --- & \textbf{17,568} &
 doubled-matching lift of \(W(11)\) \\
-(15,5) & 20,496 & 20,598 (\(q=11\), \(r=3\)) & 20,696 (\(q=11\),
+(15,5) & 20,496 & 20,598 (\(q=11\), \(r=3\)) & 20,713 (\(q=11\),
 \(r=3\)) & \textbf{20,736} & route-chart lift \\
 (16,5) & 27,300 & 26,453 (\(q=11\), \(r=4\)) & --- & \textbf{33,792} &
 route-chart lift \\
@@ -1267,12 +1268,13 @@ the \(D\to H\) arcs. The lab's value needs
 bound \(q^2-q+1\) (best found: 70). Relaxed sets (§7) are not limited by
 Tallini's theorem, and Proposition 7.2 puts no limit on their number of
 pairs; counting allows up to 127 points, but the best we found has 87
-(squad card r2c2; longer tabu runs plateau at 84--87), which gives about
-20,713. So we would need relaxed sets of \(W(11)\) about a quarter
-larger than any we found, or several more freed points on every
-non-friendly arc (each one on each of the ten \(H\to H\) arcs adds 4
-vertices). Third-level routing gives such points at \(q = 5\) and \(7\)
-(§12), but we did not get it to work at \(q = 11\) in this session.
+(squad card r2c2; longer tabu runs plateau at 84--87), which gives
+20,713 (built and checked, §15). So we would need relaxed sets of
+\(W(11)\) about a quarter larger than any we found, or several more
+freed points on every non-friendly arc (each one on each of the ten
+\(H\to H\) arcs adds 4 vertices). Third-level routing gives such points
+at \(q = 5\) and \(7\) (§12), but we did not get it to work at
+\(q = 11\) in this session.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1306,8 +1308,11 @@ the same edges; hub rule checked (check\_rule.py) \\
 VALID; independent rebuild identical \\
 \((13,5)\), \(n = 11{,}621\) & graphs/d13D5\_q9\_typed\_n11621.* (json;
 rebuild with build\_typed.py) & VALID \\
+\((15,5)\)-type, \(q = 11\), \(n = 20{,}713\) &
+graphs/d15D5type\_q11\_relaxed87\_n20713.json (relaxed set of 87 lines;
+rebuild with sol2edges.py) & VALID (beats the table, not the lab) \\
 \((15,5)\)-type, \(q = 11\), \(n = 20{,}696\) & build\_typed.py 11 3
-HHHDHHD with the 70-point set & VALID (beats the table, not the lab) \\
+HHHDHHD with the 70-point set & VALID \\
 \((10,5)\)-type, \(q = 7\), \(r = 2\), \(n = 4{,}062\) & build\_typed.py
 7 2 HHDHD & VALID \\
 \((8,5)\)-type, \(q = 5\), \(r = 2\), \(n = 1{,}596\) and \(1{,}600\) &
