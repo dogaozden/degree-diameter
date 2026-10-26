@@ -145,12 +145,14 @@ def total(sig):
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
     return c0b + cov + dd, (c0b, cov, dd)
 
-HARD = None; HB = [False]; KICKF = [None]
-if os.environ.get('HARDPAIR'):
-    _t = os.environ['HARDPAIR'].split(); _a, _b = sorted((int(_t[1]), int(_t[2])))
-    _Ar, _Br = (PA, PB) if _t[0] == 'p' else (LA, LB)
-    HARD = (_t[0] == 'p', int(np.nonzero((_Ar == _a) & (_Br == _b))[0][0]))
-    print('hard pair', HARD, flush=True)
+HARD = None; HB = [False]; KICKF = [None]; HARDS = []
+if os.environ.get('HARDPAIR'):   # "p a b; l s t; ...": every listed pair must be good in every model
+    for _h in os.environ['HARDPAIR'].split(';'):
+        _t = _h.split(); _a, _b = sorted((int(_t[1]), int(_t[2])))
+        _Ar, _Br = (PA, PB) if _t[0] == 'p' else (LA, LB)
+        HARDS.append((_t[0] == 'p', int(np.nonzero((_Ar == _a) & (_Br == _b))[0][0])))
+    HARD = HARDS[0]
+    print('hard pairs', HARDS, flush=True)
 def step(sig, Sset, secs, seed, Phi=(), force=None):
     S = sorted(Sset); T = [int(sig[x]) for x in S]; inS = np.zeros(N, bool); inS[S] = True; inT = np.zeros(N, bool); inT[T] = True
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
@@ -361,7 +363,7 @@ def step(sig, Sset, secs, seed, Phi=(), force=None):
             else:
                 if not Uv[pid]: continue
                 mt = []
-            if HARD is not None and HARD == (pts_side, pid):
+            if HARD is not None and (pts_side, pid) in HARDS:
                 if not (mt + rl): return None, None
                 m.AddBoolOr(mt + rl); hard_ok[0] = True; continue
             if force is not None and force == (pts_side, pid):
@@ -498,8 +500,9 @@ def focus(sig):
     bp, bl, rp, rl = bad_ids(sig)
     allb = [(True, int(p)) for p in bp] + [(False, int(p)) for p in bl]
     side, pid = allb[rng.randrange(len(allb))]
-    HB[0] = HARD is not None and HARD in allb
-    if HB[0]: side, pid = HARD
+    hb = [h for h in HARDS if h in allb]
+    HB[0] = bool(hb)
+    if HB[0]: side, pid = hb[0]
     fl = [f for f in dict.fromkeys(geo_flags(side, pid)) if not ISDEL[f]]
     rng.shuffle(fl)
     if os.environ.get('CHEAP'):   # first-order flags ordered by how many unrouted pairs their flip alone unmixes

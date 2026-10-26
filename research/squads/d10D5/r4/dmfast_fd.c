@@ -433,10 +433,12 @@ int main(int argc, char **argv) {
     double ptarg = getenv("PTARG") ? atof(getenv("PTARG")) : 0.0; static int bla[256], blb[256]; int nbl = 0;
     long it; long covpen = relax == 2 ? (gen ? holes_count() : cover_count() + d1_count()) : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
     if (relax == 2) { fprintf(stderr, "penalty mode: coverage+D1 holes %ld, weight %ld\n", covpen, penw); if (covpen) best = 1L << 40; }
+    long bestpen = cost + penw * covpen; uint8_t *bpnu = malloc(NF); memcpy(bpnu, nu, NF); int *bpsig = malloc(sizeof(int) * Np); memcpy(bpsig, sig, sizeof(int) * Np);   /* GEN: best penalised state */
     for (it = 0; it < iters && (cost > 0 || covpen > 0); it++) {
         if ((it & 63) == 0) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); if ((ts.tv_sec - t1.tv_sec) + 1e-9 * (ts.tv_nsec - t1.tv_nsec) > secs) break; }
         double temp = T0 * pow(T1 / T0, (double)it / iters);
         if (gen && it % 20000 == 0) fprintf(stderr, "it %ld temp %.3f cost %ld holes %ld\n", it, temp, cost, covpen);
+        if (gen && cost + penw * covpen < bestpen) { bestpen = cost + penw * covpen; memcpy(bpnu, nu, NF); memcpy(bpsig, sig, sizeof(int) * Np); }
         if (swapp > 0 && (rnd() >> 11) * (1.0 / 9007199254740992.0) < swapp) {
             int p1 = rnd() % Np, p2 = rnd() % Np;
             if (ptarg > 0 && nbl && (rnd() >> 11) * (1.0 / 9007199254740992.0) < ptarg) {
@@ -512,6 +514,7 @@ int main(int argc, char **argv) {
         if (ej_cost < best) { best = ej_cost; memcpy(bestnu, nu, NF); }
     }
     printf("RESULT dmfast q %d iters %ld best %ld (of %ld opposite pairs) swaps accepted %ld\n", q, it, best, opp, nswapacc);
+    if (gen && best >= (1L << 40)) { memcpy(bestsig, bpsig, sizeof(int) * Np); memcpy(bestnu, bpnu, NF); fprintf(stderr, "GEN: no hole-free state; writing the best penalised state (%ld)\n", bestpen); }
     memcpy(sig, bestsig, sizeof(int) * Np);
     if (getenv("OUT")) {
         FILE *g = fopen(getenv("OUT"), "w");
