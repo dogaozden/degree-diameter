@@ -42,7 +42,7 @@ Goal: larger relaxed sets (each point = one more vertex at (13,5); 111 points of
 independent test of the strengthened hub rule. Cards (score): r3c1 relaxed q=9 by orbits of the spread stabiliser (66;
 orbit unions give at most 61, SAT says no 67 under two subgroups); r3c2 relaxed q=11 by orbits (87 unchanged; exact
 orbit-union bounds under prime-order subgroups, e.g. an involution class caps invariant sets at 106 < 111); r3c3 relaxed
-q=9 as a packing of pairs (pending at time of writing); r3c4 test of Proposition 7.2 with the A-hub condition only
+q=9 as a packing of pairs (66, no improvement; component annealing alone reached 55); r3c4 test of Proposition 7.2 with the A-hub condition only
 (q=5: 1,610, q=7: 4,086 valid; breaking the rule for one line gives diameter 6).
 Director's own in this round: found that the B-hub half of the hub rule is not needed (a 66-line relaxed set with 30
 pairs passed the all-pairs check although 128 slots violated it; the path through the partner's A-hub explains why),

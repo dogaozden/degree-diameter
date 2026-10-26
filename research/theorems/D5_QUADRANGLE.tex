@@ -415,9 +415,13 @@ iff \(a_i = z\), excluded. \((x,0)\) against \((0,z^\perp)\):
 orbits with \((x,0)\), \(x = (1,-1)\), give 7 points, the maximum for
 \(W(3)\); computer-checked for \(q = 3,5,7,9,11,13\) with gqlib.)
 Computer searches find much larger partial ovoids for specific \(q\)
-(§10.3): 18 (\(q=5\)), 33 (\(q=7\)), 51 (\(q=9\)), 70 (\(q=11\)). We
-know no explicit family of order \(q^2\) for \(q\) odd; Ceria, De Beule,
-Pavese and Smaldore {[}CDPS{]} construct large partial ovoids of
+(§10.3): 18 (\(q=5\)), 33 (\(q=7\)), 51 (\(q=9\)), 70 (\(q=11\)).
+\emph{Computer-checked} (squad card r2c8,
+research/squads/gqd5-r2/c8/results.md): 18 is the maximum for \(W(5)\)
+(no 19-point partial ovoid: SAT, two solvers, using the transitivity of
+\(\mathrm{PSp}(4,5)\) on non-collinear pairs), below Tallini's bound 21.
+We know no explicit family of order \(q^2\) for \(q\) odd; Ceria, De
+Beule, Pavese and Smaldore {[}CDPS{]} construct large partial ovoids of
 \(W(3,q)\) for \(q\) an odd square with \(3\nmid q\) (we did not compare
 sizes with ours).
 
@@ -894,18 +898,20 @@ the line joining a collinear pair is not in the spread. Counting lines
 gives \(|T|\le 2(q+1)(q^2+1)/(2q+1)\), i.e.~at most 86 for \(q = 9\) and
 127 for \(q = 11\). \emph{Computer-checked}: tabu searches find such
 sets of size 66 for \(q = 9\) (squad card r2c1; 30 pairs) and 87 for
-\(q = 11\) (card r2c2), against 51 and 70 for partial ovoids. Squad card
-r2c7 tested the rule independently at \(q = 5\) (five levels \(HHDHD\)
-over \(Q(4,5)\), 23 freed lines with 6 partner pairs, \(25+25\) hubs):
-with the hub rule the graph is valid (1,610 vertices, apsp), with the
-same sets and a hub assignment ignoring the rule it has diameter 6
-(research/squads/gqd5-r2/c7/). Card r3c4 tested the final form (only the
-\(\mathcal A\)-hub condition, \(\mathcal B\)-hubs placed arbitrarily,
-many partner pairs): five levels over \(Q(4,5)\) with 23 lines and 6
-pairs (1,610 vertices) and over \(Q(4,7)\) with 41 lines and 15 pairs
-(4,086 vertices) are valid, and moving the level-\(j\) slot of one
-\(\mathcal A\)-hub off the partner line gives diameter 6 in both cases
-(research/squads/gqd5-r3/c4/).
+\(q = 11\) (card r2c2), against 51 and 70 for partial ovoids. For
+\(q = 5\) the maximum is 23 (exhaustive search with the group, card
+r2c8), against the counting bound 28 and the maximum partial ovoid 18.
+Squad card r2c7 tested the rule independently at \(q = 5\) (five levels
+\(HHDHD\) over \(Q(4,5)\), 23 freed lines with 6 partner pairs,
+\(25+25\) hubs): with the hub rule the graph is valid (1,610 vertices,
+apsp), with the same sets and a hub assignment ignoring the rule it has
+diameter 6 (research/squads/gqd5-r2/c7/). Card r3c4 tested the final
+form (only the \(\mathcal A\)-hub condition, \(\mathcal B\)-hubs placed
+arbitrarily, many partner pairs): five levels over \(Q(4,5)\) with 23
+lines and 6 pairs (1,610 vertices) and over \(Q(4,7)\) with 41 lines and
+15 pairs (4,086 vertices) are valid, and moving the level-\(j\) slot of
+one \(\mathcal A\)-hub off the partner line gives diameter 6 in both
+cases (research/squads/gqd5-r3/c4/).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1155,12 +1161,19 @@ annealing matchings, hub slots and \(Y\): valid for \(c = 2,3,4,5\)
 r2c6: seven levels over \(Q(4,7)\), no hubs: 16 freed points on one arc,
 8 on each of two arcs, 4 on each of four arcs (all valid). - The
 director's annealer research/theorems/d5gq/wgr.py (targeted swaps in the
-non-friendly matchings, bad pairs counted by wgr\_eval.c on the whole
-graph with hubs but without \(Y\)): at \(q = 5\) it reaches zero bad
-pairs with 4 freed points per \(H\to H\) arc (the hub graph then fails
-(HG) because \(q-r = 2\)); at \(q = 9\) with 3 freed points per arc it
-went from 2,690 to under 200 bad pairs in 64,000 swaps (a longer run is
-in progress; §11 would gain 4 vertices per extra freed point per arc).
+non-friendly matchings and moves of hub slots; bad pairs counted by
+wgr\_eval.c on the whole graph with hubs but without \(Y\), which is
+chosen at the end): at \(q = 5\) it reaches zero bad pairs with 4 freed
+points per \(H\to H\) arc (the hub graph then fails (HG) because
+\(q-r = 2\)). At \(q = 9\), on top of the 11,636 graph of §11 with one
+extra freed point on each of the ten \(H\to H\) arcs (which would give
+11,640), three runs went from about 2,650 bad pairs to 10--16 in
+200,000--250,000 swaps and then stalled; a greedy polish with 150
+candidate moves per step did not close the last ones. (A first version
+also allowed swaps in the \(D\to D\) arc \(3\to6\); pairs between levels
+3 and 6 can then not be repaired at all, because every route through a
+third level uses only friendly arcs. The later runs keep that arc
+fixed.)
 
 \emph{Heuristic} (why this does not scale to \(q = 11\)): for a freed
 \(x\) and a random \(M\), about \(N/e\) elements of the other level
@@ -1205,11 +1218,15 @@ unequal order that approaches the lab's values at \(\Delta\le 9\).
 \subsection{14. Comparison with the 2013 table and the lab's
 values}\label{comparison-with-the-2013-table-and-the-labs-values}}
 
-``Theorem family'' = Corollaries 10.1--10.3 (explicit sets and hub
+``Theorem family'' = Corollaries 10.1--10.4 (explicit sets and hub
 graphs; research/theorems/d5gq/family\_table.py,
-family\_table\_out.txt). ``Computer'' = the best graph of §§8--11 type
-that we built and checked by all-pairs BFS. ``Lab'' = the lab's value
-before this note (README, research/RESULTS.md).
+family\_table\_out.txt); each of these six values was also built and
+checked by all-pairs BFS with independent scripts
+(research/theorems/d5gq/family\_check.py, family\_check\_even.py,
+written by the referee agent; output family\_check\_out.txt).
+``Computer'' = the best graph of §§8--11 type that we built and checked
+by all-pairs BFS. ``Lab'' = the lab's value before this note (README,
+research/RESULTS.md).
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1364}}
@@ -1269,12 +1286,14 @@ bound \(q^2-q+1\) (best found: 70). Relaxed sets (§7) are not limited by
 Tallini's theorem, and Proposition 7.2 puts no limit on their number of
 pairs; counting allows up to 127 points, but the best we found has 87
 (squad card r2c2; longer tabu runs plateau at 84--87), which gives
-20,713 (built and checked, §15). So we would need relaxed sets of
-\(W(11)\) about a quarter larger than any we found, or several more
-freed points on every non-friendly arc (each one on each of the ten
-\(H\to H\) arcs adds 4 vertices). Third-level routing gives such points
-at \(q = 5\) and \(7\) (§12), but we did not get it to work at
-\(q = 11\) in this session.
+20,713 (built and checked, §15). At \(q = 5\) the true maximum (23) is
+82\% of the counting bound; the same ratio at \(q = 11\) would give
+about 104, still below 111. So we would need relaxed sets of \(W(11)\)
+about a quarter larger than any we found, or several more freed points
+on every non-friendly arc (each one on each of the ten \(H\to H\) arcs
+adds 4 vertices). Third-level routing gives such points at \(q = 5\) and
+\(7\) (§12), but we did not get it to work at \(q = 11\) in this
+session.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1323,6 +1342,10 @@ hub rule diameter 6 \\
 relaxed sets, A-hub rule only, \(q = 5, 7\), \(n = 1{,}610\) and
 \(4{,}086\) & squad card r3c4 (research/squads/gqd5-r3/c4/) & VALID;
 rule broken for one line: diameter 6 \\
+explicit families (Cor. 10.1--10.4): \((10,5)\) 4,044, \((11,5)\) 6,090,
+\((12,5)\) 8,430, \((13,5)\) 11,552, \((14,5)\) 14,812, \((15,5)\)
+20,598 & family\_check.py, family\_check\_even.py
+(family\_check\_out.txt) & all VALID \\
 32 level graphs, \(q\le 5\) & test\_basic.py & all diameter 5 (Theorem
 A) \\
 Theorem E vs brute force & test\_basic.py & agree on 720 transitions \\

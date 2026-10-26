@@ -693,11 +693,14 @@ $i$ with two matching edges, e.g. $(x,j)\to(M_{j\to i}(x),i)\to(z,i)\to(M_{i\to 
   research/squads/gqd5-r2/c5/).
 - r2c6: seven levels over $Q(4,7)$, no hubs: 16 freed points on one arc, 8 on each of two arcs, 4 on each of four arcs
   (all valid).
-- The director's annealer research/theorems/d5gq/wgr.py (targeted swaps in the non-friendly matchings, bad pairs counted
-  by wgr_eval.c on the whole graph with hubs but without $Y$): at $q = 5$ it reaches zero bad pairs with 4 freed points
-  per $H\to H$ arc (the hub graph then fails (HG) because $q-r = 2$); at $q = 9$ with 3 freed points per arc it went from
-  2,690 to under 200 bad pairs in 64,000 swaps (a longer run is in progress; §11 would gain 4 vertices per extra freed
-  point per arc).
+- The director's annealer research/theorems/d5gq/wgr.py (targeted swaps in the non-friendly matchings and moves of
+  hub slots; bad pairs counted by wgr_eval.c on the whole graph with hubs but without $Y$, which is chosen at the end):
+  at $q = 5$ it reaches zero bad pairs with 4 freed points per $H\to H$ arc (the hub graph then fails (HG) because
+  $q-r = 2$). At $q = 9$, on top of the 11,636 graph of §11 with one extra freed point on each of the ten $H\to H$ arcs
+  (which would give 11,640), three runs went from about 2,650 bad pairs to 10–16 in 200,000–250,000 swaps and then
+  stalled; a greedy polish with 150 candidate moves per step did not close the last ones. (A first version also allowed
+  swaps in the $D\to D$ arc $3\to6$; pairs between levels 3 and 6 can then not be repaired at all, because every route
+  through a third level uses only friendly arcs. The later runs keep that arc fixed.)
 
 *Heuristic* (why this does not scale to $q = 11$): for a freed $x$ and a random $M$, about $N/e$ elements of the other
 level violate (E2). A third level supplies about $(q+1)^2$ length-4 routes per freed element and per route type, so the

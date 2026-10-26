@@ -243,6 +243,33 @@ def main():
             print('saved state on signal'); sys.stdout.flush(); sys.exit(1)
     signal.signal(signal.SIGTERM, save_state)
     cost, bad = evaluate(); print('initial bad pairs', cost); sys.stdout.flush()
+    if cost and cost < 200:
+        import collections
+        bys = collections.Counter(int(b[0]) for b in bad)
+        for si, c in bys.most_common(10):
+            v = int(src[si]); print('  source level %d element %d -> target level %d: %d bad' % (v // per, v % per, tlev[si], c))
+    if os.environ.get('POLISH'):
+        # greedy: for a random bad pair, try many candidate moves and keep the best strictly improving one
+        for it in range(iters):
+            if cost == 0: break
+            k = rng.randrange(len(bad)); s_idx, vtx = int(bad[k, 0]), int(bad[k, 1])
+            best = None
+            for _ in range(int(os.environ.get('POLISH'))):
+                if rng.random() < 0.3:
+                    hm = hub_move(s_idx, vtx)
+                    if hm is None: continue
+                    apply_hub(hm); c2, b2 = evaluate(); apply_hub(hm)
+                    if best is None or c2 < best[0]: best = (c2, 'h', hm)
+                else:
+                    mv = targeted_move(s_idx, vtx)
+                    if mv is None: continue
+                    apply_swap(mv); c2, b2 = evaluate(); apply_swap(mv)
+                    if best is None or c2 < best[0]: best = (c2, 's', mv)
+            if best is not None and best[0] <= cost:
+                (apply_hub if best[1] == 'h' else apply_swap)(best[2])
+                cost, bad = evaluate()
+            print('polish it %d bad %d' % (it, cost)); sys.stdout.flush()
+        iters = 0
     Ttemp = 2.0; t0 = time.time()
     for it in range(iters):
         if cost == 0: break
