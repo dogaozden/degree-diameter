@@ -64,3 +64,17 @@ Logs: `research/structured/runs/d7D10_r3_*.log`. ORBW=3 gave the lowest floor of
 Round 2 had the plain sl 19 × Z169 at 5 after 41 min (seed 11), so the floor is a seed effect at about 5–9.
 
 Batch 2 (started after the commit above): sl 19 × Z169 with ORBW=3 (seeds 51, 52), ORBW=2 (seed 53), pgl 19 × Z169 with ORBW=3 (seed 54), 6600 s each.
+
+## Round 3, batch 2 results (6600 s each, no solve)
+
+| group | N | options | best cost |
+|---|---|---|---|
+| sl 19 × Z169 | 1,155,960 | seed 51, ORBW=3 | 6 |
+| sl 19 × Z169 | 1,155,960 | seed 52, ORBW=3 | 9 |
+| sl 19 × Z169 | 1,155,960 | seed 53, ORBW=2 | 3 |
+| pgl 19 × Z169 | 1,155,960 | seed 54, ORBW=3 | 6 |
+
+ORBW=2 (seed 53) gave the lowest floor of the whole round (3 uncovered orbit-cells in the raw count, still not a solve).
+Logs: `research/structured/runs/d7D10_r3_*_s5*.log`.
+
+Batch 3 (clock was 07:00 UTC, about 5 h into the session): sl 19 × Z169 with ORBW=2, seeds 61–64, 3300 s each (last batch of this session).
