@@ -4,3 +4,39 @@ ecc from B = 5 unreached 0
 n = 2756 edges = 12402 max degree = 9 min degree = 9 duplicate edges = 0
 edge list sha256 = 72b6de0c53392bc811262e940d92e5e4c4ef1f6947b301c88050d90c0a7cd5a7
 VALID d=9 D=5 group=meta 53 26 16 x Z_1 N=1378 vertices=2756
+== d4D11_sl_11_7_orb3_d09 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 18480 edges = 36960 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 3c96a3026b6a80101ad0f243a49bf211b2d3e33aea3fc70a22b9d1db2cebb203
+VALID d=4 D=11 group=sl 11 x Z_7 N=9240 vertices=18480
+== d4D12_sl_11_19_orb3_d09 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 50160 edges = 100320 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 43272e86ab29c20491ead7708ac96d9d28fd2f5a1ad6265c475f608a5b670ab6
+VALID d=4 D=12 group=sl 11 x Z_19 N=25080 vertices=50160
+== d5D11_psl_19_37_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 253080 edges = 632700 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 43edc2784dd2ab899af72251ca2c0775a01c13c6d3136f30b6bed5402c3ad839
+VALID d=5 D=11 group=psl 19 x Z_37 N=126540 vertices=253080
+== d5D12_psl_97_1_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 912576 edges = 2281440 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 401a596197689b21a455cd029af7bb4a909ee5d055126d8a4695cd80e5a9c4a9
+VALID d=5 D=12 group=psl 97 x Z_1 N=456288 vertices=912576
+== d6D11_psl_47_19_orb3f0_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 1971744 edges = 5915232 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 609fb44141c502fdf9df9035bcdebba11440f916517992071f2a901decd79a4a
+VALID d=6 D=11 group=psl 47 x Z_19 N=985872 vertices=1971744
+== d9D5_meta_197_7_104_s40164 (origin/claude/hunt-d5-graphs-lh5vuj, 09:17 PT)
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 2758 edges = 12411 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = b7c10d626dd47e0dcb9eaa46c538957a2fa73557c44878c7396553bf2fca735e
+VALID d=9 D=5 group=meta 197 7 104 x Z_1 N=1379 vertices=2758

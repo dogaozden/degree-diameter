@@ -216,3 +216,10 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 25 10:14 PT (harvest): (9,8) 546,720 (was 540,360), sl 16 poly x^4+x+1 n 67; claude/raise-d9d8-haar-round2-q5t083.
 
 - Oct 26 08:25 PT (harvest): (9,5) 2,756 (was 2,662), meta 53 26 16 n 1; claude/hunt-d5-graphs-lh5vuj.
+
+- Oct 26 09:17 PT (harvest): (4,11) 18,480 (was 0), sl 11 n 7; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (4,12) 50,160 (was 0), sl 11 n 19; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (5,11) 253,080 (was 0), psl 19 n 37; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (5,12) 912,576 (was 0), psl 97 n 1; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (6,11) 1,971,744 (was 0), psl 47 n 19; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (9,5) 2,758 (was 2,756), meta 197 7 104 n 1; claude/hunt-d5-graphs-lh5vuj.
