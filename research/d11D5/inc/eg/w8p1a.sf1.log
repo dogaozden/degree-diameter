@@ -1,0 +1,33 @@
+n=586 dg=9 parity-candidate pairs 302415 (walks 2826520), active 263486, structural 0, violated 32
+t=0 SIGFIX pass 1 swap 4 29 -> structural 0 violated 31
+t=0 SIGFIX pass 2 swap 63 14 -> structural 0 violated 30
+t=0 SIGFIX pass 3 swap 76 320 -> structural 0 violated 29
+t=0 SIGFIX pass 4 swap 78 491 -> structural 0 violated 28
+t=0 SIGFIX pass 5 swap 107 444 -> structural 0 violated 27
+t=0 SIGFIX pass 6 swap 121 337 -> structural 0 violated 26
+t=0 SIGFIX pass 7 swap 123 575 -> structural 0 violated 25
+t=1 SIGFIX pass 8 swap 450 236 -> structural 0 violated 24
+t=1 SIGFIX pass 9 swap 217 177 -> structural 0 violated 23
+t=2 SIGFIX pass 10 swap 223 378 -> structural 0 violated 22
+t=3 SIGFIX pass 11 swap 498 420 -> structural 0 violated 21
+t=4 SIGFIX pass 12 swap 273 385 -> structural 0 violated 20
+t=4 SIGFIX pass 13 swap 326 539 -> structural 0 violated 19
+t=5 SIGFIX pass 14 swap 413 193 -> structural 0 violated 18
+t=7 SIGFIX pass 15 swap 417 497 -> structural 0 violated 17
+t=7 SIGFIX pass 16 swap 78 44 -> structural 0 violated 16
+t=8 SIGFIX pass 17 swap 76 59 -> structural 0 violated 15
+t=9 SIGFIX pass 18 swap 513 265 -> structural 0 violated 14
+t=10 SIGFIX pass 19 swap 221 287 -> structural 0 violated 13
+t=11 SIGFIX pass 20 swap 83 197 -> structural 0 violated 12
+t=11 SIGFIX pass 21 swap 578 509 -> structural 0 violated 11
+t=12 SIGFIX pass 22 swap 387 398 -> structural 0 violated 10
+t=13 SIGFIX pass 23 swap 243 3 -> structural 0 violated 9
+t=13 SIGFIX pass 24 swap 420 517 -> structural 0 violated 8
+t=14 SIGFIX pass 25 swap 236 11 -> structural 0 violated 7
+t=16 SIGFIX pass 26 swap 508 160 -> structural 0 violated 6
+t=17 SIGFIX pass 27 swap 290 6 -> structural 0 violated 5
+t=18 SIGFIX pass 28 swap 350 372 -> structural 0 violated 4
+t=19 SIGFIX pass 29 swap 279 285 -> structural 0 violated 3
+t=21 SIGFIX pass 30 swap 281 553 -> structural 0 violated 2
+SIGFIX pass 31: no improving swap (violated 2)
+RESULT best=2 structural=0 violated=2 iters=0

@@ -1,0 +1,8 @@
+SA -> 32
+SA2 -> 16
+structural 0: wq/run/W9.struct.in
+RESULT best=0 structural=0 violated=0 iters=56913
+lift vertices 9852, cost 0, hot base vertices 0 (eval 0.0070s)
+n=9852 edges=59112 degree min=12 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=9852
+403909c2f451e6be12dbdcaca0a3821934532775e7bc85677d6dac4cb6f3ff64  wq/run/W9.lift.edges

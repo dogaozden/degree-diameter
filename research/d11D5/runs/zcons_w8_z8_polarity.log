@@ -1,0 +1,7 @@
+base V=1170 E=6435 maxdeg=11 vars=5265 mode=1 K=4 (lift order 9360)
+groups=5475600 unreached(t,coset)=0 FATAL(one class)=0 [same side 0, opposite 0] always-ok=1049360 equations=1181440 OR-constraints=1503840 big=1740960
+INCONSISTENT after 423 equations (rank 419)
+contradiction uses 3 equations:
+  s=824 t=1004 coset=3 dist=4 rhs=1 vars: 2157 3108 4443 3107
+  s=61 t=80 coset=3 dist=4 rhs=1 vars: 143 3108 4443 3106
+  s=425 t=174 coset=3 dist=4 rhs=1 vars: 2157 143 3106 3107

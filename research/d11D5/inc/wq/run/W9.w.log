@@ -1,0 +1,18 @@
+n=821 dg=10 cost=16 (check 16) hot points=11 hot vertices=12
+t=0 ev=0 acc=0 bumps=0 cur_true=16 cur_w=16 best=16 nfail=16 hotp=11 maxW=1
+NEW BEST true=14 t=25 ev=8343 bumps=8 w=64
+t=30 ev=10019 acc=34 bumps=11 cur_true=20 cur_w=104 best=14 nfail=20 hotp=14 maxW=12
+NEW BEST true=12 t=35 ev=11689 bumps=11 w=78
+NEW BEST true=10 t=35 ev=11757 bumps=11 w=76
+NEW BEST true=8 t=36 ev=11918 bumps=11 w=74
+NEW BEST true=6 t=42 ev=14116 bumps=14 w=90
+t=60 ev=20170 acc=60 bumps=22 cur_true=12 cur_w=118 best=6 nfail=12 hotp=10 maxW=23
+NEW BEST true=4 t=69 ev=23258 bumps=23 w=96
+t=90 ev=30460 acc=122 bumps=27 cur_true=54 cur_w=90 best=4 nfail=54 hotp=37 maxW=26
+t=120 ev=40649 acc=171 bumps=32 cur_true=10 cur_w=20 best=4 nfail=10 hotp=9 maxW=26
+t=150 ev=50846 acc=200 bumps=42 cur_true=8 cur_w=22 best=4 nfail=8 hotp=8 maxW=26
+NEW BEST true=2 t=165 ev=55844 bumps=47 w=14
+NEW BEST true=0 t=168 ev=57018 bumps=49 w=0
+FAIL0 reached t=168 ev=57018 bumps=49
+RESULT best=0 cur_true=0 ev=57018 acc=212 bumps=49 maxW=26
+best state saved to wq/run/W9.w.in (true cost 0)

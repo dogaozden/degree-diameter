@@ -1,0 +1,10 @@
+n=586 dg=9 K=6 files=6 shared_base=1
+  replica 0 start /home/user/degree-diameter/research/d11D5/plus/best_u602.in cost=2
+  replica 1 start /home/user/degree-diameter/research/d11D5/plus/best_v701.in cost=2
+  replica 2 start /home/user/degree-diameter/research/d11D5/plus/best_v702.in cost=2
+  replica 3 start /home/user/degree-diameter/research/d11D5/plus/best_r301.in cost=4
+  replica 4 start /home/user/degree-diameter/research/d11D5/plus/best_r302.in cost=4
+  replica 5 start /home/user/degree-diameter/research/d11D5/plus/best_w801.in cost=8
+t=993.3 G=0 best=2 (start) slot=0 T=0.30
+status t=45 G=20448 slots: [T=0.30 c=2 acc=0.027] [T=0.55 c=2 acc=0.027] [T=0.99 c=36 acc=0.075] [T=1.81 c=104 acc=0.141] [T=3.30 c=314 acc=0.259] [T=6.00 c=720 acc=0.327] swaps: 0.94 0.02 0.18 0.00 0.06 cross elig=3060 tried=1543 acc=543 best=2
+RESULT best=2 G=20448 t=45.0
