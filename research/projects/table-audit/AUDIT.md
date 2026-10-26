@@ -36,8 +36,10 @@ Of the 112 cells (counts from cells.csv):
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
   lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 23 Loz cells as Haar graphs of metacyclic
   groups (§3).
-- **6 do not check out as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q
-  (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
+- **6 INVALID as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q (PhD thesis,
+  Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
+  checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
+  at the table's q = 7..13 (§7).
 - **18 have no traceable construction**: 16 Loz cells (data lost: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)),
   and (13,8), (16,5).
 <!-- /SUMMARY -->

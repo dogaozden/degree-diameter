@@ -5,8 +5,9 @@ rows = list(csv.DictReader(open(os.path.join(HERE, 'cells.csv'))))
 cell = lambda r: f"({r['d']},{r['D']})"
 yes = [r for r in rows if r['rebuilt'] == 'yes']
 order = [r for r in rows if r['rebuilt'] == 'order']
-d8 = [r for r in rows if r['flag'].startswith('does not check out')]
-none = [r for r in rows if r['rebuilt'] == 'no' and not r['flag'].startswith('does not check out')]
+bad = lambda r: r['flag'].startswith('does not check out') or r['flag'].startswith('INVALID as read')
+d8 = [r for r in rows if bad(r)]
+none = [r for r in rows if r['rebuilt'] == 'no' and not bad(r)]
 loz_o = [r for r in order if r['holder'].startswith('Loz')]
 loz_n = [r for r in none if r['holder'].startswith('Loz')]
 pend = [r for r in rows if r['check'].startswith('PENDING')]
@@ -19,8 +20,10 @@ summary = f"""Of the 112 cells (counts from cells.csv{'; checks still running wh
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
   lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and {len(loz_o)} Loz cells as Haar graphs of metacyclic
   groups (§3).
-- **{len(d8)} do not check out as read**: {', '.join(cell(r) for r in d8)}. Their values are Gómez's ΩH_q
-  (PhD thesis, Barcelona 1986, §2.9.3), but that construction, as I read it, has diameter 9, not 8 (§4).
+- **{len(d8)} INVALID as read**: {', '.join(cell(r) for r in d8)}. Their values are Gómez's ΩH_q (PhD thesis,
+  Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
+  checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
+  at the table's q = 7..13 (§7).
 - **{len(none)} have no traceable construction**: {len(loz_n)} Loz cells (data lost: {', '.join(cell(r) for r in loz_n)}),
   and {', '.join(cell(r) for r in none if not r['holder'].startswith('Loz'))}."""
 grp = lambda r: re.search(r'Haar graph of meta (\d+) (\d+) \d+', r['construction'])

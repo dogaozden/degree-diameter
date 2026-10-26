@@ -125,6 +125,41 @@ for d, D in LOZ:
                      'thesis restricted, data page gone', construction='no voltages, groups or base graphs published',
         rebuilt='no', check='', flag='no traceable construction (data lost)', notes='')
 
+OMEGA2 = ('round 2: with a free relabelling of each copy (not in the thesis) Omega H(q) reaches diameter 8 at q = 2 and 3 '
+          '(omega/NOTES.md, checks/omega_labelled.txt); at q = 4, 5 no labelling was found (G-equivariant annealing, squad '
+          'table-audit-2-r1); a counting bound does not exclude labellings at any q (union bound / n = 4.3 at q = 7, 3.7 at q = 9)')
+ROUND2 = {
+    '10,8': dict(check='as read, diameter 9 (checks/omega_D8.txt); witness pair d(980400, 20073) = 9 (checks/witness_omega7_thesis.txt)',
+                 flag='INVALID as read (witness pair saved); no labelling known that gives diameter 8', notes=OMEGA2),
+    '13,8': dict(notes='round 2: in the table since the first wiki revision (17 Jan 2012) in DGQ green; not bold in Perez-Roses 2012 '
+                       'Table 5.1, so not from Loz\'s voltage search; Perez-Roses cites DGQ "On large bipartite graphs" as an '
+                       'unpublished manuscript (2011); 5,314,680 = 5*(13,7) = 15|H(11)|, but Omega H(11) has degree 14 '
+                       '(lit/LITERATURE2.md)'),
+    '16,5': dict(notes='round 2: in the first wiki revision (2012), DGQ green, not from Loz\'s search (Perez-Roses 2012); '
+                       'above every (2j+1)|GQ(q)| at degree 16 (best 26,352); Delorme-Gomez 2002 (EJC) not reachable from here '
+                       '(lit/LITERATURE2.md)'),
+    '3,7': dict(notes='round 2: optimal among vertex-transitive graphs: every bipartite cubic vertex-transitive graph on 169..248 '
+                      'vertices (1,825, census of Potocnik-Spiga-Verret) has diameter >= 8 (checks/cvt_census.txt); upper bound '
+                      '248 = Moore - 6 (Feria-Puron-Pineda-Villavicencio 2012); no exhaustive search or later improvement found'),
+    '3,9': dict(notes='round 2: the largest bipartite cubic vertex-transitive graph of diameter <= 9 has 506 vertices (census, '
+                      'stored diameters <= 11 rechecked, checks/cvt_census.txt); upper bound 1,016 = Moore - 6 (FPV 2012); bold '
+                      '(Loz project) in Perez-Roses 2012 Table 5.1; no later improvement found'),
+    '4,8': dict(notes='round 2: upper bound 6,554 = Moore - 6 (FPV 2012); bold (Loz project) in Perez-Roses 2012; no exhaustive '
+                      'search or later improvement found'),
+    '4,9': dict(notes='round 2: upper bound 19,676 = Moore - 6 (FPV 2012); bold (Loz project) in Perez-Roses 2012; no exhaustive '
+                      'search or later improvement found'),
+    '6,5': dict(notes='round 2: upper bound 1,556 = Moore - 6 (FPV 2012); bold (Loz project) in Perez-Roses 2012; no exhaustive '
+                      'search or later improvement found'),
+}
+for d in (11, 12, 14, 15, 16):
+    ROUND2[f'{d},8'] = dict(flag='INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for '
+                                 'q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known '
+                                 'that gives diameter 8', notes=OMEGA2)
+for k in ('3,9', '4,8', '4,9', '4,10', '5,5', '5,7', '5,8', '5,9', '5,10', '6,5', '6,8', '6,9', '6,10', '7,5', '7,8', '7,9', '7,10',
+          '8,5', '8,8', '8,9', '8,10', '9,5', '9,8', '9,9', '9,10') + tuple(f'{d},{D}' for d in range(10, 17) for D in (9, 10)):
+    if k not in ROUND2:
+        ROUND2[k] = dict(notes='round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there')
+
 if __name__ == '__main__':
     extra = json.load(open(sys.argv[1])) if len(sys.argv) > 1 else {}
     for k, v in extra.items():
@@ -134,6 +169,14 @@ if __name__ == '__main__':
             continue
         cur.update(v)
     assert len(R) == 112, len(R)
+    # round 2 (table-audit-2, 2026-10-26): notes appended after the merge, flags overridden where stated
+    for k, v in ROUND2.items():
+        cur = R[k]
+        if 'notes' in v:
+            cur['notes'] = (cur.get('notes', '') + '; ' + v['notes']).lstrip('; ')
+        for f in ('flag', 'check', 'source', 'construction', 'rebuilt'):
+            if f in v:
+                cur[f] = v[f]
     import re
     for k, v in R.items():          # a check whose log is missing or has no VALID line is not claimed
         for log in re.findall(r'checks/([\w.]+\.txt)', v.get('check', '')):

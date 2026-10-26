@@ -25,8 +25,8 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (5,5) | 336 | Loz | order | build_haar2.py + apsp.c VALID | 354 | holder's construction lost; order reproduced |
 | (5,6) | 2,730 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (5,7) | 3,110 | Loz | order | build_haar2.py + apsp.c VALID | 3,120 | holder's construction lost; order reproduced |
-| (5,8) | 9,234 | Loz | order | build_haar2.py + apsp.c VALID | 9,576 | holder's construction lost; order reproduced |
-| (5,9) | 27,936 | Loz | order | build_haar2.py + apsp.c VALID | 28,560 | holder's construction lost; order reproduced |
+| (5,8) | 9,234 | Loz | order | build_haar2.py + apsp.c VALID | 9,760 | holder's construction lost; order reproduced |
+| (5,9) | 27,936 | Loz | order | build_haar2.py + apsp.c VALID | 29,540 | holder's construction lost; order reproduced |
 | (5,10) | 90,068 | Loz | order | build_haar2.py + apsp.c VALID | 95,472 | holder's construction lost; order reproduced |
 | (6,3) | 62 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (6,4) | 312 | bipartite Moore graph | yes | apsp.c VALID |  |  |
@@ -40,7 +40,7 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (7,4) | 346 | Delorme-Farhi duplication | yes | apsp.c VALID | 359 |  |
 | (7,5) | 1,134 | Loz | order | build_haar2.py + apsp.c VALID | 1,152 | holder's construction lost; order reproduced |
 | (7,6) | 8,992 | Delorme-Farhi duplication | yes | apsp.c VALID | 9,592 |  |
-| (7,7) | 23,436 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 23,580 |  |
+| (7,7) | 23,436 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 23,598 |  |
 | (7,8) | 80,940 | Loz | order | build_haar2.py + apsp.c VALID | 95,760 | holder's construction lost; order reproduced |
 | (7,9) | 400,160 | Loz | order | build_haar2.py + apsp_mt.c VALID | 462,840 | holder's construction lost; order reproduced |
 | (7,10) | 1,987,380 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 2,237,760 | holder's construction lost; order reproduced |
@@ -50,13 +50,13 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (8,6) | 39,216 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (8,7) | 40,586 | Delorme, Gomez, Quisquater | yes | apsp.c VALID | 43,344 | attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9 |
 | (8,8) | 201,480 | Loz | order | build_haar2.py + apsp_mt.c VALID | 239,904 | holder's construction lost; order reproduced |
-| (8,9) | 1,091,232 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 1,326,960 | holder's construction lost; order reproduced |
+| (8,9) | 1,091,232 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 1,341,600 | holder's construction lost; order reproduced |
 | (8,10) | 6,927,210 | Loz | no |  | 7,818,096 | no traceable construction (data lost) |
 | (9,3) | 146 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (9,4) | 1,170 | bipartite Moore graph | yes | apsp.c VALID |  |  |
-| (9,5) | 2,496 | Loz | order | build_haar2.py + apsp.c VALID | 2,662 | holder's construction lost; order reproduced |
+| (9,5) | 2,496 | Loz | order | build_haar2.py + apsp.c VALID | 2,758 | holder's construction lost; order reproduced |
 | (9,6) | 74,898 | bipartite Moore graph | yes | apsp.c VALID |  |  |
-| (9,7) | 117,648 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 118,224 |  |
+| (9,7) | 117,648 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 118,238 |  |
 | (9,8) | 449,480 | Loz | order | build_haar2.py + apsp_mt.c VALID | 540,360 | holder's construction lost; order reproduced |
 | (9,9) | 2,961,536 | Loz | order | build_haar2.py + meta_haar_check.c VALID, two-BFS | 3,499,776 | holder's construction lost; order reproduced |
 | (9,10) | 20,017,260 | Loz | no |  | 23,975,280 | no traceable construction (data lost) |
@@ -64,31 +64,31 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (10,4) | 1,640 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (10,5) | 4,000 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 4,800 |  |
 | (10,6) | 132,860 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
-| (10,7) | 224,694 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 225,128 |  |
-| (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
+| (10,7) | 224,694 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 225,152 |  |
+| (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | INVALID as read (witness pair saved); no labelling known that gives diameter 8 |
 | (10,9) | 7,057,400 | Loz | no |  | 8,003,856 | no traceable construction (data lost) |
 | (10,10) | 50,331,156 | Loz | no |  | 60,141,120 | no traceable construction (data lost) |
 | (11,3) | 190 | Feria-Puron-Miller-Pineda-Villavicencio; Araujo-Pardo-Lopez | yes | apsp.c VALID on all three Phi_95 and on R_9 | 192 |  |
 | (11,4) | 1,734 | Delorme-Farhi duplication | yes | apsp.c VALID | 1,782 |  |
 | (11,5) | 5,850 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 7,020 |  |
 | (11,6) | 142,464 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 148,944 |  |
-| (11,7) | 398,580 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 407,162 |  |
-| (11,8) | 2,246,940 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 2,258,520 | does not check out as read: diameter >= 9 |
+| (11,7) | 398,580 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 413,180 |  |
+| (11,8) | 2,246,940 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 2,258,520 | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (11,9) | 15,200,448 | Loz | no |  | 16,792,080 | no traceable construction (data lost) |
-| (11,10) | 130,592,354 | Loz | no |  |  | no traceable construction (data lost) |
+| (11,10) | 130,592,354 | Loz | no |  | 148,729,680 | no traceable construction (data lost) |
 | (12,3) | 266 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (12,4) | 2,928 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (12,5) | 8,200 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 9,840 |  |
 | (12,6) | 354,312 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
-| (12,7) | 664,300 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 680,068 |  |
-| (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
+| (12,7) | 664,300 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 693,500 |  |
+| (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (12,9) | 30,001,152 | Loz | no |  | 34,026,720 | no traceable construction (data lost) |
 | (12,10) | 300,383,050 | Loz | no |  | 325,832,976 | no traceable construction (data lost) |
 | (13,3) | 274 | Araujo-Pardo-Lopez | yes | apsp.c VALID | 276 |  |
 | (13,4) | 3,064 | Delorme-Farhi duplication | yes | apsp.c VALID | 3,146 |  |
-| (13,5) | 11,480 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 11,486 |  |
+| (13,5) | 11,480 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 11,700 |  |
 | (13,6) | 374,452 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 388,972 |  |
-| (13,7) | 1,062,936 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,064,448 |  |
+| (13,7) | 1,062,936 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,064,472 |  |
 | (13,8) | 5,314,680 | Delorme, Gomez, Quisquater | no |  | 6,999,552 | no traceable construction |
 | (13,9) | 50,990,610 | Loz | no |  | 67,742,688 | no traceable construction (data lost) |
 | (13,10) | 617,330,936 | Loz | no |  | 677,714,400 | no traceable construction (data lost) |
@@ -96,23 +96,23 @@ rebuilt: **yes** = the holder's construction (or the holder's own graph file) re
 | (14,4) | 4,760 | bipartite Moore graph | yes | apsp.c VALID |  |  |
 | (14,5) | 14,760 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 17,568 |  |
 | (14,6) | 804,468 | bipartite Moore graph | yes | apsp_mt.c VALID |  |  |
-| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,774,584 |  |
-| (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
+| (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 1,789,588 |  |
+| (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (14,9) | 95,087,738 | Loz | no |  | 116,068,656 | no traceable construction (data lost) |
 | (14,10) | 1,213,477,190 | Loz | no |  | 1,326,627,120 | no traceable construction (data lost) |
 | (15,3) | 374 | Araujo-Pardo-Lopez | yes | apsp.c VALID | 376 |  |
 | (15,4) | 4,946 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,070 |  |
 | (15,5) | 20,496 | Delorme, Gomez, Quisquater | order | apsp.c VALID | 20,736 |  |
 | (15,6) | 842,048 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 870,440 |  |
-| (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 2,484,720 |  |
-| (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 18,128,880 | does not check out as read: diameter >= 9 |
+| (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 2,501,491 |  |
+| (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | no | as read, diameter 9 | 18,128,880 | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (15,9) | 168,016,334 | Loz | no |  | 208,029,120 | no traceable construction (data lost) |
-| (15,10) | 2,300,326,510 | Loz | no |  |  | no traceable construction (data lost) |
+| (15,10) | 2,300,326,510 | Loz | no |  | 2,467,618,800 | no traceable construction (data lost) |
 | (16,3) | 394 | Delorme-Farhi duplication | order | apsp.c VALID | 396 |  |
 | (16,4) | 5,134 | Delorme-Farhi duplication | yes | apsp.c VALID | 5,440 |  |
 | (16,5) | 27,300 | Delorme, Gomez, Quisquater | no |  | 33,792 | no traceable construction |
 | (16,6) | 884,062 | Delorme-Farhi duplication | yes | apsp_mt.c VALID | 940,846 |  |
-| (16,7) | 4,022,340 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID |  |  |
-| (16,8) | 36,201,060 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | does not check out as read: diameter >= 9 |
+| (16,7) | 4,022,340 | Delorme, Gomez, Quisquater | order | apsp_orb.c VALID | 4,052,108 |  |
+| (16,8) | 36,201,060 | Delorme, Gomez, Quisquater | no | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (16,9) | 288,939,118 | Loz | no |  | 337,394,400 | no traceable construction (data lost) |
-| (16,10) | 4,119,507,330 | Loz | no |  |  | no traceable construction (data lost) |
+| (16,10) | 4,119,507,330 | Loz | no |  | 4,220,872,800 | no traceable construction (data lost) |
