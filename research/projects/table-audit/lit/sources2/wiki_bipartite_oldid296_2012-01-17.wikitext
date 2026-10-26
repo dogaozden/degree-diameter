@@ -1,0 +1,838 @@
+==Introduction==
+The '''degree/diameter problem for bipartite graphs''' can be stated as follows:
+
+''Given natural numbers ''d'' and ''k'', find the largest possible number ''N<sup>b</sup>(d,k)'' of vertices in a bipartite graph of maximum degree ''d'' and diameter ''k''.''
+
+An upper bound for ''N<sup>b</sup>(d,k)'' is given by the so-called ''bipartite Moore bound'' ''M<sup>b</sup>(d,k)=2((d-1)<sup>k</sup>-2)(d-2)<sup>-1</sup>''. Bipartite ''(d,k)''-graphs whose order attains the bipartite Moore bound are called ''bipartite Moore graphs''.
+
+Bipartite Moore graphs have proved to be very rare. Feit and Higman, and also independently Singleton, proved that such graphs exist only when the diameter is 2,3,4 or 6. In the cases when the diameter is 3, 4 or 6, they have been constructed only when  ''d-1'' is a prime power.
+
+Therefore, in attempting to settle the values of ''N<sup>b</sup>(d,k)'', research activities in this problem have follow the following two directions:
+
+*Increasing the lower bounds for ''N<sup>b</sup>(d,k)'' by constructing ever larger graphs.
+
+* Lowering and/or setting upper bounds for ''N<sup>b</sup>(d,k)'' by proving the non-existence of graphs
+whose order is close to the bipartite Moore bounds ''M<sup>b</sup>(d,k)=2((d-1)<sup>k</sup>-1)(d-2)<sup>-1</sup>''.
+
+==Increasing the lower bounds for ''N<sup>b</sup>(d,k)''==
+In recent years there has not been much activity in the constructions of large bipartite graphs.  This may be, in part, because there was not an online table showing the latest constructions. In this direction Charles Delorme (in some cases collaborating with Bond and G&oacute;mez-Mart&iacute;) provided some large bipartite graphs by using graph compounding, the concept of partial Cayley graph, and other techniques. 
+
+Now, with the release of this online table (see below), we expect to stimulate further research on this area.
+
+Below is the table of the largest known [http://en.wikipedia.org/wiki/Bipartite_graph bipartite] graphs (as of January 2012) in the undirected [[The Degree/Diameter Problem | degree diameter problem]] for bipartite graphs of [http://en.wikipedia.org/wiki/Degree_(graph_theory) degree] at most 3&nbsp;≤&nbsp;''d''&nbsp;≤&nbsp;16 and [http://en.wikipedia.org/wiki/Distance_(graph_theory) diameter] 3&nbsp;≤&nbsp;''k''&nbsp;≤&nbsp;10. This table represents the best lower bounds known at present on the order of ''(d,k)''-bipartite graphs. Many of the graphs of diameter 3 ,4 and 6 are bipartite Moore graphs, and thus are optimal. All optimal graphs are marked in bold.
+
+===Table of the orders of the largest known bipartite graphs===
+
+<center> 
+{| border="1" cellspacing="2" cellpadding="2" style="text-align: center;"
+| '''<math>d</math>\<math>k</math>'''||  '''3''' ||  '''4'''|| '''5''' ||  '''6''' || '''7''' ||  '''8''' ||  '''9''' ||  '''10''' 
+|-
+| '''3''' ||style="background-color: #bbffff;" | '''14'''||style="background-color: #bbffff;" | '''30''' ||style="background-color: #0066CC;" | '''56''' ||style="background-color: #bbffff;" | '''126''' ||style="background-color: #993300;" | 168||style="background-color: #66ff66;" | 256||style="background-color: #FF9900;" | 506 || style="background-color: #66ff66;" | 800
+|-
+| '''4''' || style="background-color: #bbffff;" | '''26''' ||style="background-color: #bbffff;" | '''80''' || style="background-color: #ff0000;" | 160 ||style="background-color: #bbffff;" | '''728''' ||style="background-color: #ff0000;" | 840 ||style="background-color: #FF9900;" | 2 184 ||style="background-color: #FF9900;" | 4 970 ||style="background-color: #FF9900;" | 11 748 
+|-
+| '''5''' ||style="background-color: #bbffff;" | '''42''' ||style="background-color: #bbffff;" | '''170''' ||style="background-color: #FF9900;" |  336 ||style="background-color: #bbffff;" | '''2 730''' ||style="background-color: #FF9900;" |  3 110 ||style="background-color: #FF9900;" |  9 234 ||style="background-color: #FF9900;" |  27 936 ||style="background-color: #FF9900;" |  90 068 
+|-
+| '''6''' ||style="background-color: #bbffff;" | '''62''' ||style="background-color: #bbffff;" | '''312''' ||style="background-color: #FF9900;" | 684 ||style="background-color: #bbffff;" | '''7 812''' ||style="background-color: #66ff66;" | 8 310 ||style="background-color: #FF9900;" | 29 790 ||style="background-color: #FF9900;" | 117 360 ||style="background-color: #FF9900;" | 452 032 
+|-					
+| '''7''' ||style="background-color: #ff0000;" | '''80'''  ||style="background-color: #CC6600;" | 346 ||style="background-color: #FF9900;" | 1 134 ||style="background-color: #CC6600;" | 8 992 ||style="background-color: #66ff66;" | 23 436 ||style="background-color: #FF9900;" | 80 940 ||style="background-color: #FF9900;" | 400 160 ||style="background-color: #FF9900;" | 1 987 380 
+|-						
+| '''8''' ||style="background-color: #bbffff;" | '''114''' ||style="background-color: #bbffff;" | '''800''' ||style="background-color: #FF9900;" | 1 710 ||style="background-color: #bbffff;" | '''39 216''' ||style="background-color: #66ff66;" | 40 586 ||style="background-color: #FF9900;" | 201 480 ||style="background-color: #FF9900;" | 1 091 232 ||style="background-color: #FF9900;" | 6 927 210  
+|-							
+| '''9''' || style="background-color: #bbffff;" | '''146''' ||style="background-color: #bbffff;" | '''1 170''' ||style="background-color: #FF9900;" | 2 496 ||style="background-color: #bbffff;" | '''74 898''' ||style="background-color: #66ff66;" | 117 648 ||style="background-color: #FF9900;" | 449 480 ||style="background-color: #FF9900;" | 2 961 536 ||style="background-color: #FF9900;" | 20 017 260  
+|-							
+| '''10''' || style="background-color: #bbffff;" | '''182''' ||style="background-color: #bbffff;" | '''1 640''' ||style="background-color: #66ff66;" | 4 000 ||style="background-color: #bbffff;" | '''132 860''' ||style="background-color: #66ff66;" | 224 694 ||style="background-color: #66ff66;" | 1 176 480 ||style="background-color: #FF9900;" | 7 057 400 ||style="background-color: #FF9900;" | 50 331 156 
+|-							97 386 380
+| '''11''' ||style="background-color: yellow;" | 190 || style="background-color: #CC6600;" | 1 734 ||style="background-color: #66ff66;" | 5 850 ||style="background-color: #CC6600;" | 142 464 ||style="background-color: #66ff66;" | 398 580 ||style="background-color: #66ff66;" | 2 246 940 || style="background-color: #FF9900;" | 15 200 448 ||style="background-color: #FF9900;" |  130 592 354
+|-
+| '''12''' ||style="background-color: #bbffff;" | '''266''' ||style="background-color: #bbffff;" | '''2 928''' ||style="background-color: #66ff66;" | 8 200||style="background-color: #bbffff;" | '''354 312''' ||style="background-color: #66ff66;" | 664 300 ||style="background-color: #66ff66;" | 4 650 100  ||style="background-color: #FF9900;" | 30 001 152 ||style="background-color: #FF9900;" | 300 383 050
+|-
+| '''13''' ||style="background-color: #CC6600;" | 270 ||style="background-color: #CC6600;" | 3 064 ||style="background-color: #66ff66;" |11 480 ||style="background-color: #CC6600;" | 374 452 ||style="background-color: #66ff66;" | 1 062 936 ||style="background-color: #66ff66;" | 5 314 680  ||style="background-color: #FF9900;" | 50 990 610 ||style="background-color: #FF9900;" | 617 330 936
+|-
+| '''14''' ||style="background-color: #bbffff;" | '''366''' ||style="background-color: #bbffff;" | '''4 760''' ||style="background-color: #66ff66;" | 14 760 ||style="background-color: #bbffff;" | '''804 468''' ||style="background-color: #66ff66;" | 1 771 560 ||style="background-color: #66ff66;" | 14 172 480 ||style="background-color: #FF9900;" |95 087 738 ||style="background-color: #FF9900;" | 1 213 477 190
+|-
+| '''15''' || style="background-color: #CC6600;" | 370 || style="background-color: #CC6600;" | 4 946 ||style="background-color: #66ff66;" | 20 496 || style="background-color: #CC6600;" | 842 048 ||style="background-color: #66ff66;" | 2 480 184 || style="background-color: #66ff66;" | 14 172 480  ||style="background-color: #FF9900;" | 168 016 334 ||style="background-color: #FF9900;" | 2 300 326 510
+|-
+| '''16''' ||style="background-color: #CC6600;" | 394  ||style="background-color: #CC6600;" | 5 134 ||style="background-color: #66ff66;" | 27 300 || style="background-color: #CC6600;" | 884 062 || style="background-color: #66ff66;" | 4 022 340 ||style="background-color: #66ff66;" | 36 201 060 ||style="background-color: #FF9900;" | 288 939 118 ||style="background-color: #FF9900;" | 4 119 507 330
+|}
+</center>
+
+The following table is the key to the colors in the table presented above:
+
+<center>
+{| border="1" cellspacing="1" cellpadding="1" style="text-align: left;"
+|'''Color''' || style="text-align: center;" |'''Details'''
+|-
+|style="background-color: #bbffff; text-align: center;" | * || Bipartite Moore graphs (optimal).
+|-
+|style="background-color: #CC6600; text-align: center;" | * || Graph duplications found by C. Delorme and G. Farhi.
+|-
+|style="background-color: #66ff66; text-align: center;" | * || Graphs found by C. Delorme, J. Gómez, and J. J. Quisquater.
+|-
+|style="background-color: #0066CC; text-align: center;" | * || Optimal graph found by R. Bar-Yehuda and T. Etzion and by J. Bond and C. Delorme.
+|-
+|style="background-color: #993300; text-align: center;" | * || Graph found independently by M. Conder and R. Nedela., by C. Delorme, J. Gómez, and J. J. Quisquater and by Eyal Loz.
+|-
+|style="background-color: #ff0000; text-align: center;" | * || Graphs found independently by Paul Hafner and by Eyal Loz. 
+|-
+|style="background-color: #FF9900; text-align: center;" | * || Graphs found by Eyal Loz as part of the joint project ''The degree/diameter problem for several classes of graphs'' by E. Loz, H. Pérez-Rosés and G. Pineda-Villavicencio.
+|-
+|style="background-color: yellow; text-align: center;" | * || Graphs found by R. Feria-Puron, M. Miller and G. Pineda-Villavicencio. 
+|}
+</center>
+
+==Lowering and/or setting upper bounds for ''N<sup>b</sup>(d,k)''== 
+
+The Moore bound can be reached in some cases, but not always in general. Some theoretical work was done to determine the lowest upper bounds. In this direction reserachers have been interested in bipartite graphs of maximum degree ''d'', diameter ''k'' and order ''M<sup>b</sup>(d,k)-&delta;'' for small ''&delta;''. The parameter ''&delta;'' is called the defect. Such graphs are called bipartite ''(d,k,-&delta;)''-graphs.
+
+The bipartite ''(d,k,-2;)''-graphs constitute the first interesting family of graphs to be studied. When ''d&ge;3'' and ''k=2'', bipartite ''(d,k,-2)''-graphs are the [http://en.wikipedia.org/wiki/Complete_bipartite_graph complete bipartite graphs] with partite sets of orders ''p'' and ''q'', where either ''p=q=d-1'' or ''p=d'' and ''q=d-2''. For ''d&ge;3'' and ''k&ge;3'' only two such graphs are known; a unique bipartite ''(3, 3,-2)''-graph and a unique bipartite ''(4, 3,-2)''-graph.
+
+Studies on bipartite ''(d,k,-2;)''-graphs have been carried out by Charles Delorme, Leif Jorgensen, Mirka Miller and Guillermo Pineda-Villavicencio. They proved several necessary conditions for the existence of bipartite ''(d,3,-2;)''-graphs, the uniqueness of the two known bipartite ''(d,k,-2;)''-graphs for ''d&ge;3'' and ''k&ge;3'', and the non-existence of bipartite ''(d,k,-2;)''-graphs for ''d&ge;3'' and ''k&ge;4''. 
+
+===Lowest known upper bounds and the percentage of the order of the largest known bipartite graphs===
+
+<center>
+{| border="1"
+| '''<math>d</math>\<math>k</math>'''||  '''3''' ||  '''4'''|| '''5''' ||  '''6''' || '''7''' ||  '''8''' ||  '''9''' ||  '''10''' 
+|-
+|'''3'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''14'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''30'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|'''56'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''126'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|248
+|-
+|67.74%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|504
+|-
+|50.79%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|1016
+|-
+|49.80%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|2040
+|-
+|39.21%
+|}
+|-
+|'''4'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''26'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''80'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|236
+|-
+|67.79%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''728'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|2180
+|-
+|38.53%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|6554
+|-
+|33.32%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|19676
+|-
+|25.25%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|59042
+|-
+|19.89%
+|}
+|-
+|'''5'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''42'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''170'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|676
+|-
+|49.70%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''2730'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|10916
+|-
+|28.49%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|43684
+|-
+|21.13%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|174756
+|-
+|15.98%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|699044
+|-
+|12.88%
+|}
+|-
+|'''6'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''62'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''312'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|1556
+|-
+|43.95%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''7812'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|39056
+|-
+|21.27%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|195306
+|-
+|15.25%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|976556
+|-
+|12.01%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|4882806
+|-
+|9.25%
+|}
+|-
+|'''7'''
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|'''80'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|518
+|-
+|66.79%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|3106
+|-
+|36.50%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|18662
+|-
+|48.18%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|111968
+|-
+|20.92%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|671840
+|-
+|12.04%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|4031072
+|-
+|9.92%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|24186464
+|-
+|8.21%
+|}
+|-
+|'''8'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''114'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''800'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|5596
+|-
+|30.55%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''39216'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|274508
+|-
+|14.78%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|1921594
+|-
+|10.48%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|13451196
+|-
+|8.11%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|94158410
+|-
+|7.35%
+|}
+|-
+|'''9'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''146'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''1170'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|9356
+|-
+|26.67%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''74898'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|599180
+|-
+|19.63%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|4793484
+|-
+|9.37%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|38347916
+|-
+|7.72%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|306783372
+|-
+|6.52%
+|}
+|-
+|'''10'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''182'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''1640'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|14756
+|-
+|27.10%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''132860'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|1195736
+|-
+|18.79%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|10761674
+|-
+|10.93%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|96855116
+|-
+|7.28%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|871696094
+|-
+|5.77%
+|}
+|-
+|'''11'''
+| align="center" |
+{| border="2" style="background:rgb(100,100,255);" 
+|220
+|-
+|86.36%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|2222
+|-
+|78.03%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|22216
+|-
+|26.33%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|222222
+|-
+|64.10%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|2222216
+|-
+|17.93%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|22222216
+|-
+|10.11%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|222222216
+|-
+|6.84%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|2222222216
+|-
+|5.87%
+|}
+|-
+|'''12'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''266'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''2928'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|32204
+|-
+|25.46%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''354312'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|3897428
+|-
+|17.04%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|42871770
+|-
+|10.84%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|471589532
+|-
+|6.36%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|5187484914
+|-
+|5.79%
+|}
+|-
+|'''13'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|314
+|-
+|85.98%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|3770
+|-
+|81.27%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|45236
+|-
+|25.37%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|542906
+|-
+|68.97%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|6514868
+|-
+|16.31%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|78178484
+|-
+|6.79%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|938141876
+|-
+|5.43%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|11257702580
+|-
+|5.48%
+|}
+|-
+|'''14'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''366'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''4760'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|61876
+|-
+|23.85%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|'''804468'''
+|-
+|100%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|10458080
+|-
+|16.93%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|135955114
+|-
+|10.42%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|1767416556
+|-
+|5.38%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|22976415302
+|-
+|5.28%
+|}
+|-
+|'''15'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|422
+|-
+|87.67%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|5910
+|-
+|83.68%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|82736
+|-
+|24.77%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|1158390
+|-
+|72.69%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|16217456
+|-
+|15.29%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|227044464
+|-
+|0%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|3178622576
+|-
+|5.28%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|44500716144
+|-
+|5.17%
+|}
+|-
+|'''16'''
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|482
+|-
+|81.74%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|7232
+|-
+|70.99%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|108476
+|-
+|25.16%
+|}
+| align="center" |
+{| border="2" style="background:rgb(40,40,255);" 
+|1627232
+|-
+|54.32%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|24408476
+|-
+|16.47%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|366127226
+|-
+|9.88%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|5491908476
+|-
+|5.26%
+|}
+| align="center" |
+{| border="2" style="background:rgb(210,210,255);" 
+|82378627226
+|-
+|5%
+|}
+|}
+</center>
+
+
+The following table is the key to the colors in the table presented above:
+
+<center>
+{| border="1" cellspacing="1" cellpadding="1" style="text-align: left;"
+|'''Color''' || style="text-align: center;" |'''Details'''
+|-
+|style="background-color: rgb(40,40,255); text-align: center;" | * || Moore bound.
+|-
+|style="background-color: rgb(100,100,255); text-align: center;" | * || Moore bound minus 2.
+|-
+|style="background-color: rgb(210,210,255); text-align: center;" | * || Moore bound minus 6. 
+|-
+|}
+</center>
+
+==References==
+* Conder, M.; Nedela, R. (2006), "A more detailed classification of symmetric cubic graphs", preprint.
+* Bar-Yehuda, R.; Etzion, T. (1992), "Connections between two cycles - a new design of dense processor interconnection networks", Discrete Applied Mathematics 37-38.
+* Bond, J.; Delorme, C. (1988), "New large bipartite graphs with given degree and diameter", Ars Combinatoria 25C: 123-132.
+* Bond, J.; Delorme, C. (1993), "A note on partial Cayley graphs", Discrete Mathematics 114 (1-3): 63--74, doi:10.1016/0012-365X(93)90356-X.
+* Delorme, C. (1985), "Grands graphes de degr&eacute; et diam&egrave;tre donn&eacute;s", European Journal of Combinatorics 6: 291-302.
+* Delorme, C. (1985), "Large bipartite graphs with given degree and diameter", Journal of Graph Theory 8: 325-334.
+* Delorme, C.; Farhi, G. (1984), "Large graphs with given degree and diameter Part I", IEEE Transactions on Computers C-33: 857-860.
+* Delorme, C.; G&oacute;mez (2002), "Some new large compound graphs", European Journal of Combinatorics 23 (5): 539-547, doi:10.1006/eujc.2002.0581.
+* Delorme, C.; Gómez, J.; Quisquater, J. J., "On large bipartite graphs", submitted.
+* Delorme, C.; Jorgensen, L.; Miller, M.; Pineda-Villavicencio, G., "On bipartite graphs of diameter 3 and defect 2", Journal of Graph Theory 61 (2009), no. 4, 271-288.
+* Delorme, C.; Jorgensen, L.; Miller, M.; Pineda-Villavicencio, G., "On bipartite graphs of defect 2", European Journal of Combinatorics 30 (2009), no. 4, 798-808.
+*Pineda-Villavicencio, G., Non-existence of bipartite graphs of diameter at least 4 and defect 2, Journal of Algebraic Combinatorics 34 (2011), no. 2, 163-182.
+* Miller, M.; Širáň, J. (2005), "Moore graphs and beyond: A survey of the degree/diameter problem", Electronic Journal of  Combinatorics Dynamic survey D, [http://www.combinatorics.org/Surveys/ds14.pdf PDF version].
+
+==External links==
+* [http://www.eyal.com.au/wiki/The_Degree/Diameter_Problem Eyal Loz's] Degree-Diameter problem page, including adjacency lists for bipartite graphs smaller than 20,000 found as a part of the project ''The degree/diameter problem for several classes of graphs''.
+
+
+
+
+
+[[Category:The Degree/Diameter Problem]]

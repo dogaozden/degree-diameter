@@ -1,0 +1,58 @@
+import json,sys
+from collections import deque
+def n_of(data):
+    if data[0] <= 62: return data[0], data[1:]
+    if data[1] <= 62: return (data[1]<<12)+(data[2]<<6)+data[3], data[4:]
+    v=0
+    for c in data[2:8]: v=(v<<6)+c
+    return v, data[8:]
+def sparse6(s):
+    assert s[0]==':'
+    data=[c-63 for c in s[1:].encode()]
+    n,data=n_of(data)
+    k=1
+    while (1<<k)<n: k+=1
+    def stream():
+        it=iter(data); dLen=0; d=0
+        while True:
+            if dLen<1:
+                try: d=next(it)
+                except StopIteration: return
+                dLen=6
+            dLen-=1; b=(d>>dLen)&1; x=d&((1<<dLen)-1); xLen=dLen
+            while xLen<k:
+                try: d=next(it)
+                except StopIteration: return
+                dLen=6; x=(x<<6)+d; xLen+=6
+            x=x>>(xLen-k); dLen=xLen-k
+            yield b,x
+    edges=[]; v=0
+    for b,x in stream():
+        if b==1: v+=1
+        if x>=n or v>=n: break
+        elif x>v: v=x
+        else: edges.append((x,v))
+    return n,edges
+def analyse(n,edges):
+    adj=[set() for _ in range(n)]
+    for a,b in edges:
+        if a!=b: adj[a].add(b); adj[b].add(a)
+    degs=set(len(a) for a in adj)
+    col=[-1]*n; col[0]=0; bip=True; diam=0; girth=10**9
+    for s in range(n):
+        dist=[-1]*n; par=[-1]*n; dist[s]=0; q=deque([s])
+        while q:
+            u=q.popleft()
+            for w in adj[u]:
+                if dist[w]<0: dist[w]=dist[u]+1; par[w]=u; q.append(w)
+                elif par[u]!=w: girth=min(girth,dist[u]+dist[w]+1)
+        if min(dist)<0: return degs,None,None,None
+        diam=max(diam,max(dist))
+        if s==0: bip=all((dist[a]-dist[b])%2==1 for a,b in edges)
+    return degs,bip,diam,girth
+for fn in sys.argv[1:]:
+    d=json.load(open(fn))
+    for r in d['results']:
+        n,e=sparse6(r['graph'].strip())
+        degs,bip,diam,g=analyse(n,e)
+        print(fn,'n=',n,'m=',len(set(map(tuple,map(sorted,e)))),'degrees',degs,'bipartite',bip,'diameter',diam,'girth',g,'| db says',r['order'],r['diameter'],r['girth'])

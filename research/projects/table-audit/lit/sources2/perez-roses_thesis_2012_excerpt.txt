@@ -1,0 +1,299 @@
+Excerpts from H. Perez-Roses, PhD thesis (Univ. Newcastle, 2012), pdftotext -layout; line numbers refer to the full extract.
+----- lines 1858,1870 -----
+theoretical upper bound for all combinations of ∆ and D.
+Upper bounds are treated in great detail in [126], and also surveyed in [119]. In this thesis
+we will mainly be concerned with lower bounds. The current knowledge about lower bounds
+is summarized in [63], that contains tables for the largest known general graphs, the largest
+known Cayley graphs, and the largest known bipartite graphs, for degrees 3 to 16, and di-
+ameters 2 to 10. The table of general graphs has been recently extended to degree 16 in
+[106]. The website http://combinatoricswiki.org/wiki/The_Degree/Diameter_Problem
+maintains tables of the best known upper bounds, and the percentage of the largest known
+graph orders in relation to those upper bounds. Dr. Eyal Loz has been the driving force
+behind this compilation, that continues the tradition started by Comellas [34], and is part of a
+wider project, which will also include tables of the largest known vertex-transitive and planar
+graphs, as well as information about other combinatorial problems.
+Back to lower bounds, all the efforts to construct large graphs can in turn be roughly classified
+----- lines 3700,3925 -----
+in [51], and later in [107], to obtain large graphs with given degree and diameter. Applying
+Proposition 5.2 to the product of several elements, we get the following
+
+F Corollary 5.1 Let H and N be abelian, and let us assume that a semidirect product Hnψ N
+can be constructed. Also let (h, n) = (h1 , n1 ) ∗ (h2 , n2 ) ∗ · · · ∗ (hk , nk ), with h, h1 , . . . , hk ∈ H
+and n, n1 , . . . , nk ∈ N . Then o(h1 h2 · · · hk ) divides o(hn).
+
+                                                                                                             
+In Section 5.3.2 we discuss how to apply this corollary to obtain large bipartite graphs by
+voltage assignment.
+
+
+5.3      Bipartite lifts
+
+For practical applications, bipartite graphs form an important subclass of the class of all
+graphs. There are several papers dealing with properties and generation of large bipartite
+graphs with given degree and diameter, e.g. [145].
+A graph is bipartite iff all its cycles are even. From the discussions in Section 2.5 it follows
+that Gα will be bipartite iff every minimal closed walk in G, with net voltage equal to the
+identity, has even length, or iff every odd closed walk in G has a net voltage with even order.
+However, these conditions are not very useful from the algorithmic point of view, so we will
+look into necessary and/or sufficient conditions for Gα to be bipartite.
+If Gα is bipartite then, for every cycle C of G, of length k, net voltage g, and n being the
+order of g in Γ, the product kn is even. Yet, this condition is not sufficient. If G is a bouquet,
+this amounts to every voltage having even order in Γ, which again, is not sufficient, as shown
+by the following example.
+
+Example 5.1 Let G be a bouquet with two loops, with voltages 1 and 2 in Z4 , as shown in
+Figure 5.1. Both elements, 1 and 2, have even order in Z4 (4 and 2, respectively). However,
+we have a closed walk with net voltage equal to the identity of Z4 and odd length, namely:
+2+1+1. That results in an odd cycle in Gα .
+
+
+
+                                        1                            2
+
+
+
+
+                           Figure 5.1: Voltage graph producing odd cycles
+
+One sufficient condition for Gα to be bipartite is that G is bipartite. By imposing more
+restrictions on G and Γ we can get additional conditions, as in the next subsection.
+5. Algebraic methods in the Degree-Diameter Problem                                             69
+
+
+5.3.1    Bipartite circulant graphs
+
+Now let us concentrate on the case of bouquets as base digraphs. We already know that all
+the voltages must have even order in Γ, but that condition is not sufficient, except maybe for
+the trivial case, when we have only one loop. Let us start with the simplest non-trivial case,
+i.e. two loops, and voltages in the cyclic group Zn . Let the voltages on the loops be a and
+b. Since the voltage group is abelian, a closed walk is a sequence of p cycles of type a and q
+cycles of type b. We must find all such combinations that yield the identity element of Zn , i.e.
+we must solve the set of linear diophantine equations
+
+
+                                    pa + qb ≡ 0 (mod n), or                                 (5.11)
+                               pa + qb = jn, with p, q, j ∈ Z                               (5.12)
+
+Let d = gcd(a, b). Equation (5.12) has a solution iff d | jn, and in that case it has infinitely
+many solutions of the form
+
+
+                                                b
+                                         p = p + t,                                         (5.13)
+                                                d
+                                                 a
+                                         q = q − t,                                         (5.14)
+                                                 d
+
+where (p; q) is any particular solution and t runs through all the integers. For the expansion
+to be bipartite, p + q must always be even. Adding Equations (5.13) and (5.14) we get
+
+                                  b    a       b−a
+                           p+q =p+ t+q− t=p+q+     t                                        (5.15)
+                                  d    d        d
+Since t can be any integer, p + q and b−a
+                                       d must be both even. A particular solution (p; q) can
+be found by simply letting q = 0, and taking p as the order of a (or viceversa). This implies
+that the order of both a and b must be even.
+
+Example 5.2 (Example 5.1 revisited) In Example 5.1 we had a cyclic group of even or-
+der, and both voltages had even order, but d = gcd(1, 2) = 1, and hence 2−1
+                                                                         1  = 1 is not
+even.
+
+In the more general case, when we have k > 2 loops, with voltages a1 , a2 , . . . , ak , we get the
+set of linear diophantine equations
+
+
+                         a1 x1 + a2 x2 + · · · + ak xk ≡ 0 (mod n), or                      (5.16)
+                        a1 x1 + a2 x2 + · · · + ak xk = jn, with j ∈ Z                      (5.17)
+
+As in the two-variable case, the general linear diophantine equation in k variables
+
+                                 a1 x1 + a2 x2 + · · · + ak xk = ck ,                       (5.18)
+5. Algebraic methods in the Degree-Diameter Problem                                                  70
+
+
+has a solution iff gcd(a1 , . . . , ak ) divides c.
+Nevertheless, a simpler way to approach this problem is by noting that the lift of a bouquet
+by Zn is a circulant graph, and bipartiteness of circulant graphs was completely characterized
+in [82].
+
+Definition 5.2 Let n, k, a1 , a2 , . . . , ak be positive integers, and let’s assume that ai 6≡ ±aj (mod n)
+for i 6= j. A graph with vertex set V = {0, 1, . . . , n − 1} and edge set E = {(i; i + aj mod n) :
+i = 0, . . . , n − 1, j = 1, . . . , k} is called a circulant graph, and is denoted Cn (a1 , . . . , ak ). A
+circulant graph is a Cayley graph of the cyclic group Zn .
+
+A circulant graph G = Cn (a1 , . . . , ak ) is connected iff gcd(n, a1 , . . . , ak ) = 1. In general,
+each connected component of G is circulant, and isomorphic to C nd ( ad1 , . . . , adk ), where d =
+gcd(n, a1 , . . . , ak ). Hence, in the sequel we can assume w.l.o.g. that G is connected.
+
+Theorem 5.2 ([82]) Let G = Cn (a1 , . . . , ak ) be a connected circulant graph. Then G is
+bipartite if, and only if,
+                           a1 , . . . , ak are odd, and n is even.                   (5.19)
+
+In order to apply Theorem 5.2 to our problem, just note that the integers a1 , . . . , ak are pre-
+cisely the voltages in our voltage graph. First we have to identify the connected components,
+and then apply Condition 5.19 in a straightforward manner to each connected component.
+
+Example 5.3 (Example 5.1 revisited) Going back to Example 5.1, we see that the derived
+graph is connected, hence we can apply Theorem 5.2 directly. The voltage group has even order,
+but there is one even voltage (2), hence the derived graph is not bipartite.
+
+A discussion about how to identify the connected components of the derived graph is given in
+[77], pp. 86-93.
+
+
+5.3.2    Bipartite lifts by metabelian groups
+
+In the case of a finite metabelian groups of the form H nψ N , with H and N finite abelian,
+Corollary 5.1 gives us a sufficient condition that we can use to determine a priori whether
+the resulting derived graph will be bipartite. Let W be a closed walk in G of length k (odd),
+with net voltage (h, n) = (h1 , n1 ) ∗ (h2 , n2 ) ∗ · · · ∗ (hk , nk ), where h, h1 , . . . , hk ∈ H and
+n, n1 , . . . , nk ∈ N . If h1 h2 · · · hk has even order in H (and consequently in Γ), then the order
+of (h, n) is also even.
+Such conditions have been integrated into sieves, which can be plugged in as additional if-
+statements in Step 7 of Algorithm 2 (Section 2.5.3). The sieves prune the search space, and
+thus make the search tractable. Some more details concerning the sieves and the implemen-
+tation of the algorithm are given in [103], but these particular sieves to get bipartite lifts are
+not discussed.
+In principle, this technique can be adapted to obtain graphs of a particular type (e.g. bipartite,
+planar, vertex-transitive, etc.). We just have to add a function that tests whether the resulting
+lift belongs to the desired class. The key observation is that in many cases this check can
+5. Algebraic methods in the Degree-Diameter Problem                                          71
+
+
+performed before actually constructing the lift. In the case of bipartite graphs, the results
+of Sections 5.2 and 5.3 provide sieving conditions that make the search more efficient, by
+discarding a large number of lifts before actually constructing them.
+With the aid of this modified procedure, new record bipartite graphs have been found. The
+updated table of bipartite graphs is shown in Table 5.1. The table shows the orders of the
+largest known bipartite graphs. The entries in bold are the ones that have been obtained with
+the aid of our methods. For more details see [103] and [63]; there are adjacency lists, the
+actual voltage assignments used to obtain the graphs, references, etc. Note that the values
+at (14,8) and (15,8) are the same, but the latter can be pushed a little bit further by vertex
+duplication [48].
+The table appears in [103] and [63], while the results about metabelian groups, and their
+application to get sieves for constructing large bipartite graphs, are contained in the paper
+[49].
+
+      ∆/D 3     4      5      6        7          8           9           10
+       3  14 30       56     126      168        256         506          800
+       4  26 80      160     728      840      2 184        4 970       11 748
+       5  42 170 336 2 730           3 110     9 234       27 936       90 068
+       6  62 312 684        7812      8310     29 790     117 360      452 032
+       7  80 346 1134 8992           23436     80 940     400 160     1 987 380
+       8 114 800 1710 39216          40586    201 480 1 091 232       6 927 210
+       9 146 1170 2496 74898 117648 449 480 2 961 536                20 017 260
+       10 182 1 640 4 000 132 860 224 694 1 176 480 7 057 400        50 331 156
+       11 186 1 734 5 850 142 464 398 580 2 246 940 15 200 448 130 592 354
+       12 266 2 928 8 200 354 312 664 300 4 650 100 30 001 152 300 383 050
+       13 270 3 064 11 480 374 452 1 062 936 5 314 680 50 990 610 617 330 936
+       14 366 4 760 14 760 804 468 1 771 560 14 172 480 95 087 738 1 213 477 190
+       15 370 4 946 20 496 842 048 2 480 184 14 172 480 168 016 334 2 300 326 510
+       16 394 5 134 27 300 884 062 4 022 340 36 201 060 288 939 118 4 119 507 330
+
+
+                  Table 5.1: Orders of the largest known bipartite graphs
+
+
+
+5.4     Some open problems
+
+By now it is a widely documented fact that the farther a group is from abelian, the better
+results we can get with it [51, 53, 104, 60, 62]. Since metabelian groups are not very far from
+abelian (they are solvable with derived length 2), it is reasonable to expect that our results
+can be improved by using other solvable groups with a greater derived length, or outright
+unsolvable.
+Exoo and Jajcay use perfect groups to construct cages [62]. A group is perfect if it has no
+nontrivial abelian quotients. In particular, simple groups are perfect (a group is simple if it
+has no nontrivial quotients of any kind). It would be interesting to see what results we can get
+with perfect groups in the Degree-Diameter Problem. The next step could be simple groups,
+5. Algebraic methods in the Degree-Diameter Problem                                               72
+
+
+if we can find an efficient way to handle them.
+In any case, it is important to determine the scope and limits of our methods: What fraction
+of bipartite graphs can be obtained this way? This is a fundamental question that remains
+unanswered.
+Let G = (V, E) be a graph, and Aut(G) its automorphism group. A permutation group Γ
+acting on V is called free, or semiregular , if no vertex of G remains fixed by any non-trivial
+permutation of Γ. If Aut(G) contains a subgroup Γ that is semiregular, then G can be ob-
+tained as a lift of a smaller graph.
+The classification of graphs possessing a semiregular group of automorphisms is a significant
+topic in its own right. To guarantee the existence of the desired group of automorphisms, one
+common approach is to find a semiregular automorphism (a fixed-point-free automorphism)
+in the lift. Research efforts in this direction have only targeted vertex-transitive graphs. It
+has been conjectured that all vertex-transitive graphs possess a semiregular group of auto-
+morphisms. This conjecture is often called the polycirculant conjecture, and in the form of a
+research problem is now known as the semiregularity problem [100]. The conjecture is valid
+for Cayley graphs, but still remains open for arbitrary vertex-transitive graphs.
+The existence of a semiregular group of automorphisms for a class of graphs can also be used
+to enumerate all the graphs of the class [113]. Settling this conjecture will heavily advance the
+theory of vertex-transitive graphs. In particular, it will contribute significantly to answering
+the question of whether every connected vertex-transitive graph has a hamiltonian path [100].
+In this case, we need to investigate the validity of the polycirculant conjecture for bipartite
+graphs, vertex-transitive or not.
+If we wanted to extend our techniques to other kinds of graphs, similar questions arise: e.g.
+how can we generate vertex-transitive (or planar) graphs?, can all planar graphs be obtained
+by voltage assignment from a smaller graph?, etc.
+In the realm of group theory, another fundamental problem is to determine the order of a
+product of two elements, given the order of an element. As we mentioned before, if γ1 and γ2
+commute, o(γ1 γ2 ) divides lcm(o(γ1 ), o(γ2 )). However, if γ1 and γ2 do not commute, anything
+----- lines 5715,5726 -----
+
+        • The Knuth-Bendix completion procedure for string-rewriting systems.
+        • Construction of the derived graph, given a base graph and a finite group.
+        • Algorithms for computing and estimating the diameter of a graph.
+        • Our heuristic algorithm for solving MaxDDBS.
+        • Generation of different graph classes, such as toroidal grids, antiprisms, and some
+          random graphs.
+
+  4. Together with Eyal Loz, Geoffrey Exoo, and Guillermo Pineda-Villavicencio, we have
+     set up the website http://combinatoricswiki.org/wiki, a collaborative repository on
+     Combinatorics, which has already attracted several other researchers to publish their
+     problems and results online.
+----- lines 5960,5976 -----
+Bibliography                                                                            122
+
+
+[46] Delorme, C. Examples of products giving large graphs with given degree and diameter.
+     Discrete Applied Mathematics 37/38 (1992), 157–167. doi:10.1016/0166-218X(92)90130-
+     3.
+
+[47] Delorme, C., and Gómez, J. Some new large compound graphs. European Journal
+     of Combinatorics 23, 5 (2002), 539–547. doi:10.1006/eujc.2002.0581.
+
+[48] Delorme, C., Gómez, J., and Quisquater, J. On large bipartite graphs. unpub-
+     lished manuscript, 2011.
+
+[49] Delorme, C., Loz, E., Pérez-Rosés, H., and Pineda-Villavicencio, G. Some
+     properties of metabelian groups for constructing large graphs by voltage assignment. in
+     preparation (2012).
+
+----- lines 6015,6020 -----
+
+
+[63] Exoo, G., Loz, E., Pérez-Rosés, H., and Pineda-Villavicencio, G. Combi-
+     natorics wiki: The degree/diameter problem. http://combinatoricswiki.org/wiki/
+     The_Degree/Diameter_Problem. website.
+
+----- lines 6136,6153 -----
+      thesis, Technische Universitaet Wien, 2004.
+
+[103] Loz, E. The Degree-Diameter and Cage Problems: A Study in Structural Graph Theory.
+      PhD thesis, University of Auckland, New Zealand, 2009.
+
+[104] Loz, E. Graphs of given degree and diameter obtained as abelian lifts of dipoles.
+      Discrete Mathematics 309 (2009), 3125–3130.
+
+[105] Loz, E., Macaj, M., Miller, M., Šiagiová, J., Širáň, J., and Tomanová, J.
+      Small vertex-transitive and Cayley graphs of girth six and given degree: an algebraic
+      approach. Journal of Graph Theory 68, 4 (2011), 265–284.
+
+[106] Loz, E., and Pineda-Villavicencio, G. New benchmarks for large scale small-world
+      networks with given degree and diameter. The Computer Journal 53 (2010), 1092–1105.
+
+[107] Loz, E., and Širáň, J. New record graphs in the Degree-Diameter problem. Aus-
+      tralasian Journal of Combinatorics 41 (2008), 63–80.
+
