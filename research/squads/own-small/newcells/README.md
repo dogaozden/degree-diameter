@@ -1,9 +1,13 @@
-# (3,11) and (3,12): census graphs and our (3,11) record
+# (3,11) and (3,12): census graphs and our records
 
 **Ours: (3,11) n = 1,320**: a 4+4 voltage lift over C3 x (Z11:Z5) = SmallGroup(165,1) (squad round 3, card x6,
 through the director's queue; records/d3D11_n1320_*, explicit coordinates d3D11_n1320_c3xf55.txt and builder
 build_d3D11_n1320.py). Earlier the same day: n = 1,260, 6+6 lifts over Z_105 and over C5 x (C7:C3)
-(records/d3D11_n1260_*). Both beat the census value below. All found by joint base+voltage annealing (salift_s, D = 11)
+(records/d3D11_n1260_*). Both beat the census value below.
+
+**Ours: (3,12) n = 2,368**: a 4+4 voltage lift over Z37 x|_6 Z8 = SmallGroup(296,3) (joint annealing to cost 2, then
+the exact two-move search tools/polish.c; records/d3D12_n2368_*, builder build_meta_lift.py SOL 37 8 6 OUT). It beats
+CSS(2304,5) below. Checked with score48 and apsp.c (valid at D = 12, invalid at D = 11), also on the independent rebuild. All found by joint base+voltage annealing (salift_s, D = 11)
 and checked with score48 and apsp.c (valid at D = 11, invalid at D = 10).
 
 ## Known census graphs that exceed the lab's earlier new-cell values
