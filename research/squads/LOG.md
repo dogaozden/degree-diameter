@@ -27,3 +27,25 @@ explicit C3 x He3 coordinates (research/squads/own-small/records/). Five more gr
 (n = 972) stays at cost 66+. Lesson: the gate queue (3 slots for 16 cards plus GAP exports outside it) starved several
 cards; round 2 uses pre-exported groups, one gated job per card and 4 slots.
 Next: round 2 spreads joint annealing over (p, N) slots with n = 812..1,008, plus (3,9) at D = 9 and a degree-4 version.
+
+## 2026-10-26, own-small, round 2 (goal: (3,10) > 810 by joint annealing; (3,9); quartic cells)
+
+17 Haiku cards planned, 15 launched 17:50-18:12 UTC (research/squads/own-small/r2/). Each card got one (p, N) slot for
+salift_s2 (joint base+voltage annealing, START restarts) and one gated job of <= 900 s; 4 gate slots, groups
+pre-exported. What went wrong: cards started their gated job as a background tool call, and the 30-minute limit on
+background calls killed every job still waiting in the gate queue around 18:20-18:35, so only about 8 of the 15 jobs
+ran (k9 and q1 never started). Lesson: a card's wait in the queue counts against its own background time limit; for
+heavy rounds the director should run the queue himself and use cards for ideas.
+Best state per card (salift cost; far pairs = cost * N / 2), (3,10) unless noted:
+- k1 4+4 N=102..110: cost 8 at 864. k2 5+5 N=82..86: cost 4 at 820. k3 5+5 N=87..92: 20 at 880. k4 6+6 N=68..72: 4 at 816,
+  6 at 864. k5 6+6 N=73..80: 26 at 912. k6 7+7 N=58..63: 6 at 812. k7 8+8 N=51..56: 20 at 832. k8 9+9 N=45..50: 40 at 864.
+  k10 prime-power groups: 60 at 896 (order 64), 66 at 1,000 (order 125). k11 n = 960..1,008: 78 at 960. k9: no job ran.
+- m1 (3,9) 5+5/6+6 at D = 9: cost 8 at 510. m2 (3,9) 8+8 over order 32: 12 at 512.
+- q1 (4,8): wrote a degree-4 joint annealer (salift4.c, validated by the director against score48) but its job never ran.
+- w4 wildcard: parallel tempering inside one process was not better than plain salift at equal CPU (810: 8/14/8 vs 4/12/8).
+Director during the round: polish (exact search over all 1- and 2-voltage changes and endpoint swaps) shows the best
+states at 812 (6), 816 (4), 820 (4) and (3,11) 1,296 (2) are exact local minima; inserting 2 vertices into the 810 graph
+(all 36,300 two-edge insertions) fails.
+No valid graph above 810. Kept: (3,10) cost rises with n (cost 4 at 816/820, 20+ at 880+); short independent runs beat
+long pushes. Next: the director runs quartic joint annealing ((4,8): cost 64+ at n = 2,200 with p = 4..6, far) and
+Haar scans, (4,9) over the 5-groups of order 625 (n = 5,000), and (3,11) above the census value 1,250.
