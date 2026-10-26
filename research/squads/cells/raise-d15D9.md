@@ -54,3 +54,14 @@ Logs: /home/user/scratch_r3/logs/ until the jobs end; copies go to research/stru
 ## Status
 
 Wave 1 running. Nothing reached cost 0 at the time of writing; see the LOG entry for results.
+
+## Checkpoint, 02:17 UTC (round 3, wave 1, about 2,300 s in, ~5,500 evals each)
+
+| job | group | settings | evals | best cost |
+|---|---|---|---|---|
+| s41 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 5,561 | 18 |
+| s42 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 5,545 | 6 |
+| s43 | prod SL(2,5) × SL(2,13) × Z397 | ORBW=5, RESTART=1 | 5,585 | 30 |
+| s44 | prod SL(2,5) × SL(2,13) × Z397 | ORBW=5, RESTART=1, TMIN 0.4, TMAX 2.0 | 5,593 | 42 |
+
+Logs copied to research/structured/runs/raise3_*.log. Nothing at cost 0 yet. The 5×13×397 group is far behind 5×19×127 so far.
