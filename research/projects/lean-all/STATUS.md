@@ -43,7 +43,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (11,10) | 148,729,680 | Haar, PSL(2,89) × Z211 (added during this session) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_11_10_148729680`, LeanAll/HaarD11D10 (3,960 batches, streamed) |
 | (8,9) | 1,341,600 | Haar, SL(2,25) × Z43 (added during this session; replaces 1,326,960) | **done** | `nb_8_9_1341600`, LeanAll/HaarD8D9b (15,600 batches × 2, GF25, HaarGF25) |
 | (9,8) | 546,720 | Haar, SL(2,16) × Z67 (added during this session; Lean ✓ is for 540,360) | **done** | `nb_9_8_546720`, LeanAll/HaarD9D8 (4,080 batches, GF16, HaarGF16) |
-| (15,10) | 2,467,618,800 | Haar, SL(2,149) × Z373 (added during this session) | building (22,200 batches in 11,100 modules, gen_haarsl2.py: Mathlib-free batch modules, raw literals, streamed; restarted 2026-10-26 04:56, about 6 h; 6,863 of 11,100 modules built at 08:50 UTC, none failed)| `nb_15_10_2467618800`, LeanAll/HaarD15D10 |
+| (15,10) | 2,467,618,800 | Haar, SL(2,149) × Z373 (added during this session) | building (22,200 batches in 11,100 modules, gen_haarsl2.py: Mathlib-free batch modules, raw literals, streamed; restarted 2026-10-26 04:56, about 6 h; 8,429 of 11,100 modules built at 09:44 UTC, none failed)| `nb_15_10_2467618800`, LeanAll/HaarD15D10 |
 | (16,10) | 4,220,872,800 | Haar, SL(2,151) × Z613 (added during this session) | todo (2.1 billion elements: beyond this machine's memory and disk) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
