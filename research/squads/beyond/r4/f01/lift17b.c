@@ -8,7 +8,7 @@
    Cost = number of ordered (source, target) pairs at lift distance > 5, sources (s,0,x), s = 0..5, x in F4^4.
    By Z_N symmetry cost 0 <=> diameter <= 5. Exact bitset BFS. Simulated annealing on the 15 voltages, the plain
    letter's offset t4 and matrix A4.
-   usage: lift17b chart.txt N seed iters T0 T1 out.edges */
+   usage: lift17b chart.txt N seed iters T0 T1 out.edges [state_out [state_in]] */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -126,6 +126,7 @@ static int build(void) {
     return 1;
 }
 
+static long brk[NS][6][64];   /* diagnostics: uncovered (source x, target) pairs by source s, target base vertex, group */
 static long cost(void) {
     long total = 0;
     for (int s = 0; s < NS; s++) {
@@ -141,8 +142,9 @@ static long cost(void) {
             }
             uint64_t *t = R0; R0 = R1; R1 = t;
         }
-        for (int v = 0; v < nV; v++) total += F - (__builtin_popcountll(R0[v * 4]) + __builtin_popcountll(R0[v * 4 + 1]) +
+        for (int v = 0; v < nV; v++) { long u = F - (__builtin_popcountll(R0[v * 4]) + __builtin_popcountll(R0[v * 4 + 1]) +
                                                     __builtin_popcountll(R0[v * 4 + 2]) + __builtin_popcountll(R0[v * 4 + 3]));
+            total += u; if (u) { int base = v < nA ? v / F / N : 3 + (v - nA) / F / N; int g = v < nA ? (v / F) % N : ((v - nA) / F) % N; brk[s][base][g] += u; } }
     }
     return total;
 }
@@ -162,7 +164,7 @@ static void print_state(const char *tag, long c) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 8) { fprintf(stderr, "usage: lift17b chart.txt N seed iters T0 T1 out.edges\n"); return 1; }
+    if (argc < 8) { fprintf(stderr, "usage: lift17b chart.txt N seed iters T0 T1 out.edges [state_out [state_in]]\n"); return 1; }
     N = atoi(argv[2]); rs = strtoull(argv[3], 0, 10) * 7919ULL + 17; long iters = atol(argv[4]);
     double T0 = atof(argv[5]), T1 = atof(argv[6]);
     nA = 3 * N * F; nV = 2 * nA;
@@ -170,6 +172,15 @@ int main(int argc, char **argv) {
     R0 = malloc((size_t)nV * 4 * 8); R1 = malloc((size_t)nV * 4 * 8);
     setup_chart(argv[1]); setup_base();
     random_invertible(Am[4]); bvec[4] = rndi(256); recompute_letter(4);
+    if (argc > 9) {
+        FILE *sf = fopen(argv[9], "r"); if (!sf) { perror("state"); return 1; }
+        for (int e = 0; e < NB; e++) if (fscanf(sf, "%d", &bv[e]) != 1) return 1;
+        if (fscanf(sf, "%d", &bvec[4]) != 1) return 1;
+        char buf[64]; if (fscanf(sf, "%63s", buf) != 1) return 1; fclose(sf);
+        for (int r = 0; r < 4; r++) for (int k = 0; k < 4; k++) Am[4][r][k] = buf[4 * r + k] - '0';
+        if (!invertible(Am[4])) { printf("bad state\n"); return 1; }
+        recompute_letter(4);
+    }
     while (1) { int ok = 1; for (int e = 0; e < NB; e++) if (!volt_ok(e)) ok = 0; if (ok) break; for (int e = 0; e < NB; e++) bv[e] = rndi(N); }
     if (!build()) { printf("RESULT build failed\n"); return 1; }
     long cur = cost(), best = cur;
@@ -209,8 +220,17 @@ int main(int argc, char **argv) {
     }
     memcpy(bv, bbv, sizeof bv); bvec[4] = bt4; memcpy(Am[4], bA4, sizeof bA4); recompute_letter(4);
     if (!build()) { printf("RESULT rebuild failed\n"); return 1; }
+    memset(brk, 0, sizeof brk);
     long fin = cost();
     print_state("FINAL", fin);
+    if (fin > 0) { for (int s = 0; s < NS; s++) { printf("src %d:", s); for (int b = 0; b < 6; b++) { long t = 0; int ng = 0; for (int g = 0; g < N; g++) { t += brk[s][b][g]; if (brk[s][b][g]) ng++; } printf(" [v%d tot %ld groups %d]", b, t, ng); } printf("\n"); } }
+    if (argc > 8) {   /* save the best state as a restartable text file */
+        FILE *sf = fopen(argv[8], "w");
+        for (int e = 0; e < NB; e++) fprintf(sf, "%d ", bv[e]);
+        fprintf(sf, "%d ", bvec[4]);
+        for (int r = 0; r < 4; r++) for (int k = 0; k < 4; k++) fprintf(sf, "%d", Am[4][r][k]);
+        fprintf(sf, "\n"); fclose(sf);
+    }
     if (fin == 0) { write_edges(argv[7]); printf("WROTE %s n=%d\n", argv[7], nV); }
     return 0;
 }
