@@ -1,0 +1,35 @@
+group prod sl 3 sl 27 poly x^3+2x+1 x Z_127, N=59911488, identity 15067026, H order 52, rows 1152144, threads 1, setup 1.66s
+wide rows: HW order 254, rows 235872, setup 3.22s
+alpha: conj by prod[mat(0,2,1,1);mat(11,7,2,18)] (index 86807), z -> 19 z on Z_127
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 323 (+e); mu = 23.53, mu/k = 7.84, fixed-point misses ~ 4.75
+ORBW=3: an uncovered fixed element weighs 3; start energy 114
+start cost=86
+t=32 steps=17 evals=137 cost=50 best=62 T=0.50 energy=66 bestE=66
+t=63 steps=35 evals=281 cost=36 best=36 T=0.17 energy=48 bestE=48
+t=94 steps=52 evals=417 cost=40 best=36 T=0.15 energy=48 bestE=48
+t=126 steps=70 evals=561 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=157 steps=88 evals=705 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=187 steps=105 evals=841 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=218 steps=123 evals=985 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=248 steps=141 evals=1129 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=279 steps=160 evals=1281 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=310 steps=178 evals=1425 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=341 steps=196 evals=1569 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=372 steps=213 evals=1705 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=403 steps=230 evals=1841 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=435 steps=248 evals=1985 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=466 steps=265 evals=2121 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=497 steps=282 evals=2257 cost=30 best=30 T=0.15 energy=30 bestE=30
+t=527 steps=300 evals=2401 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=558 steps=318 evals=2545 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=590 steps=336 evals=2689 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=620 steps=353 evals=2825 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=650 steps=371 evals=2969 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=681 steps=389 evals=3113 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=712 steps=406 evals=3249 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=743 steps=424 evals=3393 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=773 steps=442 evals=3537 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=805 steps=461 evals=3689 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=836 steps=477 evals=3817 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=868 steps=492 evals=3937 cost=20 best=20 T=0.15 energy=24 bestE=24
+t=900 steps=507 evals=4057 cost=20 best=20 T=0.15 energy=24 bestE=24

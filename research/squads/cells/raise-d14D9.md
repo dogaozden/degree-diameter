@@ -33,7 +33,14 @@ second. Both are far worse than `3 4 2` (p10 37 and 46). So round 3 runs `3 4 2`
 psl 103 × Z109 (seed 1, plain), prod sl 3 × sl 37 × Z49 (seed 1, ORBW 3), psl 89 × Z169 (seed 1, plain),
 psl 73 × Z307 (seed 1, ORBW 3). Queued: the same four groups on seed 2. Results go in the table below.
 
-**Round-3 record (now): 119,124,720 vertices** = 2N, N = 59,562,360 = |PSL(2,89) × Z_169| (k = 3, m = 4, f = 2, seed 1, K = 8,
+**Round-3 record (now): 120,043,728 vertices** = 2N, N = 60,021,864 = |SL(2,107) × Z_49| (k = 3, m = 4, f = 2, seed 1, K = 8,
+plain (no ORBW); 25,769 evaluations, 3,326 s, μ = 24.22, |Fix| = 107). Solution
+`research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt`, sha256 c801569a4a333b1d6411d83dcf286e2d0cf2da3da5ed02d7e6e46c047786dea3.
+Checks: haar_sym's full diameter check OK; `tools/hcsl` and `tools/hc2` (both independent low-memory SL checkers) VALID,
+ecc 9 from both sides, distinct generators, 14-regular simple. Log `runs/r3/spool/21-sl107_49_s1/`.
+This is a larger rung than the two below it (N 60.0 M vs 59.5–59.6 M): μ 24.2 solved at 3,326 s, on the 6th job of the round.
+
+**Previous round-3 record: 119,124,720 vertices** = 2N, N = 59,562,360 = |PSL(2,89) × Z_169| (k = 3, m = 4, f = 2, seed 1, K = 8,
 plain (no ORBW); 12,129 evaluations, 2,420 s, μ = 21.45, |Fix| = 44). Solution
 `research/frontier/sols/d14D9_psl_89_169_orb3_s1.txt`, sha256 f760d63c59cbba6889b9b24d376b79aa406dcd24ba0133227f25cfbaf5c01917.
 Checks: haar_sym's full diameter check OK; `tools/haarcheck_psl` (independent, low-memory) VALID: 119,124,720 vertices,
