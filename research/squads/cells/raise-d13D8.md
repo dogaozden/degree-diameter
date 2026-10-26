@@ -240,3 +240,30 @@ SL(2,5)^2 x Z247 22; SL(2,9)^2 x Z7 25; PSL(2,9)^2 x Z28 27; PSL(2,7)^2 x Z127 1
 
 Best cost 6 on PSL(2,13)^2 x Z3 (seed 14) is the closest any candidate has come. Fourth wave (04:33 UTC, 3600 s):
 PSL(2,13)^2 x Z3 plain, seeds 17, 18, 19 (plus seed 16 from 04:06, still running).
+
+## Round 3, final status (06:35 UTC; 5 h 10 min of the 6 h budget used)
+
+**No solution above the record of 6,999,552 vertices.** 20 anneals (haar_order2, ORBIT="6 2 1", ASWAPC=1, one hour
+each, THREADS=1) on candidate groups with N in (3,513,600 .. 3,640,896]. None reached cost 0.
+
+| group | N | 2N | runs | best cost over runs |
+|---|---|---|---|---|
+| PSL(2,13)^2 x Z3, AR 2 | 3,577,392 | 7,154,784 | 9 (5 plain, 2 OSTAB=1 w/ seed 12/15/22, see below) | **6** (seeds 14 and 21), then 11, 12, 12, 12, 13, 13, 14, 14 |
+| PSL(2,7)^2 x Z127, AR 20 | 3,584,448 | 7,168,896 | 2 | **6** (seed 12), 18 (seed 11) |
+| PSL(2,7)^2 x Z129, AR 50 | 3,640,896 | 7,281,792 | 1 | 24 |
+| SL(2,9)^2 x Z7, AR 3 | 3,628,800 | 7,257,600 | 2 | 19 (OSTAB=1), 25 (plain) |
+| PSL(2,9)^2 x Z28, AR 19 | 3,628,800 | 7,257,600 | 1 | 27 |
+| SL(2,5)^2 x Z247, AR 30 | 3,556,800 | 7,113,600 | 1 | 22 |
+| SL(2,5)^2 x Z244, AR 75 | 3,513,600 | 7,027,200 | 1 | 35 |
+
+Notes on the search:
+- The group with the closest runs is PSL(2,13)^2 x Z3 (screen p10 91, record group p10 64), with several seeds at
+  cost 6–14. Its OSTAB=1 variant was not better than plain (best 12 against 6–14).
+- The record group (SL(2,7)^2 x Z31) solved at about 1.3e5 evaluations on 1 of 8 seeds. The candidate groups here got
+  2.5–5e5 evaluations per run and did not solve in 20 tries. Under the effort law the next rung's success rate per run
+  is therefore well under 5 %; the cell did not move with these methods in this budget.
+- Rejected before annealing: SL(2,64) x Z14 with the Frobenius order-6 map (random min 70, far worse than Z13); swap
+  groups with large cyclic factors or broken mixing (SL(2,5)^2 x Z245 and up, PSL(2,7)^2 x Z125, SL(2,7)^2 x Z32–34).
+
+Stopped here: the cell is not solved; compute is the constraint. Next step for a later session: many more seeds of
+PSL(2,13)^2 x Z3 (6 was reached twice) and PSL(2,7)^2 x Z127 (6 once) on a longer budget, with the same screen.
