@@ -234,7 +234,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "14,10": {
-  "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_bits.c + meta_haar_pull.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 10283705 59 37876 found here (round 2; graphs/d14D10_n1213477190_meta_10283705_59_37876_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "15,9": {
   "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group",
