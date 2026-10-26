@@ -81,3 +81,36 @@ at best 8 or more, the verdict is that these two groups do not reach the solve t
 - Queues now: Q1 (seed 5) and Q2 (seed 6) end at about 04:20 UTC; Q3 (seeds 7, 9, 11) and Q4 (seeds 8, 10, 12)
   end at about 06:30 UTC.
 - Still no solve. Cost 6 (one uncovered orbit, or fixed points) is the best on any window candidate so far.
+
+## Final status (2026-10-26, about 06:30 UTC): no solve, record stays 8,418,120
+
+**Verdict.** The window N > 4,209,060 is not reached in this round. The best lead, prod sl 7 x psl 11 x Z19
+(N = 4,213,440, 2N = 8,426,880, k = 3 m = 3 f = 1, ORBW=5 RESTART=1), has 16 one-hour seeds, all finished:
+
+| seeds | best costs |
+|---|---|
+| 16 (sl 7 x psl 11 x Z19) | 6, 6, 6 (three seeds); 7, 8, 12, 12, 12, 13, 18, 18, 18, 18, 18, 18, 19 |
+
+Total about 5.9·10⁶ evaluations on this group. Nothing reached cost 0. The other lead, prod psl 7 x sl 11 x Z19 (same
+N), had 4 full seeds (best 12, 18, 18, 18) and 2 seeds stopped at 7.5 minutes (best 30, 24). The psl 25 x Z541, pgl 25 x
+Z271 and sl 25 x Z271 candidates (k = 5) had worse random-cost tails and were not annealed for more than one hour
+(round 2: best 40, 32, 52). The A5 x A5 x Z_n product path gave a random cost of about 7.7·10⁶: the evaluator
+looks wrong there and it was not checked further.
+
+**Comparison with the solved groups.** The round-2 solve (psl 59 x Z41, μ 42.4) came at 226k evaluations after 12
+one-hour seeds of the same settings, and round 2's sl 41 x Z61 at 315k. The window leads have μ 42.96 (a little
+above) and a random-S tail (min 42, p1 60) that is a little worse than psl 59 x Z41 (min 23, p1 51). Our annealing
+at about 370k evaluations per seed stays at best 6 to 18: the window group is not clearly out of reach, but the
+solve rate here is well below 1 in 16 hour-seeds.
+
+**What is not tried** (the coordinator decides whether to continue):
+- Longer runs on sl 7 x psl 11 x Z19 (3 to 6 h per seed, a few seeds). Seeds at cost 6 looked like they were
+  close, but no seed reached 4 or below after an hour.
+- ALPHA=<index> for a different conjugating element of order 3 with the same |Fix| (round 2's untested lever).
+- Re-checking the A5 x A5 x Z_n evaluator (product path), since it was the only k = 5 candidate with N in window
+  and small μ_eff that was never annealed.
+- Other k = 3 structures in the window with μ 44–46 (prod psl 3 x psl 19 x Z103 and others), not screened beyond
+  300 samples.
+
+**Stop.** Nothing is running. Logs: research/structured/runs/d10D9_round3/out_{P1,P2,Q1..Q6}/. Record unchanged at
+8,418,120 (round 2, psl 59 x Z41). No new solution file was saved, so research/frontier/sols/ has no round-3 entry.
