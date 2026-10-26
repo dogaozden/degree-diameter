@@ -176,11 +176,13 @@ def main():
                 f'{jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})')
     mods = {}
     gi = 0
+    used = [nb]   # lowest batch written
     for kd in kinds:
         k_ = K[kd]
         cf = open(certs[kd], 'rb')
         data = mmap.mmap(cf.fileno(), 0, access=mmap.ACCESS_READ)
-        assert len(data) == 5 * G
+        # a certificate file may have been cut below the batches still to write (bigcell.py --truncate)
+        assert len(data) == 5 * G or (only_bats and len(data) % (5 * N) == 0)
         mods[kd] = []
         for mi, lo in enumerate(range(0, nb, args.per)):
             hi = min(nb, lo + args.per)
@@ -195,13 +197,16 @@ def main():
                 f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL{OPSL}\n\n')
                 f.write('set_option maxRecDepth 100000\n\n')
                 for b in range(lo, hi):
+                    assert 5 * (b + 1) * N <= len(data), 'certificate file cut below this batch'
+                    used[0] = min(used[0], b)
                     dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
                     f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked(dig)}, by decide +kernel⟩\n\n')
                 leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
     if only_bats:
-        print(f'wrote Bat modules {bm[0]}:{bm[1]} of {gi} to {args.outdir}', file=sys.stderr)
+        print(f'wrote Bat modules {bm[0]}:{bm[1]} of {gi} to {args.outdir}; first batch {used[0]}, '
+              f'certificate bytes from {5 * used[0] * N}', file=sys.stderr)
         return
     # covers: the module range lemmas joined in a balanced tree (range_join), so no large case split
     for kd in kinds:

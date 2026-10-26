@@ -60,6 +60,10 @@ def main():
     ap.add_argument('--keep', type=int, default=2)
     ap.add_argument('--need', type=float, default=0.0)
     ap.add_argument('--clean', action='store_true')
+    ap.add_argument('--truncate', action='store_true',
+                    help='D even only: write the chunks from the last one down and cut the certificate file '
+                         'below each chunk once its sources are written (disk); chunks whose oleans all exist '
+                         'are skipped, so a stopped run can be restarted')
     ap.add_argument('--est', type=float, default=3.2, help='memory estimate (GB) of one Bat module')
     args = ap.parse_args()
     line = next(l for l in open(os.path.join(HERE, 'cells.txt')) if l.split() and l.split()[0] == args.cell)
@@ -94,16 +98,27 @@ def main():
     m = re.search(r'in (\d+) modules', r.stderr)
     nmods = int(m.group(1))
     covers = sorted(f[:-5] for f in os.listdir(outdir) if f.startswith('Cover') and f.endswith('.lean'))
+    # a restarted --truncate run keeps the lines of the Bat files written before
+    keep = [l for l in open(man) if '/Bat' in l] if args.truncate and os.path.exists(man) else []
     with open(man, 'w') as mf:
         for f in ['Defs.lean'] + [c + '.lean' for c in covers] + ['Record.lean']:
             mf.write(f'{sha(os.path.join(outdir, f))}  {outdir}/{f}\n')
+        mf.writelines(keep)
     queue_append(args.queue, [f'!{P}Defs:2.5', '--'])
     say(f'{nmods} Bat modules')
 
     # 2. Bat modules in chunks
     pending = []   # (module name, path) generated, not yet deleted
-    s = 0
-    while s < nmods or pending:
+    starts = list(range(0, nmods, args.chunk))
+    lib = os.path.join('.lake/build/lib/lean', *module.split('.'))
+    certf = None
+    if args.truncate:
+        starts.reverse()
+        base = os.path.basename(cmd[2]).replace('.txt', '')
+        certf = f'/tmp/claude-0/work/certs/{base}_even.bin'
+        assert os.path.exists(certf), certf
+    k = 0
+    while k < len(starts) or pending:
         ok, fail = log_status(args.log, start)
         bad = [mn for mn, _ in pending if mn in fail]
         if bad:
@@ -112,11 +127,19 @@ def main():
             if mn in ok:
                 os.remove(path)
                 pending.remove((mn, path))
-        if s < nmods and len(pending) < args.keep * args.chunk:
+        if k < len(starts) and len(pending) < args.keep * args.chunk:
+            s = starts[k]
             e = min(nmods, s + args.chunk)
+            k += 1
+            if args.truncate and all(os.path.exists(os.path.join(lib, f'BatE{mi:03d}.olean')) for mi in range(s, e)):
+                say(f'Bat modules {s}:{e} already built')
+                continue
             r = subprocess.run(cmd + ['--bat-modules', f'{s}:{e}'], capture_output=True, text=True)
             if r.returncode != 0:
                 sys.exit(r.stderr)
+            if args.truncate:
+                cut = int(re.search(r'certificate bytes from (\d+)', r.stderr).group(1))
+                os.truncate(certf, cut)
             known = {p for _, p in pending}
             new = sorted(f for f in os.listdir(outdir) if f.startswith('Bat') and f.endswith('.lean')
                          and os.path.join(outdir, f) not in known)
@@ -126,7 +149,6 @@ def main():
             queue_append(args.queue, [f'!{P}{f[:-5]}:{args.est}' for f in new])
             pending += [(P + f[:-5], os.path.join(outdir, f)) for f in new]
             say(f'queued Bat modules {s}:{e} ({len(new)} files)')
-            s = e
         else:
             time.sleep(20)
 
@@ -149,7 +171,6 @@ def main():
     with open(os.path.join(HERE, 'axioms_big.txt'), 'a') as f:
         f.write(f'{args.cell} ({time.strftime("%Y-%m-%d %H:%M")}): {out}\n')
     if args.clean:
-        lib = os.path.join('.lake/build/lib/lean', *module.split('.'))
         for f in os.listdir(lib):
             if f.startswith('Bat'):
                 os.remove(os.path.join(lib, f))
