@@ -1,0 +1,9 @@
+hub edges 87 over-full hubs [] flag pairs 67
+after fdrun: start 125 (123, 1, 1)
+best moves [(2, (0, 1), (0, 8)), (2, (0, 1), (8, 1)), (2, (0, 1), (8, 8)), (2, (0, 6), (0, 8)), (2, (0, 24), (0, 8)), (2, (0, 24), (8, 8)), (2, (0, 24), (8, 24)), (2, (1, 0), (1, 8)), (2, (1, 0), (8, 0)), (2, (1, 0), (8, 8))]
+after rewire: start 125 (123, 1, 1)
+after lns2 NOC0: start 125 (124, 0, 1)
+RESULT dmfast q 7 iters 12000000 best 48 (of 137200 opposite pairs) swaps accepted 0
+RESULT dmfast q 7 iters 10000000 best 1099511627776 (of 137200 opposite pairs) swaps accepted 477
+RESULT dmfast q 7 iters 10000000 best 1099511627776 (of 137200 opposite pairs) swaps accepted 387
+before endgame (runs/G4_2c_c0c.sol): start 13 (12, 0, 1)

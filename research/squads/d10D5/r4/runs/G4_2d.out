@@ -1,0 +1,8 @@
+hub edges 87 over-full hubs [] flag pairs 67
+after fdrun: start 122 (120, 1, 1)
+best moves [(2, (0, 1), (0, 8)), (2, (0, 1), (8, 1)), (2, (0, 1), (8, 8)), (2, (0, 6), (0, 8)), (2, (0, 24), (0, 8)), (2, (0, 24), (8, 8)), (2, (0, 24), (8, 24)), (2, (1, 0), (1, 8)), (2, (1, 0), (8, 0)), (2, (1, 0), (8, 8))]
+after rewire: start 122 (120, 1, 1)
+after lns2 NOC0: start 124 (123, 0, 1)
+RESULT dmfast q 7 iters 12000000 best 53 (of 137200 opposite pairs) swaps accepted 0
+RESULT dmfast q 7 iters 10000000 best 1099511627776 (of 137200 opposite pairs) swaps accepted 559
+Terminated

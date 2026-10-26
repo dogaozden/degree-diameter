@@ -1,0 +1,61 @@
+unmixed pairs: points 73 lines 77
+lns3 geodesic tables: unmixed agree with lns2: True
+start 12 (12, 0, 0)
+it 1 |S| 50 |PHI| 150 model (13, 5173, 5184, 'OPTIMAL') exact 13 (13, 0, 0) flips 31 (cur 12) 6.0s
+it 2 |S| 50 |PHI| 150 model (14, 5062, 5585, 'OPTIMAL') exact 14 (14, 0, 0) flips 39 (cur 12) 9.2s
+it 3 |S| 50 |PHI| 150 model (14, 4922, 4776, 'OPTIMAL') exact 14 (14, 0, 0) flips 33 (cur 12) 15.2s
+it 4 |S| 50 |PHI| 150 model (13, 5049, 4182, 'OPTIMAL') exact 13 (13, 0, 0) flips 35 (cur 12) 5.9s
+it 5 |S| 50 |PHI| 150 model (12, 5042, 3227, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 20.9s
+it 6 |S| 50 |PHI| 150 model (13, 4829, 4608, 'OPTIMAL') exact 13 (13, 0, 0) flips 33 (cur 12) 5.2s
+it 7 |S| 50 |PHI| 150 model (13, 4870, 5353, 'OPTIMAL') exact 13 (13, 0, 0) flips 54 (cur 12) 5.4s
+it 8 |S| 50 |PHI| 150 model (14, 5007, 4461, 'OPTIMAL') exact 14 (14, 0, 0) flips 45 (cur 13) 4.7s
+it 9 |S| 50 |PHI| 150 model (12, 4957, 4307, 'OPTIMAL') exact 12 (12, 0, 0) flips 17 (cur 13) 3.5s
+it 10 |S| 50 |PHI| 150 model (14, 4867, 3890, 'OPTIMAL') exact 14 (14, 0, 0) flips 17 (cur 12) 6.5s
+it 11 |S| 50 |PHI| 150 model (12, 5015, 4812, 'OPTIMAL') exact 12 (12, 0, 0) flips 0 (cur 12) 18.5s
+it 12 |S| 50 |PHI| 150 model (13, 5013, 4539, 'OPTIMAL') exact 13 (13, 0, 0) flips 51 (cur 12) 6.0s
+it 13 |S| 50 |PHI| 150 model (14, 4948, 4357, 'FEASIBLE') exact 14 (14, 0, 0) flips 33 (cur 12) 21.0s
+it 14 |S| 50 |PHI| 150 model (13, 4908, 4111, 'OPTIMAL') exact 13 (13, 0, 0) flips 31 (cur 12) 11.4s
+it 15 |S| 50 |PHI| 150 model (13, 5113, 6986, 'OPTIMAL') exact 13 (13, 0, 0) flips 35 (cur 12) 7.1s
+it 16 |S| 50 |PHI| 150 model (13, 4842, 5744, 'OPTIMAL') exact 13 (13, 0, 0) flips 55 (cur 12) 7.1s
+it 17 |S| 50 |PHI| 150 model (14, 5073, 5635, 'OPTIMAL') exact 14 (14, 0, 0) flips 8 (cur 12) 19.7s
+it 18 |S| 50 |PHI| 150 model (13, 5178, 4390, 'OPTIMAL') exact 13 (13, 0, 0) flips 17 (cur 12) 8.9s
+it 19 |S| 50 |PHI| 150 model (13, 5226, 6331, 'OPTIMAL') exact 13 (13, 0, 0) flips 21 (cur 12) 6.7s
+it 20 |S| 50 |PHI| 150 model (12, 5006, 4920, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.0s
+it 21 |S| 50 |PHI| 150 model (14, 5122, 6517, 'OPTIMAL') exact 14 (14, 0, 0) flips 40 (cur 12) 11.3s
+it 22 |S| 50 |PHI| 150 model (13, 4899, 5101, 'OPTIMAL') exact 13 (13, 0, 0) flips 41 (cur 12) 7.0s
+it 23 |S| 50 |PHI| 150 model (13, 5110, 5044, 'OPTIMAL') exact 13 (13, 0, 0) flips 47 (cur 12) 6.7s
+it 24 |S| 50 |PHI| 150 model (13, 4956, 5540, 'OPTIMAL') exact 13 (13, 0, 0) flips 47 (cur 12) 6.4s
+it 25 |S| 50 |PHI| 150 model (13, 5265, 5371, 'OPTIMAL') exact 13 (13, 0, 0) flips 41 (cur 12) 5.8s
+reset to best 12
+it 26 |S| 50 |PHI| 150 model (13, 5041, 5033, 'OPTIMAL') exact 13 (13, 0, 0) flips 23 (cur 12) 6.7s
+it 27 |S| 50 |PHI| 150 model (12, 5294, 4589, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.2s
+it 28 |S| 50 |PHI| 150 model (12, 5178, 5236, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.2s
+it 29 |S| 50 |PHI| 150 model (13, 5087, 4459, 'OPTIMAL') exact 13 (13, 0, 0) flips 25 (cur 12) 4.6s
+it 30 |S| 50 |PHI| 150 model (14, 4997, 5659, 'OPTIMAL') exact 14 (14, 0, 0) flips 31 (cur 13) 9.1s
+it 31 |S| 50 |PHI| 150 model (13, 5334, 5483, 'FEASIBLE') exact 13 (13, 0, 0) flips 0 (cur 13) 21.3s
+it 32 |S| 50 |PHI| 150 model (14, 5241, 4637, 'OPTIMAL') exact 14 (14, 0, 0) flips 31 (cur 13) 6.7s
+it 33 |S| 50 |PHI| 150 model (12, 4807, 3971, 'OPTIMAL') exact 12 (12, 0, 0) flips 25 (cur 13) 5.0s
+it 34 |S| 50 |PHI| 150 model (13, 4967, 4554, 'OPTIMAL') exact 13 (13, 0, 0) flips 37 (cur 12) 9.9s
+it 35 |S| 50 |PHI| 150 model (13, 5099, 4693, 'OPTIMAL') exact 13 (13, 0, 0) flips 23 (cur 12) 10.1s
+it 36 |S| 50 |PHI| 150 model (13, 5055, 4647, 'OPTIMAL') exact 13 (13, 0, 0) flips 17 (cur 12) 12.0s
+it 37 |S| 50 |PHI| 150 model (14, 5050, 4836, 'OPTIMAL') exact 14 (14, 0, 0) flips 17 (cur 12) 9.4s
+it 38 |S| 50 |PHI| 150 model (14, 4968, 5297, 'OPTIMAL') exact 14 (14, 0, 0) flips 39 (cur 12) 6.4s
+it 39 |S| 50 |PHI| 150 model (14, 4787, 6635, 'OPTIMAL') exact 14 (14, 0, 0) flips 25 (cur 12) 8.2s
+it 40 |S| 50 |PHI| 150 model (13, 5174, 5518, 'OPTIMAL') exact 13 (13, 0, 0) flips 17 (cur 12) 18.0s
+it 41 |S| 50 |PHI| 150 model (14, 5322, 6260, 'OPTIMAL') exact 14 (14, 0, 0) flips 24 (cur 12) 13.0s
+it 42 |S| 50 |PHI| 150 model (13, 4966, 5600, 'OPTIMAL') exact 13 (13, 0, 0) flips 25 (cur 12) 6.6s
+it 43 |S| 50 |PHI| 150 model (12, 5025, 6405, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.4s
+it 44 |S| 50 |PHI| 150 model (13, 5120, 3078, 'OPTIMAL') exact 13 (13, 0, 0) flips 41 (cur 12) 4.4s
+it 45 |S| 50 |PHI| 150 model (14, 5100, 5907, 'OPTIMAL') exact 14 (14, 0, 0) flips 47 (cur 12) 8.1s
+it 46 |S| 50 |PHI| 150 model (13, 5023, 6675, 'OPTIMAL') exact 13 (13, 0, 0) flips 39 (cur 12) 8.7s
+it 47 |S| 50 |PHI| 150 model (12, 4830, 4400, 'OPTIMAL') exact 12 (12, 0, 0) flips 25 (cur 12) 14.1s
+it 48 |S| 50 |PHI| 150 model (12, 5187, 4640, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.4s
+it 49 |S| 50 |PHI| 150 model (12, 5015, 4737, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.6s
+it 50 |S| 50 |PHI| 150 model (12, 5041, 4320, 'OPTIMAL') exact 12 (12, 0, 0) flips 25 (cur 12) 4.9s
+it 51 |S| 50 |PHI| 150 model (13, 5203, 4760, 'OPTIMAL') exact 13 (13, 0, 0) flips 67 (cur 12) 10.8s
+it 52 |S| 50 |PHI| 150 model (12, 5115, 4620, 'OPTIMAL') exact 12 (12, 0, 0) flips 0 (cur 12) 12.2s
+it 53 |S| 50 |PHI| 150 model (13, 5104, 5143, 'OPTIMAL') exact 13 (13, 0, 0) flips 25 (cur 12) 7.1s
+reset to best 12
+it 54 |S| 50 |PHI| 150 model (12, 5026, 4196, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.6s
+it 55 |S| 50 |PHI| 150 model (13, 5112, 4983, 'OPTIMAL') exact 13 (13, 0, 0) flips 49 (cur 12) 11.7s
+final 12 (12, 0, 0)

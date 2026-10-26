@@ -1,0 +1,18 @@
+unmixed pairs: points 79 lines 79
+lns3 geodesic tables: unmixed agree with lns2: True
+hard pairs [(True, 63447), (True, 16356), (False, 63796), (True, 60616), (True, 21115), (False, 21795), (False, 51450)]
+start 1 (1, 0, 0)
+it 1 |S| 55 |PHI| 180 model (1, 5999, 7667, 'OPTIMAL') exact 1 (1, 0, 0) flips 48 (cur 1) 7.1s
+kick accepted: hard pair fixed, new baseline 1
+it 2 |S| 55 |PHI| 180 model (1, 6144, 8145, 'OPTIMAL') exact 1 (1, 0, 0) flips 29 (cur 1) 5.0s
+it 3 |S| 55 |PHI| 180 model (1, 5869, 7593, 'OPTIMAL') exact 1 (0, 0, 1) flips 51 (cur 1) 7.4s
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d10D5/r4/lns3.py", line 551, in <module>
+    Sset, phi, ff, ncp = focus(sig)
+                         ~~~~~^^^^^
+  File "/home/user/degree-diameter/research/squads/d10D5/r4/lns3.py", line 502, in focus
+    side, pid = allb[rng.randrange(len(allb))]
+                     ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/random.py", line 313, in randrange
+    raise ValueError("empty range for randrange()")
+ValueError: empty range for randrange()

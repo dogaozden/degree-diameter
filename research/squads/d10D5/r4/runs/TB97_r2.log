@@ -1,0 +1,13 @@
+unmixed pairs: points 88 lines 92
+lns3 geodesic tables: unmixed agree with lns2: True
+hard pairs [(False, 31001)]
+start 5 (5, 0, 0)
+it 1 |S| 55 |PHI| 180 model (6, 6273, 8337, 'OPTIMAL') exact 6 (5, 0, 1) flips 25 (cur 5) 5.7s
+kick accepted: hard pair fixed, new baseline 6
+it 2 |S| 55 |PHI| 180 model (8, 6271, 9124, 'OPTIMAL') exact 8 (7, 0, 1) flips 23 (cur 6) 14.4s
+it 3 |S| 55 |PHI| 180 model (6, 6398, 6144, 'OPTIMAL') exact 6 (5, 0, 1) flips 0 (cur 6) 14.1s
+it 4 |S| 55 |PHI| 180 model (8, 6201, 6450, 'OPTIMAL') exact 8 (7, 0, 1) flips 49 (cur 6) 14.9s
+it 5 |S| 55 |PHI| 180 model (8, 6290, 7357, 'OPTIMAL') exact 8 (7, 0, 1) flips 39 (cur 6) 14.7s
+it 6 |S| 55 |PHI| 180 model (6, 6330, 7022, 'OPTIMAL') exact 6 (5, 0, 1) flips 0 (cur 6) 15.3s
+it 7 |S| 55 |PHI| 180 model (6, 6361, 8296, 'FEASIBLE') exact 6 (5, 0, 1) flips 0 (cur 6) 21.5s
+it 8 |S| 55 |PHI| 180 model (7, 6395, 7342, 'OPTIMAL') exact 7 (6, 0, 1) flips 38 (cur 6) 10.7s

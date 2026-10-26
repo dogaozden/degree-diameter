@@ -1,0 +1,29 @@
+unmixed pairs: points 78 lines 73
+lns3 geodesic tables: unmixed agree with lns2: True
+hard pairs [(False, 63796), (True, 60616)]
+start 1 (1, 0, 0)
+it 1 |S| 55 |PHI| 180 model (2, 6285, 6780, 'OPTIMAL') exact 2 (2, 0, 0) flips 24 (cur 1) 13.2s
+it 2 |S| 55 |PHI| 180 model (2, 6315, 7949, 'OPTIMAL') exact 2 (2, 0, 0) flips 38 (cur 1) 7.1s
+it 3 |S| 55 |PHI| 180 model (2, 6293, 8334, 'OPTIMAL') exact 2 (2, 0, 0) flips 17 (cur 1) 7.9s
+it 4 |S| 55 |PHI| 180 model (2, 6336, 8374, 'OPTIMAL') exact 2 (2, 0, 0) flips 37 (cur 1) 9.2s
+it 5 |S| 55 |PHI| 180 model (2, 6561, 8290, 'OPTIMAL') exact 2 (2, 0, 0) flips 50 (cur 1) 9.0s
+it 6 |S| 55 |PHI| 180 model (1, 6354, 6958, 'OPTIMAL') exact 1 (1, 0, 0) flips 28 (cur 2) 8.0s
+it 7 |S| 55 |PHI| 180 model (1, 6249, 8885, 'OPTIMAL') exact 1 (1, 0, 0) flips 17 (cur 1) 7.3s
+it 8 |S| 55 |PHI| 180 model (2, 5972, 6742, 'OPTIMAL') exact 2 (2, 0, 0) flips 23 (cur 1) 7.8s
+it 9 |S| 55 |PHI| 180 model (1, 5947, 8614, 'OPTIMAL') exact 1 (1, 0, 0) flips 33 (cur 1) 7.5s
+it 10 |S| 55 |PHI| 180 model (1, 6224, 8178, 'OPTIMAL') exact 1 (1, 0, 0) flips 31 (cur 1) 7.1s
+it 11 |S| 55 |PHI| 180 model (1, 6079, 9273, 'OPTIMAL') exact 1 (1, 0, 0) flips 57 (cur 1) 7.6s
+it 12 |S| 55 |PHI| 180 model (1, 6261, 8291, 'OPTIMAL') exact 1 (1, 0, 0) flips 51 (cur 1) 7.2s
+it 13 |S| 55 |PHI| 180 model (1, 6215, 7927, 'OPTIMAL') exact 1 (1, 0, 0) flips 25 (cur 1) 7.9s
+it 14 |S| 55 |PHI| 180 model (1, 6027, 7149, 'OPTIMAL') exact 1 (1, 0, 0) flips 48 (cur 1) 7.1s
+it 15 |S| 55 |PHI| 180 model (1, 6033, 7779, 'OPTIMAL') exact 1 (0, 0, 1) flips 24 (cur 1) 6.9s
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d10D5/r4/lns3.py", line 551, in <module>
+    Sset, phi, ff, ncp = focus(sig)
+                         ~~~~~^^^^^
+  File "/home/user/degree-diameter/research/squads/d10D5/r4/lns3.py", line 502, in focus
+    side, pid = allb[rng.randrange(len(allb))]
+                     ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/random.py", line 313, in randrange
+    raise ValueError("empty range for randrange()")
+ValueError: empty range for randrange()

@@ -1,0 +1,8 @@
+unmixed pairs: points 76 lines 70
+lns3 geodesic tables: unmixed agree with lns2: True
+start 14 (12, 1, 1)
+it 1 |S| 50 |PHI| 150 model (14, 5083, 5201, 'OPTIMAL') exact 14 (12, 1, 1) flips 0 (cur 14) 15.6s
+it 2 |S| 50 |PHI| 150 model (16, 5098, 5585, 'OPTIMAL') exact 16 (14, 1, 1) flips 23 (cur 14) 12.5s
+it 3 |S| 50 |PHI| 150 model (16, 5204, 5959, 'FEASIBLE') exact 16 (14, 1, 1) flips 0 (cur 16) 21.3s
+it 4 |S| 50 |PHI| 150 model (17, 4937, 4843, 'OPTIMAL') exact 17 (15, 1, 1) flips 28 (cur 16) 7.2s
+it 5 |S| 50 |PHI| 150 model (16, 5168, 3057, 'FEASIBLE') exact 16 (14, 1, 1) flips 0 (cur 16) 21.1s

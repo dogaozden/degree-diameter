@@ -1,0 +1,15 @@
+round 1: cost 1 bad: P106-P67(0) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67
+round 2: cost 1 bad: L372-L68(0) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68
+round 3: cost 1 bad: L198-L209(3) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68; l 198 209
+./tabu.sh: line 15: kill: (4832) - No such process
+round 4: cost 1 bad: L192-L209(3) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68; l 198 209; l 192 209
+round 5: cost 1 bad: L270-L361(0) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68; l 198 209; l 192 209; l 270 361
+round 6: cost 1 bad: P202-P326(3) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68; l 198 209; l 192 209; l 270 361; p 202 326
+round 7: cost 1 bad: P326-P349(3) 
+hard pairs now: p 290 326; p 50 307; l 291 318; p 263 331; p 106 67; l 372 68; l 198 209; l 192 209; l 270 361; p 202 326; p 326 349

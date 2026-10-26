@@ -1,0 +1,24 @@
+unmixed pairs: points 69 lines 75
+lns3 geodesic tables: unmixed agree with lns2: True
+start 10 (10, 0, 0)
+it 1 |S| 50 |PHI| 150 model (12, 5127, 5922, 'OPTIMAL') exact 12 (12, 0, 0) flips 39 (cur 10) 8.6s
+it 2 |S| 50 |PHI| 150 model (12, 5218, 3654, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.5s
+it 3 |S| 50 |PHI| 150 model (13, 5213, 5863, 'OPTIMAL') exact 13 (13, 0, 0) flips 23 (cur 12) 8.3s
+it 4 |S| 50 |PHI| 150 model (10, 5065, 6018, 'OPTIMAL') exact 10 (10, 0, 0) flips 21 (cur 12) 5.4s
+it 5 |S| 50 |PHI| 150 model (11, 5165, 6251, 'OPTIMAL') exact 11 (11, 0, 0) flips 41 (cur 10) 9.9s
+it 6 |S| 50 |PHI| 150 model (12, 5493, 5170, 'OPTIMAL') exact 12 (12, 0, 0) flips 50 (cur 10) 14.0s
+it 7 |S| 50 |PHI| 150 model (13, 5131, 4803, 'OPTIMAL') exact 13 (13, 0, 0) flips 47 (cur 12) 7.4s
+it 8 |S| 50 |PHI| 150 model (12, 5154, 4378, 'OPTIMAL') exact 12 (12, 0, 0) flips 45 (cur 12) 10.9s
+it 9 |S| 50 |PHI| 150 model (12, 5434, 6615, 'OPTIMAL') exact 12 (12, 0, 0) flips 17 (cur 12) 12.8s
+it 10 |S| 50 |PHI| 150 model (12, 4811, 2775, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.1s
+it 11 |S| 50 |PHI| 150 model (12, 5140, 4136, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.4s
+it 12 |S| 50 |PHI| 150 model (12, 4854, 3318, 'OPTIMAL') exact 12 (12, 0, 0) flips 26 (cur 12) 19.6s
+it 13 |S| 50 |PHI| 150 model (13, 5118, 5929, 'OPTIMAL') exact 13 (13, 0, 0) flips 31 (cur 12) 8.9s
+it 14 |S| 50 |PHI| 150 model (14, 5122, 3034, 'OPTIMAL') exact 14 (14, 0, 0) flips 39 (cur 12) 6.1s
+it 15 |S| 50 |PHI| 150 model (12, 5160, 4487, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.2s
+it 16 |S| 50 |PHI| 150 model (12, 5315, 4895, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.8s
+it 17 |S| 50 |PHI| 150 model (12, 5231, 5417, 'OPTIMAL') exact 12 (12, 0, 0) flips 39 (cur 12) 6.7s
+it 18 |S| 50 |PHI| 150 model (12, 5045, 4611, 'OPTIMAL') exact 12 (10, 1, 1) flips 31 (cur 12) 10.4s
+it 19 |S| 50 |PHI| 150 model (12, 5220, 6145, 'OPTIMAL') exact 12 (10, 1, 1) flips 57 (cur 12) 5.6s
+it 20 |S| 50 |PHI| 150 model (14, 5204, 5099, 'FEASIBLE') exact 14 (12, 1, 1) flips 33 (cur 12) 21.6s
+it 21 |S| 50 |PHI| 150 model (13, 4945, 5115, 'OPTIMAL') exact 13 (11, 1, 1) flips 25 (cur 12) 10.6s

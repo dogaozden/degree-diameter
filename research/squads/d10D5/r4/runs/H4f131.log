@@ -1,0 +1,17 @@
+unmixed pairs: points 89 lines 60
+lns3 geodesic tables: unmixed agree with lns2: True
+start 10 (10, 0, 0)
+it 1 |S| 50 |PHI| 150 model (10, 4926, 5238, 'FEASIBLE') exact 10 (10, 0, 0) flips 0 (cur 10) 21.0s
+it 2 |S| 50 |PHI| 150 model (12, 4993, 5400, 'OPTIMAL') exact 12 (12, 0, 0) flips 33 (cur 10) 5.8s
+it 3 |S| 50 |PHI| 150 model (11, 4893, 4161, 'OPTIMAL') exact 11 (11, 0, 0) flips 29 (cur 10) 12.1s
+it 4 |S| 50 |PHI| 150 model (12, 4999, 3703, 'OPTIMAL') exact 12 (12, 0, 0) flips 23 (cur 11) 5.6s
+it 5 |S| 50 |PHI| 150 model (12, 5210, 5859, 'FEASIBLE') exact 12 (12, 0, 0) flips 0 (cur 12) 21.2s
+it 6 |S| 50 |PHI| 150 model (11, 4992, 4330, 'FEASIBLE') exact 11 (11, 0, 0) flips 2 (cur 12) 21.0s
+it 7 |S| 50 |PHI| 150 model (11, 5288, 6119, 'FEASIBLE') exact 11 (11, 0, 0) flips 0 (cur 11) 21.2s
+it 8 |S| 50 |PHI| 150 model (13, 5346, 5158, 'OPTIMAL') exact 13 (13, 0, 0) flips 33 (cur 11) 11.9s
+it 9 |S| 50 |PHI| 150 model (11, 4950, 5495, 'OPTIMAL') exact 11 (11, 0, 0) flips 23 (cur 13) 13.1s
+it 10 |S| 50 |PHI| 150 model (11, 5164, 4655, 'FEASIBLE') exact 11 (11, 0, 0) flips 0 (cur 11) 21.1s
+it 11 |S| 50 |PHI| 150 model (13, 5173, 7072, 'OPTIMAL') exact 13 (13, 0, 0) flips 29 (cur 11) 12.3s
+it 12 |S| 50 |PHI| 150 model (12, 5074, 4183, 'OPTIMAL') exact 12 (12, 0, 0) flips 23 (cur 11) 9.4s
+it 13 |S| 50 |PHI| 150 model (12, 4972, 6526, 'OPTIMAL') exact 12 (12, 0, 0) flips 23 (cur 11) 7.5s
+it 14 |S| 50 |PHI| 150 model (11, 5144, 2705, 'OPTIMAL') exact 11 (11, 0, 0) flips 36 (cur 11) 11.0s

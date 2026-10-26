@@ -1,0 +1,92 @@
+unmixed pairs: points 66 lines 86
+lns3 geodesic tables: unmixed agree with lns2: True
+start 1 (1, 0, 0)
+pairs 118076 xor clauses 941032 vars 944232
+c [sls] 1177184 cls, minimum 118076 (new global minimum) T: 0.17
+c [sls] 1177184 cls, minimum 118076 T: 0.17
+c [lucky] no luck T: 0.12
+c [gauss] clauses deleted that are represented by XORs: 0 xorclauses: 941032 GJ matrices: 0 T: 0.09
+c [matrix] performing matrix init
+c [matrix] Too many rows in matrix: 941032 -> set usage to NO
+c [matrix] UNused matrix    941032 x944229  density:0.0000  xorlen avg:  5.00
+c [matrix] unused matrices: 1 of which too few rows: 0
+c [matrix] Using 0 matrices recovered from 941032 xors T: 0.29 T-out: N
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c   res  pol bran  nres  conf freevar  IrrL  IrrB l/longC  l/allC RedL0 RedL1 RedL2  RedB l/longC  l/allC
+c rst   foc    -  vmt     1    94  944232  236K     0    7.97    7.97    69     0     0     0    6.83    6.83
+c [reduce] 1 confl: 1001 red: 579->575 cands: 6 rem: 4 next: +1000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/4 live t1/t2/t3: 8/515/56 tiers: 2/6
+c [reduce]   kept-used: 456 kept-keep: 0 locked: 117 likely-kept lim glue/size: 131071/6
+c [reduce] 2 confl: 2002 red: 1102->1099 cands: 4 rem: 3 next: +1414 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/0/3 live t1/t2/t3: 12/1002/88 tiers: 2/6
+c [reduce]   kept-used: 892 kept-keep: 0 locked: 206 likely-kept lim glue/size: 131071/6
+c rst   stb    -  vmt     4  2024  944232  236K     0    7.97    7.97  1110     0     0     0    5.75    5.75
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c rst   foc    O   vs     5  3026  944232  236K     0    7.97    7.97  1708     0     0     0    5.93    5.93
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c rst   foc    O  vmt     6  3242  944232  236K     0    7.97    7.97  1818     0     0     0    5.93    5.93
+c [reduce] 3 confl: 3417 red: 1908->1563 cands: 460 rem: 345 next: +1732 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/275/70 live t1/t2/t3: 26/1651/231 tiers: 2/6
+c [reduce]   kept-used: 1338 kept-keep: 0 locked: 110 likely-kept lim glue/size: 4/6
+c [distill-long-red0] cls tried: 1951/1951 cl-rem: 47 cl-sh: 83 lit-rem: 118 0-depth-ass: 0
+c [distill-long-red0] budget(M): 6.31 used(M): 0.06 T: 0.00 T-out: N T-r: 97.96%
+c [distill-long-irred] cls tried: 1474/1474 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 1.47 used(M): 0.04 T: 0.01 T-out: N T-r: 93.17%
+c [distill-long-irred] cls tried: 1228/1228 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 1.23 used(M): 0.03 T: 0.01 T-out: N T-r: 93.19%
+c [reduce] 4 confl: 5149 red: 2388->1992 cands: 528 rem: 396 next: +2000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/366/30 live t1/t2/t3: 25/2180/183 tiers: 2/6
+c [reduce]   kept-used: 1819 kept-keep: 0 locked: 41 likely-kept lim glue/size: 4/6
+c rst   stb    F  vmt     9  7049  944232  236K     0    7.97    7.97  2948     0     0     0    5.80    5.80
+c [branch] adjusting to: vsids (from: vmtf) var_decay:0.95
+c [reduce] 5 confl: 7150 red: 3001->2268 cands: 978 rem: 733 next: +2236 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/608/125 live t1/t2/t3: 25/2782/194 tiers: 2/6
+c [reduce]   kept-used: 1957 kept-keep: 0 locked: 66 likely-kept lim glue/size: 4/6
+c rst   stb    F   vs    10  9096  944232  236K     0    7.97    7.97  3348     0     0     0    7.29    7.29
+c [reduce] 6 confl: 9386 red: 3518->2608 cands: 1214 rem: 910 next: +2449 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/882/28 live t1/t2/t3: 25/2971/522 tiers: 2/6
+c [reduce]   kept-used: 2223 kept-keep: 0 locked: 81 likely-kept lim glue/size: 5/6
+c rst   stb    I   vs    11 10121  944232  236K     0    7.97    7.97  3059     0     0     0    8.33    8.33
+c [reduce] 7 confl: 11835 red: 4108->3146 cands: 1283 rem: 962 next: +2645 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/911/51 live t1/t2/t3: 28/2791/1289 tiers: 2/6
+c [reduce]   kept-used: 2654 kept-keep: 0 locked: 171 likely-kept lim glue/size: 5/6
+c [distill-bin] useful/checked/potential: 0/0/0 lits-rem: 0 cl-rem: 0 0-depth-assigns: 0 T: 0.08 T-out: N
+c [reduce] 8 confl: 14481 red: 4811->3643 cands: 1558 rem: 1168 next: +2828 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/719/449 live t1/t2/t3: 30/2536/2245 tiers: 2/6
+c [reduce]   kept-used: 3143 kept-keep: 0 locked: 110 likely-kept lim glue/size: 5/6
+c rst   foc    B   vs    14 15011  944232  236K     0    7.97    7.97  3960     0     0     0   12.37   12.37
+c [branch] adjusting to: vmtf (from: vsids) var_decay:0.95
+c rst   foc    B  vmt    15 15015  944232  236K     0    7.97    7.97  3962     0     0     0   12.37   12.37
+c [reduce] 9 confl: 17309 red: 5214->3864 cands: 1801 rem: 1350 next: +3000 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/593/757 live t1/t2/t3: 31/2865/2318 tiers: 2/6
+c [reduce]   kept-used: 3409 kept-keep: 0 locked: 4 likely-kept lim glue/size: 4/6
+c rst   foc    #  vmt   446 18200  944232  236K     0    7.97    7.97  4384     0     0     0   11.03   11.03
+c [distill-long-red0] cls tried: 3457/3457 cl-rem: 117 cl-sh: 47 lit-rem: 88 0-depth-ass: 0
+c [distill-long-red0] budget(M): 50.65 used(M): 0.17 T: 0.01 T-out: N T-r: 99.29%
+c [distill-long-irred] cls tried: 11841/11841 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 11.84 used(M): 0.30 T: 0.02 T-out: N T-r: 92.70%
+c [distill-long-irred] cls tried: 9867/9867 cl-rem: 0 cl-sh: 0 lit-rem: 0 0-depth-ass: 0
+c [distill-long-irred] budget(M): 9.87 used(M): 0.25 T: 0.01 T-out: N T-r: 92.79%
+c [reduce] 10 confl: 20309 red: 5541->3946 cands: 2127 rem: 1595 next: +3162 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/567/1028 live t1/t2/t3: 32/3226/2283 tiers: 2/6
+c [reduce]   kept-used: 3396 kept-keep: 0 locked: 18 likely-kept lim glue/size: 5/9
+c [reduce] 11 confl: 23472 red: 5962->4257 cands: 2274 rem: 1705 next: +3316 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1060/645 live t1/t2/t3: 59/3889/2014 tiers: 2/6
+c [reduce]   kept-used: 3627 kept-keep: 0 locked: 61 likely-kept lim glue/size: 5/9
+c rst   foc    B  vmt  1382   24K  944232  236K     0    7.97    7.97  4737     0     0     0    9.23    9.23
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.14 T-out: N T-r: 78.42%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.00 T-out: N T-r: 99.50%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.13 T-out: N T-r: 56.84%
+c [distill-with-bin-ext] bin-based lit-rem: 0 cl-sub: 0
+c [distill-with-bin-ext] T: 0.00 T-out: N T-r: 98.99%
+c [distill] watch-based irred-- cl tried   472304 cl-sh     0 cl-rem    0 lit-rem      0 T: 0.28 T-out: N
+c [distill] watch-based   red-- cl tried     7882 cl-sh     0 cl-rem    0 lit-rem      0 T: 0.00 T-out: N
+c [reduce] 12 confl: 26788 red: 6267->4530 cands: 2317 rem: 1737 next: +3464 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/976/761 live t1/t2/t3: 64/3912/2291 tiers: 2/6
+c [reduce]   kept-used: 3900 kept-keep: 0 locked: 50 likely-kept lim glue/size: 4/7
+c [reduce] 13 confl: 30252 red: 6631->4774 cands: 2476 rem: 1857 next: +3605 T: 0.00
+c [reduce]   rem t1/t2/t3: 0/1174/683 live t1/t2/t3: 77/4132/2422 tiers: 2/6
+c [reduce]   kept-used: 4060 kept-keep: 0 locked: 95 likely-kept lim glue/size: 4/10

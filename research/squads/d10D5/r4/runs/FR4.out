@@ -1,0 +1,11 @@
+hub edges 83 over-full hubs [] flag pairs 65
+after fdrun: start 136 (135, 0, 1)
+best moves [(1, (0, 1), (0, 14)), (1, (0, 1), (14, 1)), (1, (0, 1), (14, 14)), (1, (0, 24), (0, 14)), (1, (0, 24), (14, 14)), (1, (0, 24), (14, 24)), (1, (1, 0), (1, 14)), (1, (1, 0), (14, 0)), (1, (1, 0), (14, 14)), (1, (1, 3), (1, 14))]
+after rewire: start 136 (135, 0, 1)
+after lns2 NOC0: start 136 (136, 0, 0)
+RESULT dmfast q 7 iters 12000000 best 19 (of 137200 opposite pairs) swaps accepted 935
+RESULT dmfast q 7 iters 10000000 best 12 (of 137200 opposite pairs) swaps accepted 1553
+RESULT dmfast q 7 iters 10000000 best 10 (of 137200 opposite pairs) swaps accepted 1364
+before endgame (runs/FR4_c0c.sol): start 10 (10, 0, 0)
+Terminated
+it 21 |S| 50 |PHI| 150 model (13, 4945, 5115, 'OPTIMAL') exact 13 (11, 1, 1) flips 25 (cur 12) 10.6s

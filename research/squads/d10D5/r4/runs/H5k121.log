@@ -1,0 +1,36 @@
+unmixed pairs: points 66 lines 86
+lns3 geodesic tables: unmixed agree with lns2: True
+hard pair (True, 62782)
+start 1 (1, 0, 0)
+it 1 |S| 60 |PHI| 200 model (4, 7072, 13138, 'FEASIBLE') exact 4 (4, 0, 0) flips 1 (cur 1) 31.9s
+it 2 |S| 60 |PHI| 200 model (4, 6845, 5771, 'FEASIBLE') exact 4 (4, 0, 0) flips 0 (cur 4) 31.7s
+it 3 |S| 60 |PHI| 200 model (3, 7075, 8939, 'OPTIMAL') exact 3 (3, 0, 0) flips 25 (cur 4) 16.6s
+it 4 |S| 60 |PHI| 200 model (4, 6924, 10610, 'OPTIMAL') exact 4 (4, 0, 0) flips 29 (cur 3) 11.7s
+it 5 |S| 60 |PHI| 200 model (3, 7023, 13492, 'OPTIMAL') exact 3 (3, 0, 0) flips 33 (cur 4) 7.7s
+it 6 |S| 60 |PHI| 200 model (4, 7054, 12391, 'OPTIMAL') exact 4 (4, 0, 0) flips 60 (cur 3) 12.3s
+it 7 |S| 60 |PHI| 200 model (4, 6847, 8089, 'OPTIMAL') exact 4 (4, 0, 0) flips 66 (cur 3) 7.4s
+it 8 |S| 60 |PHI| 200 model (3, 6774, 10623, 'OPTIMAL') exact 3 (3, 0, 0) flips 26 (cur 3) 8.0s
+it 9 |S| 60 |PHI| 200 model (4, 6953, 11861, 'OPTIMAL') exact 4 (4, 0, 0) flips 41 (cur 3) 12.8s
+it 10 |S| 60 |PHI| 200 model (3, 6930, 12445, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 18.7s
+it 11 |S| 60 |PHI| 200 model (3, 6818, 10772, 'OPTIMAL') exact 3 (3, 0, 0) flips 31 (cur 3) 7.0s
+it 12 |S| 60 |PHI| 200 model (3, 7082, 11232, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 10.5s
+it 13 |S| 60 |PHI| 200 model (3, 6921, 12422, 'OPTIMAL') exact 3 (3, 0, 0) flips 49 (cur 3) 7.5s
+it 14 |S| 60 |PHI| 200 model (3, 7115, 9586, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 9.6s
+it 15 |S| 60 |PHI| 200 model (3, 6794, 13432, 'OPTIMAL') exact 3 (3, 0, 0) flips 49 (cur 3) 9.2s
+it 16 |S| 60 |PHI| 200 model (4, 7021, 12315, 'OPTIMAL') exact 4 (4, 0, 0) flips 56 (cur 3) 10.7s
+it 17 |S| 60 |PHI| 200 model (3, 6867, 11721, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 19.3s
+it 18 |S| 60 |PHI| 200 model (3, 6900, 9192, 'OPTIMAL') exact 3 (3, 0, 0) flips 67 (cur 3) 6.1s
+it 19 |S| 60 |PHI| 200 model (3, 6928, 9733, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 9.5s
+it 20 |S| 60 |PHI| 200 model (3, 6749, 10355, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 14.0s
+it 21 |S| 60 |PHI| 200 model (3, 6741, 11366, 'OPTIMAL') exact 3 (3, 0, 0) flips 33 (cur 3) 6.2s
+it 22 |S| 60 |PHI| 200 model (4, 7009, 13680, 'OPTIMAL') exact 4 (4, 0, 0) flips 47 (cur 3) 20.8s
+it 23 |S| 60 |PHI| 200 model (4, 6879, 10705, 'OPTIMAL') exact 4 (4, 0, 0) flips 46 (cur 3) 7.2s
+it 24 |S| 60 |PHI| 200 model (3, 6957, 14064, 'OPTIMAL') exact 3 (3, 0, 0) flips 44 (cur 4) 13.8s
+it 25 |S| 60 |PHI| 200 model (3, 7094, 12844, 'OPTIMAL') exact 3 (3, 0, 0) flips 9 (cur 3) 6.7s
+it 26 |S| 60 |PHI| 200 model (3, 6681, 6260, 'OPTIMAL') exact 3 (3, 0, 0) flips 38 (cur 3) 5.7s
+it 27 |S| 60 |PHI| 200 model (3, 6863, 9202, 'OPTIMAL') exact 3 (3, 0, 0) flips 45 (cur 3) 6.8s
+it 28 |S| 60 |PHI| 200 model (3, 6981, 8960, 'OPTIMAL') exact 3 (3, 0, 0) flips 0 (cur 3) 17.3s
+it 29 |S| 60 |PHI| 200 model (4, 6702, 10234, 'OPTIMAL') exact 4 (4, 0, 0) flips 25 (cur 3) 7.7s
+it 30 |S| 60 |PHI| 200 model (3, 6901, 5934, 'OPTIMAL') exact 3 (3, 0, 0) flips 31 (cur 3) 4.8s
+reset to best 1
+it 31 |S| 60 |PHI| 200 model (22, 6906, 11228, 'FEASIBLE') exact 22 (22, 0, 0) flips 1 (cur 1) 31.6s

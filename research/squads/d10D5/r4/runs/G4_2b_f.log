@@ -1,0 +1,66 @@
+FLAGDEL on 4 flags
+coverage holes 0: 0 group edges required, 0 holes not patchable by hub edges
+hub graph: 918 needed same-side pairs (ordered), uncovered 24, 87 hub-hub edges
+cover cost initial 26 (hub-distance part 24)
+cover it 0 T 0.200 cost 26
+cover it 100000 T 0.193 cost 12
+cover it 200000 T 0.186 cost 9
+cover it 300000 T 0.179 cost 7
+cover it 400000 T 0.171 cost 7
+cover it 500000 T 0.165 cost 6
+cover it 600000 T 0.158 cost 5
+cover it 700000 T 0.153 cost 4
+cover it 800000 T 0.147 cost 2
+cover it 900000 T 0.141 cost 1
+cover it 1000000 T 0.135 cost 1
+cover it 1100000 T 0.130 cost 1
+cover it 1200000 T 0.125 cost 1
+cover it 1300000 T 0.119 cost 1
+cover it 1400000 T 0.114 cost 1
+cover it 1500000 T 0.109 cost 1
+cover it 1600000 T 0.105 cost 1
+cover it 1700000 T 0.101 cost 1
+cover it 1800000 T 0.097 cost 1
+cover it 1900000 T 0.093 cost 1
+cover it 2000000 T 0.089 cost 1
+cover it 2100000 T 0.086 cost 1
+cover it 2200000 T 0.082 cost 1
+cover it 2300000 T 0.079 cost 1
+cover it 2400000 T 0.076 cost 1
+cover it 2500000 T 0.072 cost 1
+cover it 2600000 T 0.069 cost 1
+cover it 2700000 T 0.067 cost 1
+cover it 2800000 T 0.064 cost 1
+cover it 2900000 T 0.061 cost 1
+cover it 3000000 T 0.059 cost 1
+cover it 3100000 T 0.056 cost 1
+cover it 3200000 T 0.054 cost 1
+cover it 3300000 T 0.052 cost 1
+cover it 3400000 T 0.050 cost 1
+cover it 3500000 T 0.048 cost 1
+cover it 3600000 T 0.046 cost 1
+cover it 3700000 T 0.044 cost 1
+cover it 3800000 T 0.042 cost 1
+cover it 3900000 T 0.041 cost 1
+cover it 4000000 T 0.039 cost 1
+cover it 4100000 T 0.037 cost 1
+cover it 4200000 T 0.036 cost 1
+cover it 4300000 T 0.034 cost 1
+cover it 4400000 T 0.033 cost 1
+cover it 4500000 T 0.032 cost 1
+cover it 4600000 T 0.030 cost 1
+cover it 4700000 T 0.029 cost 1
+cover it 4800000 T 0.028 cost 1
+cover it 4900000 T 0.027 cost 1
+cover it 5000000 T 0.026 cost 1
+cover it 5100000 T 0.025 cost 1
+cover it 5200000 T 0.024 cost 1
+cover it 5300000 T 0.023 cost 1
+cover it 5400000 T 0.022 cost 1
+cover it 5500000 T 0.021 cost 1
+hub graph after joint annealing: 87 edges, distance cost 24
+cover cost final 1
+UNC ln freed#2 target 235
+q 7 N 400 freed 9 hubs/side 3 -> n 4854; initial cost 239 (point src 122, line src 111, hub src 6); focus 293
+cover cost 1
+final cost 239 (point src 122, line src 111, hub src 6) n 4854

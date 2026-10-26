@@ -1,0 +1,23 @@
+unmixed pairs: points 78 lines 73
+lns3 geodesic tables: unmixed agree with lns2: True
+hard pairs [(True, 16356), (False, 63796), (True, 60616)]
+start 1 (1, 0, 0)
+it 1 |S| 55 |PHI| 180 model (2, 6507, 9845, 'OPTIMAL') exact 2 (2, 0, 0) flips 1 (cur 1) 8.3s
+kick accepted: hard pair fixed, new baseline 2
+it 2 |S| 55 |PHI| 180 model (3, 6328, 7239, 'OPTIMAL') exact 3 (3, 0, 0) flips 40 (cur 2) 9.2s
+it 3 |S| 55 |PHI| 180 model (3, 6533, 6640, 'OPTIMAL') exact 3 (3, 0, 0) flips 31 (cur 2) 7.3s
+it 4 |S| 55 |PHI| 180 model (3, 6602, 6501, 'OPTIMAL') exact 3 (3, 0, 0) flips 45 (cur 2) 8.7s
+it 5 |S| 55 |PHI| 180 model (3, 6467, 6640, 'OPTIMAL') exact 3 (2, 0, 1) flips 48 (cur 2) 7.1s
+it 6 |S| 55 |PHI| 180 model (3, 6213, 7075, 'OPTIMAL') exact 3 (3, 0, 0) flips 38 (cur 2) 7.9s
+it 7 |S| 55 |PHI| 180 model (2, 6400, 6285, 'OPTIMAL') exact 2 (2, 0, 0) flips 18 (cur 3) 7.2s
+it 8 |S| 55 |PHI| 180 model (3, 6496, 7336, 'OPTIMAL') exact 3 (3, 0, 0) flips 26 (cur 2) 9.6s
+it 9 |S| 55 |PHI| 180 model (3, 6438, 7578, 'OPTIMAL') exact 3 (3, 0, 0) flips 29 (cur 2) 7.9s
+it 10 |S| 55 |PHI| 180 model (3, 6701, 7234, 'OPTIMAL') exact 3 (3, 0, 0) flips 29 (cur 2) 10.4s
+it 11 |S| 55 |PHI| 180 model (2, 6640, 8883, 'OPTIMAL') exact 2 (2, 0, 0) flips 69 (cur 3) 7.7s
+it 12 |S| 55 |PHI| 180 model (3, 6685, 9057, 'OPTIMAL') exact 3 (3, 0, 0) flips 40 (cur 2) 8.5s
+it 13 |S| 55 |PHI| 180 model (3, 6402, 7153, 'OPTIMAL') exact 3 (3, 0, 0) flips 29 (cur 2) 10.3s
+it 14 |S| 55 |PHI| 180 model (3, 6331, 7067, 'OPTIMAL') exact 3 (3, 0, 0) flips 44 (cur 2) 12.0s
+it 15 |S| 55 |PHI| 180 model (3, 6471, 9573, 'OPTIMAL') exact 3 (3, 0, 0) flips 18 (cur 2) 7.3s
+it 16 |S| 55 |PHI| 180 model (3, 6674, 7829, 'OPTIMAL') exact 3 (3, 0, 0) flips 29 (cur 2) 7.8s
+it 17 |S| 55 |PHI| 180 model (3, 6281, 7134, 'OPTIMAL') exact 3 (3, 0, 0) flips 33 (cur 2) 8.3s
+it 18 |S| 55 |PHI| 180 model (2, 6199, 9060, 'OPTIMAL') exact 2 (2, 0, 0) flips 31 (cur 3) 5.4s
