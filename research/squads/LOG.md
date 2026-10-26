@@ -12,5 +12,6 @@ One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct
 - Plain (non-orbit) annealing, 2·10⁶ evaluations: record group best 12; psl 11×97 best 35. Not a route at μ ≈ 30.
 - ORBIT="6 1 0" (single orbit of size 6): only odd prime k is auto-picked; on the two groups that ran, nearly all samples uncovered. Dead end.
 - Exhaustive psl 11 × 97 (N 64,020): all 2.276·10⁸ orbit pairs checked, no pair below cost 15, no solution.
-- Exhaustive psl 11 × 103 (N 67,980): started; result to be added to research/squads/cells/raise-d6D9.md.
+- Exhaustive psl 11 × 103 (N 67,980): all 2.57·10⁸ pairs, no solution, minimum cost 13.
+- Conclusion: every orbit-reachable group in the window is closed. Record stays 127,296. Open routes (new group family with SL(3,q) or PΓL(2,8), or voltage lifts) need new code or a different program; see cell notes.
 - Record unchanged at 127,296. Details in research/squads/cells/raise-d6D9.md.

@@ -3,3 +3,9 @@ wide rows: HW order 206, rows 330, setup 0.02s
 alpha: conj by mat(5,2,6,7) (index 567), z -> 46 z on Z_103
 ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 51.64, mu/k = 17.21, fixed-point misses ~ 1.09
 EXHAUST: 22658 orbits of size 3, 2.567e+08 pairs, part 0 of 4, cost bound 15
+EXHAUST part 0: 20000000 pairs, i=3859 of 22658, 863 s
+EXHAUST part 0: 40000000 pairs, i=8752 of 22658, 1710 s
+EXHAUST part 0: 60000000 pairs, i=16881 of 22658, 2553 s
+EXHAUST part 0/4: M=22658 pairs=64170289 solutions=0 time=2724.7 s
+EXHAUST hist cost 13: 1219
+EXHAUST hist cost 63: 337996

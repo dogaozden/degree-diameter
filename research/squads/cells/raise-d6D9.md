@@ -241,4 +241,31 @@ minimum was 18, so the full minimum is probably 18. psl 11 × 97 is closed. Logs
 
 Same command with `psl 11 103`, prefix `runs/d6D9_r3/exh_psl_11_103`. 22,658 orbits, 2.567·10⁸ pairs, four parts.
 The 1M-sample minimum was 12 (17 samples at cost 12–14). Its N is above the record's, so a solution there would be
-a new record too. (Result to be added below.)
+a new record too.
+
+**Result: no solution.** All four parts finished: 256,681,153 pairs in total (about 46 min per part), `solutions=0`
+in every part. The minimum cost is **13** (4,896 pairs at cost 13, none below), so psl 11 × 103 is closed.
+Logs: `runs/d6D9_r3/exh_psl_11_103_p{0..3}.log`.
+
+### Conclusion of round 3
+
+**No record. Every group in the window that the orbit method (ORBIT="3 2 0", f = 0) can reach is now closed.**
+Exhaustive results for the groups of order 63,649 to 68,000:
+
+| group | N | μ | pairs | minimum cost | verdict |
+|---|---|---|---|---|---|
+| sl 11 × 49 (round 2) | 64,680 | 34.1 | 2.32·10⁸ | 14 | no solution |
+| psl 11 × 97 (round 3) | 64,020 | 31.2 | 2.28·10⁸ | ≥ 15 (sample 18) | no solution |
+| psl 19 × 19 (round 2) | 64,980 | 35.4 | 2.35·10⁸ | 3 | no solution |
+| psl 13 × 61 (round 2) | 66,612 | 43.7 | 2.47·10⁸ | 12 | no solution |
+| sl 13 × 31 (round 2) | 67,704 | 49.9 | 2.55·10⁸ | 6 | no solution |
+| psl 11 × 103 (round 3) | 67,980 | 51.6 | 2.57·10⁸ | 13 | no solution |
+
+The PGL twins, the products without a cyclic factor and the small-q groups are far weaker in sampling (tables above), so
+they are not expected to move this. Plain annealing is about 10⁹ evaluations short at μ ≈ 30, and the single-orbit
+k = 6 variant is degenerate. Two routes are still open, and both need new code or a different program: a group
+family with small involution count and a k = 3 fixed set that the existing families lack (SL(3, q)-type or
+PΓL(2,8) × Z43, which is not in haar_sym's families), and voltage lifts over a small bipartite base with two or more
+vertices per side (research/lifts, BEAT_16_5_SQUAD.md). I did not run either: the first needs a new group
+implementation, the second is a different program. Recommendation to the coordinator: stop compute on this cell
+with these methods, and assign an Opus session to one of the two open routes if the cell is still wanted.
