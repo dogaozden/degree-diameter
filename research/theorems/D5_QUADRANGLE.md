@@ -49,9 +49,9 @@ levels has order $(2r+1)\cdot 2N(q)$ and degree $q+1+r$. In the 2013 table [MS13
 have exactly this value for some $(q,r)$: $(10,5) = 5\cdot 2N(7)$, $(11,5) = 5\cdot 2N(8)$, $(12,5) = 5\cdot 2N(9)$,
 $(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$ (§16 on their origin).
 
-**New record.** $n_b(13,5)\ge 11{,}627$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
-$Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 57 lines with 14 concurrent
-pairs freed on five more, two-point local dualities on the other eleven, $86+61$ hubs (§11). It was checked by a
+**New record.** $n_b(13,5)\ge 11{,}636$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
+$Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 66 lines with 30 concurrent
+pairs freed on five more, two-point local dualities on the other eleven, $86+70$ hubs (§11). It was checked by a
 breadth-first search from every vertex (§15).
 
 **Theorems.**
@@ -69,8 +69,8 @@ breadth-first search from every vertex (§15).
   $M(R)$ is not needed. **Corollary 6.2**: for $q$ odd, a local duality between $Q(4,q)$ and itself (or $W(q)$ and
   itself) exists on at most **two** points, because point triads of $Q(4,q)$ have 0 or 2 centres and line triads 1 or
   $q+1$. **Proposition 6.4**: two points always work.
-- **Proposition 7.2** (§7): freed lines may come in concurrent pairs if the hubs at their slots sit at the ovoid point
-  of the partner line.
+- **Proposition 7.2** (§7): freed lines may come in concurrent pairs if the $\mathcal A$-hub at the slot of each line
+  sits at a point of its partner (e.g. the ovoid point).
 - **Families** (§10, Corollaries 10.1–10.4), valid for every $q$, with explicit sets and explicit hub graphs. For
   example, for $q$ odd, $q\ge 5$: $n_b(q+4,5)\ge 14N(q)+K_{\mathcal A}+K_{\mathcal B}$, where the explicit sets allow
   up to $\min(q^2+5,\,6q)$ and $3q+3$ hubs and the explicit hub graphs of Lemma 9.1 decide how many are used. With
@@ -78,8 +78,8 @@ breadth-first search from every vertex (§15).
 
 **What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts and
 route-chart lifts) in $(10,5)$, $(11,5)$, $(12,5)$, $(14,5)$, $(15,5)$, $(16,5)$, and far below at $\Delta\le 9$. At
-$(15,5)$ the best graph of this kind we built has 20,696 vertices, 40 short of the lab's 20,736; §14 explains which
-quantity limits it.
+$(15,5)$ the best graph of this kind we built has 20,696 vertices (20,713 expected with the best relaxed set), short of
+the lab's 20,736; §14 explains which quantity limits it.
 
 ---
 
@@ -490,32 +490,35 @@ Case (v), $v = (\ell,j')$ and $u$ a point of level $j$: we need a line $a\notin 
 count this exists iff $u\notin m\smallsetminus\{z\}$. So exactly the pairs $((u,j),(\ell,j'))$, $u\in m\smallsetminus\{z\}$,
 fail. $\square$
 
-**Proposition 7.2 (the hub rule).** Suppose that for every line $\ell\in T$ with partner $m$:
-- the $\mathcal B$-hub $h$ that takes the slot $(\ell,t)$ has its slot in level $j'$ at a point of $m$,
-  $\omega_{j'}(h)\in m$; and
-- the $\mathcal A$-hub $g$ that takes the slot $(\ell,t)$ (at $(\ell,j')$) has its slot in level $j$ at a point of $m$,
-  $\omega'_j(g)\in m$.
+**Proposition 7.2 (the hub rule).** Suppose that for every line $\ell\in T$ with partner $m$, the $\mathcal A$-hub
+$g_\ell$ that takes the $\mathcal B$-slot $(\ell,t)$ (at the vertex $(\ell,j')$) has its slot in level $j$ at a point of
+$m$: $\omega'_j(g_\ell)\in m$. Then every pair of Proposition 7.1 is at distance $\le 4$ in $X_R^+$.
 
-Then every pair of Proposition 7.1 is at distance $\le 4$ in $X_R^+$.
-*Proof.* $(\ell,j)\to h\to(\omega_{j'}(h),j')\to(n,j')\to(p,j')$ for $p\in m\smallsetminus\{z\}$, where $n = m$ if
-$\omega_{j'}(h)\ne p$ (the two points lie on $m$): length $\le 4$. Likewise
-$(\ell,j')\to g\to(\omega'_j(g),j)\to(m,j)\to(p,j)$. $\square$
+*Proof.* Let $p\in m\smallsetminus\{z\}$. The pair $((p,j),(\ell,j'))$:
+$(\ell,j')\to g_\ell\to(\omega'_j(g_\ell),j)\to(m,j)\to(p,j)$, a path of length $\le 4$ (shorter if
+$\omega'_j(g_\ell) = p$). The pair $((\ell,j),(p,j'))$: the partner of $m$ is $\ell$, so the hub $g_m$ of the slot
+$(m,t)$ sits at $(m,j')$ and, in level $j$, at a point $\omega'' = \omega'_j(g_m)$ of $\ell$; hence
+$(\ell,j)\to(\omega'',j)\to g_m\to(m,j')\to(p,j')$ has length 4. $\square$
 
 So a transition with a relaxed set is not repaired in the sense of Definition 3.3, but with the hub rule it satisfies
-(T') of Theorem 3.6. In our layouts the natural slot on $m$ is the point $o_m$ where the ovoid $O$ (freed on the
-transition $H\to D$ out of level $j'$, and on the $H\to D$ transitions into level $j$) meets $m$; $O$ meets every line
-exactly once. Distinct partnered lines $m\ne m'$ ask for distinct points: if $o_m = o_{m'}$, then $m$ and $m'$ meet in a
-point of $O$, so they are partners with meeting point in $O$. We therefore require $z\notin O$ for every partner pair
-(this is needed only so that the slots exist, not for Proposition 7.2). Each such hub must exist, which bounds the number of partnered lines:
-every partnered line uses one $\mathcal B$-hub slot per transition and one $\mathcal A$-hub (which can serve all
-transitions out of level $j$ at once, since they all ask for $o_m$ in level $j$). In the $(13,5)$ graph this allows 14
-partner pairs (§11).
+(T') of Theorem 3.6. (An earlier version of this note also asked the $\mathcal B$-hub of the slot $(\ell,t)$ to sit, in
+level $j'$, on $m$; the second path above shows that this is not needed. We found this when a graph violating that
+condition for 128 slots passed the all-pairs check.)
+
+*The hubs exist.* In our layouts the natural slot on $m$ is the $\mathcal B$-slot at the point $o_m$ where the ovoid
+$O$ meets $m$ ($O$ meets every line exactly once), freed on an $H\to D$ transition into level $j$. One $\mathcal A$-hub
+can serve the line $\ell$ on all transitions out of level $j$ at once, because they all ask for a point of $m$ in level
+$j$; so the rule needs one $\mathcal A$-hub per partnered line and per $D$-level, at most $|T|\le K_{\mathcal A}$ of
+them. Distinct partnered lines ask for distinct points: if $o_m = o_{m'}$ for $m\ne m'$, then $m$ and $m'$ meet in a
+point of $O$, so they are partners with meeting point in $O$. We therefore require $z\notin O$ for every partner pair.
+The $\mathcal B$-hubs are not constrained at all.
 
 In the language of $W(q)$ (lines of $Q(4,q)$ = points of $W(q)$, the ovoid $O$ = the spread of Lemma 1.1), $T$ is a set
 of points of $W(q)$ in which every point is collinear with at most one other, and the line joining a collinear pair is
-not in the spread. *Computer-checked*: research/theorems/d5gq/relaxed.c (annealing) finds such sets of size 58 for
-$q = 9$ (57 with at most 14 pairs) and squad card r2c2 one of size 87 for $q = 11$, against 51 and 70 for partial
-ovoids. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
+not in the spread. Counting lines (a single point uses $q+1$ lines, a pair $2q+1$, no line is shared) gives
+$|T|\le 2(q+1)(q^2+1)/(2q+1)$, i.e. at most 86 for $q = 9$ and 127 for $q = 11$. *Computer-checked*: tabu searches find
+such sets of size 66 for $q = 9$ (squad card r2c1; 30 pairs) and 87 for $q = 11$ (card r2c2), against 51 and 70 for
+partial ovoids. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
 6 partner pairs, $25+25$ hubs): with the hub rule the graph is valid (1,610 vertices, apsp), with the same sets and a hub
 assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/).
 
@@ -634,36 +637,38 @@ search all stop at 50–51), 70 ($q=11$; tabu search; 68 from unions of orbits).
 
 ## 11. The $(13,5)$ record graph
 
-**Computer-checked 11.1.** $n_b(13,5)\ge 11{,}627$.
+**Computer-checked 11.1.** $n_b(13,5)\ge 11{,}636$.
 
-*Construction* ($q = 9$, $r = 3$; research/theorems/d5gq/build_relaxed.py; solution file
-research/theorems/d5gq/graphs/d13D5_q9_relaxed_n11627.json, edges ...n11627.edges.gz).
+*Construction* ($q = 9$, $r = 3$; built by research/theorems/d5gq/wgr.py with no extra freed points, i.e. the layout of
+build_relaxed.py; solution file research/theorems/d5gq/graphs/d13D5_q9_relaxed66_n11636.json, edges
+...n11636.edges.gz).
 - $G = Q(4,9)$ as `W(9).dual()` (§1.2); levels $\mathbb Z_7$, rotational tournament, types $HHHDHHD$.
 - $H\to D$ arcs ($0\to3$, $1\to3$, $2\to3$, $4\to6$, $5\to6$): $M = \mathrm{id}$, $R = O$, the ovoid of Lemma 1.1
   (82 points).
-- $D\to H$ arcs ($3\to4$, $3\to5$, $6\to0$, $6\to1$, $6\to2$): $M = \mathrm{id}$, $R = T$, a relaxed set of 57 lines
-  with 14 partner pairs (Proposition 7.2), listed in the solution file (`T`; also graphs/W9_relaxed_set_57.json as
-  points of $W(9)$).
+- $D\to H$ arcs ($3\to4$, $3\to5$, $6\to0$, $6\to1$, $6\to2$): $M = \mathrm{id}$, $R = T$, a relaxed set of 66 lines
+  with 30 partner pairs (§7), listed in the solution file (`T`; also graphs/W9_relaxed_set_66.json as points of $W(9)$;
+  found by squad card r2c1).
 - The eleven non-friendly arcs ($0\to1$, $0\to2$, $1\to2$, $1\to4$, $2\to4$, $2\to5$, $4\to5$, $4\to0$, $5\to0$,
   $5\to1$ of type $H\to H$, and $3\to6$ of type $D\to D$): $M$ = the local duality of Proposition 6.4 on a
   two-element freed set, given in full in the solution file (`nonfriendly`).
-- Slots: $\alpha = (86,86,86,116,86,86,171)$, $\beta = (61,61,61,246,61,61,166)$; $K_{\mathcal B} = 86$,
-  $K_{\mathcal A} = 61$ hubs; the slot of every hub in every level is listed (`Bhub_slots`, `Ahub_slots`, as triples
-  (level, element, arc)), chosen so that Proposition 7.2 holds for all 28 partnered lines.
-- $Y$: 360 edges (`Y`), maximum degree 5 on the $\mathcal B$-side and $6 = q-r$ on the $\mathcal A$-side, found by
-  hubopt.py.
+- Slots: $\alpha = (86,86,86,134,86,86,198)$, $\beta = (70,70,70,246,70,70,166)$; $K_{\mathcal B} = 86$,
+  $K_{\mathcal A} = 70$ hubs; the slot of every hub in every level is listed (`Bhub_slots`, `Ahub_slots`, as triples
+  (level, element, arc)). The hub rule of Proposition 7.2 holds at all $5\cdot 60 = 300$ (arc, partnered line)
+  instances (research/theorems/d5gq/check_rule.py).
+- $Y$: 420 edges (`Y`), maximum degree 5 on the $\mathcal B$-side and $6 = q-r$ on the $\mathcal A$-side.
 
 Every two vertices in different levels are within distance 5: by Theorems B and C for the $H\to D$ and the non-friendly
 arcs, and by Propositions 7.1 and 7.2 for the $D\to H$ arcs; (HG) holds (checked over the whole graph by the builder);
-so Theorem 3.6 gives order $7\cdot 2\cdot 820+86+61 = 11{,}627$, maximum degree $13$. **Computer-checked**:
+so Theorem 3.6 gives order $7\cdot 2\cdot 820+86+70 = 11{,}636$, maximum degree $13$. **Computer-checked**:
 research/lifts/coordinator_check/apsp.c (BFS from every vertex) reports bipartite, degree max 13, diameter 5
-(graphs/d13D5_q9_relaxed_n11627.check.txt). The neighbourhood of every vertex is determined by the solution file
+(graphs/d13D5_q9_relaxed66_n11636.check.txt). The neighbourhood of every vertex is determined by the solution file
 through Definitions 2.1 and 3.1. The solution file also lists the 820 points of $\mathrm{PG}(3,9)$ and the 820 lines of
 $W(9)$ explicitly; research/theorems/d5gq/sol2edges.py re-checks that they form $W(9)$, rebuilds the graph from the file
 alone (without the builder's code) and finds exactly the same edge set.
 
 Earlier versions: 11,605 and 11,621 with a 51-point partial ovoid instead of the relaxed set (without and with the
-local dualities; graphs/d13D5_q9_typed_n11621.json), 11,626 with a 56-line relaxed set.
+local dualities; graphs/d13D5_q9_typed_n11621.json); 11,626 and 11,627 with relaxed sets of 56 and 57 lines and at most
+14 pairs, built with the stronger hub rule (graphs/d13D5_q9_relaxed_n11627.json).
 
 ---
 
@@ -724,7 +729,7 @@ the lab's value before this note (README, research/RESULTS.md).
 | (10,5) | 4,000 | 4,044 ($q=7$, $r=2$) | 4,062 ($q=7$, $r=2$) | **4,800** | doubled-matching lift of $W(7)$ |
 | (11,5) | 5,850 | 6,090 ($q=8$, $r=2$) | — | **7,020** | doubled-matching lift of $W(8)$ |
 | (12,5) | 8,200 | 8,430 ($q=8$, $r=3$) | — | **9,840** | doubled-matching lift of $W(9)$ |
-| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,627** | 11,486 | — |
+| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,636** | 11,486 | — |
 | (14,5) | 14,760 | 14,812 ($q=9$, $r=4$) | — | **17,568** | doubled-matching lift of $W(11)$ |
 | (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,696 ($q=11$, $r=3$) | **20,736** | route-chart lift |
 | (16,5) | 27,300 | 26,453 ($q=11$, $r=4$) | — | **33,792** | route-chart lift |
@@ -734,13 +739,14 @@ $(9,5)$: $6N(7) = 2{,}400$, $(7,5)$: $6N(5) = 936$) and the hubs add only $O(q)$
 and far below the lab's values.
 
 **Why we could not reach $(15,5)$** (*Heuristic*; nothing here is proved). With seven levels over $Q(4,11)$,
-$K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2c$. The lab's value needs
-$K_{\mathcal A}+K_{\mathcal B}\ge 241$; with $c = 2$ (local dualities) that means $b\ge 111$. For partial ovoids of
-$W(11)$ this is exactly Tallini's bound $q^2-q+1$, and the best we found has 70 points. Relaxed sets (§7) are not bound by
-Tallini's theorem (a set with $p$ partner pairs has at most $q^2-q+1+p$ lines), but the best we found has 87 lines and the
-hub budget of §7 allows only about 21 partner pairs. By Proposition 8.1 and the computer search of §8 no other typing of
-seven levels does better. What remains: non-friendly transitions carrying many freed points (Theorem E allows more than
-local dualities, §6.5, and third-level routing much more, §12), which we could not make work at $q = 11$ in this session.
+$K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2c$, where $b$ is the size of the freed
+sets on the $D\to H$ arcs. The lab's value needs $K_{\mathcal A}+K_{\mathcal B}\ge 241$, i.e. $b\ge 111$ when $c = 2$. For
+partial ovoids of $W(11)$ this is exactly Tallini's bound $q^2-q+1$ (best found: 70). Relaxed sets (§7) are not limited by
+Tallini's theorem, and Proposition 7.2 puts no limit on their number of pairs; counting allows up to 127 points, but the
+best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives about 20,713. So we would need
+relaxed sets of $W(11)$ about a quarter larger than any we found, or several more freed points on every non-friendly arc
+(each one on each of the ten $H\to H$ arcs adds 4 vertices). Third-level routing gives such points at $q = 5$ and $7$
+(§12), but we did not get it to work at $q = 11$ in this session.
 
 ---
 
@@ -751,7 +757,8 @@ bipartite, maximum degree, exact diameter.
 
 | graph | file (research/theorems/d5gq/) | result |
 |---|---|---|
-| $(13,5)$, $n = 11{,}627$ | graphs/d13D5_q9_relaxed_n11627.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges |
+| $(13,5)$, $n = 11{,}636$ | graphs/d13D5_q9_relaxed66_n11636.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges; hub rule checked (check_rule.py) |
+| $(13,5)$, $n = 11{,}627$ | graphs/d13D5_q9_relaxed_n11627.* | VALID; independent rebuild identical |
 | $(13,5)$, $n = 11{,}621$ | graphs/d13D5_q9_typed_n11621.* (json; rebuild with build_typed.py) | VALID |
 | $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID (beats the table, not the lab) |
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |
