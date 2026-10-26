@@ -155,10 +155,10 @@ about 4,300 evals, the best of this wave so far).
 | s63 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 16,209 | 6 (7,000 s) |
 | s64 | prod SL(2,5) × SL(2,11) × Z661 | 104,702,400 | 3,457 | 74 (stopped at 1,856 s) |
 | s65 | SL(2,53) × Z703 | 104,623,272 | 25,529 | 18 (7,000 s) |
-| s66 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | see below | 6 at 5,230 s |
-| s67 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | see below | 12 at 5,218 s |
+| s66 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 15,393 | 6 (6,600 s) |
+| s67 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 15,577 | 2 (6,600 s, closest run of the round) |
 
-No solution above 104,241,600 in wave 3. The best group here, SL(2,13) × SL(2,19) × Z7 (μ 26.2), sits at the same
+No solution above 104,241,600 in wave 3. Seed 67 ended at cost 2 (one fixed point or one orbit short). The best group here, SL(2,13) × SL(2,19) × Z7 (μ 26.2), sits at the same
 cost-6 floor as 5×19×127. Its μ is about 5% above the record group, so the same effort buys a lower chance.
 
 ## Status at the end of the session
