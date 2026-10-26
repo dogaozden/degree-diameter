@@ -51,7 +51,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (8,7) | 40,586 | Delorme, Gomez, Quisquater | reproduced | apsp.c VALID | 43,344 | attribution: the wiki credits DGQ; the construction and order are in Delorme 1985 Sec. 9 |
 | (8,8) | 201,480 | Loz | reproduced at a different reading | build_haar2.py + apsp_mt.c VALID | 239,904 | holder's construction lost; order reproduced |
 | (8,9) | 1,091,232 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c VALID, two-BFS | 1,341,600 | holder's construction lost; order reproduced |
-| (8,10) | 6,927,210 | Loz | no source found |  | 7,818,096 | no traceable construction (data lost) |
+| (8,10) | 6,927,210 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 7,818,096 | holder's construction lost; order reproduced |
 | (9,3) | 146 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (9,4) | 1,170 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (9,5) | 2,496 | Loz | reproduced at a different reading | build_haar2.py + apsp.c VALID | 2,758 | holder's construction lost; order reproduced |
@@ -66,7 +66,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (10,6) | 132,860 | bipartite Moore graph | reproduced | apsp_mt.c VALID |  |  |
 | (10,7) | 224,694 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 225,152 |  |
 | (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 |  | INVALID as read (witness pair saved); no labelling known that gives diameter 8 |
-| (10,9) | 7,057,400 | Loz | no source found |  | 8,003,856 | no traceable construction (data lost) |
+| (10,9) | 7,057,400 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 8,003,856 | holder's construction lost; order reproduced |
 | (10,10) | 50,331,156 | Loz | no source found |  | 60,141,120 | no traceable construction (data lost) |
 | (11,3) | 190 | Feria-Puron-Miller-Pineda-Villavicencio; Araujo-Pardo-Lopez | reproduced | apsp.c VALID on all three Phi_95 and on R_9 | 192 |  |
 | (11,4) | 1,734 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 1,782 |  |

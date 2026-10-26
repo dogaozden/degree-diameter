@@ -140,7 +140,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "8,10": {
-  "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051"
+  "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 4051 855 129 found here (round 2; graphs/d8D10_n6927210_meta_4051_855_129_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "9,5": {
   "notes": "n/2 = 1248 = 2^5\u00b73\u00b713",
@@ -167,7 +171,11 @@
   "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951"
  },
  "10,9": {
-  "notes": "n/2 = 3528700 = 2^2\u00b75^2\u00b77\u00b771^2"
+  "notes": "n/2 = 3528700 = 2^2\u00b75^2\u00b77\u00b771^2",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 25205 140 223 found here (round 2; graphs/d10D9_n7057400_meta_25205_140_223_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "10,10": {
   "notes": "n/2 = 25165578 = 2\u00b73\u00b743\u00b7103\u00b7947"

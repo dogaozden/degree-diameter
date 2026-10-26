@@ -34,18 +34,15 @@ for r in sorted(loz_o, key=lambda r: (int(r['d']), int(r['D']))):
 half = (len(lines) + 1) // 2
 L, R = lines[:half], lines[half:] + ['|  |  |  |'] * (half - len(lines[half:]))
 table = '| cell | value | group | cell | value | group |\n|---|---:|---|---|---:|---|\n' + '\n'.join(l + r[1:] for l, r in zip(L, R))
-loz = f"""{len(loz_o)} of the {len(loz_o) + 1} Loz cells tried were reached ((10,9) was tried in one nearly cyclic group,
-Z355 ⋊ Z9940, for 900 s and stopped at cost 86):
+loz = f"""{len(loz_o)} Loz cells are reached at exactly the table order (round 1: 23 of the 24 tried; round 2 went through
+the rest in increasing size with the same tool, tools/exact_haar.py driving research/frontier/haar_gen3; above 10⁶
+vertices each graph passes two independent two-BFS checkers, checks/haar_huge.txt):
 
 {table}
 
 These are graphs of the table's order, not necessarily Loz's graphs. (4,8) and (4,9) are cells the repo has not
-beaten, so the table value there is now backed by a checked graph. That nearly every cell tried was reached, mostly
-within minutes, makes the remaining Loz values plausible. Not reproduced here: {', '.join(cell(r) for r in loz_n)}
-(7·10⁶ to 4.1·10⁹ vertices). They are not out of reach: research/frontier/SIZE_LAW.md §3.2 found random connection
-sets in SL(2,q) × Z_n valid at or just above the table order in several of these cells (e.g. (13,9) at 51,424,320,
-(10,10) at 50,596,416, (12,9) at 30,580,704), so these Loz values are easy to match in size, just not checked here at
-their exact order."""
+beaten, so the table value there is now backed by a checked graph. Nearly every cell tried was reached within
+minutes, which makes the remaining Loz values plausible. Not reproduced: {', '.join(cell(r) for r in loz_n) or 'none'}."""
 p = os.path.join(HERE, 'AUDIT.md')
 s = open(p).read()
 s = re.sub(r'<!-- SUMMARY -->.*?<!-- /SUMMARY -->', '<!-- SUMMARY -->\n' + summary + '\n<!-- /SUMMARY -->', s, flags=re.S)

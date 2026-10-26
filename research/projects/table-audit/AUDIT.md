@@ -32,15 +32,15 @@ Of the 112 cells (counts from cells.csv):
 - **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
   the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
-- **41 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+- **43 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
-  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 23 Loz cells as Haar graphs of metacyclic
+  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 25 Loz cells as Haar graphs of metacyclic
   groups (§3).
 - **6 INVALID as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q (PhD thesis,
   Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
   checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
   at the table's q = 7..13 (§7).
-- **18 have no traceable construction**: 16 Loz cells (data lost: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)),
+- **16 have no traceable construction**: 14 Loz cells (data lost: (9,10), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)),
   and (13,8), (16,5).
 <!-- /SUMMARY -->
 
@@ -118,31 +118,29 @@ tools/meta_haar_check.c, both doing BFS from the identity on each side, which is
 multiplication is transitive on each side; checks/haar_huge.txt).
 
 <!-- LOZ -->
-23 of the 24 Loz cells tried were reached ((10,9) was tried in one nearly cyclic group,
-Z355 ⋊ Z9940, for 900 s and stopped at cost 86):
+25 Loz cells are reached at exactly the table order (round 1: 23 of the 24 tried; round 2 went through
+the rest in increasing size with the same tool, tools/exact_haar.py driving research/frontier/haar_gen3; above 10⁶
+vertices each graph passes two independent two-BFS checkers, checks/haar_huge.txt):
 
 | cell | value | group | cell | value | group |
 |---|---:|---|---|---:|---|
-| (3,9) | 506 | Z23 ⋊ Z11 | (6,10) | 452,032 | Z1009 ⋊ Z224 |
-| (4,8) | 2,184 | Z91 ⋊ Z12 | (7,5) | 1,134 | Z63 ⋊ Z9 |
-| (4,9) | 4,970 | Z71 ⋊ Z35 | (7,8) | 80,940 | Z1349 ⋊ Z30 |
-| (4,10) | 11,748 | Z89 ⋊ Z66 | (7,9) | 400,160 | Z2501 ⋊ Z80 |
-| (5,5) | 336 | Z7 ⋊ Z24 | (7,10) | 1,987,380 | Z11041 ⋊ Z90 |
-| (5,7) | 3,110 | Z311 ⋊ Z5 | (8,5) | 1,710 | Z19 ⋊ Z45 |
-| (5,8) | 9,234 | Z171 ⋊ Z27 | (8,8) | 201,480 | Z365 ⋊ Z276 |
-| (5,9) | 27,936 | Z97 ⋊ Z144 | (8,9) | 1,091,232 | Z421 ⋊ Z1296 |
+| (3,9) | 506 | Z23 ⋊ Z11 | (7,5) | 1,134 | Z63 ⋊ Z9 |
+| (4,8) | 2,184 | Z91 ⋊ Z12 | (7,8) | 80,940 | Z1349 ⋊ Z30 |
+| (4,9) | 4,970 | Z71 ⋊ Z35 | (7,9) | 400,160 | Z2501 ⋊ Z80 |
+| (4,10) | 11,748 | Z89 ⋊ Z66 | (7,10) | 1,987,380 | Z11041 ⋊ Z90 |
+| (5,5) | 336 | Z7 ⋊ Z24 | (8,5) | 1,710 | Z19 ⋊ Z45 |
+| (5,7) | 3,110 | Z311 ⋊ Z5 | (8,8) | 201,480 | Z365 ⋊ Z276 |
+| (5,8) | 9,234 | Z171 ⋊ Z27 | (8,9) | 1,091,232 | Z421 ⋊ Z1296 |
+| (5,9) | 27,936 | Z97 ⋊ Z144 | (8,10) | 6,927,210 | Z4051 ⋊ Z855 |
 | (5,10) | 90,068 | Z2047 ⋊ Z22 | (9,5) | 2,496 | Z13 ⋊ Z96 |
 | (6,5) | 684 | Z57 ⋊ Z6 | (9,8) | 449,480 | Z661 ⋊ Z340 |
 | (6,8) | 29,790 | Z331 ⋊ Z45 | (9,9) | 2,961,536 | Z1361 ⋊ Z1088 |
-| (6,9) | 117,360 | Z815 ⋊ Z72 |  |  |  |
+| (6,9) | 117,360 | Z815 ⋊ Z72 | (10,9) | 7,057,400 | Z25205 ⋊ Z140 |
+| (6,10) | 452,032 | Z1009 ⋊ Z224 |  |  |  |
 
 These are graphs of the table's order, not necessarily Loz's graphs. (4,8) and (4,9) are cells the repo has not
-beaten, so the table value there is now backed by a checked graph. That nearly every cell tried was reached, mostly
-within minutes, makes the remaining Loz values plausible. Not reproduced here: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10)
-(7·10⁶ to 4.1·10⁹ vertices). They are not out of reach: research/frontier/SIZE_LAW.md §3.2 found random connection
-sets in SL(2,q) × Z_n valid at or just above the table order in several of these cells (e.g. (13,9) at 51,424,320,
-(10,10) at 50,596,416, (12,9) at 30,580,704), so these Loz values are easy to match in size, just not checked here at
-their exact order.
+beaten, so the table value there is now backed by a checked graph. Nearly every cell tried was reached within
+minutes, which makes the remaining Loz values plausible. Not reproduced: (9,10), (10,10), (11,9), (11,10), (12,9), (12,10), (13,9), (13,10), (14,9), (14,10), (15,9), (15,10), (16,9), (16,10).
 <!-- /LOZ -->
 
 ## 4. Flags
@@ -166,7 +164,7 @@ their exact order.
    construction in the wiki's own source (Delorme–Gómez–Quisquater, "On large bipartite graphs", never published)
    may differ. Either way these six cells have no checkable graph. (15,8) is the (14,8) value reused; the thesis also
    lists N(15,8) ≥ 14,978,080 ("ΩH₁₁d"), which the wiki does not use.
-2. **No traceable construction:** 16 Loz cells (data lost), (13,8) = 5,314,680 (= 15·|H(11)| at Δ = q+2; not in
+2. **No traceable construction:** 14 Loz cells (data lost), (13,8) = 5,314,680 (= 15·|H(11)| at Δ = q+2; not in
    Gómez's thesis), (16,5) = 27,300. Of these the repo has not beaten (11,10), (15,10), (16,10). (3,10) = 800 has no
    source either, but a graph of exactly that order was found here (§3), so the value now has a checked graph.
 3. **Attribution:** (6,7) and (8,7) are coloured Delorme–Gómez–Quisquater on the wiki, but their construction and
