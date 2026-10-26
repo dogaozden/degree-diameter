@@ -2,7 +2,7 @@
 Prints voltage lines "0 x y z" for flift eval (flift's meta index: a + m*j, left multiplication) with x running over
 orbit representatives of the automorphisms (a, j) -> (u a + c [j], j), [j] = (r^j - 1)/(r - 1) (needs gcd(r-1, m) = 1),
 and {y, z} over all unordered pairs of the remaining elements. Every Haar graph H(G, S) is isomorphic to one listed.
-Usage: python3 exh_meta.py m k r [--reps] | flift BASE meta:m:k:r 4 D eval   (LIMIT=c ONLYLOW=1 for the low ones)"""
+Usage: python3 exh_meta.py m k r [--reps] [--slice i/n] | flift BASE meta:m:k:r 4 D eval   (LIMIT=c ONLYLOW=1 for the low ones)"""
 import sys
 from math import gcd
 m, k, r = map(int, sys.argv[1:4])
@@ -25,6 +25,9 @@ if "--reps" in sys.argv:
     sys.exit()
 N = m * k
 out = sys.stdout
+if "--slice" in sys.argv:                     # --slice i/n: only every n-th representative, starting at i
+    i, n = map(int, sys.argv[sys.argv.index("--slice") + 1].split("/"))
+    reps = reps[i::n]
 for x in reps:
     others = [g for g in range(1, N) if g != x]
     for i, y in enumerate(others):

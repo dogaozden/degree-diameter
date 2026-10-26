@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
             for (; i < m; i++) { long x = strtol(p, &q, 10); if (q == p) break; volt[i] = (int)(((x % N) + N) % N); p = q; }
             if (i < m) continue;
             int ok = 1; for (int u = 0; u < b; u++) if (!ok_at(u)) ok = 0;
-            if (!ok) { printf("invalid\n"); continue; }
+            if (!ok) { if (!quietok) printf("invalid\n"); continue; }
             long c = cost(lim); if (c < minc) minc = c;
             if (!quietok) printf("%ld\n", c);
             else if (c <= lim) { printf("%ld :", c); for (int i2 = 0; i2 < m; i2++) printf(" %d", volt[i2]); printf("\n"); fflush(stdout); }

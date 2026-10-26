@@ -67,3 +67,22 @@ reaches 0 and proves Z_55 x|_2 Z_20 cannot (minimum = the cost-1 trap). The anne
 Kept: (4,8) looks closed for Haar graphs of solvable groups near order 1,100 and for local surgery (floor ~217). Round 3
 moves the main effort to (4,9) (table 4,970), where a director probe already found metacyclic Haar graphs at order 2,496
 (n = 4,992) with cost 4, plus a few (4,8) cards.
+
+## 2026-10-26, big-squad-4-8, round 3 (goal: (4,9) > 4,970, plus 4 cards on (4,8))
+
+20 Haiku cards, 05:19-05:35 UTC (research/squads/b48/r3/). Moved to (4,9) after two (4,8) rounds, as the brief allows.
+Director, before the round: 4,970 = 2 x 2,485 = Haar graph size of the Frobenius group Z_71 x| Z_35; a 10 s haar_fast probe of
+64 metacyclic groups above it found cost 4 at order 2,496 and cost 2 at Z_101 x|_5 Z_25 (2,525, n = 5,050); the exhaustive
+search over all 79.5 million Haar sets of Z_101 x| Z_25 (up to automorphism) gives minimum lift-cost 2: no valid graph.
+Cards (best n / cost, (4,9) unless noted):
+- d01 Frobenius Z_p x| Z_k: 5,306 / 10. d02 large k: 4,992 / 4 (meta 104 24 7, 3 seeds). d03 k 12..19: not reported in time.
+  d04 k 6..11: 5,306 / 10. d05 exhaustive certification: one partial run (meta 421 6 21, minimum 685 so far).
+- d06 abelian-by-cyclic: 5,256 / 10. d07 PSL/SL/PGL x Z_n: 5,040 / 7 (S5 x Z_21). d08 AGL(1,q) x Z_n: 5,060 / 14.
+  d09 products: 5,040 / 9. d10 2+2 lifts: 5,020 / 24. d11 3+3 and 4+4 lifts: 5,022 / 36. d12 Cayley: 4,992 / 152.
+- d13 involution rule at D = 9: in these groups many involutions did better, not worse (meta 89 28 34 192 vs 2,772).
+- d14 orders 2,486..2,495 (no good metacyclic group): 4,984 / 192. d15 coset graphs (wildcard): 6,072 / 96.
+- d16 analysis: in meta 104 24 7 the central involution (52, 0) is far in every cost-4 solution (a plateau, not one trap).
+- (4,8) e01 exhaustive certification of 5 more groups: each minimum equals its annealing floor. e02 multi-fibre Frobenius
+  lifts: 2,328 / 120. e03 more groups of order 1,152/1,200: 2,304 / 9. e04 nilpotent groups: 2,240 / 233.
+No valid graph. Kept: nothing for (4,9) beyond the floors; the brief's next cells are (3,9) and (3,10). An earlier session
+(claude/voltage-lifts-search-6lfotq) left a (3,10) exhaustive 2+2 scan unfinished at group order 208; round 4 picks it up.
