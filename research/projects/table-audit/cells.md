@@ -83,7 +83,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (12,7) | 664,300 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 693,500 |  |
 | (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
 | (12,9) | 30,001,152 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 34,026,720 | holder's construction lost; order reproduced |
-| (12,10) | 300,383,050 | Loz | no source found |  | 325,832,976 | no traceable construction (data lost) |
+| (12,10) | 300,383,050 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 325,832,976 | holder's construction lost; order reproduced |
 | (13,3) | 274 | Araujo-Pardo-Lopez | reproduced | apsp.c VALID | 276 |  |
 | (13,4) | 3,064 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 3,146 |  |
 | (13,5) | 11,480 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp.c VALID | 11,700 |  |

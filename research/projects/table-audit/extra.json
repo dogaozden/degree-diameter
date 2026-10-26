@@ -210,7 +210,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "12,10": {
-  "notes": "n/2 = 150191525 = 5^2\u00b711\u00b7546151; = |Z_546151 x| Z_275| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 150191525 = 5^2\u00b711\u00b7546151; = |Z_546151 x| Z_275| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 546151 275 360 found here (round 2; graphs/d12D10_n300383050_meta_546151_275_360_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "13,9": {
   "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277"
