@@ -167,3 +167,8 @@ Record entering round 3: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
   (`prod agl1 4 meta 51 8 38`, `prod sl 2 meta 51 16 5`), all at cost 3. Runs table `runs/b1.tsv`.
 - **b2** (40 non-split `nmeta` candidates, 300 s, seed 1, K = 8, top by screen p1): started after b1, table `runs/b2.tsv`. Note: the queued start waited on a pgrep pattern that matched its own
   command line, so b2 did not begin until 03:47 (about 30 min lost). Restarted by hand.
+- **b2 finished** (40 non-split `nmeta` candidates, 300 s, seed 1): **0 solves**. Cost distribution: 2 (2 runs), 3 (4),
+  5 (4), 6 (4), 7 (2), more above. Best: `nmeta 543 9 43 181` (N 4,887) and `nmeta 306 16 71 153` (N 4,896), both cost 2.
+  The non-split class is no better than split metacyclic at 300 s, and it is similar to the product class.
+- **b3** (the two cost-2 non-split candidates, 1,800 s, seeds 2 and 3, K = 8; started 04:38): last test of longer runs.
+  Table `runs/b3.tsv`.
