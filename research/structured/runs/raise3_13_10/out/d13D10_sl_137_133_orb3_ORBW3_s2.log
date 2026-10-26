@@ -1,0 +1,84 @@
+group sl 137 x Z_133, N=341971728, identity 2478056, H order 57, rows 5999504, threads 1, setup 18.47s
+wide rows: HW order 238, rows 1436856, setup 35.27s
+alpha: conj by mat(101,135,50,37) (index 1914077), z -> 11 z on Z_133
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 137 (+e); mu = 24.29, mu/k = 8.10, fixed-point misses ~ 0.57
+resumed from runs/raise3_13_10/out/d13D10_sl_137_133_orb3_ORBW3_s2.ckpt: evals 6473, 4762 s spent, best 1
+ORBW=3: an uncovered fixed element weighs 3; start energy 3
+start cost=1
+t=4793 steps=5 evals=6514 cost=1 best=1 T=0.52 energy=3 bestE=3
+t=4824 steps=10 evals=6554 cost=1 best=1 T=0.18 energy=3 bestE=3
+t=4855 steps=15 evals=6594 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=4887 steps=20 evals=6634 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=4920 steps=25 evals=6674 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=4953 steps=30 evals=6714 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=4985 steps=35 evals=6754 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5017 steps=40 evals=6794 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5049 steps=45 evals=6834 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5082 steps=50 evals=6874 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5114 steps=55 evals=6914 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5148 steps=60 evals=6954 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5182 steps=65 evals=6994 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5216 steps=70 evals=7034 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5250 steps=75 evals=7074 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5282 steps=80 evals=7114 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5314 steps=85 evals=7154 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5348 steps=90 evals=7194 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5382 steps=95 evals=7234 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5414 steps=100 evals=7274 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5446 steps=105 evals=7314 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5478 steps=110 evals=7354 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5512 steps=115 evals=7394 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5546 steps=120 evals=7434 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5580 steps=125 evals=7474 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5614 steps=130 evals=7514 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5647 steps=135 evals=7554 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5680 steps=140 evals=7594 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5712 steps=145 evals=7634 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5745 steps=150 evals=7674 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5777 steps=155 evals=7714 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5810 steps=160 evals=7754 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5841 steps=165 evals=7794 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5874 steps=170 evals=7834 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5905 steps=175 evals=7874 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5938 steps=180 evals=7914 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=5972 steps=185 evals=7954 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6005 steps=190 evals=7994 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6036 steps=195 evals=8034 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6067 steps=200 evals=8074 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6100 steps=205 evals=8114 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6131 steps=210 evals=8154 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6162 steps=215 evals=8194 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6193 steps=220 evals=8234 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6225 steps=225 evals=8274 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6256 steps=230 evals=8314 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6287 steps=235 evals=8354 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6322 steps=241 evals=8402 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6357 steps=247 evals=8450 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6388 steps=252 evals=8490 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6420 steps=257 evals=8530 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6451 steps=262 evals=8570 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6482 steps=267 evals=8610 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6515 steps=272 evals=8650 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6547 steps=277 evals=8690 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6580 steps=282 evals=8730 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6611 steps=287 evals=8770 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6642 steps=292 evals=8810 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6674 steps=297 evals=8850 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6705 steps=302 evals=8890 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6736 steps=307 evals=8930 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6767 steps=312 evals=8970 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6798 steps=317 evals=9010 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6829 steps=322 evals=9050 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6861 steps=327 evals=9090 cost=1 best=1 T=0.15 energy=3 bestE=3
+t=6893 steps=332 evals=9130 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=6924 steps=337 evals=9170 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=6957 steps=342 evals=9210 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=6990 steps=347 evals=9250 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=7022 steps=352 evals=9290 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=7054 steps=357 evals=9330 cost=3 best=1 T=0.15 energy=3 bestE=3
+t=7090 steps=362 evals=9370 cost=3 best=1 T=0.15 energy=3 bestE=3
+RESULT d=13 D=10 group=sl 137 x Z_133 N=341971728 best=0 evals=9402 time=7116.2 orbit k=3 m=4 f=1 fix=137
+full diameter check: OK
+wrote runs/raise3_13_10/out/d13D10_sl_137_133_orb3_ORBW3_s2.txt
+VALID d=13 D=10 group=sl 137 x Z_133 N=341971728 vertices=683943456 (distinct generators, 13-regular simple)
+VALID d=13 D=10 vertices=683943456 eccA=10 eccB=10
