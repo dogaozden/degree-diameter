@@ -139,3 +139,37 @@ ecc from B = 12 unreached 0
 n = 268496208 edges = 1073984832 max degree = 8 min degree = 8 duplicate edges = 0
 edge list sha256 = 5b42d36e9b24ef2afca8b3b11bc5aa2aa83c6d2a362ad67c5e496545880c5aa1
 VALID d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208
+== d7D10_prod_sl_7_psl_19_1_orb3_s2 (origin/claude/raise-d7d10-record-7d5zrr, 11:17 PT)
+machine: nproc=4; free -g: total 15 used 0 free 14 available 15 (GB)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2298240 edges = 8043840 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = d977a1225993a74ae9c26e3c021d40a3e287407595eea0e499c11e74c14cd0fe
+VALID d=7 D=10 group=prod sl 7 psl 19 x Z_1 N=1149120 vertices=2298240
+== check_haar_indep.py ==
+file research/frontier/sols/d7D10_prod_sl_7_psl_19_1_orb3_s2.txt
+header: d=7 D=10 spec=prod sl 7 psl 19 NCYC=1 N=1149120
+group order |G|=1149120 (factors [336, 3420]), x Z_1 -> 1149120; vertices 2N=2298240
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=10 reached 2298240 of 2298240 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53432, 284017, 897531, 855772, 196602]
+BFS from B: ecc=10 reached 2298240 of 2298240 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53436, 284017, 897049, 855772, 197080]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2298240 (1s)
+== d8D10_prod_psl_7_psl_19_7_orb3_s1 (origin/claude/raise2-8-10-record-dmm6z4, 11:17 PT)
+machine: nproc=4; free -g: total 15 used 0 free 14 available 15 (GB)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 8043840 edges = 32175360 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = d33f0b924e098b352ba4aaa0624f71f71c1797ea58a5d3ff07f7859fce2611ee
+VALID d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 vertices=8043840
+== check_haar_indep.py ==
+file research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt
+header: d=8 D=10 spec=prod psl 7 psl 19 NCYC=7 N=4021920
+group order |G|=574560 (factors [168, 3420]), x Z_7 -> 4021920; vertices 2N=8043840
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132212, 836552, 3136496, 3165805, 750411]
+BFS from B: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132214, 836552, 3137525, 3165805, 749380]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=8043840 (5s)
