@@ -2,3 +2,9 @@ group sl 137 x Z_133, N=341971728, identity 2478056, H order 57, rows 5999504, t
 wide rows: HW order 238, rows 1436856, setup 35.27s
 alpha: conj by mat(101,135,50,37) (index 1914077), z -> 11 z on Z_133
 ORBIT k=3 m=4 f=1: |Fix(alpha)| = 137 (+e); mu = 24.29, mu/k = 8.10, fixed-point misses ~ 0.57
+resumed from runs/raise3_13_10/out/d13D10_sl_137_133_orb3_ORBW3_s2.ckpt: evals 6473, 4762 s spent, best 1
+ORBW=3: an uncovered fixed element weighs 3; start energy 3
+start cost=1
+t=4793 steps=5 evals=6514 cost=1 best=1 T=0.52 energy=3 bestE=3
+t=4824 steps=10 evals=6554 cost=1 best=1 T=0.18 energy=3 bestE=3
+t=4855 steps=15 evals=6594 cost=1 best=1 T=0.15 energy=3 bestE=3
