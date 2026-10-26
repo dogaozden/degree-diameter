@@ -249,6 +249,11 @@ left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
   at q = 4 and e^(−6.4·10⁸) at q = 7. Random-like labellings should therefore not exist at the table's q; only a
   structured one could work. research/frontier/SIZE_LAW.md finds the same for Haar graphs at (10,8), (12,8), (14,8),
   (16,8).
+- The two sibling sessions agree. own-12-8 (branch claude/own-12-8-cell-ig5jhd, research/squads/cells/d12D8_table.md)
+  proves diameter ≥ 9 for the thesis's own labelling under every reading of the figure (its Theorems 1–2, q ≥ 7) and
+  finds about 10¹⁰ far pairs for random relabellings at q = 9. own-d8-compound (branch
+  claude/own-d8-compound-1z4e6s, research/theorems/D8_COMPOUND.md) finds that every simple compound mechanism it could
+  prove or measure gives about 2q copies of I(H(q)) at diameter 8, while the table needs 2.5q + 12.5.
 - Verdict: the six D = 8 values have no checked graph. The construction can work in principle (q ≤ 3), but whether
   any labelling works at q = 7..13 is open; it would need a structured labelling that nobody has described.
 

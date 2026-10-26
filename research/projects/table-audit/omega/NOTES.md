@@ -106,6 +106,10 @@ first-moment count puts (10,8), (12,8), (14,8), (16,8) at or above what random H
 
 ## Verdict
 
+(See also own-12-8, research/squads/cells/d12D8_table.md on its branch: Theorems 1–2 prove diameter ≥ 9 for the
+thesis's labelling under every reading at q ≥ 7, and random relabellings of ΩH₉ leave about 10¹⁰ far pairs.)
+
+
 For the table's q = 7, 8, 9, 11, 13 the thesis's construction as drawn has diameter 9 (INVALID as read; witness in
 checks/witness_omega_thesis.txt). A free relabelling of the copies can repair it at q = 2, 3. Whether some labelling
 repairs it at q ≥ 4 is open: no counting argument excludes it, random-like labellings miss a fraction of about
