@@ -90,3 +90,27 @@ Log: `research/structured/runs/d12D9r3_sl83_31_orbw3_s3.log`.
 - psl 53×241 seed 1 (N 17,933,292, μ 34.9): unsolved, best 15 at 216k evals (2 h).
 - psl 47×343 seed 5 (N 17,797,584): best 12 at 97k evals (t 3,620 s of 5,700).
 - psl 47×343 seed 6: best 12 at 98k evals (t 3,619 s of 5,700).
+
+## Final state (07:27 UTC, six-hour allowance reached; no process running)
+
+**Record: 35,445,648 vertices** = 2 · |SL(2,83) × Z31| (N = 17,722,824, k = 3, m = 4, f = 0, ORBW = 3, seed 3).
+Checked by haarcheck_sl and haarcheck2 (both VALID). File: `research/frontier/sols/d12D9_sl_83_31_orb3f0_orbw3_s3.txt`.
+
+**Runs after the record (all k = 3, m = 4, f = 0, ORBW = 3, 2 h unless noted), all unsolved:**
+- psl 47×Z343 (N 17,797,584, μ 31.4): seeds 3 and 4 best 6; seeds 5 and 6 (5,700 s) best 12.
+- psl 61×Z157 (N 17,813,220, μ 31.8): best 9.
+- sl 41×Z259 (N 17,839,920, μ 32.4): best 18.
+- sl 61×Z79 (N 17,926,680, μ 34.8): best 12.
+- psl 53×Z241 (N 17,933,292, μ 34.9): best 15.
+- Earlier, below the bar: sl 43×Z223 (N 17,720,472): best 12.
+
+**Stop reason.** Every checkable group above the new bar stalls at cost 6–18 in 2-hour runs. Across round 3, the search solved
+one group in about 16 orbit runs (sl 83×Z31 at μ 29.5). The next group up needs more seeds than this session has time for, and
+the expected gain per extra seed is small. The cell is not closed; it is paused at the six-hour allowance.
+
+**What I would try next (not done here):**
+1. Checkers for prime-power q (GF(49), GF(81)). Groups psl 49×Z301 (N 17,698,800, μ 29.0), psl 81×Z67 (N 17,800,560, μ 31.4)
+   and sl 49×Z151 (N 17,757,600, μ 30.4) sit near the bar but have no independent checker. Only sl 49×Z151 and psl 81×Z67 would
+   be a record (above 17,722,824); psl 49×Z301 is below it.
+2. A search change: targeted moves on the uncovered set, not random orbit replacement. Not attempted.
+3. More seeds on psl 47×Z343 (μ 31.4, the lowest-μ checkable group above the bar), if a longer time budget is available.
