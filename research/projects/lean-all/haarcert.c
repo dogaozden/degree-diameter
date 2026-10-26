@@ -1,6 +1,6 @@
 /* haarcert.c: word certificates for Haar graphs of SL(2,p) x Z_n and PSL(2,p) x Z_n (project lean-all).
 
-   usage: haarcert SOLFILE KIND OUT.bin [scan|scan2]
+   usage: haarcert SOLFILE KIND OUT.bin [scan|scan2 [FROM TO]]
      SOLFILE  research/frontier/sols format: "D D sl|psl p n n N order", then the generators "idx mat(a,b,c,d) z=k"
      KIND     even  : x = s0 * (s1^-1 s2) (s3^-1 s4) ...      (L = D-1 letters, D even)
               left  : x = (s0^-1 s1) (s2^-1 s3) ...            (L = D-1 letters, D odd)
@@ -16,7 +16,9 @@
    Every word is re-evaluated before it is written.
    With `scan` the BFS finds each layer by scanning all elements instead of keeping frontier lists (6 bytes per
    element instead of 22; the parents, hence the words, differ from the default mode). `scan2` is `scan` without the
-   parent table (2 bytes per element): the parent of x is recomputed as x * pair^-1, so the words are those of `scan`. */
+   parent table (2 bytes per element): the parent of x is recomputed as x * pair^-1, so the words are those of `scan`.
+   With FROM TO only the words of the elements FROM <= k < TO are written (the same bytes as that part of the full
+   file). */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -90,11 +92,11 @@ static El el_of(long long k) {
 }
 
 int main(int argc, char **argv) {
-  if (argc != 4 && !(argc == 5 && (!strcmp(argv[4], "scan") || !strcmp(argv[4], "scan2")))) {
-    fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin [scan|scan2]\n"); return 2;
+  if (!(argc == 4 || ((argc == 5 || argc == 7) && (!strcmp(argv[4], "scan") || !strcmp(argv[4], "scan2"))))) {
+    fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin [scan|scan2 [FROM TO]]\n"); return 2;
   }
-  int scan = argc == 5;
-  int nopar = argc == 5 && !strcmp(argv[4], "scan2");
+  int scan = argc >= 5;
+  int nopar = argc >= 5 && !strcmp(argv[4], "scan2");
   FILE *f = fopen(argv[1], "r");
   if (!f) { perror("sol"); return 2; }
   char grp[16], w1[8], w2[8];
@@ -176,7 +178,10 @@ int main(int argc, char **argv) {
   if (!o) { perror("out"); return 2; }
   long long missing = 0;
   uint8_t buf[5];
-  for (long long k = 0; k < G; k++) {
+  long long k0 = 0, k1 = G;   /* FROM TO: only the words of the elements k0 <= k < k1 */
+  if (argc == 7) { k0 = atoll(argv[5]); k1 = atoll(argv[6]); }
+  if (k0 < 0 || k1 > G || k0 > k1) { fprintf(stderr, "bad range\n"); return 2; }
+  for (long long k = k0; k < k1; k++) {
     El x = el_of(k);
     if (idx(x) != k) { fprintf(stderr, "index error at %lld\n", k); return 1; }
     int dig[9];
