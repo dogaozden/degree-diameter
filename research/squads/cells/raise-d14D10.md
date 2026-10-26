@@ -52,7 +52,9 @@ PSL(2,151) x Z_397 (34.2, fix 74), PSL(2,139) x Z_511 (36.7, fix 67).
 - PSL(2,131) x Z_601 (N 675,511,980, mu 27.8, fix 65), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
   2,689 evals. Cost 6 until about 3,500 s, then 3 at the end (one orbit or fixed point uncovered). The earlier
   FAST=2 attempt was OOM-killed (see Memory above).
-- PSL(2,113) x Z_937 (N 675,944,304, mu 28.1, fix 56): running since 03:04 UTC.
+- PSL(2,113) x Z_937 (N 675,944,304, mu 28.1, fix 56), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
+  4,577 evals (cost 9 until about 1,700 s, 3 from about 3,000 s).
+- PSL(2,149) x Z_409 (N 676,445,100, mu 28.5, fix 74): running since 04:36 UTC.
 
 ## Round 2 summary (for reference)
 
