@@ -1,0 +1,6 @@
+group prod psl 3 psl 25 poly x^2+2 x Z_43, N=4024800, identity 1019100, H order 43, rows 93600, threads 1, setup 0.21s
+wide rows: HW order 215, rows 18720, setup 0.36s
+alpha: conj by prod[mat(1,1,2,0);mat(7,1,0,22)] (index 65225), z -> 6 z on Z_43
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 35 (+e); mu = 33.47, mu/k = 11.16, fixed-point misses ~ 0.73
+ORBW=5: an uncovered fixed element weighs 5; start energy 169
+start cost=161

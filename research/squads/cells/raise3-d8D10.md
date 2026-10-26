@@ -22,3 +22,19 @@
 
 ## Runs
 (filled in below as they start)
+
+## Window screen (orb_screen, RANDORB 1500 samples, N in [4,021,920, 4,070,000], ORBIT "3 2 2")
+Ranked by (p1+p10)/2 of random symmetric cost. Record group prod psl 7 x psl 19 x Z7 (its N is the bar) = p1 25, p10 43, median 142.
+- prod psl 3 x psl 25 x Z43 (4,024,800, μ 33.5): p1 36, p10 69, median 257. Best above-bar group with mixing near the record's.
+- prod sl 5 x psl 13 x Z31 (4,062,240, μ 37.6): p1 34, p10 67, median 282. New group (not psl 5 x sl 13).
+- prod sl 5 x sl 8 x Z67 (4,052,160, μ 36.5): p1 41, p10 75.
+- prod psl 3 x psl 13 x Z307 (4,022,928, μ 33.3): p1 156, p10 504, median 11,846. Big cyclic factor: mixes ~100x worse. DROPPED.
+- prod sl 3 x sl 11 x Z127 (4,023,360, μ 33.3): median 1,570. Poor.
+
+## Runs
+- Z307 (Q1, Q2): seeds 1, 2 stopped early: best 36 and 40 after 355 s (27k evals). Dead.
+- Q3: prod psl 3 x psl 25 x Z43, seed 11, 5400 s.
+- Q4: same group, seed 12, ORBW=5, 5400 s.
+- Q5: prod sl 5 x psl 13 x Z31 (N 4,062,240, μ 37.6), seed 1, 5400 s.
+- Q6: prod psl 3 x psl 25 x Z43, seed 13, RESTART=1, 5400 s.
+Logs: research/structured/runs/raise3-d8D10/Q*/.
