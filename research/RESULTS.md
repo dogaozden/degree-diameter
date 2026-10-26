@@ -226,3 +226,9 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 26 09:43 PT (harvest): (4,11) 19,152 (was 18,480), sl 8 poly x^3+x+1 n 19; claude/new-cells-beyond-etos3t.
 - Oct 26 09:44 PT (coordinator): (13,5) 11,700 (raised, was 11,486); (18,5) 47,600 (new cell, was 0); (19,3) 624 (new cell, was 0); (19,4) 10,982 (new cell, was 0); (19,5) 52,428 (new cell, was 0); (20,5) 75,000 (new cell, was 0); (3,11) 1,080 (new cell, was 0); (3,12) 1,320 (new cell, was 0); claude/new-cells-beyond-etos3t; all-pairs checked on the Mac mini.
+
+- Oct 26 10:17 PT (harvest): (6,12) 9,303,840 (was 0), sl 71 n 13; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (7,11) 10,648,176 (was 0), sl 43 n 67; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (7,12) 56,297,592 (was 0), psl 163 n 13; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (8,11) 43,702,560 (was 0), sl 89 n 31; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (8,12) 268,496,208 (was 0), sl 163 n 31; claude/new-cells-beyond-etos3t.
