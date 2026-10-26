@@ -52,3 +52,14 @@ Status: see the log at the bottom of this file.
 - For comparison, round 2's solved group (psl 59 x Z41) was at cost 2 to 10 within an hour, and its solve came at
   226k evaluations. These two prod leads look weaker than the solved groups. Seeds 1 and 2 finish at about 02:20;
   queues then continue with seeds 3 to 6. The verdict waits for those seeds.
+### 2026-10-26 02:20 UTC: first four seeds finished, no solve
+
+| queue | seed | best | evals |
+|---|---|---|---|
+| prod psl 7 x sl 11 x Z19 | 1 | 12 | 359,569 |
+| prod psl 7 x sl 11 x Z19 | 2 | 18 | 358,425 |
+| prod sl 7 x psl 11 x Z19 | 1 | 18 | 375,185 |
+| prod sl 7 x psl 11 x Z19 | 2 | 12 | 374,345 |
+
+Seeds 3 to 6 are running (queues end about 04:20 UTC). The remaining budget is used for them. If they all end
+at best 8 or more, the verdict is that these two groups do not reach the solve threshold at μ ≈ 43 in our budget.
