@@ -129,7 +129,7 @@ OMEGA2 = ('round 2: with a free relabelling of each copy (not in the thesis) Ome
           '(omega/NOTES.md, checks/omega_labelled.txt); at q = 4, 5 no labelling was found (G-equivariant annealing, squad '
           'table-audit-2-r1); a counting bound does not exclude labellings at any q (union bound / n = 4.3 at q = 7, 3.7 at q = 9)')
 ROUND2 = {
-    '10,8': dict(check='as read, diameter 9 (checks/omega_D8.txt); witness pair d(980400, 20073) = 9 (checks/witness_omega7_thesis.txt)',
+    '10,8': dict(check='as read, diameter 9 (checks/omega_D8.txt); witness pair d(980400, 20073) = 9 (checks/witness_omega_thesis.txt)',
                  flag='INVALID as read (witness pair saved); no labelling known that gives diameter 8', notes=OMEGA2),
     '13,8': dict(notes='round 2: in the table since the first wiki revision (17 Jan 2012) in DGQ green; not bold in Perez-Roses 2012 '
                        'Table 5.1, so not from Loz\'s voltage search; Perez-Roses cites DGQ "On large bipartite graphs" as an '
@@ -153,7 +153,7 @@ ROUND2 = {
 }
 for d in (11, 12, 14, 15, 16):
     ROUND2[f'{d},8'] = dict(flag='INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for '
-                                 'q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known '
+                                 'q = 7 in checks/witness_omega_thesis.txt, for q = 9 on branch own-12-8); no labelling known '
                                  'that gives diameter 8', notes=OMEGA2)
 for k in ('3,9', '4,8', '4,9', '4,10', '5,5', '5,7', '5,8', '5,9', '5,10', '6,5', '6,8', '6,9', '6,10', '7,5', '7,8', '7,9', '7,10',
           '8,5', '8,8', '8,9', '8,10', '9,5', '9,8', '9,9', '9,10') + tuple(f'{d},{D}' for d in range(10, 17) for D in (9, 10)):

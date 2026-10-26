@@ -107,7 +107,7 @@ first-moment count puts (10,8), (12,8), (14,8), (16,8) at or above what random H
 ## Verdict
 
 For the table's q = 7, 8, 9, 11, 13 the thesis's construction as drawn has diameter 9 (INVALID as read; witness in
-checks/witness_omega7_thesis.txt). A free relabelling of the copies can repair it at q = 2, 3. Whether some labelling
+checks/witness_omega_thesis.txt). A free relabelling of the copies can repair it at q = 2, 3. Whether some labelling
 repairs it at q ≥ 4 is open: no counting argument excludes it, random-like labellings miss a fraction of about
 e^(−ratio) of the targets, and local search removes only a third of the misses. A repair at the table's q would need
 a structured labelling whose routes nearly tile each copy; none is known.

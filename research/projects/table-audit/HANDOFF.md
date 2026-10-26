@@ -57,7 +57,7 @@ Nothing. Every check in checks/ is complete.
 Done:
 - D = 8 (Gómez's ΩH_q): `omega/` has the construction with an arbitrary labelling of every copy, an exact evaluator,
   a symmetric annealer, a profiler, an independent wiring check, Singer-type automorphisms of H(q) and the union
-  bound. Thesis wiring: witness pair at the (10,8) order (checks/witness_omega7_thesis.txt). Free labelling: ΩH₃ has
+  bound. Thesis wiring: witness pair at the (10,8) order (checks/witness_omega_thesis.txt). Free labelling: ΩH₃ has
   diameter 8 (omega/labs/, checks/omega_labelled.txt). q = 4, 5: not found (lead runs + squad table-audit-2-r1).
   q = 7: random start measured (6.8 million far pairs from 2,064 hub representatives); not searched to the end.
   Verdict in omega/NOTES.md and AUDIT.md §7.

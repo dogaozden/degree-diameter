@@ -39,7 +39,7 @@ Of the 112 cells (counts from cells.csv):
   metacyclic groups (§3).
 - **6 INVALID as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q (PhD thesis,
   Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
-  checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
+  checks/witness_omega_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
   at the table's q = 7..13 (§7).
 - **5 have no traceable construction**: 4 Loz cells (data lost: (13,10), (14,10), (15,10), (16,10)),
   and (16,5).
@@ -221,7 +221,7 @@ left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
 **D = 8 cells (Gómez's ΩH_q).**
 - As drawn (same row label in every copy) the graph has diameter 9 at every table q: counting bound
   (tools/omega_bound.py, any pairing σ), ΩH₇ at the (10,8) order with an explicit witness pair, d(980400, 20073) = 9,
-  re-checked by an independent BFS and an independent wiring check (checks/witness_omega7_thesis.txt); ΩH₉ exactly 9
+  re-checked by an independent BFS and an independent wiring check (checks/witness_omega_thesis.txt); ΩH₉ exactly 9
   on branch own-12-8. Verdict for (10,8), (11,8), (12,8), (14,8), (15,8), (16,8): **INVALID as read**.
 - With a free labelling of every copy (each copy marks its own point and line per row; not in the thesis) the
   construction can reach D₁ + 2: ΩH₂ (round 1) and now **ΩH₃: 14,560 vertices, 6-regular, diameter 8**, two
