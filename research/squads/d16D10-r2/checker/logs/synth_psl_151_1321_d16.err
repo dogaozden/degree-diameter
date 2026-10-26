@@ -1,0 +1,25 @@
+  bfs(side0=0) step 0: side A -> new 16, 0.205 s
+  bfs(side0=0) step 1: side B -> new 240, 0.277 s
+  bfs(side0=0) step 2: side A -> new 3600, 0.187 s
+  bfs(side0=0) step 3: side B -> new 53994, 0.297 s
+  bfs(side0=0) step 4: side A -> new 809385, 0.269 s
+  bfs(side0=0) step 5: side B -> new 12100993, 0.685 s
+  bfs(side0=0) step 6: side A -> new 174644451, 2.351 s
+  bfs(side0=0) step 7: side B -> new 1578406569, 18.793 s
+  bfs(side0=0) step 8: side A -> new 2098511921, 41.356 s
+  bfs(side0=0) step 9: side B -> new 683407603, 37.677 s
+  bfs(side0=0) step 10: side A -> new 27, 10.874 s
+  bfs(side0=0) step 11: side B -> new 0, 0.700 s
+  bfs(side0=1) step 0: side B -> new 16, 0.222 s
+  bfs(side0=1) step 1: side A -> new 240, 0.257 s
+  bfs(side0=1) step 2: side B -> new 3600, 0.324 s
+  bfs(side0=1) step 3: side A -> new 53994, 0.290 s
+  bfs(side0=1) step 4: side B -> new 809385, 0.376 s
+  bfs(side0=1) step 5: side A -> new 12100993, 0.744 s
+  bfs(side0=1) step 6: side B -> new 174644451, 2.275 s
+  bfs(side0=1) step 7: side A -> new 1578408586, 19.399 s
+  bfs(side0=1) step 8: side B -> new 2098511921, 43.339 s
+  bfs(side0=1) step 9: side A -> new 683405586, 37.407 s
+  bfs(side0=1) step 10: side B -> new 27, 10.880 s
+  bfs(side0=1) step 11: side A -> new 0, 0.710 s
+# threads=2 bfsA=119.995s bfsB=116.424s total=236.419s maxrss=1088MB

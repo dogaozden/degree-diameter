@@ -1,0 +1,7 @@
+group sl 19 x Z_1981, N=13550040, identity 677502, H order 63, rows 215080, threads 1, setup 0.59s
+wide rows: HW order 140, rows 96786, setup 1.51s
+alpha: conj by mat(17,4,3,3) (index 6197), z -> 44 z on Z_1981
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 17 (+e); mu = 18.39, mu/k = 6.13, fixed-point misses ~ 0.20
+start cost=30
+t=30 steps=301 evals=2409 cost=9 best=9 T=0.53
+TRACE steps=600 hash=f7468b61499afc7a best=9 evals=4801

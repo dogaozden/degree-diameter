@@ -1,0 +1,7 @@
+group sl 53 x Z_91, N=13542984, identity 250796, H order 63, rows 214968, threads 1, setup 1.36s
+wide rows: HW order 234, rows 57876, setup 2.51s
+alpha: conj by mat(24,10,30,28) (index 67923), z -> 9 z on Z_91
+ORBIT k=3 m=5 f=1: |Fix(alpha)| = 53 (+e); mu = 18.25, mu/k = 6.08, fixed-point misses ~ 0.60
+ORBW=3: an uncovered fixed element weighs 3; start energy 18
+start cost=16
+TRACE steps=173 hash=38e068dbb05ad43e best=0 evals=1385

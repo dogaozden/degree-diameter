@@ -1,0 +1,14 @@
+group psl 311 x Z_151, N=2271033960 (2N=4542067920), rows 48360 x 46961 bits (doubled row 1488 words), memory 1.30 GB, threads 1
+alpha: conj by mat(0,310,1,58), z -> 8 z on Z_151 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=18.137 mu=30.17
+setup 0.0s
+FIXF: 154 alpha-fixed elements other than e (1.2s); FIXTRY 200 FIXMAX 0
+RANDORB sample 0 cost 50 (4.8s) fixed holes: full 10 screen 10
+RANDORB sample 1 cost 47 (8.5s) fixed holes: full 2 screen 2
+RANDORB sample 2 cost 37 (11.9s) fixed holes: full 7 screen 7
+RANDORB sample 3 cost 31 (15.7s) fixed holes: full 6 screen 6
+RANDORB sample 4 cost 35 (19.4s) fixed holes: full 5 screen 5
+RANDORB sample 5 cost 29 (22.7s) fixed holes: full 4 screen 4
+RANDORB sample 6 cost 36 (26.4s) fixed holes: full 6 screen 6
+RANDORB sample 7 cost 66 (30.7s) fixed holes: full 6 screen 6
+RANDORB sample 8 cost 57 (34.6s) fixed holes: full 2 screen 2
+RANDORB sample 9 cost 29 (38.0s) fixed holes: full 9 screen 9

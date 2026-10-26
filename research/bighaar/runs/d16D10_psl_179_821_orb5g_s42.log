@@ -1,0 +1,435 @@
+group psl 179 x Z_821, N=2354283180 (2N=4708566360), rows 16020 x 146959 bits (doubled row 4616 words), memory 1.32 GB, threads 1
+alpha: conj by mat(0,178,1,74), z -> 51 z on Z_821 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=17.495 mu=59.38
+setup 0.0s
+FIXF: 89 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
+start cost=61 (5.2s per eval)
+t=24 step=1 evals=5 slot=0 cand=40 cost=40 best=40 T=1.26 screened=61 (6s) fh=0,0,0,0
+t=39 step=2 evals=9 slot=1 cand=40 cost=40 best=40 T=1.06 screened=88 (7s) fh=0,0,0,0
+t=56 step=3 evals=13 slot=0 cand=45 cost=45 best=40 T=0.89 screened=125 (11s) fh=0,0,0,0
+t=74 step=4 evals=17 slot=1 cand=65 cost=45 best=40 T=0.75 screened=166 (15s) fh=0,0,0,0
+t=91 step=5 evals=21 slot=2 cand=40 cost=40 best=40 T=0.63 screened=190 (17s) fh=0,0,0,0
+t=105 step=6 evals=25 slot=1 cand=55 cost=40 best=40 T=0.53 screened=211 (19s) fh=0,0,0,0
+t=122 step=7 evals=29 slot=0 cand=60 cost=40 best=40 T=0.45 screened=235 (21s) fh=0,0,0,0
+t=137 step=8 evals=33 slot=0 cand=60 cost=40 best=40 T=0.38 screened=269 (25s) fh=0,0,0,0
+t=155 step=9 evals=37 slot=0 cand=35 cost=35 best=35 T=0.32 screened=304 (29s) fh=0,0,0,0
+t=171 step=10 evals=41 slot=1 cand=35 cost=35 best=35 T=0.27 screened=343 (32s) fh=0,0,0,0
+t=190 step=11 evals=45 slot=2 cand=60 cost=35 best=35 T=0.22 screened=386 (36s) fh=0,0,0,0
+t=210 step=12 evals=49 slot=1 cand=50 cost=35 best=35 T=0.19 screened=465 (43s) fh=0,0,0,0
+t=224 step=13 evals=53 slot=2 cand=65 cost=35 best=35 T=0.16 screened=493 (45s) fh=0,0,0,0
+t=242 step=14 evals=57 slot=2 cand=35 cost=35 best=35 T=0.15 screened=537 (49s) fh=0,0,0,0
+t=257 step=15 evals=61 slot=2 cand=>35 cost=35 best=35 T=0.15
+t=276 step=16 evals=65 slot=1 cand=35 cost=35 best=35 T=0.15 screened=636 (59s) fh=0,0,0,0
+t=294 step=17 evals=69 slot=2 cand=>35 cost=35 best=35 T=0.15
+t=313 step=18 evals=73 slot=1 cand=>35 cost=35 best=35 T=0.15
+t=331 step=19 evals=77 slot=0 cand=>35 cost=35 best=35 T=0.15
+t=349 step=20 evals=81 slot=1 cand=>35 cost=35 best=35 T=0.15
+t=372 step=21 evals=85 slot=1 cand=30 cost=30 best=30 T=0.15 screened=967 (88s) fh=0,0,0,0
+t=390 step=22 evals=89 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=408 step=23 evals=93 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=429 step=24 evals=97 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=445 step=25 evals=101 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=466 step=26 evals=105 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=484 step=27 evals=109 slot=1 cand=>30 cost=30 best=30 T=0.15
+t=498 step=28 evals=113 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=511 step=29 evals=117 slot=1 cand=>30 cost=30 best=30 T=0.15
+t=523 step=30 evals=121 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=534 step=31 evals=125 slot=1 cand=>30 cost=30 best=30 T=0.15
+t=551 step=32 evals=129 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=563 step=33 evals=133 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=575 step=34 evals=137 slot=1 cand=>30 cost=30 best=30 T=0.15
+t=587 step=35 evals=141 slot=1 cand=>30 cost=30 best=30 T=0.15
+t=598 step=36 evals=145 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=609 step=37 evals=149 slot=2 cand=>30 cost=30 best=30 T=0.15
+t=621 step=38 evals=153 slot=0 cand=>30 cost=30 best=30 T=0.15
+t=635 step=39 evals=157 slot=2 cand=20 cost=20 best=20 T=0.15 screened=1807 (150s) fh=0,0,0,0
+t=646 step=40 evals=161 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=658 step=41 evals=165 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=669 step=42 evals=169 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=681 step=43 evals=173 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=692 step=44 evals=177 slot=2 cand=20 cost=20 best=20 T=0.15 screened=1923 (158s) fh=0,0,0,0
+t=705 step=45 evals=181 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=721 step=46 evals=185 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=733 step=47 evals=189 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=747 step=48 evals=193 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=761 step=49 evals=197 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=774 step=50 evals=201 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=787 step=51 evals=205 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=798 step=52 evals=209 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=810 step=53 evals=213 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=823 step=54 evals=217 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=837 step=55 evals=221 slot=0 cand=20 cost=20 best=20 T=0.15 screened=2517 (194s) fh=0,0,0,0
+t=849 step=56 evals=225 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=864 step=57 evals=229 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=876 step=58 evals=233 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=888 step=59 evals=237 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=899 step=60 evals=241 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=911 step=61 evals=245 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=924 step=62 evals=249 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=939 step=63 evals=253 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=951 step=64 evals=257 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=963 step=65 evals=261 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=975 step=66 evals=265 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=987 step=67 evals=269 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=999 step=68 evals=273 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1009 step=69 evals=277 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1020 step=70 evals=281 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1032 step=71 evals=285 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1044 step=72 evals=289 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1056 step=73 evals=293 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1069 step=74 evals=297 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1083 step=75 evals=301 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1095 step=76 evals=305 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1111 step=77 evals=309 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1123 step=78 evals=313 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1135 step=79 evals=317 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1148 step=80 evals=321 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1160 step=81 evals=325 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1173 step=82 evals=329 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1185 step=83 evals=333 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1197 step=84 evals=337 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1208 step=85 evals=341 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1219 step=86 evals=345 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1232 step=87 evals=349 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1244 step=88 evals=353 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1258 step=89 evals=357 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1271 step=90 evals=361 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1282 step=91 evals=365 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1294 step=92 evals=369 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1305 step=93 evals=373 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1316 step=94 evals=377 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1329 step=95 evals=381 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1341 step=96 evals=385 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1354 step=97 evals=389 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1365 step=98 evals=393 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1380 step=99 evals=397 slot=0 cand=>20 cost=20 best=20 T=0.15
+reheat at step 100: back to best S, cost 20
+t=1395 step=100 evals=402 slot=0 cand=>20 cost=20 best=20 T=1.50
+t=1406 step=101 evals=406 slot=2 cand=40 cost=20 best=20 T=1.26 screened=4409 (312s) fh=0,0,0,0
+t=1419 step=102 evals=410 slot=2 cand=45 cost=20 best=20 T=1.06 screened=4439 (314s) fh=0,0,0,0
+t=1434 step=103 evals=414 slot=0 cand=30 cost=20 best=20 T=0.89 screened=4520 (318s) fh=0,0,0,0
+t=1451 step=104 evals=418 slot=0 cand=60 cost=20 best=20 T=0.75 screened=4607 (324s) fh=0,0,0,0
+t=1466 step=105 evals=422 slot=0 cand=55 cost=20 best=20 T=0.63 screened=4679 (328s) fh=0,0,0,0
+t=1479 step=106 evals=426 slot=0 cand=25 cost=20 best=20 T=0.53 screened=4721 (330s) fh=0,0,0,0
+t=1493 step=107 evals=430 slot=0 cand=40 cost=20 best=20 T=0.45 screened=4767 (333s) fh=0,0,0,0
+t=1507 step=108 evals=434 slot=2 cand=70 cost=20 best=20 T=0.38 screened=4831 (337s) fh=0,0,0,0
+t=1526 step=109 evals=438 slot=1 cand=50 cost=20 best=20 T=0.32 screened=4984 (345s) fh=0,0,0,0
+t=1539 step=110 evals=442 slot=0 cand=50 cost=20 best=20 T=0.27 screened=5001 (346s) fh=0,0,0,0
+t=1552 step=111 evals=446 slot=2 cand=45 cost=20 best=20 T=0.22 screened=5032 (349s) fh=0,0,0,0
+t=1565 step=112 evals=450 slot=2 cand=50 cost=20 best=20 T=0.19 screened=5082 (352s) fh=0,0,0,0
+t=1581 step=113 evals=454 slot=0 cand=45 cost=20 best=20 T=0.16 screened=5155 (356s) fh=0,0,0,0
+t=1595 step=114 evals=458 slot=1 cand=45 cost=20 best=20 T=0.15 screened=5204 (360s) fh=0,0,0,0
+t=1608 step=115 evals=462 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1621 step=116 evals=466 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1635 step=117 evals=470 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1650 step=118 evals=474 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1663 step=119 evals=478 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1675 step=120 evals=482 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1687 step=121 evals=486 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1700 step=122 evals=490 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1712 step=123 evals=494 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1727 step=124 evals=498 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1738 step=125 evals=502 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1751 step=126 evals=506 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1763 step=127 evals=510 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1774 step=128 evals=514 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1788 step=129 evals=518 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1802 step=130 evals=522 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1817 step=131 evals=526 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1829 step=132 evals=530 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1840 step=133 evals=534 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1852 step=134 evals=538 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1867 step=135 evals=542 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1879 step=136 evals=546 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1891 step=137 evals=550 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1904 step=138 evals=554 slot=0 cand=>20 cost=20 best=20 T=0.15
+t=1918 step=139 evals=558 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1931 step=140 evals=562 slot=2 cand=>20 cost=20 best=20 T=0.15
+t=1944 step=141 evals=566 slot=1 cand=>20 cost=20 best=20 T=0.15
+t=1959 step=142 evals=570 slot=0 cand=15 cost=15 best=15 T=0.15 screened=6696 (450s) fh=0,0,0,0
+t=1972 step=143 evals=574 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=1988 step=144 evals=578 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2000 step=145 evals=582 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2015 step=146 evals=586 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2025 step=147 evals=590 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2037 step=148 evals=594 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2052 step=149 evals=598 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2066 step=150 evals=602 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2078 step=151 evals=606 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2090 step=152 evals=610 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2103 step=153 evals=614 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2114 step=154 evals=618 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2131 step=155 evals=622 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2144 step=156 evals=626 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2159 step=157 evals=630 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2171 step=158 evals=634 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2183 step=159 evals=638 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2198 step=160 evals=642 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2209 step=161 evals=646 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2222 step=162 evals=650 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2234 step=163 evals=654 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2248 step=164 evals=658 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2260 step=165 evals=662 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2274 step=166 evals=666 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2288 step=167 evals=670 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2300 step=168 evals=674 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2313 step=169 evals=678 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2325 step=170 evals=682 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2338 step=171 evals=686 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2355 step=172 evals=690 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2366 step=173 evals=694 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2376 step=174 evals=698 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2391 step=175 evals=702 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2406 step=176 evals=706 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2421 step=177 evals=710 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2437 step=178 evals=714 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2447 step=179 evals=718 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2459 step=180 evals=722 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2471 step=181 evals=726 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2483 step=182 evals=730 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2499 step=183 evals=734 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2511 step=184 evals=738 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2525 step=185 evals=742 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2537 step=186 evals=746 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2550 step=187 evals=750 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2562 step=188 evals=754 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2579 step=189 evals=758 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2594 step=190 evals=762 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2609 step=191 evals=766 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2623 step=192 evals=770 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2640 step=193 evals=774 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2651 step=194 evals=778 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2664 step=195 evals=782 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2679 step=196 evals=786 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2693 step=197 evals=790 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2706 step=198 evals=794 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=2719 step=199 evals=798 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=2731 step=200 evals=802 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2741 step=201 evals=806 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2755 step=202 evals=810 slot=1 cand=>15 cost=15 best=15 T=0.15
+reheat at step 203: back to best S, cost 15
+t=2772 step=203 evals=815 slot=2 cand=>15 cost=15 best=15 T=1.50
+t=2784 step=204 evals=819 slot=0 cand=50 cost=15 best=15 T=1.26 screened=10312 (672s) fh=0,0,0,0
+t=2797 step=205 evals=823 slot=1 cand=85 cost=15 best=15 T=1.06 screened=10338 (674s) fh=0,0,0,0
+t=2814 step=206 evals=827 slot=1 cand=60 cost=15 best=15 T=0.89 screened=10459 (680s) fh=0,0,0,0
+t=2827 step=207 evals=831 slot=0 cand=40 cost=15 best=15 T=0.75 screened=10515 (684s) fh=0,0,0,0
+t=2842 step=208 evals=835 slot=0 cand=35 cost=15 best=15 T=0.63 screened=10571 (687s) fh=0,0,0,0
+t=2858 step=209 evals=839 slot=0 cand=55 cost=15 best=15 T=0.53 screened=10666 (693s) fh=0,0,0,0
+t=2873 step=210 evals=843 slot=2 cand=45 cost=15 best=15 T=0.45 screened=10743 (697s) fh=0,0,0,0
+t=2889 step=211 evals=847 slot=2 cand=65 cost=15 best=15 T=0.38 screened=10833 (702s) fh=0,0,0,0
+t=2902 step=212 evals=851 slot=0 cand=45 cost=15 best=15 T=0.32 screened=10852 (703s) fh=0,0,0,0
+t=2915 step=213 evals=855 slot=2 cand=60 cost=15 best=15 T=0.27 screened=10891 (706s) fh=0,0,0,0
+t=2929 step=214 evals=859 slot=0 cand=40 cost=15 best=15 T=0.22 screened=10947 (709s) fh=0,0,0,0
+t=2944 step=215 evals=863 slot=2 cand=55 cost=15 best=15 T=0.19 screened=11017 (713s) fh=0,0,0,0
+t=2959 step=216 evals=867 slot=0 cand=50 cost=15 best=15 T=0.16 screened=11101 (718s) fh=0,0,0,0
+t=2974 step=217 evals=871 slot=2 cand=35 cost=15 best=15 T=0.15 screened=11169 (722s) fh=0,0,0,0
+t=2985 step=218 evals=875 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=2996 step=219 evals=879 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3008 step=220 evals=883 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3021 step=221 evals=887 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3031 step=222 evals=891 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3043 step=223 evals=895 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3056 step=224 evals=899 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3071 step=225 evals=903 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3082 step=226 evals=907 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3096 step=227 evals=911 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3110 step=228 evals=915 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3124 step=229 evals=919 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3135 step=230 evals=923 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3147 step=231 evals=927 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3159 step=232 evals=931 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3173 step=233 evals=935 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3184 step=234 evals=939 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3197 step=235 evals=943 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3211 step=236 evals=947 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3224 step=237 evals=951 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3236 step=238 evals=955 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3251 step=239 evals=959 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3263 step=240 evals=963 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3276 step=241 evals=967 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3291 step=242 evals=971 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3308 step=243 evals=975 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3321 step=244 evals=979 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3336 step=245 evals=983 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3349 step=246 evals=987 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3363 step=247 evals=991 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3376 step=248 evals=995 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3387 step=249 evals=999 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3401 step=250 evals=1003 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3416 step=251 evals=1007 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3429 step=252 evals=1011 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3440 step=253 evals=1015 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3455 step=254 evals=1019 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3468 step=255 evals=1023 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3482 step=256 evals=1027 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3496 step=257 evals=1031 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3509 step=258 evals=1035 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3522 step=259 evals=1039 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3533 step=260 evals=1043 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3545 step=261 evals=1047 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3558 step=262 evals=1051 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3568 step=263 evals=1055 slot=2 cand=>15 cost=15 best=15 T=0.15
+reheat at step 264: back to best S, cost 15
+t=3582 step=264 evals=1060 slot=1 cand=>15 cost=15 best=15 T=1.50
+t=3598 step=265 evals=1064 slot=1 cand=30 cost=15 best=15 T=1.26 screened=13759 (880s) fh=0,0,0,0
+t=3610 step=266 evals=1068 slot=2 cand=60 cost=15 best=15 T=1.06 screened=13780 (881s) fh=0,0,0,0
+t=3623 step=267 evals=1072 slot=1 cand=60 cost=15 best=15 T=0.89 screened=13812 (883s) fh=0,0,0,0
+t=3639 step=268 evals=1076 slot=1 cand=60 cost=15 best=15 T=0.75 screened=13890 (888s) fh=0,0,0,0
+t=3652 step=269 evals=1080 slot=2 cand=65 cost=15 best=15 T=0.63 screened=13941 (892s) fh=0,0,0,0
+t=3666 step=270 evals=1084 slot=0 cand=40 cost=15 best=15 T=0.53 screened=13984 (895s) fh=0,0,0,0
+t=3679 step=271 evals=1088 slot=2 cand=60 cost=15 best=15 T=0.45 screened=14003 (896s) fh=0,0,0,0
+t=3691 step=272 evals=1092 slot=0 cand=50 cost=15 best=15 T=0.38 screened=14024 (897s) fh=0,0,0,0
+t=3704 step=273 evals=1096 slot=0 cand=70 cost=15 best=15 T=0.32 screened=14070 (900s) fh=0,0,0,0
+t=3719 step=274 evals=1100 slot=0 cand=40 cost=15 best=15 T=0.27 screened=14129 (905s) fh=0,0,0,0
+t=3734 step=275 evals=1104 slot=0 cand=50 cost=15 best=15 T=0.22 screened=14192 (908s) fh=0,0,0,0
+t=3747 step=276 evals=1108 slot=0 cand=50 cost=15 best=15 T=0.19 screened=14204 (909s) fh=0,0,0,0
+t=3762 step=277 evals=1112 slot=0 cand=25 cost=15 best=15 T=0.16 screened=14274 (913s) fh=0,0,0,0
+t=3775 step=278 evals=1116 slot=1 cand=60 cost=15 best=15 T=0.15 screened=14298 (915s) fh=0,0,0,0
+t=3787 step=279 evals=1120 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3802 step=280 evals=1124 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3813 step=281 evals=1128 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3823 step=282 evals=1132 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3834 step=283 evals=1136 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3845 step=284 evals=1140 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3859 step=285 evals=1144 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3874 step=286 evals=1148 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3887 step=287 evals=1152 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3899 step=288 evals=1156 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3912 step=289 evals=1160 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3928 step=290 evals=1164 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3940 step=291 evals=1168 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3953 step=292 evals=1172 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=3965 step=293 evals=1176 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=3977 step=294 evals=1180 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=3989 step=295 evals=1184 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4001 step=296 evals=1188 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4015 step=297 evals=1192 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4027 step=298 evals=1196 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4038 step=299 evals=1200 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4052 step=300 evals=1204 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4065 step=301 evals=1208 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4076 step=302 evals=1212 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4091 step=303 evals=1216 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4103 step=304 evals=1220 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4120 step=305 evals=1224 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4133 step=306 evals=1228 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4145 step=307 evals=1232 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4156 step=308 evals=1236 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4169 step=309 evals=1240 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4185 step=310 evals=1244 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4199 step=311 evals=1248 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4215 step=312 evals=1252 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4228 step=313 evals=1256 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4240 step=314 evals=1260 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4252 step=315 evals=1264 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4267 step=316 evals=1268 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4280 step=317 evals=1272 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4292 step=318 evals=1276 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4304 step=319 evals=1280 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4316 step=320 evals=1284 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4328 step=321 evals=1288 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4345 step=322 evals=1292 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4356 step=323 evals=1296 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4372 step=324 evals=1300 slot=0 cand=>15 cost=15 best=15 T=0.15
+reheat at step 325: back to best S, cost 15
+t=4386 step=325 evals=1305 slot=0 cand=>15 cost=15 best=15 T=1.50
+t=4401 step=326 evals=1309 slot=2 cand=45 cost=15 best=15 T=1.26 screened=16857 (1074s) fh=0,0,0,0
+t=4414 step=327 evals=1313 slot=2 cand=40 cost=15 best=15 T=1.06 screened=16906 (1077s) fh=0,0,0,0
+t=4428 step=328 evals=1317 slot=1 cand=80 cost=15 best=15 T=0.89 screened=16961 (1080s) fh=0,0,0,0
+t=4444 step=329 evals=1321 slot=2 cand=40 cost=15 best=15 T=0.75 screened=17048 (1086s) fh=0,0,0,0
+t=4458 step=330 evals=1325 slot=0 cand=50 cost=15 best=15 T=0.63 screened=17102 (1089s) fh=0,0,0,0
+t=4473 step=331 evals=1329 slot=2 cand=55 cost=15 best=15 T=0.53 screened=17177 (1093s) fh=0,0,0,0
+t=4489 step=332 evals=1333 slot=2 cand=65 cost=15 best=15 T=0.45 screened=17268 (1098s) fh=0,0,0,0
+t=4502 step=333 evals=1337 slot=0 cand=55 cost=15 best=15 T=0.38 screened=17316 (1101s) fh=0,0,0,0
+t=4515 step=334 evals=1341 slot=1 cand=30 cost=15 best=15 T=0.32 screened=17355 (1103s) fh=0,0,0,0
+t=4529 step=335 evals=1345 slot=2 cand=55 cost=15 best=15 T=0.27 screened=17384 (1105s) fh=0,0,0,0
+t=4541 step=336 evals=1349 slot=1 cand=35 cost=15 best=15 T=0.22 screened=17428 (1108s) fh=0,0,0,0
+t=4556 step=337 evals=1353 slot=0 cand=45 cost=15 best=15 T=0.19 screened=17507 (1112s) fh=0,0,0,0
+t=4572 step=338 evals=1357 slot=1 cand=45 cost=15 best=15 T=0.16 screened=17580 (1117s) fh=0,0,0,0
+t=4586 step=339 evals=1361 slot=2 cand=50 cost=15 best=15 T=0.15 screened=17641 (1120s) fh=0,0,0,0
+t=4600 step=340 evals=1365 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4611 step=341 evals=1369 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4622 step=342 evals=1373 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4635 step=343 evals=1377 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4647 step=344 evals=1381 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4662 step=345 evals=1385 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4678 step=346 evals=1389 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4693 step=347 evals=1393 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4709 step=348 evals=1397 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4725 step=349 evals=1401 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4738 step=350 evals=1405 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4751 step=351 evals=1409 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4763 step=352 evals=1413 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4774 step=353 evals=1417 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4788 step=354 evals=1421 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4801 step=355 evals=1425 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4812 step=356 evals=1429 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4824 step=357 evals=1433 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4835 step=358 evals=1437 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4847 step=359 evals=1441 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4858 step=360 evals=1445 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4871 step=361 evals=1449 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4882 step=362 evals=1453 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4897 step=363 evals=1457 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4909 step=364 evals=1461 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4923 step=365 evals=1465 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=4936 step=366 evals=1469 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4949 step=367 evals=1473 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4962 step=368 evals=1477 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4974 step=369 evals=1481 slot=0 cand=>15 cost=15 best=15 T=0.15
+t=4986 step=370 evals=1485 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=4999 step=371 evals=1489 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=5014 step=372 evals=1493 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=5028 step=373 evals=1497 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=5043 step=374 evals=1501 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=5055 step=375 evals=1505 slot=2 cand=>15 cost=15 best=15 T=0.15
+t=5069 step=376 evals=1509 slot=1 cand=>15 cost=15 best=15 T=0.15
+t=5086 step=377 evals=1513 slot=0 cand=10 cost=10 best=10 T=0.15 screened=19780 (1250s) fh=0,0,0,0
+t=5101 step=378 evals=1517 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5115 step=379 evals=1521 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5129 step=380 evals=1525 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5146 step=381 evals=1529 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5159 step=382 evals=1533 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5172 step=383 evals=1537 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5189 step=384 evals=1541 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5200 step=385 evals=1545 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5211 step=386 evals=1549 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5229 step=387 evals=1553 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5240 step=388 evals=1557 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5252 step=389 evals=1561 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5265 step=390 evals=1565 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5275 step=391 evals=1569 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5290 step=392 evals=1573 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5301 step=393 evals=1577 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5314 step=394 evals=1581 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5324 step=395 evals=1585 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5337 step=396 evals=1589 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5350 step=397 evals=1593 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5361 step=398 evals=1597 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5374 step=399 evals=1601 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5389 step=400 evals=1605 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5401 step=401 evals=1609 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5412 step=402 evals=1613 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5424 step=403 evals=1617 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5439 step=404 evals=1621 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5451 step=405 evals=1625 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5462 step=406 evals=1629 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5476 step=407 evals=1633 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5490 step=408 evals=1637 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5505 step=409 evals=1641 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5517 step=410 evals=1645 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5528 step=411 evals=1649 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5541 step=412 evals=1653 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5552 step=413 evals=1657 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5565 step=414 evals=1661 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5582 step=415 evals=1665 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5593 step=416 evals=1669 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5605 step=417 evals=1673 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5617 step=418 evals=1677 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5631 step=419 evals=1681 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5642 step=420 evals=1685 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5654 step=421 evals=1689 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5666 step=422 evals=1693 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5679 step=423 evals=1697 slot=1 cand=>10 cost=10 best=10 T=0.15
+t=5692 step=424 evals=1701 slot=2 cand=>10 cost=10 best=10 T=0.15
+t=5704 step=425 evals=1705 slot=0 cand=>10 cost=10 best=10 T=0.15
+t=5718 step=426 evals=1709 slot=0 cand=>10 cost=10 best=10 T=0.15

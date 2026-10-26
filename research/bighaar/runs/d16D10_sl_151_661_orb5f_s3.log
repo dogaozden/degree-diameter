@@ -1,0 +1,23 @@
+group sl 151 x Z_661, N=2275690800 (2N=4551381600), rows 22800 x 99811 bits (doubled row 3144 words), memory 1.29 GB, threads 1
+alpha: conj by mat(0,150,1,27), z -> 197 z on Z_661 (fixed z: 1); ORBIT k=5 m=3 f=1; W=4.11893e+10 lambda=18.100 mu=31.37
+setup 0.0s
+FIXF: 149 alpha-fixed elements other than e (0.2s); FIXTRY 200 FIXMAX 0
+start cost=27 (5.8s per eval)
+t=31 step=1 evals=5 slot=2 cand=25 cost=25 best=25 T=1.26 screened=123 (14s) fh=0,0,0,0
+t=70 step=2 evals=9 slot=0 cand=20 cost=20 best=20 T=1.06 screened=340 (41s) fh=0,0,0,0
+t=102 step=3 evals=13 slot=2 cand=20 cost=20 best=20 T=0.89 screened=504 (61s) fh=0,0,0,0
+t=139 step=4 evals=17 slot=1 cand=20 cost=20 best=20 T=0.75 screened=732 (87s) fh=0,0,0,0
+t=166 step=5 evals=21 slot=0 cand=15 cost=15 best=15 T=0.63 screened=875 (104s) fh=0,0,0,0
+t=192 step=6 evals=25 slot=0 cand=10 cost=10 best=10 T=0.53 screened=996 (118s) fh=0,0,0,0
+t=220 step=7 evals=29 slot=2 cand=30 cost=10 best=10 T=0.45 screened=1134 (135s) fh=0,0,0,0
+t=236 step=8 evals=33 slot=1 cand=15 cost=10 best=10 T=0.38 screened=1171 (139s) fh=0,0,0,0
+t=257 step=9 evals=37 slot=2 cand=25 cost=10 best=10 T=0.32 screened=1253 (150s) fh=0,0,0,0
+t=286 step=10 evals=41 slot=0 cand=25 cost=10 best=10 T=0.27 screened=1405 (167s) fh=0,0,0,0
+t=322 step=11 evals=45 slot=2 cand=25 cost=10 best=10 T=0.22 screened=1565 (190s) fh=0,0,0,0
+t=344 step=12 evals=49 slot=1 cand=30 cost=10 best=10 T=0.19 screened=1624 (199s) fh=0,0,0,0
+t=363 step=13 evals=53 slot=1 cand=25 cost=10 best=10 T=0.16 screened=1687 (207s) fh=0,0,0,0
+t=382 step=14 evals=57 slot=1 cand=25 cost=10 best=10 T=0.15 screened=1753 (215s) fh=0,0,0,0
+t=397 step=15 evals=61 slot=1 cand=40 cost=10 best=10 T=0.15 screened=1778 (217s) fh=0,0,0,0
+t=422 step=16 evals=65 slot=0 cand=25 cost=10 best=10 T=0.15 screened=1902 (232s) fh=0,0,0,0
+t=455 step=17 evals=69 slot=0 cand=25 cost=10 best=10 T=0.15 screened=2089 (253s) fh=0,0,0,0
+t=507 step=18 evals=73 slot=2 cand=15 cost=10 best=10 T=0.15 screened=2452 (294s) fh=0,0,0,0
