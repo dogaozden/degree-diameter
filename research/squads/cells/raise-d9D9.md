@@ -113,7 +113,7 @@ list). Top of the ranking by (p1+p10)/2 (fix = |Fix(α)|):
 |---|---|---|---|---|---|---|---|---|
 | 1 | prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 54 | 57 | 94 | 210 |
 | 2 | psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 53 | 60 | 93 | 157 |
-| 3 | prod psl 9 sl 17 1 (same group as rank 1, other order) | 1,762,560 | 33.2 | 161 | 46 | 63 | 94 | 215 |
+| 3 | prod psl 9 sl 17 1 (PSL(2,9) x SL(2,17); a different group of the same order to rank 1) | 1,762,560 | 33.2 | 161 | 46 | 63 | 94 | 215 |
 | 4 | prod psl 3 psl 19 43 | 1,764,720 | 33.7 | 26 | 45 | 79 | 121 | 258 |
 | 5 | prod sl 3 psl 13 67 (= prod psl 3 sl 13 67) | 1,755,936 | 31.8 | 35 | 78 | 99 | 148 | 378 |
 
