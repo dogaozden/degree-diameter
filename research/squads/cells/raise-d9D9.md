@@ -125,3 +125,32 @@ list). Top of the ranking by (p1+p10)/2 (fix = |Fix(α)|):
 Calibration: the record group (prod psl 7 sl 7 x Z_31, solved) gives min 42, p1 51, p10 96, median 203 on the same sampler.
 So psl 73 x Z_9 has the record group's lower tail at μ 30.6 (the lowest μ above the record); rank 1 and 4 are the other leads.
 Caveat: 300 samples per group; the lower tail of a random sample predicts the start point, not the search outcome.
+
+## Round 3 verdict (about 5 h of compute on 3–4 cores)
+
+**Not raised.** The record stays at 3,499,776. No run reached cost 0, so nothing was written to research/frontier/sols/.
+
+Final results (all K = 3, m = 3, f = 0, RESTART=1, 9,000 s each, THREADS 1):
+
+| group | N | μ | |Fix| | seed(s) | best cost | evals |
+|---|---|---|---|---|---|---|
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 43 | **4** | 2.99·10⁶ |
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 61 | **4** | 2.89·10⁶ |
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 62 | 8 | 2.92·10⁶ |
+| psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 51 | 15 | 4.22·10⁶ |
+| prod psl 3 sl 13 67 | 1,755,936 | 31.8 | 35 | 41 | 14 | 2.59·10⁶ |
+
+Reading. Across rounds 2 and 3 the sl 9 psl 17 1 group reached cost 4 in three independent seeds and never 0. Round 1 and 2 had
+cost 5 there. So the group has a clear floor at 4 uncovered elements under this annealer. Its fixed-point misses
+(~8.6 by the §1 model) are the likely cause; the cost-4 states are probably a few fixed elements uncovered.
+
+Lessons for the coordinator:
+- The screen (orb_screen.py --anyn, window 1,749,889–1,766,000) found no group with a better random-orbit tail than
+  these. psl 73 × Z_9 (μ 30.6) matched the record group's tail but stalled at cost 15.
+- prod psl 3 psl 19 43 (|Fix| 26, rank 4 in the screen) got only the round-2 one-hour run. It is the one untested
+  low-|Fix| lead in the window.
+- A dedicated fixed-point fix (ORBW=k weighting, or a cheaper orbit evaluation from STRUCTURE §7.4 for q ≥ 64; sl 121 1
+  qualifies) is the next thing that could move the cost-4 floor. Neither was tried here.
+
+Not done this round: SL(3,q) centralizers (STRUCTURE §7.3), the §7.4 evaluation, k = 3 with f = 3 at m = 2 (§8 already
+found f = 0 better at (9,8)).
