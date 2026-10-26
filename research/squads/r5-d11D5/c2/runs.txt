@@ -1,0 +1,7 @@
+# card c2 runs (round r5-d11D5), start e2_4.in cost 654 dev 0, REF=research/d11D5/dc/e2_4.in
+# format: run | LAM | T0 T1 | SECS | SEED | best cost | dev at best | final RESULT line | out file
+lam015 | LAM=0.15 | T0=0.6 T1=0.08 | SECS=300 | SEED=11 | cost 78 | dev 428 | RESULT best=78 iters=218068 accepted=1666 | research/squads/r5-d11D5/c2/lam015.in
+lam10 | LAM=1.0 | T0=0.6 T1=0.08 | SECS=300 | SEED=11 | cost 78 | dev 325 | RESULT best=78 iters=217045 accepted=1036 | research/squads/r5-d11D5/c2/lam10.in
+lam20 | LAM=2.0 | T0=0.6 T1=0.08 | SECS=300 | SEED=11 | cost 144 | dev 199 | RESULT best=144 iters=211936 accepted=509 | research/squads/r5-d11D5/c2/lam20.in
+two-stage stage 1 = lam10 (run 2, LAM=1.0, identical settings, reused as its OUT to save time) -> stage 2 LAM=0.2 below
+stage2 | LAM=0.2 (from lam10.in) | T0=0.6 T1=0.08 | SECS=300 | SEED=12 | cost 68 | dev 401 | RESULT best=68 iters=220962 accepted=988 | research/squads/r5-d11D5/c2/stage2.in
