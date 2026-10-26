@@ -1,0 +1,9 @@
+group sl 71 x Z_13, N=4651920, identity 64610, H order 52, rows 89460, threads 1, setup 0.45s
+wide rows: HW order 234, rows 19880, setup 0.74s
+alpha: conj by mat(37,69,29,33) (index 191374), z -> 3 z on Z_13
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 71 (+e); mu = 9.32, mu/k = 3.11, fixed-point misses ~ 0.91
+start cost=11
+RESULT d=6 D=12 group=sl 71 x Z_13 N=4651920 best=0 evals=65 time=1.2 orbit k=3 m=2 f=0 fix=71
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D12_sl_71_13_orb3f0_s2.txt

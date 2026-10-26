@@ -1,0 +1,9 @@
+group psl 31 x Z_73, N=1086240, identity 33945, H order 31, rows 35040, threads 1, setup 0.31s
+wide rows: HW order 219, rows 4960, setup 0.44s
+alpha: conj by mat(3,18,22,29) (index 2967), z -> 8 z on Z_73
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 14 (+e); mu = 14.30, mu/k = 4.77, fixed-point misses ~ 0.71
+start cost=1524
+t=30 steps=1215 evals=9721 cost=9 best=8 T=0.53
+t=60 steps=2494 evals=19953 cost=9 best=8 T=0.19
+t=90 steps=3570 evals=28561 cost=6 best=6 T=0.15
+t=120 steps=4685 evals=37481 cost=6 best=6 T=0.15

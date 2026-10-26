@@ -12,3 +12,9 @@ saved ../sols/d18D9_sl_127_193_orb3_s2.txt
 15:56:37 end
 15:56:37 start 19 9 sl 131 271 orbit 3 6 1
 RESULT d=19 D=9 group=sl 131 x Z_271 N=609197160 vertices=1218394320 best=0 evals=1 steps=0 time=5.9 orbit k=3 m=6 f=1 mu=2.93
+from (e,B): all reached within 9, ecc 9 (125.732 s)
+VALID d=19 D=9 group=sl 131 x Z_271 N=609197160 vertices=1218394320 threads=2 time=277.353 bfs_A=151.621 bfs_B=125.732
+saved ../sols/d19D9_sl_131_271_orb3_s2.txt
+16:01:29 end
+16:01:29 start 20 9 psl 163 421 orbit 3 6 2
+RESULT d=20 D=9 group=psl 163 x Z_421 N=911587932 vertices=1823175864 best=0 evals=9 steps=2 time=42.5 orbit k=3 m=6 f=2 mu=2.62

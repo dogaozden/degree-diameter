@@ -70,3 +70,12 @@ length ≤ 4 with jump sum ≡ 0 mod 5 and at least one jump reach both Z2 class
 annealed ν, σ_1 and σ_2 together against that cost and reached 0 far pairs in about two minutes. The graph is 13-regular
 with diameter exactly 5 (graphs/d13D5_n11700_W8_2dm_Z10.edges.gz; checks/d13D5_n11700_W8_2dm_Z10.check.txt; rebuilt
 identically from research/squads/beyond/r2/d05/st_run2.txt).
+
+## Referee (squad card r2/d06)
+
+The card re-read the proof case by case and found no gap (both colours, all distance types, simplicity, regularity).
+Computer tests: with the director's ν on W(13), k = 1 gives 28,560 vertices with diameter 5 (apsp VALID); a ν with
+exactly one opposite pair failing (A) (built by a targeted dmfast run) gives diameter 6, as the proof predicts when no
+route rescues the pair. Pure (A) was not reached by annealing at q = 3, 4, 5, 7 (best 17, 11, 65, 48 failing pairs), in
+line with the first-moment count; at q = 4, k = 3 the best ν still gives diameter 5 through routes (2,380 vertices),
+so (A) is sufficient, not necessary. Files: research/squads/beyond/r2/d06/.
