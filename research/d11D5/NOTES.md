@@ -200,3 +200,21 @@ Effect on the structural cost (plusopt7):
   condition holds; what is left is coset +1 from l* and from the L_i to other lines (line side).
 - Two pairs (mkdc2.py KS=2: the second hyperbolic line in the plane delta(axis)^perp, so one C keeps both switches'
   lines isotropic): 604-1,310 (earlier two-pair starts: 2,000-5,000).
+
+### What the two-pair search needed (n = 587, 7,044)
+
+- Frozen-bulk annealing (sigma swaps only among ~140-250 points near the switches, rest kept at delta o C) stalls at
+  ~100 (one pair) and ~400 (two pairs); the penalised annealer po7R (REF sigma, LAM per deviating point) trades
+  structure for cost (squad c2: LAM 2 keeps 2/3 of sigma but stalls at 144). So the structure is a start, not an
+  invariant: every successful run moves 300-500 sigma values.
+- Two incident regulus switches under one C (dc/mkdc2.py KS=2, start 604): po7 900 s -> 52 (below the round-3
+  plateau of 150-230), cold anneal stays at 48.
+- **K22 switch** (squad r5 card c8, research/squads/r5-d11D5/c8/k22.py): new points x*, y* both on new lines l*, m*;
+  x* on 7 old lines delta(R), R in a hyperbolic line h1, y* on 7 from h2; the 14 removed points split 7/7 onto l*, m*;
+  sigma = delta o C, with sigma(C^-1(Ra)) = l*, sigma(x*) = delta(Ra) for an omitted point Ra of h1 (and the same for
+  y*, m*, h2). Start 414 -> po7 18 -> cold po7 12 (two seeds, the same 6 conditions: three coset-0 demands and three
+  coset +-1 line pairs around l*, m*) -> wpo with LMAX 3000, DECAY 10: 8, 2 (the demand (switch line 104, old line 532
+  through its moved point 250)), 0 -> nujoint TARGET=1 from a random nu: 0 violated in 89 s -> 7,044, apsp VALID.
+  wpo with the default LMAX 500 drifts up from 12-18 and never improves; LMAX 3000 with DECAY 10 found 8 in 59 s.
+- Where the K22 helps: both new points are on both new lines, so the new vertices are pairwise within distance 2;
+  with two separate switches they are far apart and their coverage demands on sigma do not overlap.

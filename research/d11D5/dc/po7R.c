@@ -107,6 +107,18 @@ int main(int argc, char **argv) {
     int *locl = malloc(4L * n), nloc = 0; uint8_t *isloc = calloc(n, 1);
     if (getenv("LOCAL")) { FILE *g = fopen(getenv("LOCAL"), "r"); int v; while (fscanf(g, "%d", &v) == 1) if (v >= 0 && v < n && !isloc[v]) { isloc[v] = 1; locl[nloc++] = v; } fclose(g); printf("local points %d\n", nloc); }
     if (getenv("SCORE")) return 0;
+    if (getenv("GREEDY")) {   /* steepest descent over sigma swaps (a, b) with a in the new points / preimages of new lines (ids >= N0) */
+        int N0 = atoi(getenv("GREEDY")); long cur = c; int improved = 1, rounds = 0;
+        while (improved && rounds < 50) { improved = 0; rounds++;
+            int cand[64], nc = 0; for (int x = N0; x < n && nc < 60; x++) { cand[nc++] = x; cand[nc++] = sinv[x]; }
+            for (int i = 0; i < nc; i++) { int a = cand[i]; long bestc = cur; int bestb = -1;
+                for (int b = 0; b < n; b++) { if (b == a) continue;
+                    int la = sig[a], lb = sig[b]; sig[a] = lb; sig[b] = la; sinv[lb] = a; sinv[la] = b;
+                    long c2 = total(); if (c2 < bestc) { bestc = c2; bestb = b; }
+                    sig[a] = la; sig[b] = lb; sinv[la] = a; sinv[lb] = b; }
+                if (bestb >= 0) { int b = bestb, la = sig[a], lb = sig[b]; sig[a] = lb; sig[b] = la; sinv[lb] = a; sinv[la] = b; cur = bestc; improved = 1;
+                    printf("greedy round %d: swap %d %d -> %ld\n", rounds, a, b, cur); fflush(stdout); } } }
+        if (getenv("OUT")) save(getenv("OUT"), ln, sig); printf("GREEDY done cost %ld\n", cur); return 0; }
     if (getenv("TWOSTEP")) {   /* one failing same-side pair (v1, v2): force the sigma-relation, then repair */
         int v1 = hv[0], v2 = nhv > 1 ? hv[1] : hv[0]; int part = getenv("PART") ? atoi(getenv("PART")) : 0, nparts = getenv("NPARTS") ? atoi(getenv("NPARTS")) : 1;
         printf("failing vertices %d %d (hot %d)\n", v1, v2, nhv); fflush(stdout);
