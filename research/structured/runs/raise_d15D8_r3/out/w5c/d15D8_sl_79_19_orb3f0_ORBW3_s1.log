@@ -1,0 +1,7 @@
+group sl 79 x Z_19, N=9366240, identity 117078, H order 57, rows 164320, threads 1, setup 0.21s
+wide rows: HW order 247, rows 37920, setup 0.35s
+alpha: conj by mat(40,1,19,40) (index 249659), z -> 7 z on Z_19
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 77 (+e); mu = 51.02, mu/k = 17.01, fixed-point misses ~ 1.37
+ORBW=3: an uncovered fixed element weighs 3; start energy 51
+start cost=45
+t=30 steps=406 evals=3249 cost=21 best=21 T=0.53 energy=21 bestE=21

@@ -371,3 +371,36 @@ Any solve in wave 3 beats the record (18,403,200), since all four groups have N 
 - Saved as `research/frontier/sols/d15D8_psl_41_271_orb5f0_ORBW5_s1.txt` (+ `.log`).
 - Gain over the previous record 18,510,720: +155,760 (+0.84 %).
 - Still running: sl 61 × Z41 (N 9,303,720; below this N, so it no longer beats the record), psl 41 × Z271 seed 2 (same N, cannot beat), pgl 61 × Z41 (N 9,303,720; below this N).
+
+### Wave 3 end (runs stopped at ~5,200 s; none beat the record)
+
+- sl 61 × Z41 (k = 5, ORBW=5): best cost 6 after 5.06·10⁵ evaluations (N = 9,303,720 < 9,333,240, cannot beat the record).
+- pgl 61 × Z41 (k = 5, ORBW=5): best cost 10 (N = 9,303,720, same reason).
+- psl 41 × Z271 seed 2 (plain, same N as the record): best cost 2 after 2.2·10⁵ evaluations.
+
+### Screen above the record (N > 9,333,240; RANDORB 300 samples)
+
+k = 5 candidates were all unusable: prod psl 5 × sl 8 × Z311 (|Fix| = 2,519, min 5·10⁶), prod psl 3 × psl 25 × Z101
+(|Fix| = 299, median 3,085), prod sl 3 × sl 13 × Z181 (|Fix| = 52,415, cost ~9.4·10⁶).
+
+k = 3 candidates at μ 49–51:
+
+| group | N | μ | |Fix| | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|
+| psl 59 × Z91 | 9,342,060 | 49.3 | 29 | 24 | 30 | 45 | 64 |
+| sl 79 × Z19 | 9,366,240 | 51.0 | 77 | 23 | 31 | 43 | 61 |
+| prod psl 7 × psl 7 × Z331 | 9,342,144 | 49.3 | 8 | 33 | 54 | 75 | 118 |
+
+For comparison, the record group psl 41 × Z271 (k = 5, μ 48.7) had min 18, p1 29, p10 41, median 68. psl 59 × Z91 and
+sl 79 × Z19 look comparable, so they were run next.
+
+### Wave 5 (5400 s each, started 03:25 UTC; k = 3, m = 5, f = 0)
+
+| job | group | N | μ | flags | seed |
+|---|---|---|---|---|---|
+| w5a | psl 59 × Z91 | 9,342,060 | 49.3 | ORBW=3 | 1 |
+| w5b | psl 59 × Z91 | 9,342,060 | 49.3 | plain | 2 |
+| w5c | sl 79 × Z19 | 9,366,240 | 51.0 | ORBW=3 | 1 |
+| w5d | sl 79 × Z19 | 9,366,240 | 51.0 | plain | 2 |
+
+Any solve in wave 5 beats the record (18,666,480).
