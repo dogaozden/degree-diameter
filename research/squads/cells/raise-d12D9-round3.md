@@ -64,3 +64,14 @@ Log: `research/structured/runs/d12D9r3_sl83_31_orbw3_s3.log`.
 - sl 43×223 seed 3: best 12 at 85.9k evals (stuck since ~50k).
 - psl 47×343 seed 3: best 18 at 90.6k evals (stuck since ~45k).
 - psl 61×157 seed 1 (N 17,813,220, μ 31.8) started 02:17 UTC, 2 h, on the core freed by the screen.
+
+### Batch 1 result (03:25 UTC)
+- sl 83×31 seed 3: **solved** at 184k evals → record 35,445,648 (see RECORD above).
+- psl 47×343 seed 3 (N 17,797,584): unsolved, best 6 at 211k evals (2 h).
+- sl 43×223 seed 3 (N 17,720,472): unsolved, best 12 at 198k evals (2 h). Now below the bar, so no further runs.
+
+### Batch 2 (bar N > 17,722,824), started 03:23–03:30 UTC, 2 h each
+- sl 41×259 seed 1 (N 17,839,920, μ 32.4): started 03:23, best 42 at 4k evals at first check.
+- psl 61×157 seed 1 (N 17,813,220): best 12 at 76k evals (t 4,110 s).
+- sl 61×79 seed 1 (N 17,926,680, μ 34.8): started 03:25, best 94 at the first check.
+- psl 47×343 seed 4 (N 17,797,584): started 03:26, best 86 at the first check.
