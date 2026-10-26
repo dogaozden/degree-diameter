@@ -145,3 +145,28 @@ Status and any wave 3 results: see the sections below.
 The large cyclic factors (Z2587, Z7243) cover far worse than any group tried here: the start cost is already 1,600–25,000
 and annealing does not bring it under about 300. They were dropped. Cores moved to SL(2,13) × SL(2,19) × Z7 (cost 12 at
 about 4,300 evals, the best of this wave so far).
+
+## Wave 3 final (06:50–07:17 UTC)
+
+| job | group | N | evals | best cost |
+|---|---|---|---|---|
+| s61 | prod SL(2,5) × SL(2,7) × Z2587 | 104,307,840 | 4,873 | 316 (stopped at 1,857 s) |
+| s62 | prod SL(2,5) × SL(2,5) × Z7243 | 104,299,200 | 425 | 1,770 (stopped at 627 s) |
+| s63 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 16,209 | 6 (7,000 s) |
+| s64 | prod SL(2,5) × SL(2,11) × Z661 | 104,702,400 | 3,457 | 74 (stopped at 1,856 s) |
+| s65 | SL(2,53) × Z703 | 104,623,272 | 25,529 | 18 (7,000 s) |
+| s66 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | see below | 6 at 5,230 s |
+| s67 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | see below | 12 at 5,218 s |
+
+No solution above 104,241,600 in wave 3. The best group here, SL(2,13) × SL(2,19) × Z7 (μ 26.2), sits at the same
+cost-6 floor as 5×19×127. Its μ is about 5% above the record group, so the same effort buys a lower chance.
+
+## Status at the end of the session
+
+- Record: 208,483,200 vertices (|G| = 104,241,600), on the branch and in research/frontier/sols/ (verified).
+- Next step-up needs |G| > 104,241,600. The lowest admissible candidates there are 13×19×7 (104,569,920) and
+  SL(2,53)×Z703 (104,623,272). Both reached cost 6 and 18 at about 2–4 h, with no cost 0. The large-cyclic-factor
+  candidates (Z2587, Z7243) are far off and not worth more core-hours with this search.
+- Honest read: five 2-h runs on a μ ≈ 25–26 group gave one solution in about 25 runs of this method across rounds 2
+  and 3 (the lucky seed 52 at 8,385 evals). More seeds on 13×19×7 and on the two next groups are the only
+  straightforward continuation. No structural change was found here.
