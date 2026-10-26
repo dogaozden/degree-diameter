@@ -5,10 +5,12 @@ to continue.
 
 ## What is proved
 
-33 of the README records without a Lean ✓ are kernel-checked (table in `STATUS.md`): 18 with their Lean files
-committed (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`), and 15 large Haar cells whose
-generated files are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every
-theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Three
+37 records without a Lean ✓ are kernel-checked (table in `STATUS.md`; four of them, (5,8) 9,760, (5,9) 29,756,
+(9,8) 546,720 and (11,10) 148,729,680, are sols added to `research/frontier/sols` during this session): 21 with
+their Lean files committed (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`), and 16 large Haar
+cells whose generated files are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with
+`manifests/`). Every
+theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Four
 methods:
 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
@@ -17,7 +19,10 @@ methods:
 3. **Haar graphs** of `SL(2,p) × Z_n`, `PSL(2,p) × Z_n`, `SL(2,p) × Z_n × SL(2,q)`, `PSL(2,p) × Z_n × SL(2,q)` and
    `PSL(2,p) × Z_n × SL(2,8)`: packed batch checks (`Swar.lean`, `HaarSwar.lean`, `HaarSL.lean`, `HaarPSL.lean`,
    `HaarProd.lean`, `GF8.lean`, `HaarGF8.lean`), certificates from `haarcert.c` / `haarcert_prod.c`, Lean files from
-   `gen_haarsl.py` / `gen_haarprod.py`.
+   `gen_haarsl.py` / `gen_haarprod.py`. `SL(2,16) × Z_n` (`GF16.lean`, `HaarGF16.lean`, `gen_haar16.py`): one batch
+   per element of `SL(2,16)` and free entry, the `n` slots are the `Z_n` part, checked by the `HaarSwar` batch over
+   `ZMod 2` with identity letters.
+4. **Small metacyclic Haar graphs** `Z_m ⋊_r Z_k` (`gen_meta.py`): one word per element, checked in stage tables.
 
 ## How to build a Haar cell
 
@@ -48,11 +53,17 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Nothing is building. Every README record without a Lean ✓ is now kernel-checked except the hexagon D = 7 cells
-  (7,7) … (15,7): the hexagon-family project (branch `claude/hexagon-family-blvamb`) has a Lean certificate theorem
-  for those constructions and says the instance checks are too big for the kernel; their record values are also
-  changing (e.g. (7,7) 23,598 there).
-- The 15 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
+- Hexagon D = 7 cells (7,7) … (16,7): not here. The hexagon-family project (branch `claude/hexagon-family-blvamb`)
+  has a Lean certificate theorem for those constructions and says the instance checks are too big for the kernel;
+  their record values are also changing.
+- (8,9) 1,341,600, Haar graph of `SL(2,25) × Z43` (`research/frontier/sols/d8D9_sl_25_43_orb3_s1.txt`): needs
+  `GF(25) = F5[x]/(x²+2)` in Lean and a batch check over it (the other (8,9) sols in `sols/` are all smaller).
+- (15,10) 2,467,618,800, `SL(2,149) × Z373`: the same pipeline as (14,10); 22,200 batches of 55,577 slots, about
+  9-10 hours on 4 cores, about 10 GB of oleans at once and a 6.2 GB certificate file (haarcert `scan` needs 7.4 GB of
+  memory).
+- (16,10) 4,220,872,800, `SL(2,151) × Z613`: 2.1 billion elements, beyond this machine (a certificate file of 10.5
+  GB, about 17 GB of oleans, 12.7 GB of memory for the BFS).
+- The 16 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
   `#print axioms` the theorem. Budget: about 10,000 slots per second per core for the batch checks; the largest,
