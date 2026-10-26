@@ -60,7 +60,7 @@ def main():
     Tof = {t: PT for t in arcs if types[t[0]] == 'D' and types[t[1]] == 'H'}
     hd_out = {j: next((u, v) for (u, v) in arcs if u == j and types[v] == 'D') for j in range(L) if types[j] == 'H'}
     Dlev = [j for j in range(L) if types[j] == 'D']; Hlev = [j for j in range(L) if types[j] == 'H']
-    Bhubs = []; used = set()
+    Bhubs = []; used = set(); fixedB = set(); fixedA = set()
     order = {}
     for d in Dlev:
         con = [s for s in Aslots[d] if s[2] in Tof and s[1] in Tof[s[2]]]
@@ -70,7 +70,11 @@ def main():
         for d in Dlev:
             s = order[d][i]; h[d] = s
             if s[2] in Tof and s[1] in Tof[s[2]]:
-                m, om = Tof[s[2]][s[1]]; jt = s[2][1]; h[jt] = (jt, om, hd_out[jt])
+                m, om = Tof[s[2]][s[1]]; jt = s[2][1]
+                if jt in h:      # two constraints on the same level: keep the first, the second pair is left to routing
+                    continue
+                h[jt] = (jt, om, hd_out[jt])
+                fixedB.add((i, d)); fixedB.add((i, jt))
         Bhubs.append(h)
     for h in Bhubs:
         for s in h.values():
@@ -87,15 +91,23 @@ def main():
     Ahubs = [dict() for _ in range(KA)]; usedB = set()
     for d in Dlev:
         for i, (l, slots) in enumerate(sorted(groups[d].items())):
+            if i >= KA: break
             g = Ahubs[i]
-            for s in slots: g[s[0]] = s; usedB.add(s)
+            for s in slots: g[s[0]] = s; usedB.add(s); fixedA.add((i, s[0]))
             m, om = Tof[slots[0][2]][l]
-            c = next(c for c in Bslots[d] if c[1] == om and c not in usedB); g[d] = c; usedB.add(c)
+            c = next(c for c in Bslots[d] if c[1] == om and c not in usedB); g[d] = c; usedB.add(c); fixedA.add((i, d))
     for j in range(L):
         pool = [s for s in Bslots[j] if s not in usedB]
         for g in Ahubs:
             if j not in g: g[j] = pool.pop(0); usedB.add(g[j])
     Bh = [[h[j] for j in range(L)] for h in Bhubs]; Ah = [[g[j] for j in range(L)] for g in Ahubs]
+    if os.environ.get('RESUME'):
+        import pickle
+        st = pickle.load(open(os.environ['RESUME'], 'rb'))
+        assert {t: sorted(v) for t, v in st['R'].items()} == {t: sorted(v) for t, v in R.items()}
+        for t in arcs: M[t] = np.array(st['M'][t]); Minv[t] = np.argsort(M[t])
+        Bh, Ah = st['Bh'], st['Ah']
+        print('resumed from', os.environ['RESUME'])
     print('E=%d K_B=%d K_A=%d (order %d)' % (E, KB, KA, L * 2 * N + KB + KA)); sys.stdout.flush()
     # provisional hub graph: random, refined at the end
     delta = q - r
@@ -116,6 +128,19 @@ def main():
         for x in sorted(R[t]):
             src.append(vid(u, Ak(types[u]), x)); tlev.append(v)
             src.append(vid(v, Bk(types[v]), int(M[t][x]))); tlev.append(u)
+    nrel = 0
+    for t, P in Tof.items():
+        j, jp = t
+        for l, (m, om) in P.items():
+            hb = [h for h in Bh if h[j] == (j, l, t)]
+            okB = bool(hb) and hb[0][jp][1] == om
+            ha = [g for g in Ah if g[jp] == (jp, l, t)]
+            okA = bool(ha) and ha[0][j][1] == om
+            if not okB:
+                src.append(vid(j, 'L', l)); tlev.append(jp); nrel += 1
+            if not okA:
+                src.append(vid(jp, 'L', l)); tlev.append(j); nrel += 1
+    print('relaxed pairs left to routing: %d sources' % nrel)
     src = np.array(src, dtype=np.int32); tlev = np.array(tlev, dtype=np.int32)
     S = len(src)
     badc = np.zeros(S, dtype=np.int32); MAXB = 200000; badv = np.zeros(2 * MAXB, dtype=np.int32)
@@ -194,11 +219,42 @@ def main():
         M[t][a1], M[t][a2] = b2, b1
         Minv[t][b2], Minv[t][b1] = a1, a2
 
+    def hub_move(s_idx, v_vertex):
+        """move the slot, in the target level, of the hub sitting at the source so that it lies near the target"""
+        sv = int(src[s_idx]); j = sv // per; x = sv % per; jp = v_vertex // per; vv = v_vertex % per
+        isA = (x < N) == (Ak(types[j]) == 'P')        # source is an A-vertex (freed point of an arc out of j)
+        hubs = Bh if isA else Ah; fixed = fixedB if isA else fixedA
+        el = x if x < N else x - N
+        cand = [i for i, sl in enumerate(hubs) if sl[j][1] == el and (i, jp) not in fixed]
+        if not cand: return None
+        i = rng.choice(cand)
+        # target level slots of the same kind, close to vv
+        others = [(k, sl[jp]) for k, sl in enumerate(hubs) if k != i and (k, jp) not in fixed]
+        kind = Ak(types[jp]) if isA else Bk(types[jp]); off = 0 if kind == 'P' else N
+        good = [(k, sl) for (k, sl) in others if D[sl[1] + off, vv] <= 3]
+        if not good: return None
+        k, sl = rng.choice(good)
+        return (hubs, i, k, jp)
+
+    def apply_hub(hm):
+        hubs, i, k, jp = hm
+        hubs[i][jp], hubs[k][jp] = hubs[k][jp], hubs[i][jp]
+
     cost, bad = evaluate(); print('initial bad pairs', cost); sys.stdout.flush()
     Ttemp = 2.0; t0 = time.time()
     for it in range(iters):
         if cost == 0: break
         k = rng.randrange(len(bad)); s_idx, vtx = int(bad[k, 0]), int(bad[k, 1])
+        if rng.random() < float(os.environ.get('HUBMOVE', '0.3')):
+            hm = hub_move(s_idx, vtx)
+            if hm is None: continue
+            apply_hub(hm)
+            c2, bad2 = evaluate()
+            if c2 <= cost or rng.random() < np.exp((cost - c2) / Ttemp):
+                cost, bad = c2, bad2
+            else:
+                apply_hub(hm)
+            continue
         mv = targeted_move(s_idx, vtx)
         if mv is None: continue
         apply_swap(mv)
@@ -211,6 +267,8 @@ def main():
         if it % 50 == 0:
             print('it %d bad %d (%.0fs)' % (it, cost, time.time() - t0)); sys.stdout.flush()
     print('final bad pairs (non-friendly endpoints)', cost)
+    import pickle
+    pickle.dump(dict(M={t: list(M[t]) for t in arcs}, R=R, Bh=Bh, Ah=Ah), open(out + '.state.pkl', 'wb'))
     if cost:
         return
     n0, E0 = build(G, types, {t: list(M[t]) for t in arcs}, R, Bh, Ah, [], arcs=arcs)
