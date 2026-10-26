@@ -266,3 +266,8 @@ Note that the no-ORBW run solved where the two ORBW = 5 runs stayed above cost 5
   psl 79 × 131 (N = 32,288,880, μ 44.3, |Fix| 39) seeds 21, 22; psl 71 × 181 (N = 32,384,520, μ 46.3, |Fix| 34)
   seeds 21, 22; 10,200 s each, THREADS = 1, started 01:27 UTC. Both groups stalled at cost 5 in round 2 with ORBW
   settings; this batch tests the no-ORBW setting on them.
+- 2026-10-26 04:13 UTC: **batch 2 ended, unsolved** (10,200 s each, no ORBW, 2 seeds per group):
+  - psl 79 × 131 (N = 32,288,880): seed 21 best 2 (66,937 evals), seed 22 best 6 (66,921 evals).
+  - psl 71 × 181 (N = 32,384,520): seed 21 best 5 (95,753 evals), seed 22 best 5 (96,609 evals).
+  Best cost 2 is the closest any run has come to the next rung (round 2 floor was 5). This is the same floor as round 2
+  for psl 71 × 181 but a new low on psl 79 × 131.
