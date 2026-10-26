@@ -71,6 +71,11 @@ Done:
   two or three independent checkers (checks/haar_huge.txt; tools/meta_haar_bits.c, meta_haar_pull.c, the random
   search tools/rand_meta_haar.py and the hill climb tools/meta_haar_climb.c for groups haar_gen3 cannot handle).
 
+Running at 20:20 UTC (scratch only; nothing to recover if the session ends): hill climb for (13,10) in
+Z721181 ⋊ Z428 (cost 2 = vertices beyond distance 10), haar_gen3 for (14,10) in Z10283705 ⋊ Z59 (cost 1),
+random Haar tries for (16,10) (one try at (15,10) gave diameter 11). Commands: tools/meta_haar_climb.c,
+tools/rand_meta_haar.py, research/frontier/haar_gen3 with the group specs in AUDIT.md §7.
+
 Open:
 - ΩH_q at q ≥ 4 with some labelling: needs a structured labelling whose routes nearly tile each copy (omega/NOTES.md
   explains the routes). q = 4 is the smallest open case and cheap to evaluate (54,600 vertices, about 15 ms per cost
