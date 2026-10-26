@@ -38,3 +38,25 @@ Ranked by (p1+p10)/2 of random symmetric cost. Record group prod psl 7 x psl 19 
 - Q5: prod sl 5 x psl 13 x Z31 (N 4,062,240, μ 37.6), seed 1, 5400 s.
 - Q6: prod psl 3 x psl 25 x Z43, seed 13, RESTART=1, 5400 s.
 Logs: research/structured/runs/raise3-d8D10/Q*/.
+
+## Final status of this round (03:45 UTC, 2026-10-26)
+- **No record this round.** Bar unchanged: 8,043,840 vertices (N = 4,021,920, prod psl 7 x psl 19 x Z7).
+- Runs, all 5400 s, ORBIT "3 2 2", none solved (no sols file written):
+  - Q3: prod psl 3 x psl 25 x Z43 (N 4,024,800, μ 33.5), seed 11: best 3 after 6.1e5 evals.
+  - Q4: same group, seed 12, ORBW=5: best 3 after 5.7e5 evals.
+  - Q6: same group, seed 13, RESTART=1: best 6 after 5.9e5 evals.
+  - Q5: prod sl 5 x psl 13 x Z31 (N 4,062,240, μ 37.6), seed 1: best 6 after 7.1e5 evals.
+  - Z307 (Q1, Q2, dropped after the screen): best 36 and 40 after 355 s.
+- Total this round: about 4 core-hours on 5 seed-runs. Every run ended on the cost-3 or cost-6 plateau (one or two uncovered orbits).
+- Psl 3 x psl 25 x Z43 now has 10 seeds in total across rounds 2 and 3 (best 3). Its failure is not bad luck. The ordering
+  of random mixing (median 257, p10 69) is similar to the record group's, so the wall is at μ ≈ 33.5 for this family.
+
+## Judgment
+- The orbit method (k = 3, f = 2, m = 2) has no unexplored candidate with N in (4,021,920, 4,060,000] and μ ≤ 34 except the
+  Z307 group, which mixes about 100 times worse. Within this window the record is at its practical limit for these groups.
+- Next rungs (μ ≥ 36) have shown cost 3–9 in every run so far (rounds 2 and 3). Going further needs one of:
+  (i) the cheaper orbit evaluation in STRUCTURE.md §7.4 (about +2 in μ) — not applicable to q < 64 groups, so not for the
+      record group family;
+  (ii) SL(3,q) groups (STRUCTURE.md §7.3) — not implemented; the largest remaining lever;
+  (iii) many more seeds on the μ 33–34 groups, which costs about 1.5 core-hours per seed with a success rate near one in five.
+- Stopped here: the cell is not going to move with these methods in the time this job allows.
