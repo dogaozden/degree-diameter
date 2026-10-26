@@ -68,7 +68,7 @@ The write-up's translation is accurate. The key sentences, verbatim:
 I checked Fig. 2.21a (p. 44) and Fig. 2.21b (p. 45) at 220 dpi. The write-up's description is exact. In (a), K₁-vertex
 k sits on the star edge between copies k−1 and k+1, and k̄ on the circle arc between copies k+2 and k+3. In (b), k sits
 on the arc between copies k+3 and k+4, and k̄ on the star edge between copies k−1 and k+1. In (b) the copies are named
-B₁^{k̄}, which only tells them apart from the (a) copies. Every copy has a dashed line with one dot on each side: an
+B₁^{k̄}, which seems only to tell them apart from the (a) copies. Every copy has a dashed line with one dot on each side: an
 outer dot on the circle and an inner dot at the star's corner. So each copy gives the ten vertices of one group one
 vertex of each colour class, and every copy vertex gets two new edges.
 
@@ -107,7 +107,7 @@ for these q, and at q ≤ 3 one exists (§3.4). It should be described as a repa
 
 One more remark, which is not a reading. Under reading 2, Theorem 1 refutes D ≤ D₁ + 2 for every B₁ in one line. So
 if the author had a correct argument in mind, it was not for reading 2. Reading 1 fails less obviously (it needs
-Theorem 2's count, and that count fails for q ≤ 6), but it still fails: the computations at q = 3, 5 give 9 (§3.3). The
+Theorem 2's count, and that count fails for q ≤ 6), but it still fails: the computations at q = 3, 5 give 9 for every σ tried (§3.3). The
 cited paper, which might contain a different wiring, was never published, so this cannot be settled from the
 sources.
 
@@ -175,7 +175,7 @@ integer arithmetic. The write-up prints the numbers for q = 7, 8, 9 only. Those 
 The theorem actually gives more than one far pair: every K₁-vertex has at least q⁵ − (A + B + 1) vertices at distance
 ≥ 9 in every copy it misses.
 
-The computations are consistent with the bound. Under reading 1 with random σ, the largest number of odd-class
+The computations are consistent with the bound. Under reading 1 (σ = identity or random), the largest number of odd-class
 opposite vertices within distance 7 of a K₁-vertex, in any copy it misses, was 7,562–8,039 at q = 7 (bound 15,459),
 13,950 at q = 8 (25,482), 22,771–22,825 at q = 9 (39,763), 52,372 at q = 11 (85,491) and 104,225 at q = 13 (162,627).
 
@@ -196,9 +196,9 @@ Everything here is in `research/referee/omega-dq/`, written from scratch for thi
   regularity, bipartiteness, the diameter, and the girth. For girth, if every source has spheres of the largest
   possible size (q+1)q^{i−1} up to radius 5, a bipartite graph has girth ≥ 12.
 - **H(7):** 39,216 vertices, 8-regular, bipartite, connected, **diameter 6, girth 12**. Sphere sizes from every vertex
-  are 8, 56, 392, 2,744, 19,208, 16,807. The same checks pass for H(2), H(3), H(4), H(5), H(8), H(9) and H(11). H(13)
-  is in `logs/hex_checks.txt` if its run finished (see the end of that file). A (q+1)-regular bipartite graph of
-  diameter 6 and girth 12 on 2(q⁶−1)/(q−1) vertices is a generalized hexagon of order (q, q).
+  are 8, 56, 392, 2,744, 19,208, 16,807. The same checks pass for H(2), H(3), H(4), H(5), H(8), H(9), H(11) and
+  H(13) (1,608,936 vertices, all pairs). A (q+1)-regular bipartite graph of diameter 6 and girth 12 on
+  2(q⁶−1)/(q−1) vertices is a generalized hexagon of order (q, q).
 
 ### 3.2 ΩH₇ at the table order, reading 2
 
@@ -213,22 +213,26 @@ bipartite, connected.
 - BFS from the K₁-vertex K(t = 0, k = 0) (id 980400): **eccentricity 9**. Counts by distance 0–9: 1, 10, 84, 615,
   4,320, 30,240, 211,680, 305,270, 372,155, **252,105**. Both codes give the same profile.
 - **Witness pair: K(0, k=0) and point 57 of copy 0, at distance 9** (ids 980400 and 57 in `omegaref`). Point 57 is
-  opposite point 0 in H(7) (d_H = 6, by a separate Python BFS), and K(0,0) meets copies 1 and 4 of each block, not
-  copy 0.
+  opposite point 0 in H(7) (d_H = 6, by a separate Python BFS). K(0,0) meets copies 1 and 4 of each a-block and
+  copies 3 and 4 of each b-block, so it misses copy 0.
 - The 252,105 vertices at distance 9 are exactly the points opposite t in the 15 copies K(0,0) misses (15 × 7⁵), as
   Theorem 1 predicts. Nothing is at distance 10.
 - The same holds for the k̄-vertex K(0, k̄=0): eccentricity 9, with lines opposite line σ(0) in the missed copies.
 
-Exact diameter at q = 7 (reading 2): with H(7)'s type-preserving automorphisms (lifted to ΩH), the rotation
-k ↦ k+1 and swaps of same-type blocks, the vertices fall into 6 classes. BFS from one vertex of each class gives
-eccentricity 9 for ababa and for aabbb. All blocks of type a gives 10 (K₁-vertex to K₁-vertex). This assumes G₂(7) is
-transitive on points and on lines. Without that assumption, 2,000 random sources (1,644 copy vertices and 356
-K₁-vertices) all have eccentricity exactly 9.
+**Exact diameter at q = 7, with no assumption** (`omegaref ... exact`): the program checks edge by edge that the
+rotation (copy 5B+i → 5B+i+1, K(t,k) → K(t,k+1), all blocks at once) and the swaps of same-type blocks are
+automorphisms. It then runs BFS from every K(t, 0) and K(t, 0̄) and from every vertex of the first copy of each block
+type: 117,648 sources, 64 at a time. Every vertex of ΩH₇ is in the orbit of one of them, so the largest eccentricity
+is the diameter. Result: **diameter 9**, for reading 2 (ababa) and for reading 1 (ababa, one random σ). Every one of
+the 117,648 sources has eccentricity exactly 9. Log: end of `logs/omega_q7.txt`.
+
+Cheaper checks agree. BFS from one vertex of each of the 6 classes under H(7)'s automorphisms, the rotation and the
+block swaps gives 9 for ababa and aabbb, and 10 when all blocks are of type a (K₁-vertex to K₁-vertex). 2,000 random
+sources (1,644 copy vertices and 356 K₁-vertices) all have eccentricity exactly 9.
 
 Reading 1 at q = 7 (σ = identity and two random σ, ababa and aabbb): every source tried (two K₁-vertices and four
 copy vertices per graph) has eccentricity 9. Around 132,000–140,000 vertices are at distance 9 from a K₁-vertex, all in
-copies it misses, and all opposite point t or line σ(t). A sweep of all 19,608 K(t, 0) for one random σ is in
-`logs/omega_q7.txt` if it finished.
+copies it misses, and all opposite point t or line σ(t).
 
 ### 3.3 The other thesis values
 
@@ -245,7 +249,8 @@ All runs use `omegaref`, both readings (reading 1 with a random σ), and pattern
 
 At q = 9 (blocks aaabbb, as in the write-up) my distance profile from K(0,0) is 1, 12, 124, 1,148, 10,350, 93,150,
 838,350, 1,167,858, 1,476,225, 1,062,882, identical to the write-up's from its own code and hexagon model. All 6 class
-representatives have eccentricity 9. Witness: K(0, k=0) (id 3985800) and point 91 of copy 0 (d_H(0, 91) = 6), at
+representatives have eccentricity 9 (this step assumes G₂(9) is transitive on points and on lines; see below for the
+exact run). Witness: K(0, k=0) (id 3985800) and point 91 of copy 0 (d_H(0, 91) = 6), at
 distance 9.
 
 q = 3 and 5 (all pairs, no symmetry, `logs/omega_q3_q5_allpairs.txt`, built by `omegalab.py` with every copy

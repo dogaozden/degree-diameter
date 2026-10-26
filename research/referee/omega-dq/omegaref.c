@@ -12,10 +12,14 @@
      mode "src ID [ID ...]"   BFS from these vertex ids (-1 = K(0,0,0), -2 = K(0,0,1))
      mode "reps"              BFS from K(0,0,0), K(0,0,1) and point 0 / line 0 of the first copy of each block type
      mode "sample N SEED"     BFS from N random vertices
-     mode "kall"              BFS from every K(t,0,0), t = 0..n1-1 (eccentricity profile only) */
+     mode "kall"              BFS from every K(t,0,0), t = 0..n1-1 (eccentricity profile only)
+     mode "exact [threads]"   exact diameter: checks the rotation and block swaps are automorphisms, then
+                              64-source BFS from one vertex of every orbit of the group they generate */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+#include <pthread.h>
 
 static int n1, alpha, C, N, q;
 static long K0;
@@ -100,6 +104,97 @@ static void report(int s) {
     }
 }
 
+/* mode "exact": the exact diameter without any assumption on Aut(H(q)).
+   (1) checks edge by edge that the rotation (copy 5B+i -> 5B+i+1, K(t,k,bar) -> K(t,k+1,bar)) and the swaps of the first
+       block of each type with every other block of that type are automorphisms;
+   (2) every vertex is then in the orbit of a K(t,0,bar) or of a vertex of the first copy of the first block of its type,
+       so the diameter is the largest eccentricity over those 2 n1 + 2 n1 * (number of types) sources, found by 64-source
+       bit-parallel BFS. */
+static int cmpint(const void *a, const void *b) { int x = *(const int *)a, y = *(const int *)b; return (x > y) - (x < y); }
+static int has_edge(int u, int w) {
+    int lo = off[u], hi = off[u + 1] - 1;
+    while (lo <= hi) { int m = (lo + hi) / 2; if (adj[m] == w) return 1; if (adj[m] < w) lo = m + 1; else hi = m - 1; }
+    return 0;
+}
+static int check_map(const int *img, const char *name) {
+    char *seen = calloc(N, 1); long bad = 0;
+    for (int i = 0; i < N; i++) { if (img[i] < 0 || img[i] >= N || seen[img[i]]) { bad++; continue; } seen[img[i]] = 1; }
+    for (int i = 0; i < N && !bad; i++) for (int e = off[i]; e < off[i + 1]; e++) if (!has_edge(img[i], img[adj[e]])) bad++;
+    printf("  %s: %s\n", name, bad ? "NOT an automorphism" : "bijection, maps every edge to an edge");
+    free(seen); return bad == 0;
+}
+static int *srcs, nsrc, next_b; static int *eccs; static long unreached_all;
+static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
+static void *exact_worker(void *arg) {
+    (void)arg;
+    uint64_t *vis = malloc(8L * N), *fr = malloc(8L * N), *nf = malloc(8L * N);
+    for (;;) {
+        pthread_mutex_lock(&mtx); int b = next_b++; pthread_mutex_unlock(&mtx);
+        if (64L * b >= nsrc) break;
+        int s0 = 64 * b, ns = nsrc - s0 < 64 ? nsrc - s0 : 64;
+        uint64_t full = ns == 64 ? ~0ULL : ((1ULL << ns) - 1);
+        memset(vis, 0, 8L * N); memset(fr, 0, 8L * N);
+        for (int i = 0; i < ns; i++) { vis[srcs[s0 + i]] |= 1ULL << i; fr[srcs[s0 + i]] |= 1ULL << i; }
+        int ecc[64] = {0}, lev = 0;
+        for (;;) {
+            uint64_t alive = 0;
+            for (int v = 0; v < N; v++) {
+                uint64_t a = 0;
+                for (int e = off[v]; e < off[v + 1]; e++) a |= fr[adj[e]];
+                a &= ~vis[v]; nf[v] = a; alive |= a;
+            }
+            if (!alive) break;
+            lev++;
+            for (int i = 0; i < ns; i++) if (alive >> i & 1) ecc[i] = lev;
+            for (int v = 0; v < N; v++) vis[v] |= nf[v];
+            uint64_t *t = fr; fr = nf; nf = t;
+        }
+        long un = 0; for (int v = 0; v < N; v++) un += __builtin_popcountll(full & ~vis[v]);
+        pthread_mutex_lock(&mtx);
+        for (int i = 0; i < ns; i++) eccs[s0 + i] = ecc[i];
+        unreached_all += un;
+        pthread_mutex_unlock(&mtx);
+    }
+    free(vis); free(fr); free(nf); return NULL;
+}
+static void exact(int nth) {
+    for (int i = 0; i < N; i++) qsort(adj + off[i], off[i + 1] - off[i], sizeof(int), cmpint);
+    int *img = malloc(sizeof(int) * N), ok = 1;
+    for (int i = 0; i < N; i++) {
+        if (i < K0) { int c = i / (2 * n1), v = i % (2 * n1); img[i] = (5 * (c / 5) + (c % 5 + 1) % 5) * 2 * n1 + v; }
+        else { int r = i - K0, t = r % n1, kb = r / n1, bar = kb / 5, k = kb % 5; img[i] = K0 + (5 * bar + (k + 1) % 5) * n1 + t; }
+    }
+    ok &= check_map(img, "rotation");
+    int first[2] = {-1, -1};
+    for (int B = 0; B < alpha; B++) { int ty = types[B] == 'b';
+        if (first[ty] < 0) { first[ty] = B; continue; }
+        for (int i = 0; i < N; i++) {
+            img[i] = i;
+            if (i < K0) { int c = i / (2 * n1), v = i % (2 * n1), cb = c / 5;
+                if (cb == B) img[i] = (5 * first[ty] + c % 5) * 2 * n1 + v;
+                else if (cb == first[ty]) img[i] = (5 * B + c % 5) * 2 * n1 + v; }
+        }
+        char nm[64]; sprintf(nm, "swap of blocks %d and %d", first[ty], B);
+        ok &= check_map(img, nm);
+    }
+    if (!ok) { printf("  symmetry check failed; no exact result\n"); return; }
+    nsrc = 0; srcs = malloc(sizeof(int) * (2 * n1 + 4 * n1));
+    for (int bar = 0; bar < 2; bar++) for (int t = 0; t < n1; t++) srcs[nsrc++] = K0 + 5 * bar * n1 + t;
+    for (int ty = 0; ty < 2; ty++) if (first[ty] >= 0) for (int v = 0; v < 2 * n1; v++) srcs[nsrc++] = 5 * first[ty] * 2 * n1 + v;
+    eccs = malloc(sizeof(int) * nsrc);
+    pthread_t th[64]; next_b = 0; unreached_all = 0;
+    for (int i = 0; i < nth; i++) pthread_create(&th[i], NULL, exact_worker, NULL);
+    for (int i = 0; i < nth; i++) pthread_join(th[i], NULL);
+    long hk[64] = {0}, hc[64] = {0}; int mx = 0, arg = -1;
+    for (int i = 0; i < nsrc; i++) { if (srcs[i] >= K0) hk[eccs[i]]++; else hc[eccs[i]]++; if (eccs[i] > mx) { mx = eccs[i]; arg = srcs[i]; } }
+    printf("  %d sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs %ld\n", nsrc, unreached_all);
+    printf("  eccentricity of K1-vertex sources:"); for (int d = 0; d < 64; d++) if (hk[d]) printf(" %d:%ld", d, hk[d]);
+    printf("\n  eccentricity of copy-vertex sources:"); for (int d = 0; d < 64; d++) if (hc[d]) printf(" %d:%ld", d, hc[d]);
+    char b1[200]; decode(arg, b1);
+    printf("\n  DIAMETER %d (every vertex is in the orbit of a source; largest eccentricity at %d = %s)\n",
+           unreached_all ? -1 : mx, arg, b1);
+}
+
 int main(int argc, char **argv) {
     if (argc < 7) { fprintf(stderr, "usage: see header\n"); return 1; }
     FILE *f = fopen(argv[1], "r"); int nb; if (!f || fscanf(f, "%d", &nb) != 1) return 1;
@@ -179,6 +274,8 @@ int main(int argc, char **argv) {
         printf("  all %d sources K(t,0,0): eccentricity histogram:", n1);
         for (int d = 0; d < 64; d++) if (hist[d]) printf(" %d:%ld", d, hist[d]);
         printf("\n");
+    } else if (!strcmp(mode, "exact")) {
+        exact(argc > 7 ? atoi(argv[7]) : 4);
     }
     return 0;
 }
