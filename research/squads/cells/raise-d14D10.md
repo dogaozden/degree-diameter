@@ -47,9 +47,12 @@ PSL(2,151) x Z_397 (34.2, fix 74), PSL(2,139) x Z_511 (36.7, fix 67).
 
 ### Results (round 3)
 
-(filled in as the queue runs; see research/squads/cells/raise-d14D10/r3/runs/ for logs)
+(see research/squads/cells/raise-d14D10/r3/runs/ for logs)
 
-- pending
+- PSL(2,131) x Z_601 (N 675,511,980, mu 27.8, fix 65), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
+  2,689 evals. Cost 6 until about 3,500 s, then 3 at the end (one orbit or fixed point uncovered). The earlier
+  FAST=2 attempt was OOM-killed (see Memory above).
+- PSL(2,113) x Z_937 (N 675,944,304, mu 28.1, fix 56): running since 03:04 UTC.
 
 ## Round 2 summary (for reference)
 
