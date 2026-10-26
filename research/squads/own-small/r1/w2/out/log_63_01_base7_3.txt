@@ -1,0 +1,20 @@
+group groups/b63/g63_01.bin N=63 H=21 rows=3 base b=14 m=21 free=8 n=882 start cost=512
+t=0.0 evals=3 best=360
+t=0.0 evals=5 best=358
+t=0.0 evals=9 best=314
+t=0.0 evals=15 best=220
+t=0.0 evals=21 best=188
+t=0.0 evals=37 best=186
+t=0.0 evals=45 best=156
+t=0.0 evals=63 best=154
+t=0.0 evals=113 best=126
+t=0.0 evals=119 best=106
+t=0.0 evals=204 best=98
+t=0.1 evals=464 best=84
+t=0.1 evals=518 best=76
+t=0.1 evals=578 best=74
+t=0.3 evals=10436 best=72
+t=0.3 evals=10447 best=62
+t=10 evals=316542 cur=64 best=62
+RESULT d=3 D=10 group=groups/b63/g63_01.bin base=base7_3.txt n=882 best=62 evals=575981 time=18.0
+wrote out/a_63_01_base7_3 and out/a_63_01_base7_3.edges (cost 62)

@@ -1,0 +1,4 @@
+Syntax warning: Unbound global variable in exp.g:6
+    el := Concatenation([One(G)], Filtered(AsSSortedList(G), x -> x <> One(G))\
+);
+                                                                           ^
