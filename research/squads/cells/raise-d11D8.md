@@ -37,3 +37,7 @@ the only group above the record that is competitive, on new seeds, with the best
 - 01:19 UTC: DUMP hook added to `haar_sym.c` (default path unchanged); built `haar_sym_r3`. Smoke test (60 s, seed 31):
   158 evals/s, no errors.
 - 01:20 UTC: four plain runs started (seeds 31–34, 9600 s each).
+- 04:00 UTC: seeds 31–34 finished (9600 s each, about 1.63M evals). Best raw costs 10, 6, 10, 10. No solution.
+  The plateau at energy 10 seen in round 2 appears again. Logs and best-state dumps (`runs/raise11_8_r3/*.dump`) are
+  committed with `git add -f`; the live logs are no longer tracked while runs are running.
+- 04:02 UTC: second batch, seeds 35–38, 9000 s each, same command (`launch2.sh`).
