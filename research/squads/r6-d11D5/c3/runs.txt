@@ -1,9 +1,8 @@
 Card c3 (round r6-d11D5): annealing schedules for K33 start n588_k33_start648.in (n = 588, start cost 648)
 Command template: timeout 900 nice -n 10 env THREADS=1 SECS=400 SEED=<k> T0=<t0> T1=<t1> PF=<pf> PH=<ph> OUT=<x>.in OUT0=<x>.0.in /tmp/po7 <start> > <x>.log
-Columns: run | T0 | T1 | PF | PH | SEED | final cost (RESULT best= in the log) | state file | log
-
-a | 0.5 | 0.05 | 0.3 | 0.7 | 31 | pending | a.in | a.log
-b | 0.5 | 0.05 | 0 | 0.7 | 32 | pending | b.in | b.log
-c | 0.8 | 0.05 | 0.3 | 0.95 | 33 | pending | c.in | c.log
-d | 0.4 | 0.05 | from best of a-c | from best of a-c | 34 | pending | d.in | d.log
-e | wpo LMAX=3000 DECAY=10 SECS=500 from the best state if its cost <= 40 | not run yet
+Columns: run | T0 | T1 | PF | PH | SEED | final cost | state file | log
+a | 0.5 | 0.05 | 0.3 | 0.7 | 31 | 392 (RESULT best=392, iters=275222) | a.in (cost 392 re-checked with SCORE=1) | a.log
+b | 0.5 | 0.05 | 0 | 0.7 | 32 | not run (round closed by coordinator) | - | -
+c | 0.8 | 0.05 | 0.3 | 0.95 | 33 | not run (round closed); T1 and PF were not given in the brief, so 0.05 and 0.3 from (a) were to be used | - | -
+d | 0.4 | 0.05 | 0.3 | 0.7 | 34 | not run (round closed); PF and PH were to follow the best of a-c, a was the only run | - | -
+e | wpo LMAX=3000 DECAY=10 SECS=500, only if the best state is <= 40 | not run (condition not met: best is 392) | - | -

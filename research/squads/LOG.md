@@ -91,3 +91,26 @@ LMAX 500 drifts up from 12-18) -> 8 -> 2 (one coset-0 demand: a switch line and 
 -> 0, nujoint TARGET=1 from a random nu -> 0 violated in 89 s, finish.sh: **(11,5) 7,044, apsp VALID**, independent
 numpy BFS agrees (research/d11D5/graphs/d11D5_n7044_CHECK.md). Opus's own two-pair runs from mkdc2 starts reached 52.
 The squad's wildcard made the decisive design; Opus's delta o C made the starts low enough for it.
+
+## 2026-10-26 01:23 UTC, job resume4-cell-11-5 (session_01YVUXzZUE2Fjy42D4zug9Gh), goal: structural cost 0 at n = 588 (three pairs, 11,5 ≥ 7,056), round r6-d11D5
+
+Eight cards (r6-d11D5/README.md, scoreboard.jsonl; machine load ~10 on 4 cores, so most anneals were cut early).
+Best structural cost at n = 588 (start -> annealed):
+- c1 survey of the 17 incidence patterns of 3 new points x 3 new lines (kkk.py PAT): starts 682 (path P6) to 1,092;
+  K33 842, C6 830; anneals 398 (P6), 412 (theta). Start costs differ by less than their spread over seeds.
+- c2 4+4 patterns (n = 589): cube Q3 1,180, K44 1,196, two K22 1,298, C8 1,334; Q3 annealed to 850.
+- c3 K33 schedule (T0 0.5 -> 0.05, 400 s): 392.
+- c4 wider greedy polish (moved points, switch-line points and their sigma partners): K33 648 -> 476, anneal 294.
+- c5 geometry chosen for the coset-0 demands: for random C no hyperbolic line has more than 2 points of S, so at most
+  6 of 18 K33 switch lines stay isotropic; start 708, anneal 294.
+- c6 a third pair attached to the solved 7,044 base: start 1,594 (428 hot points: the annealed sigma has no slack
+  left), anneal 532.
+- c7 K32 block, block-internal sigma, two hyperbolic lines per new point: 942 -> 474; all worse than kkk.py.
+- **c8 analysis + C6 in the plane**: K22 keeps all 14 switch lines isotropic (S is a plane and both hyperbolic lines
+  lie in it), K33 6 of 18; K22 new points miss 102-114 vertices, K33 151-159. Built the 6-cycle block with all
+  three hyperbolic lines through one point of the plane (kkk.py PLANE=1 PAT C6, 21/21 isotropic): start 622, anneal
+  **152** (still falling when cut).
+Opus kept c8's start: cold anneals 152 -> 70 -> 60 (research/d11D5/dc/n588_c6plane_cost70.in); wpo (LMAX 3000-6000)
+from 60-70 only reaches 68 and drifts. Fresh C6-plane starts (624-874) anneal to 142-178; Opus's own triangle design
+(tri.py: every new point's pencil preimage a full PG-line) 638 -> 120; long K33 anneals 148-168.
+The squad again supplied the best design (c8); n = 588 stayed open at 60.
