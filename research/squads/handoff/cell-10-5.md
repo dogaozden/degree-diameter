@@ -51,3 +51,14 @@ Before: 4,838 (one FLAGDEL flag, d10D5_n4838_CHECK.md), 4,836 (9 freed flags, 36
   `FLIPS=1 BESTFLIP=1 KZ=8 REPAIRS=10 python3 lns2.py runs/g40_5.sol <best> "1 6 5" out.sol`, then finish_fd.sh and
   record.sh.
 - Other third flags: {1,6,0} stalls at 3 coverage/D1 holes, {1,6,2} at 2 (with hub failures).
+
+## Resume 4 (session_01ThanGg64Z6Jg1KgXK34ssq, Oct 25-26 night; branch claude/d10d5-cell-resume-4-wwdk2k, PR #396)
+
+Read research/squads/cells/d10D5.md "Resume 4" first. Two model fixes matter for every later conversion:
+1. Coverage of a converted flag may not use its own deleted edge (coverfd.py; fixed in dmhub2.c, dmfast_fd.c,
+   lns2.py, lns3.py). States produced before this fix can carry hidden coverage holes; re-score them with
+   r5/score.sh before trusting them.
+2. Hub routes: pairs (p_i, u) with u on l_j and a hub edge (line-side hub i ~ point-side hub j), and dually
+   (l_i, t) with t through p_j and hub edge (j ~ i), are covered in every sheet; the coset-0 models now treat them
+   as routed (lns2, lns3, dmfast_fd.c).
+Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "FDSET" (true cost; exact BFS at 0).
