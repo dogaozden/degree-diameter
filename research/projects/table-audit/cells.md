@@ -59,7 +59,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (9,7) | 117,648 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 118,238 |  |
 | (9,8) | 449,480 | Loz | reproduced at a different reading | build_haar2.py + apsp_mt.c VALID | 540,360 | holder's construction lost; order reproduced |
 | (9,9) | 2,961,536 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c VALID, two-BFS | 3,499,776 | holder's construction lost; order reproduced |
-| (9,10) | 20,017,260 | Loz | no source found |  | 23,975,280 | no traceable construction (data lost) |
+| (9,10) | 20,017,260 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 23,975,280 | holder's construction lost; order reproduced |
 | (10,3) | 182 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (10,4) | 1,640 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (10,5) | 4,000 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp.c VALID | 4,800 |  |
@@ -67,14 +67,14 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (10,7) | 224,694 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 225,152 |  |
 | (10,8) | 1,176,480 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 |  | INVALID as read (witness pair saved); no labelling known that gives diameter 8 |
 | (10,9) | 7,057,400 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 8,003,856 | holder's construction lost; order reproduced |
-| (10,10) | 50,331,156 | Loz | no source found |  | 60,141,120 | no traceable construction (data lost) |
+| (10,10) | 50,331,156 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 60,141,120 | holder's construction lost; order reproduced |
 | (11,3) | 190 | Feria-Puron-Miller-Pineda-Villavicencio; Araujo-Pardo-Lopez | reproduced | apsp.c VALID on all three Phi_95 and on R_9 | 192 |  |
 | (11,4) | 1,734 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 1,782 |  |
 | (11,5) | 5,850 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp.c VALID | 7,020 |  |
 | (11,6) | 142,464 | Delorme-Farhi duplication | reproduced | apsp_mt.c VALID | 148,944 |  |
 | (11,7) | 398,580 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 413,180 |  |
 | (11,8) | 2,246,940 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 | 2,258,520 | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
-| (11,9) | 15,200,448 | Loz | no source found |  | 16,792,080 | no traceable construction (data lost) |
+| (11,9) | 15,200,448 | Loz | reproduced at a different reading | build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 16,792,080 | holder's construction lost; order reproduced |
 | (11,10) | 130,592,354 | Loz | no source found |  | 148,729,680 | no traceable construction (data lost) |
 | (12,3) | 266 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (12,4) | 2,928 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
@@ -82,7 +82,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (12,6) | 354,312 | bipartite Moore graph | reproduced | apsp_mt.c VALID |  |  |
 | (12,7) | 664,300 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 693,500 |  |
 | (12,8) | 4,650,100 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
-| (12,9) | 30,001,152 | Loz | no source found |  | 34,026,720 | no traceable construction (data lost) |
+| (12,9) | 30,001,152 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 34,026,720 | holder's construction lost; order reproduced |
 | (12,10) | 300,383,050 | Loz | no source found |  | 325,832,976 | no traceable construction (data lost) |
 | (13,3) | 274 | Araujo-Pardo-Lopez | reproduced | apsp.c VALID | 276 |  |
 | (13,4) | 3,064 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 3,146 |  |

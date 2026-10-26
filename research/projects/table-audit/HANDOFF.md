@@ -67,6 +67,10 @@ Done:
   checked); (3,9) = 506 the largest VT of diameter ≤ 9 (checks/cvt_census.txt, tools/cvt_check.py).
 - cells.csv has a `verdict` column (reproduced / reproduced at a different reading / INVALID / no source found).
 
+- Loz cells above 3·10⁶ vertices: exact-order Haar graphs (metacyclic groups) for the remaining cells, checked by
+  two or three independent checkers (checks/haar_huge.txt; tools/meta_haar_bits.c, meta_haar_pull.c, the random
+  search tools/rand_meta_haar.py and the hill climb tools/meta_haar_climb.c for groups haar_gen3 cannot handle).
+
 Open:
 - ΩH_q at q ≥ 4 with some labelling: needs a structured labelling whose routes nearly tile each copy (omega/NOTES.md
   explains the routes). q = 4 is the smallest open case and cheap to evaluate (54,600 vertices, about 15 ms per cost

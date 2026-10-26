@@ -701,10 +701,10 @@
  },
  "9,10": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 37069 270 139 found here (round 2; graphs/d9D10_n20017260_meta_37069_270_139_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951; round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there"
  },
  "10,9": {
@@ -717,18 +717,18 @@
  },
  "10,10": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 97541 258 47 found here (round 2; graphs/d10D10_n50331156_meta_97541_258_47_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 25165578 = 2\u00b73\u00b743\u00b7103\u00b7947; round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there"
  },
  "11,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 4657 1632 19 found here (round 2; graphs/d11D9_n15200448_meta_4657_1632_19_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 7600224 = 2^5\u00b73\u00b717\u00b74657; round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there"
  },
  "11,10": {
@@ -741,10 +741,10 @@
  },
  "12,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 4883 3072 7 found here (round 2; graphs/d12D9_n30001152_meta_4883_3072_7_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 15000576 = 2^10\u00b73\u00b719\u00b7257; round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there"
  },
  "12,10": {
