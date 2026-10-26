@@ -18,12 +18,12 @@ CARDS.md, board: scoreboard.jsonl.
 | c3 | one matching (Delta = q+2) at q = 5 | 0 (5) | random hexagon voltages: cost 5 at m = 5 (zero hexagon voltages: ~1,000) |
 | c4 | multiplicative (discrete log) coordinate voltages | 10 (5) | fewer distinct bundle sums than random |
 | c5 | duality as the matchings, constant/bilinear voltages | 10 (3) | Z10 lemma only; bilinear best cost 22 at m = 12; built the q = 3 and q = 9 dualities |
-| c6 | SAT for bundle-rainbow hexagon voltages (q = 3) | (pending) | |
+| c6 | SAT for bundle-rainbow hexagon voltages (q = 3) | 0 (3) | bundle-rainbow = no apartment of voltage 0 (cover of girth >= 14); CEGAR over 88,452 apartments timed out |
 | c7 | Z10 lemma x Z_k, annealed K-part | 20 (3) | = formula at q = 3; m = 30 cost 744 |
 | c8 | typed copies, identity hops | 12 (3) | random Z_m lifts reach 16 at q = 3 |
 | c9 | pencil-rainbow line colouring, one matching | 0 (5) | no proper 7-colouring found by tabu (1,374 conflicts) |
 | c10 | Hermitian spread voltages | 10 (5) | best structured m = 11 cost 6 |
-| c11 | lifting the D7 graph (hexagon-only K-voltages) | (pending) | |
+| c11 | lifting the D7 graph (hexagon-only K-voltages, annealed) | 5 (5) | K = 2 (m = 10): cost 3,668; K = 3: 51,928; misses at level difference 0, hexagon distance 3 (and 1), as D8_COMPOUND.md §3 predicts |
 | c12 | hub surgery on the Z10 lemma graph | 10 + 3.8% (3) | 280 hubs (28 orbits) after deleting 90 matching-edge orbits |
 | c13 | additive projective parameter with geometric frames | 15 (3) | below random (16) |
 | c14 | wildcard: GQ(5,5) base | 500 copies of I(GQ(5)) = 19.97 x I(H(5)) | below 25 |
