@@ -9,6 +9,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | file | question | sets | answer |
 |---|---|---|---|
 | d5_haar_orders_193_203.log, d5_haar_orders_204_215.log | (5,5): S ∋ e, all 4-subsets, every group of order 193–215 (179 groups, `haar5 exhp`) | 5.5–8.7·10⁷ per group | no Haar graph of diameter ≤ 5 |
+| d5_haar_orders_216_240.log | (5,5): the same for every group of order 216–240 (director queue `tools/exhp_list.sh` plus round-3/4/5 cards); with the row above, **all 863 groups of order 193–240** (coverage checked group by group) | 8.7·10⁷–1.3·10⁸ per group | **no Haar graph of diameter ≤ 5** |
 | d5_haar_order_176_positive_control.log | the same search on order 176 | | finds SmallGroup(176,15) (our 352-vertex graph): the search works |
 | d6_haar_355_1_C71xC5.log | (6,5): S ⊇ {e, r}, r one representative per Aut(G)-orbit (5 orbits), all 4-subsets (`haar5 complete`) | 5 × 6.4·10⁸ | none: C71 ⋊ C5 has no (6,5) Haar graph |
 | d6_haar_351_12_F27xC13.log | the same for SmallGroup(351,12) = F₂₇ ⋊ C13 (5 orbits) | 5 × 6.0·10⁸ | none |
@@ -20,6 +21,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d7_haar_609_1_summary.txt (full log d7_haar_609_1_coset_patterns.log.gz, patterns d7_patterns_609_1.txt.gz) | (7,5) SmallGroup(609,1) = C3 × (C29 ⋊ C7) = `meta 29 7 16 3` (best mu_J of all (7,5) candidates; farms: cost 4): every coset pattern (21,279 classes in Z7 × Z3) | 2.2·10¹⁰ | **none** (three patterns reach cost 2) |
 | d7_haar_610_2_coset_patterns.log (patterns: d7_patterns_610_2.txt) | (7,5) SmallGroup(610,2) = C2 × (C61 ⋊ C5) = `meta 61 10 9 1`: every coset pattern (599 classes), normalized S inside each (`haar5 prod`, see below) | 7.6·10⁹ | **none: no (7,5) Haar graph on this group** |
 | d7_haar_615_1_coset_patterns.log (patterns: d7_patterns_615_1.txt) | (7,5) SmallGroup(615,1) = C3 × (C41 ⋊ C5) = `meta 41 15 10 1` (cost 2 five times in about 1,000 farm seeds): every coset pattern (3,935 classes) | 1.3·10¹⁰ | **none** |
+| d7_haar_618_1_coset_patterns.log | (7,5) SmallGroup(618,1) = C103 ⋊ C6 = `meta 103 6 47 1` (faithful action): every coset pattern (75 classes) | 5.0·10⁹ | none (best 71) |
 | d7_haar_618_2_coset_patterns.log (patterns: d7_patterns_618_2.txt) | (7,5) SmallGroup(618,2) = C2 × (C103 ⋊ C3) = `meta 103 6 56 1` (cost 4 in 7 of 100 farm seeds): every coset pattern (75 classes) | 5.0·10⁹ | none |
 | prod_completeness_checks.log | end-to-end check of the coset-pattern search on six small groups at Δ = 5 (`tools/jcheck.py`: cyclic quotient, a kernel in the action, Z_n factors, groups with and without solutions): brute force (`haar5 exhp`) and `haar5 prod` give the same set of pattern classes containing a cost-0 set | up to 7.4·10⁵ solutions | MATCH in all six |
 | d7_prod_positive_control_506.log | the same method on `meta 23 11 2` × Z2 (order 506) in the pattern of a known solution | 2.7·10⁵ | finds 2 solutions, one of them the known one (scaled by u = 11) |
