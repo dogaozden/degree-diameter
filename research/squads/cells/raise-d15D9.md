@@ -130,3 +130,18 @@ A new record must have |G| > 104,241,600. Admissible candidates just above (same
 | 104,702,400 | prod SL(2,5) × SL(2,11) × Z661 | ~26.8 | | round 2 "next" |
 
 Status and any wave 3 results: see the sections below.
+
+## Wave 3 (started 04:57 UTC, groups above 104,241,600; checkpoint 05:28 UTC)
+
+| job | group | N | μ | Fix | settings | cost at 05:28 |
+|---|---|---|---|---|---|---|
+| s61 | prod SL(2,5) × SL(2,7) × Z2587 | 104,307,840 | 25.18 | 35 | ORBW=5, RESTART=1 | 336 (stopped, large cyclic factor) |
+| s62 | prod SL(2,5) × SL(2,5) × Z7243 | 104,299,200 | 25.15 | 35 | ORBW=5, RESTART=1 | 1,770 (stopped after 600 s, large cyclic factor) |
+| s63 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 26.23 | 215 | ORBW=5, RESTART=1 | 12 |
+| s64 | prod SL(2,5) × SL(2,11) × Z661 | 104,702,400 | 26.77 | 71 | ORBW=5, RESTART=1 | 74 (stopped) |
+| s65 | SL(2,53) × Z703 | 104,623,272 | 26.45 | 53 | ORBW=5, RESTART=1 | 30 |
+| s66, s67 | prod SL(2,13) × SL(2,19) × Z7 | 104,569,920 | 26.23 | 215 | ORBW=5, RESTART=1, started 05:27 UTC | running |
+
+The large cyclic factors (Z2587, Z7243) cover far worse than any group tried here: the start cost is already 1,600–25,000
+and annealing does not bring it under about 300. They were dropped. Cores moved to SL(2,13) × SL(2,19) × Z7 (cost 12 at
+about 4,300 evals, the best of this wave so far).

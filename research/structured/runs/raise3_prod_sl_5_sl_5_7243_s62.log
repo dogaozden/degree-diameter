@@ -1,0 +1,24 @@
+group prod sl 5 sl 5 x Z_7243, N=104299200, identity 17528060, H order 20, rows 5214960, threads 1, setup 8.92s
+wide rows: no cyclic subgroup of order >= 64 found (best 30); using haar_gen3's evaluation
+alpha: conj by prod[mat(3,2,4,3);mat(3,1,2,1)] (index 10157), z -> 3426 z on Z_7243
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 35 (+e); mu = 25.15, mu/k = 8.38, fixed-point misses ~ 0.45
+ORBW=5: an uncovered fixed element weighs 5; start energy 24708
+start cost=24708
+t=36 steps=3 evals=25 cost=2838 best=2838 T=0.43 energy=2838 bestE=2838
+t=74 steps=6 evals=49 cost=2408 best=2408 T=0.15 energy=2416 bestE=2416
+t=111 steps=9 evals=73 cost=2390 best=2390 T=0.15 energy=2398 bestE=2398
+t=145 steps=12 evals=97 cost=2390 best=2390 T=0.15 energy=2398 bestE=2398
+t=182 steps=15 evals=121 cost=2190 best=2190 T=0.15 energy=2190 bestE=2190
+t=216 steps=18 evals=145 cost=2190 best=2190 T=0.15 energy=2190 bestE=2190
+t=251 steps=21 evals=169 cost=2178 best=2178 T=0.15 energy=2178 bestE=2178
+t=285 steps=24 evals=193 cost=2178 best=2178 T=0.15 energy=2178 bestE=2178
+t=322 steps=27 evals=217 cost=1998 best=1998 T=0.15 energy=1998 bestE=1998
+t=360 steps=30 evals=241 cost=1980 best=1980 T=0.15 energy=1980 bestE=1980
+t=398 steps=33 evals=265 cost=1980 best=1980 T=0.15 energy=1980 bestE=1980
+t=432 steps=36 evals=289 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+t=464 steps=39 evals=313 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+t=501 steps=42 evals=337 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+t=534 steps=45 evals=361 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+t=569 steps=48 evals=385 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+t=602 steps=51 evals=409 cost=1770 best=1770 T=0.15 energy=1770 bestE=1770
+RESULT d=15 D=9 group=prod sl 5 sl 5 x Z_7243 N=104299200 best=1770 evals=425 time=627.3 orbit k=3 m=5 f=0 fix=35
