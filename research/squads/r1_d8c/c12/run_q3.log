@@ -1,0 +1,14 @@
+chunk done i=45 accepted_total=45 checks=1 t=1s
+chunk done i=90 accepted_total=90 checks=2 t=2s
+chunk done i=135 accepted_total=131 checks=33 t=22s
+chunk done i=180 accepted_total=156 checks=102 t=66s
+chunk done i=225 accepted_total=177 checks=185 t=113s
+chunk done i=270 accepted_total=182 checks=230 t=136s
+STAGE1 q=3 seed=1 deleted_orbits=182 of 728 checks=230
+hubs t=2 type=A n_hub_reps=82 gain_vertices=820 valid=False bad=5657 checks=231
+hubs t=2 type=B n_hub_reps=81 gain_vertices=810 valid=False bad=5974 checks=232
+hubs t=3 type=A n_hub_reps=54 gain_vertices=540 valid=False bad=538 checks=233
+hubs t=3 type=B n_hub_reps=54 gain_vertices=540 valid=False bad=722 checks=234
+hubs t=6 type=A n_hub_reps=27 gain_vertices=270 valid=False bad=2 checks=235
+hubs t=6 type=B n_hub_reps=27 gain_vertices=270 valid=False bad=2 checks=236
+RESULTS [(2, 'A', 82, False), (2, 'B', 81, False), (3, 'A', 54, False), (3, 'B', 54, False), (6, 'A', 27, False), (6, 'B', 27, False)]
