@@ -2,3 +2,7 @@ group sl 607 x Z_43, N=9616861248 (2N=19233722496), rows 368448 x 26101 bits (do
 alpha: conj by mat(0,606,1,606), z -> 6 z on Z_43 (fixed z: 1); ORBIT k=3 m=6 f=1; W=2.10027e+11 lambda=21.840 mu=3.15
 setup 0.0s
 start cost=4 (345.8s per eval)
+t=659 step=1 evals=5 slot=2 cand=0 cost=0 best=0 T=1.26
+RESULT d=19 D=10 group=sl 607 x Z_43 N=9616861248 vertices=19233722496 best=0 evals=5 steps=1 time=659.1 orbit k=3 m=6 f=1 mu=3.15
+re-evaluation of the best S: cost 0
+wrote runs/d19D10_sl_607_43_orb3_s1.out

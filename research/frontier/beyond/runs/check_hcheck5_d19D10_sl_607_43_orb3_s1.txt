@@ -1,0 +1,7 @@
+checker: hcheck5
+command: ./bin/hcheck5 runs/d19D10_sl_607_43_orb3_s1.out
+start: 2026-10-26T16:17:47Z
+sha256 3a7b900da7e82ab45eb674630b2696c52538a16ad2f57710ce26926770ca7a6d  ./bin/hcheck5
+sha256 6502d81e8238e6ddf1c22651426bd20b5dc1b65aa46c19d4edba02c20229a450  runs/d19D10_sl_607_43_orb3_s1.out
+loaded runs/d19D10_sl_607_43_orb3_s1.out: d=19 D=10 p=607 n=43 N=9616861248; idx-column mismatches=18
+generators distinct: yes
