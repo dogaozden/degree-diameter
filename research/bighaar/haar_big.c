@@ -1,7 +1,8 @@
 /* haar_big: orbit-symmetric Haar graph search for very large groups, G = SL(2,p) x Z_n or PSL(2,p) x Z_n
  * (p an odd prime >= 5, gcd(p, n) = 1), |G| up to ~3e10.  Job cell-16-10 (2026-10-24); odd D added by job
- * new-cells-beyond (2026-10-26): for odd D the last level is X_(D-1) = S^-1 Y_(D-2) (side A), cost = #A-side elements
- * not within D-1 of (e,A); cost 0 gives diameter <= D (same side <= D-1, other side one step more).  ZQ/FIXF: even D.
+ * new-cells-beyond (2026-10-26): for odd D the last level is X_(D-1) = S^-1 Y_(D-2) (side A); cost = #A-side elements
+ * not within D-1 of (e,A) plus the same count for H(G, S^-1) (= B-side elements not within D-1 of (e,B)); cost 0 gives
+ * diameter <= D (same side <= D-1, other side one step more).  ZQ/FIXF: even D only.
  *
  * Haar graph H(G,S): vertices (g,A), (g,B); edges (g,A) ~ (s g, B), s in S, |S| = d, s_0 = e.  Right multiplication
  * by G preserves edges and is transitive on each side.  Cost = #B-side elements not within D-1 of (e,A).  For even D,
@@ -33,6 +34,7 @@
  *      from the best S, 60), PUSHMAX (push a level iff |list| * d <= PUSHMAX, default min(2^24, N d / 512)), UCAP (65536),
  *      RANDORB=m (cost statistics of m random symmetric S, no search), EVAL=file (cost of the S in a solution file),
  *      START=file (start the search from the S in a solution file; it must have the orbit structure), BENCH=1 (timings),
+ *      ORBIT f > 1: the f - 1 alpha-fixed generators are drawn at random once and never moved (new-cells-beyond).
  *      UNCPRINT=1 (with EVAL: list up to 200 uncovered elements), FIXF=1 (D = 10 only: screen each candidate on the
  *      alpha-fixed elements by meet in the middle, ~0.1 s, and fully evaluate only candidates with at most FIXMAX (0)
  *      fixed holes, trying up to FIXTRY (200) per candidate slot; with EVAL it compares the screen with the full count),
@@ -232,7 +234,8 @@ static i64 last_level(const u64 *C, u64 **tab, i64 bound, i64 *unc, int ucap, in
 static const i64 NOBOUND = (i64)1 << 62;
 static i64 LEV[64];
 /* cost of the current tables (S[0] must be e) */
-static i64 cost(i64 bound, i64 *unc, int ucap, int *nunc) {
+static int INVS = 0;   /* odd D: 1 = BFS of H(G, S^-1), whose A-side coverage is the B-side coverage of H(G, S) */
+static i64 cost1(i64 bound, i64 *unc, int ucap, int *nunc) {
     double t0 = now();
     memset(BUF[0], 0, (size_t)(R * RW * 8));
     i64 n = 0; i64 e = eidx(E_ID); LIST[n++] = e; setbit2(BUF[0], e / L, e % L);
@@ -240,7 +243,7 @@ static i64 cost(i64 bound, i64 *unc, int ucap, int *nunc) {
     if (BENCH) TLEV[0] = now() - t0;
     for (int lev = 1; lev <= D - 1; lev++) {
         double tl = now();
-        int sideS = lev & 1;          /* odd levels: S (A -> B), even: S^-1 */
+        int sideS = (lev & 1) ^ INVS; /* odd levels: S (A -> B), even: S^-1; swapped for H(G, S^-1) */
         if (lev == D - 1) {
             i64 c = last_level(BUF[cur], sideS ? PS : PI, bound, unc, ucap, nunc);   /* odd D: last level is S^-1 (A side) */
             if (BENCH) { TLEV[lev] = now() - tl; }
@@ -302,6 +305,24 @@ static i64 cost(i64 bound, i64 *unc, int ucap, int *nunc) {
     return -2;   /* not reached for D >= 2 */
 }
 
+/* For even D, cost1 from (e,A) decides the diameter (odd words from B are the inverses of odd words from A).  For odd D
+ * the same-side sets differ: from (e,A) they are (S^-1 S)^k, from (e,B) (S S^-1)^k = the A-side words of H(G, S^-1).
+ * So for odd D, cost = holes of H(G,S) + holes of H(G,S^-1) (both from (e,A)); holes of the second kind are stored
+ * with bit 62 set.  (new-cells-beyond, 2026-10-26) */
+#define BHOLE ((i64)1 << 62)
+static i64 cost(i64 bound, i64 *unc, int ucap, int *nunc) {
+    INVS = 0; i64 c = cost1(bound, unc, ucap, nunc);
+    if (D % 2 == 0 || c < 0) return c;
+    i64 b2 = bound == NOBOUND ? NOBOUND : bound - c;
+    if (b2 <= 0) return -1;
+    int n1 = *nunc, n2 = 0;
+    INVS = 1; i64 c2 = cost1(b2, unc + n1, ucap - n1, &n2); INVS = 0;
+    if (c2 < 0) return -1;
+    for (int i = n1; i < n1 + n2; i++) unc[i] |= BHOLE;
+    *nunc = n1 + n2;
+    return c + c2;
+}
+
 /* ---------------- orbit structure ---------------- */
 static int OK_ = 3, OM, OF = 1;
 static el AG, AGI; static i64 AR = 0;
@@ -348,26 +369,29 @@ static void choose_alpha(void) {   /* g = [[0,-1],[1,t]] with g^k = +-I (project
 /* ---------------- targeted moves ---------------- */
 static i64 *UNC; static int NUNC;  /* uncovered list of the current S */
 static u64 AVOID;                  /* generator slots the walks must not use */
+static int WINV = 0;   /* walks in H(G, S^-1) (targeting a hole of the second kind, odd D) */
 static el walk(el g, int *side, int len) {
     for (int s = 0; s < len; s++) {
         int j; do j = (int)(rnd() % d); while ((AVOID >> j) & 1);
-        g = *side == 0 ? emul(S[j], g) : emul(einv(S[j]), g);
+        g = (*side == 0) != WINV ? emul(S[j], g) : emul(einv(S[j]), g);
         *side ^= 1;
     }
     return g;
 }
 static int targeted(el *x) {
     if (NUNC == 0) return 0;
-    el u = eofidx(UNC[rnd() % NUNC]);
+    i64 hidx = UNC[rnd() % NUNC]; WINV = (hidx & BHOLE) != 0;
+    el u = eofidx(hidx & ~BHOLE);
     for (int tries = 0; tries < 20; tries++) {
         int a = (int)(rnd() % (D - 1)), b = (int)(rnd() % (D - 1 - a));
         int sp = 0, sq = (D % 2 == 0);   /* uncovered elements are on side B for even D, side A for odd D */
         el Pp = walk(E_ID, &sp, a), Qv = walk(u, &sq, b);
         if (sp == sq) continue;
         el gA = sp == 0 ? Pp : Qv, hB = sp == 0 ? Qv : Pp;
-        *x = emul(hB, einv(gA)); return 1;
+        *x = emul(hB, einv(gA)); if (WINV) *x = einv(*x);
+        WINV = 0; return 1;
     }
-    return 0;
+    WINV = 0; return 0;
 }
 
 /* ---------------- FIXF: screen candidates on the alpha-fixed elements (meet in the middle) ----------------
@@ -627,7 +651,7 @@ int main(int argc, char **argv) {
         int reps = BENCH ? 3 : 1; i64 c = 0;
         for (int r = 0; r < reps; r++) { double t0 = now(); int nu; c = cost(NOBOUND, ULIST[0], UCAP, &nu);
             printf("EVAL %s cost=%lld time=%.3f mu=%.2f\n", getenv("EVAL"), (long long)c, now() - t0, mu);
-            if (getenv("UNCPRINT")) for (int i = 0; i < nu && i < 200; i++) { char b[200]; edesc(eofidx(ULIST[0][i]), b); printf("uncovered %s\n", b); }
+            if (getenv("UNCPRINT")) for (int i = 0; i < nu && i < 200; i++) { char b[200]; edesc(eofidx(ULIST[0][i] & ~BHOLE), b); printf("uncovered %s%s\n", b, (ULIST[0][i] & BHOLE) ? " (B side)" : ""); }
             if (BENCH) { fprintf(stderr, "levels:"); for (int l = 0; l <= D - 1; l++) fprintf(stderr, " %d:%.3fs(%lld)", l, TLEV[l], (long long)LEV[l]); fprintf(stderr, "\n"); } }
         if (getenv("FIXF")) {   /* compare the screen with the full evaluation on the alpha-fixed elements */
             if (getenv("ORBIT")) sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF);
@@ -650,7 +674,22 @@ int main(int argc, char **argv) {
     fprintf(stderr, "alpha: conj by mat(%d,%d,%d,%d), z -> %lld z on Z_%lld (fixed z: %lld); ORBIT k=%d m=%d f=%d; W=%.6g lambda=%.3f mu=%.2f\n",
             AG.a, AG.b, AG.c, AG.d, (long long)AR, (long long)NC, (long long)nfixz, OK_, OM, OF, W, W / NG, mu);
     fprintf(stderr, "setup %.1fs\n", now() - tset);
-    if (OF != 1) { fprintf(stderr, "only f = 1 (S = {e} + orbits) is implemented\n"); return 2; }
+    el FIXG[MAXD]; int NFIXG = 0;
+    if (OF > 1 && !getenv("START")) {   /* f - 1 alpha-fixed generators, drawn at random once and kept fixed (new-cells-beyond) */
+        int nfz = 0; i64 *fz = malloc(sizeof(i64) * (NC > 64 ? 64 : NC));
+        for (i64 z = 0; z < NC && nfz < 64; z++) if ((i64)((__int128)AR * z % NC) == z % NC) fz[nfz++] = z;
+        el *cand = malloc(sizeof(el) * 4 * (size_t)P * 64); int nc = 0;
+        for (int a = 0; a < P; a++) for (int b = 0; b < P; b++) {   /* centralizer of AG in SL(2,p): a I + b AG with det 1 */
+            el m = (el){md(a + (i64)b * AG.a), md((i64)b * AG.b), md((i64)b * AG.c), md(a + (i64)b * AG.d), 0};
+            if (md((i64)m.a * m.d - (i64)m.b * m.c) != 1) continue;
+            for (int t = 0; t < nfz; t++) { el x = canon(m); x.z = fz[t]; if (eeq(x, E_ID) || !eeq(alpha(x), x)) continue;
+                int dup = 0; for (int u = 0; u < nc && !dup; u++) dup = eeq(cand[u], x); if (!dup && nc < 4 * P * 64) cand[nc++] = x; }
+        }
+        if (nc < OF - 1) { fprintf(stderr, "only %d alpha-fixed elements, need %d\n", nc, OF - 1); return 2; }
+        for (int u = 1; u < OF; u++) { el x; int ok; do { x = cand[rnd() % nc]; ok = 1; for (int v = 1; v < u; v++) if (eeq(FIXG[v], x)) ok = 0; } while (!ok); FIXG[u] = x; }
+        NFIXG = OF - 1; fprintf(stderr, "fixed generators: %d chosen among %d alpha-fixed elements\n", NFIXG, nc);
+        free(cand); free(fz);
+    }
     int BOUNDCUR = getenv("BOUNDCUR") ? atoi(getenv("BOUNDCUR")) : 0;
     int FIXF = getenv("FIXF") ? atoi(getenv("FIXF")) : 0, FIXTRY = getenv("FIXTRY") ? atoi(getenv("FIXTRY")) : 200;
     int FIXMAX = getenv("FIXMAX") ? atoi(getenv("FIXMAX")) : 0; i64 nscreen = 0; double tscreen = 0;
@@ -658,6 +697,7 @@ int main(int argc, char **argv) {
     if (FIXF) { double t1 = now(); fix_setup(); fprintf(stderr, "FIXF: %d alpha-fixed elements other than e (%.1fs); FIXTRY %d FIXMAX %d\n", NFIX, now() - t1, FIXTRY, FIXMAX); }
     S[0] = E_ID;
     for (int u = OF; u < d; u++) S[u] = (el){0, 0, 0, 0, -1};
+    for (int u = 1; u <= NFIXG; u++) S[u] = FIXG[u];
     if (getenv("START")) {
         if (!read_sol(getenv("START"), S)) { fprintf(stderr, "cannot read START\n"); return 2; }
         for (int j = 0; j < OM; j++) { el o[MAXD]; if (!orbit_of(S[ostart(j)], o)) { fprintf(stderr, "START: slot %d is not a free orbit start\n", j); return 2; }
