@@ -1,0 +1,14 @@
+# pgl 73 31                          N=12057264 mu=36.0 fix=71 min=19 p1=22 p10=38 median=64
+# sl 73 31                           N=12057264 mu=36.0 fix=71 min=18 p1=24 p10=37 median=57
+# prod sl 8 psl 19 7                 N=12065760 mu=36.3 fix=80 min=24 p1=24 p10=40 median=63
+# psl 289 1                          N=12068640 mu=36.5 fix=143 min=27 p1=30 p10=40 median=63
+# psl 79 49                          N=12077520 mu=36.8 fix=38 min=16 p1=20 p10=33 median=57
+# prod psl 7 psl 11 109              N=12085920 mu=37.2 fix=17 min=30 p1=33 p10=54 median=105
+# prod psl 3 sl 16 247               N=12093120 mu=37.5 fix=44 min=64 p1=72 p10=141 median=944
+ 1 N=12077520 mu=36.8 fix=38 min=16 p1=20 p10=33 median=57  psl 79 49
+ 2 N=12057264 mu=36.0 fix=71 min=19 p1=22 p10=38 median=64  pgl 73 31
+ 3 N=12057264 mu=36.0 fix=71 min=18 p1=24 p10=37 median=57  sl 73 31
+ 4 N=12065760 mu=36.3 fix=80 min=24 p1=24 p10=40 median=63  prod sl 8 psl 19 7
+ 5 N=12068640 mu=36.5 fix=143 min=27 p1=30 p10=40 median=63  psl 289 1
+ 6 N=12085920 mu=37.2 fix=17 min=30 p1=33 p10=54 median=105  prod psl 7 psl 11 109
+ 7 N=12093120 mu=37.5 fix=44 min=64 p1=72 p10=141 median=944  prod psl 3 sl 16 247

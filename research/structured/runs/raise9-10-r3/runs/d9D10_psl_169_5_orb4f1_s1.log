@@ -1,0 +1,14 @@
+group psl 169 poly x^2+2 x Z_5, N=12066600, identity 70980, H order 60, rows 201110, threads 1, setup 0.67s
+wide rows: HW order 210, rows 57460, setup 1.69s
+alpha: conj by mat(51,163,100,27) (index 1298527), z -> 2 z on Z_5
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 83 (+e); mu = 36.37, mu/k = 9.09, fixed-point misses ~ 3.50
+start cost=59
+t=30 steps=97 evals=777 cost=30 best=28 T=0.52
+t=60 steps=191 evals=1529 cost=19 best=19 T=0.18
+t=91 steps=287 evals=2297 cost=19 best=19 T=0.15
+t=121 steps=392 evals=3137 cost=14 best=14 T=0.15
+t=151 steps=492 evals=3937 cost=14 best=14 T=0.15
+t=181 steps=593 evals=4745 cost=14 best=14 T=0.15
+t=211 steps=688 evals=5505 cost=14 best=14 T=0.15
+t=241 steps=798 evals=6385 cost=14 best=14 T=0.15
+t=272 steps=907 evals=7257 cost=14 best=14 T=0.89
