@@ -34,4 +34,20 @@ tools/orb_screen.py 9 10 12049801 12100000 "<shape>" --samples 150 --top 60, for
 runs/raise9-10-r3/screen_shapes.sh. Costs are raw uncovered counts. Early rows (150 samples):
 - `4 2 1`: psl 169×Z5 min 25, p1 28, p10 55 (fix 83); psl 289×Z1 min 28 (fix 143).
 - `3 3 0` (same samples): pgl 73×Z31 min 33–36, psl 79×Z49 min 33.
-- `2 ·` shapes: see screen files.
+
+Full screen (10 shapes, same 150 samples; cost = raw uncovered elements; comparisons across k are rough):
+- `3 3 0` best: psl 79×Z49 min 16 (fix 38); pgl 73×Z31 min 19; sl 73×Z31 min 18.
+- `4 2 1` best: psl 169×Z5 min 25, p1 28, p10 55 (fix 83, μ/k 9.1); psl 289×Z1 min 28 (fix 143). Others ≥ 108.
+- `2 4 1`, `2 3 3`, `2 2 5` (involutions, collisions): min 32 (`2 4 1`, psl 289×Z1) to 3810+. Dropped.
+- `3 2 3`, `5 1 4`, `6 1 3`, `7 1 2` (fixed generators): min ≥ 33 but p1/p10 blow up; best fixed-gen shape is `3 2 3` pgl 73×Z31 (min 33, p1 39) — not pursued (same torus problem).
+- `8 1 1`: psl 47×Z233 min 116. Dropped.
+
+## Runs (round 3)
+
+Shape `4 2 1` (k=4, m=2, e + two orbits of size 4), psl 169 × Z5, N = 12,066,600, μ 36.4, μ/k 9.1, |Fix(α)| 83.
+Logs in research/structured/runs/raise9-10-r3/runs/.
+
+- s1: plain, 12,600 s (started 02:08 UTC). t=241 s: cost 14 at 6.4e3 evals.
+- s2: ORBW=4 (uncovered fixed element weighs k), 10,800 s (started 02:12 UTC).
+- s3: RESTART=1, 10,800 s (started 02:12 UTC).
+- s4: plain, 10,800 s (started 02:12 UTC).
