@@ -159,6 +159,12 @@ each). Its open leads: (a) ORBW fixed-point weighting on the 44-fixed-point grou
   - psl 17×95 (N 232,560, |Fix| 44): start cost 23,160 (energy), best 26 at t = 180 s
   - psl 13×215 (N 234,780, |Fix| 29): best 32 at t = 180 s
   - psl 41×7 (N 241,080, |Fix| 20): best 21 at t = 180 s
+- Wave 1 finished (2400 s each, about 6–13·10⁶ evaluations per run). No solve.
+  sl 16×57 best 15 (6.5·10⁶ evals); psl 17×95 best 24 (11·10⁶); psl 13×215 best 32 (12.7·10⁶); psl 41×7 best 15 (7.2·10⁶).
+  ORBW = 3 did not move the plateaus that round 2 reported (16, 17, 32, ~15–21). Fixed points are not the bottleneck
+  for these orders: the uncovered orbits are.
+- Wave 2 (seed 21, ORBW 3, 2400 s, each on a candidate with good mixing that round 1–2 did not run):
+  sl 13×109 (μ 50.1, |Fix| 11), pgl 13×109 (μ 50.1, |Fix| 11), psl 25×31 (μ 58.0, |Fix| 11), sl 11×181 (μ 51.8, |Fix| 11).
 
 ## Full window screen, round 3 (orb_screen.py 7 9 231421 245000 "3 2 1" --nmax 3000, RANDORB 1000 samples)
 
