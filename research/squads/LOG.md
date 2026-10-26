@@ -49,3 +49,25 @@ states at 812 (6), 816 (4), 820 (4) and (3,11) 1,296 (2) are exact local minima;
 No valid graph above 810. Kept: (3,10) cost rises with n (cost 4 at 816/820, 20+ at 880+); short independent runs beat
 long pushes. Next: the director runs quartic joint annealing ((4,8): cost 64+ at n = 2,200 with p = 4..6, far) and
 Haar scans, (4,9) over the 5-groups of order 625 (n = 5,000), and (3,11) above the census value 1,250.
+
+## 2026-10-26, own-small, round 3 (goals: (3,11) and (3,12) new cells, (3,10) > 810, (3,9) > 506)
+
+16 Haiku cards, 19:35-20:50 UTC (research/squads/own-small/r3/: HEADER.md, cards.md, scoreboard.jsonl). New setup after
+round 2's lost jobs: cards ran no heavy programs themselves; they appended task lines to the director's queue
+(tools/dispatch.sh, 4 workers, round-robin over cards, at most 14 tasks of <= 90 s per card) and evolved from the result
+lines; cost-0 states were converted and checked with score48 automatically. Throughput was the limit: about 210 tasks
+ran in 75 minutes, cards got 6-10 results each, and most cards ended with tasks still queued.
+Cards (best valid n / best near state; salift cost):
+- (3,11), D = 11: x1 6+6 N=106..112: 1,284 cost 2 and 1,272 cost 2 (after polish). x2 7+7 N=91..96: 1,274 cost 6.
+  x3 8+8 N=79..84: 1,264 cost 4. x4 5+5 N=127..135: 1,290 cost 4. x5 9+9/10+10: 1,314 cost 6.
+  **x6 4+4 N=158..165: VALID 1,320** (SmallGroup(165,1) = C3 x (Z11:Z5)).
+- (3,12), D = 12: y1 6+6: 2,352 cost 28. y2 7+7: 2,310 cost 28. y3 8+8: 2,320 cost 30. y4 5+5: 2,310 cost 86. y5 9+9/10+10:
+  2,320 cost 40.
+- (3,10), D = 10: z1 5+5 N=82..86: 820 cost 6. z2 6+6/7+7: 816 cost 8. z3 4+4 N=102..104: 816 cost 6.
+- (3,9), D = 9: v1 5+5/6+6: 510 cost 8. v2 larger bases: 512 cost 12.
+Director, from x6's result (4+4 bases work best at D = 11): 4+4 tasks over orders 168..200 gave **VALID 1,344**
+(SmallGroup(168,1) = Z7 x|_5 Z24), and cost 4 at 1,360 and 1,368; the same idea at D = 12 (orders 289..300) gave cost 4
+at n = 2,352 (order 294) and 8 at 2,400, far better than the cards' p = 5..10 slots (cost 24+). Records rebuilt from
+explicit group coordinates and checked with apsp.c (research/squads/own-small/records/).
+Kept: 4+4 bases are the strongest at D = 11-12, 5+5 at D = 10. A second, FIFO queue (tools/dispatch2.sh) then ran
+only the promising pending tasks (4+4 at D = 11/12, (3,10) n = 816 seeds).
