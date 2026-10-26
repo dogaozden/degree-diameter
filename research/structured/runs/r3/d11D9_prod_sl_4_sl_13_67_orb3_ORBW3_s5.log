@@ -68,3 +68,9 @@ t=1840 steps=5762 evals=46097 cost=12 best=12 T=0.15 energy=12 bestE=12
 t=1871 steps=5847 evals=46777 cost=12 best=12 T=0.15 energy=12 bestE=12
 t=1901 steps=5936 evals=47489 cost=12 best=12 T=0.15 energy=12 bestE=12
 t=1931 steps=6020 evals=48161 cost=12 best=12 T=1.08 energy=12 bestE=12
+RESULT d=11 D=9 group=prod sl 4 poly x^2+x+1 sl 13 x Z_67 N=8779680 best=0 evals=48577 time=1948.7 orbit k=3 m=3 f=2 fix=35
+full diameter check: OK
+wrote research/structured/runs/r3/d11D9_prod_sl_4_sl_13_67_orb3_ORBW3_s5.txt
+n = 17559360 edges = 96576480 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = 090b1c55503f3935afb3e4d6bf3937b952a8736c044c2021233f64880234e33a
+VALID d=11 D=9 group=prod sl 4 poly x^2+x+1 sl 13 x Z_67 N=8779680 vertices=17559360

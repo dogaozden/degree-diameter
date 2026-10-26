@@ -266,3 +266,17 @@ Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable struct
 - prod sl 4 × sl 13 × Z67, seed 2: not solved, best 3 after 191k evals (closest of this round after the record).
 - prod sl 4 × sl 13 × Z67, seed 3: not solved, best 6 after 187k evals.
 - Two more seeds on the same group were started at 05:36 (seeds 4 and 5, 4000 s each, end about 06:43).
+
+## Result 2 (round 3): NEW RECORD (11,9), 17,559,360 vertices (was 17,495,520, +0.37 %)
+
+- Group prod sl 4 × sl 13 × Z_67 (SL(2,4) with x²+x+1, SL(2,13), Z_67), |G| = 8,779,680 (μ = 28.0), orbit k = 3,
+  m = 3, f = 2, **ORBW=3**, seed 5. Solved at evaluation 48,577 (1949 s, 06:09 box time). |Fix(α)| = 35.
+  Seeds 2 and 3 of the same group (7200 s, wave 3) stalled at 3 and 6; seed 4 was still running.
+- Solution: research/frontier/sols/d11D9_prod_sl_4_sl_13_67_orbw3_s5.txt.
+  Search log: research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s5.log.
+- Checks: the search's own full diameter check says OK, and orbq's build_haar2 check says VALID (n = 17,559,360,
+  edge-list sha256 090b1c55503f3935afb3e4d6bf3937b952a8736c044c2021233f64880234e33a).
+  A second build_haar2 run on the saved file is in progress; its output goes to
+  research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s5.build_haar2.txt.
+  The SL checkers do not read prod headers, so build_haar2 is the only checker for this group.
+- The bar is now |G| > 8,779,680 (2|G| > 17,559,360). sl 59 × Z43 (|G| = 8,828,760) would beat it if it solves.
