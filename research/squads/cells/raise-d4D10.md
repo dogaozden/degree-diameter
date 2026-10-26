@@ -27,3 +27,17 @@ Two families that the grammar could not reach before, and one check that closed 
    Screen: 23,377 candidates in N = 6209–6400. Best min 9–13 (e.g. 6328 nmeta 226 28 117 113 1: min 9, median 293),
    comparable to the best split groups (min 10–13). Log: logs/screen_nm_6209_6400.tsv.
 
+   Batch 1 (300 s, seed 1, 12 specs): the four N = 6328 specs nmeta 226 28 {99,105,169,173} 113 reach cost 2; the
+   others (6216 518 12 {177,487} 259, 6223 889 7 8 127, 452 14 143 226) reach cost 5–7. Batch 2 (12 more, N = 6216–6384)
+   was cancelled in favour of the long runs below. Log: logs/anneal1_summary.tsv.
+
+3. **Long runs at N = 6394 (round 2's lead (a)): no solve.** Four runs of 3600 s each (haar_gen3, split groups, seeds 4–5):
+   meta 139 46 6 1 (seeds 4, 5), meta 139 23 6 2 (seed 4), meta 278 23 45 1 (seed 4). Every run ends at best cost 1
+   (about 4.3e8 evaluations each). Log: logs/long6394_summary.tsv.
+
+## Status (round 3, as of 03:00 UTC)
+- Total this round: 4 long runs (3600 s), 4 + 4 non-split anneals (300 s), and the k=3 orbit screen (17,627 candidates,
+  exhaustive for the orbit space of each candidate). No solve; nothing saved to research/frontier/sols/.
+- Verification pipeline is checked (for any future hit): haar_nm finds the solution, tools/build_haar_nm.py gives VALID
+  (degree 4, bipartite, diameter from both sides), and research/lifts/coordinator_check/apsp.c gives the all-pairs
+  diameter. Tested on a small nmeta case (nmeta 6 4 5 3 1, d=4 D=6: VALID, diameter 5).
