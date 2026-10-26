@@ -1,4 +1,9 @@
-# Known census graphs that exceed the lab's new-cell values at (3,11) and (3,12)
+# (3,11) and (3,12): census graphs and our (3,11) record
+
+**Ours: (3,11) n = 1,260** (6+6 voltage lifts over Z_105 and over C5 x (C7:C3), found by joint base+voltage
+annealing; files research/squads/own-small/records/d3D11_n1260_*; |Aut| = 105). It beats the census value below.
+
+## Known census graphs that exceed the lab's earlier new-cell values
 
 The lab records (RESULTS.md, Oct 26 09:44 PT) list (3,11) 1,080 and (3,12) 1,320 as new cells. Published censuses
 already contain larger bipartite cubic graphs with these diameters. They are not our constructions; credit the censuses.
