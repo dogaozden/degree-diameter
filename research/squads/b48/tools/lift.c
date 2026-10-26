@@ -17,7 +17,9 @@
      K     candidates per move (best of K, default 8).
    Cost = sum over the b roots (u,e) of the number of lift vertices not within distance D, plus b*N*... for a
    non-bipartite lift (when the base is not bipartite, checked every evaluation; when BIP=0 not checked).
-   Env: T0 (default 3), T1 (0.05), EPOCH (steps per cooling cycle, 20000), NOTREE, BIP (1), MAXEVALS, QUIET.
+   Env: T0 (default 3), T1 (0.05), EPOCH (steps per cooling cycle, 20000), NOTREE, BIP (1), MAXEVALS, QUIET,
+   ODDSTRIDE=s (draw only voltages g with floor(g/s) odd: for meta m k r tables, s = m gives odd j; use NOTREE=1 with it,
+   since tree edges would otherwise get the identity, which is even).
    Stops at cost 0. If OUT is given, writes the best state found to OUT (solution) and OUT.edges (lift edge list,
    "n" then "u v", vertex (v,x) = v*N + x), cost 0 or not; exit code 0 iff cost 0.
    Always prints "RESULT ... best=<cost> n=<b*N>" at the end. Check OUT.edges with score48. */
@@ -124,6 +126,14 @@ static int ok_at(int u) {
     return 1;
 }
 static int ok_edge(int e) { return ok_at(eu[e]) && ok_at(ev[e]); }
+static int oddstride = 0;   /* env ODDSTRIDE=s: only voltages g with (g / s) odd (meta index a + m*j: s = m, parity j) */
+static int draw(int e) {
+    for (int t = 0; t < 1000000; t++) {
+        int g = esemi[e] ? (ninvol ? invol[rnd() % ninvol] : 0) : (int)(rnd() % N);
+        if (!oddstride || ((g / oddstride) & 1)) return g;
+    }
+    return 0;
+}
 
 static int is_bip(void) {
     int n = b * N; for (int i = 0; i < n; i++) col[i] = -1;
@@ -198,12 +208,13 @@ int main(int argc, char **argv) {
     long EPOCH = getenv("EPOCH") ? atol(getenv("EPOCH")) : 20000, MAXEV = getenv("MAXEVALS") ? atol(getenv("MAXEVALS")) : -1;
     int quiet = getenv("QUIET") ? atoi(getenv("QUIET")) : 0;
     checkbip = !bip_base && !(getenv("BIP") && !atoi(getenv("BIP")));
+    oddstride = getenv("ODDSTRIDE") ? atoi(getenv("ODDSTRIDE")) : 0;
     for (int u = 0; u < b; u++) { int dg = 0; for (int j = 0; j < ndart[u]; j++) dg += 1; if (dg > d) { fprintf(stderr, "base vertex %d has degree %d > d\n", u, dg); return 2; } }
     int n = b * N; dist = calloc(n, sizeof(int)); queue = malloc(n * sizeof(int)); col = malloc(n * sizeof(int));
     /* initial voltages */
     for (int i = 0; i < m; i++) volt[i] = efix[i] >= 0 ? efix[i] : 0;
     for (int f = 0; f < nfree; f++) { int e = freeidx[f], tries = 0;
-        do { volt[e] = esemi[e] ? (ninvol ? invol[rnd() % ninvol] : 0) : (int)(rnd() % N); } while (!ok_edge(e) && ++tries < 100000); }
+        do { volt[e] = draw(e); } while (!ok_edge(e) && ++tries < 100000); }
     for (int u = 0; u < b; u++) if (!ok_at(u)) { fprintf(stderr, "cannot make a simple lift (fixed voltages?)\n"); return 2; }
     long cur = cost(1L << 60), best = cur; memcpy(bestv, volt, sizeof volt);
     if (!quiet) printf("group %s N=%d base b=%d m=%d free=%d bip_base=%d n=%d start cost=%ld\n", gspec, N, b, m, nfree, bip_base, n, cur);
@@ -217,7 +228,7 @@ int main(int argc, char **argv) {
         int e = freeidx[rnd() % nfree], old = volt[e], bg = -1; long bc = 1L << 60;
         long lim = cur + (long)(T * 10) + 2;
         for (int k = 0; k < K; k++) {
-            int g = esemi[e] ? (ninvol ? invol[rnd() % ninvol] : 0) : (int)(rnd() % N);
+            int g = draw(e);
             if (g == old) continue;
             volt[e] = g; if (!ok_edge(e)) continue;
             long c = cost(bc < lim ? bc : lim);

@@ -86,3 +86,20 @@ Cards (best n / cost, (4,9) unless noted):
   lifts: 2,328 / 120. e03 more groups of order 1,152/1,200: 2,304 / 9. e04 nilpotent groups: 2,240 / 233.
 No valid graph. Kept: nothing for (4,9) beyond the floors; the brief's next cells are (3,9) and (3,10). An earlier session
 (claude/voltage-lifts-search-6lfotq) left a (3,10) exhaustive 2+2 scan unfinished at group order 208; round 4 picks it up.
+
+## 2026-10-26, big-squad-4-8, round 4 (goals: cubic (3,10) > 800 and (3,9) > 506; two (4,9) cards)
+
+13 Haiku cards, 05:35-05:47 UTC (research/squads/b48/r4/). The brief's next cells after (4,8) and (4,9). Director, before
+the round: an exhaustive sweep of cubic Haar graphs of all metacyclic groups of order 254..300 and 401..440 (minimum cost
+250..600: far off), so the round used lifts of bigger bases; flift eval scores a full 2+2 cubic scan of a group of order
+~208 (9 million assignments) in ~7 s. An earlier session (claude/voltage-lifts-search-6lfotq) had (3,10) near misses at
+cost 2 (n = 812, 816) and an unfinished 2+2 scan at group order 208.
+Cards (best n / cost):
+- (3,10): h01 exhaustive 2+2, all 38 non-abelian groups of order 208: 832 / 14. h02 orders 210..216: 840 / 6. h03 orders
+  217..230 (59 groups): 880 / 2 (meta 11 20 3, exhaustively minimal). h04 3+3 bases: 816 / 2 (the known Z_17 x| Z_8 near
+  miss). h05 4+4 bases: 864 / 12. h06 classic bases: 816 / 46. h07 cubic Cayley graphs, exhaustive on 14 groups: 840 / 9.
+  h12 plain graph annealing (wildcard): 802 / 1,908.
+- (3,9): h08 exhaustive 2+2 over orders 127..140: 544 / 16. h10 classic bases: 518 / 88. h09: not reported.
+- (4,9): h13 groups without a central involution: only Z_101 x| Z_25 (cost 2, proved) again. h14 2+2/3+3 lifts: 5,040 / 22.
+No valid graph. Kept: the cost-2 phenomenon on 2+2 lifts at (3,10) (one orbit of far pairs at distance 11); families not
+yet tried at Delta = 3 (semi-edges/loops, non-bipartite bases with a parity) go into round 5.
