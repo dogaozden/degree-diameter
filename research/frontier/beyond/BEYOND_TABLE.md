@@ -46,7 +46,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (17,5) | **33,792** | 24.17 | 139,804 | the (16,5) route-chart lift (max degree 16 <= 17); nothing larger found | apsp (research/theorems/graphs/d16D5_n33792_check.txt) | 33,320 (polygon cover 7xW(13) (j=3)) |
 | (17,6) | **2,236,962** | 100.00 | 2,236,962 | H(16) incidence graph (split Cayley hexagon; Moore graph) | classical (Tits); built with research/d10D7/hexgen2.c, BFS from 94 vertices: ecc 6 and Moore level sizes (checks/d17D6_n2236962_H16.sampled.txt) | 2,236,962 (H(16) incidence graph (Moore)) |
 | (17,7) | **5,631,276** | 15.73 | 35,791,388 | level graph of H(13): 7 copies joined by 3 matchings, voltages 1, 2, 3 in Z7 (polygon cover; D7_HEXAGON.md Thm A) | theorem (any matchings); builder all-pairs at q = 3, 4, r = 1..3 (r1/c09 small/); this instance: BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 5,631,276 (polygon cover 7xH(13) (j=3)) |
-| (17,8) | **41,373,072** | 7.22 | 572,662,300 | Haar graph SL(2,53) x Z139, S = {e} + 1 fixed + 5 orbits of size 3 | haarcheck_sl (c15) and hcheck5 (director): VALID | 2013-table D=8 pattern (no construction known): 67,575,312 (q=13, j=3); Haar size law at mu = 5: 2N = 3.78e+07 |
+| (17,8) | **41,373,072** | 7.22 | 572,662,300 | Haar graph SL(2,53) x Z139, S = {e} + 1 fixed + 5 orbits of size 3 | haarcheck_sl (r1/c15/check_17_8_sl53_139.txt) and hcheck5 (director: checks/d17D8_sl_53_139_orb3_c15.hcheck5.txt): VALID | 2013-table D=8 pattern (no construction known): 67,575,312 (q=13, j=3); Haar size law at mu = 5: 2N = 3.78e+07 |
 | (17,9) | **501,707,400** | 5.48 | 9,162,596,892 | Haar graph PSL(2,101) x Z487, S = {e} + 1 fixed + 5 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d17D9_psl_101_487_orb3_s2.txt) | Haar size law at mu = 5: 2N = 5.16e+08 |
 | (17,10) | **7,022,052,336** | 4.79 | 146,601,550,364 | Haar graph PSL(2,313) x Z229, S = {e} + 1 fixed + 5 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d17D10_psl_313_229_orb3_s1.txt) | Haar size law at mu = 5: 2N = 7.19e+09 |
 | (18,3) | **614** | 100.00 | 614 | PG(2,17) incidence graph (Moore graph) | apsp: checks/d18D3_n614_pg2_17.apsp.txt | 614 (PG(2,17) incidence graph (Moore)) |
@@ -67,7 +67,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (19,10) | **19,233,722,496** | 4.58 | 420,054,967,832 | Haar graph SL(2,607) x Z43, S = {e} + 6 orbits of size 3 | hcheck5 VALID, ecc 10/10 (runs/check_hcheck5_d19D10_sl_607_43_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.96e+10 |
 | (20,3) | **762** | 100.00 | 762 | PG(2,19) incidence graph (Moore graph) | apsp: checks/d20D3_n762_pg2_19.apsp.txt | 762 (PG(2,19) incidence graph (Moore)) |
 | (20,4) | **14,480** | 100.00 | 14,480 | W(19) incidence graph (Moore graph) | apsp: checks/d20D4_n14480_W19.apsp.txt | 14,480 (W(19) incidence graph (Moore)) |
-| (20,5) | **75,000** | 27.26 | 275,116 | route-chart lift over F5 (4 letters x 5 scalars, fibre F5^4): K3,3 + doubled matching over Z20 (m = 60), chart with 22 singular patterns (squad r1 c04); also 66,640 by the multi-doubled-matching lift of W(13), Z2 x Z7 (MDM.md) | apsp: checks/d20D5_n75000_routechart_F5_Z20.apsp.txt; checks/d20D5_n66640_W13_3dm_Z14.apsp.txt | 82,500 (route chart 4 letters x F5, m=66 controller (2*m*q^4)) |
+| (20,5) | **75,000** | 27.26 | 275,116 | route-chart lift over F5 (4 letters x 5 scalars, fibre F5^4): K3,3 + doubled matching over Z20 (m = 60), chart with 22 singular patterns (squad r1 c04); also 66,640 by the multi-doubled-matching lift of W(13), Z2 x Z7 (MDM.md) | apsp: checks/d20D5_n75000_routechart_F5_Z20.apsp.txt; checks/d20D5_n66640_W13_3dm_Z14.apsp.txt | 82,500 (route chart 4 letters x F5 IF a controller with m = 66 per side existed (not found; 2*m*q^4)) |
 | (20,6) | **5,227,320** | 100.00 | 5,227,320 | H(19) incidence graph (Moore graph) | classical; BFS from 100 vertices: ecc 6, Moore levels (checks/d20D6_n5227320_H19.sampled.txt) | 5,227,320 (H(19) incidence graph (Moore)) |
 | (20,7) | **15,658,734** | 15.77 | 99,319,076 | level graph of H(16): 7 copies, 3 matchings, Z7 | same theorem; BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt) | 15,658,734 (polygon cover 7xH(16) (j=3)) |
 | (20,8) | **122,739,120** | 6.50 | 1,887,062,554 | Haar graph PSL(2,71) x Z343, S = {e} + 1 fixed + 6 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d20D8_psl_71_343_orb3_s1.txt) | 30,171,960 (polygon cover n+2: 10x H(17)); 2013-table D=8 pattern (no construction known): 219,619,764 (q=13, j=6); Haar size law at mu = 5: 2N = 1.16e+08 |
@@ -81,7 +81,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (8,11) | **43,702,560** | 6.63 | 659,108,908 | Haar graph SL(2,89) x Z31, S = {e} + 1 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d8D11_sl_89_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 4.31e+07 |
 | (9,11) | **145,258,344** | 5.92 | 2,454,267,020 | Haar graph PSL(2,197) x Z19, S = {e} + 2 fixed + 2 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d9D11_psl_197_19_orb3_s4.txt) | Haar size law at mu = 5: 2N = 1.49e+08 |
 | (10,11) | **445,709,568** | 5.68 | 7,845,264,896 | Haar graph SL(2,193) x Z31, S = {e} + 3 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d10D11_sl_193_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 4.45e+08 |
-| (3,12) | **1,958** | 23.91 | 8,184 | metacyclic Haar graph Z89 x|_2 Z11, S = {e, 178, 535} (director sweep of metacyclic groups of order 931-2,500, exhaustive pairs); earlier 1,860 (AGL(1,31), r3/e02) | apsp VALID, diameter exactly 12 (checks/d3D12_n1958_meta89_11_2.apsp.txt) | Haar size law at mu = 5: 2N = 1.61e+03 |
+| (3,12) | **2,176** | 26.57 | 8,184 | metacyclic Haar graph Z68 x|_3 Z16, S = {e, 68, 205} (director sweep of metacyclic groups, exhaustive pairs; best of 7 hits at orders 979-1,088); earlier 1,860 (AGL(1,31), r3/e02) | apsp VALID, diameter exactly 12 (checks/d3D12_n2176_meta68_16_3.apsp.txt) | Haar size law at mu = 5: 2N = 1.61e+03 |
 | (4,12) | **50,160** | 9.44 | 531,434 | Haar graph SL(2,11) x Z19, S = {e} + 1 orbit of size 3 (haar_sym, squad r2/d09); earlier 48,000 metacyclic (r1/c13) | apsp (d09 and director: checks/d4D12_n50160_sl11xZ19.apsp.txt), build_haar2.py, haarcheck_sl | Haar size law at mu = 5: 2N = 6.1e+04 |
 | (5,12) | **912,576** | 8.16 | 11,184,804 | Haar graph PSL(2,97), random S (haar_sym, director); earlier 229,824 (r1/c14) | hcheckpsl and build_haar2.py VALID (checks/d5D12_psl_97_1_s1.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
 | (6,12) | **9,303,840** | 7.62 | 122,070,306 | Haar graph SL(2,71) x Z13, S = 2 free orbits of size 3 (haar_sym ORBIT 3 2 0); earlier 8,924,736 (SL(2,47) x Z43) | hcheck5 VALID (checks/d6D12_sl_71_13_orb3f0_s2.check.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
@@ -157,14 +157,17 @@ No other cell of the old table improves this way (MDM.md).
 
 ### D = 11, 12 at small Δ
 
-Δ = 3: (3,11) 1,080 = Haar graph of A5 × Z9 and (3,12) 1,860 = Haar graph of AGL(1,31). Card r3/e01 searched all
-pairs {x, y} exhaustively for about 45 groups of order 504–1,100 at D = 11 (A5 × Z9 the only one above 1,008; AGL(1,23)
-misses by one hole); metacyclic scans (r1/c11), voltage lifts of small cubic bases (r2/d07, r2/d08) and annealing over
-PSL/SL/PGL(2,q) (r1/c12: SL(2,11) cost 16, PSL(2,13) cost 24 at D = 12) found nothing larger. Δ = 4: Haar graphs
+Δ = 3: cubic Haar graphs H(G, {e, x, y}), with all pairs searched exhaustively per group (x over class
+representatives, y over the group; research/squads/beyond/r3/e02/exh3.c, about 0.1–2 s per group). The director swept
+every metacyclic group Z_m ⋊_r Z_k (one r of each order k per m) of order 541–1,100 at D = 11 (641 groups) and of order
+931–2,500 at D = 12 (cubic/sweep_meta.py): the best are Z67 ⋊ Z11 (1,474 vertices, D = 11; the only metacyclic hit
+of that order range) and Z68 ⋊ Z16 (2,176 vertices, D = 12; seven metacyclic hits at orders 979–1,088, none above that up to order 1,728, where the sweep was stopped (cubic/sweep_D12_out.txt; D = 11: cubic/sweep_D11_out.txt)). Before that, the squad's exhaustive
+search over ~45 non-metacyclic groups gave A5 × Z9 (1,080, r3/e01) and AGL(1,31) (1,860, r3/e02); annealing over
+PSL/SL/PGL(2,q) (r1/c12) and voltage lifts of small cubic bases (r2/d07, r2/d08) did worse. Δ = 4: Haar graphs
 SL(2,8) × Z19 (D = 11) and SL(2,11) × Z19 (D = 12) with S = {e} ∪ one orbit of size 3 (r3/e03, r2/d09), above the
-metacyclic values 17,600 / 48,000 of r1/c13; at D = 12, PSL(2,11) × Z39 (51,480) misses by one hole. Δ = 5, 6:
-haar_sym (plain random S at Δ = 5, two free 3-orbits at Δ = 6) at μ ≈ 2–10, solved in seconds, 2–4 times the
-round-1 card values. Δ = 7..10: haar_big.
+metacyclic values 17,600 / 48,000 of r1/c13; at D = 12, PSL(2,11) × Z39 (51,480) misses by one hole after four
+seeds. Δ = 5, 6: haar_sym (plain random S at Δ = 5, two free 3-orbits at Δ = 6) at μ ≈ 2–10, solved in seconds, 2–4
+times the round-1 card values. Δ = 7..10: haar_big.
 
 ### D = 8 .. 12: Haar graphs
 

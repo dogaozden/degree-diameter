@@ -93,3 +93,15 @@ got one concrete method with a scorer.
 Kept: exhaustive cubic Haar search (gave (3,11) 1,080 and (3,12) 1,860). Squad totals for the job: 33 cards in three rounds; values
 that came from cards: (3,11), (3,12), (4,11), (4,12), (17,8), (20,5) (75,000), the D = 3, 4, 6 builds, the D = 7
 builder, (13,5) (the record, with the director's MDM lift) and the (19,5) DM solution.
+
+## 2026-10-26, new-cells-beyond, round 4 (1 card, 16:57 UTC) and wrap-up
+
+- f01 (17,5), route chart with a plain fifth letter, exact affine coverage cost, K3,3 + identity + shift controller
+  over Z23 (35,328 vertices): best 63,770 uncovered same-side pairs of 54M (r4/f01/state_n23_s2.txt). Not 0; (17,5)
+  stays at the 33,792 floor.
+- Late reports of round-1 cards: c03 (Theorem B on Q(4,q)) reached |M| = 54 at q = 9 (1,776 at (11,4), apsp VALID,
+  below 1,782) and never ran q = 17 (it needs |M| ≥ 253, with |M| ≤ q² − q + 2 by POLISHED.md Remark 3.5); c09 checked
+  the q = 13 level graphs itself (40 sources, ecc 7); c10 confirmed the Z20 lift of H(3) and the q = 4 floor of 150.
+- Director after the rounds: an exhaustive sweep of all metacyclic groups (one r per (m, k)) for cubic Haar graphs:
+  (3,11) 1,474 (Z67 ⋊ Z11) and (3,12) 2,176 (Z68 ⋊ Z16), both apsp VALID (D = 12 sweep stopped at order 1,728) — larger than every squad value
+  for these cells. Lesson for cubic cells: a cheap exhaustive sweep over a whole group family beat all the clever cards.

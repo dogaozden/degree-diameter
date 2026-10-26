@@ -75,7 +75,7 @@ def formulas(d, D):
             if D == 5 and j == 2: f.append((6 * gq(q) // 1, f"doubled matching 6x W({q}) (DM_D5, annealed)"))
     if D == 5 and d % 4 == 0 and (d // 4) in PP:
         q = d // 4
-        f.append((2 * 66 * q ** 4, f"route chart 4 letters x F{q}, m=66 controller (2*m*q^4)"))
+        f.append((2 * 66 * q ** 4, f"route chart 4 letters x F{q} IF a controller with m = 66 per side existed (not found; 2*m*q^4)"))
     if D == 8:
         for q in sorted(PP):
             j = d - q - 1
