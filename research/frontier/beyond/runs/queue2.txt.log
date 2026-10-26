@@ -1,0 +1,25 @@
+15:24:49 start 7 11 sl 43 67 orbit 3 2 1
+RESULT d=7 D=11 group=sl 43 x Z_67 N=5324088 vertices=10648176 best=0 evals=25 steps=6 time=2.8 orbit k=3 m=2 f=1 mu=6.42
+from (e,B): all reached within 11, ecc 11 (1.604 s)
+VALID d=7 D=11 group=sl 43 x Z_67 N=5324088 vertices=10648176 threads=2 time=3.362 bfs_A=1.758 bfs_B=1.604
+15:24:55 end
+15:24:55 start 8 11 sl 89 31 orbit 3 2 2
+15:24:56 end
+15:24:56 start 9 11 psl 199 19 orbit 3 2 3
+15:24:56 end
+15:24:56 start 10 11 sl 193 31 orbit 3 3 1
+RESULT d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 best=0 evals=1 steps=0 time=1.3 orbit k=3 m=3 f=1 mu=5.05
+from (e,B): NOT all reached within 11, ecc 0 (87.836 s)
+INVALID d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 threads=2 time=173.550 bfs_A=85.714 bfs_B=87.836
+15:27:54 end
+15:27:54 start 7 12 psl 163 13 orbit 3 2 1
+RESULT d=7 D=12 group=psl 163 x Z_13 N=28148796 vertices=56297592 best=0 evals=21 steps=5 time=6.3 orbit k=3 m=2 f=1 mu=5.40
+VALID d=7 D=12 group=psl 163 x Z_13 N=28148796 vertices=56297592
+ecc(e,A)=12 ecc(e,B)=12
+15:28:23 end
+15:28:23 start 8 12 sl 163 31 orbit 3 2 2
+RESULT d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208 best=0 evals=21 steps=5 time=17.0 orbit k=3 m=2 f=2 mu=4.63
+from (e,B): all reached within 12, ecc 12 (44.688 s)
+VALID d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208 threads=2 time=94.979 bfs_A=50.291 bfs_B=44.688
+15:30:17 end
+15:30:17 start 9 12 sl 199 67 orbit 3 2 3

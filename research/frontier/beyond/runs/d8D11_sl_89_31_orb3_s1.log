@@ -1,0 +1,36 @@
+group sl 89 x Z_31, N=21851280 (2N=43702560), rows 7920 x 2759 bits (doubled row 112 words), memory 0.02 GB, threads 2
+alpha: conj by mat(0,88,1,88), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=2 f=2; W=3.29554e+08 lambda=15.082 mu=6.16
+setup 0.0s
+fixed generators: 1 chosen among 89 alpha-fixed elements
+start cost=32 (0.5s per eval)
+t=2 step=1 evals=5 slot=0 cand=16 cost=16 best=16 T=1.26
+t=3 step=2 evals=9 slot=0 cand=42 cost=16 best=16 T=1.06
+t=4 step=3 evals=13 slot=0 cand=42 cost=16 best=16 T=0.89
+t=5 step=4 evals=17 slot=0 cand=32 cost=16 best=16 T=0.75
+t=6 step=5 evals=21 slot=0 cand=14 cost=14 best=14 T=0.63
+t=7 step=6 evals=25 slot=1 cand=30 cost=14 best=14 T=0.53
+t=8 step=7 evals=29 slot=0 cand=18 cost=14 best=14 T=0.45
+t=10 step=8 evals=33 slot=1 cand=28 cost=14 best=14 T=0.38
+t=11 step=9 evals=37 slot=1 cand=12 cost=12 best=12 T=0.32
+t=12 step=10 evals=41 slot=1 cand=6 cost=6 best=6 T=0.27
+t=14 step=11 evals=45 slot=0 cand=2 cost=2 best=2 T=0.22
+t=16 step=12 evals=49 slot=0 cand=20 cost=2 best=2 T=0.19
+t=17 step=13 evals=53 slot=1 cand=60 cost=2 best=2 T=0.16
+t=18 step=14 evals=57 slot=1 cand=8 cost=2 best=2 T=0.15
+t=19 step=15 evals=61 slot=1 cand=4 cost=2 best=2 T=0.15
+t=19 step=16 evals=65 slot=1 cand=14 cost=2 best=2 T=0.15
+t=20 step=17 evals=69 slot=1 cand=20 cost=2 best=2 T=0.15
+t=22 step=18 evals=73 slot=0 cand=6 cost=2 best=2 T=0.15
+t=23 step=19 evals=77 slot=1 cand=6 cost=2 best=2 T=0.15
+t=24 step=20 evals=81 slot=0 cand=8 cost=2 best=2 T=0.15
+t=26 step=21 evals=85 slot=0 cand=6 cost=2 best=2 T=0.15
+t=27 step=22 evals=89 slot=1 cand=24 cost=2 best=2 T=0.15
+t=28 step=23 evals=93 slot=1 cand=30 cost=2 best=2 T=0.15
+t=29 step=24 evals=97 slot=0 cand=20 cost=2 best=2 T=0.15
+t=31 step=25 evals=101 slot=0 cand=20 cost=2 best=2 T=0.15
+t=32 step=26 evals=105 slot=1 cand=40 cost=2 best=2 T=0.15
+t=33 step=27 evals=109 slot=1 cand=20 cost=2 best=2 T=0.15
+t=34 step=28 evals=113 slot=1 cand=0 cost=0 best=0 T=0.15
+RESULT d=8 D=11 group=sl 89 x Z_31 N=21851280 vertices=43702560 best=0 evals=113 steps=28 time=34.1 orbit k=3 m=2 f=2 mu=6.16
+re-evaluation of the best S: cost 0
+wrote runs/d8D11_sl_89_31_orb3_s1.out

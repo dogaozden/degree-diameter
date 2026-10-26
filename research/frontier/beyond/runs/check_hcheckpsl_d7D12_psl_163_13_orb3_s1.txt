@@ -1,0 +1,10 @@
+checker: hcheckpsl
+command: ./bin/hcheckpsl ../sols/d7D12_psl_163_13_orb3_s1.txt
+start: 2026-10-26T15:28:01Z
+sha256 61bda6d680d612f4668db8482bbd8637b8bfa11fcff27378e7045ee709bef12b  ./bin/hcheckpsl
+sha256 2cb36d5c4dcbe47cd9e31a8ddd6788f8e9be34ca31e384849256483e8248218a  ../sols/d7D12_psl_163_13_orb3_s1.txt
+# threads=2 bfsA=11.298s bfsB=10.575s total=21.873s maxrss=16MB
+VALID d=7 D=12 group=psl 163 x Z_13 N=28148796 vertices=56297592
+ecc(e,A)=12 ecc(e,B)=12
+exit: 0
+end: 2026-10-26T15:28:23Z (22 s)

@@ -1,0 +1,619 @@
+psl 11 91 | RANDORB d=5 D=11 group=psl 11 x Z_91 N=60060 min=36
+psl 13 55 | RANDORB d=5 D=11 group=psl 13 x Z_55 N=60060 min=4
+psl 9 167 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_167 N=60120 min=7450
+pgl 7 179 | RANDORB d=5 D=11 group=pgl 7 x Z_179 N=60144 min=60692
+sl 7 179 | RANDORB d=5 D=11 group=sl 7 x Z_179 N=60144 min=13474
+prod psl 3 sl 3 209 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_209 N=60192 min=51496
+psl 7 359 | RANDORB d=5 D=11 group=psl 7 x Z_359 N=60312 min=60102
+prod psl 3 sl 7 15 | RANDORB d=5 D=11 group=prod psl 3 sl 7 x Z_15 N=60480 min=0
+prod psl 3 sl 9 7 | RANDORB d=5 D=11 group=prod psl 3 sl 9 poly x^2+1 x Z_7 N=60480 min=0
+prod psl 5 sl 7 3 | RANDORB d=5 D=11 group=prod psl 5 sl 7 x Z_3 N=60480 min=0
+prod psl 7 psl 9 1 | RANDORB d=5 D=11 group=prod psl 7 psl 9 poly x^2+1 x Z_1 N=60480 min=0
+prod sl 3 psl 7 15 | RANDORB d=5 D=11 group=prod sl 3 psl 7 x Z_15 N=60480 min=0
+prod sl 3 psl 9 7 | RANDORB d=5 D=11 group=prod sl 3 psl 9 poly x^2+1 x Z_7 N=60480 min=0
+prod sl 3 sl 3 105 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_105 N=60480 min=8584
+prod sl 3 sl 5 21 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_21 N=60480 min=20
+prod sl 3 sl 8 5 | RANDORB d=5 D=11 group=prod sl 3 sl 8 poly x^3+x+1 x Z_5 N=60480 min=0
+prod sl 4 sl 7 3 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 7 x Z_3 N=60480 min=0
+prod sl 5 psl 7 3 | RANDORB d=5 D=11 group=prod sl 5 psl 7 x Z_3 N=60480 min=0
+prod sl 5 sl 8 1 | RANDORB d=5 D=11 group=prod sl 5 sl 8 poly x^3+x+1 x Z_1 N=60480 min=0
+psl 7 361 | RANDORB d=5 D=11 group=psl 7 x Z_361 N=60648 min=61320
+pgl 23 5 | RANDORB d=5 D=11 group=pgl 23 x Z_5 N=60720 min=0
+sl 23 5 | RANDORB d=5 D=11 group=sl 23 x Z_5 N=60720 min=0
+prod psl 3 sl 3 211 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_211 N=60768 min=52648
+pgl 7 181 | RANDORB d=5 D=11 group=pgl 7 x Z_181 N=60816 min=62358
+sl 7 181 | RANDORB d=5 D=11 group=sl 7 x Z_181 N=60816 min=14448
+psl 9 169 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_169 N=60840 min=12450
+psl 29 5 | RANDORB d=5 D=11 group=psl 29 x Z_5 N=60900 min=0
+pgl 8 121 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_121 N=60984 min=716
+psl 7 363 | RANDORB d=5 D=11 group=psl 7 x Z_363 N=60984 min=61432
+sl 8 121 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_121 N=60984 min=872
+pgl 16 15 | RANDORB d=5 D=11 group=pgl 16 poly x^4+x+1 x Z_15 N=61200 min=0
+pgl 9 85 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_85 N=61200 min=12427
+prod psl 3 psl 5 85 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_85 N=61200 min=60942
+prod psl 3 sl 4 85 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_85 N=61200 min=152
+prod psl 5 psl 5 17 | RANDORB d=5 D=11 group=prod psl 5 psl 5 x Z_17 N=61200 min=0
+prod psl 5 sl 4 17 | RANDORB d=5 D=11 group=prod psl 5 sl 4 poly x^2+x+1 x Z_17 N=61200 min=0
+prod sl 4 psl 5 17 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 5 x Z_17 N=61200 min=291
+prod sl 4 sl 4 17 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 4 poly x^2+x+1 x Z_17 N=61200 min=0
+psl 17 25 | RANDORB d=5 D=11 group=psl 17 x Z_25 N=61200 min=0
+sl 16 15 | RANDORB d=5 D=11 group=sl 16 poly x^4+x+1 x Z_15 N=61200 min=0
+sl 9 85 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_85 N=61200 min=72
+psl 7 365 | RANDORB d=5 D=11 group=psl 7 x Z_365 N=61320 min=62550
+prod psl 3 sl 3 213 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_213 N=61344 min=53964
+psl 11 93 | RANDORB d=5 D=11 group=psl 11 x Z_93 N=61380 min=44
+pgl 7 183 | RANDORB d=5 D=11 group=pgl 7 x Z_183 N=61488 min=63108
+sl 7 183 | RANDORB d=5 D=11 group=sl 7 x Z_183 N=61488 min=16916
+pgl 19 9 | RANDORB d=5 D=11 group=pgl 19 x Z_9 N=61560 min=0
+psl 9 171 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_171 N=61560 min=13170
+sl 19 9 | RANDORB d=5 D=11 group=sl 19 x Z_9 N=61560 min=0
+prod sl 3 sl 3 107 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_107 N=61632 min=10382
+psl 7 367 | RANDORB d=5 D=11 group=psl 7 x Z_367 N=61656 min=63700
+prod psl 3 sl 3 215 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_215 N=61920 min=54884
+prod psl 3 sl 5 43 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_43 N=61920 min=16
+prod sl 3 psl 5 43 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_43 N=61920 min=22
+prod sl 3 sl 4 43 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_43 N=61920 min=20
+pgl 8 123 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_123 N=61992 min=948
+psl 7 369 | RANDORB d=5 D=11 group=psl 7 x Z_369 N=61992 min=64260
+sl 8 123 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_123 N=61992 min=2330
+pgl 11 47 | RANDORB d=5 D=11 group=pgl 11 x Z_47 N=62040 min=93
+sl 11 47 | RANDORB d=5 D=11 group=sl 11 x Z_47 N=62040 min=4
+pgl 7 185 | RANDORB d=5 D=11 group=pgl 7 x Z_185 N=62160 min=64004
+sl 7 185 | RANDORB d=5 D=11 group=sl 7 x Z_185 N=62160 min=18016
+psl 13 57 | RANDORB d=5 D=11 group=psl 13 x Z_57 N=62244 min=8
+psl 9 173 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_173 N=62280 min=14674
+psl 7 371 | RANDORB d=5 D=11 group=psl 7 x Z_371 N=62328 min=64502
+prod psl 3 psl 7 31 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_31 N=62496 min=0
+prod psl 3 sl 3 217 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_217 N=62496 min=56124
+pgl 9 87 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_87 N=62640 min=14702
+prod psl 3 psl 5 87 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_87 N=62640 min=66306
+prod psl 3 sl 4 87 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_87 N=62640 min=114
+sl 9 87 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_87 N=62640 min=90
+psl 7 373 | RANDORB d=5 D=11 group=psl 7 x Z_373 N=62664 min=65848
+psl 11 95 | RANDORB d=5 D=11 group=psl 11 x Z_95 N=62700 min=46
+prod sl 3 sl 3 109 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_109 N=62784 min=10734
+pgl 7 187 | RANDORB d=5 D=11 group=pgl 7 x Z_187 N=62832 min=65362
+sl 7 187 | RANDORB d=5 D=11 group=sl 7 x Z_187 N=62832 min=18014
+pgl 8 125 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_125 N=63000 min=1334
+psl 7 375 | RANDORB d=5 D=11 group=psl 7 x Z_375 N=63000 min=65464
+psl 9 175 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_175 N=63000 min=15408
+sl 8 125 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_125 N=63000 min=1648
+prod psl 3 sl 3 219 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_219 N=63072 min=57256
+pgl 13 29 | RANDORB d=5 D=11 group=pgl 13 x Z_29 N=63336 min=4
+psl 7 377 | RANDORB d=5 D=11 group=psl 7 x Z_377 N=63336 min=66232
+sl 13 29 | RANDORB d=5 D=11 group=sl 13 x Z_29 N=63336 min=4
+pgl 7 189 | RANDORB d=5 D=11 group=pgl 7 x Z_189 N=63504 min=67460
+sl 7 189 | RANDORB d=5 D=11 group=sl 7 x Z_189 N=63504 min=20910
+pgl 17 13 | RANDORB d=5 D=11 group=pgl 17 x Z_13 N=63648 min=0
+prod psl 3 sl 3 221 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_221 N=63648 min=58264
+sl 17 13 | RANDORB d=5 D=11 group=sl 17 x Z_13 N=63648 min=0
+psl 7 379 | RANDORB d=5 D=11 group=psl 7 x Z_379 N=63672 min=67192
+psl 9 177 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_177 N=63720 min=14920
+prod sl 3 sl 3 111 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_111 N=63936 min=10478
+pgl 8 127 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_127 N=64008 min=1250
+psl 7 381 | RANDORB d=5 D=11 group=psl 7 x Z_381 N=64008 min=67480
+sl 8 127 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_127 N=64008 min=1464
+psl 11 97 | RANDORB d=5 D=11 group=psl 11 x Z_97 N=64020 min=138
+pgl 9 89 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_89 N=64080 min=16830
+prod psl 3 psl 5 89 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_89 N=64080 min=65646
+prod psl 3 sl 4 89 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_89 N=64080 min=74
+sl 9 89 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_89 N=64080 min=220
+pgl 7 191 | RANDORB d=5 D=11 group=pgl 7 x Z_191 N=64176 min=68788
+sl 7 191 | RANDORB d=5 D=11 group=sl 7 x Z_191 N=64176 min=20592
+prod psl 3 sl 3 223 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_223 N=64224 min=59560
+psl 7 383 | RANDORB d=5 D=11 group=psl 7 x Z_383 N=64344 min=68152
+psl 13 59 | RANDORB d=5 D=11 group=psl 13 x Z_59 N=64428 min=8
+psl 9 179 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_179 N=64440 min=15476
+pgl 11 49 | RANDORB d=5 D=11 group=pgl 11 x Z_49 N=64680 min=130
+psl 7 385 | RANDORB d=5 D=11 group=psl 7 x Z_385 N=64680 min=68824
+sl 11 49 | RANDORB d=5 D=11 group=sl 11 x Z_49 N=64680 min=6
+prod psl 3 psl 9 15 | RANDORB d=5 D=11 group=prod psl 3 psl 9 poly x^2+1 x Z_15 N=64800 min=0
+prod psl 3 sl 3 225 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_225 N=64800 min=60568
+prod psl 3 sl 5 45 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_45 N=64800 min=30
+prod psl 5 psl 9 3 | RANDORB d=5 D=11 group=prod psl 5 psl 9 poly x^2+1 x Z_3 N=64800 min=98
+prod psl 5 sl 5 9 | RANDORB d=5 D=11 group=prod psl 5 sl 5 x Z_9 N=64800 min=0
+prod sl 3 psl 5 45 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_45 N=64800 min=18
+prod sl 3 sl 4 45 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_45 N=64800 min=22
+prod sl 4 psl 9 3 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 9 poly x^2+1 x Z_3 N=64800 min=0
+prod sl 4 sl 5 9 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 5 x Z_9 N=64800 min=0
+pgl 7 193 | RANDORB d=5 D=11 group=pgl 7 x Z_193 N=64848 min=69394
+sl 7 193 | RANDORB d=5 D=11 group=sl 7 x Z_193 N=64848 min=21828
+psl 19 19 | RANDORB d=5 D=11 group=psl 19 x Z_19 N=64980 min=0
+pgl 8 129 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_129 N=65016 min=2154
+psl 7 387 | RANDORB d=5 D=11 group=psl 7 x Z_387 N=65016 min=69724
+sl 8 129 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_129 N=65016 min=2496
+prod sl 3 sl 3 113 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_113 N=65088 min=15864
+psl 9 181 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_181 N=65160 min=15190
+psl 11 99 | RANDORB d=5 D=11 group=psl 11 x Z_99 N=65340 min=88
+psl 7 389 | RANDORB d=5 D=11 group=psl 7 x Z_389 N=65352 min=70040
+prod psl 3 sl 3 227 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_227 N=65376 min=61720
+pgl 7 195 | RANDORB d=5 D=11 group=pgl 7 x Z_195 N=65520 min=71412
+pgl 9 91 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_91 N=65520 min=16523
+prod psl 3 psl 13 5 | RANDORB d=5 D=11 group=prod psl 3 psl 13 x Z_5 N=65520 min=0
+prod psl 3 psl 5 91 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_91 N=65520 min=67090
+prod psl 3 sl 4 91 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_91 N=65520 min=116
+prod psl 5 psl 13 1 | RANDORB d=5 D=11 group=prod psl 5 psl 13 x Z_1 N=65520 min=0
+prod sl 4 psl 13 1 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 13 x Z_1 N=65520 min=0
+sl 7 195 | RANDORB d=5 D=11 group=sl 7 x Z_195 N=65520 min=23308
+sl 9 91 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_91 N=65520 min=182
+psl 7 391 | RANDORB d=5 D=11 group=psl 7 x Z_391 N=65688 min=71224
+psl 9 183 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_183 N=65880 min=18546
+prod psl 3 sl 3 229 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_229 N=65952 min=63016
+pgl 8 131 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_131 N=66024 min=2268
+psl 7 393 | RANDORB d=5 D=11 group=psl 7 x Z_393 N=66024 min=71608
+sl 8 131 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_131 N=66024 min=2262
+psl 17 27 | RANDORB d=5 D=11 group=psl 17 x Z_27 N=66096 min=1
+pgl 7 197 | RANDORB d=5 D=11 group=pgl 7 x Z_197 N=66192 min=72572
+sl 7 197 | RANDORB d=5 D=11 group=sl 7 x Z_197 N=66192 min=23744
+prod sl 3 sl 3 115 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_115 N=66240 min=13304
+prod sl 3 sl 5 23 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_23 N=66240 min=12
+psl 7 395 | RANDORB d=5 D=11 group=psl 7 x Z_395 N=66360 min=72184
+prod psl 3 psl 7 33 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_33 N=66528 min=1
+prod psl 3 sl 3 231 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_231 N=66528 min=64024
+prod psl 3 sl 8 11 | RANDORB d=5 D=11 group=prod psl 3 sl 8 poly x^3+x+1 x Z_11 N=66528 min=0
+psl 9 185 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_185 N=66600 min=19088
+psl 13 61 | RANDORB d=5 D=11 group=psl 13 x Z_61 N=66612 min=20
+psl 11 101 | RANDORB d=5 D=11 group=psl 11 x Z_101 N=66660 min=130
+psl 7 397 | RANDORB d=5 D=11 group=psl 7 x Z_397 N=66696 min=73238
+psl 23 11 | RANDORB d=5 D=11 group=psl 23 x Z_11 N=66792 min=0
+pgl 7 199 | RANDORB d=5 D=11 group=pgl 7 x Z_199 N=66864 min=73860
+sl 7 199 | RANDORB d=5 D=11 group=sl 7 x Z_199 N=66864 min=25682
+pgl 9 93 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_93 N=66960 min=21724
+prod psl 3 psl 5 93 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_93 N=66960 min=73904
+prod psl 3 sl 4 93 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_93 N=66960 min=234
+sl 9 93 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_93 N=66960 min=262
+pgl 8 133 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_133 N=67032 min=2556
+psl 7 399 | RANDORB d=5 D=11 group=psl 7 x Z_399 N=67032 min=73542
+sl 8 133 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_133 N=67032 min=2266
+prod psl 3 sl 3 233 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_233 N=67104 min=65176
+pgl 11 51 | RANDORB d=5 D=11 group=pgl 11 x Z_51 N=67320 min=306
+psl 9 187 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_187 N=67320 min=19208
+sl 11 51 | RANDORB d=5 D=11 group=sl 11 x Z_51 N=67320 min=26
+prod sl 3 sl 3 117 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_117 N=67392 min=15726
+pgl 7 201 | RANDORB d=5 D=11 group=pgl 7 x Z_201 N=67536 min=75106
+sl 7 201 | RANDORB d=5 D=11 group=sl 7 x Z_201 N=67536 min=27840
+prod psl 3 sl 3 235 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_235 N=67680 min=66328
+prod psl 3 sl 5 47 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_47 N=67680 min=58
+prod sl 3 psl 5 47 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_47 N=67680 min=22
+prod sl 3 sl 4 47 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_47 N=67680 min=12
+pgl 13 31 | RANDORB d=5 D=11 group=pgl 13 x Z_31 N=67704 min=17
+sl 13 31 | RANDORB d=5 D=11 group=sl 13 x Z_31 N=67704 min=18
+psl 11 103 | RANDORB d=5 D=11 group=psl 11 x Z_103 N=67980 min=188
+pgl 8 135 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_135 N=68040 min=5238
+psl 9 189 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_189 N=68040 min=21886
+sl 8 135 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_135 N=68040 min=3744
+pgl 7 203 | RANDORB d=5 D=11 group=pgl 7 x Z_203 N=68208 min=76328
+sl 7 203 | RANDORB d=5 D=11 group=sl 7 x Z_203 N=68208 min=26290
+prod psl 3 sl 3 237 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_237 N=68256 min=67624
+pgl 9 95 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_95 N=68400 min=23860
+prod psl 3 psl 5 95 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_95 N=68400 min=73578
+prod psl 3 sl 4 95 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_95 N=68400 min=156
+prod psl 5 psl 5 19 | RANDORB d=5 D=11 group=prod psl 5 psl 5 x Z_19 N=68400 min=0
+prod psl 5 sl 4 19 | RANDORB d=5 D=11 group=prod psl 5 sl 4 poly x^2+x+1 x Z_19 N=68400 min=3
+prod sl 4 psl 5 19 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 5 x Z_19 N=68400 min=372
+prod sl 4 sl 4 19 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 4 poly x^2+x+1 x Z_19 N=68400 min=5
+sl 9 95 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_95 N=68400 min=430
+prod psl 3 sl 7 17 | RANDORB d=5 D=11 group=prod psl 3 sl 7 x Z_17 N=68544 min=0
+prod sl 3 psl 7 17 | RANDORB d=5 D=11 group=prod sl 3 psl 7 x Z_17 N=68544 min=0
+prod sl 3 sl 3 119 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_119 N=68544 min=17754
+psl 9 191 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_191 N=68760 min=23686
+psl 13 63 | RANDORB d=5 D=11 group=psl 13 x Z_63 N=68796 min=18
+psl 27 7 | RANDORB d=5 D=11 group=psl 27 poly x^3+2x+1 x Z_7 N=68796 min=0
+prod psl 3 sl 3 239 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_239 N=68832 min=68776
+pgl 41 1 | RANDORB d=5 D=11 group=pgl 41 x Z_1 N=68880 min=0
+pgl 7 205 | RANDORB d=5 D=11 group=pgl 7 x Z_205 N=68880 min=77732
+sl 41 1 | RANDORB d=5 D=11 group=sl 41 x Z_1 N=68880 min=0
+sl 7 205 | RANDORB d=5 D=11 group=sl 7 x Z_205 N=68880 min=29014
+pgl 8 137 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_137 N=69048 min=3386
+sl 8 137 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_137 N=69048 min=3744
+psl 11 105 | RANDORB d=5 D=11 group=psl 11 x Z_105 N=69300 min=218
+pgl 16 17 | RANDORB d=5 D=11 group=pgl 16 poly x^4+x+1 x Z_17 N=69360 min=0
+sl 16 17 | RANDORB d=5 D=11 group=sl 16 poly x^4+x+1 x Z_17 N=69360 min=0
+prod psl 3 sl 3 241 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_241 N=69408 min=69928
+psl 9 193 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_193 N=69480 min=23650
+pgl 7 207 | RANDORB d=5 D=11 group=pgl 7 x Z_207 N=69552 min=78802
+sl 7 207 | RANDORB d=5 D=11 group=sl 7 x Z_207 N=69552 min=31732
+prod sl 3 sl 3 121 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_121 N=69696 min=17732
+pgl 9 97 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_97 N=69840 min=22969
+prod psl 3 psl 5 97 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_97 N=69840 min=77366
+prod psl 3 sl 4 97 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_97 N=69840 min=392
+sl 9 97 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_97 N=69840 min=434
+pgl 11 53 | RANDORB d=5 D=11 group=pgl 11 x Z_53 N=69960 min=128
+sl 11 53 | RANDORB d=5 D=11 group=sl 11 x Z_53 N=69960 min=26
+prod psl 3 sl 3 243 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_243 N=69984 min=71816
+pgl 8 139 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_139 N=70056 min=4816
+sl 8 139 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_139 N=70056 min=5872
+psl 25 9 | RANDORB d=5 D=11 group=psl 25 poly x^2+2 x Z_9 N=70200 min=0
+psl 9 195 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_195 N=70200 min=26920
+pgl 7 209 | RANDORB d=5 D=11 group=pgl 7 x Z_209 N=70224 min=80146
+sl 7 209 | RANDORB d=5 D=11 group=sl 7 x Z_209 N=70224 min=31162
+prod psl 3 psl 7 35 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_35 N=70560 min=2
+prod psl 3 sl 3 245 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_245 N=70560 min=72232
+prod psl 3 sl 5 49 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_49 N=70560 min=106
+prod psl 5 psl 7 7 | RANDORB d=5 D=11 group=prod psl 5 psl 7 x Z_7 N=70560 min=0
+prod sl 3 psl 5 49 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_49 N=70560 min=54
+prod sl 3 sl 4 49 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_49 N=70560 min=26
+prod sl 4 psl 7 7 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 7 x Z_7 N=70560 min=0
+psl 11 107 | RANDORB d=5 D=11 group=psl 11 x Z_107 N=70620 min=422
+prod sl 3 sl 3 123 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_123 N=70848 min=21318
+pgl 7 211 | RANDORB d=5 D=11 group=pgl 7 x Z_211 N=70896 min=82086
+sl 7 211 | RANDORB d=5 D=11 group=sl 7 x Z_211 N=70896 min=33190
+psl 9 197 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_197 N=70920 min=28730
+psl 13 65 | RANDORB d=5 D=11 group=psl 13 x Z_65 N=70980 min=12
+psl 17 29 | RANDORB d=5 D=11 group=psl 17 x Z_29 N=70992 min=2
+pgl 8 141 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_141 N=71064 min=5710
+sl 8 141 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_141 N=71064 min=5848
+prod psl 3 sl 3 247 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_247 N=71136 min=73384
+pgl 9 99 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_99 N=71280 min=25498
+prod psl 3 psl 11 9 | RANDORB d=5 D=11 group=prod psl 3 psl 11 x Z_9 N=71280 min=0
+prod psl 3 psl 5 99 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_99 N=71280 min=77926
+prod psl 3 sl 4 99 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_99 N=71280 min=509
+sl 9 99 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_99 N=71280 min=524
+pgl 7 213 | RANDORB d=5 D=11 group=pgl 7 x Z_213 N=71568 min=83406
+sl 7 213 | RANDORB d=5 D=11 group=sl 7 x Z_213 N=71568 min=33798
+psl 9 199 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_199 N=71640 min=27662
+prod psl 3 sl 3 249 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_249 N=71712 min=74392
+psl 19 21 | RANDORB d=5 D=11 group=psl 19 x Z_21 N=71820 min=0
+psl 11 109 | RANDORB d=5 D=11 group=psl 11 x Z_109 N=71940 min=276
+prod sl 3 sl 3 125 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_125 N=72000 min=23034
+prod sl 3 sl 5 25 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_25 N=72000 min=24
+prod sl 5 sl 5 5 | RANDORB d=5 D=11 group=prod sl 5 sl 5 x Z_5 N=72000 min=2
+pgl 13 33 | RANDORB d=5 D=11 group=pgl 13 x Z_33 N=72072 min=16
+pgl 8 143 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_143 N=72072 min=6216
+sl 13 33 | RANDORB d=5 D=11 group=sl 13 x Z_33 N=72072 min=10
+sl 8 143 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_143 N=72072 min=4190
+pgl 7 215 | RANDORB d=5 D=11 group=pgl 7 x Z_215 N=72240 min=84468
+sl 7 215 | RANDORB d=5 D=11 group=sl 7 x Z_215 N=72240 min=34544
+prod psl 3 sl 3 251 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_251 N=72288 min=75688
+psl 9 201 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_201 N=72360 min=29362
+prod sl 3 sl 7 9 | RANDORB d=5 D=11 group=prod sl 3 sl 7 x Z_9 N=72576 min=2
+pgl 11 55 | RANDORB d=5 D=11 group=pgl 11 x Z_55 N=72600 min=322
+sl 11 55 | RANDORB d=5 D=11 group=sl 11 x Z_55 N=72600 min=30
+pgl 9 101 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_101 N=72720 min=29855
+prod psl 3 psl 5 101 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_101 N=72720 min=82238
+prod psl 3 sl 4 101 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_101 N=72720 min=690
+sl 9 101 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_101 N=72720 min=372
+prod psl 3 psl 23 1 | RANDORB d=5 D=11 group=prod psl 3 psl 23 x Z_1 N=72864 min=0
+prod psl 3 sl 3 253 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_253 N=72864 min=76696
+pgl 7 217 | RANDORB d=5 D=11 group=pgl 7 x Z_217 N=72912 min=85568
+sl 7 217 | RANDORB d=5 D=11 group=sl 7 x Z_217 N=72912 min=36012
+pgl 29 3 | RANDORB d=5 D=11 group=pgl 29 x Z_3 N=73080 min=0
+pgl 8 145 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_145 N=73080 min=8818
+psl 9 203 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_203 N=73080 min=30470
+sl 29 3 | RANDORB d=5 D=11 group=sl 29 x Z_3 N=73080 min=0
+sl 8 145 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_145 N=73080 min=8978
+prod sl 3 sl 3 127 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_127 N=73152 min=22762
+psl 13 67 | RANDORB d=5 D=11 group=psl 13 x Z_67 N=73164 min=30
+psl 11 111 | RANDORB d=5 D=11 group=psl 11 x Z_111 N=73260 min=678
+pgl 17 15 | RANDORB d=5 D=11 group=pgl 17 x Z_15 N=73440 min=1
+prod psl 3 psl 9 17 | RANDORB d=5 D=11 group=prod psl 3 psl 9 poly x^2+1 x Z_17 N=73440 min=2
+prod psl 3 sl 3 255 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_255 N=73440 min=77848
+prod psl 3 sl 5 51 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_51 N=73440 min=104
+prod sl 3 psl 5 51 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_51 N=73440 min=36
+prod sl 3 sl 4 51 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_51 N=73440 min=35
+sl 17 15 | RANDORB d=5 D=11 group=sl 17 x Z_15 N=73440 min=6
+pgl 7 219 | RANDORB d=5 D=11 group=pgl 7 x Z_219 N=73584 min=87516
+sl 7 219 | RANDORB d=5 D=11 group=sl 7 x Z_219 N=73584 min=37954
+psl 9 205 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_205 N=73800 min=30084
+prod psl 3 sl 3 257 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_257 N=74016 min=79144
+pgl 8 147 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_147 N=74088 min=8706
+sl 8 147 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_147 N=74088 min=8914
+pgl 9 103 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_103 N=74160 min=31761
+prod psl 3 psl 5 103 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_103 N=74160 min=83610
+prod psl 3 sl 4 103 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_103 N=74160 min=550
+sl 9 103 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_103 N=74160 min=520
+pgl 7 221 | RANDORB d=5 D=11 group=pgl 7 x Z_221 N=74256 min=88210
+sl 7 221 | RANDORB d=5 D=11 group=sl 7 x Z_221 N=74256 min=40004
+prod sl 3 sl 3 129 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_129 N=74304 min=24502
+psl 31 5 | RANDORB d=5 D=11 group=psl 31 x Z_5 N=74400 min=0
+psl 53 1 | RANDORB d=5 D=11 group=psl 53 x Z_1 N=74412 min=0
+psl 9 207 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_207 N=74520 min=34552
+psl 11 113 | RANDORB d=5 D=11 group=psl 11 x Z_113 N=74580 min=510
+prod psl 3 psl 7 37 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_37 N=74592 min=2
+prod psl 3 sl 3 259 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_259 N=74592 min=80152
+pgl 7 223 | RANDORB d=5 D=11 group=pgl 7 x Z_223 N=74928 min=89600
+sl 7 223 | RANDORB d=5 D=11 group=sl 7 x Z_223 N=74928 min=42150
+pgl 8 149 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_149 N=75096 min=8256
+sl 8 149 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_149 N=75096 min=9716
+prod psl 3 sl 3 261 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_261 N=75168 min=81304
+pgl 11 57 | RANDORB d=5 D=11 group=pgl 11 x Z_57 N=75240 min=1563
+pgl 19 11 | RANDORB d=5 D=11 group=pgl 19 x Z_11 N=75240 min=0
+psl 9 209 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_209 N=75240 min=34208
+sl 11 57 | RANDORB d=5 D=11 group=sl 11 x Z_57 N=75240 min=38
+sl 19 11 | RANDORB d=5 D=11 group=sl 19 x Z_11 N=75240 min=0
+psl 13 69 | RANDORB d=5 D=11 group=psl 13 x Z_69 N=75348 min=30
+prod sl 3 sl 3 131 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_131 N=75456 min=27144
+pgl 7 225 | RANDORB d=5 D=11 group=pgl 7 x Z_225 N=75600 min=91388
+pgl 9 105 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_105 N=75600 min=34657
+prod psl 3 psl 5 105 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_105 N=75600 min=84982
+prod psl 3 sl 4 105 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_105 N=75600 min=2052
+prod psl 5 psl 5 21 | RANDORB d=5 D=11 group=prod psl 5 psl 5 x Z_21 N=75600 min=0
+prod psl 5 sl 4 21 | RANDORB d=5 D=11 group=prod psl 5 sl 4 poly x^2+x+1 x Z_21 N=75600 min=11
+prod sl 4 psl 5 21 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 5 x Z_21 N=75600 min=730
+prod sl 4 sl 4 21 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 4 poly x^2+x+1 x Z_21 N=75600 min=8
+sl 7 225 | RANDORB d=5 D=11 group=sl 7 x Z_225 N=75600 min=40358
+sl 9 105 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_105 N=75600 min=1084
+prod psl 3 sl 3 263 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_263 N=75744 min=82456
+psl 17 31 | RANDORB d=5 D=11 group=psl 17 x Z_31 N=75888 min=6
+psl 11 115 | RANDORB d=5 D=11 group=psl 11 x Z_115 N=75900 min=640
+psl 37 3 | RANDORB d=5 D=11 group=psl 37 x Z_3 N=75924 min=0
+psl 9 211 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_211 N=75960 min=35578
+pgl 8 151 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_151 N=76104 min=9718
+sl 8 151 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_151 N=76104 min=10824
+pgl 7 227 | RANDORB d=5 D=11 group=pgl 7 x Z_227 N=76272 min=93228
+sl 7 227 | RANDORB d=5 D=11 group=sl 7 x Z_227 N=76272 min=41794
+prod psl 3 sl 3 265 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_265 N=76320 min=83608
+prod psl 3 sl 5 53 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_53 N=76320 min=80
+prod sl 3 psl 5 53 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_53 N=76320 min=52
+prod sl 3 sl 4 53 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_53 N=76320 min=88
+pgl 13 35 | RANDORB d=5 D=11 group=pgl 13 x Z_35 N=76440 min=18
+sl 13 35 | RANDORB d=5 D=11 group=sl 13 x Z_35 N=76440 min=16
+prod psl 3 sl 7 19 | RANDORB d=5 D=11 group=prod psl 3 sl 7 x Z_19 N=76608 min=4
+prod sl 3 psl 7 19 | RANDORB d=5 D=11 group=prod sl 3 psl 7 x Z_19 N=76608 min=2
+prod sl 3 sl 3 133 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_133 N=76608 min=27440
+psl 9 213 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_213 N=76680 min=35654
+prod psl 3 sl 3 267 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_267 N=76896 min=84760
+pgl 7 229 | RANDORB d=5 D=11 group=pgl 7 x Z_229 N=76944 min=94340
+sl 7 229 | RANDORB d=5 D=11 group=sl 7 x Z_229 N=76944 min=45884
+pgl 9 107 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_107 N=77040 min=38640
+prod psl 3 psl 5 107 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_107 N=77040 min=89482
+prod psl 3 sl 4 107 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_107 N=77040 min=1268
+sl 9 107 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_107 N=77040 min=1638
+pgl 8 153 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_153 N=77112 min=9150
+sl 8 153 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_153 N=77112 min=9636
+psl 11 117 | RANDORB d=5 D=11 group=psl 11 x Z_117 N=77220 min=620
+psl 9 215 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_215 N=77400 min=37052
+prod psl 3 sl 3 269 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_269 N=77472 min=85912
+pgl 16 19 | RANDORB d=5 D=11 group=pgl 16 poly x^4+x+1 x Z_19 N=77520 min=2
+sl 16 19 | RANDORB d=5 D=11 group=sl 16 poly x^4+x+1 x Z_19 N=77520 min=1
+psl 13 71 | RANDORB d=5 D=11 group=psl 13 x Z_71 N=77532 min=54
+pgl 7 231 | RANDORB d=5 D=11 group=pgl 7 x Z_231 N=77616 min=95256
+sl 7 231 | RANDORB d=5 D=11 group=sl 7 x Z_231 N=77616 min=45840
+prod psl 3 sl 9 9 | RANDORB d=5 D=11 group=prod psl 3 sl 9 poly x^2+1 x Z_9 N=77760 min=12
+prod sl 3 psl 9 9 | RANDORB d=5 D=11 group=prod sl 3 psl 9 poly x^2+1 x Z_9 N=77760 min=0
+prod sl 3 sl 3 135 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_135 N=77760 min=31816
+prod sl 3 sl 5 27 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_27 N=77760 min=32
+pgl 11 59 | RANDORB d=5 D=11 group=pgl 11 x Z_59 N=77880 min=2816
+sl 11 59 | RANDORB d=5 D=11 group=sl 11 x Z_59 N=77880 min=36
+pgl 25 5 | RANDORB d=5 D=11 group=pgl 25 poly x^2+2 x Z_5 N=78000 min=0
+sl 25 5 | RANDORB d=5 D=11 group=sl 25 poly x^2+2 x Z_5 N=78000 min=0
+prod psl 3 sl 3 271 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_271 N=78048 min=87064
+pgl 8 155 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_155 N=78120 min=10734
+psl 9 217 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_217 N=78120 min=38660
+sl 8 155 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_155 N=78120 min=12030
+pgl 7 233 | RANDORB d=5 D=11 group=pgl 7 x Z_233 N=78288 min=96274
+sl 7 233 | RANDORB d=5 D=11 group=sl 7 x Z_233 N=78288 min=45782
+pgl 9 109 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_109 N=78480 min=38662
+prod psl 3 psl 5 109 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_109 N=78480 min=93106
+prod psl 3 sl 4 109 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_109 N=78480 min=658
+sl 9 109 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_109 N=78480 min=768
+psl 11 119 | RANDORB d=5 D=11 group=psl 11 x Z_119 N=78540 min=2326
+prod psl 3 psl 7 39 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_39 N=78624 min=6
+prod psl 3 sl 13 3 | RANDORB d=5 D=11 group=prod psl 3 sl 13 x Z_3 N=78624 min=0
+prod psl 3 sl 3 273 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_273 N=78624 min=88360
+prod psl 3 sl 8 13 | RANDORB d=5 D=11 group=prod psl 3 sl 8 poly x^3+x+1 x Z_13 N=78624 min=2
+prod sl 3 psl 13 3 | RANDORB d=5 D=11 group=prod sl 3 psl 13 x Z_3 N=78624 min=0
+psl 19 23 | RANDORB d=5 D=11 group=psl 19 x Z_23 N=78660 min=0
+psl 9 219 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_219 N=78840 min=41456
+prod sl 3 sl 3 137 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_137 N=78912 min=26762
+psl 23 13 | RANDORB d=5 D=11 group=psl 23 x Z_13 N=78936 min=0
+pgl 7 235 | RANDORB d=5 D=11 group=pgl 7 x Z_235 N=78960 min=97618
+sl 7 235 | RANDORB d=5 D=11 group=sl 7 x Z_235 N=78960 min=47880
+pgl 8 157 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_157 N=79128 min=11858
+sl 8 157 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_157 N=79128 min=11622
+prod psl 3 sl 11 5 | RANDORB d=5 D=11 group=prod psl 3 sl 11 x Z_5 N=79200 min=0
+prod psl 3 sl 3 275 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_275 N=79200 min=89512
+prod psl 3 sl 5 55 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_55 N=79200 min=100
+prod psl 5 sl 11 1 | RANDORB d=5 D=11 group=prod psl 5 sl 11 x Z_1 N=79200 min=0
+prod psl 5 sl 5 11 | RANDORB d=5 D=11 group=prod psl 5 sl 5 x Z_11 N=79200 min=6
+prod sl 3 psl 11 5 | RANDORB d=5 D=11 group=prod sl 3 psl 11 x Z_5 N=79200 min=0
+prod sl 3 psl 5 55 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_55 N=79200 min=82
+prod sl 3 sl 4 55 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_55 N=79200 min=118
+prod sl 4 sl 11 1 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 11 x Z_1 N=79200 min=0
+prod sl 4 sl 5 11 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 5 x Z_11 N=79200 min=4
+prod sl 5 psl 11 1 | RANDORB d=5 D=11 group=prod sl 5 psl 11 x Z_1 N=79200 min=0
+pgl 43 1 | RANDORB d=5 D=11 group=pgl 43 x Z_1 N=79464 min=0
+sl 43 1 | RANDORB d=5 D=11 group=sl 43 x Z_1 N=79464 min=0
+psl 9 221 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_221 N=79560 min=42808
+pgl 7 237 | RANDORB d=5 D=11 group=pgl 7 x Z_237 N=79632 min=99990
+sl 7 237 | RANDORB d=5 D=11 group=sl 7 x Z_237 N=79632 min=48284
+psl 13 73 | RANDORB d=5 D=11 group=psl 13 x Z_73 N=79716 min=60
+prod psl 3 sl 3 277 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_277 N=79776 min=90520
+psl 11 121 | RANDORB d=5 D=11 group=psl 11 x Z_121 N=79860 min=1122
+pgl 9 111 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_111 N=79920 min=41342
+prod psl 3 psl 5 111 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_111 N=79920 min=92782
+prod psl 3 sl 4 111 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_111 N=79920 min=1247
+sl 9 111 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_111 N=79920 min=1096
+prod sl 3 sl 3 139 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_139 N=80064 min=34492
+pgl 8 159 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_159 N=80136 min=14572
+sl 8 159 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_159 N=80136 min=18268
+psl 9 223 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_223 N=80280 min=44208
+pgl 7 239 | RANDORB d=5 D=11 group=pgl 7 x Z_239 N=80304 min=100956
+sl 7 239 | RANDORB d=5 D=11 group=sl 7 x Z_239 N=80304 min=51932
+prod psl 3 sl 3 279 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_279 N=80352 min=91816
+pgl 11 61 | RANDORB d=5 D=11 group=pgl 11 x Z_61 N=80520 min=2285
+sl 11 61 | RANDORB d=5 D=11 group=sl 11 x Z_61 N=80520 min=58
+psl 17 33 | RANDORB d=5 D=11 group=psl 17 x Z_33 N=80784 min=10
+pgl 13 37 | RANDORB d=5 D=11 group=pgl 13 x Z_37 N=80808 min=68
+sl 13 37 | RANDORB d=5 D=11 group=sl 13 x Z_37 N=80808 min=34
+prod psl 3 sl 3 281 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_281 N=80928 min=92824
+pgl 7 241 | RANDORB d=5 D=11 group=pgl 7 x Z_241 N=80976 min=101336
+sl 7 241 | RANDORB d=5 D=11 group=sl 7 x Z_241 N=80976 min=52134
+psl 9 225 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_225 N=81000 min=45742
+pgl 8 161 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_161 N=81144 min=18560
+sl 8 161 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_161 N=81144 min=16006
+psl 11 123 | RANDORB d=5 D=11 group=psl 11 x Z_123 N=81180 min=2344
+prod sl 3 sl 3 141 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_141 N=81216 min=35816
+pgl 9 113 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_113 N=81360 min=46658
+prod psl 3 psl 5 113 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_113 N=81360 min=98122
+prod psl 3 sl 4 113 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_113 N=81360 min=2568
+sl 9 113 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_113 N=81360 min=1544
+prod psl 3 sl 3 283 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_283 N=81504 min=93976
+pgl 7 243 | RANDORB d=5 D=11 group=pgl 7 x Z_243 N=81648 min=103204
+sl 7 243 | RANDORB d=5 D=11 group=sl 7 x Z_243 N=81648 min=53342
+psl 9 227 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_227 N=81720 min=48166
+psl 13 75 | RANDORB d=5 D=11 group=psl 13 x Z_75 N=81900 min=64
+prod psl 3 psl 9 19 | RANDORB d=5 D=11 group=prod psl 3 psl 9 poly x^2+1 x Z_19 N=82080 min=6
+prod psl 3 sl 19 1 | RANDORB d=5 D=11 group=prod psl 3 sl 19 x Z_1 N=82080 min=0
+prod psl 3 sl 3 285 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_285 N=82080 min=95128
+prod psl 3 sl 5 57 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_57 N=82080 min=102
+prod sl 3 psl 19 1 | RANDORB d=5 D=11 group=prod sl 3 psl 19 x Z_1 N=82080 min=2
+prod sl 3 psl 5 57 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_57 N=82080 min=62
+prod sl 3 sl 4 57 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_57 N=82080 min=103
+pgl 8 163 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_163 N=82152 min=15362
+sl 8 163 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_163 N=82152 min=16834
+pgl 7 245 | RANDORB d=5 D=11 group=pgl 7 x Z_245 N=82320 min=105076
+sl 7 245 | RANDORB d=5 D=11 group=sl 7 x Z_245 N=82320 min=54600
+prod sl 3 sl 3 143 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_143 N=82368 min=35456
+psl 9 229 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_229 N=82440 min=48276
+psl 11 125 | RANDORB d=5 D=11 group=psl 11 x Z_125 N=82500 min=1974
+prod psl 3 psl 7 41 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_41 N=82656 min=14
+prod psl 3 sl 3 287 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_287 N=82656 min=96424
+pgl 9 115 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_115 N=82800 min=45832
+prod psl 3 psl 5 115 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_115 N=82800 min=103418
+prod psl 3 sl 4 115 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_115 N=82800 min=1874
+prod psl 5 psl 5 23 | RANDORB d=5 D=11 group=prod psl 5 psl 5 x Z_23 N=82800 min=20
+prod psl 5 sl 4 23 | RANDORB d=5 D=11 group=prod psl 5 sl 4 poly x^2+x+1 x Z_23 N=82800 min=21
+prod sl 4 psl 5 23 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 5 x Z_23 N=82800 min=934
+prod sl 4 sl 4 23 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 4 poly x^2+x+1 x Z_23 N=82800 min=11
+sl 9 115 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_115 N=82800 min=1944
+pgl 7 247 | RANDORB d=5 D=11 group=pgl 7 x Z_247 N=82992 min=105692
+sl 7 247 | RANDORB d=5 D=11 group=sl 7 x Z_247 N=82992 min=56322
+pgl 11 63 | RANDORB d=5 D=11 group=pgl 11 x Z_63 N=83160 min=2285
+pgl 8 165 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_165 N=83160 min=16154
+psl 9 231 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_231 N=83160 min=49226
+sl 11 63 | RANDORB d=5 D=11 group=sl 11 x Z_63 N=83160 min=62
+sl 8 165 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_165 N=83160 min=17006
+pgl 17 17 | RANDORB d=5 D=11 group=pgl 17 x Z_17 N=83232 min=11
+prod psl 3 sl 3 289 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_289 N=83232 min=97432
+sl 17 17 | RANDORB d=5 D=11 group=sl 17 x Z_17 N=83232 min=2
+prod sl 3 sl 3 145 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_145 N=83520 min=41080
+prod sl 3 sl 5 29 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_29 N=83520 min=78
+pgl 7 249 | RANDORB d=5 D=11 group=pgl 7 x Z_249 N=83664 min=106712
+sl 7 249 | RANDORB d=5 D=11 group=sl 7 x Z_249 N=83664 min=56044
+prod psl 3 sl 3 291 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_291 N=83808 min=98584
+psl 11 127 | RANDORB d=5 D=11 group=psl 11 x Z_127 N=83820 min=2480
+psl 9 233 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_233 N=83880 min=51270
+psl 13 77 | RANDORB d=5 D=11 group=psl 13 x Z_77 N=84084 min=68
+pgl 8 167 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_167 N=84168 min=18824
+sl 8 167 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_167 N=84168 min=20368
+pgl 9 117 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_117 N=84240 min=50058
+prod psl 3 psl 5 117 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_117 N=84240 min=104826
+prod psl 3 sl 4 117 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_117 N=84240 min=3004
+sl 9 117 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_117 N=84240 min=2450
+pgl 7 251 | RANDORB d=5 D=11 group=pgl 7 x Z_251 N=84336 min=108496
+sl 7 251 | RANDORB d=5 D=11 group=sl 7 x Z_251 N=84336 min=59000
+prod psl 3 sl 3 293 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_293 N=84384 min=99736
+psl 9 235 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_235 N=84600 min=52750
+prod psl 3 sl 7 21 | RANDORB d=5 D=11 group=prod psl 3 sl 7 x Z_21 N=84672 min=14
+prod psl 7 psl 7 3 | RANDORB d=5 D=11 group=prod psl 7 psl 7 x Z_3 N=84672 min=0
+prod psl 7 sl 8 1 | RANDORB d=5 D=11 group=prod psl 7 sl 8 poly x^3+x+1 x Z_1 N=84672 min=1
+prod sl 3 psl 7 21 | RANDORB d=5 D=11 group=prod sl 3 psl 7 x Z_21 N=84672 min=4
+prod sl 3 sl 3 147 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_147 N=84672 min=43370
+prod sl 3 sl 8 7 | RANDORB d=5 D=11 group=prod sl 3 sl 8 poly x^3+x+1 x Z_7 N=84672 min=1
+prod psl 3 sl 3 295 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_295 N=84960 min=100888
+prod psl 3 sl 5 59 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_59 N=84960 min=304
+prod sl 3 psl 5 59 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_59 N=84960 min=52
+prod sl 3 sl 4 59 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_59 N=84960 min=202
+pgl 23 7 | RANDORB d=5 D=11 group=pgl 23 x Z_7 N=85008 min=2
+pgl 7 253 | RANDORB d=5 D=11 group=pgl 7 x Z_253 N=85008 min=110420
+sl 23 7 | RANDORB d=5 D=11 group=sl 23 x Z_7 N=85008 min=0
+sl 7 253 | RANDORB d=5 D=11 group=sl 7 x Z_253 N=85008 min=60228
+psl 11 129 | RANDORB d=5 D=11 group=psl 11 x Z_129 N=85140 min=4044
+pgl 13 39 | RANDORB d=5 D=11 group=pgl 13 x Z_39 N=85176 min=88
+pgl 8 169 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_169 N=85176 min=20838
+sl 13 39 | RANDORB d=5 D=11 group=sl 13 x Z_39 N=85176 min=46
+sl 8 169 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_169 N=85176 min=21744
+psl 29 7 | RANDORB d=5 D=11 group=psl 29 x Z_7 N=85260 min=0
+psl 9 237 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_237 N=85320 min=54062
+psl 19 25 | RANDORB d=5 D=11 group=psl 19 x Z_25 N=85500 min=4
+prod psl 3 sl 3 297 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_297 N=85536 min=102040
+pgl 16 21 | RANDORB d=5 D=11 group=pgl 16 poly x^4+x+1 x Z_21 N=85680 min=8
+pgl 7 255 | RANDORB d=5 D=11 group=pgl 7 x Z_255 N=85680 min=112062
+pgl 9 119 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_119 N=85680 min=52802
+prod psl 3 psl 5 119 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_119 N=85680 min=104954
+prod psl 3 sl 4 119 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_119 N=85680 min=4673
+psl 17 35 | RANDORB d=5 D=11 group=psl 17 x Z_35 N=85680 min=12
+sl 16 21 | RANDORB d=5 D=11 group=sl 16 poly x^4+x+1 x Z_21 N=85680 min=0
+sl 7 255 | RANDORB d=5 D=11 group=sl 7 x Z_255 N=85680 min=61982
+sl 9 119 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_119 N=85680 min=5880
+pgl 11 65 | RANDORB d=5 D=11 group=pgl 11 x Z_65 N=85800 min=3537
+psl 25 11 | RANDORB d=5 D=11 group=psl 25 poly x^2+2 x Z_11 N=85800 min=2
+sl 11 65 | RANDORB d=5 D=11 group=sl 11 x Z_65 N=85800 min=116
+prod sl 3 sl 3 149 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_149 N=85824 min=45384
+psl 9 239 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_239 N=86040 min=55648
+prod psl 3 sl 3 299 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_299 N=86112 min=103192
+pgl 8 171 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_171 N=86184 min=23910
+sl 8 171 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_171 N=86184 min=24844
+psl 13 79 | RANDORB d=5 D=11 group=psl 13 x Z_79 N=86268 min=88
+pgl 7 257 | RANDORB d=5 D=11 group=pgl 7 x Z_257 N=86352 min=113108
+sl 7 257 | RANDORB d=5 D=11 group=sl 7 x Z_257 N=86352 min=61724
+prod sl 3 sl 9 5 | RANDORB d=5 D=11 group=prod sl 3 sl 9 poly x^2+1 x Z_5 N=86400 min=4
+prod sl 5 sl 9 1 | RANDORB d=5 D=11 group=prod sl 5 sl 9 poly x^2+1 x Z_1 N=86400 min=2
+psl 11 131 | RANDORB d=5 D=11 group=psl 11 x Z_131 N=86460 min=3116
+prod psl 3 psl 7 43 | RANDORB d=5 D=11 group=prod psl 3 psl 7 x Z_43 N=86688 min=21
+prod psl 3 sl 3 301 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_301 N=86688 min=104344
+psl 9 241 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_241 N=86760 min=55398
+prod sl 3 sl 3 151 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_151 N=86976 min=44588
+pgl 7 259 | RANDORB d=5 D=11 group=pgl 7 x Z_259 N=87024 min=114966
+sl 7 259 | RANDORB d=5 D=11 group=sl 7 x Z_259 N=87024 min=62764
+pgl 9 121 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_121 N=87120 min=55160
+prod psl 3 psl 11 11 | RANDORB d=5 D=11 group=prod psl 3 psl 11 x Z_11 N=87120 min=1
+prod psl 3 psl 5 121 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_121 N=87120 min=109582
+prod psl 3 sl 4 121 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_121 N=87120 min=5290
+sl 9 121 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_121 N=87120 min=5032
+pgl 8 173 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_173 N=87192 min=24000
+sl 8 173 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_173 N=87192 min=24422
+prod psl 3 sl 3 303 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_303 N=87264 min=105496
+psl 9 243 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_243 N=87480 min=57946
+pgl 7 261 | RANDORB d=5 D=11 group=pgl 7 x Z_261 N=87696 min=114728
+sl 7 261 | RANDORB d=5 D=11 group=sl 7 x Z_261 N=87696 min=64600
+psl 11 133 | RANDORB d=5 D=11 group=psl 11 x Z_133 N=87780 min=2990
+prod psl 3 sl 3 305 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_305 N=87840 min=106648
+prod psl 3 sl 5 61 | RANDORB d=5 D=11 group=prod psl 3 sl 5 x Z_61 N=87840 min=294
+prod sl 3 psl 5 61 | RANDORB d=5 D=11 group=prod sl 3 psl 5 x Z_61 N=87840 min=168
+prod sl 3 sl 4 61 | RANDORB d=5 D=11 group=prod sl 3 sl 4 poly x^2+x+1 x Z_61 N=87840 min=200
+prod psl 3 psl 17 3 | RANDORB d=5 D=11 group=prod psl 3 psl 17 x Z_3 N=88128 min=1
+prod sl 3 sl 3 153 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_153 N=88128 min=45490
+pgl 8 175 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_175 N=88200 min=27130
+psl 9 245 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_245 N=88200 min=60360
+sl 8 175 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_175 N=88200 min=22868
+pgl 7 263 | RANDORB d=5 D=11 group=pgl 7 x Z_263 N=88368 min=117028
+sl 7 263 | RANDORB d=5 D=11 group=sl 7 x Z_263 N=88368 min=66918
+prod psl 3 sl 3 307 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_307 N=88416 min=107944
+pgl 11 67 | RANDORB d=5 D=11 group=pgl 11 x Z_67 N=88440 min=5358
+sl 11 67 | RANDORB d=5 D=11 group=sl 11 x Z_67 N=88440 min=64
+psl 13 81 | RANDORB d=5 D=11 group=psl 13 x Z_81 N=88452 min=102
+psl 27 9 | RANDORB d=5 D=11 group=psl 27 poly x^3+2x+1 x Z_9 N=88452 min=2
+pgl 9 123 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_123 N=88560 min=57293
+prod psl 3 psl 5 123 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_123 N=88560 min=109958
+prod psl 3 sl 4 123 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_123 N=88560 min=4392
+sl 9 123 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_123 N=88560 min=6520
+prod sl 3 sl 7 11 | RANDORB d=5 D=11 group=prod sl 3 sl 7 x Z_11 N=88704 min=6
+pgl 19 13 | RANDORB d=5 D=11 group=pgl 19 x Z_13 N=88920 min=6
+psl 9 247 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_247 N=88920 min=61064
+sl 19 13 | RANDORB d=5 D=11 group=sl 19 x Z_13 N=88920 min=2
+prod psl 3 sl 3 309 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_309 N=88992 min=108952
+pgl 7 265 | RANDORB d=5 D=11 group=pgl 7 x Z_265 N=89040 min=117986
+sl 7 265 | RANDORB d=5 D=11 group=sl 7 x Z_265 N=89040 min=66796
+psl 11 135 | RANDORB d=5 D=11 group=psl 11 x Z_135 N=89100 min=4818
+pgl 8 177 | RANDORB d=5 D=11 group=pgl 8 poly x^3+x+1 x Z_177 N=89208 min=26124
+sl 8 177 | RANDORB d=5 D=11 group=sl 8 poly x^3+x+1 x Z_177 N=89208 min=23716
+pgl 31 3 | RANDORB d=5 D=11 group=pgl 31 x Z_3 N=89280 min=0
+prod sl 3 sl 3 155 | RANDORB d=5 D=11 group=prod sl 3 sl 3 x Z_155 N=89280 min=46164
+prod sl 3 sl 5 31 | RANDORB d=5 D=11 group=prod sl 3 sl 5 x Z_31 N=89280 min=230
+sl 31 3 | RANDORB d=5 D=11 group=sl 31 x Z_3 N=89280 min=0
+pgl 13 41 | RANDORB d=5 D=11 group=pgl 13 x Z_41 N=89544 min=222
+sl 13 41 | RANDORB d=5 D=11 group=sl 13 x Z_41 N=89544 min=54
+prod psl 3 sl 3 311 | RANDORB d=5 D=11 group=prod psl 3 sl 3 x Z_311 N=89568 min=110248
+psl 9 249 | RANDORB d=5 D=11 group=psl 9 poly x^2+1 x Z_249 N=89640 min=64048
+pgl 7 267 | RANDORB d=5 D=11 group=pgl 7 x Z_267 N=89712 min=119108
+sl 7 267 | RANDORB d=5 D=11 group=sl 7 x Z_267 N=89712 min=69610
+pgl 9 125 | RANDORB d=5 D=11 group=pgl 9 poly x^2+1 x Z_125 N=90000 min=60716
+prod psl 3 psl 5 125 | RANDORB d=5 D=11 group=prod psl 3 psl 5 x Z_125 N=90000 min=113022
+prod psl 3 sl 4 125 | RANDORB d=5 D=11 group=prod psl 3 sl 4 poly x^2+x+1 x Z_125 N=90000 min=6960
+prod psl 5 psl 5 25 | RANDORB d=5 D=11 group=prod psl 5 psl 5 x Z_25 N=90000 min=63
+prod psl 5 sl 4 25 | RANDORB d=5 D=11 group=prod psl 5 sl 4 poly x^2+x+1 x Z_25 N=90000 min=33
+prod sl 4 psl 5 25 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 psl 5 x Z_25 N=90000 min=1049
+prod sl 4 sl 4 25 | RANDORB d=5 D=11 group=prod sl 4 poly x^2+x+1 sl 4 poly x^2+x+1 x Z_25 N=90000 min=29
+sl 9 125 | RANDORB d=5 D=11 group=sl 9 poly x^2+1 x Z_125 N=90000 min=5360
