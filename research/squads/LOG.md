@@ -118,3 +118,5 @@ basin FR5b went 134 -> 5 (three dmfast passes) -> 1 (lns3 FOCUS, lns2) and a new
 hold each last bad pair good, kick, re-descend) closed it: **(10,5) >= 4,842, apsp VALID**
 (research/squads/d10D5/hubs/checks/d10D5_n4842_CHECK.md). The squad's lasting contribution was c3's finding that
 uphill joint (sigma, nu) moves work where every single-mechanism method stalls; Opus built the rest on that.
+Later the same session: fourth conversion {1,6,5,2} from 4,842 (flags 4, 7, 0 blocked by the crowded point 65's
+coverage hole) reached 5 coset-0 pairs by alternating dmfast passes and lns3; not closed before the session ended.

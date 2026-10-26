@@ -118,3 +118,13 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
   `FOCUS=1 CHEAP=1 FW=4 FT=0.6 RESET=30 SECS=1800 STEP=20 SIZE=55 NPHI=180 NF1=8 KZ=10 SEED=s python3 lns3.py runs/G4_2_hf.sol runs/B5.sol "1 6 5 2" out.sol`,
   `./alt.sh runs/G4_2_hf.sol runs/B5.sol "1 6 5 2" TAG SEED 8`, and `./tabu.sh runs/G4_2_hf.sol <best> "1 6 5 2" "" TAG SEED 20`
   once at 1-2 pairs (that is how 4,842 closed: 5 -> 0 took about 70 minutes).
+
+## Final status of resume 4 (session_01ThanGg64Z6Jg1KgXK34ssq, stopped ~04:50 UTC Oct 26)
+
+- **Best verified: (10,5) >= 4,842** (research/squads/d10D5/hubs/checks/d10D5_n4842_CHECK.md; graph files
+  hubs/graphs/d10D5_n4842_flagdel3.*; the committed files reproduce: same sha256, apsp VALID, diameter 5).
+- Fourth conversion {1,6,5,2} (4,844): best state r4/runs/B5.sol with STATE r4/runs/G4_2_hf.sol, FDSET "1 6 5 2":
+  exactly 5 coset-0 pairs (exact build: L102-L360, L289-L306, P124-P309, P255-P387, P326-P391; L289 is the freed
+  line of flag 1, the rest are ordinary), coverage, D1 and hub distances all 0. Continue as described above
+  (lns3 FOCUS + alt.sh until 1-2 pairs, then tabu.sh). All processes were stopped at the end of the session.
+- Flags 4, 7, 0 as fourth conversion: blocked by the crowded point 65's coverage hole (see cells/d10D5.md).
