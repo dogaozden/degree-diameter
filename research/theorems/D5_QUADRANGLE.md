@@ -603,7 +603,9 @@ Every transition is repaired (Theorems B, C and Proposition 7.2), (HG) holds (ch
 builder), so Theorem 3.5 gives order $7\cdot 2\cdot 820+86+60 = 11{,}626$, maximum degree $13$. **Computer-checked**:
 research/lifts/coordinator_check/apsp.c (BFS from every vertex) reports bipartite, degree max 13, diameter 5
 (graphs/d13D5_q9_relaxed_n11626.check.txt). The neighbourhood of every vertex is determined by the solution file
-through Definitions 2.1 and 3.1.
+through Definitions 2.1 and 3.1. The solution file also lists the 820 points of $\mathrm{PG}(3,9)$ and the 820 lines of
+$W(9)$ explicitly; research/theorems/d5gq/sol2edges.py re-checks that they form $W(9)$, rebuilds the graph from the file
+alone (without the builder's code) and finds exactly the same edge set.
 
 Earlier versions with a 51-point partial ovoid instead of the relaxed set: 11,605 (no local dualities) and 11,621
 (graphs/d13D5_q9_typed_n11621.json).
@@ -682,7 +684,7 @@ bipartite, maximum degree, exact diameter.
 
 | graph | file (research/theorems/d5gq/) | result |
 |---|---|---|
-| $(13,5)$, $n = 11{,}626$ | graphs/d13D5_q9_relaxed_n11626.* | VALID, degree 13, diameter 5 |
+| $(13,5)$, $n = 11{,}626$ | graphs/d13D5_q9_relaxed_n11626.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges |
 | $(13,5)$, $n = 11{,}621$ | graphs/d13D5_q9_typed_n11621.* (json; rebuild with build_typed.py) | VALID |
 | $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID (beats the table, not the lab) |
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |
