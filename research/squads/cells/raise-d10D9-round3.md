@@ -63,3 +63,21 @@ Status: see the log at the bottom of this file.
 
 Seeds 3 to 6 are running (queues end about 04:20 UTC). The remaining budget is used for them. If they all end
 at best 8 or more, the verdict is that these two groups do not reach the solve threshold at μ ≈ 43 in our budget.
+### 2026-10-26 03:28 UTC: 8 seeds finished, best 6, no solve; cores moved to the better group
+
+| group | seed | best | evals |
+|---|---|---|---|
+| psl 7 x sl 11 x Z19 | 1 | 12 | 359,569 |
+| psl 7 x sl 11 x Z19 | 2 | 18 | 358,425 |
+| psl 7 x sl 11 x Z19 | 3 | 18 | 354,849 |
+| psl 7 x sl 11 x Z19 | 4 | 18 | 359,401 |
+| sl 7 x psl 11 x Z19 | 1 | 18 | 375,185 |
+| sl 7 x psl 11 x Z19 | 2 | 12 | 374,345 |
+| sl 7 x psl 11 x Z19 | 3 | 7 | 375,281 |
+| sl 7 x psl 11 x Z19 | 4 | **6** | 371,497 |
+
+- The psl 7 x sl 11 x Z19 group is weaker (best 12 in four seeds). Its seeds 5 and 6 were stopped at about 7 min
+  (best 30 and 24; logs incomplete) and the cores moved to sl 7 x psl 11 x Z19.
+- Queues now: Q1 (seed 5) and Q2 (seed 6) end at about 04:20 UTC; Q3 (seeds 7, 9, 11) and Q4 (seeds 8, 10, 12)
+  end at about 06:30 UTC.
+- Still no solve. Cost 6 (one uncovered orbit, or fixed points) is the best on any window candidate so far.
