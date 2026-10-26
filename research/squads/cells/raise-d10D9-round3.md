@@ -45,3 +45,10 @@ Status: see the log at the bottom of this file.
 ### 2026-10-26 01:20 UTC: start
 - Four queues launched: P1 seeds 1, 3, 5; P2 seeds 2, 4, 6 (prod psl 7 sl 11 Z19); Q1 seeds 1, 3, 5; Q2 seeds 2, 4, 6
   (prod sl 7 psl 11 Z19). Each seed 3600 s.
+### 2026-10-26 02:12 UTC: 52 min in, no solve
+
+- All four runs (P1, P2, Q1, Q2) sit at best cost 18 after 3,094 s and about 3·10⁵ evaluations each (95 per s).
+  Cost 18 with ORBW=5 is about four uncovered orbits or fixed points, and it has not moved for 30 minutes.
+- For comparison, round 2's solved group (psl 59 x Z41) was at cost 2 to 10 within an hour, and its solve came at
+  226k evaluations. These two prod leads look weaker than the solved groups. Seeds 1 and 2 finish at about 02:20;
+  queues then continue with seeds 3 to 6. The verdict waits for those seeds.
