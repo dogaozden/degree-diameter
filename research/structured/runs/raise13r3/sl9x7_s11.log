@@ -1,0 +1,6 @@
+group prod sl 9 poly x^2+1 sl 9 poly x^2+1 x Z_7, N=3628800, identity 363384, H order 56, rows 64800, threads 1, setup 0.14s
+wide rows: HW order 210, rows 17280, setup 0.31s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(4,2,2,7) (index 335), z -> 3 z on Z_7
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 76.13, mu/k = 12.69, fixed-point misses ~ 2.99
+start cost=408
+t=30 steps=584 evals=4673 cost=35 best=35 T=0.53

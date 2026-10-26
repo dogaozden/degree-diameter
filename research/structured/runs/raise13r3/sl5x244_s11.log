@@ -1,0 +1,6 @@
+group prod sl 5 sl 5 x Z_244, N=3513600, identity 590480, H order 61, rows 57600, threads 1, setup 0.19s
+wide rows: HW order 244, rows 14400, setup 0.37s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(1,4,1,0) (index 41), z -> 75 z on Z_244
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 51.78, mu/k = 8.63, fixed-point misses ~ 1.88
+start cost=11594
+t=30 steps=565 evals=4521 cost=80 best=73 T=0.53

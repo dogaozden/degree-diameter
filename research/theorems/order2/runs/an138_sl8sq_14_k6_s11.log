@@ -1,0 +1,10 @@
+group prod sl 8 poly x^3+x+1 sl 8 poly x^3+x+1 x Z_14, N=3556224, identity 395920, H order 63, rows 56448, threads 1, setup 0.11s
+wide rows: HW order 126, rows 28224, setup 0.22s
+alpha: swap o Frobenius x -> x^2 on the entries (order 6), z -> 3 z on Z_14
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 59.89, mu/k = 9.98, fixed-point misses ~ 1.92
+start cost=199
+t=30 steps=308 evals=2465 cost=47 best=39 T=0.53
+t=60 steps=553 evals=4425 cost=30 best=30 T=0.19
+t=90 steps=802 evals=6417 cost=23 best=23 T=0.15
+t=121 steps=1152 evals=9217 cost=23 best=23 T=0.15
+t=151 steps=1505 evals=12041 cost=23 best=23 T=0.15
