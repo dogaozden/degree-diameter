@@ -7,7 +7,8 @@ J is the multiset of the d cosets of G' = Z_p (as (j, z) in Z_k x Z_n) met by S.
 Patterns are listed once per translation class (all translates that keep a point at (0,0)) and per inversion J -> -J
 (S -> S^-1 swaps the two sides of the same graph).
 
-Usage: jpatterns.py d p k r n [TOP]   prints "mu_J  (j,z) ..." for the TOP best classes (default 20) and a histogram
+Usage: jpatterns.py d p k r n [TOP [KEEP]]   prints "mu_J  (j,z) ..." for the TOP best classes (default 20) and a
+histogram; with KEEP, patterns are scored in chunks and only the KEEP best enter the class reduction (large quotients)
 """
 import itertools, math, sys
 import numpy as np
@@ -15,14 +16,23 @@ import numpy as np
 def main():
     d, p, k, r, n = map(int, sys.argv[1:6]); top = int(sys.argv[6]) if len(sys.argv) > 6 else 20
     cells = [(j, z) for j in range(k) for z in range(n)]; m = len(cells)
-    combos = list(itertools.combinations_with_replacement(range(m), d - 1))
-    F = np.zeros((len(combos), k, n))
-    F[:, 0, 0] += 1
-    for t, c in enumerate(combos):
-        for x in c: F[t, cells[x][0], cells[x][1]] += 1
-    Fh = np.fft.fft2(F); P = np.real(np.fft.ifft2(np.conj(Fh) * Fh)); X0 = np.real(np.fft.ifft2((np.conj(Fh) * Fh) ** 2))
-    W = X0 - 3 * (d - 1) * P; W[:, 0, 0] += (d - 1) ** 2
-    mu = (p * np.exp(-W / p)).reshape(len(combos), -1).sum(axis=1)
+    keep = int(sys.argv[7]) if len(sys.argv) > 7 else None
+    it = itertools.combinations_with_replacement(range(m), d - 1); combos = []; mus = []; total = 0
+    while True:
+        chunk = list(itertools.islice(it, 200000))
+        if not chunk: break
+        total += len(chunk)
+        F = np.zeros((len(chunk), k, n)); F[:, 0, 0] += 1
+        A = np.array(chunk)
+        for c in range(d - 1): np.add.at(F, (np.arange(len(chunk)), A[:, c] // n, A[:, c] % n), 1)
+        Fh = np.fft.fft2(F); Q = np.conj(Fh) * Fh
+        P = np.real(np.fft.ifft2(Q)); X0 = np.real(np.fft.ifft2(Q * Q))
+        W = X0 - 3 * (d - 1) * P; W[:, 0, 0] += (d - 1) ** 2
+        mu = (p * np.exp(-W / p)).reshape(len(chunk), -1).sum(axis=1)
+        combos.extend(chunk); mus = np.concatenate([mus, mu]) if len(mus) else mu
+        if keep and len(combos) > 2 * keep:
+            o = np.argsort(mus)[:keep]; combos = [combos[i] for i in o]; mus = mus[o]
+    mu = mus
     seen = set(); out = []
     for t in np.argsort(mu):
         pts = [(0, 0)] + [cells[x] for x in combos[t]]
@@ -35,7 +45,7 @@ def main():
         key = min(keys)
         if key in seen: continue
         seen.add(key); out.append((mu[t], key))
-    print(f'# d={d} p={p} k={k} r={r} n={n}: {len(combos)} patterns with (0,0), {len(out)} classes; uniform mu '
+    print(f'# d={d} p={p} k={k} r={r} n={n}: {total} patterns with (0,0) ({len(combos)} kept), {len(out)} classes; uniform mu '
           f'{p * k * n * math.exp(-(1 + d * (d - 1) + d * (d - 1) ** 3) / (p * k * n)):.2f}')
     hist = {}
     for v, _ in out: hist[round(v, 1)] = hist.get(round(v, 1), 0) + 1

@@ -15,6 +15,8 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d6_haar_357_1.log | the same for SmallGroup(357,1) = C17 × (C7 ⋊ C3) (7 orbits) | 7 × 6.5·10⁸ | none |
 | d6_haar_360_51_C3xSL25.log, d6_haar_351_5.log | (6,5) SmallGroup(360,51) = C3 × SL(2,5) and SmallGroup(351,5): rank-0 pass (`haar5 complete` with core {e, r₀}, r₀ in the largest orbit) plus `haar5 cert … 1` (ranks ≥ 1, see below); orbit files orbits_*.txt | 6.7·10⁸ + 6.7·10⁷ and 6.1·10⁸ + 1.4·10⁷ | none |
 | d6_haar_351_1.log, d6_haar_351_6.log, d6_haar_351_7.log, d6_haar_351_11.log | (6,5) SmallGroup(351,1) = C13 ⋊ C27, (351,6) = C3 × (C13 ⋊ C9), (351,7) = C13 ⋊ (C9 ⋊ C3), (351,11) = C13 × (C9 ⋊ C3): `haar5 cert` from rank 0 (`tools/cert_queue.sh`) | 6.1·10⁸ each | none |
+| d7_haar_610_2_coset_patterns.log (patterns: d7_patterns_610_2.txt) | (7,5) SmallGroup(610,2) = C2 × (C61 ⋊ C5) = `meta 61 10 9 1`: every coset pattern (599 classes), normalized S inside each (`haar5 prod`, see below) | 7.6·10⁹ | **none: no (7,5) Haar graph on this group** |
+| d7_prod_positive_control_506.log | the same method on `meta 23 11 2` × Z2 (order 506) in the pattern of a known solution | 2.7·10⁵ | finds 2 solutions, one of them the known one (scaled by u = 11) |
 | d7_haar_615_1_orbit_spaces.log | (7,5) SmallGroup(615,1): every S that is a union of e, fixed points and orbits of an automorphism of order 2–5 (`haar5 exho`) | | minimum ≥ 12 in every space |
 | d7_haar_615_1_3swap_of_cost{4,2}_set.log | (7,5) SmallGroup(615,1): all sets within 3 swaps of the cost-4 set S = 0 206 135 160 343 459 282 and of the cost-2 set S = 0 206 135 343 507 543 593 (`tools/nbhd.py … 3`) | 20 × 3.8·10⁷ each | found the cost-2 set; nothing of cost 0 |
 
@@ -29,3 +31,12 @@ moved by an automorphism so that it contains e and the representative r_k of the
 quotients, with every right quotient of rank ≥ k. So for each k only sets {e, r_k, …} with all pairwise right quotients
 of rank ≥ k are enumerated; later ranks are tiny, and the total is about one rank-0 pass. Positive control: on
 SmallGroup(176,15) it lists 640 normalized solutions (apsp VALID on one, 352 vertices).
+
+Coset-pattern search (`tools/jpatterns.py`, `tools/jexact.py`, `haar5 prod`), for G = (Z_p ⋊_r Z_k) × Z_n with G' = Z_p:
+the cosets of G' met by S form a multiset J in G/G' = Z_k × Z_n. Translating S so that e ∈ S puts (0,0) in J; all
+translates of J that keep a point at (0,0), and −J (S → S⁻¹ swaps the sides), give the same graphs, so one J per class is
+searched. Inside a class: conjugation by (b,0,0) adds (r^j − 1)b to the a-part of an element of coset (j,z), so the first
+element with r^j ≠ 1 can be taken to be (0, j, z); then the automorphisms (a,j,z) ↦ (ua, j, z), u ∈ Z_p^*, fix e and that
+element and scale a second element to a ∈ {0, 1}; all other elements range over their cosets. Every S is equivalent to
+one of these products, so `haar5 prod` over all classes is exact for cost 0. Classes are searched in order of
+mu_J = Σ_t p·exp(−W_t/p) (W_t = words of length ≤ 4 landing in coset t), the expected cost of a random S with that pattern.
