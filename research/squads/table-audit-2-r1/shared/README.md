@@ -4,7 +4,7 @@ Problem: Gomez's compound graph Omega H(q) (thesis 1986, Fig. 2.21): 5*alpha cop
 incidence graph H(q) plus 10n hubs; every copy marks one point and one line per row t (n rows); hubs (t,k), (t,kbar)
 attach to the marked vertices of row t in the copies the figure says.  The thesis's own labelling (same row = same
 label in every copy) has diameter 9.  With a free labelling of every copy, q = 3 reaches diameter 8 (found today).
-Goal: diameter 8 at q = 5 (alpha = 4, 234,360 vertices) and q = 4 (alpha = 3, 68,250 vertices), then q = 7.
+Goal: diameter 8 at q = 5 (alpha = 4, 195,300 vertices) and q = 4 (alpha = 3, 54,600 vertices), then q = 7.
 
 - hQ.txt: H(q) edge list (first line = vertex count; points 0..n-1, lines n..2n-1).  n = 364, 1365, 3906, 19608.
 - gQ.txt: one automorphism g of H(q) (a permutation of 0..2n-1) acting semiregularly: order 13 (q=3), 7 (q=4),
