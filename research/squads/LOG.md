@@ -26,3 +26,29 @@ Kept: c5's symmetry speed-up and c9's GA. Opus's reading: c5's symmetric lifts w
 semidirect product with a smaller base, so at covered orders they repeat the exhaustive searches (c5's 18 at C10 p = 9 is
 exactly the exhaustive C30 3+3 optimum 6, times 3). Round 2 therefore goes to symmetries with fixed points, multi-orbit
 coset graphs, permutation-voltage (non-regular) covers, and the GA on medium groups.
+
+## 2026-10-26 07:00 UTC: job new-3-7, goal beat (3,7) = 168, round 2
+
+Session: claude/bipartite-d3-d7-search-9kfg4g (Opus). Brief: `d3D7-r2/BRIEF.md` (round 1 table and the
+semidirect-product reduction added). Eight Haiku cards, ~25 min each:
+
+| card | idea | best (n: cost) |
+|---|---|---|
+| r2c1 | memetic GA (r1-c9) on medium groups | 180 (C15, 6+6): 12; 176 (C11): 20; 182 (C13): 26; 180 (D10, 9+9): 37: the salift floors again |
+| r2c2 | memetic GA, all groups of order 16 (p = 6), 12 (p = 8), 14 (p = 7) | 192: 32; 196: 42 |
+| r2c3 | lifts with an order-3 symmetry with fixed points | calibrations fail; 182 (C13): 38 |
+| r2c4 | lifts with an involution with fixed points | calibration at D = 5 works; 180 (C15): 960 vs 12 without fixed points |
+| r2c5 | coset graphs, two orbits per side, stabilisers 1 and 2 | degree equations force |D_ij| = 2; 174 (|G| = 58, exhaustive): diameter 10 |
+| r2c6 | permutation-voltage dipoles over AGL(1,q) (exhaustive, q = 89–127) and PGL(2,q) | 178: 3526 ordered pairs (random graph: 3576); 180 (PGL(2,89)): 2180 |
+| r2c7 | permutation-voltage lifts of the 2+2 base over AGL(1,q) (exhaustive) and PSL/PGL(2,43) | 172: 1032; 176: 2006 |
+| r2c8 | GH(2) + hub gadgets | 170: 398 |
+
+Opus in parallel: the exhaustive 4+4 sweep (all groups of order 22–31) ended negative; 5+5 (17–21) found the best near
+miss of the job, C3 × S3 at n = 180 (cost 4 = 36 bad pairs), which no annealer or tabu search could move in any
+symmetry-broken frame. Spin-off: no 2+2 lift over any group of order 73–87 beats the (3,8) record 288.
+
+Verdict: two rounds in a row added nothing; the symmetric families are exhausted and the low-symmetry regime is out of
+reach of every search tried (none rebuilds 168 with C7 on a 12+12 base). Stopped. Notes: `cells/d3D7.md`.
+Comparison note for the coordinator: the squads' main value here was breadth of negatives (seven new families tested in
+~45 minutes of wall-clock), plus the GA speed-up and the fixed-point-symmetry calibrations; no card came closer than the
+Opus exhaustive near misses.
