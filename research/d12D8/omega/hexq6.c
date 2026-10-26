@@ -2,7 +2,7 @@
    Points: all points of Q(6,q): X0X4 + X1X5 + X2X6 = X3^2.
    Lines: the lines of Q(6,q) whose Grassmann coordinates p_ij = x_i y_j - x_j y_i satisfy
           p12 = p34, p54 = p32, p20 = p35, p65 = p30, p01 = p36, p46 = p31.
-   q prime or q = 9 (GF(9) = GF(3)[i], i^2 = -1). Writes:  "q npoints nlines" then one line per H-line (its q+1 point
+   q prime, 4, 8 (polynomial basis) or 9 (GF(9) = GF(3)[i], i^2 = -1). Writes:  "q npoints nlines" then one line per H-line (its q+1 point
    indices, sorted), then the point coordinates ("P x0..x6", field elements as integers, GF(9): a+bi -> a+3b).
    Usage: hexq6 q out.txt          (build: cc -O2 -o hexq6 hexq6.c) */
 #include <stdio.h>
@@ -10,7 +10,11 @@
 #include <string.h>
 static int q, p, ADD[16][16], MUL[16][16], NEG[16], INV[16];
 static void field(void) {
-    if (q == 9) { p = 3;
+    if (q == 4 || q == 8) { p = 2; int m = q == 4 ? 2 : 3, poly = q == 4 ? 7 : 11;   /* x^2+x+1, x^3+x+1 */
+        for (int x = 0; x < q; x++) for (int y = 0; y < q; y++) { int r = 0, a = x, b = y;
+            ADD[x][y] = x ^ y; while (b) { if (b & 1) r ^= a; b >>= 1; a <<= 1; if (a & q) a ^= poly; } MUL[x][y] = r; }
+        (void)m;
+    } else if (q == 9) { p = 3;
         for (int x = 0; x < 9; x++) for (int y = 0; y < 9; y++) {
             int a = x % 3, b = x / 3, c = y % 3, d = y / 3;
             ADD[x][y] = (a + c) % 3 + 3 * ((b + d) % 3);
