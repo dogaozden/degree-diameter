@@ -159,3 +159,10 @@ Record entering round 3: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
   p1 36, rest worse).
 - Round-2 metacyclic best was p1 20 (N 4,887). So the new families screen no better at the top, and the screen is a
   weak predictor (record group p1 16).
+
+## Round-3 batches
+- **b1** (56 candidates, 300 s, seed 1, K = 8): 40 non-cyclic direct products (top by screen) + 16 base products
+  (SL(2,3)/S4/A4/AGL(1,9)/S3 × metacyclic). **0 solves**. Cost distribution: 3 (3 runs), 4 (9), 5 (10), 6 (8), 7 (5),
+  8+ (21). Best: Z_37⋊Z_3 type product at N 4,884 (`prod meta 11 4 10 meta 37 3 10`), and two N = 4,896 products
+  (`prod agl1 4 meta 51 8 38`, `prod sl 2 meta 51 16 5`), all at cost 3. Runs table `runs/b1.tsv`.
+- **b2** (40 non-split `nmeta` candidates, 300 s, seed 1, K = 8, top by screen p1): started after b1, table `runs/b2.tsv`.
