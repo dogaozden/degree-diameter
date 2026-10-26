@@ -1,0 +1,365 @@
+n=3906 m=31 r=126 alpha=4 markings=4
+greedy counts: PCAND 3 ECAND 2 (projected evals/step 5, 0.100 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.211 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.182 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.190 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.186 s/eval)
+greedy B 1 P orbit 16/126 cost 562539 t 7
+greedy B 1 P orbit 32/126 cost 442780 t 15
+greedy B 1 P orbit 48/126 cost 356628 t 24
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.186 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.186 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.187 s/eval)
+greedy B 1 P orbit 64/126 cost 299591 t 33
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.187 s/eval)
+greedy B 1 P orbit 80/126 cost 273363 t 41
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.187 s/eval)
+greedy B 1 P orbit 96/126 cost 260904 t 49
+greedy B 1 P orbit 112/126 cost 257774 t 56
+greedy B 1 P orbit 126/126 cost 252106 t 64
+greedy block 1 P done: cost 252106 t 64 evals 318 (0.200 s/eval)
+greedy B 1 L orbit 16/126 cost 224668 t 72
+greedy B 1 L orbit 32/126 cost 206860 t 79
+greedy B 1 L orbit 48/126 cost 199810 t 85
+greedy B 1 L orbit 64/126 cost 194954 t 92
+greedy B 1 L orbit 80/126 cost 192376 t 99
+greedy B 1 L orbit 96/126 cost 192505 t 108
+greedy B 1 L orbit 112/126 cost 191721 t 115
+greedy B 1 L orbit 126/126 cost 191238 t 121
+greedy block 1 L done: cost 191238 t 121 evals 570 (0.212 s/eval)
+greedy B 2 P orbit 16/126 cost 145310 t 127
+greedy B 2 P orbit 32/126 cost 115441 t 134
+greedy B 2 P orbit 48/126 cost 93667 t 140
+greedy B 2 P orbit 64/126 cost 79345 t 147
+greedy B 2 P orbit 80/126 cost 68436 t 155
+greedy B 2 P orbit 96/126 cost 60830 t 162
+greedy B 2 P orbit 112/126 cost 57801 t 170
+greedy B 2 P orbit 126/126 cost 57879 t 177
+greedy block 2 P done: cost 57879 t 177 evals 822 (0.216 s/eval)
+greedy B 2 L orbit 16/126 cost 50594 t 186
+greedy B 2 L orbit 32/126 cost 46663 t 194
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.219 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.219 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.219 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.219 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.219 s/eval)
+greedy B 2 L orbit 48/126 cost 44203 t 202
+greedy B 2 L orbit 64/126 cost 42701 t 213
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.220 s/eval)
+greedy B 2 L orbit 80/126 cost 42136 t 225
+greedy B 2 L orbit 96/126 cost 42377 t 233
+greedy B 2 L orbit 112/126 cost 42378 t 242
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.225 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.225 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.225 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.225 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.225 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.225 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.226 s/eval)
+greedy B 2 L orbit 126/126 cost 42490 t 249
+greedy block 2 L done: cost 42490 t 249 evals 1104 (0.226 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.226 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.226 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy B 3 P orbit 16/126 cost 42206 t 259
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy B 3 P orbit 32/126 cost 42215 t 270
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy counts: PCAND 1 ECAND 1 (projected evals/step 2, 0.227 s/eval)
+greedy counts: PCAND 2 ECAND 1 (projected evals/step 3, 0.227 s/eval)
+greedy B 3 P orbit 48/126 cost 42029 t 280
+greedy B 3 P orbit 64/126 cost 41781 t 290
+greedy B 3 P orbit 80/126 cost 41888 t 299
+greedy B 3 P orbit 96/126 cost 41888 t 308
+greedy B 3 P orbit 112/126 cost 42119 t 314
+greedy B 3 P orbit 126/126 cost 42192 t 319
+greedy block 3 P done: cost 42192 t 319 evals 1467 (0.218 s/eval)
+greedy B 3 L orbit 16/126 cost 42063 t 328
+greedy counts: PCAND 2 ECAND 2 (projected evals/step 4, 0.215 s/eval)
+greedy B 3 L orbit 32/126 cost 42012 t 335
+greedy B 3 L orbit 48/126 cost 41754 t 346
+greedy B 3 L orbit 64/126 cost 41602 t 355
+greedy counts: PCAND 3 ECAND 2 (projected evals/step 5, 0.209 s/eval)
+greedy B 3 L orbit 80/126 cost 41495 t 367
+greedy counts: PCAND 3 ECAND 3 (projected evals/step 6, 0.205 s/eval)
+greedy B 3 L orbit 96/126 cost 41236 t 381
+greedy counts: PCAND 4 ECAND 3 (projected evals/step 7, 0.202 s/eval)
+greedy counts: PCAND 4 ECAND 4 (projected evals/step 8, 0.201 s/eval)
+greedy B 3 L orbit 112/126 cost 41225 t 395
+greedy counts: PCAND 5 ECAND 4 (projected evals/step 9, 0.199 s/eval)
+greedy counts: PCAND 5 ECAND 5 (projected evals/step 10, 0.198 s/eval)
+greedy counts: PCAND 6 ECAND 5 (projected evals/step 11, 0.197 s/eval)
+greedy counts: PCAND 6 ECAND 6 (projected evals/step 12, 0.197 s/eval)
+greedy counts: PCAND 7 ECAND 6 (projected evals/step 13, 0.196 s/eval)
+greedy counts: PCAND 8 ECAND 8 (projected evals/step 16, 0.196 s/eval)
+greedy B 3 L orbit 126/126 cost 41127 t 412
+greedy block 3 L done: cost 41127 t 412 evals 2122 (0.194 s/eval)
+GREEDY pass cost 41127 (sources 252) t 412
+it 14 t 2 cost 41071
+it 18 t 2 cost 41051
+it 19 t 2 cost 41039
+it 20 t 3 cost 40977
+it 21 t 3 cost 40953
+it 24 t 3 cost 40911
+it 27 t 3 cost 40888
+it 37 t 5 cost 40880
+it 39 t 5 cost 40841
+it 42 t 5 cost 40831
+it 43 t 5 cost 40816
+it 46 t 6 cost 40810
+it 50 t 6 cost 40729
+it 51 t 6 cost 40725
+it 53 t 7 cost 40637
+it 54 t 7 cost 40633
+it 58 t 7 cost 40547
+it 60 t 8 cost 40530
+it 69 t 9 cost 40520
+it 76 t 10 cost 40487
+it 86 t 11 cost 40468
+it 92 t 12 cost 40459
+it 101 t 13 cost 40420
+it 102 t 13 cost 40407
+it 103 t 13 cost 40401
+it 104 t 13 cost 40399
+it 114 t 14 cost 40380
+it 116 t 15 cost 40343
+it 117 t 15 cost 40336
+it 126 t 16 cost 40310
+it 131 t 17 cost 40308
+it 132 t 17 cost 40205
+it 140 t 18 cost 40196
+it 143 t 19 cost 40153
+it 146 t 19 cost 40143
+it 148 t 19 cost 40137
+it 157 t 20 cost 40132
+it 159 t 21 cost 40115
+it 160 t 21 cost 40100
+it 161 t 21 cost 40092
+it 163 t 21 cost 40063
+it 164 t 21 cost 40016
+it 177 t 23 cost 39981
+it 178 t 24 cost 39961
+it 180 t 24 cost 39921
+it 195 t 26 cost 39897
+it 199 t 27 cost 39839
+it 201 t 27 cost 39816
+it 207 t 28 cost 39781
+it 209 t 28 cost 39772
+it 215 t 29 cost 39750
+it 237 t 32 cost 39731
+it 240 t 33 cost 39703
+it 241 t 33 cost 39675
+it 245 t 34 cost 39674
+it 246 t 34 cost 39658
+it 248 t 34 cost 39646
+it 259 t 37 cost 39626
+it 265 t 38 cost 39611
+it 271 t 38 cost 39602
+it 282 t 40 cost 39591
+it 284 t 41 cost 39584
+it 300 t 43 cost 39574
+it 301 t 43 cost 39553
+it 306 t 44 cost 39548
+it 308 t 44 cost 39521
+it 312 t 45 cost 39500
+it 318 t 46 cost 39454
+it 321 t 47 cost 39452
+it 322 t 47 cost 39426
+it 339 t 50 cost 39380
+it 344 t 51 cost 39373
+it 360 t 53 cost 39361
+it 368 t 55 cost 39357
+it 370 t 55 cost 39323
+it 372 t 55 cost 39321
+it 375 t 56 cost 39317
+it 376 t 56 cost 39308
+it 383 t 57 cost 39284
+it 386 t 58 cost 39272
+it 399 t 60 cost 39257
+it 406 t 60 cost 39255
+it 408 t 61 cost 39225
+it 419 t 62 cost 39219
+it 424 t 63 cost 39165
+it 431 t 64 cost 39140
+it 454 t 67 cost 39131
+it 455 t 68 cost 39095
+it 488 t 72 cost 39080
+it 489 t 73 cost 39065
+it 494 t 73 cost 39031
+it 495 t 74 cost 39017
+it 498 t 74 cost 38995
+it 512 t 75 cost 38991
+it 526 t 77 cost 38988
+it 530 t 77 cost 38984
+it 544 t 79 cost 38973
+it 545 t 79 cost 38951
+it 547 t 80 cost 38937
+it 553 t 80 cost 38916
+it 576 t 83 cost 38873
+it 578 t 83 cost 38847
+it 580 t 83 cost 38842
+it 593 t 85 cost 38830
+it 602 t 86 cost 38808
+it 604 t 86 cost 38797
+it 607 t 87 cost 38794
+it 610 t 87 cost 38788
+it 615 t 88 cost 38769
+it 632 t 91 cost 38746
+it 637 t 92 cost 38719
+it 650 t 93 cost 38718
+it 669 t 96 cost 38665
+it 682 t 98 cost 38653
+it 727 t 104 cost 38650
+it 729 t 104 cost 38622
+it 744 t 106 cost 38599
+it 754 t 107 cost 38597
+it 770 t 110 cost 38591
+it 773 t 110 cost 38589
+it 785 t 112 cost 38575
+it 791 t 113 cost 38558
+it 792 t 113 cost 38546
+it 809 t 116 cost 38527
+it 835 t 120 cost 38519
+it 841 t 121 cost 38518
+it 888 t 128 cost 38479
+it 904 t 130 cost 38477
+it 914 t 132 cost 38474
+it 939 t 135 cost 38439
+it 962 t 139 cost 38433
+it 975 t 142 cost 38426
+it 977 t 142 cost 38403
+it 984 t 143 cost 38382
+it 986 t 143 cost 38378
+it 1001 t 145 cost 38368
+it 1007 t 146 cost 38365
+it 1013 t 147 cost 38346
+it 1018 t 148 cost 38301
+it 1030 t 149 cost 38290
+it 1043 t 152 cost 38271
+it 1044 t 152 cost 38256
+it 1056 t 154 cost 38222
+it 1086 t 159 cost 38200
+it 1098 t 161 cost 38193
+it 1104 t 161 cost 38184
+it 1115 t 163 cost 38173
+it 1118 t 163 cost 38166
+it 1128 t 165 cost 38146
+it 1132 t 165 cost 38144
+it 1158 t 170 cost 38101
+it 1172 t 172 cost 38084
+it 1179 t 174 cost 38053
+it 1187 t 175 cost 38051
+it 1189 t 175 cost 38030
+it 1193 t 176 cost 37987
+it 1208 t 178 cost 37984
+it 1221 t 180 cost 37910
+it 1261 t 187 cost 37897
+it 1265 t 187 cost 37873
+it 1274 t 189 cost 37864
+it 1285 t 190 cost 37862
+it 1333 t 198 cost 37816
+it 1335 t 198 cost 37806
+it 1339 t 198 cost 37803
+it 1356 t 201 cost 37793
+it 1382 t 206 cost 37792
+it 1398 t 209 cost 37732
+it 1431 t 216 cost 37705
+it 1469 t 222 cost 37699
+it 1476 t 223 cost 37692
+it 1479 t 224 cost 37658
+it 1481 t 224 cost 37655
+it 1488 t 226 cost 37644
+it 1491 t 226 cost 37634
+it 1513 t 230 cost 37621
+it 1534 t 233 cost 37593
+it 1545 t 235 cost 37574
+it 1598 t 242 cost 37559
+it 1628 t 245 cost 37552
+it 1635 t 246 cost 37549
+it 1691 t 252 cost 37546
+it 1700 t 254 cost 37536
+it 1713 t 255 cost 37495
+it 1715 t 255 cost 37492
+it 1731 t 257 cost 37474
+it 1735 t 258 cost 37472
+it 1737 t 258 cost 37467
+it 1757 t 260 cost 37453
+it 1761 t 260 cost 37440
+it 1782 t 262 cost 37427
+it 1798 t 264 cost 37375
+it 1806 t 265 cost 37351
+it 1823 t 267 cost 37339
+it 1852 t 269 cost 37292
+it 1897 t 274 cost 37285
+it 1932 t 279 cost 37257
+it 1942 t 280 cost 37248
+it 1960 t 282 cost 37229
+it 2000 t 285 cost 37188
+it 2005 t 285 cost 37180
+it 2009 t 286 cost 37173
+it 2044 t 290 cost 37164
+it 2079 t 293 cost 37150
+it 2108 t 295 cost 37140
+it 2206 t 303 cost 37137
+it 2217 t 304 cost 37085
+it 2275 t 309 cost 37067
+it 2323 t 314 cost 37054
+it 2325 t 314 cost 37046
+it 2340 t 315 cost 37013
+it 2354 t 316 cost 36997
+it 2367 t 317 cost 36964
+it 2393 t 320 cost 36959
+it 2450 t 325 cost 36922
+it 2464 t 326 cost 36912
+it 2488 t 328 cost 36881
+it 2521 t 330 cost 36879
+it 2551 t 333 cost 36858
+it 2565 t 334 cost 36819
+it 2601 t 337 cost 36807
+it 2602 t 337 cost 36788
+it 2629 t 340 cost 36770
+it 2635 t 340 cost 36756
+it 2666 t 343 cost 36722
+it 2676 t 343 cost 36713
+it 2720 t 347 cost 36672
+it 2753 t 349 cost 36627
+it 2849 t 355 cost 36611
+it 2858 t 356 cost 36558
+it 2871 t 357 cost 36546
+it 2910 t 360 cost 36505
+it 2916 t 360 cost 36501
+it 2949 t 362 cost 36472
+it 2972 t 364 cost 36464
+it 2982 t 364 cost 36450
+it 3010 t 367 cost 36405
+it 3022 t 367 cost 36377
+it 3026 t 368 cost 36358
+it 3041 t 368 cost 36336
+it 3116 t 373 cost 36308
+it 3209 t 379 cost 36306
+it 3266 t 384 cost 36252
+it 3302 t 386 cost 36235
+it 3325 t 387 cost 36217
+it 3358 t 389 cost 36200
+it 3360 t 390 cost 36156
+it 3441 t 395 cost 36128
+it 3454 t 396 cost 36118
+it 3488 t 398 cost 36095
+it 3523 t 401 cost 36077
+it 3625 t 408 cost 36074
+it 3686 t 414 cost 36057
+it 3768 t 421 cost 36056
+it 3813 t 424 cost 36052
+it 3845 t 427 cost 36050
+final check over all 1260 orbit representatives: far pairs 72100
+RESULT types=abab inner=LLLL m=31 D=8 greedy=1 start=41127 best=36050 iters=3855 accepted=332 lab=best.lab
+exit 0

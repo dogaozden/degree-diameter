@@ -49,3 +49,28 @@ order-400 groups c4 did not cover. Files: research/squads/table-audit-r2/.
 Follow-up (lead, same morning): one 41-min run of c1's best setting (r1 c6 sym_anneal, b = 10, c = 80, T0 = 6,
 seed 11) reached cost 0, so (3,10) = 800 is now reproduced (research/projects/table-audit/graphs/
 d3D10_n800_symZ80_b10.edges.txt, apsp.c VALID). Seven runs at 810 and one at 820 stopped at cost 2–6.
+
+## 2026-10-26 18:15–18:45 UTC, table-audit-2 lead (Opus), round table-audit-2-r1
+
+Goal: a labelling of Gómez's ΩH_q with diameter 8 at q = 5 (195,300 vertices; q = 4 for c4), scored by
+omega_symanneal's cost (far pairs from the hub orbit representatives under a Singer-type symmetry and a twisted Z₅;
+0 = diameter 8). Context: the lead had just found ΩH₃ with diameter 8 this way; plain annealing at q = 5 went from
+42,280 (random) to 35,867 in 325 s.
+
+Cards (best cost, q = 5 unless noted):
+- c1 annealing with moves aimed at the orbits of recorded far pairs: 36,108 (826 s).
+- c2 steepest descent over all 31 exponents of one orbit, tabu list, kicks: 37,548.
+- c3 pattern scan over block types and inner classes (8 settings, 90 s each): abab LLLL best (38,151; 37,198 after
+  300 s more), aaab LLLL clearly worst (52,456).
+- c4 q = 4: twisted Z₅ beat independent copies, abb and PLP; best 13,865 (plain run: 13,103 in 327 s).
+- c5 partial evaluation on 64 sources plus late-acceptance hill climbing: about 40,800 (lead's recount of its file).
+- c6 greedy orbit-by-orbit construction then annealing: greedy start 41,127, end 36,050.
+- c7 closed-form affine maps on the Singer orbits (no search): 1,338,053 from all 7,812 label-0 hubs, i.e. about the
+  random level (43,160 per representative set); identical or incidence-matched copies far worse.
+- c8 high-temperature / excess-weighted variant: 38,179.
+
+Kept: nothing beat plain annealing; every strategy stalls about 10–15 % below the random level. With the union-bound
+picture (omega/NOTES.md: a random labelling misses a fraction of about e^(−ratio) of the targets, ratio 5.6 at q = 5)
+this looks like a barrier for unstructured search, not a tuning problem. The lead did not run a second round on this
+goal and moved the CPU to the remaining Loz cells (exact-order Haar graphs, which turned out to be easy).
+Files: research/squads/table-audit-2-r1/ (scoreboard.jsonl, card folders; shared/ has the scorer and inputs).
