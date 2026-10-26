@@ -1,0 +1,24 @@
+group prod sl 3 sl 37 x Z_49, N=59524416, identity 14946372, H order 63, rows 944832, threads 1, setup 3.16s
+wide rows: HW order 252, rows 236208, setup 5.98s
+alpha: conj by prod[mat(2,2,0,2);mat(18,23,6,18)] (index 1088398), z -> 18 z on Z_49
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 215 (+e); mu = 21.24, mu/k = 7.08, fixed-point misses ~ 3.06
+ORBW=3: an uncovered fixed element weighs 3; start energy 174
+start cost=154
+t=31 steps=17 evals=137 cost=18 best=18 T=0.52 energy=18 bestE=18
+t=61 steps=33 evals=265 cost=18 best=18 T=0.18 energy=18 bestE=18
+t=92 steps=50 evals=401 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=123 steps=67 evals=537 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=154 steps=84 evals=673 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=186 steps=102 evals=817 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=216 steps=118 evals=945 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=246 steps=140 evals=1121 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=277 steps=163 evals=1305 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=308 steps=186 evals=1489 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=338 steps=210 evals=1681 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=370 steps=233 evals=1865 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=400 steps=255 evals=2041 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=431 steps=278 evals=2225 cost=8 best=12 T=0.15 energy=12 bestE=12
+RESULT d=14 D=9 group=prod sl 3 sl 37 x Z_49 N=59524416 best=0 evals=2273 time=439.2 orbit k=3 m=4 f=2 fix=215
+full diameter check: OK
+wrote runs/r3/spool/11-prod3_37_49_orbw3_s1/d14D9_prod_sl_3_sl_37_49_orb3_ORBW3_s1.txt
+UNCHECKED: > 20M vertices and no low-memory checker for prod

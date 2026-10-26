@@ -1,0 +1,87 @@
+group psl 89 x Z_169, N=59562360, identity 661804, H order 52, rows 1145430, threads 1, setup 2.52s
+wide rows: HW order 195, rows 305448, setup 4.72s
+alpha: conj by mat(44,22,7,46) (index 346484), z -> 22 z on Z_169
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 44 (+e); mu = 21.45, mu/k = 7.15, fixed-point misses ~ 0.64
+start cost=63
+t=30 steps=15 evals=121 cost=8 best=8 T=0.52
+t=61 steps=31 evals=249 cost=8 best=8 T=0.18
+t=92 steps=46 evals=369 cost=8 best=8 T=0.15
+t=123 steps=62 evals=497 cost=8 best=8 T=0.15
+t=154 steps=77 evals=617 cost=8 best=8 T=0.15
+t=186 steps=92 evals=737 cost=8 best=8 T=0.15
+t=217 steps=107 evals=857 cost=8 best=8 T=0.15
+t=247 steps=127 evals=1017 cost=8 best=8 T=0.15
+t=278 steps=145 evals=1161 cost=8 best=8 T=0.15
+t=308 steps=167 evals=1337 cost=8 best=8 T=0.15
+t=339 steps=190 evals=1521 cost=8 best=8 T=0.15
+t=369 steps=208 evals=1665 cost=8 best=8 T=0.15
+t=400 steps=229 evals=1833 cost=8 best=8 T=0.15
+t=430 steps=251 evals=2009 cost=8 best=8 T=0.15
+t=461 steps=267 evals=2137 cost=8 best=8 T=0.15
+t=493 steps=285 evals=2281 cost=8 best=8 T=0.15
+t=523 steps=301 evals=2409 cost=8 best=8 T=0.15
+t=553 steps=321 evals=2569 cost=8 best=8 T=0.15
+t=585 steps=343 evals=2745 cost=8 best=8 T=0.15
+t=616 steps=364 evals=2913 cost=8 best=8 T=0.15
+t=647 steps=385 evals=3081 cost=8 best=8 T=0.15
+t=678 steps=405 evals=3241 cost=8 best=8 T=0.15
+t=708 steps=424 evals=3393 cost=15 best=8 T=0.60
+t=738 steps=443 evals=3545 cost=15 best=8 T=0.21
+t=769 steps=460 evals=3681 cost=15 best=8 T=0.15
+t=799 steps=478 evals=3825 cost=12 best=8 T=0.15
+t=831 steps=497 evals=3977 cost=12 best=8 T=0.15
+t=862 steps=517 evals=4137 cost=12 best=8 T=0.15
+t=892 steps=538 evals=4305 cost=12 best=8 T=0.15
+t=923 steps=558 evals=4465 cost=12 best=8 T=0.15
+t=953 steps=579 evals=4633 cost=12 best=8 T=0.15
+t=984 steps=597 evals=4777 cost=12 best=8 T=0.15
+t=1015 steps=620 evals=4961 cost=12 best=8 T=0.15
+t=1046 steps=639 evals=5113 cost=12 best=8 T=0.15
+t=1077 steps=661 evals=5289 cost=12 best=8 T=0.15
+t=1107 steps=682 evals=5457 cost=9 best=8 T=0.15
+t=1137 steps=700 evals=5601 cost=9 best=8 T=0.15
+t=1168 steps=720 evals=5761 cost=9 best=8 T=0.15
+t=1199 steps=739 evals=5913 cost=9 best=8 T=0.15
+t=1230 steps=759 evals=6073 cost=9 best=8 T=0.15
+t=1262 steps=781 evals=6249 cost=9 best=8 T=0.15
+t=1293 steps=800 evals=6401 cost=9 best=8 T=0.15
+t=1324 steps=819 evals=6553 cost=8 best=8 T=0.82
+t=1354 steps=839 evals=6713 cost=8 best=8 T=0.29
+t=1385 steps=858 evals=6865 cost=8 best=8 T=0.15
+t=1417 steps=877 evals=7017 cost=8 best=8 T=0.15
+t=1447 steps=897 evals=7177 cost=8 best=8 T=0.15
+t=1478 steps=917 evals=7337 cost=8 best=8 T=0.15
+t=1509 steps=937 evals=7497 cost=8 best=8 T=0.15
+t=1540 steps=956 evals=7649 cost=8 best=8 T=0.15
+t=1571 steps=975 evals=7801 cost=8 best=8 T=0.15
+t=1601 steps=995 evals=7961 cost=8 best=8 T=0.15
+t=1632 steps=1015 evals=8121 cost=8 best=8 T=0.15
+t=1662 steps=1033 evals=8265 cost=8 best=8 T=0.15
+t=1693 steps=1056 evals=8449 cost=8 best=8 T=0.15
+t=1724 steps=1078 evals=8625 cost=8 best=8 T=0.15
+t=1755 steps=1098 evals=8785 cost=8 best=8 T=0.15
+t=1786 steps=1117 evals=8937 cost=8 best=8 T=0.15
+t=1817 steps=1136 evals=9089 cost=8 best=8 T=0.15
+t=1848 steps=1158 evals=9265 cost=8 best=8 T=0.15
+t=1878 steps=1176 evals=9409 cost=8 best=8 T=0.15
+t=1910 steps=1194 evals=9553 cost=8 best=8 T=0.15
+t=1941 steps=1212 evals=9697 cost=8 best=8 T=1.31
+t=1972 steps=1231 evals=9849 cost=8 best=8 T=0.44
+t=2004 steps=1250 evals=10001 cost=8 best=8 T=0.15
+t=2034 steps=1271 evals=10169 cost=8 best=8 T=0.15
+t=2065 steps=1290 evals=10321 cost=8 best=8 T=0.15
+t=2095 steps=1306 evals=10449 cost=8 best=8 T=0.15
+t=2127 steps=1328 evals=10625 cost=8 best=8 T=0.15
+t=2158 steps=1348 evals=10785 cost=8 best=8 T=0.15
+t=2188 steps=1370 evals=10961 cost=8 best=8 T=0.15
+t=2219 steps=1392 evals=11137 cost=8 best=8 T=0.15
+t=2250 steps=1412 evals=11297 cost=8 best=8 T=0.15
+t=2282 steps=1432 evals=11457 cost=8 best=8 T=0.15
+t=2312 steps=1451 evals=11609 cost=8 best=8 T=0.15
+t=2344 steps=1469 evals=11753 cost=8 best=8 T=0.15
+t=2375 steps=1490 evals=11921 cost=8 best=8 T=0.15
+t=2406 steps=1508 evals=12065 cost=8 best=8 T=0.15
+RESULT d=14 D=9 group=psl 89 x Z_169 N=59562360 best=0 evals=12129 time=2419.9 orbit k=3 m=4 f=2 fix=44
+full diameter check: OK
+wrote runs/r3/spool/12-psl89_s1/d14D9_psl_89_169_orb3_s1.txt
+VALID d=14 D=9 group=psl 89 x Z_169 N=59562360 vertices=119124720 (distinct generators, 14-regular simple)
