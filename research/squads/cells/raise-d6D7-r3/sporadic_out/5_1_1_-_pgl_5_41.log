@@ -1,0 +1,4 @@
+group pgl 5 x Z_41, N=4920, identity 0, H order 41, rows 120, threads 1, setup 0.00s
+wide rows: HW order 246, rows 20, setup 0.00s
+alpha: conj by mat(1,4,1,3) (index 87), z -> 10 z on Z_41
+ORBIT k=5 m=1 f=1: |Fix(alpha)| = 4 (+e); mu = 92.88, mu/k = 18.58, fixed-point misses ~ 4.52

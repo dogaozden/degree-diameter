@@ -1,0 +1,6 @@
+group meta 401 12 20 x Z_1, N=4812, identity 0, H order 12, rows 401, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 12); using haar_gen3's evaluation
+alpha: meta scaling a -> 20 a, z -> 0 z on Z_1
+ORBIT k=4 m=1 f=2: |Fix(alpha)| = 11 (+e); mu = 83.10, mu/k = 20.78, fixed-point misses ~ 8.70
+RANDORB d=6 D=7 group=meta 401 12 20 x Z_1 N=4812 k=4 m=1 f=2 fix=11 samples=30000 min=8528 p1=8528 p10=8528 median=8924 mean=8854.37 var=63190.8 mu=83.10 time=1.5
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30000
