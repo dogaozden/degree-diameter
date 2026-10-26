@@ -1,0 +1,6 @@
+group prod psl 9 poly x^2+1 psl 9 poly x^2+1 x Z_28, N=3628800, identity 363888, H order 60, rows 60480, threads 1, setup 0.14s
+wide rows: HW order 210, rows 17280, setup 0.27s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(5,6,2,6) (index 335), z -> 19 z on Z_28
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 17 (+e); mu = 76.13, mu/k = 12.69, fixed-point misses ~ 2.99
+start cost=130
+t=30 steps=366 evals=2929 cost=52 best=52 T=0.53

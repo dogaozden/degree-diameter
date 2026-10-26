@@ -196,3 +196,20 @@ Chosen for round 3 (first hour, one core each, THREADS=1, seed 11):
 
 Run script: research/structured/runs/raise13r3/run1.sh (usage: `run1.sh TAG SECS SEED AR prod X X n`). Logs, best-S
 files and solutions are in research/structured/runs/raise13r3/.
+
+## Round 3, first hour (results, 02:31 UTC)
+
+Every run: haar_order2, ORBIT="6 2 1", ASWAPC=1, THREADS=1, 3600 s. No solution.
+
+| run | group | N | AR | best cost | evals |
+|---|---|---|---|---|---|
+| psl13x3_s11 | PSL(2,13)^2 x Z3 | 3,577,392 | 2 | 12 | 2.96e5 |
+| psl7x127_s11 | PSL(2,7)^2 x Z127 | 3,584,448 | 20 | 18 | 5.04e5 |
+| sl9x7_s11 | SL(2,9)^2 x Z7 | 3,628,800 | 3 | 25 | 5.42e5 |
+| sl5x244_s11 | SL(2,5)^2 x Z244 | 3,513,600 | 75 | 35 | 4.87e5 |
+
+Reading: no candidate got near 0. The record group (SL(2,7)^2 x Z31) solved at 1.3e5 evaluations (seed 2 of 8).
+The screen medians predicted this ordering only loosely. Logs are in research/structured/runs/raise13r3/.
+
+Second wave (started 02:33 UTC, 3600 s each): PSL(2,13)^2 x Z3 with seed 13 (plain), PSL(2,13)^2 x Z3 with OSTAB=1
+seed 12, SL(2,5)^2 x Z247 (AR 30, untried), PSL(2,9)^2 x Z28 (AR 19, untried).
