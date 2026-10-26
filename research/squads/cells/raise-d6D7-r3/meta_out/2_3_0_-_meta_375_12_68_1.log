@@ -1,0 +1,6 @@
+group meta 375 12 68 x Z_1, N=4500, identity 0, H order 25, rows 180, threads 1, setup 0.00s
+wide rows: HW order 125, rows 36, setup 0.00s
+alpha: meta scaling a -> 374 a, z -> 0 z on Z_1
+ORBIT k=2 m=3 f=0: |Fix(alpha)| = 11 (+e); mu = 58.65, mu/k = 29.33, fixed-point misses ~ 2.74
+RANDORB d=6 D=7 group=meta 375 12 68 x Z_1 N=4500 k=2 m=3 f=0 fix=11 samples=100000 min=159 p1=334 p10=766 median=2588 mean=3725.52 var=7267306.4 mu=58.65 time=0.9
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 100000
