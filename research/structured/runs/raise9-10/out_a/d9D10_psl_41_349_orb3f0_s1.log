@@ -1,0 +1,26 @@
+group psl 41 x Z_349, N=12019560, identity 286180, H order 41, rows 293160, threads 1, setup 0.48s
+wide rows: no cyclic subgroup of order >= 64 found (best 41); using haar_gen3's evaluation
+alpha: conj by mat(3,1,34,39) (index 4257), z -> 122 z on Z_349
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 20 (+e); mu = 34.47, mu/k = 11.49, fixed-point misses ~ 0.30
+start cost=70
+t=30 steps=141 evals=1129 cost=15 best=15 T=0.53
+t=60 steps=285 evals=2281 cost=15 best=15 T=0.19
+t=90 steps=430 evals=3441 cost=15 best=15 T=0.15
+t=120 steps=572 evals=4577 cost=15 best=15 T=0.15
+t=150 steps=717 evals=5737 cost=15 best=15 T=0.15
+t=181 steps=857 evals=6857 cost=15 best=15 T=1.31
+t=211 steps=1004 evals=8033 cost=21 best=15 T=0.46
+t=241 steps=1138 evals=9105 cost=21 best=15 T=0.16
+t=271 steps=1275 evals=10201 cost=18 best=15 T=0.15
+t=301 steps=1417 evals=11337 cost=18 best=15 T=0.15
+t=331 steps=1554 evals=12433 cost=25 best=15 T=1.30
+t=361 steps=1695 evals=13561 cost=24 best=15 T=0.46
+t=391 steps=1848 evals=14785 cost=16 best=15 T=0.16
+t=421 steps=1993 evals=15945 cost=16 best=15 T=0.15
+t=451 steps=2135 evals=17081 cost=15 best=15 T=0.15
+t=481 steps=2281 evals=18249 cost=15 best=15 T=1.29
+t=511 steps=2426 evals=19409 cost=18 best=15 T=0.46
+t=542 steps=2567 evals=20537 cost=18 best=15 T=0.16
+t=572 steps=2705 evals=21641 cost=18 best=15 T=0.15
+t=602 steps=2849 evals=22793 cost=18 best=15 T=0.15
+RESULT d=9 D=10 group=psl 41 x Z_349 N=12019560 best=12 evals=23169 time=611.8 orbit k=3 m=3 f=0 fix=20

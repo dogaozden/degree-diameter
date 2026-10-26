@@ -1,0 +1,13 @@
+# pgl 73 31                          N=12057264 mu=36.0 fix=71 min=273 p1=285 p10=392 median=1692
+# sl 73 31                           N=12057264 mu=36.0 fix=71 min=205 p1=207 p10=335 median=1371
+# prod sl 8 psl 19 7                 N=12065760 mu=36.3 fix=71 min=711569 p1=790129 p10=1716176 median=5475056
+# psl 289 1                          N=12068640 mu=36.5 fix=143 min=645 p1=651 p10=741 median=1208
+# psl 79 49 failed: no conjugation of order dividing 6 found
+# prod psl 7 psl 11 109              N=12085920 mu=37.2 fix=17 min=1042287 p1=1109055 p10=1456518 median=10361577
+# prod psl 3 sl 16 247               N=12093120 mu=37.5 fix=59 min=1548756 p1=1620101 p10=1792853 median=8334391
+ 1 N=12057264 mu=36.0 fix=71 min=205 p1=207 p10=335 median=1371  sl 73 31
+ 2 N=12057264 mu=36.0 fix=71 min=273 p1=285 p10=392 median=1692  pgl 73 31
+ 3 N=12068640 mu=36.5 fix=143 min=645 p1=651 p10=741 median=1208  psl 289 1
+ 4 N=12065760 mu=36.3 fix=71 min=711569 p1=790129 p10=1716176 median=5475056  prod sl 8 psl 19 7
+ 5 N=12085920 mu=37.2 fix=17 min=1042287 p1=1109055 p10=1456518 median=10361577  prod psl 7 psl 11 109
+ 6 N=12093120 mu=37.5 fix=59 min=1548756 p1=1620101 p10=1792853 median=8334391  prod psl 3 sl 16 247
