@@ -254,3 +254,13 @@ lit/LITERATURE2.md). (13,8) = 15·|H(11)| = 5·(13,7) is not ΩH₁₁ (degree 1
 so **(3,7) = 168 is optimal among vertex-transitive graphs**; for (3,9) the largest vertex-transitive one of
 diameter ≤ 9 has 506 vertices (graphs with stored diameter ≤ 11 rechecked here; checks/cvt_census.txt). (3,9), (4,8),
 (4,9), (6,5) are bold (Loz) in Pérez-Rosés's table.
+
+**The rest of the Loz cells.** Round 1 stopped below 3·10⁶ vertices. Round 2 ran tools/exact_haar.py (haar_gen3,
+metacyclic groups of order n/2, most non-abelian first) on every remaining Loz cell in increasing size; for groups
+with no element of order 2..63 (haar_gen3 has no coset speed-up there and runs out of memory), random Haar graphs
+(tools/rand_meta_haar.py) and a hill climb (tools/meta_haar_climb.c) instead. Most cells fell at once, often to the
+first random connection set: the table values at D = 9, 10 are far below what random Haar graphs reach, except at
+the three cells the repo has not beaten. Each graph above 2·10⁷ vertices is checked by two independent low-memory
+checkers written from the definitions (meta_haar_check.c, queue BFS, 9 bytes per vertex; meta_haar_bits.c, bitset
+BFS, half a byte per vertex; meta_haar_pull.c, a pull BFS, for the cells above 6·10⁸ vertices), below that also by
+build_haar2.py (checks/haar_huge.txt). Status per cell: see the Loz table in §3 and cells.csv.
