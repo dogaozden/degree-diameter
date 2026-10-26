@@ -14,6 +14,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d6_haar_351_12_F27xC13.log | the same for SmallGroup(351,12) = F₂₇ ⋊ C13 (5 orbits) | 5 × 6.0·10⁸ | none |
 | d6_haar_357_1.log | the same for SmallGroup(357,1) = C17 × (C7 ⋊ C3) (7 orbits) | 7 × 6.5·10⁸ | none |
 | d6_haar_360_51_C3xSL25.log, d6_haar_351_5.log | (6,5) SmallGroup(360,51) = C3 × SL(2,5) and SmallGroup(351,5): rank-0 pass (`haar5 complete` with core {e, r₀}, r₀ in the largest orbit) plus `haar5 cert … 1` (ranks ≥ 1, see below); orbit files orbits_*.txt | 6.7·10⁸ + 6.7·10⁷ and 6.1·10⁸ + 1.4·10⁷ | none |
+| d6_haar_351_1.log, d6_haar_351_6.log, d6_haar_351_7.log, d6_haar_351_11.log | (6,5) SmallGroup(351,1) = C13 ⋊ C27, (351,6) = C3 × (C13 ⋊ C9), (351,7) = C13 ⋊ (C9 ⋊ C3), (351,11) = C13 × (C9 ⋊ C3): `haar5 cert` from rank 0 (`tools/cert_queue.sh`) | 6.1·10⁸ each | none |
 | d7_haar_615_1_orbit_spaces.log | (7,5) SmallGroup(615,1): every S that is a union of e, fixed points and orbits of an automorphism of order 2–5 (`haar5 exho`) | | minimum ≥ 12 in every space |
 | d7_haar_615_1_3swap_of_cost{4,2}_set.log | (7,5) SmallGroup(615,1): all sets within 3 swaps of the cost-4 set S = 0 206 135 160 343 459 282 and of the cost-2 set S = 0 206 135 343 507 543 593 (`tools/nbhd.py … 3`) | 20 × 3.8·10⁷ each | found the cost-2 set; nothing of cost 0 |
 

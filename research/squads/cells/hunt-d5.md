@@ -6,12 +6,16 @@ Opus director with Haiku squads, cloud session_01G9FwCXeEt4mUvAMjcr9j11, branch 
 
 ## Result
 
-**(9,5): 2,756 vertices** (ours was 2,662, table 2,496): the Haar graph of Z53 ⋊₁₆ Z26 = C2 × (C53 ⋊ C13)
-(SmallGroup(1378,2)), 9-regular, diameter 5. Solution `research/frontier/sols/d9D5_meta_53_26_16_s7058.txt`;
-checks in `research/squads/hunt-d5/finds/d9D5_n2756_CHECK.txt` (build_haar2.py VALID; apsp.c all pairs RESULT VALID
-d=9 D=5 n=2756; haar5 on an independently built table: cost 0). Found by the director's seed farm (haar_fast,
-seed 7058, 15 s runs, K = 16, COOL = 10, REHEAT = 40) after the squads had located the group (round 2 card c1: cost 4;
-round 3 cards c2, c3: cost 2).
+**(9,5): 2,758 vertices** (ours was 2,662, table 2,496): the Haar graph of Z197 ⋊₁₀₄ Z7 (the non-abelian group of
+order 1379), 9-regular, diameter 5. Solution `research/frontier/sols/d9D5_meta_197_7_104_s40164.txt`; checks in
+`research/squads/hunt-d5/finds/d9D5_n2758_CHECK.txt` (build_haar2.py VALID; apsp.c all pairs RESULT VALID d=9 D=5
+n=2758; haar5 on an independently built table: cost 0). Found by the director's seed farm (haar_fast, 8 s runs, K = 16,
+COOL = 10, REHEAT = 40; seed 40164, cost 0 after 1.9 s; 1 cost-0 and 6 cost-2 runs in 181 seeds). Round 4 card c1 had
+located the group (cost 2 in 2 of 26 seeds).
+
+Earlier in the session: **2,756** on Z53 ⋊₁₆ Z26 = C2 × (C53 ⋊ C13) (SmallGroup(1378,2)), solution
+`research/frontier/sols/d9D5_meta_53_26_16_s7058.txt`, checks in `finds/d9D5_n2756_CHECK.txt` (same three checks), director
+farm seed 7058 (15 s runs) after the squads had located the group (round 2 c1: cost 4; round 3 c2, c3: cost 2).
 
 (5,5), (7,5): no graph above our records (354, 1,152) yet; (6,5): no graph above the published 684 yet. Best near
 misses and the exact negative results are below. [to be completed at the end of the session]

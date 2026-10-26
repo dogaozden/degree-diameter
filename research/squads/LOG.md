@@ -85,3 +85,20 @@ farms. Others still running at this entry.
 7058, 15 s runs, K = 16, COOL = 10, REHEAT = 40; ~200 seeds in all; cost 0 after 0.2 s of that seed). build_haar2.py
 VALID, apsp VALID d=9 D=5 n=2756. The squads found the group (r2 c1: cost 4; r3 c2, c3: cost 2), the director's tools
 and farm closed it. Also exact certificates: (6,5) SmallGroup(351,12) and (357,1) have no Haar graph.
+
+## 2026-10-26, hunt-d5 round 5: mostly seed farms on distinct groups; exact certificate mode; **(9,5) 2,758**
+
+14 cards, 15:20–15:55 UTC (research/squads/hunt-d5/r5/). Cards: b1, b2 (615 farms, COOL 10/40 and 20/60) · b3 610 farm ·
+b4 618 farm · b6 (7,5) re-screen of 33 metacyclic specs · b7 (C_p ⋊ C_k) × C_c, 13 groups · w1 class-count constraint on
+615 · c1 Z197⋊Z7 farm · c3 (9,5) screen of 39 specs of order 1380–1420 · d1 360/51 farm · d2 (6,5) re-screen · d3 (6,5)
+|G/G'| = 2 groups · d4 (6,5) orders 352, 360 by GAP table · a1 (5,5) exact 233–240.
+
+Best per card: b1 2 (1 of 100 seeds) · b2 2 (1/175) · b3 2 (610, 1/95) · b4 4 (618, 7/100) · b6 8 · b7 4 · w1 2 (no
+signal from the class counts) · c1 2 (3/70) · **c3 4 on (Z31 ⋊ Z15) × Z3 (1395, Z15 acting faithfully)** · d1 2 (360/51,
+2/215) · d2 6 · d3 ≥ 98 (|G/G'| = 2 is a dead end) · d4 4 (360/136). No card reached 0.
+
+Director: **(9,5) 2,758 vertices**, Haar graph of Z197 ⋊₁₀₄ Z7 (farm seed 40164, 8 s runs; 1 cost-0 and 6 cost-2 in 181
+seeds). build_haar2.py VALID, apsp VALID d=9 D=5 n=2758, haar5 on an independent table: cost 0
+(research/squads/hunt-d5/finds/d9D5_n2758_CHECK.txt). New `haar5 cert` (orbit-rank normalization, exact): (6,5)
+certificates for SmallGroup(360,51) = C3 × SL(2,5), (351,5), (351,6), (351,7), (351,1): no Haar graph. Every (6,5) group
+that reached cost ≤ 4 in the screens (355/1, 357/1, 351/5, 360/51) is now proved empty.
