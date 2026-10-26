@@ -24,17 +24,22 @@ negative results for every group that came close (below).
 
 Certificates are in `research/squads/hunt-d5/certs/` (README there: method, sizes, positive controls).
 
-- **(5,5): no Haar graph for any group of order 193–239** [216, 224 and 240: see the end-of-job note below], by
+- **(5,5): no Haar graph for any group of order 193–240** (all 863 groups) [241–255: end-of-job note], by
   exhaustive search over all S ∋ e (`haar5 exhp`, probe-accelerated, exact for cost 0; positive control order 176 finds
-  our 352-vertex graph). The squads' lifts of small bases stayed at cost ≥ 12. So a (5,5) graph above 2·192 vertices
-  needs a group of order ≥ 241 (where the size law already gives mu ≈ 58) or a non-Haar construction.
-- **(6,5)**: no Haar graph for SmallGroup(355,1) = C71 ⋊ C5, (357,1) = C17 × (C7 ⋊ C3), (360,51) = C3 × SL(2,5), and
-  for **every group of order 351** (all 14; `haar5 complete` / `haar5 cert`, orbit-rank normalization). These are all the
-  groups that reached cost ≤ 4 in the (6,5) screens (355/1 and 360/51 had cost 2). Still open: 360/136 (cost 4 in 31 of
-  31 seeds, each a different S: a flat plateau).
-- **(7,5)**: no Haar graph for SmallGroup(610,2) = C2 × (C61 ⋊ C5), the group with the best near misses (cost 2 three
-  times in 302 seeds) [609/1, 615/1, 618/2 and the 612/5 top patterns: see the end-of-job note]. Method: coset-pattern
-  search (next item).
+  our 352-vertex graph; coverage checked group by group across the director's and the cards' logs). The squads' lifts of
+  small bases stayed at cost ≥ 12. So a (5,5) graph above 2·192 vertices needs a group of order ≥ 241 (where the size
+  law already gives mu ≈ 58) or a non-Haar construction.
+- **(6,5)**: no Haar graph for **every group of order 351** (all 14), SmallGroup(343,4), (355,1) = C71 ⋊ C5,
+  (357,1) = C17 × (C7 ⋊ C3), (360,51) = C3 × SL(2,5), (360,88) and (360,136) (`haar5 complete` / `haar5 cert`,
+  orbit-rank normalization). These are all the groups that reached cost ≤ 6 in the (6,5) screens (355/1, 351/5 and
+  360/51 had cost 2; 360/136 had cost 4 in 31 of 31 seeds, each a different S).
+- **(7,5)**: no Haar graph for SmallGroup(609,1) = C3 × (C29 ⋊ C7), (610,2) = C2 × (C61 ⋊ C5), (615,1) =
+  C3 × (C41 ⋊ C5), (618,1) = C103 ⋊ C6 and (618,2) = C2 × (C103 ⋊ C3) [610,1: end-of-job note]: complete coset-pattern
+  searches (next item; 2.2·10¹⁰, 7.6·10⁹, 1.3·10¹⁰, 5.0·10⁹ and 5.0·10⁹ sets). These are the groups with the best near
+  misses: 610/2 and 615/1 had cost 2 in the farms (three and five times), 609/1 has the most even coset patterns of all
+  (7,5) candidates. The exact searches got to cost 2 in three 609 patterns, never 0. SmallGroup(612,5) = C9 × (C17 ⋊ C4):
+  its 29,274 best pattern classes have no solution (partial). The other groups of order 606–618 have only order-2
+  actions on their large normal subgroup or failed the screens (best ≥ 7).
 - **Coset-pattern search.** For G = (Z_p ⋊_r Z_k) × Z_n, the cosets of G' = Z_p met by S form a multiset J in
   Z_k × Z_n. The number W_t of words s_a⁻¹s_b s_c⁻¹s_d (non-backtracking) and s_a⁻¹s_b landing in coset t depends only
   on J (W = X₀ − 3(d−1)P + (d−1)²δ with P = F̃ ∗ F, X₀ = P ∗ P, F = multiplicities of J), and mu_J = Σ_t p·exp(−W_t/p)
@@ -67,7 +72,8 @@ Certificates are in `research/squads/hunt-d5/certs/` (README there: method, size
    `haar_fast`, `haar_tab`), orbit-symmetric S, exact searches, seed farms with near-miss saving, exact LNS.
 2. Small-base voltage lifts (2+2, 3+3, 4+4, 5+5, 6+6, K_{Δ,Δ}), coset-union S, bi-coset graphs, GQ + matchings.
 3. Route-chart lifts (Mizuno's controller × chart, bipartite form) for Δ = 3q.
-4. Coset-pattern exact searches (director, last two hours).
+4. Coset-pattern exact searches (director, last two hours): 609/1, 610/1, 610/2, 615/1, 618/1, 618/2, 612/5 (top patterns);
+   end-to-end completeness checks against brute force on six small groups (`certs/prod_completeness_checks.log`).
 
 What worked: metacyclic groups Z_p ⋊ Z_k (often × a small cyclic group) with a large action order lead every cell;
 many short annealing seeds (farms) beat long runs; at (9,5) the hit rate was about one cost-0 per 200 seeds of 8 s. The
@@ -75,10 +81,10 @@ squads found the right groups (screens), the director's farms and exact tools cl
 
 ## What failed and why
 
-- (7,5): the groups of order 606–610 that can beat our record either have only order-2 actions (606, 607, 608, 614:
-  screens stay ≥ 14) or are now proved empty (610/2) [609/1: end-of-job note]. Above 610 mu grows by about 0.5 per
-  order and the farms' cost-2 rate falls; 615/1 gave cost 2 five times in about 1,000 seeds, never 0.
-- (5,5): Haar graphs are exhausted up to order 239; at Δ = 5 the size law is less favourable than at Δ = 9 (no
+- (7,5): every group of order 606–618 that came close is now proved empty (above); the rest stay at cost ≥ 7 in the
+  screens (order-2 actions, small p, |G/G'| = 2). Above 618 mu grows by about 0.5 per order. So a larger (7,5) graph
+  from this family needs a group these methods did not reach, or it is not a Haar graph.
+- (5,5): Haar graphs are exhausted up to order 240; at Δ = 5 the size law is less favourable than at Δ = 9 (no
   solution even at mu ≈ 33), and lifts of small bases stay at cost ≥ 12.
 - Lifts of a GQ plus matchings: too few walks to the collinear points (counting); annealing far from 0.
 - K_{Δ,Δ} lifts, small-base lifts with free voltages: costs 12–200, the restricted (Haar) voltages anneal better.

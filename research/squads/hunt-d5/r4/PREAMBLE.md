@@ -15,7 +15,7 @@ only in `research/squads/hunt-d5/r4/<card>/`, one JSON line to `research/squads/
 - (5,5): **exact: no Haar graph for any group of order 193–215 or 217–223** (positive control: the search finds the
   known order-176 solution). Order 216 and 224+ open.
 - Route charts: 3-letter charts over F₃⁴ need a 4-cycle at every controller vertex; such controllers stop at m = 16.
-  Per-edge F₂⁴ letters (tools/pelift, degree 6): cost 0 on controllers with 4-cycles (m = 12, 16, n = 384, 512),
+  Per-edge F₂⁴ letters (tools/pelift, degree 6): cost 0 on controllers with 4-cycles (m = 12, 16, n = 32m),
   but on 4-cycle-free controllers a few fibres keep a diagonal gap (cost 32–48 at m = 12–14).
 
 ## Tools new this round (research/squads/hunt-d5/tools/)
