@@ -21,6 +21,16 @@ for e in range(0, len(hg), 2):
     a, b = hg[e], hg[e + 1]
     if (a % 3 < 2 or a // 3 in FD) and (b % 3 < 2 or b // 3 in FD): A[a // 3, b // 3] = True
 isfree = np.zeros(N, bool); isfree[F] = True
+
+# hub routes: (p_i,0) -> line-side hub of i -> point-side hub of j -> (l_j, every sheet) -> b on l_j covers every
+# sheet of b when A[i, j]; dually (l_i,0) -> point-side hub of i -> line-side hub of j -> (p_j) -> t through p_j when
+# A[j, i].  Such pairs need neither mixed parity nor a route.
+HP = np.zeros((N, N), bool); HL = np.zeros((N, N), bool)
+for _i, _p in enumerate(F):
+    for _j, _q in enumerate(F):
+        if A[_i, _j]: HP[_p, PTS[sig[_q]]] = True
+        if A[_j, _i]: HL[sig[_p], LOF[_q]] = True
+HP |= HP.T; HL |= HL.T
 # unmixed pairs (independent of sigma)
 fp = {}
 for l in range(N):
@@ -73,7 +83,7 @@ print('unmixed pairs: points', len(UPl), 'lines', len(ULl), flush=True)
 def total(sig):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
-    rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
+    rP = (LM[sig][:, sig] & nf[:, None] & nf[None, :]) | HP; nfl = nf[sinv]; rL = (PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]) | HL
     c0b = 0 if os.environ.get('NOC0') else int((UP & ~rP).sum() // 2 + (UL & ~rL).sum() // 2)
     cov = coverfd.cover(F, sig, A, FD)
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
@@ -252,7 +262,7 @@ KZ = int(os.environ.get('KZ', 4))
 def neigh(sig, size):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
-    rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
+    rP = (LM[sig][:, sig] & nf[:, None] & nf[None, :]) | HP; nfl = nf[sinv]; rL = (PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]) | HL
     bp = np.argwhere(np.triu(UP & ~rP)); bl = np.argwhere(np.triu(UL & ~rL))
     cand = []
     for a, b in bp: cand += [int(a), int(b)] + [int(sinv[M]) for y in PTS[sig[b]] for M in LOF[y]][:12] + [int(sinv[M]) for y in PTS[sig[a]] for M in LOF[y]][:12]
@@ -266,6 +276,18 @@ def neigh(sig, size):
         else:              # line s = src, line t: a line M ~ s goes to a point on t
             Ms = [int(M) for M in np.nonzero(LM[src])[0]]; rng.shuffle(Ms)
             cand += [int(sinv[M]) for M in Ms[:10]] + [int(w) for w in PTS[t]]
+    _, unc = coverfd.cover(F, sig, A, FD, listing=True); rng.shuffle(unc)   # coverage holes (corrected model)
+    isfreeL = np.zeros(N, bool); isfreeL[sig[F]] = True
+    for i, side, t in unc[:4]:
+        p = F[i]; l = int(sig[p])
+        if side == 0:
+            xs = [int(x) for x in np.nonzero(PM[p] & ~isfree)[0] if not (i in FD and x in PTS[l])]; rng.shuffle(xs)
+            cand += xs[:10] + [int(sinv[L]) for L in LOF[t]]
+        else:
+            Ms = [int(M) for M in np.nonzero(LM[l] & ~isfreeL)[0] if not (i in FD and M in LOF[p])]; rng.shuffle(Ms)
+            cand += [int(sinv[M]) for M in Ms[:8]] + [int(w) for w in PTS[t]] + [int(sinv[t])]
+            ys = [int(y) for y in PTS[l] if not isfree[y]]; rng.shuffle(ys)
+            for y in ys[:2]: cand += [int(z) for z in PTS[sig[y]]]
     rng.shuffle(cand)
     Sset = []; kz = KZ
     for x in dict.fromkeys(cand):
@@ -286,7 +308,7 @@ def write(sig):
 def c0count(sig):
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
     nf = ~isfree
-    rP = LM[sig][:, sig] & nf[:, None] & nf[None, :]; nfl = nf[sinv]; rL = PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]
+    rP = (LM[sig][:, sig] & nf[:, None] & nf[None, :]) | HP; nfl = nf[sinv]; rL = (PM[sinv][:, sinv] & nfl[:, None] & nfl[None, :]) | HL
     bP = UP & ~rP; bL = UL & ~rL
     n = int(bP.sum() // 2 + bL.sum() // 2)
     if not os.environ.get('WSCORE'): return n

@@ -220,6 +220,12 @@ static void compute_routes(void) {
         for (int u = cls * Np; u < (cls + 1) * Np; u++) if (A[u] & 2) route[pidx(s, u)] = 1;
     }
     free(A); free(B);
+    /* hub routes (HUBADJ): (p_i,0) -> line-side hub i -> point-side hub j -> (l_j, every sheet) -> every point on l_j,
+       and (l_i,0) -> point-side hub i -> line-side hub j -> (p_j) -> every line through p_j: these pairs are covered */
+    if (usehadj) for (int i = 0; i < nfl; i++) for (int j = 0; j < nfl; j++) {
+        if (hadj[i][j]) for (int k = 0; k < Q1; k++) { int b = adj[(Np + fll[j]) * Q1 + k]; if (b != flp[i]) { route[pidx(flp[i], b)] = 1; route[pidx(b, flp[i])] = 1; } }
+        if (hadj[j][i]) for (int k = 0; k < Q1; k++) { int t = adj[flp[j] * Q1 + k]; if (t != Np + fll[i]) { route[pidx(Np + fll[i], t)] = 1; route[pidx(t, Np + fll[i])] = 1; } }
+    }
 }
 
 /* parities: for source s, BFS in H to depth 5 with parity, then counts at opposite targets */
