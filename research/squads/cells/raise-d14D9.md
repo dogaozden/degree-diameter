@@ -33,7 +33,14 @@ second. Both are far worse than `3 4 2` (p10 37 and 46). So round 3 runs `3 4 2`
 psl 103 × Z109 (seed 1, plain), prod sl 3 × sl 37 × Z49 (seed 1, ORBW 3), psl 89 × Z169 (seed 1, plain),
 psl 73 × Z307 (seed 1, ORBW 3). Queued: the same four groups on seed 2. Results go in the table below.
 
-**Round-3 record: 119,048,832 vertices** = 2N, N = 59,524,416 = |SL(2,3) × SL(2,37) × Z_49| (k = 3, m = 4, f = 2, **ORBW = 3**,
+**Round-3 record (now): 119,124,720 vertices** = 2N, N = 59,562,360 = |PSL(2,89) × Z_169| (k = 3, m = 4, f = 2, seed 1, K = 8,
+plain (no ORBW); 12,129 evaluations, 2,420 s, μ = 21.45, |Fix| = 44). Solution
+`research/frontier/sols/d14D9_psl_89_169_orb3_s1.txt`, sha256 f760d63c59cbba6889b9b24d376b79aa406dcd24ba0133227f25cfbaf5c01917.
+Checks: haar_sym's full diameter check OK; `tools/haarcheck_psl` (independent, low-memory) VALID: 119,124,720 vertices,
+distinct generators, 14-regular simple. This PSL check is the only independent checker for PSL: no second, different
+checker has been run on it, so the coordinator's re-check matters here. Log `runs/r3/spool/12-psl89_s1/`.
+
+**Earlier round-3 record: 119,048,832 vertices** = 2N, N = 59,524,416 = |SL(2,3) × SL(2,37) × Z_49| (k = 3, m = 4, f = 2, **ORBW = 3**,
 seed 1, K = 8; 2,273 evaluations, 439 s, μ = 21.24, |Fix| = 215). Solution
 `research/frontier/sols/d14D9_prod_sl_3_37_49_orb3_ORBW3_s1.txt`, sha256
 a4d7c435a94862fc61d645d5c5283c4507d0770a695350678876ea1808bc5038. Log `runs/r3/spool/11-prod3_37_49_orbw3_s1/`.
