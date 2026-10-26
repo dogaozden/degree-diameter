@@ -26,4 +26,4 @@ locally (not committed). Each run resumes from its checkpoint with `launch.sh` a
 ## Files
 
 - `runs/g3?.log`: progress logs with the CHAIN lines, committed at 30-minute intervals.
-- `runs/g3?.out`: empty. The RESULT line is written only at a normal exit, and the runs were killed.
+- `runs/g3?.out`: the RESULT line, written when each run was stopped (`best` = lowest cost of the run; 6, 9, 6, 9).
