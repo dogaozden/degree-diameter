@@ -431,7 +431,7 @@ int main(int argc, char **argv) {
     double swapp = getenv("SWAPP") ? atof(getenv("SWAPP")) : 0.0; long nswapacc = 0; double phole = getenv("PHOLE") ? atof(getenv("PHOLE")) : 0.7;
     uint8_t *route_bak = malloc(npairs);
     double ptarg = getenv("PTARG") ? atof(getenv("PTARG")) : 0.0; static int bla[256], blb[256]; int nbl = 0;
-    long it; long covpen = relax == 2 ? (gen ? holes_count() : cover_count() + d1_count()) : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
+    long it; long covpen = relax == 2 ? (gen ? holes_count() : cover_count() + d1_count()) : 0; long covm = (relax == 2 && gen) ? cover_count() + d1_count() : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
     if (relax == 2) { fprintf(stderr, "penalty mode: coverage+D1 holes %ld, weight %ld\n", covpen, penw); if (covpen) best = 1L << 40; }
     long bestpen = cost + penw * covpen; uint8_t *bpnu = malloc(NF); memcpy(bpnu, nu, NF); int *bpsig = malloc(sizeof(int) * Np); memcpy(bpsig, sig, sizeof(int) * Np);   /* GEN: best penalised state */
     for (it = 0; it < iters && (cost > 0 || covpen > 0); it++) {
@@ -461,7 +461,11 @@ int main(int argc, char **argv) {
             if (nfl && relax == 1) { if (isfreeP[p1] || isfreeP[p2]) continue;
                 int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
                 int ok = cover_ok() && d1_ok(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2; if (!ok) continue; }
-            if (nfl && relax == 2 && gen) { if (isfreeP[p1] || isfreeP[p2]) continue; }
+            long cm2 = 0;
+            if (nfl && relax == 2 && gen) { if (isfreeP[p1] || isfreeP[p2]) continue;   /* cheap model prefilter, then exact holes */
+                int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
+                cm2 = cover_count() + d1_count(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2;
+                if (cm2 > covm + 3) continue; }
             else if (nfl && relax == 2) { if (isfreeP[p1] || isfreeP[p2]) continue;
                 int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
                 cov2 = cover_count() + d1_count(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2;
@@ -475,7 +479,7 @@ int main(int argc, char **argv) {
             nc /= 2;
             long d = nc - cost + (relax == 2 ? penw * (cov2 - covpen) : 0);
             double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
-            if (d <= 0 || u < exp(-d / temp)) { cost = nc; if (relax == 2) covpen = cov2; nswapacc++;
+            if (d <= 0 || u < exp(-d / temp)) { cost = nc; if (relax == 2) covpen = cov2; if (gen) covm = cm2; nswapacc++;
                 if (cost + penw * covpen < best && covpen == 0) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); } }
             else { sig[p1] = l1; sig[p2] = l2; sinv[l1] = p1; sinv[l2] = p2; memcpy(route, route_bak, npairs); if (gen) memcpy(rc, rc_bak, npairs); }
             if (rc_bak) free(rc_bak);

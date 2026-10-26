@@ -21,6 +21,6 @@ for i in $(seq 1 $NR); do
   echo "round $i: cost $c bad: $bad"
   cp ${R}_r$i.sol ${R}_cur.sol
   if [ "$c" = "0" ]; then echo FOUND; ./finish_fd.sh "$X" ${R}_cur.sol "$FS" ${R}_fin | tail -n 1; break; fi
-  for pr in $bad; do p=${pr%%(*}; a=${p%%-*}; b=${p##*-}; k=$(echo $a | cut -c1 | tr PL pl); HP="$HP; $k ${a:1} ${b:1}"; done
+  for pr in $bad; do p=${pr%%(*}; a=${p%%-*}; b=${p##*-}; k=$(echo $a | cut -c1 | tr PL pl); [ -n "$HP" ] && HP="$HP; $k ${a:1} ${b:1}" || HP="$k ${a:1} ${b:1}"; break; done   # one pair per round
   echo "hard pairs now: $HP"
 done
