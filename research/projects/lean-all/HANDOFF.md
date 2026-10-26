@@ -5,8 +5,8 @@ to continue.
 
 ## What is proved
 
-32 of the README records without a Lean ✓ are kernel-checked (table in `STATUS.md`): 18 with their Lean files
-committed (`Axioms.lean`), and 14 large Haar cells whose generated files are not committed (`axioms_big.txt`,
+33 of the README records without a Lean ✓ are kernel-checked (table in `STATUS.md`): 18 with their Lean files
+committed (`Axioms.lean`), and 15 large Haar cells whose generated files are not committed (`axioms_big.txt`,
 regenerate with `cells.txt`, compare with `manifests/`). Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms
 (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`). Three methods:
 
@@ -47,12 +47,12 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- The cell still building when this was written: (14,10), streamed by `bigcell.py` one after
-  another (`/tmp/claude-0/work/chain.sh` in the session that started them).
-- Large SL cells (12,10), (15,9), (16,9), (13,10), (14,10): `bigcell.py CELL QUEUE LOG --need GB --clean` streams
-  them through a running `poolq.py` (writes the batch modules a chunk at a time, deletes each source once built,
-  and with `--clean` deletes the batch oleans and certificates after the axioms check). The generated sources take
-  about 10 bytes per group element per cover and the oleans about 0.8 of that; (14,10) needs about 5.3 GB of oleans
-  at once, so free disk first (older cells' batch oleans, `.lake/build/ir`).
-- Hexagon D = 7 cells: the hexagon-family project (branch `claude/hexagon-family-blvamb`) has a Lean certificate
-  theorem for these constructions; the instances are theirs.
+- Nothing is building. Every README record without a Lean ✓ is now kernel-checked except the hexagon D = 7 cells
+  (7,7) … (15,7): the hexagon-family project (branch `claude/hexagon-family-blvamb`) has a Lean certificate theorem
+  for those constructions and says the instance checks are too big for the kernel; their record values are also
+  changing (e.g. (7,7) 23,598 there).
+- The 15 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
+  one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
+  `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
+  `#print axioms` the theorem. Budget: about 10,000 slots per second per core for the batch checks; the largest,
+  (14,10), took about 5 hours on 4 cores and needs about 5.3 GB of oleans at once.
