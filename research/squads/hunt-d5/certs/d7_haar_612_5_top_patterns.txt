@@ -1,0 +1,10 @@
+# (7,5) partial search (not a certificate): SmallGroup(612,5) = C9 x (C17 : C4) = meta 17 4 13 9 (13 has order 4 mod 17).
+# tools/jpatterns.py 7 17 4 13 9 40000 400000: of the 4,496,388 coset patterns in Z4 x Z9 the 400,000 with the lowest mu_J (48.9 to 50.16), reduced to 29,274 classes; every class searched exactly (jexact.py, haar5 prod): no cost-0 set. Patterns outside the 400,000 are not covered.
+# d=7 p=17 k=4 r=13 n=9: 4496388 patterns with (0,0) (400000 kept), 29274 classes; uniform mu 48.23
+# mu_J <= 48.9: 6 classes
+# mu_J <= 49.0: 60 classes
+# results:
+tables/jx/prod612_A.log:RESULT prod N=612 d=7 blocks=14637 sets=2420826418 min=14 (min over sets passing the probes; 0 is exact)
+tables/jx/prod612_B.log:RESULT prod N=612 d=7 blocks=14637 sets=2420743186 min=11 (min over sets passing the probes; 0 is exact)
+# cost-0 lines: 0; BLOCK lines: 29274
+# highest mu_J among the searched classes: 50.159

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/hunt-d5/r2/b5/../../tools/gapgroup.py", line 56, in <module>
+    table(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else None)
+          ~~~^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '"88'
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/hunt-d5/r2/b5/../../tools/gapgroup.py", line 56, in <module>
+    table(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else None)
+          ~~~^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '1"'

@@ -1,0 +1,9 @@
+start cost 4
+it 1 t=2 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=1 S= 0 12 358 183 21 93
+it 2 t=3 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=1 S= 0 358 21 93 78 249
+it 3 t=5 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=1 S= 0 358 78 249 258 336
+it 4 t=6 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=1 S= 0 358 258 336 87 351
+it 5 t=8 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=1 S= 0 358 87 351 114 315
+it 6 t=9 sets=624810 best_in_nbhd=4 (2 sets) cur->4 moved=0 S= 0 358 87 351 114 315
+RESULT lns N=360 d=6 r=2 best=4 S= 0 358 87 351 114 315
+LNS_RESULT 0 358 87 351 114 315

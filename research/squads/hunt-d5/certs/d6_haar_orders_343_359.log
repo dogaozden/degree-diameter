@@ -1,0 +1,584 @@
+# (6,5) exact Haar search (haar5 cert: orbit-rank normalization, exact for cost 0; tools/cert_queue.sh) for every group of order 343-351 and 353-359 (75 groups; 352 with 195 groups not done).
+# 351/5 and 351/12 were done earlier with haar5 complete (see d6_haar_351_5.log, d6_haar_351_12_F27xC13.log); every other group below. No log contains a 'cost 0' line.
+## SmallGroup(343,1)
+rank 0 rep 1 size 294 pool 341 sets 553526545
+rank 1 rep 2 size 42 pool 47 sets 178365
+rank 2 rep 3 size 6 pool 5 sets 5
+RESULT cert N=343 d=6 orbits=3 from_rank=0 sets=553704915 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(343,2)
+rank 0 rep 1 size 294 pool 341 sets 553526545
+rank 1 rep 2 size 42 pool 47 sets 178365
+rank 2 rep 3 size 6 pool 5 sets 5
+RESULT cert N=343 d=6 orbits=3 from_rank=0 sets=553704915 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(343,3)
+rank 0 rep 1 size 336 pool 341 sets 553526545
+rank 1 rep 3 size 6 pool 5 sets 5
+RESULT cert N=343 d=6 orbits=2 from_rank=0 sets=553526550 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(343,4)
+rank 0 rep 1 size 294 pool 341 sets 553526545
+rank 1 rep 2 size 7 pool 47 sets 178365
+rank 2 rep 7 size 7 pool 26 sets 7257
+rank 3 rep 16 size 7 pool 12 sets 495
+rank 4 rep 30 size 7 pool 0 sets 0
+rank 5 rep 50 size 7 pool 0 sets 0
+rank 6 rep 77 size 7 pool 0 sets 0
+rank 7 rep 3 size 6 pool 5 sets 5
+RESULT cert N=343 d=6 orbits=8 from_rank=0 sets=553712667 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(343,5)
+rank 0 rep 1 size 342 pool 341 sets 553526545
+RESULT cert N=343 d=6 orbits=1 from_rank=0 sets=553526545 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,1)
+rank 0 rep 1 size 172 pool 342 sets 560077155
+rank 1 rep 9 size 84 pool 170 sets 33585370
+rank 2 rep 4 size 42 pool 84 sets 1929501
+rank 3 rep 10 size 42 pool 0 sets 0
+rank 4 rep 2 size 2 pool 2 sets 0
+rank 5 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=6 from_rank=0 sets=595592026 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,2)
+rank 0 rep 5 size 168 pool 342 sets 560077155
+rank 1 rep 9 size 84 pool 170 sets 33585370
+rank 2 rep 2 size 42 pool 84 sets 1929501
+rank 3 rep 10 size 42 pool 0 sets 0
+rank 4 rep 1 size 4 pool 6 sets 15
+rank 5 rep 3 size 2 pool 2 sets 0
+rank 6 rep 4 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=7 from_rank=0 sets=595592041 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,3)
+rank 0 rep 1 size 172 pool 342 sets 560077155
+rank 1 rep 9 size 84 pool 170 sets 33585370
+rank 2 rep 4 size 42 pool 84 sets 1929501
+rank 3 rep 10 size 42 pool 0 sets 0
+rank 4 rep 2 size 2 pool 2 sets 0
+rank 5 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=6 from_rank=0 sets=595592026 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,4)
+rank 0 rep 1 size 86 pool 342 sets 560077155
+rank 1 rep 5 size 86 pool 170 sets 33585370
+rank 2 rep 9 size 84 pool 170 sets 33585370
+rank 3 rep 4 size 42 pool 84 sets 1929501
+rank 4 rep 10 size 42 pool 0 sets 0
+rank 5 rep 2 size 2 pool 2 sets 0
+rank 6 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=7 from_rank=0 sets=629177396 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,5)
+rank 0 rep 1 size 172 pool 342 sets 560077155
+rank 1 rep 9 size 84 pool 170 sets 33585370
+rank 2 rep 4 size 42 pool 84 sets 1929501
+rank 3 rep 10 size 42 pool 0 sets 0
+rank 4 rep 2 size 2 pool 2 sets 0
+rank 5 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=6 from_rank=0 sets=595592026 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,6)
+rank 0 rep 1 size 172 pool 342 sets 560077155
+rank 1 rep 9 size 84 pool 170 sets 33585370
+rank 2 rep 4 size 42 pool 84 sets 1929501
+rank 3 rep 10 size 42 pool 0 sets 0
+rank 4 rep 2 size 2 pool 2 sets 0
+rank 5 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=6 from_rank=0 sets=595592026 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,7)
+rank 0 rep 1 size 86 pool 342 sets 560077155
+rank 1 rep 5 size 86 pool 170 sets 33585370
+rank 2 rep 9 size 84 pool 170 sets 33585370
+rank 3 rep 4 size 42 pool 84 sets 1929501
+rank 4 rep 10 size 42 pool 0 sets 0
+rank 5 rep 2 size 2 pool 2 sets 0
+rank 6 rep 3 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=7 from_rank=0 sets=629177396 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,8)
+rank 0 rep 6 size 168 pool 342 sets 560077155
+rank 1 rep 8 size 84 pool 170 sets 33585370
+rank 2 rep 3 size 42 pool 84 sets 1929501
+rank 3 rep 11 size 42 pool 0 sets 0
+rank 4 rep 1 size 4 pool 6 sets 15
+rank 5 rep 2 size 2 pool 2 sets 0
+rank 6 rep 4 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=7 from_rank=0 sets=595592041 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,9)
+rank 0 rep 6 size 168 pool 342 sets 560077155
+rank 1 rep 12 size 84 pool 170 sets 33585370
+rank 2 rep 3 size 42 pool 84 sets 1929501
+rank 3 rep 11 size 42 pool 0 sets 0
+rank 4 rep 1 size 4 pool 6 sets 15
+rank 5 rep 5 size 2 pool 2 sets 0
+rank 6 rep 4 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=7 from_rank=0 sets=595592041 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,10)
+rank 0 rep 6 size 252 pool 342 sets 560077155
+rank 1 rep 3 size 42 pool 84 sets 1929501
+rank 2 rep 11 size 42 pool 0 sets 0
+rank 3 rep 1 size 6 pool 6 sets 15
+rank 4 rep 4 size 1 pool 0 sets 0
+RESULT cert N=344 d=6 orbits=5 from_rank=0 sets=562006671 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,11)
+rank 0 rep 1 size 172 pool 342 sets 560077155
+rank 1 rep 9 size 126 pool 170 sets 33585370
+rank 2 rep 4 size 42 pool 41 sets 101270
+rank 3 rep 2 size 3 pool 2 sets 0
+RESULT cert N=344 d=6 orbits=4 from_rank=0 sets=593763795 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(344,12)
+rank 0 rep 7 size 294 pool 342 sets 560077155
+rank 1 rep 4 size 42 pool 41 sets 101270
+rank 2 rep 1 size 7 pool 6 sets 15
+RESULT cert N=344 d=6 orbits=3 from_rank=0 sets=560178440 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(345,1)
+rank 0 rep 13 size 176 pool 343 sets 566685735
+rank 1 rep 8 size 88 pool 117 sets 6448540
+rank 2 rep 6 size 44 pool 67 sets 766480
+rank 3 rep 3 size 22 pool 21 sets 5985
+rank 4 rep 5 size 8 pool 13 sets 715
+rank 5 rep 2 size 4 pool 3 sets 0
+rank 6 rep 1 size 2 pool 1 sets 0
+RESULT cert N=345 d=6 orbits=7 from_rank=0 sets=573907455 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(346,1)
+rank 0 rep 1 size 173 pool 344 sets 573352626
+rank 1 rep 2 size 172 pool 171 sets 34389810
+RESULT cert N=346 d=6 orbits=2 from_rank=0 sets=607742436 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(346,2)
+rank 0 rep 2 size 172 pool 344 sets 573352626
+rank 1 rep 3 size 172 pool 0 sets 0
+rank 2 rep 1 size 1 pool 0 sets 0
+RESULT cert N=346 d=6 orbits=3 from_rank=0 sets=573352626 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(347,1)
+rank 0 rep 1 size 346 pool 345 sets 580078170
+RESULT cert N=347 d=6 orbits=1 from_rank=0 sets=580078170 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,1)
+rank 0 rep 5 size 168 pool 346 sets 586862710
+rank 1 rep 10 size 56 pool 172 sets 35208615
+rank 2 rep 21 size 56 pool 60 sets 381151
+rank 3 rep 2 size 28 pool 56 sets 367290
+rank 4 rep 9 size 28 pool 0 sets 0
+rank 5 rep 1 size 6 pool 10 sets 210
+rank 6 rep 4 size 2 pool 4 sets 1
+rank 7 rep 11 size 2 pool 0 sets 0
+rank 8 rep 3 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=9 from_rank=0 sets=622819977 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,2)
+rank 0 rep 5 size 116 pool 346 sets 586862710
+rank 1 rep 1 size 58 pool 114 sets 6672876
+rank 2 rep 10 size 56 pool 172 sets 35208615
+rank 3 rep 20 size 56 pool 60 sets 381151
+rank 4 rep 4 size 28 pool 56 sets 367290
+rank 5 rep 11 size 28 pool 0 sets 0
+rank 6 rep 2 size 2 pool 4 sets 1
+rank 7 rep 9 size 2 pool 0 sets 0
+rank 8 rep 3 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=9 from_rank=0 sets=629492643 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,3)
+rank 0 rep 1 size 174 pool 346 sets 586862710
+rank 1 rep 11 size 56 pool 172 sets 35208615
+rank 2 rep 19 size 56 pool 60 sets 381151
+rank 3 rep 4 size 28 pool 56 sets 367290
+rank 4 rep 9 size 28 pool 0 sets 0
+rank 5 rep 3 size 2 pool 4 sets 1
+rank 6 rep 8 size 2 pool 0 sets 0
+rank 7 rep 2 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=8 from_rank=0 sets=622819767 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,4)
+rank 0 rep 14 size 112 pool 346 sets 586862710
+rank 1 rep 6 size 56 pool 122 sets 6940052
+rank 2 rep 9 size 56 pool 172 sets 35208615
+rank 3 rep 21 size 56 pool 60 sets 381151
+rank 4 rep 3 size 28 pool 56 sets 367290
+rank 5 rep 12 size 28 pool 0 sets 0
+rank 6 rep 5 size 4 pool 10 sets 210
+rank 7 rep 1 size 2 pool 2 sets 0
+rank 8 rep 2 size 2 pool 4 sets 1
+rank 9 rep 10 size 2 pool 0 sets 0
+rank 10 rep 4 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=11 from_rank=0 sets=629760029 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,5)
+rank 0 rep 5 size 58 pool 346 sets 586862710
+rank 1 rep 9 size 58 pool 172 sets 35208615
+rank 2 rep 14 size 58 pool 58 sets 47502
+rank 3 rep 10 size 56 pool 85 sets 2024785
+rank 4 rep 1 size 29 pool 114 sets 6672876
+rank 5 rep 3 size 29 pool 56 sets 367290
+rank 6 rep 6 size 29 pool 0 sets 0
+rank 7 rep 4 size 28 pool 27 sets 17550
+rank 8 rep 2 size 2 pool 1 sets 0
+RESULT cert N=348 d=6 orbits=9 from_rank=0 sets=631201328 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,6)
+rank 0 rep 1 size 87 pool 346 sets 586862710
+rank 1 rep 5 size 87 pool 0 sets 0
+rank 2 rep 8 size 58 pool 172 sets 35208615
+rank 3 rep 11 size 56 pool 85 sets 2024785
+rank 4 rep 2 size 29 pool 56 sets 367290
+rank 5 rep 4 size 28 pool 27 sets 17550
+rank 6 rep 3 size 2 pool 1 sets 0
+RESULT cert N=348 d=6 orbits=7 from_rank=0 sets=624480950 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,7)
+rank 0 rep 5 size 87 pool 346 sets 586862710
+rank 1 rep 9 size 84 pool 172 sets 35208615
+rank 2 rep 6 size 58 pool 172 sets 35208615
+rank 3 rep 11 size 56 pool 85 sets 2024785
+rank 4 rep 1 size 29 pool 56 sets 367290
+rank 5 rep 4 size 28 pool 27 sets 17550
+rank 6 rep 2 size 3 pool 4 sets 1
+rank 7 rep 3 size 2 pool 1 sets 0
+RESULT cert N=348 d=6 orbits=8 from_rank=0 sets=659689566 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,8)
+rank 0 rep 6 size 224 pool 346 sets 586862710
+rank 1 rep 10 size 84 pool 114 sets 6672876
+rank 2 rep 2 size 28 pool 27 sets 17550
+rank 3 rep 1 size 8 pool 10 sets 210
+rank 4 rep 3 size 3 pool 2 sets 0
+RESULT cert N=348 d=6 orbits=5 from_rank=0 sets=593553346 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,9)
+rank 0 rep 6 size 116 pool 346 sets 586862710
+rank 1 rep 1 size 58 pool 114 sets 6672876
+rank 2 rep 11 size 56 pool 172 sets 35208615
+rank 3 rep 19 size 56 pool 60 sets 381151
+rank 4 rep 4 size 28 pool 56 sets 367290
+rank 5 rep 9 size 28 pool 0 sets 0
+rank 6 rep 3 size 2 pool 4 sets 1
+rank 7 rep 8 size 2 pool 0 sets 0
+rank 8 rep 2 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=9 from_rank=0 sets=629492643 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,10)
+rank 0 rep 6 size 168 pool 346 sets 586862710
+rank 1 rep 11 size 56 pool 172 sets 35208615
+rank 2 rep 19 size 56 pool 60 sets 381151
+rank 3 rep 3 size 28 pool 56 sets 367290
+rank 4 rep 8 size 28 pool 0 sets 0
+rank 5 rep 1 size 6 pool 10 sets 210
+rank 6 rep 4 size 2 pool 4 sets 1
+rank 7 rep 9 size 2 pool 0 sets 0
+rank 8 rep 2 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=9 from_rank=0 sets=622819977 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,11)
+rank 0 rep 1 size 174 pool 346 sets 586862710
+rank 1 rep 11 size 56 pool 172 sets 35208615
+rank 2 rep 19 size 56 pool 60 sets 381151
+rank 3 rep 4 size 28 pool 56 sets 367290
+rank 4 rep 9 size 28 pool 0 sets 0
+rank 5 rep 3 size 2 pool 4 sets 1
+rank 6 rep 8 size 2 pool 0 sets 0
+rank 7 rep 2 size 1 pool 0 sets 0
+RESULT cert N=348 d=6 orbits=8 from_rank=0 sets=622819767 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(348,12)
+rank 0 rep 16 size 168 pool 346 sets 586862710
+rank 1 rep 7 size 84 pool 118 sets 6689986
+rank 2 rep 11 size 56 pool 85 sets 2024785
+rank 3 rep 4 size 28 pool 27 sets 17550
+rank 4 rep 6 size 6 pool 10 sets 210
+rank 5 rep 1 size 3 pool 2 sets 0
+rank 6 rep 3 size 2 pool 1 sets 0
+RESULT cert N=348 d=6 orbits=7 from_rank=0 sets=595595241 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(349,1)
+rank 0 rep 1 size 348 pool 347 sets 593706590
+RESULT cert N=349 d=6 orbits=1 from_rank=0 sets=593706590 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,1)
+rank 0 rep 5 size 150 pool 348 sets 600610155
+rank 1 rep 9 size 120 pool 173 sets 36041955
+rank 2 rep 1 size 25 pool 48 sets 194580
+rank 3 rep 10 size 24 pool 33 sets 40920
+rank 4 rep 3 size 20 pool 23 sets 8855
+rank 5 rep 2 size 6 pool 5 sets 5
+rank 6 rep 4 size 4 pool 3 sets 0
+RESULT cert N=350 d=6 orbits=7 from_rank=0 sets=636896470 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,2)
+rank 0 rep 5 size 140 pool 348 sets 600610155
+rank 1 rep 10 size 120 pool 173 sets 36041955
+rank 2 rep 6 size 28 pool 68 sets 814385
+rank 3 rep 12 size 24 pool 33 sets 40920
+rank 4 rep 2 size 20 pool 23 sets 8855
+rank 5 rep 1 size 7 pool 12 sets 495
+rank 6 rep 4 size 6 pool 5 sets 5
+rank 7 rep 3 size 4 pool 3 sets 0
+RESULT cert N=350 d=6 orbits=8 from_rank=0 sets=637516770 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,3)
+rank 0 rep 1 size 175 pool 348 sets 600610155
+rank 1 rep 9 size 120 pool 173 sets 36041955
+rank 2 rep 12 size 24 pool 33 sets 40920
+rank 3 rep 2 size 20 pool 23 sets 8855
+rank 4 rep 3 size 6 pool 5 sets 5
+rank 5 rep 4 size 4 pool 3 sets 0
+RESULT cert N=350 d=6 orbits=6 from_rank=0 sets=636701890 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,4)
+rank 0 rep 9 size 120 pool 348 sets 600610155
+rank 1 rep 15 size 120 pool 108 sets 1668995
+rank 2 rep 12 size 24 pool 68 sets 814385
+rank 3 rep 18 size 24 pool 20 sets 953
+rank 4 rep 2 size 20 pool 48 sets 194580
+rank 5 rep 5 size 20 pool 8 sets 70
+rank 6 rep 3 size 6 pool 12 sets 495
+rank 7 rep 6 size 6 pool 0 sets 0
+rank 8 rep 4 size 4 pool 8 sets 70
+rank 9 rep 7 size 4 pool 0 sets 0
+rank 10 rep 1 size 1 pool 0 sets 0
+RESULT cert N=350 d=6 orbits=11 from_rank=0 sets=603289703 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,5)
+rank 0 rep 5 size 168 pool 348 sets 600610155
+rank 1 rep 10 size 144 pool 173 sets 36041955
+rank 2 rep 2 size 24 pool 23 sets 8855
+rank 3 rep 1 size 7 pool 12 sets 495
+rank 4 rep 4 size 6 pool 5 sets 5
+RESULT cert N=350 d=6 orbits=5 from_rank=0 sets=636661465 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,6)
+rank 0 rep 15 size 120 pool 348 sets 600610155
+rank 1 rep 24 size 96 pool 183 sets 36306545
+rank 2 rep 6 size 30 pool 76 sets 818503
+rank 3 rep 9 size 24 pool 41 sets 42098
+rank 4 rep 12 size 24 pool 33 sets 40920
+rank 5 rep 5 size 20 pool 48 sets 194580
+rank 6 rep 10 size 16 pool 23 sets 8855
+rank 7 rep 3 size 6 pool 5 sets 5
+rank 8 rep 1 size 5 pool 8 sets 70
+rank 9 rep 2 size 4 pool 3 sets 0
+rank 10 rep 4 size 4 pool 3 sets 0
+RESULT cert N=350 d=6 orbits=11 from_rank=0 sets=638021731 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,7)
+rank 0 rep 5 size 140 pool 348 sets 600610155
+rank 1 rep 24 size 96 pool 173 sets 36041955
+rank 2 rep 1 size 35 pool 68 sets 814385
+rank 3 rep 10 size 24 pool 41 sets 42098
+rank 4 rep 12 size 24 pool 33 sets 40920
+rank 5 rep 9 size 16 pool 23 sets 8855
+rank 6 rep 4 size 6 pool 5 sets 5
+rank 7 rep 2 size 4 pool 3 sets 0
+rank 8 rep 3 size 4 pool 3 sets 0
+RESULT cert N=350 d=6 orbits=9 from_rank=0 sets=637558373 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,8)
+rank 0 rep 5 size 150 pool 348 sets 600610155
+rank 1 rep 9 size 144 pool 173 sets 36041955
+rank 2 rep 1 size 25 pool 48 sets 194580
+rank 3 rep 3 size 24 pool 23 sets 8855
+rank 4 rep 2 size 6 pool 5 sets 5
+RESULT cert N=350 d=6 orbits=5 from_rank=0 sets=636855550 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,9)
+rank 0 rep 1 size 175 pool 348 sets 600610155
+rank 1 rep 10 size 144 pool 173 sets 36041955
+rank 2 rep 2 size 24 pool 23 sets 8855
+rank 3 rep 4 size 6 pool 5 sets 5
+RESULT cert N=350 d=6 orbits=4 from_rank=0 sets=636660970 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(350,10)
+rank 0 rep 10 size 144 pool 348 sets 600610155
+rank 1 rep 16 size 144 pool 60 sets 228603
+rank 2 rep 2 size 24 pool 48 sets 194580
+rank 3 rep 5 size 24 pool 0 sets 0
+rank 4 rep 4 size 6 pool 12 sets 495
+rank 5 rep 7 size 6 pool 0 sets 0
+rank 6 rep 1 size 1 pool 0 sets 0
+RESULT cert N=350 d=6 orbits=7 from_rank=0 sets=601033833 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,1)
+rank 0 rep 1 size 117 pool 349 sets 607573751
+rank 1 rep 5 size 117 pool 0 sets 0
+rank 2 rep 11 size 36 pool 115 sets 6913340
+rank 3 rep 25 size 36 pool 6 sets 0
+rank 4 rep 4 size 12 pool 37 sets 66045
+rank 5 rep 13 size 12 pool 13 sets 0
+rank 6 rep 29 size 12 pool 0 sets 0
+rank 7 rep 2 size 3 pool 7 sets 35
+rank 8 rep 9 size 3 pool 0 sets 0
+rank 9 rep 3 size 1 pool 1 sets 0
+rank 10 rep 12 size 1 pool 0 sets 0
+RESULT cert N=351 d=6 orbits=11 from_rank=0 sets=614553171 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,2)
+rank 0 rep 6 size 216 pool 349 sets 607573751
+rank 1 rep 10 size 72 pool 115 sets 6913340
+rank 2 rep 11 size 24 pool 37 sets 66045
+rank 3 rep 1 size 18 pool 25 sets 12650
+rank 4 rep 2 size 12 pool 11 sets 330
+rank 5 rep 3 size 6 pool 7 sets 35
+rank 6 rep 4 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=7 from_rank=0 sets=614566151 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,3)
+rank 0 rep 6 size 78 pool 349 sets 607573751
+rank 1 rep 15 size 78 pool 78 sets 164502
+rank 2 rep 11 size 72 pool 115 sets 6913340
+rank 3 rep 1 size 39 pool 115 sets 6913340
+rank 4 rep 5 size 39 pool 0 sets 0
+rank 5 rep 13 size 24 pool 37 sets 66045
+rank 6 rep 4 size 12 pool 11 sets 330
+rank 7 rep 2 size 6 pool 7 sets 35
+rank 8 rep 3 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=9 from_rank=0 sets=621631343 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,4)
+rank 0 rep 6 size 78 pool 349 sets 607573751
+rank 1 rep 15 size 78 pool 78 sets 164502
+rank 2 rep 11 size 72 pool 115 sets 6913340
+rank 3 rep 1 size 39 pool 115 sets 6913340
+rank 4 rep 5 size 39 pool 0 sets 0
+rank 5 rep 13 size 24 pool 37 sets 66045
+rank 6 rep 4 size 12 pool 11 sets 330
+rank 7 rep 2 size 6 pool 7 sets 35
+rank 8 rep 3 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=9 from_rank=0 sets=621631343 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,6)
+rank 0 rep 1 size 117 pool 349 sets 607573751
+rank 1 rep 5 size 117 pool 0 sets 0
+rank 2 rep 11 size 72 pool 115 sets 6913340
+rank 3 rep 4 size 12 pool 37 sets 66045
+rank 4 rep 13 size 12 pool 13 sets 0
+rank 5 rep 29 size 12 pool 0 sets 0
+rank 6 rep 2 size 6 pool 7 sets 35
+rank 7 rep 3 size 1 pool 1 sets 0
+rank 8 rep 12 size 1 pool 0 sets 0
+RESULT cert N=351 d=6 orbits=9 from_rank=0 sets=614553171 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,7)
+rank 0 rep 1 size 117 pool 349 sets 607573751
+rank 1 rep 5 size 117 pool 0 sets 0
+rank 2 rep 11 size 36 pool 115 sets 6913340
+rank 3 rep 25 size 36 pool 6 sets 0
+rank 4 rep 4 size 12 pool 37 sets 66045
+rank 5 rep 13 size 12 pool 13 sets 0
+rank 6 rep 29 size 12 pool 0 sets 0
+rank 7 rep 2 size 3 pool 7 sets 35
+rank 8 rep 9 size 3 pool 0 sets 0
+rank 9 rep 3 size 1 pool 1 sets 0
+rank 10 rep 12 size 1 pool 0 sets 0
+RESULT cert N=351 d=6 orbits=11 from_rank=0 sets=614553171 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,8)
+rank 0 rep 1 size 117 pool 349 sets 607573751
+rank 1 rep 5 size 117 pool 0 sets 0
+rank 2 rep 11 size 72 pool 115 sets 6913340
+rank 3 rep 13 size 24 pool 37 sets 66045
+rank 4 rep 4 size 12 pool 11 sets 330
+rank 5 rep 2 size 6 pool 7 sets 35
+rank 6 rep 3 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=7 from_rank=0 sets=614553501 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,9)
+rank 0 rep 7 size 216 pool 349 sets 607573751
+rank 1 rep 10 size 72 pool 115 sets 6913340
+rank 2 rep 13 size 24 pool 37 sets 66045
+rank 3 rep 1 size 18 pool 25 sets 12650
+rank 4 rep 3 size 12 pool 11 sets 330
+rank 5 rep 2 size 6 pool 7 sets 35
+rank 6 rep 4 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=7 from_rank=0 sets=614566151 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,10)
+rank 0 rep 7 size 288 pool 349 sets 607573751
+rank 1 rep 1 size 24 pool 25 sets 12650
+rank 2 rep 13 size 24 pool 37 sets 66045
+rank 3 rep 3 size 12 pool 11 sets 330
+rank 4 rep 4 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=5 from_rank=0 sets=607652776 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,11)
+rank 0 rep 7 size 216 pool 349 sets 607573751
+rank 1 rep 10 size 36 pool 115 sets 6913340
+rank 2 rep 24 size 36 pool 6 sets 0
+rank 3 rep 13 size 24 pool 37 sets 66045
+rank 4 rep 1 size 18 pool 25 sets 12650
+rank 5 rep 3 size 12 pool 11 sets 330
+rank 6 rep 2 size 3 pool 7 sets 35
+rank 7 rep 9 size 3 pool 0 sets 0
+rank 8 rep 4 size 2 pool 1 sets 0
+RESULT cert N=351 d=6 orbits=9 from_rank=0 sets=614566151 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,13)
+rank 0 rep 1 size 117 pool 349 sets 607573751
+rank 1 rep 5 size 117 pool 0 sets 0
+rank 2 rep 11 size 96 pool 115 sets 6913340
+rank 3 rep 4 size 12 pool 11 sets 330
+rank 4 rep 2 size 8 pool 7 sets 35
+RESULT cert N=351 d=6 orbits=5 from_rank=0 sets=614487456 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(351,14)
+rank 0 rep 8 size 312 pool 349 sets 607573751
+rank 1 rep 1 size 26 pool 25 sets 12650
+rank 2 rep 4 size 12 pool 11 sets 330
+RESULT cert N=351 d=6 orbits=3 from_rank=0 sets=607586731 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(353,1)
+rank 0 rep 1 size 352 pool 351 sets 621682425
+RESULT cert N=353 d=6 orbits=1 from_rank=0 sets=621682425 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(354,1)
+rank 0 rep 4 size 174 pool 352 sets 628828200
+rank 1 rep 7 size 116 pool 175 sets 37752925
+rank 2 rep 2 size 58 pool 57 sets 395010
+rank 3 rep 1 size 3 pool 4 sets 1
+rank 4 rep 3 size 2 pool 1 sets 0
+RESULT cert N=354 d=6 orbits=5 from_rank=0 sets=666976136 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(354,2)
+rank 0 rep 4 size 118 pool 352 sets 628828200
+rank 1 rep 7 size 116 pool 175 sets 37752925
+rank 2 rep 1 size 59 pool 116 sets 7160245
+rank 3 rep 3 size 58 pool 57 sets 395010
+rank 4 rep 2 size 2 pool 1 sets 0
+RESULT cert N=354 d=6 orbits=5 from_rank=0 sets=674136380 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(354,3)
+rank 0 rep 1 size 177 pool 352 sets 628828200
+rank 1 rep 7 size 116 pool 175 sets 37752925
+rank 2 rep 3 size 58 pool 57 sets 395010
+rank 3 rep 2 size 2 pool 1 sets 0
+RESULT cert N=354 d=6 orbits=4 from_rank=0 sets=666976135 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(354,4)
+rank 0 rep 7 size 116 pool 352 sets 628828200
+rank 1 rep 10 size 116 pool 120 sets 7286976
+rank 2 rep 3 size 58 pool 116 sets 7160245
+rank 3 rep 5 size 58 pool 0 sets 0
+rank 4 rep 2 size 2 pool 4 sets 1
+rank 5 rep 4 size 2 pool 0 sets 0
+rank 6 rep 1 size 1 pool 0 sets 0
+RESULT cert N=354 d=6 orbits=7 from_rank=0 sets=643275422 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(355,1)
+rank 0 rep 1 size 71 pool 353 sets 636035400
+rank 1 rep 3 size 71 pool 140 sets 15329615
+rank 2 rep 6 size 71 pool 0 sets 0
+rank 3 rep 10 size 71 pool 0 sets 0
+rank 4 rep 2 size 70 pool 69 sets 864501
+RESULT cert N=355 d=6 orbits=5 from_rank=0 sets=652229516 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(355,2)
+rank 0 rep 4 size 280 pool 353 sets 636035400
+rank 1 rep 2 size 70 pool 69 sets 864501
+rank 2 rep 1 size 4 pool 3 sets 0
+RESULT cert N=355 d=6 orbits=3 from_rank=0 sets=636899901 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(356,1)
+rank 0 rep 1 size 178 pool 354 sets 643304376
+rank 1 rep 3 size 88 pool 176 sets 38630900
+rank 2 rep 6 size 88 pool 0 sets 0
+rank 3 rep 2 size 1 pool 0 sets 0
+RESULT cert N=356 d=6 orbits=4 from_rank=0 sets=681935276 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(356,2)
+rank 0 rep 4 size 176 pool 354 sets 643304376
+rank 1 rep 2 size 88 pool 176 sets 38630900
+rank 2 rep 7 size 88 pool 0 sets 0
+rank 3 rep 1 size 2 pool 2 sets 0
+rank 4 rep 3 size 1 pool 0 sets 0
+RESULT cert N=356 d=6 orbits=5 from_rank=0 sets=681935276 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(356,3)
+rank 0 rep 1 size 89 pool 354 sets 643304376
+rank 1 rep 2 size 89 pool 176 sets 38630900
+rank 2 rep 4 size 89 pool 0 sets 0
+rank 3 rep 3 size 88 pool 87 sets 2225895
+RESULT cert N=356 d=6 orbits=4 from_rank=0 sets=684161171 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(356,4)
+rank 0 rep 1 size 178 pool 354 sets 643304376
+rank 1 rep 3 size 88 pool 176 sets 38630900
+rank 2 rep 6 size 88 pool 0 sets 0
+rank 3 rep 2 size 1 pool 0 sets 0
+RESULT cert N=356 d=6 orbits=4 from_rank=0 sets=681935276 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(356,5)
+rank 0 rep 5 size 264 pool 354 sets 643304376
+rank 1 rep 3 size 88 pool 87 sets 2225895
+rank 2 rep 1 size 3 pool 2 sets 0
+RESULT cert N=356 d=6 orbits=3 from_rank=0 sets=645530271 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(357,1)
+rank 0 rep 5 size 112 pool 355 sets 650635480
+rank 1 rep 10 size 112 pool 14 sets 70
+rank 2 rep 8 size 96 pool 117 sets 7413705
+rank 3 rep 2 size 16 pool 15 sets 1365
+rank 4 rep 1 size 7 pool 19 sets 3876
+rank 5 rep 4 size 7 pool 0 sets 0
+rank 6 rep 3 size 6 pool 5 sets 5
+RESULT cert N=357 d=6 orbits=7 from_rank=0 sets=658054501 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(357,2)
+rank 0 rep 13 size 192 pool 355 sets 650635480
+rank 1 rep 8 size 96 pool 121 sets 7419445
+rank 2 rep 6 size 32 pool 49 sets 211876
+rank 3 rep 3 size 16 pool 15 sets 1365
+rank 4 rep 5 size 12 pool 19 sets 3876
+rank 5 rep 2 size 6 pool 5 sets 5
+rank 6 rep 1 size 2 pool 1 sets 0
+RESULT cert N=357 d=6 orbits=7 from_rank=0 sets=658272047 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(358,1)
+rank 0 rep 1 size 179 pool 356 sets 658029065
+rank 1 rep 2 size 178 pool 177 sets 39524100
+RESULT cert N=358 d=6 orbits=2 from_rank=0 sets=697553165 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(358,2)
+rank 0 rep 2 size 178 pool 356 sets 658029065
+rank 1 rep 3 size 178 pool 0 sets 0
+rank 2 rep 1 size 1 pool 0 sets 0
+RESULT cert N=358 d=6 orbits=3 from_rank=0 sets=658029065 (exact: every cost-0 set up to translation and automorphism is listed above)
+## SmallGroup(359,1)
+rank 0 rep 1 size 358 pool 357 sets 665485485
+RESULT cert N=359 d=6 orbits=1 from_rank=0 sets=665485485 (exact: every cost-0 set up to translation and automorphism is listed above)

@@ -1,0 +1,10 @@
+t:=Runtime();;
+for i in [1..20] do H:=SmallGroup(640,i*200);; od;
+Print("20 SmallGroup ms ", Runtime()-t, "\n");
+t:=Runtime();;
+for i in [1..20] do H:=SmallGroup(640,i*200);; D:=DerivedSubgroup(H);; od;
+Print("20 derived ms ", Runtime()-t, "\n");
+t:=Runtime();;
+for i in [1..20] do H:=SmallGroup(640,i*200);; D:=Centre(H);; od;
+Print("20 centre ms ", Runtime()-t, "\n");
+QUIT;

@@ -1,0 +1,5 @@
+group tab t/g350_2.bin x Z_1, N=350, identity 0, H order 50, rows 7, threads 1, setup 0.00s
+wide rows: HW order 175, rows 2, setup 0.00s
+start cost=168
+RESULT d=6 D=5 group=tab t/g350_2.bin x Z_1 N=350 best=12 evals=2893345 time=5.0
+wrote near miss o/g350_2_s1.best12

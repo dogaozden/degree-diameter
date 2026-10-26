@@ -2,3 +2,119 @@
 
 One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct 23, 2026.
 
+
+## 2026-10-26, hunt-d5 (Opus, cloud session_01G9FwCXeEt4mUvAMjcr9j11), round 1: (5,5), (7,5), (9,5)
+
+Goal: bipartite diameter-5 graphs above our 354 / 1,152 / 2,662, searched in the windows Haar order 193–224 / 606–630 /
+1,378–1,410 (and lifts of the same sizes). 16 Haiku cards (model haiku, effort high), 13:40–14:20 UTC, 4 shared cores.
+Director tools first (research/squads/hunt-d5/tools): GAP SmallGroups tables, haar5 (D = 5 Haar annealer with
+automorphism orbits), flift/lift from b48. Cards, scoreboard and work folders: research/squads/hunt-d5/r1/.
+
+Cards: a1 (5,5) Haar 193–207 · a2 (5,5) Haar 208–224 · a3 (5,5) 3+3 lifts over 65–75 · a4 (5,5) 2+2 / 4+4 lifts ·
+a5 (5,5) wildcard (6+6 lifts) · b1 (7,5) Haar 606–622 · b2 (7,5) Haar 608–630 · b3 (7,5) 5+5 / 6+6 lifts · b4 (7,5)
+2+2 / 3+3 / 4+4 lifts · b5 (7,5) wildcard (products, 7+7, 11+11) · c1 (9,5) Haar "3 3 0" orbits 1378–1400 · c2 (9,5)
+other orbit shapes · c3 cubic route-chart controllers · c4 (9,5) small-base lifts · c5 (9,5) wildcard (GQ + matchings)
+· x1 global wildcard (bi-coset graphs, lifts of PG(2,4)).
+
+Best per card (cost = uncovered pairs; 0 would be a graph): a1 8 (C41⋊C5, 204/6, 200/40; 3 s screens) · a2 15
+(210/2) · a3 30 (Z65; 1 s runs) · a4 16 (100/7, 104/3) · a5 82 · **b1 4 (SmallGroup(615,1))** · b2 12 (624/134) · b3 79
+· b4 30 (meta 61:5:9, 19:16:18) · b5 13 (S₄ × Z₂₇) · c1 none (no usable automorphism at 1392) · c2 8 (C197⋊C7,
+1379) · c3 controllers m = 16 (m = 17: 6) · c4 16 (C53⋊C13, 2+2 base, n = 2,756) · c5 5,234 · x1 834.
+No valid graph in the windows.
+
+Director meanwhile: a 3-letter route chart over F₃⁴ with every non-backtracking pattern nonsingular and both pencil
+conditions (also over F₄⁴), so any cubic bipartite controller with same-side distance ≤ 4 and a 4-cycle at every
+vertex lifts to a (9,5) graph on 162m vertices (m = 12, 16 checked all-pairs). Controllers stop at m = 16 (three
+annealers stall at 6 for m = 17): 2,592 < 2,662, so not a record. Non-abelian coset fibres (order 81): worse.
+
+Kept for round 2: metacyclic-type groups (615/1, C197⋊C7, C41⋊C5), K_{Δ,Δ} lifts (new), the m = 17 controller,
+q = 2 route charts for (6,5) (a cell we do not hold), exhaustive orbit certificates (new haar5 exho mode).
+
+## 2026-10-26, hunt-d5 round 2: metacyclic Haar groups, K_{Δ,Δ} lifts, m = 17 controller, (6,5)
+
+16 cards, 14:12–14:35 UTC (research/squads/hunt-d5/r2/). New cell this round: (6,5) (published 684, we hold nothing).
+Cards: a1 (5,5) exact search on metacyclic groups 193–215 · a2 (5,5) 3+3 lifts with Z₅₉ calibration · a3 (5,5) K₅,₅
+lifts over 39–45 · a4 (5,5) 2+2 lifts deep · b1 (7,5) 615/1 deep · b2 (7,5) metacyclic screen 606–660 · b3 (7,5) 609,
+610, 612, 624 deep + orbit certificates · b4 (7,5) 2+2 / 3+3 lifts over metacyclic groups · b5 (7,5) K₇,₇ lifts · c1
+(9,5) metacyclic 1378–1420 · c2 (9,5) 2+2 lifts over C53⋊C13 · c3 (9,5) K₉,₉ lifts · c4 m = 17 controller (tabu) · x1
+(6,5) Haar 343–360 · x2 (6,5) q = 2 route charts · w1 coset-union S.
+
+Best per card: a1 stopped (director's sweep covers it; D97 exact minimum 194) · a2 10 (Z₅₉ not reproduced) · a3 62 ·
+a4 12 (104/3, 2+2) · b1 4 (615/1, 41 seeds; 1- and 2-swap local minima) · b2 none (GAP listing too slow) · b3 6
+(609/1, 610/2) · b4 26 · b5 147 · **c1 4 at SmallGroup(1378,2) = C2 × (C53⋊C13)** · c2 14 · c3 173 · c4 m = 17: 6
+(two far pairs + two vertices on no 4-cycle, from every start) · **x1 2 at C71⋊C5 (355, (6,5))** · x2 26 · w1 worse
+than plain annealing (dropped).
+
+Director: haar5 exho (exact orbit-symmetric spaces): 615/1 all ≥ 12; exhp (exact, probe-accelerated, 9 s per group of
+order 200) sweeping every group of order 193–215 at (5,5); exact 3-swap neighbourhood of 615/1's cost-4 set found
+**cost 2** (S = 0 206 135 343 507 543 593); haar_fast (research/structured) is 13× faster than haar5 on metacyclic
+groups, so round 3 uses it. Kept: metacyclic seed farms in all four cells, exact neighbourhoods, (5,5) 216–224 sweep.
+
+## 2026-10-26, hunt-d5 round 3: haar_fast seed farms on metacyclic groups, (5,5) exact sweeps, (6,5)
+
+16 cards, 14:35–14:50 UTC (research/squads/hunt-d5/r3/). Tool: haar_fast (research/structured), 13× haar5 here.
+Cards: c1/c2/c3 (9,5) farms on (Z53⋊Z13)×Z2 with three settings · c4 (9,5) screen of 53 metacyclic specs 1378–1430 ·
+c5 Z197⋊Z7, Z463⋊Z3 farms · b1/b2 (7,5) farms on (Z41⋊Z5)×Z3 · b3 screen of 45 specs 606–658 · b4 609/610 farms · d1
+(6,5) screen of 55 specs · d2 (6,5) 357/351 farms · d3 (6,5) non-metacyclic 343–360 · a1 (5,5) exact 216 · a2 (5,5)
+exact 217–224 · x1 tabu from the cost-4 sets · w1 wildcard (2-switch repair from the 615 graph).
+
+Best per card: **c2 2 (Z53⋊₁₆Z26, seed 1016, K = 32, COOL = 40)** · **c3 2 (seed 2035; histogram over 60 short
+seeds 2:1, 4:9, 6:20, 8:25, 10:5)** · c1 4 (11/24 seeds) · c4 6 (meta 31 15 16 3, 1395) · c5 4 (Z197⋊Z7) · b1 4 · b2 4
+(10/36) · b3 4 (Z103⋊Z6, 618) · b4 4 ((Z61⋊Z5)×Z2, 610) · d2 4 (357) · a2 none in 217–223 (exact; best 16) · x1, w1 4
+(no progress; CPU starved). d1, d3, a1 reported after this entry (see the cell file).
+
+Director: **certificate: SmallGroup(355,1) = C71⋊C5 has no Haar graph of diameter ≤ 5 at Δ = 6** (exact search over
+S ⊇ {e, r}, r one representative per Aut(G)-orbit: 5 × 6.4·10⁸ sets; minimum 2). The cost-2 set of 615/1 has no
+solution within 3 swaps (exact). haar_fast patched to keep near misses (tools/haar_fast_sb.c, SAVEBEST=1) and
+tables in its numbering (tools/metatab.py), so farms feed the exact neighbourhood search (haar5 lns / complete).
+
+## 2026-10-26, hunt-d5 round 4: farms with near-miss saving + exact LNS; (6,5) screens; **(9,5) 2,756**
+
+16 cards, 15:08–15:30 UTC (research/squads/hunt-d5/r4/). New tools: haar_fast/haar_tab SAVEBEST, metatab.py, haar5 lns.
+Cards: c1/c2 (9,5) Z53⋊Z26 farm + LNS (switched to Z197⋊Z7 and Z463⋊Z3 after the director's find) · c3 Z197⋊Z7 · c4
+other 1378 forms, 1395, 1405 · b1 615 farm + LNS · b2 610, 618 · b3 non-metacyclic 606–650 · d1/d2 (6,5) screens
+343–368 · d3 per-edge F₂ route charts on mixed controllers · d4 360/51 farm + LNS + 3-swap · d5 (6,5) 2+2 / 3+3 lifts ·
+a1 (5,5) exact order 224 · a2 (5,5) exact 225–232 · w1 pattern-then-fill · w2 genetic search.
+
+Best per card (reported so far): c1 **2 on Z197⋊Z7 (1379) in 2 of 26 seeds** · c2 10 (1389) · c4 8 (1395) · b1 4 · b2
+4 (610: 5/16 seeds; 618) · d3 controllers with 4-cycles only (512 vertices at m = 16; mixed controllers fail at the
+4-cycle-free vertices) · d4 4 by annealing, 2 in the exact 3-swap neighbourhoods · w1 2 (plateau) · w2 no better than
+farms. Others still running at this entry.
+
+**Director: (9,5) 2,756 vertices**: Haar graph of Z53 ⋊₁₆ Z26 = C2 × (C53 ⋊ C13), found by the director's farm (seed
+7058, 15 s runs, K = 16, COOL = 10, REHEAT = 40; ~200 seeds in all; cost 0 after 0.2 s of that seed). build_haar2.py
+VALID, apsp VALID d=9 D=5 n=2756. The squads found the group (r2 c1: cost 4; r3 c2, c3: cost 2), the director's tools
+and farm closed it. Also exact certificates: (6,5) SmallGroup(351,12) and (357,1) have no Haar graph.
+
+## 2026-10-26, hunt-d5 round 5: mostly seed farms on distinct groups; exact certificate mode; **(9,5) 2,758**
+
+14 cards, 15:20–15:55 UTC (research/squads/hunt-d5/r5/). Cards: b1, b2 (615 farms, COOL 10/40 and 20/60) · b3 610 farm ·
+b4 618 farm · b6 (7,5) re-screen of 33 metacyclic specs · b7 (C_p ⋊ C_k) × C_c, 13 groups · w1 class-count constraint on
+615 · c1 Z197⋊Z7 farm · c3 (9,5) screen of 39 specs of order 1380–1420 · d1 360/51 farm · d2 (6,5) re-screen · d3 (6,5)
+|G/G'| = 2 groups · d4 (6,5) orders 352, 360 by GAP table · a1 (5,5) exact 233–240.
+
+Best per card: b1 2 (1 of 100 seeds) · b2 2 (1/175) · b3 2 (610, 1/95) · b4 4 (618, 7/100) · b6 8 · b7 4 · w1 2 (no
+signal from the class counts) · c1 2 (3/70) · **c3 4 on (Z31 ⋊ Z15) × Z3 (1395, Z15 acting faithfully)** · d1 2 (360/51,
+2/215) · d2 6 · d3 ≥ 98 (|G/G'| = 2 is a dead end) · d4 4 (360/136). No card reached 0.
+
+Director: **(9,5) 2,758 vertices**, Haar graph of Z197 ⋊₁₀₄ Z7 (farm seed 40164, 8 s runs; 1 cost-0 and 6 cost-2 in 181
+seeds). build_haar2.py VALID, apsp VALID d=9 D=5 n=2758, haar5 on an independent table: cost 0
+(research/squads/hunt-d5/finds/d9D5_n2758_CHECK.txt). New `haar5 cert` (orbit-rank normalization, exact): (6,5)
+certificates for SmallGroup(360,51) = C3 × SL(2,5), (351,5), (351,6), (351,7), (351,1): no Haar graph. Every (6,5) group
+that reached cost ≤ 4 in the screens (355/1, 357/1, 351/5, 360/51) is now proved empty.
+
+## 2026-10-26, hunt-d5 round 6: four gap-filling cards; the director switches (7,5) to exact coset-pattern searches
+
+4 cards, 15:58–16:20 UTC (research/squads/hunt-d5/r6/). b1 (7,5) every non-abelian group of order 606, 612, 614 · b2
+(7,5) 30 order-608 groups · b3 (6,5) farms on 360/136, 360/88 · c1 (9,5) farms on two other 1395 groups and one 1420.
+Best: b1 4 on SmallGroup(612,5) = C9 × (C17 ⋊ C4) (1 of 35 seeds; 606 and 614 ≥ 30) · b2 14 (608 is dead) · b3 4 on
+360/136 in 31 of 31 seeds (each a different S: a flat plateau) and 6 on 360/88 · c1 4 (meta 31 15 16 3).
+
+Director: the expected cost after fixing the cosets of G' met by S, mu_J = Σ_t p·exp(−W_t/p) (tools/jwalks.py,
+jpatterns.py), ranks groups and patterns: the 1379 solution and the 610 cost-2 sets sit at the most even patterns; the
+best mu_J is 46.3 (1379), 47.6 (609), 47.8 (610), 49.2 (615), 49.6 (1395). With S ∋ e, one element of a non-kernel
+coset conjugated to a = 0 and a second scaled to a ∈ {0, 1}, each pattern is a small exact search (`haar5 prod`,
+tools/jexact.py; positive control on a 506 group recovers the known solution). The (7,5) farms on 609 and 610 (558
+seeds: best cost 2 three times on 610, 4 on 609) were replaced by complete pattern-by-pattern searches of both groups
+(21,279 and 596 pattern classes). Also: the machine had autogroup scheduling on (each shell its own group, so nice
+levels did nothing across jobs); turned off at 16:14.

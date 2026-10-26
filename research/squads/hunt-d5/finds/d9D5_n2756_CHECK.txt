@@ -1,0 +1,14 @@
+# (9,5) 2,756 vertices: Haar graph of Z53 x|_16 Z26 (= C2 x (C53 x| C13), SmallGroup(1378,2)), found by the hunt-d5 director's seed farm
+# command: SAVEBEST=1 COOL=10 REHEAT=40 THREADS=1 research/squads/hunt-d5/tools/haar_fast 9 5 15 7058 16 OUT meta 53 26 16 1   (cost 0 after 47,249 evaluations, 0.2 s)
+# solution file: research/frontier/sols/d9D5_meta_53_26_16_s7058.txt
+## check 1: python3 research/frontier/build_haar2.py research/frontier/sols/d9D5_meta_53_26_16_s7058.txt X.edges
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 2756 edges = 12402 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 72b6de0c53392bc811262e940d92e5e4c4ef1f6947b301c88050d90c0a7cd5a7
+VALID d=9 D=5 group=meta 53 26 16 x Z_1 N=1378 vertices=2756
+## check 2: research/lifts/coordinator_check/apsp.c (all pairs, no symmetry) on that edge list
+n=2756 edges=12402 degree min=9 max=9 bipartite=yes diameter=5
+RESULT VALID d=9 D=5 n=2756
+## check 3: haar5 eval on tools/metatab.py's table (S = 0 361 284 301 1282 20 121 56 1004): cost
+0

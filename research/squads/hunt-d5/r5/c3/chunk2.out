@@ -1,0 +1,182 @@
+group meta 31 5 16 x Z_9, N=1395, identity 0, H order 45, rows 31, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.01s
+start cost=196
+group meta 31 5 16 x Z_9, N=1395, identity 0, H order 45, rows 31, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.01s
+start cost=150
+spec 1395 meta 31 5 16 9 : best=6 best=10 
+group meta 31 15 9 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.01s
+start cost=108
+group meta 31 15 9 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.03s
+start cost=80
+spec 1395 meta 31 15 9 3 : best=12 best=4 
+group meta 31 15 16 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.00s
+start cost=72
+group meta 31 15 16 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 93, rows 15, setup 0.00s
+start cost=110
+spec 1395 meta 31 15 16 3 : best=10 best=6 
+group meta 31 15 25 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 155, rows 9, setup 0.02s
+start cost=132
+group meta 31 15 25 x Z_3, N=1395, identity 0, H order 31, rows 45, threads 1, setup 0.00s
+wide rows: HW order 155, rows 9, setup 0.00s
+start cost=98
+spec 1395 meta 31 15 25 3 : best=14 best=12 
+group meta 349 2 348 x Z_2, N=1396, identity 0, H order 2, rows 698, threads 1, setup 0.02s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1643
+group meta 349 2 348 x Z_2, N=1396, identity 0, H order 2, rows 698, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1506
+spec 1396 meta 349 2 348 2 : best=1076 best=1068 
+group meta 349 4 213 x Z_1, N=1396, identity 0, H order 4, rows 349, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=466
+group meta 349 4 213 x Z_1, N=1396, identity 0, H order 4, rows 349, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=506
+spec 1396 meta 349 4 213 1 : best=139 best=136 
+group meta 349 4 348 x Z_1, N=1396, identity 0, H order 4, rows 349, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=1132
+group meta 349 4 348 x Z_1, N=1396, identity 0, H order 4, rows 349, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=744
+spec 1396 meta 349 4 348 1 : best=550 best=546 
+group meta 233 2 232 x Z_3, N=1398, identity 0, H order 6, rows 233, threads 1, setup 0.02s
+wide rows: HW order 233, rows 6, setup 0.02s
+start cost=1116
+group meta 233 2 232 x Z_3, N=1398, identity 0, H order 6, rows 233, threads 1, setup 0.00s
+wide rows: HW order 233, rows 6, setup 0.01s
+start cost=1188
+spec 1398 meta 233 2 232 3 : best=242 best=243 
+group meta 701 2 700 x Z_1, N=1402, identity 0, H order 2, rows 701, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1815
+group meta 701 2 700 x Z_1, N=1402, identity 0, H order 2, rows 701, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1668
+spec 1402 meta 701 2 700 1 : best=1082 best=1062 
+group meta 281 5 86 x Z_1, N=1405, identity 0, H order 5, rows 281, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 5); using haar_gen3's evaluation
+start cost=90
+group meta 281 5 86 x Z_1, N=1405, identity 0, H order 5, rows 281, threads 1, setup 0.03s
+wide rows: no cyclic subgroup of order >= 64 found (best 5); using haar_gen3's evaluation
+start cost=164
+spec 1405 meta 281 5 86 1 : best=10 best=10 
+group meta 37 2 36 x Z_19, N=1406, identity 0, H order 38, rows 37, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 38); using haar_gen3's evaluation
+start cost=551
+group meta 37 2 36 x Z_19, N=1406, identity 0, H order 38, rows 37, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 38); using haar_gen3's evaluation
+start cost=303
+spec 1406 meta 37 2 36 19 : best=26 best=35 
+group meta 67 3 37 x Z_7, N=1407, identity 0, H order 21, rows 67, threads 1, setup 0.00s
+wide rows: HW order 67, rows 21, setup 0.02s
+start cost=110
+group meta 67 3 37 x Z_7, N=1407, identity 0, H order 21, rows 67, threads 1, setup 0.00s
+wide rows: HW order 67, rows 21, setup 0.00s
+start cost=126
+spec 1407 meta 67 3 37 7 : best=12 best=12 
+group meta 47 2 46 x Z_15, N=1410, identity 0, H order 47, rows 30, threads 1, setup 0.01s
+wide rows: HW order 235, rows 6, setup 0.01s
+start cost=311
+group meta 47 2 46 x Z_15, N=1410, identity 0, H order 47, rows 30, threads 1, setup 0.02s
+wide rows: HW order 235, rows 6, setup 0.03s
+start cost=281
+spec 1410 meta 47 2 46 15 : best=28 best=38 
+group meta 353 2 352 x Z_2, N=1412, identity 0, H order 2, rows 706, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1738
+group meta 353 2 352 x Z_2, N=1412, identity 0, H order 2, rows 706, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1530
+spec 1412 meta 353 2 352 2 : best=1100 best=1088 
+group meta 353 4 311 x Z_1, N=1412, identity 0, H order 4, rows 353, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=355
+group meta 353 4 311 x Z_1, N=1412, identity 0, H order 4, rows 353, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=342
+spec 1412 meta 353 4 311 1 : best=141 best=152 
+group meta 353 4 352 x Z_1, N=1412, identity 0, H order 4, rows 353, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=874
+group meta 353 4 352 x Z_1, N=1412, identity 0, H order 4, rows 353, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 4); using haar_gen3's evaluation
+start cost=754
+spec 1412 meta 353 4 352 1 : best=540 best=562 
+group meta 157 3 12 x Z_3, N=1413, identity 0, H order 3, rows 471, threads 1, setup 0.00s
+wide rows: HW order 157, rows 9, setup 0.00s
+start cost=248
+group meta 157 3 12 x Z_3, N=1413, identity 0, H order 3, rows 471, threads 1, setup 0.00s
+wide rows: HW order 157, rows 9, setup 0.00s
+start cost=168
+spec 1413 meta 157 3 12 3 : best=18 best=12 
+group meta 101 2 100 x Z_7, N=1414, identity 0, H order 14, rows 101, threads 1, setup 0.00s
+wide rows: HW order 101, rows 14, setup 0.01s
+start cost=292
+group meta 101 2 100 x Z_7, N=1414, identity 0, H order 14, rows 101, threads 1, setup 0.01s
+wide rows: HW order 101, rows 14, setup 0.01s
+start cost=500
+spec 1414 meta 101 2 100 7 : best=65 best=64 
+group meta 59 2 58 x Z_12, N=1416, identity 0, H order 59, rows 24, threads 1, setup 0.00s
+wide rows: HW order 236, rows 6, setup 0.03s
+start cost=573
+group meta 59 2 58 x Z_12, N=1416, identity 0, H order 59, rows 24, threads 1, setup 0.00s
+wide rows: HW order 236, rows 6, setup 0.00s
+start cost=599
+spec 1416 meta 59 2 58 12 : best=79 best=64 
+group meta 709 2 708 x Z_1, N=1418, identity 0, H order 2, rows 709, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1542
+group meta 709 2 708 x Z_1, N=1418, identity 0, H order 2, rows 709, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 2); using haar_gen3's evaluation
+start cost=1490
+spec 1418 meta 709 2 708 1 : best=1094 best=1102 
+group meta 43 3 36 x Z_11, N=1419, identity 0, H order 43, rows 33, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 43); using haar_gen3's evaluation
+start cost=76
+group meta 43 3 36 x Z_11, N=1419, identity 0, H order 43, rows 33, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 43); using haar_gen3's evaluation
+start cost=118
+spec 1419 meta 43 3 36 11 : best=10 best=12 
+group meta 71 2 70 x Z_10, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.01s
+start cost=595
+group meta 71 2 70 x Z_10, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=494
+spec 1420 meta 71 2 70 10 : best=105 best=106 
+group meta 71 5 54 x Z_4, N=1420, identity 0, H order 20, rows 71, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.01s
+start cost=64
+group meta 71 5 54 x Z_4, N=1420, identity 0, H order 20, rows 71, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=116
+spec 1420 meta 71 5 54 4 : best=8 best=10 
+group meta 71 10 14 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=187
+group meta 71 10 14 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=220
+spec 1420 meta 71 10 14 2 : best=37 best=36 
+group meta 71 10 54 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=126
+group meta 71 10 54 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=126
+spec 1420 meta 71 10 54 2 : best=12 best=8 
+group meta 71 10 70 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=620
+group meta 71 10 70 x Z_2, N=1420, identity 0, H order 10, rows 142, threads 1, setup 0.00s
+wide rows: HW order 142, rows 10, setup 0.00s
+start cost=766
+spec 1420 meta 71 10 70 2 : best=122 best=107 

@@ -1,0 +1,27 @@
+# positive control for the coset-pattern exact search (tools/jpatterns.py, tools/jexact.py, haar5 prod)
+# group meta 23 11 2 x Z2 (order 506), d = 7; a haar_fast solution (seed 1):
+7 5 meta 23 11 2 n 2 N 506
+0 meta(a=0,j=0) z=0
+125 meta(a=5,j=7) z=1
+470 meta(a=21,j=4) z=0
+191 meta(a=8,j=7) z=1
+126 meta(a=5,j=8) z=0
+5 meta(a=0,j=2) z=1
+84 meta(a=3,j=9) z=0
+# its pattern (tools/jwalks.py):
+pc506_1.sol: mu_J 24.2  W_t min 55 max 80  (p = 23)  J = [(0, 0), (2, 1), (4, 0), (7, 1), (7, 1), (8, 0), (9, 0)]
+# python3 tools/metatab.py 23 11 2 T.bin 2; python3 tools/jexact.py 7 23 11 2 2 PAT LISTS; haar5 prod T.bin 7 LISTS 0
+J 0 mu=1.0 0,0 7,1 4,0 7,1 8,0 2,1 9,0
+L 0
+L 5
+L 8 30
+L 15 37 59 81 103 125 147 169 191 213 235 257 279 301 323 345 367 389 411 433 455 477 499
+=
+L 16 38 60 82 104 126 148 170 192 214 236 258 280 302 324 346 368 390 412 434 456 478 500
+L 18 40 62 84 106 128 150 172 194 216 238 260 282 304 326 348 370 392 414 436 458 480 502
+E
+cost 0 J 0 mu=1.0 0,0 7,1 4,0 7,1 8,0 2,1 9,0 S 0 5 30 15 147 170 260
+cost 0 J 0 mu=1.0 0,0 7,1 4,0 7,1 8,0 2,1 9,0 S 0 5 30 37 59 126 436
+cost 0 J 0 mu=1.0 0,0 7,1 4,0 7,1 8,0 2,1 9,0 S 0 5 30 213 433 214 238
+BLOCK 0 mu=1.0 0,0 7,1 4,0 7,1 8,0 2,1 9,0 sets=267674 full_evals=108 min=0
+RESULT prod N=506 d=7 blocks=1 sets=267674 min=0 (min over sets passing the probes; 0 is exact)

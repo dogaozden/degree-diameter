@@ -1,0 +1,13 @@
+card a4 (round 2), 2+2 base lifts, flift, d=5 D=5, cost = uncovered vertices (no valid graph found)
+baseA = [[2,3],[3,2]], baseB = [[1,4],[4,1]]; K=8
+g100_7.bin (SmallGroup(100,7)) baseA 60s seeds 1,2,3: cost 16, 16, 24 (n=400)
+g104_3.bin (SmallGroup(104,3)) baseA 60s seeds 1,2,3: cost 29, 20, 30 (n=416)
+g100_7.bin baseB 30s seed 1: cost 72 (n=400)
+g104_3.bin baseB 30s seed 1: cost 12 (n=416)  <- best of card
+metacyclic scan, baseB, 10 s each, seed = index (runs/scan_B.log):
+  meta:97:1:1 60; meta:49:2:48 144; meta:7:14:6 30; meta:50:2:49 150; meta:25:4:7 50; meta:25:4:24 78;
+  meta:5:20:2 20; meta:51:2:35 32; meta:51:2:16 68; meta:51:2:50 190; meta:13:8:5 20; meta:13:8:12 28;
+  meta:26:4:5 64; meta:52:2:51 198; meta:35:3:16 20; meta:53:2:52 170; meta:27:4:26 94; meta:54:2:53 188;
+  meta:11:10:2 46; meta:11:10:3 36; meta:55:2:34 48; meta:55:2:21 60; meta:55:2:54 236
+Not run (budget): meta:7 ... remaining order-100..110 groups not in the scan, C101, C103, C107, C109 (cyclic).
+Not verified: no cost-0 solution, so no apsp check was needed.
