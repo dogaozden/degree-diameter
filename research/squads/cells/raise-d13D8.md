@@ -228,3 +228,15 @@ SL(2,9)^2 x Z7 OSTAB=1 seed 12; PSL(2,7)^2 x Z129 plain seed 11 (AR 50, untried 
 
 Running tally after 14 anneals above the record: no solution. Best costs by group: PSL(2,13)^2 x Z3 12, 13, 18;
 SL(2,5)^2 x Z247 22; SL(2,9)^2 x Z7 25; PSL(2,9)^2 x Z28 27; PSL(2,7)^2 x Z127 18; SL(2,5)^2 x Z244 35.
+
+## Round 3, third wave (results 04:31 UTC, PSL(2,13)^2 x Z3 seed 16 still running)
+
+| run | group | variant | best cost | evals |
+|---|---|---|---|---|
+| psl7x129_s11 | PSL(2,7)^2 x Z129 | plain, AR 50 | 24 | 4.98e5 |
+| psl13x3_s14 | PSL(2,13)^2 x Z3 | plain, seed 14 | **6** | 3.03e5 |
+| psl13x3_ostab_s15 | PSL(2,13)^2 x Z3 | OSTAB=1, seed 15 | 12 | 3.0e5 |
+| sl9x7_ostab_s12 | SL(2,9)^2 x Z7 | OSTAB=1, seed 12 | 19 | 5.4e5 |
+
+Best cost 6 on PSL(2,13)^2 x Z3 (seed 14) is the closest any candidate has come. Fourth wave (04:33 UTC, 3600 s):
+PSL(2,13)^2 x Z3 plain, seeds 17, 18, 19 (plus seed 16 from 04:06, still running).
