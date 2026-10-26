@@ -1,0 +1,16 @@
+check 2 5 (True, (0, 'regular'))
+delta 2 random max K (>=1 of 10 trials): 5 first failing K: 6
+check 3 13 (True, (2, 'regular'))
+delta 3 random max K (>=1 of 10 trials): 13 first failing K: 14
+check 4 29 (True, (0, 'regular'))
+delta 4 random max K (>=1 of 10 trials): 29 first failing K: 30
+check 5 57 (True, (3, 'regular'))
+delta 5 random max K (>=1 of 10 trials): 57 first failing K: 58
+check 6 108 (True, (2, 'regular'))
+delta 6 random max K (>=1 of 10 trials): 108 first failing K: 109
+check 7 178 (True, (1, 'maximal'))
+delta 7 random max K (>=1 of 10 trials): 178 first failing K: 179
+check 8 271 (True, (0, 'maximal'))
+delta 8 random max K (>=1 of 10 trials): 271 first failing K: 272
+check 9 413 (True, (5, 'maximal'))
+delta 9 random max K (>=1 of 10 trials): 413 first failing K: 414

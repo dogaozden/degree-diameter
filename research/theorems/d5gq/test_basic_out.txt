@@ -1,0 +1,38 @@
+ThmA W(2) r=1 HHD RESULT VALID d=4 D=5 n=90 | n=90 edges=180 degree min=4 max=4 bipartite=yes diameter=5
+ThmA W(2) r=1 DHH RESULT VALID d=4 D=5 n=90 | n=90 edges=180 degree min=4 max=4 bipartite=yes diameter=5
+ThmA W(2) r=2 HHHHH RESULT VALID d=5 D=5 n=150 | n=150 edges=375 degree min=5 max=5 bipartite=yes diameter=5
+ThmA W(2) r=2 HDHDD RESULT VALID d=5 D=5 n=150 | n=150 edges=375 degree min=5 max=5 bipartite=yes diameter=5
+ThmA Q(4,2) r=1 DHD RESULT VALID d=4 D=5 n=90 | n=90 edges=180 degree min=4 max=4 bipartite=yes diameter=5
+ThmA Q(4,2) r=1 DHH RESULT VALID d=4 D=5 n=90 | n=90 edges=180 degree min=4 max=4 bipartite=yes diameter=5
+ThmA Q(4,2) r=2 HDHHH RESULT VALID d=5 D=5 n=150 | n=150 edges=375 degree min=5 max=5 bipartite=yes diameter=5
+ThmA Q(4,2) r=2 DHHDD RESULT VALID d=5 D=5 n=150 | n=150 edges=375 degree min=5 max=5 bipartite=yes diameter=5
+ThmA W(3) r=1 DHD RESULT VALID d=5 D=5 n=240 | n=240 edges=600 degree min=5 max=5 bipartite=yes diameter=5
+ThmA W(3) r=1 HHH RESULT VALID d=5 D=5 n=240 | n=240 edges=600 degree min=5 max=5 bipartite=yes diameter=5
+ThmA W(3) r=2 DDDDD RESULT VALID d=6 D=5 n=400 | n=400 edges=1200 degree min=6 max=6 bipartite=yes diameter=5
+ThmA W(3) r=2 DHHHH RESULT VALID d=6 D=5 n=400 | n=400 edges=1200 degree min=6 max=6 bipartite=yes diameter=5
+ThmA Q(4,3) r=1 HHD RESULT VALID d=5 D=5 n=240 | n=240 edges=600 degree min=5 max=5 bipartite=yes diameter=5
+ThmA Q(4,3) r=1 HHD RESULT VALID d=5 D=5 n=240 | n=240 edges=600 degree min=5 max=5 bipartite=yes diameter=5
+ThmA Q(4,3) r=2 DHDHD RESULT VALID d=6 D=5 n=400 | n=400 edges=1200 degree min=6 max=6 bipartite=yes diameter=5
+ThmA Q(4,3) r=2 DDHDH RESULT VALID d=6 D=5 n=400 | n=400 edges=1200 degree min=6 max=6 bipartite=yes diameter=5
+ThmA W(4) r=1 HDD RESULT VALID d=6 D=5 n=510 | n=510 edges=1530 degree min=6 max=6 bipartite=yes diameter=5
+ThmA W(4) r=1 DDH RESULT VALID d=6 D=5 n=510 | n=510 edges=1530 degree min=6 max=6 bipartite=yes diameter=5
+ThmA W(4) r=2 HHHHD RESULT VALID d=7 D=5 n=850 | n=850 edges=2975 degree min=7 max=7 bipartite=yes diameter=5
+ThmA W(4) r=2 DHDDH RESULT VALID d=7 D=5 n=850 | n=850 edges=2975 degree min=7 max=7 bipartite=yes diameter=5
+ThmA Q(4,4) r=1 DHH RESULT VALID d=6 D=5 n=510 | n=510 edges=1530 degree min=6 max=6 bipartite=yes diameter=5
+ThmA Q(4,4) r=1 DDH RESULT VALID d=6 D=5 n=510 | n=510 edges=1530 degree min=6 max=6 bipartite=yes diameter=5
+ThmA Q(4,4) r=2 HDHHD RESULT VALID d=7 D=5 n=850 | n=850 edges=2975 degree min=7 max=7 bipartite=yes diameter=5
+ThmA Q(4,4) r=2 DHDHH RESULT VALID d=7 D=5 n=850 | n=850 edges=2975 degree min=7 max=7 bipartite=yes diameter=5
+ThmA W(5) r=1 HHD RESULT VALID d=7 D=5 n=936 | n=936 edges=3276 degree min=7 max=7 bipartite=yes diameter=5
+ThmA W(5) r=1 HHD RESULT VALID d=7 D=5 n=936 | n=936 edges=3276 degree min=7 max=7 bipartite=yes diameter=5
+ThmA W(5) r=2 DHDDD RESULT VALID d=8 D=5 n=1560 | n=1560 edges=6240 degree min=8 max=8 bipartite=yes diameter=5
+ThmA W(5) r=2 DDDDH RESULT VALID d=8 D=5 n=1560 | n=1560 edges=6240 degree min=8 max=8 bipartite=yes diameter=5
+ThmA Q(4,5) r=1 DDD RESULT VALID d=7 D=5 n=936 | n=936 edges=3276 degree min=7 max=7 bipartite=yes diameter=5
+ThmA Q(4,5) r=1 HHD RESULT VALID d=7 D=5 n=936 | n=936 edges=3276 degree min=7 max=7 bipartite=yes diameter=5
+ThmA Q(4,5) r=2 HHDHH RESULT VALID d=8 D=5 n=1560 | n=1560 edges=6240 degree min=8 max=8 bipartite=yes diameter=5
+ThmA Q(4,5) r=2 DHDHH RESULT VALID d=8 D=5 n=1560 | n=1560 edges=6240 degree min=8 max=8 bipartite=yes diameter=5
+ThmB/ThmE W(2) 30 trials: brute force == (E1)-(E3); friendly identity repaired <=> partial ovoid: ok
+ThmB/ThmE W(3) 30 trials: brute force == (E1)-(E3); friendly identity repaired <=> partial ovoid: ok
+ThmB/ThmE W(4) 30 trials: brute force == (E1)-(E3); friendly identity repaired <=> partial ovoid: ok
+ThmB/ThmE W(5) 30 trials: brute force == (E1)-(E3); friendly identity repaired <=> partial ovoid: ok
+ThmE (whole lines in R) W(2) 300 trials agree; failure types seen ['E1', 'E2', 'E3']
+ThmE (whole lines in R) W(3) 300 trials agree; failure types seen ['E1', 'E2', 'E3']

@@ -1,0 +1,14 @@
+( 3,5)  table     56  lab     56   family     30  (q=2, r=0, GQ incidence graph, K_B=0, K_A=0, hub graph )  
+( 4,5)  table    160  lab    162   family     92  (q=2, r=1, all H, duality, K_B=1, K_A=1, hub graph K_{x,y})  
+( 5,5)  table    336  lab    354   family    244  (q=3, r=1, HHH, K_B=2, K_A=2, hub graph K_{x,y})  
+( 6,5)  table    684  lab    684   family    540  (q=4, r=1, all H, duality, K_B=15, K_A=15, hub graph W(2)+pendants)  
+( 7,5)  table   1134  lab   1152   family    940  (q=5, r=1, HHH, K_B=2, K_A=2, hub graph K_{x,y})  
+( 8,5)  table   1710  lab   2048   family   1590  (q=5, r=2, HHDHD, K_B=15, K_A=15, hub graph W(2)+pendants)  
+( 9,5)  table   2496  lab   2662   family   2404  (q=7, r=1, HHH, K_B=2, K_A=2, hub graph K_{x,y})  
+(10,5)  table   4000  lab   4800   family   4044  (q=7, r=2, HHDHD, K_B=22, K_A=22, hub graph PG(2,3)+pendants)  beats table
+(11,5)  table   5850  lab   7020   family   6090  (q=8, r=2, all H, duality, K_B=120, K_A=120, hub graph level graph 3 x W(3))  beats table
+(12,5)  table   8200  lab   9840   family   8430  (q=8, r=3, all H, duality, K_B=120, K_A=120, hub graph level graph 3 x W(3))  beats table
+(13,5)  table  11480  lab  11486   family  11552  (q=9, r=3, HHHDHHD, K_B=42, K_A=30, hub graph PG(2,4)+pendants)  beats table
+(14,5)  table  14760  lab  17568   family  14812  (q=9, r=4, HHHHDHHHD, K_B=26, K_A=26, hub graph PG(2,3)+pendants)  beats table
+(15,5)  table  20496  lab  20736   family  20598  (q=11, r=3, HHHDHHD, K_B=66, K_A=36, hub graph PG(2,4)+pendants)  beats table
+(16,5)  table  27300  lab  33792   family  26453  (q=11, r=4, HHHHDHHHD, K_B=63, K_A=38, hub graph PG(2,4)+pendants)  
