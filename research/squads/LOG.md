@@ -71,3 +71,13 @@ at n = 2,352 (order 294) and 8 at 2,400, far better than the cards' p = 5..10 sl
 explicit group coordinates and checked with apsp.c (research/squads/own-small/records/).
 Kept: 4+4 bases are the strongest at D = 11-12, 5+5 at D = 10. A second, FIFO queue (tools/dispatch2.sh) then ran
 only the promising pending tasks (4+4 at D = 11/12, (3,10) n = 816 seeds).
+
+## 2026-10-26, own-small, director after round 3 (no Haikus)
+
+FIFO queue (tools/dispatch2.sh) on the promising pending tasks, then focused runs. 4+4 joint annealing at D = 12 reached
+cost 2 at n = 2,368 (Z37 x|_6 Z8 = SmallGroup(296,3)); the exact two-move search tools/polish.c (all single and pairs of
+voltage changes, endpoint swaps) then found a cost-0 state: **(3,12) new cell, 2,368 vertices** (census best 2,304,
+lab 1,320), checked with score48 and apsp.c and rebuilt from explicit metacyclic coordinates. Polish found nothing from
+the cost-4 states at (3,11) 1,360 / 1,368 and (3,12) 2,352 (exact local minima). Lesson: annealing plus an exact
+two-move polish is stronger than either alone; a cost-2 state is often within two moves of a valid graph, a cost-4
+state was not in any case tried.
