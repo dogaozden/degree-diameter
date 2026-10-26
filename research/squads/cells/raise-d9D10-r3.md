@@ -53,8 +53,8 @@ Logs in research/structured/runs/raise9-10-r3/runs/.
 - s4: plain, 10,800 s (started 02:12 UTC). Finished 05:12 UTC: best 8 (280k evals), no solve.
 - ORBW4 s2: finished 05:12 UTC, best 10 (energy 16), no solve (278k evals).
 - RESTART s3: finished 05:12 UTC, best 5 (280k evals), no solve. Lowest cost of the round.
-- s1: ends about 05:38 UTC; best 13 at 300k evals so far.
-- RESTART s5, s6, s7 (started 05:13 UTC, 5,400 s each, RESTART=1, seeds 5–7).
+- s1: finished 05:38 UTC, best 13 (343k evals), no solve.
+- RESTART s5, s6, s7 (started 05:13 UTC, 5,400 s each, RESTART=1, seeds 5–7). At 05:38 UTC: best 12, 13, 10 (41k evals each).
 
 Every run stayed at best cost ≥ 5 (raw uncovered orbit units: cost = uncovered/k). Round 1's psl 151×Z7 solve had cost 0
 at 425k evals; no `4 2 1` run reached cost 0 in 230–300k evals. The plateau looks like the round-2 `3 3 0` plateau.
