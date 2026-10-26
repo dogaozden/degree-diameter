@@ -1,0 +1,26 @@
+unmixed pairs: points 63 lines 81
+lns3 geodesic tables: unmixed agree with lns2: True
+start 4 (4, 0, 0)
+incremental == full: True
+restored == original: True
+initial bads: [('P', 90, 288), ('P', 283, 339), ('L', 26, 167), ('L', 139, 274)] total 4
+total() time 0.003s
+c_now() time 0.0013s
+beam root total 4 c 4
+level 0: beam totals [6, 6, 6, 7, 7, 8]  c [6, 6, 6, 7, 7, 8]  best 4  children 97  elapsed 2s
+level 1: beam totals [5, 5, 5, 5, 5, 5]  c [5, 5, 5, 5, 5, 5]  best 4  children 609  elapsed 30s
+level 2: beam totals [4, 4, 4, 4, 4, 4]  c [4, 4, 4, 4, 4, 4]  best 4  children 571  elapsed 53s
+level 3: beam totals [4, 4, 4, 4, 4, 4]  c [3, 3, 3, 4, 4, 4]  best 4  children 550  elapsed 70s
+level 4: beam totals [6, 6, 6, 6, 6, 6]  c [5, 5, 5, 5, 5, 5]  best 4  children 466  elapsed 83s
+level 5: beam totals [5, 5, 5, 5, 5, 5]  c [4, 4, 4, 4, 4, 4]  best 4  children 492  elapsed 106s
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d10D5/r5/c4/run.py", line 11, in <module>
+    exec(compile(open(C4 + '/beam.py').read(), 'beam.py', 'exec'), G)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "beam.py", line 59, in <module>
+    write_state(sg, nn, out)
+    ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "ejc.py", line 116, in write_state
+    f.write(' '.join(tok[:4]) + ' %d\n' % STATS_T + ' '.join(tok[5:7]) + '\n')
+                                          ^^^^^^^
+NameError: name 'STATS_T' is not defined. Did you mean: 'STATS'?

@@ -1,0 +1,14 @@
+start best 4 from /home/user/degree-diameter/research/squads/d10D5/r5/S5_c0.lift2.sol, ITERS=2000000 BUDGET=1080
+run 1 T0=0.18 SWAPP=0.05 PTARG=0.6 SEED=7001 ITERS=2000000 anneal=81s: SCORE 4 (4, 0, 0) 
+run 2 T0=0.18 SWAPP=0.04 PTARG=0.6 SEED=7002 ITERS=2000000 anneal=89s: SCORE 4 (4, 0, 0) 
+run 3 T0=0.25 SWAPP=0.06 PTARG=0.7 SEED=7003 ITERS=2000000 anneal=107s: SCORE 4 (4, 0, 0) 
+run 4 T0=0.35 SWAPP=0.03 PTARG=0.6 SEED=7004 ITERS=2000000 anneal=92s: SCORE 4 (4, 0, 0) 
+run 5 T0=0.18 SWAPP=0.04 PTARG=0.6 SEED=7005 ITERS=2000000 anneal=86s: SCORE 4 (4, 0, 0) 
+run 6 T0=0.35 SWAPP=0.05 PTARG=0.6 SEED=7006 ITERS=2000000 anneal=96s: SCORE 4 (4, 0, 0) 
+run 7 T0=0.18 SWAPP=0.06 PTARG=0.6 SEED=7007 ITERS=2000000 anneal=94s: SCORE 4 (4, 0, 0) 
+run 8 T0=0.18 SWAPP=0.05 PTARG=0.6 SEED=7008 ITERS=2000000 anneal=79s: SCORE 4 (4, 0, 0) 
+run 9 T0=0.25 SWAPP=0.04 PTARG=0.6 SEED=7009 ITERS=2000000 anneal=94s: SCORE 4 (4, 0, 0) 
+run 10 T0=0.35 SWAPP=0.04 PTARG=0.6 SEED=7010 ITERS=2000000 anneal=89s: SCORE 4 (4, 0, 0) 
+run 11 T0=0.18 SWAPP=0.03 PTARG=0.7 SEED=7011 ITERS=2000000 anneal=88s: SCORE 4 (4, 0, 0) 
+time box reached after 11 runs
+FINAL best SCORE 4, file /home/user/degree-diameter/research/squads/d10D5/r5/c2/best.lift2.sol, runs 11

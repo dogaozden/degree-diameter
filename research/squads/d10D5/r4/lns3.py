@@ -143,6 +143,12 @@ def total(sig):
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
     return c0b + cov + dd, (c0b, cov, dd)
 
+HARD = None; HB = [False]
+if os.environ.get('HARDPAIR'):
+    _t = os.environ['HARDPAIR'].split(); _a, _b = sorted((int(_t[1]), int(_t[2])))
+    _Ar, _Br = (PA, PB) if _t[0] == 'p' else (LA, LB)
+    HARD = (_t[0] == 'p', int(np.nonzero((_Ar == _a) & (_Br == _b))[0][0]))
+    print('hard pair', HARD, flush=True)
 def step(sig, Sset, secs, seed, Phi=(), force=None):
     S = sorted(Sset); T = [int(sig[x]) for x in S]; inS = np.zeros(N, bool); inS[S] = True; inT = np.zeros(N, bool); inT[T] = True
     sinv = np.empty(N, np.int64); sinv[sig] = np.arange(N)
@@ -352,6 +358,9 @@ def step(sig, Sset, secs, seed, Phi=(), force=None):
             else:
                 if not Uv[pid]: continue
                 mt = []
+            if HARD is not None and HARD == (pts_side, pid):
+                if not (mt + rl): return None, None
+                m.AddBoolOr(mt + rl); hard_ok[0] = True; continue
             if force is not None and force == (pts_side, pid):
                 if not (mt + rl): return None, None
                 need(mt + rl); fbv[0] = soft[-1]; hard_ok[0] = True; continue
@@ -486,6 +495,8 @@ def focus(sig):
     bp, bl, rp, rl = bad_ids(sig)
     allb = [(True, int(p)) for p in bp] + [(False, int(p)) for p in bl]
     side, pid = allb[rng.randrange(len(allb))]
+    HB[0] = HARD is not None and HARD in allb
+    if HB[0]: side, pid = HARD
     fl = [f for f in dict.fromkeys(geo_flags(side, pid)) if not ISDEL[f]]
     rng.shuffle(fl)
     if os.environ.get('CHEAP'):   # first-order flags ordered by how many unrouted pairs their flip alone unmixes
@@ -524,8 +535,11 @@ def focus(sig):
     return Sset, phi, f, len(cps)
 tabu = []; FOCUS = int(os.environ.get('FOCUS', 0))
 best = cur; t0 = time.time(); it = 0
+RESET = int(os.environ.get('RESET', 0)); bsig, bnu, lastb = sig.copy(), nu.copy(), 0   # RESET=k: back to the best state after k its without a new best
 while cur > 0 and time.time() - t0 < secs:
     it += 1
+    if RESET and it - lastb > RESET and cur > best:
+        sig, nu[:] = bsig.copy(), bnu; set_unmixed(nu); cur = best; lastb = it; print('reset to best', best, flush=True)
     if FOCUS:
         Sset, phi, ff, ncp = focus(sig)
     else:
@@ -539,9 +553,10 @@ while cur > 0 and time.time() - t0 < secs:
     c2, p2 = total(new)
     nfl = int((nu != nu_old).sum())
     print('it %d |S| %d |PHI| %d model %s exact %d %s flips %d (cur %d) %.1fs' % (it, len(Sset), len(phi), info, c2, p2, nfl, cur, time.time() - tb), flush=True)
-    if c2 <= cur or (FOCUS and float(os.environ.get('FT', 0)) > 0 and rng.random() < np.exp(-(c2 - cur) / float(os.environ['FT']))):
+    kick = FOCUS and HB[0]
+    if kick or c2 <= cur or (FOCUS and float(os.environ.get('FT', 0)) > 0 and rng.random() < np.exp(-(c2 - cur) / float(os.environ['FT']))):
         sig, cur = new, c2
-        if cur < best or cur == 0: best = cur; write(sig)
+        if cur < best or cur == 0: best = cur; write(sig); bsig, bnu, lastb = sig.copy(), nu.copy(), it
     else:
         nu[:] = nu_old; set_unmixed(nu)
 if cur == best: write(sig)

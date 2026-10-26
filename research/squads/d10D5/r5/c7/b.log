@@ -1,0 +1,143 @@
+unmixed pairs: points 63 lines 81
+start 4 (4, 0, 0)
+  best flip candidates [(6, 2905), (6, 210), (6, 2673), (7, 3137), (7, 1815)]
+flip 2905: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(6, 2673), (6, 210), (7, 3137), (7, 1815), (8, 3094)]
+flip 2673: after flip 6 (6, 0, 0) -> repaired 5 (cur 4)
+  best flip candidates [(4, 1415), (7, 210), (7, 1121), (8, 1815), (8, 1167)]
+flip 1415: after flip 4 (4, 0, 0) -> repaired 4 (cur 5)
+  best flip candidates [(6, 210), (7, 2680), (7, 1815), (7, 1430), (8, 2749)]
+flip 210: after flip 6 (6, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(7, 2680), (7, 1815), (7, 1430), (8, 2661), (8, 1270)]
+flip 2680: after flip 7 (7, 0, 0) -> repaired 6 (cur 4)
+  best flip candidates [(7, 1430), (7, 1815), (8, 2749), (8, 1626), (8, 2661)]
+flip 1430: after flip 7 (7, 0, 0) -> repaired 7 (cur 4)
+  best flip candidates [(7, 1815), (8, 3094), (8, 2661), (8, 2099), (8, 2749)]
+flip 1815: after flip 7 (7, 0, 0) -> repaired 6 (cur 4)
+|S| 70 model (2, 889, 10374, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 969, 11395, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.7s
+|S| 70 model (2, 895, 10059, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 997, 12974, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 923, 11463, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 912, 8616, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.4s
+|S| 70 model (2, 972, 12587, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 853, 12524, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 949, 11838, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 892, 11241, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 924, 10349, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 932, 10778, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 915, 14580, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 871, 12494, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.1s
+|S| 70 model (2, 995, 13405, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 933, 10992, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 1009, 13170, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.1s
+|S| 70 model (2, 961, 13262, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 931, 10592, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 959, 11259, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 890, 10721, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 961, 13379, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 912, 12200, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.7s
+|S| 70 model (2, 897, 10659, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.5s
+|S| 70 model (2, 942, 10946, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 916, 13205, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 974, 12496, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 964, 9114, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 939, 11783, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 931, 11962, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 944, 12885, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.1s
+|S| 70 model (2, 983, 11339, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 932, 9232, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 896, 11434, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 947, 10930, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 916, 10646, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 895, 13985, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 979, 11789, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.8s
+|S| 70 model (2, 922, 11883, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 876, 10310, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.5s
+|S| 70 model (2, 902, 9086, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 1000, 17049, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.8s
+|S| 70 model (2, 951, 12787, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 918, 10564, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 927, 10053, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 887, 12407, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.8s
+|S| 70 model (2, 939, 13190, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.8s
+|S| 70 model (2, 929, 9637, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 944, 10287, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 926, 9955, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 944, 11851, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 909, 8428, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 947, 8301, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 1020, 10312, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.5s
+|S| 70 model (2, 951, 8264, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 929, 11484, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 912, 10758, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 953, 11857, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 965, 12617, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 966, 10009, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.5s
+|S| 70 model (2, 933, 9880, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 969, 13427, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 900, 14274, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 926, 10107, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 920, 11143, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 983, 12283, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 925, 8160, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 931, 13932, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.1s
+|S| 70 model (2, 877, 11303, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 972, 11919, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.5s
+|S| 70 model (2, 921, 10818, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 985, 10194, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 889, 12584, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 1017, 9104, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 911, 9099, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 2.9s
+|S| 70 model (2, 930, 11429, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 928, 14352, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 993, 11331, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.6s
+|S| 70 model (2, 969, 13405, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 989, 12339, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 922, 12046, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 951, 8693, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 861, 9530, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 943, 12907, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.3s
+|S| 70 model (2, 892, 12947, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 943, 11607, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 923, 13268, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 952, 11528, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 949, 10429, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.9s
+|S| 70 model (2, 1008, 10595, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 964, 11654, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.5s
+|S| 70 model (2, 924, 11628, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 893, 13765, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 934, 9678, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 971, 10073, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 865, 9296, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.0s
+|S| 70 model (2, 931, 9335, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.1s
+|S| 70 model (2, 1026, 12673, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.6s
+|S| 70 model (2, 991, 11410, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.2s
+|S| 70 model (2, 961, 15142, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 954, 13263, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.6s
+|S| 70 model (2, 914, 13720, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 927, 10724, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.3s
+|S| 70 model (2, 956, 13313, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.2s
+|S| 70 model (2, 896, 14129, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.4s
+|S| 70 model (2, 927, 11703, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 972, 11589, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 3.4s
+|S| 70 model (2, 927, 10901, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 950, 11965, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.0s
+|S| 70 model (2, 1024, 12891, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 6.1s
+|S| 70 model (2, 1010, 13161, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.2s
+|S| 70 model (2, 925, 7670, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.0s
+|S| 70 model (2, 960, 13565, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.3s
+|S| 70 model (2, 1002, 11819, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.1s
+|S| 70 model (2, 850, 9605, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.6s
+|S| 70 model (2, 997, 11093, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.2s
+|S| 70 model (2, 958, 11710, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.4s
+|S| 70 model (2, 954, 11792, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.3s
+|S| 70 model (2, 965, 11990, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.1s
+|S| 70 model (2, 939, 10956, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.6s
+|S| 70 model (2, 953, 14306, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 6.1s
+|S| 70 model (2, 868, 12084, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.1s
+|S| 70 model (2, 924, 9644, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.0s
+|S| 70 model (2, 976, 11909, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 5.4s
+|S| 70 model (2, 952, 10429, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 4.7s
+|S| 70 model (2, 998, 17357, 'OPTIMAL') exact 4 (4, 0, 0) (cur 4) 7.8s
+final 4 (4, 0, 0)

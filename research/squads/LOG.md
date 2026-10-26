@@ -91,3 +91,25 @@ CP-SAT on sigma with coverage, D1 and all unmixed pairs' routes as constraints, 
 step directly; its eight negative results are what moved the search off the 10th flag.
 Later the same session: a second FLAGDEL flag (398:292) on top of the 4,838 state gave **4,840, apsp VALID**
 (research/squads/d10D5/hubs/checks/d10D5_n4840_CHECK.md), again closed by lns2.py best-flip moves (4 -> 3 -> 1 -> 0).
+
+## 2026-10-25/26 ~23:58–01:00 UTC, cell-10-5 resume 4 (session_01ThanGg64Z6Jg1KgXK34ssq), goal (10,5) > 4,840, round 5
+
+Goal: close the coset-0 endgame of a third FLAGDEL conversion (4,842). Before the round Opus found and fixed a coverage
+model bug (converted flags were credited with routes through their own deleted edge; the {1,6,5} "4-pair" state of
+resume 3 really had 4 more holes), rewired one hub edge so that state was truly at 4, and wrote lns3.py (exact CP-SAT
+with sigma and nu both variable). Scorer: r5/score.sh (true cost, exact BFS at 0). Cards (research/squads/d10D5/r5/):
+- c1 WalkSAT-style focused nu moves in C (dmfast_fd.c + WALK/TABU): 4, no improvement; noise drives cost to 100-350.
+- c2 iterated reheating of the dmfast annealer (11 short runs, TEMP0 0.18-0.35): 4.
+- c3 lns3 FOCUS with uphill moves (FW=4, FT=1.0): **3**; the only card that moved.
+- c4 exhaustive flip + single-swap ejection chains (DFS depth 3, beam to depth 5): 4.
+- c5 gentle conversion from the 4,840 state (K4, low-temperature penalty annealing): 31, no progress.
+- c6 standard pipeline on S4 ({1,6,4}): 10.
+- c7 lns2 best-flip with a Metropolis temperature (and WSCORE): 4.
+- c8 exact nu-only flip tree with a hitting-set bound: complete to 7 flips, no improvement at all (every prefix 4).
+Opus during/after the round: hub routes added to the coset-0 models (pairs (p_i, u on l_j) with a hub edge are
+covered in every sheet; ~600 pairs were wrongly constrained); lns3 from c3's 3-state with hub-aware models went
+3 -> 2 -> 1 (two seeds); exact BFS confirms one bad pair left, (283, 339) with 283 the converted flag's freed point
+(nu-only). On that 1-state: a nu-only CP-SAT model with 450 free flags is optimal at 1; flip-and-route (lastpair.py)
+finds no flip whose new bad pairs can all be routed; lns3 with the pair held as a hard constraint (HARDPAIR) descends
+to 3. Verdict: the squad's breadth confirmed the basin is deep for every single-mechanism method; the one idea that
+worked (joint sigma+nu exact moves with uphill acceptance) was kept and evolved by Opus.
