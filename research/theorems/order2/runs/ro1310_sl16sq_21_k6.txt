@@ -1,0 +1,8 @@
+group prod sl 16 poly x^4+x+1 sl 16 poly x^4+x+1 x Z_21, N=349574400, identity 20568240, H order 51, rows 6854400, threads 1, setup 17.28s
+wide rows: HW order 255, rows 1370880, setup 33.38s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(15,6,15,14) (index 3935), z -> 5 z on Z_21
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 14 (+e); mu = 35.52, mu/k = 5.92, fixed-point misses ~ 1.02
+RANDORB d=13 D=10 group=prod sl 16 poly x^4+x+1 sl 16 poly x^4+x+1 x Z_21 N=349574400 k=6 m=2 f=1 fix=14 samples=16 min=23 p1=23 p10=26 median=57 mean=29131529.12 var=5940368519640788.0 mu=35.52 time=16.5
+RANDORB hist (cost/k): 0 0 0 1 1 3 0 1 1 2 0 1 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 3
+RANDORB cost0=0 of 16 (P=0); cost counts 0..24: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+done

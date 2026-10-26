@@ -4,3 +4,10 @@ haar_sym
 hcsl
 hc2
 haarcheck_psl
+# live anneal logs (rewritten while running); snapshots are committed as *.snap.log
+runs/raise13/*.log
+!runs/raise13/*.snap.log
+
+# raise13r3: live anneal logs (rewritten while running); snapshots are committed as *.snap.log
+runs/raise13r3/*.log
+!runs/raise13r3/*.snap.log

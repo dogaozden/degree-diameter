@@ -1,0 +1,15 @@
+group sl 64 poly x^6+x+1 x Z_13, N=3407040, identity 52416, H order 63, rows 54080, threads 1, setup 0.07s
+wide rows: HW order 117, rows 29120, setup 0.14s
+alpha: Frobenius x -> x^2 on entries, z -> 4 z on Z_13
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 35.46, mu/k = 5.91, fixed-point misses ~ 0.89
+start cost=664
+t=30 steps=559 evals=4473 cost=20 best=6 T=0.53
+t=60 steps=1144 evals=9153 cost=1 best=1 T=0.19
+t=90 steps=1748 evals=13985 cost=1 best=1 T=0.15
+t=120 steps=2361 evals=18889 cost=1 best=1 T=0.15
+t=150 steps=2972 evals=23777 cost=1 best=1 T=0.15
+t=180 steps=3555 evals=28441 cost=2 best=1 T=0.15
+t=210 steps=4143 evals=33145 cost=2 best=1 T=0.53
+RESULT d=13 D=8 group=sl 64 poly x^6+x+1 x Z_13 N=3407040 best=0 evals=37185 time=235.5 orbit k=6 m=2 f=1 fix=5
+full diameter check: OK
+wrote /tmp/claude-0/-home-user-degree-diameter/58e8cabc-b55f-55a3-910c-be10e616a47b/scratchpad/runs/d13D8_sl_64_13_orb6frob_s3.txt

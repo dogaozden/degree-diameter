@@ -1,0 +1,47 @@
+{
+ "cost": 0,
+ "levels": [
+  6,
+  31,
+  156,
+  781,
+  3638,
+  11489,
+  15600
+ ],
+ "census": {
+  "2": {
+   "words": 60,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "4": {
+   "words": 1500,
+   "twisted": 0,
+   "involutive": 0,
+   "twisted_relators": 0.0,
+   "involutive_relators": 0.0
+  },
+  "6": {
+   "words": 37500,
+   "twisted": 1344,
+   "involutive": 0,
+   "twisted_relators": 56.0,
+   "involutive_relators": 0.0
+  }
+ },
+ "shots_mean": 6.009615384615385,
+ "shots_var": 5.451061390532544,
+ "shots_zero_exact_length": 16,
+ "file": "sols/d6D8_sl_25_1_orb2f0_s1.txt",
+ "group": "sl 25 poly x^2+2 x Z_1",
+ "N": 15600,
+ "d": 6,
+ "D": 8,
+ "symmetric_frame": true,
+ "fix": 24,
+ "anti": 650,
+ "involutions": 2
+}
