@@ -146,3 +146,30 @@ This round works on (a). Tools: research/squads/cells/raise-d5D7-r3/ (bc2.c, bc2
 4. **Calibration at V about 2,640-2,690** (120 s): 2+2 on A5xZ11 (660): best 4 (1 4 4 1), 6 (2 3 3 2). 2+2 on PSL(2,7)xZ4
    (672): 11. 1+1 Haar on A5xZ22 (1,320): 1, and on PSL(2,7)xZ8 (1,344): 1. So 2+2 is harder than 1+1 at equal V, but
    not by much; the wall lies between V = 2,690 and V = 3,136.
+
+5. **The 2+2 family is not the lever with these methods.** Plain 2+2 annealing (bc2f, 120 s) reaches cost 36-46 on the
+   order-784..798 groups, and 2,400 s runs sit at 35-37 with no progress after 10 minutes.
+6. **Orbit-symmetric 2+2 with a genuinely small fixed set.** Round 1's |Fix| = 6 diagnostic is reached by a product
+   automorphism alpha(x) = c_g(pi_H x) * (pi_Z x)^r, with g of order 3 in H and r^3 = 1 mod |Z| (`aut_prod.py`).
+   This gives |Fix| = 6 on S5xZ7, A5xZ14, SL(2,5)xZ7 (all 840) and AGL(1,7)xZ19 (798). Symmetric 2+2 (bc2sf, 600 s):
+   best 86-104 on S5xZ7 and AGL(1,7)xZ19, 55-77 on A5xZ14, and 32-38 on SL(2,5)xZ7. The pure inner conjugations
+   (|Fix| 15-114) were worse still (112-718). None is solved.
+7. **Control: the record group itself, plain Haar (K = 1), bc2f.** S5xZ13 (N = 1,560, the record group) reaches cost 9-10
+   after 10 minutes on two seeds. Round 1 saw 9 at 120 s. Plain annealing does not reproduce the record here.
+8. **Where the lead sits in the other branch.** The voltage-lift session (claude/voltage-lifts-search-6lfotq,
+   research/lifts/RESULTS.md) ran rich and wide sweeps over lift orders 3,112-3,132 (2+2 bases included, since
+   enum_bases covers h = 2 for degree 5) and got best cost 10. It also states that "larger bases can only win through
+   structure", since the random model gives them no first-moment advantage. So the 2+2 family near 3,120 is largely
+   covered by that session. The record itself came from its haar_cell sweep: about 15 anneals of 300 s, with the
+   record group ranked 22nd of 874 by screening.
+
+### Judgement (round 3)
+- No hit at V >= 3,122 in the families tried this round: 2+2 over 784-840 (plain and symmetric, |Fix| 6 and 15-114),
+  and the Haar control on the record group.
+- Symmetric 2+2 with |Fix| = 6 (the record's diagnostic) is the best 2+2 family here (best 32), but it is not close.
+- What is left and not done: a broad multi-seed sweep of plain Haar graphs over non-abelian groups of order 1,561-1,620
+  with bc2f (the lifts session did this with haar_gen3 and found nothing above 1,560); 2-groups of order 1,568-1,700
+  (no group library here; round 2's lead b); and orbit-symmetric 2+2 on groups where Z_n has an order-3 scaling with
+  |Fix| 6 and |G| in 781..800 (none of the candidates here).
+- This is a stop, not a proof: the cell may still move with a much larger search than this box can run. The coordinator
+  decides whether a bigger model is worth it.

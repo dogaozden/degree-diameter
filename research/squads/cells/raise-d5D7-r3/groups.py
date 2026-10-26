@@ -191,6 +191,18 @@ def gen_table(name):
     if name == "psl27xz8":
         m, rows = sl_or_psl_subgroup(7, True)
         return product_table(None, 8, prebuilt=(m, rows))
+    if name == "s5xz13":
+        return product_table(None, 13, prebuilt=closure_table(perm_group([(1, 0, 2, 3, 4), (1, 2, 3, 4, 0)])))
+    if name == "s4xz66":
+        return product_table(None, 66, prebuilt=closure_table(perm_group([(1, 0, 2, 3), (1, 2, 3, 0), (0, 2, 1, 3)])))
+    if name == "agl18xz28":
+        return product_table(affine_gf(2, 3, [1, 1, 0]), 28)
+    if name == "agl19xz22":
+        return product_table(affine_gf(3, 2, [1, 0]), 22)
+    if name == "agl17xz38":
+        return product_table(affine_gf(7, 1, [0]), 38)
+    if name == "sl23xz66":
+        return product_table(None, 66, prebuilt=sl_or_psl_subgroup(3, False))
     if name == "sl25xz7":
         m, rows = sl_or_psl_subgroup(5, False)
         return product_table(None, 7, prebuilt=(m, rows))
