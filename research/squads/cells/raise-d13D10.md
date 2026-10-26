@@ -154,3 +154,27 @@ Rungs run, all unsolved, with the independent verdicts not reached:
 2. Untried groups above the record: PSL(2,173) × Z133 (688.6M, predicted about 2.5 h), PSL(2,281) × Z31 (687.8M). The
    PGL(2,q) × Z_n rungs need an independent PGL checker before any hit can count.
 3. PSL(2,125) × Z349 (681.6M): needs a prime-power PSL checker; the current haarcheck_psl is prime-only.
+
+## Round 3 (raise3-13-10, Haiku worker, from 2026-10-26 01:24 UTC)
+
+**Bar.** The brief's 677,714,400 is stale. The verified record in the repo is **681,406,800** (SL(2,149) × Z103,
+`research/frontier/sols/d13D10_sl_149_103_orb3_s1.txt`, round 1, on claude/raise-d13d10-record-round2-ugreep and
+claude/raise-d13d10-record-ela51t). A candidate must beat 681,406,800 (N > 340,703,400). Round 3 branch:
+claude/raise-d13d10-record-round3-hg4bvb, which starts from the round-2 tree (merged).
+
+**Diagnosis from round 2 (the lead this round starts from).** `cost` counts uncovered *elements* (haar_sym prints raw
+uncovered counts; free α-orbits miss elements in triples). So cost 1 = exactly one uncovered element, and it must be
+α-fixed. Round 2 had three k = 3, f = 1 rungs above the record stop at cost 1 (SL 103×313 at 9,985 evals, SL 137×133
+at 6,529 evals) and the k = 5 PSL 131×311 at cost 1 (35k evals). This is the same failure STRUCTURE.md §7 describes at
+(11,8), which ORBW = 5 solved. Round 2 never tried ORBW on k = 3.
+
+**Route for round 3, in order.**
+1. ORBW = 3 (an uncovered fixed element weighs as much as a free orbit) on the two cost-1 k = 3 checkpoints above
+   the record: SL 103×313 (683,982,624) and SL 137×133 (683,943,456). Resumed from the round-2 checkpoints under seed 2,
+   secs = checkpoint elapsed + 5,400 s (haar_sym's budget counts from the original start). Jobs: runs/raise3_13_10/jobsA.txt,
+   jobsB.txt. Logs: runs/raise3_13_10/out/.
+2. Untried k = 3 groups above the record (planner, 2N): PSL(2,173) × Z133 (688.6M, ≈1.7e4 evals), PSL(2,281) × Z31
+   (687.8M, ≈1.8e4). Both q prime, so haarcheck_psl verifies them.
+
+**Setup.** Binaries built from the merged sources: `haar_sym` (research/structured), `tools/hcsl`, `tools/hc2` (SL checkers
+from ../frontier/haarcheck_sl.c and haarcheck2.c), `tools/haarcheck_psl`. Two runs at a time (≈3.4 GB RSS each), THREADS=1.
