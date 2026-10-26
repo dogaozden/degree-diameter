@@ -98,11 +98,16 @@ Logs in research/structured/runs/raise-d9D9-r3/. Solutions (if any) would go to 
 
 | group | N | μ | |Fix| | seed | variant | status |
 |---|---|---|---|---|---|---|
-| psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 51 | RESTART=1 | running |
-| prod psl 3 sl 13 67 | 1,755,936 | 31.8 | 35 | 41 | RESTART=1 | running (round 2 gave it 1 h only) |
-| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 43 | RESTART=1 | running (continues round 2's best trajectory) |
+| psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 51 | RESTART=1 | 9,000 s; best 15 at 7,300 s (see below) |
+| prod psl 3 sl 13 67 | 1,755,936 | 31.8 | 35 | 41 | RESTART=1 | 9,000 s, **best 14**, 2.59·10⁶ evals, no solution |
+| prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 43 | RESTART=1 | 9,000 s, **best 4**, 2.99·10⁶ evals, no solution |
 
-(The table is updated below as the runs finish.)
+Round 3 results so far: best cost 4 (prod sl 9 psl 17 1, the lowest cost of rounds 2 and 3 on that group, down from 5 in
+round 2), 14 (prod psl 3 sl 13 67, down from 20 in round 2's 1 h run), 15 for psl 73 × Z_9 at 7,300 s.
+No run reached cost 0, so nothing was written to research/frontier/sols/.
+
+Follow-up launched at about 04:10 UTC on the two free cores: prod sl 9 psl 17 1, seeds 61 and 62, RESTART=1, 9,000 s each.
+Their logs are in runs/raise-d9D9-r3/.
 
 ### Round 3: anyn screen result (window 1,749,889–1,766,000; RANDORB 300 samples each)
 
