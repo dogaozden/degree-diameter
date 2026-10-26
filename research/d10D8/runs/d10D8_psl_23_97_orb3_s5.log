@@ -1,0 +1,31 @@
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.02s
+wide rows: HW order 194, rows 3036, setup 0.04s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+start cost=106
+t=30 steps=8642 evals=69137 cost=19 best=18 T=0.19
+t=60 steps=17430 evals=139441 cost=18 best=18 T=0.15
+t=90 steps=26258 evals=210065 cost=21 best=18 T=0.29
+t=120 steps=35049 evals=280393 cost=21 best=18 T=0.15
+t=150 steps=43674 evals=349393 cost=21 best=18 T=0.29
+t=180 steps=52411 evals=419289 cost=21 best=18 T=0.15
+t=210 steps=61421 evals=491369 cost=24 best=18 T=0.29
+t=240 steps=70125 evals=561001 cost=21 best=18 T=0.15
+t=270 steps=78799 evals=630393 cost=18 best=18 T=0.29
+t=300 steps=87612 evals=700897 cost=18 best=18 T=0.15
+t=330 steps=96247 evals=769977 cost=18 best=18 T=0.29
+t=360 steps=104953 evals=839625 cost=15 best=15 T=0.15
+t=390 steps=113709 evals=909673 cost=15 best=15 T=0.15
+t=420 steps=122239 evals=977913 cost=21 best=15 T=0.82
+t=450 steps=130172 evals=1041377 cost=18 best=15 T=0.15
+t=480 steps=136950 evals=1095601 cost=25 best=15 T=0.82
+t=510 steps=144377 evals=1155017 cost=18 best=15 T=0.15
+t=540 steps=152615 evals=1220921 cost=15 best=15 T=0.82
+t=570 steps=160602 evals=1284817 cost=15 best=15 T=0.15
+t=600 steps=168762 evals=1350097 cost=15 best=15 T=0.82
+t=630 steps=177141 evals=1417129 cost=15 best=15 T=0.15
+t=660 steps=184398 evals=1475185 cost=24 best=15 T=0.82
+t=690 steps=191692 evals=1533537 cost=22 best=15 T=0.15
+t=720 steps=199097 evals=1592777 cost=15 best=15 T=0.82
+t=750 steps=206159 evals=1649273 cost=15 best=15 T=0.15
+t=780 steps=213078 evals=1704625 cost=15 best=15 T=0.82

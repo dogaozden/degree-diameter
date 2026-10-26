@@ -1,0 +1,141 @@
+## N=588672 spec=[prod sl 3 sl 7 73]
+RANDORB d=10 D=8 group=prod sl 3 sl 7 x Z_73 N=588672 k=3 m=3 f=1 fix=35 samples=1000 min=68 p1=99 p10=160 median=430 mean=23453.25 var=8411891589.1 mu=63.12 time=1.1
+## rc=0
+## N=588984 spec=[psl 23 97]
+RANDORB d=10 D=8 group=psl 23 x Z_97 N=588984 k=3 m=3 f=1 fix=11 samples=1000 min=36 p1=51 p10=81 median=136 mean=1487.72 var=181366400.0 mu=63.46 time=0.7
+## rc=0
+## N=589968 spec=[psl 17 241]
+RANDORB d=10 D=8 group=psl 17 x Z_241 N=589968 k=3 m=3 f=1 fix=8 samples=1000 min=61 p1=76 p10=114 median=217 mean=1805.26 var=147985773.7 mu=64.54 time=0.5
+## rc=0
+## N=591864 spec=[pgl 13 271]
+RANDORB d=10 D=8 group=pgl 13 x Z_271 N=591864 k=3 m=3 f=1 fix=11 samples=1000 min=60 p1=96 p10=158 median=350 mean=34665.08 var=8669592039.3 mu=66.67 time=6.3
+## rc=0
+## N=591864 spec=[sl 13 271]
+RANDORB d=10 D=8 group=sl 13 x Z_271 N=591864 k=3 m=3 f=1 fix=11 samples=1000 min=48 p1=109 p10=156 median=298 mean=3051.39 var=504519503.4 mu=66.67 time=3.1
+## rc=0
+## N=592704 spec=[prod psl 7 sl 8 7]
+RANDORB d=10 D=8 group=prod psl 7 sl 8 poly x^3+x+1 x Z_7 N=592704 k=3 m=3 f=1 fix=26 samples=1000 min=35 p1=51 p10=76 median=127 mean=8867.03 var=4170547485.2 mu=67.63 time=1.0
+## rc=0
+## N=599508 spec=[psl 27 61]
+RANDORB d=10 D=8 group=psl 27 poly x^3+2x+1 x Z_61 N=599508 k=3 m=3 f=1 fix=26 samples=1000 min=45 p1=67 p10=92 median=158 mean=902.30 var=52359179.5 mu=75.83 time=0.7
+## rc=0
+## N=600480 spec=[prod psl 3 psl 9 139]
+RANDORB d=10 D=8 group=prod psl 3 psl 9 poly x^2+1 x Z_139 N=600480 k=3 m=3 f=1 fix=26 samples=1000 min=116 p1=176 p10=275 median=759 mean=38645.50 var=13665237759.0 mu=77.06 time=2.1
+## rc=0
+## N=601920 spec=[prod sl 3 sl 11 19]
+RANDORB d=10 D=8 group=prod sl 3 sl 11 x Z_19 N=601920 k=3 m=3 f=1 fix=71 samples=1000 min=51 p1=78 p10=113 median=217 mean=23897.33 var=9611131182.3 mu=78.92 time=1.1
+## rc=0
+## N=604800 spec=[prod sl 5 sl 9 7]
+RANDORB d=10 D=8 group=prod sl 5 sl 9 poly x^2+1 x Z_7 N=604800 k=3 m=3 f=1 fix=107 samples=1000 min=54 p1=80 p10=128 median=303 mean=16004.39 var=6722983377.6 mu=82.74 time=1.3
+## rc=0
+## N=604968 spec=[pgl 13 277]
+RANDORB d=10 D=8 group=pgl 13 x Z_277 N=604968 k=3 m=3 f=1 fix=11 samples=1000 min=78 p1=117 p10=193 median=430 mean=42962.79 var=10897720935.4 mu=82.97 time=6.6
+## rc=0
+## N=604968 spec=[sl 13 277]
+RANDORB d=10 D=8 group=sl 13 x Z_277 N=604968 k=3 m=3 f=1 fix=11 samples=1000 min=87 p1=132 p10=189 median=352 mean=1975.33 var=145558309.7 mu=82.97 time=3.1
+## rc=0
+## N=607680 spec=[prod sl 3 sl 5 211]
+RANDORB d=10 D=8 group=prod sl 3 sl 5 x Z_211 N=607680 k=3 m=3 f=1 fix=35 samples=1000 min=221 p1=307 p10=542 median=2545 mean=41021.15 var=12549921799.0 mu=86.72 time=1.2
+## rc=0
+## N=608832 spec=[prod psl 3 sl 7 151]
+RANDORB d=10 D=8 group=prod psl 3 sl 7 x Z_151 N=608832 k=3 m=3 f=1 fix=17 samples=1000 min=127 p1=195 p10=339 median=978 mean=35372.60 var=12549871270.3 mu=88.35 time=1.9
+## rc=0
+## N=608832 spec=[prod sl 3 psl 7 151]
+RANDORB d=10 D=8 group=prod sl 3 psl 7 x Z_151 N=608832 k=3 m=3 f=1 fix=17 samples=1000 min=149 p1=183 p10=313 median=882 mean=28178.14 var=9912670127.7 mu=88.35 time=2.0
+## rc=0
+## N=609336 spec=[pgl 27 31]
+RANDORB d=10 D=8 group=pgl 27 poly x^3+2x+1 x Z_31 N=609336 k=3 m=3 f=1 fix=26 samples=1000 min=57 p1=73 p10=105 median=190 mean=37577.61 var=10093211219.1 mu=89.07 time=0.7
+## rc=0
+## N=609336 spec=[sl 27 31]
+RANDORB d=10 D=8 group=sl 27 poly x^3+2x+1 x Z_31 N=609336 k=3 m=3 f=1 fix=53 samples=1000 min=61 p1=73 p10=101 median=164 mean=1166.61 var=361234177.5 mu=89.07 time=0.6
+## rc=0
+## N=614880 spec=[prod psl 5 psl 7 61]
+RANDORB d=10 D=8 group=prod psl 5 psl 7 x Z_61 N=614880 k=3 m=3 f=1 fix=8 samples=1000 min=81 p1=96 p10=156 median=318 mean=14640.50 var=6771152323.4 mu=97.33 time=1.1
+## rc=0
+## N=614880 spec=[prod sl 4 psl 7 61]
+RANDORB d=10 D=8 group=prod sl 4 poly x^2+x+1 psl 7 x Z_61 N=614880 k=3 m=3 f=1 fix=8 samples=1000 min=69 p1=102 p10=153 median=303 mean=14578.51 var=6660263225.9 mu=97.33 time=1.2
+## rc=0
+## N=616080 spec=[pgl 16 151]
+RANDORB d=10 D=8 group=pgl 16 poly x^4+x+1 x Z_151 N=616080 k=3 m=3 f=1 fix=14 samples=1000 min=91 p1=112 p10=159 median=273 mean=1672.22 var=238356529.5 mu=99.20 time=0.9
+## rc=0
+## N=616080 spec=[sl 16 151]
+RANDORB d=10 D=8 group=sl 16 poly x^4+x+1 x Z_151 N=616080 k=3 m=3 f=1 fix=14 samples=1000 min=65 p1=112 p10=160 median=273 mean=1917.16 var=274483713.7 mu=99.20 time=0.9
+## rc=0
+## N=616200 spec=[psl 25 79]
+RANDORB d=10 D=8 group=psl 25 poly x^2+2 x Z_79 N=616200 k=3 m=3 f=1 fix=11 samples=1000 min=70 p1=93 p10=130 median=219 mean=1012.80 var=90395073.0 mu=99.39 time=0.6
+## rc=0
+## N=618072 spec=[pgl 13 283]
+RANDORB d=10 D=8 group=pgl 13 x Z_283 N=618072 k=3 m=3 f=1 fix=11 samples=1000 min=111 p1=150 p10=240 median=484 mean=40896.32 var=10523120705.2 mu=102.36 time=6.9
+## rc=0
+## N=618072 spec=[sl 13 283]
+RANDORB d=10 D=8 group=sl 13 x Z_283 N=618072 k=3 m=3 f=1 fix=11 samples=1000 min=98 p1=164 p10=236 median=426 mean=4115.18 var=794157119.1 mu=102.36 time=3.7
+## rc=0
+## N=618912 spec=[prod psl 3 psl 7 307]
+RANDORB d=10 D=8 group=prod psl 3 psl 7 x Z_307 N=618912 k=3 m=3 f=1 fix=8 samples=1000 min=271 p1=339 p10=641 median=2316 mean=32105.45 var=9980852998.6 mu=103.72 time=8.8
+## rc=0
+## N=619020 spec=[psl 19 181]
+RANDORB d=10 D=8 group=psl 19 x Z_181 N=619020 k=3 m=3 f=1 fix=8 samples=1000 min=81 p1=114 p10=162 median=288 mean=1567.54 var=367421338.0 mu=103.89 time=0.7
+## rc=0
+## N=619200 spec=[prod sl 5 sl 5 43]
+RANDORB d=10 D=8 group=prod sl 5 sl 5 x Z_43 N=619200 k=3 m=3 f=1 fix=35 samples=1000 min=97 p1=116 p10=178 median=487 mean=24170.47 var=10160470644.7 mu=104.19 time=1.4
+## rc=0
+## N=621792 spec=[pgl 17 127]
+RANDORB d=10 D=8 group=pgl 17 x Z_127 N=621792 k=3 m=3 f=1 fix=17 samples=1000 min=103 p1=120 p10=171 median=327 mean=40945.12 var=10745692907.1 mu=108.48 time=0.6
+## rc=0
+## N=621792 spec=[sl 17 127]
+RANDORB d=10 D=8 group=sl 17 x Z_127 N=621792 k=3 m=3 f=1 fix=17 samples=1000 min=94 p1=121 p10=163 median=259 mean=1105.91 var=50685210.8 mu=108.48 time=0.5
+## rc=0
+## N=621984 spec=[pgl 32 19]
+RANDORB d=10 D=8 group=pgl 32 poly x^5+x^2+1 x Z_19 N=621984 k=3 m=3 f=1 fix=32 samples=1000 min=61 p1=86 p10=118 median=178 mean=310.47 var=1087653.6 mu=108.81 time=0.9
+## rc=0
+## N=621984 spec=[sl 32 19]
+RANDORB d=10 D=8 group=sl 32 poly x^5+x^2+1 x Z_19 N=621984 k=3 m=3 f=1 fix=32 samples=1000 min=83 p1=94 p10=118 median=177 mean=289.39 var=526438.2 mu=108.81 time=0.7
+## rc=0
+## N=622944 spec=[prod psl 3 sl 8 103]
+RANDORB d=10 D=8 group=prod psl 3 sl 8 poly x^3+x+1 x Z_103 N=622944 k=3 m=3 f=1 fix=26 samples=1000 min=92 p1=148 p10=221 median=490 mean=28103.94 var=10532015802.4 mu=110.44 time=1.5
+## rc=0
+## N=624960 spec=[prod psl 5 sl 7 31]
+RANDORB d=10 D=8 group=prod psl 5 sl 7 x Z_31 N=624960 k=3 m=3 f=1 fix=17 samples=1000 min=80 p1=103 p10=148 median=273 mean=18386.98 var=8832381716.7 mu=113.93 time=1.3
+## rc=0
+## N=624960 spec=[prod sl 4 sl 7 31]
+RANDORB d=10 D=8 group=prod sl 4 poly x^2+x+1 sl 7 x Z_31 N=624960 k=3 m=3 f=1 fix=17 samples=1000 min=84 p1=111 p10=151 median=285 mean=16450.73 var=8001538555.0 mu=113.93 time=1.2
+## rc=0
+## N=624960 spec=[prod sl 5 psl 7 31]
+RANDORB d=10 D=8 group=prod sl 5 psl 7 x Z_31 N=624960 k=3 m=3 f=1 fix=17 samples=1000 min=72 p1=103 p10=147 median=257 mean=14936.25 var=7058147794.7 mu=113.93 time=1.6
+## rc=0
+## N=625416 spec=[psl 23 103]
+RANDORB d=10 D=8 group=psl 23 x Z_103 N=625416 k=3 m=3 f=1 fix=11 samples=1000 min=81 p1=110 p10=150 median=243 mean=790.23 var=55868803.5 mu=114.73 time=0.6
+## rc=0
+## N=625680 spec=[prod psl 3 psl 11 79]
+RANDORB d=10 D=8 group=prod psl 3 psl 11 x Z_79 N=625680 k=3 m=3 f=1 fix=17 samples=1000 min=77 p1=130 p10=207 median=432 mean=23713.48 var=8787086734.6 mu=115.19 time=1.4
+## rc=0
+## N=630720 spec=[prod psl 3 sl 9 73]
+RANDORB d=10 D=8 group=prod psl 3 sl 9 poly x^2+1 x Z_73 N=630720 k=3 m=3 f=1 fix=53 samples=1000 min=127 p1=204 p10=286 median=699 mean=32122.15 var=11951633997.3 mu=124.38 time=1.8
+## rc=0
+## N=630720 spec=[prod sl 3 psl 9 73]
+RANDORB d=10 D=8 group=prod sl 3 psl 9 poly x^2+1 x Z_73 N=630720 k=3 m=3 f=1 fix=215 samples=1000 min=176 p1=332 p10=623 median=5056 mean=63900.59 var=21494670284.0 mu=124.38 time=1.2
+## rc=0
+## N=631008 spec=[prod psl 3 psl 7 313]
+RANDORB d=10 D=8 group=prod psl 3 psl 7 x Z_313 N=631008 k=3 m=3 f=1 fix=8 samples=1000 min=337 p1=440 p10=808 median=2617 mean=40231.00 var=13677254480.4 mu=124.92 time=9.5
+## rc=0
+## N=633024 spec=[prod psl 3 sl 7 157]
+RANDORB d=10 D=8 group=prod psl 3 sl 7 x Z_157 N=633024 k=3 m=3 f=1 fix=17 samples=1000 min=197 p1=292 p10=457 median=1432 mean=38849.13 var=14161287449.3 mu=128.77 time=2.6
+## rc=0
+## N=633024 spec=[prod sl 3 psl 7 157]
+RANDORB d=10 D=8 group=prod sl 3 psl 7 x Z_157 N=633024 k=3 m=3 f=1 fix=17 samples=1000 min=181 p1=245 p10=409 median=1125 mean=37417.63 var=14206015439.2 mu=128.77 time=2.2
+## rc=0
+## N=636480 spec=[prod psl 3 sl 16 13]
+RANDORB d=10 D=8 group=prod psl 3 sl 16 poly x^4+x+1 x Z_13 N=636480 k=3 m=3 f=1 fix=44 samples=1000 min=112 p1=134 p10=186 median=318 mean=22461.11 var=9121123207.3 mu=135.59 time=1.5
+## rc=0
+## N=637056 spec=[prod sl 3 sl 7 79]
+RANDORB d=10 D=8 group=prod sl 3 sl 7 x Z_79 N=637056 k=3 m=3 f=1 fix=35 samples=1000 min=144 p1=230 p10=334 median=789 mean=30078.52 var=11500528346.1 mu=136.76 time=1.7
+## rc=0
+## N=639360 spec=[prod sl 3 sl 9 37]
+RANDORB d=10 D=8 group=prod sl 3 sl 9 poly x^2+1 x Z_37 N=639360 k=3 m=3 f=1 fix=107 samples=1000 min=140 p1=195 p10=281 median=734 mean=36807.18 var=14518622859.1 mu=141.49 time=1.8
+## rc=0
+## N=639840 spec=[psl 31 43]
+RANDORB d=10 D=8 group=psl 31 x Z_43 N=639840 k=3 m=3 f=1 fix=14 samples=1000 min=96 p1=118 p10=162 median=250 mean=729.66 var=23908920.5 mu=142.50 time=1.0
+## rc=0
+## driver CPU (bash times, user sys):
+0m0.012s 0m0.017s
+1m31.199s 0m0.230s

@@ -22,4 +22,4 @@ checkers() {   # which checkers left a VALID verdict in the log (each has its ow
 cd "$REPO" && git add research/frontier/sols research/structured && git commit -q -m "structured: $(for t in "$@"; do grep -h '^VALID' "$OUT/$t.log" | head -1 | grep -o 'd=[0-9]* D=[0-9]* group=.* vertices=[0-9]*'; done | tr '\n' ';') $(grep -ho "orbit k=[0-9]* m=[0-9]* f=[0-9]*" "$OUT/$1.log" | head -1 | sed "s/orbit //") orbit search [haar_sym full check + $(checkers "$OUT/$1.log") VALID]
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01Ayob3KjJs51WGU95fnUsyn" && git push -q origin HEAD 2>&1 | tail -1
+Claude-Session: https://claude.ai/code/session_01NnsKAMDZQXX7xjRmaRnPsU" && git push -q origin HEAD 2>&1 | tail -1
