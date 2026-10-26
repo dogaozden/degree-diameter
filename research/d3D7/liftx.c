@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
                 while (sscanf(p, "%d%n", &v, &o2) == 1) { vals[0][c++] = v; p += o2; } cnt[0] = c; }
             if (fa) fclose(fa); }
         int volt[256] = {0}, idx[256] = {0};
-        long best = -1, nsol = 0, ntried = 0;
+        long best = -1, nsol = 0, ntried = 0; int bestv[256] = {0};
         for (;;) {
             for (int i = 0; i < r; i++) volt[cot[i]] = vals[i][idx[i]];
             int ok = 1;
@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
             if (ok) {
                 ntried++;
                 long c = cost_of(volt, D, full);
-                if (best < 0 || c < best) best = c;
+                if (best < 0 || c < best) { best = c; memcpy(bestv, volt, sizeof volt); }
                 if (c == 0) { nsol++; if (nsol <= 20) { printf("SOL N=%d id=%d %s volt", N, gid, name);
                     for (int e = 0; e < E; e++) printf(" %d", volt[e]); printf("\n"); } }
             }
@@ -98,6 +98,7 @@ int main(int argc, char **argv) {
             if (i == r) break;
         }
         printf("GROUP N=%d id=%d %s n=%d tried=%ld best=%ld nsol=%ld\n", N, gid, name, k * N, ntried, best, nsol);
+        if (getenv("PRINTBEST") && best > 0) { printf("BEST N=%d id=%d cost=%ld volt", N, gid, best); for (int e = 0; e < E; e++) printf(" %d", bestv[e]); printf("\n"); }
         fflush(stdout);
         for (int i = 0; i < r; i++) free(vals[i]);
         free(mul); free(inv); free(R); free(R2);
