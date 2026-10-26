@@ -40,3 +40,31 @@ Haar values (c11–c15). Learned: blind annealing of lifts of W(13) fails (c06, 
 parity condition works in seconds (director). Next: round 2 evolves the route charts ((20,5) push, 5×F4, 6×F3, 9×F2,
 plain letters for (17,5), (19,5)), tries the MDM lift of W(8) for a (13,5) record, referees MDM, pushes the cubic and
 quartic D=11/12 cells, and checks the literature.
+
+## 2026-10-26, new-cells-beyond, round 2 (rolling, 12 cards, launched 15:45 UTC while round 1 finished)
+
+Same session and branch. Files: research/squads/beyond/r2/ (HEADER.md with the updated found/ruled-out list, d01..d12).
+Cards evolved round 1's best idea (route charts, c04) and the director's MDM lift, plus pushes of the small cells.
+The box ran at load 15–20 (director's billion-vertex Haar checks + cards), which several cards named as the reason
+they stopped early; the next round was cut to four cards.
+
+Cards (best checked value; director re-checked every valid graph):
+- d01 (20,5) push of c04's F5 route chart (Z21/Z22/K4,4 controllers): see below.
+- d02 (20,5) 5 letters × F4; d03 (18,5) 6 letters × F3: see below.
+- d04 (17,5) route chart + plain fifth letter (degree 17), Z23 controller: cost 1.2M after 2,000 steps. Nothing.
+- d05 **(13,5) 11,700** (record; was 11,486): MDM lift of W(8) over Z2 × Z5 with ν, σ_1, σ_2 annealed against a
+  route-aware cost (mdm8.c), 0 far pairs in ~2 min. apsp + bfs_all, rebuilt identically by the director.
+- d06 MDM referee: no gap found in the proof; negative control (one pair failing (A)) gives diameter 6 as predicted;
+  pure (A) not reached at q = 3, 4, 5, 7 (17, 11, 65, 48 failing pairs).
+- d07 (3,11) voltage lifts of cubic bases: best cost 6 at n = 1,152. Nothing valid.
+- d08 (3,12) lifts of Heawood over PSL(2,7) (2,352): cost 62. Nothing valid.
+- d09 **(4,11) 18,480**, **(4,12) 50,160**: Haar SL(2,11)×Z7 / ×Z19 with S = {e} ∪ one 3-orbit (haar_sym).
+- d10 literature: no published bipartite value for any of the 48 cells (wiki unreachable; Comellas' tables stop at
+  Δ ≤ 16, D ≤ 10; LIT.md lists the sources).
+- d11 (18,5) 9 letters × F2: best 244 of 1,552 uncovered. Nothing.
+- d12 (19,5) 4 chart + 3 plain letters at m = 66: sampled cost 32,013. Nothing.
+
+Kept: MDM with route-aware annealing (gave the (13,5) record), haar_sym orbit runs for Δ = 4. Plain-letter route
+charts and F2/F3 charts did not converge in 25-minute boxes on a loaded machine (not ruled out).
+Director during the round: (6,11) 1,971,744, (6,12) 9,303,840, (5,11) 253,080, (5,12) 912,576 with haar_sym (2–3×
+the round-1 card values, solved in seconds at μ ≈ 2–10), and the Haar queue at D = 8..12.

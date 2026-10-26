@@ -6,6 +6,20 @@ cell in the next band: Δ = 17..20 at D = 3..10 (32 cells) and D = 11, 12 at Δ 
 and the comparison with the formula families. As far as we know (literature card r2/d10) no bipartite values have been
 published for these cells, so every value here is a first value, not a record.
 
+## Summary
+
+- **Optimal (Moore graphs), 9 cells:** (17|18|20, 3), (17|18|20, 4), (17|18|20, 6) — incidence graphs of PG(2,q),
+  W(q), H(q) with q = Δ − 1 = 16, 17, 19.
+- **Theorems of the lab, Δ = 19:** (19,3) 624 (fourth hat), (19,4) 10,982 (Theorem A), (19,6) 3,203,968 (Theorem D).
+- **D = 5, new construction:** multi-doubled-matching lifts of W(q) (MDM.md): (18,5) 47,600 and, inside the old
+  table, a record (13,5) 11,700 (was 11,486). (19,5) 52,428 is the k = 1 case (DM on W(16)); (20,5) 75,000 is a
+  route-chart lift over F5 from squad round 1. (17,5) has only the floor 33,792 (the (16,5) graph).
+- **D = 7:** level graphs (polygon covers) of H(13) and H(16), 5.6M–15.7M vertices (classical theorem).
+- **D = 8 .. 12:** Haar graphs of SL(2,p) × Z_n / PSL(2,p) × Z_n with automorphism-orbit generator sets, up to
+  billions of vertices, each checked by an independent low-memory BFS from both sides; the small cells (Δ = 3, 4) by
+  exhaustive or annealed Haar searches.
+- Every value is at least the trivial floor from the neighbouring cells (n_b(Δ,D) ≥ n_b(Δ−1,D), n_b(Δ,D−1)).
+
 ## Upper bounds
 
 M_b(Δ,D) = 2(1 + (Δ−1) + … + (Δ−1)^(D−1)) is the bipartite Moore bound. For D = 5, 7, 8, 9, 10, 11, 12 we use
@@ -70,7 +84,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (3,12) | **1,320** | 16.12 | 8,184 | Haar graph of PSL(2,11), S = {e, a, b} | apsp: c12/checks/apsp_3_12_n1320_psl2_11.txt; director re-run VALID | Haar size law at mu = 5: 2N = 1.61e+03 |
 | (4,12) | **50,160** | 9.44 | 531,434 | Haar graph SL(2,11) x Z19, S = {e} + 1 orbit of size 3 (haar_sym, squad r2/d09); earlier 48,000 metacyclic (r1/c13) | apsp (d09 and director: checks/d4D12_n50160_sl11xZ19.apsp.txt), build_haar2.py, haarcheck_sl | Haar size law at mu = 5: 2N = 6.1e+04 |
 | (5,12) | **912,576** | 8.16 | 11,184,804 | Haar graph PSL(2,97), random S (haar_sym, director); earlier 229,824 (r1/c14) | hcheckpsl and build_haar2.py VALID (checks/d5D12_psl_97_1_s1.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
-| (6,12) | **8,924,736** | 7.31 | 122,070,306 | Haar graph SL(2,47) x Z43, S = 2 free orbits of size 3 (haar_sym ORBIT 3 2 0) | hcheck5 and build_haar2.py VALID (checks/d6D12_sl_47_43_orb3f0_s1.check.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
+| (6,12) | **9,303,840** | 7.62 | 122,070,306 | Haar graph SL(2,71) x Z13, S = 2 free orbits of size 3 (haar_sym ORBIT 3 2 0); earlier 8,924,736 (SL(2,47) x Z43) | hcheck5 VALID (checks/d6D12_sl_71_13_orb3f0_s2.check.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
 | (7,12) | **56,297,592** | 6.47 | 870,712,928 | Haar graph PSL(2,163) x Z13, S = {e} + 2 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d7D12_psl_163_13_orb3_s1.txt) | Haar size law at mu = 5: 2N = 5.6e+07 |
 | (8,12) | **268,496,208** | 5.82 | 4,613,762,394 | Haar graph SL(2,163) x Z31, S = {e} + 1 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d8D12_sl_163_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 2.7e+08 |
 | (9,12) | **1,055,973,600** | 5.38 | 19,634,136,204 | Haar graph SL(2,199) x Z67, S = {e} + 2 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d9D12_sl_199_67_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.06e+09 |
