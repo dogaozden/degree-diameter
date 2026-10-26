@@ -113,3 +113,8 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
 3. Ordinary-edge deletions (XDEL) are an independent +2 source with no hard core; tools exist (dmfast GEN/XDEL,
    finish_xd.sh, edgedel.py, xdscan.sh, xdalt.sh); best trial state r5/best/XDEL_3-27_state.lift2.sol (3 holes +
    8 coset-0 on the 4,840 base; rebase on 4,842 for real use).
+- 04:31 UTC: {1,6,5,2} reached **5** coset-0 pairs (alt.sh round 4): r4/runs/B5.sol with STATE r4/runs/G4_2_hf.sol
+  (hub-repaired; score.sh: SCORE 5 (5, 0, 0)). Continue from r4/ with
+  `FOCUS=1 CHEAP=1 FW=4 FT=0.6 RESET=30 SECS=1800 STEP=20 SIZE=55 NPHI=180 NF1=8 KZ=10 SEED=s python3 lns3.py runs/G4_2_hf.sol runs/B5.sol "1 6 5 2" out.sol`,
+  `./alt.sh runs/G4_2_hf.sol runs/B5.sol "1 6 5 2" TAG SEED 8`, and `./tabu.sh runs/G4_2_hf.sol <best> "1 6 5 2" "" TAG SEED 20`
+  once at 1-2 pairs (that is how 4,842 closed: 5 -> 0 took about 70 minutes).
