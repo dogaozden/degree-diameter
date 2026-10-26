@@ -1,0 +1,6 @@
+group meta 371 14 370 x Z_1, N=5194, identity 0, H order 53, rows 98, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 53); using haar_gen3's evaluation
+alpha: meta scaling a -> 76 a, z -> 0 z on Z_1
+ORBIT k=4 m=1 f=2: |Fix(alpha)| = 13 (+e); mu = 120.90, mu/k = 30.22, fixed-point misses ~ 10.94
+RANDORB d=6 D=7 group=meta 371 14 370 x Z_1 N=5194 k=4 m=1 f=2 fix=13 samples=30000 min=6492 p1=6492 p10=6540 median=8222 mean=8066.66 var=998752.2 mu=120.90 time=0.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30000

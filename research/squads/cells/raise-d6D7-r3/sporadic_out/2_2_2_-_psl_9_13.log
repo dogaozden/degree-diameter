@@ -1,0 +1,6 @@
+group psl 9 poly x^2+1 x Z_13, N=4680, identity 468, H order 52, rows 90, threads 1, setup 0.00s
+wide rows: HW order 65, rows 72, setup 0.00s
+alpha: conj by mat(4,1,5,8) (index 212), z -> 12 z on Z_13
+ORBIT k=2 m=2 f=2: |Fix(alpha)| = 7 (+e); mu = 72.08, mu/k = 36.04, fixed-point misses ~ 1.99
+RANDORB d=6 D=7 group=psl 9 poly x^2+1 x Z_13 N=4680 k=2 m=2 f=2 fix=7 samples=1000000 min=92 p1=266 p10=509 median=1876 mean=2525.75 var=4669737.8 mu=72.08 time=16.4
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1000000

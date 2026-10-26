@@ -1,0 +1,6 @@
+group meta 215 24 42 x Z_1, N=5160, identity 0, H order 43, rows 120, threads 1, setup 0.00s
+wide rows: HW order 215, rows 24, setup 0.01s
+alpha: meta scaling a -> 49 a, z -> 0 z on Z_1
+ORBIT k=6 m=1 f=0: |Fix(alpha)| = 23 (+e); mu = 117.17, mu/k = 19.53, fixed-point misses ~ 25.54
+RANDORB d=6 D=7 group=meta 215 24 42 x Z_1 N=5160 k=6 m=1 f=0 fix=23 samples=30000 min=9950 p1=9950 p10=9950 median=9950 mean=9950.00 var=0.0 mu=117.17 time=0.1
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 30000
