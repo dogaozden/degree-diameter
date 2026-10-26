@@ -78,3 +78,31 @@ ORBW=2 (seed 53) gave the lowest floor of the whole round (3 uncovered orbit-cel
 Logs: `research/structured/runs/d7D10_r3_*_s5*.log`.
 
 Batch 3 (clock was 07:00 UTC, about 5 h into the session): sl 19 × Z169 with ORBW=2, seeds 61–64, 3300 s each (last batch of this session).
+
+## Round 3, batch 3 results (3300 s each, no solve)
+
+| group | N | options | best cost |
+|---|---|---|---|
+| sl 19 × Z169 | 1,155,960 | seed 61, ORBW=2 | 5 |
+| sl 19 × Z169 | 1,155,960 | seed 62, ORBW=2 | 12 |
+| sl 19 × Z169 | 1,155,960 | seed 63, ORBW=2 | 12 |
+| sl 19 × Z169 | 1,155,960 | seed 64, ORBW=2 | 7 |
+
+## Final result of round 3: no new record
+
+- Record stays at **2,298,240** (N = 1,149,120, `d7D10_prod_sl_7_psl_19_1_orb3_s2.txt`), re-verified this session with build_haar2.py.
+- Above the record, the only candidates are the eight groups in N ∈ (1,149,120, 1,160,000] (`orb_screen.py 7 10 1149121 1160000 "3 2 1" --list`).
+  Their μ is 32–34. Total: about 15 anneals of 55–115 minutes on one core each (roughly 150 M evaluations in all). None solved.
+- Best floors: 3 (sl 19 × Z169, ORBW=2, seed 53, 6600 s), 5 (ORBW=2 seed 61, 3300 s), 6 (ORBW=3 seed 45 and seed 51). Plain runs sat at 8–9 and did not improve with time.
+- ORBW weighting (fixed-point misses weighted more, W=2 or 3) gave the lowest floors. It is the one lever that moved in this round, but it has not produced a solve.
+- k = 2 orbits: screened and rejected (p1 roughly 10× worse than k = 3 at μ 32–34).
+
+## Why I stopped
+
+The k = 3 orbit method has hit its wall at μ ≈ 33. The runs plateau at uncovered counts of 3–9, and more seeds at the same μ have not moved that. Round 2 and round 3 together show about 25 anneals above the record order, none solved.
+
+## What would move the cell (not tried)
+
+1. Longer ORBW=2 anneals on sl 19 × Z169 (the lowest floor, 3) with restarts, one batch of several hours on four cores. Round 3 had only about 1 hour per seed.
+2. Metacyclic or voltage lifts (`research/lifts/`). The existing lift records for other cells use metacyclic groups, but the orbit method cannot use the metacyclic scaling (it acts trivially on the quotient). A lift route would need its own search.
+3. A larger compute budget for the coordinator, or a bigger model to try a different search (e.g. a tabu variant of the orbit annealer).
