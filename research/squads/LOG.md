@@ -35,3 +35,24 @@ at q = 4; one random matching at q = 5 reaches cost 5 at m = 5 once the hexagon 
 and c5's verified dualities of H(3) and H(9). What Opus did next: from c5's duality files, a new family (the duality
 used as both matchings, with pencil-coordinate voltages; research/theorems/D8_COMPOUND.md §4), which reaches all but
 0.1-0.2% of targets at q = 9 for m up to 41 but is not valid beyond its strong core; round r2_d8c works on it.
+
+## 2026-10-26, own-d8-compound (Opus, session_01TjGpLmiNHBWJKGjjSCJEKd), round r2_d8c
+
+Goal: strengthen Opus's duality + pencil-coordinate family (research/theorems/D8_COMPOUND.md §4) to m >= 36 copies of
+I(H(9)) (beats (12,8) = 35 copies). Score: largest m at q = 9 with COST 0 on 3 x 64 sampled sources (c6: exact, other q).
+6 Haiku cards (haiku, effort high), about 25 minutes each; context research/squads/r2_d8c/CONTEXT.md, CARDS.md,
+scoreboard.jsonl.
+
+| card | idea | best | note |
+|---|---|---|---|
+| c1 | choice of the axis (type of the line <a,a'>, point-type, duality-related, random) | 11 (q = 9, sampled) | best: a degenerate cone axis (739 axis points); m = 21 cost 76-128 |
+| c2 | two axes, free block layouts (hill climb) | none at m >= 26 | m = 26 best cost 8,279, m = 30 27,405 |
+| c3 | quadratic (2-to-1) coordinate for the weak blocks | 12 (q = 9, sampled) | plain linear 11; other quadratics worse |
+| c4 | delta and delta^-1 as the two matchings; delta composed with Frobenius | 14 (q = 9, sampled) | m = 24 best 4,583; delta^4 = 1, Frobenius twist no gain |
+| c5 | targeted repair of failing triples | (see below) | |
+| c6 | any q: Pluecker pencil coordinates on lines, class-preserving matchings | **13 (q = 5, exact)** | verified by Opus: glift all, explicit all-pairs BFS, apsp_mt VALID (101,556 vertices, 8-regular); q = 7 m = 17 cost 14-50 per 256 sources over 12 axes |
+
+Kept: c6's any-q design (the lab's first explained D = 8 compound that beats random lifts, which reach 11-12 at q = 5;
+research/squads/cells/d10D8_work/checks/pl_q5_m13_CHECK.md). The duality family itself stops at 11-14 sampled copies at
+q = 9, far from 36: the weak blocks need two independent sources per value and two matchings do not have the slots
+(D8_COMPOUND.md §4, d10D8.md). Next: stop; the (12,8) target is out of reach for this family.

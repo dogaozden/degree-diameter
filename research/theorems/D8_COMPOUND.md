@@ -1,7 +1,12 @@
 # Diameter 8 from copies of the split Cayley hexagon: what a compound can and cannot do
 
-Job own-d8-compound (Opus, 26 October 2026), branch `claude/own-d8-compound-1z4e6s`. Draft; sections marked
-*(to be completed)* are filled in as the job runs.
+Job own-d8-compound (Opus, 26 October 2026), branch `claude/own-d8-compound-1z4e6s`. Status: the construction behind
+the table values was **not** reconstructed and no cell was beaten. What is here: the reformulation (§1), what the
+"for every matching" mechanisms can give (§2: ten copies with constant shifts, Theorem 2.1; at most
+$2q + 11 + 2\sqrt{2q+9}$ with point-dependent shifts, Theorem 2.3; one-matching colourings, Theorem 2.4), why the
+table construction needs more (§3), a new geometric family from dualities and pencil coordinates with an exact
+description of its walks and of its one obstruction (§4), and the lab's first explained compound at $D = 8$ that beats
+random search (13 copies at $q = 5$, Computer-checked 4.7).
 
 Labels: **Theorem** (proved here, by hand), **Computer-checked** (a statement about specific graphs, with the check
 named), **Heuristic** (an argument with a gap that is named).
@@ -169,7 +174,7 @@ The lift edge $(u,h)\sim(\delta(u),h+\beta_t(u))$ gives the offsets. $\square$
 **Proposition 4.2 (Theorem: the intervals).** (a) If $p, w$ are opposite points, the points $u$ with
 $d(p,u)+d(u,w)\le 6$ are $p$, $w$ and the points of the two projective lines $m_1 = \pi_p\cap w^\perp$ and
 $m_2 = \pi_w\cap p^\perp$ (each a line of PG(6,q) inside the totally singular plane $\pi_p$, resp. $\pi_w$, not through
-$p$, resp. $w$; not a line of $H$). (b) If $\ell, y$ are opposite lines, the points $z$ with $d(\ell,z)+d(z,y)\le 6$
+$p$, resp. $w$; not a line of $H$). (b) For any two lines $\ell, y$, the points $z$ with $d(\ell,z)+d(z,y)\le 6$
 include all points of $\ell$ and all points of $y$ (lines of $H$). (c) If $d(p,w) = 4$, with geodesic
 $p\,L\,u\,M\,w$, the points of (a) are exactly the points of the hexagon lines $L$ and $M$.
 
@@ -230,5 +235,19 @@ explained compound at $D = 8$ that beats random search. $q = 7$, $m = 17$: COST 
 
 ## 5. Squad rounds
 
-Round r1_d8c (16 cards): research/squads/LOG.md and research/squads/r1_d8c/. Round r2_d8c (6 cards, on §4):
-*(to be completed)*.
+Round r1_d8c (16 Haiku cards, research/squads/r1_d8c/): pair sheets, flags as vertices, one matching, multiplicative,
+additive, spread and coordinate voltages, duality matchings with constant or bilinear voltages, SAT for bundle-rainbow
+voltages, a twisted Z10 lemma, typed copies, pencil-rainbow colourings, lifting the D7 graph, hub surgery, a GQ base, a
+rule search, even q. Nothing beat random search; hub surgery added 3.8% to the Z10 graph at q = 3; card c6 noted that
+"all q+1 geodesics between opposite elements carry distinct voltages" is the same as "no apartment has voltage 0"
+(a cover of girth at least 14), which SAT could not decide at q = 3 within the time box.
+
+Round r2_d8c (6 cards on §4, research/squads/r2_d8c/): at q = 9 the duality family passes 3 x 64 sampled sources only
+up to m = 11 (axis choice), 12 (quadratic weak coordinate), 14 (delta and delta^-1); free layouts cannot bring m = 26
+below cost 8,000. The any-q Plücker version is Computer-checked 4.7. Details and costs: research/squads/LOG.md.
+
+**Conclusion.** Every mechanism proved or measured here gives about $2q$ copies (constant shifts: 10; point-dependent
+shifts: Theorem 2.3; the duality family's robust core: $2q+3$, exactly valid at $q = 3$ for some axes and in the any-q
+form at $q = 5$). The table needs $2.5q + 12.5$. The missing ingredient is most likely a hexagon voltage assignment (a
+genuine cover of $I(H(q))$) whose geodesic sums between opposite elements are structured; none of the coordinate
+voltages tried has that property.
