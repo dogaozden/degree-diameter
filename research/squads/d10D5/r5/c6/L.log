@@ -1,0 +1,100 @@
+unmixed pairs: points 89 lines 60
+start 10 (10, 0, 0)
+  best flip candidates [(11, 2625), (11, 1080), (12, 2511), (13, 1088), (13, 1692)]
+flip 2625: after flip 11 (11, 0, 0) -> repaired 11 (cur 10)
+  best flip candidates [(11, 1080), (12, 2511), (13, 1617), (13, 1692), (13, 201)]
+flip 1080: after flip 11 (11, 0, 0) -> repaired 11 (cur 10)
+  best flip candidates [(12, 2511), (13, 1617), (13, 1088), (13, 201), (13, 1692)]
+flip 2511: after flip 12 (12, 0, 0) -> repaired 11 (cur 10)
+  best flip candidates [(13, 1692), (13, 204), (13, 201), (13, 1088), (13, 1617)]
+flip 1692: after flip 13 (13, 0, 0) -> repaired 11 (cur 10)
+  best flip candidates [(13, 201), (13, 1617), (13, 1088), (13, 204), (14, 1086)]
+flip 201: after flip 13 (13, 0, 0) -> repaired 13 (cur 10)
+  best flip candidates [(13, 204), (13, 1617), (13, 1088), (14, 1086), (14, 517)]
+flip 204: after flip 13 (13, 0, 0) -> repaired 11 (cur 10)
+  best flip candidates [(13, 1088), (13, 1617), (14, 1075), (14, 517), (14, 1086)]
+flip 1088: after flip 13 (13, 0, 0) -> repaired 13 (cur 10)
+  best flip candidates [(13, 1617), (14, 2318), (14, 1075), (14, 2630), (14, 329)]
+flip 1617: after flip 13 (13, 0, 0) -> repaired 13 (cur 10)
+|S| 60 model (4, 751, 5640, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.9s
+|S| 60 model (4, 707, 5943, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.3s
+|S| 60 model (4, 861, 4706, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 724, 5139, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.1s
+|S| 60 model (4, 849, 6417, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.6s
+|S| 60 model (4, 786, 7434, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.3s
+|S| 60 model (4, 756, 4074, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 774, 4650, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 778, 5278, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 736, 4950, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.9s
+|S| 60 model (4, 707, 4313, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 853, 4120, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 809, 5995, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 788, 3674, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 768, 3728, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.5s
+|S| 60 model (4, 850, 7272, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 895, 3921, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.1s
+|S| 60 model (4, 842, 5984, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.6s
+|S| 60 model (4, 775, 5550, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 772, 5876, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 849, 7278, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.5s
+|S| 60 model (4, 681, 4251, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 719, 7569, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 748, 5825, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.3s
+|S| 60 model (4, 735, 3153, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 750, 5394, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 761, 5174, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.9s
+|S| 60 model (4, 725, 3930, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 815, 4811, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 803, 4992, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.7s
+|S| 60 model (4, 640, 4720, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 720, 4902, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.4s
+|S| 60 model (4, 733, 9101, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.7s
+|S| 60 model (4, 785, 4772, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 813, 3834, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 799, 5333, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 812, 5674, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.5s
+|S| 60 model (4, 828, 5024, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 704, 6386, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.9s
+|S| 60 model (4, 740, 6896, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 3.1s
+|S| 60 model (4, 809, 6623, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 3.0s
+|S| 60 model (4, 730, 6138, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.9s
+|S| 60 model (4, 785, 7610, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 3.4s
+|S| 60 model (4, 719, 5592, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.3s
+|S| 60 model (4, 706, 3963, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 845, 7060, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.8s
+|S| 60 model (4, 676, 5011, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 709, 4817, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 781, 6044, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.1s
+|S| 60 model (4, 774, 6546, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 747, 4127, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.4s
+|S| 60 model (4, 740, 5073, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 825, 5837, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 761, 5404, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 748, 5293, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 744, 4022, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.3s
+|S| 60 model (4, 791, 4142, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.9s
+|S| 60 model (4, 754, 3866, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 728, 3408, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 807, 6435, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 788, 6208, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 808, 3895, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 769, 3501, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 836, 6187, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 695, 7057, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 782, 4247, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 804, 6078, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 810, 6328, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 724, 5942, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 805, 5360, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.4s
+|S| 60 model (4, 707, 4884, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.7s
+|S| 60 model (4, 796, 4553, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.6s
+|S| 60 model (4, 819, 5606, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.2s
+|S| 60 model (4, 634, 4024, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.8s
+|S| 60 model (4, 870, 4961, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.8s
+|S| 60 model (4, 819, 2046, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.9s
+|S| 60 model (4, 786, 5463, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 1.9s
+|S| 60 model (4, 812, 6640, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.6s
+|S| 60 model (4, 812, 6887, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.5s
+|S| 60 model (4, 789, 4218, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.0s
+|S| 60 model (4, 757, 5736, 'OPTIMAL') exact 10 (10, 0, 0) (cur 10) 2.3s
+EXIT 124

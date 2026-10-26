@@ -1,0 +1,22 @@
+unmixed pairs: points 76 lines 69
+start 7 (7, 0, 0)
+  best flip candidates [(9, 857), (9, 2762), (9, 1978), (10, 2399), (10, 2764)]
+flip 857: after flip 9 (9, 0, 0) -> repaired 8 (cur 7)
+  best flip candidates [(9, 2762), (9, 1978), (10, 2764), (10, 779), (10, 2000)]
+flip 2762: after flip 9 (9, 0, 0) -> repaired 8 (cur 7)
+  best flip candidates [(9, 1978), (10, 2399), (10, 2000), (10, 779), (10, 2764)]
+flip 1978: after flip 9 (9, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(10, 2399), (10, 2288), (10, 779), (10, 4), (10, 1100)]
+flip 2399: after flip 10 (10, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(10, 779), (10, 2000), (10, 2288), (10, 1100), (10, 2764)]
+flip 779: after flip 10 (10, 0, 0) -> repaired 9 (cur 7)
+  best flip candidates [(10, 2337), (10, 2764), (10, 2000), (10, 2268), (10, 1100)]
+flip 2337: after flip 10 (10, 0, 0) -> repaired 10 (cur 7)
+  best flip candidates [(10, 2268), (10, 1100), (10, 4), (10, 2000), (10, 2764)]
+flip 2268: after flip 10 (10, 0, 0) -> repaired 8 (cur 7)
+  best flip candidates [(10, 2000), (10, 2764), (10, 4), (10, 1100), (10, 2288)]
+flip 2000: after flip 10 (10, 0, 0) -> repaired 8 (cur 7)
+  best flip candidates [(10, 1990), (10, 1070), (10, 2288), (11, 2319), (11, 2302)]
+flip 1990: after flip 10 (10, 0, 0) -> repaired 9 (cur 8)
+  best flip candidates [(10, 2077), (10, 2074), (11, 2093), (12, 2288), (12, 1968)]
+flip 2077: after flip 10 (10, 0, 0) -> repaired 8 (cur 9)

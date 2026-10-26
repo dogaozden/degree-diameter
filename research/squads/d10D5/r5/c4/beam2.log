@@ -1,0 +1,14 @@
+unmixed pairs: points 63 lines 81
+lns3 geodesic tables: unmixed agree with lns2: True
+start 4 (4, 0, 0)
+incremental == full: True
+restored == original: True
+initial bads: [('P', 90, 288), ('P', 283, 339), ('L', 26, 167), ('L', 139, 274)] total 4
+total() time 0.003s
+c_now() time 0.0013s
+beam root total 4 c 4
+level 0: beam totals [6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9]  c [6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9]  best 4  children 49  elapsed 3s
+level 1: beam totals [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6]  c [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]  best 4  children 763  elapsed 97s
+level 2: beam totals [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]  c [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]  best 4  children 769  elapsed 159s
+level 3: beam totals [4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5]  c [3, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4]  best 4  children 777  elapsed 197s
+best seen total 4 path [] written /home/user/degree-diameter/research/squads/d10D5/r5/c4/bestseen_beam.lift2.sol

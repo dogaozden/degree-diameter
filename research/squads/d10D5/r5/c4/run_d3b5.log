@@ -1,0 +1,14 @@
+unmixed pairs: points 63 lines 81
+lns3 geodesic tables: unmixed agree with lns2: True
+start 4 (4, 0, 0)
+incremental == full: True
+restored == original: True
+initial bads: [('P', 90, 288), ('P', 283, 339), ('L', 26, 167), ('L', 139, 274)] total 4
+total() time 0.008s
+c_now() time 0.0015s
+  best total 26 (3, 22, 1) path=[]
+  best total 12 (3, 9, 0) path=[]
+  best total 11 (3, 8, 0) path=[]
+  best total 10 (4, 1, 5) path=[]
+DFS depth 3 budget 5: found=False nodes=337 totals=200 time 2.3s bestT=10
+best seen total 10 (4, 1, 5) written /home/user/degree-diameter/research/squads/d10D5/r5/c4/bestseen_d3_b5.lift2.sol

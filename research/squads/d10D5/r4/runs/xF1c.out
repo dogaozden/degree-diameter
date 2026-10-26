@@ -1,0 +1,7 @@
+Terminated
+q 7 N 400 freed 9 hubs/side 3 -> n 4854; initial cost 8 (point src 8, line src 0, hub src 0); focus 293
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/squads/d10D5/r4/build_fd.py", line 18, in <module>
+    for ln in open(solf):
+              ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'runs/xF1c.sol'

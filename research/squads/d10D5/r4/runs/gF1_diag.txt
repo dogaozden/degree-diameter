@@ -1,0 +1,14 @@
+FLAGDEL on 1 flags
+coverage holes 83: 28 group edges required, 0 holes not patchable by hub edges
+hub graph: 918 needed same-side pairs (ordered), uncovered 119, 76 hub-hub edges
+q 7 N 400 freed 9 hubs/side 3 -> n 4854; initial cost 8 (point src 8, line src 0, hub src 0); focus 293
+cover cost 83
+BAD src 68 -> tgt 239 sheet 3 dist 6 coll 0
+BAD src 107 -> tgt 395 sheet 0 dist 6 coll 0
+BAD src 120 -> tgt 261 sheet 0 dist 6 coll 0
+BAD src 239 -> tgt 68 sheet 3 dist 6 coll 0
+BAD src 261 -> tgt 120 sheet 0 dist 6 coll 0
+BAD src 292 -> tgt 388 sheet 3 dist 6 coll 0
+BAD src 388 -> tgt 292 sheet 3 dist 6 coll 0
+BAD src 395 -> tgt 107 sheet 0 dist 6 coll 0
+final cost 8 (point src 8, line src 0, hub src 0) n 4854

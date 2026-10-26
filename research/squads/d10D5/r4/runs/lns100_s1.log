@@ -1,0 +1,11 @@
+start cost 1 holes [(3, 0, 69)]
+it 1 |S| 80 model (3, 1047, 0, 'OPTIMAL') exact 1 (cur 1) ACC 1.9s
+it 2 |S| 78 model (4, 1008, 0, 'OPTIMAL') exact 1 (cur 1) ACC 2.1s
+it 3 |S| 80 model (2, 1341, 0, 'OPTIMAL') exact 1 (cur 1) ACC 2.2s
+it 4 |S| 80 model (5, 1298, 0, 'OPTIMAL') exact 1 (cur 1) ACC 8.7s
+it 5 |S| 80 model (1, 1201, 0, 'OPTIMAL') exact 1 (cur 1) ACC 0.5s
+it 6 |S| 80 model (5, 1240, 0, 'OPTIMAL') exact 1 (cur 1) ACC 11.5s
+it 7 |S| 80 model (5, 1214, 0, 'FEASIBLE') exact 4 (cur 1) rej 40.2s
+it 8 |S| 113 model (10, 1619, 0, 'FEASIBLE') exact 4 (cur 1) rej 40.3s
+it 9 |S| 80 model (1, 1249, 0, 'OPTIMAL') exact 1 (cur 1) ACC 0.6s
+it 10 |S| 96 model (1, 1526, 0, 'OPTIMAL') exact 1 (cur 1) ACC 0.8s

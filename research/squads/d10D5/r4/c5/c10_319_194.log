@@ -1,0 +1,19 @@
+coverage holes 0: 0 group edges required, 0 holes not patchable by hub edges
+hub graph: 600 needed same-side pairs (ordered), uncovered 0, 79 hub-hub edges
+cover cost initial 162 (hub-distance part 0)
+cover it 0 T 0.250 cost 162
+cover it 100000 T 0.212 cost 42
+cover it 300000 T 0.159 cost 28
+cover it 400000 T 0.134 cost 27
+cover it 500000 T 0.110 cost 26
+cover it 600000 T 0.087 cost 23
+cover it 700000 T 0.071 cost 22
+cover it 900000 T 0.049 cost 20
+cover it 1100000 T 0.032 cost 18
+cover it 1200000 T 0.026 cost 18
+cover it 1300000 T 0.022 cost 18
+hub graph after joint annealing: 72 edges, distance cost 0
+cover cost final 18
+q 7 N 400 freed 10 hubs/side 2 -> n 4840; initial cost 334 (point src 180, line src 154, hub src 0); focus 307
+cover cost 18
+final cost 334 (point src 180, line src 154, hub src 0) n 4840

@@ -1,0 +1,9 @@
+unmixed pairs: points 79 lines 58
+start 2 (2, 0, 0)
+  best flip candidates [(5, 2700), (6, 380), (6, 2318), (6, 2692), (6, 2944)]
+flip 2700: after flip 5 (5, 0, 0) -> repaired 1 (cur 2)
+  best flip candidates [(5, 2318), (5, 380), (5, 2944), (6, 2957), (6, 2222)]
+flip 2318: after flip 5 (5, 0, 0) -> repaired 4 (cur 1)
+  best flip candidates [(5, 380), (5, 2944), (6, 1101), (6, 929), (6, 2957)]
+flip 380: after flip 5 (5, 0, 0) -> repaired 0 (cur 1)
+final 0 (0, 0, 0)

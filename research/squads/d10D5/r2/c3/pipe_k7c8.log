@@ -1,0 +1,14 @@
+== coverage check (dmhub COVIT)
+cover cost initial 0
+cover cost final 0
+cover cost 0
+== coset-0 (dmfast_hub RELAX PATCH PTARG)
+it 1162150 temp 0.094 cost 3 (swap)
+RESULT dmfast q 7 iters 3000000 best 3 (of 137200 opposite pairs) swaps accepted 937
+== hub graph + exact cost (dmhub HGIT)
+hub graph: 336 needed same-side pairs (ordered), uncovered 0, 52 hub-hub edges
+final cost 6 (point src 4, line src 2, hub src 0) n 4828
+== APSP
+n=4828 edges=24136 degree min=9 max=10 bipartite=yes diameter=6
+RESULT INVALID
+PIPE_EXIT 0
