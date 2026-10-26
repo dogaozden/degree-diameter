@@ -4,7 +4,7 @@ Fields: value (vertices), how (construction), check (checker + log path), files 
 Run `python3 results.py` to print BEYOND_TABLE.md's table rows."""
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from plan import moore, upper, formulas, CELLS, OURS
+from plan import moore, upper, formulas, CELLS, OURS, n_at_mu
 
 R = {}
 def add(d, D, value, how, check, files, note=""):
@@ -24,10 +24,15 @@ add(20, 4, 14480, "W(19) incidence graph (Moore graph)", "apsp: checks/d20D4_n14
 add(17, 5, 33792, "the (16,5) route-chart lift (max degree 16 <= 17); nothing larger found", "apsp (research/theorems/graphs/d16D5_n33792_check.txt)", "research/theorems/graphs/build_d16D5_n33792.py")
 add(18, 5, 47600, "multi-doubled-matching lift of W(13): 2 doubled matchings, Z2 x Z5 (18-regular)", "apsp: checks/d18D5_n47600_W13_2dm_Z10.apsp.txt", "graphs/d18D5_n47600_W13_2dm_Z10.edges.gz; builder mdm/build_mdm.py + mdm/nu_q13_s2.txt")
 add(20, 5, 75000, "route-chart lift over F5 (4 letters x 5 scalars, fibre F5^4): K3,3 + doubled matching over Z20 (m = 60), chart with 22 singular patterns (squad r1 c04); also 66,640 by the multi-doubled-matching lift of W(13), Z2 x Z7 (MDM.md)", "apsp: checks/d20D5_n75000_routechart_F5_Z20.apsp.txt; checks/d20D5_n66640_W13_3dm_Z14.apsp.txt", "graphs/d20D5_n75000_routechart_F5_Z20.edges.gz (code research/squads/beyond/r1/c04/); graphs/d20D5_n66640_W13_3dm_Z14.edges.gz")
+add(19, 5, 52428, "doubled-matching lift of W(16) over Z6 (DM_D5.md; = MDM with k = 1); nu, sigma annealed by squad r1/c05 (dmfast, routes allowed)", "apsp: checks/d19D5_n52428_W16_dm_Z6.apsp.txt", "graphs/d19D5_n52428_W16_dm_Z6.edges.gz; mdm/dm_q16_s11_c05.sol.gz + mdm/build_mdm.py (k = 1)")
 # D = 8
 add(17, 8, 41373072, "Haar graph SL(2,53) x Z139, S = {e} + 1 fixed + 5 orbits of size 3", "haarcheck_sl (c15) and hcheck5 (director): VALID", "research/frontier/sols/d17D8_sl_53_139_orb3_c15.txt")
+add(19, 8, 86317296, "Haar graph PSL(2,103) x Z79, S = {e} + 6 orbits of size 3", "hcheckpsl VALID (runs/check_hcheckpsl_d19D8_psl_103_79_orb3_s1.txt)", "research/frontier/sols/d19D8_psl_103_79_orb3_s1.txt")
+add(20, 8, 122739120, "Haar graph PSL(2,71) x Z343, S = {e} + 1 fixed + 6 orbits of size 3", "hcheckpsl VALID (runs/check_hcheckpsl_d20D8_psl_71_343_orb3_s1.txt)", "research/frontier/sols/d20D8_psl_71_343_orb3_s1.txt")
+add(17, 9, 501707400, "Haar graph PSL(2,101) x Z487, S = {e} + 1 fixed + 5 orbits of size 3", "hcheckpsl VALID (runs/check_hcheckpsl_d17D9_psl_101_487_orb3_s2.txt)", "research/frontier/sols/d17D9_psl_101_487_orb3_s2.txt")
 # D = 11, 12
 add(3, 11, 1008, "Haar graph of PSL(2,7) x Z3, S = {e, x, y}", "apsp: research/squads/beyond/r1/c11/check_n1008.txt; director re-run VALID", "graphs/d3D11_n1008_psl2_7xZ3.edges.gz")
+add(10, 11, 445709568, "Haar graph SL(2,193) x Z31, S = {e} + 3 orbits of size 3", "hcheck5 VALID (runs/check_hcheck5_d10D11_sl_193_31_orb3_s1.txt)", "research/frontier/sols/d10D11_sl_193_31_orb3_s1.txt")
 add(3, 12, 1320, "Haar graph of PSL(2,11), S = {e, a, b}", "apsp: c12/checks/apsp_3_12_n1320_psl2_11.txt; director re-run VALID", "graphs/d3D12_n1320_psl2_11.edges.gz")
 add(4, 11, 17600, "metacyclic Haar graph Z440 x| Z20 (r = 107)", "apsp (c13 and director)", "graphs/d4D11_n17600_meta440_20.edges.gz; builder c13/build_meta.py")
 add(4, 12, 48000, "metacyclic Haar graph Z1200 x| Z20 (r = 413)", "apsp (c13 and director)", "graphs/d4D12_n48000_meta1200_20.edges.gz")
@@ -47,8 +52,14 @@ if __name__ == "__main__":
     print("|---|---:|---:|---:|---|---|---|")
     for d, D in CELLS:
         r = R.get((d, D))
-        f = formulas(d, D)
+        allf = formulas(d, D)
+        f = [x for x in allf if not x[1].startswith("PATTERN")]
+        pat = [x for x in allf if x[1].startswith("PATTERN")]
         fam = f"{fmt(f[0][0])} ({f[0][1]})" if f else "—"
+        if pat: fam += f"; 2013-table D=8 pattern (no construction known): {fmt(pat[0][0])} ({pat[0][1][8:]})"
+        if D >= 8 or (d <= 10 and D >= 11):
+            fam += f"; Haar size law at mu = 5: 2N = {2 * n_at_mu(d, D, 5):.3g}"
+        fam = fam.replace("—; ", "")
         if not r:
             print(f"| ({d},{D}) | open | | {fmt(upper(d, D))} | | | {fam} |"); continue
         pct = 100.0 * r['value'] / moore(d, D)

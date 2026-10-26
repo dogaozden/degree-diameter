@@ -1,0 +1,7 @@
+group psl 7 x Z_54, N=9072, identity 1134, H order 63, rows 144, threads 1, setup 0.00s
+wide rows: HW order 189, rows 48, setup 0.01s
+alpha: conj by mat(0,3,2,1) (index 15), z -> 19 z on Z_54
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 53 (+e); mu = 0.52, mu/k = 0.17, fixed-point misses ~ 4.17
+start cost=17766
+t=30 steps=24336 evals=194689 cost=8612 best=8612 T=0.53
+RESULT d=4 D=11 group=psl 7 x Z_54 N=9072 best=8612 evals=345969 time=60.0 orbit k=3 m=1 f=1 fix=53

@@ -1,0 +1,7 @@
+group psl 17 x Z_4, N=9792, identity 544, H order 36, rows 272, threads 1, setup 0.00s
+wide rows: HW order 68, rows 144, setup 0.02s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 1 z on Z_4
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 35 (+e); mu = 1.15, mu/k = 0.38, fixed-point misses ~ 3.53
+start cost=9802
+t=30 steps=27314 evals=218513 cost=22 best=22 T=0.53
+RESULT d=4 D=11 group=psl 17 x Z_4 N=9792 best=22 evals=433977 time=60.0 orbit k=3 m=1 f=1 fix=35

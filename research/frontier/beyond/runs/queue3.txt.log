@@ -9,3 +9,8 @@ RESULT d=9 D=11 group=psl 199 x Z_19 N=74863800 vertices=149727600 best=3 evals=
 15:45:46 end
 15:45:46 start 10 11 sl 193 31 orbit 3 3 1
 RESULT d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 best=0 evals=5 steps=1 time=7.5 orbit k=3 m=3 f=1 mu=5.05
+from (e,B): all reached within 11, ecc 11 (62.424 s)
+VALID d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 threads=2 time=109.377 bfs_A=46.953 bfs_B=62.424
+saved ../sols/d10D11_sl_193_31_orb3_s1.txt
+15:47:46 end
+15:47:46 start 5 11 sl 13 61 orbit 2 2 1

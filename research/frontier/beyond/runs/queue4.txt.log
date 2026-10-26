@@ -1,1 +1,22 @@
 15:35:49 start 18 8 sl 43 373 orbit 3 5 3
+RESULT d=18 D=8 group=sl 43 x Z_373 N=29640072 vertices=59280144 best=3 evals=9016 steps=2245 time=900.7 orbit k=3 m=5 f=3 mu=12.13
+15:50:50 end
+15:50:50 start 19 8 psl 103 79 orbit 3 6 1
+RESULT d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296 best=0 evals=9 steps=2 time=3.4 orbit k=3 m=6 f=1 mu=12.94
+VALID d=19 D=8 group=psl 103 x Z_79 N=43158648 vertices=86317296
+ecc(e,A)=8 ecc(e,B)=8
+saved ../sols/d19D8_psl_103_79_orb3_s1.txt
+15:51:36 end
+15:51:36 start 20 8 psl 71 343 orbit 3 6 2
+RESULT d=20 D=8 group=psl 71 x Z_343 N=61369560 vertices=122739120 best=0 evals=5 steps=1 time=1.5 orbit k=3 m=6 f=2 mu=12.91
+VALID d=20 D=8 group=psl 71 x Z_343 N=61369560 vertices=122739120
+ecc(e,A)=8 ecc(e,B)=8
+saved ../sols/d20D8_psl_71_343_orb3_s1.txt
+15:52:24 end
+15:52:24 start 18 8 sl 61 127 orbit 3 5 3
+RESULT d=18 D=8 group=sl 61 x Z_127 N=28818840 vertices=57637680 best=0 evals=13 steps=3 time=2.5 orbit k=3 m=5 f=3 mu=7.75
+from (e,B): all reached within 8, ecc 8 (8.323 s)
+VALID d=18 D=8 group=sl 61 x Z_127 N=28818840 vertices=57637680 threads=2 time=17.252 bfs_A=8.920 bfs_B=8.323
+saved ../sols/d18D8_sl_61_127_orb3_s2.txt
+15:52:44 end
+15:52:44 QUEUE DONE

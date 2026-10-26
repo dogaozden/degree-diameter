@@ -82,7 +82,7 @@ def formulas(d, D):
             if j == 2: f.append((10 * gh(q), f"polygon cover n+2: 10x H({q})"))
             if j >= 1:
                 v = (2 * j + 1) * ((q - 1) // 2 + 3 * (j - 1)) * gh(q)
-                f.append((v, f"[unpublished 2013 green formula, no construction known] q={q}, j={j}"))
+                f.append((v, f"PATTERN q={q}, j={j}"))
     f.sort(reverse=True)
     return f
 
