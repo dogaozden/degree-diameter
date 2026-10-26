@@ -45,7 +45,10 @@ def main():
             avoid = O if types[u] == 'H' else T
             x, y, l, m = pick_pair(Hq, avoid_pts=avoid)
             M[(u, v)] = np.array(local_duality_pair(Hq, x, y, l, m)); R[(u, v)] = {x, y}
-            mutable.append((u, v))
+            if types[u] == 'H':
+                # D->D arcs stay fixed: every third-level route between levels 3 and 6 uses only friendly arcs, so
+                # bad pairs there could not be repaired by moves; their local duality is repaired by Theorem C
+                mutable.append((u, v))
             if types[u] == 'H' and E > 0:
                 taboo = {x, y} | set(np.nonzero(Hq.col[x] | Hq.col[y])[0])
                 cand = [p for p in range(N) if p not in taboo]
@@ -233,6 +236,12 @@ def main():
         hubs, i, k, jp = hm
         hubs[i][jp], hubs[k][jp] = hubs[k][jp], hubs[i][jp]
 
+    import signal, pickle
+    def save_state(*a):
+        pickle.dump(dict(M={t: list(M[t]) for t in arcs}, R=R, Bh=Bh, Ah=Ah), open(out + '.state.pkl', 'wb'))
+        if a:
+            print('saved state on signal'); sys.stdout.flush(); sys.exit(1)
+    signal.signal(signal.SIGTERM, save_state)
     cost, bad = evaluate(); print('initial bad pairs', cost); sys.stdout.flush()
     Ttemp = 2.0; t0 = time.time()
     for it in range(iters):

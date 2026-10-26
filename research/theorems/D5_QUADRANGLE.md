@@ -727,8 +727,10 @@ We found no construction from a quadrangle of unequal order that approaches the 
 
 ## 14. Comparison with the 2013 table and the lab's values
 
-"Theorem family" = Corollaries 10.1–10.3 (explicit sets and hub graphs; research/theorems/d5gq/family_table.py,
-family_table_out.txt). "Computer" = the best graph of §§8–11 type that we built and checked by all-pairs BFS. "Lab" =
+"Theorem family" = Corollaries 10.1–10.4 (explicit sets and hub graphs; research/theorems/d5gq/family_table.py,
+family_table_out.txt); each of these six values was also built and checked by all-pairs BFS with independent scripts
+(research/theorems/d5gq/family_check.py, family_check_even.py, written by the referee agent; output
+family_check_out.txt). "Computer" = the best graph of §§8–11 type that we built and checked by all-pairs BFS. "Lab" =
 the lab's value before this note (README, research/RESULTS.md).
 
 | cell | table (2013) | theorem family | computer (this note) | lab before | construction of the lab value |
@@ -775,6 +777,7 @@ bipartite, maximum degree, exact diameter.
 | $(8,5)$-type, $q = 5$, $r = 2$, $n = 1{,}596$ and $1{,}600$ | build_typed.py 5 2 HHDHD (and card c7 independently) | VALID |
 | $(8,5)$-type, $q = 5$, relaxed line sets, $n = 1{,}610$ | squad card r2c7 (research/squads/gqd5-r2/c7/ld23.edges) | VALID; without the hub rule diameter 6 |
 | relaxed sets, A-hub rule only, $q = 5, 7$, $n = 1{,}610$ and $4{,}086$ | squad card r3c4 (research/squads/gqd5-r3/c4/) | VALID; rule broken for one line: diameter 6 |
+| explicit families (Cor. 10.1–10.4): $(10,5)$ 4,044, $(11,5)$ 6,090, $(12,5)$ 8,430, $(13,5)$ 11,552, $(14,5)$ 14,812, $(15,5)$ 20,598 | family_check.py, family_check_even.py (family_check_out.txt) | all VALID |
 | 32 level graphs, $q\le 5$ | test_basic.py | all diameter 5 (Theorem A) |
 | Theorem E vs brute force | test_basic.py | agree on 720 transitions |
 | triads | triads.py | 0/2 in $Q(4,q)$, 1/$(q+1)$ in $W(q)$, $q = 3,5,7$ |
