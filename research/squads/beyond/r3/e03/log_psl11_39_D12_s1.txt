@@ -1,0 +1,12 @@
+group psl 11 x Z_39, N=25740, identity 2145, H order 39, rows 660, threads 1, setup 0.00s
+wide rows: HW order 195, rows 132, setup 0.01s
+alpha: conj by mat(5,2,6,7) (index 567), z -> 16 z on Z_39
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 17 (+e); mu = 0.85, mu/k = 0.28, fixed-point misses ~ 0.58
+start cost=23400
+t=30 steps=47575 evals=380601 cost=2 best=1 T=0.53
+t=60 steps=97775 evals=782201 cost=1 best=1 T=0.19
+t=90 steps=151456 evals=1211649 cost=1 best=1 T=0.15
+t=120 steps=203798 evals=1630385 cost=1 best=1 T=0.15
+t=150 steps=255299 evals=2042393 cost=1 best=1 T=0.15
+t=180 steps=315088 evals=2520705 cost=1 best=1 T=0.53
+RESULT d=4 D=12 group=psl 11 x Z_39 N=25740 best=1 evals=2880945 time=200.0 orbit k=3 m=1 f=1 fix=17

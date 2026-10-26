@@ -15,3 +15,11 @@ t=270 steps=9718 evals=77745 cost=2 best=2 T=0.15
 t=300 steps=10507 evals=84057 cost=2 best=2 T=0.15
 t=330 steps=11269 evals=90153 cost=2 best=2 T=0.15
 t=360 steps=12020 evals=96161 cost=2 best=2 T=0.15
+t=390 steps=12746 evals=101969 cost=10 best=2 T=0.60
+t=420 steps=13440 evals=107521 cost=12 best=2 T=0.21
+t=450 steps=14127 evals=113017 cost=5 best=2 T=0.15
+t=480 steps=14782 evals=118257 cost=3 best=2 T=0.15
+RESULT d=6 D=11 group=psl 31 x Z_73 N=1086240 best=0 evals=122353 time=503.9 orbit k=3 m=2 f=0 fix=14
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote d6D11_psl_31_73_orb3f0_s1.txt

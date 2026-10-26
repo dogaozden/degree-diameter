@@ -4,3 +4,52 @@ sl2 5 x cyc 5 | N=600 order=600 D=11 pairs=179101 min_cost=28 (A0 part 14, B0 pa
 sl2 5 x cyc 6 | N=720 order=720 D=11 pairs=258121 min_cost=82 (A0 part 41, B0 part 41) x=19 y=29 zero_found=0  | secs=8
 heis 5 x cyc 6 | N=750 order=750 D=11 pairs=280126 min_cost=1132 (A0 part 566, B0 part 566) x=31 y=153 zero_found=0  | secs=5
 agl1 11 x cyc 5 | N=550 order=550 D=11 pairs=150426 min_cost=34 (A0 part 17, B0 part 17) x=6 y=330 zero_found=0  | secs=3
+psl2 13 | N=1092 order=1092 D=11 pairs=594595 min_cost=220 (A0 part 110, B0 part 110) x=7 y=106 zero_found=0  | secs=39
+psl2 7 x cyc 4 | N=672 order=672 D=11 pairs=224785 min_cost=24 (A0 part 12, B0 part 12) x=9 y=19 zero_found=0  | secs=7
+psl2 7 x cyc 5 | N=840 order=840 D=11 pairs=351541 min_cost=38 (A0 part 19, B0 part 19) x=11 y=37 zero_found=0  | secs=17
+psl2 7 x cyc 6 | N=1008 order=1008 D=11 pairs=506521 min_cost=132 (A0 part 66, B0 part 66) x=20 y=29 zero_found=0  | secs=21
+sl2 7 x cyc 2 | N=672 order=672 D=11 pairs=224785 min_cost=6 (A0 part 3, B0 part 3) x=6 y=9 zero_found=0  | secs=8
+sl2 7 x cyc 3 | N=1008 order=1008 D=11 pairs=506521 min_cost=126 (A0 part 63, B0 part 63) x=9 y=13 zero_found=0  | secs=26
+pgl2 7 x cyc 2 | N=672 order=672 D=11 pairs=224785 min_cost=50 (A0 part 25, B0 part 25) x=4 y=15 zero_found=0  | secs=7
+pgl2 7 x cyc 3 | N=1008 order=1008 D=11 pairs=506521 min_cost=140 (A0 part 70, B0 part 70) x=6 y=22 zero_found=0  | secs=26
+sl2 5 x cyc 7 | N=840 order=840 D=11 pairs=351541 min_cost=72 (A0 part 36, B0 part 36) x=22 y=31 zero_found=0  | secs=16
+sl2 5 x cyc 8 | N=960 order=960 D=11 pairs=459361 min_cost=122 (A0 part 61, B0 part 61) x=17 y=46 zero_found=0  | secs=18
+sl2 5 x cyc 9 | N=1080 order=1080 D=11 pairs=581581 min_cost=212 (A0 part 106, B0 part 106) x=28 y=40 zero_found=0  | secs=26
+agl1 11 x cyc 6 | N=660 order=660 D=11 pairs=216811 min_cost=28 (A0 part 14, B0 part 14) x=67 y=207 zero_found=0  | secs=3
+agl1 11 x cyc 7 | N=770 order=770 D=11 pairs=295296 min_cost=100 (A0 part 50, B0 part 50) x=8 y=465 zero_found=0  | secs=8
+agl1 11 x cyc 8 | N=880 order=880 D=11 pairs=385881 min_cost=216 (A0 part 108, B0 part 108) x=9 y=528 zero_found=0  | secs=9
+agl1 11 x cyc 9 | N=990 order=990 D=11 pairs=488566 min_cost=410 (A0 part 207, B0 part 203) x=10 y=594 zero_found=0  | secs=17
+agl1 11 x cyc 10 | N=1100 order=1100 D=11 pairs=603351 min_cost=708 (A0 part 356, B0 part 352) x=11 y=660 zero_found=0  | secs=14
+agl1 13 x cyc 4 | N=624 order=624 D=11 pairs=193753 min_cost=8 (A0 part 4, B0 part 4) x=157 y=524 zero_found=0  | secs=3
+agl1 13 x cyc 5 | N=780 order=780 D=11 pairs=303031 min_cost=50 (A0 part 23, B0 part 27) x=196 y=267 zero_found=0  | secs=9
+agl1 13 x cyc 6 | N=936 order=936 D=11 pairs=436645 min_cost=587 (A0 part 293, B0 part 294) x=235 y=319 zero_found=0  | secs=8
+agl1 13 x cyc 7 | N=1092 order=1092 D=11 pairs=594595 min_cost=522 (A0 part 261, B0 part 261) x=274 y=374 zero_found=0  | secs=20
+agl1 17 x cyc 3 | N=816 order=816 D=11 pairs=331705 min_cost=34 (A0 part 19, B0 part 15) x=52 y=107 zero_found=0  | secs=8
+agl1 17 x cyc 4 | N=1088 order=1088 D=11 pairs=590241 min_cost=222 (A0 part 111, B0 part 111) x=69 y=344 zero_found=0  | secs=15
+agl1 19 x cyc 2 | N=684 order=684 D=11 pairs=232903 min_cost=14 (A0 part 10, B0 part 4) x=38 y=383 zero_found=0  | secs=3
+agl1 19 x cyc 3 | N=1026 order=1026 D=11 pairs=524800 min_cost=184 (A0 part 94, B0 part 90) x=114 y=403 zero_found=0  | secs=13
+agl1 29 | N=812 order=812 D=11 pairs=328455 min_cost=18 (A0 part 10, B0 part 8) x=29 y=523 zero_found=0  | secs=8
+agl1 31 | N=930 order=930 D=11 pairs=431056 min_cost=58 (A0 part 28, B0 part 30) x=155 y=249 zero_found=0  | secs=10
+heis 5 x cyc 5 | N=625 order=625 D=11 pairs=194376 min_cost=2000 (A0 part 1000, B0 part 1000) x=25 y=125 zero_found=0  | secs=2
+heis 5 x cyc 7 | N=875 order=875 D=11 pairs=381501 min_cost=1606 (A0 part 803, B0 part 803) x=36 y=178 zero_found=0  | secs=7
+heis 5 x cyc 8 | N=1000 order=1000 D=11 pairs=498501 min_cost=2106 (A0 part 1053, B0 part 1053) x=41 y=203 zero_found=0  | secs=8
+heis 7 x cyc 2 | N=686 order=686 D=11 pairs=234270 min_cost=684 (A0 part 342, B0 part 342) x=14 y=99 zero_found=0  | secs=5
+heis 7 x cyc 3 | N=1029 order=1029 D=11 pairs=527878 min_cost=1562 (A0 part 781, B0 part 781) x=22 y=149 zero_found=0  | secs=11
+perm 4 1,0,2,3 ; 1,2,3,0 x cyc 22 | N=528 order=528 D=11 pairs=138601 min_cost=14 (A0 part 7, B0 part 7) x=45 y=148 zero_found=0  | secs=2
+perm 4 1,0,2,3 ; 1,2,3,0 x cyc 25 | N=600 order=600 D=11 pairs=179101 min_cost=12 (A0 part 6, B0 part 6) x=51 y=157 zero_found=0  | secs=2
+perm 4 1,0,2,3 ; 1,2,3,0 x cyc 30 | N=720 order=720 D=11 pairs=258121 min_cost=78 (A0 part 39, B0 part 39) x=61 y=192 zero_found=0  | secs=3
+perm 4 1,0,2,3 ; 1,2,3,0 x cyc 35 | N=840 order=840 D=11 pairs=351541 min_cost=152 (A0 part 76, B0 part 76) x=71 y=230 zero_found=0  | secs=5
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 9 | N=540 order=540 D=11 pairs=9758 min_cost=0 (A0 part 0, B0 part 0) x=19 y=246 zero_found=1 EDGES_WRITTEN edges/perm_5_1,2,0,3,4_;_1,2,3,4,0_x_cyc_9_n1080.edges  | secs=0
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 10 | N=600 order=600 D=11 pairs=179101 min_cost=14 (A0 part 7, B0 part 7) x=21 y=273 zero_found=0  | secs=3
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 11 | N=660 order=660 D=11 pairs=216811 min_cost=44 (A0 part 22, B0 part 22) x=23 y=300 zero_found=0  | secs=6
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 12 | N=720 order=720 D=11 pairs=258121 min_cost=34 (A0 part 17, B0 part 17) x=25 y=328 zero_found=0  | secs=6
+sl2 3 x cyc 22 | N=528 order=528 D=11 pairs=138601 min_cost=38 (A0 part 19, B0 part 19) x=45 y=113 zero_found=0  | secs=2
+sl2 3 x cyc 25 | N=600 order=600 D=11 pairs=179101 min_cost=114 (A0 part 57, B0 part 57) x=51 y=128 zero_found=0  | secs=3
+sl2 3 x cyc 30 | N=720 order=720 D=11 pairs=258121 min_cost=464 (A0 part 232, B0 part 232) x=61 y=153 zero_found=0  | secs=3
+sl2 3 x cyc 35 | N=840 order=840 D=11 pairs=351541 min_cost=762 (A0 part 381, B0 part 381) x=71 y=182 zero_found=0  | secs=6
+sl2 3 x cyc 40 | N=960 order=960 D=11 pairs=459361 min_cost=1198 (A0 part 599, B0 part 599) x=81 y=131 zero_found=0  | secs=8
+sl2 3 x cyc 45 | N=1080 order=1080 D=11 pairs=581581 min_cost=1678 (A0 part 839, B0 part 839) x=91 y=139 zero_found=0  | secs=11
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 13 | N=780 order=780 D=11 pairs=303031 min_cost=12 (A0 part 6, B0 part 6) x=27 y=355 zero_found=0  | secs=6
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 14 | N=840 order=840 D=11 pairs=351541 min_cost=64 (A0 part 32, B0 part 32) x=29 y=382 zero_found=0  | secs=8
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 15 | N=900 order=900 D=11 pairs=403651 min_cost=222 (A0 part 111, B0 part 111) x=31 y=409 zero_found=0  | secs=10
+perm 5 1,2,0,3,4 ; 1,2,3,4,0 x cyc 16 | N=960 order=960 D=11 pairs=459361 min_cost=166 (A0 part 83, B0 part 83) x=33 y=439 zero_found=0  | secs=13

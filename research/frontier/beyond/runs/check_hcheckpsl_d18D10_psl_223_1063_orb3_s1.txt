@@ -1,0 +1,5 @@
+checker: hcheckpsl
+command: ./bin/hcheckpsl runs/d18D10_psl_223_1063_orb3_s1.out
+start: 2026-10-26T16:11:01Z
+sha256 61bda6d680d612f4668db8482bbd8637b8bfa11fcff27378e7045ee709bef12b  ./bin/hcheckpsl
+sha256 d436b287bc674f75c58d45971bdc772b6e65d72b3a386e37a30f56aa5b59082b  runs/d18D10_psl_223_1063_orb3_s1.out
