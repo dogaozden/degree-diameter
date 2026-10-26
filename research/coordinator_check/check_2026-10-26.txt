@@ -9,3 +9,14 @@ apsp_mt (all pairs, no symmetry, 8 threads): n=2756 edges=12402 degree min=9 max
 (4,12) 50,160 sl 11 x Z19: sha256 43272e86ab29c20491ead7708ac96d9d28fd2f5a1ad6265c475f608a5b670ab6 -> RESULT VALID d=4 D=12 n=50160
 (5,11) 253,080, (5,12) 912,576, (6,11) 1,971,744: build_haar2 (exact for Haar graphs by the two-source criterion) only; too large for all pairs here.
 
+== Mon Oct 26: new-cells-beyond edge lists, gunzipped from the branch and checked with apsp_mt (all pairs, no symmetry):
+d13D5_n11700_W8_2dm_Z10: edge list sha256 d0b0a99886adafcbb6227cbf71e5f07fd405ee44b5f47d988c9762cfcd8da639 -> RESULT VALID d=13 D=5 n=11700
+d18D5_n47600_W13_2dm_Z10: edge list sha256 509b10d4d94c2c07dd0277dc981240e097afa9e26e4a2f051105bdd522c15744 -> RESULT VALID d=18 D=5 n=47600
+d19D3_n624_fourthhat_q17: edge list sha256 a9db81c4208c5df2ae66c4790d73bc2ffb55a5c3756e3f01767d81daf1842207 -> RESULT VALID d=19 D=3 n=624
+d19D4_n10982_AS17_clones: edge list sha256 00687e75bbd7895c5a1161053908041e8281ed767ac0b4b67e02456c5398a3b2 -> RESULT VALID d=19 D=4 n=10982
+d19D5_n52428_W16_dm_Z6: edge list sha256 1ec5d9f033ff3a2559e63a92eda4f7bfeb8aa70b17fcb4f8727a922050d8e2d5 -> RESULT VALID d=19 D=5 n=52428
+d20D5_n75000_routechart_F5_Z20: edge list sha256 43edbea0910346f8e5a821cbbc999e1a6fdcf3e206f00ba3038fd2507975833d -> RESULT VALID d=20 D=5 n=75000
+d3D11_n1080_A5xZ9: edge list sha256 d4d5da55ab63637e154d825f34e071cdd898af1f28baea94d80cd9f382503732 -> RESULT VALID d=3 D=11 n=1080
+d3D12_n1320_psl2_11: edge list sha256 1e066a38664a431935b3f7b26bf11d1023a52030d30901df14f9100a696df173 -> RESULT VALID d=3 D=12 n=1320
+Also VALID but not recorded as ours (classical Moore graphs, optimal): d17D3 PG(2,16) 546, d18D3 PG(2,17) 614, d20D3 PG(2,19) 762, d17D4 W(16) 8,738, d18D4 W(17) 10,440, d20D4 W(19) 14,480; and the already-recorded d4D11 17,600/18,480/19,152, d4D12 48,000/50,160, d3D11 1,008.
+
