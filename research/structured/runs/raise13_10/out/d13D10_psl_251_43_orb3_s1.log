@@ -1,0 +1,11 @@
+group psl 251 x Z_43, N=339979500, identity 1349125, H order 63, rows 5396500, threads 1, setup 9.69s
+wide rows: HW order 251, rows 1354500, setup 26.23s
+alpha: conj by mat(42,62,234,208) (index 2630212), z -> 6 z on Z_43
+ORBIT k=3 m=4 f=1: |Fix(alpha)| = 125 (+e); mu = 21.93, mu/k = 7.31, fixed-point misses ~ 0.51
+start cost=39
+t=33 steps=8 evals=65 cost=6 best=6 T=0.48
+t=66 steps=16 evals=129 cost=6 best=6 T=0.15
+RESULT d=13 D=10 group=psl 251 x Z_43 N=339979500 best=0 evals=161 time=82.3 orbit k=3 m=4 f=1 fix=125
+full diameter check: OK
+wrote runs/raise13_10/out/d13D10_psl_251_43_orb3_s1.txt
+VALID d=13 D=10 group=psl 251 x Z_43 N=339979500 vertices=679959000 (distinct generators, 13-regular simple)
