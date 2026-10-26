@@ -113,4 +113,4 @@ Best structural cost at n = 588 (start -> annealed):
 Opus kept c8's start: cold anneals 152 -> 70 -> 60 (research/d11D5/dc/n588_c6plane_cost70.in); wpo (LMAX 3000-6000)
 from 60-70 only reaches 68 and drifts. Fresh C6-plane starts (624-874) anneal to 142-178; Opus's own triangle design
 (tri.py: every new point's pencil preimage a full PG-line) 638 -> 120; long K33 anneals 148-168.
-The squad again supplied the best design (c8); n = 588 stayed open at 60.
+The squad again supplied the best design (c8); n = 588 stayed open (60, then 52 after evolutionary cold cycles).
