@@ -101,10 +101,11 @@ def main():
     # a restarted --truncate run keeps the lines of the Bat files written before
     keep = [l for l in open(man) if '/Bat' in l] if args.truncate and os.path.exists(man) else []
     with open(man, 'w') as mf:
-        for f in ['Defs.lean'] + [c + '.lean' for c in covers] + ['Record.lean']:
+        light = os.path.exists(os.path.join(outdir, 'DefsC.lean'))   # gen_haarsl2.py cells
+        for f in (['DefsC.lean'] if light else []) + ['Defs.lean'] + [c + '.lean' for c in covers] + ['Record.lean']:
             mf.write(f'{sha(os.path.join(outdir, f))}  {outdir}/{f}\n')
         mf.writelines(keep)
-    queue_append(args.queue, [f'!{P}Defs:2.5', '--'])
+    queue_append(args.queue, ([f'!{P}DefsC:1', '--'] if light else []) + [f'!{P}Defs:2.5', '--'])
     say(f'{nmods} Bat modules')
 
     # 2. Bat modules in chunks

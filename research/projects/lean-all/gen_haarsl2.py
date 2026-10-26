@@ -1,0 +1,348 @@
+#!/usr/bin/env python3
+"""Lean files for a Haar record of SL(2,p) x Z_n through the packed batch checks, with batch modules that import
+no Mathlib (LeanAll/Core/HaarCore.lean, LeanAll/HaarSwar2.lean, LeanAll/HaarSL2.lean). Same options and certificates
+as gen_haarsl.py (SL only).
+
+usage: gen_haarsl2.py SOLFILE OUTDIR MODULE THEOREM [--per K] [--certdir DIR] ...
+
+Writes
+  DefsC.lean           generators, letter tables, parameters, the constants ONES, RD, RZ (core Lean only)
+  Defs.lean            the checks of those constants and of the letters (Mathlib)
+  Bat<K><mm>.lean      one theorem `∃ Dig, batchOK … = true` per batch, and the module's range lemma; imports only
+                       DefsC and Range, so Lean starts in about 0.4 s instead of 2.4 s
+  Cover<K>.lean        all batches pass, so every element has a word
+  Record.lean          the record theorem
+"""
+import argparse, mmap, os, re, subprocess, sys
+
+W = 40
+S_BARRETT = 30
+
+
+def read_sol(path):
+    lines = open(path).read().split('\n')
+    hdr = lines[0].split()
+    deg, diam, grp, p, n = int(hdr[0]), int(hdr[1]), hdr[2], int(hdr[3]), int(hdr[5])
+    assert grp in ('sl', 'psl'), 'only sl and psl groups here'
+    gens = []
+    for l in lines[1:]:
+        m = re.match(r'\s*\d+\s+mat\((\d+),(\d+),(\d+),(\d+)\)\s+z=(\d+)', l)
+        if m:
+            gens.append(tuple(int(x) for x in m.groups()))
+    assert len(gens) == deg
+    return deg, diam, grp == 'psl', p, n, gens
+
+
+
+def chunked(v, bits=None, chunk=4096):
+    """`v` as a balanced tree of short hex literals joined by `+` and `<<<` (a long literal costs time quadratic
+    in its length to elaborate; the kernel evaluates the tree with GMP)."""
+    if bits is None:
+        bits = max(v.bit_length(), 1)
+    if bits <= chunk:
+        return hex(v)
+    h = max(chunk, (bits // 2 // chunk) * chunk)
+    return f'({chunked(v & ((1 << h) - 1), h, chunk)} + {chunked(v >> h, bits - h, chunk)} <<< {h})'
+
+
+def chunked_raw(v, bits=None, chunk=16384):
+    """`chunked` with raw literals and `Nat.add`/`Nat.shiftLeft` (no `OfNat` or `binop%` elaboration: about three
+    times faster to elaborate)."""
+    if bits is None:
+        bits = max(v.bit_length(), 1)
+    if bits <= chunk:
+        return f'(nat_lit {hex(v)})'
+    h = max(chunk, (bits // 2 // chunk) * chunk)
+    return (f'(Nat.add {chunked_raw(v & ((1 << h) - 1), h, chunk)} '
+            f'(Nat.shiftLeft {chunked_raw(v >> h, bits - h, chunk)} {h}))')
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('sol')
+    ap.add_argument('outdir')
+    ap.add_argument('module')
+    ap.add_argument('theorem')
+    ap.add_argument('--per', type=int, default=40, help='batches per module')
+    ap.add_argument('--certdir', default='/tmp/claude-0/work/certs')
+    ap.add_argument('--haarcert', default='/tmp/claude-0/work/haarcert')
+    ap.add_argument('--source', default='')
+    ap.add_argument('--covers-only', action='store_true', help='rewrite only the Cover and Record files')
+    ap.add_argument('--no-bats', action='store_true', help='write Defs, Cover and Record but no Bat modules')
+    ap.add_argument('--bat-modules', default='', help='LO:HI: write only the Bat modules LO <= index < HI (counted '
+                    'over all covers in order), nothing else')
+    ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
+    ap.add_argument('--scan2', action='store_true', help='haarcert scan2 (2 bytes per element, the words of --scan)')
+    ap.add_argument('--raw', action='store_true', help='certificate trees of raw literals (chunked_raw)')
+    ap.add_argument('--leaf', type=int, default=4096,
+                    help='bits per literal in the certificate trees (16384 gives oleans of about 5.9 bytes per slot '
+                         'instead of 8.1)')
+    ap.add_argument('--blocks', action='store_true', help='RD, RZ (and NRD) as sums of p blocks of n fields '
+                    '(LeanAll/Blocks.lean), for large batches')
+    args = ap.parse_args()
+    deg, D, psl, p, n, gens = read_sol(args.sol)
+    assert not psl, 'gen_haarsl2.py: SL only (use gen_haarsl.py for PSL)'
+    L = D - 1
+    N = p * n
+    hp = (p - 1) // 2
+    nb = p * hp + hp if psl else p * p - 1
+    G = p * (p * p - 1) * n // (2 if psl else 1)
+    grpname = 'PSL' if psl else 'SL'
+    kinds = ['even'] if D % 2 == 0 else ['left', 'right']
+    os.makedirs(args.certdir, exist_ok=True)
+    os.makedirs(args.outdir, exist_ok=True)
+    base = os.path.basename(args.sol).replace('.txt', '')
+    certs = {}
+    for kd in kinds:
+        out = os.path.join(args.certdir, f'{base}_{kd}.bin')
+        if not os.path.exists(out):
+            r = subprocess.run([args.haarcert, args.sol, kd, out] + (['scan2'] if args.scan2 else ['scan'] if args.scan else []),
+                               capture_output=True, text=True)
+            sys.stderr.write(r.stderr)
+            if r.returncode != 0:
+                sys.exit(f'haarcert {kd} failed')
+        certs[kd] = out
+    M = args.module
+    ns = M
+    hdr = '/- Generated by research/projects/lean-all/gen_haarsl2.py. Do not edit by hand. -/\n'
+    m = (1 << S_BARRETT) // p
+    ones = ((1 << (W * N)) - 1) // ((1 << W) - 1)
+    rd = sum((j // n) << (W * j) for j in range(N))
+    rz = sum((j % n) << (W * j) for j in range(N))
+    nrd = sum(((p - j // n) % p) << (W * j) for j in range(N))
+
+    def let(g):
+        return f'⟨{g[0]}, {g[1]}, {g[2]}, {g[3]}, {g[4]}⟩'
+    inv_pat = {'even': 'decide (t % 2 = 1)', 'right': 'decide (t % 2 = 1)', 'left': 'decide (t % 2 = 0)'}
+    K = {'even': 'E', 'left': 'L', 'right': 'R'}
+    def bstmt(k_, b):
+        if psl:
+            return f'∃ Dig, batchOKpm Pm ONES lt{k_} Dig (kindBp {p} {b}) (aBp {p} {b}) (cBp {p} {b}) RD NRD RZ = true'
+        return (f'∃ Dig, batchOK Pm ONES lt{k_} Dig (kindB {p} {b}) (aB {p} {b} * ONES) (cond (kindB {p} {b}) RD 0) '
+                f'(cB {p} {b} * ONES) (cond (kindB {p} {b}) 0 RD) RZ = true')
+    bm = tuple(int(x) for x in args.bat_modules.split(':')) if args.bat_modules else None
+    only_bats = bm is not None
+
+    def out(name):
+        skip = args.covers_only or only_bats
+        return open(os.devnull if skip else os.path.join(args.outdir, name), 'w')
+    OPEN = 'open BipartiteDD.LeanAll.HaarSwar2 BipartiteDD.LeanAll.HaarSL2'
+    with out('DefsC.lean') as f:
+        f.write(hdr)
+        f.write('import BipartiteDD.LeanAll.Core.HaarCore\n\n')
+        src = f' ({args.source})' if args.source else ''
+        f.write(f'/-! The Haar graph of `{grpname}(2,{p}) × Z{n}`{src}: degree {deg}, diameter {D}, '
+                f'{2 * G} vertices. Generators, letter tables, batch parameters ({nb} batches of {N} slots, '
+                f'{W}-bit fields), core Lean only. -/\n\n')
+        f.write(f'namespace {ns}\n\n{OPEN} BipartiteDD.LeanAll.Core\n\n')
+        f.write('/-- The generators as letters `(a, b, c, d, z)`. -/\ndef genL : Nat → Let\n')
+        for u, g in enumerate(gens):
+            f.write(f'  | {u} => {let(g)}\n')
+        f.write('  | _ => ⟨1, 0, 0, 1, 0⟩\n\n')
+        for kd in kinds:
+            f.write(f'/-- Step `t` uses inverses ({kd} words). -/\ndef inv{K[kd]} (t : Nat) : Bool := {inv_pat[kd]}\n\n')
+            f.write(f'def lt{K[kd]} (t u : Nat) : Let := cond (inv{K[kd]} t) (invLet {p} {n} (genL u)) (genL u)\n\n')
+        f.write(f'/-- Batch parameters. -/\ndef Pm : Prm := ⟨{W}, {N}, {p}, {n}, {S_BARRETT}, {m}, {deg}, {L}⟩\n\n')
+        f.write(f'def ONES : Nat := onesC {W} {N}\n\n')
+        if args.blocks:
+            rzn = sum(z << (W * z) for z in range(n))
+            f.write(f'def ONESn : Nat := onesC {W} {n}\n\n')
+            f.write(f'/-- `pkF {W} (fun z => z) {n}`. -/\ndef RZn : Nat := {hex(rzn)}\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j / {n}) {N}`, by blocks. -/\ndef RD : Nat := blk {W} {n} (fun d => d * ONESn) {p}\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j % {n}) {N}`, by blocks. -/\ndef RZ : Nat := blk {W} {n} (fun _ => RZn) {p}\n\n')
+        else:
+            f.write(f'/-- `pkF {W} (fun j => j / {n}) {N}`. -/\ndef RD : Nat := {hex(rd)}\n\n')
+            f.write(f'/-- `pkF {W} (fun j => j % {n}) {N}`. -/\ndef RZ : Nat := {hex(rz)}\n\n')
+        for kd in kinds:
+            k_ = K[kd]
+            f.write(f'/-- Batch `b` passes. -/\ndef Q{k_} (b : Nat) : Prop := {bstmt(k_, "b")}\n\n')
+        f.write(f'end {ns}\n')
+    with out('Defs.lean') as f:
+        f.write(hdr)
+        f.write(f'import {M}.DefsC\nimport BipartiteDD.LeanAll.HaarSL2\nimport BipartiteDD.LeanAll.Core.Bridge\n\n')
+        f.write(f'/-! Checks of the constants and letters of `DefsC`. -/\n\n')
+        f.write(f'namespace {ns}\n\n{OPEN} BipartiteDD.LeanAll.Swar BipartiteDD.LeanAll.Core\n\n')
+        f.write(f'instance fact_prime : Fact (Nat.Prime {p}) := ⟨by norm_num⟩\n\n')
+        f.write(f'/-- The generators. -/\ndef sG (u : ℕ) : G {p} {n} := gOf (genL u)\n\n')
+        f.write(f'/-- The connection set. -/\ndef SS : Finset (G {p} {n}) := (Finset.range {deg}).image sG\n\n')
+        f.write('theorem Pm_valid : Pm.valid := by decide\n\n')
+        f.write(f'theorem hO : ONES = pkF Pm.w (fun _ => 1) Pm.N := onesC_eq {W} {N} (by norm_num)\n\n')
+        if args.blocks:
+            f.write(f'theorem hOn : ONESn = pkF Pm.w (fun _ => 1) {n} := onesC_eq {W} {n} (by norm_num)\n\n')
+            f.write(f'theorem hRZn : RZn = pkF Pm.w (fun z => z) {n} := by decide +kernel\n\n')
+            f.write(f'theorem hRD : RD = pkF Pm.w (fun j => j / {n}) Pm.N := by\n'
+                    f'  rw [show RD = Swar.blk {W} {n} (fun d => d * ONESn) {p} from blk_eq _ _ _ _, show Pm.N = {p} * {n} from rfl,\n'
+                    f'    ramp_div _ _ _ (by norm_num), ← hOn]; rfl\n\n')
+            f.write(f'theorem hRZ : RZ = pkF Pm.w (fun j => j % {n}) Pm.N := by\n'
+                    f'  rw [show RZ = Swar.blk {W} {n} (fun _ => RZn) {p} from blk_eq _ _ _ _, show Pm.N = {p} * {n} from rfl,\n'
+                    f'    ramp_mod, ← hRZn]; rfl\n\n')
+        else:
+            f.write(f'theorem hRD : RD = pkF Pm.w (fun j => j / {n}) Pm.N := by decide +kernel\n\n')
+            f.write(f'theorem hRZ : RZ = pkF Pm.w (fun j => j % {n}) Pm.N := by decide +kernel\n\n')
+        f.write(f'theorem detOK : ∀ u < {deg}, DetOK {p} (genL u) := by decide\n\n')
+        f.write(f'theorem genB : ∀ u < {deg}, (genL u).f ≤ {p} ∧ (genL u).g ≤ {p} ∧ (genL u).zw ≤ {n} := by decide\n\n')
+        for kd in kinds:
+            k_ = K[kd]
+            f.write(f"theorem letOK{k_} : LetOK Pm lt{k_} := by unfold LetOK; decide\n\n")
+            f.write(f'theorem letRep{k_} : LetRep sG inv{k_} Pm.Δ Pm.L lt{k_} :=\n'
+                    f'  letRep_of sG inv{k_} {deg} {L} genL (fun _ _ => rfl) detOK genB lt{k_} (fun _ _ => rfl)\n\n')
+        f.write(f'end {ns}\n')
+
+    OPSL = ' BipartiteDD.LeanAll.HaarPSL' if psl else ''
+
+    def jtree(k_, leaves):
+        # leaves: (term, lo, hi); every bound explicit (implicit ones make the unifier unfold the checks)
+        if len(leaves) == 1:
+            return leaves[0][0]
+        h = len(leaves) // 2
+        return (f'(range_join (Q := Q{k_}) (lo := {leaves[0][1]}) (mid := {leaves[h][1]}) (hi := {leaves[-1][2]}) '
+                f'{jtree(k_, leaves[:h])} {jtree(k_, leaves[h:])})')
+    mods = {}
+    gi = 0
+    used = [nb]   # lowest batch written
+    for kd in kinds:
+        k_ = K[kd]
+        cf = open(certs[kd], 'rb')
+        data = mmap.mmap(cf.fileno(), 0, access=mmap.ACCESS_READ)
+        # a certificate file may have been cut below the batches still to write (bigcell.py --truncate)
+        assert len(data) == 5 * G or (only_bats and len(data) % (5 * N) == 0)
+        mods[kd] = []
+        for mi, lo in enumerate(range(0, nb, args.per)):
+            hi = min(nb, lo + args.per)
+            mod = f'Bat{k_}{mi:03d}'
+            mods[kd].append((mod, lo, hi))
+            gi += 1
+            if args.covers_only or args.no_bats or (only_bats and not bm[0] <= gi - 1 < bm[1]):
+                continue
+            with open(os.path.join(args.outdir, mod + '.lean'), 'w') as f:
+                f.write(hdr)
+                f.write(f'import BipartiteDD.LeanAll.Range\nimport {M}.DefsC\n\n')
+                f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll\n{OPEN}\n\n')
+                f.write('set_option maxRecDepth 100000\n\n')
+                for b in range(lo, hi):
+                    assert 5 * (b + 1) * N <= len(data), 'certificate file cut below this batch'
+                    used[0] = min(used[0], b)
+                    dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
+                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked_raw(dig, chunk=args.leaf) if args.raw else chunked(dig, chunk=args.leaf)}, by decide +kernel⟩\n\n')
+                leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
+                f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
+                f.write(f'\nend {ns}\n')
+    if only_bats:
+        print(f'wrote Bat modules {bm[0]}:{bm[1]} of {gi} to {args.outdir}; first batch {used[0]}, '
+              f'certificate bytes from {5 * used[0] * N}', file=sys.stderr)
+        return
+    # covers: the module range lemmas joined in a balanced tree (range_join), so no large case split
+    for kd in kinds:
+        k_ = K[kd]
+        with open(os.path.join(args.outdir, f'Cover{k_}.lean'), 'w') as f:
+            f.write(hdr)
+            f.write(f'import BipartiteDD.LeanAll.Range\nimport {M}.Defs\n')
+            for mod, _, _ in mods[kd]:
+                f.write(f'import {M}.{mod}\n')
+            f.write(f'\nnamespace {ns}\n\nopen BipartiteDD.LeanAll BipartiteDD.Haar\n{OPEN}\n\n')
+            f.write(f'theorem batches{k_} : BatchesOKpm Pm ONES RD NRD RZ lt{k_} := by\n' if psl else
+                    f'theorem batches{k_} : BatchesOK Pm ONES RD RZ lt{k_} := by\n')
+            f.write('  intro b hb\n')
+            f.write(f'  have hb\' : b < {nb} := hb\n')
+            f.write(f'  exact {jtree(k_, [(f"range{k_}{mod[4:]}", lo, hi) for mod, lo, hi in mods[kd]])} b (Nat.zero_le b) hb\'\n\n')
+            if psl:
+                f.write(f'theorem words{k_} : ∀ x : G {p} {n}, ∃ dg : ℕ → ℕ, (∀ t < Pm.L, dg t < Pm.Δ) ∧ '
+                        f'(wordG sG inv{k_} dg Pm.L = x ∨ wordG sG inv{k_} dg Pm.L = gneg * x) :=\n')
+                f.write(f'  cover_of_batches_pm sG inv{k_} (by decide) Pm Pm_valid rfl rfl rfl hO hRD hNRD hRZ letOK{k_} letRep{k_} '
+                        f'batches{k_}\n')
+            else:
+                f.write(f'theorem words{k_} : ∀ x : G {p} {n}, ∃ dg : ℕ → ℕ, (∀ t < Pm.L, dg t < Pm.Δ) ∧ '
+                        f'wordG sG inv{k_} dg Pm.L = x :=\n')
+                f.write(f'  cover_of_batches sG inv{k_} Pm Pm_valid rfl rfl rfl hO hRD hRZ letOK{k_} letRep{k_} batches{k_}\n')
+            f.write(f'\nend {ns}\n')
+    k2 = L // 2
+    if psl:
+        write_record_psl(args, hdr, M, ns, kinds, K, deg, D, L, p, n, G, k2)
+        nmods = sum(len(v) for v in mods.values())
+        print(f'wrote {args.outdir}: {nb} batches x {len(kinds)} covers in {nmods} modules', file=sys.stderr)
+        return
+    with open(os.path.join(args.outdir, 'Record.lean'), 'w') as f:
+        f.write(hdr)
+        for kd in kinds:
+            f.write(f'import {M}.Cover{K[kd]}\n')
+        f.write(f'\nnamespace {ns}\n\nopen BipartiteDD.Haar\n{OPEN}\n\n')
+        f.write(f'theorem sG_mem : ∀ u < {deg}, sG u ∈ SS := fun u hu => Finset.mem_image.2 ⟨u, Finset.mem_range.2 hu, rfl⟩\n\n')
+        f.write(f'theorem card_SS : SS.card = {deg} := by decide\n\n')
+        f.write(f'theorem cardG : Fintype.card (G {p} {n}) = {G} := by rw [card_G]\n\n')
+        if D % 2 == 1:
+            for kd, nm, shape, lem in (('left', 'L', 'IsLeftWord', 'word_left'), ('right', 'R', 'IsRightWord', 'word_right')):
+                pat = '0' if kd == 'left' else '1'
+                f.write(f'theorem cov{nm} (x : G {p} {n}) : {shape} SS {k2} x := by\n')
+                f.write(f'  obtain ⟨dg, hdg, hw⟩ := words{nm} x\n')
+                f.write(f'  refine ⟨pairsL sG dg 0 {k2}, by rw [pairsL_length], pairsL_mem sG sG_mem dg 0 {k2} (fun t ht => hdg t (by simpa [Pm] using ht)), ?_⟩\n')
+                f.write(f'  rw [← {lem} sG inv{nm} dg (fun t => rfl) {k2}]\n')
+                f.write(f'  exact hw\n\n')
+            f.write(f'theorem record : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} := by\n')
+            f.write(f'  have h := record_odd SS ⟨sG 0, sG_mem 0 (by norm_num)⟩ {k2} covL covR\n')
+        else:
+            f.write(f'theorem covE (x : G {p} {n}) : ∃ s ∈ SS, IsLeftWord SS {k2} (s⁻¹ * x) := by\n')
+            f.write(f'  obtain ⟨dg, hdg, hw⟩ := wordsE x\n')
+            f.write(f'  have hdg\' : ∀ t < {L}, dg t < {deg} := fun t ht => hdg t (by simpa [Pm] using ht)\n')
+            f.write(f'  refine ⟨sG (dg 0), sG_mem _ (hdg\' 0 (by norm_num)), pairsL sG dg 1 {k2}, by rw [pairsL_length], '
+                    f'pairsL_mem sG sG_mem dg 1 {k2} (fun t ht => hdg\' t (by omega)), ?_⟩\n')
+            f.write(f'  have e := word_even sG invE dg (fun t => rfl) {k2}\n')
+            f.write(f'  rw [show Pm.L = 2 * {k2} + 1 from rfl] at hw\n')
+            f.write(f'  rw [← hw, e, inv_mul_cancel_left]\n\n')
+            f.write(f'theorem record : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} := by\n')
+            f.write(f'  have h := record_even SS {k2} covE\n')
+        f.write(f'  rw [card_SS, cardG] at h\n')
+        f.write(f'  exact h\n\n')
+        f.write(f'end {ns}\n\n')
+        f.write(f'open {ns} in\n')
+        f.write(f'/-- A bipartite graph on {2 * G} vertices with degree at most {deg} and diameter at most {D}: the Haar graph of '
+                f'`SL(2,{p}) × Z{n}`. -/\n')
+        f.write(f'theorem {args.theorem} : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} :=\n  record\n')
+    nmods = sum(len(v) for v in mods.values())
+    print(f'wrote {args.outdir}: {nb} batches x {len(kinds)} covers in {nmods} modules', file=sys.stderr)
+
+
+def write_record_psl(args, hdr, M, ns, kinds, K, deg, D, L, p, n, G, k2):
+    with open(os.path.join(args.outdir, 'Record.lean'), 'w') as f:
+        f.write(hdr)
+        for kd in kinds:
+            f.write(f'import {M}.Cover{K[kd]}\n')
+        f.write(f'\nnamespace {ns}\n\nopen BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL BipartiteDD.LeanAll.HaarPSL '
+                f'BipartiteDD.Haar\n\n')
+        f.write(f'theorem sG_mem : ∀ u < {deg}, sG u ∈ SS := fun u hu => Finset.mem_image.2 ⟨u, Finset.mem_range.2 hu, rfl⟩\n\n')
+        f.write(f'theorem card_SS : SS.card ≤ {deg} := Finset.card_image_le.trans (Finset.card_range _).le\n\n')
+        if D % 2 == 1:
+            for kd, nm, shape, lem in (('left', 'L', 'IsLeftWord', 'word_left'), ('right', 'R', 'IsRightWord', 'word_right')):
+                f.write(f'theorem cov{nm} (x : G {p} {n}) : ∃ y, (y = x ∨ y = gneg * x) ∧ {shape} SS {k2} y := by\n')
+                f.write(f'  obtain ⟨dg, hdg, hw⟩ := words{nm} x\n')
+                f.write(f'  refine ⟨_, hw, pairsL sG dg 0 {k2}, by rw [pairsL_length], pairsL_mem sG sG_mem dg 0 {k2} '
+                        f'(fun t ht => hdg t (by simpa [Pm] using ht)), ?_⟩\n')
+                f.write(f'  rw [← {lem} sG inv{nm} dg (fun t => rfl) {k2}]\n')
+                f.write(f'  rfl\n\n')
+            f.write(f'theorem record : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} :=\n')
+            f.write(f'  psl_record_odd (by decide) SS ⟨sG 0, sG_mem 0 (by norm_num)⟩ {k2} {deg} card_SS covL covR\n\n')
+        else:
+            f.write(f'theorem covE (x : G {p} {n}) : ∃ y, (y = x ∨ y = gneg * x) ∧ ∃ s ∈ SS, IsLeftWord SS {k2} (s⁻¹ * y) := by\n')
+            f.write(f'  obtain ⟨dg, hdg, hw⟩ := wordsE x\n')
+            f.write(f'  have hdg\' : ∀ t < {L}, dg t < {deg} := fun t ht => hdg t (by simpa [Pm] using ht)\n')
+            f.write(f'  refine ⟨_, hw, sG (dg 0), sG_mem _ (hdg\' 0 (by norm_num)), pairsL sG dg 1 {k2}, by rw [pairsL_length], '
+                    f'pairsL_mem sG sG_mem dg 1 {k2} (fun t ht => hdg\' t (by omega)), ?_⟩\n')
+            f.write(f'  have e := word_even sG invE dg (fun t => rfl) {k2}\n')
+            f.write(f'  rw [show Pm.L = 2 * {k2} + 1 from rfl, e, inv_mul_cancel_left]\n\n')
+            f.write(f'theorem record : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} :=\n')
+            f.write(f'  psl_record_even (by decide) SS {k2} {deg} card_SS covE\n\n')
+        f.write(f'end {ns}\n\n')
+        f.write(f'open {ns} in\n')
+        f.write(f'/-- A bipartite graph on {2 * G} vertices with degree at most {deg} and diameter at most {D}: the Haar graph of '
+                f'`PSL(2,{p}) × Z{n}`. -/\n')
+        f.write(f'theorem {args.theorem} : ∃ H : SimpleGraph (Fin {2 * G}), BipartiteDD.IsBipartiteDegDiam H {deg} {D} :=\n  record\n')
+
+
+def _spread(data, start, N):
+    """5-byte fields from the certificate file, as 40-bit little-endian fields of one number."""
+    out = bytearray()
+    for j in range(N):
+        out += data[5 * (start + j):5 * (start + j) + 5]
+    return out
+
+
+if __name__ == '__main__':
+    main()
