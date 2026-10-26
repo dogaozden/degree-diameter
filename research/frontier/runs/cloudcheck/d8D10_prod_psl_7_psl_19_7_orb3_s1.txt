@@ -1,0 +1,17 @@
+machine: nproc=4; free -g: total 15 used 0 free 14 available 15 (GB)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 8043840 edges = 32175360 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = d33f0b924e098b352ba4aaa0624f71f71c1797ea58a5d3ff07f7859fce2611ee
+VALID d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 vertices=8043840
+== check_haar_indep.py ==
+file research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt
+header: d=8 D=10 spec=prod psl 7 psl 19 NCYC=7 N=4021920
+group order |G|=574560 (factors [168, 3420]), x Z_7 -> 4021920; vertices 2N=8043840
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132212, 836552, 3136496, 3165805, 750411]
+BFS from B: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132214, 836552, 3137525, 3165805, 749380]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=8043840 (5s)
+
