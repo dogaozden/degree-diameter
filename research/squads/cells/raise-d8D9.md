@@ -19,4 +19,27 @@ Record: N = 670,800 (2N = 1,341,600), sl 25 x Z43. Target: any valid Haar graph 
 3. Run the best survivors with the annealer on 4 cores.
 
 ## Screen results
-(filled in below as they come in)
+Full window screen, `orb_screen.py 8 9 670801 690000 "3 2 2" --anyn --samples 3000` (255 candidates, ~25 min).
+Ranked by (p1+p10)/2. Top rows (N, mu, |Fix|, min, p1, median):
+
+| group | N | mu | |Fix| | min | p1 | median | round 2? |
+|---|---|---|---|---|---|---|---|
+| psl 47 x Z13 | 674,544 | 31.5 | 23 | 30 | 48 | 169 | yes (plateau 3) |
+| psl 23 x Z111 | 673,992 | 31.3 | 35 | 30 | 78 | 413 | **new** |
+| sl 29 x Z28 | 682,080 | 35.6 | 119 | 42 | 80 | 374 | new |
+| sl 17 x Z139 | 680,544 | 34.7 | 17 | 42 | 126 | 520 | yes (stall 12-36) |
+| prod sl 4 x psl 7 x Z67 | 675,360 | 32.0 | 8 | 48 | 108 | 1128 | yes |
+| sl 23 x Z56 | 680,064 | 34.5 | 191 | 84 | 132 | 1140 | new, poor |
+| psl 19 x Z199 | 680,580 | 34.8 | 8 | 54 | 132 | 822 | new, checked by hand, poor |
+| sl 16 x Z165 | 673,200 | 30.9 | 2474 | 146,062 | 180,874 | 491,100 | new, dead |
+| sl 13 x Z308 | 672,672 | 30.6 | 527 | 1026 (200 samples) | - | - | new, dead (|Fix| too big) |
+
+The only SL-type group (unique involution) with a tail near the record is sl 17 x Z139, which round 2 already found
+stalled. So the screen points at psl 23 x Z111 (min 30 at 3,000 samples, same as psl 47 x Z13's best). The record's
+sl 25 x Z43 had min 28 and p1 66 at 1,000 samples.
+
+## Round 3 runs (3600 s each, 1 thread, nice 5, in the scratchpad r3/)
+psl 23 x Z111, ORBIT "3 2 2":
+- s1: default weights
+- s2: ORBW=3
+- s3: ORBW=3, RESTART=1
