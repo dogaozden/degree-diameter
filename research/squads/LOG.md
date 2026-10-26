@@ -79,5 +79,5 @@ cost 2 at n = 2,368 (Z37 x|_6 Z8 = SmallGroup(296,3)); the exact two-move search
 voltage changes, endpoint swaps) then found a cost-0 state: **(3,12) new cell, 2,368 vertices** (census best 2,304,
 lab 1,320), checked with score48 and apsp.c and rebuilt from explicit metacyclic coordinates. Polish found nothing from
 the cost-4 states at (3,11) 1,360 / 1,368 and (3,12) 2,352 (exact local minima). Lesson: annealing plus an exact
-two-move polish is stronger than either alone; a cost-2 state is often within two moves of a valid graph, a cost-4
-state was not in any case tried.
+two-move polish can finish what annealing alone stalls on: of the four cost-2 states polished ((3,11) 1,272, 1,284,
+1,296 and (3,12) 2,368) one was two moves from a valid graph; none of the cost-4 states was.
