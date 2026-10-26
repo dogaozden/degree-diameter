@@ -38,6 +38,13 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (16,9) | 337,394,400 | Haar, SL(2,151) × Z49 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_16_9_337394400`, LeanAll/HaarD16D9 (22,800 batches × 2, streamed) |
 | (13,10) | 677,714,400 | Haar, SL(2,199) × Z43 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_13_10_677714400`, LeanAll/HaarD13D10 (39,600 batches, streamed) |
 | (14,10) | 1,326,627,120 | Haar, SL(2,139) × Z247 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_14_10_1326627120`, LeanAll/HaarD14D10 (19,320 batches, streamed, blockwise ramps) |
+| (5,8) | 9,760 | Haar, Z61 ⋊ Z80 (record added during this session) | **done** | `nb_5_8_9760`, LeanAll/MetaD5D8 (per-element word checks, gen_meta.py) |
+| (5,9) | 29,756 | Haar, Z346 ⋊ Z43 (added during this session) | **done** | `nb_5_9_29756`, LeanAll/MetaD5D9 |
+| (11,10) | 148,729,680 | Haar, PSL(2,89) × Z211 (added during this session) | building (streamed) | LeanAll/HaarD11D10 |
+| (8,9) | 1,341,600 | Haar, SL(2,25) × Z43 (added during this session; replaces 1,326,960) | todo (needs GF(25)) | |
+| (9,8) | 546,720 | Haar, SL(2,16) × Z67 (added during this session; Lean ✓ is for 540,360) | todo (needs GF(16)) | |
+| (15,10) | 2,467,618,800 | Haar, SL(2,149) × Z373 (added during this session) | todo (same pipeline; about 10 h and 16 GB of disk here) | |
+| (16,10) | 4,220,872,800 | Haar, SL(2,151) × Z613 (added during this session) | todo (2.1 billion elements: beyond this machine's memory and disk) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
