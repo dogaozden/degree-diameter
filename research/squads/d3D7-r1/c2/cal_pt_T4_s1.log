@@ -1,0 +1,24 @@
+pt group N=7 id=1 p=12 n=168 reps=8 T=[0.30,4.00] alpha=0.000 D=7
+t=0.0 it=5 best 198 (T=0.30)
+t=0.0 it=14 best 188 (T=0.30)
+t=0.0 it=24 best 182 (T=0.30)
+t=0.0 it=39 best 158 (T=0.30)
+t=0.0 it=54 best 132 (T=0.30)
+t=0.0 it=241 best 124 (T=0.63)
+t=0.0 it=268 best 108 (T=0.63)
+t=0.0 it=277 best 92 (T=0.63)
+t=0.2 it=3934 best 86 (T=0.43)
+t=0.2 it=3947 best 46 (T=0.43)
+t=0.7 it=60556 best 38 (T=0.30)
+t=2.1 it=264716 best 34 (T=0.63)
+t=6.2 it=871184 best 32 (T=0.30)
+t=9.7 it=1377811 best 30 (T=4.00)
+t=12.8 it=1842020 best 28 (T=1.91)
+t=19.3 it=2798204 best 26 (T=0.30)
+t=20 it=2894011 best 26 | c7 by temperature: 26 30 32 38 40 42 42 42
+t=23.6 it=3435729 best 18 (T=0.43)
+t=40 it=5976885 best 18 | c7 by temperature: 18 18 20 26 26 38 32 36
+t=60 it=9345697 best 18 | c7 by temperature: 18 18 20 28 26 32 56 42
+t=80 it=12695120 best 18 | c7 by temperature: 18 18 20 30 30 38 32 74
+t=100 it=16075138 best 18 | c7 by temperature: 18 18 20 30 26 34 54 70
+end best 18 its 19831125 time 120.0

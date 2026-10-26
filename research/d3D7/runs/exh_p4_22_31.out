@@ -1,0 +1,283 @@
+BASE bases/p4/b4_0.txt
+GROUP N=22 id=1 D22 n=176 tried=447216 best=118 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=670824 best=20 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=22 id=1 D22 n=176 tried=426888 best=118 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=640332 best=30 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=22 id=1 D22 n=176 tried=407484 best=174 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=611226 best=52 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=22 id=1 D22 n=176 tried=426888 best=96 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=640332 best=14 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=22 id=1 D22 n=176 tried=468512 best=76 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=702768 best=22 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=22 id=1 D22 n=176 tried=702768 best=44 nsol=0
+GROUP N=22 id=2 C22 n=176 tried=937024 best=10 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=23 id=1 C23 n=184 tried=267674 best=34 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=23 id=1 C23 n=184 tried=256036 best=34 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=23 id=1 C23 n=184 tried=244904 best=68 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=23 id=1 C23 n=184 tried=256036 best=32 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=23 id=1 C23 n=184 tried=279841 best=26 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=23 id=1 C23 n=184 tried=559682 best=24 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=1907712 best=44 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2225664 best=50 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1271808 best=40 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=1907712 best=62 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2225664 best=92 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=1907712 best=158 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=1907712 best=64 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2225664 best=86 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2225664 best=52 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2225664 best=52 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1589760 best=52 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1271808 best=104 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1589760 best=100 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1271808 best=188 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=953856 best=92 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=1828224 best=50 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2132928 best=52 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1218816 best=53 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=1828224 best=74 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2132928 best=93 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=1828224 best=144 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=1828224 best=77 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2132928 best=97 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2132928 best=70 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2132928 best=66 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1523520 best=34 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1218816 best=87 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1523520 best=86 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1218816 best=166 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=914112 best=86 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=1752048 best=50 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2044056 best=72 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1168032 best=64 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=1752048 best=128 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2044056 best=128 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=1752048 best=212 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=1752048 best=136 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2044056 best=142 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2044056 best=88 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2044056 best=76 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1460040 best=100 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1168032 best=146 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1460040 best=40 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1168032 best=224 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=876024 best=180 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=1828224 best=40 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2132928 best=28 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1218816 best=32 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=1828224 best=44 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2132928 best=56 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=1828224 best=138 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=1828224 best=46 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2132928 best=94 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2132928 best=48 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2132928 best=56 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1523520 best=28 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1218816 best=96 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1523520 best=112 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1218816 best=153 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=914112 best=32 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=1990656 best=28 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2322432 best=32 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1327104 best=40 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=1990656 best=40 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2322432 best=81 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=1990656 best=114 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=1990656 best=32 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2322432 best=80 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2322432 best=42 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2322432 best=40 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1658880 best=28 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1327104 best=89 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1658880 best=78 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1327104 best=132 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=995328 best=88 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=24 id=1 C3:C8 n=192 tried=2322432 best=38 nsol=0
+GROUP N=24 id=2 C24 n=192 tried=2654208 best=36 nsol=0
+GROUP N=24 id=3 SL(2,3) n=192 tried=1658880 best=32 nsol=0
+GROUP N=24 id=4 C3:Q8 n=192 tried=2322432 best=50 nsol=0
+GROUP N=24 id=5 C4xS3 n=192 tried=2654208 best=61 nsol=0
+GROUP N=24 id=6 D24 n=192 tried=2322432 best=64 nsol=0
+GROUP N=24 id=7 C2x(C3:C4) n=192 tried=2322432 best=56 nsol=0
+GROUP N=24 id=8 (C6xC2):C2 n=192 tried=2654208 best=64 nsol=0
+GROUP N=24 id=9 C12xC2 n=192 tried=2654208 best=42 nsol=0
+GROUP N=24 id=10 C3xD8 n=192 tried=2654208 best=52 nsol=0
+GROUP N=24 id=11 C3xQ8 n=192 tried=1990656 best=56 nsol=0
+GROUP N=24 id=12 S4 n=192 tried=1658880 best=77 nsol=0
+GROUP N=24 id=13 C2xA4 n=192 tried=1990656 best=32 nsol=0
+GROUP N=24 id=14 C2xC2xS3 n=192 tried=1658880 best=106 nsol=0
+GROUP N=24 id=15 C6xC2xC2 n=192 tried=1327104 best=98 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=25 id=1 C25 n=200 tried=750000 best=64 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=375000 best=78 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=25 id=1 C25 n=200 tried=720000 best=66 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=360000 best=82 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=25 id=1 C25 n=200 tried=691200 best=100 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=345600 best=116 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=25 id=1 C25 n=200 tried=720000 best=50 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=360000 best=60 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=25 id=1 C25 n=200 tried=781250 best=46 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=390625 best=48 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=25 id=1 C25 n=200 tried=1171875 best=40 nsol=0
+GROUP N=25 id=2 C5xC5 n=200 tried=781250 best=52 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=26 id=1 D26 n=208 tried=878800 best=178 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1318200 best=72 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=26 id=1 D26 n=208 tried=845000 best=190 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1267500 best=80 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=26 id=1 D26 n=208 tried=812500 best=254 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1218750 best=112 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=26 id=1 D26 n=208 tried=845000 best=166 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1267500 best=60 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=26 id=1 D26 n=208 tried=913952 best=150 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1370928 best=64 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=26 id=1 D26 n=208 tried=1370928 best=102 nsol=0
+GROUP N=26 id=2 C26 n=208 tried=1827904 best=58 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=27 id=1 C27 n=216 tried=1535274 best=102 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=1535274 best=116 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=1023516 best=154 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=2047032 best=86 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=511758 best=218 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=27 id=1 C27 n=216 tried=1478412 best=96 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=1478412 best=122 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=985608 best=168 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=1971216 best=102 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=492804 best=220 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=27 id=1 C27 n=216 tried=1423656 best=140 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=1423656 best=158 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=949104 best=264 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=1898208 best=110 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=474552 best=350 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=27 id=1 C27 n=216 tried=1478412 best=84 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=1478412 best=96 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=985608 best=124 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=1971216 best=72 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=492804 best=156 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=27 id=1 C27 n=216 tried=1594323 best=80 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=1594323 best=90 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=1062882 best=104 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=2125764 best=80 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=531441 best=120 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=27 id=1 C27 n=216 tried=2125764 best=76 nsol=0
+GROUP N=27 id=2 C9xC3 n=216 tried=2125764 best=92 nsol=0
+GROUP N=27 id=3 (C3xC3):C3 n=216 tried=1594323 best=96 nsol=0
+GROUP N=27 id=4 C9:C3 n=216 tried=2657205 best=72 nsol=0
+GROUP N=27 id=5 C3xC3xC3 n=216 tried=1062882 best=108 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=2370816 best=132 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=2963520 best=114 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=2370816 best=234 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=1778112 best=126 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=2286144 best=146 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=2857680 best=98 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=2286144 best=230 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=1714608 best=138 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=2204496 best=168 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=2755620 best=142 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=2204496 best=296 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=1653372 best=168 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=2286144 best=120 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=2857680 best=84 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=2286144 best=204 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=1714608 best=98 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=2458624 best=92 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=3073280 best=94 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=2458624 best=190 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=1843968 best=124 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=28 id=1 C7:C4 n=224 tried=3073280 best=106 nsol=0
+GROUP N=28 id=2 C28 n=224 tried=3687936 best=86 nsol=0
+GROUP N=28 id=3 D28 n=224 tried=3073280 best=156 nsol=0
+GROUP N=28 id=4 C14xC2 n=224 tried=2458624 best=102 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=29 id=1 C29 n=232 tried=682892 best=132 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=29 id=1 C29 n=232 tried=659344 best=136 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=29 id=1 C29 n=232 tried=636608 best=180 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=29 id=1 C29 n=232 tried=659344 best=112 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=29 id=1 C29 n=232 tried=707281 best=108 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=29 id=1 C29 n=232 tried=1414562 best=98 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=3915000 best=142 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=3915000 best=178 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=3132000 best=266 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=5481000 best=162 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=3784500 best=134 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=3784500 best=166 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=3027600 best=278 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=5298300 best=140 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=3658350 best=198 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=3658350 best=170 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=2926680 best=340 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=5121690 best=198 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=3784500 best=136 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=3784500 best=154 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=3027600 best=262 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=5298300 best=100 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=4050000 best=126 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=4050000 best=160 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=3240000 best=232 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=5670000 best=118 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=30 id=1 C5xS3 n=240 tried=4860000 best=136 nsol=0
+GROUP N=30 id=2 C3xD10 n=240 tried=4860000 best=96 nsol=0
+GROUP N=30 id=3 D30 n=240 tried=4050000 best=198 nsol=0
+GROUP N=30 id=4 C30 n=240 tried=6480000 best=128 nsol=0
+BASE bases/p4/b4_0.txt
+GROUP N=31 id=1 C31 n=248 tried=893730 best=184 nsol=0
+BASE bases/p4/b4_1.txt
+GROUP N=31 id=1 C31 n=248 tried=864900 best=182 nsol=0
+BASE bases/p4/b4_2.txt
+GROUP N=31 id=1 C31 n=248 tried=837000 best=222 nsol=0
+BASE bases/p4/b4_3.txt
+GROUP N=31 id=1 C31 n=248 tried=864900 best=152 nsol=0
+BASE bases/p4/b4_4.txt
+GROUP N=31 id=1 C31 n=248 tried=923521 best=152 nsol=0
+BASE bases/p4/b4_5.txt
+GROUP N=31 id=1 C31 n=248 tried=1847042 best=142 nsol=0
+DONE
