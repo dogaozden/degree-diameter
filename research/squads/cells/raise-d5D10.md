@@ -102,7 +102,7 @@ That file is on branch `claude/raise-d5d10-haar-otvuvl`; I did not copy it into 
 ## Closed in this round (checks run here)
 
 - **Orbit k = 3, f = 2 on the new small-n groups above 47,880** (60 s, 1 thread, K = 8). Costs after 60 s:
-  psl 9×Z139 10,731; pgl 7×Z151 12,534; psl 7×Z301 29,181; pgl 7×Z307 (psl 7×Z307) 30,189; pgl 5×Z403 32,430;
+  psl 9×Z139 10,731; pgl 7×Z151 12,534; psl 7×Z301 29,181; psl 7×Z307 30,189; pgl 5×Z403 32,430;
   pgl 5×Z409 33,150; pgl 5×Z421 34,590; pgl 5×Z427 35,310; pgl 5×Z433 36,030; pgl 8×Z103 3,036; sl 9×Z67 205;
   pgl 3×Z1999 44,328. The cyclic factors (n ≥ 67) and small Q give large floors. Dead.
 - **Orbit k = 2** (control pgl 19×Z7, which k = 3 solves in 289 evals): `ORBIT="2 2 1"` best 16 after 60 s;
