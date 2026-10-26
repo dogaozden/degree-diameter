@@ -1,0 +1,6 @@
+base bases/h6_K66.txt: k=12 E=36 Delta=6 free=25; group psl 5 N=60; lift n=720; D=5
+start cost=466
+t=30 steps=19469 evals=155780 cost=142 best=142 T=0.53
+t=60 steps=40020 evals=320188 cost=142 best=142 T=0.19
+t=90 steps=62360 evals=498910 cost=142 best=142 T=0.54
+RESULT base=bases/h6_K66.txt D=5 Delta=6 k=12 group=psl 5 N=60 n=720 best=142 evals=684206 time=120.0

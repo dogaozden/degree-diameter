@@ -1,0 +1,5 @@
+base bases/c222.txt: k=6 E=18 Delta=6 free=13; group cyc 120 N=120; lift n=720; D=5
+start cost=164
+t=30 steps=235305 evals=1882620 cost=45 best=45 T=0.53
+t=60 steps=467630 evals=3741220 cost=45 best=45 T=0.19
+RESULT base=bases/c222.txt D=5 Delta=6 k=6 group=cyc 120 N=120 n=720 best=45 evals=3741220 time=60.0
