@@ -234,11 +234,11 @@ seed 4). It raised the round 2 record of 332,158,176 by +0.19 %. Checks: haar_sy
 eccA = eccB = 10). Coordinator re-check pending.
 
 Final batch (all 2400 s): psl 109×259 seed 5 (N 167.69 M): best 6; psl 97×367 seed 5 (167.46 M): best 9. Both not solved.
-Psl 109×259 seed 4 reached cost 4 at 1,773 s and then ended above 0 at 2,400 s; it is the closest unsolved group.
+psl 109×259 seed 4 ended at best cost 4 (2,929 evals); it is the closest unsolved group.
 Queued but never started (pool stopped by `spool_r4/STOP`): psl 151×97 seed 5, psl 109×259 seed 6, psl 103×307 (seed 4 done, cost 9).
 
-**Totals.** About 33 jobs of 2,400 s each on up to 4 cores (3 for part of the run, 2 at the end after three memory kills), so
-roughly 20 core-hours. One solve (sl 157 × Z_43 at 1,553 evals), out of about 33 jobs at N ≥ 166.08 M. Best costs at the end
+**Totals.** 28 completed jobs of 2,400 s each (plus 3 OOM-killed and re-queued) on up to 4 cores (3 and then 2 after memory kills), so
+roughly 18 core-hours. One solve (sl 157 × Z_43 at 1,553 evals), out of 28 jobs at N ≥ 166.08 M. Best costs at the end
 of the 2,400 s budget were 4–22; the rest settled at 6–12.
 
 **Why I stopped.** The six-hour window is used. Each further record needs N > 166,398,648 (μ ≈ 28–33 in this window), and
