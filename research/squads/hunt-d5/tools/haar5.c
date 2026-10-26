@@ -360,6 +360,41 @@ int main(int argc, char **argv) {
         printf("RESULT complete N=%d d=%d core=%d sets=%lld min=%d (min over sets passing the probes; 0 is exact)\n", N, d, n, cmp_cnt, cmp_best);
         return 0;
     }
+    if (!strcmp(mode, "prod")) {   /* haar5 prod TABLE d LISTFILE [LIMIT]: exact search over products of candidate lists */
+        /* LISTFILE: blocks "J label" + d lines "L x1 x2 ..." (candidates of that position) or "=" (same list as the
+           previous position, strictly later entry), then "E". Every product of distinct elements is tested (probes:
+           exact for cost 0); sets with cost <= LIMIT are printed. (tools/jexact.py writes these files.) */
+        FILE *f = fopen(argv[4], "r"); if (!f) { perror(argv[4]); return 2; }
+        int limit = argc > 5 ? atoi(argv[5]) : 0; sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        static int L[64][4096], nl[64], same[64]; char line[1 << 16], label[256] = ""; int pos = 0;
+        long long tot = 0; int nblk = 0, gbest = 1 << 30;
+        while (fgets(line, sizeof line, f)) {
+            if (line[0] == 'J') { sscanf(line + 1, " %255[^\n]", label); pos = 0; }
+            else if (line[0] == 'L') { char *p = line + 1, *e; nl[pos] = 0; same[pos] = 0;
+                while (1) { long v = strtol(p, &e, 10); if (e == p) break; L[pos][nl[pos]++] = (int)v; p = e; } pos++; }
+            else if (line[0] == '=') { memcpy(L[pos], L[pos - 1], sizeof(int) * nl[pos - 1]); nl[pos] = nl[pos - 1]; same[pos] = 1; pos++; }
+            else if (line[0] == 'E') {
+                if (pos != d) { fprintf(stderr, "block %s: %d positions, d = %d\n", label, pos, d); return 2; }
+                int S[64], ix[64], lev = 0, best = 1 << 30; long long cnt = 0, full = 0; ix[0] = -1;
+                while (lev >= 0) {   /* odometer with "same list => later index" */
+                    ix[lev]++;
+                    if (ix[lev] >= nl[lev]) { lev--; continue; }
+                    int x = L[lev][ix[lev]], dup = 0;
+                    for (int i = 0; i < lev; i++) if (S[i] == x) { dup = 1; break; }
+                    if (dup) continue;
+                    S[lev] = x;
+                    if (lev + 1 < d) { lev++; ix[lev] = same[lev] ? ix[lev - 1] : -1; continue; }
+                    cnt++; int cc = test_set(S, d, &sc);
+                    if (cc < (1 << 20)) { full++; if (cc < best) best = cc; }
+                    if (cc <= limit) { printf("cost %d J %s S", cc, label); for (int i = 0; i < d; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); }
+                }
+                printf("BLOCK %s sets=%lld full_evals=%lld min=%d\n", label, cnt, full, best); fflush(stdout);
+                tot += cnt; nblk++; if (best < gbest) gbest = best;
+            }
+        }
+        printf("RESULT prod N=%d d=%d blocks=%d sets=%lld min=%d (min over sets passing the probes; 0 is exact)\n", N, d, nblk, tot, gbest);
+        return 0;
+    }
     if (!strcmp(mode, "exhp")) {   /* single thread, probe-accelerated, d = 5 */
         int limit = argc > 4 ? atoi(argv[4]) : 0; long long cnt = 0, full = 0; int best = 1 << 30;
         sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
