@@ -113,3 +113,13 @@ That file is on branch `claude/raise-d5d10-haar-otvuvl`; I did not copy it into 
 Metacyclic random-S sweep over N = 47,881–48,400 (18,781 candidates from `research/frontier/sizelaw/small_cands.py`),
 screened with `RANDSAMPLE=1000` (score (p10 + median)/μ(N), μ from SIZE_LAW W = 349,525), then the top ones annealed
 in order of N. Candidate screen and run logs are in the session scratchpad; this file gets the summary.
+
+## NEW RECORD (round 3): (5,10) 95,964 vertices
+
+- Haar graph of **Z727 ⋊₃₄ Z66** (metacyclic, N = 47,982, μ ≈ 32.9), d = 5, D = 10.
+  Solution file `research/frontier/sols/d5D10_n95964_haar_meta727_66_34.sol` (header `5 10 meta 727 66 34 n 1 N 47982`).
+- Found by `haar_gen3` annealing (seed 1, K = 8, 114.5 s, 1.48M evals) in the top-40 queue of the round-3 screen.
+- Verification: `build_haar2.py` VALID (n = 95,964, 239,910 edges, 5-regular, bipartite, ecc 10 from both sides,
+  edge-list sha256 `66486a07…d`); all-pairs BFS `research/lifts/coordinator_check/apsp.c` (no symmetry assumed):
+  `n=95964 edges=239910 degree 5 5 bipartite=yes diameter=10`, VALID.
+- New bar for further rounds: N > 47,982.
