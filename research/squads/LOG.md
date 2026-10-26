@@ -125,5 +125,5 @@ No more squad rounds (the remaining leads were exact searches). Coset-pattern se
 checked against brute force on six groups) prove that SmallGroup(609,1), (610,1), (610,2), (615,1), (618,1) and (618,2)
 have no (7,5) Haar graph; SmallGroup(612,5) has none in its 29,274 best pattern classes. `haar5 exhp` completes
 (5,5) for every group of order 193–255 (1,028 groups, none). `haar5 cert` completes (6,5) for every group of order
-343–351 and 353–359 (75 groups) and 360/51, 360/88, 360/136 (none). Last (9,5) farm on (Z31 ⋊ Z15) × Z3 (1395): 1,532
+343–351 and 353–359 (75 groups) and 360/51, 360/88, 360/136 (none). Last (9,5) farm on (Z31 ⋊ Z15) × Z3 (1395): 1,468
 seeds, cost 2 in 12, no 0. Final: (9,5) 2,758; details and stop reasons in research/squads/cells/hunt-d5.md.

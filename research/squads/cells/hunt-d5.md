@@ -104,7 +104,7 @@ Stopped at 18:37 UTC because every lead these methods produced has been settled 
 one more (9,5) farm):
 
 - (9,5): 2,758 is the result. Larger orders: the best coset patterns for N ≥ 1380 have mu_J ≥ 49.6 (1395) against 46.3
-  for the record group. A last farm of 1,532 seeds (8 s) on (Z31 ⋊ Z15) × Z3 (1395) gave cost 2 in 12 seeds (0.8 %,
+  for the record group. A last farm of 1,468 seeds (8 s) on (Z31 ⋊ Z15) × Z3 (1395) gave cost 2 in 12 seeds (0.8 %,
   against 3.6 % on Z197 ⋊ Z7) and no 0.
 - (7,5): the six groups of order 609–618 with cost ≤ 4 or a good pattern spread are proved empty; the other groups of
   order 606–618 stay at cost ≥ 7, and larger orders have higher mu. A larger (7,5) graph from these methods would need
