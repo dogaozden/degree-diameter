@@ -35,3 +35,20 @@ computer-checked. Kept: r2c10's family (theorem families), r2c5/r2c6's routing e
 r2c2/r2c1 relaxed sets (bounded by the hub budget). Director's own in this round: relaxed-pair hub rule implemented at
 q=9 -> (13,5) 11,626 then 11,627 (57-line relaxed set, 14 pairs); independent rebuild sol2edges.py identical; an
 independent referee pass on the note (general-purpose agent) found no error in the theorems, several gaps fixed.
+
+### Round 3 (gqd5-r3, 4 Haiku cards, effort high; small on purpose: two of the four cores ran the director's annealer)
+
+Goal: larger relaxed sets (each point = one more vertex at (13,5); 111 points of W(11) would beat (15,5)) and an
+independent test of the strengthened hub rule. Cards (score): r3c1 relaxed q=9 by orbits of the spread stabiliser (66;
+orbit unions give at most 61, SAT says no 67 under two subgroups); r3c2 relaxed q=11 by orbits (87 unchanged; exact
+orbit-union bounds under prime-order subgroups, e.g. an involution class caps invariant sets at 106 < 111); r3c3 relaxed
+q=9 as a packing of pairs (pending at time of writing); r3c4 test of Proposition 7.2 with the A-hub condition only
+(q=5: 1,610, q=7: 4,086 valid; breaking the rule for one line gives diameter 6).
+Director's own in this round: found that the B-hub half of the hub rule is not needed (a 66-line relaxed set with 30
+pairs passed the all-pairs check although 128 slots violated it; the path through the partner's A-hub explains why),
+so (13,5) went to 11,636 with card r2c1's 66-point set; q=11 with card r2c2's 87-point set gives 20,713 (beats the table,
+23 short of the lab's 20,736); whole-graph annealing with one extra freed point per non-friendly arc at q=9 (11,640 if
+it closes) was still running at the time of this entry.
+Assessment: the squads contributed the decisive sets (r2c1's 66, r2c2's 87, c1's 51), the explicit family of Lemma 1.3
+(r2c10), the routing evidence (c19, r2c5, r2c6), exact small cases (r2c8) and two independent tests of new
+propositions (r2c7, r3c4). The new theorems and the record constructions came from the director's own analysis and tools.
