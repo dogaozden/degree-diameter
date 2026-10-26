@@ -1,0 +1,22 @@
+# (3,10) record candidate: n = 810, cubic bipartite, diameter 10 (table 800). Job own-small, Oct 26 2026.
+# Regular voltage lift of a 5+5 cubic bipartite base multigraph over G = C3 x He3 (order 81), He3 = Heisenberg
+# group of 3x3 upper unitriangular matrices over GF(3). Element (z, a, b, c) <-> C3 element z and matrix
+# [[1,a,c],[0,1,b],[0,0,1]]; product (z,a,b,c)(z',a',b',c') = (z+z', a+a', b+b', c+c'+a*b') mod 3.
+# Lift: vertex (u, g), u = 0..9 (white 0..4, black 5..9); base edge (u, v, s) gives edges (u, g) ~ (v, g*s) for all g.
+# Found by joint base+voltage annealing (salift_s, D=10) over SmallGroup(81,12); builder: build_d3D10_n810.py.
+# u v  z a b c
+0 6  1 2 1 2
+1 6  2 0 1 0
+2 9  1 2 0 2
+3 7  1 1 0 2
+4 7  0 1 2 2
+0 8  1 0 0 0
+1 5  2 0 0 2
+2 7  0 1 1 0
+3 5  0 0 1 1
+4 9  2 2 1 0
+0 5  2 1 1 0
+1 9  2 2 0 0
+2 8  2 2 0 0
+3 6  1 2 0 2
+4 8  1 2 1 1
