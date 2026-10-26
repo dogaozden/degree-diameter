@@ -45,3 +45,4 @@ graph with N > 1,149,120.
   pgl 27 × Z59 298). Involutions bring many fixed points and word collisions, so k = 2 is dropped for this cell.
 - Checkpoint 2026-10-26 (t ≈ 330 s of 6900 s): sl 19 × Z169 seeds 41 and 42 at cost 9, pgl 19 × Z169 RESTART at 12,
   sl 19 × Z169 ORBW=3 at 9.
+- Checkpoint 2026-10-26 (t ≈ 810 s): all four runs at best 9 (pgl 19 × Z169 RESTART at 9 too; seeds 41/42 cost 9–18 now). No solve yet.
