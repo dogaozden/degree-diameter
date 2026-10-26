@@ -186,3 +186,5 @@ GROUP N=20 id=4 D20 n=200 tried=16000000 best=151 nsol=0
 GROUP N=20 id=5 C10xC2 n=200 tried=12800000 best=101 nsol=0
 BASE bases/p5/b5_14.txt
 GROUP N=20 id=1 C5:C4 n=200 tried=16000000 best=92 nsol=0
+GROUP N=20 id=2 C20 n=200 tried=19200000 best=76 nsol=0
+STOPPED here at N=20 (bases b5_0,1,10..13 done); the rest is in runs/exh_p5_N20_{a,b,c}.out and runs/exh_p5_N21.out (runs/exh_p5_rest.sh)

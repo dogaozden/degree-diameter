@@ -34,7 +34,7 @@ semidirect-product reduction added). Eight Haiku cards, ~25 min each:
 
 | card | idea | best (n: cost) |
 |---|---|---|
-| r2c1 | memetic GA (r1-c9) on medium groups | 180 (C15, 6+6): 12; 176 (C11): 20; 182 (C13): 26; 180 (D10, 9+9): 37: the salift floors again |
+| r2c1 | memetic GA (r1-c9) on medium groups | 180 (C10, 9+9): 8 and (C3 × C3, 10+10): 8; (C15, 6+6): 12; 176 (C11): 20; 182 (C13): 26: the salift floors again |
 | r2c2 | memetic GA, all groups of order 16 (p = 6), 12 (p = 8), 14 (p = 7) | 192: 32; 196: 42 |
 | r2c3 | lifts with an order-3 symmetry with fixed points | calibrations fail; 182 (C13): 38 |
 | r2c4 | lifts with an involution with fixed points | calibration at D = 5 works; 180 (C15): 960 vs 12 without fixed points |
