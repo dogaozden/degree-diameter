@@ -218,3 +218,19 @@ Effect on the structural cost (plusopt7):
   wpo with the default LMAX 500 drifts up from 12-18 and never improves; LMAX 3000 with DECAY 10 found 8 in 59 s.
 - Where the K22 helps: both new points are on both new lines, so the new vertices are pairwise within distance 2;
   with two separate switches they are far apart and their coverage demands on sigma do not overlap.
+
+### Point side versus line side (why more pairs are hard)
+
+For a new point X the coverage of the point side is clean when sigma^-1(pencil of X) is a PG-line (a covering set);
+for a new line N the line side is clean when sigma(points of N) = delta(C(PG-line)). With sigma = delta o C both are
+geometric conditions:
+- point side: X on old lines delta(R), R on a hyperbolic line h, and sigma^-1 of the new lines through X also C^-1 of
+  points of h. In a cycle block (X_j on N_j, N_{j-1}) this holds for EVERY new point when the lines h_j form a polygon
+  with sigma^-1(N_j) = C^-1(h_j meet h_{j+1}); for a triangle in the plane S of a parabolic C every switch line also
+  stays isotropic (dc/tri.py). K22 cannot have it for both points (it would need h1 = h2); the 7,044 start had h1, h2
+  meeting in one point, which gives it for x* and 8 of 9 for y*.
+- line side: the moved points of N on a hyperbolic line g (squad r5 c5's design). But each moved point must sit on its
+  own switch line, and a hyperbolic line meets at most 2 lines of a regulus delta(h). So a block cannot be clean on
+  both sides; the annealer has to repair one side. Triangle starts (point side clean): 638-1,208 at n = 588; the
+  failures are then the coset +-1 conditions from the new lines (tri.py); forcing moved points onto the next side of
+  the triangle (tri2.py) makes it much worse (1,550+).

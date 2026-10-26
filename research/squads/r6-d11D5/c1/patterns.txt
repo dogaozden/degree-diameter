@@ -1,0 +1,20 @@
+# Round r6-d11D5, card c1: 3 new points x 3 new lines, every new vertex has a new neighbour (n = 588).
+# start = best of up to 8 kkk.py tries (PAT, KK=1, seed = pattern index, 8 tries); cost = po7 SCORE (re-checked).
+# idx E pattern (PAT) | name | tries ok | best start | all start costs | best file
+ 7 E=5 0-2,1-1,1-2,2-0,2-1 | path P6 (6-vertex path) | ok 8/8 | best 682 (recheck 682) | [682, 820, 824, 870, 898, 970, 1120, 1302] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p07.in
+15 E=7 0-1,0-2,1-0,1-2,2-0,2-1,2-2 | theta(1,3,3) = K33 minus 2 disjoint edges | ok 6/8 | best 786 (recheck 786) | [786, 914, 934, 996, 1044, 1070] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p15.in
+13 E=7 0-2,1-0,1-1,1-2,2-0,2-1,2-2 | K23 + pendant point | ok 7/8 | best 802 (recheck 802) | [802, 896, 912, 988, 1044, 1158, 1466] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p13.in
+ 9 E=6 0-2,1-1,1-2,2-0,2-1,2-2 | C4 + two pendants at adjacent vertices | ok 6/8 | best 810 (recheck 810) | [810, 882, 936, 1066, 1136, 1540] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p09.in
+16 E=8 0-1,0-2,1-0,1-1,1-2,2-0,2-1,2-2 | K33 minus an edge | ok 8/8 | best 810 (recheck 810) | [810, 826, 906, 960, 968, 1018, 1068, 1076] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p16.in
+12 E=6 0-1,0-2,1-0,1-2,2-0,2-1 | C6 = K33 minus perfect matching | ok 7/8 | best 830 (recheck 830) | [830, 862, 1000, 1162, 1444, 1574, 2136] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p12.in
+17 E=9 0-0,0-1,0-2,1-0,1-1,1-2,2-0,2-1,2-2 | K33 | ok 8/8 | best 842 (recheck 842) | [842, 864, 898, 946, 1058, 1064, 1162, 1324] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p17.in
+11 E=6 0-1,0-2,1-1,1-2,2-0,2-2 | K22 + pendant path of length 2 at a line | ok 7/8 | best 866 (recheck 866) | [866, 910, 956, 986, 1002, 1162, 1246] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p11.in
+ 6 E=5 0-2,1-1,1-2,2-0,2-2 | spider(1,2,2), centre line | ok 7/8 | best 872 (recheck 872) | [872, 934, 1068, 1228, 1326, 1374, 1428] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p06.in
+ 8 E=5 0-2,1-0,1-1,2-0,2-1 | K22 + disjoint edge (task example) | ok 6/8 | best 884 (recheck 884) | [884, 986, 1144, 1154, 1190, 1220] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p08.in
+ 1 E=3 0-2,1-1,2-0 | 3 disjoint edges | ok 7/8 | best 886 (recheck 886) | [886, 958, 986, 986, 1060, 1078, 1498] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p01.in
+10 E=6 0-2,1-0,1-1,2-0,2-1,2-2 | K22 + pendant path of length 2 at a point | ok 8/8 | best 892 (recheck 892) | [892, 902, 954, 960, 1168, 1252, 1296, 1468] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p10.in
+14 E=7 0-1,0-2,1-1,1-2,2-0,2-1,2-2 | K32 + pendant line | ok 5/8 | best 904 (recheck 904) | [904, 1160, 1186, 1240, 1378] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p14.in
+ 2 E=4 0-2,1-2,2-0,2-1 | P3 + P3 (point cherry + line cherry) | ok 7/8 | best 912 (recheck 912) | [912, 1022, 1072, 1080, 1116, 1162, 1308] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p02.in
+ 4 E=5 0-2,1-2,2-0,2-1,2-2 | double star S(2,2) | ok 7/8 | best 922 (recheck 922) | [922, 972, 974, 1212, 1380, 1612, 1664] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p04.in
+ 5 E=5 0-2,1-1,2-0,2-1,2-2 | spider(1,2,2), centre point | ok 8/8 | best 934 (recheck 934) | [934, 946, 1184, 1256, 1290, 1348, 1354, 1414] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p05.in
+ 3 E=4 0-2,1-1,2-0,2-2 | P4 + K2 | ok 7/8 | best 1092 (recheck 1092) | [1092, 1216, 1316, 1348, 1382, 1412, 2032] | /home/user/degree-diameter/research/squads/r6-d11D5/c1/starts/p03.in
