@@ -1,0 +1,6 @@
+base bases/K77_minus_pm.txt: k=14 E=42 Delta=6 free=29; group cyc 49 N=49; lift n=686; D=5
+start cost=326
+t=30 steps=398350 evals=3187153 cost=100 best=98 T=0.53
+t=60 steps=771830 evals=6174995 cost=100 best=98 T=0.19
+t=90 steps=1145940 evals=9168179 cost=98 best=98 T=0.53
+RESULT base=bases/K77_minus_pm.txt D=5 Delta=6 k=14 group=cyc 49 N=49 n=686 best=98 evals=12323459 time=120.0

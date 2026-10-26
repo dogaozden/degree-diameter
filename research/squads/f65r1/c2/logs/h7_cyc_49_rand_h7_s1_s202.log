@@ -1,3 +1,6 @@
 base bases/rand_h7_s1.txt: k=14 E=42 Delta=6 free=29; group cyc 49 N=49; lift n=686; D=5
 start cost=544
 t=30 steps=378081 evals=3024842 cost=72 best=72 T=0.53
+t=60 steps=766648 evals=6133382 cost=72 best=72 T=0.19
+t=90 steps=1154362 evals=9235198 cost=72 best=72 T=0.55
+RESULT base=bases/rand_h7_s1.txt D=5 Delta=6 k=14 group=cyc 49 N=49 n=686 best=72 evals=12266390 time=120.0
