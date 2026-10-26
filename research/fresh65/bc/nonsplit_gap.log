@@ -1,0 +1,104 @@
+Syntax warning: Unbound global variable in scan_nonsplit.g:10
+        idx2 := Filtered(NormalSubgroups(G), N -> Index(G, N) = 2);
+                                                        ^
+Syntax warning: Unbound global variable in scan_nonsplit.g:17
+            if ForAny(idx2, N -> not t in N) then continue; fi;
+                                     ^
+EXPORT ns_n346_g692_3_t1 C173 : C4 orbits=174
+EXPORT ns_n348_g696_33_t1 S3 x (C29 : C4) orbits=180
+EXPORT ns_n348_g696_34_t1 C29 x S4 orbits=232
+EXPORT ns_n348_g696_35_t1 C29 : S4 orbits=232
+EXPORT ns_n348_g696_36_t1 A4 x D58 orbits=232
+EXPORT ns_n348_g696_37_t1 C6 x (C29 : C4) orbits=180
+EXPORT ns_n348_g696_38_t1 C2 x (C3 : (C29 : C4)) orbits=180
+EXPORT ns_n348_g696_40_t1 C58 x A4 orbits=232
+EXPORT ns_n350_g700_5_t1 C7 x (C25 : C4) orbits=182
+EXPORT ns_n350_g700_6_t1 C25 : (C7 : C4) orbits=182
+EXPORT ns_n350_g700_18_t1 C35 x (C5 : C4) orbits=210
+EXPORT ns_n350_g700_19_t1 C5 x (C5 : (C7 : C4)) orbits=210
+EXPORT ns_n350_g700_20_t1 C7 x ((C5 x C5) : C4) orbits=182
+EXPORT ns_n350_g700_21_t1 (C5 x C5) : (C7 : C4) orbits=182
+EXPORT ns_n350_g700_22_t1 C7 x ((C5 x C5) : C4) orbits=182
+EXPORT ns_n350_g700_23_t1 (C5 x C5) : (C7 : C4) orbits=182
+EXPORT ns_n350_g700_24_t1 C7 x ((C5 x C5) : C4) orbits=210
+EXPORT ns_n350_g700_25_t1 (C5 x C5) : (C7 : C4) orbits=210
+EXPORT ns_n352_g704_8_t1 C11 : ((C4 : C4) : C4) orbits=264
+EXPORT ns_n352_g704_8_t2 C11 : ((C4 : C4) : C4) orbits=264
+EXPORT ns_n352_g704_9_t1 C11 : ((C2 x Q8) : C4) orbits=264
+EXPORT ns_n352_g704_9_t2 C11 : ((C2 x Q8) : C4) orbits=264
+EXPORT ns_n352_g704_20_t1 C11 : (C8 . D8 = C4 . (C8 x C2)) orbits=264
+EXPORT ns_n352_g704_23_t1 C11 : (C16 : C4) orbits=264
+EXPORT ns_n352_g704_24_t1 C11 : ((C2 x Q8) : C4) orbits=264
+EXPORT ns_n352_g704_24_t2 C11 : ((C2 x Q8) : C4) orbits=264
+EXPORT ns_n352_g704_25_t1 C11 : ((C2 x C2 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_25_t2 C11 : ((C2 x C2 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_26_t1 C11 : ((C4 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_26_t2 C11 : ((C4 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_27_t1 C11 : ((C4 : C4) : C4) orbits=264
+EXPORT ns_n352_g704_27_t2 C11 : ((C4 : C4) : C4) orbits=264
+EXPORT ns_n352_g704_28_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_28_t2 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_28_t3 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_29_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_29_t2 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_29_t3 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_30_t1 C11 : ((C4 x C4) : C4) orbits=264
+EXPORT ns_n352_g704_30_t2 C11 : ((C4 x C4) : C4) orbits=220
+EXPORT ns_n352_g704_30_t3 C11 : ((C4 x C4) : C4) orbits=220
+EXPORT ns_n352_g704_31_t1 C11 : ((C4 x C4) : C4) orbits=264
+EXPORT ns_n352_g704_31_t2 C11 : ((C4 x C4) : C4) orbits=220
+EXPORT ns_n352_g704_31_t3 C11 : ((C4 x C4) : C4) orbits=220
+EXPORT ns_n352_g704_32_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_32_t2 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_32_t3 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_33_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_33_t2 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_33_t3 C11 : (((C4 x C2) : C2) : C4) orbits=220
+EXPORT ns_n352_g704_34_t1 C11 : ((C2 . ((C4 x C2) : C2) = (C2 x C2) . (C4 x C2\
+)) : C2) orbits=264
+EXPORT ns_n352_g704_35_t1 C11 : (C2 . ((C2 x C2 x C2) : C4) = (C4 x C2) . (C4 \
+x C2)) orbits=264
+EXPORT ns_n352_g704_44_t1 C11 : (C16 : C4) orbits=264
+EXPORT ns_n352_g704_45_t1 C11 : (Q16 : C4) orbits=264
+EXPORT ns_n352_g704_50_t1 C11 : (C4 . D16 = C8 . (C4 x C2)) orbits=264
+EXPORT ns_n352_g704_51_t1 C11 : (C16 : C4) orbits=264
+EXPORT ns_n352_g704_52_t1 C11 : ((C16 : C2) : C2) orbits=264
+EXPORT ns_n352_g704_53_t1 C11 : (C2 . ((C8 x C2) : C2) = C8 . (C4 x C2)) orbit\
+s=264
+EXPORT ns_n352_g704_54_t1 C11 : ((C16 x C2) : C2) orbits=264
+EXPORT ns_n352_g704_63_t1 C11 : (C4 . D16 = C8 . (C4 x C2)) orbits=264
+EXPORT ns_n352_g704_65_t1 C11 : ((C16 : C2) : C2) orbits=264
+EXPORT ns_n352_g704_67_t1 C11 : ((C4 . D8 = C4 . (C4 x C2)) : C2) orbits=264
+EXPORT ns_n352_g704_68_t1 C11 : (C8 . D8 = C4 . (C8 x C2)) orbits=264
+EXPORT ns_n352_g704_69_t1 C11 : (C16 : C4) orbits=264
+EXPORT ns_n352_g704_70_t1 C11 : (C16 : C4) orbits=264
+EXPORT ns_n352_g704_71_t1 C11 : ((C16 : C2) : C2) orbits=264
+EXPORT ns_n352_g704_72_t1 C11 : ((C16 x C2) : C2) orbits=264
+EXPORT ns_n352_g704_73_t1 C11 : ((C4 . D8 = C4 . (C4 x C2)) : C2) orbits=264
+EXPORT ns_n352_g704_74_t1 C11 : (C2 . ((C8 x C2) : C2) = C8 . (C4 x C2)) orbit\
+s=264
+EXPORT ns_n352_g704_75_t1 C11 : (Q16 : C4) orbits=264
+EXPORT ns_n352_g704_80_t1 C11 : ((C8 : C2) : C4) orbits=264
+EXPORT ns_n352_g704_80_t2 C11 : ((C8 : C2) : C4) orbits=264
+EXPORT ns_n352_g704_82_t1 C11 : ((C2 x C2 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_82_t2 C11 : ((C2 x C2 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_83_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_83_t2 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_83_t3 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_83_t4 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_83_t5 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_83_t6 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t1 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t2 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t3 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t4 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t5 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_84_t6 C11 : (((C4 x C2) : C2) : C4) orbits=264
+EXPORT ns_n352_g704_85_t1 C11 : ((C4 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_85_t2 C11 : ((C4 x C2) : C8) orbits=264
+EXPORT ns_n352_g704_87_t1 C11 : ((C8 : C2) : C4) orbits=264
+EXPORT ns_n352_g704_87_t2 C11 : ((C8 : C2) : C4) orbits=264
+EXPORT ns_n352_g704_88_t1 C11 : ((C8 x C2) : C4) orbits=264
+EXPORT ns_n352_g704_88_t2 C11 : ((C8 x C2) : C4) orbits=264
+EXPORT ns_n352_g704_88_t3 C11 : ((C8 x C2) : C4) orbits=264
+EXPORT ns_n352_g704_89_t1 C11 : ((C4 x C4) : C4) orbits=264
