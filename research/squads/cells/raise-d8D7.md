@@ -141,7 +141,7 @@ Per group: samples, zero hits, cost-6 hits (bin 2 of the histogram; the cost-6 c
 | sl 9 × Z_31 (seed 2) | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 442 | no zero |
 | sl 9 × Z_31 (seed 3) | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 479 | no zero |
 | pgl 9 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ | 0 | 0 | 12 | no zero (min 6) |
-| psl 17 × Z_9 | 22,032 | 44,064 | 43.4 | 4·10⁶ | 0 | 2 | 4 | no zero (min 3) |
+| psl 17 × Z_9 | 22,032 | 44,064 | 43.4 | 4·10⁶ (seed 1), 10⁸ (seed 2) | 0 | 68 (10⁸) | 58 (10⁸) | no zero in 10⁸ (min 3). Upper bound on zero rate 3·10⁻⁸ |
 | prod psl 3 × sl 4 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ (20k) | — | — | — | see below |
 
 sl 9 × Z_31: two independent 10⁸-sample runs, no zero. The rule-of-three 95% upper bound on its zero rate is
