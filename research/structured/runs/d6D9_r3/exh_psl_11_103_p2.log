@@ -1,0 +1,5 @@
+group psl 11 x Z_103, N=67980, identity 5665, H order 11, rows 6180, threads 1, setup 0.01s
+wide rows: HW order 206, rows 330, setup 0.01s
+alpha: conj by mat(5,2,6,7) (index 567), z -> 46 z on Z_103
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 5 (+e); mu = 51.64, mu/k = 17.21, fixed-point misses ~ 1.09
+EXHAUST: 22658 orbits of size 3, 2.567e+08 pairs, part 2 of 4, cost bound 15
