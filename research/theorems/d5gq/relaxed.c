@@ -3,7 +3,7 @@
    forbidden line set (the spread S).  Simulated annealing on penalty = sum over points of max(0, deg_T - 1)
    + forbidden pairs, maximising |T|.
    input file: n, then for each point: degree k and its k collinear neighbours with the joining line's flag
-   (1 = forbidden), i.e. "k  nb1 f1 nb2 f2 ...".  usage: relaxed IN target seed seconds OUT */
+   (1 = forbidden), i.e. "k  nb1 f1 nb2 f2 ...".  usage: relaxed IN target seed seconds OUT [maxpairs] */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
     char *in = calloc(n, 1); int *cnt = calloc(n, sizeof(int)), *cntf = calloc(n, sizeof(int));
     /* cost of vertex v in T: max(0, cnt[v]-1) + cntf[v] (forbidden neighbours in T, counted per endpoint) */
     int best = 0; char *bestin = calloc(n, 1); clock_t t0 = clock();
-    int size = 0; long cost = 0;
+    int size = 0; long cost = 0; int maxp = argc > 6 ? atoi(argv[6]) : 1 << 30; long pairs = 0;
     #define VC(v) ((cnt[v] > 1 ? cnt[v] - 1 : 0) + cntf[v])
     double T = 0.6;
     long it = 0;
@@ -33,17 +33,21 @@ int main(int argc, char **argv) {
             /* adding v: v's own cost = max(0,cnt-1)+cntf ; neighbours u in T get cnt+1 (and cntf+1 if forbidden) */
             d += (cnt[v] > 1 ? cnt[v] - 1 : 0) + cntf[v];
             for (int k = 0; k < deg[v]; k++) { int u = nb[v][k]; if (!in[u]) continue; d += (cnt[u] >= 1 ? 1 : 0) + fb[v][k]; }
+            long np2 = pairs + cnt[v]; long ex = (np2 > maxp ? np2 - maxp : 0) - (pairs > maxp ? pairs - maxp : 0);
+            d += ex;
             double obj = d * 3.0 - 1.0;   /* weight 3 per violation, -1 per point */
             if (obj <= 0 || (double)rand() / RAND_MAX < exp(-obj / T)) {
-                in[v] = 1; size++; cost += d;
+                in[v] = 1; size++; cost += d; pairs = np2;
                 for (int k = 0; k < deg[v]; k++) { int u = nb[v][k]; cnt[u]++; cntf[u] += fb[v][k]; }
             }
         } else {
             d -= (cnt[v] > 1 ? cnt[v] - 1 : 0) + cntf[v];
             for (int k = 0; k < deg[v]; k++) { int u = nb[v][k]; if (!in[u]) continue; d -= (cnt[u] >= 2 ? 1 : 0) + fb[v][k]; }
+            long np2 = pairs - cnt[v]; long ex = (np2 > maxp ? np2 - maxp : 0) - (pairs > maxp ? pairs - maxp : 0);
+            d += ex;
             double obj = d * 3.0 + 1.0;
             if (obj <= 0 || (double)rand() / RAND_MAX < exp(-obj / T)) {
-                in[v] = 0; size--; cost += d;
+                in[v] = 0; size--; cost += d; pairs = np2;
                 for (int k = 0; k < deg[v]; k++) { int u = nb[v][k]; cnt[u]--; cntf[u] -= fb[v][k]; }
             }
         }

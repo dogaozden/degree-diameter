@@ -109,8 +109,10 @@ def main():
     path = out + '.edges'
     write_edges(path, n, E)
     sol = dict(q=q, r=r, types=types, arcs=arcs, ovoid_Q4=ovoid, pspread_Q4=pspread, K_B=KB, K_A=KA, Y=Y,
-               note='G = Q(4,q) built as gqlib.W(q).dual(); points of G = lines of W(q); M = identity on indices')
-    json.dump(sol, open(out + '.json', 'w'))
+               Bhub_slots=Bhubs, Ahub_slots=Ahubs,
+               nonfriendly={'%d,%d' % t: dict(R=sorted(R[t]), M=M[t]) for t in arcs if types[t[0]] == types[t[1]]},
+               note='G = Q(4,q) built as gqlib.W(q).dual(); points of G = lines of W(q); friendly M = identity; slots = (level, element, arc)')
+    json.dump(sol, open(out + '.json', 'w'), default=int)
     print(apsp(path, q + 1 + r, 5, threads=2))
 
 
