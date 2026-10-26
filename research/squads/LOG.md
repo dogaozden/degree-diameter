@@ -119,3 +119,12 @@ Cards (best n / cost):
   k12 bi-coset graphs (wildcard): 728 / 19,656.
 No valid graph. Rounds 3-5 added no improvement for (4,8) and (4,9) and one new (3,10) near miss (round 4), so the squad
 stops here (skill rule of thumb: two rounds without progress). Final report: research/squads/big-squad-4-8.md.
+
+## 2026-10-26, big-squad-4-8, director after round 5: (4,8) metacyclic certificate
+
+No Haikus. Exhaustive Haar search (tools/exh_meta.py | flift, LIMIT = 2) over every metacyclic group Z_m x|_r Z_k of order
+1,093..1,130 with r != 1 and r - 1 a unit mod m (one r per cyclic subgroup <r>): 89 groups, 77 searched exhaustively
+(minimum >= 2 in each; smallest 2, 3, 4, 6 at order 1,100) and 12 with k > 216 ruled out by a quotient bound (an abelian
+Haar graph with 4 generators reaches at most 216 opposite-side elements within distance 7, and distances do not grow in
+a quotient). So no metacyclic Haar graph of this kind beats 2,184 up to n = 2,260. Files: b48/cert_4_8_meta_1093_1130.tsv,
+b48/tools/cert_meta_one.sh. Kept: the quotient bound (any group with an abelian quotient of order > 216 is out for (4,8)).

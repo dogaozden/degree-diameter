@@ -8,7 +8,8 @@ with ~48 Haikus per round do better than the usual Opus + 8 Haikus? Goal: beat t
 ## Answer
 
 **No record.** 119 Haiku cards in 5 rounds (13.7 Haiku-hours of wall time, 04:28-05:58 UTC) plus the director's own
-work found no valid graph above any of the four table values. Results per Haiku-hour: 0 records.
+work (to 06:40 UTC) found no valid graph above any of the four table values. Results per Haiku-hour: 0 records,
+20 kept findings, about 1.5 per Haiku-hour (section 1).
 
 The earlier Opus + 8-Haiku squads did find records (exp2-squad: three D = 7 cells; d12D7: the (12,7) record via a hub
 group from a squad card), but in cells where a construction had headroom. The four cells here sit at or just above what
@@ -22,7 +23,8 @@ data do show:
   runs did not help", partly an artefact of this.
 - **Duplication.** In round 1, seven cards independently fell into the same trap (Z_55 x|_2 Z_20 at cost 1).
 - **The decisive steps came from the director**, not from breadth: new tools (haar_tab, flift, exh_meta.py) and
-  exhaustive searches showing that the annealing floors are true minima (section 3).
+  exhaustive searches showing that the annealing floors are true minima, ending in a certificate that no metacyclic Haar
+  graph of order 1,093..1,130 (89 groups) beats 2,184 (section 3).
 - **Haiku cards that mattered**: c31 (surgery on the valid seed, the lowest-miss near miss), c01 (the trap is local),
   b01 (31 valid 2,184 seeds, apparently one graph), a01 (all root variants of the best new group are isomorphic), d16
   (the central involution behind the (4,9) cost-4 floor), h01-h03 (finished an earlier session's exhaustive (3,10) scan
@@ -34,6 +36,10 @@ plus the director's exhaustive checks, would have given the same coverage at low
 subagents means 48 cards per round already run as a rolling queue of 20.
 
 ## 1. Rounds
+
+Kept findings (used by a later round or the report): c01, c31, c07, c18 (round 1); b01, b02/b05/b08, a01, a06, a12
+(round 2); d16, e01 (round 3); h01, h02, h03, h04, h08 (round 4); k03, k06 (round 5): 20 of 119 cards (17%), about 1.5 per
+Haiku-hour.
 
 | round | cell(s) | cards | Haiku-minutes | median card | best verified result | kept for the next round |
 |---|---|---|---|---|---|---|
@@ -66,7 +72,16 @@ and all pairs {y, z}; every set scored with flift (~540k sets/s at D = 8).
 - (4,8): Z_91 x|_25 Z_12 (order 1,092) reaches 0 (the table value 2,184; sanity check). Z_55 x|_2 Z_20 (1,100):
   minimum lift-cost 2, i.e. no Haar graph of it has diameter 8; the annealing floor seen by 9 cards is the true minimum.
   e01 (round 3) certified five more groups of order ~1,100 (four exact minima 8, 14, 17, 34 and one bound >= 3), each
-  equal to its annealing floor. CERT
+  equal to its annealing floor.
+- **(4,8), all metacyclic groups of order 1,093..1,130** (r != 1, r - 1 a unit mod m, one r per cyclic subgroup <r>;
+  89 groups): none has a Haar graph of diameter 8. 77 by exhaustive search (minimum lift-cost >= 2 in every group; the
+  smallest minima are 2, 3, 4 and 6 for four groups of order 1,100, then 8 for Z_137 x|_10 Z_8 at 1,096), and 12 (m = 3, 5,
+  so k > 216) by the quotient bound below. Table: research/squads/b48/cert_4_8_meta_1093_1130.tsv; driver
+  tools/cert_meta_one.sh (minima above 2 are lower bounds because counting stops at LIMIT = 2; 0 would have been exact).
+- **Quotient bound (4,8)** (director, 06:20 UTC): in an abelian Haar graph with S = {0, s_1, s_2, s_3}, the other side
+  within distance 7 holds at most 216 values (coefficient vectors c with sum 1 and sum |c_i| <= 7) and the same side
+  within distance 8 at most 309. Distances do not grow in a quotient, so **no group with an abelian quotient of order
+  > 216 has a (4,8) Haar graph**. In particular no abelian group, and no Z_m x| Z_k with k > 216, works above 2,184.
 - (4,9): Z_101 x|_5 Z_25 (order 2,525, n = 5,050): minimum lift-cost 2 over all 79.5 million sets.
 - (3,10): exhaustive 2+2 cubic lift scans (all voltage assignments) over 38 non-abelian groups of order 208, 25 of orders
   210..216 and 59 of orders 217..230 (h01-h03): minima 14, 6 and 2. With the earlier session's complete scan of orders
