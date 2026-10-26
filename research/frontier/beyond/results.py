@@ -37,6 +37,7 @@ add(19, 7, 11184810, "level graph of H(16): 5 copies joined by 2 matchings, volt
 add(20, 7, 15658734, "level graph of H(16): 7 copies, 3 matchings, Z7", "same theorem; BFS from 64 random vertices, max ecc 7 (checks/d7_levelgraphs_sampled.txt)", "lift7 16 3 1 edges OUT")
 add(17, 10, 7022052336, "Haar graph PSL(2,313) x Z229, S = {e} + 1 fixed + 5 orbits of size 3", "hcheckpsl VALID (runs/check_hcheckpsl_d17D10_psl_313_229_orb3_s1.txt)", "research/frontier/sols/d17D10_psl_313_229_orb3_s1.txt")
 add(18, 10, 11787972672, "Haar graph PSL(2,223) x Z1063, S = {e} + 2 fixed + 5 orbits of size 3", "hcheckpsl VALID, ecc 10/10 (runs/check_hcheckpsl_d18D10_psl_223_1063_orb3_s1.txt)", "research/frontier/sols/d18D10_psl_223_1063_orb3_s1.txt")
+add(19, 10, 19233722496, "Haar graph SL(2,607) x Z43, S = {e} + 6 orbits of size 3", "hcheck5 VALID, ecc 10/10 (runs/check_hcheck5_d19D10_sl_607_43_orb3_s1.txt)", "research/frontier/sols/d19D10_sl_607_43_orb3_s1.txt")
 # D = 8
 add(17, 8, 41373072, "Haar graph SL(2,53) x Z139, S = {e} + 1 fixed + 5 orbits of size 3", "haarcheck_sl (c15) and hcheck5 (director): VALID", "research/frontier/sols/d17D8_sl_53_139_orb3_c15.txt")
 add(19, 8, 86317296, "Haar graph PSL(2,103) x Z79, S = {e} + 6 orbits of size 3", "hcheckpsl VALID (runs/check_hcheckpsl_d19D8_psl_103_79_orb3_s1.txt)", "research/frontier/sols/d19D8_psl_103_79_orb3_s1.txt")

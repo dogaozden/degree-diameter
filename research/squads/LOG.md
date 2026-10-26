@@ -81,13 +81,15 @@ got one concrete method with a scorer.
 
 - e01 (3,11) exhaustive cubic Haar graphs (all pairs {x,y}) over ~45 groups of order 504–1,100: **1,080** (A5 × Z9),
   above round 1's 1,008; per-group minima in e01/results.txt (AGL(1,23) cost 1, S4 × Z22 cost 14, others higher).
-- e02 (3,12) exhaustive cubic Haar graphs, orders 661–2,500: see its scoreboard line.
+- e02 (3,12) exhaustive cubic Haar graphs, orders 661–2,500: **1,860** (AGL(1,31)), also AGL(1,29) 1,624, A5×Z13
+  1,560, A5×Z12 1,440, S4×Z28 1,344 (all apsp VALID); exhaustive minima SL(2,11) 16, PSL(2,13) 24, AGL(1,37) 26 (2,664),
+  A5×Z14 6. The director then ran AGL(1,29), AGL(1,31) at D = 11 exhaustively: minima 18 and 58, no gain there.
 - e03 (4,11) **19,152** (SL(2,8) × Z19, ORBIT 3 1 1, solved at once); (4,12): PSL(2,11) × Z39 reached cost 1 twice,
   SL(2,8) × Z52 cost 5. 50,160 stays (director re-ran two more seeds).
 - e04 D = 7 hub surgery (D7_HEXAGON.md) on level graphs: recipe verified at q = 4, r = 2 (13,682, Δ 7) and q = 5, r = 2
   (39,108, Δ 8), apsp VALID; for the new cells only predicted values (+0.1–0.4 %), because the hub condition (hubs of
   one colour within distance 6) failed for larger hub sets at q = 4, 5 and was not established for q = 13, 16.
 
-Kept: exhaustive cubic Haar search (gave (3,11) 1,080). Squad totals for the job: 33 cards in three rounds; values
+Kept: exhaustive cubic Haar search (gave (3,11) 1,080 and (3,12) 1,860). Squad totals for the job: 33 cards in three rounds; values
 that came from cards: (3,11), (3,12), (4,11), (4,12), (17,8), (20,5) (75,000), the D = 3, 4, 6 builds, the D = 7
 builder, (13,5) (the record, with the director's MDM lift) and the (19,5) DM solution.
