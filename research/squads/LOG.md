@@ -103,3 +103,19 @@ Cards (best n / cost):
 - (4,9): h13 groups without a central involution: only Z_101 x| Z_25 (cost 2, proved) again. h14 2+2/3+3 lifts: 5,040 / 22.
 No valid graph. Kept: the cost-2 phenomenon on 2+2 lifts at (3,10) (one orbit of far pairs at distance 11); families not
 yet tried at Delta = 3 (semi-edges/loops, non-bipartite bases with a parity) go into round 5.
+
+## 2026-10-26, big-squad-4-8, round 5 (cubic (3,10) and (3,9): families not yet tried)
+
+12 Haiku cards, 05:46-05:58 UTC (research/squads/b48/r5/). New lift option ODDSTRIDE (odd-parity voltages, so lifts of
+non-bipartite bases come out bipartite).
+Cards (best n / cost):
+- (3,10): k01 bi-Cayley, one edge + semi-edges: 804 / 412. k02 bi-Cayley, two edges + semi-edges (exhaustive over 6 groups):
+  812 / 5. k03 bi-Cayley with loops, exhaustive over 739 metacyclic
+  groups of order 401..460: 812 / 6. k04 non-bipartite cubic bases with parity: 816 / 10 (C_12(5,6) over meta
+  17 4 1). k05 Petersen lifts: 840 / 16. k06 exhaustive 3+3 certification: meta 17 8 4 minimum 2 (confirms the earlier proof),
+  meta 7 20 6 minimum 8, meta 9 16 8 minimum 12. k07 mixed bases with loops and semi-edges: 810 / 8. k11 repair of the n = 812
+  near miss by 2-switches: no accepted move (wildcard).
+- (3,9): k08 bi-Cayley bases: 540 / 16. k09 non-bipartite bases: 512 / 44. k10 exhaustive 3+3 (meta 15 6 4): minimum >= 14.
+  k12 bi-coset graphs (wildcard): 728 / 19,656.
+No valid graph. Rounds 3-5 added no improvement for (4,8) and (4,9) and one new (3,10) near miss (round 4), so the squad
+stops here (skill rule of thumb: two rounds without progress). Final report: research/squads/big-squad-4-8.md.
