@@ -300,3 +300,16 @@ Reference, k = 3 at μ = 38.6 (psl 67 × Z61, the bar, solved): min 15, p1 23, p
 | w2b | prod psl 7 × psl 25 × Z7 | 3 5 0 | plain | 2 |
 
 Status of the wave is below (updated at each checkpoint).
+
+### Wave 1 result: NEW RECORD 18,403,200 vertices at (15,8) (prod psl 9 × psl 9 × Z71, k = 5, m = 3, f = 0, ORBW=5, seed 1)
+
+- Graph: Haar graph of G = PSL(2,9) × PSL(2,9) × Z71, |G| = N = 9,201,600, |S| = 15 = 5·3 (3 free orbits of an order-5
+  automorphism, f = 0), 2N = **18,403,200**, 15-regular, 138,024,000 edges, no duplicate edges. μ = 40.4, |Fix(α)| = 24.
+  α = conjugation by prod[mat(5,5,7,2); mat(1,5,7,7)] × (z ↦ 5z on Z_71).
+- Found after 57,033 evaluations (1,129.6 s, run `runs/raise_d15D8_r3/out/w1a/`).
+- Verification: haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
+  build_haar2.py: **VALID d=15 D=8**, 18,403,200 vertices, edge-list sha256
+  `6f9c1203ad76ebed196a33efbc005ff893e0640d2da2a14beb0ea641d80f639d`.
+- Saved as `research/frontier/sols/d15D8_prod_psl_9_psl_9_71_orb5f0_ORBW5_s1.txt` (+ `.log`).
+- Gain over the round-2 bar 18,342,456: +60,744 (+0.33 %).
+- The wave-1 seed-2 plain run on the same group was stopped (same N, cannot beat this record).
