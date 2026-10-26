@@ -1,6 +1,6 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **69 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **73 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
@@ -60,17 +60,18 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (4, 7) | 840 | **864** | +2.9% | vertex-transitive (Cayley-type) | — |
 | (5, 7) | 3,110 | **3,120** | +0.3% | voltage lift / metacyclic Haar | ✓ |
 | (6, 7) | 8,310 | **8,880** | +6.9% | orbit search (Haar) | ✓ |
-| (7, 7) | 23,436 | **23,580** | +0.6% | hexagon + hub vertices ¹ | — |
+| (7, 7) | 23,436 | **23,598** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (8, 7) | 40,586 | **43,344** | +6.8% | orbit search (Haar) | ✓ |
-| (9, 7) | 117,648 | **118,224** | +0.5% | hexagon + hub vertices ¹ | — |
-| (10, 7) | 224,694 | **225,128** | +0.2% | hexagon + hub vertices ¹ | — |
-| (11, 7) | 398,580 | **407,162** | +2.2% | hexagon + hub vertices ¹ | — |
-| (12, 7) | 664,300 | **680,068** | +2.4% | hexagon cover + hub vertices ¹ | — |
-| (13, 7) | 1,062,936 | **1,064,448** | +0.1% | hexagon + hub vertices ¹ | — |
-| (14, 7) | 1,771,560 | **1,774,584** | +0.2% | hexagon cover + hub vertices ¹ | — |
-| (15, 7) | 2,480,184 | **2,484,720** | +0.2% | hexagon cover + hub vertices ¹ | — |
+| (9, 7) | 117,648 | **118,238** | +0.5% | hexagon cover + hub vertices ¹ | — |
+| (10, 7) | 224,694 | **225,152** | +0.2% | hexagon cover + hub vertices ¹ | — |
+| (11, 7) | 398,580 | **413,180** | +3.7% | hexagon cover + hub vertices ¹ | — |
+| (12, 7) | 664,300 | **693,500** | +4.4% | hexagon cover + hub vertices ¹ | — |
+| (13, 7) | 1,062,936 | **1,064,472** | +0.1% | hexagon cover + hub vertices ¹ | — |
+| (14, 7) | 1,771,560 | **1,789,588** | +1.0% | hexagon cover + hub vertices ¹ | — |
+| (15, 7) | 2,480,184 | **2,501,491** | +0.9% | hexagon cover + hub vertices ¹ | — |
+| (16, 7) | 4,022,340 | **4,052,108** | +0.7% | hexagon cover + hub vertices ¹ | — |
 | (3, 8) ² | 256 | **288** | +12.5% | voltage lift / metacyclic Haar | ✓ |
-| (5, 8) | 9,234 | **9,576** | +3.7% | voltage lift / metacyclic Haar | ✓ |
+| (5, 8) | 9,234 | **9,760** | +5.7% | evolutionary search | (9,576) |
 | (6, 8) | 29,790 | **31,680** | +6.3% | orbit search (Haar) ¹ | (30,576) |
 | (7, 8) | 80,940 | **95,760** | +18.3% | orbit search (Haar) | ✓ |
 | (8, 8) | 201,480 | **239,904** | +19.1% | orbit search (Haar) | ✓ |
@@ -78,10 +79,10 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (11, 8) | 2,246,940 | **2,258,520** | +0.5% | orbit search (Haar) | — |
 | (13, 8) | 5,314,680 | **6,999,552** | +31.7% | finite geometry | — |
 | (15, 8) | 14,172,480 | **18,128,880** | +27.9% | orbit search (Haar) | — |
-| (5, 9) | 27,936 | **28,560** | +2.2% | voltage lift / metacyclic Haar | ✓ |
+| (5, 9) | 27,936 | **29,540** | +5.7% | evolutionary search | (28,560) |
 | (6, 9) | 117,360 | **127,296** | +8.5% | orbit search (Haar) | ✓ |
 | (7, 9) | 400,160 | **462,840** | +15.7% | orbit search (Haar) | ✓ |
-| (8, 9) | 1,091,232 | **1,326,960** | +21.6% | finite geometry ¹ | — |
+| (8, 9) | 1,091,232 | **1,341,600** | +22.9% | evolutionary search | — |
 | (9, 9) | 2,961,536 | **3,499,776** | +18.2% | orbit search (Haar) | — |
 | (10, 9) | 7,057,400 | **8,003,856** | +13.4% | orbit search (Haar) | — |
 | (11, 9) | 15,200,448 | **16,792,080** | +10.5% | orbit search (Haar) | — |
@@ -97,9 +98,12 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (8, 10) | 6,927,210 | **7,818,096** | +12.9% | finite geometry ¹ | — |
 | (9, 10) | 20,017,260 | **23,975,280** | +19.8% | orbit search (Haar) | — |
 | (10, 10) | 50,331,156 | **60,141,120** | +19.5% | orbit search (Haar) | — |
+| (11, 10) | 0 | **148,729,680** | new | finite geometry ¹ | — |
 | (12, 10) | 300,383,050 | **325,832,976** | +8.5% | orbit search (Haar) | — |
 | (13, 10) | 617,330,936 | **677,714,400** | +9.8% | orbit search (Haar) | — |
 | (14, 10) | 1,213,477,190 | **1,326,627,120** | +9.3% | orbit search (Haar) | — |
+| (15, 10) | 2,300,326,510 | **2,467,618,800** | +7.3% | finite geometry ¹ | — |
+| (16, 10) | 4,119,507,330 | **4,220,872,800** | +2.5% | finite geometry ¹ | — |
 
 ¹ Found in a session that could call squads of Claude Haiku helpers (see [Opus with Haiku squads](#opus-with-haiku-squads)).
 ² (3, 8): 288 against 256 is a large jump for a well-studied cell; a literature check for newer values is pending.

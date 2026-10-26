@@ -1,0 +1,125 @@
+# Coordinator checks on the Mac mini, Oct 25 2026 (PT). Each graph is rebuilt from the finder's solution file with
+# hexgen.c output (hex_q11.bin / hex_q13.bin, hashes below) and the builder named per graph; the edge-list hash is
+# compared with the finder's check file; then the checker runs: apsp_orb (level shift verified edge by edge as an
+# automorphism, BFS from level 0 and all hubs) or apsp_mt (BFS from every vertex, no symmetry). Both print the exact
+# diameter. Scratch paths are the coordinator's temporary folder.
+== (14,7) 1,774,628 Sat Oct 24 23:12:05 PDT 2026
+H(11), r = 2 (5 levels, Delta 14), |R| = 767, full removal, 1534 line-side and 1534 point-side hubs, hub degree 9, n = 1774628
+graph: n = 1774628, edges = 12422396, max degree 14
+wrote e1774628.txt
+e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19  hex/hex_q11.bin
+3c6e51896ebd9347be55440016ef17a11f88f723dcbe700a2e029d4a3a6c3f87  e1774628.txt
+8a7eb391dea51476fb625e207ff0cb3924c3cf93bf869cee01fb352295c645e7  m1774628.sol
+n=1774628 edges=12422396 degree min=14 max=14 bipartite=yes diameter=7 (level shift L=5 B=354312 checked as an automorphism; 357380 sources)
+RESULT VALID d=14 D=7 n=1774628
+      437.10 real      3229.33 user        38.04 sys
+           922943488  maximum resident set size
+# (11,7) and (12,7): rebuilt in a separate folder with hexgen2.c (q = 9) and the finders' builders xgen.c / x5gen3.c; apsp_mt 2 threads.
+== (11,7) 413,180 Sat Oct 24 23:22:31 PDT 2026
+q=9 N=66430 LV=3 K=7300 hubs 7300 + 7300, n=413180 edges=2272490
+373d279f5b47d41435990350915cdb23056b80abe93fe5ab26875c1694fe05b0  hex/hex_q9.bin
+b66058a630ffd549d2d1af7df197e7e06de9feadd3ef72e961a9b4de69f54b8b  g11.edges
+-- apsp_mt (23:22:31)
+n=413180 edges=2272490 degree min=11 max=11 bipartite=yes diameter=7
+RESULT VALID d=11 D=7 n=413180
+      280.78 real       448.03 user         6.66 sys
+           142819328  maximum resident set size
+== (12,7) 693,500 Sat Oct 24 23:27:12 PDT 2026
+q=9 N=66430 K=7300 hubs 14600 + 14600, n=693500 edges=4161000
+506599aba85193f9f005034796018d1fc5aee2d9c4b65206f60ca6c135cb3ef7  g12.edges
+-- apsp_mt (23:27:13)
+n=693500 edges=4161000 degree min=12 max=12 bipartite=yes diameter=7
+RESULT VALID d=12 D=7 n=693500
+      963.09 real      1555.05 user        22.15 sys
+           215695360  maximum resident set size
+# Typed claims (cell-16-7 resume session): rebuilt with typed5s_build.py on hexgen output; apsp_mt 8 threads, no symmetry.
+== d14D7_hex11_typed133_K62_n1788052 Sat Oct 24 23:19:27 PDT 2026
+        4.76 real         4.41 user         0.32 sys
+          1520156672  maximum resident set size
+92b25873c43b3a97018d3ab1e7da1547ce6fc3486c7ab27e118fa779fbdc1367  typed/d14D7_hex11_typed133_K62_n1788052.edges
+-- apsp_mt d14D7_hex11_typed133_K62_n1788052 (23:19:32)
+n=1788052 edges=12506921 degree min=12 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1788052
+     1759.10 real     11820.99 user       157.69 sys
+           925728768  maximum resident set size
+# Mirrored-surgery (7,7), (9,7), (10,7) (cell-14-7 third session): hexgen2.c (q = 5, 7, 8; hex hashes equal the finder's), multi_sol.py build, apsp_mt 2 threads.
+72b0a6814e561d4b35230a6af6697b76167b00436f9d23b27e5c423fa96a16d3  hex/hex_q5.bin
+ec314088f7afdd9171dcb54a7ca30bc615e1262e04139e0e1907a1e280d109ca  hex/hex_q7.bin
+66a11ff04cfeb03d5e64b490352da1662717dd2be4f6025e358b297c0ee486e5  hex/hex_q8.bin
+== d7D7_hex5_mirror81_n23598 Sun Oct 25 00:12:29 PDT 2026
+wrote d7D7_hex5_mirror81_n23598.edges
+8be0f641a189560586694a849c137acf8a8c24c37fec7ab23ea5ecf204062b7c  d7D7_hex5_mirror81_n23598.edges
+n=23598 edges=82593 degree min=7 max=7 bipartite=yes diameter=7
+RESULT VALID d=7 D=7 n=23598
+        0.20 real         0.28 user         0.01 sys
+             6291456  maximum resident set size
+== d9D7_hex7_mirror295_n118238 Sun Oct 25 00:12:29 PDT 2026
+wrote d9D7_hex7_mirror295_n118238.edges
+b1487ddee47ab3d79af7052a88337e01f846b3a109ec958e7cb5acc3a446562a  d9D7_hex7_mirror295_n118238.edges
+n=118238 edges=532071 degree min=9 max=9 bipartite=yes diameter=7
+RESULT VALID d=9 D=7 n=118238
+       12.28 real        19.30 user         0.28 sys
+            28606464  maximum resident set size
+== d10D7_hex8_mirror229_n225152 Sun Oct 25 00:12:42 PDT 2026
+wrote d10D7_hex8_mirror229_n225152.edges
+12a145cd7dd241c585002630c04f639cb71a763db85c4892c71b10454572063a  d10D7_hex8_mirror229_n225152.edges
+n=225152 edges=1125760 degree min=10 max=10 bipartite=yes diameter=7
+RESULT VALID d=10 D=7 n=225152
+       64.02 real       103.04 user         1.45 sys
+            73416704  maximum resident set size
+== d15D7_hex11_typed133_K62_n2497075 Sat Oct 24 23:48:51 PDT 2026
+        6.84 real         6.32 user         0.45 sys
+          1765425152  maximum resident set size
+e34bc359c5e731f28b8301be5b99c862ed2eaf136150a0b45633f214d7a6ff9f  typed/d15D7_hex11_typed133_K62_n2497075.edges
+-- apsp_mt d15D7_hex11_typed133_K62_n2497075 (23:48:58)
+n=2497075 edges=18684239 degree min=13 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2497075
+     3832.80 real     28391.89 user       329.87 sys
+          1430224896  maximum resident set size
+# (13,7) mirrored surgery (cell-14-7 third session): multi_sol.py build on hex_q11.bin (hash above), apsp_mt 2 threads, run beside the (16,7) check.
+== d13D7_hex11_mirror768_n1064472 Sun Oct 25 01:12:19 PDT 2026
+wrote d13D7_hex11_mirror768_n1064472.edges
+88721d4a4a137731e478840a809eb62e6693c6235b7f5b394c58175cf8a5c48a  d13D7_hex11_mirror768_n1064472.edges
+n=1064472 edges=6919068 degree min=13 max=13 bipartite=yes diameter=7
+RESULT VALID d=13 D=7 n=1064472
+     3163.53 real      5094.21 user        66.53 sys
+           375226368  maximum resident set size
+# (16,7) typed levels on H(13) (cell-16-7 session): typed5s_build.py on hex_q13.bin (sha256 57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a), apsp_mt 8 threads, no symmetry assumed.
+== d16D7_hex13_typed61_K244_n4052108 Sun Oct 25 00:52:51 PDT 2026
+       12.83 real        11.92 user         0.80 sys
+          2406793216  maximum resident set size
+719fedec44ab7559941fd8b23d58c085b07c34122957648d4143ddfddeb22006  typed/d16D7_hex13_typed61_K244_n4052108.edges
+-- apsp_mt d16D7_hex13_typed61_K244_n4052108 (00:53:05)
+n=4052108 edges=32401980 degree min=14 max=16 bipartite=yes diameter=7
+RESULT VALID d=16 D=7 n=4052108
+    15425.87 real    111486.36 user      1205.92 sys
+          2192506880  maximum resident set size
+== typed done Sun Oct 25 05:10:11 PDT 2026
+# (15,7) typed + mirrored + relaxed sets (cell-15-7 session): tm3_build.py build on hex_q11.bin (sha256 e60db369...) and d15D7_hex11_typedrelax_n2501008.sol (sha256 7a2743be9f228eac5bcdbe83089b8ccfa5fd293b997c9dc14650c00800ccbc4c); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+031abe25293e84336a0b4617f8f4bce9537dbd1b7b77a4cbfd85b613a59dd14f  r15.edges
+-- apsp_mt r15.edges 15 7 8 (Sun Oct 25 05:35:35 PDT 2026)
+n=2501008 edges=18730056 degree min=12 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501008
+     3892.90 real     28819.05 user       342.19 sys
+          1432535040  maximum resident set size
+# (14,7) typed + mirrored (third cell-14-7 session): tm_build.py build on hex_q11.bin (sha256 e60db369...) and d14D7_hex11_typedmirror768_n1789588.sol (sha256 45659e44151058d5a50e09fe3cec7ab3d55198436ce820bf479786e52cff6518); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+e972387619916f3454e8fa74c14807cb0c4c9c4c0243b0e5cb912bdf73f2008e  t14m.edges
+-- apsp_mt t14m.edges 14 7 8, rerun (Sun Oct 25 06:40:37 PDT 2026)
+n=1789588 edges=12518402 degree min=13 max=14 bipartite=yes diameter=7
+RESULT VALID d=14 D=7 n=1789588
+     1478.71 real     10987.00 user       130.77 sys
+           926105600  maximum resident set size
+# (15,7) 2,501,124, same construction as 2,501,008 (cell-15-7 session): tm3_build.py build on hex_q11.bin and d15D7_hex11_typedrelax_n2501124.sol; all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+69558a88c5e7c97a0fbde9bf983d1649fbb9fd220ca2ad209c1f3183f6046f7e  r15b.edges
+-- apsp_mt r15b.edges 15 7 8 (Sun Oct 25 07:05:21 PDT 2026)
+n=2501124 edges=18731062 degree min=12 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501124
+     3913.30 real     28862.32 user       340.29 sys
+          1432584192  maximum resident set size
+# (15,7) 2,501,491, relaxed sets round 2 (cell-15-7 session): tm3_build.py (branch version of 08:15) build on hex_q11.bin and d15D7_hex11_typedrelax2_n2501491.sol (sha256 e2fb3fbe82d122fb...); all hypotheses re-checked by the builder; apsp_mt 8 threads, no symmetry assumed.
+ea06a8d07265f68ee9c5dd5b2ab9e298bdaa2d6a241c1e2931ebf51351b21541  r15c.edges
+-- apsp_mt r15c.edges 15 7 8 (Sun Oct 25 08:11:53 PDT 2026)
+n=2501491 edges=18744232 degree min=13 max=15 bipartite=yes diameter=7
+RESULT VALID d=15 D=7 n=2501491
+     3982.41 real     29279.46 user       344.66 sys
+          1432977408  maximum resident set size
