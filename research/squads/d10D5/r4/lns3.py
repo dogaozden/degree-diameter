@@ -39,6 +39,8 @@ fp = {}
 for l in range(N):
     for kk in range(8): fp[int(PTS[l][kk]), l] = int(nu[l * 8 + kk])
 dele = set((F[i], int(sig[F[i]])) for i in FD)
+if os.environ.get('XDEL'):   # ordinary flag edges deleted too (x:L ...); their D1-type holes are NOT modelled here: use SIZE=0 (nu only)
+    for _t in os.environ['XDEL'].split(): _x, _L = map(int, _t.split(':')); dele.add((_x, _L))
 Pp = np.zeros((N, N), np.int32); Cp = np.zeros((N, N), np.int32); Pl = np.zeros((N, N), np.int32); Cl = np.zeros((N, N), np.int32)
 for l in range(N):
     pl = [int(x) for x in PTS[l]]

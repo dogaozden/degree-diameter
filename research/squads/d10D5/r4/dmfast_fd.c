@@ -195,9 +195,14 @@ static void load_hex(void) {
 
 /* routes: BFS from s in the base with matching jumps, states (vertex, jumpsum mod 3, jumped flag) for 6 steps;
    route to u iff state (u, 0, 1) reachable at step 6 (exactly; opposite pairs have even distance 6). */
+static uint8_t *rc = NULL;   /* GEN: per ordered opposite pair, bit0 = a length-4 walk with a jump and jump-sum 1 (coset 1),
+                               bit1 = jump-sum 2 (coset 2), deleted flag edges avoided; hub routes give both */
+static int gen = 0;
 static void compute_routes(void) {
     size_t nb = (size_t)2 * Np * Np;
     route = calloc(nb, 1);
+    if (!rc) rc = malloc(nb);
+    memset(rc, 0, nb);
     /* bitmask per vertex: bit (j*2 + f) for jumpsum j in Z3 and flag f */
     uint8_t *A = malloc(V), *B = malloc(V);
     for (int s = 0; s < V; s++) {
@@ -217,14 +222,14 @@ static void compute_routes(void) {
             uint8_t *t = A; A = B; B = t;
         }
         int cls = s >= Np;
-        for (int u = cls * Np; u < (cls + 1) * Np; u++) if (A[u] & 2) route[pidx(s, u)] = 1;
+        for (int u = cls * Np; u < (cls + 1) * Np; u++) { if (A[u] & 2) route[pidx(s, u)] = 1; rc[pidx(s, u)] = ((A[u] >> 3) & 1) | (((A[u] >> 5) & 1) << 1); }
     }
     free(A); free(B);
     /* hub routes (HUBADJ): (p_i,0) -> line-side hub i -> point-side hub j -> (l_j, every sheet) -> every point on l_j,
        and (l_i,0) -> point-side hub i -> line-side hub j -> (p_j) -> every line through p_j: these pairs are covered */
     if (usehadj) for (int i = 0; i < nfl; i++) for (int j = 0; j < nfl; j++) {
-        if (hadj[i][j]) for (int k = 0; k < Q1; k++) { int b = adj[(Np + fll[j]) * Q1 + k]; if (b != flp[i]) { route[pidx(flp[i], b)] = 1; route[pidx(b, flp[i])] = 1; } }
-        if (hadj[j][i]) for (int k = 0; k < Q1; k++) { int t = adj[flp[j] * Q1 + k]; if (t != Np + fll[i]) { route[pidx(Np + fll[i], t)] = 1; route[pidx(t, Np + fll[i])] = 1; } }
+        if (hadj[i][j]) for (int k = 0; k < Q1; k++) { int b = adj[(Np + fll[j]) * Q1 + k]; if (b != flp[i]) { route[pidx(flp[i], b)] = 1; route[pidx(b, flp[i])] = 1; rc[pidx(flp[i], b)] = 3; rc[pidx(b, flp[i])] = 3; } }
+        if (hadj[j][i]) for (int k = 0; k < Q1; k++) { int t = adj[flp[j] * Q1 + k]; if (t != Np + fll[i]) { route[pidx(Np + fll[i], t)] = 1; route[pidx(t, Np + fll[i])] = 1; rc[pidx(Np + fll[i], t)] = 3; rc[pidx(t, Np + fll[i])] = 3; } }
     }
 }
 
@@ -251,6 +256,21 @@ static void count_source(int s) {
     }
 }
 static inline int bad(size_t i) { return !route[i] && (cnt[i] == 0 || cnt[i] == ngeo[i]); }
+static int hla[512], hlb[512], nhl = 0;   /* GEN: sample of current holes (source, target) */
+static uint8_t *hasHub = NULL;   /* vertices whose fibre carries hubs (freed points/lines, XDEL endpoints): their
+                                   pairs at base distance <= 2 change sheet through the hub */
+static long holes_count(void) {   /* GEN: ordered same-colour pairs (s, u), s != u, with no coset-1 walk of length 4
+                                     from s to u avoiding deleted edges (coverage + D1 for any deleted edges); pairs at
+                                     base distance 2 count only when neither end has hubs */
+    long h = 0; nhl = 0;
+    for (int a = 0; a < V; a++) { int cls = a >= Np;
+        for (int b = cls * Np; b < (cls + 1) * Np; b++) { if (a == b) continue; size_t i = pidx(a, b);
+            if (rc[i] & 1) continue;
+            if (cnt[i] == 255 && (hasHub[a] || hasHub[b])) continue;
+            if (nhl < 512) { hla[nhl] = a; hlb[nhl] = b; nhl++; }
+            h++; } }
+    return h;
+}
 
 /* enumerate geodesics through flag f (orientation: point p then line l at positions k, k+1); for each, endpoints
    (a, b) and current parity; apply delta to cnt and return the change in #bad (counting each unordered pair once
@@ -372,6 +392,15 @@ int main(int argc, char **argv) {
         int p = flp[ii], l = fll[ii]; fdp[fdn] = p; fdl[fdn++] = l; isfd[ii] = 1;
         for (int k = 0; k < Q1; k++) if (adj[p * Q1 + k] == Np + l) delf[flagof[p * Q1 + k]] = 1; }
         fprintf(stderr, "FLAGDEL: %d flag edges deleted\n", fdn); }
+    if (getenv("XDEL")) { char *s3 = getenv("XDEL"), *e3; int nx = 0;   /* XDEL="x:L ...": ordinary flag edges deleted too */
+        for (;;) { long x = strtol(s3, &e3, 10); if (e3 == s3 || *e3 != ':') break; s3 = e3 + 1; long L = strtol(s3, &e3, 10); s3 = e3;
+            for (int k = 0; k < Q1; k++) if (adj[x * Q1 + k] == Np + L) { delf[flagof[x * Q1 + k]] = 1; nx++; } }
+        fprintf(stderr, "XDEL: %d ordinary flag edges deleted\n", nx); }
+    hasHub = calloc(V, 1);
+    for (int i = 0; i < nfl; i++) { hasHub[flp[i]] = 1; hasHub[Np + fll[i]] = 1; }
+    if (getenv("XDEL")) { char *s3 = getenv("XDEL"), *e3;
+        for (;;) { long x = strtol(s3, &e3, 10); if (e3 == s3 || *e3 != ':') break; s3 = e3 + 1; long L = strtol(s3, &e3, 10); s3 = e3; hasHub[x] = 1; hasHub[Np + L] = 1; } }
+    gen = getenv("GEN") ? atoi(getenv("GEN")) : 0;
     inA = calloc((size_t)64 * Np, 1); inG = calloc((size_t)64 * Np, 1); inPp = calloc((size_t)64 * Np, 1); inLl = calloc((size_t)64 * Np, 1);
     for (int i = 0; i < nfl; i++) {   /* adj: point x -> lines (Np + l); line Np + l -> points */
         int p = flp[i], l = fll[i];
@@ -399,14 +428,15 @@ int main(int argc, char **argv) {
     double T0 = getenv("TEMP0") ? atof(getenv("TEMP0")) : 1.0, T1 = getenv("TEMP1") ? atof(getenv("TEMP1")) : 0.02;
     long best = cost; uint8_t *bestnu = malloc(NF); memcpy(bestnu, nu, NF);
     int *bestsig = malloc(sizeof(int) * Np); memcpy(bestsig, sig, sizeof(int) * Np);
-    double swapp = getenv("SWAPP") ? atof(getenv("SWAPP")) : 0.0; long nswapacc = 0;
+    double swapp = getenv("SWAPP") ? atof(getenv("SWAPP")) : 0.0; long nswapacc = 0; double phole = getenv("PHOLE") ? atof(getenv("PHOLE")) : 0.7;
     uint8_t *route_bak = malloc(npairs);
     double ptarg = getenv("PTARG") ? atof(getenv("PTARG")) : 0.0; static int bla[256], blb[256]; int nbl = 0;
-    long it; long covpen = relax == 2 ? cover_count() + d1_count() : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
+    long it; long covpen = relax == 2 ? (gen ? holes_count() : cover_count() + d1_count()) : 0; long penw = getenv("PENW") ? atol(getenv("PENW")) : 3;
     if (relax == 2) { fprintf(stderr, "penalty mode: coverage+D1 holes %ld, weight %ld\n", covpen, penw); if (covpen) best = 1L << 40; }
     for (it = 0; it < iters && (cost > 0 || covpen > 0); it++) {
         if ((it & 63) == 0) { struct timespec ts; clock_gettime(CLOCK_MONOTONIC, &ts); if ((ts.tv_sec - t1.tv_sec) + 1e-9 * (ts.tv_nsec - t1.tv_nsec) > secs) break; }
         double temp = T0 * pow(T1 / T0, (double)it / iters);
+        if (gen && it % 20000 == 0) fprintf(stderr, "it %ld temp %.3f cost %ld holes %ld\n", it, temp, cost, covpen);
         if (swapp > 0 && (rnd() >> 11) * (1.0 / 9007199254740992.0) < swapp) {
             int p1 = rnd() % Np, p2 = rnd() % Np;
             if (ptarg > 0 && nbl && (rnd() >> 11) * (1.0 / 9007199254740992.0) < ptarg) {
@@ -415,26 +445,38 @@ int main(int argc, char **argv) {
                 if (a < Np) { int y = adj[(Np + sig[b]) * Q1 + rnd() % Q1]; int M2 = adj[y * Q1 + rnd() % Q1] - Np; p1 = a; p2 = sinv[M2]; }
                 else { int xb = sinv[b - Np]; int Lz = adj[xb * Q1 + rnd() % Q1]; int z = adj[Lz * Q1 + rnd() % Q1]; p1 = sinv[a - Np]; p2 = z; }
             }
+            if (gen && nhl && (rnd() >> 11) * (1.0 / 9007199254740992.0) < phole) {
+                /* targeted hole repair: a lacks a coset-1 walk to b.  Points: give a point x collinear with a a line
+                   through b (walk a - M - x - sigma(x) - b).  Lines: give a point y on a a line through a point z of b
+                   (walk a - y - sigma(y) - z - b). */
+                int r = rnd() % nhl, a = hla[r], b = hlb[r];
+                if (a < Np) { int M2 = adj[a * Q1 + rnd() % Q1]; int x = adj[M2 * Q1 + rnd() % Q1]; int L2 = adj[b * Q1 + rnd() % Q1] - Np; p1 = x; p2 = sinv[L2]; }
+                else { int y = adj[a * Q1 + rnd() % Q1]; int z = adj[b * Q1 + rnd() % Q1]; int L2 = adj[z * Q1 + rnd() % Q1] - Np; p1 = y; p2 = sinv[L2]; }
+            }
             if (p1 == p2) continue;
             if (nfl && !relax && !(allowed(p1, sig[p2]) && allowed(p2, sig[p1]))) continue;
             long cov2 = 0;
             if (nfl && relax == 1) { if (isfreeP[p1] || isfreeP[p2]) continue;
                 int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
                 int ok = cover_ok() && d1_ok(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2; if (!ok) continue; }
-            if (nfl && relax == 2) { if (isfreeP[p1] || isfreeP[p2]) continue;
+            if (nfl && relax == 2 && gen) { if (isfreeP[p1] || isfreeP[p2]) continue; }
+            else if (nfl && relax == 2) { if (isfreeP[p1] || isfreeP[p2]) continue;
                 int a1 = sig[p1], a2 = sig[p2]; sig[p1] = a2; sig[p2] = a1; sinv[a2] = p1; sinv[a1] = p2;
                 cov2 = cover_count() + d1_count(); sig[p1] = a1; sig[p2] = a2; sinv[a1] = p1; sinv[a2] = p2;
                 if (cov2 > covpen + 3) continue; }
             memcpy(route_bak, route, npairs);
             int l1 = sig[p1], l2 = sig[p2]; sig[p1] = l2; sig[p2] = l1; sinv[l2] = p1; sinv[l1] = p2;
+            uint8_t *rc_bak = NULL; if (gen) { rc_bak = malloc(npairs); memcpy(rc_bak, rc, npairs); }
             free(route); compute_routes();
+            if (gen && relax == 2) cov2 = holes_count();
             long nc = 0; for (size_t i = 0; i < npairs; i++) if (cnt[i] != 255 && bad(i)) nc++;
             nc /= 2;
             long d = nc - cost + (relax == 2 ? penw * (cov2 - covpen) : 0);
             double u = (rnd() >> 11) * (1.0 / 9007199254740992.0);
             if (d <= 0 || u < exp(-d / temp)) { cost = nc; if (relax == 2) covpen = cov2; nswapacc++;
                 if (cost + penw * covpen < best && covpen == 0) { best = cost; memcpy(bestnu, nu, NF); memcpy(bestsig, sig, sizeof(int) * Np); fprintf(stderr, "it %ld temp %.3f cost %ld (swap)\n", it, temp, cost); if (best < 5) write_out(best, bestnu, bestsig); } }
-            else { sig[p1] = l1; sig[p2] = l2; sinv[l1] = p1; sinv[l2] = p2; memcpy(route, route_bak, npairs); }
+            else { sig[p1] = l1; sig[p2] = l2; sinv[l1] = p1; sinv[l2] = p2; memcpy(route, route_bak, npairs); if (gen) memcpy(rc, rc_bak, npairs); }
+            if (rc_bak) free(rc_bak);
             continue;
         }
         int f = rnd() % NF;
