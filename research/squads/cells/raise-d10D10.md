@@ -273,3 +273,27 @@ Note that the no-ORBW run solved where the two ORBW = 5 runs stayed above cost 5
   for psl 71 × 181 but a new low on psl 79 × 131.
 - 2026-10-26 04:14 UTC: batch 3 started: psl 79 × 131 (N = 32,288,880, μ 44.3), no ORBW, seeds 31–34, 9,000 s each,
   in `runs/raise-d10D10-r5/`. Target: beat the cost-2 floor of seed 21.
+- 2026-10-26 06:44 UTC: **batch 3 ended, unsolved** (psl 79 × 131, no ORBW, seeds 31–34, 9,000 s each, 58k evals each):
+  best 3, 3, 3 and 5. No seed reached cost 2 (batch 2 seed 21 is the only run at 2).
+
+## Round 3 result
+
+- **Record: 64,294,560** (PSL(2,81) × Z_121 over GF(81), N = 32,147,280, k = 5, m = 2, f = 0). Verified by haar_sym's
+  full check and by `tools/haarcheck_pslq` (VALID, 14.5 s). Beats the round-1 record 63,854,520 by +0.7 %. Coordinator to
+  re-check (build_haar2.py not run; above 20M).
+- Next rung (N > 32,147,280): psl 79 × 131 (N 32,288,880) and psl 71 × 181 (N 32,384,520) with k = 5, f = 0, no ORBW.
+  Total so far, about 10⁶ evaluations on these two groups across rounds 2 and 3 (round 2 about 0.9 M across all its
+  groups; round 3 batches 2–3 about 0.6 M). Best cost 2 (psl 79 × 131 seed 21), then 3 (three seeds), then 5 and 6.
+  The cost floor is one uncovered orbit or one uncovered fixed element.
+
+## Stop reason
+
+Round 3 used about 5.5 h of its 6 h budget. The k = 5 route is still the only one with a plausible near-term record. The
+next rung is close (cost 2–3 at the best seeds) but the remaining search at ~0.1 s per evaluation has not produced a
+solution. Recommendation for the coordinator, in order:
+1. A longer run on psl 79 × 131 from the best seeds (seed 21 at cost 2, seeds 32, 33 at cost 3): more time per seed,
+   not more seeds. About 3–4 h each on four cores.
+2. The k = 3 probe (f = 1) at psl 61 × 283 / psl 59 × 313 / psl 89 × 91 (μ 40–41, μ_eff ≈ 14), never tried above μ 21.
+   Expected to be harder; one probe run would settle it.
+3. Endgame search from cost-2 states (single-orbit replacement restricted to orbits that cover the uncovered elements)
+   — not implemented.
