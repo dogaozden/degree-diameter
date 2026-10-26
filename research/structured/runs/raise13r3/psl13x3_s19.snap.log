@@ -1,0 +1,64 @@
+group prod psl 13 psl 13 x Z_3, N=3577392, identity 255762, H order 42, rows 85176, threads 1, setup 0.13s
+wide rows: HW order 91, rows 39312, setup 0.25s
+alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(2,6,6,12) (index 331), z -> 2 z on Z_3
+ORBIT k=6 m=2 f=1: |Fix(alpha)| = 5 (+e); mu = 64.29, mu/k = 10.71, fixed-point misses ~ 0.97
+start cost=112
+t=30 steps=309 evals=2473 cost=24 best=24 T=0.53
+t=60 steps=616 evals=4929 cost=23 best=23 T=0.19
+t=90 steps=942 evals=7537 cost=23 best=23 T=0.15
+t=120 steps=1256 evals=10049 cost=23 best=23 T=0.15
+t=150 steps=1566 evals=12529 cost=23 best=23 T=0.15
+t=180 steps=1884 evals=15073 cost=23 best=23 T=0.15
+t=210 steps=2193 evals=17545 cost=41 best=23 T=0.64
+t=240 steps=2507 evals=20057 cost=40 best=23 T=0.22
+t=270 steps=2840 evals=22721 cost=32 best=23 T=0.15
+t=300 steps=3174 evals=25393 cost=31 best=23 T=0.15
+t=330 steps=3503 evals=28025 cost=24 best=23 T=0.15
+t=360 steps=3837 evals=30697 cost=30 best=23 T=0.63
+t=390 steps=4150 evals=33201 cost=30 best=23 T=0.22
+t=421 steps=4460 evals=35681 cost=30 best=23 T=0.15
+t=451 steps=4788 evals=38305 cost=30 best=23 T=0.15
+t=481 steps=5109 evals=40873 cost=30 best=23 T=0.15
+t=511 steps=5421 evals=43369 cost=34 best=23 T=0.63
+t=541 steps=5732 evals=45857 cost=27 best=23 T=0.22
+t=571 steps=6047 evals=48377 cost=26 best=23 T=0.15
+t=601 steps=6348 evals=50785 cost=26 best=23 T=0.15
+t=631 steps=6661 evals=53289 cost=23 best=23 T=0.15
+t=661 steps=6957 evals=55657 cost=35 best=23 T=0.63
+t=691 steps=7263 evals=58105 cost=29 best=23 T=0.22
+t=721 steps=7561 evals=60489 cost=29 best=23 T=0.15
+t=751 steps=7870 evals=62961 cost=22 best=22 T=0.15
+t=781 steps=8174 evals=65393 cost=22 best=22 T=0.15
+t=811 steps=8488 evals=67905 cost=22 best=22 T=0.15
+t=841 steps=8786 evals=70289 cost=22 best=22 T=0.15
+t=871 steps=9097 evals=72777 cost=22 best=22 T=0.15
+t=901 steps=9392 evals=75137 cost=49 best=22 T=0.85
+t=931 steps=9698 evals=77585 cost=41 best=22 T=0.30
+t=961 steps=10015 evals=80121 cost=24 best=22 T=0.15
+t=991 steps=10324 evals=82593 cost=22 best=22 T=0.15
+t=1021 steps=10641 evals=85129 cost=22 best=22 T=0.15
+t=1051 steps=10950 evals=87601 cost=39 best=22 T=0.84
+t=1081 steps=11259 evals=90073 cost=27 best=22 T=0.30
+t=1111 steps=11558 evals=92465 cost=27 best=22 T=0.15
+t=1142 steps=11869 evals=94953 cost=27 best=22 T=0.15
+t=1172 steps=12172 evals=97377 cost=26 best=22 T=0.15
+t=1202 steps=12474 evals=99793 cost=21 best=21 T=0.84
+t=1232 steps=12787 evals=102297 cost=24 best=21 T=0.30
+t=1262 steps=13090 evals=104721 cost=24 best=21 T=0.15
+t=1292 steps=13395 evals=107161 cost=24 best=21 T=0.15
+t=1322 steps=13687 evals=109497 cost=24 best=21 T=0.15
+t=1352 steps=13992 evals=111937 cost=53 best=21 T=1.27
+t=1382 steps=14310 evals=114481 cost=40 best=21 T=0.45
+t=1412 steps=14620 evals=116961 cost=33 best=21 T=0.16
+t=1442 steps=14925 evals=119401 cost=27 best=21 T=0.15
+t=1472 steps=15239 evals=121913 cost=27 best=21 T=0.15
+t=1502 steps=15548 evals=124385 cost=21 best=21 T=1.26
+t=1532 steps=15866 evals=126929 cost=29 best=21 T=0.44
+t=1562 steps=16166 evals=129329 cost=30 best=21 T=0.16
+t=1592 steps=16475 evals=131801 cost=30 best=21 T=0.15
+t=1622 steps=16784 evals=134273 cost=30 best=21 T=0.15
+t=1652 steps=17101 evals=136809 cost=21 best=21 T=1.25
+t=1682 steps=17416 evals=139329 cost=35 best=21 T=0.44
+t=1712 steps=17733 evals=141865 cost=35 best=21 T=0.16
+t=1742 steps=18049 evals=144393 cost=34 best=21 T=0.15
+t=1772 steps=18359 evals=146873 cost=34 best=21 T=0.15
