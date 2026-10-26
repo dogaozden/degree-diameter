@@ -25,7 +25,7 @@ Cards (one line each; best n / tool cost / miss = cost per vertex):
 - c24 GQ(3,3) lifts: 2,240 / 1,331. c25 girth-6 bases: 2,240 / 548. c26 small-diameter bases x small groups: 2,240 / 1,606.
 - c27 big base x Z_4: 2,240 / 10,346. c28 bipartite Cayley, metacyclic: 2,340 / 100. c29 Cayley with involutions: 2,352 / 23.
 - c30 canonical double covers: 2,200 / 2. c31 grow the 2,184 seed by 2 vertices: **2,186 / 247 far pairs (miss 0.23)**.
-- c32 coset graphs: 2,448 / 28 (PGL(2,17)). c33 bi-Cayley with loops: 2,200 / 2. c34 better annealer: not reported in time.
+- c32 coset graphs: 2,448 / 28 (PGL(2,17)). c33 bi-Cayley with loops: 2,200 / 2. c34 better annealer (tabu; reported after round 5): 2,200 / 2.
 - c35 GA over S: 2,200 / 2. c36 exhaustive Z_55-parts per j-pattern: 2,200 / 10. c37 affine maps (wildcard): 2,200 / 16,900.
 - c38 Heisenberg(11) (wildcard): 2,662 / 200 (hard floor). c39 plain graph SA (wildcard): 2,186 / 25,471.
 - c40 PG(6,3) line sets: 2,186 / 26,357. c41 non-bipartite bases + parity: 2,190 / 54. c42 triangular groups: 2,200 / 19.
