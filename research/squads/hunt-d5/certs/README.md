@@ -18,6 +18,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d6_haar_360_136.log, d6_haar_360_88.log | (6,5) SmallGroup(360,136) and (360,88), both of shape (C3 × C3) ⋊ (C5 ⋊ Q8) with |G/G'| = 4 (farms: cost 4 in 31 of 31 seeds, and cost 6): `haar5 cert` from rank 0 | 7.2·10⁸ each | none |
 | d6_haar_343_4.log | (6,5) SmallGroup(343,4) | 6.1·10⁸ | none |
 | d7_haar_610_2_coset_patterns.log (patterns: d7_patterns_610_2.txt) | (7,5) SmallGroup(610,2) = C2 × (C61 ⋊ C5) = `meta 61 10 9 1`: every coset pattern (599 classes), normalized S inside each (`haar5 prod`, see below) | 7.6·10⁹ | **none: no (7,5) Haar graph on this group** |
+| d7_haar_618_2_coset_patterns.log (patterns: d7_patterns_618_2.txt) | (7,5) SmallGroup(618,2) = C2 × (C103 ⋊ C3) = `meta 103 6 56 1` (cost 4 in 7 of 100 farm seeds): every coset pattern (75 classes) | 5.0·10⁹ | none |
 | d7_prod_positive_control_506.log | the same method on `meta 23 11 2` × Z2 (order 506) in the pattern of a known solution | 2.7·10⁵ | finds 2 solutions, one of them the known one (scaled by u = 11) |
 | d7_haar_615_1_orbit_spaces.log | (7,5) SmallGroup(615,1): every S that is a union of e, fixed points and orbits of an automorphism of order 2–5 (`haar5 exho`) | | minimum ≥ 12 in every space |
 | d7_haar_615_1_3swap_of_cost{4,2}_set.log | (7,5) SmallGroup(615,1): all sets within 3 swaps of the cost-4 set S = 0 206 135 160 343 459 282 and of the cost-2 set S = 0 206 135 343 507 543 593 (`tools/nbhd.py … 3`) | 20 × 3.8·10⁷ each | found the cost-2 set; nothing of cost 0 |
