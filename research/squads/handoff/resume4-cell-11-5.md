@@ -22,10 +22,14 @@ brief asked) and the session's own claude/cell-11-5-bipartite-search-7d5bhg (dra
    at 2 when stopped); finish.sh; bitcheck.py. The pipeline is research/d11D5/dc/chain.sh (wpo, nujoint, finish).
 
 ## Open (in order)
-1. **n = 588 / 589** (7,056 / 7,068). Starts: K33 block (3 new points all on 3 new lines, kkk.py K=3) 648-776 at
-   n = 588; two K22 blocks (k22x.py 2) 1,146-1,550 and one K44 block (kkk.py K=4) 1,240 at n = 589. The GREEDY mode
-   of research/d11D5/dc/po7R.c (steepest descent over sigma swaps at the new vertices) takes ~100 off a start.
-   Anneals of these were running at the end of this session (see the cell notes for where they stopped).
+1. **n = 588 (7,056).** Best structural cost **58-60**: the 6-cycle block (X_j on N_j, N_{j+1}) with all three
+   hyperbolic lines through one point R0 of the plane S of a parabolic C (`PLANE=1 PAT="0-0,0-1,1-1,1-2,2-2,2-0"
+   kkk.py`, squad r6 card c8): start 622 -> po7 152 -> cold 70 -> 60 -> evolutionary cold cycles (dc/evo.sh) 58.
+   File research/d11D5/dc/n588_c6plane_best.in (see the cell notes for the last value). wpo (LMAX 3000-10000) does not
+   help above ~20, and the step from 60 to ~20 is what is missing. Other n = 588 designs, all worse: K33 starts
+   622-776 -> 148-168 after 1,800 s; triangle with full point-side pencils (dc/tri.py) 638 -> 120; 17 incidence
+   patterns (squad r6 c1) 682-1,092 at the start; a third pair grown on the solved 7,044 base 1,594 -> 532.
+   n = 589: two K22 blocks 1,146 -> 772, cube Q3 1,180 -> 850.
 2. For several blocks under one C: a "parabolic" C keeps exactly the W-lines meeting an axis isotropic, i.e. the
    points R with C(delta(R)) isotropic form a plane P0^perp; up to 8 hyperbolic lines through one point R0 of it are
    disjoint off R0 (k22p.py). One block starts at 310 that way, but two blocks through one R0 interact (1,550).
