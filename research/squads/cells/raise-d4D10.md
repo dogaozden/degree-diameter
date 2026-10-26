@@ -27,7 +27,7 @@ Two families that the grammar could not reach before, and one check that closed 
    Screen: 23,377 candidates in N = 6209–6400. Best min 9–13 (e.g. 6328 nmeta 226 28 117 113 1: min 9, median 293),
    comparable to the best split groups (min 10–13). Log: logs/screen_nm_6209_6400.tsv.
 
-   Batch 1 (300 s, seed 1, 12 specs): the four N = 6328 specs nmeta 226 28 {99,105,169,173} 113 reach cost 2; the
+   Batch 1 (300 s, seed 1, 8 of 12 specs run; the last 4 were cancelled with the driver): the four N = 6328 specs nmeta 226 28 {99,105,169,173} 113 reach cost 2; the
    others (6216 518 12 {177,487} 259, 6223 889 7 8 127, 452 14 143 226) reach cost 5–7. Batch 2 (12 more, N = 6216–6384)
    was cancelled in favour of the long runs below. Log: logs/anneal1_summary.tsv.
 
