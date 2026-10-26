@@ -252,3 +252,11 @@ Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable struct
 - prod sl 4 × sl 13 × Z67 (μ 28.0): seeds 2 and 3. Wave 1, seed 1: best 6 at 189k evals.
 - prod sl 5 × sl 7 × Z217 (μ 26.7, N 8,749,440): seed 1. Earlier (ORBW=1): best 36 at 567k evals.
 - sl 29 × Z361 (μ 28.6, N 8,793,960): seed 1. Earlier (ORBW=1): best 30 at 55k evals.
+
+### Wave 3 status (04:37 box time, about 80 min in)
+
+- prod sl 4 × sl 13 × Z67, seeds 2 and 3: best 12 and 6 (93k and 92k evals). Still running, end about 05:50.
+- prod sl 5 × sl 7 × Z217 (seed 1): stopped at 04:37, best 50 after 187k evals. Not promising.
+- sl 29 × Z361 (seed 1): stopped at 04:37, best 30 after 185k evals. Not promising.
+- Replaced by sl 59 × Z43 (μ 30.2, N 8,828,760), ORBW=3, seeds 1 and 2, 6000 s each, started 04:36, end about 06:17.
+  Wave 1 of the earlier round: best 6 at 465k evals on this group, so it is the most promising remaining order above the bar.
