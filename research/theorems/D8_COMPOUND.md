@@ -187,10 +187,14 @@ the axis $\Pi = a^\perp\cap a'^\perp$ (a 5-dimensional subspace). On a projectiv
 the map $u\mapsto c(u)$ is a bijection $m\to PG(1,q)$ (a linear map of the 2-space $m$ to $\mathbb F_q^2$ with trivial
 kernel). Take $\beta_t = f_t\circ c$ with injective $f_t: PG(1,q)\to\mathbb Z_m$, images $B_1, B_2$.
 
-**Corollary 4.3.** For $p$, $w = \delta^{-1}(y)$ opposite and $\ell = \delta^{-1}(p)$, $y$ opposite: every offset of
-$-B_1\cup -B_2$ is reached unless both hexagon lines $\ell$ and $y$ meet $\Pi$ (the "strong" blocks: these are the
-guaranteed families $hD_tH$ and $HD_th$ with geometric colourings); every offset of $B_1\cup B_2$ is reached unless both
-$m_1$ and $m_2$ meet $\Pi$ (the "weak" blocks). Together with $0$: up to $4(q+1)+1 = 4q+5$ copies.
+**Corollary 4.3 (Theorem).** (Strong blocks.) For every point $p$ and line $y$, every offset of $-B_1\cup -B_2$ is
+reached unless both hexagon lines $\delta^{-1}(p)$ and $y$ meet $\Pi$ (Proposition 4.2(b) holds for all $\ell, y$;
+these walks are the guaranteed families $hD_tH$ and $HD_th$, with the colourings induced by $\delta$ and $c$). (Weak
+blocks.) If $p$ and $w = \delta^{-1}(y)$ are opposite, every offset of $B_1\cup B_2$ is reached unless both ideal lines
+$m_1, m_2$ meet $\Pi$. In particular, with symmetric blocks $B_t = -B_t$ and $m = 2q+3$ (so $\{0\}\cup B_1\cup B_2 =
+\mathbb Z_m$; $q$ odd), the lift reaches every (point, line, copy) triple except possibly for pairs with both
+$\delta^{-1}(p)$ and $y$ meeting the axis. With disjoint $\pm B_1, \pm B_2$ the count goes up to $4q+5$, at the price of
+the weak-block exceptions.
 
 **Obstruction 4.4 (Theorem).** Every totally singular plane $\pi_p$ meets $\Pi$ (a 3-dimensional subspace and the kernel
 of a linear map onto $\mathbb F_q^2$). Hence $m_1 = \pi_p\cap w^\perp$ meets $\Pi$ whenever $w\perp u_0$ for a point
@@ -202,6 +206,8 @@ $\approx q^3$ points of $H(q)$ on $\Pi$ (about $1/q$ of the lines).
 - $q = 3$, $m = 17 = 4q+5$: for every third point and every line, the predicted offsets of Proposition 4.1 are a subset
   of the exact reach (no violation in 18,928 pairs); 1,440 pairs have an incomplete prediction, but only 70 pairs are
   really incomplete, all in the classes $(d(p,w), d(\ell,y)) = (6,6)$ and $(4,4)$. All-source cost 1,776.
+- $q = 3$, robust core $m = 2q+3 = 9$ ($B_1 = [1,4]$, $B_2 = [5,8] = -B_1$): all-source COST 0 for axis seeds 1 and 4,
+  COST 12 and 4 for seeds 2 and 3 (pairs where both relevant hexagon lines meet the axis); $m = 11$: 108, $m = 13$: 396.
 - $q = 9$ (the (12,8) cell), 64 sampled sources: $m = 21$: cost 132 (6 bad sources); $m = 24$: 23,859; $m = 31$:
   81,062; $m = 36$: 166,260; $m = 41$: 381,875. At $m = 41$ all misses are in the weak blocks.
 So the family is "almost" a design with $4q+5$ copies; what fails is exactly Obstruction 4.4. *(Round r2_d8c results:
