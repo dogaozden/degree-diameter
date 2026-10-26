@@ -1,0 +1,18 @@
+group meta 541 27 28 x Z_1, N=14607, identity 0, H order 27, rows 541, threads 1, setup 0.00s
+start cost=24
+t=30 steps=68856 evals=550849 cost=6 best=6 T=0.53
+t=60 steps=127129 evals=1017033 cost=6 best=6 T=0.19
+t=90 steps=192674 evals=1541393 cost=6 best=6 T=0.15
+t=120 steps=256388 evals=2051105 cost=2 best=2 T=0.15
+t=150 steps=323522 evals=2588177 cost=2 best=2 T=0.15
+t=180 steps=395099 evals=3160793 cost=6 best=2 T=0.15
+t=210 steps=463380 evals=3707041 cost=10 best=2 T=0.15
+t=240 steps=530337 evals=4242697 cost=2 best=2 T=0.15
+t=270 steps=596593 evals=4772745 cost=2 best=2 T=0.68
+t=300 steps=661054 evals=5288433 cost=2 best=2 T=0.24
+t=330 steps=725654 evals=5805233 cost=2 best=2 T=0.15
+t=360 steps=796231 evals=6369849 cost=2 best=2 T=0.15
+t=390 steps=865820 evals=6926561 cost=2 best=2 T=0.15
+t=420 steps=935640 evals=7485121 cost=8 best=2 T=0.68
+t=450 steps=1005536 evals=8044289 cost=4 best=2 T=0.24
+RESULT d=5 D=9 group=meta 541 27 28 x Z_1 N=14607 best=2 evals=8595425 time=480.0
