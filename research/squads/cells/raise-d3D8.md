@@ -64,3 +64,13 @@ Record to beat: **288** (round 2 did not beat it). Tools: `research/raise-d3D8-r
 - Open lead from round 2 taken: **k = 10** (5+5 bases, 15 classes), orders N = 29..36 (n = 290..360). Each run
   costs about `d(N)·N^5` candidates with the Aut-orbit reps on the first free voltage (cyclic Z29: 60 s per base).
 - Not affordable here: k = 12 (48 bases, N^7 candidates per base; about 8 CPU-hours per base at N = 25).
+
+### Round 3 result: k = 10, orders 29, 31, 33 (complete, 45 base × group runs)
+
+- Every run: all 15 bases × groups of order N, first free voltage over Aut(G)-orbit reps, D = 8, no skipped runs.
+- **0 solutions.** Best near-miss cost (unreached vertices at the first failing source, over lifts within cost 2):
+  cost 1 in 12 of 15 runs at N = 29, 8 at N = 31, 2 at N = 33; cost 2 in 2 runs at N = 31 and 2 at N = 33.
+  Runs with best 2^30 had no candidate within cost 2 (the sentinel is not an error; `tlift` only tracks near-misses).
+- Candidates per run: 4.1e7 (N = 29), 5.7e7 (N = 31), 1.6e8 (N = 33); about 1.5 µs each.
+- Next: orders 30, 34, 35 (launched, driver `runs/k10_driver_b.log`). Order 36 (14 groups) and order 32 (51 groups)
+  are open; their cost is 5–20× this batch.
