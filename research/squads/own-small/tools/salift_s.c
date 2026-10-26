@@ -67,7 +67,8 @@ int main(int argc, char **argv) {
         for (int i = p - 1; i > 0; i--) { int j = xr() % (i + 1); int t = pm[i]; pm[i] = pm[j]; pm[j] = t; }
         for (int i = 0; i < p; i++) { eu[ne] = i; ev[ne] = p + pm[i]; ea[ne] = xr() % N; ne++; } }
     if (getenv("START")) { FILE *fs = fopen(getenv("START"), "r"); int sN, sg, sp; long sc;
-        if (!fs || fscanf(fs, "%d %d %d %ld", &sN, &sg, &sp, &sc) != 4 || sN != N || sp != p) { fprintf(stderr, "bad START\n"); return 2; }
+        char hl[256]; sc = -1;
+        if (!fs || !fgets(hl, sizeof hl, fs) || sscanf(hl, "%d %d %d %ld", &sN, &sg, &sp, &sc) < 3 || sN != N || sp != p) { fprintf(stderr, "bad START\n"); return 2; }
         for (int e = 0; e < ne; e++) if (fscanf(fs, "%d %d %d", &eu[e], &ev[e], &ea[e]) != 3) { fprintf(stderr, "bad START\n"); return 2; }
         fclose(fs); }
     long c = cost(), best = c; clock_t st = clock(); double cyc = 30.0; long it = 0;

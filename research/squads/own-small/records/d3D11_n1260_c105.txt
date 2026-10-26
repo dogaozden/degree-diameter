@@ -1,0 +1,23 @@
+# (3,11) new cell: n = 1,260, cubic bipartite, diameter 11 (census best 1,250, lab 1,080). Job own-small, Oct 26 2026.
+# Regular voltage lift of a 6+6 cubic bipartite base over the cyclic group Z_105: vertex (u, x), u = 0..11
+# (white 0..5, black 6..11), x in Z_105; base edge (u, v, s) gives edges (u, x) ~ (v, x + s mod 105).
+# Found by joint base+voltage annealing (salift_s, D=11). Builder: build_cyclic_lift.py.
+# u v s
+0 10 75
+1 6 16
+2 7 97
+3 10 83
+4 10 24
+5 6 93
+0 11 59
+1 11 94
+2 9 67
+3 8 24
+4 7 24
+5 9 97
+0 7 78
+1 8 97
+2 8 47
+3 9 71
+4 6 39
+5 11 95
