@@ -33,10 +33,28 @@ second. Both are far worse than `3 4 2` (p10 37 and 46). So round 3 runs `3 4 2`
 psl 103 × Z109 (seed 1, plain), prod sl 3 × sl 37 × Z49 (seed 1, ORBW 3), psl 89 × Z169 (seed 1, plain),
 psl 73 × Z307 (seed 1, ORBW 3). Queued: the same four groups on seed 2. Results go in the table below.
 
-**Round-3 run table (all runs, auto-generated):** `research/structured/runs/r3/run_table.md`. Summary at 04:50 UTC:
-2 solves on the way up (119,048,832 → 119,124,720 → 120,043,728) out of 19 finished runs in window; every rung above N 60.0 M
-(μ ≥ 24) ended at best cost 6–14 after 3,600 s, with no solve yet (sl 71 × Z169, psl 71 × Z337, psl 83 × Z211, prod sl 3 ×
-sl 29 × Z103, prod sl 3 × sl 71 × Z7, prod sl 4 × sl 16 × Z247 still running or failed).
+**Round-3 stop (2026-10-26, about 06:45 UTC, six-hour budget).** Final record **120,043,728** (SL(2,107) × Z49, sha256
+c801569a…). Three solves in this round, each a new record when found: 119,048,832 (prod sl 3 × sl 37 × Z49, ORBW 3),
+119,124,720 (psl 89 × Z169), 120,043,728 (sl 107 × Z49). Run table: `research/structured/runs/r3/run_table.md` (26 finished
+runs, 3 solved, 0 solved after 06:00 UTC).
+
+Groups in the window above 60,021,864 (the current record N) that were run, all at 3,600 s, best cost at the end:
+prod sl 3 × sl 71 × Z7 (12), prod sl 3 × sl 29 × Z103 (10), prod sl 4 × sl 16 × Z247 (15), psl 71 × Z337 (1, 14, 12, the
+closest: seed 2 at cost 1 after 3,213 s), psl 83 × Z211 (6, 6, 12), sl 71 × Z169 (6, 6, 8). Not run: sl 64 × Z229 (no checker
+for prime powers as single factors), psl 125 × Z61 (same), pgl groups (no checker). Groups below the record's N that were
+run on the way up (psl 103, psl 73, psl 67, sl 67, prod sl 3 × sl 27, prod sl 5 × sl 19, psl 157) stalled at cost 3–24.
+
+**Orbit shape.** `3 4 2` is the only shape run to completion this round. `2 6 2` (involution orbits) and `3 3 5` gave RANDORB
+p10 of 718–1,024 and 186–261 against 37–46 for `3 4 2` on the same groups; they were not run as searches.
+
+**Where a fresh session should go next.**
+1. psl 71 × Z337 (N 60,296,040): cost 1 at 3,213 s on seed 2, and cost 1 is the closest any high-μ run got. More seeds, longer
+   budget (7,200 s), or restarts from the cost-1 state if haar_sym has a checkpoint.
+2. psl 83 × Z211 and sl 71 × Z169 (μ 26–27): stalled at 6 on three seeds each. Lower priority.
+3. Not yet tried: route-chart lifts (research/theorems/BEAT_16_5_SQUAD.md) and metacyclic lifts (research/lifts/) for N ~ 60 M;
+   k = 5 orbits (`5 2 4`), not screened.
+4. Solve rate was about 3 of 26 finished 3,600 s runs, and the solves came at μ 21.2–24.2. The large-μ rungs need several
+   hours per solve, so the budget is the limit, not the group list.
 
 **Round-3 record (now): 120,043,728 vertices** = 2N, N = 60,021,864 = |SL(2,107) × Z_49| (k = 3, m = 4, f = 2, seed 1, K = 8,
 plain (no ORBW); 25,769 evaluations, 3,326 s, μ = 24.22, |Fix| = 107). Solution
