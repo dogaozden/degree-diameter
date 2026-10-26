@@ -1,0 +1,11 @@
+group psl 73 x Z_307, N=59702904, identity 806796, H order 37, rows 1613592, threads 1, setup 3.04s
+wide rows: HW order 73, rows 817848, setup 8.18s
+alpha: conj by mat(16,3,55,56) (index 82837), z -> 17 z on Z_307
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 35 (+e); mu = 22.27, mu/k = 7.42, fixed-point misses ~ 0.52
+ORBW=3: an uncovered fixed element weighs 3; start energy 102
+start cost=102
+t=32 steps=8 evals=65 cost=39 best=39 T=0.49 energy=39 bestE=39
+t=64 steps=16 evals=129 cost=42 best=39 T=0.17 energy=42 bestE=39
+t=95 steps=24 evals=193 cost=31 best=31 T=0.15 energy=33 bestE=33
+t=126 steps=33 evals=265 cost=24 best=24 T=0.15 energy=24 bestE=24
+t=157 steps=41 evals=329 cost=24 best=24 T=0.15 energy=24 bestE=24
