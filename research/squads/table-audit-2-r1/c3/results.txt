@@ -1,0 +1,20 @@
+card c3 (table-audit-2-r1, round 1): PATTERN SCAN, q=5, D=8, ZMODE=2 HUBONLY=1, unmodified ../shared/omega_symanneal
+Settings run in order, 90 s each, seed 1 (command: ZMODE=2 HUBONLY=1 timeout 120 nice -n 10 ../shared/omega_symanneal ../shared/h5.txt ../shared/g5.txt TYPES INNER 8 90 1 run_TYPES_INNER)
+
+TYPES  INNER  best cost (90 s, seed 1)  iterations
+abab   LLLL   38151                     1085
+aabb   LLLL   39294                      507
+abba   LLLL   39760                      477
+aaab   LLLL   52456                      431
+abab   PPPP   39721                      395
+abab   LPLP   39608                      343
+abab   PLPL   39558                      485
+aabb   LPPL   38990                      623
+
+Best setting abab LLLL, then 300 s more with seed 2 (fresh start; the binary has no warm start from .lab):
+abab   LLLL   37198  (seed 2, 300 s, 2394 iterations)
+command: ZMODE=2 HUBONLY=1 timeout 900 nice -n 10 ../shared/omega_symanneal ../shared/h5.txt ../shared/g5.txt abab LLLL 8 300 2 run_abab_LLLL_s2
+
+Notes: cost 0 not reached by any setting. Iteration counts vary 343-1085 in 90 s because the 4 shared cores were loaded,
+so the comparison is confounded by speed; single seed per setting. Only aaab LLLL (52k) is clearly worse.
+Labellings: c3/run_<TYPES>_<INNER>.lab and c3/run_abab_LLLL_s2.lab.

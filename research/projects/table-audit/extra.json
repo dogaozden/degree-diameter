@@ -1,0 +1,275 @@
+{
+ "3,9": {
+  "notes": "n/2 = 253 = 11\u00b723; = |Z_23 x| Z_11| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 23 11 2 found here (graphs/d3D9_n506_meta_23_11_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "4,8": {
+  "notes": "n/2 = 1092 = 2^2\u00b73\u00b77\u00b713",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 91 12 25 found here (graphs/d4D8_n2184_meta_91_12_25_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "4,9": {
+  "notes": "n/2 = 2485 = 5\u00b77\u00b771; = |Z_71 x| Z_35| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 71 35 2 found here (graphs/d4D9_n4970_meta_71_35_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "4,10": {
+  "notes": "n/2 = 5874 = 2\u00b73\u00b711\u00b789",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 89 66 11 found here (graphs/d4D10_n11748_meta_89_66_11_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,5": {
+  "notes": "n/2 = 168 = 2^3\u00b73\u00b77",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 7 24 3 found here (graphs/d5D5_n336_meta_7_24_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,7": {
+  "notes": "n/2 = 1555 = 5\u00b7311; = |Z_311 x| Z_5| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 311 5 6 found here (graphs/d5D7_n3110_meta_311_5_6_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,8": {
+  "notes": "n/2 = 4617 = 3^5\u00b719",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 171 27 4 found here (graphs/d5D8_n9234_meta_171_27_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,9": {
+  "notes": "n/2 = 13968 = 2^4\u00b73^2\u00b797",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 97 144 4 found here (graphs/d5D9_n27936_meta_97_144_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "5,10": {
+  "notes": "n/2 = 45034 = 2\u00b711\u00b723\u00b789",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 2047 22 25 found here (graphs/d5D10_n90068_meta_2047_22_25_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "6,5": {
+  "notes": "n/2 = 342 = 2\u00b73^2\u00b719; = |Z_19 x| Z_18| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 57 6 7 found here (graphs/d6D5_n684_meta_57_6_7_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "6,8": {
+  "notes": "n/2 = 14895 = 3^2\u00b75\u00b7331",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 331 45 4 found here (graphs/d6D8_n29790_meta_331_45_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "6,9": {
+  "notes": "n/2 = 58680 = 2^3\u00b73^2\u00b75\u00b7163",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 815 72 23 found here (graphs/d6D9_n117360_meta_815_72_23_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "6,10": {
+  "notes": "n/2 = 226016 = 2^5\u00b77\u00b71009",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "construction": "Haar graph of meta 1009 224 39 found here (graphs/d6D10_n452032_meta_1009_224_39_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "7,5": {
+  "notes": "n/2 = 567 = 3^4\u00b77",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 63 9 4 found here (graphs/d7D5_n1134_meta_63_9_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "7,8": {
+  "notes": "n/2 = 40470 = 2\u00b73\u00b75\u00b719\u00b771",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 1349 30 159 found here (graphs/d7D8_n80940_meta_1349_30_159_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "7,9": {
+  "notes": "n/2 = 200080 = 2^4\u00b75\u00b741\u00b761",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "construction": "Haar graph of meta 2501 80 3 found here (graphs/d7D9_n400160_meta_2501_80_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "7,10": {
+  "notes": "n/2 = 993690 = 2\u00b73^2\u00b75\u00b761\u00b7181",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 11041 90 3 found here (graphs/d7D10_n1987380_meta_11041_90_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "8,5": {
+  "notes": "n/2 = 855 = 3^2\u00b75\u00b719",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 19 45 4 found here (graphs/d8D5_n1710_meta_19_45_4_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "8,8": {
+  "notes": "n/2 = 100740 = 2^2\u00b73\u00b75\u00b723\u00b773",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "construction": "Haar graph of meta 365 276 3 found here (graphs/d8D8_n201480_meta_365_276_3_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "8,9": {
+  "notes": "n/2 = 545616 = 2^4\u00b73^4\u00b7421",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 421 1296 159 found here (graphs/d8D9_n1091232_meta_421_1296_159_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "8,10": {
+  "notes": "n/2 = 3463605 = 3^2\u00b75\u00b719\u00b74051",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 4051 855 129 found here (round 2; graphs/d8D10_n6927210_meta_4051_855_129_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "9,5": {
+  "notes": "n/2 = 1248 = 2^5\u00b73\u00b713",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 13 96 2 found here (graphs/d9D5_n2496_meta_13_96_2_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "9,8": {
+  "notes": "n/2 = 224740 = 2^2\u00b75\u00b717\u00b7661",
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp_mt.c VALID (checks/haar_big.txt)",
+  "construction": "Haar graph of meta 661 340 71 found here (graphs/d9D8_n449480_meta_661_340_71_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "9,9": {
+  "notes": "n/2 = 1480768 = 2^6\u00b717\u00b71361",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 1361 1088 28 found here (graphs/d9D9_n2961536_meta_1361_1088_28_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "9,10": {
+  "notes": "n/2 = 10008630 = 2\u00b73^3\u00b75\u00b719\u00b71951",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 37069 270 139 found here (round 2; graphs/d9D10_n20017260_meta_37069_270_139_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "10,9": {
+  "notes": "n/2 = 3528700 = 2^2\u00b75^2\u00b77\u00b771^2",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 25205 140 223 found here (round 2; graphs/d10D9_n7057400_meta_25205_140_223_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "10,10": {
+  "notes": "n/2 = 25165578 = 2\u00b73\u00b743\u00b7103\u00b7947",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 97541 258 47 found here (round 2; graphs/d10D10_n50331156_meta_97541_258_47_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "11,9": {
+  "notes": "n/2 = 7600224 = 2^5\u00b73\u00b717\u00b74657",
+  "rebuilt": "order",
+  "check": "build_haar2.py + meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 4657 1632 19 found here (round 2; graphs/d11D9_n15200448_meta_4657_1632_19_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "11,10": {
+  "notes": "n/2 = 65296177 = 563\u00b7115979; = |Z_115979 x| Z_563| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 115979 563 110636 found here (round 2; graphs/d11D10_n130592354_meta_115979_563_110636_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "12,9": {
+  "notes": "n/2 = 15000576 = 2^10\u00b73\u00b719\u00b7257",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 4883 3072 7 found here (round 2; graphs/d12D9_n30001152_meta_4883_3072_7_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "12,10": {
+  "notes": "n/2 = 150191525 = 5^2\u00b711\u00b7546151; = |Z_546151 x| Z_275| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 546151 275 360 found here (round 2; graphs/d12D10_n300383050_meta_546151_275_360_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "13,9": {
+  "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 14047 1815 135 found here (round 2; graphs/d13D9_n50990610_meta_14047_1815_135_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "13,10": {
+  "notes": "n/2 = 308665468 = 2^2\u00b7107\u00b7721181; = |Z_721181 x| Z_428| (k | p-1): fits a Haar graph of that group"
+ },
+ "14,9": {
+  "notes": "n/2 = 47543869 = 467\u00b7101807; = |Z_101807 x| Z_467| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 101807 467 56 found here (round 2; graphs/d14D9_n95087738_meta_101807_467_56_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "14,10": {
+  "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_bits.c + meta_haar_pull.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 10283705 59 37876 found here (round 2; graphs/d14D10_n1213477190_meta_10283705_59_37876_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "15,9": {
+  "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 98717 851 26 found here (round 2; graphs/d15D9_n168016334_meta_98717_851_26_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "15,10": {
+  "notes": "n/2 = 1150163255 = 5\u00b7101\u00b72277551; = |Z_2277551 x| Z_505| (k | p-1): fits a Haar graph of that group"
+ },
+ "16,9": {
+  "notes": "n/2 = 144469559 = 13\u00b719\u00b7584897; = |Z_584897 x| Z_247| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 584897 247 5881 found here (round 2; graphs/d16D9_n288939118_meta_584897_247_5881_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "16,10": {
+  "notes": "n/2 = 2059753665 = 3\u00b75\u00b771\u00b71934041; = |Z_1934041 x| Z_1065| (k | p-1): fits a Haar graph of that group"
+ },
+ "3,7": {
+  "rebuilt": "order",
+  "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
+  "construction": "Haar graph of meta 14 6 9 found here (graphs/d3D7_n168_meta_14_6_9_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ },
+ "13,8": {
+  "rebuilt": "order",
+  "check": "build_haar2.py + check_haar_indep.py VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of psl 37 x Z_105 found here (round 2; graphs/d13D8_n5314680_psl_37_105.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
+ }
+}

@@ -1,0 +1,22 @@
+# Cubic vertex-transitive census (Potocnik-Spiga-Verret, all cubic VT graphs on <= 1280 vertices), MathDataHub API
+# https://data.mathhub.info/api/query/cvt?filter=...&properties=order,cvt_index,diameter,graph (queried 2026-10-26).
+# tools/cvt_check.py: own sparse6 decoder, checks cubic + connected + bipartite, diameter = eccentricity of vertex 0 (VT).
+# Bipartite upper bounds (FPV 2012): (3,7) <= 248, (3,9) <= 1016.
+## (3,7): every bipartite cubic VT graph with 169..248 vertices (filter order>168 && order<=248 && is_bipartite; 1,825 graphs, two pages)
+1825 graphs checked (cubic, connected, bipartite); diameters found: {8: 11, 9: 148, 10: 163, 11: 71, 12: 101, 13: 172, 14: 201, 15: 221, 16: 126, 17: 89, 18: 67, 19: 56, 20: 45, 21: 33, 22: 34, 23: 28, 24: 26, 25: 21, 26: 20, 27: 12, 28: 12, 29: 14, 30: 17, 31: 16, 32: 12, 33: 6, 34: 5, 35: 5, 36: 5, 37: 5, 38: 5, 39: 5, 40: 5, 41: 5, 42: 3, 43: 2, 44: 3, 45: 3, 46: 3, 47: 3, 48: 3, 49: 3, 50: 3, 51: 3, 52: 3, 53: 3, 54: 3, 55: 3, 56: 3, 57: 3, 58: 3, 59: 3, 60: 3, 61: 3, 62: 3, 63: 1}
+largest with diameter <= 7: None
+## (3,7): the bipartite ones on 168 vertices
+76 graphs checked (cubic, connected, bipartite); diameters found: {7: 1, 8: 8, 9: 13, 10: 5, 12: 9, 13: 11, 14: 7, 15: 2, 16: 5, 17: 2, 18: 2, 21: 3, 22: 2, 23: 1, 28: 2, 29: 1, 42: 1, 43: 1}
+largest with diameter <= 7: (168, 7, 7)
+## (3,9): bipartite cubic VT graphs with 507..1016 vertices whose stored diameter is <= 11 (676 of 48,938; the stored diameter agreed with ours on all 2,631 graphs checked here, but the other 48,262 graphs were not downloaded)
+676 graphs checked (cubic, connected, bipartite); diameters found: {10: 78, 11: 598}
+largest with diameter <= 9: None
+## (3,9): the bipartite ones on 506 vertices
+54 graphs checked (cubic, connected, bipartite); diameters found: {9: 1, 10: 3, 11: 1, 19: 1, 21: 6, 22: 11, 23: 6, 24: 2, 25: 4, 26: 1, 27: 2, 28: 2, 29: 1, 31: 1, 32: 1, 33: 1, 35: 1, 37: 1, 39: 2, 43: 1, 52: 1, 53: 1, 64: 1, 85: 1, 127: 1}
+largest with diameter <= 9: (506, 9, 9)
+## sha256 of the downloaded pages
+841f6a01fb55e9fb9d0e3c74ce3deb84d4108833fab54d358082e57c811feb79  d7_168.json
+87141fa9c63805e0f4d243965a2e64a7c0180a3febfcdf58ab297b07fd7c58b2  d7_p1.json
+bcea9ca2bfa8b1091c80e02a206c9b0e9b410ec2eaef97ca4e00ad795d7a8888  d7_p2.json
+e406b244b5d95ee7ce08f6d1cf064d7cdd0971ee94e34c01e3947065d8664a2a  d9_506.json
+e446f4f35332d93d200589cb4664d932c601195d9dc76a4e3c0437540fd9acef  d9_le11.json

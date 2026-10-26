@@ -1,0 +1,126 @@
+3.2.3    Large Bipartite Graphs
+
+The table of bipartite graphs is distinguished by the existence of Moore bipartite graphs for di-
+ameters 3, 4 and 6 for most degrees. Apart from this, the situation is not much more favourable
+than for general graphs. Historical overviews for construction of large bipartite graphs can be
+found in the papers [17, 94, 143], and more recently in [54, 115]. Many constructions of large
+bipartite graphs were proposed by Delorme by using graph compounding and other techniques
+[35, 36]. Later, Delorme and Bond [18, 19] provided several constructions exploiting the con-
+cept of partial Cayley graphs. Other constructions for particular degrees or diameters have
+also yielded a record bipartite graph, as in the case of [4, 53, 54].
+Computer search was present in [21, 54, 107, 108], but as in the case of general graphs, the
+majority of the non-Moore record graphs in the table are the fruit of the work of Loz and
+Širáň in [103] described in Section 3.1.3. Clearly, the lift of a bipartite base graph containing
+no loops is also bipartite. Loz and Širáň also considered other necessary conditions for a lift
+graph of a non-bipartite graph to be bipartite.
+As mentioned in Section 3.1.3, Loz and Širáň only considered groups with a small or trivial
+center. In Chapter 4 we present a bipartite graph of degree 11, diameter 3 and order 190,
+which improves the former lower bound for N(11, 3, B) by four vertices. Such graph can be
+obtained alternatively as a lift of a dipole by an abelian group. Somehow surprisingly, Loz
+and Širáň were not able to beat the previous value 186 for this entry in the table of largest
+known bipartite graphs.
+
+
+3.3     The Degree/Diameter Problem for Graphs on Surfaces
+----- (thesis lines 3560-3660: sections 4.8 and 4.9) -----
+
+When ∆ = 4 or ∆ = 5 we have as examples the existing graphs depicted in Figures 3.6 (b)
+and 3.7. It is then natural to ask if similar graphs exist for greater values of ∆.
+Problem 4.1
+Is there a bipartite (∆, 3, −4)-graph with ∆ ≥ 5 such that Γ1 has exactly one connected com-
+ponent G = Φ∆2 −∆−1 and V (G) spans Γ?
+4. On Bipartite Graphs of Defect 4                                                                               64
+
+
+By computer search we obtained that for small degrees (∆ = 6, 7, 8, 9) such graphs do not
+exist.
+Before shifting our interest to a more general problem, we introduce an extension to the
+construction of a Φm . Let ∆ ≥ 4 and a1 , a2 , . . . , a∆−3 be such that 2 ≤ aj ≤ m − 2 and
+aj 6= ak when j 6= k. Then Φm (a1 , a2 , . . . , a∆−3 ) denotes the graph with vertex set V =
+{x0 , x1 , . . . , xm−1 } ∪ {y0 , y1 , . . . , ym−1 } and edge set E = {xi yi , xi yi+1 , xi yi−1 , xi yi+aj |0 ≤ i ≤
+m − 1, 1 ≤ j ≤ ∆ − 3}.
+Problem 4.2
+Given a natural number ∆ ≥ 6, find the largest natural number m(∆) for which there exist
+natural numbers a1 , a2 , . . . , a∆−3 (2 ≤ aj ≤ m−2) such that the graph Φm(∆) (a1 , a2 , . . . , a∆−3 )
+has diameter 3.
+
+If we take a vertex x0 of a Φm(∆) (a1 , a2 , . . . , a∆−3 ) and assume that x0 has neighbors y0 ,
+y1 , y−1 , ya1 , ya2 ,. . ., ya∆−3 then x0 can reach in exactly two steps the – not necessarily
+distinct – vertices x0 , x1 , x−1 , x2 , x−2 , xai , x−ai , xai +1 , x−ai −1 , xai −1 , x−ai +1 and xai −aj , and
+no other vertex. Problem 4.2 amounts to the following congruence-related problem since
+Φm(∆) (a1 , a2 , . . . , a∆−3 ) is vertex-transitive.
+Problem 4.3
+Given a natural number ∆ ≥ 6, find the largest natural number m(∆) for which there exist
+natural numbers a1 , a2 , . . . , a∆−3 such that the collection 0, 1, −1, 2, −2, ai , −ai , ai + 1, −ai −
+1, ai − 1, −ai + 1, ai − aj of (not necessarily distinct) numbers contains a full set of residues
+modulo m(∆).
+
+It is not difficult to verify that m(∆) ≤ ∆2 − ∆ − 1 = (M(∆, 3, B) − 4)/2.
+Since the structure of these graphs strongly resemble the one of circulant graphs, we used an
+adaptation of Algorithm 1 described in Cahper 7 to find, by computer search, the bipartite
+(11, 3, −32)-graphs Φ95 (4, 7, 16, 27, 38, 52, 62, 81), Φ95 (4, 16, 30, 43, 51, 62, 71, 89) and
+Φ95 (11, 15, 21, 28, 37, 40, 45, 63), which turned out to be isomorphic. This discovery implies
+that m(11) ≥ 95 and N(11, 3, B) ≥ 190. Adjacency lists of these graphs are available at [64].
+
+
+4.9      Catalogues and Upper Bounds
+The results in this chapter complete the catalogue of bipartite (∆, D, −4)-graphs with ∆ ≥ 2
+and 5 ≤ D ≤ 187, which in turn completes the catalogue of bipartite (∆, D, −)-graphs with
+∆ ≥ 2, 5 ≤ D ≤ 187, D 6= 6 and 0 ≤  ≤ 4.
+
+Catalogue of bipartite (∆, D, 0)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. For 5 ≤ D ≤ 187
+    and ∆ = 2 the only Moore bipartite graphs are the 2D-cycles, whereas for D = 6 and
+    ∆ ≥ 3 they are incidence graphs of generalized polygons. The existence of such polygons
+    has been shown only when ∆ − 1 is a prime power, which makes this catalogue to remain
+    incomplete. For other values of 5 ≤ D ≤ 187 and ∆ ≥ 3 there are no Moore bipartite
+    graphs.
+Catalogue of bipartite (∆, D, −2)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. The results of
+    [126] combined with [40, 41] showed that there are no such graphs.
+4. On Bipartite Graphs of Defect 4                                                      65
+
+
+Catalogue of bipartite (∆, D, −4)-graphs with ∆ ≥ 2 and 5 ≤ D ≤ 187. The only such
+    graphs is the path of length 5.
+
+Another important result in this chapter is the completion of the catalogue of bipartite
+(3, D, −)-graphs with D ≥ 2 and 0 ≤  ≤ 4.
+
+Catalogue of bipartite (3, D, 0)-graphs with D ≥ 2. The cubic Moore bipartite graphs
+    are the Thomsen graph for D = 2, the unique incidence graph of the projective plane
+    of order 2 for D = 3, the unique incidence graph of the generalized quadrangle of order
+    2 for D = 4, and the unique incidence graph of the generalized hexagon of order 2 for
+    D = 6.
+
+Catalogue of bipartite (3, D, −2)-graphs with D ≥ 2. There are only two non-isomorphic
+    (3, D, −2)-graphs with D ≥ 2; a unique bipartite (3, 2, −2)-graph (the claw graph), and
+    a unique (3, 3, −2)-graph, which is depicted in Figure 3.3 (a).
+
+Catalogue of bipartite (3, D, −4)-graphs with D ≥ 2. There exist no bipartite (3, 2, −4)-
+    graphs. When the diameter is 3, there are four non-isomorphic bipartite (3, 3, −4)-
+    graphs; all of them are shown in Figure 3.4. For diameter 4, there is a unique bi-
+    partite (3, 4, −4)-graph, which is depicted in Figure 3.5. The results presented here,
+    combined with those of [87], assert that there are no bipartite (3, D, −4)-graphs with
+    D ≥ 5, outcome that gives an alternative proof of the optimality of the known bipartite
+    (3, 5, −6)-graph (see [18]).
+
+Our results improve the upper bound on N (∆, D, B) for many combinations of ∆ and D.
+Recall that a bipartite (∆, D, −5)-graph Γ with ∆ ≥ 3 and D ≥ 5 must be regular and
+therefore cannot exist.
+F Proposition 4.13
+For natural numbers ∆ ≥ 3 and D ≥ 8 such that D − 1 is an odd prime power, N(∆, D, B) ≤
+M(∆, D, B) − 6.
+
+F Proposition 4.14
+For natural numbers ∆ ≥ 3 and D ≥ 7 such that ∆ − 1 ≡ 0, 1 (mod p), where p is an odd
+prime factor of D − 1, N(∆, D, B) ≤ M(∆, D, B) − 6.
+
+F Proposition 4.15
+For natural numbers ∆ ≥ 3 and D ≥ 5 such that D ≡ 1, 3, 4, 5 (mod 6), N(∆, D, B) ≤
+M(∆, D, B) − 6.
+
+F Proposition 4.16
+For natural numbers ∆ ≥ 3 and 5 ≤ D ≤ 187 (D 6= 6), N(∆, D, B) ≤ M(∆, D, B) − 6.
+
+F Proposition 4.17
+For any natural number D ≥ 5 (D 6= 6), N(3, D, B) ≤ M(3, D, B) − 6.
+                                                      On Graphs of Defect 2

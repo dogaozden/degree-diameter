@@ -1,0 +1,11 @@
+group agl1 19 x Z_1, N=342, identity 0, H order 19, rows 18, threads 1, setup 0.00s
+start cost=50
+t=30 steps=885868 evals=7086945 cost=6 best=6 T=0.53 (restarts)
+  restarts=0
+t=60 steps=1762446 evals=14099569 cost=11 best=6 T=0.19 (restarts)
+  restarts=0
+t=90 steps=2661059 evals=21288473 cost=10 best=6 T=0.15 (restarts)
+  restarts=0
+t=120 steps=3539210 evals=28313681 cost=15 best=6 T=0.15 (restarts)
+  restarts=0
+RESULT d=6 D=5 group=agl1 19 x Z_1 N=342 best=6 evals=35495825 time=150.0

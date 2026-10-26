@@ -1,0 +1,27 @@
+# (10,8) = 1,176,480: Gomez's Omega H(7) with the thesis's same-label wiring has diameter >= 9.  Witness pair.
+# Build: tools/moore_build.c `moore_build h 7 h7.txt`; omega/omega_eval.c `omega_eval h7.txt ababa LLLLL id 8 one:980400 om7_id.edges`
+#   (labelling "id": every copy marks point t and line t in row t, i.e. sigma = index pairing; types ababa, inner = lines, reading 1).
+# Vertex ids (omega_model.h): copy c local v = c*39216 + v (points 0..19607, lines 19608..39215); hub (t,bar,k) = 980400 + 10t + 5bar + k.
+# Source 980400 = hub (t=0, k=0, unbarred); target 20073 = copy 0, line 465 (copy 0 is not adjacent to hub k=0).
+# Independent checks: research/d12D8/omega/bfs1.c (plain BFS on the written edge list, other session's code) and
+#   omega/omega_verify.py (wiring re-derived from Fig. 2.21 in Python):
+q=7 types=ababa inner=LLLLL lab=id n=1176480 edges=5882400 degree min=10 max=10 sources=1 far(>8)=136485 maxecc=9 witness d(980400,20073)>8
+source 980400: eccentricity 9; counts 1 10 84 636 4509 33628 231315 417481 352331 136485
+d(980400, 20073) = 9
+q-hexagon n=19608 types=ababa inner=LLLLL: vertices 1176480 (= 5(alpha+1)|H| = 1176480), edges expected 5882400, in file 5882400, equal: True
+# The same holds for every pairing sigma and every q in the table (tools/omega_bound.py counting bound; own-12-8 checked Omega H(9) exactly).
+
+# The other D = 8 cells, same wiring (labelling "id", types alternating a/b, inner = lines), one BFS from hub (t=0,k=0)
+# with omega/omega_eval.c (vertex ids as above with the copy size 2n of H(q); hub ids start at 5*alpha*2n):
+# (11,8) = 2,246,940, H(8), alpha = 5 (also checked by bfs1.c on the written edge list and by omega_verify.py):
+q=8 types=ababa inner=LLLLL lab=id n=2246940 edges=12170925 degree min=10 max=11 sources=1 far(>8)=290943 maxecc=9 witness d(1872450,38117)>8
+source 1872450: eccentricity 9; counts 1 10 94 804 6478 54603 429817 777110 687080 290943
+d(1872450, 38117) = 9
+q-hexagon n=37449 types=ababa inner=LLLLL: vertices 2246940 (= 5(alpha+1)|H| = 2246940), edges expected 12170925, in file 12170925, equal: True
+# (12,8) = 4,650,100, H(9), alpha = 6 (own-12-8 also has exact witnesses for Omega H(9)):
+q=9 types=ababab inner=LLLLLL lab=id n=4650100 edges=27900600 degree min=12 max=12 sources=1 far(>8)=666909 maxecc=9 witness d(3985800,67352)>8
+# (14,8) = (15,8) = 14,172,480, H(11), alpha = 7:
+q=11 types=abababa inner=LLLLLLL lab=id n=14172480 edges=99207360 degree min=14 max=14 sources=1 far(>8)=2312157 maxecc=9 witness d(12400920,178765)>8
+# (16,8) = 36,201,060, H(13), alpha = 8:
+q=13 types=abababab inner=LLLLLLLL lab=id n=36201060 edges=289608480 degree min=16 max=16 sources=1 far(>8)=6476340 maxecc=9 witness d(32178720,404811)>8
+# (maxecc = 9 from that hub, so each listed pair is at distance exactly 9.)
