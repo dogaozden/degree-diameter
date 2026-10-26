@@ -213,3 +213,18 @@ The screen medians predicted this ordering only loosely. Logs are in research/st
 
 Second wave (started 02:33 UTC, 3600 s each): PSL(2,13)^2 x Z3 with seed 13 (plain), PSL(2,13)^2 x Z3 with OSTAB=1
 seed 12, SL(2,5)^2 x Z247 (AR 30, untried), PSL(2,9)^2 x Z28 (AR 19, untried).
+
+## Round 3, second wave (finished 03:31 UTC unless noted)
+
+| run | group | N | variant | best cost | evals |
+|---|---|---|---|---|---|
+| psl13x3_s13 | PSL(2,13)^2 x Z3 | 3,577,392 | plain, seed 13 | 13 | 2.9e5 |
+| psl13x3_ostab_s12 | PSL(2,13)^2 x Z3 | 3,577,392 | OSTAB=1, seed 12 | 18 | 2.9e5 |
+| psl9x28_s11 | PSL(2,9)^2 x Z28 | 3,628,800 | plain, AR 19 | 27 | 3.8e5 |
+| sl5x247_s11 | SL(2,5)^2 x Z247 | 3,556,800 | plain, AR 30 | 22 | 4.4e5 |
+
+Third wave (started 03:35 UTC, 3600 s): PSL(2,13)^2 x Z3 plain seed 14; PSL(2,13)^2 x Z3 OSTAB=1 seed 15;
+SL(2,9)^2 x Z7 OSTAB=1 seed 12; PSL(2,7)^2 x Z129 plain seed 11 (AR 50, untried before; started 03:30).
+
+Running tally after 14 anneals above the record: no solution. Best costs by group: PSL(2,13)^2 x Z3 12, 13, 18;
+SL(2,5)^2 x Z247 22; SL(2,9)^2 x Z7 25; PSL(2,9)^2 x Z28 27; PSL(2,7)^2 x Z127 18; SL(2,5)^2 x Z244 35.
