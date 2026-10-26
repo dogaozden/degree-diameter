@@ -1,6 +1,10 @@
 # HANDOFF (table-audit)
 
-Branch `claude/table-audit-1odopy`, draft PR #316. Read AUDIT.md first. cells.csv, cells.md and the marked parts of
+Round 2 (2026-10-26): branch `claude/table-audit-2-p7x6hn`, draft PR #432 (round 1's branch
+`claude/table-audit-1odopy`, PR #316, rebased onto master and continued here). What round 2 added is under
+"Round 2" below and in AUDIT.md §7.
+
+Round 1: branch `claude/table-audit-1odopy`, draft PR #316. Read AUDIT.md first. cells.csv, cells.md and the marked parts of
 AUDIT.md (summary, Loz table) are generated:
 `cd tools && python3 collect_extra.py LOZ_NOTES.json RESULTS.jsonl... && python3 audit_results.py ../extra.json &&
 python3 gen_cells.py && python3 fill_audit.py` (audit_results.py holds the per-cell text; extra.json adds the Haar
@@ -47,3 +51,25 @@ Nothing. Every check in checks/ is complete.
 ## How to rerun everything
 - Small cells: `sh tools/rebuild_small.sh /tmp/ta` (a few minutes) rewrites checks/{moore_pg_w,moore_h_small,small}.txt.
 - Big cells: commands in checks/CHECKS.md (H(13) all-pairs ≈ 11 min on 4 cores; the (16,7) cover ≈ 1–2 h).
+
+## Round 2 (2026-10-26)
+
+Done:
+- D = 8 (Gómez's ΩH_q): `omega/` has the construction with an arbitrary labelling of every copy, an exact evaluator,
+  a symmetric annealer, a profiler, an independent wiring check, Singer-type automorphisms of H(q) and the union
+  bound. Thesis wiring: witness pair at the (10,8) order (checks/witness_omega7_thesis.txt). Free labelling: ΩH₃ has
+  diameter 8 (omega/labs/, checks/omega_labelled.txt). q = 4, 5: not found (lead runs + squad table-audit-2-r1).
+  q = 7: random start measured (6.8 million far pairs from 2,064 hub representatives); not searched to the end.
+  Verdict in omega/NOTES.md and AUDIT.md §7.
+- Literature round 2: lit/LITERATURE2.md, lit/sources2/ (Pérez-Rosés and Feria Purón theses; (13,8) and (16,5) are
+  DGQ's unpublished manuscript, not Loz's search; Delorme–Gómez 2002 still not fetched).
+- Census check: (3,7) = 168 optimal among vertex-transitive graphs (all bipartite cubic VT graphs on 169–248 vertices
+  checked); (3,9) = 506 the largest VT of diameter ≤ 9 (checks/cvt_census.txt, tools/cvt_check.py).
+- cells.csv has a `verdict` column (reproduced / reproduced at a different reading / INVALID / no source found).
+
+Open:
+- ΩH_q at q ≥ 4 with some labelling: needs a structured labelling whose routes nearly tile each copy (omega/NOTES.md
+  explains the routes). q = 4 is the smallest open case and cheap to evaluate (54,600 vertices, about 15 ms per cost
+  with the symmetric sources).
+- Delorme–Gómez 2002 (EJC 23, 539–547) from a normal browser: it may contain (13,8), (16,5) and DGQ's D = 8
+  constructions. Loz's data via web.archive.org (CDX query in lit/LITERATURE2.md).
