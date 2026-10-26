@@ -209,3 +209,20 @@ sends prime-power headers to hcsl/hc2 (prime-only); a prime-power solve must be 
 - Checks: haar_sym's full diameter check (both generators reach all N within 10; normalised s₀ = e); independent
   `tools/hcsl` and `tools/hc2` (run by the queue and again by hand): both VALID, eccA = eccB = 10.
 - Not checked: build_haar2.py (above 20M vertices); the coordinator re-checks.
+
+**Batches 2–4 (2400 s each, seed 4 unless noted, 02:04–05:48 UTC).** Bar for records is now N > 166,398,648 (2N = 332,797,296).
+Solved: only sl 157 × Z_43 (above). Best costs at 2400 s (N in brackets, all above the bar unless marked):
+sl 157×43 solved (cost 0 at 1,553 evals); sl 53×1117 (166.24 M, below bar) 6; psl 59×1621 12; sl 64×637 (pp) 9; psl 127×163 8;
+psl 151×97 6; sl 49×1417 (pp) 12; psl 79×679 10; sl 59×811 (ORBW=3) 22 at 300 s, 12 default-weight round 2;
+sl 53×1123 15; psl 59×1627 12; psl 61×1471 18; sl 47×1609 9; sl 61×739 12; psl 61×1477 15; sl 59×817 9;
+psl 97×367 8; psl 109×259 4 (cost 4 at 1,773 s, not solved at 2,400 s);
+psl 103×307 9. The seed-5 and seed-6 reruns of psl 109×259, psl 97×367, psl 151×97 are queued at the end.
+
+**Memory.** Jobs above n ≈ 850 with psl ran 3.2–4+ GB each, and three runs were OOM-killed (psl 73×859 ORBW=3, psl 71×937,
+psl 67×1117) when four of them ran together on 16 GB. The pool now reads `# mem=6` for these jobs and runs at most 3 at once
+(`spool_r4/P` = 3). The killed jobs are re-queued (18, 21, 23).
+
+**Read-out so far.** One solve in about 24 jobs above 166.08 M; median best cost ≈ 9. Round 2's solves came at μ ≈ 25 with
+cost 3 seen before the solve, while at μ ≈ 28 here the cost stalls at 6–12. The only solve at N ≥ 166.1 M was a group that
+had not been tried before. So new groups are the main source of a solve; repeat seeds on cost-4 groups (psl 109×259) are the
+second.
