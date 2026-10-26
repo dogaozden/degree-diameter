@@ -230,4 +230,15 @@ Record to beat: **127,296** (N = 63,648). A new record needs N ≥ 63,649. Start
 ### Exhaustive pass started: psl 11 × 97 (N = 64,020, μ = 31.2, |Fix| = 5, α = conj(mat(5,2,6,7)) × (z ↦ 35 z))
 
 Command: `ORBIT="3 2 0" EXHAUST="p 4 15 <prefix>" haar_sym 6 9 1 1 8 /dev/null psl 11 97`, parts p = 0..3, four
-processes. (Result to be added below.)
+processes.
+
+**Result: no solution.** All four parts finished (21,338 orbits, 227,644,453 pairs in total, about 42 min per part):
+`solutions=0` in every part. The histogram lists only the cost-63 bin, which holds pairs aborted above the bound of 15
+(the artifact noted in round 2). So no pair scored below 15, and the exact minimum is at least 15. The 1M-sample
+minimum was 18, so the full minimum is probably 18. psl 11 × 97 is closed. Logs: `runs/d6D9_r3/exh_psl_11_97_p{0..3}.log`.
+
+### Exhaustive pass started: psl 11 × 103 (N = 67,980, μ = 51.6, |Fix| = 5, α = conj(mat(5,2,6,7)) × (z ↦ 46 z))
+
+Same command with `psl 11 103`, prefix `runs/d6D9_r3/exh_psl_11_103`. 22,658 orbits, 2.567·10⁸ pairs, four parts.
+The 1M-sample minimum was 12 (17 samples at cost 12–14). Its N is above the record's, so a solution there would be
+a new record too. (Result to be added below.)
