@@ -63,7 +63,7 @@ Read research/squads/cells/d10D5.md "Resume 4" first. Two model fixes matter for
    as routed (lns2, lns3, dmfast_fd.c).
 Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "FDSET" (true cost; exact BFS at 0).
 
-### State at ~01:30 UTC Oct 26 (resume 4)
+### State at ~01:10 UTC Oct 26 (resume 4)
 
 - Best verified: still **4,840**.
 - {1,6,5} (4,842 candidate): one bad pair left, (283, 339), state r4/runs/H5best_c.sol with STATE r5/S5.sol, FDSET
@@ -72,3 +72,18 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
   sigma is nearly frozen: single swaps that would route a newly unmixed pair cost +2..+29 in coverage/D1 (measured);
   hub rewires do not repair that damage.
 - Fresh pipelines with the corrected, hub-aware tools (r4/fresh.sh) started for {1,6,5} (FR5) and {1,6,7} (FR7).
+
+### Next steps (from resume 4)
+
+1. The third conversion is stuck on the converted flag's own freed vertices ("hard core": their pairs have 7 geodesics
+   and no route, so only nu can mix them). Best state: {1,6,5} with one bad pair (r4/runs/H5best_c.sol + r5/S5.sol).
+   It is exactly isolated for nu (no fix with <= 8 flips; no fix inside a 600-flag SAT ball) and sigma is rigid.
+   More of the same compute has low odds; fresh basins (r4/fresh.sh, then r4/alt.sh) are the cheapest retry.
+2. Most promising new lead: delete an ORDINARY flag edge (x, L) far from the freed flags and add one hub per fibre
+   (+2, no hard core; r4/edgedel.py measures the damage: ~73 coset-1/2 pairs of three D1-type families, ~3 coset-0
+   pairs). Needs: the three D1-type families as a function like d1.py, in lns2/lns3 step() and in dmhub2.c's
+   coverage annealing (fdrun), plus the extra deleted flag in the coset-0 tables (lns3 ISDEL/dele, dmfast delf).
+3. Ruled out this session: symmetric (order-8 equivariant) conversions (no equivariant sigma exists), hub rewires as
+   repair moves, WalkSAT/reheating/ejection chains/best-flip temperatures (squad round 5, r5/scoreboard.jsonl).
+4. Lessons for every tool here: score states with r5/score.sh (true cost); never trust a pipeline "coverage 0"
+   produced before the coverage fix; kill processes by PID, never with pkill -f (it can match your own shell).
