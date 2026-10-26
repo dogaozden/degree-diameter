@@ -136,3 +136,14 @@ in order of N. Candidate screen and run logs are in the session scratchpad; this
 - Queue 2 result (1200 s, seed 2, 8 runs): no solve. Cost 1 after 20 min: 982×49 (r 3, N 48,118), 1847×26 (r 123,
   N 48,022), 1143×42 (r 47, N 48,006), 491×98 (r 3, N 48,118). Cost 2: 3694×13, 2667×18, 2189×22.
 - Queue 3 (running): 1800 s, seed 3, the four cost-1 candidates above.
+
+## NEW RECORD (round 3, second): (5,10) 96,044 vertices
+
+- Haar graph of **Z1847 ⋊₁₂₃ Z26** (metacyclic, N = 48,022, μ ≈ 33.1), d = 5, D = 10, connection set from the seed-3 run
+  (1800 s budget, solved at 1,562 s, 15.8M evals). File `research/frontier/sols/d5D10_n96044_haar_meta1847_26_123.sol`.
+  - `build_haar2.py`: VALID, n = 96,044, 240,110 edges, 5-regular, bipartite, ecc 10 both sides.
+  - all-pairs BFS (`apsp.c`, no symmetry assumed): VALID, diameter 10.
+- Same queue, second solve: Z1143 ⋊₄₇ Z42 (N = 48,006, n = 96,012), seed 3, 1,309 s. File
+  `research/frontier/sols/d5D10_n96012_haar_meta1143_42_47.sol`. Both checkers VALID.
+- New bar: N > 48,022. The solves came from re-running candidates that had stalled at cost 1 for 20 minutes with another
+  seed for 25–30 minutes: the long, heavy-tailed runs pay off, not the screen alone.
