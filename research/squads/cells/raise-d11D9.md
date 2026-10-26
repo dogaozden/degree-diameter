@@ -185,3 +185,33 @@ groups as not run.
   (b) sl 59 × Z43 (μ 30.2) and prod sl 4 × sl 13 × Z67 need more than 8000 s; (c) prod sl 9 × sl 23 × Z1 (μ 26.5) stalled at 14 with |Fix| = 431: a
   cyclic factor (or k = 5) is probably needed there.
 - Not tried in round 2: the faster orbit evaluation (STRUCTURE §7.4), k = 5 at this order, and groups with n in 2 or more primes ≡ 1 (mod 3).
+
+---
+
+# Round 3 (branch claude/d11d9-record-round3-ffo51a, started 2026-10-26 01:19 box time)
+
+Job "raise3-11-9". The brief's 16,792,080 is stale and so is the records table on master (it still shows 16,792,080):
+round 2 verified **17,323,152** (sl 43 × Z109, |G| = 8,661,576, ORBW=3, build_haar2 VALID). The bar for round 3 is
+therefore **|G| > 8,661,576** (2|G| > 17,323,152). The round-2 branch is merged into this branch, so its solution file
+(research/frontier/sols/d11D9_sl_43_109_orbw3_s3.txt) and LOG lines are here.
+
+## Candidates above the bar (orb_screen --list, window 8,661,577 … 8,900,000, k = 3, m = 3, f = 2)
+
+Odd D: PSL(2,q) has ~q²/2 involutions, which costs misses (STRUCTURE §2.6). So the candidates are SL-type, or
+products where the small factor is A4 = PSL(2,3) (12 elements, 3 involutions) times SL(2,q), which has few involutions.
+Lowest μ among these:
+
+| group | |G| | μ | round-2 status |
+|---|---|---|---|
+| prod psl 3 × sl 13 × Z331 (A4 × SL(2,13)) | 8,674,848 | 23.7 | not tried |
+| prod psl 3 × sl 47 × Z7 (A4 × SL(2,47)) | 8,717,184 | 25.4 | not tried |
+| sl 41 × Z127 | 8,747,760 | 26.6 | ORBW=1: best 8 (513k evals) |
+| prod sl 4 × sl 13 × Z67 | 8,779,680 | 28.0 | ORBW=1: best 6 (267k evals) |
+| sl 59 × Z43 | 8,828,760 | 30.2 | ORBW=3: best 6 (465k evals) |
+
+Not repeated: prod sl 5 × sl 7 × Z217 (best 36), prod sl 9 × sl 23 × Z1 (best 14, |Fix| 431), prod sl 3 × sl 11 × Z277
+(best 78), sl 29 × Z361 (best 30 in round 1).
+
+## Wave 1 (ORBW=3, seed 1, 7200 s each, THREADS=1, 4 at a time; queue files in scratchpad, outputs in runs/r3/)
+
+- started 01:19 (box time): the four rows above, all with `ORBIT="3 3 2" ORBW=3 K=8`.
