@@ -217,7 +217,11 @@
   "flag": "holder's construction lost; order reproduced"
  },
  "13,9": {
-  "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277"
+  "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 14047 1815 135 found here (round 2; graphs/d13D9_n50990610_meta_14047_1815_135_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "13,10": {
   "notes": "n/2 = 308665468 = 2^2\u00b7107\u00b7721181; = |Z_721181 x| Z_428| (k | p-1): fits a Haar graph of that group"

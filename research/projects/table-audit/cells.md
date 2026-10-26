@@ -90,7 +90,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (13,6) | 374,452 | Delorme-Farhi duplication | reproduced | apsp_mt.c VALID | 388,972 |  |
 | (13,7) | 1,062,936 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 1,064,472 |  |
 | (13,8) | 5,314,680 | Delorme, Gomez, Quisquater | no source found |  | 6,999,552 | no traceable construction |
-| (13,9) | 50,990,610 | Loz | no source found |  | 67,742,688 | no traceable construction (data lost) |
+| (13,9) | 50,990,610 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 67,742,688 | holder's construction lost; order reproduced |
 | (13,10) | 617,330,936 | Loz | no source found |  | 677,714,400 | no traceable construction (data lost) |
 | (14,3) | 366 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |
 | (14,4) | 4,760 | bipartite Moore graph | reproduced | apsp.c VALID |  |  |

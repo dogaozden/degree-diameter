@@ -757,10 +757,10 @@
  },
  "13,9": {
   "source": "wiki: Loz, project of Loz, Perez-Roses, Pineda-Villavicencio (voltage lifts; DS14v2 ref. [240]); thesis restricted, data page gone",
-  "construction": "no voltages, groups or base graphs published",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction (data lost)",
+  "construction": "Haar graph of meta 14047 1815 135 found here (round 2; graphs/d13D9_n50990610_meta_14047_1815_135_x1.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "n/2 = 25495305 = 3\u00b75\u00b711^3\u00b71277; round 2: bold (Loz project) in Perez-Roses 2012 Table 5.1; no groups or voltages survive there"
  },
  "13,10": {
