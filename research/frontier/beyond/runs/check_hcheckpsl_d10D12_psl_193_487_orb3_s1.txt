@@ -3,3 +3,8 @@ command: ./bin/hcheckpsl runs/d10D12_psl_193_487_orb3_s1.out
 start: 2026-10-26T15:41:26Z
 sha256 61bda6d680d612f4668db8482bbd8637b8bfa11fcff27378e7045ee709bef12b  ./bin/hcheckpsl
 sha256 8fd2b5d2da26e07db0d3e80943004c5921c04537c2c2b43bbf29b18433632736  runs/d10D12_psl_193_487_orb3_s1.out
+# threads=2 bfsA=272.583s bfsB=446.291s total=718.874s maxrss=838MB
+VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768
+ecc(e,A)=12 ecc(e,B)=12
+exit: 0
+end: 2026-10-26T15:53:25Z (719 s)

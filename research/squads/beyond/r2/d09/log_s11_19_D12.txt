@@ -1,0 +1,8 @@
+group sl 11 x Z_19, N=25080, identity 2090, H order 57, rows 440, threads 1, setup 0.00s
+wide rows: HW order 228, rows 110, setup 0.02s
+alpha: conj by mat(7,8,8,3) (index 932), z -> 7 z on Z_19
+ORBIT k=3 m=1 f=1: |Fix(alpha)| = 11 (+e); mu = 0.63, mu/k = 0.21, fixed-point misses ~ 0.35
+start cost=267
+RESULT d=4 D=12 group=sl 11 x Z_19 N=25080 best=0 evals=89 time=0.0 orbit k=3 m=1 f=1 fix=11
+full diameter check: OK
+wrote sol_s11_19_D12.txt

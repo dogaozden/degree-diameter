@@ -52,6 +52,8 @@ without its "routes"; dmfast (research/d10D7/dmfast.c) with NOROUTE=1 anneals ex
 |---|---|---|---|---|---|
 | (18,5) | 13 | 2 | **47,600** | mdm/nu_q13_s2.txt (dmfast seed 2, 16,837 flips, 8 s) | apsp VALID, diameter 5, 18-regular |
 | (20,5) | 13 | 3 | **66,640** | same ν | apsp VALID, diameter 5, 20-regular |
+| (19,5) | 16 | 1 | **52,428** | DM_D5's k = 1 case; ν, σ from squad r1/c05 (dmfast with routes) | apsp VALID |
+| (13,5) | 8 | 2 | **11,700** | squad r2/d05: ν, σ_1, σ_2 annealed with a route-aware cost (mdm8.c) | apsp VALID + bfs_all (all pairs); old record 11,486 |
 
 Random ν fails (A) on a fraction 2^−q of the opposite pairs (641 of 5,228,860 at q = 13), against about q⁴ free
 parities, so (A) is easy for q ≥ 9 or so. At q = 8 (W(8), k = 2 would give (13,5) ≥ 11,700 against our 11,486) the
@@ -62,4 +64,9 @@ python3 build_mdm.py gq/gq_q13.bin nu_q13_s2.txt K 1 OUT.edges` (K = 2 or 3; σ_
 seed), then `apsp OUT.edges 14+2K 5`.
 
 Family values (Δ = q+1+2k, 4(2k+1)(q+1)(q²+1)): with q = 13 the same ν gives (16,5) 28,560, (18,5) 47,600, (20,5) 66,640.
-In the old table range it beats a record only at (13,5) (q = 8, k = 2: 11,700 > 11,486), if (A) holds on W(8).
+In the old table range it beats a record only at (13,5): q = 8, k = 2 gives 11,700 > 11,486 (lab) > 11,480 (2013 table).
+On W(8) pure (A) stalls near 20 failing pairs (director's dmfast runs), but routes through the matchings (walks of
+length ≤ 4 with jump sum ≡ 0 mod 5 and at least one jump reach both Z2 classes of coset 0) cover them: squad card r2/d05
+annealed ν, σ_1 and σ_2 together against that cost and reached 0 far pairs in about two minutes. The graph is 13-regular
+with diameter exactly 5 (graphs/d13D5_n11700_W8_2dm_Z10.edges.gz; checks/d13D5_n11700_W8_2dm_Z10.check.txt; rebuilt
+identically from research/squads/beyond/r2/d05/st_run2.txt).

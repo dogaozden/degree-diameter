@@ -1,2 +1,8 @@
 15:41:00 start 10 12 psl 193 487 orbit 3 3 1
 RESULT d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768 best=0 evals=5 steps=1 time=22.6 orbit k=3 m=3 f=1 mu=3.05
+VALID d=10 D=12 group=psl 193 x Z_487 N=1750488384 vertices=3500976768
+ecc(e,A)=12 ecc(e,B)=12
+saved ../sols/d10D12_psl_193_487_orb3_s1.txt
+15:53:25 end
+15:53:25 start 17 10 psl 313 229 orbit 3 5 2
+RESULT d=17 D=10 group=psl 313 x Z_229 N=3511026168 vertices=7022052336 best=0 evals=9 steps=2 time=125.6 orbit k=3 m=5 f=2 mu=3.01

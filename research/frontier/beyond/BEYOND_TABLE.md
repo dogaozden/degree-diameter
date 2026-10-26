@@ -60,7 +60,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (20,9) | open | | 35,854,188,636 | | | Haar size law at mu = 5: 2N = 1.88e+09 |
 | (20,10) | open | | 681,229,584,194 | | | Haar size law at mu = 5: 2N = 3.12e+10 |
 | (3,11) | **1,008** | 24.62 | 4,088 | Haar graph of PSL(2,7) x Z3, S = {e, x, y} | apsp: research/squads/beyond/r1/c11/check_n1008.txt; director re-run VALID | Haar size law at mu = 5: 2N = 908 |
-| (4,11) | **17,600** | 9.94 | 177,140 | metacyclic Haar graph Z440 x| Z20 (r = 107) | apsp (c13 and director) | Haar size law at mu = 5: 2N = 2.29e+04 |
+| (4,11) | **18,480** | 10.43 | 177,140 | Haar graph SL(2,11) x Z7, S = {e} + 1 orbit of size 3 (haar_sym, squad r2/d09); earlier 17,600 metacyclic (r1/c13) | apsp (d09 and director: checks/d4D11_n18480_sl11xZ7.apsp.txt), build_haar2.py, haarcheck_sl | Haar size law at mu = 5: 2N = 2.29e+04 |
 | (5,11) | **158,928** | 5.68 | 2,796,196 | Haar graph SL(2,43), S = {e} + 2 orbits of size 2 | build_haar2.py (c14 and director) | Haar size law at mu = 5: 2N = 2.74e+05 |
 | (6,11) | **659,568** | 2.70 | 24,414,056 | Haar graph SL(2,13) x Z151, S = 2 free orbits of size 3 | build_haar2.py (c14 and director) | Haar size law at mu = 5: 2N = 2e+06 |
 | (7,11) | **10,648,176** | 7.34 | 145,118,816 | Haar graph SL(2,43) x Z67, S = {e} + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d7D11_sl_43_67_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.05e+07 |
@@ -68,9 +68,9 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (9,11) | open | | 2,454,267,020 | | | Haar size law at mu = 5: 2N = 1.49e+08 |
 | (10,11) | **445,709,568** | 5.68 | 7,845,264,896 | Haar graph SL(2,193) x Z31, S = {e} + 3 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d10D11_sl_193_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 4.45e+08 |
 | (3,12) | **1,320** | 16.12 | 8,184 | Haar graph of PSL(2,11), S = {e, a, b} | apsp: c12/checks/apsp_3_12_n1320_psl2_11.txt; director re-run VALID | Haar size law at mu = 5: 2N = 1.61e+03 |
-| (4,12) | **48,000** | 9.03 | 531,434 | metacyclic Haar graph Z1200 x| Z20 (r = 413) | apsp (c13 and director) | Haar size law at mu = 5: 2N = 6.1e+04 |
+| (4,12) | **50,160** | 9.44 | 531,434 | Haar graph SL(2,11) x Z19, S = {e} + 1 orbit of size 3 (haar_sym, squad r2/d09); earlier 48,000 metacyclic (r1/c13) | apsp (d09 and director: checks/d4D12_n50160_sl11xZ19.apsp.txt), build_haar2.py, haarcheck_sl | Haar size law at mu = 5: 2N = 6.1e+04 |
 | (5,12) | **229,824** | 2.05 | 11,184,804 | Haar graph PSL(2,3) x PSL(2,7) x Z57 | build_haar2.py (c14 and director) | Haar size law at mu = 5: 2N = 9.74e+05 |
-| (6,12) | open | | 122,070,306 | | | Haar size law at mu = 5: 2N = 8.91e+06 |
+| (6,12) | **8,924,736** | 7.31 | 122,070,306 | Haar graph SL(2,47) x Z43, S = 2 free orbits of size 3 (haar_sym ORBIT 3 2 0) | hcheck5 and build_haar2.py VALID (checks/d6D12_sl_47_43_orb3f0_s1.check.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
 | (7,12) | **56,297,592** | 6.47 | 870,712,928 | Haar graph PSL(2,163) x Z13, S = {e} + 2 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d7D12_psl_163_13_orb3_s1.txt) | Haar size law at mu = 5: 2N = 5.6e+07 |
 | (8,12) | **268,496,208** | 5.82 | 4,613,762,394 | Haar graph SL(2,163) x Z31, S = {e} + 1 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d8D12_sl_163_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 2.7e+08 |
 | (9,12) | **1,055,973,600** | 5.38 | 19,634,136,204 | Haar graph SL(2,199) x Z67, S = {e} + 2 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d9D12_sl_199_67_orb3_s1.txt) | Haar size law at mu = 5: 2N = 1.06e+09 |
