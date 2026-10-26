@@ -1,0 +1,29 @@
+# raise-d4D10: notes (Haiku worker, job "raise3-4-10", round 3)
+
+Goal: beat 12,416 at (Δ, D) = (4, 10). Table 11,748 (Loz); Moore bipartite 59,048.
+Record: Haar graph of Z97 ⋊19 Z64, N = 6208, n = 12,416 (research/lifts/sols/d4D10_n12416_haar_meta97_64_19.txt).
+
+## Where rounds 1 and 2 stopped (branches claude/raise-d4d10-haar-l3s318 and claude/raise-d4d10-haar-round2-07skbp)
+- About 150 Haar anneals (300 s, plus 1200–2400 s re-anneals) over N = 6209–6560, metacyclic split groups × Z_n. No solve.
+- Closest: N = 6394 meta 139 46 6 1, meta 139 23 6 2, meta 278 23 45 1 at cost 1 (2400 s, seeds 2–3).
+- Round 2 left three untried routes: (a) longer runs at N = 6394; (b) non-Haar lift.c at n > 12,416 (round 1's K_{4,4}
+  lifts were at cost ~1000 after 63 s, so this is far off); (c) group families outside the haar_gen3 grammar.
+
+## Round 3: what this round tried
+Two families that the grammar could not reach before, and one check that closed a route.
+
+1. **Orbit-symmetric S with k = 3 (ORBIT="3 1 1" in haar_sym): closed, no solve.** S = {e} ∪ one α-orbit of size 3.
+   RANDORB (20,000 random orbits per group, which covers the whole space of ~N/3 orbits) on every round-2 candidate
+   in 6209–6480 (17,627 specs; the sweep was stopped once the picture was clear, and the non-metacyclic specs were rerun
+   in full). Best exhaustive minimum: psl 7 × Z37 (N = 6216) at 18 uncovered; sl 5 × Z52 (N = 6240) at 186; every
+   metacyclic group ≥ 306. Cost 0 needs 0. This matches STRUCTURE.md's "one orbit is too few" lesson for Δ = 4.
+   Scripts: research/squads/cells/raise-d4D10-round3/tools/orb_screen.sh. Logs: .../logs/scr_k3f1_nonmeta.tsv.
+
+2. **Non-split metacyclic groups (new family): screen and anneal.** Groups Z_m . Z_k with b a b⁻¹ = a^r and b^k = a^s,
+   s ≠ 0 (not split, so not in the meta grammar). Checked: with s = 0 the new code reproduces haar_gen3's split meta
+   screen exactly (same min/p10/median). Tools: research/squads/cells/raise-d4D10-round3/tools/haar_nm.c (haar_gen3 plus
+   the G_NMETA type, group axioms checked at parse time), gen_nmeta.py (candidate list; normal form s = divisor of m,
+   non-split iff gcd(S_r, m) ∤ s), screen_nm.py (RANDSAMPLE 200, round-2 rule).
+   Screen: 23,377 candidates in N = 6209–6400. Best min 9–13 (e.g. 6328 nmeta 226 28 117 113 1: min 9, median 293),
+   comparable to the best split groups (min 10–13). Log: logs/screen_nm_6209_6400.tsv.
+
