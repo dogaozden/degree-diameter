@@ -1012,5 +1012,12 @@ int main(int argc, char **argv) {
             fclose(f); printf("wrote %s\n", out);
         }
     }
+    if (best > 0 && getenv("SAVEBEST")) {   /* hunt-d5: keep near misses */
+        char fn[1100]; snprintf(fn, sizeof fn, "%s.best%lld", out, best);
+        FILE *f = fopen(fn, "w");
+        if (f) { fprintf(f, "%d %d %s n %d N %d\n", d, D, Q->spec, ncyc, N);
+            for (int i = 0; i < d; i++) { char buf[1000]; desc_elem(S[i], buf); fprintf(f, "%s\n", buf); }
+            fclose(f); printf("wrote near miss %s\n", fn); }
+    }
     return best == 0 ? 0 : 1;
 }
