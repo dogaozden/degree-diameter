@@ -11,6 +11,10 @@ with ~48 Haikus per round do better than the usual Opus + 8 Haikus? Goal: beat t
 work (to 06:40 UTC) found no valid graph above any of the four table values. Results per Haiku-hour: 0 records,
 20 kept findings, about 1.5 per Haiku-hour (section 1).
 
+The 13.7 Haiku-hours are a lower bound: six cards (c34, c35, d02, d03, d11, k10) kept running after their round was read,
+for 0.9-2.1 hours each (about 9 Haiku-hours in all), and reported only after round 5; none changed a result. The true
+total is between about 14 and 23 Haiku-hours, so kept findings were 0.9-1.5 per Haiku-hour.
+
 The earlier Opus + 8-Haiku squads did find records (exp2-squad: three D = 7 cells; d12D7: the (12,7) record via a hub
 group from a squad card), but in cells where a construction had headroom. The four cells here sit at or just above what
 the natural algebraic families can reach (below), so the record count does not separate "48" from "8". What the round
