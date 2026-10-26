@@ -1,0 +1,7 @@
+# round 3 queue (job raise3-14-10). Start record 1,350,537,864 = N 675,268,932 (psl 157 x Z349). Only N above it.
+# order: lowest mu first, then lowest |Fix(alpha)| (the tool prints fix without the identity: PSL(2,q) gives (q-1)/2 - 1 for q = 1 mod 3, (q+1)/2 - 1 for q = 2 mod 3)
+# one run at a time (16 GB box, THREADS=2 ~ 13 GB RSS at N ~ 6.8e8)
+3 4 2 THREADS=2 | 14 10 5400 2 8 psl 131 601
+3 4 2 THREADS=2 | 14 10 5400 2 8 psl 113 937
+3 4 2 THREADS=2 | 14 10 5400 2 8 psl 149 409
+3 4 2 THREADS=2 | 14 10 3600 3 8 psl 163 313
