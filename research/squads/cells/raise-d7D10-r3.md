@@ -50,3 +50,17 @@ graph with N > 1,149,120.
 - Checkpoint 2026-10-26 (t ≈ 2160 s, about 3.3 M evals each): best 9 for seeds 41, 42, pgl RESTART; the ORBW=3 run (seed 45) has best 6 (energy 9). No solve.
 - Checkpoint 2026-10-26 (t ≈ 3810 s, about 6 M evals each): best 9 (seeds 41, 42), pgl 19 × Z169 RESTART now best 8, ORBW=3 (seed 45) best 6. No solve.
 - Checkpoint 2026-10-26 (t ≈ 5640 s, about 9 M evals each): ORBW=3 seed 45 best 6, pgl RESTART best 8, seeds 41/42 best 9. No solve.
+
+## Round 3, batch 1 results (6900 s each, single thread, ~11 M evals each, no solve)
+
+| group | N | μ | options | best cost |
+|---|---|---|---|---|
+| sl 19 × Z169 | 1,155,960 | 33.1 | seed 41, plain | 9 |
+| sl 19 × Z169 | 1,155,960 | 33.1 | seed 42, plain | 9 |
+| pgl 19 × Z169 | 1,155,960 | 33.1 | seed 43, RESTART=1 | 8 |
+| sl 19 × Z169 | 1,155,960 | 33.1 | seed 45, ORBW=3 | 6 |
+
+Logs: `research/structured/runs/d7D10_r3_*.log`. ORBW=3 gave the lowest floor of the batch (6, against 9 for plain seeds).
+Round 2 had the plain sl 19 × Z169 at 5 after 41 min (seed 11), so the floor is a seed effect at about 5–9.
+
+Batch 2 (started after the commit above): sl 19 × Z169 with ORBW=3 (seeds 51, 52), ORBW=2 (seed 53), pgl 19 × Z169 with ORBW=3 (seed 54), 6600 s each.
