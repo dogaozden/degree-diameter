@@ -118,3 +118,12 @@ tools/jexact.py; positive control on a 506 group recovers the known solution). T
 seeds: best cost 2 three times on 610, 4 on 609) were replaced by complete pattern-by-pattern searches of both groups
 (21,279 and 596 pattern classes). Also: the machine had autogroup scheduling on (each shell its own group, so nice
 levels did nothing across jobs); turned off at 16:14.
+
+## 2026-10-26, hunt-d5 director, 16:10–18:37: exact certificates; job closed
+
+No more squad rounds (the remaining leads were exact searches). Coset-pattern searches (`haar5 prod`, end-to-end
+checked against brute force on six groups) prove that SmallGroup(609,1), (610,1), (610,2), (615,1), (618,1) and (618,2)
+have no (7,5) Haar graph; SmallGroup(612,5) has none in its 29,274 best pattern classes. `haar5 exhp` completes
+(5,5) for every group of order 193–255 (1,028 groups, none). `haar5 cert` completes (6,5) for every group of order
+343–351 and 353–359 (75 groups) and 360/51, 360/88, 360/136 (none). Last (9,5) farm on (Z31 ⋊ Z15) × Z3 (1395): 1,532
+seeds, cost 2 in 12, no 0. Final: (9,5) 2,758; details and stop reasons in research/squads/cells/hunt-d5.md.
