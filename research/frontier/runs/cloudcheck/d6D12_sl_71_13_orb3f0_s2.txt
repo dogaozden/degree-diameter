@@ -1,0 +1,18 @@
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== build_haar2.py research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt /tmp/e.txt: exit=0 peak_rss_mb=540 ==
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 9303840 edges = 27911520 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 087241314bb7046ecbb0bab62ae2a6caa02ec840c5c0b9c59913f58b6c5cc8e6
+VALID d=6 D=12 group=sl 71 x Z_13 N=4651920 vertices=9303840
+== check_haar_indep.py research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt: exit=0 peak_rss_mb=319 ==
+file research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt
+header: d=6 D=12 spec=sl 71 NCYC=13 N=4651920
+group order |G|=357840 (factors [357840]), x Z_13 -> 4651920; vertices 2N=9303840
+distinct generators (as full group elements): 6 of d=6
+permutations built (1s)
+BFS from A: ecc=12 reached 9303840 of 9303840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3750, 18720, 92808, 443138, 1791734, 3837020, 2763472, 352261]
+BFS from B: ecc=12 reached 9303840 of 9303840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3750, 18720, 92808, 443104, 1791734, 3837126, 2763472, 352189]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=12 eccA=12 eccB=12 n=9303840 (4s)
+
