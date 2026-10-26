@@ -5,7 +5,7 @@
 DIR=$1; LOG=$2; GAPLOG=$3; export MAXFIX=${4:-99}; MAXCAND=${5:-20000000}
 T=$(dirname "$0")
 while true; do
-    f=$(ls "$DIR"/*.txt 2>/dev/null | head -1)
+    f=$(ls "$DIR"/${PATTERN:-}*.txt 2>/dev/null | head -1)
     if [ -z "$f" ]; then
         if grep -q ALLDONE "$GAPLOG" 2>/dev/null; then break; fi
         sleep 5; continue

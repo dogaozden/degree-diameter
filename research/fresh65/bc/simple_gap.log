@@ -1,0 +1,89 @@
+Syntax warning: Unbound global variable in scan_simple.g:20
+    cls := Filtered(ConjugacyClassesSubgroups(G), c -> Index(G, Representative\
+(c)) >= 343 and Index(G, Representative(c)) <= IMAX);
+                                                             ^
+Syntax warning: Unbound global variable in scan_simple.g:20
+    cls := Filtered(ConjugacyClassesSubgroups(G), c -> Index(G, Representative\
+(c)) >= 343 and Index(G, Representative(c)) <= IMAX);
+                                                                              \
+                      ^
+GROUP PSL2_13 |G|=1092 classes=1
+EXPORT cs_PSL2_13_h3_L1_R1 index=364 cand=7620 C3/C3
+GROUP PGL2_13 |G|=2184 classes=3
+EXPORT cs_PGL2_13_h6_L1_R1 index=364 cand=60 C6/C6
+EXPORT cs_PGL2_13_h6_L1_R2 index=364 cand=64 C6/S3
+EXPORT cs_PGL2_13_h6_L1_R3 index=364 cand=60 C6/S3
+EXPORT cs_PGL2_13_h6_L2_R2 index=364 cand=120 S3/S3
+EXPORT cs_PGL2_13_h6_L2_R3 index=364 cand=60 S3/S3
+EXPORT cs_PGL2_13_h6_L3_R3 index=364 cand=144 S3/S3
+GROUP PSL2_16 |G|=4080 classes=1
+EXPORT cs_PSL2_16_h10_L1_R1 index=408 cand=7 D10/D10
+GROUP PSL2_17 |G|=2448 classes=1
+EXPORT cs_PSL2_17_h6_L1_R1 index=408 cand=92 S3/S3
+GROUP PSL2_19 |G|=3420 classes=1
+SKIP cs_PSL2_19_h9_L1_R1 index=380 cand=0 C9/C9
+GROUP PGL2_11 |G|=1320 classes=0
+GROUP PGL2_17 |G|=4896 classes=2
+EXPORT cs_PGL2_17_h12_L1_R1 index=408 cand=13 A4/A4
+EXPORT cs_PGL2_17_h12_L1_R2 index=408 cand=4 A4/D12
+EXPORT cs_PGL2_17_h12_L2_R2 index=408 cand=10 D12/D12
+GROUP PGL2_19 |G|=6840 classes=4
+SKIP cs_PGL2_19_h18_L1_R1 index=380 cand=0 C18/C18
+SKIP cs_PGL2_19_h18_L1_R2 index=380 cand=0 C18/D18
+SKIP cs_PGL2_19_h18_L1_R3 index=380 cand=0 C18/D18
+SKIP cs_PGL2_19_h18_L2_R2 index=380 cand=0 D18/D18
+SKIP cs_PGL2_19_h18_L2_R3 index=380 cand=0 D18/D18
+SKIP cs_PGL2_19_h18_L3_R3 index=380 cand=0 D18/D18
+EXPORT cs_PGL2_19_h19_L4_R4 index=360 cand=18564 C19/C19
+GROUP PSL2_23 |G|=6072 classes=0
+GROUP PSL2_25 |G|=7800 classes=2
+EXPORT cs_PSL2_25_h20_L1_R1 index=390 cand=5 C5 : C4/C5 : C4
+SKIP cs_PSL2_25_h20_L1_R2 index=390 cand=0 C5 : C4/C5 : C4
+EXPORT cs_PSL2_25_h20_L2_R2 index=390 cand=5 C5 : C4/C5 : C4
+GROUP PSL2_27 |G|=9828 classes=3
+SKIP cs_PSL2_27_h26_L1_R1 index=378 cand=0 D26/D26
+EXPORT cs_PSL2_27_h27_L2_R2 index=364 cand=1716 C3 x C3 x C3/C3 x C3 x C3
+SKIP cs_PSL2_27_h28_L3_R3 index=351 cand=0 D28/D28
+GROUP PSL2_29 |G|=12180 classes=2
+EXPORT cs_PSL2_29_h29_L1_R1 index=420 cand=3003 C29/C29
+SKIP cs_PSL2_29_h30_L2_R2 index=406 cand=0 D30/D30
+GROUP PSL2_31 |G|=14880 classes=0
+GROUP PSL2_37 |G|=25308 classes=0
+GROUP PGammaL2_8 |G|=1512 classes=1
+EXPORT cs_PGammaL2_8_h4_L1_R1 index=378 cand=6154 C2 x C2/C2 x C2
+GROUP A7 |G|=2520 classes=4
+EXPORT cs_A7_h6_L1_R1 index=420 cand=112 C6/C6
+EXPORT cs_A7_h6_L1_R2 index=420 cand=92 C6/S3
+EXPORT cs_A7_h6_L1_R3 index=420 cand=74 C6/S3
+EXPORT cs_A7_h6_L2_R2 index=420 cand=228 S3/S3
+EXPORT cs_A7_h6_L2_R3 index=420 cand=130 S3/S3
+EXPORT cs_A7_h6_L3_R3 index=420 cand=130 S3/S3
+SKIP cs_A7_h7_L4_R4 index=360 cand=0 C7/C7
+GROUP S7 |G|=5040 classes=14
+EXPORT cs_S7_h12_L1_R1 index=420 cand=924 C6 x C2/C6 x C2
+EXPORT cs_S7_h12_L1_R2 index=420 cand=6 C6 x C2/A4
+EXPORT cs_S7_h12_L1_R3 index=420 cand=6 C6 x C2/A4
+EXPORT cs_S7_h12_L1_R4 index=420 cand=20 C6 x C2/C6 x C2
+EXPORT cs_S7_h12_L1_R5 index=420 cand=20 C6 x C2/D12
+EXPORT cs_S7_h12_L1_R6 index=420 cand=6 C6 x C2/A4
+EXPORT cs_S7_h12_L1_R7 index=420 cand=20 C6 x C2/C12
+EXPORT cs_S7_h12_L1_R8 index=420 cand=32 C6 x C2/D12
+EXPORT cs_S7_h12_L1_R9 index=420 cand=20 C6 x C2/D12
+EXPORT cs_S7_h12_L1_R10 index=420 cand=20 C6 x C2/C3 : C4
+EXPORT cs_S7_h12_L1_R11 index=420 cand=6 C6 x C2/D12
+EXPORT cs_S7_h12_L1_R12 index=420 cand=6 C6 x C2/D12
+EXPORT cs_S7_h12_L1_R13 index=420 cand=6 C6 x C2/D12
+EXPORT cs_S7_h12_L2_R2 index=420 cand=3300 A4/A4
+EXPORT cs_S7_h12_L2_R3 index=420 cand=6 A4/A4
+EXPORT cs_S7_h12_L2_R4 index=420 cand=2 A4/C6 x C2
+EXPORT cs_S7_h12_L2_R5 index=420 cand=2 A4/D12
+EXPORT cs_S7_h12_L2_R6 index=420 cand=6 A4/A4
+EXPORT cs_S7_h12_L2_R7 index=420 cand=2 A4/C12
+EXPORT cs_S7_h12_L2_R8 index=420 cand=14 A4/D12
+EXPORT cs_S7_h12_L2_R9 index=420 cand=2 A4/D12
+EXPORT cs_S7_h12_L2_R10 index=420 cand=2 A4/C3 : C4
+EXPORT cs_S7_h12_L2_R11 index=420 cand=6 A4/D12
+EXPORT cs_S7_h12_L2_R12 index=420 cand=6 A4/D12
+EXPORT cs_S7_h12_L2_R13 index=420 cand=6 A4/D12
+EXPORT cs_S7_h12_L3_R3 index=420 cand=132 A4/A4
+EXPORT cs_S7_h12_L3_R4 index=420 cand=2 A4/C6 x C2

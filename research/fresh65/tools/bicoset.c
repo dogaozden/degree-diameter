@@ -20,6 +20,7 @@ static int *N0, n0;       /* chosen B-points */
 static int *adjA, *adjB, *degB, degBmax;
 static int *dist, *queue;
 static long ncand, maxcand, hist[4096], nvalid;
+static int bestc = 1 << 30;   /* env SAVEBEST=1: write the lowest-cost candidate to OUTPREFIX.best.edges */
 static int chosen[64], nch;
 static char label[256];
 static const char *outpre;
@@ -54,6 +55,14 @@ static void evaluate(void) {
     int nV = nA + nB;
     int c = bfs(baseA, nV) + bfs(nA + baseB, nV);
     hist[c < 4095 ? c : 4095]++;
+    if (c < bestc && outpre && getenv("SAVEBEST")) {
+        bestc = c;
+        char fn[512]; snprintf(fn, sizeof fn, "%s.best.edges", outpre);
+        FILE *f = fopen(fn, "w");
+        fprintf(f, "%d\n", nV);
+        for (int a = 0; a < nA; a++) for (int i = 0; i < d; i++) fprintf(f, "%d %d\n", a, nA + adjA[a * d + i]);
+        fclose(f);
+    }
     if (c == 0) {
         nvalid++;
         printf("VALID %s n=%d orbits", label, nV);

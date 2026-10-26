@@ -12,6 +12,7 @@ for n in [NLO..NHI] do
     fi;
     for i in [1..NrSmallGroups(n)] do
         K := SmallGroup(n, i);
+        if IsAbelian(K) then continue; fi;   # abelian Haar graphs: too many word collisions (costs in the hundreds)
         A := AutomorphismGroup(K);
         iso := IsomorphismPermGroup(A);
         P := Image(iso);
