@@ -32,13 +32,14 @@ the sessions under review was used, except the audit's labelling files for the o
 > was never published, so these cells have no checkable graph of diameter 8.
 
 What cannot be claimed: that no (Δ, 8) graph of these orders exists, or that no repair of ΩH_q works. Giving each
-copy its own labelling is outside the thesis, but at q = 2 and q = 3 it reaches diameter 8 at exactly the thesis's
-order (§3.4). Nobody has found one for q ≥ 5, and nobody has shown that none exists.
+copy its own labelling is outside the thesis, but it reaches diameter 8 at exactly the thesis's order at q = 3 (the
+audit's graph, re-checked here in §3.4) and at q = 2 (the audit's result; I did not re-check it). No such labelling is
+known for q ≥ 4, and nobody has shown that none exists.
 
 ## 1. The thesis
 
 I fetched `web.mat.upc.edu/francesc.comellas/delta-d/papers/Gomez1986-PhD-red.pdf` (8,989,821 bytes, a scan with no
-text layer) and read thesis pp. 21–33 and 38–46 at 110–220 dpi. Page offset: from thesis p. 33 on, PDF page = thesis
+text layer) and read thesis pp. 21–46 (§§2.7–2.9) at 110–220 dpi. Page offset: from thesis p. 33 on, PDF page = thesis
 page + 6 (p. 43 is PDF 49, p. 46 is PDF 52), as the write-up says. Earlier pages are bound out of order: thesis p. 32
 is at PDF 34, and pp. 28–31 are at PDF 35–38.
 
@@ -84,7 +85,8 @@ notation the section inherits, and it is explicit:
 
 - §2.7.1 (pp. 21–22): the colour classes V₁₀, V₁₁ of B₁ "están rotulados con los elementos del conjunto Z/n₁Z", and a
   vertex is written (s, i, j, t): label s in class j of copy t. All adjacency rules in §§2.7–2.9 ((2.14), (2.16),
-  (2.18)) are stated in these labels, and every copy carries the same labels.
+  (2.18)) are stated in these labels, and every copy carries the same labels. The one proof written out in this part
+  (Theorem 2.8.1, pp. 28–29) lists its paths in these shared labels ("primero se elige copia y luego vértice").
 - §2.8.9 (p. 39), one of the two sections §2.9.3 points to for its copies of K₁, defines them as "(t, i),
   t ∈ {0, 1, …, n₁−1}, i ∈ {0, …, 4}", and Fig. 2.18 (p. 41) joins them as "(t,1,0,0,0) ∼ (t,0)" and so on: in every
   copy (B₁, k, h), the vertex with label t (in either class) is joined to a copy of K₁ with the same t.
@@ -107,9 +109,9 @@ for these q, and at q ≤ 3 one exists (§3.4). It should be described as a repa
 
 One more remark, which is not a reading. Under reading 2, Theorem 1 refutes D ≤ D₁ + 2 for every B₁ in one line. So
 if the author had a correct argument in mind, it was not for reading 2. Reading 1 fails less obviously (it needs
-Theorem 2's count, and that count fails for q ≤ 6), but it still fails: the computations at q = 3, 5 give 9 for every σ tried (§3.3). The
-cited paper, which might contain a different wiring, was never published, so this cannot be settled from the
-sources.
+Theorem 2's count, and that count fails for q ≤ 6), but it still fails: the computations at q = 3, 5 give 9 for every
+σ tried (§3.3). The cited paper, which might contain a different wiring, was never published, so this cannot be
+settled from the sources.
 
 ## 2. Theorems 1 and 2, line by line
 
@@ -175,9 +177,10 @@ integer arithmetic. The write-up prints the numbers for q = 7, 8, 9 only. Those 
 The theorem actually gives more than one far pair: every K₁-vertex has at least q⁵ − (A + B + 1) vertices at distance
 ≥ 9 in every copy it misses.
 
-The computations are consistent with the bound. Under reading 1 (σ = identity or random), the largest number of odd-class
-opposite vertices within distance 7 of a K₁-vertex, in any copy it misses, was 7,562–8,039 at q = 7 (bound 15,459),
-13,950 at q = 8 (25,482), 22,771–22,825 at q = 9 (39,763), 52,372 at q = 11 (85,491) and 104,225 at q = 13 (162,627).
+The computations are consistent with the bound. Under reading 1 (σ = identity or random), the largest number of
+odd-class opposite vertices within distance 7 of a K₁-vertex, in any copy it misses, was 7,562–8,039 at q = 7 (bound
+15,459), 13,950 at q = 8 (25,482), 22,771–22,825 at q = 9 (39,763), 52,372 at q = 11 (85,491) and 104,225 at q = 13
+(162,627).
 
 ## 3. Exact checks with my own code
 
@@ -280,7 +283,7 @@ relabelling of the thesis's wiring does reach D = 8 at q = 3, as the audit says.
 - The write-up's other checkable statements agree with mine. Mixing both block types makes every two K₁-vertices share
   a copy (I checked the patterns by hand). The far vertices of a K₁-vertex under reading 2 are exactly missed copies ×
   q⁵. Reading 1 with random σ gives about 0.65M vertices at distance 9 at q = 9 (mine: 652,707–653,364).
-- ΩH₁₁d: the thesis gives no definition in §§2.8–2.9 (pp. 26–46) that I could find. The wiki uses 14,172,480 at
+- ΩH₁₁d: pp. 21–46 (§§2.7–2.9) do not define it; I did not search the rest of the thesis. The wiki uses 14,172,480 at
   (15,8), so ΩH₁₁d does not affect any table cell.
 - (13,8) = 5,314,680 is also coloured Delorme–Gómez–Quisquater in the wiki but is not in the thesis. Nothing here
   bears on it.
