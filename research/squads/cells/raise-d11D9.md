@@ -280,3 +280,7 @@ Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable struct
   research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s5.build_haar2.txt.
   The SL checkers do not read prod headers, so build_haar2 is the only checker for this group.
 - The bar is now |G| > 8,779,680 (2|G| > 17,559,360). sl 59 × Z43 (|G| = 8,828,760) would beat it if it solves.
+
+- Seed 4 of the same group also solved: evaluation 51,777 (2078 s, 06:11 box time), VALID by the queue's build_haar2
+  check, n = 17,559,360. It ties the record rather than beating it. Saved as
+  research/frontier/sols/d11D9_prod_sl_4_sl_13_67_orbw3_s4.txt, log research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s4.log.
