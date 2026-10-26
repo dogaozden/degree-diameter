@@ -149,3 +149,15 @@ in order of N. Candidate screen and run logs are in the session scratchpad; this
   seed for 25–30 minutes: the long, heavy-tailed runs pay off, not the screen alone.
 - Queue 4 (1800 s, seed 4, above the 48,022 bar): no solve. 982×49 r3, 491×98 r3, 2189×22 r461, 2009×24 r68 all cost 1.
 - Queue 5 (1800 s, seed 5, the same four): running.
+
+## NEW RECORD (round 3, third): (5,10) 96,720 vertices
+
+- Haar graph of **Z403 ⋊₂₄ Z120** (metacyclic, N = 48,360, μ ≈ 35.1), d = 5, D = 10. Seed 6, solved at 534 s
+  (11.0M evals), after its 420 s screen-queue run had stalled at cost 1. File
+  `research/frontier/sols/d5D10_n96720_haar_meta403_120_24.sol`.
+  - `build_haar2.py`: VALID, n = 96,720; all-pairs BFS (`apsp.c`, no symmetry assumed): VALID, diameter 10.
+- New bar: N > 48,360.
+- Final batch (seed 6, 1800 s): 982×49 cost 2, 2189×22 cost 2, 491×98 cost 1 (no solve).
+- Session stop (07:12 UTC, the 6-hour window): the cell is moving with the metacyclic random-S route, but its hit rate
+  is about one solve per 8–10 runs of 20–30 min above N = 48,000. Next step for a follow-up: more seeds on the cost-1
+  candidates above 48,360, and screen ranks 41–200 at 300–600 s.
