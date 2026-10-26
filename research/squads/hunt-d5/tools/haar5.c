@@ -130,7 +130,9 @@ static void print_S(FILE *f, const int *u, int nu) {
 
 
 /* ---------- exhaustive over orbit-symmetric S (mode exho) ---------- */
-static long long exo_sets = 0; static int exo_min = 1 << 30, exo_limit = 0; static int probe[64], nprobe = 0;
+static long long exo_sets = 0; static int exo_min = 1 << 30, exo_limit = 0;
+#define NPMAX 256
+static int probe[NPMAX], nprobe = 0;
 static int in_TT(int g, scr_t *sc, uint32_t ep) { /* T marked with stamp ep */
     for (int i = 0; i < sc->T[127 * 128]; i++) { int t = sc->T[i]; if (sc->stamp[mul(INV[t], g)] == ep) return 1; }
     return 0;
@@ -157,12 +159,12 @@ static void exo_rec(int *u, int pos, int start, int nf, scr_t *sc) {
         if (quick_fail(S, n, sc)) return;
         int c = cost(S, n, sc);
         if (c < exo_min) exo_min = c;
-        if (c > 0 && nprobe < 64) { /* learn an uncovered element as a probe */
-            for (int side = 0; side < 2 && nprobe < 64; side++) {
+        if (c > 0 && nprobe < NPMAX) { /* learn an uncovered element as a probe */
+            for (int side = 0; side < 2 && nprobe < NPMAX; side++) {
                 sc->ep++; uint32_t ep = sc->ep; int nt = 0;
                 for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) { int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]); if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
                 sc->T[127 * 128] = nt;
-                for (int g = 0; g < N && nprobe < 64; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
+                for (int g = 0; g < N && nprobe < NPMAX; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
             }
         }
         if (c <= exo_limit) { printf("cost %d S", c); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); }
@@ -175,12 +177,12 @@ static void exo_rec(int *u, int pos, int start, int nf, scr_t *sc) {
 static int test_set(const int *S, int n, scr_t *sc) {
     if (quick_fail(S, n, sc)) return 1 << 20;
     int c = cost(S, n, sc);
-    if (c > 0 && nprobe < 64) {
-        for (int side = 0; side < 2 && nprobe < 64; side++) {
+    if (c > 0 && nprobe < NPMAX) {
+        for (int side = 0; side < 2 && nprobe < NPMAX; side++) {
             sc->ep++; uint32_t ep = sc->ep; int nt = 0;
             for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) { int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]); if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
             sc->T[127 * 128] = nt;
-            for (int g = 0; g < N && nprobe < 64; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
+            for (int g = 0; g < N && nprobe < NPMAX; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
         }
     }
     return c;
@@ -193,6 +195,48 @@ static void cmp_rec(int *S, int n, int need, int start, scr_t *sc) {
         if (c <= cmp_limit) { printf("cost %d S", c); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); } return; }
     for (int g = start; g < N; g++) { if (cmp_inS[g]) continue; S[n] = g; cmp_rec(S, n + 1, need - 1, g + 1, sc); }
 }
+
+/* ---------- lns: iterated exact large-neighbourhood search ---------- */
+static int quick_count(const int *S, int n, scr_t *sc, int thr) {  /* #(side, probe) misses, stops above thr */
+    int miss = 0;
+    for (int side = 0; side < 2; side++) {
+        sc->ep++; if (sc->ep == 0) { memset(sc->stamp, 0, N * 4); sc->ep = 1; }
+        uint32_t ep = sc->ep; int nt = 0;
+        for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) {
+            int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]);
+            if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
+        sc->T[127 * 128] = nt;
+        for (int p = 0; p < nprobe; p++) if (!in_TT(probe[p], sc, ep)) {
+            if (p > 0) { int x = probe[p]; probe[p] = probe[p - 1]; probe[p - 1] = x; }
+            if (++miss > thr) return miss; }
+    }
+    return miss;
+}
+static void learn_probes(const int *S, int n, scr_t *sc) {
+    for (int side = 0; side < 2 && nprobe < NPMAX; side++) { int added = 0;
+        sc->ep++; uint32_t ep = sc->ep; int nt = 0;
+        for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) { int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]); if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
+        sc->T[127 * 128] = nt;
+        int g0 = rnd() % N;
+        for (int gg = 0; gg < N && nprobe < NPMAX && added < 4; gg++) { int g = (g0 + gg) % N; if (!in_TT(g, sc, ep)) { int dup = 0; for (int q = 0; q < nprobe; q++) if (probe[q] == g) dup = 1; if (!dup) { probe[nprobe++] = g; added++; } } }
+    }
+}
+static int lns_thr, lns_best, lns_nres, lns_res[512][64], lns_d; static long long lns_cnt;
+static int lns_inS[65536];
+static void lns_rec(int *S, int n, int need, int start, scr_t *sc) {
+    if (need == 0) { lns_cnt++;
+        if (quick_count(S, n, sc, lns_thr) > lns_thr) return;
+        int c = cost(S, n, sc);
+        if (c > lns_thr) { if (nprobe < NPMAX) learn_probes(S, n, sc); return; }
+        if (c < lns_best) { lns_best = c; lns_nres = 0; }
+        if (c == lns_best) { int slot = lns_nres < 512 ? lns_nres : (int)(rnd() % (lns_nres + 1)); if (slot < 512) memcpy(lns_res[slot], S, sizeof(int) * n); lns_nres++; }
+        if (c < lns_thr) lns_thr = c;  /* only keep looking for equal-or-better */
+        return; }
+    for (int g = start; g < N; g++) { if (lns_inS[g]) continue; S[n] = g; lns_rec(S, n + 1, need - 1, g + 1, sc); }
+}
+static uint64_t sethash(const int *S, int n) { int t[64]; memcpy(t, S, n * sizeof(int));
+    for (int i = 1; i < n; i++) { int x = t[i], j = i - 1; while (j >= 0 && t[j] > x) { t[j + 1] = t[j]; j--; } t[j + 1] = x; }
+    uint64_t h = 1469598103934665603ULL; for (int i = 0; i < n; i++) { h ^= (uint64_t)t[i]; h *= 1099511628211ULL; } return h; }
 
 int main(int argc, char **argv) {
     if (argc < 4) { fprintf(stderr, "usage: see source\n"); return 2; }
@@ -225,6 +269,46 @@ int main(int argc, char **argv) {
         exo_rec(u, 0, 0, nf, &sc);
         printf("RESULT exho N=%d d=%d orbit=%d,%d,%d fixed=%d orbits=%d sets=%lld min=%d\n", N, d, kord, morb, ffix, nfixl, norbl, exo_sets, exo_min);
         return 0;
+    }
+    if (!strcmp(mode, "lns")) {   /* haar5 lns TABLE d "S (with 0)" r seconds seed */
+        int S[64], n = 0; char *p = argv[4], *e;
+        while (1) { long v = strtol(p, &e, 10); if (e == p) break; S[n++] = (int)v; p = e; }
+        int r = atoi(argv[5]); double secs = atof(argv[6]); rs ^= strtoull(argv[7], 0, 10) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 20; i++) rnd();
+        sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        int cur = cost(S, n, &sc); double t0 = now(); static uint64_t seen[100000]; int nseen = 0;
+        seen[nseen++] = sethash(S, n);
+        printf("start cost %d\n", cur); fflush(stdout);
+        int it = 0;
+        while (cur > 0 && now() - t0 < secs) {
+            it++;
+            /* cores: S[0] = identity kept; choose n-1-r of the other n-1 elements, in random order of cores */
+            int m1 = n - 1, keep = m1 - r; int idx[64]; for (int i = 0; i < m1; i++) idx[i] = i + 1;
+            lns_best = 1 << 30; lns_nres = 0; lns_thr = cur; lns_cnt = 0;
+            /* enumerate all keep-subsets of idx */
+            int comb[64]; for (int i = 0; i < keep; i++) comb[i] = i;
+            while (1) {
+                int T2[64], tn = 0; memset(lns_inS, 0, sizeof(int) * N);
+                T2[tn++] = S[0]; lns_inS[S[0]] = 1;
+                for (int i = 0; i < keep; i++) { T2[tn++] = S[idx[comb[i]]]; lns_inS[S[idx[comb[i]]]] = 1; }
+                for (int i = 0; i < n; i++) lns_inS[S[i]] = 1;   /* new elements must be new */
+                lns_rec(T2, tn, r, 1, &sc);
+                int i = keep - 1; while (i >= 0 && comb[i] == m1 - keep + i) i--;
+                if (i < 0) break; comb[i]++; for (int j = i + 1; j < keep; j++) comb[j] = comb[j - 1] + 1;
+            }
+            /* pick a result not seen before */
+            int moved = 0;
+            for (int tries = 0; tries < 64 && lns_nres > 0 && !moved; tries++) {
+                int k = rnd() % (lns_nres < 512 ? lns_nres : 512); uint64_t h = sethash(lns_res[k], n); int dup = 0;
+                for (int q = 0; q < nseen; q++) if (seen[q] == h) { dup = 1; break; }
+                if (!dup || lns_best < cur) { memcpy(S, lns_res[k], sizeof(int) * n); if (nseen < 100000) seen[nseen++] = h; moved = 1; }
+            }
+            printf("it %d t=%.0f sets=%lld best_in_nbhd=%d (%d sets) cur->%d moved=%d S=", it, now() - t0, lns_cnt, lns_best == (1 << 30) ? -1 : lns_best, lns_nres, moved ? lns_best : cur, moved);
+            if (moved) cur = lns_best;
+            for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout);
+            if (!moved) break;
+        }
+        printf("RESULT lns N=%d d=%d r=%d best=%d S=", N, d, r, cur); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n");
+        return cur == 0 ? 0 : 1;
     }
     if (!strcmp(mode, "complete")) {   /* haar5 complete TABLE d "core..." [LIMIT] */
         int S[64], n = 0; char *p = argv[4], *e;

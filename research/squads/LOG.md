@@ -29,3 +29,41 @@ annealers stall at 6 for m = 17): 2,592 < 2,662, so not a record. Non-abelian co
 
 Kept for round 2: metacyclic-type groups (615/1, C197⋊C7, C41⋊C5), K_{Δ,Δ} lifts (new), the m = 17 controller,
 q = 2 route charts for (6,5) (a cell we do not hold), exhaustive orbit certificates (new haar5 exho mode).
+
+## 2026-10-26, hunt-d5 round 2: metacyclic Haar groups, K_{Δ,Δ} lifts, m = 17 controller, (6,5)
+
+16 cards, 14:12–14:35 UTC (research/squads/hunt-d5/r2/). New cell this round: (6,5) (published 684, we hold nothing).
+Cards: a1 (5,5) exact search on metacyclic groups 193–215 · a2 (5,5) 3+3 lifts with Z₅₉ calibration · a3 (5,5) K₅,₅
+lifts over 39–45 · a4 (5,5) 2+2 lifts deep · b1 (7,5) 615/1 deep · b2 (7,5) metacyclic screen 606–660 · b3 (7,5) 609,
+610, 612, 624 deep + orbit certificates · b4 (7,5) 2+2 / 3+3 lifts over metacyclic groups · b5 (7,5) K₇,₇ lifts · c1
+(9,5) metacyclic 1378–1420 · c2 (9,5) 2+2 lifts over C53⋊C13 · c3 (9,5) K₉,₉ lifts · c4 m = 17 controller (tabu) · x1
+(6,5) Haar 343–360 · x2 (6,5) q = 2 route charts · w1 coset-union S.
+
+Best per card: a1 stopped (director's sweep covers it; D97 exact minimum 194) · a2 10 (Z₅₉ not reproduced) · a3 62 ·
+a4 12 (104/3, 2+2) · b1 4 (615/1, 41 seeds; 1- and 2-swap local minima) · b2 none (GAP listing too slow) · b3 6
+(609/1, 610/2) · b4 26 · b5 147 · **c1 4 at SmallGroup(1378,2) = C2 × (C53⋊C13)** · c2 14 · c3 173 · c4 m = 17: 6
+(two far pairs + two vertices on no 4-cycle, from every start) · **x1 2 at C71⋊C5 (355, (6,5))** · x2 26 · w1 worse
+than plain annealing (dropped).
+
+Director: haar5 exho (exact orbit-symmetric spaces): 615/1 all ≥ 12; exhp (exact, probe-accelerated, 9 s per group of
+order 200) sweeping every group of order 193–215 at (5,5); exact 3-swap neighbourhood of 615/1's cost-4 set found
+**cost 2** (S = 0 206 135 343 507 543 593); haar_fast (research/structured) is 13× faster than haar5 on metacyclic
+groups, so round 3 uses it. Kept: metacyclic seed farms in all four cells, exact neighbourhoods, (5,5) 216–224 sweep.
+
+## 2026-10-26, hunt-d5 round 3: haar_fast seed farms on metacyclic groups, (5,5) exact sweeps, (6,5)
+
+16 cards, 14:35–14:50 UTC (research/squads/hunt-d5/r3/). Tool: haar_fast (research/structured), 13× haar5 here.
+Cards: c1/c2/c3 (9,5) farms on (Z53⋊Z13)×Z2 with three settings · c4 (9,5) screen of 53 metacyclic specs 1378–1430 ·
+c5 Z197⋊Z7, Z463⋊Z3 farms · b1/b2 (7,5) farms on (Z41⋊Z5)×Z3 · b3 screen of 45 specs 606–658 · b4 609/610 farms · d1
+(6,5) screen of 55 specs · d2 (6,5) 357/351 farms · d3 (6,5) non-metacyclic 343–360 · a1 (5,5) exact 216 · a2 (5,5)
+exact 217–224 · x1 tabu from the cost-4 sets · w1 wildcard (2-switch repair from the 615 graph).
+
+Best per card: **c2 2 (Z53⋊₁₆Z26, seed 1016, K = 32, COOL = 40)** · **c3 2 (seed 2035; histogram over 60 short
+seeds 2:1, 4:9, 6:20, 8:25, 10:5)** · c1 4 (11/24 seeds) · c4 6 (meta 31 15 16 3, 1395) · c5 4 (Z197⋊Z7) · b1 4 · b2 4
+(10/36) · b3 4 (Z103⋊Z6, 618) · b4 4 ((Z61⋊Z5)×Z2, 610) · d2 4 (357) · a2 none in 217–223 (exact; best 16) · x1, w1 4
+(no progress; CPU starved). d1, d3, a1 reported after this entry (see the cell file).
+
+Director: **certificate: SmallGroup(355,1) = C71⋊C5 has no Haar graph of diameter ≤ 5 at Δ = 6** (exact search over
+S ⊇ {e, r}, r one representative per Aut(G)-orbit: 5 × 6.4·10⁸ sets; minimum 2). The cost-2 set of 615/1 has no
+solution within 3 swaps (exact). haar_fast patched to keep near misses (tools/haar_fast_sb.c, SAVEBEST=1) and
+tables in its numbering (tools/metatab.py), so farms feed the exact neighbourhood search (haar5 lns / complete).
