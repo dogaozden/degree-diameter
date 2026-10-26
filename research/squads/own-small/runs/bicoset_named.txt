@@ -1,0 +1,10 @@
+# Stabiliser-2 bi-coset graphs (tools/bicoset.c) on named groups, n = |G|; "BEST cost" = vertices beyond D from the two roots.
+psl2_13 n=1092 D=10: BEST 110 h 3 d 85 diam 11 tried 1080
+psl2_11 n=660 D=9: BEST 124 h 55 d 139 diam 11 tried 648
+a6 n=360 D=8: BEST 48 h 63 d 16 diam 10 tried 352
+pgl2_11 n=1320 D=10: BEST 162 h 111 d 31 diam 12 tried 2596
+s6 n=720 D=9: BEST 222 h 126 d 40 diam 12 tried 2048
+pgl2_9 n=720 D=9: BEST 118 h 1 d 193 diam 11 tried 1404
+psl2_8 n=504 D=9: BEST 10 h 7 d 64 diam 10 tried 496
+psl2_7xc2 n=336 D=8: BEST 74 h 43 d 9 diam 10 tried 640
+a5xc7 n=420 D=10: HIT h 21 d 113 diam 10 (n too small to matter; shows the family reaches diameter 10)
