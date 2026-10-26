@@ -156,3 +156,6 @@ round 2 ended, and their results are not on the branch. They are the first thing
 - 04:26 sl 89 x Z247 k=3 seeds 11 and 12 (10,000 s each): best cost 6 both (6,137 and 6,185 evals). No solve. Seed 12 used
   RESTART=1. Seeds 13 (RESTART=1) and 14 (ORBW=3) were still running at cost 12 at 7,000 s.
 - 04:26 new: sl 83 x Z307 (351.0M, RESTART=1, seed 21, 10,000 s) and sl 97 x Z193 (352.3M, RESTART=1, seed 22, 10,000 s).
+- 05:08 sl 89 x Z247 seeds 13 (RESTART=1) and 14 (ORBW=3), 10,000 s each: best cost 6 both (6,177 and 6,089 evals). No solve.
+  Four 10,000 s seeds on this group (11, 12, 13, 14) all end at cost 6, i.e. two uncovered orbits; the plateau is consistent.
+- 05:12 two more seeds on sl 89 x Z247 (23: ORBW=2 RESTART=1; 24: RESTART=1), 6,500 s each.
