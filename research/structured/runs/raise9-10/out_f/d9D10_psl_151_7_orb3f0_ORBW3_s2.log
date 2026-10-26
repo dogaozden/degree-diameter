@@ -1,0 +1,32 @@
+group psl 151 x Z_7, N=12049800, identity 79275, H order 38, rows 317100, threads 1, setup 0.36s
+wide rows: HW order 175, rows 68856, setup 0.71s
+alpha: conj by mat(60,141,49,90) (index 1377924), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 74 (+e); mu = 35.69, mu/k = 11.90, fixed-point misses ~ 1.08
+ORBW=3: an uncovered fixed element weighs 3; start energy 69
+start cost=65
+t=30 steps=175 evals=1401 cost=15 best=12 T=0.53 energy=15 bestE=12
+t=60 steps=331 evals=2649 cost=7 best=7 T=0.19 energy=9 bestE=9
+t=90 steps=493 evals=3945 cost=7 best=7 T=0.15 energy=9 bestE=9
+t=120 steps=655 evals=5241 cost=7 best=7 T=0.15 energy=9 bestE=9
+t=151 steps=807 evals=6457 cost=7 best=7 T=0.15 energy=9 bestE=9
+t=181 steps=961 evals=7689 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=211 steps=1116 evals=8929 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=241 steps=1290 evals=10321 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=271 steps=1444 evals=11553 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=301 steps=1623 evals=12985 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=331 steps=1798 evals=14385 cost=6 best=6 T=0.73 energy=6 bestE=6
+t=361 steps=1966 evals=15729 cost=6 best=6 T=0.26 energy=6 bestE=6
+t=391 steps=2139 evals=17113 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=422 steps=2305 evals=18441 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=452 steps=2484 evals=19873 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=482 steps=2655 evals=21241 cost=6 best=6 T=0.72 energy=6 bestE=6
+t=512 steps=2833 evals=22665 cost=6 best=6 T=0.25 energy=6 bestE=6
+t=542 steps=3002 evals=24017 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=572 steps=3174 evals=25393 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=602 steps=3346 evals=26769 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=632 steps=3513 evals=28105 cost=6 best=6 T=0.70 energy=6 bestE=6
+t=662 steps=3681 evals=29449 cost=6 best=6 T=0.25 energy=6 bestE=6
+t=693 steps=3845 evals=30761 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=723 steps=4021 evals=32169 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=753 steps=4192 evals=33537 cost=6 best=6 T=0.15 energy=6 bestE=6
+RESULT d=9 D=10 group=psl 151 x Z_7 N=12049800 best=6 evals=34497 time=773.0 orbit k=3 m=3 f=0 fix=74
