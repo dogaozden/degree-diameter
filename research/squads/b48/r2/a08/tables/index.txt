@@ -1,0 +1,48 @@
+N = 1280 spec 5 2:5:4,2:5:4
+g01_abc abc 5 2:5:4,2:5:4  
+N = 1296 spec 16 3:16
+g02_abc abc 16 3:16  
+N = 1300 spec 4 5:4,5:4,13:4
+g03_abc abc 4 5:4,5:4,13:4  
+N = 1308 spec 3 2:3,109:3
+g04_abc abc 3 2:3,109:3  
+N = 1320 spec 30 2:3,11:10
+g05_abc abc 30 2:3,11:10  
+N = 1332 spec 4 3:4,37:4
+g06_abc abc 4 3:4,37:4  
+N = 1332 spec 9 2:3,37:9
+g07_abc abc 9 2:3,37:9  
+N = 1344 spec 21 2:21
+g08_abc abc 21 2:21  
+N = 1352 spec 8 13:8
+g09_abc abc 8 13:8  
+N = 1368 spec 18 2:3,19:18
+g10_abc abc 18 2:3,19:18  
+N = 1392 spec 12 2:3,29:4
+g11_abc abc 12 2:3,29:4  
+N = 1404 spec 12 3:4,13:12
+g12_abc abc 12 3:4,13:12  
+N = 1404 spec 12 3:4,13:3
+g13_abc abc 12 3:4,13:3  
+N = 1404 spec 12 3:4,13:6
+g14_abc abc 12 3:4,13:6  
+N = 1425 spec 3 19:3,5:3
+g15_abc abc 3 19:3,5:3  
+N = 1444 spec 4 19:4
+g16_abc abc 4 19:4  
+N=1332 involutions=37 centre=1 max_order=37 spec='meta 37 36 2'
+g17_meta meta 37 36 2 
+N=1314 involutions=73 centre=1 max_order=73 spec='meta 73 18 18'
+g18_meta meta 73 18 18 
+N=1378 involutions=53 centre=1 max_order=53 spec='meta 53 26 4'
+g19_meta meta 53 26 4 
+N=1404 involutions=13 centre=1 max_order=117 spec='meta 117 12 2'
+g20_meta meta 117 12 2 
+N=1360 involutions=17 centre=1 max_order=85 spec='meta 85 16 3'
+g21_meta meta 85 16 3 
+N=1344 involutions=3 centre=2 max_order=112 spec='meta 112 12 3'
+g22_meta meta 112 12 3 
+N=1368 involutions=77 centre=2 max_order=76 spec='meta 76 18 3'
+g23_meta meta 76 18 3 
+N=1372 involutions=99 centre=2 max_order=98 spec='meta 98 14 13'
+g24_meta meta 98 14 13 

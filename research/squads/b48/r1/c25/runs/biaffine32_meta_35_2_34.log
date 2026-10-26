@@ -1,0 +1,32 @@
+group meta:35:2:34 N=70 base b=32 m=64 free=33 bip_base=1 n=2240 start cost=2038
+t=0.1 evals=9 best=2022
+t=0.1 evals=17 best=1783
+t=0.2 evals=32 best=1483
+t=0.3 evals=54 best=1452
+t=0.3 evals=62 best=1252
+t=0.4 evals=70 best=1209
+t=0.4 evals=78 best=1140
+t=0.4 evals=94 best=1085
+t=0.5 evals=110 best=1048
+t=0.5 evals=126 best=1036
+t=0.7 evals=173 best=1033
+t=0.8 evals=237 best=996
+t=0.9 evals=275 best=953
+t=1.0 evals=307 best=930
+t=1.1 evals=347 best=867
+t=2.5 evals=879 best=862
+t=2.6 evals=935 best=757
+t=2.6 evals=943 best=699
+t=4.8 evals=1757 best=657
+t=5.8 evals=2146 best=653
+t=7.6 evals=2826 best=648
+t=7.8 evals=2873 best=647
+t=8.3 evals=3038 best=644
+t=9.9 evals=3575 best=636
+t=11 evals=4032 cur=636 best=636
+t=11.5 evals=4174 best=602
+t=12.7 evals=4634 best=582
+t=12.8 evals=4674 best=580
+t=13.2 evals=4800 best=548
+RESULT d=4 D=8 group=meta:35:2:34 base=bases/biaffine32.txt n=2240 best=548 evals=6057 time=16.7
+wrote runs/biaffine32_meta_35_2_34.out and runs/biaffine32_meta_35_2_34.out.edges (cost 548)

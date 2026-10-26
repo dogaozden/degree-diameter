@@ -1,0 +1,26 @@
+group meta:7:8:6 N=56 base b=40 m=80 free=41 bip_base=1 n=2240 start cost=1962
+t=0.2 evals=17 best=1770
+t=0.2 evals=33 best=1500
+t=0.3 evals=41 best=1390
+t=0.3 evals=48 best=1258
+t=0.4 evals=56 best=1254
+t=0.4 evals=64 best=1184
+t=0.4 evals=72 best=1116
+t=0.5 evals=87 best=1058
+t=0.7 evals=127 best=1048
+t=0.7 evals=142 best=990
+t=1.4 evals=309 best=934
+t=1.5 evals=317 best=922
+t=1.5 evals=340 best=894
+t=2.4 evals=526 best=870
+t=3.1 evals=693 best=828
+t=3.4 evals=773 best=806
+t=3.9 evals=884 best=802
+t=5.0 evals=1143 best=796
+t=5.3 evals=1239 best=754
+t=6.0 evals=1390 best=750
+t=6.7 evals=1580 best=746
+t=7.9 evals=1862 best=722
+t=8.9 evals=2104 best=718
+RESULT d=4 D=8 group=meta:7:8:6 base=bases/levi_v20_S0_1_3_8.txt n=2240 best=718 evals=4026 time=16.1
+wrote runs/levi_v20_meta_7_8_6.out and runs/levi_v20_meta_7_8_6.out.edges (cost 718)

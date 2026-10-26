@@ -1,0 +1,12 @@
+== psl 13 1
+alpha: conj by mat(3,1,6,11) (index 435), z -> 0 z on Z_1
+RANDORB d=4 D=8 group=psl 13 x Z_1 N=1092 k=3 m=1 f=1 fix=5 samples=60000 min=11 p1=11 p10=49 median=341 mean=427.66 mu=54.17
+== sl 11 1
+alpha: conj by mat(7,8,8,3) (index 932), z -> 0 z on Z_1
+RANDORB d=4 D=8 group=sl 11 x Z_1 N=1320 k=3 m=1 f=1 fix=11 samples=60000 min=78 p1=88 p10=103 median=279 mean=546.25 mu=110.01
+== pgl 11 1
+alpha: conj by mat(1,7,3,0) (index 800), z -> 0 z on Z_1
+RANDORB d=4 D=8 group=pgl 11 x Z_1 N=1320 k=3 m=1 f=1 fix=11 samples=60000 min=65 p1=65 p10=134 median=697 mean=694.95 mu=110.01
+== psl 7 7
+alpha: conj by mat(0,3,2,1) (index 15), z -> 2 z on Z_7
+RANDORB d=4 D=8 group=psl 7 x Z_7 N=1176 k=3 m=1 f=1 fix=2 samples=60000 min=27 p1=27 p10=54 median=1008 mean=638.54 mu=72.30

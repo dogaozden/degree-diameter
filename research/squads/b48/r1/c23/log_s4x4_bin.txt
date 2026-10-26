@@ -1,0 +1,25 @@
+group s4x4.bin N=96 base b=26 m=52 free=27 bip_base=1 n=2496 start cost=2415
+t=0.2 evals=9 best=1897
+t=0.3 evals=17 best=1801
+t=0.3 evals=25 best=1794
+t=0.3 evals=33 best=1703
+t=0.4 evals=41 best=1622
+t=0.4 evals=49 best=1460
+t=0.4 evals=57 best=1354
+t=0.5 evals=89 best=1334
+t=0.7 evals=135 best=1260
+t=1.0 evals=239 best=1213
+t=1.7 evals=477 best=1149
+t=2.9 evals=881 best=1145
+t=3.8 evals=1165 best=1096
+t=4.8 evals=1473 best=1069
+t=4.9 evals=1512 best=1039
+t=5.1 evals=1584 best=1031
+t=5.3 evals=1630 best=1021
+t=8.0 evals=2522 best=1002
+t=8.4 evals=2664 best=984
+t=13 evals=4057 cur=984 best=984
+t=19.8 evals=6240 best=928
+t=25 evals=8108 cur=928 best=928
+RESULT d=4 D=8 group=s4x4.bin base=pg23.txt n=2496 best=928 evals=10130 time=31.9
+wrote out_s4x4_bin.sol and out_s4x4_bin.sol.edges (cost 928)

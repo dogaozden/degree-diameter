@@ -1,0 +1,10 @@
+lines 320000 min 685
+chunk 421 6 21 slice=0/6 lines=1..320000 rc=0
+lines 320000 min 705
+chunk 421 6 21 slice=0/6 lines=320001..640000 rc=0
+lines 320000 min 685
+chunk 421 6 21 slice=0/6 lines=640001..960000 rc=0
+lines 320000 min 768
+chunk 421 6 21 slice=0/6 lines=960001..1280000 rc=0
+lines 320000 min 768
+chunk 421 6 21 slice=0/6 lines=1280001..1600000 rc=0

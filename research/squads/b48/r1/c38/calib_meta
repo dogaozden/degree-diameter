@@ -1,0 +1,7 @@
+# lift solution d=4 D=8 n=2184 cost=0
+base 2 4
+group meta:91:12:25 1092
+e 0 1 0
+e 0 1 485
+e 0 1 855
+e 0 1 797

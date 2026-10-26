@@ -1,0 +1,12 @@
+g01_sl25_x_c5|sl2 5 x cyc 5
+g02_a5_x_c10|psl2 5 x cyc 10
+g03_s5_x_c5|pgl2 5 x cyc 5
+g04_z25sd24|semi 5 24 0 1 2 2
+g05_s4_x_c23|perm 4 1,0,2,3 ; 1,2,3,0 x cyc 23
+g06_sl23_x_c23|sl2 3 x cyc 23
+g07_a4_x_c46|perm 4 1,2,0,3 ; 1,0,3,2 x cyc 46
+g08_agl1_11_x_c5|agl1 11 x cyc 5
+g09_agl1_5_x_c28|agl1 5 x cyc 28
+g10_heis3_x_c21|heis 3 x cyc 21
+g11_agl1_7_x_c14|agl1 7 x cyc 14
+g12_s3_x_c94|dih 3 x cyc 94

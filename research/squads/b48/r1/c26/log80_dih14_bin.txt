@@ -1,0 +1,46 @@
+group dih14.bin N=28 base b=80 m=160 free=81 bip_base=1 n=2240 start cost=5063
+t=0.1 evals=9 best=4937
+t=0.2 evals=17 best=4488
+t=0.3 evals=25 best=4196
+t=0.6 evals=49 best=3930
+t=0.6 evals=55 best=3849
+t=0.7 evals=70 best=3685
+t=0.8 evals=78 best=3610
+t=0.9 evals=85 best=3380
+t=1.0 evals=101 best=3346
+t=1.1 evals=108 best=3338
+t=1.3 evals=131 best=3320
+t=1.4 evals=138 best=3280
+t=1.5 evals=146 best=3134
+t=1.6 evals=153 best=3105
+t=1.7 evals=169 best=2972
+t=1.8 evals=177 best=2834
+t=2.0 evals=201 best=2709
+t=2.2 evals=217 best=2681
+t=2.5 evals=249 best=2649
+t=2.6 evals=257 best=2541
+t=4.0 evals=386 best=2491
+t=4.1 evals=394 best=2364
+t=4.3 evals=409 best=2348
+t=4.6 evals=441 best=2326
+t=4.8 evals=456 best=2274
+t=5.1 evals=486 best=2233
+t=6.0 evals=577 best=2203
+t=6.2 evals=593 best=2161
+t=6.3 evals=601 best=2062
+t=7.0 evals=679 best=2060
+t=7.1 evals=694 best=2058
+t=7.6 evals=731 best=2044
+t=7.7 evals=739 best=2018
+t=8.0 evals=763 best=1968
+t=8.3 evals=787 best=1870
+t=10.2 evals=949 best=1836
+t=14.6 evals=1322 best=1829
+t=14.9 evals=1345 best=1720
+t=15.4 evals=1396 best=1690
+t=16.0 evals=1450 best=1638
+t=18.1 evals=1651 best=1628
+t=18.5 evals=1690 best=1610
+t=20.1 evals=1860 best=1606
+RESULT d=4 D=8 group=dih14.bin base=base80.txt n=2240 best=1606 evals=1977 time=21.5
+wrote l80_dih14_bin.sol and l80_dih14_bin.sol.edges (cost 1606)

@@ -1,0 +1,6 @@
+Commands used (all lift with THREADS=1, BASE in bases/, group cyc:N, d=4 D=8):
+10 s screens, seed 1: s4 cyc:274 (cost 104), s5 cyc:219 (124), s6 cyc:183 (164), s8 cyc:137 (220), s10 cyc:110 (274),
+  s12 cyc:92 (366), s16 cyc:69 (506), s24 cyc:46 (866), s32 cyc:35 (1370).
+30 s, seed 2: s5 cyc:219 (108), s8 cyc:137 (170), s6 cyc:183 (128).
+Calibration, base s5, 10 s seed 1: cyc:110 cost 0, cyc:150 cost 0 (score48 VALID), cyc:170 cost 4, cyc:190 cost 38, cyc:200 cost 54.
+Bases: gen_base.py (random union of 4 perfect matchings, simple; girth 4 in all of them).

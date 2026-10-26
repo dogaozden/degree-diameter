@@ -1,0 +1,12 @@
+R02_S4_x_S4_x_Z2 HF RESULT d=4 D=8 group=prod pgl 3 pgl 3 x Z_2 N=1152 best=50 evals=373033 time=8.0
+R03_SL23_x_SL23_x_Z2 HF RESULT d=4 D=8 group=prod sl 3 sl 3 x Z_2 N=1152 best=24 evals=501089 time=8.0
+P01_SL25_x_Z10 HF RESULT d=4 D=8 group=sl 5 x Z_10 N=1200 best=17 evals=1251249 time=8.0
+P02_A5_x_Z20 HF RESULT d=4 D=8 group=psl 5 x Z_20 N=1200 best=21 evals=2239153 time=8.0
+P03_S5_x_Z10 HF RESULT d=4 D=8 group=pgl 5 x Z_10 N=1200 best=17 evals=1447017 time=8.0
+P06_SL23_x_Z50 HF RESULT d=4 D=8 group=sl 3 x Z_50 N=1200 best=98 evals=2765233 time=8.0
+P08_F20_x_Z60 HF RESULT d=4 D=8 group=meta 5 4 2 x Z_60 N=1200 best=259 evals=2647601 time=8.0
+P04_Z5sq_x|Z24_x_Z2 LIFT RESULT d=4 D=8 group=groups/P04_Z5sq_x|Z24_x_Z2.bin base=/home/user/degree-diameter/research/squads/b48/tools/bases/dipole4.txt n=2400 best=32 evals=38783 time=8.3
+P05_Z5sq_x|Z48_nf LIFT RESULT d=4 D=8 group=groups/P05_Z5sq_x|Z48_nf.bin base=/home/user/degree-diameter/research/squads/b48/tools/bases/dipole4.txt n=2400 best=26 evals=30632 time=8.4
+P07_A4_x_Z100 LIFT RESULT d=4 D=8 group=groups/P07_A4_x_Z100.bin base=/home/user/degree-diameter/research/squads/b48/tools/bases/dipole4.txt n=2400 best=1164 evals=51028 time=8.3
+P09_Z5sq_x|SL23_x_Z2 LIFT RESULT d=4 D=8 group=groups/P09_Z5sq_x|SL23_x_Z2.bin base=/home/user/degree-diameter/research/squads/b48/tools/bases/dipole4.txt n=2400 best=40 evals=38790 time=8.2
+P10_dih30_x_Z20 LIFT RESULT d=4 D=8 group=groups/P10_dih30_x_Z20.bin base=/home/user/degree-diameter/research/squads/b48/tools/bases/dipole4.txt n=2400 best=1932 evals=63293 time=8.0
