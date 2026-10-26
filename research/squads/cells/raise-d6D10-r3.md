@@ -41,16 +41,61 @@ psl 17 reaches raw 1 (one fixed element) about once per 2.5e5 uniform samples, w
 of round 1 and round 2. The estimate P(zero) for psl 17 is about 1e-6 per sample (Poisson in the free orbits,
 times the fixed-element factor), so 1e7 or more samples could give a zero. That is the test below.
 
-### E2. Campaign: psl 17 x Z109, 3 x 1.5e7 uniform samples (seeds 21, 22, 23), about 40 min on 3 threads
+### E2. Campaign: psl 17 x Z109, 3 x 1.5e7 uniform samples (seeds 21, 22, 23): **no zero**
 
-Files: `scratchpad/camp_psl17_s2*.out` (RANDORB line at the end). A zero-cost sample is saved by haar_sym
-(check_and_write) to `scratchpad/psl17_zero_s<seed>.txt` and then checked with build_haar2.py.
+Result (RANDORB, 15e6 samples per seed, 4.5e7 in total, plus the 1e6 of E1 = 4.6e7):
 
-(result below when it finishes)
+| seed | min | bin 0 (raw 0-2) | bin 1 (raw 3-5) | bin 2 (raw 6-8) | zero found? |
+|---|---|---|---|---|---|
+| 21 | 1 | 35 | 356 | 984 | no |
+| 22 | 1 | 40 | 366 | 1007 | no |
+| 23 | 1 | 41 | 437 | 964 | no |
+
+So raw cost 1 (one alpha-fixed element uncovered) occurs about 2.5e-6 per uniform sample, and raw 0 never occurred.
+The record group (E1 control, 1e6 samples) gave bin 0 = 33 and a zero, so its bin-0 rate is about 14x psl 17's.
+Reading: psl 17 x Z109 is not a cell where uniform sampling at this scale finds a solution. A zero would need
+roughly 1e8 or more samples (about an hour on 4 threads), and the expected gain is small. Not done. The
+annealing floor of rounds 1 and 2 and the uniform tail agree: psl 17 sits at raw cost 1 to 3.
 
 ### E3. Screen of the other untested window groups, RANDORB 1e6 each (`scratchpad/screen.sh`)
 
-psl 13 x Z241, sl 11 x Z199, pgl 11 x Z199, prod psl 5 psl 5 x Z73, psl 81, prod psl 5 sl 5 x Z37, psl 9 x Z733.
-Zero-cost samples are saved as `scratchpad/scr_<tag>.txt`.
+| group | N | mu | fix | min | p1 | p10 | median | bin 0 | zero? |
+|---|---|---|---|---|---|---|---|---|---|
+| prod sl 5 psl 7 x Z13 (record, control) | 262,080 | 23.6 | 17 | 0 | 17 | 40 | 293 | 33 | yes |
+| psl 17 x Z109 | 266,832 | 28.4 | 8 | 1 | 27 | 64 | 387 | 4 | no |
+| psl 13 x Z241 | 263,172 | 24.6 | 5 | 6 | 60 | 199 | 1607 | 0 | no |
+| sl 11 x Z199 | 262,680 | 24.2 | 11 | 18 | 60 | 147 | 872 | 0 | no |
+| pgl 11 x Z199 | 262,680 | 24.2 | 11 | 15 | 61 | 180 | 131340 | 0 | no |
+| prod psl 5 psl 5 x Z73 | 262,800 | 24.3 | 8 | 4 | 34 | 128 | 2270 | 0 | no |
+| psl 81 (alpha unipotent, char 3) | 265,680 | 27.1 | 80 | 7 | 31 | 59 | 204 | 0 | no |
+| prod psl 5 sl 5 x Z37 | 266,400 | 27.9 | - | - | - | - | - | - | not finished (stopped) |
+| psl 9 x Z733 | 263,880 | 25.3 | - | - | - | - | - | - | not run |
 
-(result below when it finishes)
+None of the untested groups beats the record group or reaches zero in 1e6 uniform samples. The record group is
+the only group in the window with a zero at that scale. psl 81 has 80 fixed elements (large centralizer), as the
+structure predicted.
+
+### Tally for round 3
+
+- Uniform samples taken: about 5.2e7 in total (psl 17 4.6e7; the five screens 5e6; record control 1e6).
+- Solutions above 524,160: **none**. Nothing was added to research/frontier/sols/.
+- Compute: about 40 minutes of 3 threads for E2, plus the screens (1 thread, about 25 minutes). Most of the wall
+  time was waiting.
+
+### Decision
+
+I stopped here. Not because the cell is provably stuck, but because:
+- The one candidate with a good orbit fit (psl 17 x Z109, mu 28.4) has no zero in 4.6e7 uniform samples and sits at
+  raw cost 1 to 3 in every method tried (annealing rounds 1 and 2, uniform sampling round 3).
+- Every other untested group in the window has a worse tail or a large cyclic factor, or fixes a small quotient.
+- The alpha choice is essentially unique per group (one class of order-3 elements; the scaling r vs r^2 gave the
+  same tail: min 7 vs 9), so the orbit family has no unexplored parameter in this window.
+
+### Suggested next steps (not done)
+
+1. A 1e8-sample uniform run on psl 17 x Z109 (4 threads, about 1 hour, `RANDORB=25000000` per thread with
+   `out` set so a zero is saved). Expected value is low (no zero in 4.6e7), but it is the cheapest test left.
+2. Route-chart or voltage lift (research/theorems/BEAT_16_5_SQUAD.md) for (6,10). The round-2 suggestion of an
+   exhaustive two-orbit move at the floor is still open. It costs more than the one-orbit scan.
+3. k = 5 with one orbit (Delta = 1 + 5) was measured at (6,8) only (min 38 at mu 30; STRUCTURE.md section 5). It was
+   not run at (6,10).
