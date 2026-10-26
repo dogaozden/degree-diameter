@@ -13,6 +13,7 @@ probes (an upper bound on the true minimum), not the exact minimum.
 | d6_haar_355_1_C71xC5.log | (6,5): S ⊇ {e, r}, r one representative per Aut(G)-orbit (5 orbits), all 4-subsets (`haar5 complete`) | 5 × 6.4·10⁸ | none: C71 ⋊ C5 has no (6,5) Haar graph |
 | d6_haar_351_12_F27xC13.log | the same for SmallGroup(351,12) = F₂₇ ⋊ C13 (5 orbits) | 5 × 6.0·10⁸ | none |
 | d6_haar_357_1.log | the same for SmallGroup(357,1) = C17 × (C7 ⋊ C3) (7 orbits) | 7 × 6.5·10⁸ | none |
+| d6_haar_360_51_C3xSL25.log, d6_haar_351_5.log | (6,5) SmallGroup(360,51) = C3 × SL(2,5) and SmallGroup(351,5): rank-0 pass (`haar5 complete` with core {e, r₀}, r₀ in the largest orbit) plus `haar5 cert … 1` (ranks ≥ 1, see below); orbit files orbits_*.txt | 6.7·10⁸ + 6.7·10⁷ and 6.1·10⁸ + 1.4·10⁷ | none |
 | d7_haar_615_1_orbit_spaces.log | (7,5) SmallGroup(615,1): every S that is a union of e, fixed points and orbits of an automorphism of order 2–5 (`haar5 exho`) | | minimum ≥ 12 in every space |
 | d7_haar_615_1_3swap_of_cost{4,2}_set.log | (7,5) SmallGroup(615,1): all sets within 3 swaps of the cost-4 set S = 0 206 135 160 343 459 282 and of the cost-2 set S = 0 206 135 343 507 543 593 (`tools/nbhd.py … 3`) | 20 × 3.8·10⁷ each | found the cost-2 set; nothing of cost 0 |
 
@@ -20,3 +21,10 @@ Reduction used for the (6,5) certificates: H(G,S) ≅ H(G, S s⁻¹) ≅ H(G, φ
 so that e ∈ S, pick another element t ∈ S and apply φ with φ(t) = the chosen representative of t's Aut(G)-orbit. So if
 some S works, one containing {e, r} works for some representative r. Orbit representatives: `gapgroup.py orbits N I`.
 Card a2 of round 3 ran the (5,5) search for orders 217–223 (r3/a2/results.txt): none.
+
+`haar5 cert` (added later in the session) sharpens the reduction: right quotients s_j s_i⁻¹ are invariant under right
+translation and are permuted by Aut(G). Rank the Aut-orbits on G \ {e}, largest first. A cost-0 S can be translated and
+moved by an automorphism so that it contains e and the representative r_k of the lowest-ranked orbit k among its right
+quotients, with every right quotient of rank ≥ k. So for each k only sets {e, r_k, …} with all pairwise right quotients
+of rank ≥ k are enumerated; later ranks are tiny, and the total is about one rank-0 pass. Positive control: on
+SmallGroup(176,15) it lists 640 normalized solutions (apsp VALID on one, 352 vertices).
