@@ -1,0 +1,74 @@
+group psl 59 x Z_41, N=4209060, identity 70151, H order 59, rows 71340, threads 1, setup 0.13s
+wide rows: HW order 246, rows 17110, setup 0.24s
+alpha: conj by mat(8,14,10,25) (index 26914), z -> 10 z on Z_41
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 29 (+e); mu = 42.40, mu/k = 8.48, fixed-point misses ~ 6.01
+ORBW=5: an uncovered fixed element weighs 5; start energy 200
+start cost=168
+t=30 steps=456 evals=3649 cost=15 best=15 T=0.53 energy=15 bestE=15
+t=60 steps=903 evals=7225 cost=10 best=10 T=0.19 energy=10 bestE=10
+t=90 steps=1344 evals=10753 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=120 steps=1719 evals=13753 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=150 steps=2160 evals=17281 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=180 steps=2600 evals=20801 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=210 steps=3037 evals=24297 cost=49 best=10 T=1.35 energy=65 bestE=10
+t=240 steps=3472 evals=27777 cost=35 best=10 T=0.48 energy=35 bestE=10
+t=270 steps=3902 evals=31217 cost=8 best=10 T=0.17 energy=20 bestE=10
+t=300 steps=4367 evals=34937 cost=8 best=10 T=0.15 energy=20 bestE=10
+t=330 steps=4887 evals=39097 cost=8 best=10 T=0.15 energy=20 bestE=10
+t=360 steps=5339 evals=42713 cost=37 best=10 T=1.34 energy=45 bestE=10
+t=390 steps=5777 evals=46217 cost=22 best=10 T=0.48 energy=30 bestE=10
+t=420 steps=6227 evals=49817 cost=22 best=10 T=0.17 energy=30 bestE=10
+t=450 steps=6706 evals=53649 cost=22 best=10 T=0.15 energy=30 bestE=10
+t=480 steps=7179 evals=57433 cost=21 best=10 T=0.15 energy=25 bestE=10
+t=510 steps=7615 evals=60921 cost=57 best=10 T=1.34 energy=65 bestE=10
+t=541 steps=8060 evals=64481 cost=27 best=10 T=0.47 energy=35 bestE=10
+t=571 steps=8532 evals=68257 cost=15 best=10 T=0.17 energy=35 bestE=10
+t=601 steps=8995 evals=71961 cost=21 best=10 T=0.15 energy=25 bestE=10
+t=631 steps=9459 evals=75673 cost=21 best=10 T=0.15 energy=25 bestE=10
+t=661 steps=9896 evals=79169 cost=66 best=10 T=1.33 energy=70 bestE=10
+t=691 steps=10381 evals=83049 cost=21 best=10 T=0.47 energy=25 bestE=10
+t=721 steps=10848 evals=86785 cost=21 best=10 T=0.17 energy=25 bestE=10
+t=751 steps=11335 evals=90681 cost=17 best=10 T=0.15 energy=25 bestE=10
+t=781 steps=11804 evals=94433 cost=17 best=10 T=0.15 energy=25 bestE=10
+t=811 steps=12256 evals=98049 cost=28 best=10 T=1.33 energy=40 bestE=10
+t=841 steps=12712 evals=101697 cost=22 best=10 T=0.47 energy=30 bestE=10
+t=871 steps=13176 evals=105409 cost=22 best=10 T=0.17 energy=30 bestE=10
+t=901 steps=13650 evals=109201 cost=22 best=10 T=0.15 energy=30 bestE=10
+t=931 steps=14113 evals=112905 cost=22 best=10 T=0.15 energy=30 bestE=10
+t=961 steps=14572 evals=116577 cost=42 best=10 T=1.32 energy=50 bestE=10
+t=991 steps=15041 evals=120329 cost=15 best=10 T=0.47 energy=15 bestE=10
+t=1021 steps=15503 evals=124025 cost=15 best=10 T=0.17 energy=15 bestE=10
+t=1051 steps=15946 evals=127569 cost=15 best=10 T=0.15 energy=15 bestE=10
+t=1081 steps=16409 evals=131273 cost=15 best=10 T=0.15 energy=15 bestE=10
+t=1111 steps=16831 evals=134649 cost=34 best=10 T=1.32 energy=50 bestE=10
+t=1141 steps=17310 evals=138481 cost=10 best=10 T=0.46 energy=10 bestE=10
+t=1171 steps=17786 evals=142289 cost=10 best=10 T=0.16 energy=10 bestE=10
+t=1201 steps=18256 evals=146049 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=1231 steps=18714 evals=149713 cost=10 best=10 T=0.15 energy=10 bestE=10
+t=1261 steps=19179 evals=153433 cost=28 best=10 T=1.31 energy=40 bestE=10
+t=1291 steps=19649 evals=157193 cost=25 best=10 T=0.46 energy=25 bestE=10
+t=1322 steps=20093 evals=160745 cost=13 best=10 T=0.16 energy=25 bestE=10
+t=1352 steps=20572 evals=164577 cost=13 best=10 T=0.15 energy=25 bestE=10
+t=1382 steps=21025 evals=168201 cost=20 best=10 T=0.15 energy=20 bestE=10
+t=1412 steps=21472 evals=171777 cost=47 best=10 T=1.30 energy=55 bestE=10
+t=1442 steps=21926 evals=175409 cost=27 best=10 T=0.46 energy=35 bestE=10
+t=1472 steps=22382 evals=179057 cost=27 best=10 T=0.16 energy=35 bestE=10
+t=1502 steps=22835 evals=182681 cost=27 best=10 T=0.15 energy=35 bestE=10
+t=1532 steps=23278 evals=186225 cost=20 best=10 T=0.15 energy=20 bestE=10
+t=1562 steps=23706 evals=189649 cost=47 best=10 T=1.30 energy=55 bestE=10
+t=1592 steps=24167 evals=193337 cost=36 best=10 T=0.46 energy=40 bestE=10
+t=1622 steps=24650 evals=197201 cost=26 best=10 T=0.16 energy=30 bestE=10
+t=1652 steps=25149 evals=201193 cost=26 best=10 T=0.15 energy=30 bestE=10
+t=1682 steps=25637 evals=205097 cost=16 best=10 T=0.15 energy=20 bestE=10
+t=1712 steps=26142 evals=209137 cost=35 best=10 T=1.30 energy=35 bestE=10
+t=1742 steps=26603 evals=212825 cost=40 best=10 T=0.46 energy=40 bestE=10
+t=1772 steps=27079 evals=216633 cost=13 best=10 T=0.16 energy=25 bestE=10
+t=1802 steps=27549 evals=220393 cost=13 best=10 T=0.15 energy=25 bestE=10
+t=1832 steps=28014 evals=224113 cost=13 best=10 T=0.15 energy=25 bestE=10
+RESULT d=10 D=9 group=psl 59 x Z_41 N=4209060 best=0 evals=226153 time=1848.7 orbit k=5 m=2 f=0 fix=29
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/d10D9_round2/d10D9_psl_59_41_orb5f0_ORBW5RESTART1_s12.txt
+n = 8418120 edges = 42090600 max degree = 10 min degree = 10 duplicate edges = 0
+edge list sha256 = 4fd054322f8ab27f06f42e4673ca5ef6a302a9f258b150fd5a50a644f0d8ccd1
+VALID d=10 D=9 group=psl 59 x Z_41 N=4209060 vertices=8418120
