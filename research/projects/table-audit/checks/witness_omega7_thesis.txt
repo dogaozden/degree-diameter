@@ -1,0 +1,12 @@
+# (10,8) = 1,176,480: Gomez's Omega H(7) with the thesis's same-label wiring has diameter >= 9.  Witness pair.
+# Build: tools/moore_build.c `moore_build h 7 h7.txt`; omega/omega_eval.c `omega_eval h7.txt ababa LLLLL id 8 one:980400 om7_id.edges`
+#   (labelling "id": every copy marks point t and line t in row t, i.e. sigma = index pairing; types ababa, inner = lines, reading 1).
+# Vertex ids (omega_model.h): copy c local v = c*39216 + v (points 0..19607, lines 19608..39215); hub (t,bar,k) = 980400 + 10t + 5bar + k.
+# Source 980400 = hub (t=0, k=0, unbarred); target 20073 = copy 0, line 465 (copy 0 is not adjacent to hub k=0).
+# Independent checks: research/d12D8/omega/bfs1.c (plain BFS on the written edge list, other session's code) and
+#   omega/omega_verify.py (wiring re-derived from Fig. 2.21 in Python):
+q=7 types=ababa inner=LLLLL lab=id n=1176480 edges=5882400 degree min=10 max=10 sources=1 far(>8)=136485 maxecc=9 witness d(980400,20073)>8
+source 980400: eccentricity 9; counts 1 10 84 636 4509 33628 231315 417481 352331 136485
+d(980400, 20073) = 9
+q-hexagon n=19608 types=ababa inner=LLLLL: vertices 1176480 (= 5(alpha+1)|H| = 1176480), edges expected 5882400, in file 5882400, equal: True
+# The same holds for every pairing sigma and every q in the table (tools/omega_bound.py counting bound; own-12-8 checked Omega H(9) exactly).
