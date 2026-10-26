@@ -1,0 +1,16 @@
+group psl 81 poly x^4+x+2 x Z_121, N=32147280, identity 392040, H order 55, rows 584496, threads 1, setup 3.11s
+wide rows: HW order 242, rows 132840, setup 5.92s
+alpha: conj by mat(17,67,61,27) (index 87460), z -> 3 z on Z_121
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 39 (+e); mu = 41.60, mu/k = 8.32, fixed-point misses ~ 2.66
+start cost=52
+t=31 steps=46 evals=369 cost=13 best=13 T=0.52
+t=61 steps=92 evals=737 cost=6 best=6 T=0.18
+t=91 steps=131 evals=1049 cost=6 best=6 T=0.15
+t=121 steps=175 evals=1401 cost=6 best=6 T=0.15
+t=151 steps=222 evals=1777 cost=6 best=6 T=0.15
+t=182 steps=272 evals=2177 cost=6 best=6 T=0.15
+t=212 steps=324 evals=2593 cost=6 best=6 T=0.15
+RESULT d=10 D=10 group=psl 81 poly x^4+x+2 x Z_121 N=32147280 best=0 evals=2721 time=221.8 orbit k=5 m=2 f=0 fix=39
+full diameter check: OK
+full diameter check after normalising s_0 = e: OK
+wrote runs/raise-d10D10-r3/d10D10_psl_81_121_orb5f0_s3.txt

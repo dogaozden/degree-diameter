@@ -247,3 +247,17 @@ Logs and any solution files: `../../structured/runs/raise-d10D10-r3/`.
 ## Status log
 
 - 2026-10-26 01:18 UTC: s1–s4 launched. About 0.085 s per evaluation per job. Costs after 120 s: 5, 16, 6, 10.
+- 2026-10-26 01:21 UTC: **s3 solved** (no ORBW, seed 3) after 2,721 evaluations, 221.8 s: psl 81 × 121, k = 5, f = 0,
+  μ = 41.6, |Fix| = 39.
+
+## Record
+
+**64,294,560** (+0.7 % over 63,854,520): PSL(2,81) × Z_121, GF(81) = GF(3)[x]/(x⁴+x+2), N = 32,147,280, k = 5, m = 2,
+f = 0. File `../../frontier/sols/d10D10_psl_81_121_orb5f0_s3.txt`. Log `runs/raise-d10D10-r3/d10D10_psl_81_121_orb5f0_s3.log`.
+Checked by:
+- haar_sym's own full check (log: "full diameter check ... OK");
+- `tools/haarcheck_pslq` (new, independent BFS from (e,A) and (e,B)): VALID, all 32,147,280 elements reached on both sides,
+  ecc 10, 14.5 s.
+build_haar2.py not run (above 20M, hours and > 7 GB). The coordinator should re-check.
+
+Note that the no-ORBW run solved where the two ORBW = 5 runs stayed above cost 5 at this point.

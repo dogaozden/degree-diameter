@@ -1,0 +1,14 @@
+group psl 81 poly x^4+x+2 x Z_121, N=32147280, identity 392040, H order 55, rows 584496, threads 1, setup 2.69s
+wide rows: HW order 242, rows 132840, setup 5.80s
+alpha: conj by mat(17,67,61,27) (index 87460), z -> 3 z on Z_121
+ORBIT k=5 m=2 f=0: |Fix(alpha)| = 39 (+e); mu = 41.60, mu/k = 8.32, fixed-point misses ~ 2.66
+ORBW=5: an uncovered fixed element weighs 5; start energy 50
+start cost=42
+t=30 steps=44 evals=353 cost=5 best=5 T=0.52 energy=5 bestE=5
+t=61 steps=91 evals=729 cost=5 best=5 T=0.18 energy=5 bestE=5
+t=91 steps=137 evals=1097 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=122 steps=183 evals=1465 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=152 steps=227 evals=1817 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=182 steps=277 evals=2217 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=213 steps=328 evals=2625 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=243 steps=380 evals=3041 cost=5 best=5 T=0.15 energy=5 bestE=5
