@@ -261,3 +261,8 @@ Checked by:
 build_haar2.py not run (above 20M, hours and > 7 GB). The coordinator should re-check.
 
 Note that the no-ORBW run solved where the two ORBW = 5 runs stayed above cost 5 at this point.
+- 2026-10-26 01:27 UTC: s1, s2 and s4 stopped (same group as the record, nothing to gain). Batch 2 started on the next
+  rung, N > 32,147,280 (2N > 64,294,560), with the no-ORBW setting that solved s3 (`runs/raise-d10D10-r4/`):
+  psl 79 × 131 (N = 32,288,880, μ 44.3, |Fix| 39) seeds 21, 22; psl 71 × 181 (N = 32,384,520, μ 46.3, |Fix| 34)
+  seeds 21, 22; 10,200 s each, THREADS = 1, started 01:27 UTC. Both groups stalled at cost 5 in round 2 with ORBW
+  settings; this batch tests the no-ORBW setting on them.
