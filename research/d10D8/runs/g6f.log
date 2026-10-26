@@ -4,3 +4,6 @@ alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
 ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
 ORBW=3: an uncovered fixed element weighs 3; start energy 351
 start cost=351
+t=30 steps=6351 evals=50809 cost=25 best=24 T=0.37 energy=27 bestE=24
+CHAIN 1 min 24 secs 36 evals 60265 S 74480 524695 2281 515618 177192 259163 135538 246559 221301 208179
+chain 2: fresh start (global best 24)
