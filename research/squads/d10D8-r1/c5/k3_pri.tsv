@@ -1,0 +1,109 @@
+588984	psl	psl 23 97
+589248	pgl	pgl 32 18
+589248	sl	sl 32 18
+589824	heis	heis 32 18
+589874	heis	heis 19 86
+588672	prod:pgl*pgl	prod pgl 3 pgl 7 73
+588672	prod:pgl*pgl	prod pgl 7 pgl 3 73
+588672	prod:pgl*sl	prod pgl 3 sl 7 73
+588672	prod:pgl*sl	prod pgl 7 sl 3 73
+588672	prod:sl*pgl	prod sl 3 pgl 7 73
+588672	prod:sl*pgl	prod sl 7 pgl 3 73
+588672	prod:sl*sl	prod sl 3 sl 7 73
+588672	prod:sl*sl	prod sl 7 sl 3 73
+589560	prod:heis*pgl	prod heis 17 pgl 5 1
+589560	prod:heis*sl	prod heis 17 sl 5 1
+589560	prod:pgl*heis	prod pgl 5 heis 17 1
+589560	prod:sl*heis	prod sl 5 heis 17 1
+589680	prod:heis*pgl	prod heis 3 pgl 7 65
+589680	prod:heis*sl	prod heis 3 sl 7 65
+589680	prod:pgl*heis	prod pgl 7 heis 3 65
+589680	prod:pgl*psl	prod pgl 4 psl 13 9
+589680	prod:pgl*psl	prod pgl 4 psl 27 1
+589680	prod:psl*pgl	prod psl 13 pgl 4 9
+589680	prod:psl*pgl	prod psl 27 pgl 4 1
+589680	prod:psl*psl	prod psl 13 psl 3 45
+589680	prod:psl*psl	prod psl 13 psl 5 9
+589680	prod:psl*psl	prod psl 27 psl 5 1
+589680	prod:psl*psl	prod psl 3 psl 13 45
+589680	prod:psl*psl	prod psl 5 psl 13 9
+589680	prod:psl*psl	prod psl 5 psl 27 1
+589680	prod:psl*sl	prod psl 13 sl 4 9
+589680	prod:psl*sl	prod psl 27 sl 4 1
+589680	prod:sl*heis	prod sl 7 heis 3 65
+589680	prod:sl*psl	prod sl 4 psl 13 9
+589680	prod:sl*psl	prod sl 4 psl 27 1
+589824	prod:heis*heis	prod heis 16 heis 2 18
+589824	prod:heis*heis	prod heis 2 heis 16 18
+589824	prod:heis*heis	prod heis 4 heis 8 18
+589824	prod:heis*heis	prod heis 8 heis 4 18
+590964	prod:heis*psl	prod heis 11 psl 3 37
+590964	prod:psl*heis	prod psl 3 heis 11 37
+591360	prod:heis*pgl	prod heis 2 pgl 11 56
+591360	prod:heis*pgl	prod heis 4 pgl 11 7
+591360	prod:heis*pgl	prod heis 4 pgl 5 77
+591360	prod:heis*psl	prod heis 4 psl 11 14
+591360	prod:heis*sl	prod heis 2 sl 11 56
+591360	prod:heis*sl	prod heis 4 sl 11 7
+591360	prod:heis*sl	prod heis 4 sl 5 77
+591360	prod:pgl*heis	prod pgl 11 heis 2 56
+591360	prod:pgl*heis	prod pgl 11 heis 4 7
+591360	prod:pgl*heis	prod pgl 5 heis 4 77
+591360	prod:psl*heis	prod psl 11 heis 4 14
+591360	prod:sl*heis	prod sl 11 heis 2 56
+591360	prod:sl*heis	prod sl 11 heis 4 7
+591360	prod:sl*heis	prod sl 5 heis 4 77
+592000	prod:heis*heis	prod heis 4 heis 5 74
+592000	prod:heis*heis	prod heis 5 heis 4 74
+589824	prod3:heis*heis*heis	prod prod heis 2 heis 2 heis 8 18
+589824	prod3:heis*heis*heis	prod prod heis 2 heis 4 heis 4 18
+589824	prod3:heis*heis*heis	prod prod heis 4 heis 2 heis 4 18
+589824	prod3:heis*heis*heis	prod prod heis 8 heis 2 heis 2 18
+589824	prod3:heis*psl*psl	prod prod heis 16 psl 3 psl 3 1
+589824	prod3:psl*psl*heis	prod prod psl 3 psl 3 heis 16 1
+590976	prod3:heis*pgl*pgl	prod prod heis 3 pgl 3 pgl 3 38
+590976	prod3:heis*pgl*sl	prod prod heis 3 pgl 3 sl 3 38
+590976	prod3:heis*psl*pgl	prod prod heis 3 psl 3 pgl 3 76
+590976	prod3:heis*psl*sl	prod prod heis 3 psl 3 sl 3 76
+590976	prod3:heis*sl*pgl	prod prod heis 3 sl 3 pgl 3 38
+590976	prod3:heis*sl*sl	prod prod heis 3 sl 3 sl 3 38
+590976	prod3:pgl*pgl*heis	prod prod pgl 3 pgl 3 heis 3 38
+590976	prod3:pgl*psl*heis	prod prod pgl 3 psl 3 heis 3 76
+590976	prod3:pgl*sl*heis	prod prod pgl 3 sl 3 heis 3 38
+590976	prod3:psl*pgl*heis	prod prod psl 3 pgl 3 heis 3 76
+590976	prod3:psl*sl*heis	prod prod psl 3 sl 3 heis 3 76
+590976	prod3:sl*pgl*heis	prod prod sl 3 pgl 3 heis 3 38
+590976	prod3:sl*psl*heis	prod prod sl 3 psl 3 heis 3 76
+590976	prod3:sl*sl*heis	prod prod sl 3 sl 3 heis 3 38
+591360	prod3:heis*heis*pgl	prod prod heis 2 heis 2 pgl 11 7
+591360	prod3:heis*heis*pgl	prod prod heis 2 heis 2 pgl 5 77
+591360	prod3:heis*heis*psl	prod prod heis 2 heis 2 psl 11 14
+591360	prod3:heis*heis*sl	prod prod heis 2 heis 2 sl 11 7
+591360	prod3:heis*heis*sl	prod prod heis 2 heis 2 sl 5 77
+591360	prod3:pgl*heis*heis	prod prod pgl 11 heis 2 heis 2 7
+591360	prod3:pgl*heis*heis	prod prod pgl 5 heis 2 heis 2 77
+591360	prod3:psl*heis*heis	prod prod psl 11 heis 2 heis 2 14
+591360	prod3:sl*heis*heis	prod prod sl 11 heis 2 heis 2 7
+591360	prod3:sl*heis*heis	prod prod sl 5 heis 2 heis 2 77
+592000	prod3:heis*heis*heis	prod prod heis 2 heis 2 heis 5 74
+592000	prod3:heis*heis*heis	prod prod heis 5 heis 2 heis 2 74
+588245	meta-k7	meta 84035 7 12006 1
+588252	meta-k4	meta 21009 4 1832 7
+588264	meta-k3	meta 196088 3 19577 1
+588357	meta-k3	meta 9339 3 7030 21
+588420	meta-k2	meta 14010 2 14009 21
+588568	meta-k2	meta 294284 2 294283 1
+588595	meta-k5	meta 16817 5 470 7
+588690	meta-k2	meta 9495 2 9494 31
+588696	meta-k3	meta 196232 3 77113 1
+588896	meta-k4	meta 21032 4 10515 7
+588924	meta-k4	meta 7749 4 3968 19
+589020	meta-k6	meta 98170 6 18679 1
+589180	meta-k4	meta 147295 4 29458 1
+589768	meta-k2	meta 294884 2 294883 1
+590274	meta-k3	meta 196758 3 45187 1
+590480	meta-k2	meta 295240 2 147619 1
+590688	meta-k4	meta 2637 4 431 56
+590938	meta-k2	meta 15551 2 15550 19
+591032	meta-k4	meta 11366 4 11365 13
+592000	meta-k2	meta 8000 2 3999 37
