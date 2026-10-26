@@ -96,3 +96,7 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
   -> r4/tabu.sh (cumulative HARDPAIR walk) from a 1-2 pair state. Several fresh basins are needed: FR5 stalled at 12,
   S5 at 1 (its last pair on the converted flag's own freed point is nu-only and exactly isolated), FR5b closed.
 - Fourth conversion from 4,842 started at 02:33: {1,6,5,4}, {1,6,5,7}, {1,6,5,0} (runs/G4_*).
+- 03:10 UTC: flags 4, 7, 0 as fourth conversion leave the crowded point 65 with a coverage hole (not closable);
+  flag 2 is clean: {1,6,5,2} basins G4_2 (14 coset-0 after two passes) and G4_2b (115 after coverage), tabu walkers
+  TB11/TB12 running from G4_2 (r4/runs/G4_2_f.sol + runs/G4_2_c0b.sol). To resume:
+  `./tabu.sh runs/G4_2_f.sol runs/G4_2_c0b.sol "1 6 5 2" "" TBx SEED 20` from r4/ (needs BASE graph 4,842).
