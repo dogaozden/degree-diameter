@@ -1,0 +1,8 @@
+# Pairs at distance 9 in Gomez's Omega H_9 (4,650,100 vertices, 12-regular), as built by omega.c from hex_q9.txt (hexq6 9).
+# Vertex ids: copy c (0..29; block B = c div 5, types aaabbb), local v (points 0..66429, lines 66430..132859): c*132860 + v;
+# new vertex (t, k) / (t, kbar): 3985800 + 10*t + 5*bar + k.
+# graph            source    target    distance  what
+om9_r2.txt         3986710   0         9         new (t=91,k=0) [reading 2: on point 91 in copies 1,4 of each a-block, 3,4 of each b-block] -> point 0 in copy 0; d_H(91,0)=6
+om9_r1s.txt        92        3985825   9         point 92 in copy 0 -> new (t=2,kbar=0) [reading 1, Singer pairing: on point 2 in a-copies 2,3, on line sigma(2) in b-copies 4,1]
+# re-check:  ./hexq6 9 hex_q9.txt; ./omega hex_q9.txt aaabbb 2 om9_r2.txt; ./bfs1 om9_r2.txt 3986710 0
+#            python3 sigma.py hex_q9.txt singer sig_q9_singer.txt haut_q9.npy (after haut.py); ./omega hex_q9.txt aaabbb 1 om9_r1s.txt sig_q9_singer.txt; ./bfs1 om9_r1s.txt 92 3985825
