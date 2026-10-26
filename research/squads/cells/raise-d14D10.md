@@ -54,7 +54,10 @@ PSL(2,151) x Z_397 (34.2, fix 74), PSL(2,139) x Z_511 (36.7, fix 67).
   FAST=2 attempt was OOM-killed (see Memory above).
 - PSL(2,113) x Z_937 (N 675,944,304, mu 28.1, fix 56), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
   4,577 evals (cost 9 until about 1,700 s, 3 from about 3,000 s).
-- PSL(2,149) x Z_409 (N 676,445,100, mu 28.5, fix 74): running since 04:36 UTC.
+- PSL(2,149) x Z_409 (N 676,445,100, mu 28.5, fix 74), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
+  2,401 evals (cost 3 from about 1,600 s on).
+- PSL(2,163) x Z_313 (N 677,736,396, mu 29.5, fix 80), FAST=1 THREADS=2 seed 3, 3600 s: running since 06:07 UTC. Seed 2
+  with FAST=2 reached best 1 in round 2.
 
 ## Round 2 summary (for reference)
 
