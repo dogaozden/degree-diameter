@@ -202,3 +202,10 @@ sends prime-power headers to hcsl/hc2 (prime-only); a prime-power solve must be 
 | sl 67 × Z_553 | 166,284,888 | 28.0 | RESTART=1 | 7 | 5,169 |
 | psl 71 × Z_931 | 166,574,520 | 28.8 | RESTART=1 | 9 | 5,769 |
 | sl 81 × Z_313 (prime power) | 166,315,680 | 28.1 | default | 9 at 2,365 s | 2,105 |
+
+**New record: 332,797,296 vertices** = 2 · |SL(2,157) × Z_43|, N = 166,398,648, seed 4, default weight, 1,553 evals, 2,047 s,
+μ ≈ 28.3, |Fix| = 155 (k = 3, m = 4, f = 0). Beats 332,158,176 (sl 73 × Z_427) by +0.19 %.
+- File: `../../frontier/sols/d12D10_sl_157_43_orb3f0_s4.txt`; log: `../../structured/spool_r4/05-340-sl_157_43/`.
+- Checks: haar_sym's full diameter check (both generators reach all N within 10; normalised s₀ = e); independent
+  `tools/hcsl` and `tools/hc2` (run by the queue and again by hand): both VALID, eccA = eccB = 10.
+- Not checked: build_haar2.py (above 20M vertices); the coordinator re-checks.
