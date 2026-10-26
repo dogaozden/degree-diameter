@@ -1,0 +1,7 @@
+group prod psl 7 sl 7 x Z_5, N=282240, identity 35490, H order 60, rows 4704, threads 1, setup 0.01s
+wide rows: HW order 210, rows 1344, setup 0.02s
+alpha: conj by prod[mat(1,6,5,3);mat(3,6,1,0)] (index 23031), z -> 2 z on Z_5
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 31 (+e); mu = 57.90, mu/k = 14.47, fixed-point misses ~ 3.83
+ORBW=4: an uncovered fixed element weighs 4; start energy 112
+start cost=97
+t=30 steps=12226 evals=97809 cost=22 best=13 T=0.53 energy=22 bestE=16

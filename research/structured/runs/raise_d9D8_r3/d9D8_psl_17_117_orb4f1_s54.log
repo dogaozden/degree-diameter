@@ -1,0 +1,6 @@
+group psl 17 x Z_117, N=286416, identity 15912, H order 52, rows 5508, threads 1, setup 0.01s
+wide rows: HW order 234, rows 1224, setup 0.02s
+alpha: conj by mat(5,8,10,6) (index 1438), z -> 8 z on Z_117
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 7 (+e); mu = 66.50, mu/k = 16.62, fixed-point misses ~ 0.99
+start cost=1316
+t=30 steps=21018 evals=168145 cost=24 best=23 T=0.53

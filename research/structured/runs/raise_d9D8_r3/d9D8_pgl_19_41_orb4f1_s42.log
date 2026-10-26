@@ -1,0 +1,35 @@
+group pgl 19 x Z_41, N=280440, identity 0, H order 41, rows 6840, threads 1, setup 0.02s
+wide rows: HW order 246, rows 1140, setup 0.04s
+alpha: conj by mat(0,1,4,12) (index 6567), z -> 9 z on Z_41
+ORBIT k=4 m=2 f=1: |Fix(alpha)| = 19 (+e); mu = 54.47, mu/k = 13.62, fixed-point misses ~ 2.36
+start cost=310
+t=30 steps=17315 evals=138521 cost=55 best=53 T=0.53
+t=60 steps=34185 evals=273481 cost=53 best=53 T=0.19
+t=90 steps=47340 evals=378721 cost=53 best=53 T=0.15
+t=120 steps=60051 evals=480409 cost=53 best=53 T=0.15
+t=150 steps=73867 evals=590937 cost=53 best=53 T=0.15
+t=180 steps=86334 evals=690673 cost=59 best=53 T=0.58
+t=210 steps=98609 evals=788873 cost=58 best=53 T=0.21
+t=240 steps=111218 evals=889745 cost=57 best=53 T=0.15
+t=270 steps=125971 evals=1007769 cost=57 best=53 T=0.15
+t=300 steps=143711 evals=1149689 cost=57 best=53 T=0.15
+t=330 steps=160451 evals=1283609 cost=61 best=53 T=0.58
+t=360 steps=178149 evals=1425193 cost=53 best=53 T=0.21
+t=390 steps=196640 evals=1573121 cost=53 best=53 T=0.15
+t=420 steps=217000 evals=1736001 cost=53 best=53 T=0.15
+t=450 steps=236700 evals=1893601 cost=53 best=53 T=0.15
+t=480 steps=256704 evals=2053633 cost=53 best=53 T=0.58
+t=510 steps=276040 evals=2208321 cost=53 best=53 T=0.21
+t=540 steps=294381 evals=2355049 cost=53 best=53 T=0.15
+t=570 steps=313369 evals=2506953 cost=53 best=53 T=0.15
+t=600 steps=330280 evals=2642241 cost=53 best=53 T=0.15
+t=630 steps=347145 evals=2777161 cost=61 best=53 T=0.58
+t=660 steps=363175 evals=2905401 cost=56 best=53 T=0.21
+t=690 steps=382129 evals=3057033 cost=56 best=53 T=0.15
+t=720 steps=398696 evals=3189569 cost=56 best=53 T=0.15
+t=750 steps=415330 evals=3322641 cost=56 best=53 T=0.15
+t=780 steps=433501 evals=3468009 cost=48 best=48 T=0.58
+t=810 steps=451215 evals=3609721 cost=48 best=48 T=0.21
+t=840 steps=470414 evals=3763313 cost=48 best=48 T=0.15
+t=870 steps=490165 evals=3921321 cost=48 best=48 T=0.15
+RESULT d=9 D=8 group=pgl 19 x Z_41 N=280440 best=48 evals=4076177 time=900.0 orbit k=4 m=2 f=1 fix=19
