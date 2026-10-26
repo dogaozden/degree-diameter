@@ -22,9 +22,20 @@ def eid(G, kind, i):
     return i if kind == 'P' else G.np + i
 
 
-def build(G, types, M, R=None, Bhubs=(), Ahubs=(), Y=(), check_slots=True):
+def rotational_arcs(n_lev):
+    r = (n_lev - 1) // 2
+    return [(j, (j + k) % n_lev) for j in range(n_lev) for k in range(1, r + 1)]
+
+
+def build(G, types, M, R=None, Bhubs=(), Ahubs=(), Y=(), check_slots=True, arcs=None):
+    """Transitions are keyed by arcs (u, v) of a regular tournament on the levels (default: rotational, u -> u+k).
+    For backward compatibility a key (j, k) with arcs=None means the arc (j, j+k)."""
     n_lev = len(types); r = (n_lev - 1) // 2
     per = G.np + G.nl
+    if arcs is None:
+        keymap = {(j, k): (j, (j + k) % n_lev) for j in range(n_lev) for k in range(1, r + 1)}
+    else:
+        keymap = {a: a for a in arcs}
     edges = []
     for j in range(n_lev):
         base = j * per
@@ -33,9 +44,8 @@ def build(G, types, M, R=None, Bhubs=(), Ahubs=(), Y=(), check_slots=True):
                 edges.append((base + p, base + G.np + l))
     R = R or {}
     freed_slots = {}
-    for j in range(n_lev):
-        for k in range(1, r + 1):
-            t = (j, k); j2 = (j + k) % n_lev
+    for t, (j, j2) in keymap.items():
+        if True:
             ka = Aset(G, types[j]); kb = 'L' if types[j2] == 'H' else 'P'
             Mt = M[t]; Rt = R.get(t, ())
             size = G.np if ka == 'P' else G.nl
@@ -55,7 +65,7 @@ def build(G, types, M, R=None, Bhubs=(), Ahubs=(), Y=(), check_slots=True):
         assert levs == list(range(n_lev)), 'B-hub %d must have one slot per level' % h
         for (j, a, t) in slots:
             if check_slots:
-                assert t[0] == j and a in R.get(t, ()), (h, j, a, t)
+                assert keymap[t][0] == j and a in R.get(t, ()), (h, j, a, t)
                 key = ('A', t, a); assert key not in used, key; used.add(key)
             ka = Aset(G, types[j])
             edges.append((hv, j * per + eid(G, ka, a)))
@@ -67,7 +77,7 @@ def build(G, types, M, R=None, Bhubs=(), Ahubs=(), Y=(), check_slots=True):
         for (j, b, t) in slots:
             kb = 'L' if types[j] == 'H' else 'P'
             if check_slots:
-                i, k = t; assert (i + k) % n_lev == j
+                assert keymap[t][1] == j
                 a = [x for x in R.get(t, ()) if M[t][x] == b]
                 assert a, (g, j, b, t)
                 key = ('B', t, a[0]); assert key not in used, key; used.add(key)
