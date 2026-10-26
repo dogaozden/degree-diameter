@@ -424,3 +424,26 @@ Any solve in wave 5 beats the record (18,666,480).
 | w6d | sl 79 × Z19 | 9,366,240 | plain | 4 |
 
 Any solve in wave 6 beats the record (18,666,480).
+
+### Wave 6 result: no solve (5400 s each, 04:55–06:25 UTC)
+
+| job | group | μ | flags | seed | evals | best cost |
+|---|---|---|---|---|---|---|
+| w6a | psl 59 × Z91 | 49.3 | ORBW=3 | 3 | 6.4·10⁵ | 9 |
+| w6b | psl 59 × Z91 | 49.3 | plain | 4 | 6.4·10⁵ | 7 |
+| w6c | sl 79 × Z19 | 51.0 | ORBW=3 | 3 | 5.9·10⁵ | 9 |
+| w6d | sl 79 × Z19 | 51.0 | plain | 4 | 6.0·10⁵ | 6 |
+
+### Where the cell stands at the end of round 3
+
+- **Record for this branch: 18,666,480** = 2·|PSL(2,41) × Z271|, k = 5, m = 3, f = 0, seed 1 (`research/frontier/sols/d15D8_psl_41_271_orb5f0_ORBW5_s1.txt`).
+  Earlier round-3 records: 18,403,200 (prod psl 9 × psl 9 × Z71, k = 5) and 18,510,720 (pgl 31 × Z311, k = 5); both are superseded.
+- The round-3 gains all came from **k = 5 orbit types** (m = 3, f = 0), which round 1 and 2 never tried. Round 3 solved three k = 5 groups in
+  a row, at μ 40.4, 43.6 and 48.7. The k = 5 wall is higher than the k = 3 wall (about μ 40).
+- **No candidate above the record has a viable profile now.** Above N = 9,333,240, every k = 5 group either has a large |Fix(α)| (sl 211 × Z1,
+  pgl 211 × Z1, prod psl 3 × psl 25 × Z101: |Fix| 299 or more) or fails to build (no element of order 5). The k = 3 groups at μ 49–51 (psl 59 × Z91,
+  sl 79 × Z19) reached best cost 6 to 9 in four 5400 s runs each (8 runs total), with no solve.
+- **Leads not tried this round:** longer budgets (more than 5400 s) on psl 59 × Z91 and sl 79 × Z19 (the record group needed about 5100 s);
+  SL(3,q)-type groups for k = 5 (STRUCTURE.md §7, item 3); the same k = 5 screen at other 3-orbit configurations on groups with
+  μ 50–55 and |Fix| under 50 (none found in this round's screens).
+- The run logs for every job are under `research/structured/runs/raise_d15D8_r3/out/`.
