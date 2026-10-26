@@ -1,7 +1,7 @@
 #!/bin/bash
 # slot.sh SECONDS CMD...: run CMD on one of NSLOTS CPU slots (default 3), waiting for a free slot; nice 10, timeout SECONDS.
 # Every squad run longer than ~20 s must go through this gate so that each run gets a whole core.
-NS=${NSLOTS:-3}; LD=/tmp/claude-0/-home-user-degree-diameter/6bbfb942-4016-5a09-834c-7684c0cc81b5/scratchpad/slots
+NS=${NSLOTS:-4}; LD=/tmp/claude-0/-home-user-degree-diameter/6bbfb942-4016-5a09-834c-7684c0cc81b5/scratchpad/slots
 mkdir -p $LD; secs=$1; shift
 while true; do
   for i in $(seq 0 $((NS-1))); do

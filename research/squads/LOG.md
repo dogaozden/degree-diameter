@@ -35,7 +35,7 @@ salift_s2 (joint base+voltage annealing, START restarts) and one gated job of <=
 pre-exported. What went wrong: cards started their gated job as a background tool call, and the 30-minute limit on
 background calls killed every job still waiting in the gate queue around 18:20-18:35, so only about 8 of the 15 jobs
 ran (k9 and q1 never started). Lesson: a card's wait in the queue counts against its own background time limit; for
-heavy rounds the director should run the queue himself and use cards for ideas.
+heavy rounds the director should run the compute queue directly and use cards for ideas.
 Best state per card (salift cost; far pairs = cost * N / 2), (3,10) unless noted:
 - k1 4+4 N=102..110: cost 8 at 864. k2 5+5 N=82..86: cost 4 at 820. k3 5+5 N=87..92: 20 at 880. k4 6+6 N=68..72: 4 at 816,
   6 at 864. k5 6+6 N=73..80: 26 at 912. k6 7+7 N=58..63: 6 at 812. k7 8+8 N=51..56: 20 at 832. k8 9+9 N=45..50: 40 at 864.
