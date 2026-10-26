@@ -1,1 +1,10 @@
 submitted batch1 (5 tasks) at 19:28:35
+batch2 (4 tasks) submitted 20:08:06: N91 seeds 2,3; N92 id4; N93 id2
+Results (cost, D=11, p=7, 90 CPU s, seed 1 unless noted):
+  N=91 C91 n=1274 cost 6 (x2_7.sol.best)
+  N=92 id3 D92 n=1288 cost 32; N=92 id4 pending
+  N=93 id1 C31:C3 n=1302 cost 14; N=93 id2 pending
+  N=94 id1 D94 n=1316 cost 44
+  N=95 id1 C95 n=1330 cost 8 (x2_72.sol.best)
+  N=91 seeds 2,3: pending at 20:47
+No valid state. Time box exceeded; queue backlog (341 tasks, ~1 result per 2-4 min).
