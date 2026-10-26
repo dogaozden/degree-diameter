@@ -1,0 +1,7 @@
+group meta 3001 5 1125 x Z_1, N=15005, identity 0, H order 5, rows 3001, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 5); using haar_gen3's evaluation
+start cost=990
+t=30 steps=10786 evals=86289 cost=52 best=52 T=0.53
+t=60 steps=22421 evals=179369 cost=48 best=48 T=0.19
+t=90 steps=33945 evals=271561 cost=48 best=48 T=0.15
+RESULT d=5 D=9 group=meta 3001 5 1125 x Z_1 N=15005 best=48 evals=300361 time=100.0

@@ -1,0 +1,7 @@
+group meta 750 20 7 x Z_1, N=15000, identity 0, H order 60, rows 250, threads 1, setup 0.00s
+wide rows: HW order 250, rows 60, setup 0.01s
+start cost=401
+t=30 steps=255348 evals=2042785 cost=38 best=38 T=0.53
+t=60 steps=508906 evals=4071249 cost=38 best=38 T=0.19
+t=90 steps=740783 evals=5926265 cost=34 best=34 T=0.15
+RESULT d=5 D=9 group=meta 750 20 7 x Z_1 N=15000 best=34 evals=6513337 time=100.0

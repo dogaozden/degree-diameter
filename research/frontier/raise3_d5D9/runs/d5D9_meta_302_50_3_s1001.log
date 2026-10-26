@@ -1,0 +1,7 @@
+group meta 302 50 3 x Z_1, N=15100, identity 0, H order 50, rows 302, threads 1, setup 0.00s
+wide rows: HW order 151, rows 100, setup 0.00s
+start cost=643
+t=30 steps=166509 evals=1332073 cost=18 best=18 T=0.53
+t=60 steps=328857 evals=2630857 cost=18 best=18 T=0.19
+t=90 steps=490908 evals=3927265 cost=18 best=18 T=0.15
+RESULT d=5 D=9 group=meta 302 50 3 x Z_1 N=15100 best=18 evals=4335689 time=100.0

@@ -1,0 +1,7 @@
+group meta 1240 12 57 x Z_1, N=14880, identity 0, H order 62, rows 240, threads 1, setup 0.00s
+wide rows: HW order 248, rows 60, setup 0.00s
+start cost=446
+t=30 steps=255740 evals=2045921 cost=12 best=12 T=0.53
+t=60 steps=512034 evals=4096273 cost=12 best=12 T=0.19
+t=90 steps=764513 evals=6116105 cost=10 best=10 T=0.15
+RESULT d=5 D=9 group=meta 1240 12 57 x Z_1 N=14880 best=10 evals=6771041 time=100.0

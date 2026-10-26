@@ -1,0 +1,7 @@
+group meta 443 34 15 x Z_1, N=15062, identity 0, H order 34, rows 443, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 34); using haar_gen3's evaluation
+start cost=206
+t=30 steps=61395 evals=491161 cost=38 best=38 T=0.53
+t=60 steps=120287 evals=962297 cost=38 best=38 T=0.19
+t=90 steps=179242 evals=1433937 cost=38 best=38 T=0.15
+RESULT d=5 D=9 group=meta 443 34 15 x Z_1 N=15062 best=38 evals=1598361 time=100.0

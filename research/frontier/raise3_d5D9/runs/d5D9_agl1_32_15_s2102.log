@@ -1,0 +1,10 @@
+group agl1 32 poly x^5+x^2+1 x Z_15, N=14880, identity 0, H order 31, rows 480, threads 1, setup 0.00s
+wide rows: HW order 155, rows 96, setup 0.01s
+start cost=4454
+t=30 steps=190777 evals=1526217 cost=148 best=148 T=0.53
+t=60 steps=382858 evals=3062865 cost=154 best=148 T=0.19
+t=90 steps=571756 evals=4574049 cost=154 best=148 T=0.15
+t=120 steps=762285 evals=6098281 cost=154 best=148 T=0.15
+t=150 steps=948723 evals=7589785 cost=154 best=148 T=0.15
+t=180 steps=1148219 evals=9185753 cost=148 best=148 T=0.56
+RESULT d=5 D=9 group=agl1 32 poly x^5+x^2+1 x Z_15 N=14880 best=148 evals=10260361 time=200.0

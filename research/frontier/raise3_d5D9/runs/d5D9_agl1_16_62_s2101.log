@@ -1,0 +1,10 @@
+group agl1 16 poly x^4+x+1 x Z_62, N=14880, identity 0, H order 62, rows 240, threads 1, setup 0.01s
+wide rows: HW order 186, rows 80, setup 0.01s
+start cost=19144
+t=30 steps=194720 evals=1557761 cost=2678 best=2678 T=0.53
+t=60 steps=386334 evals=3090673 cost=2678 best=2678 T=0.19
+t=90 steps=583149 evals=4665193 cost=2678 best=2678 T=0.15
+t=120 steps=780770 evals=6246161 cost=2678 best=2678 T=0.15
+t=150 steps=977391 evals=7819129 cost=2678 best=2678 T=0.15
+t=180 steps=1181495 evals=9451961 cost=2678 best=2678 T=0.58
+RESULT d=5 D=9 group=agl1 16 poly x^4+x+1 x Z_62 N=14880 best=2678 evals=10557569 time=200.0

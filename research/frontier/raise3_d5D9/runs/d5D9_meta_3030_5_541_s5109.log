@@ -1,0 +1,7 @@
+group meta 3030 5 541 x Z_1, N=15150, identity 0, H order 30, rows 505, threads 1, setup 0.01s
+wide rows: HW order 202, rows 75, setup 0.01s
+start cost=3106
+t=30 steps=202843 evals=1622745 cost=60 best=60 T=0.53
+t=60 steps=405134 evals=3241073 cost=60 best=60 T=0.19
+t=90 steps=613766 evals=4910129 cost=62 best=60 T=0.15
+RESULT d=5 D=9 group=meta 3030 5 541 x Z_1 N=15150 best=60 evals=5450089 time=100.0

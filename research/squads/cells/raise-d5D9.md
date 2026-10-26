@@ -184,3 +184,39 @@ Plan (4 cores, 100–150 s per run, seeds distinct per group):
 - Also noted, not yet run: non-prime-power-field AGL(1,q) with q = 4, 8, 9, 16, 25, 32 (non-metacyclic). Their
   cyclic factors are large (n ≥ 62 except q = 25, 32 with n = 25, 15), so they look more like the SL/PSL
   cells than the record groups; low priority.
+
+### Round 3 log (2026-10-26, haar_sym FAST=2, THREADS=1, 4 workers)
+
+- **Stage 1** (`stage1_jobs.txt`, 120 untried metacyclic groups in (14,878, 15,186] with the best screen p1, 100 s each,
+  seed 1001): no solve. Best cost 8 at Z_1491⋊76 (N = 14,910), Z_2129⋊7·933 (14,903), Z_1658⋊9·5 (14,922); the rest
+  mostly 10–20. These untried groups look weaker than the round-2 leads.
+- **Stage 2** (`stage2_jobs.txt`, 8 groups × 6 seeds × 200 s, plus 6 non-metacyclic AGL(1,q) runs): no solve.
+  Best cost 6 at Z_1491⋊76 (N = 14,910), Z_1658⋊9·5 (14,922), Z_496⋊30·7 (14,880). Non-prime-field AGL(1,q) × Z_n
+  (q = 4, 8, 9, 16, 25, 32) is far off: best costs 148 to 20,216 (q = 32 at 148 and q = 25 at 425 are the closest).
+  Closed: this family is not competitive.
+- **Calibration** on the known-solvable Z_346⋊43 (N = 14,878), 120 s runs, 8 seeds per setting: K = 4 best costs
+  4–6 (no solve); K = 8 one cost 2, rest 4–6 (no solve); K = 16 one cost 2, rest 4–8 (no solve). K = 8 is kept.
+  Round 2's solve on this group took 7.8 s at seed 613 out of about 10 runs of 300 s, so the per-run chance at 120 s
+  is far below 1 in 24.
+- **Stage 3** (4 leads × 4 seeds × 300 s): Z_1658⋊9·5 (N = 14,922) reached **cost 2** once (seed of 4 runs), the first
+  cost-2 result above 14,878 in this round. Z_1241⋊12·81 and Z_496⋊30·7 at cost 4; Z_1491⋊76 at 8.
+- **Stage 4** (Z_1658⋊9·5, 12 seeds × 300 s): best 6. The cost-2 result did not repeat: 0 solves in 12 runs.
+- **Stage 5** (next 120 untried groups by p1, 100 s each): stopped after 20 runs. Costs 48–62 in the first 20, so
+  the rest of this block could not reach cost 2 and was killed.
+
+## Where this stands (round 3, end)
+
+- **Record: unchanged at 29,756** (N = 14,878). No new solution file this round. Next bar: |G| ≥ 14,879.
+- **Stopped at about 3 h of the 6 h budget.** Reason: the untried metacyclic pool is exhausted at useful quality. The top
+  120 by screen p1 reach cost 8 at best (100 s runs); the next 20 are at cost 48+; the leads with cost 2–4 history
+  (Z_496⋊30·7, Z_1241⋊12·81, Z_1658⋊9·5) gave 0 solves over about 30 runs of 200–300 s since round 2's 12 runs. The
+  calibration group (N = 14,878) gives one cost-2 hit in 24 runs at 120 s for K = 4, 8, 16.
+- **Closed this round:** non-prime-field AGL(1,q) × Z_n (q = 4, 8, 9, 16, 25, 32), a non-metacyclic family with an
+  elementary-abelian normal subgroup: costs 148 to 20,216. K = 4 is worse than K = 8; K = 16 is no better than K = 8.
+- **Not tried (for the coordinator):** (1) voltage lifts of small base graphs with more than two vertices (the
+  metacyclic lifts route is in research/lifts/); (2) a new group family in haar_gen3 for Z_m ⋊ (non-cyclic abelian H),
+  e.g. Z_m ⋊ (Z_a × Z_b), which is outside metacyclic; (3) groups of order Z_p² ⋊ Z_k (p² k in the window, e.g.
+  Z_11² ⋊ Z_124, Z_17² ⋊ Z_52), which need a new multiplication table; (4) long single runs (1,200 s+) on the cost-2
+  leads, which round 2 found to be the path to a record.
+- Files: research/frontier/raise3_d5D9/ (run_sym.sh, stage1–5 jobs and logs, runs/, untried_window.txt, tried_meta.txt,
+  calib_K*.log). Solver binary built from research/structured/haar_sym.c (gcc -O3 -march=native -fopenmp, FAST=2 default).

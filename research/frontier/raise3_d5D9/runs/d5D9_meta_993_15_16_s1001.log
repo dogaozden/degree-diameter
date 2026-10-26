@@ -2,3 +2,6 @@ group meta 993 15 16 x Z_1, N=14895, identity 0, H order 15, rows 993, threads 1
 wide rows: no cyclic subgroup of order >= 64 found (best 15); using haar_gen3's evaluation
 start cost=424
 t=30 steps=30508 evals=244065 cost=12 best=12 T=0.53
+t=60 steps=60235 evals=481881 cost=12 best=12 T=0.19
+t=90 steps=91337 evals=730697 cost=12 best=12 T=0.15
+RESULT d=5 D=9 group=meta 993 15 16 x Z_1 N=14895 best=12 evals=813073 time=100.0
