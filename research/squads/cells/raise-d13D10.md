@@ -194,3 +194,7 @@ Lesson: ORBW=3 turns the "one uncovered fixed element" stall into a solve, as OR
   Still one uncovered α-fixed element. ORBW=3 did not fix it here; the record-winning SL 137×133 needed 9,402 evals.
 - PSL(2,173) × Z133 (2N 688,613,352, fresh, ORBW=3, seed 1): running from 02:26 UTC, cost 6 at 1,833 evals.
 - PSL(2,281) × Z31 (2N 687,820,560, fresh, ORBW=3, seed 1): running from 02:56 UTC.
+- PSL(2,173) × Z133 (2N 688,613,352, ORBW=3, fresh, seed 1): unsolved, cost 3 after 11,233 evals, 10,804 s.
+- PSL(2,281) × Z31 (2N 687,820,560, ORBW=3, fresh, seed 1): unsolved, cost 3 after 5,121 evals, 10,807 s.
+- PSL(2,241) × Z49 (2N 685,866,720, round-2 checkpoint, ORBW=3, seed 2): started 05:28 UTC from cost 3; result pending
+  (about 07:00 UTC). Not started from fresh: no new rung fits before the round's 6-hour cap.
