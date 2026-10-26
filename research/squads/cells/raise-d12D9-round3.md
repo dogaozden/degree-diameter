@@ -75,3 +75,13 @@ Log: `research/structured/runs/d12D9r3_sl83_31_orbw3_s3.log`.
 - psl 61×157 seed 1 (N 17,813,220): best 12 at 76k evals (t 4,110 s).
 - sl 61×79 seed 1 (N 17,926,680, μ 34.8): started 03:25, best 94 at the first check.
 - psl 47×343 seed 4 (N 17,797,584): started 03:26, best 86 at the first check.
+
+### Batch 2 result (05:24 UTC)
+- psl 61×157 seed 1 (N 17,813,220): unsolved, best 9 at 134k evals (2 h).
+- sl 41×259 seed 1 (N 17,839,920, μ 32.4): unsolved, best 18 at 218k evals (2 h).
+- sl 61×79 seed 1 (N 17,926,680, μ 34.8): best 12 at 206k evals at 2 h; ends unsolved.
+- psl 47×343 seed 4 (N 17,797,584): best 6 at 206k evals at 2 h; ends unsolved (same level as seed 3).
+- psl 53×241 seed 1 (N 17,933,292, μ 34.9): best 18 at 110k evals at t 3,616 s; still running at the time of writing.
+
+### Batch 3 (started 05:27 UTC, 5,700 s each, to end before the 6 h mark)
+- psl 47×343 seeds 5 and 6 (N 17,797,584, μ 31.4): the lowest-μ checkable groups above the bar, after seeds 3 and 4 both stalled at 6.
