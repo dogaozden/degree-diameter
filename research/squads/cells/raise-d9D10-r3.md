@@ -58,3 +58,29 @@ Logs in research/structured/runs/raise9-10-r3/runs/.
 
 Every run stayed at best cost ≥ 5 (raw uncovered orbit units: cost = uncovered/k). Round 1's psl 151×Z7 solve had cost 0
 at 425k evals; no `4 2 1` run reached cost 0 in 230–300k evals. The plateau looks like the round-2 `3 3 0` plateau.
+
+## Final status (06:43 UTC): no new record
+
+All seven psl 169 × Z5 runs (shape `4 2 1`, N = 12,066,600, μ 36.4, μ/k 9.1, |Fix(α)| 83) finished with no solution:
+
+| run | variant | budget | best cost | evals |
+|---|---|---|---|---|
+| s1 | plain | 3.5 h | 13 | 343k |
+| s2 | ORBW=4 | 3 h | 10 (energy 16) | 278k |
+| s3 | RESTART=1 | 3 h | 5 | 280k |
+| s4 | plain | 3 h | 8 | 280k |
+| s5 | RESTART=1 | 1.5 h | 10 | 139k |
+| s6 | RESTART=1 | 1.5 h | 11 | 138k |
+| s7 | RESTART=1 | 1.5 h | 8 | 139k |
+
+Record stays at the round-1 bar (psl 151 × Z7, N = 12,049,800, 24,099,600 vertices). No solution file was written.
+
+What this round shows:
+- Among the shapes that avoid fixed generators (f ≤ 1), only `4 2 1` on psl 169 × Z5 screened near the `3 3 0` pool. Its runs stalled at best cost 5–13 over 139–343k evaluations, the same plateau round 2 found for `3 3 0`.
+- Fixed-generator shapes (`f ≥ 2`) collapse (words in an abelian torus). Involution shapes (`k = 2`) are much worse on the screen.
+- Round 1's psl 151 × Z7 solve reached cost 0 at 425k evaluations; none of the round-3 runs reached cost 0 within 340k.
+
+Suggested next steps (not run):
+- Longer RESTART runs on psl 169 × Z5 (the best seed reached cost 5 in 280k evals), since the plateau has not yet clearly flattened.
+- Targeted moves on uncovered elements (round 2's untried suggestion), or a different α for the psl 169 family.
+- The coordinator should check the round-1 solution (psl 151 × Z7) independently; it is still the bar for this cell.
