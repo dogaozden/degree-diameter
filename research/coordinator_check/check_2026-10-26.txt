@@ -3,3 +3,9 @@ rebuilt on the coordinator's Mac mini with research/frontier/build_haar2.py from
 edge list sha256 72b6de0c53392bc811262e940d92e5e4c4ef1f6947b301c88050d90c0a7cd5a7 (matches the finder's)
 apsp_mt (all pairs, no symmetry, 8 threads): n=2756 edges=12402 degree min=9 max=9 bipartite=yes diameter=5 -> RESULT VALID d=9 D=5 n=2756
 
+== Mon 9:15 AM: rebuilt with build_haar2.py from master's sols and checked with apsp_mt (all pairs, no symmetry):
+(9,5) 2,758 meta 197 7 104: sha256 b7c10d626dd47e0dcb9eaa46c538957a2fa73557c44878c7396553bf2fca735e -> RESULT VALID d=9 D=5 n=2758
+(4,11) 18,480 sl 11 x Z7: sha256 3c96a3026b6a80101ad0f243a49bf211b2d3e33aea3fc70a22b9d1db2cebb203 -> RESULT VALID d=4 D=11 n=18480
+(4,12) 50,160 sl 11 x Z19: sha256 43272e86ab29c20491ead7708ac96d9d28fd2f5a1ad6265c475f608a5b670ab6 -> RESULT VALID d=4 D=12 n=50160
+(5,11) 253,080, (5,12) 912,576, (6,11) 1,971,744: build_haar2 (exact for Haar graphs by the two-source criterion) only; too large for all pairs here.
+
