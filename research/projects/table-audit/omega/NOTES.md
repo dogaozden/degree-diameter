@@ -33,18 +33,23 @@ same automorphism on points and lines, i.e. collineation labellings), relabellin
 automorphism gives back the thesis's same-label graph, so the diameter is 9 (for q ≥ 7 by tools/omega_bound.py, and
 checked at q = 2, 3). A labelling has to scramble rows between copies.
 
-**No counting argument rules labellings out.** `ubound.py` (scratch, copied here as ubound.py) sums, for the worst hub
+**No counting argument rules labellings out.** `ubound.py` (`python3 ubound.py q TYPES INNER`; `ub_all.py` loops over
+all patterns) sums, for the worst hub
 and target copy, the most each route can cover (sphere sizes of H(q)), over every block pattern and inner-class
 choice. The ratio of that sum to n is
 
-| q | α | best pattern | union bound / n |
+| q | α | union bound / n (all patterns about equal) | of which: centre ball, one hop, two hops |
 |---|---|---|---|
-| 3 | 3 | aab | 9.72 |
-| 4 | 3 | aab | 5.67 |
-| 5 | 4 | aabb | 5.73 |
-| 7 | 5 | aaabb | 4.39 |
-| 8 | 5 | aaabb | 3.58 |
-| 9 | 6 | aaabbb | 3.75 |
+| 3 | 3 | 9.37 | 0.33, 4.68, 4.35 |
+| 4 | 3 | 5.52 | 0.25, 3.44, 1.83 |
+| 5 | 4 | 5.62 | 0.20, 3.60, 1.82 |
+| 7 | 5 | 4.30 | 0.14, 3.13, 1.02 |
+| 8 | 5 | 3.58 (before removing duplicate routes) | |
+| 9 | 6 | 3.69 | 0.11, 2.87, 0.71 |
+| 13 | 8 | 3.10 | 0.08, 2.60, 0.42 |
+
+(worst hub/target: an unbarred hub and a type-a copy three steps round the pentagon, opposite-colour targets;
+identical routes through two labels are counted once.)
 
 It stays above 1 (it tends to about 3 as q grows), so counting alone does not decide the question. It does say how
 hard it is: for a random labelling a target is missed with probability about e^(−ratio), which matches what we see
@@ -67,4 +72,27 @@ graph has G as automorphisms and BFS from orbit representatives decides the diam
   labs/q3_aba_LLL_G13_Z5psi.lab, ZMODE=2, 70 s), types aba, inner LLL. Both pass apsp.c (no symmetry assumed) and the
   wiring check (checks/omega_labelled.txt). With table-audit-1's q = 2 result this shows that ΩB₁ can reach D₁ + 2,
   but only with a labelling the thesis does not describe.
-- q = 4, 5: see below (filled in as the runs end).
+- q = 4 (54,600 vertices) and q = 5 (195,300 vertices): **no labelling found.** Twisted-Z₅ × Singer annealing
+  (lead, 25–30 min each) and squad round table-audit-2-r1 (8 strategies, about 15 min each) all stayed near the
+  random level: q = 4 from 18,387 far pairs (390 hub representatives) to about 12,800–13,900; q = 5 from 42,280 (252
+  representatives) to about 35,500–38,000. Pattern scan at q = 5: abab LLLL best, aaab clearly worst. Closed-form
+  structured families (affine maps on the orbits, identical copies, incidence-matched pairs) are no better than random
+  (squad c7). Independent copies (NOZ5) were not better per unit of time.
+- q = 7 (1,176,480 vertices, the (10,8) order): a random labelling with the Singer-cube symmetry (order 19, 1,032
+  orbits) leaves 6,813,773 far pairs from the 2,064 hub representatives (about 3,300 of 1.18 million per hub). A
+  cost evaluation takes about 10 s on this machine, so annealing to 0 is out of reach here.
+
+## Verdict
+
+For the table's q = 7, 8, 9, 11, 13 the thesis's construction as drawn has diameter 9 (INVALID as read; witness in
+checks/witness_omega7_thesis.txt). A free relabelling of the copies can repair it at q = 2, 3. Whether some labelling
+repairs it at q ≥ 4 is open: no counting argument excludes it, random-like labellings miss a fraction of about
+e^(−ratio) of the targets, and local search removes only a third of the misses. A repair at the table's q would need
+a structured labelling whose routes nearly tile each copy; none is known.
+
+## Files
+
+omega_model.h (construction), omega_eval.c (exact far-pair count / diameter, any source set, edge-list output),
+omega_symanneal.c (search; ZMODE, NOZ5, HUBONLY, THREADS), omega_profile.c (where far pairs are), omega_verify.py
+(independent wiring check), hex_aut.py (Singer-type automorphisms of H(q) from moore_build coordinates), ubound.py /
+ub_all.py (union bound), labs/ (the two q = 3 labellings).

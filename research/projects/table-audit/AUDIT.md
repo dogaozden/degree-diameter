@@ -204,3 +204,50 @@ their exact order.
 - (5,7) = 3,110 equals the Moore bound of (7,5). It is the same in every revision and in the survey, and a Haar graph
   of Z311 ⋊ Z5 with exactly 3,110 vertices and diameter 7 was found here (graphs/d5D7_n3110_*.sol), so the value is
   genuine.
+
+## 7. Round 2 (2026-10-26, table-audit-2)
+
+Brief: decide whether any labelling makes ΩH_q diameter 8; trace (13,8), (16,5) and the small cells; rebuild what is
+left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
+
+**D = 8 cells (Gómez's ΩH_q).**
+- As drawn (same row label in every copy) the graph has diameter 9 at every table q: counting bound
+  (tools/omega_bound.py, any pairing σ), ΩH₇ at the (10,8) order with an explicit witness pair, d(980400, 20073) = 9,
+  re-checked by an independent BFS and an independent wiring check (checks/witness_omega7_thesis.txt); ΩH₉ exactly 9
+  on branch own-12-8. Verdict for (10,8), (11,8), (12,8), (14,8), (15,8), (16,8): **INVALID as read**.
+- With a free labelling of every copy (each copy marks its own point and line per row; not in the thesis) the
+  construction can reach D₁ + 2: ΩH₂ (round 1) and now **ΩH₃: 14,560 vertices, 6-regular, diameter 8**, two
+  labellings found by annealing over labellings equivariant under a Singer-type automorphism of order 13
+  (omega/labs/; apsp.c VALID with no symmetry assumed, and omega_verify.py re-derives the wiring from the figure;
+  checks/omega_labelled.txt).
+- Collineation labellings (every copy moved by an automorphism of H(q)) are the thesis's graph in disguise, so they
+  have diameter 9. Identical labellings inside each block of five (plain Z₅ symmetry) are much worse than random
+  ones (q = 3: 4,617 far pairs from the hub representatives against 34 for a random twisted labelling).
+- q = 4 (54,600 vertices) and q = 5 (195,300): no labelling with diameter 8 found. Annealing with the twisted Z₅ ×
+  Singer symmetry and eight squad variants (focused moves, steepest descent with tabu, late acceptance on a partial
+  cost, greedy construction, pattern scan over block types and inner classes, closed-form affine orbit maps, GA ideas)
+  all stayed near the random level: q = 4 from 18,387 to about 12,800–13,900 far pairs (390 hub representatives),
+  q = 5 from 42,280 to about 35,500–38,000 (252 representatives). Squad log: research/squads/LOG.md, round
+  table-audit-2-r1.
+- q = 7 (the (10,8) order, 1,176,480 vertices): a random labelling with the same symmetry (Singer cube, order 19)
+  leaves 6,813,773 far pairs from the 2,064 hub representatives (about 3,300 per hub); one cost evaluation takes about
+  10 s here, so annealing to 0 was out of reach.
+- No counting argument rules labellings out: the most a hub's routes can cover, summed, is 9.4n (q = 3), 5.5n (4),
+  5.6n (5), 4.3n (7), 3.7n (9), 3.1n (13), with n the number of targets (omega/NOTES.md). For a random labelling a
+  target is missed with probability about e^(−ratio), which matches the far-pair counts above and explains why q = 3
+  was easy and q ≥ 4 is not.
+- Verdict: the six D = 8 values have no checked graph. The construction can work in principle (q ≤ 3), but whether
+  any labelling works at q = 7..13 is open; it would need a structured labelling that nobody has described.
+
+**(13,8) and (16,5).** Still no construction. Pérez-Rosés's thesis (Newcastle 2012, Table 5.1, open on figshare)
+marks the cells that came from Loz's voltage search in bold: exactly the wiki's 39 orange cells. (13,8) and (16,5) are
+not bold; they are in the wiki's first revision (2012) as Delorme–Gómez–Quisquater, whose manuscript Pérez-Rosés
+cites as unpublished (2011). Delorme–Gómez 2002 (EJC) could not be fetched from here (all routes in
+lit/LITERATURE2.md). (13,8) = 15·|H(11)| = 5·(13,7) is not ΩH₁₁ (degree 14).
+
+**Small cells.** Upper bounds are Moore − 6 for (3,7), (3,9), (4,8), (4,9), (6,5) (Feria-Purón–Pineda-Villavicencio
+2012); no exhaustive search or later improvement was found. In the census of cubic vertex-transitive graphs
+(≤ 1280 vertices), every bipartite one on 169–248 vertices has diameter ≥ 8 (1,825 graphs, decoded and checked here),
+so **(3,7) = 168 is optimal among vertex-transitive graphs**; for (3,9) the largest vertex-transitive one of
+diameter ≤ 9 has 506 vertices (graphs with stored diameter ≤ 11 rechecked here; checks/cvt_census.txt). (3,9), (4,8),
+(4,9), (6,5) are bold (Loz) in Pérez-Rosés's table.
