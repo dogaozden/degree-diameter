@@ -85,3 +85,8 @@ Log: `research/structured/runs/d12D9r3_sl83_31_orbw3_s3.log`.
 
 ### Batch 3 (started 05:27 UTC, 5,700 s each, to end before the 6 h mark)
 - psl 47×343 seeds 5 and 6 (N 17,797,584, μ 31.4): the lowest-μ checkable groups above the bar, after seeds 3 and 4 both stalled at 6.
+
+### Batch 2b and batch 3 progress (06:27 UTC)
+- psl 53×241 seed 1 (N 17,933,292, μ 34.9): unsolved, best 15 at 216k evals (2 h).
+- psl 47×343 seed 5 (N 17,797,584): best 12 at 97k evals (t 3,620 s of 5,700).
+- psl 47×343 seed 6: best 12 at 98k evals (t 3,619 s of 5,700).
