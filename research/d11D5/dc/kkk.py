@@ -14,27 +14,49 @@ col = [set() for _ in range(n0)]
 for l in LINES:
     for a in l: col[a].update(l)
 def build(KK, seed, out):
-    K = int(os.environ.get('K', '2')); CYC = os.environ.get('CYC') == '1'; DEG = 2 if CYC else K; rng = random.Random(seed)
-    while True:
-        M = randmat(rng); C = pmap(M)
-        if sum(is_W([C[p] for p in l[:2]]) for l in LINES) < n0: break
-    Cinv = pmap(matinv(M))
-    S = set(R for R in range(n0) if is_W([C[p] for p in LINES[d_pt[R]][:2]]))
-    hs = []; usedR = set(); nearP = set()
-    for k in range(K * KK):
-        best, bw = None, -1
-        for _ in range(3000):
-            a, b = rng.sample(range(n0), 2)
-            if not Bf(PTS[a], PTS[b]): continue
-            h = sorted(span(PTS[a], PTS[b]))
-            if set(h) & usedR: continue
-            Ls = [d_pt[R] for R in h]
-            pass
-            w = len(S & set(h)) + rng.random() * 0.5
-            if w > bw: best, bw = h, w
-        if best is None: print('no h', k); return None
-        hs.append(best); usedR.update(best)
-        for R in best: nearP.update(LINES[d_pt[R]])
+    K = int(os.environ.get('K', '2')); CYC = os.environ.get('CYC') == '1'; rng = random.Random(seed)
+    PAT = os.environ.get('PAT')
+    if PAT:
+        inc = [tuple(map(int, e.split('-'))) for e in PAT.split(',')]
+        K = 1 + max(max(i for i, j in inc), max(j for i, j in inc)); KK = 1
+        dpt = [sum(1 for i, j in inc if i == a) for a in range(K)]; dln = [sum(1 for i, j in inc if j == b) for b in range(K)]
+    elif CYC: inc = [(j, j) for j in range(K)] + [(j, (j - 1) % K) for j in range(K)]
+    else: inc = [(i, j) for i in range(K) for j in range(K)]
+    if not PAT: dpt = [sum(1 for i, j in inc if i == a) for a in range(K)]; dln = [sum(1 for i, j in inc if j == b) for b in range(K)]
+    DEG = 2 if CYC else K
+    if os.environ.get('PLANE') == '1':
+        import k22p
+        M, C, S = k22p.parabolic_C(rng); Cinv = pmap(matinv(M)); S = set(S)
+        P0 = [P for P in S if all(Bf(PTS[P], PTS[R]) == 0 for R in S)][0]
+        R0 = rng.choice([R for R in S if R != P0])
+        hyp = []
+        for R in S:
+            if R in (R0, P0): continue
+            g = frozenset(span(PTS[R0], PTS[R]))
+            if P0 in g or g in hyp: continue
+            hyp.append(g)
+        hs = [sorted(g - {R0}) for g in rng.sample(hyp, K * KK)]   # R0 is never used
+    else:
+        while True:
+            M = randmat(rng); C = pmap(M)
+            if sum(is_W([C[p] for p in l[:2]]) for l in LINES) < n0: break
+        Cinv = pmap(matinv(M))
+        S = set(R for R in range(n0) if is_W([C[p] for p in LINES[d_pt[R]][:2]]))
+        hs = []; usedR = set(); nearP = set()
+        for k in range(K * KK):
+            best, bw = None, -1
+            for _ in range(3000):
+                a, b = rng.sample(range(n0), 2)
+                if not Bf(PTS[a], PTS[b]): continue
+                h = sorted(span(PTS[a], PTS[b]))
+                if set(h) & usedR: continue
+                Ls = [d_pt[R] for R in h]
+                pass
+                w = len(S & set(h)) + rng.random() * 0.5
+                if w > bw: best, bw = h, w
+            if best is None: print('no h', k); return None
+            hs.append(best); usedR.update(best)
+            for R in best: nearP.update(LINES[d_pt[R]])
     L2 = [list(l) for l in LINES]; sig = [d_pt[C[p]] for p in range(n0)]; newl = []; sig_new = []
     usedP = set()
     for b in range(KK):
@@ -44,7 +66,7 @@ def build(KK, seed, out):
             h = hs[K * b + j]
             order = sorted(h, key=lambda R: (R in S, rng.random()))
             Ra = order[0]; jumps.append(Ra)
-            keep = [R for R in sorted(h, key=lambda R: (R not in S, rng.random())) if R != Ra][:9 - DEG]
+            keep = [R for R in sorted(h, key=lambda R: (R not in S, rng.random())) if R != Ra][:9 - dpt[j]]
             tasks += [(news[j], d_pt[R]) for R in keep]
         rng.shuffle(tasks)
         for which, L in tasks:
@@ -54,14 +76,14 @@ def build(KK, seed, out):
             for pool in (good, cand):
                 pool = pool[:]; rng.shuffle(pool)
                 for p in pool:
-                    gs = [g for g in range(K) if len(groups[g]) < 9 - DEG and all(p not in col[q] for q in groups[g])]
+                    gs = [g for g in range(K) if len(groups[g]) < 9 - dln[g] and all(p not in col[q] for q in groups[g])]
                     if not gs: continue
                     g = rng.choice(gs); groups[g].append(p); usedP.add(p)
                     L2[L] = [which if q == p else q for q in L2[L]]; ok = True; break
                 if ok: break
             if not ok: print('no p', b); return None
         lids = [n0 + K * b + j for j in range(K)]; rng.shuffle(lids)
-        for j in range(K): newl.append(groups[j] + ([news[j], news[(j + 1) % K]] if CYC else news))
+        for j in range(K): newl.append(groups[j] + [news[i] for i, jj in inc if jj == j])
         for j in range(K): sig[Cinv[jumps[j]]] = lids[j]
         sig_new += [d_pt[R] for R in jumps]
     sig += sig_new; L2 += newl; n = n0 + K * KK
