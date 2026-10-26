@@ -1,0 +1,24 @@
+group prod sl 4 poly x^2+x+1 sl 16 poly x^4+x+1 x Z_247, N=60465600, identity 12152400, H order 57, rows 1060800, threads 1, setup 1.68s
+wide rows: HW order 247, rows 244800, setup 3.27s
+alpha: conj by prod[mat(1,1,1,0);mat(10,15,11,11)] (index 72155), z -> 68 z on Z_247
+ORBIT k=3 m=4 f=2: |Fix(alpha)| = 44 (+e); mu = 27.18, mu/k = 9.06, fixed-point misses ~ 0.69
+ORBW=3: an uncovered fixed element weighs 3; start energy 489
+start cost=489
+t=30 steps=17 evals=137 cost=32 best=36 T=0.53 energy=36 bestE=36
+t=60 steps=35 evals=281 cost=32 best=36 T=0.19 energy=36 bestE=36
+t=91 steps=53 evals=425 cost=33 best=33 T=0.15 energy=33 bestE=33
+t=121 steps=70 evals=561 cost=33 best=33 T=0.15 energy=33 bestE=33
+t=152 steps=88 evals=705 cost=33 best=33 T=0.15 energy=33 bestE=33
+t=182 steps=105 evals=841 cost=33 best=33 T=0.15 energy=33 bestE=33
+t=213 steps=122 evals=977 cost=26 best=26 T=0.15 energy=30 bestE=30
+t=244 steps=140 evals=1121 cost=26 best=26 T=0.15 energy=30 bestE=30
+t=275 steps=157 evals=1257 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=305 steps=173 evals=1385 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=336 steps=189 evals=1513 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=366 steps=207 evals=1657 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=398 steps=225 evals=1801 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=428 steps=244 evals=1953 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=459 steps=262 evals=2097 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=490 steps=281 evals=2249 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=521 steps=300 evals=2401 cost=30 best=26 T=0.15 energy=30 bestE=30
+t=552 steps=318 evals=2545 cost=30 best=26 T=0.15 energy=30 bestE=30

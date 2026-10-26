@@ -33,6 +33,11 @@ second. Both are far worse than `3 4 2` (p10 37 and 46). So round 3 runs `3 4 2`
 psl 103 × Z109 (seed 1, plain), prod sl 3 × sl 37 × Z49 (seed 1, ORBW 3), psl 89 × Z169 (seed 1, plain),
 psl 73 × Z307 (seed 1, ORBW 3). Queued: the same four groups on seed 2. Results go in the table below.
 
+**Round-3 run table (all runs, auto-generated):** `research/structured/runs/r3/run_table.md`. Summary at 04:50 UTC:
+2 solves on the way up (119,048,832 → 119,124,720 → 120,043,728) out of 19 finished runs in window; every rung above N 60.0 M
+(μ ≥ 24) ended at best cost 6–14 after 3,600 s, with no solve yet (sl 71 × Z169, psl 71 × Z337, psl 83 × Z211, prod sl 3 ×
+sl 29 × Z103, prod sl 3 × sl 71 × Z7, prod sl 4 × sl 16 × Z247 still running or failed).
+
 **Round-3 record (now): 120,043,728 vertices** = 2N, N = 60,021,864 = |SL(2,107) × Z_49| (k = 3, m = 4, f = 2, seed 1, K = 8,
 plain (no ORBW); 25,769 evaluations, 3,326 s, μ = 24.22, |Fix| = 107). Solution
 `research/frontier/sols/d14D9_sl_107_49_orb3_s1.txt`, sha256 c801569a4a333b1d6411d83dcf286e2d0cf2da3da5ed02d7e6e46c047786dea3.
