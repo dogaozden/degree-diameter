@@ -62,3 +62,13 @@ Read research/squads/cells/d10D5.md "Resume 4" first. Two model fixes matter for
    (l_i, t) with t through p_j and hub edge (j ~ i), are covered in every sheet; the coset-0 models now treat them
    as routed (lns2, lns3, dmfast_fd.c).
 Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "FDSET" (true cost; exact BFS at 0).
+
+### State at ~01:30 UTC Oct 26 (resume 4)
+
+- Best verified: still **4,840**.
+- {1,6,5} (4,842 candidate): one bad pair left, (283, 339), state r4/runs/H5best_c.sol with STATE r5/S5.sol, FDSET
+  "1 6 5" (score.sh: SCORE 1 (1, 0, 0); exact BFS: only P283-P339 sheet 3). 283 = freed point of the converted flag 5.
+  Exact nu-only flip tree (r4/fliptree, hub-aware copy of card c8's flip.c): no fix with <= 7 flips (complete).
+  sigma is nearly frozen: single swaps that would route a newly unmixed pair cost +2..+29 in coverage/D1 (measured);
+  hub rewires do not repair that damage.
+- Fresh pipelines with the corrected, hub-aware tools (r4/fresh.sh) started for {1,6,5} (FR5) and {1,6,7} (FR7).
