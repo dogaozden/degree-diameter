@@ -18,8 +18,9 @@ summary = f"""Of the 112 cells (counts from cells.csv{'; checks still running wh
   the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
 - **{len(order)} reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
-  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and {len(loz_o)} Loz cells as Haar graphs of metacyclic
-  groups (§3).
+  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), (13,8) (round 2: a Haar graph
+  of PSL(2,37) × Z105; the DGQ construction itself is not known), and {len(loz_o)} Loz cells as Haar graphs of
+  metacyclic groups (§3).
 - **{len(d8)} INVALID as read**: {', '.join(cell(r) for r in d8)}. Their values are Gómez's ΩH_q (PhD thesis,
   Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
   checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known

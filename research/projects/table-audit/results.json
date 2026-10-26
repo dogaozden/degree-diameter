@@ -461,10 +461,10 @@
  },
  "13,8": {
   "source": "wiki: Delorme-Gomez-Quisquater (unpublished); not in Gomez 1986",
-  "construction": "none traced; value = 15|H(11)| with Delta = q+2",
-  "rebuilt": "no",
-  "check": "",
-  "flag": "no traceable construction",
+  "construction": "Haar graph of psl 37 x Z_105 found here (round 2; graphs/d13D8_n5314680_psl_37_105.sol); not necessarily the holder's graph",
+  "rebuilt": "order",
+  "check": "build_haar2.py + check_haar_indep.py VALID, two-BFS (checks/haar_huge.txt)",
+  "flag": "holder's construction lost; order reproduced",
   "notes": "superseded by a verified repo record; round 2: in the table since the first wiki revision (17 Jan 2012) in DGQ green; not bold in Perez-Roses 2012 Table 5.1, so not from Loz's voltage search; Perez-Roses cites DGQ \"On large bipartite graphs\" as an unpublished manuscript (2011); 5,314,680 = 5*(13,7) = 15|H(11)|, but Omega H(11) has degree 14 (lit/LITERATURE2.md)"
  },
  "14,8": {

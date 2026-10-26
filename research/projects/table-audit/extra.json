@@ -257,5 +257,11 @@
   "check": "build_haar2.py + apsp.c VALID (checks/small.txt)",
   "construction": "Haar graph of meta 14 6 9 found here (graphs/d3D7_n168_meta_14_6_9_x1.sol); not necessarily the holder's graph",
   "flag": "holder's construction lost; order reproduced"
+ },
+ "13,8": {
+  "rebuilt": "order",
+  "check": "build_haar2.py + check_haar_indep.py VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of psl 37 x Z_105 found here (round 2; graphs/d13D8_n5314680_psl_37_105.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  }
 }

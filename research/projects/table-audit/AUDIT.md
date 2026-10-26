@@ -32,16 +32,17 @@ Of the 112 cells (counts from cells.csv):
 - **47 rebuilt** with the holder's own construction, or from the holder's own graph file, at exactly the table value and
   checked valid: the 27 Moore cells, (3,5), (7,3), (3,7), (4,5), (4,7), the Delorme–Farhi cells at D = 4 and 6 (10),
   the three D = 3 AL/FMP cells, and (6,7), (8,7) (Delorme 1985 §9).
-- **52 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
+- **53 reproduced at exactly the table order** by a construction of the same family or a graph found here, when the
   holder's own description is missing: the 15 green D = 5 and D = 7 cells (polygon covers), (3,8) and (3,10) (cyclic
-  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), and 34 Loz cells as Haar graphs of metacyclic
-  groups (§3).
+  lifts found by the squad and the lead), (16,3) (a Delorme–Farhi duplication on PG(2,13)), (13,8) (round 2: a Haar graph
+  of PSL(2,37) × Z105; the DGQ construction itself is not known), and 34 Loz cells as Haar graphs of
+  metacyclic groups (§3).
 - **6 INVALID as read**: (10,8), (11,8), (12,8), (14,8), (15,8), (16,8). Their values are Gómez's ΩH_q (PhD thesis,
   Barcelona 1986, §2.9.3), but that construction, as drawn, has diameter 9, not 8 (§4; witness pair for (10,8) in
   checks/witness_omega7_thesis.txt). Relabelling the copies freely fixes it at q = 2 and 3 but no such labelling is known
   at the table's q = 7..13 (§7).
-- **7 have no traceable construction**: 5 Loz cells (data lost: (13,10), (14,10), (15,10), (16,9), (16,10)),
-  and (13,8), (16,5).
+- **6 have no traceable construction**: 5 Loz cells (data lost: (13,10), (14,10), (15,10), (16,9), (16,10)),
+  and (16,5).
 <!-- /SUMMARY -->
 
 No table value was found to be wrong outright: every cell with a construction I could rebuild checks out, and no value
@@ -254,7 +255,12 @@ left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
 marks the cells that came from Loz's voltage search in bold: exactly the wiki's 39 orange cells. (13,8) and (16,5) are
 not bold; they are in the wiki's first revision (2012) as Delorme–Gómez–Quisquater, whose manuscript Pérez-Rosés
 cites as unpublished (2011). Delorme–Gómez 2002 (EJC) could not be fetched from here (all routes in
-lit/LITERATURE2.md). (13,8) = 15·|H(11)| = 5·(13,7) is not ΩH₁₁ (degree 14).
+lit/LITERATURE2.md). (13,8) = 15·|H(11)| = 5·(13,7) is not ΩH₁₁ (degree 14). **(13,8) is now reproduced at
+exactly its order** by a Haar graph of PSL(2,37) × Z₁₀₅ (haar_gen3, 9 evaluations; build_haar2.py and
+check_haar_indep.py VALID, graphs/d13D8_n5314680_psl_37_105.sol), so the value is attainable, though DGQ's own graph is
+unknown (the repo's record there is higher anyway). (16,5) = 27,300 was not reached by Haar graphs of order 13,650
+(six metacyclic groups at 120 s each, best 239 vertices unreached; research/frontier/SIZE_LAW.md puts D = 5 at Δ ≥ 10
+above what Haar graphs reach), so it stays without a graph.
 
 **Small cells.** Upper bounds are Moore − 6 for (3,7), (3,9), (4,8), (4,9), (6,5) (Feria-Purón–Pineda-Villavicencio
 2012); no exhaustive search or later improvement was found. In the census of cubic vertex-transitive graphs
