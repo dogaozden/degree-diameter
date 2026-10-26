@@ -1,0 +1,14 @@
+# (9,5) 2,758 vertices: Haar graph of Z197 x|_104 Z7 (the non-abelian group of order 1379; 104 has order 7 mod 197), found by the hunt-d5 director's seed farm farm9b
+# command: SAVEBEST=1 COOL=10 REHEAT=40 THREADS=1 research/squads/hunt-d5/tools/haar_fast 9 5 8 40164 16 OUT meta 197 7 104 1   (cost 0 after 495,937 evaluations, 1.9 s; seed 40164 of a farm of 8 s runs)
+# solution file: research/frontier/sols/d9D5_meta_197_7_104_s40164.txt
+## check 1: python3 research/frontier/build_haar2.py research/frontier/sols/d9D5_meta_197_7_104_s40164.txt X.edges
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 2758 edges = 12411 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = b7c10d626dd47e0dcb9eaa46c538957a2fa73557c44878c7396553bf2fca735e
+VALID d=9 D=5 group=meta 197 7 104 x Z_1 N=1379 vertices=2758
+## check 2: research/lifts/coordinator_check/apsp.c (all pairs, no symmetry) on that edge list
+n=2758 edges=12411 degree min=9 max=9 bipartite=yes diameter=5
+RESULT VALID d=9 D=5 n=2758
+## check 3: haar5 eval on tools/metatab.py's table (S = 0 1043 1257 711 155 1141 1361 29 1104): cost
+0
