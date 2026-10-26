@@ -1,0 +1,14 @@
+# Omega H(3) with a free labelling of every copy (omega/, table-audit-2, 2026-10-26)
+# base: moore_build h 3 h3.txt (apsp: RESULT VALID d=4 D=6 n=728)
+## q3_aba_LLL_G13.lab: omega_eval -> edges; apsp.c (no symmetry); omega_verify.py (independent wiring check)
+q=3 types=aba inner=LLL lab=omega/labs/q3_aba_LLL_G13.lab n=14560 edges=43680 degree min=6 max=6 sources=14560 far(>8)=0 maxecc=8
+n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=14560
+q-hexagon n=364 types=aba inner=LLL: vertices 14560 (= 5(alpha+1)|H| = 14560), edges expected 43680, in file 43680, equal: True
+sha256 8c8de5919ee46357 (edge list, not committed; rebuild with omega_eval)
+## q3_aba_LLL_G13_Z5psi.lab: omega_eval -> edges; apsp.c (no symmetry); omega_verify.py (independent wiring check)
+q=3 types=aba inner=LLL lab=omega/labs/q3_aba_LLL_G13_Z5psi.lab n=14560 edges=43680 degree min=6 max=6 sources=14560 far(>8)=0 maxecc=8
+n=14560 edges=43680 degree min=6 max=6 bipartite=yes diameter=8
+RESULT VALID d=6 D=8 n=14560
+q-hexagon n=364 types=aba inner=LLL: vertices 14560 (= 5(alpha+1)|H| = 14560), edges expected 43680, in file 43680, equal: True
+sha256 34cc40727de9e78b (edge list, not committed; rebuild with omega_eval)
