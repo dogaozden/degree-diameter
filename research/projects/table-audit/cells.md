@@ -98,7 +98,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (14,6) | 804,468 | bipartite Moore graph | reproduced | apsp_mt.c VALID |  |  |
 | (14,7) | 1,771,560 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 1,789,588 |  |
 | (14,8) | 14,172,480 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 |  | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
-| (14,9) | 95,087,738 | Loz | no source found |  | 116,068,656 | no traceable construction (data lost) |
+| (14,9) | 95,087,738 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 116,068,656 | holder's construction lost; order reproduced |
 | (14,10) | 1,213,477,190 | Loz | no source found |  | 1,326,627,120 | no traceable construction (data lost) |
 | (15,3) | 374 | Araujo-Pardo-Lopez | reproduced | apsp.c VALID | 376 |  |
 | (15,4) | 4,946 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 5,070 |  |
@@ -106,7 +106,7 @@ verdict: **reproduced** = the holder's construction (or the holder's own graph f
 | (15,6) | 842,048 | Delorme-Farhi duplication | reproduced | apsp_mt.c VALID | 870,440 |  |
 | (15,7) | 2,480,184 | Delorme, Gomez, Quisquater | reproduced at a different reading | apsp_orb.c VALID | 2,501,491 |  |
 | (15,8) | 14,172,480 | Delorme, Gomez, Quisquater | INVALID | as read, diameter 9 | 18,128,880 | INVALID as read (diameter >= 9 for every pairing, tools/omega_bound.py; witness pair for q = 7 in checks/witness_omega7_thesis.txt, for q = 9 on branch own-12-8); no labelling known that gives diameter 8 |
-| (15,9) | 168,016,334 | Loz | no source found |  | 208,029,120 | no traceable construction (data lost) |
+| (15,9) | 168,016,334 | Loz | reproduced at a different reading | meta_haar_check.c + meta_haar_bits.c VALID, two-BFS | 208,029,120 | holder's construction lost; order reproduced |
 | (15,10) | 2,300,326,510 | Loz | no source found |  | 2,467,618,800 | no traceable construction (data lost) |
 | (16,3) | 394 | Delorme-Farhi duplication | reproduced at a different reading | apsp.c VALID | 396 |  |
 | (16,4) | 5,134 | Delorme-Farhi duplication | reproduced | apsp.c VALID | 5,440 |  |

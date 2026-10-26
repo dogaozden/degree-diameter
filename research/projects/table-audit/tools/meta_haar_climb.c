@@ -4,6 +4,7 @@
    level by level, element (a,j) indexed j*m + a).  Move: replace one non-identity generator by a random element;
    keep the move if the cost does not increase.  Writes a haar_gen3-style solution file when the cost reaches 0 (to be
    checked by meta_haar_check / meta_haar_bits / meta_haar_pull, which are independent of this file).
+   OpenMP over the frontier words (OMP_NUM_THREADS).
    Usage: meta_haar_climb m k r d D seed iters OUT.sol */
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,13 +22,14 @@ static uint64_t far_from(int start, const uint64_t *sa, const uint64_t *sj) {
     cur[0] = 1; vis[start][0] = 1; int side = start;
     for (int lev = 1; lev <= D; lev++) {
         int to = 1 - side; memset(nxt, 0, 8 * W);
+        #pragma omp parallel for schedule(dynamic, 4096)
         for (uint64_t wi = 0; wi < W; wi++) { uint64_t b = cur[wi];
             while (b) { uint64_t g = wi * 64 + __builtin_ctzll(b); b &= b - 1;
                 uint64_t j = g / m, a = g - j * m;
                 for (int x = 0; x < d; x++) { uint64_t na, nj;
                     if (side == 0) { na = (sa[x] + rp[sj[x]] * a) % m; nj = (sj[x] + j) % k; }
                     else { uint64_t ij = (k - sj[x]) % k; na = rp[ij] * ((a + m - sa[x]) % m) % m; nj = (j + k - sj[x]) % k; }
-                    uint64_t h = nj * m + na; nxt[h >> 6] |= 1ULL << (h & 63);
+                    uint64_t h = nj * m + na; __atomic_fetch_or(&nxt[h >> 6], 1ULL << (h & 63), __ATOMIC_RELAXED);
                 } } }
         for (uint64_t wi = 0; wi < W; wi++) { nxt[wi] &= ~vis[to][wi]; vis[to][wi] |= nxt[wi]; }
         uint64_t *t = cur; cur = nxt; nxt = t; side = to;

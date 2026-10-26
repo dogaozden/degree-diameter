@@ -215,13 +215,21 @@
   "notes": "n/2 = 308665468 = 2^2\u00b7107\u00b7721181; = |Z_721181 x| Z_428| (k | p-1): fits a Haar graph of that group"
  },
  "14,9": {
-  "notes": "n/2 = 47543869 = 467\u00b7101807; = |Z_101807 x| Z_467| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 47543869 = 467\u00b7101807; = |Z_101807 x| Z_467| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 101807 467 56 found here (round 2; graphs/d14D9_n95087738_meta_101807_467_56_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "14,10": {
   "notes": "n/2 = 606738595 = 5\u00b759\u00b72056741; = |Z_2056741 x| Z_295| (k | p-1): fits a Haar graph of that group"
  },
  "15,9": {
-  "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 84008167 = 23\u00b737\u00b798717; = |Z_98717 x| Z_851| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 98717 851 26 found here (round 2; graphs/d15D9_n168016334_meta_98717_851_26_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "15,10": {
   "notes": "n/2 = 1150163255 = 5\u00b7101\u00b72277551; = |Z_2277551 x| Z_505| (k | p-1): fits a Haar graph of that group"
