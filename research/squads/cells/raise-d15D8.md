@@ -404,3 +404,23 @@ sl 79 × Z19 look comparable, so they were run next.
 | w5d | sl 79 × Z19 | 9,366,240 | 51.0 | plain | 2 |
 
 Any solve in wave 5 beats the record (18,666,480).
+
+### Wave 5 result: no solve (5400 s each, 03:25–04:54 UTC)
+
+| job | group | μ | flags | seed | evals | best cost |
+|---|---|---|---|---|---|---|
+| w5a | psl 59 × Z91 | 49.3 | ORBW=3 | 1 | 6.4·10⁵ | 6 |
+| w5b | psl 59 × Z91 | 49.3 | plain | 2 | 6.4·10⁵ | 9 |
+| w5c | sl 79 × Z19 | 51.0 | ORBW=3 | 1 | 5.8·10⁵ | 9 |
+| w5d | sl 79 × Z19 | 51.0 | plain | 2 | 5.9·10⁵ | 6 |
+
+### Wave 6 (5400 s each, started 04:58 UTC; k = 3, m = 5, f = 0; seeds 3 and 4 on the same two groups)
+
+| job | group | N | flags | seed |
+|---|---|---|---|---|
+| w6a | psl 59 × Z91 | 9,342,060 | ORBW=3 | 3 |
+| w6b | psl 59 × Z91 | 9,342,060 | plain | 4 |
+| w6c | sl 79 × Z19 | 9,366,240 | ORBW=3 | 3 |
+| w6d | sl 79 × Z19 | 9,366,240 | plain | 4 |
+
+Any solve in wave 6 beats the record (18,666,480).
