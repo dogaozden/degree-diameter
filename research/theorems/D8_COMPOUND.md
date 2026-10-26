@@ -213,6 +213,21 @@ $\approx q^3$ points of $H(q)$ on $\Pi$ (about $1/q$ of the lines).
 So the family is "almost" a design with $4q+5$ copies; what fails is exactly Obstruction 4.4. *(Round r2_d8c results:
 §5.)*
 
+**4.6 Any $q$ (no duality): Plücker pencil coordinates.** Without a duality only the guaranteed walks are usable, and
+Corollary 4.3's strong blocks need a line colouring that is rainbow on pencils and a point colouring rainbow on lines,
+linked by the matchings. Take the point pencil coordinate $c$ and a line pencil coordinate
+$c'(L) = [A\cdot\pi(L) : A'\cdot\pi(L)]$ on the Plücker vector $\pi(L)\in\mathbb F_q^{21}$ (a planar pencil of lines is a
+projective line of the Plücker space, so $c'$ is a bijection on every pencil whose image misses the axis), and let
+$\sigma_t$ map the points with $c = \kappa$ onto lines with $c' = \kappa$ as far as the class sizes allow. With
+$f_1 = 1 + c$, $f_2 = -(1+c)$ and $m = 2q+3$, the offsets $-B_1$ come from $hD_1H$ (pencil at $p$) and $HD_1h$ (points of
+$y$), the offsets $B_1 = -B_2$ from the same families of matching 2: every block has two sources.
+
+**Computer-checked 4.7** (squad card r2_d8c/c6; research/squads/cells/d10D8_work/gen_pl.py,
+checks/pl_q5_m13_CHECK.md). $q = 5$, $m = 13$: valid (glift all sources; explicit all-pairs BFS; apsp_mt: 8-regular,
+bipartite, diameter 8, 101,556 vertices). Random lifts reach 11–12 copies at $q = 5$, so this is the first structured,
+explained compound at $D = 8$ that beats random search. $q = 7$, $m = 17$: COST 14–50 on 256 sampled sources for each of
+12 axis choices (the doubly degenerate pairs), so not valid; 17 is also the lab's best annealed value at $q = 7$.
+
 ## 5. Squad rounds
 
 Round r1_d8c (16 cards): research/squads/LOG.md and research/squads/r1_d8c/. Round r2_d8c (6 cards, on §4):
