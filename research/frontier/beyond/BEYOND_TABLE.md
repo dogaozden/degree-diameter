@@ -81,7 +81,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 | (8,11) | **43,702,560** | 6.63 | 659,108,908 | Haar graph SL(2,89) x Z31, S = {e} + 1 fixed + 2 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d8D11_sl_89_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 4.31e+07 |
 | (9,11) | **145,258,344** | 5.92 | 2,454,267,020 | Haar graph PSL(2,197) x Z19, S = {e} + 2 fixed + 2 orbits of size 3 | hcheckpsl VALID (runs/check_hcheckpsl_d9D11_psl_197_19_orb3_s4.txt) | Haar size law at mu = 5: 2N = 1.49e+08 |
 | (10,11) | **445,709,568** | 5.68 | 7,845,264,896 | Haar graph SL(2,193) x Z31, S = {e} + 3 orbits of size 3 | hcheck5 VALID (runs/check_hcheck5_d10D11_sl_193_31_orb3_s1.txt) | Haar size law at mu = 5: 2N = 4.45e+08 |
-| (3,12) | **1,320** | 16.12 | 8,184 | Haar graph of PSL(2,11), S = {e, a, b} | apsp: c12/checks/apsp_3_12_n1320_psl2_11.txt; director re-run VALID | Haar size law at mu = 5: 2N = 1.61e+03 |
+| (3,12) | **1,860** | 22.71 | 8,184 | Haar graph of AGL(1,31), S = {e, x, y} (exhaustive over pairs, squad r3/e02); earlier 1,320 (PSL(2,11)) | apsp (e02 and director: checks/d3D12_n1860_agl1_31.apsp.txt) | Haar size law at mu = 5: 2N = 1.61e+03 |
 | (4,12) | **50,160** | 9.44 | 531,434 | Haar graph SL(2,11) x Z19, S = {e} + 1 orbit of size 3 (haar_sym, squad r2/d09); earlier 48,000 metacyclic (r1/c13) | apsp (d09 and director: checks/d4D12_n50160_sl11xZ19.apsp.txt), build_haar2.py, haarcheck_sl | Haar size law at mu = 5: 2N = 6.1e+04 |
 | (5,12) | **912,576** | 8.16 | 11,184,804 | Haar graph PSL(2,97), random S (haar_sym, director); earlier 229,824 (r1/c14) | hcheckpsl and build_haar2.py VALID (checks/d5D12_psl_97_1_s1.check.txt) | Haar size law at mu = 5: 2N = 9.74e+05 |
 | (6,12) | **9,303,840** | 7.62 | 122,070,306 | Haar graph SL(2,71) x Z13, S = 2 free orbits of size 3 (haar_sym ORBIT 3 2 0); earlier 8,924,736 (SL(2,47) x Z43) | hcheck5 VALID (checks/d6D12_sl_71_13_orb3f0_s2.check.txt) | Haar size law at mu = 5: 2N = 8.91e+06 |
@@ -93,7 +93,7 @@ plane, generalized quadrangle or generalized hexagon of order 18, whose existenc
 
 ## Notes by diameter
 
-### D = 3 and D = 4 (squad r1/c01, r1/c02)
+### D = 3 and D = 4 (squad r1/c01, r1/c02, r1/c03)
 
 Δ = 17, 18, 20: incidence graphs of PG(2,q) and W(q), q = Δ − 1 = 16, 17, 19 (Moore graphs, optimal). Δ = 19: the
 fourth-hat graph R(17; 2, 3) of POLISHED.md Theorem 2.2 (624 = 2(q² + q + 6), 19-regular) and Corollary A1 of
@@ -101,7 +101,9 @@ POLISHED.md (AS(17) plus one clone of each point of two elliptic quadrics, 10,98
 graphs were built from the definitions, saved, and checked all-pairs twice (card and director). Upper bounds at
 Δ = 19 are the Moore bounds 686 and 12,350 (a plane / quadrangle of order 18 is not ruled out). c01 also tried to add
 a pair to R(17;2,3) by deleting flags; every single deletion breaks a concurrency, so no quick +1 pair (analysis only).
-Card r1/c03 tested Theorem B on Q(4,q) with ovoid clones and shadow lines (see its line in the round-1 log).
+c03 tried Theorem B on Q(4,q) (ovoid clones plus shadow lines on lines pairwise disjoint off the ovoid): it gives
+(2q+3)(q²+1) + |M| and beats Theorem A iff |M| > q² − 2q − 3. At q = 5 it reproduces the lab's (7,4) = 359 (|M| = 21),
+but at q = 9 the best |M| found was 54 against the 61 needed, so it is not expected to beat 10,982 at q = 17.
 
 ### D = 5
 
@@ -110,17 +112,20 @@ Card r1/c03 tested Theorem B on Q(4,q) with ovoid clones and shadow lines (see i
   parity labelling ν of the flags splits the q+1 geodesics of every opposite pair (condition (A)); the matchings can be
   anything. On W(13), dmfast with NOROUTE=1 finds such a ν in 8 seconds (641 failing pairs at random). One ν gives
   (16,5) 28,560, (18,5) **47,600** and (20,5) 66,640. The polygon covers with plain matchings give one sheet less per
-  pair of extra degrees (9 and 13 copies of W(13) at Δ = 18, 20).
-- **Route-chart lift over F5 (squad r1/c04).** The (16,5) record's construction with fibre F5⁴ (degree 4·5 = 20): a
-  pencil-complete chart with 22 singular nonbacktracking 4-patterns (of 216) and K3,3 + doubled matching lifted by Z20
-  (60 controller vertices per side) gives (20,5) **75,000**, above the MDM value. Z22 (82,500) stalled at 4 uncovered
-  pairs on one seed.
-- **(17,5)**: the best value is still the (16,5) route-chart lift itself (33,792; a graph of maximum degree 16 has
-  maximum degree ≤ 17). MDM needs an even number of extra degrees (Δ = 17 = 14 + 3 at q = 13), the polygon cover
-  7·|W(13)| = 33,320 is smaller, blind annealing of Z8 lifts of W(13) with three extra matchings stayed in the millions
-  of uncovered pairs (r1/c06), building flag graphs cap at 31,460 (r1/c16), and Haar graphs at D = 5 sit near 19k.
-- **(19,5)**: DM on W(16) (MDM with k = 1, 6·|W(16)| = 52,428) — see the round logs; the polygon cover 11·|W(13)| =
-  52,360 holds for any matchings.
+  pair of extra degrees (9 and 13 copies of W(13) at Δ = 18, 20). A referee card (r2/d06) found no gap in the proof,
+  and a ν with exactly one pair failing (A) gives diameter 6, as the proof predicts.
+- **(19,5) 52,428**: the k = 1 case (DM_D5.md) on W(16); ν and σ from card r1/c05's dmfast run (routes allowed),
+  lift built and checked by the director. The polygon cover 11·|W(13)| = 52,360 holds for any matchings.
+- **(20,5) 75,000: route-chart lift over F5 (squad r1/c04).** The (16,5) record's construction with fibre F5⁴ (degree
+  4·5 = 20): a pencil-complete chart with 22 singular nonbacktracking 4-patterns (of 216) and K3,3 + doubled matching
+  lifted by Z20 (60 controller vertices per side), above the MDM value 66,640. Z21 and Z22 stall at 2 and 4 uncovered
+  pairs (r2/d01, also with a 20-singular chart); 5 letters × F4 gives 51,200 (r2/d02).
+- **(17,5) 33,792 (floor only)**: the (16,5) route-chart lift itself (maximum degree 16 ≤ 17). Nothing larger was
+  found: MDM needs an even number of extra degrees over W(q) (Δ = 17 = 14 + 3 at q = 13; a plain extra matching adds
+  no sheet), the polygon cover 7·|W(13)| = 33,320 is smaller, three parallel copies over Z9 fail by counting (DM_D5.md),
+  blind annealing of Z8 lifts of W(13) stayed in the millions of uncovered pairs (r1/c06), a route chart with a plain
+  fifth letter stayed at 1.2M (r2/d04), building flag graphs cap at 31,460 (r1/c16), and Haar graphs at D = 5 sit near
+  19k. Spare degree on the 28,560-vertex MDM lift of W(13) could carry at most 28,560/17 hub vertices (30,240 total).
 
 ### Side result inside the old table: (13,5) ≥ 11,700
 
@@ -136,35 +141,71 @@ No other cell of the old table improves this way (MDM.md).
 - D = 6, Δ = 17, 18, 20: H(16), H(17), H(19) (split Cayley hexagon, Tits; Moore graphs, 2.2M–5.2M vertices).
   Δ = 19: Theorem D of POLISHED.md at q = 17, m = 2 (3,203,968 vertices, maximum degree 19), proved for every odd q
   and Lean-checked for every finite field of odd characteristic. All-pairs BFS of 2–5M-vertex graphs is out of reach
-  here (n²Δ/64 word operations); squad card r1/c08 built each graph with the lab's code (hexgen2.c; its own Theorem D
-  builder) and ran BFS from ~95 vertices each (random plus a whole point and line neighbourhood): eccentricity 6, and
-  for H(q) the level sizes 1, q+1, (q+1)q, … of a Moore graph. The same Theorem D builder was checked all-pairs at
-  q = 5 and 7.
+  here (n²Δ/64 word operations); squad card r1/c08 built each graph (the lab's hexgen2.c and a faster variant with
+  identical output; its own Theorem D builder) and ran BFS from 94–100 vertices each (random plus a whole point and
+  line neighbourhood): eccentricity 6, and for H(q) the level sizes 1, q+1, (q+1)q, … of a Moore graph. The Theorem D
+  builder was checked all-pairs at q = 5 (9,592, the lab's (7,6) value) and q = 7 (45,428).
 - D = 7: level graphs (polygon covers) of H(q): 2r+1 copies of H(q) joined by r perfect matchings with voltages
   1..r in Z(2r+1), diameter ≤ 7 for any matchings (D7_HEXAGON.md Theorem A, classical; REGULARITIES.md §1.3). Best
-  (q, r) per cell: (17,7) q = 13, r = 3; (18,7) q = 13, r = 4; (19,7) q = 16, r = 2; (20,7) q = 16, r = 3. Squad card
-  r1/c09 checked its builder all-pairs at q = 3, 4 (r = 1..3) and sampled the large instances. The lab's hub surgery
-  (D7_HEXAGON.md) adds 0.1–4 % in the old cells and would apply here too; not attempted.
+  (q, r) per cell: (17,7) q = 13, r = 3; (18,7) q = 13, r = 4; (19,7) q = 16, r = 2; (20,7) q = 16, r = 3. Card r1/c09
+  wrote the builder (lift7.c) and checked it all-pairs at q = 3, 4 (r = 1..3); the director ran its bit-parallel BFS
+  from 64 random vertices on each of the four instances (max eccentricity 7, checks/d7_levelgraphs_sampled.txt).
+  Hub surgery (D7_HEXAGON.md, card r3/e04) was verified at q = 4, 5 but its hub condition was not established for
+  q = 13, 16; the predicted gains are 0.1–0.4 %, so the plain covers are listed.
 - Haar graphs and random constructions are far below these values at D = 6, 7 (size law: about 0.5M at (19,6) and
   2.9M at (17,7)).
 
 ### D = 11, 12 at small Δ
 
-Δ = 3: Haar graphs of PSL(2,7) × Z3 (1,008, D = 11) and PSL(2,11) (1,320, D = 12) (cards r1/c11, r1/c12). Exhaustive
-metacyclic scans and voltage lifts of small cubic bases (r2/d07, r2/d08) found nothing larger in the time boxes; the
-best near misses were SL(2,11) at cost 16 and PSL(2,13) at cost 24 (D = 12). Δ = 4: Haar graphs of SL(2,11) × Z7 and
-SL(2,11) × Z19 with S = {e} ∪ one orbit of size 3 (r2/d09), above the metacyclic values of r1/c13. Δ = 5, 6: orbit
-Haar graphs (r1/c14, director). Δ = 7..10: director's haar_big queue.
+Δ = 3: (3,11) 1,080 = Haar graph of A5 × Z9 and (3,12) 1,860 = Haar graph of AGL(1,31). Card r3/e01 searched all
+pairs {x, y} exhaustively for about 45 groups of order 504–1,100 at D = 11 (A5 × Z9 the only one above 1,008; AGL(1,23)
+misses by one hole); metacyclic scans (r1/c11), voltage lifts of small cubic bases (r2/d07, r2/d08) and annealing over
+PSL/SL/PGL(2,q) (r1/c12: SL(2,11) cost 16, PSL(2,13) cost 24 at D = 12) found nothing larger. Δ = 4: Haar graphs
+SL(2,8) × Z19 (D = 11) and SL(2,11) × Z19 (D = 12) with S = {e} ∪ one orbit of size 3 (r3/e03, r2/d09), above the
+metacyclic values 17,600 / 48,000 of r1/c13; at D = 12, PSL(2,11) × Z39 (51,480) misses by one hole. Δ = 5, 6:
+haar_sym (plain random S at Δ = 5, two free 3-orbits at Δ = 6) at μ ≈ 2–10, solved in seconds, 2–4 times the
+round-1 card values. Δ = 7..10: haar_big.
 
 ### D = 8 .. 12: Haar graphs
 
 H(G,S) with G = SL(2,p) × Z_n or PSL(2,p) × Z_n and S = {e} ∪ (fixed generators) ∪ (orbits of an automorphism α of
-order 3 or 2), found with research/bighaar/haar_big.c (64-bit indices, N/2 bytes of memory). This job added odd D to
+order 3), found with research/bighaar/haar_big.c (64-bit indices, N/2 bytes of memory). This job added odd D to
 haar_big: for odd D the same-side words from (e,A) are (S⁻¹S)^k but from (e,B) they are (SS⁻¹)^k, which differ for a
 non-abelian G, so the cost is the hole count of H(G,S) plus that of H(G,S⁻¹) (a first version counted only one side;
 the independent checkers, which BFS from both sides, caught it on a (10,11) candidate, and that file was discarded). It
-also added fixed generators (ORBIT f > 1: f − 1 random α-fixed elements kept fixed). Group orders were chosen with the
-size law (SIZE_LAW.md) at μ = N·e^(−W/N) ≈ 3–6 per side, i.e. well inside the solvable range, with small cyclic
-factors n: SL(2,23) × Z433 at (7,11) stalled at 31 holes for 1,000 evaluations, while SL(2,43) × Z67 at the same order
-solved in 25 (with 7 generators, 10-step words do not spread evenly over Z433). Values are therefore typical
-size-law values, not pushed to the limit; the lab's orbit searches gain another 5–15 % in comparable cells.
+also added fixed generators (ORBIT f > 1: f − 1 random α-fixed elements kept fixed; with f = 3 at μ ≈ 12 this stalled
+at (18,8), at μ ≈ 8 it solved). Group orders were chosen with the size law (SIZE_LAW.md) at μ = N·e^(−W/N) ≈ 3–13
+(per side), with small cyclic factors n: SL(2,23) × Z433 at (7,11) stalled at 31 holes for 1,000 evaluations, while
+SL(2,43) × Z67 at the same order solved in 25 (with 7 generators, 10-step words do not spread evenly over Z433).
+Order-2 orbits did much worse than order-3 orbits at (9,11) and (5,11) (181 and 388 holes). At D = 10 and D = 12,
+μ ≈ 3 solved in 1–9 evaluations even at N = 1.5·10¹⁰. Each find was checked by hcheck5 (SL) or hcheckpsl (PSL), which
+BFS from (e,A) and (e,B) in 4 bits per element; the largest, (20,10) with 30.5 billion vertices, needs 7.6 GB.
+Values are typical size-law values, not pushed to the limit (the lab's orbit searches gain 5–15 % in comparable cells
+at much higher cost, and each check of a 10¹⁰-element group takes about an hour here).
+
+## What failed, and why it matters for the next attempt
+
+- (17,5) has no construction of its own (see D = 5). It is the one cell where the formula families leave a gap:
+  MDM and polygon covers want q + 1 + (even) = Δ, route charts want Δ = letters × field size, and 17 is neither for any
+  usable q. A degree-17 idea that adds a sheet with one extra edge per vertex is the open problem.
+- Route charts over F3 (6 letters) and F2 (9 letters) were far from competitive in 25-minute boxes (best 29,160 at
+  (18,5)); the singular-pattern counts of the charts (312 of 1,500 over F3) look like the bottleneck.
+- The 2013 table's D = 8 values follow (2j+1)(⌊(q−1)/2⌋ + 3(j−1))·|H(q)| (REGULARITIES.md); card r1/c10 found a Z20
+  lift of H(3) + 2 matchings with diameter 8 (14,560 = the pattern's value at q = 3, j = 2) by annealing, but q = 4
+  stalled at 150 holes. If that construction were known it would give about 1.6–1.9 times our Haar values at D = 8
+  (e.g. (20,8) ≥ 2.2·10⁸ against 1.2·10⁸).
+- Blind voltage annealing on W(13) (r1/c06, r1/c07) failed where the structured MDM lift succeeds in seconds: the
+  structure (one parity condition, matchings free) mattered more than search effort.
+
+## Rebuilding
+
+- Edge lists: graphs/*.edges.gz (first line n, then "u v"); check with research/lifts/coordinator_check/apsp.c.
+- Haar graphs: research/frontier/sols/d<Δ>D<D>_*.txt; check with research/frontier/build_haar2.py (small),
+  research/squads/d16D10-r1/c5/hcheck5.c (SL) or research/squads/d16D10-r2/checker/hcheckpsl.c (PSL); search runs and
+  check logs in runs/ (runs/check_*), job lists in queue*.txt, driver hq.sh / runq.sh.
+- MDM lifts: mdm/build_mdm.py with mdm/nu_q13_s2.txt (q = 13) or mdm/dm_q16_s11_c05.sol.gz (q = 16); (13,5) from
+  research/squads/beyond/r2/d05/ (mdm8.c, st_run2.txt; command in its scoreboard line).
+- D = 6: research/squads/beyond/r1/c08/ (hexgen2fast.c, thmd.c, hexbfs.c). D = 7: research/squads/beyond/r1/c09/lift7.c
+  (`lift7 q r seed edges OUT` or `lift7 q r seed bfs 64`).
+- The table below the summary is generated by results.py (one entry per cell) and splice.py; plan.py and groups.py
+  give the Moore bounds, formula families, size-law orders and candidate groups.
