@@ -286,3 +286,21 @@ Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable struct
   research/frontier/sols/d11D9_prod_sl_4_sl_13_67_orbw3_s4.txt, log research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s4.log.
 - The second build_haar2 rebuild of seed 5 (research/structured/runs/d11D9_prod_sl_4_sl_13_67_orbw3_s5.build_haar2.txt) is VALID,
   n = 17,559,360, edge-list sha256 090b1c55503f3935afb3e4d6bf3937b952a8736c044c2021233f64880234e33a. Same hash as the search run.
+
+## Final status (round 3, 06:16 box time, six-hour budget nearly used)
+
+- Record: **17,559,360** (prod sl 4 × sl 13 × Z67, |G| = 8,779,680, seed 5; seed 4 ties it). Verified by build_haar2 twice
+  (same edge-list sha256 090b1c55…), and by the search's own full diameter check.
+- Record chain this round: 17,323,152 (round 2) → 17,495,520 (sl 41 × Z127, wave 2 seed 3) → 17,559,360 (prod sl 4 × sl 13 × Z67, wave 3 seed 5).
+- Wave 3 end state: sl 59 × Z43, seeds 1 and 2: best 6 after 220k evals each, not solved (|Fix| = 59, the α-fixed set is the problem).
+  prod sl 4 × sl 13 × Z67 seeds 2 and 3 (7200 s): best 3 and 6, not solved; seeds 4 and 5 solved.
+- Stopped without solving: prod sl 5 × sl 7 × Z217 (best 50 after 187k evals) and sl 29 × Z361 (best 30 after 185k evals).
+  Wave 1: A4 × SL(2,13) × Z331 plateaued at 48. sl 41 × Z127 seed 1 stalled at 6 (353k evals), then solved at seed 3.
+
+## Leads for a next round (none tried to a result)
+
+- Every group in the table above is at or below the current bar. Above 8,779,680 the untried SL-type orders are
+  prod sl 3 × sl 13 × Z169 (N 8,858,304, μ 31.6) and prod sl 3 × sl 23 × Z61 (N 8,889,408, μ 33.2). Both are at the wall of this method.
+- Groups with a ~50% solve rate at μ 26–28 were the winners this round. For a next record, the next step is more seeds on
+  orders just above 8,779,680 with ORBW=3, not new groups. None of those orders were clearly above the wall.
+- Not tried: the faster orbit evaluation (STRUCTURE §7.4), k = 5, and groups with n in two or more primes ≡ 1 mod 3.
