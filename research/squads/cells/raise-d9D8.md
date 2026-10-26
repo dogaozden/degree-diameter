@@ -76,3 +76,37 @@ has random minima of 1.1–1.9·10⁵ (screen): not usable.
 Settled for k = 4, f = 1, m = 2: the screen ranking (min cost) and the 900 s and 5,400 s annealing runs are all consistent:
 no k = 4 group above 273,360 has reached cost 0 yet. This is a negative result for the default settings, not a proof
 that k = 4 is impossible.
+
+### Third k = 4 batch, 5,400 s each (seeds 61–64, finished)
+
+| seed | group | settings | evals | best cost |
+|---|---|---|---|---|
+| 61 | prod psl 7 × sl 7 × Z5 (μ 57.9, N 282,240) | ORBW=4, COOL=60, REHEAT=300 | 1.6·10⁷ | **6** |
+| 62 | psl 17 × Z117 (μ 66.5, N 286,416) | ORBW=4, COOL=60, REHEAT=300 | 2.7·10⁷ | 9 |
+| 63 | psl 17 × Z117 | RESTART=1 | 2.8·10⁷ | 9 |
+| 64 | psl 41 × Z8 (μ 45.9, N 275,520) | ORBW=4 | 2.0·10⁷ | 12 |
+
+No solution. Best cost across all k = 4 runs so far: 6 (prod psl 7 × sl 7 × Z5). Total about 1.5·10⁸ evaluations in
+k = 4, f = 1, m = 2 at N 275,520 to 288,600.
+
+## Stopping point (2026-10-26, about 4 h in)
+
+Stopping the cell here, and the reason is the evidence, not the budget:
+- k = 3, f = 0 (round 2 and this round's screen): no unsolved group above 273,360 has a cheap candidate left. The
+  next k = 3 rungs have μ > 49 or random minima far above the solved group's.
+- k = 4, f = 1, m = 2 (new in this round): the screen ranking and eleven annealing runs (4 × 900 s, 4 × 5,400 s,
+  3 × 5,400 s with COOL/REHEAT, ORBW and RESTART variants) reached best cost 6 to 14 and never 0. The cost was
+  flat from about 900 s to the end of each run. The k-wall estimate (μ ≈ 64 for k = 4) did not hold at this budget.
+- No new record: the solution files stay as they were (546,720, sl 16 × Z67 orb3 f0, seeds 21, 23, 24).
+
+What would change the answer (not tried, each needs a code change or a longer run):
+1. A longer k = 4 run on prod psl 7 × sl 7 × Z5 (best 6): 6 is the closest any k = 4 run got, and its trajectory was
+   still moving at 5,400 s with the COOL/REHEAT setting. Several hours with four seeds would test whether the
+   floor at cost 6 is a real wall.
+2. A better fixed-point treatment for α of order 4 (STRUCTURE.md §7 item 4, the coset-representative fold). It applies
+   only to C(g) ≥ 64, which none of these groups has (|C| = 31 or 39 or 7 here, all below 64).
+3. A group with |Fix(α)| smaller than its order-4 centralizer. The screen had no group with both small |Fix| and
+   μ > 50 (the best |Fix| = 3 to 7 groups had random minima of 10³–10⁴).
+
+Recommendation to the coordinator: do not spend further 4-core hours on the same four k = 4 groups without one of the
+three changes above. The round-3 time is better spent on item 1 if it is run at all.
