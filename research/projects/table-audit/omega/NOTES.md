@@ -74,7 +74,8 @@ graph has G as automorphisms and BFS from orbit representatives decides the diam
   but only with a labelling the thesis does not describe.
 - q = 4 (54,600 vertices) and q = 5 (195,300 vertices): **no labelling found.** Twisted-Z₅ × Singer annealing
   (lead, 25–30 min each) and squad round table-audit-2-r1 (8 strategies, about 15 min each) all stayed near the
-  random level: q = 4 from 18,387 far pairs (390 hub representatives) to about 12,800–13,900; q = 5 from 42,280 (252
+  random level: q = 4 from 18,387 far pairs (390 hub representatives) to about 12,800–13,900 (one 75-minute run, 253,220
+  moves: 12,075); q = 5 from 42,280 (252
   representatives) to about 35,500–38,000. Pattern scan at q = 5: abab LLLL best, aaab clearly worst. Closed-form
   structured families (affine maps on the orbits, identical copies, incidence-matched pairs) are no better than random
   (squad c7). Independent copies (NOZ5) were not better per unit of time.

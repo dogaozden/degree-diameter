@@ -71,12 +71,14 @@ Done:
   two or three independent checkers (checks/haar_huge.txt; tools/meta_haar_bits.c, meta_haar_pull.c, the random
   search tools/rand_meta_haar.py and the hill climb tools/meta_haar_climb.c for groups haar_gen3 cannot handle).
 
-Running at 20:20 UTC (scratch only; nothing to recover if the session ends): hill climb for (13,10) in
-Z721181 ⋊ Z428 (cost 2 = vertices beyond distance 10), (14,10) done (Z10283705 ⋊ Z59, second haar_gen3 seed; meta_haar_bits.c and meta_haar_pull.c VALID),
-random Haar tries for (16,10) (one try at (15,10) gave diameter 11). Commands: tools/meta_haar_climb.c,
-tools/rand_meta_haar.py, research/frontier/haar_gen3 with the group specs in AUDIT.md §7.
+Nothing is running. Last searches (stopped at 23:05 UTC): (13,10) hill climb in Z721181 ⋊ Z428 at cost 2 (vertices
+beyond distance 10) after about four hours; (15,10) random sets in Z2277551 ⋊ Z505 and Z11387755 ⋊ Z101 and (16,10) in
+Z1934041 ⋊ Z1065 gave diameter 11; ΩH₄ annealing ended at 12,075 far pairs after 75 minutes.
 
 Open:
+- (13,10), (15,10), (16,10) at exact order: a longer hill climb (tools/meta_haar_climb.c, OpenMP) or another group
+  family; (15,10) and (16,10) need about 0.6–1 GB per evaluation and 30–60 min per step on 4 shared cores here.
+  (16,5) = 27,300: no Haar graph of order 13,650 came close (best 239 vertices unreached).
 - ΩH_q at q ≥ 4 with some labelling: needs a structured labelling whose routes nearly tile each copy (omega/NOTES.md
   explains the routes). q = 4 is the smallest open case and cheap to evaluate (54,600 vertices, about 15 ms per cost
   with the symmetric sources).

@@ -234,7 +234,8 @@ left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
 - q = 4 (54,600 vertices) and q = 5 (195,300): no labelling with diameter 8 found. Annealing with the twisted Z₅ ×
   Singer symmetry and eight squad variants (focused moves, steepest descent with tabu, late acceptance on a partial
   cost, greedy construction, pattern scan over block types and inner classes, closed-form affine orbit maps, GA ideas)
-  all stayed near the random level: q = 4 from 18,387 to about 12,800–13,900 far pairs (390 hub representatives),
+  all stayed near the random level: q = 4 from 18,387 to about 12,100–13,900 far pairs (390 hub representatives; the
+  longest run, 75 min and 253,220 moves, ended at 12,075),
   q = 5 from 42,280 to about 35,500–38,000 (252 representatives). Squad log: research/squads/LOG.md, round
   table-audit-2-r1.
 - q = 7 (the (10,8) order, 1,176,480 vertices): a random labelling with the same symmetry (Singer cube, order 19)
@@ -287,8 +288,9 @@ build_haar2.py (checks/haar_huge.txt). Result: (8,10), (9,10), (10,9), (10,10), 
 (13,9), (14,9), (14,10), (15,9), (16,9) reproduced at exact order (Loz table in §3). (11,10) needed the hill climb
 (random sets gave diameter 11 with 4 vertices too far); (14,10) needed annealing in Z10283705 ⋊ Z59 (a group chosen
 so that haar_gen3 has an element of order 59 to work with); the rest fell to the first few candidates. Not reproduced:
-(13,10) (hill climb stuck at 2 vertices beyond distance 10 when this was written), (15,10) and (16,10) (2.3·10⁹ and
-4.1·10⁹ vertices: one random set each gave diameter 11, a climb step takes 30–60 min here, and haar_gen3 cannot run
+(13,10) (three hill climbs in Z721181 ⋊ Z428; the best stopped at 2 vertices beyond distance 10 after four hours),
+(15,10) and (16,10) (2.3·10⁹ and 4.1·10⁹ vertices: random sets gave diameter 11, at (15,10) in two groups,
+Z2277551 ⋊ Z505 and Z11387755 ⋊ Z101; a climb step takes 30–60 min here, and haar_gen3 cannot run
 there because every element of order ≤ 63 has order 5 or 15, which needs tens of GB). At (11,10), (13,10), (14,10),
 (15,10) and (16,10) random connection sets gave diameter 11 (one to three tries each), so there the table values sit
 close to what Haar graphs of these groups reach; at the smaller D = 9, 10 cells the first few candidates worked.
