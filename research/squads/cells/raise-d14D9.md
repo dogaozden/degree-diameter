@@ -33,6 +33,21 @@ second. Both are far worse than `3 4 2` (p10 37 and 46). So round 3 runs `3 4 2`
 psl 103 × Z109 (seed 1, plain), prod sl 3 × sl 37 × Z49 (seed 1, ORBW 3), psl 89 × Z169 (seed 1, plain),
 psl 73 × Z307 (seed 1, ORBW 3). Queued: the same four groups on seed 2. Results go in the table below.
 
+**Round-3 record: 119,048,832 vertices** = 2N, N = 59,524,416 = |SL(2,3) × SL(2,37) × Z_49| (k = 3, m = 4, f = 2, **ORBW = 3**,
+seed 1, K = 8; 2,273 evaluations, 439 s, μ = 21.24, |Fix| = 215). Solution
+`research/frontier/sols/d14D9_prod_sl_3_37_49_orb3_ORBW3_s1.txt`, sha256
+a4d7c435a94862fc61d645d5c5283c4507d0770a695350678876ea1808bc5038. Log `runs/r3/spool/11-prod3_37_49_orbw3_s1/`.
+Checks: haar_sym's full diameter check OK; `tools/haarcheck_prod.py` VALID (ecc 9 from both sides, all 119,048,832 vertices
+reached); `tools/haarcheck_prod` (C, BFS on the same table) VALID; 14 distinct generators with e. The table
+(`runs/r3/checks/`) is kept out of the sols folder (8 MB). orbq.sh cannot check prod solutions: UNCHECKED, checked by hand.
+
+| 2N | N | group | seed / ORBW | solution file |
+|---|---|---|---|---|
+| **119,048,832** | 59,524,416 | SL(2,3) × SL(2,37) × Z49 | seed 1, ORBW=3 | `d14D9_prod_sl_3_37_49_orb3_ORBW3_s1.txt` |
+
+Next rung: any group with N > 59,524,416. psl 103 × Z109 (N 59,548,008) and psl 89 × Z169 (59,562,360) are the two
+lowest in the queue; the seed-2 job for SL(2,3)×SL(2,37)×Z49 was removed (same group, cannot raise the record).
+
 **Baseline discrepancy (round 1 notes, kept below).** The round-2 brief says our record is 116,068,656. Round 1 (branch
 claude/raise-d14d9-haar-jq8m8d, notes below) left a verified record of **117,837,720** (psl 109 × Z91, solution file
 research/frontier/sols/d14D9_psl_109_91_orb3_s1.txt). This round starts from 117,837,720, so a new record needs N > 58,918,860.
