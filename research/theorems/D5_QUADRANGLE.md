@@ -206,7 +206,9 @@ z^\perp\ne 0$ as $z\ne x$. The points are distinct, $3(q-1)+2$ of them. $\square
 
 (For $q = 3$ the point $(0,z^\perp)$ is not available, and the three orbits with $(x,0)$, $x = (1,-1)$, give 7 points,
 the maximum for $W(3)$; computer-checked for $q = 3,5,7,9,11,13$ with gqlib.) Computer searches find much larger
-partial ovoids for specific $q$ (§10.3): 18 ($q=5$), 33 ($q=7$), 51 ($q=9$), 70 ($q=11$). We know no explicit family
+partial ovoids for specific $q$ (§10.3): 18 ($q=5$), 33 ($q=7$), 51 ($q=9$), 70 ($q=11$). *Computer-checked* (squad card
+r2c8, research/squads/gqd5-r2/c8/results.md): 18 is the maximum for $W(5)$ (no 19-point partial ovoid: SAT, two solvers,
+using the transitivity of $\mathrm{PSp}(4,5)$ on non-collinear pairs), below Tallini's bound 21. We know no explicit family
 of order $q^2$ for $q$ odd; Ceria, De Beule, Pavese and Smaldore [CDPS] construct large partial ovoids of $W(3,q)$ for
 $q$ an odd square with $3\nmid q$ (we did not compare sizes with ours).
 
@@ -518,7 +520,8 @@ of points of $W(q)$ in which every point is collinear with at most one other, an
 not in the spread. Counting lines (a single point uses $q+1$ lines, a pair $2q+1$, no line is shared) gives
 $|T|\le 2(q+1)(q^2+1)/(2q+1)$, i.e. at most 86 for $q = 9$ and 127 for $q = 11$. *Computer-checked*: tabu searches find
 such sets of size 66 for $q = 9$ (squad card r2c1; 30 pairs) and 87 for $q = 11$ (card r2c2), against 51 and 70 for
-partial ovoids. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
+partial ovoids. For $q = 5$ the maximum is 23 (exhaustive search with the group, card r2c8), against the counting bound 28
+and the maximum partial ovoid 18. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
 6 partner pairs, $25+25$ hubs): with the hub rule the graph is valid (1,610 vertices, apsp), with the same sets and a hub
 assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/). Card r3c4 tested the final form (only
 the $\mathcal A$-hub condition, $\mathcal B$-hubs placed arbitrarily, many partner pairs): five levels over $Q(4,5)$ with
@@ -747,7 +750,9 @@ $K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2
 sets on the $D\to H$ arcs. The lab's value needs $K_{\mathcal A}+K_{\mathcal B}\ge 241$, i.e. $b\ge 111$ when $c = 2$. For
 partial ovoids of $W(11)$ this is exactly Tallini's bound $q^2-q+1$ (best found: 70). Relaxed sets (§7) are not limited by
 Tallini's theorem, and Proposition 7.2 puts no limit on their number of pairs; counting allows up to 127 points, but the
-best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives 20,713 (built and checked, §15). So we would need
+best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives 20,713 (built and checked, §15). At
+$q = 5$ the true maximum (23) is 82% of the counting bound; the same ratio at $q = 11$ would give about 104, still below
+111. So we would need
 relaxed sets of $W(11)$ about a quarter larger than any we found, or several more freed points on every non-friendly arc
 (each one on each of the ten $H\to H$ arcs adds 4 vertices). Third-level routing gives such points at $q = 5$ and $7$
 (§12), but we did not get it to work at $q = 11$ in this session.
