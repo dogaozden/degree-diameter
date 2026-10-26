@@ -58,3 +58,21 @@ psl 17 × Z117 (N 286,416, μ 66.5, |Fix| 7, min 60), psl 17 × Z119 (N 291,312,
 - 54: psl 17 × Z117, default
 
 (Results appended below as they come in.)
+
+### Round-2 k = 4 results, 5,400 s each (seeds 51–54, finished)
+
+| seed | group | settings | evals | best cost |
+|---|---|---|---|---|
+| 51 | prod psl 7 × sl 7 × Z5 (μ 57.9) | ORBW=4 | 1.44·10⁷ | 14 |
+| 52 | prod psl 7 × sl 7 × Z5 (μ 57.9) | ORBW=4, RESTART=1 | 1.44·10⁷ | 8 |
+| 53 | psl 17 × Z117 (μ 66.5) | ORBW=4 | 2.48·10⁷ | 9 |
+| 54 | psl 17 × Z117 (μ 66.5) | default | 2.47·10⁷ | 9 |
+
+No solution. Every run sat at T = 0.15 (the floor) from about 900 s on with the best cost flat. The k = 3 solutions of
+round 2 needed 5.6·10⁶ to 3.8·10⁷ evaluations at μ 42.6; the k = 4 runs did 1.4–2.5·10⁷ at μ 58–67 and did not get close.
+The naive k-wall estimate (μ ≈ 64 for k = 4) is therefore too optimistic at this budget. prod psl 3 × psl 3 × Z_n (μ 43–66)
+has random minima of 1.1–1.9·10⁵ (screen): not usable.
+
+Settled for k = 4, f = 1, m = 2: the screen ranking (min cost) and the 900 s and 5,400 s annealing runs are all consistent:
+no k = 4 group above 273,360 has reached cost 0 yet. This is a negative result for the default settings, not a proof
+that k = 4 is impossible.
