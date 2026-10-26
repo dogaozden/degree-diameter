@@ -1,0 +1,7 @@
+group pgl 61 x Z_41, N=9303720, identity 0, H order 62, rows 150060, threads 1, setup 0.18s
+wide rows: HW order 246, rows 37820, setup 0.34s
+alpha: conj by mat(1,2,56,37) (index 10717), z -> 10 z on Z_41
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 59 (+e); mu = 46.72, mu/k = 9.34, fixed-point misses ~ 5.23
+ORBW=5: an uncovered fixed element weighs 5; start energy 4651980
+start cost=4651860
+t=30 steps=333 evals=2665 cost=10 best=10 T=0.53 energy=10 bestE=10
