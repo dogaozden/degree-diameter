@@ -247,7 +247,11 @@
   "notes": "n/2 = 1150163255 = 5\u00b7101\u00b72277551; = |Z_2277551 x| Z_505| (k | p-1): fits a Haar graph of that group"
  },
  "16,9": {
-  "notes": "n/2 = 144469559 = 13\u00b719\u00b7584897; = |Z_584897 x| Z_247| (k | p-1): fits a Haar graph of that group"
+  "notes": "n/2 = 144469559 = 13\u00b719\u00b7584897; = |Z_584897 x| Z_247| (k | p-1): fits a Haar graph of that group",
+  "rebuilt": "order",
+  "check": "meta_haar_check.c + meta_haar_bits.c VALID, two-BFS (checks/haar_huge.txt)",
+  "construction": "Haar graph of meta 584897 247 5881 found here (round 2; graphs/d16D9_n288939118_meta_584897_247_5881_x1.sol); not necessarily the holder's graph",
+  "flag": "holder's construction lost; order reproduced"
  },
  "16,10": {
   "notes": "n/2 = 2059753665 = 3\u00b75\u00b771\u00b71934041; = |Z_1934041 x| Z_1065| (k | p-1): fits a Haar graph of that group"
