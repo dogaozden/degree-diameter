@@ -1,0 +1,47 @@
+group psl 29 x Z_4, N=48720, identity 1624, H order 60, rows 812, threads 1, setup 0.00s
+wide rows: HW order 116, rows 420, setup 0.00s
+alpha: conj by mat(12,0,13,17) (index 9670), z -> 3 z on Z_4
+ORBIT k=2 m=3 f=1: |Fix(alpha)| = 55 (+e); mu = 49.35, mu/k = 24.67, fixed-point misses ~ 1.78
+start cost=108
+t=30 steps=77518 evals=620145 cost=19 best=19 T=0.53
+t=60 steps=148138 evals=1185105 cost=19 best=19 T=0.19
+t=90 steps=226263 evals=1810105 cost=19 best=19 T=0.15
+t=120 steps=311035 evals=2488281 cost=19 best=19 T=0.15
+t=150 steps=395182 evals=3161457 cost=19 best=19 T=0.15
+t=180 steps=480470 evals=3843761 cost=19 best=19 T=0.60
+t=210 steps=560806 evals=4486449 cost=19 best=19 T=0.21
+t=240 steps=646252 evals=5170017 cost=19 best=19 T=0.15
+t=270 steps=725268 evals=5802145 cost=19 best=19 T=0.15
+t=300 steps=808388 evals=6467105 cost=19 best=19 T=0.15
+t=330 steps=891601 evals=7132809 cost=19 best=19 T=0.60
+t=360 steps=975802 evals=7806417 cost=19 best=19 T=0.21
+t=390 steps=1057812 evals=8462497 cost=19 best=19 T=0.15
+t=420 steps=1139840 evals=9118721 cost=19 best=19 T=0.15
+t=450 steps=1219930 evals=9759441 cost=19 best=19 T=0.15
+t=480 steps=1300100 evals=10400801 cost=19 best=19 T=0.60
+t=510 steps=1374641 evals=10997129 cost=24 best=19 T=0.21
+t=540 steps=1451184 evals=11609473 cost=24 best=19 T=0.15
+t=570 steps=1521353 evals=12170825 cost=24 best=19 T=0.15
+t=600 steps=1592555 evals=12740441 cost=28 best=19 T=0.15
+t=630 steps=1669926 evals=13359409 cost=19 best=19 T=0.60
+t=660 steps=1744972 evals=13959777 cost=19 best=19 T=0.21
+t=690 steps=1815355 evals=14522841 cost=19 best=19 T=0.15
+t=720 steps=1888357 evals=15106857 cost=19 best=19 T=0.15
+t=750 steps=1959407 evals=15675257 cost=19 best=19 T=0.15
+t=780 steps=2027338 evals=16218705 cost=19 best=19 T=0.60
+t=810 steps=2106607 evals=16852857 cost=19 best=19 T=0.21
+t=840 steps=2183809 evals=17470473 cost=19 best=19 T=0.15
+t=870 steps=2257938 evals=18063505 cost=19 best=19 T=0.15
+t=900 steps=2335719 evals=18685753 cost=19 best=19 T=0.15
+t=930 steps=2409517 evals=19276137 cost=19 best=19 T=0.60
+t=960 steps=2489583 evals=19916665 cost=19 best=19 T=0.21
+t=990 steps=2568998 evals=20551985 cost=19 best=19 T=0.15
+t=1020 steps=2653249 evals=21225993 cost=19 best=19 T=0.15
+t=1050 steps=2735677 evals=21885417 cost=19 best=19 T=0.15
+t=1080 steps=2816631 evals=22533049 cost=24 best=19 T=0.60
+t=1110 steps=2896651 evals=23173209 cost=22 best=19 T=0.21
+t=1140 steps=2979420 evals=23835361 cost=22 best=19 T=0.15
+t=1170 steps=3061729 evals=24493833 cost=22 best=19 T=0.15
+t=1200 steps=3140473 evals=25123785 cost=22 best=19 T=0.15
+t=1230 steps=3220558 evals=25764465 cost=19 best=19 T=0.60
+RESULT d=7 D=8 group=psl 29 x Z_4 N=48720 best=19 evals=25985401 time=1240.5 orbit k=2 m=3 f=1 fix=55

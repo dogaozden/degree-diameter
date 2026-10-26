@@ -166,7 +166,6 @@ Jobs `jobs/A1–A4.jobs`, logs in `runs/`, k = 3 m = 2 f = 1, K = 8, budget 3600
 | A3 | sl 11 × Z37 | 103 | ORBW=3 |
 | A4 | psl 11 × Z74 | 104 | default |
 
-(results appended below as they finish)
 
 ### Phase A results (2026-10-25, finished 15:49 UTC; not solved)
 
@@ -286,3 +285,50 @@ Jobs `jobs/A1–A4.jobs`, logs in `runs/`, ORBIT="2 3 1", K = 8, budget 2400 s e
 | A4 | sl 23 × Z4 | 48,576 | 304 | 47 | 48.2 | 24.1 |
 
 (results appended below as they finish)
+
+Results (stopped by me at 1,240 s, one of 2,400 planned, because all four had sat on the same best cost for ten minutes):
+
+| queue | group | seed | best cost | evals |
+|---|---|---|---|---|
+| A1 | psl 23 × Z8 | 301 | 10 | 4.1 × 10⁷ |
+| A2 | sl 29 × Z2 | 302 | 12 | 2.1 × 10⁷ |
+| A3 | psl 29 × Z4 | 303 | 19 | 2.6 × 10⁷ |
+| A4 | sl 23 × Z4 | 304 | 12 | 2.1 × 10⁷ |
+
+Not solved. The k = 3 floors of rounds 1–2 were 1 to 3 on the same scale, so k = 2 is clearly worse here, not just
+slower. The large q did not rescue it: the involution collision cost is not the only problem, the first-moment gain
+from the larger orbit space does not show up in the annealing. Not run further: no solution to verify.
+
+## Round 3 other checks
+
+- **Order-7 screen** (plan item 1, above): all 27 candidate groups, minimum random cost ≥ 24,000. Dead end.
+- **f = 4, m = 1, k = 3** (three α-fixed letters plus one orbit; round 2's item 2, the "fixed generators" route).
+  Screen `orb_screen.py 7 8 47881 48840 "3 1 4" --samples 300` on the SL/PSL/PGL candidates: minimum random cost
+  1,590 (pgl 11 × Z37), 2,244 (sl 11 × Z37), 9,093 (sl 9 × Z67), 13,449 (psl 11 × Z73). The f = 1, m = 2 minima for the
+  same groups were 27–111. The fixed letters commute, so words collide (STRUCTURE §8 saw the same at f = 3). Dead end.
+- **Round 2's sl 11 × Z37 floor, untested**: round 2 suggested dumping the uncovered set at cost 1 to see whether the
+  α-fixed elements are unreachable. `haar_sym.c` has no such dump, so I did not add one. Left for the coordinator.
+
+## Why I stopped (round 3)
+
+No record. Nothing new to verify or add to research/frontier/sols/. Every family this cell's screens and annealing can
+reach, in the window 47,881 … 48,840, has been tried:
+
+- **k = 3, f = 1, m = 2** on PSL/SL/PGL × Z_n (rounds 1–2): floors at cost 1 (sl 11 × Z37) and 3 (psl 11 × Z73, psl 11 × Z74).
+- **k = 3, f = 4, m = 1**: random minima ≥ 1,590 (this round).
+- **k = 2, f = 1, m = 3** on four large-q groups (this round): best cost 10–19 after 20–40 M evaluations.
+- **k = 7, f = 0, m = 1**: all candidate groups have random minima ≥ 24,000 (this round).
+- Other k = 3 groups in the window (pgl 9 × Z67, sl 9 × Z67, psl 9 × Z134, prod psl 3 × psl 3 × Z333): worse, round 1.
+
+I am not certain no α or group will solve, so this is a statement about these methods, not a proof. The remaining open
+routes are the ones round 2 listed and this round did not reach: SL(3,q) (needs a 3×3 family in haar_gen3/haar_fast
+and build_haar2.py), voltage lifts with k ≥ 2 base orbits (same first-moment λ = W/N; not tested), and the uncovered-set
+dump at cost 1. Those need code or a bigger model, which is the coordinator's call.
+
+## Files on this branch (round 3)
+
+- `research/squads/cells/raise-d7D8-r3/jobs/A1–A4.jobs` and `runs/` (queue logs and the four k = 2 run logs, RESULT lines).
+- `research/squads/cells/raise-d7D8.md`: this section.
+- `research/structured/haar_sym.c`: round 2's version (`ASEED` override; default unchanged), copied so this branch has the same tool.
+- `research/structured/tools/orbq.sh` is not executable in this checkout: run it as `bash tools/orbq.sh ...`.
+- Scratchpad only (not in git): the screen outputs for k = 7, k = 2, k = 3 f = 4, and the built binary.
