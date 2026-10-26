@@ -130,3 +130,20 @@ Round 2 judged the k = 3 floors (3–12) as structural. Round 3 measured the zer
 4. **ORBIT "3 2 2" random minima at 20,000 samples** (for comparison): sl 8 × Z_43 min 0 (the record); sl 9 × Z_31 min 6;
    pgl 9 × Z_31 min 12; prod psl 3 × sl 4 × Z_31 min 10; psl 17 × Z_9 min 10 (N = 22,032, 2N = 44,064).
    Next step (below): long random scans of these four groups for zero hits.
+
+## Round 3 long random scans (ORBIT "3 2 2", random S, zero-cost hit = full diameter check)
+
+Per group: samples, zero hits, cost-6 hits (bin 2 of the histogram; the cost-6 count is the density proxy).
+
+| group | N | 2N | μ | samples | cost 0 | cost 3 | cost 6 | result |
+|---|---|---|---|---|---|---|---|---|
+| sl 8 × Z_43 (record, calibration) | 21,672 | 43,344 | 38.5 | 4·10⁶ | 49 | 0 | 125 | zeros found (passes check, same as record) |
+| sl 9 × Z_31 (seed 2) | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 442 | no zero |
+| sl 9 × Z_31 (seed 3) | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 479 | no zero |
+| pgl 9 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ | 0 | 0 | 12 | no zero (min 6) |
+| psl 17 × Z_9 | 22,032 | 44,064 | 43.4 | 4·10⁶ | 0 | 2 | 4 | no zero (min 3) |
+| prod psl 3 × sl 4 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ (20k) | — | — | — | see below |
+
+sl 9 × Z_31: two independent 10⁸-sample runs, no zero. The rule-of-three 95% upper bound on its zero rate is
+3/(2·10⁸) ≈ 1.5·10⁻⁸, against the record group's 1.2·10⁻⁵. Its cost-6 density is about 4·10⁻⁶ per sample, so the
+record ratio would predict about 170 zeros per 10⁸. Zero observed: the sl 9 orbit space is closed for this structure.
