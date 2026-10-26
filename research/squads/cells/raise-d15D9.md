@@ -51,9 +51,6 @@ The next admissible orders are above 104.8M. Groups with a PSL factor (e.g. prod
 
 Logs: /home/user/scratch_r3/logs/ until the jobs end; copies go to research/structured/runs/raise3_*.log at each checkpoint.
 
-## Status
-
-Wave 1 running. Nothing reached cost 0 at the time of writing; see the LOG entry for results.
 
 ## Checkpoint, 02:17 UTC (round 3, wave 1, about 2,300 s in, ~5,500 evals each)
 
@@ -65,3 +62,36 @@ Wave 1 running. Nothing reached cost 0 at the time of writing; see the LOG entry
 | s44 | prod SL(2,5) × SL(2,13) × Z397 | ORBW=5, RESTART=1, TMIN 0.4, TMAX 2.0 | 5,593 | 42 |
 
 Logs copied to research/structured/runs/raise3_*.log. Nothing at cost 0 yet. The 5×13×397 group is far behind 5×19×127 so far.
+
+## Wave 1 final (ended 03:52 UTC, 8,100 s each, 19,200–19,400 evals)
+
+| job | group | settings | evals | best cost |
+|---|---|---|---|---|
+| s41 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 19,321 | 6 |
+| s42 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 19,241 | 6 |
+| s43 | prod SL(2,5) × SL(2,13) × Z397 | ORBW=5, RESTART=1 | 19,377 | 30 |
+| s44 | prod SL(2,5) × SL(2,13) × Z397 | ORBW=5, RESTART=1, TMIN 0.4, TMAX 2.0 | 19,377 | 30 |
+
+No solution. Logs: research/structured/runs/raise3_*.log.
+
+Reading:
+- 5×19×127 with ORBW=5 has now reached cost 6 in four of its runs (round 2 seeds 4 and 5, round 3 seeds 41 and 42).
+  That is a floor, not a trend: it is reached in the first 1–2 h and then does not move. Cost 6 means two uncovered
+  free orbits, or fixed points that are covered in pairs.
+- 5×13×397 is worse at this budget: cost 30 in both runs. A wider TMIN did not help (it was at 36–42 earlier, then
+  the same 30 floor). Its Z397 factor is the largest cyclic factor of the admissible set, so mixing is the likely
+  reason.
+- α is fixed per group (choose_alpha picks one conjugacy-class representative by a deterministic rule). Different
+  seeds therefore share α. Within one group, a different α is conjugate to this one by an inner automorphism, so it
+  gives an isomorphic search space, not a new one. The seed changes only the starting S.
+
+## Wave 2 (started 03:52 UTC, 7,200 s each)
+
+| job | group | settings | seed |
+|---|---|---|---|
+| s51 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 51 |
+| s52 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 52 |
+| s53 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 53 |
+| s54 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1, K=4 | 54 |
+
+Status: running. Nothing at cost 0 yet.
