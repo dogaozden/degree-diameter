@@ -1,6 +1,14 @@
 # Cell (Δ, D) = (15, 9): raise job raise-15-9, round 3 (branch claude/raise-d15d9-record-r3-u6folv)
 
-Goal: beat our record 208,029,120 vertices, i.e. a Haar graph with |G| ≥ 104,014,561 (2|G| vertices, 15-regular,
+**RECORD: (15,9) raised to 208,483,200 vertices** (from 208,029,120). Group prod SL(2,5) × SL(2,19) × Z127, |G| = 104,241,600,
+15-regular, diameter 9, orbit search k = 3, m = 5, f = 0, ORBW = 5, seed 52 (wave 2, 3,424 s, 8,385 evals).
+File: research/frontier/sols/d15D9_prod_sl_5_sl_19_127_orb3f0_s52.txt (sha256 2ec69cb54c41c25367a0c2baa57040cf2ac63cd3f92bbeea9215f7a3dc234fc6).
+Checks: haar_sym's full diameter check OK, before and after normalising s₀ = e. Independent: research/structured/tools/haarcheck_prod.c
+(VALID, both sides reach all 104,241,600 vertices within 9 from (e,A) and (e,B), 15 distinct generators, 3.5 min).
+build_haar2.py is not used above 20M vertices; haarcheck_prod is the product checker for this family.
+
+
+Goal (original): beat our record 208,029,120 vertices, i.e. a Haar graph with |G| ≥ 104,014,561 (2|G| vertices, 15-regular,
 diameter 9). Table value 168,016,334. Current record: SL(2,79) × Z211, |G| = 104,014,560, orbit search k = 3, m = 5,
 f = 0 (research/frontier/sols/d15D9_sl_79_211_orb3f0_s1.txt, 1.1·10⁴ evaluations).
 
@@ -95,3 +103,30 @@ Reading:
 | s54 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1, K=4 | 54 |
 
 Status: running. Nothing at cost 0 yet.
+
+## Wave 2 final (3,424 s to the find; other seeds stopped at ~3,500 s)
+
+| job | group | settings | evals | best cost |
+|---|---|---|---|---|
+| s51 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | ~8,400 | 18 |
+| **s52** | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | 8,385 | **0 (solution)** |
+| s53 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1 | ~8,400 | 12 |
+| s54 | prod SL(2,5) × SL(2,19) × Z127 | ORBW=5, RESTART=1, K=4 | ~8,100 | 12 |
+
+Seeds 51, 53, 54 were stopped after the find: they are on the same N and cannot raise the record. The find came from a
+run whose plateau had sat at 12 for about 1,000 s, which says a plateau is not a stop signal, but one hit in four
+seeds at this group is also the only success so far on 5×19×127 (round 2 seeds 4–7 and round 3 seeds 41, 42, 51–54
+gave 6–36).
+
+## Next: records above 104,241,600
+
+A new record must have |G| > 104,241,600. Admissible candidates just above (same filters as before):
+
+| N | group | μ | Fix | notes |
+|---|---|---|---|---|
+| 104,299,200 | prod SL(2,5) × SL(2,5) × Z7243 | ~25.1 | | large cyclic factor |
+| 104,307,840 | prod SL(2,5) × SL(2,7) × Z2587 | ~25.2 | 36 | large cyclic factor |
+| 104,569,920 | prod SL(2,13) × SL(2,19) × Z7 | ~26.2 | | small Z |
+| 104,702,400 | prod SL(2,5) × SL(2,11) × Z661 | ~26.8 | | round 2 "next" |
+
+Status and any wave 3 results: see the sections below.
