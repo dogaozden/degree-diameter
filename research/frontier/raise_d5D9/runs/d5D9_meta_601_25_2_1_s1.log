@@ -1,0 +1,6 @@
+group meta 601 25 2 x Z_1, N=15025, identity 0, H order 25, rows 601, threads 1, setup 0.00s
+start cost=52
+t=30 steps=54250 evals=434001 cost=6 best=6 T=0.53
+t=60 steps=110048 evals=880385 cost=6 best=6 T=0.19
+t=90 steps=163861 evals=1310889 cost=6 best=6 T=0.15
+RESULT d=5 D=9 group=meta 601 25 2 x Z_1 N=15025 best=6 evals=1789041 time=120.0

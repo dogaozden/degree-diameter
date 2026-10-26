@@ -1,0 +1,10 @@
+group meta 1241 12 81 x Z_1, N=14892, identity 0, H order 51, rows 292, threads 1, setup 0.00s
+wide rows: HW order 146, rows 102, setup 0.01s
+start cost=70
+t=30 steps=152546 evals=1220369 cost=11 best=9 T=0.53
+t=60 steps=306129 evals=2449033 cost=9 best=9 T=0.19
+t=90 steps=460785 evals=3686281 cost=9 best=9 T=0.15
+t=120 steps=617592 evals=4940737 cost=9 best=9 T=0.15
+t=150 steps=774042 evals=6192337 cost=9 best=9 T=0.15
+t=180 steps=932394 evals=7459153 cost=11 best=9 T=0.99
+RESULT d=5 D=9 group=meta 1241 12 81 x Z_1 N=14892 best=9 evals=8269089 time=200.0

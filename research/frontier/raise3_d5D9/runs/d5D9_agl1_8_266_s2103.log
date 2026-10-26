@@ -1,0 +1,10 @@
+group agl1 8 poly x^3+x+1 x Z_266, N=14896, identity 0, H order 38, rows 392, threads 1, setup 0.00s
+wide rows: HW order 133, rows 112, setup 0.01s
+start cost=17458
+t=30 steps=127525 evals=1020201 cost=11664 best=11664 T=0.53
+t=60 steps=253509 evals=2028073 cost=11664 best=11664 T=0.19
+t=90 steps=381103 evals=3048825 cost=11664 best=11664 T=0.15
+t=120 steps=508691 evals=4069529 cost=11664 best=11664 T=0.15
+t=150 steps=631540 evals=5052321 cost=11664 best=11664 T=0.15
+t=180 steps=764804 evals=6118433 cost=11664 best=11664 T=0.85
+RESULT d=5 D=9 group=agl1 8 poly x^3+x+1 x Z_266 N=14896 best=11664 evals=6830249 time=200.0

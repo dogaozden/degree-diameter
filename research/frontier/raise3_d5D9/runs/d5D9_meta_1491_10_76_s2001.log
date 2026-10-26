@@ -1,0 +1,10 @@
+group meta 1491 10 76 x Z_1, N=14910, identity 0, H order 35, rows 426, threads 1, setup 0.00s
+wide rows: HW order 213, rows 70, setup 0.01s
+start cost=322
+t=30 steps=189587 evals=1516697 cost=14 best=14 T=0.53
+t=60 steps=371670 evals=2973361 cost=14 best=14 T=0.19
+t=90 steps=555084 evals=4440673 cost=14 best=14 T=0.15
+t=120 steps=733966 evals=5871729 cost=12 best=12 T=0.15
+t=150 steps=923743 evals=7389945 cost=14 best=12 T=0.15
+t=180 steps=1114553 evals=8916425 cost=14 best=12 T=0.15
+RESULT d=5 D=9 group=meta 1491 10 76 x Z_1 N=14910 best=12 evals=9993241 time=200.0

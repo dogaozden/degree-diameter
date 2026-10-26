@@ -1,0 +1,10 @@
+group meta 2129 7 933 x Z_1, N=14903, identity 0, H order 7, rows 2129, threads 1, setup 0.01s
+wide rows: no cyclic subgroup of order >= 64 found (best 7); using haar_gen3's evaluation
+start cost=1320
+t=30 steps=15759 evals=126073 cost=12 best=10 T=0.53
+t=60 steps=30815 evals=246521 cost=12 best=10 T=0.19
+t=90 steps=45736 evals=365889 cost=10 best=10 T=0.15
+t=120 steps=61726 evals=493809 cost=10 best=10 T=0.15
+t=150 steps=77195 evals=617561 cost=10 best=10 T=0.15
+t=180 steps=93339 evals=746713 cost=12 best=10 T=0.78
+RESULT d=5 D=9 group=meta 2129 7 933 x Z_1 N=14903 best=10 evals=829857 time=200.0

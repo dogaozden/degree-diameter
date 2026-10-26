@@ -931,6 +931,33 @@ static int check_and_write(ctx *c0, const char *out) {
     fclose(f); printf("wrote %s\n", out);
     return 1;
 }
+/* EXHAUST=1 (ORBIT with m = 1 and f = 0 or f = 2): enumerate the symmetric S of this shape instead of annealing.
+ * f = 2: S = {e, t, orbit} with t over Fix(alpha) and one representative (the smallest index) per alpha-orbit;
+ * f = 0: S = one alpha-orbit, one representative per orbit.  Every S is costed exactly; cost 0 is checked and written. */
+static int exhaust_main(ctx **C, const char *out) {
+    if (OM != 1 || (OF != 0 && OF != 2)) { fprintf(stderr, "EXHAUST needs ORBIT with m = 1 and f = 0 or 2\n"); return 2; }
+    int nt = OF == 2 ? (int)NFIX : 1;
+    long long nS = 0, bestc = -1, nz = 0, hist[16] = {0}; double t0 = now(), lastp = t0;
+    fprintf(stderr, "EXHAUST: %d choices of t, k = %d, f = %d\n", nt, OK_, OF);
+    for (int it = 0; it < nt; it++) {
+        if (OF == 2) { S[1] = FIXL[it]; SI[1] = ginv(S[1]); mktab(S[1], TF[1], TI[1]); }
+        for (int x = 0; x < N; x++) {
+            int o[MAXD];
+            if (!orbit_of(x, o)) continue;
+            int mn = x; for (int i = 1; i < OK_; i++) if (o[i] < mn) mn = o[i];
+            if (mn != x) continue;
+            for (int i = 0; i < OK_; i++) { int u = OF + i; S[u] = o[i]; SI[u] = ginv(o[i]); mktab(o[i], TF[u], TI[u]); }
+            double sc; long long c = cost_any(C[0], TF, TI, &sc, NULL, &NOBOUND, 0);
+            nS++; hist[c < 15 ? c : 15]++;
+            if (bestc < 0 || c < bestc) { bestc = c; fprintf(stderr, "EXHAUST best cost %lld at S #%lld (t index %d, x %d)\n", c, nS, it, x); }
+            if (c == 0) { nz++; printf("EXHAUST cost 0 at S #%lld\n", nS); if (check_and_write(C[0], out)) { printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=0 S=%lld EXHAUST orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, nS, OK_, OM, OF, NFIX); return 0; } }
+            if (now() - lastp > 30) { fprintf(stderr, "EXHAUST t=%.0f S=%lld/%d best=%lld\n", now() - t0, nS, nt, bestc); lastp = now(); }
+        }
+    }
+    printf("RESULT d=%d D=%d group=%s x Z_%d N=%d best=%lld S=%lld EXHAUST orbit k=%d m=%d f=%d fix=%lld\n", d, D, Q->spec, ncyc, N, bestc, nS, OK_, OM, OF, NFIX);
+    printf("EXHAUST cost histogram (cost: count):"); for (int h = 0; h < 16; h++) if (hist[h]) printf(" %d:%lld", h, hist[h]); printf("\n");
+    return bestc == 0 ? 0 : 1;
+}
 static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (sscanf(getenv("ORBIT"), "%d %d %d", &OK_, &OM, &OF) != 3 || OK_ < 2 || OF < 0 || OM < 1 || OF + OK_ * OM != d || OK_ > MAXD) {
         fprintf(stderr, "ORBIT=\"k m f\" needs k >= 2, m >= 1, f >= 0 (e counts when f >= 1), f + k m = d\n"); return 2; }
@@ -951,6 +978,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
+    if (getenv("EXHAUST")) return exhaust_main(C, out);
     double sc0;
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();

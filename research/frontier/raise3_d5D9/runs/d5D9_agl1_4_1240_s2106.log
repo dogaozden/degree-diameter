@@ -1,0 +1,10 @@
+group agl1 4 poly x^2+x+1 x Z_1240, N=14880, identity 0, H order 62, rows 240, threads 1, setup 0.02s
+wide rows: HW order 248, rows 60, setup 0.03s
+start cost=21776
+t=30 steps=98236 evals=785889 cost=20216 best=20216 T=0.53
+t=60 steps=198494 evals=1587953 cost=20216 best=20216 T=0.19
+t=90 steps=296973 evals=2375785 cost=20216 best=20216 T=0.15
+t=120 steps=391883 evals=3135065 cost=20216 best=20216 T=0.15
+t=150 steps=483386 evals=3867089 cost=20216 best=20216 T=0.15
+t=180 steps=580009 evals=4640073 cost=20216 best=20216 T=0.53
+RESULT d=5 D=9 group=agl1 4 poly x^2+x+1 x Z_1240 N=14880 best=20216 evals=5136617 time=200.0

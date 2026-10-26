@@ -1,0 +1,10 @@
+group agl1 25 poly x^2+2 x Z_25, N=15000, identity 0, H order 60, rows 250, threads 1, setup 0.00s
+wide rows: HW order 200, rows 75, setup 0.01s
+start cost=15104
+t=30 steps=211966 evals=1695729 cost=425 best=425 T=0.53
+t=60 steps=430521 evals=3444169 cost=425 best=425 T=0.19
+t=90 steps=642413 evals=5139305 cost=425 best=425 T=0.15
+t=120 steps=850017 evals=6800137 cost=425 best=425 T=0.15
+t=150 steps=1043624 evals=8348993 cost=425 best=425 T=0.15
+t=180 steps=1253033 evals=10024265 cost=425 best=425 T=0.57
+RESULT d=5 D=9 group=agl1 25 poly x^2+2 x Z_25 N=15000 best=425 evals=11088249 time=200.0

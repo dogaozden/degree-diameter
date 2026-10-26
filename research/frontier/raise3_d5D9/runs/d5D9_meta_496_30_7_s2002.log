@@ -1,0 +1,10 @@
+group meta 496 30 7 x Z_1, N=14880, identity 0, H order 62, rows 240, threads 1, setup 0.00s
+wide rows: HW order 248, rows 60, setup 0.00s
+start cost=456
+t=30 steps=243779 evals=1950233 cost=9 best=9 T=0.53
+t=60 steps=493502 evals=3948017 cost=9 best=9 T=0.19
+t=90 steps=739132 evals=5913057 cost=12 best=9 T=0.15
+t=120 steps=983246 evals=7865969 cost=12 best=9 T=0.15
+t=150 steps=1223693 evals=9789545 cost=12 best=9 T=0.15
+t=180 steps=1472232 evals=11777857 cost=6 best=6 T=0.54
+RESULT d=5 D=9 group=meta 496 30 7 x Z_1 N=14880 best=6 evals=13071289 time=200.0

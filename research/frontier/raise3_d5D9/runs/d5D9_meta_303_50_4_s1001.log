@@ -1,0 +1,7 @@
+group meta 303 50 4 x Z_1, N=15150, identity 0, H order 50, rows 303, threads 1, setup 0.00s
+wide rows: HW order 150, rows 101, setup 0.00s
+start cost=467
+t=30 steps=165969 evals=1327753 cost=16 best=16 T=0.53
+t=60 steps=326834 evals=2614673 cost=16 best=16 T=0.19
+t=90 steps=491686 evals=3933489 cost=16 best=16 T=0.15
+RESULT d=5 D=9 group=meta 303 50 4 x Z_1 N=15150 best=16 evals=4349329 time=100.0

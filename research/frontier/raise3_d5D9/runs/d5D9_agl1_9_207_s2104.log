@@ -1,0 +1,10 @@
+group agl1 9 poly x^2+1 x Z_207, N=14904, identity 0, H order 46, rows 324, threads 1, setup 0.01s
+wide rows: HW order 207, rows 72, setup 0.02s
+start cost=16438
+t=30 steps=165918 evals=1327345 cost=9878 best=9878 T=0.53
+t=60 steps=340433 evals=2723465 cost=9878 best=9878 T=0.19
+t=90 steps=517232 evals=4137857 cost=9878 best=9878 T=0.15
+t=120 steps=693820 evals=5550561 cost=9878 best=9878 T=0.15
+t=150 steps=859548 evals=6876385 cost=9878 best=9878 T=0.15
+t=180 steps=1039948 evals=8319585 cost=9878 best=9878 T=0.54
+RESULT d=5 D=9 group=agl1 9 poly x^2+1 x Z_207 N=14904 best=9878 evals=9275457 time=200.0

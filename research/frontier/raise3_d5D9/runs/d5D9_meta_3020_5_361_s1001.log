@@ -1,0 +1,7 @@
+group meta 3020 5 361 x Z_1, N=15100, identity 0, H order 20, rows 755, threads 1, setup 0.01s
+wide rows: HW order 151, rows 100, setup 0.01s
+start cost=794
+t=30 steps=159465 evals=1275721 cost=48 best=48 T=0.53
+t=60 steps=309351 evals=2474809 cost=48 best=48 T=0.19
+t=90 steps=467653 evals=3741225 cost=48 best=48 T=0.15
+RESULT d=5 D=9 group=meta 3020 5 361 x Z_1 N=15100 best=48 evals=4179177 time=100.0

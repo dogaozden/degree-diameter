@@ -1,0 +1,13 @@
+group meta 1658 9 5 x Z_1, N=14922, identity 0, H order 18, rows 829, threads 1, setup 0.00s
+wide rows: no cyclic subgroup of order >= 64 found (best 18); using haar_gen3's evaluation
+start cost=564
+t=30 steps=35068 evals=280545 cost=10 best=10 T=0.53
+t=60 steps=68837 evals=550697 cost=10 best=10 T=0.19
+t=90 steps=102884 evals=823073 cost=10 best=10 T=0.15
+t=120 steps=137236 evals=1097889 cost=10 best=10 T=0.15
+t=150 steps=170935 evals=1367481 cost=10 best=10 T=0.15
+t=180 steps=205447 evals=1643577 cost=8 best=8 T=0.68
+t=210 steps=241173 evals=1929385 cost=8 best=8 T=0.24
+t=240 steps=273893 evals=2191145 cost=8 best=8 T=0.15
+t=270 steps=307870 evals=2462961 cost=8 best=8 T=0.15
+RESULT d=5 D=9 group=meta 1658 9 5 x Z_1 N=14922 best=8 evals=2731537 time=300.0
