@@ -41,3 +41,29 @@ M x| Z_k, M a sum of finite fields; metacyclic is the case f = 1). Z_13^2 x| Z_7
 seeds (a hard floor, like cost 1 at 1,100).
 Kept for round 2: (1) surgery on valid seeds (c31) with robust seeds; (2) abelian-by-cyclic groups beyond metacyclic;
 (3) the order-1,100 trap only as a side line.
+
+## 2026-10-26, big-squad-4-8, round 2 (goal: bipartite (4,8) > 2,184)
+
+26 Haiku cards, 04:59-05:17 UTC, 20 at a time (folder research/squads/b48/r2/). Selection from round 1: 12 cards on split
+abelian-by-cyclic groups (the director's new family), 9 on surgery of the valid 2,184 seed (c31's line), 3 side lines,
+2 wildcards. New tools: haar_tab, abc.py, farlist, edgecrit, flift (fast multi-fibre lifts, ~140k evals/s on 2+2 bases).
+Best per card (n / cost; surgery cards report far pairs):
+- a01 1,120 group root variants: all isomorphic, 2,240 / 3. a02 char-2 components: 2,240 / 3. a03 Frobenius Z_p^m x| Z_d:
+  2,352 / 4 (Z_7^2 x| Z_24). a04 d = 1, 2 components: 2,200 / 7. a05 diagonal actions: 2,200 / 1 (the known trap).
+- a06 floors: uncovered elements are reached by ~30 walks of length 9 and none of length <= 7; no rule found.
+- a07 three components: 2,352 / 26. a08 orders 1,296-1,444: 2,664 / 26. a09 abc groups on 2+2 bases: 2,200 / 38.
+- a10 single field, non-faithful: 2,400 / 6 (F_25 x| Z_48). a11 annealing settings: no gain (1,120 at 3, 1,176 at 4).
+- a12 exhaustive kernel parts for 6 of 353 j-patterns of the 1,120 group: floor 6 (lift-style cost).
+- b01 31 valid 2,184 seeds of Z_91 x|_25 Z_12, all with the same edge damage (165, 165, 180, 180): probably one graph;
+  no other order-1,092 group reaches 0. b02 smart triples: 2,186 / 220. b03 gadget variants: 227. b04 repair c31: 247
+  (strict local minimum). b05 triple geometry: 220 (single-replacement local optimum). b06 no valid Haar graph at
+  N = 1,040-1,091 in short screens; damage does not fall with N. b07 local gadgets: 227. b08 annealed insertion choices:
+  **2,186 / 217** (4 deleted edges, no x-y edge). b09 rewiring a generator class of the 1,100 near miss: no gain.
+- c01 margin objective: same cost-1 state at 1,100. c02 2+2 lifts with flift: 2,200 / 22. c03 hard-set-first: floor 8
+  (lift-style) on both leads. w1 non-split metacyclic: 2,200 / 4. w2 two-sided translations: no gain.
+No valid graph. Director, after the round: an exhaustive search over all Haar graphs of a metacyclic group up to
+automorphism (tools/exh_meta.py | flift eval; ~540k sets/s, 30 s per group of order 1,100) confirms Z_91 x|_25 Z_12
+reaches 0 and proves Z_55 x|_2 Z_20 cannot (minimum = the cost-1 trap). The annealing floors are true minima.
+Kept: (4,8) looks closed for Haar graphs of solvable groups near order 1,100 and for local surgery (floor ~217). Round 3
+moves the main effort to (4,9) (table 4,970), where a director probe already found metacyclic Haar graphs at order 2,496
+(n = 4,992) with cost 4, plus a few (4,8) cards.
