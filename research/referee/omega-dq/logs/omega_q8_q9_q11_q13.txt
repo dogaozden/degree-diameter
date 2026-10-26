@@ -94,3 +94,16 @@ source 32178720 = K(t=0, k=0): eccentricity 9; counts by distance: 1 16 228 3048
   witness base vertex 402234: d_H(point t, it) = 1, d_H(line sigma(t), it) = 6; source meets its copy: no
   source meets 16 of 40 copies; 6415272 vertices at distance >= 9: 6415272 in copies it misses; 3210456 points opposite point t, 3204816 lines opposite line sigma(t), 0 other
   Theorem 2 check: in a missed copy, at most 104225 opposite vertices of the odd class are within distance 7
+
+# exact diameter of Omega H_9 (omegaref mode exact, 4 threads, 1080 s): automorphisms checked edge by edge, BFS from every orbit representative
+Omega H_9 reading 2 types aaabbb sigma id: vertices 4650100 (copies 30 x 132860 + K1-vertices 664300), edges 27900600
+  copy-vertex degree 12..12, K1-vertex degree 12..12, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 1: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 3 and 4: bijection, maps every edge to an edge
+  swap of blocks 3 and 5: bijection, maps every edge to an edge
+  398580 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:132860
+  eccentricity of copy-vertex sources: 9:265720
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 3985800 = K(t=0, k=0))

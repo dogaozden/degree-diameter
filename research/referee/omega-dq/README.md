@@ -21,7 +21,8 @@ Reproduce the q = 7 witness (about 1 s, 0.2 GB):
     # -> source 980400 = K(t=0, k=0): eccentricity 9 ... witness: d(980400, 57) = 9, point 57 of copy 0
     cc -O2 -pthread -o omegaref omegaref.c && ./omegaref h7.txt 7 ababa 2 id exact 4    # DIAMETER 9, about 3 min
 
-The q = 9 case: `./hexgf 9 h9.txt && ./omegaref h9.txt 9 aaabbb 2 id reps` (about 10 s, 0.6 GB). q = 13 needs about 5 GB.
+The q = 9 case: `./hexgf 9 h9.txt && ./omegaref h9.txt 9 aaabbb 2 id reps` (about 10 s, 0.6 GB); the exact diameter
+`./omegaref h9.txt 9 aaabbb 2 id exact 4` takes about 18 minutes on 4 threads. q = 13 needs about 5 GB.
 
 Logs: `logs/hex_checks.txt`, `logs/omega_q7.txt`, `logs/omega_q8_q9_q11_q13.txt`, `logs/omega_q3_q5_allpairs.txt`,
 `logs/audit_relabelled_q3.txt`, `logs/thm2_bound.txt`.
