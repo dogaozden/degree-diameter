@@ -42,4 +42,4 @@ brief asked) and the session's own claude/cell-11-5-bipartite-search-7d5bhg (dra
 3. Other cells: delta o C needs a bijection lines -> points of W(q) taking pencils to PG-lines, i.e. a duality of
    W(q); that exists only for q even (for odd q, Q(4,q) has no full embedding in PG(3,q)). So it does not transfer to
    the odd-q side results (10,5) W(7), (12,5) W(9), (14,5) W(11). For even q it would apply to W(4) at (7,5), but the DM
-   lift there is 12 * 85 = 1,020, below the lab's 1,152; W(16) is degree 19, outside the table.
+   lift there is 12 * 85 = 1,020, below the lab's 1,152; the DM lift of W(16) has degree 19, outside the table.
