@@ -100,3 +100,16 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
   flag 2 is clean: {1,6,5,2} basins G4_2 (14 coset-0 after two passes) and G4_2b (115 after coverage), tabu walkers
   TB11/TB12 running from G4_2 (r4/runs/G4_2_f.sol + runs/G4_2_c0b.sol). To resume:
   `./tabu.sh runs/G4_2_f.sol runs/G4_2_c0b.sol "1 6 5 2" "" TBx SEED 20` from r4/ (needs BASE graph 4,842).
+
+### Next steps after this session (written 03:15 UTC; see the final status below)
+
+1. Fourth conversion (4,844): only flag 2 avoids the point-65 coverage hole. From r4/: base
+   BASE=../hubs/graphs/d10D5_n4842_flagdel3, `./fresh.sh "1 6 5 2" TAG SEED` (or continue from runs/G4_2_c0c.sol with
+   `./alt.sh runs/G4_2_f.sol runs/G4_2_c0c.sol "1 6 5 2" TAG SEED 8`), then `./tabu.sh ... ` once at 1-3 pairs.
+   Basins differ a lot (FR5 stalled at 12, FR5b reached 5 after three passes and closed); run several seeds.
+2. Remaining flags after 2: 0, 3, 4, 7, 8 all fight the crowded point 65 (flag 3) in the coverage stage. A hub-graph
+   change that covers 65's hole targets (69, 48) by hub routes would need 69/48 on freed lines: they are not, so the
+   fix must come from sigma; try fdrun with longer CSECS or several seeds, scored with r5/score.sh.
+3. Ordinary-edge deletions (XDEL) are an independent +2 source with no hard core; tools exist (dmfast GEN/XDEL,
+   finish_xd.sh, edgedel.py, xdscan.sh, xdalt.sh); best trial state r5/best/XDEL_3-27_state.lift2.sol (3 holes +
+   8 coset-0 on the 4,840 base; rebase on 4,842 for real use).
