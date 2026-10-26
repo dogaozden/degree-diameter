@@ -36,17 +36,17 @@ Two families that the grammar could not reach before, and one check that closed 
    (about 4.3e8 evaluations each). Log: logs/long6394_summary.tsv.
 
 4. **Wider non-split sweep (300 s anneals, seed 1): no solve.**
-   - Batch 3: the next 40 non-split candidates by screen score (N = 6216–6384). Best cost 2 (8 specs, all N = 6328 or
-     6223/6216 in the 226·28 / 452·14 families); the rest 4–7. Log: logs/anneal3_summary.tsv.
+   - Batch 3: the next 40 non-split candidates by screen score (N = 6216–6384). Best cost 2 (8 specs, all N = 6328 of the
+     form nmeta 226 28 r 113 1); the rest 4–7. Log: logs/anneal3_summary.tsv.
    - Batch 4: screen of N = 6401–6480 (9,523 candidates; best screen N = 6435 nmeta 429 15 334 143). Eight anneals:
      best cost 8 to 300. This window is weaker than 6209–6400. Logs: logs/screen_nm_6401_6480.tsv, logs/anneal4_summary.tsv.
-   - Totals for the non-split family: 23,377 + 9,523 screened; 24 anneals of 300 s plus the 6328/6394 leads above.
+   - Totals for the non-split family: 23,377 + 9,523 screened; 56 anneals of 300 s (batch 1: 8, batch 3: 40, batch 4: 8).
 
 ## Stop decision (round 3, 04:00 UTC, about 2.7 h of the 6 h budget)
 Stopping, because the cell did not move on any route tried this round, and the remaining routes are low-yield:
 - The record's order-6208 group has no order-3 automorphisms, and the k = 3 orbit family is exhaustively below 0 (best 18).
 - The non-split metacyclic family screens as well as the split one, but its anneals floor at cost 2 at 6328 (a 300 s
-  pattern seen across 24 specs) and at 6394 the best ~ cost 1 persists over 3600 s runs, as in round 2.
+  pattern seen across 56 anneals) and at 6394 the best ~ cost 1 persists over 3600 s runs, as in round 2.
 - Stopping only leaves the compute-heavy items below; they are for the coordinator to choose.
 
 Untried, for the coordinator (in order of my estimate):
@@ -57,7 +57,7 @@ Untried, for the coordinator (in order of my estimate):
   (c) Non-Haar lift.c at n > 12,416 (round 1 K_{4,4}: cost ~1000 after 63 s, so far off).
 
 ## Status (round 3, as of 03:00 UTC)
-- Total this round: 4 long runs (3600 s), 4 + 4 non-split anneals (300 s), and the k=3 orbit screen (17,627 candidates,
+- Total this round: 4 long runs (3600 s), 56 non-split anneals (300 s), and the k=3 orbit screen (17,627 candidates,
   exhaustive for the orbit space of each candidate). No solve; nothing saved to research/frontier/sols/.
 - Verification pipeline is checked (for any future hit): haar_nm finds the solution, tools/build_haar_nm.py gives VALID
   (degree 4, bipartite, diameter from both sides), and research/lifts/coordinator_check/apsp.c gives the all-pairs
