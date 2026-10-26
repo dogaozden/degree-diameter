@@ -1,0 +1,72 @@
+blocks 0, free points 588
+n=588 dg=9 cost=648 hot points=292 dev=0
+greedy: N0 585, switch lines 18, moved points 18
+greedy round 1: 284 candidates
+  round 1 candidate 0/284 t=0 cur 648
+greedy round 1: swap 15 230 -> 644 (t=3)
+greedy round 1: swap 74 313 -> 642 (t=4)
+greedy round 1: swap 95 213 -> 638 (t=4)
+greedy round 1: swap 213 301 -> 630 (t=5)
+greedy round 1: swap 248 316 -> 624 (t=6)
+greedy round 1: swap 301 208 -> 620 (t=6)
+greedy round 1: swap 323 408 -> 618 (t=7)
+greedy round 1: swap 334 356 -> 610 (t=7)
+greedy round 1: swap 379 560 -> 606 (t=8)
+greedy round 1: swap 466 478 -> 598 (t=9)
+greedy round 1: swap 559 523 -> 586 (t=9)
+  round 1 candidate 25/284 t=10 cur 586
+greedy round 1: swap 294 169 -> 582 (t=15)
+  round 1 candidate 50/284 t=20 cur 582
+greedy round 1: swap 64 235 -> 578 (t=21)
+greedy round 1: swap 402 383 -> 576 (t=22)
+greedy round 1: swap 573 525 -> 574 (t=22)
+greedy round 1: swap 460 1 -> 572 (t=23)
+greedy round 1: swap 141 478 -> 570 (t=27)
+  round 1 candidate 75/284 t=30 cur 570
+greedy round 1: swap 525 1 -> 566 (t=34)
+greedy round 1: swap 437 141 -> 564 (t=36)
+greedy round 1: swap 291 141 -> 562 (t=38)
+  round 1 candidate 100/284 t=41 cur 562
+greedy round 1: swap 371 152 -> 558 (t=43)
+greedy round 1: swap 340 335 -> 554 (t=45)
+greedy round 1: swap 281 523 -> 542 (t=50)
+  round 1 candidate 125/284 t=51 cur 542
+greedy round 1: swap 541 426 -> 532 (t=52)
+greedy round 1: swap 428 92 -> 530 (t=54)
+greedy round 1: swap 34 113 -> 528 (t=56)
+greedy round 1: swap 79 64 -> 524 (t=57)
+greedy round 1: swap 534 502 -> 522 (t=58)
+greedy round 1: swap 97 476 -> 520 (t=61)
+  round 1 candidate 150/284 t=61 cur 520
+greedy round 1: swap 63 476 -> 518 (t=61)
+greedy round 1: swap 183 442 -> 514 (t=61)
+greedy round 1: swap 240 183 -> 510 (t=62)
+greedy round 1: swap 470 10 -> 508 (t=70)
+  round 1 candidate 175/284 t=71 cur 508
+greedy round 1: swap 230 410 -> 502 (t=76)
+  round 1 candidate 200/284 t=81 cur 502
+greedy round 1: swap 492 100 -> 500 (t=87)
+greedy round 1: swap 29 437 -> 498 (t=88)
+  round 1 candidate 225/284 t=92 cur 498
+greedy round 1: swap 339 272 -> 494 (t=92)
+  round 1 candidate 250/284 t=102 cur 494
+greedy round 1: swap 181 393 -> 492 (t=104)
+  round 1 candidate 275/284 t=112 cur 492
+greedy round 1: swap 129 520 -> 490 (t=114)
+greedy round 2: 287 candidates
+  round 2 candidate 0/287 t=116 cur 490
+  round 2 candidate 25/287 t=126 cur 490
+  round 2 candidate 50/287 t=136 cur 490
+greedy round 2: swap 294 391 -> 488 (t=136)
+greedy round 2: swap 525 131 -> 486 (t=138)
+greedy round 2: swap 560 373 -> 482 (t=143)
+  round 2 candidate 75/287 t=146 cur 482
+  round 2 candidate 100/287 t=156 cur 482
+  round 2 candidate 125/287 t=166 cur 482
+greedy round 2: swap 113 268 -> 480 (t=172)
+  round 2 candidate 150/287 t=177 cur 480
+greedy round 2: swap 314 506 -> 478 (t=184)
+  round 2 candidate 175/287 t=187 cur 478
+greedy round 2: swap 470 308 -> 476 (t=189)
+  round 2 candidate 200/287 t=197 cur 476
+GREEDY done cost 476 rounds 2 improvements 45 (time cap)
