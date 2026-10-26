@@ -147,3 +147,5 @@ in order of N. Candidate screen and run logs are in the session scratchpad; this
   `research/frontier/sols/d5D10_n96012_haar_meta1143_42_47.sol`. Both checkers VALID.
 - New bar: N > 48,022. The solves came from re-running candidates that had stalled at cost 1 for 20 minutes with another
   seed for 25–30 minutes: the long, heavy-tailed runs pay off, not the screen alone.
+- Queue 4 (1800 s, seed 4, above the 48,022 bar): no solve. 982×49 r3, 491×98 r3, 2189×22 r461, 2009×24 r68 all cost 1.
+- Queue 5 (1800 s, seed 5, the same four): running.
