@@ -49,7 +49,7 @@ scoreboard.jsonl.
 | c2 | two axes, free block layouts (hill climb) | none at m >= 26 | m = 26 best cost 8,279, m = 30 27,405 |
 | c3 | quadratic (2-to-1) coordinate for the weak blocks | 12 (q = 9, sampled) | plain linear 11; other quadratics worse |
 | c4 | delta and delta^-1 as the two matchings; delta composed with Frobenius | 14 (q = 9, sampled) | m = 24 best 4,583; delta^4 = 1, Frobenius twist no gain |
-| c5 | targeted repair of failing triples | (see below) | |
+| c5 | targeted repair of failing triples (m = 26, voltages of axis points and points on degenerate lines) | none | training cost (r:64:1) 55,792 -> 36,798 after 356 point changes in 600 s; far from 0 (report not received; numbers from c5/rep26.log) |
 | c6 | any q: Pluecker pencil coordinates on lines, class-preserving matchings | **13 (q = 5, exact)** | verified by Opus: glift all, explicit all-pairs BFS, apsp_mt VALID (101,556 vertices, 8-regular); q = 7 m = 17 cost 14-50 per 256 sources over 12 axes |
 
 Kept: c6's any-q design (the lab's first explained D = 8 compound that beats random lifts, which reach 11-12 at q = 5;
