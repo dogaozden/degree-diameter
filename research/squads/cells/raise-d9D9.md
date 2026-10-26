@@ -98,7 +98,7 @@ Logs in research/structured/runs/raise-d9D9-r3/. Solutions (if any) would go to 
 
 | group | N | μ | |Fix| | seed | variant | status |
 |---|---|---|---|---|---|---|
-| psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 51 | RESTART=1 | 9,000 s; best 15 at 7,300 s (see below) |
+| psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 51 | RESTART=1 | 9,000 s, **best 15**, 4.22·10⁶ evals, no solution |
 | prod psl 3 sl 13 67 | 1,755,936 | 31.8 | 35 | 41 | RESTART=1 | 9,000 s, **best 14**, 2.59·10⁶ evals, no solution |
 | prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 43 | RESTART=1 | 9,000 s, **best 4**, 2.99·10⁶ evals, no solution |
 
