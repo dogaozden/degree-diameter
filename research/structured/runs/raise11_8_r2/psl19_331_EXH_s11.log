@@ -1,0 +1,38 @@
+group psl 19 x Z_331, N=1132020, identity 56601, H order 19, rows 59580, threads 1, setup 0.10s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+alpha: conj by mat(8,1,9,6) (index 2726), z -> 64 z on Z_331
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 61.82, mu/k = 12.36, fixed-point misses ~ 1.40
+ORBW=5: an uncovered fixed element weighs 5; start energy 160
+start cost=156
+t=30 steps=497 evals=3977 cost=20 best=20 T=0.53 energy=20 bestE=20
+t=60 steps=1005 evals=8041 cost=20 best=20 T=0.19 energy=20 bestE=20
+t=90 steps=1491 evals=11929 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=120 steps=1963 evals=15705 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=150 steps=2431 evals=19449 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=180 steps=2924 evals=23393 cost=20 best=20 T=1.15 energy=20 bestE=20
+t=210 steps=3358 evals=26865 cost=16 best=20 T=0.41 energy=20 bestE=20
+t=240 steps=3922 evals=31377 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=270 steps=4554 evals=36433 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=300 steps=5309 evals=42473 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=330 steps=6057 evals=48457 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=360 steps=6775 evals=54201 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=390 steps=7487 evals=59897 cost=15 best=15 T=1.31 energy=15 bestE=15
+t=421 steps=8213 evals=65705 cost=15 best=15 T=0.46 energy=15 bestE=15
+t=451 steps=8956 evals=71649 cost=15 best=15 T=0.16 energy=15 bestE=15
+t=481 steps=9701 evals=77609 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=511 steps=10414 evals=83313 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=541 steps=11122 evals=88977 cost=15 best=15 T=1.30 energy=15 bestE=15
+t=571 steps=11831 evals=94649 cost=15 best=15 T=0.46 energy=15 bestE=15
+t=601 steps=12550 evals=100401 cost=15 best=15 T=0.16 energy=15 bestE=15
+t=631 steps=13220 evals=105761 cost=15 best=15 T=0.15 energy=15 bestE=15
+t=661 steps=13909 evals=111273 cost=15 best=15 T=0.15 energy=15 bestE=15
+EXH slot 0: 226401 candidates in 947 s, cost 10 -> 5 (energy 10 -> 5), best 5
+EXH slot 1: 226401 candidates in 915 s, no better orbit (energy 5)
+t=2545 steps=14464 evals=115713 cost=5 best=5 T=0.15 energy=5 bestE=5
+EXH slot 0: 226401 candidates in 920 s, no better orbit (energy 5)
+EXH slot 1: 226401 candidates in 918 s, no better orbit (energy 5)
+t=4383 steps=14465 evals=115721 cost=5 best=5 T=0.15 energy=5 bestE=5
+EXH slot 0: 226401 candidates in 917 s, no better orbit (energy 5)
+EXH slot 1: 50217 candidates in 205 s, no better orbit (energy 5)
+t=5504 steps=14466 evals=115729 cost=5 best=5 T=0.15 energy=5 bestE=5
+RESULT d=11 D=8 group=psl 19 x Z_331 N=1132020 best=5 evals=115729 time=5504.2 orbit k=5 m=2 f=1 fix=9

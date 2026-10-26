@@ -1,0 +1,29 @@
+group psl 19 x Z_331, N=1132020, identity 56601, H order 19, rows 59580, threads 1, setup 0.09s
+wide rows: no cyclic subgroup of order >= 64 found (best 19); using haar_gen3's evaluation
+alpha: conj by mat(8,1,9,6) (index 2726), z -> 64 z on Z_331
+ORBIT k=5 m=2 f=1: |Fix(alpha)| = 9 (+e); mu = 61.82, mu/k = 12.36, fixed-point misses ~ 1.40
+ORBW=5: an uncovered fixed element weighs 5; start energy 230
+start cost=230
+t=30 steps=479 evals=3833 cost=31 best=25 T=0.53 energy=35 bestE=25
+t=60 steps=967 evals=7737 cost=20 best=20 T=0.19 energy=20 bestE=20
+t=90 steps=1468 evals=11745 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=120 steps=1942 evals=15537 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=150 steps=2403 evals=19225 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=180 steps=2877 evals=23017 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=210 steps=3358 evals=26865 cost=30 best=20 T=0.68 energy=30 bestE=20
+t=240 steps=3928 evals=31425 cost=25 best=20 T=0.24 energy=25 bestE=20
+t=270 steps=4556 evals=36449 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=300 steps=5263 evals=42105 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=330 steps=6016 evals=48129 cost=20 best=20 T=0.15 energy=20 bestE=20
+t=360 steps=6728 evals=53825 cost=25 best=20 T=0.68 energy=25 bestE=20
+t=390 steps=7446 evals=59569 cost=16 best=20 T=0.24 energy=20 bestE=20
+EXH slot 0: 226401 candidates in 958 s, no better orbit (energy 10)
+EXH slot 1: 226401 candidates in 917 s, no better orbit (energy 10)
+t=2269 steps=7504 evals=60033 cost=10 best=10 T=0.22 energy=10 bestE=10
+EXH slot 0: 226401 candidates in 930 s, no better orbit (energy 10)
+EXH slot 1: 226401 candidates in 934 s, no better orbit (energy 10)
+t=4132 steps=7505 evals=60041 cost=10 best=10 T=0.15 energy=10 bestE=10
+EXH slot 0: 226401 candidates in 926 s, no better orbit (energy 10)
+EXH slot 1: 108240 candidates in 446 s, no better orbit (energy 10)
+t=5504 steps=7506 evals=60049 cost=10 best=10 T=0.15 energy=10 bestE=10
+RESULT d=11 D=8 group=psl 19 x Z_331 N=1132020 best=10 evals=60049 time=5504.2 orbit k=5 m=2 f=1 fix=9
