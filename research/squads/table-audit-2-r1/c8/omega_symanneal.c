@@ -40,7 +40,7 @@ static void fill(void) {
 }
 /* c8 wildcard: smooth "excess" cost.  bad = pairs at distance > D (the score); ex = sum over pairs of max(0, dist - D),
    with BFS run past D up to D+CAPX levels (unreached pairs count CAPX+1 each).  The annealer minimises ex. */
-#define CAPX 4
+#define CAPX 0
 typedef struct { int B, w, s1, s2, kind, sv1, sv2, ev1, ev2; } Mv;
 static int propose(Mv *mv) {   /* random single move on one block/orbit pair; returns 0 if no-op */
     mv->B = rnd() % K; mv->w = rnd() % 2; if (mv->B == 0 && mv->w == 0) mv->w = 1;

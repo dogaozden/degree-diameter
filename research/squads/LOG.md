@@ -67,7 +67,8 @@ Cards (best cost, q = 5 unless noted):
 - c6 greedy orbit-by-orbit construction then annealing: greedy start 41,127, end 36,050.
 - c7 closed-form affine maps on the Singer orbits (no search): 1,338,053 from all 7,812 label-0 hubs, i.e. about the
   random level (43,160 per representative set); identical or incidence-matched copies far worse.
-- c8 high-temperature / excess-weighted variant: 38,179.
+- c8 annealing with a self-calibrated start temperature and geometric cooling: 38,179 under load, then 35,726 in
+  300 s on the quiet machine (about the plain-annealing level).
 
 Kept: nothing beat plain annealing; every strategy stalls about 10–15 % below the random level. With the union-bound
 picture (omega/NOTES.md: a random labelling misses a fraction of about e^(−ratio) of the targets, ratio 5.6 at q = 5)
