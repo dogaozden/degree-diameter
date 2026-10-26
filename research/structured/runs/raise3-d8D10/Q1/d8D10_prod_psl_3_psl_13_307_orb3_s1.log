@@ -1,0 +1,6 @@
+group prod psl 3 psl 13 x Z_307, N=4022928, identity 1029678, H order 39, rows 103152, threads 1, setup 0.21s
+wide rows: no cyclic subgroup of order >= 64 found (best 39); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,0,2,1);mat(3,1,6,11)] (index 5895), z -> 17 z on Z_307
+ORBIT k=3 m=2 f=2: |Fix(alpha)| = 17 (+e); mu = 33.27, mu/k = 11.09, fixed-point misses ~ 0.36
+start cost=10875
+t=30 steps=286 evals=2289 cost=66 best=63 T=0.53
