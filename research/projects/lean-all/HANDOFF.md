@@ -6,9 +6,10 @@ to continue.
 ## What is proved
 
 33 of the README records without a Lean ✓ are kernel-checked (table in `STATUS.md`): 18 with their Lean files
-committed (`Axioms.lean`), and 15 large Haar cells whose generated files are not committed (`axioms_big.txt`,
-regenerate with `cells.txt`, compare with `manifests/`). Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms
-(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`). Three methods:
+committed (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`), and 15 large Haar cells whose
+generated files are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every
+theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Three
+methods:
 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
 2. **Graphs up to about 35,000 vertices**: orbit BFS in the kernel (`Orbit.lean`, `Orbit2.lean`, generators
