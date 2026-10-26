@@ -4,3 +4,5 @@ alpha: (x1, x2) -> (c x2 c^-1, x1), c = mat(1,4,1,0) (index 41), z -> 75 z on Z_
 ORBIT k=6 m=2 f=1: |Fix(alpha)| = 11 (+e); mu = 51.78, mu/k = 8.63, fixed-point misses ~ 1.88
 start cost=11594
 t=30 steps=565 evals=4521 cost=80 best=73 T=0.53
+t=60 steps=1132 evals=9057 cost=60 best=60 T=0.19
+t=90 steps=1742 evals=13937 cost=58 best=58 T=0.15
