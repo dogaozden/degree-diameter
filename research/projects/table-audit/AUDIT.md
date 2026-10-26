@@ -278,4 +278,11 @@ first random connection set: the table values at D = 9, 10 are far below what ra
 the three cells the repo has not beaten. Each graph above 2·10⁷ vertices is checked by two independent low-memory
 checkers written from the definitions (meta_haar_check.c, queue BFS, 9 bytes per vertex; meta_haar_bits.c, bitset
 BFS, half a byte per vertex; meta_haar_pull.c, a pull BFS, for the cells above 6·10⁸ vertices), below that also by
-build_haar2.py (checks/haar_huge.txt). Status per cell: see the Loz table in §3 and cells.csv.
+build_haar2.py (checks/haar_huge.txt). Result: (8,10), (9,10), (10,9), (10,10), (11,9), (11,10), (12,9), (12,10),
+(13,9), (14,9), (14,10), (15,9), (16,9) reproduced at exact order (Loz table in §3). (11,10) needed the hill climb
+(random sets gave diameter 11 with 4 vertices too far); (14,10) needed annealing in Z10283705 ⋊ Z59 (a group chosen
+so that haar_gen3 has an element of order 59 to work with); the rest fell to the first few candidates. Not reproduced:
+(13,10) (hill climb stuck at 2 vertices beyond distance 10 when this was written), (15,10) and (16,10) (2.3·10⁹ and
+4.1·10⁹ vertices: one random set each gave diameter 11, a climb step takes 30–60 min here, and haar_gen3 cannot run
+there because every element of order ≤ 63 has order 5 or 15, which needs tens of GB). (13,10), (15,10) and (16,10)
+are the cells where the table value is closest to what random Haar graphs reach.
