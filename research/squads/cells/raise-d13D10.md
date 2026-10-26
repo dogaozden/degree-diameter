@@ -188,3 +188,9 @@ Previous record 681,406,800 (SL 149×103) is superseded by +0.4 %.
 
 Lesson: ORBW=3 turns the "one uncovered fixed element" stall into a solve, as ORBW=5 did at (11,8). Same-cell rungs
 (SL 103×313 and the rest of the cost-1 list) should get ORBW=3 first.
+
+**Rungs after the record (round 3, ORBW=3):**
+- SL(2,103) × Z313 (2N 683,982,624, checkpoint from round 2, seed 2, ORBW=3): cost 1 after 20,650 evals, 10,802 s, unsolved.
+  Still one uncovered α-fixed element. ORBW=3 did not fix it here; the record-winning SL 137×133 needed 9,402 evals.
+- PSL(2,173) × Z133 (2N 688,613,352, fresh, ORBW=3, seed 1): running from 02:26 UTC, cost 6 at 1,833 evals.
+- PSL(2,281) × Z31 (2N 687,820,560, fresh, ORBW=3, seed 1): running from 02:56 UTC.
