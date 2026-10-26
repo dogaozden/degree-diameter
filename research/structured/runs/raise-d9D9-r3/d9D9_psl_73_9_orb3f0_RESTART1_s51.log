@@ -1,0 +1,6 @@
+group psl 73 x Z_9, N=1750248, identity 23652, H order 37, rows 47304, threads 1, setup 0.03s
+wide rows: HW order 219, rows 7992, setup 0.06s
+alpha: conj by mat(16,3,55,56) (index 82837), z -> 4 z on Z_9
+ORBIT k=3 m=3 f=0: |Fix(alpha)| = 107 (+e); mu = 30.58, mu/k = 10.19, fixed-point misses ~ 5.60
+start cost=299
+t=30 steps=4776 evals=14329 cost=27 best=27 T=0.53
