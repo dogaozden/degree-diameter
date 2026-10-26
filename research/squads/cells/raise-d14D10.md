@@ -16,8 +16,13 @@ the "History" section below. Their logs and cell notes live on the round-2 branc
 ## Round 3 (job raise3-14-10, this branch)
 
 Method: `research/structured/tools/orbq.sh` with `ORBIT="3 4 2"` (k=3, m=4 free orbits, f=2 fixed generators), seed 2
-unless noted, `THREADS=2` (16 GB box: THREADS=4 OOM-killed at setup, THREADS=2 peaks near 13 GB RSS), one run at a time,
-built with `gcc -O3 -march=native -fopenmp -o haar_sym haar_sym.c -lm` (binary kept outside git).
+unless noted, `THREADS=2 FAST=1`, one run at a time, built with `gcc -O3 -march=native -fopenmp -o haar_sym haar_sym.c -lm`
+(binary kept outside git).
+
+Memory: the sandbox cgroup limit is about 14 GB. The first attempt used the default FAST=2 (wide rows) with THREADS=2:
+PSL(2,131) x Z_601 was OOM-killed by the kernel at 13.97 GB anon RSS, two minutes into the search phase (log kept in
+r3/runs/fast2_oom/). FAST=1 with THREADS=2 is the lower-memory path (round 1 used FAST=1 at about 6.3 GB single-threaded).
+Keep that setting unless the RSS log shows headroom.
 
 Candidate screen: `tools/orb_screen.py 14 10 675268933 700000000 "3 4 2" --list --nmax 1000` (prime-q PSL and SL with
 Z_n, every prime of n = 1 mod 3). The default --nmax 400 hides the low-fix candidates PSL(2,149) x Z_409 and
