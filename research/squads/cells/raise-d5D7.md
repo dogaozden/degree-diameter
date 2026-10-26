@@ -173,3 +173,7 @@ This round works on (a). Tools: research/squads/cells/raise-d5D7-r3/ (bc2.c, bc2
   |Fix| 6 and |G| in 781..800 (none of the candidates here).
 - This is a stop, not a proof: the cell may still move with a much larger search than this box can run. The coordinator
   decides whether a bigger model is worth it.
+
+9. **Final symmetric runs (SL(2,5)xZ7, |Fix| = 6, bc2sf, 2,700 s planned, stopped at about 1,750 s).** Best costs 30
+   (DEG 1 4 4 1, seed 3), 38 (1 4 4 1, seed 2), 32 (2 3 3 2, seeds 2 and 3). All were flat from about 600 s on, so the runs
+   were stopped early. Logs: research/squads/cells/raise-d5D7-r3/logs/.
