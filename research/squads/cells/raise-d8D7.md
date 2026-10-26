@@ -142,8 +142,27 @@ Per group: samples, zero hits, cost-6 hits (bin 2 of the histogram; the cost-6 c
 | sl 9 × Z_31 (seed 3) | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 479 | no zero |
 | pgl 9 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ | 0 | 0 | 12 | no zero (min 6) |
 | psl 17 × Z_9 | 22,032 | 44,064 | 43.4 | 4·10⁶ (seed 1), 10⁸ (seed 2) | 0 | 68 (10⁸) | 58 (10⁸) | no zero in 10⁸ (min 3). Upper bound on zero rate 3·10⁻⁸ |
-| prod psl 3 × sl 4 × Z_31 | 22,320 | 44,640 | 47.6 | 4·10⁶ (20k) | — | — | — | see below |
+| prod psl 3 × sl 4 × Z_31 | 22,320 | 44,640 | 47.6 | 10⁸ | 0 | 0 | 0 (min 10) | no zero. Upper bound 3·10⁻⁸. Costs seen: 9, 12, … only |
 
 sl 9 × Z_31: two independent 10⁸-sample runs, no zero. The rule-of-three 95% upper bound on its zero rate is
 3/(2·10⁸) ≈ 1.5·10⁻⁸, against the record group's 1.2·10⁻⁵. Its cost-6 density is about 4·10⁻⁶ per sample, so the
 record ratio would predict about 170 zeros per 10⁸. Zero observed: the sl 9 orbit space is closed for this structure.
+
+## Status: stopped, nothing above 43,344
+
+Round 3 result: no cost-0 set above the record. Every group above the record order that was scanned gave no zero:
+sl 9 × Z_31 (2·10⁸ samples), psl 17 × Z_9 (10⁸), prod psl 3 × sl 4 × Z_31 (10⁸), pgl 9 × Z_31 (4·10⁶). The zero rate on
+each is below ~3·10⁻⁸ (rule-of-three 95% bound), against 1.2·10⁻⁵ on the record group, so the probability of a hit in a
+practical budget is small.
+
+What was closed, and how:
+- ORBIT "7 1 1" (single orbit, k = 7) on the record group: exhaustive, best 32. Screen over N ∈ (21,672, 30,000]: best 94.
+- ORBIT "5 1 3" (single orbit, k = 5) on sl 9 × Z_31, prod psl 3 × sl 4 × Z_31, psl 9 × Z_61, sl 5 × Z_181: best 10, 10, 140, 200.
+- ORBIT "3 2 2" random sampling, 10⁸ each, on the three groups above that reach μ ≈ 43–48.
+
+Why stopped: the groups in the window with k = 3 random minima close to the record's behaviour have been sampled to a
+zero-rate bound three orders of magnitude below the record group's rate. Anneal floors (3–12) reported in round 2 are
+consistent with this. Not tried this round: longer k = 3 scans on pgl 9 × Z_31 (cost-6 density 12 per 4·10⁶, lowest of
+the four) and other groups with N in (22,320, 26,000]; SL(2,q) × Z_n with prime n ≡ 1 mod 3 at larger μ; lifts at N > 21,672.
+The k = 5 and k = 7 single-orbit structures are closed for the groups listed above; no other (Q, n) with N in range has
+an order-5 or order-7 automorphism that was not covered by the screens.
