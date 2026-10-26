@@ -48,7 +48,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (10, 5) | 4,000 | **4,800** | +20.0% | generalized quadrangle construction ¹ | — |
 | (11, 5) | 5,850 | **7,020** | +20.0% | generalized quadrangle construction ¹ | — |
 | (12, 5) | 8,200 | **9,840** | +20.0% | generalized quadrangle construction ¹ | — |
-| (13, 5) | 11,480 | **11,486** | +0.1% | finite geometry (unit design) ¹ | — |
+| (13, 5) | 11,480 | **11,700** | +1.9% | lift of a generalized quadrangle | — |
 | (14, 5) | 14,760 | **17,568** | +19.0% | generalized quadrangle construction ¹ | — |
 | (15, 5) | 20,496 | **20,736** | +1.2% | route-chart lift | — |
 | (16, 5) ² | 27,300 | **33,792** | +23.8% | route-chart lift ¹ | — |
