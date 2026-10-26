@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
     for (int c = 0; c < 5 * A; c += Z5 ? 5 : 1) for (int s = 0; s < r; s++) { src[ns++] = (long)c * 2 * n + orbP[s * m]; src[ns++] = (long)c * 2 * n + n + orbL[s * m]; }
     long nall = ns; if (hubonly) ns = nhub;
     fill(); om_build(&o);
-    long cur = om_far(&o, src, (int)ns, D, NULL, NULL, NULL), best = cur;
+    long cur = om_far_mt(&o, src, (int)ns, D), best = cur;
     fprintf(stderr, "start cost %ld (sources %ld)\n", cur, ns);
     char path[512]; snprintf(path, sizeof path, "%s.lab", pre);
     time_t t0 = time(NULL); long it = 0, acc = 0; double T = T0;
@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
         if (kind == 0 || r == 1) { if (m == 1) continue; e[B * r + s1] = rnd() % m; }
         else { if (s1 == s2) continue; pi[B * r + s1] = sv2; pi[B * r + s2] = sv1; e[B * r + s1] = ev2; e[B * r + s2] = ev1; }
         fill(); om_build(&o);
-        long c = om_far(&o, src, (int)ns, D, NULL, NULL, NULL);
+        long c = om_far_mt(&o, src, (int)ns, D);
         double frac = difftime(time(NULL), t0) / secs; T = T0 * (1 - frac) + 1e-3;
         if (c <= cur || exp((cur - c) / T) * 4294967296.0 > (double)(rnd() & 0xffffffff)) {
             cur = c; acc++;
@@ -115,7 +115,7 @@ int main(int argc, char **argv) {
             }
         } else { pi[B * r + s1] = sv1; pi[B * r + s2] = sv2; e[B * r + s1] = ev1; e[B * r + s2] = ev2; }
     }
-    fill(); om_build(&o); long fin = om_far(&o, src, (int)nall, D, NULL, NULL, NULL);
+    fill(); om_build(&o); long fin = om_far_mt(&o, src, (int)nall, D);
     printf("final check over all %ld orbit representatives: far pairs %ld\n", nall, fin);
     printf("RESULT types=%s inner=%s m=%d D=%d best=%ld iters=%ld accepted=%ld lab=%s\n", o.types, o.inner, m, D, best, it, acc, path);
     return 0;

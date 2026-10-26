@@ -123,3 +123,31 @@ static long om_far(const Omega *o, const long *src, int ns, int D, int *maxecc, 
     }
     free(vis); free(fr); free(nx); return bad;
 }
+
+/* the same count, split over THREADS threads (env THREADS, default 1); each thread takes whole 64-source batches */
+#include <pthread.h>
+typedef struct { const Omega *o; const long *src; int ns, D, tid, nth; long bad; } om_job;
+static void *om_far_worker(void *arg) {
+    om_job *j = arg; const Omega *o = j->o; long NV = o->NV;
+    uint64_t *vis = malloc(8 * NV), *fr = malloc(8 * NV), *nx = malloc(8 * NV); j->bad = 0;
+    for (int s0 = 64 * j->tid; s0 < j->ns; s0 += 64 * j->nth) {
+        int k = j->ns - s0 < 64 ? j->ns - s0 : 64; uint64_t full = k == 64 ? ~0ULL : ((1ULL << k) - 1);
+        memset(vis, 0, 8 * NV); memset(fr, 0, 8 * NV);
+        for (int i = 0; i < k; i++) { vis[j->src[s0 + i]] |= 1ULL << i; fr[j->src[s0 + i]] |= 1ULL << i; }
+        for (int lev = 1; lev <= j->D; lev++) {
+            for (long x = 0; x < NV; x++) { uint64_t acc = 0; const int *a = o->adj + x * o->maxd; for (int t = 0; t < o->deg[x]; t++) acc |= fr[a[t]]; nx[x] = acc & ~vis[x]; }
+            for (long x = 0; x < NV; x++) vis[x] |= nx[x];
+            uint64_t *tt = fr; fr = nx; nx = tt;
+        }
+        for (long x = 0; x < NV; x++) j->bad += __builtin_popcountll(~vis[x] & full);
+    }
+    free(vis); free(fr); free(nx); return NULL;
+}
+static long om_far_mt(const Omega *o, const long *src, int ns, int D) {
+    int nth = getenv("THREADS") ? atoi(getenv("THREADS")) : 1; if (nth < 1) nth = 1; if (nth > 64) nth = 64;
+    if (nth == 1) return om_far(o, src, ns, D, NULL, NULL, NULL);
+    pthread_t th[64]; om_job jb[64]; long bad = 0;
+    for (int i = 0; i < nth; i++) { jb[i] = (om_job){o, src, ns, D, i, nth, 0}; pthread_create(&th[i], NULL, om_far_worker, &jb[i]); }
+    for (int i = 0; i < nth; i++) { pthread_join(th[i], NULL); bad += jb[i].bad; }
+    return bad;
+}
