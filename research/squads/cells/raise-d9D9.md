@@ -103,3 +103,20 @@ Logs in research/structured/runs/raise-d9D9-r3/. Solutions (if any) would go to 
 | prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 43 | RESTART=1 | running (continues round 2's best trajectory) |
 
 (The table is updated below as the runs finish.)
+
+### Round 3: anyn screen result (window 1,749,889–1,766,000; RANDORB 300 samples each)
+
+Full table: runs/raise-d9D9-r3/screen_anyn_window.txt (the ranked part is the second half; the first 60 lines are the unsorted
+list). Top of the ranking by (p1+p10)/2 (fix = |Fix(α)|):
+
+| rank | group | N | μ | fix | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|---|
+| 1 | prod sl 9 psl 17 1 | 1,762,560 | 33.2 | 161 | 54 | 57 | 94 | 210 |
+| 2 | psl 73 x Z_9 | 1,750,248 | 30.6 | 107 | 53 | 60 | 93 | 157 |
+| 3 | prod psl 9 sl 17 1 (same group as rank 1, other order) | 1,762,560 | 33.2 | 161 | 46 | 63 | 94 | 215 |
+| 4 | prod psl 3 psl 19 43 | 1,764,720 | 33.7 | 26 | 45 | 79 | 121 | 258 |
+| 5 | prod sl 3 psl 13 67 (= prod psl 3 sl 13 67) | 1,755,936 | 31.8 | 35 | 78 | 99 | 148 | 378 |
+
+Calibration: the record group (prod psl 7 sl 7 x Z_31, solved) gives min 42, p1 51, p10 96, median 203 on the same sampler.
+So psl 73 x Z_9 has the record group's lower tail at μ 30.6 (the lowest μ above the record); rank 1 and 4 are the other leads.
+Caveat: 300 samples per group; the lower tail of a random sample predicts the start point, not the search outcome.
