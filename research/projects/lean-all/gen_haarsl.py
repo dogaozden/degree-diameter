@@ -43,6 +43,18 @@ def chunked(v, bits=None, chunk=4096):
     h = max(chunk, (bits // 2 // chunk) * chunk)
     return f'({chunked(v & ((1 << h) - 1), h, chunk)} + {chunked(v >> h, bits - h, chunk)} <<< {h})'
 
+
+def chunked_raw(v, bits=None, chunk=16384):
+    """`chunked` with raw literals and `Nat.add`/`Nat.shiftLeft` (no `OfNat` or `binop%` elaboration: about three
+    times faster to elaborate)."""
+    if bits is None:
+        bits = max(v.bit_length(), 1)
+    if bits <= chunk:
+        return f'(nat_lit {hex(v)})'
+    h = max(chunk, (bits // 2 // chunk) * chunk)
+    return (f'(Nat.add {chunked_raw(v & ((1 << h) - 1), h, chunk)} '
+            f'(Nat.shiftLeft {chunked_raw(v >> h, bits - h, chunk)} {h}))')
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('sol')
@@ -59,6 +71,7 @@ def main():
                     'over all covers in order), nothing else')
     ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
     ap.add_argument('--scan2', action='store_true', help='haarcert scan2 (2 bytes per element, the words of --scan)')
+    ap.add_argument('--raw', action='store_true', help='certificate trees of raw literals (chunked_raw)')
     ap.add_argument('--leaf', type=int, default=4096,
                     help='bits per literal in the certificate trees (16384 gives oleans of about 5.9 bytes per slot '
                          'instead of 8.1)')
@@ -204,7 +217,7 @@ def main():
                     assert 5 * (b + 1) * N <= len(data), 'certificate file cut below this batch'
                     used[0] = min(used[0], b)
                     dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
-                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked(dig, chunk=args.leaf)}, by decide +kernel⟩\n\n')
+                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked_raw(dig, chunk=args.leaf) if args.raw else chunked(dig, chunk=args.leaf)}, by decide +kernel⟩\n\n')
                 leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
