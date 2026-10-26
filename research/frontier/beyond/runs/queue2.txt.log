@@ -23,3 +23,9 @@ from (e,B): all reached within 12, ecc 12 (44.688 s)
 VALID d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208 threads=2 time=94.979 bfs_A=50.291 bfs_B=44.688
 15:30:17 end
 15:30:17 start 9 12 sl 199 67 orbit 3 2 3
+RESULT d=9 D=12 group=sl 199 x Z_67 N=527986800 vertices=1055973600 best=0 evals=430 steps=107 time=649.1 orbit k=3 m=2 f=3 mu=4.44
+from (e,B): all reached within 12, ecc 12 (93.372 s)
+VALID d=9 D=12 group=sl 199 x Z_67 N=527986800 vertices=1055973600 threads=2 time=198.759 bfs_A=105.387 bfs_B=93.372
+saved ../sols/d9D12_sl_199_67_orb3_s1.txt
+15:44:29 end
+15:44:29 start 17 9 sl 61 1141 orbit 3 5 2

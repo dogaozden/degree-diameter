@@ -1,7 +1,8 @@
 group sl 193 x Z_31, N=222854784 (2N=445709568), rows 37248 x 5983 bits (doubled row 208 words), memory 0.17 GB, threads 2
 alpha: conj by mat(0,192,1,192), z -> 5 z on Z_31 (fixed z: 1); ORBIT k=3 m=3 f=1; W=3.92263e+09 lambda=17.602 mu=5.05
 setup 0.0s
-start cost=0 (1.3s per eval)
-RESULT d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 best=0 evals=1 steps=0 time=1.3 orbit k=3 m=3 f=1 mu=5.05
+start cost=6 (1.5s per eval)
+t=7 step=1 evals=5 slot=2 cand=0 cost=0 best=0 T=1.26
+RESULT d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 best=0 evals=5 steps=1 time=7.5 orbit k=3 m=3 f=1 mu=5.05
 re-evaluation of the best S: cost 0
 wrote runs/d10D11_sl_193_31_orb3_s1.out

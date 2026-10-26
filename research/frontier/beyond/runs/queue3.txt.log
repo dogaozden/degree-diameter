@@ -5,3 +5,7 @@ VALID d=8 D=11 group=sl 89 x Z_31 N=21851280 vertices=43702560 threads=2 time=13
 saved ../sols/d8D11_sl_89_31_orb3_s1.txt
 15:30:45 end
 15:30:45 start 9 11 psl 199 19 orbit 3 2 3
+RESULT d=9 D=11 group=psl 199 x Z_19 N=74863800 vertices=149727600 best=3 evals=1835 steps=457 time=900.2 orbit k=3 m=2 f=3 mu=5.70
+15:45:46 end
+15:45:46 start 10 11 sl 193 31 orbit 3 3 1
+RESULT d=10 D=11 group=sl 193 x Z_31 N=222854784 vertices=445709568 best=0 evals=5 steps=1 time=7.5 orbit k=3 m=3 f=1 mu=5.05

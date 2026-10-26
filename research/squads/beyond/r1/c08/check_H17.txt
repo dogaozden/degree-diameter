@@ -1,0 +1,8 @@
+q=17 vertices=3017196 (points 1508598 + lines 1508598) edges=27154764 degree=18 everywhere, bipartite and simple violations=0
+source point 0 ecc 6 levels 1 18 306 5202 88434 1503378 1419857  (matches Moore levels)
+source point 5220 ecc 6 levels 1 18 306 5202 88434 1503378 1419857  (matches Moore levels)
+source point 5221 ecc 6 levels 1 18 306 5202 88434 1503378 1419857  (matches Moore levels)
+source line 2018491 ecc 6 levels 1 18 306 5202 88434 1503378 1419857  (matches Moore levels)
+BFS sources run=96 (local: 18 points of line 0 and 18 lines through point 0; random: 60)
+max eccentricity over BFS runs=6; all runs match expected Moore level sizes: yes
+RESULT VALID q=17 n=3017196 maxdiam_seen=6
