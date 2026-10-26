@@ -1,0 +1,19 @@
+# g7d tail 2026-10-26T23:20Z
+## CHAIN lines (min costs)
+CHAIN 1 min 21 secs 30 evals 53705 S 74480 414006 461100 334291 246604 221160 208611 189632 534048 324668
+CHAIN 2 min 18 secs 55 evals 100192 S 74480 265374 448708 429606 238192 67325 547447 481047 573174 354403
+## last 40 lines of g7d.log
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.03s
+wide rows: HW order 252, rows 2352, setup 0.05s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+ORBW=3: an uncovered fixed element weighs 3; start energy 96
+start cost=92
+t=30 steps=6638 evals=53105 cost=21 best=21 T=0.37 energy=21 bestE=21
+CHAIN 1 min 21 secs 30 evals 53705 S 74480 414006 461100 334291 246604 221160 208611 189632 534048 324668
+chain 2: fresh start (global best 21)
+t=60 steps=13304 evals=106433 cost=18 best=18 T=0.38 energy=18 bestE=18
+CHAIN 2 min 18 secs 55 evals 100192 S 74480 265374 448708 429606 238192 67325 547447 481047 573174 354403
+chain 3: fresh start (global best 18)
+t=90 steps=20174 evals=161393 cost=24 best=18 T=1.23 energy=24 bestE=18
+## last 10 lines of g7d.out

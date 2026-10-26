@@ -1,0 +1,19 @@
+# g7a tail 2026-10-26T23:20Z
+## CHAIN lines (min costs)
+CHAIN 1 min 24 secs 36 evals 81161 S 24541 346753 21831 308282 442760 376337 73400 465111 28669 234787
+CHAIN 2 min 21 secs 31 evals 70432 S 24541 5033 329415 289068 448123 129288 406072 424035 292486 417021
+## last 40 lines of g7a.log
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.03s
+wide rows: HW order 194, rows 3036, setup 0.05s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+ORBW=3: an uncovered fixed element weighs 3; start energy 162
+start cost=158
+t=30 steps=8403 evals=67225 cost=27 best=24 T=0.37 energy=27 bestE=24
+CHAIN 1 min 24 secs 36 evals 81161 S 24541 346753 21831 308282 442760 376337 73400 465111 28669 234787
+chain 2: fresh start (global best 24)
+t=60 steps=16919 evals=135353 cost=24 best=21 T=0.50 energy=24 bestE=21
+CHAIN 2 min 21 secs 31 evals 70432 S 24541 5033 329415 289068 448123 129288 406072 424035 292486 417021
+chain 3: fresh start (global best 21)
+t=90 steps=25142 evals=201137 cost=15 best=15 T=0.52 energy=15 bestE=15
+## last 10 lines of g7a.out
