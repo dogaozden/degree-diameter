@@ -215,3 +215,20 @@ Not repeated: prod sl 5 × sl 7 × Z217 (best 36), prod sl 9 × sl 23 × Z1 (bes
 ## Wave 1 (ORBW=3, seed 1, 7200 s each, THREADS=1, 4 at a time; queue files in scratchpad, outputs in runs/r3/)
 
 - started 01:19 (box time): the four rows above, all with `ORBIT="3 3 2" ORBW=3 K=8`.
+
+### Wave 1 result (03:19 box time, 7200 s each, all four stopped unsolved)
+
+| group | |G| | μ | best cost | evals | |Fix| |
+|---|---|---|---|---|---|
+| sl 41 × Z127 | 8,747,760 | 26.6 | 6 | 353k | 41 |
+| prod psl 3 × sl 47 × Z7 (A4 × SL(2,47)) | 8,717,184 | 25.4 | 6 | 148k | 143 |
+| prod sl 4 × sl 13 × Z67 | 8,779,680 | 28.0 | 6 | 189k | 35 |
+| prod psl 3 × sl 13 × Z331 (A4 × SL(2,13)) | 8,674,848 | 23.7 | 48 | 156k | 35 |
+
+The A4 × SL(2,13) run stuck at 48 (a large plateau), so it is dropped. The other three sit at cost 6, which
+is one or two uncovered orbits or fixed points.
+
+### Wave 2 (ORBW=3, seeds 2 and 3, 8000 s each, started 03:20 box time, ends about 05:35)
+
+- sl 41 × Z127, seeds 2 and 3.
+- prod psl 3 × sl 47 × Z7, seeds 2 and 3.
