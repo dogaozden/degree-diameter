@@ -72,7 +72,8 @@ Done:
   search tools/rand_meta_haar.py and the hill climb tools/meta_haar_climb.c for groups haar_gen3 cannot handle).
 
 Running at 20:20 UTC (scratch only; nothing to recover if the session ends): hill climb for (13,10) in
-Z721181 ⋊ Z428 (cost 2 = vertices beyond distance 10), haar_gen3 for (14,10) in Z10283705 ⋊ Z59 (cost 1),
+Z721181 ⋊ Z428 (cost 2 = vertices beyond distance 10), haar_gen3 for (14,10) in Z10283705 ⋊ Z59 found a graph at 20:21 (second seed; being checked by
+meta_haar_bits.c and meta_haar_pull.c, about 0.3 GB each),
 random Haar tries for (16,10) (one try at (15,10) gave diameter 11). Commands: tools/meta_haar_climb.c,
 tools/rand_meta_haar.py, research/frontier/haar_gen3 with the group specs in AUDIT.md §7.
 
