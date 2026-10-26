@@ -42,3 +42,16 @@ there). Round 1 is on `claude/raise-d12d9-bipartite-record-f510kc`.
 ### Setup (01:20–01:30 UTC, 2026-10-26)
 - Checkers rebuilt; haarcheck_psl re-validates the round-2 record (VALID, N 17,696,952, ecc 9).
 - orb_screen (k=3 filter, k=4 with --anyn) running on the range above; results in the scratchpad screen/ dir.
+- k=4 screen on sl 41×Z257 (N 17,702,160) and psl 49×Z301: random-S minimum about 2,300 and 2.5 million, far above the
+  k=3 leads (min 22–58). Dropped; k=4 is not competitive for these groups.
+- k=3 screen (300 random S, range 17.70M–17.90M, prime-filtered n), ranked by p1/p10 of cost:
+  sl 83×31 (N 17,722,824, μ 29.5, Fix 83, min 22, p1 34), psl 61×157 (17,813,220, μ 31.8, Fix 29, min 45, p1 54),
+  sl 49×151 (17,757,600, μ 30.4; prime power 49, no checker), psl 81×67 (17,800,560; prime power 81, no checker),
+  psl 47×343 (17,797,584, μ 31.4, Fix 23, min 58), sl 41×259 (17,839,920, μ 32.4, Fix 41, min 42), sl 43×223 (min 48),
+  psl 49×301 (17,698,800; prime power 49, no checker).
+
+### Batch 1 (started ~01:25 UTC, 2 h each), progress at t ≈ 3,075 s
+- sl 83×31 seed 3: best 6 at 81.6k evals. Same value at 40k evals (t 1,570), so no progress in the last 25 min.
+- sl 43×223 seed 3: best 12 at 85.9k evals (stuck since ~50k).
+- psl 47×343 seed 3: best 18 at 90.6k evals (stuck since ~45k).
+- psl 61×157 seed 1 (N 17,813,220, μ 31.8) started 02:17 UTC, 2 h, on the core freed by the screen.
