@@ -271,3 +271,5 @@ Note that the no-ORBW run solved where the two ORBW = 5 runs stayed above cost 5
   - psl 71 × 181 (N = 32,384,520): seed 21 best 5 (95,753 evals), seed 22 best 5 (96,609 evals).
   Best cost 2 is the closest any run has come to the next rung (round 2 floor was 5). This is the same floor as round 2
   for psl 71 × 181 but a new low on psl 79 × 131.
+- 2026-10-26 04:14 UTC: batch 3 started: psl 79 × 131 (N = 32,288,880, μ 44.3), no ORBW, seeds 31–34, 9,000 s each,
+  in `runs/raise-d10D10-r5/`. Target: beat the cost-2 floor of seed 21.
