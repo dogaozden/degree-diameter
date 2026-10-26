@@ -62,3 +62,35 @@ orbit structure is valid for Delta = 8 only with m = 1, and one orbit gives too 
 - psl 11 x Z1021 (N 673,860): |Fix| 4, min 35,320. Dead.
 - sl 19 x Z101 (N 690,840, just above the window): |Fix| 19, min 150. Dead.
 Compare k = 3 m = 2 with min 28-30 on the record and psl 23 x Z111. So k = 5 is out for Delta = 8.
+
+### Product groups, ORBW=3, 20 min each (1 thread)
+| run | group | N | best cost | evals |
+|---|---|---|---|---|
+| s4 | prod sl 4 x psl 7 x Z67 | 675,360 | 18 | 1.28M |
+| s5 | prod sl 4 x psl 7 x Z67 | 675,360 | 18 | 1.27M |
+| s6 | prod psl 5 x psl 7 x Z67 | 675,360 | 12 | 1.26M |
+
+Round 1 had 15 on the same two groups. ORBW=3 does not help them.
+
+## Conclusion (round 3)
+**No record. The (8,9) cell stays at 1,341,600 (N = 670,800, sl 25 x Z43).** No valid graph was found and nothing was
+saved to research/frontier/sols/.
+
+Why I stopped (about 3 h of compute, 4 cores, all runs ended at cost >= 3):
+1. The full window screen (255 candidates, `--anyn`, 3,000 samples each) was done. The best tails are psl 47 x Z13
+   and psl 23 x Z111, and both are PSL, which pays the odd-D involution penalty.
+2. Every SL-type group in the window has a cyclic factor that is composite or prime but 2 mod 3 (so alpha is trivial
+   on Z_p), or a prime cyclic factor whose tail is 100 times worse than the record's (sl 17 x Z139, sl 13 x Z313).
+3. psl 23 x Z111: min 30 from random samples, the same as the record's min 28, yet annealing plateaus at cost 9 after
+   5.5M evaluations per run (3 runs, 1 h each). The random minimum does not predict annealing success here.
+4. k = 5 (f = 3, m = 1), the Poisson-motivated route, is dead for Delta = 8 (one orbit, min 150 to 35,320).
+5. Product groups (prod sl 4 x psl 7 x Z67, prod psl 5 x psl 7 x Z67) plateau at 12 to 18, as in round 1.
+
+## What is still untried (the verdict could change)
+- Voltage lifts / route charts (research/theorems/BEAT_16_5_SQUAD.md, branch claude/beat-16-5-squad-jiiwg2): not
+  present locally and not run here.
+- A solver that breaks the involution plateau for PSL (a symmetric weighting of involution orbits), which would make
+  psl 23 x Z111 and psl 47 x Z13 usable.
+- Groups with N in 670,801 .. 690,000 that are not Q x Z_n with Q = SL/PSL/PGL(2,q) or a product of two (e.g.
+  metacyclic, or semidirect products with the cyclic factor inside Q).
+- Other orbit shapes for k = 3: ALPHA=<index> (another order-3 class in Q), or f = 5, m = 1. Not run.
