@@ -61,7 +61,7 @@ static int minv(mat A, mat *R) {
     return 1;
 }
 static int vzero(vec x) { for (int i = 0; i < n; i++) if (x.v[i]) return 0; return 1; }
-static mat M[L], Mi[L]; static vec b[L], dv[L]; static int DIAG = 0;
+static mat M[L], Mi[L]; static vec b[L], dv[L]; static int DIAG = 0, WP = 1, WD = 3;
 static int side_univ(mat *P, mat *Pi, vec *w) {
     int bad = 0;
     for (int c2 = 0; c2 < L; c2++) for (int c3 = 0; c3 < L; c3++) { if (c3 == c2) continue;
@@ -116,11 +116,19 @@ static int costv(void) {
     if (!indep()) return 5000;
     parts[0] = side_univ(M, Mi, b); parts[1] = side_univ(Mi, M, dv); parts[2] = side_pencil(M, Mi, b); parts[3] = side_pencil(Mi, M, dv);
     parts[4] = DIAG ? (side_diag(M, Mi, b) > 0) : 0; parts[5] = DIAG ? (side_diag(Mi, M, dv) > 0) : 0;
-    return parts[0] + parts[1] + parts[2] + parts[3] + 3 * (parts[4] + parts[5]);
+    return parts[0] + parts[1] + WP * (parts[2] + parts[3]) + WD * (parts[4] + parts[5]);
+}
+static void print_sing(const char *tag, mat *P, mat *Pi, vec *w) {
+    for (int c1 = 0; c1 < L; c1++) for (int c2 = 0; c2 < L; c2++) for (int c3 = 0; c3 < L; c3++) for (int c4 = 0; c4 < L; c4++) {
+        if (c1 == c2 || c2 == c3 || c3 == c4) continue;
+        mat T = mmul(P[c3], Pi[c2]); vec x1 = mvec(T, w[c1]), x2 = mvec(T, w[c2]);
+        int r[4][n]; memcpy(r[0], x1.v, sizeof r[0]); memcpy(r[1], x2.v, sizeof r[0]); memcpy(r[2], w[c3].v, sizeof r[0]); memcpy(r[3], w[c4].v, sizeof r[0]);
+        if (rank_rows(r, 4) < 4) printf("%s %d%d%d%d\n", tag, c1, c2, c3, c4);
+    }
 }
 int main(int argc, char **argv) {
     q = atoi(argv[1]); double secs = atof(argv[2]); rs ^= strtoull(argv[3], 0, 10) * 0x9E3779B97F4A7C15ULL;
-    DIAG = getenv("DIAG") ? atoi(getenv("DIAG")) : 0; field();
+    DIAG = getenv("DIAG") ? atoi(getenv("DIAG")) : 0; if (getenv("WP")) WP = atoi(getenv("WP")); if (getenv("WD")) WD = atoi(getenv("WD")); field();
     for (int i = 0; i < 30; i++) rnd();
     double t0 = now(); int best = 1 << 30; mat bM[L]; vec bb[L]; long rest = 0;
     while (now() - t0 < secs && best > 0) {
@@ -143,5 +151,6 @@ int main(int argc, char **argv) {
     printf("RESULT chartq q=%d best=%d uA=%d uB=%d pA=%d pB=%d dA=%d dB=%d restarts=%ld\n", q, best, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], rest);
     for (int c = 0; c < L; c++) { printf("M%d ", c); for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) printf("%d", M[c].a[i][j]);
         printf(" b%d ", c); for (int i = 0; i < n; i++) printf("%d", b[c].v[i]); printf("\n"); }
+    print_sing("SINGA", M, Mi, b); print_sing("SINGB", Mi, M, dv);
     return 0;
 }

@@ -1,0 +1,19 @@
+t=0.0 best=5000 (uA 0 uB 0 pA 0 pB 0 dA 0 dB 0)
+t=0.0 best=40 (uA 14 uB 12 pA 4 pB 4 dA 1 dB 1)
+t=0.0 best=34 (uA 12 uB 14 pA 2 pB 0 dA 1 dB 1)
+t=0.0 best=26 (uA 8 uB 12 pA 0 pB 0 dA 1 dB 1)
+t=0.0 best=18 (uA 0 uB 6 pA 2 pB 4 dA 1 dB 1)
+t=0.0 best=16 (uA 0 uB 4 pA 2 pB 4 dA 1 dB 1)
+t=0.5 best=11 (uA 4 uB 4 pA 0 pB 0 dA 0 dB 1)
+RESULT chartq q=2 best=11 uA=4 uB=4 pA=0 pB=0 dA=0 dB=1 restarts=75
+M0 1000010000100001 b0 1001
+M1 0011000111101010 b1 0111
+M2 1110000101101100 b2 1011
+SINGA 1202
+SINGA 2012
+SINGA 2021
+SINGA 2102
+SINGB 0202
+SINGB 1212
+SINGB 2020
+SINGB 2121

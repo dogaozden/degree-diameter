@@ -1,0 +1,56 @@
+group g160_6.bin N=160 H=40 rows=4 base b=18 m=81 free=64 n=2880 start cost=1091
+t=0.0 evals=16 best=1088
+t=0.1 evals=32 best=1052
+t=0.1 evals=48 best=1016
+t=0.1 evals=64 best=943
+t=0.1 evals=80 best=901
+t=0.2 evals=112 best=845
+t=0.2 evals=128 best=835
+t=0.2 evals=144 best=809
+t=0.2 evals=192 best=794
+t=0.2 evals=208 best=727
+t=0.2 evals=224 best=700
+t=0.2 evals=288 best=684
+t=0.2 evals=304 best=676
+t=0.2 evals=320 best=674
+t=0.2 evals=336 best=640
+t=0.2 evals=351 best=618
+t=0.2 evals=383 best=617
+t=0.3 evals=415 best=584
+t=0.4 evals=719 best=580
+t=0.4 evals=735 best=540
+t=0.4 evals=799 best=522
+t=0.4 evals=927 best=521
+t=0.6 evals=1483 best=498
+t=0.9 evals=2288 best=495
+t=1.1 evals=2799 best=492
+t=1.4 evals=3737 best=486
+t=1.5 evals=3880 best=473
+t=1.7 evals=4339 best=472
+t=1.7 evals=4403 best=465
+t=1.7 evals=4499 best=458
+t=1.8 evals=4643 best=454
+t=2.2 evals=6246 best=441
+t=2.4 evals=7010 best=434
+t=2.6 evals=7422 best=431
+t=2.9 evals=8458 best=429
+t=2.9 evals=8490 best=424
+t=3.9 evals=10714 best=420
+t=4.4 evals=11780 best=418
+t=4.4 evals=11940 best=403
+t=4.5 evals=12004 best=401
+t=4.6 evals=12545 best=395
+t=7.0 evals=19863 best=394
+t=7.6 evals=22027 best=390
+t=7.7 evals=22504 best=385
+t=8.7 evals=26384 best=384
+t=9.0 evals=27691 best=377
+t=9.1 evals=27867 best=369
+t=10.1 evals=31358 best=365
+t=10 evals=32571 cur=365 best=365
+t=11.2 evals=34993 best=349
+t=11.4 evals=35870 best=345
+t=13.1 evals=41181 best=340
+t=13.2 evals=41658 best=332
+RESULT d=9 D=5 group=g160_6.bin base=k99.base n=2880 best=332 evals=61079 time=20.2
+wrote out/k99_g160_6_s2.volt and out/k99_g160_6_s2.volt.edges (cost 332)

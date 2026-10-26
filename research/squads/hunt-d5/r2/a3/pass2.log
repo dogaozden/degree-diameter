@@ -1,0 +1,11 @@
+PASS2 K55 39 2 seed=3 60s RESULT d=5 D=5 group=g39_2.bin base=K55.txt n=390 best=68 evals=2921312 time=60.0
+PASS2 K55 40 11 seed=3 60s RESULT d=5 D=5 group=g40_11.bin base=K55.txt n=400 best=88 evals=2919504 time=60.0
+PASS2 K55 40 9 seed=3 60s RESULT d=5 D=5 group=g40_9.bin base=K55.txt n=400 best=89 evals=3666302 time=60.0
+PASS2 K55 40 2 seed=3 60s RESULT d=5 D=5 group=g40_2.bin base=K55.txt n=400 best=96 evals=5463043 time=60.0
+PASS2 K55 40 3 seed=3 60s RESULT d=5 D=5 group=g40_3.bin base=K55.txt n=400 best=87 evals=2531860 time=60.0
+VARIANT 2I+P1+P2+P3 39 2 seed=1 6s RESULT d=5 D=5 group=g39_2.bin base=K55_2I_P1P2P3.txt n=390 best=62 evals=512211 time=6.0
+VARIANT 2I+P1+P2+P3 40 11 seed=1 6s RESULT d=5 D=5 group=g40_11.bin base=K55_2I_P1P2P3.txt n=400 best=81 evals=374514 time=6.0
+VARIANT 2I+P1+P2+P3 40 9 seed=1 6s RESULT d=5 D=5 group=g40_9.bin base=K55_2I_P1P2P3.txt n=400 best=88 evals=376645 time=6.0
+VARIANT 2I+P1+P2+P3 40 2 seed=1 6s RESULT d=5 D=5 group=g40_2.bin base=K55_2I_P1P2P3.txt n=400 best=75 evals=698009 time=6.0
+VARIANT 2I+P1+P2+P3 40 3 seed=1 6s RESULT d=5 D=5 group=g40_3.bin base=K55_2I_P1P2P3.txt n=400 best=84 evals=224670 time=6.0
+PASS2DONE

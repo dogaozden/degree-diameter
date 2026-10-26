@@ -1,0 +1,41 @@
+group g160_1.bin N=160 H=40 rows=4 base b=18 m=81 free=64 n=2880 start cost=836
+t=0.0 evals=16 best=814
+t=0.0 evals=32 best=800
+t=0.0 evals=80 best=799
+t=0.0 evals=111 best=778
+t=0.0 evals=127 best=729
+t=0.0 evals=143 best=721
+t=0.1 evals=159 best=715
+t=0.1 evals=174 best=701
+t=0.1 evals=206 best=611
+t=0.1 evals=254 best=575
+t=0.1 evals=268 best=555
+t=0.1 evals=300 best=528
+t=0.1 evals=316 best=510
+t=0.1 evals=332 best=496
+t=0.1 evals=364 best=468
+t=0.1 evals=380 best=464
+t=0.1 evals=428 best=462
+t=0.2 evals=508 best=460
+t=0.2 evals=572 best=456
+t=0.2 evals=588 best=440
+t=0.3 evals=636 best=410
+t=0.3 evals=668 best=404
+t=0.5 evals=1289 best=400
+t=0.5 evals=1337 best=395
+t=0.5 evals=1400 best=385
+t=0.7 evals=2098 best=372
+t=0.7 evals=2130 best=362
+t=0.7 evals=2194 best=350
+t=1.0 evals=2897 best=328
+t=1.1 evals=3277 best=302
+t=1.9 evals=5743 best=299
+t=2.0 evals=5886 best=291
+t=2.2 evals=6935 best=285
+t=2.7 evals=8352 best=275
+t=5.5 evals=17807 best=269
+t=6.5 evals=21067 best=252
+t=7.1 evals=23089 best=244
+t=11 evals=36596 cur=244 best=244
+RESULT d=9 D=5 group=g160_1.bin base=k99.base n=2880 best=244 evals=73235 time=20.0
+wrote out/k99_g160_1_s2.volt and out/k99_g160_1_s2.volt.edges (cost 244)

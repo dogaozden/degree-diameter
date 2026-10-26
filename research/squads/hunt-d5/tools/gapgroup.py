@@ -2,6 +2,7 @@
 """Export GAP SmallGroups as multiplication tables (+ optional automorphisms) for the hunt-d5 tools.
 
 Usage: python3 gapgroup.py list N                 one line per group of order N: "N i abelian? |G'| |Z| structure"
+       python3 gapgroup.py orbits N I             one element index per Aut(G)-orbit on G minus e, with orbit sizes
        python3 gapgroup.py table N I OUT.bin [K]  table of SmallGroup(N,I) -> OUT.bin (int32 N, N*N uint16, row g: g*h,
                                                   identity = index 0); with K: also OUT.aut<K> listing automorphisms of
                                                   order K (one class rep per Aut-conjugacy class, fewest fixed points
@@ -50,7 +51,17 @@ for r in res do AppendTo(g, String(r[1]), " ", JoinStringsWithSeparator(List(r[2
         f.write(struct.pack('<i', n))
         for r in rows: f.write(struct.pack('<%dH' % n, *r))
 
+def orbits(n, i):
+    """one representative (table index) per orbit of Aut(G) on G minus the identity, with the orbit size"""
+    code = f'''G:=SmallGroup({n},{i});; el:=AsSSortedList(G);; one:=One(G);; p:=Position(el,one);;
+el:=Concatenation([one], el{{Difference([1..Length(el)],[p])}});;
+srt:=SortingPerm(el);; sel:=AsSSortedList(el);; pos:=function(x) return Position(sel,x)^srt; end;;
+A:=AutomorphismGroup(G);; O:=Orbits(A, el{{[2..Length(el)]}});;
+for o in O do Print(Minimum(List(o, x->pos(x)-1)), " ", Length(o), "\\n"); od;'''
+    sys.stdout.write(rungap(code))
+
 if __name__ == '__main__':
     if sys.argv[1] == 'list': glist(int(sys.argv[2]))
+    elif sys.argv[1] == 'orbits': orbits(int(sys.argv[2]), int(sys.argv[3]))
     elif sys.argv[1] == 'table':
         table(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else None)

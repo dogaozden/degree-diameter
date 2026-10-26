@@ -128,6 +128,72 @@ static void print_S(FILE *f, const int *u, int nu) {
     for (int i = 0; i < n; i++) fprintf(f, "%d%c", S[i], i + 1 < n ? ' ' : '\n');
 }
 
+
+/* ---------- exhaustive over orbit-symmetric S (mode exho) ---------- */
+static long long exo_sets = 0; static int exo_min = 1 << 30, exo_limit = 0; static int probe[64], nprobe = 0;
+static int in_TT(int g, scr_t *sc, uint32_t ep) { /* T marked with stamp ep */
+    for (int i = 0; i < sc->T[127 * 128]; i++) { int t = sc->T[i]; if (sc->stamp[mul(INV[t], g)] == ep) return 1; }
+    return 0;
+}
+static int quick_fail(const int *S, int n, scr_t *sc) {
+    for (int side = 0; side < 2; side++) {
+        sc->ep++; if (sc->ep == 0) { memset(sc->stamp, 0, N * 4); sc->ep = 1; }
+        uint32_t ep = sc->ep; int nt = 0;
+        for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) {
+            int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]);
+            if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
+        sc->T[127 * 128] = nt;
+        for (int p = 0; p < nprobe; p++) if (!in_TT(probe[p], sc, ep)) {
+            if (p > 0) { int x = probe[p]; memmove(probe + 1, probe, p * sizeof(int)); probe[0] = x; }
+            return 1; }
+    }
+    return 0;
+}
+static void exo_rec(int *u, int pos, int start, int nf, scr_t *sc) {
+    int total = nf + morb;
+    if (pos == total) {
+        int S[512], n = expand(u, S); exo_sets++;
+        for (int i = 0; i < n; i++) for (int j = i + 1; j < n; j++) if (S[i] == S[j]) return;
+        if (quick_fail(S, n, sc)) return;
+        int c = cost(S, n, sc);
+        if (c < exo_min) exo_min = c;
+        if (c > 0 && nprobe < 64) { /* learn an uncovered element as a probe */
+            for (int side = 0; side < 2 && nprobe < 64; side++) {
+                sc->ep++; uint32_t ep = sc->ep; int nt = 0;
+                for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) { int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]); if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
+                sc->T[127 * 128] = nt;
+                for (int g = 0; g < N && nprobe < 64; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
+            }
+        }
+        if (c <= exo_limit) { printf("cost %d S", c); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); }
+        return;
+    }
+    if (pos < nf) { for (int i = start; i < nfixl; i++) { u[pos] = fixl[i]; exo_rec(u, pos + 1, pos + 1 < nf ? i + 1 : 0, nf, sc); } }
+    else { for (int i = (pos == nf ? 0 : start); i < norbl; i++) { u[pos] = orbl[i]; exo_rec(u, pos + 1, i + 1, nf, sc); } }
+}
+
+static int test_set(const int *S, int n, scr_t *sc) {
+    if (quick_fail(S, n, sc)) return 1 << 20;
+    int c = cost(S, n, sc);
+    if (c > 0 && nprobe < 64) {
+        for (int side = 0; side < 2 && nprobe < 64; side++) {
+            sc->ep++; uint32_t ep = sc->ep; int nt = 0;
+            for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) { int t = side ? mul(S[i], INV[S[j]]) : mul(INV[S[i]], S[j]); if (sc->stamp[t] != ep) { sc->stamp[t] = ep; sc->T[nt++] = t; } }
+            sc->T[127 * 128] = nt;
+            for (int g = 0; g < N && nprobe < 64; g++) if (!in_TT(g, sc, ep)) { probe[nprobe++] = g; break; }
+        }
+    }
+    return c;
+}
+
+/* complete: all completions of a core set by r more elements (exact for cost 0, probe-accelerated) */
+static long long cmp_cnt = 0; static int cmp_best = 1 << 30, cmp_limit = 0, cmp_inS[65536];
+static void cmp_rec(int *S, int n, int need, int start, scr_t *sc) {
+    if (need == 0) { cmp_cnt++; int c = test_set(S, n, sc); if (c < cmp_best) cmp_best = c;
+        if (c <= cmp_limit) { printf("cost %d S", c); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); } return; }
+    for (int g = start; g < N; g++) { if (cmp_inS[g]) continue; S[n] = g; cmp_rec(S, n + 1, need - 1, g + 1, sc); }
+}
+
 int main(int argc, char **argv) {
     if (argc < 4) { fprintf(stderr, "usage: see source\n"); return 2; }
     const char *mode = argv[1];
@@ -149,6 +215,37 @@ int main(int argc, char **argv) {
             if (n == 0) continue;
             printf("%d\n", cost(S, n, &sc));
         }
+        return 0;
+    }
+    if (!strcmp(mode, "exho")) {
+        if (!ALPHA) { fprintf(stderr, "exho needs AUT and ORBIT\n"); return 2; }
+        exo_limit = argc > 4 ? atoi(argv[4]) : 0;
+        int nf = ffix > 0 ? ffix - 1 : 0; int u[512];
+        sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        exo_rec(u, 0, 0, nf, &sc);
+        printf("RESULT exho N=%d d=%d orbit=%d,%d,%d fixed=%d orbits=%d sets=%lld min=%d\n", N, d, kord, morb, ffix, nfixl, norbl, exo_sets, exo_min);
+        return 0;
+    }
+    if (!strcmp(mode, "complete")) {   /* haar5 complete TABLE d "core..." [LIMIT] */
+        int S[64], n = 0; char *p = argv[4], *e;
+        while (1) { long v = strtol(p, &e, 10); if (e == p) break; S[n++] = (int)v; cmp_inS[v] = 1; p = e; }
+        cmp_limit = argc > 5 ? atoi(argv[5]) : 0; sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        cmp_rec(S, n, d - n, 0, &sc);
+        printf("RESULT complete N=%d d=%d core=%d sets=%lld min=%d (min over sets passing the probes; 0 is exact)\n", N, d, n, cmp_cnt, cmp_best);
+        return 0;
+    }
+    if (!strcmp(mode, "exhp")) {   /* single thread, probe-accelerated, d = 5 */
+        int limit = argc > 4 ? atoi(argv[4]) : 0; long long cnt = 0, full = 0; int best = 1 << 30;
+        sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        int S[8]; S[0] = 0;
+        for (int a = 1; a < N; a++) { S[1] = a;
+          for (int b = a + 1; b < N; b++) { S[2] = b;
+            for (int c = b + 1; c < N; c++) { S[3] = c;
+              for (int e = c + 1; e < N; e++) { S[4] = e; cnt++;
+                int cc = test_set(S, 5, &sc);
+                if (cc < (1 << 20)) { full++; if (cc < best) best = cc; }
+                if (cc <= limit) { printf("cost %d S %d %d %d %d %d\n", cc, S[0], S[1], S[2], S[3], S[4]); fflush(stdout); } } } } }
+        printf("RESULT exhp N=%d d=5 sets=%lld full_evals=%lld min=%d (min over sets passing the probes; 0 is exact)\n", N, cnt, full, best);
         return 0;
     }
     if (!strcmp(mode, "exh")) {
