@@ -1,0 +1,7 @@
+group pgl 31 x Z_311, N=9255360, identity 0, H order 32, rows 289230, threads 1, setup 0.20s
+wide rows: no cyclic subgroup of order >= 64 found (best 32); using haar_gen3's evaluation
+alpha: conj by mat(1,0,6,16) (index 195), z -> 6 z on Z_311
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 29 (+e); mu = 43.60, mu/k = 8.72, fixed-point misses ~ 2.58
+ORBW=5: an uncovered fixed element weighs 5; start energy 260
+start cost=252
+t=30 steps=119 evals=953 cost=16 best=16 T=0.53 energy=20 bestE=20

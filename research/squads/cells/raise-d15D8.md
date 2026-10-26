@@ -313,3 +313,35 @@ Status of the wave is below (updated at each checkpoint).
 - Saved as `research/frontier/sols/d15D8_prod_psl_9_psl_9_71_orb5f0_ORBW5_s1.txt` (+ `.log`).
 - Gain over the round-2 bar 18,342,456: +60,744 (+0.33 %).
 - The wave-1 seed-2 plain run on the same group was stopped (same N, cannot beat this record).
+
+### Wave 1-2 end (no further solve; both k=3 psl 7 × psl 25 × Z7 runs stopped: N = 9,172,800 is below the new bar)
+
+- Wave 2 (k = 3, prod psl 7 × psl 25 × Z7): best cost 6 after about 5.5·10⁴ evaluations, stopped.
+- w1b (k = 5, plain, same group as the record): stopped at best cost 1 (same N, cannot beat the record).
+
+### Screen above the new bar (N > 9,201,600; RANDORB 300 samples)
+
+| group | k m f | N | μ | |Fix| | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|---|
+| prod psl 9 × psl 9 × Z71 (record) | 5 3 0 | 9,201,600 | 40.4 | 24 | 10 | 17 | 33 | 56 |
+| pgl 31 × Z311 | 5 3 0 | 9,255,360 | 43.6 | 29 | 12 | 31 | 47 | 89 |
+| psl 41 × Z271 | 5 3 0 | 9,333,240 | 48.7 | 19 | 18 | 29 | 41 | 68 |
+| sl 61 × Z41 | 5 3 0 | 9,303,720 | 46.7 | 59 | 22 | 26 | 41 | 64 |
+| prod psl 7 × sl 8 × Z109 | 3 5 0 | 9,229,248 | 42.0 | 26 | 27 | 33 | 45 | 66 |
+| prod psl 3 × sl 17 × Z157 | 3 5 0 | 9,224,064 | 41.7 | 53 | 30 | 38 | 54 | 85 |
+| prod sl 5 × sl 7 × Z229 | 3 5 0 | 9,233,280 | 42.2 | 35 | 30 | 45 | 63 | 99 |
+| prod psl 3 × psl 23 × Z127 | 3 5 0 | 9,253,728 | 43.5 | 35 | 27 | 36 | 54 | 81 |
+
+The record group is still the best-screened of these. The k = 3 product candidates above the bar are all weaker than
+the k = 3 bar group was at μ 38.6.
+
+### Wave 3 (5400 s each, started 01:55 UTC; k = 5, m = 3, f = 0)
+
+| job | group | N | μ | flags | seed |
+|---|---|---|---|---|---|
+| w3a | psl 41 × Z271 | 9,333,240 | 48.7 | ORBW=5 | 1 |
+| w3b | sl 61 × Z41 | 9,303,720 | 46.7 | ORBW=5 | 1 |
+| w3c | pgl 31 × Z311 | 9,255,360 | 43.6 | ORBW=5 | 1 |
+| w3d | psl 41 × Z271 | 9,333,240 | 48.7 | plain | 2 |
+
+Any solve in wave 3 beats the record (18,403,200), since all four groups have N above 9,201,600.

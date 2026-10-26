@@ -1,0 +1,6 @@
+group psl 41 x Z_271, N=9333240, identity 222220, H order 41, rows 227640, threads 1, setup 0.15s
+wide rows: no cyclic subgroup of order >= 64 found (best 41); using haar_gen3's evaluation
+alpha: conj by mat(0,8,5,7) (index 294), z -> 10 z on Z_271
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 19 (+e); mu = 48.71, mu/k = 9.74, fixed-point misses ~ 1.76
+start cost=115
+t=30 steps=161 evals=1289 cost=10 best=10 T=0.53
