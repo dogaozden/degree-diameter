@@ -198,3 +198,12 @@ Lesson: ORBW=3 turns the "one uncovered fixed element" stall into a solve, as OR
 - PSL(2,281) × Z31 (2N 687,820,560, ORBW=3, fresh, seed 1): unsolved, cost 3 after 5,121 evals, 10,807 s.
 - PSL(2,241) × Z49 (2N 685,866,720, round-2 checkpoint, ORBW=3, seed 2): started 05:28 UTC from cost 3; result pending
   (about 07:00 UTC). Not started from fresh: no new rung fits before the round's 6-hour cap.
+- PSL(2,241) × Z49 (2N 685,866,720, round-2 checkpoint, ORBW=3, seed 2): unsolved, cost 3 after 7,186 evals, 10,765 s total.
+
+**Round-3 result: new record 683,943,456** (SL(2,137) × Z133, ORBW=3 resume, both checkers VALID). Six further rungs
+above the record ran unsolved: SL 103×313 (cost 1), PSL 173×133 (cost 3), PSL 281×31 (cost 3), PSL 241×49 (cost 3).
+
+**Stopping point and next steps.** Round 3 stopped at the 6-hour cap with the record at 683,943,456. The cost-1 ORBW=3
+lead (SL 103×313) did not close. Most promising next: (1) a fresh ORBW=3 ladder on the untried planner groups above the
+record, from the lowest predicted evals; (2) more seeds on SL 103×313 from its newest checkpoint (cost 1, ORBW=3); (3) the
+PSL 131×311 k = 5 lead from round 2 with ORBW=5. PSL(2,125) × Z349 still lacks a prime-power checker.
