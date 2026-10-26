@@ -345,3 +345,16 @@ the k = 3 bar group was at μ 38.6.
 | w3d | psl 41 × Z271 | 9,333,240 | 48.7 | plain | 2 |
 
 Any solve in wave 3 beats the record (18,403,200), since all four groups have N above 9,201,600.
+
+### Wave 3 result: NEW RECORD 18,510,720 vertices at (15,8) (pgl 31 × Z311, k = 5, m = 3, f = 0, ORBW=5, seed 1)
+
+- Graph: Haar graph of G = PGL(2,31) × Z311, |G| = N = 9,255,360, |S| = 15 = 5·3 (3 free orbits of an order-5
+  automorphism, f = 0), 2N = **18,510,720**, 15-regular, 138,830,400 edges, no duplicate edges. μ = 43.6, |Fix(α)| = 29.
+  α = conjugation by mat(1,0,6,16) × (z ↦ 6z on Z_311).
+- Found after 100,665 evaluations (3,184.8 s, run `runs/raise_d15D8_r3/out/w3c/`).
+- Verification: haar_sym's own full diameter check (direct and s₀ = e normalised): OK.
+  build_haar2.py: **VALID d=15 D=8**, 18,510,720 vertices, edge-list sha256
+  `6c544dbabd5c5bd6e2769a298e3de9cb12d6c61e35bfcb427385f6d76e2ea883`.
+- Saved as `research/frontier/sols/d15D8_pgl_31_311_orb5f0_ORBW5_s1.txt` (+ `.log`).
+- Gain over the previous record 18,403,200: +107,520 (+0.58 %).
+- Wave 3 still running: psl 41 × Z271 (two seeds) and sl 61 × Z41 have N above this one, so any solve from them beats 18,510,720.
