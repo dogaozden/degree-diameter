@@ -1,0 +1,6 @@
+group pgl 3 x Z_199, N=4776, identity 0, H order 4, rows 1194, threads 1, setup 0.01s
+wide rows: HW order 199, rows 24, setup 0.01s
+alpha: conj by mat(0,1,2,1) (index 22), z -> 92 z on Z_199
+ORBIT k=3 m=2 f=0: |Fix(alpha)| = 2 (+e); mu = 79.99, mu/k = 26.66, fixed-point misses ~ 1.54
+RANDORB d=6 D=7 group=pgl 3 x Z_199 N=4776 k=3 m=2 f=0 fix=2 samples=2000000 min=396 p1=498 p10=712 median=5188 mean=4384.21 var=7448732.6 mu=79.99 time=13.2
+RANDORB hist (cost/k): 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2000000
