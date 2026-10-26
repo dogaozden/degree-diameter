@@ -2,7 +2,7 @@
 # fresh.sh "FDSET" TAG SEED: full conversion pipeline with the corrected (FLAGDEL coverage) and hub-aware tools, from
 # the valid 4,840 state: mkhubF -> fdrun (coverage + D1, dmhub2_f) -> rewire if holes -> lns2 NOC0 if still holes ->
 # three dmfast_fd3 coset-0 passes -> lns3 FOCUS (FW=4, FT=1.0) endgame.  True cost printed after each stage.
-FS=$1; T=$2; SD=$3; R=runs/$T; B=../hubs/graphs/d10D5_n4840_flagdel2
+FS=$1; T=$2; SD=$3; R=runs/$T; B=${BASE:-../hubs/graphs/d10D5_n4840_flagdel2}
 sc() { SECS=0 python3 lns3.py "$1" "$2" "$FS" /dev/null 2>&1 | grep start; }
 python3 mkhubF.py $B.sol "$FS" ${R}_k.sol $SD | tail -n 1
 ./fdrun.sh ${R}_k.sol "$FS" ${R}_f $SD 300 0.2 > /dev/null

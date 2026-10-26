@@ -65,7 +65,7 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
 
 ### State at ~01:10 UTC Oct 26 (resume 4)
 
-- Best verified: still **4,840**.
+- Best verified: still **4,840** (at 01:10; see below: 4,842 at 02:33).
 - {1,6,5} (4,842 candidate): one bad pair left, (283, 339), state r4/runs/H5best_c.sol with STATE r5/S5.sol, FDSET
   "1 6 5" (score.sh: SCORE 1 (1, 0, 0); exact BFS: only P283-P339 sheet 3). 283 = freed point of the converted flag 5.
   Exact nu-only flip tree (r4/fliptree, hub-aware copy of card c8's flip.c): no fix with <= 7 flips (complete).
@@ -87,3 +87,12 @@ Scorer for any state: research/squads/d10D5/r5/score.sh STATE.sol C0.lift2.sol "
    repair moves, WalkSAT/reheating/ejection chains/best-flip temperatures (squad round 5, r5/scoreboard.jsonl).
 4. Lessons for every tool here: score states with r5/score.sh (true cost); never trust a pipeline "coverage 0"
    produced before the coverage fix; kill processes by PID, never with pkill -f (it can match your own shell).
+
+### 4,842 (02:33 UTC Oct 26)
+
+- **(10,5) >= 4,842**, apsp VALID: research/squads/d10D5/hubs/checks/d10D5_n4842_CHECK.md, graph files
+  hubs/graphs/d10D5_n4842_flagdel3.{sol,edges.gz,lift2.sol} (FDSET "1 6 5").
+- Recipe that worked: r4/fresh.sh (BASE=... for another base) -> lns3 FOCUS (FW=4, FT=0.6-1.0) -> lns2 for D1 leftovers
+  -> r4/tabu.sh (cumulative HARDPAIR walk) from a 1-2 pair state. Several fresh basins are needed: FR5 stalled at 12,
+  S5 at 1 (its last pair on the converted flag's own freed point is nu-only and exactly isolated), FR5b closed.
+- Fourth conversion from 4,842 started at 02:33: {1,6,5,4}, {1,6,5,7}, {1,6,5,0} (runs/G4_*).

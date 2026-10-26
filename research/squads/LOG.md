@@ -113,3 +113,8 @@ covered in every sheet; ~600 pairs were wrongly constrained); lns3 from c3's 3-s
 finds no flip whose new bad pairs can all be routed; lns3 with the pair held as a hard constraint (HARDPAIR) descends
 to 3. Verdict: the squad's breadth confirmed the basin is deep for every single-mechanism method; the one idea that
 worked (joint sigma+nu exact moves with uphill acceptance) was kept and evolved by Opus.
+After round 5 (Opus, same session, ~01:00-02:33 UTC): fresh {1,6,5} pipelines with the corrected, hub-aware tools;
+basin FR5b went 134 -> 5 (three dmfast passes) -> 1 (lns3 FOCUS, lns2) and a new cumulative hard-pair walk (tabu.sh:
+hold each last bad pair good, kick, re-descend) closed it: **(10,5) >= 4,842, apsp VALID**
+(research/squads/d10D5/hubs/checks/d10D5_n4842_CHECK.md). The squad's lasting contribution was c3's finding that
+uphill joint (sigma, nu) moves work where every single-mechanism method stalls; Opus built the rest on that.
