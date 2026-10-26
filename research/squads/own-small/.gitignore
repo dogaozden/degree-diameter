@@ -1,0 +1,20 @@
+# compiled card binaries (sources are committed next to them)
+r1/a1/work/dbg
+r1/a1/work/flift_s
+r1/a2/fenum
+r1/a2/fenum2
+r1/a3/surg
+r1/b1/cov
+r1/b1/orb
+r1/b3/b3lift
+r1/e2/src/cover
+r1/h1/dr
+r1/w3/haar_a7
+r2/q1/salift4
+r2/w4/ptlift
+# regenerable random-voltage samples (about 1 MB each)
+r1/w2/v220_*.txt
+r1/w2/vv.txt
+# queue control files
+runs/queue*/lock
+runs/queue*/stop

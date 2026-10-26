@@ -1,0 +1,4 @@
+Syntax warning: Unbound global variable in ../../tools/gap_export_fast.g:9
+      el := Concatenation([One(G)], Filtered(AsSSortedList(G), x -> x <> One(G\
+)));
+                                                                             ^
