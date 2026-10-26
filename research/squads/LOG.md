@@ -102,3 +102,19 @@ seeds). build_haar2.py VALID, apsp VALID d=9 D=5 n=2758, haar5 on an independent
 (research/squads/hunt-d5/finds/d9D5_n2758_CHECK.txt). New `haar5 cert` (orbit-rank normalization, exact): (6,5)
 certificates for SmallGroup(360,51) = C3 × SL(2,5), (351,5), (351,6), (351,7), (351,1): no Haar graph. Every (6,5) group
 that reached cost ≤ 4 in the screens (355/1, 357/1, 351/5, 360/51) is now proved empty.
+
+## 2026-10-26, hunt-d5 round 6: four gap-filling cards; the director switches (7,5) to exact coset-pattern searches
+
+4 cards, 15:58–16:20 UTC (research/squads/hunt-d5/r6/). b1 (7,5) every non-abelian group of order 606, 612, 614 · b2
+(7,5) 30 order-608 groups · b3 (6,5) farms on 360/136, 360/88 · c1 (9,5) farms on two other 1395 groups and one 1420.
+Best: b1 4 on SmallGroup(612,5) = C9 × (C17 ⋊ C4) (1 of 35 seeds; 606 and 614 ≥ 30) · b2 14 (608 is dead) · b3 4 on
+360/136 in 31 of 31 seeds (each a different S: a flat plateau) and 6 on 360/88 · c1 4 (meta 31 15 16 3).
+
+Director: the expected cost after fixing the cosets of G' met by S, mu_J = Σ_t p·exp(−W_t/p) (tools/jwalks.py,
+jpatterns.py), ranks groups and patterns: the 1379 solution and the 610 cost-2 sets sit at the most even patterns; the
+best mu_J is 46.3 (1379), 47.6 (609), 47.8 (610), 49.2 (615), 49.6 (1395). With S ∋ e, one element of a non-kernel
+coset conjugated to a = 0 and a second scaled to a ∈ {0, 1}, each pattern is a small exact search (`haar5 prod`,
+tools/jexact.py; positive control on a 506 group recovers the known solution). The (7,5) farms on 609 and 610 (558
+seeds: best cost 2 three times on 610, 4 on 609) were replaced by complete pattern-by-pattern searches of both groups
+(21,279 and 596 pattern classes). Also: the machine had autogroup scheduling on (each shell its own group, so nice
+levels did nothing across jobs); turned off at 16:14.
