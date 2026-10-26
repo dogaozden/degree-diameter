@@ -1,0 +1,77 @@
+=== q9 Delta=11 (Tue Oct 20 07:43:36 PDT 2026)
+read 148944 vertices 811250 edges
+sides [73750, 75194] excess 1444 on side 1
+twin classes on larger side by size: {2: 1462} deletable 1462
+after deleting 1444 : n 147500 sides 73750 73750 deficit histogram {0: 118620, 1: 28880}
+added 14440 edges; repair swaps 1
+final n 147500 m 811250 degree histogram {11: 147500}
+wrote graphs/reg_q9_d11.txt
+read       ok    edge list, 10.1 MB, 811250 edges as listed, 0.01 s
+n          ok      declared n = 147500 (no value field in record)
+endpoints  ok    all 1622500 endpoints in [0, 147500)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 147500, m = 811250
+degree     ok      max degree 11 (limit 11); histogram 11:147500
+bipartite  ok      sides 73750 / 73750, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (2305 passes of 64 sources, 4 threads, 4.43 s)
+VALID    n=147500 Delta=11 D=6, diameter 6, total 4.46 s
+=== q11 Delta=13 (Tue Oct 20 07:43:42 PDT 2026)
+read 388972 vertices 2511132 edges
+sides [193164, 195808] excess 2644 on side 1
+twin classes on larger side by size: {2: 2666} deletable 2666
+after deleting 2644 : n 386328 sides 193164 193164 deficit histogram {0: 322872, 1: 63456}
+added 31728 edges; repair swaps 3
+final n 386328 m 2511132 degree histogram {13: 386328}
+wrote graphs/reg_q11_d13.txt
+read       ok    edge list, 33.7 MB, 2511132 edges as listed, 0.05 s
+n          ok      declared n = 386328 (no value field in record)
+endpoints  ok    all 5022264 endpoints in [0, 386328)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 386328, m = 2511132
+degree     ok      max degree 13 (limit 13); histogram 13:386328
+bipartite  ok      sides 193164 / 193164, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (6037 passes of 64 sources, 4 threads, 49.03 s)
+VALID    n=386328 Delta=13 D=6, diameter 6, total 49.13 s
+=== q13 Delta=15 (Tue Oct 20 07:44:38 PDT 2026)
+read 870440 vertices 6495510 edges
+sides [433034, 437406] excess 4372 on side 1
+twin classes on larger side by size: {2: 4398} deletable 4398
+after deleting 4372 : n 866068 sides 433034 433034 deficit histogram {0: 743652, 1: 122416}
+added 61208 edges; repair swaps 1
+final n 866068 m 6495510 degree histogram {15: 866068}
+wrote graphs/reg_q13_d15.txt
+read       ok    edge list, 89.3 MB, 6495510 edges as listed, 0.10 s
+n          ok      declared n = 866068 (no value field in record)
+endpoints  ok    all 12991020 endpoints in [0, 866068)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 866068, m = 6495510
+degree     ok      max degree 15 (limit 15); histogram 15:866068
+bipartite  ok      sides 433034 / 433034, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (13533 passes of 64 sources, 4 threads, 699.91 s)
+VALID    n=866068 Delta=15 D=6, diameter 6, total 700.17 s
+=== q13a3 Delta=16 (Tue Oct 20 07:56:32 PDT 2026)
+read 940846 vertices 7421792 edges
+sides [463862, 476984] excess 13122 on side 1
+twin classes on larger side by size: {3: 6600} deletable 13200
+after deleting 13122 : n 927724 sides 463862 463862 deficit histogram {0: 743470, 2: 183162, 1: 1092}
+added 183708 edges; repair swaps 3
+final n 927724 m 7421792 degree histogram {16: 927724}
+wrote graphs/reg_q13a3_d16.txt
+read       ok    edge list, 102.1 MB, 7421792 edges as listed, 0.18 s
+n          ok      declared n = 927724 (no value field in record)
+endpoints  ok    all 14843584 endpoints in [0, 927724)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 927724, m = 7421792
+degree     ok      max degree 16 (limit 16); histogram 16:927724
+bipartite  ok      sides 463862 / 463862, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (14496 passes of 64 sources, 4 threads, 2057.32 s)
+VALID    n=927724 Delta=16 D=6, diameter 6, total 2057.78 s
+=== done Tue Oct 20 08:31:12 PDT 2026

@@ -36,3 +36,6 @@ q=13: 2380 points, 2380 lines, exact bound 340; trials=60 ilp_secs=45.0 cap=170 
 [57/60] t=53 dihedral |G|=6 orbits=406 ilp=208 bound=310.0 status=1 -> size 208 (207s)
 [58/60] t=55 cyclic |G|=4 orbits=616 ilp=226 bound=316.0 status=1 -> size 232 (211s)
 [59/60] t=58 cyclic |G|=4 orbits=616 ilp=231 bound=316.0 status=1 -> size 232 (220s)
+[60/60] t=57 dihedral |G|=26 orbits=98 ilp=54 bound=314.0 status=1 -> size 54 (27312s)
+BEST q=13: size 268 (exact=False) from t=11 monomial |G|=12 (27312s)
+not saved: does not beat the existing best 340

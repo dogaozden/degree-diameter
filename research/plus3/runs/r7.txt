@@ -1,0 +1,37 @@
+7 6 5 1 1 --copy on --chg-config --maxdel
+7 6 5 1 1 --copy off --chg-config --maxdel
+9 6 5 1 1 --copy on --chg-config --maxdel
+9 6 5 1 1 --copy off --chg-config --maxdel
+7 6 5 2 2 --copy on --chg-config --maxdel
+7 6 5 2 2 --copy off --chg-config --maxdel
+9 6 5 2 2 --copy on --chg-config --maxdel
+9 6 5 2 2 --copy off --chg-config --maxdel
+4 7 4 0 0 --sym A
+4 7 4 0 0 --conc 2
+4 7 4 0 0 --conc 3
+4 7 4 0 0 --conc 4
+4 7 4 0 0 --conc 5
+4 8 3 0 0 --sym A
+4 8 3 0 0 --conc 2
+4 8 3 0 0 --conc 3
+4 8 3 0 0 --conc 4
+4 8 3 0 0 --conc 5
+4 9 2 0 0 --sym A
+4 9 2 0 0 --conc 2
+4 9 2 0 0 --conc 3
+4 9 2 0 0 --conc 4
+4 9 2 0 0 --conc 5
+4 10 1 0 0 --sym A
+4 10 1 0 0 --conc 2
+4 10 1 0 0 --conc 3
+4 10 1 0 0 --conc 4
+4 10 1 0 0 --conc 5
+4 6 6 0 0 --sym A
+4 6 6 0 0 --conc 2
+4 6 6 0 0 --conc 3
+4 6 6 0 0 --conc 4
+4 6 6 0 0 --conc 5
+7 6 5 8 8 --copy on --chg-config --maxdel
+7 6 5 8 8 --copy off --chg-config --maxdel
+9 6 5 8 8 --copy on --chg-config --maxdel
+9 6 5 8 8 --copy off --chg-config --maxdel

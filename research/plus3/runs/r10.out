@@ -1,0 +1,12 @@
+q=7 kP=6 kL=5 E<=1 ADD<=1 copy=off maxdel cfg65 n=125 UNSAT (22.4s; 402102 vars, 885830 clauses)
+q=9 kP=6 kL=5 E<=1 ADD<=1 copy=off maxdel cfg65 n=193 UNSAT (68.9s; 1356759 vars, 2899930 clauses)
+q=7 kP=6 kL=5 E<=2 ADD<=2 copy=off maxdel cfg65 n=125 UNSAT (158.9s; 405345 vars, 892312 clauses)
+q=11 kP=6 kL=5 E<=1 ADD<=1 copy=off maxdel cfg65 n=277 UNSAT (131.7s; 3763632 vars, 7893374 clauses)
+q=9 kP=6 kL=5 E<=2 ADD<=2 copy=off maxdel cfg65 n=193 UNSAT (514.6s; 1365034 vars, 2916476 clauses)
+q=13 kP=6 kL=5 E<=1 ADD<=1 copy=off maxdel cfg65 n=377 UNSAT (492.8s; 9045201 vars, 18739106 clauses)
+args: 7 6 5 4 4 --copy off --cfg65 --maxdel UNKNOWN (external timeout 900s)
+args: 9 6 5 4 4 --copy off --cfg65 --maxdel UNKNOWN (external timeout 900s)
+args: 7 6 5 8 8 --copy off --cfg65 --maxdel UNKNOWN (external timeout 900s)
+args: 9 6 5 8 8 --copy off --cfg65 --maxdel UNKNOWN (external timeout 900s)
+args: 11 6 5 2 2 --copy off --cfg65 --maxdel UNKNOWN (external timeout 900s)
+BATCH DONE runs/r10.txt

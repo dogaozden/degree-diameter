@@ -1,0 +1,5 @@
+q=7 kP=6 kL=5 E<=3 ADD<=3 copy=off maxdel cfg65 n=125 UNSAT (1047.6s; 408584 vars, 898786 clauses)
+args: 7 6 5 0 0 --copy on UNKNOWN (external timeout 1500s)
+args: 7 6 5 4 4 --copy off --cfg65 --maxdel UNKNOWN (external timeout 1500s)
+args: 9 6 5 3 3 --copy off --cfg65 --maxdel UNKNOWN (external timeout 1500s)
+BATCH DONE runs/r12.txt

@@ -1,0 +1,8 @@
+read 208 vertices 384 edges
+sides [96, 112] excess 16 on side 1
+twin classes on larger side by size: {2: 20} deletable 20
+after deleting 16 : n 192 sides 96 96 deficit histogram {0: 96, 1: 96}
+added 48 edges; repair swaps 0
+final n 192 m 384 degree histogram {4: 192}
+wrote graphs/reg_q2_a2.txt
+wrote graphs/reg_q2_a2.json

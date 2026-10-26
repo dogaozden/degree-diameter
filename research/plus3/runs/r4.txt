@@ -1,0 +1,11 @@
+5 5 5 0 0 --copy off
+7 5 5 0 0 --copy off
+9 5 5 0 0 --copy off
+5 5 5 0 0 --copy on
+7 5 5 0 0 --copy on
+9 5 5 0 0 --copy on
+7 6 5 8 8 --copy on --chg-config --maxdel
+7 6 5 8 8 --copy off --chg-config --maxdel
+9 5 5 4 3 --copy off --chg-config --maxdel
+9 6 5 8 8 --copy on --chg-config --maxdel
+9 6 5 8 8 --copy off --chg-config --maxdel

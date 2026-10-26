@@ -1,0 +1,16 @@
+q=7 kP=4 kL=4 E<=1 ADD<=0 copy=on chg-config n=122 SAT (1.0s) valid=True deletions=1
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q7_4_4_E1_A0copyon_n122.json
+q=7 kP=4 kL=4 E<=1 ADD<=0 copy=off chg-config n=122 SAT (1.4s) valid=True deletions=1
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q7_4_4_E1_A0copyoff_n122.json
+q=4 kP=5 kL=5 E<=0 ADD<=0 sym=A n=52 UNSAT (0.2s; 4491 vars, 9607 clauses)
+q=7 kP=5 kL=5 E<=4 ADD<=3 copy=off chg-config n=124 SAT (56.4s) valid=True deletions=3
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q7_5_5_E4_A3copyoff_n124.json
+q=4 kP=5 kL=5 E<=0 ADD<=0 conc=4 n=52 SAT (0.3s) valid=True deletions=0
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q4_5_5_E0_A0c4_n52.json
+q=4 kP=5 kL=5 E<=0 ADD<=0 conc=5 n=52 UNSAT (0.3s; 4370 vars, 9195 clauses)
+q=4 kP=6 kL=3 E<=0 ADD<=0 sym=A n=51 UNSAT (0.0s; 3744 vars, 8063 clauses)
+q=4 kP=6 kL=3 E<=0 ADD<=0 conc=2 n=51 UNSAT (0.5s; 4359 vars, 9224 clauses)
+q=4 kP=6 kL=3 E<=0 ADD<=0 conc=3 n=51 UNSAT (0.2s; 4359 vars, 8973 clauses)
+q=4 kP=6 kL=3 E<=0 ADD<=0 conc=4 n=51 UNSAT (0.1s; 3607 vars, 7724 clauses)
+q=4 kP=6 kL=3 E<=0 ADD<=0 conc=5 n=51 UNSAT (0.0s; 3603 vars, 7592 clauses)
+q=4 kP=6 kL=4 E<=0 ADD<=0 sym=A n=52 UNSAT (0.0s; 4463 vars, 9573 clauses)

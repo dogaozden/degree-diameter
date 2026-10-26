@@ -1,0 +1,9 @@
+q=7 kP=5 kL=5 E<=4 ADD<=3 copy=off chg-config maxdel cfg65 n=124 SAT (5.3s) valid=True deletions=4
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q7_5_5_E4_A3copyoff_n124.json
+q=5 kP=6 kL=5 E<=8 ADD<=8 copy=off chg-config maxdel cfg65 n=73 UNSAT (0.9s; 96536 vars, 222936 clauses)
+q=5 kP=5 kL=5 E<=4 ADD<=3 copy=off chg-config maxdel cfg65 n=72 SAT (1.1s) valid=True deletions=4
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q5_5_5_E4_A3copyoff_n72.json
+q=7 kP=6 kL=5 E<=12 ADD<=12 copy=off chg-config maxdel cfg65 n=125 UNSAT (4.5s; 437011 vars, 962080 clauses)
+q=9 kP=5 kL=5 E<=4 ADD<=3 copy=off chg-config maxdel cfg65 n=192 SAT (15.7s) valid=True deletions=4
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q9_5_5_E4_A3copyoff_n192.json
+q=9 kP=6 kL=5 E<=12 ADD<=12 copy=off chg-config maxdel cfg65 n=193 UNSAT (23.5s; 1446690 vars, 3096288 clauses)

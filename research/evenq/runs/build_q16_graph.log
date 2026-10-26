@@ -1,0 +1,12 @@
+q=16 arity=2 whiskers=65280 n=2384492 (formula 2384492) edges=21386952 -> graphs/hexeven_q16_a2.txt
+read       ok    edge list, 322.2 MB, 21386952 edges as listed, 0.55 s
+n          ok      declared n = 2384492 (no value field in record)
+endpoints  ok    all 42773904 endpoints in [0, 2384492)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 2384492, m = 21386952
+degree     ok      max degree 18 (limit 18); histogram 17:146952 18:2237540
+bipartite  ok      sides 1188164 / 1196328, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (37258 passes of 64 sources, 4 threads, 116876.75 s)
+VALID    n=2384492 Delta=18 D=6, diameter 6, total 116878.22 s

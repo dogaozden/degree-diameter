@@ -1,0 +1,14 @@
+[0s] point 0/37449 lines 9
+q 8 points 37449 lines 37449
+wrote runs/base_q8.txt
+read       ok    edge list, 3.9 MB, 337041 edges as listed, 0.00 s
+n          ok      declared n = 74898 (no value field in record)
+endpoints  ok    all 674082 endpoints in [0, 74898)
+loops      ok      0 self-loop(s) dropped
+duplicates ok      0 repeated edge(s)
+           simple graph: n = 74898, m = 337041
+degree     ok      max degree 9 (limit 9); histogram 9:74898
+bipartite  ok      sides 37449 / 37449, monochromatic edges 0
+connected  ok      1 component(s)
+diameter   ok    exact diameter 6 <= 6 (1171 passes of 64 sources, 2 threads, 1.19 s)
+VALID    n=74898 Delta=9 D=6, diameter 6, total 1.19 s

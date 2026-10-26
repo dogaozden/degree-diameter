@@ -1,0 +1,14 @@
+q=7 kP=6 kL=5 E<=0 ADD<=0 copy=off cfg65 n=125 UNSAT (0.6s; 51506 vars, 184892 clauses)
+q=7 kP=5 kL=5 E<=0 ADD<=0 copy=off cfg65 n=124 SAT (0.6s) valid=True deletions=0
+saved /Users/dogaozden/AI_Projects/degree-diameter/research/plus3/graphs/ext_q7_5_5_E0_A0copyoff_n124.json
+q=7 kP=6 kL=5 E<=1 ADD<=1 copy=off chg-config maxdel cfg65 n=125 UNSAT (3.9s; 402102 vars, 892328 clauses)
+q=7 kP=6 kL=5 E<=2 ADD<=2 copy=off chg-config maxdel cfg65 n=125 UNSAT (3.7s; 405345 vars, 898810 clauses)
+q=9 kP=6 kL=5 E<=1 ADD<=1 copy=off chg-config maxdel cfg65 n=193 UNSAT (15.2s; 1356759 vars, 2916492 clauses)
+q=9 kP=6 kL=5 E<=2 ADD<=2 copy=off chg-config maxdel cfg65 n=193 UNSAT (15.4s; 1365034 vars, 2933038 clauses)
+q=7 kP=6 kL=5 E<=4 ADD<=4 copy=off chg-config maxdel cfg65 n=125 UNSAT (3.7s; 411819 vars, 911750 clauses)
+q=7 kP=6 kL=5 E<=8 ADD<=8 copy=off chg-config maxdel cfg65 n=125 UNSAT (4.7s; 424719 vars, 937534 clauses)
+q=9 kP=6 kL=5 E<=4 ADD<=4 copy=off chg-config maxdel cfg65 n=193 UNSAT (16.1s; 1381572 vars, 2966106 clauses)
+q=9 kP=6 kL=5 E<=8 ADD<=8 copy=off chg-config maxdel cfg65 n=193 UNSAT (16.9s; 1414600 vars, 3032146 clauses)
+q=11 kP=6 kL=5 E<=1 ADD<=1 copy=off chg-config maxdel cfg65 n=277 UNSAT (50.9s; 3763632 vars, 7928752 clauses)
+q=13 kP=6 kL=5 E<=1 ADD<=1 copy=off chg-config maxdel cfg65 n=377 UNSAT (123.2s; 9045201 vars, 18806084 clauses)
+BATCH DONE runs/r8.txt

@@ -1,0 +1,8 @@
+read 324 vertices 675 edges
+sides [135, 189] excess 54 on side 1
+twin classes on larger side by size: {3: 33} deletable 66
+after deleting 54 : n 270 sides 135 135 deficit histogram {0: 90, 2: 144, 1: 36}
+added 162 edges; repair swaps 6
+final n 270 m 675 degree histogram {5: 270}
+wrote graphs/reg_q2_a3.txt
+wrote graphs/reg_q2_a3.json

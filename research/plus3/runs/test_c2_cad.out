@@ -1,0 +1,12 @@
+Exception in thread Thread-1:
+q=5 kP=5 kL=4 E<=0 ADD<=0 conc=2 n=71 UNSAT (389.1s; 7130 vars, 15144 clauses)
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/threading.py", line 1286, in run
+    self.function(*self.args, **self.kwargs)
+  File "/Users/dogaozden/Library/Python/3.9/lib/python/site-packages/pysat/solvers.py", line 1230, in interrupt
+    self.solver.interrupt()
+  File "/Users/dogaozden/Library/Python/3.9/lib/python/site-packages/pysat/solvers.py", line 2762, in interrupt
+    raise NotImplementedError('Limited solve is currently unsupported by CaDiCaL.')
+NotImplementedError: Limited solve is currently unsupported by CaDiCaL.

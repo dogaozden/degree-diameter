@@ -1,0 +1,7 @@
+read 85180 vertices 420840 edges
+sides [42084, 43096] excess 1012 on side 1
+twin classes on larger side by size: {2: 1028} deletable 1028
+after deleting 1012 : n 84168 sides 42084 42084 deficit histogram {0: 65952, 1: 18216}
+added 9108 edges; repair swaps 3
+final n 84168 m 420840 degree histogram {10: 84168}
+wrote graphs/reg_q8_a2.txt

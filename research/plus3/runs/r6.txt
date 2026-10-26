@@ -1,0 +1,19 @@
+4 6 5 0 0 --sym A
+4 6 5 0 0 --conc 2
+4 6 5 0 0 --conc 3
+4 6 5 0 0 --conc 4
+4 6 5 0 0 --conc 5
+7 6 5 8 8 --copy on --chg-config --maxdel
+7 6 5 8 8 --copy off --chg-config --maxdel
+9 6 5 8 8 --copy on --chg-config --maxdel
+9 6 5 8 8 --copy off --chg-config --maxdel
+5 6 5 0 0 --sym A
+5 6 5 0 0 --conc 2
+5 6 5 0 0 --conc 3
+5 6 5 0 0 --conc 4
+5 6 5 0 0 --conc 5
+5 6 5 0 0 --conc 6
+7 6 5 0 0 --copy on
+7 6 5 0 0 --copy off
+9 6 5 0 0 --copy on
+9 6 5 0 0 --copy off

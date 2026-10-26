@@ -1,0 +1,8 @@
+read 4468 vertices 14315 edges
+sides [2045, 2423] excess 378 on side 1
+twin classes on larger side by size: {3: 201} deletable 402
+after deleting 378 : n 4090 sides 2045 2045 deficit histogram {0: 2140, 2: 1830, 1: 120}
+added 1890 edges; repair swaps 3
+final n 4090 m 14315 degree histogram {7: 4090}
+wrote graphs/reg_q4_a3.txt
+wrote graphs/reg_q4_a3.json
