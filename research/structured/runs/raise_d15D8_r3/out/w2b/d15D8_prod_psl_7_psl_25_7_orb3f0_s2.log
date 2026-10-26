@@ -1,0 +1,40 @@
+group prod psl 7 psl 25 poly x^2+2 x Z_7, N=9172800, identity 1148700, H order 52, rows 176400, threads 1, setup 0.33s
+wide rows: HW order 182, rows 50400, setup 0.75s
+alpha: conj by prod[mat(0,1,6,1);mat(8,0,14,23)] (index 11239), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 35 (+e); mu = 38.70, mu/k = 12.90, fixed-point misses ~ 0.58
+start cost=57
+t=30 steps=205 evals=1641 cost=12 best=12 T=0.53
+t=60 steps=394 evals=3153 cost=12 best=12 T=0.19
+t=90 steps=602 evals=4817 cost=6 best=6 T=0.15
+t=120 steps=807 evals=6457 cost=6 best=6 T=0.15
+t=151 steps=1011 evals=8089 cost=6 best=6 T=0.15
+t=181 steps=1212 evals=9697 cost=6 best=6 T=0.15
+t=211 steps=1419 evals=11353 cost=6 best=6 T=0.15
+t=241 steps=1640 evals=13121 cost=6 best=6 T=0.58
+t=271 steps=1852 evals=14817 cost=6 best=6 T=0.20
+t=301 steps=2077 evals=16617 cost=6 best=6 T=0.15
+t=331 steps=2287 evals=18297 cost=6 best=6 T=0.15
+t=361 steps=2485 evals=19881 cost=6 best=6 T=0.15
+t=391 steps=2690 evals=21521 cost=11 best=6 T=0.57
+t=421 steps=2882 evals=23057 cost=9 best=6 T=0.20
+t=451 steps=3092 evals=24737 cost=9 best=6 T=0.15
+t=481 steps=3296 evals=26369 cost=9 best=6 T=0.15
+t=512 steps=3503 evals=28025 cost=9 best=6 T=0.15
+t=542 steps=3707 evals=29657 cost=19 best=6 T=0.56
+t=572 steps=3895 evals=31161 cost=16 best=6 T=0.20
+t=602 steps=4103 evals=32825 cost=13 best=6 T=0.15
+t=632 steps=4315 evals=34521 cost=6 best=6 T=0.15
+t=662 steps=4514 evals=36113 cost=6 best=6 T=0.15
+t=692 steps=4699 evals=37593 cost=6 best=6 T=0.56
+t=722 steps=4883 evals=39065 cost=6 best=6 T=0.20
+t=752 steps=5078 evals=40625 cost=7 best=6 T=0.15
+t=782 steps=5261 evals=42089 cost=7 best=6 T=0.15
+t=812 steps=5463 evals=43705 cost=7 best=6 T=0.15
+t=842 steps=5656 evals=45249 cost=6 best=6 T=0.56
+t=872 steps=5847 evals=46777 cost=6 best=6 T=0.20
+t=902 steps=6015 evals=48121 cost=6 best=6 T=0.15
+t=933 steps=6210 evals=49681 cost=6 best=6 T=0.15
+t=963 steps=6402 evals=51217 cost=6 best=6 T=0.15
+t=993 steps=6588 evals=52705 cost=15 best=6 T=0.55
+t=1023 steps=6793 evals=54345 cost=15 best=6 T=0.19
+RESULT d=15 D=8 group=prod psl 7 psl 25 poly x^2+2 x Z_7 N=9172800 best=6 evals=54897 time=1031.5 orbit k=3 m=5 f=0 fix=35

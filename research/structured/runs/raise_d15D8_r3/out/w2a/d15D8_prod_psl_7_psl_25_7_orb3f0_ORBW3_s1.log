@@ -1,0 +1,41 @@
+group prod psl 7 psl 25 poly x^2+2 x Z_7, N=9172800, identity 1148700, H order 52, rows 176400, threads 1, setup 0.34s
+wide rows: HW order 182, rows 50400, setup 0.75s
+alpha: conj by prod[mat(0,1,6,1);mat(8,0,14,23)] (index 11239), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 35 (+e); mu = 38.70, mu/k = 12.90, fixed-point misses ~ 0.58
+ORBW=3: an uncovered fixed element weighs 3; start energy 69
+start cost=69
+t=30 steps=210 evals=1681 cost=12 best=12 T=0.53 energy=12 bestE=12
+t=60 steps=412 evals=3297 cost=12 best=12 T=0.19 energy=12 bestE=12
+t=90 steps=626 evals=5009 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=120 steps=836 evals=6689 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=150 steps=1057 evals=8457 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=180 steps=1285 evals=10281 cost=28 best=12 T=0.95 energy=30 bestE=12
+t=210 steps=1500 evals=12001 cost=12 best=12 T=0.33 energy=12 bestE=12
+t=241 steps=1719 evals=13753 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=271 steps=1927 evals=15417 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=301 steps=2142 evals=17137 cost=10 best=12 T=0.15 energy=12 bestE=12
+t=331 steps=2346 evals=18769 cost=15 best=12 T=0.94 energy=15 bestE=12
+t=361 steps=2558 evals=20465 cost=12 best=12 T=0.33 energy=12 bestE=12
+t=391 steps=2761 evals=22089 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=421 steps=2953 evals=23625 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=451 steps=3156 evals=25249 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=481 steps=3351 evals=26809 cost=27 best=12 T=0.93 energy=27 bestE=12
+t=511 steps=3565 evals=28521 cost=10 best=12 T=0.33 energy=12 bestE=12
+t=541 steps=3756 evals=30049 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=571 steps=3939 evals=31513 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=601 steps=4151 evals=33209 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=631 steps=4341 evals=34729 cost=18 best=12 T=0.93 energy=18 bestE=12
+t=661 steps=4550 evals=36401 cost=13 best=12 T=0.33 energy=15 bestE=12
+t=692 steps=4758 evals=38065 cost=15 best=12 T=0.15 energy=15 bestE=12
+t=722 steps=4950 evals=39601 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=752 steps=5157 evals=41257 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=782 steps=5345 evals=42761 cost=19 best=12 T=0.93 energy=21 bestE=12
+t=812 steps=5532 evals=44257 cost=6 best=6 T=0.33 energy=6 bestE=6
+t=842 steps=5713 evals=45705 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=872 steps=5879 evals=47033 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=902 steps=6078 evals=48625 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=932 steps=6259 evals=50073 cost=6 best=6 T=0.15 energy=6 bestE=6
+t=962 steps=6458 evals=51665 cost=30 best=6 T=1.11 energy=30 bestE=6
+t=992 steps=6664 evals=53313 cost=12 best=6 T=0.39 energy=12 bestE=6
+t=1022 steps=6875 evals=55001 cost=12 best=6 T=0.15 energy=12 bestE=6
+RESULT d=15 D=8 group=prod psl 7 psl 25 poly x^2+2 x Z_7 N=9172800 best=6 evals=55585 time=1031.5 orbit k=3 m=5 f=0 fix=35
