@@ -49,8 +49,12 @@ The box ran at load 15–20 (director's billion-vertex Haar checks + cards), whi
 they stopped early; the next round was cut to four cards.
 
 Cards (best checked value; director re-checked every valid graph):
-- d01 (20,5) push of c04's F5 route chart (Z21/Z22/K4,4 controllers): see below.
-- d02 (20,5) 5 letters × F4; d03 (18,5) 6 letters × F3: see below.
+- d01 (20,5) push of c04's F5 route chart: a chart with 20 singular patterns (was 22), but K3,3 + doubled matching
+  over Z21 stalls at cost 2 (5 runs), Z22 at 4, D11 at 22, K4,4 over Z16 at 6. 75,000 stays.
+- d02 (20,5) 5 letters × F4: valid 51,200 (K5,5 controller over Z20, m = 100; chart with 42 singular words of 640);
+  Z21–Z30 stall at cost 2–74. Below 75,000.
+- d03 (18,5) 6 letters × F3: valid 29,160 (K3,3 doubled over Z60, m = 180; best chart 312 singular patterns of 1,500);
+  fails above m = 180. Below 47,600.
 - d04 (17,5) route chart + plain fifth letter (degree 17), Z23 controller: cost 1.2M after 2,000 steps. Nothing.
 - d05 **(13,5) 11,700** (record; was 11,486): MDM lift of W(8) over Z2 × Z5 with ν, σ_1, σ_2 annealed against a
   route-aware cost (mdm8.c), 0 far pairs in ~2 min. apsp + bfs_all, rebuilt identically by the director.
@@ -68,3 +72,22 @@ Kept: MDM with route-aware annealing (gave the (13,5) record), haar_sym orbit ru
 charts and F2/F3 charts did not converge in 25-minute boxes on a loaded machine (not ruled out).
 Director during the round: (6,11) 1,971,744, (6,12) 9,303,840, (5,11) 253,080, (5,12) 912,576 with haar_sym (2–3×
 the round-1 card values, solved in seconds at μ ≈ 2–10), and the Haar queue at D = 8..12.
+
+## 2026-10-26, new-cells-beyond, round 3 (4 cards, 16:00 UTC)
+
+Same session and branch. Files: research/squads/beyond/r3/. Only four cards: the machine was carrying the director's
+D = 10 Haar searches and checks (3–5 GB each), and round 2 had shown that cards on a load-18 box stop early. Each card
+got one concrete method with a scorer.
+
+- e01 (3,11) exhaustive cubic Haar graphs (all pairs {x,y}) over ~45 groups of order 504–1,100: **1,080** (A5 × Z9),
+  above round 1's 1,008; per-group minima in e01/results.txt (AGL(1,23) cost 1, S4 × Z22 cost 14, others higher).
+- e02 (3,12) exhaustive cubic Haar graphs, orders 661–2,500: see its scoreboard line.
+- e03 (4,11) **19,152** (SL(2,8) × Z19, ORBIT 3 1 1, solved at once); (4,12): PSL(2,11) × Z39 reached cost 1 twice,
+  SL(2,8) × Z52 cost 5. 50,160 stays (director re-ran two more seeds).
+- e04 D = 7 hub surgery (D7_HEXAGON.md) on level graphs: recipe verified at q = 4, r = 2 (13,682, Δ 7) and q = 5, r = 2
+  (39,108, Δ 8), apsp VALID; for the new cells only predicted values (+0.1–0.4 %), because the hub condition (hubs of
+  one colour within distance 6) failed for larger hub sets at q = 4, 5 and was not established for q = 13, 16.
+
+Kept: exhaustive cubic Haar search (gave (3,11) 1,080). Squad totals for the job: 33 cards in three rounds; values
+that came from cards: (3,11), (3,12), (4,11), (4,12), (17,8), (20,5) (75,000), the D = 3, 4, 6 builds, the D = 7
+builder, (13,5) (the record, with the director's MDM lift) and the (19,5) DM solution.
