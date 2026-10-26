@@ -260,3 +260,9 @@ Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable struct
 - sl 29 × Z361 (seed 1): stopped at 04:37, best 30 after 185k evals. Not promising.
 - Replaced by sl 59 × Z43 (μ 30.2, N 8,828,760), ORBW=3, seeds 1 and 2, 6000 s each, started 04:36, end about 06:17.
   Wave 1 of the earlier round: best 6 at 465k evals on this group, so it is the most promising remaining order above the bar.
+
+### Wave 3 result (05:35 box time)
+
+- prod sl 4 × sl 13 × Z67, seed 2: not solved, best 3 after 191k evals (closest of this round after the record).
+- prod sl 4 × sl 13 × Z67, seed 3: not solved, best 6 after 187k evals.
+- Two more seeds on the same group were started at 05:36 (seeds 4 and 5, 4000 s each, end about 06:43).
