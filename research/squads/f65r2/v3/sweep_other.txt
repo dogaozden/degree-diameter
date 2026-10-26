@@ -1,0 +1,40 @@
+group order=343 moduli=7x7x7
+random_best value=243 S=(2,4,6) (3,2,2) (2,0,5) (6,3,5) (4,1,4) (6,0,2)
+anneal_best value=243 S=(0,3,1) (3,6,6) (0,1,1) (0,3,2) (2,2,4) (4,0,0)
+MAX 243
+group order=343 moduli=49x7
+random_best value=263 S=(7,4) (11,6) (46,0) (25,4) (43,2) (48,6)
+anneal_best value=263 S=(15,0) (21,1) (29,2) (47,1) (37,6) (15,1)
+MAX 263
+group order=351 moduli=3x9x13
+random_best value=261 S=(0,8,9) (2,2,4) (1,8,7) (0,8,11) (1,7,4) (2,7,3)
+anneal_best value=261 S=(2,4,5) (2,4,10) (2,8,7) (1,7,9) (1,1,0) (0,0,11)
+MAX 261
+group order=325 moduli=5x5x13
+random_best value=255 S=(0,4,1) (3,1,10) (1,1,2) (2,0,8) (2,3,9) (3,0,7)
+anneal_best value=257 S=(2,1,0) (0,3,6) (2,0,11) (3,4,9) (3,4,5) (4,1,6)
+MAX 257
+group order=324 moduli=6x6x9
+random_best value=250 S=(3,4,1) (0,0,4) (1,2,8) (0,5,1) (2,2,5) (0,5,3)
+anneal_best value=249 S=(1,2,5) (2,3,7) (5,4,1) (0,4,2) (4,0,0) (2,3,3)
+MAX 250
+group order=360 moduli=2x2x90
+random_best value=257 S=(0,0,78) (1,0,85) (0,1,68) (1,1,2) (1,0,44) (0,0,1)
+anneal_best value=262 S=(0,1,22) (0,0,81) (0,0,12) (0,1,69) (1,0,77) (1,1,29)
+MAX 262
+group order=400 moduli=4x4x25
+random_best value=268 S=(0,2,1) (0,1,15) (3,0,17) (3,0,15) (3,0,20) (3,1,15)
+anneal_best value=268 S=(0,3,3) (3,0,0) (0,0,17) (3,0,2) (0,0,24) (3,3,3)
+MAX 268
+group order=400 moduli=2x4x50
+random_best value=264 S=(1,1,23) (1,1,5) (1,0,3) (0,3,28) (1,3,8) (0,0,49)
+anneal_best value=267 S=(0,1,1) (1,3,36) (0,0,36) (1,0,0) (1,0,14) (1,2,19)
+MAX 267
+group order=512 moduli=2x2
+random_best value=62 S=(1,1) (1,1) (1,0) (1,0) (0,0) (1,1)
+anneal_best value=62 S=(0,1) (0,0) (0,0) (1,0) (0,1) (0,1)
+MAX 62
+group order=729 moduli=3x3x3x3x3x3
+random_best value=161 S=(2,1,2,2,0,0) (1,0,2,2,2,1) (2,1,2,1,2,0) (2,2,0,0,0,0) (0,0,1,1,0,1) (1,0,2,1,1,0)
+anneal_best value=161 S=(0,2,1,2,1,0) (0,1,1,1,2,0) (0,1,0,1,2,1) (1,1,0,0,2,0) (1,1,1,2,2,0) (0,2,2,1,2,1)
+MAX 161

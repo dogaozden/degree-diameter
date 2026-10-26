@@ -30,3 +30,16 @@ inverse-closed S (one condition S⁴ = G) on order 343 and (351,12): worse (min 
 Kept: nothing beats the Haar wall at N ≈ 351. Lesson: 16 CPU-bound cards on 4 cores starved each other (load 20–28;
 c9 and c12 produced no measurement), and every symmetric lift with a side-transitive symmetry is just a Haar graph.
 Next: the director's exhaustive orderly Haar search (all non-abelian groups of order 343–351) instead of more cards.
+
+## 2026-10-26 17:45–18:05 UTC: job fresh-6-5, round f65r2 (verification, 3 cards)
+Session: claude/bipartite-6-5-fresh-16bvjp. Board: `research/squads/f65r2/scoreboard.jsonl`. After round 1 every search
+direction sat at or above the Haar wall, and the director's exhaustive search had become the main line, so this round
+used the squad for independent re-implementation of the negative results instead of 16 more search cards (on 4 cores
+16 CPU-bound cards starved each other in round 1).
+- v1 Heis(7), own code and automorphisms (98,784 checked, orbits 336 + 6): 84,408,740 reduced sets, minimum 4 uncovered
+  on the A side; agrees with the director (haarex: 123,366,620 sets, haarex2: 6,803,423, minimum 4).
+- v2 C49⋊C7, own code: 79,558,106 reduced sets; 78 cover the A side, none the B side (best B miss 6); positive control
+  C49⋊C3 finds 1,584,258 valid sets. Agrees with haarex2 (29 classes cover A, none both).
+- v3 abelian lemma |(S−S)+(S−S)| ≤ 271: proof checked, general formula N(d) = 1 + d(d−1) + d·C(d,2) + C(d,2)·C(d−1,2)
+  confirmed by brute force; 271 is attained (Z1009, and the standard basis of Z⁶).
+Kept: the order-343 theorem (no Haar graph on 686 vertices at (6,5)) now has two independent implementations.

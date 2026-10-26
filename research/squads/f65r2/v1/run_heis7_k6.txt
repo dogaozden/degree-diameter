@@ -1,0 +1,29 @@
+GL(2,7) order 2016; candidate maps 98784; verified automorphisms 98784; rejected 0
+orbit of (1,0,0) noncentral? checking: orbit size of noncentral element = 336 (expect 336)
+orbit size of central nonidentity element (0,0,1) = 6 (expect 6)
+|Stab(s1)| = 294 (expect 294)
+H-orbit representatives on G\{e,s1}: 13
+rep 0 = (0,0,1): sets 6492980, running min 12
+rep 1 = (0,1,0): sets 6492980, running min 4
+rep 2 = (1,0,1): sets 6492980, running min 4
+rep 3 = (2,0,0): sets 6492980, running min 4
+rep 4 = (2,0,1): sets 6492980, running min 4
+rep 5 = (3,0,0): sets 6492980, running min 4
+rep 6 = (3,0,1): sets 6492980, running min 4
+rep 7 = (4,0,0): sets 6492980, running min 4
+rep 8 = (4,0,1): sets 6492980, running min 4
+rep 9 = (5,0,0): sets 6492980, running min 4
+rep 10 = (5,0,1): sets 6492980, running min 4
+rep 11 = (6,0,0): sets 6492980, running min 4
+rep 12 = (6,0,1): sets 6492980, running min 4
+group: Heis(p) order 343, mode reduced
+sets checked: 84408740
+minimum uncovered |G \ (S^-1S)^2|: 4
+sets attaining minimum (among those checked): 1800
+a minimiser S = {(0,0,0), (1,0,0), (0,1,0), (0,2,2), (1,2,1), (4,4,2)}
+covers everything: no
+time: 188.73 s
+
+real	3m8.792s
+user	1m17.933s
+sys	0m0.744s
