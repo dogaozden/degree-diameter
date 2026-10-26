@@ -133,3 +133,6 @@ in order of N. Candidate screen and run logs are in the session scratchpad; this
   982×49 (r 3, N 48,118). Cost 2: 1143×42 (r 47 and r 38, N 48,006), 2667×18 (r 164, N 48,006), 3694×13, 2189×22,
   2009×24 (r 68), 3719×13, 491×98.
 - Queue 2 (running): 1200 s, seed 2, the cost ≤ 2 candidates above 47,982.
+- Queue 2 result (1200 s, seed 2, 8 runs): no solve. Cost 1 after 20 min: 982×49 (r 3, N 48,118), 1847×26 (r 123,
+  N 48,022), 1143×42 (r 47, N 48,006), 491×98 (r 3, N 48,118). Cost 2: 3694×13, 2667×18, 2189×22.
+- Queue 3 (running): 1800 s, seed 3, the four cost-1 candidates above.
