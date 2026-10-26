@@ -1,0 +1,18 @@
+# table-audit-2's relabelled Omega H(3) (labs q3_aba_LLL_G13*.lab, base hexagon from their moore_build h 3),
+# rewired by omegalab.py (mine) and checked by bitapsp (mine); their base hexagon checked by bitapsp first
+n=728 edges=1456 degree min=4 max=4 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 728 sources: 2912 8736 26208 78624 235872 176904
+unreached pairs=0 diameter=6
+all spheres maximal up to radius 5 -> girth 12
+## q3
+vertices 14560, edges 43680
+n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 14560 sources: 87360 422240 1971008 9095034 37167780 84417710 66770652 12047256
+unreached pairs=0 diameter=8
+all spheres maximal up to radius 1 -> girth 4
+## q3psi
+vertices 14560, edges 43680
+n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1
+sphere sizes summed over all 14560 sources: 87360 422240 1971710 9084010 37018020 84175520 66919710 12300470
+unreached pairs=0 diameter=8
+all spheres maximal up to radius 1 -> girth 4
