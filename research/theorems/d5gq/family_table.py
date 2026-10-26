@@ -71,8 +71,10 @@ for D in range(3, 17):
         delta = q - r
         if q % 2 == 0:
             KB = KA = r * (q * q + 1); lay = 'all H, duality'
-        else:
+        elif r <= 6:
             KB, KA, lay = slots_odd(q, r)
+        else:
+            continue          # (2r+1 > 13 levels: not searched; these cells are far below the table anyway)
         tot, kb, ka, name = best_hubs(KB, KA, delta) if delta >= 1 else (0, 0, 0, 'none')
         cands.append((base + tot, q, r, lay, kb, ka, name))
     cands.sort(reverse=True)
