@@ -4,7 +4,16 @@ Job "raise3-12-9", Haiku worker, branch `claude/raise-d12d9-bipartite-round3-fhh
 Round 2 is on `claude/raise-d12d9-bipartite-record-b26a5o` (notes `research/squads/cells/raise-d12D9-round2.md`
 there). Round 1 is on `claude/raise-d12d9-bipartite-record-f510kc`.
 
-## Bar to beat
+## RECORD (round 3, first success)
+
+**35,445,648 vertices** = 2 · |SL(2,83) × Z31|, N = 17,722,824, k = 3, m = 4, f = 0, ORBW = 3, seed 3, 184k evals (6,983 s).
+File: `research/frontier/sols/d12D9_sl_83_31_orb3f0_orbw3_s3.txt`. Checks: `haarcheck_sl` VALID and `haarcheck2` VALID,
+both d = 12, D = 9, all 17,722,824 per side reached, ecc 9 (outputs in `research/frontier/runs/cloudcheck/`).
+Log: `research/structured/runs/d12D9r3_sl83_31_orbw3_s3.log`.
+
+**New bar: N > 17,722,824** (2N > 35,445,648).
+
+## Bar to beat (at the start of round 3)
 
 - Master (README, RESULTS) still says 34,026,720 (sl 41 × Z247, N = 17,013,360).
 - Round 2's branch has VERIFIED finds above that, not yet recorded by the coordinator:
