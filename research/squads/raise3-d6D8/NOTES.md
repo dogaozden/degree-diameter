@@ -23,3 +23,10 @@ side-1 fiber j: (g,0,i) ~ (a g, 1, j) for a in S[i][j]; side-1 vertices use a^-1
   psl8 x Z16 (8064): best 40 (A=3), 32 (A=2). pgl7 x Z24 (8064): best 36. No solution in any.
 - Symmetric voltage sets (K=2, sigma = inner automorphism of order 2, or z -> -z): much worse. Plateaus at 70-74;
   z -> -z gives 91,560 (nearly disconnected). The C and Python costs agree exactly, so these are real. Dropped.
+- Campaign (K=1, CYC=1.5M, TMAX 1.5, TMIN 0.1, 2400 s each, 4 parallel, 6.5-19.6M evals each; no solution):
+  psl7 x Z48 (8064, A=3): best 26 (plateau from ~5 min on).
+  psl8 x Z16 (8064, A=2): best 28. pgl7 x Z24 (8064, A=3): best 28.
+  psl8 x Z16 (8064, A=3): best 30.
+  Plateaus reached within 5-10 minutes and then barely moved, so more time at this temperature is unlikely to help.
+- Control runs (900 s, same schedule, |G| = 7056 and 7260, V = 28k) to see whether the annealer itself can solve
+  lifts below the record size: runs/cal2_*.log.
