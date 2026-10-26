@@ -5,3 +5,32 @@ ORBIT k=3 m=3 f=2: |Fix(alpha)| = 41 (+e); mu = 26.65, mu/k = 8.88, fixed-point 
 ORBW=3: an uncovered fixed element weighs 3; start energy 132
 start cost=128
 t=30 steps=170 evals=1361 cost=18 best=18 T=0.53 energy=18 bestE=18
+t=60 steps=330 evals=2641 cost=18 best=18 T=0.19 energy=18 bestE=18
+t=90 steps=500 evals=4001 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=120 steps=657 evals=5257 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=150 steps=834 evals=6673 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=181 steps=983 evals=7865 cost=18 best=18 T=1.28 energy=18 bestE=18
+t=211 steps=1134 evals=9073 cost=24 best=18 T=0.45 energy=24 bestE=18
+t=241 steps=1293 evals=10345 cost=24 best=18 T=0.16 energy=24 bestE=18
+t=271 steps=1465 evals=11721 cost=24 best=18 T=0.15 energy=24 bestE=18
+t=301 steps=1602 evals=12817 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=331 steps=1756 evals=14049 cost=18 best=18 T=1.27 energy=18 bestE=18
+t=361 steps=1928 evals=15425 cost=18 best=18 T=0.45 energy=18 bestE=18
+t=391 steps=2088 evals=16705 cost=18 best=18 T=0.16 energy=18 bestE=18
+t=421 steps=2247 evals=17977 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=451 steps=2389 evals=19113 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=481 steps=2538 evals=20305 cost=18 best=18 T=1.25 energy=18 bestE=18
+t=512 steps=2713 evals=21705 cost=18 best=18 T=0.44 energy=18 bestE=18
+t=542 steps=2872 evals=22977 cost=18 best=18 T=0.16 energy=18 bestE=18
+t=572 steps=3044 evals=24353 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=602 steps=3202 evals=25617 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=632 steps=3353 evals=26825 cost=18 best=18 T=1.25 energy=18 bestE=18
+t=662 steps=3523 evals=28185 cost=18 best=18 T=0.44 energy=18 bestE=18
+t=692 steps=3671 evals=29369 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=722 steps=3846 evals=30769 cost=18 best=18 T=0.15 energy=18 bestE=18
+RESULT d=11 D=9 group=sl 41 x Z_127 N=8747760 best=0 evals=30937 time=725.4 orbit k=3 m=3 f=2 fix=41
+full diameter check: OK
+wrote research/structured/runs/r3/d11D9_sl_41_127_orb3_ORBW3_s3.txt
+n = 17495520 edges = 96225360 max degree = 11 min degree = 11 duplicate edges = 0
+edge list sha256 = dd5afc528e1f68fef61bd257223841eec2983c07848222cf36b6e0914214d808
+VALID d=11 D=9 group=sl 41 x Z_127 N=8747760 vertices=17495520

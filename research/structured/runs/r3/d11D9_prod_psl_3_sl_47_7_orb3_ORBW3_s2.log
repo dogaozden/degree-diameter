@@ -5,3 +5,31 @@ ORBIT k=3 m=3 f=2: |Fix(alpha)| = 143 (+e); mu = 25.40, mu/k = 8.47, fixed-point
 ORBW=3: an uncovered fixed element weighs 3; start energy 96
 start cost=80
 t=30 steps=82 evals=657 cost=14 best=18 T=0.52 energy=18 bestE=18
+t=61 steps=157 evals=1257 cost=14 best=18 T=0.18 energy=18 bestE=18
+t=91 steps=234 evals=1873 cost=14 best=18 T=0.15 energy=18 bestE=18
+t=121 steps=311 evals=2489 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=151 steps=379 evals=3033 cost=18 best=18 T=0.15 energy=18 bestE=18
+t=181 steps=447 evals=3577 cost=18 best=18 T=0.94 energy=18 bestE=18
+t=211 steps=518 evals=4145 cost=12 best=12 T=0.33 energy=12 bestE=12
+t=241 steps=588 evals=4705 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=272 steps=664 evals=5313 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=302 steps=733 evals=5865 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=332 steps=801 evals=6409 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=362 steps=862 evals=6897 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=393 steps=940 evals=7521 cost=12 best=12 T=0.63 energy=12 bestE=12
+t=423 steps=1018 evals=8145 cost=12 best=12 T=0.22 energy=12 bestE=12
+t=453 steps=1083 evals=8665 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=483 steps=1153 evals=9225 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=513 steps=1225 evals=9801 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=544 steps=1293 evals=10345 cost=12 best=12 T=1.14 energy=12 bestE=12
+t=574 steps=1366 evals=10929 cost=12 best=12 T=0.40 energy=12 bestE=12
+t=604 steps=1438 evals=11505 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=634 steps=1514 evals=12113 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=664 steps=1594 evals=12753 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=694 steps=1672 evals=13377 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=724 steps=1745 evals=13961 cost=12 best=12 T=0.57 energy=12 bestE=12
+t=754 steps=1813 evals=14505 cost=12 best=12 T=0.20 energy=12 bestE=12
+t=784 steps=1887 evals=15097 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=815 steps=1967 evals=15737 cost=12 best=12 T=0.15 energy=12 bestE=12
+t=845 steps=2047 evals=16377 cost=12 best=12 T=0.15 energy=12 bestE=12
+RESULT d=11 D=9 group=prod psl 3 sl 47 x Z_7 N=8717184 best=12 evals=16937 time=873.0 orbit k=3 m=3 f=2 fix=143

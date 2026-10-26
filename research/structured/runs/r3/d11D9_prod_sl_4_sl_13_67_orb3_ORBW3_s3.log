@@ -1,0 +1,7 @@
+group prod sl 4 poly x^2+x+1 sl 13 x Z_67, N=8779680, identity 1766388, H order 60, rows 146328, threads 1, setup 0.36s
+wide rows: HW order 201, rows 43680, setup 0.67s
+alpha: conj by prod[mat(0,3,2,1);mat(0,3,4,1)] (index 19683), z -> 29 z on Z_67
+ORBIT k=3 m=3 f=2: |Fix(alpha)| = 35 (+e); mu = 28.01, mu/k = 9.34, fixed-point misses ~ 1.06
+ORBW=3: an uncovered fixed element weighs 3; start energy 120
+start cost=104
+t=30 steps=99 evals=793 cost=18 best=18 T=0.53 energy=18 bestE=18

@@ -232,3 +232,23 @@ is one or two uncovered orbits or fixed points.
 
 - sl 41 × Z127, seeds 2 and 3.
 - prod psl 3 × sl 47 × Z7, seeds 2 and 3.
+
+## Result 1 (round 3): NEW RECORD (11,9), 17,495,520 vertices (was 17,323,152, +1.0 %)
+
+- Group sl 41 × Z_127 (SL(2,41) × Z_127), |G| = 8,747,760 (μ = 26.6), orbit k = 3, m = 3, f = 2, **ORBW=3**, seed 3.
+  Solved at evaluation 30,937 (725 s, wave 2). |Fix(α)| = 41. Seed 1 (wave 1, 7200 s, 353k evals) stalled at cost 6.
+- Solution: research/frontier/sols/d11D9_sl_41_127_orbw3_s3.txt. Search log: research/structured/runs/d11D9_sl_41_127_orbw3_s3.log.
+- Independent checks, all VALID, ecc 9 from both sides, 0 unreached, 11-regular:
+  - haarcheck_sl (research/frontier/haarcheck_sl.c): n = 17,495,520.
+  - haarcheck2 (research/frontier/haarcheck2.c): n = 17,495,520, eccA = eccB = 9.
+  - Output: research/structured/runs/d11D9_sl_41_127_orbw3_s3.rebuild.txt.
+  - build_haar2.py: running in the background. Its output goes to research/structured/runs/d11D9_sl_41_127_orbw3_s3.build_haar2.txt.
+- Note on the earlier wave-2 runs: sl 41 × Z127 seed 2 and A4 × SL(2,47) × Z7 seeds 2 and 3 were stopped at 03:35.
+  Their order is below the new bar (|G| > 8,747,760), so they could not raise the record.
+
+## Wave 3 (ORBW=3, 7200 s each, started 03:35 box time, ends about 05:50)
+
+Bar: |G| > 8,747,760 (2|G| > 17,495,520). The orders above it with usable structure:
+- prod sl 4 × sl 13 × Z67 (μ 28.0): seeds 2 and 3. Wave 1, seed 1: best 6 at 189k evals.
+- prod sl 5 × sl 7 × Z217 (μ 26.7, N 8,749,440): seed 1. Earlier (ORBW=1): best 36 at 567k evals.
+- sl 29 × Z361 (μ 28.6, N 8,793,960): seed 1. Earlier (ORBW=1): best 30 at 55k evals.
