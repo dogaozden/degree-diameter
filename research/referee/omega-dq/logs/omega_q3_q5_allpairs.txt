@@ -1,0 +1,74 @@
+q=3 types=aba reading=1 sigma=id inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aba reading=2 sigma=id inner=PLP: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aba reading=1 sigma=r1 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aba reading=1 sigma=r2 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aab reading=1 sigma=id inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aab reading=2 sigma=id inner=PPL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aab reading=1 sigma=r1 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aab reading=1 sigma=r2 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=3 types=aaa reading=1 sigma=id inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=3 types=aaa reading=2 sigma=id inner=PPP: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=3 types=aaa reading=1 sigma=r1 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=3 types=aaa reading=1 sigma=r2 inner=LLL: n=14560 edges=43680 degree min=6 max=6 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=5 types=abab reading=1 sigma=id inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=abab reading=2 sigma=id inner=PLPL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=abab reading=1 sigma=r1 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=abab reading=1 sigma=r2 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=aabb reading=1 sigma=id inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=aabb reading=2 sigma=id inner=PPLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=aabb reading=1 sigma=r1 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=aabb reading=1 sigma=r2 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=9 
+q=5 types=aaaa reading=1 sigma=id inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=5 types=aaaa reading=2 sigma=id inner=PPPP: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=5 types=aaaa reading=1 sigma=r1 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+q=5 types=aaaa reading=1 sigma=r2 inner=LLLL: n=195300 edges=781200 degree min=8 max=8 multi-edges=0 bipartite=yes components=1 unreached pairs=0 diameter=10 
+
+# omegaref mode exact at q = 3, 5 (agrees with the all-pairs results above); OMEGA_NEGTEST=1 adds a swap of an a-block
+# with a b-block, which the automorphism checker must reject
+Omega H_3 reading 2 types aba sigma id: vertices 14560 (copies 15 x 728 + K1-vertices 3640), edges 43680
+  copy-vertex degree 6..6, K1-vertex degree 6..6, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  negative test: swap of blocks 0 and 1 (different types): NOT an automorphism
+  2184 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:728
+  eccentricity of copy-vertex sources: 9:1456
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 10920 = K(t=0, k=0))
+Omega H_3 reading 2 types aaa sigma id: vertices 14560 (copies 15 x 728 + K1-vertices 3640), edges 43680
+  copy-vertex degree 6..6, K1-vertex degree 6..6, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 1: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  1456 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 10:728
+  eccentricity of copy-vertex sources: 9:728
+  DIAMETER 10 (every vertex is in the orbit of a source; largest eccentricity at 10920 = K(t=0, k=0))
+Omega H_3 reading 1 types aba sigma rand:1: vertices 14560 (copies 15 x 728 + K1-vertices 3640), edges 43680
+  copy-vertex degree 6..6, K1-vertex degree 6..6, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  negative test: swap of blocks 0 and 1 (different types): NOT an automorphism
+  2184 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:728
+  eccentricity of copy-vertex sources: 9:1456
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 10920 = K(t=0, k=0))
+Omega H_5 reading 2 types abab sigma id: vertices 195300 (copies 20 x 7812 + K1-vertices 39060), edges 781200
+  copy-vertex degree 8..8, K1-vertex degree 8..8, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 1 and 3: bijection, maps every edge to an edge
+  negative test: swap of blocks 0 and 1 (different types): NOT an automorphism
+  23436 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:7812
+  eccentricity of copy-vertex sources: 9:15624
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 156240 = K(t=0, k=0))
+Omega H_5 reading 1 types abab sigma rand:1: vertices 195300 (copies 20 x 7812 + K1-vertices 39060), edges 781200
+  copy-vertex degree 8..8, K1-vertex degree 8..8, loops/multi-edges 0, connected yes, bipartite yes
+  rotation: bijection, maps every edge to an edge
+  swap of blocks 0 and 2: bijection, maps every edge to an edge
+  swap of blocks 1 and 3: bijection, maps every edge to an edge
+  negative test: swap of blocks 0 and 1 (different types): NOT an automorphism
+  23436 sources (all K(t,0,bar); all vertices of the first copy of each block type): unreached pairs 0
+  eccentricity of K1-vertex sources: 9:7812
+  eccentricity of copy-vertex sources: 9:15624
+  DIAMETER 9 (every vertex is in the orbit of a source; largest eccentricity at 156240 = K(t=0, k=0))
