@@ -82,6 +82,28 @@ graph has G as automorphisms and BFS from orbit representatives decides the diam
   orbits) leaves 6,813,773 far pairs from the 2,064 hub representatives (about 3,300 of 1.18 million per hub). A
   cost evaluation takes about 10 s on this machine, so annealing to 0 is out of reach here.
 
+## First-moment estimate (heuristic, not a proof)
+
+Let F be the number of (hub, vertex) pairs at distance > 8. For a uniformly random labelling (every P_c, L_c an
+independent random bijection), E[F] measured here: q = 2 about 70 (twisted-Z₅ random, ×35), q = 3 1,911 (fully random,
+all 3,640 hubs), q = 4 645,753 (fully random, all 13,650 hubs; the symmetric random labellings give 643,545),
+q = 5 about 6.55 million (symmetric random ×155), q = 7 about 647 million (symmetric random ×95). The number of
+labellings, up to a global relabelling of the rows, is (n!)^(10α − 1). If the far pairs behaved like independent
+events, P(F = 0) ≈ e^(−E[F]) and the expected number of labellings with diameter 8 would be exp(ln #labellings − E[F]):
+
+| q | ln #labellings | E[F] | exponent | found? |
+|---|---:|---:|---:|---|
+| 2 | 3.8·10³ | ~70 | +3.7·10³ | yes (round 1) |
+| 3 | 5.2·10⁴ | 1.9·10³ | +5.0·10⁴ | yes |
+| 4 | 2.5·10⁵ | 6.5·10⁵ | −4.0·10⁵ | no |
+| 5 | 1.1·10⁶ | 6.6·10⁶ | −5.4·10⁶ | no |
+| 7 | 8.5·10⁶ | 6.5·10⁸ | −6.4·10⁸ | no (not searched to the end) |
+
+So random-like labellings should exist at q ≤ 3 and should not exist at q ≥ 4, which is what the searches saw. This
+says nothing about structured labellings (the far pairs are far from independent), so it is not a proof that the
+table's D = 8 values have no graph. It agrees with research/frontier/SIZE_LAW.md, where the same kind of
+first-moment count puts (10,8), (12,8), (14,8), (16,8) at or above what random Haar graphs can reach.
+
 ## Verdict
 
 For the table's q = 7, 8, 9, 11, 13 the thesis's construction as drawn has diameter 9 (INVALID as read; witness in

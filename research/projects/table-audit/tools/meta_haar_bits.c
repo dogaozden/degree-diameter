@@ -3,7 +3,7 @@
    level-by-level BFS instead of a queue, inverse neighbours computed as (b - s_a) r^(-s_j)).
    G = Z_m x|_r Z_k: (a, j)(b, l) = (a + r^j b mod m, j + l mod k).  Haar graph: (g, A) ~ (s g, B), s in S.
    Right multiplication by G is transitive on each side, so BFS from (e, A) and from (e, B) gives the exact diameter.
-   Element (a, j) has index j*m + a.  Memory: 4 bitsets over G (about N/2 bytes).
+   Element (a, j) has index j*m + a; m < 2^31 so products fit in 64 bits.  Memory: 4 bitsets over G (about N/2 bytes).
    Input: a haar_gen3 solution file ("d D meta m k r n 1 N ..." then d lines with "meta(a=A,j=J)").
    Usage: meta_haar_bits SOL      prints ecc from each side and "RESULT VALID d D n" iff the diameter is <= D. */
 #include <stdio.h>
@@ -18,12 +18,12 @@ static inline int getb(const uint64_t *b, long i) { return (b[i >> 6] >> (i & 63
 int main(int argc, char **argv) {
     FILE *f = fopen(argv[1], "r"); if (!f) { perror(argv[1]); return 2; }
     int d, D; long r, ncyc; char w[64];
-    if (fscanf(f, "%d %d %63s %ld %ld %ld %*s %ld", &d, &D, w, &m, &k, &r, &ncyc) != 7 || strcmp(w, "meta") || ncyc != 1) { printf("RESULT INVALID header\n"); return 1; }
+    if (fscanf(f, "%d %d %63s %ld %ld %ld %*s %ld", &d, &D, w, &m, &k, &r, &ncyc) != 7 || strcmp(w, "meta") || ncyc != 1 || m >= (1L << 31)) { printf("RESULT INVALID header\n"); return 1; }
     long sa[64], sj[64]; int ns = 0; char line[512];
     while (fgets(line, sizeof line, f)) { char *p = strstr(line, "meta(a="); long a, j; if (p && sscanf(p, "meta(a=%ld,j=%ld)", &a, &j) == 2) { sa[ns] = ((a % m) + m) % m; sj[ns] = ((j % k) + k) % k; ns++; } }
     if (ns != d) { printf("RESULT INVALID %d elements read, %d expected\n", ns, d); return 1; }
     rpow = malloc(sizeof(long) * (k + 1)); rpow[0] = 1 % m;
-    for (long j = 1; j <= k; j++) rpow[j] = (long)((__int128)rpow[j - 1] * r % m);
+    for (long j = 1; j <= k; j++) rpow[j] = (long)((unsigned long)rpow[j - 1] * r % m);
     if (rpow[k] != 1 % m) { printf("RESULT INVALID r^k != 1\n"); return 1; }
     for (int x = 0; x < d; x++) for (int y = 0; y < x; y++) if (sa[x] == sa[y] && sj[x] == sj[y]) { printf("RESULT INVALID repeated generator\n"); return 1; }
     long N = m * k, W = (N + 63) / 64;
@@ -38,8 +38,8 @@ int main(int argc, char **argv) {
                 while (bits) { long g = wi * 64 + __builtin_ctzll(bits); bits &= bits - 1;
                     long j = g / m, a = g - j * m;
                     for (int x = 0; x < d; x++) { long na, nj;
-                        if (side == 0) { na = (long)((sa[x] + (__int128)rpow[sj[x]] * a) % m); nj = (sj[x] + j) % k; }        /* s g */
-                        else { long ij = (k - sj[x]) % k; na = (long)((__int128)rpow[ij] * (((a - sa[x]) % m + m) % m) % m); nj = (j - sj[x] + k) % k; } /* s^-1 h */
+                        if (side == 0) { na = (long)((sa[x] + (unsigned long)rpow[sj[x]] * a) % m); nj = (sj[x] + j) % k; }        /* s g */
+                        else { long ij = (k - sj[x]) % k; na = (long)((unsigned long)rpow[ij] * (((a - sa[x]) % m + m) % m) % m); nj = (j - sj[x] + k) % k; } /* s^-1 h */
                         long h = nj * m + na;
                         if (!getb(vis[to], h) && !getb(nxt, h)) { setb(nxt, h); added++; }
                     } } }

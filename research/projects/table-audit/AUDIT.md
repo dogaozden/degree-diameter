@@ -234,6 +234,11 @@ left. Work in `omega/` (code and NOTES.md), `lit/LITERATURE2.md`, `checks/`.
   5.6n (5), 4.3n (7), 3.7n (9), 3.1n (13), with n the number of targets (omega/NOTES.md). For a random labelling a
   target is missed with probability about e^(−ratio), which matches the far-pair counts above and explains why q = 3
   was easy and q ≥ 4 is not.
+- A first-moment estimate (omega/NOTES.md; heuristic, not a proof): with E[F] the mean number of far pairs of a
+  random labelling and (n!)^(10α−1) labellings, exp(ln #labellings − E[F]) is e^(+50,000) at q = 3 but e^(−400,000)
+  at q = 4 and e^(−6.4·10⁸) at q = 7. Random-like labellings should therefore not exist at the table's q; only a
+  structured one could work. research/frontier/SIZE_LAW.md finds the same for Haar graphs at (10,8), (12,8), (14,8),
+  (16,8).
 - Verdict: the six D = 8 values have no checked graph. The construction can work in principle (q ≤ 3), but whether
   any labelling works at q = 7..13 is open; it would need a structured labelling that nobody has described.
 
