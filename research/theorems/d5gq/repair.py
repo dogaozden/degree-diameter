@@ -47,7 +47,8 @@ def brute_bad(G, tj, tj2, M, R, D=None):
 
 
 def exact_conditions(G, tj, tj2, M, R):
-    """(E1): no A(target)-element has all its incident elements in M(R).
+    """(E1): not both: some B(source) element has all its incident elements in R, and some A(target) element has all
+    its incident elements in M(R).
     (E2): for x in R, {M(a): a in Gamma2(x) minus R} covers A(target) (each A(target) element incident with one).
     (E3): for x in R, {a not in R: M(a) in Gamma2(M(x))} covers B(source).
     Returns (ok, list of failures)."""
@@ -65,12 +66,17 @@ def exact_conditions(G, tj, tj2, M, R):
     Rl = sorted(R)
     if Rl:
         MR[M[Rl]] = True
-    # (E1)
+    # (E1): fails only if some B(source) element has all its neighbours in R AND some A(target) element has all its
+    # neighbours in M(R)  (then that pair has no path of length <= 5 inside the two levels)
     cnt = inc_dst.astype(np.int32).T @ MR.astype(np.int32)      # for each A(target) element: # incident in M(R)
     deg = inc_dst.sum(axis=0)
-    bad1 = np.nonzero(cnt >= deg)[0]
-    if len(bad1):
-        fails.append(('E1', len(bad1)))
+    Rmask = np.zeros(len(M), dtype=bool)
+    if Rl:
+        Rmask[Rl] = True
+    cntR = inc_src.astype(np.int32).T @ Rmask.astype(np.int32)  # for each B(source) element: # incident in R
+    degR = inc_src.sum(axis=0)
+    if (cnt >= deg).any() and (cntR >= degR).any():
+        fails.append(('E1', int((cnt >= deg).sum()), int((cntR >= degR).sum())))
     notR = np.ones(len(M), dtype=bool)
     if Rl:
         notR[Rl] = False

@@ -71,6 +71,14 @@ def main():
             R[(u, v)] = set(pspread)
         else:
             R[(u, v)] = set()
+            if os.environ.get('LD', '0') == '1':
+                # two-point local duality (Proposition 6.4): H->H on G (points -> lines), D->D on W(q) = G^D
+                from localdual import local_duality_pair, pick_pair
+                Hq = G if types[u] == 'H' else Wq
+                avoid_a = ovoid if types[u] == 'H' else pspread
+                x, y, l, m = pick_pair(Hq, avoid_pts=avoid_a)
+                M[(u, v)] = local_duality_pair(Hq, x, y, l, m)
+                R[(u, v)] = {x, y}
     Aslots = {j: [] for j in range(L)}; Bslots = {j: [] for j in range(L)}
     for (u, v) in arcs:
         for a in sorted(R[(u, v)]):

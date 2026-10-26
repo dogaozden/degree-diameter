@@ -59,3 +59,24 @@ for q in (2, 3, 4, 5):
     log('ThmB/ThmE', G.name, '30 trials: brute force == (E1)-(E3); friendly identity repaired <=> partial ovoid: ok')
 
 open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test_basic_out.txt'), 'w').write('\n'.join(out) + '\n')
+
+# Theorem E with freed sets containing whole lines / pencils (tests the corrected (E1))
+for q in (2, 3):
+    G = W(q); D = full_dist(G); agree = 0; kinds_seen = set()
+    for trial in range(300):
+        Mr = random_bijection(G.np, rng)
+        R = set(G.lines[rng.randrange(G.nl)])          # a whole line
+        if trial % 3 == 0:
+            Mi = [0] * G.np
+            for a, b in enumerate(Mr): Mi[b] = a
+            v = rng.randrange(G.np)                      # make all lines through v images of freed points
+            R |= {Mi[l] for l in G.plines[v]}
+        if trial % 2 == 0:
+            R |= set(rng.sample(range(G.np), 2))
+        bb = brute_bad(G, 'H', 'H', Mr, R, D)
+        ok, f = exact_conditions(G, 'H', 'H', Mr, R)
+        assert (bb == 0) == ok, (q, trial, bb, f)
+        kinds_seen |= {x[0] for x in f}
+        agree += 1
+    log('ThmE (whole lines in R)', G.name, agree, 'trials agree; failure types seen', sorted(kinds_seen))
+open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test_basic_out.txt'), 'w').write('\n'.join(out) + '\n')
