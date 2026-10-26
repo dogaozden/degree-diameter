@@ -51,29 +51,30 @@ $(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$ (§16
 
 **New record.** $n_b(13,5)\ge 11{,}627$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
 $Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 57 lines with 14 concurrent
-pairs freed on five more, two-point local dualities on the other eleven, $86+61$ hubs (Corollary 11.1). It was checked by a
+pairs freed on five more, two-point local dualities on the other eleven, $86+61$ hubs (§11). It was checked by a
 breadth-first search from every vertex (§15).
 
 **Theorems.**
 
-- **Theorem A** (§2; the construction is the table's): any typing, any bijections: diameter $\le 5$.
-- **Theorem 3.5** (assembly): if every transition is *repaired* and same-colour hubs are within distance 4, then
+- **Theorem A** (§2; these graphs have the orders of the table values): any typing, any bijections: diameter $\le 5$.
+- **Theorems 3.5, 3.6** (assembly): if every transition is *repaired* (or, more generally, every two levels are within
+  distance 5 of each other) and same-colour hubs are within distance 4, then
   $n_b(q+1+r,5)\ge (2r+1)\cdot 2N + K_{\mathcal A}+K_{\mathcal B}$.
-- **Theorem E** (§4): a transition with matching $M$ and freed set $R$ is repaired **if and only if** three covering
-  conditions (E1)–(E3) hold. This is new compared with the $D=7$ note, where only sufficient conditions were given.
+- **Theorem E** (§4): a transition with matching $M$ and freed set $R$ is repaired **if and only if** two covering
+  conditions (E2), (E3) hold. This is new compared with the $D=7$ note, where only sufficient conditions were given.
 - **Theorem B** (§5): a transition whose matching extends to an automorphism (the identity between a quadrangle and its
   dual, or a duality) is repaired if and only if its freed set is a **partial ovoid** (resp. partial spread). The
   "segment sets" of the hexagon do not survive at $D=5$.
 - **Theorem C** (§6): a local duality on a non-collinear freed set repairs a transition; at $D=5$ the condition on
-  $M(R)$ is not needed. **Corollary 6.3**: for $q$ odd, a local duality between $Q(4,q)$ and itself (or $W(q)$ and
+  $M(R)$ is not needed. **Corollary 6.2**: for $q$ odd, a local duality between $Q(4,q)$ and itself (or $W(q)$ and
   itself) exists on at most **two** points, because point triads of $Q(4,q)$ have 0 or 2 centres and line triads 1 or
   $q+1$. **Proposition 6.4**: two points always work.
 - **Proposition 7.2** (§7): freed lines may come in concurrent pairs if the hubs at their slots sit at the ovoid point
   of the partner line.
-- **Families** (§10), valid for every $q$, with explicit sets and explicit hub graphs, e.g. for $q$ odd
-  $n_b(q+4,5)\ge 14N(q)+K_{\mathcal A}+K_{\mathcal B}$ with $K_{\mathcal B}$, $K_{\mathcal A}$ given by
-  explicit sets of sizes $\min(q^2+5,\,6q)$ and $3q+3$; these alone exceed the 2013 table in the cells
-  $(10,5)$–$(15,5)$ (§14).
+- **Families** (§10, Corollaries 10.1–10.4), valid for every $q$, with explicit sets and explicit hub graphs. For
+  example, for $q$ odd, $q\ge 5$: $n_b(q+4,5)\ge 14N(q)+K_{\mathcal A}+K_{\mathcal B}$, where the explicit sets allow
+  up to $\min(q^2+5,\,6q)$ and $3q+3$ hubs and the explicit hub graphs of Lemma 9.1 decide how many are used. With
+  those hub graphs the families exceed the 2013 table in the cells $(10,5)$–$(15,5)$ (§14).
 
 **What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts and
 route-chart lifts) in $(10,5)$, $(11,5)$, $(12,5)$, $(14,5)$, $(15,5)$, $(16,5)$, and far below at $\Delta\le 9$. At
@@ -181,8 +182,8 @@ for every $q$ and a spread iff $q$ is even [PT, 3.4.1, 3.4.2].
 [PT, 3.3.1]. In a GQ of order $(s,s)$, a point $x$ is regular iff every triad containing $x$ has 1 or $s+1$ centres,
 and antiregular iff every such triad has 0 or 2 centres [PT, 1.3.6]. So for $q$ odd: **triads of points of $Q(4,q)$
 have 0 or 2 centres; triads of lines of $Q(4,q)$ (= triads of points of $W(q)$) have 1 or $q+1$ centres.**
-(d) (Tallini [Ta91]) A partial ovoid of $W(q)$, $q$ odd, has at most $q^2-q+1$ points. (Klein–Metsch [KM]: a partial
-spread of $Q(4,q)$ with more than $q^2-q+1$ lines is contained in a spread; for $q$ odd there is none.)
+(d) (Tallini [Ta91]) A partial ovoid of $W(q)$, $q$ odd, has at most $q^2-q+1$ points; equivalently a partial spread
+of $Q(4,q)$, $q$ odd, has at most $q^2-q+1$ lines.
 
 *Computer-checked* (research/theorems/d5gq/triads.py, triads_out.txt): on 3,000 random triads each, $W(q)$ shows only
 1 and $q+1$ centres and $Q(4,q)$ only 0 and 2, for $q = 3,5,7$.
@@ -206,7 +207,20 @@ z^\perp\ne 0$ as $z\ne x$. The points are distinct, $3(q-1)+2$ of them. $\square
 (For $q = 3$ the point $(0,z^\perp)$ is not available, and the three orbits with $(x,0)$, $x = (1,-1)$, give 7 points,
 the maximum for $W(3)$; computer-checked for $q = 3,5,7,9,11,13$ with gqlib.) Computer searches find much larger
 partial ovoids for specific $q$ (§10.3): 18 ($q=5$), 33 ($q=7$), 51 ($q=9$), 70 ($q=11$). We know no explicit family
-of order $q^2$ for $q$ odd; the literature has $(q^{3/2}+3q-q^{1/2}+3)/3$ for $q$ an odd square, $3\nmid q$ [CDPS].
+of order $q^2$ for $q$ odd; Ceria, De Beule, Pavese and Smaldore [CDPS] construct large partial ovoids of $W(3,q)$ for
+$q$ an odd square with $3\nmid q$ (we did not compare sizes with ours).
+
+**Lemma 1.4 (an explicit duality of $W(q)$, $q$ even).** For a line $\ell = \langle x,y\rangle$ of $W(q)$ put
+$\psi(\ell) = (p_{01},p_{03},p_{23},p_{12})$ (Plücker coordinates as above), and for a point $x$ let $\varphi(x)$ be
+the set $\{\psi(\ell): x\in\ell\}$. For $q$ even, $\psi$ is a bijection from the lines to the points of $W(q)$,
+each $\varphi(x)$ is a line of $W(q)$, and $x\in\ell\iff\psi(\ell)\in\varphi(x)$; so $(\varphi,\psi)$ is a duality.
+*Proof.* By §1.2, $\ell\mapsto X = (p_{01},p_{23},p_{02},p_{03},p_{12})$ maps the lines of $W(q)$ onto the points of
+$Q(4,q)$: $X_0X_1+X_2^2+X_3X_4 = 0$, and the pencil of lines through $x$ onto a line of $Q(4,q)$. For $q$ even the polar
+form $X_0Y_1+X_1Y_0+X_3Y_4+X_4Y_3$ has radical $\langle e_2\rangle$ (the nucleus), and projecting from $e_2$,
+$X\mapsto(X_0,X_3,X_1,X_4) = \psi(\ell)$, maps $Q(4,q)$ bijectively onto $\mathrm{PG}(3,q)$ and lines of $Q(4,q)$ onto
+lines that are totally isotropic for $y_0y_2'+y_2y_0'+y_1y_3'+y_3y_1'$, which is $w$ in characteristic 2 [PT, 3.2.1].
+Composing gives the claim. $\square$ *Computer-checked* for $q = 2,4,8$ (all incidences); squad card c11 built the same
+duality another way. The image $O_W = \psi(\text{spread of Lemma 1.1})$ is then an ovoid of $W(q)$.
 
 ---
 
@@ -227,8 +241,8 @@ $$N_X(a,j) = \Gamma_1(a)\times\{j\}\cup\{(M_t(a),j'): t = (j\to j')\in T\},\qqua
 N_X(b,j') = \Gamma_1(b)\times\{j'\}\cup\{(M_t^{-1}(b),j): t = (j\to j')\in T\}.$$
 $X$ is bipartite (colours $\mathcal A$, $\mathcal B$), $(s+1+r)$-regular, of order $(2r+1)\cdot 2|P|$.
 
-With all types $H$, one bijection $\sigma:P\to L$ on every arc and $(s,s) = (q,q)$ this is the graph of the 2013 table
-values listed in §0 (two plain matchings over $\mathbb Z_5$, three over $\mathbb Z_7$, four over $\mathbb Z_9$).
+With all types $H$, one bijection $\sigma:P\to L$ on every arc and $(s,s) = (q,q)$ these graphs have the orders of the 2013
+table values listed in §0 (two plain matchings over $\mathbb Z_5$, three over $\mathbb Z_7$, four over $\mathbb Z_9$).
 
 **Theorem A.** For every tournament, typing and choice of bijections, $X$ has diameter at most 5. Precisely: two
 vertices of one level are joined inside the level by a path of length $\le 4$; for every arc $t = (j\to j')$, every
@@ -273,13 +287,14 @@ $N(h) = \{(\omega_j(h),j): j\}\cup N_Y(h)$ and $N(g) = \{(\omega'_j(g),j): j\}\c
 (hubs join the opposite colour), level vertices have degree $\le s+1+r$, hubs $2r+1+\deg_Y$; so the maximum degree
 is $\le s+1+r$ as soon as $Y$ has maximum degree $\le s-r$. The order is $(2r+1)\cdot 2|P|+K_{\mathcal A}+K_{\mathcal B}$.
 
-(A hub must have a neighbour in every level in our constructions; a vertex joined to an $\mathcal A$-vertex of one level
-and a $\mathcal B$-vertex of another would break bipartiteness, as squad card c17 also found by experiment.)
+(In all our constructions every hub has one neighbour in every level; Lemma 3.4 uses this. A hub cannot be joined to an
+$\mathcal A$-vertex of one level and a $\mathcal B$-vertex of another: all $\mathcal A$-vertices have one colour, so this
+would break bipartiteness, as squad card c17 also found by experiment.)
 
-**Lemma 3.2 (one matching edge).** Let $t = (j\to j')$. A path of length $\le 5$ from level $j$ to level $j'$ that uses
+**Lemma 3.2 (one matching edge).** Let $t = (j\to j')$. A simple path of length $\le 5$ from level $j$ to level $j'$ that uses
 only level edges of $j,j'$ and remaining matching edges of $t$ uses exactly one matching edge.
 *Proof.* It uses an odd number of them. With three or more, write the path as
-$(u,j)\leadsto(a_1,j)\to(M(a_1),j')\leadsto(M(a_2),j')\to(a_2,j)\leadsto(a_3,j)\to\cdots$. A shortest such path does
+$(u,j)\leadsto(a_1,j)\to(M(a_1),j')\leadsto(M(a_2),j')\to(a_2,j)\leadsto(a_3,j)\to\cdots$. A simple path does
 not use the same edge twice, so $a_1\ne a_2$ and $a_2\ne a_3$; $M(a_1), M(a_2)$ have the same type, so they are at
 distance $\ge 2$, and so are $a_2,a_3$. The length is then $\ge 3+2+2 = 7$. $\square$
 
@@ -305,14 +320,20 @@ $$n_b(q+1+r,5)\ \ge\ (2r+1)\cdot 2N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
 (HG) holds if $Y$ alone has all same-colour distances $\le 4$ (§9); paths through the levels may also help.
 
+**Theorem 3.6 (assembly, general form).** Theorem 3.5 remains true if (T) is replaced by
+- (T′) for every arc $t = (j\to j')$, every vertex of level $j$ is within distance 5 of every vertex of level $j'$ in
+  $X_R^+$.
+
+*Proof.* The same; (T) implies (T′) because $X_R$ is a subgraph of $X_R^+$. $\square$
+
+We use (T′) for transitions that are repaired only with the help of hubs (§7) or of other levels (§12).
+
 ---
 
 ## 4. Theorem E: the exact criterion
 
 **Theorem E.** Let $t = (j\to j')$ be any transition of a level graph over a GQ of order $(s,s)$, $M = M_t$,
-$R = R_t\subseteq A(\tau_j)$. Then $t$ is repaired if and only if
-- **(E1)** it is not the case that some element of $B(\tau_j)$ has all its incident elements in $R$ *and* some element
-  of $A(\tau_{j'})$ has all its incident elements in $M(R)$;
+$R = R_t\subseteq A(\tau_j)$, $R\ne\emptyset$. Then $t$ is repaired if and only if
 - **(E2)** for every $x\in R$, every element of $A(\tau_{j'})$ is incident with $M(a)$ for some
   $a\in\Gamma_2(x)\smallsetminus R$;
 - **(E3)** for every $x\in R$, every element of $B(\tau_j)$ is incident with some $a\notin R$ such that
@@ -335,7 +356,9 @@ $a\in\Gamma_2(x)\smallsetminus R$ with $M(a)$ incident with $w$; then $d(x,a)+d(
 $b\in\Gamma_1(v)$ has $M^{-1}(b)\notin R$, take $a = M^{-1}(b)$: $d(u,a)\le 3$, total $\le 4$. If some
 $a\in\Gamma_1(u)\smallsetminus R$ exists, $d(M(a),v)\le 3$ gives total $\le 4$. If neither ($\Gamma_1(v)\subseteq M(R)$ and
 $\Gamma_1(u)\subseteq R$), every $a\notin R$ has $d(u,a)\ge 3$ and $d(M(a),v)\ge 3$: the pair fails. So (iv) holds for
-all pairs iff (E1) holds.
+all pairs iff (E1): *it is not the case that some element of $B(\tau_j)$ has all its incident elements in $R$ and some
+element of $A(\tau_{j'})$ has all its incident elements in $M(R)$.* And (E2) implies (E1): if $\Gamma_1(v)\subseteq M(R)$
+for some $v\in A(\tau_{j'})$, no $a\notin R$ has $M(a)$ incident with $v$, so (E2) fails for every $x\in R$.
 
 (v) $u\in B(\tau_j)$, $v\in B(\tau_{j'})$: $d(u,a)$ odd, $d(M(a),v)$ even; total $\le 4$ means $(1,0),(1,2)$ or $(3,0)$.
 If $v\notin M(R)$, $a = M^{-1}(v)$ works ($3+0$). If $v = M(x)$, $x\in R$: $d(M(a),v) = 0$ would force $a = x$, so we
@@ -343,9 +366,11 @@ need $a\in\Gamma_1(u)\smallsetminus R$ with $M(a)\in\Gamma_2(M(x))$; for all $u$
 
 These cases cover all pairs ($u\in A\smallsetminus R$: (i); $u\in R$: (ii),(iii); $u\in B$: (iv),(v)). $\square$
 
-*Computer-checked*: test_basic.py compares (E1)–(E3) (repair.py, `exact_conditions`) with a brute-force evaluation of
+(If $R = \emptyset$ the transition is repaired by Theorem A.)
+
+*Computer-checked*: test_basic.py compares the conditions of Theorem E (repair.py, `exact_conditions`, which also tests (E1)) with a brute-force evaluation of
 (3.1) over all pairs (repair.py, `brute_bad`): 30 random friendly and non-friendly transitions for each $q = 2,3,4,5$,
-and 300 transitions with whole lines and pencils inside $R$ for $q = 2,3$ (every failure type occurs); they agree in
+and 300 transitions with whole lines and pencils inside $R$ for $q = 2,3$ (transitions failing only (E2), only (E3), and both occur); they agree in
 every case.
 
 ---
@@ -365,16 +390,18 @@ $\Gamma_2(x)\smallsetminus R$. By (F4), a line through $x$ contains $s\ge 1$ poi
 through $x$ exactly one, $p_\ell$. If $R\cap\Gamma_2(x) = \emptyset$ every line is covered. If $y\in R\cap\Gamma_2(x)$,
 a line $\ell\ne xy$ through $y$ (it exists, $t\ge 1$) has $p_\ell = y\in R$ and is not covered. So (E2) for all
 $x\in R$ $\iff$ $R$ is non-collinear. (E3) for $x$: $M(a)\in\Gamma_2(M(x))$ iff $a\in\Gamma_2(x)$, so (E3) is the same
-statement. (E1): if $R$ is non-collinear no line has all its $s+1\ge 2$ points in $R$, so the first half of (E1)
-fails and (E1) holds. $\square$
+statement. $\square$
+
+(A friendly transition whose matching is a collineation, restricted to points or to lines, is also automorphic; Theorem B
+covers it too.)
 
 So at $D = 5$ the freed sets of automorphic transitions are exactly the partial ovoids; there is no analogue of the
 hexagon's segment sets (a pair of collinear freed points already breaks the transition). For $W(q)$ and $Q(4,q)$ the
 largest are the ovoids, $q^2+1$ points, when they exist (Lemma 1.2(a)).
 
 *Computer-checked*: test_basic.py, 30 random sets per $q\le 5$ (half partial ovoids, half not): repaired iff partial
-ovoid. Squad card c9 built a three-level graph over $Q(4,5)$ with an 18-line partial spread plus one concurrent line on
-a friendly transition and no hubs: 72 ordered pairs at distance 6, as Theorem B predicts for the two levels.
+ovoid. Squad card c9 built a three-level graph over $Q(4,5)$ with an 18-line partial spread plus one line meeting two of
+its lines on a friendly transition, and no hubs: the graph has diameter 6, as Theorem B predicts for the two levels.
 
 ---
 
@@ -391,8 +418,7 @@ then $t$ is repaired.
 
 *Proof.* (E2) for $x$: by (H1) $\Gamma_2(x)\cap R = \emptyset$, so $\{M(a): a\in\Gamma_2(x)\smallsetminus R\} =
 \Gamma_2(M(x))$ by (H3); every element of the other type is incident with an element of $\Gamma_2(M(x))$ by (F3).
-(E3) for $x$: $\{a\notin R: M(a)\in\Gamma_2(M(x))\} = \Gamma_2(x)$, which meets every element of $B(\tau_j)$ by (F3).
-(E1): by (H1) no element of $B(\tau_j)$ has all its incident elements in $R$. $\square$
+(E3) for $x$: $\{a\notin R: M(a)\in\Gamma_2(M(x))\} = \Gamma_2(x)$, which meets every element of $B(\tau_j)$ by (F3). $\square$
 
 At $D = 7$ the analogous theorem also needed (H2), "$M(R)$ non-concurrent"; at $D = 5$ it follows from (H1), (H3)
 anyway: for $x\ne y\in R$, $M(\{x,y\}^\perp) = \Gamma_2(M(x))\cap\Gamma_2(M(y))$ has $s+1$ elements, which is only
@@ -405,9 +431,13 @@ $M(\Gamma_2(\cdot)) = \Gamma_2(M(\cdot))$ on $R$. $\square$
 
 **Corollary 6.2 ($q$ odd: two points at most).** Let $q$ be odd and let $M: P\to L$ be a bijection of $Q(4,q)$ (or of
 $W(q)$). If $R$ satisfies (H1) and (H3) then $|R|\le 2$.
-*Proof.* Three points of $R$ form a triad of points of $Q(4,q)$, which has 0 or 2 centres (Lemma 1.2(c)); their images
-form a triad of lines of $Q(4,q)$, i.e. a triad of points of $W(q)$, which has 1 or $q+1$ centres. As $q+1\ge 4$, the
-counts never agree, contradicting Proposition 6.1. The same argument with the roles exchanged works for $W(q)$. $\square$
+*Proof.* Three points of $R$ are pairwise non-collinear by (H1), so they form a triad of points of $Q(4,q)$, which has 0
+or 2 centres (Lemma 1.2(c)). Their images are pairwise non-concurrent (remark after Theorem C), so they form a triad of
+lines of $Q(4,q)$; under $Q(4,q)\cong W(q)^D$ this is a triad of points of $W(q)$ whose centres are the lines of $Q(4,q)$
+meeting all three, and it has 1 or $q+1$ centres. As $q+1\ge 4$, the counts never agree, contradicting Proposition 6.1.
+The same argument with the roles of $W(q)$ and $Q(4,q)$ exchanged works for $W(q)$. A $D\to D$ transition over $Q(4,q)$
+is a bijection from the lines to the points of $Q(4,q)$, i.e. from the points to the lines of $W(q)$, and is covered by
+the $W(q)$ case. $\square$
 
 This is the main difference from $D = 7$, where local dualities carried 81 to 768 freed points per transition. For
 $q$ even there is a global duality and Theorem B applies instead.
@@ -423,10 +453,10 @@ $s^2-1$, $s^2-1$, and the same holds for the lines. So the pieces define a bijec
 size, which extends to $P\to L$; (H3) holds by construction. $\square$
 
 The program research/theorems/d5gq/localdual.py builds this $M$ (the "arbitrary" bijections in sorted order) and
-confirms (E1)–(E3) and the brute force for $W(3), Q(4,3), W(5), Q(4,5)$.
+confirms (E2), (E3) and the brute force for $W(3), Q(4,3), W(5), Q(4,5)$.
 
 **Computer-checked 6.5 (Theorem E goes beyond local dualities).** Squad card c4 found, by annealing, a bijection $M$
-of $Q(4,5)$ and a freed set of **three** points that satisfies (E1)–(E3) (research/squads/gqd5-r1/c4/best.json; we
+of $Q(4,5)$ and a freed set of **three** points that satisfies (E2), (E3) (research/squads/gqd5-r1/c4/best.json; we
 re-checked it with `exact_conditions` and `brute_bad`). Its triad has 2 centres and the image triad 1, so it is not a
 local duality. No 4-point set was found ($q = 5$), and a SAT search for 3 points in $Q(4,3)$ did not finish in 600 s.
 
@@ -444,13 +474,21 @@ line meets at most one other line of $T$, its *partner*. For a partner pair $\el
 **Proposition 7.1 (the bad pairs of a partner pair).** Inside levels $j,j'$, the pairs at distance $>5$ are exactly:
 for every partner pair $(\ell,m)$, the pairs $((\ell,j),(p,j'))$ and $((p,j),(\ell,j'))$ with $p\in m\smallsetminus\{z\}$
 (and the same with $\ell,m$ exchanged): $4q$ ordered pairs per partner pair.
-*Proof.* Theorem E with $M = \mathrm{id}$. (E1) holds since no point lies on $q+1\ge 3$ lines of $T$. (E2) for $\ell$:
-a point $v\notin\ell$ lies on exactly one line $\lambda(v)$ meeting $\ell$ (F4 dually), and is covered iff
-$\lambda(v)\notin T$, i.e. $\lambda(v)\ne m$ (the only line of $T$ meeting $\ell$), i.e. $v\notin m\smallsetminus\{z\}$; a
-point $v\in\ell$ lies on $q\ge 2$ lines of $\Gamma_2(\ell)$, at most one of them in $T$. The pairs that fail are
-$((\ell,j),(v,j'))$, $v\in m\smallsetminus\{z\}$, by case (ii) of the proof of Theorem E. (E3) for $\ell$ is the same
-statement for $B(\tau_j) = P$: the pairs $((v,j),(\ell,j'))$, $v\in m\smallsetminus\{z\}$, by case (v). Lines of $T$ without
-partner satisfy (E2), (E3) as in Theorem B. $\square$
+*Proof.* We go through the cases of the proof of Theorem E with $M = \mathrm{id}$ and $R = T$. Case (i) is always fine.
+Case (iv): a point $v$ of level $j'$ lies on $q+1\ge 3$ lines, at most two of them in $T$, so some line through $v$ is
+not in $M(T) = T$. Lines of $T$ without partner: $\Gamma_2(\ell)\cap T = \emptyset$, and cases (ii), (iii), (v) hold
+as in Theorem B. Now let $\ell$ have partner $m$, $z = \ell\cap m$.
+Case (ii), $u = (\ell,j)$ and $v$ a point of level $j'$: a point $v\notin\ell$ lies on exactly one line $\lambda(v)$
+meeting $\ell$ ((F4) dually), and $v$ is incident with an element of $\Gamma_2(\ell)\smallsetminus T$ iff
+$\lambda(v)\ne m$ (the only line of $T$ meeting $\ell$), i.e. iff $v\notin m\smallsetminus\{z\}$; a point $v\in\ell$ lies
+on $q\ge 2$ lines of $\Gamma_2(\ell)$, at most one of them in $T$. So exactly the pairs $((\ell,j),(v,j'))$,
+$v\in m\smallsetminus\{z\}$, fail.
+Case (iii), $u = (\ell,j)$ and $v$ a line of level $j'$: $v$ has a point $w\notin m\smallsetminus\{z\}$ (if $v\ne m$, $v$
+meets $m$ in at most one point; if $v = m$ take $w = z$). By case (ii) some $a\in\Gamma_2(\ell)\smallsetminus T$ is
+incident with $w$, and $d(\ell,a)+d(a,v)\le 2+2$: fine.
+Case (v), $v = (\ell,j')$ and $u$ a point of level $j$: we need a line $a\notin T$ through $u$ meeting $\ell$; by the same
+count this exists iff $u\notin m\smallsetminus\{z\}$. So exactly the pairs $((u,j),(\ell,j'))$, $u\in m\smallsetminus\{z\}$,
+fail. $\square$
 
 **Proposition 7.2 (the hub rule).** Suppose that for every line $\ell\in T$ with partner $m$:
 - the $\mathcal B$-hub $h$ that takes the slot $(\ell,t)$ has its slot in level $j'$ at a point of $m$,
@@ -463,10 +501,12 @@ Then every pair of Proposition 7.1 is at distance $\le 4$ in $X_R^+$.
 $\omega_{j'}(h)\ne p$ (the two points lie on $m$): length $\le 4$. Likewise
 $(\ell,j')\to g\to(\omega'_j(g),j)\to(m,j)\to(p,j)$. $\square$
 
-In our layouts the natural slot on $m$ is the point $o_m$ where the ovoid $O$ (freed on the transition $H\to D$ out of
-level $j'$, and on the $H\to D$ transitions into level $j$) meets $m$; $O$ meets every line exactly once. Requiring
-$z\notin O$ makes $o_m\ne o_\ell$, and lines of $T$ through a common point of $O$ are not partners, so different
-partnered lines ask for different points of $O$. Each such hub must exist, which bounds the number of partnered lines:
+So a transition with a relaxed set is not repaired in the sense of Definition 3.3, but with the hub rule it satisfies
+(T′) of Theorem 3.6. In our layouts the natural slot on $m$ is the point $o_m$ where the ovoid $O$ (freed on the
+transition $H\to D$ out of level $j'$, and on the $H\to D$ transitions into level $j$) meets $m$; $O$ meets every line
+exactly once. Distinct partnered lines $m\ne m'$ ask for distinct points: if $o_m = o_{m'}$, then $m$ and $m'$ meet in a
+point of $O$, so they are partners with meeting point in $O$. We therefore require $z\notin O$ for every partner pair
+(this is needed only so that the slots exist, not for Proposition 7.2). Each such hub must exist, which bounds the number of partnered lines:
 every partnered line uses one $\mathcal B$-hub slot per transition and one $\mathcal A$-hub (which can serve all
 transitions out of level $j$ at once, since they all ask for $o_m$ in level $j$). In the $(13,5)$ graph this allows 14
 partner pairs (§11).
@@ -488,10 +528,12 @@ $K_{\mathcal A}\le\min_j\beta_j$. Over $Q(4,q)$, $q$ odd, write $a$ for the size
 transitions (points of $Q(4,q)$: an ovoid, $a = q^2+1$), $b$ for $D\to H$ (lines of $Q(4,q)$), $c$ for non-friendly
 transitions ($c = 2$ by Proposition 6.4, $c\le 2$ for local dualities by Corollary 6.2).
 
+Below $a\ge b\ge c\ge 0$.
+
 **Proposition 8.1 (seven levels).** For the rotational tournament on $\mathbb Z_7$ ($j\to j+1,j+2,j+3$) with types
 $HHHDHHD$:
 $$\alpha = (a+2c,\ a+2c,\ a+2c,\ 2b+c,\ a+2c,\ a+2c,\ 3b),\qquad \beta = (b+2c,\ b+2c,\ b+2c,\ 3a,\ b+2c,\ b+2c,\ 2a+c).$$
-So $\min\alpha = \min(a+2c,2b+c,3b)$ and $\min\beta = b+2c$; for $a+c\le 2b$, $K_{\mathcal A}+K_{\mathcal B}\le a+b+4c$.
+So $\min\alpha = \min(a+2c,2b+c,3b)$ and $\min\beta = b+2c$ (as $b+c\le 2a$); for $a+c\le 2b$, $K_{\mathcal A}+K_{\mathcal B}\le a+b+4c$.
 *Proof.* Direct count: level 0 ($H$) has arcs to 1 ($H$), 2 ($H$), 3 ($D$), so $\alpha_0 = c+c+a$; level 3 ($D$) to
 4, 5 ($H$), 6 ($D$): $b+b+c$; level 6 ($D$) to 0, 1, 2 ($H$): $3b$; and similarly for the others and for incoming arcs.
 $\square$
@@ -503,7 +545,12 @@ nine levels $4b+4c$ (exhaustive over the 15 isomorphism classes); for 11 and 13 
 $\min(2a+2b+6c,5b+5c)$ and $6b+6c$ (lower bounds only).
 
 **Proposition 8.2 (five levels).** Rotational tournament on $\mathbb Z_5$, types $HHDHD$: $\alpha = (a+c, a+c, b+c,
-a+c, 2b)$, $\beta = (b+c, b+c, 2a, b+c, a+c)$, so $\min\alpha = \min\beta = b+c$ when $b\le a$. (Direct count.)
+a+c, 2b)$, $\beta = (b+c, b+c, 2a, b+c, a+c)$, so $\min\alpha = \min\beta = b+c$. (Direct count.)
+
+**Proposition 8.3 (nine levels).** Rotational tournament on $\mathbb Z_9$ ($j\to j+1,\dots,j+4$), types $HHHHDHHHD$:
+$$\alpha = (a+3c,\,a+3c,\,a+3c,\,a+3c,\,3b+c,\,a+3c,\,a+3c,\,a+3c,\,4b),\qquad
+\beta = (b+3c,\,b+3c,\,b+3c,\,b+3c,\,4a,\,b+3c,\,b+3c,\,b+3c,\,3a+c),$$
+so $\min\alpha = \min(a+3c,3b+c)$ and $\min\beta = b+3c$. (Direct count; also computed by layouts.py.)
 
 With three levels some level has no friendly outgoing arc, so $K_{\mathcal A},K_{\mathcal B}\le c$.
 
@@ -521,7 +568,7 @@ If $Y$ is such a graph with $\delta\le q-r$, both conditions of Theorem 3.5 on $
 
 **Lemma 9.1 (explicit hub graphs).** $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};\delta)$ exists in each of the
 following cases ($s$ a prime power):
-- (Y0) $K_{\mathcal B},K_{\mathcal A}\le\delta$ (complete bipartite graph);
+- (Y0) $1\le K_{\mathcal B},K_{\mathcal A}\le\delta$ (complete bipartite graph);
 - (Y1) $s+1\le\delta$ and $s^2+s+1\le K_{\mathcal B},K_{\mathcal A}\le(s^2+s+1)(\delta-s)$;
 - (Y2) $s+1\le\delta$ and $N(s)\le K_{\mathcal B},K_{\mathcal A}\le N(s)+(s+1)(\delta-s-1)$;
 - (Y3) $K_{\mathcal B} = K_{\mathcal A} = (2r'+1)N(s)$ with $s+1+r'\le\delta$.
@@ -531,13 +578,14 @@ $\mathcal A$; diameter 3, same-colour distance 2) with pendant vertices: up to $
 on each line and new $\mathcal A$-vertices on each point. A pendant $p$ on $c$ and a core vertex $x$ of the colour of
 $p$: $c$ and $x$ have different colours, $d(c,x)\le 3$, so $d(p,x)\le 4$. Two pendants of one colour hang on core
 vertices of one colour, at distance $\le 2$: $d\le 4$. (Y2): the incidence graph of $W(s)$ (same-colour distance
-$\le 4$, (Y1)) with up to $\delta-s-1$ pendant $\mathcal B$-vertices on each of the $s+1$ lines through a fixed point
+$\le 4$, fact (F1)) with up to $\delta-s-1$ pendant $\mathcal B$-vertices on each of the $s+1$ lines through a fixed point
 $z_0$ and pendant $\mathcal A$-vertices on each of the $s+1$ points of a fixed line $m_0$: a pendant on a line $c$ and a
 core point are within $1+3$; two pendants on lines through $z_0$ within $1+2+1$; dually. (Y3): the level graph of
 Theorem A over $W(s)$ with $2r'+1$ levels has degree $s+1+r'$ and diameter 5, so same-colour distance $\le 4$. $\square$
 
 Squad card c10 (research/squads/gqd5-r1/c10/table.md) tabulated the largest explicit balanced sizes (5, 15, 45, 120,
-255, 468, 780, 1200, 2000, 2925, 4100 for $\delta = 2,\dots,12$, from (F3)), and found that random
+255, 468, 780, 1200, 2000, 2925, 4100 for $\delta = 2,\dots,12$; for $\delta = 3$ from (Y2), for $\delta\ge 4$ from (Y3), and
+for $\delta = 2$ the 10-cycle, which is not in Lemma 9.1), and found that random
 $\delta$-regular bipartite graphs satisfy the condition up to about 271 vertices per colour at $\delta = 8$.
 Squad card r2c9 (research/squads/gqd5-r2/c9/construction.md, gen_hubs.py) extends (Y1), (Y2) by joining several
 $\mathrm{PG}(2,s)$ cores: every balanced size $7\le K\le 48$ at $\delta = 6$ and $7\le K\le 153$ at $\delta = 8$ is
@@ -553,24 +601,28 @@ and check the whole graph.
 All ingredients below are explicit: the spread of Lemma 1.1 (an ovoid of $Q(4,q)$), the partial ovoid of Lemma 1.3,
 the local dualities of Proposition 6.4, the hub graphs of Lemma 9.1, and for $q$ even a duality of $W(q)$.
 
-**Corollary 10.1 ($q$ even, $1\le r\le q-1$).** Let all levels have type $H$ over $W(q)$, $M_t = \varphi|_P$ for a
-duality $\varphi$, and $R_t = O_W$ an ovoid of $W(q)$ on every arc. Then for any $K_{\mathcal B},K_{\mathcal A}\le
+**Corollary 10.1 ($q$ even, $1\le r\le q-1$).** Let all levels have type $H$ over $W(q)$, $M_t = \varphi|_P$ for the
+duality $\varphi$ of Lemma 1.4, and $R_t = O_W$ the ovoid of Lemma 1.4 on every arc. Then for any $K_{\mathcal B},K_{\mathcal A}\le
 r(q^2+1)$ for which an $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};q-r)$ exists (Lemma 9.1),
 $$n_b(q+1+r,5)\ \ge\ (2r+1)\cdot 2N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 *Proof.* Theorem B repairs every transition; Theorem 3.5 with $Y$ the hub graph. $\square$
 
-**Corollary 10.2 ($q$ odd, five levels).** Types $HHDHD$ over $Q(4,q)$ (Proposition 8.2) with the ovoid $O$ on $H\to
+**Corollary 10.2 ($q$ odd, $q\ge 5$, five levels).** Types $HHDHD$ over $Q(4,q)$ (Proposition 8.2) with the ovoid $O$ on $H\to
 D$, the lines of $Q(4,q)$ corresponding to the points of Lemma 1.3 on $D\to H$ ($b = 3q-1$, $q\ge 5$), Proposition 6.4
 on the non-friendly arcs: for $K_{\mathcal A},K_{\mathcal B}\le 3q+1$ with an $\mathrm{HG}_5(K_{\mathcal B},
 K_{\mathcal A};q-2)$,
 $$n_b(q+3,5)\ \ge\ 10N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
-**Corollary 10.3 ($q$ odd, seven levels).** Types $HHHDHHD$ (Proposition 8.1), same ingredients: for
+**Corollary 10.3 ($q$ odd, $q\ge 5$, seven levels).** Types $HHHDHHD$ (Proposition 8.1), same ingredients: for
 $K_{\mathcal B}\le\min(q^2+5,\,6q)$, $K_{\mathcal A}\le 3q+3$ with an $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};q-3)$,
 $$n_b(q+4,5)\ \ge\ 14N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
+**Corollary 10.4 ($q$ odd, $q\ge 5$, nine levels).** Types $HHHHDHHHD$ (Proposition 8.3), same ingredients: for
+$K_{\mathcal B}\le\min(q^2+7,\,9q-1)$, $K_{\mathcal A}\le 3q+5$ with an $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};q-4)$,
+$$n_b(q+5,5)\ \ge\ 18N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
+
 *Proofs.* Theorems B (friendly arcs: the ovoid is a partial ovoid, the set of Lemma 1.3 gives a partial spread of
-$Q(4,q)$) and C/Proposition 6.4 (non-friendly arcs) repair every transition; slot counts from Propositions 8.1–8.2
+$Q(4,q)$) and C/Proposition 6.4 (non-friendly arcs) repair every transition; slot counts from Propositions 8.1–8.3
 with $a = q^2+1$, $b = 3q-1$, $c = 2$; Theorem 3.5. $\square$
 
 **10.3 With computer-found sets.** Replacing $b$ by the size of a computer-found partial ovoid of $W(q)$ (Lemma 1.2(d)
@@ -582,7 +634,7 @@ search all stop at 50–51), 70 ($q=11$; tabu search; 68 from unions of orbits).
 
 ## 11. The $(13,5)$ record graph
 
-**Corollary 11.1.** $n_b(13,5)\ge 11{,}627$.
+**Computer-checked 11.1.** $n_b(13,5)\ge 11{,}627$.
 
 *Construction* ($q = 9$, $r = 3$; research/theorems/d5gq/build_relaxed.py; solution file
 research/theorems/d5gq/graphs/d13D5_q9_relaxed_n11627.json, edges ...n11627.edges.gz).
@@ -601,8 +653,9 @@ research/theorems/d5gq/graphs/d13D5_q9_relaxed_n11627.json, edges ...n11627.edge
 - $Y$: 360 edges (`Y`), maximum degree 5 on the $\mathcal B$-side and $6 = q-r$ on the $\mathcal A$-side, found by
   hubopt.py.
 
-Every transition is repaired (Theorems B, C and Proposition 7.2), (HG) holds (checked over the whole graph by the
-builder), so Theorem 3.5 gives order $7\cdot 2\cdot 820+86+61 = 11{,}627$, maximum degree $13$. **Computer-checked**:
+Every two vertices in different levels are within distance 5: by Theorems B and C for the $H\to D$ and the non-friendly
+arcs, and by Propositions 7.1 and 7.2 for the $D\to H$ arcs; (HG) holds (checked over the whole graph by the builder);
+so Theorem 3.6 gives order $7\cdot 2\cdot 820+86+61 = 11{,}627$, maximum degree $13$. **Computer-checked**:
 research/lifts/coordinator_check/apsp.c (BFS from every vertex) reports bipartite, degree max 13, diameter 5
 (graphs/d13D5_q9_relaxed_n11627.check.txt). The neighbourhood of every vertex is determined by the solution file
 through Definitions 2.1 and 3.1. The solution file also lists the 820 points of $\mathrm{PG}(3,9)$ and the 820 lines of
@@ -622,7 +675,17 @@ $i$ with two matching edges, e.g. $(x,j)\to(M_{j\to i}(x),i)\to(z,i)\to(M_{i\to 
 - c19: seven levels over $Q(4,5)$, all type $H$: a **random** 16-point freed set on one non-friendly arc, violating
   (E2) and (E3), becomes harmless after annealing the other 20 matchings (apsp VALID, 2,184 vertices); five levels:
   8 points.
-- c6: three levels over $Q(4,3)$: 5 freed points per transition with hubs (10 hubs, valid), all violating (E1)–(E3).
+- c6: three levels over $Q(4,3)$: 5 freed points per transition with hubs (10 hubs, valid), all violating (E2) or (E3).
+- r2c5: the typed seven-level layout of Proposition 8.1 over $Q(4,5)$ with $c$ freed points on **every** $H\to H$ arc,
+  hubs included, annealing matchings, hub slots and $Y$: valid for $c = 2,3,4,5$ (2,236, 2,240, 2,244, 2,248 vertices;
+  research/squads/gqd5-r2/c5/).
+- r2c6: seven levels over $Q(4,7)$, no hubs: 16 freed points on one arc, 8 on each of two arcs, 4 on each of four arcs
+  (all valid).
+- The director's annealer research/theorems/d5gq/wgr.py (targeted swaps in the non-friendly matchings, bad pairs counted
+  by wgr_eval.c on the whole graph with hubs but without $Y$): at $q = 5$ it reaches zero bad pairs with 4 freed points
+  per $H\to H$ arc (the hub graph then fails (HG) because $q-r = 2$); at $q = 9$ with 3 freed points per arc it went from
+  2,690 to under 200 bad pairs in 64,000 swaps (a longer run is in progress; §11 would gain 4 vertices per extra freed
+  point per arc).
 
 *Heuristic* (why this does not scale to $q = 11$): for a freed $x$ and a random $M$, about $N/e$ elements of the other
 level violate (E2). A third level supplies about $(q+1)^2$ length-4 routes per freed element and per route type, so the
@@ -639,7 +702,8 @@ c13; research/squads/gqd5-r1/c12, c13) tried the natural substitutes at the cell
 - $GQ(2,4)$ at $\Delta = 5$: the 27 points already have degree 5, so only the 45 lines (2 spare edges each) can carry
   matchings, and the level structure must be bipartite (no odd cycles of levels). Best valid graph: 144 vertices
   (two levels), against the lab's 354.
-- $AS(q)$ at $\Delta = q+2$: points have degree $q+2$ and lines degree $q$, so only lines have spare edges (two each),
+- $AS(q)$ at $\Delta = q+2$, in the model "copies of the incidence graph of $AS(q)$ plus line-to-line edges, no other
+  vertices": points have degree $q+2$ and lines degree $q$, so only lines have spare edges (two each),
   and line-to-line edges must join copies of opposite types. From a point $p$ of one copy, a point of another copy of the
   same type is at even distance, and a path of length 4 to it must be $p$, a line through $p$, a line of a copy of the
   other type, a line of the target copy, a point on it; so $p$ reaches at most $2(q+2)q$ such points, fewer than the
@@ -669,13 +733,14 @@ At $\Delta\le 9$ (cells $(5,5)$–$(9,5)$) the level graphs have $6N(q)$ or $10N
 $(9,5)$: $6N(7) = 2{,}400$, $(7,5)$: $6N(5) = 936$) and the hubs add only $O(q)$; they are below the 2013 table there,
 and far below the lab's values.
 
-**Why $(15,5)$ is out of reach here.** With seven levels over $Q(4,11)$ we have $K_{\mathcal B} = a+2c = 126$ and
-$K_{\mathcal A} = b+2c$. The lab's value needs $K_{\mathcal A}+K_{\mathcal B}\ge 241$, so $b\ge 111 = q^2-q+1$, which is
-Tallini's bound for partial ovoids of $W(11)$; the best partial ovoid we found has 70 points, and the best relaxed set
-87 (with the hub budget allowing only about 21 partner pairs). By Proposition 8.1 and the computer search of §8, no other
-typing of seven levels does better, and Corollary 6.2 caps local dualities at $c = 2$. So beating $(15,5)$ this way
-needs either a non-friendly transition carrying many freed points (Theorem E allows more than local dualities, §6.5,
-but we found only 3 at $q = 5$), or third-level routing at $q = 11$ (§12).
+**Why we could not reach $(15,5)$** (*Heuristic*; nothing here is proved). With seven levels over $Q(4,11)$,
+$K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2c$. The lab's value needs
+$K_{\mathcal A}+K_{\mathcal B}\ge 241$; with $c = 2$ (local dualities) that means $b\ge 111$. For partial ovoids of
+$W(11)$ this is exactly Tallini's bound $q^2-q+1$, and the best we found has 70 points. Relaxed sets (§7) are not bound by
+Tallini's theorem (a set with $p$ partner pairs has at most $q^2-q+1+p$ lines), but the best we found has 87 lines and the
+hub budget of §7 allows only about 21 partner pairs. By Proposition 8.1 and the computer search of §8 no other typing of
+seven levels does better. What remains: non-friendly transitions carrying many freed points (Theorem E allows more than
+local dualities, §6.5, and third-level routing much more, §12), which we could not make work at $q = 11$ in this session.
 
 ---
 
@@ -720,16 +785,15 @@ bipartite, maximum degree, exact diameter.
 - **The lab's earlier $D = 5$ work.** The doubled-matching lifts of $W(q)$ (research/d10D7/DM_D5.md) give $12N(q)$ at
   degree $q+3$ and are better than everything here for $\Delta = 10, 11, 12, 14$. The previous $(13,5)$ value 11,486 was
   $7\cdot 2N(9)+6$ (research/cell147/).
-- **Finite geometry used.** Payne–Thas [PT] for all facts on quadrangles; Tallini [Ta91] and Klein–Metsch [KM] for
-  partial ovoids/spreads; Ceria–De Beule–Pavese–Smaldore [CDPS] for large partial ovoids of $W(3,q)$.
+- **Finite geometry used.** Payne–Thas [PT] for all facts on quadrangles; Tallini [Ta91] for partial ovoids of $W(q)$,
+  $q$ odd; Ceria–De Beule–Pavese–Smaldore [CDPS] for large partial ovoids of $W(3,q)$. The explicit family of Lemma 1.3
+  was found by squad card r2c10; we did not find it in these sources.
 
 **References.**
 [CDPS] M. Ceria, J. De Beule, F. Pavese, V. Smaldore, *On large partial ovoids of symplectic and Hermitian polar spaces*,
 J. Combin. Des. 31 (2023) 5–22, arXiv:2203.04553.
 [De85] C. Delorme, *Grands graphes de degré et diamètre donnés*, European J. Combin. 6 (1985) 291–302.
 [GF85] J. Gómez, M. A. Fiol, *Dense compound graphs*, Ars Combin. 20-A (1985) 211–237.
-[KM] A. Klein, K. Metsch, results on partial spreads of $Q(4,q)$ as quoted in the survey of De Beule, Klein, Metsch,
-Storme, *Partial ovoids and partial spreads of classical finite polar spaces*, Serdica Math. J. 34 (2008).
 [MS13] M. Miller, J. Širáň, *Moore graphs and beyond: a survey of the degree/diameter problem*, Electron. J. Combin.
 DS14v2 (2013).
 [PT] S. E. Payne, J. A. Thas, *Finite Generalized Quadrangles*, 2nd ed., EMS, 2009.

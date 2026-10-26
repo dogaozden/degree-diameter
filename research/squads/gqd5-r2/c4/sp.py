@@ -97,7 +97,7 @@ def cycles(p):
         if seen[i]: continue
         cyc = []; j = i
         while not seen[j]:
-            seen[j] = True; cyc.append(j); j = p[j]
+            seen[j] = True; cyc.append(int(j)); j = p[j]
         out.append(cyc)
     return out
 
