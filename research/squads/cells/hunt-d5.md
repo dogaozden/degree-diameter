@@ -29,10 +29,11 @@ Certificates are in `research/squads/hunt-d5/certs/` (README there: method, size
   our 352-vertex graph; coverage checked group by group across the director's and the cards' logs). The squads' lifts of
   small bases stayed at cost ≥ 12. So a (5,5) Haar graph above 2·192 vertices needs a group of order ≥ 256 (where the
   size law already gives mu ≈ 67) or a non-Haar construction.
-- **(6,5)**: no Haar graph for **every group of order 351** (all 14), SmallGroup(343,4), (355,1) = C71 ⋊ C5,
-  (357,1) = C17 × (C7 ⋊ C3), (360,51) = C3 × SL(2,5), (360,88) and (360,136) (`haar5 complete` / `haar5 cert`,
-  orbit-rank normalization). These are all the groups that reached cost ≤ 6 in the (6,5) screens (355/1, 351/5 and
-  360/51 had cost 2; 360/136 had cost 4 in 31 of 31 seeds, each a different S).
+- **(6,5): no Haar graph for any group of order 343–351 or 353–359** (75 groups, `haar5 cert`, orbit-rank
+  normalization, exact for cost 0), nor for SmallGroup(360,51) = C3 × SL(2,5), (360,88) and (360,136). So a (6,5) Haar
+  graph above the published 684 = 2·342 needs a group of order 352 or ≥ 360. Every group that reached cost ≤ 6 in the
+  (6,5) screens is among these (355/1, 351/5 and 360/51 had cost 2; 360/136 had cost 4 in 31 of 31 seeds, each a
+  different S).
 - **(7,5)**: no Haar graph for SmallGroup(609,1) = C3 × (C29 ⋊ C7), (610,2) = C2 × (C61 ⋊ C5), (615,1) =
   C3 × (C41 ⋊ C5), (618,1) = C103 ⋊ C6, (618,2) = C2 × (C103 ⋊ C3) and (610,1) = C61 ⋊ C10: complete coset-pattern
   searches (next item; 2.2·10¹⁰, 7.6·10⁹, 1.3·10¹⁰, 5.0·10⁹, 5.0·10⁹ and 7.6·10⁹ sets). These are the groups with the best near
@@ -99,4 +100,17 @@ squads found the right groups (screens), the director's farms and exact tools cl
 
 ## End-of-job note
 
-[to be filled at the end]
+Stopped at 17:50 UTC (of the 6 hours) because every lead these methods produced has been settled:
+
+- (9,5): 2,758 is the result. Larger orders: the best coset patterns for N ≥ 1380 have mu_J ≥ 49.6 (1395) against 46.3
+  for the record group; farms there gave cost 4 at best (about 100 seeds).
+- (7,5): the six groups of order 609–618 with cost ≤ 4 or a good pattern spread are proved empty; the other groups of
+  order 606–618 stay at cost ≥ 7, and larger orders have higher mu. A larger (7,5) graph from these methods would need
+  a group we did not reach or a non-Haar construction; small-base lifts stayed at cost ≥ 26.
+- (5,5): Haar graphs are exhausted for orders 193–255; order 256 (56,092 groups) is out of reach for exhaustive search
+  and mu ≈ 68 there. Lifts of 2+2, 3+3, 4+4 and K_{5,5} bases stayed at cost ≥ 12.
+- (6,5): orders 343–359 except 352 are exhausted; open: 352 (195 groups) and 360 (162 groups, three done), about
+  1–2 CPU-minutes per group with `tools/cert_queue.sh 6 LOG "N I" ...`.
+
+Reusable: `haar5 prod` with `tools/jpatterns.py` / `tools/jexact.py` turns any (Z_p ⋊ Z_k) × Z_n with moderate p and
+few cosets into a complete answer (about 4·10⁶ sets/s); `tools/jcheck.py` is its completeness test.
