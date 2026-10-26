@@ -47,12 +47,11 @@ $$N = N(q) = (q+1)(q^2+1),$$
 the number of points (and of lines) of a generalized quadrangle of order $(q,q)$. The level graph of §2 with $2r+1$
 levels has order $(2r+1)\cdot 2N(q)$ and degree $q+1+r$. In the 2013 table [MS13, Table 4] the cells $(10,5)$–$(15,5)$
 have exactly this value for some $(q,r)$: $(10,5) = 5\cdot 2N(7)$, $(11,5) = 5\cdot 2N(8)$, $(12,5) = 5\cdot 2N(9)$,
-$(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$ (the CombinatoricsWiki table credits them to
-Delorme, Gómez and Quisquater; §16).
+$(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$ (§16 on their origin).
 
-**New record.** $n_b(13,5)\ge 11{,}626$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
-$Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 56 lines with 14 concurrent
-pairs freed on five more, two-point local dualities on the other eleven, $86+60$ hubs (Corollary 11.1). It was checked by a
+**New record.** $n_b(13,5)\ge 11{,}627$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
+$Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 57 lines with 14 concurrent
+pairs freed on five more, two-point local dualities on the other eleven, $86+61$ hubs (Corollary 11.1). It was checked by a
 breadth-first search from every vertex (§15).
 
 **Theorems.**
@@ -475,7 +474,7 @@ partner pairs (§11).
 In the language of $W(q)$ (lines of $Q(4,q)$ = points of $W(q)$, the ovoid $O$ = the spread of Lemma 1.1), $T$ is a set
 of points of $W(q)$ in which every point is collinear with at most one other, and the line joining a collinear pair is
 not in the spread. *Computer-checked*: research/theorems/d5gq/relaxed.c (annealing) finds such sets of size 58 for
-$q = 9$ (56 with at most 14 pairs) and squad card r2c2 one of size 87 for $q = 11$, against 51 and 70 for partial
+$q = 9$ (57 with at most 14 pairs) and squad card r2c2 one of size 87 for $q = 11$, against 51 and 70 for partial
 ovoids. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
 6 partner pairs, $25+25$ hubs): with the hub rule the graph is valid (1,610 vertices, apsp), with the same sets and a hub
 assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/).
@@ -540,6 +539,9 @@ Theorem A over $W(s)$ with $2r'+1$ levels has degree $s+1+r'$ and diameter 5, so
 Squad card c10 (research/squads/gqd5-r1/c10/table.md) tabulated the largest explicit balanced sizes (5, 15, 45, 120,
 255, 468, 780, 1200, 2000, 2925, 4100 for $\delta = 2,\dots,12$, from (F3)), and found that random
 $\delta$-regular bipartite graphs satisfy the condition up to about 271 vertices per colour at $\delta = 8$.
+Squad card r2c9 (research/squads/gqd5-r2/c9/construction.md, gen_hubs.py) extends (Y1), (Y2) by joining several
+$\mathrm{PG}(2,s)$ cores: every balanced size $7\le K\le 48$ at $\delta = 6$ and $7\le K\le 153$ at $\delta = 8$ is
+realised (some members found by a seeded search; each checked by BFS) (*Computer-checked*).
 For the records we use a computer-found $Y$ (random degrees, then double-edge swaps that minimise the number of
 same-colour hub pairs at distance $>4$ in $X_R^+$, paths through the levels counted; research/theorems/d5gq/hubopt.py),
 and check the whole graph.
@@ -580,35 +582,35 @@ search all stop at 50–51), 70 ($q=11$; tabu search; 68 from unions of orbits).
 
 ## 11. The $(13,5)$ record graph
 
-**Corollary 11.1.** $n_b(13,5)\ge 11{,}626$.
+**Corollary 11.1.** $n_b(13,5)\ge 11{,}627$.
 
 *Construction* ($q = 9$, $r = 3$; research/theorems/d5gq/build_relaxed.py; solution file
-research/theorems/d5gq/graphs/d13D5_q9_relaxed_n11626.json, edges ...n11626.edges.gz).
+research/theorems/d5gq/graphs/d13D5_q9_relaxed_n11627.json, edges ...n11627.edges.gz).
 - $G = Q(4,9)$ as `W(9).dual()` (§1.2); levels $\mathbb Z_7$, rotational tournament, types $HHHDHHD$.
 - $H\to D$ arcs ($0\to3$, $1\to3$, $2\to3$, $4\to6$, $5\to6$): $M = \mathrm{id}$, $R = O$, the ovoid of Lemma 1.1
   (82 points).
-- $D\to H$ arcs ($3\to4$, $3\to5$, $6\to0$, $6\to1$, $6\to2$): $M = \mathrm{id}$, $R = T$, a relaxed set of 56 lines
-  with 14 partner pairs (Proposition 7.2), listed in the solution file (`T`; also graphs/W9_relaxed_set_56.json as
+- $D\to H$ arcs ($3\to4$, $3\to5$, $6\to0$, $6\to1$, $6\to2$): $M = \mathrm{id}$, $R = T$, a relaxed set of 57 lines
+  with 14 partner pairs (Proposition 7.2), listed in the solution file (`T`; also graphs/W9_relaxed_set_57.json as
   points of $W(9)$).
 - The eleven non-friendly arcs ($0\to1$, $0\to2$, $1\to2$, $1\to4$, $2\to4$, $2\to5$, $4\to5$, $4\to0$, $5\to0$,
   $5\to1$ of type $H\to H$, and $3\to6$ of type $D\to D$): $M$ = the local duality of Proposition 6.4 on a
   two-element freed set, given in full in the solution file (`nonfriendly`).
-- Slots: $\alpha = (86,86,86,114,86,86,168)$, $\beta = (60,60,60,246,60,60,166)$; $K_{\mathcal B} = 86$,
-  $K_{\mathcal A} = 60$ hubs; the slot of every hub in every level is listed (`Bhub_slots`, `Ahub_slots`, as triples
+- Slots: $\alpha = (86,86,86,116,86,86,171)$, $\beta = (61,61,61,246,61,61,166)$; $K_{\mathcal B} = 86$,
+  $K_{\mathcal A} = 61$ hubs; the slot of every hub in every level is listed (`Bhub_slots`, `Ahub_slots`, as triples
   (level, element, arc)), chosen so that Proposition 7.2 holds for all 28 partnered lines.
 - $Y$: 360 edges (`Y`), maximum degree 5 on the $\mathcal B$-side and $6 = q-r$ on the $\mathcal A$-side, found by
   hubopt.py.
 
 Every transition is repaired (Theorems B, C and Proposition 7.2), (HG) holds (checked over the whole graph by the
-builder), so Theorem 3.5 gives order $7\cdot 2\cdot 820+86+60 = 11{,}626$, maximum degree $13$. **Computer-checked**:
+builder), so Theorem 3.5 gives order $7\cdot 2\cdot 820+86+61 = 11{,}627$, maximum degree $13$. **Computer-checked**:
 research/lifts/coordinator_check/apsp.c (BFS from every vertex) reports bipartite, degree max 13, diameter 5
-(graphs/d13D5_q9_relaxed_n11626.check.txt). The neighbourhood of every vertex is determined by the solution file
+(graphs/d13D5_q9_relaxed_n11627.check.txt). The neighbourhood of every vertex is determined by the solution file
 through Definitions 2.1 and 3.1. The solution file also lists the 820 points of $\mathrm{PG}(3,9)$ and the 820 lines of
 $W(9)$ explicitly; research/theorems/d5gq/sol2edges.py re-checks that they form $W(9)$, rebuilds the graph from the file
 alone (without the builder's code) and finds exactly the same edge set.
 
-Earlier versions with a 51-point partial ovoid instead of the relaxed set: 11,605 (no local dualities) and 11,621
-(graphs/d13D5_q9_typed_n11621.json).
+Earlier versions: 11,605 and 11,621 with a 51-point partial ovoid instead of the relaxed set (without and with the
+local dualities; graphs/d13D5_q9_typed_n11621.json), 11,626 with a 56-line relaxed set.
 
 ---
 
@@ -658,7 +660,7 @@ the lab's value before this note (README, research/RESULTS.md).
 | (10,5) | 4,000 | 4,044 ($q=7$, $r=2$) | 4,062 ($q=7$, $r=2$) | **4,800** | doubled-matching lift of $W(7)$ |
 | (11,5) | 5,850 | 6,090 ($q=8$, $r=2$) | — | **7,020** | doubled-matching lift of $W(8)$ |
 | (12,5) | 8,200 | 8,430 ($q=8$, $r=3$) | — | **9,840** | doubled-matching lift of $W(9)$ |
-| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,626** | 11,486 | — |
+| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,627** | 11,486 | — |
 | (14,5) | 14,760 | 14,812 ($q=9$, $r=4$) | — | **17,568** | doubled-matching lift of $W(11)$ |
 | (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,696 ($q=11$, $r=3$) | **20,736** | route-chart lift |
 | (16,5) | 27,300 | 26,453 ($q=11$, $r=4$) | — | **33,792** | route-chart lift |
@@ -684,7 +686,7 @@ bipartite, maximum degree, exact diameter.
 
 | graph | file (research/theorems/d5gq/) | result |
 |---|---|---|
-| $(13,5)$, $n = 11{,}626$ | graphs/d13D5_q9_relaxed_n11626.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges |
+| $(13,5)$, $n = 11{,}627$ | graphs/d13D5_q9_relaxed_n11627.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges |
 | $(13,5)$, $n = 11{,}621$ | graphs/d13D5_q9_typed_n11621.* (json; rebuild with build_typed.py) | VALID |
 | $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID (beats the table, not the lab) |
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |
@@ -700,9 +702,10 @@ bipartite, maximum degree, exact diameter.
 
 ## 16. Prior art
 
-- **The base graphs.** The cells $(10,5)$–$(15,5)$ of the 2013 table [MS13] are the level graphs of Theorem A; the
-  CombinatoricsWiki table credits them to Delorme, Gómez and Quisquater ("On large bipartite graphs", submitted, not
-  found). Compounds of a bipartite graph with a tournament go back to Gómez and Fiol [GF85]. Delorme [De85] §3 builds
+- **The base graphs.** The values of the cells $(10,5)$–$(15,5)$ of the 2013 table [MS13] are the orders of the level
+  graphs of Theorem A. We could not open the CombinatoricsWiki page to see whom it credits for these $D = 5$ cells (it
+  returned an error on 26 Oct 2026); at $D = 7$ the analogous hexagon cells are credited to Delorme, Gómez and
+  Quisquater ("On large bipartite graphs", submitted, not found), and we assume the same origin here. Compounds of a bipartite graph with a tournament go back to Gómez and Fiol [GF85]. Delorme [De85] §3 builds
   cyclic multi-level graphs from a duality of a quadrangle, and §7–8 duplicates sets of vertices of a quadrangle's
   incidence graph (an ovoid/spread copy at $D = 4$). We claim none of these.
 - **Hubs and deleted matching edges.** R. Rajiv (Zenodo, 30 Sept 2026, doi 10.5281/zenodo.23052995) deletes the edges
