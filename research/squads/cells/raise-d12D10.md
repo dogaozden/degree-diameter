@@ -226,3 +226,31 @@ psl 67×1117) when four of them ran together on 16 GB. The pool now reads `# mem
 cost 3 seen before the solve, while at μ ≈ 28 here the cost stalls at 6–12. The only solve at N ≥ 166.1 M was a group that
 had not been tried before. So new groups are the main source of a solve; repeat seeds on cost-4 groups (psl 109×259) are the
 second.
+
+## Round 3: end of run (stopped 07:20 UTC, six-hour window)
+
+**Record at the end of round 3: 332,797,296 vertices** = 2 · |SL(2,157) × Z_43| (`../../frontier/sols/d12D10_sl_157_43_orb3f0_s4.txt`,
+seed 4). It raised the round 2 record of 332,158,176 by +0.19 %. Checks: haar_sym, `tools/hcsl`, `tools/hc2` (both VALID,
+eccA = eccB = 10). Coordinator re-check pending.
+
+Final batch (all 2400 s): psl 109×259 seed 5 (N 167.69 M): best 6; psl 97×367 seed 5 (167.46 M): best 9. Both not solved.
+Psl 109×259 seed 4 reached cost 4 at 1,773 s and then ended above 0 at 2,400 s; it is the closest unsolved group.
+Queued but never started (pool stopped by `spool_r4/STOP`): psl 151×97 seed 5, psl 109×259 seed 6, psl 103×307 (seed 4 done, cost 9).
+
+**Totals.** About 33 jobs of 2,400 s each on up to 4 cores (3 for part of the run, 2 at the end after three memory kills), so
+roughly 20 core-hours. One solve (sl 157 × Z_43 at 1,553 evals), out of about 33 jobs at N ≥ 166.08 M. Best costs at the end
+of the 2,400 s budget were 4–22; the rest settled at 6–12.
+
+**Why I stopped.** The six-hour window is used. Each further record needs N > 166,398,648 (μ ≈ 28–33 in this window), and
+a solve here took about 1,500 evals while the typical unsolved run stopped at cost 6–12. More seeds would give a few more solves
+at about 1 per 20 core-hours; the next real leads are:
+- a group-independent improvement to the search at μ ≈ 28 (the round 2 notes' RESTART/ORBW variants did not separate
+  clearly from the default here either);
+- more groups above 166.4 M with n ≤ 2000: the orb_screen list (`--nmax 2000`) is nearly exhausted at this μ, so the next
+  window needs n > 2000 or a different automorphism order (k = 5 has |Fix| ≈ q, which costs more per fixed point);
+- prime-power groups now have a checker (`tools/haarcheck_pp.c`), so sl 81 × Z_313, sl 64 × Z_637 and sl 49 × Z_1417 are
+  open to the same queue. Each got one run here (costs 9, 9, 12) and none solved.
+- psl groups with n above ~850 need `# mem=6` and at most 3 concurrent jobs: the cgroup limit killed three of them.
+
+**Checks.** Every record above passed haar_sym's own full diameter check and an independent checker. The prime-power checker
+(`tools/haarcheck_pp.c`) agrees with the prime record and with build_haar2.py on a small GF(8) cell.

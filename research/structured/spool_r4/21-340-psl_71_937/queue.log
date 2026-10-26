@@ -1,1 +1,3 @@
 05:30:34 start d12D10_psl_71_937_orb3f0_s4
+/home/user/degree-diameter/research/structured/tools/orbq.sh: line 33: 15710 Killed                  env ORBIT="$k $m $f" $extra timeout $((secs + 60)) "$BIN" $d $D $secs $seed $K "$sol" $grp > "$log" 2>&1
+05:59:20 done  d12D10_psl_71_937_orb3f0_s4: 
