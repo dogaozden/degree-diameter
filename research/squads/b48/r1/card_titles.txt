@@ -1,0 +1,48 @@
+c01: break the cost-1 wall at order 1,100.
+c02: the k = 20 family at other orders.
+c03: k in {6, 12, 24}
+c04: k in {8, 16, 32} and k in {9, 18, 27, 36}
+c05: prime k >= 5
+c06: non-faithful actions.
+c07: data-mine the scan.
+c08: two-level design.
+c09: orbit sets S = {e, x, a(x), a^2(x)}
+c10: other symmetric sets.
+c11: haar_sym orbit search.
+c12: matrix x cyclic with haar_fast
+c13: affine groups AGL(1,q) x Z_n with haar_fast
+c14: Z_p^2 x| Z_k
+c15: direct products of two non-abelian groups
+c16: smooth orders 1,152 and 1,200 (n = 2,304, 2,400).
+c17: permutation groups.
+c18: 2+2 bases
+c19: 2+2 bases with non-metacyclic groups
+c20: 3+3 bases.
+c21: 4+4 bases with non-abelian groups
+c22: abelian lifts, Exoo/Loz style.
+c23: lifts of PG(2,3)'s incidence graph
+c24: lifts of the GQ(3,3) incidence graph
+c25: lifts of other girth-6 and girth-8 4-regular bipartite graphs with 30..80 vertices
+c26: lifts of small-diameter graphs by small groups.
+c27: big base, tiny group.
+c28: bipartite Cayley graphs Cay(G, {a, a^-1, b, b^-1})
+c29: Cayley graphs with involutions
+c30: canonical double covers.
+c31: grow the 2,184 seed
+c32: coset graphs Cos(G; A, B)
+c33: bi-Cayley with loops.
+c34: a better annealer.
+c35: genetic search over S
+c36: exhaustive over the Z_m-parts.
+c37: wildcard A.
+c38: wildcard B.
+c39: wildcard C.
+c40: incidence structures over GF(3) and GF(4).
+c41: non-bipartite bases with a parity voltage.
+c42: linear groups of triangular / monomial type
+c43: learn from smaller cells.
+c44: semidirect products Z_m x| Q with Q non-cyclic
+c45: small non-abelian group x big cyclic
+c46: anatomy of near misses.
+c47: girth-restricted search.
+c48: wildcard D (non-group).

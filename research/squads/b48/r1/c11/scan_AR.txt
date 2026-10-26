@@ -1,0 +1,24 @@
+== psl 5 x 19 AR=7
+alpha: conj by mat(1,3,3,0) (index 28), z -> 7 z on Z_19
+RANDORB d=4 D=8 group=psl 5 x Z_19 N=1140 k=3 m=1 f=1 fix=2 samples=20000 min=32 p1=32 p10=40 median=148 mean=473.86 mu=64.17
+== psl 5 x 19 AR=11
+alpha: conj by mat(1,3,3,0) (index 28), z -> 11 z on Z_19
+RANDORB d=4 D=8 group=psl 5 x Z_19 N=1140 k=3 m=1 f=1 fix=2 samples=20000 min=32 p1=32 p10=40 median=148 mean=473.86 mu=64.17
+== psl 7 x 7 AR=2
+alpha: conj by mat(0,3,2,1) (index 15), z -> 2 z on Z_7
+RANDORB d=4 D=8 group=psl 7 x Z_7 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=27 p1=27 p10=54 median=1008 mean=643.02 mu=72.30
+== psl 7 x 7 AR=4
+alpha: conj by mat(0,3,2,1) (index 15), z -> 4 z on Z_7
+RANDORB d=4 D=8 group=psl 7 x Z_7 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=27 p1=27 p10=54 median=1008 mean=643.18 mu=72.30
+== pgl 3 x 49 AR=18
+alpha: conj by mat(0,1,2,1) (index 22), z -> 18 z on Z_49
+RANDORB d=4 D=8 group=pgl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=48 p1=48 p10=48 median=785 mean=682.69 mu=72.30
+== pgl 3 x 49 AR=30
+alpha: conj by mat(0,1,2,1) (index 22), z -> 30 z on Z_49
+RANDORB d=4 D=8 group=pgl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=48 p1=48 p10=48 median=785 mean=682.69 mu=72.30
+== sl 3 x 49 AR=18
+alpha: conj by mat(2,2,1,0) (index 22), z -> 18 z on Z_49
+RANDORB d=4 D=8 group=sl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=5 samples=20000 min=430 p1=430 p10=430 median=940 mean=764.97 mu=72.30
+== sl 3 x 49 AR=30
+alpha: conj by mat(2,2,1,0) (index 22), z -> 30 z on Z_49
+RANDORB d=4 D=8 group=sl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=5 samples=20000 min=430 p1=430 p10=430 median=940 mean=764.97 mu=72.30

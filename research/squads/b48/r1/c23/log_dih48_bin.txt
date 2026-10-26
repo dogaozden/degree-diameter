@@ -1,0 +1,30 @@
+group dih48.bin N=96 base b=26 m=52 free=27 bip_base=1 n=2496 start cost=2603
+t=0.0 evals=9 best=2482
+t=0.1 evals=17 best=2145
+t=0.1 evals=25 best=1987
+t=0.1 evals=41 best=1896
+t=0.2 evals=49 best=1757
+t=0.2 evals=65 best=1624
+t=0.5 evals=159 best=1612
+t=0.6 evals=167 best=1389
+t=0.6 evals=190 best=1340
+t=0.9 evals=270 best=1254
+t=1.2 evals=350 best=1251
+t=1.6 evals=501 best=1250
+t=2.0 evals=612 best=1218
+t=2.4 evals=732 best=1164
+t=2.8 evals=850 best=1125
+t=3.3 evals=1002 best=1089
+t=4.8 evals=1460 best=1058
+t=5.8 evals=1754 best=1053
+t=6.6 evals=1982 best=1043
+t=9.0 evals=2692 best=1030
+t=9.6 evals=2899 best=1020
+t=10.8 evals=3304 best=990
+t=13 evals=4055 cur=990 best=990
+t=16.9 evals=5130 best=965
+t=18.5 evals=5613 best=936
+t=26 evals=8115 cur=936 best=936
+t=29.2 evals=9308 best=905
+RESULT d=4 D=8 group=dih48.bin base=pg23.txt n=2496 best=905 evals=10145 time=31.4
+wrote out_dih48_bin.sol and out_dih48_bin.sol.edges (cost 905)

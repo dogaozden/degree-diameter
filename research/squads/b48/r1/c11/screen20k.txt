@@ -1,0 +1,15 @@
+RANDORB d=4 D=8 group=psl 5 x Z_19 N=1140 k=3 m=1 f=1 fix=2 samples=20000 min=32 p1=32 p10=40 median=148 mean=473.86 var=212764.2 mu=64.17 time=0.2
+RANDORB d=4 D=8 group=sl 2 x Z_193 N=1158 k=3 m=1 f=1 fix=5 samples=20000 min=964 p1=964 p10=964 median=1037 mean=1000.55 var=1332.2 mu=68.17 time=0.0
+RANDORB d=4 D=8 group=sl 2 x Z_199 N=1194 k=3 m=1 f=1 fix=5 samples=20000 min=1000 p1=1000 p10=1000 median=1000 mean=1036.42 var=1332.2 mu=76.55 time=0.0
+RANDORB d=4 D=8 group=sl 2 x Z_211 N=1266 k=3 m=1 f=1 fix=5 samples=20000 min=1072 p1=1072 p10=1072 median=1145 mean=1108.53 var=1332.2 mu=94.90 time=0.1
+RANDORB d=4 D=8 group=sl 2 x Z_217 N=1302 k=3 m=1 f=1 fix=5 samples=20000 min=1108 p1=1108 p10=1108 median=1181 mean=1161.44 var=2616.4 mu=104.84 time=0.0
+RANDORB d=4 D=8 group=sl 2 x Z_223 N=1338 k=3 m=1 f=1 fix=5 samples=20000 min=1144 p1=1144 p10=1144 median=1144 mean=1180.23 var=1332.2 mu=115.30 time=0.1
+RANDORB d=4 D=8 group=sl 2 x Z_229 N=1374 k=3 m=1 f=1 fix=5 samples=20000 min=1180 p1=1180 p10=1180 median=1180 mean=1216.23 var=1332.2 mu=126.25 time=0.1
+RANDORB d=4 D=8 group=psl 3 x Z_97 N=1164 k=3 m=1 f=1 fix=2 samples=20000 min=773 p1=773 p10=773 median=773 mean=910.25 var=19087.2 mu=69.53 time=0.1
+RANDORB d=4 D=8 group=psl 3 x Z_103 N=1236 k=3 m=1 f=1 fix=2 samples=20000 min=845 p1=845 p10=845 median=1115 mean=983.85 var=18952.9 mu=87.00 time=0.0
+RANDORB d=4 D=8 group=psl 3 x Z_109 N=1308 k=3 m=1 f=1 fix=2 samples=20000 min=917 p1=917 p10=917 median=1187 mean=1054.11 var=18887.6 mu=106.55 time=0.1
+RANDORB d=4 D=8 group=sl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=5 samples=20000 min=430 p1=430 p10=430 median=940 mean=764.97 var=86376.0 mu=72.30 time=0.1
+RANDORB d=4 D=8 group=pgl 3 x Z_49 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=48 p1=48 p10=48 median=785 mean=682.69 var=169107.0 mu=72.30 time=0.0
+RANDORB d=4 D=8 group=psl 7 x Z_7 N=1176 k=3 m=1 f=1 fix=2 samples=20000 min=27 p1=27 p10=54 median=1008 mean=643.02 var=226385.2 mu=72.30 time=0.2
+RANDORB d=4 D=8 group=sl 11 x Z_1 N=1320 k=3 m=1 f=1 fix=11 samples=20000 min=78 p1=88 p10=103 median=279 mean=548.80 var=219613.7 mu=110.01 time=0.4
+RANDORB d=4 D=8 group=pgl 11 x Z_1 N=1320 k=3 m=1 f=1 fix=11 samples=20000 min=65 p1=65 p10=134 median=709 mean=695.24 var=146169.5 mu=110.01 time=0.6

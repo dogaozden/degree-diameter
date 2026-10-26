@@ -1,0 +1,43 @@
+group cyc:28 N=28 base b=80 m=160 free=81 bip_base=1 n=2240 start cost=4566
+t=0.2 evals=9 best=4536
+t=0.4 evals=25 best=4293
+t=0.4 evals=31 best=3915
+t=0.5 evals=39 best=3808
+t=0.6 evals=47 best=3729
+t=0.6 evals=55 best=3647
+t=0.7 evals=63 best=3592
+t=0.7 evals=71 best=3462
+t=0.8 evals=87 best=3374
+t=0.9 evals=95 best=3200
+t=1.0 evals=103 best=2994
+t=1.1 evals=119 best=2940
+t=1.2 evals=127 best=2864
+t=1.2 evals=135 best=2744
+t=1.3 evals=151 best=2530
+t=1.7 evals=203 best=2476
+t=1.8 evals=216 best=2434
+t=1.9 evals=231 best=2420
+t=1.9 evals=238 best=2384
+t=2.1 evals=254 best=2306
+t=2.3 evals=276 best=2270
+t=2.8 evals=337 best=2258
+t=3.0 evals=353 best=2234
+t=3.0 evals=360 best=2202
+t=3.4 evals=404 best=2182
+t=3.6 evals=419 best=2144
+t=3.9 evals=458 best=2062
+t=4.3 evals=498 best=2038
+t=4.4 evals=514 best=2004
+t=4.9 evals=584 best=2002
+t=5.0 evals=592 best=1992
+t=6.3 evals=787 best=1948
+t=7.0 evals=881 best=1866
+t=7.3 evals=913 best=1864
+t=8.7 evals=1111 best=1856
+t=12.2 evals=1528 best=1826
+t=14.4 evals=1792 best=1766
+t=16 evals=1973 cur=1766 best=1766
+t=17.1 evals=2104 best=1726
+t=22.3 evals=2694 best=1722
+RESULT d=4 D=8 group=cyc:28 base=base80.txt n=2240 best=1722 evals=3948 time=34.3
+wrote l80_cyc_28.sol and l80_cyc_28.sol.edges (cost 1722)
