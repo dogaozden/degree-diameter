@@ -67,3 +67,27 @@ results (10,5) 4,812 (W(7)+1) and (12,5) 9,852 (W(9)+1) in about 10 minutes each
 one pair added to W(8) with the 7,020 sigma anneals to 10 and wpo finishes it in 39 s, while a second pair on any
 solved n = 586 base stays at 150-400.
 
+
+## 2026-10-25 23:40 UTC, job resume4-cell-11-5 (session_01YVUXzZUE2Fjy42D4zug9Gh), goal: structural cost 0 at n = 587 (11,5 ≥ 7,044), round r5-d11D5
+
+Opus first found a structured sigma, sigma = delta o C (the polarity of W(8) after a non-symplectic collineation C of
+PG(3,8)): it makes sigma^-1 of every pencil a PG-line, hence a covering set, so all failures of a switched base are
+local to the switch (research/d11D5/dc/README.md). Two-pair starts dropped from 2,000-5,000 to ~600 (mkdc2.py KS=2).
+Eight cards around that (r5-d11D5/README.md, scoreboard.jsonl; best structural cost at n = 587):
+- c1 plain pipeline on 18 more mkdc2 KS=2 starts: 600 -> 76 (one anneal; no time for wpo).
+- c2 penalised annealer po7R (REF sigma, LAM per deviating point): 68 (LAM 1 then 0.2); LAM 2 keeps the structure
+  (dev 199) but stalls at 144. The penalty trades structure for cost; it does not give both.
+- c3 wpoR (wpo + reference penalty + weight cap) written; only its po7R pre-anneal ran: 98.
+- c4 9-flag regulus pairs and 9-flag + incident pairs under one C: best start 588, annealed 106; not better than mkdc2.
+- c5 the moved points on a hyperbolic line g (the new LINE structured): one pair 196, two pairs 414 -> 176; failures
+  move from the line side to the point side.
+- c6 local search over the free choices of the start (C, p_i, omitted points, sigma partner of x*): 584 -> 306; only
+  the sigma partner of x* and the p_i moves were ever accepted.
+- c7 targeted tabu steepest descent: 604 -> 226 with only 95 sigma values changed (still falling when stopped).
+- **c8 wildcard: the K22 switch** (x*, y* both on two new lines l*, m*, each on 7 old lines delta(R) of a hyperbolic
+  line; sigma = delta o C): start 414, anneal **18**.
+Opus kept c8's design: cold anneal 18 -> 12 (two seeds, same 6 conditions), wpo with LMAX 3000 DECAY 10 (the default
+LMAX 500 drifts up from 12-18) -> 8 -> 2 (one coset-0 demand: a switch line and an old line through its moved point)
+-> 0, nujoint TARGET=1 from a random nu -> 0 violated in 89 s, finish.sh: **(11,5) 7,044, apsp VALID**, independent
+numpy BFS agrees (research/d11D5/graphs/d11D5_n7044_CHECK.md). Opus's own two-pair runs from mkdc2 starts reached 52.
+The squad's wildcard made the decisive design; Opus's delta o C made the starts low enough for it.
