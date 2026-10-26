@@ -172,3 +172,20 @@ Record entering round 3: **9,760** (Z_61 ⋊₈ Z_80, N = 4,880). Target: N ≥ 
   The non-split class is no better than split metacyclic at 300 s, and it is similar to the product class.
 - **b3** (the two cost-2 non-split candidates, 1,800 s, seeds 2 and 3, K = 8; started 04:38): last test of longer runs.
   Table `runs/b3.tsv`.
+- **b3 finished** (1,800 s, seeds 2 and 3): **0 solves**. `nmeta 543 9 43 181` (N 4,887): best cost 1 (one seed), 2
+  (other seed). `nmeta 306 16 71 153` (N 4,896): best cost 2 on both seeds. Same stall as round 2's Z_181 ⋊ Z_27 candidate.
+
+## Round-3 result and stop decision (about 3.7 h in, 05:10)
+- **Record unchanged: 9,760** (Z_61 ⋊₈ Z_80, N = 4,880). No solve at N ≥ 4,881.
+- Search this round: about 1,443 + 4,241 + 337 + 1,373 candidates screened (RANDSAMPLE, 2,000 samples); 96 anneal runs
+  at 300 s (b1, b2) and 4 at 1,800 s (b3). About 9 core-hours of annealing in total. Rounds 2 and 3 together: about 25
+  core-hours on N = 4,881–4,900 with about 130 anneal runs, no solve.
+- Stop reason: the cost-1 and cost-2 leads stall at the same level for seeds and time (300 s to 3,600 s, round 2 and
+  round 3). The new families (direct products of metacyclic groups, SL(2,3)/S4/A4/AGL(1,9) products, non-split
+  metacyclic groups) screen and anneal no better than split metacyclic groups. So the cell has not moved with these
+  methods. I am not sure it is impossible, but more of the same is unlikely to pay.
+- Not tried, and the only ideas left with a plausible edge: (a) the lift.c 2+2 base at n ≥ 9,764 (group order 2,441
+  is prime, so only cyclic voltages; untested); (b) three-factor products and non-split groups with d > 1 at N = 4,888–4,900
+  (the enumeration is in `enum_nmeta.py`); (c) a different annealer (larger K, longer REHEAT) on the cost-1 candidate.
+- Recommendation for the coordinator: this cell is at its practical limit with these tools. Idea (a) is the cheapest
+  to test next, if a bigger route is wanted.
