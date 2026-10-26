@@ -20,3 +20,8 @@ d3D11_n1080_A5xZ9: edge list sha256 d4d5da55ab63637e154d825f34e071cdd898af1f28ba
 d3D12_n1320_psl2_11: edge list sha256 1e066a38664a431935b3f7b26bf11d1023a52030d30901df14f9100a696df173 -> RESULT VALID d=3 D=12 n=1320
 Also VALID but not recorded as ours (classical Moore graphs, optimal): d17D3 PG(2,16) 546, d18D3 PG(2,17) 614, d20D3 PG(2,19) 762, d17D4 W(16) 8,738, d18D4 W(17) 10,440, d20D4 W(19) 14,480; and the already-recorded d4D11 17,600/18,480/19,152, d4D12 48,000/50,160, d3D11 1,008.
 
+== (3,10) 810 — own-small, branch claude/own-small-cells-dkwo42: voltage lift of a 5+5 cubic base over C3 x He3 (order 81)
+rebuilt on the Mac mini with build_d3D10_n810.py from d3D10_n810_c3xheis27.txt; edge set identical to the finder's .edges (sha256 cd62621e56d3f8f79992c1fb7e30b0658a5f95f4bfc8c6b8c8bdd3dd8c632c83)
+apsp_mt (all pairs, no symmetry): n=810 edges=1215 degree min=3 max=3 bipartite=yes diameter=10 -> RESULT VALID d=3 D=10 n=810
+a second 810 graph (lift of a 5+5 base over SmallGroup(81,12), d3D10_n810_lift5_sg81_12.edges, sha256 3b167f92...) is also VALID.
+

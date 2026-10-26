@@ -91,6 +91,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (14, 9) | 95,087,738 | **116,068,656** | +22.1% | orbit search (Haar) | — |
 | (15, 9) | 168,016,334 | **208,029,120** | +23.8% | orbit search (Haar) | — |
 | (16, 9) | 288,939,118 | **337,394,400** | +16.8% | orbit search (Haar) | — |
+| (3, 10) | 800 | **810** | +1.3% | voltage lift (squad search) | — |
 | (4, 10) | 11,748 | **12,416** | +5.7% | voltage lift / metacyclic Haar | ✓ |
 | (5, 10) | 90,068 | **95,472** | +6.0% | voltage lift / metacyclic Haar | ✓ |
 | (6, 10) | 452,032 | **524,160** | +16.0% | orbit search (Haar) | ✓ |
