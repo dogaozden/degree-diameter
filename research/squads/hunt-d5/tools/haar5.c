@@ -238,6 +238,22 @@ static uint64_t sethash(const int *S, int n) { int t[64]; memcpy(t, S, n * sizeo
     for (int i = 1; i < n; i++) { int x = t[i], j = i - 1; while (j >= 0 && t[j] > x) { t[j + 1] = t[j]; j--; } t[j + 1] = x; }
     uint64_t h = 1469598103934665603ULL; for (int i = 0; i < n; i++) { h ^= (uint64_t)t[i]; h *= 1099511628211ULL; } return h; }
 
+/* ---------- cert: exact search with orbit-rank normalization ----------
+   Right quotients s_j s_i^-1 are invariant under right translation and permuted by Aut(G).  Rank the Aut-orbits on
+   G \ {e} (largest first).  If some S has cost 0, pick the quotient t = s_j s_i^-1 of minimal rank k, translate by
+   s_i^-1 and apply an automorphism sending t to the orbit representative r_k: the new set contains e and r_k and all
+   its right quotients have rank >= k.  So it suffices to enumerate, for each k, sets {e, r_k, ...} whose pairwise right
+   quotients all have rank >= k. */
+static int *crank; static long long cert_cnt = 0; static int cert_k;
+static int cert_pool[65536], cert_np;
+static void cert_rec(int *S, int n, int need, int start, scr_t *sc) {
+    if (need == 0) { cert_cnt++; int c = test_set(S, n, sc);
+        if (c == 0) { printf("cost 0 S"); for (int i = 0; i < n; i++) printf(" %d", S[i]); printf("\n"); fflush(stdout); } return; }
+    for (int pi = start; pi < cert_np; pi++) { int y = cert_pool[pi], ok = 1;
+        for (int i = 2; i < n && ok; i++) { int x = S[i]; if (crank[mul(y, INV[x])] < cert_k || crank[mul(x, INV[y])] < cert_k) ok = 0; }
+        if (!ok) continue; S[n] = y; cert_rec(S, n + 1, need - 1, pi + 1, sc); }
+}
+
 int main(int argc, char **argv) {
     if (argc < 4) { fprintf(stderr, "usage: see source\n"); return 2; }
     const char *mode = argv[1];
@@ -268,6 +284,32 @@ int main(int argc, char **argv) {
         sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
         exo_rec(u, 0, 0, nf, &sc);
         printf("RESULT exho N=%d d=%d orbit=%d,%d,%d fixed=%d orbits=%d sets=%lld min=%d\n", N, d, kord, morb, ffix, nfixl, norbl, exo_sets, exo_min);
+        return 0;
+    }
+    if (!strcmp(mode, "cert")) {   /* haar5 cert TABLE d ORBFILE (gapgroup.py orbits N I full) */
+        FILE *of = fopen(argv[4], "r"); if (!of) { perror(argv[4]); return 2; }
+        int nob = 0, *orep = malloc(N * sizeof(int)), *osz = malloc(N * sizeof(int)); int **omem = malloc(N * sizeof(int *));
+        int rep, sz; char colon[8];
+        while (fscanf(of, "%d %d %7s", &rep, &sz, colon) == 3) { orep[nob] = rep; osz[nob] = sz; omem[nob] = malloc(sz * sizeof(int));
+            for (int i = 0; i < sz; i++) if (fscanf(of, "%d", &omem[nob][i]) != 1) return 2; nob++; }
+        fclose(of);
+        int *ordr = malloc(nob * sizeof(int)); for (int i = 0; i < nob; i++) ordr[i] = i;
+        for (int i = 0; i < nob; i++) for (int j = i + 1; j < nob; j++) if (osz[ordr[j]] > osz[ordr[i]] || (osz[ordr[j]] == osz[ordr[i]] && orep[ordr[j]] < orep[ordr[i]])) { int t = ordr[i]; ordr[i] = ordr[j]; ordr[j] = t; }
+        crank = malloc(N * sizeof(int)); for (int x = 0; x < N; x++) crank[x] = -2; crank[0] = -1;
+        int tot = 0; for (int k = 0; k < nob; k++) { int o = ordr[k]; for (int i = 0; i < osz[o]; i++) crank[omem[o][i]] = k; tot += osz[o]; }
+        if (tot != N - 1) { fprintf(stderr, "orbits cover %d of %d elements\n", tot, N - 1); return 2; }
+        sc.T = realloc(sc.T, sizeof(int) * 128 * 128 + 16);
+        int kstart = argc > 5 ? atoi(argv[5]) : 0;
+        for (int k = kstart; k < nob; k++) {
+            cert_k = k; int r = orep[ordr[k]]; cert_np = 0;
+            for (int x = 1; x < N; x++) { if (x == r) continue;
+                if (crank[x] < k || crank[INV[x]] < k || crank[mul(x, INV[r])] < k || crank[mul(r, INV[x])] < k) continue;
+                cert_pool[cert_np++] = x; }
+            long long before = cert_cnt; int S[64]; S[0] = 0; S[1] = r;
+            cert_rec(S, 2, d - 2, 0, &sc);
+            printf("rank %d rep %d size %d pool %d sets %lld\n", k, r, osz[ordr[k]], cert_np, cert_cnt - before); fflush(stdout);
+        }
+        printf("RESULT cert N=%d d=%d orbits=%d from_rank=%d sets=%lld (exact: every cost-0 set up to translation and automorphism is listed above)\n", N, d, nob, kstart, cert_cnt);
         return 0;
     }
     if (!strcmp(mode, "lns")) {   /* haar5 lns TABLE d "S (with 0)" r seconds seed */

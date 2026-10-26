@@ -51,17 +51,17 @@ for r in res do AppendTo(g, String(r[1]), " ", JoinStringsWithSeparator(List(r[2
         f.write(struct.pack('<i', n))
         for r in rows: f.write(struct.pack('<%dH' % n, *r))
 
-def orbits(n, i):
+def orbits(n, i, full=False):
     """one representative (table index) per orbit of Aut(G) on G minus the identity, with the orbit size"""
-    code = f'''G:=SmallGroup({n},{i});; el:=AsSSortedList(G);; one:=One(G);; p:=Position(el,one);;
+    code = f'''SetPrintFormattingStatus("*stdout*", false);; G:=SmallGroup({n},{i});; el:=AsSSortedList(G);; one:=One(G);; p:=Position(el,one);;
 el:=Concatenation([one], el{{Difference([1..Length(el)],[p])}});;
 srt:=SortingPerm(el);; sel:=AsSSortedList(el);; pos:=function(x) return Position(sel,x)^srt; end;;
 A:=AutomorphismGroup(G);; O:=Orbits(A, el{{[2..Length(el)]}});;
-for o in O do Print(Minimum(List(o, x->pos(x)-1)), " ", Length(o), "\\n"); od;'''
+for o in O do Print(Minimum(List(o, x->pos(x)-1)), " ", Length(o)); if {"true" if full else "false"} then Print(" :"); for x in o do Print(" ", pos(x)-1); od; fi; Print("\\n"); od;'''
     sys.stdout.write(rungap(code))
 
 if __name__ == '__main__':
     if sys.argv[1] == 'list': glist(int(sys.argv[2]))
-    elif sys.argv[1] == 'orbits': orbits(int(sys.argv[2]), int(sys.argv[3]))
+    elif sys.argv[1] == 'orbits': orbits(int(sys.argv[2]), int(sys.argv[3]), len(sys.argv) > 4 and sys.argv[4] == 'full')
     elif sys.argv[1] == 'table':
         table(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], int(sys.argv[5]) if len(sys.argv) > 5 else None)
