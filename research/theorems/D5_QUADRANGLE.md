@@ -321,12 +321,12 @@ $$n_b(q+1+r,5)\ \ge\ (2r+1)\cdot 2N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 (HG) holds if $Y$ alone has all same-colour distances $\le 4$ (§9); paths through the levels may also help.
 
 **Theorem 3.6 (assembly, general form).** Theorem 3.5 remains true if (T) is replaced by
-- (T′) for every arc $t = (j\to j')$, every vertex of level $j$ is within distance 5 of every vertex of level $j'$ in
+- (T') for every arc $t = (j\to j')$, every vertex of level $j$ is within distance 5 of every vertex of level $j'$ in
   $X_R^+$.
 
-*Proof.* The same; (T) implies (T′) because $X_R$ is a subgraph of $X_R^+$. $\square$
+*Proof.* The same; (T) implies (T') because $X_R$ is a subgraph of $X_R^+$. $\square$
 
-We use (T′) for transitions that are repaired only with the help of hubs (§7) or of other levels (§12).
+We use (T') for transitions that are repaired only with the help of hubs (§7) or of other levels (§12).
 
 ---
 
@@ -502,7 +502,7 @@ $\omega_{j'}(h)\ne p$ (the two points lie on $m$): length $\le 4$. Likewise
 $(\ell,j')\to g\to(\omega'_j(g),j)\to(m,j)\to(p,j)$. $\square$
 
 So a transition with a relaxed set is not repaired in the sense of Definition 3.3, but with the hub rule it satisfies
-(T′) of Theorem 3.6. In our layouts the natural slot on $m$ is the point $o_m$ where the ovoid $O$ (freed on the
+(T') of Theorem 3.6. In our layouts the natural slot on $m$ is the point $o_m$ where the ovoid $O$ (freed on the
 transition $H\to D$ out of level $j'$, and on the $H\to D$ transitions into level $j$) meets $m$; $O$ meets every line
 exactly once. Distinct partnered lines $m\ne m'$ ask for distinct points: if $o_m = o_{m'}$, then $m$ and $m'$ meet in a
 point of $O$, so they are partners with meeting point in $O$. We therefore require $z\notin O$ for every partner pair
