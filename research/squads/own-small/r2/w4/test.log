@@ -1,0 +1,8 @@
+== 1. test 5+5 g81 id4, D=10, 25 s x 3 seeds
+plain salift_s2 seed 1: end best 4 its 1696083
+ptlift          seed 1: end best 8 its 1638584 rounds 5057 costs 8 10 12 14 16 14
+plain salift_s2 seed 2: end best 12 its 1761763
+ptlift          seed 2: end best 14 its 1491852 rounds 4606 costs 14 16 14 16 14 22
+plain salift_s2 seed 3: end best 8 its 1731756
+ptlift          seed 3: end best 8 its 1512467 rounds 4667 costs 8 8 12 14 14 18
+score48 of test_pt_1.sol.best: RESULT INVALID n=810 far=324 reason=diameter (head: 81 4 5 8)

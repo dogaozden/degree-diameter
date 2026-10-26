@@ -1,0 +1,72 @@
+18:18:57 t=0 job start
+18:18:57 t=0 PHASE A: C37 p=7
+18:20:01 t=64 run c37_s1 p=7 N=37 id=1 seed=1 secs=60 start=none cost=30 end best 30 its 6690957
+18:21:04 t=127 run c37_s2 p=7 N=37 id=1 seed=2 secs=60 start=none cost=40 end best 40 its 6772998
+18:21:04 t=127 PHASE B: order 32 p=8
+18:21:04 t=127 order 32: 51 groups (7 abelian)
+18:21:10 t=133 run p8_g2 p=8 N=32 id=2 seed=1 secs=6 start=none cost=74 end best 74 its 589921
+18:21:17 t=140 run p8_g4 p=8 N=32 id=4 seed=1 secs=6 start=none cost=42 end best 42 its 631742
+18:21:23 t=146 run p8_g5 p=8 N=32 id=5 seed=1 secs=6 start=none cost=51 end best 51 its 677291
+18:21:29 t=152 run p8_g6 p=8 N=32 id=6 seed=1 secs=6 start=none cost=67 end best 67 its 688075
+18:21:35 t=158 run p8_g7 p=8 N=32 id=7 seed=1 secs=6 start=none cost=88 end best 88 its 570773
+18:21:41 t=164 run p8_g8 p=8 N=32 id=8 seed=1 secs=6 start=none cost=44 end best 44 its 680675
+18:21:47 t=170 run p8_g9 p=8 N=32 id=9 seed=1 secs=6 start=none cost=59 end best 59 its 650853
+18:21:53 t=176 run p8_g10 p=8 N=32 id=10 seed=1 secs=6 start=none cost=38 end best 38 its 578925
+18:21:59 t=182 run p8_g11 p=8 N=32 id=11 seed=1 secs=6 start=none cost=60 end best 60 its 652704
+18:22:05 t=188 run p8_g12 p=8 N=32 id=12 seed=1 secs=6 start=none cost=38 end best 38 its 677806
+18:22:12 t=195 run p8_g13 p=8 N=32 id=13 seed=1 secs=6 start=none cost=41 end best 41 its 595391
+18:22:18 t=201 run p8_g14 p=8 N=32 id=14 seed=1 secs=6 start=none cost=46 end best 46 its 605780
+18:22:24 t=207 run p8_g15 p=8 N=32 id=15 seed=1 secs=6 start=none cost=40 end best 40 its 625912
+18:22:30 t=213 run p8_g17 p=8 N=32 id=17 seed=1 secs=6 start=none cost=36 end best 36 its 655366
+18:22:36 t=219 run p8_g18 p=8 N=32 id=18 seed=1 secs=6 start=none cost=130 end best 130 its 644679
+18:22:42 t=225 run p8_g19 p=8 N=32 id=19 seed=1 secs=6 start=none cost=80 end best 80 its 672000
+18:22:48 t=231 run p8_g20 p=8 N=32 id=20 seed=1 secs=6 start=none cost=40 end best 40 its 689947
+18:22:54 t=237 run p8_g22 p=8 N=32 id=22 seed=1 secs=6 start=none cost=92 end best 92 its 690385
+18:23:00 t=243 run p8_g23 p=8 N=32 id=23 seed=1 secs=6 start=none cost=85 end best 85 its 703565
+18:23:06 t=249 run p8_g24 p=8 N=32 id=24 seed=1 secs=6 start=none cost=66 end best 66 its 671661
+18:23:12 t=255 run p8_g25 p=8 N=32 id=25 seed=1 secs=6 start=none cost=74 end best 74 its 713016
+18:23:18 t=261 run p8_g26 p=8 N=32 id=26 seed=1 secs=6 start=none cost=56 end best 56 its 701561
+18:23:25 t=268 run p8_g27 p=8 N=32 id=27 seed=1 secs=6 start=none cost=126 end best 126 its 694919
+18:23:31 t=274 run p8_g28 p=8 N=32 id=28 seed=1 secs=6 start=none cost=96 end best 96 its 657291
+18:23:37 t=280 run p8_g29 p=8 N=32 id=29 seed=1 secs=6 start=none cost=68 end best 68 its 672904
+18:23:43 t=286 run p8_g30 p=8 N=32 id=30 seed=1 secs=6 start=none cost=78 end best 78 its 665850
+18:23:49 t=292 run p8_g31 p=8 N=32 id=31 seed=1 secs=6 start=none cost=78 end best 78 its 688842
+18:23:55 t=298 run p8_g32 p=8 N=32 id=32 seed=1 secs=6 start=none cost=44 end best 44 its 705683
+18:24:01 t=304 run p8_g33 p=8 N=32 id=33 seed=1 secs=6 start=none cost=70 end best 70 its 695289
+18:24:07 t=310 run p8_g34 p=8 N=32 id=34 seed=1 secs=6 start=none cost=143 end best 143 its 668098
+18:24:14 t=317 run p8_g35 p=8 N=32 id=35 seed=1 secs=6 start=none cost=46 end best 46 its 703503
+18:24:20 t=323 run p8_g37 p=8 N=32 id=37 seed=1 secs=6 start=none cost=50 end best 50 its 685657
+18:24:26 t=329 run p8_g38 p=8 N=32 id=38 seed=1 secs=6 start=none cost=42 end best 42 its 662877
+18:24:32 t=335 run p8_g39 p=8 N=32 id=39 seed=1 secs=6 start=none cost=124 end best 124 its 643679
+18:24:38 t=341 run p8_g40 p=8 N=32 id=40 seed=1 secs=6 start=none cost=58 end best 58 its 698579
+18:24:44 t=347 run p8_g41 p=8 N=32 id=41 seed=1 secs=6 start=none cost=29 end best 29 its 680892
+18:24:50 t=353 run p8_g42 p=8 N=32 id=42 seed=1 secs=6 start=none cost=53 end best 53 its 691246
+18:24:56 t=359 run p8_g43 p=8 N=32 id=43 seed=1 secs=6 start=none cost=92 end best 92 its 688354
+18:25:02 t=365 run p8_g44 p=8 N=32 id=44 seed=1 secs=6 start=none cost=48 end best 48 its 678138
+18:25:09 t=372 run p8_g46 p=8 N=32 id=46 seed=1 secs=6 start=none cost=162 end best 162 its 669652
+18:25:15 t=378 run p8_g47 p=8 N=32 id=47 seed=1 secs=6 start=none cost=66 end best 66 its 713398
+18:25:21 t=384 run p8_g48 p=8 N=32 id=48 seed=1 secs=6 start=none cost=99 end best 99 its 701435
+18:25:27 t=390 run p8_g49 p=8 N=32 id=49 seed=1 secs=6 start=none cost=123 end best 123 its 694118
+18:25:33 t=396 run p8_g50 p=8 N=32 id=50 seed=1 secs=6 start=none cost=76 end best 76 its 694425
+18:25:39 t=402 run p8_g1 p=8 N=32 id=1 seed=1 secs=6 start=none cost=46 end best 46 its 666686
+18:25:45 t=408 run p8_g3 p=8 N=32 id=3 seed=1 secs=6 start=none cost=53 end best 53 its 703969
+18:25:51 t=414 run p8_g16 p=8 N=32 id=16 seed=1 secs=6 start=none cost=39 end best 39 its 686264
+18:25:57 t=420 run p8_g21 p=8 N=32 id=21 seed=1 secs=6 start=none cost=12 end best 12 its 706971
+18:26:03 t=426 run p8_g36 p=8 N=32 id=36 seed=1 secs=6 start=none cost=48 end best 48 its 691653
+18:26:10 t=433 run p8_g45 p=8 N=32 id=45 seed=1 secs=6 start=none cost=124 end best 124 its 680326
+18:26:16 t=439 run p8_g51 p=8 N=32 id=51 seed=1 secs=6 start=none cost=288 end best 288 its 698144
+18:26:16 t=439 PHASE C: order 64 p=4 sample
+18:26:21 t=444 run p4_g72 p=4 N=64 id=72 seed=1 secs=5 start=none cost=44 end best 44 its 593936
+18:26:26 t=449 run p4_g234 p=4 N=64 id=234 seed=1 secs=5 start=none cost=88 end best 88 its 571868
+18:26:31 t=454 run p4_g150 p=4 N=64 id=150 seed=1 secs=5 start=none cost=108 end best 108 its 585202
+18:26:36 t=459 run p4_g230 p=4 N=64 id=230 seed=1 secs=5 start=none cost=56 end best 56 its 583856
+18:26:41 t=464 run p4_g217 p=4 N=64 id=217 seed=1 secs=5 start=none cost=68 end best 68 its 584491
+18:26:47 t=470 run p4_g64 p=4 N=64 id=64 seed=1 secs=5 start=none cost=64 end best 64 its 574805
+18:26:52 t=475 run p4_g45 p=4 N=64 id=45 seed=1 secs=5 start=none cost=26 end best 26 its 557649
+18:26:57 t=480 run p4_g206 p=4 N=64 id=206 seed=1 secs=5 start=none cost=93 end best 93 its 584118
+18:27:02 t=485 run p4_g112 p=4 N=64 id=112 seed=1 secs=5 start=none cost=48 end best 48 its 587145
+18:27:07 t=490 run p4_g258 p=4 N=64 id=258 seed=1 secs=5 start=none cost=92 end best 92 its 555963
+18:27:12 t=495 run p4_g109 p=4 N=64 id=109 seed=1 secs=5 start=none cost=41 end best 41 its 587851
+18:27:18 t=501 run p4_g197 p=4 N=64 id=197 seed=1 secs=5 start=none cost=64 end best 64 its 576388
+18:27:18 t=501 PHASE D: top-5 restarts
+18:28:19 t=562 run r_p8_g21_s11 p=8 N=32 id=21 seed=11 secs=60 start=/home/user/degree-diameter/research/squads/own-small/r2/m2/st/p8_g21.sol.best cost=12 end best 12 its 6903599

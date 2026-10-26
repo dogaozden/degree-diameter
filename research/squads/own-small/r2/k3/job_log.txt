@@ -1,0 +1,36 @@
+start 17:50:06
+screen N=87 id=1 seed=1 cost=30 t=38
+screen N=88 id=1 seed=1 cost=32 t=74
+screen N=88 id=3 seed=1 cost=26 t=95
+screen N=88 id=4 seed=1 cost=77 t=117
+screen N=88 id=5 seed=1 cost=194 t=139
+screen N=88 id=6 seed=1 cost=30 t=161
+screen N=88 id=7 seed=1 cost=76 t=182
+screen N=88 id=9 seed=1 cost=32 t=203
+screen N=88 id=10 seed=1 cost=30 t=224
+screen N=88 id=11 seed=1 cost=232 t=246
+screen N=88 id=2 seed=1 cost=22 t=267
+screen N=88 id=8 seed=1 cost=36 t=289
+screen N=88 id=12 seed=1 cost=40 t=310
+screen N=89 id=1 seed=1 cost=36 t=332
+screen N=90 id=1 seed=1 cost=60 t=354
+screen N=90 id=2 seed=1 cost=40 t=376
+screen N=90 id=3 seed=1 cost=228 t=397
+screen N=90 id=5 seed=1 cost=38 t=419
+screen N=90 id=6 seed=1 cost=44 t=441
+screen N=90 id=7 seed=1 cost=69 t=463
+screen N=90 id=8 seed=1 cost=64 t=485
+screen N=90 id=9 seed=1 cost=203 t=507
+screen N=90 id=4 seed=1 cost=44 t=528
+screen N=90 id=10 seed=1 cost=34 t=550
+screen N=91 id=1 seed=1 cost=40 t=572
+screen N=92 id=1 seed=1 cost=38 t=593
+screen N=92 id=3 seed=1 cost=214 t=615
+screen N=92 id=2 seed=1 cost=54 t=636
+screen N=92 id=4 seed=1 cost=72 t=658
+phase2 VMAX=86 cands:
+22 88 2 1 screen
+26 88 3 1 screen
+push N=88 id=2 seed=2 secs=86 cost=20 t=751
+push N=88 id=3 seed=3 secs=79 cost=22 t=836
+end 18:04:02 elapsed=836

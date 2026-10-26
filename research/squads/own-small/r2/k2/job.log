@@ -1,0 +1,52 @@
+18:20:31 SCREEN N=82 gid=1 D82 ab=0
+18:20:52   cost 74
+18:20:52 SCREEN N=82 gid=2 C82 ab=1
+18:21:13   cost 12
+18:21:13 SCREEN N=83 gid=1 C83 ab=1
+18:21:34   cost 12
+18:21:34 SCREEN N=84 gid=1 C7:C12 ab=0
+18:21:54   cost 12
+18:21:54 SCREEN N=84 gid=2 C4x(C7:C3) ab=0
+18:22:14   cost 10
+18:22:14 SCREEN N=84 gid=3 C7x(C3:C4) ab=0
+18:22:35   cost 17
+18:22:35 SCREEN N=84 gid=4 C3x(C7:C4) ab=0
+18:22:55   cost 14
+18:22:55 SCREEN N=84 gid=5 C21:C4 ab=0
+18:23:15   cost 12
+18:23:15 SCREEN N=84 gid=7 C2x(C7:C6) ab=0
+18:23:35   cost 20
+18:23:35 SCREEN N=84 gid=8 S3xD14 ab=0
+18:23:55   cost 59
+18:23:55 SCREEN N=84 gid=9 C2xC2x(C7:C3) ab=0
+18:24:16   cost 10
+18:24:16 SCREEN N=84 gid=10 C7xA4 ab=0
+18:24:36   cost 8
+18:24:36 SCREEN N=84 gid=11 (C14xC2):C3 ab=0
+18:24:56   cost 18
+18:24:56 SCREEN N=84 gid=12 C6xD14 ab=0
+18:25:17   cost 36
+18:25:17 SCREEN N=84 gid=13 C14xS3 ab=0
+18:25:37   cost 21
+18:25:37 SCREEN N=84 gid=14 D84 ab=0
+18:25:57   cost 134
+18:25:57 SCREEN N=84 gid=6 C84 ab=1
+18:26:18   cost 18
+18:26:18 SCREEN N=84 gid=15 C42xC2 ab=1
+18:26:38   cost 18
+18:26:38 SCREEN N=85 gid=1 C85 ab=1
+18:26:58   cost 18
+18:26:58 SCREEN N=86 gid=1 D86 ab=0
+18:27:19   cost 178
+18:27:19 SCREEN N=86 gid=2 C86 ab=1
+18:27:39   cost 16
+18:27:39 PUSH round 1 N=82 gid=2 start cost 12 secs 120
+18:29:41   new cost 8
+18:29:41 PUSH round 2 N=82 gid=1 start cost 74 secs 120
+18:31:42   no improvement / no state
+18:31:42 PUSH round 3 N=82 gid=2 start cost 8 secs 120
+18:33:44   new cost 4
+18:33:44 PUSH round 4 N=82 gid=1 start cost 74 secs 17
+18:34:01   no improvement / no state
+18:34:01 NO VALID ORDER FOUND in 82..86
+18:34:01 done after 810 s

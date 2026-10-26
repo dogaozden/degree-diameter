@@ -3,12 +3,16 @@
 Job "own-small" (Oct 26 2026). Bipartite degree-diameter problem: a bipartite graph with maximum degree d and diameter
 <= D on MORE vertices than the table. Cells: (3,10) > 800, (3,9) > 506, (4,8) > 2,184, (4,9) > 4,970.
 
-## The lead from round 1
+## The lead from round 1: it already worked
 
-Joint annealing of a p+p cubic base AND its voltages (tool salift) reaches very low cost fast at n just above 800:
-5+5 bases over groups of order 81 (n = 810) reach cost 2 in ~100 s (SmallGroup(81,4) = C9:C9) and cost 4 in 6 s
-(C9xC9). Cost = #(base vertex u, lift vertex x) with dist((u,e), x) > D; far pairs = cost * N / 2. Nobody has run long
-or many-seed salift searches at D = 10 before. Round 2 spreads this over (p, N) slots and pushes with restarts.
+Joint annealing of a p+p cubic base AND its voltages (tool salift) found two VALID (3,10) graphs on 810 vertices
+(table 800), checked with score48 and the all-pairs checker: 5+5 lifts over SmallGroup(81,12) = C3 x ((C3xC3):C3) and
+SmallGroup(81,9) = (C9xC3):C3, each after 45 s of CPU (research/squads/own-small/records/). In the same 45 s screen,
+5 more groups of order 81 reached cost 2-4. Both winners are 3-groups. **Round 2's goal: valid (3,10) graphs with
+n > 810, as large as possible** (and the same method at (3,9) and, with a degree-4 version, at (4,8)/(4,9)).
+Cost = #(base vertex u, lift vertex x) with dist((u,e), x) > D; far pairs = cost * N / 2.
+Strategy for every slot: screen all groups of the smallest order first; as soon as some group reaches cost 0 at an
+order, check it with score48, save it, and move up to the next order; report the largest valid n you reached.
 
 ## Machine rules (4 cores shared by 16 cards and the director)
 
@@ -40,8 +44,8 @@ or many-seed salift searches at D = 10 before. Round 2 spreads this over (p, N) 
 - Covers of the Tutte 12-cage (cost > 3,000), 4+4 fixed-base flift lifts over 159 groups of order 101..125 (best cost 8
   at n = 864, short runs), semi-edge 2-vertex bases (cost 5 at 812), 7+7 over order 60 (n = 840, 1,320 far pairs),
   symmetry-breaking re-annealing of the 880 near miss (no move), delete-and-rematch surgery (no move).
-- Director (do not redo): cubic Haar graphs and stabiliser-2 bi-coset graphs over all groups; 5+5 salift over all 15
-  groups of order 81 (n = 810) with 2 seeds x 120 s (results go to runs/p5/).
+- Director (do not redo): cubic Haar graphs and stabiliser-2 bi-coset graphs over all groups; 5+5 over all 15 groups of
+  order 81 (n = 810, done: two valid); 6+6 over all 15 groups of order 81 (n = 972, runs/p6/).
 (3,9), table 506 (a Haar graph of Z23:Z11): no VT graph on 508..1,280 vertices; 2+2 lifts of all groups of order
   127..160 and Haar graphs of all groups of order 254..511 are the director's (do not redo).
 

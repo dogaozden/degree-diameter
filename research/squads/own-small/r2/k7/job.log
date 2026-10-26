@@ -1,0 +1,41 @@
+start 17:49:55
+screen N=51 id=1 cost=26 17:50:15
+screen N=52 id=1 cost=36 17:50:45
+screen N=52 id=2 cost=20 17:51:14
+screen N=52 id=3 cost=66 17:51:30
+screen N=52 id=4 cost=127 17:51:46
+screen N=52 id=5 cost=46 17:52:03
+screen N=53 id=1 cost=34 17:52:20
+screen N=54 id=1 cost=149 17:52:37
+screen N=54 id=2 cost=54 17:52:53
+screen N=54 id=3 cost=54 17:53:09
+screen N=54 id=4 cost=32 17:53:25
+screen N=54 id=5 cost=46 17:53:41
+screen N=54 id=6 cost=68 17:53:57
+screen N=54 id=7 cost=154 17:54:13
+screen N=54 id=8 cost=66 17:54:29
+screen N=54 id=9 cost=56 17:54:45
+screen N=54 id=10 cost=68 17:55:01
+screen N=54 id=11 cost=40 17:55:18
+screen N=54 id=12 cost=60 17:55:34
+screen N=54 id=13 cost=74 17:55:50
+screen N=54 id=14 cost=70 17:56:07
+screen N=54 id=15 cost=54 17:56:23
+screen N=55 id=1 cost=44 17:56:39
+screen N=55 id=2 cost=78 17:56:56
+screen N=56 id=1 cost=64 17:57:12
+screen N=56 id=2 cost=92 17:57:28
+screen N=56 id=3 cost=73 17:57:45
+screen N=56 id=4 cost=126 17:58:01
+screen N=56 id=5 cost=218 17:58:18
+screen N=56 id=6 cost=86 17:58:34
+screen N=56 id=7 cost=118 17:58:50
+screen N=56 id=8 cost=82 17:59:07
+screen N=56 id=9 cost=86 17:59:23
+screen N=56 id=10 cost=86 17:59:39
+screen N=56 id=11 cost=78 17:59:55
+screen N=56 id=12 cost=172 18:00:11
+screen N=56 id=13 cost=94 18:00:28
+restart round=1 N=52 id=2 from cost=20 seed=101 18:02:06
+restart round=2 N=52 id=2 from cost=20 seed=102 18:03:42
+end 18:03:42 maxvalid_N=0 best=[]

@@ -6,22 +6,20 @@ runs (env D as given; e.g. 20-40 CPU s each, two seeds for the best ones), then 
 states with START restarts (`START=x.sol.best`) and fresh seeds until the job's time is used. Convert the best state
 with best2edges.py and check it with score48. A cost-0 state is a record: check it with score48 at once.
 
-## (3,10): D=10, n = 2pN just above 800 (each card its own (p, N) slot)
+## (3,10): D=10, goal n > 810 (record now 810); each card climbs in group order inside its own (p, N) slot
 
-- **k1:** p=4, N=101 (n=808, C101) and N=102 (n=816, all 4 groups). Fixed-base 4+4 flift was tried (best 8 at 864); joint annealing never was.
-- **k2:** p=5, N=82, 83 (n=820, 830) and N=84 (n=840, 15 groups: non-abelian first).
-- **k3:** p=6, N=67 (n=804, C67) and N=68 (n=816, 5 groups).
-- **k4:** p=6, N=69, 70 (n=828, 840).
-- **k5:** p=7, N=58, 59 (n=812, 826) and N=60 (n=840, 13 groups).
-- **k6:** p=8, N=51 (n=816) and N=52 (n=832, 5 groups).
-- **k7:** p=9, N=45 (n=810, 2 groups) and N=46 (n=828).
-- **k8:** p=10, N=41 (n=820) and N=42 (n=840, 6 groups).
-- **k9:** p=11 N=37 (n=814), p=12 N=34 (n=816), p=13 N=31 (n=806), p=14 N=29 (n=812); groups of order < 51 are in GT once
-  the director's export of orders 16..50 finishes (file GT/exported3), cyclic groups need no table (write one).
-- **k10:** p=5, N=81 (n=810): PUSH. The director screened all 15 groups of order 81 (runs/p5/RANK.txt lists cost per
-  group and the saved states runs/p5/s81_<id>_<seed>.sol.best). Take the best 2 groups and push them hard: START restarts
-  from the saved states, several fresh seeds, and a few temperature schedules (T0 3..20, T1 0.1..0.5).
-- **k11:** p=5, N=81 (n=810): PUSH the 3rd-5th best groups of runs/p5/RANK.txt the same way (do not take k10's two).
+- **k1:** p=4, N=102..110 (n=816..880).
+- **k2:** p=5, N=82..86 (n=820..860).
+- **k3:** p=5, N=87..92 (n=870..920).
+- **k4:** p=6, N=68..72 (n=816..864).
+- **k5:** p=6, N=73..80 (n=876..960).
+- **k6:** p=7, N=58..63 (n=812..882).
+- **k7:** p=8, N=51..56 (n=816..896).
+- **k8:** p=9, N=45..50 (n=810..900).
+- **k9:** p=10 N=41..45 (n=820..900), p=11 N=37..40, p=12 N=34..37, p=13 N=31..34 (groups of order < 51 are in GT too).
+- **k10:** prime-power groups, since both 810 winners are 3-groups: N=64 with p=7 (n=896; 267 groups, sample 40 with a
+  small abelianisation, i.e. few generators) and N=125 with p=4 (n=1,000; 5 groups).
+- **k11:** the largest n: p=5 N=96..100 (n=960..1,000; order 96 has 231 groups, sample 40) and p=6 N=82..84 (n=984..1,008).
 
 ## (3,9): D=9, n = 2pN just above 506
 
@@ -45,4 +43,5 @@ with best2edges.py and check it with score48. A cost-0 state is a record: check 
 
 - **w4 (3,10):** find a way to make the joint annealer stronger at n = 804..830 that none of k1-k11 uses (for example a
   move that re-routes a far pair's shortest walks, a tabu list, parallel tempering inside one job, or an exact
-  completion of the last voltages), test it on 5+5 over SmallGroup(81,4) from runs/p5/s81_4_*.sol.best, then use it.
+  completion of the last voltages), test it on 5+5 over SmallGroup(81,4) (plain salift stalls at cost 2-8 there; state runs/p5/s81_4_1.sol.best), then
+  use it to reach n > 810.
