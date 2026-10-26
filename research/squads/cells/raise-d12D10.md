@@ -194,3 +194,11 @@ sl 49) has no independent checker yet; a solve there needs one before it can be 
 field built as in haar_sym.c, header polynomial checked against it). Verified: VALID on the prime record sl 73 × Z_427
 (ecc 10 from both sides), and VALID on a GF(8) test cell sl 8 × Z_19 (d7 D8, build_haar2.py also VALID). `orbq.sh` still
 sends prime-power headers to hcsl/hc2 (prime-only); a prime-power solve must be checked with `haarcheck_pp` by hand.
+
+**Batch 1 (2400 s, seed 4, 01:22–02:03 UTC):** no solve yet.
+| group | N | μ | variant | best cost | evals |
+|---|---|---|---|---|---|
+| sl 79 × Z_337 | 166,127,520 | 27.5 | RESTART=1 | 6 | 4,009 |
+| sl 67 × Z_553 | 166,284,888 | 28.0 | RESTART=1 | 7 | 5,169 |
+| psl 71 × Z_931 | 166,574,520 | 28.8 | RESTART=1 | 9 | 5,769 |
+| sl 81 × Z_313 (prime power) | 166,315,680 | 28.1 | default | 9 at 2,365 s | 2,105 |
