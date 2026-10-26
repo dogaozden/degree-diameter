@@ -92,3 +92,24 @@ here, since round 1 and this round both stall at cost 2 at μ ≈ 37.
   the file says 95,760. Our bar is N > 47,880.
 - No new record this round.
 - Bug fixed in `research/structured/haar_sym.c` (commit `6d381cc`), so k = 5, f = 0 runs no longer hang.
+
+# Round 3 (raise3-5-10), branch `claude/raise-d5d10-haar-round3-gz667b`
+
+Bar: **N > 47,880** (vertices > 95,760). The brief's 95,472 is stale: round 1's file
+`research/frontier/sols/d5D10_n95760_haar_pgl19x7_orb3f2.sol` is VALID under `build_haar2.py` (n = 95,760, ecc 10).
+That file is on branch `claude/raise-d5d10-haar-otvuvl`; I did not copy it into this branch.
+
+## Closed in this round (checks run here)
+
+- **Orbit k = 3, f = 2 on the new small-n groups above 47,880** (60 s, 1 thread, K = 8). Costs after 60 s:
+  psl 9×Z139 10,731; pgl 7×Z151 12,534; psl 7×Z301 29,181; pgl 7×Z307 (psl 7×Z307) 30,189; pgl 5×Z403 32,430;
+  pgl 5×Z409 33,150; pgl 5×Z421 34,590; pgl 5×Z427 35,310; pgl 5×Z433 36,030; pgl 8×Z103 3,036; sl 9×Z67 205;
+  pgl 3×Z1999 44,328. The cyclic factors (n ≥ 67) and small Q give large floors. Dead.
+- **Orbit k = 2** (control pgl 19×Z7, which k = 3 solves in 289 evals): `ORBIT="2 2 1"` best 16 after 60 s;
+  `ORBIT="2 1 3"` best 350. Weaker than random S here. Not pursued.
+
+## Plan in progress
+
+Metacyclic random-S sweep over N = 47,881–48,400 (18,781 candidates from `research/frontier/sizelaw/small_cands.py`),
+screened with `RANDSAMPLE=1000` (score (p10 + median)/μ(N), μ from SIZE_LAW W = 349,525), then the top ones annealed
+in order of N. Candidate screen and run logs are in the session scratchpad; this file gets the summary.
