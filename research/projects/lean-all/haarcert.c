@@ -1,6 +1,6 @@
 /* haarcert.c: word certificates for Haar graphs of SL(2,p) x Z_n and PSL(2,p) x Z_n (project lean-all).
 
-   usage: haarcert SOLFILE KIND OUT.bin [scan]
+   usage: haarcert SOLFILE KIND OUT.bin [scan|scan2]
      SOLFILE  research/frontier/sols format: "D D sl|psl p n n N order", then the generators "idx mat(a,b,c,d) z=k"
      KIND     even  : x = s0 * (s1^-1 s2) (s3^-1 s4) ...      (L = D-1 letters, D even)
               left  : x = (s0^-1 s1) (s2^-1 s3) ...            (L = D-1 letters, D odd)
@@ -15,7 +15,8 @@
    is d*n + z if c != 0, b*n + z if c == 0. A word for x may evaluate to x or -x in SL(2,p) x Z_n.
    Every word is re-evaluated before it is written.
    With `scan` the BFS finds each layer by scanning all elements instead of keeping frontier lists (6 bytes per
-   element instead of 22; the parents, hence the words, differ from the default mode). */
+   element instead of 22; the parents, hence the words, differ from the default mode). `scan2` is `scan` without the
+   parent table (2 bytes per element): the parent of x is recomputed as x * pair^-1, so the words are those of `scan`. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -52,7 +53,9 @@ static long long idx(El x) {
   else i = (long long)P * P * (P - 1) + (long long)(x.a - 1) * P + x.b;
   return i * NZ + x.z;
 }
-static int pinv(int x) { for (int y = 1; y < P; y++) if (x * y % P == 1) return y; return -1; }
+static int INV[4096];
+static int pinv(int x) { return INV[x]; }
+static void init_inv(void) { for (int x = 1; x < P; x++) for (int y = 1; y < P; y++) if (x * y % P == 1) INV[x] = y; }
 static El el_of(long long k) {
   El x;
   if (PSL) {
@@ -87,10 +90,11 @@ static El el_of(long long k) {
 }
 
 int main(int argc, char **argv) {
-  if (argc != 4 && !(argc == 5 && !strcmp(argv[4], "scan"))) {
-    fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin [scan]\n"); return 2;
+  if (argc != 4 && !(argc == 5 && (!strcmp(argv[4], "scan") || !strcmp(argv[4], "scan2")))) {
+    fprintf(stderr, "usage: haarcert SOLFILE even|left|right OUT.bin [scan|scan2]\n"); return 2;
   }
   int scan = argc == 5;
+  int nopar = argc == 5 && !strcmp(argv[4], "scan2");
   FILE *f = fopen(argv[1], "r");
   if (!f) { perror("sol"); return 2; }
   char grp[16], w1[8], w2[8];
@@ -99,6 +103,8 @@ int main(int argc, char **argv) {
     fprintf(stderr, "expected 'D D sl|psl p n n N order'\n"); return 2;
   }
   PSL = !strcmp(grp, "psl");
+  if (P >= 4096) { fprintf(stderr, "p < 4096 needed\n"); return 2; }
+  init_inv();
   HP = (P - 1) / 2;
   for (int u = 0; u < DEG; u++) {
     long long dummy;
@@ -121,10 +127,12 @@ int main(int argc, char **argv) {
   for (int s = 0; s < DEG; s++) for (int t = 0; t < DEG; t++)
     pr[s * DEG + t] = (kind == 2) ? mul(gen(s), inv(gen(t))) : mul(inv(gen(s)), gen(t));
   /* BFS over pairs, right multiplication */
+  El pinvs[256];
+  for (int k = 0; k < NP; k++) pinvs[k] = inv(pr[k]);
   int8_t *lay = malloc(G);
-  uint32_t *par = malloc(G * sizeof(uint32_t));
+  uint32_t *par = nopar ? NULL : malloc(G * sizeof(uint32_t));
   uint8_t *pid = malloc(G);
-  if (!lay || !par || !pid) { fprintf(stderr, "out of memory\n"); return 1; }
+  if (!lay || (!nopar && !par) || !pid) { fprintf(stderr, "out of memory\n"); return 1; }
   if (G >= (1LL << 32)) { fprintf(stderr, "group too large\n"); return 1; }
   memset(lay, -1, G);
   El one = { 1, 0, 0, 1, 0 };
@@ -139,7 +147,7 @@ int main(int argc, char **argv) {
         El x = el_of(q);
         for (int k = 0; k < NP; k++) {
           long long j = idx(mul(x, pr[k]));
-          if (lay[j] < 0) { lay[j] = l; par[j] = (uint32_t)q; pid[j] = k; nn++; }
+          if (lay[j] < 0) { lay[j] = l; if (par) par[j] = (uint32_t)q; pid[j] = k; nn++; }
         }
       }
       cnt += nn;
@@ -183,7 +191,10 @@ int main(int argc, char **argv) {
     } else if (lay[y] < 0) { missing++; memset(buf, 0, 5); fwrite(buf, 1, 5, o); continue; }
     /* unwind the pairs of y */
     int pairs[8], m = lay[y];
-    for (int q = m - 1; q >= 0; q--) { pairs[q] = pid[y]; y = par[y]; }
+    for (int q = m - 1; q >= 0; q--) {
+      pairs[q] = pid[y];
+      y = par ? par[y] : idx(mul(el_of(y), pinvs[pid[y]]));
+    }
     for (int q = m; q < K; q++) pairs[q] = 0;      /* pad with s0^-1 s0 = 1 */
     int off = 0;
     if (kind == 0) { dig[0] = s0; off = 1; }

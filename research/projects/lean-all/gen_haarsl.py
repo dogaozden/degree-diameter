@@ -58,6 +58,10 @@ def main():
     ap.add_argument('--bat-modules', default='', help='LO:HI: write only the Bat modules LO <= index < HI (counted '
                     'over all covers in order), nothing else')
     ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
+    ap.add_argument('--scan2', action='store_true', help='haarcert scan2 (2 bytes per element, the words of --scan)')
+    ap.add_argument('--leaf', type=int, default=4096,
+                    help='bits per literal in the certificate trees (16384 gives oleans of about 5.9 bytes per slot '
+                         'instead of 8.1)')
     ap.add_argument('--blocks', action='store_true', help='RD, RZ (and NRD) as sums of p blocks of n fields '
                     '(LeanAll/Blocks.lean), for large batches')
     args = ap.parse_args()
@@ -76,7 +80,7 @@ def main():
     for kd in kinds:
         out = os.path.join(args.certdir, f'{base}_{kd}.bin')
         if not os.path.exists(out):
-            r = subprocess.run([args.haarcert, args.sol, kd, out] + (['scan'] if args.scan else []),
+            r = subprocess.run([args.haarcert, args.sol, kd, out] + (['scan2'] if args.scan2 else ['scan'] if args.scan else []),
                                capture_output=True, text=True)
             sys.stderr.write(r.stderr)
             if r.returncode != 0:
@@ -200,7 +204,7 @@ def main():
                     assert 5 * (b + 1) * N <= len(data), 'certificate file cut below this batch'
                     used[0] = min(used[0], b)
                     dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
-                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked(dig)}, by decide +kernel⟩\n\n')
+                    f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked(dig, chunk=args.leaf)}, by decide +kernel⟩\n\n')
                 leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
