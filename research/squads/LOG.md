@@ -67,3 +67,21 @@ Director: **certificate: SmallGroup(355,1) = C71⋊C5 has no Haar graph of diame
 S ⊇ {e, r}, r one representative per Aut(G)-orbit: 5 × 6.4·10⁸ sets; minimum 2). The cost-2 set of 615/1 has no
 solution within 3 swaps (exact). haar_fast patched to keep near misses (tools/haar_fast_sb.c, SAVEBEST=1) and
 tables in its numbering (tools/metatab.py), so farms feed the exact neighbourhood search (haar5 lns / complete).
+
+## 2026-10-26, hunt-d5 round 4: farms with near-miss saving + exact LNS; (6,5) screens; **(9,5) 2,756**
+
+16 cards, 15:08–15:30 UTC (research/squads/hunt-d5/r4/). New tools: haar_fast/haar_tab SAVEBEST, metatab.py, haar5 lns.
+Cards: c1/c2 (9,5) Z53⋊Z26 farm + LNS (switched to Z197⋊Z7 and Z463⋊Z3 after the director's find) · c3 Z197⋊Z7 · c4
+other 1378 forms, 1395, 1405 · b1 615 farm + LNS · b2 610, 618 · b3 non-metacyclic 606–650 · d1/d2 (6,5) screens
+343–368 · d3 per-edge F₂ route charts on mixed controllers · d4 360/51 farm + LNS + 3-swap · d5 (6,5) 2+2 / 3+3 lifts ·
+a1 (5,5) exact order 224 · a2 (5,5) exact 225–232 · w1 pattern-then-fill · w2 genetic search.
+
+Best per card (reported so far): c1 **2 on Z197⋊Z7 (1379) in 2 of 26 seeds** · c2 10 (1389) · c4 8 (1395) · b1 4 · b2
+4 (610: 5/16 seeds; 618) · d3 controllers with 4-cycles only (512 vertices at m = 16; mixed controllers fail at the
+4-cycle-free vertices) · d4 4 by annealing, 2 in the exact 3-swap neighbourhoods · w1 2 (plateau) · w2 no better than
+farms. Others still running at this entry.
+
+**Director: (9,5) 2,756 vertices**: Haar graph of Z53 ⋊₁₆ Z26 = C2 × (C53 ⋊ C13), found by the director's farm (seed
+7058, 15 s runs, K = 16, COOL = 10, REHEAT = 40; ~200 seeds in all; cost 0 after 0.2 s of that seed). build_haar2.py
+VALID, apsp VALID d=9 D=5 n=2756. The squads found the group (r2 c1: cost 4; r3 c2, c3: cost 2), the director's tools
+and farm closed it. Also exact certificates: (6,5) SmallGroup(351,12) and (357,1) have no Haar graph.
