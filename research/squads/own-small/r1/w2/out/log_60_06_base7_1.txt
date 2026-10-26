@@ -1,0 +1,13 @@
+group groups/b60/g60_06.bin N=60 H=15 rows=4 base b=14 m=21 free=8 n=840 start cost=261
+t=0.0 evals=10 best=209
+t=0.0 evals=34 best=202
+t=0.0 evals=38 best=174
+t=0.0 evals=79 best=139
+t=0.0 evals=371 best=131
+t=0.1 evals=1069 best=124
+t=0.1 evals=1323 best=109
+t=1.6 evals=40250 best=94
+t=1.7 evals=41301 best=75
+t=10 evals=262178 cur=75 best=75
+RESULT d=3 D=10 group=groups/b60/g60_06.bin base=base7_1.txt n=840 best=75 evals=484266 time=18.0
+wrote out/a_60_06_base7_1 and out/a_60_06_base7_1.edges (cost 75)

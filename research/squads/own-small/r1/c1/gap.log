@@ -1,0 +1,9 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/own-small/tools/gap_export_aut.g:9
+    el := Concatenation([One(G)], Filtered(AsSSortedList(G), x -> x <> One(G))\
+);
+                                                                           ^
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/own-small/tools/gap_export_aut.g:13
+    reps := List(orbs, o -> Minimum(List(o, x -> Position(el, x))) - 1);
+                                                          ^^

@@ -1,0 +1,5 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/own-small/r1/b2/work/export_noaut.g:9
+    el := Concatenation([One(G)], Filtered(AsSSortedList(G), x -> x <> One(G))\
+);
+                                                                           ^
