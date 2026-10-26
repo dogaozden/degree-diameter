@@ -143,7 +143,7 @@ def total(sig):
     dd = sum(cp + cl for i, (p, l, cp, cl, h) in enumerate(d1.d1(F, sig)) if i in FD)
     return c0b + cov + dd, (c0b, cov, dd)
 
-HARD = None; HB = [False]
+HARD = None; HB = [False]; KICKF = [None]
 if os.environ.get('HARDPAIR'):
     _t = os.environ['HARDPAIR'].split(); _a, _b = sorted((int(_t[1]), int(_t[2])))
     _Ar, _Br = (PA, PB) if _t[0] == 'p' else (LA, LB)
@@ -280,6 +280,7 @@ def step(sig, Sset, secs, seed, Phi=(), force=None):
     inPhi = np.zeros(N * 8, bool); inPhi[list(Phi)] = True
     Vn = {}
     nuh = nu
+    if HARD is not None and HB[0] and KICKF[0] in Phi: nuh = nu.copy(); nuh[KICKF[0]] ^= 1   # feasible hint for the kick
     for f in Phi:
         v = m.NewBoolVar(''); Vn[f] = v; m.AddHint(v, bool(nuh[f])); hv[v.Index()] = bool(nuh[f]); hv[v.Not().Index()] = not nuh[f]
     hard_ok = [force is None]; fbv = [None]
@@ -502,6 +503,7 @@ def focus(sig):
     if os.environ.get('CHEAP'):   # first-order flags ordered by how many unrouted pairs their flip alone unmixes
         cc = {f: crit(f, sig, rp, rl) for f in fl}
         fl.sort(key=lambda f: len(cc[f]) + rng.random() * float(os.environ.get('CHEAPNOISE', 2)))
+    if HB[0]: KICKF[0] = min(fl, key=lambda f: len(crit(f, sig, rp, rl)) + rng.random())
     phi = list(fl); cps = []
     for f in fl[:int(os.environ.get('NF1', 6))]:
         c = crit(f, sig, rp, rl); rng.shuffle(c); cps += c
@@ -556,6 +558,7 @@ while cur > 0 and time.time() - t0 < secs:
     kick = FOCUS and HB[0]
     if kick or c2 <= cur or (FOCUS and float(os.environ.get('FT', 0)) > 0 and rng.random() < np.exp(-(c2 - cur) / float(os.environ['FT']))):
         sig, cur = new, c2
+        if kick: best = cur + 1; print('kick accepted: hard pair fixed, new baseline', cur, flush=True)
         if cur < best or cur == 0: best = cur; write(sig); bsig, bnu, lastb = sig.copy(), nu.copy(), it
     else:
         nu[:] = nu_old; set_unmixed(nu)
