@@ -1,0 +1,18 @@
+group prod sl 7 psl 11 x Z_19, N=4213440, identity 527725, H order 57, rows 73920, threads 1, setup 0.14s
+wide rows: HW order 228, rows 18480, setup 0.27s
+alpha: conj by prod[mat(2,0,1,4);mat(5,2,6,7)] (index 61287), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 42.96, mu/k = 14.32, fixed-point misses ~ 1.56
+ORBW=5: an uncovered fixed element weighs 5; start energy 264
+start cost=264
+t=30 steps=356 evals=2849 cost=38 best=38 T=0.53 energy=46 bestE=46
+t=60 steps=719 evals=5753 cost=36 best=36 T=0.19 energy=36 bestE=36
+t=90 steps=1114 evals=8913 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=120 steps=1509 evals=12073 cost=36 best=36 T=0.15 energy=36 bestE=36
+t=150 steps=1875 evals=15001 cost=31 best=31 T=0.15 energy=35 bestE=35
+t=180 steps=2249 evals=17993 cost=26 best=26 T=0.15 energy=34 bestE=34
+t=210 steps=2625 evals=21001 cost=9 best=9 T=0.15 energy=21 bestE=21
+t=240 steps=3014 evals=24113 cost=9 best=9 T=0.15 energy=21 bestE=21
+t=270 steps=3396 evals=27169 cost=9 best=9 T=0.15 energy=21 bestE=21
+t=300 steps=3779 evals=30233 cost=9 best=9 T=0.15 energy=21 bestE=21
+t=330 steps=4170 evals=33361 cost=9 best=9 T=0.15 energy=21 bestE=21
+t=360 steps=4531 evals=36249 cost=32 best=9 T=0.72 energy=40 bestE=21
