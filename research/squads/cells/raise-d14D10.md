@@ -56,8 +56,28 @@ PSL(2,151) x Z_397 (34.2, fix 74), PSL(2,139) x Z_511 (36.7, fix 67).
   4,577 evals (cost 9 until about 1,700 s, 3 from about 3,000 s).
 - PSL(2,149) x Z_409 (N 676,445,100, mu 28.5, fix 74), FAST=1 THREADS=2 seed 2, 5400 s: NOT solved. Best 3 after
   2,401 evals (cost 3 from about 1,600 s on).
-- PSL(2,163) x Z_313 (N 677,736,396, mu 29.5, fix 80), FAST=1 THREADS=2 seed 3, 3600 s: running since 06:07 UTC. Seed 2
-  with FAST=2 reached best 1 in round 2.
+- PSL(2,163) x Z_313 (N 677,736,396, mu 29.5, fix 80), FAST=1 THREADS=2 seed 3, 3600 s: NOT solved. Best 9 after
+  1,553 evals. Seed 2 with FAST=2 reached best 1 in round 2, so either the seed or FAST=1 matters here.
+
+## Round 3 summary and stop reason
+
+- No new record. The record stays **(14,10) >= 1,350,537,864** (N 675,268,932, PSL(2,157) x Z_349, round 2).
+- Tried above the record, all orbit k=3, m=4, f=2, THREADS=2, FAST=1: PSL(2,131) x Z_601 (best 3, 2,689 evals),
+  PSL(2,113) x Z_937 (best 3, 4,577 evals), PSL(2,149) x Z_409 (best 3, 2,401 evals), PSL(2,163) x Z_313 seed 3
+  (best 9, 1,553 evals). The first FAST=2 attempt (PSL(2,131) x Z_601) was OOM-killed.
+- Stopped at the 6-hour mark, not because the cell is exhausted. Round 3 ran 1h25m to 07:08 UTC over four jobs.
+- Lesson: the three low-fix rungs (fix 56-74, mu 27.8-28.5) all stalled at cost 3 (one orbit or one fixed point
+  uncovered), in 2.4k-4.6k evals. Lower fix did not solve here, unlike round 2's 157 x 349. Only one seed per rung was
+  run, and fix/FAST differ between rounds, so no conclusion about either yet.
+
+## Next steps (for round 4)
+
+1. Memory first: FAST=1 THREADS=2 used 3.6 GB in setup and grew to 10.3 GB during search; the cgroup limit is about 14 GB.
+2. More seeds on the cost-3 rungs (131 x 601, 113 x 937, 149 x 409), with the same FAST=1 settings, longer than 5400 s
+   if the budget allows. Cost 3 has stayed there for most of the run, which suggests a long tail rather than a wall.
+3. Untried rungs above 675,268,932: PSL(2,127) x Z_661 (N 676.9M, mu 28.9, fix 62), PSL(2,169) x Z_283 (33.8, 83),
+   PSL(2,151) x Z_397 (34.2, 74), PSL(2,139) x Z_511 (36.7, 67), PSL(2,241) x Z_97 (30.4, about 119, high fix).
+   Use `orb_screen.py --list --nmax 1000` for the full table.
 
 ## Round 2 summary (for reference)
 
