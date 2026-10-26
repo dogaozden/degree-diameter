@@ -25,3 +25,6 @@ rebuilt on the Mac mini with build_d3D10_n810.py from d3D10_n810_c3xheis27.txt; 
 apsp_mt (all pairs, no symmetry): n=810 edges=1215 degree min=3 max=3 bipartite=yes diameter=10 -> RESULT VALID d=3 D=10 n=810
 a second 810 graph (lift of a 5+5 base over SmallGroup(81,12), d3D10_n810_lift5_sg81_12.edges, sha256 3b167f92...) is also VALID.
 
+== (3,11) 1,320 — own-small: voltage lift of a 4+4 cubic base over C3 x (Z11 x|_3 Z5) = SmallGroup(165,1)
+rebuilt on the Mac mini with build_d3D11_n1320.py from d3D11_n1320_c3xf55.txt; edge set identical to the finder's .edges; apsp_mt (all pairs): RESULT VALID d=3 D=11 n=1320. A second 1,320 graph (lift4_sg165_1) is also VALID.
+

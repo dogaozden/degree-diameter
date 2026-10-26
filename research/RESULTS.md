@@ -236,3 +236,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 26 11:17 PT (harvest): (7,10) 2,298,240 (was 2,237,760), prod sl 7 psl 19 n 1; claude/raise-d7d10-record-7d5zrr.
 - Oct 26 11:17 PT (harvest): (8,10) 8,043,840 (was 7,818,096), prod psl 7 psl 19 n 7; claude/raise2-8-10-record-dmm6z4.
 - Oct 26 11:17 PT (coordinator): (3,10) 810 (new cell for us; table 800): voltage lift of a 5+5 cubic base over C3 x He3; claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.
+- Oct 26 13:17 PT (coordinator): (3,11) 1,320 (raised, was 1,080; beyond the 2013 table): voltage lift over SmallGroup(165,1); claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.
