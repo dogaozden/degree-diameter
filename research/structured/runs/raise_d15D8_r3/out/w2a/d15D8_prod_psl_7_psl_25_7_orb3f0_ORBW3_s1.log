@@ -1,0 +1,7 @@
+group prod psl 7 psl 25 poly x^2+2 x Z_7, N=9172800, identity 1148700, H order 52, rows 176400, threads 1, setup 0.34s
+wide rows: HW order 182, rows 50400, setup 0.75s
+alpha: conj by prod[mat(0,1,6,1);mat(8,0,14,23)] (index 11239), z -> 2 z on Z_7
+ORBIT k=3 m=5 f=0: |Fix(alpha)| = 35 (+e); mu = 38.70, mu/k = 12.90, fixed-point misses ~ 0.58
+ORBW=3: an uncovered fixed element weighs 3; start energy 69
+start cost=69
+t=30 steps=210 evals=1681 cost=12 best=12 T=0.53 energy=12 bestE=12

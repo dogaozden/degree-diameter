@@ -244,3 +244,59 @@ for these groups in this budget.
 - Leads not yet exhausted: psl 67 × Z61 at more seeds (one seed of two solved; the other reached cost 3), and the screened
   groups at μ 38–40 with longer budgets. The μ ≈ 40 groups need more than the 5400 s budget here.
 - Wave 1–3 runs that were stopped (j, k, l) and the final-wave logs are in `runs/raise_d15D8_r2/out/`.
+
+---
+
+## Round 3 (job "raise3-15-8", Haiku worker, 2026-10-26)
+
+Branch: `claude/raise-d15d8-round3-4sc7rb` (designated branch; based on `claude/raise-d15d8-resume-kwwllj`, round 2).
+
+**Bar to beat: 18,342,456** = 2·|PSL(2,67) × Z61| (round 2, psl 67 × Z61, plain S, seed 6; verified by haar_sym,
+haarcheck_psl and build_haar2.py). The brief's 18,128,880 is older: round 1 (18,156,528) and round 2 (18,239,520,
+18,342,456) already beat it. Any solve needs N = |G| > 9,171,228. Pending coordinator check on round 2's record.
+
+**Not repeated from round 2:** psl 67 × Z61 (plain and ORBW=3, seeds 6/7 done; same N as the bar, so no new record
+possible), psl 79 × Z37, sl 25/23 × Z589/Z757, psl 27 × Z937, psl 31 × Z619, sl 37 × Z181, psl 37 × Z361, psl 31 × Z613,
+and everything at k = 3 in the round-1 list.
+
+**What round 1 and 2 never tried:** any orbit type other than k = 3, m = 5, f = 0. STRUCTURE.md (§2.3, §7) argues
+that for k = 5 the per-orbit load is μ/5 and the α-fixed misses are |Fix|·e^{−λ/5}, so a k = 5 orbit search can run
+at a higher μ than k = 3 (the (11,8) record was solved at μ = 60 with k = 5). Here λ = W/N ≈ 12.4, so
+μ ≈ 60 needs N ≈ 9.45 M.
+
+### Screen (orb_screen.py + RANDORB 300 samples, k = 5, m = 3, f = 0; `runs/raise_d15D8_r3/` logs)
+
+| group | N | μ | |Fix| | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|
+| prod psl 9 × psl 9 × Z71 | 9,201,600 | 40.4 | 24 | 10 | 17 | 33 | 56 |
+| psl 41 × Z271 | 9,333,240 | 48.7 | 19 | 18 | 29 | 41 | 68 |
+| sl 31 × Z311 | 9,255,360 | 43.6 | 29 | 27 | 30 | 46 | 73 |
+| pgl 31 × Z311 | 9,255,360 | 43.6 | 29 | 12 | 31 | 47 | 89 |
+| sl 61 × Z41 | 9,303,720 | 46.7 | 59 | 22 | 26 | 41 | 64 |
+
+sl 32 × Z281 and pgl 32 × Z281 have no order-5 conjugation (no element of order 5 in SL(2,32)): haar_sym refuses them.
+
+Reference, k = 3 at μ = 38.6 (psl 67 × Z61, the bar, solved): min 15, p1 23, p10 34, median 52.
+
+### Screen (k = 3, m = 5, f = 0, product groups just above the bar; μ ≈ 38.7–40)
+
+| group | N | μ | |Fix| | min | p1 | p10 | median |
+|---|---|---|---|---|---|---|---|
+| prod psl 7 × psl 25 × Z7 | 9,172,800 | 38.7 | 35 | 19 | 21 | 31 | 49 |
+| prod psl 3 × psl 49 × Z13 | 9,172,800 | 38.7 | 71 | 24 | 24 | 37 | 55 |
+| prod psl 3 × sl 25 × Z49 | 9,172,800 | 38.7 | 71 | 18 | 27 | 42 | 61 |
+| prod psl 3 × psl 17 × Z313 | 9,194,688 | 40.0 | 107 | 39 | 48 | 80 | 154 |
+| prod psl 7 × sl 7 × Z163 | 9,201,024 | 40.3 | 17 | 27 | 36 | 51 | 78 |
+
+(prod psl 3 × … has a huge variance in the full cost distribution: the A4 factor mixes badly on some samples.)
+
+### Runs (5400 s each, single thread, `tools/orbq.sh`, `runs/raise_d15D8_r3/out/`)
+
+| job | group | k m f | flags | seed |
+|---|---|---|---|---|
+| w1a | prod psl 9 × psl 9 × Z71 | 5 3 0 | ORBW=5 | 1 |
+| w1b | prod psl 9 × psl 9 × Z71 | 5 3 0 | plain | 2 |
+| w2a | prod psl 7 × psl 25 × Z7 | 3 5 0 | ORBW=3 | 1 |
+| w2b | prod psl 7 × psl 25 × Z7 | 3 5 0 | plain | 2 |
+
+Status of the wave is below (updated at each checkpoint).

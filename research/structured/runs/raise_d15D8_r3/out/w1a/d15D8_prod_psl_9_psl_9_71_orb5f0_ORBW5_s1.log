@@ -1,0 +1,14 @@
+group prod psl 9 poly x^2+1 psl 9 poly x^2+1 x Z_71, N=9201600, identity 922716, H order 20, rows 460080, threads 1, setup 0.26s
+wide rows: HW order 213, rows 43200, setup 0.48s
+alpha: conj by prod[mat(5,5,7,2);mat(1,5,7,7)] (index 119248), z -> 5 z on Z_71
+ORBIT k=5 m=3 f=0: |Fix(alpha)| = 24 (+e); mu = 40.35, mu/k = 8.07, fixed-point misses ~ 2.12
+ORBW=5: an uncovered fixed element weighs 5; start energy 90
+start cost=82
+t=30 steps=228 evals=1825 cost=15 best=7 T=0.53 energy=15 bestE=15
+t=60 steps=460 evals=3681 cost=5 best=5 T=0.19 energy=5 bestE=5
+t=90 steps=726 evals=5809 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=120 steps=965 evals=7721 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=150 steps=1153 evals=9225 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=180 steps=1362 evals=10897 cost=5 best=5 T=0.15 energy=5 bestE=5
+t=211 steps=1554 evals=12433 cost=6 best=5 T=0.68 energy=10 bestE=5
+t=241 steps=1735 evals=13881 cost=6 best=5 T=0.24 energy=10 bestE=5
