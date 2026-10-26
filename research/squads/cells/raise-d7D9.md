@@ -180,3 +180,30 @@ Candidates with good mixing (min ≤ 110 and p10 ≤ 400) that round 1 or 2 did 
 - **psl 25 × 31** (N 241,800, μ 58.0, |Fix| 11): min 53, p1 89, p10 168, median 431. Not tried; μ is high.
 Already tried by rounds 1–2 (best costs): psl 17×97 (12), psl 13×217 (27), psl 41×7 (18–21), sl 17×49 (12), psl 13×215 (32),
 sl 16×57 (15–16), psl 17×95 (17).
+
+- Wave 2 finished (2400 s each, 10–13·10⁶ evaluations per run, ORBW 3, seed 21). No solve:
+  sl 13×109 best 48; pgl 13×109 best 30; psl 25×31 best 18 (μ 58); sl 11×181 best 84.
+
+## Conclusion of round 3 (stopped at about 1.3 h of the 6 h budget)
+
+No record. The record stays at 462,840 (|G| = 231,420). Round 3 used about 8·10⁷ evaluations over eight new anneals
+(two waves of four, ORBW 3, k = 3, m = 2, f = 1): the four untried candidates with good random mixing plus the four
+round-2 orders again with the fixed-point weight. Best costs 15–84; nothing reached 0.
+
+Why I am stopping, and why I think the orbit method cannot move this cell at this budget:
+1. The window (231,421..245,000) has no order that combines low μ (≤ 45) with good random mixing. The screen
+   (research/squads/cells/raise-d7D9_screen_window_2026-10-26.txt) shows the lowest-μ orders (PSL(2,9)×Z643 μ 38.3,
+   SL(2,7)×Z691 μ 39.4, PSL(2,7)×Z1381 μ 39.1, PGL(2,5)×Z1933 μ 39.1) are small-Q with a large cyclic factor and
+   their random costs are 10–1000× the record group's. The best-mixing orders start at μ ≈ 47–50.
+2. At μ 47–50 every good-mixing order plateaued at cost 12–48 across 2–3·10⁸ evaluations in total over rounds 1–3
+   (the record group solved at μ 38 with 1.5·10⁶ evaluations). Fixed-point weighting (ORBW) does not change this.
+3. Voltage lifts with a multi-vertex base (research/lifts/, claude/voltage-lifts-search-6lfotq) were not run: their
+   RESULTS.md §3.5 model says random-like k-vertex bases lose against Haar at this order, and no structured base is
+   known for (7,9). This is the one route that changes the first-moment ceiling, and it needs an algebraic base.
+4. Not run, judged low-yield without a new family in the code: SL(3,q) (STRUCTURE.md §7.3) and field-automorphism
+   α on SL(2,8) or PΓL(2,8) (small Q, same mixing problem as item 1).
+
+Recommendation for the coordinator: the (7,9) cell does not move further with the orbit search at this budget. The next
+step that could change the answer is structural and needs a bigger model: an algebraic base for a multi-vertex voltage
+lift (the (3,8) field-affine 2+2 recipe, extended to Δ = 7, D = 9), or an SL(3,q) family in haar_sym. Either would be
+a new program, not another round of the same search.
