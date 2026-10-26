@@ -146,3 +146,10 @@ round 2 ended, and their results are not on the branch. They are the first thing
 - 01:4x wave 1: sl 89x247 k=3 seeds 11 (10,000 s) and 12 (RESTART=1, 10,000 s); sl 157x45 k=4 f=0 seed 1 (2,400 s); sl 191x25 k=4 f=0 seed 1 (2,400 s).
   Two k=4 runs on sl 89x247 were started then stopped (they test the large-n group again; not useful).
 - Results go to scratchpad results.txt; verified solves go to research/frontier/sols/.
+- 02:20 k=4 f=0 wave 1 (2,400 s, seed 1, four-slot): sl 191 x Z25 best 132,574,040; sl 157 x Z45 best 287,389,760.
+  Both stayed at the start cost for the whole run (1,993 evals each). A cost near 0.76 N or 1.6 N means the BFS
+  reaches only part of the graph: S with f = 0 falls in a set that does not generate a connected Haar graph here.
+  **k = 4 with f = 0 is dropped** (no fix tried). f = 4 with three fixed generators would give d = 16 but is the
+  weak f ≥ 3 case of STRUCTURE §8, not tried.
+- 02:10 wave 2 (10,000 s each): sl 89 x Z247 k=3 seed 13 (RESTART=1) and seed 14 (ORBW=3), joining seeds 11 and 12.
+  Four 10,000 s runs on sl 89 x Z247 are now going, which is the only lead at the bar (348,210,720).
