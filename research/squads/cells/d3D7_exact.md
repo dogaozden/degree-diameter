@@ -42,8 +42,8 @@ symmetric cubic graphs", J. Algebra 322 (2009) 722–740) and Delorme–Gómez�
 Diameter 7 : Bipartite"); it was already in the Conder–Dobcsányi list to 768 vertices (2002). It is 1-arc-regular,
 girth 12, |Aut| = 504; the automorphism group is solvable (derived series 504 > 84 > 4 > 1; VBM by coset enumeration
 from Conder's presentation). In Wedd's list it is F168E. Earlier lab work rebuilt it as a lift of the 2+2 base over
-C2 × (C7 ⋊ C3) (`seeds/conder168.edges` on the d3D7 branch). Found by searching a census of symmetric graphs, not by a
-construction aimed at the problem.
+C2 × (C7 ⋊ C3) (`seeds/conder168.edges` on the d3D7 branch). On the Conder–Nedela side it comes out of their census
+of symmetric cubic graphs; how Delorme–Gómez–Quisquater and Loz found it is not documented in anything we could read.
 
 **Censuses (VBM).** In Conder's arc-transitive census to 10,000 vertices the largest diameter-7 graphs have 168
 vertices (C168.1 bipartite, C168.4 not bipartite). In Conder's semisymmetric census to 10,000 vertices only three
@@ -103,8 +103,9 @@ has degree 3. So two deficient vertices are never adjacent. The total deficiency
 (equal edge counts, equal sides), each deficient vertex has deficiency 1, so a perfect matching between the deficient
 vertices of A and of B adds only new edges. Adding edges does not increase distances. ∎
 
-Remark: the matching in (b) can be chosen invariant under any automorphism of odd prime order (match orbit to orbit),
-which is used in §3.
+Remark: if a group H of colour-preserving automorphisms acts freely, the deficient vertices of each side are a union of
+regular H-orbits, equally many on both sides, so the matching in (b) can be chosen H-invariant (pair the orbits, then
+h·a_0 ↦ h·b_0). This is used in §3.
 
 ### 2.3 Diameter 7 is a local condition (Theorem)
 

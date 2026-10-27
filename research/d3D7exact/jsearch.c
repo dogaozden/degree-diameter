@@ -1,14 +1,21 @@
 /* jsearch: exhaustive search for Z_p voltage graphs (cubic bipartite base multigraph on k+k vertices + voltages)
    whose lift has bipartite diameter <= D, D odd. Builds the base and the voltages together, so the bases never
    have to be listed (zplift needs the full base list, which is out of reach for k > 11).
-   Usage: jsearch p k D [-root0 ...]   Output: "SOL" lines (base edges with voltages) and a final "DONE" line.
+   Usage: [SHARD=i/m SHARDDEPTH=d] [PROBE=N] jsearch p k D [maxsol]. Output: "SOL" lines (base edges a-b:voltage) and
+   a final "DONE" line; PROBE=N prints a Knuth estimate of the tree size instead.
 
    Construction (BFS-canonical): vertex 0 (side 0) is the root. The smallest-labelled vertex x with a free
    half-edge is filled next. x's remaining half-edges get a sorted multiset of targets: first existing vertices
    y > x on the other side (sorted by (y, voltage)), then new vertices (next labels, voltage 0: the edges to new
    vertices form a spanning tree, so the gauge is fixed). Every connected base with every labelling reachable by
-   this BFS rule is generated at least once (from every root of side 0). The first nonzero voltage is 1 (scaling
-   by a unit of Z_p). Parallel edges need distinct voltages (else the lift has a double edge).
+   this BFS rule is generated at least once (from every root of side 0). The first nonzero stored voltage (a -> b)
+   is 1 (scaling by a unit of Z_p). Parallel edges need distinct voltages (else the lift has a double edge).
+   Why the scaling rule loses nothing although targets are sorted by the voltage seen from x: scaling can only
+   reorder parallel edges between the same two vertices. If the base has no parallel edges, the construction order
+   does not depend on the voltages and any first nonzero edge can be scaled to 1. If it has a parallel pair {u0, u1}
+   (u0 on side 0), take u0 as the root: u0's edges all go to new vertices, so the first nonzero voltage is the single
+   non-tree parallel edge from u0 to a child (voltage seen from u0 = stored voltage), and it can be scaled to 1.
+   (Validated: same isomorphism classes as zplift on all test cases, see the cell notes.)
    Pruning: for every base vertex u, the NB walks from u of even length <= D-1 inside the partial base give
    (endpoint, voltage) pairs; collisions(u) = #walks - #distinct. In the final base u has 2^D - 1 such walks and
    needs every one of the k*p same-side targets, so collisions(u) <= delta = 2^D - 1 - k*p, and collisions only
