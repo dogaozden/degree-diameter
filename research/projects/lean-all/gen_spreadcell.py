@@ -342,7 +342,7 @@ def main():
             f.write(f'theorem h_{key} : {stmt} :=\n  fun {var} h{var} => '
                     f'{joined([f"{key}{ci:02d}" for ci in range(len(rs))], rs)} {var} (Nat.zero_le _) h{var}\n\n')
         f.write(f'theorem hT : TabOK {coder} {q} {N} {TAB} :=\n'
-                f'  ⟨{cardF}, by rw [card_spt_eq, {cardF}]; norm_num, by rw [HexagonEven.card_hline_even, {cardF}]; '
+                f'  ⟨{cardF}, by rw [Hexagon.card_spt_eq, {cardF}]; norm_num, by rw [HexagonEven.card_hline_even, {cardF}]; '
                 f'norm_num,\n    h_gp, h_gl⟩\n\n')
         f.write(f'theorem hK : {nh} ≤ 2 ^ {KH} := by decide\n\n')
         f.write(f'theorem hHL : LocalSpec {d} {nh} {nbE} (vcol {vb}) := by\n  apply localSpec_of\n  intro u hu\n' +
