@@ -134,37 +134,33 @@ def first_one(xs):
     return False
 
 
-def build(solf, hexf):
+def load_hex(hexf):
+    """H(q) from a hexgen2 file: points (coordinates, codes), lines (point lists), lines through each point."""
     f = open(hexf, 'rb')
     q, N, L = struct.unpack('<3i', f.read(12))
     Q1 = q + 1
     lp = array.array('i')
     lp.frombytes(f.read(4 * L * Q1))
     coord = f.read(N * 7)
-    p = q
     K = Fld(q)
-    code = lambda p_, v: K.code(v)
     pts = [list(coord[7 * i: 7 * i + 7]) for i in range(N)]
-    pcode = [code(p, v) for v in pts]
+    pcode = [K.code(v) for v in pts]
     assert pcode == sorted(pcode) and all(first_one(v) for v in pts)
     lines = [list(lp[l * Q1:(l + 1) * Q1]) for l in range(L)]
     pl = [[] for _ in range(N)]
     for l in range(L):
         for x in lines[l]:
             pl[x].append(l)
-    tok = open(solf).read().split()
-    assert tok[0] == 'multi'
-    q2, N2, r, m, Hn, HP, n = map(int, tok[1:8])
-    assert (q2, N2, r, Hn, HP) == (q, N, 1, m, m)
-    pos = 8
-    assert tok[pos] == 'freed'
-    R = list(map(int, tok[pos + 1: pos + 1 + m])); pos += 1 + m
-    assert tok[pos] == 'hubedges'
-    k = int(tok[pos + 1])
-    hg = list(map(int, tok[pos + 2: pos + 2 + 2 * k])); pos += 2 + 2 * k
-    sig = list(map(int, tok[pos: pos + N]))
-    assert sorted(sig) == list(range(N))
-    assert n == 6 * N + 2 * m
+    return {'q': q, 'N': N, 'K': K, 'pts': pts, 'pcode': pcode, 'lines': lines, 'pl': pl}
+
+
+def local_cert(H, R, sig):
+    """The certificate of LeanAll/HexLocal.lean for the freed points R (hexgen ids) and sigma (point id -> line id,
+    used on R and the points collinear with R): domain points and lines, sigma on them, one certificate per point of
+    R (in domain order). Returns the data and the order of R used."""
+    q, K, pts, pcode, lines, pl = H['q'], H['K'], H['pts'], H['pcode'], H['lines'], H['pl']
+    p = q
+    code = lambda p_, v: K.code(v)
 
     def g2p(x):
         return [y for l in pl[x] for y in lines[l] if y != x]
@@ -173,7 +169,6 @@ def build(solf, hexf):
     dix = {x: i for i, x in enumerate(D)}
     Lam = sorted({sig[x] for x in D})
     assert len(Lam) == len(D)
-    # bases of the image lines
     lbasis = {}
     for l in Lam:
         u, w = pts[lines[l][0]], pts[lines[l][1]]
@@ -185,18 +180,9 @@ def build(solf, hexf):
     sgi = [0] * len(D)
     for i, j in enumerate(sg):
         sgi[j] = i
-    # R in domain order; hub j of the sol is owned by R[j]
+    m = len(R)
     Rord = sorted(range(m), key=lambda j: dix[R[j]])
-    newhub = {j: v for v, j in enumerate(Rord)}
     rl = [dix[R[j]] for j in Rord]
-    hubL = [[] for _ in range(m)]
-    hubR = [[] for _ in range(m)]
-    for t in range(k):
-        a, b = newhub[hg[2 * t]], newhub[hg[2 * t + 1]]
-        hubL[a].append(b)
-        hubR[b].append(a)
-    hubL = [sorted(x) for x in hubL]
-    hubR = [sorted(x) for x in hubR]
     certs = []
     for j in Rord:
         x = R[j]
@@ -215,7 +201,6 @@ def build(solf, hexf):
         xs = [a[1] for a in aux]
         es = [a[2] for a in aux]
         flat = [e for k_ in es for e in k_]
-        # the point y of Gamma_2(r) with sigma(y) = line, by position
         epos = {sig[D[e[0]]]: t for t, e in enumerate(flat)}
         ell = sig[x]
         a, b = lbasis[ell]
@@ -233,13 +218,44 @@ def build(solf, hexf):
             fl.sort()
             zs.append(((pcode[z], al, be), fl))
         certs.append({'xs': xs, 'es': es, 'zs': [z[0] for z in zs], 'fs': [z[1] for z in zs]})
-    return {'p': p, 'q': q, 'N': N, 'm': m, 'n': n, 'ptc': [pcode[x] for x in D],
+    return {'p': p, 'q': q, 'N': H['N'], 'm': m, 'ptc': [pcode[x] for x in D],
             'lnA': [lbasis[l][0] for l in Lam], 'lnB': [lbasis[l][1] for l in Lam], 'sg': sg, 'sgi': sgi,
-            'rl': rl, 'hubL': hubL, 'hubR': hubR, 'certs': certs}
+            'rl': rl, 'certs': certs}, Rord
 
 
-def check(d):
-    """The checks of LeanAll/HexLocal.lean, with the same arithmetic."""
+def build(solf, hexf):
+    H = load_hex(hexf)
+    q, N = H['q'], H['N']
+    tok = open(solf).read().split()
+    assert tok[0] == 'multi'
+    q2, N2, r, m, Hn, HP, n = map(int, tok[1:8])
+    assert (q2, N2, r, Hn, HP) == (q, N, 1, m, m)
+    pos = 8
+    assert tok[pos] == 'freed'
+    R = list(map(int, tok[pos + 1: pos + 1 + m])); pos += 1 + m
+    assert tok[pos] == 'hubedges'
+    k = int(tok[pos + 1])
+    hg = list(map(int, tok[pos + 2: pos + 2 + 2 * k])); pos += 2 + 2 * k
+    sig = list(map(int, tok[pos: pos + N]))
+    assert sorted(sig) == list(range(N))
+    assert n == 6 * N + 2 * m
+    d, Rord = local_cert(H, R, sig)
+    # hub j of the sol is owned by R[j]; renumber by the order of R
+    newhub = {j: v for v, j in enumerate(Rord)}
+    hubL = [[] for _ in range(m)]
+    hubR = [[] for _ in range(m)]
+    for t in range(k):
+        a, b = newhub[hg[2 * t]], newhub[hg[2 * t + 1]]
+        hubL[a].append(b)
+        hubR[b].append(a)
+    d['hubL'] = [sorted(x) for x in hubL]
+    d['hubR'] = [sorted(x) for x in hubR]
+    d['n'] = n
+    return d
+
+
+def check_local(d):
+    """The checks of HexLocal.certOK and of the global tables (no hubs), with the same arithmetic."""
     p, q, M, m = d['p'], d['q'], len(d['ptc']), d['m']
     K = Fld(q)
     ptOK, lnOK, linN = (lambda p_, c: K.ptOK(c)), (lambda p_, a, b: K.lnOK(a, b)), (lambda p_, *a: K.linN(*a))
@@ -284,6 +300,13 @@ def check(d):
                     assert fs[t][s - 1][0] < mm
                 mask |= 1 << e
         assert mask == (1 << (q * (q + 1))) - 1, 'mask'
+    return True
+
+
+def check(d):
+    """The checks of LeanAll/HexLocal.lean, with the same arithmetic."""
+    check_local(d)
+    q, m = d['q'], d['m']
     hubL, hubR = d['hubL'], d['hubR']
     assert all(len(x) <= q - 1 and all(u < m for u in x) for x in hubL)
     assert all(len(x) <= q - 1 and all(u < m for u in x) for x in hubR)
