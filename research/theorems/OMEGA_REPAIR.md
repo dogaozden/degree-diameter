@@ -36,7 +36,7 @@ research/projects/table-audit/omega/NOTES.md). This note asks which relabellings
    is negative at q = 4, 5). Computer: geometric labellings are far worse than random arbitrary labellings at every q
    tested. Annealed geometric labellings leave 805 far pairs at q = 2, 259,169 at q = 3, 18.2 million at q = 4 and 209
    million at q = 5, against about 70, 1,911, 646,000 and 6.6 million for random arbitrary labellings. Annealing inside
-   the class removes 10 % at q = 3 and under 2 % at q = 4, 5 (Computer-checked 4.6). "Polar" labellings, which keep
+   the class removes 10 % at q = 3 and under 2 % at q = 4, 5 (Computer-checked 4.7). "Polar" labellings, which keep
    perpendicularity of points but not the hexagon lines, are also worse than random ones (Computer-checked 5.1).
 5. **What is left.** A repair at q ≥ 4, if one exists, must use non-geometric labellings whose transfer maps scatter
    balls (§5). No counting argument excludes them (the audit's union bound stays near 3). We found no valid graph, so no
@@ -154,7 +154,13 @@ where W is a freely reduced word in the labelling automorphisms and in δ (Lemma
 P_c = a_cP₀, L_c = b_cL₀, L₀P₀⁻¹ = δ|_P), and R is the largest admissible total segment length. The centre has the target
 type if and only if R is even.
 
-*Proof.* As for Lemma 2.1: each transfer is the restriction of an automorphism of I, so it commutes with balls. ∎
+*Proof.* Every geometric labelling has this normal form. Each hub class meets two copies in every block, and inside a
+block the five classes of one bar link the five positions in a 5-cycle (positions differing by 1 or by 2, depending on
+the bar and the block type). So the copies
+are linked by chains of transfers of each kind, and the labellings of one type in different copies differ by
+collineations; a transfer from points to lines is a duality restricted to points. In reading 2 there are no such
+transfers, so geometric = twisted. Then argue as for Lemma 2.1: each transfer is the restriction of an automorphism of
+I, so it commutes with balls. ∎
 
 ## 3. The counting theorem
 
@@ -241,7 +247,8 @@ cover opp(t). At q = 7 the overlaps of the radius-4 balls and the group structur
 **Setting for this section.** q = 7. Geometric labellings exist only in reading 2 and in its point/line dual (unbarred
 hubs on lines, barred hubs on points), because 7 is not a power of 3. A *starved pair* is a hub class X and a copy c'
 it misses with exactly five twisted radius-4 centres. Computer-checked 4.0 (`logs/q7_starved_pairs.txt`,
-`logs/q7_starved_by_bar.txt`, `routes_dump.c`, the route search of `twist.c`): every block pattern has starved pairs with X
+`logs/q7_starved_by_bar.txt` from `routes_dump.c`, the route search of `twist.c`; the same numbers from the independent
+word search `routecount2 starved 7 5`, `logs/q7_starved_routecount2.txt`): every block pattern has starved pairs with X
 unbarred and starved pairs with X barred, and every starved pair has m₂ ≤ 140. Choose the bar whose hubs sit on the
 points of H(7) (unbarred in reading 2, barred in the dual reading). For a hub (t, X) of that class the five radius-4
 centres are yᵢ(t) = gᵢ(t), i = 1, …, 5, where the gᵢ = λ_{c'}λ_{cᵢ}⁻¹ (or the analogous products in the dual reading) are
@@ -304,7 +311,7 @@ t ∈ Perp(gᵢ), and pair (yᵢ, y_j) iff t ∈ Perp(gᵢ⁻¹g_j), since colli
 Σ |Perp(h)| ≥ 6N = 117,648 over the 15 elements h, while Lemma 4.4 gives Σ |Perp(h)| ≤ 15 · 4,144 = 62,160. This is
 a contradiction. ∎
 
-**Corollary 4.7 (all table cells).** For every table value of Gómez's ΩH_q, (10,8) 1,176,480, (11,8) 2,246,940, (12,8)
+**Corollary 4.6 (all table cells).** For every table value of Gómez's ΩH_q, (10,8) 1,176,480, (11,8) 2,246,940, (12,8)
 4,650,100, (14,8) and (15,8) 14,172,480, (16,8) 36,201,060 (q = 7, 8, 9, 11, 11, 13), no relabelling of the copies by
 automorphisms of the hexagon gives diameter 8. This covers collineations chosen independently on points and lines, and
 dualities, under any reading of Figs. 2.21a/b and any mix of block types (Theorems 3.3, 3.5, 4.5).
@@ -313,7 +320,7 @@ dualities, under any reading of Figs. 2.21a/b and any mix of block types (Theore
 −1,024 at q = 5): the radius-2 balls are too many relative to opp(t). At q = 5, moreover, 3 ∤ q − 1, so Lemma 4.4's
 step (iii) fails. These q are not table values. Computationally the class is hopeless there (next item).
 
-**Computer-checked 4.6 (geometric labellings are worse than random ones).** Far pairs (hub, vertex) at distance > 8,
+**Computer-checked 4.7 (geometric labellings are worse than random ones).** Far pairs (hub, vertex) at distance > 8,
 over all 10N hubs. "Random twists": independent random elements of G₂(q) (`mktwist.py rand`). "Annealed": `tanneal.c`
 (moves λ_c ← gλ_c or λ_c g, g from a pool of random elements). Singer: λ_c = s^{e_c} for a Singer cycle s of
 SL(3,q) ≤ G₂(q). Elation: λ_c in one long root group E_ℓ (order q); elation²: in E_ℓE_m (two lines through a point, order
@@ -363,7 +370,7 @@ counts, as Lemma 1.2 says).
 
 What the open cells now are, as mathematical questions:
 - **All table cells, non-geometric labellings.** Is there a labelling of Gómez's wiring, necessarily non-geometric
-  (Corollary 4.7), whose transfers tile each missed copy with the route sets above? A negative answer needs more than
+  (Corollary 4.6), whose transfers tile each missed copy with the route sets above? A negative answer needs more than
   counting, since counting allows about 3 covers.
 - **Other wirings with geometric labellings** (Heuristic 4.8): the two steps "near-exact cover ⇒ line structure" and
   "line structure for all t ⇒ elations of one root group".
