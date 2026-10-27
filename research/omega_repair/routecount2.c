@@ -95,6 +95,23 @@ static double bestbound(int q, int *m4, int *m2) {
     return best;
 }
 int main(int argc, char **argv) {
+    if (!strcmp(argv[1], "total")) {        /* reading 2: sum over all (X, c') of N * max(0, bound): far pairs, at least */
+        int q = atoi(argv[2]); A = atoi(argv[3]); C = 5 * A; double Q = q, N = (pow(Q, 6) - 1) / (Q - 1);
+        for (int na = 0; na <= A; na++) {
+            for (int B = 0; B < A; B++) { btype[B] = B < na ? 'a' : 'b'; binner[B] = B < na ? 'P' : 'L'; } btype[A] = binner[A] = 0;
+            wiring(); double tot = 0; int npos = 0, npairs = 0;
+            for (int X = 0; X < 10; X++) {
+                memset(ncen, 0, sizeof ncen); srcX = X;
+                for (int c1 = 0; c1 < C; c1++) if (att[c1][X]) { wl = 0; int s1 = att[c1][X] - 1; if (s1) push_left(2 * DELTA); push_left(2 * SYM(c1, s1)); dfs(c1, att[c1][X], X, 1, 0, 1); }
+                for (int cp = 0; cp < C; cp++) if (!att[cp][X]) { int m[5] = {0}; npairs++;
+                    for (int i = 0; i < ncen[cp]; i++) m[cen[cp][i].R]++;
+                    double s = pow(Q, 5) - (m[4] - 1) * pow(Q, 4) - m[3] * pow(Q, 3) - m[2] * Q * Q - m[1] * Q - m[0];
+                    if (s > 0) { tot += s * N; npos++; } }
+            }
+            printf("q=%d types a^%d b^%d: %d of %d (hub class, missed copy) pairs have a positive bound; far pairs >= %.4g\n", q, na, A - na, npos, npairs, tot);
+        }
+        return 0;
+    }
     if (!strcmp(argv[1], "sweep")) {
         for (int a = atoi(argv[2]); a <= atoi(argv[3]); a++) {
             A = a; C = 5 * A; double worst[2] = {1e30, 1e30}; int wk[2] = {0, 0}, w4[2], w2[2];

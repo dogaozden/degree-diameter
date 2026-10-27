@@ -1,4 +1,4 @@
-# Repairing Gómez's ΩH_q by relabelling the copies: geometric relabellings cannot work for q ≥ 8
+# Repairing Gómez's ΩH_q by relabelling the copies: geometric relabellings cannot work for q ≥ 7
 
 Job thm-omega-repair (Opus, 27 October 2026), branch `claude/thm-omega-repair-m4luls`. Tools and logs:
 `research/omega_repair/` (README there). Labels: **Theorem** (proved here by hand), **Computer-checked** (a statement
@@ -15,31 +15,37 @@ research/projects/table-audit/omega/NOTES.md). This note asks which relabellings
 1. **Relabelling a copy by one collineation (the same on points and lines) changes nothing**: the graph is isomorphic to
    the thesis graph (Lemma 1.2). Relabelling by dualities only changes which colour class of a copy carries which hubs,
    which is the setting of Theorem 2 of d12D8_table.md (diameter ≥ 9 for q ≥ 7).
-2. **Main result (Theorem 3.3).** Call a labelling *geometric* if every transfer map (the mark of a hub in one copy to
-   its mark in another copy) is the restriction of an automorphism of the incidence graph of H(q): a collineation, or a
-   duality when q = 3^e. This contains every "collineation coset" labelling, where copy c labels its points by
-   a collineation a_c and its lines by a possibly different collineation b_c (the first rung above the thesis). **For
-   every q ≥ 8 and every geometric labelling of Gómez's wiring (any mix of the two block types, reading 2 of the figures),
-   ΩH_q has diameter ≥ 9.** For q = 8, 9, 11, 13 the same holds for every reading of the figures and every choice of
-   inner classes, dualities included (Theorem 3.5). This covers every table entry except (10,8). The proof is a count:
-   in a geometric labelling every route from a hub into a copy it misses reaches one ball of the hexagon, and Gómez's
-   wiring gives some hub only α = ⌊(q+3)/2⌋ routes of length ≤ 7 into some copy, too few balls to cover it.
-3. **Explicit far vertices.** In that pair, every hub (t, k) has at least q⁵ − αq⁴ − m₂q² vertices at distance ≥ 9 in
-   the missed copy: at least 3,712 at q = 8, 3,726 at q = 9, 26,862 at q = 11 and 84,162 at q = 13 (Computer-checked 3.4).
-4. **q ≤ 7.** The count is not enough (the bound is −1,764 at q = 7). At q = 7 it is enough under a general-position
-   condition on one point t (Theorem 4.2), which we cannot prove holds for every labelling. Computer: geometric labellings
-   are far worse than random arbitrary labellings at every q tested. Annealed geometric labellings leave 805 far pairs at
-   q = 2, 259,169 at q = 3, 18.2 million at q = 4 and 209 million at q = 5, against about 70, 1,911, 646,000 and 6.6
-   million for random arbitrary labellings. Annealing inside the class removes 10 % at q = 3 and under 2 % at q = 4, 5
-   (Computer-checked 4.3).
+2. **Main results (Theorems 3.3, 3.5, 4.5).** Call a labelling *geometric* if every transfer map (the mark of a hub in
+   one copy to its mark in another copy) is the restriction of an automorphism of the incidence graph of H(q): a
+   collineation, or a duality when q = 3^e. This contains every "collineation coset" labelling, where copy c labels its
+   points by a collineation a_c and its lines by a possibly different collineation b_c (the first rung above the thesis).
+   **For every q ≥ 7 and every geometric labelling of Gómez's wiring, ΩH_q has diameter ≥ 9.** This holds for any mix
+   of the two block types and reading 2 of the figures; for q = 7, 8, 9, 11, 13 it holds for every reading and every
+   choice of inner classes, dualities included. **This covers all six table entries (10,8) … (16,8).** In a geometric
+   labelling every route from a hub into a copy it misses reaches one ball of the hexagon. Gómez's wiring gives some hub
+   only α = ⌊(q+3)/2⌋ routes of length ≤ 7 into some copy ("starved" pairs). For q ≥ 8 a count shows these balls cannot
+   cover the copy (Theorem 3.3). For q = 7 the count needs two more ingredients. Bonferroni inequalities settle every
+   point t whose six ball centres are in general enough position. The degenerate positions force many perpendicular
+   pairs, and a character-sum bound shows that no collineation of H(7) without fixed points moves more than 4,144 of the
+   19,608 points to perpendicular points (Lemma 4.4, Theorem 4.5).
+3. **Explicit far vertices (q ≥ 8).** In a starved pair, every hub (t, k) has at least q⁵ − αq⁴ − m₂q² vertices at
+   distance ≥ 9 in the missed copy: at least 3,712 at q = 8, 3,726 at q = 9, 26,862 at q = 11 and 84,162 at q = 13
+   (Computer-checked 3.4). Summed over all starved pairs, every geometric labelling leaves at least 3.3·10⁹ (q = 8),
+   7.4·10⁹ (q = 9), 1.6·10¹¹ (q = 11) and 1.4·10¹² (q = 13) far pairs (`logs/total_far_lower_bounds.txt`).
+4. **q ≤ 5 (not table values).** Neither the count nor the q = 7 argument is enough (the general-position bound itself
+   is negative at q = 4, 5). Computer: geometric labellings are far worse than random arbitrary labellings at every q
+   tested. Annealed geometric labellings leave 805 far pairs at q = 2, 259,169 at q = 3, 18.2 million at q = 4 and 209
+   million at q = 5, against about 70, 1,911, 646,000 and 6.6 million for random arbitrary labellings. Annealing inside
+   the class removes 10 % at q = 3 and under 2 % at q = 4, 5 (Computer-checked 4.6). "Polar" labellings, which keep
+   perpendicularity of points but not the hexagon lines, are also worse than random ones (Computer-checked 5.1).
 5. **What is left.** A repair at q ≥ 4, if one exists, must use non-geometric labellings whose transfer maps scatter
    balls (§5). No counting argument excludes them (the audit's union bound stays near 3). We found no valid graph, so no
    builder is saved.
 
-Answer to the brief: (b) is done for the natural class "π_c in Aut(H(q)) on points and on lines, independently" (and its
-duality extension), for all q ≥ 8 and so for all table cells except (10,8). (a) found nothing: every structured family
-tried (Singer powers, root elation groups, random twists, annealed twists) is worse than random. (c) is answered inside
-the geometric class (items 3 and 4), not for general labellings.
+Answer to the brief: **(b) is done** for the natural class "π_c in Aut(H(q)) on points and on lines, independently" and
+its duality extension, for every q ≥ 7, so for every table cell. (a) found nothing: every structured family tried (Singer
+powers, root elation groups, random and annealed twists, polar labellings) is worse than random. (c) is answered inside
+the geometric class (item 3: explicit numbers of far vertices per hub and of far pairs), not for general labellings.
 
 ## 1. Setting
 
@@ -178,7 +184,7 @@ with barred classes {k+1, k+2} and {k+3, k+4}: one shares. In a b-block, C(k) = 
 check gives one copy per block. ∎
 
 **Theorem 3.3.** Let q ≥ 8. For every block pattern (any number of a- and b-blocks) and every twisted labelling (reading
-2), and more generally every geometric labelling in reading 2, ΩH_q has diameter ≥ 9. For the pair (k, c') of
+2), and more generally every geometric labelling in reading 2 or in its point/line dual, ΩH_q has diameter ≥ 9. For the pair (k, c') of
 Lemma 3.2, every hub (t,k) has at least q⁵ − αq⁴ − m₂q² > 0 vertices of c' at distance ≥ 9, where m₂ is the number of
 distinct radius-2 centres (m₂ ≤ 8α² − 1).
 
@@ -193,7 +199,8 @@ m₂ ≤ 8α² − 1, and
 This is positive when q²(q − α) ≥ 8α². With α ≤ (q+3)/2 it suffices that q²(q − 3) ≥ 4(q+3)², which holds for q = 10
 (700 ≥ 676) and, the left side growing faster, for all q ≥ 10. For q = 8, 9 the exact m₂ of the best pair is used
 (Computer-checked 3.4): the bound is ≥ 3,712 and ≥ 3,726 for every pattern. Each such point is a vertex of c' at odd
-distance > 7, so ≥ 9, from the hub. ∎
+distance > 7, so ≥ 9, from the hub. In the dual reading the same pair has its hubs on lines; Lemma 3.1 holds for lines
+as well, so the same count applies. ∎
 
 **Computer-checked 3.4 (route numbers).** Two independent enumerations, `routecount.c` (the route search of `twist.c`)
 and `routecount2.c` (a separate search over free-group words in the labelling automorphisms), agree. For every pattern
@@ -226,35 +233,87 @@ duality have no geometric labellings, so they are covered vacuously. ∎
 36,201,060 (ΩH_q, q = 8, 9, 11, 13), no relabelling of the copies by automorphisms of the hexagon, collineations on points
 and lines chosen independently, or dualities, gives diameter 8, under any reading of the figures.
 
-## 4. q ≤ 7
+## 4. q = 7, and why q ≤ 5 stays open
 
-At q ≤ 7 the bound of Theorem 3.3 is negative: the α balls of radius 4 could, in principle, cover q⁵ − (number of
-points left for the radius-2 balls). Two refinements and the computations follow.
+At q ≤ 7 the bound of Theorem 3.3 is negative: the α balls of radius 4 and the radius-2 balls could, by size alone,
+cover opp(t). At q = 7 the overlaps of the radius-4 balls and the group structure of the centres close the gap.
+
+**Setting for this section.** q = 7. Geometric labellings exist only in reading 2 and in its point/line dual (unbarred
+hubs on lines, barred hubs on points), because 7 is not a power of 3. A *starved pair* is a hub class X and a copy c'
+it misses with exactly five twisted radius-4 centres. Computer-checked 4.0 (`logs/q7_starved_pairs.txt`,
+`logs/q7_starved_by_bar.txt`, `routes_dump.c`, the route search of `twist.c`): every block pattern has starved pairs with X
+unbarred and starved pairs with X barred, and every starved pair has m₂ ≤ 140. Choose the bar whose hubs sit on the
+points of H(7) (unbarred in reading 2, barred in the dual reading). For a hub (t, X) of that class the five radius-4
+centres are yᵢ(t) = gᵢ(t), i = 1, …, 5, where the gᵢ = λ_{c'}λ_{cᵢ}⁻¹ (or the analogous products in the dual reading) are
+collineations of H(7), so elements of G₂(7) (q is prime). Write Cᵢ = yᵢ^⊥ ∩ opp(t) (Lemma 3.1: |Cᵢ| = q⁴ when yᵢ ≠ t).
 
 **Lemma 4.1 (Theorem; overlaps, q odd).** For distinct points y, y′, t of Q(6,q) with t not on the line yy′ of PG(6,q):
-|y^⊥ ∩ y′^⊥ ∩ opp(t)| ≥ q³ − q. For three points y, y′, y″ not on one line: |y^⊥ ∩ y′^⊥ ∩ y″^⊥ ∩ Q| ≤ (q+1)².
+|y^⊥ ∩ y′^⊥ ∩ opp(t)| ≥ q³ − q. For three points y, y′, y″ not on one line: |y^⊥ ∩ y′^⊥ ∩ y″^⊥ ∩ Q| ≤ (q+1)². For
+points on one totally singular line ℓ not through t, all pairwise and triple intersections equal ℓ^⊥ ∩ opp(t).
 
 *Proof.* |⟨y,y′⟩^⊥ ∩ Q| = q³+q²+q+1 (Lemma 3.1's proof). For a plane Π spanned by three singular points, the Gram
 matrix has zero diagonal, so its rank is 3, 2 or 0, and Π^⊥ (4-dimensional) has a radical of dimension 0, 1 or 3. Its
 quadric points then number (q+1)² or q²+1, q²+q+1, or q²+q+1. So |Π^⊥ ∩ Q| ≤ (q+1)². Apply this with Π = ⟨y,y′,t⟩
-and subtract. ∎ (Sampled check: `overlaps.py`; the minimum q³ − q and the maximum (q+1)² occur.)
+and subtract. The last sentence holds because y^⊥ ∩ y′^⊥ = ℓ^⊥ ⊆ y″^⊥ for y, y′, y″ ∈ ℓ. ∎ (Sampled check:
+`overlaps.py`; the minimum q³ − q and the maximum (q+1)² both occur.)
 
-**Theorem 4.2 (q = 7 in general position).** Let q = 7, reading 2, any pattern and any twisted labelling, and (k, c')
-the best pair of Computer-checked 3.4 (five twisted radius-4 centres y_i(t) = λ_{c'}λ_{c_i}⁻¹(t), m₂ ≤ 134). If for some
-point t the six points t, y₁(t), …, y₅(t) are distinct and no three of them lie on a line of PG(6,7), then hub (t,k) has
-at least 956 vertices of c' at distance ≥ 9.
+**Lemma 4.2 (Theorem; coincidences).** If two of t, y₁(t), …, y₅(t) coincide, hub (t, X) has at least
+q⁵ − 4q⁴ − m₂q² ≥ 16,807 − 9,604 − 140·49 = 343 vertices of c' at distance ≥ 9.
 
-*Proof.* Bonferroni on the five sets Cᵢ = yᵢ^⊥ ∩ opp(t): |⋃Cᵢ| ≤ 5q⁴ − 10(q³ − q) + 10(q+1)² = 12,005 − 3,360 + 640 =
-9,285 (Lemma 4.1). The radius-2 balls add ≤ 134 · 49 = 6,566. And 16,807 − 9,285 − 6,566 = 956. ∎
+*Proof.* At most four distinct centres other than t remain; Lemma 3.1 as in Theorem 3.3. ∎
 
-The hypothesis fails at t only if three of the six points are pairwise perpendicular (hexagon distance ≤ 4) and
-collinear in PG(6,7). For a collineation g that is not a long root elation, g(t) ⊥ t holds for about 1/q of the points t
-(sampled: 0.14 at q = 7). For the long root elations with a hexagon line as axis it holds for all t, and t, e(t), e′(t)
-are collinear for e, e′ in one root group. So a twisted labelling escapes Theorem 4.2 only if its twist differences
-behave like elations on every t. We could not exclude that by a proof (see Heuristic 4.4). At q = 5 and q = 4 even the
-general-position bound is negative (−1,024 and −357), so the count alone cannot settle them.
+**Lemma 4.3 (Computer-checked; degenerate positions).** Suppose t, y₁, …, y₅ are distinct. Record which yᵢ lie on a
+common totally singular line through t ("aligned classes": their sets Cᵢ are disjoint) and which sets of ≥ 3 yᵢ lie on a
+line of PG(6,7) not through t ("rich lines"). Bonferroni's inequality |⋃Cᵢ| ≤ S₁ − S₂ + S₃, with the overlaps of
+Lemma 4.1 (and the exact value 5q⁴ − 4|ℓ^⊥ ∩ opp(t)| when all five yᵢ lie on one rich line), together with ≤ 140
+radius-2 balls of ≤ 49 points, leaves a vertex of c' at distance ≥ 9 from (t, X) for 8 of the 17 possible structure
+types. Every one of the other 9 types forces **at least 6** of the 15 pairs among {t, y₁, …, y₅} to lie on a common
+totally singular line, hence to be perpendicular (`degen.py`, log `logs/degen_q7.txt`). The general-position type
+alone gives ≥ 662 far vertices. As a check, `degen_check.py` built 4,000 configurations in H(7) of 15 of the 17 types
+and found the exact union never above the bound (`logs/degen_check_q7.txt`).
 
-**Computer-checked 4.3 (geometric labellings are worse than random ones).** Far pairs (hub, vertex) at distance > 8,
+**Lemma 4.4 (Theorem; few points are moved to perpendicular points).** Let q be odd with 3 | q − 1, and let h ∈ G₂(q)
+fix no point of H(q). Then Perp(h) := {s ∈ P : h(s) ⊥ s} has at most (q⁵−1)/(q−1) + q^{3.5} + q³ + (q−2)q^{1.5}
+points: at most 4,144 of the 19,608 points when q = 7.
+
+*Proof.* Let F(v) = b(v, hv). Its polar form is b(v, (h + h⁻¹)w), so for c ∈ F_q the form R_c = F − cQ has rank
+7 − d_c with d_c = dim ker(h + h⁻¹ − c). With ψ a nontrivial additive character,
+#{v : Q(v) = F(v) = 0} = q⁻² Σ_{a,b} Σ_v ψ(aQ(v) + bF(v)). The terms with b = 0 sum to q⁷, because #{Q = 0} = q⁶. For
+b ≠ 0, aQ + bF = b R_{−a/b}, and a Gauss sum gives |Σ_v ψ(bR_c(v))| = q^{7 − (7 − d_c)/2}. Hence
+|Perp(h)| ≤ (q⁵−1)/(q−1) + Σ_{c ∈ F_q} q^{1.5 + d_c/2}. The kernels for different c are independent, so Σ d_c ≤ 7.
+Each d_c ≤ 4:
+(i) if x² − cx + 1 has roots μ ≠ ±1 in F_q, then ker = E_μ ⊕ E_{μ⁻¹}, and a nonzero μ-eigenvector v has
+b(v,v) = μ²b(v,v), so it is singular: a fixed point. Hence d_c = 0.
+(ii) c = ±2: the (±1)-eigenspace contains no singular vector (it would be a fixed point), so it has dimension ≤ 2 and
+ker(h ∓ 1)² has dimension ≤ 4.
+(iii) x² − cx + 1 irreducible with roots μ, μ⁻¹ = μ^q: d_c = 2·dim ker(h − μ), at most twice the multiplicity of μ.
+The eigenvalues of an element of G₂ on its 7-dimensional module are 1, x, y, xy, x⁻¹, y⁻¹, (xy)⁻¹, and μ can occur three
+times only if μ³ = 1. When 3 | q − 1 that puts μ in F_q, a contradiction. So d_c ≤ 4.
+The sum Σ q^{d_c/2} is convex in each d_c, so it is largest for one d_c = 4, one d_c = 3 and the rest 0. ∎ (Sampled:
+229 fixed-point-free elements of G₂(7), `perpbound.py`: max d_c = 4, max Σd_c = 7, bound − |Perp| ≥ 111; the true values
+are 2,752 and 2,850, `logs/fpfperp_q7.txt`.)
+
+**Theorem 4.5.** For q = 7, every block pattern and every geometric labelling (reading 2 or its dual), ΩH₇ has
+diameter ≥ 9.
+
+*Proof.* Suppose the diameter is 8 and take a starved pair (X, c') whose hubs sit on points (Computer-checked 4.0).
+Consider the 15 collineations gᵢ (1 ≤ i ≤ 5) and gᵢ⁻¹g_j (i < j). Two of t, y₁(t), …, y₅(t) coincide exactly when t
+is fixed by one of them. By Lemma 4.2 none of the 15 has a fixed point. Then for every point t the six points are
+distinct, and by Lemma 4.3 at least six of the 15 pairs are perpendicular. Pair (t, yᵢ) is perpendicular iff
+t ∈ Perp(gᵢ), and pair (yᵢ, y_j) iff t ∈ Perp(gᵢ⁻¹g_j), since collineations preserve perpendicularity. Summing over t,
+Σ |Perp(h)| ≥ 6N = 117,648 over the 15 elements h, while Lemma 4.4 gives Σ |Perp(h)| ≤ 15 · 4,144 = 62,160. This is
+a contradiction. ∎
+
+**Corollary 4.7 (all table cells).** For every table value of Gómez's ΩH_q, (10,8) 1,176,480, (11,8) 2,246,940, (12,8)
+4,650,100, (14,8) and (15,8) 14,172,480, (16,8) 36,201,060 (q = 7, 8, 9, 11, 11, 13), no relabelling of the copies by
+automorphisms of the hexagon gives diameter 8. This covers collineations chosen independently on points and lines, and
+dualities, under any reading of Figs. 2.21a/b and any mix of block types (Theorems 3.3, 3.5, 4.5).
+
+**Why q = 4, 5 stay open in this class.** The general-position Bonferroni bound is already negative (−357 at q = 4,
+−1,024 at q = 5): the radius-2 balls are too many relative to opp(t). At q = 5, moreover, 3 ∤ q − 1, so Lemma 4.4's
+step (iii) fails. These q are not table values. Computationally the class is hopeless there (next item).
+
+**Computer-checked 4.6 (geometric labellings are worse than random ones).** Far pairs (hub, vertex) at distance > 8,
 over all 10N hubs. "Random twists": independent random elements of G₂(q) (`mktwist.py rand`). "Annealed": `tanneal.c`
 (moves λ_c ← gλ_c or λ_c g, g from a pool of random elements). Singer: λ_c = s^{e_c} for a Singer cycle s of
 SL(3,q) ≤ G₂(q). Elation: λ_c in one long root group E_ℓ (order q); elation²: in E_ℓE_m (two lines through a point, order
@@ -269,22 +328,19 @@ q²). "General random" is the audit's E[F] for random arbitrary bijections (NOTE
 | 7 | aabbb | 4.94·10¹⁰ | 11,180,221,804 | | | | | ≈ 6.5·10⁸ |
 
 The thesis column is 10N · 3α · q⁵ (Theorem 1). Annealing within the class removes 10 % at q = 3, 1.4 % at q = 4 and
-0.1 % at q = 5. Logs: `logs/anneal_*.txt`, `logs/structured.txt`, `logs/q7_random_twist_full.txt`.
+0.1 % at q = 5. Logs: `logs/anneal_*.txt`, `logs/structured.txt`, `logs/q7_random_twist_full.txt`. For the random q = 7
+twists, 19,580 of the 19,608 points t are in general position for a starved pair (`genpos.py`, `logs/genpos_q7.txt`).
 
-**Heuristic 4.4 (why geometric labellings fail, and what a better wiring would still need).** In a geometric labelling
-a route into a missed copy covers one ball: q⁴ of the q⁵ vertices opposite t. A hub therefore needs at least q one-hop
-routes into every missed copy. Gómez's wiring gives some pairs only α ≈ q/2 (Lemma 3.2), which is Theorem 3.3. A
-different wiring could give every pair 2α ≈ q + 3 routes, enough by counting. Then a near-exact cover is needed.
-Lemma 4.1 says that centres not on a common totally singular line through t overlap in about q³ points each, so the q⁴-sets
-can only tile opp(t) when about q of the centres lie on one totally singular line through t. They must lie there for
-every t, with fixed group elements. That forces the twist differences g to satisfy g(t) ⊥ t for all t. Over odd q,
-b(t, g t) = 0 on all of Q(6,q) should force the form t ↦ b(t, gt) to be a multiple of Q, hence (g ∓ 1)² = 0: a long root
-elation (Siegel transformation) x ↦ x + b(x,u)v − b(x,v)u. Sampled check (`logs/siegel_check.txt`): such maps are
-collineations of H(q) when ⟨u,v⟩ is a hexagon line and not when it is an ideal line, and random collineations move
-about 1/q of the points to perpendicular points. A root group E_ℓ moves t only along the line ⟨t, w_t⟩ (w_t the projection of t on ℓ) and never
-reaches w_t itself. That leaves the q⁴ points of opp(t) ∩ w_t^⊥ to the few remaining centres, each covering only about
-q³ of them. We believe geometric labellings fail for every wiring and every q ≥ 4, but the steps "near-exact cover ⇒
-line structure" and "line structure for all t ⇒ elations of one root group" are not proved here.
+**Heuristic 4.8 (other wirings).** Theorems 3.3 and 4.5 use Gómez's wiring through the starved pairs, where only
+α ≈ q/2 of a hub's 2α copies reach the missed copy in one pass. A different wiring could give every pair about q + 3
+one-hop routes, which is enough by size. A near-exact cover is then needed, and Lemma 4.1 says that centres not on a
+common totally singular line through t overlap in about q³ points. So about q of the centres must lie on one line
+through t, for every t, with fixed group elements. That needs twist differences with g(t) ⊥ t for all t: over odd q
+these should be exactly the long root elations x ↦ x + b(x,u)v − b(x,v)u with ⟨u,v⟩ a hexagon line (sampled check,
+`logs/siegel_check.txt`: such maps are collineations for hexagon-line axes, not for ideal axes). A root group moves t
+only along ⟨t, w_t⟩ (w_t the projection of t on the axis) and never reaches w_t. That leaves q⁴ opposite points to the
+few other centres. Moreover elations have fixed points, which Lemma 4.2's argument penalises. We believe geometric
+labellings fail for every wiring once q ≥ 7, but this is not proved.
 
 ## 5. General labellings: what a repair would have to do
 
@@ -297,16 +353,27 @@ every transfer must scatter the radius-2 and radius-4 balls of the hexagon almos
 hubs must fit together. The audit's first-moment heuristic says random labellings of this kind exist for q ≤ 3 and not
 for q ≥ 4 (E[F] is 0.4–1 % of all (hub, missed-copy vertex) pairs at q = 4, 5, 7). Nothing in this note decides the general question.
 
+**Computer-checked 5.1 (polar labellings).** Point labellings by isometries of the quadric Q(6,q) (random products of
+Siegel transformations with arbitrary totally singular axes) keep perpendicularity (hexagon distance ≤ 4 between points)
+but not the hexagon lines. With `check/omega_eval` (reading 2, aba): at q = 4, polar points with random lines leave
+1,941,274 far pairs and polar points with untwisted lines 10,331,778, against 642,969 for random points and random lines;
+at q = 3 the numbers are 9,750 and 113,644 against 1,944. The more of the hexagon's structure a labelling keeps, the
+worse it does (`polar.py`, `logs/polar_classes.txt`; the run with one collineation on both sides reproduces the thesis
+counts, as Lemma 1.2 says).
+
 What the open cells now are, as mathematical questions:
-- **(10,8), q = 7.** Does some twisted labelling make every point t degenerate (Theorem 4.2) for every starved pair? If
-  not, no geometric labelling repairs ΩH₇. Proving Heuristic 4.4's two steps at q = 7 would settle it.
-- **All table cells.** Is there a labelling, necessarily non-geometric, whose transfers tile each missed copy with the
-  route sets of §5? A negative answer needs an argument that uses more than counting, since counting allows ≈ 3 covers.
+- **All table cells, non-geometric labellings.** Is there a labelling of Gómez's wiring, necessarily non-geometric
+  (Corollary 4.7), whose transfers tile each missed copy with the route sets above? A negative answer needs more than
+  counting, since counting allows about 3 covers.
+- **Other wirings with geometric labellings** (Heuristic 4.8): the two steps "near-exact cover ⇒ line structure" and
+  "line structure for all t ⇒ elations of one root group".
+- **q = 4, 5 in the geometric class** (not table values): the counts above are not enough.
 
 ## 6. Files
 
 `research/omega_repair/` (README there): `hexq6.c` (H(q), from claude/own-12-8-cell-ig5jhd), `geo.py` (field,
 coordinates, collineation checks, long root elations), `mktwist.py`, `gens.py`, `structured.py` (twist files),
 `twist.c` (route formula, explicit graph, BFS, edge list), `tanneal.c` (annealer), `routecount.c`, `routecount2.c`
-(route numbers), `counts.c` (Lemma 3.1), `overlaps.py` (Lemma 4.1), `check/` (the audit's omega_eval, unchanged, and
-`tolab.py`), `logs/`.
+(route numbers, totals), `counts.c` (Lemma 3.1), `overlaps.py` (Lemma 4.1), `degen.py`, `degen_check.py` (Lemma 4.3),
+`perpbound.py`, `fpfperp.py` (Lemma 4.4), `genpos.py`, `polar.py` (Computer-checked 5.1), `check/` (the audit's
+omega_eval, unchanged, and `tolab.py`), `logs/`.
