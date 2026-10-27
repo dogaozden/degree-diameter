@@ -5,7 +5,8 @@
      KIND     even  : x = s0 * (s1^-1 s2) (s3^-1 s4) ...      (L = D-1 letters, D even)
               left  : x = (s0^-1 s1) (s2^-1 s3) ...            (L = D-1 letters, D odd)
               right : x = (s0 s1^-1) (s2 s3^-1) ...            (L = D-1 letters, D odd)
-   Output: for every element in slot order, 5 bytes (little endian): the field sum_t digit_t << (4 t).
+   Output: for every element in slot order, FB bytes (little endian): the field sum_t digit_t << (4 t), with FB = 5
+   for L <= 9 and FB = 6 for L = 10, 11 (D = 11, 12).
    Slot order (the same as LeanAll/HaarSL.lean): element (a,b,c,d,z) has index i*n + z with
      i = (a*(p-1) + (c-1))*p + d      if c != 0,
      i = p*p*(p-1) + (a-1)*p + b      if c == 0,
@@ -122,7 +123,8 @@ int main(int argc, char **argv) {
   int L = DIAM - 1;
   int K = (kind == 0) ? (DIAM - 2) / 2 : (DIAM - 1) / 2;   /* number of pairs */
   if ((kind == 0) != (DIAM % 2 == 0)) { fprintf(stderr, "kind does not match the parity of D\n"); return 2; }
-  if (L > 9 || DEG > 16) { fprintf(stderr, "L <= 9 and Delta <= 16 needed\n"); return 2; }
+  if (L > 11 || DEG > 16) { fprintf(stderr, "L <= 11 and Delta <= 16 needed\n"); return 2; }
+  int FB = L <= 9 ? 5 : 6;
   /* the pair elements: left (s^-1 t), right (s t^-1) */
   int NP = DEG * DEG;
   El pr[256];
@@ -177,14 +179,14 @@ int main(int argc, char **argv) {
   FILE *o = fopen(argv[3], "wb");
   if (!o) { perror("out"); return 2; }
   long long missing = 0;
-  uint8_t buf[5];
+  uint8_t buf[6];
   long long k0 = 0, k1 = G;   /* FROM TO: only the words of the elements k0 <= k < k1 */
   if (argc == 7) { k0 = atoll(argv[5]); k1 = atoll(argv[6]); }
   if (k0 < 0 || k1 > G || k0 > k1) { fprintf(stderr, "bad range\n"); return 2; }
   for (long long k = k0; k < k1; k++) {
     El x = el_of(k);
     if (idx(x) != k) { fprintf(stderr, "index error at %lld\n", k); return 1; }
-    int dig[9];
+    int dig[11];
     int s0 = -1;
     long long y = k;
     if (kind == 0) {
@@ -192,10 +194,10 @@ int main(int argc, char **argv) {
         long long j = idx(mul(inv(gen(u)), x));
         if (lay[j] >= 0) { s0 = u; y = j; break; }
       }
-      if (s0 < 0) { missing++; memset(buf, 0, 5); fwrite(buf, 1, 5, o); continue; }
-    } else if (lay[y] < 0) { missing++; memset(buf, 0, 5); fwrite(buf, 1, 5, o); continue; }
+      if (s0 < 0) { missing++; memset(buf, 0, FB); fwrite(buf, 1, FB, o); continue; }
+    } else if (lay[y] < 0) { missing++; memset(buf, 0, FB); fwrite(buf, 1, FB, o); continue; }
     /* unwind the pairs of y */
-    int pairs[8], m = lay[y];
+    int pairs[10], m = lay[y];
     for (int q = m - 1; q >= 0; q--) {
       pairs[q] = pid[y];
       y = par ? par[y] : idx(mul(el_of(y), pinvs[pid[y]]));
@@ -213,8 +215,8 @@ int main(int argc, char **argv) {
     if (idx(w) != k) { fprintf(stderr, "word check failed at %lld\n", k); return 1; }
     uint64_t F = 0;
     for (int t = 0; t < L; t++) F |= (uint64_t)dig[t] << (4 * t);
-    for (int b = 0; b < 5; b++) buf[b] = (F >> (8 * b)) & 255;
-    fwrite(buf, 1, 5, o);
+    for (int b = 0; b < FB; b++) buf[b] = (F >> (8 * b)) & 255;
+    fwrite(buf, 1, FB, o);
   }
   fclose(o);
   if (missing) { fprintf(stderr, "%lld elements have no word\n", missing); return 1; }

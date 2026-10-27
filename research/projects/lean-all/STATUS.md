@@ -52,6 +52,15 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (8,10) | 8,043,840 | Haar, PSL(2,7) × PSL(2,19) × Z7 (raised on master 2026-10-26) | todo (needs a PSL second factor) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
+## Records outside the README table (research/RESULTS.md)
+
+| cell | record | construction | status | theorem / file |
+|---|---:|---|---|---|
+| (3,11) | 1,320 | voltage lift over SmallGroup(165,1) | **done** | `nb_3_11_1320`, LeanAll/D3D11 (orbit BFS v2, 8 sources) |
+| (3,12) | 1,320 | PSL(2,11) Cayley-type graph | **done** | `nb_3_12_1320`, LeanAll/D3D12 (orbit BFS v2, 1 source) |
+| (19,3) | 624 | fourth hat, q = 17 | **done** | `nb_19_3_624`, LeanAll/D19D3 (orbit BFS v2, 326 sources) |
+| (19,4) | 10,982 | AS17 with clones | **done** | `nb_19_4_10982`, LeanAll/D19D4 (orbit BFS v2, 41 sources; 2 random products of nauty's 582 generators, `randgens.py`) |
+
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
 exactly the four record values.
