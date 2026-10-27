@@ -162,6 +162,15 @@ def main():
              f'theorem hBfs : bfsOK {K2} 7 {2 * m} 0 {2 * m} (hubNb {m} hubL hubR) = true := by\n  decide +kernel\n')
     mods.append('Hub')
 
+    def joined(var, rs, names):
+        """`fun var hvar => …`: a balanced `range_join` tree over the `allR_spec` of the check modules."""
+        def go(a, b):
+            if b - a == 1:
+                return f'(allR_spec {names[a]})'
+            m = (a + b) // 2
+            return f'(range_join (mid := {rs[m][0]}) {go(a, m)} {go(m, b)})'
+        return f'  fun {var} h{var} => {go(0, len(rs))} {var} (Nat.zero_le _) h{var}\n'
+
     def split(var, rs, names):
         out = f'  have hc : ' + ' ∨ '.join(f'({lo} ≤ {var} ∧ {var} < {lo + k})' for lo, k in rs) + ' := by omega\n'
         pat = ' | '.join('hc' for _ in rs)
@@ -170,17 +179,17 @@ def main():
             out += f'  · exact allR_spec {nm} {var} hc.1 hc.2\n'
         return out
     with open(os.path.join(od, 'Record.lean'), 'w') as f:
-        f.write(HDR)
+        f.write(HDR + 'import BipartiteDD.LeanAll.Range\n')
         for mo in mods:
             f.write(f'import {ns}.{mo}\n')
         f.write(f'\n/-! The ({q + 2},7) hexagon record{src}: {n} vertices, maximum degree {q + 2}, diameter 7. -/\n\n')
-        f.write(f'namespace {ns}\n\nopen BipartiteDD BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.HexLocal\n\n')
-        f.write(f'theorem h1 : ∀ i < {M}, {gPt} ptc i = true := by\n  intro i hi\n' +
-                split('i', pr, [f'pt{ci:02d}' for ci in range(len(pr))]) + '\n')
-        f.write(f'theorem h2 : ∀ j < {M}, {gLn} lnA lnB sg sgi j = true := by\n  intro j hj\n' +
-                split('j', pr, [f'ln{ci:02d}' for ci in range(len(pr))]) + '\n')
-        f.write(f'theorem h4 : ∀ v < {m}, {cOK} {M} ptc lnA lnB sg rflag (rl v) (cert v) = true := by\n  intro v hv\n' +
-                split('v', cr, [f'cert{ci:02d}' for ci in range(len(cr))]) + '\n')
+        f.write(f'namespace {ns}\n\nopen BipartiteDD BipartiteDD.LeanAll BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.HexLocal\n\n')
+        f.write(f'theorem h1 : ∀ i < {M}, {gPt} ptc i = true :=\n' +
+                joined('i', pr, [f'pt{ci:02d}' for ci in range(len(pr))]) + '\n')
+        f.write(f'theorem h2 : ∀ j < {M}, {gLn} lnA lnB sg sgi j = true :=\n' +
+                joined('j', pr, [f'ln{ci:02d}' for ci in range(len(pr))]) + '\n')
+        f.write(f'theorem h4 : ∀ v < {m}, {cOK} {M} ptc lnA lnB sg rflag (rl v) (cert v) = true :=\n' +
+                joined('v', cr, [f'cert{ci:02d}' for ci in range(len(cr))]) + '\n')
         call = (f'  have := main\' {p} {M} {m} {K2} ptc lnA lnB sg sgi rl rflag cert hubL hubR h1 h2\n' if prime else
                 f'  have := BipartiteDD.LeanAll.HexGen.main\' BipartiteDD.LeanAll.HexGF8.coder {q} {M} {m} {K2} '
                 f'BipartiteDD.LeanAll.HexGF8.card_GF8 ptc lnA lnB sg sgi rl rflag cert hubL hubR h1 h2\n')
