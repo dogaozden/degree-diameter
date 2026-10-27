@@ -1,0 +1,13 @@
+$ cc -O2 -o hexq6 hexq6.c && ./hexq6 3 hex_q3_theirs.txt   (the note's builder, unchanged)
+q=3 points=364 (expect 364)
+lines=364, lines per point min 4 max 4
+$ python3 convert_theirs.py ...
+twist file ../repo/research/omega_repair/twists/q3_aba_annealed.bin: C=15 n=364; lam_c maps every line to the stated line (a collineation): 15/15
+$ ./ghcheck hex3.txt
+q=3 V=728: vertices with a sphere of wrong size: 0 -> generalized hexagon of order (q,q)
+$ ./omg_all theirs/hex3.txt theirs/lab_q3_ann.bin aba
+V=14560 E=43680 degrees 6..6 duplicate edges 0
+sources all hubs: pairs (source, vertex) at distance > 8: 259169 (of which not hub->copy-vertex: 0); max eccentricity 9
+$ ./omg_all theirs/hex3.txt theirs/lab_q3_ann.bin aba A
+V=14560 E=43680 degrees 6..6 duplicate edges 0
+sources all vertices: pairs (source, vertex) at distance > 8: 518338 (of which not hub->copy-vertex: 259169); max eccentricity 9

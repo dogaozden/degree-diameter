@@ -1,0 +1,18 @@
+Lemma 4.1: pair overlaps in opp(t) (t not on yy'): [336, 343, 350]  min >= 336: True
+           triple overlaps in Q (not collinear): [50, 57, 64]  max <= 64: True
+configurations tested 2500, Bonferroni bound violated: 0
+  type classes (1, 1, 1, 1, 1)  rich ()       n= 1455  max exact union  9097  min(bound - exact) 188
+  type classes (1, 1, 1, 1, 1)  rich (3,)     n=  329  max exact union  9273  min(bound - exact) 284
+  type classes (1, 1, 1, 1, 1)  rich (3, 3)   n=   10  max exact union  9261  min(bound - exact) 568
+  type classes (1, 1, 1, 1, 1)  rich (4,)     n=   10  max exact union  9751  min(bound - exact) 622
+  type classes (1, 1, 1, 2)     rich ()       n=  498  max exact union  9277  min(bound - exact) 152
+  type classes (1, 1, 1, 2)     rich (3,)     n=  119  max exact union  9457  min(bound - exact) 244
+  type classes (1, 1, 1, 2)     rich (3, 3)   n=   10  max exact union  9604  min(bound - exact) 369
+  type classes (1, 1, 1, 2)     rich (4,)     n=    3  max exact union  9947  min(bound - exact) 570
+  type classes (1, 1, 3)        rich ()       n=   29  max exact union  9758  min(bound - exact) 87
+  type classes (1, 1, 3)        rich (3,)     n=    9  max exact union  9947  min(bound - exact) 170
+  type classes (1, 2, 2)        rich ()       n=   21  max exact union  9457  min(bound - exact) 116
+  type classes (1, 2, 2)        rich (3,)     n=    4  max exact union  9604  min(bound - exact) 241
+  type classes (1, 4)           rich ()       n=    1  max exact union 10633  min(bound - exact) 28
+  type classes (2, 3)           rich ()       n=    2  max exact union  9947  min(bound - exact) 42
+types realised: 14 of 17
