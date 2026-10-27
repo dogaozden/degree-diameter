@@ -196,6 +196,22 @@ Let G be a cubic bipartite graph of diameter 7 on 248 vertices (m = 124, δ = 3)
    and z_2).
 6. **If G has no 10-cycle** (girth 12), every vertex lies on 3 or 4 twelve-cycles (item 4 with a = 0), so there are
    between 62 and 82 twelve-cycles; the divisibility argument that kills n = 250 gives no contradiction here.
+7. **G is not built from 10-cycles and a = 3 spokes alone.** If every spoke pair has a = 3, each pair is shared by
+   three 10-cycles and each 10-cycle has five pairs, so there are 5N10/3 pairs; type-T vertices and spokes have all
+   their neighbours inside this set, so it is all of G and n = 10N10 + 2·5N10/3 = 40N10/3, which is not 248. So G has
+   a = 1 spoke pairs or vertices with a = 0 (12-cycles).
+8. **The a = 1 case** (notation of item 5): the 5-path P_ij between s_i and z_j is unique (two of them would close a
+   10-cycle through s_i, which is type S), and the four 12-cycles of y_0 and y_5 are y_5 s_1 P_11 z_1 P_21 s_2,
+   y_5 s_1 P_12 z_2 P_22 s_2, y_0 z_1 P_11 s_1 P_12 z_2 and y_0 z_1 P_21 s_2 P_22 z_2. Then s_1 lies on exactly three
+   12-cycles, Rep(s_1) = {y_0, the neighbour of z_1 on P_21, the neighbour of z_2 on P_22}, and so on.
+
+**Check on real graphs (Computer-checked).** The proofs of items 1–5 use only "δ = 3, girth ≥ 2D − 4, cycles of
+length 2D − 4 and 2D − 2", so they hold verbatim for any odd D with 6- and 8-cycles in place of 10- and 12-cycles
+when D = 5. For D = 5, δ = 3 means n = 56, and such graphs exist (N_b(3,5) = 56). `test_delta3.py` checks every claim
+of items 1–5 (and the a-dependent 12-cycle counts of item 4) on the 56-vertex graphs that zplift finds as Z_7-lifts
+(one isomorphism class; glift finds none over the groups of order 4, 14, 28): no failure. These graphs are exactly the
+pure a = 3 configuration of item 7: 7 six-cycles and 14 spokes, 56 = 8·7. The D = 7 analogue of that configuration
+would need 40N10/3 = 248, which is item 7.
 
 Items 1–6 make n = 248 look like a rigid configuration problem (every vertex has exactly three excess walks, coming
 from one 10-cycle or from 12-cycles in the ways listed), but I did not finish the case analysis, so **N_b(3,7) ≤ 248
@@ -270,7 +286,43 @@ logs `run_small.log`, `run_mid.log`. Total time about 12 minutes on one core, mo
 has an automorphism of prime order p ≥ 11. This contains the earlier job's "no cyclic Haar graph" and "no 2+2, 3+3,
 4+4 lift" results for cyclic groups of prime order and extends them to bases up to 11+11 (22 orbits).
 
-### 3.3 Results for p = 7
+### 3.3 Semiregular groups of any order with at most 22 orbits (Computer-checked)
+
+`glift` is zplift for arbitrary groups (tables and Aut-orbit representatives from GAP's SmallGroups, `gap_groups.g`):
+voltages are group elements, a walk's voltage is the product of its cotree letters, walks with the same freely
+reduced word always collide (counted up front), and the first non-identity voltage is an Aut(H)-orbit representative.
+
+Reduction: a colour-preserving group H acting freely with k orbits per side has order N = n/(2k). If N has a prime
+factor p ≥ 11, H contains an element of order p, excluded by §3.2. So only N whose prime factors are 2, 3, 5, 7
+remain. For k ≤ 11 and 170 ≤ 2kN ≤ 248 these are:
+
+| k | N | groups | (base, group) runs | searched | nodes | solutions |
+|---|---|---|---|---|---|---|
+| 1 | 90, 96, 98, 100, 105, 108, 112, 120 | 399 | 399 | 399 | 5,123 | 0 |
+| 2 | 45, 48, 49, 50, 54, 56, 60 | 102 | 102 | 102 | 21,720 | 0 |
+| 3 | 30, 32, 35, 36, 40 | 84 | 252 | 224 | 255,399 | 0 |
+| 4 | 24, 25, 27, 28, 30 | 30 | 180 | 139 | 573,057 | 0 |
+| 5 | 18, 20, 21, 24 | 27 | 432 | 131 | 1,253,787 | 0 |
+| 6 | 15, 16, 18, 20 | 25 | 1,475 | 368 | 422,949 | 0 |
+| 7 | 14, 15, 16 | 17 | 4,131 | 136 | 692,974 | 0 |
+| 8 | 12, 14, 15 | 8 | 9,656 | 260 | 987,071 | 0 |
+| 9 | 10, 12 | 7 | 48,853 | 606 | 185,882 | 0 |
+| 10 | 9, 10, 12 | 9 | 411,183 | 2,478 | 578,050 | 0 |
+| 11 | 8, 9, 10 | 9 | K11_RUNS | K11_SEARCHED | K11_NODES | K11_SOLS |
+
+Validation of glift: against an independent brute force (`crosscheck_g.py`: every assignment on a DFS tree, no Aut
+reduction, BFS diameter, nauty canonical forms) on all groups of order 6 (3+3 bases, D = 5: 8 = 8 classes), 8 (2+2,
+D = 5: 9 = 9; 3+3, D = 7: 216 = 216 classes, including D8 and Q8), 12 (2+2, D = 5: 1 = 1), 16 and 10 (0 = 0). On the
+2+2 base over the six groups of order 42 it finds solutions only for C2 × (C7 ⋊ C3) (24 after the Aut reduction,
+as in the earlier job's liftx: 168/7), and the lift is the 168 record (apsp: cubic, bipartite, diameter 7).
+k = 1..4 repeat the earlier job's liftx results for these orders with an independent program.
+
+**Corollary (Computer-checked).** If G is a bipartite (3,7)-graph with n ≥ 169 vertices and H ≤ Aut(G) is a
+colour-preserving group acting freely on the vertices, then H has more than 22 orbits, i.e. |H| < n/22. (For n = 169
+no nontrivial such H exists: |H| would divide 85 and 84; for non-cubic graphs at n = 170 the completion of §2.2 can
+be chosen H-invariant, matching H-orbits of deficient vertices.) Outputs: `research/d3D7exact/runs/gl/`.
+
+### 3.4 Results for p = 7
 
 | k | n | δ | Knuth estimate (nodes) | status |
 |---|---|---|---|---|
