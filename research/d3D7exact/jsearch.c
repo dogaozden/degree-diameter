@@ -36,6 +36,12 @@ static int anynz;
 static uint64_t seen_[MAXV][MAXV][2]; /* [start][end] bitset of voltages, p <= 128 */
 static int coll[MAXV];
 static long nodes, nsol, maxsol = 100;
+/* Root rule (env ROOTMAX=1): closedw[v] = number of closed NB walks of length 2..D-1 at v in the partial base
+   (voltages ignored). Only bases whose root maximises closedw over side 0 are kept. Every base has such a vertex,
+   so choosing it as the root loses nothing; partial counts only grow, and the root's count is final once every
+   vertex at distance <= (D-1)/2 - 1 from the root is full, after which any side-0 vertex with a larger partial
+   count prunes. */
+static int rootmax = 0, closedw[MAXV], depth_[MAXV];
 /* log of insertions for undo: (u, v, g, wascollision) */
 typedef struct { short u, v, g; char c; } Rec;
 static Rec *logbuf; static long lsp, lcap;
@@ -63,6 +69,7 @@ static void gen_suf(int x, int laste, int len, int g, int maxlen) { /* NB walks 
 static inline void record(int u, int v, int g) {
     uint64_t m = 1ULL << (g & 63); int w = g >> 6;
     Rec r; r.u = u; r.v = v; r.g = g;
+    if (u == v) closedw[u]++;
     if (seen_[u][v][w] & m) { r.c = 1; coll[u]++; if (coll[u] > delta) bad = 1; }
     else { r.c = 0; seen_[u][v][w] |= m; }
     if (lsp == lcap) { lcap *= 2; logbuf = realloc(logbuf, sizeof(Rec) * lcap); }
@@ -87,6 +94,7 @@ static void through(int tail, int head, int gt) { /* gt = voltage of traversing 
 }
 static void undo_to(long mark) {
     while (lsp > mark) { Rec r = logbuf[--lsp];
+        if (r.u == r.v) closedw[r.u]--;
         if (r.c) coll[r.u]--; else seen_[r.u][r.v][r.g >> 6] &= ~(1ULL << (r.g & 63)); }
 }
 static void add_edge(int a, int b, int t) { /* a side 0 */
@@ -103,6 +111,10 @@ static int check_new_edge(void) { /* record walks through the newest edge; 0 if 
     if (!bad) through(b, a, (p - t) % p);
     /* sharding: subtrees rooted where the edge count reaches shard_depth are dealt out round-robin. Above that depth
        every shard runs the same deterministic search, so the shards partition the search tree. */
+    if (!bad && rootmax) { /* root's count final once all vertices of depth <= L/2 - 1 are full */
+        int x = -1; for (int i = 0; i < nv; i++) if (deg_[i] < 3) { x = i; break; }
+        if (x < 0 || depth_[x] >= L / 2) for (int v = 1; v < nv; v++) if (side_[v] == 0 && closedw[v] > closedw[0]) return 0;
+    }
     if (!bad && shard_mod > 1 && ne == shard_depth && !probe_mode) { if ((shard_counter++ % shard_mod) != shard_id) return 0; }
     return !bad;
 }
@@ -157,7 +169,7 @@ static void fill(int x, int minkey) {
         }
     }
     if (nv < 2 * k && nside[o] < k) {
-        int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++;
+        int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++; depth_[y] = depth_[x] + 1;
         seen_[y][y][0] |= 1ULL; /* trivial walk at y */
         add_edge(s == 0 ? x : y, s == 0 ? y : x, 0);
         long mark = lsp;
@@ -191,14 +203,14 @@ static void probe_fill(int x, int minkey) {
         for (int t = 0; t < p; t++) { int key = y * p + t; if (key < minkey) continue;
             if (probe_feasible_edge(x, y, t)) { op[no].type = 0; op[no].y = y; op[no].t = t; no++; } } }
     if (nv < 2 * k && nside[o] < k) {
-        int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++; seen_[y][y][0] |= 1ULL;
+        int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++; seen_[y][y][0] |= 1ULL; depth_[y] = depth_[x] + 1;
         add_edge(s == 0 ? x : y, s == 0 ? y : x, 0); long mark = lsp; int ok = check_new_edge(); undo_to(mark); del_edge();
         seen_[y][y][0] &= ~1ULL; nv--; nside[o]--;
         if (ok) { op[no].type = 1; no++; } }
     if (no == 0) return;
     Opt c = op[rnd() % no]; pw *= no;
     if (c.type == 0) { int vt = try_edge(x, c.y, c.t); if (vt) anynz = 1; check_new_edge(); probe_fill(x, c.y * p + c.t + 1); }
-    else { int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++; seen_[y][y][0] |= 1ULL;
+    else { int y = nv++; side_[y] = o; deg_[y] = 0; nside[o]++; seen_[y][y][0] |= 1ULL; depth_[y] = depth_[x] + 1;
         add_edge(s == 0 ? x : y, s == 0 ? y : x, 0); check_new_edge(); probe_par(x, y, 0); }
 }
 static void probe_par(int x, int y, int lastt) {
@@ -209,7 +221,7 @@ static void probe_par(int x, int y, int lastt) {
     else { int vt = try_edge(x, y, c.t); if (vt) anynz = 1; check_new_edge(); probe_par(x, y, c.t); }
 }
 static void probe_reset(void) { /* rebuild empty state */
-    memset(seen_, 0, sizeof seen_); memset(coll, 0, sizeof coll); lsp = 0;
+    memset(seen_, 0, sizeof seen_); memset(coll, 0, sizeof coll); memset(closedw, 0, sizeof closedw); lsp = 0;
     nv = 1; side_[0] = 0; deg_[0] = 0; nside[0] = 1; nside[1] = 0; ne = 0; anynz = 0; seen_[0][0][0] |= 1ULL;
 }
 
@@ -223,6 +235,7 @@ int main(int argc, char **argv) {
     nv = 1; side_[0] = 0; deg_[0] = 0; nside[0] = 1; nside[1] = 0; ne = 0; anynz = 0;
     /* root: its trivial walk */
     seen_[0][0][0] |= 1ULL; /* trivial walk at the root; other vertices get theirs on creation */
+    rootmax = getenv("ROOTMAX") != NULL; depth_[0] = 0;
     if (getenv("SHARD")) { sscanf(getenv("SHARD"), "%d/%d", &shard_id, &shard_mod); shard_depth = getenv("SHARDDEPTH") ? atoi(getenv("SHARDDEPTH")) : 20; }
     if (getenv("PROBE")) { probe_mode = 1; long np = atol(getenv("PROBE")); double tot = 0, tot2 = 0, solsum = 0; rng ^= (unsigned long long)np * 7919;
         for (long i = 0; i < np; i++) { probe_reset(); pw = 1; pnodes = 0; nsol = 0; probe_fill(0, 0); tot += pnodes; tot2 += pnodes * pnodes; solsum += nsol * pw; }

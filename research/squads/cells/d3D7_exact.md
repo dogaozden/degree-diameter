@@ -283,6 +283,10 @@ filters; nodes = voltage-search nodes.
 (Primes 67–83 have no admissible k; p ≥ 127 gives n ≥ 254.) Outputs: `research/d3D7exact/runs/zp_p*_k*.out`,
 logs `run_small.log`, `run_mid.log`. Total time about 12 minutes on one core, most of it reading the 335,178 bases.
 
+Second program: every case of the table was rerun with `glift` (§3.3) over the cyclic groups Z_p (group words
+instead of linear forms, free reduction instead of abelian reduction, a different variable order), log
+`runs/gl/summary_prime.log`: no solutions either (GLIFTPRIME_STATUS).
+
 **Corollary (Computer-checked).** No bipartite graph with maximum degree 3 and diameter 7 on more than 168 vertices
 has an automorphism of prime order p ≥ 11. This contains the earlier job's "no cyclic Haar graph" and "no 2+2, 3+3,
 4+4 lift" results for cyclic groups of prime order and extends them to bases up to 11+11 (22 orbits).
@@ -309,7 +313,7 @@ remain. For k ≤ 11 and 170 ≤ 2kN ≤ 248 these are:
 | 8 | 12, 14, 15 | 8 | 9,656 | 260 | 987,071 | 0 |
 | 9 | 10, 12 | 7 | 48,853 | 606 | 185,882 | 0 |
 | 10 | 9, 10, 12 | 9 | 411,183 | 2,478 | 578,050 | 0 |
-| 11 | 8, 9, 10 | 9 | K11_RUNS | K11_SEARCHED | K11_NODES | K11_SOLS |
+| 11 | 8, 9, 10 | 9 | 3,016,602 | 10,063 | 661,676 | 0 |
 
 Validation of glift: against an independent brute force (`crosscheck_g.py`: every assignment on a DFS tree, no Aut
 reduction, BFS diameter, nauty canonical forms) on all groups of order 6 (3+3 bases, D = 5: 8 = 8 classes), 8 (2+2,
@@ -319,7 +323,7 @@ as in the earlier job's liftx: 168/7), and the lift is the 168 record (apsp: cub
 k = 1..4 repeat the earlier job's liftx results for these orders with an independent program.
 
 **Corollary (Computer-checked).** If G is a bipartite (3,7)-graph with n ≥ 169 vertices and H ≤ Aut(G) is a
-colour-preserving group acting freely on the vertices, then H has more than 22 orbits, i.e. |H| < n/22. (For n = 169
+colour-preserving group acting freely on the vertices, then H has at least 24 orbits (12 on each side), i.e. |H| ≤ n/24. (For n = 169
 no nontrivial such H exists: |H| would divide 85 and 84; for non-cubic graphs at n = 170 the completion of §2.2 can
 be chosen H-invariant, matching H-orbits of deficient vertices.) Outputs: `research/d3D7exact/runs/gl/`.
 
@@ -342,14 +346,27 @@ Knuth random-probe estimates of the jsearch tree (validated: 2.0 × 10^3 vs 1,73
 
 | p | k | n | δ | estimated nodes |
 |---|---|---|---|---|
+| 5 | 17 | 170 | 42 | 8.1 × 10^9 |
+| 5 | 18 | 180 | 37 | 1.4 × 10^10 |
+| 5 | 19 | 190 | 32 | 6.8 × 10^8 |
+| 5 | 20 | 200 | 27 | 1.6 × 10^10 |
+| 5 | 21 | 210 | 22 | 5.4 × 10^10 |
 | 5 | 22 | 220 | 17 | 1.6 × 10^9 |
 | 5 | 23 | 230 | 12 | 1.0 × 10^12 |
 | 5 | 24 | 240 | 7 | 3.1 × 10^11 |
 | 7 | 14 | 196 | 29 | 7.5 × 10^9 |
 
-The estimates have relative standard errors of 0.4–0.9 and heavy tails. jsearch has no isomorph rejection beyond
-the BFS rule (every base is generated from each of its k side-0 roots and many child orders); real canonical
-augmentation could cut this by orders of magnitude and would be the next step for order 5.
+The estimates have relative standard errors of 0.4–1.0 and heavy tails, so they are only orders of magnitude (the
+p = 7 runs of §3.4 went past their estimates). jsearch has no isomorph rejection beyond the BFS rule (every base is
+generated from each of its k side-0 roots and many child orders). An optional root rule (env `ROOTMAX=1`: keep only
+roots that maximise the number of closed NB walks of length ≤ 6 among side-0 vertices; validated, same 293 classes
+at p = 13, k = 5 with 8.2 M instead of 11.6 M nodes) helps little. Real canonical augmentation would be the next
+step for order 5.
+
+**Heuristic (configuration family).** The extremal (3,5) graph on 56 vertices is 7 six-cycles plus 14 spokes on the
+Fano plane (§2.6, check). Its D = 7 analogue (N ten-cycles, 5N/3 spoke pairs, each pair on 3 cycles, each cycle on 5
+pairs, n = 40N/3) does not reach diameter 7: best costs 136 (n = 160, three seeds), 1,128 (n = 200), 4,252 (n = 240)
+in 60 s anneals over incidences and pair assignments (`research/d3D7exact/fano/`).
 
 ## 5. What is open, as mathematical questions
 
@@ -362,6 +379,7 @@ augmentation could cut this by orders of magnitude and would be the next step fo
 
 ## 6. Files
 
-- `research/d3D7exact/`: `zplift.c`, `jsearch.c`, `crosscheck.py`, `compare_iso.py`, `liftedges.py`, `bases/`,
-  `runs/` (zplift outputs; `runs/js/` jsearch shards), README.md.
+- `research/d3D7exact/`: `zplift.c`, `glift.c`, `jsearch.c`, `gap_groups.g`, `crosscheck.py`, `crosscheck_g.py`,
+  `compare_iso.py`, `liftedges.py`, `gliftedges.py`, `test_delta3.py`, `bases/`, `fano/`, `runs/` (zplift outputs;
+  `runs/gl/` glift; `runs/js/` jsearch shards; `runs/val/` validations), README.md.
 - Literature PDFs and the agent's scripts stayed in the session scratchpad (not committed).
