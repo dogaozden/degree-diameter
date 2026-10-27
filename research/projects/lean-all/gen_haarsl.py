@@ -12,7 +12,7 @@ covers the diameter needs (D odd: left and right words of D-1 letters; D even: o
   Cover<K>.lean        all batches pass, so every element has a word
   Record.lean          the record theorem
 """
-import argparse, mmap, os, re, subprocess, sys
+import argparse, mmap, os, re, subprocess, sys, time
 
 W = 40
 S_BARRETT = 30
@@ -72,6 +72,7 @@ def main():
     ap.add_argument('--scan', action='store_true', help='haarcert in scan mode (less memory, other words)')
     ap.add_argument('--scan2', action='store_true', help='haarcert scan2 (2 bytes per element, the words of --scan)')
     ap.add_argument('--raw', action='store_true', help='certificate trees of raw literals (chunked_raw)')
+    ap.add_argument('--chain2', action='store_true', help='write against HaarSwar2/HaarSL2/HaarPSL2 (Prm.valid allows n = 1)')
     ap.add_argument('--leaf', type=int, default=4096,
                     help='bits per literal in the certificate trees (16384 gives oleans of about 5.9 bytes per slot '
                          'instead of 8.1)')
@@ -80,6 +81,10 @@ def main():
     args = ap.parse_args()
     deg, D, psl, p, n, gens = read_sol(args.sol)
     L = D - 1
+    # words of 10 or 11 letters (D = 11, 12): 48-bit fields, 6-byte certificate entries (haarcert)
+    global W
+    W = 40 if L <= 9 else 48
+    FB = 5 if L <= 9 else 6
     N = p * n
     hp = (p - 1) // 2
     nb = p * hp + hp if psl else p * p - 1
@@ -199,7 +204,7 @@ def main():
         cf = open(certs[kd], 'rb')
         data = mmap.mmap(cf.fileno(), 0, access=mmap.ACCESS_READ)
         # a certificate file may have been cut below the batches still to write (bigcell.py --truncate)
-        assert len(data) == 5 * G or (only_bats and len(data) % (5 * N) == 0)
+        assert len(data) == FB * G or (only_bats and len(data) % (FB * N) == 0)
         mods[kd] = []
         for mi, lo in enumerate(range(0, nb, args.per)):
             hi = min(nb, lo + args.per)
@@ -214,16 +219,16 @@ def main():
                 f.write(f'namespace {ns}\n\nopen BipartiteDD.LeanAll BipartiteDD.LeanAll.HaarSwar BipartiteDD.LeanAll.HaarSL{OPSL}\n\n')
                 f.write('set_option maxRecDepth 100000\n\n')
                 for b in range(lo, hi):
-                    assert 5 * (b + 1) * N <= len(data), 'certificate file cut below this batch'
+                    assert FB * (b + 1) * N <= len(data), 'certificate file cut below this batch'
                     used[0] = min(used[0], b)
-                    dig = int.from_bytes(data[5 * b * N:5 * (b + 1) * N], 'little')
+                    dig = int.from_bytes(data[FB * b * N:FB * (b + 1) * N], 'little')
                     f.write(f'theorem b{k_}{b} : {bstmt(k_, b)} :=\n  ⟨{chunked_raw(dig, chunk=args.leaf) if args.raw else chunked(dig, chunk=args.leaf)}, by decide +kernel⟩\n\n')
                 leaves = [(f'(range_one (Q := Q{k_}) (b := {b}) b{k_}{b})', b, b + 1) for b in range(lo, hi)]
                 f.write(f'theorem range{k_}{mi:03d} : ∀ b, {lo} ≤ b → b < {hi} → Q{k_} b :=\n  {jtree(k_, leaves)}\n')
                 f.write(f'\nend {ns}\n')
     if only_bats:
         print(f'wrote Bat modules {bm[0]}:{bm[1]} of {gi} to {args.outdir}; first batch {used[0]}, '
-              f'certificate bytes from {5 * used[0] * N}', file=sys.stderr)
+              f'certificate bytes from {FB * used[0] * N}', file=sys.stderr)
         return
     # covers: the module range lemmas joined in a balanced tree (range_join), so no large case split
     for kd in kinds:
@@ -339,5 +344,18 @@ def _spread(data, start, N):
     return out
 
 
+def chain2_fix(outdir, t0):
+    """--chain2: the files written in this run, against the copies HaarSwar2, HaarSL2, HaarPSL2."""
+    for f in os.listdir(outdir):
+        path = os.path.join(outdir, f)
+        if f.endswith('.lean') and os.path.getmtime(path) >= t0:
+            t = open(path).read()
+            t = re.sub(r'BipartiteDD\.LeanAll\.(HaarSwar|HaarSL|HaarPSL)(?![0-9A-Za-z_])', r'BipartiteDD.LeanAll.\g<1>2', t)
+            open(path, 'w').write(t)
+
+
 if __name__ == '__main__':
+    _t0 = time.time() - 1
     main()
+    if '--chain2' in sys.argv:
+        chain2_fix(sys.argv[2], _t0)

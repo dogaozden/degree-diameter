@@ -48,7 +48,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (9,5) | 2,758 | Haar, Z197 ⋊ Z7 (raised on master 2026-10-26; Lean before: 2,662) | **done** | `nb_9_5_2758`, LeanAll/MetaD9D5 (gen_meta.py) |
 | (13,5) | 11,700 | lift of a generalized quadrangle (raised on master 2026-10-26, was 11,486) | **done** | `nb_13_5_11700`, LeanAll/D13D5b (orbit BFS v2, 1,170 sources) |
 | (3,10) | 810 | voltage lift over C3 × He3 (added on master 2026-10-26) | **done** | `nb_3_10_810`, LeanAll/D3D10 (orbit BFS v2, 2 sources) |
-| (7,10) | 2,298,240 | Haar, SL(2,7) × PSL(2,19) (raised on master 2026-10-26) | todo (needs a PSL second factor) | |
+| (7,10) | 2,298,240 | Haar, SL(2,7) × PSL(2,19) (raised on master 2026-10-26) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_7_10_2298240`, LeanAll/HaarD7D10b (as PSL(2,19) × Z1 × SL(2,7): 60,480 batches, HaarProd2.cover_prod_pm with n = 1) |
 | (8,10) | 8,043,840 | Haar, PSL(2,7) × PSL(2,19) × Z7 (raised on master 2026-10-26) | todo (needs a PSL second factor) | |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
@@ -60,6 +60,9 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (3,12) | 1,320 | PSL(2,11) Cayley-type graph | **done** | `nb_3_12_1320`, LeanAll/D3D12 (orbit BFS v2, 1 source) |
 | (19,3) | 624 | fourth hat, q = 17 | **done** | `nb_19_3_624`, LeanAll/D19D3 (orbit BFS v2, 326 sources) |
 | (19,4) | 10,982 | AS17 with clones | **done** | `nb_19_4_10982`, LeanAll/D19D4 (orbit BFS v2, 41 sources; 2 random products of nauty's 582 generators, `randgens.py`) |
+| (4,12) | 50,160 | Haar, SL(2,11) × Z19 | **done** | `nb_4_12_50160`, LeanAll/HaarD4D12 (gen_haarsl2.py, 48-bit fields for words of 11 letters) |
+| (5,11) | 253,080 | Haar, PSL(2,19) × Z37 | **done** | `nb_5_11_253080`, LeanAll/HaarD5D11 (gen_haarsl.py, 48-bit fields) |
+| (5,12) | 912,576 | Haar, PSL(2,97) (n = 1) | **done** | `nb_5_12_912576`, LeanAll/HaarD5D12 (gen_haarsl.py --chain2: HaarPSL2 allows n = 1) |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
