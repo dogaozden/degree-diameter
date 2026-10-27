@@ -12,3 +12,6 @@
   sha256 819c113443bd80e0100baa2f0f57896c492136ac9a50d6da3adf0dd0d65bbc1f.
 - `d12D7_aux_gens.json`: automorphism generators (nauty, through `auts.py`) of the auxiliary graph of the (12,7) cell
   (`gen_spreadhub.py --write-aux`: hubs, owners, spread lines and their dual images); the cell checks them in Lean.
+- `d18D5_n47600_W13_2dm_Z10_gens.json`, `d19D5_n52428_W16_dm_Z6_gens.json`, `d20D5_n75000_routechart_F5_Z20_gens.json`:
+  automorphism generators (nauty, `auts.py`) of the graphs in `research/frontier/beyond/graphs/` of the same names, for
+  `gen_orbit2.py --gens` (the cells check them in Lean).
