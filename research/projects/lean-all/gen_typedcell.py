@@ -587,7 +587,7 @@ def main():
         f.write(f'theorem hO : ∀ v, {src4} ≤ v → v < {nh} → ∃ g ∈ {glist}, g.1 v < v := by\n'
                 f'  intro v h1 h2\n  exact orbit_of horb v h1 (by omega)\n\n')
         f.write(f'/-- The masks of every radius, from the sources 0 … {src4 - 1}. -/\n'
-                f'noncomputable def LV : ℕ → Tree ℕ\n  | 0 => Tree.gen (initMask 0 {src4}) 0 {KH}\n')
+                f'noncomputable def LV : ℕ → BipartiteDD.Fast.Tree ℕ\n  | 0 => Tree.gen (initMask 0 {src4}) 0 {KH}\n')
         for r in range(1, D):
             f.write(f'  | {r} => lev{r}\n')
         f.write(f'  | _ => fullT {KH} {src4}\n\n')
@@ -600,9 +600,9 @@ def main():
                         indent='    ')
             f.write('  · ' + txt[4:])
         f.write('\n')
-        f.write(f'theorem hHD : (graphF {nh} {nbE}).ediam ≤ {D} :=\n'
-                f'  ediam_le hHL {glist} hP hO (fun s hs\' hm v => edist_of_staged hHL hK LV rfl rfl hs v s hs\' '
-                f'(Nat.zero_le _) (by omega))\n\n')
+        f.write(f'theorem hB : ∀ s (hsn : s < {nh}), s < {src4} → ∀ v : Fin {nh}, (graphF {nh} {nbE}).edist v ⟨s, hsn⟩ ≤ {D} '
+                f':= by\n  intro s hsn hm v\n  exact edist_of_staged hHL hK LV rfl rfl hs v s hsn (Nat.zero_le _) (by omega)\n\n')
+        f.write(f'theorem hHD : (graphF {nh} {nbE}).ediam ≤ {D} :=\n  ediam_le hHL {glist} hP hO hB\n\n')
         f.write(f'theorem {args.theorem} : ∃ G : SimpleGraph (Fin {n}), IsBipartiteDegDiam G {p + 3} 7 := by\n'
                 f'  have := main5 {p} {nH} {nG} rhc gown gA gB entsH h_rh h_gl {nL} {nP} rla rlb gp gpown entsL h_rl '
                 f'h_gp\n    {lcargs} {vm} {vb} E (by norm_num) hHL hHD (by decide) (by decide)\n'

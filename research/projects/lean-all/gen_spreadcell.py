@@ -135,6 +135,7 @@ def main():
     ap.add_argument('--hchunk', type=int, default=4096)
     ap.add_argument('--block', type=int, default=8)
     ap.add_argument('--partbytes', type=int, default=600000)
+    ap.add_argument('--stub', action='store_true', help='empty data and sorry checks (to test the Record only)')
     args = ap.parse_args()
     H = load_hex(args.hexbin)
     K, q, N = H['K'], H['q'], H['N']
@@ -181,6 +182,8 @@ def main():
                 return '.leaf ' + vals[0]
             h = len(vals) // 2
             return '.node (' + sub(vals[:h], depth - 1) + ') (' + sub(vals[h:], depth - 1) + ')'
+        if args.stub:
+            leaves = []
         names, parts, cur, size = [], [], [], 0
         for b_ in range(nbk):
             lo = b_ * bs
@@ -276,13 +279,13 @@ def main():
         rs = ranges(n_, c)
         checks[key] = rs
         for ci, (lo, k) in enumerate(rs):
-            body = (f'theorem {key}{ci:02d} : allR ({fn}) {lo} {k} = true := by\n  decide +kernel\n'
+            body = (f'theorem {key}{ci:02d} : allR ({fn}) {lo} {k} = true := by\n' + ('  sorry\n' if args.stub else '  decide +kernel\n')
                     if key not in ('hl', 'hp') else
-                    f'theorem {key}{ci:02d} : {fn} {lo} {k} = true := by\n  decide +kernel\n')
+                    f'theorem {key}{ci:02d} : {fn} {lo} {k} = true := by\n' + ('  sorry\n' if args.stub else '  decide +kernel\n'))
             thm_file(f'{nm}{ci:02d}.lean', body)
             mods.append(f'{nm}{ci:02d}')
     glist = f'[(vg {nh} {vb}, vh {nh} {vb})]'
-    thm_file('HOrb.lean', f'theorem horb : orbitOK {glist} {src4} {nh - src4} = true := by\n  decide +kernel\n')
+    thm_file('HOrb.lean', f'theorem horb : orbitOK {glist} {src4} {nh - src4} = true := by\n' + ('  sorry\n' if args.stub else '  decide +kernel\n'))
     mods.append('HOrb')
     for r in range(1, D):
         imps, txt = tree_defs(f'lev{r}', 'ℕ', levels[r], '0', str, KH)
@@ -304,7 +307,7 @@ def main():
         for cj, (vlo, vk) in enumerate(sch):
             imps = ''.join(f'import {ns}.Lev{rr}\n' for rr in (r, r + 1) if 1 <= rr <= D - 1)
             thm_file(f'Step{r}_{cj:02d}.lean', f'theorem step{r}_{cj:02d} : stepOK {KH} (vnb {vm} {vb} E) {lev(r)} '
-                     f'{lev(r + 1)} {vlo} {vk} = true := by\n  decide +kernel\n', imps)
+                     f'{lev(r + 1)} {vlo} {vk} = true := by\n' + ('  sorry\n' if args.stub else '  decide +kernel\n'), imps)
             mods.append(f'Step{r}_{cj:02d}')
 
     def joined(names, rs):
@@ -351,7 +354,7 @@ def main():
         f.write(f'theorem hO : ∀ v, {src4} ≤ v → v < {nh} → ∃ g ∈ {glist}, g.1 v < v := by\n'
                 f'  intro v h1 h2\n  exact orbit_of horb v h1 (by omega)\n\n')
         f.write(f'/-- The masks of every radius, from the sources 0 … {src4 - 1}. -/\n'
-                f'noncomputable def LV : ℕ → Tree ℕ\n  | 0 => Tree.gen (initMask 0 {src4}) 0 {KH}\n')
+                f'noncomputable def LV : ℕ → BipartiteDD.Fast.Tree ℕ\n  | 0 => Tree.gen (initMask 0 {src4}) 0 {KH}\n')
         for r in range(1, D):
             f.write(f'  | {r} => lev{r}\n')
         f.write(f'  | _ => fullT {KH} {src4}\n\n')
@@ -364,9 +367,9 @@ def main():
                         indent='    ')
             f.write('  · ' + txt[4:])
         f.write('\n')
-        f.write(f'theorem hHD : (graphF {nh} {nbE}).ediam ≤ {D} :=\n'
-                f'  ediam_le hHL {glist} hP hO (fun s hs\' hm v => edist_of_staged hHL hK LV rfl rfl hs v s hs\' '
-                f'(Nat.zero_le _) (by omega))\n\n')
+        f.write(f'theorem hB : ∀ s (hsn : s < {nh}), s < {src4} → ∀ v : Fin {nh}, (graphF {nh} {nbE}).edist v ⟨s, hsn⟩ ≤ {D} '
+                f':= by\n  intro s hsn hm v\n  exact edist_of_staged hHL hK LV rfl rfl hs v s hsn (Nat.zero_le _) (by omega)\n\n')
+        f.write(f'theorem hHD : (graphF {nh} {nbE}).ediam ≤ {D} :=\n  ediam_le hHL {glist} hP hO hB\n\n')
         f.write(f'theorem {args.theorem} : ∃ G : SimpleGraph (Fin {n}), IsBipartiteDegDiam G {q + 1 + j} 7 := by\n'
                 f'  have := HexGlobal.main hT {j} {vm} {vb} E (by norm_num) fpt h_gf hHL hHD (by norm_num) (by norm_num)\n'
                 f'  norm_num at this\n  exact this\n\n')
