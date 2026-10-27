@@ -5,7 +5,7 @@ to continue.
 
 ## What is proved
 
-57 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 61 rows marked done; four of those records were
+60 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 64 rows marked done; four of those records were
 later raised and the new values are checked too). Seven of them, (5,8) 9,760, (5,9) 29,756, (9,8) 546,720, (8,9)
 1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols added to
 `research/frontier/sols` during this session, and 14 are records outside the README table (research/RESULTS.md).
