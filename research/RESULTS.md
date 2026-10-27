@@ -214,3 +214,26 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 
 - Oct 25 10:14 PT (harvest): (5,9) 29,756 (was 29,540), meta 346 43 29 n 1; claude/raise2-5-9-record-lt2t4o.
 - Oct 25 10:14 PT (harvest): (9,8) 546,720 (was 540,360), sl 16 poly x^4+x+1 n 67; claude/raise-d9d8-haar-round2-q5t083.
+
+- Oct 26 08:25 PT (harvest): (9,5) 2,756 (was 2,662), meta 53 26 16 n 1; claude/hunt-d5-graphs-lh5vuj.
+
+- Oct 26 09:17 PT (harvest): (4,11) 18,480 (was 0), sl 11 n 7; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (4,12) 50,160 (was 0), sl 11 n 19; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (5,11) 253,080 (was 0), psl 19 n 37; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (5,12) 912,576 (was 0), psl 97 n 1; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (6,11) 1,971,744 (was 0), psl 47 n 19; claude/new-cells-beyond-etos3t.
+- Oct 26 09:17 PT (harvest): (9,5) 2,758 (was 2,756), meta 197 7 104 n 1; claude/hunt-d5-graphs-lh5vuj.
+
+- Oct 26 09:43 PT (harvest): (4,11) 19,152 (was 18,480), sl 8 poly x^3+x+1 n 19; claude/new-cells-beyond-etos3t.
+- Oct 26 09:44 PT (coordinator): (13,5) 11,700 (raised, was 11,486); (18,5) 47,600 (new cell, was 0); (19,3) 624 (new cell, was 0); (19,4) 10,982 (new cell, was 0); (19,5) 52,428 (new cell, was 0); (20,5) 75,000 (new cell, was 0); (3,11) 1,080 (new cell, was 0); (3,12) 1,320 (new cell, was 0); claude/new-cells-beyond-etos3t; all-pairs checked on the Mac mini.
+
+- Oct 26 10:17 PT (harvest): (6,12) 9,303,840 (was 0), sl 71 n 13; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (7,11) 10,648,176 (was 0), sl 43 n 67; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (7,12) 56,297,592 (was 0), psl 163 n 13; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (8,11) 43,702,560 (was 0), sl 89 n 31; claude/new-cells-beyond-etos3t.
+- Oct 26 10:17 PT (harvest): (8,12) 268,496,208 (was 0), sl 163 n 31; claude/new-cells-beyond-etos3t.
+
+- Oct 26 11:17 PT (harvest): (7,10) 2,298,240 (was 2,237,760), prod sl 7 psl 19 n 1; claude/raise-d7d10-record-7d5zrr.
+- Oct 26 11:17 PT (harvest): (8,10) 8,043,840 (was 7,818,096), prod psl 7 psl 19 n 7; claude/raise2-8-10-record-dmm6z4.
+- Oct 26 11:17 PT (coordinator): (3,10) 810 (new cell for us; table 800): voltage lift of a 5+5 cubic base over C3 x He3; claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.
+- Oct 26 13:17 PT (coordinator): (3,11) 1,320 (raised, was 1,080; beyond the 2013 table): voltage lift over SmallGroup(165,1); claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.

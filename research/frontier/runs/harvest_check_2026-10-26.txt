@@ -1,0 +1,175 @@
+== d9D5_meta_53_26_16_s7058 (origin/claude/hunt-d5-graphs-lh5vuj, 08:25 PT)
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 2756 edges = 12402 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = 72b6de0c53392bc811262e940d92e5e4c4ef1f6947b301c88050d90c0a7cd5a7
+VALID d=9 D=5 group=meta 53 26 16 x Z_1 N=1378 vertices=2756
+== d4D11_sl_11_7_orb3_d09 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 18480 edges = 36960 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 3c96a3026b6a80101ad0f243a49bf211b2d3e33aea3fc70a22b9d1db2cebb203
+VALID d=4 D=11 group=sl 11 x Z_7 N=9240 vertices=18480
+== d4D12_sl_11_19_orb3_d09 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 50160 edges = 100320 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 43272e86ab29c20491ead7708ac96d9d28fd2f5a1ad6265c475f608a5b670ab6
+VALID d=4 D=12 group=sl 11 x Z_19 N=25080 vertices=50160
+== d5D11_psl_19_37_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 253080 edges = 632700 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 43edc2784dd2ab899af72251ca2c0775a01c13c6d3136f30b6bed5402c3ad839
+VALID d=5 D=11 group=psl 19 x Z_37 N=126540 vertices=253080
+== d5D12_psl_97_1_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 912576 edges = 2281440 max degree = 5 min degree = 5 duplicate edges = 0
+edge list sha256 = 401a596197689b21a455cd029af7bb4a909ee5d055126d8a4695cd80e5a9c4a9
+VALID d=5 D=12 group=psl 97 x Z_1 N=456288 vertices=912576
+== d6D11_psl_47_19_orb3f0_s1 (origin/claude/new-cells-beyond-etos3t, 09:17 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 1971744 edges = 5915232 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 609fb44141c502fdf9df9035bcdebba11440f916517992071f2a901decd79a4a
+VALID d=6 D=11 group=psl 47 x Z_19 N=985872 vertices=1971744
+== d9D5_meta_197_7_104_s40164 (origin/claude/hunt-d5-graphs-lh5vuj, 09:17 PT)
+ecc from A = 5 unreached 0
+ecc from B = 5 unreached 0
+n = 2758 edges = 12411 max degree = 9 min degree = 9 duplicate edges = 0
+edge list sha256 = b7c10d626dd47e0dcb9eaa46c538957a2fa73557c44878c7396553bf2fca735e
+VALID d=9 D=5 group=meta 197 7 104 x Z_1 N=1379 vertices=2758
+== d4D11_sl_8_19_orb3_e03 (origin/claude/new-cells-beyond-etos3t, 09:43 PT)
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 19152 edges = 38304 max degree = 4 min degree = 4 duplicate edges = 0
+edge list sha256 = 81232ba80efbc3054182ea1135cc4f71440d7fa3d503087a305f1f43774bc120
+VALID d=4 D=11 group=sl 8 poly x^3+x+1 x Z_19 N=9576 vertices=19152
+== d6D12_sl_71_13_orb3f0_s2 (origin/claude/new-cells-beyond-etos3t, 10:17 PT)
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== build_haar2.py research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt /tmp/e.txt: exit=0 peak_rss_mb=540 ==
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 9303840 edges = 27911520 max degree = 6 min degree = 6 duplicate edges = 0
+edge list sha256 = 087241314bb7046ecbb0bab62ae2a6caa02ec840c5c0b9c59913f58b6c5cc8e6
+VALID d=6 D=12 group=sl 71 x Z_13 N=4651920 vertices=9303840
+== check_haar_indep.py research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt: exit=0 peak_rss_mb=319 ==
+file research/frontier/sols/d6D12_sl_71_13_orb3f0_s2.txt
+header: d=6 D=12 spec=sl 71 NCYC=13 N=4651920
+group order |G|=357840 (factors [357840]), x Z_13 -> 4651920; vertices 2N=9303840
+distinct generators (as full group elements): 6 of d=6
+permutations built (1s)
+BFS from A: ecc=12 reached 9303840 of 9303840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3750, 18720, 92808, 443138, 1791734, 3837020, 2763472, 352261]
+BFS from B: ecc=12 reached 9303840 of 9303840 (unreached 0); level sizes [1, 6, 30, 150, 750, 3750, 18720, 92808, 443104, 1791734, 3837126, 2763472, 352189]
+every vertex has exactly 6 distinct neighbours: True
+RESULT VALID d=6 D=12 eccA=12 eccB=12 n=9303840 (4s)
+== d7D11_sl_43_67_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 10:17 PT)
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== build_haar2.py research/frontier/sols/d7D11_sl_43_67_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=615 ==
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 10648176 edges = 37268616 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = f7c6c64717b19e17edca831fabbe88f488505abd933c8fcd386e6f3f9e0de493
+VALID d=7 D=11 group=sl 43 x Z_67 N=5324088 vertices=10648176
+== check_haar_indep.py research/frontier/sols/d7D11_sl_43_67_orb3_s1.txt: exit=0 peak_rss_mb=321 ==
+file research/frontier/sols/d7D11_sl_43_67_orb3_s1.txt
+header: d=7 D=11 spec=sl 43 NCYC=67 N=5324088
+group order |G|=79464 (factors [79464]), x Z_67 -> 5324088; vertices 2N=10648176
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=11 reached 10648176 of 10648176 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 54120, 315448, 1612320, 4429206, 3656093, 570118]
+BFS from B: ecc=11 reached 10648176 of 10648176 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9057, 54120, 315448, 1612238, 4429206, 3656175, 570118]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=11 eccA=11 eccB=11 n=10648176 (5s)
+== d7D12_psl_163_13_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 10:17 PT)
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== check_haar_indep.py research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt: exit=0 peak_rss_mb=1604 ==
+file research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt
+header: d=7 D=12 spec=psl 163 NCYC=13 N=28148796
+group order |G|=2165292 (factors [2165292]), x Z_13 -> 28148796; vertices 2N=56297592
+distinct generators (as full group elements): 7 of d=7
+permutations built (15s)
+BFS from A: ecc=12 reached 56297592 of 56297592 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 54372, 324006, 1881629, 9440555, 24000130, 18374904, 2211110]
+BFS from B: ecc=12 reached 56297592 of 56297592 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 54372, 324006, 1881665, 9440555, 24003018, 18374904, 2208186]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=12 eccA=12 eccB=12 n=56297592 (49s)
+
+== build_haar2.py research/frontier/sols/d7D12_psl_163_13_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=2644 ==
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 56297592 edges = 197041572 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = a3d4c1b2b0d4022fc4277598b6d761b2d300c2406d1d0e3beabf3ae773cbbc3a
+VALID d=7 D=12 group=psl 163 x Z_13 N=28148796 vertices=56297592
+== d8D11_sl_89_31_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 10:17 PT)
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== check_haar_indep.py research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt: exit=0 peak_rss_mb=1214 ==
+file research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt
+header: d=8 D=11 spec=sl 89 NCYC=31 N=21851280
+group order |G|=704880 (factors [704880]), x Z_31 -> 21851280; vertices 2N=43702560
+distinct generators (as full group elements): 8 of d=8
+permutations built (3s)
+BFS from A: ecc=11 reached 43702560 of 43702560 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 133648, 915755, 5609804, 18307071, 16105027, 2608876]
+BFS from B: ecc=11 reached 43702560 of 43702560 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19178, 133646, 915755, 5609722, 18307071, 16105111, 2608876]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=11 eccA=11 eccB=11 n=43702560 (33s)
+
+== build_haar2.py research/frontier/sols/d8D11_sl_89_31_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=2194 ==
+ecc from A = 11 unreached 0
+ecc from B = 11 unreached 0
+n = 43702560 edges = 174810240 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 0982dcc950a0254fff4d9dd10bee4b568c9d96df2edef8a8c900c3c6acc292ec
+VALID d=8 D=11 group=sl 89 x Z_31 N=21851280 vertices=43702560
+== d8D12_sl_163_31_orb3_s1 (origin/claude/new-cells-beyond-etos3t, 10:17 PT)
+machine: nproc=4; free -g: total=15 GB, used=0 GB, free=14 GB (cloud sandbox, Linux 6.18.44-fc-v153)
+== check_haar_indep.py research/frontier/sols/d8D12_sl_163_31_orb3_s1.txt: exit=0 peak_rss_mb=7140 ==
+file research/frontier/sols/d8D12_sl_163_31_orb3_s1.txt
+header: d=8 D=12 spec=sl 163 NCYC=31 N=134248104
+group order |G|=4330584 (factors [4330584]), x Z_31 -> 134248104; vertices 2N=268496208
+distinct generators (as full group elements): 8 of d=8
+permutations built (38s)
+BFS from A: ecc=12 reached 268496208 of 268496208 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19208, 134354, 936890, 6410222, 38642030, 116006712, 94649576, 11694015]
+BFS from B: ecc=12 reached 268496208 of 268496208 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19208, 134354, 936890, 6410102, 38642030, 116014652, 94649576, 11686195]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=12 eccA=12 eccB=12 n=268496208 (253s)
+
+== build_haar2.py research/frontier/sols/d8D12_sl_163_31_orb3_s1.txt /tmp/e.txt: exit=0 peak_rss_mb=12868 ==
+ecc from A = 12 unreached 0
+ecc from B = 12 unreached 0
+n = 268496208 edges = 1073984832 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = 5b42d36e9b24ef2afca8b3b11bc5aa2aa83c6d2a362ad67c5e496545880c5aa1
+VALID d=8 D=12 group=sl 163 x Z_31 N=134248104 vertices=268496208
+== d7D10_prod_sl_7_psl_19_1_orb3_s2 (origin/claude/raise-d7d10-record-7d5zrr, 11:17 PT)
+machine: nproc=4; free -g: total 15 used 0 free 14 available 15 (GB)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 2298240 edges = 8043840 max degree = 7 min degree = 7 duplicate edges = 0
+edge list sha256 = d977a1225993a74ae9c26e3c021d40a3e287407595eea0e499c11e74c14cd0fe
+VALID d=7 D=10 group=prod sl 7 psl 19 x Z_1 N=1149120 vertices=2298240
+== check_haar_indep.py ==
+file research/frontier/sols/d7D10_prod_sl_7_psl_19_1_orb3_s2.txt
+header: d=7 D=10 spec=prod sl 7 psl 19 NCYC=1 N=1149120
+group order |G|=1149120 (factors [336, 3420]), x Z_1 -> 1149120; vertices 2N=2298240
+distinct generators (as full group elements): 7 of d=7
+permutations built (0s)
+BFS from A: ecc=10 reached 2298240 of 2298240 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53432, 284017, 897531, 855772, 196602]
+BFS from B: ecc=10 reached 2298240 of 2298240 (unreached 0); level sizes [1, 7, 42, 252, 1512, 9072, 53436, 284017, 897049, 855772, 197080]
+every vertex has exactly 7 distinct neighbours: True
+RESULT VALID d=7 D=10 eccA=10 eccB=10 n=2298240 (1s)
+== d8D10_prod_psl_7_psl_19_7_orb3_s1 (origin/claude/raise2-8-10-record-dmm6z4, 11:17 PT)
+machine: nproc=4; free -g: total 15 used 0 free 14 available 15 (GB)
+ecc from A = 10 unreached 0
+ecc from B = 10 unreached 0
+n = 8043840 edges = 32175360 max degree = 8 min degree = 8 duplicate edges = 0
+edge list sha256 = d33f0b924e098b352ba4aaa0624f71f71c1797ea58a5d3ff07f7859fce2611ee
+VALID d=8 D=10 group=prod psl 7 psl 19 x Z_7 N=4021920 vertices=8043840
+== check_haar_indep.py ==
+file research/frontier/sols/d8D10_prod_psl_7_psl_19_7_orb3_s1.txt
+header: d=8 D=10 spec=prod psl 7 psl 19 NCYC=7 N=4021920
+group order |G|=574560 (factors [168, 3420]), x Z_7 -> 4021920; vertices 2N=8043840
+distinct generators (as full group elements): 8 of d=8
+permutations built (0s)
+BFS from A: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132212, 836552, 3136496, 3165805, 750411]
+BFS from B: ecc=10 reached 8043840 of 8043840 (unreached 0); level sizes [1, 8, 56, 392, 2744, 19163, 132214, 836552, 3137525, 3165805, 749380]
+every vertex has exactly 8 distinct neighbours: True
+RESULT VALID d=8 D=10 eccA=10 eccB=10 n=8043840 (5s)

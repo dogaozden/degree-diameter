@@ -44,11 +44,11 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (5, 5) | 336 | **354** | +5.4% | evolutionary search | ✓ |
 | (7, 5) | 1,134 | **1,152** | +1.6% | Haar graph, hand-picked group | ✓ |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
-| (9, 5) | 2,496 | **2,662** | +6.7% | Haar graph, hand-picked group | ✓ |
+| (9, 5) | 2,496 | **2,758** | +10.5% | Haar graph, squad search | (2,662) |
 | (10, 5) | 4,000 | **4,800** | +20.0% | generalized quadrangle construction ¹ | — |
 | (11, 5) | 5,850 | **7,020** | +20.0% | generalized quadrangle construction ¹ | — |
 | (12, 5) | 8,200 | **9,840** | +20.0% | generalized quadrangle construction ¹ | — |
-| (13, 5) | 11,480 | **11,486** | +0.1% | finite geometry (unit design) ¹ | — |
+| (13, 5) | 11,480 | **11,700** | +1.9% | lift of a generalized quadrangle | — |
 | (14, 5) | 14,760 | **17,568** | +19.0% | generalized quadrangle construction ¹ | — |
 | (15, 5) | 20,496 | **20,736** | +1.2% | route-chart lift | — |
 | (16, 5) ² | 27,300 | **33,792** | +23.8% | route-chart lift ¹ | — |
@@ -91,6 +91,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (14, 9) | 95,087,738 | **116,068,656** | +22.1% | orbit search (Haar) | — |
 | (15, 9) | 168,016,334 | **208,029,120** | +23.8% | orbit search (Haar) | — |
 | (16, 9) | 288,939,118 | **337,394,400** | +16.8% | orbit search (Haar) | — |
+| (3, 10) | 800 | **810** | +1.3% | voltage lift (squad search) | — |
 | (4, 10) | 11,748 | **12,416** | +5.7% | voltage lift / metacyclic Haar | ✓ |
 | (5, 10) | 90,068 | **95,472** | +6.0% | voltage lift / metacyclic Haar | ✓ |
 | (6, 10) | 452,032 | **524,160** | +16.0% | orbit search (Haar) | ✓ |
