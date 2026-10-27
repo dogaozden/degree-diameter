@@ -63,6 +63,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (4,12) | 50,160 | Haar, SL(2,11) × Z19 | **done** | `nb_4_12_50160`, LeanAll/HaarD4D12 (gen_haarsl2.py, 48-bit fields for words of 11 letters) |
 | (5,11) | 253,080 | Haar, PSL(2,19) × Z37 | **done** | `nb_5_11_253080`, LeanAll/HaarD5D11 (gen_haarsl.py, 48-bit fields) |
 | (5,12) | 912,576 | Haar, PSL(2,97) (n = 1) | **done** | `nb_5_12_912576`, LeanAll/HaarD5D12 (gen_haarsl.py --chain2: HaarPSL2 allows n = 1) |
+| (4,11) | 19,152 | Haar, SL(2,8) × Z19 | **done** | `nb_4_11_19152`, LeanAll/HaarD4D11 (GF(8), HaarGF8Z.cover8, gen_haar8.py) |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
