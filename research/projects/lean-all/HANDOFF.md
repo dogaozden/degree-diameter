@@ -5,13 +5,14 @@ to continue.
 
 ## What is proved
 
-40 records without a Lean ✓ are kernel-checked (table in `STATUS.md`; seven of them, (5,8) 9,760, (5,9) 29,756,
-(9,8) 546,720, (8,9) 1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols
-added to `research/frontier/sols` during this session): 22 with their Lean files committed
-(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`), and 18 large Haar cells whose generated files
-are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every
-theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Four
-methods:
+57 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 61 rows marked done; four of those records were
+later raised and the new values are checked too). Seven of them, (5,8) 9,760, (5,9) 29,756, (9,8) 546,720, (8,9)
+1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols added to
+`research/frontier/sols` during this session, and 14 are records outside the README table (research/RESULTS.md).
+35 have their Lean files committed (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`); 26 large
+cells have generated files that are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with
+`manifests/`). Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the
+standard axioms. Six methods:
 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
 2. **Graphs up to about 35,000 vertices**: orbit BFS in the kernel (`Orbit.lean`, `Orbit2.lean`, generators
@@ -24,6 +25,19 @@ methods:
    `ZMod 2` with identity letters. `SL(2,25) × Z_n` the same way over `GF(25) = F₅[x]/(x² + 2)` (`GF25.lean`,
    `HaarGF25.lean`, `gen_haar25.py`).
 4. **Small metacyclic Haar graphs** `Z_m ⋊_r Z_k` (`gen_meta.py`): one word per element, checked in stage tables.
+5. **Hexagon D = 7 cells with three levels** ((7,7), (9,7), (10,7), (13,7)): Theorem 1 of the hexagon-family project
+   (`HexagonD7`, copied unchanged) with its hypotheses reduced to local certificates (`HexArith.lean`, `HexLocal.lean`
+   over `ZMod p`; `HexGen.lean` over any field through a `Coder`, `HexGF8.lean` for GF(8)). A point is a normalised
+   base-p code, a line a normalised basis with Plücker coordinates; the points and lines near the freed set R are
+   listed with their incidences, completeness comes from counting (`mem_of_card`), sigma is extended to a bijection
+   (`exists_equiv_extend`), and the hub graph is checked by Orbit2 BFS. `hexlocal.py SOL HEXBIN OUT.json` writes the
+   certificate, `gen_hexcell.py OUT.json NAME OUTDIR --theorem THM` the cell.
+6. **Typed levels** (research/squads/cells/d16D7.md): `Typed.lean` proves the typed-levels theorem over any
+   generalized hexagon (levels of type H or its dual, two matchings per level, identity on friendly transitions,
+   `swapE τ` with a local duality on the others, hubs in the free slots); `TypedHex.lean` gets the friendly freed sets
+   from global tables, `VHub.lean` takes hub graphs that are Z_m voltage graphs, and `TypedHex5.main5` is the
+   five-level instance over `ZMod p` (degree p + 3). `gen_typedcell.py HEXBIN TYPED_SOL VHUB NAME OUTDIR --lc CELL ...`
+   writes a cell that reuses the local certificate of a three-level cell (TypD14D7 uses HexD13D7's).
 
 ## How to build a Haar cell
 
@@ -64,9 +78,12 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Hexagon D = 7 cells (7,7) … (16,7): not here. The hexagon-family project (branch `claude/hexagon-family-blvamb`)
-  has a Lean certificate theorem for those constructions and says the instance checks are too big for the kernel;
-  their record values are also changing.
+- Hexagon D = 7: (11,7) and (12,7) free all points of a spread in H(9) (collinear freed points, outside Theorem 1;
+  needs a theorem for that freeing rule, the duality of H(9), and GF(9)). (15,7) has seven levels H H D H H D D and
+  three matchings: `Typed.lean` covers it, but it needs a seven-level instance like `TypedHex5` and a hub graph of
+  degree 8 with 9,782 hubs per side (the record's is random; a voltage graph needs a search). (16,7) is five levels
+  over H(13): `main5` applies with p = 13 once a local certificate for its non-friendly transitions and a degree-11
+  hub graph with 14,884 hubs per side are found.
 - The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
