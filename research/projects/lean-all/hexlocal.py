@@ -37,19 +37,43 @@ def mulC8(a, b):
     return (c0 + c3) % 2 + 2 * ((c1 + c3 + c4) % 2) + 4 * ((c2 + c4) % 2)
 
 
+def addC9(a, b):
+    """GF(9) sum of codes a0 + 3 a1 (LeanAll/GF9.lean addC)."""
+    return (a % 3 + b % 3) % 3 + 3 * ((a // 3 + b // 3) % 3)
+
+
+def negC9(a):
+    return (3 - a % 3) % 3 + 3 * ((3 - a // 3) % 3)
+
+
+def mulC9(a, b):
+    """GF(9) product modulo x^2 + 1 (LeanAll/GF9.lean mulC)."""
+    return (a % 3 * (b % 3) + 2 * (a // 3 * (b // 3))) % 3 + 3 * ((a % 3 * (b // 3) + a // 3 * (b % 3)) % 3)
+
+
 class Fld:
-    """The field of the checks: ZMod p (Nat arithmetic of LeanAll/HexArith.lean) or GF(8) (LeanAll/HexGF8.lean)."""
+    """The field of the checks: ZMod p (Nat arithmetic of LeanAll/HexArith.lean), GF(8) (LeanAll/HexGF8.lean) or GF(9)
+    (LeanAll/HexGF9.lean)."""
 
     def __init__(self, q):
         self.q = q
         self.prime = all(q % d for d in range(2, q))
-        assert self.prime or q == 8, 'q must be prime or 8'
+        assert self.prime or q in (8, 9), 'q must be prime, 8 or 9'
 
     def add(self, a, b):
-        return (a + b) % self.q if self.prime else a ^ b
+        if self.prime:
+            return (a + b) % self.q
+        return a ^ b if self.q == 8 else addC9(a, b)
+
+    def neg(self, a):
+        if self.prime:
+            return (-a) % self.q
+        return a if self.q == 8 else negC9(a)
 
     def mul(self, a, b):
-        return (a * b) % self.q if self.prime else mulC8(a, b)
+        if self.prime:
+            return (a * b) % self.q
+        return mulC8(a, b) if self.q == 8 else mulC9(a, b)
 
     def inv(self, a):
         return next(x for x in range(1, self.q) if self.mul(a, x) == 1)
@@ -67,6 +91,9 @@ class Fld:
         p, v = self.q, self.vec(c)
         if self.prime:
             return (v[0] * v[4] + v[1] * v[5] + v[2] * v[6]) % p == (v[3] * v[3]) % p
+        if self.q == 9:
+            a, m = addC9, mulC9
+            return a(a(a(m(v[0], v[4]), m(v[1], v[5])), m(v[2], v[6])), negC9(m(v[3], v[3]))) == 0
         m = mulC8
         return m(v[0], v[4]) ^ m(v[1], v[5]) ^ m(v[2], v[6]) ^ m(v[3], v[3]) == 0
 
@@ -75,6 +102,10 @@ class Fld:
         if self.prime:
             return (x[0] * y[4] + x[4] * y[0] + x[1] * y[5] + x[5] * y[1] + x[2] * y[6] + x[6] * y[2]) % p == \
                 (2 * (x[3] * y[3])) % p
+        if self.q == 9:
+            a, m = addC9, mulC9
+            return a(a(a(a(a(a(m(x[0], y[4]), m(x[4], y[0])), m(x[1], y[5])), m(x[5], y[1])), m(x[2], y[6])),
+                       m(x[6], y[2])), negC9(m(2, m(x[3], y[3])))) == 0
         m = mulC8
         return m(x[0], y[4]) ^ m(x[4], y[0]) ^ m(x[1], y[5]) ^ m(x[5], y[1]) ^ m(x[2], y[6]) ^ m(x[6], y[2]) == 0
 
@@ -82,6 +113,8 @@ class Fld:
         p = self.q
         if self.prime:
             return (x[i] * y[j] + p * p - x[j] * y[i]) % p
+        if self.q == 9:
+            return addC9(mulC9(x[i], y[j]), negC9(mulC9(x[j], y[i])))
         return mulC8(x[i], y[j]) ^ mulC8(x[j], y[i])
 
     def tN(self, a, b):
@@ -100,7 +133,7 @@ class Fld:
 
     def linN(self, y, a, b, al, be):
         Y, A, B = self.vec(y), self.vec(a), self.vec(b)
-        if not self.prime and not (al < 8 and be < 8):
+        if not self.prime and not (al < self.q and be < self.q):
             return False
         return all(Y[i] == self.add(self.mul(al, A[i]), self.mul(be, B[i])) for i in range(7))
 

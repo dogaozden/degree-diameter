@@ -510,6 +510,15 @@ def main():
         mods.append(f'{NM}R')
         lcr[nm] = (M, m, F, pr, cr)
 
+    def joined(names, rs):
+        """A balanced `range_join` tree over the `allR_spec` of the check modules `names` (ranges `rs`)."""
+        def go(a, b):
+            if b - a == 1:
+                return f'(allR_spec {names[a]})'
+            m = (a + b) // 2
+            return f'(range_join (mid := {rs[m][0]}) {go(a, m)} {go(m, b)})'
+        return go(0, len(rs))
+
     def split(var, rs, body, indent='  '):
         out = io.StringIO()
         if len(rs) == 1:
@@ -524,7 +533,7 @@ def main():
     LCN = f'BipartiteDD.LeanAll.{args.lc}'
     nbE = f'(vnb {vm} {vb} E)'
     with open(os.path.join(od, 'Record.lean'), 'w') as f:
-        f.write(HDR + (f'import {LCN}.Record\n' if not args.own else ''))
+        f.write(HDR + 'import BipartiteDD.LeanAll.Range\n' + (f'import {LCN}.Record\n' if not args.own else ''))
         for mo in mods:
             f.write(f'import {ns}.{mo}\n')
         how = (f'use the local certificate of `{args.lc}`' if not args.own else
@@ -539,9 +548,8 @@ def main():
                                ('gp', 'e', f'∀ e < {nP}, gpOK {p} {nP} gp e = true'),
                                ('rl', 'l', f'∀ l < {nL}, rlOK {p} {nL} {nP} rla rlb gp gpown entsL l = true')]:
             rs = checks[key][1]
-            f.write(f'theorem h_{key} : {stmt} := by\n  intro {var} h{var}\n' +
-                    split(var, rs, lambda ci, key=key, var=var: f'exact allR_spec {key}{ci:02d} {var} hc.1 hc.2'
-                          if len(rs) > 1 else f'exact allR_spec {key}00 {var} (Nat.zero_le _) (by omega)') + '\n')
+            f.write(f'theorem h_{key} : {stmt} :=\n  fun {var} h{var} => '
+                    f'{joined([f"{key}{ci:02d}" for ci in range(len(rs))], rs)} {var} (Nat.zero_le _) h{var}\n\n')
         if not args.own:
             f.write(f'/-- The local certificate of `{args.lc}`. -/\n'
                     f'noncomputable def lc : LC := ⟨{args.lcM}, {args.lcm}, {LCN}.ptc, {LCN}.lnA, {LCN}.lnB, {LCN}.sg, '
@@ -554,17 +562,13 @@ def main():
             f.write(f'instance : Fact (Nat.Prime {p}) := ⟨by norm_num⟩\n\n')
             for nm in LCS:
                 M, m, F, pr, cr = lcr[nm]
-                f.write(f'theorem {nm}_h1 : ∀ i < {M}, gPt {p} {M} {F["ptc"]} i = true := by\n  intro i hi\n' +
-                        split('i', pr, lambda ci, nm=nm: f'exact allR_spec {nm}_pt{ci:02d} i hc.1 hc.2' if len(pr) > 1
-                              else f'exact allR_spec {nm}_pt00 i (Nat.zero_le _) (by omega)') + '\n')
-                f.write(f'theorem {nm}_h2 : ∀ j < {M}, gLn {p} {M} {F["lnA"]} {F["lnB"]} {F["sg"]} {F["sgi"]} j = true := '
-                        'by\n  intro j hj\n' +
-                        split('j', pr, lambda ci, nm=nm: f'exact allR_spec {nm}_ln{ci:02d} j hc.1 hc.2' if len(pr) > 1
-                              else f'exact allR_spec {nm}_ln00 j (Nat.zero_le _) (by omega)') + '\n')
+                f.write(f'theorem {nm}_h1 : ∀ i < {M}, gPt {p} {M} {F["ptc"]} i = true :=\n  fun i hi => '
+                        f'{joined([f"{nm}_pt{ci:02d}" for ci in range(len(pr))], pr)} i (Nat.zero_le _) hi\n\n')
+                f.write(f'theorem {nm}_h2 : ∀ j < {M}, gLn {p} {M} {F["lnA"]} {F["lnB"]} {F["sg"]} {F["sgi"]} j = true :=\n'
+                        f'  fun j hj => {joined([f"{nm}_ln{ci:02d}" for ci in range(len(pr))], pr)} j (Nat.zero_le _) hj\n\n')
                 f.write(f'theorem {nm}_h4 : ∀ v < {m}, certOK {p} {M} {F["ptc"]} {F["lnA"]} {F["lnB"]} {F["sg"]} '
-                        f'{F["rflag"]} ({F["rl"]} v) ({F["cert"]} v) = true := by\n  intro v hv\n' +
-                        split('v', cr, lambda ci, nm=nm: f'exact allR_spec {nm}_cert{ci:02d} v hc.1 hc.2' if len(cr) > 1
-                              else f'exact allR_spec {nm}_cert00 v (Nat.zero_le _) (by omega)') + '\n')
+                        f'{F["rflag"]} ({F["rl"]} v) ({F["cert"]} v) = true :=\n  fun v hv => '
+                        f'{joined([f"{nm}_cert{ci:02d}" for ci in range(len(cr))], cr)} v (Nat.zero_le _) hv\n\n')
                 f.write(f'/-- The local certificate `{nm}`. -/\n'
                         f'noncomputable def {nm} : LC := ⟨{M}, {m}, {F["ptc"]}, {F["lnA"]}, {F["lnB"]}, {F["sg"]}, '
                         f'{F["sgi"]}, {F["rl"]}, {F["rflag"]}, {F["cert"]}⟩\n\n')
