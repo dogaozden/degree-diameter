@@ -398,6 +398,19 @@ def lcL (c : LC) (t : ℕ) : ℕ × ℕ := (c.lnA (c.sg (c.rl t)), c.lnB (c.sg (
 
 theorem lc_denP {c : LC} (t : ℕ) : den p false (lcP c t) = .inl (Fp p c.ptc (c.rl t)) := rfl
 
+theorem lc_nodupP' {c : LC} (hc : c.Ok p) : (lst p c.m false (lcP c)).Nodup :=
+  nodup_lst (fun t ht t' ht' e =>
+    inj_of_succ hc.rs t ht t' ht' (hc.glob.fp_inj _ (hc.r t ht).1 _ (hc.r t' ht').1 (Sum.inl_injective e)))
+
+theorem lc_nodupL' {c : LC} (hc : c.Ok p) : (lst p c.m true (lcL c)).Nodup := by
+  refine nodup_lst (fun t ht t' ht' e => ?_)
+  have e' : Gl p c.lnA c.lnB (c.sg (c.rl t)) = Gl p c.lnA c.lnB (c.sg (c.rl t')) := Sum.inr_injective e
+  have s1 := hc.glob.sg _ (hc.r t ht).1
+  have s2 := hc.glob.sg _ (hc.r t' ht').1
+  have h1 := hc.glob.gl_inj _ s1.1 _ s2.1 e'
+  have h2 : c.rl t = c.rl t' := by rw [← s1.2, ← s2.2, h1]
+  exact inj_of_succ hc.rs t ht t' ht' h2
+
 section LCfacts
 
 variable {c : LC} (hc : c.Ok p) {τd : SPt (ZMod p) ≃ HLine (ZMod p)}
@@ -469,5 +482,28 @@ theorem lc_prL : ∀ r < c.m, ∀ s < c.m, Co hexInc (den p true (lcL c r)) (den
   exact absurd ((hdual r hr _).2 h) (hnc r hr s hs)
 
 end LCfacts
+
+/-! ## Small facts for the records -/
+
+theorem nbChk_spec {KO D : ℕ} {nbX nbY : ℕ → List ℕ} {x : ℕ}
+    (h : (allP (fun y => Nat.blt y KO && (nbY y).contains x) (nbX x) && Nat.ble (lenP (nbX x)) D) = true) :
+    (∀ y ∈ nbX x, y < KO ∧ x ∈ nbY y) ∧ (nbX x).length ≤ D := by
+  simp only [Bool.and_eq_true, allP_eq, List.all_eq_true, Nat.blt_eq, Nat.ble_eq, lenP_eq,
+    List.contains_iff_mem] at h
+  exact ⟨fun y hy => h.1 y hy, h.2⟩
+
+theorem hubChk_of_pr {TY : ℕ → Bool} {nT : ℕ → ℕ} {cF cI : ℕ → ℕ → ℕ × ℕ} {pr : ℕ → ℕ → ℕ} {KB KA : ℕ}
+    {tA tB hu hv au bu av bv : ℕ → ℕ → ℕ} {a k r : ℕ} (h : pr (trn a k) r = r) :
+    hubChk p TY nT cF cI pr KB KA tA tB hu hv au bu av bv a k r = true := by
+  simp [hubChk, h]
+
+/-- Facts about transitions, one transition number at a time. -/
+theorem by_tr {P : ℕ → ℕ → Prop} (h : ∀ tr < 21, P (tr / 3) (tr % 3 + 1)) :
+    ∀ a < 7, ∀ k, 1 ≤ k → k ≤ 3 → P a k := by
+  intro a ha k hk1 hk3
+  have := h (trn a k) (by unfold trn; omega)
+  have e1 : trn a k / 3 = a := by unfold trn; omega
+  have e2 : trn a k % 3 + 1 = k := by unfold trn; omega
+  rwa [e1, e2] at this
 
 end BipartiteDD.LeanAll.Relax7
