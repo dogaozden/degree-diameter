@@ -240,10 +240,10 @@ of items 1–5 (and the a-dependent 12-cycle counts of item 4) on the 56-vertex 
 pure a = 3 configuration of item 7: 7 six-cycles and 14 spokes, 56 = 8·7. The D = 7 analogue of that configuration
 would need 40N10/3 = 248, which is item 7.
 
-Items 1–6 make n = 248 look like a rigid configuration problem (every vertex has exactly three excess walks, coming
-from one 10-cycle or from 12-cycles in the ways listed), but I did not finish the case analysis, so **N_b(3,7) ≤ 248
-stands**. Settling n = 248 would need either the full propagation (items 5–6 propagate along the graph through the
-commutation rule) or a computer search built on these rules.
+Items 1–8 make n = 248 a rigid configuration problem (every vertex has exactly three excess walks, coming from one
+10-cycle or from 12-cycles in the ways listed), but I did not finish the case analysis, so **N_b(3,7) ≤ 248
+stands**. Item 9 says what a proof must contain: the local rules are satisfiable in large graphs, so the
+contradiction (if any) has to come from counting with m = 124, as FP–PV's 2n/12 does at n = 250.
 
 ## 3. Computer-checked: automorphisms of prime order
 
@@ -253,7 +253,8 @@ By §2.2 and §2.5(b), a (3,7)-graph on n ≥ 169 vertices with an automorphism 
 order-preserving completion at n = 170) a cubic Z_p-lift of a cubic bipartite multigraph on k + k vertices,
 n = 2kp, 170 ≤ n ≤ 248. (n = 169 is impossible: orbits of size p would have to divide both 85 and 84.)
 
-Two independent exhaustive programs:
+Programs: `zplift` (below) and `glift` (§3.3, arbitrary groups) give the results of §3.2–3.3; every prime case was
+run with both. `jsearch` was written for order 7 (§3.4), which it could not finish.
 
 - **`zplift`** (all bases listed by nauty: `nauty-genbg -cq -d1:1 -D3:3 k k | nauty-multig -q -r3 -m3 -T`;
   1, 3, 6, 16, 59, 243, 1,207, 6,979, 45,687, 335,178 bases for k = 2..11). Voltages are 0 on a spanning tree
@@ -280,6 +281,8 @@ Validation:
   diameter 7: 293 = 293 classes. (zplift also reports lifts with a double edge, which jsearch excludes; none occur in
   the D = 7 runs below.)
 - Sharded `jsearch` runs reproduce the unsharded totals (13,5,7: 14,596 + 17,157 + 12,474 = 44,227 solutions).
+- `jsearch` at (11, 6, 7) (132-vertex graphs; stopped unfinished): the 298 classes of its first 50,000 solutions are all
+  among zplift's 362 classes (soundness; completeness was shown on the smaller cases above).
 
 ### 3.2 Results for p ≥ 11 (Computer-checked)
 
@@ -404,13 +407,15 @@ in 60 s anneals over incidences and pair assignments (`research/d3D7exact/fano/`
 
 1. Is there a cubic bipartite graph of diameter 7 on 248 vertices? (§2.6 gives its forced local structure; by item 9
    a proof must use the global size.) On 246, 244, 242 (δ = 4, 5, 6; girth ≥ 10)?
-1a. Is there a bipartite (3,7)-graph on 169 vertices (sides 85 and 84, at least three degree-2 vertices in the larger
-   side, pairwise at distance 6, each with a tree 6-ball)? §2.2 leaves this open.
-2. Does every cubic bipartite graph of diameter 7 with an automorphism of order 5 or 7 have at most 168 vertices?
+2. Is there a bipartite (3,7)-graph on 169 vertices (sides 85 and 84, at least three degree-2 vertices in the larger
+   side, pairwise at distance 6, each with a tree 6-ball)? §2.2 leaves this open. It is the only non-cubic case
+   above 168, and the most constrained one; a SAT model of the 64 × 42 adjacency between the leaves of one perfect
+   tree and the outer layer is the natural attempt (not tried here).
+3. Does every cubic bipartite graph of diameter 7 with an automorphism of order 5 or 7 have at most 168 vertices?
    (Order 7: n = 182, 196, 210, 224, 238; order 5: n = 170, 180, ..., 240. The quotients have 26–48 vertices; a
    voltage-graph generator with real isomorph rejection is the missing tool.)
-3. Order 2 and 3 automorphisms can have fixed points, so the quotient is not a cover; no method here.
-4. Graphs with trivial automorphism group are out of reach of everything above.
+4. Order 2 and 3 automorphisms can have fixed points, so the quotient is not a cover; no method here.
+5. Graphs with trivial automorphism group are out of reach of everything above.
 
 ## 6. Files
 
