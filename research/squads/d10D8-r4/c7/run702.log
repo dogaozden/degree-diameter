@@ -1,0 +1,46 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.07s
+wide rows: HW order 252, rows 2352, setup 0.14s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=112
+kick 1 chain 1 lbest 17 kicked-to 168 T 0.80
+t=30 steps=3772 evals=30177 cost=36 best=17 T=0.75
+kick 2 chain 1 lbest 17 kicked-to 118 T 0.80
+t=60 steps=7717 evals=61737 cost=21 best=17 T=0.38
+kick 3 chain 1 lbest 17 kicked-to 67 T 0.80
+kick 4 chain 1 lbest 17 kicked-to 152 T 0.80
+t=90 steps=11158 evals=89265 cost=29 best=17 T=0.75
+kick 5 chain 1 lbest 17 kicked-to 71 T 0.80
+t=120 steps=14347 evals=114777 cost=19 best=17 T=0.38
+kick 6 chain 1 lbest 17 kicked-to 113 T 0.80
+CHAIN 1 min 17 secs 149 evals 147241 S 74480 480877 574913 353688 65553 537512 285753 196566 199407 500433
+chain 2: fresh start (global best 17)
+t=150 steps=18585 evals=148681 cost=33 best=17 T=1.41
+t=180 steps=23820 evals=190561 cost=22 best=17 T=0.18
+kick 7 chain 2 lbest 22 kicked-to 105 T 0.80
+kick 8 chain 2 lbest 18 kicked-to 8110 T 0.80
+t=210 steps=28548 evals=228385 cost=25 best=17 T=0.50
+kick 9 chain 2 lbest 18 kicked-to 119 T 0.80
+t=240 steps=33811 evals=270489 cost=21 best=17 T=0.25
+kick 10 chain 2 lbest 18 kicked-to 75 T 0.80
+kick 11 chain 2 lbest 18 kicked-to 85 T 0.80
+t=270 steps=38147 evals=305177 cost=27 best=17 T=0.50
+kick 12 chain 2 lbest 18 kicked-to 136 T 0.80
+t=300 steps=42667 evals=341337 cost=23 best=17 T=0.25
+kick 13 chain 2 lbest 18 kicked-to 100 T 0.80
+CHAIN 2 min 18 secs 174 evals 232912 S 74480 434490 344428 31514 562266 28164 476489 579359 281821 362994
+chain 3: fresh start (global best 17)
+t=330 steps=48922 evals=391377 cost=19 best=17 T=0.94
+kick 14 chain 3 lbest 19 kicked-to 63 T 0.80
+t=360 steps=55247 evals=441977 cost=27 best=17 T=0.30
+kick 15 chain 3 lbest 19 kicked-to 55 T 0.80
+kick 16 chain 3 lbest 19 kicked-to 183 T 0.80
+t=390 steps=62069 evals=496553 cost=27 best=17 T=0.60
+kick 17 chain 3 lbest 19 kicked-to 169 T 0.80
+t=420 steps=68695 evals=549561 cost=21 best=17 T=0.30
+kick 18 chain 3 lbest 19 kicked-to 82 T 0.80
+kick 19 chain 3 lbest 19 kicked-to 150 T 0.80
+t=450 steps=75113 evals=600905 cost=24 best=17 T=0.60
+kick 20 chain 3 lbest 13 kicked-to 118 T 0.80
+CHAIN 3 min 13 secs 157 evals 256176 S 74480 6920 569115 306560 466112 558361 340975 584395 328629 320068 final
+KICKS 20 CHAINS 3

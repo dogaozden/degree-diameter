@@ -1,0 +1,509 @@
+## N=588672 mu=63.10 spec=[prod sl 3 sl 7 73]
+group prod sl 3 sl 7 x Z_73, N=588672, identity 150234, H order 42, rows 14016, threads 1, setup 0.19s
+wide rows: HW order 219, rows 2688, setup 0.33s
+alpha: conj by prod[mat(2,0,2,2);mat(4,0,1,2)] (index 5902), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 63.12, mu/k = 21.04, fixed-point misses ~ 1.71
+ZCOEF distinct c 30538, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.399e+05 (4.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3916527 duplicate 1464313 (27.21 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3249475 duplicate 2131365 (39.61 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4170871 duplicate 1209969 (22.49 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=588984 mu=63.50 spec=[psl 23 97]
+group psl 23 x Z_97, N=588984, identity 24541, H order 23, rows 25608, threads 1, setup 0.02s
+wide rows: HW order 194, rows 3036, setup 0.04s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 35 z on Z_97
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 63.46, mu/k = 21.15, fixed-point misses ~ 0.57
+ZCOEF distinct c 31204, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.185e+05 (5.92 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4766798 duplicate 614042 (11.41 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4074120 duplicate 1306720 (24.28 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4749372 duplicate 631468 (11.74 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=589968 mu=64.50 spec=[psl 17 241]
+group psl 17 x Z_241, N=589968, identity 32776, H order 17, rows 34704, threads 1, setup 0.03s
+wide rows: HW order 241, rows 2448, setup 0.05s
+alpha: conj by mat(2,8,6,16) (index 567), z -> 15 z on Z_241
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 64.54, mu/k = 21.51, fixed-point misses ~ 0.43
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 7.901e+05 (14.68 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3698110 duplicate 1682730 (31.27 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3974159 duplicate 1406681 (26.14 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4470553 duplicate 910287 (16.92 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=591864 mu=66.70 spec=[pgl 13 271]
+group pgl 13 x Z_271, N=591864, identity 0, H order 14, rows 42276, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(1,10,1,11) (index 1582), z -> 28 z on Z_271
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 66.67, mu/k = 22.22, fixed-point misses ~ 0.58
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3971795 duplicate 1409045 (26.19 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4037863 duplicate 1342977 (24.96 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4165607 duplicate 1215233 (22.58 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=591864 mu=66.70 spec=[sl 13 271]
+group sl 13 x Z_271, N=591864, identity 42276, H order 26, rows 22764, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(3,8,0,9) (index 598), z -> 28 z on Z_271
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 66.67, mu/k = 22.22, fixed-point misses ~ 0.58
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3833836 duplicate 1547004 (28.75 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4214850 duplicate 1165990 (21.67 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3976674 duplicate 1404166 (26.10 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=592704 mu=67.60 spec=[prod psl 7 sl 8 7]
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.02s
+wide rows: HW order 252, rows 2352, setup 0.04s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+ZCOEF distinct c 343, pairs sharing c 4.241e+10, generic duplicate estimate pairs/|Q| = 5.009e+05 (9.31 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4861372 duplicate 519468 (9.65 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4789623 duplicate 591217 (10.99 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4625330 duplicate 755510 (14.04 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=599508 mu=75.80 spec=[psl 27 61]
+group psl 27 poly x^3+2x+1 x Z_61, N=599508, identity 21411, H order 61, rows 9828, threads 1, setup 0.02s
+wide rows: HW order 183, rows 3276, setup 0.03s
+alpha: conj by mat(17,8,19,23) (index 9334), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 75.83, mu/k = 25.28, fixed-point misses ~ 1.36
+ZCOEF distinct c 28990, pairs sharing c 1.936e+09, generic duplicate estimate pairs/|Q| = 1.97e+05 (3.66 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4554883 duplicate 825957 (15.35 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4883079 duplicate 497761 (9.25 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4563725 duplicate 817115 (15.19 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=600480 mu=77.10 spec=[prod psl 3 psl 9 139]
+group prod psl 3 psl 9 poly x^2+1 x Z_139, N=600480, identity 155124, H order 15, rows 40032, threads 1, setup 0.04s
+wide rows: HW order 139, rows 4320, setup 0.07s
+alpha: conj by prod[mat(1,1,0,1);mat(1,2,0,1)] (index 2214), z -> 42 z on Z_139
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 77.06, mu/k = 25.69, fixed-point misses ~ 1.36
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.477e+05 (8.32 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3007244 duplicate 2373596 (44.11 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 2594559 duplicate 2786281 (51.78 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3122472 duplicate 2258368 (41.97 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=601920 mu=78.90 spec=[prod sl 3 sl 11 19]
+group prod sl 3 sl 11 x Z_19, N=601920, identity 152570, H order 57, rows 10560, threads 1, setup 0.03s
+wide rows: HW order 228, rows 2640, setup 0.05s
+alpha: conj by prod[mat(1,2,0,1);mat(7,8,8,3)] (index 16772), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 71 (+e); mu = 78.92, mu/k = 26.31, fixed-point misses ~ 3.66
+ZCOEF distinct c 6643, pairs sharing c 3.462e+09, generic duplicate estimate pairs/|Q| = 1.093e+05 (2.03 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4635586 duplicate 745254 (13.85 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 5012334 duplicate 368506 (6.85 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4748881 duplicate 631959 (11.74 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=604800 mu=82.70 spec=[prod sl 5 sl 9 7]
+group prod sl 5 sl 9 poly x^2+1 x Z_7, N=604800, identity 101304, H order 56, rows 10800, threads 1, setup 0.02s
+wide rows: HW order 210, rows 2880, setup 0.04s
+alpha: conj by prod[mat(2,3,1,2);mat(5,8,4,6)] (index 44392), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 107 (+e); mu = 82.74, mu/k = 27.58, fixed-point misses ~ 5.57
+ZCOEF distinct c 343, pairs sharing c 4.241e+10, generic duplicate estimate pairs/|Q| = 4.909e+05 (9.12 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4674837 duplicate 706003 (13.12 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4811084 duplicate 569756 (10.59 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4834779 duplicate 546061 (10.15 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=604968 mu=83.00 spec=[pgl 13 277]
+group pgl 13 x Z_277, N=604968, identity 0, H order 14, rows 43212, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(1,10,1,11) (index 1582), z -> 116 z on Z_277
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 82.97, mu/k = 27.66, fixed-point misses ~ 0.62
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4316696 duplicate 1064144 (19.78 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4196846 duplicate 1183994 (22.00 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4218240 duplicate 1162600 (21.61 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=604968 mu=83.00 spec=[sl 13 277]
+group sl 13 x Z_277, N=604968, identity 43212, H order 26, rows 23268, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(3,8,0,9) (index 598), z -> 116 z on Z_277
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 82.97, mu/k = 27.66, fixed-point misses ~ 0.62
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4226979 duplicate 1153861 (21.44 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4329998 duplicate 1050842 (19.53 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4097463 duplicate 1283377 (23.85 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=607680 mu=86.70 spec=[prod sl 3 sl 5 211]
+group prod sl 3 sl 5 x Z_211, N=607680, identity 156140, H order 30, rows 20256, threads 1, setup 0.06s
+wide rows: HW order 211, rows 2880, setup 0.11s
+alpha: conj by prod[mat(1,2,0,1);mat(3,1,2,1)] (index 1517), z -> 14 z on Z_211
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 86.72, mu/k = 28.91, fixed-point misses ~ 1.88
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 6.716e+05 (12.48 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3556958 duplicate 1823882 (33.90 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3298436 duplicate 2082404 (38.70 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 2736548 duplicate 2644292 (49.14 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=608832 mu=88.40 spec=[prod psl 3 sl 7 151]
+group prod psl 3 sl 7 x Z_151, N=608832, identity 158550, H order 42, rows 14496, threads 1, setup 0.05s
+wide rows: HW order 151, rows 4032, setup 0.10s
+alpha: conj by prod[mat(1,0,2,1);mat(4,0,1,2)] (index 1870), z -> 32 z on Z_151
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 88.35, mu/k = 29.45, fixed-point misses ~ 0.95
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.797e+05 (8.91 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 2967770 duplicate 2413070 (44.85 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3958503 duplicate 1422337 (26.43 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 2692022 duplicate 2688818 (49.97 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=608832 mu=88.40 spec=[prod sl 3 psl 7 151]
+group prod sl 3 psl 7 x Z_151, N=608832, identity 155379, H order 42, rows 14496, threads 1, setup 0.05s
+wide rows: HW order 151, rows 4032, setup 0.09s
+alpha: conj by prod[mat(2,0,2,2);mat(0,3,2,1)] (index 2871), z -> 32 z on Z_151
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 88.35, mu/k = 29.45, fixed-point misses ~ 0.95
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.797e+05 (8.91 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3353382 duplicate 2027458 (37.68 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3469423 duplicate 1911417 (35.52 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 2347148 duplicate 3033692 (56.38 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=609336 mu=89.10 spec=[pgl 27 31]
+group pgl 27 poly x^3+2x+1 x Z_31, N=609336, identity 0, H order 62, rows 9828, threads 1, setup 0.02s
+wide rows: HW order 217, rows 2808, setup 0.04s
+alpha: conj by mat(1,17,7,21) (index 12137), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 89.07, mu/k = 29.69, fixed-point misses ~ 1.42
+ZCOEF distinct c 17965, pairs sharing c 2.126e+09, generic duplicate estimate pairs/|Q| = 1.082e+05 (2.01 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 5090804 duplicate 290036 (5.39 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 5062722 duplicate 318118 (5.91 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5094576 duplicate 286264 (5.32 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=609336 mu=89.10 spec=[sl 27 31]
+group sl 27 poly x^3+2x+1 x Z_31, N=609336, identity 21762, H order 62, rows 9828, threads 1, setup 0.02s
+wide rows: HW order 217, rows 2808, setup 0.03s
+alpha: conj by mat(10,15,2,19) (index 7670), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 89.07, mu/k = 29.69, fixed-point misses ~ 2.84
+ZCOEF distinct c 17965, pairs sharing c 2.126e+09, generic duplicate estimate pairs/|Q| = 1.082e+05 (2.01 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4999551 duplicate 381289 (7.09 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4987486 duplicate 393354 (7.31 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5024329 duplicate 356511 (6.63 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=614880 mu=97.30 spec=[prod psl 5 psl 7 61]
+group prod psl 5 psl 7 x Z_61, N=614880, identity 103761, H order 61, rows 10080, threads 1, setup 0.03s
+wide rows: HW order 244, rows 2520, setup 0.06s
+alpha: conj by prod[mat(1,3,4,3);mat(0,3,2,1)] (index 4887), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 97.33, mu/k = 32.44, fixed-point misses ~ 0.49
+ZCOEF distinct c 28990, pairs sharing c 1.936e+09, generic duplicate estimate pairs/|Q| = 1.92e+05 (3.57 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4339402 duplicate 1041438 (19.35 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3960468 duplicate 1420372 (26.40 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4531856 duplicate 848984 (15.78 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=614880 mu=97.30 spec=[prod sl 4 psl 7 61]
+group prod sl 4 poly x^2+x+1 psl 7 x Z_61, N=614880, identity 124257, H order 61, rows 10080, threads 1, setup 0.03s
+wide rows: HW order 244, rows 2520, setup 0.06s
+alpha: conj by prod[mat(2,0,1,3);mat(0,3,2,1)] (index 4887), z -> 13 z on Z_61
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 97.33, mu/k = 32.44, fixed-point misses ~ 0.49
+ZCOEF distinct c 28990, pairs sharing c 1.936e+09, generic duplicate estimate pairs/|Q| = 1.92e+05 (3.57 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4714643 duplicate 666197 (12.38 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3855087 duplicate 1525753 (28.36 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4390829 duplicate 990011 (18.40 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=616080 mu=99.20 spec=[pgl 16 151]
+group pgl 16 poly x^4+x+1 x Z_151, N=616080, identity 0, H order 17, rows 36240, threads 1, setup 0.04s
+wide rows: HW order 151, rows 4080, setup 0.07s
+alpha: conj by mat(1,3,13,14) (index 928), z -> 32 z on Z_151
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 14 (+e); mu = 99.20, mu/k = 33.07, fixed-point misses ~ 0.82
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.741e+05 (8.81 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4515989 duplicate 864851 (16.07 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4753478 duplicate 627362 (11.66 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4751245 duplicate 629595 (11.70 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=616080 mu=99.20 spec=[sl 16 151]
+group sl 16 poly x^4+x+1 x Z_151, N=616080, identity 36240, H order 17, rows 36240, threads 1, setup 0.03s
+wide rows: HW order 151, rows 4080, setup 0.06s
+alpha: conj by mat(10,4,4,11) (index 2612), z -> 32 z on Z_151
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 14 (+e); mu = 99.20, mu/k = 33.07, fixed-point misses ~ 0.82
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.741e+05 (8.81 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4731458 duplicate 649382 (12.07 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4495456 duplicate 885384 (16.45 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4490244 duplicate 890596 (16.55 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=616200 mu=99.40 spec=[psl 25 79]
+group psl 25 poly x^2+2 x Z_79, N=616200, identity 23700, H order 13, rows 47400, threads 1, setup 0.02s
+wide rows: HW order 237, rows 2600, setup 0.04s
+alpha: conj by mat(14,23,17,15) (index 7767), z -> 23 z on Z_79
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 99.39, mu/k = 33.13, fixed-point misses ~ 0.65
+ZCOEF distinct c 30718, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.48e+05 (4.61 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4858617 duplicate 522223 (9.71 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4630788 duplicate 750052 (13.94 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4728048 duplicate 652792 (12.13 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=618072 mu=102.40 spec=[pgl 13 283]
+group pgl 13 x Z_283, N=618072, identity 0, H order 14, rows 44148, threads 1, setup 0.05s
+wide rows: no cyclic subgroup of order >= 64 found (best 14); using haar_gen3's evaluation
+alpha: conj by mat(1,10,1,11) (index 1582), z -> 44 z on Z_283
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 102.36, mu/k = 34.12, fixed-point misses ~ 0.66
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3876956 duplicate 1503884 (27.95 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4218894 duplicate 1161946 (21.59 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3773259 duplicate 1607581 (29.88 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=618072 mu=102.40 spec=[sl 13 283]
+group sl 13 x Z_283, N=618072, identity 44148, H order 26, rows 23772, threads 1, setup 0.04s
+wide rows: no cyclic subgroup of order >= 64 found (best 26); using haar_gen3's evaluation
+alpha: conj by mat(3,8,0,9) (index 598), z -> 44 z on Z_283
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 102.36, mu/k = 34.12, fixed-point misses ~ 0.66
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 8.856e+05 (16.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4141656 duplicate 1239184 (23.03 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4215873 duplicate 1164967 (21.65 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3913948 duplicate 1466892 (27.26 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=618912 mu=103.70 spec=[prod psl 3 psl 7 307]
+group prod psl 3 psl 7 x Z_307, N=618912, identity 161175, H order 21, rows 29472, threads 1, setup 0.06s
+wide rows: no cyclic subgroup of order >= 64 found (best 21); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,0,2,1);mat(0,3,2,1)] (index 855), z -> 17 z on Z_307
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 103.72, mu/k = 34.57, fixed-point misses ~ 0.50
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 9.594e+05 (17.83 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3103074 duplicate 2277766 (42.33 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 2960225 duplicate 2420615 (44.99 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 2834649 duplicate 2546191 (47.32 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=619020 mu=103.90 spec=[psl 19 181]
+group psl 19 x Z_181, N=619020, identity 30951, H order 19, rows 32580, threads 1, setup 0.03s
+wide rows: HW order 181, rows 3420, setup 0.05s
+alpha: conj by mat(1,3,6,0) (index 234), z -> 48 z on Z_181
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 103.89, mu/k = 34.63, fixed-point misses ~ 0.50
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 5.655e+05 (10.51 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4462577 duplicate 918263 (17.07 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4381377 duplicate 999463 (18.57 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4497886 duplicate 882954 (16.41 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=619200 mu=104.20 spec=[prod sl 5 sl 5 43]
+group prod sl 5 sl 5 x Z_43, N=619200, identity 104060, H order 43, rows 14400, threads 1, setup 0.03s
+wide rows: HW order 215, rows 2880, setup 0.06s
+alpha: conj by prod[mat(3,2,4,3);mat(3,1,2,1)] (index 10157), z -> 6 z on Z_43
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 104.19, mu/k = 34.73, fixed-point misses ~ 1.99
+ZCOEF distinct c 25777, pairs sharing c 1.959e+09, generic duplicate estimate pairs/|Q| = 1.361e+05 (2.53 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4885197 duplicate 495643 (9.21 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4689389 duplicate 691451 (12.85 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4781660 duplicate 599180 (11.14 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=621792 mu=108.50 spec=[pgl 17 127]
+group pgl 17 x Z_127, N=621792, identity 0, H order 18, rows 34544, threads 1, setup 0.03s
+wide rows: HW order 254, rows 2448, setup 0.06s
+alpha: conj by mat(1,10,14,3) (index 2947), z -> 19 z on Z_127
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 108.48, mu/k = 36.16, fixed-point misses ~ 1.01
+ZCOEF distinct c 31258, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.95e+05 (7.34 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4666960 duplicate 713880 (13.27 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4373027 duplicate 1007813 (18.73 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4556667 duplicate 824173 (15.32 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=621792 mu=108.50 spec=[sl 17 127]
+group sl 17 x Z_127, N=621792, identity 34544, H order 34, rows 18288, threads 1, setup 0.03s
+wide rows: HW order 254, rows 2448, setup 0.05s
+alpha: conj by mat(12,1,13,4) (index 3481), z -> 19 z on Z_127
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 108.48, mu/k = 36.16, fixed-point misses ~ 1.01
+ZCOEF distinct c 31258, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.95e+05 (7.34 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4629761 duplicate 751079 (13.96 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4756604 duplicate 624236 (11.60 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4627540 duplicate 753300 (14.00 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=621984 mu=108.80 spec=[pgl 32 19]
+group pgl 32 poly x^5+x^2+1 x Z_19, N=621984, identity 0, H order 57, rows 10912, threads 1, setup 0.28s
+wide rows: HW order 209, rows 2976, setup 0.30s
+alpha: conj by mat(1,28,9,2) (index 28057), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 32 (+e); mu = 108.81, mu/k = 36.27, fixed-point misses ~ 1.85
+ZCOEF distinct c 6643, pairs sharing c 3.462e+09, generic duplicate estimate pairs/|Q| = 1.058e+05 (1.97 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4930279 duplicate 450561 (8.37 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 5130296 duplicate 250544 (4.66 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5139733 duplicate 241107 (4.48 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=621984 mu=108.80 spec=[sl 32 19]
+group sl 32 poly x^5+x^2+1 x Z_19, N=621984, identity 18848, H order 57, rows 10912, threads 1, setup 0.03s
+wide rows: HW order 209, rows 2976, setup 0.04s
+alpha: conj by mat(28,4,16,29) (index 28784), z -> 7 z on Z_19
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 32 (+e); mu = 108.81, mu/k = 36.27, fixed-point misses ~ 1.85
+ZCOEF distinct c 6643, pairs sharing c 3.462e+09, generic duplicate estimate pairs/|Q| = 1.058e+05 (1.97 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 5098986 duplicate 281854 (5.24 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 5202484 duplicate 178356 (3.31 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5152804 duplicate 228036 (4.24 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=622944 mu=110.40 spec=[prod psl 3 sl 8 103]
+group prod psl 3 sl 8 poly x^3+x+1 x Z_103, N=622944, identity 161504, H order 21, rows 29664, threads 1, setup 0.04s
+wide rows: HW order 206, rows 3024, setup 0.10s
+alpha: conj by prod[mat(1,1,2,0);mat(0,4,7,1)] (index 4057), z -> 46 z on Z_103
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 110.44, mu/k = 36.81, fixed-point misses ~ 1.52
+ZCOEF distinct c 31222, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.198e+05 (5.94 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3958475 duplicate 1422365 (26.43 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4131452 duplicate 1249388 (23.22 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4112751 duplicate 1268089 (23.57 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=624960 mu=113.90 spec=[prod psl 5 sl 7 31]
+group prod psl 5 sl 7 x Z_31, N=624960, identity 105462, H order 62, rows 10080, threads 1, setup 0.03s
+wide rows: HW order 248, rows 2520, setup 0.06s
+alpha: conj by prod[mat(1,3,4,3);mat(4,0,1,2)] (index 9934), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 113.93, mu/k = 37.98, fixed-point misses ~ 1.02
+ZCOEF distinct c 17965, pairs sharing c 2.126e+09, generic duplicate estimate pairs/|Q| = 1.055e+05 (1.96 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4936760 duplicate 444080 (8.25 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4896263 duplicate 484577 (9.01 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5006646 duplicate 374194 (6.95 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=624960 mu=113.90 spec=[prod sl 4 sl 7 31]
+group prod sl 4 poly x^2+x+1 sl 7 x Z_31, N=624960, identity 126294, H order 62, rows 10080, threads 1, setup 0.30s
+wide rows: HW order 248, rows 2520, setup 0.38s
+alpha: conj by prod[mat(2,0,1,3);mat(4,0,1,2)] (index 9934), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 113.93, mu/k = 37.98, fixed-point misses ~ 1.02
+ZCOEF distinct c 17965, pairs sharing c 2.126e+09, generic duplicate estimate pairs/|Q| = 1.055e+05 (1.96 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4900514 duplicate 480326 (8.93 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4825087 duplicate 555753 (10.33 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4889722 duplicate 491118 (9.13 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=624960 mu=113.90 spec=[prod sl 5 psl 7 31]
+group prod sl 5 psl 7 x Z_31, N=624960, identity 104811, H order 62, rows 10080, threads 1, setup 0.24s
+wide rows: HW order 217, rows 2880, setup 0.27s
+alpha: conj by prod[mat(3,3,4,1);mat(0,3,2,1)] (index 14967), z -> 5 z on Z_31
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 113.93, mu/k = 37.98, fixed-point misses ~ 1.02
+ZCOEF distinct c 17965, pairs sharing c 2.126e+09, generic duplicate estimate pairs/|Q| = 1.055e+05 (1.96 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4693489 duplicate 687351 (12.77 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 5148184 duplicate 232656 (4.32 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 5058838 duplicate 322002 (5.98 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=625416 mu=114.70 spec=[psl 23 103]
+group psl 23 x Z_103, N=625416, identity 26059, H order 23, rows 27192, threads 1, setup 0.18s
+wide rows: HW order 206, rows 3036, setup 0.26s
+alpha: conj by mat(1,3,15,0) (index 337), z -> 46 z on Z_103
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 11 (+e); mu = 114.73, mu/k = 38.24, fixed-point misses ~ 0.68
+ZCOEF distinct c 31222, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 3.185e+05 (5.92 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4367797 duplicate 1013043 (18.83 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4667806 duplicate 713034 (13.25 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4623026 duplicate 757814 (14.08 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=625680 mu=115.20 spec=[prod psl 3 psl 11 79]
+group prod psl 3 psl 11 x Z_79, N=625680, identity 160765, H order 33, rows 18960, threads 1, setup 0.34s
+wide rows: HW order 237, rows 2640, setup 0.42s
+alpha: conj by prod[mat(1,1,2,0);mat(5,2,6,7)] (index 5847), z -> 23 z on Z_79
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 115.19, mu/k = 38.40, fixed-point misses ~ 1.02
+ZCOEF distinct c 30718, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.442e+05 (4.54 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4419165 duplicate 961675 (17.87 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4405994 duplicate 974846 (18.12 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4480230 duplicate 900610 (16.74 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=630720 mu=124.40 spec=[prod psl 3 sl 9 73]
+group prod psl 3 sl 9 poly x^2+1 x Z_73, N=630720, identity 162936, H order 30, rows 21024, threads 1, setup 0.30s
+wide rows: HW order 219, rows 2880, setup 0.35s
+alpha: conj by prod[mat(1,0,1,1);mat(4,7,8,7)] (index 3266), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 53 (+e); mu = 124.38, mu/k = 41.46, fixed-point misses ~ 3.14
+ZCOEF distinct c 30538, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.239e+05 (4.16 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3894475 duplicate 1486365 (27.62 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4506309 duplicate 874531 (16.25 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3407244 duplicate 1973596 (36.68 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=630720 mu=124.40 spec=[prod sl 3 psl 9 73]
+group prod sl 3 psl 9 poly x^2+1 x Z_73, N=630720, identity 160308, H order 30, rows 21024, threads 1, setup 0.05s
+wide rows: HW order 219, rows 2880, setup 0.12s
+alpha: conj by prod[mat(1,0,0,1);mat(1,2,0,1)] (index 2214), z -> 8 z on Z_73
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 215 (+e); mu = 124.38, mu/k = 41.46, fixed-point misses ~ 12.57
+ZCOEF distinct c 30538, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.239e+05 (4.16 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4350743 duplicate 1030097 (19.14 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 1735472 duplicate 3645368 (67.75 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3697626 duplicate 1683214 (31.28 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=631008 mu=124.90 spec=[prod psl 3 psl 7 313]
+group prod psl 3 psl 7 x Z_313, N=631008, identity 164325, H order 21, rows 30048, threads 1, setup 0.06s
+wide rows: no cyclic subgroup of order >= 64 found (best 21); using haar_gen3's evaluation
+alpha: conj by prod[mat(1,0,2,1);mat(0,3,2,1)] (index 855), z -> 98 z on Z_313
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 8 (+e); mu = 124.92, mu/k = 41.64, fixed-point misses ~ 0.52
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 9.594e+05 (17.83 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 1776138 duplicate 3604702 (66.99 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 1280284 duplicate 4100556 (76.21 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3209245 duplicate 2171595 (40.36 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=633024 mu=128.80 spec=[prod psl 3 sl 7 157]
+group prod psl 3 sl 7 x Z_157, N=633024, identity 164850, H order 42, rows 15072, threads 1, setup 0.30s
+wide rows: HW order 157, rows 4032, setup 0.39s
+alpha: conj by prod[mat(1,0,2,1);mat(4,0,1,2)] (index 1870), z -> 12 z on Z_157
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 128.77, mu/k = 42.92, fixed-point misses ~ 1.06
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.797e+05 (8.91 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 3814660 duplicate 1566180 (29.11 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3230357 duplicate 2150483 (39.97 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3620493 duplicate 1760347 (32.72 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=633024 mu=128.80 spec=[prod sl 3 psl 7 157]
+group prod sl 3 psl 7 x Z_157, N=633024, identity 161553, H order 42, rows 15072, threads 1, setup 0.05s
+wide rows: HW order 157, rows 4032, setup 0.09s
+alpha: conj by prod[mat(2,0,2,2);mat(0,3,2,1)] (index 2871), z -> 12 z on Z_157
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 17 (+e); mu = 128.77, mu/k = 42.92, fixed-point misses ~ 1.06
+ZCOEF distinct c 31276, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 4.797e+05 (8.91 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 2420811 duplicate 2960029 (55.01 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 3403253 duplicate 1977587 (36.75 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 3986331 duplicate 1394509 (25.92 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=636480 mu=135.60 spec=[prod psl 3 sl 16 13]
+group prod psl 3 sl 16 poly x^4+x+1 x Z_13, N=636480, identity 162240, H order 51, rows 12480, threads 1, setup 0.03s
+wide rows: HW order 221, rows 2880, setup 0.05s
+alpha: conj by prod[mat(1,0,2,1);mat(10,15,11,11)] (index 23195), z -> 3 z on Z_13
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 44 (+e); mu = 135.59, mu/k = 45.20, fixed-point misses ~ 2.69
+ZCOEF distinct c 2197, pairs sharing c 7.499e+09, generic duplicate estimate pairs/|Q| = 1.532e+05 (2.85 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4449826 duplicate 931014 (17.30 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4844683 duplicate 536157 (9.96 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4773757 duplicate 607083 (11.28 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=637056 mu=136.80 spec=[prod sl 3 sl 7 79]
+group prod sl 3 sl 7 x Z_79, N=637056, identity 162582, H order 42, rows 15168, threads 1, setup 0.04s
+wide rows: HW order 237, rows 2688, setup 0.08s
+alpha: conj by prod[mat(2,0,2,2);mat(4,0,1,2)] (index 5902), z -> 23 z on Z_79
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 35 (+e); mu = 136.76, mu/k = 45.59, fixed-point misses ~ 2.16
+ZCOEF distinct c 30718, pairs sharing c 1.934e+09, generic duplicate estimate pairs/|Q| = 2.399e+05 (4.46 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 2811510 duplicate 2569330 (47.75 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 2438929 duplicate 2941911 (54.67 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4364274 duplicate 1016566 (18.89 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=639360 mu=141.50 spec=[prod sl 3 sl 9 37]
+group prod sl 3 sl 9 poly x^2+1 x Z_37, N=639360, identity 162504, H order 37, rows 17280, threads 1, setup 0.03s
+wide rows: HW order 222, rows 2880, setup 0.06s
+alpha: conj by prod[mat(0,2,1,1);mat(4,7,8,7)] (index 3266), z -> 10 z on Z_37
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 107 (+e); mu = 141.49, mu/k = 47.16, fixed-point misses ~ 6.53
+ZCOEF distinct c 21520, pairs sharing c 2.009e+09, generic duplicate estimate pairs/|Q| = 1.163e+05 (2.16 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4503201 duplicate 877639 (16.31 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4668480 duplicate 712360 (13.24 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 2630225 duplicate 2750615 (51.12 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## N=639840 mu=142.50 spec=[psl 31 43]
+group psl 31 x Z_43, N=639840, identity 19995, H order 43, rows 14880, threads 1, setup 0.02s
+wide rows: HW order 215, rows 2976, setup 0.03s
+alpha: conj by mat(3,18,22,29) (index 2967), z -> 6 z on Z_43
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 14 (+e); mu = 142.50, mu/k = 47.50, fixed-point misses ~ 0.91
+ZCOEF distinct c 25777, pairs sharing c 1.959e+09, generic duplicate estimate pairs/|Q| = 1.317e+05 (2.45 % of words)
+ZDUP rep 0: words 5380840 distinct (q,c) 4834368 duplicate 546472 (10.16 %)
+ZDUP rep 1: words 5380840 distinct (q,c) 4908112 duplicate 472728 (8.79 %)
+ZDUP rep 2: words 5380840 distinct (q,c) 4914767 duplicate 466073 (8.66 %)
+ZOPT random Q-configurations 3: best-z cost histogram; zero points 0
+## rc=1
+## driver CPU (bash times, user sys):
+0m0.028s 0m0.000s
+1m49.939s 0m3.100s

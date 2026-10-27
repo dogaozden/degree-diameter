@@ -786,6 +786,7 @@ static int OK_ = 0, OM = 0, OF = 0;                 /* orbit size k, number of o
 static int AQ = -1, AQI = -1, AR = 1, AHA = 0, AHB = 0, AMU = 0, AFROB = 0;   /* AFROB = j: entries x -> x^(p^j) */
 static uint16_t *FROBT;   /* AMU: meta scaling (a,j) -> (u a, j) */
 static int *FIXL; static long long NFIX;            /* elements fixed by alpha, except e */
+static int *FIXG; static long long NFIXG;           /* those eligible as fixed generators (FIXMIN) */
 static int alpha(int x) {
     int xq = x / ncyc, z = x % ncyc, yq;
     if (Q->type == G_HEIS && (AHA || AHB)) {
@@ -939,7 +940,12 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     { int t[6]; for (int u = 0; u < 6; u++) t[u] = rnd() % N;   /* alpha must be a homomorphism of order dividing k */
       for (int u = 0; u < 5; u++) if (alpha(gmul(t[u], t[u + 1])) != gmul(alpha(t[u]), alpha(t[u + 1]))) { fprintf(stderr, "alpha is not an automorphism\n"); return 2; }
       for (int u = 0; u < 6; u++) { int y = t[u]; for (int i = 0; i < OK_; i++) y = alpha(y); if (y != t[u]) { fprintf(stderr, "alpha^k != 1\n"); return 2; } } }
-    scan_fix();
+    scan_fix(); FIXG = FIXL; NFIXG = NFIX;
+    if (getenv("FIXMIN")) {   /* fixed generators of order >= FIXMIN only (no involutions or order 3: BEYOND_RANDOM 4.5.3) */
+        int mo = atoi(getenv("FIXMIN")); FIXG = malloc(sizeof(int) * (NFIX + 1)); NFIXG = 0;
+        for (long long i = 0; i < NFIX; i++) { int y = FIXL[i], o = 1; while (y != ident) { y = gmul(y, FIXL[i]); o++; } if (o >= mo) FIXG[NFIXG++] = FIXL[i]; }
+        fprintf(stderr, "FIXMIN=%d: %lld of %lld fixed elements eligible as generators\n", mo, NFIXG, NFIX);
+    }
     double W = Wwords(d, D), lam = W / N, mu = N * exp(-lam);
     double nb = D % 2 ? 2 : 1;   /* odd D: two conditions, each with half the targets in inverse pairs; mu is the total */
     fprintf(stderr, "ORBIT k=%d m=%d f=%d: |Fix(alpha)| = %lld (+e); mu = %.2f, mu/k = %.2f, fixed-point misses ~ %.2f\n",
@@ -947,7 +953,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     int nth_ = nth; (void)nth_;
     /* initial S */
     if (OF) S[0] = ident;
-    for (int u = 1; u < OF; u++) { if (NFIX < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; }
+    for (int u = 1; u < OF; u++) { if (NFIXG < OF) { fprintf(stderr, "not enough fixed elements\n"); return 2; } int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; }
     for (int u = OF; u < d; u++) S[u] = -1 - u;
     for (int j = 0; j < OM; j++) { int o[MAXD]; if (!random_orbit(j, o)) { fprintf(stderr, "no orbit found\n"); return 2; } for (int i = 0; i < OK_; i++) S[ostart(j) + i] = o[i]; }
     for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
@@ -955,7 +961,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     if (getenv("RANDORB")) {   /* screening: random symmetric S */
         int m = atoi(getenv("RANDORB")), saved = 0; long long *v = malloc(sizeof(long long) * m), hist[32] = {0}; double sm = 0, sq = 0, t0 = now();
         for (int t = 0; t < m; t++) {
-            for (int u = 1; u < OF; u++) { int x; do x = FIXL[rnd() % NFIX]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
+            for (int u = 1; u < OF; u++) { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, u)); S[u] = x; mktab(S[u], TF[u], TI[u]); }
             for (int j = 0; j < OM; j++) for (int i = 0; i < OK_; i++) S[ostart(j) + i] = -1 - ostart(j) - i;
             for (int j = 0; j < OM; j++) { int o[MAXD]; random_orbit(j, o); for (int i = 0; i < OK_; i++) { S[ostart(j) + i] = o[i]; mktab(o[i], TF[ostart(j) + i], TI[ostart(j) + i]); } }
             v[t] = cost_any(C[0], TF, TI, &sc0, NULL, &NOBOUND, 0);
@@ -967,6 +973,9 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
         printf("RANDORB d=%d D=%d group=%s x Z_%d N=%d k=%d m=%d f=%d fix=%lld samples=%d min=%lld p1=%lld p10=%lld median=%lld mean=%.2f var=%.1f mu=%.2f time=%.1f\nRANDORB hist (cost/k):",
                d, D, Q->spec, ncyc, N, OK_, OM, OF, NFIX, m, v[0], v[m / 100], v[m / 10], v[m / 2], sm / m, sq / m - (sm / m) * (sm / m), mu, now() - t0);
         for (int h = 0; h < 32; h++) printf(" %lld", hist[h]); printf("\n");
+        { long long z = 0; for (int t = 0; t < m; t++) z += v[t] == 0;   /* v is sorted */
+          printf("RANDORB cost0=%lld of %d (P=%.4g); cost counts 0..%d:", z, m, (double)z / m, 4 * OK_);
+          for (int c0 = 0, t = 0; c0 <= 4 * OK_; c0++) { long long cnt = 0; while (t < m && v[t] < c0) t++; while (t < m && v[t] == c0) { cnt++; t++; } printf(" %lld", cnt); } printf("\n"); }
         return 0;
     }
     double COOL = getenv("COOL") ? atof(getenv("COOL")) : 20.0, REHEAT = getenv("REHEAT") ? atof(getenv("REHEAT")) : 150.0;
@@ -980,11 +989,28 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
     for (int t = 0; t < nth; t++) for (int i = 0; i < OK_; i++) { OTF[t][i] = malloc(4 * NROWS); OTI[t][i] = malloc(4 * NROWS); }
     int cand[64][MAXD]; long long cs[64], craw[64]; int bestS2[MAXD];
     if (getenv("ORBW")) ORBW = atoi(getenv("ORBW"));
+    /* CKPT=path: the best S so far (element indices; alpha and the group are deterministic) is written there every
+     * 60 s, with the evaluations and seconds spent; if the file exists at start, the run resumes from it (budget,
+     * evals and RESULT count both segments; the trajectory after a resume is not that of an uninterrupted run). */
+    const char *ckpt = getenv("CKPT"); long long evals0 = 0; double elapsed0 = 0; int resumed = 0;
+    if (ckpt) { FILE *f = fopen(ckpt, "r"); int T2[MAXD], ok = 0; long long e0 = 0, b0 = 0; double el = 0;
+        if (f) { int dd = 0; ok = fscanf(f, "CKPT d=%d evals=%lld elapsed=%lf best=%lld", &dd, &e0, &el, &b0) == 4 && dd == d;
+            for (int i = 0; ok && i < d; i++) ok = fscanf(f, "%d", &T2[i]) == 1 && T2[i] >= 0 && T2[i] < N;
+            fclose(f); }
+        for (int i = 0; ok && i < OF; i++) ok = i == 0 ? T2[0] == ident : alpha(T2[i]) == T2[i];
+        for (int j = 0; ok && j < OM; j++) for (int i = 0; ok && i < OK_; i++) ok = T2[ostart(j) + (i + 1) % OK_] == alpha(T2[ostart(j) + i]);
+        for (int i = 0; ok && i < d; i++) for (int u = 0; u < i; u++) if (T2[u] == T2[i]) ok = 0;
+        if (ok) { memcpy(S, T2, sizeof(int) * d); for (int i = 0; i < d; i++) { SI[i] = ginv(S[i]); mktab(S[i], TF[i], TI[i]); }
+                  evals0 = e0; elapsed0 = el; resumed = 1; rs ^= (unsigned long long)(e0 + 1) * 0x9E3779B97F4A7C15ULL;
+                  fprintf(stderr, "resumed from %s: evals %lld, %.0f s spent, best %lld\n", ckpt, e0, el, b0); }
+        else if (f) fprintf(stderr, "checkpoint %s unusable, fresh start\n", ckpt); }
+    double lastck = now();
     long long c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0), ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
     long long best = c, bestE = ce; memcpy(bestS2, S, sizeof(int) * d); collect(C[0]);
     double cE = (double)ce / OK_, t0 = now(), T = TMAX, lastimp = t0, lastprint = t0, lastheat = t0;
     if (ORBW > 1) fprintf(stderr, "ORBW=%d: an uncovered fixed element weighs %d; start energy %lld\n", ORBW, ORBW, ce);
-    long long evals = 1, steps = 0, lastimpstep = 0;
+    long long evals = 1 + evals0, steps = 0, lastimpstep = 0;
+    if (resumed) t0 -= elapsed0;
     double OVCLOCK = getenv("VCLOCK") ? atof(getenv("VCLOCK")) : 0;   /* deterministic schedule: x seconds per step */
     long long OMAXSTEPS = getenv("MAXSTEPS") ? atoll(getenv("MAXSTEPS")) : 0, ohash = 1469598103934665603ULL;
 #define ONOW (OVCLOCK > 0 ? t0 + steps * OVCLOCK : now())
@@ -1000,7 +1026,7 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
                 AVOIDMASK = 0;
                 if (x < 0 || x == ident || !orbit_of(x, o) || !orbit_free(o, j)) random_orbit(j, o);
                 memcpy(cand[t], o, sizeof(int) * OK_);
-            } else { int x; do x = FIXL[rnd() % NFIX]; while (used(x, fs)); cand[t][0] = x; }
+            } else { int x; do x = FIXG[rnd() % NFIXG]; while (used(x, fs)); cand[t][0] = x; }
         }
         long long bound = NOBOUND;
         #pragma omp parallel for schedule(dynamic, 1) if (nth > 1)
@@ -1039,6 +1065,10 @@ static int orbit_main(ctx **C, int nth, int K, double secs, const char *out) {
             c = cost_any(C[0], TF, TI, &sc0, SV[0], &NOBOUND, 0); ce = c + (ORBW > 1 ? (ORBW - 1) * fixmiss(SV[0]) : 0);
             cE = (double)ce / OK_; collect(C[0]); lastimp = ONOW; lastimpstep = steps;
         }
+        if (ckpt && now() - lastck > 60) { char tmp[1100]; snprintf(tmp, sizeof tmp, "%s.tmp", ckpt); FILE *f = fopen(tmp, "w");
+            if (f) { fprintf(f, "CKPT d=%d evals=%lld elapsed=%.1f best=%lld\n", d, evals, now() - t0, best);
+                     for (int i = 0; i < d; i++) fprintf(f, "%d%c", bestS2[i], i + 1 < d ? ' ' : '\n'); fclose(f); rename(tmp, ckpt); }
+            lastck = now(); }
         if (ONOW - lastprint > 30) { fprintf(stderr, "t=%.0f steps=%lld evals=%lld cost=%lld best=%lld T=%.2f%s\n", ONOW - t0, steps, evals, c, best, T,
                                                   ORBW > 1 ? (sprintf(obuf, " energy=%lld bestE=%lld", ce, bestE), obuf) : ""); lastprint = ONOW; }
     }
