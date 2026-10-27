@@ -257,6 +257,7 @@ def main():
     ap.add_argument('--hchunk', type=int, default=4096, help='hub-graph vertices per check module')
     ap.add_argument('--block', type=int, default=8, help='log2 of the leaves per data block')
     ap.add_argument('--partbytes', type=int, default=600000)
+    ap.add_argument('--pack', action='store_true', help='packed data (LeanAll/Pack.lean): many fields per tree leaf')
     args = ap.parse_args()
     H = load_hex(args.hexbin)
     K, p = H['K'], H['q']
@@ -365,6 +366,25 @@ def main():
     def t3(x):
         return f'({x[0]}, {x[1]}, {x[2]})'
 
+    def bits(x):
+        return max(1, int(x).bit_length())
+
+    def packed(name, ints, w):
+        """Fields of `w` bits, `2^L` per leaf (a leaf of at most 4096 bits): imports, tree text, and the accessor."""
+        L = max(0, (4096 // w).bit_length() - 1) if w <= 4096 else 0
+        bs = 1 << L
+        blocks = [sum(int(v) << (w * i) for i, v in enumerate(ints[b:b + bs])) for b in range(0, len(ints), bs)]
+        Dp = clog2(len(blocks))
+        imps, txt = tree_defs(name + 'T', 'ℕ', blocks, '0', lambda x: hex(x), Dp)
+        return imps, txt, f'lookP {name}T {Dp} {L} {w} i'
+
+    def pack3(es, we, wc):
+        x, sh = 0, 0
+        for (e, a_, b_) in es:
+            x |= (e | (a_ << we) | (b_ << (we + wc))) << sh
+            sh += we + 2 * wc
+        return x
+
     KG, KRH, KP, KRL = clog2(nG), clog2(nH), clog2(nP), clog2(nL)
     specs = [('rhc', 'ℕ', t['rhc'], '0', str, KRH), ('gown', 'ℕ', t['gown'], '0', str, KG),
              ('gA', 'ℕ', t['gA'], '0', str, KG), ('gB', 'ℕ', t['gB'], '0', str, KG),
@@ -372,22 +392,38 @@ def main():
              ('rla', 'ℕ', t['rla'], '0', str, KRL), ('rlb', 'ℕ', t['rlb'], '0', str, KRL),
              ('gp', 'ℕ', t['gp'], '0', str, KP), ('gpown', 'ℕ', t['gpown'], '0', str, KP),
              ('entsL', 'List (ℕ × ℕ × ℕ)', t['entsL'], '[]', lambda es: lst(es, t3), KRL)]
-    trees = [tree_defs(nm + 'T', typ, lv, pad, fmt, Kd) for nm, typ, lv, pad, fmt, Kd in specs]
+    if not args.pack:
+        trees = [tree_defs(nm + 'T', typ, lv, pad, fmt, Kd) for nm, typ, lv, pad, fmt, Kd in specs]
+        accs = [(nm, typ, f'look {nm}T {Kd} i') for nm, typ, _, _, _, Kd in specs]
+    else:
+        trees, accs = [], []
+        wc = bits(p - 1)
+        for nm, typ, lv, pad, fmt, Kd in specs:
+            if typ == 'ℕ':
+                im, tx, acc = packed(nm, lv, bits(max(lv)))
+            else:
+                we = bits(max(e for es in lv for (e, _, _) in es))
+                w = (p + 1) * (we + 2 * wc)
+                im, tx, acc = packed(nm, [pack3(es, we, wc) for es in lv], w)
+                acc = f'unpack3 {we} {wc} {wc} {p + 1} ({acc})'
+            trees.append((im, tx))
+            accs.append((nm, typ, acc))
     src = f' ({args.source})' if args.source else ''
     with open(os.path.join(od, 'Data.lean'), 'w') as f:
-        f.write(HDR + 'import BipartiteDD.LeanAll.TypedHex5\n')
+        f.write(HDR + 'import BipartiteDD.LeanAll.TypedHex5\n' + ('import BipartiteDD.LeanAll.Pack\n' if args.pack else ''))
         for imps, _ in trees:
             for im in imps:
                 f.write(f'import {im}\n')
         f.write(f'\n/-! Data of the ({p + 3},7) typed hexagon graph{src}: H({p}), levels H D H D H; R_H with {nH} '
                 f'points ({nG} lines),\nR_L with {nL} lines ({nP} points); the hub graph over Z_{vm} with {vb} base '
                 f'vertices per side. -/\n\n')
-        f.write(f'namespace {ns}\n\nopen BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2\n\n')
+        f.write(f'namespace {ns}\n\nopen BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2' +
+                (' BipartiteDD.LeanAll.Pack' if args.pack else '') + '\n\n')
         f.write('set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n')
         for _, txt in trees:
             f.write(txt.replace(': Tree (', ': BipartiteDD.Fast.Tree ('))
-        for nm, typ, _, _, _, Kd in specs:
-            f.write(f'noncomputable def {nm} (i : ℕ) : {typ} := look {nm}T {Kd} i\n\n')
+        for nm, typ, acc in accs:
+            f.write(f'noncomputable def {nm} (i : ℕ) : {typ} := {acc}\n\n')
         f.write(f'/-- The base graph of the hub graph: `(x, y, v)`, `A_x ~ B_y` with voltage `v`. -/\n'
                 f'def E : List (ℕ × ℕ × ℕ) := {lst(E, t3)}\n\n')
         f.write(f'end {ns}\n')
@@ -466,22 +502,57 @@ def main():
                   ('rl', 'ℕ', dl['rl'], '0', str, Km), ('cert', 'Cert', dl['certs'], '([], [])', certf, Km)]
         save = args.block
         ltrees = []
-        for x, typ, lv, pad, fmt, Kd in lspecs:
-            args.block = 4 if x == 'cert' else save
-            ltrees.append(tree_defs(f'{nm}_{x}T', CT if x == 'cert' else typ, lv, pad, fmt, Kd))
+        laccs = []
+        if not args.pack:
+            for x, typ, lv, pad, fmt, Kd in lspecs:
+                args.block = 4 if x == 'cert' else save
+                ltrees.append(tree_defs(f'{nm}_{x}T', CT if x == 'cert' else typ, lv, pad, fmt, Kd))
+                laccs.append((x, typ, f'look {nm}_{x}T {Kd} i'))
+        else:
+            wc = bits(p - 1)
+            wx = bits(p ** 7)
+            we = bits(M)
+            wp = bits(p * (p + 1))
+            for x, typ, lv, pad, fmt, Kd in lspecs:
+                if typ == 'ℕ':
+                    im, tx, acc = packed(f'{nm}_{x}', lv, bits(max(lv)))
+                elif typ == 'Bool':
+                    im, tx, acc = packed(f'{nm}_{x}', [1 if b_ else 0 for b_ in lv], 1)
+                    acc = f'Nat.beq ({acc}) 1'
+                else:
+                    def pc_(c):
+                        y, sh = 0, 0
+                        for xk, ek in zip(c['xs'], c['es']):
+                            assert len(ek) == p
+                            y |= xk << sh; sh += wx
+                            for (e, a_, b_) in ek:
+                                y |= (e | (a_ << we) | (b_ << (we + wc))) << sh; sh += we + 2 * wc
+                        for zt, ft in zip(c['zs'], c['fs']):
+                            assert len(ft) == p
+                            y |= (zt[0] | (zt[1] << wx) | (zt[2] << (wx + wc))) << sh; sh += wx + 2 * wc
+                            for (mm, ga, de, e) in ft:
+                                y |= (mm | (ga << we) | (de << (we + wc)) | (e << (we + 2 * wc))) << sh
+                                sh += we + 2 * wc + wp
+                        return y
+                    wcert = (p + 1) * (wx + p * (we + 2 * wc)) + (p + 1) * (wx + 2 * wc + p * (we + 2 * wc + wp))
+                    im, tx, acc = packed(f'{nm}_{x}', [pc_(c) for c in lv], wcert)
+                    acc = f'decCert {p} {wx} {we} {wc} {wp} ({acc})'
+                ltrees.append((im, tx))
+                laccs.append((x, typ, acc))
         args.block = save
         with open(os.path.join(od, f'D_{nm}.lean'), 'w') as f:
-            f.write(HDR + 'import BipartiteDD.LeanAll.HexLocal\n')
+            f.write(HDR + 'import BipartiteDD.LeanAll.HexLocal\n' + ('import BipartiteDD.LeanAll.Pack\n' if args.pack else ''))
             for imps, _ in ltrees:
                 for im in imps:
                     f.write(f'import {im}\n')
             f.write(f'\n/-! The local certificate `{nm}` (HexLocal): {m} freed points, {M} domain points and lines. -/\n\n')
-            f.write(f'namespace {ns}\n\nopen BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.HexLocal\n\n')
+            f.write(f'namespace {ns}\n\nopen BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.HexLocal' +
+                    (' BipartiteDD.LeanAll.Pack' if args.pack else '') + '\n\n')
             f.write('set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n')
             for _, txt in ltrees:
                 f.write(txt.replace(': Tree (', ': BipartiteDD.Fast.Tree ('))
-            for x, typ, _, _, _, Kd in lspecs:
-                f.write(f'noncomputable def {nm}_{x} (i : ℕ) : {typ} := look {nm}_{x}T {Kd} i\n\n')
+            for x, typ, acc in laccs:
+                f.write(f'noncomputable def {nm}_{x} (i : ℕ) : {typ} := {acc}\n\n')
             f.write(f'end {ns}\n')
         NM = nm.upper()
         F = {x: f'{nm}_{x}' for x in ('ptc', 'lnA', 'lnB', 'sg', 'sgi', 'rflag', 'rl', 'cert')}
