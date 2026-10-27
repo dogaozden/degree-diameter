@@ -48,6 +48,19 @@ standard axioms. Six methods:
    from one hub of each kind and spread by its automorphisms (nauty). Generators `gen_spreadcell.py` (voltage hub
    graph) and `gen_spreadhub.py` (hubs of a .hubs3 file); `--stub` writes empty data and `sorry` checks to test a
    Record before the build.
+8. **Seven typed levels with relaxed friendly sets** ((15,7), research/d15D7b/RELAXED.md): `RTyped.lean` is `Typed`
+   with friendly sets whose elements may have one co-adjacent partner, each pair served by two hubs whose other slots
+   are incident with the partner (`r1`, `r1h`). `Relax7.main7` is the seven-level instance over `ZMod p`: every
+   element is a code (`den`), transition `a → a + k` is number `3a + k - 1`, the slot lists of a level are the three
+   freed (or image) lists, the hubs hold explicit positions (`tA`, `tB`, injective by inverse tables), and the hub
+   graph is any bipartite graph given by neighbour lists whose same-side distances are at most 6 by itself, checked by
+   layered bit sets (`BitBFS.reach6`: layers 2 to 5 of a search from all of one side at once are data, each checked
+   against the layer before it with 8 lookups per vertex). `Relax7Chk` has the Bool checks: `ph2OK`/`lh2OK` (freed
+   points or lines with partners: every table line has one or two owners, all in {r, pr r}), `hubChk` (the two hubs
+   of a pair), `local_duality'`. The record's own hub graph needs the levels for 1,403 same-side pairs, so the cell
+   uses `sols/d15D7_hub_10826_10481.txt` (degree-preserving swaps from it, `tools/opt.c`). Generator
+   `gen_relax7.py HEXBIN SOL HUB LCJSON NAME OUTDIR --theorem THM` (LCJSON: `hexlocal.py` of the d13D7 mirror .sol,
+   checked equal to the mirrored set of the (15,7) .sol); kernel cost measured: about 8 ms per vertex and layer.
 
 ## How to build a Haar cell
 
@@ -88,9 +101,8 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Hexagon D = 7: (15,7) has seven levels H H D H H D D, three matchings, and frees collinear pairs on the friendly
-  transitions (research/d15D7b/RELAXED.md: each pair is served by two hubs, so some main-main routes go through hubs).
-  It needs a seven-level theorem with that rule; `Route`/`RouteHub` assume main-main routes inside the levels.
+- Hexagon D = 7: (15,7) is generated (`RelaxD15D7`, method 8); (11,7), (12,7) and (16,7) are building (see
+  `STATUS.md`). (12,7) imports the tables of (11,7), so keep SpreadD11D7's oleans until (12,7) is built.
 - The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and

@@ -169,8 +169,8 @@ def main():
         with open(os.path.join(od, fname), 'w') as f:
             f.write(HDR + 'import BipartiteDD.LeanAll.Relax7Chk\n' + ''.join(f'import {ns}.{i}\n' for i in imps) +
                     f'\nnamespace {ns}\n\n')
-            f.write('open BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.Pack '
-                    'BipartiteDD.LeanAll.BitBFS BipartiteDD.LeanAll.Relax7\n\n')
+            f.write('open BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.Pack BipartiteDD.LeanAll.HexLocal '
+                    'BipartiteDD.LeanAll.TypedHex BipartiteDD.LeanAll.BitBFS BipartiteDD.LeanAll.Relax7\n\n')
             f.write(body)
             f.write(f'\nend {ns}\n')
 
