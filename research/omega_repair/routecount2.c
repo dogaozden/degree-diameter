@@ -18,7 +18,7 @@
 
 static int A, C;
 static char btype[64], binner[64];
-static int att[64][10];   /* att[c][X] = 0 not attached, 1 attached at points, 2 attached at lines */
+static int att[128][10];   /* att[c][X] = 0 not attached, 1 attached at points, 2 attached at lines */
 
 static void wiring(void) {
     memset(att, 0, sizeof att);
@@ -40,14 +40,14 @@ static void wiring(void) {
    W = T_{r-1} ... T_1 g(c1,s1) delta^[s1 = L].  W is kept as a freely reduced word; routes with the same reduced word
    have the same centre (different words may still coincide, which only lowers the true coverage). */
 typedef struct { int w[16]; int len; int R; } Cen;
-static Cen cen[64][8192]; static int ncen[64];
+static Cen cen[128][16384]; static int ncen[128];
 static int W[32], wl;     /* W[0] is applied last (leftmost) */
 #define SYM(c, s) (2 * (c) + (s))          /* s: 0 = P, 1 = L */
 #define DELTA 1000
 static void add(int cp, int R) {
     for (int i = 0; i < ncen[cp]; i++) if (cen[cp][i].len == wl && !memcmp(cen[cp][i].w, W, sizeof(int) * wl)) {
         if (R > cen[cp][i].R) cen[cp][i].R = R; return; }
-    if (ncen[cp] >= 8192) { fprintf(stderr, "too many centres\n"); exit(1); }
+    if (ncen[cp] >= 16384) { fprintf(stderr, "too many centres\n"); exit(1); }
     Cen *e = &cen[cp][ncen[cp]++]; memcpy(e->w, W, sizeof(int) * wl); e->len = wl; e->R = R;
 }
 /* letters: 2*sym + inv */

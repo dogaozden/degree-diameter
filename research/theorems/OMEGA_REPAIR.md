@@ -271,7 +271,7 @@ q⁵ − 4q⁴ − m₂q² ≥ 16,807 − 9,604 − 140·49 = 343 vertices of c'
 
 **Lemma 4.3 (Computer-checked; degenerate positions).** Suppose t, y₁, …, y₅ are distinct. Record which yᵢ lie on a
 common totally singular line through t ("aligned classes": their sets Cᵢ are disjoint) and which sets of ≥ 3 yᵢ lie on a
-line of PG(6,7) not through t ("rich lines"). Bonferroni's inequality |⋃Cᵢ| ≤ S₁ − S₂ + S₃, with the overlaps of
+line of PG(6,7) not through t ("rich lines"; three collinear singular points span a totally singular line). Bonferroni's inequality |⋃Cᵢ| ≤ S₁ − S₂ + S₃, with the overlaps of
 Lemma 4.1 (and the exact value 5q⁴ − 4|ℓ^⊥ ∩ opp(t)| when all five yᵢ lie on one rich line), together with ≤ 140
 radius-2 balls of ≤ 49 points, leaves a vertex of c' at distance ≥ 9 from (t, X) for 8 of the 17 possible structure
 types. Every one of the other 9 types forces **at least 6** of the 15 pairs among {t, y₁, …, y₅} to lie on a common
@@ -283,7 +283,8 @@ and found the exact union never above the bound (`logs/degen_check_q7.txt`).
 fix no point of H(q). Then Perp(h) := {s ∈ P : h(s) ⊥ s} has at most (q⁵−1)/(q−1) + q^{3.5} + q³ + (q−2)q^{1.5}
 points: at most 4,144 of the 19,608 points when q = 7.
 
-*Proof.* Let F(v) = b(v, hv). Its polar form is b(v, (h + h⁻¹)w), so for c ∈ F_q the form R_c = F − cQ has rank
+*Proof.* Let h also denote its matrix of determinant 1, which lies in G₂(q) ≤ SO(7,q) (the other lift −h gives the same
+Perp). Let F(v) = b(v, hv). Its polar form is b(v, (h + h⁻¹)w), so for c ∈ F_q the form R_c = F − cQ has rank
 7 − d_c with d_c = dim ker(h + h⁻¹ − c). With ψ a nontrivial additive character,
 #{v : Q(v) = F(v) = 0} = q⁻² Σ_{a,b} Σ_v ψ(aQ(v) + bF(v)). The terms with b = 0 sum to q⁷, because #{Q = 0} = q⁶. For
 b ≠ 0, aQ + bF = b R_{−a/b}, and a Gauss sum gives |Σ_v ψ(bR_c(v))| = q^{7 − (7 − d_c)/2}. Hence
@@ -296,7 +297,8 @@ ker(h ∓ 1)² has dimension ≤ 4.
 (iii) x² − cx + 1 irreducible with roots μ, μ⁻¹ = μ^q: d_c = 2·dim ker(h − μ), at most twice the multiplicity of μ.
 The eigenvalues of an element of G₂ on its 7-dimensional module are 1, x, y, xy, x⁻¹, y⁻¹, (xy)⁻¹, and μ can occur three
 times only if μ³ = 1. When 3 | q − 1 that puts μ in F_q, a contradiction. So d_c ≤ 4.
-The sum Σ q^{d_c/2} is convex in each d_c, so it is largest for one d_c = 4, one d_c = 3 and the rest 0. ∎ (Sampled:
+The vector (4, 3, 0, …, 0) majorises every integer vector with entries ≤ 4 and sum ≤ 7, and Σ q^{d_c/2} is Schur-convex,
+so the sum is largest there. ∎ (Sampled:
 229 fixed-point-free elements of G₂(7), `perpbound.py`: max d_c = 4, max Σd_c = 7, bound − |Perp| ≥ 111; the true values
 are 2,752 and 2,850, `logs/fpfperp_q7.txt`.)
 
@@ -309,7 +311,11 @@ is fixed by one of them. By Lemma 4.2 none of the 15 has a fixed point. Then for
 distinct, and by Lemma 4.3 at least six of the 15 pairs are perpendicular. Pair (t, yᵢ) is perpendicular iff
 t ∈ Perp(gᵢ), and pair (yᵢ, y_j) iff t ∈ Perp(gᵢ⁻¹g_j), since collineations preserve perpendicularity. Summing over t,
 Σ |Perp(h)| ≥ 6N = 117,648 over the 15 elements h, while Lemma 4.4 gives Σ |Perp(h)| ≤ 15 · 4,144 = 62,160. This is
-a contradiction. ∎
+a contradiction. (The margin is wide: four forced pairs per point would already suffice, as 4N = 78,432 > 62,160.) ∎
+
+**Refereed.** An independent agent session checked Lemmas 4.1–4.4 and Theorem 4.5 with its own code (its own enumeration
+of the 353 labelled configurations, its own Perp sampling over 5,763 fixed-point-free collineations, an end-to-end run
+over all 19,608 points). It found no error; its wording points are applied here (`research/omega_repair/referee/`).
 
 **Corollary 4.6 (all table cells).** For every table value of Gómez's ΩH_q, (10,8) 1,176,480, (11,8) 2,246,940, (12,8)
 4,650,100, (14,8) and (15,8) 14,172,480, (16,8) 36,201,060 (q = 7, 8, 9, 11, 11, 13), no relabelling of the copies by
