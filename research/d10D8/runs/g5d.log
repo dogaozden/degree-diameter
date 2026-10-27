@@ -393,3 +393,13 @@ t=5101 steps=790845 evals=6326761 cost=24 best=9 T=0.85 energy=24 bestE=9
 CHAIN 109 min 24 secs 37 evals 51616 S 74480 233921 426570 472081 533546 327087 190431 502106 61228 411570
 chain 110: fresh start (global best 9)
 t=5131 steps=796134 evals=6369073 cost=26 best=9 T=1.16 energy=30 bestE=9
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.04s
+wide rows: HW order 252, rows 2352, setup 0.08s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+resumed from g5d.ckpt: evals 6326425, 5100 s spent, best 9
+ORBW=3: an uncovered fixed element weighs 3; start energy 9
+start cost=9
+t=5130 steps=7271 evals=6384594 cost=9 best=9 T=0.37 energy=9 bestE=9
+CHAIN 1 min 9 secs 30 evals 6384602 S 74480 563809 25769 479490 12576 168036 41757 153555 541547 125067
+chain 2: fresh start (global best 9)
