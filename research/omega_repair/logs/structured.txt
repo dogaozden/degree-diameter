@@ -1,0 +1,22 @@
+$ python3 structured.py hex_q3.txt 15 singer 1 st.bin; ./twist hex_q3.txt st.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 1671280
+$ python3 structured.py hex_q3.txt 15 singerZ 1 st.bin; ./twist hex_q3.txt st.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 1031433
+$ python3 structured.py hex_q3.txt 15 elation 1 st.bin; ./twist hex_q3.txt st.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 4133430
+$ python3 structured.py hex_q3.txt 15 elation2 1 st.bin; ./twist hex_q3.txt st.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 2285415
+$ python3 structured.py hex_q4.txt 15 singer 1 st.bin; ./twist hex_q4.txt st.bin aba formula
+q=4 types=aba n=1365 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 35301378
+$ python3 structured.py hex_q4.txt 15 singerZ 1 st.bin; ./twist hex_q4.txt st.bin aba formula
+q=4 types=aba n=1365 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 30400167
+$ python3 structured.py hex_q4.txt 15 elation 1 st.bin; ./twist hex_q4.txt st.bin aba formula
+q=4 types=aba n=1365 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 70522880
+$ python3 structured.py hex_q4.txt 15 elation2 1 st.bin; ./twist hex_q4.txt st.bin aba formula
+q=4 types=aba n=1365 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 40282112
+$ python3 structured.py hex_q5.txt 20 singer 1 st.bin; ./twist hex_q5.txt st.bin abab formula
+q=5 types=abab n=3906 copies=20 centres/target max 94 avg 103.2 FAR_PAIRS 374719382
+$ python3 structured.py hex_q5.txt 20 elation 1 st.bin; ./twist hex_q5.txt st.bin abab formula
+q=5 types=abab n=3906 copies=20 centres/target max 94 avg 103.2 FAR_PAIRS 744656250
+$ python3 structured.py hex_q5.txt 20 elation2 1 st.bin; ./twist hex_q5.txt st.bin abab formula
+q=5 types=abab n=3906 copies=20 centres/target max 94 avg 103.2 FAR_PAIRS 506393750

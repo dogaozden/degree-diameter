@@ -1,0 +1,55 @@
+# formula (route lemma) vs explicit-graph BFS, twisted copies, reading 2 (twist.c)
+$ ./twist hex_q2.txt work/q2_id.bin ab formula
+q=2 types=ab n=63 copies=10 centres/target max 26 avg 27.6 FAR_PAIRS 120960
+$ ./twist hex_q2.txt work/q2_id.bin ab bfs
+q=2 types=ab NV=1890 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 120960 max_ecc 9
+$ ./twist hex_q2.txt work/q2_id.bin ab bfs all
+q=2 types=ab NV=1890 sources=all FAR_PAIRS(dist>8, ordered from sources) 241920 max_ecc 9
+$ ./twist hex_q2.txt work/q2_r1.bin ab formula
+q=2 types=ab n=63 copies=10 centres/target max 26 avg 27.6 FAR_PAIRS 1330
+$ ./twist hex_q2.txt work/q2_r1.bin ab bfs
+q=2 types=ab NV=1890 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 1330 max_ecc 9
+$ ./twist hex_q2.txt work/q2_r1.bin ab bfs all
+q=2 types=ab NV=1890 sources=all FAR_PAIRS(dist>8, ordered from sources) 2660 max_ecc 9
+$ ./twist hex_q2.txt work/q2_r2.bin ab formula
+q=2 types=ab n=63 copies=10 centres/target max 26 avg 27.6 FAR_PAIRS 1911
+$ ./twist hex_q2.txt work/q2_r2.bin ab bfs
+q=2 types=ab NV=1890 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 1911 max_ecc 9
+$ ./twist hex_q2.txt work/q2_r2.bin ab bfs all
+q=2 types=ab NV=1890 sources=all FAR_PAIRS(dist>8, ordered from sources) 3822 max_ecc 9
+$ ./twist hex_q3.txt work/q3_id.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 7960680
+$ ./twist hex_q3.txt work/q3_id.bin aba bfs
+q=3 types=aba NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 7960680 max_ecc 9
+$ ./twist hex_q3.txt work/q3_id.bin aba bfs all
+q=3 types=aba NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 15921360 max_ecc 9
+$ ./twist hex_q3.txt work/q3_id.bin aab formula
+q=3 types=aab n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 7960680
+$ ./twist hex_q3.txt work/q3_id.bin aab bfs
+q=3 types=aab NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 7960680 max_ecc 9
+$ ./twist hex_q3.txt work/q3_id.bin aab bfs all
+q=3 types=aab NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 15921360 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r1.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 288846
+$ ./twist hex_q3.txt work/q3_r1.bin aba bfs
+q=3 types=aba NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 288846 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r1.bin aba bfs all
+q=3 types=aba NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 577692 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r1.bin aab formula
+q=3 types=aab n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 286002
+$ ./twist hex_q3.txt work/q3_r1.bin aab bfs
+q=3 types=aab NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 286002 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r1.bin aab bfs all
+q=3 types=aab NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 572004 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r2.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 291407
+$ ./twist hex_q3.txt work/q3_r2.bin aba bfs
+q=3 types=aba NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 291407 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r2.bin aba bfs all
+q=3 types=aba NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 582814 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r2.bin aab formula
+q=3 types=aab n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 296705
+$ ./twist hex_q3.txt work/q3_r2.bin aab bfs
+q=3 types=aab NV=14560 sources=hubs FAR_PAIRS(dist>8, ordered from sources) 296705 max_ecc 9
+$ ./twist hex_q3.txt work/q3_r2.bin aab bfs all
+q=3 types=aab NV=14560 sources=all FAR_PAIRS(dist>8, ordered from sources) 593410 max_ecc 9
