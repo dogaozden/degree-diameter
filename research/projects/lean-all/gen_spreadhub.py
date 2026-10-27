@@ -328,7 +328,7 @@ def main():
             mods.append(f'{nm}{ci:02d}')
     vch = ranges(n, args.chunk)
     for ci, (lo, k) in enumerate(vch):
-        thm_file(f'ALoc{ci:02d}.lean', f'theorem al{ci:02d} : localOK {dA} {n} nbA (auxC kA) {lo} {k} = true := by\n'
+        thm_file(f'ALoc{ci:02d}.lean', f'theorem al{ci:02d} : localOK {dA} {n} nbA (auxC kA) {lo} {k} = true := by\n' +
                  ('  sorry\n' if args.stub else '  decide +kernel\n'))
         mods.append(f'ALoc{ci:02d}')
         for gi in range(len(gens)):
@@ -357,7 +357,7 @@ def main():
             mods.append(f'Step{r}_{cj:02d}')
     hch = ranges(Hh, args.chunk)
     for ci, (lo, k) in enumerate(hch):
-        thm_file(f'Fin{ci:02d}.lean', f'theorem fin{ci:02d} : finOK {KH} lev{D} (auxC kA) 0 2 {lo} {k} = true := by\n'
+        thm_file(f'Fin{ci:02d}.lean', f'theorem fin{ci:02d} : finOK {KH} lev{D} (auxC kA) 0 2 {lo} {k} = true := by\n' +
                  ('  sorry\n' if args.stub else '  decide +kernel\n'), f'import {ns}.Lev{D}\n')
         mods.append(f'Fin{ci:02d}')
 

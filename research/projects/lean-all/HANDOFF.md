@@ -38,6 +38,16 @@ standard axioms. Six methods:
    from global tables, `VHub.lean` takes hub graphs that are Z_m voltage graphs, and `TypedHex5.main5` is the
    five-level instance over `ZMod p` (degree p + 3). `gen_typedcell.py HEXBIN TYPED_SOL VHUB NAME OUTDIR --lc CELL ...`
    writes a cell that reuses the local certificate of a three-level cell (TypD14D7 uses HexD13D7's).
+7. **Freed spreads with a duality** ((11,7), (12,7), research/squads/cells/d12D7.md): `Route.lean` is `Typed` with a
+   route hypothesis in place of (H1)/(H3); `Spread.lean` proves the route for the points of pairwise opposite lines
+   freed on every transition with a duality as every matching (`via_all`: along a shortest walk some point is not
+   freed, or a non-freed point is found next to it); `GF9.lean`/`HexGF9.lean` give GF(9) and its coder;
+   `HexGlobal.lean` tables all points and lines of H(q), checks the duality flag by flag (both directions by
+   counting) and the spread flags. `SpreadHub.lean` adds cluster-assisted hubs: same-side hub distances through an
+   auxiliary graph (hubs, owners, spread lines and their dual images) mapped into the graph edge by edge, searched
+   from one hub of each kind and spread by its automorphisms (nauty). Generators `gen_spreadcell.py` (voltage hub
+   graph) and `gen_spreadhub.py` (hubs of a .hubs3 file); `--stub` writes empty data and `sorry` checks to test a
+   Record before the build.
 
 ## How to build a Haar cell
 
@@ -78,12 +88,9 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Hexagon D = 7: (11,7) and (12,7) free all points of a spread in H(9) (collinear freed points, outside Theorem 1;
-  needs a theorem for that freeing rule, the duality of H(9), and GF(9)). (15,7) has seven levels H H D H H D D and
-  three matchings: `Typed.lean` covers it, but it needs a seven-level instance like `TypedHex5` and a hub graph of
-  degree 8 with 9,782 hubs per side (the record's is random; a voltage graph needs a search). (16,7) is five levels
-  over H(13): `main5` applies with p = 13 once a local certificate for its non-friendly transitions and a degree-11
-  hub graph with 14,884 hubs per side are found.
+- Hexagon D = 7: (15,7) has seven levels H H D H H D D, three matchings, and frees collinear pairs on the friendly
+  transitions (research/d15D7b/RELAXED.md: each pair is served by two hubs, so some main-main routes go through hubs).
+  It needs a seven-level theorem with that rule; `Route`/`RouteHub` assume main-main routes inside the levels.
 - The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
