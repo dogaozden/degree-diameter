@@ -1,0 +1,17 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.10s
+wide rows: HW order 252, rows 2352, setup 0.17s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+PT: 4 replicas, block 30 steps, T geometric from 0.150 to 1.200
+start cost=67
+PT new best 36 at t=0 round 0 replica 0 T=0.150 evals 17
+PT new best 30 at t=0 round 0 replica 1 T=0.300 evals 409
+PT new best 28 at t=4 round 5 replica 0 T=0.150 evals 5025
+PT new best 24 at t=9 round 10 replica 3 T=1.200 evals 10409
+PT new best 17 at t=13 round 17 replica 0 T=0.150 evals 16433
+PT round 35 energies (cost): T0.15:17 T0.30:24 T0.60:27 T1.20:28 | t=30 evals=33881 best=17 swaps=35/105
+PT summary: replicas 4, block 30 steps, rounds 46, swaps accepted 46 of 138
+PT minimum cost per replica (T:min): 0.150:17 0.300:24 0.600:24 1.200:24
+PT pair 0-1 swaps accepted 2 of 46
+PT pair 1-2 swaps accepted 15 of 46
+PT pair 2-3 swaps accepted 29 of 46

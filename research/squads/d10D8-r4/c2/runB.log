@@ -1,0 +1,38 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.04s
+wide rows: HW order 252, rows 2352, setup 0.13s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+start cost=73
+t=30 steps=4416 evals=35329 cost=19 best=19 T=0.25
+CHAIN 1 min 19 secs 34 evals 39169 S 74480 436510 342238 31348 1941 517955 524574 233055 424670 472691
+chain 2: fresh start (global best 19)
+t=60 steps=8371 evals=66969 cost=24 best=19 T=0.25
+t=90 steps=12136 evals=97089 cost=14 best=14 T=0.25
+CHAIN 2 min 14 secs 79 evals 86888 S 74480 276181 475117 313836 362013 581814 281103 334335 413695 462116
+chain 3: fresh start (global best 14)
+t=120 steps=17034 evals=136273 cost=34 best=14 T=0.56
+t=150 steps=21137 evals=169097 cost=21 best=14 T=0.25
+CHAIN 3 min 21 secs 45 evals 51200 S 74480 67410 547897 236418 158255 423071 192685 554191 496505 345818
+chain 4: fresh start (global best 14)
+t=180 steps=25214 evals=201713 cost=21 best=14 T=0.28
+CHAIN 4 min 21 secs 48 evals 49168 S 74480 579243 281428 360626 87942 10299 293514 486020 323854 521785
+chain 5: fresh start (global best 14)
+t=210 steps=28851 evals=230809 cost=18 best=14 T=0.64
+CHAIN 5 min 18 secs 32 evals 28384 S 74480 415661 460168 331944 14335 36181 182808 92309 509327 337407
+chain 6: fresh start (global best 14)
+t=240 steps=32206 evals=257649 cost=37 best=14 T=0.69
+t=270 steps=36497 evals=291977 cost=24 best=14 T=0.25
+CHAIN 6 min 24 secs 43 evals 51032 S 74480 156596 420950 193945 367406 507347 161352 553420 143073 80311
+chain 7: fresh start (global best 14)
+t=300 steps=41652 evals=333217 cost=23 best=14 T=0.32
+CHAIN 7 min 23 secs 49 evals 64528 S 74480 360931 581799 281570 300013 231056 183645 485794 323703 519845
+chain 8: fresh start (global best 14)
+t=330 steps=46425 evals=371401 cost=34 best=14 T=0.77
+t=360 steps=51738 evals=413905 cost=27 best=14 T=0.25
+t=390 steps=55694 evals=445553 cost=20 best=14 T=0.25
+CHAIN 8 min 20 secs 62 evals 77152 S 74480 226329 397631 132285 193237 157210 419840 184218 302363 229806
+chain 9: fresh start (global best 14)
+t=420 steps=59915 evals=479321 cost=23 best=14 T=0.25
+t=450 steps=65881 evals=527049 cost=21 best=14 T=0.25
+CHAIN 9 min 21 secs 86 evals 126024 S 74480 128549 103189 138303 308058 101364 34581 418936 381822 565159
+chain 10: fresh start (global best 14)

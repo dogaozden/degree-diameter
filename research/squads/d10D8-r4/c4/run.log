@@ -1,0 +1,32 @@
+group prod psl 7 sl 8 poly x^3+x+1 x Z_7, N=592704, identity 74480, H order 63, rows 9408, threads 1, setup 0.04s
+wide rows: HW order 252, rows 2352, setup 0.09s
+alpha: conj by prod[mat(3,3,5,3);mat(6,4,6,7)] (index 73494), z -> 2 z on Z_7
+ORBIT k=3 m=3 f=1: |Fix(alpha)| = 26 (+e); mu = 67.63, mu/k = 22.54, fixed-point misses ~ 1.31
+PT: 4 replicas, block 30 steps, T geometric from 0.150 to 1.200
+start cost=67
+PT new best 36 at t=0 round 0 replica 0 T=0.150 evals 17
+PT new best 30 at t=0 round 0 replica 1 T=0.300 evals 409
+PT new best 28 at t=4 round 5 replica 0 T=0.150 evals 5025
+PT new best 24 at t=7 round 10 replica 3 T=1.200 evals 10409
+PT new best 17 at t=13 round 17 replica 0 T=0.150 evals 16433
+PT round 36 energies (cost): T0.15:17 T0.30:24 T0.60:27 T1.20:28 | t=30 evals=35185 best=17 swaps=35/108
+PT round 67 energies (cost): T0.15:17 T0.30:24 T0.60:42 T1.20:36 | t=60 evals=64921 best=17 swaps=59/201
+PT round 100 energies (cost): T0.15:17 T0.30:22 T0.60:25 T1.20:42 | t=90 evals=96049 best=17 swaps=87/300
+PT round 136 energies (cost): T0.15:19 T0.30:17 T0.60:24 T1.20:26 | t=120 evals=131441 best=17 swaps=120/408
+PT round 168 energies (cost): T0.15:17 T0.30:19 T0.60:21 T1.20:31 | t=150 evals=161913 best=17 swaps=142/504
+PT round 200 energies (cost): T0.15:17 T0.30:19 T0.60:21 T1.20:23 | t=180 evals=192593 best=17 swaps=169/600
+PT round 236 energies (cost): T0.15:17 T0.30:19 T0.60:21 T1.20:47 | t=210 evals=226585 best=17 swaps=199/708
+PT new best 15 at t=239 round 273 replica 2 T=0.600 evals 262625
+PT round 275 energies (cost): T0.15:15 T0.30:17 T0.60:19 T1.20:22 | t=240 evals=264473 best=15 swaps=241/825
+PT round 310 energies (cost): T0.15:15 T0.30:17 T0.60:19 T1.20:18 | t=270 evals=298521 best=15 swaps=285/930
+PT round 341 energies (cost): T0.15:15 T0.30:17 T0.60:19 T1.20:33 | t=300 evals=327521 best=15 swaps=319/1023
+PT round 377 energies (cost): T0.15:15 T0.30:19 T0.60:19 T1.20:17 | t=330 evals=362577 best=15 swaps=370/1131
+PT round 416 energies (cost): T0.15:15 T0.30:17 T0.60:28 T1.20:19 | t=360 evals=399681 best=15 swaps=404/1248
+PT round 450 energies (cost): T0.15:15 T0.30:17 T0.60:19 T1.20:43 | t=390 evals=432273 best=15 swaps=433/1350
+PT round 480 energies (cost): T0.15:15 T0.30:17 T0.60:19 T1.20:25 | t=420 evals=461081 best=15 swaps=457/1440
+PT round 509 energies (cost): T0.15:15 T0.30:19 T0.60:17 T1.20:29 | t=450 evals=488969 best=15 swaps=484/1527
+PT summary: replicas 4, block 30 steps, rounds 537, swaps accepted 499 of 1611
+PT minimum cost per replica (T:min): 0.150:15 0.300:15 0.600:15 1.200:17
+PT pair 0-1 swaps accepted 71 of 537
+PT pair 1-2 swaps accepted 222 of 537
+PT pair 2-3 swaps accepted 206 of 537
