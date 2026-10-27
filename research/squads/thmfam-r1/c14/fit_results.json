@@ -1,0 +1,60 @@
+{
+ "LPS_p5_pgl": {
+  "n_q": 38,
+  "q_min": 23,
+  "slope": 0.4103,
+  "intercept": 0.9654,
+  "resid_sd": 0.4768,
+  "x_range": [
+   5.413,
+   9.436
+  ],
+  "q_max": 199
+ },
+ "random_psl_seeds": [
+  {
+   "n_q": 38,
+   "q_min": null,
+   "slope": 0.046,
+   "intercept": 2.8117,
+   "resid_sd": 0.3657,
+   "x_range": [
+    5.413,
+    9.436
+   ],
+   "seed": 1,
+   "mean_excess": 3.181
+  },
+  {
+   "n_q": 38,
+   "q_min": null,
+   "slope": -0.1395,
+   "intercept": 4.4852,
+   "resid_sd": 0.6285,
+   "x_range": [
+    5.413,
+    9.436
+   ],
+   "seed": 2,
+   "mean_excess": 3.365
+  },
+  {
+   "n_q": 38,
+   "q_min": null,
+   "slope": -0.0227,
+   "intercept": 3.5473,
+   "resid_sd": 0.4748,
+   "x_range": [
+    5.413,
+    9.436
+   ],
+   "seed": 3,
+   "mean_excess": 3.365
+  }
+ ],
+ "random_mean_slope": -0.0387,
+ "random_mean_intercept": 3.6147,
+ "random_mean_resid_sd": 0.4897,
+ "score_slope_LPS_minus_random": 0.449,
+ "LPS_mean_excess": 4.26
+}

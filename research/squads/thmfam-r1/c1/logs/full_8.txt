@@ -1,0 +1,23 @@
+{'q': 23, 'Delta': 6, 'vertices': 12144, 'diam': 8, 'excess': 2.587, 'connected': 'yes'}
+{'q': 29, 'Delta': 6, 'vertices': 24360, 'diam': 9, 'excess': 3.155, 'connected': 'yes'}
+{'q': 31, 'Delta': 6, 'vertices': 29760, 'diam': 9, 'excess': 3.03, 'connected': 'yes'}
+{'q': 37, 'Delta': 6, 'vertices': 50616, 'diam': 10, 'excess': 3.7, 'connected': 'yes'}
+{'q': 41, 'Delta': 6, 'vertices': 68880, 'diam': 10, 'excess': 3.509, 'connected': 'yes'}
+{'q': 43, 'Delta': 6, 'vertices': 79464, 'diam': 10, 'excess': 3.42, 'connected': 'yes'}
+{'q': 47, 'Delta': 6, 'vertices': 103776, 'diam': 10, 'excess': 3.254, 'connected': 'yes'}
+{'q': 53, 'Delta': 6, 'vertices': 148824, 'diam': 10, 'excess': 3.03, 'connected': 'yes'}
+{'q': 59, 'Delta': 6, 'vertices': 205320, 'diam': 11, 'excess': 3.83, 'connected': 'yes'}
+{'q': 61, 'Delta': 6, 'vertices': 226920, 'diam': 11, 'excess': 3.768, 'connected': 'yes'}
+{'q': 67, 'Delta': 6, 'vertices': 300696, 'diam': 11, 'excess': 3.593, 'connected': 'yes'}
+{'q': 71, 'Delta': 6, 'vertices': 357840, 'diam': 11, 'excess': 3.485, 'connected': 'yes'}
+{'q': 73, 'Delta': 6, 'vertices': 388944, 'diam': 12, 'excess': 4.433, 'connected': 'yes'}
+{'q': 79, 'Delta': 6, 'vertices': 492960, 'diam': 11, 'excess': 3.286, 'connected': 'yes'}
+{'q': 83, 'Delta': 6, 'vertices': 571704, 'diam': 11, 'excess': 3.194, 'connected': 'yes'}
+{'q': 89, 'Delta': 6, 'vertices': 704880, 'diam': 12, 'excess': 4.064, 'connected': 'yes'}
+{'q': 97, 'Delta': 6, 'vertices': 912576, 'diam': 12, 'excess': 3.903, 'connected': 'yes'}
+{'q': 101, 'Delta': 6, 'vertices': 1030200, 'diam': 12, 'excess': 3.828, 'connected': 'yes'}
+{'q': 103, 'Delta': 6, 'vertices': 1092624, 'diam': 12, 'excess': 3.792, 'connected': 'yes'}
+{'q': 107, 'Delta': 6, 'vertices': 1224936, 'diam': 12, 'excess': 3.721, 'connected': 'yes'}
+{'q': 109, 'Delta': 6, 'vertices': 1294920, 'diam': 12, 'excess': 3.686, 'connected': 'yes'}
+{'q': 113, 'Delta': 6, 'vertices': 1442784, 'diam': 12, 'excess': 3.619, 'connected': 'yes'}
+SUMMARY {"mean_excess": 3.54, "n_q": 22, "Delta": 6, "best": {"8": {"vertices": 12144, "q": 23, "table": 29790, "ours": 31680, "vs_table": 0.408}, "9": {"vertices": 29760, "q": 31, "table": 117360, "ours": 127296, "vs_table": 0.254}, "10": {"vertices": 148824, "q": 53, "table": 452032, "ours": 524160, "vs_table": 0.329}, "11": {"vertices": 571704, "q": 83, "table": null, "ours": null, "vs_table": null}, "12": {"vertices": 1442784, "q": 113, "table": null, "ours": null, "vs_table": null}}}

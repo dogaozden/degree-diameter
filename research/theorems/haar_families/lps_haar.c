@@ -49,7 +49,7 @@ int main(int argc,char**argv){
   NG=q*q*q+q*q; NB=NG*m; ll W=(NB+63)/64;
   uint64_t *vis[2],*cur[2],*nxt[2]; for(int s=0;s<2;s++){vis[s]=calloc(W,8);cur[s]=calloc(W,8);nxt[s]=calloc(W,8);}
   ll e=idx(1,0,0,1)*m; ll order=q*(q*q-1)*m; /* |PGL| * m; component has |PSL|*m per side if connected */
-  int ecc2[2]; ll tot2[2]; uint8_t *dist=malloc(NB); memset(dist,255,NB); dist[e]=0;
+  int ecc2[2]; ll tot2[2]; uint8_t *dist=malloc(NB); memset(dist,255,NB); dist[e]=0; /* distances from (e,A) to A-vertices only */
   for(int start=0;start<2;start++){
     for(int s=0;s<2;s++){memset(vis[s],0,W*8);memset(cur[s],0,W*8);}
     vis[start][e>>6]|=1ULL<<(e&63); cur[start][e>>6]|=1ULL<<(e&63);
@@ -61,7 +61,7 @@ int main(int argc,char**argv){
           if(side==0){A_=M[i][0];B_=M[i][1];C_=M[i][2];D_=M[i][3]; h=(z+Z[i])%m;}
           else {A_=M[i][3];B_=md(-M[i][1]);C_=md(-M[i][2]);D_=M[i][0]; h=(z-Z[i]+m)%m;} /* adjugate = inverse in PGL */
           ll t=idx(md(A_*a+B_*c),md(A_*b+B_*d),md(C_*a+D_*c),md(C_*b+D_*d))*m+h;
-          uint64_t mk=1ULL<<(t&63); if(!(vis[ns][t>>6]&mk)){vis[ns][t>>6]|=mk; nxt[ns][t>>6]|=mk; add++; if(start==0) dist[t]=step+1;} } } }
+          uint64_t mk=1ULL<<(t&63); if(!(vis[ns][t>>6]&mk)){vis[ns][t>>6]|=mk; nxt[ns][t>>6]|=mk; add++; if(start==0 && ns==0) dist[t]=step+1;} } } }
       memset(cur[side],0,W*8); uint64_t*tt=cur[ns];cur[ns]=nxt[ns];nxt[ns]=tt; side=ns;
       if(!add) break; step++; prof[step]=add; tot+=add; if(step>190) break; }
     ecc2[start]=step; tot2[start]=tot;
