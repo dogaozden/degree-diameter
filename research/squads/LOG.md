@@ -2,3 +2,35 @@
 
 One entry per squad round (see .claude/skills/haiku-squad/SKILL.md). Started Oct 23, 2026.
 
+
+## 2026-10-27 23:20 UTC, thm-haar-families (Opus, branch claude/thm-haar-families-pmi32i), round thmfam-r1
+
+Goal: uniform families (S by a formula in q, m) in the shape of the D = 8-10 Haar records, and tests of the note's
+theorems on small q. 18 Haiku cards (model haiku, effort high), scorer `research/theorems/haar_families/family_score.py`
+(mean excess diam - log_{Delta-1}|G| over primes 23 <= q <= 113; lower is better). Baselines: LPS p = 5: 4.00; one
+random orbit-closed draw at Delta 6: 3.18-3.50; records 2.0-2.3.
+
+| card | direction | best |
+|---|---|---|
+| c1 | integer lifts, Delta 6 | 3.36 (random 3.18-3.50) |
+| c2 | integer lifts, Delta 7 | 3.10 (random mean 3.07) |
+| c3 | integer lifts, Delta 8, 10 | 3.84, 3.40 (random 3.30, 2.76): worse |
+| c4 | integer lifts x Z_m | 3.12 (m = 13); no gain over random m = 1 |
+| c5 | records lifted to SL(2,Z), used at other q | 2.87-3.24 (records 2.0-2.1 at their own q) |
+| c6 | LPS(5) x Z_m, labels searched per (q,m) | 99.4 % of table at (6,10), 95.3 % at (6,8) |
+| c7 | LPS(7), LPS(13) x Z_m, searched labels | 98.9 % of table at (8,8) |
+| c8 | verify Thm 2.6 (cycle types) and Thm 3.2 | 0 failures for q >= 7; found a side-mixing bug in lps_haar.c |
+| c9 | far vertices of LPS | conjecture "far = pure quaternions" fails at ecc - 1 (score 0.07) |
+| c10 | primitive-root formulas, Delta 7 | 2.96 (random 2.96-3.24) |
+| c11 | Dickson / trace / power formulas | 3.13 at Delta 6 (random 3.18-3.50), 3.16 at Delta 8 |
+| c12 | torus orbits, Delta ~ q | diameter 5-7, at most 1.8 % of Moore |
+| c13 | random baselines | (pending at log time) |
+| c14 | larger q trend | LPS excess slope 0.41 in log_5|G| (theory 1/3), random -0.04 |
+| c15 | order 5/6 symmetry | worse than k = 3 at the same Delta |
+| c16 | conic model (Cayley transforms) | 3.34 at Delta 8 (random 3.25-3.30) |
+| c17 | growing cyclic factor m ~ q | 3.38 (random m = 1: 3.38) |
+| c18 | LPS repair by an extra orbit | 3.24 at Delta 9 (random 2.72-2.86) |
+
+Kept: LPS x Z_m covers (c6, c7). Dropped: every formula family (they sit at the level of one random draw). The
+director proved Theorem 3.2 (exact distance to psi(i)) meanwhile; c8 and the director's own check (251/251) confirm it.
+Next: round 2 on label rules for LPS x Z_m (uniform in q and m) and how far covers go.
