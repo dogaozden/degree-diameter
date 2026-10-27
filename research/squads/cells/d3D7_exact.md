@@ -206,6 +206,15 @@ Let G be a cubic bipartite graph of diameter 7 on 248 vertices (m = 124, δ = 3)
    y_5 s_1 P_12 z_2 P_22 s_2, y_0 z_1 P_11 s_1 P_12 z_2 and y_0 z_1 P_21 s_2 P_22 z_2. Then s_1 lies on exactly three
    12-cycles, Rep(s_1) = {y_0, the neighbour of z_1 on P_21, the neighbour of z_2 on P_22}, and so on.
 
+9. **No local refutation (Computer-checked example).** The local condition "R(v) = 3 at every vertex" does not
+   exclude 10-cycles. `research/d3D7exact/fano/local_r3.py 400 1` builds the configuration graph of §4 (10-cycles
+   joined by a = 3 spoke pairs) over a (5,3)-biregular cycle–line incidence of girth 10 (a Z_400-lift of K_{3,5}).
+   It has 16,000 vertices, girth 10, and every vertex has excess exactly 3 (all 16,000 checked), with 8,000
+   vertices per side instead of 124. (Reason: with incidence girth ≥ 10, every cycle other than the 10-cycles has
+   length ≥ 14, so the excess comes only from 10-cycles at distance ≤ 1, as in items 1 and 4.) So any proof that
+   n = 248 is impossible must use the global count m = 124, not only radius-6 balls; this is how FP–PV's n = 250
+   proof ends too (2n/12 not an integer).
+
 **Check on real graphs (Computer-checked).** The proofs of items 1–5 use only "δ = 3, girth ≥ 2D − 4, cycles of
 length 2D − 4 and 2D − 2", so they hold verbatim for any odd D with 6- and 8-cycles in place of 10- and 12-cycles
 when D = 5. For D = 5, δ = 3 means n = 56, and such graphs exist (N_b(3,5) = 56). `test_delta3.py` checks every claim
