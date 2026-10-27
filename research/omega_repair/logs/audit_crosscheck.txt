@@ -1,0 +1,9 @@
+# twist.c formula vs the table audit's omega_eval (copied unchanged to check/), same twisted labellings
+$ ./check/omega_eval work/chk_q3.hex aba PLP work/chk_q3.lab 8 hubs
+q=3 types=aba inner=PLP lab=work/chk_q3.lab n=14560 edges=43680 degree min=6 max=6 sources=3640 far(>8)=288846 maxecc=9 witness d(10973,15)>8
+$ ./twist hex_q3.txt work/q3_r1.bin aba formula
+q=3 types=aba n=364 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 288846
+$ ./check/omega_eval work/chk_q4.hex aba PLP work/chk_q4.lab 8 hubs
+q=4 types=aba inner=PLP lab=work/chk_q4.lab n=54600 edges=184275 degree min=6 max=7 sources=13650 far(>8)=18464523 maxecc=9 witness d(40952,21)>8
+$ ./twist hex_q4.txt work/q4_r1.bin aba formula
+q=4 types=aba n=1365 copies=15 centres/target max 56 avg 58.3 FAR_PAIRS 18464523

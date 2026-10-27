@@ -240,11 +240,12 @@ static long bfs(long *src, long ns, int *diam) {
 int main(int argc, char **argv) {
     if (argc < 5) { fprintf(stderr, "usage: twist hex.txt twists.bin TYPES formula|bfs [all]|edges out\n"); return 1; }
     load_hex(argv[1]); strcpy(types, argv[3]); A = strlen(types); C = 5 * A; wiring(); load_twists(argv[2]);
+    if (getenv("TSTEP")) tstep = atoi(getenv("TSTEP"));
     if (!strcmp(argv[4], "formula")) {
         balls(); routes();
         int tot = 0, mx = 0; for (int X = 0; X < 10; X++) for (int c = 0; c < C; c++) { tot += ncen[X][c]; if (ncen[X][c] > mx) mx = ncen[X][c]; }
         long far = formula(1);
-        printf("q=%d types=%s n=%d copies=%d centres/target max %d avg %.1f FAR_PAIRS %ld\n", q, types, n, C, mx, tot / (5.0 * C), far);
+        printf("q=%d types=%s n=%d copies=%d centres/target max %d avg %.1f FAR_PAIRS %ld%s\n", q, types, n, C, mx, tot / (5.0 * C), far, tstep > 1 ? " (sampled: every TSTEP-th row t)" : "");
     } else if (!strcmp(argv[4], "bfs")) {
         build(); int all = argc > 5 && !strcmp(argv[5], "all");
         long ns = all ? NV : 10L * n; long *src = malloc(sizeof(long) * ns);
