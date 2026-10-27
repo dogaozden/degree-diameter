@@ -26,16 +26,105 @@ PAIRS = [(i, j) for i in range(7) for j in range(i + 1, 7)]
 TITS = [(1, 2, 3, 4), (5, 4, 3, 2), (2, 0, 3, 5), (6, 5, 3, 0), (0, 1, 3, 6), (4, 6, 3, 1)]
 
 
-def cd(p, c, i):
-    return c // p ** i % p
+def mulC8(a, b):
+    """GF(8) product modulo x^3 + x + 1 (LeanAll/GF8.lean mulC)."""
+    bit = lambda n, i: n >> i & 1
+    c0 = bit(a, 0) * bit(b, 0)
+    c1 = bit(a, 0) * bit(b, 1) + bit(a, 1) * bit(b, 0)
+    c2 = bit(a, 0) * bit(b, 2) + bit(a, 1) * bit(b, 1) + bit(a, 2) * bit(b, 0)
+    c3 = bit(a, 1) * bit(b, 2) + bit(a, 2) * bit(b, 1)
+    c4 = bit(a, 2) * bit(b, 2)
+    return (c0 + c3) % 2 + 2 * ((c1 + c3 + c4) % 2) + 4 * ((c2 + c4) % 2)
 
 
-def code(p, v):
-    return sum(x * p ** i for i, x in enumerate(v))
+class Fld:
+    """The field of the checks: ZMod p (Nat arithmetic of LeanAll/HexArith.lean) or GF(8) (LeanAll/HexGF8.lean)."""
 
+    def __init__(self, q):
+        self.q = q
+        self.prime = all(q % d for d in range(2, q))
+        assert self.prime or q == 8, 'q must be prime or 8'
 
-def vec(p, c):
-    return [cd(p, c, i) for i in range(7)]
+    def add(self, a, b):
+        return (a + b) % self.q if self.prime else a ^ b
+
+    def mul(self, a, b):
+        return (a * b) % self.q if self.prime else mulC8(a, b)
+
+    def inv(self, a):
+        return next(x for x in range(1, self.q) if self.mul(a, x) == 1)
+
+    def cd(self, c, i):
+        return c // self.q ** i % self.q
+
+    def vec(self, c):
+        return [self.cd(c, i) for i in range(7)]
+
+    def code(self, v):
+        return sum(x * self.q ** i for i, x in enumerate(v))
+
+    def qN(self, c):
+        p, v = self.q, self.vec(c)
+        if self.prime:
+            return (v[0] * v[4] + v[1] * v[5] + v[2] * v[6]) % p == (v[3] * v[3]) % p
+        m = mulC8
+        return m(v[0], v[4]) ^ m(v[1], v[5]) ^ m(v[2], v[6]) ^ m(v[3], v[3]) == 0
+
+    def bN(self, a, b):
+        p, x, y = self.q, self.vec(a), self.vec(b)
+        if self.prime:
+            return (x[0] * y[4] + x[4] * y[0] + x[1] * y[5] + x[5] * y[1] + x[2] * y[6] + x[6] * y[2]) % p == \
+                (2 * (x[3] * y[3])) % p
+        m = mulC8
+        return m(x[0], y[4]) ^ m(x[4], y[0]) ^ m(x[1], y[5]) ^ m(x[5], y[1]) ^ m(x[2], y[6]) ^ m(x[6], y[2]) == 0
+
+    def pl1(self, x, y, i, j):
+        p = self.q
+        if self.prime:
+            return (x[i] * y[j] + p * p - x[j] * y[i]) % p
+        return mulC8(x[i], y[j]) ^ mulC8(x[j], y[i])
+
+    def tN(self, a, b):
+        x, y = self.vec(a), self.vec(b)
+        if self.prime:
+            p = self.q
+            return all((x[i] * y[j] + x[l] * y[k]) % p == (x[k] * y[l] + x[j] * y[i]) % p for (i, j, k, l) in TITS)
+        return all(self.pl1(x, y, i, j) == self.pl1(x, y, k, l) for (i, j, k, l) in TITS)
+
+    def plN(self, a, b):
+        x, y = self.vec(a), self.vec(b)
+        return [self.pl1(x, y, i, j) for (i, j) in PAIRS]
+
+    def plCode(self, a, b):
+        return sum(t * self.q ** k for k, t in enumerate(self.plN(a, b)))
+
+    def linN(self, y, a, b, al, be):
+        Y, A, B = self.vec(y), self.vec(a), self.vec(b)
+        if not self.prime and not (al < 8 and be < 8):
+            return False
+        return all(Y[i] == self.add(self.mul(al, A[i]), self.mul(be, B[i])) for i in range(7))
+
+    def ptOK(self, c):
+        return c < self.q ** 7 and first_one(self.vec(c)) and self.qN(c)
+
+    def lnOK(self, a, b):
+        return self.qN(a) and self.qN(b) and self.bN(a, b) and self.tN(a, b) and first_one(self.plN(a, b))
+
+    def coeffs(self, y, a, b):
+        for al in range(self.q):
+            for be in range(self.q):
+                if all(y[i] == self.add(self.mul(al, a[i]), self.mul(be, b[i])) for i in range(7)):
+                    return al, be
+        raise ValueError('not in span')
+
+    def line_basis(self, u, w):
+        """a basis (u, c w) of the line through u, w with normalised Pluecker coordinates."""
+        pl = self.plN(self.code(u), self.code(w))
+        for t in pl:
+            if t:
+                c = self.inv(t)
+                return u, [self.mul(c, x) for x in w]
+        raise ValueError('dependent')
 
 
 def first_one(xs):
@@ -43,70 +132,6 @@ def first_one(xs):
         if x != 0:
             return x == 1
     return False
-
-
-def qN(p, c):
-    v = vec(p, c)
-    return (v[0] * v[4] + v[1] * v[5] + v[2] * v[6]) % p == (v[3] * v[3]) % p
-
-
-def bN(p, a, b):
-    x, y = vec(p, a), vec(p, b)
-    return (x[0] * y[4] + x[4] * y[0] + x[1] * y[5] + x[5] * y[1] + x[2] * y[6] + x[6] * y[2]) % p == (2 * (x[3] * y[3])) % p
-
-
-def tN(p, a, b):
-    x, y = vec(p, a), vec(p, b)
-    return all((x[i] * y[j] + x[l] * y[k]) % p == (x[k] * y[l] + x[j] * y[i]) % p for (i, j, k, l) in TITS)
-
-
-def plN(p, a, b):
-    x, y = vec(p, a), vec(p, b)
-    return [(x[i] * y[j] + p * p - x[j] * y[i]) % p for (i, j) in PAIRS]
-
-
-def plCode(p, a, b):
-    return sum(t * p ** k for k, t in enumerate(plN(p, a, b)))
-
-
-def linN(p, y, a, b, al, be):
-    Y, A, B = vec(p, y), vec(p, a), vec(p, b)
-    return all(Y[i] == (al * A[i] + be * B[i]) % p for i in range(7))
-
-
-def ptOK(p, c):
-    return c < p ** 7 and first_one(vec(p, c)) and qN(p, c)
-
-
-def lnOK(p, a, b):
-    return a < p ** 7 and b < p ** 7 and qN(p, a) and qN(p, b) and bN(p, a, b) and tN(p, a, b) and first_one(plN(p, a, b))
-
-
-def normalise(p, v):
-    for x in v:
-        if x:
-            inv = pow(x, p - 2, p)
-            return [(inv * y) % p for y in v]
-    raise ValueError('zero vector')
-
-
-def coeffs(p, y, a, b):
-    """y = al a + be b (vectors), by brute force over the field (q is small)."""
-    for al in range(p):
-        for be in range(p):
-            if all(y[i] == (al * a[i] + be * b[i]) % p for i in range(7)):
-                return al, be
-    raise ValueError('not in span')
-
-
-def line_basis(p, u, w):
-    """a basis (u, c w) of the line through u, w with normalised Pluecker coordinates."""
-    pl = plN(p, code(p, u), code(p, w))
-    for t in pl:
-        if t:
-            c = pow(t, p - 2, p)
-            return u, [(c * x) % p for x in w]
-    raise ValueError('dependent')
 
 
 def build(solf, hexf):
@@ -117,7 +142,8 @@ def build(solf, hexf):
     lp.frombytes(f.read(4 * L * Q1))
     coord = f.read(N * 7)
     p = q
-    assert all(p % d for d in range(2, p)), 'q must be prime here'
+    K = Fld(q)
+    code = lambda p_, v: K.code(v)
     pts = [list(coord[7 * i: 7 * i + 7]) for i in range(N)]
     pcode = [code(p, v) for v in pts]
     assert pcode == sorted(pcode) and all(first_one(v) for v in pts)
@@ -151,9 +177,9 @@ def build(solf, hexf):
     lbasis = {}
     for l in Lam:
         u, w = pts[lines[l][0]], pts[lines[l][1]]
-        a, b = line_basis(p, u, w)
+        a, b = K.line_basis(u, w)
         lbasis[l] = (code(p, a), code(p, b))
-    Lam.sort(key=lambda l: plCode(p, *lbasis[l]))
+    Lam.sort(key=lambda l: K.plCode(*lbasis[l]))
     lix = {l: j for j, l in enumerate(Lam)}
     sg = [lix[sig[x]] for x in D]
     sgi = [0] * len(D)
@@ -178,13 +204,13 @@ def build(solf, hexf):
         aux = []
         for l in pl[x]:
             other = [y for y in lines[l] if y != x]
-            _, xk = line_basis(p, rv, pts[other[0]])
+            _, xk = K.line_basis(rv, pts[other[0]])
             ents = []
             for y in other:
-                al, be = coeffs(p, pts[y], rv, xk)
+                al, be = K.coeffs(pts[y], rv, xk)
                 ents.append((dix[y], al, be))
             ents.sort()
-            aux.append((plCode(p, code(p, rv), code(p, xk)), code(p, xk), ents, l))
+            aux.append((K.plCode(code(p, rv), code(p, xk)), code(p, xk), ents, l))
         aux.sort()
         xs = [a[1] for a in aux]
         es = [a[2] for a in aux]
@@ -193,16 +219,16 @@ def build(solf, hexf):
         epos = {sig[D[e[0]]]: t for t, e in enumerate(flat)}
         ell = sig[x]
         a, b = lbasis[ell]
-        A, B = vec(p, a), vec(p, b)
+        A, B = K.vec(a), K.vec(b)
         zs = []
         for z in sorted(lines[ell], key=lambda z: pcode[z]):
-            al, be = coeffs(p, pts[z], A, B)
+            al, be = K.coeffs(pts[z], A, B)
             fl = []
             for l2 in pl[z]:
                 if l2 == ell:
                     continue
                 ma, mb = lbasis[l2]
-                ga, de = coeffs(p, pts[z], vec(p, ma), vec(p, mb))
+                ga, de = K.coeffs(pts[z], K.vec(ma), K.vec(mb))
                 fl.append((lix[l2], ga, de, epos[l2]))
             fl.sort()
             zs.append(((pcode[z], al, be), fl))
@@ -215,6 +241,9 @@ def build(solf, hexf):
 def check(d):
     """The checks of LeanAll/HexLocal.lean, with the same arithmetic."""
     p, q, M, m = d['p'], d['q'], len(d['ptc']), d['m']
+    K = Fld(q)
+    ptOK, lnOK, linN = (lambda p_, c: K.ptOK(c)), (lambda p_, a, b: K.lnOK(a, b)), (lambda p_, *a: K.linN(*a))
+    plCode = lambda p_, a, b: K.plCode(a, b)
     ptc, lnA, lnB, sg, sgi, rl = d['ptc'], d['lnA'], d['lnB'], d['sg'], d['sgi'], d['rl']
     assert all(ptOK(p, c) for c in ptc), 'G1 point'
     assert all(ptc[i] < ptc[i + 1] for i in range(M - 1)), 'G1 sorted'

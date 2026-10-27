@@ -573,6 +573,63 @@ theorem hub_reach {m : ℕ} {hubL hubR : ℕ → List ℕ}
   have h6 : Reach (graphF (2 * m) (hubNb m hubL hubR)) a b 6 := ⟨w, by rcases hev with ⟨k, hk⟩; omega⟩
   exact Reach.map (hubHom hHL hH2) h6
 
+
+/-! ## The checks as Boolean functions, for the generated files -/
+
+/-- Point `i` of the domain. -/
+def gPt (p M : ℕ) (ptc : ℕ → ℕ) (i : ℕ) : Bool :=
+  ptOKb p (ptc i) && (Nat.beq (i + 1) M || Nat.blt (ptc i) (ptc (i + 1)))
+
+/-- Line `j` of the domain and `σ` at `j`. -/
+def gLn (p M : ℕ) (lnA lnB sg sgi : ℕ → ℕ) (j : ℕ) : Bool :=
+  lnOKb p (lnA j) (lnB j) &&
+    (Nat.beq (j + 1) M || Nat.blt (plCode p (lnA j) (lnB j)) (plCode p (lnA (j + 1)) (lnB (j + 1)))) &&
+    Nat.blt (sg j) M && Nat.beq (sgi (sg j)) j
+
+/-- Freed point `v`. -/
+def gR (M m : ℕ) (rl : ℕ → ℕ) (rflag : ℕ → Bool) (v : ℕ) : Bool :=
+  Nat.blt (rl v) M && rflag (rl v) && (Nat.beq (v + 1) m || Nat.blt (rl v) (rl (v + 1)))
+
+/-- The hub lists at `v`. -/
+def gH (p m : ℕ) (hubL hubR : ℕ → List ℕ) (v : ℕ) : Bool :=
+  allP (fun u => Nat.blt u m && anyL (fun w => Nat.beq w v) (hubR u)) (hubL v) && Nat.ble (lenP (hubL v)) (p - 1) &&
+    allP (fun w => Nat.blt w m && anyL (fun u => Nat.beq u v) (hubL w)) (hubR v) && Nat.ble (lenP (hubR v)) (p - 1)
+
+theorem succ_of {M i : ℕ} {b : Bool} (h : (Nat.beq (i + 1) M || b) = true) (hi : i + 1 < M) : b = true := by
+  rcases Bool.or_eq_true_iff.1 h with h | h
+  · rw [Nat.beq_eq] at h; omega
+  · exact h
+
+theorem glob_of {M : ℕ} {ptc lnA lnB sg sgi : ℕ → ℕ} (h1 : ∀ i < M, gPt p M ptc i = true)
+    (h2 : ∀ j < M, gLn p M lnA lnB sg sgi j = true) : Glob p M ptc lnA lnB sg sgi := by
+  refine ⟨fun i hi => ?_, fun i hi => ?_, fun j hj => ?_, fun j hj => ?_, fun i hi => ?_⟩
+  · have := h1 i hi; simp only [gPt, Bool.and_eq_true] at this; exact ptOKb_spec this.1
+  · have := h1 i (by omega); simp only [gPt, Bool.and_eq_true] at this; exact ltOfBlt (succ_of this.2 hi)
+  · have := h2 j hj; simp only [gLn, Bool.and_eq_true] at this; exact lnOKb_spec this.1.1.1
+  · have := h2 j (by omega); simp only [gLn, Bool.and_eq_true] at this; exact ltOfBlt (succ_of this.1.1.2 hj)
+  · have := h2 i hi; simp only [gLn, Bool.and_eq_true, Nat.beq_eq] at this; exact ⟨ltOfBlt this.1.2, this.2⟩
+
+theorem r_of {M m : ℕ} {rl : ℕ → ℕ} {rflag : ℕ → Bool} (h : ∀ v < m, gR M m rl rflag v = true) :
+    (∀ v < m, rl v < M ∧ rflag (rl v) = true) ∧ (∀ v, v + 1 < m → rl v < rl (v + 1)) := by
+  refine ⟨fun v hv => ?_, fun v hv => ?_⟩
+  · have := h v hv; simp only [gR, Bool.and_eq_true] at this; exact ⟨ltOfBlt this.1.1, this.1.2⟩
+  · have := h v (by omega); simp only [gR, Bool.and_eq_true] at this; exact ltOfBlt (succ_of this.2 hv)
+
+theorem hub_of {m : ℕ} {hubL hubR : ℕ → List ℕ} (h : ∀ v < m, gH p m hubL hubR v = true) :
+    (∀ v < m, ∀ u ∈ hubL v, u < m ∧ v ∈ hubR u) ∧ (∀ u < m, ∀ v ∈ hubR u, v < m ∧ u ∈ hubL v) ∧
+    (∀ v < m, (hubL v).length ≤ p - 1) ∧ (∀ u < m, (hubR u).length ≤ p - 1) := by
+  have key : ∀ v < m, (((∀ u ∈ hubL v, u < m ∧ ∃ w ∈ hubR u, w = v) ∧ (hubL v).length ≤ p - 1) ∧
+      (∀ w ∈ hubR v, w < m ∧ ∃ u ∈ hubL w, u = v)) ∧ (hubR v).length ≤ p - 1 := fun v hv => by
+    have := h v hv
+    simp only [gH, Bool.and_eq_true, allP_eq, List.all_eq_true, anyL_eq, List.any_eq_true, Nat.beq_eq,
+      lenP_eq, Nat.ble_eq, Nat.blt_eq] at this
+    exact this
+  refine ⟨fun v hv u hu => ?_, fun u hu v hv => ?_, fun v hv => (key v hv).1.1.2, fun u hu => (key u hu).2⟩
+  · obtain ⟨h1, w, hw, rfl⟩ := (key v hv).1.1.1 u hu
+    exact ⟨h1, hw⟩
+  · obtain ⟨h1, x, hx, rfl⟩ := (key u hu).1.2 v hv
+    exact ⟨h1, hx⟩
+
 /-! ## The theorem -/
 
 theorem card_filter_le_length {m : ℕ} (l : List ℕ) :
@@ -689,5 +746,23 @@ theorem main (p : ℕ) [Fact p.Prime] (M m : ℕ) (ptc lnA lnB sg sgi rl : ℕ �
     rw [hcL, hcP, Fintype.card_fin]; ring
   rw [e, show p + 1 + 1 = p + 2 by ring] at main
   exact main
+
+
+/-- `main` with the checks in the form of the generated files. -/
+theorem main' (p : ℕ) [Fact p.Prime] (M m K : ℕ) (ptc lnA lnB sg sgi rl : ℕ → ℕ) (rflag : ℕ → Bool)
+    (cert : ℕ → Cert) (hubL hubR : ℕ → List ℕ)
+    (h1 : ∀ i < M, gPt p M ptc i = true) (h2 : ∀ j < M, gLn p M lnA lnB sg sgi j = true)
+    (h3 : ∀ v < m, gR M m rl rflag v = true)
+    (h4 : ∀ v < m, certOK p M ptc lnA lnB sg rflag (rl v) (cert v) = true)
+    (h5 : ∀ v < m, gH p m hubL hubR v = true)
+    (h6 : ∀ u < 2 * m, localOK (p - 1) (2 * m) (hubNb m hubL hubR) (hubCol m) u 1 = true)
+    (hK : 2 * m ≤ 2 ^ K) (h7 : bfsOK K 7 (2 * m) 0 (2 * m) (hubNb m hubL hubR) = true) :
+    ∃ G : SimpleGraph (Fin (6 * ((p + 1) * (1 + p ^ 2 + p ^ 4)) + 2 * m)), IsBipartiteDegDiam G (p + 2) 7 := by
+  obtain ⟨hR, hRs⟩ := r_of h3
+  obtain ⟨hH1, hH2, hH3, hH4⟩ := hub_of h5
+  have hHL := localSpec_of h6
+  exact main p M m ptc lnA lnB sg sgi rl rflag cert hubL hubR (glob_of h1 h2) hR hRs
+    (fun v hv => certSpec_of (h4 v hv)) hH1 hH2 hH3 hH4 hHL
+    (fun s hs v => edist_of_bfs' hHL hK h7 v s hs (Nat.zero_le _) (by omega))
 
 end BipartiteDD.LeanAll.HexLocal

@@ -50,7 +50,12 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (3,10) | 810 | voltage lift over C3 × He3 (added on master 2026-10-26) | **done** | `nb_3_10_810`, LeanAll/D3D10 (orbit BFS v2, 2 sources) |
 | (7,10) | 2,298,240 | Haar, SL(2,7) × PSL(2,19) (raised on master 2026-10-26) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_7_10_2298240`, LeanAll/HaarD7D10b (as PSL(2,19) × Z1 × SL(2,7): 60,480 batches, HaarProd2.cover_prod_pm with n = 1) |
 | (8,10) | 8,043,840 | Haar, PSL(2,7) × PSL(2,19) × Z7 (raised on master 2026-10-26) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_10_8043840`, LeanAll/HaarD8D10b (as PSL(2,19) × Z7 × PSL(2,7): 30,240 batches, HaarProdP.cover_prod_pp) |
-| (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
+| (7,7) | 23,598 | hexagon H(5), 3 levels, 81 freed points + hubs (multi.c, "mirror") | **done** | `nb_7_7_23598`, LeanAll/HexD7D7 (HexLocal.main': Theorem 1 of hexagon-family over ZMod 5, local certificates) |
+| (9,7) | 118,238 | hexagon H(7), 3 levels, 295 freed points + hubs | building | `nb_9_7_118238`, LeanAll/HexD9D7 (HexLocal, ZMod 7) |
+| (10,7) | 225,152 | hexagon H(8), 3 levels, 229 freed points + hubs | generated | `nb_10_7_225152`, LeanAll/HexD10D7 (HexGen with the GF(8) coder HexGF8) |
+| (13,7) | 1,064,472 | hexagon H(11), 3 levels, 768 freed points + hubs | generated | `nb_13_7_1064472`, LeanAll/HexD13D7 (HexLocal, ZMod 11) |
+| (11,7), (12,7) | 413,180, 693,500 | H(9) with its duality, all 7,300 points of a 730-line spread freed, Haar hub graph | open: freed points are collinear, outside Theorem 1; needs a theorem for this freeing rule and GF(9) | |
+| (14,7), (15,7), (16,7) | 1,789,588, 2,501,491, 4,052,108 | typed levels (H and its dual) with per-transition surgeries (research/squads/cells/d16D7.md) | open: needs the typed-levels theorem | |
 
 ## Records outside the README table (research/RESULTS.md)
 
@@ -64,6 +69,12 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (5,11) | 253,080 | Haar, PSL(2,19) × Z37 | **done** | `nb_5_11_253080`, LeanAll/HaarD5D11 (gen_haarsl.py, 48-bit fields) |
 | (5,12) | 912,576 | Haar, PSL(2,97) (n = 1) | **done** | `nb_5_12_912576`, LeanAll/HaarD5D12 (gen_haarsl.py --chain2: HaarPSL2 allows n = 1) |
 | (4,11) | 19,152 | Haar, SL(2,8) × Z19 | **done** | `nb_4_11_19152`, LeanAll/HaarD4D11 (GF(8), HaarGF8Z.cover8, gen_haar8.py) |
+| (6,11) | 1,971,744 | Haar, PSL(2,47) × Z19 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_6_11_1971744`, LeanAll/HaarD6D11 (gen_haarsl.py) |
+| (6,12) | 9,303,840 | Haar, SL(2,71) × Z13 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_6_12_9303840`, LeanAll/HaarD6D12 (gen_haarsl2.py) |
+| (7,11) | 10,648,176 | Haar, SL(2,43) × Z67 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_7_11_10648176`, LeanAll/HaarD7D11 (gen_haarsl2.py) |
+| (8,11) | 43,702,560 | Haar, SL(2,89) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_11_43702560`, LeanAll/HaarD8D11 (gen_haarsl2.py) |
+| (8,12) | 268,496,208 | Haar, SL(2,163) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_12_268496208`, LeanAll/HaarD8D12 (gen_haarsl2.py) |
+| (7,12) | 56,297,592 | Haar, PSL(2,163) × Z13 | building | `nb_7_12_56297592`, LeanAll/HaarD7D12 (gen_haarsl.py) |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
