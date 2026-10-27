@@ -294,7 +294,7 @@ logs `run_small.log`, `run_mid.log`. Total time about 12 minutes on one core, mo
 
 Second program: every case of the table was rerun with `glift` (§3.3) over the cyclic groups Z_p (group words
 instead of linear forms, free reduction instead of abelian reduction, a different variable order), log
-`runs/gl/summary_prime.log`: no solutions either (GLIFTPRIME_STATUS).
+`runs/gl/summary_prime.log`: no solutions either, all k = 1..11 (at k = 11 every base fails the walk-count test, as in zplift).
 
 **Corollary (Computer-checked).** No bipartite graph with maximum degree 3 and diameter 7 on more than 168 vertices
 has an automorphism of prime order p ≥ 11. This contains the earlier job's "no cyclic Haar graph" and "no 2+2, 3+3,
