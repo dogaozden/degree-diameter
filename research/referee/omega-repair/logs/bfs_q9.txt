@@ -1,0 +1,52 @@
+$ python3 driver.py 9 aaabbb 1 u0 3 0
+generated 60 collineations, each checked line by line (10s)
+V=4650100 E=27900600 degrees 12..12 duplicate edges 0
+source hub class 0 row 0 (vertex 3985800); non-bipartite edges seen 0; unreachable 0
+distance profile: 0:1 1:12 2:124 3:1338 4:12738 5:129689 6:999601 7:1901204 8:1312586 9:292807
+eccentricity 9
+far (>=9) vertices per copy: 11415 0 15898 22158 0 11321 0 15934 22166 0 11333 0 15980 22129 0 16028 16165 16006 0 0 15957 16205 15936 0 0 15994 16170 16012 0 0
+total far copy vertices 292807, far hubs 0
+target copy 3, points: reached within 7: 44272, at distance >= 9: 22158
+ 
+route words: 204 (radius 4: 7, radius 2: 197, radius 0: 0)
+predicted union 44272, BFS reached 44272, equal: True, reached minus predicted: 0
+far target-colour vertices of copy 3: 22158
+$ python3 driver.py 9 aaabbb 2 u0 3 17
+generated 60 collineations, each checked line by line (10s)
+V=4650100 E=27900600 degrees 12..12 duplicate edges 0
+source hub class 0 row 17 (vertex 3985817); non-bipartite edges seen 0; unreachable 0
+distance profile: 0:1 1:12 2:124 3:1338 4:12734 5:129612 6:999141 7:1900086 8:1313050 9:294002
+eccentricity 9
+far (>=9) vertices per copy: 11426 0 16050 22225 0 11436 0 15953 22291 0 11353 0 16078 22209 0 16019 16258 16026 0 0 16029 16268 15983 0 0 16054 16245 16099 0 0
+total far copy vertices 294002, far hubs 0
+target copy 3, points: reached within 7: 44205, at distance >= 9: 22225
+ 
+route words: 204 (radius 4: 7, radius 2: 197, radius 0: 0)
+predicted union 44205, BFS reached 44205, equal: True, reached minus predicted: 0
+far target-colour vertices of copy 3: 22225
+$ python3 driver.py 9 aabbbb 3 b0 13 4
+generated 60 collineations, each checked line by line (11s)
+V=4650100 E=27900600 degrees 12..12 duplicate edges 0
+source hub class bar 0 row 4 (vertex 4317954); non-bipartite edges seen 0; unreachable 0
+distance profile: 0:1 1:12 2:124 3:1338 4:12694 5:129226 6:996986 7:1892956 8:1315245 9:301518
+eccentricity 9
+far (>=9) vertices per copy: 18196 14178 0 0 14077 18165 14155 0 0 14133 11512 0 18212 22596 0 11366 0 18092 22568 0 11452 0 18249 22530 0 11374 0 18179 22484 0
+total far copy vertices 301518, far hubs 0
+target copy 13, lines: reached within 7: 43834, at distance >= 9: 22596
+ 
+route words: 194 (radius 4: 7, radius 2: 187, radius 0: 0)
+predicted union 43834, BFS reached 43834, equal: True, reached minus predicted: 0
+far target-colour vertices of copy 13: 22596
+$ python3 driver.py 9 aaabbb -1 u0 3 0
+generated 60 collineations, each checked line by line (0s)
+V=4650100 E=27900600 degrees 12..12 duplicate edges 0
+source hub class 0 row 0 (vertex 3985800); non-bipartite edges seen 0; unreachable 0
+distance profile: 0:1 1:12 2:124 3:1148 4:10350 5:93150 6:838350 7:1167858 8:1476225 9:1062882
+eccentricity 9
+far (>=9) vertices per copy: 59049 0 59049 59049 0 59049 0 59049 59049 0 59049 0 59049 59049 0 59049 59049 59049 0 0 59049 59049 59049 0 0 59049 59049 59049 0 0
+total far copy vertices 1062882, far hubs 0
+target copy 3, points: reached within 7: 7381, at distance >= 9: 59049
+ 
+route words: 204 (radius 4: 7, radius 2: 197, radius 0: 0)
+predicted union 7381, BFS reached 7381, equal: True, reached minus predicted: 0
+far target-colour vertices of copy 3: 59049
