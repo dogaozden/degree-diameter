@@ -24,7 +24,7 @@ structure Prm where
 
 /-- The size conditions the soundness proof uses (all decidable, checked per cell). -/
 def Prm.valid (P : Prm) : Prop :=
-  8 ≤ P.w ∧ 4 * P.L + 4 ≤ P.w ∧ P.Δ ≤ 16 ∧ 2 ≤ P.p ∧ 2 ≤ P.n ∧ P.s ≤ P.w ∧
+  8 ≤ P.w ∧ 4 * P.L + 4 ≤ P.w ∧ P.Δ ≤ 16 ∧ 2 ≤ P.p ∧ 1 ≤ P.n ∧ P.s ≤ P.w ∧
   2 * P.p * P.p ≤ 2 ^ (P.w - 1) ∧ 2 * P.n ≤ 2 ^ (P.w - 1) ∧
   2 * P.p * P.p * P.m < 2 ^ P.w ∧ P.m * P.p ≤ 2 ^ P.s
 

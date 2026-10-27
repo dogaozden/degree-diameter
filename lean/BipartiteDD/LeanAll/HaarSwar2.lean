@@ -426,7 +426,7 @@ theorem run_sound (P : Prm) (hv : P.valid) {ONES : ℕ} (hO : ONES = pkF P.w (fu
     ∀ t ≤ P.L, (runT P ONES lt Dig t).2 = true → ∃ xs, Rep P (runT P ONES lt Dig t).1 xs ∧
       ∀ j < P.N, (∀ t' < t, digit (F j) t' < P.Δ) ∧ MEq P.p P.n (xs j) (semN lt (digit (F j)) t) := by
   have hp2 : 2 ≤ P.p := hv.2.2.2.1
-  have hn2 : 2 ≤ P.n := hv.2.2.2.2.1
+  have hn2 : 1 ≤ P.n := hv.2.2.2.2.1
   intro t
   induction t with
   | zero =>
