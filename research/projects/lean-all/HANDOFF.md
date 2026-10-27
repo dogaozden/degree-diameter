@@ -5,7 +5,7 @@ to continue.
 
 ## What is proved
 
-60 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 64 rows marked done; four of those records were
+63 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 67 rows marked done; four of those records were
 later raised and the new values are checked too). Seven of them, (5,8) 9,760, (5,9) 29,756, (9,8) 546,720, (8,9)
 1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols added to
 `research/frontier/sols` during this session, and 14 are records outside the README table (research/RESULTS.md).
@@ -101,8 +101,13 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Hexagon D = 7: (15,7) is generated (`RelaxD15D7`, method 8); (11,7), (12,7) and (16,7) are building (see
-  `STATUS.md`). (12,7) imports the tables of (11,7), so keep SpreadD11D7's oleans until (12,7) is built.
+- Hexagon D = 7: (11,7), (15,7) and (16,7) are done; (12,7) is building (`SpreadD12D7`, it imports the tables of
+  `SpreadD11D7`, so rebuild SpreadD11D7 from `cells.txt` first if its oleans are gone). Its AE modules need about
+  6.5 GB each: build them one at a time.
+- Memory: the cgroup limit is about 14.3 GB including page cache, and generated cells map their data oleans (3 GB for
+  SpreadD11D7). The OOM killer then kills the largest lean process (rc=-9 in the topobuild log). Seen here: GLn of
+  SpreadD11D7 (3 GB anonymous, 6 GB mapped) next to two other jobs; TypD16D7's HLoc modules with 4,096 hub vertices
+  per theorem (fixed with `--hchunk 1024`); RelaxD15D7's Cg modules (4 GB). Run one heavy module at a time.
 - The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
