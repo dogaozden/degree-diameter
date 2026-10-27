@@ -78,6 +78,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (8,11) | 43,702,560 | Haar, SL(2,89) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_11_43702560`, LeanAll/HaarD8D11 (gen_haarsl2.py) |
 | (8,12) | 268,496,208 | Haar, SL(2,163) × Z31 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_12_268496208`, LeanAll/HaarD8D12 (gen_haarsl2.py) |
 | (7,12) | 56,297,592 | Haar, PSL(2,163) × Z13 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_7_12_56297592`, LeanAll/HaarD7D12 (gen_haarsl.py) |
+| (20,5) | 75,000 | route-chart lift (F5, Z20), research/frontier/beyond/graphs/d20D5_n75000_routechart_F5_Z20.edges.gz | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_20_5_75000`, LeanAll/D20D5 (staged orbit BFS, 942 sources; generators `sols/d20D5_n75000_routechart_F5_Z20_gens.json`) |
 
 The D = 6 cells are instances of the Theorem D family already in Lean (`HexagonD.theoremD`, any finite field of odd
 characteristic): the vertex formula 2(q+1)(q⁴+q²+1) + (m−1)(q⁴+2q³+q²+2q+2 + m(q³+q+2) + m²) + (m−1)(q⁴−q²) gives
