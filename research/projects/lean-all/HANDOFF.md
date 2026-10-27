@@ -5,11 +5,11 @@ to continue.
 
 ## What is proved
 
-39 records without a Lean ✓ are kernel-checked (table in `STATUS.md`; six of them, (5,8) 9,760, (5,9) 29,756,
-(9,8) 546,720, (8,9) 1,341,600, (11,10) 148,729,680 and (15,10) 2,467,618,800, are sols added to
-`research/frontier/sols` during this session): 22 with their Lean files committed (`lean/BipartiteDD/LeanAll/Axioms.lean`,
-output in `Axioms.out.txt`), and 17 large Haar cells whose generated files are not committed (`axioms_big.txt`;
-regenerate with `cells.txt`, compare with `manifests/`). Every
+40 records without a Lean ✓ are kernel-checked (table in `STATUS.md`; seven of them, (5,8) 9,760, (5,9) 29,756,
+(9,8) 546,720, (8,9) 1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols
+added to `research/frontier/sols` during this session): 22 with their Lean files committed
+(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`), and 18 large Haar cells whose generated files
+are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every
 theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Four
 methods:
 
@@ -67,12 +67,16 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 - Hexagon D = 7 cells (7,7) … (16,7): not here. The hexagon-family project (branch `claude/hexagon-family-blvamb`)
   has a Lean certificate theorem for those constructions and says the instance checks are too big for the kernel;
   their record values are also changing.
-- (16,10) 4,220,872,800, `SL(2,151) × Z613` (2.1 billion elements, 22,800 batches of 92,563 slots): planned after
-  (15,10) with `gen_haarsl2.py --per 1 --scan2 --blocks --raw --leaf 16384` and `bigcell.py --truncate --clean`.
-  Needs a 10.6 GB certificate file (BFS 4.2 GB of memory with `scan2`), about 12 GB of oleans at the end, and an
-  estimated 12 hours on 4 cores.
-- The 17 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
+- The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
   one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
   `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
-  `#print axioms` the theorem. Budget: about 10,000 slots per second per core for the batch checks; the largest,
-  (14,10), took about 5 hours on 4 cores and needs about 5.3 GB of oleans at once.
+  `#print axioms` the theorem. Budget: with `gen_haarsl.py` about 10,000 slots per second per core ((14,10) took about
+  5 hours on 4 cores, 5.3 GB of oleans at once); with `gen_haarsl2.py`, (15,10) took 6.4 hours and (16,10) 13.2
+  hours (12 GB of oleans at once).
+- A cover module that imports more than about 10,000 batch modules spends a long time after writing its `.olean` on
+  the `.ilean` (Lean's reference search maps over the array of all imported module names for every identifier, so
+  the cost is quadratic): for (16,10) the `.olean` was written about a minute after the imports loaded and the
+  `.ilean` was still running 20 minutes later. Build such covers (and the Record) without `-i`; the `.ilean` is only
+  for the editor.
+- After a restart of the machine the disk is slow to read (about 2-5 MB/s for one reader, 60-100 MB/s with 16
+  parallel readers): warm the oleans with parallel `cat` before importing thousands of them.
