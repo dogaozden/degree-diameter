@@ -10,3 +10,5 @@
   pairs). Made from the record's hub graph by 3,344 degree-preserving edge swaps aimed at far pairs
   (research/projects/lean-all/tools/opt.c; far.c counts far pairs); checked by a bit-set BFS from every vertex and by plain BFS from 300 sampled sources.
   sha256 819c113443bd80e0100baa2f0f57896c492136ac9a50d6da3adf0dd0d65bbc1f.
+- `d12D7_aux_gens.json`: automorphism generators (nauty, through `auts.py`) of the auxiliary graph of the (12,7) cell
+  (`gen_spreadhub.py --write-aux`: hubs, owners, spread lines and their dual images); the cell checks them in Lean.
