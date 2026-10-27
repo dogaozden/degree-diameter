@@ -1,0 +1,131 @@
+model built 1.7123956680297852 s
+
+Starting CP-SAT solver v9.15.6755
+Parameters: random_seed: 1 max_time_in_seconds: 60 log_search_progress: true repair_hint: true symmetry_level: 0 num_workers: 1
+
+Initial optimization model '': (model_fingerprint: 0xcb2d8ad6aa84579c)
+#Variables: 66'430 (#bools: 66'430 in objective) (66'430 primary variables)
+  - 66'430 Booleans in [0,1]
+#kAtMostOne: 66'430 (#literals: 664'300)
+
+Starting presolve at 0.05s
+The solution hint is complete and is feasible. Its objective value is 4306.
+  6.11e-02s  0.00e+00d  [DetectDominanceRelations] 
+  2.27e-01s  0.00e+00d  [PresolveToFixPoint] #num_loops=2 #num_dual_strengthening=1 
+  6.91e-03s  0.00e+00d  [ExtractEncodingFromLinear] #potential_supersets=66'430 
+  2.27e-02s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements] 
+  2.21e+00s  5.63e-01d  [Probe] #probed=132'860 
+  3.73e-01s  2.57e-01d  [MaxClique] 
+  9.39e-02s  0.00e+00d  [DetectDominanceRelations] 
+  2.32e-01s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1 
+  6.77e-02s  0.00e+00d  [ProcessAtMostOneAndLinear] 
+  6.81e-02s  0.00e+00d  [DetectDuplicateConstraints] 
+  3.00e-02s  0.00e+00d  [DetectDuplicateConstraintsWithDifferentEnforcements] 
+  2.41e-03s  0.00e+00d  [DetectDominatedLinearConstraints] 
+  2.64e-03s  0.00e+00d  [DetectDifferentVariables] 
+  9.94e-02s  2.35e-03d  [ProcessSetPPC] #relevant_constraints=66'430 
+  1.32e-01s  0.00e+00d  [TransformClausesToExactlyOne] #num_amos=66'430 
+  3.17e-03s  0.00e+00d  [DetectEncodedComplexDomains] 
+  2.16e-03s  0.00e+00d  [FindAlmostIdenticalLinearConstraints] 
+  7.19e-02s  2.39e-02d  [FindBigAtMostOneAndLinearOverlap] 
+  1.02e-02s  3.65e-03d  [FindBigVerticalLinearOverlap] 
+  1.32e-02s  0.00e+00d  [FindBigHorizontalLinearOverlap] 
+  5.49e-03s  0.00e+00d  [MergeClauses] 
+  7.63e-02s  0.00e+00d  [DetectDominanceRelations] 
+  1.80e-01s  0.00e+00d  [PresolveToFixPoint] #num_loops=1 #num_dual_strengthening=1 
+  1.77e-03s  0.00e+00d  [MergeNoOverlap] 
+  9.00e-04s  0.00e+00d  [MergeNoOverlap2D] 
+  1.53e-02s  0.00e+00d  [ExpandObjective] 
+
+Presolve summary:
+  - 0 affine relations were detected.
+  - rule 'TODO dual: only one unspecified blocking constraint?' was applied 199'290 times.
+  - rule 'presolve: 0 unused variables removed.' was applied 1 time.
+  - rule 'presolve: iteration' was applied 1 time.
+
+Presolved optimization model '': (model_fingerprint: 0x444238f26f3435d3)
+#Variables: 66'430 (#bools: 66'430 in objective) (66'430 primary variables)
+  - 66'430 Booleans in [0,1]
+#kAtMostOne: 66'430 (#literals: 664'300)
+
+Preloading model.
+#Bound   4.23s best:-inf  next:[-0,66430] initial_domain
+#1       4.24s best:4306  next:[4307,66430] complete_hint
+t=6.0 sol obj=4306 bound=66430.0
+
+Starting search at 4.24s with 1 workers.
+1 full problem subsolver: [main]
+
+[Precedences] num_relations=0 num_clauses=0
+[Probing] deterministic_time: 0.555355 (limit: 1) wall_time: 1.68232 (66430/66430)
+[LinearRelaxationBeforeCliqueExpansion] #linear:0 #at_most_ones:66430
+[FinalLinearRelaxation] #linear:66430 #cut_generators:0
+Initial num_bool: 66430
+#Bound   6.86s best:4306  next:[4307,58945] main
+
+Starting subsolver 'main' hint search at 6.88s
+Starting subsolver 'main' search at 48.80s
+
+Task timing           n [     min,      max]      avg      dev     time         n [     min,      max]      avg      dev    dtime
+      'main':         1 [  44.56s,   44.56s]   44.56s   0.00ns   44.56s         1 [   3.99s,    3.99s]    3.99s   0.00ns    3.99s
+
+Search stats     Bools  Conflicts  Branches  Restarts  BacktrackToRoot  Backtrack  BoolPropag  IntegerPropag
+       'main':  66'430          0   132'860         0          132'860    132'860   5'978'700      6'111'562
+
+SAT formula    Fixed  Equiv   Total  VarLeft  BinaryClauses  PermanentClauses  TemporaryClauses
+      'main':      0      0  66'430   66'430              0                 0                 0
+
+SAT stats    ClassicMinim  LitRemoved  LitRemovedBinary  LitLearned  LitForgotten  Subsumed
+    'main':             0           0                 0           0             0         0
+
+Vivification    Clauses  Decisions  LitTrue  Subsumed  LitRemoved  DecisionReused  Conflicts
+       'main':        0          0        0         0           0               0          0
+
+Clause deletion    at_true  l_and_not(l)  to_binary  sub_conflict  sub_extra  sub_decisions  sub_eager  sub_vivify  sub_probing  sub_inpro  blocked  eliminated  forgotten  promoted  conflicts
+          'main':        0             0          0             0          0              0          0           0            0          0        0           0          0         0          0
+
+Lp stats    Component  Iterations  AddedCuts  OPTIMAL  DUAL_F.  DUAL_U.
+   'main':          1       2'000          0        1        1        0
+
+Lp dimension         Final dimension of first component
+       'main':  1000 rows, 66430 columns, 10000 entries
+
+Lp debug    CutPropag  CutEqPropag  Adjust  Overflow  Bad  BadScaling
+   'main':          0            0       0         0    0           0
+
+Lp pool    Constraints  Updates  Simplif  Merged  Shortened  Split  Strengthened  Cuts/Call
+  'main':       66'430        0        0       0          0      0             0        0/0
+
+Solutions (1)       Num   Rank
+  'complete_hint':    2  [0,1]
+
+Objective bounds     Num
+  'initial_domain':    1
+            'main':    1
+
+Solution repositories    Added  Queried  Synchro
+    'alternative_path':      0        0        0
+      'best_solutions':      2        0        1
+   'fj solution hints':      0        0        0
+
+LRAT_status: NA
+CpSolverResponse summary:
+status: FEASIBLE
+objective: 4306
+best_bound: 58945
+integers: 66690
+booleans: 66430
+conflicts: 0
+branches: 132860
+propagations: 5978700
+integer_propagations: 6111562
+restarts: 0
+lp_iterations: 2000
+walltime: 48.8699
+usertime: 48.8699
+deterministic_time: 4.83575
+gap_integral: 0
+solution_fingerprint: 0x6f5651ce8c77b31b
+
+status FEASIBLE obj 4306.0 bound 58945.0
+wall 50.6001935005188

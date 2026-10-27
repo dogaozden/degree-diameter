@@ -1,0 +1,17 @@
+[     4s] geometry loaded: N=177156 L=177156 |R|=756 |Sp|=1332 non-spread=175824
+[    19s] spread pattern CSR built: nnz=21274704 (mean 121.0 per line)
+[    21s] candidates 76608, |N(x)| range 60..78
+[    22s] initial state ready; ncell=1
+[    23s] added x=30667 |N(x)|=60 s=0 (conc spread 66686, free 1331) score 902.4 feasible-lines 175824 | |X|=1 cells=2, K=757
+[    24s] added x=83803 |N(x)|=60 s=17 (conc spread 407, free 1330) score 896.2 feasible-lines 140481 | |X|=2 cells=4, K=758
+[    25s] added x=105675 |N(x)|=60 s=35186 (conc spread 78320, free 1329) score 888.6 feasible-lines 110196 | |X|=3 cells=8, K=759
+[    25s] added x=107121 |N(x)|=60 s=155312 (conc spread 155313, free 1328) score 879.1 feasible-lines 41860 | |X|=4 cells=13, K=760
+[    26s] added x=62659 |N(x)|=60 s=58542 (conc spread 114054, free 1327) score 866.1 feasible-lines 4723 | |X|=5 cells=23, K=761
+[    27s] added x=42772 |N(x)|=60 s=80700 (conc spread 173001, free 1326) score 852.7 feasible-lines 10746 | |X|=6 cells=33, K=762
+[    28s] added x=24143 |N(x)|=60 s=98800 (conc spread 62210, free 1325) score 837.4 feasible-lines 9517 | |X|=7 cells=44, K=763
+[    29s] added x=17218 |N(x)|=60 s=44087 (conc spread 150444, free 1324) score 815.0 feasible-lines 368 | |X|=8 cells=60, K=764
+[    30s] added x=176714 |N(x)|=60 s=87228 (conc spread 106734, free 1323) score 779.7 feasible-lines 3 | |X|=9 cells=90, K=765
+[    31s] added x=52078 |N(x)|=60 s=37708 (conc spread 170896, free 1322) score 749.5 feasible-lines 4 | |X|=10 cells=120, K=766
+[    33s] added x=142421 |N(x)|=60 s=165698 (conc spread 144779, free 1321) score 703.9 feasible-lines 1 | |X|=11 cells=155, K=767
+[    34s] added x=67492 |N(x)|=60 s=131889 (conc spread 107020, free 1320) score 663.4 feasible-lines 1 | |X|=12 cells=194, K=768
+[    60s] RESULT order=nx seed=1 |R|=756 + |X|=12 = 768; tested 24144 candidates; stalled=True; time-limit=False

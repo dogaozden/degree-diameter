@@ -1,0 +1,54 @@
+case target Q'= 1 hint size 287
+domain 12341
+totally singular planes 400
+AtMostOne groups 136400
+hint inside domain 285 in D 285
+
+Starting CP-SAT solver v9.15.6755
+Parameters: max_time_in_seconds: 600 log_search_progress: true cp_model_presolve: false num_workers: 1
+
+Initial optimization model '': (model_fingerprint: 0xc567514fb5332e0d)
+#Variables: 12'341 (#bools: 12'341 in objective) (12'341 primary variables)
+  - 12'341 Booleans in [0,1]
+#kAtMostOne: 136'400 (#literals: 4'936'400)
+
+Starting presolve at 0.17s
+The solution hint is complete and is feasible. Its objective value is 285.
+
+Presolve summary:
+  - 0 affine relations were detected.
+
+Presolved optimization model '': (model_fingerprint: 0x22c2aa9e732388e2)
+#Variables: 12'341 (#bools: 12'341 in objective) (12'341 primary variables)
+  - 12'341 Booleans in [0,1]
+#kAtMostOne: 136'400 (#literals: 4'936'400)
+[Symmetry] Graph for symmetry has 148'741 nodes and 4'936'400 arcs.
+[Symmetry] Time limit reached: During the invariant dive.
+[Symmetry] Symmetry computation done. time: 1.23774 dtime: 1.3337
+
+Preloading model.
+#Bound   2.35s best:-inf  next:[-0,12341] initial_domain
+#1       2.37s best:285   next:[286,12341] complete_hint
+SOL total 288  bound 12344  t=2.4
+
+Starting search at 2.39s with 1 workers.
+1 full problem subsolver: [main]
+
+[Precedences] num_relations=0 num_clauses=0
+[Probing] deterministic_time: 1.00013 (limit: 1) wall_time: 2.61033 (Aborted 3494/12341)
+[LinearRelaxationBeforeCliqueExpansion] #linear:0 #at_most_ones:136400
+[FinalLinearRelaxation] #linear:136400 #cut_generators:0
+Initial num_bool: 12341
+#Bound  11.23s best:285   next:[286,2227] main
+
+Starting subsolver 'main' hint search at 11.23s
+#Bound  11.26s best:285   next:[286,1871] main
+#Bound  11.28s best:285   next:[286,1737] main
+#Bound  11.30s best:285   next:[286,1606] main
+#Bound  11.33s best:285   next:[286,1480] main
+#Bound  11.36s best:285   next:[286,1286] main
+#Bound  11.49s best:285   next:[286,1270] main
+#Bound  11.61s best:285   next:[286,548]  main
+#Bound  12.08s best:285   next:[286,485]  main
+#Bound  18.34s best:285   next:[286,465]  main
+Starting subsolver 'main' search at 28.79s
