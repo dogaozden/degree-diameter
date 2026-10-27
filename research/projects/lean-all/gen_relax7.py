@@ -659,7 +659,7 @@ def write_record(args, ns, od, st):
       f'`{st["T"]}` of H({p}),\nrelaxed friendly sets, the local certificate of `{args.lc}` on the other transitions, '
       f'and a hub graph with same-side\ndistances at most 6 (`Relax7.main7`). -/\n\n')
     w(f'namespace {ns}\n\nopen BipartiteDD BipartiteDD.Fast BipartiteDD.LeanAll.Orbit2 BipartiteDD.LeanAll.HexLocal\n'
-      'open BipartiteDD.LeanAll.TypedHex BipartiteDD.LeanAll.TypedHex5 BipartiteDD.LeanAll.Relax7 '
+      'open BipartiteDD.LeanAll.Typed BipartiteDD.LeanAll.TypedHex BipartiteDD.LeanAll.TypedHex5 BipartiteDD.LeanAll.Relax7 '
       'BipartiteDD.LeanAll.BitBFS\nopen BipartiteDD.Hexagon BipartiteDD.HexagonD7\n\n')
     # joined checks
     for key, (rs, N_, fn) in chk.items():
@@ -802,7 +802,7 @@ def write_record(args, ns, od, st):
             ('hpr', lambda a, k: f'∀ r < nT (trn {a} {k}), ∀ s < nT (trn {a} {k}), Co hexInc (den {p} (kF (trn {a} {k})) '
                                  f'(cF (trn {a} {k}) r)) (den {p} (kF (trn {a} {k})) (cF (trn {a} {k}) s)) → s = pr (trn {a} {k}) r',
              lambda tr: f'pr{tr}' if fr_(tr) else
-             (f'pr{tr} τd hnc' if TR[tr]['a'] == 0 else f'pr{tr} τd hval hdual hnc'))):
+             (f'pr{tr} hnc' if TR[tr]['a'] == 0 else f'pr{tr} τd hval hdual hnc'))):
         w(f'  have {nm} : ∀ a < 7, ∀ k, 1 ≤ k → k ≤ 3 → {stmt("a", "k")} := by\n'
           f'    refine by_tr (P := fun a k => {stmt("a", "k")}) (fun tr htr => ?_)\n'
           f'    rcases (by omega : ' + ' ∨ '.join(f'tr = {t}' for t in range(21)) + ') with ' +
