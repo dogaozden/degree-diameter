@@ -48,4 +48,6 @@ unchanged from claude/table-audit-2-p7x6hn, research/projects/table-audit/omega/
     ./twist hex_q4.txt q4.bin aba bfs       # same count by BFS
     python3 check/tolab.py hex_q4.txt q4.bin aba chk && ./check/omega_eval chk.hex aba PLP chk.lab 8 hubs  # same, audit code
 
-Logs of every run quoted in the note are in `logs/`.
+Logs of every run quoted in the note are in `logs/`. `twists/` holds the two annealed twist files (q = 2 pattern ab,
+q = 3 pattern aba); `./twist hex_q3.txt twists/q3_aba_annealed.bin aba edges out.txt` writes the graph, and
+`research/lifts/coordinator_check/apsp_mt` gives diameter 9 for both (`logs/apsp_twisted.txt`).

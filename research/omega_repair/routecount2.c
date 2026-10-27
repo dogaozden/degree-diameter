@@ -95,6 +95,22 @@ static double bestbound(int q, int *m4, int *m2) {
     return best;
 }
 int main(int argc, char **argv) {
+    if (!strcmp(argv[1], "starved")) {      /* reading 2: pairs with exactly alpha twisted radius-4 centres, per bar, max m2 */
+        int q = atoi(argv[2]); A = atoi(argv[3]); C = 5 * A; (void)q;
+        for (int na = 0; na <= A; na++) {
+            for (int B = 0; B < A; B++) { btype[B] = B < na ? 'a' : 'b'; binner[B] = B < na ? 'P' : 'L'; } btype[A] = binner[A] = 0;
+            wiring(); int cnt[2] = {0, 0}, mx[2] = {0, 0};
+            for (int X = 0; X < 10; X++) {
+                memset(ncen, 0, sizeof ncen); srcX = X;
+                for (int c1 = 0; c1 < C; c1++) if (att[c1][X]) { wl = 0; int s1 = att[c1][X] - 1; if (s1) push_left(2 * DELTA); push_left(2 * SYM(c1, s1)); dfs(c1, att[c1][X], X, 1, 0, 1); }
+                for (int cp = 0; cp < C; cp++) if (!att[cp][X]) { int m[5] = {0};
+                    for (int i = 0; i < ncen[cp]; i++) m[cen[cp][i].R]++;
+                    if (m[4] == A + 1) { int b = X >= 5; cnt[b]++; if (m[2] > mx[b]) mx[b] = m[2]; } }
+            }
+            printf("q=%d a^%d b^%d: starved unbarred pairs %d (max m2 %d), starved barred pairs %d (max m2 %d)\n", q, na, A - na, cnt[0], mx[0], cnt[1], mx[1]);
+        }
+        return 0;
+    }
     if (!strcmp(argv[1], "total")) {        /* reading 2: sum over all (X, c') of N * max(0, bound): far pairs, at least */
         int q = atoi(argv[2]); A = atoi(argv[3]); C = 5 * A; double Q = q, N = (pow(Q, 6) - 1) / (Q - 1);
         for (int na = 0; na <= A; na++) {
