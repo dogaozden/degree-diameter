@@ -13,16 +13,18 @@ validated as described) or **Heuristic**. Tools: `research/d3D7exact/` (README t
 | statement | status |
 |---|---|
 | 168 ≤ N_b(3,7) ≤ 248 | Theorem (168: C168.1; 248: Feria-Purón and Pineda-Villavicencio 2012). Not improved here. |
-| For n ≥ 170 the problem is about cubic graphs: n odd ≥ 171 impossible, n ≥ 172 forces cubic, n = 170 reduces to cubic | Theorem (§2.2) |
+| Above 168 only cubic graphs matter, except n = 169: n odd ≥ 171 impossible, n ≥ 172 forces cubic, n = 170 reduces to cubic; n = 169 (sides 85, 84, at least three degree-2 vertices) is not excluded | Theorem (§2.2) |
 | Diameter ≤ 7 is a local condition: every vertex has at most 127 − n/2 "excess" walks within radius 6 | Theorem (§2.3) |
 | Girth: n ≥ 194 ⇒ g ≥ 6; n ≥ 226 ⇒ g ≥ 8; n ≥ 242 ⇒ g ≥ 10; n = 250, 252 ⇒ g = 12 | Theorem (§2.4) |
 | n = 248: structure of 10-cycles and 12-cycles (10-cycles disjoint, spokes, Rep(y) = N(y′), ...) | Theorem (§2.6), partial; n = 248 itself is still open |
-| No graph on n ≥ 169 vertices has an automorphism of prime order p ≥ 11 | Computer-checked (§3) |
-| Order 7: see §3.3 (results for n = 182, 210, 224, 238 when the runs finish) | Computer-checked / running |
-| Order 5, and order 7 at n = 196: not done (estimated 10^9–10^12 search nodes) | Heuristic estimate (§4) |
+| No graph on n ≥ 169 vertices has an automorphism of prime order p ≥ 11 | Computer-checked (§3.2), two independent programs |
+| No graph on n ≥ 169 vertices has a colour-preserving group of automorphisms acting freely with ≤ 22 orbits | Computer-checked (§3.3) |
+| Orders 5 and 7: not settled (estimated 10^9–10^12 search nodes per case) | Heuristic estimate (§3.4, §4) |
+| Radius-6 conditions alone cannot exclude 10-cycles at n = 248 (16,000-vertex graph with excess 3 everywhere) | Computer-checked example (§2.6 item 9) |
 
-So a bipartite (3,7)-graph on more than 168 vertices, if it exists, is cubic, has 170 ≤ n ≤ 248, and its automorphism
-group has order 2^a 3^b 5^c 7^d (with d = 0 for the values of n settled in §3.3).
+So a bipartite (3,7)-graph on more than 168 vertices, if it exists, has 169 ≤ n ≤ 248 and is cubic unless n = 169
+(n = 170 can be completed to a cubic one), its automorphism group has order 2^a 3^b 5^c 7^d, and every
+colour-preserving subgroup acting freely has order at most n/24.
 
 ## 1. Literature
 
@@ -92,8 +94,12 @@ go to a neighbour of the target.)
 
 (a) If |A| > |B| then n ≤ 169. (b) If |A| = |B| and G is not cubic then n ≤ 170, and at n = 170 one can add a perfect
 matching between the degree-2 vertices of A and of B and get a cubic bipartite graph of diameter ≤ 7 on the same
-vertex set. Hence every (3,7)-graph with n ≥ 172 is cubic, n odd ≥ 171 is impossible, and N_b(3,7) ≥ n ≥ 170 iff a
-cubic one exists on n vertices. (Also FP–PV Prop. 3.1 for n ≥ 192.)
+vertex set. Hence every (3,7)-graph with n ≥ 172 is cubic, n odd ≥ 171 is impossible, and for n ≥ 170 a (3,7)-graph
+on n vertices exists iff a cubic one does. (Also FP–PV Prop. 3.1 for n ≥ 192.) **n = 169 is not excluded:** then
+|A| = 85, |B| = 84, the deficiencies satisfy def(A) = def(B) + 3 ≥ 3, every degree-2 vertex of A has a tree 6-ball
+with all vertices at distance 1..5 of degree 3 (so these vertices are pairwise at distance exactly 6), and degree-2
+vertices of B have excess ≤ 1. Counting edges between distance 6 and 7 from a degree-2 vertex of A gives
+129 − def(A) = 126 − def(B), consistent; I found no contradiction (the earlier job's annealer stopped at 530 bad pairs).
 
 Proof. (a) Σ_{a∈A} deg a = Σ_{b∈B} deg b ≤ 3|B| < 3|A|, so some a ∈ A has degree ≤ 2. From a, at most
 1 + 4 + 16 + 64 = 85 vertices of A lie within distance 6 (at most 43 if deg a = 1), and all of A must. So
@@ -145,9 +151,10 @@ have pairwise distinct endpoints.**
 ### 2.5 Two general tools (Theorem)
 
 **(a) Repeat matrix.** Let P(x) = x^6 − 10x^4 + 24x^2 − 8 = F_0 + F_2 + F_4 + F_6, where F_i(A) counts NB walks of
-length i (F_0 = 1, F_1 = x, F_2 = x^2 − 3, F_{i+1} = xF_i − 2F_{i−1}). For G cubic bipartite with diameter ≤ 7,
-P(A) = J_A ⊕ J_B + E with E a symmetric non-negative integer matrix with row sums δ (E(u, v) = number of NB walks
-of even length ≤ 6 from u to v, minus 1). E commutes with A, because A commutes with P(A) and with J_A ⊕ J_B (G is
+length i (F_0 = 1, F_1 = x, F_2 = x^2 − 3, F_{i+1} = xF_i − 2F_{i−1} for i ≥ 2). For G cubic bipartite with
+diameter ≤ 7, P(A) = J_A ⊕ J_B + E with E a symmetric non-negative integer matrix with row sums δ (for u, v on the
+same side E(u, v) = number of NB walks of even length ≤ 6 from u to v, minus 1; E = 0 across sides). This identity
+uses the diameter condition, i.e. the global size. E commutes with A, because A commutes with P(A) and with J_A ⊕ J_B (G is
 regular with equal sides). In words: for u, w on opposite sides, Σ_{y∼u} E(y, w) = Σ_{z∼w} E(u, z)
 ("every repeat of u has a neighbour that repeats each neighbour of u", cf. FP–PV Cor. 4.1). Spectrally, every
 eigenvalue λ ≠ ±3 of G satisfies |P(λ)| ≤ δ. (Checked: P(3) = 127; the roots of P are ±2√2 cos(jπ/7).)
@@ -177,20 +184,27 @@ Let G be a cubic bipartite graph of diameter 7 on 248 vertices (m = 124, δ = 3)
 2. **10-cycles are pairwise vertex-disjoint** (from 1).
 3. **The third neighbour ("spoke") of every type-T vertex is type S.** Proof: let C = (c_0, ..., c_9), y_i the spoke of
    c_i. From y_0 the vertex c_5 is at distance 6 with two geodesics (through c_0, both ways round C); distance 4 would
-   put c_5 on a second 10-cycle. If y_0 were on a 10-cycle C′, item 1 for y_0 says its only doubly-reached vertex is
-   the spoke of its antipode z on C′, so c_5 is that spoke, z = y_5, and c_0 → c_5 (along C) → y_5 → y_0 (along C′)
-   → c_0 is a 12-cycle through c_0, contradicting item 1.
-4. **For type-S vertices, a(v) ∈ {0, 1, 3}.** Two geodesics from a type-S vertex to a common vertex are either
-   internally disjoint (a 12-cycle through v) or share exactly their first edge (a 10-cycle through that neighbour).
-   A type-T neighbour u contributes exactly one doubly-reached vertex (u's antipode on its 10-cycle). If a(v) = 2, every
-   12-cycle through v would pass through a type-T vertex, so v's excess is 2 < 3. If a(v) = 3, v lies on no
+   put c_5 on a second 10-cycle, distance 2 would close an 8-cycle. If y_0 were on a 10-cycle C′ (disjoint from C by
+   item 2), item 1 for y_0 says its only doubly-reached vertex is the spoke of its antipode z on C′, so c_5 is that
+   spoke; z ∉ C, so z = y_5, and c_0 → c_5 (along C) → y_5 → y_0 (along C′) → c_0 is a 12-cycle through c_0,
+   contradicting item 1.
+4. **For type-S vertices, a(v) ∈ {0, 1, 3}.** For a type-S vertex v every excess comes from two 6-walks (geodesics)
+   to a vertex at distance 6: a 4-walk and a 6-walk to the same vertex, or two 6-walks sharing their last edge, would
+   close a 10-cycle through v, and every other coincidence breaks girth 10. Two such geodesics are either internally
+   disjoint (a 12-cycle through v) or share exactly their first edge (a 10-cycle through that neighbour). A type-T
+   neighbour u gives exactly one doubly-reached vertex (u's antipode on its 10-cycle), and that vertex has no third
+   geodesic (it would pair with one of the first two into a 12-cycle through u, or into a second 10-cycle through u).
+   Through a type-S neighbour there is at most one geodesic to a given vertex, so two 12-cycles through v have
+   different antipodes, and a vertex reached by three geodesics uses all three neighbours of v. Hence: if a(v) = 2,
+   every 12-cycle through v would pass through a type-T vertex, so v's excess is 2 < 3. If a(v) = 3, v lies on no
    12-cycle. If a(v) = 1, v lies on exactly two 12-cycles, both through its two type-S neighbours. If a(v) = 0, v lies
-   on 3 twelve-cycles (three doubly-reached vertices) or on 4 (it is a branch vertex of a Θ_6 and has one more
-   12-cycle).
+   on 3 twelve-cycles (three doubly-reached vertices) or on 4 (one vertex reached by three geodesics, i.e. v is a
+   branch vertex of a Θ_6, plus one more 12-cycle).
 5. **Spoke pairs.** With C and y_i as in 3, the commutation rule of §2.5(a) applied at c_0 (whose E-row is known by
    item 1: E(c_0, ·) = 1 exactly at c_4, c_6, y_5) gives
-   E(y_0, w) = |N(w) ∩ {c_4, c_6, y_5}| − [w ∈ {c_5, c_7, y_6}] − [w ∈ {c_3, c_5, y_4}] for all w, hence
-   **Rep(y_0) = N(y_5)**: the three vertices that y_0 reaches twice are exactly the three neighbours of y_5. It follows
+   E(y_0, w) = |N(w) ∩ {c_4, c_6, y_5}| − [w ∈ {c_5, c_7, y_6}] − [w ∈ {c_3, c_5, y_4}] for all w. By girth ≥ 10,
+   c_5 is the only vertex adjacent to two of {c_4, c_6, y_5}, and the other neighbours s_1, s_2 of y_5 are not in
+   {c_3, c_5, c_7, y_4, y_6} (that would close a 4-cycle); hence **Rep(y_0) = N(y_5)**: the three vertices that y_0 reaches twice are exactly the three neighbours of y_5. It follows
    that a(y_0) = a(y_5) ∈ {1, 3}. In the case a = 3, y_0 and y_5 are joined to antipodal pairs of three disjoint
    10-cycles. In the case a = 1, writing N(y_0) = {c_0, z_1, z_2} and N(y_5) = {c_5, s_1, s_2}, y_0 lies on exactly two
    12-cycles (through z_1 y_0 z_2, antipodes s_1 and s_2) and y_5 on exactly two (through s_1 y_5 s_2, antipodes z_1
@@ -199,12 +213,15 @@ Let G be a cubic bipartite graph of diameter 7 on 248 vertices (m = 124, δ = 3)
    between 62 and 82 twelve-cycles; the divisibility argument that kills n = 250 gives no contradiction here.
 7. **G is not built from 10-cycles and a = 3 spokes alone.** If every spoke pair has a = 3, each pair is shared by
    three 10-cycles and each 10-cycle has five pairs, so there are 5N10/3 pairs; type-T vertices and spokes have all
-   their neighbours inside this set, so it is all of G and n = 10N10 + 2·5N10/3 = 40N10/3, which is not 248. So G has
-   a = 1 spoke pairs or vertices with a = 0 (12-cycles).
+   their neighbours inside this set, so (G connected) it is all of G and n = 10N10 + 2·5N10/3 = 40N10/3, which is not
+   248. So **either G has girth 12, or some spoke pair has a = 1.**
 8. **The a = 1 case** (notation of item 5): the 5-path P_ij between s_i and z_j is unique (two of them would close a
    10-cycle through s_i, which is type S), and the four 12-cycles of y_0 and y_5 are y_5 s_1 P_11 z_1 P_21 s_2,
-   y_5 s_1 P_12 z_2 P_22 s_2, y_0 z_1 P_11 s_1 P_12 z_2 and y_0 z_1 P_21 s_2 P_22 z_2. Then s_1 lies on exactly three
-   12-cycles, Rep(s_1) = {y_0, the neighbour of z_1 on P_21, the neighbour of z_2 on P_22}, and so on.
+   y_5 s_1 P_12 z_2 P_22 s_2, y_0 z_1 P_11 s_1 P_12 z_2 and y_0 z_1 P_21 s_2 P_22 z_2. Then a(s_1) = 0 (y_5 and the
+   first vertices of P_11, P_12 lie on 12-cycles, so they are type S), and s_1 has the three distinct repeats y_0, the
+   neighbour of z_1 on P_21 and the neighbour of z_2 on P_22 (y_0 is not on P_21 or P_22 since d(s_i, y_0) = 6; if
+   the two neighbours were equal they would close the 4-cycle z_1 r z_2 y_0). By item 4, s_1 lies on exactly these
+   three 12-cycles, and so on.
 
 9. **No local refutation (Computer-checked example).** The local condition "R(v) = 3 at every vertex" does not
    exclude 10-cycles. `research/d3D7exact/fano/local_r3.py 400 1` builds the configuration graph of §4 (10-cycles
@@ -215,9 +232,9 @@ Let G be a cubic bipartite graph of diameter 7 on 248 vertices (m = 124, δ = 3)
    n = 248 is impossible must use the global count m = 124, not only radius-6 balls; this is how FP–PV's n = 250
    proof ends too (2n/12 not an integer).
 
-**Check on real graphs (Computer-checked).** The proofs of items 1–5 use only "δ = 3, girth ≥ 2D − 4, cycles of
-length 2D − 4 and 2D − 2", so they hold verbatim for any odd D with 6- and 8-cycles in place of 10- and 12-cycles
-when D = 5. For D = 5, δ = 3 means n = 56, and such graphs exist (N_b(3,5) = 56). `test_delta3.py` checks every claim
+**Check on real graphs (Computer-checked).** The proofs of items 1–4 use only "δ = 3, girth ≥ 2D − 4, cycles of
+length 2D − 4 and 2D − 2" (item 5 also uses the identity P(A) = J ⊕ J + E of §2.5(a), the one place where the global
+size enters), so they hold verbatim for any odd D with 6- and 8-cycles in place of 10- and 12-cycles when D = 5. For D = 5, δ = 3 means n = 56, and such graphs exist (N_b(3,5) = 56). `test_delta3.py` checks every claim
 of items 1–5 (and the a-dependent 12-cycle counts of item 4) on the 56-vertex graphs that zplift finds as Z_7-lifts
 (one isomorphism class; glift finds none over the groups of order 4, 14, 28): no failure. These graphs are exactly the
 pure a = 3 configuration of item 7: 7 six-cycles and 14 spokes, 56 = 8·7. The D = 7 analogue of that configuration
@@ -336,17 +353,23 @@ colour-preserving group acting freely on the vertices, then H has at least 24 or
 no nontrivial such H exists: |H| would divide 85 and 84; for non-cubic graphs at n = 170 the completion of §2.2 can
 be chosen H-invariant, matching H-orbits of deficient vertices.) Outputs: `research/d3D7exact/runs/gl/`.
 
-### 3.4 Results for p = 7
+### 3.4 Order 7: not settled
 
-| k | n | δ | Knuth estimate (nodes) | status |
-|---|---|---|---|---|
-| 13 | 182 | 36 | 1.6 × 10^8 | running (4 shards) |
-| 14 | 196 | 29 | 7.5 × 10^9 | not run (too large) |
-| 15 | 210 | 22 | 4.8 × 10^7 | running |
-| 16 | 224 | 15 | 4.2 × 10^7 | running |
-| 17 | 238 | 8 | 7.2 × 10^8 | running (8 shards) |
+Bases with 13+13 to 17+17 vertices cannot be listed, so order 7 needs `jsearch`. First estimates (400–3,000 Knuth
+probes) suggested 10^7–10^9 nodes per case and I started k = 13, 15, 16, 17 (k = 17 in 8 shards). The runs went past
+those estimates, and estimates with 10,000–20,000 probes came out 10–100 times larger:
 
-(To be filled in when the runs finish.)
+| k | n | δ | estimate, few probes | estimate, 10^4–2·10^4 probes | explored before stopping | solutions found |
+|---|---|---|---|---|---|---|
+| 13 | 182 | 36 | 1.6 × 10^8 | 1.75 × 10^9 | (shards never started) | – |
+| 14 | 196 | 29 | 7.5 × 10^9 | – | not run | – |
+| 15 | 210 | 22 | 4.8 × 10^7 | 2.1 × 10^9 | 9.2 × 10^7 nodes | 0 |
+| 16 | 224 | 15 | 4.2 × 10^7 | 7.7 × 10^9 | 8.8 × 10^7 nodes | 0 |
+| 17 | 238 | 8 | 7.2 × 10^8 | 1.1 × 10^11 | shards 0–3: 4.2–5.0 × 10^7 nodes each | 0 |
+
+At about 45,000 nodes per second per core these are 10–700 core-hours, so I stopped the runs after about an hour.
+The explored parts contain no solution, which is not a result (DFS order, unknown fraction). Logs: `runs/js/`.
+Order 7 stays open (§5).
 
 ## 4. Heuristic: what the exact searches cannot reach
 
@@ -365,8 +388,8 @@ Knuth random-probe estimates of the jsearch tree (validated: 2.0 × 10^3 vs 1,73
 | 5 | 24 | 240 | 7 | 3.1 × 10^11 |
 | 7 | 14 | 196 | 29 | 7.5 × 10^9 |
 
-The estimates have relative standard errors of 0.4–1.0 and heavy tails, so they are only orders of magnitude (the
-p = 7 runs of §3.4 went past their estimates). jsearch has no isomorph rejection beyond the BFS rule (every base is
+These are 300-probe estimates; the relative standard errors are 0.4–1.0 and the tails are heavy, so they are lower
+bounds in practice (for p = 7 more probes raised them 10–100 times, §3.4). jsearch has no isomorph rejection beyond the BFS rule (every base is
 generated from each of its k side-0 roots and many child orders). An optional root rule (env `ROOTMAX=1`: keep only
 roots that maximise the number of closed NB walks of length ≤ 6 among side-0 vertices; validated, same 293 classes
 at p = 13, k = 5 with 8.2 M instead of 11.6 M nodes) helps little. Real canonical augmentation would be the next
@@ -379,10 +402,13 @@ in 60 s anneals over incidences and pair assignments (`research/d3D7exact/fano/`
 
 ## 5. What is open, as mathematical questions
 
-1. Is there a cubic bipartite graph of diameter 7 on 248 vertices? (§2.6 gives its forced local structure.)
-   On 246, 244, 242 (δ = 4, 5, 6; girth ≥ 10)?
+1. Is there a cubic bipartite graph of diameter 7 on 248 vertices? (§2.6 gives its forced local structure; by item 9
+   a proof must use the global size.) On 246, 244, 242 (δ = 4, 5, 6; girth ≥ 10)?
+1a. Is there a bipartite (3,7)-graph on 169 vertices (sides 85 and 84, at least three degree-2 vertices in the larger
+   side, pairwise at distance 6, each with a tree 6-ball)? §2.2 leaves this open.
 2. Does every cubic bipartite graph of diameter 7 with an automorphism of order 5 or 7 have at most 168 vertices?
-   (Order 7: the cases left after §3.3; order 5: all n = 170..240 divisible by 10.)
+   (Order 7: n = 182, 196, 210, 224, 238; order 5: n = 170, 180, ..., 240. The quotients have 26–48 vertices; a
+   voltage-graph generator with real isomorph rejection is the missing tool.)
 3. Order 2 and 3 automorphisms can have fixed points, so the quotient is not a cover; no method here.
 4. Graphs with trivial automorphism group are out of reach of everything above.
 
