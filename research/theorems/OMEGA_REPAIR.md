@@ -20,8 +20,8 @@ research/projects/table-audit/omega/NOTES.md). This note asks which relabellings
    collineation, or a duality when q = 3^e. This contains every "collineation coset" labelling, where copy c labels its
    points by a collineation a_c and its lines by a possibly different collineation b_c (the first rung above the thesis).
    **For every q ≥ 7 and every geometric labelling of Gómez's wiring, ΩH_q has diameter ≥ 9.** This holds for any mix
-   of the two block types and reading 2 of the figures; for q = 7, 8, 9, 11, 13 it holds for every reading and every
-   choice of inner classes, dualities included. **This covers all six table entries (10,8) … (16,8).** In a geometric
+   of the two block types and reading 2 of the figures; for q = 7, 8, 9, 11, 13 and 27 it holds for every reading and
+   every choice of inner classes, dualities included. **This covers all six table entries (10,8) … (16,8).** In a geometric
    labelling every route from a hub into a copy it misses reaches one ball of the hexagon. Gómez's wiring gives some hub
    only α = ⌊(q+3)/2⌋ routes of length ≤ 7 into some copy ("starved" pairs). For q ≥ 8 a count shows these balls cannot
    cover the copy (Theorem 3.3). For q = 7 the count needs two more ingredients. Bonferroni inequalities settle every
@@ -226,13 +226,15 @@ the best pair (hub class X, missed copy c') has α radius-4 twisted centres plus
 (`routecount2 sweep 3 9` also gives q = 6, 10, 12, 14, 15, 16: −612, 20,300, 65,952, 162,484, 206,550, 348,160. Logs
 `logs/routecount.txt`, `logs/routecount2.txt`.)
 
-**Theorem 3.5 (all readings, dualities allowed).** For q ∈ {8, 9, 11, 13}, every reading of Figs. 2.21a/b and every
-choice of inner class per block (84 multisets of the block kinds aP, aL, bP, bL at q = 9; 56, 120, 165 at q = 8, 11, 13),
+**Theorem 3.5 (all readings, dualities allowed).** For q ∈ {8, 9, 11, 13, 27}, every reading of Figs. 2.21a/b and every
+choice of inner class per block (84 multisets of the block kinds aP, aL, bP, bL at q = 9; 56, 120, 165, 816 at
+q = 8, 11, 13, 27),
 every geometric labelling gives diameter ≥ 9.
 
 *Proof.* Lemma 2.4 and the count of Theorem 3.3, taking one radius-4 centre as the reference t: the other centres meet
 opp(t) in ≤ q⁴, q³, q², q, 1 points for radius 4, 3, 2, 1, 0 (Lemma 3.1). `routecount2 q α all` gives a pair with a
-positive bound for every pattern; the worst bounds equal those of the table above. For q ≠ 3^e, patterns that need a
+positive bound for every pattern; the worst bounds equal those of the table above (q = 27: ≥ 5,506,866 for every one of
+the 816 patterns, `logs/routecount2_q27_all.txt`). For q ≠ 3^e, patterns that need a
 duality have no geometric labellings, so they are covered vacuously. ∎
 
 **Corollary 3.6.** For the table cells (11,8) 2,246,940, (12,8) 4,650,100, (14,8) and (15,8) 14,172,480 and (16,8)
