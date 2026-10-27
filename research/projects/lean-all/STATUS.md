@@ -49,7 +49,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (13,5) | 11,700 | lift of a generalized quadrangle (raised on master 2026-10-26, was 11,486) | **done** | `nb_13_5_11700`, LeanAll/D13D5b (orbit BFS v2, 1,170 sources) |
 | (3,10) | 810 | voltage lift over C3 × He3 (added on master 2026-10-26) | **done** | `nb_3_10_810`, LeanAll/D3D10 (orbit BFS v2, 2 sources) |
 | (7,10) | 2,298,240 | Haar, SL(2,7) × PSL(2,19) (raised on master 2026-10-26) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_7_10_2298240`, LeanAll/HaarD7D10b (as PSL(2,19) × Z1 × SL(2,7): 60,480 batches, HaarProd2.cover_prod_pm with n = 1) |
-| (8,10) | 8,043,840 | Haar, PSL(2,7) × PSL(2,19) × Z7 (raised on master 2026-10-26) | todo (needs a PSL second factor) | |
+| (8,10) | 8,043,840 | Haar, PSL(2,7) × PSL(2,19) × Z7 (raised on master 2026-10-26) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_8_10_8043840`, LeanAll/HaarD8D10b (as PSL(2,19) × Z7 × PSL(2,7): 30,240 batches, HaarProdP.cover_prod_pp) |
 | (7,7) … (15,7) | 23,580 … 2,484,720 | hexagon + hubs | not here: the hexagon-family project has a Lean certificate theorem for these (branch `claude/hexagon-family-blvamb`) | |
 
 ## Records outside the README table (research/RESULTS.md)
