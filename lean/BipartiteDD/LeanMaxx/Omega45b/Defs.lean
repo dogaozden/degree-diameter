@@ -15,6 +15,8 @@ open BipartiteDD.Hexagon
 /-- The field of `H(7)`. -/
 abbrev F7 := ZMod 7
 
+instance : Fact (Nat.Prime 7) := ⟨by norm_num⟩
+
 /-- The zeros of `Qf` in `F7^7` orthogonal (for `Bf`) to every vector of the list `S`. -/
 def perpZeros (S : List (V7 F7)) : Finset (V7 F7) :=
   Finset.univ.filter fun x => Qf x = 0 ∧ ∀ s ∈ S, Bf x s = 0
