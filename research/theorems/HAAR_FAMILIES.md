@@ -26,8 +26,8 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
    2p^{L/2} > q² (Theorem 3.2: lower bound for every odd p, equality for p ≡ 1 mod 4), so the diameter is at least
    (4/3) log_p n − 2 log_p 2 (Corollary 3.3, the bound of N. T. Sardari, here with a two-paragraph proof), and a member
    of diameter ≤ D has at most √2·p^{1−D/4} of the bipartite Moore bound (Corollary 3.4). Computed: the LPS graphs are
-   2.5 to 19 times below the 2013 table at D = 8–10 (Appendix B), and at odd D the largest member is exactly the one
-   that the vertex ψ(i) allows.
+   2.5 to 19 times below the 2013 table at D = 8–10 (Appendix B), and at odd D the largest member is usually exactly
+   the one that the vertex ψ(i) allows (8 of 13 cells; the next prime below in 3 more).
 3. *A cyclic factor removes this obstruction in practice, but not as a formula.* The obstruction survives every cover
    (Proposition 4.1), but it bounds q, not m. LPS × Z_m with labels chosen for each (q, m) by a squad reaches 99.4 % of
    the table at (6,10) and 98.9 % at (8,8) (Computer-checked 4.2), still below the lab's records.
@@ -73,7 +73,7 @@ Appendix A. The squad rounds. Appendix B. The LPS family cell by cell.
 | Cor. 3.3 | diam Γ_{p,q} > (4/3) log_p n − 2 log_p 2 | Corollary |
 | Cor. 3.4 | if diam Γ_{p,q} ≤ D then n < 2^{3/2} p^{3D/4} and n < √2·p^{1−D/4}·M^b(p+1, D) | Corollary |
 | 3.5 | equality in Thm. 3.2 in all 251 cases p ∈ {3, 5, 7, 11, 13, 17, 19, 29}, p < q ≤ 160 (including p ≡ 3 mod 4); ecc − L₀ ∈ {0, 1, 2, 3} | Computer-checked |
-| App. B | the LPS family cell by cell; at odd D its largest member is the one Thm. 3.2 allows | Computer-checked |
+| App. B | the LPS family cell by cell; at odd D its largest member is the one Thm. 3.2 allows in 8 of 13 cells | Computer-checked |
 | Prop. 3.6 | the same lower bound in any definite quaternion order with an orthogonal unit γ | Proposition |
 | Prop. 4.1 | the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K, S̃) of the LPS graph | Proposition |
 | 4.2 | LPS × Z_m with searched labels: 99.4 % of the table at (6,10), 98.9 % at (8,8) | Computer-checked |
@@ -365,8 +365,10 @@ families lose to them by a factor p^{D/4−1}.
 (I, A) to ([ψ(i)], A), ([ψ(j)], A) and ([ψ(k)], A), computed by breadth-first search (`lps_haar.c`), equals L₀: no
 exception in 251 cases (log `haar_families/recheck_thmB.log`). This includes p ≡ 3 (mod 4), where equality is not proved
 here. The eccentricity of (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251 cases). So in this range
-the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is exactly what limits the family
-(Appendix B). An independent re-implementation by squad card c8 (its own quaternion arithmetic and BFS;
+the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is usually what limits the family
+(Appendix B). The construction in the proof of Theorem 3.2(b) (u, v, w, and β with N(β) = p^{L₀}, β ≡ 1 mod 2 and
+[ψ(β)] = [ψ(i)]) was also checked directly for p ∈ {5, 13, 17, 29, 37} and all primes p < q < 1000 (802 cases,
+`haar_families/check_thmB_construction.py`). An independent re-implementation by squad card c8 (its own quaternion arithmetic and BFS;
 `research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and Theorem 3.2 in 41 cases
 with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six LPS graphs. (The squad card also
 found a bug in the first version of `lps_haar.c`, which mixed the distances of the two sides; the logs above are from
@@ -559,6 +561,7 @@ cc -O3 -o lps_haar lps_haar.c -lm      # LPS graph: generators (-v), eccentricit
 cc -O3 -o haar_ecc haar_ecc.c          # any Haar graph of SL/PSL/PGL(2,q) x Z_m from generator lines "a b c d z"
 ./lps_haar 5 13 -v                     # Example 2.8: 2184 vertices, diameter 7, d(I, psi(i)) = 6 = L0
 python3 check_thmB.py 3,5,7,11,13,17,19,29 160 > recheck_thmB.log     # Computer-checked 3.5
+python3 check_thmB_construction.py                                    # the beta of Theorem 3.2(b), q < 1000
 ./lps_haar 5 13 -v | grep '^gen' | sed 's/.*mat(//; s/) z=/ /; s/,/ /g' > g.txt
 python3 component_edges.py pgl 13 1 e.txt < g.txt                    # independent edge list of the component
 cc -O2 -o apsp ../../lifts/coordinator_check/apsp.c && ./apsp e.txt 6 40   # all-pairs BFS: diameter 7
@@ -572,21 +575,67 @@ python3 ../../squads/thmfam-r1/c6/gen_c6.py 23 37 19 0 | python3 verify_cover.py
 
 ## Appendix A. The squad rounds
 
-[[SQUADS]]
+Two rounds of Claude Haiku cards (the lab's `haiku-squad` skill; model haiku, effort high), directed by this session.
+The cards, the shared rules and every card's code and notes are in `research/squads/thmfam-r1/` and
+`research/squads/thmfam-r2/`, one line per card in `scoreboard.jsonl`; the rounds are logged in
+`research/squads/LOG.md`. The squads searched constructions and tested the theorems on small q; the proofs are the
+director's. Every number quoted in the note from a card was re-run by the director with the commands of §8, except
+where it says "card" only (the mean excesses of §5, which are averages over many runs and are reproducible from the
+cards' folders).
+
+**Round 1 (18 cards): uniform families.** c1–c4 integer lifts (Δ = 6, 7, 8, 10, and with Z_m); c5 the records' sets
+at other q; c6–c7 LPS × Z_m with searched labels; c8 verification of Theorems 2.6 and 3.2 (found a bug in the first
+`lps_haar.c`); c9 the far vertices of LPS graphs (the guess "all far vertices come from pure quaternions" failed); c10–c11
+q-dependent formulas; c12 torus orbits with Δ ~ q; c13–c14 random baselines and the trend in q; c15 symmetries of order
+5 and 6; c16 the conic model; c17 cyclic factors with m ~ q; c18 repairs of LPS. Outcome: every formula family is at the
+level of one random draw (§5); LPS × Z_m covers were the only direction that came close to the table (§4).
+
+**Round 2 (11 cards): LPS × Z_m covers.** [[R2]]
 
 ## Appendix B. The LPS family cell by cell
 
 **Computer-checked** (`haar_families/appendix_b.py` from the scan logs `haar_families/scan/lps_p*.txt`, which list
 the order and the diameter of Γ_{p,q} for every prime p < q up to the scan limit, computed by `lps_haar`). For each cell
-the largest LPS graph of diameter ≤ D; "(scan limit)" means the largest scanned q still had diameter ≤ D, so larger
+the largest LPS graph of diameter ≤ D; A star (*) means the largest scanned q still had diameter ≤ D, so larger
 LPS graphs may exist there. "Thm 3.2: q ≤" is the largest prime q with q² < 2p^{⌊D/2⌋}, the limit of Corollary 3.4.
 
-| Δ (p) | D | largest LPS graph: q, vertices | % of Moore | Thm 3.2: q ≤ | table | ratio table/LPS | lab record |
-|---|---|---|---:|---:|---:|---:|---:|
+| Δ (p) | D | q | vertices | % Moore | Thm 3.2: q ≤ | table | table / LPS | lab record |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| 4 (3) | 7 | 7 | 336 | 15.37 | 7 | 840 | 2.5 | 864 |
+| 4 (3) | 8 | 7 | 336 | 5.12 | 11 | 2,184 | 6.5 | – |
+| 4 (3) | 9 | 11 | 1,320 | 6.71 | 11 | 4,970 | 3.8 | – |
+| 4 (3) | 10 | 13 | 2,184 | 3.70 | 19 | 11,748 | 5.4 | 12,416 |
+| 4 (3) | 11 | 19 | 6,840 | 3.86 | 19 | – | – | – |
+| 4 (3) | 12 | 19 | 6,840 | 1.29 | 37 | – | – | – |
+| 6 (5) | 7 | 13 | 2,184 | 5.59 | 13 | 8,310 | 3.8 | 8,880 |
+| 6 (5) | 8 | 23 | 12,144 | 6.22 | 31 | 29,790 | 2.5 | 31,680 |
+| 6 (5) | 9 | 29 | 24,360 | 2.49 | 31 | 117,360 | 4.8 | 127,296 |
+| 6 (5) | 10 | 53 | 148,824 | 3.05 | 79 | 452,032 | 3.0 | 524,160 |
+| 6 (5) | 11 | 67 | 300,696 | 1.23 | 79 | – | – | – |
+| 6 (5) | 12 | 107 | 1,224,936 | 1.00 | 173 | – | – | – |
+| 8 (7) | 7 | 23 | 12,144 | 4.42 | 23 | 40,586 | 3.3 | 43,344 |
+| 8 (7) | 8 | 31 | 29,760 | 1.55 | 67 | 201,480 | 6.8 | 239,904 |
+| 8 (7) | 9 | 67 | 300,696 | 2.24 | 67 | 1,091,232 | 3.6 | 1,341,600 |
+| 8 (7) | 10 | 107 | 1,224,936 | 1.30 | 181 | 6,927,210 | 5.7 | 7,818,096 |
+| 8 (7) | 11 | 173 | 5,177,544 | 0.79 | 181 | – | – | – |
+| 8 (7) | 12 | 229* | 12,008,760 | 0.26 | 479 | – | – | – |
+| 12 (11) | 7 | 47 | 103,776 | 2.66 | 47 | 664,300 | 6.4 | 693,500 |
+| 12 (11) | 8 | 71 | 357,840 | 0.83 | 167 | 4,650,100 | 13.0 | – |
+| 12 (11) | 9 | 167 | 4,657,296 | 0.99 | 167 | 30,001,152 | 6.4 | 34,026,720 |
+| 12 (11) | 10 | 251 | 15,813,000 | 0.30 | 563 | 300,383,050 | 19.0 | 325,832,976 |
+| 12 (11) | 11 | 257* | 16,974,336 | 0.03 | 563 | – | – | – |
+| 12 (11) | 12 | 257* | 16,974,336 | 0.00 | 1879 | – | – | – |
+| 14 (13) | 7 | 59 | 205,320 | 1.96 | 61 | 1,771,560 | 8.6 | 1,789,588 |
+| 14 (13) | 8 | 109 | 1,294,920 | 0.95 | 239 | 14,172,480 | 10.9 | – |
+| 14 (13) | 9 | 233 | 12,649,104 | 0.72 | 239 | 95,087,738 | 7.5 | 116,068,656 |
+| 14 (13) | 10 | 257* | 16,974,336 | 0.07 | 859 | 1,213,477,190 | 71.5 | 1,326,627,120 |
+| 14 (13) | 11 | 257* | 16,974,336 | 0.01 | 859 | – | – | – |
+| 14 (13) | 12 | 257* | 16,974,336 | 0.00 | 3089 | – | – | – |
 
-Scan limits: .
+Scan limits: p = 3: q ≤ 157, p = 5: q ≤ 157, p = 7: q ≤ 229, p = 11: q ≤ 257, p = 13: q ≤ 257.
 
-At odd D the largest q reached equals the limit of Theorem 3.2 in 6 of the 10 unlimited odd cells and is the prime
-just below it in the other 4 ((6,9): 29 against 31; (8,11): 173 against 181; (14,7): 59 against 61; (14,9): 233
-against 239). So at odd D the vertex ψ(i) alone stops the family, as far as the scan goes. At even D = 2κ the limit is
-the same as at D = 2κ + 1, and the generic vertices, at distance about log_p n, stop the family first.
+At odd D, in the 13 cells not cut by the scan limit, the largest q reached equals the limit of Theorem 3.2 in 8 cells
+((4,7), (4,9), (4,11), (6,7), (8,7), (8,9), (12,7), (12,9)), is the next prime below it in 3 ((6,9): 29 against 31;
+(14,7): 59 against 61; (14,9): 233 against 239), and is farther below in 2 ((6,11): 67 against 79; (8,11): 173
+against 181). So at odd D the vertex ψ(i) is usually what stops the family, as far as the scan goes. At even D = 2κ
+the limit is the same as at D = 2κ + 1, and the generic vertices, at distance about log_p n, stop the family first.

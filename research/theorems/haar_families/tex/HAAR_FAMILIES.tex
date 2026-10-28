@@ -179,8 +179,10 @@ given by one formula in q (and m) and a proved diameter?
   log\_p 2 (Corollary 3.3, the bound of N. T. Sardari, here with a
   two-paragraph proof), and a member of diameter ≤ D has at most
   √2·p\(^{1−D/4}\) of the bipartite Moore bound (Corollary 3.4).
-  Computed: the LPS graphs are 2.4 to 15 times below the 2013 table at D
-  = 8--10 (Appendix B).
+  Computed: the LPS graphs are 2.5 to 19 times below the 2013 table at D
+  = 8--10 (Appendix B), and at odd D the largest member is usually
+  exactly the one that the vertex ψ(i) allows (8 of 13 cells; the next
+  prime below in 3 more).
 \item
   \emph{A cyclic factor removes this obstruction in practice, but not as
   a formula.} The obstruction survives every cover (Proposition 4.1),
@@ -189,12 +191,13 @@ given by one formula in q (and m) and a proved diameter?
   at (8,8) (Computer-checked 4.2), still below the lab's records.
 \item
   \emph{Other uniform formulas behave like one random draw.} Integer
-  lifts, primitive-root and Dickson formulas, the conic model and torus
-  orbits (18 squad cards, §5) give an excess diam −
-  \(log_{Δ−1}\)\textbar G\textbar{} of about 3.0--3.4 at Δ = 6--8, the
-  same as a single random orbit-closed S, against about 2.0--2.3 for the
-  records. Heuristically the records' advantage is selection among
-  millions of sets, which no single formula provides (§5--6).
+  lifts, primitive-root and Dickson formulas, the conic model, torus
+  orbits, and the records' own sets moved to other q (18 squad cards,
+  §5) give an excess diam − \(log_{Δ−1}\)\textbar G\textbar{} within
+  about 0.3 of a single random draw at the same Δ (about 2.9--3.4 at Δ =
+  6--8), against about 2.0--2.3 for the records. Heuristically, the
+  records' advantage is selection among millions of sets, which no
+  single formula provides (§5--6).
 \item
   \emph{What would be needed is open.} A uniform family of record
   quality at fixed Δ would be an explicit family of bounded-degree
@@ -278,9 +281,13 @@ Corollary \\
 Cor. 3.4 & if diam \(Γ_{p,q}\) ≤ D then n \textless{} 2\(^{3/2}\)
 p\(^{3D/4}\) and n \textless{} √2·p\(^{1−D/4}\)·M\(^{b}\)(p+1, D) &
 Corollary \\
-3.5 & equality in Thm. 3.2 for all 8 primes p ≤ 29 tested (including p ≡
-3 mod 4) and all primes p \textless{} q ≤ 160; ecc − L₀ ∈ \{0, 1, 2\} &
-Computer-checked \\
+3.5 & equality in Thm. 3.2 in all 251 cases p ∈ \{3, 5, 7, 11, 13, 17,
+19, 29\}, p \textless{} q ≤ 160 (including p ≡ 3 mod 4); ecc − L₀ ∈ \{0,
+1, 2, 3\} & Computer-checked \\
+App. B & the LPS family cell by cell; at odd D its largest member is the
+one Thm. 3.2 allows in 8 of 13 cells & Computer-checked \\
+Prop. 3.6 & the same lower bound in any definite quaternion order with
+an orthogonal unit γ & Proposition \\
 Prop. 4.1 & the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K,
 S̃) of the LPS graph & Proposition \\
 4.2 & LPS × \(Z_{m}\) with searched labels: 99.4 \% of the table at
@@ -493,18 +500,18 @@ contains I, so it is a subgroup of the finite group PSL(2, q). Right
 translation \(ρ_{h}\) by h ∈ H₀ is an automorphism ({[}H{]} Lemma 1.2)
 mapping (I, A) to (h, A) ∈ \(Γ_{p,q}\), so it maps \(Γ_{p,q}\) to
 itself; \{\(ρ_{h}\) : h ∈ H₀\} acts regularly on the A-side H₀ × \{A\}
-and on the B-side cH₀ × \{B\}. If \(Γ_{p,q}\) is connected in the sense
-of Theorem 2.7, H₀ = PSL(2, q). (c) By (b) and {[}H{]} Lemma 2.1 (with
-the group \{\(ρ_{h}\) : h ∈ H₀\}), diam \(Γ_{p,q}\) = max(ecc(I, A),
-ecc(c, B)). Since ψ(\(S_{p}\)) is closed under inversion (Lemma 2.4),
-the side swap σ(g, A) = (g, B), σ(g, B) = (g, A) is an automorphism of
-H(PGL(2, q), ψ(\(S_{p}\))) ({[}H{]} Lemma 3.1(iv)); and \(ρ_{c}\) is one
-too. \(ρ_{c}\)∘σ maps (I, A) to (c, B) and maps \(Γ_{p,q}\) onto the
-component of (c, B), which is \(Γ_{p,q}\) since (c, B) \textasciitilde{}
-(I, A). Hence ecc(c, B) = ecc(I, A). (d) The map (g, A) ↦ (g, A), (h, B)
-↦ (c⁻¹h, B) is the isomorphism H(G, S) → H(G, c⁻¹S) of {[}H{]} Lemma
-3.1(i); restricted to \(Γ_{p,q}\) it lands in PSL(2, q) × \{A, B\}, and
-both graphs are Δ-regular with q(q² − 1) vertices. ∎
+and on the B-side cH₀ × \{B\}. When Theorem 2.7 applies, H₀ = PSL(2, q).
+(c) By (b) and {[}H{]} Lemma 2.1 (with the group \{\(ρ_{h}\) : h ∈
+H₀\}), diam \(Γ_{p,q}\) = max(ecc(I, A), ecc(c, B)). Since ψ(\(S_{p}\))
+is closed under inversion (Lemma 2.4), the side swap σ(g, A) = (g, B),
+σ(g, B) = (g, A) is an automorphism of H(PGL(2, q), ψ(\(S_{p}\)))
+({[}H{]} Lemma 3.1(iv)); and \(ρ_{c}\) is one too. \(ρ_{c}\)∘σ maps (I,
+A) to (c, B) and maps \(Γ_{p,q}\) onto the component of (c, B), which is
+\(Γ_{p,q}\) since (c, B) \textasciitilde{} (I, A). Hence ecc(c, B) =
+ecc(I, A). (d) The map (g, A) ↦ (g, A), (h, B) ↦ (c⁻¹h, B) is the
+isomorphism H(G, S) → H(G, c⁻¹S) of {[}H{]} Lemma 3.1(i); restricted to
+\(Γ_{p,q}\) it lands in PSL(2, q) × \{A, B\}, and both graphs are
+Δ-regular with q(q² − 1) vertices. ∎
 
 \hypertarget{the-order-3-symmetry}{%
 \subsubsection{2.2 The order-3 symmetry}\label{the-order-3-symmetry}}
@@ -681,8 +688,7 @@ ends at \(s_{L}\)⁻¹s\_\{L−1\}⋯\(s_{2}\)⁻¹s\_1 with \(s_{t}\) =
 p\(^{L}\). Reduce mod 2: in H(Z)/2H(Z) we have −1 = 1, so i, j, k
 commute there. If p ≡ 1 (mod 4), every \(α_{t}\) and ᾱ\_t is ≡ 1 (mod
 2H(Z)), so β ≡ 1. If p ≡ 3 (mod 4), every \(α_{t}\) and ᾱ\_t is ≡ v := i
-+ j + k, and v² = i² + j² + k² + 2(ij + jk + ki) ≡ 1, so β ≡ v\(^{L}\) =
-1 since L is even. ∎
++ j + k, and v² = −3 ≡ 1, so β ≡ v\(^{L}\) = 1 since L is even. ∎
 
 \textbf{Theorem 3.2 (distance to ψ(i)).} Let p, q be odd primes with q
 \textgreater{} p, and let L₀ be the least even integer L ≥ 0 with
@@ -786,21 +792,59 @@ arithmetic Haar families lose to them by a factor p\(^{D/4−1}\).
 and every prime q with p \textless{} q ≤ 160, the distance from (I, A)
 to ({[}ψ(i){]}, A), ({[}ψ(j){]}, A) and ({[}ψ(k){]}, A), computed by
 breadth-first search (\texttt{lps\_haar.c}), equals L₀: no exception in
-{[}{[}\(N_{THMB}\){]}{]} cases (log
-\texttt{haar\_families/recheck\_thmB.log}). This includes p ≡ 3 (mod 4),
-where equality is not proved here. The eccentricity of (I, A) exceeds L₀
-by 0, 1 or 2 ({[}{[}ECC\_DIST{]}{]}). So in this range the special
-vertex ψ(i) alone accounts for the diameter up to at most 2. An
-independent re-implementation by squad card c8 (its own quaternion
-arithmetic and BFS; \texttt{research/squads/thmfam-r1/c8/}) confirmed
-Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and Theorem 3.2 in 41
-cases with q ≡ 1 (mod 4), and its all-pairs BFS (\texttt{apsp.c}) agreed
-with \texttt{haar\_ecc} on six LPS graphs. (The squad card also found a
-bug in the first version of \texttt{lps\_haar.c}, which mixed the
-distances of the two sides; the logs above are from the corrected
-version.)
+251 cases (log \texttt{haar\_families/recheck\_thmB.log}). This includes
+p ≡ 3 (mod 4), where equality is not proved here. The eccentricity of
+(I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251
+cases). So in this range the special vertex ψ(i) accounts for the
+diameter up to at most 3, and at odd D it is usually what limits the
+family (Appendix B). The construction in the proof of Theorem 3.2(b) (u,
+v, w, and β with N(β) = p\(^{L₀}\), β ≡ 1 mod 2 and {[}ψ(β){]} =
+{[}ψ(i){]}) was also checked directly for p ∈ \{5, 13, 17, 29, 37\} and
+all primes p \textless{} q \textless{} 1000 (802 cases,
+\texttt{haar\_families/check\_thmB\_construction.py}). An independent
+re-implementation by squad card c8 (its own quaternion arithmetic and
+BFS; \texttt{research/squads/thmfam-r1/c8/}) confirmed Theorem 2.6(c)
+for all 137 pairs with 7 ≤ q ≤ 61 and Theorem 3.2 in 41 cases with q ≡ 1
+(mod 4), and its all-pairs BFS (\texttt{apsp.c}) agreed with
+\texttt{haar\_ecc} on six LPS graphs. (The squad card also found a bug
+in the first version of \texttt{lps\_haar.c}, which mixed the distances
+of the two sides; the logs above are from the corrected version.)
 
-\textbf{Remark 3.6 (prior art).} The lower bound (4/3) log\_p n + O(1)
+\textbf{Proposition 3.6 (the same obstruction in other definite
+quaternion orders).} Let 𝒪 be a Z-order in a definite quaternion algebra
+over Q, with norm form N, and suppose 𝒪 = Zγ ⊕ 𝒪′ with N(aγ + β′) = a² +
+N(β′) for a ∈ Z, β′ ∈ 𝒪′ (an orthogonal unit γ, N(γ) = 1). Let ψ: 𝒪 →
+\(M_{2}\)(\(F_{q}\)) be a ring homomorphism with kernel q𝒪 (q an odd
+prime, q ∤ p), let S ⊆ 𝒪 be a set of elements of norm p closed under
+conjugation up to sign, and suppose that no product of an even number L
+≥ 2 of elements of S lies in Zγ. Then in H(PGL(2, q), ψ(S)), every walk
+of even length L from (I, A) to ({[}ψ(γ){]}, A) has 2p\(^{L/2}\)
+\textgreater{} q².
+
+\emph{Proof.} As in Lemma 3.1 the walk ends at {[}ψ(β){]} with β a
+product of L elements of S (conjugates included), so N(β) = p\(^{L}\);
+{[}ψ(β){]} = {[}ψ(γ){]} gives β = bγ + qβ″ with b ∈ Z, β″ ∈ 𝒪′ (the
+kernel of ψ is q𝒪 and 𝒪 = Zγ ⊕ 𝒪′), and β″ ≠ 0 by hypothesis. Then P² =
+b² + q²N(β″) with P = p\(^{L/2}\) and N(β″) ≥ 1, and the second half of
+the proof of Theorem 3.2(a) applies verbatim (q ∤ P, q² \textbar{} P −
+εb, 0 \textless{} P − εb \textless{} 2P). ∎
+
+For the Hamilton order, γ = i, 𝒪′ = Z + Zj + Zk, and the hypothesis is
+Lemma 3.1 (every even product is ≡ 1 mod 2, while elements of Zi have
+even real part). \emph{Computer-checked} (squad card c9 of round 2,
+\texttt{research/squads/thmfam-r2/c9/}): in the order Z⟨1, i, j, ij⟩
+with i² = −1, j² = −3 (norm a₀² + a₁² + 3a₂² + 3a₃²), with S a set of p
++ 1 classes of elements of norm p modulo the units ±1, ±i, for p ∈ \{5,
+7, 11\} and q ≤ 97, the distance from (I, A) to ({[}ψ(i){]}, A) equals
+the least even L with 2p\(^{L/2}\) \textgreater{} q² in 65 of 66 cases
+(in the remaining case, p = 5, q = 61, it is 12 instead of 10), and ψ(i)
+is at maximal distance for p = 5, q ∈ \{61, 83, 97\}. So the obstruction
+is a property of definite quaternion arithmetic with a unit orthogonal
+to the rest, not of Hamilton's order. (The card did not check the
+hypothesis ``no even product in Zi'' for its set; the lower bound it
+measured holds in all 66 cases.)
+
+\textbf{Remark 3.7 (prior art).} The lower bound (4/3) log\_p n + O(1)
 for the diameter of the bipartite LPS graphs is due to N. T. Sardari,
 \emph{Diameter of Ramanujan graphs and random Cayley graphs},
 Combinatorica 39 (2019) 427--446, arXiv:1511.09340 {[}abstract{]}; his
@@ -874,16 +918,21 @@ LPS alone (Appendix B)
 (6,9) & (13, 43) & 93,912 & 80.0 \% & 127,296 & 24,360 \\
 (6,10) & (23, 37) & 449,328 & 99.4 \% & 524,160 & 148,824 \\
 (8,8) & (11, 151) & 199,320 & 98.9 \% & 239,904 & 29,760 \\
-(8,9) & {[}{[}\(C7_{89}\){]}{]} & & & 1,341,600 & 300,696 \\
+(8,9) & (23, 73) & 886,512 & 81.2 \% & 1,341,600 & 300,696 \\
+(14,8) & (29, 379) & 9,232,440 & 65.1 \% & none (the lab does not beat
+this cell) & 1,294,920 \\
 \end{longtable}
 
-Every entry was re-checked with \texttt{haar\_ecc} (two-source BFS on
-the component) and, for (6,10), with \texttt{verify\_cover.py}
-(independent Python arithmetic; eccentricities 10 and 10). These graphs
-are below the lab's records and below the table, and their labels were
-searched for each (q, m): they are not a uniform family. They show that
-the cyclic factor removes most of the 4/3 loss in practice: at (6,10)
-the cover is 3.0 times the LPS graph alone.
+Every entry was re-checked by the director with \texttt{haar\_ecc}
+(two-source BFS on the component, from the cards' generators:
+\texttt{research/squads/thmfam-r1/c6/gen\_c6.py},
+\texttt{research/squads/thmfam-r1/c7/c7lib.py}), and (6,10) and (8,8)
+also with \texttt{verify\_cover.py} (independent Python arithmetic;
+eccentricities 10, 10 and 8, 8). These graphs are below the lab's
+records and below the table, and their labels were searched for each (q,
+m): they are not a uniform family. They show that the cyclic factor
+removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0
+times the LPS graph alone.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -902,23 +951,53 @@ one (q, m).
 
 \textbf{Computer-checked 5.1 (mean excess, 22 primes 23 ≤ q ≤ 113, group
 PSL(2, q) unless stated; from
-\texttt{research/squads/thmfam-r1/scoreboard.jsonl}).}
+\texttt{research/squads/thmfam-r1/scoreboard.jsonl} and the cards'
+folders).} Baselines first (card c13: 8 seeds each, mean ± standard
+deviation over seeds):
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2353}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2353}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-family
+one random draw per q
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Δ = 6
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Δ = 7
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Δ = 8
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+random S, no symmetry, PSL & 3.20 ± 0.05 & 2.95 ± 0.05 & 2.95 ± 0.05 \\
+random S, no symmetry, SL & 3.05 ± 0.02 & 2.89 ± 0.03 & \\
+random orbit-closed S (k = 3), PSL & 3.31 ± 0.11 & 3.04 ± 0.09 & 3.28 ±
+0.08 \\
+random orbit-closed S (k = 3), SL & 3.34 ± 0.10 & 3.09 ± 0.08 & \\
+\end{longtable}
+
+So a single orbit-closed draw is slightly \emph{worse} than a single
+unconstrained draw (by 0.1--0.3); the orbit search wins because it makes
+the search space smaller and the misses come in clumps ({[}H{]} §3.5),
+not because orbit-closed sets are better one by one. The families:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2308}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+family (one S per q, no search per q)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Δ
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 mean excess
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-random orbit-closed draw, same Δ
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 card
 \end{minipage} \\
@@ -926,26 +1005,33 @@ card
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-LPS, p = 5 (component of PGL(2, q)) & 6 & 4.00 & 3.18--3.50 (3 seeds) &
-director \\
+LPS, p = 5 (component in PGL(2, q)) & 6 & 4.00 & director \\
 integer lifts, O(X) ∪ O(Y), X, Y ∈ SL(2, Z), entries ≤ 3 (best of 206) &
-6 & 3.36 & 3.18--3.50 & c1 \\
-integer lifts, \{I\} ∪ O(X) ∪ O(Y) (best of 1212; mean of top 10: 3.35)
-& 7 & 3.10 & 2.96--3.24 (5 seeds, mean 3.07) & c2 \\
+6 & 3.36 & c1 \\
+Dickson / trace / power formulas (best of 15) & 6 & 3.13 & c11 \\
+integer lifts, \{I\} ∪ O(X) ∪ O(Y) (best of 1212; mean of the top 10:
+3.35) & 7 & 3.10 & c2 \\
 primitive-root formulas, e.g.~X = {[}{[}g, 1{]}, {[}0, g⁻¹{]}{]}, Y =
-{[}{[}1/2, g{]}, {[}g, 2(1 + g²){]}{]} (best of 16) & 7 & 2.96 &
-2.96--3.24 & c10 \\
-Dickson / trace / power formulas (best of 15) & 6 & 3.13 & 3.18--3.50 &
-c11 \\
-conic model, Cayley transforms of integer matrices (best of 8) & 8 &
-3.34 & 3.25--3.30 & c16 \\
-order-5 or order-6 symmetry, single orbits (k = 6, best) & 12 & 2.73 & k
-= 3: 2.55--2.64; k = 6: 2.91--3.09 & c15 \\
-LPS + one extra α-orbit (repair) & 9 & 3.24 (7 primes) & 2.72--2.86 &
-c18 \\
-{[}{[}MORE\_ROWS{]}{]} & & & & \\
+{[}{[}1/2, g{]}, {[}g, 2(1 + g²){]}{]} (best of 16) & 7 & 2.96 & c10 \\
+integer lifts × \(Z_{13}\), equivariant labels (best of about 500
+screened) & 7 & 3.12 & c4 \\
+integer lifts, two fixed letters + two orbits (all 234 with entries ≤ 2)
+& 8 & 3.84 & c3 \\
+Dickson / trace / power formulas (best of 15) & 8 & 3.16 & c11 \\
+conic model: Cayley transforms of integer matrices (best of 8) & 8 &
+3.34 & c16 \\
+integer lifts, one fixed letter + three orbits (all 858 with entries ≤
+2) & 10 & 3.40 (random orbit-closed: 2.76) & c3 \\
+single orbits of order 6 (best uniform x, y) & 12 & 2.73 (random, k = 3:
+2.55--2.64) & c15 \\
+LPS + one extra α-orbit (repair) & 9 & 3.24 on 7 primes (random:
+2.72--2.86) & c18 \\
+the records' own sets, lifted to SL(2, Z) and used at the other 21
+primes & 6, 7 & 2.87--3.24 (at their own q: 1.99--2.13) & c5 \\
+SL(2, q) × \(Z_{m}\), m ≈ q, integer letters with equivariant labels (10
+primes 23--61) & 6 & 3.38 (same letters, m = 1: 3.60) & c17 \\
 the lab's records (one (q, m) each, annealed) & 6--16 & about 2.0--2.3 &
-& {[}H{]} \\
+{[}H{]} \\
 \end{longtable}
 
 Torus-orbit families with Δ growing like q (card c12: S = \{I\} ∪
@@ -962,25 +1048,30 @@ draws with slope −0.04.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  The best uniform formula of each kind ties a single random draw; it
-  does not beat it by more than the spread of random seeds (about
-  0.1--0.2), and the ``best'' was selected among 8--1212 variants on the
-  same primes.
+  Every formula family lands within about 0.3 of one random draw at the
+  same Δ, on either side; the best of each kind was selected among
+  8--1212 variants on the same primes, so the small wins are within the
+  selection effect.
 \item
-  Arithmetic structure costs: LPS is about 0.6--0.8 worse than one
-  random draw at q ≤ 113, and the gap grows like (1/3) log\_p n (Theorem
-  3.2, card c14).
+  Arithmetic structure costs: LPS is about 0.8 worse than one random
+  draw at q ≤ 113, and the gap grows like (1/3) log\_p n (Theorem 3.2;
+  card c14 measured slope 0.41 for LPS and −0.04 for random draws).
+\item
+  The records do not transport: the set that is a record at its own q
+  (excess about 2.0) is an ordinary set at every other q (card c5). A
+  record is a property of the pair (q, S), not of a formula.
 \item
   Larger symmetry (k = 5, 6) is worse than k = 3 at the same Δ, for
-  formulas and for random draws (card c15), in line with {[}H{]} §3.5:
-  orbit closure helps the search, not the quality of a single set.
+  formulas and for random draws (card c15).
 \item
   The records are about 1 below a single draw. In the model of {[}H{]}
   §3.5 a single random S misses about μ = N e\(^{−W/N}\) elements and is
-  valid with probability about e\(^{−μ}\); the search raises the usable
-  μ to μ* with e\(^{μ*}\) ≈ the number of independent tries, which
-  shrinks the needed W/N by ln μ*, about one unit of \(log_{Δ−1}\). A
-  formula gives one try per q.
+  valid with probability about e\(^{−μ}\); a search over T independent
+  sets can afford μ* ≈ ln T, which lowers the needed W/N by about ln μ*,
+  roughly one unit of \(log_{Δ−1}\) at the sizes of the records. A
+  formula gives one set per q, so it cannot have this advantage unless
+  it is better than random for structural reasons, as the Singer sets
+  are at D = 3. We found no such structure at D ≥ 7.
 \end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -1038,7 +1129,7 @@ diameter log\_p n + O(log log n). Neither is in sight. The squads' round
   factorization used in Theorem 3.2(b) are theirs.
 \item
   \textbf{The 4/3 lower bound.} Sardari (2019) {[}abstract{]}, Remark
-  3.6.
+  3.7.
 \item
   \textbf{Typical distances in Ramanujan graphs.} Lubetzky--Peres (2016)
   {[}secondary{]}; Sardari (2019) {[}abstract{]}.
@@ -1082,6 +1173,7 @@ novelty for Lemmas 2.3--2.5 or for Theorem 2.7.
 \FunctionTok{cc} \AttributeTok{{-}O3} \AttributeTok{{-}o}\NormalTok{ haar\_ecc haar\_ecc.c          }\CommentTok{\# any Haar graph of SL/PSL/PGL(2,q) x Z\_m from generator lines "a b c d z"}
 \ExtensionTok{./lps\_haar}\NormalTok{ 5 13 }\AttributeTok{{-}v}                     \CommentTok{\# Example 2.8: 2184 vertices, diameter 7, d(I, psi(i)) = 6 = L0}
 \ExtensionTok{python3}\NormalTok{ check\_thmB.py 3,5,7,11,13,17,19,29 160 }\OperatorTok{\textgreater{}}\NormalTok{ recheck\_thmB.log     }\CommentTok{\# Computer{-}checked 3.5}
+\ExtensionTok{python3}\NormalTok{ check\_thmB\_construction.py                                    }\CommentTok{\# the beta of Theorem 3.2(b), q \textless{} 1000}
 \ExtensionTok{./lps\_haar}\NormalTok{ 5 13 }\AttributeTok{{-}v} \KeywordTok{|} \FunctionTok{grep} \StringTok{\textquotesingle{}\^{}gen\textquotesingle{}} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/.*mat(//; s/) z=/ /; s/,/ /g\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ g.txt}
 \ExtensionTok{python3}\NormalTok{ component\_edges.py pgl 13 1 e.txt }\OperatorTok{\textless{}}\NormalTok{ g.txt                    }\CommentTok{\# independent edge list of the component}
 \FunctionTok{cc} \AttributeTok{{-}O2} \AttributeTok{{-}o}\NormalTok{ apsp ../../lifts/coordinator\_check/apsp.c }\KeywordTok{\&\&} \ExtensionTok{./apsp}\NormalTok{ e.txt 6 40   }\CommentTok{\# all{-}pairs BFS: diameter 7}
@@ -1098,12 +1190,129 @@ novelty for Lemmas 2.3--2.5 or for Theorem 2.7.
 \subsection{Appendix A. The squad
 rounds}\label{appendix-a.-the-squad-rounds}}
 
-{[}{[}SQUADS{]}{]}
+Two rounds of Claude Haiku cards (the lab's \texttt{haiku-squad} skill;
+model haiku, effort high), directed by this session. The cards, the
+shared rules and every card's code and notes are in
+\texttt{research/squads/thmfam-r1/} and
+\texttt{research/squads/thmfam-r2/}, one line per card in
+\texttt{scoreboard.jsonl}; the rounds are logged in
+\texttt{research/squads/LOG.md}. The squads searched constructions and
+tested the theorems on small q; the proofs are the director's. Every
+number quoted in the note from a card was re-run by the director with
+the commands of §8, except where it says ``card'' only (the mean
+excesses of §5, which are averages over many runs and are reproducible
+from the cards' folders).
+
+\textbf{Round 1 (18 cards): uniform families.} c1--c4 integer lifts (Δ =
+6, 7, 8, 10, and with \(Z_{m}\)); c5 the records' sets at other q;
+c6--c7 LPS × \(Z_{m}\) with searched labels; c8 verification of Theorems
+2.6 and 3.2 (found a bug in the first \texttt{lps\_haar.c}); c9 the far
+vertices of LPS graphs (the guess ``all far vertices come from pure
+quaternions'' failed); c10--c11 q-dependent formulas; c12 torus orbits
+with Δ \textasciitilde{} q; c13--c14 random baselines and the trend in
+q; c15 symmetries of order 5 and 6; c16 the conic model; c17 cyclic
+factors with m \textasciitilde{} q; c18 repairs of LPS. Outcome: every
+formula family is at the level of one random draw (§5); LPS × \(Z_{m}\)
+covers were the only direction that came close to the table (§4).
+
+\textbf{Round 2 (11 cards): LPS × \(Z_{m}\) covers.} {[}{[}R2{]}{]}
 
 \hypertarget{appendix-b.-the-lps-family-cell-by-cell}{%
 \subsection{Appendix B. The LPS family cell by
 cell}\label{appendix-b.-the-lps-family-cell-by-cell}}
 
-{[}{[}APPB{]}{]}
+\textbf{Computer-checked} (\texttt{haar\_families/appendix\_b.py} from
+the scan logs \texttt{haar\_families/scan/lps\_p*.txt}, which list the
+order and the diameter of \(Γ_{p,q}\) for every prime p \textless{} q up
+to the scan limit, computed by \texttt{lps\_haar}). For each cell the
+largest LPS graph of diameter ≤ D; ``(scan limit)'' means the largest
+scanned q still had diameter ≤ D, so larger LPS graphs may exist there.
+``Thm 3.2: q ≤'' is the largest prime q with q² \textless{}
+2p\(^{⌊D/2⌋}\), the limit of Corollary 3.4.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Δ (p)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+D
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+largest LPS graph: q, vertices
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\% of Moore
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Thm 3.2: q ≤
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+table
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+ratio table/LPS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+lab record
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+4 (3) & 7 & 7, 336 & 15.37 & 7 & 840 & 2.5 & 864 \\
+4 (3) & 8 & 7, 336 & 5.12 & 11 & 2,184 & 6.5 & -- \\
+4 (3) & 9 & 11, 1,320 & 6.71 & 11 & 4,970 & 3.8 & -- \\
+4 (3) & 10 & 13, 2,184 & 3.70 & 19 & 11,748 & 5.4 & 12,416 \\
+4 (3) & 11 & 19, 6,840 & 3.86 & 19 & -- & -- & -- \\
+4 (3) & 12 & 19, 6,840 & 1.29 & 37 & -- & -- & -- \\
+6 (5) & 7 & 13, 2,184 & 5.59 & 13 & 8,310 & 3.8 & 8,880 \\
+6 (5) & 8 & 23, 12,144 & 6.22 & 31 & 29,790 & 2.5 & 31,680 \\
+6 (5) & 9 & 29, 24,360 & 2.49 & 31 & 117,360 & 4.8 & 127,296 \\
+6 (5) & 10 & 53, 148,824 & 3.05 & 79 & 452,032 & 3.0 & 524,160 \\
+6 (5) & 11 & 67, 300,696 & 1.23 & 79 & -- & -- & -- \\
+6 (5) & 12 & 107, 1,224,936 & 1.00 & 173 & -- & -- & -- \\
+8 (7) & 7 & 23, 12,144 & 4.42 & 23 & 40,586 & 3.3 & 43,344 \\
+8 (7) & 8 & 31, 29,760 & 1.55 & 67 & 201,480 & 6.8 & 239,904 \\
+8 (7) & 9 & 67, 300,696 & 2.24 & 67 & 1,091,232 & 3.6 & 1,341,600 \\
+8 (7) & 10 & 107, 1,224,936 & 1.30 & 181 & 6,927,210 & 5.7 &
+7,818,096 \\
+8 (7) & 11 & 173, 5,177,544 & 0.79 & 181 & -- & -- & -- \\
+8 (7) & 12 & 229, 12,008,760 (scan limit) & 0.26 & 479 & -- & -- & -- \\
+12 (11) & 7 & 47, 103,776 & 2.66 & 47 & 664,300 & 6.4 & 693,500 \\
+12 (11) & 8 & 71, 357,840 & 0.83 & 167 & 4,650,100 & 13.0 & -- \\
+12 (11) & 9 & 167, 4,657,296 & 0.99 & 167 & 30,001,152 & 6.4 &
+34,026,720 \\
+12 (11) & 10 & 251, 15,813,000 & 0.30 & 563 & 300,383,050 & 19.0 &
+325,832,976 \\
+12 (11) & 11 & 257, 16,974,336 (scan limit) & 0.03 & 563 & -- & -- &
+-- \\
+12 (11) & 12 & 257, 16,974,336 (scan limit) & 0.00 & 1879 & -- & -- &
+-- \\
+14 (13) & 7 & 59, 205,320 & 1.96 & 61 & 1,771,560 & 8.6 & 1,789,588 \\
+14 (13) & 8 & 109, 1,294,920 & 0.95 & 239 & 14,172,480 & 10.9 & -- \\
+14 (13) & 9 & 233, 12,649,104 & 0.72 & 239 & 95,087,738 & 7.5 &
+116,068,656 \\
+14 (13) & 10 & 257, 16,974,336 (scan limit) & 0.07 & 859 & 1,213,477,190
+& 71.5 & 1,326,627,120 \\
+14 (13) & 11 & 257, 16,974,336 (scan limit) & 0.01 & 859 & -- & -- &
+-- \\
+14 (13) & 12 & 257, 16,974,336 (scan limit) & 0.00 & 3089 & -- & -- &
+-- \\
+\end{longtable}
+
+Scan limits: p = 3: q ≤ 157, p = 5: q ≤ 157, p = 7: q ≤ 229, p = 11: q ≤
+257, p = 13: q ≤ 257.
+
+At odd D, in the 13 cells not cut by the scan limit, the largest q
+reached equals the limit of Theorem 3.2 in 8 cells ((4,7), (4,9),
+(4,11), (6,7), (8,7), (8,9), (12,7), (12,9)), is the next prime below it
+in 3 ((6,9): 29 against 31; (14,7): 59 against 61; (14,9): 233 against
+239), and is farther below in 2 ((6,11): 67 against 79; (8,11): 173
+against 181). So at odd D the vertex ψ(i) is usually what stops the
+family, as far as the scan goes. At even D = 2κ the limit is the same as
+at D = 2κ + 1, and the generic vertices, at distance about log\_p n,
+stop the family first.
 
 \end{document}

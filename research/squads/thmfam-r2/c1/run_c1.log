@@ -21,3 +21,11 @@ cyc t2=m-1 rk2                   mean_excess=3.063 n_full=45/45 vs8=0.513 vs9=0.
 cyc t2=m-2 rk2                   mean_excess=2.974 n_full=45/45 vs8=0.513 vs9=0.724 vs10=0.833
 cyc t2=r+1 rk2                   mean_excess=3.218 n_full=45/45 vs8=0.513 vs9=0.758 vs10=0.661
 cyc t2=r-1 rk2                   mean_excess=2.974 n_full=45/45 vs8=0.513 vs9=0.793 vs10=0.833
+cyc t2=2r rk2                    mean_excess=2.885 n_full=45/45 vs8=0.953 vs9=0.8 vs10=0.833
+cyc t2=half rk2                  mean_excess=3.018 n_full=45/45 vs8=0.513 vs9=0.758 vs10=0.741
+cyc t2=r2+2 rk2                  mean_excess=2.929 n_full=45/45 vs8=0.953 vs9=0.912 vs10=0.923
+cyc t2=3 rk2                     mean_excess=3.018 n_full=45/45 vs8=0.513 vs9=0.8 vs10=0.833
+cyc t2=5 rk2                     mean_excess=3.085 n_full=45/45 vs8=0.953 vs9=0.724 vs10=0.741
+cyc t2=4 rk2                     mean_excess=2.974 n_full=45/45 vs8=0.513 vs9=0.8 vs10=0.741
+cyc t2=r2 rk2                    mean_excess=4.285 n_full=45/45 vs8=None vs9=0.242 vs10=0.377
+cyc t2=2r+1 rk2                  mean_excess=3.04 n_full=45/45 vs8=None vs9=0.8 vs10=0.833
