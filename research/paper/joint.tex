@@ -2628,10 +2628,487 @@ which the table does not use.
 improved by a Haar graph in Section~\ref{sec:haar}. Our own graphs at $(11,8)$ and $(15,8)$ (Table~\ref{tab:haar}) beat the
 table values whatever their status; at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ we have no graph above the table values.}
 
+%======================================================================
+\section{Haar graphs: diameter 5 and diameters 8 to 10}\label{sec:haar}
+%======================================================================
+
+This section is group-theoretic, not geometric. It gives the criterion that makes the diameter of a Haar graph a finite
+covering statement, decidable by two breadth-first searches, and lists Haar graphs that improve the 2013 table at $D=5$ and
+$D=8,9,10$. Each of these is a single explicit graph; none comes from an infinite family, and their diameters are
+computer-checked (Appendix~\ref{app:checks}).
+
+\subsection{Definition and the covering criterion}
+
+\begin{definition}\label{def:haar}
+Let $G$ be a finite group with identity $e$ and $S\subseteq G$ with $|S|=\Delta$. The \emph{Haar graph} $H(G,S)$ has vertex set
+$G\times\{A,B\}$, and $(g,A)$ is adjacent to $(sg,B)$ for every $g\in G$ and $s\in S$. So
+\[
+N(g,A)=\{(sg,B):s\in S\},\qquad N(h,B)=\{(s^{-1}h,A):s\in S\}.
+\]
+\end{definition}
+
+The name is from Hladnik, Maru\v{s}i\v{c} and Pisanski \cite{HMP02} (cyclic groups; Est\'elyi and Pisanski \cite{EP16} for
+arbitrary groups). $H(G,S)$ is the regular $G$-cover of the dipole with $\Delta$ parallel edges carrying the voltages $s\in S$;
+voltage lifts of small base graphs are the standard tool behind many entries of the bipartite table (Loz and \v{S}ir\'a\v{n}
+\cite{LS08}; \cite[\S3.4.5]{MS13}). Joining $(g,A)$ to $(gs,B)$ instead gives an isomorphic graph (via $(g,X)\mapsto
+(g^{-1},X)$ and $S\mapsto S^{-1}$). Calling the $A$-vertices points and the $B$-vertices lines, $H(G,S)$ is the incidence graph
+of the development of $S^{-1}$: the line $(h,B)$ is incident with the points $(s^{-1}h,A)$, $s\in S$. For example $H(\Z_7,\{0,1,3\})$
+is the incidence graph of the Fano plane.
+
+\begin{lemma}\label{lem:haarbasic}
+Let $|S|=\Delta\ge1$. $H(G,S)$ is bipartite, simple and $\Delta$-regular on $2|G|$ vertices; each right translation
+$\rho_h(g,X)=(gh,X)$ is an automorphism, and these act regularly on each side.
+\end{lemma}
+
+\begin{proof}
+Edges join the two sides. The neighbours $(sg,B)$, $s\in S$, of $(g,A)$ are distinct, and so are the $(s^{-1}h,A)$. If $(g,A)\sim
+(sg,B)$ then $(gh,A)\sim(sgh,B)$, and $\rho_h(e,X)=(h,X)$.
+\end{proof}
+
+For $X,Y\subseteq G$ write $XY=\{xy:x\in X,y\in Y\}$, $X^{-1}=\{x^{-1}:x\in X\}$, $X^0=\{e\}$ and $X^j=X\cdot X^{j-1}$.
+
+\begin{proposition}[distances from the two base vertices]\label{prop:haardist}
+Let $S\ne\emptyset$, $x\in G$ and $j\ge0$. Then $d((e,A),(x,A))\le2j$ if and only if $x\in(S^{-1}S)^j$;
+$d((e,A),(x,B))\le2j+1$ if and only if $x\in S(S^{-1}S)^j$; $d((e,B),(x,B))\le2j$ if and only if $x\in(SS^{-1})^j$; and
+$d((e,B),(x,A))\le2j+1$ if and only if $x\in S^{-1}(SS^{-1})^j$.
+\end{proposition}
+
+\begin{proof}
+A walk of length $l$ from $(e,A)$ passes through $(g_0,A),(g_1,B),(g_2,A),\dots$ with $g_0=e$, $g_i=t_ig_{i-1}$ for odd $i$ and
+$g_i=t_i^{-1}g_{i-1}$ for even $i$, where $t_i\in S$ is the letter used at step $i$; every choice of letters gives a walk. So
+the ends of the walks of length exactly $2j$ are the $(x,A)$ with $x\in(S^{-1}S)^j$, and those of length exactly $2j+1$ are the
+$(x,B)$ with $x\in S(S^{-1}S)^j$. A shortest path followed by back-and-forth steps along one edge is a walk of any larger length
+of the same parity. From $(e,B)$ the same argument gives the last two statements.
+\end{proof}
+
+\begin{theorem}[covering criterion]\label{thm:covering}
+Let $S\ne\emptyset$ and $D\ge2$.
+\begin{enumerate}[label=(\alph*)]
+\item If $D=2\kappa$, then $\diam H(G,S)\le D$ if and only if $S(S^{-1}S)^{\kappa-1}=G$.
+\item If $D=2\kappa+1$, then $\diam H(G,S)\le D$ if and only if $(S^{-1}S)^\kappa=G$ and $(SS^{-1})^\kappa=G$.
+\end{enumerate}
+Moreover $\diam H(G,S)=\max(\ecc(e,A),\ecc(e,B))$.
+\end{theorem}
+
+\begin{proof}
+The last statement holds because the right translations are automorphisms acting transitively on each side
+(Lemma~\ref{lem:haarbasic}): every vertex is mapped to $(e,A)$ or $(e,B)$ by an automorphism.
+(a) If $\diam\le2\kappa$, then for $x\in G$ the distance $d((e,A),(x,B))$ is odd and at most $2\kappa$, so at most $2(\kappa-1)+1$,
+and $x\in S(S^{-1}S)^{\kappa-1}$ by Proposition~\ref{prop:haardist}. Conversely, if $S(S^{-1}S)^{\kappa-1}=G$ then
+$d((g,A),(h,B))=d((e,A),(hg^{-1},B))\le2\kappa-1$ for all $g,h$. Fix $s\in S$. Since $(g',A)\sim(sg',B)$,
+$d((g,A),(g',A))\le2\kappa$; since $(h',B)\sim(s^{-1}h',A)$, $d((h,B),(h',B))\le2\kappa$.
+(b) If $\diam\le2\kappa+1$, same-side distances are even, hence at most $2\kappa$, so both products are $G$. Conversely, if both
+hold, all same-side distances are at most $2\kappa$, and $d((g,A),(h,B))\le1+d((sg,B),(h,B))\le2\kappa+1$.
+\end{proof}
+
+At $D=5$ ($\kappa=2$) the criterion reads: every element of $G$ is a product $a^{-1}bc^{-1}d$ and also a product $ab^{-1}cd^{-1}$
+with $a,b,c,d\in S$. A shortest path never backtracks, so the same count gives the per-side Moore bound
+$|G|\le\sum_{j<D}(\Delta-1)^j$; for $\Delta\ge3$ and $D\in\{8,9,10\}$ it is strict, since equality would make $H(G,S)$ the
+incidence graph of a thick generalized $D$-gon of order $(\Delta-1,\Delta-1)$, which does not exist by \cite{FeitHigman}.
+
+\subsection{Diameter 5}
+The covering condition at $D=5$ is a finite check: for each graph below, a representation $a^{-1}bc^{-1}d$ and
+$ab^{-1}cd^{-1}$ of every group element is computer-checked (and kernel-checked in Lean, Appendix~\ref{app:lean}).
+\begin{itemize}
+\item $(7,5)$, 1152 vertices: $G=S_4\times\Z_{24}$ (order 576), with $(f,x)(h,y)=(f\circ h,x+y)$, and
+\[
+S=\{(\mathrm{id},0),((0\,1)(2\,3),23),((0\,3\,2),0),((0\,2),18),((0\,1\,2\,3),18),((1\,2\,3),17),((1\,2),3)\},
+\]
+permutations of $\{0,1,2,3\}$ in cycle notation.
+\item $(9,5)$, 2662 vertices: $G$ the Heisenberg group modulo 11, $(a,b,c)(a',b',c')=(a+a',b+b',c+c'+ab')$, and
+\[
+S=\{(0,0,0),(8,6,10),(7,9,3),(10,1,8),(4,4,5),(5,5,8),(6,5,4),(1,0,9),(6,10,8)\}.
+\]
+\end{itemize}
+These improve the 2013 values 1134 and 2496.
+\todo{$(9,5)$: the repository now has a larger Haar graph, of $\Z_{197}\rtimes\Z_7$ with 2758 vertices (computer-checked and
+proved in Lean), and $(8,5)$ has a 2048-vertex lift that is not a Haar graph. Neither is in the refereed notes. Include?}
+
+\subsection{Diameters 8, 9 and 10}
+The groups are $\SL(2,q)$, $\PSL(2,q)$, direct products $Q\times\Z_n$ and $Q_1\times Q_2\times\Z_n$ of these with a cyclic group,
+and metacyclic groups $\Z_m\rtimes_r\Z_l$, the pairs $(a,j)\in\Z_m\times\Z_l$ with $(a,j)(b,i)=(a+r^jb,j+i)$, where $r^l\equiv1\pmod
+m$. Table~\ref{tab:haar} lists the graphs; their connection sets are given as data (Appendix~\ref{app:checks}).
+
+\begin{example}[$\Delta=7$, $D=8$, 95\,760 vertices]\label{ex:haar78}
+$G=\PSL(2,19)\times\Z_{14}$, of order $3420\cdot14=47\,880$, matrices modulo $\pm I$, and
+\[
+S=\Bigl\{(I,0),\ \bigl(\begin{smallmatrix}2&13\\14&6\end{smallmatrix},6\bigr),\ \bigl(\begin{smallmatrix}4&13\\7&4\end{smallmatrix},12\bigr),\
+\bigl(\begin{smallmatrix}2&7\\7&6\end{smallmatrix},10\bigr),\ \bigl(\begin{smallmatrix}6&2\\8&6\end{smallmatrix},1\bigr),\
+\bigl(\begin{smallmatrix}6&13\\15&1\end{smallmatrix},9\bigr),\ \bigl(\begin{smallmatrix}1&4\\12&11\end{smallmatrix},11\bigr)\Bigr\}.
+\]
+With $g=\bigl(\begin{smallmatrix}1&3\\6&0\end{smallmatrix}\bigr)$ (order 3 in $\PSL(2,19)$), the automorphism
+$\alpha(x,z)=(gxg^{-1},9z)$ of order 3 fixes the first element of $S$ and permutes the others in two 3-cycles, $s_1\mapsto
+s_2\mapsto s_3\mapsto s_1$ and $s_4\mapsto s_5\mapsto s_6\mapsto s_4$. By Theorem~\ref{thm:covering}(a), $\diam H(G,S)\le8$ means
+that every element of $G$ is a product $s_{i_7}s_{i_6}^{-1}s_{i_5}s_{i_4}^{-1}s_{i_3}s_{i_2}^{-1}s_{i_1}$; this covering is
+computer-checked (and the graph is proved in Lean). The order is 14.3\% of the Moore bound $\Mb(7,8)=671\,846$; the 2013 value
+is 80\,940.
+\end{example}
+
+In most of the graphs of Table~\ref{tab:haar}, $S$ is closed under an automorphism $\alpha$ of $G$ of order 3 (or 5, or 6), as
+in Example~\ref{ex:haar78}; no check uses this symmetry.
+
+\begin{longtable}{@{}l r r r l@{}}
+\caption{Haar graphs $H(G,S)$ at $D=8,9,10$ (and one lift). ``\%'': gain over the 2013 value. All computer-checked by at
+least two separately written programs, or by one program and a Lean proof.}\label{tab:haar}\\
+\toprule cell & 2013 & this paper & \% & group $G$ \\ \midrule\endfirsthead
+\toprule cell & 2013 & this paper & \% & group $G$ \\ \midrule\endhead
+\bottomrule\endfoot
+(3,8) & 256 & 288 & 12.5 & lift of a 4-vertex base over $\Z_3^2\rtimes\Z_8$ (not a Haar graph)\\
+(5,8) & 9\,234 & 9\,760 & 5.7 & $\Z_{61}\rtimes_8\Z_{80}$\\
+(6,8) & 29\,790 & 31\,680 & 6.3 & $\PSL(2,11)\times\Z_{24}$\\
+(7,8) & 80\,940 & 95\,760 & 18.3 & $\PSL(2,19)\times\Z_{14}$\\
+(8,8) & 201\,480 & 239\,904 & 19.1 & $\PSL(2,17)\times\Z_{49}$\\
+(9,8) & 449\,480 & 540\,360 & 20.2 & $\PSL(2,19)\times\Z_{79}$\\
+(11,8) & 2\,246\,940$^a$ & 2\,258\,520 & 0.5 & $\PSL(2,59)\times\Z_{11}$\\
+(13,8) & 5\,314\,680 & 6\,999\,552 & 31.7 & $\SL(2,7)^2\times\Z_{31}$\\
+(15,8) & 14\,172\,480$^a$ & 18\,128\,880 & 27.9 & $\SL(2,109)\times\Z_7$\\
+(5,9) & 27\,936 & 29\,540 & 5.7 & $\Z_{422}\rtimes_5\Z_{35}$\\
+(6,9) & 117\,360 & 127\,296 & 8.5 & $\SL(2,17)\times\Z_{13}$\\
+(7,9) & 400\,160 & 462\,840 & 15.7 & $\PSL(2,29)\times\Z_{19}$\\
+(8,9) & 1\,091\,232 & 1\,341\,600 & 22.9 & $\SL(2,25)\times\Z_{43}$\\
+(9,9) & 2\,961\,536 & 3\,499\,776 & 18.2 & $\PSL(2,7)\times\SL(2,7)\times\Z_{31}$\\
+(10,9) & 7\,057\,400 & 8\,003\,856 & 13.4 & $\SL(2,83)\times\Z_7$\\
+(11,9) & 15\,200\,448 & 16\,792\,080 & 10.5 & $\SL(2,61)\times\Z_{37}$\\
+(12,9) & 30\,001\,152 & 34\,026\,720 & 13.4 & $\SL(2,41)\times\Z_{247}$\\
+(13,9) & 50\,990\,610 & 67\,742\,688 & 32.9 & $\SL(2,103)\times\Z_{31}$\\
+(14,9) & 95\,087\,738 & 116\,068\,656 & 22.1 & $\SL(2,67)\times\Z_{193}$\\
+(15,9) & 168\,016\,334 & 208\,029\,120 & 23.8 & $\SL(2,79)\times\Z_{211}$\\
+(16,9) & 288\,939\,118 & 337\,394\,400 & 16.8 & $\SL(2,151)\times\Z_{49}$\\
+(4,10) & 11\,748 & 12\,416 & 5.7 & $\Z_{97}\rtimes_{19}\Z_{64}$\\
+(5,10) & 90\,068 & 95\,472 & 6.0 & $\Z_{1989}\rtimes_{461}\Z_{24}$\\
+(6,10) & 452\,032 & 524\,160 & 16.0 & $\SL(2,5)\times\PSL(2,7)\times\Z_{13}$\\
+(7,10) & 1\,987\,380 & 2\,237\,760 & 12.6 & $\PSL(2,5)\times\SL(2,8)\times\Z_{37}$\\
+(8,10) & 6\,927\,210 & 7\,818\,096 & 12.9 & $\SL(2,67)\times\Z_{13}$\\
+(9,10) & 20\,017\,260 & 23\,975\,280 & 19.8 & $\PSL(2,71)\times\Z_{67}$\\
+(10,10) & 50\,331\,156 & 60\,141\,120 & 19.5 & $\SL(2,79)\times\Z_{61}$\\
+(11,10) & 130\,592\,354$^b$ & 148\,729\,680 & 13.9 & $\PSL(2,89)\times\Z_{211}$\\
+(12,10) & 300\,383\,050 & 325\,832\,976 & 8.5 & $\SL(2,107)\times\Z_{133}$\\
+(13,10) & 617\,330\,936 & 677\,714\,400 & 9.8 & $\SL(2,199)\times\Z_{43}$\\
+(14,10) & 1\,213\,477\,190 & 1\,326\,627\,120 & 9.3 & $\SL(2,139)\times\Z_{247}$\\
+(15,10) & 2\,300\,326\,510 & 2\,467\,618\,800 & 7.3 & $\SL(2,149)\times\Z_{373}$\\
+(16,10) & 4\,119\,507\,330 & 4\,220\,872\,800 & 2.5 & $\SL(2,151)\times\Z_{613}$\\
+\end{longtable}
+\noindent $^a$ A value of G\'omez's $\Om_q$ (Section~\ref{sec:d8}); at $(15,8)$ the thesis lists the larger value
+14\,978\,080 ($\Om_{11}\mathrm d$), against which the gain is 21.0\%.
+$^b$ The survey PDF prints ``130 592 1354''; every revision of \cite{CW} has 130\,592\,354.
+
+The $(3,8)$ graph is a 72-fold regular cover of the cubic bipartite multigraph on $2+2$ vertices with edges $0$--$2$ twice,
+$0$--$3$, $1$--$2$, $1$--$3$ twice, with voltages in $\Z_3^2\rtimes_\phi\Z_8$, where the generator of $\Z_8$ acts by
+$\phi=\bigl(\begin{smallmatrix}0&2\\1&0\end{smallmatrix}\bigr)$. It is not a Haar graph: its automorphism group is not
+transitive on a colour class (computer-checked: two distance profiles in each class).
+
+\todo{Values at $D=8$--$10$ raised after the refereed Haar note (computer-checked by the coordinator and proved in Lean on
+the lean-all branch): $(9,8)$ 546\,720 ($\SL(2,16)\times\Z_{67}$), $(5,9)$ 29\,756 ($\Z_{346}\rtimes\Z_{43}$), $(7,10)$ 2\,298\,240
+($\SL(2,7)\times\PSL(2,19)$), $(8,10)$ 8\,043\,840 ($\PSL(2,7)\times\PSL(2,19)\times\Z_7$); also $(3,10)$ 810 (a lift over
+$\Z_3\times\mathrm{He}_3$). Use these in Table~\ref{tab:haar}?}
+
+\emph{Cells we do not improve at $D=8,9,10$:} $(4,8)$ 2184, $(10,8)$ 1\,176\,480, $(12,8)$ 4\,650\,100, $(14,8)$
+14\,172\,480, $(16,8)$ 36\,201\,060, $(3,9)$ 506, $(4,9)$ 4970 and $(3,10)$ 800 (the last improved to 810 by a lift; see the
+note above). The values at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ are those of Section~\ref{sec:d8}.
+
+\subsection{Prior work}
+The type of construction is not new. Haar graphs of $\SL(2,q)$ appear in the cage literature: according to the dynamic cage
+survey \cite{EJ13}, the smallest known cubic graph of girth 30, on $1\,143\,408=2|\SL(2,83)|$ vertices, is a voltage lift over
+$\SL(2,83)$ of the dipole with three parallel edges \cite{EJ11}, that is, a Haar graph $H(\SL(2,83),S)$ with $|S|=3$; and Bray,
+Parker and Rowley \cite{BPR00} use $\PSL(2,q)\times\Z_3$. Haar graphs of cyclic groups appear at $D=3$ in \cite{FMP13}, and
+dipole lifts over metacyclic groups are probably behind Loz's values \cite{LS08}. In the sources we searched we found no use
+of Haar graphs of $\SL(2,q)$ or $\PSL(2,q)$, alone or times a cyclic group, for large bipartite graphs of diameter 8, 9 or 10.
+Theorem~\ref{thm:covering} is routine and we claim no novelty for it.
+
+%======================================================================
+\section{The updated table}\label{sec:table}
+%======================================================================
+
+Table~\ref{tab:updated} lists, for every cell with $\Delta\le16$ and $D\le10$ treated in this paper, the 2013 value and ours.
+Status: \textsf P = member of a family with a complete proof in this paper (for the $D=7$ records: the general theorems, with
+explicit sets that are computer-checked); \textsf C = the graph is computer-checked (Appendix~\ref{app:checks}); \textsf L =
+the graph itself is proved in Lean; \textsf T = the general theorem is proved in Lean (so the value is a Lean-checked lower
+bound); \textsf L$^*$ = a Lean proof exists on a branch of the repository but has not yet been re-checked independently
+(Appendix~\ref{app:lean}). ``reg.'': the order of the largest regular graph given here, when the record graph is not regular.
+
+\begin{longtable}{@{}l r r r l l@{}}
+\caption{Updated values. A dagger marks a 2013 value that is the order of one of G\'omez's graphs $\Om_q$, which have diameter
+at least 9 as defined (Section~\ref{sec:d8}).}\label{tab:updated}\\
+\toprule $(\Delta,D)$ & 2013 & this paper & reg. & where & status\\ \midrule\endfirsthead
+\toprule $(\Delta,D)$ & 2013 & this paper & reg. & where & status\\ \midrule\endhead
+\bottomrule\endfoot
+(11,3) & 190 & 192 & & Thm.~\ref{thm:hat4} & P C L T\\
+(13,3) & 270 (274) & 276 & & Thm.~\ref{thm:hat4} & P C L T\\
+(15,3) & 370 (374) & 376 & & Thm.~\ref{thm:hat4} & P C L T\\
+(7,4) & 346 & 359 & 350 & Ex.~\ref{ex:359}, Cor.~\ref{cor:A1} & P C L\\
+(11,4) & 1\,734 & 1\,782 & & Cor.~\ref{cor:A1} & P C L T\\
+(13,4) & 3\,064 & 3\,146 & & Cor.~\ref{cor:A1} & P C L T\\
+(15,4) & 4\,946 & 5\,070 & & Cor.~\ref{cor:A1} & P C L T\\
+(16,4) & 5\,134 & 5\,440 & & Cor.~\ref{cor:C1} & P C L T\\
+(7,5) & 1\,134 & 1\,152 & & Sec.~\ref{sec:haar} & C L\\
+(9,5) & 2\,496 & 2\,662 & & Sec.~\ref{sec:haar} & C L\\
+(7,6) & 8\,992 & 9\,592 & 9\,348 & Thm.~\ref{thm:D}, \ref{thm:R} & P C L T\\
+(11,6) & 142\,464 & 148\,944 & 147\,500 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
+(13,6) & 374\,452 & 388\,972 & 386\,328 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
+(15,6) & 842\,048 & 870\,440 & 866\,068 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
+(16,6) & 884\,062 & 940\,846 & 927\,724 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
+(7,7) & 23\,436 & 23\,598 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
+(9,7) & 117\,648 & 118\,238 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
+(10,7) & 224\,694 & 225\,152 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
+(11,7) & 398\,580 & 413\,180 & & Cor.~\ref{cor:rec-dual} & P C L$^*$\\
+(12,7) & 664\,300 & 693\,500 & & Cor.~\ref{cor:rec-dual} & P C L$^*$\\
+(13,7) & 1\,062\,936 & 1\,064\,472 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
+(14,7) & 1\,771\,560 & 1\,789\,588 & & Cor.~\ref{cor:rec-typed} & P C L$^*$\\
+(15,7) & 2\,480\,184 & 2\,501\,491 & & Cor.~\ref{cor:rec-typed} & P C L$^*$\\
+(16,7) & 4\,022\,340 & 4\,052\,108 & & Cor.~\ref{cor:rec-typed} & P C L$^*$\\
+(3,8) & 256 & 288 & & Sec.~\ref{sec:haar} & C L\\
+(5,8) & 9\,234 & 9\,760 & & Table~\ref{tab:haar} & C L$^*$\\
+(6,8) & 29\,790 & 31\,680 & & Table~\ref{tab:haar} & C L$^*$\\
+(7,8) & 80\,940 & 95\,760 & & Ex.~\ref{ex:haar78} & C L\\
+(8,8) & 201\,480 & 239\,904 & & Table~\ref{tab:haar} & C L\\
+(9,8) & 449\,480 & 540\,360 & & Table~\ref{tab:haar} & C L\\
+(10,8) & 1\,176\,480$^\dagger$ & -- & & Sec.~\ref{sec:d8} & \\
+(11,8) & 2\,246\,940$^\dagger$ & 2\,258\,520 & & Table~\ref{tab:haar} & C L$^*$\\
+(12,8) & 4\,650\,100$^\dagger$ & -- & & Sec.~\ref{sec:d8} & \\
+(13,8) & 5\,314\,680 & 6\,999\,552 & & Table~\ref{tab:haar} & C L$^*$\\
+(14,8) & 14\,172\,480$^\dagger$ & -- & & Sec.~\ref{sec:d8} & \\
+(15,8) & 14\,172\,480$^\dagger$ & 18\,128\,880 & & Table~\ref{tab:haar} & C L$^*$\\
+(16,8) & 36\,201\,060$^\dagger$ & -- & & Sec.~\ref{sec:d8} & \\
+(5,9) & 27\,936 & 29\,540 & & Table~\ref{tab:haar} & C\\
+(6,9) & 117\,360 & 127\,296 & & Table~\ref{tab:haar} & C L\\
+(7,9) & 400\,160 & 462\,840 & & Table~\ref{tab:haar} & C L\\
+(8,9)--(16,9) & & Table~\ref{tab:haar} & & Table~\ref{tab:haar} & C L$^*$\\
+(4,10) & 11\,748 & 12\,416 & & Table~\ref{tab:haar} & C L\\
+(5,10) & 90\,068 & 95\,472 & & Table~\ref{tab:haar} & C L\\
+(6,10) & 452\,032 & 524\,160 & & Table~\ref{tab:haar} & C L\\
+(7,10)--(16,10) & & Table~\ref{tab:haar} & & Table~\ref{tab:haar} & C L$^*$\\
+\end{longtable}
+
+\todo{Table~\ref{tab:updated}: (i) how to show the four $\Om_q$ cells we do not improve ($(10,8)$, $(12,8)$, $(14,8)$,
+$(16,8)$): keep the 2013 value with a mark, or leave the cell empty? (ii) The 2013 table has 112 cells with $\Delta\le16$,
+$D\le10$; should the paper print the whole table (with the cells we do not touch and the Moore cells)? (iii) The CombinatoricsWiki
+was last read for these cells in October 2026; re-check it before submission.}
+
+%======================================================================
+\appendix
+\section{The $(7,4)$ example in coordinates}\label{app:359}
+%======================================================================
+
+$Q(4,5)$ is the quadric $X_0^2+X_1X_2+X_3X_4=0$ of $\PG(4,5)$, with 156 points and 156 lines (points are written with first
+non-zero coordinate 1). The ovoid is $\cO=Q(4,5)\cap\{X_4=2X_3\}$ ($-2$ is a non-square modulo 5), an elliptic quadric with 26
+points. The structure of Example~\ref{ex:359} consists of
+\begin{itemize}
+\item the incidence graph of $Q(4,5)$ (312 vertices, all of degree 6);
+\item one clone $o'$ of each $o\in\cO$, joined to the 6 lines on $o$ (26 vertices; every line gains exactly one clone, as $\cO$
+  is an ovoid);
+\item 21 shadow lines, one for each line below, joined to its six points, except that a starred point is replaced by its
+  clone (the stand-in).
+\end{itemize}
+
+{\small
+\begin{verbatim}
+ 1  (0:0:0:0:1) (0:1:0:0:0)  (0:1:0:0:1) (0:1:0:0:2)  (0:1:0:0:3)  (0:1:0:0:4)
+ 2  (0:0:0:1:0) (0:1:0:0:0)* (0:1:0:1:0) (0:1:0:2:0)  (0:1:0:3:0)  (0:1:0:4:0)
+ 3  (0:0:1:0:0) (1:0:0:2:2)  (1:0:1:2:2) (1:0:2:2:2)  (1:0:3:2:2)  (1:0:4:2:2)
+ 4  (0:0:1:0:1) (1:2:0:3:3)  (1:2:1:3:4) (1:2:2:3:0)  (1:2:3:3:1)  (1:2:4:3:2)
+ 5  (0:0:1:0:2) (1:1:0:2:2)  (1:1:1:2:4) (1:1:2:2:1)  (1:1:3:2:3)  (1:1:4:2:0)
+ 6  (0:0:1:0:4) (1:3:0:3:3)  (1:3:1:3:2) (1:3:2:3:1)  (1:3:3:3:0)  (1:3:4:3:4)
+ 7  (0:0:1:1:0) (1:4:0:4:1)  (1:4:1:0:1) (1:4:2:1:1)  (1:4:3:2:1)  (1:4:4:3:1)
+ 8  (0:0:1:2:0) (1:4:0:3:3)  (1:4:1:0:3) (1:4:2:2:3)  (1:4:3:4:3)  (1:4:4:1:3)
+ 9  (0:0:1:3:0) (1:2:0:4:1)  (1:2:1:2:1) (1:2:2:0:1)  (1:2:3:3:1)* (1:2:4:1:1)
+10  (0:0:1:4:0) (1:4:0:1:4)  (1:4:1:0:4) (1:4:2:4:4)  (1:4:3:3:4)  (1:4:4:2:4)
+11  (0:1:1:1:4) (1:0:3:4:1)  (1:1:4:0:0) (1:2:0:1:4)  (1:3:1:2:3)  (1:4:2:3:2)
+12  (0:1:1:2:2) (1:0:0:1:4)  (1:1:1:3:1) (1:2:2:0:3)  (1:3:3:2:0)  (1:4:4:4:2)
+13  (0:1:1:3:3) (1:0:2:3:3)  (1:1:3:1:1) (1:2:4:4:4)  (1:3:0:2:2)  (1:4:1:0:0)
+14  (0:1:1:4:1) (1:0:2:4:1)  (1:1:3:3:2) (1:2:4:2:3)  (1:3:0:1:4)  (1:4:1:0:0)*
+15  (0:1:2:1:3) (1:0:3:3:3)  (1:1:0:4:1) (1:2:2:0:4)  (1:3:4:1:2)  (1:4:1:2:0)
+16  (0:1:2:2:4) (1:0:3:1:4)  (1:1:0:3:3) (1:2:2:0:2)  (1:3:4:2:1)  (1:4:1:4:0)
+17  (0:1:3:2:1) (1:0:1:3:3)  (1:1:4:0:4) (1:2:2:2:0)  (1:3:0:4:1)  (1:4:3:1:2)
+18  (0:1:3:3:4) (1:0:4:1:4)  (1:1:2:4:3) (1:2:0:2:2)  (1:3:3:0:1)  (1:4:1:3:0)
+19  (0:1:4:1:1) (1:0:4:3:3)  (1:1:3:4:4) (1:2:2:0:0)  (1:3:1:1:1)  (1:4:0:2:2)
+20  (0:1:4:2:3) (1:0:0:3:3)  (1:1:4:0:1) (1:2:3:2:4)  (1:3:2:4:2)  (1:4:1:1:0)
+21  (0:1:4:4:4) (1:0:0:4:1)  (1:1:4:3:0) (1:2:3:2:4)* (1:3:2:1:3)  (1:4:1:0:2)
+\end{verbatim}
+}
+
+\emph{What to check by hand} (Theorem~\ref{thm:B}(b) with $s=t=5$, $\Delta=7$): each listed line lies on the quadric; the 21
+lines are pairwise disjoint except at the four ovoid points $(0:1:0:0:0)$, $(1:2:3:3:1)$, $(1:4:1:0:0)$, $(1:2:3:2:4)$, each on
+exactly two of them (lines 1 and 2, 4 and 9, 13 and 14, 20 and 21), and on the second of the two the point is replaced by its
+clone. So every old point and every clone serves at most one shadow line. Degrees: old lines $6+1=7$; old points 6 or 7;
+clones 6 or 7; shadow lines 6. The order is $156+156+26+21=359$, and the diameter is 4 by Theorem~\ref{thm:B}(a).
+
+%======================================================================
+\section{Formal verification}\label{app:lean}
+%======================================================================
+
+Many statements of this paper are proved in Lean~4 (version 4.34.1) with Mathlib, in the library
+\texttt{lean/BipartiteDD} of the repository. For every theorem listed below, \texttt{\#print axioms} reports only the
+standard axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}; there is no \texttt{sorry},
+\texttt{admit}, new \texttt{axiom} or \texttt{native\_decide}, and finite checks use \texttt{decide} or \texttt{decide +kernel},
+which the kernel checks. A graph statement has the form ``there is a graph on \texttt{Fin $N$} that is 2-colourable, has every
+vertex of degree at most $\Delta$ (or exactly $\Delta$), and has diameter at most $D$'', so the vertex count is exactly $N$.
+
+\todo{Decide how much of this appendix to keep, and whether to cite the Lean files by name or only describe what is
+covered.}
+
+\emph{What is covered.}
+\begin{itemize}
+\item Section~\ref{ssec:doubling}: Theorem~\ref{thm:delorme}(a)--(c) for any finite graph under (L0), (L1), (C$_D$), with the
+  degree bound $\Delta+m-1$ and the exact count; Theorem~\ref{thm:delorme}(d); the hat lemma in both directions, for
+  generalized polygons given as graphs of diameter $n$ and girth $2n$ with all degrees at least 2; Corollary~\ref{cor:hat}
+  (``if'').
+\item Section~\ref{sec:d3}: the regular version of Theorem~\ref{thm:hat4} for every finite projective plane of order $q\ge4$
+  with a frame (not necessarily Desarguesian), with the incidence rules of Definition~\ref{def:hat4} in coordinate-free form;
+  the graphs of order 192, 276 and 376.
+\item Section~\ref{sec:d4}: Theorem~\ref{thm:B} with arbitrary stand-ins, and Corollary~\ref{cor:exact}, for every finite GQ
+  (more precisely for the hypothesis ``lines have $s+1$ points, points are on $t+1$ lines, two points are on at most one
+  line, and for an anti-flag some point of the line is collinear with the point''); the model of $\AS(q)$ of
+  Section~\ref{ssec:A} satisfies this hypothesis, Theorem~\ref{thm:A}, and Corollary~\ref{cor:A1}, for every finite field of
+  odd characteristic; Proposition~\ref{prop:C}(b), the spread $\{yK\}$ and Corollary~\ref{cor:C1} (and its regular form) for
+  every odd prime power $q$, in the cyclic model; the graphs of order 359, 1782, 3146, 5070 and 5440.
+\item Section~\ref{sec:d6}: $H(q)$ in the coordinates of Section~\ref{sec:prelim} is a generalized hexagon (every finite
+  field); Theorem~\ref{thm:whiskers} and Lemmas~\ref{lem:cubic}, \ref{lem:key} and~\ref{lem:Jz}(d); Theorem~\ref{thm:whiskerdoubling}
+  for any whisker set; Theorem~\ref{thm:D} with the exact vertex counts; Theorem~\ref{thm:R} (completion non-constructive, as on
+  paper); the even case for $q\ge4$, and $q=2$ with an explicit whisker set; the graph of order 9592.
+\item Section~\ref{sec:d8}: Theorem~\ref{thm:proj} in the general form stated; Theorem~\ref{thm:twolabels} (for every finite
+  field with $q\ge7$, in a form that allows any mix of blocks and any colour convention per copy; the case $q=8$ needs a
+  ten-line wrapper written by the verifier); Theorem~\ref{thm:geomq8} for $q\ge8$, reading 2 and its dual, every block pattern
+  and every labelling whose transfers are automorphisms of the incidence graph (the reduction of other readings for $q=3^h$,
+  Lemma~\ref{lem:reduction}(b), and the case $q=7$ are not formalised, and the explicit numbers of far vertices are not exported).
+\item Section~\ref{sec:haar}: Theorem~\ref{thm:covering} (both directions, every group) and the per-side Moore bound; the
+  bipartite Moore bound $|V|\le\Mb(\Delta,D)$; the graphs at $(7,5)$, $(9,5)$, and those marked \textsf L in
+  Table~\ref{tab:updated}.
+\end{itemize}
+
+\emph{What is not covered.} The identification of the coordinate models with the classical $\AS(q)$, $W(3,q)$ and $H(q)$
+(the proofs use the models directly, and the classical facts are cited); that the 359 graph decomposes as in
+Example~\ref{ex:359} (the graph is checked, not its description); Theorem~\ref{thm:geomq7}; and the $D=7$ theorems of
+Section~\ref{sec:d7} as general statements (the nine record graphs are checked, see below).
+
+\emph{Verification of the Lean work.} The library behind Sections~\ref{sec:prelim}--\ref{sec:d6} was rebuilt module by module
+from a fresh clone on 25 October 2026, with the axiom lists regenerated. The additions behind Theorem~\ref{thm:delorme}(d),
+the Moore bounds, Theorem~\ref{thm:covering} (converse), Proposition~\ref{prop:C} for every odd $q$, and
+Theorems~\ref{thm:proj}, \ref{thm:twolabels} and~\ref{thm:geomq8} were each rebuilt by a separate verifier from a clean
+checkout, with regenerated axiom lists compared byte for byte, a search for forbidden tokens, and a reading of every main
+statement against the paper.
+
+The proofs marked \textsf L$^*$ in Table~\ref{tab:updated} (the nine $D=7$ records, the four $D=6$ records as instances of
+Theorem~\ref{thm:D}, and most Haar graphs at $D=8$--$10$) are on a separate branch of the repository and have not yet been
+re-checked by a separate verifier. For several of the largest graphs the generated Lean files are too large to store; they are
+regenerated by deterministic scripts whose outputs are fixed by recorded hashes. In four $D=7$ proofs a different hub graph,
+whose properties are also kernel-checked, replaces the one of the record graph.
+\todo{Before submission: have the \textsf L$^*$ proofs re-checked independently, or drop the column.}
+
+%======================================================================
+\section{Computer checks}\label{app:checks}
+%======================================================================
+
+Every graph of Tables~\ref{tab:summary} and~\ref{tab:haar}, and every ``computer-checked'' statement, was checked as follows.
+All programs and logs are in the repository \url{https://github.com/dogaozden/degree-diameter}.
+
+\begin{itemize}
+\item \emph{All-pairs check.} A C program reads an edge list, checks that the graph is simple, bipartite and connected and has
+  maximum degree at most $\Delta$, and runs a bit-parallel breadth-first search from every vertex, with no symmetry assumed.
+  Every graph in this paper with at most $4.1$ million vertices (all graphs of Sections~\ref{sec:d3}--\ref{sec:d7}) was
+  checked this way, after being rebuilt from its definition or data file. The $D=7$ graphs were built from their data files by
+  the builder that produced them; the check of the resulting edge list is independent of that builder, and three of them
+  ($(7,7)$, $(9,7)$, $(10,7)$) were also checked with a second breadth-first-search program.
+\item \emph{Families.} The fourth hat: built three ways (from (C1)--(C6), from the point rows and from the line rows of
+  Table~\ref{tab:hat4}), for every prime power $q\le13$ and every admissible $(a,c)$; degrees, both covering properties and exact
+  diameter of $G$ and $R$; a separate program rebuilt it for $q=4,5,7,8,9,11,13$ and compared every row of
+Table~\ref{tab:hat4} with the computed neighbourhoods.
+  Theorem~\ref{thm:A}: line sums and the graph for $q=3,5,7,9$. Proposition~\ref{prop:C}: exactly the pairs $\{a,q-a\}$ give
+  2-ovoids, for $q=3,5,7,9,11,13,25,27$; Corollary~\ref{cor:C1} for $q=3,5$. Section~\ref{sec:d6}: the graphs for
+  $q=5,7,9,11,13$ (and $q=13$, $m=3$), exactness of $W$ on all free points for $q=3,5,7$ and $q=4,8,16$, the identities of
+  Lemmas~\ref{lem:Jz}, \ref{lem:key}, \ref{lem:Jz-even}, \ref{lem:key-even} re-checked symbolically, and the five regular graphs
+  of Theorem~\ref{thm:R}.
+\item \emph{Diameter 7, small $q$.} Every theorem of Section~\ref{sec:d7} was tested on $H(q)$ for $q=2,3,4,5$, built from
+  \eqref{eq:tits}, with positive tests and negative controls (adding one turning point to a segment set, or breaking (H3) at
+  one point, gives diameter 8).
+\item \emph{Diameter 8.} The hexagons $H(q)$, $q\le13$, three times by separate programs; the exact diameters and
+  eccentricities stated after Corollary~\ref{cor:thesisD8}; Fact~\ref{fact:C4} by two separate programs; the rows of
+  Table~\ref{tab:types} by three programs.
+\item \emph{Haar graphs.} By Theorem~\ref{thm:covering}, two breadth-first searches, from $(e,A)$ and $(e,B)$, decide the
+  diameter. Each graph of Table~\ref{tab:haar} was accepted by at least two separately written programs (each building the
+  group from scratch, including the finite field and the matrix group), or by one program and a Lean proof; twelve of them (up
+  to 540\,360 vertices) also passed the all-pairs check. Negative controls (one generator altered, or $D$ lowered by
+  one) are rejected.
+\end{itemize}
+
+\todo{Should this appendix name the programs and log files (for instance \texttt{research/lifts/coordinator\_check/apsp\_mt.c},
+\texttt{research/frontier/build\_haar2.py}, \texttt{research/coordinator\_check/check\_2026-10-25.txt})? The data files that
+define the $D=7$ sets and hub graphs and the Haar connection sets are in \texttt{research/frontier/sols/}.}
+
 %%END%%
 
 \bibliographystyle{amsplain}
 \begin{thebibliography}{99}
+\bibitem{AS69} R.~W. Ahrens and G.~Szekeres, On a combinatorial generalization of 27 lines associated with a cubic surface,
+J. Austral. Math. Soc. \textbf{10} (1969), 485--492.
+\bibitem{ADFL21} G.~Araujo-Pardo, C.~Dalf\'o, M.~A. Fiol and N.~L\'opez, Bipartite biregular Moore graphs, Discrete Math.
+\textbf{344} (2021), 112582.
+\bibitem{AL20} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin.
+\textbf{38} (2022), no.~4, Paper 110; arXiv:2005.02427.
+\bibitem{BGS06} S.~Ball, P.~Govaerts and L.~Storme, On ovoids of parabolic quadrics, Des. Codes Cryptogr. \textbf{38}
+(2006), 131--145.
+\bibitem{BLP09} J.~Bamberg, M.~Law and T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica
+\textbf{29} (2009), 1--17.
+\bibitem{BDF84} J.-C. Bermond, C.~Delorme and G.~Farhi, Large graphs with given degree and diameter II, J. Combin. Theory
+Ser. B \textbf{36} (1984), 32--48.
+\bibitem{BDF82} J.-C. Bermond, C.~Delorme and G.~Farhi, Large graphs with given degree and diameter III, Ann. Discrete Math.
+\textbf{13} (1982), 23--32.
+\bibitem{BI16} A.~Bishnoi and F.~Ihringer, Some non-existence results for distance-$j$ ovoids in small generalized polygons,
+arXiv:1606.07288.
+\bibitem{BPR00} J.~N. Bray, C.~W. Parker and P.~Rowley, Cayley type graphs and cubic graphs of large girth, Discrete Math.
+\textbf{214} (2000), 113--121.
+\bibitem{CDPS22} M.~Ceria, J.~De Beule, F.~Pavese and V.~Smaldore, On large partial ovoids of symplectic and Hermitian polar
+spaces, J. Combin. Des. \textbf{31} (2023), 5--22.
+\bibitem{CW} CombinatoricsWiki, The degree diameter problem for bipartite graphs,
+\url{http://combinatoricswiki.org/wiki/The_Degree_Diameter_Problem_for_Bipartite_Graphs}.
+\bibitem{Co26} F.~Comellas, Table of large graphs with given degree and diameter, arXiv:2406.18994v2 (2026), and the online
+tables at \url{https://web.mat.upc.edu/francesc.comellas/delta-d/}.
+\bibitem{CG94} F.~Comellas and J.~G\'omez, New large graphs with given degree and diameter, arXiv:math/9411218.
+\bibitem{CCEM08} A.~Cossidente, C.~Culbert, G.~L. Ebert and G.~Marino, On $m$-ovoids of $W_3(q)$, Finite Fields Appl.
+\textbf{14} (2008), 76--84.
+\bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, European J. Combin. \textbf{6} (1985), 291--302.
+\bibitem{DF84} C.~Delorme and G.~Farhi, Large graphs with given degree and diameter, Part I, IEEE Trans. Comput.
+\textbf{C-33} (1984), 857--860.
+\bibitem{DGQ} C.~Delorme, J.~G\'omez and J.-J. Quisquater, On large bipartite graphs, manuscript (cited in \cite{CW} as
+submitted; we found no published version).
+\bibitem{DWVM08} A.~De Wispelaere and H.~Van Maldeghem, Some new two-character sets in $\PG(5,q^2)$ and a distance-2 ovoid
+in the generalized hexagon $H(4)$, Discrete Math. \textbf{308} (2008), 2976--2983.
+\bibitem{E85} G.~L. Ebert, Partitioning projective geometries into caps, Canad. J. Math. \textbf{37} (1985), 1163--1175.
+\bibitem{EP16} A.~Est\'elyi and T.~Pisanski, Which Haar graphs are Cayley graphs?, Electron. J. Combin. \textbf{23}(3)
+(2016), P3.10.
+\bibitem{EJ11} G.~Exoo and R.~Jajcay, On the girth of voltage graph lifts, European J. Combin. \textbf{32} (2011), 554--562.
+\bibitem{EJ13} G.~Exoo and R.~Jajcay, Dynamic cage survey, Electron. J. Combin. Dynamic Survey DS16 (2013).
+\bibitem{FeitHigman} W.~Feit and G.~Higman, The nonexistence of certain generalized polygons, J. Algebra \textbf{1} (1964),
+114--131.
+\bibitem{FWX19} T.~Feng, Y.~Wang and Q.~Xiang, On $m$-ovoids of symplectic polar spaces, J. Combin. Theory Ser. A
+\textbf{175} (2020), 105279.
+\bibitem{FMP13} R.~Feria-Pur\'on, M.~Miller and G.~Pineda-Villavicencio, On large bipartite graphs of diameter 3, Discrete
+Math. \textbf{313} (2013), doi:10.1016/j.disc.2012.11.013.
+\bibitem{GF85} J.~G\'omez and M.~A. Fiol, Dense compound graphs, Ars Combin. \textbf{20-A} (1985), 211--237.
+\bibitem{Go86} J.~G\'omez Mart\'i, Di\'ametro y vulnerabilidad en redes de interconexi\'on, PhD thesis, Universitat
+Polit\`ecnica de Catalunya, Barcelona, 1986.
+\bibitem{GPB99} J.~G\'omez, I.~Pelayo and C.~Balbuena, New large graphs with given degree and diameter six, Networks
+\textbf{34} (1999), 154--161.
+\bibitem{HMP02} M.~Hladnik, D.~Maru\v{s}i\v{c} and T.~Pisanski, Cyclic Haar graphs, Discrete Math. \textbf{244} (2002).
+\bibitem{LS08} E.~Loz and J.~\v{S}ir\'a\v{n}, New record graphs in the degree-diameter problem, Australas. J. Combin.
+\textbf{41} (2008), 63--80.
+\bibitem{MS13} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem,
+Electron. J. Combin., Dynamic Survey DS14v2 (2013).
+\bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, J. Algebra \textbf{18} (1971), 201--212.
+\bibitem{PT} S.~E. Payne and J.~A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
+\bibitem{PGMP09} G.~Pineda-Villavicencio, J.~G\'omez, M.~Miller and H.~P\'erez-Ros\'es, New largest known graphs of diameter
+6, Networks \textbf{53} (2009), 315--328.
+\bibitem{Ra26} R.~Rajiv, New lower bounds for the degree-diameter problem from generalized quadrangles and hexagons, Zenodo
+preprint, 30 September 2026, doi:10.5281/zenodo.23052995.
+\bibitem{Tal91} G.~Tallini, Blocking sets with respect to planes in $\PG(3,q)$ and maximal spreads of a nonsingular quadric
+in $\PG(4,q)$, Mitt. Math. Sem. Giessen \textbf{201} (1991), 141--147.
+\bibitem{T80} J.~A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A \textbf{29}
+(1980), 87--93.
+\bibitem{Th81} J.~A. Thas, Ovoids and spreads of finite classical polar spaces, Geom. Dedicata \textbf{10} (1981),
+135--143.
+\bibitem{T59} J.~Tits, Sur la trialit\'e et certains groupes qui s'en d\'eduisent, Publ. Math. IH\'ES \textbf{2} (1959),
+13--60.
+\bibitem{VM98} H.~Van Maldeghem, Generalized Polygons, Birkh\"auser, 1998.
+
 %%BIB%%
 \end{thebibliography}
 
