@@ -12,6 +12,8 @@ every vertex of degree `q + 1`, and `κ : β → ZMod 2` a proper 2-colouring.
 * `q_pow_five_le_card_sph_six`: `q^5 ≤ |sph u 6|` (equality holds, only the inequality is needed).
 -/
 
+
+
 set_option linter.unusedSectionVars false
 
 namespace BipartiteDD.LeanMaxx.Omega2
@@ -30,11 +32,13 @@ section
 
 variable {B : SimpleGraph β} [DecidableRel B.Adj]
 
+omit [Fintype β] [DecidableEq β] [DecidableRel B.Adj] in
 theorem reachable_of_ediam {n : ℕ} (h : B.ediam = (n : ℕ∞)) (u v : β) : B.Reachable u v := by
   have h1 : B.edist u v ≤ B.ediam := edist_le_ediam
   rw [h] at h1
   exact edist_ne_top_iff_reachable.mp (ne_top_of_le_ne_top (by simp) h1)
 
+omit [Fintype β] [DecidableEq β] [DecidableRel B.Adj] in
 theorem dist_le_of_ediam {n : ℕ} (h : B.ediam = (n : ℕ∞)) (u v : β) : B.dist u v ≤ n := by
   have h1 : B.edist u v ≤ B.ediam := edist_le_ediam
   rw [h] at h1
@@ -42,6 +46,7 @@ theorem dist_le_of_ediam {n : ℕ} (h : B.ediam = (n : ℕ∞)) (u v : β) : B.d
   rw [← hr.coe_dist_eq_edist] at h1
   exact_mod_cast h1
 
+omit [Fintype β] [DecidableEq β] [DecidableRel B.Adj] in
 /-- Colour along a walk. -/
 theorem col_walk {κ : β → ZMod 2} (hκ : ∀ u v, B.Adj u v → κ u ≠ κ v) {a b : β} (p : B.Walk a b) :
     κ b = κ a + (p.length : ZMod 2) := by
