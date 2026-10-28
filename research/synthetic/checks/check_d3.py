@@ -312,6 +312,17 @@ def check_structure(Pi, A, ell, X, kind, verbose=False, full_diameter=True):
     for t in T:
         check(K[link[t]] in lines_on[Q] and K[link[t]] in lines_on[H[t]], f'{tag}: Q H_t via K_link(t)')
 
+    # the points of ell and the lines through A are still matched by incidence (with H_a, K_a added)
+    P_ell = pts_on[ell]
+    L_A = lines_on[A]
+    check(P_ell == set(Pi.pts_on[ell]) | {H['a']}, f'{tag}: points of ell = old ones and H_a')
+    check(L_A == set(Pi.lines_on[A]) | {K['a']}, f'{tag}: lines through A = old ones and K_a')
+    match = {(p, L) for p in P_ell for L in L_A if L in lines_on[p]}
+    rho = d['rot'] if kind == '4' else {t: t for t in T}
+    exp_match = ({(Y, Pi.join(A, Y)) for Y in Pi.pts_on[ell] if Y not in XS}
+                 | {(X[t], lam[rho[t]]) for t in T} | {(X['a'], K['a']), (H['a'], lam['a'])})
+    check(match == exp_match, f'{tag}: ell and the pencil at A are matched as described')
+
     # global: any two points collinear, any two lines concurrent
     check(all(collinear(lines_on, u, v) for u, v in itertools.combinations(pts, 2)), f'{tag}: points collinear')
     check(all(pts_on[L] & pts_on[N] for L, N in itertools.combinations(lns, 2)), f'{tag}: lines concurrent')
@@ -493,6 +504,9 @@ def check_doubling(Pi, A, ell, X, kind):
     far_l = {frozenset((L, N)) for L, N in itertools.combinations(lns, 2) if not (pts_on[L] & pts_on[N])}
     exp_p = {frozenset((H[s], X[t])) for s in S for t in S if s != t} | {frozenset((H[s], Q)) for s in S}
     exp_l = {frozenset((K[s], lam[t])) for s in S for t in S if s != t} | {frozenset((K[s], M)) for s in S}
+    if len(S) == q + 1:   # every point of ell marked: also {Q, A} and {M, ell} (repaired by Q-lam_a, X_a-M)
+        exp_p.add(frozenset((Q, A)))
+        exp_l.add(frozenset((M, ell)))
     check(far_p == exp_p, f'doubling {kind} q={q}: far point pairs')
     check(far_l == exp_l, f'doubling {kind} q={q}: far line pairs')
     # points and lines are the only pairs that can be far for diameter 3 (Lemma: diam <= 3 iff these)
@@ -515,7 +529,7 @@ def check_doubling(Pi, A, ell, X, kind):
 def main():
     random.seed(7)
     # 0. the doubling viewpoint
-    for q in (4, 5, 7):
+    for q in (3, 4, 5, 7):
         Pi = pg2(q)
         for trial in range(4):
             ell = random.choice(Pi.lines)
@@ -523,7 +537,7 @@ def main():
             on = random.sample(sorted(Pi.pts_on[ell], key=str), 4)
             check_doubling(Pi, A, ell, {0: on[0], 1: on[1], 'a': on[2]}, 'AL')
             check_doubling(Pi, A, ell, {0: on[0], 1: on[1], 'a': on[2], 'c': on[3]}, '4')
-    print('crossed doubling + patches: checked for q = 4, 5, 7')
+    print('crossed doubling + patches: checked for q = 3, 4, 5, 7')
     # 1. comparison with the coordinate version, every admissible (a, c)
     for q in (4, 5, 7, 8, 9):
         for a in range(2, q):
