@@ -63,7 +63,22 @@ theorem bonf3 (c : Fin 5 → Finset U) :
   simp only [e1, e2]
   exact this
 
-/-- The arithmetic of the three degenerate cases (at most one special pair or triple). -/
+/-- Group inequalities: a pair `p` together with the triples `t` whose first pair it is. -/
+theorem grp1 (p t s u : ℕ) (hp : 336 ≤ p + 336 * s) (ht : t ≤ 64 + 2337 * u) (hc : t ≤ p)
+    (_hS : s + u ≤ 1) : t + 336 ≤ p + 336 * s + 272 * u + 64 := by omega
+
+theorem grp2 (p t1 t2 s u1 u2 : ℕ) (hp : 336 ≤ p + 336 * s) (h1 : t1 ≤ 64 + 2337 * u1)
+    (h2 : t2 ≤ 64 + 2337 * u2) (c1 : t1 ≤ p) (c2 : t2 ≤ p) (hS : s + u1 + u2 ≤ 1) :
+    t1 + t2 + 336 ≤ p + 336 * s + 272 * (u1 + u2) + 128 := by omega
+
+theorem grp3 (p t1 t2 t3 s u1 u2 u3 : ℕ) (hp : 336 ≤ p + 336 * s) (h1 : t1 ≤ 64 + 2337 * u1)
+    (h2 : t2 ≤ 64 + 2337 * u2) (h3 : t3 ≤ 64 + 2337 * u3) (c1 : t1 ≤ p) (c2 : t2 ≤ p) (c3 : t3 ≤ p)
+    (hS : s + u1 + u2 + u3 ≤ 1) :
+    t1 + t2 + t3 + 336 ≤ p + 336 * s + 272 * (u1 + u2 + u3) + 192 := by omega
+
+set_option maxHeartbeats 1000000 in
+/-- The arithmetic of the three degenerate cases (at most one special pair or triple). Each triple is
+assigned to its first pair. -/
 theorem numeric
   (p01 p02 p03 p04 p12 p13 p14 p23 p24 p34 : ℕ)
   (t012 t013 t014 t023 t024 t034 t123 t124 t134 t234 : ℕ)
@@ -78,18 +93,24 @@ theorem numeric
   (ht023 : t023 ≤ 64 + 2337*u023) (ht024 : t024 ≤ 64 + 2337*u024) (ht034 : t034 ≤ 64 + 2337*u034)
   (ht123 : t123 ≤ 64 + 2337*u123) (ht124 : t124 ≤ 64 + 2337*u124) (ht134 : t134 ≤ 64 + 2337*u134)
   (ht234 : t234 ≤ 64 + 2337*u234)
-  (c012a : t012 ≤ p01) (c012b : t012 ≤ p02) (c012c : t012 ≤ p12)
-  (c013a : t013 ≤ p01) (c013b : t013 ≤ p03) (c013c : t013 ≤ p13)
-  (c014a : t014 ≤ p01) (c014b : t014 ≤ p04) (c014c : t014 ≤ p14)
-  (c023a : t023 ≤ p02) (c023b : t023 ≤ p03) (c023c : t023 ≤ p23)
-  (c024a : t024 ≤ p02) (c024b : t024 ≤ p04) (c024c : t024 ≤ p24)
-  (c034a : t034 ≤ p03) (c034b : t034 ≤ p04) (c034c : t034 ≤ p34)
-  (c123a : t123 ≤ p12) (c123b : t123 ≤ p13) (c123c : t123 ≤ p23)
-  (c124a : t124 ≤ p12) (c124b : t124 ≤ p14) (c124c : t124 ≤ p24)
-  (c134a : t134 ≤ p13) (c134b : t134 ≤ p14) (c134c : t134 ≤ p34)
-  (c234a : t234 ≤ p23) (c234b : t234 ≤ p24) (c234c : t234 ≤ p34) :
+  (c012 : t012 ≤ p01) (c013 : t013 ≤ p01) (c014 : t014 ≤ p01)
+  (c023 : t023 ≤ p02) (c024 : t024 ≤ p02) (c034 : t034 ≤ p03)
+  (c123 : t123 ≤ p12) (c124 : t124 ≤ p12) (c134 : t134 ≤ p13) (c234 : t234 ≤ p23) :
   t012+t013+t014+t023+t024+t034+t123+t124+t134+t234 + 2384 ≤ p01+p02+p03+p04+p12+p13+p14+p23+p24+p34 := by
-  omega
+  have g01 := grp3 p01 t012 t013 t014 s01 u012 u013 u014 hp01 ht012 ht013 ht014 c012 c013 c014 (by omega)
+  have g02 := grp2 p02 t023 t024 s02 u023 u024 hp02 ht023 ht024 c023 c024 (by omega)
+  have g03 := grp1 p03 t034 s03 u034 hp03 ht034 c034 (by omega)
+  have g12 := grp2 p12 t123 t124 s12 u123 u124 hp12 ht123 ht124 c123 c124 (by omega)
+  have g13 := grp1 p13 t134 s13 u134 hp13 ht134 c134 (by omega)
+  have g23 := grp1 p23 t234 s23 u234 hp23 ht234 c234 (by omega)
+  have e0 : (s01 + s02 + s03 + s04 + s12 + s13 + s14 + s23 + s24 + s34) +
+      (u012 + u013 + u014 + u023 + u024 + u034 + u123 + u124 + u134 + u234) ≤ 1 := by omega
+  have e1 : 336 * (s01 + s02 + s03 + s04 + s12 + s13 + s14 + s23 + s24 + s34) +
+      272 * (u012 + u013 + u014 + u023 + u024 + u034 + u123 + u124 + u134 + u234) ≤ 336 := by
+    generalize s01 + s02 + s03 + s04 + s12 + s13 + s14 + s23 + s24 + s34 = A at e0 ⊢
+    generalize u012 + u013 + u014 + u023 + u024 + u034 + u123 + u124 + u134 + u234 = B at e0 ⊢
+    omega
+  linarith
 
 theorem special_le (a0 a1 a2 a3 a4 l01 l02 l03 l04 l12 l13 l14 l23 l24 l34 : Bool)
     (h : a0.toNat + a1.toNat + a2.toNat + a3.toNat + a4.toNat + l01.toNat + l02.toNat + l03.toNat +
@@ -110,7 +131,7 @@ theorem pair_fact (a b l : Bool) (p : ℕ) (h : ¬(a = true ∧ b = true ∧ l =
 
 theorem triple_fact (x y z : Bool) (t : ℕ) (h : ¬(x = true ∧ y = true ∧ z = true) → t ≤ 64)
     (h2 : t ≤ 2401) : t ≤ 64 + 2337 * (x && y && z).toNat := by
-  cases x <;> cases y <;> cases z <;> simp_all <;> omega
+  cases x <;> cases y <;> cases z <;> simp_all
 
 /-- **Lemma 4.3, abstract form** (`k = 4`): five sets of size `≤ 2401` such that pairs which are not special
 overlap in `≥ 336` points and triples which are not special in `≤ 64` points, with fewer than four closeness bits
@@ -130,12 +151,6 @@ theorem union_bound (c : Fin 5 → Finset U) (cT : Fin 5 → Bool) (cl : Fin 5 �
     (Finset.card_le_card (fun x hx => (Finset.mem_inter.1 (Finset.mem_inter.1 hx).1).1)).trans (hsize i)
   have sub1 : ∀ i j k : Fin 5, (c i ∩ c j ∩ c k).card ≤ (c i ∩ c j).card := fun i j k =>
     Finset.card_le_card Finset.inter_subset_left
-  have sub2 : ∀ i j k : Fin 5, (c i ∩ c j ∩ c k).card ≤ (c i ∩ c k).card := fun i j k =>
-    Finset.card_le_card (fun x hx => Finset.mem_inter.2 ⟨(Finset.mem_inter.1 (Finset.mem_inter.1 hx).1).1,
-      (Finset.mem_inter.1 hx).2⟩)
-  have sub3 : ∀ i j k : Fin 5, (c i ∩ c j ∩ c k).card ≤ (c j ∩ c k).card := fun i j k =>
-    Finset.card_le_card (fun x hx => Finset.mem_inter.2 ⟨(Finset.mem_inter.1 (Finset.mem_inter.1 hx).1).2,
-      (Finset.mem_inter.1 hx).2⟩)
   have := numeric (c 0 ∩ c 1).card (c 0 ∩ c 2).card (c 0 ∩ c 3).card (c 0 ∩ c 4).card (c 1 ∩ c 2).card
     (c 1 ∩ c 3).card (c 1 ∩ c 4).card (c 2 ∩ c 3).card (c 2 ∩ c 4).card (c 3 ∩ c 4).card
     (c 0 ∩ c 1 ∩ c 2).card (c 0 ∩ c 1 ∩ c 3).card (c 0 ∩ c 1 ∩ c 4).card (c 0 ∩ c 2 ∩ c 3).card
@@ -157,11 +172,8 @@ theorem union_bound (c : Fin 5 → Finset U) (cT : Fin 5 → Bool) (cl : Fin 5 �
     (triple_fact _ _ _ _ (htri 1 2 4 (by decide) (by decide)) (sz _ _ _))
     (triple_fact _ _ _ _ (htri 1 3 4 (by decide) (by decide)) (sz _ _ _))
     (triple_fact _ _ _ _ (htri 2 3 4 (by decide) (by decide)) (sz _ _ _))
-    (sub1 0 1 2) (sub2 0 1 2) (sub3 0 1 2) (sub1 0 1 3) (sub2 0 1 3) (sub3 0 1 3)
-    (sub1 0 1 4) (sub2 0 1 4) (sub3 0 1 4) (sub1 0 2 3) (sub2 0 2 3) (sub3 0 2 3)
-    (sub1 0 2 4) (sub2 0 2 4) (sub3 0 2 4) (sub1 0 3 4) (sub2 0 3 4) (sub3 0 3 4)
-    (sub1 1 2 3) (sub2 1 2 3) (sub3 1 2 3) (sub1 1 2 4) (sub2 1 2 4) (sub3 1 2 4)
-    (sub1 1 3 4) (sub2 1 3 4) (sub3 1 3 4) (sub1 2 3 4) (sub2 2 3 4) (sub3 2 3 4)
+    (sub1 0 1 2) (sub1 0 1 3) (sub1 0 1 4) (sub1 0 2 3) (sub1 0 2 4) (sub1 0 3 4)
+    (sub1 1 2 3) (sub1 1 2 4) (sub1 1 3 4) (sub1 2 3 4)
   have h0 := hsize 0
   have h1 := hsize 1
   have h2 := hsize 2
