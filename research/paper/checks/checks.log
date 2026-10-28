@@ -23,3 +23,7 @@ n=39074 edges=156071 degree min=6 max=8 bipartite=yes diameter=7
 RESULT VALID d=8 D=7 n=39074
 points on two rows: {(0, 1, 0, 0, 0): [1, 2], (1, 2, 3, 3, 1): [4, 9], (1, 4, 1, 0, 0): [13, 14], (1, 2, 3, 2, 4): [20, 21]}
 order 359 max degree 7 diameter 4
+(7,5): 1152 vertices, diameter 5
+(9,5): 2662 vertices, diameter 5
+(7,8): 95760 vertices, diameter 8
+alpha(S) = S: True [0, 2, 3, 1, 5, 6, 4]
