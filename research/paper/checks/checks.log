@@ -1,0 +1,18 @@
+q = 5 ok: order 72 G and R diameter 3, R regular
+q = 7 ok: order 124 G and R diameter 3, R regular
+q = 11 ok: order 276 G and R diameter 3, R regular
+
+3 (90, 4)
+5 (350, 4)
+7 (882, 4)
+
+q = 3 : |W| = 72 and every free point is on exactly one whisker
+doubling with whiskers, m = 2: order 1020 max degree 5 diameter 6
+
+q = 3 2-ovoid pairs: [(0, 3), (1, 2)]
+Corollary 4.12: order 120 diameter 4 ; regular completion diameter 4
+q = 5 2-ovoid pairs: [(0, 5), (1, 4), (2, 3)]
+Corollary 4.12: order 416 diameter 4 ; regular completion diameter 4
+q = 5 : |W| = 600 and every free point is on exactly one whisker
+doubling with whiskers, m = 2: order 9592 max degree 7 diameter 6
+exit 0
