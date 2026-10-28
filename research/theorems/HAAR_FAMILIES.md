@@ -21,26 +21,31 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
 1. *There is an explicit infinite family of exactly this shape*, with m = 1: the connection sets of Lubotzky, Phillips
    and Sarnak (LPS). For every odd prime p and every prime q > p, the p + 1 LPS matrices in PGL(2, q) are permuted by
    conjugation with an element of order 3 of PSL(2, q), with cycle type 1+1+3+⋯+3 or 3+⋯+3: the cycle types that the
-   orbit search used at Δ = 6, 8, 12, 14 (Theorem 2.6). Their diameter is at most 2 log_p n + O(1) (*cited*, LPS).
+   orbit search used at Δ = 6, 8, 12, 14 (Theorem 2.6). For p ≡ 1 (mod 4) their diameter is at most 2 log_p n + O(1)
+   (*cited*, LPS).
 2. *This family provably cannot reach the records.* The vertex ψ(i) is at distance exactly the least even L with
    2p^{L/2} > q² (Theorem 3.2: lower bound for every odd p, equality for p ≡ 1 mod 4), so the diameter is at least
    (4/3) log_p n − 2 log_p 2 (Corollary 3.3, the bound of N. T. Sardari, here with a two-paragraph proof), and a member
    of diameter ≤ D has at most √2·p^{1−D/4} of the bipartite Moore bound (Corollary 3.4). Computed: the LPS graphs are
    2.5 to 19 times below the 2013 table at D = 8–10 (Appendix B), and at odd D the largest member is usually exactly
    the one that the vertex ψ(i) allows (8 of 13 cells; the next prime below in 3 more).
-3. *A cyclic factor removes this obstruction in practice, but not as a formula.* The obstruction survives every cover
-   (Proposition 4.1), but it bounds q, not m. LPS × Z_m with labels chosen for each (q, m) by a squad reaches 99.4 % of
-   the table at (6,10) and 98.9 % at (8,8) (Computer-checked 4.2), still below the lab's records.
+3. *A cyclic factor removes this obstruction in practice.* The obstruction survives every cover (Proposition 4.1), but
+   it bounds q, not m. LPS × Z_m with labels chosen for each (q, m) reaches 99.4 % of the table at (6,10) and 98.9 % at
+   (8,8) (Computer-checked 4.2), and with labels given by one formula in m (§4.3) the family has members **above the
+   2013 table** at (8,8) (210,528 vertices against 201,480; q = 17, m = 43) and (8,9) (1,105,104 against 1,091,232;
+   q = 23, m = 91), checked by two or three independent programs. They are below the lab's records there, and their
+   diameters are computed, not proved.
 4. *Other uniform formulas behave like one random draw.* Integer lifts, primitive-root and Dickson formulas, the conic
-   model, torus orbits, and the records' own sets moved to other q (18 squad cards, §5) give an excess
-   diam − log_{Δ−1}|G| within about 0.3 of a single random draw at the same Δ (about 2.9–3.4 at Δ = 6–8), against
-   about 2.0–2.3 for the records. Heuristically, the records' advantage is selection among millions of sets, which no
-   single formula provides (§5–6).
+   model, torus orbits, and the records' own sets moved to other q (18 squad cards, §5) give an excess diam −
+   log_{Δ−1}|G| no better than a single random draw at the same Δ (about 2.8–3.4 at Δ = 6–8; some kinds are worse),
+   against about 2.0–2.3 for the records. Heuristically, the records' advantage is selection among millions of sets,
+   which no single formula provides (§5–6).
 5. *What would be needed is open.* A uniform family of record quality at fixed Δ would be an explicit family of
    bounded-degree graphs with diameter (1 + o(1)) log_{Δ−1} n. None is known; for the LPS graphs Sardari proved that it
    fails (§6).
 
-No infinite family above the table is proved in this note.
+No infinite family above the table is proved in this note; the members above the table in item 3 are single
+computed graphs.
 
 ## Contents
 
@@ -76,7 +81,8 @@ Appendix A. The squad rounds. Appendix B. The LPS family cell by cell.
 | App. B | the LPS family cell by cell; at odd D its largest member is the one Thm. 3.2 allows in 8 of 13 cells | Computer-checked |
 | Prop. 3.6 | the same lower bound in any definite quaternion order with an orthogonal unit γ | Proposition |
 | Prop. 4.1 | the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K, S̃) of the LPS graph | Proposition |
-| 4.2 | LPS × Z_m with searched labels: 99.4 % of the table at (6,10), 98.9 % at (8,8) | Computer-checked |
+| 4.2 | LPS × Z_m with searched labels: 99.4 % of the table at (6,10), 98.9 % at (8,8), 65 % at (14,8) | Computer-checked |
+| 4.3 | LPS(7) × Z_m with labels by a formula: members above the 2013 table at (8,8) and (8,9) (below the lab's records) | Computer-checked |
 | §5 | uniform formulas of six kinds: excess about that of one random draw | Computer-checked (scores), Heuristic (reading) |
 
 ---
@@ -366,13 +372,13 @@ families lose to them by a factor p^{D/4−1}.
 exception in 251 cases (log `haar_families/recheck_thmB.log`). This includes p ≡ 3 (mod 4), where equality is not proved
 here. The eccentricity of (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251 cases). So in this range
 the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is usually what limits the family
-(Appendix B). The construction in the proof of Theorem 3.2(b) (u, v, w, and β with N(β) = p^{L₀}, β ≡ 1 mod 2 and
-[ψ(β)] = [ψ(i)]) was also checked directly for p ∈ {5, 13, 17, 29, 37} and all primes p < q < 1000 (802 cases,
-`haar_families/check_thmB_construction.py`). An independent re-implementation by squad card c8 (its own quaternion arithmetic and BFS;
-`research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and Theorem 3.2 in 41 cases
-with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six LPS graphs. (The squad card also
-found a bug in the first version of `lps_haar.c`, which mixed the distances of the two sides; the logs above are from
-the corrected version.)
+(Appendix B). The construction in the proof of Theorem 3.2(b) (u, v, w, and β with N(β) = p^{L₀}, β ≡ 1 mod 2 and [ψ(β)]
+= [ψ(i)]) was also checked directly for p ∈ {5, 13, 17, 29, 37} and all primes p < q < 1000 (802 cases,
+`haar_families/check_thmB_construction.py`). An independent re-implementation by squad card c8 (its own quaternion
+arithmetic and BFS; `research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and
+Theorem 3.2 in 41 cases with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six LPS graphs.
+(The squad card also found a bug in the first version of `lps_haar.c`, which mixed the distances of the two sides; the
+logs above are from the corrected version.)
 
 **Proposition 3.6 (the same obstruction in other definite quaternion orders).** Let 𝒪 be a Z-order in a definite
 quaternion algebra over Q, with norm form N, and suppose 𝒪 = Zγ ⊕ 𝒪′ with N(aγ + β′) = a² + N(β′) for a ∈ Z,
@@ -435,11 +441,51 @@ Searching t for each (q, m), the squads found:
 | (8,9) | (23, 73) | 886,512 | 81.2 % | 1,341,600 | 300,696 |
 | (14,8) | (29, 379) | 9,232,440 | 65.1 % | none (the lab does not beat this cell) | 1,294,920 |
 
-Every entry was re-checked by the director with `haar_ecc` (two-source BFS on the component, from the cards'
-generators: `research/squads/thmfam-r1/c6/gen_c6.py`, `research/squads/thmfam-r1/c7/c7lib.py`), and (6,10) and (8,8)
-also with `verify_cover.py` (independent Python arithmetic; eccentricities 10, 10 and 8, 8). These graphs are below the lab's records
-and below the table, and their labels were searched for each (q, m): they are not a uniform family. They show that the
-cyclic factor removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0 times the LPS graph alone.
+Every entry was re-checked by the director with `haar_ecc` (two-source BFS on the component, from the cards' generators:
+`research/squads/thmfam-r1/c6/gen_c6.py`, `research/squads/thmfam-r1/c7/c7lib.py`), and (6,10) and (8,8) also with
+`verify_cover.py` (independent Python arithmetic; eccentricities 10, 10 and 8, 8). These graphs are below the lab's
+records and below the table, and their labels were searched for each (q, m): they are not a uniform family. They show
+that the cyclic factor removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0 times the LPS graph alone.
+
+### 4.3 A label rule: a formula in q and m that beats the 2013 table at (8,8) and (8,9)
+
+Fix p = 7, so Δ = 8 and S_7 = {2 ± (i + j + k)} ∪ C₁ ∪ C₂ with the two 3-cycles of σ
+
+C₁ = {2 − i − j + k, 2 + i − j − k, 2 − i + j − k},  C₂ = {2 − i + j + k, 2 + i − j + k, 2 + i + j − k}
+
+(in the order α, σα, σ²α). For m whose prime factors are all ≡ 1 (mod 3), let r be a root of r² + r + 1 ≡ 0 (mod m)
+and give the labels
+
+z(2 ± (i + j + k)) = 0,  z(C₁) = (1, r, r²),  z(C₂) = (t, tr, tr²)
+
+with t a fixed integer (t = 2 below), or a fixed function of m (t = m − 2). This defines S̃(q, m) ⊆ PGL(2, q) × Z_m
+by one formula in q and m: no search. It is closed under the automorphism (x, z) ↦ (hxh⁻¹, rz) of order 3, the
+records' shape. The vertex (X, z, A), X ∈ PSL(2, q), is adjacent to the eight vertices (ψ(α)X, z + z(α), B), α ∈ S_7.
+
+**Computer-checked 4.3 (squad card c2 of round 2, re-checked by the director).** Over the grid q ∈ {11, 13, 17, 19,
+23} × m ∈ {7, 13, 19, 31, 37, 43, 61, 49, 91} (45 cells, all components full), the rules t = 2, t = 3, t = 5, t = m − 2
+and others have mean excess 2.63–2.66, against 2.72–2.77 for one random t per cell (two seeds). Two members of the
+family are above the 2013 table:
+
+| cell | (q, m), rule, r | vertices | 2013 table | lab record | checks |
+|---|---|---:|---:|---:|---|
+| (8,8) | (17, 43), t = 2, r = 36 | **210,528** | 201,480 (+4.5 %) | 239,904 | `haar_ecc`, `verify_cover.py`, all-pairs `apsp.c` |
+| (8,9) | (23, 91), t = m − 2 = 89, r = 9 | **1,105,104** | 1,091,232 (+1.3 %) | 1,341,600 | `haar_ecc`, `verify_cover.py` |
+
+(generators: `haar_families/covers/d8D8_lps7_q17_m43.gens`, `d8D9_lps7_q23_m91.gens`; log `covers/recheck.log`.)
+Both are below the lab's records at these cells ([H] §5), so they are not new records; and (q, m) is the best cell of
+the grid, chosen after the fact. What they show is that a member of a uniform arithmetic family of the records' exact
+shape (k = 3, cycle type 1 + 1 + 3 + 3, an inner automorphism of order 3 times a scaling of Z_m) is above the 2013 table
+at D = 8 and 9, while the same family without the cyclic factor is 6.8 and 3.6 times below it (Appendix B). We do not
+have a proof of the diameter of any member: the proofs of §3 give lower bounds only.
+
+**Label rules elsewhere (round 2).** For p = 5 the best fixed rules (t = 3, t = 2) have mean excess 2.86–2.89 against
+3.02–3.09 for random t, over 45 cells (card c1); a nonlinear rule z(α) = Σ_k (a_k mod 3)·r^{k−1} gives 2.82 over 24
+cells (card c11); one random equivariant labelling per cell gives 2.97 and the best t per cell 2.65 (card c10, 23 cells
+with an exhaustive search). For Δ = 4 (p = 3), covers with labels searched exhaustively reach 66 % of the table at (4,8)
+and 88 % at (4,9) (card c6), so the cells (4,8), (4,9), which the lab does not beat, stay unbeaten. For Δ = 12 the best
+cover found reaches 51 % of the table at (12,9) and none of diameter 8 improves on plain LPS (card c7); for Δ = 14 the
+best is the 65 % graph at (14,8) of §4.2.
 
 ---
 
@@ -457,11 +503,13 @@ the best of millions of evaluations for one (q, m).
 | one random draw per q | Δ = 6 | Δ = 7 | Δ = 8 |
 |---|---:|---:|---:|
 | random S, no symmetry, PSL | 3.20 ± 0.05 | 2.95 ± 0.05 | 2.95 ± 0.05 |
-| random S, no symmetry, SL | 3.05 ± 0.02 | 2.89 ± 0.03 | |
-| random orbit-closed S (k = 3), PSL | 3.31 ± 0.11 | 3.04 ± 0.09 | 3.28 ± 0.08 |
-| random orbit-closed S (k = 3), SL | 3.34 ± 0.10 | 3.09 ± 0.08 | |
+| random S, no symmetry, SL | 3.05 ± 0.02 | 2.89 ± 0.03 | 2.76 ± 0.03 |
+| random orbit-closed S (k = 3), PSL | 3.31 ± 0.11 | 3.04 ± 0.10 | 3.28 ± 0.08 |
+| random orbit-closed S (k = 3), SL | 3.34 ± 0.11 | 3.09 ± 0.09 | 3.14 ± 0.09 |
 
-So a single orbit-closed draw is slightly *worse* than a single unconstrained draw (by 0.1–0.3); the orbit search wins
+(Orbit-closed sets with Δ = 7, 8 contain I, and I and w, as in the records; the unconstrained sets are Δ distinct
+random elements.) The spread of the excess over q is 0.1–0.4 per prime. So a single orbit-closed draw is slightly
+*worse* than a single unconstrained draw (by 0.1–0.4); the orbit search wins
 because it makes the search space smaller and the misses come in clumps ([H] §3.5), not because orbit-closed sets are
 better one by one. The families:
 
@@ -490,8 +538,9 @@ predicts 1/3), that of random orbit-closed draws with slope −0.04.
 
 **Heuristic 5.2 (reading of 5.1).**
 
-1. Every formula family lands within about 0.3 of one random draw at the same Δ, on either side; the best of each kind
-   was selected among 8–1212 variants on the same primes, so the small wins are within the selection effect.
+1. No formula family beats one random draw at the same Δ by more than about 0.2, and the best of each kind was
+   selected among 8–1212 variants on the same primes, so the small wins are within the selection effect. Several
+   kinds are clearly worse: LPS, and the integer lifts at Δ = 8 and 10 (by 0.5–0.9).
 2. Arithmetic structure costs: LPS is about 0.8 worse than one random draw at q ≤ 113, and the gap grows like
    (1/3) log_p n (Theorem 3.2; card c14 measured slope 0.41 for LPS and −0.04 for random draws).
 3. The records do not transport: the set that is a record at its own q (excess about 2.0) is an ordinary set at every
@@ -565,10 +614,12 @@ python3 check_thmB_construction.py                                    # the beta
 ./lps_haar 5 13 -v | grep '^gen' | sed 's/.*mat(//; s/) z=/ /; s/,/ /g' > g.txt
 python3 component_edges.py pgl 13 1 e.txt < g.txt                    # independent edge list of the component
 cc -O2 -o apsp ../../lifts/coordinator_check/apsp.c && ./apsp e.txt 6 40   # all-pairs BFS: diameter 7
-python3 table_lps.py                   # Appendix B from scan/lps_p*.txt
+python3 appendix_b.py                  # Appendix B from scan/lps_p*.txt (./scan_lps.sh p qmax rebuilds a scan)
 python3 family_score.py --gen "./gen_lps.sh 5 {q}" --group pgl --qrange 23 113   # §5, LPS row
 python3 ../../squads/thmfam-r1/c6/gen_c6.py 23 37 19 0 | ./haar_ecc pgl 23 37  # §4.2, (6,10)
 python3 ../../squads/thmfam-r1/c6/gen_c6.py 23 37 19 0 | python3 verify_cover.py 23 37
+python3 gen_lps_cover.py 7 11 151 cyc 1 57 | ./haar_ecc pgl 11 151           # §4.2, (8,8): diameter 8
+python3 ../../squads/thmfam-r1/c7/c7lib.py 13 29 379 1 202 352 308 | ./haar_ecc pgl 29 379   # §4.2, (14,8)
 ```
 
 ---
@@ -583,14 +634,20 @@ director's. Every number quoted in the note from a card was re-run by the direct
 where it says "card" only (the mean excesses of §5, which are averages over many runs and are reproducible from the
 cards' folders).
 
-**Round 1 (18 cards): uniform families.** c1–c4 integer lifts (Δ = 6, 7, 8, 10, and with Z_m); c5 the records' sets
-at other q; c6–c7 LPS × Z_m with searched labels; c8 verification of Theorems 2.6 and 3.2 (found a bug in the first
-`lps_haar.c`); c9 the far vertices of LPS graphs (the guess "all far vertices come from pure quaternions" failed); c10–c11
-q-dependent formulas; c12 torus orbits with Δ ~ q; c13–c14 random baselines and the trend in q; c15 symmetries of order
-5 and 6; c16 the conic model; c17 cyclic factors with m ~ q; c18 repairs of LPS. Outcome: every formula family is at the
-level of one random draw (§5); LPS × Z_m covers were the only direction that came close to the table (§4).
+**Round 1 (18 cards): uniform families.** c1–c4 integer lifts (Δ = 6, 7, 8, 10, and with Z_m); c5 the records' sets at
+other q; c6–c7 LPS × Z_m with searched labels; c8 verification of Theorems 2.6 and 3.2 (found a bug in the first
+`lps_haar.c`); c9 the far vertices of LPS graphs (the guess "all far vertices come from pure quaternions" failed);
+c10–c11 q-dependent formulas; c12 torus orbits with Δ ~ q; c13–c14 random baselines and the trend in q; c15 symmetries
+of order 5 and 6; c16 the conic model; c17 cyclic factors with m ~ q; c18 repairs of LPS. Outcome: every formula family
+is at the level of one random draw (§5); LPS × Z_m covers were the only direction that came close to the table (§4).
 
-**Round 2 (11 cards): LPS × Z_m covers.** [[R2]]
+**Round 2 (11 cards): LPS × Z_m covers.** c1–c3 label rules (a formula in m) for p = 5, 7 and 11, 13; c4–c5 pushes of
+p = 5 and p = 7 covers past the table with labels searched per (q, m); c6 Δ = 4 covers at (4,8), (4,9); c7 Δ = 12, 14
+covers; c8 a numerical audit of §§1.2, 2, 3 and 4.1 of this note with its own code (one discrepancy, a miscount in the
+first draft of Appendix B, now corrected; everything else passed, including the neighbourhood formulas of Example 2.8
+against the edges, Lemma 2.5(c), Proposition 4.1 in covers and Corollary 3.4 on all 214 scan lines); c9 a second
+quaternion algebra (Proposition 3.6); c10 random and exhaustive label baselines; c11 nonlinear arithmetic labels.
+Outcome: the rules of c2 give the two members above the table in §4.3; nothing else beat the table. [[R2MORE]]
 
 ## Appendix B. The LPS family cell by cell
 

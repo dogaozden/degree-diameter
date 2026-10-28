@@ -105,6 +105,7 @@
 \newunicodechar{≅}{\ensuremath{\cong}}
 \newunicodechar{⋯}{\ensuremath{\cdots}}
 \newunicodechar{𝒬}{\ensuremath{\mathcal{Q}}}
+\newunicodechar{𝒪}{\ensuremath{\mathcal{O}}}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -184,20 +185,25 @@ given by one formula in q (and m) and a proved diameter?
   exactly the one that the vertex ψ(i) allows (8 of 13 cells; the next
   prime below in 3 more).
 \item
-  \emph{A cyclic factor removes this obstruction in practice, but not as
-  a formula.} The obstruction survives every cover (Proposition 4.1),
-  but it bounds q, not m. LPS × \(Z_{m}\) with labels chosen for each
-  (q, m) by a squad reaches 99.4 \% of the table at (6,10) and 98.9 \%
-  at (8,8) (Computer-checked 4.2), still below the lab's records.
+  \emph{A cyclic factor removes this obstruction in practice.} The
+  obstruction survives every cover (Proposition 4.1), but it bounds q,
+  not m. LPS × \(Z_{m}\) with labels chosen for each (q, m) reaches 99.4
+  \% of the table at (6,10) and 98.9 \% at (8,8) (Computer-checked 4.2),
+  and with labels given by one formula in m (§4.3) the family has
+  members \textbf{above the 2013 table} at (8,8) (210,528 vertices
+  against 201,480; q = 17, m = 43) and (8,9) (1,105,104 against
+  1,091,232; q = 23, m = 91), checked by two or three independent
+  programs. They are below the lab's records there, and their diameters
+  are computed, not proved.
 \item
   \emph{Other uniform formulas behave like one random draw.} Integer
   lifts, primitive-root and Dickson formulas, the conic model, torus
   orbits, and the records' own sets moved to other q (18 squad cards,
-  §5) give an excess diam − \(log_{Δ−1}\)\textbar G\textbar{} within
-  about 0.3 of a single random draw at the same Δ (about 2.9--3.4 at Δ =
-  6--8), against about 2.0--2.3 for the records. Heuristically, the
-  records' advantage is selection among millions of sets, which no
-  single formula provides (§5--6).
+  §5) give an excess diam − \(log_{Δ−1}\)\textbar G\textbar{} no better
+  than a single random draw at the same Δ (about 2.9--3.4 at Δ = 6--8;
+  some kinds are worse), against about 2.0--2.3 for the records.
+  Heuristically, the records' advantage is selection among millions of
+  sets, which no single formula provides (§5--6).
 \item
   \emph{What would be needed is open.} A uniform family of record
   quality at fixed Δ would be an explicit family of bounded-degree
@@ -205,7 +211,8 @@ given by one formula in q (and m) and a proved diameter?
   the LPS graphs Sardari proved that it fails (§6).
 \end{enumerate}
 
-No infinite family above the table is proved in this note.
+No infinite family above the table is proved in this note; the members
+above the table in item 3 are single computed graphs.
 
 \hypertarget{contents}{%
 \subsection{Contents}\label{contents}}
@@ -291,7 +298,10 @@ an orthogonal unit γ & Proposition \\
 Prop. 4.1 & the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K,
 S̃) of the LPS graph & Proposition \\
 4.2 & LPS × \(Z_{m}\) with searched labels: 99.4 \% of the table at
-(6,10), 98.9 \% at (8,8) & Computer-checked \\
+(6,10), 98.9 \% at (8,8), 65 \% at (14,8) & Computer-checked \\
+4.3 & LPS(7) × \(Z_{m}\) with labels by a formula: members above the
+2013 table at (8,8) and (8,9) (below the lab's records) &
+Computer-checked \\
 §5 & uniform formulas of six kinds: excess about that of one random draw
 & Computer-checked (scores), Heuristic (reading) \\
 \end{longtable}
@@ -934,6 +944,92 @@ m): they are not a uniform family. They show that the cyclic factor
 removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0
 times the LPS graph alone.
 
+\hypertarget{a-label-rule-a-formula-in-q-and-m-that-beats-the-2013-table-at-88-and-89}{%
+\subsubsection{4.3 A label rule: a formula in q and m that beats the
+2013 table at (8,8) and
+(8,9)}\label{a-label-rule-a-formula-in-q-and-m-that-beats-the-2013-table-at-88-and-89}}
+
+Fix p = 7, so Δ = 8 and \(S_{7}\) = \{2 ± (i + j + k)\} ∪ C₁ ∪ C₂ with
+the two 3-cycles of σ
+
+C₁ = \{2 − i − j + k, 2 + i − j − k, 2 − i + j − k\}, C₂ = \{2 − i + j +
+k, 2 + i − j + k, 2 + i + j − k\}
+
+(in the order α, σα, σ²α). For m whose prime factors are all ≡ 1 (mod
+3), let r be a root of r² + r + 1 ≡ 0 (mod m) and give the labels
+
+z(2 ± (i + j + k)) = 0, z(C₁) = (1, r, r²), z(C₂) = (t, tr, tr²)
+
+with t a fixed integer (t = 2 below), or a fixed function of m (t = m −
+2). This defines S̃(q, m) ⊆ PGL(2, q) × \(Z_{m}\) by one formula in q and
+m: no search. It is closed under the automorphism (x, z) ↦ (hxh⁻¹, rz)
+of order 3, the records' shape. The vertex (X, z, A), X ∈ PSL(2, q), is
+adjacent to the eight vertices (ψ(α)X, z + z(α), B), α ∈ \(S_{7}\).
+
+\textbf{Computer-checked 4.3 (squad card c2 of round 2, re-checked by
+the director).} Over the grid q ∈ \{11, 13, 17, 19, 23\} × m ∈ \{7, 13,
+19, 31, 37, 43, 61, 49, 91\} (45 cells, all components full), the rules
+t = 2, t = 3, t = 5, t = m − 2 and others have mean excess 2.63--2.66,
+against 2.72--2.77 for one random t per cell (two seeds). Two members of
+the family are above the 2013 table:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+cell
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+(q, m), rule, r
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+vertices
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2013 table
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+lab record
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+checks
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+(8,8) & (17, 43), t = 2, r = 36 & \textbf{210,528} & 201,480 (+4.5 \%) &
+239,904 & \texttt{haar\_ecc}, \texttt{verify\_cover.py}, all-pairs
+\texttt{apsp.c} \\
+(8,9) & (23, 91), t = m − 2 = 89, r = 9 & \textbf{1,105,104} & 1,091,232
+(+1.3 \%) & 1,341,600 & \texttt{haar\_ecc}, \texttt{verify\_cover.py} \\
+\end{longtable}
+
+(generators: \texttt{haar\_families/covers/d8D8\_lps7\_q17\_m43.gens},
+\texttt{d8D9\_lps7\_q23\_m91.gens}; log \texttt{covers/recheck.log}.)
+Both are below the lab's records at these cells ({[}H{]} §5), so they
+are not new records; and (q, m) is the best cell of the grid, chosen
+after the fact. What they show is that a member of a uniform arithmetic
+family of the records' exact shape (k = 3, cycle type 1 + 1 + 3 + 3, an
+inner automorphism of order 3 times a scaling of \(Z_{m}\)) is above the
+2013 table at D = 8 and 9, while the same family without the cyclic
+factor is 6.8 and 3.6 times below it (Appendix B). We do not have a
+proof of the diameter of any member: the proofs of §3 give lower bounds
+only.
+
+\textbf{Label rules elsewhere (round 2).} For p = 5 the best fixed rules
+(t = 3, t = 2) have mean excess 2.86--2.89 against 3.02--3.09 for random
+t, over 45 cells (card c1); a nonlinear rule z(α) = Σ\_k (\(a_{k}\) mod
+3)·r\(^{k−1}\) gives 2.82 over 24 cells (card c11); one random
+equivariant labelling per cell gives 2.97 and the best t per cell 2.65
+(card c10, 23 cells with an exhaustive search). For Δ = 4 (p = 3),
+covers with labels searched exhaustively reach 66 \% of the table at
+(4,8) and 88 \% at (4,9) (card c6), so the cells (4,8), (4,9), which the
+lab does not beat, stay unbeaten. For Δ = 12 the best cover found
+reaches 51 \% of the table at (12,9) and none of diameter 8 improves on
+plain LPS (card c7); for Δ = 14 the best is the 65 \% graph at (14,8) of
+§4.2.
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{other-uniform-families-squad-round-1}{%
@@ -1048,10 +1144,11 @@ draws with slope −0.04.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Every formula family lands within about 0.3 of one random draw at the
-  same Δ, on either side; the best of each kind was selected among
-  8--1212 variants on the same primes, so the small wins are within the
-  selection effect.
+  No formula family beats one random draw at the same Δ by more than
+  about 0.2, and the best of each kind was selected among 8--1212
+  variants on the same primes, so the small wins are within the
+  selection effect. Several kinds are clearly worse: LPS, and the
+  integer lifts at Δ = 8 and 10 (by 0.5--0.9).
 \item
   Arithmetic structure costs: LPS is about 0.8 worse than one random
   draw at q ≤ 113, and the gap grows like (1/3) log\_p n (Theorem 3.2;
@@ -1177,10 +1274,12 @@ novelty for Lemmas 2.3--2.5 or for Theorem 2.7.
 \ExtensionTok{./lps\_haar}\NormalTok{ 5 13 }\AttributeTok{{-}v} \KeywordTok{|} \FunctionTok{grep} \StringTok{\textquotesingle{}\^{}gen\textquotesingle{}} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/.*mat(//; s/) z=/ /; s/,/ /g\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ g.txt}
 \ExtensionTok{python3}\NormalTok{ component\_edges.py pgl 13 1 e.txt }\OperatorTok{\textless{}}\NormalTok{ g.txt                    }\CommentTok{\# independent edge list of the component}
 \FunctionTok{cc} \AttributeTok{{-}O2} \AttributeTok{{-}o}\NormalTok{ apsp ../../lifts/coordinator\_check/apsp.c }\KeywordTok{\&\&} \ExtensionTok{./apsp}\NormalTok{ e.txt 6 40   }\CommentTok{\# all{-}pairs BFS: diameter 7}
-\ExtensionTok{python3}\NormalTok{ table\_lps.py                   }\CommentTok{\# Appendix B from scan/lps\_p*.txt}
+\ExtensionTok{python3}\NormalTok{ appendix\_b.py                  }\CommentTok{\# Appendix B from scan/lps\_p*.txt (./scan\_lps.sh p qmax rebuilds a scan)}
 \ExtensionTok{python3}\NormalTok{ family\_score.py }\AttributeTok{{-}{-}gen} \StringTok{"./gen\_lps.sh 5 \{q\}"} \AttributeTok{{-}{-}group}\NormalTok{ pgl }\AttributeTok{{-}{-}qrange}\NormalTok{ 23 113   }\CommentTok{\# §5, LPS row}
 \ExtensionTok{python3}\NormalTok{ ../../squads/thmfam{-}r1/c6/gen\_c6.py 23 37 19 0 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 23 37  }\CommentTok{\# §4.2, (6,10)}
 \ExtensionTok{python3}\NormalTok{ ../../squads/thmfam{-}r1/c6/gen\_c6.py 23 37 19 0 }\KeywordTok{|} \ExtensionTok{python3}\NormalTok{ verify\_cover.py 23 37}
+\ExtensionTok{python3}\NormalTok{ gen\_lps\_cover.py 7 11 151 cyc 1 57 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 11 151           }\CommentTok{\# §4.2, (8,8): diameter 8}
+\ExtensionTok{python3}\NormalTok{ ../../squads/thmfam{-}r1/c7/c7lib.py 13 29 379 1 202 352 308 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 29 379   }\CommentTok{\# §4.2, (14,8)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1225,35 +1324,38 @@ cell}\label{appendix-b.-the-lps-family-cell-by-cell}}
 the scan logs \texttt{haar\_families/scan/lps\_p*.txt}, which list the
 order and the diameter of \(Γ_{p,q}\) for every prime p \textless{} q up
 to the scan limit, computed by \texttt{lps\_haar}). For each cell the
-largest LPS graph of diameter ≤ D; ``(scan limit)'' means the largest
-scanned q still had diameter ≤ D, so larger LPS graphs may exist there.
-``Thm 3.2: q ≤'' is the largest prime q with q² \textless{}
-2p\(^{⌊D/2⌋}\), the limit of Corollary 3.4.
+largest LPS graph of diameter ≤ D; A star (*) means the largest scanned
+q still had diameter ≤ D, so larger LPS graphs may exist there. ``Thm
+3.2: q ≤'' is the largest prime q with q² \textless{} 2p\(^{⌊D/2⌋}\),
+the limit of Corollary 3.4.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1034}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1379}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0882}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0882}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1176}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Δ (p)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 D
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-largest LPS graph: q, vertices
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-\% of Moore
+q
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+vertices
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\% Moore
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Thm 3.2: q ≤
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 table
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-ratio table/LPS
+table / LPS
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 lab record
 \end{minipage} \\
@@ -1261,45 +1363,41 @@ lab record
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-4 (3) & 7 & 7, 336 & 15.37 & 7 & 840 & 2.5 & 864 \\
-4 (3) & 8 & 7, 336 & 5.12 & 11 & 2,184 & 6.5 & -- \\
-4 (3) & 9 & 11, 1,320 & 6.71 & 11 & 4,970 & 3.8 & -- \\
-4 (3) & 10 & 13, 2,184 & 3.70 & 19 & 11,748 & 5.4 & 12,416 \\
-4 (3) & 11 & 19, 6,840 & 3.86 & 19 & -- & -- & -- \\
-4 (3) & 12 & 19, 6,840 & 1.29 & 37 & -- & -- & -- \\
-6 (5) & 7 & 13, 2,184 & 5.59 & 13 & 8,310 & 3.8 & 8,880 \\
-6 (5) & 8 & 23, 12,144 & 6.22 & 31 & 29,790 & 2.5 & 31,680 \\
-6 (5) & 9 & 29, 24,360 & 2.49 & 31 & 117,360 & 4.8 & 127,296 \\
-6 (5) & 10 & 53, 148,824 & 3.05 & 79 & 452,032 & 3.0 & 524,160 \\
-6 (5) & 11 & 67, 300,696 & 1.23 & 79 & -- & -- & -- \\
-6 (5) & 12 & 107, 1,224,936 & 1.00 & 173 & -- & -- & -- \\
-8 (7) & 7 & 23, 12,144 & 4.42 & 23 & 40,586 & 3.3 & 43,344 \\
-8 (7) & 8 & 31, 29,760 & 1.55 & 67 & 201,480 & 6.8 & 239,904 \\
-8 (7) & 9 & 67, 300,696 & 2.24 & 67 & 1,091,232 & 3.6 & 1,341,600 \\
-8 (7) & 10 & 107, 1,224,936 & 1.30 & 181 & 6,927,210 & 5.7 &
+4 (3) & 7 & 7 & 336 & 15.37 & 7 & 840 & 2.5 & 864 \\
+4 (3) & 8 & 7 & 336 & 5.12 & 11 & 2,184 & 6.5 & -- \\
+4 (3) & 9 & 11 & 1,320 & 6.71 & 11 & 4,970 & 3.8 & -- \\
+4 (3) & 10 & 13 & 2,184 & 3.70 & 19 & 11,748 & 5.4 & 12,416 \\
+4 (3) & 11 & 19 & 6,840 & 3.86 & 19 & -- & -- & -- \\
+4 (3) & 12 & 19 & 6,840 & 1.29 & 37 & -- & -- & -- \\
+6 (5) & 7 & 13 & 2,184 & 5.59 & 13 & 8,310 & 3.8 & 8,880 \\
+6 (5) & 8 & 23 & 12,144 & 6.22 & 31 & 29,790 & 2.5 & 31,680 \\
+6 (5) & 9 & 29 & 24,360 & 2.49 & 31 & 117,360 & 4.8 & 127,296 \\
+6 (5) & 10 & 53 & 148,824 & 3.05 & 79 & 452,032 & 3.0 & 524,160 \\
+6 (5) & 11 & 67 & 300,696 & 1.23 & 79 & -- & -- & -- \\
+6 (5) & 12 & 107 & 1,224,936 & 1.00 & 173 & -- & -- & -- \\
+8 (7) & 7 & 23 & 12,144 & 4.42 & 23 & 40,586 & 3.3 & 43,344 \\
+8 (7) & 8 & 31 & 29,760 & 1.55 & 67 & 201,480 & 6.8 & 239,904 \\
+8 (7) & 9 & 67 & 300,696 & 2.24 & 67 & 1,091,232 & 3.6 & 1,341,600 \\
+8 (7) & 10 & 107 & 1,224,936 & 1.30 & 181 & 6,927,210 & 5.7 &
 7,818,096 \\
-8 (7) & 11 & 173, 5,177,544 & 0.79 & 181 & -- & -- & -- \\
-8 (7) & 12 & 229, 12,008,760 (scan limit) & 0.26 & 479 & -- & -- & -- \\
-12 (11) & 7 & 47, 103,776 & 2.66 & 47 & 664,300 & 6.4 & 693,500 \\
-12 (11) & 8 & 71, 357,840 & 0.83 & 167 & 4,650,100 & 13.0 & -- \\
-12 (11) & 9 & 167, 4,657,296 & 0.99 & 167 & 30,001,152 & 6.4 &
+8 (7) & 11 & 173 & 5,177,544 & 0.79 & 181 & -- & -- & -- \\
+8 (7) & 12 & 229* & 12,008,760 & 0.26 & 479 & -- & -- & -- \\
+12 (11) & 7 & 47 & 103,776 & 2.66 & 47 & 664,300 & 6.4 & 693,500 \\
+12 (11) & 8 & 71 & 357,840 & 0.83 & 167 & 4,650,100 & 13.0 & -- \\
+12 (11) & 9 & 167 & 4,657,296 & 0.99 & 167 & 30,001,152 & 6.4 &
 34,026,720 \\
-12 (11) & 10 & 251, 15,813,000 & 0.30 & 563 & 300,383,050 & 19.0 &
+12 (11) & 10 & 251 & 15,813,000 & 0.30 & 563 & 300,383,050 & 19.0 &
 325,832,976 \\
-12 (11) & 11 & 257, 16,974,336 (scan limit) & 0.03 & 563 & -- & -- &
--- \\
-12 (11) & 12 & 257, 16,974,336 (scan limit) & 0.00 & 1879 & -- & -- &
--- \\
-14 (13) & 7 & 59, 205,320 & 1.96 & 61 & 1,771,560 & 8.6 & 1,789,588 \\
-14 (13) & 8 & 109, 1,294,920 & 0.95 & 239 & 14,172,480 & 10.9 & -- \\
-14 (13) & 9 & 233, 12,649,104 & 0.72 & 239 & 95,087,738 & 7.5 &
+12 (11) & 11 & 257* & 16,974,336 & 0.03 & 563 & -- & -- & -- \\
+12 (11) & 12 & 257* & 16,974,336 & 0.00 & 1879 & -- & -- & -- \\
+14 (13) & 7 & 59 & 205,320 & 1.96 & 61 & 1,771,560 & 8.6 & 1,789,588 \\
+14 (13) & 8 & 109 & 1,294,920 & 0.95 & 239 & 14,172,480 & 10.9 & -- \\
+14 (13) & 9 & 233 & 12,649,104 & 0.72 & 239 & 95,087,738 & 7.5 &
 116,068,656 \\
-14 (13) & 10 & 257, 16,974,336 (scan limit) & 0.07 & 859 & 1,213,477,190
-& 71.5 & 1,326,627,120 \\
-14 (13) & 11 & 257, 16,974,336 (scan limit) & 0.01 & 859 & -- & -- &
--- \\
-14 (13) & 12 & 257, 16,974,336 (scan limit) & 0.00 & 3089 & -- & -- &
--- \\
+14 (13) & 10 & 257* & 16,974,336 & 0.07 & 859 & 1,213,477,190 & 71.5 &
+1,326,627,120 \\
+14 (13) & 11 & 257* & 16,974,336 & 0.01 & 859 & -- & -- & -- \\
+14 (13) & 12 & 257* & 16,974,336 & 0.00 & 3089 & -- & -- & -- \\
 \end{longtable}
 
 Scan limits: p = 3: q ≤ 157, p = 5: q ≤ 157, p = 7: q ≤ 229, p = 11: q ≤
