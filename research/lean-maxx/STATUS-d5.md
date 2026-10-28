@@ -19,8 +19,11 @@ so they hold for every quadrangle; distances are `Reach` (walk of length ≤ n).
 | 4 | Corollary 10.3, formal shape: 7 levels HHHDHHD, spread on H→D, partial ovoid on D→H, non-friendly arcs whole (c = 0), complete bipartite hub graph (Y0) | `layout7` (any GQ with a bijection P ≃ L) | Layout7.lean | done |
 | 4 | the same for **every odd prime power q**, via the Singer model W(3,q) (SingerC, regular spread; maximal partial ovoid of ≥ q−1 points by counting): for 1 ≤ k ≤ q−3 a bipartite graph of max degree q+4, diameter ≤ 5, 14(q+1)(q²+1)+2k vertices | `SingerC.Setting.family_odd`, `exists_partial_ovoid` | Family.lean | done |
 
+| 3 | Lemma 3.2 / Definition 3.3 for the actual two-level graph `twoLevel D i j`: every vertex of level i within 5 of every vertex of level j ⇔ (3.1) `Data.Repaired`; hence Theorem E in graph form | `Hyp.repaired_iff_reach`, `Hyp.reach_iff_E` | Lemma32.lean | done |
+| 3 | Theorem C: (H1) non-collinear freed set, (H3) M(Γ2 x) = Γ2(M x) ⇒ repaired (no (H2) needed at D = 5) | `Hyp.repaired_of_local_dual` | ThmC.lean | done |
+
 What the family does not do: it uses c = 0 (no two-point local dualities, Theorem C / Proposition 6.4 are not formalised),
 the complete bipartite hub graph (k ≤ q−3 per side) and a counting partial ovoid (≥ q−1 points, not the 3q−1 of Lemma 1.3).
 The orders are therefore below those of Corollary 10.3 (14N + K_A + K_B with K_B ≤ 6q, K_A ≤ 3q+3) and below the lab's records;
-the theorems used are the note's. Not formalised: Lemma 3.2 (the two-level graph version of "repaired"; `Data.Repaired` is
-condition (3.1)), Theorems C, Lemma 1.1/1.3/1.4, Proposition 7.1/7.2, Lemma 9.1, Corollaries 10.1, 10.2, 10.4.
+the theorems used are the note's. Not formalised: Proposition 6.1, Corollary 6.2 and Proposition 6.4 (triad centres; existence of two-point local dualities),
+Lemma 1.1/1.3/1.4, Proposition 7.1/7.2, Lemma 9.1, Corollaries 10.1, 10.2, 10.4.

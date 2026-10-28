@@ -2,6 +2,8 @@ import BipartiteDD.LeanMaxx.D5.Assemble
 import BipartiteDD.LeanMaxx.D5.ThmE
 import BipartiteDD.LeanMaxx.D5.ThmB
 import BipartiteDD.LeanMaxx.D5.Family
+import BipartiteDD.LeanMaxx.D5.ThmC
+import BipartiteDD.LeanMaxx.D5.Lemma32
 
 open BipartiteDD.LeanMaxx.D5
 
@@ -18,3 +20,6 @@ open BipartiteDD.LeanMaxx.D5
 #print axioms Hyp.repaired_of_partial
 #print axioms layout7
 #print axioms BipartiteDD.SingerC.Setting.family_odd
+#print axioms Hyp.repaired_of_local_dual
+#print axioms Hyp.repaired_iff_reach
+#print axioms Hyp.reach_iff_E
