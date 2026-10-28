@@ -24,3 +24,6 @@ ecc(I,0,A) = 9, ecc(s0,z0,B) = 9, diameter = 9
 ## all-pairs BFS (apsp.c) on the edge list of d8D8_lps7_q17_m43 (component_edges.py pgl 17 43)
 n=210528 edges=842112 degree min=8 max=8 bipartite=yes diameter=8
 RESULT VALID d=8 D=8 n=210528
+## all-pairs BFS (apsp.c) on the edge list of d8D8_lps7_q11_m151 (component_edges.py pgl 11 151)
+n=199320 edges=797280 degree min=8 max=8 bipartite=yes diameter=8
+RESULT VALID d=8 D=8 n=199320

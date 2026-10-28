@@ -273,8 +273,9 @@ explicit constant given by LPS.
 *Remark.* Γ_{p,q} is X^{p,q} itself when p is not a square mod q (X^{p,q} is then a bipartite Cayley graph of
 PGL(2, q), and a bipartite Cayley graph whose connection set lies in the non-trivial coset of an index-2 subgroup is a
 Haar graph of that subgroup, Lemma 2.5(d)); it is the bipartite double cover of X^{p,q} when p is a square mod q.
-*Computer-checked*: Γ_{p,q} has q(q² − 1) vertices for p ∈ {3, 5, 7, 11, 13} and every prime p < q ≤ 160 (logs
-`haar_families/scan/lps_p*.txt`, column "vertices"), including p ≡ 3 (mod 4), which Theorem 2.7 as cited does not cover.
+*Computer-checked*: Γ_{p,q} has q(q² − 1) vertices for p ∈ {3, 5, 7, 11, 13} and every prime q with p < q up to the
+scan limits of Appendix B (214 graphs; logs `haar_families/scan/lps_p*.txt`, column "vertices"), including
+p ≡ 3 (mod 4), which Theorem 2.7 as cited does not cover.
 
 ### 2.3 The family written out at Δ = 6
 
