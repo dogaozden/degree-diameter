@@ -21,7 +21,8 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
 1. *There is an explicit infinite family of exactly this shape*, with m = 1: the connection sets of Lubotzky, Phillips
    and Sarnak (LPS). For every odd prime p and every prime q > p, the p + 1 LPS matrices in PGL(2, q) are permuted by
    conjugation with an element of order 3 of PSL(2, q), with cycle type 1+1+3+⋯+3 or 3+⋯+3: the cycle types that the
-   orbit search used at Δ = 6, 8, 12, 14 (Theorem 2.6). Their diameter is at most 2 log_p n + O(1) (*cited*, LPS).
+   orbit search used at Δ = 6, 8, 12, 14 (Theorem 2.6). For p ≡ 1 (mod 4) their diameter is at most 2 log_p n + O(1)
+   (*cited*, LPS).
 2. *This family provably cannot reach the records.* The vertex ψ(i) is at distance exactly the least even L with
    2p$^{L/2}$ > q² (Theorem 3.2: lower bound for every odd p, equality for p ≡ 1 mod 4), so the diameter is at least
    (4/3) log_p n − 2 log_p 2 (Corollary 3.3, the bound of N. T. Sardari, here with a two-paragraph proof), and a member
@@ -36,7 +37,7 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
    diameters are computed, not proved.
 4. *Other uniform formulas behave like one random draw.* Integer lifts, primitive-root and Dickson formulas, the conic
    model, torus orbits, and the records' own sets moved to other q (18 squad cards, §5) give an excess diam −
-   $log_{Δ−1}$|G| no better than a single random draw at the same Δ (about 2.9–3.4 at Δ = 6–8; some kinds are worse),
+   $log_{Δ−1}$|G| no better than a single random draw at the same Δ (about 2.8–3.4 at Δ = 6–8; some kinds are worse),
    against about 2.0–2.3 for the records. Heuristically, the records' advantage is selection among millions of sets,
    which no single formula provides (§5–6).
 5. *What would be needed is open.* A uniform family of record quality at fixed Δ would be an explicit family of
@@ -502,11 +503,13 @@ the best of millions of evaluations for one (q, m).
 | one random draw per q | Δ = 6 | Δ = 7 | Δ = 8 |
 |---|---:|---:|---:|
 | random S, no symmetry, PSL | 3.20 ± 0.05 | 2.95 ± 0.05 | 2.95 ± 0.05 |
-| random S, no symmetry, SL | 3.05 ± 0.02 | 2.89 ± 0.03 | |
-| random orbit-closed S (k = 3), PSL | 3.31 ± 0.11 | 3.04 ± 0.09 | 3.28 ± 0.08 |
-| random orbit-closed S (k = 3), SL | 3.34 ± 0.10 | 3.09 ± 0.08 | |
+| random S, no symmetry, SL | 3.05 ± 0.02 | 2.89 ± 0.03 | 2.76 ± 0.03 |
+| random orbit-closed S (k = 3), PSL | 3.31 ± 0.11 | 3.04 ± 0.10 | 3.28 ± 0.08 |
+| random orbit-closed S (k = 3), SL | 3.34 ± 0.11 | 3.09 ± 0.09 | 3.14 ± 0.09 |
 
-So a single orbit-closed draw is slightly *worse* than a single unconstrained draw (by 0.1–0.3); the orbit search wins
+(Orbit-closed sets with Δ = 7, 8 contain I, and I and w, as in the records; the unconstrained sets are Δ distinct
+random elements.) The spread of the excess over q is 0.1–0.4 per prime. So a single orbit-closed draw is slightly
+*worse* than a single unconstrained draw (by 0.1–0.4); the orbit search wins
 because it makes the search space smaller and the misses come in clumps ([H] §3.5), not because orbit-closed sets are
 better one by one. The families:
 
@@ -638,7 +641,13 @@ c10–c11 q-dependent formulas; c12 torus orbits with Δ ~ q; c13–c14 random b
 of order 5 and 6; c16 the conic model; c17 cyclic factors with m ~ q; c18 repairs of LPS. Outcome: every formula family
 is at the level of one random draw (§5); LPS × $Z_{m}$ covers were the only direction that came close to the table (§4).
 
-**Round 2 (11 cards): LPS × $Z_{m}$ covers.** [[R2]]
+**Round 2 (11 cards): LPS × $Z_{m}$ covers.** c1–c3 label rules (a formula in m) for p = 5, 7 and 11, 13; c4–c5 pushes of
+p = 5 and p = 7 covers past the table with labels searched per (q, m); c6 Δ = 4 covers at (4,8), (4,9); c7 Δ = 12, 14
+covers; c8 a numerical audit of §§1.2, 2, 3 and 4.1 of this note with its own code (one discrepancy, a miscount in the
+first draft of Appendix B, now corrected; everything else passed, including the neighbourhood formulas of Example 2.8
+against the edges, Lemma 2.5(c), Proposition 4.1 in covers and Corollary 3.4 on all 214 scan lines); c9 a second
+quaternion algebra (Proposition 3.6); c10 random and exhaustive label baselines; c11 nonlinear arithmetic labels.
+Outcome: the rules of c2 give the two members above the table in §4.3; nothing else beat the table. [[R2MORE]]
 
 ## Appendix B. The LPS family cell by cell
 

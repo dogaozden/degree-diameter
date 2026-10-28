@@ -34,3 +34,26 @@ random orbit-closed draw at Delta 6: 3.18-3.50; records 2.0-2.3.
 Kept: LPS x Z_m covers (c6, c7). Dropped: every formula family (they sit at the level of one random draw). The
 director proved Theorem 3.2 (exact distance to psi(i)) meanwhile; c8 and the director's own check (251/251) confirm it.
 Next: round 2 on label rules for LPS x Z_m (uniform in q and m) and how far covers go.
+
+## 2026-10-27 23:50 UTC, thm-haar-families, round thmfam-r2
+
+Goal: LPS x Z_m covers, the only round-1 direction near the table: label rules given by a formula in m (uniform in q
+and m), how far covers go, and a numerical audit of the note. 11 Haiku cards; scorer
+`research/theorems/haar_families/cover_score.py` (mean excess over a (q, m) grid) plus vertices/table per cell.
+
+| card | direction | best |
+|---|---|---|
+| c1 | label rules, p = 5 (45 cells) | t = 3: mean excess 2.86 (random t: 3.02-3.09) |
+| c2 | label rules, p = 7 (45 cells) | t = 2, 3, 5, m-2: 2.63-2.66 (random t: 2.72-2.77); members above the 2013 table at (8,8) 210,528 (q=17, m=43) and (8,9) 1,105,104 (q=23, m=91); director re-checked with haar_ecc, verify_cover.py and (8,8) with all-pairs apsp.c |
+| c3 | label rules, p = 11, 13 | (see scoreboard) |
+| c4 | push p = 5 covers past the table, searched labels | (see scoreboard) |
+| c5 | push p = 7 covers past the table | its (q, m) = (11, 163) entries marked diam 8 had 18 vertices unreached within 8 steps (cA = 215,151 < 215,160): diameter 9, not a table beat (director re-check) |
+| c6 | Delta 4 covers at (4,8), (4,9) | 66 % and 88 % of the table (exhaustive labels); no record |
+| c7 | Delta 12, 14 covers | 51 % of the table at (12,9); nothing at D = 8 beyond plain LPS |
+| c8 | numerical audit of the note | one discrepancy (odd-D count in Appendix B), fixed; all identities, Lemma 2.5(c), Prop. 4.1 passed |
+| c9 | second quaternion algebra (-1,-3) | distance to psi(i) = the Hamilton threshold in 65/66 cases (Prop. 3.6) |
+| c10 | random and exhaustive label baselines | p = 5: random equivariant 2.97, best t per cell 2.65; p = 7: random 2.68 |
+| c11 | nonlinear arithmetic labels | z = sum (a_k mod 3) r^(k-1): 2.82 at p = 5 (24 cells) |
+
+Kept: the label rule of c2 (two members above the 2013 table, below the lab's records). Stopped here: no direction
+came near the lab's records, and the theorem part (Theorems 2.6, 3.2) did not depend on more search.
