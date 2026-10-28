@@ -1990,7 +1990,8 @@ vertex with several free slots may receive several hubs; Theorem~\ref{thm:assemb
 Lemma~\ref{lem:pendant}, $K=\min(r(q^2+1),\kappa(q-r))\ge7$.
 \end{proof}
 \todo{Corollary~\ref{cor:d7-r} was suggested by the referee of the diameter-7 note (who built its $q=5$, $r=1$ and $r=2$
-cases and checked them by breadth-first search from every vertex); the note itself left it out because it added no new
+cases and checked them by breadth-first search from every vertex; the $r=2$ case was rebuilt again from this draft's
+recipe, with the same result); the note itself left it out because it added no new
 statement. It is the only way the $(15,7)$ cell is improved without computer-found sets. Keep it?}
 
 \begin{table}[ht]
@@ -3077,6 +3078,11 @@ Table~\ref{tab:hat4} with the computed neighbourhoods.
   group from scratch, including the finite field and the matrix group), or by one program and a Lean proof; twelve of them (up
   to 540\,360 vertices) also passed the all-pairs check. Negative controls (one generator altered, or $D$ lowered by
   one) are rejected.
+\item \emph{This paper's text.} Separately from the checks above, the constructions were rebuilt from the definitions as
+  printed here (not from the programs that produced the records): Theorem~\ref{thm:hat4} for $q=5,7$ (all $(a,c)$) and
+  $q=11$; Theorem~\ref{thm:A} and Corollary~\ref{cor:A1} for $q=3,5,7$; Proposition~\ref{prop:C} and Corollary~\ref{cor:C1}
+  for $q=3,5$; Theorem~\ref{thm:whiskers} for $q=3,5$ and Theorem~\ref{thm:whiskerdoubling} with $m=2$ for $q=3$ (order
+  1020) and $q=5$ (order 9592, diameter 6); Corollary~\ref{cor:d7-r} for $q=5$, $r=2$ (order 39\,074, diameter 7).
 \end{itemize}
 
 \todo{Should this appendix name the programs and log files (for instance \nolinkurl{research/lifts/coordinator_check/apsp_mt.c},
