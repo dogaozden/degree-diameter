@@ -392,7 +392,8 @@ Corollary 5.5 gives one as soon as $K$ disjoint quadric lines and $K$ non-collin
 duality) are exhibited. The sets below were found by squad round 2 and by the director. Every set was certified by
 research/theorems/polylev/d11cert.py (every class is the point set of a 2-dimensional totally singular subspace,
 classes pairwise disjoint; no line of $H(q)$ contains two of the chosen points); the squad sets were also certified by
-the finding card's own checker, and the $q = 8$ sets by the stand-alone verify_q8.py (Computer-checked 5.8). These graphs are far too large for a breadth-first check (up to $10^{11}$ vertices); their diameter rests on
+the finding card's own checker, and the $q = 8$ sets by the stand-alone verify_q8.py (Computer-checked 5.8).
+These graphs are far too large for a breadth-first check (up to $3.8\cdot 10^{11}$ vertices); their diameter rests on
 Corollary 5.5, which was checked all-pairs at $q = 2, 3, 4$ (Computer-checked 5.6, 5.9).
 
 | $(\Delta, 11)$ | $q$ | $r$ | $K$ | order $2N(2rK+1)$ | % of the bipartite Moore bound | lab value |
@@ -511,8 +512,10 @@ $A_i\supseteq m_i$ ($m_i\in\mathcal M$) and $B_i\supseteq$ the pencil of $z_i\in
 the 9 vertices $(l,g)$ with $p\in l$ and to $(\sigma_1(p), g+i+1)$; $(l,g)$, $l\in B_i$, to the 9 vertices $(p,g)$ with
 $p\in l$ and to $(\sigma_1^{-1}(l), g-i-1)$, indices mod 6,571. The graph has $4.9\cdot10^8$ vertices, too many for an
 all-pairs BFS; as a sample, for 300 random pairs (half of them two copies of the same element in different layers)
-d11graph.py found $B_5(u)\cap B_6(v)\ne\emptyset$, i.e. distance $\le 11$, every time, while a positive fraction of the
-pairs are at distance $> 10$ (certs/q8_sample.log). The diameter bound itself rests on Corollary 5.5.
+d11graph.py found $B_5(u)\cap B_6(v)\ne\emptyset$, i.e. distance $\le 11$, every time, and $B_5(u)\cap B_5(v)=\emptyset$
+for 42 of them, i.e. distance exactly 11 (certs/q8_sample.log); it also checked that the sampled vertices have 10
+distinct neighbours and that adjacency is symmetric. So the diameter is exactly 11; the upper bound rests on
+Corollary 5.5, the sample only illustrates it.
 
 **Computer-checked 5.9 (a small test of the same mix).** At $q = 4$: 20 pairwise disjoint lines of $Q(6,4)$ that are
 not lines of $H(4)$ (traces: for opposite points $a, b$, the $q+1$ points collinear with $b$ at distance 4 from $a$)

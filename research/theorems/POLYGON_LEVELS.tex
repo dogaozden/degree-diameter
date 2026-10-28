@@ -736,9 +736,9 @@ research/theorems/polylev/d11cert.py (every class is the point set of a
 line of \(H(q)\) contains two of the chosen points); the squad sets were
 also certified by the finding card's own checker, and the \(q = 8\) sets
 by the stand-alone verify\_q8.py (Computer-checked 5.8). These graphs
-are far too large for a breadth-first check (up to \(10^{11}\)
+are far too large for a breadth-first check (up to \(3.8\cdot 10^{11}\)
 vertices); their diameter rests on Corollary 5.5, which was checked
-all-pairs at \(q = 2, 3\) (Computer-checked 5.6).
+all-pairs at \(q = 2, 3, 4\) (Computer-checked 5.6, 5.9).
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1111}}
@@ -974,9 +974,11 @@ mod 6,571. The graph has \(4.9\cdot10^8\) vertices, too many for an
 all-pairs BFS; as a sample, for 300 random pairs (half of them two
 copies of the same element in different layers) d11graph.py found
 \(B_5(u)\cap B_6(v)\ne\emptyset\), i.e.~distance \(\le 11\), every time,
-while a positive fraction of the pairs are at distance \(> 10\)
-(certs/q8\_sample.log). The diameter bound itself rests on Corollary
-5.5.
+and \(B_5(u)\cap B_5(v)=\emptyset\) for 42 of them, i.e.~distance
+exactly 11 (certs/q8\_sample.log); it also checked that the sampled
+vertices have 10 distinct neighbours and that adjacency is symmetric. So
+the diameter is exactly 11; the upper bound rests on Corollary 5.5, the
+sample only illustrates it.
 
 \textbf{Computer-checked 5.9 (a small test of the same mix).} At
 \(q = 4\): 20 pairwise disjoint lines of \(Q(6,4)\) that are not lines
