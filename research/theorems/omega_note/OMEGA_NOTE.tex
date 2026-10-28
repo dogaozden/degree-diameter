@@ -246,7 +246,8 @@ all choices go down to~$5$.
 \begin{remark}
 The same numbers, for every radius $\le 4$ and both types, follow from the intersection array
 $\{q+1, q, q, q, q, q; 1, 1, 1, 1, 1, q+1\}$ of the distance-regular graph $I$; the referee of the relabelling note
-computed them that way (\file{logs/lemma31_drg.txt}).
+computed them that way (\file{logs/lemma31_drg.txt}). For this note we also counted them directly on $H(3)$ and
+$H(4)$ built by \file{hexq6.c}, together with Lemma~\ref{lem:perp} on $H(3)$ (\file{lem16.py}).
 \end{remark}
 
 \section{Gómez's construction}\label{sec:gomez}
@@ -768,7 +769,8 @@ Lemma~\ref{lem:routes} were enumerated for every pair $(X, c')$:
 \end{itemize}
 The last item twice (\file{routecount.c}, \file{routecount2.c} of the relabelling note; \file{myroutes.py},
 \file{sweep.py} of its referee, which enumerates walks symbolically without using Lemma~\ref{lem:routes}'s
-families). The others with the referee's enumerator, re-run for this note (\file{starved.py}).
+families). All four items were re-run for this note with the referee's enumerator for $\alpha = 5, 6, 7, 8$
+(\file{starved.py}; the largest $m_2$ of a starved pair is $140$, $201$, $272$, $353$).
 \end{computer}
 
 \subsection{$q \ge 8$}
@@ -1176,8 +1178,9 @@ All in the repository github.com/dogaozden/degree-diameter, by branch (commit in
 \item \emph{This note}: \file{research/theorems/OMEGA_NOTE.md} and \file{research/theorems/omega_note/}
   (this file, \file{starved.py}, \file{types43.py}, \file{typetable.py}, logs), branch
   \file{claude/omega-d8-note-xrbqux}. Re-run for this note: the constants of Theorem~\ref{thm:two}
-  (\file{thm2_bound.py} of the first referee), the route words for $\alpha = 5, 6$ (\file{starved.py}, with the
-  second referee's \file{myroutes.py}) and Table~\ref{tab:types} (\file{types43.py}, from scratch).
+  (\file{thm2_bound.py} of the first referee), the route words for $\alpha = 5, \dots, 8$ (\file{starved.py}, with the
+  second referee's \file{myroutes.py}), Table~\ref{tab:types} (\file{types43.py}, from scratch), and
+Lemmas~\ref{lem:perp}, \ref{lem:balls} on $H(3)$, $H(4)$ (\file{lem16.py}).
 \end{itemize}
 
 \par\endgroup

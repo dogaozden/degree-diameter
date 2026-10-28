@@ -148,7 +148,8 @@ and q − 1 go up; from distance 6 all choices go down to 5.
 
 (The same counts for every radius ≤ 4 and both types follow from the intersection array
 {q+1, q, q, q, q, q; 1, 1, 1, 1, 1, q+1} of I, which is distance-regular; the referee of the relabelling note computed
-them that way, `logs/lemma31_drg.txt`.)
+them that way, `logs/lemma31_drg.txt`. For this note we also counted them directly on H(3) and H(4) built by
+`hexq6.c`, together with Lemma 1.5 on H(3): `omega_note/lem16.py`, log `omega_note/logs/lem16_q3_q4.txt`.)
 
 ## 2. Gómez's construction
 
@@ -536,8 +537,9 @@ a-blocks matters), the routes of Lemma 5.4 were enumerated for every pair (X, c�
   262 (α = 7, aaabbbb), 347 (α = 8, aaaabbbb).
 
 Twice for the last item (`routecount.c` and `routecount2.c` of the relabelling note; `myroutes.py`/`sweep.py` of its
-referee, which enumerates walks symbolically and does not use Lemma 5.4's families); the first three items by the
-referee's enumerator, re-run for this note (`starved.py`, log `research/theorems/omega_note/logs/starved_alpha5_6.txt`).
+referee, which enumerates walks symbolically and does not use Lemma 5.4's families). All four items were re-run for this
+note with the referee's enumerator for α = 5, 6, 7, 8 (`starved.py`, logs `omega_note/logs/starved_alpha5_6.txt` and
+`starved_alpha7_8.txt`; the largest m₂ of a starved pair is 140, 201, 272, 353).
 
 ### 5.4 q ≥ 8
 
@@ -843,8 +845,9 @@ All on github.com/dogaozden/degree-diameter, by branch.
   claude/leanmaxx-verify-9ummw2 (2ff0c8e).
 - **This note**: `research/theorems/OMEGA_NOTE.md`, `research/theorems/omega_note/` (`OMEGA_NOTE.tex`,
   `OMEGA_NOTE.pdf`, `starved.py`, `types43.py`, `typetable.py`, logs), branch claude/omega-d8-note-xrbqux. The checks
-  re-run for this note: the Theorem 2 constants (`thm2_bound.py` of the referee), the route words for α = 5, 6
-  (`starved.py`, using the referee's `myroutes.py`), and the q = 7 type table (`types43.py`, written from scratch).
+  re-run for this note: the Theorem 2 constants (`thm2_bound.py` of the referee), the route words for α = 5, 6, 7, 8
+  (`starved.py`, using the referee's `myroutes.py`), the q = 7 type table (`types43.py`, written from scratch), and
+  Lemmas 1.5, 1.6 on H(3), H(4) (`lem16.py`).
 
 ## References
 
