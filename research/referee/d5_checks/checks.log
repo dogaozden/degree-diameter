@@ -1,0 +1,168 @@
+== GQ constructions and the Klein correspondence (sec. 1.2)
+q=2: W(q), Q(4,q) GQ axioms ok; Klein map W(q)^D -> Q(4,q) is an isomorphism
+q=3: W(q), Q(4,q) GQ axioms ok; Klein map W(q)^D -> Q(4,q) is an isomorphism
+q=4: W(q), Q(4,q) GQ axioms ok; Klein map W(q)^D -> Q(4,q) is an isomorphism
+q=5: W(q), Q(4,q) GQ axioms ok; Klein map W(q)^D -> Q(4,q) is an isomorphism
+q=7: W(q), Q(4,q) GQ axioms ok; Klein map W(q)^D -> Q(4,q) is an isomorphism
+== small lemmas (1.2(c) exhaustive triads, 1.3, 1.4; hub structure of the record)
+q=3 W: point triads by number of centres (all triads): {1: 2880, 4: 360}
+q=3 Q(4,q): point triads by number of centres (all triads): {0: 1080, 2: 2160}
+q=5 W: point triads by number of centres (all triads): {1: 312000, 6: 13000}
+q=5 Q(4,q): point triads by number of centres (all triads): {0: 130000, 2: 195000}
+Lemma 1.3, q=3 variant: 7 points, partial ovoid: True
+Lemma 1.3, q=5: 3q-1 = 14 points, partial ovoid of W(q) (3 random choices of tau, z)
+Lemma 1.3, q=7: 3q-1 = 20 points, partial ovoid of W(q) (3 random choices of tau, z)
+Lemma 1.3, q=9: 3q-1 = 26 points, partial ovoid of W(q) (3 random choices of tau, z)
+Lemma 1.3, q=11: 3q-1 = 32 points, partial ovoid of W(q) (3 random choices of tau, z)
+Lemma 1.3, q=13: 3q-1 = 38 points, partial ovoid of W(q) (3 random choices of tau, z)
+Lemma 1.4, q=2: (phi, psi) is a duality of W(q); psi(spread) is an ovoid: True
+Lemma 1.4, q=4: (phi, psi) is a duality of W(q); psi(spread) is an ovoid: True
+Lemma 1.4, q=8: (phi, psi) is a duality of W(q); psi(spread) is an ovoid: True
+record: partnered lines 60; A-hubs serving each partnered line on the five D->H arcs: Counter({1: 60})
+== numbers (sec. 0, 7, 8, 9, 10, 11, 12, 14)
+prime powers: [2, 3, 4, 5, 7, 8, 9, 11, 13, 16, 17, 19, 23, 25, 27, 29, 31, 32, 37]
+(10,5): (2r+1)*2N(7) = 4000, table 4000, degree q+1+r = 10
+(11,5): (2r+1)*2N(8) = 5850, table 5850, degree q+1+r = 11
+(12,5): (2r+1)*2N(9) = 8200, table 8200, degree q+1+r = 12
+(13,5): (2r+1)*2N(9) = 11480, table 11480, degree q+1+r = 13
+(14,5): (2r+1)*2N(9) = 14760, table 14760, degree q+1+r = 14
+(15,5): (2r+1)*2N(11) = 20496, table 20496, degree q+1+r = 15
+  Delta=10: largest (2r+1)2N(q) = (4000, 7, 2); table 4000
+  Delta=11: largest (2r+1)2N(q) = (5850, 8, 2); table 5850
+  Delta=12: largest (2r+1)2N(q) = (8200, 9, 2); table 8200
+  Delta=13: largest (2r+1)2N(q) = (11480, 9, 3); table 11480
+  Delta=14: largest (2r+1)2N(q) = (14760, 9, 4); table 14760
+  Delta=15: largest (2r+1)2N(q) = (20496, 11, 3); table 20496
+  Delta=16: largest (2r+1)2N(q) = (26352, 11, 4); table 27300
+theorem family (10,5): 4044  (Cor 10.2, q=7, r=2, KB+KA=44 with KB=22, KA=22)  table 4000  beats
+theorem family (11,5): 6090  (Cor 10.1, q=8, r=2, KB+KA=240 with KB=120, KA=120)  table 5850  beats
+theorem family (12,5): 8430  (Cor 10.1, q=8, r=3, KB+KA=240 with KB=120, KA=120)  table 8200  beats
+theorem family (13,5): 11552  (Cor 10.3, q=9, r=3, KB+KA=72 with KB=42, KA=30)  table 11480  beats
+theorem family (14,5): 14812  (Cor 10.4, q=9, r=4, KB+KA=52 with KB=26, KA=26)  table 14760  beats
+theorem family (15,5): 20598  (Cor 10.3, q=11, r=3, KB+KA=102 with KB=66, KA=36)  table 20496  beats
+theorem family (16,5): 26453  (Cor 10.4, q=11, r=4, KB+KA=101 with KB=63, KA=38)  table 27300  below
+Cor 10.3: q^2+5 >= 6q for all q>=5: True
+Cor 10.4: min(q^2+7, 9q-1): [(5, 32), (7, 56), (9, 80), (11, 98), (13, 116)]
+relaxed-set counting bound q=5: 28.36 -> 28
+relaxed-set counting bound q=7: 53.33 -> 53
+relaxed-set counting bound q=9: 86.32 -> 86
+relaxed-set counting bound q=11: 127.30 -> 127
+record: alpha = (86, 134, 198) beta = (70, 246, 166) n = 11636
+  with b=51, c=2: n <= 11621; c=0: n <= 11613
+  with b=56, c=2: n <= 11626; c=0: n <= 11618
+  with b=57, c=2: n <= 11627; c=0: n <= 11619
+sec 12 heuristic q=5: N/e = 57, uncovered fraction 0.116, pairs per freed element 18; exact (1-(q+1)/N)^(q(q+1)) = 0.308
+sec 12 heuristic q=7: N/e = 147, uncovered fraction 0.165, pairs per freed element 66; exact (1-(q+1)/N)^(q(q+1)) = 0.323
+sec 12 heuristic q=9: N/e = 302, uncovered fraction 0.200, pairs per freed element 164; exact (1-(q+1)/N)^(q(q+1)) = 0.331
+sec 12 heuristic q=11: N/e = 539, uncovered fraction 0.225, pairs per freed element 329; exact (1-(q+1)/N)^(q(q+1)) = 0.337
+(15,5): to beat 20,736 need KA+KB >= 241, i.e. b >= 111; Tallini q^2-q+1 = 111; 87 gives 20713; 70 gives 20696
+  23/28 = 0.821, 0.82*127 = 104.3
+balanced HG_5 maxima from Lemma 9.1, delta=3..12: [15, 45, 120, 255, 468, 780, 1200, 2000, 2925, 4100]
+12N(q): {10: 4800, 11: 7020, 12: 9840, 14: 17568}
+== typings of regular tournaments (sec. 8)
+==> $SCRATCH/t5.txt <==
+n=5 tournaments=24
+
+==> $SCRATCH/t7.txt <==
+n=7 tournaments=2640
+
+==> $SCRATCH/t9.txt <==
+n=9 tournaments=46144
+n=5: 8 profiles, 969 (a,b,c) triples tested, 0 disagreements with the claimed formula []
+n=7: 24 profiles, 969 (a,b,c) triples tested, 0 disagreements with the claimed formula []
+n=9: 98 profiles, 969 (a,b,c) triples tested, 0 disagreements with the claimed formula []
+== two-level tests: Theorems E, B, Prop. 6.4, 7.1, 7.2
+[(('E agrees', 'both fail'), 247), (('E agrees', 'repaired'), 73), (('Prop 6.4 repaired',), 36), (('Thm B agrees', False), 46), (('Thm B agrees', True), 37)]
+q=3 |T|=8 pairs=4: bad pairs 48 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=3 |T|=8 pairs=4: bad pairs 48 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=3 |T|=9 pairs=3: bad pairs 36 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=3 |T|=8 pairs=2: bad pairs 24 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=3 |T|=8 pairs=2: bad pairs 24 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=3 |T|=8 pairs=4: bad pairs 48 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 5
+q=4 |T|=12 pairs=5: bad pairs 80 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=4 |T|=10 pairs=5: bad pairs 80 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=4 |T|=12 pairs=4: bad pairs 64 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=4 |T|=12 pairs=4: bad pairs 64 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=4 |T|=10 pairs=5: bad pairs 80 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=4 |T|=12 pairs=5: bad pairs 80 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 7
+q=5 |T|=15 pairs=6: bad pairs 120 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+q=5 |T|=15 pairs=2: bad pairs 40 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+q=5 |T|=15 pairs=5: bad pairs 100 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+q=5 |T|=15 pairs=5: bad pairs 100 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+q=5 |T|=15 pairs=5: bad pairs 100 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+q=5 |T|=15 pairs=6: bad pairs 120 = 4q*pairs (Prop 7.1 exact set: yes); with hub rule 0; rule broken at one line 9
+perturbed local dualities, q = 2, 3, W and Q4, 2400 transitions; Theorem E agrees with BFS in all: {'both fail': 1830, 'repaired': 459, 'only E2 fails': 6, 'only E3 fails': 105}
+== Computer-checked 6.5 (card c4)
+R = [81, 133, 28] pairwise non-collinear: True
+(E2) True (E3) True; two-level pairs beyond distance 5: 0
+images pairwise non-concurrent: True
+triad centres: points 2, image lines 1
+(H3) holds at: [28]
+== largest partial ovoid of W(3), W(5) (pair fixed; clique number + 2)
+clique number 5 (nodes 38): 17 16 15 6 9
+clique number 16 (nodes 331986): 99 98 92 91 80 79 77 55 51 69 62 53 48 34 17 12
+== (13,5) 11,636 rebuilt from its solution file
+file's W(9): 820 points and 820 lines = my W(9)
+ovoid: 82 pairwise non-collinear points of Q(4,9); equals the spread of Lemma 1.1 for (alpha,beta) in [(1, 4)]
+T: 66 lines, 30 partner pairs, 60 partnered lines, meeting points in O: 0
+non-friendly arcs: 11, each a 2-element non-collinear freed set with (H1),(H3)
+alpha = [86, 86, 86, 134, 86, 86, 198]  beta = [70, 70, 70, 246, 70, 70, 166]
+hubs 86 + 70, Y: 420 edges, max Y-degree B 5, A 6 (q - r = 6)
+A-hub rule: satisfied 300, violated 0, partnered slot not taken by any hub 0
+n = 11636 = 7*2*820 + 86 + 70, edges 75370
+n=11636 edges=75370 multi=0 components=1 bipartite=yes sides=5810+5826 degree min=10 max=13 diameter=5 ordered_pairs_beyond_5=0
+identical to the writer's edge list: True
+== (15,5)-type 20,713 rebuilt from its solution file
+file's W(11): 1464 points and 1464 lines = my W(11)
+ovoid: 122 pairwise non-collinear points of Q(4,11); equals the spread of Lemma 1.1 for (alpha,beta) in [(1, 2)]
+T: 87 lines, 34 partner pairs, 68 partnered lines, meeting points in O: 0
+non-friendly arcs: 11, each a 2-element non-collinear freed set with (H1),(H3)
+alpha = [126, 126, 126, 176, 126, 126, 261]  beta = [91, 91, 91, 366, 91, 91, 246]
+hubs 126 + 91, Y: 728 edges, max Y-degree B 6, A 8 (q - r = 8)
+A-hub rule: satisfied 340, violated 0, partnered slot not taken by any hub 0
+n = 20713 = 7*2*1464 + 126 + 91, edges 154900
+n=20713 edges=154900 multi=0 components=1 bipartite=yes sides=10339+10374 degree min=12 max=15 diameter=5 ordered_pairs_beyond_5=0
+== explicit families (Cor. 10.1-10.4), built from the printed ingredients
+Cor 10.2 q=7 r=2 alpha=[52, 52, 22, 52, 40] beta=[22, 22, 100, 22, 52] KB=22 KA=22 hubs=Y1:3: n=4044
+n=4044 edges=20072 multi=0 components=1 bipartite=yes sides=2022+2022 degree min=6 max=10 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.1 q=8 r=2 alpha=[130, 130, 130, 130, 130] beta=[130, 130, 130, 130, 130] KB=120 KA=120 hubs=Y3:3:1: n=6090
+n=6090 edges=33325 multi=0 components=1 bipartite=yes sides=3045+3045 degree min=9 max=11 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.1 q=8 r=3 alpha=[195, 195, 195, 195, 195, 195, 195] beta=[195, 195, 195, 195, 195, 195, 195] KB=120 KA=120 hubs=Y3:3:1: n=8430
+n=8430 edges=50055 multi=0 components=1 bipartite=yes sides=4215+4215 degree min=9 max=12 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.3 q=9 r=3 alpha=[86, 86, 86, 54, 86, 86, 78] beta=[30, 30, 30, 246, 30, 30, 166] KB=42 KA=30 hubs=Y1:4: n=11552
+n=11552 edges=74697 multi=0 components=1 bipartite=yes sides=5770+5782 degree min=8 max=13 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.4 q=9 r=4 alpha=[88, 88, 88, 88, 80, 88, 88, 88, 104] beta=[32, 32, 32, 32, 328, 32, 32, 32, 248] KB=26 KA=26 hubs=Y1:3: n=14812
+n=14812 edges=103066 multi=0 components=1 bipartite=yes sides=7406+7406 degree min=10 max=14 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.3 q=11 r=3 alpha=[126, 126, 126, 66, 126, 126, 96] beta=[36, 36, 36, 366, 36, 36, 246] KB=66 KA=36 hubs=Y1:5: n=20598
+n=20598 edges=153868 multi=0 components=1 bipartite=yes sides=10284+10314 degree min=8 max=15 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.4 q=11 r=4 alpha=[128, 128, 128, 128, 98, 128, 128, 128, 128] beta=[38, 38, 38, 38, 488, 38, 38, 38, 368] KB=63 KA=38 hubs=Y1:4: n=26453
+n=26453 edges=210767 multi=0 components=1 bipartite=yes sides=13214+13239 degree min=10 max=16 diameter=5 ordered_pairs_beyond_5=0
+Cor 10.2 q=7 r=2 alpha=[52, 52, 22, 52, 40] beta=[22, 22, 100, 22, 52] KB=22 KA=22 hubs=Y1:3: n=4044
+n=4044 edges=20072 multi=0 components=1 bipartite=yes sides=2022+2022 degree min=6 max=10 diameter=5 ordered_pairs_beyond_5=0
+negative control: Cor 10.2, q=7, one extra line meeting a line of the set on the D->H arcs
+Cor 10.2 q=7 r=2 alpha=[52, 52, 23, 52, 42] beta=[23, 23, 100, 23, 52] KB=22 KA=22 hubs=Y1:3: n=4044
+n=4044 edges=20069 multi=0 components=1 bipartite=yes sides=2022+2022 degree min=6 max=10 diameter=6 ordered_pairs_beyond_5=54
+== relaxed pair meeting in the ovoid (sec. 7, 'The hubs exist')
+q=5: pair (l,m) meets at z in O: True; |T| = 15; both hubs of the pair at z
+n=2188 edges=9633 multi=0 components=1 bipartite=yes sides=1094+1094 degree min=6 max=9 diameter=5 ordered_pairs_beyond_5=0
+q=5: pair (l,m) meets at z in O: True; |T| = 15; rule broken for g_m
+n=2188 edges=9633 multi=0 components=1 bipartite=yes sides=1094+1094 degree min=6 max=9 diameter=5 ordered_pairs_beyond_5=0
+q=7: pair (l,m) meets at z in O: True; |T| = 21; both hubs of the pair at z
+n=5604 edges=30455 multi=0 components=1 bipartite=yes sides=2802+2802 degree min=8 max=11 diameter=5 ordered_pairs_beyond_5=0
+q=7: pair (l,m) meets at z in O: True; |T| = 21; rule broken for g_m
+n=5604 edges=30455 multi=0 components=1 bipartite=yes sides=2802+2802 degree min=8 max=11 diameter=6 ordered_pairs_beyond_5=34
+q=9: pair (l,m) meets at z in O: True; |T| = 27; both hubs of the pair at z
+n=11484 edges=74085 multi=0 components=1 bipartite=yes sides=5742+5742 degree min=9 max=13 diameter=5 ordered_pairs_beyond_5=0
+q=9: pair (l,m) meets at z in O: True; |T| = 27; rule broken for g_m
+n=11484 edges=74085 multi=0 components=1 bipartite=yes sides=5742+5742 degree min=9 max=13 diameter=5 ordered_pairs_beyond_5=0
+RUN_ALL EXIT 0
+== §12 remark: one more freed element on the D->D arc 3->6 of the 11,636 graph (report point 2)
+extra freed element on arc 3->6: two-level bad (ordered level-3/level-6) pairs: 504
+n=11636 edges=75369 multi=0 components=1 bipartite=yes sides=5810+5826 degree min=10 max=13 diameter=6 ordered_pairs_beyond_5=880
+whole-graph bad pairs by levels: {('3', '6'): 440}
+extra freed element on arc 3->6: two-level bad (ordered level-3/level-6) pairs: 519
+n=11636 edges=75369 multi=0 components=1 bipartite=yes sides=5810+5826 degree min=10 max=13 diameter=6 ordered_pairs_beyond_5=876
+whole-graph bad pairs by levels: {('3', '6'): 438}
+extra freed element on arc 3->6: two-level bad (ordered level-3/level-6) pairs: 474
+n=11636 edges=75369 multi=0 components=1 bipartite=yes sides=5810+5826 degree min=10 max=13 diameter=6 ordered_pairs_beyond_5=806
+whole-graph bad pairs by levels: {('3', '6'): 403}
