@@ -1,0 +1,10 @@
+class	order	point_cycles	fixed_S_lines	orbit_sizes	status	best_relaxed_invariant	upper_bound	verified
+0	2	2^732	12	[2]	FEASIBLE	68	106.0	True
+1	11	1^12 11^132	1	[1, 11]	OPTIMAL	45	45.0	True
+2	5	1^24 5^288	2	[1, 5]	FEASIBLE	72	122.0	True
+3	2	1^24 2^720	12	[1, 2]	FEASIBLE	71	133.0	True
+4	2	2^732	2	[2]	FEASIBLE	72	120.0	True
+5	3	3^488	2	[3]	FEASIBLE	75	120.0	True
+6	61	61^24	0	[61]	OPTIMAL	0	-0.0	True
+7	2	2^732	122	[2]	OPTIMAL	0	-0.0	True
+8	2	1^24 2^720	2	[1, 2]	FEASIBLE	75	122.0	True
