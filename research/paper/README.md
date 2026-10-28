@@ -37,6 +37,8 @@ Written from the paper's own definitions (not from the lab's builders), to catch
   diameter 4.
 - `haar_examples.py`: the connection sets printed in Section 8, with the two-BFS criterion of Theorem 8.4: (7,5) 1152 and
   (9,5) 2662 vertices, diameter 5; Example 8.5, 95,760 vertices, diameter 8, and the automorphism alpha permutes S as stated.
+- `starved.py`: Lemma 7.13 from Definition 7.1, for every block pattern with alpha <= 8. Table 7 was also recomputed from
+  the formula of Lemma 7.19 (all 17 rows agree).
 - `cor_r.py`: Corollary 6.23 (the one statement not taken from a refereed note) at q = 5, r = 2: five levels of H(5),
   R the 26 points of an elliptic quadric section, R* 26 lines of a Hermitian spread, sigma built as in Proposition 6.17
   ((H1)-(H3) re-checked), 7 hubs per colour on the Fano plane. `apsp.c` (all pairs): 39,074 vertices, bipartite, maximum
