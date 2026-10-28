@@ -1,0 +1,32 @@
+crossed doubling + patches: checked for q = 4, 5, 7
+coordinate-free builds agree with coords.by_rules for q = 4, 5, 7, 8, 9, all (a, c)
+q = 3: 3 random frames, all claims checked (AL and four hats)
+q = 4: 6 random frames, all claims checked (AL and four hats)
+q = 5: 6 random frames, all claims checked (AL and four hats)
+q = 7: 6 random frames, all claims checked (AL and four hats)
+nearfield plane of order 9 (non-Desarguesian): 4 random frames, all claims checked
+Gadget of AL (x = incidence, o = removed plane incidence):
+           ell  lam_0  lam_1  lam_a      M    K_0    K_1    K_a
+      A      .      x      x      x      .      .      .      x
+    X_0      x      x      .      .      .      x      .      .
+    X_1      x      .      x      .      .      .      x      .
+    X_a      x      .      .      o      x      .      .      x
+      Q      .      .      .      x      .      x      x      x
+    H_0      .      x      .      .      x      .      x      .
+    H_1      .      .      x      .      x      x      .      .
+    H_a      x      .      .      x      x      .      .      .
+
+Gadget of the four hats:
+           ell  lam_0  lam_c  lam_1  lam_a      M    K_0    K_c    K_1    K_a
+      A      .      x      x      x      x      .      .      .      .      x
+    X_0      x      o      x      .      .      .      x      .      .      .
+    X_c      x      .      o      x      .      .      .      x      .      .
+    X_1      x      x      .      o      .      .      .      .      x      .
+    X_a      x      .      .      .      o      x      .      .      .      x
+      Q      .      .      .      .      x      .      x      x      x      x
+    H_0      .      x      .      .      .      x      .      x      .      .
+    H_c      .      .      x      .      .      x      .      .      x      .
+    H_1      .      .      .      x      .      x      x      .      .      .
+    H_a      x      .      .      .      x      x      .      .      .      .
+
+ALL CHECKS PASSED
