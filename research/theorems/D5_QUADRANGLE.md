@@ -223,7 +223,12 @@ partial ovoids for specific $q$ (§10.3): 18 ($q=5$), 33 ($q=7$), 51 ($q=9$), 70
 r2c8, research/squads/gqd5-r2/c8/results.md): 18 is the maximum for $W(5)$ (no 19-point partial ovoid: SAT, two solvers,
 using the transitivity of $\mathrm{PSp}(4,5)$ on non-collinear pairs), below Tallini's bound 21. We know no explicit family
 of order $q^2$ for $q$ odd; Ceria, De Beule, Pavese and Smaldore [CDPS] construct large partial ovoids of $W(3,q)$ for
-$q$ an odd square with $3\nmid q$ (we did not compare sizes with ours).
+$q$ an odd square with $3\nmid q$. Their Table 1 lists, as the known lower bounds for the largest partial ovoid
+of $W(3,q)$, $q$ odd: $(q^{3/2}+3q-q^{1/2}+3)/3$ when $q$ is an even power of a prime $p\ne 3$ (their construction),
+and Tallini's maximal partial ovoid of size $2q+1$ [Ta91] otherwise. Lemma 1.3 gives $3q-1$, which is larger than $2q+1$
+for every $q\ge 5$ and larger than the [CDPS] value for $q = 25$ (74 against 66), smaller for $q = 49$ (146 against
+162) and above. We read only [CDPS] for this comparison; the survey of De Beule, Klein, Metsch and Storme on partial
+ovoids and spreads of classical polar spaces should be checked too.
 
 **Lemma 1.4 (an explicit duality of $W(q)$, $q$ even).** For a line $\ell = \langle x,y\rangle$ of $W(q)$ put
 $\psi(\ell) = (p_{01},p_{03},p_{23},p_{12})$ (Plücker coordinates as above), and for a point $x$ let $\varphi(x)$ be
