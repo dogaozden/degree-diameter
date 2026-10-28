@@ -18,6 +18,15 @@ What the draft adds to the notes: the arrangement, connecting text, the note-to-
 start), Corollary 6.23 (all levels of type H for every r; suggested by the diameter-7 referee, who built two cases), and
 the prior-work paragraphs collected from the notes' literature sections.
 
+## Independent review
+
+A reviewer session read the whole draft against the sources (28 Oct): no wrong theorem, proof step, formula or table value;
+three false statements (the qualifier of Lemma 7.8, `|H(11)|` at (13,8), the scope of the all-pairs checks in Appendix C)
+and a list of gaps (data locations, the definition of "computer-checked", the G2(7) step at q = 7, explicit elliptic
+3-spaces for Section 6.8, the q = 2 whiskers, notation clashes). All were applied in the commit after the review, except
+where a co-author decision is needed (todos added: general-z expansions in Lemmas 5.6/5.12, a formula for the duality of
+H(3^h)).
+
 ## Checks of the draft's text (`checks/`)
 
 Written from the paper's own definitions (not from the lab's builders), to catch transcription errors:
@@ -39,6 +48,10 @@ Written from the paper's own definitions (not from the lab's builders), to catch
   (9,5) 2662 vertices, diameter 5; Example 8.5, 95,760 vertices, diameter 8, and the automorphism alpha permutes S as stated.
 - `starved.py`: Lemma 7.13 from Definition 7.1, for every block pattern with alpha <= 8. Table 7 was also recomputed from
   the formula of Lemma 7.19 (all 17 rows agree).
+- `q2whiskers.py`: the 12 whiskers of Appendix B (q = 2) in coordinates: an exact whisker set; the doubling with m = 2 has
+  208 vertices, maximum degree 4, diameter 6.
+- `elliptic3.py`: the 3-spaces Sigma_0 of Lemma 6.2(a) for q = 3, 5, 7, 11 and q = 4, 8: q^2+1 points, pairwise
+  non-perpendicular.
 - `cor_r.py`: Corollary 6.23 (the one statement not taken from a refereed note) at q = 5, r = 2: five levels of H(5),
   R the 26 points of an elliptic quadric section, R* 26 lines of a Hermitian spread, sigma built as in Proposition 6.17
   ((H1)-(H3) re-checked), 7 hubs per colour on the Fano plane. `apsp.c` (all pairs): 39,074 vertices, bipartite, maximum

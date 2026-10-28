@@ -74,7 +74,7 @@ $D$. We give constructions from generalized polygons that improve the lower boun
 we add a fourth hat to the three hats of Araujo-Pardo and L\'opez and obtain $\nb(q+2,3)\ge 2(q^2+q+6)$ with regular
 graphs. At diameter 4 we copy points and lines of a generalized quadrangle with weights and stand-ins; a weighted
 2-ovoid of the Ahrens--Szekeres quadrangle built from two elliptic quadrics gives $\nb(q+2,4)\ge 2q^2(q+2)$ for odd
-$q$, and Singer 2-ovoids of $W(3,q)$ give $\nb(q+3,4)\ge 2(q^2+1)(q+3)$, both with regular graphs. At diameter 6 an
+$q$, and Singer 2-ovoids of $W(3,q)$ give $\nb(q+3,4)\ge 2(q^2+1)(q+3)$ for odd $q$, both with regular graphs. At diameter 6 an
 explicit set of $q^2(q^2-1)$ lines of the split Cayley hexagon $H(q)$ (``whiskers'') added to Delorme's doubling gives
 $\nb(q+m,6)\ge 2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr)$, and a regular version. At diameter 7
 we join $2r+1$ copies of the incidence graph of $H(q)$ by matchings, delete matching edges at suitable sets and attach
@@ -141,9 +141,9 @@ joining several copies of an incidence graph by matchings and new vertices. The 
   Hermitian spread. This gives Theorem~\ref{thm:D}, and deleting repeated lines and completing gives regular graphs
   (Theorem~\ref{thm:R}).
 \item \emph{Diameter 7} (Section~\ref{sec:d7}). The 2013 values at $(7,7)$ and $(9,7)$--$(16,7)$ are the orders
-  $(2r+1)\cdot2|H(q)|$ of $2r+1$ copies of the incidence graph of $H(q)$ joined by matchings. We delete matching
+  $(2r+1)\cdot2N(q)$, $N(q)=(q+1)(q^4+q^2+1)$, of $2r+1$ copies of the incidence graph of $H(q)$ joined by matchings. We delete matching
   edges at suitable sets of elements and attach new vertices to the freed slots. Theorem~\ref{thm:assembly} reduces the
-  diameter to one condition per pair of copies; Theorems~\ref{thm:autotrans} and~\ref{thm:localdual} give two
+  diameter to one condition per pair of copies and one condition on the new vertices; Theorems~\ref{thm:autotrans} and~\ref{thm:localdual} give two
   sufficient conditions (segment sets at automorphic transitions; local dualities), the first also necessary. With
   classical sets this improves all nine cells (Corollaries~\ref{cor:d7-91}--\ref{cor:d7-r}); explicit larger sets give
   the values of Table~\ref{tab:summary}.
@@ -166,8 +166,9 @@ Every theorem in Sections~\ref{sec:prelim}--\ref{sec:d8} has a complete proof he
 marked: a statement about one explicit finite object (a set of points, a connection set, a hub graph, a count of
 route words) is \emph{computer-checked}, and we name the check. ``Computer-checked'' for a graph means: built from its
 definition, and found to be bipartite, of the stated maximum degree and of the stated diameter by breadth-first search
-from every vertex (or from one vertex of every orbit of an automorphism group that was itself checked), by at least two
-programs written separately. Appendix~\ref{app:checks} lists the checks. Many of the statements are also proved in
+from every vertex (or from one vertex of every orbit of an automorphism group that was itself checked). Most graphs were
+checked by at least two programs written separately; the exceptions are named in Appendix~\ref{app:checks} (one program
+independent of the builder, or one program and a Lean proof). Appendix~\ref{app:checks} lists the checks. Many of the statements are also proved in
 Lean~4 with Mathlib; Appendix~\ref{app:lean} says exactly which.
 
 \begin{longtable}{@{}l r r r l l@{}}
@@ -208,9 +209,9 @@ $(\Delta,D)$ & $\Mb$ & 2013 & this paper & reg. & construction \\
 \end{longtable}
 \noindent $^a$ The current values of \cite{CW} are 274 and 374 \cite{AL20}.
 
-All graphs in Table~\ref{tab:summary} except the two Haar graphs at $D=5$ come from constructions proved here for every
-prime power $q$ (or every odd $q$). At $D=3,4,6$ the ingredients are classical or given by explicit formulas (at $(7,4)$
-an explicit list of 21 lines, Appendix~\ref{app:359}). At $D=7$ the values in the table use, in addition, explicit sets and
+All graphs in Table~\ref{tab:summary} except the two Haar graphs at $D=5$ and the $(7,4)$ example come from constructions
+proved here for every prime power $q$ (or every odd $q$); the $(7,4)$ example is Theorem~\ref{thm:B} applied to an explicit
+list of 21 lines (Appendix~\ref{app:359}). At $D=3,4,6$ the ingredients are classical or given by explicit formulas. At $D=7$ the values in the table use, in addition, explicit sets and
 hub graphs whose properties are computer-checked; Section~\ref{sec:d7} also gives values beating the 2013 table in all nine
 cells from classical ingredients only (Table~\ref{tab:d7general}).
 
@@ -321,7 +322,8 @@ define $H(q)$ for $q$ even, with the quadric written $X_0X_4+X_1X_5+X_2X_6+X_3^2
 
 \begin{fact}[\cite{T59}, {\cite[\S2.4]{VM98}}]\label{fact:hex}
 $H(q)$ is a generalized hexagon of order $(q,q)$. The lines of $H(q)$ through a point $x$ are the lines through $x$ of a
-totally singular plane $\pi_x\subset x^\perp$. The collineation group contains $G_2(q)$; for $A\in\SL(3,q)$ the map
+totally singular plane $\pi_x\subset x^\perp$. The collineations of $H(q)$ form the group $G_2(q)\rtimes\mathrm{Aut}(\F)$, induced by semilinear maps of $V$ preserving $Q$;
+for $q$ prime every collineation is a linear map in $G_2(q)\le\mathrm{SO}(7,q)$. For $A\in\SL(3,q)$ the map
 $(v,a,w)\mapsto(Av,a,A^{-T}w)$, with $x=(v,a,w)$, $v=(x_0,x_1,x_2)$, $a=x_3$, $w=(x_4,x_5,x_6)$, is a collineation. $H(q)$
 has a duality (an incidence-preserving bijection exchanging points and lines) if and only if $q$ is a power of $3$.
 \end{fact}
@@ -454,6 +456,10 @@ most $n$ if and only if every component of the substructure on $\cA_0$ is a tree
 the allowed components are single elements and flags; for $n=4$ also \emph{stars} (a point with some lines on it, or a
 line with some of its points); for $n=6$ trees of diameter at most 4.
 \end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:delorme}(a),(d) and Lemma~\ref{lem:hat}.
+\end{proof}
 
 \begin{proposition}[diameter 3 needs patches]\label{prop:patches}
 In a projective plane, if $\cA$ satisfies (L0), (L1) and (C$_3$), then $\cA_0$ has at most one point and at most one
@@ -827,10 +833,10 @@ lines, none through $x$, each meeting $x^\perp$ in one point $(\rho:0:d)$, $d\ne
 fibre and on $q+1$ lines of type (ii), and every line has $q$ points.) $\AS(q)$ is a GQ of order $(q-1,q+1)$ \cite{P71},
 \cite[3.1.4, 3.2.6]{PT}; for $q$ odd it is the Ahrens--Szekeres quadrangle \cite{AS69}. The fibres form a spread.
 
-Fix a non-square $\eps\in\F$ and put $N(b,c)=b^2-\eps c^2$, an anisotropic form ($N(w)=0$ only for $w=0$). For
-$\kappa\in\F^*$ let $\cE_\kappa$ be the quadric $X_0X_1=\kappa N(X_2,X_3)$. It is elliptic (a hyperbolic pair plus an
+Fix a non-square $\eps\in\F$ and put $\mathsf n(b,c)=b^2-\eps c^2$, an anisotropic form ($\mathsf n(w)=0$ only for $w=0$). For
+$\kappa\in\F^*$ let $\cE_\kappa$ be the quadric $X_0X_1=\kappa \mathsf n(X_2,X_3)$. It is elliptic (a hyperbolic pair plus an
 anisotropic binary form), passes through $x$ with tangent plane $x^\perp$, and
-$\cE_\kappa\setminus\{x\}=\{(\kappa N(w):1:w):w\in\F^2\}$ is a set of $q^2$ points of $\AS(q)$, one on each fibre.
+$\cE_\kappa\setminus\{x\}=\{(\kappa \mathsf n(w):1:w):w\in\F^2\}$ is a set of $q^2$ points of $\AS(q)$, one on each fibre.
 
 \begin{theorem}[a weighted 2-ovoid of $\AS(q)$]\label{thm:A}
 Let $q$ be odd, $\eps$ a non-square and $\kappa_1\kappa_2=1/(4\eps)$. Every line of $\AS(q)$ meets
@@ -854,35 +860,35 @@ $2q^2(q+2)$ elements. Hence $\nb(q+2,4)\ge2q^2(q+2)$, attained by a regular grap
 \emph{New vertices.} For $P=(\kappa_iN(w):1:w)\in\cE_{\kappa_i}\setminus\{x\}$ ($i=1,2$, $w\in\F^2$), the clone $P^{(i)}$ is
 adjacent exactly to the $q+2$ lines of $\AS(q)$ through $P$: the fibre $\{(\kappa_iN(w)+\mu:1:w):\mu\in\F\}$ and, for each
 $d\in\PG(1,q)$, the line $\ell(\kappa_iN(w),w;d)$. The two clones of $e$ are adjacent to the same $q+2$ lines. Changed old
-neighbourhoods: the fibre over $w_0$ gains the clones of $(\kappa_1N(w_0):1:w_0)$ and $(\kappa_2N(w_0):1:w_0)$; the line
+neighbourhoods: the fibre over $w_0$ gains the clones of $(\kappa_1\mathsf n(w_0):1:w_0)$ and $(\kappa_2\mathsf n(w_0):1:w_0)$; the line
 $\ell(a_0,w_0;d)$ gains the clones of its points on $\cE_{\kappa_1}$ and on $\cE_{\kappa_2}$, which correspond to the roots
 $\lambda$ of the quadratic \eqref{eq:quadratic} below with $\kappa=\kappa_1,\kappa_2$ (two clones in total). Old points
 are unchanged.
 
 \begin{proof}[Proof of Theorem~\ref{thm:A}]
-\emph{Fibres.} The fibre over $w_0$ meets $\cE_\kappa$ only at $\mu=\kappa N(w_0)-a_0$: one point of each quadric.
+\emph{Fibres.} The fibre over $w_0$ meets $\cE_\kappa$ only at $\mu=\kappa \mathsf n(w_0)-a_0$: one point of each quadric.
 
-\emph{Lines of type (ii).} Let $B=N(w_0+d)-N(w_0)-N(d)=2(b_0d_1-\eps c_0d_2)$. The point with parameter $\lambda$ of
-$\ell(a_0,w_0;d)$ lies on $\cE_\kappa$ if and only if $a_0+\lambda\rho=\kappa N(w_0+\lambda d)$, that is,
+\emph{Lines of type (ii).} Let $B=\mathsf n(w_0+d)-\mathsf n(w_0)-\mathsf n(d)=2(b_0d_1-\eps c_0d_2)$. The point with parameter $\lambda$ of
+$\ell(a_0,w_0;d)$ lies on $\cE_\kappa$ if and only if $a_0+\lambda\rho=\kappa \mathsf n(w_0+\lambda d)$, that is,
 \begin{equation}\label{eq:quadratic}
-\kappa N(d)\lambda^2+(\kappa B-\rho)\lambda+\kappa N(w_0)-a_0=0.
+\kappa \mathsf n(d)\lambda^2+(\kappa B-\rho)\lambda+\kappa \mathsf n(w_0)-a_0=0.
 \end{equation}
-As $N(d)\ne0$ this is a quadratic, with $1+\chi(\mathrm{disc}_\kappa)$ roots. A direct expansion gives
-$B^2-4N(w_0)N(d)=4\eps(b_0d_2-c_0d_1)^2=4\eps\rho^2$, hence
+As $\mathsf n(d)\ne0$ this is a quadratic, with $1+\chi(\mathrm{disc}_\kappa)$ roots. A direct expansion gives
+$B^2-4\mathsf n(w_0)\mathsf n(d)=4\eps(b_0d_2-c_0d_1)^2=4\eps\rho^2$, hence
 \[
-\mathrm{disc}_\kappa=(\kappa B-\rho)^2-4\kappa N(d)(\kappa N(w_0)-a_0)=4\kappa N(d)\,(a_0-a^*_\kappa),\qquad
-a^*_\kappa=-\frac{4\eps\kappa\rho^2-2B\rho+\rho^2/\kappa}{4N(d)} .
+\mathrm{disc}_\kappa=(\kappa B-\rho)^2-4\kappa \mathsf n(d)(\kappa \mathsf n(w_0)-a_0)=4\kappa \mathsf n(d)\,(a_0-a^*_\kappa),\qquad
+a^*_\kappa=-\frac{4\eps\kappa\rho^2-2B\rho+\rho^2/\kappa}{4\mathsf n(d)} .
 \]
-Then $a^*_{\kappa_1}-a^*_{\kappa_2}=-\frac{\rho^2}{4N(d)}(\kappa_1-\kappa_2)\bigl(4\eps-\frac1{\kappa_1\kappa_2}\bigr)=0$; call
+Then $a^*_{\kappa_1}-a^*_{\kappa_2}=-\frac{\rho^2}{4\mathsf n(d)}(\kappa_1-\kappa_2)\bigl(4\eps-\frac1{\kappa_1\kappa_2}\bigr)=0$; call
 the common value $a^*$. The line meets the two quadrics in
 \[
-\bigl(1+\chi(\kappa_1)\chi(N(d)(a_0-a^*))\bigr)+\bigl(1+\chi(\kappa_2)\chi(N(d)(a_0-a^*))\bigr)=2
+\bigl(1+\chi(\kappa_1)\chi(\mathsf n(d)(a_0-a^*))\bigr)+\bigl(1+\chi(\kappa_2)\chi(\mathsf n(d)(a_0-a^*))\bigr)=2
 \]
 points, because $\chi(\kappa_1)\chi(\kappa_2)=\chi(1/(4\eps))=\chi(\eps)=-1$, so $\chi(\kappa_1)+\chi(\kappa_2)=0$. (If
 $a_0=a^*$, the line is tangent to both quadrics and meets each in one point.)
 
 \emph{Intersection.} $\kappa_1\ne\kappa_2$, since $\kappa_1^2=1/(4\eps)$ is impossible for a non-square $\eps$. So
-$\kappa_1N(w)=\kappa_2N(w)$ forces $N(w)=0$, $w=0$, and the common points are $x$ and $e$.
+$\kappa_1\mathsf n(w)=\kappa_2\mathsf n(w)$ forces $\mathsf n(w)=0$, $w=0$, and the common points are $x$ and $e$.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\ref{cor:A1}]
@@ -1001,8 +1007,8 @@ $\Delta=q+3$), and $\cM=2\Sigma$ is a 2-cover (every point is on exactly one spr
 Corollary~\ref{cor:exact} with $k=2$.
 \end{proof}
 
-This is the point--line dual of clones of an ovoid of $Q(4,q)$ with a dual 2-cover; written in $W(3,q)$ it needs no
-Klein correspondence. More generally, $j$ copies of the spread and $j/2$ copies of the 2-ovoid give
+This is the point--line dual of two clones of each point of an ovoid of $Q(4,q)$ together with one copy of each line of
+a 2-cover (dual to the 2-ovoid); written in $W(3,q)$ it needs no Klein correspondence. More generally, $j$ copies of the spread and $j/2$ copies of the 2-ovoid give
 $\nb(q+1+j,4)\ge2(q^2+1)(q+1+j)$ for even $j$.
 
 \begin{corollary}[all degrees]\label{cor:B2}
@@ -1219,7 +1225,8 @@ For every $z$:
 \end{lemma}
 
 \begin{proof}
-(a), (b) and (d) are polynomial identities with integer coefficients, verified by direct expansion. For instance, for
+(a), (b) and (d) are polynomial identities with integer coefficients in $x,\alpha,\beta,c$, verified by direct expansion
+(and checked by computer algebra). For instance, for
 $z=0$: $Q_0(J_0x)=cx_2x_6+cx_1x_5-c^2x_4^2-cx_3^2=cQ_0(x)$; $p_{12}=x_1x_5+x_2x_6$ and $p_{34}=x_3^2+cx_4^2$, so
 $p_{12}-p_{34}=Q_0(x)$; in (d), $\mathrm{num}(J_0x)=c\,\mathrm{num}(x)$ and $\mathrm{den}(J_0x)=c\,\mathrm{den}(x)$, and the
 polar forms $x_2y_3+x_3y_2-x_4y_5-x_5y_4$ and $2cx_2y_2+2x_5y_5$ vanish at $y=J_0x$. (c) $J_z$ has no eigenvector ($-c$ is
@@ -1237,6 +1244,9 @@ A_p=\{(\alpha,\beta):\ \alpha p_2+\beta p_5=-1\}\subseteq\F^2\setminus\{0\},
 which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ on $p$ and
 $X(z)=\ell_p(z)\cap\Pi$.
 
+\todo{Lemmas~\ref{lem:Jz} and~\ref{lem:Jz-even}: only the case $z=0$ of the expansions is printed. Print the general-$z$
+expansions (about half a page), or find a structural reason (an element of $G_2(q)$ carrying $\Pi$ to $\Pi_z$ and
+conjugating $J_0$ to $J_z$)?}
 \begin{lemma}[key identity]\label{lem:key}
 For $z=(\alpha,\beta)\in A_p$,
 \[
@@ -1289,9 +1299,10 @@ $\nb(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
 Theorems~\ref{thm:whiskerdoubling} and~\ref{thm:whiskers}, with $|W|=q^4-q^2$.
 \end{proof}
 
-With $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$. For a doubling of a
-generalized $n$-gon of order $(q,q)$ with $N$ points, counting incidences gives $q|\cA_0|+2k\le2N$, $k$ the number of
-components of $\cA_0$; here $k=q^3+1$ and $q(2q^4+2q^3+2q+2)+2(q^3+1)=2N$, so the single-level part is as large as this
+With $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$. For a filtration of a
+generalized $n$-gon of order $(q,q)$ with $N$ points satisfying (L0), and such that the components of the substructure on
+$\cA_0$ are trees (as (C$_n$) forces, Lemma~\ref{lem:hat}), counting incidences between $\cA_0$ and its complement gives
+$(q+1)|\cA_0|-2(|\cA_0|-k)\le2N-|\cA_0|$, that is $q|\cA_0|+2k\le2N$, $k$ the number of components; here $k=q^3+1$ and $q(2q^4+2q^3+2q+2)+2(q^3+1)=2N$, so the single-level part is as large as this
 counting bound allows for $q^3+1$ components.
 
 \begin{remark}[Delorme's construction; the 2013 values]\label{rem:delorme6}
@@ -1367,7 +1378,8 @@ line of $S\setminus\{v\}$.
 \end{lemma}
 
 \begin{proof}
-(a), (b), (d) are polynomial identities over $\F_2[\delta,\alpha,\beta,x]$, verified by expansion. (c) $J_z$ has no
+(a), (b), (d) are polynomial identities over $\F_2[\delta,\alpha,\beta,x]$, verified by expansion (and checked by computer
+algebra). (c) $J_z$ has no
 eigenvector since $t^2+t+\delta$ is irreducible; if $Q(x)=0$ then $Q(sx+tJ_zx)=(s^2+st+\delta t^2)Q(x)=0$ by (a), and by (b)
 the line satisfies \eqref{eq:tits}, so it is the line of Lemma~\ref{lem:Piz-even}(b). In (d), $s^2+st+\delta t^2\ne0$ for
 $(s,t)\ne0$.
@@ -1413,16 +1425,16 @@ $p_2^3/\Theta+c_0p_5+c_1p_2=G(p_5,p_2)/\Theta\ne0$, so it vanishes at exactly on
 \end{proof}
 
 \begin{corollary}\label{cor:evenq}
-Theorem~\ref{thm:D} and Theorem~\ref{thm:R} hold for every even $q\ge4$. For $q=2$ there is also an exact whisker set
-(of $12=q^2(q^2-1)$ lines, given explicitly and computer-checked), so they hold for $q=2$ as well.
+Theorem~\ref{thm:D} and Theorem~\ref{thm:R} hold for every even $q\ge4$. For $q=2$ there is also an exact whisker set, of $12=q^2(q^2-1)$ lines, listed in Appendix~\ref{app:q2}, so they hold for
+$q=2$ as well.
 \end{corollary}
 
 None of this changes a cell with $\Delta\le16$, for any $m$: for $q\in\{2,4,8\}$ and $\Delta=q+m\le16$, either $\Delta-1$ is
 a prime power (a cell where the Moore bound is attained by $H(\Delta-1)$), or $\Delta\in\{7,11,13,15,16\}$, where
 Theorem~\ref{thm:D} with the odd $q'=\Delta-2$ (or $q'=13$, $m=3$ at $\Delta=16$) gives much more (for instance 9592
 against 4468 from $q=4$, $m=3$ at $\Delta=7$).
-\todo{Corollary~\ref{cor:evenq}, $q=2$: the 12 whiskers are a computer-found set (its exactness is also proved in Lean).
-List them in an appendix, or drop the $q=2$ case?}
+\todo{Corollary~\ref{cor:evenq}, $q=2$: the 12 whiskers of Appendix~\ref{app:q2} have no formula (Lemma~\ref{lem:cubic-even}
+excludes $q=2$); their exactness is a finite check, also proved in Lean. Keep the $q=2$ case?}
 
 \subsection{Regular graphs of diameter 6}\label{ssec:thmR}
 The structure of Theorem~\ref{thm:D} has equally many points and lines in $\cA_0$ (exact whiskers force this), but $\cA_1$
@@ -1537,7 +1549,10 @@ $Q(6,q)$, i.e.\ partial ovoids of the polar space $Q(6,q)$.
 \begin{lemma}\label{lem:hexsets}
 \begin{enumerate}[label=(\alph*)]
 \item If $\Sigma$ is a 3-space of $\PG(6,q)$ with $\Sigma\cap Q(6,q)$ an elliptic quadric $Q^-(3,q)$, its $q^2+1$ points
-  form a partial ovoid of $H(q)$, for every $q$.
+  form a partial ovoid of $H(q)$, for every $q$. Such 3-spaces exist for every $q$: for $q$ odd and $-c$ a non-square,
+  $\Sigma_0=\{X_1=X_5=0,\ X_6=-cX_2\}$, on which $Q=X_0X_4-(X_3^2+cX_2^2)$; for $q$ even and $\Tr(\delta)=1$,
+  $\Sigma_0=\{X_1=X_5=0,\ X_6=\delta X_2+X_3\}$, on which the quadric is $X_0X_4+\delta X_2^2+X_2X_3+X_3^2$ (and
+  $\Sigma_0$ misses the nucleus $e_3$).
 \item (Hermitian spread \cite{T80}.) If $\Pi$ is a hyperplane with $\Pi\cap Q(6,q)$ an elliptic quadric $Q^-(5,q)$, the
   lines of $H(q)$ contained in $\Pi$ form a spread, for every $q$.
 \item If $S$ is a spread, every line not in $S$ meets exactly one line of $S$.
@@ -1925,10 +1940,14 @@ $\kappa(8)=527$, $\kappa(9)=868$, $\kappa(10)=1271$, $\kappa(11)=1938$. For $\de
 optimal $s$ overlap, so $\mathrm{HG}(K,K;\delta)$ exists for every $7\le K\le\kappa(\delta)$.
 
 \subsection{Bounds for every $q$ from classical sets}\label{ssec:d7general}
+In the corollaries of this subsection some choices are left free: the bijection of Proposition~\ref{prop:mirror} away from
+$R$ and the sets $\Gamma_2(x)$, $x\in R$, the slot taken by each hub, and the attachment of the pendant vertices in
+Lemma~\ref{lem:pendant}. Every choice gives the stated bound; once the choices are made, the neighbourhood of every vertex is
+given by Definitions~\ref{def:levelgraph} and~\ref{def:surgery}.
 
 \begin{corollary}[three levels, every $q\ge4$]\label{cor:d7-91}
-Let $R$ be the $q^2+1$ points of an elliptic quadric section $Q^-(3,q)$ (Lemma~\ref{lem:hexsets}(a)), $R^*$ any $q^2+1$ lines
-of a Hermitian spread, and $\sigma$ as in Proposition~\ref{prop:mirror} (with Corollary~\ref{cor:mirror}(a)). All three
+Let $R$ be the $q^2+1$ points of $H(q)$ in the 3-space $\Sigma_0$ of Lemma~\ref{lem:hexsets}(a), $R^*$ any $q^2+1$ lines of
+the Hermitian spread $S$ of Lemma~\ref{lem:Piz} (Lemma~\ref{lem:Piz-even} for even $q$), and $\sigma$ as in Proposition~\ref{prop:mirror} (with Corollary~\ref{cor:mirror}(a)). All three
 levels of type $H$, $M_t=\sigma$ and $R_t=R$ for all three transitions, $K=\min(q^2+1,\kappa(q-1))$ hubs of each colour and
 the hub graph of Lemma~\ref{lem:pendant} give
 \[
@@ -1946,6 +1965,9 @@ $Y=\mathrm{HG}(K,K;q-1)$.
 At $q=4$ ($\kappa(3)=7<17$) the bound is $6N(4)+14=8204$, below the table's $(6,7)=8310$; the corollary improves the table
 only for $q\ge5$.
 
+\todo{Corollary~\ref{cor:d7-92} uses a duality of $H(3^h)$, which exists by \cite{T59}; we have no formula for it in our
+coordinates (for $q=9$ the records use one computed by a deterministic program). An explicit coordinate form (as in
+\cite{VM98}) would make this corollary fully explicit.}
 \begin{corollary}[$q=3^h$, a duality]\label{cor:d7-92}
 Let $q=3^h$, $\varphi$ a duality of $H(q)$, all types $H$, $M_t=\varphi|_\cP$ and $R_t=F$ for every transition, with $F$ the
 point set of a spread, $|F|=(q+1)(q^3+1)$. For every $r$ with $1\le r\le q-3$,
@@ -1961,9 +1983,9 @@ Lemma~\ref{lem:pendant}.
 \end{proof}
 
 \begin{corollary}[typed levels $HDHDH$, every $q\ge5$]\label{cor:d7-93}
-Take the types $HDHDH$; on the friendly transitions $M_t=\mathrm{id}$, with freed point sets the point set of a Hermitian
-spread ($(q+1)(q^3+1)$ points, a segment set) and freed line sets the lines through the points of an elliptic quadric
-section ($(q+1)(q^2+1)$ lines, a dual segment set); on the non-friendly transitions $\sigma$ (resp.\ $\sigma^{-1}$) and
+Take the types $HDHDH$; on the friendly transitions $M_t=\mathrm{id}$, with freed point sets the point set of the Hermitian
+spread $S$ ($(q+1)(q^3+1)$ points, a segment set) and freed line sets the lines through the $q^2+1$ points of $H(q)$ in
+$\Sigma_0$ ($(q+1)(q^2+1)$ lines, a dual segment set); on the non-friendly transitions $\sigma$ (resp.\ $\sigma^{-1}$) and
 $R$ (resp.\ $\sigma(R)$) as in Corollary~\ref{cor:d7-91}. The smallest slot counts are
 $\min_j\alpha_j=\min_j\beta_j=(q+1)(q^2+1)+q^2+1=(q+2)(q^2+1)$, so
 \[
@@ -2042,9 +2064,9 @@ $r=1$, with a hub graph of maximum degree 8 (a Haar graph of $\Z_{73}\rtimes\Z_{
 413\,180; for $r=2$, with $14\,600$ hubs of each colour and a hub graph of maximum degree 7 (a Haar graph of
 $(\Z_{73}\rtimes\Z_8)\times\Z_5^2$, for which (HG) holds using paths through the levels), the order is 693\,500. By
 Proposition~\ref{prop:segmentsize} and Remark~\ref{rem:converse}, no larger freed set leaves every transition repaired, so
-within this construction (and as long as (T) is required) $K=r(q+1)(q^3+1)$ is the cap. The duality of $H(9)$ is given
-explicitly as data and was checked to be a bijection of $\cP\cup\cL$ exchanging $\cP$ and $\cL$ and preserving all
-$N(q+1)$ incidences.
+within this construction (and as long as (T) is required) $K=r(q+1)(q^3+1)$ is the cap. The duality of $H(9)$ used
+here is computed by a deterministic program (Appendix~\ref{app:checks}) and was checked to be a bijection of $\cP\cup\cL$
+exchanging $\cP$ and $\cL$ and preserving all $N(q+1)$ incidences.
 \end{corollary}
 
 \begin{corollary}[typed levels]\label{cor:rec-typed}
@@ -2116,11 +2138,11 @@ to present it (in this paper, as a separate note, or after contacting J.~G\'omez
 (Section~\ref{ssec:relabel}) to keep.}
 
 Six $D=8$ entries of the 2013 table, credited on the CombinatoricsWiki to Delorme, G\'omez and Quisquater \cite{DGQ},
-are the orders of G\'omez's compound graphs $\Om_q$ \cite[\S2.9.3, values on p.~46]{Go86}. Here $H_q$ is the incidence graph
-of $H(q)$, with $N_1=2N$ vertices, and $q+3=2\alpha+\beta$ with $\beta\in\{0,1\}$:
+are the orders of G\'omez's compound graphs $\Om_q$ \cite[\S2.9.3, values on p.~46]{Go86}. Here $I(q)$ is the incidence graph
+of $H(q)$ (Section~\ref{sec:prelim}), with $N_1=2N$ vertices, and $q+3=2\alpha+\beta$ with $\beta\in\{0,1\}$:
 \begin{center}
 \begin{tabular}{@{}l r l r r r@{}}
-\toprule cell & 2013 value & graph & $\alpha$ & copies of $H_q$ & order $5(\alpha+1)N_1$\\ \midrule
+\toprule cell & 2013 value & graph & $\alpha$ & copies of $I(q)$ & order $5(\alpha+1)N_1$\\ \midrule
 (10,8) & 1\,176\,480 & $\Om_7$ & 5 & 25 & 1\,176\,480\\
 (11,8) & 2\,246\,940 & $\Om_8$ & 5 & 25 & 2\,246\,940\\
 (12,8) & 4\,650\,100 & $\Om_9$ & 6 & 30 & 4\,650\,100\\
@@ -2137,15 +2159,15 @@ other labelling gives diameter 8 is open (Section~\ref{ssec:d8open}).
 
 \subsection{The construction}
 \cite[\S2.9.3, pp.~43--45]{Go86} takes 5 copies of a bipartite graph $B_1$ of even diameter $D_1$ and 10 sets of $N_1/2$
-vertices each (copies of $K_1$); every 10 such vertices, one from each set, are joined to the copies as in Fig.~2.21a of the
+vertices each (copies of $K_1$; the thesis writes $N_1$, but its count $10\cdot N_1/2+5\alpha N_1$ shows that $N_1/2$ is meant); every 10 such vertices, one from each set, are joined to the copies as in Fig.~2.21a of the
 thesis, so that their degree is 2, and the degree is then raised to 4 by joining them to 5 more copies as in Fig.~2.21b. In
 general, if $\Delta_1+2=2\alpha+\beta$, one takes $5\alpha$ copies of $B_1$, using either of the two structures, so that the
 copies of $K_1$ get degree $2\alpha$; the result $\Omega B_1$ has $N=5(\alpha+1)N_1$, $\Delta=\Delta_1+2$ and, as stated,
-$D\le D_1+2$. For $B_1=H_q$: $D_1=6$, $\Delta_1=q+1$, $N_1=2N$.
+$D\le D_1+2$. For $B_1=I(q)$: $D_1=6$, $\Delta_1=q+1$, $N_1=2N$.
 
 \emph{Labels.} In \cite[\S2.7.1]{Go86} both colour classes of $B_1$ are labelled by $\Z/n_1\Z$, $n_1=N_1/2$, and every
 adjacency rule of \S\S2.7--2.9 is written in these labels, the same in every copy; \S2.8.9, which \S2.9.3 cites for its
-copies of $K_1$, joins a copy of $K_1$ with label $t$ only to vertices labelled $t$, in either colour class. For $B_1=H_q$ we
+copies of $K_1$, joins a copy of $K_1$ with label $t$ only to vertices labelled $t$, in either colour class. For $B_1=I(q)$ we
 write the labelling as two bijections $P_0:\Z/N\Z\to\cP$ and $L_0:\Z/N\Z\to\cL$; the thesis does not fix them, so
 $\sigma=L_0P_0^{-1}$ (point $t\mapsto$ line $t$) is an arbitrary bijection $\cP\to\cL$.
 
@@ -2307,7 +2329,7 @@ $\Om_7$ and $\Om_9$ in both readings with both block types present, for several 
 breadth-first search for $q=3,5$; for $q=7,9$ breadth-first search from one vertex in every orbit of an automorphism group
 that was checked edge by edge). For all six table values, breadth-first search from a hub gives eccentricity 9 in both
 readings; in reading 2 the vertices at distance 9 from a hub are exactly the points opposite its mark in the $3\alpha$
-copies it misses. With only one block type the diameter is 10.
+copies it misses. With only one block type the diameter is 10 (computed at $q=2,3,5,7,9$).
 
 \subsection{Relabelling the copies}\label{ssec:relabel}
 Diameter at least 9 comes from the shared labels. A labelling that differs from copy to copy is not in the thesis, but it is
@@ -2328,8 +2350,13 @@ that is, of a collineation of $H(q)$ or, when $q$ is a power of 3, of a duality.
 Relabelling every copy $c$ of a graph $\Om_q$ by an automorphism $g_c$ of $I(q)$ (replacing every vertex $(c,y)$ by
 $(c,g_c(y))$) gives an isomorphic graph. In particular, if $P_c=g_cP_0$ and $L_c=g_cL_0$ with collineations $g_c$ (or
 $P_c=g_cL_0$, $L_c=g_cP_0$ with dualities $g_c$ and the inner class of $c$ exchanged), the graph is isomorphic to the thesis
-graph it came from, and its diameter is at least 9.
+graph it came from; so its diameter is at least 9 if that graph is in reading 2 or its dual (Corollary~\ref{cor:proj}, every
+$q$), and in every reading for $q\ge7$ (Theorem~\ref{thm:twolabels}).
 \end{lemma}
+
+\begin{proof}
+Copy edges are preserved because $g_c$ is an automorphism of $I(q)$; hub edges are carried along by definition.
+\end{proof}
 
 \begin{lemma}[reduction]\label{lem:reduction}
 Take a geometric labelling, with any pattern and inner classes.
@@ -2337,8 +2364,8 @@ Take a geometric labelling, with any pattern and inner classes.
 \item If $q$ is not a power of 3, every hub class sits on one type in all copies it meets, all unbarred classes sit on the
   same type, and all barred classes on the other: the inner classes are those of reading 2 or of its dual.
 \item If $q$ is a power of 3, the graph is isomorphic to one with a geometric labelling in reading 2 (same pattern).
-\item In reading 2 the graph is isomorphic to one with $P_c=P_0$ for all $c$ and $L_c=\lambda_cL_0$ with collineations
-  $\lambda_c$ (the \emph{normal form}); in the dual of reading 2 likewise, with the unbarred hubs on lines. We call the bar
+\item In reading 2 the graph is isomorphic to one with $P_c=P_0$ for all $c$ and $L_c=\theta_cL_0$ with collineations
+  $\theta_c$ (the \emph{normal form}); in the dual of reading 2 likewise, with the unbarred hubs on lines. We call the bar
   that sits on points the \emph{point bar} $\mathfrak P$ and the other the \emph{line bar} $\mathfrak L$.
 \end{enumerate}
 \end{lemma}
@@ -2356,12 +2383,12 @@ and now all unbarred classes sit on points.
 all copies; fixing a copy $c_0$, every $P_cP_{c_0}^{-1}$ is a product of transfers, so $P_c=a_cP_{c_0}$ with a collineation
 $a_c$. In the same way (the barred classes also link all copies) $L_c=b_cL_{c_0}$. Relabel copy $c$ by $a_c^{-1}$: $P_c$
 becomes $P_{c_0}$ and $L_c$ becomes $a_c^{-1}b_cL_{c_0}$. Unbarred rows and barred rows are different vertices, so renaming
-the unbarred rows by $P_0^{-1}P_{c_0}$ and the barred rows by $L_0^{-1}L_{c_0}$ gives $P_c=P_0$ and $L_c=\lambda_cL_0$ with
-$\lambda_c=a_c^{-1}b_c$. The dual reading is the same with the bars exchanged.
+the unbarred rows by $P_0^{-1}P_{c_0}$ and the barred rows by $L_0^{-1}L_{c_0}$ gives $P_c=P_0$ and $L_c=\theta_cL_0$ with
+$\theta_c=a_c^{-1}b_c$. The dual reading is the same with the bars exchanged.
 \end{proof}
 
 From now on we use the normal form, with the rows of the point bar identified with points by $P_0$ (so the hub $(t,X)$,
-$X\in\mathfrak P$, is adjacent to point $t$ of every copy in $C(X)$), and collineations $\lambda_c$ acting on $\cP$ and on
+$X\in\mathfrak P$, is adjacent to point $t$ of every copy in $C(X)$), and collineations $\theta_c$ acting on $\cP$ and on
 $\cL$. Write $B(z,\rho)$ for the ball of radius $\rho$ about $z$ in $I(q)$.
 
 \begin{lemma}[opposite elements in balls]\label{lem:balls}
@@ -2394,7 +2421,7 @@ L$ meets both $c_1$ and $c'$.
 \begin{lemma}[routes reach balls]\label{lem:routes}
 Let $X\in\mathfrak P$, $c'\notin C(X)$ and $t\in\cP$. Every point $v$ of copy $c'$ with $d((t,X),(c',v))\le7$ lies in
 \[
-B(t,4)\ \cup\bigcup_{c_1\in N(X,c')}B(\lambda_{c'}\lambda_{c_1}^{-1}(t),4)\ \cup\bigcup_{(c,d)\in W_2}B(\lambda_c\lambda_d^{-1}(t),2),
+B(t,4)\ \cup\bigcup_{c_1\in N(X,c')}B(\theta_{c'}\theta_{c_1}^{-1}(t),4)\ \cup\bigcup_{(c,d)\in W_2}B(\theta_c\theta_d^{-1}(t),2),
 \]
 where $W_2$ is the set of ordered pairs of distinct copies of the following three kinds: $(c',c_2)$ with $c_2$ sharing a class
 of $\mathfrak P$ with some $c_1\in C(X)$ and a class of $\mathfrak L$ with $c'$; $(c',c_1)$ with $c_1\in C(X)$ and some $c_2$
@@ -2407,23 +2434,23 @@ A path from $h=(t,X)$ to $(c',v)$ goes to point $t$ of a copy $c_1\in C(X)$, the
 $a_1,\dots,a_r\ge0$) with $r-1$ passes copy $\to$ hub $\to$ copy, ending in $c'$. A hub meets each copy at most once, so
 consecutive copies differ; $c_1\ne c'$, so $r\ge2$. The length is $1+\sum a_i+2(r-1)\le7$, so $\sum a_i\le8-2r$ and $r\le4$. A
 pass through a $\mathfrak P$-hub happens at a point and keeps it. A pass through an $\mathfrak L$-hub $(m,Y)$ happens at a line
-and goes from $\lambda_cL_0(m)$ in $c$ to $\lambda_dL_0(m)$ in $d$: it applies $\lambda_d\lambda_c^{-1}$. Collineations
+and goes from $\theta_cL_0(m)$ in $c$ to $\theta_dL_0(m)$ in $d$: it applies $\theta_d\theta_c^{-1}$. Collineations
 preserve distances, so by induction the end lies in $B(g(t),\sum a_i)$, $g$ the product of the maps applied. The walk starts
 and ends at points; a segment before an $\mathfrak L$-pass ends at a line, so the segments around $\mathfrak L$-passes are
 odd and $\sum a_i$ is even.
 \begin{itemize}
 \item $r=2$ ($\sum a_i\le4$): a $\mathfrak P$-pass gives $g=\mathrm{id}$; an $\mathfrak L$-pass needs a class of $\mathfrak L$
-  meeting $c_1$ and $c'$, i.e.\ $c_1\in N(X,c')$, and gives $g=\lambda_{c'}\lambda_{c_1}^{-1}$.
+  meeting $c_1$ and $c'$, i.e.\ $c_1\in N(X,c')$, and gives $g=\theta_{c'}\theta_{c_1}^{-1}$.
 \item $r=3$ ($\sum a_i\le2$): $\mathfrak P$ then $\mathfrak P$ gives $\mathrm{id}$. $\mathfrak P$ then $\mathfrak L$ forces
-  $a_1=0$, $a_2=a_3=1$ and $g=\lambda_{c'}\lambda_{c_2}^{-1}$ (first kind). $\mathfrak L$ then $\mathfrak P$ forces $a_1=a_2=1$,
-  $a_3=0$ and $g=\lambda_{c_2}\lambda_{c_1}^{-1}$ (third kind). $\mathfrak L$ then $\mathfrak L$ forces $a_1=a_3=1$, $a_2=0$:
-  both passes use the same row, so $g=\lambda_{c'}\lambda_{c_1}^{-1}$ (second kind).
+  $a_1=0$, $a_2=a_3=1$ and $g=\theta_{c'}\theta_{c_2}^{-1}$ (first kind). $\mathfrak L$ then $\mathfrak P$ forces $a_1=a_2=1$,
+  $a_3=0$ and $g=\theta_{c_2}\theta_{c_1}^{-1}$ (third kind). $\mathfrak L$ then $\mathfrak L$ forces $a_1=a_3=1$, $a_2=0$:
+  both passes use the same row, so $g=\theta_{c'}\theta_{c_1}^{-1}$ (second kind).
 \item $r=4$: all $a_i=0$, so the walk never reaches a line, all passes are $\mathfrak P$-passes, and $v=t$.
 \end{itemize}
 \end{proof}
 
-Relabelling every copy $c$ by $\lambda_c^{-1}$ gives $L_c=L_0$ for all $c$ and $P_c=\lambda_c^{-1}P_0$, so the same statement
-holds with points and lines exchanged and $\lambda_c$ replaced by $\lambda_c^{-1}$, for $X\in\mathfrak L$. For a pair
+Relabelling every copy $c$ by $\theta_c^{-1}$ gives $L_c=L_0$ for all $c$ and $P_c=\theta_c^{-1}P_0$, so the same statement
+holds with points and lines exchanged and $\theta_c$ replaced by $\theta_c^{-1}$, for $X\in\mathfrak L$. For a pair
 $(X,c')$, $X$ in either bar, let $r_4=|N(X,c')|$, and let $m_2$ be the number of pairs in $W_2$ that are not of the form
 $(c',c_1)$ with $c_1\in N(X,c')$.
 
@@ -2490,9 +2517,9 @@ and the bound is at least $59\,049-39\,366-16\,281=3402$.
 
 \subsubsection*{The case $q=7$}
 At $q=7$ the bound of Corollary~\ref{cor:farcount} is negative ($16\,807-5\cdot2401-140\cdot49=-2058$), so the overlaps of the
-five radius-4 balls must be used. Here $q$ is odd and 7 is not a power of 3, so the collineations are elements of $G_2(7)\le
+five radius-4 balls must be used. Here $q$ is odd, and 7 is prime and not a power of 3, so (Fact~\ref{fact:hex}) the collineations are elements of $G_2(7)\le
 \mathrm{SO}(7,7)$ and the reading is reading 2 or its dual. Fix a starved pair $(X,c')$ of the point bar, write $g_1,\dots,g_5$
-for the elements $\lambda_{c'}\lambda_{c_i}^{-1}$, $c_i\in N(X,c')$, and $y_i=g_i(t)$. By Lemma~\ref{lem:hexfacts}(c),
+for the elements $\theta_{c'}\theta_{c_i}^{-1}$, $c_i\in N(X,c')$, and $y_i=g_i(t)$. By Lemma~\ref{lem:hexfacts}(c),
 $B(y,4)\cap\cP=y^\perp\cap Q(6,q)$ for a point $y$, so with $C_i:=y_i^\perp\cap\opp(t)$ the points of $c'$ within distance 7 of
 $(t,X)$ that are opposite $t$ lie in $C_1\cup\dots\cup C_5$ and in at most $m_2\le140$ balls of radius 2.
 
@@ -2652,8 +2679,9 @@ Theorem~\ref{thm:twolabels} only.
 \begin{enumerate}
 \item \emph{Arbitrary labellings} ($q\ge4$). Whether some non-geometric labelling of G\'omez's wiring gives diameter 8 at
   $q=7,8,9,11,13$ is open. Counting does not exclude it. In every graph where this was checked by computer, all pairs at
-  distance more than 8 were pairs (hub, vertex of a copy the hub misses). For suitable labellings (given as data), $\Om_2$ (1890 vertices)
-  and $\Om_3$ (14\,560 vertices, 6-regular) have diameter 8 (computer-checked); these are far below the table at $(5,8)$
+  distance more than 8 were pairs (hub, vertex of a copy the hub misses). For suitable labellings (data in the repository, Appendix~\ref{app:checks}),
+  $\Om_2$ (1890 vertices) and $\Om_3$ (14\,560 vertices, 6-regular) have diameter 8 (computer-checked: $\Om_3$ by three
+  separately written programs, $\Om_2$ by one); these are far below the table at $(5,8)$
   and $(6,8)$, and we know no description of their labellings. We know no labelling with diameter 8 at $q=4$ or $q=5$.
 \item \emph{Labellings per (hub class, copy).} If the two classes of one bar meeting a copy may use different bijections, the
   model of Section~\ref{ssec:relabel} does not apply, even when every transfer is a collineation, and the counting method fails
@@ -2666,7 +2694,7 @@ Theorem~\ref{thm:twolabels} only.
 diameter at most 8 without proof; as defined there these graphs have diameter at least 9 for each of these $q$, under every
 reading of the figures and every pairing of point labels with line labels; geometric relabellings do not repair them. So these
 cells have no checkable graph of diameter 8. We do not claim that no graph of these orders with maximum degree $q+3$ and
-diameter 8 exists. The $(13,8)$ entry $5\,314\,680=15\cdot|H(11)|$, also credited to \cite{DGQ}, is not in the thesis, and nothing
+diameter 8 exists. The $(13,8)$ entry $5\,314\,680=30N(11)$, also credited to \cite{DGQ}, is not in the thesis, and nothing
 here bears on it; the thesis also lists $\Om_{11}\mathrm d$ with $N(15,8)\ge14\,978\,080$, which is not defined in \S\S2.7--2.9 and
 which the table does not use.
 \todo{The thesis value $\Om_5$ at $(8,8)$ (195\,300) is below the 2013 value 201\,480, so it is not a table entry; $(8,8)$ is
@@ -2687,7 +2715,7 @@ computer-checked (Appendix~\ref{app:checks}).
 \subsection{Definition and the covering criterion}
 
 \begin{definition}\label{def:haar}
-Let $G$ be a finite group with identity $e$ and $S\subseteq G$ with $|S|=\Delta$. The \emph{Haar graph} $H(G,S)$ has vertex set
+Let $G$ be a finite group with identity $e$ and $S\subseteq G$ with $|S|=\Delta$. The \emph{Haar graph} $\mathrm{Haar}(G,S)$ has vertex set
 $G\times\{A,B\}$, and $(g,A)$ is adjacent to $(sg,B)$ for every $g\in G$ and $s\in S$. So
 \[
 N(g,A)=\{(sg,B):s\in S\},\qquad N(h,B)=\{(s^{-1}h,A):s\in S\}.
@@ -2695,15 +2723,15 @@ N(g,A)=\{(sg,B):s\in S\},\qquad N(h,B)=\{(s^{-1}h,A):s\in S\}.
 \end{definition}
 
 The name is from Hladnik, Maru\v{s}i\v{c} and Pisanski \cite{HMP02} (cyclic groups; Est\'elyi and Pisanski \cite{EP16} for
-arbitrary groups). $H(G,S)$ is the regular $G$-cover of the dipole with $\Delta$ parallel edges carrying the voltages $s\in S$;
+arbitrary groups). $\mathrm{Haar}(G,S)$ is the regular $G$-cover of the dipole with $\Delta$ parallel edges carrying the voltages $s\in S$;
 voltage lifts of small base graphs are the standard tool behind many entries of the bipartite table (Loz and \v{S}ir\'a\v{n}
 \cite{LS08}; \cite[\S3.4.5]{MS13}). Joining $(g,A)$ to $(gs,B)$ instead gives an isomorphic graph (via $(g,X)\mapsto
-(g^{-1},X)$ and $S\mapsto S^{-1}$). Calling the $A$-vertices points and the $B$-vertices lines, $H(G,S)$ is the incidence graph
-of the development of $S^{-1}$: the line $(h,B)$ is incident with the points $(s^{-1}h,A)$, $s\in S$. For example $H(\Z_7,\{0,1,3\})$
+(g^{-1},X)$ and $S\mapsto S^{-1}$). Calling the $A$-vertices points and the $B$-vertices lines, $\mathrm{Haar}(G,S)$ is the incidence graph
+of the development of $S^{-1}$: the line $(h,B)$ is incident with the points $(s^{-1}h,A)$, $s\in S$. For example $\mathrm{Haar}(\Z_7,\{0,1,3\})$
 is the incidence graph of the Fano plane.
 
 \begin{lemma}\label{lem:haarbasic}
-Let $|S|=\Delta\ge1$. $H(G,S)$ is bipartite, simple and $\Delta$-regular on $2|G|$ vertices; each right translation
+Let $|S|=\Delta\ge1$. $\mathrm{Haar}(G,S)$ is bipartite, simple and $\Delta$-regular on $2|G|$ vertices; each right translation
 $\rho_h(g,X)=(gh,X)$ is an automorphism, and these act regularly on each side.
 \end{lemma}
 
@@ -2731,10 +2759,10 @@ of the same parity. From $(e,B)$ the same argument gives the last two statements
 \begin{theorem}[covering criterion]\label{thm:covering}
 Let $S\ne\emptyset$ and $D\ge2$.
 \begin{enumerate}[label=(\alph*)]
-\item If $D=2\kappa$, then $\diam H(G,S)\le D$ if and only if $S(S^{-1}S)^{\kappa-1}=G$.
-\item If $D=2\kappa+1$, then $\diam H(G,S)\le D$ if and only if $(S^{-1}S)^\kappa=G$ and $(SS^{-1})^\kappa=G$.
+\item If $D=2\kappa$, then $\diam \mathrm{Haar}(G,S)\le D$ if and only if $S(S^{-1}S)^{\kappa-1}=G$.
+\item If $D=2\kappa+1$, then $\diam \mathrm{Haar}(G,S)\le D$ if and only if $(S^{-1}S)^\kappa=G$ and $(SS^{-1})^\kappa=G$.
 \end{enumerate}
-Moreover $\diam H(G,S)=\max(\ecc(e,A),\ecc(e,B))$.
+Moreover $\diam \mathrm{Haar}(G,S)=\max(\ecc(e,A),\ecc(e,B))$.
 \end{theorem}
 
 \begin{proof}
@@ -2752,8 +2780,10 @@ At $D=5$ ($\kappa=2$) the criterion reads: every element of $G$ is a product $a^
 with $a,b,c,d\in S$. A shortest path never backtracks, so the same count gives the per-side Moore bound
 $|G|\le\sum_{j<D}(\Delta-1)^j$ (that is, $2|G|\le\Mb(\Delta,D)$). For $\Delta\ge3$ and $D\in\{8,9,10\}$ it is strict: with
 equality, the reduced words counted (those of length at most $D-1$ and of the parity that Theorem~\ref{thm:covering}
-requires) have pairwise distinct values, which forces girth at least $2D$; a bipartite graph of diameter $D$ has girth at
-most $2D$, and a bipartite graph of diameter $D$, girth $2D$ and all degrees $\Delta\ge3$ is the incidence graph of a thick
+requires) have pairwise distinct values. This forces girth at least $2D$: the two arcs of a cycle of length $2\gamma<2D$
+through $(e,A)$ give two distinct reduced words of length $\gamma$ with the same value, and if $\gamma$ has the wrong parity,
+appending a letter different from both last letters ($\Delta\ge3$) gives two such words of length $\gamma+1\le D-1$. A graph
+of diameter $D$ containing a cycle has girth at most $2D+1$, so a bipartite one has girth at most $2D$; and a bipartite graph of diameter $D$, girth $2D$ and all degrees $\Delta\ge3$ is the incidence graph of a thick
 generalized $D$-gon of order $(\Delta-1,\Delta-1)$, which does not exist for these $D$ \cite{FeitHigman}.
 
 \subsection{Diameter 5}
@@ -2788,17 +2818,17 @@ S=\Bigl\{(I,0),\ \bigl(\begin{smallmatrix}2&13\\14&6\end{smallmatrix},6\bigr),\ 
 \]
 With $g=\bigl(\begin{smallmatrix}1&3\\6&0\end{smallmatrix}\bigr)$ (order 3 in $\PSL(2,19)$), the automorphism
 $\alpha(x,z)=(gxg^{-1},9z)$ of order 3 fixes the first element of $S$ and permutes the others in two 3-cycles, $s_1\mapsto
-s_2\mapsto s_3\mapsto s_1$ and $s_4\mapsto s_5\mapsto s_6\mapsto s_4$. By Theorem~\ref{thm:covering}(a), $\diam H(G,S)\le8$ means
+s_2\mapsto s_3\mapsto s_1$ and $s_4\mapsto s_5\mapsto s_6\mapsto s_4$. By Theorem~\ref{thm:covering}(a), $\diam \mathrm{Haar}(G,S)\le8$ means
 that every element of $G$ is a product $s_{i_7}s_{i_6}^{-1}s_{i_5}s_{i_4}^{-1}s_{i_3}s_{i_2}^{-1}s_{i_1}$; this covering is
 computer-checked (and the graph is proved in Lean). The order is 14.3\% of the Moore bound $\Mb(7,8)=671\,846$; the 2013 value
 is 80\,940.
 \end{example}
 
-In most of the graphs of Table~\ref{tab:haar}, $S$ is closed under an automorphism $\alpha$ of $G$ of order 3 (or 5, or 6), as
+In most of the graphs of Table~\ref{tab:haar}, $S$ is closed under an automorphism $\alpha$ of $G$ of order 2, 3, 5 or 6, as
 in Example~\ref{ex:haar78}; no check uses this symmetry.
 
 \begin{longtable}{@{}l r r r p{6.3cm}@{}}
-\caption{Haar graphs $H(G,S)$ at $D=8,9,10$ (and one lift). ``\%'': gain over the 2013 value. All computer-checked by at
+\caption{Haar graphs $\mathrm{Haar}(G,S)$ at $D=8,9,10$ (and one lift). ``\%'': gain over the 2013 value. All computer-checked by at
 least two separately written programs, or by one program and a Lean proof.}\label{tab:haar}\\
 \toprule cell & 2013 & this paper & \% & group $G$ \\ \midrule\endfirsthead
 \toprule cell & 2013 & this paper & \% & group $G$ \\ \midrule\endhead
@@ -2853,13 +2883,13 @@ the lean-all branch): $(9,8)$ 546\,720 ($\SL(2,16)\times\Z_{67}$), $(5,9)$ 29\,7
 $\Z_3\times\mathrm{He}_3$). Use these in Table~\ref{tab:haar}?}
 
 \emph{Cells we do not improve at $D=8,9,10$:} $(4,8)$ 2184, $(10,8)$ 1\,176\,480, $(12,8)$ 4\,650\,100, $(14,8)$
-14\,172\,480, $(16,8)$ 36\,201\,060, $(3,9)$ 506, $(4,9)$ 4970 and $(3,10)$ 800 (the last improved to 810 by a lift; see the
-note above). The values at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ are those of Section~\ref{sec:d8}.
+14\,172\,480, $(16,8)$ 36\,201\,060, $(3,9)$ 506, $(4,9)$ 4970 and $(3,10)$ 800 (for $(3,10)$ the repository has a lift of order
+810, not covered here; see the note above). The values at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ are those of Section~\ref{sec:d8}.
 
 \subsection{Prior work}
 The type of construction is not new. Haar graphs of $\SL(2,q)$ appear in the cage literature: according to the dynamic cage
 survey \cite{EJ13}, the smallest known cubic graph of girth 30, on $1\,143\,408=2|\SL(2,83)|$ vertices, is a voltage lift over
-$\SL(2,83)$ of the dipole with three parallel edges \cite{EJ11}, that is, a Haar graph $H(\SL(2,83),S)$ with $|S|=3$; and Bray,
+$\SL(2,83)$ of the dipole with three parallel edges \cite{EJ11}, that is, a Haar graph $\mathrm{Haar}(\SL(2,83),S)$ with $|S|=3$; and Bray,
 Parker and Rowley \cite{BPR00} use $\PSL(2,q)\times\Z_3$. Haar graphs of cyclic groups appear at $D=3$ in \cite{FMP13}, and
 dipole lifts over metacyclic groups are probably behind Loz's values \cite{LS08}. In the sources we searched we found no use
 of Haar graphs of $\SL(2,q)$ or $\PSL(2,q)$, alone or times a cyclic group, for large bipartite graphs of diameter 8, 9 or 10.
@@ -2870,10 +2900,12 @@ Theorem~\ref{thm:covering} is routine and we claim no novelty for it.
 %======================================================================
 
 Table~\ref{tab:updated} lists, for every cell with $\Delta\le16$ and $D\le10$ treated in this paper, the 2013 value and ours.
-Status: \textsf P = member of a family with a complete proof in this paper (for the $D=7$ records: the general theorems, with
-explicit sets that are computer-checked); \textsf C = the graph is computer-checked (Appendix~\ref{app:checks}); \textsf L =
+Status: \textsf P = proved in this paper: a member of a family with a complete proof (for the $D=7$ records, the general
+theorems with explicit sets that are computer-checked; at $(7,4)$, Theorem~\ref{thm:B} applied to the explicit list of
+Appendix~\ref{app:359}); \textsf C = the graph is computer-checked (Appendix~\ref{app:checks}); \textsf L =
 the graph itself is proved in Lean; \textsf T = the general theorem is proved in Lean (so the value is a Lean-checked lower
-bound); \textsf L$^*$ = a Lean proof exists on a branch of the repository but has not yet been re-checked independently
+bound); \textsf L$'$ = a graph of the same order and the same shape is proved in Lean (at $(7,4)$, not the list of
+Appendix~\ref{app:359}); \textsf L$^*$ = a Lean proof exists on a branch of the repository but has not yet been re-checked independently
 (Appendix~\ref{app:lean}). ``reg.'': the order of the largest regular graph given here, when the record graph is not regular.
 
 \begin{longtable}{@{}l r r r l l@{}}
@@ -2885,7 +2917,7 @@ at least 9 as defined (Section~\ref{sec:d8}).}\label{tab:updated}\\
 (11,3) & 190 & 192 & & Thm.~\ref{thm:hat4} & P C L T\\
 (13,3) & 270 (274) & 276 & & Thm.~\ref{thm:hat4} & P C L T\\
 (15,3) & 370 (374) & 376 & & Thm.~\ref{thm:hat4} & P C L T\\
-(7,4) & 346 & 359 & 350 & Ex.~\ref{ex:359}, Cor.~\ref{cor:A1} & P C L\\
+(7,4) & 346 & 359 & 350 & Ex.~\ref{ex:359}, Cor.~\ref{cor:A1} & P C L$'$\\
 (11,4) & 1\,734 & 1\,782 & & Cor.~\ref{cor:A1} & P C L T\\
 (13,4) & 3\,064 & 3\,146 & & Cor.~\ref{cor:A1} & P C L T\\
 (15,4) & 4\,946 & 5\,070 & & Cor.~\ref{cor:A1} & P C L T\\
@@ -2893,10 +2925,10 @@ at least 9 as defined (Section~\ref{sec:d8}).}\label{tab:updated}\\
 (7,5) & 1\,134 & 1\,152 & & Sec.~\ref{sec:haar} & C L\\
 (9,5) & 2\,496 & 2\,662 & & Sec.~\ref{sec:haar} & C L\\
 (7,6) & 8\,992 & 9\,592 & 9\,348 & Thm.~\ref{thm:D}, \ref{thm:R} & P C L T\\
-(11,6) & 142\,464 & 148\,944 & 147\,500 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
-(13,6) & 374\,452 & 388\,972 & 386\,328 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
-(15,6) & 842\,048 & 870\,440 & 866\,068 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
-(16,6) & 884\,062 & 940\,846 & 927\,724 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T\\
+(11,6) & 142\,464 & 148\,944 & 147\,500 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T L$^*$\\
+(13,6) & 374\,452 & 388\,972 & 386\,328 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T L$^*$\\
+(15,6) & 842\,048 & 870\,440 & 866\,068 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T L$^*$\\
+(16,6) & 884\,062 & 940\,846 & 927\,724 & Thm.~\ref{thm:D}, \ref{thm:R} & P C T L$^*$\\
 (7,7) & 23\,436 & 23\,598 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
 (9,7) & 117\,648 & 118\,238 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
 (10,7) & 224\,694 & 225\,152 & & Cor.~\ref{cor:rec-81} & P C L$^*$\\
@@ -2983,6 +3015,24 @@ clone. So every old point and every clone serves at most one shadow line. Degree
 clones 6 or 7; shadow lines 6. The order is $156+156+26+21=359$, and the diameter is 4 by Theorem~\ref{thm:B}(a).
 
 %======================================================================
+\section{The exact whisker set for $q=2$}\label{app:q2}
+%======================================================================
+
+For $q=2$, $\delta=1$: $Q(6,2)$ is $X_0X_4+X_1X_5+X_2X_6+X_3^2=0$, $\Pi$ is $X_3=X_0+X_4$, and $v=\langle e_1,e_6\rangle$
+(Section~\ref{ssec:evenq}). The 12 lines below, each given by two of its points (the third is their sum), are lines of
+$H(2)$, opposite $v$ and not in $\Pi$, and each of the 24 free points lies on exactly one of them. With $m=2$,
+Theorem~\ref{thm:whiskerdoubling} gives a graph with 208 vertices, maximum degree 4 and diameter 6 (checked by computer from
+this list).
+\begin{center}
+\begin{tabular}{@{}l l l l@{}}
+$(0010000)$, $(0000110)$ & $(1010000)$, $(0000010)$ & $(0110000)$, $(0000111)$ & $(1110000)$, $(0000011)$\\
+$(0010100)$, $(0111010)$ & $(0110100)$, $(0011011)$ & $(1011100)$, $(0010010)$ & $(1111100)$, $(0110011)$\\
+$(1000010)$, $(0011001)$ & $(0101010)$, $(1010101)$ & $(1111010)$, $(0111001)$ & $(1011110)$, $(1110101)$
+\end{tabular}
+\end{center}
+(Coordinates $X_0\cdots X_6$.)
+
+%======================================================================
 \section{Formal verification}\label{app:lean}
 %======================================================================
 
@@ -3054,7 +3104,7 @@ All programs and logs are in the repository\\ \url{https://github.com/dogaozden/
 \begin{itemize}
 \item \emph{All-pairs check.} A C program reads an edge list, checks that the graph is simple, bipartite and connected and has
   maximum degree at most $\Delta$, and runs a bit-parallel breadth-first search from every vertex, with no symmetry assumed.
-  Every graph in this paper with at most $4.1$ million vertices (all graphs of Sections~\ref{sec:d3}--\ref{sec:d7}) was
+  Every graph of Sections~\ref{sec:d3}--\ref{sec:d7} (all have at most $4.1$ million vertices) was
   checked this way, after being rebuilt from its definition or data file. The $D=7$ graphs were built from their data files by
   the builder that produced them; the check of the resulting edge list is independent of that builder, and three of them
   ($(7,7)$, $(9,7)$, $(10,7)$) were also checked with a second breadth-first-search program.
@@ -3067,7 +3117,7 @@ Table~\ref{tab:hat4} with the computed neighbourhoods.
   $q=5,7,9,11,13$ (and $q=13$, $m=3$), exactness of $W$ on all free points for $q=3,5,7$ and $q=4,8,16$, the identities of
   Lemmas~\ref{lem:Jz}, \ref{lem:key}, \ref{lem:Jz-even}, \ref{lem:key-even} re-checked symbolically, and the five regular graphs
   of Theorem~\ref{thm:R}.
-\item \emph{Diameter 7, small $q$.} Every theorem of Section~\ref{sec:d7} was tested on $H(q)$ for $q=2,3,4,5$, built from
+\item \emph{Diameter 7, small $q$.} Every theorem of Section~\ref{sec:d7} was tested on $H(q)$ for $q=3,4,5$ (and the coordinates also at $q=2$), built from
   \eqref{eq:tits}, with positive tests and negative controls (adding one turning point to a segment set, or breaking (H3) at
   one point, gives diameter 8).
 \item \emph{Diameter 8.} The hexagons $H(q)$, $q\le13$, three times by separate programs; the exact diameters and
@@ -3078,6 +3128,15 @@ Table~\ref{tab:hat4} with the computed neighbourhoods.
   group from scratch, including the finite field and the matrix group), or by one program and a Lean proof; twelve of them (up
   to 540\,360 vertices) also passed the all-pairs check. Negative controls (one generator altered, or $D$ lowered by
   one) are rejected.
+\item \emph{Exceptions to the two-program rule.} The $D=7$ graphs $(11,7)$--$(16,7)$: the edge list produced by the builder
+  that made the graph was checked by one all-pairs program written separately. $\Om_2$ with diameter 8: one program. Haar
+  graphs whose second check is a Lean proof (those marked \textsf L or \textsf L$^*$ in Table~\ref{tab:updated}).
+\item \emph{Data.} The ingredients given as data are in the repository: the $D=7$ freed sets, matchings, hub slots and hub
+  graphs in nine solution files in \nolinkurl{research/frontier/sols/} (for instance \nolinkurl{d7D7_hex5_mirror81_n23598.sol}),
+  each with the builder that turns it into an edge list; the duality of $H(9)$, computed by
+  \nolinkurl{research/d10D7/dual/dualfind.c}; the connection sets of Table~\ref{tab:haar} in
+  \nolinkurl{research/frontier/sols/} (and \nolinkurl{research/lifts/sols/} for $(3,8)$, $(4,10)$, $(5,10)$); the labellings of
+  $\Om_2$ and $\Om_3$ in \nolinkurl{research/projects/table-audit/omega/labs/} (branch \nolinkurl{claude/table-audit-2-p7x6hn}).
 \item \emph{This paper's text.} Separately from the checks above, the constructions were rebuilt from the definitions as
   printed here (not from the programs that produced the records): Theorem~\ref{thm:hat4} for $q=5,7$ (all $(a,c)$) and
   $q=11$; Theorem~\ref{thm:A} and Corollary~\ref{cor:A1} for $q=3,5,7$; Proposition~\ref{prop:C} and Corollary~\ref{cor:C1}

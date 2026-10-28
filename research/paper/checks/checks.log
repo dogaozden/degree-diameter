@@ -28,3 +28,11 @@ order 359 max degree 7 diameter 4
 (7,8): 95760 vertices, diameter 8
 alpha(S) = S: True [0, 2, 3, 1, 5, 6, 4]
 Lemma 7.13 holds for every pattern with alpha <= 8
+q = 2: the 12 listed lines form an exact whisker set
+doubling, m = 2: order 208 max degree 4 diameter 6
+odd q = 3 ok: 10 points, pairwise non-perpendicular
+odd q = 5 ok: 26 points, pairwise non-perpendicular
+odd q = 7 ok: 50 points, pairwise non-perpendicular
+odd q = 11 ok: 122 points, pairwise non-perpendicular
+even q = 4 ok: 17 points, pairwise non-perpendicular
+even q = 8 ok: 65 points, pairwise non-perpendicular
