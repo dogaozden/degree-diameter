@@ -14,8 +14,16 @@ Files: `lean/BipartiteDD/LeanMaxx/D7Family/`. Build with `lake build BipartiteDD
   Uses `HexagonD7.exists_graph`, `exists_local_duality`, the plane lemma `Bf_eq_zero_of_mem_plane` (the (F4)
   direction needed, valid in every characteristic).
 
+- `Odd.lean`: `d7_odd`. For every finite field `F` of odd characteristic with `q = |F| >= 5`:
+  `∃ G : SimpleGraph (Fin (6 * ((q+1)*(1+q^2+q^4)) + 2*(q^2+1))), IsBipartiteDegDiam G (q+2) 7`.
+  Points: the elliptic quadric `(1, x, 0, y, y^2 - a x^2, a x, 0)`, `e_4` (`a` a non-square), pairwise `Bf = (y-y')^2 - a (x-x')^2 ≠ 0`.
+  Lines: `q^2+1` of the `q^3+1` lines of the Hermitian spread `SLine (-a)` (HexagonD/Spread.lean).
+- `Main.lean`: `d7_family_odd`. For every odd prime power `q >= 5` (`IsPrimePow q`, `Odd q`):
+  `∃ G : SimpleGraph (Fin (6 * ((q^6 - 1)/(q - 1)) + 2*(q^2+1))), IsBipartiteDegDiam G (q+2) 7`,
+  via the Galois field of order `q`.
+- `Axioms.out.txt`: `d7_of_sets`, `d7_odd`, `d7_family_odd` depend only on propext, Classical.choice, Quot.sound.
+  No sorry, admit or native_decide anywhere under `LeanMaxx/`.
+
 ## To do
 
-- odd q: elliptic quadric points `(1, a, 0, b, b^2 - λa^2, λa, 0)` and `e_4` (λ a non-square), `S` inside the
-  Hermitian spread `SLine c` (HexagonD/Spread.lean).
 - even q: the same with HexagonEven/Spread.lean and a char-2 elliptic quadric section.
