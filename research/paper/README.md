@@ -12,7 +12,7 @@ Sources, each with its referee report applied:
 | 6 | `research/theorems/D7_HEXAGON.md` (`claude/d7-hexagon-theorems-4w1prt`) | `research/referee/d7-2026-10-25.md` (`claude/referee-d7-hexagon-theorems-hewag2`) |
 | 7 | `research/theorems/OMEGA_NOTE.md` (`claude/omega-d8-note-xrbqux`) | omega-dq and omega-repair referees, applied in the note |
 | 8.3 | `research/theorems/HAAR_D8_10.md` (`claude/thm-haar-d8-10-sf7f0a`) | `research/referee/haar-2026-10-25.md` (`claude/referee-haar-d8-10-jhckxf`) |
-| App. B | `research/lean-maxx/VERIFY*.md` (`claude/leanmaxx-verify-*`), `research/projects/lean-all/STATUS.md` (`claude/lean-all-jvj7b0`) | |
+| App. C | `research/lean-maxx/VERIFY*.md` (`claude/leanmaxx-verify-*`), `research/projects/lean-all/STATUS.md` (`claude/lean-all-jvj7b0`) | |
 
 What the draft adds to the notes: the arrangement, connecting text, the note-to-paper numbering map (a todo near the
 start), Corollary 6.23 (all levels of type H for every r; suggested by the diameter-7 referee, who built two cases), and
