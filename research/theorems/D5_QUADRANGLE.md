@@ -576,14 +576,18 @@ condition / without it:
 | $q$ | counting bound | partial ovoid (best known to us) | relaxed, with the condition | relaxed, without it |
 |---:|---:|---:|---:|---:|
 | 3 | 11 | 7 | 10 (exact) | 11 (exact, MIP) |
-| 5 | 28 | 18 (exact) | 23 (exact, card r2c8) | 23 (found; 24 undecided) |
+| 5 | 28 | 18 (exact) | 23 (exact, card r2c8) | 23 (exact, set-packing MIP) |
 | 7 | 53 | 33 | 41 | 41 |
 | 9 | 86 | 51 | 66 | 66 |
 | 11 | 127 | 70 | 88 | 89 (36 pairs, 4 on lines of $S$) |
 | 13 | 176 | — | — | 103 (short run) |
 
 The values without the condition come from our tabu search (rtabu.c) and were checked independently (score.py, which
-recomputes collinearity from coordinates). At $q = 11$ eight different strategies of the squad stop at 89: weighted
+recomputes collinearity from coordinates). The exact values come from exact_pack.py: a relaxed set is a packing of
+"units" (single points and collinear pairs) in which every line meets at most one unit, a set-packing problem with one
+row per line, solved by HiGHS in two cases (the unit through a fixed point is a single, or a pair with a fixed
+collinear point; $\mathrm{PSp}(4,q)$ is transitive on points and on ordered collinear pairs). At $q = 5$ both cases
+are optimal at 23 (346 s and 716 s), so dropping the condition does not change the maximum there. At $q = 11$ eight different strategies of the squad stop at 89: weighted
 local search, unions of orbits of 533 subgroups of $\mathrm{Sp}(4,11)$ solved exactly (best 81, then 89 by tabu search),
 sets with all pairs on lines of $S$ (74 in the restricted model, 89 after an unrestricted search), large-neighbourhood
 search with exact MIP re-optimisation (regions of 700–1000 points solve to optimality and never pass 89), seeded growth

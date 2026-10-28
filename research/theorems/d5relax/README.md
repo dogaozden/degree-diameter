@@ -9,7 +9,8 @@ searches for relaxed sets of W(q) no longer need the condition "no pair on a lin
 | export_w.py | writes data/W<q>_adj.txt (collinearity graph), _lines.txt, _spread.txt (regular spread of Lemma 1.1) with gqlib's numbering |
 | export_q4.py | data/Q<q>_adj.txt, the collinearity graph of Q(4,q) (relaxed point sets, the dual question) |
 | rtabu.c | fixed-size tabu search for relaxed sets of any graph; `-S spread` adds the old spread condition |
-| exact_mip.py | exact maximum relaxed set by MIP (HiGHS), with or without the spread condition (solves q = 3; q = 5 too slow) |
+| exact_mip.py | exact maximum relaxed set by a point MIP (HiGHS), with or without the spread condition (solves q = 3; q = 5 too slow) |
+| exact_pack.py | exact maximum as a set packing of units (singles, collinear pairs; every line meets at most one unit), two symmetry cases: q = 3: 11 (10 with the condition), q = 5: 23 without the condition (runs/pack_q5_free_*.log) |
 | orbits.py | relaxed sets as unions of orbits of subgroups of Sp(4,q), exact MIP over the orbit matrix; class WSp (coordinates, transvections) |
 | c61.py | the cyclic subgroups of order (q^2+1)/2: no orbit is relaxed (q = 11) |
 | score.py | independent scorer (collinearity recomputed from coordinates) |
