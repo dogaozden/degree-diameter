@@ -14,7 +14,16 @@ An *incidence structure* consists of points, lines and a symmetric incidence rel
 
 The *incidence graph* has the elements as vertices and the flags as edges; it is bipartite. Distances $d(x,y)$ and the diameter are taken in it. So two points are at distance $2$ when they are collinear, a point and a line are at distance $3$ when they form an anti-flag and some point of the line is collinear with the point, and so on.
 
-A *generalized $n$-gon* is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are *opposite*. It has *order $(s,t)$* if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree–diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. For degree $q+2$ there is no such object when $q+1$ is not a prime power, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$), and adds points and lines so that the maximum degree becomes $q+2$ (or more) while the diameter stays the same.
+A *generalized $n$-gon* is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are *opposite*. It has *order $(s,t)$* if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree–diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. When $q+1$ is not a prime power, no generalized polygon of order $(q+1,q+1)$ is known, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$) and adds points and lines so that the maximum degree becomes $q+2$ (or more) while the diameter stays the same. Table 1 is a summary.
+
+| §   | start                                              | chosen configuration                                                                                                              | changed incidences                                                       | added elements                                        |
+|:----|:---------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------------------------------------------------------|
+| 1   | projective plane of order $q$; $D=3$, $\Delta=q+2$ | an anti-flag $(A,\ell)$ and $3$ or $4$ points of $\ell$                                                                           | $1$ flag deleted (three hats); $4$ deleted and $3$ added (four hats)     | $4+4$ or $5+5$: hat points and hat lines, $Q$ and $M$ |
+| 2   | generalized quadrangle; $D=4$                      | a weighted $m$-ovoid and a weighted $m'$-cover (two elliptic quadrics in $\mathrm{AS}(q)$; a $2$-ovoid and a spread of $W(q)$; …) | none                                                                     | clones of points and shadow lines                     |
+| 3   | generalized hexagon of order $(q,q)$; $D=6$        | a spread $S$, a line $v\in S$, an exact whisker set                                                                               | none; every element of three nested sets is replaced by several versions | $(m-1)\sum_k m^k|\mathcal{A}_k|$ versions             |
+| 4   | $2r+1$ copies of a generalized hexagon; $D=7$      | bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities)                        | the incidences between copies at the freed points are deleted            | hub points and hub lines                              |
+
+*Table 1.* The constructions at a glance.
 
 Distances can be read off from collinearity alone:
 
@@ -77,9 +86,9 @@ Both constructions follow the same six rules. They differ in two permutations of
 | $\pi$, $\rho$  | $\pi=(0\ 1)$, $\rho=\mathrm{id}$                                                                                      | $\pi=\rho=\sigma=(0\ c\ 1)$: $0\mapsto c\mapsto 1\mapsto 0$                                                                                         |
 | new elements   | $Q,H_0,H_1,H_a$; $M,K_0,K_1,K_a$                                                                                      | $Q,H_0,H_1,H_a,H_c$; $M,K_0,K_1,K_a,K_c$                                                                                                            |
 
-*Table 1.* The two constructions, rule by rule. With $\rho=\mathrm{id}$, rule (R1) deletes and restores the flags $(X_t,\lambda_t)$, $t\in T$, so the three hats delete only $(X_a,\lambda_a)$.
+*Table 2.* The two constructions, rule by rule. With $\rho=\mathrm{id}$, rule (R1) deletes and restores the flags $(X_t,\lambda_t)$, $t\in T$, so the three hats delete only $(X_a,\lambda_a)$.
 
-So the three hats of \[AL20\] are $\mathcal{S}$ with $S=\{0,1,a\}$, $\pi=(0\ 1)$, $\rho=\mathrm{id}$, and the four hats are $\mathcal{S}$ with $S=\{0,1,a,c\}$ and $\pi=\rho=\sigma$. Table 1 puts the two side by side, and Figure 1 shows what rule (R1) and the links do to the flags between $\ell$ and the lines through $A$.
+So the three hats of \[AL20\] are $\mathcal{S}$ with $S=\{0,1,a\}$, $\pi=(0\ 1)$, $\rho=\mathrm{id}$, and the four hats are $\mathcal{S}$ with $S=\{0,1,a,c\}$ and $\pi=\rho=\sigma$. Table 2 puts the two side by side, and Figure 1 shows what rule (R1) and the links do to the flags between $\ell$ and the lines through $A$.
 
 *Dictionary.* In \[AL20\] the plane is described from a flag $(P,L)$ (the point and line at infinity); $P_0$ is a point of $L$ other than $P$, and $L_0$ a line through $P$ other than $L$. In our names $P_0=A$, $L_0=\ell$, $(0,s)=X_s$, $[0,s]=\lambda_s$, $Q_0=Q$, $M_0=M$, $\widehat{(0,s)}=H_s$, $\widehat{[0,s]}=K_s$. By their Observation 1, the lines through $(0,s)$ other than $L_0$ are the $[t,s]$ and the points of $[0,s]$ other than $P_0$ are the $(t,s)$, so their edges $(\widehat{(0,j)},[t,j])$ and $(\widehat{[0,j]},(t,j))$ are rules (R2) and (R3). Their edges $(P,M_0)$ and $(M_0,(0,i))$, $i\ne 0,1$, together say that $M$ contains the points of $L_0$ other than $(0,0),(0,1)$, and with $(M_0,\widehat{(0,j)})$ this is (R4); dually $(L,Q_0)$, $(Q_0,[0,i])$ and $(Q_0,\widehat{[0,j]})$ give (R5). The edges $(P_0,\widehat{[0,a]})$, $(L_0,\widehat{(0,a)})$, $(\widehat{(0,0)},\widehat{[0,1]})$, $(\widehat{(0,1)},\widehat{[0,0]})$ are the links, and the deleted edge $((0,a),[0,a])$ is (R1). The flag $(P,L)$ plays no role in the construction: $P$ is one of the points of $\ell^*$ and $L$ one of the lines of $\Lambda^*$.
 
@@ -111,7 +120,7 @@ So the three hats of \[AL20\] are $\mathcal{S}$ with $S=\{0,1,a\}$, $\pi=(0\ 1)$
 | $H_1$     |           |             |             |  $\bullet$  |             | $\bullet$ | $\bullet$ |           |           |           |
 | $H_a$     | $\bullet$ |             |             |             |  $\bullet$  | $\bullet$ |           |           |           |           |
 
-*Table 2.* The *gadget*: all incidences among the frame and the new elements ($\bullet$ incident, $\circ$ a flag of $\Pi$ that was deleted). Every other incidence of a new element is with an element outside the frame, by rules (R2)– (R5). In both tables the block $\{X_t\}\times\{\lambda_t\}$ ($t\in T$) is the permutation matrix of $\rho$ and the block $\{H_t\}\times\{K_t\}$ is that of $\pi$: the identity and the transposition $(0\ 1)$ for the three hats, the $3$-cycle $\sigma$ twice for the four hats.
+*Table 3.* The *gadget*: all incidences among the frame and the new elements ($\bullet$ incident, $\circ$ a flag of $\Pi$ that was deleted). Every other incidence of a new element is with an element outside the frame, by rules (R2)– (R5). In both tables the block $\{X_t\}\times\{\lambda_t\}$ ($t\in T$) is the permutation matrix of $\rho$ and the block $\{H_t\}\times\{K_t\}$ is that of $\pi$: the identity and the transposition $(0\ 1)$ for the three hats, the $3$-cycle $\sigma$ twice for the four hats.
 
 *\[Figure: see SYNTHETIC.pdf.\]*
 
@@ -119,7 +128,7 @@ So the three hats of \[AL20\] are $\mathcal{S}$ with $S=\{0,1,a\}$, $\pi=(0\ 1)$
 
 ## 1.3 What the new elements are: a crossed doubling of the frame
 
-The hat point $H_s$ is a copy of $X_s$ that does not see $\ell$; the hat line $K_s$ is a copy of $\lambda_s$ that does not see $A$; and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$ that does not see the elements $X_t$, $\lambda_t$, $t\in T$. The cleanest way to say this is as a doubling of the frame, in the sense of Delorme \[D85a\], with one twist.
+The hat point $H_s$ is a copy of $X_s$ that does not see $\ell$; the hat line $K_s$ is a copy of $\lambda_s$ that does not see $A$; and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$ that does not see the elements $X_t$, $\lambda_t$, $t\in T$. This is how \[AL20\] prove that the diameter is $3$: their Observation 2 compares each hat vertex with the vertex it copies. In both constructions one has, more precisely: *$H_s$ is at the same distance from every point and line of $\Pi$ as $X_s$ is in $\Pi$, except from $X_s$ itself and, if $s\neq a$, from $\ell$; dually $K_s$ is at the same distance from every element of $\Pi$ as $\lambda_s$, except from $\lambda_s$ and, if $s\ne a$, from $A$* (checked by computer for $q\le 7$). The cleanest way to say all this is as a doubling of the frame, in the sense of Delorme \[D85a\], with one twist.
 
 Let $\mathcal{F}$ be the set of frame elements $A$, $\ell$, $X_s$, $\lambda_s$ ($s\in S$), and give each $x\in\mathcal{F}$ a copy $x'$ of the same kind: $$A'=Q,\qquad \ell'=M,\qquad X_s'=H_s,\qquad \lambda_s'=K_s .$$ The *crossed doubling* $\mathcal{D}$ of the frame has the points and lines of $\Pi$ and these copies, and the following incidences: all incidences of $\Pi$; for $x\in\mathcal{F}$ and $y\notin\mathcal{F}$ with $x\mathrel{\mathrm{I}}y$, the incidence $x'\mathrel{\mathrm{I}}y$ (a copy sees the same elements outside the frame as its original); for $x,y\in\mathcal{F}$ with $x\mathrel{\mathrm{I}}y$, the incidence $x'\mathrel{\mathrm{I}}y'$ (copies see copies), except that each flag $(X_s,\lambda_s)$ is *crossed*: instead of $X_s'\mathrel{\mathrm{I}}\lambda_s'$ we put $X_s'\mathrel{\mathrm{I}}\lambda_s$ and $X_s\mathrel{\mathrm{I}}\lambda_s'$.
 
@@ -174,7 +183,7 @@ The far pairs of lines are repaired dually: $\{K_s,\lambda_a\}$ by $Q$, $\{K_a,\
 
 Each broken pair is repaired by the crossing and one patch: $X_s$ and the points of $\lambda_s$ other than $A$ are all on $K_s$ (rule (R3)), and $A\mathrel{\mathrm{I}}K_a$ repairs $\{X_a,A\}$; dually $\lambda_s$ and the lines through $X_s$ other than $\ell$ all pass through $H_s$, and $H_a\mathrel{\mathrm{I}}\ell$ repairs $\{\lambda_a,\ell\}$. This is why the flags may be deleted at all: the crossing has already given every point of $\lambda_s$ a second line through $X_s$ (namely $K_s$), and every line through $X_s$ a second point on $\lambda_s$ (namely $H_s$).
 
-Figure 2 shows the local picture at a hat pair; Table 2 shows the whole gadget.
+Figure 2 shows the local picture at a hat pair; Table 3 shows the whole gadget.
 
 *\[Figure: see SYNTHETIC.pdf.\]*
 
@@ -190,7 +199,7 @@ So $\mathcal{S}$ has $q^2+q+1+|S|+1$ points and as many lines: $2(q^2+q+5)$ elem
 
 ## 1.6 The diameter
 
-**Lemma 1.5 (Points).** Any two distinct points of $\mathcal{S}$ are collinear in $\mathcal{S}$; Table 3 gives a common line for every pair.
+**Lemma 1.5 (Points).** Any two distinct points of $\mathcal{S}$ are collinear in $\mathcal{S}$; Table 4 gives a common line for every pair.
 
 | pair of points                                                                            | common line                                      | three hats          |
 |:------------------------------------------------------------------------------------------|:-------------------------------------------------|:--------------------|
@@ -217,9 +226,9 @@ So $\mathcal{S}$ has $q^2+q+1+|S|+1$ points and as many lines: $2(q^2+q+5)$ elem
 | $Q$ and $H_a$                                                                             | $\lambda_a$                                      |                     |
 | $Q$ and $H_t$, $t\in T$                                                                   | $K_{\pi(t)}$                                     |                     |
 
-*Table 3.* A common line for every pair of distinct points of $\mathcal{S}$. Here $s,s'\in S$ and $t\in T$. The third column notes where the three hats differ; elsewhere the entry is the same for both constructions.
+*Table 4.* A common line for every pair of distinct points of $\mathcal{S}$. Here $s,s'\in S$ and $t\in T$. The third column notes where the three hats differ; elsewhere the entry is the same for both constructions.
 
-*Proof.* We check that Table 3 covers every pair and that each named line contains both points. The only flags of $\Pi$ missing from $\mathcal{S}$ are among the $(X_s,\lambda_s)$; so a flag $(u,L)$ of $\Pi$ survives whenever $u\notin\ell$ or $L$ does not pass through $A$.
+*Proof.* We check that Table 4 covers every pair and that each named line contains both points. The only flags of $\Pi$ missing from $\mathcal{S}$ are among the $(X_s,\lambda_s)$; so a flag $(u,L)$ of $\Pi$ survives whenever $u\notin\ell$ or $L$ does not pass through $A$.
 
 *Two points of $\Pi$.* If the line $uv$ of $\Pi$ lost an incidence, then (up to order) $u=X_s$, $uv=\lambda_s$ with the flag deleted, and $v$ is $A$ or another point of $\lambda_s$. If $v\neq A$, both lie on $K_s$ by (R3). If $v=A$ and $s=a$: $X_a\mathrel{\mathrm{I}}K_a$ by (R3) and $A\mathrel{\mathrm{I}}K_a$ by (R6). If $v=A$ and $s=t\in T$ (four hats): the rotation puts $X_t$ on $\lambda_{\sigma(t)}$, which passes through $A$.
 
@@ -543,7 +552,7 @@ With classical ingredients only (the $q^2+1$ points of an elliptic quadric secti
 
 *Checks.* The scripts are in `research/synthetic/checks/`, each with its output in a `.out` file. They build the classical geometries from coordinates and then use only incidence; each runs in a few seconds.
 
-- `check_d3.py` (Section 1): both hat constructions from rules (R1)– (R6) on a plane given by its incidence relation; equality with the coordinate construction of `coords.py` for $q=4,5,7,8,9$ and every admissible $(a,c)$; the gadget tables; the matching of Figure 1; the crossed doubling and the patches (Proposition 1.2, Lemma 1.3, including the extra far pair at $q=3$); the broken pairs and their repairs; every line of Table 3; degrees and the deficient elements (Lemma 1.4); the duality (Lemma 1.6); diameter $3$; the changes of §1.7. Planes: $\mathrm{PG}(2,q)$, $q=3,4,5,7$, and the Dickson nearfield plane of order $9$, with random frames.
+- `check_d3.py` (Section 1): both hat constructions from rules (R1)– (R6) on a plane given by its incidence relation; equality with the coordinate construction of `coords.py` for $q=4,5,7,8,9$ and every admissible $(a,c)$; the gadget tables; the matching of Figure 1; the crossed doubling and the patches (Proposition 1.2, Lemma 1.3, including the extra far pair at $q=3$); the broken pairs and their repairs; every line of Table 4; degrees and the deficient elements (Lemma 1.4); the duality (Lemma 1.6); diameter $3$; the changes of §1.7. Planes: $\mathrm{PG}(2,q)$, $q=3,4,5,7$, and the Dickson nearfield plane of order $9$, with random frames.
 
 - `check_d4.py` (Section 2): Theorem 2.2 on random weights, shadow lines and stand-ins in $W(3)$ and $\mathrm{AS}(3)$; $\mathrm{AS}(q)$ built from $W(q)$ by Payne derivation using only incidence, and properties (E1), (E2) of the two quadrics, for $q=3,5,7$; the $2$-ovoid and spread of $W(q)$ and the explicit completion, $q=3,5$; Delorme’s construction on $W(3)$; ovoid and spread of $W(2)$; the $(7,4)$ example.
 

@@ -64,7 +64,24 @@ An \emph{incidence structure} consists of points, lines and a symmetric incidenc
 
 The \emph{incidence graph} has the elements as vertices and the flags as edges; it is bipartite. Distances $d(x,y)$ and the diameter are taken in it. So two points are at distance $2$ when they are collinear, a point and a line are at distance $3$ when they form an anti-flag and some point of the line is collinear with the point, and so on.
 
-A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are \emph{opposite}. It has \emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree--diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. For degree $q+2$ there is no such object when $q+1$ is not a prime power, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$), and adds points and lines so that the maximum degree becomes $q+2$ (or more) while the diameter stays the same.
+A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; elements at distance $n$ are \emph{opposite}. It has \emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines. Projective planes are the generalized $3$-gons, generalized quadrangles the $4$-gons, generalized hexagons the $6$-gons. Write $n_b(\Delta,D)$ for the largest number of elements of an incidence structure with all degrees at most $\Delta$ and diameter at most $D$ (the bipartite degree--diameter problem). A generalized $n$-gon of order $(q,q)$ attains the counting (Moore) bound for $n_b(q+1,n)$. When $q+1$ is not a prime power, no generalized polygon of order $(q+1,q+1)$ is known, and every construction below starts from a generalized polygon of order $(q,q)$ (or $(q-1,q+1)$) and adds points and lines so that the maximum degree becomes $q+2$ (or more) while the diameter stays the same. Table~\ref{tab:overview} is a summary.
+
+\begin{table}[ht]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\raggedright}p{0.03\textwidth}>{\raggedright}p{0.19\textwidth}>{\raggedright}p{0.25\textwidth}>{\raggedright}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\toprule
+\S & start & chosen configuration & changed incidences & added elements\\
+\midrule
+\ref{sec:d3} & projective plane of order $q$; $D=3$, $\Delta=q+2$ & an anti-flag $(A,\ell)$ and $3$ or $4$ points of $\ell$ & $1$ flag deleted (three hats); $4$ deleted and $3$ added (four hats) & $4+4$ or $5+5$: hat points and hat lines, $Q$ and $M$\\
+\ref{sec:d4} & generalized quadrangle; $D=4$ & a weighted $m$-ovoid and a weighted $m'$-cover (two elliptic quadrics in $\mathrm{AS}(q)$; a $2$-ovoid and a spread of $W(q)$; \dots) & none & clones of points and shadow lines\\
+\ref{sec:d6} & generalized hexagon of order $(q,q)$; $D=6$ & a spread $S$, a line $v\in S$, an exact whisker set & none; every element of three nested sets is replaced by several versions & $(m-1)\sum_k m^k|\cA_k|$ versions\\
+\ref{sec:d7} & $2r+1$ copies of a generalized hexagon; $D=7$ & bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities) & the incidences between copies at the freed points are deleted & hub points and hub lines\\
+\bottomrule
+\end{tabular}
+\caption{The constructions at a glance.}
+\label{tab:overview}
+\end{table}
 
 Distances can be read off from collinearity alone:
 
@@ -218,7 +235,7 @@ $H_a$ & \x &  &  &  & \x & \x &  &  &  &  \\
 \end{figure}
 
 \subsection{What the new elements are: a crossed doubling of the frame}\label{ssec:doubling}
-The hat point $H_s$ is a copy of $X_s$ that does not see $\ell$; the hat line $K_s$ is a copy of $\lam_s$ that does not see $A$; and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$ that does not see the elements $X_t$, $\lam_t$, $t\in T$. The cleanest way to say this is as a doubling of the frame, in the sense of Delorme \cite{D85a}, with one twist.
+The hat point $H_s$ is a copy of $X_s$ that does not see $\ell$; the hat line $K_s$ is a copy of $\lam_s$ that does not see $A$; and $(Q,M)$ is a copy of the anti-flag $(A,\ell)$ that does not see the elements $X_t$, $\lam_t$, $t\in T$. This is how \cite{AL20} prove that the diameter is $3$: their Observation~2 compares each hat vertex with the vertex it copies. In both constructions one has, more precisely: \emph{$H_s$ is at the same distance from every point and line of $\Pi$ as $X_s$ is in $\Pi$, except from $X_s$ itself and, if $s\neq a$, from $\ell$; dually $K_s$ is at the same distance from every element of $\Pi$ as $\lam_s$, except from $\lam_s$ and, if $s\ne a$, from $A$} (checked by computer for $q\le 7$). The cleanest way to say all this is as a doubling of the frame, in the sense of Delorme \cite{D85a}, with one twist.
 
 Let $\cF$ be the set of frame elements $A$, $\ell$, $X_s$, $\lam_s$ ($s\in S$), and give each $x\in\cF$ a copy $x'$ of the same kind:
 \[

@@ -323,6 +323,27 @@ def check_structure(Pi, A, ell, X, kind, verbose=False, full_diameter=True):
                  | {(X[t], lam[rho[t]]) for t in T} | {(X['a'], K['a']), (H['a'], lam['a'])})
     check(match == exp_match, f'{tag}: ell and the pencil at A are matched as described')
 
+    # Observation 2 of [AL], sharpened: H_s is at the same distance from every element of Pi as X_s is
+    # in Pi, except from X_s and (s != a) from ell; dually for K_s and lam_s (except lam_s and A)
+    def bfs(src, lo, po):
+        dist = {src: 0}
+        fr = [src]
+        while fr:
+            nx = []
+            for x in fr:
+                for y in (lo[x] if x in lo else po[x]):
+                    if y not in dist:
+                        dist[y] = dist[x] + 1
+                        nx.append(y)
+            fr = nx
+        return dist
+    old = Pi.points + Pi.lines
+    for s in S:
+        dH, dX = bfs(H[s], lines_on, pts_on), bfs(X[s], Pi.lines_on, Pi.pts_on)
+        check({y for y in old if dH[y] != dX[y]} == ({X[s], ell} if s != 'a' else {X[s]}), f'{tag}: H_s copies the distances of X_s')
+        dK, dL = bfs(K[s], lines_on, pts_on), bfs(lam[s], Pi.lines_on, Pi.pts_on)
+        check({y for y in old if dK[y] != dL[y]} == ({lam[s], A} if s != 'a' else {lam[s]}), f'{tag}: K_s copies the distances of lam_s')
+
     # global: any two points collinear, any two lines concurrent
     check(all(collinear(lines_on, u, v) for u, v in itertools.combinations(pts, 2)), f'{tag}: points collinear')
     check(all(pts_on[L] & pts_on[N] for L, N in itertools.combinations(lns, 2)), f'{tag}: lines concurrent')
