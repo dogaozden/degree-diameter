@@ -20,7 +20,7 @@ A *generalized $n$-gon* is an incidence structure whose incidence graph has diam
 |:----|:---------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|:------------------------------------------------------|
 | 1   | projective plane of order $q$; $D=3$, $\Delta=q+2$ | an anti-flag $(A,\ell)$ and $3$ or $4$ points of $\ell$                                                                           | $1$ flag deleted (three hats); $4$ deleted and $3$ added (four hats)     | $4+4$ or $5+5$: hat points and hat lines, $Q$ and $M$ |
 | 2   | generalized quadrangle; $D=4$                      | a weighted $m$-ovoid and a weighted $m'$-cover (two elliptic quadrics in $\mathrm{AS}(q)$; a $2$-ovoid and a spread of $W(q)$; …) | none                                                                     | clones of points and shadow lines                     |
-| 3   | generalized hexagon of order $(q,q)$; $D=6$        | a spread $S$, a line $v\in S$, an exact whisker set                                                                               | none; every element of three nested sets is replaced by several versions | $(m-1)\sum_k m^k|\mathcal{A}_k|$ versions             |
+| 3   | generalized hexagon of order $(q,q)$; $D=6$        | a spread $S$, a line $v\in S$, an exact whisker set                                                                               | none; every element of three nested sets is replaced by several versions | $(m-1)\sum_k m^k\lvert\mathcal{A}_k\rvert$ versions   |
 | 4   | $2r+1$ copies of a generalized hexagon; $D=7$      | bijections from the points of one copy to the lines of another; freed sets (segment sets, local dualities)                        | the incidences between copies at the freed points are deleted            | hub points and hub lines                              |
 
 *Table 1.* The constructions at a glance.
@@ -535,12 +535,12 @@ In each case the structure is that of §4.2, every transition is repaired by The
 
 <div class="center">
 
-| cells                                | copies                                                | freed sets                                                                                                                             | elements                |
-|:-------------------------------------|:------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------|:------------------------|
-| $(7,7)$, $(9,7)$, $(10,7)$, $(13,7)$ | $3$ copies of $H(q)$, one matching on all transitions | the same set $R$ on every transition, $M$ a local duality on $R$ (pairwise opposite points plus a few, mirrored); $|R|=81,295,229,768$ | $6N+2|R|$               |
-| $(11,7)$, $(12,7)$                   | $3$ or $5$ copies of $H(9)$, a duality                | the $7300$ points of a spread on every transition                                                                                      | $(2r+1)2N+2\cdot 7300r$ |
-| $(14,7)$, $(16,7)$                   | $5$ copies, types $HDHDH$                             | friendly: identity, large non-collinear and non-concurrent sets; others: local dualities                                               | see `D7_HEXAGON.md` §8  |
-| $(15,7)$                             | $7$ copies, types $HHDHDHD$                           | friendly: segment sets with some collinear pairs; others: local dualities                                                              |                         |
+| cells                                | copies                                                | freed sets                                                                                                                                        | elements                |
+|:-------------------------------------|:------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------|
+| $(7,7)$, $(9,7)$, $(10,7)$, $(13,7)$ | $3$ copies of $H(q)$, one matching on all transitions | the same set $R$ on every transition, $M$ a local duality on $R$ (pairwise opposite points plus a few, mirrored); $\lvert R\rvert=81,295,229,768$ | $6N+2\lvert R\rvert$    |
+| $(11,7)$, $(12,7)$                   | $3$ or $5$ copies of $H(9)$, a duality                | the $7300$ points of a spread on every transition                                                                                                 | $(2r+1)2N+2\cdot 7300r$ |
+| $(14,7)$, $(16,7)$                   | $5$ copies, types $HDHDH$                             | friendly: identity, large non-collinear and non-concurrent sets; others: local dualities                                                          | see `D7_HEXAGON.md` §8  |
+| $(15,7)$                             | $7$ copies, types $HHDHDHD$                           | friendly: segment sets with some collinear pairs; others: local dualities                                                                         |                         |
 
 </div>
 
