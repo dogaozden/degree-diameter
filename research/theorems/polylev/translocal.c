@@ -93,6 +93,24 @@ int main(int argc, char **argv) {
     for (int b = 0; b < NO; b++) for (int t = 0; t < B; t++) { int x = ball[(size_t)b * B + t], o = orb[x]; int p = occ_start[o] + fill[o]++; occ_b[p] = b; occ_j[p] = idx[x]; }
     cnt = calloc((size_t)NO * K, sizeof(int)); miss = calloc(NO, sizeof(int)); s = calloc(NO, sizeof(int));
     for (int o = 0; o < NO; o++) s[o] = fixedb ? (o % A) * D + rnd() % D : rnd() % K;
+    if (getenv("GREEDY")) {   /* greedy start: orbits in random order, each takes the value covering most missing pairs */
+        int *tc = calloc((size_t)NO * K, sizeof(int)), *cap = calloc(A, sizeof(int)), *used = calloc(A, sizeof(int));
+        for (int o = 0; o < NO; o++) cap[o % A]++;
+        int *ord = malloc(sizeof(int) * NO); for (int i = 0; i < NO; i++) ord[i] = i;
+        for (int i = NO - 1; i > 0; i--) { int j = rnd() % (i + 1), t = ord[i]; ord[i] = ord[j]; ord[j] = t; }
+        for (int ii = 0; ii < NO; ii++) {
+            int o = ord[ii], bv = -1, bg = -1, ties = 0;
+            for (int v = 0; v < K; v++) {
+                if (fixedb && used[v / D] >= cap[v / D]) continue;
+                int g = 0;
+                for (int t = occ_start[o]; t < occ_start[o + 1]; t++) if (!tc[(size_t)occ_b[t] * K + COLOR(occ_j[t], v)]) g++;
+                if (g > bg) { bg = g; bv = v; ties = 1; } else if (g == bg && rnd() % (++ties) == 0) bv = v;
+            }
+            s[o] = bv; used[bv / D]++;
+            for (int t = occ_start[o]; t < occ_start[o + 1]; t++) tc[(size_t)occ_b[t] * K + COLOR(occ_j[t], bv)]++;
+        }
+        free(tc); free(cap); free(used); free(ord);
+    }
     int *blist = malloc(sizeof(int) * NO), *bpos = malloc(sizeof(int) * NO), *bst = calloc(A + 1, sizeof(int));
     for (int o = 0; o < NO; o++) bst[o % A + 1]++;
     for (int a = 0; a < A; a++) bst[a + 1] += bst[a];

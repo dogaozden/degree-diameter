@@ -165,6 +165,35 @@ re-checked by the independent scorer domcheck.py, which tests every 2-ball).
 |---:|---|---:|---:|---|
 DOMTABLE_PLACEHOLDER
 
+
+**Sizes (research/theorems/polylev/sizes.py).** With $k$ at its maximum $q^2+q+1$, and the smallest $k$ that beats the
+lab's current value at the same $(\Delta, 9)$ (rows where even the maximum does not are omitted):
+
+| Delta | q | r | max k | order at max k | lab value | k needed to beat it |
+|---:|---:|---:|---:|---:|---:|---:|
+| 7 | 5 | 1 | 31 | 492,156 | 462,840 | 30 (97%) |
+| 9 | 7 | 1 | 57 | 4,509,840 | 3,499,776 | 45 (79%) |
+| 10 | 7 | 2 | 57 | 8,980,464 | 8,003,856 | 51 (89%) |
+| 10 | 8 | 1 | 73 | 11,010,006 | 8,003,856 | 53 (73%) |
+| 11 | 8 | 2 | 73 | 21,945,114 | 16,792,080 | 56 (77%) |
+| 11 | 9 | 1 | 91 | 24,313,380 | 16,792,080 | 63 (69%) |
+| 12 | 9 | 2 | 91 | 48,493,900 | 34,026,720 | 64 (70%) |
+| 13 | 9 | 3 | 91 | 72,674,420 | 67,742,688 | 85 (93%) |
+| 13 | 11 | 1 | 133 | 94,601,304 | 67,742,688 | 96 (72%) |
+| 14 | 11 | 2 | 133 | 188,848,296 | 116,068,656 | 82 (62%) |
+| 15 | 11 | 3 | 133 | 283,095,288 | 208,029,120 | 98 (74%) |
+| 15 | 13 | 1 | 183 | 295,239,756 | 208,029,120 | 129 (70%) |
+| 16 | 11 | 4 | 133 | 377,342,280 | 337,394,400 | 119 (89%) |
+| 16 | 13 | 2 | 183 | 589,675,044 | 337,394,400 | 105 (57%) |
+| 17 | 13 | 3 | 183 | 884,110,332 | 501,707,400 | 104 (57%) |
+| 18 | 13 | 4 | 183 | 1,178,545,620 | 790,626,816 | 123 (67%) |
+| 18 | 16 | 1 | 273 | 1,223,618,214 | 790,626,816 | 177 (65%) |
+| 19 | 13 | 5 | 183 | 1,472,980,908 | 1,218,394,320 | 152 (83%) |
+| 19 | 16 | 2 | 273 | 2,444,999,466 | 1,218,394,320 | 136 (50%) |
+| 19 | 17 | 1 | 307 | 1,855,575,540 | 1,218,394,320 | 202 (66%) |
+| 20 | 16 | 3 | 273 | 3,666,380,718 | 1,823,175,864 | 136 (50%) |
+| 20 | 17 | 2 | 307 | 3,708,133,884 | 1,823,175,864 | 151 (49%) |
+
 **3.5 Group-equivariant colourings.** Let $T=\langle h\rangle$ be a cyclic group of collineations of $H$ of order $d$
 acting semiregularly on points and on lines, and fix a representative $b_O$ of every $T$-orbit $O$. Given a block
 $a_O\in\{0,\dots,A-1\}$ and a shift $s_O\in\mathbb Z_d$ for every orbit, colour $h^jb_O$ by $a_Od + (j+s_O \bmod d)$.
@@ -228,7 +257,37 @@ within the bound 10.
 
 The orders against the lab's current values at $D = 10$ (research/theorems/polylev/sizes.py):
 
-D10TABLE_PLACEHOLDER
+| Delta | q | matchings 2r' | K = q^3+1 | order | lab value | ratio |
+|---:|---:|---:|---:|---:|---:|---:|
+| 5 | 2 | 2 | 9 | 2,394 | 95,472 | 0.025 |
+| 6 | 3 | 2 | 28 | 41,496 | 524,160 | 0.079 |
+| 7 | 2 | 4 | 9 | 4,662 | 2,298,240 | 0.002 |
+| 7 | 4 | 2 | 65 | 357,630 | 2,298,240 | 0.156 |
+| 8 | 3 | 4 | 28 | 82,264 | 8,043,840 | 0.010 |
+| 8 | 5 | 2 | 126 | 1,976,436 | 8,043,840 | 0.246 |
+| 9 | 2 | 6 | 9 | 6,930 | 23,975,280 | 0.000 |
+| 9 | 4 | 4 | 65 | 712,530 | 23,975,280 | 0.030 |
+| 10 | 3 | 6 | 28 | 123,032 | 60,141,120 | 0.002 |
+| 10 | 5 | 4 | 126 | 3,945,060 | 60,141,120 | 0.066 |
+| 10 | 7 | 2 | 344 | 27,019,824 | 60,141,120 | 0.449 |
+| 11 | 4 | 6 | 65 | 1,067,430 | 148,729,680 | 0.007 |
+| 11 | 8 | 2 | 513 | 76,920,246 | 148,729,680 | 0.517 |
+| 12 | 5 | 6 | 126 | 5,913,684 | 325,832,976 | 0.018 |
+| 12 | 7 | 4 | 344 | 54,000,432 | 325,832,976 | 0.166 |
+| 12 | 9 | 2 | 730 | 194,108,460 | 325,832,976 | 0.596 |
+| 13 | 8 | 4 | 513 | 153,765,594 | 677,714,400 | 0.227 |
+| 14 | 7 | 6 | 344 | 80,981,040 | 1,326,627,120 | 0.061 |
+| 14 | 9 | 4 | 730 | 388,084,060 | 1,326,627,120 | 0.293 |
+| 14 | 11 | 2 | 1,332 | 944,241,480 | 1,326,627,120 | 0.712 |
+| 15 | 8 | 6 | 513 | 230,610,942 | 2,467,618,800 | 0.093 |
+| 16 | 9 | 6 | 730 | 582,059,660 | 4,220,872,800 | 0.138 |
+| 16 | 11 | 4 | 1,332 | 1,888,128,648 | 4,220,872,800 | 0.447 |
+| 16 | 13 | 2 | 2,198 | 3,537,245,796 | 4,220,872,800 | 0.838 |
+| 18 | 11 | 6 | 1,332 | 2,832,015,816 | 11,787,972,672 | 0.240 |
+| 18 | 13 | 4 | 2,198 | 7,073,687,124 | 11,787,972,672 | 0.600 |
+| 19 | 16 | 2 | 4,097 | 18,331,903,590 | 19,233,722,496 | 0.953 |
+| 20 | 13 | 6 | 2,198 | 10,610,128,452 | 30,518,778,360 | 0.348 |
+| 20 | 17 | 2 | 4,914 | 29,656,019,484 | 30,518,778,360 | 0.972 |
 
 None of these beats the lab's Haar graphs; the closest are $(19,10)$ ($q = 16$, 95%) and $(20,10)$ ($q = 17$, 97%).
 The reason is visible in the count: the 3-balls of lines that Lemma 4.3 uses have $(q+1)(q^2+1)$ elements, but a class
@@ -254,12 +313,86 @@ diameter at most 11 with $2N(q)(2rK+1)$ vertices.
 disjoint and 4-dominating by Lemma 5.1. Distribute the remaining $N-K(q+1)$ points and lines evenly so that
 $|A_i| = |B_i|$ stays true (Remark 2.5) and apply Theorem 2.3 with $\rho = 4$, $c = 5$. $\square$
 
+**Lemma 5.4 (Theorem).** (a) Two points of $H(q)$ are at distance $\le 4$ in $I$ if and only if they are
+orthogonal with respect to $b$. (b) Every totally singular line $m$ of $Q(6,q)$ (a line of the quadric, not
+necessarily a line of $H$) contains a point at distance $\le 4$ from any given point $p$; so the $q+1$ points of $m$ form
+a 4-dominating point set.
+
+*Proof.* (a) Points at distance 2 lie on a common line of $H$, which is totally singular; points $x, y$ at distance 4
+have a common neighbour point $z$ at distance 2 from both, so both lie in the totally singular plane $\pi_z$. In both
+cases $b(x,y) = 0$. Conversely, $p^\perp$ is the tangent hyperplane of $Q(6,q)$ at $p$ (for $q$ even, $p$ is not the
+nucleus $\langle e_3\rangle$ of $b$, so $p^\perp$ is still a hyperplane), and $p^\perp\cap Q(6,q)$ is a cone with vertex
+$p$ over a parabolic quadric $Q(4,q)$: it has $1+q(q^3+q^2+q+1) = 1+q+q^2+q^3+q^4$ points. The points at distance $\le
+4$ from $p$ number $1+q(q+1)+q^3(q+1)$, the same; so the two sets coincide. (b) $m$ is a 2-dimensional subspace and
+$p^\perp$ a hyperplane, so they share a nonzero vector, i.e. a point $x$ of $m$ with $b(p,x)=0$; by (a),
+$d(p,x)\le 4$. $\square$
+
+**Corollary 5.5 (Theorem).** Suppose $Q(6,q)$ has $K$ pairwise disjoint totally singular lines (a partial line spread
+of the quadric) and $H(q)$ has $K$ pairwise non-collinear points. Then the conclusion of Corollary 5.2 holds: for every
+$r\ge 1$ there is a bipartite $(q+1+r)$-regular graph of diameter at most 11 with $2N(q)(2rK+1)$ vertices. If $q$ is a
+power of 3, the second hypothesis can be dropped: with a duality $\varphi$, the line classes $\varphi(m_i)$ (each a set of
+$q+1$ lines of $H$) are 4-dominating (Remark 2.6 and Lemma 5.4(b)), pairwise disjoint and balanced with the point
+classes.
+
+*Proof.* As for Corollary 5.2, with Lemma 5.4(b) for the point classes. $\square$
+
+**Computer-checked 5.6.** $Q(6,3)$: a randomized greedy finds 78 pairwise disjoint totally singular lines (85.7% of the
+bound 91; qspread.py); with the duality of $H(3)$ (research/d10D7/dual/dualfind.c) both sides have 78 classes, and the
+independent scorer domcheck.py confirms that every class meets every 4-ball. The lift with $r = 1$ (lift9.py) has
+114,296 vertices; apsp: bipartite, 5-regular, diameter exactly 11 (checks/d11_q3_K78_r1_D11.apsp.txt; the run with
+$D = 10$ fails). Squad card r1/c13 built the pencil version at $q = 2$ ($K = 19$, the largest partial distance-2 spread
+of $H(2)$, found by exhaustive search): diameter 11 for $r = 1$ and 10 for $r = 2$.
+
 Pairwise disjoint lines are a partial distance-2 spread and pairwise non-collinear points a partial distance-2 ovoid;
 both have at most $q^4+q^2+1 = N/(q+1)$ elements (each point lies on at most one of the lines; each line contains at
 most one of the points). Distance-2 ovoids attaining the bound are known only for small $q$ (§9). The sizes, and the
 fraction of the bound that $K$ must reach to beat the lab's current values at $(9,11)$ and $(10,11)$:
 
-D11TABLE_PLACEHOLDER
+| Delta | q | r | max K | order at max K | lab value | K needed to beat it |
+|---:|---:|---:|---:|---:|---:|---:|
+| 4 | 2 | 1 | 21 | 5,418 | 19,152 | impossible |
+| 5 | 2 | 2 | 21 | 10,710 | 253,080 | impossible |
+| 5 | 3 | 1 | 91 | 133,224 | 253,080 | impossible |
+| 6 | 2 | 3 | 21 | 16,002 | 1,971,744 | impossible |
+| 6 | 3 | 2 | 91 | 265,720 | 1,971,744 | impossible |
+| 6 | 4 | 1 | 273 | 1,493,310 | 1,971,744 | impossible |
+| 7 | 2 | 4 | 21 | 21,294 | 10,648,176 | impossible |
+| 7 | 3 | 3 | 91 | 398,216 | 10,648,176 | impossible |
+| 7 | 4 | 2 | 273 | 2,983,890 | 10,648,176 | impossible |
+| 7 | 5 | 1 | 651 | 10,179,036 | 10,648,176 | impossible |
+| 8 | 2 | 5 | 21 | 26,586 | 43,702,560 | impossible |
+| 8 | 3 | 4 | 91 | 530,712 | 43,702,560 | impossible |
+| 8 | 4 | 3 | 273 | 4,474,470 | 43,702,560 | impossible |
+| 8 | 5 | 2 | 651 | 20,350,260 | 43,702,560 | impossible |
+| 9 | 2 | 6 | 21 | 31,878 | 145,258,344 | impossible |
+| 9 | 3 | 5 | 91 | 663,208 | 145,258,344 | impossible |
+| 9 | 4 | 4 | 273 | 5,965,050 | 145,258,344 | impossible |
+| 9 | 5 | 3 | 651 | 30,521,484 | 145,258,344 | impossible |
+| 9 | 7 | 1 | 2,451 | 192,276,048 | 145,258,344 | 1852 (76%) |
+| 10 | 2 | 7 | 21 | 37,170 | 445,709,568 | impossible |
+| 10 | 3 | 6 | 91 | 795,704 | 445,709,568 | impossible |
+| 10 | 4 | 5 | 273 | 7,455,630 | 445,709,568 | impossible |
+| 10 | 5 | 4 | 651 | 40,692,708 | 445,709,568 | impossible |
+| 10 | 7 | 2 | 2,451 | 384,512,880 | 445,709,568 | impossible |
+| 10 | 8 | 1 | 4,161 | 623,376,054 | 445,709,568 | 2975 (71%) |
+| 11 | 9 | 1 | 6,643 | 1,765,310,820 | - | - |
+| 12 | 9 | 2 | 6,643 | 3,530,488,780 | - | - |
+| 13 | 11 | 1 | 14,763 | 10,461,770,424 | - | - |
+| 14 | 11 | 2 | 14,763 | 20,923,186,536 | - | - |
+| 15 | 13 | 1 | 28,731 | 46,227,144,684 | - | - |
+| 16 | 13 | 2 | 28,731 | 92,453,484,900 | - | - |
+| 17 | 13 | 3 | 28,731 | 138,679,825,116 | - | - |
+| 18 | 16 | 1 | 65,793 | 294,355,118,694 | - | - |
+| 19 | 16 | 2 | 65,793 | 588,708,000,426 | - | - |
+| 20 | 17 | 2 | 83,811 | 1,011,499,873,020 | - | - |
+
+(Rows with "-": no lab value; the row shown is the largest order at that degree, at the upper bound for $K$.)
+
+**Computer-checked 5.3** (squad cards r1/c11, r1/c12; sets re-checked against the hexagon files). $H(7)$ has 1,619
+pairwise disjoint lines and 1,618 pairwise non-collinear points (iterated local search, research/gh6/ils_mis.c), so
+$K\ge 1{,}618$ at $q = 7$ (66% of the bound; 1,852 would be needed at $(9,11)$). $H(8)$ has 2,701 pairwise disjoint lines
+and 2,701 pairwise non-collinear points, each a union of 37 orbits of the Singer subgroup of order 73 of $SL(3,8)$
+(local search on the orbit quotient), so $K\ge 2{,}701$ at $q = 8$ (65%; 2,975 would be needed at $(10,11)$).
 
 For $\Delta\ge 11$ the lab has no values at $D = 11$ (the 2013 table stops at $D = 10$, and the lab's beyond-table
 band covers $D = 11$ only for $\Delta\le 10$).
@@ -281,3 +414,76 @@ band covers $D = 11$ only for $\Delta\le 10$).
   $\ge q^2+1$: $\Delta = 5$ for $q = 2$ (the incidence graph itself, 4,680 vertices, diameter 8, against the table's
   9,234 at $(5,8)$) and $\Delta\ge 65$ for $q = 8$. Neither falls in a cell the lab tracks ($\Delta\le 20$), so octagons
   give nothing here.
+
+# 7. Where this leaves diameters 8–10
+
+* **$D = 8$.** No construction here reaches the lab's values or the 2013 table. The table's $D=8$ entries are Gómez's
+  compounds $\Omega H_q$, which the lab found not to have diameter 8 as published (papers/Ozden_OmegaH_D8_note.pdf);
+  the lab's own compound note gets about $2q$ layers, and §6 gives at most $2r'(q+1)+1$.
+* **$D = 9$.** Corollary 3.1 is the first construction in this family whose order grows like
+  $4rq^2\cdot q^5$: with $k$ at its maximum $q^2+q+1$ it would beat the lab's value at $D = 9$ for every
+  $7\le\Delta\le 20$ except $\Delta = 8$ (table in §3). The obstacle is the size of $k$ that can actually be realised
+  (Computer-checked 3.3, 3.4): perfect partitions do not exist at $q = 3$, Hermitian spreads of $H(9)$ pairwise
+  intersect (Computer-checked 7.1), and the local searches reached only about half of the maximum. The record thresholds
+  need $k/(q^2+q+1)$ between 49% ($(20,9)$, $q = 17$) and 97%.
+* **$D = 10$.** Corollary 4.4 holds for every $q$ with no search at all; it reaches 84–97% of the lab's Haar values at
+  $(16,10)$, $(19,10)$, $(20,10)$ and beats none.
+* **$\Delta\ge 17$.** The beyond-table cells at $D = 8$–$10$ hold Haar graphs at 4.5–7% of the Moore bound; the ball
+  lifts reach that range only at $D = 9$ with large $k$ (e.g. $(19,9)$ and $(20,9)$ need $k\ge 136$ at $q = 16$, half the
+  maximum 273).
+
+**Computer-checked 7.1** (squad card r1/c02, research/squads/polylev/r1/c02/). In $H(9)$, 5,000 Hermitian spreads (lines
+of $H(9)$ in a hyperplane $v^\perp$ with $q^3+1$ lines of $H$) were sampled; every one of the 12,497,500 pairs meets, in
+1 line (22.0%) or 10 lines (78.0%). One fixed Hermitian spread was compared with the line sets of all 597,871
+hyperplanes of $PG(6,9)$: the intersections have 1, 10 or 730 lines, never 0. Since $G_2(9)$ acts transitively on
+the elliptic hyperplanes (**Heuristic**: we did not check this transitivity by computer), no two Hermitian spreads of
+$H(9)$ are disjoint, and by Remark 2.6 the same holds for the Hermitian ovoids.
+
+# 8. Computer checks
+
+All files are under research/theorems/polylev/ unless stated otherwise; `hexgen2` is research/d10D7/hexgen2.c (the lab's
+generator of $H(q)$, which checks $N$ points, $N$ lines, $q+1$ points per line and lines per point), and `apsp` is
+research/lifts/coordinator_check/apsp.c (all-pairs bit-parallel BFS: simple, maximum degree, bipartite, connected,
+exact diameter; it assumes no symmetry).
+
+| claim | check | result |
+|---|---|---|
+| Theorem 2.3 / Cor. 3.1, $q = 3$, $k = 7$ | lift9.py + apsp, $r = 1, 2, 3$ (10,920; 21,112; 31,304 vertices) | bipartite, regular of degree $q+1+r$; diameter 9, 9, 8; "$D = 8$" fails for $r = 1, 2$ |
+| Cor. 3.1, $q = 4$, $k = 13$ | squad r1/c13: translocal colourings, lift9.py, apsp (73,710; 144,690 vertices) | diameter $\le 9$ for $r = 1, 2$; "$D = 8$" fails |
+| Cor. 4.4, $q = 2, 3$, $r' = 1$ | squad r1/c14: build_star.py + apsp (2,394; 41,496 vertices, 2 seeds each) | diameter 8 ($q=2$), 9 ($q=3$) |
+| Cor. 5.2 | CHECK511_PLACEHOLDER | |
+| Comp. 3.3 | perfcodes.c (exact cover), triples.py | 28 spreads, no ovoid in $H(2)$; 6,318 spreads and 6,318 ovoids in $H(3)$; no 3 pairwise disjoint spreads |
+| Comp. 3.4 | domlocal.c, translocal.c; independent scorer domcheck.py (tests every 2-ball by BFS) | see the table in §3 |
+| Comp. 3.6 | g2.py (collineations by apartment maps, verified on all lines), singer_perms.py (orbit sizes printed) | semiregular groups listed in §3.5 |
+| Comp. 5.3 | squad r1/c11, r1/c12 (ils_mis.c, mis2.c; sets re-verified) | $K\ge 1{,}618$ ($q=7$), $K\ge 2{,}701$ ($q=8$) |
+| Comp. 7.1 | squad r1/c02 (sample.py, full_check.py) | Hermitian spreads of $H(9)$ pairwise meet |
+
+The squad runs, their scoreboard and their logs are in research/squads/polylev/r1/ (log of the rounds in
+research/squads/LOG.md).
+
+# 9. Prior art
+
+Searches by squad card r1/c16 (research/squads/polylev/r1/c16/prior_art.md, with evidence tags) and the lab's
+novelty file (research/lit/novelty-2026-10-25.md on branch `claude/novelty-literature-check-4i5frp`).
+
+* **Level graphs ($\rho = 0$).** The $D = n+1$ level graphs of generalized polygons with a tournament of layers are the
+  Gómez–Fiol compounds $B(T)$ (J. Gómez, M. A. Fiol, *Dense compound graphs*, Ars Combin. 20-A (1985)) and give the
+  2013 table's diameter-7 column, credited to Delorme, Gómez and Quisquater (*On large bipartite graphs*, cited as
+  submitted; not found). Remark 2.4 is that construction.
+* **Voltage lifts of polygon incidence graphs at larger diameter.** C. Delorme, *Grands graphes de degré et diamètre
+  donnés*, European J. Combin. 6 (1985) 291–302, §4: products $G*\Gamma'$ of the incidence graph $G$ of a generalized
+  quadrangle or hexagon with an oriented perfect matching; item (c), $G*C_{35}$, has degree $\Delta+2$, diameter
+  $D+3$ and $35n$ vertices, i.e. for $H(q)$ degree $q+3$, diameter 9 and $70N(q)$ vertices (card c16 read the full text;
+  bipartiteness of (c) is not stated there; the bipartite versions are in C. Delorme, *Large bipartite graphs with given
+  degree and diameter*, J. Graph Theory 9 (1985) 325–334, not read). This is the closest prior construction to
+  Corollary 3.1, which has $2N(4k+1)$ vertices at the same degree and diameter, more than $70N$ as soon as $k\ge 9$.
+  Delorme's layers are indexed by a fixed cyclic group and every jump has a fixed voltage per arc; the ball lift lets the
+  voltage depend on the colour class of the jumping element, which is what makes the number of layers grow like $q^2$.
+* **Hubs and freed sets** (D7 note; R. Rajiv, Zenodo 2026, doi 10.5281/zenodo.23052995) concern diameter $n$ and
+  $n+1$; not used here.
+* **Ovoids, spreads, partitions.** Thas (J. Combin. Theory Ser. A 29 (1980)) relates ovoids of $H(q)$ to perfect codes
+  (not read). Distance-2 ovoids of $H(q)$ are known only for $q = 2, 3, 4$ (De Wispelaere–Van Maldeghem 2008, cited by
+  Bishnoi–Ihringer, arXiv:1606.07288). For partitions of the points of $H(q)$ into ovoids, of its lines into spreads, or
+  the domatic number of its collinearity graph: nothing found in these sources.
+* **Bipartite values at $D = 9$, $D = 11$ after 2013:** nothing found in these sources (the CombinatoricsWiki page could
+  not be retrieved on 28 October 2026).

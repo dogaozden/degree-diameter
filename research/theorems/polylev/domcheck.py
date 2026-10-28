@@ -55,7 +55,7 @@ def main():
           f'good on both {len(both)}, balance {"ok" if ok else "FAILS"} -> k = {k}')
     for r in range(1, 5):
         m = 2 * r * k + 1
-        print(f'  r={r}: Delta={q + 1 + r}, D={2 * s + 5 if s else 7}, m={m}, order {2 * N * m:,}')
+        print(f'  r={r}: Delta={q + 1 + r}, D={s + 7}, m={m}, order {2 * N * m:,}')
 
 
 if __name__ == '__main__':

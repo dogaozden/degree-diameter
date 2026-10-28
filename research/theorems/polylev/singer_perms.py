@@ -6,9 +6,17 @@ from hexlib import Hex
 from spreadpart import find_singer, mat_pow
 H = Hex(sys.argv[1]); e = int(sys.argv[2]); out = sys.argv[3]
 rng = np.random.default_rng(int(sys.argv[4]) if len(sys.argv) > 4 else 1)
-g = find_singer(H, rng); ge = mat_pow(H, g, e)
+g = find_singer(H, rng, matrix_order=(H.q % 3 == 1)); ge = mat_pow(H, g, e)
 pm = H.sl3_point_map(ge); lm = H.line_map(pm)
 o = 1; x = pm[0]
 while x != 0: x = pm[x]; o += 1
 pm.astype(np.int32).tofile(out + '.pperm'); lm.astype(np.int32).tofile(out + '.lperm'); np.savetxt(out + '.g', ge, fmt='%d')
-print('order of g^%d on point 0: %d' % (e, o))
+sizes = set()
+for perm in (pm, lm):
+    seen = np.zeros(len(perm), dtype=bool)
+    for s0 in range(len(perm)):
+        if seen[s0]: continue
+        x, c = s0, 0
+        while not seen[x]: seen[x] = True; x = perm[x]; c += 1
+        sizes.add(c)
+print('order of g^%d on point 0: %d; orbit sizes on points and lines: %s' % (e, o, sorted(sizes)))

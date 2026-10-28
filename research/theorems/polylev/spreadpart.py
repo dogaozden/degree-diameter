@@ -42,7 +42,9 @@ def is_scalar(M):
     return M[0, 1] == M[0, 2] == M[1, 0] == M[1, 2] == M[2, 0] == M[2, 1] == 0 and M[0, 0] == M[1, 1] == M[2, 2]
 
 
-def find_singer(H, rng):
+def find_singer(H, rng, matrix_order=False):
+    """element of SL(3,q) of order k = q^2+q+1: projective order k (default), or matrix order k (needed when
+    q = 1 mod 3, where the order-3 part of a Singer cycle is scalar)."""
     q = H.q
     k = q * q + q + 1
     I = np.eye(3, dtype=np.int64)
@@ -57,7 +59,10 @@ def find_singer(H, rng):
             continue
         if not (mat_pow(H, g, k) == I).all():
             continue
-        if any(is_scalar(mat_pow(H, g, k // p)) for p in primes(k)):
+        if matrix_order:
+            if any((mat_pow(H, g, k // p) == I).all() for p in primes(k)):
+                continue
+        elif any(is_scalar(mat_pow(H, g, k // p)) for p in primes(k)):
             continue
         return g
 

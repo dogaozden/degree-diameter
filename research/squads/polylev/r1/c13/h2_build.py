@@ -1,6 +1,9 @@
 """c13 part 2: K pairwise disjoint lines + K pairwise non-collinear points in H(2), colour files for the D = 11 lift.
-Usage: python3 h2_build.py K  -> writes pc2_K.bin (point colours), lc2_K.bin (line colours), prints the sets."""
+Usage: python3 h2_build.py K [seed] -> writes pc2_K.bin (point colours), lc2_K.bin (line colours), prints the sets.
+Maximum independent sets are found by iterated local search (the counting bound is 21 = 63/3 on both sides).
+"""
 import sys
+import random
 import numpy as np
 sys.path.insert(0, '/home/user/degree-diameter/research/theorems/polylev')
 from hexlib import Hex
@@ -13,58 +16,68 @@ LP = [list(map(int, H.lines[l])) for l in range(N)]          # points on each li
 PL = [list(map(int, H.PL[p])) for p in range(N)]              # lines through each point
 
 
-def mis(n, nbr, cliques, seconds_nodes=10**7):
-    """exact maximum independent set (bitmask branch and bound); cliques bound: each clique holds at most one vertex."""
-    best = [0, 0]
-    nodes = [0]
-    cl = [c for c in cliques]
-
-    def bound(cand):
-        return sum(1 for c in cl if c & cand)
-
-    def rec(cand, cur, size):
-        nodes[0] += 1
-        if nodes[0] > seconds_nodes:
-            raise RuntimeError('node limit')
-        if cand == 0:
-            if size > best[0]:
-                best[0], best[1] = size, cur
-            return
-        if size + bound(cand) <= best[0]:
-            return
-        v = (cand & -cand).bit_length() - 1
-        rec(cand & ~nbr[v] & ~(1 << v), cur | (1 << v), size + 1)
-        rec(cand & ~(1 << v), cur, size)
-
-    rec((1 << n) - 1, 0, 0)
-    return best[0], [i for i in range(n) if best[1] >> i & 1], nodes[0]
+def graph(sets):
+    """adjacency lists: a ~ b when the two elements share an incidence (sets[a] & sets[b])"""
+    adj = [[] for _ in range(N)]
+    for a in range(N):
+        for b in range(N):
+            if a != b and set(sets[a]) & set(sets[b]):
+                adj[a].append(b)
+    return adj
 
 
-# lines: adjacent when they share a point; cliques = pencils
-nbr_l = [0] * N
-for a in range(N):
-    for b in range(N):
-        if a != b and set(LP[a]) & set(LP[b]):
-            nbr_l[a] |= 1 << b
-cliq_l = [sum(1 << l for l in PL[p]) for p in range(N)]
-# points: adjacent when collinear; cliques = lines
-nbr_p = [0] * N
-for a in range(N):
-    for b in range(N):
-        if a != b and set(PL[a]) & set(PL[b]):
-            nbr_p[a] |= 1 << b
-cliq_p = [sum(1 << p for p in LP[l]) for l in range(N)]
+def ils_mis(adj, iters=300, swaps=60, seed=1):
+    """iterated local search for a large independent set: bounded (1,1)-swap plateau walks, greedy fill and random
+    forced insertions. Heuristic (no optimality claim); the counting bound is 21 = 63/3 on both sides."""
+    rnd = random.Random(seed)
+    n = len(adj)
+
+    def fill(S):
+        free = [v for v in range(n) if v not in S and not any(u in S for u in adj[v])]
+        rnd.shuffle(free)
+        for v in free:
+            if not any(u in S for u in adj[v]):
+                S.add(v)
+        return S
+
+    S = fill(set())
+    best = set(S)
+    for _ in range(iters):
+        for _ in range(swaps):
+            one = [v for v in range(n) if v not in S and sum(1 for u in adj[v] if u in S) == 1]
+            if not one:
+                break
+            v = rnd.choice(one)
+            u = next(u for u in adj[v] if u in S)
+            S.discard(u)
+            S.add(v)
+            fill(S)
+            if len(S) > len(best):
+                best = set(S)
+        S = set(best) if rnd.random() < 0.5 else set(S)
+        v = rnd.randrange(n)
+        if v not in S:                       # perturbation: force a random vertex in
+            for u in adj[v]:
+                S.discard(u)
+            S.add(v)
+            fill(S)
+    return sorted(best)
+
+
+ADJ_LINES = graph(LP)   # lines are the elements; adjacent when they share a point (not disjoint)
+ADJ_POINTS = graph(PL)  # points are the elements; adjacent when collinear (share a line)
+
 
 if __name__ == '__main__':
     K = int(sys.argv[1])
-    ml, sl, nl = mis(N, nbr_l, cliq_l)
-    mp, sp, np_ = mis(N, nbr_p, cliq_p)
-    print(f'max pairwise disjoint lines (partial spread) = {ml} (nodes {nl}); '
-          f'max pairwise non-collinear points = {mp} (nodes {np_})')
-    assert K <= ml and K <= mp, 'K too large for exact maximum'
+    seed = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+    sl = ils_mis(ADJ_LINES, seed=seed)
+    sp = ils_mis(ADJ_POINTS, seed=seed)
+    print(f'partial spread (pairwise disjoint lines) found: {len(sl)}; '
+          f'pairwise non-collinear points found: {len(sp)}; counting bound 21')
+    assert K <= len(sl) and K <= len(sp), 'K larger than the sets found'
     lines_sel = sl[:K]
     pts_sel = sp[:K]
-    # verify
     assert all(not (set(LP[a]) & set(LP[b])) for a in lines_sel for b in lines_sel if a < b)
     assert all(not (set(PL[a]) & set(PL[b])) for a in pts_sel for b in pts_sel if a < b)
     cp = -np.ones(N, dtype=np.int32)
@@ -77,5 +90,6 @@ if __name__ == '__main__':
             cl[l] = i
     cp.tofile(f'pc2_{K}.bin')
     cl.tofile(f'lc2_{K}.bin')
-    print('K =', K, 'line set', lines_sel, 'point set', pts_sel)
-    print('point colour counts', np.bincount(cp[cp >= 0]).tolist(), 'line colour counts', np.bincount(cl[cl >= 0]).tolist())
+    print('K =', K, 'lines', lines_sel, 'points', pts_sel)
+    print('point colour counts', np.bincount(cp[cp >= 0]).tolist(), 'line colour counts',
+          np.bincount(cl[cl >= 0]).tolist())
