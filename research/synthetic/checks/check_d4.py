@@ -93,6 +93,14 @@ def theorem_A(q):
     W, b = symplectic_W3(q)
     check(is_gq(W, q, q), f'W(3,{q}) is a GQ')
     x = (1, 0, 0, 0)
+    # every point of W(q) is regular: |{u,v}^{perp perp}| = q+1 for non-collinear u, v (tested from x)
+    perp = {p: set().union(*(W.pts_on[L] for L in W.lines_on[p])) for p in W.points}
+    for y in W.points:
+        if y not in perp[x]:
+            span = set(W.points)
+            for z in perp[x] & perp[y]:
+                span &= perp[z]
+            check(len(span) == q + 1, f'W(3,{q}): |{{x,y}}^perp perp| = q+1')
     AS = payne_derivation(W, x)
     check(len(AS.points) == q ** 3 and len(AS.lines) == q * q * (q + 2), f'AS({q}) counts')
     check(is_gq(AS, q - 1, q + 1), f'AS({q}) is a GQ of order (q-1,q+1)')
