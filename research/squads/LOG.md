@@ -66,4 +66,4 @@ added 7 lines: K = 3,292, (10,11) = 493,203,330. The same group at q=7 (order 48
 gave 71%, 62% and 44% (q=16 still improved K from 28,483 to 29,087); (9,11) stays open at K = 1,743. SAT on the
 quotients (CaDiCaL via pysat): no invariant point set with 66 full orbits of order 63 at q=8 (UNSAT), one with 65
 (4,095 points); the line versions (invariant near-spread, Singer-73-invariant spread, packing >= 58 orbits) and the
-q=7 packings needed for (9,11) were undecided within 10-40 minutes each.
+q=7 packings needed for (9,11) were undecided within 10-100 minutes each.

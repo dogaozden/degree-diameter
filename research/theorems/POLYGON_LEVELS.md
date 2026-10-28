@@ -560,10 +560,10 @@ $H(8)$ contains two of them). So an $\langle h\rangle$-invariant partial distanc
 $65\cdot 63+9 = 4{,}104$ points, and $H(8)$ has a partial distance-2 ovoid of 4,095 points (98.4% of 4,161).
 For lines (d11q8/spreadsat.py, same solver), no admissible line orbit of $\langle h\rangle$ covers the two fixed
 points or the orbit of size 7, so an $\langle h\rangle$-invariant partial line spread of $Q(6,8)$ has at most
-$(37{,}449-9)/9 = 4{,}160$ lines. Three instances were left undecided after 40 minutes each: an
-$\langle h\rangle$-invariant cover of all 594 point orbits of size 63 (66 line orbits), a packing with at least 58
-line orbits of size 63, and a line spread invariant under the Singer group of order 73 (57 line orbits covering the 513
-point orbits). Whether $Q(6,8)$ has a line spread we do not know (nothing in the sources of §9). $Q(6,2)$ has one
+$(37{,}449-9)/9 = 4{,}160$ lines. Three instances were left undecided: an $\langle h\rangle$-invariant
+cover of all 594 point orbits of size 63 (66 line orbits) and a line spread invariant under the Singer group of order
+73 (57 line orbits covering the 513 point orbits), 100 minutes each, and a packing with at least 58 line orbits of
+size 63, 40 minutes. Whether $Q(6,8)$ has a line spread we do not know (nothing in the sources of §9). $Q(6,2)$ has one
 (21 lines, one of them a line of $H(2)$; d11q8/smallspread.py, SAT on all totally singular lines); for $q = 3, 4$
 the same run was undecided after 15 minutes.
 
