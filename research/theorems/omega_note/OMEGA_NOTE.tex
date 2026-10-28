@@ -30,9 +30,9 @@
 \renewcommand{\theheuristic}{H\arabic{heuristic}}
 \theoremstyle{definition}
 \newtheorem{definition}[lemma]{Definition}
-\newtheorem{example}[lemma]{Example}
+\newtheorem*{example}{Example}
 \theoremstyle{remark}
-\newtheorem{remark}[lemma]{Remark}
+\newtheorem*{remark}{Remark}
 
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\PG}{\mathrm{PG}}
@@ -80,7 +80,7 @@ Arbitrary relabellings remain open for $q \ge 4$; at $q = 2, 3$ they do give dia
 \end{itemize}
 File paths refer to the repository; the branch of each source is listed in \S\ref{sec:sources}.
 
-\section{Summary}\label{sec:summary}
+\section*{Summary}\label{sec:summary}
 
 In the 2013 survey table \cite[Table 4]{MS13}, reproduced on the CombinatoricsWiki \cite{CW}, six entries with $D = 8$
 are the orders of Gómez's graphs $\Om H_q$ \cite[\S2.9.3, values on p.~46]{Go86}. Here $H(q)$ is the split Cayley
@@ -307,17 +307,17 @@ the pentagram edge between copies $k-1$ and $k+1$ (indices mod $5$). Figure~\ref
 
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[scale=0.92,
+\begin{tikzpicture}[scale=0.8,
   hub/.style={circle,fill=black,inner sep=1.3pt},
   markdot/.style={circle,draw=black,fill=white,inner sep=1.1pt}]
-\foreach \side/\xs in {0/0,1/7}{
+\foreach \side/\xs in {0/0,1/8.4}{
  \begin{scope}[xshift=\xs cm]
-  \draw[gray!60] (0,0) circle (2.45);
+  \draw[gray!60] (0,0) circle (3.05);
   \foreach \i in {0,...,4}{
     \pgfmathsetmacro{\ang}{90-72*\i}
-    \coordinate (I\i) at (\ang:1.55);
-    \draw[gray] (\ang:2.0) circle (0.62);
-    \node[font=\scriptsize] at (\ang:3.1) {$c_{\i}$};
+    \coordinate (I\i) at (\ang:2.12);
+    \draw[gray] (\ang:2.6) circle (0.6);
+    \node[font=\scriptsize] at (\ang:3.75) {$c_{\i}$};
   }
   \foreach \k in {0,...,4}{
     \pgfmathtruncatemacro{\km}{mod(\k+4,5)}
@@ -328,24 +328,24 @@ the pentagram edge between copies $k-1$ and $k+1$ (indices mod $5$). Figure~\ref
       \pgfmathsetmacro{\ea}{90-72*(\k+3)}
       \pgfmathsetmacro{\ma}{90-72*(\k+2.5)}
       \node[hub] at ($(I\km)!0.5!(I\kp)$) {};
-      \node[font=\scriptsize] at ($(I\km)!0.5!(I\kp)+(\ma:0.22)$) {$\k$};
-      \draw (\sa:2.45) arc[start angle=\sa, end angle=\ea, radius=2.45];
-      \node[hub] at (\ma:2.45) {};
-      \node[font=\scriptsize] at (\ma:2.75) {$\bar{\k}$};
+      \node[font=\scriptsize] at ($(I\km)!0.5!(I\kp)+(\ma:0.27)$) {$\k$};
+      \draw (\sa:3.05) arc[start angle=\sa, end angle=\ea, radius=3.05];
+      \node[hub] at (\ma:3.05) {};
+      \node[font=\scriptsize] at (\ma:3.35) {$\overline{\k}$};
     \else
       \pgfmathsetmacro{\sa}{90-72*(\k+3)}
       \pgfmathsetmacro{\ea}{90-72*(\k+4)}
       \pgfmathsetmacro{\ma}{90-72*(\k+3.5)}
       \pgfmathsetmacro{\na}{90-72*(\k+2.5)}
       \node[hub] at ($(I\km)!0.5!(I\kp)$) {};
-      \node[font=\scriptsize] at ($(I\km)!0.5!(I\kp)+(\na:0.22)$) {$\bar{\k}$};
-      \draw (\sa:2.45) arc[start angle=\sa, end angle=\ea, radius=2.45];
-      \node[hub] at (\ma:2.45) {};
-      \node[font=\scriptsize] at (\ma:2.75) {$\k$};
+      \node[font=\scriptsize] at ($(I\km)!0.5!(I\kp)+(\na:0.27)$) {$\overline{\k}$};
+      \draw (\sa:3.05) arc[start angle=\sa, end angle=\ea, radius=3.05];
+      \node[hub] at (\ma:3.05) {};
+      \node[font=\scriptsize] at (\ma:3.35) {$\k$};
     \fi
   }
-  \foreach \i in {0,...,4}{ \node[markdot] at ({90-72*\i}:2.45) {}; \node[markdot] at (I\i) {}; }
-  \node[font=\small] at (0,-3.5) {\ifnum\side=0 type $a$ (Fig.~2.21a)\else type $b$ (Fig.~2.21b)\fi};
+  \foreach \i in {0,...,4}{ \node[markdot] at ({90-72*\i}:3.05) {}; \node[markdot] at (I\i) {}; }
+  \node[font=\small] at (0,-4.2) {\ifnum\side=0 type $a$ (Fig.~2.21a)\else type $b$ (Fig.~2.21b)\fi};
  \end{scope}}
 \end{tikzpicture}
 \caption{One block of each type (positions $c_0, \dots, c_4$ clockwise from the top). Open circles: the outer mark (on
@@ -489,7 +489,7 @@ carries one of its labels.
 
 For instance, if $P_0(t) = e_0$, the hub $(t,k)$ (reading 2) is at distance $\ge 9$ from every point
 $\langle(x_3^2 - x_1x_5 - x_2x_6, x_1, x_2, x_3, 1, x_5, x_6)\rangle$ of each of the $3\alpha$ copies it misses
-(Example~\ref{ex:opp}).
+(Example in \S\ref{sec:hexagon}).
 
 \begin{computer}[the hexagons]\label{cc:hex}
 The incidence graphs of $H(q)$ used in the computations were checked by all-pairs BFS (no symmetry assumed): $2N$
@@ -632,8 +632,9 @@ bijections, are outside this model even when every transfer is a collineation; s
 Relabelling every copy $c$ of a graph $\Om H_q$ by an automorphism $g_c$ of $I$ (replacing every vertex $(c,y)$ by
 $(c, g_c(y))$) gives an isomorphic graph. Applied to the thesis graph: for collineations $g_c$ this is the labelling
 $P_c = g_cP_0$, $L_c = g_cL_0$; for dualities, the labelling $P_c = g_cL_0$, $L_c = g_cP_0$ with the inner class of $c$
-exchanged. Such graphs have diameter $\ge 9$ by Corollary~\ref{cor:one} (reading 2: every $q$) and
-Corollary~\ref{cor:two} (every reading, $q \ge 7$).
+exchanged. Such a graph is isomorphic to the thesis graph it came from, so its diameter is $\ge 9$ by
+Corollary~\ref{cor:one} (if that graph is in reading 2: every $q$) and by Corollary~\ref{cor:two} (every reading,
+$q \ge 7$).
 \end{lemma}
 
 \begin{proof}
@@ -1025,7 +1026,11 @@ With $a_c = b_c$ the distance profile from a hub equals that of the thesis graph
   $4.3n$ ($7$), $3.7n$ ($9$) and $3.1n$ ($13$), $n$ the number of targets in the copy, so the union bound stays near $3$
   as $q$ grows (table audit). When a transfer is not geometric, the three terms of a route (walks of length $0$, $2$,
   $4$ before the pass) can each contribute about $q^4$ targets instead of collapsing into one ball; a repair would need
-  transfers that scatter the radius-$2$ and radius-$4$ balls almost perfectly and fit together across hubs.
+  transfers that scatter the radius-$2$ and radius-$4$ balls almost perfectly and fit together across hubs. In every
+  graph where this was checked, all pairs at distance $> 8$ were pairs (hub, vertex of a copy the hub misses): BFS from all
+  vertices gives exactly twice the count from the hubs (table audit; the relabelling note's referee at $q = 3$). For twisted
+  labellings in reading 2 the relabelling note proves this (its Lemma 2.3, with one index corrected by its referee); we
+  do not use or reprove it here.
 
   \begin{computer}[searches]\label{cc:searches}
   No labelling with diameter $8$ was found at $q = 4$ ($54{,}600$ vertices) or $q = 5$ ($195{,}300$): annealing with a
@@ -1085,18 +1090,21 @@ With $a_c = b_c$ the distance profile from a hub equals that of the thesis graph
 \section{The table entries: what can be claimed}\label{sec:claims}
 
 \begin{center}\small
-\begin{tabular}{@{}llp{4.3cm}p{3.6cm}l@{}}
+\begin{tabular}{@{}lllll@{}}
 \toprule
-cell & value & as defined (thesis labelling) & geometric relabellings & arbitrary\\
+cell & value & thesis labelling & geometric relabellings & arbitrary\\
 \midrule
-$(10,8)$ & $1{,}176{,}480 = |\Om H_7|$ & $\ge 9$ (Cor.~\ref{cor:one}, \ref{cor:two}); $= 9$ computed (\ref{cc:thesis}) & $\ge 9$ (Thm~\ref{thm:geo7}, computer-assisted) & open\\
-$(11,8)$ & $2{,}246{,}940 = |\Om H_8|$ & $\ge 9$; eccentricity $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, computer-assisted) & open\\
+$(10,8)$ & $1{,}176{,}480 = |\Om H_7|$ & $\ge 9$; $= 9$ computed & $\ge 9$ (Thm~\ref{thm:geo7}, computer-assisted) & open\\
+$(11,8)$ & $2{,}246{,}940 = |\Om H_8|$ & $\ge 9$; ecc.\ $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, computer-assisted) & open\\
 $(12,8)$ & $4{,}650{,}100 = |\Om H_9|$ & $\ge 9$; $= 9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, computer-assisted) & open\\
-$(14,8)$ & $14{,}172{,}480 = |\Om H_{11}|$ & $\ge 9$; eccentricity $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
-$(15,8)$ & $14{,}172{,}480 = |\Om H_{11}|$ & $\ge 9$; eccentricity $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
-$(16,8)$ & $36{,}201{,}060 = |\Om H_{13}|$ & $\ge 9$; eccentricity $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
+$(14,8)$ & $14{,}172{,}480 = |\Om H_{11}|$ & $\ge 9$; ecc.\ $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
+$(15,8)$ & $14{,}172{,}480 = |\Om H_{11}|$ & $\ge 9$; ecc.\ $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
+$(16,8)$ & $36{,}201{,}060 = |\Om H_{13}|$ & $\ge 9$; ecc.\ $9$ computed & $\ge 9$ (Thm~\ref{thm:geo8}, by hand) & open\\
 \bottomrule
 \end{tabular}
+
+\smallskip\noindent{\small ``Thesis labelling'': diameter $\ge 9$ by Corollaries~\ref{cor:one} and~\ref{cor:two} (every
+reading); ``$= 9$ computed'' and ``ecc.\ $9$ computed'' refer to~\ref{cc:thesis}.}
 \end{center}
 
 \noindent\textbf{What can be claimed} (the two referees' recommended wording, combined):
@@ -1136,7 +1144,7 @@ bound on how many points a fixed-point-free element of $\GG(7)$ moves to perpend
 
 The lab's own graphs in these cells do not depend on any of this: $(11,8)$ $2{,}258{,}520$ and $(15,8)$ $18{,}128{,}880$
 are explicit Haar graphs (independently checked; see the repository README), and the largest valid $(12,8)$ graph we
-know is a Haar graph on $\mathrm{PSL}(2,67) \times \mathbb{Z}_{13}$ with $3{,}909{,}048$ vertices, below the table value.
+know is a Haar graph on $\mathrm{PSL}(2,67) \times \mathbb{Z}_{13}$ with $3{,}909{,}048$ vertices, below the table value (branch \file{claude/cell-12-8-search-qhi11t}, checked with \file{build_haar2.py}).
 
 \section{Sources, programs and logs}\label{sec:sources}
 \begingroup\raggedright

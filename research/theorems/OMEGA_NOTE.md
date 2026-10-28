@@ -119,6 +119,9 @@ in the totally singular plane π_z (Fact 1.1), so b(x, y) = 0. Conversely, x^⊥
 Q(4, q), so it has 1 + q(q³ + q² + q + 1) points, and by Lemma 1.4 there are 1 + s₂ + s₄ = 1 + q(q+1) + q³(q+1) points at
 distance ≤ 4 from x. The two numbers are equal, so the inclusion is an equality. ∎
 
+*Example.* opp(e₀) ∩ P = {⟨x⟩ ∈ Q(6, q) : x₄ ≠ 0} = {⟨(x₃² − x₁x₅ − x₂x₆, x₁, x₂, x₃, 1, x₅, x₆)⟩ : x₁, x₂, x₃, x₅, x₆ ∈ F},
+q⁵ points, since b(e₀, x) = x₄.
+
 **Lemma 1.6 (Theorem; opposite elements in balls).** Let t, z be vertices of I of the same type, d = d(t, z). Then
 
   |B(z, 4) ∩ opp(t)| = 0 if z = t, and q⁴ if d ∈ {2, 4, 6};
@@ -242,10 +245,8 @@ m̄_c(t) for the outer mark. Then, for c = 5B + i:
 | — τ_B = a, x = m̄_c(t) | (t, (i+2)‾), (t, (i+3)‾) |
 | — τ_B = b, x = m_c(t) | (t, (i−1)‾), (t, (i+1)‾) |
 | — τ_B = b, x = m̄_c(t) | (t, i + 1), (t, i + 2) |
-| (t, k) | (5B + k ∓ 1, m_{5B+k∓1}(t)) for τ_B = a; (5B + k + 3, m̄(t)), (5B + k + 4, m̄(t)) for τ_B = b |
-| (t, k̄) | (5B + k + 2, m̄(t)), (5B + k + 3, m̄(t)) for τ_B = a; (5B + k ∓ 1, m(t)) for τ_B = b |
-
-(in the hub rows the mark is taken in the copy named in the same pair).
+| (t, k) | (c, m_c(t)) for c = 5B + k ± 1 in blocks with τ_B = a; (c, m̄_c(t)) for c = 5B + k + 3, 5B + k + 4 in blocks with τ_B = b |
+| (t, k̄) | (c, m̄_c(t)) for c = 5B + k + 2, 5B + k + 3 in blocks with τ_B = a; (c, m_c(t)) for c = 5B + k ± 1 in blocks with τ_B = b |
 
 **Lemma 2.2 (Theorem; parameters).** For every pattern, inner classes and labelling, ΩH_q is a simple bipartite graph
 on 10(α+1)N = 5(α+1)N₁ vertices; copy vertices have degree q + 3 and hubs degree 2α, so Δ = q + 3 = Δ₁ + 2; it has
@@ -312,6 +313,9 @@ copies by assumption). Copy edges satisfy (h1), hub edges (h2) by Definition 2.1
 hub misses 3α ≥ 1 copies (Lemma 2.2). Every vertex of I has q⁵ opposite vertices (Lemma 1.4). Apply Theorem 1. For a
 general B₁, in reading 2 the unbarred classes sit on all labels of class 0 and the barred classes on all labels of
 class 1, so whichever class holds the pair, some hub carries one of its labels. ∎
+
+For instance, if P₀(t) = e₀, the hub (t, k) (reading 2) is at distance ≥ 9 from every point
+⟨(x₃² − x₁x₅ − x₂x₆, x₁, x₂, x₃, 1, x₅, x₆)⟩ of each of the 3α copies it misses (Example in §1.2).
 
 **Computer-checked C1 (the hexagons).** The incidence graphs of H(q) used below were built and checked by all-pairs
 BFS (no symmetry assumed): 2N vertices, bipartite, (q+1)-regular, diameter 6, girth 12 (sphere sizes s_i from every
@@ -427,8 +431,9 @@ bijections, are outside this model even when every transfer is a collineation; s
 
 **Lemma 5.2 (Theorem; one automorphism per copy).** Relabelling every copy c of a graph ΩH_q by an automorphism g_c of I
 (replacing every vertex (c, y) by (c, g_c(y))) gives an isomorphic graph. In particular, if P_c = g_c P₀ and L_c = g_c L₀
-with collineations g_c (or dualities, with the inner class of c exchanged), the graph is isomorphic to the thesis graph,
-and its diameter is ≥ 9 by Corollary 3.1 (reading 2: every q) and Corollary 4.1 (every reading, q ≥ 7).
+with collineations g_c, or P_c = g_c L₀ and L_c = g_c P₀ with dualities g_c and the inner class of c exchanged, the graph
+is isomorphic to the thesis graph it came from, so its diameter is ≥ 9 by Corollary 3.1 (if that graph is in reading 2:
+every q) and by Corollary 4.1 (every reading, q ≥ 7).
 
 *Proof.* Copy edges are preserved because g_c is an automorphism of I; hub edges are carried along by definition. ∎
 
@@ -467,7 +472,7 @@ d((t, X), (c′, v)) ≤ 7 lies in
 
   B(t, 4) ∪ ⋃_{c₁ ∈ N(X,c′)} B(λ_{c′}λ_{c₁}⁻¹(t), 4) ∪ ⋃_{(c, d) ∈ W₂} B(λ_cλ_d⁻¹(t), 2),
 
-where W₂ is the set of ordered pairs of distinct copies of the following three kinds (all classes of ℒ unless said):
+where W₂ is the set of ordered pairs of distinct copies of the following three kinds:
 (c′, c₂) with c₂ sharing a class of 𝒫 with some c₁ ∈ C(X) and a class of ℒ with c′; (c′, c₁) with c₁ ∈ C(X) and some
 c₂ sharing a class of ℒ with c₁ and with c′; (c₂, c₁) with c₁ ∈ C(X), c₂ sharing a class of ℒ with c₁ and a class of 𝒫
 with c′.
@@ -488,13 +493,16 @@ at points; a segment before an ℒ-pass ends at a line, so the segments around �
 - r = 4: all a_i = 0, so the walk never reaches a line, all passes are 𝒫-passes, and v = t. ∎
 
 For a pair (X, c′) let r₄ = |N(X, c′)| and let m₂ be the number of pairs in W₂ that are not of the form (c′, c₁) with
-c₁ ∈ N(X, c′). Different pairs may give the same map; counting pairs only overestimates. By Lemma 1.6, B(t, 4) misses
-opp(t), every other radius-4 ball meets opp(t) in at most q⁴ points and every radius-2 ball in at most q². Hence:
+c₁ ∈ N(X, c′). Different pairs may give the same map; counting pairs only overestimates.
 
-**Corollary 5.5 (Theorem).** Every hub (t, X) has at least q⁵ − r₄q⁴ − m₂q² points of c′ at distance ≥ 9 (they are at
-odd distance, since all points of all copies have one colour). Moreover m₂ ≤ (4α − 1) + 2α·2(2α − 1) = 8α² − 1: the
-first two kinds are pairs (c′, b), at most 5α − 1 − r₄ of them besides those already counted in r₄, and the third kind
-has ≤ 2α choices of c₁ and, since c₁ is met by two classes of ℒ that meet 2α copies each, ≤ 2(2α − 1) choices of c₂.
+**Corollary 5.5 (Theorem).** Every hub (t, X) has at least q⁵ − r₄q⁴ − m₂q² points of c′ at distance ≥ 9. If r₄ = α,
+then m₂ ≤ (4α − 1) + 2α·2(2α − 1) = 8α² − 1.
+
+*Proof.* By Lemma 1.6, B(t, 4) misses opp(t), each other radius-4 ball meets it in at most q⁴ points and each radius-2
+ball in at most q². The remaining points of opp(t) in c′ are at distance > 7 from (t, X), and at odd distance, since all
+points of all copies have one colour; so at distance ≥ 9. For the bound on m₂: the first two kinds are pairs (c′, b)
+with b ≠ c′, at most 5α − 1 − r₄ = 4α − 1 of them outside the radius-4 words; the third kind has ≤ 2α choices of c₁ and,
+since c₁ is met by two classes of ℒ that meet 2α copies each, ≤ 2(2α − 1) choices of c₂. ∎
 
 ### 5.3 Starved pairs
 
@@ -545,12 +553,12 @@ q = 10 (value 24) and for larger q (the derivative 3q² − 14q − 24 is positi
 the bound is ≥ 32,768 − 20,480 − 8,960 = 3,328; for q = 9 (α = 6), m₂ ≤ 201 and the bound is
 ≥ 59,049 − 39,366 − 16,281 = 3,402. ∎
 
-| q | α | far vertices per hub of a starved class, by hand (m₂ ≤ 8α² − 1) | best pair of the worst pattern (C4) |
-|---:|---:|---:|---:|
-| 8 | 5 | — (uses C4: ≥ 3,328 for every starved pair) | 3,712 |
-| 9 | 6 | — (uses C4: ≥ 3,402 for every starved pair) | 3,726 |
-| 11 | 7 | ≥ 11,253 | 26,862 |
-| 13 | 8 | ≥ 56,446 | 84,162 |
+| q | α | far vertices per hub of a starved class | best pair, worst pattern (C4) |
+|---:|---:|---|---:|
+| 8 | 5 | ≥ 3,328 for every starved pair (uses C4) | 3,712 |
+| 9 | 6 | ≥ 3,402 for every starved pair (uses C4) | 3,726 |
+| 11 | 7 | ≥ 11,253 (by hand, m₂ ≤ 391) | 26,862 |
+| 13 | 8 | ≥ 56,446 (by hand, m₂ ≤ 511) | 84,162 |
 
 This covers (11,8), (12,8), (14,8), (15,8), (16,8). Summing over all starved pairs (different pairs give disjoint sets of
 (hub, vertex) pairs), every geometric labelling leaves at least 3.33·10⁹ far pairs at q = 8 and 7.43·10⁹ at q = 9
@@ -713,7 +721,10 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
    3.1n (13), n the number of targets in the copy (table audit, `ubound.py`), so the union bound stays near 3 as q
    grows. When a transfer is not geometric, the three terms of a route (walks of length 0, 2, 4 before the pass) can
    each contribute about q⁴ targets instead of collapsing to one ball; a repair would need transfers that scatter the
-   radius-2 and radius-4 balls almost perfectly and fit together across hubs.
+   radius-2 and radius-4 balls almost perfectly and fit together across hubs. In every graph where this was checked, all pairs
+   at distance > 8 were pairs (hub, vertex of a copy the hub misses): BFS from all vertices gives exactly twice the count
+   from the hubs (table audit; the relabelling note's referee at q = 3). For twisted labellings in reading 2 the
+   relabelling note proves this (its Lemma 2.3, with one index corrected by its referee); we do not use or reprove it here.
 
    *Computer-checked C6 (searches).* No labelling with diameter 8 was found at q = 4 (54,600 vertices) or q = 5
    (195,300): annealing with a Singer-type symmetry and eight squad variants ended at 12,075–13,900 far pairs from
@@ -760,14 +771,17 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
 
 ## 7. The table entries: what can be claimed
 
-| cell | value | as defined (thesis labelling) | geometric relabellings | arbitrary relabellings |
+| cell | value | thesis labelling | geometric relabellings | arbitrary |
 |---|---:|---|---|---|
-| (10,8) | 1,176,480 = \|ΩH₇\| | diam ≥ 9 (Cor. 3.1, 4.1); = 9 computed (C2) | ≥ 9 (Thm 4, computer-assisted) | open |
-| (11,8) | 2,246,940 = \|ΩH₈\| | ≥ 9; eccentricity 9 computed | ≥ 9 (Thm 3, computer-assisted) | open |
+| (10,8) | 1,176,480 = \|ΩH₇\| | ≥ 9; = 9 computed | ≥ 9 (Thm 4, computer-assisted) | open |
+| (11,8) | 2,246,940 = \|ΩH₈\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, computer-assisted) | open |
 | (12,8) | 4,650,100 = \|ΩH₉\| | ≥ 9; = 9 computed | ≥ 9 (Thm 3, computer-assisted) | open |
-| (14,8) | 14,172,480 = \|ΩH₁₁\| | ≥ 9; eccentricity 9 computed | ≥ 9 (Thm 3, by hand) | open |
-| (15,8) | 14,172,480 = \|ΩH₁₁\| | ≥ 9; eccentricity 9 computed | ≥ 9 (Thm 3, by hand) | open |
-| (16,8) | 36,201,060 = \|ΩH₁₃\| | ≥ 9; eccentricity 9 computed | ≥ 9 (Thm 3, by hand) | open |
+| (14,8) | 14,172,480 = \|ΩH₁₁\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, by hand) | open |
+| (15,8) | 14,172,480 = \|ΩH₁₁\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, by hand) | open |
+| (16,8) | 36,201,060 = \|ΩH₁₃\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, by hand) | open |
+
+"Thesis labelling": diameter ≥ 9 by Corollaries 3.1 and 4.1 (every reading); "= 9 computed" and "ecc. 9 computed" refer
+to C2.
 
 **What can be claimed** (the two referees' recommended wording, combined):
 
@@ -800,7 +814,8 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
 
 **The lab's own graphs in these cells** do not depend on any of this: (11,8) 2,258,520 and (15,8) 18,128,880 are explicit
 Haar graphs (README, independent checks), and the largest valid (12,8) graph we know is a Haar graph on
-PSL(2, 67) × Z₁₃ with 3,909,048 vertices (branch claude/cell-12-8-search-qhi11t), below the table value.
+PSL(2, 67) × Z₁₃ with 3,909,048 vertices, below the table value (branch claude/cell-12-8-search-qhi11t, checked with
+`build_haar2.py`).
 
 ## 8. Sources, programs and logs
 
