@@ -455,6 +455,1003 @@ Lemma~\ref{lem:hat}). Lines likewise. An element of $\cA_1$ would have its $q+1\
 So pure doubling gains at most $2(m-1)$ elements in a projective plane; the hats of Section~\ref{sec:d3} double flags
 and then change a bounded number of incidences.
 
+%======================================================================
+\section{Diameter 3: the fourth hat}\label{sec:d3}
+%======================================================================
+
+Araujo-Pardo and L\'opez \cite{AL20} add three \emph{hats} to $\PG(2,q)$ and obtain $\nb(q+2,3)\ge2(q^2+q+5)$. We add
+a fourth. By Proposition~\ref{prop:patches}, every hat must change some incidences of the plane; the fourth hat costs
+one rotation of three incidences.
+
+\subsection{Frame and notation}
+Let $\ell=[1:0:0]$ (the line $x=0$) and $A=(1:0:0)\notin\ell$. The points of $\ell$ and the lines on $A$ are
+\[
+X_t=(0:t:1),\quad P=(0:1:0);\qquad \lambda_t=[0:1:-t],\quad \lambda_\infty=[0:0:1]\qquad(t\in\F).
+\]
+Every point is listed once among $A$, $X_t$ ($t\in\F$), $P$, $(x:y:1)$ ($x\ne0$), $(x:1:0)$ ($x\ne0$); every line
+once among $\ell$, $\lambda_t$, $\lambda_\infty$, $[u:1:w]$ ($u\ne0$), $[1:0:w]$ ($w\ne0$). We use these facts
+(one-line computations):
+\begin{itemize}
+\item[(F1)] $\lambda_t\cap\ell=X_t$, $\lambda_\infty\cap\ell=P$; the points of $\lambda_t$ are $A$ and $(x:t:1)$,
+  $x\in\F$ ($X_t$ at $x=0$); those of $\lambda_\infty$ are $A$ and $(x:1:0)$, $x\in\F$.
+\item[(F2)] The lines on $X_t$ are $\ell$ and $[w:1:-t]$, $w\in\F$ ($\lambda_t$ at $w=0$); the lines on $P$ are $\ell$,
+  $\lambda_\infty$ and $[1:0:w]$, $w\ne0$.
+\item[(F3)] If $u=(x:y:z)$ with $x\ne0$, then $u$ and $X_s$ lie on $[(sz-y)/x:1:-s]\ne\ell$.
+\item[(F4)] A line $[u:v:w]$ with $u\ne0$ meets $\lambda_s$ in $(-(vs+w)/u:s:1)\ne A$; $[u:1:w]$ meets $\ell$ in
+  $X_{-w}$.
+\end{itemize}
+Let $q\ge4$, let $a,c\in\F\setminus\{0,1\}$ be distinct, and put
+\[
+S=\{0,1,a,c\},\qquad T=\{0,1,c\},\qquad \sigma=(0\ c\ 1):\ 0\mapsto c\mapsto1\mapsto0 .
+\]
+
+\subsection{The construction}
+
+\begin{definition}\label{def:hat4}
+$\cS(q;a,c)$ has the points of $\PG(2,q)$ and five new points $Q,H_0,H_1,H_a,H_c$, the lines of $\PG(2,q)$ and five
+new lines $M,K_0,K_1,K_a,K_c$, and exactly these incidences:
+\begin{itemize}
+\item[(C1)] every incidence of $\PG(2,q)$ except $X_s\I\lambda_s$ ($s\in S$), and the \emph{rotation}
+  $X_0\I\lambda_c$, $X_c\I\lambda_1$, $X_1\I\lambda_0$ (that is, $X_t\I\lambda_{\sigma(t)}$ for $t\in T$);
+\item[(C2)] $H_s$ lies on $[w:1:-s]$ for every $w\in\F$ ($s\in S$): the lines on $X_s$ other than $\ell$;
+\item[(C3)] $K_s$ contains $(x:s:1)$ for every $x\in\F$ ($s\in S$): the points of $\lambda_s$ other than $A$;
+\item[(C4)] $M$ contains $P$, $X_t$ ($t\in\F\setminus T$), and $H_0,H_1,H_a,H_c$;
+\item[(C5)] $Q$ lies on $\lambda_\infty$, $\lambda_t$ ($t\in\F\setminus T$), and $K_0,K_1,K_a,K_c$;
+\item[(C6)] the \emph{links} $A\I K_a$, $H_a\I\ell$, $H_0\I K_c$, $H_c\I K_1$, $H_1\I K_0$ (that is, $H_t\I
+  K_{\sigma(t)}$ for $t\in T$).
+\end{itemize}
+$G(q;a,c)$ is its incidence graph. $R(q;a,c)$ is $G(q;a,c)$ together with the \emph{filler} edges
+\[
+(x:y:1)\sim[x:1:-y]\quad(x\ne0,\ y\notin S),\qquad (x:1:0)\sim[1:0:-1/x]\quad(x\ne0).
+\]
+\end{definition}
+
+The hat pair $(H_s,K_s)$ is a copy of the flag $(X_s,\lambda_s)$ with the flag ``crossed'', and $(Q,M)$ is a copy of the
+anti-flag $(A,\ell)$.
+
+\begin{theorem}\label{thm:hat4}
+For every prime power $q\ge4$ and distinct $a,c\in\F\setminus\{0,1\}$, the graphs $G(q;a,c)$ and $R(q;a,c)$ are
+bipartite, have $2(q^2+q+6)$ vertices, maximum degree $q+2$ and diameter 3, and $R(q;a,c)$ is $(q+2)$-regular. Hence
+\[
+\nb(q+2,3)\ge2(q^2+q+6),
+\]
+attained by a regular graph.
+\end{theorem}
+
+The construction and the proof use only the axioms of a projective plane together with an anti-flag $(A,\ell)$ and four
+points $X_s$ of $\ell$, so a coordinate-free version holds in every projective plane of order $q\ge3$ (in coordinates
+the four points are labelled by $0,1,a,c$, which needs $q\ge4$). It also has a regular completion there. At $q=3$ the
+four points $X_s$ are all of $\ell$, there is no deficient element, and the structure is already 5-regular. For $q\ge4$
+put $N_0=(q-1)(q-3)$, the number of points of degree $q+1$ and of lines of degree $q+1$ (see the table below). A
+deficient point $p$ lies on exactly $q-4$ deficient lines: the lines on $p$ other than $Ap$ meet $\ell$ in the $q$
+points other than $Ap\cap\ell$, four of which are the $X_s$. Dually, a deficient line has exactly $q-4$ deficient
+points. So the bipartite graph of non-incident pairs between deficient points and deficient lines is regular of degree
+$N_0-(q-4)=q^2-5q+7\ge1$, and a regular bipartite graph of positive degree has a perfect matching (K\H{o}nig); adding
+it as flags completes the structure. In coordinates, the filler of Definition~\ref{def:hat4} is such a matching.
+
+\subsection{Every neighbourhood}
+Table~\ref{tab:hat4} lists the neighbourhood in $G(q;a,c)$ of every vertex, new or old. Here $\sigma^{-1}(0)=1$,
+$\sigma^{-1}(1)=c$, $\sigma^{-1}(c)=0$.
+
+\begin{longtable}{@{}l p{8.4cm} l@{}}
+\caption{The neighbourhood of every vertex of $G(q;a,c)$.}\label{tab:hat4}\\
+\toprule vertex & neighbours & degree\\ \midrule\endfirsthead
+\toprule vertex & neighbours & degree\\ \midrule\endhead
+\bottomrule\endfoot
+$Q$ & $\lambda_\infty$, $\lambda_t$ ($t\notin T$), $K_0,K_1,K_a,K_c$ & $q+2$\\
+$H_a$ & $[w:1:-a]$ ($w\in\F$), $M$, $\ell$ & $q+2$\\
+$H_t$, $t\in T$ & $[w:1:-t]$ ($w\in\F$), $M$, $K_{\sigma(t)}$ & $q+2$\\
+$M$ & $P$, $X_t$ ($t\notin T$), $H_0,H_1,H_a,H_c$ & $q+2$\\
+$K_a$ & $(x:a:1)$ ($x\in\F$), $Q$, $A$ & $q+2$\\
+$K_t$, $t\in T$ & $(x:t:1)$ ($x\in\F$), $Q$, $H_{\sigma^{-1}(t)}$ & $q+2$\\
+$A$ & $\lambda_t$ ($t\in\F$), $\lambda_\infty$, $K_a$ & $q+2$\\
+$P$ & $\ell$, $\lambda_\infty$, $[1:0:w]$ ($w\ne0$), $M$ & $q+2$\\
+$X_t$, $t\notin S$ & $\ell$, $[w:1:-t]$ ($w\in\F$), $M$ & $q+2$\\
+$X_a$ & $\ell$, $[w:1:-a]$ ($w\ne0$), $M$, $K_a$ & $q+2$\\
+$X_t$, $t\in T$ & $\ell$, $[w:1:-t]$ ($w\ne0$), $\lambda_{\sigma(t)}$, $K_t$ & $q+2$\\
+$(x:y:1)$, $x\ne0$ & $[u:1:-(ux+y)]$ ($u\in\F$), $[1:0:-x]$, and $K_y$ if $y\in S$ & $q+2$ if $y\in S$, else $q+1$\\
+$(x:1:0)$, $x\ne0$ & $\lambda_\infty$, $[1:-x:w]$ ($w\in\F$) & $q+1$\\
+$\ell$ & $P$, $X_t$ ($t\in\F$), $H_a$ & $q+2$\\
+$\lambda_\infty$ & $A$, $(x:1:0)$ ($x\in\F$), $Q$ & $q+2$\\
+$\lambda_t$, $t\notin S$ & $A$, $(x:t:1)$ ($x\in\F$), $Q$ & $q+2$\\
+$\lambda_a$ & $A$, $(x:a:1)$ ($x\ne0$), $Q$, $H_a$ & $q+2$\\
+$\lambda_t$, $t\in T$ & $A$, $(x:t:1)$ ($x\ne0$), $X_{\sigma^{-1}(t)}$, $H_t$ & $q+2$\\
+$[u:1:w]$, $u\ne0$ & $(x:-ux-w:1)$ ($x\in\F$), $(-1/u:1:0)$, and $H_{-w}$ if $-w\in S$ & $q+2$ if $-w\in S$, else $q+1$\\
+$[1:0:w]$, $w\ne0$ & $(-w:y:1)$ ($y\in\F$), $P$ & $q+1$\\
+\end{longtable}
+
+The vertices of degree $q+1$ are the points $(x:y:1)$ ($x\ne0$, $y\notin S$) and $(x:1:0)$ ($x\ne0$), and the lines
+$[u:1:w]$ ($u\ne0$, $-w\notin S$) and $[1:0:w]$ ($w\ne0$): $(q-1)(q-3)$ of each kind. In $R(q;a,c)$ each of them gains
+exactly one neighbour, its filler partner.
+
+\subsection{Proof of Theorem~\ref{thm:hat4}}
+
+\emph{Degrees.} Each row of Table~\ref{tab:hat4} is (F1) or (F2) corrected by (C1)--(C6), and within a row the listed
+neighbours are distinct. For instance: $A$ keeps its $q+1$ lines and gains only $K_a$ ($A$ is not of the form
+$(x:s:1)$); $X_a$ loses $\lambda_a$ and gains $M$ (as $a\notin T$) and $K_a$; $X_t$ ($t\in T$) loses $\lambda_t$, gains
+$\lambda_{\sigma(t)}$ and $K_t$, and is not on $M$; a point $(x:y:1)$ with $x\ne0$ is not on $\ell$, so it loses
+nothing, and it gains $K_s$ if and only if $y=s\in S$; $Q$ is on $1+(q-3)+4=q+2$ lines; $H_s$ is on $q$ lines by (C2),
+on $M$, and on exactly one link line. The line rows are the dual count: $\ell$ gains only $H_a$; $\lambda_a$ loses
+$X_a$ and gains $Q,H_a$; $\lambda_t$ ($t\in T$) loses $X_t$ and gains $X_{\sigma^{-1}(t)}$ and $H_t$; $[u:1:w]$ ($u\ne0$)
+gains $H_s$ if and only if $s=-w\in S$; $M$ has $1+(q-3)+4$ points; $K_s$ has $q$ points, $Q$, and one link point.
+
+The filler map $\delta:(x:y:z)\mapsto[x:z:-y]$ is a correlation of $\PG(2,q)$ (since $ux+wz+(-v)(-y)=ux+vy+wz$), a point
+lies on its image if and only if $x^2=0$, i.e.\ if and only if it is on $\ell$, and $\delta$ maps $(x:y:1)\mapsto[x:1:-y]$
+and $(x:1:0)\mapsto[x:0:-1]=[1:0:-1/x]$. So the filler is a bijection from the deficient points to the deficient lines,
+and its pairs are anti-flags. Hence $G(q;a,c)$ has maximum degree $q+2$ and $R(q;a,c)$ is $(q+2)$-regular.
+
+\emph{Reduction.} By Lemma~\ref{lem:diamgeom}(ii) it suffices to show that any two points are collinear and any two lines
+concurrent. In the next two lemmas ``incident'' means incident in $\cS(q;a,c)$. The only incidences of $\PG(2,q)$ that are
+missing are $X_s\I\lambda_s$, $s\in S$; so an incidence $u\I L$ of the plane survives whenever $u\notin\ell$ or $L$ is
+not on $A$.
+
+\begin{lemma}\label{lem:hat4points}
+Any two points $u\ne v$ of $\cS(q;a,c)$ are collinear.
+\end{lemma}
+
+\begin{proof}
+(P1) Both in $\PG(2,q)$; let $L=uv$. If both incidences survive, use $L$. Otherwise, say $u=X_s$ and $L=\lambda_s$ with
+$s\in S$, and $v=A$ or $v=(x:s:1)$ with $x\ne0$. If $v=(x:s:1)$: use $K_s$. If $v=A$ and $s=a$: $K_a$ (by (C3), (C6)). If
+$v=A$ and $s\in T$: $\lambda_{\sigma(s)}$ (rotation).
+
+(P2) $Q$ and $u$. If $u\in\{A,P\}$ or $u=(x:1:0)$: $\lambda_\infty$. If $u=X_t$, $t\notin S$: $\lambda_t$. If $u=X_s$, $s\in
+S$: $K_s$. If $u=(x:y:1)$, $x\ne0$: $\lambda_y$ if $y\notin T$, and $K_y$ if $y\in T$.
+
+(P3) $H_s$ and $u$. If $u\notin\ell$ (including $u=A$): the line of (F3), which contains $H_s$ by (C2). If $u=X_s$:
+$[1:1:-s]$. If $u=P$, or $u=X_t$ with $t\notin T$, $t\ne s$: $M$. If $u=X_t$ with $t\in T\setminus\{s\}$ and $s=a$: $\ell$.
+If $u=X_t$ with $t\in T\setminus\{s\}$ and $s\in T$: as $\sigma$ is a 3-cycle, $t=\sigma(s)$ or $t=\sigma^{-1}(s)$; use
+$K_{\sigma(s)}$ (it contains $X_{\sigma(s)}$ and $H_s$) or $\lambda_s$ (it contains $X_{\sigma^{-1}(s)}$ by the rotation, and
+$H_s$ by (C2) with $w=0$).
+
+(P4) Two new points. $H_s,H_{s'}$: $M$. $Q,H_a$: $\lambda_a$. $Q,H_t$ ($t\in T$): $K_{\sigma(t)}$.
+\end{proof}
+
+\begin{lemma}\label{lem:hat4lines}
+Any two lines $L\ne N$ of $\cS(q;a,c)$ are concurrent.
+\end{lemma}
+
+\begin{proof}
+(N1) Both in $\PG(2,q)$; let $p=L\cap N$. If both incidences survive, use $p$. Otherwise, say $p=X_s$ and $L=\lambda_s$,
+and $N=\ell$ or $N=[w:1:-s]$ with $w\ne0$. If $N=[w:1:-s]$: $H_s$. If $N=\ell$ and $s=a$: $H_a$. If $N=\ell$ and $s\in T$:
+$X_{\sigma^{-1}(s)}$ (rotation).
+
+(N2) $M$ and $L$. If $L$ is on $P$ ($L=\ell$, $\lambda_\infty$ or $[1:0:w]$): $P$. If $L=\lambda_t$, $t\notin S$: $X_t$. If
+$L=\lambda_s$, $s\in S$: $H_s$. If $L=[u:1:w]$, $u\ne0$: it meets $\ell$ in $X_r$, $r=-w$ (F4); use $X_r$ if $r\notin T$,
+and $H_r$ if $r\in T$ ($H_r$ is on $[u:1:-r]$ and on $M$).
+
+(N3) $K_s$ and $L$. If $L$ is not on $A$ ($L=\ell$ or $L=[u:v:w]$ with $u\ne0$): $L\cap\lambda_s=(x:s:1)$ (F1, F4), which
+is on $K_s$, and its incidence with $L$ survives. If $L=\lambda_s$: $(1:s:1)$. If $L=\lambda_\infty$ or $L=\lambda_t$,
+$t\notin T$: $Q$. If $L=\lambda_t$ with $t\in T\setminus\{s\}$ and $s=a$: $A$. If $L=\lambda_t$ with $t\in T\setminus\{s\}$
+and $s\in T$: if $t=\sigma(s)$, use $X_s$ (on $\lambda_{\sigma(s)}$ and $K_s$); if $t=\sigma^{-1}(s)$, use $H_t$ (on
+$\lambda_t$ and on $K_{\sigma(t)}=K_s$).
+
+(N4) Two new lines. $K_s,K_{s'}$: $Q$. $M,K_a$: $X_a$. $M,K_t$ ($t\in T$): $H_{\sigma^{-1}(t)}$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:hat4}]
+By Lemmas~\ref{lem:hat4points} and~\ref{lem:hat4lines} and Lemma~\ref{lem:diamgeom}(ii), $G(q;a,c)$ has diameter at
+most 3, and adding the filler does not increase it (Lemma~\ref{lem:flags}). The graphs are bipartite and not complete
+bipartite ($A\notin\ell$), so the diameter is exactly 3. The order is $2(q^2+q+1)+10$.
+\end{proof}
+
+The proof uses only that $\F$ is a field and that $0,1,a,c$ are distinct. The correlation $\delta$, extended by
+$H_s\leftrightarrow K_s$ and $Q\leftrightarrow M$, maps $\cS(q;a,c)$ built with $\sigma$ onto the dual of the structure
+built with $\sigma^{-1}$, so Lemma~\ref{lem:hat4lines} is also Lemma~\ref{lem:hat4points} for $\sigma^{-1}$; we wrote both
+out so that every case can be checked directly. Both the rotation and the link $H_1\I K_0$ are needed: without either,
+the diameter is 4 in every case we checked by computer (every prime power $q\le13$ and every admissible $(a,c)$).
+
+\begin{remark}[the three hats of {\cite{AL20}} in these coordinates]\label{rem:AL}
+The structure of \cite{AL20} has hats $\{0,1,a\}$, no rotation, only the flag $(X_a,\lambda_a)$ removed, links $A\I
+K_a$, $H_a\I\ell$, $H_0\I K_1$, $H_1\I K_0$; $M$ contains $P$ and $X_t$ ($t\ne0,1$), and $Q$ lies on $\lambda_\infty$ and
+$\lambda_t$ ($t\ne0,1$). The dictionary with the affine coordinates of \cite{AL20} is $(x,y)=(x:y:1)$, $[m,b]=[m:-1:b]$,
+$L_c=[1:0:-c]$, $L=[0:0:1]$, $P_m=(1:m:0)$; so $L_0=\ell$, $P_0=A$, $(0,s)=X_s$, $[0,s]=\lambda_s$ and $L=\lambda_\infty$.
+In the completing matching of \cite[arXiv v1, p.~8]{AL20} the index set of $P_i\sim L_i$ should be $\F^*$; with
+$\F\setminus\{0,1,a\}$ the four vertices $P_1,P_a,L_1,L_a$ keep degree $q+1$. Neither the order nor the diameter is
+affected.
+\end{remark}
+\todo{Gabriela, Nacho: please check Remark~\ref{rem:AL} against the journal version of [AL20] (we have only seen arXiv
+v1), and decide whether the remark should stay in the paper.}
+
+\subsection{Cells}
+For $q=9,11,13$, Theorem~\ref{thm:hat4} gives $(11,3)$: 192 (2013 table: 190), $(13,3)$: 276 (2013: 270; current value
+274 \cite{AL20}) and $(15,3)$: 376 (2013: 370; current value 374 \cite{AL20}), all with regular graphs. (The 2013 value
+190 at $(11,3)$ is due to Feria-Pur\'on, Miller and Pineda-Villavicencio \cite{FMP13} and, independently, to
+\cite{AL20}.) At $q=5$ it gives $72<80=\nb(7,3)$, a value known to be exact \cite{FMP13}.
+
+%======================================================================
+\section{Diameter 4: clones and shadow lines in generalized quadrangles}\label{sec:d4}
+%======================================================================
+
+\subsection{Clones and shadow lines}
+Copies of points and lines of a GQ go back to Delorme \cite[\S\S7--8]{D85a}: his doubling may copy any induced
+substructure, points and lines together, and his $D=4$ construction (Example~\ref{ex:delorme4}) doubles a spread.
+Araujo-Pardo, Dalf\'o, Fiol and L\'opez \cite[Sec.~4]{ADFL21} double every line of a GQ to get biregular graphs. The
+construction below is not a doubling: a clone is joined to every old line through its point, so no tree condition on the
+copied set is needed, and it allows weights larger than one, repeated lines, and ``stand-ins''. (A level-0 line all of
+whose points are at level $-1$ is a shadow line with trivial stand-ins.)
+
+\begin{definition}[clones and shadow lines]\label{def:clones}
+Let $\cS=(\cP,\cL)$ be a GQ of order $(s,t)$, let $\omega:\cP\to\Z_{\ge0}$ be a \emph{weight}, and $\cM$ a finite
+multiset of lines. For each entry $\mu$ of $\cM$, with underlying line $L_\mu$, choose for every point $p\I L_\mu$ a
+\emph{stand-in} $\theta_\mu(p)\in\{p,p^1,\dots,p^{\omega(p)}\}$. The incidence structure $\cS[\omega,\cM,\theta]$ has
+\begin{itemize}
+\item points: $\cP$ and the \emph{clones} $p^1,\dots,p^{\omega(p)}$ of each $p\in\cP$;
+\item lines: $\cL$ and one \emph{shadow line} $L^\mu$ for each entry $\mu$ of $\cM$;
+\item incidences: those of $\cS$; $p^i\I L$ whenever $p\I L\in\cL$; and $\theta_\mu(p)\I L^\mu$ for $p\I L_\mu$.
+\end{itemize}
+\end{definition}
+
+\begin{table}[ht]
+\caption{Neighbourhoods in $\cS[\omega,\cM,\theta]$.}\label{tab:clones}
+\begin{tabular}{@{}l p{7.6cm} l@{}}
+\toprule vertex & neighbours & degree\\ \midrule
+clone $p^i$ & the $t+1$ old lines on $p$; the shadow lines $L^\mu$ with $\theta_\mu(p)=p^i$ &
+$t+1+\#\{\mu:\theta_\mu(p)=p^i\}$\\
+shadow line $L^\mu$ & $\theta_\mu(p)$ for the $s+1$ points $p$ of $L_\mu$ & $s+1$\\
+old point $p$ & its $t+1$ lines; the shadow lines $L^\mu$ with $\theta_\mu(p)=p$ & $t+1+\#\{\mu:\theta_\mu(p)=p\}$\\
+old line $L$ & its $s+1$ points and all their clones & $s+1+\sum_{p\I L}\omega(p)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+When all stand-ins are old points ($\theta=\mathrm{id}$), a shadow line is adjacent exactly to the old points of $L_\mu$,
+and clones are adjacent only to old lines.
+
+\begin{theorem}[clones and shadow lines]\label{thm:B}
+Let $\cS$ be a GQ of order $(s,t)$, $s,t\ge1$, and $\cS'=\cS[\omega,\cM,\theta]$.
+\begin{enumerate}[label=(\alph*)]
+\item $\cS'$ has diameter 4.
+\item $\cS'$ has maximum degree at most $\Delta$ if and only if $\Delta\ge\max(s,t)+1$, $\sum_{p\I L}\omega(p)\le\Delta-s-1$
+  for every line $L$ of $\cS$, and every point of $\cS'$ (old point or clone) is the stand-in for at most $\Delta-t-1$
+  entries of $\cM$.
+\item $\cS'$ has $(s+1)(st+1)+\sum_p\omega(p)$ points and $(t+1)(st+1)+|\cM|$ lines.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(b) and (c) are read off Table~\ref{tab:clones}. (a) Write $\pi$ for the map sending a clone or a shadow line to its
+underlying point or line. Every point $x$ of $\cS'$ is incident with every old line through $\pi(x)$. We use
+Lemma~\ref{lem:diamgeom}(i); no element is isolated. Let $(x,Y)$ be an anti-flag of $\cS'$.
+\begin{itemize}
+\item $Y$ old. Then $\pi(x)\notin Y$. Let $r$ be the point of $Y$ collinear with $\pi(x)$, on the line $N$. Then
+  $x\I N\I r\I Y$.
+\item $Y=L^\mu$ and $\pi(x)\notin L_\mu$. Let $r\I L_\mu$ be collinear with $\pi(x)$, on the line $N$. Then $x\I N\I
+  \theta_\mu(r)\I L^\mu$.
+\item $Y=L^\mu$ and $\pi(x)\I L_\mu$. Pick $r\I L_\mu$, $r\ne\pi(x)$ ($s\ge1$). Then $x\I L_\mu\I\theta_\mu(r)\I L^\mu$.
+\end{itemize}
+So $d(x,Y)\le3$ for every anti-flag, and the diameter is at most 4. Two non-collinear old points exist (a point is
+collinear with $s(t+1)<(s+1)(st+1)-1$ others) and stay non-collinear: they share no old line, a shadow line $L^\mu$
+contains only points over points of $L_\mu$, and an old point lies over itself only. So the diameter is 4.
+\end{proof}
+
+\begin{corollary}[exact weights, regular completion]\label{cor:exact}
+Let $\Delta\ge\max(s,t)+1$, let $\omega$ be a weighted $(\Delta-s-1)$-ovoid (that is,
+$\sum_{p\I L}\omega(p)=\Delta-s-1$ for every line $L$) and $\cM$ a weighted $(\Delta-t-1)$-cover (every point is on
+exactly $\Delta-t-1$ entries of $\cM$). Then $\cS[\omega,\cM,\mathrm{id}]$ has diameter 4, maximum degree $\Delta$ and
+$2\Delta(st+1)$ elements. It becomes $\Delta$-regular, with the same order and diameter 4, by the following explicit
+flags: number the clones $c_0,c_1,\dots$ and the shadow lines $y_0,\dots,y_{b-1}$ ($b=|\cM|$), put $k=\Delta-t-1$, and
+join $c_i$ to $y_j$ for $j\equiv ik,ik+1,\dots,ik+k-1\pmod b$. (If $b=0$ or $\sum_p\omega(p)=0$, the structure is already
+$\Delta$-regular.)
+\end{corollary}
+
+\begin{proof}
+Counting flags gives $\sum_p\omega(p)=(\Delta-s-1)(st+1)$ and $|\cM|=(\Delta-t-1)(st+1)$; the total is
+$(s+t+2+\Delta-s-1+\Delta-t-1)(st+1)=2\Delta(st+1)$. Old points and lines have degree $\Delta$, clones $t+1$, shadow lines
+$s+1$. The added pairs are anti-flags (with $\theta=\mathrm{id}$ no clone is on a shadow line); the blocks
+$\{ik,\dots,ik+k-1\}$, $i=0,1,\dots$, run through $0,1,\dots,k\sum_p\omega(p)-1=b(\Delta-s-1)-1$, so modulo $b$ every
+residue is hit exactly $\Delta-s-1$ times, and within a block the residues are distinct since $k\le b$. Adding flags
+does not increase distances (Lemma~\ref{lem:flags}), and two non-collinear old points still share no line.
+\end{proof}
+
+\begin{example}[Delorme's $D=4$ construction {\cite[\S8(a)]{D85a}}; the 2013 values]\label{ex:delorme4}
+In $W(3,q)$ take a spread $\Sigma$ (a set of $q^2+1$ lines partitioning the points), a line $v\in\Sigma$, and
+$\cA_1=\{v\}$, $\cA_0=\Sigma\cup\{\text{points of }v\}$. (L1): the elements on $v$ are its points; a point of $v$ meets
+only $v$ in $\cA_1$, and a line of $\Sigma\setminus\{v\}$ meets nothing in $\cA_1$. (L0): a point off $v$ is on exactly
+one line of $\Sigma$ and on no other line of $\cA_0$; a line not in $\Sigma$ has at most one point on $v$. The
+components of the substructure on $\cA_0$ are the star formed by $v$ and its points, and single lines, so (C$_4$) holds
+(Lemma~\ref{lem:hat}). Theorem~\ref{thm:delorme} gives maximum degree $q+m$, diameter 4 and
+$2(q+1)(q^2+1)+(m-1)\bigl((q^2+1)+(q+1)+m\bigr)$ elements. For $m=2$ this is $2q^3+3q^2+3q+6$: 346, 1734, 3064, 4946 at
+$q=5,9,11,13$; for $m=3$, $q=13$ it is $4760+2\cdot187=5134$. These are the 2013 values at $\Delta=7,11,13,15,16$.
+\end{example}
+
+\begin{remark}[a limit for shadow lines on $Q(4,q)$]\label{rem:shadowlimit}
+Let $q$ be odd, $\cO$ an ovoid of $Q(4,q)$ (a set of $q^2+1$ points meeting every line once), $\omega=\mathbf 1_\cO$,
+and suppose the maximum degree is $q+2$. Then at most $q^2-q+2$ shadow lines are possible. Indeed every old point and
+every clone serves at most one shadow line, so a point off $\cO$ is on at most one entry of $\cM$ and a point of $\cO$ on
+at most two. Suppose some $o\in\cO$ is on two entries. They are distinct lines: if both were copies of one line $N$, each
+of the $q$ points of $N$ other than $o$ is off $\cO$, has no clone, and would be the stand-in of both entries, giving it
+degree $q+3$. Each other entry $L$ misses $o$ and so has a unique point $y$ collinear with $o$; $y\notin\cO$ (points of
+an ovoid are pairwise non-collinear); the line $oy$ is not an entry of $\cM$ (otherwise $y\notin\cO$ would be on two
+entries), so it is one of the $q-1$ lines on $o$ other than the two entries through $o$, and $y$ is one of its $q$ points
+other than $o$; distinct $L$ give distinct $y$. So $|\cM|\le2+q(q-1)$. Otherwise every point is on at most one entry,
+$\cM$ is a partial spread, and $|\cM|\le q^2-q+1$ (Tallini \cite{Tal91}; see also \cite[\S1]{CDPS22}).
+\end{remark}
+
+\begin{example}[$(7,4)\ge359$]\label{ex:359}
+In $Q(4,5)$ take one clone of each point of an ovoid $\cO$ that is an elliptic quadric section ($\omega=\mathbf
+1_\cO$), and 21 shadow lines with stand-ins. Theorem~\ref{thm:B} gives diameter 4, maximum degree 7, and
+$2\cdot6\cdot26+26+21=359$ elements. Appendix~\ref{app:359} lists the 21 lines and the stand-ins in coordinates, so that
+the conditions of Theorem~\ref{thm:B}(b) can be checked by hand. Every ovoid of $Q(4,p)$, $p$ prime, is an elliptic
+quadric \cite{BGS06}, so the choice of ovoid does not matter. By Remark~\ref{rem:shadowlimit} at most $q^2-q+2=22$ shadow
+lines are possible in this setting; 21 is the maximum for this family (an integer program, solved to optimality).
+This example is not a member of a proved infinite family. The best regular graph we know at $(7,4)$ has 350 vertices
+(Corollary~\ref{cor:A1} at $q=5$).
+\end{example}
+\todo{Example~\ref{ex:359}: the optimality of 21 comes from an integer-programming solver (HiGHS). Keep the sentence,
+or drop it as computer-dependent?}
+
+\subsection{The Ahrens--Szekeres quadrangle and two elliptic quadrics}\label{ssec:A}
+
+\subsubsection*{Coordinates}
+Let $q$ be odd. Let $W(q)=W(3,q)$ be the symplectic quadrangle of $\PG(3,q)$ for the alternating form
+\[
+\beta(u,v)=u_0v_1-u_1v_0+u_2v_3-u_3v_2,
+\]
+and let $x=(1:0:0:0)$; then $x^\perp$ is the plane $X_1=0$. Payne's derived quadrangle $\AS(q)=P(W(q),x)$
+\cite{P71}, \cite[3.1.4]{PT} has
+\begin{itemize}
+\item \emph{points}: the $q^3$ points $(a:1:b:c)$, $a,b,c\in\F$ (the points off $x^\perp$); we write $(a,w)$ with
+  $w=(b,c)$;
+\item \emph{lines of type (i)} (\emph{fibres}), $q^2$ of them: $\{(a_0+\mu:1:w_0):\mu\in\F\}$, the line
+  $\langle x,(a_0:1:w_0)\rangle$ minus $x$;
+\item \emph{lines of type (ii)}, $q^2(q+1)$ of them: for a point $(a_0:1:w_0)$ and a direction $d=(d_1:d_2)\in\PG(1,q)$,
+  \[
+  \ell(a_0,w_0;d)=\{(a_0+\lambda\rho:1:w_0+\lambda d):\lambda\in\F\},\qquad \rho=\det(w_0,d)=b_0d_2-c_0d_1,
+  \]
+  the totally isotropic line through $(a_0:1:w_0)$ and $(\rho:0:d_1:d_2)$, minus the latter point.
+\end{itemize}
+(Check: $\beta((a_0,1,b_0,c_0),(\rho,0,d_1,d_2))=-\rho+b_0d_2-c_0d_1=0$. A point off $x^\perp$ is on $q+1$ totally isotropic
+lines, none through $x$, each meeting $x^\perp$ in one point $(\rho:0:d)$, $d\ne0$; so each point of $\AS(q)$ is on one
+fibre and on $q+1$ lines of type (ii), and every line has $q$ points.) $\AS(q)$ is a GQ of order $(q-1,q+1)$ \cite{P71},
+\cite[3.1.4, 3.2.6]{PT}; for $q$ odd it is the Ahrens--Szekeres quadrangle \cite{AS69}. The fibres form a spread.
+
+Fix a non-square $\eps\in\F$ and put $N(b,c)=b^2-\eps c^2$, an anisotropic form ($N(w)=0$ only for $w=0$). For
+$\kappa\in\F^*$ let $\cE_\kappa$ be the quadric $X_0X_1=\kappa N(X_2,X_3)$. It is elliptic (a hyperbolic pair plus an
+anisotropic binary form), passes through $x$ with tangent plane $x^\perp$, and
+$\cE_\kappa\setminus\{x\}=\{(\kappa N(w):1:w):w\in\F^2\}$ is a set of $q^2$ points of $\AS(q)$, one on each fibre.
+
+\begin{theorem}[a weighted 2-ovoid of $\AS(q)$]\label{thm:A}
+Let $q$ be odd, $\eps$ a non-square and $\kappa_1\kappa_2=1/(4\eps)$. Every line of $\AS(q)$ meets
+$\cE_{\kappa_1}\setminus\{x\}$ and $\cE_{\kappa_2}\setminus\{x\}$ in exactly two points in total (a point in both counted
+twice). The two quadrics meet only in $x$ and $e=(0:1:0:0)$. So
+$\varpi=\mathbf 1_{\cE_{\kappa_1}\setminus x}+\mathbf 1_{\cE_{\kappa_2}\setminus x}$ is a weighted 2-ovoid of $\AS(q)$, with
+$\varpi(e)=2$ and $\varpi\in\{0,1\}$ elsewhere.
+\end{theorem}
+
+The choice $\kappa_1=\frac12$, $\kappa_2=\frac1{2\eps}$ gives the two quadrics
+\[
+\cE^{(1)}:\ 2X_0X_1=X_2^2-\eps X_3^2,\qquad \cE^{(2)}:\ 2\eps X_0X_1=X_2^2-\eps X_3^2 .
+\]
+
+\begin{corollary}\label{cor:A1}
+For every odd prime power $q$, adjoining to $\AS(q)$ one clone of each point of $\cE^{(1)}\setminus\{x\}$ and one of each
+point of $\cE^{(2)}\setminus\{x\}$ (so $e$ gets two clones) gives a $(q+2)$-regular incidence structure of diameter 4 with
+$2q^2(q+2)$ elements. Hence $\nb(q+2,4)\ge2q^2(q+2)$, attained by a regular graph.
+\end{corollary}
+
+\emph{New vertices.} For $P=(\kappa_iN(w):1:w)\in\cE_{\kappa_i}\setminus\{x\}$ ($i=1,2$, $w\in\F^2$), the clone $P^{(i)}$ is
+adjacent exactly to the $q+2$ lines of $\AS(q)$ through $P$: the fibre $\{(\kappa_iN(w)+\mu:1:w):\mu\in\F\}$ and, for each
+$d\in\PG(1,q)$, the line $\ell(\kappa_iN(w),w;d)$. The two clones of $e$ are adjacent to the same $q+2$ lines. Changed old
+neighbourhoods: the fibre over $w_0$ gains the clones of $(\kappa_1N(w_0):1:w_0)$ and $(\kappa_2N(w_0):1:w_0)$; the line
+$\ell(a_0,w_0;d)$ gains the clones of its points on $\cE_{\kappa_1}$ and on $\cE_{\kappa_2}$, which correspond to the roots
+$\lambda$ of the quadratic \eqref{eq:quadratic} below with $\kappa=\kappa_1,\kappa_2$ (two clones in total). Old points
+are unchanged.
+
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+\emph{Fibres.} The fibre over $w_0$ meets $\cE_\kappa$ only at $\mu=\kappa N(w_0)-a_0$: one point of each quadric.
+
+\emph{Lines of type (ii).} Let $B=N(w_0+d)-N(w_0)-N(d)=2(b_0d_1-\eps c_0d_2)$. The point with parameter $\lambda$ of
+$\ell(a_0,w_0;d)$ lies on $\cE_\kappa$ if and only if $a_0+\lambda\rho=\kappa N(w_0+\lambda d)$, that is,
+\begin{equation}\label{eq:quadratic}
+\kappa N(d)\lambda^2+(\kappa B-\rho)\lambda+\kappa N(w_0)-a_0=0.
+\end{equation}
+As $N(d)\ne0$ this is a quadratic, with $1+\chi(\mathrm{disc}_\kappa)$ roots. A direct expansion gives
+$B^2-4N(w_0)N(d)=4\eps(b_0d_2-c_0d_1)^2=4\eps\rho^2$, hence
+\[
+\mathrm{disc}_\kappa=(\kappa B-\rho)^2-4\kappa N(d)(\kappa N(w_0)-a_0)=4\kappa N(d)\,(a_0-a^*_\kappa),\qquad
+a^*_\kappa=-\frac{4\eps\kappa\rho^2-2B\rho+\rho^2/\kappa}{4N(d)} .
+\]
+Then $a^*_{\kappa_1}-a^*_{\kappa_2}=-\frac{\rho^2}{4N(d)}(\kappa_1-\kappa_2)\bigl(4\eps-\frac1{\kappa_1\kappa_2}\bigr)=0$; call
+the common value $a^*$. The line meets the two quadrics in
+\[
+\bigl(1+\chi(\kappa_1)\chi(N(d)(a_0-a^*))\bigr)+\bigl(1+\chi(\kappa_2)\chi(N(d)(a_0-a^*))\bigr)=2
+\]
+points, because $\chi(\kappa_1)\chi(\kappa_2)=\chi(1/(4\eps))=\chi(\eps)=-1$, so $\chi(\kappa_1)+\chi(\kappa_2)=0$. (If
+$a_0=a^*$, the line is tangent to both quadrics and meets each in one point.)
+
+\emph{Intersection.} $\kappa_1\ne\kappa_2$, since $\kappa_1^2=1/(4\eps)$ is impossible for a non-square $\eps$. So
+$\kappa_1N(w)=\kappa_2N(w)$ forces $N(w)=0$, $w=0$, and the common points are $x$ and $e$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:A1}]
+Theorem~\ref{thm:B} and Corollary~\ref{cor:exact} with $(s,t)=(q-1,q+1)$, $\omega=\varpi$ of Theorem~\ref{thm:A} and
+$\cM=\emptyset$: every line has $q$ points and gains exactly two clones, every old point is on $q+2$ lines, and every
+clone is on the $q+2$ lines of its point. The order is $q^3+q^2(q+2)+2q^2=2q^2(q+2)$.
+\end{proof}
+
+\begin{remark}
+Weights are necessary: $\AS(3)$ has no 1- or 2-ovoid and $\AS(5)$ has no $m$-ovoid for $m=1,\dots,4$ (computer-checked
+by integer programming). No choice of clones and shadow lines on $\AS(q)$ does better at $\Delta=q+2$: every point of
+$\AS(q)$ is already on $t+1=q+2$ lines, so no shadow line can be added, and each line has $q$ points and takes at most 2
+clones, so $\sum_p\omega(p)\le2q^2$. Corollary~\ref{cor:A1} beats Delorme's $2q^3+3q^2+3q+6$ by $q^2-3q-6>0$ for $q\ge5$.
+\end{remark}
+
+\noindent\emph{Cells.} $(11,4)$: 1782 (2013: 1734); $(13,4)$: 3146 (3064); $(15,4)$: 5070 (4946). All regular.
+
+\subsection{Singer 2-ovoids of $W(3,q)$}
+
+\subsubsection*{The cyclic model}
+Let $q$ be odd, $\F=\GF(q)\subset K=\GF(q^2)\subset E=\GF(q^4)$, and $g$ a primitive element of $E$. As $E$ is a
+4-dimensional $\F$-space, $\PG(3,q)=E^*/\F^*$ (any $\F$-basis of $E$ gives homogeneous coordinates); the point $\langle
+g^i\rangle$ has index $i$ modulo $(q+1)(q^2+1)$. Write $\bar y=y^{q^2}$ (the involution of $E/K$), $k'=k^q$ for $k\in K$,
+$\Nm(y)=y\bar y\in K$ and $\Tr=\Tr_{K/\F}$. Let $d=g^{(q^2+1)/2}$; then $\bar d=-d$, and $h=d^2=g^{q^2+1}$ generates
+$K^*$. The form
+\[
+b(y,z)=\Tr_{E/\F}(d\,y\bar z)=\Tr\bigl(d(y\bar z-\bar yz)\bigr)
+\]
+is alternating and non-degenerate; $W(3,q)$ is its symplectic quadrangle. Multiplication by $g^{q+1}$ multiplies $b$ by
+$g^{(q+1)(q^2+1)}\in\F^*$, so it is a collineation of $W(3,q)$. Its point orbits are the classes
+\[
+C_a=\{\langle g^i\rangle:\ i\equiv a\pmod{q+1}\},\qquad |C_a|=q^2+1,
+\]
+and $\langle y\rangle\in C_a$ if and only if $\Nm(y)\in h^a\F^*$ (as $\Nm(g^i)=h^i$ and $K^*/\F^*$ is cyclic of order
+$q+1$, generated by $h$). These are Ebert's elliptic quadrics partitioning $\PG(3,q)$ \cite{E85}.
+
+The $K$-subspaces $yK$ ($y\in E^*$) are lines of $\PG(3,q)$ (the regular spread), with points
+$\langle g^{i+(q^2+1)j}\rangle$, $j=0,\dots,q$. They are totally isotropic: for $k_1,k_2\in K$ we have
+$\overline{yk_i}=\bar yk_i$ (as $\bar k=k^{q^2}=k$), so $b(yk_1,yk_2)=\Tr\bigl(d\,\Nm(y)(k_1k_2-k_1k_2)\bigr)=0$.
+So $\Sigma=\{yK\}$ is a spread of $W(3,q)$ with $q^2+1$ lines.
+
+\begin{proposition}[Singer 2-ovoids]\label{prop:C}
+Let $q$ be odd.
+\begin{enumerate}[label=(\alph*)]
+\item Every line of $\PG(3,q)$ meets each class $C_a$ in at most two points.
+\item Every totally isotropic line of $W(3,q)$ meets $C_a\cup C_{q-a}$ in exactly two points.
+\end{enumerate}
+So the $(q+1)/2$ sets $C_a\cup C_{q-a}$, $0\le a\le(q-1)/2$, are 2-ovoids of $W(3,q)$ partitioning its points. (The pairing
+$a\leftrightarrow q-a$ has no fixed point, as $2a\equiv-1\pmod{q+1}$ is impossible for $q+1$ even.)
+\end{proposition}
+
+\begin{proof}
+Let $L=\langle y,z\rangle_\F$ and $u=sy+tz$ ($s,t\in\F$). Then $\Nm(u)=A_1s^2+\tau st+A_2t^2$ with $A_1=\Nm(y)$,
+$A_2=\Nm(z)$, $\tau=y\bar z+\bar yz$, all in $K$. Put $\theta=y\bar z-\bar yz$. As $\bar\theta=-\theta$, $\theta/d\in K$; write
+$\theta=dk_0$ with $k_0\in K$. Then
+\[
+\mathfrak d:=\tau^2-4A_1A_2=\theta^2=hk_0^2,\qquad b(y,z)=\Tr(hk_0).
+\]
+Fix $\varkappa\in K^*$ with $\varkappa'=-\varkappa$. For $\mu\in K^*$ put $\nu=\varkappa/\mu$; the kernel of
+$k\mapsto\Tr(\nu k)$ is the $\F$-subspace $\mu\F$. So $\langle u\rangle$ lies in
+$\widetilde C_\mu:=\{\langle u\rangle:\Nm(u)\in\mu\F^*\}$ (thus $C_a=\widetilde C_{h^a}$) if and only if $(s:t)$ is a zero of
+the binary form
+\[
+f_\nu(s,t)=\Tr(\nu A_1)s^2+\Tr(\nu\tau)st+\Tr(\nu A_2)t^2 .
+\]
+(a) Suppose $f_\nu\equiv0$. Then $A_1,\tau,A_2\in\mu\F$. If $\mathfrak d\ne0$, then $hk_0^2=\mathfrak d\in\mu^2\F^*$, so
+$h\in(K^*)^2\F^*=(K^*)^2$ (every element of $\F^*$ is a square in $K$, since $q-1$ divides $(q^2-1)/2$); but $h$ generates
+$K^*$, which has even order. If $\mathfrak d=0$, then $\Nm(sy+tz)=\mu(\alpha_0s^2+\beta_0st+\gamma_0t^2)$ with
+$\alpha_0,\beta_0,\gamma_0\in\F$, $\beta_0^2=4\alpha_0\gamma_0$ and $\alpha_0\ne0$ (as $A_1\ne0$), which vanishes at
+$(s:t)=(-\beta_0:2\alpha_0)$: impossible, since $\Nm(u)\ne0$ for $u\ne0$. So $f_\nu\not\equiv0$, and it has
+$1+\chi(\mathrm{disc}(\nu))\le2$ projective zeros, where
+$\mathrm{disc}(\nu)=\Tr(\nu\tau)^2-4\Tr(\nu A_1)\Tr(\nu A_2)$.
+
+(b) Expanding with $\Tr(\nu k)=\nu k+\nu'k'$,
+\[
+\mathrm{disc}(\nu)=\Tr(\nu^2\mathfrak d)+\nu\nu'\Psi,\qquad \Psi=2\tau\tau'-4A_1A_2'-4A_1'A_2\in\F .
+\]
+If $L$ is totally isotropic, then $\Tr(hk_0)=0$, so $hk_0\in\varkappa\F$ and $\eta:=h\mathfrak d=(hk_0)^2\in\varkappa^2\F\subseteq\F$.
+Then $\Tr(h^2\nu'^2\mathfrak d)=\eta(h\nu'^2+h'\nu^2)=hh'\,\Tr(\nu^2\mathfrak d)$, and since $(h\nu')(h\nu')'=hh'\nu\nu'$,
+\[
+\mathrm{disc}(h\nu')=\Nm_{K/\F}(h)\,\mathrm{disc}(\nu).
+\]
+$\Nm_{K/\F}(h)=h^{q+1}$ generates $\F^*$, so it is a non-square and $\chi(\mathrm{disc}(h\nu'))=-\chi(\mathrm{disc}(\nu))$. The
+class belonging to $h\nu'$ is $\varkappa/(h\nu')=-\mu'/h\equiv(h\mu)^{-1}$ modulo $\F^*$ (using $\mu^{q+1}\in\F^*$); in
+indices, $a\mapsto-a-1\equiv q-a\pmod{q+1}$. Scaling $\nu$ by $\F^*$ multiplies $\mathrm{disc}$ by a square. So $L$ meets
+$C_a\cup C_{q-a}$ in $(1+\chi(\mathrm{disc}(\nu)))+(1-\chi(\mathrm{disc}(\nu)))=2$ points.
+\end{proof}
+
+\begin{remark}[literature]
+For $q$ odd, $W(3,q)$ has $m$-ovoids for every even $m$ and $(q+1)/2$-ovoids \cite{BLP09}, and \cite{FWX19} states,
+citing \cite{BLP09}, that $W(3,p^e)$ ($p$ odd) has a partition into 2-ovoids. Cossidente, Culbert, Ebert and Marino
+\cite{CCEM08} construct $m$-ovoids of $W(3,q)$ with Singer-type stabilisers. We have not checked whether the 2-ovoids
+$C_a\cup C_{q-a}$ coincide with those; Proposition~\ref{prop:C} is very likely known, and we claim only the short proof.
+The proof uses only that $d^2$ is a non-square in $K$: for any $\delta_0$ with $\bar\delta_0=-\delta_0$, $C_a\cup C_b$ is a
+2-ovoid of the form $\Tr_{E/\F}(\delta_0y\bar z)$ when $h^{a+b}\delta_0^2\in\F^*$.
+\end{remark}
+\todo{Proposition~\ref{prop:C}: do you know whether the 2-ovoids $C_a\cup C_{q-a}$ are those of [BLP09], [CCEM08] or
+[FWX19]? If so, cite and shorten.}
+
+\begin{corollary}\label{cor:C1}
+Let $q$ be odd, $0\le a\le(q-1)/2$, $\cO=C_a\cup C_{q-a}$ and $\Sigma$ the regular spread $\{yK\}$. Adjoin to $W(3,q)$
+\begin{itemize}
+\item one clone $P'$ of each point $P\in\cO$, incident with the $q+1$ totally isotropic lines on $P$ (the lines $\langle
+  P,Z\rangle$ with $b(P,Z)=0$);
+\item two shadow lines $L',L''$ for each $L\in\Sigma$, each incident with the $q+1$ points of $L$.
+\end{itemize}
+The result is bipartite, has diameter 4, maximum degree $q+3$ (old points and lines have degree $q+3$, clones and shadow
+lines $q+1$) and $2(q^2+1)(q+3)$ elements. Joining clone $c_i$ to shadow lines $y_{2i},y_{2i+1}$ (indices modulo
+$2(q^2+1)$, any numbering) makes it $(q+3)$-regular with diameter 4. Hence $\nb(q+3,4)\ge2(q^2+1)(q+3)$, attained by a
+regular graph.
+\end{corollary}
+
+\begin{proof}
+$W(3,q)$ is a GQ of order $(q,q)$. By Proposition~\ref{prop:C}(b), $\omega=\mathbf 1_\cO$ is a 2-ovoid ($=\Delta-s-1$ for
+$\Delta=q+3$), and $\cM=2\Sigma$ is a 2-cover (every point is on exactly one spread line). Apply
+Corollary~\ref{cor:exact} with $k=2$.
+\end{proof}
+
+This is the point--line dual of clones of an ovoid of $Q(4,q)$ with a dual 2-cover; written in $W(3,q)$ it needs no
+Klein correspondence. More generally, $j$ copies of the spread and $j/2$ copies of the 2-ovoid give
+$\nb(q+1+j,4)\ge2(q^2+1)(q+1+j)$ for even $j$.
+
+\begin{corollary}[all degrees]\label{cor:B2}
+For every prime power $q$ and every $\Delta\ge q+1$ there is a $\Delta$-regular incidence structure of diameter 4 with
+$2\Delta(q^2+1)$ elements if $q$ is even or $\Delta-q-1$ is even, and with $2\Delta q^2$ elements otherwise. In particular
+$\nb(\Delta,4)\ge2q^2\Delta$ for every prime power $q\le\Delta-1$.
+\end{corollary}
+
+\begin{proof}
+Put $j=\Delta-q-1$. In the first two cases we apply Corollary~\ref{cor:exact} in $W(3,q)$ ($s=t=q$, so
+$\Delta-s-1=\Delta-t-1=j$). If $q$ is even, $W(3,q)$ has an ovoid $\cO_0$ and a spread $\Sigma$ \cite[3.4.1]{PT}; take
+$\omega=j\mathbf 1_{\cO_0}$ and $\cM=j\Sigma$. If $q$ is odd and $j$ even: $\omega=(j/2)\mathbf 1_\cO$ with $\cO$ a 2-ovoid of
+Proposition~\ref{prop:C}, and $\cM=j\Sigma$. If $q$ is odd and $j$ odd, then $\Delta\ge q+2$, and we apply
+Corollary~\ref{cor:exact} in $\AS(q)$ ($s=q-1$, $t=q+1$, so $\Delta-s-1=\Delta-q$ and $\Delta-t-1=\Delta-q-2$), with
+$(\Delta-q)/2$ copies of the weighted 2-ovoid of Theorem~\ref{thm:A} and $\Delta-q-2$ copies of the fibre spread.
+\end{proof}
+
+\noindent\emph{Cells.} $(16,4)$: $q=13$, $5440=2\cdot170\cdot16$ (2013: 5134), regular. In the range $\Delta\le16$ this is
+the only open cell with $\Delta-3$ an odd prime power. Without stand-ins, 5440 is the most a structure of clones and
+shadow lines on $W(3,13)$ or $Q(4,13)$ of maximum degree 16 can have (each line takes at most 2 clones and each point
+lies on at most 2 shadow lines).
+
+%======================================================================
+\section{Diameter 6: whiskers in the split Cayley hexagon}\label{sec:d6}
+%======================================================================
+
+Throughout Sections~\ref{ssec:d6coords}--\ref{ssec:thmD}, $q$ is odd; even $q$ is treated in
+Section~\ref{ssec:evenq}. We use the model of $H(q)$ in Section~\ref{sec:prelim}.
+
+\subsection{Elliptic hyperplane sections and Hermitian spreads}\label{ssec:d6coords}
+Let $v=\langle e_1,e_6\rangle$. It is a line of $Q(6,q)$ ($e_1,e_6$ are singular and $b(e_1,e_6)=0$) and a line of $H(q)$
+(no equation of \eqref{eq:tits} involves $p_{16}$). Fix $c\in\F$ with $-c$ a non-square. For $z=(\alpha,\beta)\in\F^2$ let
+\[
+\Pi_z:\ X_0+cX_4+\alpha X_2+\beta X_5=0,\qquad \Pi=\Pi_{(0,0)},
+\]
+and let $S_z$ be the set of lines of $H(q)$ contained in $\Pi_z$, $S=S_{(0,0)}$. Every $\Pi_z$ contains $v$.
+
+\begin{lemma}\label{lem:Piz}
+For every $z\in\F^2$:
+\begin{enumerate}[label=(\alph*)]
+\item $\Pi_z\cap Q(6,q)$ is an elliptic quadric $Q^-(5,q)$.
+\item Every point of $H(q)$ in $\Pi_z$ is on exactly one line of $S_z$. So $|S_z|=q^3+1$, the lines of $S_z$ are pairwise
+  opposite, and $v\in S_z$ ($S_z$ is a Hermitian spread \cite{T80}).
+\item A line of $H(q)$ not in $S_z$ meets $\Pi_z$ in exactly one point.
+\item The points of $H(q)$ at distance at most 3 from $v$ are exactly the points of $Q(6,q)$ with $X_2=X_5=0$; among them
+  only the points of $v$ lie in $\Pi_z$.
+\item $S_z\cap S_{z'}=\{v\}$ for $z\ne z'$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) On $\Pi_z$ substitute $X_0=-cX_4-\alpha X_2-\beta X_5$:
+$X_0X_4+X_1X_5+X_2X_6-X_3^2=(X_1-\beta X_4)X_5+X_2(X_6-\alpha X_4)-(X_3^2+cX_4^2)$, two hyperbolic planes plus the
+anisotropic form $X_3^2+cX_4^2$. So the form on $\Pi_z$ is non-degenerate of Witt index 2.
+
+(b) Let $y\in\Pi_z\cap Q(6,q)$. By (a), $\Pi_z\cap Q(6,q)$ contains no totally singular plane, so $\pi_y\not\subseteq\Pi_z$
+and $\pi_y\cap\Pi_z$ is one line through $y$: the only line of $H(q)$ on $y$ inside $\Pi_z$. $Q^-(5,q)$ has
+$(q+1)(q^3+1)$ points, so $|S_z|=q^3+1$. Two lines of $S_z$ are not concurrent (uniqueness). If two were at distance 4, a
+line $N$ of $H(q)$ would meet both in distinct points, so $N\subseteq\Pi_z$, $N\in S_z$, concurrent with them: a
+contradiction. So they are opposite.
+
+(c) A line not in the hyperplane $\Pi_z$ meets it in one point.
+
+(d) Let $y=ae_1+be_6$ be on $v$ and $yu$ a line of $H(q)$. Then $p_{12}=p_{34}$ gives $au_2=0$, $p_{65}=p_{30}$ gives
+$bu_5=0$, and $b(y,u)=0$ gives $au_5+bu_2=0$; so $u_2=u_5=0$. Conversely $Q(6,q)\cap\{X_2=X_5=0\}$ is $X_0X_4=X_3^2$, a
+cone with vertex $v$ over a conic, with $(q+1)+(q+1)q^2$ points: exactly the number of points at distance at most 3 from
+$v$ ($q+1$ on $v$, and $q$ more on each of the $q(q+1)$ other lines meeting $v$). If such a point is in $\Pi_z$, then
+$X_0=-cX_4$ and $X_3^2+cX_4^2=0$, so $X_0=X_3=X_4=0$ and the point is on $v$.
+
+(e) If $\ell\in S_z\cap S_{z'}$ with $\ell\ne v$, then $(\alpha-\alpha')X_2+(\beta-\beta')X_5=0$ on $\ell$, so some point of
+$\ell$ has $X_2=X_5=0$ and is at distance at most 3 from $v$ by (d); but $\ell$ and $v$ are opposite by (b), so every point
+of $\ell$ is at distance 5 from $v$.
+\end{proof}
+
+\subsection{Delorme's levels and whiskers}
+Let $\cP(v)$ be the points of $v$, $\cL_v$ the $q^2+q$ lines other than $v$ that meet $v$, and $\cP_\Pi$ the
+$(q+1)(q^3+1)$ points of $H(q)$ in $\Pi$. A point is \emph{free} if it is not in $\Pi$ and is at distance 5 from $v$; by
+Lemma~\ref{lem:Piz}(d) there are $(q+1)(q^4+q^2+1)-(q+1)-q^2(q+1)-q^3(q+1)=q^3(q^2-1)$ of them.
+
+\begin{definition}\label{def:whiskers}
+A \emph{whisker set} is a set $W$ of lines of $H(q)$, each opposite $v$ and not in $S$, such that no free point is on two
+lines of $W$. It is \emph{exact} if every free point is on exactly one line of $W$.
+\end{definition}
+
+A line opposite $v$ and not in $S$ meets $\Pi$ in one point, not on $v$ (Lemma~\ref{lem:Piz}(c),(d)), and its other $q$
+points are free (every point of a line opposite $v$ is at distance 5 from $v$). So $|W|\le q^3(q^2-1)/q=q^2(q^2-1)$, with
+equality if and only if $W$ is exact.
+
+\begin{theorem}[doubling with whiskers]\label{thm:whiskerdoubling}
+Let $W$ be a whisker set and $m\ge2$. Put
+\[
+\cA_2=\{v\},\qquad \cA_1=\{v\}\cup\cP(v)\cup S,\qquad \cA_0=\cA_1\cup\cP_\Pi\cup\cL_v\cup W .
+\]
+Then $\cA$ satisfies (L0), (L1) and (C$_6$). Hence $H(q)^{(m)}_\cA$ is bipartite with maximum degree $q+m$, diameter 6,
+and
+\[
+2(q+1)(q^4+q^2+1)+(m-1)\bigl(q^4+2q^3+q^2+2q+2+|W|+m(q^3+q+2)+m^2\bigr)
+\]
+elements.
+\end{theorem}
+
+\begin{proof}
+(L1), $i=1$: the elements on $v$ are its points (in $\cA_1$); a point of $v$ is on one element of $\cA_2$, a line of
+$S\setminus\{v\}$ on none. (L1), $i=0$: the elements incident with $\cA_1$ are the points of $v$, the lines of $\cL_v$
+and the points of $\Pi$, all in $\cA_0$; a line of $\cL_v$ meets $v$ in one point and contains no other point of $\cA_1$;
+a point of $\cP_\Pi\setminus\cP(v)$ is on exactly one line of $S$ (Lemma~\ref{lem:Piz}(b)) and not on $v$; a whisker has
+no point on $v$. (L0): a point outside $\cA_0$ is off $\Pi$. If it is at distance 3 from $v$, it is on exactly one line of
+$\cL_v$ (two would close a circuit of length at most 6) and on no whisker (a whisker through it would be at distance at
+most 4 from $v$). If it is free, it is on no line of $\cL_v$ and on at most one whisker. A line outside $\cA_0$ is not in
+$\Pi$ (the lines in $\Pi$ are those of $S$), so it meets $\Pi$ in one point, its only point in $\cA_0$. (C$_6$): a line of
+$\cL_v$ has no point of $\Pi$ other than its point on $v$ (Lemma~\ref{lem:Piz}(d)), and a whisker has exactly one point of
+$\Pi$, not on $v$. So the components of the substructure on $\cA_0$ are
+\[
+\{v\}\cup\cP(v)\cup\cL_v\qquad\text{and}\qquad \{n\}\cup\cP(n)\cup\{h\in W:h\text{ meets }n\}\quad(n\in S\setminus\{v\}),
+\]
+trees of diameter 4 (the ball of radius 2 about $v$; a line, its points and the whiskers hanging from them).
+Lemma~\ref{lem:hat} gives (C$_6$), and Theorem~\ref{thm:delorme} gives degree at most $q+1+(m-1)$, diameter at most 6 and
+the count, with $|\cA_2|=1$, $|\cA_1|=(q^3+1)+(q+1)$ and $|\cA_0|=(q^3+1)+(q^2+q)+|W|+(q+1)(q^3+1)$. The diameter is
+exactly 6: a free point $p$ (level $-1$) has $q^5$ opposite points, and only $(q+1)(q^3+1)<q^5$ points lie in $\cA_0$, so
+some point $p'$ opposite $p$ has level $-1$, and $d(p,p')\ge6$ by projection.
+\end{proof}
+
+\emph{The neighbourhood of every version.} Write $x^w$ for the versions ($i,j,k\in[m]$). Every element of $H(q)$
+appears once in Table~\ref{tab:versions}. An element of level $k$ has $m^{k+1}$ versions.
+
+\begin{longtable}{@{}p{3.6cm} l p{6.2cm} l@{}}
+\caption{The neighbourhood of every version in Theorem~\ref{thm:whiskerdoubling}.}\label{tab:versions}\\
+\toprule element (level) & versions & neighbours of the version & degree\\ \midrule\endfirsthead
+\toprule element (level) & versions & neighbours of the version & degree\\ \midrule\endhead
+\bottomrule\endfoot
+$v$ (2) & $v^{ijk}$ & $p^{ij}$ for the $q+1$ points $p$ of $v$ & $q+1$\\
+point $p$ of $v$ (1) & $p^{ij}$ & $v^{ij1},\dots,v^{ijm}$; $L^i$ for the $q$ lines $L\in\cL_v$ on $p$ & $q+m$\\
+line $n\in S\setminus\{v\}$ (1) & $n^{ij}$ & $p^i$ for the $q+1$ points $p$ of $n$ & $q+1$\\
+point $p\in\cP_\Pi\setminus\cP(v)$ (0) & $p^i$ & $n^{i1},\dots,n^{im}$ for the line $n\in S$ on $p$; $h^i$ for each whisker $h$ on $p$; every other line on $p$ & $q+m$\\
+line $L\in\cL_v$ (0) & $L^i$ & $p^{i1},\dots,p^{im}$ for $p=L\cap v$; the $q$ other points of $L$ & $q+m$\\
+whisker $h\in W$ (0) & $h^i$ & $p^i$ for $p=h\cap\Pi$; the $q$ free points of $h$ & $q+1$\\
+point $r\notin\Pi$ ($-1$) & $r$ & all $m$ versions of the line of $\cL_v\cup W$ on $r$ (if any); every other line on $r$ & $q+m$, or $q+1$ if $r$ is free and on no whisker\\
+line $N\notin\cA_0$ ($-1$) & $N$ & all $m$ versions of its point in $\Pi$ (not on $v$); its $q$ other points & $q+m$\\
+\end{longtable}
+
+\subsection{An exact whisker set for every odd $q$}
+For a point $X$ of $H(q)$ in $\Pi$, not on $v$, put
+\[
+\nu(X)=\frac{X_2X_3-X_4X_5}{cX_2^2+X_5^2}.
+\]
+The denominator vanishes only if $X_2=X_5=0$, that is (Lemma~\ref{lem:Piz}(d)) only on $v$. Let
+\[
+G(a,b)=(c_0a+c_1b)(a^2+cb^2)-b^3,\qquad F(z)=\frac{G(\alpha,\beta)}{\alpha^2+c\beta^2}\quad(z=(\alpha,\beta)\ne0),
+\]
+with $c_0,c_1\in\F$ chosen so that $G$ has no zero on $\F^2\setminus\{0\}$.
+
+\begin{lemma}\label{lem:cubic}
+Such $c_0,c_1$ exist for every odd $q$.
+\end{lemma}
+
+\begin{proof}
+$G(a,0)=c_0a^3$, so $c_0\ne0$ is needed. For $b\ne0$ and $t=a/b$, $G(a,b)=b^3\bigl((c_0t+c_1)(t^2+c)-1\bigr)$, and
+$t^2+c\ne0$. So $G$ has a zero with $b\ne0$ if and only if $(c_0,c_1)$ lies on one of the $q$ lines $c_0t+c_1=1/(t^2+c)$,
+$t\in\F$, of the $(c_0,c_1)$-plane; each has $q-1$ points with $c_0\ne0$. The lines for $t=0$ and $t=1$ meet at
+$c_0=1/(1+c)-1/c=-1/(c(1+c))\ne0$ ($c\ne-1$, as $-c$ is a non-square). So these lines cover at most $q(q-1)-1$ of the
+$q(q-1)$ points with $c_0\ne0$.
+\end{proof}
+
+One valid choice for the $q$ of the table ($\F_9=\F_3[i]$, $i^2=-1$):
+\begin{center}
+\begin{tabular}{@{}l cccccc@{}}
+\toprule $q$ & 3 & 5 & 7 & 9 & 11 & 13\\ \midrule
+$c$ & 1 & 2 & 1 & $1+i$ & 1 & 2\\
+$(c_0,c_1)$ & (1,2) & (1,0) & (1,0) & $(i,2i)$ & (1,3) & (1,1)\\ \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[exact whiskers]\label{thm:whiskers}
+Let $q$ be odd, $-c$ a non-square, and $c_0,c_1$ as in Lemma~\ref{lem:cubic}. Then
+\[
+W=\bigl\{\ell\in S_z\setminus\{v\}:\ z\in\F^2\setminus\{0\},\ \nu(\ell\cap\Pi)=F(z)\bigr\}
+\]
+is an exact whisker set: every free point lies on exactly one line of $W$, and $|W|=q^2(q^2-1)$.
+\end{theorem}
+
+Here $\ell\cap\Pi$ is one point not on $v$: $\ell\subseteq\Pi_z$ and $\ell\ne v$, so $\ell\notin S$ by
+Lemma~\ref{lem:Piz}(e), and $\ell$ is opposite $v$ by Lemma~\ref{lem:Piz}(b). The proof uses a complex structure on each
+$\Pi_z$. Write a point of $\Pi_z$ as $x=(x_1,\dots,x_6)$, meaning
+$(X_0,\dots,X_6)=(-cx_4-\alpha x_2-\beta x_5,x_1,\dots,x_6)$; on $\Pi_z$ the quadratic form is
+$Q_z(x)=x_1x_5+x_2x_6-x_3^2-cx_4^2-\alpha x_2x_4-\beta x_4x_5$, with polar form $b_z$. Put
+$\mathrm{num}(y)=y_2y_3-y_4y_5$ and $\mathrm{den}(y)=cy_2^2+y_5^2$, and define the linear map
+\[
+J_zx=\bigl(-\beta x_3+\alpha x_4-x_6,\ x_5,\ -cx_4-\beta x_5,\ x_3+\beta x_2,\ -cx_2,\
+cx_1+\alpha\beta x_2+\alpha x_3+c\beta x_4+\beta^2x_5\bigr);
+\]
+for $z=0$, $J_0x=(-x_6,x_5,-cx_4,x_3,-cx_2,cx_1)$.
+
+\begin{lemma}[complex structure]\label{lem:Jz}
+For every $z$:
+\begin{enumerate}[label=(\alph*)]
+\item $J_z^2=-c$, $Q_z(J_zx)=cQ_z(x)$ and $b_z(x,J_zx)=0$.
+\item The six differences $p_{12}-p_{34}$, $p_{54}-p_{32}$, $p_{20}-p_{35}$, $p_{65}-p_{30}$, $p_{01}-p_{36}$, $p_{46}-p_{31}$ of
+  the Grassmann coordinates of $x\wedge J_zx$ equal $Q_z(x)$ times $1,0,0,-c,\alpha,-\beta$.
+\item For every point $x$ of $Q(6,q)\cap\Pi_z$, the line $\langle x,J_zx\rangle$ is the line of $S_z$ through $x$.
+\item $\mathrm{num}(sx+tJ_0x)=(s^2+ct^2)\,\mathrm{num}(x)$ and $\mathrm{den}(sx+tJ_0x)=(s^2+ct^2)\,\mathrm{den}(x)$. So $\nu$
+  is constant on every line of $S\setminus\{v\}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a), (b) and (d) are polynomial identities with integer coefficients, verified by direct expansion. For instance, for
+$z=0$: $Q_0(J_0x)=cx_2x_6+cx_1x_5-c^2x_4^2-cx_3^2=cQ_0(x)$; $p_{12}=x_1x_5+x_2x_6$ and $p_{34}=x_3^2+cx_4^2$, so
+$p_{12}-p_{34}=Q_0(x)$; in (d), $\mathrm{num}(J_0x)=c\,\mathrm{num}(x)$ and $\mathrm{den}(J_0x)=c\,\mathrm{den}(x)$, and the
+polar forms $x_2y_3+x_3y_2-x_4y_5-x_5y_4$ and $2cx_2y_2+2x_5y_5$ vanish at $y=J_0x$. (c) $J_z$ has no eigenvector ($-c$ is
+a non-square), so $x$ and $J_zx$ span a line; if $Q_z(x)=0$, then by (a) the whole line is singular and by (b) its
+Grassmann coordinates satisfy \eqref{eq:tits}, so it is a line of $H(q)$ in $\Pi_z$ through $x$, the one of
+Lemma~\ref{lem:Piz}(b). (d) By (c), a line $n\in S\setminus\{v\}$ is $\{sx+tJ_0x\}$ for any of its points $x$, and
+$s^2+ct^2\ne0$.
+\end{proof}
+
+Let $p$ be a free point. By Lemma~\ref{lem:Piz}(d), $(p_2,p_5)\ne(0,0)$; as $p\notin\Pi$ we normalise $p_0+cp_4=1$. Then
+$p\in\Pi_z$ if and only if $z$ lies on the affine line
+\[
+A_p=\{(\alpha,\beta):\ \alpha p_2+\beta p_5=-1\}\subseteq\F^2\setminus\{0\},
+\]
+which has $q$ points and direction $(p_5,-p_2)$. For $z\in A_p$ let $\ell_p(z)$ be the line of $S_z$ on $p$ and
+$X(z)=\ell_p(z)\cap\Pi$.
+
+\begin{lemma}[key identity]\label{lem:key}
+For $z=(\alpha,\beta)\in A_p$,
+\[
+\Phi_p(z):=\nu(X(z))+\frac{\beta^3}{\alpha^2+c\beta^2}=\frac{p_2p_3-p_4p_5+\beta p_2^2}{cp_2^2+p_5^2}.
+\]
+So $\Phi_p$ is affine on $A_p$, with increment $-p_2^3/(cp_2^2+p_5^2)$ along $(p_5,-p_2)$.
+\end{lemma}
+
+\begin{proof}
+Put $\Theta=cp_2^2+p_5^2\ne0$ and $\gamma=-\alpha p_5+c\beta p_2$. On $\Pi_z$ the linear form $\Lambda(y)=y_0+cy_4$ equals
+$-\alpha y_2-\beta y_5$, and $\Pi=\{\Lambda=0\}$. We have $\Lambda(p)=1$ and $\Lambda(J_zp)=-\alpha p_5+c\beta p_2=\gamma$. By
+Lemma~\ref{lem:Jz}(c), $\ell_p(z)=\langle p,J_zp\rangle$, so $X(z)=\gamma p-J_zp$, with
+\[
+X_2=\gamma p_2-p_5,\quad X_3=\gamma p_3+cp_4+\beta p_5,\quad X_4=\gamma p_4-p_3-\beta p_2,\quad X_5=\gamma p_5+cp_2 .
+\]
+Expanding, $\mathrm{den}(X)=(\gamma^2+c)\Theta$ and
+$\mathrm{num}(X)=(\gamma^2+c)(p_2p_3-p_4p_5)+\beta(2\gamma p_2p_5+cp_2^2-p_5^2)$. Solving $\alpha p_2+\beta p_5=-1$,
+$-\alpha p_5+c\beta p_2=\gamma$ (determinant $\Theta$) gives $\alpha=-(cp_2+\gamma p_5)/\Theta$ and
+$\beta=(\gamma p_2-p_5)/\Theta$, hence $\alpha^2+c\beta^2=(\gamma^2+c)/\Theta\ne0$ and
+$\beta^3/(\alpha^2+c\beta^2)=\beta(\gamma p_2-p_5)^2/((\gamma^2+c)\Theta)$. The two $\beta$-terms add up to
+$\beta\bigl(2\gamma p_2p_5+cp_2^2-p_5^2+(\gamma p_2-p_5)^2\bigr)/((\gamma^2+c)\Theta)=\beta p_2^2/\Theta$. Along $(p_5,-p_2)$,
+$\beta$ changes by $-p_2$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:whiskers}]
+Let $p$ be free. The lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on $p$ are exactly the $q$ lines $\ell_p(z)$, $z\in
+A_p$, and they are distinct (a common line would lie in $S_z\cap S_{z'}=\{v\}$); for the same reason each line of $W$
+belongs to a single $S_z$. As $F(z)=c_0\alpha+c_1\beta-\beta^3/(\alpha^2+c\beta^2)$, we have $\ell_p(z)\in W$ if and only if
+$\Phi_p(z)-(c_0\alpha+c_1\beta)=0$. By Lemma~\ref{lem:key} the left side is affine on $A_p$ with increment
+\[
+-\frac{p_2^3}{\Theta}-(c_0p_5-c_1p_2)=-\frac{G(p_5,-p_2)}{\Theta}\ne0
+\]
+along $(p_5,-p_2)$, so it vanishes at exactly one of the $q$ points of $A_p$: $p$ is on exactly one line of $W$. The lines
+of $W$ are opposite $v$ and not in $S$. Counting incidences between free points and $W$ gives $|W|=q^3(q^2-1)/q$.
+\end{proof}
+
+\subsection{The bound}\label{ssec:thmD}
+
+\begin{theorem}\label{thm:D}
+For every odd prime power $q$ and every $m\ge2$, the structure of Theorem~\ref{thm:whiskerdoubling} with the exact whisker
+set of Theorem~\ref{thm:whiskers} is bipartite, has maximum degree $q+m$ and diameter 6, and
+\[
+\nb(q+m,6)\ge2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr).
+\]
+In particular $\nb(q+2,6)\ge2(q+1)(q^4+q^2+1)+2q^4+4q^3+4q+10$ and
+$\nb(q+3,6)\ge2(q+1)(q^4+q^2+1)+4q^4+10q^3+10q+34$.
+\end{theorem}
+
+\begin{proof}
+Theorems~\ref{thm:whiskerdoubling} and~\ref{thm:whiskers}, with $|W|=q^4-q^2$.
+\end{proof}
+
+With $W$ exact, every element outside $\cA_0$ is incident with exactly one element of $\cA_0$. For a doubling of a
+generalized $n$-gon of order $(q,q)$ with $N$ points, counting incidences gives $q|\cA_0|+2k\le2N$, $k$ the number of
+components of $\cA_0$; here $k=q^3+1$ and $q(2q^4+2q^3+2q+2)+2(q^3+1)=2N$, so the single-level part is as large as this
+counting bound allows for $q^3+1$ components.
+
+\begin{remark}[Delorme's construction; the 2013 values]\label{rem:delorme6}
+$W=\emptyset$ is Delorme's doubling of a generalized hexagon \cite[\S8(b)]{D85a}: he takes $q^3+1$ pairwise opposite
+elements (citing \cite{T80}; here the Hermitian spread $S$), puts one of them in $\cA_2$, its neighbours and the others in
+$\cA_1$, and their neighbours in $\cA_0$, so $|\cA_1|=q^3+q+2$ and $|\cA_0|=q^4+2q^3+q^2+2q+2$, exactly as in
+Theorem~\ref{thm:whiskerdoubling} with $W=\emptyset$; at $q=5$ he states $7812+912+2\cdot132+4=8992$. At $m=2$ this has
+$2(q+1)(q^4+q^2+1)+q^4+4q^3+q^2+4q+10$ elements: 8992, 142464, 374452, 842048 at $q=5,9,11,13$; at $q=13$, $m=3$, it has
+884062. These are the 2013 values at $\Delta=7,11,13,15,16$. The exact whiskers add $(m-1)q^2(q^2-1)$.
+\end{remark}
+
+\emph{Worked counts.} $q=5$, $m=2$: $H(5)$ has $2\cdot6\cdot651=7812$ elements, $|\cA_0|=1512$ (of which $|W|=600$),
+$|\cA_1|=132$, $|\cA_2|=1$, so the order is $7812+1512+2\cdot132+4=9592$. $q=13$, $m=3$: $H(13)$ has 804468 elements,
+$|\cA_0|=61544$ ($|W|=28392$), $|\cA_1|=2212$, so the order is $804468+2(61544+3\cdot2212+9)=940846$.
+
+\noindent\emph{Cells.} $m=2$: $(7,6)$ 9592 (2013: 8992), $(11,6)$ 148944 (142464), $(13,6)$ 388972 (374452), $(15,6)$ 870440
+(842048). $m=3$, $q=13$: $(16,6)$ 940846 (884062). These graphs are not regular; see Section~\ref{ssec:thmR}.
+
+\subsection{Even $q$}\label{ssec:evenq}
+Let $q=2^e$, $\Tr$ the absolute trace of $\F$, and fix $\delta\in\F$ with $\Tr(\delta)=1$, so that $t^2+t+\delta$ is
+irreducible and $a^2+ab+\delta b^2$ is anisotropic. Now $Q(6,q)$ is $X_0X_4+X_1X_5+X_2X_6+X_3^2=0$, with nucleus $e_3$,
+and $H(q)$ is given by the same equations \eqref{eq:tits}. Put
+\[
+\Pi_z:\ X_3=X_0+\delta X_4+\alpha X_2+\beta X_5\qquad(z=(\alpha,\beta)\in\F^2),\qquad \Pi=\Pi_{(0,0)},
+\]
+$S_z$ the lines of $H(q)$ in $\Pi_z$, and $v=\langle e_1,e_6\rangle\subseteq\Pi_z$ as before.
+
+\begin{lemma}\label{lem:Piz-even}
+Lemma~\ref{lem:Piz} holds verbatim for even $q$ with these $\Pi_z$.
+\end{lemma}
+
+\begin{proof}
+(a) On $\Pi_z$, $X_0X_4+X_1X_5+X_2X_6+X_3^2=(X_0^2+X_0X_4+\delta^2X_4^2)+(X_1+\beta^2X_5)X_5+X_2(X_6+\alpha^2X_2)$. The first
+term is anisotropic ($\Tr(\delta^2)=\Tr(\delta)=1$) and the polar form is non-degenerate on $\Pi_z$ (which misses $e_3$), so
+$\Pi_z\cap Q(6,q)$ is an elliptic quadric $Q^-(5,q)$. (b), (c), (e) are proved as in Lemma~\ref{lem:Piz}. (d) The same
+three equations give $u_2=u_5=0$; on $X_2=X_5=0$ the quadric is the cone $X_0X_4=X_3^2$, and in $\Pi_z$ this becomes
+$X_0^2+X_0X_4+\delta^2X_4^2=0$, so $X_0=X_4=X_3=0$, a point of $v$.
+\end{proof}
+
+So Theorem~\ref{thm:whiskerdoubling} holds for even $q$ without change. For $X\in\Pi$ not on $v$ put
+\[
+\nu(X)=\frac{X_2X_3+X_2X_4+X_4X_5}{\delta X_2^2+X_2X_5+X_5^2},\quad G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3,\quad
+F(z)=\frac{G(\alpha,\beta)}{\alpha^2+\alpha\beta+\delta\beta^2}.
+\]
+The denominator of $\nu$ is anisotropic and vanishes only on $v$.
+
+\begin{lemma}\label{lem:cubic-even}
+There are $c_0,c_1\in\F$ with $G$ zero-free on $\F^2\setminus\{0\}$ if and only if $q\ge4$.
+\end{lemma}
+
+\begin{proof}
+$G(a,0)=c_0a^3$ needs $c_0\ne0$. For $b\ne0$ and $t=a/b$: $G=0$ if and only if $c_0t+c_1=r(t):=1/(t^2+t+\delta)$, a line in
+the $(c_0,c_1)$-plane with $q-1$ points having $c_0\ne0$. If $q\ge4$ take $\varpi\notin\{0,1\}$; then $r(\varpi)\ne r(0)$
+(as $\varpi^2+\varpi\ne0$), so the lines for $t=0,\varpi$ meet at $c_0=(r(0)+r(\varpi))/\varpi\ne0$, and the $q$ lines cover
+fewer than $q(q-1)$ points with $c_0\ne0$. If $q=2$ then $\delta=1$, $r(0)=r(1)=1$, and the lines $c_1=1$ and $c_0+c_1=1$
+contain both points with $c_0=1$.
+\end{proof}
+
+On $\Pi_z$ use coordinates $x=(x_0,x_1,x_2,x_4,x_5,x_6)$, with $X_3=x_0+\delta x_4+\alpha x_2+\beta x_5$, and
+\begin{multline*}
+J_zx=\bigl((\delta+1)x_0+\delta\alpha x_2+\delta^2x_4+(\alpha+\delta\beta)x_5,\ \beta x_0+x_1+\alpha\beta x_2+(\alpha+\delta\beta)x_4+\beta^2x_5+x_6,\
+x_2+x_5,\\ x_0+(\alpha+\beta)x_2+\delta x_4+\beta x_5,\ \delta x_2,\ (\alpha+\beta)x_0+\delta x_1+\alpha^2x_2+\delta\alpha x_4+\alpha\beta
+x_5\bigr).
+\end{multline*}
+
+\begin{lemma}\label{lem:Jz-even}
+With $Q$ the quadratic form and $b$ its polar form: (a) $J_z^2+J_z+\delta=0$, $Q(J_zx)=\delta Q(x)$ and $b(x,J_zx)=Q(x)$;
+(b) the six differences of \eqref{eq:tits} for $x\wedge J_zx$ are $Q(x)$ times $1,0,0,\delta,\alpha,\beta$; (c) for every
+point $x$ of $Q(6,q)\cap\Pi_z$, $\langle x,J_zx\rangle$ is the line of $S_z$ on $x$; (d) with
+$\mathrm{num}=X_2X_3+X_2X_4+X_4X_5$ and $\mathrm{den}=\delta X_2^2+X_2X_5+X_5^2$ on $\Pi$,
+$\mathrm{num}(sx+tJ_0x)=(s^2+st+\delta t^2)\mathrm{num}(x)$, and likewise for $\mathrm{den}$; so $\nu$ is constant on every
+line of $S\setminus\{v\}$.
+\end{lemma}
+
+\begin{proof}
+(a), (b), (d) are polynomial identities over $\F_2[\delta,\alpha,\beta,x]$, verified by expansion. (c) $J_z$ has no
+eigenvector since $t^2+t+\delta$ is irreducible; if $Q(x)=0$ then $Q(sx+tJ_zx)=(s^2+st+\delta t^2)Q(x)=0$ by (a), and by (b)
+the line satisfies \eqref{eq:tits}, so it is the line of Lemma~\ref{lem:Piz-even}(b). In (d), $s^2+st+\delta t^2\ne0$ for
+$(s,t)\ne0$.
+\end{proof}
+
+Let $p$ be free; then $(p_2,p_5)\ne(0,0)$ by Lemma~\ref{lem:Piz-even}(d), and we normalise $p_0+p_3+\delta p_4=1$. With
+$\Lambda(y)=y_0+y_3+\delta y_4$ we have $\Pi=\{\Lambda=0\}$ and $\Lambda=\alpha y_2+\beta y_5$ on $\Pi_z$, so $p\in\Pi_z$ if and
+only if $z$ lies on the affine line $A_p:\ \alpha p_2+\beta p_5=1$ (direction $(p_5,p_2)$). For $z\in A_p$ let $\ell_p(z)$ be
+the line of $S_z$ on $p$ and $X(z)=\ell_p(z)\cap\Pi$.
+
+\begin{lemma}[key identity, characteristic 2]\label{lem:key-even}
+For $z=(\alpha,\beta)\in A_p$,
+\[
+\Phi_p(z):=\nu(X(z))+\frac{\beta^3}{\alpha^2+\alpha\beta+\delta\beta^2}=\frac{p_2p_3+p_2p_4+p_4p_5+\beta
+p_2^2}{\delta p_2^2+p_2p_5+p_5^2},
+\]
+which is affine on $A_p$ with increment $p_2^3/\Theta$ along $(p_5,p_2)$, $\Theta=\delta p_2^2+p_2p_5+p_5^2\ne0$.
+\end{lemma}
+
+\begin{proof}
+$\Lambda(p)=1$ and $\gamma:=\Lambda(J_zp)=\alpha(p_2+p_5)+\delta\beta p_2$. By Lemma~\ref{lem:Jz-even}(c), $X(z)=\gamma p+J_zp$
+(then $\Lambda(X)=2\gamma=0$); $X_2=(\gamma+1)p_2+p_5$ and $X_5=\delta p_2+\gamma p_5$. Expanding,
+$\mathrm{den}(X)=(\gamma^2+\gamma+\delta)\Theta$ and
+$\mathrm{num}(X)=(\gamma^2+\gamma+\delta)(p_2p_3+p_2p_4+p_4p_5)+\beta\bigl((\gamma+\delta+1)p_2^2+p_5^2\bigr)$, with
+$\gamma^2+\gamma+\delta\ne0$. Solving $\alpha p_2+\beta p_5=1$, $\alpha(p_2+p_5)+\delta\beta p_2=\gamma$ (determinant $\Theta$):
+$\alpha=(\delta p_2+\gamma p_5)/\Theta$ and $\beta=((\gamma+1)p_2+p_5)/\Theta$, so
+$\alpha^2+\alpha\beta+\delta\beta^2=(\gamma^2+\gamma+\delta)/\Theta$ and
+$\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)=\beta((\gamma+1)p_2+p_5)^2/((\gamma^2+\gamma+\delta)\Theta)$. The $\beta$-terms add to
+$\beta\bigl((\gamma+\delta+1)+(\gamma+1)^2\bigr)p_2^2/((\gamma^2+\gamma+\delta)\Theta)=\beta p_2^2/\Theta$. Along $(p_5,p_2)$,
+$\beta$ changes by $p_2$.
+\end{proof}
+
+\begin{theorem}[exact whiskers, even $q\ge4$]\label{thm:whiskers-even}
+With $c_0,c_1$ as in Lemma~\ref{lem:cubic-even}, $W=\{\ell\in S_z\setminus\{v\}:z\ne0,\ \nu(\ell\cap\Pi)=F(z)\}$ is an
+exact whisker set.
+\end{theorem}
+
+\begin{proof}
+As for Theorem~\ref{thm:whiskers}: the lines of $\bigcup_{z\ne0}S_z\setminus\{v\}$ on a free point $p$ are the $q$
+distinct lines $\ell_p(z)$, $z\in A_p$, and $\ell_p(z)\in W$ if and only if $\Phi_p(z)+c_0\alpha+c_1\beta=0$, since
+$F(z)=c_0\alpha+c_1\beta+\beta^3/(\alpha^2+\alpha\beta+\delta\beta^2)$. The left side is affine on $A_p$ with increment
+$p_2^3/\Theta+c_0p_5+c_1p_2=G(p_5,p_2)/\Theta\ne0$, so it vanishes at exactly one point.
+\end{proof}
+
+\begin{corollary}\label{cor:evenq}
+Theorem~\ref{thm:D} and Theorem~\ref{thm:R} hold for every even $q\ge4$. For $q=2$ there is also an exact whisker set
+(of $12=q^2(q^2-1)$ lines, given explicitly and computer-checked), so they hold for $q=2$ as well.
+\end{corollary}
+
+None of this changes a cell with $\Delta\le16$, for any $m$: for $q\in\{2,4,8\}$ and $\Delta=q+m\le16$, either $\Delta-1$ is
+a prime power (a cell where the Moore bound is attained by $H(\Delta-1)$), or $\Delta\in\{7,11,13,15,16\}$, where
+Theorem~\ref{thm:D} with the odd $q'=\Delta-2$ (or $q'=13$, $m=3$ at $\Delta=16$) gives much more (for instance 9592
+against 4468 from $q=4$, $m=3$ at $\Delta=7$).
+\todo{Corollary~\ref{cor:evenq}, $q=2$: the 12 whiskers are a computer-found set (its exactness is also proved in Lean).
+List them in an appendix, or drop the $q=2$ case?}
+
+\subsection{Regular graphs of diameter 6}\label{ssec:thmR}
+The structure of Theorem~\ref{thm:D} has equally many points and lines in $\cA_0$ (exact whiskers force this), but $\cA_1$
+has $q^3+1$ lines and only $q+1$ points, and $\cA_2$ is a line. So it has $(m-1)m(q^3-q+m)$ more lines than points. We
+delete repeated lines and then add anti-flags.
+
+\begin{lemma}[repeated lines]\label{lem:repeated}
+In $H(q)^{(m)}_\cA$, for $n\in S\setminus\{v\}$ and $i\in[m]$, the $m$ lines $n^{i1},\dots,n^{im}$ all have the point set
+$\{p^i:p\in n\}$; for $i,j\in[m]$ the lines $v^{ij1},\dots,v^{ijm}$ all have the point set $\{p^{ij}:p\in v\}$
+(Table~\ref{tab:versions}). So there are $mq^3+m^2$ classes of $m$ repeated lines.
+\end{lemma}
+
+\begin{lemma}[completion]\label{lem:completion}
+Let a finite incidence structure have maximum degree at most $\Delta$, every element of degree at least $\Delta-r$, and
+$\sum_{\text{points}}(\Delta-\deg)=\sum_{\text{lines}}(\Delta-\deg)=:T$. If $T>2r\Delta$, there is a set $J$ of anti-flags
+such that adding $J$ makes it $\Delta$-regular.
+\end{lemma}
+
+\begin{proof}
+Choose a multiset $J$ of point--line pairs in which each element $x$ occurs $\Delta-\deg x$ times (possible as the sums
+agree). Call an entry bad if it is a flag or a repeat of another entry, and take $J$ with the fewest bad entries. If
+$(p,L)$ is bad: $L$ is joined (in $\I\cup J$, with multiplicity) to $\Delta$ points, each in at most $r$ entries of $J$;
+likewise $p$. So at most $2r\Delta<T$ entries $(p',L')$ have $p'$ joined to $L$ or $L'$ joined to $p$, and some entry
+$(p',L')$ has neither (it is not $(p,L)$ itself). Replacing $(p,L),(p',L')$ by $(p,L'),(p',L)$ removes a bad entry and
+creates none. So the minimum is 0.
+\end{proof}
+
+\begin{theorem}\label{thm:R}
+For every odd prime power $q$ and $m\ge2$ there is a $(q+m)$-regular incidence structure of diameter at most 6 with
+\[
+2(q+1)\bigl(q^4+q^2+1+(m-1)(q^3+m+1)\bigr)
+\]
+elements: $2(q+1)(q^4+q^3+q^2+4)$ for $m=2$ and $2(q+1)(q^4+2q^3+q^2+9)$ for $m=3$. For the five table instances below the
+order exceeds $\Mb(q+m,5)$, so the diameter is exactly 6.
+\end{theorem}
+
+\begin{proof}
+Start from Theorem~\ref{thm:D}. Fix a set $R$ of $q$ lines of $S\setminus\{v\}$, and delete the lines $v^{ijk}$ with
+$k\ge2$ ($(m-1)m^2$ lines) and $n^{ij}$ with $j\ge2$ for $n\notin R$ ($(m-1)m(q^3-q)$ lines): in total
+$(m-1)m(q^3-q+m)$, the excess, so points and lines are now equally many. Each class of Lemma~\ref{lem:repeated} keeps at
+least one line, so by Lemma~\ref{lem:flags}(b) no distance between remaining elements increases. After the deletion the
+degrees are: $p^{ij}$ ($p\in v$): $q+1$; $p^i$ on a line $n\notin R$ of $S$: $q+1$; $p^i$ on $n\in R$: $q+m$; $v^{ij1}$,
+$n^{i1}$ ($n\notin R$), $n^{ij}$ ($n\in R$) and $h^i$ ($h\in W$): $q+1$; all others as in Table~\ref{tab:versions} ($q+m$).
+So every deficit is at most $r=m-1$. Points and lines are equally many, so both deficit sums equal
+$\Delta|\cP|-|E|=\Delta|\cL|-|E|$ ($\Delta=q+m$, $E$ the set of flags), as Lemma~\ref{lem:completion} requires; and their
+common value $T$ is at least the deficit of the $m|W|$ whisker versions: $T\ge(m-1)mq^2(q^2-1)>2(m-1)(q+m)$.
+Lemma~\ref{lem:completion} completes the structure; the added flags join a point to a line, so the graph stays bipartite,
+and they do not increase distances. The number of points is $(q+1)(q^4+q^2+1)+(m-1)\bigl((q+1)(q^3+1)+m(q+1)\bigr)$.
+\end{proof}
+
+\emph{Neighbourhoods.} Every neighbourhood is that of Table~\ref{tab:versions}, minus the deleted lines listed in the
+proof, plus the completing anti-flags: exactly $m-1$ of them at each element of degree $q+1$, none elsewhere. The
+completing anti-flags are given by Lemma~\ref{lem:completion}, not by a formula; neither the maximum degree nor the
+diameter depends on the choice.
+\todo{Theorem~\ref{thm:R}: the completing anti-flags are only shown to exist (as in the Lean proof). If you want every
+neighbourhood written out, we need an explicit completion (for instance a formula on the deficient elements); this is open
+work.}
+
+\noindent\emph{Cells (regular graphs).} $(7,6)$ 9348, $(11,6)$ 147500, $(13,6)$ 386328, $(15,6)$ 866068, $(16,6)$ 927724
+($q=13$, $m=3$). Each beats the 2013 value of its cell (8992, 142464, 374452, 842048, 884062), and Delorme's graphs behind
+those values are not regular (their point side is larger).
+
 %%END%%
 
 \bibliographystyle{amsplain}
