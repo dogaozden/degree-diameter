@@ -79,16 +79,20 @@ breadth-first search from every vertex (§15).
   itself) exists on at most **two** points, because point triads of $Q(4,q)$ have 0 or 2 centres and line triads 1 or
   $q+1$. **Proposition 6.4**: two points always work.
 - **Proposition 7.2** (§7): freed lines may come in concurrent pairs if the $\mathcal A$-hub at the slot of each line
-  sits at a point of its partner (e.g. the ovoid point).
+  sits at a point of its partner (e.g. the ovoid point). **Lemma 7.3**: in the seven-level layout such hubs always
+  exist, also when partners meet at a point of the ovoid.
+- **Proposition 14.1** (§14): ceilings of the construction per cell; only $(15,5)$ is within reach, and it needs a
+  relaxed set of 111 points of $W(11)$ (we found 89).
 - **Families** (§10, Corollaries 10.1–10.4), valid for every $q$, with explicit sets and explicit hub graphs. For
   example, for $q$ odd, $q\ge 5$: $n_b(q+4,5)\ge 14N(q)+K_{\mathcal A}+K_{\mathcal B}$, where the explicit sets allow
   up to $6q$ and $3q+3$ hubs and the explicit hub graphs of Lemma 9.1 decide how many are used. With
   those hub graphs the families exceed the 2013 table in the cells $(10,5)$–$(15,5)$ (§14).
 
-**What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts and
-route-chart lifts) in $(10,5)$, $(11,5)$, $(12,5)$, $(14,5)$, $(15,5)$, $(16,5)$, and far below at $\Delta\le 9$. At
-$(15,5)$ the best graph of this kind we built has 20,713 vertices (relaxed set of 87 lines of $Q(4,11)$), 23 short of
-the lab's 20,736; §14 explains which quantity limits it.
+**What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts,
+route-chart lifts and the multi-doubled-matching lift at $(13,5)$) in every cell $(10,5)$–$(16,5)$, and far below at
+$\Delta\le 9$. Proposition 14.1 shows that only $(15,5)$ is within reach of the construction at all: it needs a relaxed
+set of 111 points of $W(11)$. The best graph of this kind we built there has 20,715 vertices (relaxed set of 89 lines
+of $Q(4,11)$, Computer-checked 7.4), 21 short of the lab's 20,736.
 
 ---
 
@@ -557,13 +561,50 @@ $H\to D$ arc, so that a point of $O$ carries one free $\mathcal B$-slot there: l
 (in-arcs $2\to4$, which is $D\to D$, and $3\to4$). In the nine-level layout $HHHHDHHHD$ the two $D$-levels receive four
 and three $H\to D$ arcs, and the proof of Lemma 7.3 goes through unchanged.
 
-In the language of $W(q)$ (lines of $Q(4,q)$ = points of $W(q)$, the ovoid $O$ = the spread of Lemma 1.1), $T$ is a set
-of points of $W(q)$ in which every point is collinear with at most one other, and the line joining a collinear pair is
-not in the spread. Counting lines (a single point uses $q+1$ lines, a pair $2q+1$, no line is shared) gives
-$|T|\le 2(q+1)(q^2+1)/(2q+1)$, i.e. at most 86 for $q = 9$ and 127 for $q = 11$. *Computer-checked*: tabu searches find
-such sets of size 66 for $q = 9$ (squad card r2c1; 30 pairs) and 87 for $q = 11$ (card r2c2), against 51 and 70 for
-partial ovoids. For $q = 5$ the maximum is 23 (exhaustive search with the group, card r2c8), against the counting bound 28
-and the maximum partial ovoid 18. Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
+In the language of $W(q)$ (lines of $Q(4,q)$ = points of $W(q)$, the ovoid $O$ = the spread $S$ of Lemma 1.1), $T$ is a
+set of points of $W(q)$ in which every point is collinear with at most one other; by Lemma 7.3 the line joining a
+collinear pair may be any line, also a line of $S$ (a pair meeting at $z\in O$ is a pair on the spread line $z$). The
+searches before Lemma 7.3 also required the joining line not to be in $S$; then $T$ has at most one point on each line
+of $S$, so $|T|\le q^2+1$. In general, every point of $W(q)$ lies on one line of $S$ and $q$ others, and a line holds at
+most two points of $T$, two only for a pair; so with $p_S$ pairs on lines of $S$ and $p_N$ on other lines,
+$|T|-p_S\le q^2+1$ and $q|T|-p_N\le q(q^2+1)$. With $|T|\ge 2(p_S+p_N)$ this gives
+$|T|\le 2(q+1)(q^2+1)/(2q+1)$ (the plain count: a single point uses $q+1$ lines, a pair $2q+1$, no line is shared), i.e.
+at most 28, 53, 86, 127 for $q = 5,7,9,11$.
+
+*Computer-checked* (research/theorems/d5relax/; squad round d5relax-r1). Largest relaxed sets found, with the spread
+condition / without it:
+
+| $q$ | counting bound | partial ovoid (best known to us) | relaxed, with the condition | relaxed, without it |
+|---:|---:|---:|---:|---:|
+| 3 | 11 | 7 | 10 (exact) | 11 (exact, MIP) |
+| 5 | 28 | 18 (exact) | 23 (exact, card r2c8) | 23 (found; 24 undecided) |
+| 7 | 53 | 33 | 41 | 41 |
+| 9 | 86 | 51 | 66 | 66 |
+| 11 | 127 | 70 | 88 | 89 (36 pairs, 4 on lines of $S$) |
+| 13 | 176 | — | — | 103 (short run) |
+
+The values without the condition come from our tabu search (rtabu.c) and were checked independently (score.py, which
+recomputes collinearity from coordinates). At $q = 11$ eight different strategies of the squad stop at 89: weighted
+local search, unions of orbits of 533 subgroups of $\mathrm{Sp}(4,11)$ solved exactly (best 81, then 89 by tabu search),
+sets with all pairs on lines of $S$ (74 in the restricted model, 89 after an unrestricted search), large-neighbourhood
+search with exact MIP re-optimisation (regions of 700–1000 points solve to optimality and never pass 89), seeded growth
+from partial ovoids and torus orbits, and algebraic families. Two of the 89-point sets share only two points, so 89 is
+a broad plateau rather than one basin. So dropping the condition gains one point at $q = 11$ and none at $q = 7, 9$ in
+these searches. The cyclic subgroups of order $(q^2+1)/2 = 61$, the natural symmetry for a set with two points on half
+of the spread lines (which could reach $q^2+1 = 122$), have no relaxed orbit at all (c61.py). Relaxed *point* sets of
+$Q(4,q)$, the dual question for the $H\to D$ arcs, did not exceed the ovoid size in the tabu searches (10 at $q = 3$,
+26 at $q = 5$).
+
+**Computer-checked 7.4 (Lemma 7.3 at full size).** The seven-level graph over $Q(4,11)$ with the 89-point relaxed set
+above (36 pairs, 4 of them meeting at ovoid points; research/theorems/d5relax/graphs/W11_relaxed_set_89.txt), built by
+research/theorems/d5relax/build_zo.py with the hub assignment of Lemma 7.3, $K_{\mathcal B} = 126$,
+$K_{\mathcal A} = 93$, has 20,715 vertices, maximum degree 15 and diameter 5 (apsp_mt, BFS from every vertex;
+graphs/d15D5type_q11_zo89.*). The hub rule holds at all $5\cdot 72 = 360$ instances. The solution file was rebuilt
+independently by research/theorems/d5gq/sol2edges.py and by the referee's research/referee/d5_checks/rebuild_record.py
+(which re-checks every hypothesis); both give the same edge set. With the level-3 slot of one hub of a pair meeting at
+an ovoid point moved off its partner (`BREAK=1`), the graph has diameter 6.
+
+Squad card r2c7 tested the rule independently at $q = 5$ (five levels $HHDHD$ over $Q(4,5)$, 23 freed lines with
 6 partner pairs, $25+25$ hubs): with the hub rule the graph is valid (1,610 vertices, apsp), with the same sets and a hub
 assignment ignoring the rule it has diameter 6 (research/squads/gqd5-r2/c7/). Card r3c4 tested the final form (only
 the $\mathcal A$-hub condition, $\mathcal B$-hubs placed arbitrarily, many partner pairs): five levels over $Q(4,5)$ with
@@ -785,33 +826,56 @@ We found no construction from a quadrangle of unequal order that approaches the 
 family_table_out.txt); each of these six values was also built and checked by all-pairs BFS with independent scripts
 (research/theorems/d5gq/family_check.py, family_check_even.py, written by the referee agent; output
 family_check_out.txt). "Computer" = the best graph of §§8–11 type that we built and checked by all-pairs BFS. "Lab" =
-the lab's value before this note (README, research/RESULTS.md).
+the lab's value on 28 October 2026 (README, research/RESULTS.md). The $\Delta\le 9$ values of the table are Loz's
+voltage lifts [Wiki] and the cells $(10,5)$–$(16,5)$ are credited to [DGQ] (§16).
 
-| cell | table (2013) | theorem family | computer (this note) | lab before | construction of the lab value |
+| cell | table (2013) | theorem family | computer (this note) | lab | construction of the lab value |
 |---|---:|---:|---:|---:|---|
 | (10,5) | 4,000 | 4,044 ($q=7$, $r=2$) | 4,062 ($q=7$, $r=2$) | **4,800** | doubled-matching lift of $W(7)$ |
 | (11,5) | 5,850 | 6,090 ($q=8$, $r=2$) | — | **7,020** | doubled-matching lift of $W(8)$ |
 | (12,5) | 8,200 | 8,430 ($q=8$, $r=3$) | — | **9,840** | doubled-matching lift of $W(9)$ |
-| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | **11,636** | 11,486 | — |
+| (13,5) | 11,480 | 11,552 ($q=9$, $r=3$) | 11,636 ($q=9$, $r=3$) | **11,700** | multi-doubled-matching lift of $W(8)$ |
 | (14,5) | 14,760 | 14,812 ($q=9$, $r=4$) | — | **17,568** | doubled-matching lift of $W(11)$ |
-| (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,713 ($q=11$, $r=3$) | **20,736** | route-chart lift |
+| (15,5) | 20,496 | 20,598 ($q=11$, $r=3$) | 20,715 ($q=11$, $r=3$) | **20,736** | route-chart lift |
 | (16,5) | 27,300 | 26,453 ($q=11$, $r=4$) | — | **33,792** | route-chart lift |
 
 At $\Delta\le 9$ (cells $(5,5)$–$(9,5)$) the level graphs have $6N(q)$ or $10N(q)$ vertices for small $q$ (e.g.
 $(9,5)$: $6N(7) = 2{,}400$, $(7,5)$: $6N(5) = 936$) and the hubs add only $O(q)$; they are below the 2013 table there,
 and far below the lab's values.
 
-**Why we could not reach $(15,5)$** (*Heuristic*; nothing here is proved). With seven levels over $Q(4,11)$,
-$K_{\mathcal B}\le\min(a+2c,2b+c,3b)$ with $a = 122$, and $K_{\mathcal A}\le b+2c$, where $b$ is the size of the freed
-sets on the $D\to H$ arcs. The lab's value needs $K_{\mathcal A}+K_{\mathcal B}\ge 241$, i.e. $b\ge 111$ when $c = 2$. For
-partial ovoids of $W(11)$ this is exactly Tallini's bound $q^2-q+1$ (best found: 70). Relaxed sets (§7) are not limited by
-Tallini's theorem, and Proposition 7.2 puts no limit on their number of pairs; counting allows up to 127 points, but the
-best we found has 87 (squad card r2c2; longer tabu runs plateau at 84–87), which gives 20,713 (built and checked, §15). At
-$q = 5$ the true maximum (23) is 82% of the counting bound; the same ratio at $q = 11$ would give about 104, still below
-111. So we would need
-relaxed sets of $W(11)$ about a quarter larger than any we found, or several more freed points on every non-friendly arc
-(each one on each of the ten $H\to H$ arcs adds 4 vertices). Third-level routing gives such points at $q = 5$ and $7$
-(§12), but we did not get it to work at $q = 11$ in this session.
+**Proposition 14.1 (ceilings of the construction).** Suppose every freed set on a friendly arc has at most
+$B(q) = \lfloor 2(q+1)(q^2+1)/(2q+1)\rfloor$ elements, every freed set on a non-friendly arc at most $c$, and hubs are
+as in Definition 3.1. Then the order is at most $(2r+1)\cdot 2N(q)+K$ with
+$K = 2r\max(B(q),c)$ for any layout, and for $q$ odd $K = 2b+2c$, $\min(a+b+4c,3b+3c)$, $4b+4c$ with five, seven,
+nine levels ($a,b\le B(q)$; $a\le q^2+1$ when $M = \mathrm{id}$ on the $H\to D$ arcs, by Theorem B). With $c = 2$
+(Corollary 6.2) the best ceilings per cell are (research/theorems/d5relax/ceilings.py):
+
+| cell | lab | ceiling | from |
+|---|---:|---:|---|
+| (10,5) | 4,800 | 4,110 | $q=7$, five levels |
+| (11,5) | 7,020 | 6,122 | $q=8$, five levels |
+| (12,5) | 9,840 | 8,598 | $q=8$, seven levels |
+| (13,5) | 11,700 | 11,660 | $q=9$, seven levels (11,656 with $a = q^2+1$) |
+| (14,5) | 17,568 | 15,112 | $q=9$, nine levels |
+| (15,5) | 20,736 | 20,758 | $q=11$, seven levels (20,753 with $a = q^2+1$) |
+| (16,5) | 33,792 | 26,868 | $q=11$, nine levels |
+| (17,5) | — | 33,680 | $q=13$, seven levels; below $n_b(16,5)\ge 33{,}792$ |
+
+*Proof.* $B(q)$ bounds partial ovoids, partial spreads and relaxed sets of points or of lines (the count of §7). Every
+hub takes one slot in every level, so $K_{\mathcal B}\le\min_j\alpha_j$ and $K_{\mathcal A}\le\min_j\beta_j$; as
+$\sum_j\alpha_j = \sum_j\beta_j = \sum_t|R_t|$ over the $r(2r+1)$ arcs, $K_{\mathcal A}+K_{\mathcal B}\le
+2\sum_t|R_t|/(2r+1)\le 2r\max_t|R_t|$. For five, seven and nine levels, §8 gives the best layouts. $\square$
+
+So (10,5)–(14,5) and (16,5) are out of reach of these constructions whatever relaxed sets exist; (13,5) would need at
+least 13 freed elements on every non-friendly arc (each one adds 4 vertices), far beyond the two of Corollary 6.2.
+Only (15,5) is open: with $a = q^2+1 = 122$ and $c = 2$ the order is $20{,}626+b$ (for $b\ge 62$), so $20{,}737$ needs
+a relaxed set of $W(11)$ with $b\ge 111$ points. For partial ovoids this is exactly Tallini's bound $q^2-q+1$ (best
+found: 70). Relaxed sets are not limited by Tallini's theorem, and since Lemma 7.3 their pairs may lie on any line;
+but the best we found has 89 points (§7), which gives the 20,715 graph of Computer-checked 7.4. *Heuristic*: the
+searches of §7 plateau at 89 from unrelated starts, and exact re-optimisation of large regions does not pass it, so we
+expect the maximum to be near 90, well below 111. The other ways up are more freed elements per non-friendly arc (8 per
+$H\to H$ arc with $b = 89$; third-level routing, §12, did not work beyond 2 at $q\ge 9$) or relaxed *point* sets on the
+$H\to D$ arcs larger than the ovoid ($a+b\ge 233$), which the searches of §7 did not find.
 
 ---
 
@@ -825,6 +889,7 @@ bipartite, maximum degree, exact diameter.
 | $(13,5)$, $n = 11{,}636$ | graphs/d13D5_q9_relaxed66_n11636.* | VALID, degree 13, diameter 5; independent rebuild (sol2edges.py) gives the same edges; hub rule checked (check_rule.py) |
 | $(13,5)$, $n = 11{,}627$ | graphs/d13D5_q9_relaxed_n11627.* | VALID; independent rebuild identical |
 | $(13,5)$, $n = 11{,}621$ | graphs/d13D5_q9_typed_n11621.* (json; rebuild with build_typed.py) | VALID |
+| $(15,5)$-type, $q = 11$, $n = 20{,}715$, 4 pairs meeting at ovoid points | research/theorems/d5relax/graphs/d15D5type_q11_zo89.* (build_zo.py) | VALID (apsp_mt); independent rebuilds (sol2edges.py, referee's rebuild_record.py) identical; rule broken for one pair: diameter 6 |
 | $(15,5)$-type, $q = 11$, $n = 20{,}713$ | graphs/d15D5type_q11_relaxed87_n20713.json (relaxed set of 87 lines; rebuild with sol2edges.py) | VALID (beats the table, not the lab) |
 | $(15,5)$-type, $q = 11$, $n = 20{,}696$ | build_typed.py 11 3 HHHDHHD with the 70-point set | VALID |
 | $(10,5)$-type, $q = 7$, $r = 2$, $n = 4{,}062$ | build_typed.py 7 2 HHDHD | VALID |

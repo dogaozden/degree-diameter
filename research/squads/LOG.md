@@ -52,3 +52,21 @@ it closes) was still running at the time of this entry.
 Assessment: the squads contributed the decisive sets (r2c1's 66, r2c2's 87, c1's 51), the explicit family of Lemma 1.3
 (r2c10), the routing evidence (c19, r2c5, r2c6), exact small cases (r2c8) and two independent tests of new
 propositions (r2c7, r3c4). The new theorems and the record constructions came from the director's own analysis and tools.
+
+## 28 Oct 2026, 20:06-20:55 UTC — job d5-relax (Opus director), squad d5relax-r1 (8 Haiku cards)
+
+Goal: relaxed sets of W(11) with at least 111 points now that pairs may lie on spread lines (Lemma 7.3 of
+D5_QUADRANGLE.md, referee point 6): that would beat (15,5) 20,736. Director's tabu before the round: 89 without the
+spread condition, 88 with it (the earlier best was 87). Scorer: research/theorems/d5relax/score.py.
+Cards (score at q=11): c1 weighted local search with configuration checking (89; q=9 66); c2 unions of orbits of 533
+cyclic and 2-generated subgroups of Sp(4,11), exact MIP (best union 81 at order 12, then 89 by tabu); c3 all pairs on
+spread lines, restricted model with bound 122 (74, then 89 unrestricted); c4 large-neighbourhood search with exact HiGHS
+re-optimisation (89; regions of 700-1000 points solve to optimality and never pass 89); c5 seeded growth from partial
+ovoids, Lemma 1.3 and torus orbits (89; two 89-sets share 2 points); c6 algebraic families (graphs of maps, quadrics,
+norm conditions; seeds 74-78, then 89); c7 exact SAT at q=5 without the condition (24 undecided after 900 s); c8
+memetic search with crossover (89; population collapses to 89 within a minute).
+Kept: nothing beyond 89. Director's own: Lemma 7.3 (hub assignment without z not in O), the 20,715 graph over Q(4,11)
+with 4 pairs meeting at ovoid points (VALID; rule broken: diameter 6), the order-61 cyclic groups (no relaxed orbit),
+the ceilings of Proposition 14.1 (only (15,5) is reachable at all; it needs b >= 111).
+Assessment: the squad added no size, but eight unrelated strategies agreeing on 89 (with c4's exact local optimality)
+is evidence (not a proof) that 111 is out of reach for this construction.
