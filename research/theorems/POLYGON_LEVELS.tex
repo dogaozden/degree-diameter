@@ -973,9 +973,20 @@ distinct points; run again on the plain list \(\mathcal M'\) with the
 identity matrix: 3,292 lines, \(29{,}628\) distinct points); (b)
 d11cert.py on the expanded sets against the hexagon file (hexgen2.c's
 \(H(8)\); the two descriptions of \(H(8)\) agree: 300 random lines of
-the file satisfy Tits' equations and the 3,222 non-hexagon lines of
-\(\mathcal M\) do not). Both report \(K = 3{,}285\) for \(\mathcal M\)
-and \(K = 3{,}292\) for \(\mathcal M'\).
+the hexagon file hex\_q8.bin satisfy Tits' equations, and the 3,222
+lines of \(\mathcal M\) that are not in that file do not). Both report
+\(K = 3{,}285\) for \(\mathcal M\) and \(K = 3{,}292\) for
+\(\mathcal M'\). (c) An independent checker written from scratch by a
+separate agent from §1 of this note and the certificate files only
+(certs/indep\_check/check.py, output run.log): \(h\) permutes the 37,449
+points of \(Q(6,8)\) with order 63, \(|Z| = 4{,}041\) with no collinear
+pair (its collinearity test gives every point exactly \(q(q+1) = 72\)
+collinear points on a sample), \(\mathcal M'\) is 3,292 pairwise
+disjoint totally singular lines (71 of them lines of \(H(8)\)),
+\(K = 3{,}292\); seven negative controls (a perturbed \(h\), powers of
+\(h\) of the wrong order, an added collinear point, an added
+non-singular point, two overlapping lines, a non-singular span) were all
+rejected.
 
 The graph is explicit: certs/d11graph.py fixes the padding of the
 classes and \(\sigma_1\) (both are free in Theorem 2.3; the file's
@@ -1049,7 +1060,10 @@ cover of all 594 point orbits of size 63 (66 line orbits), a packing
 with at least 58 line orbits of size 63, and a line spread invariant
 under the Singer group of order 73 (57 line orbits covering the 513
 point orbits). Whether \(Q(6,8)\) has a line spread we do not know
-(nothing in the sources of §9).
+(nothing in the sources of §9). \(Q(6,2)\) has one (21 lines, one of
+them a line of \(H(2)\); d11q8/smallspread.py, SAT on all totally
+singular lines); for \(q = 3, 4\) the same run was undecided after 15
+minutes.
 
 For \(\Delta\ge 11\) the lab has no values at \(D = 11\) (the 2013 table
 stops at \(D = 10\), and the lab's beyond-table band covers \(D = 11\)
@@ -1193,8 +1207,10 @@ Comp. 5.3 & squad r1/c11, r1/c12 (ils\_mis.c, mis2.c; sets re-verified)
 re-checked here; each card also ran its own checker) & \(K\) = 1,743;
 3,292; 5,021; 8,379; 14,335; 29,087 for \(q\) = 7, 8, 9, 11, 13, 16 \\
 Comp. 5.8 & certs/verify\_q8.py (stand-alone, own \(\mathbb F_8\) and
-Tits' equations) and d11cert.py; d11graph.py (300 sampled pairs) &
-\(K = 3{,}285\) at \(q = 8\); sampled distances \(\le 11\) \\
+Tits' equations), d11cert.py, certs/indep\_check/check.py (separate
+author, with negative controls); d11graph.py (500 sampled pairs) &
+\(K = 3{,}285\) (orbits), \(3{,}292\) (plus local search); sampled
+distances \(\le 11\) \\
 Comp. 5.9 & traces + pencils at \(q = 4\), \(K = 20\), lift9.py + apsp
 (111,930 vertices) & bipartite, 6-regular, diameter 10 \\
 Comp. 5.10 & linetrace.py, linetrace2.py & line traces 4-dominating at

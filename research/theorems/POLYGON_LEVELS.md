@@ -510,9 +510,15 @@ to the representatives, tests $Q = 0$, tests every pair of the 4,041 points for 
 Tits' equations of §1 (no pair passes both), checks that every line is totally singular, and that the lines are
 pairwise disjoint (3,285 lines covering $29{,}565$ distinct points; run again on the plain list $\mathcal M'$ with the
 identity matrix: 3,292 lines, $29{,}628$ distinct points); (b) d11cert.py on the expanded sets against the hexagon file
-(hexgen2.c's $H(8)$; the two descriptions of $H(8)$ agree: 300 random lines of the file satisfy Tits' equations and the
-3,222 non-hexagon lines of $\mathcal M$ do not). Both report $K = 3{,}285$ for $\mathcal M$ and $K = 3{,}292$ for
-$\mathcal M'$.
+(hexgen2.c's $H(8)$; the two descriptions of $H(8)$ agree: 300 random lines of the hexagon file hex_q8.bin satisfy
+Tits' equations, and the 3,222 lines of $\mathcal M$ that are not in that file do not). Both report $K = 3{,}285$ for
+$\mathcal M$ and $K = 3{,}292$ for $\mathcal M'$. (c) An independent checker written from scratch by a separate agent
+from §1 of this note and the certificate files only (certs/indep_check/check.py, output run.log): $h$ permutes the
+37,449 points of $Q(6,8)$ with order 63, $|Z| = 4{,}041$ with no collinear pair (its collinearity test gives every
+point exactly $q(q+1) = 72$ collinear points on a sample), $\mathcal M'$ is 3,292 pairwise disjoint totally singular
+lines (71 of them lines of $H(8)$), $K = 3{,}292$; seven negative controls (a perturbed $h$, powers of $h$ of the
+wrong order, an added collinear point, an added non-singular point, two overlapping lines, a non-singular span) were
+all rejected.
 
 The graph is explicit: certs/d11graph.py fixes the padding of the classes and $\sigma_1$ (both are free in Theorem
 2.3; the file's docstring states the choice) and prints the neighbourhood of any vertex. Explicitly, with
@@ -557,7 +563,9 @@ points or the orbit of size 7, so an $\langle h\rangle$-invariant partial line s
 $(37{,}449-9)/9 = 4{,}160$ lines. Three instances were left undecided after 40 minutes each: an
 $\langle h\rangle$-invariant cover of all 594 point orbits of size 63 (66 line orbits), a packing with at least 58
 line orbits of size 63, and a line spread invariant under the Singer group of order 73 (57 line orbits covering the 513
-point orbits). Whether $Q(6,8)$ has a line spread we do not know (nothing in the sources of §9).
+point orbits). Whether $Q(6,8)$ has a line spread we do not know (nothing in the sources of §9). $Q(6,2)$ has one
+(21 lines, one of them a line of $H(2)$; d11q8/smallspread.py, SAT on all totally singular lines); for $q = 3, 4$
+the same run was undecided after 15 minutes.
 
 For $\Delta\ge 11$ the lab has no values at $D = 11$ (the 2013 table stops at $D = 10$, and the lab's beyond-table
 band covers $D = 11$ only for $\Delta\le 10$).
@@ -622,7 +630,7 @@ exact diameter; it assumes no symmetry).
 | Comp. 3.6 | g2.py (collineations by apartment maps, verified on all lines), singer_perms.py (orbit sizes printed) | semiregular groups listed in §3.5 |
 | Comp. 5.3 | squad r1/c11, r1/c12 (ils_mis.c, mis2.c; sets re-verified) | $K\ge 1{,}618$ ($q=7$), $K\ge 2{,}701$ ($q=8$) |
 | §5.7 table | certs/run_certs.sh: d11cert.py on every set (squad sets re-checked here; each card also ran its own checker) | $K$ = 1,743; 3,292; 5,021; 8,379; 14,335; 29,087 for $q$ = 7, 8, 9, 11, 13, 16 |
-| Comp. 5.8 | certs/verify_q8.py (stand-alone, own $\mathbb F_8$ and Tits' equations) and d11cert.py; d11graph.py (300 sampled pairs) | $K = 3{,}285$ at $q = 8$; sampled distances $\le 11$ |
+| Comp. 5.8 | certs/verify_q8.py (stand-alone, own $\mathbb F_8$ and Tits' equations), d11cert.py, certs/indep_check/check.py (separate author, with negative controls); d11graph.py (500 sampled pairs) | $K = 3{,}285$ (orbits), $3{,}292$ (plus local search); sampled distances $\le 11$ |
 | Comp. 5.9 | traces + pencils at $q = 4$, $K = 20$, lift9.py + apsp (111,930 vertices) | bipartite, 6-regular, diameter 10 |
 | Comp. 5.10 | linetrace.py, linetrace2.py | line traces 4-dominating at $q = 3$ only (of 3, 4, 5) |
 | Comp. 3.4, $q = 3$, $k = 10$ | lift9.py + apsp, $r = 1$ (15,288 vertices) | diameter 9; "$D = 8$" fails |
