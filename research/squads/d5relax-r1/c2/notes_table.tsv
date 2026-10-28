@@ -1,0 +1,534 @@
+rank	kind	group_order	orbits	best_union	pairs	sizes	time_s	limit_s	exact	desc
+1	cyc	12	126	81	36	3x4 6x2 12x120	1.1	10	yes	order 12 element, subgroup of order 12
+2	2gen	60	30	72	30	12x2 20x6 60x22	0.1	15	yes	g ord 2, h ord 3
+3	cyc	12	122	72	24	12x122	6.2	10	yes	order 60 element, subgroup of order 12
+4	2gen	12	122	72	24	12x122	4.3	10	yes	g ord 2, h ord 2
+5	2gen	12	122	72	24	12x122	2.6	10	yes	g ord 2, h ord 3
+6	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.1	60	yes	order 30 element, subgroup of order 30
+7	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.1	60	yes	order 60 element, subgroup of order 30
+8	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.1	60	yes	order 60 element, subgroup of order 30
+9	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.2	60	yes	order 60 element, subgroup of order 30
+10	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.2	58	yes	order 60 element, subgroup of order 30
+11	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.1	50	yes	order 30 element, subgroup of order 30
+12	cyc	30	56	69	30	1x2 3x4 5x2 30x48	0.1	7	yes	order 60 element, subgroup of order 30
+13	cyc	15	104	69	30	1x2 3x4 5x2 15x96	2.8	10	yes	order 15 element, subgroup of order 15
+14	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.3	10	yes	order 15 element, subgroup of order 15
+15	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.1	10	yes	order 30 element, subgroup of order 15
+16	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.5	10	yes	order 60 element, subgroup of order 15
+17	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.7	10	yes	order 60 element, subgroup of order 15
+18	cyc	15	104	69	30	1x2 3x4 5x2 15x96	4.6	10	yes	order 60 element, subgroup of order 15
+19	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.9	10	yes	order 60 element, subgroup of order 15
+20	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.2	10	yes	order 15 element, subgroup of order 15
+21	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.9	10	yes	order 30 element, subgroup of order 15
+22	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.3	10	yes	order 60 element, subgroup of order 15
+23	cyc	15	104	69	30	1x2 3x4 5x2 15x96	3.7	7	yes	order 15 element, subgroup of order 15
+24	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.6	60	yes	order 60 element, subgroup of order 20
+25	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.8	60	yes	order 60 element, subgroup of order 20
+26	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.6	60	yes	order 60 element, subgroup of order 20
+27	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.9	59	yes	order 60 element, subgroup of order 20
+28	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.3	7	yes	order 60 element, subgroup of order 20
+29	cyc	20	82	68	30	1x2 2x6 5x2 20x72	0.7	3	yes	order 20 element, subgroup of order 20
+30	2gen	30	52	66	0	2x1 6x2 10x1 30x48	0.1	45	yes	g ord 2, h ord 2
+31	cyc	30	52	60	0	6x4 30x48	0.0	36	yes	order 60 element, subgroup of order 30
+32	cyc	20	78	60	20	4x6 20x72	0.2	60	yes	order 20 element, subgroup of order 20
+33	cyc	20	78	60	20	4x6 20x72	0.2	54	yes	order 20 element, subgroup of order 20
+34	cyc	20	78	60	20	4x6 20x72	0.2	36	yes	order 60 element, subgroup of order 20
+35	cyc	15	104	60	30	3x8 15x96	0.8	10	yes	order 60 element, subgroup of order 15
+36	cyc	22	74	46	23	1x2 2x5 11x2 22x65	0.2	60	yes	order 22 element, subgroup of order 22
+37	cyc	22	74	46	23	1x2 2x5 11x2 22x65	0.3	60	yes	order 22 element, subgroup of order 22
+38	cyc	22	134	46	23	1x13 2x60 11x1 22x60	0.5	10	yes	order 110 element, subgroup of order 22
+39	cyc	22	134	46	23	1x13 2x60 11x1 22x60	0.4	10	yes	order 110 element, subgroup of order 22
+40	cyc	22	134	46	23	1x13 2x60 11x1 22x60	0.4	10	yes	order 110 element, subgroup of order 22
+41	cyc	22	134	46	23	1x13 2x60 11x1 22x60	0.4	10	yes	order 132 element, subgroup of order 22
+42	cyc	22	134	46	23	1x13 2x60 11x1 22x60	0.4	10	yes	order 110 element, subgroup of order 22
+43	cyc	11	144	46	23	1x12 11x132	7.1	10	yes	order 22 element, subgroup of order 11
+44	cyc	11	144	46	23	1x12 11x132	7.3	10	yes	order 22 element, subgroup of order 11
+45	cyc	11	144	46	23	1x12 11x132	4.2	10	yes	order 55 element, subgroup of order 11
+46	cyc	11	144	46	23	1x12 11x132	6.4	10	yes	order 55 element, subgroup of order 11
+47	cyc	11	144	44	22	1x12 11x132	2.7	3	time-limited	order 33 element, subgroup of order 11
+48	2gen	40	39	40	20	8x3 40x36	0.1	9	yes	g ord 2, h ord 2
+49	cyc	132	24	35	12	1x1 6x2 11x1 12x10 132x10	0.0	60	yes	order 132 element, subgroup of order 132
+50	cyc	66	46	35	12	1x1 3x4 6x20 11x1 66x20	0.1	60	yes	order 132 element, subgroup of order 66
+51	cyc	44	68	35	12	1x1 2x6 4x30 11x1 44x30	0.1	60	yes	order 132 element, subgroup of order 44
+52	cyc	33	86	35	12	1x1 3x44 11x1 33x40	0.3	60	yes	order 132 element, subgroup of order 33
+53	cyc	33	86	35	12	1x1 3x44 11x1 33x40	0.3	58	yes	order 33 element, subgroup of order 33
+54	cyc	110	30	31	10	1x3 5x2 10x12 11x1 110x12	0.0	60	yes	order 110 element, subgroup of order 110
+55	cyc	110	30	31	10	1x3 5x2 10x12 11x1 110x12	0.1	60	yes	order 110 element, subgroup of order 110
+56	cyc	110	30	31	10	1x3 5x2 10x12 11x1 110x12	0.1	60	yes	order 110 element, subgroup of order 110
+57	cyc	110	30	31	10	1x3 5x2 10x12 11x1 110x12	0.1	60	yes	order 110 element, subgroup of order 110
+58	cyc	55	54	31	10	1x3 5x26 11x1 55x24	0.4	60	yes	order 110 element, subgroup of order 55
+59	cyc	55	54	31	10	1x3 5x26 11x1 55x24	0.3	60	yes	order 110 element, subgroup of order 55
+60	cyc	55	54	31	10	1x3 5x26 11x1 55x24	0.3	60	yes	order 110 element, subgroup of order 55
+61	cyc	55	54	31	10	1x3 5x26 11x1 55x24	0.3	60	yes	order 55 element, subgroup of order 55
+62	cyc	55	54	31	10	1x3 5x26 11x1 55x24	0.2	60	yes	order 110 element, subgroup of order 55
+63	2gen	1320	8	24	12	12x2 24x5 1320x1	0.0	60	yes	g ord 11, h ord 2
+64	2gen	1320	8	24	12	12x2 24x5 1320x1	0.1	60	yes	g ord 5, h ord 2
+65	2gen	120	18	24	12	12x2 24x5 120x11	0.1	60	yes	g ord 3, h ord 2
+66	2gen	120	18	24	12	12x2 24x5 120x11	0.1	1	yes	g ord 5, h ord 2
+67	2gen	>5000	3	12	0	12x2 1440x1	0.1	60	yes	g ord 11, h ord 3
+68	2gen	>5000	3	12	0	12x2 1440x1	0.0	60	yes	g ord 2, h ord 5
+69	2gen	>5000	3	12	0	12x2 1440x1	0.0	60	yes	g ord 15, h ord 2
+70	2gen	>5000	3	12	0	12x2 1440x1	0.1	60	yes	g ord 2, h ord 3
+71	2gen	>5000	3	12	0	12x2 1440x1	0.1	60	yes	g ord 2, h ord 5
+72	2gen	>5000	3	12	0	12x2 1440x1	0.1	60	yes	g ord 2, h ord 5
+73	2gen	>5000	3	12	0	12x2 1440x1	0.0	60	yes	g ord 2, h ord 5
+74	2gen	>5000	3	12	0	12x2 1440x1	0.0	60	yes	g ord 5, h ord 3
+75	2gen	>5000	3	12	0	12x2 1440x1	0.1	60	yes	g ord 11, h ord 5
+76	2gen	>5000	3	12	0	12x2 1440x1	0.1	53	yes	g ord 5, h ord 3
+77	2gen	>5000	3	12	0	12x2 1440x1	0.0	51	yes	g ord 2, h ord 3
+78	2gen	>5000	3	12	0	12x2 1440x1	0.0	50	yes	g ord 5, h ord 5
+79	2gen	>5000	3	12	0	12x2 1440x1	0.0	46	yes	g ord 11, h ord 3
+80	2gen	>5000	3	12	0	12x2 1440x1	0.0	44	yes	g ord 11, h ord 3
+81	2gen	>5000	3	12	0	12x2 1440x1	0.0	43	yes	g ord 11, h ord 3
+82	2gen	>5000	3	12	0	12x2 1440x1	0.0	40	yes	g ord 11, h ord 3
+83	2gen	>5000	3	12	0	12x2 1440x1	0.0	40	yes	g ord 5, h ord 3
+84	2gen	>5000	3	12	0	12x2 1440x1	0.0	39	yes	g ord 22, h ord 5
+85	2gen	>5000	3	12	0	12x2 1440x1	0.0	38	yes	g ord 11, h ord 5
+86	2gen	>5000	3	12	0	12x2 1440x1	0.0	37	yes	g ord 5, h ord 5
+87	2gen	>5000	3	12	0	12x2 1440x1	0.0	19	yes	g ord 2, h ord 5
+88	2gen	>5000	3	12	0	12x2 1440x1	0.0	16	yes	g ord 11, h ord 5
+89	2gen	>5000	3	12	0	12x2 1440x1	0.0	11	yes	g ord 11, h ord 2
+90	2gen	>5000	3	12	0	12x2 1440x1	0.0	5	yes	g ord 5, h ord 5
+91	2gen	>5000	3	12	0	12x2 1440x1	0.0	2	yes	g ord 5, h ord 5
+92	2gen	1440	3	12	0	12x2 1440x1	0.0	1	yes	g ord 3, h ord 3
+93	2gen	>5000	3	12	0	12x2 1440x1	0.0	1	yes	g ord 3, h ord 5
+94	2gen	>5000	5	12	0	1x1 11x1 12x1 120x1 1320x1	0.0	54	yes	g ord 11, h ord 5
+95	2gen	1200	5	12	0	2x1 10x1 12x1 240x1 1200x1	0.1	4	yes	g ord 5, h ord 2
+96	2gen	3960	9	12	0	3x4 12x1 360x4	0.1	60	yes	g ord 11, h ord 3
+97	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	60	yes	g ord 11, h ord 3
+98	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	60	yes	g ord 11, h ord 3
+99	2gen	>5000	9	12	0	1x2 5x2 12x1 120x2 600x2	0.1	60	yes	g ord 11, h ord 5
+100	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	60	yes	g ord 11, h ord 3
+101	2gen	3960	9	12	0	3x4 12x1 360x4	0.1	60	yes	g ord 11, h ord 3
+102	2gen	3960	9	12	0	3x4 12x1 360x4	0.1	60	yes	g ord 11, h ord 3
+103	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	56	yes	g ord 11, h ord 3
+104	2gen	3960	9	12	0	3x4 12x1 360x4	0.1	42	yes	g ord 11, h ord 3
+105	2gen	>5000	9	12	0	1x2 5x2 12x1 120x2 600x2	0.1	31	yes	g ord 22, h ord 5
+106	2gen	>5000	9	12	0	1x2 5x2 12x1 120x2 600x2	0.1	28	yes	g ord 11, h ord 5
+107	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	28	yes	g ord 11, h ord 3
+108	2gen	>5000	9	12	0	1x2 5x2 12x1 120x2 600x2	0.1	25	yes	g ord 11, h ord 5
+109	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	22	yes	g ord 11, h ord 3
+110	2gen	3960	9	12	0	3x4 12x1 360x4	0.0	7	yes	g ord 11, h ord 3
+111	2gen	>5000	9	12	0	1x2 5x2 12x1 120x2 600x2	0.1	5	yes	g ord 11, h ord 5
+112	2gen	3960	9	12	0	3x4 12x1 360x4	0.1	3	yes	g ord 11, h ord 3
+113	2gen	3025	12	12	0	1x2 5x2 11x2 55x4 605x2	0.0	60	yes	g ord 5, h ord 5
+114	2gen	3025	12	12	0	1x2 5x2 11x2 55x4 605x2	0.0	47	yes	g ord 5, h ord 5
+115	2gen	2640	13	12	0	2x6 12x1 240x6	0.1	60	yes	g ord 11, h ord 2
+116	2gen	2640	13	12	0	2x6 12x1 240x6	0.1	60	yes	g ord 11, h ord 2
+117	2gen	2640	13	12	0	2x6 12x1 240x6	0.1	32	yes	g ord 11, h ord 2
+118	2gen	2640	13	12	0	2x6 12x1 240x6	0.0	25	yes	g ord 11, h ord 2
+119	2gen	2640	13	12	0	2x6 12x1 240x6	0.1	6	yes	g ord 11, h ord 2
+120	cyc	60	30	12	0	1x2 5x2 6x2 60x24	0.0	60	yes	order 60 element, subgroup of order 60
+121	cyc	60	30	12	0	1x2 5x2 6x2 60x24	0.0	60	yes	order 60 element, subgroup of order 60
+122	cyc	60	30	12	0	1x2 5x2 6x2 60x24	0.1	60	yes	order 60 element, subgroup of order 60
+123	cyc	60	30	12	0	1x2 5x2 6x2 60x24	0.1	58	yes	order 60 element, subgroup of order 60
+124	cyc	60	30	12	0	1x2 5x2 6x2 60x24	0.0	7	yes	order 60 element, subgroup of order 60
+125	2gen	>5000	5	2	1	2x1 10x1 22x1 220x1 1210x1	0.0	60	yes	g ord 10, h ord 2
+126	2gen	>5000	6	2	1	2x1 5x2 242x1 605x2	0.0	60	yes	g ord 22, h ord 2
+127	2gen	>5000	6	2	1	2x1 5x2 242x1 605x2	0.0	60	yes	g ord 22, h ord 2
+128	2gen	>5000	6	2	1	2x1 5x2 242x1 605x2	0.1	27	yes	g ord 22, h ord 2
+129	2gen	>5000	6	2	1	2x1 5x2 242x1 605x2	0.0	6	yes	g ord 22, h ord 2
+130	2gen	>5000	8	2	1	2x1 5x2 22x1 110x2 605x2	0.0	60	yes	g ord 2, h ord 5
+131	2gen	3025	10	2	1	1x2 5x2 11x1 55x2 121x1 605x2	0.0	60	yes	g ord 5, h ord 5
+132	2gen	3025	10	2	1	1x2 5x2 11x1 55x2 121x1 605x2	0.0	60	yes	g ord 5, h ord 5
+133	2gen	484	13	2	1	2x2 4x2 22x1 44x5 242x1 484x2	0.1	14	yes	g ord 22, h ord 2
+134	2gen	220	15	2	1	2x2 4x2 22x2 44x2 110x2 220x5	0.1	16	yes	g ord 10, h ord 2
+135	2gen	1210	16	2	1	2x1 5x2 22x11 605x2	0.0	60	yes	g ord 5, h ord 2
+136	2gen	1210	16	2	1	2x1 5x2 22x11 605x2	0.0	60	yes	g ord 5, h ord 2
+137	2gen	100	22	2	1	2x2 10x4 20x1 50x2 100x13	0.0	8	yes	g ord 10, h ord 2
+138	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+139	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+140	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+141	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+142	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+143	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	60	yes	g ord 11, h ord 2
+144	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.0	55	yes	g ord 11, h ord 2
+145	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	53	yes	g ord 11, h ord 2
+146	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.0	50	yes	g ord 11, h ord 2
+147	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	48	yes	g ord 11, h ord 2
+148	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	46	yes	g ord 11, h ord 2
+149	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	43	yes	g ord 11, h ord 2
+150	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	38	yes	g ord 11, h ord 2
+151	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.0	18	yes	g ord 11, h ord 2
+152	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.0	14	yes	g ord 11, h ord 2
+153	2gen	242	24	2	1	1x2 2x5 22x11 121x2 242x4	0.1	10	yes	g ord 11, h ord 2
+154	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	60	yes	g ord 2, h ord 5
+155	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	60	yes	g ord 2, h ord 5
+156	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	60	yes	g ord 2, h ord 5
+157	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	48	yes	g ord 2, h ord 5
+158	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	45	yes	g ord 2, h ord 5
+159	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	25	yes	g ord 5, h ord 2
+160	2gen	110	28	2	1	1x2 10x1 11x12 55x2 110x11	0.0	23	yes	g ord 5, h ord 2
+161	2gen	110	28	2	1	1x2 10x1 11x12 55x2 110x11	0.0	16	yes	g ord 10, h ord 2
+162	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.0	12	yes	g ord 2, h ord 5
+163	2gen	110	28	2	1	1x2 2x5 11x2 22x5 55x4 110x10	0.1	5	yes	g ord 5, h ord 2
+164	cyc	55	32	2	1	1x2 5x2 11x2 55x26	0.1	60	yes	order 55 element, subgroup of order 55
+165	cyc	55	32	2	1	1x2 5x2 11x2 55x26	0.0	43	yes	order 55 element, subgroup of order 55
+166	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.1	60	yes	g ord 2, h ord 5
+167	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.0	60	yes	g ord 2, h ord 5
+168	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.0	60	yes	g ord 5, h ord 2
+169	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.0	43	yes	g ord 5, h ord 2
+170	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.0	16	yes	g ord 2, h ord 5
+171	2gen	50	40	2	1	2x2 5x4 10x4 25x4 50x26	0.0	16	yes	g ord 5, h ord 2
+172	2gen	44	43	2	1	2x2 4x2 22x12 44x27	0.1	60	yes	g ord 2, h ord 2
+173	2gen	44	43	2	1	2x2 4x2 22x12 44x27	0.0	23	yes	g ord 2, h ord 2
+174	2gen	22	84	2	1	1x2 2x5 11x22 22x55	0.1	60	yes	g ord 2, h ord 2
+175	2gen	22	84	2	1	1x2 2x5 11x22 22x55	0.1	60	yes	g ord 2, h ord 2
+176	2gen	22	84	2	1	1x2 2x5 11x22 22x55	0.1	52	yes	g ord 2, h ord 2
+177	2gen	20	86	2	1	2x2 4x5 10x14 20x65	0.1	53	yes	g ord 2, h ord 2
+178	2gen	20	86	2	1	2x2 4x5 10x14 20x65	0.0	47	yes	g ord 2, h ord 2
+179	2gen	20	86	2	1	2x2 4x5 10x14 20x65	0.1	43	yes	g ord 2, h ord 2
+180	2gen	20	86	2	1	2x2 4x5 10x14 20x65	0.0	20	yes	g ord 2, h ord 2
+181	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 3
+182	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 3
+183	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 5
+184	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	60	yes	g ord 11, h ord 5
+185	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 3
+186	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 3
+187	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 5
+188	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 15, h ord 3
+189	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 5
+190	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 3
+191	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 5
+192	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 5
+193	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 3, h ord 5
+194	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 11, h ord 5
+195	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 3
+196	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 6, h ord 5
+197	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 15, h ord 5
+198	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 55, h ord 5
+199	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 5
+200	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	60	yes	g ord 3, h ord 5
+201	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	60	yes	g ord 5, h ord 3
+202	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	55	yes	g ord 5, h ord 5
+203	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	55	yes	g ord 3, h ord 3
+204	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	55	yes	g ord 11, h ord 3
+205	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	54	yes	g ord 5, h ord 5
+206	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	52	yes	g ord 5, h ord 3
+207	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	52	yes	g ord 5, h ord 5
+208	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	50	yes	g ord 3, h ord 5
+209	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	46	yes	g ord 22, h ord 5
+210	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	45	yes	g ord 11, h ord 3
+211	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	41	yes	g ord 3, h ord 3
+212	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	36	yes	g ord 11, h ord 3
+213	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	34	yes	g ord 11, h ord 3
+214	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	31	yes	g ord 11, h ord 5
+215	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	28	yes	g ord 5, h ord 5
+216	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	24	yes	g ord 11, h ord 3
+217	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	23	yes	g ord 11, h ord 5
+218	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	22	yes	g ord 5, h ord 3
+219	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	20	yes	g ord 12, h ord 5
+220	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	20	yes	g ord 11, h ord 3
+221	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	19	yes	g ord 15, h ord 3
+222	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	18	yes	g ord 15, h ord 5
+223	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	17	yes	g ord 3, h ord 5
+224	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	15	yes	g ord 11, h ord 3
+225	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	15	yes	g ord 6, h ord 5
+226	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	13	yes	g ord 11, h ord 5
+227	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	13	yes	g ord 5, h ord 3
+228	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	12	yes	g ord 10, h ord 5
+229	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	12	yes	g ord 11, h ord 5
+230	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	11	yes	g ord 4, h ord 5
+231	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	11	yes	g ord 5, h ord 3
+232	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	8	yes	g ord 6, h ord 3
+233	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	8	yes	g ord 11, h ord 3
+234	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	5	yes	g ord 5, h ord 5
+235	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	4	yes	g ord 11, h ord 3
+236	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	3	yes	g ord 11, h ord 5
+237	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.1	2	yes	g ord 11, h ord 5
+238	2gen	>5000	3	1	0	1x1 132x1 1331x1	0.0	1	yes	g ord 5, h ord 3
+239	2gen	>5000	4	1	0	1x1 66x2 1331x1	0.0	9	yes	g ord 12, h ord 2
+240	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	60	yes	g ord 3, h ord 2
+241	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	60	yes	g ord 5, h ord 2
+242	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.1	60	yes	g ord 30, h ord 2
+243	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	59	yes	g ord 6, h ord 2
+244	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	53	yes	g ord 3, h ord 2
+245	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	53	yes	g ord 2, h ord 5
+246	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	51	yes	g ord 5, h ord 5
+247	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	49	yes	g ord 3, h ord 2
+248	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	44	yes	g ord 5, h ord 2
+249	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	39	yes	g ord 2, h ord 3
+250	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	37	yes	g ord 3, h ord 2
+251	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	31	yes	g ord 3, h ord 2
+252	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	20	yes	g ord 10, h ord 2
+253	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	9	yes	g ord 15, h ord 2
+254	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.1	8	yes	g ord 5, h ord 2
+255	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	7	yes	g ord 3, h ord 2
+256	2gen	>5000	6	1	0	1x1 11x2 55x2 1331x1	0.0	6	yes	g ord 5, h ord 2
+257	2gen	>5000	6	1	0	1x1 33x4 1331x1	0.0	1	yes	g ord 3, h ord 2
+258	2gen	>5000	8	1	0	1x1 22x6 1331x1	0.0	32	yes	g ord 4, h ord 2
+259	2gen	>5000	8	1	0	1x1 22x6 1331x1	0.0	6	yes	g ord 4, h ord 2
+260	2gen	>5000	8	1	0	1x1 22x6 1331x1	0.0	1	yes	g ord 4, h ord 2
+261	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+262	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 2, h ord 5
+263	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 20, h ord 2
+264	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 10, h ord 5
+265	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+266	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 10, h ord 2
+267	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 3
+268	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 5, h ord 2
+269	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 20, h ord 2
+270	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+271	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 11, h ord 5
+272	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 3
+273	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 10, h ord 5
+274	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 3
+275	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 10, h ord 2
+276	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+277	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 12, h ord 2
+278	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 2
+279	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 2
+280	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+281	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 10, h ord 3
+282	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 10, h ord 2
+283	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 10, h ord 2
+284	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 11, h ord 5
+285	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 11, h ord 5
+286	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 6, h ord 2
+287	2gen	>5000	2	0	0	24x1 1440x1	0.0	60	yes	g ord 110, h ord 2
+288	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 3, h ord 3
+289	2gen	>5000	2	0	0	12x1 1452x1	0.0	60	yes	g ord 5, h ord 5
+290	2gen	>5000	2	0	0	24x1 1440x1	0.0	53	yes	g ord 10, h ord 2
+291	2gen	>5000	2	0	0	12x1 1452x1	0.0	50	yes	g ord 55, h ord 2
+292	2gen	>5000	2	0	0	12x1 1452x1	0.0	49	yes	g ord 5, h ord 2
+293	2gen	>5000	2	0	0	12x1 1452x1	0.0	49	yes	g ord 4, h ord 2
+294	2gen	>5000	2	0	0	12x1 1452x1	0.0	48	yes	g ord 5, h ord 2
+295	2gen	>5000	2	0	0	24x1 1440x1	0.0	48	yes	g ord 15, h ord 2
+296	2gen	>5000	2	0	0	12x1 1452x1	0.0	47	yes	g ord 5, h ord 2
+297	2gen	>5000	2	0	0	12x1 1452x1	0.0	47	yes	g ord 10, h ord 5
+298	2gen	>5000	2	0	0	12x1 1452x1	0.0	43	yes	g ord 110, h ord 3
+299	2gen	>5000	2	0	0	24x1 1440x1	0.0	41	yes	g ord 55, h ord 2
+300	2gen	>5000	2	0	0	12x1 1452x1	0.0	40	yes	g ord 5, h ord 5
+301	2gen	>5000	2	0	0	24x1 1440x1	0.0	36	yes	g ord 55, h ord 2
+302	2gen	>5000	2	0	0	24x1 1440x1	0.0	35	yes	g ord 10, h ord 2
+303	2gen	>5000	2	0	0	12x1 1452x1	0.0	35	yes	g ord 5, h ord 5
+304	2gen	>5000	2	0	0	12x1 1452x1	0.0	33	yes	g ord 5, h ord 2
+305	2gen	>5000	2	0	0	12x1 1452x1	0.0	32	yes	g ord 5, h ord 5
+306	2gen	>5000	2	0	0	12x1 1452x1	0.0	31	yes	g ord 5, h ord 5
+307	2gen	>5000	2	0	0	24x1 1440x1	0.0	27	yes	g ord 60, h ord 2
+308	2gen	>5000	2	0	0	12x1 1452x1	0.0	26	yes	g ord 5, h ord 5
+309	2gen	>5000	2	0	0	12x1 1452x1	0.0	25	yes	g ord 20, h ord 2
+310	2gen	>5000	2	0	0	12x1 1452x1	0.0	23	yes	g ord 11, h ord 3
+311	2gen	>5000	2	0	0	12x1 1452x1	0.0	20	yes	g ord 5, h ord 5
+312	2gen	>5000	2	0	0	24x1 1440x1	0.0	17	yes	g ord 60, h ord 2
+313	2gen	>5000	2	0	0	24x1 1440x1	0.0	16	yes	g ord 20, h ord 2
+314	2gen	>5000	2	0	0	12x1 1452x1	0.0	15	yes	g ord 5, h ord 5
+315	2gen	>5000	2	0	0	12x1 1452x1	0.0	14	yes	g ord 10, h ord 5
+316	2gen	>5000	2	0	0	12x1 1452x1	0.0	13	yes	g ord 5, h ord 5
+317	2gen	>5000	2	0	0	12x1 1452x1	0.0	13	yes	g ord 10, h ord 2
+318	2gen	>5000	2	0	0	12x1 1452x1	0.0	11	yes	g ord 5, h ord 2
+319	2gen	>5000	2	0	0	12x1 1452x1	0.0	11	yes	g ord 5, h ord 3
+320	2gen	>5000	2	0	0	12x1 1452x1	0.0	10	yes	g ord 10, h ord 5
+321	2gen	>5000	2	0	0	24x1 1440x1	0.0	7	yes	g ord 10, h ord 2
+322	2gen	>5000	2	0	0	12x1 1452x1	0.0	5	yes	g ord 5, h ord 5
+323	2gen	>5000	2	0	0	12x1 1452x1	0.0	4	yes	g ord 2, h ord 5
+324	2gen	>5000	2	0	0	12x1 1452x1	0.0	3	yes	g ord 55, h ord 2
+325	2gen	>5000	2	0	0	24x1 1440x1	0.0	3	yes	g ord 10, h ord 2
+326	2gen	>5000	3	0	0	144x1 660x2	0.0	60	yes	g ord 12, h ord 2
+327	2gen	>5000	3	0	0	144x1 660x2	0.0	51	yes	g ord 12, h ord 2
+328	2gen	>5000	3	0	0	144x1 660x2	0.0	50	yes	g ord 12, h ord 2
+329	2gen	>5000	3	0	0	48x1 96x1 1320x1	0.0	30	yes	g ord 4, h ord 2
+330	2gen	>5000	3	0	0	24x1 120x1 1320x1	0.0	22	yes	g ord 10, h ord 2
+331	2gen	>5000	3	0	0	48x1 96x1 1320x1	0.0	22	yes	g ord 10, h ord 2
+332	2gen	3960	4	0	0	72x2 660x2	0.0	60	yes	g ord 6, h ord 2
+333	2gen	3960	4	0	0	72x2 660x2	0.0	60	yes	g ord 6, h ord 2
+334	2gen	4840	4	0	0	4x1 8x1 484x1 968x1	0.0	60	yes	g ord 20, h ord 2
+335	2gen	>5000	4	0	0	6x2 726x2	0.0	56	yes	g ord 22, h ord 2
+336	2gen	3630	4	0	0	6x2 726x2	0.0	56	yes	g ord 10, h ord 2
+337	2gen	>5000	4	0	0	24x1 60x2 1320x1	0.0	54	yes	g ord 5, h ord 2
+338	2gen	3960	4	0	0	72x2 660x2	0.0	49	yes	g ord 2, h ord 3
+339	2gen	3960	4	0	0	72x2 660x2	0.0	43	yes	g ord 3, h ord 2
+340	2gen	3960	4	0	0	72x2 660x2	0.0	42	yes	g ord 2, h ord 3
+341	2gen	3630	4	0	0	6x2 726x2	0.0	38	yes	g ord 6, h ord 5
+342	2gen	3960	4	0	0	72x2 660x2	0.0	33	yes	g ord 6, h ord 2
+343	2gen	3960	4	0	0	72x2 660x2	0.0	29	yes	g ord 6, h ord 2
+344	2gen	3960	4	0	0	72x2 660x2	0.0	29	yes	g ord 2, h ord 3
+345	2gen	3960	4	0	0	72x2 660x2	0.0	11	yes	g ord 3, h ord 2
+346	2gen	3960	4	0	0	72x2 660x2	0.0	7	yes	g ord 2, h ord 3
+347	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 2, h ord 5
+348	2gen	2640	5	0	0	48x3 660x2	0.0	60	yes	g ord 20, h ord 2
+349	2gen	2640	5	0	0	48x3 660x2	0.0	60	yes	g ord 4, h ord 2
+350	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+351	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+352	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+353	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+354	2gen	2640	5	0	0	48x3 660x2	0.0	60	yes	g ord 4, h ord 2
+355	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+356	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+357	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+358	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+359	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 2, h ord 5
+360	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+361	2gen	2640	5	0	0	48x3 660x2	0.0	60	yes	g ord 4, h ord 2
+362	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+363	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 2, h ord 5
+364	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 2, h ord 5
+365	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+366	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+367	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+368	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 10, h ord 2
+369	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 55, h ord 2
+370	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	60	yes	g ord 5, h ord 2
+371	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	50	yes	g ord 2, h ord 5
+372	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	48	yes	g ord 5, h ord 2
+373	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	45	yes	g ord 10, h ord 2
+374	2gen	2640	5	0	0	48x3 660x2	0.0	42	yes	g ord 4, h ord 2
+375	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	41	yes	g ord 2, h ord 5
+376	2gen	2640	5	0	0	48x3 660x2	0.0	36	yes	g ord 4, h ord 2
+377	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	36	yes	g ord 2, h ord 5
+378	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	35	yes	g ord 2, h ord 5
+379	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	34	yes	g ord 2, h ord 5
+380	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	33	yes	g ord 2, h ord 5
+381	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	33	yes	g ord 2, h ord 5
+382	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	32	yes	g ord 5, h ord 2
+383	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	30	yes	g ord 10, h ord 2
+384	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	28	yes	g ord 2, h ord 5
+385	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	27	yes	g ord 10, h ord 2
+386	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	27	yes	g ord 2, h ord 5
+387	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	27	yes	g ord 2, h ord 5
+388	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	25	yes	g ord 5, h ord 2
+389	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	24	yes	g ord 2, h ord 5
+390	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	23	yes	g ord 10, h ord 2
+391	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	21	yes	g ord 5, h ord 2
+392	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	21	yes	g ord 5, h ord 2
+393	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	19	yes	g ord 2, h ord 5
+394	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	18	yes	g ord 10, h ord 2
+395	2gen	2640	5	0	0	48x3 660x2	0.0	17	yes	g ord 4, h ord 2
+396	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	17	yes	g ord 2, h ord 5
+397	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	17	yes	g ord 2, h ord 5
+398	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	14	yes	g ord 2, h ord 5
+399	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	14	yes	g ord 5, h ord 2
+400	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	11	yes	g ord 10, h ord 2
+401	2gen	2640	5	0	0	48x3 660x2	0.0	10	yes	g ord 4, h ord 2
+402	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	10	yes	g ord 2, h ord 5
+403	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	9	yes	g ord 2, h ord 5
+404	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	3	yes	g ord 5, h ord 2
+405	2gen	>5000	5	0	0	12x2 120x1 660x2	0.0	2	yes	g ord 5, h ord 2
+406	2gen	2640	5	0	0	48x3 660x2	0.0	1	yes	g ord 4, h ord 2
+407	2gen	600	6	0	0	24x1 60x2 120x1 600x2	0.0	60	yes	g ord 5, h ord 2
+408	2gen	3300	6	0	0	12x2 60x2 660x2	0.0	60	yes	g ord 11, h ord 5
+409	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	60	yes	g ord 2, h ord 3
+410	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	60	yes	g ord 2, h ord 3
+411	2gen	600	6	0	0	24x1 60x2 120x1 600x2	0.0	59	yes	g ord 5, h ord 2
+412	2gen	600	6	0	0	24x1 60x2 120x1 600x2	0.0	40	yes	g ord 2, h ord 5
+413	2gen	600	6	0	0	24x1 60x2 120x1 600x2	0.0	29	yes	g ord 5, h ord 2
+414	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	25	yes	g ord 2, h ord 3
+415	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	18	yes	g ord 3, h ord 2
+416	2gen	600	6	0	0	24x1 60x2 120x1 600x2	0.0	18	yes	g ord 2, h ord 5
+417	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	17	yes	g ord 2, h ord 3
+418	2gen	726	6	0	0	3x2 6x1 363x2 726x1	0.0	12	yes	g ord 3, h ord 2
+419	2gen	1815	8	0	0	3x4 363x4	0.0	60	yes	g ord 3, h ord 5
+420	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 3, h ord 2
+421	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 3, h ord 2
+422	2gen	1320	8	0	0	24x6 660x2	0.0	60	yes	g ord 5, h ord 2
+423	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 2, h ord 3
+424	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 3, h ord 2
+425	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 2, h ord 3
+426	2gen	1320	8	0	0	24x6 660x2	0.0	60	yes	g ord 5, h ord 2
+427	2gen	1320	8	0	0	24x6 660x2	0.0	60	yes	g ord 2, h ord 5
+428	2gen	1320	8	0	0	24x6 660x2	0.0	60	yes	g ord 2, h ord 5
+429	2gen	1320	8	0	0	24x6 660x2	0.0	60	yes	g ord 5, h ord 2
+430	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	60	yes	g ord 2, h ord 3
+431	2gen	1320	8	0	0	24x6 660x2	0.0	54	yes	g ord 5, h ord 2
+432	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	42	yes	g ord 3, h ord 2
+433	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	32	yes	g ord 3, h ord 2
+434	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	24	yes	g ord 2, h ord 3
+435	2gen	1320	8	0	0	24x6 660x2	0.0	20	yes	g ord 5, h ord 2
+436	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	18	yes	g ord 3, h ord 2
+437	2gen	1320	8	0	0	24x6 660x2	0.0	15	yes	g ord 11, h ord 2
+438	2gen	1320	8	0	0	24x6 660x2	0.0	13	yes	g ord 5, h ord 2
+439	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	7	yes	g ord 3, h ord 2
+440	2gen	1320	8	0	0	24x6 660x2	0.0	6	yes	g ord 2, h ord 5
+441	2gen	360	8	0	0	72x2 120x2 180x2 360x2	0.0	2	yes	g ord 3, h ord 2
+442	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 2, h ord 3
+443	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+444	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 11, h ord 2
+445	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+446	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 11, h ord 2
+447	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 11, h ord 2
+448	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 11, h ord 2
+449	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 11, h ord 2
+450	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+451	2gen	1320	9	0	0	12x2 24x5 660x2	0.1	60	yes	g ord 2, h ord 3
+452	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+453	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+454	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	60	yes	g ord 5, h ord 2
+455	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	56	yes	g ord 2, h ord 5
+456	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	50	yes	g ord 11, h ord 2
+457	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	44	yes	g ord 11, h ord 2
+458	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	44	yes	g ord 11, h ord 2
+459	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	42	yes	g ord 2, h ord 5
+460	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	36	yes	g ord 5, h ord 2
+461	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	34	yes	g ord 5, h ord 2
+462	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	34	yes	g ord 11, h ord 2
+463	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	33	yes	g ord 5, h ord 2
+464	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	29	yes	g ord 11, h ord 2
+465	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	26	yes	g ord 11, h ord 2
+466	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	21	yes	g ord 3, h ord 2
+467	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	19	yes	g ord 11, h ord 2
+468	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	14	yes	g ord 5, h ord 2
+469	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	13	yes	g ord 5, h ord 2
+470	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	11	yes	g ord 5, h ord 2
+471	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	10	yes	g ord 11, h ord 2
+472	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	10	yes	g ord 11, h ord 2
+473	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	9	yes	g ord 5, h ord 2
+474	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	6	yes	g ord 3, h ord 2
+475	2gen	1320	9	0	0	12x2 24x5 660x2	0.0	6	yes	g ord 11, h ord 2
+476	2gen	122	12	0	0	122x12	0.0	28	yes	g ord 2, h ord 2
+477	2gen	160	13	0	0	32x2 40x3 160x8	0.0	60	yes	g ord 4, h ord 2
+478	2gen	120	15	0	0	24x1 60x4 120x10	0.0	60	yes	g ord 5, h ord 2
+479	2gen	120	15	0	0	24x1 60x4 120x10	0.0	10	yes	g ord 5, h ord 2
+480	2gen	120	20	0	0	24x6 60x6 120x8	0.0	60	yes	g ord 2, h ord 3
+481	2gen	120	20	0	0	24x6 60x6 120x8	0.0	60	yes	g ord 2, h ord 3
+482	2gen	120	20	0	0	24x6 60x6 120x8	0.0	60	yes	g ord 5, h ord 2
+483	2gen	120	20	0	0	24x6 60x6 120x8	0.0	60	yes	g ord 5, h ord 2
+484	2gen	120	20	0	0	24x6 60x6 120x8	0.0	27	yes	g ord 2, h ord 5
+485	2gen	120	20	0	0	24x6 60x6 120x8	0.0	18	yes	g ord 2, h ord 3
+486	2gen	120	20	0	0	24x6 60x6 120x8	0.0	17	yes	g ord 5, h ord 2
+487	cyc	61	24	0	0	61x24	0.1	60	yes	order 61 element, subgroup of order 61
+488	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+489	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+490	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+491	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+492	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+493	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+494	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+495	cyc	61	24	0	0	61x24	0.0	60	yes	order 61 element, subgroup of order 61
+496	cyc	61	24	0	0	61x24	0.0	50	yes	order 61 element, subgroup of order 61
+497	cyc	61	24	0	0	61x24	0.0	43	yes	order 61 element, subgroup of order 61
+498	cyc	61	24	0	0	61x24	0.0	43	yes	order 61 element, subgroup of order 61
+499	cyc	61	24	0	0	61x24	0.0	36	yes	order 61 element, subgroup of order 61
+500	cyc	60	26	0	0	12x2 60x24	0.0	36	yes	order 60 element, subgroup of order 60
+501	2gen	24	64	0	0	12x6 24x58	0.0	60	yes	g ord 2, h ord 3
+502	2gen	24	67	0	0	12x12 24x55	0.0	60	yes	g ord 2, h ord 3
+503	2gen	24	67	0	0	12x12 24x55	0.0	37	yes	g ord 2, h ord 2
+504	2gen	24	67	0	0	12x12 24x55	0.0	34	yes	g ord 2, h ord 2
+505	2gen	24	67	0	0	12x12 24x55	0.0	8	yes	g ord 2, h ord 2
+506	2gen	24	67	0	0	12x12 24x55	0.0	7	yes	g ord 2, h ord 2
+507	2gen	24	68	0	0	8x6 12x6 24x56	0.0	60	yes	g ord 2, h ord 3
+508	2gen	24	68	0	0	8x6 12x6 24x56	0.0	47	yes	g ord 3, h ord 2
+509	2gen	24	68	0	0	8x6 12x6 24x56	0.0	32	yes	g ord 3, h ord 2
+510	2gen	24	68	0	0	8x6 12x6 24x56	0.0	27	yes	g ord 3, h ord 2
+511	2gen	20	84	0	0	4x6 10x12 20x66	0.0	37	yes	g ord 2, h ord 2
+512	2gen	20	84	0	0	4x6 10x12 20x66	0.0	28	yes	g ord 2, h ord 2
+513	2gen	20	84	0	0	4x6 10x12 20x66	0.0	12	yes	g ord 2, h ord 2
+514	2gen	20	84	0	0	4x6 10x12 20x66	0.0	4	yes	g ord 2, h ord 2
+515	2gen	18	88	0	0	6x4 9x8 18x76	0.0	60	yes	g ord 2, h ord 3
+516	2gen	18	88	0	0	6x4 9x8 18x76	0.0	60	yes	g ord 3, h ord 2
+517	2gen	18	88	0	0	6x4 9x8 18x76	0.0	44	yes	g ord 2, h ord 3
+518	2gen	12	128	0	0	6x12 12x116	0.0	10	yes	g ord 2, h ord 2
+519	2gen	12	128	0	0	6x12 12x116	0.0	10	yes	g ord 2, h ord 2
+520	2gen	12	128	0	0	6x12 12x116	0.0	10	yes	g ord 2, h ord 2
+521	2gen	12	130	0	0	6x16 12x114	0.0	10	yes	g ord 2, h ord 2
+522	2gen	12	130	0	0	6x16 12x114	0.0	10	yes	g ord 2, h ord 2
+523	2gen	12	130	0	0	6x16 12x114	0.0	1	yes	g ord 2, h ord 2
+524	2gen	12	134	0	0	6x24 12x110	0.0	10	yes	g ord 2, h ord 2
+525	2gen	12	134	0	0	6x24 12x110	0.0	10	yes	g ord 2, h ord 2
+526	2gen	12	134	0	0	6x24 12x110	0.0	10	yes	g ord 2, h ord 2
+527	2gen	12	134	0	0	6x24 12x110	0.0	10	yes	g ord 2, h ord 2
+528	cyc	?	134	-1	0		25.1	10	time-limited	order 60 element, subgroup of order 12 [MIP hung]
+529	cyc	?	134	-1	0		25.1	10	time-limited	order 60 element, subgroup of order 12 [MIP hung]
+530	cyc	?	134	-1	0		25.1	10	time-limited	order 60 element, subgroup of order 12 [MIP hung]
+531	cyc	?	134	-1	0		25.1	10	time-limited	order 132 element, subgroup of order 12 [MIP hung]
+532	cyc	?	134	-1	0		25.1	10	time-limited	order 60 element, subgroup of order 12 [MIP hung]
+533	cyc	?	134	-1	0		25.1	10	time-limited	order 60 element, subgroup of order 12 [MIP hung]

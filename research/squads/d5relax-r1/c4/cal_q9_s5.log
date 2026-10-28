@@ -1,0 +1,9 @@
+start 66
+it 1 tlines |R|=483 |T&R|=44 rows=22568 Optimal       19.6s  |T|=66 best=66
+it 2 nbh    |R|=680 |T&R|=47 rows=31439 Time limit reached  20.1s  |T|=66 best=66
+it 3 tlines |R|=363 |T&R|=37 rows=17110 Optimal        0.6s  |T|=66 best=66
+it 4 nbh    |R|=670 |T&R|=40 rows=30996 Optimal        8.8s  |T|=66 best=66
+it 5 spread |R|=690 |T&R|=56 rows=31867 Time limit reached  11.9s  |T|=66 best=66
+done: iterations 5, best 66, time 62 s
+stats (tries, improvements): {'lines': [0, 0], 'tlines': [2, 0], 'nbh': [2, 0], 'spread': [1, 0]}
+final |T| 66 relaxed True
