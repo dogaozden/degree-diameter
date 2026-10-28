@@ -526,8 +526,153 @@ For even $q$, $W(q)$ has both an ovoid $\cO$ and a spread $\Sigma$ \cite{PT}. Wi
 
 \emph{Stand-ins: the $(7,4)$ example.} In the quadrangle $Q(4,5)$ (order $(5,5)$) take an ovoid $\cO$ and clone each of its $26$ points once: every line gains one clone and has degree $7$, every old point has degree $6$. Shadow lines can now be added as long as every point serves at most one of them: a point off $\cO$ has no clone and can be on at most one shadow line, while a point of $\cO$ can be on two, standing in for itself on one and letting its clone stand in on the other. An integer program finds $21$ such shadow lines (four points of $\cO$ are on two of them), giving $2\cdot6\cdot26+26+21=359$ elements, maximum degree $7$ and diameter $4$ (\path{POLISHED.md}, Appendix~A). In this family at most $q^2-q+2$ shadow lines are possible (\path{POLISHED.md}, Remark~3.5).
 
-\section{Diameter 6}\label{sec:d6}
-\emph{To be written.}
+\section{Diameter 6: a spread and whiskers in a generalized hexagon}\label{sec:d6}
+
+Let $\Gamma$ be a generalized hexagon of order $(q,q)$: every line has $q+1$ points, every point is on $q+1$ lines, any two elements are at distance at most $6$ in the incidence graph, and there are no circuits of length less than $12$. It has $N=(q+1)(q^4+q^2+1)$ points and $N$ lines. Elements at distance $6$ are \emph{opposite}; two elements at distance less than $6$ are joined by a unique shortest path. A point and a line are at distance $1$, $3$ or $5$. In the constructions, $\Gamma$ is the split Cayley hexagon $H(q)$ \cite{T59,VM98}, but only in the choice of the special configurations (\S\ref{ssec:herm}).
+
+By Lemma~\ref{lem:diam}(c) the diameter stays at most $6$ if for every anti-flag $(p,L)$ some point of $L$ is within distance $4$ of $p$. Here the new elements come from a doubling, and the argument is by ``sheets''.
+
+\subsection{Doubling with levels}\label{ssec:levels}
+This is Delorme's operation \cite[\S7]{D85a}, in incidence language. Choose sets of elements (points and lines mixed)
+\[
+\cA_0\supseteq\cA_1\supseteq\cA_2\supseteq\cdots,
+\]
+and call $\max\{k: x\in\cA_k\}$ the \emph{level} of $x$ (level $-1$ if $x\notin\cA_0$). Fix $m\ge2$.
+
+\begin{definition}[Doubling with levels]\label{def:levels}
+Replace every element $x$ of level $k$ by $m^{k+1}$ \emph{versions} $x^w$, one for each word $w$ of length $k+1$ over $\{1,\dots,m\}$; an element of level $-1$ keeps one version, itself. Declare $x^w\I y^u$ if and only if $x\I y$ in $\Gamma$ and one of the words $w,u$ is a prefix of the other.
+\end{definition}
+
+For $m=2$ and a single level this says: every element $x$ of $\cA_0$ gets a twin $x'$; inside $\cA_0$ originals see originals and twins see twins; an element outside $\cA_0$ sees both $x$ and $x'$ whenever it saw $x$. So an outside element gains one incidence for each element of $\cA_0$ it is incident with, and an element of $\cA_0$ gains nothing. With more levels, a version $x^w$ of level $k$ sees one version of each neighbour of level at most $k$ (the one whose word is the corresponding prefix of $w$) and all $m$ versions of a neighbour of level $k+1$ extending $w$.
+
+\emph{Sheets.} For an infinite word $\omega$, the versions whose words are prefixes of $\omega$ form a copy of $\Gamma$ (every element has exactly one version in it, and any two of these versions have comparable words). Two sheets share exactly the versions indexed by their common prefixes: all elements of level $-1$, then the versions of level-$0$ elements if the words begin with the same letter, and so on (Figure~\ref{fig:sheets}). So the doubled structure is $m^{r+1}$ copies of $\Gamma$ glued along a tree.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[level distance=1.05cm,
+  level 1/.style={sibling distance=6.2cm},
+  level 2/.style={sibling distance=3.1cm},
+  level 3/.style={sibling distance=1.55cm},
+  every node/.style={font=\small}]
+\node[draw,rounded corners,inner sep=3pt] {$\varnothing$: level $-1$}
+  child {node {$1$}
+    child {node {$11$} child {node {$111$}} child {node {$112$}}}
+    child {node {$12$} child {node {$121$}} child {node {$122$}}}}
+  child {node {$2$}
+    child {node {$21$} child {node {$211$}} child {node {$212$}}}
+    child {node {$22$} child {node {$221$}} child {node {$222$}}}};
+\node[font=\scriptsize,align=left] at (7.6,-1.05) {level $0$};
+\node[font=\scriptsize,align=left] at (7.6,-2.1) {level $1$};
+\node[font=\scriptsize,align=left] at (7.6,-3.15) {level $2$};
+\end{tikzpicture}
+\caption{Doubling with three levels, $m=2$. An element of level $k$ has one version for each node at depth $k+1$; versions are incident when their elements are and their nodes lie on a common path from the root. Each leaf (an infinite word, here of length $3$) is a sheet, a copy of $\Gamma$ consisting of the versions on the path from the root to that leaf. Elements of level $-1$ are shared by all eight sheets.}
+\label{fig:sheets}
+\end{figure}
+
+Two conditions control the degrees and one the diameter:
+\begin{enumerate}[label=\textup{(L\arabic*)},leftmargin=3em,start=0]
+\item every element outside $\cA_0$ is incident with at most one element of $\cA_0$;
+\item for every $i\ge0$, every element incident with an element of $\cA_{i+1}$ lies in $\cA_i$, and every element of $\cA_i\setminus\cA_{i+1}$ is incident with at most one element of $\cA_{i+1}$;
+\end{enumerate}
+\begin{enumerate}[label=\textup{(C)},leftmargin=3em]
+\item any two elements $x,y$ in one connected component of $\cA_0$ (possibly $x=y$) admit an element $z\notin\cA_0$ with $d(x,z)+d(z,y)\le 6$.
+\end{enumerate}
+Under (L0) and (L1) every version has degree at most $q+1+(m-1)$: it sees one version of each neighbour, except of the one neighbour (if any) one level up, of which it sees $m$. Under (C) the diameter stays at most $6$: two versions in a common sheet are within $6$; two versions in no common sheet have incomparable words, so both elements are in $\cA_0$; if they lie in different components of $\cA_0$, a shortest path between them in $\Gamma$ passes through an element of level $-1$, which belongs to every sheet, and the two halves of the path can be lifted into the two sheets; if they lie in the same component, (C) gives such an element. In a generalized hexagon, (C) holds if and only if every connected component of $\cA_0$ is a tree of diameter at most $4$ (the hat lemma, \path{POLISHED.md} Lemma~1.3: a path of length $5$ inside $\cA_0$ is the unique shortest path between its ends, so no detour through an outside element is short enough). Finally there are $(m-1)\sum_k m^k|\cA_k|$ new elements.
+
+Counting flags between $\cA_0$ and its complement gives a ceiling: if every component of $\cA_0$ is a tree and $c$ is the number of components, then $q|\cA_0|+2c\le 2N$, with equality exactly when every element outside $\cA_0$ is incident with exactly one element of $\cA_0$ (\path{geometry.tex}, Proposition~3.6).
+
+\subsection{The configuration: a spread, its distinguished line, and whiskers}\label{ssec:herm}
+\emph{A spread} of $\Gamma$ is a set $S$ of $q^3+1$ pairwise opposite lines. We use two properties: the lines of $S$ have disjoint point sets, so every point of the set $\Pi$ of points on lines of $S$ is on exactly one line of $S$ ($|\Pi|=(q+1)(q^3+1)$); and every line not in $S$ meets exactly one line of $S$ (a line meeting two lines of $S$ would put them at distance $4$, and counting gives all $N$ lines). $H(q)$ has spreads for every $q$: the \emph{Hermitian spreads}, the lines of $H(q)$ in a hyperplane that meets the quadric of $H(q)$ in an elliptic quadric \cite{T80}.
+
+Fix a line $v\in S$. The points split by their distance from $v$: the $q+1$ points of $v$ (distance $1$), the $q^2(q+1)$ further points on the $q(q+1)$ lines meeting $v$ (distance $3$), and the rest (distance $5$). A point of $\Pi$ not on $v$ is at distance $5$ from $v$, because its line in $S$ is opposite $v$. Call a point \emph{free} if it is not in $\Pi$ and is at distance $5$ from $v$; there are
+\[
+N-(q+1)-q^2(q+1)-q^3(q+1)=q^3(q^2-1)
+\]
+free points.
+
+\emph{Whiskers.} Let $h$ be a line opposite $v$ and not in $S$. It meets exactly one line $n$ of $S$, with $n\ne v$, in one point; its other $q$ points are free (they are not in $\Pi$, since $h$ meets only one line of $S$ and only once, and every point of a line opposite $v$ is at distance $5$ from $v$). Such a line is a \emph{whisker}, hanging from the point $h\cap n$.
+
+\begin{definition}\label{def:whiskers}
+A \emph{whisker set} is a set $W$ of whiskers such that no free point is on two lines of $W$. It is \emph{exact} if every free point is on exactly one line of $W$; then $|W|=q^3(q^2-1)/q=q^2(q^2-1)$, the largest possible.
+\end{definition}
+
+Exact whisker sets exist in $H(q)$ for every $q$: for odd $q$ an explicit one is cut out by a family of $q^2$ Hermitian spreads through $v$, pairwise meeting only in $v$, with one whisker per free point chosen by an affine condition (\path{POLISHED.md}, Theorem~6.5); for even $q\ge4$ a characteristic-$2$ variant (Theorem~6.14); for $q=2$ one found by computer.
+
+\subsection{The levels, and what each element becomes}\label{ssec:thmD}
+Put
+\[
+\cA_2=\{v\},\qquad \cA_1=\{v\}\cup\{\text{points of }v\}\cup S,\qquad \cA_0=\cA_1\cup\Pi\cup\{\text{lines meeting }v\}\cup W .
+\]
+In words: $v$ is at level $2$; the other spread lines and the points of $v$ at level $1$; the other points of $\Pi$, the $q(q+1)$ lines meeting $v$ and the whiskers at level $0$; everything else at level $-1$.
+
+\emph{The conditions.} (L1): the elements incident with $v$ are its points, which are at level $1$, and each sees only $v$ at level $2$; the elements incident with a level-$1$ element are the points of $\Pi$ and the lines meeting $v$, all in $\cA_0$, and each of them sees exactly one level-$1$ element (its spread line, or its point on $v$), while a whisker sees none. (L0) holds, and with $W$ exact it holds with equality: a point at distance $3$ from $v$ is on exactly one line meeting $v$ (two would close a circuit of length at most $6$) and on no whisker; a free point is on exactly one whisker; a line outside $\cA_0$ meets exactly one line of $S$, hence contains exactly one point of $\Pi$, and no other element of $\cA_0$. (C): the connected components of $\cA_0$ are
+\begin{itemize}[leftmargin=1.5em]
+\item the \emph{ball} of radius $2$ about $v$: the line $v$, its $q+1$ points and the $q(q+1)$ lines through them;
+\item for each of the $q^3$ lines $n\in S\setminus\{v\}$, the \emph{broom} of $n$: the line $n$, its $q+1$ points, and the whiskers hanging from them.
+\end{itemize}
+Both are trees of diameter $4$ (Figure~\ref{fig:components}). Since $W$ is exact, the ceiling $q|\cA_0|+2(q^3+1)=2N$ is attained: no family of this kind can double more.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.85]
+\begin{scope}
+  \node[ln] (v) at (0,0) {}; \node[above=2pt] at (v) {$v$};
+  \foreach \a/\n in {200/a,250/b,290/c,340/d} {\node[pt] (\n) at (\a:1.3) {}; \draw[old] (v)--(\n);}
+  \foreach \n/\a in {a/200,b/250,c/290,d/340} {
+    \foreach \d in {-12,0,12} {\node[ln] (\n\d) at (\a+\d:2.5) {}; \draw[old] (\n)--(\n\d);}}
+  \node[font=\scriptsize] at (0,-3.05) {the ball of radius $2$ about $v$};
+\end{scope}
+\begin{scope}[xshift=6.5cm]
+  \node[ln] (n) at (0,0) {}; \node[above=2pt] at (n) {$n\in S$};
+  \foreach \a/\m in {200/a,250/b,290/c,340/d} {\node[pt] (\m) at (\a:1.3) {}; \draw[old] (n)--(\m);}
+  \node[ln] (wa) at (200:2.5) {}; \draw[old] (a)--(wa);
+  \node[ln] (wc1) at (282:2.5) {}; \node[ln] (wc2) at (298:2.5) {}; \draw[old] (c)--(wc1); \draw[old] (c)--(wc2);
+  \node[ln] (wd) at (340:2.5) {}; \draw[old] (d)--(wd);
+  \foreach \w in {wa,wc1,wc2,wd} {\foreach \t in {-0.15,0,0.15} {\draw[gray!70] (\w)--++(\t,-0.42);}}
+  \node[font=\scriptsize] at (0,-3.05) {a broom: $n$, its points, the whiskers on them};
+\end{scope}
+\end{tikzpicture}
+\caption{The two kinds of connected components of $\cA_0$ (squares are lines, circles points; only some of the $q+1$ points and $q$ lines are drawn). Each is a tree of diameter $4$. The short grey strokes on a whisker stand for its $q$ free points, which are at level $-1$. Every element outside $\cA_0$ is incident with exactly one element of $\cA_0$, so the components together with their neighbours partition the elements of $\Gamma$.}
+\label{fig:components}
+\end{figure}
+
+\emph{Every new element.} Write $i,j,k$ for letters in $\{1,\dots,m\}$. The versions and their neighbours are (\path{POLISHED.md}, \S6.2):
+\begin{center}\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright}p{0.27\textwidth}>{\raggedright}p{0.53\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}@{}}
+\toprule
+element (level) & a version is incident with & degree\\
+\midrule
+$v$ (2): $v^{ijk}$ & $p^{ij}$ for the $q+1$ points $p$ of $v$ & $q+1$\\
+point $p$ of $v$ (1): $p^{ij}$ & $v^{ij1},\dots,v^{ijm}$; $L^i$ for the $q$ lines $L\ne v$ through $p$ & $q+m$\\
+line $n\in S\setminus\{v\}$ (1): $n^{ij}$ & $p^i$ for the $q+1$ points $p$ of $n$ & $q+1$\\
+point $p\in\Pi$ not on $v$ (0): $p^i$ & $n^{i1},\dots,n^{im}$ for its spread line $n$; $h^i$ for each whisker $h$ on $p$; every other line through $p$ & $q+m$\\
+line $L\ne v$ meeting $v$ (0): $L^i$ & $p^{i1},\dots,p^{im}$ for $p=L\cap v$; the $q$ other points of $L$ & $q+m$\\
+whisker $h$ (0): $h^i$ & $p^i$ for the point $p$ of $h$ in $\Pi$; the $q$ free points of $h$ & $q+1$\\
+point $r\notin\Pi$ ($-1$) & all $m$ versions of the line through $r$ meeting $v$ or of its whisker; every other line through $r$ & $q+m$\\
+line $N\notin\cA_0$ ($-1$) & all $m$ versions of its point in $\Pi$; its $q$ other points & $q+m$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Nothing is deleted: every flag of $\Gamma$ survives in every sheet. The elements of level $-1$ see more (all versions of their one neighbour in $\cA_0$), the versions of the spread lines and of the whiskers see less (only versions of their points), and these last are the elements of degree $q+1$.
+
+\begin{theorem}[Theorem D]\label{thm:D}
+With an exact whisker set, the doubling of $H(q)$ with these levels has maximum degree $q+m$, diameter $6$ and
+\[
+2N+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr)
+\]
+elements; for $m=2$ this is $2N+2q^4+4q^3+4q+10$. 
+\end{theorem}
+
+At $q=5,9,11,13$ and $m=2$ this gives $9592$, $148944$, $388972$, $870440$, and at $q=13$, $m=3$ it gives $940846$. With $W=\emptyset$ the same levels are Delorme's construction \cite[\S8(b)]{D85a}, which gives the 2013 values; the whiskers add $(m-1)q^2(q^2-1)$.
+
+\subsection{Theorem R: a regular version}\label{ssec:thmR}
+The doubled structure has more lines than points, $(m-1)m(q^3-q+m)$ more, and its deficient elements are the versions of spread lines and whiskers. Two observations make it regular.
+\begin{itemize}[leftmargin=1.5em]
+\item \emph{Repeated lines.} For $n\in S\setminus\{v\}$ and a letter $i$, the $m$ versions $n^{i1},\dots,n^{im}$ have the same points (the $p^i$, $p$ on $n$); likewise the versions $v^{ij1},\dots,v^{ijm}$. Deleting a line that has a twin with the same points changes no distance between the remaining elements (a shortest path through it may use the twin). Delete $(m-1)m(q^3-q+m)$ such lines, at most $m-1$ from each class of $m$, so that points and lines are equal in number.
+\item \emph{Completion.} Now every element has degree between $q+1$ and $q+m$, and the deficits on the two sides have the same sum; this sum is large compared with $q+m$, and a swapping argument (\path{POLISHED.md}, Lemma~7.2) gives a set of anti-flags, one for each missing incidence, whose addition makes the structure $(q+m)$-regular. Adding flags does not increase distances.
+\end{itemize}
+The result has $2(q+1)\bigl(q^4+q^2+1+(m-1)(q^3+m+1)\bigr)$ elements: $9348$, $147500$, $386328$, $866068$ at $q=5,9,11,13$, $m=2$, and $927724$ at $q=13$, $m=3$. The completing anti-flags are not given by a rule; only their existence is proved.
 
 \section{Diameter 7}\label{sec:d7}
 \emph{To be written.}
@@ -540,6 +685,9 @@ Explicit coordinates for every construction: \path{POLISHED.md} (\S2 for the hat
 \bibitem{AL20} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin. \textbf{38} (2022), no.~4, Paper 110; arXiv:2005.02427.
 \bibitem{BLP09} J.~Bamberg, M.~Law and T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica \textbf{29} (2009), 1--17.
 \bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, European J. Combin. \textbf{6} (1985), 291--302.
+\bibitem{T80} J.~A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A \textbf{29} (1980), 87--93.
+\bibitem{T59} J.~Tits, Sur la trialit\'e et certains groupes qui s'en d\'eduisent, Publ. Math. IH\'ES \textbf{2} (1959), 13--60.
+\bibitem{VM98} H.~Van Maldeghem, Generalized Polygons, Birkh\"auser, 1998.
 \bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, J. Algebra \textbf{18} (1971), 201--212.
 \bibitem{PT} S.~E. Payne and J.~A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
 \end{thebibliography}
