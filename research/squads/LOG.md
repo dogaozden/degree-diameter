@@ -61,5 +61,9 @@ machine, or give each card a CPU budget instead of a wall budget).
 Kept: the orbit-quotient method (e02, e04, e06, e07, e08). Director follow-up after the round: quotients by the
 cyclic group of order q^2-1 of G_2(q). At q=8 its point quotient (572 admissible orbits) gave 4,041 non-collinear
 points (97% of 4,161) and its quotient of all t.s. lines (tsorbq.c, 36,463 orbits) 3,285 disjoint lines, so K = 3,285
-and (10,11) = 492,154,758 > 445,709,568 (note §5, Computer-checked 5.8). The same group at q=7 (order 48) and q=9
-(order 80) gave only 71% and 62%; (9,11) stays open at K = 1,743.
+and (10,11) = 492,154,758 > 445,709,568 (note §5, Computer-checked 5.8); a warm-started ILS on all t.s. lines then
+added 7 lines: K = 3,292, (10,11) = 493,203,330. The same group at q=7 (order 48), q=9 (order 80) and q=16 (order 255)
+gave 71%, 62% and 44% (q=16 still improved K from 28,483 to 29,087); (9,11) stays open at K = 1,743. SAT on the
+quotients (CaDiCaL via pysat): no invariant point set with 66 full orbits of order 63 at q=8 (UNSAT), one with 65
+(4,095 points); the line versions (invariant near-spread, Singer-73-invariant spread, packing >= 58 orbits) and the
+q=7 packings needed for (9,11) were undecided within 10-40 minutes each.

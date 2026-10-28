@@ -6,7 +6,9 @@ Input (text): the 7x7 matrix h (7 rows), the point orbit representatives (one po
 orbit representatives (two spanning points per row, 14 entries). The sets are the orbits under <h>.
 Checks: h has order 63 on points; every point singular; no hexagon line contains two chosen points; every chosen line
 totally singular; the chosen lines pairwise disjoint. Prints the numbers of points and lines.
-Usage: python3 verify_q8.py H.txt POINT_REPS.txt LINE_REPS.txt"""
+With a fourth argument, the line representatives are expanded with that matrix instead of h (the identity matrix
+for a plain list of lines).
+Usage: python3 verify_q8.py H.txt POINT_REPS.txt LINE_REPS.txt [H_LINES.txt]"""
 import sys
 import numpy as np
 
@@ -69,6 +71,7 @@ def main():
     h = np.loadtxt(sys.argv[1], dtype=np.int64)
     PR = np.loadtxt(sys.argv[2], dtype=np.int64, ndmin=2)
     LR = np.loadtxt(sys.argv[3], dtype=np.int64, ndmin=2)
+    hl = np.loadtxt(sys.argv[4], dtype=np.int64) if len(sys.argv) > 4 else h
     pts = [y for x in PR for y in orbit(h, x)]
     assert len(set(pts)) == len(pts), 'point orbits overlap'
     assert all(Q(np.array(x)) == 0 for x in pts), 'a point is not on the quadric'
@@ -87,7 +90,7 @@ def main():
         assert Q(x) == 0 and Q(y) == 0 and b(x, y) == 0, 'a line is not totally singular'
         for _ in range(63):
             lines.append((x, y))
-            x, y = matvec(h, x), matvec(h, y)
+            x, y = matvec(hl, x), matvec(hl, y)
     # distinct lines and their points (orbits of size < 63 repeat: keep distinct point sets only)
     sets = {}
     for x, y in lines:

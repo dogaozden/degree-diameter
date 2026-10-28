@@ -131,14 +131,14 @@ element. This gives one theorem for all diameters \(c+2+\rho\):
   \(63 = q^2-1\) of \(G_2(8)\) has a union of 67 point orbits that is a
   set of 4,041 pairwise non-collinear points (97\% of the upper bound
   4,161), and \(Q(6,8)\) has 3,285 pairwise disjoint totally singular
-  lines (55 orbits of the same group). With \(K = 3{,}285\) and
-  \(r = 1\), Corollary 5.5 gives a bipartite 10-regular graph of
-  diameter at most 11 with \textbf{492,154,758} vertices, against the
-  lab's 445,709,568 (Theorem + Computer-checked 5.8). \((9,11)\) stays
-  open (\(K = 1{,}743\) at \(q = 7\), 1,852 needed). \textbf{First
-  values} at \((\Delta,11)\) for \(11\le\Delta\le 20\), where the lab
-  has none, are in §5.7 (from \(1.33\cdot10^9\) at \(\Delta = 11\) to
-  \(3.8\cdot10^{11}\) at \(\Delta = 20\)).
+  lines (55 orbits of the same group), 3,292 after a local search. With
+  \(K = 3{,}292\) and \(r = 1\), Corollary 5.5 gives a bipartite
+  10-regular graph of diameter 11 with \textbf{493,203,330} vertices,
+  against the lab's 445,709,568 (Theorem + Computer-checked 5.8).
+  \((9,11)\) stays open (\(K = 1{,}743\) at \(q = 7\), 1,852 needed).
+  \textbf{First values} at \((\Delta,11)\) for \(11\le\Delta\le 20\),
+  where the lab has none, are in §5.7 (from \(1.33\cdot10^9\) at
+  \(\Delta = 11\) to \(3.9\cdot10^{11}\) at \(\Delta = 20\)).
 \item
   \textbf{\(D = 8\), quadrangles, the Ree--Tits octagon (§6):} no cells.
 \end{itemize}
@@ -736,7 +736,7 @@ research/theorems/polylev/d11cert.py (every class is the point set of a
 line of \(H(q)\) contains two of the chosen points); the squad sets were
 also certified by the finding card's own checker, and the \(q = 8\) sets
 by the stand-alone verify\_q8.py (Computer-checked 5.8). These graphs
-are far too large for a breadth-first check (up to \(3.8\cdot 10^{11}\)
+are far too large for a breadth-first check (up to \(3.9\cdot 10^{11}\)
 vertices); their diameter rests on Corollary 5.5, which was checked
 all-pairs at \(q = 2, 3, 4\) (Computer-checked 5.6, 5.9).
 
@@ -769,18 +769,18 @@ lab value
 \bottomrule\noalign{}
 \endlastfoot
 (9, 11) & 7 & 1 & 1,743 & 136,746,192 & 5.57 & 145,258,344 \\
-\textbf{(10, 11)} & 8 & 1 & 3,285 & \textbf{492,154,758} & 6.27 &
+\textbf{(10, 11)} & 8 & 1 & 3,292 & \textbf{493,203,330} & 6.29 &
 445,709,568 \\
-(11, 11) & 9 & 1 & 5,012 & 1,331,921,500 & 5.99 & - \\
-(12, 11) & 9 & 2 & 5,012 & 2,663,710,140 & 4.67 & - \\
+(11, 11) & 9 & 1 & 5,021 & 1,334,312,980 & 6.00 & - \\
+(12, 11) & 9 & 2 & 5,021 & 2,668,493,100 & 4.68 & - \\
 (13, 11) & 11 & 1 & 8,379 & 5,937,914,808 & 4.40 & - \\
 (14, 11) & 11 & 2 & 8,379 & 11,875,475,304 & 3.98 & - \\
 (15, 11) & 13 & 1 & 14,335 & 23,064,902,028 & 3.70 & - \\
 (16, 11) & 13 & 2 & 14,335 & 46,128,999,588 & 3.73 & - \\
 (17, 11) & 13 & 3 & 14,335 & 69,193,097,148 & 2.95 & - \\
-(18, 11) & 16 & 1 & 28,483 & 127,433,014,254 & 2.97 & - \\
-(19, 11) & 16 & 2 & 28,483 & 254,863,791,546 & 3.37 & - \\
-(20, 11) & 16 & 3 & 28,483 & 382,294,568,838 & 2.95 & - \\
+(18, 11) & 16 & 1 & 29,087 & 130,135,264,350 & 3.04 & - \\
+(19, 11) & 16 & 2 & 29,087 & 260,268,291,738 & 3.44 & - \\
+(20, 11) & 16 & 3 & 29,087 & 390,401,319,126 & 3.02 & - \\
 \end{longtable}
 
 (research/theorems/polylev/d11values.py; for each \(\Delta\) the best
@@ -812,15 +812,16 @@ points or duality (line classes)
 \endlastfoot
 7 & 1,978 (squad r2/e09, ILS on all t.s. lines) & 1,743 (orbit quotient,
 cyclic group of order 48) & 1,743 & 71.1 \\
-8 & 3,285 (orbit quotient, order 63) & 4,041 (orbit quotient, order 63)
-& 3,285 & 78.9 \\
-9 & 5,012 (ILS on all t.s. lines, ils\_lines.c of r2/e09) & duality of
-\(H(9)\) & 5,012 & 75.4 \\
+8 & 3,292 (orbit quotient, order 63, then local search) & 4,041 (orbit
+quotient, order 63) & 3,292 & 79.1 \\
+9 & 5,021 (ILS on all t.s. lines, ils\_lines.c of r2/e09, warm restart)
+& duality of \(H(9)\) & 5,021 & 75.6 \\
 11 & 9,975 (squad r2/e15, 75 orbits of a group of order 133) & 8,379
 (squad r2/e02) & 8,379 & 56.8 \\
 13 & 15,536 (squad r2/e03) & 14,335 (squad r2/e04) & 14,335 & 49.9 \\
-16 & 32,391 (squad r2/e05, greedy rounds) & 28,483 (squad r2/e06, orbit
-quotient, order 91) & 28,483 & 43.3 \\
+16 & 32,391 (squad r2/e05, greedy rounds) & 29,087 (orbit quotient,
+cyclic group of order 255; squad r2/e06 had 28,483 with order 91) &
+29,087 & 44.2 \\
 \end{longtable}
 
 The percentages fall with \(q\) mainly because the searches got less
@@ -945,10 +946,20 @@ these to the values in the tables above.
   Hence (Corollary 5.5 with \(K = 3{,}285\), \(r = 1\), \(m = 6{,}571\))
   there is a bipartite 10-regular graph of diameter at most 11 on
   \(2\cdot 37{,}449\cdot 6{,}571 = 492{,}154{,}758\) vertices. It beats
-  the lab's 445,709,568 at \((10,11)\) by 10.4\%. With \(r = 2,3,4\) the
-  same data give first values at \((11,11)\), \((12,11)\), \((13,11)\)
-  (984,234,618; 1,476,314,478; 1,968,394,338), which the \(q = 9\) and
-  \(q = 11\) rows of the table beat.
+  the lab's 445,709,568 at \((10,11)\) by 10.4\%.
+\item
+  \textbf{Local search adds 7 lines.} An iterated local search on all
+  totally singular lines of \(Q(6,8)\), started from \(\mathcal M\)
+  (research/theorems/polylev/d11q8/ils\_lines\_w.c, a warm-start version
+  of squad card r2/e09's ils\_lines.c), gives a set \(\mathcal M'\) of
+  3,292 pairwise disjoint totally singular lines; it is no longer a
+  union of orbits, and is listed in full in
+  certs/q8\_lines\_3292\_span.txt.gz (two spanning points per row). With
+  \(K = 3{,}292\), \(m = 6{,}585\):
+  \textbf{\(2\cdot 37{,}449\cdot 6{,}585 = 493{,}203{,}330\) vertices},
+  10.7\% above the lab's value. With \(r = 2,3,4\) the same data give
+  986,331,762; 1,479,460,194; 1,972,588,626 at \((11,11)\)--\((13,11)\),
+  which the \(q = 9\) and \(q = 11\) rows of the table beat.
 \end{enumerate}
 
 Checks: (a) certs/verify\_q8.py, which uses no other file of the
@@ -956,11 +967,14 @@ repository: it implements \(\mathbb F_8\), applies \(h\) to the
 representatives, tests \(Q = 0\), tests every pair of the 4,041 points
 for orthogonality and, when orthogonal, for Tits' equations of §1 (no
 pair passes both), checks that every line is totally singular, and that
-the 3,285 lines cover \(3{,}285\cdot 9 = 29{,}565\) distinct points; (b)
+the lines are pairwise disjoint (3,285 lines covering \(29{,}565\)
+distinct points; run again on the plain list \(\mathcal M'\) with the
+identity matrix: 3,292 lines, \(29{,}628\) distinct points); (b)
 d11cert.py on the expanded sets against the hexagon file (hexgen2.c's
 \(H(8)\); the two descriptions of \(H(8)\) agree: 300 random lines of
 the file satisfy Tits' equations and the 3,222 non-hexagon lines of
-\(\mathcal M\) do not). Both report \(K = 3{,}285\).
+\(\mathcal M\) do not). Both report \(K = 3{,}285\) for \(\mathcal M\)
+and \(K = 3{,}292\) for \(\mathcal M'\).
 
 The graph is explicit: certs/d11graph.py fixes the padding of the
 classes and \(\sigma_1\) (both are free in Theorem 2.3; the file's
@@ -970,15 +984,17 @@ Explicitly, with \(A_i\supseteq m_i\) (\(m_i\in\mathcal M\)) and
 adjacent to the 9 vertices \((l,g)\) with \(p\in l\) and to
 \((\sigma_1(p), g+i+1)\); \((l,g)\), \(l\in B_i\), to the 9 vertices
 \((p,g)\) with \(p\in l\) and to \((\sigma_1^{-1}(l), g-i-1)\), indices
-mod 6,571. The graph has \(4.9\cdot10^8\) vertices, too many for an
-all-pairs BFS; as a sample, for 300 random pairs (half of them two
+mod \(m\) (\(m = 6{,}571\) for \(\mathcal M\), \(6{,}585\) for
+\(\mathcal M'\)). The graphs have \(4.9\cdot10^8\) vertices, too many
+for an all-pairs BFS; as a sample, for random pairs (half of them two
 copies of the same element in different layers) d11graph.py found
-\(B_5(u)\cap B_6(v)\ne\emptyset\), i.e.~distance \(\le 11\), every time,
-and \(B_5(u)\cap B_5(v)=\emptyset\) for 42 of them, i.e.~distance
-exactly 11 (certs/q8\_sample.log); it also checked that the sampled
-vertices have 10 distinct neighbours and that adjacency is symmetric. So
-the diameter is exactly 11; the upper bound rests on Corollary 5.5, the
-sample only illustrates it.
+\(B_5(u)\cap B_6(v)\ne\emptyset\), i.e.~distance \(\le 11\), every time:
+300 of 300 pairs for \(\mathcal M\) and 200 of 200 for \(\mathcal M'\);
+and \(B_5(u)\cap B_5(v)=\emptyset\), i.e.~distance exactly 11, for 42
+and 32 of them (certs/q8\_sample.log, certs/q8\_sample\_3292.log). It
+also checked that the sampled vertices have 10 distinct neighbours and
+that adjacency is symmetric. So the diameter is exactly 11; the upper
+bound rests on Corollary 5.5, the sample only illustrates it.
 
 \textbf{Computer-checked 5.9 (a small test of the same mix).} At
 \(q = 4\): 20 pairwise disjoint lines of \(Q(6,4)\) that are not lines
@@ -1007,9 +1023,32 @@ pencils, and we used pencils.
 the bound, while the Singer group of order 73 gave 65\% (37 orbits after
 60 s of local search), order 57 gave 71\% (52 orbits), and local search
 on the whole collinearity graph 70\% (2,907 points, squad r2/e08). The
-same group type at \(q = 7\) (order 48) and \(q = 9\) (order 80) gave
-only 71\% and 62\%. We have no explanation, and we do not know whether
+same group type at \(q = 7\) (order 48), \(q = 9\) (order 80) and
+\(q = 16\) (order 255) gave only 71\%, 62\% and 44\% (local search on
+the quotients). We have no explanation, and we do not know whether
 \(H(8)\) has a distance-2 ovoid (4,161 points).
+
+\textbf{Computer-checked 5.12 (exact searches on the orbit quotients,
+\(q = 8\)).} With the SAT solver CaDiCaL (pysat;
+research/theorems/polylev/d11q8/ovoidsat.py), as an exact cover of the
+line orbits of \(\langle h\rangle\) by point orbits: no
+\(\langle h\rangle\)-invariant set of pairwise non-collinear points
+contains 66 orbits of size 63 (UNSAT; the solver gives no proof
+certificate), and there is one with 65 (4,095 points,
+certs/q8\_points\_4095.txt.gz; d11cert.py: no line of \(H(8)\) contains
+two of them). So an \(\langle h\rangle\)-invariant partial distance-2
+ovoid has at most \(65\cdot 63+9 = 4{,}104\) points, and \(H(8)\) has a
+partial distance-2 ovoid of 4,095 points (98.4\% of 4,161). For lines
+(d11q8/spreadsat.py, same solver), no admissible line orbit of
+\(\langle h\rangle\) covers the two fixed points or the orbit of size 7,
+so an \(\langle h\rangle\)-invariant partial line spread of \(Q(6,8)\)
+has at most \((37{,}449-9)/9 = 4{,}160\) lines. Three instances were
+left undecided after 40 minutes each: an \(\langle h\rangle\)-invariant
+cover of all 594 point orbits of size 63 (66 line orbits), a packing
+with at least 58 line orbits of size 63, and a line spread invariant
+under the Singer group of order 73 (57 line orbits covering the 513
+point orbits). Whether \(Q(6,8)\) has a line spread we do not know
+(nothing in the sources of §9).
 
 For \(\Delta\ge 11\) the lab has no values at \(D = 11\) (the 2013 table
 stops at \(D = 10\), and the lab's beyond-table band covers \(D = 11\)
@@ -1151,7 +1190,7 @@ Comp. 5.3 & squad r1/c11, r1/c12 (ils\_mis.c, mis2.c; sets re-verified)
 & \(K\ge 1{,}618\) (\(q=7\)), \(K\ge 2{,}701\) (\(q=8\)) \\
 §5.7 table & certs/run\_certs.sh: d11cert.py on every set (squad sets
 re-checked here; each card also ran its own checker) & \(K\) = 1,743;
-3,285; 5,012; 8,379; 14,335; 28,483 for \(q\) = 7, 8, 9, 11, 13, 16 \\
+3,292; 5,021; 8,379; 14,335; 29,087 for \(q\) = 7, 8, 9, 11, 13, 16 \\
 Comp. 5.8 & certs/verify\_q8.py (stand-alone, own \(\mathbb F_8\) and
 Tits' equations) and d11cert.py; d11graph.py (300 sampled pairs) &
 \(K = 3{,}285\) at \(q = 8\); sampled distances \(\le 11\) \\
