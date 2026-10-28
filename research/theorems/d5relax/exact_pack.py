@@ -26,7 +26,7 @@ p1 = next(b for b in L[plines[0][0]] if b != 0)
 
 
 def solve(case):
-    h = highspy.Highs(); h.setOptionValue('output_flag', False); h.setOptionValue('time_limit', tl)
+    h = highspy.Highs(); h.setOptionValue('output_flag', os.environ.get('LOG') == '1'); h.setOptionValue('time_limit', tl)
     h.setOptionValue('threads', 1); inf = highspy.kHighsInf
     m = len(units)
     fixed = (0,) if case == 'S' else (0, p1)
