@@ -592,7 +592,8 @@ recomputes collinearity from coordinates). The exact values come from exact_pack
 "units" (single points and collinear pairs) in which every line meets at most one unit, a set-packing problem with one
 row per line, solved by HiGHS in two cases (the unit through a fixed point is a single, or a pair with a fixed
 collinear point; $\mathrm{PSp}(4,q)$ is transitive on points and on ordered collinear pairs). At $q = 5$ both cases
-are optimal at 23 (346 s and 716 s), so dropping the condition does not change the maximum there. At $q = 11$ eight
+are optimal at 23 (346 s and 716 s), so dropping the condition does not change the maximum there. At $q = 7$ the same MIP finds
+41 but its bound stays at the counting value 53.3 after 20 minutes (runs/pack_q7_free_*.log), so 42 is undecided. At $q = 11$ eight
 different strategies of the squad stop at 89: weighted local search, unions of orbits of 533 subgroups of $\mathrm{Sp}(4,11)$ solved exactly (best 81, then 89 by tabu search),
 sets with all pairs on lines of $S$ (74 in the restricted model, 89 after an unrestricted search), large-neighbourhood
 search with exact MIP re-optimisation (regions of 700–1000 points solve to optimality and never pass 89), seeded growth
