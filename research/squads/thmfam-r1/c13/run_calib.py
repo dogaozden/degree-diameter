@@ -6,11 +6,16 @@ HF = '/home/user/degree-diameter/research/theorems/haar_families'
 CD = '/home/user/degree-diameter/research/squads/thmfam-r1/c13'
 ORB = f'{HF}/gen_random_orb.py'
 NOSYM = f'{CD}/gen_random_nosym.py'
+done = set()
+if os.path.exists(f'{CD}/results.jsonl'):
+    for l in open(f'{CD}/results.jsonl'):
+        r = json.loads(l); done.add((r['group'], r['Delta'], r['kind'], r['seed']))
 out = open(f'{CD}/results.jsonl', 'a')
 for group in ['psl', 'sl']:
     for Delta in [6, 7, 8]:
         for kind in ['sym', 'nosym']:
             for seed in range(1, 9):
+                if (group, Delta, kind, seed) in done: continue  # resume support
                 if kind == 'sym':
                     f = Delta - 6  # fixed letters: 0 (I absent), 1 ({I}), 2 ({I, w}); plus k=2 random 3-orbits
                     gen = f'python3 {ORB} {{q}} {f} 2 {seed}'
