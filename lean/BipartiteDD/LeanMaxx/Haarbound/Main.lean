@@ -66,6 +66,45 @@ theorem even_length_iff_isLeft {S : Finset G} {u w : G ⊕ G} (p : (haarGraph S)
     rw [SimpleGraph.Walk.length_cons, Nat.even_add_one]
     exact (not_congr ih).trans (key _ _ _ (isLeft_ne_of_adj h))
 
+/-- The far side of `H(G, S)` seen from `(e, A)`: `(x, A)` when `D` is odd and `(x, B)` when `D` is even. -/
+def farVertex (D : ℕ) (x : G) : G ⊕ G := if D % 2 = 1 then Sum.inl x else Sum.inr x
+
+omit [Group G] in
+theorem farVertex_isLeft (D : ℕ) (x : G) : (farVertex D x).isLeft = true ↔ D % 2 = 1 := by
+  by_cases hD : D % 2 = 1 <;> simp [farVertex, hD]
+
+omit [Group G] in
+theorem farVertex_injective (D : ℕ) : Function.Injective (farVertex (G := G) D) := by
+  intro x y hxy
+  unfold farVertex at hxy
+  split_ifs at hxy <;> simpa using hxy
+
+/-- Every far-side vertex lies at distance `m < D` from `(e, A)`, with `m ≡ D - 1 (mod 2)`. -/
+theorem exists_far_walk (S : Finset G) {D : ℕ} (hdiam : (haarGraph S).ediam ≤ D) (x : G) :
+    ∃ m, m < D ∧ m % 2 = (D + 1) % 2 ∧ (haarGraph S).edist (Sum.inl (1 : G)) (farVertex D x) = m := by
+  have hle : (haarGraph S).edist (Sum.inl (1 : G)) (farVertex D x) ≤ (D : ℕ∞) :=
+    le_trans edist_le_ediam hdiam
+  have hfin : (haarGraph S).edist (Sum.inl (1 : G)) (farVertex D x) ≠ ⊤ :=
+    ne_top_of_le_ne_top (ENat.natCast_ne_top D) hle
+  obtain ⟨m, hm⟩ := ENat.ne_top_iff_exists.mp hfin
+  rw [← hm] at hle
+  have hmD : m ≤ D := by exact_mod_cast hle
+  obtain ⟨p, hp⟩ := exists_walk_of_edist_eq_coe hm.symm
+  have hpar := even_length_iff_isLeft p
+  rw [hp] at hpar
+  have hL : (Sum.inl (1 : G) : G ⊕ G).isLeft = true := rfl
+  have hpar' : Even m ↔ D % 2 = 1 := by
+    rw [hpar, ← farVertex_isLeft D x, hL]
+    exact eq_comm
+  rw [Nat.even_iff] at hpar'
+  have hmD' : m < D ∧ m % 2 = (D + 1) % 2 := by
+    rcases Nat.mod_two_eq_zero_or_one D with hD | hD
+    · simp [hD] at hpar'
+      omega
+    · simp [hD] at hpar'
+      omega
+  exact ⟨m, hmD'.1, hmD'.2, hm.symm⟩
+
 /-- **Theorem 4.1 (Haar per-side Moore bound).** If `S.card = Δ ≥ 2` and `H(G, S)` has diameter at
 most `D`, then `|G| ≤ ∑_{j < D} (Δ - 1)^j`. -/
 theorem card_le [Fintype G] {Δ D : ℕ} (S : Finset G) (hS : S.card = Δ)
@@ -77,41 +116,11 @@ theorem card_le [Fintype G] {Δ D : ℕ} (S : Finset G) (hS : S.card = Δ)
   have hdeg : ∀ u, ((haarGraph S).neighborFinset u).card ≤ k + 1 := fun u => by
     have := neighborFinset_card_le S u
     omega
-  -- the far side: `(x, A)` for `D` odd, `(x, B)` for `D` even
-  let ι : G → G ⊕ G := fun x => if D % 2 = 1 then Sum.inl x else Sum.inr x
-  have hι : Function.Injective ι := by
-    intro x y hxy
-    simp only [ι] at hxy
-    split_ifs at hxy <;> simpa using hxy
-  have hιleft : ∀ x, (ι x).isLeft = true ↔ D % 2 = 1 := by
-    intro x
-    by_cases hD : D % 2 = 1 <;> simp [ι, hD]
-  -- every far-side vertex lies in a layer `L < D` with `L ≡ D - 1 (mod 2)`
   have hcover : ∀ x, ∃ m ∈ (range D).filter (fun L => L % 2 = (D + 1) % 2),
-      ι x ∈ sphere (haarGraph S) (Sum.inl 1) m := by
+      farVertex D x ∈ sphere (haarGraph S) (Sum.inl 1) m := by
     intro x
-    have hle : (haarGraph S).edist (Sum.inl 1) (ι x) ≤ (D : ℕ∞) :=
-      le_trans edist_le_ediam hdiam
-    have hfin : (haarGraph S).edist (Sum.inl 1) (ι x) ≠ ⊤ :=
-      ne_top_of_le_ne_top (ENat.natCast_ne_top D) hle
-    obtain ⟨m, hm⟩ := ENat.ne_top_iff_exists.mp hfin
-    rw [← hm] at hle
-    have hmD : m ≤ D := by exact_mod_cast hle
-    obtain ⟨p, hp⟩ := exists_walk_of_edist_eq_coe hm.symm
-    have hpar := even_length_iff_isLeft p
-    rw [hp] at hpar
-    have hL : (Sum.inl (1 : G) : G ⊕ G).isLeft = true := rfl
-    have hpar' : Even m ↔ D % 2 = 1 := by
-      rw [hpar, ← hιleft x, hL]
-      exact eq_comm
-    rw [Nat.even_iff] at hpar'
-    have hmD' : m < D ∧ m % 2 = (D + 1) % 2 := by
-      rcases Nat.mod_two_eq_zero_or_one D with hD | hD
-      · simp [hD] at hpar'
-        omega
-      · simp [hD] at hpar'
-        omega
-    exact ⟨m, Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hmD'.1, hmD'.2⟩, mem_sphere.mpr hm.symm⟩
+    obtain ⟨m, hmD, hmod, hm⟩ := exists_far_walk S hdiam x
+    exact ⟨m, Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hmD, hmod⟩, mem_sphere.mpr hm⟩
   -- each layer has at most `bnd k L` vertices
   have hlayer : ∀ L, (sphere (haarGraph S) (Sum.inl 1) L).card ≤ bnd k L := by
     intro L
@@ -120,8 +129,8 @@ theorem card_le [Fintype G] {Δ D : ℕ} (S : Finset G) (hS : S.card = Δ)
     | succ m =>
       have := card_sphere_le (haarGraph S) (k + 1) hdeg (Sum.inl 1) m
       simpa [bnd] using this
-  calc Fintype.card G = (univ.image ι).card := by
-        rw [card_image_of_injective _ hι, card_univ]
+  calc Fintype.card G = (univ.image (farVertex (G := G) D)).card := by
+        rw [card_image_of_injective _ (farVertex_injective D), card_univ]
     _ ≤ (((range D).filter (fun L => L % 2 = (D + 1) % 2)).biUnion
           fun L => sphere (haarGraph S) (Sum.inl 1) L).card := by
         apply card_le_card
