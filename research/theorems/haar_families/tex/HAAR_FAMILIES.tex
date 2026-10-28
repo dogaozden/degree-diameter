@@ -192,9 +192,9 @@ given by one formula in q (and m) and a proved diameter?
   and with labels given by one formula in m (§4.3) the family has
   members \textbf{above the 2013 table} at (8,8) (210,528 vertices
   against 201,480; q = 17, m = 43) and (8,9) (1,105,104 against
-  1,091,232; q = 23, m = 91), checked by two or three independent
-  programs. They are below the lab's records there, and their diameters
-  are computed, not proved.
+  1,091,232; q = 23, m = 91), each accepted by four or five independent
+  programs, including the lab's record checkers. They are below the
+  lab's records there, and their diameters are computed, not proved.
 \item
   \emph{Other uniform formulas behave like one random draw.} Integer
   lifts, primitive-root and Dickson formulas, the conic model, torus
@@ -289,8 +289,9 @@ Cor. 3.4 & if diam \(Γ_{p,q}\) ≤ D then n \textless{} 2\(^{3/2}\)
 p\(^{3D/4}\) and n \textless{} √2·p\(^{1−D/4}\)·M\(^{b}\)(p+1, D) &
 Corollary \\
 3.5 & equality in Thm. 3.2 in all 251 cases p ∈ \{3, 5, 7, 11, 13, 17,
-19, 29\}, p \textless{} q ≤ 160 (including p ≡ 3 mod 4); ecc − L₀ ∈ \{0,
-1, 2, 3\} & Computer-checked \\
+19, 29\}, p \textless{} q ≤ 160 (including p ≡ 3 mod 4), and in all 50
+cases p ∈ \{5, 13\}, 161 ≤ q ≤ 300; ecc − L₀ ∈ \{0, 1, 2, 3\} &
+Computer-checked \\
 App. B & the LPS family cell by cell; at odd D its largest member is the
 one Thm. 3.2 allows in 8 of 13 cells & Computer-checked \\
 Prop. 3.6 & the same lower bound in any definite quaternion order with
@@ -644,10 +645,10 @@ bipartite Cayley graph whose connection set lies in the non-trivial
 coset of an index-2 subgroup is a Haar graph of that subgroup, Lemma
 2.5(d)); it is the bipartite double cover of X\(^{p,q}\) when p is a
 square mod q. \emph{Computer-checked}: \(Γ_{p,q}\) has q(q² − 1)
-vertices for p ∈ \{3, 5, 7, 11, 13\} and every prime p \textless{} q ≤
-160 (logs \texttt{haar\_families/scan/lps\_p*.txt}, column
-``vertices''), including p ≡ 3 (mod 4), which Theorem 2.7 as cited does
-not cover.
+vertices for p ∈ \{3, 5, 7, 11, 13\} and every prime q with p
+\textless{} q up to the scan limits of Appendix B (214 graphs; logs
+\texttt{haar\_families/scan/lps\_p*.txt}, column ``vertices''),
+including p ≡ 3 (mod 4), which Theorem 2.7 as cited does not cover.
 
 \hypertarget{the-family-written-out-at-ux3b4-6}{%
 \subsubsection{2.3 The family written out at Δ =
@@ -807,10 +808,15 @@ p ≡ 3 (mod 4), where equality is not proved here. The eccentricity of
 (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251
 cases). So in this range the special vertex ψ(i) accounts for the
 diameter up to at most 3, and at odd D it is usually what limits the
-family (Appendix B). The construction in the proof of Theorem 3.2(b) (u,
-v, w, and β with N(β) = p\(^{L₀}\), β ≡ 1 mod 2 and {[}ψ(β){]} =
-{[}ψ(i){]}) was also checked directly for p ∈ \{5, 13, 17, 29, 37\} and
-all primes p \textless{} q \textless{} 1000 (802 cases,
+family (Appendix B). A second run for p ∈ \{5, 13\} and all primes 161 ≤
+q ≤ 300 (log \texttt{haar\_families/recheck\_thmB\_large.log}) gave
+equality in all 50 cases (graphs up to 2.5·10⁷ vertices), with ecc − L₀
+= 0, 1, 2 in 16, 27 and 7 cases; for p = 13, q = 239 the inequality
+2·13⁴ = 57,122 \textgreater{} 239² = 57,121 holds by one, and indeed d =
+L₀ = 8 there. The construction in the proof of Theorem 3.2(b) (u, v, w,
+and β with N(β) = p\(^{L₀}\), β ≡ 1 mod 2 and {[}ψ(β){]} = {[}ψ(i){]})
+was also checked directly for p ∈ \{5, 13, 17, 29, 37\} and all primes p
+\textless{} q \textless{} 1000 (802 cases,
 \texttt{haar\_families/check\_thmB\_construction.py}). An independent
 re-implementation by squad card c8 (its own quaternion arithmetic and
 BFS; \texttt{research/squads/thmfam-r1/c8/}) confirmed Theorem 2.6(c)
@@ -936,13 +942,13 @@ this cell) & 1,294,920 \\
 Every entry was re-checked by the director with \texttt{haar\_ecc}
 (two-source BFS on the component, from the cards' generators:
 \texttt{research/squads/thmfam-r1/c6/gen\_c6.py},
-\texttt{research/squads/thmfam-r1/c7/c7lib.py}), and (6,10) and (8,8)
-also with \texttt{verify\_cover.py} (independent Python arithmetic;
-eccentricities 10, 10 and 8, 8). These graphs are below the lab's
-records and below the table, and their labels were searched for each (q,
-m): they are not a uniform family. They show that the cyclic factor
-removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0
-times the LPS graph alone.
+\texttt{research/squads/thmfam-r1/c7/c7lib.py}), and all but (14,8) also
+with \texttt{verify\_cover.py} (independent Python arithmetic);
+generators and log in \texttt{haar\_families/covers/}. These graphs are
+below the lab's records and below the table, and their labels were
+searched for each (q, m): they are not a uniform family. They show that
+the cyclic factor removes most of the 4/3 loss in practice: at (6,10)
+the cover is 3.0 times the LPS graph alone.
 
 \hypertarget{a-label-rule-a-formula-in-q-and-m-that-beats-the-2013-table-at-88-and-89}{%
 \subsubsection{4.3 A label rule: a formula in q and m that beats the
@@ -968,10 +974,11 @@ adjacent to the eight vertices (ψ(α)X, z + z(α), B), α ∈ \(S_{7}\).
 
 \textbf{Computer-checked 4.3 (squad card c2 of round 2, re-checked by
 the director).} Over the grid q ∈ \{11, 13, 17, 19, 23\} × m ∈ \{7, 13,
-19, 31, 37, 43, 61, 49, 91\} (45 cells, all components full), the rules
-t = 2, t = 3, t = 5, t = m − 2 and others have mean excess 2.63--2.66,
-against 2.72--2.77 for one random t per cell (two seeds). Two members of
-the family are above the 2013 table:
+19, 31, 37, 43, 61, 49, 91\} (45 cells, all components full), the 14
+rules tried (t = 2, 3, 4, 5, m − 1, m − 2, r ± 1, \ldots, each with both
+roots r) have mean excess 2.63--2.88, the best ones 2.63--2.66, against
+2.73 for one random t per cell (three seeds, standard deviation 0.03).
+Two members of the family are above the 2013 table:
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
@@ -999,23 +1006,28 @@ checks
 \bottomrule\noalign{}
 \endlastfoot
 (8,8) & (17, 43), t = 2, r = 36 & \textbf{210,528} & 201,480 (+4.5 \%) &
-239,904 & \texttt{haar\_ecc}, \texttt{verify\_cover.py}, all-pairs
+239,904 & \texttt{haar\_ecc}, \texttt{verify\_cover.py},
+\texttt{hc\_factor.c}, \texttt{build\_haar2.py}, all-pairs
 \texttt{apsp.c} \\
 (8,9) & (23, 91), t = m − 2 = 89, r = 9 & \textbf{1,105,104} & 1,091,232
-(+1.3 \%) & 1,341,600 & \texttt{haar\_ecc}, \texttt{verify\_cover.py} \\
+(+1.3 \%) & 1,341,600 & \texttt{haar\_ecc}, \texttt{verify\_cover.py},
+\texttt{hc\_factor.c}, \texttt{build\_haar2.py} \\
 \end{longtable}
 
 (generators: \texttt{haar\_families/covers/d8D8\_lps7\_q17\_m43.gens},
-\texttt{d8D9\_lps7\_q23\_m91.gens}; log \texttt{covers/recheck.log}.)
-Both are below the lab's records at these cells ({[}H{]} §5), so they
-are not new records; and (q, m) is the best cell of the grid, chosen
-after the fact. What they show is that a member of a uniform arithmetic
-family of the records' exact shape (k = 3, cycle type 1 + 1 + 3 + 3, an
-inner automorphism of order 3 times a scaling of \(Z_{m}\)) is above the
-2013 table at D = 8 and 9, while the same family without the cyclic
-factor is 6.8 and 3.6 times below it (Appendix B). We do not have a
-proof of the diameter of any member: the proofs of §3 give lower bounds
-only.
+\texttt{d8D9\_lps7\_q23\_m91.gens}; the same graphs as Haar graphs of
+PSL(2, q) × \(Z_{m}\) in the lab's solution-file format, by Lemma
+2.5(d), in \texttt{covers/sols/}, which the lab's record checkers
+\texttt{hc\_factor.c} and \texttt{research/frontier/build\_haar2.py}
+accept; log \texttt{covers/recheck.log}.) Both are below the lab's
+records at these cells ({[}H{]} §5), so they are not new records; and
+(q, m) is the best cell of the grid, chosen after the fact. What they
+show is that a member of a uniform arithmetic family of the records'
+exact shape (k = 3, cycle type 1 + 1 + 3 + 3, an inner automorphism of
+order 3 times a scaling of \(Z_{m}\)) is above the 2013 table at D = 8
+and 9, while the same family without the cyclic factor is 6.8 and 3.6
+times below it (Appendix B). We do not have a proof of the diameter of
+any member: the proofs of §3 give lower bounds only.
 
 \textbf{Label rules elsewhere (round 2).} For p = 5 the best fixed rule
 (t = 3) has mean excess 2.86 over 45 cells, against 2.93--3.09 for one
@@ -1278,6 +1290,7 @@ novelty for Lemmas 2.3--2.5 or for Theorem 2.7.
 \FunctionTok{cc} \AttributeTok{{-}O3} \AttributeTok{{-}o}\NormalTok{ haar\_ecc haar\_ecc.c          }\CommentTok{\# any Haar graph of SL/PSL/PGL(2,q) x Z\_m from generator lines "a b c d z"}
 \ExtensionTok{./lps\_haar}\NormalTok{ 5 13 }\AttributeTok{{-}v}                     \CommentTok{\# Example 2.8: 2184 vertices, diameter 7, d(I, psi(i)) = 6 = L0}
 \ExtensionTok{python3}\NormalTok{ check\_thmB.py 3,5,7,11,13,17,19,29 160 }\OperatorTok{\textgreater{}}\NormalTok{ recheck\_thmB.log     }\CommentTok{\# Computer{-}checked 3.5}
+\ExtensionTok{python3}\NormalTok{ check\_thmB.py 5,13 300 161 }\OperatorTok{\textgreater{}}\NormalTok{ recheck\_thmB\_large.log           }\CommentTok{\# the same for 161 \textless{}= q \textless{}= 300 (slow)}
 \ExtensionTok{python3}\NormalTok{ check\_thmB\_construction.py                                    }\CommentTok{\# the beta of Theorem 3.2(b), q \textless{} 1000}
 \ExtensionTok{./lps\_haar}\NormalTok{ 5 13 }\AttributeTok{{-}v} \KeywordTok{|} \FunctionTok{grep} \StringTok{\textquotesingle{}\^{}gen\textquotesingle{}} \KeywordTok{|} \FunctionTok{sed} \StringTok{\textquotesingle{}s/.*mat(//; s/) z=/ /; s/,/ /g\textquotesingle{}} \OperatorTok{\textgreater{}}\NormalTok{ g.txt}
 \ExtensionTok{python3}\NormalTok{ component\_edges.py pgl 13 1 e.txt }\OperatorTok{\textless{}}\NormalTok{ g.txt                    }\CommentTok{\# independent edge list of the component}
@@ -1288,6 +1301,9 @@ novelty for Lemmas 2.3--2.5 or for Theorem 2.7.
 \ExtensionTok{python3}\NormalTok{ ../../squads/thmfam{-}r1/c6/gen\_c6.py 23 37 19 0 }\KeywordTok{|} \ExtensionTok{python3}\NormalTok{ verify\_cover.py 23 37}
 \ExtensionTok{python3}\NormalTok{ gen\_lps\_cover.py 7 11 151 cyc 1 57 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 11 151           }\CommentTok{\# §4.2, (8,8): diameter 8}
 \ExtensionTok{python3}\NormalTok{ ../../squads/thmfam{-}r1/c7/c7lib.py 13 29 379 1 202 352 308 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 29 379   }\CommentTok{\# §4.2, (14,8)}
+\ExtensionTok{python3}\NormalTok{ gen\_lps\_cover.py 7 17 43 cyc 1 2 }\AttributeTok{{-}{-}rk}\NormalTok{ 2 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 17 43        }\CommentTok{\# §4.3, (8,8): 210,528 vertices, diameter 8}
+\ExtensionTok{python3}\NormalTok{ gen\_lps\_cover.py 7 23 91 cyc 1 89 }\AttributeTok{{-}{-}rk}\NormalTok{ 1 }\KeywordTok{|} \ExtensionTok{./haar\_ecc}\NormalTok{ pgl 23 91       }\CommentTok{\# §4.3, (8,9): 1,105,104 vertices, diameter 9}
+\ExtensionTok{python3}\NormalTok{ ../../frontier/build\_haar2.py covers/sols/d8D8\_psl\_17\_43\_lps7\_t2.txt   }\CommentTok{\# the lab\textquotesingle{}s record checker (also hc\_factor.c)}
 \end{Highlighting}
 \end{Shaded}
 

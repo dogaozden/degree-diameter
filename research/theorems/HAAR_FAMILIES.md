@@ -77,7 +77,7 @@ Appendix A. The squad rounds. Appendix B. The LPS family cell by cell.
 | Thm. 3.2 | d((I,A), (ψ(i),A)) ≥ L₀ := min{L even : 2p^{L/2} > q²}, with equality if p ≡ 1 mod 4 | Theorem (equality uses a cited factorization) |
 | Cor. 3.3 | diam Γ_{p,q} > (4/3) log_p n − 2 log_p 2 | Corollary |
 | Cor. 3.4 | if diam Γ_{p,q} ≤ D then n < 2^{3/2} p^{3D/4} and n < √2·p^{1−D/4}·M^b(p+1, D) | Corollary |
-| 3.5 | equality in Thm. 3.2 in all 251 cases p ∈ {3, 5, 7, 11, 13, 17, 19, 29}, p < q ≤ 160 (including p ≡ 3 mod 4); ecc − L₀ ∈ {0, 1, 2, 3} | Computer-checked |
+| 3.5 | equality in Thm. 3.2 in all 251 cases p ∈ {3, 5, 7, 11, 13, 17, 19, 29}, p < q ≤ 160 (including p ≡ 3 mod 4), and in all 50 cases p ∈ {5, 13}, 161 ≤ q ≤ 300; ecc − L₀ ∈ {0, 1, 2, 3} | Computer-checked |
 | App. B | the LPS family cell by cell; at odd D its largest member is the one Thm. 3.2 allows in 8 of 13 cells | Computer-checked |
 | Prop. 3.6 | the same lower bound in any definite quaternion order with an orthogonal unit γ | Proposition |
 | Prop. 4.1 | the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K, S̃) of the LPS graph | Proposition |
@@ -373,8 +373,11 @@ families lose to them by a factor p^{D/4−1}.
 exception in 251 cases (log `haar_families/recheck_thmB.log`). This includes p ≡ 3 (mod 4), where equality is not proved
 here. The eccentricity of (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251 cases). So in this range
 the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is usually what limits the family
-(Appendix B). The construction in the proof of Theorem 3.2(b) (u, v, w, and β with N(β) = p^{L₀}, β ≡ 1 mod 2 and [ψ(β)]
-= [ψ(i)]) was also checked directly for p ∈ {5, 13, 17, 29, 37} and all primes p < q < 1000 (802 cases,
+(Appendix B). A second run for p ∈ {5, 13} and all primes 161 ≤ q ≤ 300 (log `haar_families/recheck_thmB_large.log`)
+gave equality in all 50 cases (graphs up to 2.5·10⁷ vertices), with ecc − L₀ = 0, 1, 2 in 16, 27 and 7 cases; for p =
+13, q = 239 the inequality 2·13⁴ = 57,122 > 239² = 57,121 holds by one, and indeed d = L₀ = 8 there. The construction in
+the proof of Theorem 3.2(b) (u, v, w, and β with N(β) = p^{L₀}, β ≡ 1 mod 2 and [ψ(β)] = [ψ(i)]) was also checked
+directly for p ∈ {5, 13, 17, 29, 37} and all primes p < q < 1000 (802 cases,
 `haar_families/check_thmB_construction.py`). An independent re-implementation by squad card c8 (its own quaternion
 arithmetic and BFS; `research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and
 Theorem 3.2 in 41 cases with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six LPS graphs.
@@ -617,6 +620,7 @@ cc -O3 -o lps_haar lps_haar.c -lm      # LPS graph: generators (-v), eccentricit
 cc -O3 -o haar_ecc haar_ecc.c          # any Haar graph of SL/PSL/PGL(2,q) x Z_m from generator lines "a b c d z"
 ./lps_haar 5 13 -v                     # Example 2.8: 2184 vertices, diameter 7, d(I, psi(i)) = 6 = L0
 python3 check_thmB.py 3,5,7,11,13,17,19,29 160 > recheck_thmB.log     # Computer-checked 3.5
+python3 check_thmB.py 5,13 300 161 > recheck_thmB_large.log           # the same for 161 <= q <= 300 (slow)
 python3 check_thmB_construction.py                                    # the beta of Theorem 3.2(b), q < 1000
 ./lps_haar 5 13 -v | grep '^gen' | sed 's/.*mat(//; s/) z=/ /; s/,/ /g' > g.txt
 python3 component_edges.py pgl 13 1 e.txt < g.txt                    # independent edge list of the component
