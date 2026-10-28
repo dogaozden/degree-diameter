@@ -442,10 +442,11 @@ Searching t for each (q, m), the squads found:
 | (14,8) | (29, 379) | 9,232,440 | 65.1 % | none (the lab does not beat this cell) | 1,294,920 |
 
 Every entry was re-checked by the director with `haar_ecc` (two-source BFS on the component, from the cards' generators:
-`research/squads/thmfam-r1/c6/gen_c6.py`, `research/squads/thmfam-r1/c7/c7lib.py`), and (6,10) and (8,8) also with
-`verify_cover.py` (independent Python arithmetic; eccentricities 10, 10 and 8, 8). These graphs are below the lab's
-records and below the table, and their labels were searched for each (q, m): they are not a uniform family. They show
-that the cyclic factor removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0 times the LPS graph alone.
+`research/squads/thmfam-r1/c6/gen_c6.py`, `research/squads/thmfam-r1/c7/c7lib.py`), and all but (14,8) also with
+`verify_cover.py` (independent Python arithmetic); generators and log in `haar_families/covers/`. These graphs are below
+the lab's records and below the table, and their labels were searched for each (q, m): they are not a uniform family.
+They show that the cyclic factor removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0 times the LPS
+graph alone.
 
 ### 4.3 A label rule: a formula in q and m that beats the 2013 table at (8,8) and (8,9)
 
@@ -463,8 +464,9 @@ by one formula in q and m: no search. It is closed under the automorphism (x, z)
 records' shape. The vertex (X, z, A), X ∈ PSL(2, q), is adjacent to the eight vertices (ψ(α)X, z + z(α), B), α ∈ S_7.
 
 **Computer-checked 4.3 (squad card c2 of round 2, re-checked by the director).** Over the grid q ∈ {11, 13, 17, 19,
-23} × m ∈ {7, 13, 19, 31, 37, 43, 61, 49, 91} (45 cells, all components full), the rules t = 2, t = 3, t = 5, t = m − 2
-and others have mean excess 2.63–2.66, against 2.72–2.77 for one random t per cell (two seeds). Two members of the
+23} × m ∈ {7, 13, 19, 31, 37, 43, 61, 49, 91} (45 cells, all components full), the 14 rules tried (t = 2, 3, 4,
+5, m − 1, m − 2, r ± 1, …, each with both roots r) have mean excess 2.63–2.88, the best ones 2.63–2.66, against 2.73
+for one random t per cell (three seeds, standard deviation 0.03). Two members of the
 family are above the 2013 table:
 
 | cell | (q, m), rule, r | vertices | 2013 table | lab record | checks |

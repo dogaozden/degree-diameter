@@ -44,7 +44,7 @@ and m), how far covers go, and a numerical audit of the note. 11 Haiku cards; sc
 | card | direction | best |
 |---|---|---|
 | c1 | label rules, p = 5 (45 cells) | t = 3: mean excess 2.86 (random t: 2.93-3.09, mean 3.01) |
-| c2 | label rules, p = 7 (45 cells) | t = 2, 3, 5, m-2: 2.63-2.66 (random t: 2.72-2.77); members above the 2013 table at (8,8) 210,528 (q=17, m=43) and (8,9) 1,105,104 (q=23, m=91); director re-checked with haar_ecc, verify_cover.py and (8,8) with all-pairs apsp.c |
+| c2 | label rules, p = 7 (45 cells) | 14 rules 2.63-2.88, best 2.63-2.66 (random t: 2.73); members above the 2013 table at (8,8) 210,528 (q=17, m=43) and (8,9) 1,105,104 (q=23, m=91); director re-checked with haar_ecc, verify_cover.py and (8,8) with all-pairs apsp.c |
 | c3 | label rules, p = 11 (p = 13 not run) | best of 10 rules 2.53 against random labels 2.56: a tie |
 | c4 | push p = 5 covers past the table, labels hill-climbed per (q, m) | no FULL cover beat the table at (6,8), (6,9), (6,10) |
 | c5 | push p = 7 covers past the table | its (q, m) = (11, 163) entries marked diam 8 had 18 vertices unreached within 8 steps (cA = 215,151 < 215,160): diameter 9, not a table beat (director re-check) |
