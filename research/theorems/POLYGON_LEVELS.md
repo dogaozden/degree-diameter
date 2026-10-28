@@ -424,8 +424,8 @@ certs/cert.log):
 | 13 | 15,536 (squad r2/e03) | 14,335 (squad r2/e04) | 14,335 | 49.9 |
 | 16 | 32,391 (squad r2/e05, greedy rounds) | 29,087 (orbit quotient, cyclic group of order 255; squad r2/e06 had 28,483 with order 91) | 29,087 | 44.2 |
 
-The percentages fall with $q$ mainly because the searches got less time per element at larger $q$; they are lower
-bounds, not estimates of the maxima.
+The percentages are lower bounds, not estimates of the maxima. (**Heuristic:** they fall with $q$ at least partly
+because the searches had less time per element at larger $q$; we did not test this.)
 
 Pairwise disjoint lines are a partial distance-2 spread and pairwise non-collinear points a partial distance-2 ovoid;
 both have at most $q^4+q^2+1 = N/(q+1)$ elements (each point lies on at most one of the lines; each line contains at

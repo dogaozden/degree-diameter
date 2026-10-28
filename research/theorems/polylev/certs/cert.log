@@ -22,15 +22,7 @@ K = 14335 (bound q^4+q^2+1 = 28731; 49.9%)
   r=2: Delta=16, D=11, order 46,128,999,588
   r=3: Delta=17, D=11, order 69,193,097,148
   r=4: Delta=18, D=11, order 92,257,194,708
-=== q=16
-q=16: 32391 point classes, pairwise disjoint; classes that are not totally singular lines: 0
-28483 points; lines of H(q) containing two or more of them: 0
-K = 28483 (bound q^4+q^2+1 = 65793; 43.3%)
-  r=1: Delta=18, D=11, order 127,433,014,254
-  r=2: Delta=19, D=11, order 254,863,791,546
-  r=3: Delta=20, D=11, order 382,294,568,838
-  r=4: Delta=21, D=11, order 509,725,346,130
-=== q=8
+=== q=8 (orbit construction)
 q=8: 3285 point classes, pairwise disjoint; classes that are not totally singular lines: 0
 4041 points; lines of H(q) containing two or more of them: 0
 K = 3285 (bound q^4+q^2+1 = 4161; 78.9%)
@@ -38,11 +30,34 @@ K = 3285 (bound q^4+q^2+1 = 4161; 78.9%)
   r=2: Delta=11, D=11, order 984,234,618
   r=3: Delta=12, D=11, order 1,476,314,478
   r=4: Delta=13, D=11, order 1,968,394,338
-=== q=9
-q=9: 5012 point classes, pairwise disjoint; classes that are not totally singular lines: 0
+=== q=8 (plus local search)
+q=8: 3292 point classes, pairwise disjoint; classes that are not totally singular lines: 0
+4041 points; lines of H(q) containing two or more of them: 0
+K = 3292 (bound q^4+q^2+1 = 4161; 79.1%)
+  r=1: Delta=10, D=11, order 493,203,330
+  r=2: Delta=11, D=11, order 986,331,762
+  r=3: Delta=12, D=11, order 1,479,460,194
+  r=4: Delta=13, D=11, order 1,972,588,626
+=== q=8 stand-alone
+4041 points on Q(6,8); pairs on a common line of H(8): 0
+3285 totally singular lines; points covered 29565, distinct 29565; pairwise disjoint: True
+K = 3285
+4041 points on Q(6,8); pairs on a common line of H(8): 0
+3292 totally singular lines; points covered 29628, distinct 29628; pairwise disjoint: True
+K = 3292
+=== q=9 (5,021 lines)
+q=9: 5021 point classes, pairwise disjoint; classes that are not totally singular lines: 0
 line side by the duality (points go to lines: True); line classes = images of the point classes
-K = 5012 (bound q^4+q^2+1 = 6643; 75.4%)
-  r=1: Delta=11, D=11, order 1,331,921,500
-  r=2: Delta=12, D=11, order 2,663,710,140
-  r=3: Delta=13, D=11, order 3,995,498,780
-  r=4: Delta=14, D=11, order 5,327,287,420
+K = 5021 (bound q^4+q^2+1 = 6643; 75.6%)
+  r=1: Delta=11, D=11, order 1,334,312,980
+  r=2: Delta=12, D=11, order 2,668,493,100
+  r=3: Delta=13, D=11, order 4,002,673,220
+  r=4: Delta=14, D=11, order 5,336,853,340
+=== q=16 (points from the order-255 quotient)
+q=16: 32391 point classes, pairwise disjoint; classes that are not totally singular lines: 0
+29087 points; lines of H(q) containing two or more of them: 0
+K = 29087 (bound q^4+q^2+1 = 65793; 44.2%)
+  r=1: Delta=18, D=11, order 130,135,264,350
+  r=2: Delta=19, D=11, order 260,268,291,738
+  r=3: Delta=20, D=11, order 390,401,319,126
+  r=4: Delta=21, D=11, order 520,534,346,514
