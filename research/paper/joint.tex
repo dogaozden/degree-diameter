@@ -150,8 +150,8 @@ joining several copies of an incidence graph by matchings and new vertices. The 
   these graphs have diameter at least 9 (Theorems~\ref{thm:proj} and~\ref{thm:twolabels}), and relabelling the copies
   by automorphisms of the hexagon does not give diameter 8 (Theorems~\ref{thm:geomq8} and~\ref{thm:geomq7}).
 \item \emph{Haar graphs} (Section~\ref{sec:haar}). We state the covering criterion that decides the diameter of a Haar
-  graph from two breadth-first searches, and list Haar graphs that improve two cells at $D=5$ and 34 cells at
-  $D=8,9,10$. These are single explicit graphs, checked by computer.
+  graph from two breadth-first searches, and list Haar graphs that improve two cells at $D=5$ and 33 cells at
+  $D=8,9,10$ (with one further lift at $(3,8)$). These are single explicit graphs, checked by computer.
 \end{itemize}
 
 Problem~4 of \cite{AL20} asks to generalize the hat construction to regular bipartite graphs of diameters 4 and 6. The
@@ -203,12 +203,13 @@ $(\Delta,D)$ & $\Mb$ & 2013 & this paper & reg. & construction \\
 (15,7) & 16\,217\,462 & 2\,480\,184 & \textbf{2\,501\,491} & & 7 typed levels of $H(11)$ \\
 (16,7) & 24\,408\,482 & 4\,022\,340 & \textbf{4\,052\,108} & & 5 typed levels of $H(13)$ \\
 \end{longtable}
-\noindent $^a$ The current values of \cite{CW} are 274 and 376 \cite{AL20}.
+\noindent $^a$ The current values of \cite{CW} are 274 and 374 \cite{AL20}.
 
-All graphs in Table~\ref{tab:summary} except the four Haar graphs at $D=5$ and $D=8$--$10$ are members of families
-proved here for every prime power $q$ (or every odd $q$), with explicit ingredients; at $D=4$ (7,4) and at $D=7$ the
-values in the table use, in addition, explicit sets that are computer-checked, and Section~\ref{sec:d7} also gives
-values beating the 2013 table in all nine cells from classical ingredients only (Table~\ref{tab:d7general}).
+All graphs in Table~\ref{tab:summary} except the two Haar graphs at $D=5$ come from constructions proved here for every
+prime power $q$ (or every odd $q$). At $D=3,4,6$ the ingredients are classical or given by explicit formulas (at $(7,4)$
+an explicit list of 21 lines, Appendix~\ref{app:359}). At $D=7$ the values in the table use, in addition, explicit sets and
+hub graphs whose properties are computer-checked; Section~\ref{sec:d7} also gives values beating the 2013 table in all nine
+cells from classical ingredients only (Table~\ref{tab:d7general}).
 
 \todo{Scope. The repository also holds graphs at other cells that are not covered by the refereed notes this draft is
 built from: $(16,3)$ 396; $(4,5)$ 162, $(5,5)$ 354, $(8,5)$ 2\,048, $(9,5)$ 2\,758, $(10,5)$ 4\,800, $(11,5)$ 7\,020,
@@ -683,7 +684,7 @@ multiset of lines. For each entry $\mu$ of $\cM$, with underlying line $L_\mu$, 
 
 \begin{table}[ht]
 \caption{Neighbourhoods in $\cS[\omega,\cM,\theta]$.}\label{tab:clones}
-\begin{tabular}{@{}l p{7.6cm} l@{}}
+\begin{tabular}{@{}l p{6.2cm} p{4.2cm}@{}}
 \toprule vertex & neighbours & degree\\ \midrule
 clone $p^i$ & the $t+1$ old lines on $p$; the shadow lines $L^\mu$ with $\theta_\mu(p)=p^i$ &
 $t+1+\#\{\mu:\theta_\mu(p)=p^i\}$\\
@@ -1106,7 +1107,7 @@ some point $p'$ opposite $p$ has level $-1$, and $d(p,p')\ge6$ by projection.
 \emph{The neighbourhood of every version.} Write $x^w$ for the versions ($i,j,k\in[m]$). Every element of $H(q)$
 appears once in Table~\ref{tab:versions}. An element of level $k$ has $m^{k+1}$ versions.
 
-\begin{longtable}{@{}p{3.6cm} l p{6.2cm} l@{}}
+\begin{longtable}{@{}p{3.3cm} l p{5.6cm} p{2.2cm}@{}}
 \caption{The neighbourhood of every version in Theorem~\ref{thm:whiskerdoubling}.}\label{tab:versions}\\
 \toprule element (level) & versions & neighbours of the version & degree\\ \midrule\endfirsthead
 \toprule element (level) & versions & neighbours of the version & degree\\ \midrule\endhead
@@ -1299,10 +1300,10 @@ $X_0^2+X_0X_4+\delta^2X_4^2=0$, so $X_0=X_4=X_3=0$, a point of $v$.
 \end{proof}
 
 So Theorem~\ref{thm:whiskerdoubling} holds for even $q$ without change. For $X\in\Pi$ not on $v$ put
-\[
-\nu(X)=\frac{X_2X_3+X_2X_4+X_4X_5}{\delta X_2^2+X_2X_5+X_5^2},\quad G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3,\quad
-F(z)=\frac{G(\alpha,\beta)}{\alpha^2+\alpha\beta+\delta\beta^2}.
-\]
+\begin{gather*}
+\nu(X)=\frac{X_2X_3+X_2X_4+X_4X_5}{\delta X_2^2+X_2X_5+X_5^2},\\
+G(a,b)=(c_0a+c_1b)(a^2+ab+\delta b^2)+b^3,\qquad F(z)=\frac{G(\alpha,\beta)}{\alpha^2+\alpha\beta+\delta\beta^2}.
+\end{gather*}
 The denominator of $\nu$ is anisotropic and vanishes only on $v$.
 
 \begin{lemma}\label{lem:cubic-even}
@@ -1507,8 +1508,9 @@ $Q(6,q)$, i.e.\ partial ovoids of the polar space $Q(6,q)$.
 
 \begin{proof}
 (a) If $x\ne y$ are points of $Q^-(3,q)$ with $b(x,y)=0$, then $Q(\lambda x+\mu y)=\lambda\mu b(x,y)=0$, so the line $xy$
-lies in $Q^-(3,q)$, which contains no line. So $b(x,y)\ne0$ and $x,y$ are opposite by Lemma~\ref{lem:hexfacts}(c). (b) is
-Lemma~\ref{lem:Piz}(b) for odd $q$ and Lemma~\ref{lem:Piz-even} for even $q$ (with the hyperplanes used there).
+lies in $Q^-(3,q)$, which contains no line. So $b(x,y)\ne0$ and $x,y$ are opposite by Lemma~\ref{lem:hexfacts}(c). (b) The
+proof of Lemma~\ref{lem:Piz}(b) applies to every hyperplane with an elliptic section (it uses only that $\Pi\cap Q(6,q)$
+contains no plane); examples of such hyperplanes for every $q$ are in Lemmas~\ref{lem:Piz} and~\ref{lem:Piz-even}.
 (c) A line meeting two lines of $S$ would put them at distance at most 4. So the lines of $S$ together with the $q(q+1)$
 lines meeting each of them are $(q^3+1)(q^2+q+1)=N$ distinct lines, that is, all lines. (d) $\varphi$ preserves
 distances.
@@ -2703,8 +2705,10 @@ hold, all same-side distances are at most $2\kappa$, and $d((g,A),(h,B))\le1+d((
 
 At $D=5$ ($\kappa=2$) the criterion reads: every element of $G$ is a product $a^{-1}bc^{-1}d$ and also a product $ab^{-1}cd^{-1}$
 with $a,b,c,d\in S$. A shortest path never backtracks, so the same count gives the per-side Moore bound
-$|G|\le\sum_{j<D}(\Delta-1)^j$; for $\Delta\ge3$ and $D\in\{8,9,10\}$ it is strict, since equality would make $H(G,S)$ the
-incidence graph of a thick generalized $D$-gon of order $(\Delta-1,\Delta-1)$, which does not exist by \cite{FeitHigman}.
+$|G|\le\sum_{j<D}(\Delta-1)^j$ (that is, $2|G|\le\Mb(\Delta,D)$). For $\Delta\ge3$ and $D\in\{8,9,10\}$ it is strict: with
+equality the reduced words of the binding parity and length at most $D-1$ have distinct values, which forces girth at least
+$2D$, and a bipartite graph of diameter $D$, girth $2D$ and all degrees $\Delta\ge3$ is the incidence graph of a thick
+generalized $D$-gon of order $(\Delta-1,\Delta-1)$, which does not exist for these $D$ \cite{FeitHigman}.
 
 \subsection{Diameter 5}
 The covering condition at $D=5$ is a finite check: for each graph below, a representation $a^{-1}bc^{-1}d$ and
@@ -2747,7 +2751,7 @@ is 80\,940.
 In most of the graphs of Table~\ref{tab:haar}, $S$ is closed under an automorphism $\alpha$ of $G$ of order 3 (or 5, or 6), as
 in Example~\ref{ex:haar78}; no check uses this symmetry.
 
-\begin{longtable}{@{}l r r r l@{}}
+\begin{longtable}{@{}l r r r p{6.3cm}@{}}
 \caption{Haar graphs $H(G,S)$ at $D=8,9,10$ (and one lift). ``\%'': gain over the 2013 value. All computer-checked by at
 least two separately written programs, or by one program and a Lean proof.}\label{tab:haar}\\
 \toprule cell & 2013 & this paper & \% & group $G$ \\ \midrule\endfirsthead
@@ -2964,7 +2968,7 @@ covered.}
 \item Section~\ref{sec:d6}: $H(q)$ in the coordinates of Section~\ref{sec:prelim} is a generalized hexagon (every finite
   field); Theorem~\ref{thm:whiskers} and Lemmas~\ref{lem:cubic}, \ref{lem:key} and~\ref{lem:Jz}(d); Theorem~\ref{thm:whiskerdoubling}
   for any whisker set; Theorem~\ref{thm:D} with the exact vertex counts; Theorem~\ref{thm:R} (completion non-constructive, as on
-  paper); the even case for $q\ge4$, and $q=2$ with an explicit whisker set; the graph of order 9592.
+  paper); the even case for $q\ge4$, and $q=2$, $m=2$ with an explicit whisker set; the graph of order 9592.
 \item Section~\ref{sec:d8}: Theorem~\ref{thm:proj} in the general form stated; Theorem~\ref{thm:twolabels} (for every finite
   field with $q\ge7$, in a form that allows any mix of blocks and any colour convention per copy; the case $q=8$ needs a
   ten-line wrapper written by the verifier); Theorem~\ref{thm:geomq8} for $q\ge8$, reading 2 and its dual, every block pattern
@@ -2999,7 +3003,7 @@ whose properties are also kernel-checked, replaces the one of the record graph.
 %======================================================================
 
 Every graph of Tables~\ref{tab:summary} and~\ref{tab:haar}, and every ``computer-checked'' statement, was checked as follows.
-All programs and logs are in the repository \url{https://github.com/dogaozden/degree-diameter}.
+All programs and logs are in the repository\\ \url{https://github.com/dogaozden/degree-diameter}.
 
 \begin{itemize}
 \item \emph{All-pairs check.} A C program reads an edge list, checks that the graph is simple, bipartite and connected and has
@@ -3030,9 +3034,9 @@ Table~\ref{tab:hat4} with the computed neighbourhoods.
   one) are rejected.
 \end{itemize}
 
-\todo{Should this appendix name the programs and log files (for instance \texttt{research/lifts/coordinator\_check/apsp\_mt.c},
-\texttt{research/frontier/build\_haar2.py}, \texttt{research/coordinator\_check/check\_2026-10-25.txt})? The data files that
-define the $D=7$ sets and hub graphs and the Haar connection sets are in \texttt{research/frontier/sols/}.}
+\todo{Should this appendix name the programs and log files (for instance \nolinkurl{research/lifts/coordinator_check/apsp_mt.c},
+\nolinkurl{research/frontier/build_haar2.py}, \nolinkurl{research/coordinator_check/check_2026-10-25.txt})? The data files that
+define the $D=7$ sets and hub graphs and the Haar connection sets are in \nolinkurl{research/frontier/sols/}.}
 
 %%END%%
 
