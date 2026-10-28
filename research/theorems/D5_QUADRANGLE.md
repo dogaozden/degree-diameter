@@ -522,9 +522,8 @@ $(m,t)$ sits at $(m,j')$ and, in level $j$, at a point $\omega'' = \omega'_j(g_m
 $(\ell,j)\to(\omega'',j)\to g_m\to(m,j')\to(p,j')$ has length 4. $\square$
 
 So a transition with a relaxed set is not repaired in the sense of Definition 3.3, but with the hub rule it satisfies
-(T') of Theorem 3.6. (An earlier version of this note also asked the $\mathcal B$-hub of the slot $(\ell,t)$ to sit, in
-level $j'$, on $m$; the second path above shows that this is not needed. We found this when a graph violating that
-condition for 128 slots passed the all-pairs check.)
+(T') of Theorem 3.6. The $\mathcal B$-hub of the slot $(\ell,t)$ is not constrained: the second path above uses
+the partner's $\mathcal A$-hub instead.
 
 *The hubs exist.* In our layouts the natural slot on $m$ is the $\mathcal B$-slot at the point $o_m$ where the ovoid
 $O$ meets $m$ ($O$ meets every line exactly once), freed on an $H\to D$ transition into level $j$. For the seven-level
@@ -761,10 +760,6 @@ through Definitions 2.1 and 3.1. The solution file also lists the 820 points of 
 $W(9)$ explicitly; research/theorems/d5gq/sol2edges.py re-checks that they form $W(9)$, rebuilds the graph from the file
 alone (without the builder's code) and finds exactly the same edge set.
 
-Earlier versions: 11,605 and 11,621 with a 51-point partial ovoid instead of the relaxed set (without and with the
-local dualities; graphs/d13D5_q9_typed_n11621.json); 11,626 and 11,627 with relaxed sets of 56 and 57 lines and at most
-14 pairs, built with the stronger hub rule (graphs/d13D5_q9_relaxed_n11627.json).
-
 ---
 
 ## 12. Routing through a third level (computer experiments)
@@ -782,7 +777,7 @@ $i$ with two matching edges, e.g. $(x,j)\to(M_{j\to i}(x),i)\to(z,i)\to(M_{i\to 
   research/squads/gqd5-r2/c5/).
 - r2c6: seven levels over $Q(4,7)$, no hubs: 16 freed points on one arc, 8 on each of two arcs, 4 on each of four arcs
   (all valid).
-- The director's annealer research/theorems/d5gq/wgr.py (targeted swaps in the non-friendly matchings and moves of
+- The annealer research/theorems/d5gq/wgr.py (targeted swaps in the non-friendly matchings and moves of
   hub slots; bad pairs counted by wgr_eval.c on the whole graph with hubs but without $Y$, which is chosen at the end):
   at $q = 5$ it reaches zero bad pairs with 4 freed points per $H\to H$ arc (the hub graph then fails (HG) because
   $q-r = 2$). At $q = 9$, on top of the 11,636 graph of §11 with one extra freed point on each of the ten $H\to H$ arcs
@@ -824,7 +819,7 @@ We found no construction from a quadrangle of unequal order that approaches the 
 
 "Theorem family" = Corollaries 10.1–10.4 (explicit sets and hub graphs; research/theorems/d5gq/family_table.py,
 family_table_out.txt); each of these six values was also built and checked by all-pairs BFS with independent scripts
-(research/theorems/d5gq/family_check.py, family_check_even.py, written by the referee agent; output
+(research/theorems/d5gq/family_check.py, family_check_even.py, written independently of the builders; output
 family_check_out.txt). "Computer" = the best graph of §§8–11 type that we built and checked by all-pairs BFS. "Lab" =
 the lab's value on 28 October 2026 (README, research/RESULTS.md). The $\Delta\le 9$ values of the table are Loz's
 voltage lifts [Wiki] and the cells $(10,5)$–$(16,5)$ are credited to [DGQ] (§16).
