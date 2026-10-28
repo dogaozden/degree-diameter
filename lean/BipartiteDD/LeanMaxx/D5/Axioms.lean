@@ -4,6 +4,7 @@ import BipartiteDD.LeanMaxx.D5.ThmB
 import BipartiteDD.LeanMaxx.D5.Family
 import BipartiteDD.LeanMaxx.D5.ThmC
 import BipartiteDD.LeanMaxx.D5.Lemma32
+import BipartiteDD.LeanMaxx.D5.ThmRelaxed
 
 open BipartiteDD.LeanMaxx.D5
 
@@ -23,3 +24,5 @@ open BipartiteDD.LeanMaxx.D5
 #print axioms Hyp.repaired_of_local_dual
 #print axioms Hyp.repaired_iff_reach
 #print axioms Hyp.reach_iff_E
+#print axioms Hyp.reach_relaxed
+#print axioms BipartiteDD.GQst.base3

@@ -21,9 +21,10 @@ so they hold for every quadrangle; distances are `Reach` (walk of length ≤ n).
 
 | 3 | Lemma 3.2 / Definition 3.3 for the actual two-level graph `twoLevel D i j`: every vertex of level i within 5 of every vertex of level j ⇔ (3.1) `Data.Repaired`; hence Theorem E in graph form | `Hyp.repaired_iff_reach`, `Hyp.reach_iff_E` | Lemma32.lean | done |
 | 3 | Theorem C: (H1) non-collinear freed set, (H3) M(Γ2 x) = Γ2(M x) ⇒ repaired (no (H2) needed at D = 5) | `Hyp.repaired_of_local_dual` | ThmC.lean | done |
+| 3+ | Proposition 7.2 as (T'): automorphic arc, relaxed freed set (every element ≤ 1 partner, R1), hub rule (R1h: for partners x, y an 𝓐-hub with slot M y at level j and a slot adjacent to x at level i), three neighbours at every element ⇒ every vertex of level i within 5 of every vertex of level j in X_R^+ | `Hyp.reach_relaxed`, `GQst.base3` | ThmRelaxed.lean | done (Proposition 7.1, the exact bad pairs, not formalised) |
 
 What the family does not do: it uses c = 0 (no two-point local dualities, Theorem C / Proposition 6.4 are not formalised),
 the complete bipartite hub graph (k ≤ q−3 per side) and a counting partial ovoid (≥ q−1 points, not the 3q−1 of Lemma 1.3).
 The orders are therefore below those of Corollary 10.3 (14N + K_A + K_B with K_B ≤ 6q, K_A ≤ 3q+3) and below the lab's records;
-the theorems used are the note's. Not formalised: Proposition 6.1, Corollary 6.2 and Proposition 6.4 (triad centres; existence of two-point local dualities),
+the theorems used are the note's. Not formalised: Proposition 7.1, Proposition 6.1, Corollary 6.2 and Proposition 6.4 (triad centres; existence of two-point local dualities),
 Lemma 1.1/1.3/1.4, Proposition 7.1/7.2, Lemma 9.1, Corollaries 10.1, 10.2, 10.4.
