@@ -1,5 +1,6 @@
 """grporb.py: point orbits of cyclic collineation groups of H(q) of prescribed orders (random elements of G2(q) built as
-in g2.py, powered down to the wanted order). Writes OUT_o{order}_{i}.porb (int32 orbit id per point).
+in g2.py, powered down to the wanted order). Writes OUT_o{order}_{i}.porb (int32 orbit id per point)
+and OUT_o{order}_{i}.pperm (int32 image of each point under the generator).
 Usage: python3 grporb.py HEXBIN OUTPREFIX SEED order [order ...]"""
 import sys
 sys.path.insert(0, '..')
@@ -46,6 +47,7 @@ def main():
             sizes = np.bincount(np.bincount(orb))
             fn = f'{out}_o{w}_{found[w]}.porb'
             orb.astype(np.int32).tofile(fn)
+            pm.astype(np.int32).tofile(fn[:-5] + '.pperm')
             print(f'order {w}: {no} orbits, orbit-size histogram {dict((i, int(c)) for i, c in enumerate(sizes) if c)} -> {fn}', flush=True)
             found[w] += 1
 
