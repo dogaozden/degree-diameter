@@ -10,7 +10,32 @@ github.com/dogaozden/degree-diameter). Written in the style of the lab's diamete
 notation are used. Every claim is labelled **Theorem** (proved here, by hand), **Computer-checked** (a statement about
 specific finite objects, with the check named) or **Heuristic** (an argument with a gap that is named).
 
-RESULTS_PLACEHOLDER
+
+# 0. Results
+
+The diameter-7 level graphs (copies of the incidence graph of $H(q)$ joined by matchings, the 2013 table's $D = 7$
+column) let a walk change layers only at its first or last vertex. Here the jump may start anywhere in a ball of radius
+$\rho$ around the walk's end, and the layer it reaches depends on the **colour class** of the jumping element. This
+gives one theorem for all diameters $c+2+\rho$:
+
+* **Theorem 2.3 (ball lift).** For any bipartite graph $I$ with point–line distances $\le c$, $k$ balanced
+  $\rho$-dominating colour classes on each side give a $\mathbb Z_{2rk+1}$-lift of $I$ plus $r$ matchings, of diameter
+  $\le\rho+c+2$. The classical level graph is the case $\rho = 0$, $k = 1$.
+* **$D = 9$ (Corollary 3.1):** $2N(q)(2rk+1)$ vertices, degree $q+1+r$, where $k$ = number of balanced classes meeting
+  every plane $\pi_p$ (points) and every line 2-ball (lines). $k\le q^2+q+1$, with equality iff $H(q)$ has a
+  partition into ovoids and one into spreads (Proposition 3.2); $H(3)$ has no three pairwise disjoint spreads
+  (Computer-checked 3.3). At $k = q^2+q+1$ the construction would beat the lab's value at every $(\Delta, 9)$,
+  $7\le\Delta\le 20$, except $\Delta = 8$; the record thresholds need $k$ between 49% and 97% of $q^2+q+1$.
+  DTHREE_PLACEHOLDER
+* **$D = 10$ (Corollary 4.4):** for every $q$, a Hermitian spread gives $2N(q)(2r'(q^3+1)+1)$ vertices at degree
+  $q+1+2r'$, with no search. It reaches 84–97% of the lab's values at $(16,10)$, $(19,10)$, $(20,10)$ and beats none.
+* **$D = 11$ (Corollaries 5.2, 5.5):** $K$ pairwise disjoint totally singular lines of $Q(6,q)$ (any line of the quadric
+  is 4-dominating, Lemma 5.4) and $K$ pairwise non-collinear points of $H(q)$ give $2N(q)(2rK+1)$ vertices at degree
+  $q+1+r$; for $q = 3^h$ the duality makes the second condition automatic.
+  DELEVEN_PLACEHOLDER
+* **$D = 8$, quadrangles, the Ree–Tits octagon (§6):** no cells.
+
+All theorems were tested by building the graphs at small $q$ and running an all-pairs BFS (§8).
 
 # 1. Notation
 
@@ -48,7 +73,7 @@ non-existence results.
 # 2. The ball lift
 
 The construction works for any bipartite graph in place of $I$; the hexagon enters only through the numbers in
-Corollaries 3.1, 4.2 and 5.1. Fix:
+Corollaries 3.1, 4.4, 5.2 and 5.5. Fix:
 
 * a connected bipartite graph $I$ with colour classes $P$ ("points") and $L$ ("lines"), $|P| = |L| = N$, in which every
   point–line distance is at most an odd number $c$;
@@ -290,11 +315,11 @@ The orders against the lab's current values at $D = 10$ (research/theorems/polyl
 | 20 | 17 | 2 | 4,914 | 29,656,019,484 | 30,518,778,360 | 0.972 |
 
 None of these beats the lab's Haar graphs; the closest are $(19,10)$ ($q = 16$, 95%) and $(20,10)$ ($q = 17$, 97%).
-The reason is visible in the count: the 3-balls of lines that Lemma 4.3 uses have $(q+1)(q^2+1)$ elements, but a class
-has to meet all of them and the spread stars have $q^2+q+1$ lines, so $K\le (q+1)(q^2+1)$ while Corollary 4.4 has
-$K = q^3+1$; and the sign trick needs two matchings per factor. **Heuristic 4.6:** a partition of the lines into
-$K\approx(q+1)(q^2+1)$ classes meeting every set $\{l: d(p,l)\le 3\}$ would roughly add a factor $1+1/q$; it would not
-change the conclusion at $D = 10$.
+Why there is no record here: every class must meet the $N$ sets $\{l : d(p,l)\le 3\}$ and every line lies in
+$(q+1)(q^2+1)$ of them, so $|C_i|\ge N/((q+1)(q^2+1))$ and $K\le (q+1)(q^2+1)$. The spread stars give $K = q^3+1$,
+within a factor $1+1/q$ of that bound, so better classes cannot help much (**Heuristic 4.6**: we did not prove that
+the bound is not attained). The loss is structural: each factor $K$ costs two matchings (one per sign), against one
+per factor $k$ at $D = 9$.
 
 # 5. Diameter 11: disjoint lines and non-collinear points
 
@@ -342,6 +367,17 @@ independent scorer domcheck.py confirms that every class meets every 4-ball. The
 114,296 vertices; apsp: bipartite, 5-regular, diameter exactly 11 (checks/d11_q3_K78_r1_D11.apsp.txt; the run with
 $D = 10$ fails). Squad card r1/c13 built the pencil version at $q = 2$ ($K = 19$, the largest partial distance-2 spread
 of $H(2)$, found by exhaustive search): diameter 11 for $r = 1$ and 10 for $r = 2$.
+
+**5.7 First values at $(\Delta, 11)$, $\Delta\ge 11$.** The 2013 table stops at $D = 10$ and the lab's beyond-table
+band covers $D = 11$ only for $\Delta\le 10$, so no value is known to us for $(\Delta,11)$, $11\le\Delta\le 20$.
+Corollary 5.5 gives one as soon as $K$ disjoint quadric lines and $K$ non-collinear points (or, for $q = 9$, the
+duality) are exhibited. The sets below were found by squad round 2 and by the director, and each was certified by two
+separate programs (the finding card's own check and research/theorems/polylev/d11cert.py: every class is the point set
+of a 2-dimensional totally singular subspace, classes pairwise disjoint; no line of $H(q)$ contains two of the chosen
+points). These graphs are far too large for a breadth-first check (up to $10^{11}$ vertices); their diameter rests on
+Corollary 5.5, which was checked all-pairs at $q = 2, 3$ (Computer-checked 5.6).
+
+D11FIRST_PLACEHOLDER
 
 Pairwise disjoint lines are a partial distance-2 spread and pairwise non-collinear points a partial distance-2 ovoid;
 both have at most $q^4+q^2+1 = N/(q+1)$ elements (each point lies on at most one of the lines; each line contains at
@@ -451,7 +487,7 @@ exact diameter; it assumes no symmetry).
 | Theorem 2.3 / Cor. 3.1, $q = 3$, $k = 7$ | lift9.py + apsp, $r = 1, 2, 3$ (10,920; 21,112; 31,304 vertices) | bipartite, regular of degree $q+1+r$; diameter 9, 9, 8; "$D = 8$" fails for $r = 1, 2$ |
 | Cor. 3.1, $q = 4$, $k = 13$ | squad r1/c13: translocal colourings, lift9.py, apsp (73,710; 144,690 vertices) | diameter $\le 9$ for $r = 1, 2$; "$D = 8$" fails |
 | Cor. 4.4, $q = 2, 3$, $r' = 1$ | squad r1/c14: build_star.py + apsp (2,394; 41,496 vertices, 2 seeds each) | diameter 8 ($q=2$), 9 ($q=3$) |
-| Cor. 5.2 | CHECK511_PLACEHOLDER | |
+| Cor. 5.2, 5.5 | $q = 3$: 78 singular-line classes + duality, lift9.py + apsp (114,296 vertices); squad r1/c13: $q = 2$ pencils, $K = 19$ | diameter 11 (and 10 fails); $q = 2$: diameter 11 ($r=1$), 10 ($r=2$) |
 | Comp. 3.3 | perfcodes.c (exact cover), triples.py | 28 spreads, no ovoid in $H(2)$; 6,318 spreads and 6,318 ovoids in $H(3)$; no 3 pairwise disjoint spreads |
 | Comp. 3.4 | domlocal.c, translocal.c; independent scorer domcheck.py (tests every 2-ball by BFS) | see the table in §3 |
 | Comp. 3.6 | g2.py (collineations by apartment maps, verified on all lines), singer_perms.py (orbit sizes printed) | semiregular groups listed in §3.5 |

@@ -1,0 +1,12 @@
+loaded N=177156, |H_k|=16105, setup 0.1s
+sanity: lines through point 0 = 1464 (expect 1464)
+K=1000 processed=1000 idx=1039 time=6s
+K=2000 processed=2000 idx=2157 time=11s
+K=3000 processed=3000 idx=3351 time=14s
+K=4000 processed=4000 idx=4612 time=17s
+K=5000 processed=5000 idx=5972 time=19s
+K=6000 processed=6002 idx=7541 time=21s
+K=7000 processed=7141 idx=9546 time=23s
+K=8000 processed=9801 idx=14739 time=27s
+K=8704 lines, covered 104448 of 177156 points (58.96%), uncovered 72708, bound 14763, time 122.3s
+8704

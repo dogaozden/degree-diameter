@@ -17,6 +17,8 @@
 #include <stdint.h>
 #include <string.h>
 #include <time.h>
+#include <sys/time.h>
+static double wall(void) { struct timeval tv; gettimeofday(&tv, NULL); return tv.tv_sec + 1e-6 * tv.tv_usec; }
 
 static int q, N, Q1, B, K, NO;
 static int *LP, *PL, *perm, *orb, *idx, *rep;
@@ -120,12 +122,13 @@ int main(int argc, char **argv) {
     fprintf(stderr, "q=%d %s k=%d orbits=%d ball=%d initial cost %ld\n", q, argv[3], K, NO, B, cost);
     long best = cost; int *bests = malloc(sizeof(int) * NO); memcpy(bests, s, sizeof(int) * NO);
     long *tabu = calloc((size_t)NO * K, sizeof(long)); long it = 0;
-    clock_t t0 = clock();
+    double t0 = wall();
     int *cand = malloc(sizeof(int) * NO);
     int *missl = malloc(sizeof(int) * K);
     while (cost > 0) {
         it++;
-        if ((it & 255) == 0 && (double)(clock() - t0) / CLOCKS_PER_SEC > secs) break;
+        if ((it & 255) == 0 && wall() - t0 > secs) break;
+        if ((it & 65535) == 0) fprintf(stderr, "it %ld cost %ld best %ld (%.0fs wall)\n", it, cost, best, wall() - t0);
         /* focused move: a random incomplete ball b and one of its missing colours c; every element x of b can be
            given colour c by setting s[orb x] = c - idx[x]; take the best non-tabu one (noise: random one) */
         int b; do b = (int)(rnd() % NO); while (!miss[b]);
@@ -153,7 +156,7 @@ int main(int argc, char **argv) {
             int p1 = bpos[bo], p2 = bpos[bo2]; blist[p1] = bo2; blist[p2] = bo; bpos[bo] = p2; bpos[bo2] = p1; }
         else apply(bo, bv);
         tabu[(size_t)bo * K + old] = it + 5 + rnd() % 10;
-        if (cost < best) { best = cost; memcpy(bests, s, sizeof(int) * NO); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld cost %ld (%.0fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC); }
+        if (cost < best) { best = cost; memcpy(bests, s, sizeof(int) * NO); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld cost %ld (%.0fs)\n", it, cost, wall() - t0); }
     }
     printf("q=%d %s k=%d best cost %ld after %ld iterations\n", q, argv[3], K, best, it);
     {   /* recompute the cost of the best state from scratch (bookkeeping check) */
