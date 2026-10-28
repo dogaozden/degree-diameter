@@ -27,3 +27,10 @@ RESULT VALID d=8 D=8 n=210528
 ## all-pairs BFS (apsp.c) on the edge list of d8D8_lps7_q11_m151 (component_edges.py pgl 11 151)
 n=199320 edges=797280 degree min=8 max=8 bipartite=yes diameter=8
 RESULT VALID d=8 D=8 n=199320
+## lab-format solution files (Lemma 2.5(d): the component is H(PSL(2,q) x Z_m, a^-1 S), a = first letter), checked with hc_factor.c (branch claude/thm-haar-d8-10-sf7f0a) and research/frontier/build_haar2.py
+### covers/sols/d8D8_psl_17_43_lps7_t2.txt
+VALID d=8 D=8 group=psl 17 x Z_43 |G|=105264 vertices=210528 (hc_factor)
+VALID d=8 D=8 group=psl 17 x Z_43 N=105264 vertices=210528
+### covers/sols/d8D9_psl_23_91_lps7_tm2.txt
+VALID d=8 D=9 group=psl 23 x Z_91 |G|=552552 vertices=1105104 (hc_factor)
+VALID d=8 D=9 group=psl 23 x Z_91 N=552552 vertices=1105104

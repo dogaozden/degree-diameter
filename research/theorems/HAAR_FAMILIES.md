@@ -32,9 +32,9 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
 3. *A cyclic factor removes this obstruction in practice.* The obstruction survives every cover (Proposition 4.1), but
    it bounds q, not m. LPS × Z_m with labels chosen for each (q, m) reaches 99.4 % of the table at (6,10) and 98.9 % at
    (8,8) (Computer-checked 4.2), and with labels given by one formula in m (§4.3) the family has members **above the
-   2013 table** at (8,8) (210,528 vertices against 201,480; q = 17, m = 43) and (8,9) (1,105,104 against 1,091,232;
-   q = 23, m = 91), checked by two or three independent programs. They are below the lab's records there, and their
-   diameters are computed, not proved.
+   2013 table** at (8,8) (210,528 vertices against 201,480; q = 17, m = 43) and (8,9) (1,105,104 against 1,091,232; q =
+   23, m = 91), each accepted by four or five independent programs, including the lab's record checkers. They are below
+   the lab's records there, and their diameters are computed, not proved.
 4. *Other uniform formulas behave like one random draw.* Integer lifts, primitive-root and Dickson formulas, the conic
    model, torus orbits, and the records' own sets moved to other q (18 squad cards, §5) give an excess diam −
    log_{Δ−1}|G| no better than a single random draw at the same Δ (about 2.8–3.4 at Δ = 6–8; some kinds are worse),
@@ -472,10 +472,12 @@ family are above the 2013 table:
 
 | cell | (q, m), rule, r | vertices | 2013 table | lab record | checks |
 |---|---|---:|---:|---:|---|
-| (8,8) | (17, 43), t = 2, r = 36 | **210,528** | 201,480 (+4.5 %) | 239,904 | `haar_ecc`, `verify_cover.py`, all-pairs `apsp.c` |
-| (8,9) | (23, 91), t = m − 2 = 89, r = 9 | **1,105,104** | 1,091,232 (+1.3 %) | 1,341,600 | `haar_ecc`, `verify_cover.py` |
+| (8,8) | (17, 43), t = 2, r = 36 | **210,528** | 201,480 (+4.5 %) | 239,904 | `haar_ecc`, `verify_cover.py`, `hc_factor.c`, `build_haar2.py`, all-pairs `apsp.c` |
+| (8,9) | (23, 91), t = m − 2 = 89, r = 9 | **1,105,104** | 1,091,232 (+1.3 %) | 1,341,600 | `haar_ecc`, `verify_cover.py`, `hc_factor.c`, `build_haar2.py` |
 
-(generators: `haar_families/covers/d8D8_lps7_q17_m43.gens`, `d8D9_lps7_q23_m91.gens`; log `covers/recheck.log`.)
+(generators: `haar_families/covers/d8D8_lps7_q17_m43.gens`, `d8D9_lps7_q23_m91.gens`; the same graphs as Haar graphs of
+PSL(2, q) × Z_m in the lab's solution-file format, by Lemma 2.5(d), in `covers/sols/`, which the lab's record checkers
+`hc_factor.c` and `research/frontier/build_haar2.py` accept; log `covers/recheck.log`.)
 Both are below the lab's records at these cells ([H] §5), so they are not new records; and (q, m) is the best cell of
 the grid, chosen after the fact. What they show is that a member of a uniform arithmetic family of the records' exact
 shape (k = 3, cycle type 1 + 1 + 3 + 3, an inner automorphism of order 3 times a scaling of Z_m) is above the 2013 table
@@ -625,6 +627,9 @@ python3 ../../squads/thmfam-r1/c6/gen_c6.py 23 37 19 0 | ./haar_ecc pgl 23 37  #
 python3 ../../squads/thmfam-r1/c6/gen_c6.py 23 37 19 0 | python3 verify_cover.py 23 37
 python3 gen_lps_cover.py 7 11 151 cyc 1 57 | ./haar_ecc pgl 11 151           # §4.2, (8,8): diameter 8
 python3 ../../squads/thmfam-r1/c7/c7lib.py 13 29 379 1 202 352 308 | ./haar_ecc pgl 29 379   # §4.2, (14,8)
+python3 gen_lps_cover.py 7 17 43 cyc 1 2 --rk 2 | ./haar_ecc pgl 17 43        # §4.3, (8,8): 210,528 vertices, diameter 8
+python3 gen_lps_cover.py 7 23 91 cyc 1 89 --rk 1 | ./haar_ecc pgl 23 91       # §4.3, (8,9): 1,105,104 vertices, diameter 9
+python3 ../../frontier/build_haar2.py covers/sols/d8D8_psl_17_43_lps7_t2.txt   # the lab's record checker (also hc_factor.c)
 ```
 
 ---
