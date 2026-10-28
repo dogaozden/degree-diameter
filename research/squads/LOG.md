@@ -43,16 +43,16 @@ and m), how far covers go, and a numerical audit of the note. 11 Haiku cards; sc
 
 | card | direction | best |
 |---|---|---|
-| c1 | label rules, p = 5 (45 cells) | t = 3: mean excess 2.86 (random t: 3.02-3.09) |
+| c1 | label rules, p = 5 (45 cells) | t = 3: mean excess 2.86 (random t: 2.93-3.09, mean 3.01) |
 | c2 | label rules, p = 7 (45 cells) | t = 2, 3, 5, m-2: 2.63-2.66 (random t: 2.72-2.77); members above the 2013 table at (8,8) 210,528 (q=17, m=43) and (8,9) 1,105,104 (q=23, m=91); director re-checked with haar_ecc, verify_cover.py and (8,8) with all-pairs apsp.c |
-| c3 | label rules, p = 11, 13 | (see scoreboard) |
-| c4 | push p = 5 covers past the table, searched labels | (see scoreboard) |
+| c3 | label rules, p = 11 (p = 13 not run) | best of 10 rules 2.53 against random labels 2.56: a tie |
+| c4 | push p = 5 covers past the table, labels hill-climbed per (q, m) | no FULL cover beat the table at (6,8), (6,9), (6,10) |
 | c5 | push p = 7 covers past the table | its (q, m) = (11, 163) entries marked diam 8 had 18 vertices unreached within 8 steps (cA = 215,151 < 215,160): diameter 9, not a table beat (director re-check) |
 | c6 | Delta 4 covers at (4,8), (4,9) | 66 % and 88 % of the table (exhaustive labels); no record |
 | c7 | Delta 12, 14 covers | 51 % of the table at (12,9); nothing at D = 8 beyond plain LPS |
 | c8 | numerical audit of the note | one discrepancy (odd-D count in Appendix B), fixed; all identities, Lemma 2.5(c), Prop. 4.1 passed |
 | c9 | second quaternion algebra (-1,-3) | distance to psi(i) = the Hamilton threshold in 65/66 cases (Prop. 3.6) |
-| c10 | random and exhaustive label baselines | p = 5: random equivariant 2.97, best t per cell 2.65; p = 7: random 2.68 |
+| c10 | random and exhaustive label baselines | p = 5: random equivariant 2.97, free 3.10, best t per cell 2.71 (35 cells); p = 7: random 2.68 |
 | c11 | nonlinear arithmetic labels | z = sum (a_k mod 3) r^(k-1): 2.82 at p = 5 (24 cells) |
 
 Kept: the label rule of c2 (two members above the 2013 table, below the lab's records). Stopped here: no direction

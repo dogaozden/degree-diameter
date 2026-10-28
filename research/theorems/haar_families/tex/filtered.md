@@ -479,13 +479,15 @@ shape (k = 3, cycle type 1 + 1 + 3 + 3, an inner automorphism of order 3 times a
 at D = 8 and 9, while the same family without the cyclic factor is 6.8 and 3.6 times below it (Appendix B). We do not
 have a proof of the diameter of any member: the proofs of §3 give lower bounds only.
 
-**Label rules elsewhere (round 2).** For p = 5 the best fixed rules (t = 3, t = 2) have mean excess 2.86–2.89 against
-3.02–3.09 for random t, over 45 cells (card c1); a nonlinear rule z(α) = Σ_k ($a_{k}$ mod 3)·r$^{k−1}$ gives 2.82 over 24
-cells (card c11); one random equivariant labelling per cell gives 2.97 and the best t per cell 2.65 (card c10, 23 cells
-with an exhaustive search). For Δ = 4 (p = 3), covers with labels searched exhaustively reach 66 % of the table at (4,8)
-and 88 % at (4,9) (card c6), so the cells (4,8), (4,9), which the lab does not beat, stay unbeaten. For Δ = 12 the best
-cover found reaches 51 % of the table at (12,9) and none of diameter 8 improves on plain LPS (card c7); for Δ = 14 the
-best is the 65 % graph at (14,8) of §4.2.
+**Label rules elsewhere (round 2).** For p = 5 the best fixed rule (t = 3) has mean excess 2.86 over 45 cells, against
+2.93–3.09 for one random t per cell (card c1); a nonlinear rule z(α) = Σ_k ($a_{k}$ mod 3)·r$^{k−1}$ gives 2.82 over 24 cells
+(card c11); over 35 cells, one random equivariant labelling gives 2.97 and the best t per cell 2.71 (card c10,
+exhaustive over t and both roots r). For p = 7, one random equivariant labelling gives 2.68 (card c10). For p = 11, the
+best of 10 rules ties with random labels (2.53 against 2.56 over 4 × 8 cells; card c3). So a fixed rule recovers about
+half of the gain that a search over t gives at p = 5, and little or nothing at p = 7 and 11. For Δ = 4 (p = 3), covers
+with labels searched exhaustively reach 66 % of the table at (4,8) and 88 % at (4,9) (card c6), so the cells (4,8),
+(4,9), which the lab does not beat, stay unbeaten. For Δ = 12 the best cover found reaches 51 % of the table at (12,9)
+and none of diameter 8 improves on plain LPS (card c7); for Δ = 14 the best is the 65 % graph at (14,8) of §4.2.
 
 ---
 
@@ -647,7 +649,10 @@ covers; c8 a numerical audit of §§1.2, 2, 3 and 4.1 of this note with its own 
 first draft of Appendix B, now corrected; everything else passed, including the neighbourhood formulas of Example 2.8
 against the edges, Lemma 2.5(c), Proposition 4.1 in covers and Corollary 3.4 on all 214 scan lines); c9 a second
 quaternion algebra (Proposition 3.6); c10 random and exhaustive label baselines; c11 nonlinear arithmetic labels.
-Outcome: the rules of c2 give the two members above the table in §4.3; nothing else beat the table. [[R2MORE]]
+Outcome: the rules of c2 give the two members above the table in §4.3; nothing else beat the table. Searching
+labels per (q, m) by hill climbing (c4, c5) did not beat the table either (one claimed (8,8) graph of c5 was not
+connected within distance 8 and has diameter 9; the director's re-check caught it, and the card withdrew it). Fixed
+rules recover part of the gain of a per-cell search at p = 5 and tie with random labels at p = 7, 11 (c1, c3, c10).
 
 ## Appendix B. The LPS family cell by cell
 
