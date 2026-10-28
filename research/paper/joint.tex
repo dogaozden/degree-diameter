@@ -107,7 +107,9 @@ A bipartite graph of maximum degree $\Delta\ge2$ and diameter $D\ge2$ has at mos
 \[
 \Mb(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr)
 \]
-vertices (the bipartite Moore bound). Let $\nb(\Delta,D)$ be the largest order of such a graph. For $D\ge3$ and
+vertices (the bipartite Moore bound). Let $\nb(\Delta,D)$ be the largest order of such a graph.\todo{Notation: the lab's
+notes use $n_b(\Delta,D)$ and $M_b(\Delta,D)$, the repository README $N^b(\Delta,D)$. Use the notation of [AL20] and the
+survey if you prefer.} For $D\ge3$ and
 $\Delta\ge3$ the bound is attained only by the incidence graphs of generalized polygons: projective planes ($D=3$),
 generalized quadrangles ($D=4$) and generalized hexagons ($D=6$) of order $(\Delta-1,\Delta-1)$
 \cite{FeitHigman,MS13}. These are known when $\Delta-1$ is a prime power. For the other cells only lower bounds are
@@ -157,6 +159,7 @@ joining several copies of an incidence graph by matchings and new vertices. The 
 Problem~4 of \cite{AL20} asks to generalize the hat construction to regular bipartite graphs of diameters 4 and 6. The
 hat lemma (Lemma~\ref{lem:hat}) says in what sense it generalizes, and Corollaries~\ref{cor:A1} and~\ref{cor:C1} and
 Theorem~\ref{thm:R} give regular graphs at $D=4$ and $D=6$ that beat the 2013 table.
+\todo{Do you consider Problem~4 of [AL20] answered by these results, and should the introduction say so?}
 
 \subsection*{What is proved and what is computed}
 Every theorem in Sections~\ref{sec:prelim}--\ref{sec:d8} has a complete proof here, with one kind of exception, always
@@ -344,7 +347,8 @@ number $1+(q+1)q+(q+1)q^3$ of points at distance at most 4 from $x$.
 
 \subsection{Doubling with levels, and the hat lemma}\label{ssec:doubling}
 A \emph{duplicate} of a vertex (a new vertex with the same neighbours) does not increase the diameter (see
-\cite{DF84}, which we have not seen, and \cite[\S7]{D85a}). Delorme \cite[\S7]{D85a} refined this into a doubling with
+\cite{DF84}, which we have not seen, and \cite[\S7]{D85a}).\todo{If you have access to [DF84], please check what it
+contains about duplicates.} Delorme \cite[\S7]{D85a} refined this into a doubling with
 levels, stated there without proof, and used it for the 2013 values at $D=4$ and $D=6$ \cite[\S8(a),(b)]{D85a}. We
 state it for incidence structures and give a proof.
 
@@ -1975,10 +1979,14 @@ $H(3^h)$, and the hub graphs of Lemma~\ref{lem:pendant}).}\label{tab:d7general}
 The graphs behind Table~\ref{tab:d7} are $X^+_R$ as in Definition~\ref{def:surgery}, with every transition repaired by
 Theorem~\ref{thm:autotrans} or~\ref{thm:localdual} and (HG) satisfied, so Theorem~\ref{thm:assembly} gives the bound. They
 use explicit sets larger than those of Section~\ref{ssec:d7general}, and explicit hub graphs. These ingredients are given
-as data (Appendix~\ref{app:checks}); that they satisfy the hypotheses (non-collinearity, (H1)--(H3) at every freed
+as data (Appendix~\ref{app:checks}), so for these graphs the neighbourhood of every hub is given by the data files rather
+than in the text; that they satisfy the hypotheses (non-collinearity, (H1)--(H3) at every freed
 element, the segment property, degrees, (HG)) is computer-checked, and each final graph was also checked by breadth-first
 search from every vertex.
 
+\todo{Section~\ref{ssec:d7records}: the record graphs at $D=7$ depend on data (sets of hundreds to thousands of
+elements, and hub graphs). Is it acceptable that their exact neighbourhoods are given only through the data files, with the
+classical bounds of Table~\ref{tab:d7general} as the fully written-out results?}
 \begin{corollary}[three levels, local duality]\label{cor:rec-81}
 Let $r=1$, all types $H$, $M_t=\sigma$ and $R_t=R$ for all three transitions, with $(R,\sigma)$ as in
 Proposition~\ref{prop:mirror}, built as in Corollary~\ref{cor:mirror}(b). If $K\le|R|$ hubs of each colour are attached
@@ -2634,6 +2642,8 @@ table values whatever their status; at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ we
 \section{Haar graphs: diameter 5 and diameters 8 to 10}\label{sec:haar}
 %======================================================================
 
+\todo{Section~\ref{sec:haar} is group-theoretic and its records are computer-checked single graphs. Keep it in this
+paper (short, as here), move it to a second paper, or reduce it to Table~\ref{tab:haar} and Theorem~\ref{thm:covering}?}
 This section is group-theoretic, not geometric. It gives the criterion that makes the diameter of a Haar graph a finite
 covering statement, decidable by two breadth-first searches, and lists Haar graphs that improve the 2013 table at $D=5$ and
 $D=8,9,10$. Each of these is a single explicit graph; none comes from an infinite family, and their diameters are
@@ -2706,8 +2716,9 @@ hold, all same-side distances are at most $2\kappa$, and $d((g,A),(h,B))\le1+d((
 At $D=5$ ($\kappa=2$) the criterion reads: every element of $G$ is a product $a^{-1}bc^{-1}d$ and also a product $ab^{-1}cd^{-1}$
 with $a,b,c,d\in S$. A shortest path never backtracks, so the same count gives the per-side Moore bound
 $|G|\le\sum_{j<D}(\Delta-1)^j$ (that is, $2|G|\le\Mb(\Delta,D)$). For $\Delta\ge3$ and $D\in\{8,9,10\}$ it is strict: with
-equality the reduced words of the binding parity and length at most $D-1$ have distinct values, which forces girth at least
-$2D$, and a bipartite graph of diameter $D$, girth $2D$ and all degrees $\Delta\ge3$ is the incidence graph of a thick
+equality, the reduced words counted (those of length at most $D-1$ and of the parity that Theorem~\ref{thm:covering}
+requires) have pairwise distinct values, which forces girth at least $2D$; a bipartite graph of diameter $D$ has girth at
+most $2D$, and a bipartite graph of diameter $D$, girth $2D$ and all degrees $\Delta\ge3$ is the incidence graph of a thick
 generalized $D$-gon of order $(\Delta-1,\Delta-1)$, which does not exist for these $D$ \cite{FeitHigman}.
 
 \subsection{Diameter 5}
