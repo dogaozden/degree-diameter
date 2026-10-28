@@ -10,3 +10,6 @@
 'BipartiteDD.LeanMaxx.Omega2.omega2_ediam' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.LeanMaxx.Omega2.omega2_ediam_polygon' depends on axioms: [propext, Classical.choice, Quot.sound]
 'BipartiteDD.LeanMaxx.Omega2.omega2_ediam_inc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.LeanMaxx.Omega2.exists_sigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.LeanMaxx.Omega2.omega2_ediam_hexagon' depends on axioms: [propext, Classical.choice, Quot.sound]
+'BipartiteDD.LeanMaxx.Omega2.omega2_toy' depends on axioms: [propext, Classical.choice, Quot.sound]

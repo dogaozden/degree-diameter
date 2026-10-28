@@ -1,4 +1,6 @@
 import BipartiteDD.LeanMaxx.Omega2.Polygon
+import BipartiteDD.LeanMaxx.Omega2.HexQ
+import BipartiteDD.LeanMaxx.Omega2.Toy
 
 #print axioms BipartiteDD.LeanMaxx.Omega2.pred_unique
 #print axioms BipartiteDD.LeanMaxx.Omega2.q_pow_five_le_card_sph_six
@@ -12,3 +14,6 @@ import BipartiteDD.LeanMaxx.Omega2.Polygon
 #print axioms BipartiteDD.LeanMaxx.Omega2.omega2_ediam
 #print axioms BipartiteDD.LeanMaxx.Omega2.omega2_ediam_polygon
 #print axioms BipartiteDD.LeanMaxx.Omega2.omega2_ediam_inc
+#print axioms BipartiteDD.LeanMaxx.Omega2.exists_sigma
+#print axioms BipartiteDD.LeanMaxx.Omega2.omega2_ediam_hexagon
+#print axioms BipartiteDD.LeanMaxx.Omega2.omega2_toy
