@@ -1,0 +1,22 @@
+start 66
+it 1 lines  |R|=225 |T&R|=14 rows=10709 Optimal        0.2s  |T|=66 best=66
+it 2 spread |R|=590 |T&R|=46 rows=27367 Time limit reached  20.1s  |T|=66 best=66
+it 3 tlines |R|=281 |T&R|=28 rows=13320 Optimal        0.4s  |T|=66 best=66
+it 4 lines  |R|=300 |T&R|=31 rows=14220 Optimal        0.5s  |T|=66 best=66
+it 5 spread |R|=320 |T&R|=28 rows=15132 Optimal        0.6s  |T|=66 best=66
+it 6 lines  |R|=285 |T&R|=20 rows=13544 Optimal        0.4s  |T|=66 best=66
+it 7 tlines |R|=316 |T&R|=31 rows=14971 Optimal        0.6s  |T|=66 best=66
+it 8 nbh    |R|=499 |T&R|=27 rows=23314 Optimal        1.6s  |T|=66 best=66
+it 9 tlines |R|=324 |T&R|=32 rows=15323 Optimal        0.7s  |T|=66 best=66
+it 10 nbh    |R|=496 |T&R|=25 rows=23180 Optimal        1.3s  |T|=66 best=66
+it 11 lines  |R|=330 |T&R|=27 rows=15616 Optimal        0.8s  |T|=66 best=66
+it 12 nbh    |R|=422 |T&R|=30 rows=19845 Optimal        1.2s  |T|=66 best=66
+it 13 tlines |R|=304 |T&R|=31 rows=14392 Optimal        0.4s  |T|=66 best=66
+it 14 nbh    |R|=540 |T&R|=25 rows=25161 Optimal        1.5s  |T|=66 best=66
+it 15 lines  |R|=227 |T&R|=22 rows=10732 Optimal        0.2s  |T|=66 best=66
+it 16 spread |R|=590 |T&R|=50 rows=27363 Time limit reached  20.4s  |T|=66 best=66
+it 17 nbh    |R|=415 |T&R|=25 rows=19535 Optimal        1.0s  |T|=66 best=66
+it 18 spread |R|=550 |T&R|=44 rows=25565 Time limit reached   5.3s  |T|=66 best=66
+done: iterations 18, best 66, time 60 s
+stats (tries, improvements): {'lines': [5, 0], 'tlines': [4, 0], 'nbh': [5, 0], 'spread': [4, 0]}
+final |T| 66 relaxed True

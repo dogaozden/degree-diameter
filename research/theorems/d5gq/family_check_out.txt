@@ -1,0 +1,27 @@
+== (10,5) q=7 HHDHD
+7 HHDHD alpha [52, 52, 22, 52, 40] beta [22, 22, 100, 22, 52] K_B 22 K_A 22 n 4044
+n=4044 edges=20072 degree min=6 max=10 bipartite=yes diameter=5
+RESULT VALID d=10 D=5 n=4044
+== (13,5) q=9 HHHDHHD
+9 HHHDHHD alpha [86, 86, 86, 54, 86, 86, 78] beta [30, 30, 30, 246, 30, 30, 166] K_B 42 K_A 30 n 11552
+n=11552 edges=74697 degree min=8 max=13 bipartite=yes diameter=5
+RESULT VALID d=13 D=5 n=11552
+== (14,5) q=9 HHHHDHHHD
+9 HHHHDHHHD alpha [88, 88, 88, 88, 80, 88, 88, 88, 104] beta [32, 32, 32, 32, 328, 32, 32, 32, 248] K_B 26 K_A 26 n 14812
+n=14812 edges=103066 degree min=10 max=14 bipartite=yes diameter=5
+RESULT VALID d=14 D=5 n=14812
+== (11,5) q=8 r=2 duality
+explicit duality of W(8) ok; ovoid psi(spread) ok
+n 6090
+n=6090 edges=33325 degree min=10 max=11 bipartite=yes diameter=5
+RESULT VALID d=11 D=5 n=6090
+== (12,5) q=8 r=3 duality
+explicit duality of W(8) ok; ovoid psi(spread) ok
+n 8430
+n=8430 edges=50055 degree min=10 max=12 bipartite=yes diameter=5
+RESULT VALID d=12 D=5 n=8430
+== (15,5) q=11 HHHDHHD
+11 HHHDHHD alpha [126, 126, 126, 66, 126, 126, 96] beta [36, 36, 36, 366, 36, 36, 246] K_B 66 K_A 36 n 20598
+n=20598 edges=153807 degree min=8 max=15 bipartite=yes diameter=5
+RESULT VALID d=15 D=5 n=20598
+DONE

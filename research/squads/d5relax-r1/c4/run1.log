@@ -1,0 +1,64 @@
+start 89
+it 1 spread |R|=1464 |T&R|=89 rows=98088 Time limit reached  48.2s  |T|=89 best=89 sym.diff=0
+it 2 lines  |R|=465 |T&R|=33 rows=31963 Optimal        1.0s  |T|=89 best=89 sym.diff=2
+it 3 tlines |R|=400 |T&R|=29 rows=27552 Optimal        0.7s  |T|=89 best=89 sym.diff=0
+it 4 lines  |R|=662 |T&R|=38 rows=45175 Optimal        1.9s  |T|=89 best=89 sym.diff=0
+it 5 lines  |R|=505 |T&R|=33 rows=34677 Optimal        1.1s  |T|=89 best=89 sym.diff=2
+it 6 spread |R|=1308 |T&R|=79 rows=87789 Time limit reached  22.1s  |T|=89 best=89 sym.diff=0
+it 7 nbh    |R|=1119 |T&R|=52 rows=75355 Optimal       13.5s  |T|=89 best=89 sym.diff=4
+it 8 spread |R|=1380 |T&R|=86 rows=92540 Time limit reached  20.1s  |T|=89 best=89 sym.diff=0
+it 9 nbh    |R|=955 |T&R|=43 rows=64540 Optimal        4.3s  |T|=89 best=89 sym.diff=2
+it 10 tlines |R|=872 |T&R|=64 rows=59038 Time limit reached  20.2s  |T|=89 best=89 sym.diff=0
+it 11 nbh    |R|=1035 |T&R|=38 rows=69825 Optimal        5.2s  |T|=89 best=89 sym.diff=0
+it 12 nbh    |R|=1005 |T&R|=42 rows=67841 Optimal        4.5s  |T|=89 best=89 sym.diff=0
+it 13 spread |R|=1200 |T&R|=69 rows=80662 Time limit reached  20.2s  |T|=89 best=89 sym.diff=0
+it 14 spread |R|=1032 |T&R|=62 rows=69567 Time limit reached  20.1s  |T|=89 best=89 sym.diff=0
+it 15 lines  |R|=418 |T&R|=27 rows=28768 Optimal        0.4s  |T|=89 best=89 sym.diff=2
+it 16 spread |R|=1032 |T&R|=63 rows=69566 Time limit reached  20.1s  |T|=89 best=89 sym.diff=0
+it 17 lines  |R|=599 |T&R|=35 rows=40978 Optimal        2.0s  |T|=89 best=89 sym.diff=2
+it 18 spread |R|=1044 |T&R|=65 rows=70357 Time limit reached  26.5s  |T|=89 best=89 sym.diff=0
+it 19 lines  |R|=683 |T&R|=47 rows=46553 Optimal        2.8s  |T|=89 best=89 sym.diff=6
+it 20 nbh    |R|=898 |T&R|=35 rows=60786 Optimal        4.2s  |T|=89 best=89 sym.diff=2
+it 21 spread |R|=648 |T&R|=43 rows=44180 Optimal        2.3s  |T|=89 best=89 sym.diff=2
+it 22 spread |R|=804 |T&R|=54 rows=54506 Time limit reached  20.1s  |T|=89 best=89 sym.diff=0
+it 23 tlines |R|=649 |T&R|=47 rows=44282 Optimal        2.1s  |T|=89 best=89 sym.diff=0
+it 24 tlines |R|=637 |T&R|=50 rows=43493 Optimal        2.4s  |T|=89 best=89 sym.diff=0
+it 25 nbh    |R|=1012 |T&R|=39 rows=68306 Optimal        5.3s  |T|=89 best=89 sym.diff=4
+it 26 lines  |R|=626 |T&R|=37 rows=42780 Optimal        1.8s  |T|=89 best=89 sym.diff=2
+it 27 lines  |R|=499 |T&R|=35 rows=34269 Optimal        1.1s  |T|=89 best=89 sym.diff=2
+it 28 spread |R|=672 |T&R|=37 rows=45774 Optimal        2.2s  |T|=89 best=89 sym.diff=2
+it 29 spread |R|=1284 |T&R|=81 rows=86201 Time limit reached  23.8s  |T|=89 best=89 sym.diff=0
+it 30 lines  |R|=614 |T&R|=37 rows=41970 Optimal        2.0s  |T|=89 best=89 sym.diff=0
+it 31 spread |R|=948 |T&R|=57 rows=64021 Time limit reached  20.1s  |T|=89 best=89 sym.diff=0
+it 32 nbh    |R|=900 |T&R|=34 rows=60919 Optimal        4.0s  |T|=89 best=89 sym.diff=0
+it 33 lines  |R|=565 |T&R|=33 rows=38712 Optimal        1.6s  |T|=89 best=89 sym.diff=2
+it 34 nbh    |R|=777 |T&R|=30 rows=52805 Optimal        2.9s  |T|=89 best=89 sym.diff=0
+it 35 lines  |R|=356 |T&R|=21 rows=24502 Optimal        0.6s  |T|=89 best=89 sym.diff=2
+it 36 lines  |R|=395 |T&R|=28 rows=27184 Optimal        0.8s  |T|=89 best=89 sym.diff=0
+it 37 lines  |R|=622 |T&R|=42 rows=42499 Optimal        2.0s  |T|=89 best=89 sym.diff=4
+it 38 lines  |R|=573 |T&R|=35 rows=39251 Optimal        1.5s  |T|=89 best=89 sym.diff=2
+it 39 nbh    |R|=947 |T&R|=43 rows=64012 Optimal        4.9s  |T|=89 best=89 sym.diff=2
+it 40 lines  |R|=656 |T&R|=44 rows=44771 Optimal        2.6s  |T|=89 best=89 sym.diff=2
+it 41 nbh    |R|=719 |T&R|=19 rows=48988 Optimal        2.2s  |T|=89 best=89 sym.diff=2
+it 42 lines  |R|=566 |T&R|=32 rows=38780 Optimal        1.5s  |T|=89 best=89 sym.diff=2
+it 43 spread |R|=612 |T&R|=37 rows=41793 Optimal        2.1s  |T|=89 best=89 sym.diff=4
+it 44 lines  |R|=536 |T&R|=30 rows=36763 Optimal        1.3s  |T|=89 best=89 sym.diff=4
+it 45 spread |R|=672 |T&R|=40 rows=45786 Optimal        2.5s  |T|=89 best=89 sym.diff=2
+it 46 tlines |R|=521 |T&R|=43 rows=35715 Optimal        1.4s  |T|=89 best=89 sym.diff=0
+it 47 lines  |R|=751 |T&R|=40 rows=51067 Optimal        3.2s  |T|=89 best=89 sym.diff=2
+it 48 nbh    |R|=1325 |T&R|=60 rows=88943 Time limit reached  24.3s  |T|=89 best=89 sym.diff=0
+it 49 nbh    |R|=1037 |T&R|=41 rows=69954 Optimal        5.2s  |T|=89 best=89 sym.diff=0
+it 50 spread |R|=1224 |T&R|=77 rows=82240 Time limit reached  21.1s  |T|=89 best=89 sym.diff=0
+it 51 lines  |R|=884 |T&R|=49 rows=59847 Optimal        4.5s  |T|=89 best=89 sym.diff=0
+it 52 spread |R|=1116 |T&R|=65 rows=75115 Time limit reached  23.0s  |T|=89 best=89 sym.diff=0
+it 53 spread |R|=960 |T&R|=59 rows=64811 Time limit reached  20.4s  |T|=89 best=89 sym.diff=0
+it 54 lines  |R|=635 |T&R|=36 rows=43377 Optimal        2.0s  |T|=89 best=89 sym.diff=4
+it 55 lines  |R|=390 |T&R|=20 rows=26891 Optimal        0.3s  |T|=89 best=89 sym.diff=0
+it 56 nbh    |R|=720 |T&R|=35 rows=49038 Optimal        2.4s  |T|=89 best=89 sym.diff=0
+it 57 tlines |R|=689 |T&R|=52 rows=46940 Optimal        2.6s  |T|=89 best=89 sym.diff=0
+it 58 nbh    |R|=893 |T&R|=39 rows=60452 Optimal        3.4s  |T|=89 best=89 sym.diff=2
+it 59 lines  |R|=569 |T&R|=30 rows=38983 Optimal        1.3s  |T|=89 best=89 sym.diff=2
+it 60 spread |R|=1464 |T&R|=89 rows=98088 Time limit reached  43.7s  |T|=89 best=89 sym.diff=0
+done: iterations 60, best 89, time 542 s
+stats (tries, improvements): {'lines': [22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'tlines': [6, 0], 'nbh': [14, 0, 0, 0, 0, 0, 0, 0, 0], 'spread': [18, 0, 0, 0, 0, 0]}
+final |T| 89 relaxed True
