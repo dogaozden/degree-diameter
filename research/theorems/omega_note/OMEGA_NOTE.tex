@@ -108,13 +108,15 @@ far as we could find.
   reading of the figures this gives $\operatorname{diam} \Om H_q \ge 9$ for every $q$ and every pairing of labels.
 \item \textbf{Theorem~\ref{thm:two} (two labels, $q \ge 7$).} For the thesis's labelling and every reading of the
   figures, every hub has at least $q^5 - 5q^4 - 8q^3 - 12q^2 - 16q - 10$ vertices at distance $\ge 9$ in every copy it
-  misses. This covers the six table entries. By computer, $\Om H_7$ and $\Om H_9$ have diameter exactly~$9$.
+  misses. This covers the six table entries. By computer, $\Om H_7$ and $\Om H_9$ have diameter exactly~$9$ for the
+  patterns and pairings of~\ref{cc:thesis}(a).
 \item \textbf{Theorems~\ref{thm:geo8} and~\ref{thm:geo7} (geometric relabellings, $q \ge 7$).} Give every copy its own
   labelling, and call it geometric if every transfer map between two copies met by one hub class is induced by an
   automorphism of the incidence graph of $H(q)$. For every $q \ge 7$, every geometric labelling, every reading and every
   mix of block types, the diameter is still $\ge 9$. For $q \ge 10$ the proof is by hand; for $q = 8, 9$ it uses a
   computer count of route words (\ref{cc:routes}); for $q = 7$ it also uses Bonferroni inequalities and a
-  character-sum bound.
+  character-sum bound. (For $q$ not a power of $3$ there are no geometric labellings at all in reading 1 with both block
+  types, so there the statement is empty and Theorem~\ref{thm:two} is what applies.)
 \item \textbf{Open (\S\ref{sec:open}).} Arbitrary (non-geometric) relabellings for every $q \ge 4$ (at $q = 2, 3$ they
   give diameter $8$); labellings chosen per hub class and copy; other wirings; the geometric class at $q \le 5$.
 \item \textbf{What can be claimed (\S\ref{sec:claims}).} The six entries have no checkable graph of diameter~$8$. We do
@@ -246,7 +248,7 @@ all choices go down to~$5$.
 \begin{remark}
 The same numbers, for every radius $\le 4$ and both types, follow from the intersection array
 $\{q+1, q, q, q, q, q; 1, 1, 1, 1, 1, q+1\}$ of the distance-regular graph $I$; the referee of the relabelling note
-computed them that way (\file{logs/lemma31_drg.txt}). For this note we also counted them directly on $H(3)$ and
+computed them that way (\file{research/referee/omega-repair/logs/lemma31_drg.txt} on its branch). For this note we also counted them directly on $H(3)$ and
 $H(4)$ built by \file{hexq6.c}, together with Lemma~\ref{lem:perp} on $H(3)$ (\file{lem16.py}).
 \end{remark}
 
@@ -467,8 +469,9 @@ The corollary \file{ediam_ge} gives \texttt{(D₁ + 3 : ℕ∞) ≤ G.ediam} whe
 \file{Quot.sound}. An independent session rebuilt the modules (Lean v4.34.1, Mathlib as pinned), regenerated the
 axioms output byte for byte, searched the files for \texttt{sorry}, \texttt{admit}, \file{native_decide} and
 similar, and read the statement against the specification (\file{research/lean-maxx/VERIFY.md}). The Lean statement is
-slightly more general than Theorem~\ref{thm:one} ($B$ need not be bipartite and copies need not be whole copies;
-\file{B.dist} is $0$ when \texttt{f x} and \texttt{f v} are not connected, which only weakens it). That $\Om H_q$
+Theorem~\ref{thm:one} as stated here (\file{B.dist} is $0$ when \texttt{f x} and \texttt{f v} are not connected, which
+only weakens it; \file{VERIFY.md} calls it more general than the first write-up's version, which assumed $B$ bipartite
+of even diameter). That $\Om H_q$
 satisfies (h1)--(h3) is checked in Corollary~\ref{cor:one}; it is not part of the Lean files.
 
 \begin{corollary}[Theorem]\label{cor:one}
@@ -495,9 +498,9 @@ $\langle(x_3^2 - x_1x_5 - x_2x_6, x_1, x_2, x_3, 1, x_5, x_6)\rangle$ of each of
 \begin{computer}[the hexagons]\label{cc:hex}
 The incidence graphs of $H(q)$ used in the computations were checked by all-pairs BFS (no symmetry assumed): $2N$
 vertices, bipartite, $(q+1)$-regular, diameter $6$, girth $12$. Three times: \file{hexq6.c} (this model) with
-\file{apsp_mt}, $q = 3,4,5,7,8,9,11,13$; \file{hexgen.c}, \file{hexgf.c} (split octonions) with
-\file{bitapsp.c}, $q = 2,3,4,5,7,8,9,11,13$; \file{buildhex.py} (split octonions) with \file{ghcheck.c},
-$q = 3,7,8,9$. A $(q+1)$-regular bipartite graph on $2N$ vertices with diameter $6$ and girth $12$ is the incidence graph
+\file{apsp_mt}, $q = 3,4,5,7,8,9,11,13$ (diameter $6$ checked; girth $12$ then follows from the bipartite Moore bound);
+\file{hexgen.c}, \file{hexgf.c} (split octonions) with \file{bitapsp.c}, $q = 2,3,4,5,7,8,9,11,13$, and
+\file{buildhex.py} (split octonions) with \file{ghcheck.c}, $q = 3,7,8,9$ (both with sphere sizes from every vertex). A $(q+1)$-regular bipartite graph on $2N$ vertices with diameter $6$ and girth $12$ is the incidence graph
 of a generalized hexagon of order~$(q,q)$.
 \end{computer}
 
@@ -505,18 +508,22 @@ of a generalized hexagon of order~$(q,q)$.
 \begin{enumerate}[label=(\alph*),leftmargin=1.5em]
 \item \emph{Exact diameters} (both block types present). $\Om H_3$ and $\Om H_5$ ($195{,}300$ vertices, the thesis's
   $(8,8)$ value): $9$ by all-pairs BFS in both readings, $\sigma$ the identity and two random $\sigma$, patterns $aba$,
-  $aab$, $abab$, $aabb$ (twice). $\Om H_7$: $9$ in reading 2 ($ababa$) and reading 1 ($ababa$, random $\sigma$), by BFS
+  $aab$, $abab$, $aabb$ (referee of the first write-up); independently, by BFS from orbit representatives under checked
+  automorphisms, $\Om H_3$ in both readings and $\Om H_5$ in reading 2 ($abab$) and reading 1 ($abab$ with a
+  Singer-equivariant and a random $\sigma$; $aabb$) (first write-up). $\Om H_7$: $9$ in reading 2 ($ababa$) and reading 1 ($ababa$, random $\sigma$), by BFS
   from $117{,}648$ sources, one in every orbit of the rotation and the block swaps, each automorphism checked edge by
   edge. $\Om H_9$: $9$ in reading 2 ($aaabbb$; $18$ orbits of a group generated by the rotation, block swaps, a Singer
   cycle and a transvection of $H(9)$, all checked on the $27{,}900{,}600$ edges) and in reading 1 (Singer-equivariant
   $\sigma$, $4{,}380$ orbits); again $9$ in reading 2 and in reading 1 with a random $\sigma$ from $398{,}580$ orbit
   representatives (second program).
 \item \emph{All six thesis values.} BFS from a hub gives eccentricity $9$ for $\Om H_5$, $\Om H_7$, $\Om H_8$, $\Om H_9$,
-  $\Om H_{11}$, $\Om H_{13}$ at the thesis orders, in both readings (twice; a third program for reading 1). In reading 2
+  $\Om H_{11}$, $\Om H_{13}$ at the thesis orders, in both readings (reading 2 by the first write-up and its referee; reading 1 by the referee
+  and the table audit). In reading 2
   the vertices at distance $9$ from a hub $(t,k)$ are exactly the points opposite $t$ in the $3\alpha$ copies it misses:
   $3\alpha q^5$ = $252{,}105$ ($q = 7$), $491{,}520$ ($8$), $1{,}062{,}882$ ($9$), $3{,}382{,}071$ ($11$),
   $8{,}911{,}032$ ($13$).
-\item \emph{One block type}: diameter $10$ (all pairs at $q = 2, 3, 5$; orbit BFS at $q = 7, 9$).
+\item \emph{One block type}: diameter $10$ (all pairs at $q = 2, 3, 5$; at $q = 9$ by BFS from orbit
+  representatives under checked automorphisms; at $q = 7$ a direct BFS gives eccentricity $10$).
 \item Explicit pairs at distance $9$ for every cell: \file{checks/witness_omega_thesis.txt} (table audit),
   \file{research/d12D8/omega/witness_pairs.txt} (own-12-8).
 \end{enumerate}
@@ -601,9 +608,10 @@ vertices labelled $t$), $\Om H_q$ has diameter $\ge 9$ for $q = 7, 8, 9, 11, 13$
 every pattern of block types and every pairing of point labels with line labels. These are the six table entries.
 \end{corollary}
 
-\begin{computer}[$q = 3, 5$]\label{cc:small}
-Where the count of Theorem~\ref{thm:two} fails, all-pairs BFS gives diameter $9$ for $\Om H_3$ and $\Om H_5$ in both
-readings and for several $\sigma$ (\ref{cc:thesis}(a)). Under reading 1 ($\sigma$ the identity or random), the largest
+\begin{computer}[small $q$; slack in Theorem~\ref{thm:two}]\label{cc:small}
+The count of Theorem~\ref{thm:two} fails for $q \le 6$. There, all-pairs BFS gives diameter $9$ with both block types for
+$\Om H_2$ (pattern $ab$, three $\sigma$; table audit), $\Om H_3$ and $\Om H_5$ (both readings, several $\sigma$;
+\ref{cc:thesis}(a)); $q = 4$ was not computed with the thesis labelling. Under reading 1 ($\sigma$ the identity or random), the largest
 number of opposite vertices of the right type within distance $7$ of a hub, in a copy it misses, was $7{,}562$--$8{,}039$
 at $q = 7$ (bound $15{,}459$), $13{,}950$ at $q = 8$ ($25{,}482$), $22{,}771$--$22{,}825$ at $q = 9$ ($39{,}763$),
 $52{,}372$ at $q = 11$ ($85{,}491$) and $104{,}225$ at $q = 13$ ($162{,}627$).
@@ -712,16 +720,26 @@ $\cL$-pass happens at a line, so the segments next to $\cL$-passes are odd and $
 \end{itemize}
 \end{proof}
 
-For a pair $(X, c')$ let $r_4 = |N(X,c')|$, and let $m_2$ be the number of pairs in $W_2$ that are not of the form
-$(c', c_1)$ with $c_1 \in N(X,c')$. Different pairs may give the same map; counting pairs only overestimates.
+\noindent\textbf{The line bar.} Relabelling every copy $c$ by $\lambda_c^{-1}$ (Lemma~\ref{lem:oneaut}) gives
+$L_c = L_0$ for all $c$ and $P_c = \lambda_c^{-1}P_0$. So the same statement holds with points and lines exchanged and
+$\lambda_c$ replaced by $\lambda_c^{-1}$: for $X \in \cL$, $c' \notin C(X)$ and a row $m$, every line of $c'$ within
+distance $7$ of $(m,X)$ lies in the corresponding union of balls around $\ell = L_0(m)$, the lines
+$\lambda_{c'}^{-1}\lambda_{c_1}(\ell)$ (radius $4$) and $\lambda_c^{-1}\lambda_d(\ell)$ (radius $2$), where $N(X,c')$ and
+$W_2$ are defined as above with the roles of $\cP$ and $\cL$ exchanged. (The relabelling note states this in its
+Lemma~2.1.)
+
+For a pair $(X, c')$, $X$ in either bar, let $r_4 = |N(X,c')|$, and let $m_2$ be the number of pairs in $W_2$ that are
+not of the form $(c', c_1)$ with $c_1 \in N(X,c')$. Different pairs may give the same map; counting pairs only
+overestimates.
 
 \begin{corollary}[Theorem]\label{cor:count}
-Every hub $(t,X)$ has at least $q^5 - r_4q^4 - m_2q^2$ points of $c'$ at distance $\ge 9$. If $r_4 = \alpha$, then
-$m_2 \le (4\alpha - 1) + 2\alpha \cdot 2(2\alpha - 1) = 8\alpha^2 - 1$.
+Every hub of $X$ has at least $q^5 - r_4q^4 - m_2q^2$ vertices of $c'$ at distance $\ge 9$: points if $X \in \cP$, lines
+if $X \in \cL$. If $r_4 = \alpha$, then $m_2 \le (4\alpha - 1) + 2\alpha \cdot 2(2\alpha - 1) = 8\alpha^2 - 1$.
 \end{corollary}
 
 \begin{proof}
-By Lemma~\ref{lem:balls}, $B(t,4)$ misses $\opp(t)$, each other radius-$4$ ball meets it in at most $q^4$ points and
+Take $X \in \cP$ (for $\cL$ exchange points and lines; Lemma~\ref{lem:balls} holds for both types). By
+Lemma~\ref{lem:balls}, $B(t,4)$ misses $\opp(t)$, each other radius-$4$ ball meets it in at most $q^4$ points and
 each radius-$2$ ball in at most $q^2$. The remaining points of $\opp(t)$ in $c'$ are at distance $> 7$ from $(t,X)$, and
 at odd distance, since all points of all copies have one colour; so at distance $\ge 9$. For the bound on $m_2$: the
 first two kinds are pairs $(c', b)$ with $b \ne c'$, at most $5\alpha - 1 - r_4 = 4\alpha - 1$ of them outside the
@@ -730,8 +748,9 @@ meet $2\alpha$ copies each, $\le 2(2\alpha - 1)$ choices of $c_2$.
 \end{proof}
 
 \subsection{Starved pairs}
-Call $(X, c')$ with $X \in \cP$, $c' \notin C(X)$ \textbf{starved} if $r_4 = \alpha$: exactly one copy of $C(X)$ per
-block shares a class of $\cL$ with $c'$.
+Call $(X, c')$, with $X$ in either bar and $c' \notin C(X)$, \textbf{starved} if $r_4 = \alpha$. In the pairs of
+Lemma~\ref{lem:starved}, exactly one copy of $C(X)$ per block shares a class of the other bar with $c'$ (that every pair
+has $r_4 \ge \alpha$ is \ref{cc:routes}, and is not used in the proofs).
 
 \begin{lemma}[Theorem]\label{lem:starved}
 For every block pattern there are starved pairs with $X$ unbarred and starved pairs with $X$ barred:
@@ -764,13 +783,15 @@ Lemma~\ref{lem:routes} were enumerated for every pair $(X, c')$:
 \item every pair has $r_4 \ge \alpha$, and no route ends in a radius-$0$ ball other than the identity;
 \item for $\alpha = 5$ ($q = 7, 8$), every starved pair, of either bar and in every pattern, has $m_2 \le 140$;
 \item for $\alpha = 6$ ($q = 9$), every starved pair has $m_2 \le 201$;
-\item the best starved pair of the worst pattern has $m_2 = 134$ ($\alpha = 5$, patterns $aabbb$, $aaabb$), $197$
-  ($\alpha = 6$, $aaabbb$), $262$ ($\alpha = 7$, $aaabbbb$), $347$ ($\alpha = 8$, $aaaabbbb$).
+\item in every pattern some starved pair (of one of the two bars) has $m_2 \le 134$ ($\alpha = 5$; equality for
+  $aabbb$, $aaabb$), $\le 197$ ($\alpha = 6$; $aaabbb$), $\le 262$ ($\alpha = 7$; $aaabbbb$, $aaaabbb$), $\le 347$
+  ($\alpha = 8$; $aaaabbbb$).
 \end{itemize}
-The last item twice (\file{routecount.c}, \file{routecount2.c} of the relabelling note; \file{myroutes.py},
-\file{sweep.py} of its referee, which enumerates walks symbolically without using Lemma~\ref{lem:routes}'s
-families). All four items were re-run for this note with the referee's enumerator for $\alpha = 5, 6, 7, 8$
-(\file{starved.py}; the largest $m_2$ of a starved pair is $140$, $201$, $272$, $353$).
+The last item was found by \file{routecount.c} and \file{routecount2.c} of the relabelling note and by
+\file{myroutes.py}, \file{sweep.py} of its referee, which enumerates walks symbolically. For this note all four items
+were re-run for $\alpha = 5, 6, 7, 8$ by two programs: \file{starved.py} (with the referee's \file{myroutes.py}) and
+\file{c4_families.py} (written by the independent reviewer of this note from the families of Lemma~\ref{lem:routes} and
+Definition~\ref{def:omega}). They agree; the largest $m_2$ of a starved pair is $140$, $201$, $272$, $353$.
 \end{computer}
 
 \subsection{$q \ge 8$}
@@ -783,11 +804,11 @@ $\ge 9$.
 \end{theorem}
 
 \begin{proof}
-By Lemma~\ref{lem:reduce} we may assume the normal form, in reading 2 or its dual. Take a starved pair of the point bar
+By Lemma~\ref{lem:reduce} we may assume the normal form, in reading 2 or its dual. Take a starved pair
 (Lemma~\ref{lem:starved}) and apply Corollary~\ref{cor:count}. For $q \ge 10$, $m_2 \le 8\alpha^2 - 1$ and the bound is
 positive when $q^2(q - \alpha) \ge 8\alpha^2$; with $\alpha \le (q+3)/2$ it suffices that $q^2(q-3) \ge 4(q+3)^2$, that is
 $q^3 - 7q^2 - 24q - 36 \ge 0$, which holds at $q = 10$ (value $24$) and beyond (the derivative $3q^2 - 14q - 24$ is
-positive). For $q = 8$ ($\alpha = 5$), \ref{cc:routes} gives $m_2 \le 140$ and the bound is
+positive). For $q = 8$ ($\alpha = 5$), \ref{cc:routes} gives $m_2 \le 140$ for every starved pair, and the bound is
 $\ge 32{,}768 - 20{,}480 - 8{,}960 = 3{,}328$; for $q = 9$ ($\alpha = 6$), $m_2 \le 201$ and the bound is
 $\ge 59{,}049 - 39{,}366 - 16{,}281 = 3{,}402$.
 \end{proof}
@@ -795,7 +816,7 @@ $\ge 59{,}049 - 39{,}366 - 16{,}281 = 3{,}402$.
 \begin{center}\small
 \begin{tabular}{@{}rrll@{}}
 \toprule
-$q$ & $\alpha$ & far vertices per hub of a starved class & best pair, worst pattern (\ref{cc:routes})\\
+$q$ & $\alpha$ & far vertices per hub of a starved class & best pair of either bar, worst pattern (\ref{cc:routes})\\
 \midrule
 8 & 5 & $\ge 3{,}328$ for every starved pair (uses \ref{cc:routes}) & 3,712\\
 9 & 6 & $\ge 3{,}402$ for every starved pair (uses \ref{cc:routes}) & 3,726\\
@@ -806,8 +827,9 @@ $q$ & $\alpha$ & far vertices per hub of a starved class & best pair, worst patt
 \end{center}
 
 This covers $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$, $(16,8)$. Different starved pairs give disjoint sets of (hub, vertex)
-pairs; summing, every geometric labelling leaves at least $3.33 \cdot 10^9$ far pairs at $q = 8$ and $7.43 \cdot 10^9$ at
-$q = 9$ (Computer-checked twice: the relabelling note and its referee). The relabelling note first treated the other
+pairs; summing over the starved pairs of both bars, every geometric labelling leaves at least $3.33 \cdot 10^9$ far pairs
+at $q = 8$ and $7.43 \cdot 10^9$ at $q = 9$ (Computer-checked three times: the relabelling note, its referee, and
+\file{c4_families.py}); with the point bar alone, at least $6.2 \cdot 10^8$ and $1.2 \cdot 10^9$. The relabelling note first treated the other
 readings separately for $q = 8, 9, 11, 13, 27$; its referee observed that Lemma~\ref{lem:reduce}(b) reduces them to
 reading 2 for every $q$, which is how they are handled here.
 
@@ -828,8 +850,8 @@ Let $y, y', t$ be distinct points of $Q(6,q)$.
   not on the line $yy'$ and $|y^\perp \cap y'^\perp \cap \opp(t)| \ge q^3 - q$.
 \item If $y, y', y''$ are points not on one line, $|y^\perp \cap y'^\perp \cap y''^\perp \cap Q(6,q)| \le (q+1)^2$.
 \item If $y, y', y''$ lie on one totally singular line $\ell$ not through $t$, all pairwise and triple intersections of
-  $y^\perp \cap \opp(t)$, $y'^\perp \cap \opp(t)$, $y''^\perp \cap \opp(t)$ equal $X_\ell := \ell^\perp \cap \opp(t)$, and
-  $|X_\ell| \ge q^3 - q$.
+  $y^\perp \cap \opp(t)$, $y'^\perp \cap \opp(t)$, $y''^\perp \cap \opp(t)$ equal $E_\ell := \ell^\perp \cap \opp(t)$, and
+  $|E_\ell| \ge q^3 - q$.
 \end{enumerate}
 \end{lemma}
 
@@ -846,7 +868,7 @@ singular points; in the second it is a cone over a conic, $q^2+q+1$ points; in t
 $\Pi^\perp = \Pi \oplus \langle w\rangle$ with $\Q(w) \ne 0$ ($Q(6,q)$ has no totally singular subspace of vector
 dimension $4$), so its singular points are those of $\Pi$, $q^2+q+1$. So $|\Pi^\perp \cap Q(6,q)| \le (q+1)^2$, which
 gives (a) and, with $\Pi = \langle y, y', y''\rangle$, (b). (c): $y^\perp \cap y'^\perp = \ell^\perp \subseteq y''^\perp$,
-and $|X_\ell| \ge q^3 - q$ by (a).
+and $|E_\ell| \ge q^3 - q$ by (a).
 \end{proof}
 
 \begin{lemma}[Theorem; coincidences; uses $m_2 \le 140$ from \ref{cc:routes}]\label{lem:coinc}
@@ -866,23 +888,25 @@ aligned class or in a rich line; a rich line meets each aligned class at most on
 point.
 
 \begin{lemma}[Theorem; the configuration types at $q = 7$]\label{lem:types}
-Let $A$ be the number of aligned pairs, $T$ the number of triples meeting three different aligned classes, and
+Let $A_2$ be the number of aligned pairs, $T_3$ the number of triples meeting three different aligned classes, and
 $R_3 = \sum \binom{m}{3}$ over the rich lines ($m$ points each). Then
 \[
-|C_1 \cup \dots \cup C_5| \le U := 5q^4 - (10 - A - R_3)(q^3 - q) + (T - R_3)(q+1)^2,
+|C_1 \cup \dots \cup C_5| \le U := 5q^4 - (10 - A_2 - R_3)(q^3 - q) + (T_3 - R_3)(q+1)^2,
 \]
-except when one rich line holds all five points, where $U := 5q^4 - 4(q^3 - q)$. Up to relabelling there are exactly
-$17$ configuration types; for $q = 7$ they are listed in Table~\ref{tab:types}, with
+except when one rich line holds all five points, where $U := 5q^4 - 4(q^3 - q)$. Classified by the sizes of the aligned
+classes and of the rich lines there are exactly $17$ kinds of configuration ($18$ up to relabelling: the row
+$2,1,1,1 \mid 3$ holds two, with the rich line through the three singletons or through one point of the pair; they have
+the same $A_2$, $T_3$, $R_3$ and $p$). For $q = 7$ they are listed in Table~\ref{tab:types}, with
 $F = 16{,}807 - U - 6{,}860$ and the number $p$ of pairs among $\{t, y_1, \dots, y_5\}$ that are perpendicular in every
 configuration of the type, $p = \sum_{s \ge 2}\bigl(s + \binom{s}{2}\bigr)$ over aligned classes of size $s$ plus
-$\sum \binom{m}{2}$ over rich lines. In the $9$ types with $F \le 0$, $p \ge 6$.
+$\sum \binom{m}{2}$ over rich lines. In the $9$ rows with $F \le 0$, $p \ge 6$.
 \end{lemma}
 
 \begin{table}[ht]
 \centering\small
 \begin{tabular}{@{}llrrrrrr@{}}
 \toprule
-aligned classes & rich lines & $A$ & $T$ & $R_3$ & $U$ & $F$ & $p$\\
+aligned classes & rich lines & $A_2$ & $T_3$ & $R_3$ & $U$ & $F$ & $p$\\
 \midrule
 5 & -- & 10 & 0 & 0 & 12,005 & $-2{,}058$ & 15\\
 4, 1 & -- & 6 & 0 & 0 & 10,661 & $-714$ & 10\\
@@ -903,7 +927,7 @@ aligned classes & rich lines & $A$ & $T$ & $R_3$ & $U$ & $F$ & $p$\\
 1, 1, 1, 1, 1 & 5 & 0 & 10 & 10 & 10,661 & $-714$ & 10\\
 \bottomrule
 \end{tabular}
-\caption{The $17$ configuration types of Lemma~\ref{lem:types} at $q = 7$ ($q^4 = 2{,}401$, $q^3 - q = 336$,
+\caption{The $17$ kinds of configuration of Lemma~\ref{lem:types} at $q = 7$ ($q^4 = 2{,}401$, $q^3 - q = 336$,
 $(q+1)^2 = 64$, $140q^2 = 6{,}860$).}
 \label{tab:types}
 \end{table}
@@ -911,21 +935,22 @@ $(q+1)^2 = 64$, $140q^2 = 6{,}860$).}
 \begin{proof}
 $|C_i| = q^4$ (Lemma~\ref{lem:balls}, $y_i \ne t$). By Bonferroni, $|\bigcup C_i| \le S_1 - S_2 + S_3$, with $S_k$ the
 sum of the $k$-fold intersections. By Lemma~\ref{lem:overlap}: an aligned pair contributes $0$ to $S_2$, and every triple
-containing one contributes $0$ to $S_3$; a pair or triple inside a rich line $\ell$ contributes $|X_\ell|$; every other
+containing one contributes $0$ to $S_3$; a pair or triple inside a rich line $\ell$ contributes $|E_\ell|$; every other
 pair contributes $\ge q^3 - q$, and every other triple (it is not collinear) $\le (q+1)^2$. A rich line with
-$m \in \{3,4\}$ points contributes $-(\binom m2 - \binom m3)|X_\ell| = -2|X_\ell| \le -2(q^3 - q)$. Collecting terms gives
-$U$. If all five points lie on one rich line, all pairwise intersections equal $X_\ell$, so
-$|\bigcup C_i| = 5q^4 - 4|X_\ell|$ exactly. The types: two $3$-subsets of a $5$-set that share at most one point share
+$m \in \{3,4\}$ points contributes $-(\binom m2 - \binom m3)|E_\ell| = -2|E_\ell| \le -2(q^3 - q)$. Collecting terms gives
+$U$. If all five points lie on one rich line, all pairwise intersections equal $E_\ell$, so
+$|\bigcup C_i| = 5q^4 - 4|E_\ell|$ exactly. The types: two $3$-subsets of a $5$-set that share at most one point share
 exactly one, and a third $3$-subset would share two points with one of them; a $4$- or $5$-point rich line leaves no room
 for another. So the systems of rich lines are: none, one $3$-line, two $3$-lines through a common point, one $4$-line,
 one $5$-line. A rich line takes at most one point from each aligned class, which leaves exactly the $17$ rows (partitions
 $5$, $41$, $32$: no rich line; $311$: none or one $3$-line; $221$: none, one, or two $3$-lines through the singleton;
-$2111$: none, $3$, $3+3$, $4$; $11111$: none, $3$, $3+3$, $4$, $5$). The numbers $A$, $T$, $R_3$ and $p$ depend only on
-the row.
+$2111$: none, $3$, $3+3$, $4$; $11111$: none, $3$, $3+3$, $4$, $5$). The numbers $A_2$, $T_3$, $R_3$ and $p$ depend only
+on the row.
 \end{proof}
 
-The table was also produced by three programs: \file{degen.py} of the relabelling note, \file{mytypes.py} of its
-referee, and \file{types43.py}, written from scratch for this note. The referee also built $2{,}500$ explicit
+The table was also produced by three programs, which also classify by sizes: \file{degen.py} of the relabelling note,
+\file{mytypes.py} of its referee, and \file{types43.py}, written from scratch for this note; the reviewer of this note
+counted the $18$ classes up to relabelling. The referee also built $2{,}500$ explicit
 configurations in $Q(6,7)$ and found no union above the bound of its type.
 
 \begin{lemma}[Theorem; few points are moved to perpendicular points]\label{lem:perpbound}
@@ -974,7 +999,8 @@ the bound. At $q = 7$: $2{,}801 + 907.5 + 343 + 92.6 = 4{,}144.1$.
 \end{proof}
 
 Sampled for comparison: $|\Perp(h)| \in \{2{,}752, 2{,}850\}$ for $229$ and for $224$ fixed-point-free elements of
-$\GG(7)$, in two separate samples (relabelling note; its referee).
+$\GG(7)$, in two separate samples (\file{research/omega_repair/logs/fpfperp_q7.txt},
+\file{research/referee/omega-repair/logs/lemma44_sampling_q7.txt}, on their branches).
 
 \begin{theorem}[computer-assisted: uses $m_2 \le 140$ from \ref{cc:routes}]\label{thm:geo7}
 For $q = 7$, every block pattern, every choice of inner classes and every geometric labelling, $\Om H_7$ has
@@ -1002,17 +1028,21 @@ diameter~$8$, under any reading of Figs.~2.21a/b, any choice of inner classes an
 $(15,8)$ and $(16,8)$ the proof is entirely by hand.
 \end{corollary}
 
+For $q = 7, 8, 11, 13$ (not powers of $3$), ``any reading'' covers reading 1 with both block types only vacuously: by
+Lemma~\ref{lem:reduce}(a) no labelling of that reading is geometric, not even the thesis labelling (its transfers map lines
+to points). The thesis labelling in that reading is covered by Theorem~\ref{thm:two}.
+
 \begin{computer}[consistency]\label{cc:consistency}
-On explicit graphs with random collineation labellings ($a_c$, $b_c$ independent), BFS from a hub of a starved class
-reaches exactly the union of the balls predicted by the route words (referee of the relabelling note):
+On explicit graphs in reading 2 with random collineation labellings ($a_c$, $b_c$ independent), BFS from a hub of a
+starved class reaches exactly the union of the balls predicted by the route words (referee of the relabelling note):
 \begin{center}\small
 \begin{tabular}{@{}rlrrr@{}}
 \toprule
-$q$ & graph & far points in $c'$ (BFS) & proved lower bound & hub eccentricity\\
+$q$ & graph, source hub & far in $c'$ (target type) & bound (Cor.~\ref{cor:count}) & ecc.\\
 \midrule
-7 & $\Om H_7$, $aabbb$, 1,176,480 vertices & 5,221 & $> 0$ (Theorem~\ref{thm:geo7}) & 9\\
-8 & $\Om H_8$, $aabbb$, 2,246,940 vertices & 12,943 & 3,712 & 9\\
-9 & $\Om H_9$, $aaabbb$, 4,650,100 vertices & 22,158 & 3,726 & 9\\
+7 & $\Om H_7$, $aabbb$, barred hub (lines) & 5,221 & -- & 9\\
+8 & $\Om H_8$, $aabbb$, barred hub (lines) & 12,943 & 3,712 & 9\\
+9 & $\Om H_9$, $aaabbb$, unbarred hub (points) & 22,158 & 3,726 & 9\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1030,25 +1060,29 @@ With $a_c = b_c$ the distance profile from a hub equals that of the thesis graph
   $4$ before the pass) can each contribute about $q^4$ targets instead of collapsing into one ball; a repair would need
   transfers that scatter the radius-$2$ and radius-$4$ balls almost perfectly and fit together across hubs. In every
   graph where this was checked, all pairs at distance $> 8$ were pairs (hub, vertex of a copy the hub misses): BFS from all
-  vertices gives exactly twice the count from the hubs (table audit; the relabelling note's referee at $q = 3$). For twisted
-  labellings in reading 2 the relabelling note proves this (its Lemma 2.3, with one index corrected by its referee); we
-  do not use or reprove it here.
+  vertices gives exactly twice the count from the hubs (relabelling note, its Computer-checked 2.2, twisted labellings
+  at $q \le 4$; its referee at $q = 3$; the table audit reports the same for every graph it tried). For twisted
+  labellings in reading 2 with both block types present the relabelling note proves this (its Lemma 2.3, with one index
+  corrected by its referee); we do not use or reprove it here.
 
   \begin{computer}[searches]\label{cc:searches}
   No labelling with diameter $8$ was found at $q = 4$ ($54{,}600$ vertices) or $q = 5$ ($195{,}300$): annealing with a
   Singer-type symmetry and eight squad variants ended at $12{,}075$--$13{,}900$ far pairs from $390$ hub
-  representatives ($q = 4$) and $35{,}500$--$38{,}000$ from $252$ ($q = 5$). At $q = 7$ a random labelling with the
-  Singer-cube symmetry leaves $6{,}813{,}773$ far pairs from $2{,}064$ hub representatives. Mean far-pair counts of
-  uniformly random labellings: about $70$ ($q = 2$), $1{,}911$ ($3$), $645{,}753$ ($4$), $6.55\cdot10^6$ ($5$),
-  $6.5\cdot10^8$ ($7$). Geometric labellings are much worse than random ones at every $q$ tested: annealed collineation
-  labellings leave $805$ ($q = 2$), $259{,}169$ ($3$), $18.2\cdot10^6$ ($4$) and $209\cdot10^6$ ($5$) far pairs.
+  representatives ($q = 4$) and $35{,}500$--$38{,}000$ from $252$ ($q = 5$) (table audit, round 2). At $q = 7$ a random
+  labelling with the Singer-cube symmetry leaves $6{,}813{,}773$ far pairs from $2{,}064$ hub representatives. Mean
+  far-pair counts of uniformly random labellings (table audit): $1{,}911$ at $q = 3$ and $645{,}753$ at $q = 4$ (all
+  hubs, fully random), and about $70$, $6.55\cdot10^6$ and $6.5\cdot10^8$ at $q = 2, 5, 7$ (scaled up from symmetric
+  random labellings). Geometric labellings are much worse than random ones at every $q$ tested: annealed collineation
+  labellings leave $805$ ($q = 2$), $259{,}169$ ($3$), $18.2\cdot10^6$ ($4$) and $209\cdot10^6$ ($5$) far pairs
+  (relabelling note, its Computer-checked 4.7).
   \end{computer}
 
   \begin{heuristic}[first moment]\label{h:first}
   If the far pairs of a uniformly random labelling were independent events, the expected number of labellings with
-  diameter $8$ would be $\exp(\ln\#\text{labellings} - E[F])$, with $(N!)^{10\alpha - 1}$ labellings up to a global
-  renaming: $e^{+3.7\cdot10^3}$ at $q = 2$, $e^{+5.0\cdot10^4}$ at $q = 3$, $e^{-4.0\cdot10^5}$ at $q = 4$,
-  $e^{-5.4\cdot10^6}$ at $q = 5$, $e^{-6.4\cdot10^8}$ at $q = 7$. \emph{Gap:} the far pairs are strongly dependent, and
+  diameter $8$ would be $\exp(\ln\#\text{labellings} - E[F])$, with $(N!)^{10\alpha - 2}$ labellings up to renaming the
+  rows of each bar: about $e^{+3.5\cdot10^3}$ at $q = 2$, $e^{+4.8\cdot10^4}$ at $q = 3$, $e^{-4.1\cdot10^5}$ at $q = 4$,
+  $e^{-5.4\cdot10^6}$ at $q = 5$, $e^{-6.4\cdot10^8}$ at $q = 7$. (The table audit used the exponent $10\alpha - 1$; the
+  difference, $\ln N!$, changes no sign.) \emph{Gap:} the far pairs are strongly dependent, and
   the estimate says nothing about structured labellings.
   \end{heuristic}
 
@@ -1056,7 +1090,8 @@ With $a_c = b_c$ the distance profile from a hub equals that of the thesis graph
   bijections, the model of \S5.1 does not apply, even when every transfer is a collineation. The counting method fails
   there for every $q$: every copy met by $X$ shares a class with $c'$, so there are at least $2\alpha \ge q + 2$
   radius-$4$ centres (at $q = 8$: $10$ radius-$4$ and $318$ radius-$2$ centres, bound $-24{,}448$; at $q = 13$: $16$ and
-  $864$, bound $-203{,}138$; computed once, by the referee of the relabelling note). Open.
+  $864$, bound $-203{,}138$; computed once, by the referee of the relabelling note,
+  \file{research/referee/omega-repair/logs/perclass.txt}). Open.
 
 \item \textbf{Other wirings.}
   \begin{heuristic}[other wirings]\label{h:wirings}
@@ -1070,7 +1105,8 @@ With $a_c = b_c$ the distance profile from a hub equals that of the thesis graph
   \end{heuristic}
 
 \item \textbf{$q \le 5$ in the geometric class} (not table values). Neither the count of Theorem~\ref{thm:geo8} nor the
-  $q = 7$ argument works: the general-position bound is $-357$ at $q = 4$ and $-1{,}024$ at $q = 5$, and
+  $q = 7$ argument works: the general-position count of Lemma~\ref{lem:types} gives $-1{,}024$ at $q = 5$ (and $-357$ if
+  the same formula is applied at $q = 4$, where Lemma~\ref{lem:overlap} is not available because $b$ is degenerate), and
   Lemma~\ref{lem:perpbound} needs $3 \mid q - 1$, which fails at $q = 5$. There are only the measurements
   of~\ref{cc:searches}. The subclass $a_c = b_c$ is settled for every $q$ (Lemma~\ref{lem:oneaut}).
 
@@ -1106,7 +1142,9 @@ $(16,8)$ & $36{,}201{,}060 = |\Om H_{13}|$ & $\ge 9$; ecc.\ $9$ computed & $\ge 
 \end{tabular}
 
 \smallskip\noindent{\small ``Thesis labelling'': diameter $\ge 9$ by Corollaries~\ref{cor:one} and~\ref{cor:two} (every
-reading); ``$= 9$ computed'' and ``ecc.\ $9$ computed'' refer to~\ref{cc:thesis}.}
+reading); ``$= 9$ computed'' (for the patterns and pairings of~\ref{cc:thesis}(a)) and ``ecc.\ $9$ computed'' refer
+to~\ref{cc:thesis}. ``Geometric relabellings'': in reading 1 with both block types there are none unless $q = 9$
+(remark after Corollary~\ref{cor:geo}).}
 \end{center}
 
 \noindent\textbf{What can be claimed} (the two referees' recommended wording, combined):
@@ -1130,6 +1168,10 @@ at least $q^5 - \alpha q^4 - m_2q^2$ vertices of $c'$ at distance $\ge 9$ from e
 $26{,}862$ and $84{,}162$ at $q = 8, 9, 11, 13$). For $q = 7$ the proof adds Bonferroni inequalities and a character-sum
 bound on how many points a fixed-point-free element of $\GG(7)$ moves to perpendicular points.
 \end{quote}
+\noindent Two precisions to this wording. The numbers $3{,}712$, $3{,}726$, $26{,}862$, $84{,}162$ use starved pairs of
+either hub class (Corollary~\ref{cor:count} and the line-bar remark after Lemma~\ref{lem:routes}). For $q = 7, 8, 11,
+13$ the phrase ``every reading'' covers reading 1 with both block types only vacuously, since no labelling of that
+reading is geometric there; in that reading the thesis labelling is covered by Theorem~\ref{thm:two}.
 
 \noindent\textbf{What cannot be claimed.}
 \begin{itemize}[leftmargin=1.5em]
@@ -1176,11 +1218,12 @@ All in the repository github.com/dogaozden/degree-diameter, by branch (commit in
   \file{research/lean-maxx/STATUS-projection.md}, branch \file{claude/leanmaxx-projection-r0kehl} [50cc900];
   verification \file{research/lean-maxx/VERIFY.md}, branch \file{claude/leanmaxx-verify-9ummw2} [2ff0c8e].
 \item \emph{This note}: \file{research/theorems/OMEGA_NOTE.md} and \file{research/theorems/omega_note/}
-  (this file, \file{starved.py}, \file{types43.py}, \file{typetable.py}, logs), branch
+  (this file, \file{starved.py}, \file{c4_families.py}, \file{types43.py}, \file{typetable.py}, \file{lem16.py}, logs), branch
   \file{claude/omega-d8-note-xrbqux}. Re-run for this note: the constants of Theorem~\ref{thm:two}
   (\file{thm2_bound.py} of the first referee), the route words for $\alpha = 5, \dots, 8$ (\file{starved.py}, with the
   second referee's \file{myroutes.py}), Table~\ref{tab:types} (\file{types43.py}, from scratch), and
-Lemmas~\ref{lem:perp}, \ref{lem:balls} on $H(3)$, $H(4)$ (\file{lem16.py}).
+Lemmas~\ref{lem:perp}, \ref{lem:balls} on $H(3)$, $H(4)$ (\file{lem16.py}); \file{c4_families.py} was written by an
+independent reviewer session, which read the draft against all sources; its corrections are applied.
 \end{itemize}
 
 \par\endgroup

@@ -41,12 +41,14 @@ bipartite graphs") was never published, as far as we could find. The results:
    reading of the figures (reading 2) this gives diam ΩH_q ≥ 9 for every q and every pairing of labels.
 2. **Theorem 2 (two labels, q ≥ 7).** For the thesis's labelling (every copy carries the same labels) and every reading
    of the figures, every hub has at least q⁵ − 5q⁴ − 8q³ − 12q² − 16q − 10 vertices at distance ≥ 9 in every copy
-   it misses. This covers the six table entries. By computer, ΩH₇ and ΩH₉ have diameter exactly 9 (C2).
+   it misses. This covers the six table entries. By computer, ΩH₇ and ΩH₉ have diameter exactly 9 for the patterns
+   and pairings of C2(a).
 3. **Theorems 3 and 4 (geometric relabellings, q ≥ 7).** Give every copy its own labelling, and call it geometric if
    every transfer map between two copies met by one hub class is induced by an automorphism of the incidence graph of
    H(q). For every q ≥ 7, every geometric labelling, every reading and every mix of block types, the diameter is still
    ≥ 9. For q ≥ 10 the proof is by hand; for q = 8, 9 it uses a computer count of route words (C4), and for q = 7 also
-   Bonferroni inequalities and a character-sum bound (Theorem 4).
+   Bonferroni inequalities and a character-sum bound (Theorem 4). (For q not a power of 3 there are no geometric
+   labellings at all in reading 1 with both block types, so there the statement is empty and Theorem 2 is what applies.)
 4. **Open (§6).** Arbitrary (non-geometric) relabellings, for every q ≥ 4: at q = 2 and q = 3 such relabellings do give
    diameter 8 (C7), and no argument excludes them at the table's q. Labellings chosen per hub class and copy. Other
    wirings. The geometric class at q ≤ 5 (computations only).
@@ -148,7 +150,7 @@ and q − 1 go up; from distance 6 all choices go down to 5.
 
 (The same counts for every radius ≤ 4 and both types follow from the intersection array
 {q+1, q, q, q, q, q; 1, 1, 1, 1, 1, q+1} of I, which is distance-regular; the referee of the relabelling note computed
-them that way, `logs/lemma31_drg.txt`. For this note we also counted them directly on H(3) and H(4) built by
+them that way, `research/referee/omega-repair/logs/lemma31_drg.txt` on its branch. For this note we also counted them directly on H(3) and H(4) built by
 `hexq6.c`, together with Lemma 1.5 on H(3): `omega_note/lem16.py`, log `omega_note/logs/lem16_q3_q4.txt`.)
 
 ## 2. Gómez's construction
@@ -299,8 +301,8 @@ with the corollary `ediam_ge` ((D₁ + 3 : ℕ∞) ≤ G.ediam when B.edist t s 
 only `propext`, `Classical.choice`, `Quot.sound`. An independent session rebuilt the module (Lean v4.34.1, Mathlib as
 pinned), regenerated the axioms output byte for byte, grepped for `sorry`/`admit`/`native_decide`, and read the
 statement against the card (`research/lean-maxx/VERIFY.md`, branch `claude/leanmaxx-verify-9ummw2`, commit 2ff0c8e).
-The Lean statement is slightly more general than the one above (B need not be bipartite, copies need not be whole
-copies; `B.dist` is 0 when f x and f v are not connected, which only weakens it). The check that ΩH_q satisfies h1–h3 is
+The Lean statement is Theorem 1 as stated here (`B.dist` is 0 when f x and f v are not connected, which only weakens
+it; VERIFY.md calls it more general than the first write-up's version, which assumed B bipartite of even diameter). The check that ΩH_q satisfies h1–h3 is
 Corollary 3.1 below; it is not part of the Lean files.
 
 **Corollary 3.1 (Theorem).** Take the thesis labelling and inner classes for which every hub class sits on one type in
@@ -319,27 +321,30 @@ For instance, if P₀(t) = e₀, the hub (t, k) (reading 2) is at distance ≥ 9
 ⟨(x₃² − x₁x₅ − x₂x₆, x₁, x₂, x₃, 1, x₅, x₆)⟩ of each of the 3α copies it misses (Example in §1.2).
 
 **Computer-checked C1 (the hexagons).** The incidence graphs of H(q) used below were built and checked by all-pairs
-BFS (no symmetry assumed): 2N vertices, bipartite, (q+1)-regular, diameter 6, girth 12 (sphere sizes s_i from every
-vertex). Three times: `hexq6.c` (this model) with `apsp_mt` for q = 3, 4, 5, 7, 8, 9, 11, 13 (own-12-8); `hexgen.c`,
-`hexgf.c` (split octonions) with `bitapsp.c` for q = 2, 3, 4, 5, 7, 8, 9, 11, 13 (referee omega-dq); `buildhex.py`
-(split octonions) with `ghcheck.c` for q = 3, 7, 8, 9 (referee omega-repair). A (q+1)-regular bipartite graph on 2N
-vertices with diameter 6 and girth 12 is the incidence graph of a generalized hexagon of order (q, q).
+BFS (no symmetry assumed): 2N vertices, bipartite, (q+1)-regular, diameter 6, girth 12. Three times: `hexq6.c` (this
+model) with `apsp_mt` for q = 3, 4, 5, 7, 8, 9, 11, 13 (own-12-8; diameter 6 checked, girth 12 then follows from the
+bipartite Moore bound); `hexgen.c`, `hexgf.c` (split octonions) with `bitapsp.c` for q = 2, 3, 4, 5, 7, 8, 9, 11, 13
+(referee omega-dq; sphere sizes s_i from every vertex); `buildhex.py` (split octonions) with `ghcheck.c` for
+q = 3, 7, 8, 9 (referee omega-repair; sphere sizes from every vertex). A (q+1)-regular bipartite graph on 2N vertices
+with diameter 6 and girth 12 is the incidence graph of a generalized hexagon of order (q, q).
 
 **Computer-checked C2 (the thesis graphs).**
 (a) *Exact diameters* (both block types present): ΩH₃ and ΩH₅ (195,300 vertices, the thesis's (8,8) value): 9 by
-all-pairs BFS, both readings, σ = identity and two random σ, patterns aba, aab, abab, aabb (twice: own-12-8,
-`apsp_auto`; referee omega-dq, `bitapsp`). ΩH₇ (1,176,480): 9 in reading 2 (ababa) and in reading 1 (ababa, random σ),
+all-pairs BFS, both readings, σ = identity and two random σ, patterns aba, aab, abab, aabb (referee omega-dq,
+`bitapsp`); independently (own-12-8, `apsp_auto`, BFS from orbit representatives under checked automorphisms) ΩH₃ in
+both readings, and ΩH₅ in reading 2 (abab) and reading 1 (abab with a Singer-equivariant and a random σ; aabb). ΩH₇ (1,176,480): 9 in reading 2 (ababa) and in reading 1 (ababa, random σ),
 by BFS from 117,648 sources, one in every orbit of the rotation and the block swaps, each automorphism checked edge by
 edge (referee omega-dq). ΩH₉ (4,650,100): 9 in reading 2 (aaabbb; 18 orbits of a group generated by the rotation, block
 swaps, a Singer cycle and a transvection of H(9), all checked on the 27,900,600 edges) and in reading 1 (Singer-
 equivariant σ, 4,380 orbits) (own-12-8); again 9 in reading 2 and in reading 1 with a random σ from 398,580 orbit
 representatives (referee omega-dq).
 (b) *All six thesis values*: BFS from a hub gives eccentricity 9 for ΩH₅, ΩH₇, ΩH₈, ΩH₉, ΩH₁₁, ΩH₁₃ at the thesis
-orders, both readings (twice: own-12-8 `omega_bfs`; referee omega-dq `omegaref`, and a third time by the table audit
-for reading 1). In reading 2 the vertices at distance 9 from hub (t, k) are exactly the points opposite t in the 3α
+orders, both readings (reading 2: own-12-8 `omega_bfs` and referee omega-dq `omegaref`; reading 1: referee omega-dq and
+the table audit). In reading 2 the vertices at distance 9 from hub (t, k) are exactly the points opposite t in the 3α
 copies it misses (3α·q⁵: 252,105 at q = 7, 491,520 at q = 8, 1,062,882 at q = 9, 3,382,071 at q = 11, 8,911,032 at
 q = 13).
-(c) *One block type*: diameter 10 (all pairs at q = 2, 3, 5; orbit BFS at q = 7, 9).
+(c) *One block type*: diameter 10 (all pairs at q = 2, 3, 5; at q = 9 by BFS from orbit representatives under
+checked automorphisms; at q = 7 a direct BFS gives eccentricity 10).
 (d) Explicit pairs at distance 9 for every cell: `research/projects/table-audit/checks/witness_omega_thesis.txt`
 (branch claude/table-audit-2-p7x6hn), `research/d12D8/omega/witness_pairs.txt` (own-12-8).
 
@@ -406,8 +411,9 @@ joined only to vertices labelled t), ΩH_q has diameter ≥ 9 for q = 7, 8, 9, 1
 Figs. 2.21a/b, every pattern of block types and every pairing of point labels with line labels. These are the six table
 entries.
 
-**Computer-checked C3 (q = 3, 5).** Where Theorem 2's count fails, all-pairs BFS gives diameter 9 for ΩH₃ and ΩH₅ in both
-readings and with several σ (C2(a)). Under reading 1 (σ the identity or random), the largest number of opposite vertices of the right
+**Computer-checked C3 (small q; slack in Theorem 2).** Theorem 2's count fails for q ≤ 6. There, all-pairs BFS gives
+diameter 9 with both block types for ΩH₂ (pattern ab, three σ; table audit, `checks/omega_D8.txt`), ΩH₃ and ΩH₅ (both
+readings, several σ; C2(a)); q = 4 was not computed with the thesis labelling. Under reading 1 (σ the identity or random), the largest number of opposite vertices of the right
 type within distance 7 of a hub, in a copy it misses, was 7,562–8,039 at q = 7 (bound 15,459), 13,950 at q = 8 (25,482),
 22,771–22,825 at q = 9 (39,763), 52,372 at q = 11 (85,491) and 104,225 at q = 13 (162,627) (referee omega-dq).
 
@@ -493,22 +499,29 @@ at points; a segment before an ℒ-pass ends at a line, so the segments around �
   the same row m, so g = λ_{c′}λ_{c₂}⁻¹λ_{c₂}λ_{c₁}⁻¹ = λ_{c′}λ_{c₁}⁻¹ (second kind).
 - r = 4: all a_i = 0, so the walk never reaches a line, all passes are 𝒫-passes, and v = t. ∎
 
-For a pair (X, c′) let r₄ = |N(X, c′)| and let m₂ be the number of pairs in W₂ that are not of the form (c′, c₁) with
-c₁ ∈ N(X, c′). Different pairs may give the same map; counting pairs only overestimates.
+**The line bar.** Relabelling every copy c by λ_c⁻¹ (Lemma 5.2) gives L_c = L₀ for all c and P_c = λ_c⁻¹P₀. So the
+same statement holds with points and lines exchanged and λ_c replaced by λ_c⁻¹: for X ∈ ℒ, c′ ∉ C(X) and a row m, every
+line of c′ within distance 7 of (m, X) lies in the corresponding union of balls around ℓ = L₀(m), the lines
+λ_{c′}⁻¹λ_{c₁}(ℓ) (radius 4) and λ_c⁻¹λ_d(ℓ) (radius 2), where N(X, c′) and W₂ are defined as above with the roles of
+𝒫 and ℒ exchanged. (The relabelling note states this in its Lemma 2.1.)
 
-**Corollary 5.5 (Theorem).** Every hub (t, X) has at least q⁵ − r₄q⁴ − m₂q² points of c′ at distance ≥ 9. If r₄ = α,
-then m₂ ≤ (4α − 1) + 2α·2(2α − 1) = 8α² − 1.
+For a pair (X, c′), X in either bar, let r₄ = |N(X, c′)| and let m₂ be the number of pairs in W₂ that are not of the
+form (c′, c₁) with c₁ ∈ N(X, c′). Different pairs may give the same map; counting pairs only overestimates.
 
-*Proof.* By Lemma 1.6, B(t, 4) misses opp(t), each other radius-4 ball meets it in at most q⁴ points and each radius-2
-ball in at most q². The remaining points of opp(t) in c′ are at distance > 7 from (t, X), and at odd distance, since all
-points of all copies have one colour; so at distance ≥ 9. For the bound on m₂: the first two kinds are pairs (c′, b)
+**Corollary 5.5 (Theorem).** Every hub of X has at least q⁵ − r₄q⁴ − m₂q² vertices of c′ at distance ≥ 9: points if
+X ∈ 𝒫, lines if X ∈ ℒ. If r₄ = α, then m₂ ≤ (4α − 1) + 2α·2(2α − 1) = 8α² − 1.
+
+*Proof.* Take X ∈ 𝒫 (for ℒ exchange points and lines; Lemma 1.6 holds for both types). By Lemma 1.6, B(t, 4) misses
+opp(t), each other radius-4 ball meets it in at most q⁴ points and each radius-2 ball in at most q². The remaining points
+of opp(t) in c′ are at distance > 7 from (t, X), and at odd distance, since all points of all copies have one colour; so
+at distance ≥ 9. For the bound on m₂: the first two kinds are pairs (c′, b)
 with b ≠ c′, at most 5α − 1 − r₄ = 4α − 1 of them outside the radius-4 words; the third kind has ≤ 2α choices of c₁ and,
 since c₁ is met by two classes of ℒ that meet 2α copies each, ≤ 2(2α − 1) choices of c₂. ∎
 
 ### 5.3 Starved pairs
 
-Call (X, c′) with X ∈ 𝒫, c′ ∉ C(X) **starved** if r₄ = α, i.e. exactly one copy of C(X) per block shares a class of ℒ
-with c′.
+Call (X, c′), with X in either bar and c′ ∉ C(X), **starved** if r₄ = α. In the pairs of Lemma 5.6 exactly one copy of
+C(X) per block shares a class of the other bar with c′ (that every pair has r₄ ≥ α is C4, not used in the proofs).
 
 **Lemma 5.6 (Theorem).** For every block pattern there are starved pairs with X unbarred and starved pairs with X
 barred:
@@ -533,13 +546,15 @@ a-blocks matters), the routes of Lemma 5.4 were enumerated for every pair (X, c�
 - every pair has r₄ ≥ α, and no route ends in a radius-0 ball other than the identity;
 - for α = 5 (q = 7, 8), every starved pair, of either bar and in every pattern, has m₂ ≤ 140;
 - for α = 6 (q = 9), every starved pair has m₂ ≤ 201;
-- the best starved pair of the worst pattern has m₂ = 134 (α = 5, patterns aabbb, aaabb), 197 (α = 6, aaabbb),
-  262 (α = 7, aaabbbb), 347 (α = 8, aaaabbbb).
+- in every pattern some starved pair (of one of the two bars) has m₂ ≤ 134 (α = 5; equality for aabbb, aaabb),
+  ≤ 197 (α = 6; aaabbb), ≤ 262 (α = 7; aaabbbb, aaaabbb), ≤ 347 (α = 8; aaaabbbb).
 
-Twice for the last item (`routecount.c` and `routecount2.c` of the relabelling note; `myroutes.py`/`sweep.py` of its
-referee, which enumerates walks symbolically and does not use Lemma 5.4's families). All four items were re-run for this
-note with the referee's enumerator for α = 5, 6, 7, 8 (`starved.py`, logs `omega_note/logs/starved_alpha5_6.txt` and
-`starved_alpha7_8.txt`; the largest m₂ of a starved pair is 140, 201, 272, 353).
+The last item was found by `routecount.c` and `routecount2.c` of the relabelling note and by `myroutes.py`/`sweep.py`
+of its referee, which enumerates walks symbolically. For this note all four items were re-run for α = 5, 6, 7, 8 by two
+programs: `starved.py` (with the referee's `myroutes.py`; logs `omega_note/logs/starved_alpha5_6.txt`,
+`starved_alpha7_8.txt`) and `c4_families.py` (written by the independent reviewer of this note from Lemma 5.4's
+families and Definition 2.1; log `omega_note/logs/c4_families_alpha5_8.txt`). They agree; the largest m₂ of a starved
+pair is 140, 201, 272, 353.
 
 ### 5.4 q ≥ 8
 
@@ -548,14 +563,14 @@ note with the referee's enumerator for α = 5, 6, 7, 8 (`starved.py`, logs `omeg
 precisely, in the normal form, for every starved pair (X, c′) every hub (t, X) has at least q⁵ − αq⁴ − m₂q² > 0
 vertices of c′ at distance ≥ 9.
 
-*Proof.* By Lemma 5.3 we may assume the normal form, in reading 2 or its dual. Take a starved pair of the point bar
-(Lemma 5.6) and apply Corollary 5.5 with r₄ = α. For q ≥ 10, m₂ ≤ 8α² − 1 and the bound is positive when
-q²(q − α) ≥ 8α²; with α ≤ (q + 3)/2 it suffices that q²(q − 3) ≥ 4(q + 3)², i.e. q³ − 7q² − 24q − 36 ≥ 0, which holds at
-q = 10 (value 24) and for larger q (the derivative 3q² − 14q − 24 is positive). For q = 8 (α = 5), C4 gives m₂ ≤ 140 and
-the bound is ≥ 32,768 − 20,480 − 8,960 = 3,328; for q = 9 (α = 6), m₂ ≤ 201 and the bound is
+*Proof.* By Lemma 5.3 we may assume the normal form, in reading 2 or its dual. Take a starved pair (Lemma 5.6) and apply
+Corollary 5.5 with r₄ = α. For q ≥ 10, m₂ ≤ 8α² − 1 and the bound is positive when q²(q − α) ≥ 8α²; with
+α ≤ (q + 3)/2 it suffices that q²(q − 3) ≥ 4(q + 3)², i.e. q³ − 7q² − 24q − 36 ≥ 0, which holds at q = 10 (value 24)
+and for larger q (the derivative 3q² − 14q − 24 is positive). For q = 8 (α = 5), C4 gives m₂ ≤ 140 for every starved
+pair, so the bound is ≥ 32,768 − 20,480 − 8,960 = 3,328; for q = 9 (α = 6), m₂ ≤ 201 and the bound is
 ≥ 59,049 − 39,366 − 16,281 = 3,402. ∎
 
-| q | α | far vertices per hub of a starved class | best pair, worst pattern (C4) |
+| q | α | far vertices per hub of a starved class | best pair of either bar, worst pattern (C4) |
 |---:|---:|---|---:|
 | 8 | 5 | ≥ 3,328 for every starved pair (uses C4) | 3,712 |
 | 9 | 6 | ≥ 3,402 for every starved pair (uses C4) | 3,726 |
@@ -564,7 +579,9 @@ the bound is ≥ 32,768 − 20,480 − 8,960 = 3,328; for q = 9 (α = 6), m₂ �
 
 This covers (11,8), (12,8), (14,8), (15,8), (16,8). Summing over all starved pairs (different pairs give disjoint sets of
 (hub, vertex) pairs), every geometric labelling leaves at least 3.33·10⁹ far pairs at q = 8 and 7.43·10⁹ at q = 9
-(Computer-checked twice: relabelling note and its referee, `logs/total_far_bounds_q8_q9.txt`).
+(starved pairs of both bars; Computer-checked by the relabelling note, `research/omega_repair/logs/total_far_lower_bounds.txt`,
+its referee, `research/referee/omega-repair/logs/total_far_bounds_q8_q9.txt`, and `c4_families.py`). With the point bar
+alone the totals are at least 6.2·10⁸ and 1.2·10⁹.
 
 The relabelling note first proved the other readings separately for q = 8, 9, 11, 13 and 27 (its Theorem 3.5). Its
 referee observed that Lemma 5.3(b) reduces them to reading 2 for every q, which is how they are handled here.
@@ -583,7 +600,7 @@ within distance 7 of (t, X) that are opposite t lie in C₁ ∪ … ∪ C₅ and
 |y^⊥ ∩ y′^⊥ ∩ opp(t)| ≥ q³ − q.
 (b) If y, y′, y″ are points not on one line, |y^⊥ ∩ y′^⊥ ∩ y″^⊥ ∩ Q(6, q)| ≤ (q + 1)².
 (c) If y, y′, y″ lie on one totally singular line ℓ not through t, all the pairwise and triple intersections of
-y^⊥ ∩ opp(t), y′^⊥ ∩ opp(t), y″^⊥ ∩ opp(t) equal X_ℓ := ℓ^⊥ ∩ opp(t), and |X_ℓ| ≥ q³ − q.
+y^⊥ ∩ opp(t), y′^⊥ ∩ opp(t), y″^⊥ ∩ opp(t) equal E_ℓ := ℓ^⊥ ∩ opp(t), and |E_ℓ| ≥ q³ − q.
 
 *Proof.* If y ⊥ y′, the line yy′ is totally singular; if t is on it, y^⊥ ∩ y′^⊥ = (yy′)^⊥ ⊆ t^⊥. If y, y′ are not
 perpendicular, the line yy′ meets Q(6, q) only in y, y′, so t is not on it. In both remaining cases y^⊥ ∩ y′^⊥ is the
@@ -595,7 +612,7 @@ dimension 0, 1 or 3. In the first case Π^⊥ (dimension 4) carries a nondegener
 points; in the second it is a cone over a conic, q² + q + 1 points; in the third Π is totally singular and
 Π^⊥ = Π ⊕ ⟨w⟩ with Q(w) ≠ 0 (Q(6, q) has no totally singular 4-space), so its singular points are those of Π,
 q² + q + 1. So |Π^⊥ ∩ Q(6, q)| ≤ (q + 1)², which gives (a) and, with Π = ⟨y, y′, y″⟩, (b). (c): y^⊥ ∩ y′^⊥ = ℓ^⊥ ⊆ y″^⊥,
-and |X_ℓ| ≥ q³ − q by (a). ∎
+and |E_ℓ| ≥ q³ − q by (a). ∎
 
 **Lemma 5.8 (Theorem; coincidences).** If two of t, y₁, …, y₅ coincide, the hub (t, X) has at least
 q⁵ − 4q⁴ − 140q² = 16,807 − 9,604 − 6,860 = 343 vertices of c′ at distance ≥ 9 (uses m₂ ≤ 140 from C4).
@@ -608,15 +625,17 @@ line of PG(6, q) not through t, and maximal with this property, a **rich line**.
 totally singular line, so every collinear triple of y's is inside an aligned class or a rich line; a rich line meets
 each aligned class at most once, and two rich lines share at most one point.
 
-**Lemma 5.9 (Theorem; the configuration types at q = 7).** Let A be the number of aligned pairs, T the number of
+**Lemma 5.9 (Theorem; the configuration types at q = 7).** Let A₂ be the number of aligned pairs, T₃ the number of
 triples meeting three different aligned classes, and R₃ = Σ C(m, 3) over the rich lines (m points each). Then
 
-  |C₁ ∪ … ∪ C₅| ≤ U := 5q⁴ − (10 − A − R₃)(q³ − q) + (T − R₃)(q + 1)²,
+  |C₁ ∪ … ∪ C₅| ≤ U := 5q⁴ − (10 − A₂ − R₃)(q³ − q) + (T₃ − R₃)(q + 1)²,
 
-except when one rich line holds all five points, where U := 5q⁴ − 4(q³ − q). Up to relabelling there are exactly 17
-configuration types; for q = 7 they are:
+except when one rich line holds all five points, where U := 5q⁴ − 4(q³ − q). Classified by the sizes of the aligned
+classes and of the rich lines there are exactly 17 kinds of configuration (18 up to relabelling: the row 2,1,1,1 | 3
+holds two, with the rich line through the three singletons or through one point of the pair; they have the same
+A₂, T₃, R₃ and p). For q = 7 they are:
 
-| aligned classes | rich lines | A | T | R₃ | U | F = 16,807 − U − 6,860 | forced ⊥ pairs p |
+| aligned classes | rich lines | A₂ | T₃ | R₃ | U | F = 16,807 − U − 6,860 | forced ⊥ pairs p |
 |---|---|---:|---:|---:|---:|---:|---:|
 | 5 | — | 10 | 0 | 0 | 12,005 | −2,058 | 15 |
 | 4, 1 | — | 6 | 0 | 0 | 10,661 | −714 | 10 |
@@ -641,18 +660,19 @@ Here p = Σ (s + C(s, 2)) over aligned classes of size s ≥ 2, plus Σ C(m, 2) 
 
 *Proof.* |C_i| = q⁴ (Lemma 1.6, y_i ≠ t). Bonferroni: |⋃C_i| ≤ S₁ − S₂ + S₃, S_k the sum of the k-fold intersections.
 By Lemma 5.7: an aligned pair contributes 0 to S₂ and every triple containing one contributes 0 to S₃; a pair inside a
-rich line ℓ contributes |X_ℓ| and so does a triple inside it; every other pair contributes ≥ q³ − q, and every other
-triple (it is not collinear) ≤ (q + 1)². A rich line with m ∈ {3, 4} points contributes −(C(m, 2) − C(m, 3))|X_ℓ| =
-−2|X_ℓ| ≤ −2(q³ − q). Collecting terms gives U. If all five points lie on one rich line, all pairwise intersections
-equal X_ℓ, so |⋃C_i| = 5q⁴ − 4|X_ℓ| exactly. The types: two 3-subsets of a 5-set sharing at most one point share exactly
+rich line ℓ contributes |E_ℓ| and so does a triple inside it; every other pair contributes ≥ q³ − q, and every other
+triple (it is not collinear) ≤ (q + 1)². A rich line with m ∈ {3, 4} points contributes −(C(m, 2) − C(m, 3))|E_ℓ| =
+−2|E_ℓ| ≤ −2(q³ − q). Collecting terms gives U. If all five points lie on one rich line, all pairwise intersections
+equal E_ℓ, so |⋃C_i| = 5q⁴ − 4|E_ℓ| exactly. The types: two 3-subsets of a 5-set sharing at most one point share exactly
 one, a third 3-subset would share two points with one of them, and a 4- or 5-point rich line leaves no room for another.
 So the rich-line systems are: none, one 3-line, two 3-lines through a common point, one 4-line, one 5-line. A rich line
 takes at most one point from each aligned class, which leaves exactly the 17 rows above (partitions 5, 41, 32 admit no
 rich line; 311: none or one 3-line; 221: none, one, or two 3-lines through the singleton; 2111: none, 3, 3+3, 4; 11111:
-none, 3, 3+3, 4, 5). The numbers A, T, R₃ and p depend only on the row. ∎
+none, 3, 3+3, 4, 5). The numbers A₂, T₃, R₃ and p depend only on the row. ∎
 
-(The table was also produced by three programs: `degen.py` of the relabelling note, `mytypes.py` of its referee, and
-`types43.py` written for this note, `logs/types43_q7.txt`. The referee also built 2,500 explicit configurations in Q(6,7)
+(The table was also produced by three programs, which also classify by sizes: `degen.py` of the relabelling note,
+`mytypes.py` of its referee, and `types43.py` written for this note, `omega_note/logs/types43_q7.txt`; the reviewer of
+this note counted the 18 classes up to relabelling. The referee also built 2,500 explicit configurations in Q(6,7)
 and found no union above its type's bound.)
 
 **Lemma 5.10 (Theorem; few points are moved to perpendicular points).** Let q be odd with 3 | q − 1 and let h ∈ G₂(q)
@@ -683,7 +703,8 @@ entry to a larger one (below 4), or raising an entry, does not decrease Σ q^{d_
 q² + q^{1.5} + (q − 2). This gives the bound. At q = 7: 2,801 + 907.5 + 343 + 92.6 = 4,144.1. ∎
 
 (Sampled: |Perp(h)| ∈ {2,752, 2,850} for 229 and for 224 fixed-point-free elements of G₂(7), in two separate samples;
-`logs/fpfperp_q7.txt` of the relabelling note, `logs/lemma44_sampling_q7.txt` of its referee.)
+`research/omega_repair/logs/fpfperp_q7.txt` and `research/referee/omega-repair/logs/lemma44_sampling_q7.txt` on their
+branches.)
 
 **Theorem 4 (computer-assisted: uses m₂ ≤ 140 from C4).** For q = 7, every block pattern, every choice of inner classes
 and every geometric labelling, ΩH₇ has diameter ≥ 9.
@@ -701,17 +722,19 @@ Summing over the 19,608 points t: Σ_h |Perp(h)| ≥ 6 · 19,608 = 117,648 over 
 **Corollary 5.11 (Theorem; computer-assisted at q = 7, 8, 9).** For every table value of ΩH_q, (10,8) 1,176,480,
 (11,8) 2,246,940, (12,8) 4,650,100, (14,8) and (15,8) 14,172,480 and (16,8) 36,201,060, no geometric labelling of the
 copies gives diameter 8, under any reading of Figs. 2.21a/b, any choice of inner classes and any mix of block types.
-For (14,8), (15,8) and (16,8) the proof is entirely by hand.
+For (14,8), (15,8) and (16,8) the proof is entirely by hand. For q = 7, 8, 11, 13 (not powers of 3), "any reading"
+includes reading 1 with both block types only vacuously: by Lemma 5.3(a) no labelling of that reading is geometric,
+not even the thesis labelling (its transfers map lines to points); the thesis labelling there is covered by Theorem 2.
 
-**Computer-checked C5 (consistency).** On explicit graphs with random collineation labellings (a_c, b_c independent),
-BFS from a hub of a starved class reaches exactly the union of the balls predicted by the route words, and gives
-(referee of the relabelling note, `omg.c`, `driver.py`):
+**Computer-checked C5 (consistency).** On explicit graphs in reading 2 with random collineation labellings (a_c, b_c
+independent), BFS from a hub of a starved class reaches exactly the union of the balls predicted by the route words, and
+gives (referee of the relabelling note, `omg.c`, `driver.py`):
 
-| q | graph | far points in c′ (BFS) | proved lower bound | hub eccentricity |
+| q | graph, source hub | far vertices of c′ of the target type (BFS) | lower bound (Cor. 5.5) | hub eccentricity |
 |---:|---|---:|---:|---:|
-| 7 | ΩH₇ aabbb, 1,176,480 vertices | 5,221 | > 0 (Theorem 4) | 9 |
-| 8 | ΩH₈ aabbb, 2,246,940 vertices | 12,943 | 3,712 | 9 |
-| 9 | ΩH₉ aaabbb, 4,650,100 vertices | 22,158 | 3,726 | 9 |
+| 7 | ΩH₇ aabbb, barred hub (lines) | 5,221 | — | 9 |
+| 8 | ΩH₈ aabbb, barred hub (lines) | 12,943 | 3,712 | 9 |
+| 9 | ΩH₉ aaabbb, unbarred hub (points) | 22,158 | 3,726 | 9 |
 
 With a_c = b_c the distance profile from a hub equals that of the thesis graph (Lemma 5.2).
 
@@ -723,30 +746,34 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
    3.1n (13), n the number of targets in the copy (table audit, `ubound.py`), so the union bound stays near 3 as q
    grows. When a transfer is not geometric, the three terms of a route (walks of length 0, 2, 4 before the pass) can
    each contribute about q⁴ targets instead of collapsing to one ball; a repair would need transfers that scatter the
-   radius-2 and radius-4 balls almost perfectly and fit together across hubs. In every graph where this was checked, all pairs
-   at distance > 8 were pairs (hub, vertex of a copy the hub misses): BFS from all vertices gives exactly twice the count
-   from the hubs (table audit; the relabelling note's referee at q = 3). For twisted labellings in reading 2 the
-   relabelling note proves this (its Lemma 2.3, with one index corrected by its referee); we do not use or reprove it here.
+   radius-2 and radius-4 balls almost perfectly and fit together across hubs. In every graph where this was checked, all
+   pairs at distance > 8 were pairs (hub, vertex of a copy the hub misses): BFS from all vertices gives exactly twice the
+   count from the hubs (relabelling note, its Computer-checked 2.2, twisted labellings at q ≤ 4; its referee at q = 3;
+   the table audit reports the same for every graph it tried). For twisted labellings in reading 2 with both block types
+   present the relabelling note proves this (its Lemma 2.3, with one index corrected by its referee); we do not use or
+   reprove it here.
 
    *Computer-checked C6 (searches).* No labelling with diameter 8 was found at q = 4 (54,600 vertices) or q = 5
    (195,300): annealing with a Singer-type symmetry and eight squad variants ended at 12,075–13,900 far pairs from
    390 hub representatives (q = 4) and 35,500–38,000 from 252 (q = 5) (table audit, round 2). At q = 7 a random
    labelling with the Singer-cube symmetry leaves 6,813,773 far pairs from 2,064 hub representatives. Mean far-pair
-   counts of uniformly random labellings: about 70 (q = 2), 1,911 (3), 645,753 (4), 6.55·10⁶ (5), 6.5·10⁸ (7). Geometric
-   labellings are much worse than random ones at every q tested: annealed collineation labellings leave 805 (q = 2),
-   259,169 (3), 18.2·10⁶ (4) and 209·10⁶ (5) far pairs.
+   counts of uniformly random labellings (table audit): 1,911 at q = 3 and 645,753 at q = 4 (all hubs, fully random), and
+   about 70, 6.55·10⁶ and 6.5·10⁸ at q = 2, 5, 7 (scaled up from symmetric random labellings). Geometric labellings are
+   much worse than random ones at every q tested: annealed collineation labellings leave 805 (q = 2), 259,169 (3),
+   18.2·10⁶ (4) and 209·10⁶ (5) far pairs (relabelling note, its Computer-checked 4.7).
 
    *Heuristic H1 (first moment).* If the far pairs of a uniformly random labelling were independent events, the expected
-   number of labellings with diameter 8 would be exp(ln #labellings − E[F]), with #labellings = (N!)^{10α−1} up to a
-   global renaming: e^{+3.7·10³} at q = 2, e^{+5.0·10⁴} at q = 3, e^{−4.0·10⁵} at q = 4, e^{−5.4·10⁶} at q = 5,
-   e^{−6.4·10⁸} at q = 7. The gap: far pairs are strongly dependent, and the estimate says nothing about structured
+   number of labellings with diameter 8 would be exp(ln #labellings − E[F]), with #labellings = (N!)^{10α−2} up to
+   renaming the rows of each bar: about e^{+3.5·10³} at q = 2, e^{+4.8·10⁴} at q = 3, e^{−4.1·10⁵} at q = 4,
+   e^{−5.4·10⁶} at q = 5, e^{−6.4·10⁸} at q = 7. (The table audit used the exponent 10α − 1; the difference, ln N!,
+   changes no sign.) The gap: far pairs are strongly dependent, and the estimate says nothing about structured
    labellings.
 
 2. **Labellings per (hub class, copy).** If the two classes of one bar meeting a copy may use different bijections, the
    model of §5.1 does not apply, even when every transfer is a collineation. The counting method fails there for every
    q: every copy met by X shares a class with c′, so there are at least 2α ≥ q + 2 distinct radius-4 centres (at q = 8:
    10 radius-4 and 318 radius-2 centres, bound −24,448; at q = 13: 16 and 864, bound −203,138; Computer-checked once,
-   `logs/perclass.txt` of the referee). Open.
+   `research/referee/omega-repair/logs/perclass.txt`). Open.
 
 3. **Other wirings.** *Heuristic H2.* Theorems 3 and 4 use the starved pairs of Gómez's wiring, where only α ≈ q/2 copies
    reach c′ in one pass. A wiring giving every pair about q + 3 one-pass routes is not excluded by size. A near-exact
@@ -756,7 +783,8 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
    The gaps: "near-exact cover ⇒ line structure" and "line structure for all t ⇒ one root group" are not proved.
 
 4. **q ≤ 5 in the geometric class** (not table values). Neither the count of Theorem 3 nor the q = 7 argument works:
-   the general-position bound is −357 at q = 4 and −1,024 at q = 5, and Lemma 5.10 needs 3 | q − 1, false at q = 5. There
+   the general-position count of Lemma 5.9 gives −1,024 at q = 5 (and −357 if the same formula is applied at q = 4,
+   where Lemma 5.7 is not available because b is degenerate), and Lemma 5.10 needs 3 | q − 1, false at q = 5. There
    are only the measurements of C6. The subclass a_c = b_c (Lemma 5.2) is settled for every q.
 
 5. **The relabelled graphs at q = 2, 3.** *Computer-checked C7.* With arbitrary per-copy labellings found by annealing
@@ -782,8 +810,9 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
 | (15,8) | 14,172,480 = \|ΩH₁₁\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, by hand) | open |
 | (16,8) | 36,201,060 = \|ΩH₁₃\| | ≥ 9; ecc. 9 computed | ≥ 9 (Thm 3, by hand) | open |
 
-"Thesis labelling": diameter ≥ 9 by Corollaries 3.1 and 4.1 (every reading); "= 9 computed" and "ecc. 9 computed" refer
-to C2.
+"Thesis labelling": diameter ≥ 9 by Corollaries 3.1 and 4.1 (every reading); "= 9 computed" (for the patterns and
+pairings of C2(a)) and "ecc. 9 computed" refer to C2. "Geometric relabellings": in reading 1 with both block types there
+are none unless q = 9 (Corollary 5.11).
 
 **What can be claimed** (the two referees' recommended wording, combined):
 
@@ -804,6 +833,11 @@ to C2.
 > least q⁵ − αq⁴ − m₂q² vertices of c′ at distance ≥ 9 from every hub of X (3,712, 3,726, 26,862 and 84,162 at
 > q = 8, 9, 11, 13). For q = 7 the proof adds Bonferroni inequalities and a character-sum bound on how many points a
 > fixed-point-free element of G₂(7) moves to perpendicular points.
+
+Two precisions to this wording. The numbers 3,712, 3,726, 26,862, 84,162 use starved pairs of either hub class
+(Corollary 5.5 and the line-bar remark after Lemma 5.4). For q = 7, 8, 11, 13 the phrase "every reading" covers reading 1
+with both block types only vacuously, since no labelling of that reading is geometric there (Corollary 5.11); in that
+reading the thesis labelling is covered by Theorem 2.
 
 **What cannot be claimed.**
 
@@ -844,10 +878,11 @@ All on github.com/dogaozden/degree-diameter, by branch.
   branch claude/leanmaxx-projection-r0kehl (50cc900); verification `research/lean-maxx/VERIFY.md`, branch
   claude/leanmaxx-verify-9ummw2 (2ff0c8e).
 - **This note**: `research/theorems/OMEGA_NOTE.md`, `research/theorems/omega_note/` (`OMEGA_NOTE.tex`,
-  `OMEGA_NOTE.pdf`, `starved.py`, `types43.py`, `typetable.py`, logs), branch claude/omega-d8-note-xrbqux. The checks
+  `OMEGA_NOTE.pdf`, `starved.py`, `c4_families.py`, `types43.py`, `typetable.py`, `lem16.py`, logs), branch claude/omega-d8-note-xrbqux. The checks
   re-run for this note: the Theorem 2 constants (`thm2_bound.py` of the referee), the route words for α = 5, 6, 7, 8
-  (`starved.py`, using the referee's `myroutes.py`), the q = 7 type table (`types43.py`, written from scratch), and
-  Lemmas 1.5, 1.6 on H(3), H(4) (`lem16.py`).
+  (`starved.py`, using the referee's `myroutes.py`, and `c4_families.py`, written by an independent reviewer of this
+  note), the q = 7 type table (`types43.py`, written from scratch), and Lemmas 1.5, 1.6 on H(3), H(4) (`lem16.py`). An
+  independent reviewer session read the draft against all sources; its corrections are applied.
 
 ## References
 
