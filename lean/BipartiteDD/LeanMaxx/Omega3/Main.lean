@@ -114,11 +114,12 @@ theorem nfmk_mem (lam : Copy α → autSub B κ) (bar : Bool) (c : Copy α) :
 theorem nfmk_col (lam : Copy α → autSub B κ) (bar : Bool) (c : Copy α) (u : β) :
     κ (nfmk (fun c => (lam c : Equiv.Perm β)) bar c u) = κ u := (nfmk_mem lam bar c).2 u
 
-/-- **Theorem 3.3 (normal form).** For `q ≥ 8`, every block pattern and every twisted labelling
-`lam : Copy α → Aut(B)`, `ΩH_q` has diameter at least `9`. -/
-theorem omega3_ediam [Nonempty β] (H : Hex B κ q) (hq : 8 ≤ q) {α : ℕ} (hα : 0 < α) (h2 : 2 * α ≤ q + 3)
+/-- **Theorem 3.3 (normal form), far pair.** For `q ≥ 8`, every block pattern and every twisted labelling
+`lam : Copy α → Aut(B)`, `ΩH_q` has two vertices (a hub and a vertex of a copy it misses) at distance
+at least `9`. -/
+theorem omega3_far [Nonempty β] (H : Hex B κ q) (hq : 8 ≤ q) {α : ℕ} (hα : 0 < α) (h2 : 2 * α ≤ q + 3)
     (typ : Fin α → Bool) (ε₀ : ZMod 2) (lam : Copy α → autSub B κ) :
-    (9 : ℕ∞) ≤ (omega B κ typ ε₀ (nfmk (fun c => (lam c : Equiv.Perm β)))).ediam := by
+    ∃ x y, (9 : ℕ∞) ≤ (omega B κ typ ε₀ (nfmk (fun c => (lam c : Equiv.Perm β)))).edist x y := by
   set mk := nfmk (fun c => (lam c : Equiv.Perm β)) with hmk
   obtain ⟨t, ht⟩ := exists_row H ε₀
   obtain ⟨hc'not, hnum⟩ := star_exists typ hα hq h2
@@ -165,6 +166,14 @@ theorem omega3_ediam [Nonempty β] (H : Hex B κ q) (hq : 8 ≤ q) {α : ℕ} (h
     unfold SimpleGraph.edist
     refine le_iInf fun W => ?_
     exact_mod_cast key W
-  exact hedist.trans SimpleGraph.edist_le_ediam
+  exact ⟨_, _, hedist⟩
+
+/-- **Theorem 3.3 (normal form).** For `q ≥ 8`, every block pattern and every twisted labelling
+`lam : Copy α → Aut(B)`, `ΩH_q` has diameter at least `9`. -/
+theorem omega3_ediam [Nonempty β] (H : Hex B κ q) (hq : 8 ≤ q) {α : ℕ} (hα : 0 < α) (h2 : 2 * α ≤ q + 3)
+    (typ : Fin α → Bool) (ε₀ : ZMod 2) (lam : Copy α → autSub B κ) :
+    (9 : ℕ∞) ≤ (omega B κ typ ε₀ (nfmk (fun c => (lam c : Equiv.Perm β)))).ediam := by
+  obtain ⟨x, y, h⟩ := omega3_far H hq hα h2 typ ε₀ lam
+  exact h.trans SimpleGraph.edist_le_ediam
 
 end BipartiteDD.LeanMaxx.Omega3
