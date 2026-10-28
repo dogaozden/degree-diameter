@@ -5,7 +5,12 @@
    h^j b_O gets colour j + s_O (mod k). Cost = sum over orbit representatives x of the number of colours missing
    from the 2-ball B2(x) (it is the same for every element of the orbit). Tabu search on the s_O: each step moves the
    orbit/value pair with the best cost change among the orbits that touch an incomplete ball, with a tabu tenure.
-   Usage: translocal HEXBIN PERM lines|points SEED SECONDS OUT
+   Usage: translocal HEXBIN PERM lines|points SEED SECONDS OUT [A] [fixed]
+   fixed: the number of orbits in each block is kept equal (orbit o starts in block o mod A; blocks change only by
+   swapping the blocks of two orbits), so every colour class has exactly (orbits)/A elements; colourings of points
+   and lines found this way have equal class sizes (needed by the lift).
+   With A > 1 blocks: k = A*d colours (d = |T|); orbit O gets a block a_O and a shift s_O, h^j b_O has colour
+   a_O*d + (j + s_O mod d), so T permutes the colours of each block cyclically (classes are T-translates within a block).
    Writes OUT (int32 colour per element) when cost 0 is reached; prints the best cost. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +23,8 @@ static int *LP, *PL, *perm, *orb, *idx, *rep;
 static int *ball;               /* ball[o*B + t]: elements of the 2-ball of rep[o] */
 static int *occ_start, *occ_b, *occ_j;   /* occurrences of orbit O in rep balls: (ball, idx of the element) */
 static int *cnt;                /* cnt[b*K + c] */
-static int *s;                  /* s[O] */
+static int *s;                  /* s[O] = a_O*D + shift */
+static int D, A;               /* group order, blocks; K = A*D colours */
 static int *miss;               /* miss[b] = number of colours with cnt 0 */
 static long cost;
 static uint64_t rs = 88172645463325252ULL;
@@ -34,25 +40,25 @@ static void build_ball(int x, int lines, int *out) {
     }
 }
 
+#define COLOR(j, v) (((v) / D) * D + ((j) + (v)) % D)
 static long delta_of(int o, int v) {   /* cost change of setting s[o] = v */
-    int d = (v - s[o] + K) % K; if (!d) return 0;
+    if (v == s[o]) return 0;
     long dc = 0;
     /* apply then revert */
     for (int t = occ_start[o]; t < occ_start[o + 1]; t++) {
-        int b = occ_b[t], c0 = (occ_j[t] + s[o]) % K, c1 = (c0 + d) % K;
+        int b = occ_b[t], c0 = COLOR(occ_j[t], s[o]), c1 = COLOR(occ_j[t], v);
         if (--cnt[b * K + c0] == 0) dc++;
         if (cnt[b * K + c1]++ == 0) dc--;
     }
     for (int t = occ_start[o]; t < occ_start[o + 1]; t++) {
-        int b = occ_b[t], c0 = (occ_j[t] + s[o]) % K, c1 = (c0 + d) % K;
+        int b = occ_b[t], c0 = COLOR(occ_j[t], s[o]), c1 = COLOR(occ_j[t], v);
         cnt[b * K + c1]--; cnt[b * K + c0]++;
     }
     return dc;
 }
 static void apply(int o, int v) {
-    int d = (v - s[o] + K) % K;
     for (int t = occ_start[o]; t < occ_start[o + 1]; t++) {
-        int b = occ_b[t], c0 = (occ_j[t] + s[o]) % K, c1 = (c0 + d) % K;
+        int b = occ_b[t], c0 = COLOR(occ_j[t], s[o]), c1 = COLOR(occ_j[t], v);
         if (--cnt[b * K + c0] == 0) { miss[b]++; cost++; }
         if (cnt[b * K + c1]++ == 0) { miss[b]--; cost--; }
     }
@@ -76,6 +82,8 @@ int main(int argc, char **argv) {
         int x = x0, j = 0; while (orb[x] < 0) { orb[x] = NO; idx[x] = j++; x = perm[x]; }
         rep[NO++] = x0; K = j;
     }
+    D = K; A = argc > 7 ? atoi(argv[7]) : 1; K = A * D; int fixedb = argc > 8 && strcmp(argv[8], "fixed") == 0;
+
     ball = malloc(sizeof(int) * (size_t)NO * B);
     for (int o = 0; o < NO; o++) build_ball(rep[o], lines, ball + (size_t)o * B);
     occ_start = calloc(NO + 1, sizeof(int));
@@ -84,8 +92,12 @@ int main(int argc, char **argv) {
     occ_b = malloc(sizeof(int) * (size_t)NO * B); occ_j = malloc(sizeof(int) * (size_t)NO * B); int *fill = calloc(NO, sizeof(int));
     for (int b = 0; b < NO; b++) for (int t = 0; t < B; t++) { int x = ball[(size_t)b * B + t], o = orb[x]; int p = occ_start[o] + fill[o]++; occ_b[p] = b; occ_j[p] = idx[x]; }
     cnt = calloc((size_t)NO * K, sizeof(int)); miss = calloc(NO, sizeof(int)); s = calloc(NO, sizeof(int));
-    for (int o = 0; o < NO; o++) s[o] = rnd() % K;
-    for (int o = 0; o < NO; o++) for (int t = occ_start[o]; t < occ_start[o + 1]; t++) cnt[occ_b[t] * K + (occ_j[t] + s[o]) % K]++;
+    for (int o = 0; o < NO; o++) s[o] = fixedb ? (o % A) * D + rnd() % D : rnd() % K;
+    int *blist = malloc(sizeof(int) * NO), *bpos = malloc(sizeof(int) * NO), *bst = calloc(A + 1, sizeof(int));
+    for (int o = 0; o < NO; o++) bst[o % A + 1]++;
+    for (int a = 0; a < A; a++) bst[a + 1] += bst[a];
+    if (fixedb) { int *fl = calloc(A, sizeof(int)); for (int o = 0; o < NO; o++) { int a = s[o] / D; bpos[o] = bst[a] + fl[a]++; blist[bpos[o]] = o; } }
+    for (int o = 0; o < NO; o++) for (int t = occ_start[o]; t < occ_start[o + 1]; t++) cnt[occ_b[t] * K + COLOR(occ_j[t], s[o])]++;
     cost = 0; for (int b = 0; b < NO; b++) { for (int c = 0; c < K; c++) if (!cnt[b * K + c]) miss[b]++; cost += miss[b]; }
     fprintf(stderr, "q=%d %s k=%d orbits=%d ball=%d initial cost %ld\n", q, argv[3], K, NO, B, cost);
     long best = cost; int *bests = malloc(sizeof(int) * NO); memcpy(bests, s, sizeof(int) * NO);
@@ -101,27 +113,43 @@ int main(int argc, char **argv) {
         int b; do b = (int)(rnd() % NO); while (!miss[b]);
         int nm = 0; for (int c = 0; c < K; c++) if (!cnt[b * K + c]) missl[nm++] = c;
         int c = missl[rnd() % nm];
-        long bd = 1L << 40; int bo = -1, bv = -1, ties = 0;
+        long bd = 1L << 40; int bo = -1, bv = -1, bo2 = -1, ties = 0;
         int noise = (rnd() % 100) < 3;
         for (int t = 0; t < B; t++) {
-            int x = ball[(size_t)b * B + t], o = orb[x], v = ((c - idx[x]) % K + K) % K;
+            int x = ball[(size_t)b * B + t], o = orb[x], v = (c / D) * D + (((c % D) - idx[x]) % D + D) % D;
             if (v == s[o]) continue;
-            long d = delta_of(o, v);
-            if (noise) { if (rnd() % (++ties) == 0) { bo = o; bv = v; bd = d; } continue; }
+            long d; int o2 = -1;
+            if (fixedb && v / D != s[o] / D) {          /* swap blocks with a random orbit of block v/D */
+                { int a2 = v / D; o2 = blist[bst[a2] + rnd() % (bst[a2 + 1] - bst[a2])]; } if (o2 == o) continue;
+                int so = s[o], s2 = s[o2]; long c0 = cost;
+                apply(o, v); apply(o2, (so / D) * D + s2 % D); d = cost - c0; apply(o2, s2); apply(o, so);
+            } else d = delta_of(o, v);
+            if (noise) { if (rnd() % (++ties) == 0) { bo = o; bv = v; bd = d; bo2 = o2; } continue; }
             if (tabu[(size_t)o * K + v] > it && cost + d >= best) continue;
-            if (d < bd) { bd = d; bo = o; bv = v; ties = 1; }
-            else if (d == bd && rnd() % (++ties) == 0) { bo = o; bv = v; }
+            if (d < bd) { bd = d; bo = o; bv = v; bo2 = o2; ties = 1; }
+            else if (d == bd && rnd() % (++ties) == 0) { bo = o; bv = v; bo2 = o2; }
         }
         if (bo < 0) continue;
         int old = s[bo];
-        apply(bo, bv);
+        if (bo2 >= 0) { int s2 = s[bo2]; apply(bo, bv); apply(bo2, (old / D) * D + s2 % D);
+            int p1 = bpos[bo], p2 = bpos[bo2]; blist[p1] = bo2; blist[p2] = bo; bpos[bo] = p2; bpos[bo2] = p1; }
+        else apply(bo, bv);
         tabu[(size_t)bo * K + old] = it + 5 + rnd() % 10;
         if (cost < best) { best = cost; memcpy(bests, s, sizeof(int) * NO); if (best < 50 || (it & 1023) == 0) fprintf(stderr, "it %ld cost %ld (%.0fs)\n", it, cost, (double)(clock() - t0) / CLOCKS_PER_SEC); }
     }
     printf("q=%d %s k=%d best cost %ld after %ld iterations\n", q, argv[3], K, best, it);
+    {   /* recompute the cost of the best state from scratch (bookkeeping check) */
+        memset(cnt, 0, sizeof(int) * (size_t)NO * K); long cc = 0;
+        for (int o = 0; o < NO; o++) for (int t = occ_start[o]; t < occ_start[o + 1]; t++) cnt[occ_b[t] * K + COLOR(occ_j[t], bests[o])]++;
+        for (int b = 0; b < NO; b++) for (int c = 0; c < K; c++) if (!cnt[b * K + c]) cc++;
+        int *bs = calloc(A, sizeof(int)); for (int o = 0; o < NO; o++) bs[bests[o] / D]++;
+        int mn = NO, mx = 0; for (int a = 0; a < A; a++) { if (bs[a] < mn) mn = bs[a]; if (bs[a] > mx) mx = bs[a]; }
+        printf("recomputed cost %ld; orbits per block min %d max %d\n", cc, mn, mx);
+        if (cc != best) { fprintf(stderr, "BOOKKEEPING ERROR\n"); return 1; }
+    }
     if (best == 0) {
         int *col = malloc(sizeof(int) * N);
-        for (int x = 0; x < N; x++) col[x] = (idx[x] + bests[orb[x]]) % K;
+        for (int x = 0; x < N; x++) col[x] = COLOR(idx[x], bests[orb[x]]);
         f = fopen(argv[6], "wb"); fwrite(col, 4, N, f); fclose(f);
     }
     return 0;
