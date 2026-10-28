@@ -6,15 +6,18 @@ import BipartiteDD.LeanMaxx.Omega45.Exact
 
 `Omega3/Main.lean` covers the vertices of a missed copy `c'` that are within distance `7` of the hub `(0, t)`
 by the balls of `covSet`: the radius-4 balls around the centres `cen lam t c₁ c'`, `c₁ ∈ F0 typ 0 c'`
-(`rad4`), and `m2 typ 0 c'` balls of radius `2`. Here the radius-4 part is kept as a set, so that the
-overlaps of the balls (Bonferroni, Lemma 4.3 of the note) and coincidences of centres (Lemma 4.2) can be
-used instead of the crude sum.
+(`rad4`), and radius-2 balls around the centres of `F1`, `F2`, `F3 \ F0`. Here the radius-4 part is kept as a
+set, so that the overlaps of the balls (Bonferroni, Lemma 4.3 of the note) and coincidences of centres
+(Lemma 4.2) can be used instead of the crude sum, and the radius-2 balls are counted as *distinct words*
+`λ_a λ_b⁻¹ (t)` (`D2`) rather than by the index sets (`m2` of `Omega3/Wiring.lean`).
 
-* `far_of_rad4`: if `|rad4| + m2 q² < q⁵` then `ΩH_q` has a pair of vertices (the hub `(0, t)` and a vertex of
-  `c'`) at distance `≥ 9`. This is the argument of `omega3_far` with the counting hypothesis replaced by one
+* `covSet_subset`: `covSet ⊆ rad4 ∪ rad2`, `rad2` the union of the radius-2 balls around the words of `D2`
+  (words with `a = b` have centre `t` and an empty ball; a word `(c', c₁)` with `c₁ ∈ F0` is a radius-4 centre).
+* `far_of_rad4`: if `|rad4| + |D2| q² < q⁵` then `ΩH_q` has a pair of vertices (the hub `(0, t)` and a vertex
+  of `c'`) at distance `≥ 9`. This is the argument of `omega3_far` with the counting hypothesis replaced by one
   about the set `rad4`.
 * `far_of_centres` (Lemma 4.2 in general form): if the radius-4 centres other than `t` are at most `n`
-  points and `n q⁴ + m q² < q⁵` for `m2 ≤ m`, then there is a far pair. Uses the exact constant
+  points and `n q⁴ + m q² < q⁵` for `|D2| ≤ m`, then there is a far pair. Uses the exact constant
   of `Exact.lean`.
 -/
 
