@@ -6,11 +6,11 @@ to continue.
 ## What is proved
 
 Every row of the README table without a Lean ✓ (49 of its 74 rows on master, 2026-10-27) is kernel-checked at the
-README's value, and so are 16 records outside the table (research/RESULTS.md, research/frontier/beyond). Six more
+README's value, and so are 17 records outside the table (research/RESULTS.md, research/frontier/beyond). Six more
 rows of `STATUS.md` are other values of README cells, also checked: larger graphs from research/frontier/sols or
 RESULTS.md ((5,9) 29,756, (7,10) 2,298,240, (8,10) 8,043,840, (9,8) 546,720) and values since raised ((8,9)
-1,326,960, (13,5) 11,486). That makes 71 rows, all done. 37 have their Lean files committed
-(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`); 34 large cells have generated files that are
+1,326,960, (13,5) 11,486). That makes 72 rows, all done. 37 have their Lean files committed
+(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`); 35 large cells have generated files that are
 not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every theorem is
 `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Eight methods:
 
