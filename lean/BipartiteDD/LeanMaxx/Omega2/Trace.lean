@@ -80,6 +80,23 @@ theorem Tr.col {κ : β → ZMod 2} (hκ : ∀ u v, B.Adj u v → κ u ≠ κ v)
 
 end Tr
 
+section Parity
+
+variable {V : Type*} {G : SimpleGraph V} {K : V → ZMod 2}
+
+/-- Colour along a walk in any properly 2-coloured graph. -/
+theorem walk_col (hK : ∀ u v, G.Adj u v → K u ≠ K v) {a b : V} (p : G.Walk a b) :
+    K b = K a + (p.length : ZMod 2) := by
+  induction p with
+  | nil => simp
+  | @cons x y z h p ih =>
+    have : K y = K x + 1 := by
+      have hne := hK x y h
+      revert hne; generalize K x = s; generalize K y = t; revert s t; decide
+    rw [ih, this, Walk.length_cons]; push_cast; ring
+
+end Parity
+
 section Trace
 
 variable {β V ι : Type*} {B : SimpleGraph β} {π : β → β} {G : SimpleGraph V} {f : V → β}
