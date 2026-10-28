@@ -32,6 +32,9 @@ Written from the paper's own definitions (not from the lab's builders), to catch
   doubling of Theorem 5.3 with m = 2: q = 3 gives order 1020, maximum degree 5, diameter 6; q = 5 (c = 2, (c0, c1) = (1, 0))
   gives |W| = 600, exact, and the (7,6) graph: order 9592, maximum degree 7, diameter 6 (log `checks.log`).
 
+- `app359.py`: Appendix A parsed from the paper's verbatim block: all 21 rows are lines of Q(4,5), exactly the four
+  stated ovoid points lie on two rows, the starred copy is on the second row; the graph has 359 vertices, maximum degree 7,
+  diameter 4.
 - `cor_r.py`: Corollary 6.23 (the one statement not taken from a refereed note) at q = 5, r = 2: five levels of H(5),
   R the 26 points of an elliptic quadric section, R* 26 lines of a Hermitian spread, sigma built as in Proposition 6.17
   ((H1)-(H3) re-checked), 7 hubs per colour on the Fano plane. `apsp.c` (all pairs): 39,074 vertices, bipartite, maximum
