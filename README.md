@@ -1,9 +1,15 @@
 # degree-diameter
 
-New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **73 of the 83 cells** that
+New records for the **bipartite degree–diameter problem**: our graphs beat the published table in **74 of the 83 cells** that
 are not already known to be optimal (Δ ≤ 16, D ≤ 10). They were found by Claude Code agents, using evolutionary search,
 group-theoretic computer search, finite geometry, and new constructions. Every graph is checked independently, and 28 of them
 are also proved in Lean 4 (most of the others are too large for kernel-checked certificates; a few proofs are in progress).
+
+**Notes for readers** (drafts, Oct 2026; full proofs and coordinates, with what is proved, computed and Lean-checked):
+[polished results, D = 3–6](papers/Ozden_polished_results.pdf) ·
+[diameter 7 from the split Cayley hexagon](papers/Ozden_D7_hexagon.pdf) ·
+[Haar graphs, D = 8–10](papers/Ozden_Haar_D8-10.pdf) ·
+[Gómez's ΩH_q and the D = 8 entries (1 page)](papers/Ozden_OmegaH_D8_note.pdf).
 
 **See it:** [dogaozden.com/degree-diameter](https://dogaozden.com/degree-diameter/) shows the first eight records in 3D and
 how the search found them (that page predates most of the results below).
