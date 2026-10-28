@@ -67,8 +67,9 @@ def pg2(q):
     return Plane(fr.points, fr.lines, inc)
 
 
-def nearfield_plane9():
-    """The plane of order 9 over the Dickson nearfield (x o m = xm if m is a square, x^3 m otherwise)."""
+def nearfield_plane9(opposite=False):
+    """The plane of order 9 over the Dickson nearfield (x o m = xm if m is a square, x^3 m otherwise);
+    with opposite=True the lines are y = m o x + b instead of y = x o m + b."""
     q = 9
     F = coords.GF(q)
     squares = {F.mul(x, x) for x in range(1, q)}
@@ -84,7 +85,7 @@ def nearfield_plane9():
             L = ('ln', m, b)
             lines.append(L)
             for x in range(q):
-                inc.add((('a', x, F.add(nf(x, m), b)), L))
+                inc.add((('a', x, F.add(nf(m, x) if opposite else nf(x, m), b)), L))
             inc.add((('inf', m), L))
     for c in range(q):
         L = ('vert', c)
@@ -571,7 +572,7 @@ def main():
     print('coordinate-free builds agree with coords.by_rules for q = 4, 5, 7, 8, 9, all (a, c)')
 
     # 2. all combinatorial claims, q = 4, 5, 7 (several frames each), and q = 3 for AL
-    for q in (3, 4, 5, 7):
+    for q in (3, 4, 5, 7, 8, 9):
         Pi = pg2(q)
         frames = 0
         for trial in range(6 if q > 3 else 3):
@@ -586,16 +587,16 @@ def main():
             frames += 1
         print(f'q = {q}: {frames} random frames, all claims checked (AL and four hats)')
 
-    # 3. a non-Desarguesian plane of order 9
-    Pi = nearfield_plane9()
-    for trial in range(4):
+    # 3. non-Desarguesian planes of order 9
+    for Pi in (nearfield_plane9(), nearfield_plane9(opposite=True)):
+      for trial in range(4):
         ell = random.choice(Pi.lines)
         A = random.choice([p for p in Pi.points if p not in Pi.pts_on[ell]])
         on = random.sample(sorted(Pi.pts_on[ell], key=str), 4)
         check_structure(Pi, A, ell, {0: on[0], 1: on[1], 'a': on[2]}, 'AL', full_diameter=(trial == 0))
         check_structure(Pi, A, ell, {0: on[0], 1: on[1], 'a': on[2], 'c': on[3]}, '4', full_diameter=(trial == 0))
         check_duality(Pi, A, ell, {0: on[0], 1: on[1], 'a': on[2], 'c': on[3]})
-    print('nearfield plane of order 9 (non-Desarguesian): 4 random frames, all claims checked')
+    print('the two nearfield planes of order 9 (non-Desarguesian): 4 random frames each, all claims checked')
 
     # 4. the gadget tables printed in the note (q = 5)
     Pi = pg2(5)
