@@ -222,6 +222,15 @@ Haar graphs at $(9,8)$ 546\,720, $(5,9)$ 29\,756, $(7,10)$ 2\,298\,240, $(8,10)$
 should include them (they would need write-ups and referee reports first), mention them in a remark, or leave them for
 a second paper.}
 
+\todo{Correspondence with the notes sent earlier. Polished note: fourth hat = Theorem~\ref{thm:hat4}; Theorem B =
+Theorem~\ref{thm:B}; exact weights = Corollary~\ref{cor:exact}; Theorem A = Theorem~\ref{thm:A}, Corollary A1 =
+Corollary~\ref{cor:A1}; Proposition C = Proposition~\ref{prop:C}; Corollary C1 = Corollary~\ref{cor:C1}; Corollary B2 =
+Corollary~\ref{cor:B2}; Theorem 6.3 = Theorem~\ref{thm:whiskerdoubling}; Theorem 6.5 = Theorem~\ref{thm:whiskers}; Theorem D
+= Theorem~\ref{thm:D}; Theorem R = Theorem~\ref{thm:R}; Haar lemma = Theorem~\ref{thm:covering} at $D=5$. Diameter-7 note:
+Theorem A = Theorem~\ref{thm:levelgraph}; Theorem 3.4 = Theorem~\ref{thm:assembly}; Theorem B = Theorem~\ref{thm:autotrans};
+Theorem C = Theorem~\ref{thm:localdual}. $\Om_q$ note: Theorems 1--4 = Theorems~\ref{thm:proj}, \ref{thm:twolabels},
+\ref{thm:geomq8}, \ref{thm:geomq7}. Haar note: Theorem 2.4 = Theorem~\ref{thm:covering}.}
+
 \subsection*{Organisation}
 Section~\ref{sec:prelim} fixes notation, coordinates for the classical polygons, and Delorme's doubling with levels,
 with a proof and the hat lemma. Sections~\ref{sec:d3}--\ref{sec:d7} treat diameters 3, 4, 6 and 7, Section~\ref{sec:d8}
@@ -786,7 +795,7 @@ In $Q(4,5)$ take one clone of each point of an ovoid $\cO$ that is an elliptic q
 $2\cdot6\cdot26+26+21=359$ elements. Appendix~\ref{app:359} lists the 21 lines and the stand-ins in coordinates, so that
 the conditions of Theorem~\ref{thm:B}(b) can be checked by hand. Every ovoid of $Q(4,p)$, $p$ prime, is an elliptic
 quadric \cite{BGS06}, so the choice of ovoid does not matter. By Remark~\ref{rem:shadowlimit} at most $q^2-q+2=22$ shadow
-lines are possible in this setting; 21 is the maximum for this family (an integer program, solved to optimality).
+lines are possible in this setting; 21 is the maximum for this family (computer-checked, by integer programming).
 This example is not a member of a proved infinite family. The best regular graph we know at $(7,4)$ has 350 vertices
 (Corollary~\ref{cor:A1} at $q=5$).
 \end{example}
@@ -2642,10 +2651,9 @@ Theorem~\ref{thm:twolabels} only.
 \begin{enumerate}
 \item \emph{Arbitrary labellings} ($q\ge4$). Whether some non-geometric labelling of G\'omez's wiring gives diameter 8 at
   $q=7,8,9,11,13$ is open. Counting does not exclude it. In every graph where this was checked by computer, all pairs at
-  distance more than 8 were pairs (hub, vertex of a copy the hub misses). With labellings found by computer, $\Om_2$ (1890
-  vertices) and $\Om_3$ (14\,560 vertices, 6-regular) have diameter 8 (computer-checked); these are far below the table at
-  $(5,8)$ and $(6,8)$, and we know no description of their labellings. No labelling with diameter 8 was found at $q=4$ or
-  $q=5$.
+  distance more than 8 were pairs (hub, vertex of a copy the hub misses). For suitable labellings (given as data), $\Om_2$ (1890 vertices)
+  and $\Om_3$ (14\,560 vertices, 6-regular) have diameter 8 (computer-checked); these are far below the table at $(5,8)$
+  and $(6,8)$, and we know no description of their labellings. We know no labelling with diameter 8 at $q=4$ or $q=5$.
 \item \emph{Labellings per (hub class, copy).} If the two classes of one bar meeting a copy may use different bijections, the
   model of Section~\ref{ssec:relabel} does not apply, even when every transfer is a collineation, and the counting method fails
   for every $q$.
