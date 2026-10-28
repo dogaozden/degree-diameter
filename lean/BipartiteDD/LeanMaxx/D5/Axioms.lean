@@ -1,6 +1,7 @@
 import BipartiteDD.LeanMaxx.D5.Assemble
 import BipartiteDD.LeanMaxx.D5.ThmE
 import BipartiteDD.LeanMaxx.D5.ThmB
+import BipartiteDD.LeanMaxx.D5.Family
 
 open BipartiteDD.LeanMaxx.D5
 
@@ -14,3 +15,6 @@ open BipartiteDD.LeanMaxx.D5
 #print axioms Hyp.repaired_iff_E
 #print axioms Hyp.repaired_iff_partial
 #print axioms BipartiteDD.GQst.strong
+#print axioms Hyp.repaired_of_partial
+#print axioms layout7
+#print axioms BipartiteDD.SingerC.Setting.family_odd
