@@ -5,14 +5,14 @@ to continue.
 
 ## What is proved
 
-63 records without a Lean ✓ are kernel-checked (table in `STATUS.md`, 67 rows marked done; four of those records were
-later raised and the new values are checked too). Seven of them, (5,8) 9,760, (5,9) 29,756, (9,8) 546,720, (8,9)
-1,341,600, (11,10) 148,729,680, (15,10) 2,467,618,800 and (16,10) 4,220,872,800, are sols added to
-`research/frontier/sols` during this session, and 14 are records outside the README table (research/RESULTS.md).
-35 have their Lean files committed (`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`); 26 large
-cells have generated files that are not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with
-`manifests/`). Every theorem is `∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the
-standard axioms. Six methods:
+Every row of the README table without a Lean ✓ (49 of its 74 rows on master, 2026-10-27) is kernel-checked at the
+README's value, and so are 16 records outside the table (research/RESULTS.md, research/frontier/beyond). Six more
+rows of `STATUS.md` are other values of README cells, also checked: larger graphs from research/frontier/sols or
+RESULTS.md ((5,9) 29,756, (7,10) 2,298,240, (8,10) 8,043,840, (9,8) 546,720) and values since raised ((8,9)
+1,326,960, (13,5) 11,486). That makes 71 rows, all done. 37 have their Lean files committed
+(`lean/BipartiteDD/LeanAll/Axioms.lean`, output in `Axioms.out.txt`); 34 large cells have generated files that are
+not committed (`axioms_big.txt`; regenerate with `cells.txt`, compare with `manifests/`). Every theorem is
+`∃ H : SimpleGraph (Fin N), BipartiteDD.IsBipartiteDegDiam H d D` with only the standard axioms. Eight methods:
 
 1. **D = 6 cells**: instances of the Theorem D family (`HexagonD.theoremD`), `LeanAll/D6.lean`.
 2. **Graphs up to about 35,000 vertices**: orbit BFS in the kernel (`Orbit.lean`, `Orbit2.lean`, generators
@@ -101,23 +101,34 @@ the queue log, and by `bigcell.py`), with `cells.txt` and `manifests/` to regene
 
 ## What is left
 
-- Hexagon D = 7: (11,7), (15,7) and (16,7) are done; (12,7) is building (`SpreadD12D7`, it imports the tables of
-  `SpreadD11D7`, so rebuild SpreadD11D7 from `cells.txt` first if its oleans are gone). Its AE modules need about
-  6.5 GB each: build them one at a time.
+- Nothing in the README table: all 49 rows without ✓ are checked. A record added to README.md or RESULTS.md later
+  needs a cell: pick the method by construction (list above), copy the nearest `cells.txt` line, build with
+  `topobuild.py` (orbit, hexagon, typed and relaxed cells) or `poolq.py`/`bigcell.py` (Haar cells), `#print axioms`
+  the theorem and add a row to `STATUS.md`.
 - Memory: the cgroup limit is about 14.3 GB including page cache, and generated cells map their data oleans (3 GB for
   SpreadD11D7). The OOM killer then kills the largest lean process (rc=-9 in the topobuild log). Seen here: GLn of
   SpreadD11D7 (3 GB anonymous, 6 GB mapped) next to two other jobs; TypD16D7's HLoc modules with 4,096 hub vertices
-  per theorem (fixed with `--hchunk 1024`); RelaxD15D7's Cg modules (4 GB). Run one heavy module at a time.
-- The 18 generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
-  one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build
-  `Defs`, all `Bat*`, the `Cover*` files and `Record` (e.g. with `poolq.py`, or `bigcell.py` for the largest), and
-  `#print axioms` the theorem. Budget: with `gen_haarsl.py` about 10,000 slots per second per core ((14,10) took about
-  5 hours on 4 cores, 5.3 GB of oleans at once); with `gen_haarsl2.py`, (15,10) took 6.4 hours and (16,10) 13.2
-  hours (12 GB of oleans at once).
+  per theorem (fixed with `gen_typedcell.py --hchunk 1024`); RelaxD15D7's Cg modules (4 GB); the step modules of
+  orbit cells above about 40,000 vertices (fixed with `gen_orbit2.py --staged --schunk 16384`, which splits each
+  step module of a stage into parts of 16,384 vertices; D20D5, D18D5 and D19D5 use it). Run one heavy module at a
+  time: `ONLY='P_' topobuild.py DIR 3` builds the light data modules first, then `SKIP_BUILT=1 topobuild.py DIR 1`
+  the rest. Generating a large orbit cell (`gen_orbit2.py` on 50,000 vertices) needs several GB too: do not run it
+  next to a Lean build.
+- The generated cells listed in `axioms_big.txt` were built here and their files then deleted (disk). To re-check
+  one, run its `cells.txt` command from `lean/`, compare with `manifests/<Cell>.sha256` (`sha256sum -c`), build it
+  (`topobuild.py`, or for Haar cells `Defs`, all `Bat*`, the `Cover*` files and `Record`, e.g. with `poolq.py`, or
+  `bigcell.py` for the largest), and `#print axioms` the theorem. Budget: with `gen_haarsl.py` about 10,000 slots per
+  second per core ((14,10) took about 5 hours on 4 cores, 5.3 GB of oleans at once); with `gen_haarsl2.py`, (15,10)
+  took 6.4 hours and (16,10) 13.2 hours (12 GB of oleans at once). Staged orbit cells cost most in their middle
+  stages (D19D5: about 100 s per step module in the first and last stages, up to 1,800 s in the third).
 - A cover module that imports more than about 10,000 batch modules spends a long time after writing its `.olean` on
   the `.ilean` (Lean's reference search maps over the array of all imported module names for every identifier, so
   the cost is quadratic): for (16,10) the `.olean` was written about a minute after the imports loaded and the
   `.ilean` was still running 20 minutes later. Build such covers (and the Record) without `-i`; the `.ilean` is only
   for the editor.
 - After a restart of the machine the disk is slow to read (about 2-5 MB/s for one reader, 60-100 MB/s with 16
-  parallel readers): warm the oleans with parallel `cat` before importing thousands of them.
+  parallel readers): warm the oleans with parallel `cat` before importing thousands of them
+  (`find .lake/build/lib/lean/BipartiteDD/LeanAll/CELL -name '*.olean' | xargs -P 16 -n 50 cat > /dev/null`). The page
+  cache is also dropped from time to time during long builds (iowait goes up, a module takes 2-5× longer): re-read
+  the cell's and Mathlib's oleans every few minutes while it runs.
+- Worker restarts kill background jobs but keep `/tmp` and the oleans: resume with `SKIP_BUILT=1 topobuild.py DIR 1`.

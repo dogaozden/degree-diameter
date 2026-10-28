@@ -40,6 +40,7 @@ axioms in `lean/BipartiteDD/LeanAll/Axioms.out.txt` (only propext, Classical.cho
 | (14,10) | 1,326,627,120 | Haar, SL(2,139) × Z247 | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_14_10_1326627120`, LeanAll/HaarD14D10 (19,320 batches, streamed, blockwise ramps) |
 | (5,8) | 9,760 | Haar, Z61 ⋊ Z80 (record added during this session) | **done** | `nb_5_8_9760`, LeanAll/MetaD5D8 (per-element word checks, gen_meta.py) |
 | (5,9) | 29,756 | Haar, Z346 ⋊ Z43 (added during this session) | **done** | `nb_5_9_29756`, LeanAll/MetaD5D9 |
+| (5,9) | 29,540 | Haar, Z422 ⋊ Z35 (the value in README.md on master, 2026-10-27; 29,756 above is larger) | **done** | `nb_5_9_29540`, LeanAll/MetaD5D9b (gen_meta.py) |
 | (11,10) | 148,729,680 | Haar, PSL(2,89) × Z211 (added during this session) | **done** (files not committed: cells.txt, axioms_big.txt) | `nb_11_10_148729680`, LeanAll/HaarD11D10 (3,960 batches, streamed) |
 | (8,9) | 1,341,600 | Haar, SL(2,25) × Z43 (added during this session; replaces 1,326,960) | **done** | `nb_8_9_1341600`, LeanAll/HaarD8D9b (15,600 batches × 2, GF25, HaarGF25) |
 | (9,8) | 546,720 | Haar, SL(2,16) × Z67 (added during this session; Lean ✓ is for 540,360) | **done** | `nb_9_8_546720`, LeanAll/HaarD9D8 (4,080 batches, GF16, HaarGF16) |
