@@ -651,25 +651,25 @@ fix no point of Q(6, q). Then Perp(h) := {s ∈ P : h(s) ⊥ s} has at most
 
 *Proof.* Count N_h := #{v ∈ V : Q(v) = 0, F(v) = 0}, F(v) := b(v, hv); then |Perp(h)| = (N_h − 1)/(q − 1). F is a quadratic
 form with polar form b(v, (h + h⁻¹)w), since b(w, hv) = b(h⁻¹w, v). With ψ a nontrivial additive character of F_q,
-N_h = q⁻² Σ_{a,b ∈ F_q} Σ_{v ∈ V} ψ(aQ(v) + bF(v)). The terms with b = 0 give q⁻² · q · q⁶ = q⁵ (Q has q⁶ zeros). For b ≠ 0,
-aQ + bF = b(F − cQ) with c = −a/b, and for fixed b, c runs over F_q. The form R_c = F − cQ has polar form
-b(v, (h + h⁻¹ − c)w), so its rank is 7 − d_c with d_c = dim ker(h + h⁻¹ − c) = dim ker(h² − ch + 1). For a quadratic form
+N_h = q⁻² Σ_{λ,μ ∈ F_q} Σ_{v ∈ V} ψ(λQ(v) + μF(v)). The terms with μ = 0 give q⁻² · q · q⁶ = q⁵ (Q has q⁶ zeros). For μ ≠ 0,
+λQ + μF = μ(F − γQ) with γ = −λ/μ, and for fixed μ, γ runs over F_q. The form R_γ = F − γQ has polar form
+b(v, (h + h⁻¹ − γ)w), so its rank is 7 − d_γ with d_γ = dim ker(h + h⁻¹ − γ) = dim ker(h² − γh + 1). For a quadratic form
 of rank r on F_q⁷ (q odd), |Σ_v ψ(R(v))| = q^{7 − r/2} (diagonalize; each nonzero coefficient gives a Gauss sum of absolute
-value q^{1/2}). Hence |N_h − q⁵| ≤ (q − 1) Σ_{c ∈ F_q} q^{1.5 + d_c/2}, and |Perp(h)| ≤ (q⁵ − 1)/(q − 1) + q^{1.5} Σ_c q^{d_c/2}.
+value q^{1/2}). Hence |N_h − q⁵| ≤ (q − 1) Σ_{γ ∈ F_q} q^{1.5 + d_γ/2}, and |Perp(h)| ≤ (q⁵ − 1)/(q − 1) + q^{1.5} Σ_γ q^{d_γ/2}.
 
-For c ≠ c′ the polynomials x² − cx + 1 and x² − c′x + 1 are coprime (their difference is (c′ − c)x, and x divides
-neither), so the kernels are independent and Σ_c d_c ≤ 7. Each d_c ≤ 4:
-(i) if x² − cx + 1 = (x − μ)(x − μ⁻¹) with μ ∈ F_q, μ ≠ ±1, the kernel is ker(h − μ) ⊕ ker(h − μ⁻¹); an eigenvector v
-with hv = μv has Q(v) = Q(hv) = μ²Q(v), so Q(v) = 0 and ⟨v⟩ is a fixed point. So d_c = 0.
-(ii) c = ±2: ker(h ∓ 1) contains no singular vector (it would give a fixed point), so it has dimension ≤ 2 (a quadratic
+For γ ≠ γ′ the polynomials x² − γx + 1 and x² − γ′x + 1 are coprime (their difference is (γ′ − γ)x, and x divides
+neither), so the kernels are independent and Σ_γ d_γ ≤ 7. Each d_γ ≤ 4:
+(i) if x² − γx + 1 = (x − ν)(x − ν⁻¹) with ν ∈ F_q, ν ≠ ±1, the kernel is ker(h − ν) ⊕ ker(h − ν⁻¹); an eigenvector v
+with hv = νv has Q(v) = Q(hv) = ν²Q(v), so Q(v) = 0 and ⟨v⟩ is a fixed point. So d_γ = 0.
+(ii) γ = ±2: ker(h ∓ 1) contains no singular vector (it would give a fixed point), so it has dimension ≤ 2 (a quadratic
 form in ≥ 3 variables over F_q has a nontrivial zero, by Chevalley–Warning), and dim ker(h ∓ 1)² ≤ 2 dim ker(h ∓ 1) ≤ 4.
-(iii) if x² − cx + 1 is irreducible with roots μ, μ^q = μ⁻¹ in F_{q²}, then d_c = 2 dim ker(h − μ) (over F_{q²}) ≤ 2m(μ),
-m(μ) the multiplicity of μ as a root of the characteristic polynomial. By Fact 1.3 the roots are 1, x₁^{±1}, x₂^{±1},
-x₃^{±1} with x₁x₂x₃ = 1. Since μ ≠ μ⁻¹, μ occurs at most once for each index, so m(μ) ≥ 3 means μ = x₁^{ε₁} = x₂^{ε₂} =
-x₃^{ε₃}, hence μ^{ε₁+ε₂+ε₃} = 1 with ε₁ + ε₂ + ε₃ ∈ {±1, ±3}; μ ≠ 1 forces μ³ = 1, and since 3 | q − 1 the cube roots of
-unity lie in F_q, contradicting irreducibility. So m(μ) ≤ 2 and d_c ≤ 4.
-The function d ↦ q^{d/2} is increasing and convex; for integers 0 ≤ d_c ≤ 4 with Σd_c ≤ 7, moving one unit from a smaller
-entry to a larger one (below 4), or raising an entry, does not decrease Σ q^{d_c/2}, so the maximum is at (4, 3, 0, …, 0):
+(iii) if x² − γx + 1 is irreducible with roots ν, ν^q = ν⁻¹ in F_{q²}, then d_γ = 2 dim ker(h − ν) (over F_{q²}) ≤ 2m(ν),
+m(ν) the multiplicity of ν as a root of the characteristic polynomial. By Fact 1.3 the roots are 1, x₁^{±1}, x₂^{±1},
+x₃^{±1} with x₁x₂x₃ = 1. Since ν ≠ ν⁻¹, ν occurs at most once for each index, so m(ν) ≥ 3 means ν = x₁^{ε₁} = x₂^{ε₂} =
+x₃^{ε₃}, hence ν^{ε₁+ε₂+ε₃} = 1 with ε₁ + ε₂ + ε₃ ∈ {±1, ±3}; ν ≠ 1 forces ν³ = 1, and since 3 | q − 1 the cube roots of
+unity lie in F_q, contradicting irreducibility. So m(ν) ≤ 2 and d_γ ≤ 4.
+The function d ↦ q^{d/2} is increasing and convex; for integers 0 ≤ d_γ ≤ 4 with Σd_γ ≤ 7, moving one unit from a smaller
+entry to a larger one (below 4), or raising an entry, does not decrease Σ q^{d_γ/2}, so the maximum is at (4, 3, 0, …, 0):
 q² + q^{1.5} + (q − 2). This gives the bound. At q = 7: 2,801 + 907.5 + 343 + 92.6 = 4,144.1. ∎
 
 (Sampled: |Perp(h)| ∈ {2,752, 2,850} for 229 and for 224 fixed-point-free elements of G₂(7), in two separate samples;
@@ -716,7 +716,7 @@ With a_c = b_c the distance profile from a hub equals that of the thesis graph (
    radius-2 and radius-4 balls almost perfectly and fit together across hubs.
 
    *Computer-checked C6 (searches).* No labelling with diameter 8 was found at q = 4 (54,600 vertices) or q = 5
-   (195,300): annealing with a Singer-type symmetry and eight squad variants ended at about 12,000–13,900 far pairs from
+   (195,300): annealing with a Singer-type symmetry and eight squad variants ended at 12,075–13,900 far pairs from
    390 hub representatives (q = 4) and 35,500–38,000 from 252 (q = 5) (table audit, round 2). At q = 7 a random
    labelling with the Singer-cube symmetry leaves 6,813,773 far pairs from 2,064 hub representatives. Mean far-pair
    counts of uniformly random labellings: about 70 (q = 2), 1,911 (3), 645,753 (4), 6.55·10⁶ (5), 6.5·10⁸ (7). Geometric
