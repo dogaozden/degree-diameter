@@ -1,4 +1,5 @@
 import BipartiteDD.LeanMaxx.Omega45b.Main
+import BipartiteDD.LeanMaxx.Omega45b.PerpQuadric
 
 #print axioms BipartiteDD.LeanMaxx.Omega45b.wzeros5
 #print axioms BipartiteDD.LeanMaxx.Omega45b.wzeros4
@@ -14,3 +15,5 @@ import BipartiteDD.LeanMaxx.Omega45b.Main
 #print axioms BipartiteDD.LeanMaxx.Omega45b.triple_pts_le
 #print axioms BipartiteDD.LeanMaxx.Omega45b.bonferroni_of_hex
 #print axioms BipartiteDD.LeanMaxx.Omega45b.omega45_H7_of_perpBound
+#print axioms BipartiteDD.LeanMaxx.Omega45b.perpBound_of_lemma44
+#print axioms BipartiteDD.LeanMaxx.Omega45b.omega45_H7_geometric
