@@ -1,0 +1,54 @@
+== field and form self-tests
+  GF(8) axioms: ok (brute force); w^3+w+1 = 0 ok
+  PASS  polar form equals Q(X+Y)-Q(X)-Q(Y) on random vectors
+== enumerating Q(6,8)
+  PASS  brute-force count of nonzero singular vectors = 262143 = 7*37449
+  PASS  normalized singular points of Q(6,8) = 37449 (expect 37449)
+  PASS  collinearity degree of 300 sampled points of H(8) is 72 (observed set [72])
+  PASS  h is 7x7 with entries in GF(8), shape (7, 7)
+  PASS  67 representative rows, shape (67, 7)
+  PASS  3292 span rows of 14 integers, shape (3292, 14)
+== claim 1: h on Q(6,8)
+  [h] rank over GF(8) = 7
+  [h] singular points whose image is NOT singular: 0
+  [h] images not in the point set: 0
+  [h] induced map is a bijection of the 37449 points: True
+  [h] permutation order on points = 63; perm^63 = id: True
+  [h] divisors d of 63 with perm^d = id: [63]
+  PASS  claim 1: h preserves Q(6,8) on points, invertible, order 63 on points
+== claim 2: Z
+  reps singular: True; reps already normalized: True
+  orbit sizes of the 67 reps: [1, 1, 7, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63]
+  reps lying in an orbit already produced by an earlier rep: 0
+  |Z| = 4041
+  PASS  |Z| = 4041 (claim 4041)
+  PASS  all points of Z are singular on Q(6,8)
+  unordered collinear pairs in Z: 0  sample: []
+  PASS  no two points of Z are collinear in H(8)
+== claim 3: 3292 totally singular lines
+  spans with a non-singular vector in the span: 0  (first indices [])
+  spans that are not 2-dimensional: 0
+  lines whose point count is not 9: 0
+  total incidences (sum of per-line point counts): 29628
+  distinct points over all lines: 29628  (3292*9 = 29628)
+  info only: spans satisfying the six Tits equations: 71/3292
+  PASS  claim 3: all 3292 lines totally singular, pairwise disjoint (29628 distinct points)
+  info only: line points lying in Z: 2961
+== claim 4
+  K = min(3292, |Z|) = 3292
+  2*37449*(2K+1) = 493203330
+  PASS  claim 4 computed: K=3292, number=493203330
+== negative controls
+  [h with entry (0,0) changed] rank over GF(8) = 7
+  [h with entry (0,0) changed] singular points whose image is NOT singular: 28672
+  [h with entry (0,0) changed] images not in the point set: 28672
+  CONTROL FLAGGED  claim 1 flags a perturbed h (singular points mapped off the quadric: 28672)
+  CONTROL FLAGGED  claim 1 order test flags h^21 (order 3 != 63)
+  CONTROL FLAGGED  claim 1 order test flags h^9 (order 7 != 63)
+  CONTROL FLAGGED  claim 2 flags Z + point collinear with Z[0] (collinear pairs 9, sample [(0, 4041), (601, 4041), (764, 4041), (2234, 4041), (2505, 4041)], |Z'|=4042)
+  CONTROL FLAGGED  claim 2 singularity test flags Z + one non-singular point
+  CONTROL FLAGGED  claim 3 disjointness flags line 1 replaced by <p, z>, p on line 0 (distinct points 29620 < 29628; ts_bad 0)
+  CONTROL FLAGGED  claim 3 flags a perturbed span (non-singular span vectors on 1 line(s), dep 0)
+== summary
+  claims 1-4: PASS; K = 3292; 2*37449*(2K+1) = 493203330
+  failed checks: none
