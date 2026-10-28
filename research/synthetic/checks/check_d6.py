@@ -227,6 +227,43 @@ def run(q, spread_hyperplane, whisker_mode, ms, full_R=True):
         md = max(max(D.point_degree(x) for x in D.points), max(D.line_degree(L) for L in D.lines))
         check(md == q + m, f'{tag}: doubled max degree q+m, m={m}')
         check(D.diameter() == 6, f'{tag}: doubled diameter 6, m={m}')
+        # the table of versions in SYNTHETIC.tex 3.3: every version's neighbourhood
+        Lvset, Wset, Sv = set(Lv), set(W), Sset - {v}
+        words = lambda k: list(itertools.product(range(m), repeat=k))
+        nbD = lambda x: D.lines_on[x] if x in D.lines_on and x not in D.pts_on else D.pts_on[x]
+        def vers(x):
+            return [(x, w) for w in words(level.get(x, -1) + 1)]
+        for w in words(3):
+            check(nbD((v, w)) == {(p, w[:2]) for p in Pv}, f'{tag}: table row v')
+        for p in Pv:
+            for w in words(2):
+                exp = {(v, w + (k,)) for k in range(m)} | {(L, w[:1]) for L in H.lines_on[p] if L != v}
+                check(nbD((p, w)) == exp, f'{tag}: table row point of v')
+        for n0 in Sv:
+            for w in words(2):
+                check(nbD((n0, w)) == {(p, w[:1]) for p in H.pts_on[n0]}, f'{tag}: table row spread line')
+        for p in Spts - Pv:
+            n0 = next(L for L in H.lines_on[p] if L in Sset)
+            for w in words(1):
+                exp = ({(n0, w + (k,)) for k in range(m)} | {(h, w) for h in H.lines_on[p] if h in Wset}
+                       | {(L, ()) for L in H.lines_on[p] if L not in Sset and L not in Wset})
+                check(nbD((p, w)) == exp, f'{tag}: table row point of Pi')
+        for L in Lvset:
+            p0 = next(iter(H.pts_on[L] & Pv))
+            for w in words(1):
+                check(nbD((L, w)) == {(p0, w + (k,)) for k in range(m)} | {(x, ()) for x in H.pts_on[L] - {p0}}, f'{tag}: table row line meeting v')
+        for h in Wset:
+            p0 = next(iter(H.pts_on[h] & Spts))
+            for w in words(1):
+                check(nbD((h, w)) == {(p0, w)} | {(x, ()) for x in H.pts_on[h] - {p0}}, f'{tag}: table row whisker')
+        for r_ in H.points:
+            if level.get(r_, -1) == -1:
+                a0 = [L for L in H.lines_on[r_] if L in A0]
+                check(len(a0) == 1 and nbD((r_, ())) == set(vers(a0[0])) | {(L, ()) for L in H.lines_on[r_] if L not in A0}, f'{tag}: table row outside point')
+        for N_ in H.lines:
+            if level.get(N_, -1) == -1:
+                a0 = [x for x in H.pts_on[N_] if x in A0]
+                check(len(a0) == 1 and level[a0[0]] == 0 and nbD((N_, ())) == set(vers(a0[0])) | {(x, ()) for x in H.pts_on[N_] if x not in A0}, f'{tag}: table row outside line')
         if m == 2:
             # sheets
             for omega in itertools.product(range(m), repeat=3):
