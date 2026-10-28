@@ -59,7 +59,7 @@ contradict the choice of `w`. Note the roles: the note's "A" is the s = 1 count,
     lake env lean BipartiteDD/LeanMaxx/Omega2/Axioms.lean
 
 Grep check: `grep -nE "sorry|admit|native_decide|implemented_by|unsafe" lean/BipartiteDD/LeanMaxx/Omega2/*.lean`
-hits only the `#print axioms` lines in Axioms.lean's neighbours (none in the other files).
+has no hits.
 
 ## Remaining / notes
 
