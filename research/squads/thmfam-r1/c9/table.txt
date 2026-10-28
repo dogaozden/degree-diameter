@@ -1,0 +1,109 @@
+p q (p/q) ecc |A-comp| far_A listed | pure<=50 frac | any gamma<=200 frac
+13 13 -1 4 183 12 12 | 0/12=0.000 | 0/12=0.000
+13 29 +1 6 12180 969 969 | 39/969=0.040 | 969/969=1.000
+13 97 -1 8 456288 387 387 | 39/387=0.101 | 363/387=0.938
+5 13 -1 7 1092 511 511 | 51/511=0.100 | 511/511=1.000
+5 29 +1 9 12180 2831 2000 | 112/2000=0.056 | 2000/2000=1.000
+5 97 -1 12 456288 51 51 | 15/51=0.294 | 51/51=1.000
+7 13 -1 6 1092 133 133 | 19/133=0.143 | 133/133=1.000
+7 29 +1 8 12180 21 21 | 3/21=0.143 | 21/21=1.000
+7 97 -1 10 456288 289 289 | 25/289=0.087 | 289/289=1.000
+TOTAL listed=4373 pure_le50=303 frac=0.0693 any_le200=0.9918
+
+Table (least norm of gamma, pure at that norm?, count) pooled over all runs:
+norm  pure?     count
+    1     pure       23
+    2  nonpure       12
+    2     pure        6
+    3  nonpure       36
+    3     pure        8
+    4  nonpure       30
+    5  nonpure       17
+    5     pure        8
+    6  nonpure       81
+    6     pure       31
+    7  nonpure       12
+    9  nonpure      134
+    9     pure       20
+   10  nonpure       30
+   10     pure       12
+   11     pure       24
+   12  nonpure       64
+   13  nonpure       35
+   13     pure        8
+   14  nonpure       48
+   17  nonpure       36
+   17     pure       12
+   18  nonpure       12
+   18     pure       12
+   20  nonpure       48
+   22  nonpure       57
+   23  nonpure      168
+   25  nonpure       24
+   25     pure       18
+   27  nonpure       96
+   28  nonpure        6
+   29  nonpure       96
+   29     pure       24
+   30  nonpure       98
+   30     pure       15
+   31  nonpure       32
+   33  nonpure      106
+   33     pure       25
+   34  nonpure       84
+   34     pure        8
+   35  nonpure       42
+   35     pure       19
+   38  nonpure       94
+   42  nonpure       92
+   43  nonpure       32
+   43     pure       12
+   45  nonpure      127
+   45     pure       18
+   49  nonpure       16
+   51  nonpure       37
+   52  nonpure       34
+   53  nonpure       61
+   53     pure       24
+   54  nonpure       39
+   57  nonpure       33
+   59  nonpure       32
+   59     pure       16
+   61  nonpure       62
+   62  nonpure       78
+   62     pure       16
+   63  nonpure      232
+   65  nonpure       48
+   66  nonpure       12
+   67  nonpure       40
+   71  nonpure       33
+   73  nonpure       12
+   74  nonpure       39
+   74     pure       17
+   78  nonpure       34
+   81  nonpure       73
+   82  nonpure       35
+   83  nonpure       16
+   85  nonpure      114
+   86  nonpure       12
+   91  nonpure       65
+   92  nonpure       69
+   93  nonpure       91
+   94  nonpure       34
+  100  nonpure       52
+  110  nonpure       32
+  111  nonpure       66
+  113  nonpure      108
+  115  nonpure       66
+  117  nonpure       51
+  121  nonpure       33
+  122  nonpure       66
+  124  nonpure       16
+  125  nonpure       48
+  133  nonpure        8
+  140  nonpure       82
+  141  nonpure       84
+  150  nonpure      117
+  151  nonpure        8
+  172  nonpure       24
+ none        -       36

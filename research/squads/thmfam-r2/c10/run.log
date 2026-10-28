@@ -1,0 +1,412 @@
+done random p=5 q=13 m=7 t=1s
+done random p=5 q=13 m=13 t=1s
+done random p=5 q=13 m=19 t=2s
+done random p=5 q=13 m=31 t=3s
+done random p=5 q=13 m=37 t=4s
+done random p=5 q=13 m=43 t=5s
+done random p=5 q=13 m=61 t=7s
+done random p=5 q=17 m=7 t=8s
+done random p=5 q=17 m=13 t=9s
+done random p=5 q=17 m=19 t=11s
+done random p=5 q=17 m=31 t=13s
+done random p=5 q=17 m=37 t=15s
+done random p=5 q=17 m=43 t=18s
+done random p=5 q=17 m=61 t=21s
+done random p=5 q=19 m=7 t=22s
+done random p=5 q=19 m=13 t=24s
+done random p=5 q=19 m=19 t=25s
+done random p=5 q=19 m=31 t=28s
+done random p=5 q=19 m=37 t=31s
+done random p=5 q=19 m=43 t=34s
+done random p=5 q=19 m=61 t=39s
+done random p=5 q=23 m=7 t=41s
+done random p=5 q=23 m=13 t=44s
+done random p=5 q=23 m=19 t=48s
+done random p=5 q=23 m=31 t=53s
+done random p=5 q=23 m=37 t=59s
+done random p=5 q=23 m=43 t=66s
+done random p=5 q=23 m=61 t=75s
+done random p=5 q=29 m=7 t=78s
+done random p=5 q=29 m=13 t=83s
+done random p=5 q=29 m=19 t=88s
+done random p=5 q=29 m=31 t=98s
+done random p=5 q=29 m=37 t=110s
+done random p=5 q=29 m=43 t=123s
+done random p=5 q=29 m=61 t=143s
+done random p=7 q=11 m=7 t=144s
+done random p=7 q=11 m=13 t=145s
+done random p=7 q=11 m=19 t=146s
+done random p=7 q=11 m=31 t=148s
+done random p=7 q=11 m=37 t=150s
+done random p=7 q=11 m=43 t=153s
+done random p=7 q=11 m=61 t=155s
+done random p=7 q=13 m=7 t=157s
+done random p=7 q=13 m=13 t=159s
+done random p=7 q=13 m=19 t=160s
+done random p=7 q=13 m=31 t=162s
+done random p=7 q=13 m=37 t=165s
+done random p=7 q=13 m=43 t=167s
+done random p=7 q=13 m=61 t=170s
+done random p=7 q=17 m=7 t=172s
+done random p=7 q=17 m=13 t=173s
+done random p=7 q=17 m=19 t=176s
+done random p=7 q=17 m=31 t=178s
+done random p=7 q=17 m=37 t=181s
+done random p=7 q=17 m=43 t=185s
+done random p=7 q=17 m=61 t=190s
+done random p=7 q=19 m=7 t=193s
+done random p=7 q=19 m=13 t=195s
+done random p=7 q=19 m=19 t=199s
+done random p=7 q=19 m=31 t=204s
+done random p=7 q=19 m=37 t=210s
+done random p=7 q=19 m=43 t=217s
+done random p=7 q=19 m=61 t=226s
+done random p=7 q=23 m=7 t=229s
+done random p=7 q=23 m=13 t=233s
+done random p=7 q=23 m=19 t=238s
+done random p=7 q=23 m=31 t=244s
+done random p=7 q=23 m=37 t=251s
+done random p=7 q=23 m=43 t=259s
+done random p=7 q=23 m=61 t=270s
+done exhaustive q=13 m=7 t=271s
+done exhaustive q=13 m=13 t=274s
+done exhaustive q=13 m=19 t=279s
+done exhaustive q=13 m=31 t=288s
+done exhaustive q=13 m=37 t=303s
+done exhaustive q=13 m=43 t=321s
+done exhaustive q=13 m=61 t=355s
+done exhaustive q=17 m=7 t=358s
+done exhaustive q=17 m=13 t=363s
+done exhaustive q=17 m=19 t=374s
+done exhaustive q=17 m=31 t=392s
+done exhaustive q=17 m=37 t=418s
+done exhaustive q=17 m=43 t=449s
+done exhaustive q=17 m=61 t=510s
+done exhaustive q=19 m=7 t=512s
+done exhaustive q=19 m=13 t=517s
+done exhaustive q=19 m=19 t=526s
+done exhaustive q=19 m=31 t=545s
+done exhaustive q=19 m=37 t=571s
+done exhaustive q=19 m=43 t=592s
+done exhaustive q=19 m=61 t=635s
+done exhaustive q=23 m=7 t=637s
+done exhaustive q=23 m=13 t=641s
+done exhaustive q=23 m=19 t=650s
+done exhaustive q=23 m=31 t=665s
+done exhaustive q=23 m=37 t=687s
+done exhaustive q=23 m=43 t=707s
+done exhaustive q=23 m=61 t=751s
+done exhaustive q=29 m=7 t=752s
+done exhaustive q=29 m=13 t=756s
+done exhaustive q=29 m=19 t=763s
+done exhaustive q=29 m=31 t=783s
+done exhaustive q=29 m=37 t=812s
+done exhaustive q=29 m=43 t=850s
+done exhaustive q=29 m=61 t=926s
+{
+ "equiv_rand_p5": {
+  "mean_over_seeds": 2.97,
+  "sd_over_seeds": 0.076,
+  "min_seed_mean": 2.884,
+  "max_seed_mean": 3.084,
+  "seed_means": [
+   2.998,
+   2.884,
+   3.084,
+   2.941,
+   2.941
+  ],
+  "full_cells_per_seed": {
+   "0": 35,
+   "1": 35,
+   "2": 35,
+   "3": 35,
+   "4": 35
+  },
+  "cells_per_seed": 35
+ },
+ "free_rand_p5": {
+  "mean_over_seeds": 3.101,
+  "sd_over_seeds": 0.087,
+  "min_seed_mean": 2.998,
+  "max_seed_mean": 3.198,
+  "seed_means": [
+   3.198,
+   2.998,
+   3.17,
+   3.027,
+   3.112
+  ],
+  "full_cells_per_seed": {
+   "0": 35,
+   "1": 35,
+   "2": 35,
+   "3": 35,
+   "4": 35
+  },
+  "cells_per_seed": 35
+ },
+ "equiv_rand_p7": {
+  "mean_over_seeds": 2.683,
+  "sd_over_seeds": 0.016,
+  "min_seed_mean": 2.666,
+  "max_seed_mean": 2.695,
+  "seed_means": [
+   2.695,
+   2.695,
+   2.666,
+   2.695,
+   2.666
+  ],
+  "full_cells_per_seed": {
+   "0": 35,
+   "1": 35,
+   "2": 35,
+   "3": 35,
+   "4": 35
+  },
+  "cells_per_seed": 35
+ },
+ "free_rand_p7": {
+  "mean_over_seeds": 2.723,
+  "sd_over_seeds": 0.035,
+  "min_seed_mean": 2.666,
+  "max_seed_mean": 2.752,
+  "seed_means": [
+   2.752,
+   2.723,
+   2.666,
+   2.752,
+   2.723
+  ],
+  "full_cells_per_seed": {
+   "0": 35,
+   "1": 35,
+   "2": 35,
+   "3": 35,
+   "4": 35
+  },
+  "cells_per_seed": 35
+ },
+ "equiv_best_p5": {
+  "mean_over_cells": 2.712,
+  "sd_over_cells": 0.304,
+  "cells_with_full": 35,
+  "cells_total": 35,
+  "best_per_cell": {
+   "13,7": {
+    "excess": 2.4442,
+    "t2": 1,
+    "rk": 1,
+    "diam": 8
+   },
+   "13,13": {
+    "excess": 2.0596,
+    "t2": 2,
+    "rk": 1,
+    "diam": 8
+   },
+   "13,19": {
+    "excess": 2.8238,
+    "t2": 1,
+    "rk": 1,
+    "diam": 9
+   },
+   "13,31": {
+    "excess": 2.5196,
+    "t2": 2,
+    "rk": 1,
+    "diam": 9
+   },
+   "13,37": {
+    "excess": 2.4097,
+    "t2": 2,
+    "rk": 1,
+    "diam": 9
+   },
+   "13,43": {
+    "excess": 2.3163,
+    "t2": 2,
+    "rk": 1,
+    "diam": 9
+   },
+   "13,61": {
+    "excess": 3.0991,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "17,7": {
+    "excess": 2.9426,
+    "t2": 1,
+    "rk": 1,
+    "diam": 9
+   },
+   "17,13": {
+    "excess": 2.558,
+    "t2": 1,
+    "rk": 1,
+    "diam": 9
+   },
+   "17,19": {
+    "excess": 2.3222,
+    "t2": 2,
+    "rk": 1,
+    "diam": 9
+   },
+   "17,31": {
+    "excess": 3.0181,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "17,37": {
+    "excess": 2.9081,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "17,43": {
+    "excess": 2.8147,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "17,61": {
+    "excess": 2.5975,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "19,7": {
+    "excess": 2.7349,
+    "t2": 1,
+    "rk": 1,
+    "diam": 9
+   },
+   "19,13": {
+    "excess": 2.3503,
+    "t2": 4,
+    "rk": 1,
+    "diam": 9
+   },
+   "19,19": {
+    "excess": 3.1145,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "19,31": {
+    "excess": 2.8103,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "19,37": {
+    "excess": 2.7004,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "19,43": {
+    "excess": 2.607,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "19,61": {
+    "excess": 2.3897,
+    "t2": 3,
+    "rk": 1,
+    "diam": 10
+   },
+   "23,7": {
+    "excess": 2.3782,
+    "t2": 3,
+    "rk": 1,
+    "diam": 9
+   },
+   "23,13": {
+    "excess": 2.9936,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "23,19": {
+    "excess": 2.7578,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "23,31": {
+    "excess": 2.4536,
+    "t2": 2,
+    "rk": 1,
+    "diam": 10
+   },
+   "23,37": {
+    "excess": 2.3437,
+    "t2": 19,
+    "rk": 1,
+    "diam": 10
+   },
+   "23,43": {
+    "excess": 3.2503,
+    "t2": 1,
+    "rk": 1,
+    "diam": 11
+   },
+   "23,61": {
+    "excess": 3.033,
+    "t2": 2,
+    "rk": 1,
+    "diam": 11
+   },
+   "29,7": {
+    "excess": 2.9457,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "29,13": {
+    "excess": 2.5611,
+    "t2": 1,
+    "rk": 1,
+    "diam": 10
+   },
+   "29,19": {
+    "excess": 3.3253,
+    "t2": 1,
+    "rk": 1,
+    "diam": 11
+   },
+   "29,31": {
+    "excess": 3.0211,
+    "t2": 1,
+    "rk": 1,
+    "diam": 11
+   },
+   "29,37": {
+    "excess": 2.9112,
+    "t2": 1,
+    "rk": 1,
+    "diam": 11
+   },
+   "29,43": {
+    "excess": 2.8178,
+    "t2": 2,
+    "rk": 1,
+    "diam": 11
+   },
+   "29,61": {
+    "excess": 2.6005,
+    "t2": 2,
+    "rk": 1,
+    "diam": 11
+   }
+  }
+ },
+ "errors": 0,
+ "non_full_rows": 0
+}
+total time 926s

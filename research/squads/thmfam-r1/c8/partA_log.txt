@@ -1,0 +1,27 @@
+FAIL p=3 q=2: ['not distinct: 1 of 4', 'h singular']  ct=None ord=None
+FAIL p=5 q=2: ['not distinct: 1 of 6', 'h singular']  ct=None ord=None
+FAIL p=7 q=2: ['not distinct: 1 of 8', 'h singular']  ct=None ord=None
+FAIL p=11 q=2: ['not distinct: 1 of 12', 'h singular']  ct=None ord=None
+FAIL p=11 q=3: ['not distinct: 6 of 12', 'conj not a bijection', 'cycle type [4, 4, 1, 1, 1, 1] != predicted [3, 3, 3, 3]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 4, 1, 1, 1, 1] ord=3
+FAIL p=13 q=2: ['not distinct: 1 of 14', 'h singular']  ct=None ord=None
+FAIL p=13 q=3: ['not distinct: 11 of 14', 'conj not a bijection', 'cycle type [4, 3, 3, 1, 1, 1, 1] != predicted [3, 3, 3, 3, 1, 1]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 3, 3, 1, 1, 1, 1] ord=3
+FAIL p=17 q=2: ['not distinct: 1 of 18', 'h singular']  ct=None ord=None
+FAIL p=17 q=3: ['not distinct: 12 of 18', 'conj not a bijection', 'cycle type [4, 4, 3, 3, 1, 1, 1, 1] != predicted [3, 3, 3, 3, 3, 3]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 4, 3, 3, 1, 1, 1, 1] ord=3
+FAIL p=19 q=2: ['not distinct: 1 of 20', 'h singular']  ct=None ord=None
+FAIL p=19 q=3: ['not distinct: 11 of 20', 'conj not a bijection', 'cycle type [4, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] != predicted [3, 3, 3, 3, 3, 3, 1, 1]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] ord=3
+FAIL p=23 q=2: ['not distinct: 1 of 24', 'h singular']  ct=None ord=None
+FAIL p=23 q=3: ['not distinct: 6 of 24', 'conj not a bijection', 'cycle type [4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] != predicted [3, 3, 3, 3, 3, 3, 3, 3]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] ord=3
+FAIL p=29 q=2: ['not distinct: 1 of 30', 'h singular']  ct=None ord=None
+FAIL p=29 q=3: ['not distinct: 12 of 30', 'conj not a bijection', 'cycle type [4, 4, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] != predicted [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]', 'alt sol (1, 2) degenerate', 'alt sol (2, 1) degenerate', 'alt sol (2, 2) degenerate']  ct=[4, 4, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] ord=3
+FAIL p=29 q=5: ['not distinct: 27 of 30', 'conj not a bijection', 'cycle type [4, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1] != predicted [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]', 'alt sol (0, 3) degenerate', 'alt sol (2, 0) degenerate', 'alt sol (3, 0) degenerate']  ct=[4, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1] ord=3
+checked 153 (p,q) pairs; clean: 137; failure items: 60
+p=3: pred=[3, 1] observed cycle types=[(3, 1)] clean q count=16/17
+p=5: pred=[3, 3] observed cycle types=[(3, 3)] clean q count=16/17
+p=7: pred=[3, 3, 1, 1] observed cycle types=[(3, 3, 1, 1)] clean q count=16/17
+p=11: pred=[3, 3, 3, 3] observed cycle types=[(3, 3, 3, 3)] clean q count=15/17
+p=13: pred=[3, 3, 3, 3, 1, 1] observed cycle types=[(3, 3, 3, 3, 1, 1)] clean q count=15/17
+p=17: pred=[3, 3, 3, 3, 3, 3] observed cycle types=[(3, 3, 3, 3, 3, 3)] clean q count=15/17
+p=19: pred=[3, 3, 3, 3, 3, 3, 1, 1] observed cycle types=[(3, 3, 3, 3, 3, 3, 1, 1)] clean q count=15/17
+p=23: pred=[3, 3, 3, 3, 3, 3, 3, 3] observed cycle types=[(3, 3, 3, 3, 3, 3, 3, 3)] clean q count=15/17
+p=29: pred=[3, 3, 3, 3, 3, 3, 3, 3, 3, 3] observed cycle types=[(3, 3, 3, 3, 3, 3, 3, 3, 3, 3)] clean q count=14/17
+TOTAL_FAILURE_ITEMS 60

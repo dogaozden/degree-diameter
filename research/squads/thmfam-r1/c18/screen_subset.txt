@@ -1,0 +1,7 @@
+x Delta 6 mean 3.661 n 7 {'8': 0.408, '9': 0.103, '10': 0.329}
+x Delta 7 mean 4.578 n 7 {'9': 0.061, '10': 0.051}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json; s=json.loads(sys.stdin.read().split('SUMMARY ')[1]); print(sys.argv[1], 'Delta',s['Delta'],'mean',s['mean_excess'],'n',s['n_q'], {k:round(v['vs_table'],3) for k,v in s['best'].items() if k in ('8','9','10','11') and v['vs_table']})
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
