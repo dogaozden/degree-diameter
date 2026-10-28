@@ -16,3 +16,8 @@ Corollary 4.12: order 416 diameter 4 ; regular completion diameter 4
 q = 5 : |W| = 600 and every free point is on exactly one whisker
 doubling with whiskers, m = 2: order 9592 max degree 7 diameter 6
 exit 0
+
+# Corollary 6.23, q = 5, r = 2: python3 cor_r.py E && apsp E 8 7 (research/lifts/coordinator_check/apsp.c)
+wrote 39074 vertices 156071 edges
+n=39074 edges=156071 degree min=6 max=8 bipartite=yes diameter=7
+RESULT VALID d=8 D=7 n=39074
