@@ -1,0 +1,26 @@
+# re-checks of the LPS x Z_m covers of HAAR_FAMILIES.md section 4 (director, 2026-10-28)
+## d14D8_lps13_q29_m379  (generator lines a b c d z; haar_ecc pgl 29 379)
+RESULT group=pgl q=29 m=379 Delta=14 ecc_A=8 ecc_B=8 compA=9232440 compB=9232440 order=18464880 connected=no diam=8
+## d6D10_lps5_q23_m37  (generator lines a b c d z; haar_ecc pgl 23 37)
+RESULT group=pgl q=23 m=37 Delta=6 ecc_A=10 ecc_B=10 compA=449328 compB=449328 order=898656 connected=no diam=10
+component vertices 449328 (A 224664, B 224664); same component from (s0,B): True
+ecc(I,0,A) = 10, ecc(s0,z0,B) = 10, diameter = 10
+## d8D8_lps7_q11_m151  (generator lines a b c d z; haar_ecc pgl 11 151)
+RESULT group=pgl q=11 m=151 Delta=8 ecc_A=8 ecc_B=8 compA=199320 compB=199320 order=398640 connected=no diam=8
+component vertices 199320 (A 99660, B 99660); same component from (s0,B): True
+ecc(I,0,A) = 8, ecc(s0,z0,B) = 8, diameter = 8
+## d8D8_lps7_q17_m43  (generator lines a b c d z; haar_ecc pgl 17 43)
+RESULT group=pgl q=17 m=43 Delta=8 ecc_A=8 ecc_B=8 compA=210528 compB=210528 order=421056 connected=no diam=8
+component vertices 210528 (A 105264, B 105264); same component from (s0,B): True
+ecc(I,0,A) = 8, ecc(s0,z0,B) = 8, diameter = 8
+## d8D9_lps7_q23_m73  (generator lines a b c d z; haar_ecc pgl 23 73)
+RESULT group=pgl q=23 m=73 Delta=8 ecc_A=9 ecc_B=9 compA=886512 compB=886512 order=1773024 connected=no diam=9
+component vertices 886512 (A 443256, B 443256); same component from (s0,B): True
+ecc(I,0,A) = 9, ecc(s0,z0,B) = 9, diameter = 9
+## d8D9_lps7_q23_m91  (generator lines a b c d z; haar_ecc pgl 23 91)
+RESULT group=pgl q=23 m=91 Delta=8 ecc_A=9 ecc_B=9 compA=1105104 compB=1105104 order=2210208 connected=no diam=9
+component vertices 1105104 (A 552552, B 552552); same component from (s0,B): True
+ecc(I,0,A) = 9, ecc(s0,z0,B) = 9, diameter = 9
+## all-pairs BFS (apsp.c) on the edge list of d8D8_lps7_q17_m43 (component_edges.py pgl 17 43)
+n=210528 edges=842112 degree min=8 max=8 bipartite=yes diameter=8
+RESULT VALID d=8 D=8 n=210528

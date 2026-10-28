@@ -9,7 +9,9 @@ sys.path.insert(0, HERE)
 src = open(os.path.join(HERE, 'c2_rule.py')).read().split('def main')[0]
 ns = {'__file__': os.path.join(HERE, 'c2_rule.py')}; exec(src, ns); names = list(ns['T2'])
 configs = [(str(n), rk) for n in range(len(names)) for rk in (1, 2)] + [(f'rand:{s}', 1) for s in (1, 2, 3)]
-out = open(os.path.join(HERE, 'results.jsonl'), 'w')
+if os.environ.get('ONLY_BASE'):
+    configs = [(f'rand:{s}', 1) for s in (1, 2, 3)]
+out = open(os.path.join(HERE, 'results.jsonl'), 'a' if os.environ.get('ONLY_BASE') else 'w')
 for rule, rk in configs:
     gen = f"python3 {HERE}/c2_rule.py {{p}} {{q}} {{m}} {rule} {rk}"
     cmd = ['nice', '-n', '10', 'timeout', '900', sys.executable, CS, '--p', '7', '--rule', 'cyc',
