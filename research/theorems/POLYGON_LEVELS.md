@@ -26,13 +26,21 @@ gives one theorem for all diameters $c+2+\rho$:
   partition into ovoids and one into spreads (Proposition 3.2); $H(3)$ has no three pairwise disjoint spreads
   (Computer-checked 3.3). At $k = q^2+q+1$ the construction would beat the lab's value at every $(\Delta, 9)$,
   $7\le\Delta\le 20$, except $\Delta = 8$; the record thresholds need $k$ between 49% and 97% of $q^2+q+1$.
-  DTHREE_PLACEHOLDER
+  Local search found balanced partitions with $k = 10$ at $q = 3$ and $k = 13$ at $q = 4$, and one-sided ones with
+  $k = 15$ at $q = 5$ and $k = 20$ at $q = 7$ (77%, 62%, 48%, 35% of $q^2+q+1$; Computer-checked 3.4). That is far
+  below the thresholds, so **no record at $D = 9$**.
 * **$D = 10$ (Corollary 4.4):** for every $q$, a Hermitian spread gives $2N(q)(2r'(q^3+1)+1)$ vertices at degree
   $q+1+2r'$, with no search. It reaches 84–97% of the lab's values at $(16,10)$, $(19,10)$, $(20,10)$ and beats none.
 * **$D = 11$ (Corollaries 5.2, 5.5):** $K$ pairwise disjoint totally singular lines of $Q(6,q)$ (any line of the quadric
   is 4-dominating, Lemma 5.4) and $K$ pairwise non-collinear points of $H(q)$ give $2N(q)(2rK+1)$ vertices at degree
   $q+1+r$; for $q = 3^h$ the duality makes the second condition automatic.
-  DELEVEN_PLACEHOLDER
+  **New value at $(10,11)$.** In $H(8)$ a cyclic group of order $63 = q^2-1$ of $G_2(8)$ has a union of 67 point
+  orbits that is a set of 4,041 pairwise non-collinear points (97% of the upper bound 4,161), and $Q(6,8)$ has 3,285
+  pairwise disjoint totally singular lines (55 orbits of the same group). With $K = 3{,}285$ and $r = 1$, Corollary 5.5
+  gives a bipartite 10-regular graph of diameter at most 11 with **492,154,758** vertices, against the lab's
+  445,709,568 (Theorem + Computer-checked 5.8). $(9,11)$ stays open ($K = 1{,}743$ at $q = 7$, 1,852 needed).
+  **First values** at $(\Delta,11)$ for $11\le\Delta\le 20$, where the lab has none, are in §5.7 (from
+  $1.33\cdot10^9$ at $\Delta = 11$ to $3.8\cdot10^{11}$ at $\Delta = 20$).
 * **$D = 8$, quadrangles, the Ree–Tits octagon (§6):** no cells.
 
 All theorems were tested by building the graphs at small $q$ and running an all-pairs BFS (§8).
@@ -188,7 +196,17 @@ re-checked by the independent scorer domcheck.py, which tests every 2-ball).
 
 | $q$ | side | $k$ found | $q^2+q+1$ | method |
 |---:|---|---:|---:|---|
-DOMTABLE_PLACEHOLDER
+| 2 | points | 5 | 7 | domlocal.c |
+| 3 | both, balanced (line colouring = image of the point colouring under a duality of $H(3)$) | 10 | 13 | domlocal.c, dualfind.c |
+| 4 | both, balanced | 13 | 21 | translocal.c, group $T$ of order 13 (§3.5) |
+| 5 | points | 15 | 31 | domlocal.c (squad r2/e11; $k = 16$ failed for two seeds, cost 6 and 7) |
+| 7 | points | 20 | 57 | domlocal.c (squad r2/e12; $k = 24$ unresolved) |
+| 9 | points | none at $k = 64$ (cost 555,007 after 600 s) | 91 | domlocal.c |
+
+"Points" means only the point side was searched; the line side is the same problem for the dual hexagon. The $q = 3$
+colouring with $k = 10$ was lifted with $r = 1$ (lift9.py): 15,288 vertices, apsp: bipartite, 5-regular, diameter 9
+(checks/d9_q3_k10_r1_D9.apsp.txt; the run with $D = 8$ fails). The fraction of $q^2+q+1$ reached falls as $q$ grows,
+from 77% at $q = 3$ to 35% at $q = 7$, while the records need 79% at $q = 7$ and at least 49% anywhere.
 
 
 **Sizes (research/theorems/polylev/sizes.py).** With $k$ at its maximum $q^2+q+1$, and the smallest $k$ that beats the
@@ -371,13 +389,42 @@ of $H(2)$, found by exhaustive search): diameter 11 for $r = 1$ and 10 for $r = 
 **5.7 First values at $(\Delta, 11)$, $\Delta\ge 11$.** The 2013 table stops at $D = 10$ and the lab's beyond-table
 band covers $D = 11$ only for $\Delta\le 10$, so no value is known to us for $(\Delta,11)$, $11\le\Delta\le 20$.
 Corollary 5.5 gives one as soon as $K$ disjoint quadric lines and $K$ non-collinear points (or, for $q = 9$, the
-duality) are exhibited. The sets below were found by squad round 2 and by the director, and each was certified by two
-separate programs (the finding card's own check and research/theorems/polylev/d11cert.py: every class is the point set
-of a 2-dimensional totally singular subspace, classes pairwise disjoint; no line of $H(q)$ contains two of the chosen
-points). These graphs are far too large for a breadth-first check (up to $10^{11}$ vertices); their diameter rests on
-Corollary 5.5, which was checked all-pairs at $q = 2, 3$ (Computer-checked 5.6).
+duality) are exhibited. The sets below were found by squad round 2 and by the director. Every set was certified by
+research/theorems/polylev/d11cert.py (every class is the point set of a 2-dimensional totally singular subspace,
+classes pairwise disjoint; no line of $H(q)$ contains two of the chosen points); the squad sets were also certified by
+the finding card's own checker, and the $q = 8$ sets by the stand-alone verify_q8.py (Computer-checked 5.8). These graphs are far too large for a breadth-first check (up to $10^{11}$ vertices); their diameter rests on
+Corollary 5.5, which was checked all-pairs at $q = 2, 3, 4$ (Computer-checked 5.6, 5.9).
 
-D11FIRST_PLACEHOLDER
+| $(\Delta, 11)$ | $q$ | $r$ | $K$ | order $2N(2rK+1)$ | % of the bipartite Moore bound | lab value |
+|---|---:|---:|---:|---:|---:|---:|
+| (9, 11) | 7 | 1 | 1,743 | 136,746,192 | 5.57 | 145,258,344 |
+| **(10, 11)** | 8 | 1 | 3,285 | **492,154,758** | 6.27 | 445,709,568 |
+| (11, 11) | 9 | 1 | 5,012 | 1,331,921,500 | 5.99 | - |
+| (12, 11) | 9 | 2 | 5,012 | 2,663,710,140 | 4.67 | - |
+| (13, 11) | 11 | 1 | 8,379 | 5,937,914,808 | 4.40 | - |
+| (14, 11) | 11 | 2 | 8,379 | 11,875,475,304 | 3.98 | - |
+| (15, 11) | 13 | 1 | 14,335 | 23,064,902,028 | 3.70 | - |
+| (16, 11) | 13 | 2 | 14,335 | 46,128,999,588 | 3.73 | - |
+| (17, 11) | 13 | 3 | 14,335 | 69,193,097,148 | 2.95 | - |
+| (18, 11) | 16 | 1 | 28,483 | 127,433,014,254 | 2.97 | - |
+| (19, 11) | 16 | 2 | 28,483 | 254,863,791,546 | 3.37 | - |
+| (20, 11) | 16 | 3 | 28,483 | 382,294,568,838 | 2.95 | - |
+
+(research/theorems/polylev/d11values.py; for each $\Delta$ the best $(q, r)$ with $q+1+r = \Delta$ among the certified
+$K$.) The sets behind each $K$ (research/theorems/polylev/certs/, re-checked together by certs/run_certs.sh, log
+certs/cert.log):
+
+| $q$ | lines of $Q(6,q)$ (point classes) | points or duality (line classes) | $K$ | % of $q^4+q^2+1$ |
+|---:|---|---|---:|---:|
+| 7 | 1,978 (squad r2/e09, ILS on all t.s. lines) | 1,743 (orbit quotient, cyclic group of order 48) | 1,743 | 71.1 |
+| 8 | 3,285 (orbit quotient, order 63) | 4,041 (orbit quotient, order 63) | 3,285 | 78.9 |
+| 9 | 5,012 (ILS on all t.s. lines, ils_lines.c of r2/e09) | duality of $H(9)$ | 5,012 | 75.4 |
+| 11 | 9,975 (squad r2/e15, 75 orbits of a group of order 133) | 8,379 (squad r2/e02) | 8,379 | 56.8 |
+| 13 | 15,536 (squad r2/e03) | 14,335 (squad r2/e04) | 14,335 | 49.9 |
+| 16 | 32,391 (squad r2/e05, greedy rounds) | 28,483 (squad r2/e06, orbit quotient, order 91) | 28,483 | 43.3 |
+
+The percentages fall with $q$ mainly because the searches got less time per element at larger $q$; they are lower
+bounds, not estimates of the maxima.
 
 Pairwise disjoint lines are a partial distance-2 spread and pairwise non-collinear points a partial distance-2 ovoid;
 both have at most $q^4+q^2+1 = N/(q+1)$ elements (each point lies on at most one of the lines; each line contains at
@@ -424,11 +471,67 @@ fraction of the bound that $K$ must reach to beat the lab's current values at $(
 
 (Rows with "-": no lab value; the row shown is the largest order at that degree, at the upper bound for $K$.)
 
-**Computer-checked 5.3** (squad cards r1/c11, r1/c12; sets re-checked against the hexagon files). $H(7)$ has 1,619
-pairwise disjoint lines and 1,618 pairwise non-collinear points (iterated local search, research/gh6/ils_mis.c), so
-$K\ge 1{,}618$ at $q = 7$ (66% of the bound; 1,852 would be needed at $(9,11)$). $H(8)$ has 2,701 pairwise disjoint lines
-and 2,701 pairwise non-collinear points, each a union of 37 orbits of the Singer subgroup of order 73 of $SL(3,8)$
-(local search on the orbit quotient), so $K\ge 2{,}701$ at $q = 8$ (65%; 2,975 would be needed at $(10,11)$).
+**Computer-checked 5.3** (round 1, superseded by 5.8; squad cards r1/c11, r1/c12). Iterated local search on the
+whole collinearity graph gave 1,619 disjoint lines and 1,618 non-collinear points in $H(7)$, and 2,701 of each in
+$H(8)$ (unions of 37 orbits of the Singer subgroup of order 73 of $SL(3,8)$). Round 2 and the director raised these to
+the values in the tables above.
+
+**Computer-checked 5.8 (the value at $(10,11)$).** Work in $\mathbb F_8 = \mathbb F_2[\omega]/(\omega^3+\omega+1)$ and
+write $a_0+a_1\omega+a_2\omega^2$ as the integer $a_0+2a_1+4a_2$. Let
+$$h = \begin{pmatrix}
+0&6&5&0&0&5&2\\ 7&6&6&0&0&2&6\\ 7&2&0&0&1&2&7\\ 1&2&4&6&7&4&1\\ 5&7&1&0&7&2&2\\ 1&3&5&0&2&2&4\\ 5&5&1&0&3&4&0
+\end{pmatrix}$$
+acting on column vectors. Then:
+
+1. $h$ maps every line of $H(8)$ to a line of $H(8)$ (it is a product of collineations found by g2.py; the induced
+   line permutation was computed and checked line by line, lineorbquot.py), and $\langle h\rangle$ has order 63 on the
+   points. Its point orbits: 594 of size 63, two of size 9, one of size 7, two fixed points.
+2. **Points.** The union $Z$ of 67 point orbits of $\langle h\rangle$ (64 of size 63, the orbit of size 7 and the two
+   fixed points), 4,041 points, contains no two points on a common line of $H(8)$. The 67 orbit representatives are in
+   research/theorems/polylev/certs/q8_point_reps.txt (one point per row, coordinates $X_0,\dots,X_6$).
+3. **Lines.** The union $\mathcal M$ of 55 orbits of totally singular lines of $Q(6,8)$ (52 of size 63, one of size 7,
+   two fixed lines), 3,285 lines, is a set of pairwise disjoint totally singular lines. Representatives (two spanning
+   points per row) in certs/q8_line_reps.txt. Only 63 of the 3,285 lines are lines of $H(8)$; the rest are lines of the
+   quadric that are not lines of the hexagon.
+4. Hence (Corollary 5.5 with $K = 3{,}285$, $r = 1$, $m = 6{,}571$) there is a bipartite 10-regular graph of
+   diameter at most 11 on $2\cdot 37{,}449\cdot 6{,}571 = 492{,}154{,}758$ vertices. It beats the lab's 445,709,568
+   at $(10,11)$ by 10.4%. With $r = 2,3,4$ the same data give first values at $(11,11)$, $(12,11)$, $(13,11)$
+   (984,234,618; 1,476,314,478; 1,968,394,338), which the $q = 9$ and $q = 11$ rows of the table beat.
+
+Checks: (a) certs/verify_q8.py, which uses no other file of the repository: it implements $\mathbb F_8$, applies $h$
+to the representatives, tests $Q = 0$, tests every pair of the 4,041 points for orthogonality and, when orthogonal, for
+Tits' equations of §1 (no pair passes both), checks that every line is totally singular, and that the 3,285 lines
+cover $3{,}285\cdot 9 = 29{,}565$ distinct points; (b) d11cert.py on the expanded sets against the hexagon file
+(hexgen2.c's $H(8)$; the two descriptions of $H(8)$ agree: 300 random lines of the file satisfy Tits' equations and the
+3,222 non-hexagon lines of $\mathcal M$ do not). Both report $K = 3{,}285$.
+
+The graph is explicit: certs/d11graph.py fixes the padding of the classes and $\sigma_1$ (both are free in Theorem
+2.3; the file's docstring states the choice) and prints the neighbourhood of any vertex. Explicitly, with
+$A_i\supseteq m_i$ ($m_i\in\mathcal M$) and $B_i\supseteq$ the pencil of $z_i\in Z$: $(p,g)$, $p\in A_i$, is adjacent to
+the 9 vertices $(l,g)$ with $p\in l$ and to $(\sigma_1(p), g+i+1)$; $(l,g)$, $l\in B_i$, to the 9 vertices $(p,g)$ with
+$p\in l$ and to $(\sigma_1^{-1}(l), g-i-1)$, indices mod 6,571. The graph has $4.9\cdot10^8$ vertices, too many for an
+all-pairs BFS; as a sample, for 300 random pairs (half of them two copies of the same element in different layers)
+d11graph.py found $B_5(u)\cap B_6(v)\ne\emptyset$, i.e. distance $\le 11$, every time, while a positive fraction of the
+pairs are at distance $> 10$ (certs/q8_sample.log). The diameter bound itself rests on Corollary 5.5.
+
+**Computer-checked 5.9 (a small test of the same mix).** At $q = 4$: 20 pairwise disjoint lines of $Q(6,4)$ that are
+not lines of $H(4)$ (traces: for opposite points $a, b$, the $q+1$ points collinear with $b$ at distance 4 from $a$)
+and the pencils of 20 pairwise non-collinear points (both sets checked by d11cert.py). lift9.py with $r = 1$: 111,930 vertices; apsp: bipartite,
+6-regular, diameter 10 (checks/d11_q4_ideal_r1_D11.apsp.txt), within the bound 11.
+
+**Computer-checked 5.10 (why pencils on the line side).** For opposite lines $L, M$ the trace $L^M$ (the $q+1$ lines
+meeting $L$ at distance 4 from $M$) is 4-dominating on lines for $q = 3$ (5 of 5 random traces) but not for $q = 4$ (240
+lines are opposite to all $q+1$ trace lines) or $q = 5$ (800 lines), 5 random traces each,
+research/theorems/polylev/linetrace.py; point traces were 4-dominating in all cases, as Lemma 5.4(b) says. For
+$q = 3^h$ a duality maps point traces to line traces, so the line traces are 4-dominating by Remark 2.6; for other $q$
+we only have these small cases. Greedy completion of a trace to a 4-dominating line set needs $q-1$ further lines at $q = 4, 5$ (linetrace2.py), so
+these classes are much larger than pencils, and we used pencils.
+
+**Heuristic 5.11.** The group of order $q^2-1$ is what made $q = 8$ work: its point quotient (572 admissible orbits)
+gave 97% of the bound, while the Singer group of order 73 gave 65% (37 orbits after 60 s of local search), order 57
+gave 71% (52 orbits), and local search on the whole collinearity graph 70% (2,907 points, squad r2/e08). The same group type at $q = 7$ (order 48) and $q = 9$
+(order 80) gave only 71% and 62%. We have no explanation, and we do not know whether $H(8)$ has a distance-2 ovoid
+(4,161 points).
 
 For $\Delta\ge 11$ the lab has no values at $D = 11$ (the 2013 table stops at $D = 10$, and the lab's beyond-table
 band covers $D = 11$ only for $\Delta\le 10$).
@@ -492,9 +595,14 @@ exact diameter; it assumes no symmetry).
 | Comp. 3.4 | domlocal.c, translocal.c; independent scorer domcheck.py (tests every 2-ball by BFS) | see the table in §3 |
 | Comp. 3.6 | g2.py (collineations by apartment maps, verified on all lines), singer_perms.py (orbit sizes printed) | semiregular groups listed in §3.5 |
 | Comp. 5.3 | squad r1/c11, r1/c12 (ils_mis.c, mis2.c; sets re-verified) | $K\ge 1{,}618$ ($q=7$), $K\ge 2{,}701$ ($q=8$) |
+| §5.7 table | certs/run_certs.sh: d11cert.py on every set (squad sets re-checked here; each card also ran its own checker) | $K$ = 1,743; 3,285; 5,012; 8,379; 14,335; 28,483 for $q$ = 7, 8, 9, 11, 13, 16 |
+| Comp. 5.8 | certs/verify_q8.py (stand-alone, own $\mathbb F_8$ and Tits' equations) and d11cert.py; d11graph.py (300 sampled pairs) | $K = 3{,}285$ at $q = 8$; sampled distances $\le 11$ |
+| Comp. 5.9 | traces + pencils at $q = 4$, $K = 20$, lift9.py + apsp (111,930 vertices) | bipartite, 6-regular, diameter 10 |
+| Comp. 5.10 | linetrace.py, linetrace2.py | line traces 4-dominating at $q = 3$ only (of 3, 4, 5) |
+| Comp. 3.4, $q = 3$, $k = 10$ | lift9.py + apsp, $r = 1$ (15,288 vertices) | diameter 9; "$D = 8$" fails |
 | Comp. 7.1 | squad r1/c02 (sample.py, full_check.py) | Hermitian spreads of $H(9)$ pairwise meet |
 
-The squad runs, their scoreboard and their logs are in research/squads/polylev/r1/ (log of the rounds in
+The squad runs, their scoreboards and their logs are in research/squads/polylev/r1/ and r2/ (log of the rounds in
 research/squads/LOG.md).
 
 # 9. Prior art
@@ -521,5 +629,9 @@ novelty file (research/lit/novelty-2026-10-25.md on branch `claude/novelty-liter
   (not read). Distance-2 ovoids of $H(q)$ are known only for $q = 2, 3, 4$ (De Wispelaere–Van Maldeghem 2008, cited by
   Bishnoi–Ihringer, arXiv:1606.07288). For partitions of the points of $H(q)$ into ovoids, of its lines into spreads, or
   the domatic number of its collinearity graph: nothing found in these sources.
+* **Partial distance-2 ovoids and spreads.** Squad card r2/e13 found 273 pairwise non-collinear points in $H(4)$ by
+  local search, a distance-2 ovoid; this is consistent with De Wispelaere–Van Maldeghem's distance-2 ovoid of $H(4)$
+  (we did not compare the two). For large partial distance-2 ovoids of $H(8)$ (Computer-checked 5.8: 4,041 of at most
+  4,161 points) and large partial line spreads of $Q(6,q)$, nothing was found in these sources.
 * **Bipartite values at $D = 9$, $D = 11$ after 2013:** nothing found in these sources (the CombinatoricsWiki page could
   not be retrieved on 28 October 2026).

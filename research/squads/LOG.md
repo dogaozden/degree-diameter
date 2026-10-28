@@ -30,3 +30,36 @@ first had a bug: the Singer search never ended when q = 1 mod 3).
 
 Kept: c12's orbit-quotient method (for D = 11), c13/c14 as theorem checks, c02 and c16 for the note. Next: the director
 measured how k scales with q at fixed ratio (q^2+q+1)/k before deciding on a production run at q = 16.
+
+## 2026-10-28, job thm-polygon-levels (Opus director, branch claude/haiku-squads-diameter-7-hr64vz), round polylev r2
+
+Goal: D = 11 first values at (Delta, 11), Delta = 11..20 (no lab values there), the cells (9,11) and (10,11), and small
+D = 9 measurements. 16 Haiku cards (model haiku), header research/squads/polylev/r2/HEADER.md, scoreboard
+r2/scoreboard.jsonl. Machine: 4 cores; load reached 28 when all cards ran heavy C jobs at once, which starved the
+director's own runs and made several cards lose wall-clock time (lesson: at most 4-6 heavy cards per round on this
+machine, or give each card a CPU budget instead of a wall budget).
+
+| card | idea | best (certified) | verdict |
+|---|---|---|---|
+| e01 | greedy + 1-2 swap ILS, all t.s. lines, q=11 | 8,257 lines | superseded by e15 |
+| e02 | q=11 points, orbit quotient of a group of order 399 (Singer 133 + normaliser) | 8,379 points | used (q=11 K) |
+| e03 | q=13 greedy disjoint t.s. lines via 4-walks | 15,536 lines | used |
+| e04 | q=13 points, Singer-61 quotient + ILS | 14,335 points | used (q=13 K) |
+| e05 | q=16 greedy rounds of t.s. lines | 32,391 lines | used |
+| e06 | q=16 points, S91 quotient + ILS | 28,483 points | used (q=16 K) |
+| e07 | q=7 points, quotients of orders 43 and 19 | 1,720 | short of 1,852 |
+| e08 | q=8 points, quotients (S73, T57, T19) + full ILS | 2,907 | short of 2,975 (closed later by the director, below) |
+| e09 | ILS on all t.s. lines (ils_lines.c), q=7, 8 | 1,978 (q=7), 3,255 (q=8) | used at q=7; tool reused at q=9 |
+| e10 | D=11 theorem test q=3, r=1,2, own builder | 114,296 and 227,864 vertices, diameter 11 | confirms Cor. 5.5 |
+| e11 | D=9 points q=5 | k=15 (16 fails, 2 seeds) | measurement |
+| e12 | D=9 points q=7 | k=20 (24 unresolved) | measurement |
+| e13 | q=4 non-collinear points | 273 = distance-2 ovoid (known to exist) | rediscovery, credited |
+| e14 | D=9 from 5-space sections + repair | k=13 at q=4 | no gain over translocal |
+| e15 | q=11 / q=7 t.s. lines, orbit packing (T133, T43) | 9,975 (q=11), 1,935 (q=7) | used at q=11 |
+| e16 | domatic local search on lines (non-pencil classes), q=7 | 1,385 classes | worse than pencils |
+
+Kept: the orbit-quotient method (e02, e04, e06, e07, e08). Director follow-up after the round: quotients by the
+cyclic group of order q^2-1 of G_2(q). At q=8 its point quotient (572 admissible orbits) gave 4,041 non-collinear
+points (97% of 4,161) and its quotient of all t.s. lines (tsorbq.c, 36,463 orbits) 3,285 disjoint lines, so K = 3,285
+and (10,11) = 492,154,758 > 445,709,568 (note §5, Computer-checked 5.8). The same group at q=7 (order 48) and q=9
+(order 80) gave only 71% and 62%; (9,11) stays open at K = 1,743.
