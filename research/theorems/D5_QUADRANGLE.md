@@ -1,21 +1,26 @@
 # Bipartite graphs of diameter 5 from generalized quadrangles: level graphs, surgery and hubs
 
 Draft of 26 October 2026, written for Ignacio López and Gabriela Araujo-Pardo by the degree–diameter lab
-(github.com/dogaozden/degree-diameter; Claude Code sessions coordinated by Doğa Özden). Job "thm-gq-d5".
+(github.com/dogaozden/degree-diameter; Claude Code sessions coordinated by Doğa Özden). Job "thm-gq-d5". Revised 28 October
+2026 (job "d5-relax"): the record status and the prior art corrected after the referee report
+research/referee/d5-quadrangle.md (branch claude/referee-d5-quadrangle-621u7o), and §7 without the condition that partners
+meet off the ovoid (Lemma 7.3), with new searches (§7, §14).
 
 This note does for diameter 5 and generalized quadrangles what research/theorems/D7_HEXAGON.md (branch
 claude/d7-hexagon-theorems-4w1prt) does for diameter 7 and the split Cayley hexagon: $2r+1$ copies of the incidence graph
 of a generalized quadrangle of order $(q,q)$, joined by perfect matchings, have diameter 5; deleting some matching edges
 and attaching new "hub" vertices to the freed ends adds vertices. We state exactly which deletions survive, prove it,
-and give the resulting families and one new record, $(13,5)$.
+and give the resulting families. With explicit ingredients they beat the 2013 table in the six cells $(10,5)$–$(15,5)$;
+none of them reaches the lab's current values (§14).
 
 Every claim is labelled **Theorem** (with a complete proof here), **Computer-checked** (a computation, with the program
 and its output in the repository), or **Heuristic** (an estimate, no proof). The neighbourhood of every vertex of every
 graph is given explicitly (Definitions 2.1 and 3.1, and for the record the solution file of §11).
 
-*File paths* refer to the repository github.com/dogaozden/degree-diameter, branch claude/gq-diameter-5-xa5d3d. The
-tools are in research/theorems/d5gq/; the Haiku squad rounds that searched for sets and ran small-$q$ tests are in
-research/squads/gqd5-r1/ and gqd5-r2/ (log: research/squads/LOG.md).
+*File paths* refer to the repository github.com/dogaozden/degree-diameter, branch claude/gq-diameter-5-xa5d3d (this
+revision: branch claude/d5-relax-searches-osr72a). The tools are in research/theorems/d5gq/, and those of the revision in
+research/theorems/d5relax/; the Haiku squad rounds that searched for sets and ran small-$q$ tests are in
+research/squads/gqd5-r1/, gqd5-r2/, gqd5-r3/ and d5relax-r1/ (log: research/squads/LOG.md).
 
 ## Contents
 
@@ -47,7 +52,8 @@ $$N = N(q) = (q+1)(q^2+1),$$
 the number of points (and of lines) of a generalized quadrangle of order $(q,q)$. The level graph of §2 with $2r+1$
 levels has order $(2r+1)\cdot 2N(q)$ and degree $q+1+r$. In the 2013 table [MS13, Table 4] the cells $(10,5)$–$(15,5)$
 have exactly this value for some $(q,r)$: $(10,5) = 5\cdot 2N(7)$, $(11,5) = 5\cdot 2N(8)$, $(12,5) = 5\cdot 2N(9)$,
-$(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$ (§16 on their origin).
+$(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$. The CombinatoricsWiki credits these cells to
+Delorme, Gómez and Quisquater [DGQ] (§16).
 
 **New record.** $n_b(13,5)\ge 11{,}636$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
 $Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 66 lines with 30 concurrent
@@ -492,9 +498,10 @@ Case (v), $v = (\ell,j')$ and $u$ a point of level $j$: we need a line $a\notin 
 count this exists iff $u\notin m\smallsetminus\{z\}$. So exactly the pairs $((u,j),(\ell,j'))$, $u\in m\smallsetminus\{z\}$,
 fail. $\square$
 
-**Proposition 7.2 (the hub rule).** Suppose that for every line $\ell\in T$ with partner $m$, the $\mathcal A$-hub
-$g_\ell$ that takes the $\mathcal B$-slot $(\ell,t)$ (at the vertex $(\ell,j')$) has its slot in level $j$ at a point of
-$m$: $\omega'_j(g_\ell)\in m$. Then every pair of Proposition 7.1 is at distance $\le 4$ in $X_R^+$.
+**Proposition 7.2 (the hub rule).** Suppose that for every line $\ell\in T$ with partner $m$, the $\mathcal B$-slot
+$(\ell,t)$ (at the vertex $(\ell,j')$) is taken by an $\mathcal A$-hub $g_\ell$ whose slot in level $j$ is at a point of
+$m$: $\omega'_j(g_\ell)\in m$. Then every pair of Proposition 7.1 is at distance $\le 4$ in $X_R^+$. (Nothing is assumed
+about the meeting point $z = \ell\cap m$.)
 
 *Proof.* Let $p\in m\smallsetminus\{z\}$. The pair $((p,j),(\ell,j'))$:
 $(\ell,j')\to g_\ell\to(\omega'_j(g_\ell),j)\to(m,j)\to(p,j)$, a path of length $\le 4$ (shorter if
@@ -508,12 +515,39 @@ level $j'$, on $m$; the second path above shows that this is not needed. We foun
 condition for 128 slots passed the all-pairs check.)
 
 *The hubs exist.* In our layouts the natural slot on $m$ is the $\mathcal B$-slot at the point $o_m$ where the ovoid
-$O$ meets $m$ ($O$ meets every line exactly once), freed on an $H\to D$ transition into level $j$. One $\mathcal A$-hub
-can serve the line $\ell$ on all transitions out of level $j$ at once, because they all ask for a point of $m$ in level
-$j$; so the rule needs one $\mathcal A$-hub per partnered line and per $D$-level, at most $|T|\le K_{\mathcal A}$ of
-them. Distinct partnered lines ask for distinct points: if $o_m = o_{m'}$ for $m\ne m'$, then $m$ and $m'$ meet in a
-point of $O$, so they are partners with meeting point in $O$. We therefore require $z\notin O$ for every partner pair.
-The $\mathcal B$-hubs are not constrained at all.
+$O$ meets $m$ ($O$ meets every line exactly once), freed on an $H\to D$ transition into level $j$. For the seven-level
+layout no condition on the meeting points is needed:
+
+**Lemma 7.3 (hub assignment).** Take the layout $HHHDHHD$ of Proposition 8.1 over $Q(4,q)$ with $M = \mathrm{id}$ and
+$R = O$, an ovoid, on the five $H\to D$ arcs, $M = \mathrm{id}$ and one relaxed set $T$ on the five $D\to H$ arcs, and any
+freed sets on the non-friendly arcs, and let $|T|\le K_{\mathcal A}\le\min_j\beta_j$. Then the $\mathcal A$-hubs can be
+placed so that the hypothesis of Proposition 7.2 holds on all five $D\to H$ arcs, whatever the meeting points of the
+partner pairs. In particular two partners may meet at a point of $O$.
+
+*Proof.* Give every $\ell\in T$ its own $\mathcal A$-hub $g_\ell$. Every $H$-level receives exactly one arc from a
+$D$-level (levels 4, 5 from 3; levels 0, 1, 2 from 6), so $g_\ell$ can take the slot $(\ell,t)$ of all five
+$D\to H$ arcs $t$, one in each of the levels 4, 5, 0, 1, 2. If $\ell$ has a partner $m$, let $g_\ell$ take, in level 3
+and in level 6, a free $\mathcal B$-slot at the point $o_m$. Then $\omega'_3(g_\ell) = \omega'_6(g_\ell) = o_m\in m$,
+which is the hypothesis of Proposition 7.2 for the arcs $3\to4$, $3\to5$ (source level 3) and $6\to0$, $6\to1$, $6\to2$
+(source level 6). These requests can be met. A point $o\in O$ carries the free $\mathcal B$-slots $(o,0\to3)$,
+$(o,1\to3)$, $(o,2\to3)$ in level 3 and $(o,4\to6)$, $(o,5\to6)$ in level 6. The hub $g_\ell$ asks for $o$ iff $o$ lies
+on the partner of $\ell$, and partnering is an involution, so the number of hubs asking for $o$ equals the number of
+partnered lines of $T$ through $o$. At most two lines of $T$ pass through a point (a third would meet two others). So
+every point of $O$ is asked for at most twice in each $D$-level, and it has three slots in level 3 and two in level 6.
+(The case of two requests is a partner pair $\ell, m$ meeting at $z = o\in O$: then $o_m = o_\ell = z$, and both
+$g_\ell$ and $g_m$ sit at $z$, which lies on both lines.) The remaining slots are unconstrained. In an $H$-level the
+$|T|$ hubs $g_\ell$ take the $|T|$ slots of $T$, and the other $K_{\mathcal A}-|T|\le\beta_j-|T|$ hubs take slots of the
+non-friendly arcs; in levels 3 and 6 the hubs without a request take any of the remaining $\beta_j$ minus the requested
+slots. $\square$
+
+The $\mathcal B$-hubs are not constrained at all. So one $\mathcal A$-hub per line of $T$ suffices: one hub serves its
+line on the transitions out of both $D$-levels, because in $HHHDHHD$ the $D\to H$ arcs out of different $D$-levels end
+in different levels. (An earlier version of this paragraph asked for one hub per partnered line *and per $D$-level*, and
+required $z\notin O$ for every partner pair so that distinct partnered lines would ask for distinct points. Neither is
+needed here.) The condition $z\notin O$ is needed when a $D$-level with $D\to H$ arcs out of it receives a single
+$H\to D$ arc, so that a point of $O$ carries one free $\mathcal B$-slot there: level 4 of the five-level layout $HHDHD$
+(in-arcs $2\to4$, which is $D\to D$, and $3\to4$). In the nine-level layout $HHHHDHHHD$ the two $D$-levels receive four
+and three $H\to D$ arcs, and the proof of Lemma 7.3 goes through unchanged.
 
 In the language of $W(q)$ (lines of $Q(4,q)$ = points of $W(q)$, the ovoid $O$ = the spread of Lemma 1.1), $T$ is a set
 of points of $W(q)$ in which every point is collinear with at most one other, and the line joining a collinear pair is
@@ -791,10 +825,19 @@ bipartite, maximum degree, exact diameter.
 
 ## 16. Prior art
 
-- **The base graphs.** The values of the cells $(10,5)$–$(15,5)$ of the 2013 table [MS13] are the orders of the level
-  graphs of Theorem A. We could not open the CombinatoricsWiki page to see whom it credits for these $D = 5$ cells (it
-  returned an error on 26 Oct 2026); at $D = 7$ the analogous hexagon cells are credited to Delorme, Gómez and
-  Quisquater ("On large bipartite graphs", submitted, not found), and we assume the same origin here. Compounds of a bipartite graph with a tournament go back to Gómez and Fiol [GF85]. Delorme [De85] §3 builds
+- **The base graphs.** The CombinatoricsWiki table [Wiki] (read through the Internet Archive, snapshot of 14 January
+  2025; table "as of January 2012", equal to [MS13, Table 4]) credits all seven cells $(10,5)$–$(16,5)$ to Delorme, Gómez
+  and Quisquater [DGQ]; we could not find that paper. The orders of $(10,5)$–$(15,5)$ are those of the level graphs of
+  Theorem A; $(16,5) = 27{,}300$ is not of this form (the level graphs give at most $26{,}352$ there), so [DGQ] contains
+  more than these level graphs, and we can only say that the orders coincide, not that these are their graphs. The
+  $D = 5$ cells with $\Delta = 5,\dots,9$ are Loz's voltage lifts from the project of Loz, Pérez-Rosés and
+  Pineda-Villavicencio [Wiki] ($(4,5)$ is Hafner's and Loz's). The survey [MS13] gives no per-cell credit; it attributes
+  the older bipartite constructions to Delorme and his collaborators (bipartite versions of the $*$-product and of
+  compounding), and in its §3.3 describes the compounding of complete graphs into a bipartite Moore graph of diameter 6
+  by Gómez, Miller, Pérez-Rosés and Pineda-Villavicencio (Networks 53 (2009)): general graphs and hexagons, related to
+  the compounding here but not the same. We have not read Delorme–Gómez, *Some new large compound graphs*, European J.
+  Combin. 23 (2002) 539–547, which the wiki lists among its references; it should be checked before the note is sent.
+  Compounds of a bipartite graph with a tournament go back to Gómez and Fiol [GF85]. Delorme [De85] §3 builds
   cyclic multi-level graphs from a duality of a quadrangle, and §7–8 duplicates sets of vertices of a quadrangle's
   incidence graph (an ovoid/spread copy at $D = 4$). We claim none of these.
 - **Hubs and deleted matching edges.** R. Rajiv (Zenodo, 30 Sept 2026, doi 10.5281/zenodo.23052995) deletes the edges
@@ -802,13 +845,14 @@ bipartite, maximum degree, exact diameter.
   graphs and attaches new vertices joined by a graph of diameter $\le n$, for general (non-bipartite) graphs of diameter
   $n = 4, 6$. Our friendly transitions with Theorem B are the bipartite, diameter $n+1$ version of that step, and our
   hubs are one-sided. The lab's literature check (research/lit/novelty-2026-10-25.md, branch
-  claude/novelty-literature-check-4i5frp) found nothing on: an exact criterion like Theorem E, local dualities
-  (Theorem C) and their two-point limit for $q$ odd (Corollary 6.2), relaxed freed sets with the hub rule (§7). That
-  check was done for the hexagon case; we did not repeat it for quadrangles, so "nothing found" applies only to those
-  sources.
-- **The lab's earlier $D = 5$ work.** The doubled-matching lifts of $W(q)$ (research/d10D7/DM_D5.md) give $12N(q)$ at
-  degree $q+3$ and are better than everything here for $\Delta = 10, 11, 12, 14$. The previous $(13,5)$ value 11,486 was
-  $7\cdot 2N(9)+6$ (research/cell147/).
+  claude/novelty-literature-check-4i5frp), done for the hexagon case, found nothing on local dualities or on relaxed
+  freed sets with hub conditions. We did not search the literature for an exact criterion like Theorem E, for the
+  converse in Theorem B, or for Corollary 6.2.
+- **The lab's other $D = 5$ work.** The doubled-matching lifts of $W(q)$ (research/d10D7/DM_D5.md) give $12N(q)$ at
+  degree $q+3$ and are better than everything here for $\Delta = 10, 11, 12, 14$. The lab's $(13,5)$ value is 11,700
+  (recorded 26 Oct 2026, 09:44 PT, research/RESULTS.md), a multi-doubled-matching lift of $W(8)$ over
+  $\mathbb Z_2\times\mathbb Z_5$ found by annealing (branch claude/new-cells-beyond-etos3t, research/frontier/beyond/MDM.md,
+  graphs/d13D5_n11700_W8_2dm_Z10.edges.gz); before it, 11,486 $= 7\cdot 2N(9)+6$ (research/cell147/).
 - **Finite geometry used.** Payne–Thas [PT] for all facts on quadrangles; Tallini [Ta91] for partial ovoids of $W(q)$,
   $q$ odd; Ceria–De Beule–Pavese–Smaldore [CDPS] for large partial ovoids of $W(3,q)$. The explicit family of Lemma 1.3
   was found by squad card r2c10; we did not find it in these sources.
@@ -817,9 +861,12 @@ bipartite, maximum degree, exact diameter.
 [CDPS] M. Ceria, J. De Beule, F. Pavese, V. Smaldore, *On large partial ovoids of symplectic and Hermitian polar spaces*,
 J. Combin. Des. 31 (2023) 5–22, arXiv:2203.04553.
 [De85] C. Delorme, *Grands graphes de degré et diamètre donnés*, European J. Combin. 6 (1985) 291–302.
+[DGQ] C. Delorme, J. Gómez, J. J. Quisquater, *On large bipartite graphs*, submitted (cited by [Wiki]; not found).
 [GF85] J. Gómez, M. A. Fiol, *Dense compound graphs*, Ars Combin. 20-A (1985) 211–237.
 [MS13] M. Miller, J. Širáň, *Moore graphs and beyond: a survey of the degree/diameter problem*, Electron. J. Combin.
 DS14v2 (2013).
+[Wiki] E. Loz, H. Pérez-Rosés, G. Pineda-Villavicencio, *The degree-diameter problem for bipartite graphs*,
+CombinatoricsWiki (2010); table "as of January 2012", read through the Internet Archive (snapshot of 14 January 2025).
 [PT] S. E. Payne, J. A. Thas, *Finite Generalized Quadrangles*, 2nd ed., EMS, 2009.
 [Ta91] G. Tallini, *Blocking sets with respect to planes in PG(3,q) and maximal spreads of a nonsingular quadric in
 PG(4,q)*, Mitt. Math. Sem. Giessen 201 (1991) 141–147.
