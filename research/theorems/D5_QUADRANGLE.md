@@ -585,7 +585,7 @@ condition / without it:
 | 7 | 53 | 33 | 41 | 41 |
 | 9 | 86 | 51 | 66 | 66 |
 | 11 | 127 | 70 | 88 | 89 (36 pairs, 4 on lines of $S$) |
-| 13 | 176 | — | — | 103 (short run) |
+| 13 | 176 | — | — | 111 (42 pairs, 4 on lines of $S$; two runs) |
 
 The values without the condition come from our tabu search (rtabu.c) and were checked independently (score.py, which
 recomputes collinearity from coordinates). The exact values come from exact_pack.py: a relaxed set is a packing of
@@ -598,8 +598,8 @@ different strategies of the squad stop at 89: weighted local search, unions of o
 sets with all pairs on lines of $S$ (74 in the restricted model, 89 after an unrestricted search), large-neighbourhood
 search with exact MIP re-optimisation (regions of 700–1000 points solve to optimality and never pass 89), seeded growth
 from partial ovoids and torus orbits, and algebraic families. Two of the 89-point sets share only two points, so 89 is
-a broad plateau rather than one basin. So dropping the condition gains one point at $q = 11$ and none at $q = 7, 9$ in
-these searches. The cyclic subgroups of order $(q^2+1)/2 = 61$, the natural symmetry for a set with two points on half
+a broad plateau rather than one basin. Two further tabu runs of 3,000 s each (about $2.8\cdot10^8$ moves) also stop at 89. So dropping the condition
+gains one point at $q = 11$ and none at $q = 7, 9$ in these searches. The cyclic subgroups of order $(q^2+1)/2 = 61$, the natural symmetry for a set with two points on half
 of the spread lines (which could reach $q^2+1 = 122$), have no relaxed orbit at all (c61.py). Relaxed *point* sets of
 $Q(4,q)$, the dual question for the $H\to D$ arcs, did not exceed the ovoid size in the tabu searches (10 at $q = 3$,
 26 at $q = 5$).
