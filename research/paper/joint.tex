@@ -1,0 +1,465 @@
+% joint.tex -- first full draft of the joint paper (G. Araujo-Pardo, N. Lopez, D. Ozden).
+% Assembled from the lab's refereed notes (see the source list in the comment at the end of this file).
+% Build: tectonic joint.tex
+\documentclass[11pt]{amsart}
+\usepackage[margin=2.7cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,longtable}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorinlistoftodos,textsize=small]{todonotes}
+\presetkeys{todonotes}{inline,backgroundcolor=yellow!25,bordercolor=orange}{}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\setlength{\LTcapwidth}{\textwidth}
+\makeatletter\providecommand\@dotsep{4.5}\makeatother
+\setlist{leftmargin=2.2em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\PG}{\mathrm{PG}}
+\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\GF}{\mathrm{GF}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\Nm}{\mathrm{N}}
+\newcommand{\I}{\mathrel{\mathrm I}}
+\newcommand{\nb}{n_b}
+\newcommand{\Mb}{M_b}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\ecc}{\operatorname{ecc}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\mdp}{\operatorname{mid}}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\Om}{\Omega\mathrm H}
+
+\title[Large bipartite graphs of given degree and diameter]{Large bipartite graphs of given degree and diameter\\
+from generalized polygons}
+
+\author{Gabriela Araujo-Pardo}
+\author{Nacho L\'opez}
+\author{Do\u{g}a \"Ozden}
+\date{Draft of 28 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let $\nb(\Delta,D)$ be the largest order of a bipartite graph of maximum degree at most $\Delta$ and diameter at most
+$D$. We give constructions from generalized polygons that improve the lower bounds in the 2013 table of Miller and
+\v{S}ir\'a\v{n} at diameters 3, 4, 6 and 7, and Haar graphs that improve it at diameters 5, 8, 9 and 10. At diameter 3
+we add a fourth hat to the three hats of Araujo-Pardo and L\'opez and obtain $\nb(q+2,3)\ge 2(q^2+q+6)$ with regular
+graphs. At diameter 4 we copy points and lines of a generalized quadrangle with weights and stand-ins; a weighted
+2-ovoid of the Ahrens--Szekeres quadrangle built from two elliptic quadrics gives $\nb(q+2,4)\ge 2q^2(q+2)$ for odd
+$q$, and Singer 2-ovoids of $W(3,q)$ give $\nb(q+3,4)\ge 2(q^2+1)(q+3)$, both with regular graphs. At diameter 6 an
+explicit set of $q^2(q^2-1)$ lines of the split Cayley hexagon $H(q)$ (``whiskers'') added to Delorme's doubling gives
+$\nb(q+m,6)\ge 2(q+1)(q^4+q^2+1)+(m-1)\bigl(2q^4+2q^3+2q+2+m(q^3+q+2)+m^2\bigr)$, and a regular version. At diameter 7
+we join $2r+1$ copies of the incidence graph of $H(q)$ by matchings, delete matching edges at suitable sets and attach
+new vertices; we prove which sets are allowed. All constructions are given in projective coordinates with the exact
+neighbourhood of every new vertex. We also show that the graphs of G\'omez behind six diameter-8 entries of the table
+have diameter at least 9 as defined, and that relabelling their copies by automorphisms does not help.
+\end{abstract}
+
+\maketitle
+
+\makeatletter\@starttoc{tdo}{Points for the co-authors}\makeatother
+
+\todo{Title: a placeholder. Choose the final title.}
+
+\todo{Authors, order, affiliations, e-mail addresses. The byline of [AL20] is ``Gabriela Araujo, Nacho L\'opez''; use
+whichever form you prefer here and in the references.}
+
+\todo{AI disclosure. The constructions, proofs and checks in this draft were produced in a research repository run by
+Claude Code agents coordinated by D.\ \"Ozden, and most explicit ingredients (sets, connection sets, hub graphs) were
+found by computer search. Following the guidance of the 20 October meeting this draft keeps search and AI out of the
+mathematics and mentions computation only as ``computer-checked''. Decide how to acknowledge the AI use (most journals
+now ask for a statement) and whether to cite the repository \url{https://github.com/dogaozden/degree-diameter}, which
+holds every graph, builder and check log.}
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+%======================================================================
+
+A bipartite graph of maximum degree $\Delta\ge2$ and diameter $D\ge2$ has at most
+\[
+\Mb(\Delta,D)=2\bigl(1+(\Delta-1)+\dots+(\Delta-1)^{D-1}\bigr)
+\]
+vertices (the bipartite Moore bound). Let $\nb(\Delta,D)$ be the largest order of such a graph. For $D\ge3$ and
+$\Delta\ge3$ the bound is attained only by the incidence graphs of generalized polygons: projective planes ($D=3$),
+generalized quadrangles ($D=4$) and generalized hexagons ($D=6$) of order $(\Delta-1,\Delta-1)$
+\cite{FeitHigman,MS13}. These are known when $\Delta-1$ is a prime power. For the other cells only lower bounds are
+known. They are collected in Table~4 of the survey of Miller and \v{S}ir\'a\v{n} \cite{MS13} (version of 2013), which
+the CombinatoricsWiki \cite{CW} reproduces; since 2013 the wiki has changed only at $(13,3)$ and $(15,3)$, by the work of
+Araujo-Pardo and L\'opez \cite{AL20}. We call this table ``the 2013 table''.
+
+This paper gives constructions that improve the 2013 table in the cells listed in Table~\ref{tab:summary}. Most of them
+are built from generalized polygons in their classical coordinates, by three kinds of operations: copying points and
+lines (with Delorme's doubling with levels \cite{D85a} as the basic tool), changing a bounded number of incidences, and
+joining several copies of an incidence graph by matchings and new vertices. The remaining cells are Haar graphs
+(bi-Cayley graphs) of explicit groups.
+
+\subsection*{Results}
+
+\begin{itemize}
+\item \emph{Diameter 3} (Section~\ref{sec:d3}). Araujo-Pardo and L\'opez \cite{AL20} added three ``hats'' to
+  $\PG(2,q)$ and obtained $\nb(q+2,3)\ge2(q^2+q+5)$. We add a fourth hat (Theorem~\ref{thm:hat4}):
+  $\nb(q+2,3)\ge2(q^2+q+6)$ for every prime power $q\ge4$, attained by a $(q+2)$-regular graph; the construction works
+  in every projective plane of order $q\ge3$.
+\item \emph{Diameter 4} (Section~\ref{sec:d4}). Theorem~\ref{thm:B}: in any generalized quadrangle, clones of points
+  with arbitrary weights and copies of lines with ``stand-ins'' keep diameter 4. With a weighted 2-ovoid of the
+  Ahrens--Szekeres quadrangle $\AS(q)$ made of two elliptic quadrics (Theorem~\ref{thm:A}) this gives
+  $\nb(q+2,4)\ge2q^2(q+2)$ for odd $q$; with the Singer 2-ovoids of $W(3,q)$ (Proposition~\ref{prop:C}) it gives
+  $\nb(q+3,4)\ge2(q^2+1)(q+3)$ for odd $q$; both with regular graphs. For every prime power $q\le\Delta-1$,
+  $\nb(\Delta,4)\ge2q^2\Delta$ (Corollary~\ref{cor:B2}).
+\item \emph{Diameter 6} (Section~\ref{sec:d6}). A set of $q^2(q^2-1)$ lines of the split Cayley hexagon $H(q)$, given by
+  an explicit rule (Theorem~\ref{thm:whiskers}), can be added at level 0 to Delorme's doubling of $H(q)$ along a
+  Hermitian spread. This gives Theorem~\ref{thm:D}, and deleting repeated lines and completing gives regular graphs
+  (Theorem~\ref{thm:R}).
+\item \emph{Diameter 7} (Section~\ref{sec:d7}). The 2013 values at $(7,7)$ and $(9,7)$--$(16,7)$ are the orders
+  $(2r+1)\cdot2|H(q)|$ of $2r+1$ copies of the incidence graph of $H(q)$ joined by matchings. We delete matching
+  edges at suitable sets of elements and attach new vertices to the freed slots. Theorem~\ref{thm:assembly} reduces the
+  diameter to one condition per pair of copies; Theorems~\ref{thm:autotrans} and~\ref{thm:localdual} give two
+  sufficient conditions (segment sets at automorphic transitions; local dualities), the first also necessary. With
+  classical sets this improves all nine cells (Corollaries~\ref{cor:d7-91}--\ref{cor:d7-r}); explicit larger sets give
+  the values of Table~\ref{tab:summary}.
+\item \emph{Diameter 8} (Section~\ref{sec:d8}). Six entries of the 2013 table at $D=8$ are the orders of the compound
+  graphs $\Om_q$ of G\'omez \cite{Go86}, for which the thesis states diameter at most 8 without proof. As defined there,
+  these graphs have diameter at least 9 (Theorems~\ref{thm:proj} and~\ref{thm:twolabels}), and relabelling the copies
+  by automorphisms of the hexagon does not give diameter 8 (Theorems~\ref{thm:geomq8} and~\ref{thm:geomq7}).
+\item \emph{Haar graphs} (Section~\ref{sec:haar}). We state the covering criterion that decides the diameter of a Haar
+  graph from two breadth-first searches, and list Haar graphs that improve two cells at $D=5$ and 34 cells at
+  $D=8,9,10$. These are single explicit graphs, checked by computer.
+\end{itemize}
+
+Problem~4 of \cite{AL20} asks to generalize the hat construction to regular bipartite graphs of diameters 4 and 6. The
+hat lemma (Lemma~\ref{lem:hat}) says in what sense it generalizes, and Corollaries~\ref{cor:A1} and~\ref{cor:C1} and
+Theorem~\ref{thm:R} give regular graphs at $D=4$ and $D=6$ that beat the 2013 table.
+
+\subsection*{What is proved and what is computed}
+Every theorem in Sections~\ref{sec:prelim}--\ref{sec:d8} has a complete proof here, with one kind of exception, always
+marked: a statement about one explicit finite object (a set of points, a connection set, a hub graph, a count of
+route words) is \emph{computer-checked}, and we name the check. ``Computer-checked'' for a graph means: built from its
+definition, and found to be bipartite, of the stated maximum degree and of the stated diameter by breadth-first search
+from every vertex (or from one vertex of every orbit of an automorphism group that was itself checked), by at least two
+programs written separately. Appendix~\ref{app:checks} lists the checks. Many of the statements are also proved in
+Lean~4 with Mathlib; Appendix~\ref{app:lean} says exactly which.
+
+\begin{longtable}{@{}l r r r l l@{}}
+\caption{The cells improved in this paper. $\Mb$: bipartite Moore bound; 2013: \cite[Table 4]{MS13}; ``reg.'': the
+largest regular graph we give, when the record graph is not regular. Values at $D=8,9,10$ are in
+Table~\ref{tab:haar}.}\label{tab:summary}\\
+\toprule
+$(\Delta,D)$ & $\Mb$ & 2013 & this paper & reg. & construction \\
+\midrule\endfirsthead
+\toprule
+$(\Delta,D)$ & $\Mb$ & 2013 & this paper & reg. & construction \\
+\midrule\endhead
+\bottomrule\endfoot
+(11,3) & 222 & 190 & \textbf{192} & & fourth hat, $q=9$ (Thm.~\ref{thm:hat4}) \\
+(13,3) & 314 & 270\,$^a$ & \textbf{276} & & fourth hat, $q=11$ \\
+(15,3) & 422 & 370\,$^a$ & \textbf{376} & & fourth hat, $q=13$ \\
+(7,4) & 518 & 346 & \textbf{359} & 350 & clones and shadows on $Q(4,5)$ (Ex.~\ref{ex:359}) \\
+(11,4) & 2\,222 & 1\,734 & \textbf{1\,782} & & $\AS(9)$, two quadrics (Cor.~\ref{cor:A1}) \\
+(13,4) & 3\,770 & 3\,064 & \textbf{3\,146} & & $\AS(11)$ \\
+(15,4) & 5\,910 & 4\,946 & \textbf{5\,070} & & $\AS(13)$ \\
+(16,4) & 7\,232 & 5\,134 & \textbf{5\,440} & & Singer 2-ovoid of $W(3,13)$ (Cor.~\ref{cor:C1}) \\
+(7,5) & 3\,110 & 1\,134 & \textbf{1\,152} & & Haar graph (Sec.~\ref{sec:haar}) \\
+(9,5) & 9\,362 & 2\,496 & \textbf{2\,662} & & Haar graph \\
+(7,6) & 18\,662 & 8\,992 & \textbf{9\,592} & 9\,348 & whiskers in $H(5)$ (Thm.~\ref{thm:D}, \ref{thm:R}) \\
+(11,6) & 222\,222 & 142\,464 & \textbf{148\,944} & 147\,500 & $H(9)$ \\
+(13,6) & 542\,906 & 374\,452 & \textbf{388\,972} & 386\,328 & $H(11)$ \\
+(15,6) & 1\,158\,390 & 842\,048 & \textbf{870\,440} & 866\,068 & $H(13)$ \\
+(16,6) & 1\,627\,232 & 884\,062 & \textbf{940\,846} & 927\,724 & $H(13)$, $m=3$ \\
+(7,7) & 111\,974 & 23\,436 & \textbf{23\,598} & & 3 levels of $H(5)$, local duality (Sec.~\ref{sec:d7}) \\
+(9,7) & 599\,186 & 117\,648 & \textbf{118\,238} & & 3 levels of $H(7)$ \\
+(10,7) & 1\,195\,742 & 224\,694 & \textbf{225\,152} & & 3 levels of $H(8)$ \\
+(11,7) & 2\,222\,222 & 398\,580 & \textbf{413\,180} & & 3 levels of $H(9)$, duality \\
+(12,7) & 3\,897\,434 & 664\,300 & \textbf{693\,500} & & 5 levels of $H(9)$, duality \\
+(13,7) & 6\,514\,874 & 1\,062\,936 & \textbf{1\,064\,472} & & 3 levels of $H(11)$ \\
+(14,7) & 10\,458\,086 & 1\,771\,560 & \textbf{1\,789\,588} & & 5 typed levels of $H(11)$ \\
+(15,7) & 16\,217\,462 & 2\,480\,184 & \textbf{2\,501\,491} & & 7 typed levels of $H(11)$ \\
+(16,7) & 24\,408\,482 & 4\,022\,340 & \textbf{4\,052\,108} & & 5 typed levels of $H(13)$ \\
+\end{longtable}
+\noindent $^a$ The current values of \cite{CW} are 274 and 376 \cite{AL20}.
+
+All graphs in Table~\ref{tab:summary} except the four Haar graphs at $D=5$ and $D=8$--$10$ are members of families
+proved here for every prime power $q$ (or every odd $q$), with explicit ingredients; at $D=4$ (7,4) and at $D=7$ the
+values in the table use, in addition, explicit sets that are computer-checked, and Section~\ref{sec:d7} also gives
+values beating the 2013 table in all nine cells from classical ingredients only (Table~\ref{tab:d7general}).
+
+\todo{Scope. The repository also holds graphs at other cells that are not covered by the refereed notes this draft is
+built from: $(16,3)$ 396; $(4,5)$ 162, $(5,5)$ 354, $(8,5)$ 2\,048, $(9,5)$ 2\,758, $(10,5)$ 4\,800, $(11,5)$ 7\,020,
+$(12,5)$ 9\,840, $(13,5)$ 11\,700, $(14,5)$ 17\,568, $(15,5)$ 20\,736, $(16,5)$ 33\,792 (lifts of generalized
+quadrangles and other lifts); $(4,7)$ 864, $(5,7)$ 3\,120, $(6,7)$ 8\,880, $(8,7)$ 43\,344; $(3,10)$ 810; and later
+Haar graphs at $(9,8)$ 546\,720, $(5,9)$ 29\,756, $(7,10)$ 2\,298\,240, $(8,10)$ 8\,043\,840. Decide whether this paper
+should include them (they would need write-ups and referee reports first), mention them in a remark, or leave them for
+a second paper.}
+
+\subsection*{Organisation}
+Section~\ref{sec:prelim} fixes notation, coordinates for the classical polygons, and Delorme's doubling with levels,
+with a proof and the hat lemma. Sections~\ref{sec:d3}--\ref{sec:d7} treat diameters 3, 4, 6 and 7, Section~\ref{sec:d8}
+the G\'omez entries at diameter 8, and Section~\ref{sec:haar} Haar graphs. Section~\ref{sec:table} collects the
+updated values. Appendix~\ref{app:359} writes out the $(7,4)$ example, Appendix~\ref{app:lean} lists what is checked in
+Lean, and Appendix~\ref{app:checks} the computer checks.
+
+%======================================================================
+\section{Preliminaries}\label{sec:prelim}
+%======================================================================
+
+\subsection{Incidence structures}
+An \emph{incidence structure} $\cS=(\cP,\cL,\I)$ has points, lines and a symmetric incidence relation; repeated points
+and repeated lines (with the same incidences) are allowed. Its \emph{incidence graph} $\Gamma(\cS)$ has vertex set
+$\cP\cup\cL$ and the incident pairs (\emph{flags}) as edges; it is bipartite with the points on one side. A non-incident
+point--line pair is an \emph{anti-flag}. Every bipartite graph with a chosen 2-colouring is of this form, so
+\[
+\nb(\Delta,D)=\max\{|\cP|+|\cL|:\ \text{every element has at most }\Delta\text{ neighbours},\ \diam\Gamma(\cS)\le D\}.
+\]
+Distances $d(x,y)$ are taken in $\Gamma(\cS)$, and $\diam\cS$ means $\diam\Gamma(\cS)$. Two distinct points on a
+common line are \emph{collinear}; two distinct lines on a common point are \emph{concurrent}. $\F=\GF(q)$ is the field
+of order $q$, and for $q$ odd $\chi$ is its quadratic character, with $\chi(0)=0$.
+
+\begin{lemma}[diameter in geometric terms]\label{lem:diamgeom}
+Let $\cS$ have no isolated element and let $D\ge2$.
+\begin{enumerate}[label=(\roman*)]
+\item If $D$ is even, $\diam\cS\le D$ if and only if $d(p,L)\le D-1$ for every anti-flag $(p,L)$.
+\item If $D$ is odd, $\diam\cS\le D$ if and only if any two points, and any two lines, are at distance at most $D-1$.
+\end{enumerate}
+In particular, $\diam\cS\le3$ if and only if any two points are collinear and any two lines are concurrent, and
+$\diam\cS\le4$ if and only if for every anti-flag $(p,L)$ some point of $L$ is collinear with $p$.
+\end{lemma}
+
+\begin{proof}
+(i) Let $p\ne p'$ be points and $L$ a line on $p'$. If $p\I L$ then $d(p,p')=2$; otherwise
+$d(p,p')\le d(p,L)+1\le D$. Lines likewise. (ii) For an anti-flag $(p,L)$ take $p'\I L$; then
+$d(p,L)\le d(p,p')+1\le D$. The converses hold by parity.
+\end{proof}
+
+\begin{lemma}[adding flags, deleting twins]\label{lem:flags}
+(a) Adding flags to an incidence structure keeps its incidence graph bipartite and does not increase any distance.
+(b) If two lines have the same set of points, deleting one of them does not change any distance between the remaining
+elements.
+\end{lemma}
+
+\begin{proof}
+(a) is clear. (b) A shortest path through the deleted line can use its twin instead; it does not already contain the
+twin, since then it could be shortened.
+\end{proof}
+
+\subsection{Generalized polygons}
+A \emph{generalized $n$-gon} is an incidence structure whose incidence graph has diameter $n$ and girth $2n$; it has
+\emph{order $(s,t)$} if every line has $s+1$ points and every point is on $t+1$ lines. It is \emph{thick} if
+$s,t\ge2$. A generalized 3-gon of order $(q,q)$ is a projective plane of order $q$, with $q^2+q+1$ points and as many
+lines. A generalized quadrangle (GQ) of order $(s,t)$ has $(s+1)(st+1)$ points and $(t+1)(st+1)$ lines, and its axiom
+is: for every anti-flag $(p,L)$ exactly one point of $L$ is collinear with $p$. A generalized hexagon of order $(q,q)$
+has $(q+1)(q^4+q^2+1)$ points and as many lines. By Feit and Higman \cite{FeitHigman}, thick generalized $n$-gons exist
+only for $n\in\{2,3,4,6,8\}$, and a generalized octagon of order $(s,s)$ does not exist; so $\Mb(\Delta,D)$ is attained,
+for $\Delta\ge3$, only at $D\in\{2,3,4,6\}$.
+
+\subsubsection*{The projective plane}
+Points of $\PG(2,q)$ are written $(x:y:z)$ and lines $[u:v:w]$, with $(x:y:z)\I[u:v:w]$ if and only if $ux+vy+wz=0$.
+
+\subsubsection*{Quadrangles}
+$W(3,q)$ is the symplectic quadrangle: the points of $\PG(3,q)$ and the lines of $\PG(3,q)$ that are totally isotropic
+for a non-degenerate alternating form; it is a GQ of order $(q,q)$ \cite{PT}. $Q(4,q)$ is the parabolic quadric of
+$\PG(4,q)$ with the lines it contains; it is a GQ of order $(q,q)$, dual to $W(3,q)$ \cite[3.2.1]{PT}. The
+Ahrens--Szekeres quadrangle $\AS(q)$ ($q$ odd) is introduced in coordinates in Section~\ref{ssec:A}.
+
+\subsubsection*{The split Cayley hexagon}\label{ssec:Hq}
+Let $V=\F^7$ with coordinates $(X_0,\dots,X_6)$,
+\[
+Q(X)=X_0X_4+X_1X_5+X_2X_6-X_3^2,\qquad b(X,Y)=Q(X+Y)-Q(X)-Q(Y),
+\]
+and let $Q(6,q)$ be the parabolic quadric $\{\langle x\rangle:Q(x)=0\}$ of $\PG(6,q)$. Points $\langle x\rangle,\langle
+y\rangle$ of $Q(6,q)$ are \emph{perpendicular}, $x\perp y$, if $b(x,y)=0$, i.e.\ if the line $xy$ lies on $Q(6,q)$. The
+\emph{split Cayley hexagon} $H(q)$ \cite{T59}, \cite[\S2.4]{VM98} has as points all
+$N=N(q)=(q^6-1)/(q-1)=(q+1)(q^4+q^2+1)$ points of $Q(6,q)$, and as lines the lines of $Q(6,q)$ whose Grassmann
+coordinates $p_{ij}=x_iy_j-x_jy_i$ satisfy Tits' equations
+\begin{equation}\label{eq:tits}
+p_{12}=p_{34},\quad p_{54}=p_{32},\quad p_{20}=p_{35},\quad p_{65}=p_{30},\quad p_{01}=p_{36},\quad p_{46}=p_{31}.
+\end{equation}
+For example, the $q+1$ lines through $e_0=(1,0,\dots,0)$ are $\langle e_0,\lambda e_5+\mu e_6\rangle$,
+$(\lambda:\mu)\in\PG(1,q)$; they lie in the totally singular plane $\langle e_0,e_5,e_6\rangle$. The same equations
+define $H(q)$ for $q$ even, with the quadric written $X_0X_4+X_1X_5+X_2X_6+X_3^2$ (Section~\ref{ssec:evenq}).
+\todo{The referee of the diameter-7 note recalls that this form of the quadric and of Tits' equations is
+\cite[\S2.4.13]{VM98}. We could not consult [VM98] to confirm the place; please check and cite it.}
+
+\begin{fact}[\cite{T59}, {\cite[\S2.4]{VM98}}]\label{fact:hex}
+$H(q)$ is a generalized hexagon of order $(q,q)$. The lines of $H(q)$ through a point $x$ are the lines through $x$ of a
+totally singular plane $\pi_x\subset x^\perp$. The collineation group contains $G_2(q)$; for $A\in\SL(3,q)$ the map
+$(v,a,w)\mapsto(Av,a,A^{-T}w)$, with $x=(v,a,w)$, $v=(x_0,x_1,x_2)$, $a=x_3$, $w=(x_4,x_5,x_6)$, is a collineation. $H(q)$
+has a duality (an incidence-preserving bijection exchanging points and lines) if and only if $q$ is a power of $3$.
+\end{fact}
+
+Let $I=I(q)$ be the incidence graph of $H(q)$, with $2N$ vertices, and $\Gamma_i(x)=\{y:d(x,y)=i\}$. Two elements are
+\emph{opposite} if they are at distance 6, and $\opp(x)=\Gamma_6(x)$. The following facts are standard; we include the
+short proofs because Sections~\ref{sec:d7} and~\ref{sec:d8} use them repeatedly.
+
+\begin{lemma}\label{lem:hexfacts}
+Let $x,y$ be vertices of $I$.
+\begin{enumerate}[label=(\alph*)]
+\item If $d(x,y)\le5$ there is a unique geodesic from $x$ to $y$. If $1\le d(x,y)=k\le5$, exactly one neighbour of $y$ is
+  at distance $k-1$ from $x$ and the other $q$ at distance $k+1$; if $k=6$ all $q+1$ neighbours of $y$ are at distance
+  5. Hence $|\Gamma_i(x)|=(q+1)q^{i-1}$ for $1\le i\le5$ and $|\Gamma_6(x)|=q^5$.
+\item \emph{(covering)} There is $z\in\Gamma_2(x)$ with $d(z,y)\le3$ if $x,y$ have different types, and with
+  $d(z,y)\le4$ if they have the same type.
+\item \emph{(orthogonality)} For points $x,y$: $d(x,y)\le4$ if and only if $x\perp y$. So $\opp(x)\cap\cP=\cP\setminus
+  x^\perp$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) Two geodesics would close a cycle of length at most $10<12$. Neighbours of $y$ are at distance $k\pm1$ from $x$;
+the predecessor on the geodesic is at $k-1$, and a second one would give a second geodesic; at $k=6$ the diameter
+forces $5$. The counts follow by induction. (b) If $2\le d(x,y)\le6$ take the vertex at distance 2 from $x$ on a
+geodesic to $y$; if $d(x,y)=1$ take $z\in\Gamma_1(y)\setminus\{x\}$; if $x=y$ any $z\in\Gamma_2(x)$. The largest value
+of $d(z,y)$ is $6-2=4$ (same type) or $5-2=3$ (different types). (c) If $d(x,y)\le4$ there is a point $z$ with $x,y$
+on lines of $H(q)$ through $z$ ($z=x$ if $d(x,y)\le2$); these lines lie in $\pi_z$, so $b(x,y)=0$. Conversely
+$x^\perp\cap Q(6,q)$ is a cone with vertex $x$ over a $Q(4,q)$ and has $1+q(q^3+q^2+q+1)$ points, which by (a) is the
+number $1+(q+1)q+(q+1)q^3$ of points at distance at most 4 from $x$.
+\end{proof}
+
+\subsection{Doubling with levels, and the hat lemma}\label{ssec:doubling}
+A \emph{duplicate} of a vertex (a new vertex with the same neighbours) does not increase the diameter (see
+\cite{DF84}, which we have not seen, and \cite[\S7]{D85a}). Delorme \cite[\S7]{D85a} refined this into a doubling with
+levels, stated there without proof, and used it for the 2013 values at $D=4$ and $D=6$ \cite[\S8(a),(b)]{D85a}. We
+state it for incidence structures and give a proof.
+
+Let $\cA=(\cA_0\supseteq\cA_1\supseteq\dots\supseteq\cA_r\supseteq\cA_{r+1}=\emptyset)$ be a filtration of a set
+$\cA_0$ of elements (points and lines may be mixed). The \emph{level} of $x$ is $\lambda(x)=\max\{k:x\in\cA_k\}$, and
+$\lambda(x)=-1$ if $x\notin\cA_0$. Fix $m\ge2$. Two words over $[m]=\{1,\dots,m\}$ are \emph{comparable} if one is a
+prefix of the other.
+
+\begin{definition}[Delorme]\label{def:doubling}
+The $m$-fold doubling $\cS^{(m)}_\cA$ has the \emph{versions} $x^w$, for $x$ an element of $\cS$ and
+$w\in[m]^{\lambda(x)+1}$ ($x^w$ is a point if $x$ is a point and a line if $x$ is a line), and
+\[
+x^w\I y^u\iff x\I y\ \text{and}\ w,u\ \text{are comparable}.
+\]
+\end{definition}
+
+So an element of level $-1$ has one version (identified with $x$), adjacent to every version of each of its neighbours;
+and a version $x^w$ of level $k\ge0$ is adjacent, for each neighbour $y$ of $x$, to the single version
+$y^{w_1\cdots w_{j+1}}$ if $\lambda(y)=j\le k$, and to the $m^{j-k}$ versions $y^{wu}$ ($|u|=j-k$) if $\lambda(y)=j>k$.
+This is the exact neighbourhood of every version. The map $x^w\mapsto x$ preserves incidence, so
+$d(x^w,y^u)\ge d(x,y)$.
+
+The conditions on $\cA$ are (with $D\ge2$):
+\begin{itemize}
+\item[(L0)] every element outside $\cA_0$ is incident with at most one element of $\cA_0$;
+\item[(L1)] for every $i\ge0$: every element incident with an element of $\cA_{i+1}$ lies in $\cA_i$, and every element
+  of $\cA_i\setminus\cA_{i+1}$ is incident with at most one element of $\cA_{i+1}$;
+\item[(C$_D$)] for any two elements $x,y$ (possibly $x=y$) in the same connected component of the substructure induced
+  on $\cA_0$, there is $z\notin\cA_0$ with $d(x,z)+d(z,y)\le D$.
+\end{itemize}
+
+\begin{theorem}[Delorme {\cite[\S7]{D85a}}, (a)--(c)]\label{thm:delorme}
+Let $\cS$ have diameter at most $D\ge2$ and let $m\ge2$.
+\begin{enumerate}[label=(\alph*)]
+\item If (C$_D$) holds, $\cS^{(m)}_\cA$ has diameter at most $D$.
+\item If (L0) and (L1) hold, every version satisfies $\deg x^w\le\deg x+m-1$, with equality only if $x$ is incident
+  with an element of level $\lambda(x)+1$.
+\item $\cS^{(m)}_\cA$ has $|\cP|+(m-1)\sum_{k\ge0}m^k|\cA_k\cap\cP|$ points and
+  $|\cL|+(m-1)\sum_{k\ge0}m^k|\cA_k\cap\cL|$ lines.
+\item Conversely, if $\cS^{(m)}_\cA$ has diameter at most $D$, the conclusion of (C$_D$) holds for every pair
+  $x,y\in\cA_0$.
+\end{enumerate}
+\end{theorem}
+
+Delorme states (a)--(c) without proof (``je ne donne pas la preuve''); (d) is not in \cite{D85a}.
+
+\begin{proof}
+(c) An element of level $k$ has $m^{k+1}=1+(m-1)(1+m+\dots+m^k)$ versions.
+
+(b) Let $\lambda(x)=k$. By the description after Definition~\ref{def:doubling}, only neighbours of level $>k$
+contribute more than one version. If $k=-1$, (L0) gives at most one neighbour in $\cA_0$; it has level exactly 0 (a
+neighbour in $\cA_1$ would put $x$ in $\cA_0$ by (L1)), and contributes $m$ versions. If $k\ge0$, (L1) with $i=k$ gives
+at most one neighbour in $\cA_{k+1}$, and (L1) with $i=k+1$ gives none in $\cA_{k+2}$; that neighbour contributes $m$
+versions. So $\deg x^w\le\deg x-1+m$.
+
+(a) For an infinite word $\omega$ the \emph{sheet} $\Sigma_\omega$ is the set of versions $x^w$ with $w$ a prefix of
+$\omega$. It contains one version of each element, and $x^w\mapsto x$ is an isomorphism from the substructure on
+$\Sigma_\omega$ onto $\cS$. Two versions with comparable words lie in a common sheet, hence are at distance at most
+$D$. Let $x^w,y^u$ have incomparable words; both are non-empty, so $x,y\in\cA_0$. If $x,y$ are in different components
+of the substructure on $\cA_0$, a shortest path $x=z_0,\dots,z_k=y$ ($k\le D$) passes through some $z_i\notin\cA_0$,
+whose unique version lies in every sheet. Lift $z_0,\dots,z_i$ into a sheet through $x^w$ and $z_i,\dots,z_k$ into a
+sheet through $y^u$: this is a path of length $k$. If $x,y$ are in the same component (including $x=y$), (C$_D$) gives
+$z\notin\cA_0$ with $d(x,z)+d(z,y)\le D$, and the same lifting gives a path of length at most $D$.
+
+(d) Take versions $x^w,y^u$ with $w$ starting with the letter 1 and $u$ with the letter 2, and a path of length at most
+$D$ between them. Consecutive versions on it have comparable words, and comparable non-empty words start with the same
+letter; so some version on the path has the empty word, that is, it is an element $z\notin\cA_0$. Projecting the path
+gives a walk $x\to z\to y$ of length at most $D$.
+\end{proof}
+
+\begin{lemma}[hat lemma]\label{lem:hat}
+Let $\cS$ be a generalized $n$-gon of order $(s,t)$, $s,t\ge1$, and $\cA_0$ a set of elements. Then (C$_n$) holds if
+and only if every connected component of the substructure induced on $\cA_0$ is a tree of diameter at most $n-2$.
+\end{lemma}
+
+\begin{proof}
+Suppose a component $B$ contains a path $x=z_0,\dots,z_{n-1}=y$ of length $n-1$ (it does if $B$ has diameter at least
+$n-1$, and if $B$ contains a cycle, since cycles have length at least $2n$). By the girth this is the only path of
+length at most $n-1$ from $x$ to $y$, so $d(x,y)=n-1$. If $d(x,z)+d(z,y)\le n$ then by parity
+$d(x,z)+d(z,y)=n-1$, so $z$ lies on a shortest $x$--$y$ path, i.e.\ $z=z_i\in\cA_0$. So (C$_n$) fails.
+
+Conversely let $B$ be a tree of diameter at most $n-2$, $x,y\in B$, and $P$ the path from $x$ to $y$ in $B$, of length
+$d$. The incidence graph is connected and has cycles, so some element of $B$ has a neighbour outside $\cA_0$. Let $k$
+be the least distance in $B$ from $P$ to such an element $u$, and $z$ a neighbour of $u$ outside $\cA_0$. Then
+$d(x,z)+d(z,y)\le d+2k+2$. If $k=0$ this is at most $n$. If $k\ge1$, every element of $B$ at distance less than $k$ from
+$P$ has all its neighbours in $B$, and every element has at least two neighbours. So we can walk $k$ steps away from
+$P$ starting at $x$, and $k$ steps away from $P$ starting at $y$ (along two different neighbours if $x=y$); in the tree
+$B$ this gives a path of length $d+2k$. Hence $d+2k\le n-2$ and $d(x,z)+d(z,y)\le n$.
+\end{proof}
+
+\begin{corollary}\label{cor:hat}
+In a generalized $n$-gon of order $(s,t)$, $s,t\ge1$, for any filtration and $m\ge2$, $\cS^{(m)}_\cA$ has diameter at
+most $n$ if and only if every component of the substructure on $\cA_0$ is a tree of diameter at most $n-2$. For $n=3$
+the allowed components are single elements and flags; for $n=4$ also \emph{stars} (a point with some lines on it, or a
+line with some of its points); for $n=6$ trees of diameter at most 4.
+\end{corollary}
+
+\begin{proposition}[diameter 3 needs patches]\label{prop:patches}
+In a projective plane, if $\cA$ satisfies (L0), (L1) and (C$_3$), then $\cA_0$ has at most one point and at most one
+line, and $\cA_1=\emptyset$.
+\end{proposition}
+
+\begin{proof}
+If $x\ne y$ are points of $\cA_0$, the line $xy$ is either outside $\cA_0$ and incident with two elements of $\cA_0$
+(against (L0)), or in $\cA_0$, and then $x,xy,y$ is a path of length $2>n-2$ in one component (against
+Lemma~\ref{lem:hat}). Lines likewise. An element of $\cA_1$ would have its $q+1\ge3$ neighbours in $\cA_0$ by (L1).
+\end{proof}
+
+So pure doubling gains at most $2(m-1)$ elements in a projective plane; the hats of Section~\ref{sec:d3} double flags
+and then change a bounded number of incidences.
+
+%%END%%
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{99}
+%%BIB%%
+\end{thebibliography}
+
+\end{document}
