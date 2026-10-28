@@ -32,9 +32,10 @@ turned into infinite families, with S given by one formula in q (and m) and a pr
    (Proposition 4.1), but it bounds q, not m. LPS × Z_m with labels chosen for each (q, m) by a squad reaches 99.4 % of
    the table at (6,10) and 98.9 % at (8,8) (Computer-checked 4.2), still below the lab's records.
 4. *Other uniform formulas behave like one random draw.* Integer lifts, primitive-root and Dickson formulas, the conic
-   model and torus orbits (18 squad cards, §5) give an excess diam − log_{Δ−1}|G| of about 3.0–3.4 at Δ = 6–8, the same
-   as a single random orbit-closed S, against about 2.0–2.3 for the records. Heuristically the records' advantage is
-   selection among millions of sets, which no single formula provides (§5–6).
+   model, torus orbits, and the records' own sets moved to other q (18 squad cards, §5) give an excess
+   diam − log_{Δ−1}|G| within about 0.3 of a single random draw at the same Δ (about 2.9–3.4 at Δ = 6–8), against
+   about 2.0–2.3 for the records. Heuristically, the records' advantage is selection among millions of sets, which no
+   single formula provides (§5–6).
 5. *What would be needed is open.* A uniform family of record quality at fixed Δ would be an explicit family of
    bounded-degree graphs with diameter (1 + o(1)) log_{Δ−1} n. None is known; for the LPS graphs Sardari proved that it
    fails (§6).
@@ -73,6 +74,7 @@ Appendix A. The squad rounds. Appendix B. The LPS family cell by cell.
 | Cor. 3.4 | if diam Γ_{p,q} ≤ D then n < 2^{3/2} p^{3D/4} and n < √2·p^{1−D/4}·M^b(p+1, D) | Corollary |
 | 3.5 | equality in Thm. 3.2 in all 251 cases p ∈ {3, 5, 7, 11, 13, 17, 19, 29}, p < q ≤ 160 (including p ≡ 3 mod 4); ecc − L₀ ∈ {0, 1, 2, 3} | Computer-checked |
 | App. B | the LPS family cell by cell; at odd D its largest member is the one Thm. 3.2 allows | Computer-checked |
+| Prop. 3.6 | the same lower bound in any definite quaternion order with an orthogonal unit γ | Proposition |
 | Prop. 4.1 | the bound of Thm. 3.2 holds in every cover H(PGL(2,q) × K, S̃) of the LPS graph | Proposition |
 | 4.2 | LPS × Z_m with searched labels: 99.4 % of the table at (6,10), 98.9 % at (8,8) | Computer-checked |
 | §5 | uniform formulas of six kinds: excess about that of one random draw | Computer-checked (scores), Heuristic (reading) |
@@ -164,17 +166,17 @@ $$\psi(a_0 + a_1 i + a_2 j + a_3 k) = \begin{pmatrix} a_0 + a_1 x + a_3 y & -a_1
 **Lemma 2.3.** ψ: H(Z) → M_2(F_q) is a ring homomorphism with kernel qH(Z), and it is onto. det ψ(α) ≡ N(α), and
 ψ(ᾱ) = adj ψ(α), so ψ(α)ψ(ᾱ) = N(α)·I.
 
-*Proof.* ψ is additive and ψ(1) = I. Put M_i = ψ(i) = [[x, −y], [−y, −x]], M_j = ψ(j) = [[0, 1], [−1, 0]],
-M_k = ψ(k) = [[y, x], [x, −y]]. Direct multiplication gives M_i² = (x² + y²)·I = −I, M_j² = −I, M_i·M_j = M_k and
-M_j·M_i = [[−y, −x], [−x, y]] = −M_k. Since H(Z) is the ring generated over Z by i, j subject to i² = j² = −1 and
-ji = −ij (with k = ij), the assignment i ↦ M_i, j ↦ M_j extends to a ring homomorphism, and it sends k to
-M_i·M_j = M_k; this is the displayed formula. Its kernel contains qH(Z). If ψ(α) = 0, the diagonal gives a₀ + a₁x + a₃y = a₀ − a₁x − a₃y = 0, so a₀ = 0 and a₁x + a₃y = 0; the
-off-diagonal gives a₂ = 0 and a₃x − a₁y = 0. Then a₁(x² + y²) = x(a₁x + a₃y) − y(a₃x − a₁y) = 0, so a₁ = 0 (x² + y² = −1),
-and then a₃x = a₃y = 0 with (x, y) ≠ (0, 0), so a₃ = 0, all mod q. So the kernel is qH(Z), and the induced map
-H(Z)/qH(Z) → M_2(F_q) is injective between sets of size q⁴, hence onto. The determinant of the displayed matrix is
-(a₀ + a₁x + a₃y)(a₀ − a₁x − a₃y) − (a₂ + a₃x − a₁y)(−a₂ + a₃x − a₁y) = a₀² − (a₁x + a₃y)² + a₂² − (a₃x − a₁y)²
-= a₀² + a₂² − (a₁² + a₃²)(x² + y²) = N(α). Finally adj ψ(α) has diagonal (a₀ − a₁x − a₃y, a₀ + a₁x + a₃y) and
-off-diagonal entries −(−a₁y + a₂ + a₃x), −(−a₁y − a₂ + a₃x), which is ψ(a₀ − a₁i − a₂j − a₃k). ∎
+*Proof.* ψ is additive and ψ(1) = I. Put M_i = ψ(i) = [[x, −y], [−y, −x]], M_j = ψ(j) = [[0, 1], [−1, 0]], M_k = ψ(k) =
+[[y, x], [x, −y]]. Direct multiplication gives M_i² = (x² + y²)·I = −I, M_j² = −I, M_i·M_j = M_k and M_j·M_i = [[−y,
+−x], [−x, y]] = −M_k. Since H(Z) is the ring generated over Z by i, j subject to i² = j² = −1 and ji = −ij (with k =
+ij), the assignment i ↦ M_i, j ↦ M_j extends to a ring homomorphism, and it sends k to M_i·M_j = M_k; this is the
+displayed formula. Its kernel contains qH(Z). If ψ(α) = 0, the diagonal gives a₀ + a₁x + a₃y = a₀ − a₁x − a₃y = 0, so a₀
+= 0 and a₁x + a₃y = 0; the off-diagonal gives a₂ = 0 and a₃x − a₁y = 0. Then a₁(x² + y²) = x(a₁x + a₃y) − y(a₃x − a₁y) =
+0, so a₁ = 0 (x² + y² = −1), and then a₃x = a₃y = 0 with (x, y) ≠ (0, 0), so a₃ = 0, all mod q. So the kernel is qH(Z),
+and the induced map H(Z)/qH(Z) → M_2(F_q) is injective between sets of size q⁴, hence onto. The determinant of the
+displayed matrix is (a₀ + a₁x + a₃y)(a₀ − a₁x − a₃y) − (a₂ + a₃x − a₁y)(−a₂ + a₃x − a₁y) = a₀² − (a₁x + a₃y)² + a₂² −
+(a₃x − a₁y)² = a₀² + a₂² − (a₁² + a₃²)(x² + y²) = N(α). Finally adj ψ(α) has diagonal (a₀ − a₁x − a₃y, a₀ + a₁x + a₃y)
+and off-diagonal entries −(−a₁y + a₂ + a₃x), −(−a₁y − a₂ + a₃x), which is ψ(a₀ − a₁i − a₂j − a₃k). ∎
 
 **Lemma 2.4.** Let q > p. (a) If α, β ∈ H(Z) have N(α) = N(β) = p and ψ(α) = cψ(β) for some c ∈ F_q^×, then α = ±β.
 (b) The p + 1 points [ψ(α)], α ∈ S_p, of PGL(2, q) are distinct, and the set they form is closed under inversion.
@@ -196,18 +198,18 @@ n = q(q² − 1) vertices.
 (c) diam Γ_{p,q} = ecc(I, A) (computed in Γ_{p,q}).
 (d) Γ_{p,q} ≅ H(PSL(2, q), c⁻¹ψ(S_p)) when it has q(q² − 1) vertices.
 
-*Proof.* (a) det ψ(α) = p for all α (Lemma 2.3), and PSL(2, q) is the kernel of the homomorphism
-PGL(2, q) → F_q^×/(F_q^×)² induced by the determinant. (b) A letter and its inverse both have determinant class [p],
-so an A-word of length L has class [p]^L: it lies in PSL(2, q) for L even and in cPSL(2, q) for L odd. The set H₀ of
-the values of even A-words (the A-side of Γ_{p,q}) is closed under products and contains I, so it is a subgroup of the
-finite group PSL(2, q). Right translation ρ_h by h ∈ H₀ is an automorphism ([H] Lemma 1.2) mapping (I, A) to
-(h, A) ∈ Γ_{p,q}, so it maps Γ_{p,q} to itself; {ρ_h : h ∈ H₀} acts regularly on the A-side H₀ × {A} and on the
-B-side cH₀ × {B}. If Γ_{p,q} is connected in the sense of Theorem 2.7, H₀ = PSL(2, q). (c) By (b) and [H] Lemma 2.1 (with the group {ρ_h : h ∈ H₀}), diam Γ_{p,q} = max(ecc(I, A), ecc(c, B)). Since ψ(S_p) is closed under
-inversion (Lemma 2.4), the side swap σ(g, A) = (g, B), σ(g, B) = (g, A) is an automorphism of H(PGL(2, q), ψ(S_p))
-([H] Lemma 3.1(iv)); and ρ_c is one too. ρ_c∘σ maps (I, A) to (c, B) and maps Γ_{p,q} onto the component of (c, B),
-which is Γ_{p,q} since (c, B) ~ (I, A). Hence ecc(c, B) = ecc(I, A). (d) The map (g, A) ↦ (g, A), (h, B) ↦ (c⁻¹h, B)
-is the isomorphism H(G, S) → H(G, c⁻¹S) of [H] Lemma 3.1(i); restricted to Γ_{p,q} it lands in
-PSL(2, q) × {A, B}, and both graphs are Δ-regular with q(q² − 1) vertices. ∎
+*Proof.* (a) det ψ(α) = p for all α (Lemma 2.3), and PSL(2, q) is the kernel of the homomorphism PGL(2, q) →
+F_q^×/(F_q^×)² induced by the determinant. (b) A letter and its inverse both have determinant class [p], so an A-word of
+length L has class [p]^L: it lies in PSL(2, q) for L even and in cPSL(2, q) for L odd. The set H₀ of the values of even
+A-words (the A-side of Γ_{p,q}) is closed under products and contains I, so it is a subgroup of the finite group PSL(2,
+q). Right translation ρ_h by h ∈ H₀ is an automorphism ([H] Lemma 1.2) mapping (I, A) to (h, A) ∈ Γ_{p,q}, so it maps
+Γ_{p,q} to itself; {ρ_h : h ∈ H₀} acts regularly on the A-side H₀ × {A} and on the B-side cH₀ × {B}. When
+Theorem 2.7 applies, H₀ = PSL(2, q). (c) By (b) and [H] Lemma 2.1 (with the group {ρ_h : h ∈ H₀}),
+diam Γ_{p,q} = max(ecc(I, A), ecc(c, B)). Since ψ(S_p) is closed under inversion (Lemma 2.4), the side swap σ(g, A) =
+(g, B), σ(g, B) = (g, A) is an automorphism of H(PGL(2, q), ψ(S_p)) ([H] Lemma 3.1(iv)); and ρ_c is one too. ρ_c∘σ maps
+(I, A) to (c, B) and maps Γ_{p,q} onto the component of (c, B), which is Γ_{p,q} since (c, B) ~ (I, A). Hence ecc(c, B)
+= ecc(I, A). (d) The map (g, A) ↦ (g, A), (h, B) ↦ (c⁻¹h, B) is the isomorphism H(G, S) → H(G, c⁻¹S) of [H] Lemma
+3.1(i); restricted to Γ_{p,q} it lands in PSL(2, q) × {A, B}, and both graphs are Δ-regular with q(q² − 1) vertices. ∎
 
 ### 2.2 The order-3 symmetry
 
@@ -285,10 +287,10 @@ $$[\,a \pm 2c : b \pm 2d : c \mp 2a : d \mp 2b\,],\qquad
 [\,(1 \pm 2y)a \pm 2xc : (1 \pm 2y)b \pm 2xd : \pm 2xa + (1 \mp 2y)c : \pm 2xb + (1 \mp 2y)d\,]$$
 
 of the second copy; and the point [a : b : c : d] of the second copy is joined to the same six expressions, read as
-points of the first copy (by Lemma 2.3, adj ψ(α) = ψ(ᾱ), and S̄_5 = S_5, so the six adjugates are the same six
-matrices up to scalars). For q = 13, with (x, y) = (0, 5) (the first solution of x² + y² + 1 ≡ 0 found by the
-programs), the component of the first copy's identity is a 6-regular bipartite graph on 2184 vertices of diameter 7 (computer-checked by `lps_haar`, `haar_ecc` and the all-pairs BFS
-`apsp.c`, §8).
+points of the first copy (by Lemma 2.3, adj ψ(α) = ψ(ᾱ), and S̄_5 = S_5, so the six adjugates are the same six matrices
+up to scalars). For q = 13, with (x, y) = (0, 5) (the first solution of x² + y² + 1 ≡ 0 found by the programs), the
+component of the first copy's identity is a 6-regular bipartite graph on 2184 vertices of diameter 7 (computer-checked
+by `lps_haar`, `haar_ecc` and the all-pairs BFS `apsp.c`, §8).
 
 ---
 
@@ -301,8 +303,7 @@ ends at a vertex ([ψ(β)], A) with β ∈ H(Z), N(β) = p^L and β ≡ 1 (mod 2
 *Proof.* The walk with letters ψ(α_1), …, ψ(α_L) ends at s_L⁻¹s_{L−1}⋯s_2⁻¹s_1 with s_t = ψ(α_t), and
 [ψ(α)⁻¹] = [ψ(ᾱ)] (Lemma 2.3). So it ends at [ψ(β)] with β = ᾱ_L α_{L−1} ⋯ ᾱ_2 α_1, and N(β) = p^L. Reduce mod 2: in
 H(Z)/2H(Z) we have −1 = 1, so i, j, k commute there. If p ≡ 1 (mod 4), every α_t and ᾱ_t is ≡ 1 (mod 2H(Z)), so β ≡ 1.
-If p ≡ 3 (mod 4), every α_t and ᾱ_t is ≡ v := i + j + k, and v² = i² + j² + k² + 2(ij + jk + ki) ≡ 1, so β ≡ v^L = 1
-since L is even. ∎
+If p ≡ 3 (mod 4), every α_t and ᾱ_t is ≡ v := i + j + k, and v² = −3 ≡ 1, so β ≡ v^L = 1 since L is even. ∎
 
 **Theorem 3.2 (distance to ψ(i)).** Let p, q be odd primes with q > p, and let L₀ be the least even integer L ≥ 0 with
 2p^{L/2} > q². In Γ_{p,q}:
@@ -362,16 +363,38 @@ families lose to them by a factor p^{D/4−1}.
 
 **Computer-checked 3.5.** For p ∈ {3, 5, 7, 11, 13, 17, 19, 29} and every prime q with p < q ≤ 160, the distance from
 (I, A) to ([ψ(i)], A), ([ψ(j)], A) and ([ψ(k)], A), computed by breadth-first search (`lps_haar.c`), equals L₀: no
-exception in 251 cases (log `haar_families/recheck_thmB.log`). This includes p ≡ 3 (mod 4), where equality is
-not proved here. The eccentricity of (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251 cases). So in
-this range the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is exactly what limits
-the family (Appendix B). An independent re-implementation by squad card c8 (its own
-quaternion arithmetic and BFS; `research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with
-7 ≤ q ≤ 61 and Theorem 3.2 in 41 cases with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six
-LPS graphs. (The squad card also found a bug in the first version of `lps_haar.c`, which mixed the distances of the
-two sides; the logs above are from the corrected version.)
+exception in 251 cases (log `haar_families/recheck_thmB.log`). This includes p ≡ 3 (mod 4), where equality is not proved
+here. The eccentricity of (I, A) exceeds L₀ by 0, 1, 2 or 3 (in 76, 151, 22 and 2 of the 251 cases). So in this range
+the special vertex ψ(i) accounts for the diameter up to at most 3, and at odd D it is exactly what limits the family
+(Appendix B). An independent re-implementation by squad card c8 (its own quaternion arithmetic and BFS;
+`research/squads/thmfam-r1/c8/`) confirmed Theorem 2.6(c) for all 137 pairs with 7 ≤ q ≤ 61 and Theorem 3.2 in 41 cases
+with q ≡ 1 (mod 4), and its all-pairs BFS (`apsp.c`) agreed with `haar_ecc` on six LPS graphs. (The squad card also
+found a bug in the first version of `lps_haar.c`, which mixed the distances of the two sides; the logs above are from
+the corrected version.)
 
-**Remark 3.6 (prior art).** The lower bound (4/3) log_p n + O(1) for the diameter of the bipartite LPS graphs is due to
+**Proposition 3.6 (the same obstruction in other definite quaternion orders).** Let 𝒪 be a Z-order in a definite
+quaternion algebra over Q, with norm form N, and suppose 𝒪 = Zγ ⊕ 𝒪′ with N(aγ + β′) = a² + N(β′) for a ∈ Z,
+β′ ∈ 𝒪′ (an orthogonal unit γ, N(γ) = 1). Let ψ: 𝒪 → M_2(F_q) be a ring homomorphism with kernel q𝒪 (q an odd prime,
+q ∤ p), let S ⊆ 𝒪 be a set of elements of norm p closed under conjugation up to sign, and suppose that no product of
+an even number L ≥ 2 of elements of S lies in Zγ. Then in H(PGL(2, q), ψ(S)), every walk of even length L from (I, A)
+to ([ψ(γ)], A) has 2p^{L/2} > q².
+
+*Proof.* As in Lemma 3.1 the walk ends at [ψ(β)] with β a product of L elements of S (conjugates included), so
+N(β) = p^L; [ψ(β)] = [ψ(γ)] gives β = bγ + qβ″ with b ∈ Z, β″ ∈ 𝒪′ (the kernel of ψ is q𝒪 and 𝒪 = Zγ ⊕ 𝒪′), and
+β″ ≠ 0 by hypothesis. Then P² = b² + q²N(β″) with P = p^{L/2} and N(β″) ≥ 1, and the second half of the proof of
+Theorem 3.2(a) applies verbatim (q ∤ P, q² | P − εb, 0 < P − εb < 2P). ∎
+
+For the Hamilton order, γ = i, 𝒪′ = Z + Zj + Zk, and the hypothesis is Lemma 3.1 (every even product is ≡ 1 mod 2,
+while elements of Zi have even real part). *Computer-checked* (squad card c9 of round 2,
+`research/squads/thmfam-r2/c9/`): in the order Z⟨1, i, j, ij⟩ with i² = −1, j² = −3 (norm a₀² + a₁² + 3a₂² + 3a₃²),
+with S a set of p + 1 classes of elements of norm p modulo the units ±1, ±i, for p ∈ {5, 7, 11} and q ≤ 97, the
+distance from (I, A) to ([ψ(i)], A) equals the least even L with 2p^{L/2} > q² in 65 of 66 cases (in the remaining
+case, p = 5, q = 61, it is 12 instead of 10), and ψ(i) is at maximal distance for p = 5, q ∈ {61, 83, 97}. So the
+obstruction is a property of definite quaternion arithmetic with a unit orthogonal to the rest, not of Hamilton's
+order. (The card did not check the hypothesis "no even product in Zi" for its set; the lower bound it measured holds in
+all 66 cases.)
+
+**Remark 3.7 (prior art).** The lower bound (4/3) log_p n + O(1) for the diameter of the bipartite LPS graphs is due to
 N. T. Sardari, *Diameter of Ramanujan graphs and random Cayley graphs*, Combinatorica 39 (2019) 427–446,
 arXiv:1511.09340 [abstract]; his abstract also states that almost all pairs of vertices of a Ramanujan graph are at
 distance at most (1 + ε) log_{p} n, and reports numerics in which LPS diameters grow like (4/3) log and those of random
@@ -407,10 +430,12 @@ Searching t for each (q, m), the squads found:
 | (6,9) | (13, 43) | 93,912 | 80.0 % | 127,296 | 24,360 |
 | (6,10) | (23, 37) | 449,328 | 99.4 % | 524,160 | 148,824 |
 | (8,8) | (11, 151) | 199,320 | 98.9 % | 239,904 | 29,760 |
-| (8,9) | [[C7_89]] | | | 1,341,600 | 300,696 |
+| (8,9) | (23, 73) | 886,512 | 81.2 % | 1,341,600 | 300,696 |
+| (14,8) | (29, 379) | 9,232,440 | 65.1 % | none (the lab does not beat this cell) | 1,294,920 |
 
-Every entry was re-checked with `haar_ecc` (two-source BFS on the component) and, for (6,10), with
-`verify_cover.py` (independent Python arithmetic; eccentricities 10 and 10). These graphs are below the lab's records
+Every entry was re-checked by the director with `haar_ecc` (two-source BFS on the component, from the cards'
+generators: `research/squads/thmfam-r1/c6/gen_c6.py`, `research/squads/thmfam-r1/c7/c7lib.py`), and (6,10) and (8,8)
+also with `verify_cover.py` (independent Python arithmetic; eccentricities 10, 10 and 8, 8). These graphs are below the lab's records
 and below the table, and their labels were searched for each (q, m): they are not a uniform family. They show that the
 cyclic factor removes most of the 4/3 loss in practice: at (6,10) the cover is 3.0 times the LPS graph alone.
 
@@ -508,7 +533,7 @@ log_p n + O(log log n). Neither is in sight. The squads' round 2 looked for labe
 - **LPS graphs.** A. Lubotzky, R. Phillips, P. Sarnak, *Ramanujan graphs*, Combinatorica 8 (1988) 261–277; G. A.
   Margulis, Problems Inform. Transmission 24 (1988) 39–46 [secondary]; the book of Davidoff–Sarnak–Valette (2003)
   [secondary]. Definitions 2.1–2.2, Lemma 2.3, Theorem 2.7 and the factorization used in Theorem 3.2(b) are theirs.
-- **The 4/3 lower bound.** Sardari (2019) [abstract], Remark 3.6.
+- **The 4/3 lower bound.** Sardari (2019) [abstract], Remark 3.7.
 - **Typical distances in Ramanujan graphs.** Lubetzky–Peres (2016) [secondary]; Sardari (2019) [abstract].
 - **Haar graphs of SL(2, q) and PSL(2, q) in extremal problems.** [H] §6.1: Exoo–Jajcay (girth, a Haar graph of
   SL(2, 83)); Bray–Parker–Rowley (the group PSL(2, q) × Z_3); the LPS graphs themselves are Haar graphs of PSL(2, q) in

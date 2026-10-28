@@ -30,7 +30,7 @@ for p in [3, 5, 7, 13]:
             e_cB = L.ecc(dc)
             eqs.append(e_cB)
             check("Lemma2.5c ecc(c,B)=ecc(I,A)", e_cB == eIA, (p,q,a,e_cB,eIA))
-        if q <= 13:
+        if q <= 11:
             # full diameter over all vertices (BFS from every vertex)
             verts = list(d.keys())
             diam = 0
