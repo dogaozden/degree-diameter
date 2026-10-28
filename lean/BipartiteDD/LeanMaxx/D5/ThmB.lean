@@ -226,6 +226,24 @@ theorem star_iff (Sg : Strong P L) {i j : ι} (hRA : ∀ x ∈ D.R i j, col x = 
     obtain ⟨z, hxz, hzw⟩ := Sg.cover x w (by rw [hRA x hx, hw]; cases D.τ i <;> simp)
     refine ⟨z, fun hz => h x hx z hz hxz.1 hxz, hxz, hzw.symm⟩
 
+/-- The easy half of `star_iff`, which needs only the base facts. -/
+theorem star_of_partial {i j : ι} (hRA : ∀ x ∈ D.R i j, col x = D.τ i)
+    (h : ∀ x ∈ D.R i j, ∀ y ∈ D.R i j, x ≠ y → ¬ Co x y) : D.Star i j := by
+  intro x hx w hw
+  obtain ⟨z, hxz, hzw⟩ := H.base.cover x w (by rw [hRA x hx, hw]; cases D.τ i <;> simp)
+  exact ⟨z, fun hz => h x hx z hz hxz.1 hxz, hxz, hzw.symm⟩
+
+/-- **Theorem B, sufficiency** (base facts only): an automorphic transition whose freed set has no two elements
+at distance two is repaired. -/
+theorem repaired_of_partial {i j : ι} (hT : D.T i j)
+    (hRA : ∀ x ∈ D.R i j, col x = D.τ i) (ψ : incGraph P L ≃g incGraph P L)
+    (hψ : ∀ x, col x = D.τ i → D.M i j x = ψ x)
+    (h : ∀ x ∈ D.R i j, ∀ y ∈ D.R i j, x ≠ y → ¬ Co x y) : D.Repaired i j := by
+  by_cases hne : (D.R i j).Nonempty
+  · have hs := H.star_of_partial hRA h
+    exact H.repaired_of_E hT hRA hne ((H.E2_iff_star hT hRA ψ hψ).2 hs) ((H.E3_iff_star hT hRA ψ hψ).2 hs)
+  · exact H.repaired_of_empty hT (Set.not_nonempty_iff_eq_empty.1 hne)
+
 /-- **Theorem B.** An automorphic transition is repaired iff its freed set has no two elements at
 distance two (a partial ovoid if `A_i` consists of points, a partial spread if of lines). -/
 theorem repaired_iff_partial (Sg : Strong P L) {i j : ι} (hT : D.T i j)
