@@ -1452,6 +1452,1182 @@ work.}
 ($q=13$, $m=3$). Each beats the 2013 value of its cell (8992, 142464, 374452, 842048, 884062), and Delorme's graphs behind
 those values are not regular (their point side is larger).
 
+%======================================================================
+\section{Diameter 7: level graphs of the split Cayley hexagon, surgery and hubs}\label{sec:d7}
+%======================================================================
+
+In the 2013 table each of the cells $(7,7)$ and $(9,7)$--$(16,7)$ has the value $(2r+1)\cdot2N(q)$, with
+$\Delta=q+1+r$, for the $(q,r)$ of Table~\ref{tab:d7}; this is the order of $2r+1$ copies of the incidence graph $I(q)$ of
+$H(q)$ joined by matchings (Theorem~\ref{thm:levelgraph}). The CombinatoricsWiki credits these cells to Delorme, G\'omez
+and Quisquater \cite{DGQ}. We delete some matching edges and attach new vertices (``hubs'') to the freed slots. The
+general theorems (Sections~\ref{ssec:d7levels}--\ref{ssec:hubgraphs}) hold for every generalized hexagon of order
+$(q,q)$, in particular for $H(q)$ and its dual; only Lemma~\ref{lem:hexfacts}(c) and Lemma~\ref{lem:hexsets} are specific
+to $H(q)$. In this section $\cP$ and $\cL$ are the point set and the line set of $H(q)$, and $N=|\cP|=|\cL|=(q+1)(q^4+q^2+1)$.
+
+\begin{table}[ht]
+\caption{Diameter 7. The 2013 value is $(2r+1)\cdot2N(q)$.}\label{tab:d7}
+\begin{tabular}{@{}l l r r l@{}}
+\toprule cell & $q$, $r$ & 2013 & this paper & construction \\ \midrule
+(7,7) & 5, 1 & 23\,436 & 23\,598 & 3 levels, local duality (Cor.~\ref{cor:rec-81}) \\
+(9,7) & 7, 1 & 117\,648 & 118\,238 & same \\
+(10,7) & 8, 1 & 224\,694 & 225\,152 & same \\
+(11,7) & 9, 1 & 398\,580 & 413\,180 & 3 levels, duality, spread points freed (Cor.~\ref{cor:rec-dual}) \\
+(12,7) & 9, 2 & 664\,300 & 693\,500 & 5 levels, duality, spread points freed (Cor.~\ref{cor:rec-dual}) \\
+(13,7) & 11, 1 & 1\,062\,936 & 1\,064\,472 & 3 levels, local duality (Cor.~\ref{cor:rec-81}) \\
+(14,7) & 11, 2 & 1\,771\,560 & 1\,789\,588 & typed levels $HDHDH$ (Cor.~\ref{cor:rec-typed}) \\
+(15,7) & 11, 3 & 2\,480\,184 & 2\,501\,491 & typed levels $HHDHDHD$ (Cor.~\ref{cor:rec-typed}) \\
+(16,7) & 13, 2 & 4\,022\,340 & 4\,052\,108 & typed levels $HDHDH$ (Cor.~\ref{cor:rec-typed}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sets of points and lines}
+
+\begin{definition}\label{def:hexsets}
+A set of points of $H(q)$ is \emph{non-collinear} if no two of its points are collinear (a partial distance-2 ovoid),
+and a \emph{partial ovoid} if its points are pairwise opposite; an \emph{ovoid} is a partial ovoid with $q^3+1$ points.
+Dually, a set of lines is \emph{non-concurrent}, a \emph{partial spread} (pairwise opposite lines) or a \emph{spread}
+($q^3+1$ pairwise opposite lines).
+\end{definition}
+
+We follow \cite{VM98}: an ovoid of a generalized hexagon is a distance-3 ovoid. By
+Lemma~\ref{lem:hexfacts}(c), partial ovoids of $H(q)$ are exactly the sets of pairwise non-perpendicular points of
+$Q(6,q)$, i.e.\ partial ovoids of the polar space $Q(6,q)$.
+
+\begin{lemma}\label{lem:hexsets}
+\begin{enumerate}[label=(\alph*)]
+\item If $\Sigma$ is a 3-space of $\PG(6,q)$ with $\Sigma\cap Q(6,q)$ an elliptic quadric $Q^-(3,q)$, its $q^2+1$ points
+  form a partial ovoid of $H(q)$, for every $q$.
+\item (Hermitian spread \cite{T80}.) If $\Pi$ is a hyperplane with $\Pi\cap Q(6,q)$ an elliptic quadric $Q^-(5,q)$, the
+  lines of $H(q)$ contained in $\Pi$ form a spread, for every $q$.
+\item If $S$ is a spread, every line not in $S$ meets exactly one line of $S$.
+\item If $q=3^h$ and $\varphi$ is a duality, $\varphi(S)$ is an ovoid for every spread $S$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) If $x\ne y$ are points of $Q^-(3,q)$ with $b(x,y)=0$, then $Q(\lambda x+\mu y)=\lambda\mu b(x,y)=0$, so the line $xy$
+lies in $Q^-(3,q)$, which contains no line. So $b(x,y)\ne0$ and $x,y$ are opposite by Lemma~\ref{lem:hexfacts}(c). (b) is
+Lemma~\ref{lem:Piz}(b) for odd $q$ and Lemma~\ref{lem:Piz-even} for even $q$ (with the hyperplanes used there).
+(c) A line meeting two lines of $S$ would put them at distance at most 4. So the lines of $S$ together with the $q(q+1)$
+lines meeting each of them are $(q^3+1)(q^2+q+1)=N$ distinct lines, that is, all lines. (d) $\varphi$ preserves
+distances.
+\end{proof}
+
+Ovoids of $H(q)$ (equivalently of $Q(6,q)$) exist for $q=3^h$ (Lemma~\ref{lem:hexsets}(d), \cite{Th81}); they do not exist
+for $q$ even \cite{Th81} or for $q$ prime, $q\ge5$ \cite{BGS06}.
+
+\begin{definition}[segment sets]\label{def:segment}
+A set $F$ of points is a \emph{segment set} if for every $p\in F$ the points of $F\setminus\{p\}$ collinear with $p$ all
+lie on one line through $p$. Equivalently, there are no $p,p',p''\in F$ with $d(p,p')=d(p',p'')=2$ and $d(p,p'')=4$ (a
+path of two collinearities that turns at $p'$). Dually, a set $G$ of lines is a \emph{dual segment set} if for every
+$\ell\in G$ the lines of $G\setminus\{\ell\}$ meeting $\ell$ all pass through one point of $\ell$.
+\end{definition}
+
+So a segment set is a disjoint union of ``segments'' (at least two points on a line) and isolated points, such that no two
+points from different pieces are collinear. Examples: every non-collinear set; every set in which each point is collinear
+with at most one other point of the set; every subset of the point set of a partial spread; dually, the set of all lines
+through the points of a partial ovoid.
+
+\begin{proposition}[size of segment sets]\label{prop:segmentsize}
+A segment set $F$ has $|F|\le(q+1)(q^3+1)$, with equality if and only if $F$ is the point set of a spread. Dually, a dual
+segment set has at most $(q+1)(q^3+1)$ lines, with equality if and only if it is the set of lines through the points of an
+ovoid.
+\end{proposition}
+
+\begin{proof}
+Let $F_1$ be the points of $F$ collinear with no other point of $F$, and $C_1,\dots,C_k$ the segments (maximal sets of at
+least two points of $F$ on a line $\ell_i$). A line meeting $F$ in exactly one point is a \emph{private} line of that point.
+A point of $F_1$ has $q+1$ private lines and a point of a segment $C_i$ has $q$ (all its lines except $\ell_i$, by the
+segment property). Private lines of different points are different, and different from the $\ell_i$. So
+$(q+1)|F_1|+q\sum_i|C_i|+k\le N$. Since $k\ge\sum_i|C_i|/(q+1)$, the left side is at least $(q+\frac1{q+1})|F|$, which
+gives $|F|\le N(q+1)/(q^2+q+1)=(q+1)(q^3+1)$. Equality forces $F_1=\emptyset$, $|C_i|=q+1$ and $k=q^3+1$. The lines
+$\ell_i$ are then pairwise opposite: if $\ell_i$ and $\ell_j$ met in a point $z$, then $z\in F$ would have other points of
+$F$ on two lines; if $d(\ell_i,\ell_j)=4$, a point of $\ell_i$ would be collinear with a point of $\ell_j$ and would also
+have other points of $F$ on $\ell_i$. So they form a spread. Conversely the point set of a spread is a segment set of this
+size. The dual statement is the same proof in the dual hexagon.
+\end{proof}
+
+For comparison, a non-collinear set has at most $N/(q+1)=q^4+q^2+1$ points (equality means a distance-2 ovoid; these are
+known only for $q=2,3,4$ \cite{DWVM08}, \cite{BI16}).
+
+\subsection{Level graphs}\label{ssec:d7levels}
+Fix $r\ge1$; there are $2r+1$ \emph{levels}, indexed by $j\in\Z_{2r+1}$. Each level gets a \emph{type}
+$\tau_j\in\{H,D\}$ (the hexagon or its dual). For a type $\tau$ let
+\[
+\mathsf A(H)=\cP,\quad\mathsf B(H)=\cL,\qquad\mathsf A(D)=\cL,\quad\mathsf B(D)=\cP .
+\]
+A \emph{transition} is a pair $t=(j,k)$ with $j\in\Z_{2r+1}$ and $1\le k\le r$; its source level is $j$ and its target
+level $j+k$. It is \emph{friendly} if $\tau_j\ne\tau_{j+k}$; then $\mathsf A(\tau_j)=\mathsf B(\tau_{j+k})$.
+
+\begin{definition}[level graph]\label{def:levelgraph}
+Given types $\tau$ and, for every transition $t=(j,k)$, a bijection $M_t:\mathsf A(\tau_j)\to\mathsf B(\tau_{j+k})$, the
+graph $X=X(\tau,M)$ has vertex set $(\cP\cup\cL)\times\Z_{2r+1}$ and edges
+\begin{itemize}
+\item $(x,j)\sim(y,j)$ whenever $x$ and $y$ are incident (\emph{level edges});
+\item $(a,j)\sim(M_{(j,k)}(a),j+k)$ for every $j$, every $1\le k\le r$ and every $a\in\mathsf A(\tau_j)$ (\emph{matching
+  edges}).
+\end{itemize}
+\end{definition}
+
+Colour $(a,j)$, $a\in\mathsf A(\tau_j)$, with colour $\mathsf A$ and $(b,j)$, $b\in\mathsf B(\tau_j)$, with colour
+$\mathsf B$; every edge joins different colours, so $X$ is bipartite. The neighbourhoods are
+\begin{align*}
+N_X(a,j)&=\Gamma_1(a)\times\{j\}\ \cup\ \{(M_{(j,k)}(a),j+k):1\le k\le r\}\qquad(a\in\mathsf A(\tau_j)),\\
+N_X(b,j)&=\Gamma_1(b)\times\{j\}\ \cup\ \{(M^{-1}_{(j-k,k)}(b),j-k):1\le k\le r\}\qquad(b\in\mathsf B(\tau_j)),
+\end{align*}
+so $X$ is $(q+1+r)$-regular of order $(2r+1)\cdot2N$. When all levels have type $H$ and all $M_t$ equal one bijection
+$\cP\to\cL$, $X$ has the order of the 2013 table value.
+
+\begin{theorem}[level graphs]\label{thm:levelgraph}
+For all types and all bijections $M_t$, $X(\tau,M)$ has diameter at most 7. More precisely, two vertices of one level are
+joined by a path of length at most 6 inside that level, and for every transition $t=(j,k)$ every vertex of level $j$ is
+joined to every vertex of level $j+k$ by a path of length at most 7 that uses only level edges of levels $j$ and $j+k$ and
+matching edges of $t$.
+\end{theorem}
+
+\begin{proof}
+Inside a level this is the diameter of $I(q)$. Any two distinct levels differ by $\pm k$ for some $1\le k\le r$, so it is
+enough to join $(u,j)$ to $(v,j')$, $j'=j+k$, with $M=M_{(j,k)}$. (1) $u\in\mathsf A(\tau_j)$: $(u,j)\to(M(u),j')\leadsto
+(v,j')$, of length at most $1+6$. (2) $u\in\mathsf B(\tau_j)$, $v\in\mathsf B(\tau_{j'})$: with $a=M^{-1}(v)$,
+$(u,j)\leadsto(a,j)\to(v,j')$, of length at most $5+1$ (elements of different types are at distance at most 5). (3)
+$u\in\mathsf B(\tau_j)$, $v\in\mathsf A(\tau_{j'})$: pick $b\in\Gamma_1(v)$ and $a=M^{-1}(b)$; then
+$(u,j)\leadsto(a,j)\to(b,j')\to(v,j')$, of length at most $5+1+1$.
+\end{proof}
+
+This is the routine argument for such graphs, and we do not claim it (Section~\ref{ssec:d7prior}).
+
+\subsection{Surgery and hubs}
+
+\begin{definition}[surgery and hubs]\label{def:surgery}
+Start from a level graph $X(\tau,M)$ and choose for every transition $t=(j,k)$ a set $R_t\subseteq\mathsf A(\tau_j)$ of
+\emph{freed elements} (possibly empty).
+\begin{enumerate}
+\item \emph{Deletion.} Delete the matching edges $(a,j)\sim(M_t(a),j+k)$, $a\in R_t$. Call the result $X_R$. Each deleted
+  edge leaves a \emph{free $\mathsf A$-slot} $(a,t)$ at the vertex $(a,j)$ and a \emph{free $\mathsf B$-slot} $(M_t(a),t)$
+  at the vertex $(M_t(a),j+k)$. Level $j$ has
+  \[
+  \alpha_j=\sum_{k=1}^r|R_{(j,k)}|\ \text{free }\mathsf A\text{-slots},\qquad \beta_j=\sum_{k=1}^r|R_{(j-k,k)}|\ \text{free
+  }\mathsf B\text{-slots}.
+  \]
+\item \emph{Hubs.} Add $K_{\mathsf B}\le\min_j\alpha_j$ new vertices of colour $\mathsf B$ (\emph{$\mathsf B$-hubs}) and
+  $K_{\mathsf A}\le\min_j\beta_j$ new vertices of colour $\mathsf A$ (\emph{$\mathsf A$-hubs}). Each $\mathsf B$-hub $h$ takes
+  exactly one free $\mathsf A$-slot in every level $j$ and is joined to its vertex, written $(\omega_j(h),j)$; each
+  $\mathsf A$-hub $g$ likewise takes one free $\mathsf B$-slot in every level, at the vertex $(\omega'_j(g),j)$. Every slot is
+  taken at most once. (The assignment is otherwise arbitrary; a vertex with several free slots may receive several hubs.)
+\item \emph{Hub graph.} Add a bipartite graph $Y$ between the $\mathsf B$-hubs and the $\mathsf A$-hubs.
+\end{enumerate}
+Call the result $X^+_R$.
+\end{definition}
+
+\emph{Exact neighbourhoods.} For a level vertex, the neighbourhood is that of Definition~\ref{def:levelgraph} minus the
+deleted matching edges plus one hub for each taken free slot. For hubs,
+\[
+N_{X^+_R}(h)=\{(\omega_j(h),j):j\in\Z_{2r+1}\}\cup N_Y(h),\qquad N_{X^+_R}(g)=\{(\omega'_j(g),j):j\in\Z_{2r+1}\}\cup N_Y(g).
+\]
+Level vertices have degree at most $q+1+r$ (with equality when all their free slots are used), and hubs have degree
+$2r+1+\deg_Y$. So $X^+_R$ is bipartite of maximum degree at most $q+1+r$ as soon as $Y$ has maximum degree at most $q-r$,
+and $|X^+_R|=(2r+1)\cdot2N+K_{\mathsf A}+K_{\mathsf B}$.
+
+\begin{definition}\label{def:repaired}
+A transition $t=(j,k)$ is \emph{repaired} (by $R_t$) if in $X_R$ every vertex of level $j$ is joined to every vertex of
+level $j+k$ by a path of length at most 7 that uses only level edges of levels $j$, $j+k$ and the remaining matching edges
+of $t$.
+\end{definition}
+
+Whether $t$ is repaired depends only on $M_t$ and $R_t$.
+
+\begin{lemma}[hubs]\label{lem:hubs}
+In $X^+_R$ every hub is within distance 7 of every level vertex, and every $\mathsf B$-hub is within distance 7 of every
+$\mathsf A$-hub.
+\end{lemma}
+
+\begin{proof}
+A $\mathsf B$-hub $h$ and a level vertex $(v,j)$: $h\to(\omega_j(h),j)\leadsto(v,j)$ inside level $j$, of length at most
+$1+6$ (level edges are never deleted). A $\mathsf B$-hub $h$ and an $\mathsf A$-hub $g$: in level 0,
+$\omega_0(h)\in\mathsf A(\tau_0)$ and $\omega'_0(g)\in\mathsf B(\tau_0)$ have different types, so
+$h\to(\omega_0(h),0)\leadsto(\omega'_0(g),0)\to g$ has length at most $1+5+1$.
+\end{proof}
+
+\begin{theorem}[assembly]\label{thm:assembly}
+Suppose that
+\begin{itemize}
+\item[(T)] every transition $t$ is repaired by $R_t$, and
+\item[(HG)] any two $\mathsf B$-hubs, and any two $\mathsf A$-hubs, are within distance 6 in $X^+_R$.
+\end{itemize}
+Then $X^+_R$ has diameter at most 7. If moreover $Y$ has maximum degree at most $q-r$, then
+\[
+\nb(q+1+r,7)\ge(2r+1)\cdot2N(q)+K_{\mathsf A}+K_{\mathsf B}.
+\]
+\end{theorem}
+
+\begin{proof}
+Pairs of level vertices: same level by the diameter of $I(q)$, different levels by (T), since every pair of levels is the
+pair of some transition. Pairs with a hub: Lemma~\ref{lem:hubs} and (HG).
+\end{proof}
+
+(HG) holds for instance when $Y$ alone has all same-colour distances at most 6; it can also use paths through the levels.
+
+\subsection{Transitions that extend to an automorphism}
+A transition $t=(j,k)$ is \emph{automorphic} if $M_t$ is the restriction to $\mathsf A(\tau_j)$ of an automorphism $\psi$
+of $I(q)$ with $\psi(\mathsf A(\tau_j))=\mathsf B(\tau_{j+k})$. The two cases used here are: a friendly transition with
+$M_t=\mathrm{id}$; and an $H\to H$ transition with $M_t=\varphi|_\cP$ for a duality $\varphi$ ($q=3^h$), or a $D\to D$
+transition with $M_t=\varphi|_\cL$.
+
+\begin{lemma}\label{lem:segment}
+Let $F$ be a segment set of points. For all elements $u,v$ of $H(q)$ there is a point $p\notin F$ with
+$d(u,p)+d(p,v)\le6$.
+\end{lemma}
+
+\begin{proof}
+If some point $p$ on a geodesic from $u$ to $v$ is not in $F$, then $d(u,p)+d(p,v)=d(u,v)\le6$. Assume that all points on
+all geodesics from $u$ to $v$ lie in $F$. A geodesic with three points $p,p',p''$ in a row ($p-m-p'-m'-p''$ with lines
+$m\ne m'$) cannot have all three in $F$ (a turning path). A geodesic between two points at distance 4 or 6, a point and a
+line at distance 5, or two lines at distance 6 contains three points in a row. So only the following cases remain; in each
+we exhibit $p\notin F$ with $d(u,p)+d(p,v)\le6$. We use repeatedly: \emph{if $p_0\in F$ has a point of $F$ on the line $s$
+through it, then no point $p\ne p_0$ collinear with $p_0$ off $s$ is in $F$}.
+\begin{enumerate}[label=(\alph*)]
+\item $u=v$ a point of $F$. Let $s$ be a line through $u$ containing every point of $F$ collinear with $u$ (any line if there
+  is none). Take a line $y\ne s$ through $u$ and $p\in y\setminus\{u\}$: $p\notin F$ and $d(u,p)+d(p,u)=4$.
+\item $u,v$ collinear points of $F$ on the line $s$. Take $y\ne s$ through $u$ and $p\in y\setminus\{u\}$: $p\notin F$,
+  $d(u,p)=2$, $d(p,v)\le4$.
+\item $u\in F$ a point and $v$ a line through $u$. If $v$ has a point $p\ne u$ outside $F$: $2+1$. Otherwise all points of
+  $v$ are in $F$; take $y\ne v$ through $u$ and $p\in y\setminus\{u\}$: $p\notin F$, $d(u,p)=2$, $d(p,v)\le3$.
+\item $u$ a point and $v$ a line with $d(u,v)=3$, geodesic $u-s-p_2-v$ with $u,p_2\in F$. A point $p\in v\setminus\{p_2\}$
+  has $d(u,p)=4$ and $d(p,v)=1$. If all of them were in $F$, $p_2$ would have points of $F$ on the two lines $s$ and $v$.
+\item $u,v$ lines meeting in $p_1\in F$. Not both $u$ and $v$ contain a second point of $F$ (else $p_1$ turns). Say $u$ does
+  not: take $p\in u\setminus\{p_1\}$; then $p\notin F$, $d(u,p)=1$, $d(p,v)=3$.
+\item $u,v$ lines at distance 4, geodesic $u-p_1-y-p_3-v$ with $p_1,p_3\in F$. No other point $p$ of $u$ is in $F$ (else
+  $p_1$ turns: $p$ on $u$, $p_3$ on $y$), and $d(u,p)=1$, $d(p,v)\le d(p,p_1)+d(p_1,v)=2+3$.
+\item $u=v$ a line. If some point of $u$ is not in $F$: $1+1$. Otherwise take $p_1\in u$, a line $y\ne u$ through $p_1$ and
+  $p\in y\setminus\{p_1\}$: $p\notin F$ and $d(u,p)=3$, so $3+3=6$.
+\end{enumerate}
+The cases with $u$ a line and $v$ a point are (c), (d) with $u$ and $v$ exchanged.
+\end{proof}
+
+\begin{theorem}[automorphic transitions]\label{thm:autotrans}
+Let $t=(j,k)$ be an automorphic transition. If $\mathsf A(\tau_j)=\cP$ and $R_t$ is a segment set of points, or
+$\mathsf A(\tau_j)=\cL$ and $R_t$ is a dual segment set of lines, then $t$ is repaired.
+\end{theorem}
+
+\begin{proof}
+Let $\psi$ extend $M=M_t$, $j'=j+k$, and take $(u,j)$, $(v,j')$. For every $a\in\mathsf A(\tau_j)\setminus R_t$ the path
+$(u,j)\leadsto(a,j)\to(\psi(a),j')\leadsto(v,j')$ has length $d(u,a)+1+d(\psi(a),v)=d(u,a)+1+d(a,\psi^{-1}(v))$, since $\psi$
+is an isometry of $I(q)$. If $\mathsf A(\tau_j)=\cP$, Lemma~\ref{lem:segment} applied to $u$, $\psi^{-1}(v)$ and $F=R_t$
+gives $a$ with $d(u,a)+d(a,\psi^{-1}(v))\le6$. If $\mathsf A(\tau_j)=\cL$, apply Lemma~\ref{lem:segment} in the dual
+hexagon.
+\end{proof}
+
+\begin{remark}[the converse]\label{rem:converse}
+An automorphic transition is repaired if and only if its freed set is a segment set (a dual segment set for lines).
+Suppose that $p,p',p''\in R_t$ turn at $p'$ ($p-m-p'-m'-p''$, $m\ne m'$) and take a line $u\ne m'$ through $p''$. Then
+$d(p,u)=5$, with the unique geodesic $p-m-p'-m'-p''-u$. A path from $(u,j)$ to $(\psi(p),j')$ inside the two levels uses an
+odd number $2h+1$ of matching edges of $t$, and (transporting the segments in level $j'$ back by $\psi^{-1}$) has length at
+least $2h+1+d(u,p)=2h+6$. So a path of length at most 7 uses one matching edge, at a point $a$ with $d(u,a)+d(a,p)=5$, that
+is $a\in\{p,p',p''\}$; all three edges are deleted, and the distance within the two levels is more than 7.
+\end{remark}
+
+\begin{corollary}\label{cor:autotrans}
+The following transitions are repaired:
+\begin{enumerate}
+\item a friendly transition with $M_t=\mathrm{id}$ and $R_t$ a non-collinear set of points (if $\tau_j=H$) or a
+  non-concurrent set of lines (if $\tau_j=D$);
+\item the same with $R_t$ a set in which every element is collinear (concurrent) with at most one other element of $R_t$;
+\item an $H\to H$ transition with $M_t$ a duality and $R_t$ any subset of the point set of a partial spread (for example all
+  $(q+1)(q^3+1)$ points of the Hermitian spread, $q=3^h$).
+\end{enumerate}
+\end{corollary}
+
+\subsection{Local dualities}
+For transitions that are not automorphic (an $H\to H$ or $D\to D$ transition when $q\ne3^h$, or one whose matching is not
+the restriction of a duality) we ask $M_t$ to behave like a duality only near the freed elements.
+
+\begin{theorem}[local dualities]\label{thm:localdual}
+Let $t=(j,k)$ be any transition, $M=M_t$ and $R=R_t\subseteq\mathsf A(\tau_j)$. Suppose
+\begin{itemize}
+\item[(H1)] no two elements of $R$ are at distance 2;
+\item[(H2)] no two elements of $M(R)$ are at distance 2;
+\item[(H3)] $M(\Gamma_2(x))=\Gamma_2(M(x))$ for every $x\in R$ ($M$ is a \emph{local duality} at $x$ when it maps points to
+  lines: it maps the points collinear with $x$ onto the lines concurrent with $M(x)$).
+\end{itemize}
+Then $t$ is repaired.
+\end{theorem}
+
+\begin{proof}
+Write $j'=j+k$; ``$\mathsf A$'' and ``$\mathsf B$'' refer to $\mathsf A(\tau_j),\mathsf B(\tau_j)$ in level $j$ and to
+$\mathsf A(\tau_{j'}),\mathsf B(\tau_{j'})$ in level $j'$. Take $(u,j)$ and $(v,j')$.
+\begin{enumerate}
+\item $u\in\mathsf A\setminus R$: $(u,j)\to(M(u),j')\leadsto(v,j')$, length at most $1+6$.
+\item $u\in\mathsf B$, $v\in\mathsf A$: the $q+1\ge2$ neighbours of $v$ are pairwise at distance 2, so by (H2) at most one is
+  in $M(R)$; take $b\in\Gamma_1(v)\setminus M(R)$ and $a=M^{-1}(b)\notin R$: $(u,j)\leadsto(a,j)\to(b,j')\to(v,j')$, length
+  at most $5+1+1$.
+\item $u\in\mathsf B$, $v\in\mathsf B\setminus M(R)$: $(u,j)\leadsto(M^{-1}(v),j)\to(v,j')$, length at most $5+1$.
+\item $u\in\mathsf B$, $v=M(x)$ with $x\in R$: by Lemma~\ref{lem:hexfacts}(b) there is $z\in\Gamma_2(x)$ with $d(z,u)\le3$;
+  $z\notin R$ by (H1), and $M(z)\in\Gamma_2(v)$ by (H3): $(v,j')\leadsto(M(z),j')\to(z,j)\leadsto(u,j)$, length at most
+  $2+1+3$.
+\item $u=x\in R$, $v\in\mathsf A$: there is $w\in\Gamma_2(M(x))$ with $d(w,v)\le3$; by (H3) $w=M(z)$ with $z\in\Gamma_2(x)$,
+  and $z\notin R$ by (H1): $(x,j)\leadsto(z,j)\to(w,j')\leadsto(v,j')$, length at most $2+1+3$.
+\item $u=x\in R$, $v\in\mathsf B$: the same path, now with $d(w,v)\le4$: length at most $2+1+4$.
+\end{enumerate}
+These cases cover all pairs.
+\end{proof}
+
+For two points $x,y$ at distance 4 let $\mdp(x,y)$ be the unique point collinear with both, and likewise for lines.
+
+\begin{proposition}[what (H1)--(H3) force]\label{prop:mirror-nec}
+Under (H1)--(H3), $M$ restricted to $R$ preserves distances, and $M(\mdp(x,y))=\mdp(M(x),M(y))$ for all $x,y\in R$ at
+distance 4.
+\end{proposition}
+
+\begin{proof}
+Let $x\ne y\in R$; then $d(x,y)\in\{4,6\}$ by (H1). If $d(x,y)=4$, $m=\mdp(x,y)\in\Gamma_2(x)\cap\Gamma_2(y)$, so by (H3)
+$M(m)\in\Gamma_2(M(x))\cap\Gamma_2(M(y))$; hence $d(M(x),M(y))\le4$, equal to 4 by (H2), and $M(m)$ is the mid-line. If
+$d(x,y)=6$, $\Gamma_2(x)\cap\Gamma_2(y)=\emptyset$, so $\Gamma_2(M(x))\cap\Gamma_2(M(y))=\emptyset$ by (H3), and
+$d(M(x),M(y))=6$.
+\end{proof}
+
+\begin{proposition}[mirrored sets]\label{prop:mirror}
+Let $R$ be a non-collinear set of points, $R^*$ a non-concurrent set of lines, and $f:R\to R^*$ a bijection such that
+\begin{itemize}
+\item[(S1)] every point is collinear with at most two points of $R$, and every line is concurrent with at most two lines of
+  $R^*$;
+\item[(S2)] for $x\ne y\in R$: $d(x,y)=4$ if and only if $d(f(x),f(y))=4$.
+\end{itemize}
+Then there is a bijection $M:\cP\to\cL$ with $M|_R=f$ satisfying (H1)--(H3) for $R$. One such $M$ is: $M(x)=f(x)$ for
+$x\in R$; $M(\mdp(x,y))=\mdp(f(x),f(y))$ for $x,y\in R$ at distance 4; for each $x\in R$, any bijection from the remaining
+points of $\Gamma_2(x)$ onto the remaining lines of $\Gamma_2(f(x))$; any bijection on the rest.
+\end{proposition}
+
+\begin{proof}
+Let $U=\bigcup_{x\in R}\Gamma_2(x)$ and $U^*=\bigcup_{x\in R}\Gamma_2(f(x))$. By (H1) for $R$ and $R^*$, $R\cap U=\emptyset$ and
+$R^*\cap U^*=\emptyset$. A point of $U$ lies in $\Gamma_2(x)$ for one or two $x\in R$ (S1); if two, $x$ and $y$ are at
+distance 4 and the point is $\mdp(x,y)$. So the points of $U$ in two sets $\Gamma_2(\cdot)$ correspond to the pairs
+$\{x,y\}\subseteq R$ at distance 4, and likewise for $U^*$; by (S2), $\{x,y\}\mapsto\{f(x),f(y)\}$ is a bijection between
+these pairs. Hence $\mdp(x,y)\mapsto\mdp(f(x),f(y))$ is a bijection from the shared points of $U$ to the shared lines of
+$U^*$, mapping the shared points of $\Gamma_2(x)$ onto the shared lines of $\Gamma_2(f(x))$. The remaining (private) points
+of $\Gamma_2(x)$ and private lines of $\Gamma_2(f(x))$ are equally many (both $q(q+1)$ minus the number of $y\in R$ at distance
+4 from $x$), and private sets of different $x$ are disjoint. So the pieces define a bijection $R\cup U\to R^*\cup U^*$ with
+$M(\Gamma_2(x))=\Gamma_2(f(x))$ for every $x\in R$. As $|\cP\setminus(R\cup U)|=|\cL\setminus(R^*\cup U^*)|$, it extends to a
+bijection $\cP\to\cL$. (H1) and (H2) are the hypotheses on $R$ and $R^*$.
+\end{proof}
+
+\begin{corollary}\label{cor:mirror}
+\begin{enumerate}[label=(\alph*)]
+\item If $R$ is a partial ovoid and $R^*$ a partial spread with $|R|=|R^*|$, every bijection $f:R\to R^*$ satisfies (S1)
+  and (S2) (there are no pairs at distance 4).
+\item Let $R_0$ and $X$ be disjoint partial ovoids, $f_0:R_0\to S_0$ a bijection onto a partial spread $S_0$, and $x\mapsto
+  L_x$ an injective map from $X$ onto a partial spread disjoint from $S_0$. Put $R=R_0\cup X$, $R^*=S_0\cup\{L_x:x\in X\}$,
+  $f=f_0$ on $R_0$ and $f(x)=L_x$ on $X$, and assume that $R$ is non-collinear and $R^*$ non-concurrent. Then (S1) holds:
+  three points of $R$ collinear with one point would be pairwise at distance 4, but two of them lie in $R_0$ or two in $X$,
+  which are pairwise opposite; likewise for lines. And (S2) says: for $r\in R_0$ and $x\in X$, $d(r,x)=4$ if and only if
+  $d(f_0(r),L_x)=4$.
+\end{enumerate}
+\end{corollary}
+
+\subsection{Typed level layouts}
+By Theorem~\ref{thm:assembly} the order is $(2r+1)\cdot2N+K_{\mathsf A}+K_{\mathsf B}$ with
+$K_{\mathsf B}\le\min_j\alpha_j$ and $K_{\mathsf A}\le\min_j\beta_j$.
+
+\emph{All levels of type $H$, one bijection $\sigma$, one freed set $R$ on every transition.} Every level has
+$\alpha_j=\beta_j=r|R|$, so one can take $K_{\mathsf A}=K_{\mathsf B}=r|R|$, and $|X^+_R|=(2r+1)\cdot2N+2r|R|$. For $r=1$ the
+$\mathsf B$-hub $h_x$ of $x\in R$ is joined to $(x,0),(x,1),(x,2)$ and the $\mathsf A$-hub $g_x$ to
+$(\sigma(x),0),(\sigma(x),1),(\sigma(x),2)$, plus at most $q-1$ hub-graph edges each.
+
+\emph{Types $HDHDH$ ($r=2$).} The transitions are $j\to j+1$ and $j\to j+2$. Friendly: $0\to1$, $2\to3$, $4\to1$ ($H\to D$,
+points freed) and $1\to2$, $3\to4$, $3\to0$ ($D\to H$, lines freed). Not friendly: $0\to2$, $2\to4$, $4\to0$ ($H\to H$) and
+$1\to3$ ($D\to D$). With $F_t$ the freed sets of friendly transitions and $R_t$ those of the others:
+\begin{center}
+\begin{tabular}{@{}c c l l@{}}
+\toprule level & type & free $\mathsf A$-slots $\alpha_j$ & free $\mathsf B$-slots $\beta_j$\\ \midrule
+0 & $H$ & $F_{0\to1}+R_{0\to2}$ & $R_{4\to0}+F_{3\to0}$\\
+1 & $D$ & $F_{1\to2}+R_{1\to3}$ & $F_{0\to1}+F_{4\to1}$\\
+2 & $H$ & $F_{2\to3}+R_{2\to4}$ & $F_{1\to2}+R_{0\to2}$\\
+3 & $D$ & $F_{3\to4}+F_{3\to0}$ & $F_{2\to3}+R_{1\to3}$\\
+4 & $H$ & $R_{4\to0}+F_{4\to1}$ & $F_{3\to4}+R_{2\to4}$\\ \bottomrule
+\end{tabular}
+\end{center}
+(sizes of the sets). With all friendly point sets of size $f_P$, all friendly line sets of size $f_L$, and $m$ elements freed
+on each non-friendly transition, $K_{\mathsf B}\le\min(f_P+m,\,f_L+m,\,2f_L)$ and $K_{\mathsf A}\le\min(f_L+m,\,2f_P,\,f_P+m)$.
+Five levels with two matchings form the regular tournament on 5 vertices, and a split of the types into $3+2$ levels makes
+6 of the 10 arcs friendly, the maximum; the split $HDHDH$ also gives every level at least one friendly outgoing and one
+friendly incoming transition. With three levels some level always has no friendly outgoing transition, so typing does not
+help for $r=1$. \emph{Seven levels} ($r=3$): the types $HHDHDHD$ make 12 of the 21 transitions friendly, and every level has
+at least one friendly transition in each direction.
+
+\subsection{Hub graphs}\label{ssec:hubgraphs}
+Write $\mathrm{HG}(K_1,K_2;\delta)$ for a bipartite graph with colour classes of sizes $K_1,K_2$, maximum degree at most
+$\delta$, and all same-colour distances at most 6 in the graph itself. If $Y$ is such a graph with $\delta\le q-r$, both
+conditions on $Y$ in Theorem~\ref{thm:assembly} hold.
+
+\begin{lemma}[plane with pendant trees]\label{lem:pendant}
+Let $s$ be a prime power and $t,u\ge0$ integers with $s+1+t\le\delta$ and $u+1\le\delta$. Then $\mathrm{HG}(K,K;\delta)$
+exists for every $K$ with $s^2+s+1\le K\le(s^2+s+1)(1+t+tu)$.
+\end{lemma}
+
+\begin{proof}
+Start from the incidence graph of $\PG(2,s)$ (the \emph{core}: diameter 3, same-colour distance 2). Attach to some core
+vertices up to $t$ pendant vertices each (depth 1, of the opposite colour), and to some depth-1 vertices up to $u$ pendant
+vertices each (depth 2, of the colour of the core vertex). Degrees are at most $s+1+t$, $u+1$ and 1. For two vertices $x,y$
+of the same colour with core ancestors $c(x),c(y)$, $d(x,y)\le\mathrm{depth}(x)+d(c(x),c(y))+\mathrm{depth}(y)$. The core
+ancestors have the same colour when the depths have the same parity (core distance at most 2) and different colours
+otherwise (core distance at most 3); the possible totals are $0+2+0$, $0+3+1$, $0+2+2$, $1+2+1$, $1+3+2$, $2+2+2$, all at
+most 6. To get $K$ vertices of each colour, give $c$ depth-1 children to the points and $c$ to the lines, and $g$ depth-2
+children below each of these two families, with $c=\lceil(K-s^2-s-1)/(1+u)\rceil\le(s^2+s+1)t$ and $g=K-s^2-s-1-c\le uc$.
+\end{proof}
+
+With $t=\delta-s-1$ and $u=\delta-1$, Lemma~\ref{lem:pendant} gives hub graphs with up to
+\[
+\kappa(\delta):=\max_s\,(s^2+s+1)\bigl(1+(\delta-s-1)\delta\bigr)\approx\tfrac4{27}\delta^4
+\]
+vertices of each colour ($s$ over prime powers at most $\delta-1$); $\kappa(3)=7$, $\kappa(4)=35$, $\kappa(7)=315$,
+$\kappa(8)=527$, $\kappa(9)=868$, $\kappa(10)=1271$, $\kappa(11)=1938$. For $\delta\ge3$ the intervals for $s=2$ and for the
+optimal $s$ overlap, so $\mathrm{HG}(K,K;\delta)$ exists for every $7\le K\le\kappa(\delta)$.
+
+\subsection{Bounds for every $q$ from classical sets}\label{ssec:d7general}
+
+\begin{corollary}[three levels, every $q\ge4$]\label{cor:d7-91}
+Let $R$ be the $q^2+1$ points of an elliptic quadric section $Q^-(3,q)$ (Lemma~\ref{lem:hexsets}(a)), $R^*$ any $q^2+1$ lines
+of a Hermitian spread, and $\sigma$ as in Proposition~\ref{prop:mirror} (with Corollary~\ref{cor:mirror}(a)). All three
+levels of type $H$, $M_t=\sigma$ and $R_t=R$ for all three transitions, $K=\min(q^2+1,\kappa(q-1))$ hubs of each colour and
+the hub graph of Lemma~\ref{lem:pendant} give
+\[
+\nb(q+2,7)\ge6N(q)+2\min\bigl(q^2+1,\ \kappa(q-1)\bigr),
+\]
+which is $6N(q)+2(q^2+1)$ for every $q\ge5$.
+\end{corollary}
+
+\begin{proof}
+Every transition is repaired by Theorem~\ref{thm:localdual}; every level has $|R|$ free slots of each colour, and
+Definition~\ref{def:surgery} allows $K\le|R|$ hubs (the unused slots stay free). Theorem~\ref{thm:assembly} with
+$Y=\mathrm{HG}(K,K;q-1)$.
+\end{proof}
+
+At $q=4$ ($\kappa(3)=7<17$) the bound is $6N(4)+14=8204$, below the table's $(6,7)=8310$; the corollary improves the table
+only for $q\ge5$.
+
+\begin{corollary}[$q=3^h$, a duality]\label{cor:d7-92}
+Let $q=3^h$, $\varphi$ a duality of $H(q)$, all types $H$, $M_t=\varphi|_\cP$ and $R_t=F$ for every transition, with $F$ the
+point set of a spread, $|F|=(q+1)(q^3+1)$. For every $r$ with $1\le r\le q-3$,
+\[
+\nb(q+1+r,7)\ge(2r+1)\cdot2N(q)+2\kappa(q-r).
+\]
+\end{corollary}
+
+\begin{proof}
+Every transition is repaired by Theorem~\ref{thm:autotrans}; every level has $r|F|$ free slots of each colour, and
+$\kappa(q-r)<q^4<r(q+1)(q^3+1)$, so $K=\kappa(q-r)$ hubs fit; Theorem~\ref{thm:assembly} with the hub graph of
+Lemma~\ref{lem:pendant}.
+\end{proof}
+
+\begin{corollary}[typed levels $HDHDH$, every $q\ge5$]\label{cor:d7-93}
+Take the types $HDHDH$; on the friendly transitions $M_t=\mathrm{id}$, with freed point sets the point set of a Hermitian
+spread ($(q+1)(q^3+1)$ points, a segment set) and freed line sets the lines through the points of an elliptic quadric
+section ($(q+1)(q^2+1)$ lines, a dual segment set); on the non-friendly transitions $\sigma$ (resp.\ $\sigma^{-1}$) and
+$R$ (resp.\ $\sigma(R)$) as in Corollary~\ref{cor:d7-91}. The smallest slot counts are
+$\min_j\alpha_j=\min_j\beta_j=(q+1)(q^2+1)+q^2+1=(q+2)(q^2+1)$, so
+\[
+\nb(q+3,7)\ge10N(q)+2\min\bigl((q+2)(q^2+1),\ \kappa(q-2)\bigr).
+\]
+The minimum is $\kappa(q-2)$ for $q\le13$ and $(q+2)(q^2+1)$ for $q\ge16$.
+\end{corollary}
+
+\begin{proof}
+Theorems~\ref{thm:autotrans}, \ref{thm:localdual} and~\ref{thm:assembly}, with the slot table of the previous subsection.
+\end{proof}
+
+\begin{corollary}[all levels $H$, any $r$]\label{cor:d7-r}
+With $R$, $R^*$ and $\sigma$ as in Corollary~\ref{cor:d7-91}, $2r+1$ levels of type $H$, $M_t=\sigma$ and $R_t=R$ for every
+transition, for $q\ge r+3$:
+\[
+\nb(q+1+r,7)\ge(2r+1)\cdot2N(q)+2\min\bigl(r(q^2+1),\ \kappa(q-r)\bigr).
+\]
+\end{corollary}
+
+\begin{proof}
+Every transition is repaired by Theorem~\ref{thm:localdual}, each level has $r(q^2+1)$ free slots of each colour, and a
+vertex with several free slots may receive several hubs; Theorem~\ref{thm:assembly} with $Y=\mathrm{HG}(K,K;q-r)$ from
+Lemma~\ref{lem:pendant}, $K=\min(r(q^2+1),\kappa(q-r))\ge7$.
+\end{proof}
+\todo{Corollary~\ref{cor:d7-r} was suggested by the referee of the diameter-7 note (who built its $q=5$, $r=1$ and $r=2$
+cases and checked them by breadth-first search from every vertex); the note itself left it out because it added no new
+statement. It is the only way the $(15,7)$ cell is improved without computer-found sets. Keep it?}
+
+\begin{table}[ht]
+\caption{Diameter 7 from classical ingredients only (elliptic quadric sections, the Hermitian spread, a duality of
+$H(3^h)$, and the hub graphs of Lemma~\ref{lem:pendant}).}\label{tab:d7general}
+\begin{tabular}{@{}l l r r@{}}
+\toprule cell & from & bound & 2013 \\ \midrule
+(7,7) & Cor.~\ref{cor:d7-91}, $q=5$ & 23\,488 & 23\,436\\
+(9,7) & Cor.~\ref{cor:d7-91}, $q=7$ & 117\,748 & 117\,648\\
+(10,7) & Cor.~\ref{cor:d7-91}, $q=8$ & 224\,824 & 224\,694\\
+(11,7) & Cor.~\ref{cor:d7-92}, $q=9$, $r=1$ & 399\,634 & 398\,580\\
+(12,7) & Cor.~\ref{cor:d7-92}, $q=9$, $r=2$ & 664\,930 & 664\,300\\
+(13,7) & Cor.~\ref{cor:d7-91}, $q=11$ & 1\,063\,180 & 1\,062\,936\\
+(14,7) & Cor.~\ref{cor:d7-93}, $q=11$ & 1\,773\,296 & 1\,771\,560\\
+(15,7) & Cor.~\ref{cor:d7-r}, $q=11$, $r=3$ & 2\,480\,916 & 2\,480\,184\\
+(16,7) & Cor.~\ref{cor:d7-93}, $q=13$ & 4\,026\,216 & 4\,022\,340\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The values of Table~\ref{tab:d7}}\label{ssec:d7records}
+The graphs behind Table~\ref{tab:d7} are $X^+_R$ as in Definition~\ref{def:surgery}, with every transition repaired by
+Theorem~\ref{thm:autotrans} or~\ref{thm:localdual} and (HG) satisfied, so Theorem~\ref{thm:assembly} gives the bound. They
+use explicit sets larger than those of Section~\ref{ssec:d7general}, and explicit hub graphs. These ingredients are given
+as data (Appendix~\ref{app:checks}); that they satisfy the hypotheses (non-collinearity, (H1)--(H3) at every freed
+element, the segment property, degrees, (HG)) is computer-checked, and each final graph was also checked by breadth-first
+search from every vertex.
+
+\begin{corollary}[three levels, local duality]\label{cor:rec-81}
+Let $r=1$, all types $H$, $M_t=\sigma$ and $R_t=R$ for all three transitions, with $(R,\sigma)$ as in
+Proposition~\ref{prop:mirror}, built as in Corollary~\ref{cor:mirror}(b). If $K\le|R|$ hubs of each colour are attached
+and the hub graph has maximum degree at most $q-1$ and satisfies (HG), then $\nb(q+2,7)\ge6N(q)+2K$. Values ($K=|R|$):
+$q=5$: $|R|=81$ ($R_0$: 72 pairwise opposite points; 9 further points; the Hermitian spread has $q^3+1=126$ lines), order
+23\,598; $q=7$: $288+7$, order 118\,238; $q=8$: $217+12$, order 225\,152; $q=11$: $756+12$, order 1\,064\,472. For $q=7,11$ the
+partial ovoid $R_0$ is an orbit of the Weyl group $W(E_7)$ acting on $Q(6,q)$ through the $E_7$ root lattice modulo $q$; being
+pairwise non-perpendicular in $Q(6,q)$, it is a partial ovoid of $H(q)$ by Lemma~\ref{lem:hexfacts}(c). The lines $L_x$ are
+pairwise opposite and not in the Hermitian spread, and $f_0$ maps $R_0$ onto Hermitian spread lines.
+\end{corollary}
+\todo{Corollary~\ref{cor:rec-81}: the $W(E_7)$ description of $R_0$ ($q=7,11$) is from the lab notes; a precise statement
+(which lattice, which embedding into $Q(6,q)$) should be written out if we keep it. For $q=5,8$ the sets are only data.}
+
+\begin{corollary}[duality, $q=9$]\label{cor:rec-dual}
+In Corollary~\ref{cor:d7-92} with $q=9$, $F$ the 7300 points of the Hermitian spread and $K=r|F|$ hubs of each colour: for
+$r=1$, with a hub graph of maximum degree 8 (a Haar graph of $\Z_{73}\rtimes\Z_{100}$ of diameter 7), the order is
+413\,180; for $r=2$, with $14\,600$ hubs of each colour and a hub graph of maximum degree 7 (a Haar graph of
+$(\Z_{73}\rtimes\Z_8)\times\Z_5^2$, for which (HG) holds using paths through the levels), the order is 693\,500. By
+Proposition~\ref{prop:segmentsize} and Remark~\ref{rem:converse}, no larger freed set leaves every transition repaired, so
+within this construction (and as long as (T) is required) $K=r(q+1)(q^3+1)$ is the cap. The duality of $H(9)$ is given
+explicitly as data and was checked to be a bijection of $\cP\cup\cL$ exchanging $\cP$ and $\cL$ and preserving all
+$N(q+1)$ incidences.
+\end{corollary}
+
+\begin{corollary}[typed levels]\label{cor:rec-typed}
+Let the types be $HDHDH$ ($r=2$) or $HHDHDHD$ ($r=3$); let every friendly transition carry $M_t=\mathrm{id}$ and a segment
+set (points) or dual segment set (lines) $F_t$, and let the non-friendly transitions carry $M_t=\sigma$ ($H\to H$) or
+$\sigma^{-1}$ ($D\to D$) with freed sets $R$ (resp.\ $\sigma(R)$) satisfying Theorem~\ref{thm:localdual}. If
+$K_{\mathsf B}\le\min\alpha_j$, $K_{\mathsf A}\le\min\beta_j$ and the hub graph has maximum degree at most $q-r$ and satisfies
+(HG), then $\nb(q+1+r,7)\ge(2r+1)\cdot2N(q)+K_{\mathsf A}+K_{\mathsf B}$. Values:
+\begin{itemize}
+\item $(14,7)$, $q=11$, $HDHDH$: all friendly point sets equal one non-collinear set of 8645 points, all friendly line
+  sets one non-concurrent set of 8246 lines (both unions of orbits of a collineation of order 133), and the 768-point set
+  of Corollary~\ref{cor:rec-81} on the four non-friendly transitions; $\alpha=(9413,9014,9413,16492,9413)$,
+  $\beta=(9014,17290,9014,9413,9014)$, $K_{\mathsf A}=K_{\mathsf B}=9014$: order 1\,789\,588.
+\item $(15,7)$, $q=11$, $HHDHDHD$: twelve friendly sets with 5674--9303 elements each, four of them segment sets that are
+  not non-collinear (5577 collinear or concurrent pairs in all); the 768-point set on the nine non-friendly transitions;
+  $K_{\mathsf B}=10\,826$, $K_{\mathsf A}=10\,481$: order 2\,501\,491.
+\item $(16,7)$, $q=13$, $HDHDH$: a non-collinear set of 14\,762 points and a non-concurrent set of 14\,823 lines (unions of
+  orbits of an element of order 61 of $\SL(3,13)$), and on the four non-friendly transitions a partial ovoid of 122
+  points, with $\sigma$ as in Corollary~\ref{cor:mirror}(a); $K_{\mathsf A}=K_{\mathsf B}=14\,762+122=14\,884$: order
+  4\,052\,108.
+\end{itemize}
+\end{corollary}
+
+\begin{remark}
+Theorem~\ref{thm:autotrans} allows friendly sets larger than those used in Corollary~\ref{cor:rec-typed}: up to
+$(q+1)(q^3+1)$ (Proposition~\ref{prop:segmentsize}), for instance the 15\,984 points of the Hermitian spread of $H(11)$
+against 8645, and the $12\cdot756=9072$ lines through the 756-point partial ovoid of $H(11)$ against 8246. In the
+$HDHDH$ layout with these sets and the 768 mirrored elements the slot counts give $K_{\mathsf A}=K_{\mathsf B}=9840$, that
+is 1\,791\,240 at $(14,7)$, provided that a hub graph with 9840 vertices of each colour and degree 9 satisfying (HG) exists.
+We have not built this graph.
+\end{remark}
+
+\subsection{Prior work}\label{ssec:d7prior}
+The level graph of Definition~\ref{def:levelgraph} is a bipartite analogue of the star product of Bermond, Delorme and
+Farhi \cite{BDF82,BDF84} (see \cite[\S3.3.2]{MS13}) and of the compound graphs of G\'omez and Fiol \cite{GF85}: copies of a
+graph indexed by the vertices of a tournament, with a matching for each arc. The cells $(7,7)$ and $(9,7)$--$(16,7)$ of the
+2013 table have the form $(2r+1)\cdot2N(q)$ of Theorem~\ref{thm:levelgraph} and are credited to \cite{DGQ}, which we could
+not find in print. The values $(6,7)=8310$ and $(8,7)=40\,586$ equal the order $2q(q^4+q^3+3q^2+q+1)$ ($q=5,7$) of Delorme's
+construction \cite[\S9]{D85a}, in which vertices are inserted on $2q^3$ edges of the incidence graph of a generalized
+hexagon and a vertex set is then duplicated. Delorme also builds cyclic multi-level graphs from a duality of a generalized
+quadrangle or hexagon \cite[\S3]{D85a}, on the vertex set $\Z/m\Z\times Q^k$ with $Q$ the point set; those graphs are not
+copies of $I(q)$ joined by matchings. Sets of $q^3+1$ pairwise opposite elements of $H(q)$ are used in \cite[\S8(b)]{D85a}
+to raise the degree at diameter 6 (Remark~\ref{rem:delorme6}).
+
+The closest prior work is a 2026 preprint of R.~Rajiv \cite{Ra26} (unrefereed). It builds compounds of copies of the
+incidence graph of a generalized $n$-gon along a tournament, with point-to-line and type-preserving matchings; its Lemma~5
+deletes the type-preserving matching edges at a pairwise non-collinear (or non-concurrent) set and keeps the diameter;
+its Theorem~3 attaches new vertices, each joined to one point and one line of every copy, connected by a further graph. In
+our language these are friendly transitions with $M_t=\mathrm{id}$, Corollary~\ref{cor:autotrans}(1), and hubs as in
+Definition~\ref{def:surgery}. The setting differs (general graphs of diameter $n=4,6$, not bipartite graphs of diameter 7;
+hubs with one point slot and one line slot per copy, not hubs of one colour), but the ideas are the same. F.~Comellas'
+table of general graphs \cite{Co26} records in October 2026 graphs of diameter 6 obtained from $H(q)$ by deleting or
+subdividing incidence edges and attaching new vertices. Replacing or adding vertices in hexagon-based graphs of diameter 6
+is older \cite{CG94,GPB99,PGMP09}. In the sources we searched we found nothing on: the bipartite diameter-7 version with
+hubs of one colour (Definition~\ref{def:surgery}, Theorem~\ref{thm:assembly}); typed levels as the 2-colouring; local
+dualities at non-automorphic transitions (Theorem~\ref{thm:localdual}, Propositions~\ref{prop:mirror-nec},
+\ref{prop:mirror}); segment sets, Proposition~\ref{prop:segmentsize}, Theorem~\ref{thm:autotrans} beyond non-collinear sets
+and its converse (Remark~\ref{rem:converse}). Proposition~\ref{prop:segmentsize} and Remark~\ref{rem:converse} are
+elementary and may well be known.
+\todo{Section~\ref{ssec:d7prior}: you may know \cite{DGQ} and how the $D=7$ table values were obtained. The literature
+search behind this paragraph did not query Google Scholar or zbMATH.}
+
+%======================================================================
+\section{Diameter 8: G\'omez's compound graphs $\Om_q$}\label{sec:d8}
+%======================================================================
+
+\todo{Section~\ref{sec:d8} questions six entries of the 2013 table credited to Delorme, G\'omez and Quisquater. Decide how
+to present it (in this paper, as a separate note, or after contacting J.~G\'omez), and how much of the relabelling part
+(Section~\ref{ssec:relabel}) to keep.}
+
+Six $D=8$ entries of the 2013 table, credited on the CombinatoricsWiki to Delorme, G\'omez and Quisquater \cite{DGQ},
+are the orders of G\'omez's compound graphs $\Om_q$ \cite[\S2.9.3, values on p.~46]{Go86}. Here $H_q$ is the incidence graph
+of $H(q)$, with $N_1=2N$ vertices, and $q+3=2\alpha+\beta$ with $\beta\in\{0,1\}$:
+\begin{center}
+\begin{tabular}{@{}l r l r r r@{}}
+\toprule cell & 2013 value & graph & $\alpha$ & copies of $H_q$ & order $5(\alpha+1)N_1$\\ \midrule
+(10,8) & 1\,176\,480 & $\Om_7$ & 5 & 25 & 1\,176\,480\\
+(11,8) & 2\,246\,940 & $\Om_8$ & 5 & 25 & 2\,246\,940\\
+(12,8) & 4\,650\,100 & $\Om_9$ & 6 & 30 & 4\,650\,100\\
+(14,8) & 14\,172\,480 & $\Om_{11}$ & 7 & 35 & 14\,172\,480\\
+(15,8) & 14\,172\,480 & $\Om_{11}$ (value of (14,8) reused) & 7 & 35 & 14\,172\,480\\
+(16,8) & 36\,201\,060 & $\Om_{13}$ & 8 & 40 & 36\,201\,060\\ \bottomrule
+\end{tabular}
+\end{center}
+The thesis states $D\le D_1+2=8$ and gives no proof (its \S2.8.2 says that the proofs of this part are left out). The paper
+\cite{DGQ} was never published, as far as we could find. We show that $\Om_q$, as defined in the thesis, has diameter at
+least 9 for every reading of its figures (Theorems~\ref{thm:proj} and~\ref{thm:twolabels}), and that giving each copy of
+the hexagon its own labelling by automorphisms does not help (Theorems~\ref{thm:geomq8} and~\ref{thm:geomq7}). Whether some
+other labelling gives diameter 8 is open (Section~\ref{ssec:d8open}).
+
+\subsection{The construction}
+\cite[\S2.9.3, pp.~43--45]{Go86} takes 5 copies of a bipartite graph $B_1$ of even diameter $D_1$ and 10 sets of $N_1/2$
+vertices each (copies of $K_1$); every 10 such vertices, one from each set, are joined to the copies as in Fig.~2.21a of the
+thesis, so that their degree is 2, and the degree is then raised to 4 by joining them to 5 more copies as in Fig.~2.21b. In
+general, if $\Delta_1+2=2\alpha+\beta$, one takes $5\alpha$ copies of $B_1$, using either of the two structures, so that the
+copies of $K_1$ get degree $2\alpha$; the result $\Omega B_1$ has $N=5(\alpha+1)N_1$, $\Delta=\Delta_1+2$ and, as stated,
+$D\le D_1+2$. For $B_1=H_q$: $D_1=6$, $\Delta_1=q+1$, $N_1=2N$.
+
+\emph{Labels.} In \cite[\S2.7.1]{Go86} both colour classes of $B_1$ are labelled by $\Z/n_1\Z$, $n_1=N_1/2$, and every
+adjacency rule of \S\S2.7--2.9 is written in these labels, the same in every copy; \S2.8.9, which \S2.9.3 cites for its
+copies of $K_1$, joins a copy of $K_1$ with label $t$ only to vertices labelled $t$, in either colour class. For $B_1=H_q$ we
+write the labelling as two bijections $P_0:\Z/N\Z\to\cP$ and $L_0:\Z/N\Z\to\cL$; the thesis does not fix them, so
+$\sigma=L_0P_0^{-1}$ (point $t\mapsto$ line $t$) is an arbitrary bijection $\cP\to\cL$.
+
+\emph{The figures.} Both figures place five copies at the corners of a pentagon, inside a circle and a pentagram. Each
+copy has an \emph{outer} dot on the circle and an \emph{inner} dot at the corner of the pentagram; each copy of $K_1$ in the
+block is a dot on an arc or a pentagram edge, joined to the two dots at its ends. In Fig.~2.21a, the $K_1$-vertex $k$ lies on
+the pentagram edge between copies $k-1$ and $k+1$ and $\bar k$ on the arc between copies $k+2$ and $k+3$; in Fig.~2.21b, $k$
+lies on the arc between copies $k+3$ and $k+4$ and $\bar k$ on the pentagram edge between copies $k-1$ and $k+1$ (indices
+mod 5). The figures do not say which colour class the inner dot is. \emph{Reading 1}: outer dot = points and inner dot =
+lines in every copy. \emph{Reading 2}: unbarred $K_1$-vertices always on points and barred ones always on lines. The figures
+also do not say which blocks are of type (a) and which of type (b), so we allow any pattern; and we allow the inner class to
+be chosen freely in every copy, which contains both readings and their duals.
+
+\begin{definition}[$\Om_q$]\label{def:omega}
+Data: a prime power $q$ and $\alpha=\lfloor(q+3)/2\rfloor$; a block pattern $(\tau_0,\dots,\tau_{\alpha-1})\in\{a,b\}^\alpha$;
+an inner class $\iota(c)\in\{\cP,\cL\}$ for every copy $c$; and a \emph{labelling}, that is, bijections $P_c:\Z/N\Z\to\cP$
+and $L_c:\Z/N\Z\to\cL$ for every copy $c$.
+\begin{itemize}
+\item \emph{Copies.} $c=5B+i$ with block $B\in\{0,\dots,\alpha-1\}$ and position $i\in\Z_5$; there are $5\alpha$ copies.
+  Copy vertices $(c,x)$, $x\in\cP\cup\cL$, with $(c,x)\sim(c,y)$ when $x$ and $y$ are incident.
+\item \emph{Hubs} (the copies of $K_1$). $(t,k)$ and $(t,\bar k)$ for $t\in\Z/N\Z$ (the \emph{row}) and $k\in\Z_5$; the
+  hub \emph{classes} are $k=\{(t,k)\}$ (unbarred) and $\bar k=\{(t,\bar k)\}$ (barred).
+\item \emph{Copies met by a class} (positions mod 5):
+  $C(k)=\{5B+k-1,5B+k+1:\tau_B=a\}\cup\{5B+k+3,5B+k+4:\tau_B=b\}$ and
+  $C(\bar k)=\{5B+k+2,5B+k+3:\tau_B=a\}\cup\{5B+k-1,5B+k+1:\tau_B=b\}$.
+\item \emph{Where a class sits.} In a copy of a block of type $a$, unbarred classes sit on the inner class $\iota(c)$ and
+  barred classes on the outer class; in a block of type $b$, unbarred classes on the outer and barred classes on the inner
+  class.
+\item \emph{Hub edges.} $(t,Y)\sim(c,P_c(t))$ if $Y$ sits on points in $c$, and $(t,Y)\sim(c,L_c(t))$ if $Y$ sits on lines in
+  $c$, for every $c\in C(Y)$.
+\end{itemize}
+The \emph{thesis labelling} is $P_c=P_0$, $L_c=L_0$ for all $c$. Reading 1 is $\iota(c)=\cL$ for all $c$; reading 2 is
+$\iota(c)=\cP$ in $a$-blocks and $\cL$ in $b$-blocks. The graph $\Om_q$ of the thesis is the thesis labelling with any
+pattern and either reading.
+\end{definition}
+
+\emph{Exact neighbourhoods.} Write $m_c(t)$ for the inner mark of row $t$ in copy $c$ ($P_c(t)$ if $\iota(c)=\cP$, $L_c(t)$
+if $\iota(c)=\cL$) and $\bar m_c(t)$ for the outer mark. For $c=5B+i$, the copy vertex $(c,x)$ is adjacent to $(c,y)$ for the
+$q+1$ elements $y$ incident with $x$, and to two hubs: $(t,i-1),(t,i+1)$ if $\tau_B=a$ and $x=m_c(t)$;
+$(t,\overline{i+2}),(t,\overline{i+3})$ if $\tau_B=a$ and $x=\bar m_c(t)$; $(t,\overline{i-1}),(t,\overline{i+1})$ if
+$\tau_B=b$ and $x=m_c(t)$; $(t,i+1),(t,i+2)$ if $\tau_B=b$ and $x=\bar m_c(t)$. The hub $(t,k)$ is adjacent to
+$(c,m_c(t))$ for $c=5B+k\pm1$ in blocks with $\tau_B=a$, and to $(c,\bar m_c(t))$ for $c=5B+k+3,5B+k+4$ in blocks with
+$\tau_B=b$; the hub $(t,\bar k)$ is adjacent to $(c,\bar m_c(t))$ for $c=5B+k+2,5B+k+3$ in blocks with $\tau_B=a$, and to
+$(c,m_c(t))$ for $c=5B+k\pm1$ in blocks with $\tau_B=b$.
+
+\begin{lemma}[parameters]\label{lem:omegaparams}
+For every pattern, inner classes and labelling, $\Om_q$ is a simple bipartite graph on $10(\alpha+1)N=5(\alpha+1)N_1$
+vertices; copy vertices have degree $q+3$ and hubs degree $2\alpha$, so $\Delta=q+3$. Every hub meets $2\alpha$ of the
+$5\alpha$ copies and misses $3\alpha$.
+\end{lemma}
+
+\begin{proof}
+A copy at position $i$ of an $a$-block is met by the unbarred classes $i\pm1$ and the barred classes $i+2,i+3$; of a
+$b$-block, by the unbarred classes $i+1,i+2$ and the barred classes $i\pm1$. So each copy is met by exactly two classes of
+each bar, the two of one bar sit on the same type, and each class has one hub per row. Every element of a copy is the mark
+of exactly one row of its type, so it gets exactly two hubs. A class meets two distinct copies in each block. For the
+colouring, give unbarred hubs colour 0, in every copy the type on which the unbarred classes sit colour 1 and the other type
+colour 0, and barred hubs colour 1.
+\end{proof}
+
+\subsection{One label: a projection argument}
+
+\begin{theorem}[projection]\label{thm:proj}
+Let $B$ be a graph and $G$ a graph whose vertices are of two kinds: \emph{copy vertices} $v$, each with a copy index $c(v)$
+and a label $f(v)\in V(B)$, and \emph{new vertices} $x$, each with a label $f(x)\in V(B)$. Assume
+\begin{itemize}
+\item[(h1)] if $u\sim w$ are copy vertices, then $c(u)=c(w)$ and $f(u)\sim f(w)$ in $B$;
+\item[(h2)] every neighbour $w$ of a new vertex $x$ is a copy vertex with $f(w)=f(x)$;
+\item[(h3)] no two new vertices are adjacent.
+\end{itemize}
+If $x$ is a new vertex with no neighbour in copy $j$, and $v$ is a copy vertex with $c(v)=j$, then
+$d_G(x,v)\ge d_B(f(x),f(v))+3$.
+\end{theorem}
+
+\begin{proof}
+Let $(x=w_0,w_1,\dots,w_l=v)$ be a walk. By (h2), $w_1$ is a copy vertex with $f(w_1)=f(x)$. Let $m$ be the number of new
+vertices among $w_1,\dots,w_{l-1}$. A new vertex $w_i$ ($0<i<l$) has copy vertices $w_{i-1},w_{i+1}$ on both sides, with
+$f(w_{i-1})=f(w_i)=f(w_{i+1})$ by (h2); every other edge $w_iw_{i+1}$ ($i\ge1$) joins two copy vertices and maps to an edge of
+$B$ by (h1). Deleting the $m$ new vertices and one of the two equal labels around each, the labels of $w_1,\dots,w_l$ form a
+walk in $B$ from $f(x)$ to $f(v)$ of length $l-1-2m$. So $l\ge d_B(f(x),f(v))+1+2m$. If $m=0$, then $w_1,\dots,w_l$ are copy
+vertices joined by copy edges, so by (h1) $c(w_1)=c(v)=j$, and $w_1$ is a neighbour of $x$ in copy $j$, a contradiction. So
+$m\ge1$ and $l\ge d_B(f(x),f(v))+3$.
+\end{proof}
+
+\begin{corollary}\label{cor:proj}
+Take the thesis labelling and inner classes for which every hub class sits on one type in all copies it meets (reading 2;
+its dual; reading 1 when all blocks have one type). Then for every $q$, every pattern and every pairing $\sigma$: every hub
+$x$ and every copy $j$ that $x$ misses, the $q^5$ vertices $(j,y)$ with $y$ opposite the mark of $x$ are at distance at
+least 9 from $x$. So $\diam\Om_q\ge9$. More generally, for any bipartite $B_1$ with a pair of vertices at distance $D_1$,
+$\Omega B_1$ in reading 2 has diameter at least $D_1+3$.
+\end{corollary}
+
+\begin{proof}
+Label copy vertices by $f(c,y)=y$, $c(c,y)=c$, and a hub by its mark ($P_0(t)$ or $L_0(t)$, the same in all copies by
+assumption). Copy edges satisfy (h1), hub edges (h2), and there are no hub--hub edges. Every hub misses $3\alpha\ge1$ copies
+(Lemma~\ref{lem:omegaparams}), and every vertex of $I(q)$ has $q^5$ opposite vertices (Lemma~\ref{lem:hexfacts}(a)). Apply
+Theorem~\ref{thm:proj}. For a general $B_1$, in reading 2 the unbarred classes sit on all labels of class 0 and the barred
+classes on all labels of class 1, so whichever class contains the pair, some hub carries one of its labels.
+\end{proof}
+
+\subsection{Two labels}
+
+\begin{theorem}[two labels]\label{thm:twolabels}
+Let $q\ge7$. Take $\Om_q$ with the thesis labelling, any block pattern and any inner classes (so both readings and every
+pairing $\sigma$). Let $x$ be a hub and $j$ a copy that $x$ misses. Then at least
+\[
+q^5-(A+B+1)=q^5-5q^4-8q^3-12q^2-16q-10>0
+\]
+vertices of copy $j$ are at distance at least 9 from $x$, where, with $s_0=1$ and $s_i=(q+1)q^{i-1}$ for $1\le i\le5$,
+\[
+A=\sum_{e_1+e_2\in\{0,2,4\}}s_{e_1}s_{e_2}=5q^4+8q^3+6q^2+4q+2,\qquad B=\sum_{e_1+e_2+e_3\le2}s_{e_1}s_{e_2}s_{e_3}=6q^2+12q+7
+\]
+(sums over $e_i\ge0$). In particular $\diam\Om_q\ge9$.
+\end{theorem}
+
+\begin{proof}
+Let $\tau$ be the involution of $\cP\cup\cL$ with $\tau(P_0(s))=L_0(s)$ for every row $s$. Every hub $(s,\cdot)$ is adjacent,
+in each copy it meets, to $P_0(s)$ or to $L_0(s)$. Let $x$ have row $t$, and let $T\in\{\cP,\cL\}$ be the type of the vertices
+of copy $j$ that have the colour of the neighbours of $x$ (by Lemma~\ref{lem:omegaparams}, in each copy one type has that
+colour). Let $z=P_0(t)$ if $T=\cP$ and $z=L_0(t)$ if $T=\cL$. We show that at most $A+B+1$ elements $w\in\opp(z)$ have
+$d(x,(j,w))\le8$; since $|\opp(z)|=q^5$, the rest are at distance at least 9.
+
+Fix $w\in\opp(z)$ of type $T$. The graph is bipartite and $(j,w)$ has the colour of the neighbours of $x$, so $d(x,(j,w))$ is
+odd; suppose it is at most 7 and take a shortest path. It leaves $x$ to a vertex $(c_1,a_0)$ with $a_0\in\{z,\tau(z)\}$, then
+alternates walks inside copies with passes copy $\to$ hub $\to$ copy. A pass through a hub of row $s$ goes from $(c,a)$ to
+$(c',a')$ with $a,a'\in\{P_0(s),L_0(s)\}$, so $a'=a$ (a \emph{stay}) or $a'=\tau(a)$ (a \emph{switch}). Since $x$ misses $j$ there
+is at least one pass. With $e$ copy edges and $p\ge1$ passes the length is $1+e+2p\le7$, and odd, so $e$ is even, $e\le4$ and
+$p\le3-e/2$. Let $r\le p$ be the number of switches. Merging the stays, the sequence of labels is a walk in $I(q)$ from $a_0$
+with $e$ edges in total, with $\tau$ applied $r$ times in between, ending at $w$. Every edge of $I(q)$ and every switch
+changes the type, and $w$ has the type of $z$, so $r$ is even if $a_0=z$ and odd if $a_0=\tau(z)$. The set of ends of walks of
+length $f$ from a vertex $u$ is $\bigcup\Gamma_g(u)$ over $g\le f$ with $g\equiv f\pmod 2$, of size at most the sum of the
+$s_g$. So:
+\begin{itemize}
+\item $a_0=z$, $r=0$: $w$ is the end of a walk of length $e\le4$ from $z$, so $d(z,w)\le4$ and $w\notin\opp(z)$.
+\item $a_0=z$, $r=2$: $p\ge2$, so $e\le2$; the label walk is $z\to(f_1\text{ edges})\to u_1$, switch, $\to(f_2)\to u_2$,
+  switch, $\to(f_3)\to w$, with $f_1+f_2+f_3=e\le2$. At most $B$ such $w$.
+\item $a_0=\tau(z)$, $r=1$: $\tau(z)\to(f_1)\to u_1$, switch, $\to(f_2)\to w$ with $f_1+f_2=e\in\{0,2,4\}$. At most $A$ such
+  $w$.
+\item $a_0=\tau(z)$, $r=3$: $p=3$, $e=0$, and $w=\tau^4(z)=z\notin\opp(z)$ (we count it as 1).
+\end{itemize}
+So at most $A+B+1$ elements of $\opp(z)$ are within distance 7 of $x$. The closed forms are direct expansions (for $A$:
+$s_0s_0+2s_0s_2+s_1s_1+2s_0s_4+2s_1s_3+s_2s_2$). Finally, for $q\ge7$, $q^4(q-5)\ge2q^4\ge14q^3$, so
+$q^5-5q^4-8q^3-12q^2-16q-10\ge6q^3-12q^2-16q-10\ge30q^2-16q-10>0$.
+\end{proof}
+
+At $q=7,8,9,11,13$ the bound is $1348$, $7286$, $19\,286$, $75\,560$ and $208\,666$ far vertices per hub and missed copy. The
+proof uses only: the graph is bipartite; all copies carry the labels $P_0,L_0$; every hub of row $s$ is adjacent, in each copy
+it meets, only to $P_0(s)$ or $L_0(s)$; there are no hub--hub edges; $x$ misses a copy. For $q\le6$ the count is not enough
+($A+B+1>q^5$).
+
+\begin{corollary}\label{cor:thesisD8}
+As defined in the thesis (every copy carries the same labels, and a copy of $K_1$ with label $t$ is joined only to vertices
+labelled $t$), $\Om_q$ has diameter at least 9 for $q=7,8,9,11,13$, under every reading of Figs.~2.21a/b, every pattern of
+block types and every pairing of point labels with line labels. These are the six table entries.
+\end{corollary}
+
+\emph{Computer checks.} The diameter is exactly 9 for $\Om_3$, $\Om_5$ (195\,300 vertices, the thesis value at $(8,8)$),
+$\Om_7$ and $\Om_9$ in both readings with both block types present, for several pairings $\sigma$ and patterns (all-pairs
+breadth-first search for $q=3,5$; for $q=7,9$ breadth-first search from one vertex in every orbit of an automorphism group
+that was checked edge by edge). For all six table values, breadth-first search from a hub gives eccentricity 9 in both
+readings; in reading 2 the vertices at distance 9 from a hub are exactly the points opposite its mark in the $3\alpha$
+copies it misses. With only one block type the diameter is 10.
+
+\subsection{Relabelling the copies}\label{ssec:relabel}
+Diameter at least 9 comes from the shared labels. A labelling that differs from copy to copy is not in the thesis, but it is
+the obvious repair, and at $q=2,3$ it works (Section~\ref{ssec:d8open}). We show that it cannot work at the table's $q$ with
+labellings that respect the geometry.
+
+A labelling $(P_c,L_c)$ as in Definition~\ref{def:omega} gives each copy one point labelling and one line labelling, used by
+every hub class of the corresponding type that meets the copy. For a hub class $Y$ and copies $c,d\in C(Y)$, the
+\emph{transfer} $T_Y(c\to d)$ maps the mark of row $t$ in $c$ to the mark of row $t$ in $d$: it is $P_dP_c^{-1}$,
+$L_dL_c^{-1}$, $L_dP_c^{-1}$ or $P_dL_c^{-1}$, depending on the types $Y$ sits on in $c$ and $d$.
+
+\begin{definition}\label{def:geometric}
+A labelling is \emph{geometric} if every transfer is the restriction (to $\cP$ or to $\cL$) of an automorphism of $I(q)$,
+that is, of a collineation of $H(q)$ or, when $q$ is a power of 3, of a duality.
+\end{definition}
+
+\begin{lemma}[one automorphism per copy]\label{lem:relabel}
+Relabelling every copy $c$ of a graph $\Om_q$ by an automorphism $g_c$ of $I(q)$ (replacing every vertex $(c,y)$ by
+$(c,g_c(y))$) gives an isomorphic graph. In particular, if $P_c=g_cP_0$ and $L_c=g_cL_0$ with collineations $g_c$ (or
+$P_c=g_cL_0$, $L_c=g_cP_0$ with dualities $g_c$ and the inner class of $c$ exchanged), the graph is isomorphic to the thesis
+graph it came from, and its diameter is at least 9.
+\end{lemma}
+
+\begin{lemma}[reduction]\label{lem:reduction}
+Take a geometric labelling, with any pattern and inner classes.
+\begin{enumerate}[label=(\alph*)]
+\item If $q$ is not a power of 3, every hub class sits on one type in all copies it meets, all unbarred classes sit on the
+  same type, and all barred classes on the other: the inner classes are those of reading 2 or of its dual.
+\item If $q$ is a power of 3, the graph is isomorphic to one with a geometric labelling in reading 2 (same pattern).
+\item In reading 2 the graph is isomorphic to one with $P_c=P_0$ for all $c$ and $L_c=\lambda_cL_0$ with collineations
+  $\lambda_c$ (the \emph{normal form}); in the dual of reading 2 likewise, with the unbarred hubs on lines. We call the bar
+  that sits on points the \emph{point bar} $\mathfrak P$ and the other the \emph{line bar} $\mathfrak L$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) A transfer from a copy where $Y$ sits on points to one where it sits on lines maps $\cP$ to $\cL$; an automorphism of
+$I(q)$ doing that is a duality, which does not exist (Fact~\ref{fact:hex}). In every copy the two unbarred classes sit on the
+same type. The copies are linked by unbarred classes: inside a block the pairs $\{k\pm1\}$ (type $a$) or $\{k+3,k+4\}$ (type
+$b$), $k\in\Z_5$, form a 5-cycle on the positions, and every class meets every block. So all unbarred classes sit on one
+type, and barred classes on the other type in every copy.
+(b) Fix a duality $\delta$ and relabel by $\delta$ every copy in which the unbarred classes sit on lines
+(Lemma~\ref{lem:relabel}). The new transfers are the old ones composed with $\delta^{\pm1}$, so they are still automorphisms,
+and now all unbarred classes sit on points.
+(c) In reading 2 the transfers of unbarred classes are restrictions of collineations to $\cP$, and the unbarred classes link
+all copies; fixing a copy $c_0$, every $P_cP_{c_0}^{-1}$ is a product of transfers, so $P_c=a_cP_{c_0}$ with a collineation
+$a_c$. In the same way (the barred classes also link all copies) $L_c=b_cL_{c_0}$. Relabel copy $c$ by $a_c^{-1}$: $P_c$
+becomes $P_{c_0}$ and $L_c$ becomes $a_c^{-1}b_cL_{c_0}$. Unbarred rows and barred rows are different vertices, so renaming
+the unbarred rows by $P_0^{-1}P_{c_0}$ and the barred rows by $L_0^{-1}L_{c_0}$ gives $P_c=P_0$ and $L_c=\lambda_cL_0$ with
+$\lambda_c=a_c^{-1}b_c$. The dual reading is the same with the bars exchanged.
+\end{proof}
+
+From now on we use the normal form, with the rows of the point bar identified with points by $P_0$ (so the hub $(t,X)$,
+$X\in\mathfrak P$, is adjacent to point $t$ of every copy in $C(X)$), and collineations $\lambda_c$ acting on $\cP$ and on
+$\cL$. Write $B(z,\rho)$ for the ball of radius $\rho$ about $z$ in $I(q)$.
+
+\begin{lemma}[opposite elements in balls]\label{lem:balls}
+Let $t,z$ be vertices of $I(q)$ of the same type, $d=d(t,z)$. Then $|B(z,4)\cap\opp(t)|$ is 0 if $z=t$ and $q^4$ if
+$d\in\{2,4,6\}$; and $|B(z,2)\cap\opp(t)|$ is 0 if $d\in\{0,2\}$ and $q^2$ if $d\in\{4,6\}$.
+\end{lemma}
+
+\begin{proof}
+A non-backtracking walk of length $i\le6$ in $I(q)$ is a geodesic, and for $i\le5$ each vertex of $\Gamma_i(z)$ is the end of
+exactly one such walk from $z$ (Lemma~\ref{lem:hexfacts}(a)). The vertices of $B(z,4)$ of the type of $t$ are at even
+distance $i\in\{0,2,4\}$ from $z$; we follow $d(t,h_j)$ along the walk $z=h_0,h_1,\dots,h_i$ with Lemma~\ref{lem:hexfacts}(a):
+from $h_j$ at distance $k\in[1,5]$ from $t$, if $h_{j-1}$ is the neighbour at distance $k-1$ all $q$ choices of $h_{j+1}$ go up
+to $k+1$; if $h_{j-1}$ is at distance $k+1$, one choice goes down to $k-1$ and $q-1$ go up; from distance 6 all choices go
+down to 5.
+\begin{itemize}
+\item $d=0$: $B(t,4)$ misses $\opp(t)$.
+\item $d=2$: from distance 2, four steps reach distance 6 only if every step goes up: $q\cdot q^3$; none of $B(z,2)$.
+\item $d=4$: $i=2$: both steps up, $q^2$. $i=4$: if $h_1$ goes down (one way), $h_2$ must go up ($q-1$ ways) and then
+  $h_3,h_4$ up ($q^2$ ways): $(q-1)q^2$. If $h_1$ goes up ($q$ ways, distance 5), $h_2$ goes up to 6 ($q$ ways), $h_3$ goes
+  down to 5 ($q$ ways), and $h_4\ne h_2$ must go up ($q-1$ ways): $q^3(q-1)$. Total $q^2+(q-1)q^2+(q-1)q^3=q^4$; and $B(z,2)$
+  gives $q^2$.
+\item $d=6$: $i=0$ gives 1; $i=2$: $(q+1)(q-1)$; $i=4$: $(q+1)(q-1)q+(q+1)(q-1)q(q-1)=(q+1)(q-1)q^2$. Total
+  $1+(q^2-1)+(q^4-q^2)=q^4$, and $B(z,2)$ gives $q^2$.
+\end{itemize}
+\end{proof}
+
+For $X\in\mathfrak P$ and $c'\notin C(X)$, let $N(X,c')$ be the set of copies $c_1\in C(X)$ such that some class of $\mathfrak
+L$ meets both $c_1$ and $c'$.
+
+\begin{lemma}[routes reach balls]\label{lem:routes}
+Let $X\in\mathfrak P$, $c'\notin C(X)$ and $t\in\cP$. Every point $v$ of copy $c'$ with $d((t,X),(c',v))\le7$ lies in
+\[
+B(t,4)\ \cup\bigcup_{c_1\in N(X,c')}B(\lambda_{c'}\lambda_{c_1}^{-1}(t),4)\ \cup\bigcup_{(c,d)\in W_2}B(\lambda_c\lambda_d^{-1}(t),2),
+\]
+where $W_2$ is the set of ordered pairs of distinct copies of the following three kinds: $(c',c_2)$ with $c_2$ sharing a class
+of $\mathfrak P$ with some $c_1\in C(X)$ and a class of $\mathfrak L$ with $c'$; $(c',c_1)$ with $c_1\in C(X)$ and some $c_2$
+sharing a class of $\mathfrak L$ with $c_1$ and with $c'$; $(c_2,c_1)$ with $c_1\in C(X)$ and $c_2$ sharing a class of
+$\mathfrak L$ with $c_1$ and a class of $\mathfrak P$ with $c'$.
+\end{lemma}
+
+\begin{proof}
+A path from $h=(t,X)$ to $(c',v)$ goes to point $t$ of a copy $c_1\in C(X)$, then alternates walks inside copies (of lengths
+$a_1,\dots,a_r\ge0$) with $r-1$ passes copy $\to$ hub $\to$ copy, ending in $c'$. A hub meets each copy at most once, so
+consecutive copies differ; $c_1\ne c'$, so $r\ge2$. The length is $1+\sum a_i+2(r-1)\le7$, so $\sum a_i\le8-2r$ and $r\le4$. A
+pass through a $\mathfrak P$-hub happens at a point and keeps it. A pass through an $\mathfrak L$-hub $(m,Y)$ happens at a line
+and goes from $\lambda_cL_0(m)$ in $c$ to $\lambda_dL_0(m)$ in $d$: it applies $\lambda_d\lambda_c^{-1}$. Collineations
+preserve distances, so by induction the end lies in $B(g(t),\sum a_i)$, $g$ the product of the maps applied. The walk starts
+and ends at points; a segment before an $\mathfrak L$-pass ends at a line, so the segments around $\mathfrak L$-passes are
+odd and $\sum a_i$ is even.
+\begin{itemize}
+\item $r=2$ ($\sum a_i\le4$): a $\mathfrak P$-pass gives $g=\mathrm{id}$; an $\mathfrak L$-pass needs a class of $\mathfrak L$
+  meeting $c_1$ and $c'$, i.e.\ $c_1\in N(X,c')$, and gives $g=\lambda_{c'}\lambda_{c_1}^{-1}$.
+\item $r=3$ ($\sum a_i\le2$): $\mathfrak P$ then $\mathfrak P$ gives $\mathrm{id}$. $\mathfrak P$ then $\mathfrak L$ forces
+  $a_1=0$, $a_2=a_3=1$ and $g=\lambda_{c'}\lambda_{c_2}^{-1}$ (first kind). $\mathfrak L$ then $\mathfrak P$ forces $a_1=a_2=1$,
+  $a_3=0$ and $g=\lambda_{c_2}\lambda_{c_1}^{-1}$ (third kind). $\mathfrak L$ then $\mathfrak L$ forces $a_1=a_3=1$, $a_2=0$:
+  both passes use the same row, so $g=\lambda_{c'}\lambda_{c_1}^{-1}$ (second kind).
+\item $r=4$: all $a_i=0$, so the walk never reaches a line, all passes are $\mathfrak P$-passes, and $v=t$.
+\end{itemize}
+\end{proof}
+
+Relabelling every copy $c$ by $\lambda_c^{-1}$ gives $L_c=L_0$ for all $c$ and $P_c=\lambda_c^{-1}P_0$, so the same statement
+holds with points and lines exchanged and $\lambda_c$ replaced by $\lambda_c^{-1}$, for $X\in\mathfrak L$. For a pair
+$(X,c')$, $X$ in either bar, let $r_4=|N(X,c')|$, and let $m_2$ be the number of pairs in $W_2$ that are not of the form
+$(c',c_1)$ with $c_1\in N(X,c')$.
+
+\begin{corollary}\label{cor:farcount}
+Every hub of $X$ has at least $q^5-r_4q^4-m_2q^2$ vertices of $c'$ at distance at least 9 (points if $X\in\mathfrak P$, lines
+if $X\in\mathfrak L$). If $r_4=\alpha$, then $m_2\le(4\alpha-1)+2\alpha\cdot2(2\alpha-1)=8\alpha^2-1$.
+\end{corollary}
+
+\begin{proof}
+Take $X\in\mathfrak P$. By Lemma~\ref{lem:balls}, $B(t,4)$ misses $\opp(t)$, each other ball of radius 4 meets it in at most
+$q^4$ points and each ball of radius 2 in at most $q^2$. The remaining points of $\opp(t)$ in $c'$ are at distance more than 7
+from $(t,X)$, and at odd distance (all points of all copies have one colour), so at distance at least 9. For $m_2$: the first
+two kinds are pairs $(c',b)$ with $b\ne c'$, at most $5\alpha-1-r_4=4\alpha-1$ of them outside the radius-4 words; the third
+kind has at most $2\alpha$ choices of $c_1$ and, since $c_1$ is met by two classes of $\mathfrak L$ that meet $2\alpha$ copies
+each, at most $2(2\alpha-1)$ choices of $c_2$.
+\end{proof}
+
+Call $(X,c')$, with $X$ in either bar and $c'\notin C(X)$, \emph{starved} if $r_4=\alpha$.
+
+\begin{lemma}[starved pairs]\label{lem:starved}
+For every block pattern there are starved pairs with $X$ unbarred and starved pairs with $X$ barred: for $X=k$ unbarred,
+$c'=5B'+k+3$ for a block $B'$ of type $a$ (if all blocks are of type $b$, $c'=5B'+k$); for $X=\bar k$ barred, $c'=5B'+k+3$ for
+a block $B'$ of type $b$ (if all blocks are of type $a$, $c'=5B'+k+1$).
+\end{lemma}
+
+\begin{proof}
+The classes meeting the copy at position $i$ are: in an $a$-block, unbarred $i\pm1$ and barred $i+2,i+3$; in a $b$-block,
+unbarred $i+1,i+2$ and barred $i\pm1$. For $X=k$ (so $\mathfrak L$ is barred), $c'$ at position $k+3$ of an $a$-block has
+barred classes $\{k,k+1\}$. In an $a$-block, $C(k)$ has positions $k-1$ (barred $\{k+1,k+2\}$: shares a class with $c'$) and
+$k+1$ (barred $\{k+3,k+4\}$: does not). In a $b$-block, $C(k)$ has positions $k+3$ (barred $\{k+2,k+4\}$: no) and $k+4$
+(barred $\{k,k+3\}$: shares). If all blocks are $b$, $c'$ at position $k$ has barred $\{k-1,k+1\}$; $C(k)$ has $k+3$ (barred
+$\{k+2,k+4\}$: shares $k+4=k-1$) and $k+4$ (barred $\{k,k+3\}$: no). For $X=\bar k$ ($\mathfrak L$ unbarred), $c'$ at position
+$k+3$ of a $b$-block has unbarred $\{k+4,k\}$. In an $a$-block $C(\bar k)$ has $k+2$ (unbarred $\{k+1,k+3\}$: no) and $k+3$
+(unbarred $\{k+2,k+4\}$: shares); in a $b$-block, $k-1$ (unbarred $\{k,k+1\}$: shares) and $k+1$ (unbarred $\{k+2,k+3\}$: no).
+If all blocks are $a$, $c'$ at position $k+1$ has unbarred $\{k,k+2\}$; $C(\bar k)$ has $k+2$ (unbarred $\{k+1,k+3\}$: no) and
+$k+3$ (unbarred $\{k+2,k+4\}$: shares). In each case exactly one copy of $C(X)$ per block shares a class of the other bar with
+$c'$, and $c'\notin C(X)$.
+\end{proof}
+
+\begin{fact}[computer-checked: route words]\label{fact:C4}
+For $\alpha=5,6,7,8$ and every block pattern, the routes of Lemma~\ref{lem:routes} were enumerated for every pair $(X,c')$:
+every pair has $r_4\ge\alpha$; for $\alpha=5$ ($q=7,8$) every starved pair, of either bar and in every pattern, has $m_2\le140$;
+for $\alpha=6$ ($q=9$) every starved pair has $m_2\le201$; and in every pattern some starved pair has $m_2\le134$
+($\alpha=5$), $197$ ($\alpha=6$), $262$ ($\alpha=7$), $347$ ($\alpha=8$). This was checked by two programs written separately.
+\end{fact}
+\todo{Fact~\ref{fact:C4} is a finite enumeration over block patterns and wiring words; it does not depend on $q$. Should we
+replace it by a hand count, or include the enumeration as an appendix table?}
+
+\begin{theorem}[geometric labellings, $q\ge8$]\label{thm:geomq8}
+Let $q\ge8$. For every block pattern, every choice of inner classes and every geometric labelling, $\Om_q$ has diameter at
+least 9. More precisely, in the normal form, for every starved pair $(X,c')$ every hub $(t,X)$ has at least
+$q^5-\alpha q^4-m_2q^2>0$ vertices of $c'$ at distance at least 9. For $q\ge10$ the proof is by hand; for $q=8,9$ it uses
+Fact~\ref{fact:C4}.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:reduction} we may assume the normal form, in reading 2 or its dual. Take a starved pair
+(Lemma~\ref{lem:starved}) and apply Corollary~\ref{cor:farcount} with $r_4=\alpha$. For $q\ge10$, $m_2\le8\alpha^2-1$ and the
+bound is positive when $q^2(q-\alpha)\ge8\alpha^2$; with $\alpha\le(q+3)/2$ it suffices that $q^2(q-3)\ge4(q+3)^2$, i.e.\
+$q^3-7q^2-24q-36\ge0$, which holds at $q=10$ (value 24) and for larger $q$. For $q=8$ ($\alpha=5$), Fact~\ref{fact:C4} gives
+$m_2\le140$ for every starved pair, so the bound is at least $32\,768-20\,480-8960=3328$; for $q=9$ ($\alpha=6$), $m_2\le201$
+and the bound is at least $59\,049-39\,366-16\,281=3402$.
+\end{proof}
+
+\subsubsection*{The case $q=7$}
+At $q=7$ the bound of Corollary~\ref{cor:farcount} is negative ($16\,807-5\cdot2401-140\cdot49=-2058$), so the overlaps of the
+five radius-4 balls must be used. Here $q$ is odd and 7 is not a power of 3, so the collineations are elements of $G_2(7)\le
+\mathrm{SO}(7,7)$ and the reading is reading 2 or its dual. Fix a starved pair $(X,c')$ of the point bar, write $g_1,\dots,g_5$
+for the elements $\lambda_{c'}\lambda_{c_i}^{-1}$, $c_i\in N(X,c')$, and $y_i=g_i(t)$. By Lemma~\ref{lem:hexfacts}(c),
+$B(y,4)\cap\cP=y^\perp\cap Q(6,q)$ for a point $y$, so with $C_i:=y_i^\perp\cap\opp(t)$ the points of $c'$ within distance 7 of
+$(t,X)$ that are opposite $t$ lie in $C_1\cup\dots\cup C_5$ and in at most $m_2\le140$ balls of radius 2.
+
+\begin{fact}[eigenvalues in $G_2$]\label{fact:G2eig}
+For $h\in G_2(q)$ acting on $V$, the eigenvalues of $h$ (in the algebraic closure, with multiplicity) are $1,x_1^{\pm1},
+x_2^{\pm1},x_3^{\pm1}$ with $x_1x_2x_3=1$. (The semisimple part of $h$ is conjugate over $\bar\F_q$ into the maximal torus
+$\mathrm{diag}(a,b,c,1,a^{-1},b^{-1},c^{-1})$, $abc=1$, of the subgroup $\SL(3)$ of Fact~\ref{fact:hex}.)
+\end{fact}
+
+\begin{lemma}[overlaps, $q$ odd]\label{lem:overlaps}
+Let $y,y',t$ be distinct points of $Q(6,q)$.
+\begin{enumerate}[label=(\alph*)]
+\item If $y\perp y'$ and $t$ lies on the line $yy'$, then $y^\perp\cap y'^\perp\cap\opp(t)=\emptyset$. Otherwise
+  $|y^\perp\cap y'^\perp\cap\opp(t)|\ge q^3-q$.
+\item If $y,y',y''$ are points not on one line, $|y^\perp\cap y'^\perp\cap y''^\perp\cap Q(6,q)|\le(q+1)^2$.
+\item If $y,y',y''$ lie on one totally singular line $\ell$ not through $t$, all the pairwise and triple intersections of
+  $y^\perp\cap\opp(t)$, $y'^\perp\cap\opp(t)$, $y''^\perp\cap\opp(t)$ equal $E_\ell:=\ell^\perp\cap\opp(t)$, and
+  $|E_\ell|\ge q^3-q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $y\perp y'$, the line $yy'$ is totally singular; if $t$ is on it, $y^\perp\cap y'^\perp=(yy')^\perp\subseteq t^\perp$. If
+$y,y'$ are not perpendicular, the line $yy'$ meets $Q(6,q)$ only in $y,y'$, so $t$ is not on it. In both remaining cases
+$y^\perp\cap y'^\perp$ is the perp of a line, a 5-dimensional space: a parabolic $Q(4,q)$ (if $y\not\perp y'$) or a cone with
+vertex the line $yy'$ over a conic (if $y\perp y'$); both have $q^3+q^2+q+1$ points. Its points not opposite $t$ are those of
+$\Pi^\perp$, $\Pi=\langle y,y',t\rangle$ a plane. For three independent singular vectors spanning $\Pi$ the Gram matrix of $b$
+has zero diagonal, so its rank is 3, 2 or 0 (a symmetric matrix with zero diagonal and rank 1 would be $vv^{\mathsf T}$ with
+all $v_i^2=0$). The radical of $\Pi^\perp$ is $\Pi\cap\Pi^\perp$, of dimension 0, 1 or 3. In the first case $\Pi^\perp$
+(dimension 4) carries a non-degenerate form with $(q+1)^2$ or $q^2+1$ singular points; in the second it is a cone over a
+conic, with $q^2+q+1$ points; in the third $\Pi$ is totally singular and $\Pi^\perp=\Pi\oplus\langle w\rangle$ with $Q(w)\ne0$
+($Q(6,q)$ has no totally singular 4-space), so its singular points are those of $\Pi$, $q^2+q+1$. So $|\Pi^\perp\cap
+Q(6,q)|\le(q+1)^2$, which gives (a) and, with $\Pi=\langle y,y',y''\rangle$, (b). For (c), $y^\perp\cap y'^\perp=\ell^\perp
+\subseteq y''^\perp$, and $|E_\ell|\ge q^3-q$ by (a).
+\end{proof}
+
+\begin{lemma}[coincidences]\label{lem:coinc}
+If two of $t,y_1,\dots,y_5$ coincide, the hub $(t,X)$ has at least $q^5-4q^4-140q^2=343$ vertices of $c'$ at distance at least
+9 (using $m_2\le140$ from Fact~\ref{fact:C4}).
+\end{lemma}
+
+\begin{proof}
+At most four distinct centres other than $t$ remain; apply Corollary~\ref{cor:farcount}.
+\end{proof}
+
+Now let $t,y_1,\dots,y_5$ be distinct. Call $y_i,y_j$ \emph{aligned} if they lie on one totally singular line through $t$ (then
+$C_i\cap C_j=\emptyset$ by Lemma~\ref{lem:overlaps}(a)); the aligned classes partition $\{y_1,\dots,y_5\}$. Call a set of at
+least three $y_i$ lying on one line of $\PG(6,q)$ not through $t$, and maximal with this property, a \emph{rich line}. Three
+collinear singular points span a totally singular line, so every collinear triple of $y$'s is inside an aligned class or a
+rich line; a rich line meets each aligned class at most once, and two rich lines share at most one point.
+
+\begin{lemma}[configuration types at $q=7$]\label{lem:types}
+Let $A_2$ be the number of aligned pairs, $T_3$ the number of triples meeting three different aligned classes, and
+$R_3=\sum\binom m3$ over the rich lines ($m$ points each). Then
+\[
+|C_1\cup\dots\cup C_5|\le U:=5q^4-(10-A_2-R_3)(q^3-q)+(T_3-R_3)(q+1)^2,
+\]
+except when one rich line holds all five points, where $U:=5q^4-4(q^3-q)$. Classified by the sizes of the aligned classes and of
+the rich lines there are exactly 17 kinds of configuration. Table~\ref{tab:types} lists them for $q=7$ with
+$F=16\,807-U-6860$ and the number $p$ of pairs among $\{t,y_1,\dots,y_5\}$ that every configuration of the kind has
+perpendicular: $p=\sum(s+\binom s2)$ over aligned classes of size $s\ge2$, plus $\sum\binom m2$ over rich lines. In the 9 kinds
+with $F\le0$, $p\ge6$.
+\end{lemma}
+
+\begin{table}[ht]
+\caption{The configuration types of Lemma~\ref{lem:types} at $q=7$.}\label{tab:types}
+\begin{tabular}{@{}l l r r r r r r@{}}
+\toprule aligned classes & rich lines & $A_2$ & $T_3$ & $R_3$ & $U$ & $F$ & $p$\\ \midrule
+5 & -- & 10 & 0 & 0 & 12\,005 & $-2058$ & 15\\
+4, 1 & -- & 6 & 0 & 0 & 10\,661 & $-714$ & 10\\
+3, 2 & -- & 4 & 0 & 0 & 9989 & $-42$ & 9\\
+3, 1, 1 & -- & 3 & 3 & 0 & 9845 & 102 & 6\\
+3, 1, 1 & 3 & 3 & 3 & 1 & 10\,117 & $-170$ & 9\\
+2, 2, 1 & -- & 2 & 4 & 0 & 9573 & 374 & 6\\
+2, 2, 1 & 3 & 2 & 4 & 1 & 9845 & 102 & 9\\
+2, 2, 1 & 3, 3 & 2 & 4 & 2 & 10\,117 & $-170$ & 12\\
+2, 1, 1, 1 & -- & 1 & 7 & 0 & 9429 & 518 & 3\\
+2, 1, 1, 1 & 3 & 1 & 7 & 1 & 9701 & 246 & 6\\
+2, 1, 1, 1 & 3, 3 & 1 & 7 & 2 & 9973 & $-26$ & 9\\
+2, 1, 1, 1 & 4 & 1 & 7 & 4 & 10\,517 & $-570$ & 9\\
+1, 1, 1, 1, 1 & -- & 0 & 10 & 0 & 9285 & 662 & 0\\
+1, 1, 1, 1, 1 & 3 & 0 & 10 & 1 & 9557 & 390 & 3\\
+1, 1, 1, 1, 1 & 3, 3 & 0 & 10 & 2 & 9829 & 118 & 6\\
+1, 1, 1, 1, 1 & 4 & 0 & 10 & 4 & 10\,373 & $-426$ & 6\\
+1, 1, 1, 1, 1 & 5 & 0 & 10 & 10 & 10\,661 & $-714$ & 10\\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}
+$|C_i|=q^4$ (Lemma~\ref{lem:balls}, $y_i\ne t$). Bonferroni: $|\bigcup C_i|\le S_1-S_2+S_3$, $S_k$ the sum of the $k$-fold
+intersections. By Lemma~\ref{lem:overlaps}: an aligned pair contributes 0 to $S_2$, and every triple containing one
+contributes 0 to $S_3$; a pair inside a rich line $\ell$ contributes $|E_\ell|$, and so does a triple inside it; every other
+pair contributes at least $q^3-q$, and every other triple (it is not collinear) at most $(q+1)^2$. A rich line with $m\in\{3,4\}$
+points contributes $-(\binom m2-\binom m3)|E_\ell|=-2|E_\ell|\le-2(q^3-q)$. Collecting terms gives $U$. If all five points lie on
+one rich line, all pairwise intersections equal $E_\ell$, so $|\bigcup C_i|=5q^4-4|E_\ell|$ exactly. The kinds: two 3-subsets of
+a 5-set sharing at most one point share exactly one, a third 3-subset would share two points with one of them, and a 4- or
+5-point rich line leaves no room for another; so the rich-line systems are none, one 3-line, two 3-lines through a common
+point, one 4-line, one 5-line. A rich line takes at most one point from each aligned class, which leaves exactly the 17 rows
+(partitions 5, 41, 32 admit no rich line; 311: none or one 3-line; 221: none, one, or two 3-lines through the singleton; 2111:
+none, 3, 3+3, 4; 11111: none, 3, 3+3, 4, 5). The numbers $A_2$, $T_3$, $R_3$ and $p$ depend only on the row.
+\end{proof}
+
+\begin{lemma}[few points are moved to perpendicular points]\label{lem:perp}
+Let $q$ be odd with $3\mid q-1$ and let $h\in G_2(q)$ fix no point of $Q(6,q)$. Then $\mathrm{Perp}(h):=\{s\in\cP:h(s)\perp s\}$
+has at most $(q^5-1)/(q-1)+q^{3.5}+q^3+(q-2)q^{1.5}$ points; at $q=7$, at most 4144 of the 19\,608 points of $H(7)$.
+\end{lemma}
+
+\begin{proof}
+Count $N_h:=\#\{v\in V:Q(v)=0,\ F(v)=0\}$ with $F(v):=b(v,hv)$; then $|\mathrm{Perp}(h)|=(N_h-1)/(q-1)$. $F$ is a quadratic
+form with polar form $b(v,(h+h^{-1})w)$, since $b(w,hv)=b(h^{-1}w,v)$. With $\psi$ a non-trivial additive character of $\F$,
+$N_h=q^{-2}\sum_{\lambda,\mu\in\F}\sum_{v\in V}\psi(\lambda Q(v)+\mu F(v))$. The terms with $\mu=0$ give $q^{-2}\cdot q\cdot q^6=q^5$
+($Q$ has $q^6$ zeros). For $\mu\ne0$, $\lambda Q+\mu F=\mu(F-\gamma Q)$ with $\gamma=-\lambda/\mu$, and for fixed $\mu$, $\gamma$ runs
+over $\F$. The form $R_\gamma=F-\gamma Q$ has polar form $b(v,(h+h^{-1}-\gamma)w)$, so its rank is $7-d_\gamma$ with
+$d_\gamma=\dim\ker(h^2-\gamma h+1)$. For a quadratic form of rank $r$ on $\F^7$ ($q$ odd), $|\sum_v\psi(R(v))|=q^{7-r/2}$.
+Hence $|N_h-q^5|\le(q-1)\sum_{\gamma}q^{1.5+d_\gamma/2}$ and $|\mathrm{Perp}(h)|\le(q^5-1)/(q-1)+q^{1.5}\sum_\gamma q^{d_\gamma/2}$.
+
+For $\gamma\ne\gamma'$ the polynomials $x^2-\gamma x+1$ and $x^2-\gamma'x+1$ are coprime, so the kernels are independent and
+$\sum_\gamma d_\gamma\le7$. Each $d_\gamma\le4$: (i) if $x^2-\gamma x+1=(x-\nu)(x-\nu^{-1})$ with $\nu\in\F$, $\nu\ne\pm1$, the kernel
+is $\ker(h-\nu)\oplus\ker(h-\nu^{-1})$, and an eigenvector $v$ with $hv=\nu v$ has $Q(v)=\nu^2Q(v)$, so $Q(v)=0$ and
+$\langle v\rangle$ is a fixed point; so $d_\gamma=0$. (ii) $\gamma=\pm2$: $\ker(h\mp1)$ contains no singular vector, so it has
+dimension at most 2 (a quadratic form in at least 3 variables over $\F$ has a non-trivial zero), and $\dim\ker(h\mp1)^2\le4$.
+(iii) If $x^2-\gamma x+1$ is irreducible with roots $\nu,\nu^q=\nu^{-1}$ in $\F_{q^2}$, then $d_\gamma=2\dim\ker(h-\nu)\le2m(\nu)$,
+$m(\nu)$ the multiplicity of $\nu$ as an eigenvalue. By Fact~\ref{fact:G2eig}, since $\nu\ne\nu^{-1}$, $\nu$ occurs at most
+once for each index, so $m(\nu)\ge3$ means $\nu=x_1^{\eps_1}=x_2^{\eps_2}=x_3^{\eps_3}$, hence $\nu^{\eps_1+\eps_2+\eps_3}=1$
+with $\eps_1+\eps_2+\eps_3\in\{\pm1,\pm3\}$; $\nu\ne1$ forces $\nu^3=1$, and since $3\mid q-1$ the cube roots of unity lie in $\F$,
+contradicting irreducibility. So $m(\nu)\le2$ and $d_\gamma\le4$. The function $d\mapsto q^{d/2}$ is increasing and convex; for
+integers $0\le d_\gamma\le4$ with $\sum d_\gamma\le7$ the maximum of $\sum q^{d_\gamma/2}$ is at $(4,3,0,\dots,0)$:
+$q^2+q^{1.5}+(q-2)$. At $q=7$: $2801+907.5+343+92.6=4144.1$.
+\end{proof}
+
+\begin{theorem}[geometric labellings, $q=7$]\label{thm:geomq7}
+For $q=7$, every block pattern, every choice of inner classes and every geometric labelling, $\Om_7$ has diameter at least 9.
+The proof uses Fact~\ref{fact:C4} ($m_2\le140$).
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:reduction}(a),(c) we have reading 2 or its dual in normal form; take a starved pair $(X,c')$ of the point bar
+and suppose that every hub of $X$ is within distance 8 of every point of $c'$. Consider the 15 elements $g_i$ ($1\le i\le5$)
+and $g_i^{-1}g_j$ ($i<j$) of $G_2(7)$. If one of them fixes a point $t$, then two of $t,y_1(t),\dots,y_5(t)$ coincide, and
+Lemma~\ref{lem:coinc} gives a far vertex. So none of them has a fixed point. Then for every point $t$ the six points
+$t,y_1,\dots,y_5$ are distinct, and by Lemma~\ref{lem:types} and Corollary~\ref{cor:farcount} the configuration at $t$ is of
+one of the 9 kinds with $F\le0$, so at least 6 of the 15 pairs among $t,y_1,\dots,y_5$ are perpendicular. The pair $(t,y_i)$ is
+perpendicular if and only if $t\in\mathrm{Perp}(g_i)$, and $(y_i,y_j)$ if and only if $t\in\mathrm{Perp}(g_i^{-1}g_j)$.
+Summing over the 19\,608 points $t$: $\sum_h|\mathrm{Perp}(h)|\ge6\cdot19\,608=117\,648$ over the 15 elements $h$, while
+Lemma~\ref{lem:perp} gives $\sum_h|\mathrm{Perp}(h)|\le15\cdot4144=62\,160$. This is a contradiction.
+\end{proof}
+
+\begin{corollary}\label{cor:geomtable}
+For every table value of $\Om_q$, $(10,8)$, $(11,8)$, $(12,8)$, $(14,8)$, $(15,8)$ and $(16,8)$, no geometric labelling of the
+copies gives diameter 8, under any reading of Figs.~2.21a/b, any choice of inner classes and any mix of block types. For
+$(14,8)$, $(15,8)$ and $(16,8)$ the proof is entirely by hand. For $q=7,8,11,13$ (not powers of 3), reading 1 with both block
+types has no geometric labelling at all (Lemma~\ref{lem:reduction}(a)), so there the thesis labelling is covered by
+Theorem~\ref{thm:twolabels} only.
+\end{corollary}
+
+\subsection{What remains open}\label{ssec:d8open}
+\begin{enumerate}
+\item \emph{Arbitrary labellings} ($q\ge4$). Whether some non-geometric labelling of G\'omez's wiring gives diameter 8 at
+  $q=7,8,9,11,13$ is open. Counting does not exclude it. In every graph where this was checked by computer, all pairs at
+  distance more than 8 were pairs (hub, vertex of a copy the hub misses). With labellings found by computer, $\Om_2$ (1890
+  vertices) and $\Om_3$ (14\,560 vertices, 6-regular) have diameter 8 (computer-checked); these are far below the table at
+  $(5,8)$ and $(6,8)$, and we know no description of their labellings. No labelling with diameter 8 was found at $q=4$ or
+  $q=5$.
+\item \emph{Labellings per (hub class, copy).} If the two classes of one bar meeting a copy may use different bijections, the
+  model of Section~\ref{ssec:relabel} does not apply, even when every transfer is a collineation, and the counting method fails
+  for every $q$.
+\item \emph{Other wirings} of the copies.
+\item \emph{The geometric class at $q\le5$} (not table values).
+\end{enumerate}
+
+\noindent\emph{What can be claimed.} The six table entries are the orders of G\'omez's graphs $\Om_q$; the thesis claims
+diameter at most 8 without proof; as defined there these graphs have diameter at least 9 for each of these $q$, under every
+reading of the figures and every pairing of point labels with line labels; geometric relabellings do not repair them. So these
+cells have no checkable graph of diameter 8. We do not claim that no graph of these orders with maximum degree $q+3$ and
+diameter 8 exists. The $(13,8)$ entry $5\,314\,680=15\cdot|H(11)|$, also credited to \cite{DGQ}, is not in the thesis, and nothing
+here bears on it; the thesis also lists $\Om_{11}\mathrm d$ with $N(15,8)\ge14\,978\,080$, which is not defined in \S\S2.7--2.9 and
+which the table does not use.
+\todo{The thesis value $\Om_5$ at $(8,8)$ (195\,300) is below the 2013 value 201\,480, so it is not a table entry; $(8,8)$ is
+improved by a Haar graph in Section~\ref{sec:haar}. Our own graphs at $(11,8)$ and $(15,8)$ (Table~\ref{tab:haar}) beat the
+table values whatever their status; at $(10,8)$, $(12,8)$, $(14,8)$, $(16,8)$ we have no graph above the table values.}
+
 %%END%%
 
 \bibliographystyle{amsplain}
