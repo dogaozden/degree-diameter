@@ -23,6 +23,7 @@
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\cD}{\mathcal{D}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cE}{\mathcal{E}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\cO}{\mathcal{O}}
 \newcommand{\cP}{\mathcal{P}}
@@ -414,8 +415,116 @@ Start from the three hats with labels $0,1,a$ and choose a fourth point $X_c$ of
 \end{enumerate}
 In terms of the links, the cycle $0\to1\to0$ of $\pi=(0\ 1)$ becomes the cycle $0\to c\to 1\to 0$ of $\sigma$. The four-hat structure has $2q+1$ more flags than the three-hat structure: $2(q+2)$ at $H_c$ and $K_c$, three from the rotation, minus six. (Checked by computer against the coordinate versions for $q=4,5,7$ and every choice of $a,c$.)
 
-\section{Diameter 4}\label{sec:d4}
-\emph{To be written.}
+\section{Diameter 4: clones and shadow lines in generalized quadrangles}\label{sec:d4}
+
+A \emph{generalized quadrangle} of order $(s,t)$ is an incidence structure in which every line has $s+1$ points, every point is on $t+1$ lines, and
+\begin{center}
+for every anti-flag $(p,L)$ there is \emph{exactly one} point of $L$ collinear with $p$.
+\end{center}
+It has $(s+1)(st+1)$ points and $(t+1)(st+1)$ lines, and its incidence graph has diameter $4$ and girth $8$. By Lemma~\ref{lem:diam}(b), an incidence structure has diameter at most $4$ as soon as for every anti-flag $(p,L)$ there is \emph{at least one} point of $L$ collinear with $p$. All constructions in this section only add points, lines and incidences to a quadrangle; nothing is deleted or moved, so no pair of points stops being collinear.
+
+This is the first difference with diameter $3$. In a projective plane two cloned points (new points on all lines through an old point) would overload the line joining them, and the hats of Section~\ref{sec:d3} are clones of the points $X_s$ that avoid the common line $\ell$. In a quadrangle, a clone of a point inherits the covering property from its point at once; what has to be arranged is only that every line receives the same number of clones, and this is what an $m$-ovoid is.
+
+\subsection{Clones and shadow lines}\label{ssec:clones}
+Let $\cS$ be a generalized quadrangle of order $(s,t)$.
+\begin{itemize}[leftmargin=1.5em]
+\item A \emph{clone} of a point $p$ is a new point incident with exactly the lines of $\cS$ through $p$.
+\item A \emph{shadow line} over a line $L$ is a new line that contains, for each point $p$ of $L$, exactly one point \emph{over} $p$: either $p$ itself or one of the clones of $p$, called the \emph{stand-in} for $p$.
+\end{itemize}
+
+\begin{definition}[Theorem B of the lab]\label{def:clones}
+Let $w$ assign to every point $p$ a number $w(p)\ge 0$, and let $\cM$ be a finite list of lines of $\cS$ (repetitions allowed). The structure $\cS[w,\cM]$ has the points and lines of $\cS$, $w(p)$ clones of each point $p$, and one shadow line over each entry of $\cM$, with a chosen stand-in for each of its points. Its incidences are those of $\cS$, those of the clones, and those of the shadow lines with their points.
+\end{definition}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.9]
+\begin{scope}
+  \node[pt] (p) at (0,0) {}; \node[below] at (p) {$p$};
+  \node[npt] (p1) at (1.4,0) {}; \node[below] at (p1) {\textcolor{BrickRed}{$p'$}};
+  \node[npt] (p2) at (2.8,0) {}; \node[below] at (p2) {\textcolor{BrickRed}{$p''$}};
+  \foreach \x/\n in {-0.2/a,1.0/b,2.2/c,3.0/d} {\node[ln] (\n) at (\x,1.6) {};}
+  \node at (2.6,1.95) {\scriptsize the $t+1$ lines through $p$};
+  \foreach \n in {a,b,c,d} {\draw[old] (p)--(\n); \draw[added] (p1)--(\n); \draw[added] (p2)--(\n);}
+\end{scope}
+\begin{scope}[xshift=7.3cm]
+  \node[ln] (L) at (1.5,1.6) {}; \node[above] at (L) {$L$};
+  \node[nln] (Lm) at (1.5,-1.4) {}; \node[below] at (Lm) {\textcolor{BrickRed}{$L^{\mu}$}};
+  \foreach \x/\n in {0/x0,1/x1,2/x2,3/x3} {\node[pt] (\n) at (\x,0) {}; \draw[old] (\n)--(L);}
+  \node[npt] (x2c) at (2.55,-0.55) {};
+  \draw[added] (x2c)--(L);
+  \draw[added] (x0)--(Lm); \draw[added] (x1)--(Lm); \draw[added] (x3)--(Lm); \draw[added] (x2c)--(Lm);
+  \node[right] at (x2c) {\scriptsize\textcolor{BrickRed}{clone of $x$}};
+  \node[above left] at (x2) {\scriptsize$x$};
+\end{scope}
+\end{tikzpicture}
+\caption{Left: a point $p$ with two clones $p',p''$; all three are on the $t+1$ lines through $p$ and on no other line of $\cS$. Right: a shadow line $L^\mu$ over $L$; for the point $x$ of $L$ the stand-in is a clone of $x$, for the other points of $L$ it is the point itself. The clone of $x$ is on $L$ as well, being on every line through $x$.}
+\label{fig:clones}
+\end{figure}
+
+\emph{What happens to the combinatorics.} No incidence is deleted, so every pair of old points that was collinear stays collinear. A point $p$ and its clones are pairwise collinear, on $t+1$ common lines; two lines through $p$ now meet in $1+w(p)$ points; a shadow line whose stand-ins are all original has the same points as its line. So the structure is no longer a partial linear space, but these coincidences are harmless. Two old points that were not collinear stay non-collinear: they have no common old line, a shadow line over $L$ contains only points over points of $L$, and an old point is over itself only.
+
+\emph{Why the diameter is $4$.} Write $\bar x$ for the old point under a point $x$ ($\bar x=x$ for an old point, $\bar x=p$ for a clone of $p$) and $\bar Y$ for the old line under a line $Y$. Every point $x$ is on every old line through $\bar x$. Let $(x,Y)$ be an anti-flag.
+\begin{itemize}[leftmargin=1.5em]
+\item $Y$ old. Then $\bar x\nI Y$; let $r$ be the point of $Y$ collinear with $\bar x$, on the line $N$. Then $x\I N\I r\I Y$.
+\item $Y$ a shadow line, $\bar x\nI\bar Y$. Let $r$ be the point of $\bar Y$ collinear with $\bar x$, on the line $N$, and $r^*$ the stand-in for $r$ on $Y$. Then $x\I N\I r^*\I Y$, as $r^*$ is on every old line through $r$.
+\item $Y$ a shadow line, $\bar x\I\bar Y$. Take a point $r\ne\bar x$ of $\bar Y$ and its stand-in $r^*$: then $x\I\bar Y\I r^*\I Y$.
+\end{itemize}
+So in every case some point of $Y$ is collinear with $x$, and the diameter is at most $4$ (Lemma~\ref{lem:diam}(b)); it is $4$ because non-collinear old points remain.
+
+\emph{Degrees.} An old line $L$ has $s+1+\sum_{p\I L}w(p)$ points. A shadow line has $s+1$ points. An old point or a clone is on $t+1$ old lines plus the shadow lines for which it is the stand-in. This proves:
+
+\begin{theorem}[Theorem B]\label{thm:B}
+For every generalized quadrangle $\cS$ of order $(s,t)$, every $w$, $\cM$ and choice of stand-ins, $\cS[w,\cM]$ has diameter $4$, $(s+1)(st+1)+\sum_pw(p)$ points and $(t+1)(st+1)+|\cM|$ lines. Its maximum degree is at most $\Delta$ if and only if $\Delta\ge\max(s,t)+1$, every line of $\cS$ carries clones of total number at most $\Delta-s-1$, and every point \textup{(}old or clone\textup{)} is the stand-in for at most $\Delta-t-1$ entries of $\cM$.
+\end{theorem}
+
+\subsection{Exact weights: \texorpdfstring{$m$}{m}-ovoids and covers}\label{ssec:weights}
+A \emph{weighted $m$-ovoid} is a weight $w$ on the points such that every line carries total weight exactly $m$; equivalently, a multiset of points meeting every line in exactly $m$ points, counted with multiplicity. It is an \emph{$m$-ovoid} if it is a set, and an \emph{ovoid} if moreover $m=1$ (a set of points meeting every line once). Dually, a \emph{weighted $m$-cover} is a multiset of lines with exactly $m$ members through every point, and a \emph{spread} is a set of lines partitioning the points.
+
+\begin{corollary}\label{cor:exact}
+Let $\Delta\ge\max(s,t)+1$, let $w$ be a weighted $(\Delta-s-1)$-ovoid and $\cM$ a weighted $(\Delta-t-1)$-cover, with every stand-in original. Then every old element of $\cS[w,\cM]$ has degree exactly $\Delta$, every clone $t+1$ and every shadow line $s+1$, and there are $2\Delta(st+1)$ elements in all. Joining the clones to the shadow lines by a suitable set of anti-flags makes the structure $\Delta$-regular, with diameter still $4$.
+\end{corollary}
+
+(Counting flags gives $\sum_pw(p)=(\Delta-s-1)(st+1)$ and $|\cM|=(\Delta-t-1)(st+1)$. No clone is on a shadow line, so all clone--shadow pairs are anti-flags, and the missing incidences can be added in any balanced way, for instance cyclically; \path{POLISHED.md}, Corollary~3.3.)
+
+So for diameter $4$ the whole question is: \emph{which quadrangles carry weighted $m$-ovoids and covers for the right $m$?} Three answers give the lab's values.
+
+\subsection{Theorem A: two elliptic quadrics in the Ahrens--Szekeres quadrangle}\label{ssec:A}
+Let $q$ be odd and $\Delta=q+2$. The quadrangle is $\mathrm{AS}(q)$, of order $(q-1,q+1)$; then $\Delta-s-1=2$ and $\Delta-t-1=0$, so we need a \emph{weighted $2$-ovoid of $\mathrm{AS}(q)$ and no shadow lines}. Every point of $\mathrm{AS}(q)$ is already on $t+1=q+2$ lines, so the clones have full degree and the result is $(q+2)$-regular.
+
+\emph{The quadrangle.} $\mathrm{AS}(q)$ is Payne's derived quadrangle of the symplectic quadrangle $W(q)$ at a point $x$ \cite{P71,PT}, and its definition is combinatorial. For points $u,v$ write $\{u,v\}^\perp$ for the set of points collinear with both, and $\{u,v\}^{\perp\perp}$ for the set of points collinear with every point of $\{u,v\}^\perp$; in $W(q)$, for $u,v$ not collinear, $\{u,v\}^{\perp\perp}$ has $q+1$ points (every point of $W(q)$ is regular). Then:
+\begin{itemize}[leftmargin=1.5em]
+\item the points of $\mathrm{AS}(q)$ are the $q^3$ points of $W(q)$ not collinear with $x$ (and different from $x$);
+\item its lines are (i) the lines of $W(q)$ not through $x$, each without its unique point collinear with $x$, and (ii) the sets $\{x,y\}^{\perp\perp}\setminus\{x\}$, $y$ not collinear with $x$ (the \emph{hyperbolic lines}).
+\end{itemize}
+Every line has $q$ points, every point is on $q+2$ lines, and the $q^2$ hyperbolic lines form a spread of $\mathrm{AS}(q)$.
+
+\emph{The configuration used.} Two sets $\cE_1,\cE_2$ of $q^2$ points of $\mathrm{AS}(q)$ such that
+\begin{enumerate}[label=\textup{(E\arabic*)},leftmargin=3em]
+\item each hyperbolic line meets $\cE_1$ in exactly one point and $\cE_2$ in exactly one point;
+\item every other line of $\mathrm{AS}(q)$ meets $\cE_1$ and $\cE_2$ in exactly two points in total \textup{(}a point of $\cE_1\cap\cE_2$ counted twice\textup{)}.
+\end{enumerate}
+Then $w=\mathbf 1_{\cE_1}+\mathbf 1_{\cE_2}$ is a weighted $2$-ovoid. Such a pair exists for every odd $q$: two elliptic quadrics of $\mathrm{PG}(3,q)$ through $x$, both tangent to the plane of points collinear with $x$, in a suitable relative position; they meet in $x$ and in one point $e$ of $\mathrm{AS}(q)$ (\path{POLISHED.md}, Theorem~4.1; the proof is a discriminant computation, and a line of type (i) meets the two quadrics in $1+\chi$ and $1-\chi$ points for some $\chi\in\{-1,0,1\}$). So:
+
+\begin{center}
+\emph{Clone every point of $\cE_1$ and every point of $\cE_2$ once} (so $e$ gets two clones).
+\end{center}
+Each line of $\mathrm{AS}(q)$ gains exactly two clones, each clone is on the $q+2$ lines of its point, nothing else changes, and Theorem~\ref{thm:B} gives a $(q+2)$-regular structure of diameter $4$ with $q^3+q^2(q+2)+2q^2=2q^2(q+2)$ elements. At $q=9,11,13$: $1782$, $3146$, $5070$. Weights are needed: $\mathrm{AS}(3)$ has no $2$-ovoid and $\mathrm{AS}(5)$ no $m$-ovoid for $m\le4$ (integer programs, \path{POLISHED.md} \S4). And nothing more can be added at $\Delta=q+2$: points are full, and every line has room for exactly two clones.
+
+\subsection{Proposition C: a \texorpdfstring{$2$}{2}-ovoid and a spread of \texorpdfstring{$W(q)$}{W(q)}}\label{ssec:C}
+Let $q$ be odd and $\Delta=q+3$ in $W(q)$, of order $(q,q)$; now $\Delta-s-1=\Delta-t-1=2$. The configuration used is a \emph{$2$-ovoid} $\cO$ of $W(q)$ (a set of $2(q^2+1)$ points meeting every line in exactly two points) and a \emph{spread} $\Sigma$ ($q^2+1$ lines partitioning the points). The construction:
+\begin{center}
+\emph{Clone every point of $\cO$ once, and put two shadow lines over every line of $\Sigma$.}
+\end{center}
+Every old line gains two clones, every old point is on two shadow lines (those over its spread line), clones and shadow lines have degree $q+1$, and Corollary~\ref{cor:exact} completes it to a $(q+3)$-regular structure of diameter $4$ with $2(q^2+1)(q+3)$ elements; one explicit completion joins the $i$-th clone to the shadow lines $2i$ and $2i+1$ (indices modulo $2(q^2+1)$, in any numbering). At $q=13$ this is $5440$ at $\Delta=16$. $2$-ovoids of $W(q)$, $q$ odd, exist: the union of two suitable classes of Ebert's partition of $\mathrm{PG}(3,q)$ into elliptic quadrics (orbits of a Singer subgroup) is one (\path{POLISHED.md}, Proposition~5.1); see also \cite{BLP09}. Spreads of $W(q)$ exist for every $q$.
+
+\subsection{Even \texorpdfstring{$q$}{q}, and all degrees}\label{ssec:even4}
+For even $q$, $W(q)$ has both an ovoid $\cO$ and a spread $\Sigma$ \cite{PT}. With $j$ clones of every point of $\cO$ and $j$ shadow lines over every line of $\Sigma$, Corollary~\ref{cor:exact} gives a $(q+1+j)$-regular structure of diameter $4$ with $2(q+1+j)(q^2+1)$ elements. Combining the three cases (ovoid and spread for even $q$; $j/2$ copies of a $2$-ovoid and $j$ copies of a spread for odd $q$ and even $j$; $\mathrm{AS}(q)$ with $(\Delta-q)/2$ copies of the weighted $2$-ovoid of Theorem~A and $\Delta-q-2$ copies of the hyperbolic spread for odd $q$ and odd $j$) gives $n_b(\Delta,4)\ge 2q^2\Delta$ for every prime power $q\le\Delta-1$ (\path{POLISHED.md}, Corollary~5.3).
+
+\subsection{For comparison: Delorme's doubling, and stand-ins}\label{ssec:delorme4}
+\emph{Delorme's construction} behind the 2013 values \cite{D85a} takes a spread $\Sigma$ of $W(q)$ and a line $v\in\Sigma$. Each line of $\Sigma$ other than $v$ gets one copy with the same points (a shadow line with all stand-ins original); each point of $v$ gets one copy, which is on the $q$ lines through the point other than $v$; and $v$ gets three copies, one through the original points of $v$ and two through the copies. All degrees are at most $q+2$, the diameter is $4$, and there are $2(q+1)(q^2+1)+q^2+q+4$ elements. It is a doubling in Delorme's sense: the copied set is the spread with the points of one of its lines, at two levels. Theorem~\ref{thm:B} is not a doubling: since a clone is on \emph{every} old line through its point, no condition on the shape of the copied set is needed, and whole $m$-ovoids can be cloned.
+
+\emph{Stand-ins: the $(7,4)$ example.} In the quadrangle $Q(4,5)$ (order $(5,5)$) take an ovoid $\cO$ and clone each of its $26$ points once: every line gains one clone and has degree $7$, every old point has degree $6$. Shadow lines can now be added as long as every point serves at most one of them: a point off $\cO$ has no clone and can be on at most one shadow line, while a point of $\cO$ can be on two, standing in for itself on one and letting its clone stand in on the other. An integer program finds $21$ such shadow lines (four points of $\cO$ are on two of them), giving $2\cdot6\cdot26+26+21=359$ elements, maximum degree $7$ and diameter $4$ (\path{POLISHED.md}, Appendix~A). In this family at most $q^2-q+2$ shadow lines are possible (\path{POLISHED.md}, Remark~3.5).
 
 \section{Diameter 6}\label{sec:d6}
 \emph{To be written.}
@@ -429,7 +538,10 @@ Explicit coordinates for every construction: \path{POLISHED.md} (\S2 for the hat
 
 \begin{thebibliography}{99}
 \bibitem{AL20} G.~Araujo-Pardo and N.~L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin. \textbf{38} (2022), no.~4, Paper 110; arXiv:2005.02427.
+\bibitem{BLP09} J.~Bamberg, M.~Law and T.~Penttila, Tight sets and $m$-ovoids of generalised quadrangles, Combinatorica \textbf{29} (2009), 1--17.
 \bibitem{D85a} C.~Delorme, Grands graphes de degr\'e et diam\`etre donn\'es, European J. Combin. \textbf{6} (1985), 291--302.
+\bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, J. Algebra \textbf{18} (1971), 201--212.
+\bibitem{PT} S.~E. Payne and J.~A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
 \end{thebibliography}
 
 \end{document}
