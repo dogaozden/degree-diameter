@@ -15,7 +15,7 @@ none of them reaches the lab's current values (§14).
 
 Every claim is labelled **Theorem** (with a complete proof here), **Computer-checked** (a computation, with the program
 and its output in the repository), or **Heuristic** (an estimate, no proof). The neighbourhood of every vertex of every
-graph is given explicitly (Definitions 2.1 and 3.1, and for the record the solution file of §11).
+graph is given explicitly (Definitions 2.1 and 3.1, and for the computer-found graphs their solution files).
 
 *File paths* refer to the repository github.com/dogaozden/degree-diameter, branch claude/gq-diameter-5-xa5d3d (this
 revision: branch claude/d5-relax-searches-osr72a). The tools are in research/theorems/d5gq/, and those of the revision in
@@ -35,7 +35,7 @@ research/squads/gqd5-r1/, gqd5-r2/, gqd5-r3/ and d5relax-r1/ (log: research/squa
 8. Typed layouts and slot counts
 9. Hub graphs
 10. Families valid for every $q$
-11. The $(13,5)$ record graph
+11. A $(13,5)$ graph on 11,636 vertices
 12. Routing through a third level (computer experiments)
 13. Quadrangles of order $(s,t)$ with $s\ne t$
 14. Comparison with the 2013 table and the lab's values
@@ -55,7 +55,9 @@ have exactly this value for some $(q,r)$: $(10,5) = 5\cdot 2N(7)$, $(11,5) = 5\c
 $(13,5) = 7\cdot 2N(9)$, $(14,5) = 9\cdot 2N(9)$, $(15,5) = 7\cdot 2N(11)$. The CombinatoricsWiki credits these cells to
 Delorme, Gómez and Quisquater [DGQ] (§16).
 
-**New record.** $n_b(13,5)\ge 11{,}636$ (table 11,480; the lab's previous value 11,486). The graph: seven levels over
+**A $(13,5)$ graph on 11,636 vertices** (table 11,480). It is not a record: when this note was first written the lab's
+value was 11,486, but since 26 October the lab has $(13,5) = 11{,}700$, a multi-doubled-matching lift of $W(8)$ (§16), and
+§14 shows that no graph of this note's kind can reach 11,700. The graph: seven levels over
 $Q(4,9)$ and its dual $W(9)$, an ovoid freed on five transitions, a computer-found set of 66 lines with 30 concurrent
 pairs freed on five more, two-point local dualities on the other eleven, $86+70$ hubs (§11). It was checked by a
 breadth-first search from every vertex (§15).
@@ -64,10 +66,11 @@ breadth-first search from every vertex (§15).
 
 - **Theorem A** (§2; these graphs have the orders of the table values): any typing, any bijections: diameter $\le 5$.
 - **Theorems 3.5, 3.6** (assembly): if every transition is *repaired* (or, more generally, every two levels are within
-  distance 5 of each other) and same-colour hubs are within distance 4, then
+  distance 5 of each other), same-colour hubs are within distance 4 and the hub graph has maximum degree $\le q-r$, then
   $n_b(q+1+r,5)\ge (2r+1)\cdot 2N + K_{\mathcal A}+K_{\mathcal B}$.
 - **Theorem E** (§4): a transition with matching $M$ and freed set $R$ is repaired **if and only if** two covering
   conditions (E2), (E3) hold. This is new compared with the $D=7$ note, where only sufficient conditions were given.
+  (The letter E stands for "exact"; there is no Theorem D.)
 - **Theorem B** (§5): a transition whose matching extends to an automorphism (the identity between a quadrangle and its
   dual, or a duality) is repaired if and only if its freed set is a **partial ovoid** (resp. partial spread). The
   "segment sets" of the hexagon do not survive at $D=5$.
@@ -79,7 +82,7 @@ breadth-first search from every vertex (§15).
   sits at a point of its partner (e.g. the ovoid point).
 - **Families** (§10, Corollaries 10.1–10.4), valid for every $q$, with explicit sets and explicit hub graphs. For
   example, for $q$ odd, $q\ge 5$: $n_b(q+4,5)\ge 14N(q)+K_{\mathcal A}+K_{\mathcal B}$, where the explicit sets allow
-  up to $\min(q^2+5,\,6q)$ and $3q+3$ hubs and the explicit hub graphs of Lemma 9.1 decide how many are used. With
+  up to $6q$ and $3q+3$ hubs and the explicit hub graphs of Lemma 9.1 decide how many are used. With
   those hub graphs the families exceed the 2013 table in the cells $(10,5)$–$(15,5)$ (§14).
 
 **What does not work** (§§12–14): the level-graph family stays below the lab's values (doubled-matching lifts and
@@ -318,6 +321,7 @@ $\omega'_0(g)\in B(\tau_0)$ have different types, so $h\to(\omega_0(h),0)\leadst
 $\le 1+3+1$. $\square$
 
 **Theorem 3.5 (assembly).** Suppose
+
 - (T) every transition $t$ is repaired by $R_t$, and
 - (HG) any two $\mathcal B$-hubs, and any two $\mathcal A$-hubs, are within distance 4 in $X_R^+$.
 
@@ -329,6 +333,7 @@ $$n_b(q+1+r,5)\ \ge\ (2r+1)\cdot 2N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 (HG) holds if $Y$ alone has all same-colour distances $\le 4$ (§9); paths through the levels may also help.
 
 **Theorem 3.6 (assembly, general form).** Theorem 3.5 remains true if (T) is replaced by
+
 - (T') for every arc $t = (j\to j')$, every vertex of level $j$ is within distance 5 of every vertex of level $j'$ in
   $X_R^+$.
 
@@ -342,6 +347,7 @@ We use (T') for transitions that are repaired only with the help of hubs (§7) o
 
 **Theorem E.** Let $t = (j\to j')$ be any transition of a level graph over a GQ of order $(s,s)$, $M = M_t$,
 $R = R_t\subseteq A(\tau_j)$, $R\ne\emptyset$. Then $t$ is repaired if and only if
+
 - **(E2)** for every $x\in R$, every element of $A(\tau_{j'})$ is incident with $M(a)$ for some
   $a\in\Gamma_2(x)\smallsetminus R$;
 - **(E3)** for every $x\in R$, every element of $B(\tau_j)$ is incident with some $a\notin R$ such that
@@ -409,7 +415,8 @@ largest are the ovoids, $q^2+1$ points, when they exist (Lemma 1.2(a)).
 
 *Computer-checked*: test_basic.py, 30 random sets per $q\le 5$ (half partial ovoids, half not): repaired iff partial
 ovoid. Squad card c9 built a three-level graph over $Q(4,5)$ with an 18-line partial spread plus one line meeting two of
-its lines on a friendly transition, and no hubs: the graph has diameter 6, as Theorem B predicts for the two levels.
+its lines on a friendly transition, and no hubs: Theorem B says the transition is not repaired, and in this example the third level does not repair it
+either: diameter 6.
 
 ---
 
@@ -419,6 +426,7 @@ For a non-friendly transition between two levels over the same quadrangle (a map
 $Q(4,q)$) there is no duality when $q$ is odd. We ask $M$ to behave like one near $R$.
 
 **Theorem C.** Let $t$ be any transition, $M = M_t$, $R = R_t$. If
+
 - (H1) $R$ is non-collinear (resp. non-concurrent), and
 - (H3) $M(\Gamma_2(x)) = \Gamma_2(M(x))$ for every $x\in R$,
 
@@ -612,6 +620,7 @@ If $Y$ is such a graph with $\delta\le q-r$, both conditions of Theorem 3.5 on $
 
 **Lemma 9.1 (explicit hub graphs).** $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};\delta)$ exists in each of the
 following cases ($s$ a prime power):
+
 - (Y0) $1\le K_{\mathcal B},K_{\mathcal A}\le\delta$ (complete bipartite graph);
 - (Y1) $s+1\le\delta$ and $s^2+s+1\le K_{\mathcal B},K_{\mathcal A}\le(s^2+s+1)(\delta-s)$;
 - (Y2) $s+1\le\delta$ and $N(s)\le K_{\mathcal B},K_{\mathcal A}\le N(s)+(s+1)(\delta-s-1)$;
@@ -658,7 +667,8 @@ K_{\mathcal A};q-2)$,
 $$n_b(q+3,5)\ \ge\ 10N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
 **Corollary 10.3 ($q$ odd, $q\ge 5$, seven levels).** Types $HHHDHHD$ (Proposition 8.1), same ingredients: for
-$K_{\mathcal B}\le\min(q^2+5,\,6q)$, $K_{\mathcal A}\le 3q+3$ with an $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};q-3)$,
+$K_{\mathcal B}\le 6q$ (the slot count gives
+$\min(q^2+5,6q)$, which is $6q$ for $q\ge 5$), $K_{\mathcal A}\le 3q+3$ with an $\mathrm{HG}_5(K_{\mathcal B},K_{\mathcal A};q-3)$,
 $$n_b(q+4,5)\ \ge\ 14N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
 **Corollary 10.4 ($q$ odd, $q\ge 5$, nine levels).** Types $HHHHDHHHD$ (Proposition 8.3), same ingredients: for
@@ -666,7 +676,9 @@ $K_{\mathcal B}\le\min(q^2+7,\,9q-1)$, $K_{\mathcal A}\le 3q+5$ with an $\mathrm
 $$n_b(q+5,5)\ \ge\ 18N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
 *Proofs.* Theorems B (friendly arcs: the ovoid is a partial ovoid, the set of Lemma 1.3 gives a partial spread of
-$Q(4,q)$) and C/Proposition 6.4 (non-friendly arcs) repair every transition; slot counts from Propositions 8.1–8.3
+$Q(4,q)$) and C/Proposition 6.4 (non-friendly arcs; on the $D\to D$ arc, where $M$ maps lines to points, the dual
+statement of Proposition 6.4, for non-concurrent lines $x,y$ and non-collinear points $\ell,m$, which has the same proof)
+repair every transition; slot counts from Propositions 8.1–8.3
 with $a = q^2+1$, $b = 3q-1$, $c = 2$; Theorem 3.5. $\square$
 
 **10.3 With computer-found sets.** Replacing $b$ by the size of a computer-found partial ovoid of $W(q)$ (Lemma 1.2(d)
@@ -676,13 +688,14 @@ search all stop at 50–51), 70 ($q=11$; tabu search; 68 from unions of orbits).
 
 ---
 
-## 11. The $(13,5)$ record graph
+## 11. A $(13,5)$ graph on 11,636 vertices
 
 **Computer-checked 11.1.** $n_b(13,5)\ge 11{,}636$.
 
 *Construction* ($q = 9$, $r = 3$; built by research/theorems/d5gq/wgr.py with no extra freed points, i.e. the layout of
 build_relaxed.py; solution file research/theorems/d5gq/graphs/d13D5_q9_relaxed66_n11636.json, edges
 ...n11636.edges.gz).
+
 - $G = Q(4,9)$ as `W(9).dual()` (§1.2); levels $\mathbb Z_7$, rotational tournament, types $HHHDHHD$.
 - $H\to D$ arcs ($0\to3$, $1\to3$, $2\to3$, $4\to6$, $5\to6$): $M = \mathrm{id}$, $R = O$, the ovoid of Lemma 1.1
   (82 points).
@@ -718,6 +731,7 @@ local dualities; graphs/d13D5_q9_typed_n11621.json); 11,626 and 11,627 with rela
 Theorem E is about two levels. With $2r+1\ge 5$ levels a pair $(u,j),(v,j')$ can also be joined through a third level
 $i$ with two matching edges, e.g. $(x,j)\to(M_{j\to i}(x),i)\to(z,i)\to(M_{i\to j'}(z),j')\to(v,j')$ (length 4).
 *Computer-checked* (squad cards):
+
 - c19: seven levels over $Q(4,5)$, all type $H$: a **random** 16-point freed set on one non-friendly arc, violating
   (E2) and (E3), becomes harmless after annealing the other 20 matchings (apsp VALID, 2,184 vertices); five levels:
   8 points.
@@ -733,11 +747,13 @@ $i$ with two matching edges, e.g. $(x,j)\to(M_{j\to i}(x),i)\to(z,i)\to(M_{i\to 
   $q-r = 2$). At $q = 9$, on top of the 11,636 graph of §11 with one extra freed point on each of the ten $H\to H$ arcs
   (which would give 11,640), three runs went from about 2,650 bad pairs to 10–16 in 200,000–250,000 swaps and then
   stalled; a greedy polish with 150 candidate moves per step did not close the last ones. (A first version also allowed
-  swaps in the $D\to D$ arc $3\to6$; pairs between levels 3 and 6 can then not be repaired at all, because every route
-  through a third level uses only friendly arcs. The later runs keep that arc fixed.)
+  swaps in the $D\to D$ arc $3\to6$. Routes between levels 3 and 6 through *one* other level use only friendly arcs and
+  cannot repair those pairs. Routes through *two* other levels repair some of them (about 15% in the referee's test on
+  the 11,636 graph, research/referee/d5_checks/arc36.py), but not enough, so the later runs keep that arc fixed.)
 
-*Heuristic* (why this does not scale to $q = 11$): for a freed $x$ and a random $M$, about $N/e$ elements of the other
-level violate (E2). A third level supplies about $(q+1)^2$ length-4 routes per freed element and per route type, so the
+*Heuristic* (why this does not scale to $q = 11$): for a freed $x$ and a uniformly random $M$, a fraction
+$(1-(q+1)/N)^{q(q+1)}$ of the elements of the other level violate (E2) (0.31, 0.32, 0.33, 0.34 for $q = 5,7,9,11$; about
+$1/e$ for large $q$). A third level supplies about $(q+1)^2$ length-4 routes per freed element and per route type, so the
 fraction of $A(\tau_{j'})$ left uncovered after the five other levels is about $e^{-1}e^{-5(q+1)^2/N}$: 12% for $q=5$
 but 22% for $q = 11$, i.e. about 330 pairs per freed element to repair by deliberate changes, each change repairing
 $q+1$ of them. We did not get third-level routing to work at $q\ge 9$.
@@ -748,6 +764,7 @@ $q+1$ of them. We did not get third-level routing to work at $q\ge 9$.
 
 Proposition 2.2 rules out the level graph for $Q(5,q)$, $H(3,q^2)$ and $AS(q)$. Small experiments (squad cards c12,
 c13; research/squads/gqd5-r1/c12, c13) tried the natural substitutes at the cells $\Delta = 5,7,9$:
+
 - $GQ(2,4)$ at $\Delta = 5$: the 27 points already have degree 5, so only the 45 lines (2 spare edges each) can carry
   matchings, and the level structure must be bipartite (no odd cycles of levels). Best valid graph: 144 vertices
   (two levels), against the lab's 354.
