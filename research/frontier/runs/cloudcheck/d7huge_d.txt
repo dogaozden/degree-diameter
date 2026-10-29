@@ -1,0 +1,58 @@
+# check-d7huge-d (worker d): all-pairs checks of two diameter-7 candidates, ranges d19 16 and d20 2
+
+Branch of the solution files: claude/conics-2-diameter-7-ic0oat (commit cbfa594, checked out for the builds).
+Worker branch for this report: claude/d7-verify-ranges-d-qd8q7x.
+
+## Machine
+
+nproc: 4
+free -g (before the first build):
+              total        used        free      shared  buff/cache   available
+Mem:             15           0          15           0           0          15
+Swap:             0           0           0
+
+## sha256 checks
+
+hex_q16.bin (output of hexgen2 16, from research/d10D7/hexgen2.c):
+  f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  hex/hex_q16.bin   (matches the expected value)
+
+(19,7) edge list, typed_build.py build from research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol:
+  d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1  g19.edges   (matches the expected value)
+  builder's own line: wrote g19.edges sha256 d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1
+
+(20,7) edge list, typed_build.py build from research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol:
+  f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  g20.edges   (matches the expected value)
+  builder's own line: wrote g20.edges sha256 f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba
+
+## Exact commands
+
+Working directory for builds and checks: a scratch directory outside the repository (the repository was only used to read sources and sols).
+
+cc -O2 -o hexgen2 /home/user/degree-diameter/research/d10D7/hexgen2.c
+mkdir -p hex && ./hexgen2 16                     # writes hex/hex_q16.bin
+python3 /home/user/degree-diameter/research/synthetic/conics2/typed_build.py build hex/hex_q16.bin /home/user/degree-diameter/research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol g19.edges
+python3 /home/user/degree-diameter/research/synthetic/conics2/typed_build.py build hex/hex_q16.bin /home/user/degree-diameter/research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g20.edges
+cc -O3 -march=native -pthread -o apsp_fast /home/user/degree-diameter/research/synthetic/conics/apsp_fast.c
+nohup ./apsp_fast g19.edges 19 7 4 10609635 11316940 > out19_16.txt 2> err19_16.log &
+nohup ./apsp_fast g20.edges 20 7 4 658135 1316270 > out20_2.txt 2> err20_2.log &
+
+Ranges (checker arguments LO HI are the half-open source range [LO, HI)):
+  d19 16: (16-1)*707309 = 10609635 .. min(16*707309, 11316940) = 11316940
+  d20 2:  (2-1)*658135 = 658135 .. min(2*658135, 15795219) = 1316270
+
+## Results
+
+### d19 16 (sources 10609635..11316940), finished 20:53 UTC
+
+stdout, unedited:
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=10609635..11316940
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+
+last stderr lines, unedited:
+688128 of 707305 sources done (1793307018)
+704512 of 707305 sources done (1793307156)
+707305 of 707305 sources done (1793307177)
+
+### d20 2 (sources 658135..1316270)
+
+running (started 20:53 UTC); not finished at the time of this commit.
