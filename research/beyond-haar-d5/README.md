@@ -16,6 +16,11 @@ trivially, so R acts regularly on both sides and the graph is the Haar graph of 
 connection set T = S n R, which is closed under conjugation by the involution of H (an orbit-type set, as in
 research/structured). nauty: |Aut| = 2400, vertex-transitive (some automorphism swaps the sides), colour-preserving
 part = G. So this beats 1,152 but it is not a non-Haar construction; the earlier Haar searches missed this set.
+As a Haar graph: records/d7D5_n1200_haar_sl5xc5.txt (format of research/frontier/sols, group "sl 5 n 5", N = 600,
+S = 7 elements of SL(2,5) x Z5, edges (g,A) ~ (s g, B)); research/frontier/build_haar2.py on it: VALID d=7 D=5,
+ecc 5 from both sides, no duplicate edges, sha256 a56affd8f9737984c8ae551fd4322fe1c5b2187d7f98bd8ad8b1aae6ba72adf0
+(records/d7D5_n1200_build_haar2.txt); apsp.c on that edge list: VALID. Independent Python BFS on the coset edge
+list: VALID (records/d7D5_n1200_check_independent.txt).
 
 (5,5): no graph above 354 was found. Near misses are listed below (cost 0 would be a valid graph).
 
