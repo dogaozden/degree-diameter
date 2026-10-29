@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
+#include <time.h>
 
 static int nA, nB, ndc, DELTA, D = 5;
 static int *contrib, *nE, **EA, **EB;
@@ -89,6 +91,35 @@ int main(int argc, char **argv) {
     int hist[64] = {0}; for (int d = 0; d < ndc; d++) if (contrib[d] < 64) hist[contrib[d]]++;
     fprintf(stderr, "%s: nA %d nB %d double cosets %d; contributions", argv[1], nA, nB, ndc);
     for (int c = 1; c < 64; c++) if (hist[c]) fprintf(stderr, " %dx%d", hist[c], c); fprintf(stderr, "\n");
+    if (getenv("SA")) {   /* annealing over unions: swap one chosen double coset for an unchosen one of equal size */
+        double SECS = getenv("SECS") ? atof(getenv("SECS")) : 60, T0 = getenv("T0") ? atof(getenv("T0")) : 3,
+               T1 = getenv("T1") ? atof(getenv("T1")) : 0.3; long ITERS = getenv("ITERS") ? atol(getenv("ITERS")) : 20000;
+        uint64_t rs = 88172645463325252ULL ^ (getenv("SEED") ? (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL : 0);
+        #define RND() (rs ^= rs << 13, rs ^= rs >> 7, rs ^= rs << 17, rs)
+        int *in = calloc(ndc, sizeof(int)); clock_t t0 = clock(); long gbest = 1L << 40;
+        for (int run = 0; (double)(clock() - t0) / CLOCKS_PER_SEC < SECS && gbest > 0; run++) {
+            /* random start: add random double cosets until degree DELTA */
+            memset(in, 0, sizeof(int) * ndc); nch = 0; int left = DELTA, tries = 0;
+            while (left > 0 && tries < 100000) { int d = RND() % ndc; tries++; if (in[d] || contrib[d] > left) continue; in[d] = 1; chosen[nch++] = d; left -= contrib[d]; }
+            if (left) continue;
+            long cur; tested = 0; bestcost = 1L << 40; test(); cur = bestcost;
+            for (long it = 0; it < ITERS && cur > 0; it++) {
+                if ((it & 63) == 0 && (double)(clock() - t0) / CLOCKS_PER_SEC > SECS) break;
+                double T = T0 * pow(T1 / T0, (double)it / ITERS);
+                int j = RND() % nch, d0 = chosen[j], d1 = RND() % ndc;
+                if (in[d1] || contrib[d1] != contrib[d0]) continue;
+                chosen[j] = d1; long before = bestcost; bestcost = 1L << 40; test(); long c = bestcost; bestcost = before;
+                if (c <= cur || (double)(RND() >> 11) / 9007199254740992.0 < exp(-(c - cur) / T)) { cur = c; in[d0] = 0; in[d1] = 1;
+                    if (c < gbest) { gbest = c; nbest = nch; memcpy(bestset, chosen, sizeof(int) * nch); if (outpath) write_graph(chosen, nch); } }
+                else chosen[j] = d0;
+            }
+            if (cur < gbest) { gbest = cur; nbest = nch; memcpy(bestset, chosen, sizeof(int) * nch); }
+        }
+        bestcost = gbest;
+        printf("RESULT %s SA solutions %lld best %ld vertices %d set", argv[1], nsol, bestcost, n);
+        for (int j = 0; j < nbest; j++) printf(" %d", bestset[j]); printf("\n");
+        return 0;
+    }
     rec(0, DELTA);
     printf("RESULT %s tested %lld solutions %lld best %ld vertices %d set", argv[1], tested, nsol, bestcost, n);
     for (int j = 0; j < nbest; j++) printf(" %d", bestset[j]); printf("\n");

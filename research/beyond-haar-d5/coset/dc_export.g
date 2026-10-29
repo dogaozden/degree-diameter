@@ -5,6 +5,7 @@
 # Writes OUT_<i>_<j>.dc for every pair (H class i, K class j), j >= i: header "nA nB ndc", then per double coset a
 # line "contrib nedges" followed by the edges "a b".
 Hs := List(Filtered(ConjugacyClassesSubgroups(G), c -> Size(Representative(c)) = H_ORDER), Representative);
+Hs := Filtered(Hs, H -> Size(Core(G, H)) = 1);   # nontrivial core: a graph of G/core (normal H: Haar of G/H)
 Print(GNAME, ": ", Length(Hs), " classes of subgroups of order ", H_ORDER, "\n");
 for i in [1..Length(Hs)] do for j in [i..Length(Hs)] do
   H := Hs[i]; K := Hs[j];
