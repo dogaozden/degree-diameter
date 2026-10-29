@@ -10,8 +10,12 @@ degree 2+2+2+1). Found at 21:29 UTC by annealing over unions of double cosets (c
 Checked: research/lifts/coordinator_check/apsp.c gives degree 7, bipartite, diameter 5, RESULT VALID at D = 5 and
 INVALID at D = 4 (records/d7D5_n1200_apsp.txt). Files: records/d7D5_n1200_coset_sg1200_475.edges (edge list),
 records/sg1200_475_h2.dc2 (coset action data), rebuild: `python3 coset/dc2_edges.py records/sg1200_475_h2.dc2
-OUT.edges 242 206 265 2`. Not a Haar graph of G (G has no subgroup of order 600 acting regularly on the cosets: its
-index-2 subgroups contain H); the full automorphism group is checked below.
+OUT.edges 242 206 265 2`.
+**It is a Haar graph** (correction, 21:40 UTC): the index-2 subgroup R = C5 x SL(2,5) of G meets every conjugate of H
+trivially, so R acts regularly on both sides and the graph is the Haar graph of SL(2,5) x C5 with the 7-element
+connection set T = S n R, which is closed under conjugation by the involution of H (an orbit-type set, as in
+research/structured). nauty: |Aut| = 2400, vertex-transitive (some automorphism swaps the sides), colour-preserving
+part = G. So this beats 1,152 but it is not a non-Haar construction; the earlier Haar searches missed this set.
 
 (5,5): no graph above 354 was found. Near misses are listed below (cost 0 would be a valid graph).
 
