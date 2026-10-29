@@ -1,6 +1,7 @@
 import BipartiteDD.LeanMaxx.Omega45b.Main
 import BipartiteDD.LeanMaxx.Omega45b.PerpQuadric
 import BipartiteDD.LeanMaxx.Omega45b.CharSum
+import BipartiteDD.LeanMaxx.Omega45b.Lemma44Lin
 
 #print axioms BipartiteDD.LeanMaxx.Omega45b.wzeros5
 #print axioms BipartiteDD.LeanMaxx.Omega45b.wzeros4
@@ -21,3 +22,7 @@ import BipartiteDD.LeanMaxx.Omega45b.CharSum
 #print axioms BipartiteDD.LeanMaxx.Omega45b.wzeros7
 #print axioms BipartiteDD.LeanMaxx.Omega45b.count_QF_le
 #print axioms BipartiteDD.LeanMaxx.Omega45b.sum_dk_le
+#print axioms BipartiteDD.LeanMaxx.Omega45b.sum_rpow_lt
+#print axioms BipartiteDD.LeanMaxx.Omega45b.card_pts_perp
+#print axioms BipartiteDD.LeanMaxx.Omega45b.lemma44_of_linearLift
+#print axioms BipartiteDD.LeanMaxx.Omega45b.omega45_H7_of_linearLift
