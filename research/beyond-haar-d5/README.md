@@ -3,7 +3,41 @@
 Job "beyond-haar-d5" (Opus cloud session, Oct 29 2026). Goal: beat our values 354 at (Δ,D) = (5,5) and 1,152 at
 (7,5) with graphs that are not Haar graphs (all Haar graphs of the relevant orders were searched elsewhere).
 
-**Status: no graph above 354 or 1,152 yet.** Best near misses are listed below (cost 0 would be a valid graph).
+**Status: no graph above 354 or 1,152 was found.** Nothing to report as a record. Best near misses are listed below
+(cost 0 would be a valid graph).
+
+## Summary
+
+- **Exact negative results (5,5).** No voltage lift of the 2+2 base [[1,4],[4,1]] by any group of order 89..95
+  (356..380 vertices) has diameter 5 (exh/b4a1x.c, every group, seconds each; completeness checked against brute
+  force). No Z89-lift of the other 2+2 base [[2,3],[3,2]] does either (exh/cyc22.c). Together with the Haar search
+  this settles 356 for lifts: a colour-preserving group acting freely on a 356-vertex graph has order 1, 2, 89 or
+  178 (the number of orbits must be even and divide 356); order 89 means a Z89-lift of a 4-vertex base (both bases
+  fail, exhaustively) and order 178 means a Haar graph (searched elsewhere). So a (5,5) graph on 356 vertices could
+  only have free colour-preserving automorphism groups of order 1 or 2. The annealers had reached cost 2 at 360 on the
+  [[1,4],[4,1]] base (C9 x D10, C5 x ((C3 x C3):C2)); the exact search shows that plateau is an obstruction.
+- **Closest (5,5) non-Haar structures at 360:** the record-type 3+3 base [[1,2,2],[2,1,2],[2,2,1]] lifted by C15:C4
+  (cost 4; 3-opt neighbourhood exhausted, no fix), and the coset graph of C2 x A6 with |H| = 4 (cost 4; all 176
+  unions exhausted, no fix).
+- **Closest (7,5) non-Haar structures:** coset graphs of C7 x PSL(3,2) with |H| = 2 (1176 vertices, cost 14; partly
+  capped), PSL(2,17) with |H| = 4 (1224, cost 14; exhaustive), C199:C9 with |H| = 3 (1194, cost 18), random 2+2
+  lifts over groups of order 290/291 (1160/1164, cost 20). A Haar graph of (C11 x C11):C5 at 1210 reached cost 2
+  through the coset route (orbit-type S); its 2-opt neighbourhood has no fix.
+- **Dead ends:** surgery on the records (+2 vertices: 150+ far pairs at (5,5), 436 at (7,5)); GQ lifts for (7,5)
+  (W(4)+2 matchings over Z7, W(5)+1 over order 4: thousands; first-moment counts say no solutions exist); mixed
+  route charts at Δ = 7; lifts of bases with 10+ vertices; products Q x C_k with central C_k (abelian-like).
+- **Why it is hard.** At (5,5) a vertex has 341 non-backtracking walks of even length <= 4 for 178 same-side targets;
+  every lift condition we looked at sits at a walk/sheet ratio of about 1.8-1.9, the same as the 354 record. At (7,5)
+  the record is at the Haar size-law wall (ratio 0.37 of the walk count); structured families (coset graphs of
+  PSL(2,q), affine and product groups) land within a few percent of it but not above it.
+
+## What could still work
+
+- An exact search for the [[2,3],[3,2]] 2+2 base over the non-abelian groups of order 90..95 (about 30 CPU-min per
+  group with the decomposition in exh/b4a1x.c's header extended to w1, w2), to close all 4-vertex bases at 356..380.
+- Coset graphs with |H| = 2 for all ~280 solvable groups of order 1176 (only the non-solvable ones and a few others
+  were run), using coset/run_group2.sh's annealing mode.
+- Longer annealing (hours) of the 3+3 record-type base over C15:C4 and the other non-abelian groups of order 60.
 
 ## Tools (this folder)
 

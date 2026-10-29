@@ -59,3 +59,11 @@ ExportPairs := function(G, h, OUT)
     CloseStream(out);
   od; od;
 end;
+AffGrp := function(n, q, special)
+  local F, V, gens, mats, perms, vecs, M, act;
+  F := GF(q); vecs := Elements(F^n);
+  if special then mats := GeneratorsOfGroup(SL(n, q)); else mats := GeneratorsOfGroup(GL(n, q)); fi;
+  perms := List(mats, M -> PermList(List(vecs, v -> Position(vecs, v * M))));
+  Add(perms, PermList(List(vecs, v -> Position(vecs, v + One(F) * Concatenation([1], List([2..n], i -> 0))))));
+  return Group(perms);
+end;
