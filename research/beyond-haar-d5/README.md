@@ -3,8 +3,17 @@
 Job "beyond-haar-d5" (Opus cloud session, Oct 29 2026). Goal: beat our values 354 at (Δ,D) = (5,5) and 1,152 at
 (7,5) with graphs that are not Haar graphs (all Haar graphs of the relevant orders were searched elsewhere).
 
-**Status: no graph above 354 or 1,152 was found.** Nothing to report as a record. Best near misses are listed below
-(cost 0 would be a valid graph).
+**NEW (7,5): 1,200 vertices (our value was 1,152).** A 7-regular bipartite graph of diameter exactly 5 on 1,200
+vertices: the coset graph of G = C5 x (SL(2,5):C2) = SmallGroup(1200,475) on the right cosets of a non-central
+involution subgroup H (600 per side), Hx ~ Hy iff x y^-1 in S, S = a union of 4 double cosets HgH (sizes 4, 4, 4, 2,
+degree 2+2+2+1). Found at 21:29 UTC by annealing over unions of double cosets (coset/dcenum.c SA mode, seed 1).
+Checked: research/lifts/coordinator_check/apsp.c gives degree 7, bipartite, diameter 5, RESULT VALID at D = 5 and
+INVALID at D = 4 (records/d7D5_n1200_apsp.txt). Files: records/d7D5_n1200_coset_sg1200_475.edges (edge list),
+records/sg1200_475_h2.dc2 (coset action data), rebuild: `python3 coset/dc2_edges.py records/sg1200_475_h2.dc2
+OUT.edges 242 206 265 2`. Not a Haar graph of G (G has no subgroup of order 600 acting regularly on the cosets: its
+index-2 subgroups contain H); the full automorphism group is checked below.
+
+(5,5): no graph above 354 was found. Near misses are listed below (cost 0 would be a valid graph).
 
 ## Summary
 
