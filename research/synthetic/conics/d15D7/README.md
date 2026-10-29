@@ -18,7 +18,10 @@ line-side hub x joined to point-side hub x s for s in a set S of 8 elements, wit
     n = 14 * 177,156 + 2 * 12,180 = 2,504,544   (lab 2,501,491; table 2,480,184).
 
 The slots allow up to 17,520 line-side and 16,188 point-side hubs (n = 2,513,892) with a better hub graph. The same search over PSL(2,31) (14,880
-elements, n would be 2,509,944) reached 14,879 of 14,880 and stalled; psl31_search.log is that run.
+elements, n would be 2,509,944) reached 14,879 of 14,880 and stalled (psl31_search.log); psl_hubgraph3.py, which adds moves aimed at a missing element
+(solve g = s1 t1^-1 s2 t2^-1 s3 x^-1 for a new generator x), stalled at the same point (psl31_search3.log). A Haar graph
+of degree 8 has 8 * 7^5 = 134,456 non-backtracking paths of length 6 from a hub, about 9 per element of PSL(2,31)
+against 11 for PSL(2,29), so covering every element is near the limit there.
 
 Files:
 - psl_hubgraph2.py: the hub graph search (`python psl_hubgraph2.py 29 1 hub_psl29.txt`, seed 1); output is K on the first
