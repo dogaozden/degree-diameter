@@ -1,0 +1,9 @@
+q=5 k=6 E=0 ADD=0 case=A:1: vars=5278 clauses=13325 build 0.0s   UNSAT in 0.0s 
+q=5 k=6 E=0 ADD=0 case=con:6: vars=4348 clauses=10727 build 0.0s   UNSAT in 0.0s 
+q=5 k=6 E=0 ADD=0 case=con:5: vars=4353 clauses=10921 build 0.0s   UNSAT in 0.2s 
+q=5 k=6 E=0 ADD=0 case=con:4: vars=5844 clauses=13343 build 0.0s   UNSAT in 1.3s 
+q=5 k=6 E=0 ADD=0 case=con:3: vars=6031 clauses=14087 build 0.0s   UNSAT in 90.5s 
+q=5 k=6 E=0 ADD=0 case=ext:6: vars=4348 clauses=10727 build 0.0s   UNSAT in 0.0s 
+q=5 k=6 E=0 ADD=0 case=ext:5: vars=4353 clauses=10921 build 0.0s   UNSAT in 0.3s 
+q=5 k=6 E=0 ADD=0 case=ext:4: vars=5844 clauses=13343 build 0.0s   UNSAT in 3.1s 
+q=5 k=6 E=0 ADD=0 case=ext:3: vars=6031 clauses=14087 build 0.0s   UNSAT in 102.7s 

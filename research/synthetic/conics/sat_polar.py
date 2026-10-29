@@ -46,7 +46,7 @@ def lex_geq(xs, ys, pool, tag):
     return cls
 
 
-def build(q, k, E, ADD):
+def build(q, k, E, ADD, case=None):
     Pi = PG2(q)
     pts, lns = Pi.points, Pi.lines
     N = len(pts)
@@ -160,8 +160,31 @@ def build(q, k, E, ADD):
                 break
         cls.append(cl)
     # symmetry: new points sorted by old-line vectors
-    for i in range(k - 1):
-        cls += lex_geq(x[i], x[i + 1], pool, ('lex', i))
+    if case is None:
+        for i in range(k - 1):
+            cls += lex_geq(x[i], x[i + 1], pool, ('lex', i))
+    else:
+        # case (typ, r): r = max over new points h and old points Y of the number of old lines of h
+        # through Y; it is attained by h_0 at Y0, a fixed representative of the orbit typ of the
+        # conic group PGL(2,q) (conic / external / internal point).  typ = 'A': r <= 1 for all.
+        # Sound: the conic group commutes with the polarity and fixes the model; new points can
+        # be renumbered.  New points 1..k-1 are sorted lexicographically.
+        typ, r = case
+        Ccon = Pi.conic()
+        rep = {'con': Pi.pt((1, 0, 0)), 'ext': Pi.pt((0, 1, 0)),
+               'int': next(p for p in pts if p not in Ccon and all(len(Pi.pts_on[Lx] & Ccon) != 1
+                                                                    for Lx in Pi.lines_on[p]))}
+        thru = {a: [li[Lx] for Lx in Pi.lines_on[pts[a]]] for a in range(N)}
+        for i in range(k):
+            for a in range(N):
+                cls += CardEnc.atmost([x[i][L] for L in thru[a]], bound=(1 if typ == 'A' else r),
+                                      vpool=pool, encoding=EncType.seqcounter).clauses
+        if typ != 'A':
+            Y0 = pi[rep[typ]]
+            cls += CardEnc.atleast([x[0][L] for L in thru[Y0]], bound=r, vpool=pool,
+                                   encoding=EncType.seqcounter).clauses
+        for i in range(1, k - 1):
+            cls += lex_geq(x[i], x[i + 1], pool, ('lex', i))
     return Pi, pts, lns, x, y, pool, cls, inc, perp_pl, perp_lp
 
 
@@ -199,10 +222,15 @@ def main():
     ap.add_argument('--time', type=float, default=600)
     ap.add_argument('--solver', default='cadical153')
     ap.add_argument('--save', default=None)
+    ap.add_argument('--case', default=None, help="e.g. con:3, ext:6, int:2, A:1")
     a = ap.parse_args()
     t0 = time.time()
-    Pi, pts, lns, x, y, pool, cls, inc, perp_pl, perp_lp = build(a.q, a.k, a.E, a.ADD)
-    print(f"q={a.q} k={a.k} E={a.E} ADD={a.ADD}: vars={pool.top} clauses={len(cls)} build {time.time()-t0:.1f}s",
+    case = None
+    if a.case:
+        t, r = a.case.split(':')
+        case = (t, int(r))
+    Pi, pts, lns, x, y, pool, cls, inc, perp_pl, perp_lp = build(a.q, a.k, a.E, a.ADD, case)
+    print(f"q={a.q} k={a.k} E={a.E} ADD={a.ADD} case={a.case}: vars={pool.top} clauses={len(cls)} build {time.time()-t0:.1f}s",
           flush=True)
     import threading
     with Solver(name=a.solver, bootstrap_with=cls) as s:

@@ -1,0 +1,14 @@
+q=5 k=5 E=0 ADD=0 case=con:6: vars=3282 clauses=7915 build 0.0s   UNSAT in 0.0s 
+q=5 k=5 E=0 ADD=0 case=A:1: vars=4057 clauses=10079 build 0.0s   UNSAT in 0.0s 
+q=5 k=5 E=0 ADD=0 case=con:5: vars=3287 clauses=8078 build 0.0s   SAT in 0.0s; decoded: diameter3=True maxdeg=7 
+q=5 k=5 E=0 ADD=0 case=con:4: vars=4530 clauses=10097 build 0.0s   UNSAT in 11.6s 
+q=5 k=5 E=0 ADD=0 case=ext:6: vars=3282 clauses=7915 build 0.0s   UNSAT in 0.1s 
+q=5 k=5 E=0 ADD=0 case=ext:5: vars=3287 clauses=8078 build 0.0s   UNSAT in 0.6s 
+q=5 k=5 E=0 ADD=0 case=ext:4: vars=4530 clauses=10097 build 0.0s   UNSAT in 5.0s 
+q=5 k=5 E=0 ADD=0 case=ext:3: vars=4686 clauses=10717 build 0.0s   UNSAT in 97.6s 
+q=5 k=5 E=0 ADD=0 case=con:3: vars=4686 clauses=10717 build 0.0s 
+q=5 k=5 E=0 ADD=0 case=con:2: vars=4530 clauses=10713 build 0.0s 
+q=5 k=5 E=0 ADD=0 case=int:5: vars=3287 clauses=8078 build 0.0s   UNSAT in 0.0s 
+q=5 k=5 E=0 ADD=0 case=int:6: vars=3282 clauses=7915 build 0.0s   UNSAT in 0.2s 
+q=5 k=5 E=0 ADD=0 case=int:4: vars=4530 clauses=10097 build 0.0s   UNSAT in 7.0s 
+q=5 k=5 E=0 ADD=0 case=int:2: vars=4530 clauses=10713 build 0.0s q=5 k=5 E=0 ADD=0 case=int:3: vars=4686 clauses=10717 build 0.0s q=5 k=5 E=0 ADD=0 case=ext:2: vars=4530 clauses=10713 build 0.0s 
