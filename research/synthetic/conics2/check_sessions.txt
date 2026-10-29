@@ -132,3 +132,14 @@ d19D7nu0b 7 4243854 4951163 session_01QYEEyKHoVSosKWZpCsyfbX   (pending at 09:07
 d18D7b 4 2187249 2916332 session_01QYEEyHUSexS43NiY8F2ez4
 d18D7b 10 6561747 7290828 session_01QYEEyGuCQM8prwtGR68CDd
 # 09:28 both started; local queue switched to (18,7) n=7,309,092 range 10 (6578182..7309092; its session KTME5 still pending)
+# 09:45-09:48 duplicates of the (18,7) n=7,309,092 ranges 1-9 with nohup (the 08:57 sessions use run_in_background,
+# which stops at 2 hours, about 11:00; two of the ten 7,290,828 ranges needed longer than that)
+d18D7clN 1 0 730909 session_01QYEEyKdeMJAoNZsoJ8A8Ve
+d18D7clN 2 730909 1461818 session_01QYEEyJdzuTTe1at6bxyn28
+d18D7clN 3 1461818 2192727 session_01QYEEyJD9vVXWgRFL9kEPnB
+d18D7clN 4 2192727 2923636 session_01QYEEyKc377H6JezLD1P27o
+d18D7clN 5 2923636 3654546 session_01QYEEyHGPMd19ZHGBtY85xb
+d18D7clN 6 3654546 4385455 session_01QYEEyH8vtf9L5bkSepiDu2
+d18D7clN 7 4385455 5116364 session_01QYEEyKoRidwh5epGyLXjra
+d18D7clN 8 5116364 5847273 session_01QYEEyJ7uuMp82NtdrCTUpj
+d18D7clN 9 5847273 6578182 session_01QYEEyJoGmBepzn2SpD4CYo

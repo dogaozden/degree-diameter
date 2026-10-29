@@ -80,3 +80,19 @@ the q^2 spread lines with nu = 0 carry no whisker) and used to raise R_L by q^2 
 (17,7), (19,7), (20,7)); c6/c8's sets as evidence that the enlarged set is maximal but not maximum. Side A: no gain; the
 negative results are reported as computer evidence in the README. Next: none for A; for B a pencil-type construction
 for large q.
+
+Round conics2-checks (remote Haiku check workers, 2026-10-29 06:46 to about 12:00 UTC): the all-pairs checks of the
+candidates of research/synthetic/conics2/README.md, split into source ranges. Each worker rebuilds its graph from the
+solution file with typed_build.py build, compares the edge list sha256, and runs research/synthetic/conics/apsp_fast.c
+on its range; some ranges ran on the coordinator's machine instead. Map: research/synthetic/conics2/check_sessions.txt;
+result lines, copied from the raw tool output in each transcript (not from summaries): check_results.txt; per-cell
+files written by assemble_checks.py: research/synthetic/conics2/d1xD7/checks/.
+Result: see the README table (complete checks: (14,7), (15,7) both graphs, (16,7), (17,7) 5,693,790, and those listed
+there as complete at the end of the job).
+Lessons for the next coordinator. (1) A worker takes its task from its first message only: requests sent later from the
+coordinator session (a second range, or a switch to a new graph) were declined as unverified peer messages, which is
+the right behaviour. Plan every candidate before starting workers, or start a new session per new task. (2) Sessions
+created while about 45 others were active stayed pending for hours; new ones started again once earlier ones finished.
+(3) A run started with the Bash tool's run_in_background is stopped after 2 hours: two (18,7) ranges were lost at
+08:52 that way. Ranges longer than about 90 minutes need nohup and a Monitor on the process id. (4) A worker whose turn
+ends keeps its nohup or background process running; the result can be read later by asking it for `cat /tmp/check.out`.
