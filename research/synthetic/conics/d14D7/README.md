@@ -20,7 +20,7 @@ Hub graph: 9 seeded random perfect matchings (seed 1); all same-side hub distanc
 
 Files:
 - tm_build_herm.py: research/cell147/typedmirror/tm_build.py with these freed sets (computed inside) and segment-set
-  checks. `make HEX TYPED_SOL MIRROR_SOL SEED OUT.sol OUT.edges` and `build HEX SOL OUT.edges` (SOL names the two inputs
+  checks; q = 11 and q = 13 (the (16,7) build, ../d16D7/README.md). `make HEX TYPED_SOL MIRROR_SOL SEED OUT.sol OUT.edges` and `build HEX SOL OUT.edges` (SOL names the two inputs
   with their sha256). Option --pencils: the Remark 9.4 version (R_L = the 9,072 lines through 756 pairwise opposite
   points, optionally plus extra lines): 1,791,240.
 - research/frontier/sols/d14D7_hex11_typedwhisk_n1802400.sol: the solution (next to its two inputs, as `build` expects) (inputs by name and sha256, hub counts, hub graph).

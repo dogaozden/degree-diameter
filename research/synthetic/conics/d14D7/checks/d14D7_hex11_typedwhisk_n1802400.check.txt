@@ -22,3 +22,7 @@ n = 1802400, edges = 12598885, degree min 12 max 14, hub graph edges 138745
 -- apsp_mt g.edges 14 7 4:
 n=1802400 edges=12598885 degree min=12 max=14 bipartite=yes diameter=7
 RESULT VALID d=14 D=7 n=1802400
+-- cross-check of research/synthetic/conics/apsp_fast.c on the same edge list (04:34:37 to 05:06:44 UTC, 4 threads):
+n=1802400 edges=12598885 degree min=12 max=14 bipartite=yes diameter=7 sources=0..1802400
+RESULT VALID d=14 D=7 n=1802400
+(the same lines as apsp_mt; 32 minutes against 101)

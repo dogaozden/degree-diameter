@@ -789,7 +789,8 @@ frontiers pushed instead of pulled over all vertices, and a batch stopped once e
 times faster on these graphs; the $(15,7)$ check with \texttt{apsp\_mt} would have taken about $3.5$ hours here). It
 prints the same lines as \texttt{apsp\_mt}; \texttt{conics/test\_apsp\_fast.py} compares the two on eight small graphs
 (valid and invalid ones) and compares the eccentricities with a plain BFS on $335$ source ranges
-(\texttt{test\_apsp\_fast.out}: no differences).
+(\texttt{test\_apsp\_fast.out}: no differences); on the $(14,7)$ graph it prints the same lines as \texttt{apsp\_mt}
+(32 minutes against 101; \texttt{conics/d14D7/checks/}).
 
 \begin{thebibliography}{99}
 \bibitem{AL20} G. Araujo-Pardo and N. L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin.

@@ -24,3 +24,6 @@ n = 2504544, edges = 18678612, degree min 12 max 15, hub graph edges 97440
 -- apsp_fast g.edges 15 7 4:
 n=2504544 edges=18678612 degree min=12 max=15 bipartite=yes diameter=7 sources=0..2504544
 RESULT VALID d=15 D=7 n=2504544
+-- independent check of the hub part with the lab's research/d15D7b/hubfar.c (cc -O2 -pthread; BFS to depth 7 from all
+   24,360 hubs, sources "R 2480184 2504544"), 05:06:59 to 05:08:41 UTC:
+n=2504544 edges=18678612 degree min=12 max=15 bipartite=yes connected=yes sources=24360 far_pairs=0 max_ecc=7
