@@ -19,8 +19,8 @@ incidence graph of H(q)) and D (its dual), friendly transitions (types differ, i
 |  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | passed (8 ranges) |
 | (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | passed (10 ranges, one local) |
 |  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | passed (10 ranges) |
-| (19,7) | 16, HDHDH | 11,184,810 (beyond table) | 11,316,940 (candidate) | 66,065 + 66,065 | random, degree 14 | not complete: 5 of 16 ranges passed, the rest running |
-| (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | 15,795,219 (candidate) | 70,163 + 66,322 | random, degree 13 | not complete: 1 of 24 ranges passed, the rest running |
+| (19,7) | 16, HDHDH | 11,184,810 (beyond table) | 11,316,940 (candidate) | 66,065 + 66,065 | random, degree 14 | not complete: 8 of 16 ranges passed, the rest running |
+| (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | 15,795,219 (candidate) | 70,163 + 66,322 | random, degree 13 | not complete: 6 of 24 ranges passed, the rest running |
 
 A value counts as a result only when its all-pairs check passed (bold). The check of each graph is split into source
 ranges; every range rebuilds the graph from its solution file and compares the edge-list sha256 first. The per-cell
@@ -176,10 +176,10 @@ Complete (every source range VALID, ranges cover all vertices; d1xD7/checks/): (
 2,509,944; (16,7) 4,081,410; (17,7) 5,693,959 and 5,693,790; (18,7) 7,309,092 and 7,290,828.
 
 Not complete (Computer-checked only on the ranges listed in d19D7/checks/ and d20D7/checks/):
-- (19,7) 11,316,940, 16 ranges of 707,309 sources: ranges 1, 2, 3, 11, 15 VALID; ranges 4, 6, 13, 14 running since
-  07:27-07:45 UTC; ranges 5, 7, 8, 9, 10, 12, 16 started 11:17 UTC (sessions "d19D7nu0c" in check_sessions.txt).
-- (20,7) 15,795,219, 24 ranges of 658,135 sources: range 17 VALID; ranges 1-6, 13, 16, 19, 22, 24 running since
-  07:28-08:06 UTC; ranges 7-12, 14, 15, 18, 20, 21, 23 started 11:20 UTC (sessions "d20D7nu0c").
+- (19,7) 11,316,940, 16 ranges of 707,309 sources: ranges 1, 2, 3, 4, 6, 11, 13, 15 VALID; range 14 running since
+  about 09:40 UTC; ranges 5, 7, 8, 9, 10, 12, 16 started 11:17 UTC (sessions "d19D7nu0c" in check_sessions.txt).
+- (20,7) 15,795,219, 24 ranges of 658,135 sources: ranges 1, 5, 6, 17, 19, 24 VALID; ranges 2, 3, 4, 13, 16, 22
+  running since 07:28-09:11 UTC; ranges 7-12, 14, 15, 18, 20, 21, 23 started 11:20 UTC (sessions "d20D7nu0c").
 
 A range of the q = 16 graphs takes 1.5 to 4.5 hours on a 4-core worker. Workers still running when the job ended keep
 running (nohup); their result can be read later from their transcripts (check_sessions.txt names the session of every
