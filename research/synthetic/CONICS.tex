@@ -694,7 +694,9 @@ computed inside, and segment and dual segment checks in place of the non-colline
 every hypothesis: $R_H$ a segment set, $R_L$ a dual segment set, the exact whisker set (every free point on exactly one
 whisker), the mirrored set ($768$ points, local duality at each), the hub distances and the degrees ($\le14$); the stored
 solution \texttt{research/frontier/sols/d14D7\_hex11\_typedwhisk\_n1802400.sol} rebuilds a byte-identical edge list.
-\emph{All-pairs check} (\texttt{apsp\_mt}, every vertex, diameter $\le7$): running at the time of writing; the result goes to \texttt{conics/d14D7/checks/}.
+\emph{All-pairs check} \status{computer}: \texttt{apsp\_mt} from all $1{,}802{,}400$ vertices (4 threads, 1 h 41 min, no
+symmetry assumed) gives bipartite, degrees $12$ to $14$, diameter exactly $7$: \texttt{RESULT VALID d=14 D=7
+n=1802400} (\texttt{conics/d14D7/checks/}, with the builder output and the edge list's sha256).
 
 \emph{The same sets at $(15,7)$} \status{new; computer}. The $(15,7)$ layout of the lab's earlier candidate
 (\texttt{research/cell147/typedmirror/README.md}: seven copies of types $H,H,H^D,H,H,H^D,H^D$, three matchings per
@@ -712,7 +714,8 @@ against the lab's $2{,}501{,}491$ (table $2{,}480{,}184$); the slots allow up to
 the $768$-point surgery, the largest sum of the smallest outgoing and the smallest incoming free count over all $2^7$
 type patterns of seven copies is $17{,}520+16{,}188$ (direct count; in every pattern some copy has at most one copy of
 the other type among the three it maps to).
-\emph{All-pairs check} (\texttt{apsp\_mt}, every vertex, diameter $\le7$): queued after the $(14,7)$ check; the result goes to \texttt{conics/d15D7/checks/}.
+\emph{All-pairs check}: running at the time of writing, from every vertex, with \texttt{conics/apsp\_fast.c} (below);
+the result goes to \texttt{conics/d15D7/checks/}. The stored solution rebuilds the checked edge list byte for byte.
 
 \emph{And at $(16,7)$} \status{computer, not built}. In the same five-copy layout at $q=13$ (record
 $4{,}052{,}108=10\cdot402{,}234+2\cdot14{,}884$, with $\min(|R_H|,|R_L|)=14{,}762$ and $122$ elements of surgery on the
@@ -746,7 +749,7 @@ conic-adapted gadgets fit at $\Delta=16$, $q=13$.
 where ovoids, partial ovoids and spreads sit in Theorems A--D and the $D=7$ freed sets; the $W(8)$ polarity values
 (Proposition~\ref{prop:wfold}); Delorme's conic clones at $(16,3)$.
 \item \textbf{Lab values.} $(14,7)$: $1{,}802{,}400$ (lab $1{,}789{,}588$), with the Hermitian spread points and the
-lines meeting a spread line plus exact whiskers as friendly freed sets (\S\ref{ssec:d14}); all-pairs check: running at the time of writing; the result goes to \texttt{conics/d14D7/checks/}.
+lines meeting a spread line plus exact whiskers as friendly freed sets (\S\ref{ssec:d14}); all-pairs check passed.
 $(15,7)$: $2{,}504{,}544$ (lab $2{,}501{,}491$), the same sets in the seven-copy layout with a Haar hub graph over
 $\mathrm{PSL}(2,29)$; all-pairs check: queued after the $(14,7)$ check; the result goes to \texttt{conics/d15D7/checks/}. Candidate for the coordinator: $(16,7)$ $4{,}079{,}732$ by the same sets (not built). Nothing else improved; the
 folded graphs are below the current tables of the general problem.
@@ -765,7 +768,13 @@ $\mathrm{PSL}(2,29)$ hub graph search and hub graph for $(15,7)$, the check; REA
 (the sets of $H(13)$ and their orbit counts under the torus, \S\ref{ssec:d14}). Every script writes its output to
 a \texttt{.out} file of the same name. Squad rounds \texttt{research/squads/conics-r1/} and \texttt{conics-r2/} (briefs,
 cards, scoreboards), logged in \texttt{research/squads/LOG.md}. Python with \texttt{python-sat} (CaDiCaL 1.5.3) and
-\texttt{pynauty}; the all-pairs check is \texttt{research/lifts/coordinator\_check/apsp\_mt.c}.
+\texttt{pynauty}. The all-pairs checks: \texttt{research/lifts/coordinator\_check/apsp\_mt.c} for $(14,7)$, and for
+$(15,7)$ \texttt{conics/apsp\_fast.c}, the same bit-parallel BFS from every vertex with $256$ sources per batch, small
+frontiers pushed instead of pulled over all vertices, and a batch stopped once every vertex is reached (about three
+times faster on these graphs; the $(15,7)$ check with \texttt{apsp\_mt} would have taken about $3.5$ hours here). It
+prints the same lines as \texttt{apsp\_mt}; \texttt{conics/test\_apsp\_fast.py} compares the two on eight small graphs
+(valid and invalid ones) and compares the eccentricities with a plain BFS on $335$ source ranges
+(\texttt{test\_apsp\_fast.out}: no differences).
 
 \begin{thebibliography}{99}
 \bibitem{AL20} G. Araujo-Pardo and N. L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin.
