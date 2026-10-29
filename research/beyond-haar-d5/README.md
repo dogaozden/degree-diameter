@@ -8,12 +8,19 @@ the regular voltage lift of the 4-vertex base [[2,3],[3,2]] (A0-B0 double edge, 
 double) by G = SmallGroup(90,6) = C15 x S3. Voltages (element numbers in records/g90_6_C15xS3.table, identity 0):
 A0-B0 {0, 6}, A0-B1 {0, 5, 34}, A1-B0 {1, 31, 68}, A1-B1 {0, 6}; edge a -> b of voltage g joins (a,h) and (b,h g).
 Found by the exact search exh/b4a2x.c over all lifts of this base by the groups of order 90 (run for SmallGroup(90,6)
-at about 21:50 UTC, noticed at 22:40; that run found 16 solutions in its first branch, x = 6, before it was stopped).
+at about 21:50 UTC, noticed at about 22:33; that run found 16 solutions in its first branch, x = 6, before it was stopped).
 Checked: research/lifts/coordinator_check/apsp.c: degree 5, bipartite, diameter 5, RESULT VALID at D = 5 and INVALID
 at D = 4 (records/d5D5_n360_apsp.txt); independent Python BFS: VALID (records/d5D5_n360_check_independent.txt); all
 16 solutions in exh/runs/b4a2x_90_6.sol are VALID under apsp.c. Files: records/d5D5_n360_lift_g90_6.edges (sha256
 e710083eaafe30f9fb4e02ab769ed7351166e533f92077944b273584aa7b220c), builder records/build_d5D5_n360.sh
-(exh/b4a2x_edges.py). Whether it is also a Haar graph: see the note below the 1,200 entry.
+(exh/b4a2x_edges.py).
+**It is not a Haar graph** (nauty and GAP: records/aut_d5D5_n360.sh, output records/d5D5_n360_aut.txt). Aut has order
+180 (S3 x D30 = SmallGroup(180,29)) with two vertex orbits, A0 u B1 and A1 u B0, so the graph is not
+vertex-transitive. The colour-preserving part is C15 x S3 itself (order 90, the four fibres as orbits). A Haar graph
+needs a colour-preserving group of order 180 that is regular on each side (and every Haar graph is
+vertex-transitive), so this is a non-Haar construction. The 16 solutions form 2 isomorphism classes, 12 with
+|Aut| = 180 and 4 with |Aut| = 90 (records/d5D5_n360_iso_classes.txt). A representative of the second class is
+records/d5D5_n360b_lift_g90_6.edges (solution 13; apsp and BFS VALID, records/d5D5_n360b_checks.txt).
 
 **NEW (7,5): 1,200 vertices (our value was 1,152).** A 7-regular bipartite graph of diameter exactly 5 on 1,200
 vertices: the coset graph of G = C5 x (SL(2,5):C2) = SmallGroup(1200,475) on the right cosets of a non-central
@@ -38,7 +45,8 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
 ## Summary
 
 - **(5,5): 360 vertices** (was 354), see the top of this file: a lift of the 2+2 base [[2,3],[3,2]] by C15 x S3,
-  found by the exact search exh/b4a2x.c.
+  found by the exact search exh/b4a2x.c. Not a Haar graph (colour-preserving automorphism group of order 90, not
+  vertex-transitive).
 - **(7,5): 1,200 vertices** (was 1,152), see the top of this file. It came from the coset-graph route (annealing over
   unions of double cosets with stabiliser order 2), but it is a Haar graph of SL(2,5) x Z5 whose connection set is
   closed under an involutory automorphism. The genuinely non-Haar constructions came no closer than cost 4.
@@ -50,7 +58,7 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
   fail, exhaustively) and order 178 means a Haar graph (searched elsewhere). So a (5,5) graph on 356 vertices could
   only have free colour-preserving automorphism groups of order 1 or 2. The annealers had reached cost 2 at 360 on the
   [[1,4],[4,1]] base (C9 x D10, C5 x ((C3 x C3):C2)); the exact search shows that plateau is an obstruction.
-- **Closest (5,5) non-Haar structures at 360:** the record-type 3+3 base [[1,2,2],[2,1,2],[2,2,1]] lifted by C15:C4
+- **Other (5,5) structures at 360 (closest before the hit):** the record-type 3+3 base [[1,2,2],[2,1,2],[2,2,1]] lifted by C15:C4
   (cost 4; 3-opt neighbourhood exhausted, no fix), and the coset graph of C2 x A6 with |H| = 4 (cost 4; all 176
   unions exhausted, no fix).
 - **Closest (7,5) non-Haar structures:** the coset graph of (C7 x C7):C24 = SmallGroup(1176,213) (a subgroup of
@@ -69,9 +77,10 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
 
 ## What could still work
 
-- Finish the exact search for the [[2,3],[3,2]] 2+2 base over the groups of order 90 (exh/b4a2x.c): done with no
-  solution for SmallGroup(90,i), i = 9, 3, 5, 8, 1; not run for i = 7, 2, 6 (non-abelian) and 10, 4 (abelian), about
-  10-100 CPU-min each; then orders 91..95.
+- The exact search for the [[2,3],[3,2]] 2+2 base (exh/b4a2x.c) is the route that worked. Order 90: no solution for
+  SmallGroup(90,i), i = 9, 3, 5, 8, 1; 16 solutions for i = 6 (C15 x S3, the 360 graph; that run stopped after its
+  first branch); not run for i = 7, 2 (non-abelian) and 10, 4 (abelian). Orders 91..95 (364..380 vertices): see the
+  status line at the end of this file. Cyclic groups are the slowest (small Aut) and least promising (no Z89-lift).
 - For (7,5) above 1,200: orbit-type Haar graphs (coset graphs with |H| = 2 and a normal complement) of more groups.
   Tried at 1210..1320 (2 x odd orders, the non-solvable groups of order 1260 and 1320): best costs 18-36 in short
   anneals; the 1,200 hit needed 15 CPU-min of annealing from a cost-8 start, so longer anneals are the obvious next

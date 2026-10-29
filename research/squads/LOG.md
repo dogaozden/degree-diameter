@@ -77,3 +77,14 @@ C5 x SL(2,5) acts regularly, so it is Haar(SL(2,5) x Z5, S) with S closed under 
 research/frontier/build_haar2.py on the "sl 5 n 5" solution file: VALID d=7 D=5. Files in
 research/beyond-haar-d5/records/. The squad's contribution: r4-c1 found the group and the cost-8 pair; Opus ran the
 long anneal and the checks.
+
+### Hit (found about 21:50, noticed about 22:33 UTC): (5,5) 360 vertices, not a Haar graph
+The exact search exh/b4a2x.c for the 2+2 base [[2,3],[3,2]] over SmallGroup(90,6) = C15 x S3 printed 16 solutions
+in its first branch (x = 6) before the run was stopped; nobody looked at the .sol file until about 22:33. Every solution
+is a 5-regular bipartite graph of diameter 5 on 360 vertices (our value was 354): apsp.c VALID (INVALID at D = 4)
+for all 16, independent Python BFS VALID. Two isomorphism classes (nauty): 12 solutions with |Aut| = 180 =
+S3 x D30, 4 with |Aut| = 90. Neither is a Haar graph: the colour-preserving automorphism group is C15 x S3 itself
+(order 90, four orbits), and the |Aut| = 180 class has side-swapping automorphisms but two vertex orbits (A0 u B1,
+A1 u B0), so it is not vertex-transitive. Files in research/beyond-haar-d5/records/ (d5D5_n360*). Lineage: squad
+r2-c2's cost-2 lifts at 360 on 2+2 bases led to the exact 2+2 searches (b4a1x, then b4a2x). Next: b4a2x over the
+groups of orders 91..95 (364..380 vertices), running now.
