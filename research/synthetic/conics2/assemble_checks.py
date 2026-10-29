@@ -51,9 +51,11 @@ for key, lines in rows.items():
     with open(out, 'w') as f:
         f.write(f'# {key}: all-pairs check with research/synthetic/conics/apsp_fast.c (cc -O3 -march=native -pthread; BFS '
                 f'from every source of the range, no symmetry assumed), split into source ranges on remote check '
-                f'workers (check_sessions.txt). Each worker rebuilt the graph from research/frontier/sols/{sol} with '
-                f'typed_build.py build and confirmed the edge list sha256 {sha}.\n')
-        f.write('# Lines copied from the raw tool output (cat /tmp/check.out) in each worker transcript:\n')
+                f'workers (check_sessions.txt) or on the coordinator session\'s machine ("local"). Each worker rebuilt '
+                f'the graph from research/frontier/sols/{sol} with typed_build.py build and confirmed the edge list '
+                f'sha256 {sha}; the local runs used the edge list written by typed_build.py make, with the same sha256.\n')
+        f.write('# Lines copied from the raw tool output (cat /tmp/check.out) in each worker transcript, or from the '
+                'local output file:\n')
         f.write('\n'.join(sorted(lines, key=lambda l: int(re.search(r'sources=(\d+)', l).group(1)))) + '\n')
         f.write(f'# ranges cover 0..{n} exactly: {bool(cover)}; every range VALID with n, max degree {d}, bipartite, '
                 f'diameter 7: {ok}\n')
