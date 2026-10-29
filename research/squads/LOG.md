@@ -32,3 +32,20 @@ Kept: the cost-2 lifts at 360 (Opus: basin sampling, i.e. many short anneals, ea
 Opus alone meanwhile: exhaustive coset graphs of almost simple groups (coset/dcenum.c). Best (7,5): PSL(2,17),
 |H| = |K| = 4, 1224 vertices, cost 14 (all 12,156 unions). Best (5,5): A6 h=2 and S6 h=4 at 360, cost 20. Annealing
 the Z17-lift description of the PSL(2,17) graph from that start did not improve it.
+Round-2 c1 finished its sweep (best cost 8 at 360, SmallGroup(360,120) and (360,124), h=2) but did not report back.
+
+### Round bh5-r3 (19:55 UTC, 3 cards, research/squads/bh5-r3/)
+Cards: c1 (7,5) coset graphs h=3 over all SmallGroups of order 1731..1845 · c2 (5,5) coset graphs h=3 (orders
+534..558) and h=4 (712..744) · c3 (7,5) coset graphs of constructed products (A5 x A5 h=6, PGL(2,7) x C7 h=4, ...).
+Best: c1 cost 2 at 1210 ((C11 x C11):C15), but that graph is a Haar graph of the normal index-3 subgroup
+(C11 x C11):C5 with an S closed under an order-3 automorphism; best non-Haar C199:C9 at 1194, cost 18 · c2 cost 6
+at 372 and 8 at 366, both with H normal (Haar graphs of G/H); core-free cases worse · c3 A5 x A5 h=6, cost 24 at
+1200; the larger products stalled in GAP's subgroup lattice.
+Opus meanwhile: core-free filter and a fast subgroup finder in the exporters (a bug of mine broke the exports for
+4 minutes; c1, c2 told to redo those orders); exact searches: all lifts of the 2+2 base [[1,4],[4,1]] over every group
+of order 89..95: none (so the cost-2 plateau at 360 is an obstruction); 2-opt around the 1210 Haar near miss.
+Kept: (5,5) 3+3 record-type base over order-60 groups (basins + exact k-opt); (7,5) coset graphs h=2 at 1176/1200.
+
+### Round bh5-r4 (20:40 UTC, 2 cards, research/squads/bh5-r4/)
+Cards: c1 (7,5) coset graphs h=2 for the non-solvable SmallGroups of order 1176 and 1200, then small solvable orders
+· c2 (5,5) record-type 3+3 base over the other non-abelian groups of order 60, basins with exact 2/3-opt.
