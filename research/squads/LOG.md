@@ -41,3 +41,11 @@ Round 2 (6 cards):
 Kept: all, as computer checks in CONICS.md. What the squads added: independent code for every claim, two corrections
 of scope (tau = id on the absolute line; the definition of a hexagon spread), and the sharper nauty statement (c6),
 which the main session had only for its own polarity.
+
+Round 3 (8 check workers, remote Haiku sessions, 2026-10-29 03:37 UTC): the all-pairs check of the (16,7) candidate
+4,081,072 (research/synthetic/conics/d16D7/), split into 8 source ranges of 510,134. Each worker rebuilds the graph
+from research/frontier/sols/d16D7_hex13_typedwhisk_n4081072.sol, checks the edge list's sha256, and runs
+research/synthetic/conics/apsp_fast.c on its range. Results: research/synthetic/conics/d16D7/checks/.
+Result: all 8 workers rebuilt the same edge list (sha256 350f9e07...) and printed RESULT VALID d=16 D=7 n=4081072 for
+their ranges (finished 03:56 to 04:10 UTC; about 18 to 32 minutes per range on 4 cores). Verified from the raw tool
+output in each session's transcript, not from the workers' summaries. Kept: the check (d16D7/checks/).

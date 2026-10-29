@@ -1,0 +1,44 @@
+# (16,7) n = 4,081,072 = 10*402,234 + 2*29,366 (job "conics", 2026-10-29). Lab 4,052,108; table 4,022,340.
+# Five-level layout HDHDH of H(13) (layout of research/frontier/sols/d16D7_hex13_typed61_K244_n4052108.sol), friendly
+# freed sets R_H = the 30,772 points of the Hermitian spread (lines of H(13) in x0 + 2 x4 = 0) and R_L = the 182 lines
+# meeting v = <e1, e6> plus the exact whisker set of POLISHED.md Theorem 6.5 with c = 2, (c0,c1) = (1,1) (28,574 lines);
+# mirrored local duality on the 792 points of research/frontier/sols/d16D7_hex13_R792_n4025508.sol on the four
+# non-friendly transitions; 29,366 hubs per side, 11 seeded random perfect matchings. research/synthetic/CONICS.md 3.4.
+# Solution: research/frontier/sols/d16D7_hex13_typedwhisk_n4081072.sol
+#   (sha256 e4bd3bf179b364b29a6baccf9f2888a398dee0549f6918e3982c947a55f472cb), next to its two inputs (names and
+#   sha256 in its header).
+# Rebuild: hex_q13.bin sha256 57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a (research/p4/d6/hex/);
+#   cd research/frontier/sols && python3 ../../synthetic/conics/d14D7/tm_build_herm.py build ../../p4/d6/hex/hex_q13.bin d16D7_hex13_typedwhisk_n4081072.sol g.edges
+#   edge list sha256 350f9e078ebcc2e3bd997cb4fafce94f074da937f02cef59f91a14e5369e476c (byte-identical to the edge list of
+#   `make`; rebuilt independently by each of the 8 workers below with the same sha256)
+# Check: research/synthetic/conics/apsp_fast.c (cc -O3 -march=native -pthread; BFS from every vertex, no symmetry
+#   assumed; same output lines as research/lifts/coordinator_check/apsp_mt.c, see conics/test_apsp_fast.py), split into
+#   8 source ranges of 510,134 that cover 0..4,081,072, each run with 4 threads on its own cloud container (remote check
+#   sessions, squad round 3 in research/squads/LOG.md); the lines below are copied from the raw tool output in each
+#   session's transcript. Every range: bipartite, degrees 14..16, largest eccentricity 7.
+-- tm_build_herm.py make / build (main session):
+friendly sets: R_H = Hermitian spread points (30772), R_L = lines meeting v + exact whiskers (28574)
+hypotheses OK: |R_H| = 30772 (segment set), |R_L| = 28574 (dual segment set), |R'| = 792 (non-collinear, sigma(R') non-concurrent, local duality at all 792)
+free A-slots per level [31564, 29366, 31564, 57148, 31564] B-slots [29366, 61544, 29366, 31564, 29366] -> at most 29366 29366
+hubs per side 29366 29366
+hub graph seed 1: 0 same-side (ordered) pairs beyond 6
+hub graph: same-side distances <= 6 on both sides
+n = 4081072, edges = 32614144, degree min 14 max 16, hub graph edges 322970
+-- apsp_fast g.edges 16 7 4 LO HI, one range per worker (finish time UTC):
+1 (03:38-04:03) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=0..510134
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+2 (03:38-03:56) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=510134..1020268
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+3 (03:38-03:57) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=1020268..1530402
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+4 (03:38-04:05) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=1530402..2040536
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+5 (03:38-03:57) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=2040536..2550670
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+6 (03:38-03:56) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=2550670..3060804
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+7 (03:39-04:00) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=3060804..3570938
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+8 (03:39-04:10) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=3570938..4081072
+  RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
+=> all 4,081,072 sources reach every vertex within 7: diameter 7, bipartite, maximum degree 16: valid for (16,7).
