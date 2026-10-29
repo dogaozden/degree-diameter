@@ -37,6 +37,11 @@ ExportPairs := function(G, h, OUT)
   Hs := SubsOfOrder(G, h);
   # a subgroup with a nontrivial core gives a graph of the smaller group G/core (normal H: a Haar graph of G/H)
   Hs := Filtered(Hs, H -> Size(Core(G, H)) = 1);
+  # optional: drop H with a normal complement (a normal subgroup of index h meeting H trivially acts regularly on the
+  # cosets, so the coset graph is a Haar graph of it)
+  if IsBound(SKIPHAAR) and SKIPHAAR then
+    Hs := Filtered(Hs, H -> ForAll(NormalSubgroups(G), N -> Index(G, N) <> h or Size(Intersection(N, H)) > 1));
+  fi;
   gens := SmallGeneratingSet(G);
   for i in [1..Length(Hs)] do for j in [i..Length(Hs)] do
     H := Hs[i]; K := Hs[j];

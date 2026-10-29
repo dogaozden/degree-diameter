@@ -49,3 +49,12 @@ Kept: (5,5) 3+3 record-type base over order-60 groups (basins + exact k-opt); (7
 ### Round bh5-r4 (20:40 UTC, 2 cards, research/squads/bh5-r4/)
 Cards: c1 (7,5) coset graphs h=2 for the non-solvable SmallGroups of order 1176 and 1200, then small solvable orders
 · c2 (5,5) record-type 3+3 base over the other non-abelian groups of order 60, basins with exact 2/3-opt.
+Round-4 results: c1 (7,5) coset graphs h=2: C5 x (SL(2,5):C2) = SmallGroup(1200,475), cost 8 at 1200 (non-Haar: its
+index-2 subgroups contain H; capped at 2M unions); C7 x PSL(3,2) = SmallGroup(1176,212), cost 14 at 1176 (non-Haar);
+other non-solvable groups of order 1200: 28-38 · c2 (5,5) record-type 3+3 base over other order-60 groups: see
+its scoreboard line.
+Opus meanwhile: coset graphs of C2 x A6 with |H| = 4 (order 720 sweep): cost 4 at 360, exhaustive (176 unions),
+non-Haar (no subgroup of order 180); exact search for the other 2+2 base [[2,3],[3,2]] (exh/b4a2x.c, w solved from
+the own-fibre conditions; filtered = brute force on SmallGroup(72,30)) running over the groups of order 90;
+annealing of the SmallGroup(1200,475) coset unions; solvable groups of order 1176 with h=2 (Haar-type subgroups
+skipped).
