@@ -21,6 +21,7 @@ static int n, D = 5, DELTA = 64;
 static int deg[MAXN], adj[MAXN][MAXD], col[MAXN];
 static uint64_t *vis, *fr, *nx;
 static long farcnt[MAXN];
+static int mvu[MAXN * 4], mvv[MAXN * 4], nmv = 0;
 static uint64_t rs = 88172645463325252ULL;
 static inline uint64_t rnd(void) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; return rs; }
 static inline double rnd01(void) { return (rnd() >> 11) * (1.0 / 9007199254740992.0); }
@@ -71,8 +72,10 @@ int main(int argc, char **argv) {
     rs ^= getenv("SEED") ? (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL : 0; for (int i = 0; i < 20; i++) rnd();
     const char *OUT = getenv("OUT");
     FILE *f = fopen(argv[1], "r"); if (!f || fscanf(f, "%d", &n) != 1 || n > MAXN) return 2;
-    int a, b;
-    while (fscanf(f, "%d %d", &a, &b) == 2) { if (a == b || has(a, b)) continue; if (deg[a] >= MAXD || deg[b] >= MAXD) return 3; addE(a, b); }
+    int a, b; char line[256]; if (!fgets(line, sizeof line, f)) return 2;
+    while (fgets(line, sizeof line, f)) { int mv = 0; int k = sscanf(line, "%d %d %d", &a, &b, &mv); if (k < 2) continue;
+        if (a == b || has(a, b)) continue; if (deg[a] >= MAXD || deg[b] >= MAXD) return 3; addE(a, b);
+        if (k == 3 && mv) { mvu[nmv] = a; mvv[nmv] = b; nmv++; } }
     fclose(f);
     for (int i = 0; i < n; i++) col[i] = -1;
     for (int s = 0; s < n; s++) if (col[s] < 0) { col[s] = 0; int q[MAXN], h = 0, t = 0; q[t++] = s;
@@ -91,6 +94,16 @@ int main(int argc, char **argv) {
             double T = T0 * pow(T1 / T0, (double)k / ITERS);
             double r = rnd01(); if (r < 1e-300) r = 1e-300;
             long limit = cur + (long)floor(-T * log(r));
+            if (nmv > 1) {   /* MOVABLE mode: 2-switch two movable edges only */
+                int i = rnd() % nmv, j = rnd() % nmv; if (i == j) continue;
+                int x = mvu[i], y = mvv[i], u = mvu[j], v = mvv[j];
+                if (col[x] != col[u]) { int t = u; u = v; v = t; }
+                if (x == u || y == v || has(x, v) || has(u, y)) continue;
+                delE(x, y); delE(u, v); addE(x, v); addE(u, y);
+                long c = cost(limit, 0);
+                if (c <= limit) { cur = c; mvu[i] = x; mvv[i] = v; mvu[j] = u; mvv[j] = y; }
+                else { delE(x, v); delE(u, y); addE(x, y); addE(u, v); }
+            } else
             if (ADD > 0 && rnd01() < ADD) {   /* add an edge between deficient vertices */
                 int u = rnd() % n, v = rnd() % n;
                 if (col[u] == col[v] || deg[u] >= DELTA || deg[v] >= DELTA || has(u, v)) continue;

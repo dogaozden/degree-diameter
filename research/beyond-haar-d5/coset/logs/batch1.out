@@ -145,3 +145,48 @@ RESULT out/psl3_3_h9_3_3.dc tested 36 solutions 0 best 2448 vertices 1248 set 0 
 ./run_group.sh: line 9: 9_d7.result: command not found
 out/psl2_16_h6_1_1.dc: nA 680 nB 680 double cosets 119; contributions 1x1 2x2 7x3 109x6
 RESULT out/psl2_16_h6_1_1.dc tested 137 solutions 0 best 34 vertices 1360 set 0 39
+out/psl2_25_h12_1_1.dc: nA 650 nB 650 double cosets 63; contributions 2x1 4x3 8x6 49x12
+RESULT out/psl2_25_h12_1_1.dc tested 28 solutions 0 best 240 vertices 1300 set 0 53
+out/psl2_25_h12_1_2.dc: nA 650 nB 650 double cosets 59; contributions 2x4 7x6 50x12
+RESULT out/psl2_25_h12_1_2.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_1_3.dc: nA 650 nB 650 double cosets 56; contributions 1x2 2x6 53x12
+RESULT out/psl2_25_h12_1_3.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_1_4.dc: nA 650 nB 650 double cosets 63; contributions 1x2 16x6 46x12
+RESULT out/psl2_25_h12_1_4.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_1_5.dc: nA 650 nB 650 double cosets 59; contributions 2x3 2x4 4x6 51x12
+RESULT out/psl2_25_h12_1_5.dc tested 4 solutions 0 best 700 vertices 1300 set 49 54
+out/psl2_25_h12_2_2.dc: nA 650 nB 650 double cosets 61; contributions 2x1 6x4 2x6 51x12
+RESULT out/psl2_25_h12_2_2.dc tested 4 solutions 0 best 992 vertices 1300 set 0 38
+out/psl2_25_h12_2_3.dc: nA 650 nB 650 double cosets 56; contributions 2x4 1x6 53x12
+RESULT out/psl2_25_h12_2_3.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_2_4.dc: nA 650 nB 650 double cosets 59; contributions 2x3 2x4 4x6 51x12
+RESULT out/psl2_25_h12_2_4.dc tested 4 solutions 0 best 700 vertices 1300 set 9 57
+out/psl2_25_h12_2_5.dc: nA 650 nB 650 double cosets 61; contributions 8x4 3x6 50x12
+RESULT out/psl2_25_h12_2_5.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_3_3.dc: nA 650 nB 650 double cosets 56; contributions 2x1 54x12
+RESULT out/psl2_25_h12_3_3.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_3_4.dc: nA 650 nB 650 double cosets 56; contributions 1x2 2x6 53x12
+RESULT out/psl2_25_h12_3_4.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_3_5.dc: nA 650 nB 650 double cosets 56; contributions 2x4 1x6 53x12
+RESULT out/psl2_25_h12_3_5.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_4_4.dc: nA 650 nB 650 double cosets 63; contributions 2x1 4x3 8x6 49x12
+RESULT out/psl2_25_h12_4_4.dc tested 28 solutions 0 best 240 vertices 1300 set 0 22
+out/psl2_25_h12_4_5.dc: nA 650 nB 650 double cosets 59; contributions 2x4 7x6 50x12
+RESULT out/psl2_25_h12_4_5.dc tested 0 solutions 0 best 1099511627776 vertices 1300 set
+out/psl2_25_h12_5_5.dc: nA 650 nB 650 double cosets 61; contributions 2x1 6x4 2x6 51x12
+RESULT out/psl2_25_h12_5_5.dc tested 4 solutions 0 best 992 vertices 1300 set 0 56
+out/psu3_3_h9_1_1.dc: nA 672 nB 672 double cosets 84; contributions 6x1 6x3 72x9
+RESULT out/psu3_3_h9_1_1.dc tested 180 solutions 0 best 2592 vertices 1344 set 0 1 4 8 9
+out/psl2_31_h24_1_1.dc: nA 620 nB 620 double cosets 33; contributions 1x1 1x3 2x6 2x8 5x12 22x24
+RESULT out/psl2_31_h24_1_1.dc tested 2 solutions 0 best 448 vertices 1240 set 0 32
+out/psl2_31_h24_1_2.dc: nA 620 nB 620 double cosets 33; contributions 1x4 2x6 2x8 7x12 21x24
+RESULT out/psl2_31_h24_1_2.dc tested 0 solutions 0 best 1099511627776 vertices 1240 set
+out/psl2_31_h24_2_2.dc: nA 620 nB 620 double cosets 33; contributions 1x1 1x3 2x6 2x8 5x12 22x24
+RESULT out/psl2_31_h24_2_2.dc tested 2 solutions 0 best 448 vertices 1240 set 0 27
+out/m11_h12_1_1.dc: nA 660 nB 660 double cosets 66; contributions 2x1 10x4 5x6 49x12
+RESULT out/m11_h12_1_1.dc tested 10 solutions 0 best 424 vertices 1320 set 0 39
+out/m11_h12_1_2.dc: nA 660 nB 660 double cosets 64; contributions 2x3 3x4 11x6 48x12
+RESULT out/m11_h12_1_2.dc tested 6 solutions 0 best 160 vertices 1320 set 13 63
+out/m11_h12_2_2.dc: nA 660 nB 660 double cosets 72; contributions 1x1 1x2 5x3 23x6 42x12
+RESULT out/m11_h12_2_2.dc tested 33 solutions 0 best 128 vertices 1320 set 0 40
+BATCH1_DONE
