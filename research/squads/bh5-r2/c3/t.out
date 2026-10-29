@@ -1,0 +1,14 @@
+Error, the library of groups of size 1156 is not available at /usr/share/gap/pkg/SmallGrp/gap/small.gi:166 called from
+<function "NumberSmallGroups">( <arguments> )
+ called from read-eval loop at t.g:1
+you can 'quit;' to quit to outer loop, or
+you can 'return;' to continue
+[1m[34m[0m[31mSyntax error: expression expected in *errin*:1
+/bin/bash: line 1: unalias: unsetenv: not found
+^
+[1m[34m[0m[31mSyntax error: ; expected in *errin*:2
+[1m[34m[0m[31mReading file "t.g" has been aborted.
+
+real	0m1.508s
+user	0m1.046s
+sys	0m0.225s
