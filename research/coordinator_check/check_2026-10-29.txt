@@ -4,3 +4,9 @@ from research/frontier/sols/d15D7_hex11_typedwhisk_n2504544.sol and research/p4/
 hubs per side 12180 12180; n = 2504544, edges = 18678612, degree min 12 max 15
 edge list sha256 c5d720d367d7509fcbdd6aa82e67477202bcc47537d041c83632732c949a6594 (matches the finder's)
 apsp_mt (all pairs, no symmetry), Wed Oct 28 22:12 to 23:31 PDT -> RESULT VALID d=15 D=7 n=2504544
+
+== (16,7) 4,081,072 — job conics, branch claude/conics-generalized-polygons-6gjqxi (research/synthetic/conics/d16D7/)
+rebuilt on the Mac mini with research/synthetic/conics/d14D7/tm_build_herm.py from research/frontier/sols/d16D7_hex13_typedwhisk_n4081072.sol
+and research/p4/d6/hex/hex_q13.bin: hubs per side 29366 29366; n = 4081072, edges = 32614144, degree min 14 max 16
+edge list sha256 350f9e078ebcc2e3bd997cb4fafce94f074da937f02cef59f91a14e5369e476c (matches the finder's)
+apsp_mt (all pairs, no symmetry), Wed Oct 28 23:32 to Thu Oct 29 04:39 PDT -> RESULT VALID d=16 D=7 n=4081072
