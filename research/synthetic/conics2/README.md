@@ -66,16 +66,19 @@ rises by q^2 per side: (14,7) +242, (16,7) +338, (17,7) +169 (one side), (19,7) 
 
 - **Theorem (restatement, D7_HEXAGON.md Sections 4-6).** With three levels (r = 1) every level has one outgoing
   transition and some transition is non-friendly, so the hub count is at most the non-friendly freed set: (7,7), (9,7),
-  (10,7) and (13,7) move only with a larger m (81, 295, 229, 768). At q = 9 every transition is automorphic (a duality)
-  and the freed sets are already the largest segment sets (7,300 = (q+1)(q^3+1); the pencils of an ovoid on the line
-  side): (11,7) 413,180 and (12,7) 693,500 are at the cap of Theorem 3.4, and whiskers cannot help there.
+  (10,7) and (13,7) move only with a larger m (81, 295, 229, 768). At q = 9 (the H(9) cells (11,7) and (12,7)) every
+  transition is a duality transition and frees the point set of the Hermitian spread, the largest segment set (7,300 =
+  (q+1)(q^3+1), Proposition 1.4; since H(9) has ovoids, a dual segment set can reach the same size), so 413,180 and
+  693,500 are the cap of Theorem 3.4 (D7_HEXAGON.md Corollary 8.2) and whiskers cannot raise them.
 - **Computer-checked, negative.** At q = 5 (the (7,7) record, 81 freed points) four independent approaches found no
   repaired non-friendly transition with 82 freed points: a mirrored-set search (card c1: no extra mirrored pair matches
   the record's types; tabu partial ovoids reach only 56 of the record's 72), simulated annealing on sigma maximizing the
   number of points where sigma is a local duality (card c2: never above 81, and the set of such points under the record
   sigma is exactly R), local search adding one point and repairing sigma by swaps (card c3: the best state still has 589
-  pairs beyond distance 7, of which 317 come from the new point itself), and SAT at q = 3 (card c5, too large without
-  symmetry breaking). The scorer (tools/transcheck.py) is an exact bitset BFS of the two-level graph, validated on the
+  pairs beyond distance 7, of which 317 come from the new point itself), SAT at q = 3 (card c5, too large without
+  symmetry breaking), and the whole three-level (7,7) graph with hubs instead of one transition (card c4: freeing an
+  82nd point breaks 864 to 1,188 ordered pairs over 12 choices of the point, all between level vertices, none involving
+  a hub, so neither the third level nor the hubs repair them; local search on sigma brought one case to 744). The scorer (tools/transcheck.py) is an exact bitset BFS of the two-level graph, validated on the
   record (0 bad pairs) and on negative controls (one more freed point: 612 to 697 bad pairs).
 - **Heuristic.** A freed point x needs sigma to map the q(q+1) points collinear with x to lines whose radius-3 balls
   cover the points of the next level (Theorem C makes this exact with the lines concurrent with sigma(x)); the
