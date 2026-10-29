@@ -215,13 +215,22 @@ def main():
         hexfn, T, nonfr, hubs, solout, outfn = sys.argv[2:8]
         want = (int(sys.argv[8]), int(sys.argv[9])) if len(sys.argv) > 9 else None
         hubE = None; hubK = None
+        clus = None; slotperm = {}
         if hubs.startswith('file:'):
             hl = open(hubs[5:]).read().split('\n')
             hubK = (int(hl[0]), int(hl[0]))
             hubE = np.array([[int(t) for t in s.split()] for s in hl[1:] if s.strip()], dtype=np.int64)
+        elif hubs.startswith('clhub:'):                   # cluster-assisted Haar hub graph of clhub.py
+            hl = open(hubs[6:]).read().split('\n')
+            hubK = (int(hl[0]), int(hl[0]))
+            hubE = np.array([[int(t) for t in s.split()] for s in hl[1:] if s.strip() and s[0].isdigit()],
+                            dtype=np.int64)
+            clus = [(t.split()[0], int(t.split()[1]), np.array([int(u) for u in t.split()[2:]], dtype=np.int64))
+                    for t in open(hubs[6:] + '.cosets').read().split('\n') if t.strip()]
         else:
             seed = int(hubs.split(':')[1])
     else:
+        clus = None; slotperm = {}
         hexfn, mysol, outfn = sys.argv[2:5]; d = os.path.dirname(os.path.abspath(mysol))
         man = open(mysol).read().split('\n')
         assert man[0].split()[0] in ('typedherm2', 'typedherm3')
@@ -237,6 +246,9 @@ def main():
         nh = int(man[li].split()[1]); li += 1
         hubE = np.array([[int(t) for t in s.split()] for s in man[li:li + nh]], dtype=np.int64)
         want = None
+        for t in man[li + nh:]:
+            if t.startswith('slots '):
+                w = t.split(); slotperm[(w[1], int(w[2]))] = np.array([int(u) for u in w[3:]], dtype=np.int64)
     b = open(hexfn, 'rb').read()
     q, N, Lc = (int(t) for t in np.frombuffer(b[:12], dtype=np.int32))
     Q1 = q + 1
@@ -288,6 +300,7 @@ def main():
     for j in range(L):
         out.append(np.stack([VID(j, 0, flat_p), VID(j, 1, flat_l)], axis=1).astype(np.int32))
     Aslots = [[] for _ in range(L)]; Bslots = [[] for _ in range(L)]
+    Apt = [[] for _ in range(L)]; Bpt = [[] for _ in range(L)]    # the slot's point if it is a spread point, else -1
     x = np.arange(N)
     for j in range(L):
         for k in range(1, RM + 1):
@@ -302,7 +315,10 @@ def main():
             keep = ~free
             out.append(np.stack([VID(j, a, x[keep]), VID(j2, bk, img[keep])], axis=1).astype(np.int32))
             Aslots[j].append(VID(j, a, x[free])); Bslots[j2].append(VID(j2, bk, img[free]))
+            sp = x[free] if (a == bk and a == 0) else np.full(int(free.sum()), -1)   # friendly H -> D: points of R_H
+            Apt[j].append(sp); Bpt[j2].append(sp)
     Aslots = [np.concatenate(s) for s in Aslots]; Bslots = [np.concatenate(s) for s in Bslots]
+    Apt = [np.concatenate(s) for s in Apt]; Bpt = [np.concatenate(s) for s in Bpt]
     KB = min(len(s) for s in Aslots); KA = min(len(s) for s in Bslots)
     print(f'types {T}: free A-slots per level {[len(s) for s in Aslots]}, B-slots {[len(s) for s in Bslots]} -> at most '
           f'{KB} line-side and {KA} point-side hubs; hub-graph degree <= {dh}', flush=True)
@@ -312,10 +328,44 @@ def main():
         assert want[0] <= KB and want[1] <= KA; KB, KA = want
     print('hubs per side', KB, KA, flush=True)
     NV0 = 2 * N * L; n = NV0 + KB + KA
-    for j in range(L):
-        out.append(np.stack([NV0 + np.arange(KB), Aslots[j][:KB]], axis=1).astype(np.int32))        # line-side hubs
-    for j in range(L):
-        out.append(np.stack([NV0 + KB + np.arange(KA), Bslots[j][:KA]], axis=1).astype(np.int32))   # point-side hubs
+    if clus is not None:                               # place each coset on the free slots of one spread line
+        lineof = np.full(N, -1, np.int64)
+        for i, l in enumerate(S):
+            lineof[LP[l]] = i
+        used = {'A': set(), 'B': set()}
+        for side, h, cid in clus:
+            pts = Apt if side == 'A' else Bpt
+            cap = [(np.bincount(lineof[pts[j][pts[j] >= 0]], minlength=len(S)).min() if (pts[j] >= 0).any() else 0)
+                   for j in range(L)]
+            cand = [j for j in sorted(range(L), key=lambda j: -cap[j]) if cap[j] >= h and j not in used[side]]
+            assert cand, ('no level for a cluster of size', h, side)
+            j = cand[0]; used[side].add(j)
+            pos = np.nonzero(pts[j] >= 0)[0]; ln = lineof[pts[j][pos]]
+            o = np.argsort(ln, kind='stable'); pos, ln = pos[o], ln[o]
+            starts = np.searchsorted(ln, np.arange(len(S) + 1))
+            perm = np.full(len(cid), -1, np.int64)
+            members = np.argsort(cid, kind='stable'); nc = cid.max() + 1
+            c = 0
+            for i in range(len(S)):
+                P = pos[starts[i]:starts[i + 1]]
+                for t in range(len(P) // h):
+                    if c == nc:
+                        break
+                    perm[members[c * h:(c + 1) * h]] = P[t * h:(t + 1) * h]; c += 1
+            assert c == nc and (perm >= 0).all(), 'cosets do not fit'
+            slotperm[(side, j)] = perm
+            print(f'cluster level {j} ({side}-slots, spread-line capacity {cap[j]}): {nc} cosets of size {h}, one '
+                  f'spread line each (pairwise distance <= 2 in the level)', flush=True)
+    for j in range(L):                                 # line-side hubs
+        ps = slotperm[('A', j)] if ('A', j) in slotperm else np.arange(KB)
+        assert len(np.unique(ps)) == KB == len(ps) and ps.max() < len(Aslots[j])           # distinct slots
+        sl = Aslots[j][ps]
+        out.append(np.stack([NV0 + np.arange(KB), sl], axis=1).astype(np.int32))
+    for j in range(L):                                 # point-side hubs
+        ps = slotperm[('B', j)] if ('B', j) in slotperm else np.arange(KA)
+        assert len(np.unique(ps)) == KA == len(ps) and ps.max() < len(Bslots[j])           # distinct slots
+        sl = Bslots[j][ps]
+        out.append(np.stack([NV0 + KB + np.arange(KA), sl], axis=1).astype(np.int32))
 
     def nblist(a, b, Ka):                                  # neighbours b of each node a < Ka, padded (repeats) to dh
         o = np.argsort(a, kind='stable'); bs = b[o]
@@ -404,8 +454,13 @@ def main():
     assert (he[:, 0] >= 0).all() and (he[:, 0] < KB).all() and (he[:, 1] >= 0).all() and (he[:, 1] < KA).all()
     assert len(np.unique(he, axis=0)) == len(he)
     assert np.bincount(he[:, 0], minlength=KB).max() <= dh and np.bincount(he[:, 1], minlength=KA).max() <= dh
-    assert far_pairs(he) == 0, 'hub graph: same-side distance > 6'
-    print(f'hub graph: {len(he)} edges, degrees <= {dh}, same-side distances <= 6 on both sides', flush=True)
+    if not slotperm:
+        assert far_pairs(he) == 0, 'hub graph: same-side distance > 6'
+        print(f'hub graph: {len(he)} edges, degrees <= {dh}, same-side distances <= 6 on both sides', flush=True)
+    else:
+        print(f'hub graph: {len(he)} edges, degrees <= {dh}; {far_pairs(he)} same-side pairs beyond 6 in the hub graph '
+              f'alone, to be joined through the cluster levels (clhub.py; check with research/d15D7b/hubfar.c)',
+              flush=True)
     if mode == 'make':
         with open(solout, 'w') as f:
             f.write(f'typedherm{3 if nu0 else 2} {q} {N} {T} {n}\n')
@@ -414,6 +469,8 @@ def main():
             else:
                 f.write(f'nonfriendly ovoid {len(Rp)}\nR ' + ' '.join(str(t) for t in Rp.tolist()) + '\n')
             f.write(f'hubs {KB} {KA}\nhubgraph {len(he)}\n' + '\n'.join(f'{a} {b_}' for a, b_ in he.tolist()) + '\n')
+            for (side, j), perm in sorted(slotperm.items()):
+                f.write(f'slots {side} {j} ' + ' '.join(map(str, perm.tolist())) + '\n')
         print('wrote', solout, flush=True)
     out.append(np.stack([NV0 + he[:, 0], NV0 + KB + he[:, 1]], axis=1).astype(np.int32))
     E = np.concatenate(out); del out
