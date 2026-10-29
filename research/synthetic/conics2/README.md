@@ -9,7 +9,43 @@ incidence graph of H(q)) and D (its dual), friendly transitions (types differ, i
 
 ## 1. Results
 
-STATUS_TABLE
+| cell | q, levels | before this job (master / job "conics") | this job | hubs per side | hub graph | all-pairs check |
+|---|---|---:|---:|---|---|---|
+| (14,7) | 11, HDHDH | 1,789,588 / 1,802,400 | **1,802,642** | 15,541 + 15,541 | 9 random matchings | CHECK14 |
+| (15,7) | 11, HHDHHDD | 2,501,491 / 2,504,544 | **2,512,488** | 16,152 + 16,152 | Haar Z_673 x\| Z_24, degree 8, clusters | CHECK15M |
+|  |  |  | 2,509,944 | 14,880 + 14,880 | Haar PSL(2,31), degree 8, clusters | passed (4 ranges) |
+| (16,7) | 13, HDHDH | 4,052,108 / 4,081,072 | **4,081,410** | 29,535 + 29,535 | random, degree 11 | CHECK16 |
+| (17,7) | 13, HHDHHDD | 5,631,276 (beyond table) | **5,693,959** | 32,356 + 30,327 | random, degree 10 | CHECK17N |
+|  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | CHECK17 |
+| (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | CHECK18N |
+|  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | CHECK18 |
+| (19,7) | 16, HDHDH | 11,184,810 (beyond table) | **11,316,940** | 66,065 + 66,065 | random, degree 14 | CHECK19 |
+| (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | **15,795,219** | 70,163 + 66,322 | random, degree 13 | CHECK20 |
+
+Unchanged, with the reason (Section 4): (7,7) 23,598, (9,7) 118,238, (10,7) 225,152, (13,7) 1,064,472 (three levels: the
+hub count is the non-friendly freed set m = 81, 295, 229, 768); (11,7) 413,180 and (12,7) 693,500 (q = 9: at the cap of
+Theorem 3.4). (8,7) is a Haar graph, not a hexagon construction.
+
+How each value is obtained (Theorem 3.4 of D7_HEXAGON.md): n = (2r+1) 2N(q) + K_A + K_B, where every friendly
+transition is repaired by Theorem B (R_H the spread points, a segment set; R_L+ of Proposition 1, a dual segment set),
+every non-friendly one by Theorem C (the lab's mirrored sets: 768 points at q = 11, 792 at q = 13; at q = 16 the 257
+points of an elliptic quadric section with sigma as in Corollary 5.3(a)), and the hubs satisfy (HG). The builder checks
+all hypotheses (Computer-checked); (HG) is checked in the hub graph alone (random and PSL(2,37) graphs) or with
+research/d15D7b/hubfar.c from every hub in the whole graph (cluster graphs). The type patterns are the best of all 2^L
+(patterns.py, Computer-checked). Previous values: README table on master (2013 table values in D7_HEXAGON.md) and the
+beyond-table values of research/frontier/beyond/BEYOND_TABLE.md (branch claude/new-cells-beyond-etos3t), which are the
+plain level graphs (polygon covers) without hubs.
+
+Edge-list sha256 (from `typed_build.py build`, equal to `make`): (14,7) 98de1d8e969ebec7e87d860ff5b242755d7bd5802cabc49527d55a7390573c62;
+(15,7) 2,512,488 b1ef7d70d7ca21e35dee39f628cb50e3424b80168b1be0b404a248b7db12804d, 2,509,944
+b8ee89cc3b9c9610a9ec6b9b75276e3885aeda78b2b5f588aff1a4a8f4142ac1; (16,7) 1bc34853dd30ddbd2483e5a0f90c62bd3e8acf12d5f52ee0a6950008df3c879a;
+(17,7) 5,693,959 bb3c24f77d1d152916163b667d69a77a617820619762fb954fd45373601ab80f, 5,693,790
+50f886bcca10c08110e48a48222e4f314d3c5427a93ed4cc62fe912097590dcd; (18,7) 7,309,092
+314d5db9f3f3c4af613a56f09f93bcf149d215603adc70ba3ddb4db4deace37d, 7,290,828 b8b2137f23bc52f398774e3c528309014ae5dec368bfd8f36c56adf9524418e8;
+(19,7) d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1; (20,7) f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba.
+Inputs: research/p4/d6/hex/hex_q11.bin (sha256 e60db369...), hex_q13.bin (57aa5dfc...), and for q = 16 the output of
+`research/d10D7/hexgen2.c 16` (hex_q16.bin, sha256 f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394, not committed:
+84 MB).
 
 ## 2. A larger dual segment set: the spread lines with nu = 0
 
