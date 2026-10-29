@@ -1,0 +1,522 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem,booktabs,array}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\I}{\mathrel{\mathrm{I}}}
+\newcommand{\nI}{\mathrel{\not\mathrel{\mathrm{I}}}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\lam}{\lambda}
+\newcommand{\PG}{\mathrm{PG}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\status}[1]{\textup{[#1]}}
+
+\title{What plays the role of a conic: the lab's constructions and ovals, ovoids and polarities}
+\author{Degree--diameter lab}
+\date{29 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+A sequel to \texttt{SYNTHETIC.md} (branch \texttt{claude/synthetic-incidence-geometry-s4m08f}), written for
+Gabriela Araujo-Pardo and Ignacio L\'opez, who asked what happens with conics in generalized polygons. We first say
+what a conic is combinatorially (an oval, and the set of absolute points of a polarity) and what plays these two
+roles in generalized quadrangles and hexagons. Then we look at each construction of the lab through these objects.
+In a projective plane of odd order the answer is sharp: if the frame of the three-hat or four-hat construction is
+placed relative to a conic (the special point is the pole of the special line, two marked points are the points of
+contact of the tangents from it, and the other two marked points are conjugate), the polarity of the conic extends
+to a polarity of the whole structure (Theorem~\ref{thm:selfpolar}). This explains the links and the rotation, gives
+an explicit regular completion (the polarity itself), and folds the structure into a graph of diameter~$2$ with
+$q^2+q+6$ vertices and maximum degree $q+2$. A conic-adapted choice does not give a fifth hat: every such frame is
+infeasible in the hat model for $q\le13$, and no self-polar five-hat extension exists at $q=5$. In quadrangles and
+hexagons the conic-like objects (ovoids, partial ovoids, spreads, elliptic quadric sections) are already the
+ingredients of Theorems A--D and of the diameter-$7$ freed sets; we restate how, give Theorem~A as a statement
+about pairs of conics, and record what the polarity picture gives there. No lab value is improved.
+Every statement is labelled \status{new}, \status{restatement} or \status{standard}, and \status{proof}, \status{computer} or
+\status{heuristic}.
+\end{abstract}
+
+\maketitle
+
+\section*{0. Conventions and the dictionary}
+
+We use the conventions of \texttt{SYNTHETIC.md} \S0: an incidence structure has points, lines and a symmetric
+incidence~$\I$; its incidence graph has the elements as vertices and the flags as edges; distances and the diameter
+are taken there. For the hat constructions we use the frame and the six rules (R1)--(R6) of \texttt{SYNTHETIC.md},
+Definition~1.1, with the same names: anti-flag $(A,\ell)$, marked points $X_s$ on $\ell$ ($s\in S$), lines
+$\lam_s=AX_s$, a distinguished label $a$, $T=S\setminus\{a\}$, links $\pi$ and rotation $\rho$ (permutations of $T$),
+new points $Q,H_s$ and new lines $M,K_s$.
+
+\subsection*{0.1 What a conic is, combinatorially}
+In $\PG(2,q)$ a \emph{conic} $\cC$ is a set of $q+1$ points, no three collinear (an \emph{oval}); for $q$ odd every
+oval is a conic (Segre). For $q$ odd a conic is also the set of absolute points ($p\I p^\perp$) of an
+\emph{orthogonal polarity} $\perp$: an incidence-preserving involution exchanging points and lines. Both
+descriptions have analogues in generalized polygons, and they are different objects there:
+
+\begin{center}\small
+\begin{tabular}{@{}p{3.2cm}p{3.6cm}p{4.2cm}p{4.6cm}@{}}
+\toprule
+& projective plane & generalized quadrangle & generalized hexagon \\
+\midrule
+``no two too close'' (arc / partial ovoid) & arc: no $3$ collinear; oval: $q+1$ points ($q+2$, hyperoval, $q$ even)
+& partial ovoid: pairwise non-collinear; ovoid: $st+1$ points, one on every line
+& distance-$2$ (partial) ovoid: non-collinear ($q^4+q^2+1$ points, one on every line; known only for $q=2,3,4$);
+distance-$3$ (partial) ovoid: pairwise opposite ($q^3+1$ points) \\
+absolute points of a polarity & conic ($q$ odd); a line ($q$ even, pseudo-polarity); Hermitian curve ($q$ square)
+& Suzuki--Tits ovoid of $W(q)$, $q=2^{2e+1}$ (the only case with a polarity); absolute lines form a spread
+& Ree--Tits ovoid of $H(q)$, $q=3^{2e+1}$ (the only case with a polarity); absolute lines form a spread \\
+dual object & dual conic (tangent lines) & spread & spread (Hermitian spread, every $q$) \\
+quadric sections & conic $=$ plane section of a quadric
+& $Q(4,q)$: elliptic sections $Q^-(3,q)$ are ovoids; plane sections are conics ($q+1$ pairwise non-collinear points)
+& $Q(6,q)$: elliptic sections $Q^-(3,q)$ are partial ovoids ($q^2+1$); the lines in an elliptic hyperplane
+$Q^-(5,q)$ form a spread (Hermitian spread) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent \status{standard} \cite{VM98,PT,Th81,BGS06}. The lab's constructions use the first and third rows
+throughout (Sections 2 and 3). The second row, the polarity, is what explains the hats (Section 1).
+
+\subsection*{0.2 Polarities fold incidence structures}
+A \emph{polarity} of an incidence structure $\cS$ is a bijection $\theta$ from points to lines and lines to points
+with $\theta^2=\mathrm{id}$ and $p\I L\iff\theta(L)\I\theta(p)$. A point $p$ is \emph{absolute} if $p\I\theta(p)$.
+The \emph{polarity graph} $G_\theta$ has the points of $\cS$ as vertices, $p\sim r$ iff $p\ne r$ and $p\I\theta(r)$
+(symmetric because $\theta$ is a polarity). For $\PG(2,q)$ with an orthogonal polarity this is the Erd\H{o}s--R\'enyi
+graph.
+
+\begin{lemma}[Folding]\label{lem:fold}
+\status{standard; proof} Let $\cS$ have a polarity $\theta$, all degrees at most $\Delta$ and diameter $D\ge2$. Then
+$G_\theta$ has maximum degree at most $\Delta$ and diameter at most $D-1$, and $|V(G_\theta)|$ is half the number of
+elements of $\cS$.
+\end{lemma}
+\begin{proof}
+The degree of $p$ in $G_\theta$ is the number of lines through $p$, minus one if $p$ is absolute. Map each element
+$x$ of a path in the incidence graph to $x$ if it is a point and to $\theta(x)$ if it is a line. Consecutive elements
+$u\I L$ go to $u$ and $\theta(L)$, which are equal or adjacent in $G_\theta$ (as $u\I\theta(\theta(L))$). So a path
+of length $m$ from $p$ to an element $y$ gives a walk of length at most $m$ from $p$ to $y$ or $\theta(y)$. For points
+$p\ne r$, $d(p,r)$ is even and $d(p,\theta(r))$ is odd, both at most $D$; the smaller of the two is at most $D-1$.
+\end{proof}
+
+So a self-polar bipartite graph of diameter $D$ gives a graph of diameter $D-1$ with half the vertices. In this
+note it is used in two ways: as a description of what the conic does to the hats (\S1.3), and to compare with the
+tables of the general degree--diameter problem (where it gives nothing new; \S\S1.3, 2.4, 3.4).
+
+\section{Projective planes: the hats relative to a conic}
+
+\subsection{The conic frame}
+Let $q$ be odd, $\cC$ a conic of $\Pi=\PG(2,q)$ and $\perp$ its polarity. A point off $\cC$ is \emph{external}
+(on two tangents) or \emph{internal} (on none). We use the following standard facts \status{standard}.
+
+\begin{proposition}[Conjugation on a polar line]\label{prop:conj}
+Let $A\notin\cC$ and $\ell=A^\perp$. For a point $X$ of $\ell$, the polar line $X^\perp$ passes through $A$; write
+$X^\tau=X^\perp\cap\ell$. Then $\tau$ is an involution of the points of $\ell$ and $X^\perp=AX^\tau$. Its fixed
+points are the points of $\ell\cap\cC$: two points $Z,Z'$ if $A$ is external (then $AZ$, $AZ'$ are the two tangents
+from $A$, touching $\cC$ at $Z$ and $Z'$), none if $A$ is internal. If $A$ is external, $X^\tau$ is the harmonic
+conjugate of $X$ with respect to $Z,Z'$; $X$ and $X^\tau$ are \emph{conjugate} points.
+\end{proposition}
+
+So there are two matchings between the points of $\ell$ and the lines through $A$: the frame matching
+$X\mapsto AX$, which rule (R1) uses, and the polar matching $X\mapsto X^\perp=AX^\tau$. They differ by $\tau$.
+The marked points are now chosen as follows.
+
+\begin{definition}[Conic frame]\label{def:frame}
+Let $A$ be external, $\ell=A^\perp$, $\ell\cap\cC=\{Z,Z'\}$, and $X\in\ell\setminus\cC$.
+\emph{Three hats:} $(X_a,X_0,X_1)=(Z,X,X^\tau)$. \emph{Four hats:} $(X_a,X_c,X_0,X_1)=(Z,Z',X,X^\tau)$.
+In words: $A$ is the pole of $\ell$; the marked points are the two points of contact of the tangents from $A$ (only
+one of them for the three hats) and a pair of points of $\ell$ that separates them harmonically. The lines
+$\lam_a=AZ$ and $\lam_c=AZ'$ are the tangents from $A$, and $\lam_0=(X^\tau)^\perp$, $\lam_1=X^\perp$.
+\end{definition}
+
+For every odd $q\ge3$ such frames exist ($\ell\setminus\cC$ has $q-1\ge2$ points). The cross-ratio
+$(X_a,X_c;X_0,X_1)$ of a four-hat conic frame is $-1$; conversely every four-hat frame with $(X_a,X_c;X_0,X_1)=-1$
+is a conic frame for each conic of the pencil of conics tangent to $AX_a$ at $X_a$ and to $AX_c$ at $X_c$.
+\status{standard}
+
+\subsection{The polarity extends}
+Let $\tau$ also denote the permutation of labels with $X_{\tau(s)}=X_s^\tau$; in a conic frame $\tau$ swaps $0$ and
+$1$ and fixes $a$ (and $c$). The next lemma is stated for any polarity $\theta$ of a projective plane with
+$\theta(A)=\ell$; then $\tau$, defined by $X^\tau=\theta(X)\cap\ell$, is again an involution of $\ell$ whose fixed
+points are the absolute points of $\ell$.
+
+\begin{lemma}\label{lem:criterion}
+\status{new; proof} Let $\Pi$ be a projective plane with a polarity $\theta$, $A$ a non-absolute point,
+$\ell=\theta(A)$, and let the marked set $\{X_s\}$ be $\tau$-invariant. Suppose
+$$\tau(a)=a,\qquad \tau\pi\tau=\pi^{-1},\qquad \tau\rho\tau=\rho^{-1}\quad\text{(on $T$)}.$$
+Then $\hat\theta$, equal to $\theta$ on $\Pi$ and with $H_s\leftrightarrow K_{\tau(s)}$, $Q\leftrightarrow M$, is a
+polarity of the structure $\cS=\cS(\Pi;A,\ell,(X_s),\pi,\rho)$ of \texttt{SYNTHETIC.md}, Definition~1.1.
+\end{lemma}
+
+\begin{proof}
+$\hat\theta$ is an involution exchanging points and lines; we show that it maps each flag $(p,L)$ of $\cS$ to a
+flag $(\hat\theta(L),\hat\theta(p))$. Note $\theta(X_s)=AX_{\tau(s)}=\lam_{\tau(s)}$ and hence
+$\theta(\lam_s)=X_{\tau(s)}$.
+
+(R1) $\theta$ maps flags of $\Pi$ to flags of $\Pi$. The deleted flags $(X_s,\lam_s)$ go to
+$(\theta(\lam_s),\theta(X_s))=(X_{\tau(s)},\lam_{\tau(s)})$, again deleted. An added flag $(X_t,\lam_{\rho(t)})$ goes
+to $(X_{\tau\rho(t)},\lam_{\tau(t)})$; with $u=\tau\rho(t)$ we have $\rho(u)=\rho\tau\rho(t)=\tau(t)$, because
+$\tau\rho\tau=\rho^{-1}$ gives $\rho\tau\rho=\tau$. So it is the added flag $(X_u,\lam_{\rho(u)})$.
+
+(R2)$\leftrightarrow$(R3) If $N\I X_s$, $N\ne\ell$, then $\theta(N)$ is a point of $\theta(X_s)=\lam_{\tau(s)}$ other
+than $\theta(\ell)=A$, so $(\theta(N),K_{\tau(s)})$ is a flag by (R3). The converse is the same computation.
+
+(R4)$\leftrightarrow$(R5) A point $p\in\ell$ goes to the line $\theta(p)=Ap^\tau$ through $A$. If $p$ is unmarked,
+so is $p^\tau$, and $\theta(p)\in\Lambda^*$; $\theta(X_a)=\lam_a\in\Lambda^*$; and $\theta(X_t)=\lam_{\tau(t)}$ with
+$\tau(t)\in T$. So $\theta$ maps $\ell^*$ onto $\Lambda^*$, and $(p,M)\mapsto(Q,\theta(p))$ preserves (R4)/(R5).
+$(H_s,M)\mapsto(Q,K_{\tau(s)})$.
+
+(R6) $(A,K_a)\mapsto(H_a,\ell)$. A link $(H_t,K_{\pi(t)})$ goes to $(H_{\tau\pi(t)},K_{\tau(t)})$, and with
+$u=\tau\pi(t)$, $\pi(u)=\pi\tau\pi(t)=\tau(t)$; so it is the link of $u$.
+\end{proof}
+
+\begin{theorem}[Self-polar hats]\label{thm:selfpolar}
+\status{new; proof and computer} Let $q$ be odd. In a conic frame (Definition~\ref{def:frame}) the polarity of the
+conic, extended by
+$$H_a\leftrightarrow K_a,\quad H_c\leftrightarrow K_c,\quad H_0\leftrightarrow K_1,\quad H_1\leftrightarrow K_0,
+\quad Q\leftrightarrow M,$$
+is a polarity of the three-hat structure of \cite{AL20} and of the four-hat structure.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:criterion} with $\tau=(0\ 1)$. Three hats: $\pi=(0\ 1)$ commutes with $\tau$ and is an involution,
+$\rho=\mathrm{id}$. Four hats: $\pi=\rho=\sigma=(0\ c\ 1)$ and $\tau\sigma\tau=(1\ c\ 0)=\sigma^{-1}$.
+\end{proof}
+
+\emph{Computer.} \texttt{conics/polar\_frames.py} checks the theorem for every conic frame (every external $A$, every
+choice of $Z$, $X$) for $q=3,5,7$, and for random frames at $q=9,11,13$; four independent squad programs
+(\texttt{squads/conics-r1/c1}--\texttt{c4}) re-derived it from the rules for $q=3,\dots,13$ and over
+$\mathrm{GF}(9)$, $\mathrm{GF}(25)$ (163 instances), and showed for $q=5,7$ that, with $\theta$ and $\tau$ as above,
+\emph{exactly} the conic frames are self-polar (2,496 labelled frames tried). The same lemma gives self-polar three
+hats for $q$ even: the absolute points of a pseudo-polarity form a line $m$, so $\ell=\theta(A)$ has exactly one
+absolute point $X_a$ and $\tau=(0\ 1)$ as before, unless $\ell=m$, in which case every point of $\ell$ is absolute,
+$\tau$ is the identity and any three marked points will do. For $q$ square a unitary polarity has $\sqrt q+1$
+absolute points on $\ell$, which gives self-polar three and four hats. Checked for $q=4,8,16$ (pseudo) and $q=4,9,16$
+(unitary), and independently by squad card \texttt{c8} on every non-absolute $A$ at $q=4,8$ (pseudo) and $q=4,9$
+(unitary): 6,830 instances, all self-polar with the right $\tau$ (the card's two ``failures'' are the two
+$\ell=m$ cases, where its brief wrongly assumed $\tau\ne\mathrm{id}$).
+
+\begin{remark}[Why the conic frame is forced]\label{rem:forced}
+\status{proof} For the four hats, a permutation $\tau$ of $S$ as in Lemma~\ref{lem:criterion} must fix $a$, preserve
+$T$ and invert the $3$-cycle $\sigma$; so it is a transposition on $T$ and fixes exactly two labels, $a$ and one
+$t\in T$. Hence $X_a$ and $X_t$ are absolute points of $\ell$: for an orthogonal polarity, the two points of contact
+of the tangents from $A$. For the three hats, $\tau$ fixes $a$ and either swaps $0,1$ or fixes them; the second needs
+three absolute points on $\ell$, impossible for a conic. So among frames with $A$ the pole of $\ell$, the conic
+frames are the only ones to which the lemma applies; the squad check above confirms that no other labelled frame is
+self-polar with this $\theta$.
+\end{remark}
+
+\subsection{What the gadget is, in polar terms}
+Under the polarity every line is $\theta$ of a point, so every incidence $p\I L$ is a symmetric relation
+``$p$ is conjugate to $\theta(L)$'' between two points. Reading Table~3 of \texttt{SYNTHETIC.md} this way:
+
+\begin{proposition}\label{prop:gadget}
+\status{new; proof} In a four-hat conic frame:
+\begin{enumerate}[label=(\alph*)]
+\item the four deleted flags $(X_s,\lam_s)=(X_s,X_{\tau(s)}^\perp)$ are exactly the conjugate pairs among the
+marked points: $Z$ and $Z'$ with themselves (they are absolute), and $\{X_0,X_1\}$;
+\item the three rotation flags $(X_0,\lam_c),(X_c,\lam_1),(X_1,\lam_0)$ make $X_0$ and $Z'$ conjugate (two flags,
+$X_0\I Z'^\perp$ and $Z'\I X_0^\perp$) and $X_1$ absolute ($X_1\I X_1^\perp$);
+\item the links are the conjugacies $H_0$--$H_c$ (two flags) and $H_1$ absolute, and $A\I K_a$, $H_a\I\ell$ are
+the two flags of the conjugacy $A$--$H_a$;
+\item $Q$ is conjugate to every $H_s$, to $Z$ and to the unmarked points of $\ell$; $H_s$ is conjugate to the $q$
+points of $\lam_{\tau(s)}$ other than $A$.
+\end{enumerate}
+So the surgery on the old points replaces the conjugacy relation on the marked set
+$\{Z,Z',X_0,X_1\}$ (two absolute points and one conjugate pair) by another one (one conjugate pair, $X_0$--$Z'$, and
+one absolute point, $X_1$), and the links do the same on the hats.
+\end{proposition}
+\begin{proof}
+(a) $\lam_s=AX_s=\theta(X_{\tau(s)})$. (b) $\lam_c=AZ'=Z'^\perp$, $\lam_1=X_0^\perp$, $\lam_0=X_1^\perp$.
+(c) $K_c=\hat\theta(H_c)$, $K_1=\hat\theta(H_0)$, $K_0=\hat\theta(H_1)$, $K_a=\hat\theta(H_a)$, $\ell=\theta(A)$.
+(d) $K_s=\hat\theta(H_{\tau(s)})$; $M=\hat\theta(Q)$ contains $\ell^*=\{Z\}\cup\{\text{unmarked}\}$; a line $N\ne\ell$
+through $X_s$ is $\theta$ of a point of $\theta(X_s)=\lam_{\tau(s)}$ other than $A$.
+\end{proof}
+
+For the three hats in a conic frame the only deleted flag is $(Z,Z^\perp)$ (an absolute point loses its loop),
+and the links $H_0\I K_1$, $H_1\I K_0$ make $H_0$ and $H_1$ absolute.
+
+\begin{corollary}[Folding the hats]\label{cor:fold}
+\status{new; proof and computer} For every odd prime power $q\ge3$ the polarity graph of the four-hat conic frame is a
+graph of diameter $2$ and maximum degree $q+2$ on $q^2+q+6$ vertices; that of the three hats has $q^2+q+5$ vertices.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:selfpolar}, Lemma~\ref{lem:fold} and Theorem~1.7 of \texttt{SYNTHETIC.md} (diameter $3$, degrees
+at most $q+2$).
+\end{proof}
+
+By Proposition~\ref{prop:gadget}, this graph is the Erd\H{o}s--R\'enyi graph of $\PG(2,q)$ with the edge $X_0X_1$
+replaced by $X_0Z'$, plus five vertices: $Q$ joined to $Z$, to the $q-3$ unmarked points of $\ell$ and to the four
+hats; $H_s$ joined to the $q$ points of $\lam_{\tau(s)}$ other than $A$; and $H_a$--$A$, $H_0$--$H_c$. (We checked by computer that this
+description is exactly the polarity graph, $q=3,\dots,13$: \texttt{conics/folded\_direct.py}.)
+\emph{Comparison} \status{computer}: at $q=13$ this is $188$ vertices at $(\Delta,D)=(15,2)$ for general graphs. The
+table of the general problem lists $187$ (E.~Canale, 2012) in the UPC table and $190$ (2026) in the current
+Wikipedia table, read on 29 October 2026. So the folded four hats lie between the two and are not a record; at
+$\Delta=11,13$ ($q=9,11$: $96$ and $138$) they are far below the tabled $106$ and $162$. The three-hat fold at $q=13$
+has $187$ vertices, the old tabled value; we do not know how Canale's graph was built.
+
+\subsection{An explicit regular version}
+In the four-hat structure the elements of degree $q+1$ (the deficient ones) are the points of $\Pi$ off $\ell$,
+other than $A$, on the lines $AY$ with $Y$ unmarked, and dually (\texttt{SYNTHETIC.md}, Lemma~1.4). \texttt{SYNTHETIC.md}
+completes the structure by any perfect matching of non-incident deficient pairs (K\"onig). The conic gives one.
+
+\begin{proposition}[The polarity completes the hats]\label{prop:complete}
+\status{new; proof and computer} In a conic frame (three or four hats), let $p$ be a deficient point. If $p\notin\cC$
+put $\mu(p)=p^\perp$; if $p\in\cC$, let $p^*$ be the second point of $\cC$ on the line $Ap$ and put
+$\mu(p)=(p^*)^\perp$, the tangent at $p^*$. Then $\mu$ is a bijection from the deficient points onto the deficient
+lines with $p\nI\mu(p)$, so adding the flags $(p,\mu(p))$ makes the structure $(q+2)$-regular (still of diameter
+$3$). The completed structure is again self-polar.
+\end{proposition}
+\begin{proof}
+Let $p$ be deficient, on $AY$ with $Y\in\ell$ unmarked. $p^\perp$ does not pass through $A$ (as $p\notin\ell$), is not
+$\ell$ (as $p\ne A$), and meets $\ell=A^\perp$ in the pole of the line $pA=AY$. By Proposition~\ref{prop:conj},
+$AY=(Y^\tau)^\perp$, so this pole is $Y^\tau$. The marked set is $\tau$-invariant, so $Y^\tau$ is unmarked and $p^\perp$ is
+deficient. If $p\in\cC$, the line $AY$ is not a tangent (the tangents from $A$ are $AZ$, $AZ'$ and $Z,Z'$ are marked
+in the four hats; in the three hats $Z'$ is unmarked, but $AZ'$ meets $\cC$ only in $Z'\in\ell$, which is not
+deficient), so $AY$ is a secant and $p^*\ne p$ is deficient too, $p^*\notin\ell$; its tangent $(p^*)^\perp$ meets
+$\ell$ in $Y^\tau$ as before and does not contain $p$. The map $p\mapsto p^\perp$ is injective, and on $\cC$ we
+composed it with the involution $p\mapsto p^*$ of the deficient points of $\cC$, so $\mu$ is injective; the numbers
+of deficient points and lines are equal. Self-polarity: $\hat\theta$ maps the added flag $(p,p^\perp)$ to itself and
+$(p,(p^*)^\perp)$ to $(p^*,p^\perp)$, the added flag of $p^*$.
+\end{proof}
+
+\emph{Computer.} \texttt{conics/polar\_frames.py} for $q=3,\dots,13$, and independently squad card \texttt{c3}
+($24$ instances, $q=3,\dots,13$; the number of deficient points on $\cC$ varies with $X$, from $0$ to $12$ at
+$q=13$). In the folded graph the added flags $(p,p^\perp)$ are loops, so the regular bipartite version does not give
+a regular graph of diameter $2$.
+
+\subsection{Does a conic allow more hats?}
+\emph{The question in polar terms.} By Corollary~\ref{cor:fold} a self-polar extension of $\PG(2,q)$ by $k$ new
+points and $k$ new lines, of maximum degree $q+2$ and diameter $3$, is the same as an extension of the
+Erd\H{o}s--R\'enyi graph by $k$ vertices of diameter $2$ in which any two points have a common line; the four hats
+are $k=5$, and five hats would be $k=6$.
+
+\emph{Heuristic: what the conic cannot change} \status{heuristic}. For large $q$, any extension by a few new elements
+is a \emph{copy configuration} (\texttt{research/plus3/plus3.tex}, Theorem 3.4): every new point copies an old point
+and every new line an old line, and the line joining two copied points must itself be copied or carry a deleted flag.
+A conic offers a second natural set of points to copy, an arc. But $k$ copied points on a conic have $\binom k2$
+joining lines (secants), all of which must be copied or broken; on a line the join is one line ($\ell$, copied by
+$M$). So collinear marked points are forced, and the conic can only choose \emph{which} points of $\ell$ are marked
+and how the gadget is wired. Theorem~\ref{thm:selfpolar} says that the conic chooses them so that the structure is
+self-polar; it does not create room for a fifth hat.
+
+\emph{Computer} \status{computer}:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Hat model at conic frames} (\texttt{conics/sat\_hatmodel.py}, the model of
+\texttt{research/plus2/sat\_gadget.py}: bulk incidences fixed, every incidence of the gadget free, degree $\le q+2$,
+diameter $3$). Five hats at $Z$ and two conjugate pairs, and six hats at $Z,Z'$ and two conjugate pairs, one $Q$ and
+one $M$: UNSAT for every choice of the pairs, $q=5,7,9,11,13$, with and without imposing self-polarity
+($72$ frames, each under $4$\,s). The four-hat conic frame is SAT in all these runs (control).
+\item \emph{All self-polar extensions at $q=5$} (\texttt{conics/sat\_polar.py}): new points and new lines tied by the
+conic polarity, all incidences of the new elements free, no change to the plane. $k=5$: SAT. $k=6$ (five hats):
+UNSAT. The search is split soundly by the orbit of the conic group $\mathrm{PGL}(2,5)$ that contains the point most
+often copied (conic point, external, internal) and the number $r$ of lines through it used by one new point;
+see \texttt{conics/k6\_q5\_E0.out} for the cases and times.
+\end{enumerate}
+Earlier work, which this note does not repeat, ruled out five hats in the hat model at default and random frames
+for $q=4,\dots,13$, and $+3$ without changes for $q\ge42$ (\texttt{research/plus2/REPORT.md},
+\texttt{research/plus3/plus3.tex}).
+
+\section{Generalized quadrangles}
+
+\subsection{The analogues}
+In a generalized quadrangle of order $(s,t)$:
+\begin{itemize}
+\item an \emph{ovoid} is a set of $st+1$ pairwise non-collinear points meeting every line once, a \emph{partial
+ovoid} a set of pairwise non-collinear points, an \emph{$m$-ovoid} a set meeting every line in $m$ points, and a
+\emph{weighted} $m$-ovoid a multiset doing so; dually spreads and covers \status{standard};
+\item in $Q(4,q)$ the elliptic quadric sections $Q^-(3,q)$ are ovoids for every $q$ (and every ovoid of
+$Q(4,p)$, $p$ prime, is one \cite{BGS06}); a plane section of $Q(4,q)$ that is a conic is a set of $q+1$ pairwise
+non-collinear points, the closest analogue of a conic \emph{inside} the quadrangle; in $W(q)$, $q$ odd, there is no
+ovoid, and the elliptic quadrics of $\PG(3,q)$ (ovoids of the space, not of $W(q)$) are what the lab uses \status{standard};
+\item $W(q)$ has a polarity if and only if $q=2^{2e+1}$; its absolute points form the Suzuki--Tits ovoid and its
+absolute lines a spread \cite{VM98} \status{standard}. This is the analogue of ``conic $=$ absolute points''. For $q$ odd
+there is none: $W(q)$ and $Q(4,q)$ are dual and not isomorphic.
+\end{itemize}
+
+\subsection{Where they appear in Theorems A--C}
+\status{restatement} Theorem~B (\texttt{SYNTHETIC.md}, Theorem~2.2) adds clones over a weight $w$ on the points and
+shadow lines over a multiset $\cM$ of lines; for a regular result $w$ must be a weighted $(\Delta-s-1)$-ovoid and
+$\cM$ a weighted $(\Delta-t-1)$-cover. So the ovoid-like object is exactly the place where clones go, and the
+spread-like object where shadow lines go:
+
+\begin{center}\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+cells & quadrangle & clones on & shadow lines over & conic-like content \\
+\midrule
+$(q+1+j,4)$, $q$ even & $W(q)$ & $j\times$ an ovoid & $j\times$ a spread & ovoid (elliptic quadric or Tits) \\
+Theorem A: $(11,4),(13,4),(15,4)$ & $\mathrm{AS}(q)$ & $\cE_1\cup\cE_2$ (weighted $2$-ovoid) & none
+& two elliptic quadrics; pairs of conics (Prop.~\ref{prop:thmA}) \\
+Prop.~C: $(16,4)$ & $W(13)$ & a $2$-ovoid & $2\times$ a spread & union of two elliptic quadrics (Ebert's partition) \\
+$(7,4)$: 359 & $Q(4,5)$ & an ovoid ($Q^-(3,5)$) & $21$ lines, a partial spread & ovoid; partial spread at Tallini's bound \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The limits are also conic-like statements: for $q$ odd, $W(q)$ has no ovoid and $Q(4,q)$ no spread, which is why
+$\mathrm{AS}(q)$ and weights are used at $\Delta=q+2$; on $Q(4,q)$ with one ovoid of clones the shadow lines form a
+partial spread (or nearly), so at most $q^2-q+2$ of them (Tallini's bound $q^2-q+1$ for partial ovoids of $W(q)$,
+\texttt{POLISHED.md} Remark~3.5), and the lab's searches found $52,72,92$ at $q=9,11,13$ against the $61,97,141$ needed
+to beat Theorem~A (\texttt{research/gq4x/REPORT.md}). Large partial ovoids of $W(3,q)$ in the literature
+\cite{CDPS22} are far smaller than this.
+
+\subsection{Theorem A as a statement about pairs of conics}
+Theorem~A (\texttt{POLISHED.md} \S4) works in $\PG(3,q)$, $q$ odd, with the symplectic form
+$\beta(u,v)=u_0v_1-u_1v_0+u_2v_3-u_3v_2$, the point $x=(1{:}0{:}0{:}0)$, a non-square $\varepsilon$ and the
+elliptic quadrics $\cE_1: 2X_0X_1=X_2^2-\varepsilon X_3^2$ and $\cE_2: 2\varepsilon X_0X_1=X_2^2-\varepsilon X_3^2$,
+both through $x$ with tangent plane $x^\perp$. The lines of $\mathrm{AS}(q)$ not through $x$ are the totally
+isotropic lines $L\not\ni x$ minus their point $z$ in $x^\perp$, and $L$ lies in the plane $z^\perp$, which contains
+$x$.
+
+\begin{proposition}\label{prop:thmA}
+\status{restatement; proof and computer} For every point $z\ne x$ of $x^\perp$, the plane $z^\perp$ meets $\cE_1$ and
+$\cE_2$ in two conics $\cC_1(z),\cC_2(z)$ through $x$ with the same tangent $xz$ at $x$, and from the point $z$ of
+this common tangent every other line of $z^\perp$ through $z$ is a secant of one conic and a passant of the other,
+or a tangent of both. Equivalently (because every line of $\mathrm{AS}(q)$ of the second kind lies in exactly one
+such plane, and the fibres through $x$ meet each quadric once), $\mathbf 1_{\cE_1\setminus x}+\mathbf 1_{\cE_2\setminus x}$
+is a weighted $2$-ovoid of $\mathrm{AS}(q)$: this is Theorem~A.
+\end{proposition}
+\begin{proof}
+A plane through $x$ other than $x^\perp$ meets an elliptic quadric through $x$ with tangent plane $x^\perp$ in a
+conic through $x$ whose tangent at $x$ is the plane's intersection with $x^\perp$; here that is the line $xz$, as
+$x,z\in z^\perp\cap x^\perp$. The lines of $z^\perp$ through $z$ other than $xz$ are the totally isotropic lines
+through $z$ not through $x$; the discriminant computation of \texttt{POLISHED.md} (proof of Theorem~4.1) shows that
+the line $\ell(a_0,w_0;d)$ meets $\cE_\kappa$ in $1+\chi(\kappa)\chi\bigl(N(d)(a_0-a^*)\bigr)$ points with the same
+$a^*$ for both quadrics and $\chi(\kappa_1)=-\chi(\kappa_2)$; this is the secant/passant swap.
+\end{proof}
+
+\emph{Computer.} Squad card \texttt{c5} checked (a) both sections are conics through $x$, (b) $xz$ is tangent to both,
+(c) the count $2$ and (d) the secant/passant/tangent pattern, for every $z$ at $q=3,5,7,11,13$ ($412$ pairs), for
+every non-square $\varepsilon$ ($\varepsilon=1$ fails, as a control), and re-checked the line form of Theorem~A by
+enumerating all totally isotropic lines.
+
+So the weighted $2$-ovoid of Theorem~A is a family of \emph{complementary conic pairs}, one pair in each plane
+$z^\perp$, all through $x$ and sharing their tangent there; the clone of a point $p\in\cE_i\setminus x$ stands on the
+$q+2$ lines through $p$, and every line of $\mathrm{AS}(q)$ gains two clones because each line through $z$ is a secant
+of exactly one conic of the pair, or a tangent of both.
+
+\subsection{The polarity picture: $W(2^{2e+1})$}
+\begin{proposition}\label{prop:wfold}
+\status{restatement; proof} Let $q=2^{2e+1}$, $\theta$ a polarity of $W(q)$, $\cO$ its absolute points (a Suzuki--Tits
+ovoid) and $\Sigma$ its absolute lines (a spread). The structure $W(q)[\,j\mathbf 1_\cO,\ j\Sigma\,]$ of Theorem~B
+($j$ clones of every point of $\cO$, $j$ shadow lines over every line of $\Sigma$, stand-ins original) is self-polar,
+with the $i$-th clone of $p\in\cO$ exchanged with the $i$-th shadow line over $\theta(p)\in\Sigma$. Its polarity graph
+has diameter at most $3$, maximum degree $q+1+j$ and $(q+1+j)(q^2+1)$ vertices.
+\end{proposition}
+\begin{proof}
+A flag (clone of $p$, $L$) with $L\ni p$ goes to $(\theta(L),\text{shadow over }\theta(p))$, and $\theta(L)$ lies on
+$\theta(p)$; dually for shadow lines. Theorem~B gives diameter $4$ and Lemma~\ref{lem:fold} diameter $3$.
+\end{proof}
+
+At $q=8$ this gives $585,650,715$ for $j=0,1,2$, which are the tabled values of the general problem at
+$(9,3),(10,3),(11,3)$ (Wikipedia table, read 29 October 2026); we have not checked the provenance of those graphs,
+and expect them to be of this kind. For $j=3$ it gives $780<810$. So in quadrangles the polarity picture reproduces
+known values and gives nothing at the lab's (odd $q$) cells, where no polarity exists.
+
+\section{Generalized hexagons}
+
+\subsection{The analogues}
+\status{standard} In a generalized hexagon of order $(q,q)$ with $N=(q+1)(q^4+q^2+1)$ points: a \emph{distance-$2$
+ovoid} is a set of $q^4+q^2+1$ points meeting every line once (pairwise non-collinear; known only for $q=2,3,4$);
+a \emph{distance-$3$ ovoid} (an \emph{ovoid}) is a set of $q^3+1$ pairwise opposite points; dually spreads. For the
+split Cayley hexagon $H(q)\subset Q(6,q)$, two points are opposite iff they are not orthogonal, so partial ovoids of
+$H(q)$ are partial ovoids of the polar space $Q(6,q)$; ovoids exist for $q=3^h$, not for $q$ even \cite{Th81} or $q$
+prime $\ge5$ \cite{BGS06}. The \emph{Hermitian spread} (the lines of $H(q)$ in a hyperplane meeting $Q(6,q)$ in an
+elliptic $Q^-(5,q)$) exists for every $q$ \cite{Th80}. $H(q)$ has a polarity iff $q=3^{2e+1}$; its absolute points
+form the Ree--Tits ovoid and its absolute lines a spread \cite{VM98}. The conic-like partial ovoids are the sections
+$Q^-(3,q)$ ($q^2+1$ points, every $q$; their plane sections are conics) and, as found by the lab's squads, unions of
+conics through one point with a common tangent there (\S3.3).
+
+\subsection{Theorem D}
+\status{restatement} Theorem~D (\texttt{SYNTHETIC.md} \S3) doubles $H(q)$ along levels built from a \emph{spread}
+$\Sigma$, one line $v\in\Sigma$ and an exact whisker set. The spread plays the role that the special line plays for
+the hats: the components of the doubled set are the ball of radius $2$ about $v$ and one ``broom'' per spread line,
+and the ceiling $q|\mathcal A_0|+2(q^3+1)=2N$ is reached because every element outside $\mathcal A_0$ sees exactly one
+element of it. For odd $q$ the whiskers come from $q^2-1$ further Hermitian spreads through $v$ (with $\Sigma$, $q^2$
+spreads pairwise meeting only in $v$), so the whole configuration is cut out by elliptic hyperplane sections; we
+found no conic-level description beyond this. The levels are not invariant under a polarity (they contain spread
+lines but not the corresponding ovoid points), so the folding of \S0.2 does not apply to Theorem~D as it stands.
+
+\emph{A self-polar doubling} \status{new; proof}. For $q=3^{2e+1}$ take the polarity $\theta$, its Ree--Tits ovoid $\cO$
+and absolute spread $\Sigma$, and the single level $\mathcal A_0=\cO\cup\Sigma$. Its components are the $q^3+1$ flags
+$(p,\theta(p))$ (trees of diameter $1$), a point off $\cO$ is on at most one line of $\Sigma$ and a line off $\Sigma$
+has at most one point of $\cO$, so conditions (L0) and (C) of \texttt{SYNTHETIC.md} \S3.1 hold and the doubling with $m$
+versions has diameter $6$, maximum degree $q+m$ and $2N+2(m-1)(q^3+1)$ elements. It is self-polar, so it folds to a
+graph of diameter $5$ with $N+(m-1)(q^3+1)$ vertices: $392$ at $(5,5)$ for $q=3$, $m=2$, far below the tabled $650$.
+Not a record; recorded only because it is the hexagon analogue of Corollary~\ref{cor:fold}.
+
+\subsection{The diameter-7 freed sets}
+\status{restatement, with one squad computation} The diameter-$7$ constructions (\texttt{SYNTHETIC.md} \S4) free the
+incidences of a matching at a set $R$ of points. With a duality ($q=3^h$) any segment set may be freed, and the point
+set of a spread (Hermitian, or the Ree--Tits spread when $q=3^{2e+1}$) is the largest one; with arbitrary matchings
+$R$ must be non-collinear and the matching a local duality, which is easy when $R$ is a partial ovoid. So the
+size of the records at $(7,7),(9,7),(10,7),(13,7)$ is governed by large partial ovoids of $H(q)$, i.e.\ of $Q(6,q)$.
+The conic-like ones are:
+\begin{itemize}
+\item the $q^2+1$ points of an elliptic section $Q^-(3,q)$ (\texttt{D7\_HEXAGON.md}, Corollary~9.1, every $q$);
+\item \emph{conic fans}: a point $e$ and $k$ conics through $e$ whose planes share one tangent line at $e$, $1+qk$
+points; the points opposite $e$ form an affine space $\mathrm{AG}(5,q)$ in which opposition is $Q'(x-x')\ne0$ for a
+quadratic form $Q'$, and each conic is an affine line with non-square $Q'$-direction (\texttt{research/d13D7/REPORT.md}
+\S3, $1+11\cdot29=320$ at $q=11$);
+\item the record sets themselves (72, 288, 217 and 756 pairwise opposite points at $q=5,7,8,11$, plus a few
+mirrored points) come from searches and, at $q=7,11$, from orbits of the Weyl group $W(E_7)$.
+\end{itemize}
+\emph{Squad computation} \status{computer}: card \texttt{c7} rebuilt the conic fans at $q=5,7$ (result in
+\S\ref{sec:summary} and \texttt{squads/conics-r1/c7}).
+
+\section{Summary: what is new}\label{sec:summary}
+\begin{itemize}
+\item \textbf{New} (proof and computer): the conic frame of the hats (Definition~\ref{def:frame}); the hats in a conic
+frame are self-polar (Theorem~\ref{thm:selfpolar}, Lemma~\ref{lem:criterion}), and the conic frame is the only frame
+with this polarity (Remark~\ref{rem:forced}; computer for $q=5,7$); the gadget read as a change of the conjugacy
+relation (Proposition~\ref{prop:gadget}); the explicit regular completion by the polarity
+(Proposition~\ref{prop:complete}); the folded graphs of diameter $2$ (Corollary~\ref{cor:fold}); the self-polar
+doubling of $H(3^{2e+1})$ (\S3.2).
+\item \textbf{New} (computer): no five or six hats in the hat model at any conic frame for $q\le13$; no self-polar
+five-hat extension of $\PG(2,5)$ without changes.
+\item \textbf{Restatements}: the dictionary of \S0; Theorem~A as complementary conic pairs
+(Proposition~\ref{prop:thmA}); where ovoids, partial ovoids and spreads sit in Theorems A--C, D and the $D=7$ freed
+sets; the $W(8)$ polarity values (Proposition~\ref{prop:wfold}).
+\item \textbf{Records}: none. No conic-based choice beat a lab value; the folded graphs are below the current
+general tables.
+\end{itemize}
+
+\appendix
+\section{Files and checks}
+In \texttt{research/synthetic/conics/}: \texttt{pg2.py} ($\PG(2,q)$, the conic, the hat rules), \texttt{selfpolar.py}
+and \texttt{polar\_frames.py} (Theorem~\ref{thm:selfpolar}, Corollary~\ref{cor:fold}, Proposition~\ref{prop:complete},
+all polarity types; outputs \texttt{*.out}), \texttt{sat\_hatmodel.py} and \texttt{run\_hatmodel.py} (hat model at conic
+frames; \texttt{hatmodel\_conic.out}), \texttt{sat\_polar.py} and \texttt{run\_cases.sh} (self-polar extensions;
+\texttt{k6\_q5\_E0.out}). Squad round \texttt{research/squads/conics-r1/} (brief, eight cards, scoreboard), logged in
+\texttt{research/squads/LOG.md}. Python with \texttt{python-sat} (CaDiCaL 1.5.3).
+
+\begin{thebibliography}{99}
+\bibitem{AL20} G. Araujo-Pardo and N. L\'opez, On new record graphs close to bipartite Moore graphs, Graphs Combin.
+\textbf{38} (2022), Paper 110; arXiv:2005.02427.
+\bibitem{BGS06} S. Ball, P. Govaerts, L. Storme, On ovoids of parabolic quadrics, Des. Codes Cryptogr. \textbf{38}
+(2006) 131--145.
+\bibitem{CDPS22} M. Ceria, J. De Beule, F. Pavese, V. Smaldore, On large partial ovoids of symplectic and Hermitian
+polar spaces, J. Combin. Des. \textbf{31} (2023) 5--22; arXiv:2203.04553.
+\bibitem{PT} S. E. Payne and J. A. Thas, Finite Generalized Quadrangles, 2nd ed., EMS, 2009.
+\bibitem{Th80} J. A. Thas, Polar spaces, generalized hexagons and perfect codes, J. Combin. Theory Ser. A \textbf{29}
+(1980) 87--93.
+\bibitem{Th81} J. A. Thas, Ovoids and spreads of finite classical polar spaces, Geom. Dedicata \textbf{10} (1981)
+135--143.
+\bibitem{VM98} H. Van Maldeghem, Generalized Polygons, Birkh\"auser, 1998.
+\end{thebibliography}
+
+\end{document}
