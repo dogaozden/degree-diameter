@@ -77,32 +77,54 @@ int main(int argc, char **argv) {
         }
         n = K1 + K2; build_csr(m, U, W); return report(argv[2], d);
     }
+    if (!strcmp(argv[1], "edges")) {      /* first line K1 K2, then "a b" with 0 <= a < K1, 0 <= b < K2 */
+        FILE *f = fopen(argv[2], "r"); int d = atoi(argv[3]); long cap = 1 << 20, m = 0, a, b;
+        long *U = malloc(cap * 8), *W = malloc(cap * 8);
+        if (fscanf(f, "%ld %ld", &K1, &K2) != 2) return 2;
+        while (fscanf(f, "%ld %ld", &a, &b) == 2) { if (m == cap) { cap *= 2; U = realloc(U, cap * 8); W = realloc(W, cap * 8); }
+            if (a < 0 || a >= K1 || b < 0 || b >= K2) { printf("RESULT INVALID bad edge\n"); return 1; } U[m] = a; W[m] = K1 + b; m++; }
+        n = K1 + K2; build_csr(m, U, W); return report(argv[2], d);
+    }
     if (!strcmp(argv[1], "rand")) {
         K1 = atol(argv[2]); K2 = atol(argv[3]); int d = atoi(argv[4]); rng ^= (uint64_t)atol(argv[5]) * 0x9E3779B97F4A7C15ULL; n = K1 + K2;
         /* edges: E = d * min(K1, K2); stubs on the smaller side d each, on the larger side as equal as possible */
         long small = K1 < K2 ? K1 : K2, E = (long)d * small;
         long *SA = malloc(E * 8), *SB = malloc(E * 8);
         for (long i = 0; i < E; i++) { SA[i] = i % K1; SB[i] = K1 + i % K2; }
-        for (int attempt = 0; attempt < 200; attempt++) {
-            for (long i = E - 1; i > 0; i--) { long j = xr() % (i + 1); long t = SB[i]; SB[i] = SB[j]; SB[j] = t; }
-            /* remove repeated edges by random swaps */
-            int ok = 1;
-            for (int pass = 0; pass < 50; pass++) {
-                build_csr(E, SA, SB); long fixes = 0;
-                for (long x = 0; x < K1; x++) for (long i = st[x]; i < st[x + 1]; i++) for (long j = i + 1; j < st[x + 1]; j++) if (adj[i] == adj[j]) {
-                    /* find the edge index with SA = x and SB = adj[j]; swap its SB with a random edge */
-                    for (long e = 0; e < E; e++) if (SA[e] == x && SB[e] == adj[j]) { long r = xr() % E; long t = SB[e]; SB[e] = SB[r]; SB[r] = t; fixes++; break; }
-                    goto next_x; }
-                next_x:;
-                free(st); free(adj);
-                if (!fixes) break; if (pass == 49) ok = 0;
+        /* random pairing of the stubs, then remove repeated edges by swaps with random edges (a hash set of the
+           (a, b) pairs keeps the swaps valid) */
+        for (long i = E - 1; i > 0; i--) { long j = xr() % (i + 1); long t = SB[i]; SB[i] = SB[j]; SB[j] = t; }
+        long H = 1; while (H < 4 * E) H <<= 1;
+        uint64_t *hs = calloc(H, 8); long *mult = calloc(H, sizeof(long));
+        #define KEY(a, b) ((uint64_t)(a) * 4294967311ULL + (uint64_t)(b) + 1)
+        #define SLOT(k) ({ uint64_t _k = (k); long _h = (long)((_k * 0x9E3779B97F4A7C15ULL) >> 20) & (H - 1); while (hs[_h] && hs[_h] != _k) _h = (_h + 1) & (H - 1); _h; })
+        for (long e = 0; e < E; e++) { long h = SLOT(KEY(SA[e], SB[e])); hs[h] = KEY(SA[e], SB[e]); mult[h]++; }
+        long fixes = 0;
+        for (int pass = 0; pass < 100; pass++) {
+            long dups = 0;
+            for (long e = 0; e < E; e++) {
+                long h = SLOT(KEY(SA[e], SB[e]));
+                if (mult[h] < 2) continue;
+                dups++;
+                for (int tr = 0; tr < 1000; tr++) {
+                    long f = xr() % E; if (SA[f] == SA[e] || SB[f] == SB[e]) continue;
+                    long h1 = SLOT(KEY(SA[e], SB[f])), h2 = SLOT(KEY(SA[f], SB[e]));
+                    if (mult[h1] || mult[h2]) continue;
+                    long hf = SLOT(KEY(SA[f], SB[f]));
+                    mult[h]--; mult[hf]--;
+                    long t = SB[e]; SB[e] = SB[f]; SB[f] = t;
+                    h1 = SLOT(KEY(SA[e], SB[e])); hs[h1] = KEY(SA[e], SB[e]); mult[h1]++;
+                    h2 = SLOT(KEY(SA[f], SB[f])); hs[h2] = KEY(SA[f], SB[f]); mult[h2]++;
+                    fixes++; break;
+                }
             }
-            if (ok) break;
+            if (!dups) break;
         }
+        free(hs); free(mult);
         build_csr(E, SA, SB);
         if (argc > 6 && !strcmp(argv[6], "repair")) {
             int e0; far_s = far_x = -1; long cur = far_pairs(&e0); int rounds = 0;
-            while (cur > 0 && rounds < 3000) {
+            while (cur > 0 && rounds < 400) {
                 rounds++;
                 long s = far_s, x = far_x; if (s < 0) break;
                 /* make s adjacent to a neighbour c of x by a 2-switch */

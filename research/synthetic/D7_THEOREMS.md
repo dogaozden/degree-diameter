@@ -10,9 +10,9 @@ no whisker. Here these steps are turned into statements for every prime power $q
 order $(q,q)$, any spread $S$, any $v\in S$ and any whisker set $W$, the lines meeting $v$, the whiskers and the spread
 lines missed by the whiskers form a dual segment set; for the exact whisker set of `POLISHED.md` (every odd $q$ and
 every even $q\ge4$) it has exactly $q^4+q^2+q$ lines and is maximal, while the spread points form a segment set of
-$(q+1)(q^3+1)$ points. (2) For $2k+1$ levels and any regular tournament and typing, the hub counts per side are at most
-$\lfloor k/2\rfloor$ friendly sets plus non-friendly ones, with an exact second-order term; the alternating typing
-attains this for every $k$. (3) With the $q^2+1$ points of an elliptic quadric section on the non-friendly
+$(q+1)(q^3+1)$ points. (2) For $2k+1$ levels, any regular tournament and any typing, some level has at most
+$\lfloor k/2\rfloor$ friendly transitions on each side, which bounds the hub counts per side; the bound is exact to
+second order, and the alternating typing attains it for every $k$. (3) With the $q^2+1$ points of an elliptic quadric section on the non-friendly
 transitions, this gives, for every $k\ge2$ and every prime power $q\ge q_k$,
 $$n_b(q+1+k,7)\ \ge\ 2(2k+1)(q+1)(q^4+q^2+1)+\begin{cases}k\,(q^4+2q^2+q+1)&k\text{ even},\\[2pt]
 \tfrac{k-1}2\,(2q^4+q^3+q^2+2q+1)+(k+1)(q^2+1)&k\text{ odd},\end{cases}$$
@@ -75,7 +75,14 @@ maximum degree at most $\delta$, in which any two vertices *of the same colour* 
 the graph has maximum degree $q+1+k$ and diameter at most $7$, and
 $$n_b(q+1+k,7)\ \ge\ 2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
-The value $2(2k+1)N(q)$ alone (no freed sets, no hubs) is the value of the 2013 table at these cells [MS13].
+The value $2(2k+1)N(q)$ alone (no freed sets, no hubs) is the value of the 2013 table at the cells $(7,7)$,
+$(9,7)$–$(16,7)$ [MS13], and the lab's beyond-table value at $(17,7)$–$(20,7)$.
+
+**What uses coordinates.** Sections 2 and 4 are about tournaments and bipartite graphs only. In §1, Theorem 1.4,
+Proposition 1.5 and Lemma 1.6 hold in every generalized hexagon of order $(q,q)$ with a spread; only Theorem 1.7 (the
+whisker set of `POLISHED.md` meets each spread line in $0$ or $q+1$ points, so exactly $q^2$ spread lines are missed)
+and the existence statements (Hermitian spread, exact whisker set, elliptic quadric section) use the coordinates of
+$H(q)$. Coordinates appear only in proofs.
 
 **Notation for sizes.** $P(q)=(q+1)(q^3+1)=q^4+q^3+q+1$, $\Lambda(q)=q^4+q^2+q$, and $m$ the size of the non-friendly
 sets. Note $P-\Lambda=q^3-q^2+1$.
@@ -99,8 +106,8 @@ line opposite $v$ and not in $S$ has exactly one point in $\mathcal P_S$ and $q$
 most $q^2(q^2-1)$ lines, with equality if and only if it is exact.
 
 *Proof.* (a) A point at distance $3$ from $v$ lies on a line meeting $v$; two such lines through it would close a circuit
-of length at most $8$. Counting: $|\Gamma_3(v)|=(q+1)q^2$. (b) A point $x$ on a spread line $n\ne v$ has $d(x,v)$ odd and
-$\ge d(n,v)-1=5$. (c) $|\Gamma_5(v)|=(q+1)q^4$, of which $q^3(q+1)$ lie in $\mathcal P_S$ by (b). (d) Every point of a
+of length $4$ or $6$. Counting: $|\Gamma_3(v)|=(q+1)q^2$. (b) A point $x$ on a spread line $n\ne v$ has $d(x,v)$ odd, at most $5$
+and at least $d(n,v)-1=5$. (c) $|\Gamma_5(v)|=(q+1)q^4$, of which $q^3(q+1)$ lie in $\mathcal P_S$ by (b). (d) Every point of a
 line opposite $v$ is at distance $5$ from $v$; the line meets exactly one line of $S$, in one point. (e) By (d) and
 (c), counting incidences between free points and $W$. $\square$
 
@@ -134,8 +141,9 @@ whiskers are opposite $v$, lines of $\mathcal L_v$ are not, and neither kind is 
 distance $3$ from $v$ lie on lines of $\mathcal L_v$, free points on whiskers ($W$ exact), and the points of
 $\mathcal P_S$ off $v$ by hypothesis. A line $\ell\notin R_L(W)$ then meets a line of $R_L(W)$ at each of its $q+1$
 points, and these lines are different from each other (two points of $\ell$ on one line $\ne\ell$ is impossible), so
-$R_L(W)\cup\{\ell\}$ is not a dual segment set. (d) Such an $n$ meets lines of $R_L(W)$ only in that one point, and
-the whiskers through it already meet each other there. $\square$
+$R_L(W)\cup\{\ell\}$ is not a dual segment set. (d) Such an $n$ meets lines of $R_L(W)$ only in that point $x$ (it meets
+no line of $\mathcal L_v$ and no other spread line), and for a whisker through $x$ the new line meets it at its point
+in $\mathcal P_S$, where all its other meetings already are. Two such spread lines do not meet. $\square$
 
 For $W$ exact and $S_0(W)$ left out this is `CONICS.md`, Lemma 3.1; for the whisker set of `POLISHED.md` and its $q^2$
 empty spread lines it is Proposition 1(c),(d) of `conics2/README.md`. The proof above uses only incidences.
@@ -244,11 +252,11 @@ k/2\rfloor$:
 (b) if $k$ is even, it is impossible that $f_j\ge a$ at every level and $f_j\ge a+1$ at every $D$ level; likewise with
 $g$ and $H$ levels;
 
-(c) if $k$ is odd, it is impossible that $f_j\ge a$ and $g_j\ge a$ at every level, $f_j\ge a+1$ at every $D$ level and
-$g_j\ge a+1$ at every $H$ level.
+(c) if $k$ is odd, it is impossible that $f_j\ge a+1$ at every $D$ level and $g_j\ge a+1$ at every $H$ level.
 
-Consequently, under $(\ast)$: for $k$ even, $\min\alpha\le a(\Lambda+m)$ and $\min\beta\le a(\Lambda+m)$; for $k$ odd,
-$\min\alpha,\min\beta\le aP+(a+1)m$ and $\min\alpha+\min\beta\le a(P+\Lambda)+2(a+1)m$.
+Consequently, if $P\ge\Lambda\ge m$: for $k$ odd, $\min\alpha,\min\beta\le aP+(a+1)m$ and
+$\min\alpha+\min\beta\le a(P+\Lambda)+2(a+1)m$; for $k$ even and under $(\ast)$, $\min\alpha\le a(\Lambda+m)$ and
+$\min\beta\le a(\Lambda+m)$.
 
 *Proof.* Let $h$ and $d$ be the numbers of $H$ and $D$ levels. The $k-f_j$ non-friendly transitions out of an $H$ level
 go to $H$ levels, so $\sum_{\tau_j=H}(k-f_j)=\binom h2$, and likewise $\sum_{\tau_j=D}(k-f_j)=\binom d2$ and the same with
@@ -267,8 +275,9 @@ Consequences. A level with $f_j\le a-1$ has $\alpha_j\le(a-1)P+(a+1)m\le a\Lambd
 $\min\alpha>a(\Lambda+m)$, every level has $f_j\ge a$, and every $D$ level $f_j\ge a+1$ (a $D$ level with $f_j=a$ has
 $\alpha_j=a\Lambda+am$), contradicting (b). If $k$ is odd, a level with $f_j\le a$ has $\alpha_j\le aP+(a+1)m$, so by
 (a) $\min\alpha\le aP+(a+1)m$, and the same for $\beta$. If $\min\alpha+\min\beta>a(P+\Lambda)+2(a+1)m$, both minima
-exceed $a\Lambda+(a+1)m$; as before every level has $f_j,g_j\ge a$, $D$ levels $f_j\ge a+1$ and $H$ levels
-$g_j\ge a+1$, contradicting (c). $\square$
+exceed $a\Lambda+(a+1)m$. A $D$ level with $f_j\le a$ has $\alpha_j\le a\Lambda+(a+1)m$ and an $H$ level with
+$g_j\le a$ has $\beta_j\le a\Lambda+(a+1)m$, so every $D$ level has $f_j\ge a+1$ and every $H$ level $g_j\ge a+1$,
+contradicting (c). $\square$
 
 **Theorem 2.2** [new; Theorem] (*the alternating layout*). Take the rotational tournament $j\to j+i$ ($1\le i\le k$) on
 $\mathbb Z_{2k+1}$ and the typing $\tau_j=H$ for $j$ even, $\tau_j=D$ for $j$ odd ($0\le j\le 2k$; the levels $2k$ and $0$
@@ -299,9 +308,9 @@ For $k=1$ this is $m$ on both sides, `D7_HEXAGON.md` Corollary 9.1.
 
 | $k$ | types | $\alpha_j$ | $\beta_j$ |
 |---|---|---|---|
-| 2 | $HDHDH$ (alternating) | $P{+}m,\ \Lambda{+}m,\ P{+}m,\ 2\Lambda,\ P{+}m$ | $\Lambda{+}m,\ 2P,\ \Lambda{+}m,\ P{+}m,\ \Lambda{+}m$ |
-| 3 | $HHDHHDD$ | $P{+}2m,\ P{+}2m,\ 2\Lambda{+}m,\ 2P{+}m,\ 2P{+}m,\ 2\Lambda{+}m,\ 2\Lambda{+}m$ | $2\Lambda{+}m,\ 2\Lambda{+}m,\ 2P{+}m,\ \Lambda{+}2m,\ \Lambda{+}2m,\ 2P{+}m,\ 2P{+}m$ |
-| 4 | $HHDHDHDHD$ (alternating, rotated) | $2P{+}2m,\ 2P{+}2m,\ 2\Lambda{+}2m,\ 2P{+}2m,\ 2\Lambda{+}2m,\ 2P{+}2m,\ 3\Lambda{+}m,\ 2P{+}2m,\ 3\Lambda{+}m$ | $2\Lambda{+}2m,\ 2\Lambda{+}2m,\ 3P{+}m,\ 2\Lambda{+}2m,\ 3P{+}m,\ 2\Lambda{+}2m,\ 2P{+}2m,\ 2\Lambda{+}2m,\ 2P{+}2m$ |
+| 2 | $HDHDH$ (alternating) | $P{+}m$, $\Lambda{+}m$, $P{+}m$, $2\Lambda$, $P{+}m$ | $\Lambda{+}m$, $2P$, $\Lambda{+}m$, $P{+}m$, $\Lambda{+}m$ |
+| 3 | $HHDHHDD$ | $P{+}2m$, $P{+}2m$, $2\Lambda{+}m$, $2P{+}m$, $2P{+}m$, $2\Lambda{+}m$, $2\Lambda{+}m$ | $2\Lambda{+}m$, $2\Lambda{+}m$, $2P{+}m$, $\Lambda{+}2m$, $\Lambda{+}2m$, $2P{+}m$, $2P{+}m$ |
+| 4 | $HHDHDHDHD$ (alternating, rotated) | $2P{+}2m$, $2P{+}2m$, $2\Lambda{+}2m$, $2P{+}2m$, $2\Lambda{+}2m$, $2P{+}2m$, $3\Lambda{+}m$, $2P{+}2m$, $3\Lambda{+}m$ | $2\Lambda{+}2m$, $2\Lambda{+}2m$, $3P{+}m$, $2\Lambda{+}2m$, $3P{+}m$, $2\Lambda{+}2m$, $2P{+}2m$, $2\Lambda{+}2m$, $2P{+}2m$ |
 
 The $k=3$ layout of the builds is not the alternating one but has the same minima. With the values of each build these
 vectors equal, entry by entry, the vectors printed by `typed_build.py` (`d7thm/cells.out`).
@@ -391,14 +400,15 @@ Theorem 2.2, $m=q^2+1$) exists
 
 (For $k=10$ every prime power $q\ge 32$; the values are not monotone in $k$ because prime powers are irregular.)
 
-*Proof.* (a) Write $K_{\mathcal A}\le K_{\mathcal B}$ (true for the slot counts) and $x=K_{\mathcal A}^{1/5}-1$. By
-Nagura's theorem (for $y\ge25$ there is a prime in $(y,\frac65y)$; J. Nagura, Proc. Japan Acad. 28 (1952) 177–181) there
-is a prime $s$ with $x/1.2<s<x$ (here $x\ge q^{4/5}-1>25$). Then $K_0(s)<K_0(x)<(x+1)^5=K_{\mathcal A}$, and
-$K_{\mathcal B}/K_0(s)<1.2^5K_{\mathcal B}/x^5\le 2.4884\,(1+1/q)/(1-5q^{-4/5})<3$ (using $(1-u)^5\ge1-5u$,
-$K_{\mathcal A}\ge q^4$ and $K_{\mathcal B}/K_{\mathcal A}\le P/\Lambda\le1+1/q$). So Lemma 4.1 with $c=3$ gives an
-$\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};3(s+1))$, and $3(s+1)<3K_{\mathcal A}^{1/5}\le 3k^{1/5}(q+1)^{4/5}$ (as
-$K_{\mathcal B}\le k(q+1)^4$). For $q+1\ge300k$, $3k^{1/5}(q+1)^{4/5}=3(q+1)\,(k/(q+1))^{1/5}\le 3(q+1)/300^{1/5}<0.97(q+1)-k$...
-more simply $3k^{1/5}(q+1)^{4/5}\le 3\cdot300^{-1/5}(q+1)=0.959\,(q+1)\le q-k$ when $q+1\ge300k$ and $k\ge2$. (b) For
+*Proof.* (a) Let $q\ge300k$ (so $q\ge600$). The slot counts satisfy $q^4<\Lambda\le K_{\mathcal A}\le K_{\mathcal B}$,
+$K_{\mathcal B}/K_{\mathcal A}\le P/\Lambda\le1+1/q$ and $K_{\mathcal B}\le kP\le k(q+1)^4$. Put
+$x=K_{\mathcal A}^{1/5}-1$ ($>q^{4/5}-1>160$). By Nagura's theorem [Na52] (for $y\ge25$ there is a prime in
+$(y,\frac65y)$) there is a prime $s$ with $x/1.2<s<x$. Then $K_0(s)<K_0(x)<(x+1)^5=K_{\mathcal A}$, and, with
+$K_0(y)\ge y^5$, $x^5\ge K_{\mathcal A}(1-5K_{\mathcal A}^{-1/5})$ (Bernoulli) and $K_{\mathcal A}^{-1/5}<q^{-4/5}\le0.006$,
+$$\frac{K_{\mathcal B}}{K_0(s)}<\frac{1.2^5K_{\mathcal B}}{x^5}\le\frac{2.4884\,(1+1/q)}{1-0.03}<3 .$$
+So Lemma 4.1 with $c=3$ gives an $\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};3(s+1))$, and
+$3(s+1)<3(x+1)=3K_{\mathcal A}^{1/5}\le3k^{1/5}(q+1)^{4/5}=3(q+1)\bigl(k/(q+1)\bigr)^{1/5}\le 3\cdot300^{-1/5}(q+1)
+<0.959\,(q+1)\le q-k$, the last step because $0.041(q+1)\ge 12.3k\ge k+1$. (b) For
 $q\le200$ the program `d7thm/hubsum.py` writes for each $(q,k)$ an explicit decomposition into parts of Lemmas 4.1–4.3,
 combined by Lemma 4.2; each line of `d7thm/hubsum.out` can be checked by hand (sizes add up, the order condition,
 degrees). Examples: $q=16$, $k=2$, $K=66{,}065$: $H(8)+H(7)+H(5)+H(5)+$ a pendant-tree part with $1{,}196$ vertices
@@ -406,14 +416,20 @@ per colour of degree $10$; degrees $9+4,\ 8+4,\ 6+4,\ 6+4,\ 10+4\le14$. $q=23$, 
 $2$ to $49{,}506$ and $37{,}867$. For $200<q\le2\cdot10^5$ Lemma 4.1 alone suffices (`d7thm/hubcap.py`, which finds $s$
 and $c$ for every such $q$); for $q>2\cdot10^5\ge300k$ use (a). $\square$
 
+*Computer-checked.* `d7thm/build_cert.py` builds the hub graph of a certificate (hexagons from
+`research/d10D7/hexgen2.c`, random injections) and `hgcheck edges` checks it: $(q,k)=(16,2)$,
+$\mathrm{HG}(66065,66065;14)$ (the one behind $(19,7)$), $(17,2)$, $\mathrm{HG}(84117,84117;15)$, and $(23,3)$,
+$\mathrm{HG}(293092,281453;20)$ CERT233: no same-colour pair at distance more than $6$, degrees as claimed
+(`d7thm/cert_checks.out`).
+
 **Computer-checked hub graphs below $q_k$** (`d7thm/hgcheck.c`, own code: bit-parallel breadth-first search from every
 hub; `d7thm/hgcheck_lab.out`, `d7thm/hgrun.out`). The lab's stored hub graphs, read from the solution files, re-checked
 standalone: $\mathrm{HG}(15541,15541;9)$ [(14,7)], $\mathrm{HG}(29535,29535;11)$ [(16,7)], $\mathrm{HG}(32356,30327;10)$
 and $\mathrm{HG}(32356,30158;10)$ [(17,7)], $\mathrm{HG}(25308,25308;9)$ [(18,7), PSL(2,37)],
 $\mathrm{HG}(66065,66065;14)$ [(19,7)], $\mathrm{HG}(70163,66322;13)$ [(20,7)]: all VALID. The two cluster-assisted ones
 [(15,7) $16{,}152$, (18,7) $34{,}440$] are not hub graphs in this sense (their same-colour pairs are joined through the
-levels; $452{,}256$ and $654{,}360$ ordered pairs are far in the hub graph alone, the second as reported in
-`conics2/README.md`); their condition (HG) is covered by the all-pairs checks. New random graphs at the slot counts of
+levels; in the hub graph alone $452{,}256$ and $654{,}360$ ordered same-colour pairs are at distance more than $6$, the
+second number as in `conics2/README.md`); for them (HG) is covered by the all-pairs checks of the whole graphs. New random graphs at the slot counts of
 Theorem 2.2 with $m=q^2+1$: GAPRESULTS
 
 **Heuristic.** A random bipartite graph of degree $\delta$ has same-colour distances at most $6$ once $K$ is well below
@@ -423,15 +439,89 @@ through the levels.
 
 # 5. The cells
 
-TABLECELLS
+## 5.1 The fifteen built graphs
+
+`d7thm/cells.py` recomputes, for every graph built in the jobs "conics" and "conics-2", the slot vectors of §2 from
+$q$, the type string, $|\mathcal P_S|=P(q)$, $|R_L|$ ($q^4+q$ without $S_0$, $q^4+q^2+q$ with it) and $m$, and the
+order $2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}$ from the hub counts. **Computer-checked**: all fifteen agree with the
+builders (`cells.out`): every slot vector equals the one printed in the make logs on branch
+`claude/conics-2-diameter-7-ic0oat`, and every order equals the $n$ of the solution file. The current graphs:
+
+| cell | $q$, types | $\lvert R_L\rvert$, $m$ | hubs per side | hub graph | $n$ | all-pairs check (`conics2/README.md`) | what proves the bound |
+|---|---|---|---|---|---:|---|---|
+| (14,7) | 11, $HDHDH$ | $\Lambda$, 768 | 15,541 + 15,541 | random, degree 9 | 1,802,642 | passed | Thm 3.1 with the lab's 768-point set; hub graph computer-checked |
+| (15,7) | 11, $HHDHHDD$ | $\Lambda$, 768 | 16,152 + 16,152 | Haar $\mathbb Z_{673}\rtimes\mathbb Z_{24}$, paths through levels | 2,512,488 | passed | (HG) only through the levels: all-pairs check |
+| (16,7) | 13, $HDHDH$ | $\Lambda$, 792 | 29,535 + 29,535 | random, degree 11 | 4,081,410 | passed | Thm 3.1 with the lab's 792-point set; hub graph computer-checked |
+| (17,7) | 13, $HHDHHDD$ | $\Lambda$, 792 | 32,356 + 30,327 | random, degree 10 | 5,693,959 | passed | same |
+| (18,7) | 13, $HHDHDHDHD$ | $\Lambda$, 792 | 34,440 + 34,440 | Haar $\mathrm{PSL}(2,41)$, paths through levels | 7,309,092 | passed | all-pairs check |
+| (19,7) | 16, $HDHDH$ | $\Lambda$, $257=q^2+1$ | 66,065 + 66,065 | random, degree 14 | 11,316,940 | 9 of 16 ranges at 11:44 UTC | $=F_2(16)$: **Theorem** (3.1 and 4.4) |
+| (20,7) | 16, $HHDHHDD$ | $\Lambda$, $257=q^2+1$ | 70,163 + 66,322 | random, degree 13 | 15,795,219 | 9 of 24 ranges at 11:44 UTC | $=F_3(16)$: Theorem 3.1 with a computer-checked hub graph |
+
+At $(19,7)$ and $(20,7)$ the built graphs use exactly the sets of Theorem 3.1 ($m=q^2+1$, the elliptic section), so their
+orders are $F_2(16)$ and $F_3(16)$. For $(19,7)$ every ingredient is proved: the sets (Corollary 1.8, Proposition 1.9),
+the repair of every transition (Theorems B and C), the slot counts (Theorem 2.2) and an $\mathrm{HG}(66065,66065;14)$
+(Theorem 4.4: $H(8)+H(7)+H(5)+H(5)$ and a pendant-tree part, joined by Lemma 4.2). So
+$$n_b(19,7)\ \ge\ 11{,}316{,}940$$
+holds by proof, independently of the all-pairs check of the built graph (which uses a random hub graph and was not
+complete when job "conics-2" ended). For $(20,7)$ the hub graph $\mathrm{HG}(70163,66322;13)$ is not covered by
+Theorem 4.4; it is computer-checked (the builder's graph, re-checked standalone by `hgcheck`, and a second random graph,
+seed 1, `hgrun.out`); with the proved equal-sided hub graph of $65{,}737$ hubs per colour the bound is $15{,}790{,}208$.
+This is a statement about the theorems, not a record claim: the lab records values after the coordinator's own check.
+
+## 5.2 The cells $\Delta=14,\dots,26$
+
+For each $\Delta$, the best $(q,k)$ with $q+1+k=\Delta$; "level graphs" is $\max 2(2k+1)N(q)$, the 2013 table value for
+$\Delta\le16$ and the lab's beyond-table value for $\Delta=17,\dots,20$ (`research/frontier/beyond/BEYOND_TABLE.md`,
+branch `claude/new-cells-beyond-etos3t`). $F_k(q)$ is Corollary 3.2 with $m=q^2+1$; its hub graph is "proof"
+(Theorem 4.4), "computer" (`hgcheck`) or "open". The last column is the best value of Theorem 3.1 that is proved
+outright: full slots where Theorem 4.4 applies, otherwise the largest equal-sided hub graph that Lemmas 4.1–4.3 give
+below the slots (found by `d7thm/table.py`; the decomposition is printed in `table.out`).
+
+TABLE52
+
+The fully proved values exceed the level-graph values at every cell $\Delta=14,\dots,26$. For $k\ge3$ the lab's notes had no general statement
+except for $q=3^h$ (`D7_HEXAGON.md`, Corollary 9.2; §9 there says none covers $(15,7)$). The values with
+computer-found ingredients (the lab's sets $m=768,792$ and hub graphs) are the built values of §5.1 and are larger at
+$q=11,13$.
+
 
 # 6. Summary: what is new
 
-NEWSUMMARY
+| result | label | status |
+|---|---|---|
+| Theorem 1.4: lines meeting $v$, whiskers and the spread lines missed by them form a dual segment set, for any hexagon, spread and whisker set; maximality criterion | new in this form (special cases: `CONICS.md` Lemma 3.1, `conics2` Prop. 1(c),(d)) | Theorem, coordinate-free |
+| Proposition 1.5: in a dual segment set whose lines meet only in spread points, at most $q^4+q$ lines are off the spread; $\mathcal L_v\cup W$ attains it | new | Theorem |
+| Lemma 1.6: an exact whisker set misses at most $q^3-q^2$ spread lines, exactly $q^2$ under the "all or nothing" property | new | Theorem |
+| Theorem 1.7, Corollary 1.8: $\lvert R_H\rvert=(q+1)(q^3+1)$, $\lvert R_L\rvert=q^4+q^2+q$, $R_L$ maximal, every odd $q$ and even $q\ge4$ | restatement of `conics2` Prop. 1 with proof | Theorem; Computer-checked $q=2,\dots,16$ (squad c1–c3, builder) |
+| Theorem 2.1: for every regular tournament and typing, the hub counts per side are at most $\lfloor k/2\rfloor$ friendly sets, with the exact second-order term | new | Theorem; Computer-checked (all tournaments on $\le7$ levels, SAT to 13 levels, squad c6) |
+| Theorem 2.2: the alternating layout attains Theorem 2.1 for every $k$; closed forms | new | Theorem; Computer-checked $k\le40$ |
+| Theorem 3.1, Corollary 3.2: $n_b(q+1+k,7)\ge F_k(q)$ given the hub graph | new (for $k=2$ it improves `D7_HEXAGON.md` Cor. 9.3 from $\approx2q^3$ to $\approx2q^4$ above the level graph; nothing was stated for $k\ge3$, $q\neq3^h$) | Theorem |
+| Lemma 4.2: sums of hub graphs; Lemma 4.1: blow-ups; Lemma 4.3: `D7_HEXAGON.md` Lemma 7.1 with the colours sized separately | 4.2 new; 4.1 elementary; 4.3 restatement | Theorem; Computer-checked (squad c5) |
+| Theorem 4.4: the hub graphs at full slots exist for $q\ge q_k$ ($q_2=16$, $q_3=q_4=23$, …, $q_k\le300k$) | new | Theorem (certificates by program for $q\le200$) |
+| $n_b(19,7)\ge11{,}316{,}940$ by proof; fully proved values above the level graphs at $(14,7)$–$(26,7)$ (§5.2) | new consequence | Theorem |
+| The formulas reproduce all fifteen built graphs; the lab's hub graphs re-checked standalone; new random hub graphs for $q<q_k$ | — | Computer-checked |
+| Random hub graphs fail at $(q,k)=(11,3),(13,4)$; larger dual segment sets than $q^4+q^2+q$ for $q\ge5$; a coordinate-free description of the $q^2$ lines with $\nu=0$ | — | open; Heuristic remarks in §1.3 and §4 |
+
+Nothing here raises a value built by the two jobs: the theorems explain them (at $q=16$ exactly) and give the same kind
+of bound for every $q$ and every $k$, with an explicit hub graph wherever $q\ge q_k$.
 
 # Appendix: files
 
-FILES
+In `research/synthetic/d7thm/` (Python 3; `pip install python-sat` for `slots.py`; C with OpenMP for `hgcheck.c`):
+
+- `slots.py` → `slots.out`: §2 (all typings of the rotational tournament for $k\le8$, all regular tournaments on 5 and 7
+  levels, SAT for 9–13 levels).
+- `hubcap_lib.py`, `hubcap.py` → `hubcap.out`: Lemma 4.1 coverage for $q\le2\cdot10^5$ and the inequalities of Theorem
+  4.4(a); `hubsum.py` → `hubsum.out`: the certificates of Theorem 4.4(b) for $q\le200$ (one line per $(q,k)$).
+- `hgcheck.c`: standalone check of a hub graph (same-colour distances by bit-parallel BFS from every vertex); modes
+  `sol` (read a solution file), `rand` (random bipartite graph, optional aimed 2-switch repair), `haar` (Haar graphs of
+  $\mathbb Z_K$). `hgcheck_lab.out`: the lab's hub graphs; `hgrun.py` → `hgrun.out`: random hub graphs at the slot
+  counts of Theorem 2.2 for $q<q_k$.
+- `cells.py` → `cells.out`: §5.1 and the closed forms of Corollary 3.2; `table.py` → `table.out`: §5.2.
+
+Squad round `research/squads/d7thm-r1/`: `BRIEF.md`, cards `c1`–`c6` (code and logs), `scoreboard.jsonl`; logged in
+`research/squads/LOG.md`. The PDF `D7_THEOREMS.pdf` is made from this file by pandoc and tectonic
+(`d7thm/make_pdf.sh`).
 
 # References
 
