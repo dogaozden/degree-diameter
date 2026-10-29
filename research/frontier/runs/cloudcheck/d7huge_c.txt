@@ -1,0 +1,44 @@
+# d7huge job, verification worker c: all-pairs checks of two diameter-7 candidates (conics-2 branch)
+
+Ranges (letter c): d19D7(11,316,940) source ranges 10 and 12 of 16.
+Range i = (i-1)*707309 .. min(i*707309, 11316940).
+Range 10 = 6365781..7073090, range 12 = 7780399..8487708.
+
+## Machine
+```
+nproc: 4
+               total        used        free      shared  buff/cache   available
+Mem:              15           1           9           0           5          14
+Swap:              0           0           0
+```
+
+## Input checks (sha256)
+```
+hex_q16.bin (output of hexgen2 16, in hex/): f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  expected f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394
+d19D7 edge list (typed_build.py build):      d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1  expected d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1
+d20D7 edge list (typed_build.py build):      f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  expected f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba
+```
+
+## Commands (run in a scratch directory outside the repo; repo at the conics-2 branch, commit cbfa594)
+```
+cc -O2 -o hexgen2 research/d10D7/hexgen2.c && mkdir -p hex && ./hexgen2 16      # writes hex/hex_q16.bin
+python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol d19.edges
+python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol d20.edges
+cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
+nohup ./apsp_fast d19.edges 19 7 4 6365781 7073090 > d19_r10.out 2>&1 &   # range 10
+nohup ./apsp_fast d19.edges 19 7 4 7780399 8487708 > d19_r12.out 2>&1 &   # range 12
+```
+
+## Range 10: d19D7(11,316,940), sources 6365781..7073090
+Final lines of the checker output, copied unedited:
+```
+707309 of 707309 sources done (1793314927)
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=6365781..7073090
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+```
+
+## Range 12: d19D7(11,316,940), sources 7780399..8487708
+Final lines of the checker output, copied unedited:
+```
+(still running)
+```
