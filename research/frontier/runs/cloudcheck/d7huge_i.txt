@@ -1,0 +1,59 @@
+# d7huge check job, worker i: all-pairs check of two diameter-7 graphs (job "check-d7huge-i")
+
+Ranges of this worker: d20(15,795,219) sources 9213890..9872025 (range 15 of 24) and 11188295..11846430 (range 18 of 24).
+Sources come from the README of branch claude/conics-2-diameter-7-ic0oat, section 1 (research/synthetic/conics2/README.md).
+
+## Machine
+
+```
+$ nproc
+4
+$ free -g
+               total        used        free      shared  buff/cache   available
+Mem:              15           0          14           0           0          15
+Swap:              0           0           0
+```
+
+## Inputs and sha256 checks
+
+- Branch: claude/conics-2-diameter-7-ic0oat at cbfa594 (fetched from origin and checked out in the build tree).
+- hex_q16.bin, built by `cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16` (the program writes hex/hex_q16.bin):
+  sha256 f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394 (matches the required value).
+- (20,7) edge list from `typed_build.py build hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g20.edges`:
+  sha256 f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba (matches the required value).
+- (19,7) edge list from the same command with d19D7_hex16_typedwhisk_nu0_n11316940.sol (built and checked, not used by this worker's ranges):
+  sha256 d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1 (matches the required value).
+
+## Commands
+
+```
+cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16          # run in a scratch directory, writes hex/hex_q16.bin
+sha256sum hex/hex_q16.bin
+python3 research/synthetic/conics2/typed_build.py build <abs>/hex/hex_q16.bin <abs>/research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol g20.edges
+sha256sum g20.edges
+cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
+nohup ./apsp_fast g20.edges 20 7 4 9213890 9872025 > d20_15.out 2> d20_15.err    # range 15
+nohup ./apsp_fast g20.edges 20 7 4 11188295 11846430 > d20_18.out 2> d20_18.err  # range 18
+```
+
+Range bounds from the brief: range i = (i-1)*658135 .. min(i*658135, 15795219), and 15 * 658135 = 9872025, 18 * 658135 = 11846430.
+The ranges ran one at a time (run script under nohup: range 15 first, then range 18). Thread count 4 (the `T` argument).
+
+## Results
+
+### Range d20 15: sources 9213890..9872025
+
+Checker stdout (copied unedited):
+
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=9213890..9872025
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+
+Checker stderr, final progress line (copied unedited):
+
+```
+658135 of 658135 sources done (1793309547)
+```
+
+Exit status: 0. Wall time: 7813 s (from 19:22:14 to 21:32:27, UTC).
+
