@@ -67,3 +67,13 @@ Squad tally (r1-r4, 19 cards): no valid graph. The squads' main contributions we
 which led to the exact 2+2 search, and the coset-graph sweeps (r3-c1, r4-c1), which found the closest (7,5)
 near misses (SmallGroup(1200,475) cost 8, and the 1210 Haar case). The best (7,5) result so far came from an Opus
 sweep that skips Haar-type subgroups, built on the round-4 tools.
+
+### Hit (21:29 UTC): (7,5) 1,200 vertices
+Annealing over unions of double cosets (coset/dcenum.c SA=1, 15 CPU-min, seed 1) for SmallGroup(1200,475) =
+C5 x (SL(2,5):C2) with H = a non-central involution (the pair squad r4-c1 had left at cost 8 after a 2M-union cap)
+reached cost 0: a 7-regular bipartite graph of diameter 5 on 1,200 vertices (our value was 1,152). apsp.c VALID
+(INVALID at D = 4), independent Python BFS VALID, nauty |Aut| = 2400. It is a Haar graph: the index-2 subgroup
+C5 x SL(2,5) acts regularly, so it is Haar(SL(2,5) x Z5, S) with S closed under an involutory automorphism;
+research/frontier/build_haar2.py on the "sl 5 n 5" solution file: VALID d=7 D=5. Files in
+research/beyond-haar-d5/records/. The squad's contribution: r4-c1 found the group and the cost-8 pair; Opus ran the
+long anneal and the checks.
