@@ -49,3 +49,32 @@ research/synthetic/conics/apsp_fast.c on its range. Results: research/synthetic/
 Result: all 8 workers rebuilt the same edge list (sha256 350f9e07...) and printed RESULT VALID d=16 D=7 n=4081072 for
 their ranges (finished 03:56 to 04:10 UTC; about 18 to 32 minutes per range on 4 cores). Verified from the raw tool
 output in each session's transcript, not from the workers' summaries. Kept: the check (d16D7/checks/).
+
+
+## 2026-10-29, conics-2 job (session 01QYEEyGCo3Ku7yyf5CU35zt), round conics2-r1
+
+Goal: two questions of the brief at small q, where checks take seconds. (A) Can a non-friendly (H -> H) transition be
+repaired with more freed points than the mirrored surgery (81 at q = 5)? Scorer: research/squads/conics2-r1/tools/
+transcheck.py (exact bitset BFS of the two-level graph). (B) Are there dual segment sets larger than the lines meeting v
+plus the exact whiskers, q(q^3+1)? Scorer: tools/dualseg_check.py. Brief: research/squads/conics2-r1/BRIEF.md. All cards
+Haiku subagents, about 20 minutes each, on this session's machine.
+
+Cards and best scores:
+- c1 (A) larger mirrored sets: 81 (record); no extra mirrored pair fits the record's types; tabu partial ovoids only 56.
+- c2 (A) Theorem C sets with copied distance-4 structure / annealing on sigma: 81; under the record sigma the points where
+  sigma is a local duality are exactly R; swaps never grow it, random starts reach 0.
+- c3 (A) add a point and repair sigma by local search: best 589 pairs still beyond 7 at |R| = 82.
+- c4 (A) whole three-level graph with hubs instead of one transition: SEE_C4
+- c5 (A) wildcard, exact SAT at q = 3: too large without symmetry breaking (no result).
+- c6 (B) exact: maximum dual segment set of H(2) = 25 (26 UNSAT); q = 3: 112 (ovoid pencils, the bound); q = 4: HiGHS
+  found nothing above 260 in 150 s.
+- c7 (B) local search from the whisker sets: found that q^2 spread lines carry no whisker and can be added (q = 4: 276,
+  q = 5: 655, q = 7: 2,457); exact q = 2 maximum 25 by MaxSAT; no move beyond 276 / 655 in millions of moves.
+- c8 (B) annealing over point-disjoint pencil stars: 288 at q = 4 (above 276), 24 at q = 2, 508 at q = 5.
+Verified by the main session with the scorers: all dual segment sets above (q = 2: 24, 25; q = 4: 276, 288; q = 5: 655;
+q = 7: 2,457), and the A-side record and negative controls.
+Kept: c7's observation, which the main session proved for every q (research/synthetic/conics2/README.md, Proposition 1:
+the q^2 spread lines with nu = 0 carry no whisker) and used to raise R_L by q^2 in every typed layout ((14,7), (16,7),
+(17,7), (19,7), (20,7)); c6/c8's sets as evidence that the enlarged set is maximal but not maximum. Side A: no gain; the
+negative results are reported as computer evidence in the README. Next: none for A; for B a pencil-type construction
+for large q.

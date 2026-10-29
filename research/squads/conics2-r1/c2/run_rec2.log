@@ -1,0 +1,9 @@
+init good=81 cost=4376.32
+it 0 T=0.3000 good=81 best=81 cost=4376.31
+it 2000000 T=0.0493 good=0 best=81 cost=4486.28
+final good=0 (recount 0) best=81
+81
+
+real	1m1.186s
+user	0m38.974s
+sys	0m0.144s
