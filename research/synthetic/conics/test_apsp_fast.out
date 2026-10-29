@@ -1,0 +1,10 @@
+pg7 n=114 edges=456 degree min=8 max=8 bipartite=yes diameter=3
+pg23 n=1106 edges=13272 degree min=24 max=24 bipartite=yes diameter=3
+pg31 n=1986 edges=31776 degree min=32 max=32 bipartite=yes diameter=3
+pg31minus n=1986 edges=31775 degree min=31 max=32 bipartite=yes diameter=5
+rb3 n=3000 edges=4498 degree min=2 max=3 bipartite=yes diameter=15
+rb4path n=5203 edges=10393 degree min=1 max=5 bipartite=yes diameter=13
+nonbip n=5200 edges=10396 degree min=3 max=5 bipartite=no diameter=11
+disc RESULT INVALID disconnected (1399 of 1400)
+eccentricities 13..20, 335 ranges x 4 builds; failures: 0
+(builds tested: cc -O3 -march=native -pthread with default W=4; -DW=1; -DW=1 -DSPARSE_DIV=1 (push only); -DW=8 -DSPARSE_DIV=1)

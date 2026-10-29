@@ -1,0 +1,29 @@
+# (15,7) n = 2,504,544 = 14*177,156 + 2*12,180 (job "conics", 2026-10-29). Lab 2,501,491; table 2,480,184.
+# Seven-level layout HHDHHDD of H(11) (research/frontier/sols/d15D7_hex11_typed133_K62_n2497075.sol; mirrored local
+# duality on 768 points on the nine non-friendly transitions), friendly freed sets R_H = the 15,984 points of the
+# Hermitian spread and R_L = the lines meeting v plus the exact whiskers (14,652 lines), as in (14,7). Hub graph: the
+# Haar graph of PSL(2,29) on 8 generators (research/synthetic/conics/d15D7/hub_psl29.txt), 12,180 hubs per side, all
+# same-side distances <= 6 (checked by the builder). research/synthetic/CONICS.md Section 3.4.
+# Solution: research/frontier/sols/d15D7_hex11_typedwhisk_n2504544.sol
+#   (sha256 3ffba95c5edbb515e3735601ab6aab9aae2505f50fb604558e113db8795a216b), next to its two inputs.
+# Rebuild: hex_q11.bin sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19 (research/p4/d6/hex/);
+#   cd research/frontier/sols && python3 ../../synthetic/conics/d14D7/tm_build_herm.py build ../../p4/d6/hex/hex_q11.bin d15D7_hex11_typedwhisk_n2504544.sol g.edges
+#   edge list sha256 c5d720d367d7509fcbdd6aa82e67477202bcc47537d041c83632732c949a6594 (the checked file; the rebuild is
+#   byte-identical)
+# Check: research/synthetic/conics/apsp_fast.c (cc -O3 -march=native -pthread), all 2,504,544 sources, 4 threads, no
+#   symmetry assumed; 03:29:11 to 04:34:27 UTC. apsp_fast is apsp_mt.c with small frontiers pushed and early stop once
+#   everything is reached; same output lines (conics/test_apsp_fast.py; and on the (14,7) graph, see the check file
+#   there). With apsp_mt itself this run would take about 3.5 hours on this machine.
+-- tm_build_herm.py build:
+friendly sets: R_H = Hermitian spread points (15984), R_L = lines meeting v + exact whiskers (14652)
+hypotheses OK: |R_H| = 15984 (segment set), |R_L| = 14652 (dual segment set), |R'| = 768 (non-collinear, sigma(R') non-concurrent, local duality at all 768)
+free A-slots per level [17520, 17520, 30072, 32736, 32736, 30072, 30072] B-slots [30072, 30072, 32736, 16188, 16188, 32736, 32736] -> at most 17520 16188
+hubs per side 12180 12180
+hub graph: same-side distances <= 6 on both sides
+n = 2504544, edges = 18678612, degree min 12 max 15, hub graph edges 97440
+-- apsp_fast g.edges 15 7 4:
+n=2504544 edges=18678612 degree min=12 max=15 bipartite=yes diameter=7 sources=0..2504544
+RESULT VALID d=15 D=7 n=2504544
+-- independent check of the hub part with the lab's research/d15D7b/hubfar.c (cc -O2 -pthread; BFS to depth 7 from all
+   24,360 hubs, sources "R 2480184 2504544"), 05:06:59 to 05:08:41 UTC:
+n=2504544 edges=18678612 degree min=12 max=15 bipartite=yes connected=yes sources=24360 far_pairs=0 max_ecc=7

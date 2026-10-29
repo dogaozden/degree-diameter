@@ -1,0 +1,60 @@
+{
+ "q": 8,
+ "points": 585,
+ "lines": 585,
+ "nauty_group_order": 6340239360.0,
+ "n_polarities_found": 3,
+ "gq_pass": true,
+ "all_polarities_pass": true,
+ "verified_jq_pairs": [
+  1,
+  2
+ ],
+ "total_seconds": 14.1,
+ "gq_pass_detail": {
+  "pass": true,
+  "triangles": 49140,
+  "triangles_expected": 49140
+ },
+ "first_polarity_absolute": {
+  "n_absolute_points": 65,
+  "n_absolute_lines": 65,
+  "absolute_points_ovoid": true,
+  "absolute_lines_spread": true,
+  "absolute_lines_are_theta_of_absolute_points": true,
+  "pass": true
+ },
+ "first_polarity_structures": [
+  {
+   "j": 0,
+   "points": 585,
+   "max_degree_incidence": 9,
+   "incidence_diameter": 4,
+   "folded_vertices": 585,
+   "folded_max_degree": 9,
+   "folded_diameter": 3,
+   "pass": true
+  },
+  {
+   "j": 1,
+   "points": 650,
+   "max_degree_incidence": 10,
+   "incidence_diameter": 4,
+   "folded_vertices": 650,
+   "folded_max_degree": 10,
+   "folded_diameter": 3,
+   "pass": true
+  },
+  {
+   "j": 2,
+   "points": 715,
+   "max_degree_incidence": 11,
+   "incidence_diameter": 4,
+   "folded_vertices": 715,
+   "folded_max_degree": 11,
+   "folded_diameter": 3,
+   "pass": true
+  }
+ ]
+}
+wrote /home/user/degree-diameter/research/squads/conics-r2/c2/result_q8.json
