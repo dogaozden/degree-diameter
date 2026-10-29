@@ -23,7 +23,7 @@ static int m; static int mul[128][128], inv_[128];
 static u128 ALL;
 static int nsub; static int (*sub)[3];
 static u128 *R1, *L1, *UA, *UL;
-static int naut; static int (*aut)[128];
+static int naut; static int GONLY_quiet = 0; static int (*aut)[128];
 
 static inline u128 bit(int x) { return ((u128)1) << x; }
 static inline int M3(int a, int b, int c) { return mul[mul[a][b]][c]; }
@@ -89,7 +89,9 @@ int main(int argc, char **argv) {
     }
     /* canonical g: subset is the lexicographically smallest image under the automorphisms */
     long long npairs = 0, ncand = 0, nsol = 0, ncanon = 0; clock_t t0 = clock();
+    int GONLY = getenv("G_ONLY") ? atoi(getenv("G_ONLY")) : -1, NOFILTER = getenv("NOFILTER") ? 1 : 0;
     for (int s = 0; s < nsub; s++) {
+        if (GONLY >= 0 && s != GONLY) continue;
         int canon = 1;
         for (int a = 1; a < naut && canon; a++) {
             int y[3] = {aut[a][sub[s][0]], aut[a][sub[s][1]], aut[a][sub[s][2]]};
@@ -104,6 +106,7 @@ int main(int argc, char **argv) {
             npairs++;
             u128 miss = ALL & ~(ua | L1[t]);            /* A0 */
             miss |= ALL & ~(UL[t] | rg);                 /* B0 */
+            if (NOFILTER) miss = 0;
             if (__builtin_popcountll((uint64_t)miss) + __builtin_popcountll((uint64_t)(miss >> 64)) > 32) continue;
             int dd[4] = {0, sub[t][0], sub[t][1], sub[t][2]};
             u128 C = ALL;
@@ -119,7 +122,7 @@ int main(int argc, char **argv) {
                 ncand++;
                 if (full_ok(sub[s], sub[t], c)) {
                     nsol++;
-                    printf("SOL g %d %d %d d %d %d %d c %d\n", sub[s][0], sub[s][1], sub[s][2], sub[t][0], sub[t][1], sub[t][2], c);
+                    if (!GONLY_quiet) printf("SOL g %d %d %d d %d %d %d c %d\n", sub[s][0], sub[s][1], sub[s][2], sub[t][0], sub[t][1], sub[t][2], c);
                     fflush(stdout);
                 }
             }
