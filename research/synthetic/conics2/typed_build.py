@@ -116,7 +116,7 @@ def params(Fq):
 
 
 # ---------------------------------------------------------------- the friendly freed sets
-def friendly_sets(Fq, N, LP, PL, X):
+def friendly_sets(Fq, N, LP, PL, X, nu0=False):
     q = Fq.q
     c, c0, c1 = params(Fq)
     x = [X[:, i] for i in range(7)]
@@ -165,6 +165,17 @@ def friendly_sets(Fq, N, LP, PL, X):
     Lv = sorted(set(PL[LP[v]].reshape(-1).tolist()) - {int(v)})
     RL = np.zeros(N, bool); RL[Lv] = True; RL[W] = True
     assert RL.sum() == q * (q ** 3 + 1)
+    # nu is constant on every line of S other than v (POLISHED.md Lemma 6.6(d) / 6.12(d)); a point of such a line
+    # carries exactly one whisker if nu != 0 and none if nu = 0 (README, Proposition 1). The q^2 lines of S with
+    # nu = 0 meet no line of L_v and no whisker, so they can be added to R_L.
+    Sv = S[S != v]; nn = num[LP[Sv]]
+    assert ((nn == 0).all(1) | (nn != 0).all(1)).all(), 'nu not constant on a spread line'
+    pw = LP[W]; pw = pw[np.arange(len(W)), np.argmax(inPi[pw], 1)]                 # the point of each whisker in Pi
+    cnt_w = np.zeros(N, np.int64); np.add.at(cnt_w, pw, 1)
+    zero = Sv[(nn == 0).all(1)]
+    assert len(zero) == q * q and (cnt_w[LP[zero]] == 0).all() and (cnt_w[LP[Sv[(nn != 0).all(1)]]] == 1).all()
+    if nu0:
+        RL[zero] = True
     RH = np.zeros(N, bool); RH[LP[S].reshape(-1)] = True
     assert RH.sum() == (q + 1) * (q ** 3 + 1)
     cntL = RH[LP].sum(1)
@@ -172,8 +183,10 @@ def friendly_sets(Fq, N, LP, PL, X):
     cntP = RL[PL].sum(1)
     assert ((cntP[LP] >= 2).sum(1)[RL] <= 1).all(), 'R_L is not a dual segment set'
     print(f'q = {q}, {"(c, c0, c1)" if Fq.p != 2 else "(delta, c0, c1)"} = {(c, c0, c1)}; spread |S| = {len(S)}, v = {v}; '
-          f'R_H = spread points ({RH.sum()}, segment set), R_L = lines meeting v + exact whiskers ({RL.sum()}, dual '
-          f'segment set; |W| = {len(W)}, every free point on exactly one whisker)', flush=True)
+          f'R_H = spread points ({RH.sum()}, segment set), R_L = lines meeting v + exact whiskers'
+          f'{" + the q^2 spread lines with nu = 0" if nu0 else ""} ({RL.sum()}, dual segment set; |W| = {len(W)}, every '
+          f'free point on exactly one whisker; spread lines != v: {len(zero)} with nu = 0 carry no whisker, the others '
+          f'one whisker at each point)', flush=True)
     return RH, RL, S, int(v)
 
 
@@ -195,6 +208,9 @@ def sigma_from_ovoid(N, LP, PL, R, Rs):
 
 def main():
     mode = sys.argv[1]
+    nu0 = '--nu0' in sys.argv
+    if nu0:
+        sys.argv.remove('--nu0')
     if mode == 'make':
         hexfn, T, nonfr, hubs, solout, outfn = sys.argv[2:8]
         want = (int(sys.argv[8]), int(sys.argv[9])) if len(sys.argv) > 9 else None
@@ -208,7 +224,8 @@ def main():
     else:
         hexfn, mysol, outfn = sys.argv[2:5]; d = os.path.dirname(os.path.abspath(mysol))
         man = open(mysol).read().split('\n')
-        assert man[0].split()[0] == 'typedherm2'
+        assert man[0].split()[0] in ('typedherm2', 'typedherm3')
+        nu0 = man[0].split()[0] == 'typedherm3'
         T = man[0].split()[3]; li = 1
         w = man[li].split(); li += 1
         if w[1] == 'multi':
@@ -233,7 +250,7 @@ def main():
     L = len(T); assert L % 2 == 1 and set(T) <= {'H', 'D'}
     RM = (L - 1) // 2; Delta = q + 1 + RM; dh = Delta - L
     ty = [1 if t == 'D' else 0 for t in T]
-    RH, RL, S, v = friendly_sets(Fq, N, LP, PL, X)
+    RH, RL, S, v = friendly_sets(Fq, N, LP, PL, X, nu0)
     # non-friendly: sigma (points -> lines) and R'
     if nonfr.startswith('ovoid:') or nonfr == 'inline':
         if nonfr != 'inline':
@@ -391,7 +408,7 @@ def main():
     print(f'hub graph: {len(he)} edges, degrees <= {dh}, same-side distances <= 6 on both sides', flush=True)
     if mode == 'make':
         with open(solout, 'w') as f:
-            f.write(f'typedherm2 {q} {N} {T} {n}\n')
+            f.write(f'typedherm{3 if nu0 else 2} {q} {N} {T} {n}\n')
             if nfdesc == 'multi':
                 f.write(f'nonfriendly multi {os.path.basename(nonfr)} {hashlib.sha256(open(nonfr, "rb").read()).hexdigest()}\n')
             else:
