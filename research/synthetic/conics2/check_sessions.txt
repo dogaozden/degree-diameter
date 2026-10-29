@@ -126,3 +126,9 @@ d19D7nu0b 3 1414618 2121927 session_01QYEEyKS9oFiof2nvvBvznv
 d19D7nu0b 5 2829236 3536545 session_01QYEEyJBUxxvbD7iuQf316D   (pending at 09:07)
 d19D7nu0b 7 4243854 4951163 session_01QYEEyKHoVSosKWZpCsyfbX   (pending at 09:07)
 # (18,7) cluster range 10 session KTME5 pending at 09:07; fallback: local run after the (15,7) meta check
+# 08:52 (18,7) n=7,290,828 range 10 (GF8vT): stopped by the 2-hour limit of a background task at 606,208 of 729,081 sources, no result; rerun locally after the (15,7) meta check (from about 09:43)
+# 08:52 (18,7) n=7,290,828 range 4 (H3t2a): also stopped by the 2-hour background limit (557,056 of 729,083), no result.
+# 09:26 new sessions for (18,7) n=7,290,828 ranges 4 and 10 (nohup, no 2-hour limit); local fallback runs range 10 then 4
+d18D7b 4 2187249 2916332 session_01QYEEyHUSexS43NiY8F2ez4
+d18D7b 10 6561747 7290828 session_01QYEEyGuCQM8prwtGR68CDd
+# 09:28 both started; local queue switched to (18,7) n=7,309,092 range 10 (6578182..7309092; its session KTME5 still pending)
