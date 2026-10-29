@@ -23,3 +23,9 @@ Checker final lines (stdout of ./apsp_fast d20.edges 20 7 4 13820835 14478970):
 n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=13820835..14478970
 RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
 (wrapper line, not checker output: EXIT 0)
+
+### d20 23 (sources 14478970..15137105), 4 threads, started 2026-10-29 21:40 UTC, finished 23:36 UTC
+Checker final lines (stdout of ./apsp_fast d20.edges 20 7 4 14478970 15137105):
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=14478970..15137105
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+(wrapper line, not checker output: EXIT 0)
