@@ -1,0 +1,152 @@
+===== q = 5 =====
+sanity three hats (conic frame u=1): deg_pts={7: 23, 6: 12} deg_lines={7: 23, 6: 12} diam=3 theta={'involution': True, 'swaps_sides': True, 'flag_preserving': True}
+t=2: |Col|=16 |Aut|=32 correlation=True polarities=16 polarity=True CR=3 deg_pts={7: 28, 6: 8} deg_lines={7: 28, 6: 8} diam=3 cert=b9f7594ee9820dbb theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=3: |Col|=16 |Aut|=32 correlation=True polarities=16 polarity=True CR=2 deg_pts={7: 28, 6: 8} deg_lines={7: 28, 6: 8} diam=3 cert=b9f7594ee9820dbb theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=4: |Col|=16 |Aut|=32 correlation=True polarities=16 polarity=True CR=4 deg_pts={7: 28, 6: 8} deg_lines={7: 28, 6: 8} diam=3 cert=b9f7594ee9820dbb theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': True}
+harmonic quadruples (CR=-1) on ell: 120; distinct uncoloured incidence-graph certificates: 1 {'b9f7594ee9820dbb': 120}
+certificates by t: {2: 'b9f7594ee9820dbb', 3: 'b9f7594ee9820dbb', 4: 'b9f7594ee9820dbb'}
+t=2: explicit isomorphism of incidence graphs to t=-1 frame: True
+t=3: explicit isomorphism of incidence graphs to t=-1 frame: True
+t=4: explicit isomorphism of incidence graphs to t=-1 frame: True
+===== q = 7 =====
+sanity three hats (conic frame u=1): deg_pts={9: 31, 8: 30} deg_lines={9: 31, 8: 30} diam=3 theta={'involution': True, 'swaps_sides': True, 'flag_preserving': True}
+t=2: |Col|=24 |Aut|=48 correlation=True polarities=24 polarity=True CR=4 deg_pts={9: 38, 8: 24} deg_lines={9: 38, 8: 24} diam=3 cert=936b81d37cbb3a17 theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=3: |Col|=72 |Aut|=72 correlation=False polarities=0 polarity=False CR=5 deg_pts={9: 38, 8: 24} deg_lines={9: 38, 8: 24} diam=3 cert=c4fc0143aa064ea5 theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=4: |Col|=24 |Aut|=48 correlation=True polarities=24 polarity=True CR=2 deg_pts={9: 38, 8: 24} deg_lines={9: 38, 8: 24} diam=3 cert=936b81d37cbb3a17 theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=5: |Col|=72 |Aut|=72 correlation=False polarities=0 polarity=False CR=3 deg_pts={9: 38, 8: 24} deg_lines={9: 38, 8: 24} diam=3 cert=c4fc0143aa064ea5 theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': False}
+t=6: |Col|=24 |Aut|=48 correlation=True polarities=24 polarity=True CR=6 deg_pts={9: 38, 8: 24} deg_lines={9: 38, 8: 24} diam=3 cert=936b81d37cbb3a17 theta_conic_map={'involution': True, 'swaps_sides': True, 'flag_preserving': True}
+harmonic quadruples (CR=-1) on ell: 336; distinct uncoloured incidence-graph certificates: 1 {'936b81d37cbb3a17': 336}
+certificates by t: {2: '936b81d37cbb3a17', 3: 'c4fc0143aa064ea5', 4: '936b81d37cbb3a17', 5: 'c4fc0143aa064ea5', 6: '936b81d37cbb3a17'}
+t=2: explicit isomorphism of incidence graphs to t=-1 frame: True
+t=3: explicit isomorphism of incidence graphs to t=-1 frame: False
+t=4: explicit isomorphism of incidence graphs to t=-1 frame: True
+t=5: explicit isomorphism of incidence graphs to t=-1 frame: False
+t=6: explicit isomorphism of incidence graphs to t=-1 frame: True
+{
+ "5": {
+  "rows": {
+   "2": {
+    "Col": 16,
+    "Aut": 32,
+    "correlation": true,
+    "n_polarities": 16,
+    "polarity": true,
+    "verified_invols": 16,
+    "diam": 3,
+    "cert": "b9f7594ee9820dbb",
+    "CR_a_c_0_1": 3,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": false
+   },
+   "3": {
+    "Col": 16,
+    "Aut": 32,
+    "correlation": true,
+    "n_polarities": 16,
+    "polarity": true,
+    "verified_invols": 16,
+    "diam": 3,
+    "cert": "b9f7594ee9820dbb",
+    "CR_a_c_0_1": 2,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": false
+   },
+   "4": {
+    "Col": 16,
+    "Aut": 32,
+    "correlation": true,
+    "n_polarities": 16,
+    "polarity": true,
+    "verified_invols": 16,
+    "diam": 3,
+    "cert": "b9f7594ee9820dbb",
+    "CR_a_c_0_1": 4,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": true
+   }
+  },
+  "harmonic_quadruples": 120,
+  "harmonic_distinct_certs": 1,
+  "sanity_three_hats_theta": {
+   "involution": true,
+   "swaps_sides": true,
+   "flag_preserving": true
+  }
+ },
+ "7": {
+  "rows": {
+   "2": {
+    "Col": 24,
+    "Aut": 48,
+    "correlation": true,
+    "n_polarities": 24,
+    "polarity": true,
+    "verified_invols": 24,
+    "diam": 3,
+    "cert": "936b81d37cbb3a17",
+    "CR_a_c_0_1": 4,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": false
+   },
+   "3": {
+    "Col": 72,
+    "Aut": 72,
+    "correlation": false,
+    "n_polarities": 0,
+    "polarity": false,
+    "verified_invols": 0,
+    "diam": 3,
+    "cert": "c4fc0143aa064ea5",
+    "CR_a_c_0_1": 5,
+    "explicit_iso_to_t_minus1": false,
+    "theta_conic_map_ok": false
+   },
+   "4": {
+    "Col": 24,
+    "Aut": 48,
+    "correlation": true,
+    "n_polarities": 24,
+    "polarity": true,
+    "verified_invols": 24,
+    "diam": 3,
+    "cert": "936b81d37cbb3a17",
+    "CR_a_c_0_1": 2,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": false
+   },
+   "5": {
+    "Col": 72,
+    "Aut": 72,
+    "correlation": false,
+    "n_polarities": 0,
+    "polarity": false,
+    "verified_invols": 0,
+    "diam": 3,
+    "cert": "c4fc0143aa064ea5",
+    "CR_a_c_0_1": 3,
+    "explicit_iso_to_t_minus1": false,
+    "theta_conic_map_ok": false
+   },
+   "6": {
+    "Col": 24,
+    "Aut": 48,
+    "correlation": true,
+    "n_polarities": 24,
+    "polarity": true,
+    "verified_invols": 24,
+    "diam": 3,
+    "cert": "936b81d37cbb3a17",
+    "CR_a_c_0_1": 6,
+    "explicit_iso_to_t_minus1": true,
+    "theta_conic_map_ok": true
+   }
+  },
+  "harmonic_quadruples": 336,
+  "harmonic_distinct_certs": 1,
+  "sanity_three_hats_theta": {
+   "involution": true,
+   "swaps_sides": true,
+   "flag_preserving": true
+  }
+ }
+}

@@ -2,6 +2,8 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{enumitem,booktabs,array}
+\usepackage{tikz}
+\usetikzlibrary{calc}
 \usepackage[hyphens]{url}
 \usepackage[hidelinks]{hyperref}
 
@@ -26,7 +28,7 @@
 \newcommand{\diam}{\operatorname{diam}}
 \newcommand{\status}[1]{\textup{[#1]}}
 
-\title{What plays the role of a conic: the lab's constructions and ovals, ovoids and polarities}
+\title[What plays the role of a conic]{What plays the role of a conic: the lab's constructions and ovals, ovoids and polarities}
 \author{Degree--diameter lab}
 \date{29 October 2026}
 
@@ -180,7 +182,34 @@ one of them for the three hats) and a pair of points of $\ell$ that separates th
 $\lam_a=AZ$ and $\lam_c=AZ'$ are the tangents from $A$, and $\lam_0=(X^\tau)^\perp$, $\lam_1=X^\perp$.
 \end{definition}
 
-For every odd $q\ge3$ such frames exist ($\ell\setminus\cC$ has $q-1\ge2$ points). The cross-ratio
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick] (0,0) circle (2);
+  \node at (-1.25,-1.0) {$\cC$};
+  \coordinate (A) at (0,4.5);
+  \coordinate (Z) at (-1.792,0.889);
+  \coordinate (Zp) at (1.792,0.889);
+  \coordinate (X0) at (0.7,0.889);
+  \coordinate (X1) at (4.59,0.889);
+  \draw (-4,0.889) -- (6,0.889) node[right] {$\ell=A^\perp$};
+  \draw ($(A)!-0.1!(Z)$) -- ($(A)!1.55!(Z)$) node[below left] {$\lambda_a=AZ$};
+  \draw ($(A)!-0.1!(Zp)$) -- ($(A)!1.55!(Zp)$) node[below right] {$\lambda_c=AZ'$};
+  \draw[dashed] ($(A)!-0.1!(X0)$) -- ($(A)!1.75!(X0)$) node[below] {$\lambda_0=X_1^\perp$};
+  \draw[dashed] ($(A)!-0.1!(X1)$) -- ($(A)!1.3!(X1)$) node[below right] {$\lambda_1=X_0^\perp$};
+  \fill (A) circle (2pt) node[right=3pt] {$A$};
+  \fill (Z) circle (2pt) node[above left] {$X_a=Z$};
+  \fill (Zp) circle (2pt) node[below right] {$X_c=Z'$};
+  \fill (X0) circle (2pt) node[below left] {$X_0$};
+  \fill (X1) circle (2pt) node[above right] {$X_1$};
+\end{tikzpicture}
+\caption{The conic frame of the four hats (drawn over the reals). $A$ is external, $\ell$ is its polar, the chord of
+contact $ZZ'$; the marked points are $Z$, $Z'$ and a pair $X_0,X_1$ that separates them harmonically, so that
+$AX_0$ is the polar of $X_1$ and $AX_1$ the polar of $X_0$. The three hats use $Z$, $X_0$, $X_1$.}
+\label{fig:frame}
+\end{figure}
+
+Figure~\ref{fig:frame} shows the frame. For every odd $q\ge3$ such frames exist ($\ell\setminus\cC$ has $q-1\ge2$ points). The cross-ratio
 $(X_a,X_c;X_0,X_1)$ of a four-hat conic frame is $-1$; conversely every four-hat frame with $(X_a,X_c;X_0,X_1)=-1$
 is a conic frame for each conic of the pencil of conics tangent to $AX_a$ at $X_a$ and to $AX_c$ at $X_c$.
 \status{standard}
@@ -255,6 +284,16 @@ of the tangents from $A$. For the three hats, $\tau$ fixes $a$ and either swaps 
 three absolute points on $\ell$, impossible for a conic. So among frames with $A$ the pole of $\ell$, the conic
 frames are the only ones to which the lemma applies; the squad check above confirms that no other labelled frame is
 self-polar with this $\theta$.
+
+Without fixing $\theta$ the same holds, by a group computation \status{computer}: squad card \texttt{conics-r2/c6}
+computed with \texttt{nauty} the full automorphism group of the incidence graph (collineations and correlations) of
+the four-hat structure for every cross-ratio $t=(X_a,X_c;X_0,X_1)$ at $q=5,7$. A polarity exists exactly for
+$t\in\{-1,2,\tfrac12\}$, i.e.\ exactly when $X_a$ and one point $X_u$, $u\in T$, separate the other two harmonically
+(a conic frame up to renaming the labels of $T$, which the $3$-cycle $\sigma$ permits); at $q=7$ the two equianharmonic
+frames ($t=3,5$) have no correlation at all and $72$ collineations, against $24$ for the harmonic ones. All
+harmonic four-hat structures are isomorphic ($120$ and $336$ labelled harmonic frames at $q=5,7$, one canonical
+form), as they must be: the stabilizer of $(A,\ell)$ induces $\mathrm{PGL}(2,q)$ on $\ell$, which is transitive on
+harmonic quadruples.
 \end{remark}
 
 \subsection{What the gadget is, in polar terms}
@@ -407,6 +446,12 @@ clones, a point of $\cC$ on one, an internal point on none; the clones have degr
 $q+3$ and there are $2(q^2+q+1)+2(q+1)=2(q^2+2q+2)$ elements: $394$ at $q=13$, the 2013 table value at $(16,3)$
 (Delorme's construction; \texttt{research/d3d6/REPORT.md}). The lab's $396$ there is not of this kind: it places three
 four-hat gadgets on three anti-flags permuted by a Singer subgroup of order $3$ (\texttt{research/d3d6/REPORT.md}).
+Could self-polar gadgets for \emph{one} conic do better? At $\Delta=q+3$ every element may gain two incidences. A
+gadget in a conic frame $F=\{A,Z,Z',X,X^\tau\}$ raises by one exactly the lines meeting $F$ ($5q-2$ of them) and,
+by the polarity, the points whose polars meet $F$; so several such gadgets fit only if no line meets three of their
+frames. \status{computer} At $q=13$ no three frames have this property (\texttt{conics/gadgets16.py}, exhaustive over
+the $546$ conic frames up to the conic group), so at most two conic-adapted gadgets fit, and the conic does not reach
+the value $396$.
 
 \begin{remark}\label{rem:saturated}
 \status{new; proof} No hat gadget can be added on top of the conic clones at $\Delta=q+3$: a gadget raises by one the
@@ -512,7 +557,11 @@ $\theta(p)$; dually for shadow lines. Theorem~B gives diameter $4$ and Lemma~\re
 
 At $q=8$ this gives $585,650,715$ for $j=0,1,2$, which are the tabled values of the general problem at
 $(9,3),(10,3),(11,3)$ (Wikipedia table, read 29 October 2026); we have not checked the provenance of those graphs,
-and expect them to be of this kind. For $j=3$ it gives $780<810$. So in quadrangles the polarity picture reproduces
+and expect them to be of this kind. \emph{Computer} (squad card \texttt{conics-r2/c2}): for $q=2$, all $36$ polarities of $W(2)$ were
+enumerated with \texttt{nauty}, their absolute points form an ovoid and absolute lines a spread, and for $j=1,2$ the
+structure is self-polar of diameter $4$ and folds to $20$ and $25$ vertices of diameter $3$; for $q=8$ a polarity of
+$W(8)$ was found in the automorphism group (order $6{,}340{,}239{,}360$) and the folds for $j=1,2$ have $650$ and $715$
+vertices, maximum degree $10$ and $11$, diameter $3$. For $j=3$ it gives $780<810$. So in quadrangles the polarity picture reproduces
 known values and gives nothing at the lab's (odd $q$) cells, where no polarity exists.
 
 \section{Generalized hexagons}

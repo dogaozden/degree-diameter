@@ -181,9 +181,24 @@ def analyse(q, X, hats, T, rho, pi, want_group=True):
         invols = [g for g in swap if compose(g, g) == idt]
         out.update(Col=keep, Aut=len(G), n_swap=len(swap), correlation=len(swap) > 0,
                    n_polarities=len(invols), polarity=len(invols) > 0)
+        for g in invols:
+            assert all(((g[l], g[p]) in E) for (p, l) in E), "involution not an automorphism"
+            assert all(g[g[v]] == v for v in range(V))
         out['_invols'] = invols
+        out['_verified_invols'] = len(invols)
         out['_G'] = G
     return out, E, adj
+
+
+def explicit_iso(V, E1, E2):
+    """Build an isomorphism of the uncoloured incidence graphs from pynauty canonical labellings and check it."""
+    a1, a2 = adjacency(V, E1), adjacency(V, E2)
+    lab1 = pynauty.canon_label(pynauty.Graph(V, directed=False, adjacency_dict=a1))
+    lab2 = pynauty.canon_label(pynauty.Graph(V, directed=False, adjacency_dict=a2))
+    pos1 = {v: i for i, v in enumerate(lab1)}
+    f = [lab2[pos1[v]] for v in range(V)]
+    ok = all(((f[p], f[l]) in E2) for (p, l) in E1) and len(E1) == len(E2)
+    return ok
 
 
 def theta_map(q, hats, tau, V, NP, N, P, pid, Hp, Kln, Qp, Mln):
@@ -264,7 +279,7 @@ def main():
                   f"CR={out['CR_a_c_0_1']} deg_pts={out['deg_points']} deg_lines={out['deg_lines']} "
                   f"diam={out['diam']} cert={out['cert']} theta_conic_map={th}", flush=True)
             rows[t] = {k: v for k, v in out.items() if not k.startswith('_')}
-            rows[t]['polarity_elements'] = [list(g) for g in out['_invols'][:4]]
+            rows[t]['verified_invols'] = out['_verified_invols']
         # isomorphism check: all ordered quadruples of distinct points on ell with CR = -1
         ellpts = [p for p in pg(q) if dot(p, ELL, q) == 0]
         nq = 0
@@ -282,9 +297,18 @@ def main():
         # cross-t: are the frame graphs isomorphic to each other?
         cert_by_t = {t: rows[t]['cert'] for t in Ts}
         print("certificates by t:", cert_by_t, flush=True)
+        Xh = {'a': Z, 'c': Zp, '0': (1, 0, 1), '1': (1, 0, q - 1)}
+        Vh, Eh, _ = build(q, Xh, hats4, T4, rho4, pi4)
+        for t in Ts:
+            Xt = {'a': Z, 'c': Zp, '0': (1, 0, 1), '1': (1, 0, t)}
+            _, Et, _ = build(q, Xt, hats4, T4, rho4, pi4)
+            rows[t]['explicit_iso_to_t_minus1'] = explicit_iso(Vh, Eh, Et)
+            print(f"t={t}: explicit isomorphism of incidence graphs to t=-1 frame: {rows[t]['explicit_iso_to_t_minus1']}",
+                  flush=True)
         summary[q] = dict(
             rows={str(t): {k: rows[t][k] for k in ('Col', 'Aut', 'correlation', 'n_polarities', 'polarity',
-                                                   'diam', 'cert', 'CR_a_c_0_1')}
+                                                   'verified_invols', 'diam', 'cert', 'CR_a_c_0_1',
+                                                   'explicit_iso_to_t_minus1')}
                   | {'theta_conic_map_ok': all(rows[t]['theta_conic_map'].values())} for t in Ts},
             harmonic_quadruples=nq, harmonic_distinct_certs=len(certs),
             sanity_three_hats_theta=th3)
