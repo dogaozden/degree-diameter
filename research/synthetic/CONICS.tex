@@ -31,6 +31,7 @@
 \date{29 October 2026}
 
 \begin{document}
+\sloppy\emergencystretch=2em
 
 \begin{abstract}
 A sequel to \texttt{SYNTHETIC.md} (branch \texttt{claude/synthetic-incidence-geometry-s4m08f}), written for
@@ -53,7 +54,8 @@ Every statement is labelled \status{new}, \status{restatement} or \status{standa
 
 \maketitle
 
-\section*{0. Conventions and the dictionary}
+\setcounter{section}{-1}
+\section{Conventions and the dictionary}
 
 We use the conventions of \texttt{SYNTHETIC.md} \S0: an incidence structure has points, lines and a symmetric
 incidence~$\I$; its incidence graph has the elements as vertices and the flags as edges; distances and the diameter
@@ -62,14 +64,14 @@ Definition~1.1, with the same names: anti-flag $(A,\ell)$, marked points $X_s$ o
 $\lam_s=AX_s$, a distinguished label $a$, $T=S\setminus\{a\}$, links $\pi$ and rotation $\rho$ (permutations of $T$),
 new points $Q,H_s$ and new lines $M,K_s$.
 
-\subsection*{0.1 What a conic is, combinatorially}
+\subsection{What a conic is, combinatorially}
 In $\PG(2,q)$ a \emph{conic} $\cC$ is a set of $q+1$ points, no three collinear (an \emph{oval}); for $q$ odd every
 oval is a conic (Segre). For $q$ odd a conic is also the set of absolute points ($p\I p^\perp$) of an
 \emph{orthogonal polarity} $\perp$: an incidence-preserving involution exchanging points and lines. Both
 descriptions have analogues in generalized polygons, and they are different objects there:
 
 \begin{center}\small
-\begin{tabular}{@{}p{3.2cm}p{3.6cm}p{4.2cm}p{4.6cm}@{}}
+\begin{tabular}{@{}p{2.6cm}p{3.4cm}p{4.3cm}p{5.2cm}@{}}
 \toprule
 & projective plane & generalized quadrangle & generalized hexagon \\
 \midrule
@@ -92,7 +94,7 @@ $Q^-(5,q)$ form a spread (Hermitian spread) \\
 \noindent \status{standard} \cite{VM98,PT,Th81,BGS06}. The lab's constructions use the first and third rows
 throughout (Sections 2 and 3). The second row, the polarity, is what explains the hats (Section 1).
 
-\subsection*{0.2 Polarities fold incidence structures}
+\subsection{Polarities fold incidence structures}\label{ssec:fold}
 A \emph{polarity} of an incidence structure $\cS$ is a bijection $\theta$ from points to lines and lines to points
 with $\theta^2=\mathrm{id}$ and $p\I L\iff\theta(L)\I\theta(p)$. A point $p$ is \emph{absolute} if $p\I\theta(p)$.
 The \emph{polarity graph} $G_\theta$ has the points of $\cS$ as vertices, $p\sim r$ iff $p\ne r$ and $p\I\theta(r)$
@@ -114,7 +116,7 @@ $p\ne r$, $d(p,r)$ is even and $d(p,\theta(r))$ is odd, both at most $D$; the sm
 
 So a self-polar bipartite graph of diameter $D$ gives a graph of diameter $D-1$ with half the vertices. In this
 note it is used in two ways: as a description of what the conic does to the hats (\S1.3), and to compare with the
-tables of the general degree--diameter problem (where it gives nothing new; \S\S1.3, 2.4, 3.4).
+tables of the general degree--diameter problem (where it gives nothing new; \S\S1.3, 2.4, 3.2).
 
 \section{Projective planes: the hats relative to a conic}
 
@@ -268,6 +270,31 @@ Wikipedia table, read on 29 October 2026. So the folded four hats lie between th
 $\Delta=11,13$ ($q=9,11$: $96$ and $138$) they are far below the tabled $106$ and $162$. The three-hat fold at $q=13$
 has $187$ vertices, the old tabled value; we do not know how Canale's graph was built.
 
+The four hats can also be built without changing any incidence of the plane (\texttt{research/plus3/plus3.tex},
+Proposition ``the four hats without changing the plane''): labels $a,1,2,3$, a $3$-cycle $s=(1\ 2\ 3)$, and the
+rotation carried by the hats ($H_i$ also on $AX_{s(i)}$, $K_i$ also through $X_{s^{-1}(i)}$). Its conic frame is
+$X_a=Z$, $X_2=Z'$, $\{X_1,X_3\}$ conjugate, with $\tau=(1\ 3)$, which inverts $s$.
+
+\begin{proposition}[Self-polar four hats on an unchanged plane]\label{prop:zero}
+\status{new; proof and computer} In this conic frame the zero-change four-hat structure is self-polar, with
+$H_x\leftrightarrow K_{\tau(x)}$ and $Q\leftrightarrow M$. Its polarity graph is the Erd\H{o}s--R\'enyi graph of
+$\PG(2,q)$, with \emph{no edge changed}, plus five vertices: a graph of diameter $2$ and maximum degree $q+2$ on
+$q^2+q+6$ vertices.
+\end{proposition}
+\begin{proof}
+The same check as in Lemma~\ref{lem:criterion}, rule by rule over the table of the cited proposition; the only new
+pairs are the extra incidences, and $(H_i,AX_{s(i)})$ goes to $(X_{\tau s(i)},K_{\tau(i)})$, which is the extra
+incidence of $K_{\tau(i)}$ because $s^{-1}\tau=\tau s$. No incidence of the plane is changed, so the old part of the
+polarity graph is the Erd\H{o}s--R\'enyi graph.
+\end{proof}
+\emph{Computer.} \texttt{conics/zero\_polar.py}, $q=3,\dots,13$ (polarity, diameter $3$, old part of the fold equal
+to the Erd\H{o}s--R\'enyi graph, fold of diameter $2$).
+
+So, in the language of the general problem: \emph{the Erd\H{o}s--R\'enyi graph of $\PG(2,q)$, $q$ odd, has room for
+five more vertices at maximum degree $q+2$ and diameter $2$}, and the five vertices are the folded hats. We have not
+searched the literature on extensions of polarity graphs; the count $q^2+q+6$ is below the tabled values except at
+$\Delta=15$, as said above.
+
 \subsection{An explicit regular version}
 In the four-hat structure the elements of degree $q+1$ (the deficient ones) are the points of $\Pi$ off $\ell$,
 other than $A$, on the lines $AY$ with $Y$ unmarked, and dually (\texttt{SYNTHETIC.md}, Lemma~1.4). \texttt{SYNTHETIC.md}
@@ -319,7 +346,8 @@ self-polar; it does not create room for a fifth hat.
 \texttt{research/plus2/sat\_gadget.py}: bulk incidences fixed, every incidence of the gadget free, degree $\le q+2$,
 diameter $3$). Five hats at $Z$ and two conjugate pairs, and six hats at $Z,Z'$ and two conjugate pairs, one $Q$ and
 one $M$: UNSAT for every choice of the pairs, $q=5,7,9,11,13$, with and without imposing self-polarity
-($72$ frames, each under $4$\,s). The four-hat conic frame is SAT in all these runs (control).
+($35$ five-hat and $35$ six-hat frames, $140$ runs, each under $4$\,s; \texttt{conics/hatmodel\_conic.out}). The
+four-hat conic frame is SAT in all these runs (control).
 \item \emph{All self-polar extensions at $q=5$} (\texttt{conics/sat\_polar.py}): new points and new lines tied by the
 conic polarity, all incidences of the new elements free, no change to the plane. $k=5$: SAT. $k=6$ (five hats):
 UNSAT. The search is split soundly by the orbit of the conic group $\mathrm{PGL}(2,5)$ that contains the point most
@@ -354,7 +382,7 @@ $\cM$ a weighted $(\Delta-t-1)$-cover. So the ovoid-like object is exactly the p
 spread-like object where shadow lines go:
 
 \begin{center}\small
-\begin{tabular}{@{}lllll@{}}
+\begin{tabular}{@{}p{2.6cm}p{1.75cm}p{3.0cm}p{2.6cm}p{4.85cm}@{}}
 \toprule
 cells & quadrangle & clones on & shadow lines over & conic-like content \\
 \midrule
@@ -449,7 +477,7 @@ and the ceiling $q|\mathcal A_0|+2(q^3+1)=2N$ is reached because every element o
 element of it. For odd $q$ the whiskers come from $q^2-1$ further Hermitian spreads through $v$ (with $\Sigma$, $q^2$
 spreads pairwise meeting only in $v$), so the whole configuration is cut out by elliptic hyperplane sections; we
 found no conic-level description beyond this. The levels are not invariant under a polarity (they contain spread
-lines but not the corresponding ovoid points), so the folding of \S0.2 does not apply to Theorem~D as it stands.
+lines but not the corresponding ovoid points), so the folding of \S\ref{ssec:fold} does not apply to Theorem~D as it stands.
 
 \emph{A self-polar doubling} \status{new; proof}. For $q=3^{2e+1}$ take the polarity $\theta$, its Ree--Tits ovoid $\cO$
 and absolute spread $\Sigma$, and the single level $\mathcal A_0=\cO\cup\Sigma$. Its components are the $q^3+1$ flags
@@ -475,8 +503,19 @@ quadratic form $Q'$, and each conic is an affine line with non-square $Q'$-direc
 \item the record sets themselves (72, 288, 217 and 756 pairwise opposite points at $q=5,7,8,11$, plus a few
 mirrored points) come from searches and, at $q=7,11$, from orbits of the Weyl group $W(E_7)$.
 \end{itemize}
-\emph{Squad computation} \status{computer}: card \texttt{c7} rebuilt the conic fans at $q=5,7$ (result in
-\S\ref{sec:summary} and \texttt{squads/conics-r1/c7}).
+\emph{Squad computation} \status{computer}: card \texttt{c7} rebuilt the conic fans for $q=5,7$ (direct check of
+opposition on all pairs; the $q+1$ points of each fan line with $e$ form a conic of a plane) and searched for large
+fans with one direction: at $q=5$ the compatibility graph on the $625$ cosets has clique number exactly $7$ (exact
+branch and bound, confirmed by SAT, for every one of the $300$ non-square directions), so single-direction fans have
+at most $1+5\cdot7=36$ points; at $q=7$ a tabu search found $15$ lines, $106$ points. The records use $72$ and $288$
+pairwise opposite points at these $q$, so at small $q$ the conic fans are not competitive; they become useful only at
+$q=11$ (320 points), and there the record set (756) is a Weyl-group orbit, not a fan.
+
+\emph{What the hexagon offers that the plane does not} \status{heuristic}. In the plane the conic's polarity is what
+makes the hats self-polar; in the hexagon a polarity exists only for $q=3^{2e+1}$, outside the lab's cells (which
+use $q=5,7,8,9,11,13$), and the diameter-$7$ layouts with an odd number of copies are self-polar only if one copy is
+mapped to itself, which needs such a polarity. So the conic-as-polarity picture does not reach the hexagon records,
+and the conic-as-ovoid picture is already what the records use.
 
 \section{Summary: what is new}\label{sec:summary}
 \begin{itemize}

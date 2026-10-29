@@ -191,7 +191,10 @@ def build(q, k, E, ADD, case=None):
 def decode_and_check(model, q, k, Pi, pts, lns, x, y, pool, inc, perp_pl, perp_lp):
     ms = set(l for l in model if l > 0)
     N = len(pts)
-    val = lambda v: (v is True) or (v is not False and v in ms)
+    def val(v):
+        if v is True or v is False:
+            return v
+        return (v in ms) if v > 0 else (-v not in ms)
     flags = set()
     for a in range(N):
         for L in range(N):

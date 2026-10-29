@@ -68,7 +68,7 @@ t = re.sub(r'\\path\{([^}]*)\}', lambda m: r'\texttt{' + m.group(1).replace('_',
 t = re.sub(r'~?\\ref\{([^}]*)\}', lambda m: ' ' + labels.get(m.group(1), '??'), t)
 t = re.sub(r'~?\\cite(\[[^\]]*\])?\{([^}]*)\}',
            lambda m: ' [' + ', '.join(k.strip() for k in m.group(2).split(',')) + (', ' + m.group(1)[1:-1] if m.group(1) else '') + ']', t)
-t = t.replace(r'\setcounter{section}{-1}', '')
+t = t.replace(r'\setcounter{section}{-1}', '').replace(r'\sloppy\emergencystretch=2em', '')
 t = t.replace(r'\begin{abstract}', r'\par\noindent\emph{Abstract.} ').replace(r'\end{abstract}', r'\par')
 # figures and tables: drop the float, number the caption
 counter = {'figure': 0, 'table': 0}
@@ -138,7 +138,7 @@ for ln in lines:
     if ln.startswith('# '):
         secno += 1
         title = ln[2:]
-        if title.startswith('Coordinates and checks'):
+        if title.startswith('Files and checks'):
             res.append('# Appendix A. ' + title)
         else:
             res.append(f'# {secno}. {title}')
@@ -153,13 +153,13 @@ for ln in md.split('\n'):
     if ln.startswith('# ') and not ln.startswith('# Appendix'):
         sec = int(ln[2:].split('.')[0])
         sub = 0
-    elif ln.startswith('## ') and sec >= 1:
+    elif ln.startswith('## ') and sec >= 0:
         sub += 1
         ln = f'## {sec}.{sub} ' + ln[3:]
     out.append(ln)
 md = '\n'.join(out)
 header = ('<!-- Generated from CONICS.tex by make_md.py; the figures are in CONICS.pdf. -->\n\n'
-          '# Adding points and lines to generalized polygons: the constructions without coordinates\n\n'
-          '*Degree–diameter lab, 28 October 2026. Markdown copy of `CONICS.tex`; the PDF has the figures.*\n\n')
+          '# What plays the role of a conic: the lab\'s constructions and ovals, ovoids and polarities\n\n'
+          '*Degree–diameter lab, 29 October 2026. Markdown copy of `CONICS.tex`; the PDF has the figures.*\n\n')
 (HERE / 'CONICS.md').write_text(header + md)
 print('wrote CONICS.md,', len(md.split()), 'words')
