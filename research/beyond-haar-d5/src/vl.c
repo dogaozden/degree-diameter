@@ -93,6 +93,64 @@ static long total_cost(long limit) {
     return c;
 }
 
+
+/* ---------- incremental mode: cnt[s][v][h] = number of counted walks from (s,1) to (v,h) ---------- */
+static uint16_t *cnt; static signed char *bdist; static long inc_delta;
+static int ie_a, ie_c, ie_e, ie_old, ie_new, ie_s, ie_L;
+static inline int relevant(int s, int v) { return side[s] == 0 || side[v] == 1; }
+static void base_dist(void) {
+    bdist = malloc((size_t)b * b);
+    for (int s = 0; s < b; s++) {
+        signed char *d = bdist + (size_t)s * b; for (int v = 0; v < b; v++) d[v] = 100;
+        int q[MAXB], h = 0, t = 0; d[s] = 0; q[t++] = s;
+        while (h < t) { int x = q[h++]; for (int i = 0; i < deg[x]; i++) { int y = dn[x][i]; if (d[y] == 100) { d[y] = d[x] + 1; q[t++] = y; } } }
+    }
+}
+static void fill_dfs(int s, int v, int laste, int h, int len, int L) {
+    if (relevant(s, v)) cnt[((size_t)s * b + v) * m + h]++;
+    if (len == L) return;
+    for (int i = 0; i < deg[v]; i++) { int e = de[v][i]; if (e == laste) continue;
+        fill_dfs(s, dn[v][i], e, mul[(size_t)h * m + dvolt(v, i)], len + 1, L); }
+}
+static long inc_init(void) {
+    size_t sz = (size_t)b * b * m; if (!cnt) cnt = malloc(sizeof(uint16_t) * sz);
+    memset(cnt, 0, sizeof(uint16_t) * sz);
+    for (int s = 0; s < b; s++) fill_dfs(s, s, -1, 0, 0, side[s] == 0 ? D : D - 1);
+    long c = 0;
+    for (int s = 0; s < b; s++) for (int v = 0; v < b; v++) if (relevant(s, v))
+        for (int h = 0; h < m; h++) if (!cnt[((size_t)s * b + v) * m + h]) c++;
+    return c;
+}
+static void inc_dfs(int v, int laste, int ho, int hn, int len, int used) {
+    if (used && ho != hn && relevant(ie_s, v)) {
+        uint16_t *p = cnt + ((size_t)ie_s * b + v) * m;
+        if (--p[ho] == 0) inc_delta++;
+        if (p[hn]++ == 0) inc_delta--;
+    }
+    if (len == ie_L) return;
+    for (int i = 0; i < deg[v]; i++) {
+        int e = de[v][i]; if (e == laste) continue;
+        int y = dn[v][i], go, gn, u2 = used;
+        if (e == ie_e) { go = dd[v][i] ? inv_[ie_old] : ie_old; gn = dd[v][i] ? inv_[ie_new] : ie_new; u2 = 1; }
+        else { go = gn = dvolt(v, i);
+            if (!used) { int dmin = bdist[(size_t)y * b + ie_a] < bdist[(size_t)y * b + ie_c] ? bdist[(size_t)y * b + ie_a] : bdist[(size_t)y * b + ie_c];
+                if (dmin + 1 > ie_L - (len + 1)) continue; } }
+        inc_dfs(y, e, mul[(size_t)ho * m + go], mul[(size_t)hn * m + gn], len + 1, u2);
+    }
+}
+/* change volt[e] to g, return the cost change */
+static long inc_move(int e, int g) {
+    ie_e = e; ie_a = eu[e]; ie_c = ew[e]; ie_old = volt[e]; ie_new = g; inc_delta = 0;
+    for (int s = 0; s < b; s++) {
+        ie_s = s; ie_L = side[s] == 0 ? D : D - 1;
+        int dmin = bdist[(size_t)s * b + ie_a] < bdist[(size_t)s * b + ie_c] ? bdist[(size_t)s * b + ie_a] : bdist[(size_t)s * b + ie_c];
+        if (dmin + 1 > ie_L) continue;
+        inc_dfs(s, -1, 0, 0, 0, 0);
+    }
+    volt[e] = g;
+    return inc_delta;
+}
+
 static void write_sol(const char *path, long cost, const char *gname) {
     if (!path) return;
     char tmp[1024]; snprintf(tmp, sizeof tmp, "%s.tmp", path);
@@ -170,6 +228,35 @@ int main(int argc, char **argv) {
     long it_total = 0; int run = 0;
     int bvolt[MAXE], beu[MAXE], bew[MAXE];
     memcpy(bvolt, volt, sizeof(int) * E); memcpy(beu, eu, sizeof(int) * E); memcpy(bew, ew, sizeof(int) * E);
+    int INC = getenv("INC") ? atoi(getenv("INC")) : 0;
+    if (INC) {
+        if (SWAP > 0) { fprintf(stderr, "INC mode has no swap moves\n"); return 2; }
+        base_dist();
+        cur = inc_init();
+        long chk = total_cost(1L << 60);
+        if (chk != cur) { fprintf(stderr, "inc init mismatch %ld vs %ld\n", cur, chk); return 3; }
+        best = cur;
+        for (run = 1; best > 0 && now() < t_end; run++) {
+            if (run > 1) { memcpy(volt, bvolt, sizeof(int) * E);
+                for (int k = 0; k < 1 + nfree / 20; k++) { int e = freee[rnd() % nfree]; volt[e] = rnd() % m; }
+                cur = inc_init(); }
+            for (long it = 0; it < ITERS && best > 0; it++) {
+                if ((it & 255) == 0 && now() > t_end) break;
+                double T = T0 * pow(T1 / T0, (double)it / ITERS);
+                int e = freee[rnd() % nfree], old = volt[e], g = rnd() % m; if (g == old) continue;
+                long dlt = inc_move(e, g);
+                if (dlt <= 0 || rnd01() < exp(-dlt / T)) cur += dlt; else inc_move(e, old);
+                it_total++;
+                if (cur < best) { best = cur; memcpy(bvolt, volt, sizeof(int) * E); write_sol(OUT, best, gname);
+                    if (best < 50 || (it_total % 64) == 0) fprintf(stderr, "  t=%.1fs run %d it %ld best %ld\n", now() - t_start, run, it, best); }
+            }
+        }
+        memcpy(volt, bvolt, sizeof(int) * E);
+        long fin = total_cost(1L << 60);
+        printf("RESULT best %ld check %ld b %d m %d vertices %ld iters %ld runs %d secs %.1f%s\n", best, fin, b, m,
+               (long)b * m, it_total, run - 1, now() - t_start, fin == 0 ? " DIAMETER_OK" : "");
+        return 0;
+    }
     int TABU = getenv("TABU") ? atoi(getenv("TABU")) : 0;      /* tabu tenure (in steps) on edges; 0 = annealing */
     int SAMPLE = getenv("SAMPLE") ? atoi(getenv("SAMPLE")) : 0; /* moves sampled per tabu step; 0 = all */
     if (TABU > 0) {

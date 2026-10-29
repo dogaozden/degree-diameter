@@ -1,0 +1,118 @@
+290 4
+291 2
+292 5
+293 1
+294 23
+295 1
+296 14
+297 5
+298 2
+299 1
+300 49
+290 1 C29 x D10 ab=false
+290 2 C5 x D58 ab=false
+290 3 D290 ab=false
+290 4 C290 ab=true
+291 1 C97 : C3 ab=false
+291 2 C291 ab=true
+292 1 C73 : C4 ab=false
+292 2 C292 ab=true
+292 3 C73 : C4 ab=false
+292 4 D292 ab=false
+292 5 C146 x C2 ab=true
+293 1 C293 ab=true
+294 1 C49 : C6 ab=false
+294 2 C2 x (C49 : C3) ab=false
+294 3 C49 x S3 ab=false
+294 4 C3 x D98 ab=false
+294 5 D294 ab=false
+294 6 C294 ab=true
+294 7 (C7 x C7) : S3 ab=false
+294 8 C7 x (C7 : C6) ab=false
+294 9 D14 x (C7 : C3) ab=false
+294 10 (C7 x C7) : C6 ab=false
+294 11 (C7 x C7) : C6 ab=false
+294 12 (C7 x C7) : C6 ab=false
+294 13 (C7 x C7) : C6 ab=false
+294 14 (C7 x C7) : C6 ab=false
+294 15 C14 x (C7 : C3) ab=false
+294 16 C2 x ((C7 x C7) : C3) ab=false
+294 17 C2 x ((C7 x C7) : C3) ab=false
+294 18 C21 x D14 ab=false
+294 19 C3 x ((C7 x C7) : C2) ab=false
+294 20 C7 x C7 x S3 ab=false
+294 21 C7 x D42 ab=false
+294 22 C3 : ((C7 x C7) : C2) ab=false
+294 23 C42 x C7 ab=true
+295 1 C295 ab=true
+296 1 C37 : C8 ab=false
+296 2 C296 ab=true
+296 3 C37 : C8 ab=false
+296 4 C37 : Q8 ab=false
+296 5 C4 x D74 ab=false
+296 6 D296 ab=false
+296 7 C2 x (C37 : C4) ab=false
+296 8 C37 : D8 ab=false
+296 9 C148 x C2 ab=true
+296 10 C37 x D8 ab=false
+296 11 C37 x Q8 ab=false
+296 12 C2 x (C37 : C4) ab=false
+296 13 C2 x C2 x D74 ab=false
+296 14 C74 x C2 x C2 ab=true
+297 1 C297 ab=true
+297 2 C99 x C3 ab=true
+297 3 C11 x ((C3 x C3) : C3) ab=false
+297 4 C11 x (C9 : C3) ab=false
+297 5 C33 x C3 x C3 ab=true
+298 1 D298 ab=false
+298 2 C298 ab=true
+299 1 C299 ab=true
+300 1 C25 x (C3 : C4) ab=false
+300 2 C3 x (C25 : C4) ab=false
+300 3 C3 : (C25 : C4) ab=false
+300 4 C300 ab=true
+300 5 C3 x (C25 : C4) ab=false
+300 6 C3 : (C25 : C4) ab=false
+300 7 S3 x D50 ab=false
+300 8 C25 x A4 ab=false
+300 9 C6 x D50 ab=false
+300 10 C50 x S3 ab=false
+300 11 D300 ab=false
+300 12 C150 x C2 ab=true
+300 13 (C5 x C5) : (C3 : C4) ab=false
+300 14 (C5 x C5) : C12 ab=false
+300 15 C4 x ((C5 x C5) : C3) ab=false
+300 16 C15 x (C5 : C4) ab=false
+300 17 C3 x ((C5 x C5) : C4) ab=false
+300 18 C5 x C5 x (C3 : C4) ab=false
+300 19 C5 x (C15 : C4) ab=false
+300 20 C3 : ((C5 x C5) : C4) ab=false
+300 21 C60 x C5 ab=true
+300 22 C5 x A5 ab=false
+300 23 (C5 x C5) : (C3 : C4) ab=false
+300 24 (C5 x C5) : C12 ab=false
+300 25 (C5 x C5) : D12 ab=false
+300 26 C2 x ((C5 x C5) : S3) ab=false
+300 27 C2 x ((C5 x C5) : C6) ab=false
+300 28 C15 x (C5 : C4) ab=false
+300 29 C3 x ((C5 x C5) : C4) ab=false
+300 30 C3 x ((C5 x C5) : C4) ab=false
+300 31 C3 x ((C5 x C5) : C4) ab=false
+300 32 C5 x (C15 : C4) ab=false
+300 33 C3 : ((C5 x C5) : C4) ab=false
+300 34 C3 : ((C5 x C5) : C4) ab=false
+300 35 C3 : ((C5 x C5) : C4) ab=false
+300 36 C3 x D10 x D10 ab=false
+300 37 C5 x S3 x D10 ab=false
+300 38 S3 x ((C5 x C5) : C2) ab=false
+300 39 D10 x D30 ab=false
+300 40 C3 : (D10 x D10) ab=false
+300 41 C2 x C2 x ((C5 x C5) : C3) ab=false
+300 42 C5 x C5 x A4 ab=false
+300 43 (C2 x C2) : ((C5 x C5) : C3) ab=false
+300 44 C30 x D10 ab=false
+300 45 C6 x ((C5 x C5) : C2) ab=false
+300 46 C5 x C10 x S3 ab=false
+300 47 C10 x D30 ab=false
+300 48 C2 x (C3 : ((C5 x C5) : C2)) ab=false
+300 49 C30 x C10 ab=true
