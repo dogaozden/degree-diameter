@@ -9,4 +9,6 @@ d18D7(7,290,828) 6 3645415..4374498 session_01QYEEyKsG9F2HpThZXfRgWP : n=7290828
 d18D7(7,290,828) 7 4374498..5103581 session_01QYEEyHxjzUSfJeMEwt8vYE : n=7290828 edges=65239092 degree min=14 max=18 bipartite=yes diameter=7 sources=4374498..5103581 | RESULT VALID d=18 D=7 n=7290828 (sources in the range only)
 d18D7(7,290,828) 8 5103581..5832664 session_01QYEEyKS3bfAF9iiWqxwcRn : n=7290828 edges=65239092 degree min=14 max=18 bipartite=yes diameter=7 sources=5103581..5832664 | RESULT VALID d=18 D=7 n=7290828 (sources in the range only)
 d18D7(7,290,828) 9 5832664..6561747 session_01QYEEyKhYViNDhaHWdeM5SW : n=7290828 edges=65239092 degree min=14 max=18 bipartite=yes diameter=7 sources=5832664..6561747 | RESULT VALID d=18 D=7 n=7290828 (sources in the range only)
-# ranges cover 0..7290828 exactly: False; every range VALID with n, max degree 18, bipartite, diameter 7: True
+d18D7(7,290,828) 10 6561747..7290828 session_01QYEEyGuCQM8prwtGR68CDd : n=7290828 edges=65239092 degree min=14 max=18 bipartite=yes diameter=7 sources=6561747..7290828 | RESULT VALID d=18 D=7 n=7290828 (sources in the range only)
+# ranges cover 0..7290828 exactly: True; every range VALID with n, max degree 18, bipartite, diameter 7: True
+=> every vertex reaches every vertex within 7: diameter 7, bipartite, maximum degree 18: valid for (18,7), n = 7290828.

@@ -6,7 +6,9 @@ d18D7(7,309,092) 3 1461818..2192727 session_01QYEEyH8PQ735ShCRQbpaCq : n=7309092
 d18D7(7,309,092) 4 2192727..2923636 session_01QYEEyHDUEi7sPn88hAGdGN : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=2192727..2923636 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
 d18D7(7,309,092) 5 2923636..3654546 session_01QYEEyLoumUmoNN9QJZ1qWW : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=2923636..3654546 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
 d18D7(7,309,092) 6 3654546..4385455 session_01QYEEyLZeWzhMHDVMEvVSMB : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=3654546..4385455 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
+d18D7(7,309,092) 7 4385455..5116364 session_01QYEEyKoRidwh5epGyLXjra : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=4385455..5116364 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
 d18D7(7,309,092) 8 5116364..5847273 session_01QYEEyJ7uuMp82NtdrCTUpj : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=5116364..5847273 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
 d18D7(7,309,092) 9 5847273..6578182 session_01QYEEyGjNJsMdhjeKprnq3Q : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=5847273..6578182 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
 d18D7(7,309,092) 10 6578182..7309092 local (coordinator machine, 09:44:07-10:59:26 UTC) : n=7309092 edges=65483966 degree min=14 max=18 bipartite=yes diameter=7 sources=6578182..7309092 | RESULT VALID d=18 D=7 n=7309092 (sources in the range only)
-# ranges cover 0..7309092 exactly: False; every range VALID with n, max degree 18, bipartite, diameter 7: True
+# ranges cover 0..7309092 exactly: True; every range VALID with n, max degree 18, bipartite, diameter 7: True
+=> every vertex reaches every vertex within 7: diameter 7, bipartite, maximum degree 18: valid for (18,7), n = 7309092.

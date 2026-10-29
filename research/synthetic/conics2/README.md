@@ -17,8 +17,8 @@ incidence graph of H(q)) and D (its dual), friendly transitions (types differ, i
 | (16,7) | 13, HDHDH | 4,052,108 / 4,081,072 | **4,081,410** | 29,535 + 29,535 | random, degree 11 | passed (8 ranges) |
 | (17,7) | 13, HHDHHDD | 5,631,276 (beyond table) | **5,693,959** | 32,356 + 30,327 | random, degree 10 | passed (8 ranges) |
 |  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | passed (8 ranges) |
-| (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | CHECK18N |
-|  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | CHECK18 |
+| (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | passed (10 ranges, one local) |
+|  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | passed (10 ranges) |
 | (19,7) | 16, HDHDH | 11,184,810 (beyond table) | 11,316,940 (candidate) | 66,065 + 66,065 | random, degree 14 | CHECK19 |
 | (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | 15,795,219 (candidate) | 70,163 + 66,322 | random, degree 13 | CHECK20 |
 
@@ -162,3 +162,17 @@ beyond 6, all to be joined through the clusters (hubfar from all 68,880 hubs was
   check_results.txt: their result lines, copied from the raw tool output.
 - Solutions: research/frontier/sols/d1xD7_hex*_typedwhisk*.sol (each names its inputs by sha256).
 - Squad round: research/squads/conics2-r1/ (brief, scorers, data, cards, scoreboard); research/squads/LOG.md.
+
+## 7. State of the all-pairs checks at the end of the job
+
+Complete (every source range VALID, ranges cover all vertices; d1xD7/checks/): (14,7) 1,802,642; (15,7) 2,512,488 and
+2,509,944; (16,7) 4,081,410; (17,7) 5,693,959 and 5,693,790; (18,7) 7,309,092 and 7,290,828.
+
+Not complete (Computer-checked only on the ranges listed in d19D7/checks/ and d20D7/checks/):
+- (19,7) 11,316,940, 16 ranges of 707,309 sources: STATE19
+- (20,7) 15,795,219, 24 ranges of 658,135 sources: STATE20
+
+A range of the q = 16 graphs takes 1.5 to 4.5 hours on a 4-core worker. Workers still running when the job ended keep
+running (nohup); their result can be read later from their transcripts (check_sessions.txt names the session of every
+range). Some workers checked the earlier q = 16 graphs (n = 11,316,428 and 15,794,963, before the q^2 lines of
+Proposition 1 were added); those results are not recorded, since the graphs are superseded.
