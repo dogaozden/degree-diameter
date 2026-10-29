@@ -1,0 +1,6 @@
+q=11 k=2 d=9 K_B=14895 K_A=14895: rand seed 2: rand seed=2 K1=14895 K2=14895 degree min=9 max=9 far_same_colour_pairs=0 / RESULT VALID HG(14895,14895;9)
+q=13 k=2 d=11 K_B=28913 K_A=28913: rand seed 1: rand seed=1 K1=28913 K2=28913 degree min=11 max=11 far_same_colour_pairs=0 / RESULT VALID HG(28913,28913;11)
+q=11 k=3 d=8 K_B=16228 K_A=15017: rand seed 3 | haar K_A on both sides: rand seed=3 K1=16228 K2=15017 degree min=7 max=8 far_same_colour_pairs=606064 / RESULT INVALID / haar K=15017 d=8 try=29 |S-S|=57 covered=5949 S=5407,2793,12343,1290,5828,9123,10311,725 / RESULT NOT FOUND
+q=13 k=3 d=10 K_B=31112 K_A=29083: rand seed 3 | haar K_A on both sides: rand seed=3 K1=31112 K2=29083 degree min=9 max=10 far_same_colour_pairs=334 / RESULT INVALID / haar K=29083 d=10 try=29 |S-S|=91 covered=17827 S=11752,8843,26787,16732,18441,13158,11542,14602,6622,20640 / RESULT NOT FOUND
+q=16 k=3 d=13 K_B=70163 K_A=66322: rand seed 1: rand seed=1 K1=70163 K2=66322 degree min=12 max=13 far_same_colour_pairs=0 / RESULT VALID HG(70163,66322;13)
+q=17 k=3 d=14 K_B=89032 K_A=84407: rand seed 3 | haar K_A on both sides: RESULT INVALID repeated edge / haar K=84407 d=14 try=29 |S-S|=183 covered=76403 S=82579,73912,44780,9910,14846,61270,42539,10598,62988,24190,34051,25831,26084,24842 / RESULT NOT FOUND

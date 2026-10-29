@@ -1,0 +1,46 @@
+=== q=4 ===
+  loaded H(4): N=1365 points, L=1365 lines
+    [PASS] H(q) points all singular (Q=0)
+    [PASS] H(q): 1365 lines, q+1 points per line, q+1 lines per point
+    [PASS] H(q): Plucker equations of Tits hold on every line
+    [PASS] v: the line through e1 and e6 exists and is unique
+    delta = 2  (absolute trace 1)
+    [PASS] G zero-free on F^2 minus 0 for some (c0,c1)
+    (c0,c1) = (2, 0)
+    [PASS] |S| = q^3+1 = 65
+    [PASS] P_S = points of H in Pi, |P_S| = (q+1)(q^3+1) = 325
+    [PASS] S is a spread of P_S (each point of P_S on exactly one S-line)
+    [PASS] v is in S
+    [PASS] |L_v| = q(q+1) = 20
+    [PASS] points at distance <=3 from v are exactly X2=X5=0
+    [PASS] free points (not in Pi, distance 5 from v) = q^3(q^2-1) = 960
+    |W_z| per z: min 16 max 16; S_z lines inside Pi (excluded) 0; S_z lines (not v) meeting v 0
+    [PASS] |W| = q^2(q^2-1) = 240 (W_z disjoint)
+    [PASS] every free point is on exactly one W-line
+    [PASS] nu is constant on every line of S other than v
+    [PASS] every S-line other than v meets 0 or q+1 W-lines (one at each point)
+    [PASS] exactly q^2 = 16 S-lines (not v) meet no W-line, and they are the nu=0 ones
+    [PASS] R_L = L_v + W + S_0 is a disjoint union of size q^4+q^2+q = 276
+    [PASS] R_L is a dual segment set
+    [PASS] every point of H(q) is on a line of R_L
+    [PASS] R_L is maximal: no line outside R_L can be added
+    [PASS] R_H = P_S is a segment set of size (q+1)(q^3+1)
+    [PASS] found a 3-space Sigma with |Sigma cap H| = q^2+1 and no line inside
+    [PASS] R: pairwise opposite (distance 6 in the incidence graph)
+    [PASS] sigma: R -> R* via f, C(x) -> lines meeting f(x), rest -> rest (bijection of points onto lines)
+    sizes: {'S': 65, 'PS': 325, 'Lv': 20, 'W': 240, 'S0': 16, 'RL': 276, 'RH': 325, 'R': 17, 'Rstar': 17, 'free': 960}
+  --- k=2, L=5 levels ---
+    apsp: n=13650 edges=45904 degree min=5 max=7 bipartite=yes diameter=7 | RESULT VALID d=7 D=7 n=13650
+    alpha=[342, 293, 342, 552, 342] beta=[293, 650, 293, 342, 293]
+    min alpha=293 (pred 293), min beta=293 (pred 293); per-level prediction match: True
+    control (extra line in R_L, breaks dual segment): VALID=False diameter=8
+    control (extra point in R_H, breaks segment): VALID=False diameter=8
+  k=2: apsp VALID=True diameter=7 n=13650
+  --- k=3, L=7 levels ---
+    apsp: n=19110 edges=72681 degree min=5 max=8 bipartite=yes diameter=7 | RESULT VALID d=8 D=7 n=19110
+    alpha=[667, 569, 667, 569, 359, 569, 359] beta=[310, 667, 310, 667, 569, 667, 569]
+    min alpha=359 (pred 359), min beta=310 (pred 310); per-level prediction match: True
+    control (extra line in R_L, breaks dual segment): VALID=False diameter=8
+    control (extra point in R_H, breaks segment): VALID=False diameter=8
+  k=3: apsp VALID=True diameter=7 n=19110
+  wrote /home/user/degree-diameter/research/squads/d7thm-r1/c4/result_q4_s2.json

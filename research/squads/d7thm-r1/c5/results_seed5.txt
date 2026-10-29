@@ -1,0 +1,101 @@
+base H(2): n=126 maxdeg=3 maxsame=6 maxdiff=5 connected=1
+base H(3): n=728 maxdeg=4 maxsame=6 maxdiff=5 connected=1
+base PG(2,2): n=14 maxdeg=3 maxsame=2 maxdiff=3 connected=1
+base PG(2,3): n=26 maxdeg=4 maxsame=2 maxdiff=3 connected=1
+base PG(2,4): n=42 maxdeg=5 maxsame=2 maxdiff=3 connected=1
+base PG(2,5): n=62 maxdeg=6 maxsame=2 maxdiff=3 connected=1
+A s=2 c=2 k=0: n=187 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=6 (pred 6, bound 6) PASS
+A s=2 c=2 k=1: n=202 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=6 (pred 6, bound 6) PASS
+A s=2 c=2 k=2: n=195 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=6 (pred 6, bound 6) PASS
+A s=2 c=2 k=3: n=190 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=6 (pred 6, bound 6) PASS
+A s=2 c=2 k=4: n=180 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=6 (pred 6, bound 6) PASS
+A s=2 c=3 k=0: n=248 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=9 (pred 9, bound 9) PASS
+A s=2 c=3 k=1: n=256 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=9 (pred 9, bound 9) PASS
+A s=2 c=3 k=2: n=232 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=9 (pred 9, bound 9) PASS
+A s=2 c=3 k=3: n=234 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=9 (pred 9, bound 9) PASS
+A s=2 c=3 k=4: n=265 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=9 (pred 9, bound 9) PASS
+A s=3 c=2 k=0: n=1103 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=8 (pred 8, bound 8) PASS
+A s=3 c=2 k=1: n=1097 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=8 (pred 8, bound 8) PASS
+A s=3 c=2 k=2: n=1088 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=8 (pred 8, bound 8) PASS
+A s=3 c=2 k=3: n=1070 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=8 (pred 8, bound 8) PASS
+A s=3 c=2 k=4: n=1091 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=8 (pred 8, bound 8) PASS
+A s=3 c=3 k=0: n=1436 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=12 (pred 12, bound 12) PASS
+A s=3 c=3 k=1: n=1486 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=12 (pred 12, bound 12) PASS
+A s=3 c=3 k=2: n=1451 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=12 (pred 12, bound 12) PASS
+A s=3 c=3 k=3: n=1466 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=12 (pred 12, bound 12) PASS
+A s=3 c=3 k=4: n=1459 maxsame=6 maxdiff=5 sameviol=0 diffviol=0 maxdeg=12 (pred 12, bound 12) PASS
+(A) pass 20/20; degree formula exact in 20/20
+B inst=0 r=2: n=1669 maxsame=6 sameviol=0 maxdeg=13 bound=13 PASS :: blowup(H(3),c=3)[A710,B714],blowup(H(2),c=3)[A122,B123]
+B inst=1 r=3: n=1703 maxsame=6 sameviol=0 maxdeg=13 bound=14 PASS :: blowup(H(3),c=3)[A715,B711],blowup(H(2),c=3)[A128,B135],C(s=2,t=3,u=1,cP=0,cL=0,gP=0,gL=0)[A7,B7]
+B inst=2 r=3: n=2776 maxsame=6 sameviol=0 maxdeg=13 bound=14 PASS :: blowup(H(3),c=3)[A704,B712],blowup(H(3),c=2)[A568,B552],blowup(H(2),c=3)[A121,B119]
+B inst=3 r=3: n=1651 maxsame=6 sameviol=0 maxdeg=11 bound=11 PASS :: blowup(H(3),c=2)[A561,B561],blowup(H(2),c=3)[A136,B138],blowup(H(2),c=3)[A130,B125]
+B inst=4 r=4: n=3198 maxsame=6 sameviol=0 maxdeg=14 bound=15 PASS :: blowup(H(3),c=3)[A760,B748],blowup(H(3),c=3)[A734,B689],blowup(H(2),c=2)[A92,B97],C(s=4,t=1,u=3,cP=3,cL=13,gP=2,gL=18)[A36,B42]
+B inst=5 r=2: n=1187 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(3),c=2)[A531,B543],C(s=4,t=3,u=2,cP=13,cL=20,gP=13,gL=25)[A54,B59]
+B inst=6 r=2: n=1285 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(3),c=2)[A555,B544],blowup(H(2),c=2)[A91,B95]
+B inst=7 r=2: n=1305 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(3),c=2)[A552,B552],blowup(H(2),c=2)[A101,B100]
+B inst=8 r=5: n=3663 maxsame=6 sameviol=0 maxdeg=12 bound=12 PASS :: blowup(H(3),c=2)[A545,B568],blowup(H(3),c=2)[A554,B545],blowup(H(3),c=2)[A537,B532],blowup(H(2),c=2)[A99,B100],blowup(H(2),c=2)[A92,B91]
+B inst=9 r=2: n=1291 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(3),c=2)[A552,B557],C(s=3,t=3,u=1,cP=39,cL=39,gP=39,gL=39)[A91,B91]
+B inst=10 r=3: n=701 maxsame=6 sameviol=0 maxdeg=11 bound=11 PASS :: blowup(H(2),c=3)[A136,B135],blowup(H(2),c=3)[A121,B134],C(s=4,t=3,u=1,cP=63,cL=63,gP=7,gL=0)[A91,B84]
+B inst=11 r=2: n=297 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(2),c=2)[A87,B98],C(s=4,t=3,u=2,cP=22,cL=8,gP=37,gL=3)[A66,B46]
+B inst=12 r=3: n=1798 maxsame=6 sameviol=0 maxdeg=14 bound=14 PASS :: blowup(H(3),c=3)[A731,B745],blowup(H(2),c=3)[A123,B137],C(s=5,t=2,u=2,cP=0,cL=0,gP=0,gL=0)[A31,B31]
+B inst=13 r=3: n=2979 maxsame=6 sameviol=0 maxdeg=13 bound=14 PASS :: blowup(H(3),c=3)[A733,B741],blowup(H(3),c=3)[A703,B720],C(s=4,t=1,u=3,cP=19,cL=16,gP=3,gL=2)[A40,B42]
+B inst=14 r=2: n=1289 maxsame=6 sameviol=0 maxdeg=9 bound=9 PASS :: blowup(H(3),c=2)[A558,B533],blowup(H(2),c=2)[A104,B94]
+B inst=15 r=2: n=439 maxsame=6 sameviol=0 maxdeg=10 bound=10 PASS :: blowup(H(2),c=3)[A128,B128],blowup(H(2),c=2)[A93,B90]
+B inst=16 r=4: n=2834 maxsame=6 sameviol=0 maxdeg=14 bound=15 PASS :: blowup(H(3),c=3)[A725,B752],blowup(H(3),c=2)[A542,B567],blowup(H(2),c=2)[A94,B96],C(s=4,t=2,u=3,cP=5,cL=0,gP=11,gL=0)[A32,B26]
+B inst=17 r=4: n=2085 maxsame=6 sameviol=0 maxdeg=14 bound=15 PASS :: blowup(H(3),c=3)[A719,B734],blowup(H(2),c=3)[A126,B113],blowup(H(2),c=2)[A102,B95],blowup(H(2),c=2)[A94,B102]
+B inst=18 r=5: n=3941 maxsame=6 sameviol=0 maxdeg=16 bound=16 PASS :: blowup(H(3),c=3)[A728,B718],blowup(H(3),c=2)[A547,B546],blowup(H(3),c=2)[A534,B543],blowup(H(2),c=3)[A131,B132],C(s=2,t=2,u=2,cP=9,cL=11,gP=17,gL=11)[A35,B27]
+B inst=19 r=4: n=689 maxsame=6 sameviol=0 maxdeg=12 bound=12 PASS :: blowup(H(2),c=3)[A128,B129],blowup(H(2),c=2)[A93,B99],blowup(H(2),c=2)[A92,B93],C(s=3,t=1,u=1,cP=8,cL=11,gP=6,gL=4)[A30,B25]
+(B) pass 20/20; resampled 6 times for the side-size ordering constraint
+NEG inst=0 r=2: maxsame=8 sameviol=752 example pair (250,461) dist 8 :: C(s=5,t=3,u=1,cP=93,cL=93,gP=93,gL=93)
+NEG inst=1 r=2: maxsame=8 sameviol=30 example pair (156,236) dist 8 :: C(s=5,t=2,u=1,cP=24,cL=62,gP=22,gL=62)
+NEG inst=2 r=2: maxsame=6 sameviol=0 example pair (-1,-1) dist -1 :: C(s=5,t=2,u=2,cP=0,cL=62,gP=0,gL=124)
+NEG inst=3 r=3: maxsame=8 sameviol=14 example pair (137,366) dist 8 :: C(s=3,t=3,u=3,cP=39,cL=39,gP=117,gL=82)
+NEG inst=4 r=3: maxsame=8 sameviol=94 example pair (210,723) dist 8 :: C(s=5,t=3,u=2,cP=93,cL=43,gP=186,gL=47)
+NEG inst=5 r=3: maxsame=6 sameviol=0 example pair (-1,-1) dist -1 :: C(s=5,t=3,u=3,cP=72,cL=20,gP=79,gL=33)
+NEG inst=6 r=2: maxsame=8 sameviol=476 example pair (128,304) dist 8 :: C(s=4,t=2,u=3,cP=42,cL=42,gP=126,gL=52)
+NEG inst=7 r=3: maxsame=8 sameviol=1324 example pair (233,528) dist 8 :: C(s=5,t=3,u=3,cP=92,cL=79,gP=147,gL=125)
+NEG inst=8 r=2: maxsame=8 sameviol=466 example pair (248,546) dist 8 :: C(s=5,t=3,u=3,cP=93,cL=93,gP=185,gL=44)
+NEG inst=9 r=2: maxsame=8 sameviol=352 example pair (155,369) dist 8 :: C(s=4,t=3,u=2,cP=63,cL=50,gP=91,gL=89)
+NEG inst=10 r=3: maxsame=8 sameviol=2 example pair (165,273) dist 8 :: C(s=4,t=2,u=2,cP=42,cL=25,gP=84,gL=40)
+NEG inst=11 r=3: maxsame=8 sameviol=20 example pair (198,402) dist 8 :: C(s=5,t=2,u=2,cP=55,cL=59,gP=92,gL=75)
+NEG inst=12 r=3: maxsame=8 sameviol=4 example pair (286,558) dist 8 :: C(s=5,t=2,u=2,cP=59,cL=60,gP=48,gL=78)
+NEG inst=13 r=2: maxsame=8 sameviol=44 example pair (86,210) dist 8 :: C(s=3,t=2,u=3,cP=26,cL=26,gP=68,gL=61)
+NEG inst=14 r=2: maxsame=8 sameviol=406 example pair (185,493) dist 8 :: C(s=5,t=3,u=3,cP=93,cL=23,gP=146,gL=69)
+NEG inst=15 r=2: maxsame=8 sameviol=56 example pair (180,330) dist 8 :: C(s=5,t=2,u=1,cP=58,cL=56,gP=28,gL=49)
+NEG inst=16 r=2: maxsame=8 sameviol=6 example pair (167,269) dist 8 :: C(s=5,t=2,u=1,cP=61,cL=42,gP=45,gL=15)
+NEG inst=17 r=2: maxsame=8 sameviol=18 example pair (147,235) dist 8 :: C(s=5,t=2,u=1,cP=19,cL=62,gP=19,gL=62)
+NEG inst=18 r=3: maxsame=8 sameviol=278 example pair (210,508) dist 8 :: C(s=5,t=3,u=3,cP=84,cL=62,gP=233,gL=48)
+NEG inst=19 r=2: maxsame=8 sameviol=12 example pair (175,311) dist 8 :: C(s=5,t=3,u=2,cP=18,cL=93,gP=14,gL=69)
+(B-neg) same-colour violation found in 18/20; resampled 761 times
+C inst=0 uniform: n=163 nA=71 nB=92 maxsame=6 sameviol=0 maxdeg=8 bound=8 PASS :: C(s=5,t=2,u=1,cP=40,cL=27,gP=13,gL=21)
+C inst=1 uniform: n=52 nA=26 nB=26 maxsame=6 sameviol=0 maxdeg=5 bound=5 PASS :: C(s=2,t=2,u=1,cP=13,cL=10,gP=9,gL=6)
+C inst=2 uniform: n=62 nA=30 nB=32 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=2,t=3,u=2,cP=4,cL=16,gP=7,gL=21)
+C inst=3 uniform: n=62 nA=22 nB=40 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=2,t=3,u=2,cP=18,cL=9,gP=6,gL=15)
+C inst=4 uniform: n=96 nA=51 nB=45 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=5,t=1,u=3,cP=3,cL=14,gP=6,gL=11)
+C inst=5 uniform: n=95 nA=45 nB=50 maxsame=6 sameviol=0 maxdeg=8 bound=8 PASS :: C(s=5,t=2,u=1,cP=10,cL=12,gP=2,gL=9)
+C inst=6 uniform: n=122 nA=74 nB=48 maxsame=6 sameviol=0 maxdeg=8 bound=8 PASS :: C(s=5,t=2,u=1,cP=1,cL=42,gP=1,gL=16)
+C inst=7 uniform: n=118 nA=42 nB=76 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=3,t=2,u=2,cP=21,cL=21,gP=8,gL=42)
+C inst=8 uniform: n=51 nA=25 nB=26 maxsame=6 sameviol=0 maxdeg=5 bound=5 PASS :: C(s=3,t=1,u=2,cP=11,cL=3,gP=9,gL=2)
+C inst=9 uniform: n=202 nA=111 nB=91 maxsame=6 sameviol=0 maxdeg=8 bound=8 PASS :: C(s=4,t=3,u=3,cP=46,cL=46,gP=44,gL=24)
+C inst=10 uniform: n=69 nA=35 nB=34 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=2,t=3,u=3,cP=12,cL=18,gP=10,gL=15)
+C inst=11 uniform: n=88 nA=44 nB=44 maxsame=6 sameviol=0 maxdeg=7 bound=8 PASS :: C(s=5,t=2,u=3,cP=1,cL=13,gP=0,gL=12)
+C inst=12 uniform: n=45 nA=23 nB=22 maxsame=6 sameviol=0 maxdeg=5 bound=5 PASS :: C(s=3,t=1,u=1,cP=6,cL=4,gP=6,gL=3)
+C inst=13 uniform: n=166 nA=66 nB=100 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=5,t=1,u=2,cP=31,cL=19,gP=16,gL=38)
+C inst=14 uniform: n=95 nA=37 nB=58 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=5,t=1,u=1,cP=27,cL=4,gP=2,gL=0)
+C inst=15 extreme: n=85 nA=46 nB=39 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=3,t=2,u=3,cP=26,cL=1,gP=32,gL=0)
+C inst=16 extreme: n=210 nA=63 nB=147 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=4,t=2,u=3,cP=0,cL=42,gP=0,gL=126)
+C inst=17 extreme: n=92 nA=44 nB=48 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=4,t=1,u=1,cP=15,cL=18,gP=5,gL=12)
+C inst=18 extreme: n=41 nA=15 nB=26 maxsame=6 sameviol=0 maxdeg=5 bound=5 PASS :: C(s=3,t=1,u=3,cP=13,cL=0,gP=2,gL=0)
+C inst=19 extreme: n=63 nA=13 nB=50 maxsame=4 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=3,t=3,u=1,cP=37,cL=0,gP=0,gL=0)
+C inst=20 extreme: n=42 nA=21 nB=21 maxsame=2 sameviol=0 maxdeg=5 bound=6 PASS :: C(s=4,t=1,u=3,cP=0,cL=0,gP=0,gL=0)
+C inst=21 extreme: n=153 nA=109 nB=44 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=4,t=2,u=2,cP=23,cL=42,gP=46,gL=0)
+C inst=22 extreme: n=84 nA=42 nB=42 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=4,t=1,u=1,cP=0,cL=21,gP=0,gL=21)
+C inst=23 extreme: n=74 nA=32 nB=42 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=3,t=2,u=1,cP=10,cL=19,gP=0,gL=19)
+C inst=24 extreme: n=283 nA=128 nB=155 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=5,t=1,u=3,cP=31,cL=31,gP=66,gL=93)
+C inst=25 extreme: n=154 nA=32 nB=122 maxsame=4 sameviol=0 maxdeg=9 bound=9 PASS :: C(s=5,t=3,u=2,cP=91,cL=1,gP=0,gL=0)
+C inst=26 extreme: n=26 nA=13 nB=13 maxsame=2 sameviol=0 maxdeg=4 bound=5 PASS :: C(s=3,t=1,u=2,cP=0,cL=0,gP=0,gL=0)
+C inst=27 extreme: n=72 nA=31 nB=41 maxsame=6 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=2,t=3,u=1,cP=13,cL=21,gP=3,gL=21)
+C inst=28 extreme: n=35 nA=7 nB=28 maxsame=4 sameviol=0 maxdeg=6 bound=6 PASS :: C(s=2,t=3,u=2,cP=21,cL=0,gP=0,gL=0)
+C inst=29 extreme: n=201 nA=96 nB=105 maxsame=6 sameviol=0 maxdeg=7 bound=7 PASS :: C(s=4,t=2,u=1,cP=42,cL=42,gP=33,gL=42)
+(C) pass 30/30
+SUMMARY seed=5: A 20/20, B 20/20, C 30/30, score(A+B+C)=70/70; negative control violations 18/20

@@ -1,0 +1,203 @@
+{
+ "q": 11,
+ "c": 3,
+ "valid_c": [
+  1,
+  3,
+  4,
+  5,
+  9
+ ],
+ "c0c1": [
+  1,
+  1
+ ],
+ "passed": 36,
+ "total": 36,
+ "checks": [
+  {
+   "name": "GF(11) own tables form a field (assoc/distrib/inverses)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "header: q, N=L=(q^6-1)/(q-1)",
+   "passed": true,
+   "detail": "N=177156 L=177156 expect 177156"
+  },
+  {
+   "name": "points normalized (first nonzero coord = 1) and pairwise distinct",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "every stored point satisfies Q(X)=X0X4+X1X5+X2X6-X3^2=0 (own GF arithmetic)",
+   "passed": true,
+   "detail": "nonzero Q values: 0"
+  },
+  {
+   "name": "every point on q+1 lines; every line has q+1 distinct points",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "every line satisfies the six Tits equations on Pluecker coordinates",
+   "passed": true,
+   "detail": "failing lines: 0"
+  },
+  {
+   "name": "every line = normalized span of its first two points (q+1 points, same set)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "lines pairwise distinct",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "H(q) connected, eccentricity of v is 6 (lines) / 5 (points)",
+   "passed": true,
+   "detail": "max line dist 6, max point dist 5"
+  },
+  {
+   "name": "Pi: X0+cX4=0 with -c a non-square (c chosen)",
+   "passed": true,
+   "detail": "c=3, -c=8, valid c: [1, 3, 4, 5, 9]"
+  },
+  {
+   "name": "|P_S| = (q+1)(q^3+1) (points of H(q) in Pi)",
+   "passed": true,
+   "detail": "15984"
+  },
+  {
+   "name": "|S| = q^3+1 lines of H(q) inside Pi",
+   "passed": true,
+   "detail": "1332"
+  },
+  {
+   "name": "S is a spread of P_S: every point of P_S on exactly one S-line",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "pairwise opposite: no line of H(q) meets two lines of S",
+   "passed": true,
+   "detail": "max S-lines met by one line: 1"
+  },
+  {
+   "name": "v (through e1,e6) exists and lies in S",
+   "passed": true,
+   "detail": "v=23"
+  },
+  {
+   "name": "|L_v| = q(q+1) lines != v meeting v",
+   "passed": true,
+   "detail": "132"
+  },
+  {
+   "name": "points at distance <= 3 from v are exactly X2=X5=0 (and there are (q+1)(q^2+1))",
+   "passed": true,
+   "detail": "1464"
+  },
+  {
+   "name": "free points = not in Pi and at distance 5 from v; count q^3(q^2-1)",
+   "passed": true,
+   "detail": "159720"
+  },
+  {
+   "name": "G(a,b)=(c0a+c1b)(a^2+cb^2)-b^3 zero-free on F^2\\0 for some (c0,c1)",
+   "passed": true,
+   "detail": "(c0,c1)=(1,1); 36 valid pairs of 121"
+  },
+  {
+   "name": "W lines are distinct over different z (no line counted twice)",
+   "passed": true,
+   "detail": "14520 incidences, 14520 distinct"
+  },
+  {
+   "name": "|W| = q^2(q^2-1)",
+   "passed": true,
+   "detail": "14520"
+  },
+  {
+   "name": "W lines are not in S",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "no point of a W line at distance <= 3 from v",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "each free point lies on exactly one W line",
+   "passed": true,
+   "detail": "free-point W-degree histogram: [0, 159720]"
+  },
+  {
+   "name": "each W line meets Pi in one point which is off v (nu defined)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "nu constant on each spread line != v (and well defined there)",
+   "passed": true,
+   "detail": "lines with non-constant nu: 0"
+  },
+  {
+   "name": "each spread line != v meets q+1 or 0 W-lines (one per point)",
+   "passed": true,
+   "detail": "counts histogram: {0: 121, 12: 1210}"
+  },
+  {
+   "name": "sum over spread lines of W-incidences = |W| (each W line meets one spread line)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "name": "exactly q^2 spread lines != v meet no W-line",
+   "passed": true,
+   "detail": "121"
+  },
+  {
+   "name": "the spread lines meeting no W-line are exactly those with nu = 0",
+   "passed": true,
+   "detail": "#nu=0 lines: 121"
+  },
+  {
+   "name": "R_L = L_v + W + S_0 has q^4+q^2+q lines (disjoint parts)",
+   "passed": true,
+   "detail": "|R_L|=14773 expect 14773"
+  },
+  {
+   "name": "every point of H(q) lies on a line of R_L",
+   "passed": true,
+   "detail": "uncovered points: 0"
+  },
+  {
+   "name": "R_L is a dual segment set: each line of R_L has at most one point shared with other R_L lines",
+   "passed": true,
+   "detail": "max: 1, lines with 2+: 0"
+  },
+  {
+   "name": "maximal: no line outside R_L can be added (every outside line violates)",
+   "passed": true,
+   "detail": "addable outside lines: 0 of 162383"
+  },
+  {
+   "name": "P_S is a segment set: for each p, at most one line through p contains other P_S points",
+   "passed": true,
+   "detail": "max lines-with-other-points through a P_S point: 1"
+  },
+  {
+   "name": "|P_S| = (q+1)(q^3+1) and it is a segment set of that size",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "v": 23,
+ "W": 14520,
+ "R_L": 14773,
+ "S0": 121
+}
