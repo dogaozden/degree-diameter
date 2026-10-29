@@ -26,6 +26,9 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
 
 ## Summary
 
+- **(7,5): 1,200 vertices** (was 1,152), see the top of this file. It came from the coset-graph route (annealing over
+  unions of double cosets with stabiliser order 2), but it is a Haar graph of SL(2,5) x Z5 whose connection set is
+  closed under an involutory automorphism. The genuinely non-Haar constructions came no closer than cost 4.
 - **Exact negative results (5,5).** No voltage lift of the 2+2 base [[1,4],[4,1]] by any group of order 89..95
   (356..380 vertices) has diameter 5 (exh/b4a1x.c, every group, seconds each; completeness checked against brute
   force). No Z89-lift of the other 2+2 base [[2,3],[3,2]] does either (exh/cyc22.c). Together with the Haar search
@@ -97,6 +100,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 
 | cell | construction | vertices | best cost | note |
 |---|---|---:|---:|---|
+| **(7,5)** | **coset graph of C5 x (SL(2,5):C2) = SmallGroup(1200,475), \|H\| = 2 = Haar graph of SL(2,5) x Z5** | **1200** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID, build_haar2.py VALID; orbit-type Haar (S closed under an involutory automorphism); records/** |
 | (5,5) | Z89-lifts of the 2+2 base [[2,3],[3,2]] | 356 | none exists | exhaustive (exh/cyc22.c, 22 CPU-min); solutions exist up to Z80 at least |
 | (5,5) | lifts of 2+2 base [[1,4],[4,1]] over every group of order 89..95 | 356-380 | none exists | **exhaustive** (exh/b4a1x.c, seconds per group); annealing had reached cost 2 at 360 over C9 x D10 and C5 x ((C3 x C3):C2), so that plateau is a real obstruction |
 | (5,5) | record 3+3 base over SmallGroup(60,3) | 360 | 4 | squad r2-c2 |
