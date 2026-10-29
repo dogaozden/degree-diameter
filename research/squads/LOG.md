@@ -64,7 +64,9 @@ Cards and best scores:
 - c2 (A) Theorem C sets with copied distance-4 structure / annealing on sigma: 81; under the record sigma the points where
   sigma is a local duality are exactly R; swaps never grow it, random starts reach 0.
 - c3 (A) add a point and repair sigma by local search: best 589 pairs still beyond 7 at |R| = 82.
-- c4 (A) whole three-level graph with hubs instead of one transition: SEE_C4
+- c4 (A) whole three-level graph with hubs instead of one transition: 81; at K = 82 (one extra freed point, hub graph
+  rewired) 864 to 1,188 ordered pairs beyond 7 over 12 extra points, all level-to-level, none involving a hub; local search
+  on sigma reached 744. The third level and the hubs repair nothing.
 - c5 (A) wildcard, exact SAT at q = 3: too large without symmetry breaking (no result).
 - c6 (B) exact: maximum dual segment set of H(2) = 25 (26 UNSAT); q = 3: 112 (ovoid pencils, the bound); q = 4: HiGHS
   found nothing above 260 in 150 s.

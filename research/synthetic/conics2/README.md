@@ -135,7 +135,12 @@ places each coset on one spread line (the free slots there are spread points, 12
 q = 13). (15,7): G = PSL(2,31) (14,880), |S| = 8, subgroups of orders 16, 15 (line side) and 15, 16, 15 (point side);
 the hub graph alone leaves 89,280 same-side pairs beyond 6, all joined through the clusters: research/d15D7b/hubfar.c
 from all 29,760 hubs gives far_pairs=0, max_ecc=7 (d15D7/checks/hubfar.txt). This is the PSL(2,31) graph that the
-plain search of job "conics" missed by one element.
+plain search of job "conics" missed by one element. (15,7), larger: G = Z_673 x| Z_24 (16,152; clhub2.py), |S| = 8,
+subgroups of order 24 (two line-side and three point-side cluster levels); hubfar from all 32,304 hubs gives
+far_pairs=0, max_ecc=7 (d15D7/checks/hubfar_meta.txt). (18,7): G = PSL(2,41) (34,440), |S| = 9, subgroups of orders
+10, 21, 20, 20, 21 (line side) and 21, 10, 21, 21 (point side); the hub graph alone leaves 654,360 same-side pairs
+beyond 6; HUBFAR18. PSL(2,43) (39,732 hubs) did not cover: the search stopped with 2 and 6 elements missing
+(d18D7/clhub_psl43.log).
 
 ## 6. Files
 
