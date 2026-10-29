@@ -11,16 +11,22 @@ incidence graph of H(q)) and D (its dual), friendly transitions (types differ, i
 
 | cell | q, levels | before this job (master / job "conics") | this job | hubs per side | hub graph | all-pairs check |
 |---|---|---:|---:|---|---|---|
-| (14,7) | 11, HDHDH | 1,789,588 / 1,802,400 | **1,802,642** | 15,541 + 15,541 | random, degree 9 | passed (all sources, local) |
-| (15,7) | 11, HHDHHDD | 2,501,491 / 2,504,544 | **2,512,488** | 16,152 + 16,152 | Haar Z_673 x\| Z_24, degree 8, clusters | passed (2 ranges: local + 1 worker) |
+| (14,7) | 11, HDHDH | 1,789,588 / 1,802,400 | **1,802,642** | 15,541 + 15,541 | random, degree 9 | passed (all sources, one local run) |
+| (15,7) | 11, HHDHHDD | 2,501,491 / 2,504,544 | **2,512,488** | 16,152 + 16,152 | Haar Z_673 x\| Z_24, degree 8, clusters | passed (one local run + one worker range) |
 |  |  |  | 2,509,944 | 14,880 + 14,880 | Haar PSL(2,31), degree 8, clusters | passed (4 ranges) |
 | (16,7) | 13, HDHDH | 4,052,108 / 4,081,072 | **4,081,410** | 29,535 + 29,535 | random, degree 11 | passed (8 ranges) |
 | (17,7) | 13, HHDHHDD | 5,631,276 (beyond table) | **5,693,959** | 32,356 + 30,327 | random, degree 10 | CHECK17N |
 |  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | passed (8 ranges) |
 | (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | CHECK18N |
 |  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | CHECK18 |
-| (19,7) | 16, HDHDH | 11,184,810 (beyond table) | **11,316,940** | 66,065 + 66,065 | random, degree 14 | CHECK19 |
-| (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | **15,795,219** | 70,163 + 66,322 | random, degree 13 | CHECK20 |
+| (19,7) | 16, HDHDH | 11,184,810 (beyond table) | 11,316,940 (candidate) | 66,065 + 66,065 | random, degree 14 | CHECK19 |
+| (20,7) | 16, HHDHHDD | 15,658,734 (beyond table) | 15,795,219 (candidate) | 70,163 + 66,322 | random, degree 13 | CHECK20 |
+
+A value counts as a result only when its all-pairs check passed (bold). The check of each graph is split into source
+ranges; every range rebuilds the graph from its solution file and compares the edge-list sha256 first. The per-cell
+check files (d1xD7/checks/, written by assemble_checks.py from check_results.txt) list every range with its raw output
+line and state whether the ranges cover all sources. The (19,7) and (20,7) graphs were built and pass every hypothesis
+the builder checks, but their all-pairs checks were not complete when the job ended (Section 7).
 
 Unchanged, with the reason (Section 4): (7,7) 23,598, (9,7) 118,238, (10,7) 225,152, (13,7) 1,064,472 (three levels: the
 hub count is the non-friendly freed set m = 81, 295, 229, 768); (11,7) 413,180 and (12,7) 693,500 (q = 9: at the cap of
@@ -30,8 +36,9 @@ How each value is obtained (Theorem 3.4 of D7_HEXAGON.md): n = (2r+1) 2N(q) + K_
 transition is repaired by Theorem B (R_H the spread points, a segment set; R_L+ of Proposition 1, a dual segment set),
 every non-friendly one by Theorem C (the lab's mirrored sets: 768 points at q = 11, 792 at q = 13; at q = 16 the 257
 points of an elliptic quadric section with sigma as in Corollary 5.3(a)), and the hubs satisfy (HG). The builder checks
-all hypotheses (Computer-checked); (HG) is checked in the hub graph alone (random and PSL(2,37) graphs) or with
-research/d15D7b/hubfar.c from every hub in the whole graph (cluster graphs). The type patterns are the best of all 2^L
+all hypotheses (Computer-checked); (HG) is checked in the hub graph alone (random and PSL(2,37) graphs), with
+research/d15D7b/hubfar.c from every hub in the whole graph (the (15,7) cluster graphs), or only by the all-pairs check
+(the (18,7) cluster graph: its hubfar run was stopped unfinished). The type patterns are the best of all 2^L
 (patterns.py, Computer-checked). Previous values: README table on master (2013 table values in D7_HEXAGON.md) and the
 beyond-table values of research/frontier/beyond/BEYOND_TABLE.md (branch claude/new-cells-beyond-etos3t), which are the
 plain level graphs (polygon covers) without hubs.
@@ -139,7 +146,7 @@ plain search of job "conics" missed by one element. (15,7), larger: G = Z_673 x|
 subgroups of order 24 (two line-side and three point-side cluster levels); hubfar from all 32,304 hubs gives
 far_pairs=0, max_ecc=7 (d15D7/checks/hubfar_meta.txt). (18,7): G = PSL(2,41) (34,440), |S| = 9, subgroups of orders
 10, 21, 20, 20, 21 (line side) and 21, 10, 21, 21 (point side); the hub graph alone leaves 654,360 same-side pairs
-beyond 6; HUBFAR18. PSL(2,43) (39,732 hubs) did not cover: the search stopped with 2 and 6 elements missing
+beyond 6, all to be joined through the clusters (hubfar from all 68,880 hubs was stopped unfinished after an hour; the all-pairs check covers it). PSL(2,43) (39,732 hubs) did not cover: the search stopped with 2 and 6 elements missing
 (d18D7/clhub_psl43.log).
 
 ## 6. Files
