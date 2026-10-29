@@ -189,7 +189,7 @@ $S_0(W)=\{n\in S\setminus\{v\}:\nu(n)=0\}$ has exactly $q^2$ lines.
 *Proof.* Whiskers through $X$ are whiskers whose point in $\Pi$ is $X$ (their other points are off $\Pi$). On $\Pi$ the
 equation of $\Pi_z$ reduces to $\alpha X_2+\beta X_5=0$ (both parities), and $(X_2,X_5)\neq(0,0)$ because $X$ is not on
 $v$ (`POLISHED.md`, Lemma 6.1(d) / 6.10). So the $z\neq0$ with $X\in\Pi_z$ form the punctured line
-$\{tz_0:t\neq0\}$, $z_0=(X_5,-X_2)$. For each of them exactly one line of $S_z$ passes through $X$ (Lemma 6.1(b)); it is
+$\{tz_0:t\neq0\}$, $z_0=(X_5,-X_2)$. For each of them exactly one line of $S_z$ passes through $X$ (Lemma 6.1(b); for even $q$ read Lemma 6.10 for 6.1 throughout); it is
 not $v$, it is not in $S$ (6.1(e)), so it meets $\Pi$ only in $X$ (6.1(c)), and different $z$ give different lines
 (6.1(e)). It is a whisker if and only if $\nu(X)=F(tz_0)$. As $G$ is a cubic form and $N$ a quadratic form,
 $F(tz_0)=tF(z_0)$, and $F(z_0)\neq0$ since $G$ has no zero. So $t\mapsto F(tz_0)$ is a bijection of
@@ -432,10 +432,12 @@ levels; in the hub graph alone $452{,}256$ and $654{,}360$ ordered same-colour p
 second number as in `conics2/README.md`); for them (HG) is covered by the all-pairs checks of the whole graphs. New random graphs at the slot counts of
 Theorem 2.2 with $m=q^2+1$: GAPRESULTS
 
-**Heuristic.** A random bipartite graph of degree $\delta$ has same-colour distances at most $6$ once $K$ is well below
-$\delta^6/\log$; the failures at $(q,k)=(11,3)$ ($\delta=8$, $K\approx16{,}000$) and $(13,4)$ ($\delta=9$,
-$K\approx58{,}000$) are where this runs out, and there the lab used Haar graphs over $\mathrm{PSL}(2,p)$ and paths
-through the levels.
+**Heuristic.** Let $M(\delta)=1+\delta(\delta-1)+\delta(\delta-1)^3+\delta(\delta-1)^5$, the most vertices of one colour
+within distance $6$ of a vertex in a graph of maximum degree $\delta$. In these runs a random hub graph with $K$
+vertices per colour worked when $M(\delta)/K\ge20$ ($(11,2)$: $20.1$; $(16,3)$: $46$; $(19,3)$: $88$), came close at
+$19.2$ ($(13,3)$: $32$ ordered far pairs left after $400$ aimed switches) and failed below ($(11,3)$: $8.5$; $(13,4)$:
+$5.2$; $(11,4)$: $1.9$). Where it fails the lab used Haar graphs over $\mathrm{PSL}(2,p)$ and paths through the levels,
+which reach fewer hubs than the slots ($16{,}152$ of $16{,}309$ at $(15,7)$, $34{,}440$ of $59{,}070$ at $(18,7)$).
 
 # 5. The cells
 
@@ -447,15 +449,20 @@ order $2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}$ from the hub counts. **Compute
 builders (`cells.out`): every slot vector equals the one printed in the make logs on branch
 `claude/conics-2-diameter-7-ic0oat`, and every order equals the $n$ of the solution file. The current graphs:
 
-| cell | $q$, types | $\lvert R_L\rvert$, $m$ | hubs per side | hub graph | $n$ | all-pairs check (`conics2/README.md`) | what proves the bound |
-|---|---|---|---|---|---:|---|---|
-| (14,7) | 11, $HDHDH$ | $\Lambda$, 768 | 15,541 + 15,541 | random, degree 9 | 1,802,642 | passed | Thm 3.1 with the lab's 768-point set; hub graph computer-checked |
-| (15,7) | 11, $HHDHHDD$ | $\Lambda$, 768 | 16,152 + 16,152 | Haar $\mathbb Z_{673}\rtimes\mathbb Z_{24}$, paths through levels | 2,512,488 | passed | (HG) only through the levels: all-pairs check |
-| (16,7) | 13, $HDHDH$ | $\Lambda$, 792 | 29,535 + 29,535 | random, degree 11 | 4,081,410 | passed | Thm 3.1 with the lab's 792-point set; hub graph computer-checked |
-| (17,7) | 13, $HHDHHDD$ | $\Lambda$, 792 | 32,356 + 30,327 | random, degree 10 | 5,693,959 | passed | same |
-| (18,7) | 13, $HHDHDHDHD$ | $\Lambda$, 792 | 34,440 + 34,440 | Haar $\mathrm{PSL}(2,41)$, paths through levels | 7,309,092 | passed | all-pairs check |
-| (19,7) | 16, $HDHDH$ | $\Lambda$, $257=q^2+1$ | 66,065 + 66,065 | random, degree 14 | 11,316,940 | 9 of 16 ranges at 11:44 UTC | $=F_2(16)$: **Theorem** (3.1 and 4.4) |
-| (20,7) | 16, $HHDHHDD$ | $\Lambda$, $257=q^2+1$ | 70,163 + 66,322 | random, degree 13 | 15,795,219 | 9 of 24 ranges at 11:44 UTC | $=F_3(16)$: Theorem 3.1 with a computer-checked hub graph |
+| cell | $q$, types | $m$ | hubs per side | hub graph | $n$ | all-pairs check | the bound follows from |
+|------|--------|----|----------|----------|--------:|----------|------------------|
+| (14,7) | 11, $HDHDH$ | 768 | 15,541 + 15,541 | random | 1,802,642 | passed | Thm 3.1 + computer (set, hub graph) |
+| (15,7) | 11, $HHDHHDD$ | 768 | 16,152 + 16,152 | Haar, clusters | 2,512,488 | passed | all-pairs check |
+| (16,7) | 13, $HDHDH$ | 792 | 29,535 + 29,535 | random | 4,081,410 | passed | Thm 3.1 + computer (set, hub graph) |
+| (17,7) | 13, $HHDHHDD$ | 792 | 32,356 + 30,327 | random | 5,693,959 | passed | Thm 3.1 + computer (set, hub graph) |
+| (18,7) | 13, $HHDHDHDHD$ | 792 | 34,440 + 34,440 | Haar, clusters | 7,309,092 | passed | all-pairs check |
+| (19,7) | 16, $HDHDH$ | 257 | 66,065 + 66,065 | random | 11,316,940 | 9/16 ranges | **Theorem** ($=F_2(16)$) |
+| (20,7) | 16, $HHDHHDD$ | 257 | 70,163 + 66,322 | random | 15,795,219 | 9/24 ranges | Thm 3.1 + computer (hub graph) ($=F_3(16)$) |
+
+All use $\Lambda=q^4+q^2+q$ (with $S_0$). Hub graphs: "random" means random bipartite of degree $q-k$ (checked
+standalone, §4); "Haar, clusters" means a Haar graph over $\mathbb Z_{673}\rtimes\mathbb Z_{24}$ resp.
+$\mathrm{PSL}(2,41)$ whose same-colour pairs are partly joined through the levels (`conics2/README.md` §5). The
+all-pairs states are those of `conics2/README.md` at 11:44 UTC.
 
 At $(19,7)$ and $(20,7)$ the built graphs use exactly the sets of Theorem 3.1 ($m=q^2+1$, the elliptic section), so their
 orders are $F_2(16)$ and $F_3(16)$. For $(19,7)$ every ingredient is proved: the sets (Corollary 1.8, Proposition 1.9),
@@ -507,7 +514,7 @@ of bound for every $q$ and every $k$, with an explicit hub graph wherever $q\ge 
 
 # Appendix: files
 
-In `research/synthetic/d7thm/` (Python 3; `pip install python-sat` for `slots.py`; C with OpenMP for `hgcheck.c`):
+In `research/synthetic/d7thm/` (Python 3; `pip install python-sat` for `slots.py`; C with OpenMP for `hgcheck.c`; commands in `d7thm/README.md`):
 
 - `slots.py` → `slots.out`: §2 (all typings of the rotational tournament for $k\le8$, all regular tournaments on 5 and 7
   levels, SAT for 9–13 levels).

@@ -388,15 +388,16 @@ of \(\Pi_z\) reduces to \(\alpha X_2+\beta X_5=0\) (both parities), and
 (\texttt{POLISHED.md}, Lemma 6.1(d) / 6.10). So the \(z\neq0\) with
 \(X\in\Pi_z\) form the punctured line \(\{tz_0:t\neq0\}\),
 \(z_0=(X_5,-X_2)\). For each of them exactly one line of \(S_z\) passes
-through \(X\) (Lemma 6.1(b)); it is not \(v\), it is not in \(S\)
-(6.1(e)), so it meets \(\Pi\) only in \(X\) (6.1(c)), and different
-\(z\) give different lines (6.1(e)). It is a whisker if and only if
-\(\nu(X)=F(tz_0)\). As \(G\) is a cubic form and \(N\) a quadratic form,
-\(F(tz_0)=tF(z_0)\), and \(F(z_0)\neq0\) since \(G\) has no zero. So
-\(t\mapsto F(tz_0)\) is a bijection of \(\mathbb F^\times\): one whisker
-through \(X\) if \(\nu(X)\neq0\), none if \(\nu(X)=0\). \(\nu\) is
-constant on spread lines by \texttt{POLISHED.md}, Lemma 6.6(d) /
-6.12(d). The count is Lemma 1.6. \(\square\)
+through \(X\) (Lemma 6.1(b); for even \(q\) read Lemma 6.10 for 6.1
+throughout); it is not \(v\), it is not in \(S\) (6.1(e)), so it meets
+\(\Pi\) only in \(X\) (6.1(c)), and different \(z\) give different lines
+(6.1(e)). It is a whisker if and only if \(\nu(X)=F(tz_0)\). As \(G\) is
+a cubic form and \(N\) a quadratic form, \(F(tz_0)=tF(z_0)\), and
+\(F(z_0)\neq0\) since \(G\) has no zero. So \(t\mapsto F(tz_0)\) is a
+bijection of \(\mathbb F^\times\): one whisker through \(X\) if
+\(\nu(X)\neq0\), none if \(\nu(X)=0\). \(\nu\) is constant on spread
+lines by \texttt{POLISHED.md}, Lemma 6.6(d) / 6.12(d). The count is
+Lemma 1.6. \(\square\)
 
 \textbf{Corollary 1.8} {[}Theorem{]}. For every prime power \(q\) with
 \(q\) odd or \(q\ge4\), in \(H(q)\): \(R_H=\mathcal P_S\) is a segment
@@ -774,6 +775,15 @@ For \(200<q\le2\cdot10^5\) Lemma 4.1 alone suffices
 (\texttt{d7thm/hubcap.py}, which finds \(s\) and \(c\) for every such
 \(q\)); for \(q>2\cdot10^5\ge300k\) use (a). \(\square\)
 
+\emph{Computer-checked.} \texttt{d7thm/build\_cert.py} builds the hub
+graph of a certificate (hexagons from \texttt{research/d10D7/hexgen2.c},
+random injections) and \texttt{hgcheck\ edges} checks it:
+\((q,k)=(16,2)\), \(\mathrm{HG}(66065,66065;14)\) (the one behind
+\((19,7)\)), \((17,2)\), \(\mathrm{HG}(84117,84117;15)\), and
+\((23,3)\), \(\mathrm{HG}(293092,281453;20)\) CERT233: no same-colour
+pair at distance more than \(6\), degrees as claimed
+(\texttt{d7thm/cert\_checks.out}).
+
 \textbf{Computer-checked hub graphs below \(q_k\)}
 (\texttt{d7thm/hgcheck.c}, own code: bit-parallel breadth-first search
 from every hub; \texttt{d7thm/hgcheck\_lab.out},
@@ -817,21 +827,21 @@ make logs on branch \texttt{claude/conics-2-diameter-7-ic0oat}, and
 every order equals the \(n\) of the solution file. The current graphs:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1600}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0800}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1067}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2400}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 cell
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(q\), types
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(\lvert R_L\rvert\), \(m\)
+\(m\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 hubs per side
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -839,35 +849,37 @@ hub graph
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 \(n\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-all-pairs check (\texttt{conics2/README.md})
+all-pairs check
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-what proves the bound
+the bound follows from
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-(14,7) & 11, \(HDHDH\) & \(\Lambda\), 768 & 15,541 + 15,541 & random,
-degree 9 & 1,802,642 & passed & Thm 3.1 with the lab's 768-point set;
-hub graph computer-checked \\
-(15,7) & 11, \(HHDHHDD\) & \(\Lambda\), 768 & 16,152 + 16,152 & Haar
-\(\mathbb Z_{673}\rtimes\mathbb Z_{24}\), paths through levels &
-2,512,488 & passed & (HG) only through the levels: all-pairs check \\
-(16,7) & 13, \(HDHDH\) & \(\Lambda\), 792 & 29,535 + 29,535 & random,
-degree 11 & 4,081,410 & passed & Thm 3.1 with the lab's 792-point set;
-hub graph computer-checked \\
-(17,7) & 13, \(HHDHHDD\) & \(\Lambda\), 792 & 32,356 + 30,327 & random,
-degree 10 & 5,693,959 & passed & same \\
-(18,7) & 13, \(HHDHDHDHD\) & \(\Lambda\), 792 & 34,440 + 34,440 & Haar
-\(\mathrm{PSL}(2,41)\), paths through levels & 7,309,092 & passed &
-all-pairs check \\
-(19,7) & 16, \(HDHDH\) & \(\Lambda\), \(257=q^2+1\) & 66,065 + 66,065 &
-random, degree 14 & 11,316,940 & 9 of 16 ranges at 11:44 UTC &
-\(=F_2(16)\): \textbf{Theorem} (3.1 and 4.4) \\
-(20,7) & 16, \(HHDHHDD\) & \(\Lambda\), \(257=q^2+1\) & 70,163 + 66,322
-& random, degree 13 & 15,795,219 & 9 of 24 ranges at 11:44 UTC &
-\(=F_3(16)\): Theorem 3.1 with a computer-checked hub graph \\
+(14,7) & 11, \(HDHDH\) & 768 & 15,541 + 15,541 & random & 1,802,642 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(15,7) & 11, \(HHDHHDD\) & 768 & 16,152 + 16,152 & Haar, clusters &
+2,512,488 & passed & all-pairs check \\
+(16,7) & 13, \(HDHDH\) & 792 & 29,535 + 29,535 & random & 4,081,410 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(17,7) & 13, \(HHDHHDD\) & 792 & 32,356 + 30,327 & random & 5,693,959 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(18,7) & 13, \(HHDHDHDHD\) & 792 & 34,440 + 34,440 & Haar, clusters &
+7,309,092 & passed & all-pairs check \\
+(19,7) & 16, \(HDHDH\) & 257 & 66,065 + 66,065 & random & 11,316,940 &
+9/16 ranges & \textbf{Theorem} (\(=F_2(16)\)) \\
+(20,7) & 16, \(HHDHHDD\) & 257 & 70,163 + 66,322 & random & 15,795,219 &
+9/24 ranges & Thm 3.1 + computer (hub graph) (\(=F_3(16)\)) \\
 \end{longtable}
+
+All use \(\Lambda=q^4+q^2+q\) (with \(S_0\)). Hub graphs: ``random''
+means random bipartite of degree \(q-k\) (checked standalone, §4);
+``Haar, clusters'' means a Haar graph over
+\(\mathbb Z_{673}\rtimes\mathbb Z_{24}\) resp. \(\mathrm{PSL}(2,41)\)
+whose same-colour pairs are partly joined through the levels
+(\texttt{conics2/README.md} §5). The all-pairs states are those of
+\texttt{conics2/README.md} at 11:44 UTC.
 
 At \((19,7)\) and \((20,7)\) the built graphs use exactly the sets of
 Theorem 3.1 (\(m=q^2+1\), the elliptic section), so their orders are

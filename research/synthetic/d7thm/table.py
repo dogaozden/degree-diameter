@@ -95,3 +95,24 @@ for D in range(14, 27):
     if res:
         f, q, k, how = res[0]
         say('(%d,7): (q,k)=(%d,%d) %s  [%s]' % (D, q, k, format(f, ','), how))
+
+# combined table for D7_THEOREMS.md section 5.2
+rows_md = ['| cell | level graphs | best $(q,k)$ | $F_k(q)$ | hub graph at full slots | best fully proved value |',
+           '|---|---:|---|---:|---|---|']
+for D in range(14, 27):
+    cands = [(q, D - q - 1) for q in PP if q >= 4 and 1 <= D - q - 1 <= q - 1]
+    base = max(2 * (2 * k + 1) * N(q) for (q, k) in cands)
+    best = max(((F(q, k), q, k, status(q, k)) for (q, k) in cands))
+    prov = []
+    for (q, k) in cands:
+        if k == 1 and q >= 5 or (k >= 2 and status(q, k) == 'proof'):
+            prov.append((F(q, k), q, k, 'full slots'))
+        elif k >= 2 and 2 <= q - k:
+            b = maxprov(q, k)
+            if b:
+                prov.append((2 * (2 * k + 1) * N(q) + 2 * b[0], q, k, '%s hubs per colour' % format(b[0], ',')))
+    pv = max(prov)
+    rows_md.append('| (%d,7) | %s | $(%d,%d)$ | %s | %s | %s at $(%d,%d)$, %s |' % (
+        D, format(base, ','), best[1], best[2], format(best[0], ','), best[3], format(pv[0], ','), pv[1], pv[2], pv[3]))
+open('table.md', 'w').write('\n'.join(rows_md) + '\n')
+print('\n'.join(rows_md))
