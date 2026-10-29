@@ -1,0 +1,3273 @@
+{
+ "summary": {
+  "score": 96,
+  "total": 96,
+  "valid": true
+ },
+ "instances": [
+  {
+   "q": 9,
+   "u": 1,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 1,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 1,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 2,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 2,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 2,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 3,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 3,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 3,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 4,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 4,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 4,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 5,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 5,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 5,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 6,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 6,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 6,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 7,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 7,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 7,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 8,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 8,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 48,
+     "line:L": 48
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 96,
+    "n_expected": 96,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 9,
+   "u": 8,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 11,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 56,
+     "line:L": 56
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 95,
+    "n_expected": 95,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 11,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 1,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 1,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 1,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 2,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 2,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 2,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 3,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 3,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 3,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 4,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 4,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 4,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 5,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 5,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 5,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 6,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 6,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 6,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 7,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 7,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 7,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 8,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 8,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 8,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 9,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 9,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 9,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 10,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 10,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 10,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 11,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 11,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 11,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 12,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 12,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 12,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 13,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 13,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 13,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 14,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 14,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 14,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 15,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 15,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 15,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 16,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 16,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 16,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 17,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 17,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 17,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 18,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 18,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 18,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 19,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 19,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 19,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 20,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 20,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 20,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 21,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 21,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 21,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 22,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 22,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 22,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 23,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 23,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 23,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 24,
+   "kind": 3,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 24,
+   "kind": 4,
+   "xa": "Z",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 528,
+     "line:L": 528
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 656,
+    "n_expected": 656,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  },
+  {
+   "q": 25,
+   "u": 24,
+   "kind": 3,
+   "xa": "Zp",
+   "claim1": {
+    "theta_bijective_types": true,
+    "theta_involutive": true,
+    "flags_to_flags": true,
+    "max_deg": 27,
+    "deg_le_q2": true,
+    "max_deg_eq_q2": true,
+    "deficient_by_type": {
+     "point:P": 552,
+     "line:L": 552
+    },
+    "points_collinear": true,
+    "lines_concurrent": true,
+    "diam_le3": true,
+    "pass": true
+   },
+   "claim2": {
+    "n_vertices": 655,
+    "n_expected": 655,
+    "symmetric": true,
+    "no_loops": true,
+    "max_deg": 27,
+    "max_deg_eq_q2": true,
+    "diam_le2": true,
+    "diam2_exact": true,
+    "pass": true
+   },
+   "pass_": true
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+q=3  three u=square   (1) def_pts=2    def_lines=2    def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[5, 5] diam=3 selfpolar=1/1 PASS=True
+q=3  three u=nonsquare(2) def_pts=2    def_lines=2    def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[5, 5] diam=3 selfpolar=1/1 PASS=True
+q=3  four  u=square   (1) def_pts=0    def_lines=0    def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[5, 5] diam=3 selfpolar=1/1 PASS=True
+q=3  four  u=nonsquare(2) def_pts=0    def_lines=0    def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[5, 5] diam=3 selfpolar=1/1 PASS=True
+q=5  three u=square   (1) def_pts=12   def_lines=12   def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[7, 7] diam=3 selfpolar=1/1 PASS=True
+q=5  three u=nonsquare(2) def_pts=12   def_lines=12   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[7, 7] diam=3 selfpolar=1/1 PASS=True
+q=5  four  u=square   (1) def_pts=8    def_lines=8    def_on_C=0   tang=0 bij=1 p!in_mu=1 deg=[7, 7] diam=3 selfpolar=1/1 PASS=True
+q=5  four  u=nonsquare(2) def_pts=8    def_lines=8    def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[7, 7] diam=3 selfpolar=1/1 PASS=True
+q=7  three u=square   (1) def_pts=30   def_lines=30   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[9, 9] diam=3 selfpolar=1/1 PASS=True
+q=7  three u=nonsquare(3) def_pts=30   def_lines=30   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[9, 9] diam=3 selfpolar=1/1 PASS=True
+q=7  four  u=square   (1) def_pts=24   def_lines=24   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[9, 9] diam=3 selfpolar=1/1 PASS=True
+q=7  four  u=nonsquare(3) def_pts=24   def_lines=24   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[9, 9] diam=3 selfpolar=1/1 PASS=True
+q=9  three u=square   (1) def_pts=56   def_lines=56   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[11, 11] diam=3 selfpolar=1/1 PASS=True
+q=9  three u=nonsquare(4) def_pts=56   def_lines=56   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[11, 11] diam=3 selfpolar=1/1 PASS=True
+q=9  four  u=square   (1) def_pts=48   def_lines=48   def_on_C=4   tang=0 bij=1 p!in_mu=1 deg=[11, 11] diam=3 selfpolar=1/1 PASS=True
+q=9  four  u=nonsquare(4) def_pts=48   def_lines=48   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[11, 11] diam=3 selfpolar=1/1 PASS=True
+q=11 three u=square   (1) def_pts=90   def_lines=90   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[13, 13] diam=3 selfpolar=1/1 PASS=True
+q=11 three u=nonsquare(2) def_pts=90   def_lines=90   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[13, 13] diam=3 selfpolar=1/1 PASS=True
+q=11 four  u=square   (1) def_pts=80   def_lines=80   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[13, 13] diam=3 selfpolar=1/1 PASS=True
+q=11 four  u=nonsquare(2) def_pts=80   def_lines=80   def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[13, 13] diam=3 selfpolar=1/1 PASS=True
+q=13 three u=square   (1) def_pts=132  def_lines=132  def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[15, 15] diam=3 selfpolar=1/1 PASS=True
+q=13 three u=nonsquare(2) def_pts=132  def_lines=132  def_on_C=12  tang=0 bij=1 p!in_mu=1 deg=[15, 15] diam=3 selfpolar=1/1 PASS=True
+q=13 four  u=square   (1) def_pts=120  def_lines=120  def_on_C=8   tang=0 bij=1 p!in_mu=1 deg=[15, 15] diam=3 selfpolar=1/1 PASS=True
+q=13 four  u=nonsquare(2) def_pts=120  def_lines=120  def_on_C=12  tang=0 bij=1 p!in_mu=1 deg=[15, 15] diam=3 selfpolar=1/1 PASS=True
+instances=24 passing=24 valid=True

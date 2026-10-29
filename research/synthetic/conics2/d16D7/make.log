@@ -1,0 +1,10 @@
+hex_q13.bin: q = 13, N = 402234, sha256 57aa5dfc92fa33c743e80cea0f60d4041b3c61137f0c46df248dfe30736a328a
+q = 13, (c, c0, c1) = (2, 1, 1); spread |S| = 2198, v = 27; R_H = spread points (30772, segment set), R_L = lines meeting v + exact whiskers + the q^2 spread lines with nu = 0 (28743, dual segment set; |W| = 28392, every free point on exactly one whisker; spread lines != v: 169 with nu = 0 carry no whisker, the others one whisker at each point)
+non-friendly (multi): |R'| = 792 non-collinear, sigma(R') non-concurrent, sigma a local duality at all 792
+types HDHDH: free A-slots per level [31564, 29535, 31564, 57486, 31564], B-slots [29535, 61544, 29535, 31564, 29535] -> at most 29535 line-side and 29535 point-side hubs; hub-graph degree <= 11
+hubs per side 29535 29535
+hub graph seed 1: 324830 edges (55 repeated pairs dropped), 0 same-side (ordered) pairs beyond 6
+hub graph: 324830 edges, degrees <= 11, same-side distances <= 6 on both sides
+wrote /tmp/claude-0/-home-user-degree-diameter/eaffb32a-7387-51bd-b7af-b22a3404fbf2/scratchpad/d16b/d16.sol
+n = 4081410, edges = 32617187, degree min 14 max 16, hub graph edges 324830
+wrote /tmp/claude-0/-home-user-degree-diameter/eaffb32a-7387-51bd-b7af-b22a3404fbf2/scratchpad/d16b/g.edges sha256 1bc34853dd30ddbd2483e5a0f90c62bd3e8acf12d5f52ee0a6950008df3c879a

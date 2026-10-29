@@ -1,0 +1,26 @@
+# (14,7) n = 1,802,642 = 10*177,156 + 2*15,541 (job conics-2). Before: lab 1,789,588, job "conics" 1,802,400.
+# Five levels HDHDH of H(11); friendly transitions free R_H = the 15,984 Hermitian spread points and R_L+ = the 132 lines
+# meeting v, the 14,520 exact whiskers and the 121 spread lines with nu = 0 (14,773 lines, README Proposition 1);
+# non-friendly transitions the lab's mirrored local duality on 768 points; 15,541 hubs per side, a seeded random hub
+# graph of degree <= 9 (seed 1; 29 repeated pairs dropped; no same-side pair beyond 6).
+# Solution: research/frontier/sols/d14D7_hex11_typedwhisk_nu0_n1802642.sol; rebuild from research/frontier/sols:
+#   python3 ../../synthetic/conics2/typed_build.py build ../../p4/d6/hex/hex_q11.bin d14D7_hex11_typedwhisk_nu0_n1802642.sol g.edges
+#   edge list sha256 98de1d8e969ebec7e87d860ff5b242755d7bd5802cabc49527d55a7390573c62 (the checked file, written by make)
+# Check: research/synthetic/conics/apsp_fast.c (cc -O3 -march=native -pthread), BFS from all 1,802,642 sources, 4 threads,
+#   no symmetry assumed, on the coordinator session's machine, 07:17:11 to 08:30:16 UTC. Output:
+-- typed_build.py make:
+hex_q11.bin: q = 11, N = 177156, sha256 e60db3690f2bd0dfc0fd0447df7c574c25797467a8b18c28800027de1eb49a19
+q = 11, (c, c0, c1) = (1, 1, 3); spread |S| = 1332, v = 23; R_H = spread points (15984, segment set), R_L = lines meeting v + exact whiskers + the q^2 spread lines with nu = 0 (14773, dual segment set; |W| = 14520, every free point on exactly one whisker; spread lines != v: 121 with nu = 0 carry no whisker, the others one whisker at each point)
+non-friendly (multi): |R'| = 768 non-collinear, sigma(R') non-concurrent, sigma a local duality at all 768
+types HDHDH: free A-slots per level [16752, 15541, 16752, 29546, 16752], B-slots [15541, 31968, 15541, 16752, 15541] -> at most 15541 line-side and 15541 point-side hubs; hub-graph degree <= 9
+hubs per side 15541 15541
+hub graph seed 1: 139840 edges (29 repeated pairs dropped), 0 same-side (ordered) pairs beyond 6
+hub graph: 139840 edges, degrees <= 9, same-side distances <= 6 on both sides
+wrote d14.sol
+n = 1802642, edges = 12600827, degree min 12 max 14, hub graph edges 139840
+wrote g.edges sha256 98de1d8e969ebec7e87d860ff5b242755d7bd5802cabc49527d55a7390573c62
+-- apsp_fast g.edges 14 7:
+Thu Oct 29 07:17:11 UTC 2026
+n=1802642 edges=12600827 degree min=12 max=14 bipartite=yes diameter=7 sources=0..1802642
+RESULT VALID d=14 D=7 n=1802642
+Thu Oct 29 08:30:16 UTC 2026

@@ -1,0 +1,24 @@
+== main run: smallest non-square eps, all z != x in X1=0 ==
+{"q": 3, "eps": 2, "quadric_sizes": [10, 10], "n_ti": 40, "n_ti_expected": 40, "n_ti_notx": 36, "n_ti_notx_expected": 36, "z_total": 12, "z_pass": 12, "global_bad": 0, "fail_sample": [], "valid": true}
+{"q": 5, "eps": 2, "quadric_sizes": [26, 26], "n_ti": 156, "n_ti_expected": 156, "n_ti_notx": 150, "n_ti_notx_expected": 150, "z_total": 30, "z_pass": 30, "global_bad": 0, "fail_sample": [], "valid": true}
+{"q": 7, "eps": 3, "quadric_sizes": [50, 50], "n_ti": 400, "n_ti_expected": 400, "n_ti_notx": 392, "n_ti_notx_expected": 392, "z_total": 56, "z_pass": 56, "global_bad": 0, "fail_sample": [], "valid": true}
+{"q": 11, "eps": 2, "quadric_sizes": [122, 122], "n_ti": 1464, "n_ti_expected": 1464, "n_ti_notx": 1452, "n_ti_notx_expected": 1452, "z_total": 132, "z_pass": 132, "global_bad": 0, "fail_sample": [], "valid": true}
+{"q": 13, "eps": 2, "quadric_sizes": [170, 170], "n_ti": 2380, "n_ti_expected": 2380, "n_ti_notx": 2366, "n_ti_notx_expected": 2366, "z_total": 182, "z_pass": 182, "global_bad": 0, "fail_sample": [], "valid": true}
+== extra: every non-square eps (claim says any non-square works) ==
+{"q": 5, "eps": 3, "z_total": 30, "z_pass": 30, "global_bad": 0, "valid": true}
+{"q": 7, "eps": 5, "z_total": 56, "z_pass": 56, "global_bad": 0, "valid": true}
+{"q": 7, "eps": 6, "z_total": 56, "z_pass": 56, "global_bad": 0, "valid": true}
+{"q": 11, "eps": 6, "z_total": 132, "z_pass": 132, "global_bad": 0, "valid": true}
+{"q": 11, "eps": 7, "z_total": 132, "z_pass": 132, "global_bad": 0, "valid": true}
+{"q": 11, "eps": 8, "z_total": 132, "z_pass": 132, "global_bad": 0, "valid": true}
+{"q": 11, "eps": 10, "z_total": 132, "z_pass": 132, "global_bad": 0, "valid": true}
+{"q": 13, "eps": 5, "z_total": 182, "z_pass": 182, "global_bad": 0, "valid": true}
+{"q": 13, "eps": 6, "z_total": 182, "z_pass": 182, "global_bad": 0, "valid": true}
+{"q": 13, "eps": 7, "z_total": 182, "z_pass": 182, "global_bad": 0, "valid": true}
+{"q": 13, "eps": 8, "z_total": 182, "z_pass": 182, "global_bad": 0, "valid": true}
+{"q": 13, "eps": 11, "z_total": 182, "z_pass": 182, "global_bad": 0, "valid": true}
+== negative control: eps = 1 (a square; E1, E2 then hyperbolic); expect failures ==
+{"q": 3, "eps": 1, "quadric_sizes": [16, 16], "z_total": 12, "z_pass": 0, "global_bad": 24, "valid": false}
+{"q": 5, "eps": 1, "quadric_sizes": [36, 36], "z_total": 30, "z_pass": 0, "global_bad": 110, "valid": false}
+{"q": 7, "eps": 1, "quadric_sizes": [64, 64], "z_total": 56, "z_pass": 0, "global_bad": 308, "valid": false}
+SUMMARY {"score_pairs_passing": 412, "pairs_total": 412, "valid": true, "per_q": {"3": [12, 12], "5": [30, 30], "7": [56, 56], "11": [132, 132], "13": [182, 182]}, "quadric_sizes": {"3": [10, 10], "5": [26, 26], "7": [50, 50], "11": [122, 122], "13": [170, 170]}, "t_i_lines_not_through_x": {"3": 36, "5": 150, "7": 392, "11": 1452, "13": 2366}, "seconds": 8.3}
