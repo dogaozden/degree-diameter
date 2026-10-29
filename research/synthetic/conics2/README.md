@@ -86,7 +86,8 @@ spread line, |S_0| = q^2, whisker counts 0 or 1, the dual segment property) for 
 (card c7) found the q^2 "zero-carry" spread lines first, by computer, at q = 4, 5, 7.
 
 **Consequence.** In every typed layout where the smallest slot count is R_L + (non-friendly elements), the hub count
-rises by q^2 per side: (14,7) +242, (16,7) +338, (17,7) +169 (one side), (19,7) +512, (20,7) +256 (one side).
+rises by q^2 on that side, so n rises by: (14,7) +242, (16,7) +338, (17,7) +169 (one side), (19,7) +512, (20,7) +256
+(one side).
 
 ## 3. Is the exact whisker set the largest dual segment set compatible with R_H?
 
@@ -121,8 +122,9 @@ rises by q^2 per side: (14,7) +242, (16,7) +338, (17,7) +169 (one side), (19,7) 
   pairs beyond distance 7, of which 317 come from the new point itself), SAT at q = 3 (card c5, too large without
   symmetry breaking), and the whole three-level (7,7) graph with hubs instead of one transition (card c4: freeing an
   82nd point breaks 864 to 1,188 ordered pairs over 12 choices of the point, all between level vertices, none involving
-  a hub, so neither the third level nor the hubs repair them; local search on sigma brought one case to 744). The scorer (tools/transcheck.py) is an exact bitset BFS of the two-level graph, validated on the
-  record (0 bad pairs) and on negative controls (one more freed point: 612 to 697 bad pairs).
+  a hub, so neither the third level nor the hubs repair them; local search on sigma brought one case to 744). The
+  scorer (tools/transcheck.py) is an exact bitset BFS of the two-level graph, validated on the record (0 bad pairs) and
+  on negative controls (one more freed point: 612 to 697 bad pairs).
 - **Heuristic.** A freed point x needs sigma to map the q(q+1) points collinear with x to lines whose radius-3 balls
   cover the points of the next level (Theorem C makes this exact with the lines concurrent with sigma(x)); the
   experiments show no slack for an 82nd point at q = 5. A larger m seems to need a structurally new sigma (for example
@@ -146,8 +148,11 @@ plain search of job "conics" missed by one element. (15,7), larger: G = Z_673 x|
 subgroups of order 24 (two line-side and three point-side cluster levels); hubfar from all 32,304 hubs gives
 far_pairs=0, max_ecc=7 (d15D7/checks/hubfar_meta.txt). (18,7): G = PSL(2,41) (34,440), |S| = 9, subgroups of orders
 10, 21, 20, 20, 21 (line side) and 21, 10, 21, 21 (point side); the hub graph alone leaves 654,360 same-side pairs
-beyond 6, all to be joined through the clusters (hubfar from all 68,880 hubs was stopped unfinished after an hour; the all-pairs check covers it). PSL(2,43) (39,732 hubs) did not cover: the search stopped with 2 and 6 elements missing
-(d18D7/clhub_psl43.log).
+beyond 6, all to be joined through the clusters (hubfar from all 68,880 hubs was stopped unfinished after an hour; the
+all-pairs check covers it, and passed). PSL(2,43) (39,732 hubs) did not cover: the search stopped with 2 and 6 elements
+missing (d18D7/clhub_psl43.log); the searches over PSL(2,47), Z_1597 x| Z_28 and Z_2017 x| Z_28 did not reach full
+coverage either (failed or stopped; d18D7/clhub_*.log).
+The (18,7) layout has room for 59,070 hubs per side, so a group that covers would raise the cell further.
 
 ## 6. Files
 
@@ -156,10 +161,12 @@ beyond 6, all to be joined through the clusters (hubfar from all 68,880 hubs was
   or cluster-assisted). `make HEXBIN TYPES NONFRIENDLY HUBS OUT.sol OUT.edges [--nu0]` and `build HEXBIN SOL OUT.edges`.
   It reproduces the checked (16,7) edge list of job "conics" byte for byte (sha256 350f9e07...) from that job's hub graph.
 - patterns.py: exhaustive search of type patterns (slot counts).
-- psl_hub.py, clhub.py: Haar and cluster-assisted Haar hub graphs; ovoid_greedy.py, elliptic_even.py: the q = 16
+- psl_hub.py, clhub.py, clhub2.py: Haar and cluster-assisted Haar hub graphs (clhub2.py also for Z_p x| Z_k);
+  ovoid_greedy.py, elliptic_even.py: the q = 16
   non-friendly set (257 points of an elliptic quadric section Q^-(3,16); greedy found only 177).
 - d1xD7/: build logs, hub graph files, checks. check_sessions.txt: the remote check workers and their source ranges;
-  check_results.txt: their result lines, copied from the raw tool output.
+  check_results.txt: their result lines, copied from the raw tool output; assemble_checks.py writes d1xD7/checks/
+  from it (one file per graph, with the coverage test).
 - Solutions: research/frontier/sols/d1xD7_hex*_typedwhisk*.sol (each names its inputs by sha256).
 - Squad round: research/squads/conics2-r1/ (brief, scorers, data, cards, scoreboard); research/squads/LOG.md.
 
