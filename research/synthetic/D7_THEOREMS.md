@@ -521,10 +521,12 @@ $9{,}552$ more than the lab's $7{,}309{,}092$. We built it with `conics2/typed_b
 $HHDHDHDHD$, the 792-point mirrored set, $S_0$ included; the hub graph from `d7thm/build_cert.py`): the builder re-checks
 every hypothesis (segment and dual segment sets, the local duality at all 792 points, same-colour hub distances at most
 $6$, degrees $15$ to $18$) and writes $n=7{,}318{,}644$, $65{,}612{,}918$ edges, edge-list sha256
-`5a985865b9659af25b05d0cfb27c184f73c9339f1091ebfdf758f060aed5a1bb`; the solution file is
-`research/frontier/sols/d18D7_hex13_typedwhisk_h7h7_n7318644.sol`. **Computer-checked:** (i) its level part (all edges
+`c80d9c0e6a569508b2314c3c3cd6c53babce0ecb844017fdf7f86f297426ed1a`; the solution file
+`research/frontier/sols/d18D7_hex13_typedwhisk_h7h7_n7318644.sol` rebuilds it byte for byte (`typed_build.py build`). **Computer-checked:** (i) its level part (all edges
 between level vertices, $64{,}554{,}086$ of them) is identical to that of the lab's $7{,}309{,}092$ graph, rebuilt from
-its solution file (sha256 `314d5db9…`, as recorded); (ii) `apsp_fast` from all $78{,}432$ hubs: HUBCHECK. Pairs of
+its solution file (sha256 `314d5db9…`, as recorded); (ii) `apsp_fast` (`conics/apsp_fast.c`) from all $78{,}432$ hubs: bipartite, degrees $15$ to $18$, every
+hub within distance $7$ of every vertex (`RESULT VALID d=18 D=7 n=7318644` for the sources $7{,}240{,}212$ to
+$7{,}318{,}643$); LEVELCHECK Pairs of
 level vertices are within distance $7$ inside two levels by Theorems B and C, whose hypotheses the builder checked; a
 full all-pairs check (about $20$ hours on 4 cores here) was not run and is left to the coordinator
 (`d7thm/d18D7/`).
@@ -584,6 +586,11 @@ $q=11,13$.
 The theorems explain the values built by the two jobs (at $q=16$ exactly) and give the same kind of bound for every $q$
 and every $k$, with an explicit hub graph wherever $q\ge q_k$. One value is raised: at $(18,7)$ the explicit hub graph
 beats the computer-found one, giving $7{,}318{,}644$ (a candidate until the coordinator's all-pairs check).
+
+*Review.* A separate referee session re-derived the numerical steps (the Nagura chain, the closed forms, every table
+entry, all certificates of `hubopt.out` with its own checker, and Theorem 2.1 on all regular tournaments with at most
+$7$ levels) and found no error in the proofs; it found that the first certificate search was far from optimal (now
+`hubopt.py`, which produced the $(18,7)$ hub graph) and several wording problems, all corrected here.
 
 # Appendix: files
 
