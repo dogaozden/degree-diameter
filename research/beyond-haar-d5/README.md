@@ -53,8 +53,13 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
 
 ## What could still work
 
-- An exact search for the [[2,3],[3,2]] 2+2 base over the non-abelian groups of order 90..95 (about 30 CPU-min per
-  group with the decomposition in exh/b4a1x.c's header extended to w1, w2), to close all 4-vertex bases at 356..380.
+- Finish the exact search for the [[2,3],[3,2]] 2+2 base over the groups of order 90 (exh/b4a2x.c): done with no
+  solution for SmallGroup(90,i), i = 9, 3, 5, 8, 1; not run for i = 7, 2, 6 (non-abelian) and 10, 4 (abelian), about
+  10-100 CPU-min each; then orders 91..95.
+- For (7,5) above 1,200: orbit-type Haar graphs (coset graphs with |H| = 2 and a normal complement) of more groups.
+  Tried at 1210..1320 (2 x odd orders, the non-solvable groups of order 1260 and 1320): best costs 18-36 in short
+  anneals; the 1,200 hit needed 15 CPU-min of annealing from a cost-8 start, so longer anneals are the obvious next
+  step.
 - Full enumerations (no 2M cap) for the coset graphs that were only partly searched: SmallGroup(1200,475) (about
   320M unions, a few CPU-hours), SmallGroup(1176,236) and (1176,229) (about 1 CPU-hour each); and the h = 2 sweep of
   the 1040 groups of order 1200 and 235 of order 1184 with Haar-type subgroups skipped (coset/sweep_nh.sh).
