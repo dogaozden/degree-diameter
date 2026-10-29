@@ -526,7 +526,9 @@ $6$, degrees $15$ to $18$) and writes $n=7{,}318{,}644$, $65{,}612{,}918$ edges,
 between level vertices, $64{,}554{,}086$ of them) is identical to that of the lab's $7{,}309{,}092$ graph, rebuilt from
 its solution file (sha256 `314d5db9…`, as recorded); (ii) `apsp_fast` (`conics/apsp_fast.c`) from all $78{,}432$ hubs: bipartite, degrees $15$ to $18$, every
 hub within distance $7$ of every vertex (`RESULT VALID d=18 D=7 n=7318644` for the sources $7{,}240{,}212$ to
-$7{,}318{,}643$); LEVELCHECK Pairs of
+$7{,}318{,}643$); (iii) `apsp_fast` from three ranges of level vertices (sources $0$–$262{,}143$ in level $0$,
+$804{,}468$–$1{,}066{,}611$ in level $1$, $6{,}978{,}068$–$7{,}240{,}211$ in level $8$; $786{,}432$ sources, $10.9\%$ of the level
+vertices): all `RESULT VALID`, eccentricity at most $7$. Pairs of
 level vertices are within distance $7$ inside two levels by Theorems B and C, whose hypotheses the builder checked; a
 full all-pairs check (about $20$ hours on 4 cores here) was not run and is left to the coordinator
 (`d7thm/d18D7/`).

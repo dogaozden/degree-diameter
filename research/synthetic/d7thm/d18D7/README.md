@@ -9,5 +9,6 @@
   same-side distances <= 6, degrees 15..18).
 - level_compare.txt: the 64,554,086 level edges equal those of the lab's 7,309,092 graph.
 - check_hubs.txt: apsp_fast from all 78,432 hubs, RESULT VALID.
-- check_level_*.txt: apsp_fast on ranges of level vertices (partial).
+- check_level_*.txt: apsp_fast on three ranges of level vertices (0..262143, 804468..1066611, 6978068..7240211), all
+  RESULT VALID.
 The full all-pairs check (all 7,318,644 sources) was not run in this job.
