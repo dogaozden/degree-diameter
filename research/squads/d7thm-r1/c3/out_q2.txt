@@ -1,0 +1,19 @@
+PASS F0 GF(2) arithmetic: associative, distributive, inverses
+built H(2) from the quadric and Tits equations: 63 points, 63 lines
+PASS H1 every stored point satisfies Q=0 (own arithmetic); N=63  [(q^6-1)/(q-1) = 63]
+PASS H2 N = (q^6-1)/(q-1) points and N lines  [points 63, lines 63]
+PASS H3 each line: q+1 points, totally singular, Tits equations, equals span of two of its points
+PASS H4 every point on exactly q+1 lines
+PASS H5 incidence-graph distance layers from a point = hexagon of order (q,q)  [layers [1, 3, 6, 12, 24, 48, 32]]
+PASS S0 v = line through e1, e6 is a line of H(q)
+PASS C1a delta with absolute trace 1 exists (Tr = x + x^2 + ... + x^(q/2))  [1 such delta, first delta=1]
+PASS C1b G zero-free on F^2\{0} for some (c0,c1)  (Lemma: yes for q>=4; q=2: must be no)  [0 of 4 pairs (c0,c1) work]
+PASS C1c Pi cap H(q) has (q+1)(q^3+1) points  [27]
+PASS C1d S = lines of H(q) in Pi: q^3+1 lines  [|S| = 9]
+PASS C1e v in S
+PASS C1f S pairwise opposite (incidence distance 6)
+PASS C1g points at distance <= 3 from v are exactly the points with X2 = X5 = 0  [|dist<=3| = 15, |X2=X5=0| = 15]
+PASS C1h free points (not in Pi, distance 5 from v) number q^3(q^2-1)  [24 vs 24]
+PASS C1i L_v = q(q+1) lines != v meeting v  [6]
+q=2: no zero-free G; whisker sets do not exist here.
+RESULT q=2 src=own: passed 16 / 16 checks

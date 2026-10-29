@@ -1,0 +1,173 @@
+{
+ "q": 3,
+ "seed": 2,
+ "configs": {
+  "k2": {
+   "n": 3640,
+   "apsp": [
+    "n=3640 edges=10265 degree min=4 max=6 bipartite=yes diameter=7",
+    "RESULT VALID d=6 D=7 n=3640"
+   ],
+   "valid": true,
+   "diameter": 7,
+   "alpha": [
+    122,
+    103,
+    122,
+    186,
+    122
+   ],
+   "beta": [
+    103,
+    224,
+    103,
+    122,
+    103
+   ],
+   "pred_alpha": [
+    122,
+    103,
+    122,
+    186,
+    122
+   ],
+   "pred_beta": [
+    103,
+    224,
+    103,
+    122,
+    103
+   ],
+   "min_alpha": 103,
+   "min_beta": 103,
+   "pred_min_alpha": 103,
+   "pred_min_beta": 103,
+   "slots_match_pred": true,
+   "ctrl_line": {
+    "line": 0,
+    "valid": false,
+    "diameter": 8,
+    "apsp": [
+     "n=3640 edges=10262 degree min=4 max=6 bipartite=yes diameter=8",
+     "RESULT INVALID"
+    ]
+   },
+   "ctrl_point": {
+    "point": 0,
+    "valid": false,
+    "diameter": 8,
+    "apsp": [
+     "n=3640 edges=10262 degree min=4 max=6 bipartite=yes diameter=8",
+     "RESULT INVALID"
+    ]
+   }
+  },
+  "k3": {
+   "n": 5096,
+   "apsp": [
+    "n=5096 edges=16516 degree min=4 max=7 bipartite=yes diameter=7",
+    "RESULT VALID d=7 D=7 n=5096"
+   ],
+   "valid": true,
+   "diameter": 7,
+   "alpha": [
+    234,
+    196,
+    234,
+    196,
+    132,
+    196,
+    132
+   ],
+   "beta": [
+    113,
+    234,
+    113,
+    234,
+    196,
+    234,
+    196
+   ],
+   "pred_alpha": [
+    234,
+    196,
+    234,
+    196,
+    132,
+    196,
+    132
+   ],
+   "pred_beta": [
+    113,
+    234,
+    113,
+    234,
+    196,
+    234,
+    196
+   ],
+   "min_alpha": 132,
+   "min_beta": 113,
+   "pred_min_alpha": 132,
+   "pred_min_beta": 113,
+   "slots_match_pred": true,
+   "ctrl_line": {
+    "line": 0,
+    "valid": false,
+    "diameter": 8,
+    "apsp": [
+     "n=5096 edges=16510 degree min=4 max=7 bipartite=yes diameter=8",
+     "RESULT INVALID"
+    ]
+   },
+   "ctrl_point": {
+    "point": 0,
+    "valid": false,
+    "diameter": 8,
+    "apsp": [
+     "n=5096 edges=16510 degree min=4 max=7 bipartite=yes diameter=8",
+     "RESULT INVALID"
+    ]
+   }
+  }
+ },
+ "set_checks": {
+  "H(q) points all singular (Q=0)": true,
+  "H(q): 364 lines, q+1 points per line, q+1 lines per point": true,
+  "H(q): Plucker equations of Tits hold on every line": true,
+  "v: the line through e1 and e6 exists and is unique": true,
+  "G zero-free on F^2 minus 0 for some (c0,c1)": true,
+  "|S| = q^3+1 = 28": true,
+  "P_S = points of H in Pi, |P_S| = (q+1)(q^3+1) = 112": true,
+  "S is a spread of P_S (each point of P_S on exactly one S-line)": true,
+  "v is in S": true,
+  "|L_v| = q(q+1) = 12": true,
+  "points at distance <=3 from v are exactly X2=X5=0": true,
+  "free points (not in Pi, distance 5 from v) = q^3(q^2-1) = 216": true,
+  "|W| = q^2(q^2-1) = 72 (W_z disjoint)": true,
+  "every free point is on exactly one W-line": true,
+  "nu is constant on every line of S other than v": true,
+  "every S-line other than v meets 0 or q+1 W-lines (one at each point)": true,
+  "exactly q^2 = 9 S-lines (not v) meet no W-line, and they are the nu=0 ones": true,
+  "R_L = L_v + W + S_0 is a disjoint union of size q^4+q^2+q = 93": true,
+  "R_L is a dual segment set": true,
+  "every point of H(q) is on a line of R_L": true,
+  "R_L is maximal: no line outside R_L can be added": true,
+  "R_H = P_S is a segment set of size (q+1)(q^3+1)": true,
+  "found a 3-space Sigma with |Sigma cap H| = q^2+1 and no line inside": true,
+  "R: pairwise opposite (distance 6 in the incidence graph)": true,
+  "sigma: R -> R* via f, C(x) -> lines meeting f(x), rest -> rest (bijection of points onto lines)": true
+ },
+ "sizes": {
+  "S": 28,
+  "PS": 112,
+  "Lv": 12,
+  "W": 72,
+  "S0": 9,
+  "RL": 93,
+  "RH": 112,
+  "R": 10,
+  "Rstar": 10,
+  "free": 216
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "q": 7,
+ "passed": 7,
+ "items": {
+  "1": {
+   "pass": true,
+   "detail": "N=19608 points, L=19608 lines, q+1=8 pts/line, each point on q+1 lines (ok=True); Pluecker eqs ok=True; diam6/level-size sanity ok=True over 302 sources"
+  },
+  "2": {
+   "pass": true,
+   "detail": "|S|=344 (q^3+1) pairwise opposite=True; |P_S|=2752 (=(q+1)(q^3+1)=2752), P_S==points in Pi: True; |L_v|=56 (q(q+1)=56); #points at dist<=3 from v=400, ==(X2=X5=0): True; #free=16464 (q^3(q^2-1)=16464)"
+  },
+  "3": {
+   "pass": true,
+   "detail": "|W|=2352 (q^2(q^2-1)=2352), distinct=True; all W lines opposite v=True, none in S=True; free points with exactly one W-line: 16464/16464, max W-lines per free point=1; W-lines on v-meeting cand. excluded=0; same claims for all 14 zero-free (c0,c1) pairs: True"
+  },
+  "4": {
+   "pass": true,
+   "detail": "nu constant on each S-line != v: True; W-meet counts {0: 49, 8: 294} (one per point when q+1: True); |S_0|=49 (q^2=49); S_0 == {nu=0}: True (|nu=0|=49)"
+  },
+  "5": {
+   "pass": true,
+   "detail": "|R_L|=2457 (q^4+q^2+q=2457), distinct=True; dual segment set (literal)=True; every point covered=True; lines outside R_L keeping dual-segment property: 0/17151 (literal cross-check: None)"
+  },
+  "6": {
+   "pass": true,
+   "detail": "P_S segment set (literal)=True, |P_S|=2752; points x outside P_S with P_S+x still a segment set: 0/16856 (literal cross-check: None); R_L + one line still dual segment set: 0/17151"
+  },
+  "7": {
+   "pass": true,
+   "detail": "found Sigma after 1 random 4-spaces; Sigma cap Q has 50 points (q^2+1=50), no line inside; pairwise distance 6 in H(q): True"
+  }
+ },
+ "info": {
+  "item1": {
+   "N": 19608,
+   "L": 19608,
+   "plane": true,
+   "lines_per_pt": true,
+   "plucker": true,
+   "on_quadric": true,
+   "levels": true,
+   "diam6": true
+  },
+  "c": 1,
+  "c0c1": [
+   1,
+   0
+  ],
+  "n_zero_free_c0c1": 14,
+  "counts": {
+   "S": 344,
+   "PS": 2752,
+   "Lv": 56,
+   "near3": 400,
+   "free": 16464
+  },
+  "W": 2352,
+  "onv_excluded": 0,
+  "W_robust_all_zero_free_pairs": [
+   14,
+   true
+  ],
+  "nu_dist_on_S": {
+   "0": 49,
+   "1": 49,
+   "2": 49,
+   "3": 49,
+   "4": 49,
+   "5": 49,
+   "6": 49
+  },
+  "meet_counts": {
+   "0": 49,
+   "8": 294
+  },
+  "RL": 2457,
+  "RL_survive_adding": 0,
+  "RL_cross_check_literal": null,
+  "elliptic_tries": 1,
+  "selftest": {
+   "star_is_dual": true,
+   "star_plus_bad_line_rejected": true,
+   "fast_rejects_bad_line": true,
+   "two_branch_point_set_rejected": true,
+   "fast_rejects_two_branch": true,
+   "line_pair_is_segment": true
+  }
+ }
+}

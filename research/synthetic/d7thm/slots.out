@@ -1,0 +1,26 @@
+== 1. rotational tournament, all typings
+k=1 L=3: best symbolic (min alpha, min beta) = [('0L', '0P'), ('0P', '0L')]  #typings 4  e.g. HHH | alternating HDH -> 0P 0L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=2 L=5: best symbolic (min alpha, min beta) = [('1L', '1L')]  #typings 5  e.g. HHDHD | alternating HDHDH -> 1L 1L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=3 L=7: best symbolic (min alpha, min beta) = [('1L', '1P'), ('1P', '1L')]  #typings 21  e.g. HHHDHHD | alternating HDHDHDH -> 1P 1L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=4 L=9: best symbolic (min alpha, min beta) = [('2L', '2L')]  #typings 27  e.g. HHHDDHHDD | alternating HDHDHDHDH -> 2L 2L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=5 L=11: best symbolic (min alpha, min beta) = [('2L', '2P'), ('2P', '2L')]  #typings 121  e.g. HHHHDDHHHDD | alternating HDHDHDHDHDH -> 2P 2L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=6 L=13: best symbolic (min alpha, min beta) = [('3L', '3L')]  #typings 156  e.g. HHHHDDDHHHDDD | alternating HDHDHDHDHDHDH -> 3L 3L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=7 L=15: best symbolic (min alpha, min beta) = [('3L', '3P'), ('3P', '3L')]  #typings 725  e.g. HHHHHDDDHHHHDDD | alternating HDHDHDHDHDHDHDH -> 3P 3L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+k=8 L=17: best symbolic (min alpha, min beta) = [('4L', '4L')]  #typings 935  e.g. HHHHHDDDDHHHHDDDD | alternating HDHDHDHDHDHDHDHDH -> 4L 4L
+   numeric check (q = 11 m=768, 13 m=792, 16, 101, 1009): alternating attains the numeric optimum
+== 2. all labelled regular tournaments on 5 and 7 levels, all typings
+L=5: 24 labelled regular tournaments; best (sum of friendly counts, number of P-minima) = (2, 0) in 240 (tournament, typing) pairs
+L=7: 2640 labelled regular tournaments; best (sum of friendly counts, number of P-minima) = (2, 1) in 70560 (tournament, typing) pairs
+== 3. SAT: both minima equal to a P + (k-a) m ?
+L=5 k=2: regular tournament + typing with min alpha = min beta = 1P + 1m: UNSAT
+L=7 k=3: regular tournament + typing with min alpha = min beta = 1P + 2m: UNSAT
+L=9 k=4: regular tournament + typing with min alpha = min beta = 2P + 2m: UNSAT
+L=11 k=5: regular tournament + typing with min alpha = min beta = 2P + 3m: UNSAT
+L=13 k=6: regular tournament + typing with min alpha = min beta = 3P + 3m: UNSAT

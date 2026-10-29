@@ -1,0 +1,98 @@
+parameter sets:
+  q11      P=15984 Lam=14773 m=122
+  q13      P=30772 Lam=28743 m=170
+  q16      P=69649 Lam=65808 m=257
+  q101     P=105090804 Lam=104070703 m=10202
+  x15984   P=15984 Lam=14773 m=768
+  x30772   P=30772 Lam=28743 m=792
+L=3: labelled regular tournaments enumerated: 2
+  E3 done, cases per param set = 2 x 8
+L=5: labelled regular tournaments enumerated: 24
+  E5 done, cases per param set = 24 x 32
+L=7: labelled regular tournaments enumerated: 2640
+  E7 done, cases per param set = 2640 x 128
+R9: 200000 random regular tournaments, 178035 distinct, one random typing each (5.8s)
+R11: 200000 random regular tournaments, 184553 distinct, one random typing each (5.8s)
+Rot9: rotational x 512 typings done
+Rot11: rotational x 2048 typings done
+C3 closed form for f_i and g_i = f_{2k-i}, k=1..40: ALL PASS
+
+Claim (1) tallies (family, params): cases, failures of min alpha / min beta / sum, max margins (<=0 holds)
+  E3     q101     cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E3     q11      cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E3     q13      cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E3     q16      cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E3     x15984   cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E3     x30772   cases=16       failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E5     q101     cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E5     q11      cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E5     q13      cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E5     q16      cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E5     x15984   cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E5     x30772   cases=768      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  E7     q101     cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E7     q11      cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E7     q13      cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E7     q16      cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E7     x15984   cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  E7     x30772   cases=337920   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    q101     cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    q11      cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    q13      cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    q16      cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    x15984   cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R11    x30772   cases=200000   failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  R9     q101     cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  R9     q11      cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  R9     q13      cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  R9     q16      cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  R9     x15984   cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  R9     x30772   cases=200000   failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot11  q101     cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot11  q11      cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot11  q13      cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot11  q16      cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot11  x15984   cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot11  x30772   cases=2048     failA=0 failB=0 failS=0 maxA=0 maxB=0 maxS=0
+  Rot9   q101     cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot9   q11      cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot9   q13      cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot9   q16      cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot9   x15984   cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+  Rot9   x30772   cases=512      failA=0 failB=0 failS=n/a maxA=0 maxB=0 maxS=n/a
+Cross-check vs naive evaluator: 13836 cases, 0 mismatches
+
+Claim (2) (rotational + alternating typing, exact values), k = 1..40:
+  q11      pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 30, 32, 34, 36, 38, 40]
+  q11      FAIL k in [27, 29, 31, 33, 35, 37, 39]
+     k=27: min alpha=208408 (claim 209500, realised by ['D']); min beta=193757 (claim 193757, realised by ['H'])
+     k=29: min alpha=223303 (claim 225606, realised by ['D']); min beta=208652 (claim 208652, realised by ['H'])
+     k=31: min alpha=238198 (claim 241712, realised by ['D']); min beta=223547 (claim 223547, realised by ['H'])
+     k=33: min alpha=253093 (claim 257818, realised by ['D']); min beta=238442 (claim 238442, realised by ['H'])
+  q13      pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 34, 36, 38, 40]
+  q13      FAIL k in [31, 33, 35, 37, 39]
+     k=31: min alpha=462438 (claim 464300, realised by ['D']); min beta=433865 (claim 433865, realised by ['H'])
+     k=33: min alpha=491351 (claim 495242, realised by ['D']); min beta=462778 (claim 462778, realised by ['H'])
+     k=35: min alpha=520264 (claim 526184, realised by ['D']); min beta=491691 (claim 491691, realised by ['H'])
+     k=37: min alpha=549177 (claim 557126, realised by ['D']); min beta=520604 (claim 520604, realised by ['H'])
+  q16      pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 40]
+  q16      FAIL k in [37, 39]
+     k=37: min alpha=1254978 (claim 1258565, realised by ['D']); min beta=1189427 (claim 1189427, realised by ['H'])
+     k=39: min alpha=1321043 (claim 1328471, realised by ['D']); min beta=1255492 (claim 1255492, realised by ['H'])
+  q101     pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+  q101     FAIL k in []
+  x15984   pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28, 30, 32, 34, 36, 38, 40]
+  x15984   FAIL k in [25, 27, 29, 31, 33, 35, 37, 39]
+     k=25: min alpha=201265 (claim 201792, realised by ['D']); min beta=187260 (claim 187260, realised by ['H'])
+     k=27: min alpha=216806 (claim 218544, realised by ['D']); min beta=202801 (claim 202801, realised by ['H'])
+     k=29: min alpha=232347 (claim 235296, realised by ['D']); min beta=218342 (claim 218342, realised by ['H'])
+     k=31: min alpha=247888 (claim 252048, realised by ['D']); min beta=233883 (claim 233883, realised by ['H'])
+  x30772   pass k in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 32, 34, 36, 38, 40]
+  x30772   FAIL k in [29, 31, 33, 35, 37, 39]
+     k=29: min alpha=442233 (claim 442688, realised by ['D']); min beta=414282 (claim 414282, realised by ['H'])
+     k=31: min alpha=471768 (claim 474252, realised by ['D']); min beta=443817 (claim 443817, realised by ['H'])
+     k=33: min alpha=501303 (claim 505816, realised by ['D']); min beta=473352 (claim 473352, realised by ['H'])
+     k=35: min alpha=530838 (claim 537380, realised by ['D']); min beta=502887 (claim 502887, realised by ['H'])
+
+Claim (3) closed forms: pass for all k=1..40
+elapsed 13.3s

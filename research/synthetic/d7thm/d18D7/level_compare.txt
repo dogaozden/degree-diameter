@@ -1,0 +1,7 @@
+Level part of the new (18,7) graph against the lab's 7,309,092 graph (both edge lists from conics2/typed_build.py):
+d18.edges n 7318644 edges 65612918 level edges 64554086 hub edges 1058832
+lab7309092.edges n 7309092 edges 65483966 level edges 64554086 hub edges 929880
+level parts identical: True
+(level vertices: 0 .. 2*402234*9 - 1 = 7240211; the lab graph rebuilt with `typed_build.py build` from
+research/frontier/sols/d18D7_hex13_typedwhisk_clpsl41_n7309092.sol on branch claude/conics-2-diameter-7-ic0oat,
+edge-list sha256 314d5db9f3f3c4af613a56f09f93bcf149d215603adc70ba3ddb4db4deace37d, as in conics2/README.md)

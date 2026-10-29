@@ -1,0 +1,52 @@
+PASS F0 GF(8) arithmetic: associative, distributive, inverses
+PASS H0 hexgen2 file size matches header (N=37449, L=37449)
+PASS H0a stored point rows distinct after normalising  [non-normalised rows: 0]
+read H(8) from hexgen2: 37449 points, 37449 lines
+PASS H1 every stored point satisfies Q=0 (own arithmetic); N=37449  [(q^6-1)/(q-1) = 37449]
+PASS H2 N = (q^6-1)/(q-1) points and N lines  [points 37449, lines 37449]
+PASS H3 each line: q+1 points, totally singular, Tits equations, equals span of two of its points
+PASS H4 every point on exactly q+1 lines
+PASS H5 incidence-graph distance layers from a point = hexagon of order (q,q)  [layers [1, 9, 72, 576, 4608, 36864, 32768]]
+PASS S0 v = line through e1, e6 is a line of H(q)
+PASS C1a delta with absolute trace 1 exists (Tr = x + x^2 + ... + x^(q/2))  [4 such delta, first delta=1]
+PASS C1b G zero-free on F^2\{0} for some (c0,c1)  (Lemma: yes for q>=4; q=2: must be no)  [18 of 64 pairs (c0,c1) work]
+PASS C1c Pi cap H(q) has (q+1)(q^3+1) points  [4617]
+PASS C1d S = lines of H(q) in Pi: q^3+1 lines  [|S| = 513]
+PASS C1e v in S
+PASS C1f S pairwise opposite (incidence distance 6)
+PASS C1g points at distance <= 3 from v are exactly the points with X2 = X5 = 0  [|dist<=3| = 585, |X2=X5=0| = 585]
+PASS C1h free points (not in Pi, distance 5 from v) number q^3(q^2-1)  [32256 vs 32256]
+PASS C1i L_v = q(q+1) lines != v meeting v  [72]
+=== (c0,c1) = (2,4), delta = 1 ===
+PASS W1 |W| = q^2(q^2-1)  (lines of S_z, != v, with nu(meet Pi) = F(z), z != 0)  [|W| = 4032, want 4032; W lines in Pi excluded: 0; nu undefined: 0; max #z per line: 1]
+PASS W2 each free point on exactly one W line  [W-line counts over free points: {1: 32256}]
+PASS N1 nu defined and constant on each spread line != v  [non-constant: 0; with X2=X5=0 point: 0]
+PASS N2 each spread line != v meets q+1 W lines (one per point) or none  [histogram of #W lines met: {0: 64, 9: 448}]
+PASS N3 exactly q^2 spread lines != v meet no W line  [64]
+PASS N4 these are exactly the spread lines != v with nu = 0  [#nu=0: 64; distinct nu values: [0, 1, 2, 3, 4, 5, 6, 7]]
+PASS R0 L_v, W, S_0 disjoint and |R_L| = q^4+q^2+q  [|R_L| = 4168 (want 4168)]
+PASS R1 R_L is a dual segment set  [offending line: None]
+PASS R2 every point of H(q) lies on a line of R_L
+PASS R3 maximal: no line outside R_L can be added  [addable lines: 0]
+PASS P1 P_S has (q+1)(q^3+1) points  [4617]
+PASS P2 P_S is a segment set
+   (c0,c1)=(2,6): 12/12 pass
+   (c0,c1)=(3,4): 12/12 pass
+   (c0,c1)=(3,5): 12/12 pass
+   (c0,c1)=(3,6): 12/12 pass
+   (c0,c1)=(3,7): 12/12 pass
+   (c0,c1)=(4,2): 12/12 pass
+   (c0,c1)=(4,6): 12/12 pass
+   (c0,c1)=(5,2): 12/12 pass
+   (c0,c1)=(5,3): 12/12 pass
+   (c0,c1)=(5,6): 12/12 pass
+   (c0,c1)=(5,7): 12/12 pass
+   (c0,c1)=(6,2): 12/12 pass
+   (c0,c1)=(6,4): 12/12 pass
+   (c0,c1)=(7,2): 12/12 pass
+   (c0,c1)=(7,3): 12/12 pass
+   (c0,c1)=(7,4): 12/12 pass
+   (c0,c1)=(7,5): 12/12 pass
+zero-free (c0,c1) pairs: 18; with every W/N/R/P check passing for each pair: 18
+pairs tested with W/N/R/P: [(2, 4), (2, 6), (3, 4), (3, 5), (3, 6), (3, 7), (4, 2), (4, 6), (5, 2), (5, 3), (5, 6), (5, 7), (6, 2), (6, 4), (7, 2), (7, 3), (7, 4), (7, 5)]
+RESULT q=8 src=hexgen: passed 30 / 30 checks (setup + first pair (c0,c1)=(2,4))

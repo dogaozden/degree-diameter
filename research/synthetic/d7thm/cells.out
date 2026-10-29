@@ -1,0 +1,27 @@
+== 1. built graphs: formulas against the builders
+(14,7) conics      q=11 HDHDH     Lam=14652 m=768: min alpha=15420 min beta=15420; hubs 15420+15420; 2LN+K = 1802400 == 1802400; slots full
+(14,7)             q=11 HDHDH     Lam=14773 m=768: min alpha=15541 min beta=15541; hubs 15541+15541; 2LN+K = 1802642 == 1802642; slots full; alpha/beta lists equal to the make log
+(15,7) conics      q=11 HHDHHDD   Lam=14652 m=768: min alpha=17520 min beta=16188; hubs 12180+12180; 2LN+K = 2504544 == 2504544; hub graph below the slots (17520, 16188)
+(15,7) PSL(2,31)   q=11 HHDHHDD   Lam=14773 m=768: min alpha=17520 min beta=16309; hubs 14880+14880; 2LN+K = 2509944 == 2509944; hub graph below the slots (17520, 16309); alpha/beta lists equal to the make log
+(15,7)             q=11 HHDHHDD   Lam=14773 m=768: min alpha=17520 min beta=16309; hubs 16152+16152; 2LN+K = 2512488 == 2512488; hub graph below the slots (17520, 16309)
+(16,7) conics      q=13 HDHDH     Lam=28574 m=792: min alpha=29366 min beta=29366; hubs 29366+29366; 2LN+K = 4081072 == 4081072; slots full
+(16,7)             q=13 HDHDH     Lam=28743 m=792: min alpha=29535 min beta=29535; hubs 29535+29535; 2LN+K = 4081410 == 4081410; slots full; alpha/beta lists equal to the make log
+(17,7) whisk       q=13 HHDHHDD   Lam=28574 m=792: min alpha=32356 min beta=30158; hubs 32356+30158; 2LN+K = 5693790 == 5693790; slots full; alpha/beta lists equal to the make log
+(17,7)             q=13 HHDHHDD   Lam=28743 m=792: min alpha=32356 min beta=30327; hubs 32356+30327; 2LN+K = 5693959 == 5693959; slots full; alpha/beta lists equal to the make log
+(18,7) PSL(2,37)   q=13 HHDHDHDHD Lam=28574 m=792: min alpha=58732 min beta=58732; hubs 25308+25308; 2LN+K = 7290828 == 7290828; hub graph below the slots (58732, 58732); alpha/beta lists equal to the make log
+(18,7)             q=13 HHDHDHDHD Lam=28743 m=792: min alpha=59070 min beta=59070; hubs 34440+34440; 2LN+K = 7309092 == 7309092; hub graph below the slots (59070, 59070); alpha/beta lists equal to the make log
+(19,7) whisk       q=16 HDHDH     Lam=65552 m=257: min alpha=65809 min beta=65809; hubs 65809+65809; 2LN+K = 11316428 == 11316428; slots full; alpha/beta lists equal to the make log
+(19,7)             q=16 HDHDH     Lam=65808 m=257: min alpha=66065 min beta=66065; hubs 66065+66065; 2LN+K = 11316940 == 11316940; slots full; alpha/beta lists equal to the make log
+(20,7) whisk       q=16 HHDHHDD   Lam=65552 m=257: min alpha=70163 min beta=66066; hubs 70163+66066; 2LN+K = 15794963 == 15794963; slots full; alpha/beta lists equal to the make log
+(20,7)             q=16 HHDHHDD   Lam=65808 m=257: min alpha=70163 min beta=66322; hubs 70163+66322; 2LN+K = 15795219 == 15795219; slots full; alpha/beta lists equal to the make log
+all consistent: True
+
+== 2. Corollary 3.2 with m = q^2+1: F_k(q) = 2(2k+1)N + K_A + K_B (alternating layout), cells (Delta, 7), Delta = q+1+k
+closed forms of Corollary 3.2 agree with the slot formulas for q in {11,...,37}, k = 1..6
+  (14,7) q=11 k=2: table 2(2k+1)N = 1771560; F_k(q) [m = q^2+1] = 1801350 (K_B=14895, K_A=14895); with the lab set m=768: 1802642 (K_B=15541, K_A=15541)
+  (15,7) q=11 k=3: table 2(2k+1)N = 2480184; F_k(q) [m = q^2+1] = 2511429 (K_B=16228, K_A=15017); with the lab set m=768: 2514013 (K_B=17520, K_A=16309)
+  (16,7) q=13 k=2: table 2(2k+1)N = 4022340; F_k(q) [m = q^2+1] = 4080166 (K_B=28913, K_A=28913); with the lab set m=792: 4081410 (K_B=29535, K_A=29535)
+  (17,7) q=13 k=3: table 2(2k+1)N = 5631276; F_k(q) [m = q^2+1] = 5691471 (K_B=31112, K_A=29083); with the lab set m=792: 5693959 (K_B=32356, K_A=30327)
+  (18,7) q=13 k=4: table 2(2k+1)N = 7240212; F_k(q) [m = q^2+1] = 7355864 (K_B=57826, K_A=57826); with the lab set m=792: 7358352 (K_B=59070, K_A=59070)
+  (19,7) q=16 k=2: table 2(2k+1)N = 11184810; F_k(q) [m = q^2+1] = 11316940 (K_B=66065, K_A=66065); with the lab set m=257: 11316940 (K_B=66065, K_A=66065)
+  (20,7) q=16 k=3: table 2(2k+1)N = 15658734; F_k(q) [m = q^2+1] = 15795219 (K_B=70163, K_A=66322); with the lab set m=257: 15795219 (K_B=70163, K_A=66322)

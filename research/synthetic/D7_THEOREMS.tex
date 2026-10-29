@@ -1,0 +1,1273 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\sloppy\emergencystretch=3em\usepackage{amssymb}\usepackage{amsmath}\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.15}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Diameter-7 cells from a spread and its whiskers: the freed sets and the bounds for every q},
+  pdfauthor={Degree--diameter lab, 29 October 2026 (job thm-conics)},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Diameter-7 cells from a spread and its whiskers: the freed sets
+and the bounds for every q}
+\author{Degree--diameter lab, 29 October 2026 (job thm-conics)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\emph{Abstract.} The jobs ``conics'' and ``conics-2'' raised the lab's
+values at the diameter-7 cells \((14,7)\) to \((20,7)\) by freeing, on
+the friendly transitions of the typed hexagon layouts, two sets: the
+points of the Hermitian spread \(S\) of \(H(q)\), and the lines meeting
+a spread line \(v\) together with an exact whisker set and the \(q^2\)
+spread lines that carry no whisker. Here these steps are turned into
+statements for every prime power \(q\). (1) For any generalized hexagon
+of order \((q,q)\), any spread \(S\), any \(v\in S\) and any whisker set
+\(W\), the lines meeting \(v\), the whiskers and the spread lines missed
+by the whiskers form a dual segment set; for the exact whisker set of
+\texttt{POLISHED.md} (every odd \(q\) and every even \(q\ge4\)) it has
+exactly \(q^4+q^2+q\) lines and is maximal, while the spread points form
+a segment set of \((q+1)(q^3+1)\) points. (2) For \(2k+1\) levels, any
+regular tournament and any typing, some level has at most
+\(\lfloor k/2\rfloor\) friendly outgoing transitions and some level at
+most \(\lfloor k/2\rfloor\) friendly incoming ones; this bounds the hub
+counts, with the exact second-order term, and the alternating typing
+attains the bound for the total number of hubs for every \(k\). (3) With
+the \(q^2+1\) points of an elliptic quadric section on the non-friendly
+transitions, this gives, for every \(k\ge2\) and every prime power
+\(q\ge q_k\),
+\[n_b(q+1+k,7)\ \ge\ 2(2k+1)(q+1)(q^4+q^2+1)+\begin{cases}k\,(q^4+2q^2+q+1)&k\text{ even},\\[2pt]
+\tfrac{k-1}2\,(2q^4+q^3+q^2+2q+1)+(k+1)(q^2+1)&k\text{ odd},\end{cases}\]
+with \(q_2=16\), \(q_3=q_4=23\), \(q_5=29\), \(q_k\le 300k\) in general.
+The hub graphs are given by a new explicit construction (sums of
+blown-up hexagons); smaller \(q\) are checked by computer where
+possible. The formulas reproduce the vertex counts of all fifteen graphs
+built in the two jobs. At \((19,7)\) the formula equals the built value
+\(11{,}316{,}940\) and every ingredient is proved. At \((18,7)\) the
+theorem with an explicit hub graph (two copies of the incidence graph of
+\(H(7)\) joined by perfect matchings) gives \(7{,}318{,}644\), above the
+lab's value \(7{,}309{,}092\); that graph was built, and checked from
+every hub (§5.1).
+
+\emph{Labels.} Every result is marked \textbf{Theorem} (proved here or
+in the cited note), \textbf{Computer-checked} (a program checked it; the
+program is in the repository) or \textbf{Heuristic}, and
+\textbf{{[}new{]}} or \textbf{{[}restatement{]}}. ``New'' means new in
+the lab's notes; the literature check of \texttt{D7\_HEXAGON.md} §11
+applies, and we did not search the literature again.
+
+\emph{Sources.} \texttt{research/synthetic/CONICS.md} §3.4 (branch
+\texttt{claude/conics-generalized-polygons-6gjqxi});
+\texttt{research/synthetic/conics2/README.md} (branch
+\texttt{claude/conics-2-diameter-7-ic0oat}, state of 11:44 UTC);
+\texttt{research/theorems/D7\_HEXAGON.md} (branch
+\texttt{claude/d7-hexagon-theorems-4w1prt}), whose Definitions 2.1, 3.1,
+Theorems A, B, C, 3.4 and Proposition 5.2 are used throughout;
+\texttt{research/theorems/POLISHED.md} §6 (branch
+\texttt{claude/thm-polish-2oddll});
+\texttt{research/synthetic/SYNTHETIC.md} (branch
+\texttt{claude/synthetic-incidence-geometry-s4m08f}), whose conventions
+we follow. Programs of this note: \texttt{research/synthetic/d7thm/};
+squad round \texttt{research/squads/d7thm-r1/}.
+
+\hypertarget{setting}{%
+\section{0. Setting}\label{setting}}
+
+\textbf{Hexagons.} A generalized hexagon \(\Gamma\) of order \((q,q)\)
+has \(N=N(q)=(q+1)(q^4+q^2+1)\) points and as many lines; \(q+1\) points
+on a line and \(q+1\) lines on a point. Distances are taken in the
+incidence graph \(I\) (diameter \(6\), girth \(12\)); elements at
+distance \(6\) are \emph{opposite}. For an element \(x\),
+\(|\Gamma_i(x)|=(q+1)q^{i-1}\) for \(1\le i\le5\). A \emph{spread} is a
+set of \(q^3+1\) pairwise opposite lines; every line not in a spread
+\(S\) meets exactly one line of \(S\), in one point
+(\texttt{D7\_HEXAGON.md}, Lemma 1.2(c)). The example throughout is the
+split Cayley hexagon \(H(q)\) in \(Q(6,q)\) and its Hermitian spread:
+the lines of \(H(q)\) inside a hyperplane \(\Pi\) with
+\(\Pi\cap Q(6,q)\) elliptic (every \(q\); {[}Th80{]}).
+
+\textbf{Segment sets} (\texttt{D7\_HEXAGON.md}, Definition 1.3). A point
+set \(F\) is a \emph{segment set} if for every \(p\in F\) the points of
+\(F\setminus\{p\}\) collinear with \(p\) lie on one line through \(p\).
+A line set \(G\) is a \emph{dual segment set} if for every \(\ell\in G\)
+the lines of \(G\setminus\{\ell\}\) that meet \(\ell\) pass through one
+point of \(\ell\). Both kinds have at most \((q+1)(q^3+1)\) elements
+(\texttt{D7\_HEXAGON.md}, Proposition 1.4).
+
+\textbf{Layouts.} \(L=2k+1\) \emph{levels}, each a copy of \(I\) of
+\emph{type} \(H\) (colour \(\mathcal A\) = points, \(\mathcal B\) =
+lines) or \(D\) (colour \(\mathcal A\) = lines, \(\mathcal B\) =
+points). The levels are the vertices of a \emph{regular tournament}
+\(T\): every two levels are joined by exactly one \emph{transition}
+\(j\to j'\), and every level has \(k\) outgoing and \(k\) incoming
+transitions. A transition is a bijection from the
+\(\mathcal A\)-elements of level \(j\) to the \(\mathcal B\)-elements of
+level \(j'\); it is \emph{friendly} if the types differ, and then it is
+the identity. \texttt{D7\_HEXAGON.md} uses the rotational tournament
+\(j\to j+i\) (\(1\le i\le k\), indices mod \(L\)); Theorem A and Theorem
+3.4 there hold verbatim for every regular tournament, since their proofs
+only use that every pair of levels is the pair of one transition. The
+\emph{freed set} \(R_t\) of a transition is the set of
+\(\mathcal A\)-elements whose matching edge is deleted. Level \(j\) then
+has \(\alpha_j=\sum_{t\text{ out of }j}|R_t|\) free \(\mathcal A\)-slots
+and \(\beta_j=\sum_{t\text{ into }j}|R_t|\) free \(\mathcal B\)-slots.
+\(K_{\mathcal B}\le\min_j\alpha_j\) hubs of colour \(\mathcal B\) each
+take one free \(\mathcal A\)-slot in every level,
+\(K_{\mathcal A}\le\min_j\beta_j\) hubs of colour \(\mathcal A\) one
+free \(\mathcal B\)-slot in every level, and a bipartite \emph{hub
+graph} \(Y\) joins the two kinds of hubs.
+
+\textbf{What repairs a transition.} Theorem B of
+\texttt{D7\_HEXAGON.md}: a friendly transition is repaired if its freed
+set is a segment set (source of type \(H\)) or a dual segment set
+(source of type \(D\)). Theorem C there, with Corollary 5.3(a): a
+non-friendly transition \(H\to H\) with matching \(\sigma\) is repaired
+by a set \(R\) of \(m\) pairwise opposite points when \(\sigma\) maps
+\(R\) onto \(m\) pairwise opposite lines and the points collinear with
+\(x\) onto the lines concurrent with \(\sigma(x)\) for every \(x\in R\);
+such a \(\sigma\) exists for every partial ovoid \(R\) and every partial
+spread of the same size. A \(D\to D\) transition uses \(\sigma^{-1}\)
+and frees \(\sigma(R)\).
+
+\textbf{Hub graphs.} \(\mathrm{HG}(K_1,K_2;\delta)\) denotes a bipartite
+graph with colour classes of sizes \(K_1\) and \(K_2\), maximum degree
+at most \(\delta\), in which any two vertices \emph{of the same colour}
+are at distance at most \(6\).
+
+\textbf{Theorem 0.1} (\texttt{D7\_HEXAGON.md}, Theorem 3.4)
+{[}restatement{]}. If every transition is repaired,
+\(K_{\mathcal B}\le\min \alpha_j\), \(K_{\mathcal A}\le\min\beta_j\) and
+the hub graph is an \(\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};q-k)\),
+then the graph has maximum degree \(q+1+k\) and diameter at most \(7\),
+and \[n_b(q+1+k,7)\ \ge\ 2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}.\]
+
+The value \(2(2k+1)N(q)\) alone (no freed sets, no hubs) is the value of
+the 2013 table at the cells \((7,7)\), \((9,7)\)--\((16,7)\) {[}MS13{]},
+and the lab's beyond-table value at \((17,7)\)--\((20,7)\).
+
+\textbf{What uses coordinates.} Sections 2 and 4 are about tournaments
+and bipartite graphs only. In §1, Theorem 1.4, Proposition 1.5 and Lemma
+1.6 hold in every generalized hexagon of order \((q,q)\) with a spread;
+only Theorem 1.7 (the whisker set of \texttt{POLISHED.md} meets each
+spread line in \(0\) or \(q+1\) points, so exactly \(q^2\) spread lines
+are missed) and the existence statements (Hermitian spread, exact
+whisker set, elliptic quadric section) use the coordinates of \(H(q)\).
+Coordinates appear only in proofs.
+
+\textbf{Notation for sizes.} \(P(q)=(q+1)(q^3+1)=q^4+q^3+q+1\),
+\(\Lambda(q)=q^4+q^2+q\), and \(m\) the size of the non-friendly sets.
+Note \(P-\Lambda=q^3-q^2+1\).
+
+\hypertarget{the-freed-sets}{%
+\section{1. The freed sets}\label{the-freed-sets}}
+
+\hypertarget{the-configuration}{%
+\subsection{1.1 The configuration}\label{the-configuration}}
+
+\textbf{Definition 1.1.} Let \(S\) be a spread of \(\Gamma\),
+\(\mathcal P_S\) the set of points on its lines, and \(v\in S\).
+\(\mathcal L_v\) is the set of the \(q(q+1)\) lines other than \(v\)
+that meet \(v\). A point is \emph{free} if it is at distance \(5\) from
+\(v\) and not in \(\mathcal P_S\). A \emph{whisker set} is a set \(W\)
+of lines, each opposite \(v\) and not in \(S\), such that no free point
+lies on two lines of \(W\); it is \emph{exact} if every free point lies
+on exactly one line of \(W\). Finally
+\[S_0(W)=\{n\in S\setminus\{v\}:\ n\text{ meets no line of }W\},\qquad R_L(W)=\mathcal L_v\cup W\cup S_0(W).\]
+
+(This is the configuration of Theorem D, \texttt{POLISHED.md} §6.2 and
+\texttt{SYNTHETIC.md} §3.2, written without coordinates.)
+
+\textbf{Lemma 1.2} {[}restatement, with the counts; Theorem{]}. (a) The
+points at distance at most \(3\) from \(v\) are the \(q+1\) points of
+\(v\) and the \(q^2(q+1)\) points at distance \(3\), each of which lies
+on exactly one line of \(\mathcal L_v\). (b) The points of
+\(\mathcal P_S\) not on \(v\) are at distance \(5\) from \(v\). (c)
+There are \(q^3(q^2-1)\) free points. (d) A line opposite \(v\) and not
+in \(S\) has exactly one point in \(\mathcal P_S\) and \(q\) free
+points. (e) A whisker set has at most \(q^2(q^2-1)\) lines, with
+equality if and only if it is exact.
+
+\emph{Proof.} (a) A point at distance \(3\) from \(v\) lies on a line
+meeting \(v\); two such lines through it would close a circuit of length
+\(4\) or \(6\). Counting: \(|\Gamma_3(v)|=(q+1)q^2\). (b) A point \(x\)
+on a spread line \(n\ne v\) has \(d(x,v)\) odd, at most \(5\) and at
+least \(d(n,v)-1=5\). (c) \(|\Gamma_5(v)|=(q+1)q^4\), of which
+\(q^3(q+1)\) lie in \(\mathcal P_S\) by (b). (d) Every point of a line
+opposite \(v\) is at distance \(5\) from \(v\); the line meets exactly
+one line of \(S\), in one point. (e) By (d) and (c), counting incidences
+between free points and \(W\). \(\square\)
+
+\hypertarget{spread-points-and-whiskers}{%
+\subsection{1.2 Spread points and
+whiskers}\label{spread-points-and-whiskers}}
+
+\textbf{Proposition 1.3} (\texttt{D7\_HEXAGON.md}, Proposition 1.4)
+{[}restatement; Theorem{]}. \(\mathcal P_S\) is a segment set of
+\(P(q)=(q+1)(q^3+1)\) points, and no segment set is larger; equality
+holds only for the point sets of spreads.
+
+\textbf{Theorem 1.4} {[}new in this form; Theorem{]}. Let \(S\) be a
+spread, \(v\in S\) and \(W\) any whisker set.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \(R_L(W)=\mathcal L_v\cup W\cup S_0(W)\) is a dual segment set, and
+  two of its lines that meet, meet in a point of \(\mathcal P_S\).
+\item
+  \(|R_L(W)|=q(q+1)+|W|+|S_0(W)|\).
+\item
+  If \(W\) is exact and every point of \(\mathcal P_S\) not on \(v\)
+  lies on a line of \(W\) or of \(S_0(W)\), then every point of
+  \(\Gamma\) lies on a line of \(R_L(W)\), and no line can be added to
+  \(R_L(W)\): it is a maximal dual segment set.
+\item
+  A line \(n\in S\setminus\{v\}\) all of whose whiskers pass through one
+  point of \(n\) can be added to \(R_L(W)\) as well.
+\end{enumerate}
+
+\emph{Proof.} (a) A line of \(\mathcal L_v\) has one point on
+\(v\subseteq\mathcal P_S\) and its other \(q\) points at distance \(3\)
+from \(v\), so not in \(\mathcal P_S\) (Lemma 1.2(b)). A whisker has one
+point in \(\mathcal P_S\) and \(q\) free points (Lemma 1.2(d)). So every
+line of \(\mathcal L_v\cup W\) has exactly one point in
+\(\mathcal P_S\). Its other points are either at distance \(3\) from
+\(v\), and then on no other line of \(\mathcal L_v\) (Lemma 1.2(a)) and
+on no whisker (whose points are at distance \(5\)), or free, and then on
+no line of \(\mathcal L_v\) and on at most one whisker. So two lines of
+\(\mathcal L_v\cup W\) never meet outside \(\mathcal P_S\). A line
+\(n\in S_0(W)\) meets no line of \(\mathcal L_v\) (whose points are at
+distance at most \(3\) from \(v\), while those of \(n\) are at distance
+\(5\)), no whisker (definition) and no other spread line. So the lines
+of \(S_0(W)\) are isolated, and for every other line \(\ell\) of
+\(R_L(W)\) the lines of \(R_L(W)\) meeting \(\ell\) all pass through the
+unique point of \(\ell\) in \(\mathcal P_S\). (b) The three sets are
+disjoint: whiskers are opposite \(v\), lines of \(\mathcal L_v\) are
+not, and neither kind is in \(S\). (c) Points of \(v\) and points at
+distance \(3\) from \(v\) lie on lines of \(\mathcal L_v\), free points
+on whiskers (\(W\) exact), and the points of \(\mathcal P_S\) off \(v\)
+by hypothesis. A line \(\ell\notin R_L(W)\) then meets a line of
+\(R_L(W)\) at each of its \(q+1\) points, and these lines are different
+from each other (two points of \(\ell\) on one line \(\ne\ell\) is
+impossible), so \(R_L(W)\cup\{\ell\}\) is not a dual segment set. (d)
+Such an \(n\) meets lines of \(R_L(W)\) only in that point \(x\) (it
+meets no line of \(\mathcal L_v\) and no other spread line), and for a
+whisker through \(x\) the new line meets it at its point in
+\(\mathcal P_S\), where all its other meetings already are. Two such
+spread lines do not meet. \(\square\)
+
+For \(W\) exact and \(S_0(W)\) left out this is \texttt{CONICS.md},
+Lemma 3.1; for the whisker set of \texttt{POLISHED.md} and its \(q^2\)
+empty spread lines it is Proposition 1(c),(d) of
+\texttt{conics2/README.md}. The proof above uses only incidences.
+
+\textbf{Proposition 1.5} {[}new; Theorem{]} (\emph{where the room is}).
+Let \(G\) be a dual segment set in which any two lines that meet do so
+in a point of \(\mathcal P_S\) (as in Theorem 1.4(a)). Then
+\(|G\setminus S|\le q^4+q\), with equality if and only if the lines of
+\(G\setminus S\) cover every point outside \(\mathcal P_S\) exactly
+once. Hence \(|G|\le q^4+q+|G\cap S|\). For an exact whisker set,
+\(\mathcal L_v\cup W\) has exactly \(q^4+q\) lines.
+
+\emph{Proof.} A line not in \(S\) meets exactly one spread line, in one
+point, so it has exactly one point in \(\mathcal P_S\) (a second point
+would lie on a second spread line). Its other \(q\) points lie outside
+\(\mathcal P_S\), and by hypothesis these \(q\)-sets are disjoint for
+different lines of \(G\setminus S\). There are
+\(N-P(q)=q^5+q^2=q(q^4+q)\) points outside \(\mathcal P_S\). Finally
+\(q(q+1)+q^2(q^2-1)=q^4+q\). \(\square\)
+
+So within this class \(R_L(W)\) can only grow by containing more spread
+lines, at most \(q^3-q^2+1\) more; the general bound
+\((q+1)(q^3+1)=q^4+q+(q^3+1)\) is the case where all spread lines are in
+\(G\), which forces an ovoid.
+
+\textbf{Lemma 1.6} {[}new; Theorem{]}. Let \(W\) be exact. Every whisker
+meets exactly one line of \(S\setminus\{v\}\), and a line
+\(n\in S\setminus\{v\}\) meets at most \(q^2-1\) whiskers. So at least
+\(q^2\) spread lines other than \(v\) meet a whisker and
+\(|S_0(W)|\le q^3-q^2\). If every line of \(S\setminus\{v\}\) meets
+either no whisker or \(q+1\) whiskers, then \(|S_0(W)|=q^2\).
+
+\emph{Proof.} A whisker meets one line of \(S\) (§0), not \(v\), since
+it is opposite \(v\). At a point \(x\) of \(n\) the \(q+1\) lines are
+\(n\), the line through \(x\) on the geodesic to \(v\) (at distance
+\(4\) from \(v\), so not a whisker) and \(q-1\) others. Hence \(n\)
+meets at most \((q+1)(q-1)\) whiskers, and \(q^2(q^2-1)/(q^2-1)=q^2\).
+In the last case the lines meeting whiskers number
+\(q^2(q^2-1)/(q+1)=q^2(q-1)\), and \(q^3-q^2(q-1)=q^2\). \(\square\)
+
+\hypertarget{the-exact-whisker-set-of-polished.md}{%
+\subsection{\texorpdfstring{1.3 The exact whisker set of
+\texttt{POLISHED.md}}{1.3 The exact whisker set of POLISHED.md}}\label{the-exact-whisker-set-of-polished.md}}
+
+In \(H(q)\) with the coordinates of \texttt{POLISHED.md} §6.1 (\(q\)
+odd) and §6.5 (\(q\) even): \(\Pi\) the elliptic hyperplane
+\(X_0+cX_4=0\) (\(q\) odd, \(-c\) a non-square) or
+\(X_3=X_0+\delta X_4\) (\(q\) even, \(\mathrm{Tr}\,\delta=1\)), \(S\)
+its Hermitian spread, \(v=\langle e_1,e_6\rangle\), the hyperplanes
+\(\Pi_z\supset v\) (\(z=(\alpha,\beta)\in\mathbb F^2\)) and their
+spreads \(S_z\), the function \(\nu\) on the points of \(\Pi\) off
+\(v\), the zero-free cubic \(G\) and \(F(z)=G(z)/N(z)\) with \(N\) the
+anisotropic norm form;
+\(W=\{\ell\in S_z\setminus\{v\}: z\neq0,\ \nu(\ell\cap\Pi)=F(z)\}\) is
+exact for every odd \(q\) (Theorem 6.5) and every even \(q\ge4\)
+(Theorem 6.14).
+
+\textbf{Theorem 1.7} (\texttt{conics2/README.md}, Proposition 1(a),(b))
+{[}restatement with proof; Theorem{]}. Let \(q\) be odd, or even with
+\(q\ge4\), and \(W\) the exact whisker set above. Then every point \(X\)
+of \(\mathcal P_S\) not on \(v\) lies on exactly one whisker if
+\(\nu(X)\neq0\) and on none if \(\nu(X)=0\); \(\nu\) is constant on
+every line of \(S\setminus\{v\}\). Hence every line of
+\(S\setminus\{v\}\) meets either \(q+1\) whiskers, one at each of its
+points, or none, and \(S_0(W)=\{n\in S\setminus\{v\}:\nu(n)=0\}\) has
+exactly \(q^2\) lines.
+
+\emph{Proof.} Whiskers through \(X\) are whiskers whose point in \(\Pi\)
+is \(X\) (their other points are off \(\Pi\)). On \(\Pi\) the equation
+of \(\Pi_z\) reduces to \(\alpha X_2+\beta X_5=0\) (both parities), and
+\((X_2,X_5)\neq(0,0)\) because \(X\) is not on \(v\)
+(\texttt{POLISHED.md}, Lemma 6.1(d) / 6.10). So the \(z\neq0\) with
+\(X\in\Pi_z\) form the punctured line \(\{tz_0:t\neq0\}\),
+\(z_0=(X_5,-X_2)\). For each of them exactly one line of \(S_z\) passes
+through \(X\) (Lemma 6.1(b); for even \(q\) read Lemma 6.10 for 6.1
+throughout); it is not \(v\), it is not in \(S\) (6.1(e)), so it meets
+\(\Pi\) only in \(X\) (6.1(c)), and different \(z\) give different lines
+(6.1(e)). It is a whisker if and only if \(\nu(X)=F(tz_0)\). As \(G\) is
+a cubic form and \(N\) a quadratic form, \(F(tz_0)=tF(z_0)\), and
+\(F(z_0)\neq0\) since \(G\) has no zero. So \(t\mapsto F(tz_0)\) is a
+bijection of \(\mathbb F^\times\): one whisker through \(X\) if
+\(\nu(X)\neq0\), none if \(\nu(X)=0\). \(\nu\) is constant on spread
+lines by \texttt{POLISHED.md}, Lemma 6.6(d) / 6.12(d). The count is
+Lemma 1.6. \(\square\)
+
+\textbf{Corollary 1.8} {[}Theorem{]}. For every prime power \(q\) with
+\(q\) odd or \(q\ge4\), in \(H(q)\): \(R_H=\mathcal P_S\) is a segment
+set with \(P(q)=q^4+q^3+q+1\) points, and
+\(R_L=\mathcal L_v\cup W\cup S_0(W)\) is a maximal dual segment set with
+\(\Lambda(q)=q^4+q^2+q\) lines (Theorem 1.4 with Theorem 1.7). In the
+notation of Proposition 1.5, \(\mathcal L_v\cup W\) is extremal and
+\(|R_L\cap S|=q^2\).
+
+\emph{Computer-checked.} \texttt{conics2/typed\_build.py} asserts every
+statement of Theorem 1.7 and Corollary 1.8 for \(q=4,5,7,11,13,16\)
+inside the builds. Independently, squad round \texttt{d7thm-r1} (own
+code, not the builder): card c1 for \(q=3,5,7\) (hexagon built from the
+quadric and Tits' equations), card c2 for \(q=9,11\), card c3 for
+\(q=2,4,8\): exactness of \(W\), \(\nu\) constant on spread lines, \(0\)
+or \(q+1\) whiskers per spread line, \(|S_0|=q^2\) equal to the lines
+with \(\nu=0\), the dual segment property, \(|R_L|=q^4+q^2+q\)
+(\(6{,}651\) at \(q=9\), \(14{,}773\) at \(q=11\), \(276\) at \(q=4\),
+\(4{,}168\) at \(q=8\)), maximality (every outside line tested), and the
+segment property of \(\mathcal P_S\); card c2 also for every admissible
+\(c\) at \(q=9,11\), card c3 for every admissible \((c_0,c_1)\) at
+\(q=4,8\); negative controls fail as they should
+(\texttt{research/squads/d7thm-r1/scoreboard.jsonl}).
+
+\emph{Remarks.} (i) \(q=2\): Lemma 6.11 of \texttt{POLISHED.md} gives no
+zero-free \(G\) (card c3 re-checked all four pairs), but an exact
+whisker set of \(12\) lines exists (\texttt{POLISHED.md}, Corollary
+6.15), so Theorem 1.4 gives \(|R_L|\ge18\); the largest dual segment set
+of \(H(2)\) has \(25\) lines (\textbf{Computer-checked},
+\texttt{conics2/README.md} §3: SAT and MaxSAT, squad round
+\texttt{conics2-r1} cards c6, c7). (ii) \(R_L\) is not maximum in
+general: \(H(4)\) has a dual segment set of \(288>276\) lines
+(\textbf{Computer-checked}, same place: card c8, re-checked by
+\texttt{research/squads/conics2-r1/tools/dualseg\_check.py}; it is not
+of the kind in Proposition 1.5). Whether \(q^4+q^2+q\) can be beaten for
+\(q\ge5\) is open; by Proposition 1.5 a set of this kind would need more
+than \(q^2\) spread lines. (iii) For \(q=3^h\) the pencils of an ovoid
+give a dual segment set of \(P(q)\) lines, and the duality layout of
+\texttt{D7\_HEXAGON.md}, Corollary 8.2 (every freed set of size
+\(P(q)\)) is at least as good as any typed layout, by Theorem 2.1. (iv)
+We know no coordinate-free description of the \(q^2\) lines with
+\(\nu=0\).
+
+\hypertarget{the-non-friendly-sets}{%
+\subsection{1.4 The non-friendly sets}\label{the-non-friendly-sets}}
+
+\textbf{Proposition 1.9} (\texttt{D7\_HEXAGON.md}, Lemma 1.2(a),
+Corollaries 5.3(a) and 9.1) {[}restatement; Theorem{]}. For every prime
+power \(q\), the \(q^2+1\) points of an elliptic quadric section
+\(Q^-(3,q)\) of \(Q(6,q)\) are pairwise opposite in \(H(q)\), and with
+any \(q^2+1\) lines of the Hermitian spread they give a local duality
+\(\sigma\) as in Theorem C. So \(m=q^2+1\) is available on every
+non-friendly transition.
+
+The lab's builds use larger non-friendly sets found by computer at
+\(q=11\) (\(m=768\), mirrored set) and \(q=13\) (\(m=792\)), and
+\(m=q^2+1=257\) at \(q=16\) (\textbf{Computer-checked}: the builder
+re-checks non-collinearity, non-concurrency and the local duality at
+every point).
+
+\hypertarget{slot-counts}{%
+\section{2. Slot counts}\label{slot-counts}}
+
+Let \(T\) be a regular tournament on \(2k+1\) levels with a typing. For
+a level \(j\) let \(f_j\) be the number of friendly transitions out of
+\(j\) and \(g_j\) the number into \(j\). With friendly sets of sizes
+\(P\) (points, source \(H\)) and \(\Lambda\) (lines, source \(D\)) and
+non-friendly sets of size \(m\),
+\[\alpha_j=f_jX_j+(k-f_j)m,\quad X_j=\begin{cases}P&\tau_j=H\\ \Lambda&\tau_j=D\end{cases},\qquad
+\beta_j=g_jY_j+(k-g_j)m,\quad Y_j=\begin{cases}\Lambda&\tau_j=H\\ P&\tau_j=D\end{cases}\]
+(a friendly transition into an \(H\) level comes from a \(D\) level,
+which frees lines). Put \(a=\lfloor k/2\rfloor\) and assume
+\[P\ \ge\ \Lambda\ \ge\ m,\qquad \Lambda-m\ \ge\ a\,(P-\Lambda).\tag{$\ast$}\]
+For the sets of §1, \((\ast)\) holds whenever \(k\le 2q+1\) and
+\(m\le q^2+1\), since then \(a(q^3-q^2+1)\le q^4-q^3+q\le q^4+q-1\); at
+\(q=11\), \(m=768\) it holds for \(k\le23\), at \(q=13\), \(m=792\) for
+\(k\le27\). The bound needs \(k\le q-1\) anyway (hub degree
+\(q-k\ge1\)).
+
+\textbf{Theorem 2.1} {[}new; Theorem{]}. For every regular tournament on
+\(2k+1\) levels and every typing, with \(a=\lfloor k/2\rfloor\):
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \(\min_jf_j\le a\) and \(\min_jg_j\le a\);
+\item
+  if \(k\) is even, it is impossible that \(f_j\ge a\) at every level
+  and \(f_j\ge a+1\) at every \(D\) level; likewise with \(g\) and \(H\)
+  levels;
+\item
+  if \(k\) is odd, it is impossible that \(f_j\ge a+1\) at every \(D\)
+  level and \(g_j\ge a+1\) at every \(H\) level.
+\end{enumerate}
+
+Consequently, if \(P\ge\Lambda\ge m\): for \(k\) odd,
+\(\min\alpha,\min\beta\le aP+(a+1)m\) and
+\(\min\alpha+\min\beta\le a(P+\Lambda)+2(a+1)m\); for \(k\) even and
+under \((\ast)\), \(\min\alpha\le a(\Lambda+m)\) and
+\(\min\beta\le a(\Lambda+m)\).
+
+\emph{Proof.} Let \(h\) and \(d\) be the numbers of \(H\) and \(D\)
+levels. The \(k-f_j\) non-friendly transitions out of an \(H\) level go
+to \(H\) levels, so \(\sum_{\tau_j=H}(k-f_j)=\binom h2\), and likewise
+\(\sum_{\tau_j=D}(k-f_j)=\binom d2\) and the same with \(g\).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  If \(f_j\ge a+1\) everywhere, then \(\binom h2\le h(k-a-1)\) and
+  \(\binom d2\le d(k-a-1)\), so \(h+d\le 4k-4a-2\le 2k\), less than
+  \(2k+1\). For \(g\) the same.
+\item
+  \(k=2a\). From \(f_j\ge a\) on \(H\) levels, \(\binom h2\le ha\), so
+  \(h\le 2a+1\); from \(f_j\ge a+1\) on \(D\) levels,
+  \(\binom d2\le d(a-1)\), so \(d\le 2a-1\). Then \(h+d\le4a<4a+1\). For
+  \(g\) exchange the roles of \(H\) and \(D\).
+\item
+  \(k=2a+1\). On \(H\) levels \(g_j\ge a+1\) gives \(\binom h2\le ha\)
+  (count non-friendly incoming transitions), so \(h\le2a+1\); on \(D\)
+  levels \(f_j\ge a+1\) gives \(\binom d2\le da\), so \(d\le 2a+1\).
+  Then \(h+d\le4a+2<4a+3\).
+\end{enumerate}
+
+Consequences. A level with \(f_j\le a-1\) has
+\(\alpha_j\le(a-1)P+(a+1)m\le a\Lambda+am\), by \((\ast)\) (only
+\(\Lambda-m\ge(a-1)(P-\Lambda)\) is used, which always holds for
+\(k=2\)). If \(k\) is even and \(\min\alpha>a(\Lambda+m)\), every level
+has \(f_j\ge a\), and every \(D\) level \(f_j\ge a+1\) (a \(D\) level
+with \(f_j=a\) has \(\alpha_j=a\Lambda+am\)), contradicting (b). If
+\(k\) is odd, a level with \(f_j\le a\) has \(\alpha_j\le aP+(a+1)m\),
+so by (a) \(\min\alpha\le aP+(a+1)m\), and the same for \(\beta\). If
+\(\min\alpha+\min\beta>a(P+\Lambda)+2(a+1)m\), both minima exceed
+\(a\Lambda+(a+1)m\). A \(D\) level with \(f_j\le a\) has
+\(\alpha_j\le a\Lambda+(a+1)m\) and an \(H\) level with \(g_j\le a\) has
+\(\beta_j\le a\Lambda+(a+1)m\), so every \(D\) level has \(f_j\ge a+1\)
+and every \(H\) level \(g_j\ge a+1\), contradicting (c). \(\square\)
+
+\textbf{Theorem 2.2} {[}new; Theorem{]} (\emph{the alternating layout}).
+Take the rotational tournament \(j\to j+i\) (\(1\le i\le k\)) on
+\(\mathbb Z_{2k+1}\) and the typing \(\tau_j=H\) for \(j\) even,
+\(\tau_j=D\) for \(j\) odd (\(0\le j\le 2k\); the levels \(2k\) and
+\(0\) are both of type \(H\)). Then \(f_j=\lceil k/2\rceil\) for
+\(0\le j\le k\), and for \(j=k+t\) (\(1\le t\le k\))
+\[f_j=\begin{cases}k/2\ (t\text{ even, }H)\quad k/2+1\ (t\text{ odd, }D)&k\text{ even},\\
+(k-1)/2\ (t\text{ odd, }H)\quad (k+1)/2\ (t\text{ even, }D)&k\text{ odd};\end{cases}\]
+and \(g_j=f_{2k-j}\). Hence (for odd \(k\) using \((\ast)\))
+\[k\text{ even: }\ \min\alpha=\min\beta=\tfrac k2(\Lambda+m);\qquad k\text{ odd: }\ \min\alpha=\tfrac{k-1}2P+\tfrac{k+1}2m,
+\quad\min\beta=\tfrac{k-1}2\Lambda+\tfrac{k+1}2m,\] For \(k\) even both
+minima attain the bounds of Theorem 2.1; for \(k\) odd \(\min\alpha\)
+and \(\min\alpha+\min\beta\) do.
+
+\emph{Proof.} For \(j\le k\) the targets \(j+1,\dots,j+k\) need no
+reduction mod \(2k+1\), and exactly \(\lceil k/2\rceil\) of them have
+the parity opposite to \(j\). For \(j=k+t\) the targets are
+\(j+1,\dots,2k\) (\(k-t\) of them, \(\lceil (k-t)/2\rceil\) of the other
+parity) and \(0,\dots,t-1\), of which \(\lfloor t/2\rfloor\) (if \(j\)
+is even) or \(\lceil t/2\rceil\) (if \(j\) is odd) have the other
+parity; the four cases give the values stated. The reflection
+\(j\mapsto 2k-j\) preserves types and reverses every transition, so
+\(g_j=f_{2k-j}\). For \(k\) even the minimum \(a\) of \(f\) is attained
+at \(D\) levels (odd \(j\le k\)), so \(\min\alpha=a\Lambda+am\); the
+minimum of \(g\) is attained at \(H\) levels, where friendly incoming
+sets are lines: \(\min\beta=a\Lambda+am\). For \(k\) odd, \(f_j=a\) only
+at \(H\) levels and every \(D\) level has \(f_j=a+1\), whose
+\(\alpha_j=(a+1)\Lambda+am\ge aP+(a+1)m\) by \((\ast)\); so
+\(\min\alpha=aP+(a+1)m\); \(g_j=a\) only at \(H\) levels, where
+\(\beta_j=a\Lambda+(a+1)m\). \(\square\)
+
+So, with friendly point sets of size \(P\), friendly line sets of size
+\(\Lambda\) and non-friendly sets of size \(m\), the alternating layout
+maximizes \(K_{\mathcal A}+K_{\mathcal B}\) (and for \(k\) even each of
+them) over all regular tournaments and typings. Its slot counts are
+\[K_{\mathcal B}(q,k)=K_{\mathcal A}(q,k)=\tfrac k2(\Lambda+m)\ (k\text{ even}),\qquad
+K_{\mathcal B}=\tfrac{k-1}2P+\tfrac{k+1}2m,\ \ K_{\mathcal A}=\tfrac{k-1}2\Lambda+\tfrac{k+1}2m\ (k\text{ odd}).\]
+For \(k=1\) this is \(m\) on both sides, \texttt{D7\_HEXAGON.md}
+Corollary 9.1.
+
+\emph{The layouts of the builds} {[}Computer-checked against the
+builders' logs{]}. The free slots per level, in level order:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(k\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+types
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\alpha_j\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\beta_j\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & \(HDHDH\) (alternating) & \(P{+}m\), \(\Lambda{+}m\), \(P{+}m\),
+\(2\Lambda\), \(P{+}m\) & \(\Lambda{+}m\), \(2P\), \(\Lambda{+}m\),
+\(P{+}m\), \(\Lambda{+}m\) \\
+3 & \(HHDHHDD\) & \(P{+}2m\), \(P{+}2m\), \(2\Lambda{+}m\), \(2P{+}m\),
+\(2P{+}m\), \(2\Lambda{+}m\), \(2\Lambda{+}m\) & \(2\Lambda{+}m\),
+\(2\Lambda{+}m\), \(2P{+}m\), \(\Lambda{+}2m\), \(\Lambda{+}2m\),
+\(2P{+}m\), \(2P{+}m\) \\
+4 & \(HHDHDHDHD\) (alternating, rotated) & \(2P{+}2m\), \(2P{+}2m\),
+\(2\Lambda{+}2m\), \(2P{+}2m\), \(2\Lambda{+}2m\), \(2P{+}2m\),
+\(3\Lambda{+}m\), \(2P{+}2m\), \(3\Lambda{+}m\) & \(2\Lambda{+}2m\),
+\(2\Lambda{+}2m\), \(3P{+}m\), \(2\Lambda{+}2m\), \(3P{+}m\),
+\(2\Lambda{+}2m\), \(2P{+}2m\), \(2\Lambda{+}2m\), \(2P{+}2m\) \\
+\end{longtable}
+
+The \(k=3\) layout of the builds is not the alternating one but has the
+same minima. With the values of each build these vectors equal, entry by
+entry, the vectors printed by \texttt{typed\_build.py}
+(\texttt{d7thm/cells.out}).
+
+\emph{Computer-checked.} \texttt{d7thm/slots.py}: for \(k\le8\) every
+typing of the rotational tournament (the optimum is the one of Theorem
+2.2, numerically for \(q=11\) with \(m=768\), \(q=13\) with \(m=792\),
+\(q=16,101,1009\)); every labelled regular tournament on \(5\) and \(7\)
+levels (\(24\) and \(2{,}640\)) with every typing; SAT (CaDiCaL) on
+\(9,11,13\) levels finds no regular tournament and typing with
+\(f_j,g_j\ge a\) everywhere, \(f_j\ge a+1\) on \(D\) levels and
+\(g_j\ge a+1\) on \(H\) levels (one combined instance; (b) and (c)
+themselves are proved above). Independently squad card c6: all regular
+tournaments on \(3,5,7\) levels, \(200{,}000\) random ones on \(9\) and
+\(11\) levels, annealing, and the closed forms of Theorem 2.2 for
+\(k\le40\). Card c6 also found that without \((\ast)\) the value of
+\(\min\alpha\) for odd \(k\) changes (the \(D\) levels become the
+minimum); this happens only for \(k\) far above \(q\) (for instance
+\(k\ge27\) at \(q=11\)), outside the range of the bound.
+
+\hypertarget{the-bound}{%
+\section{3. The bound}\label{the-bound}}
+
+\textbf{Theorem 3.1} {[}new; Theorem{]}. Let \(q\) be a prime power,
+\(q\) odd or \(q\ge4\), let \(1\le k\le q-1\), and let
+\(K_{\mathcal B}(q,k)\), \(K_{\mathcal A}(q,k)\) be the slot counts of
+Theorem 2.2 with \(P=P(q)\), \(\Lambda=\Lambda(q)\) and \(m=q^2+1\). If
+an \(\mathrm{HG}(K_1,K_2;q-k)\) exists with \(K_1\le K_{\mathcal B}\)
+and \(K_2\le K_{\mathcal A}\), then
+\[n_b(q+1+k,\,7)\ \ge\ 2(2k+1)N(q)+K_1+K_2 .\]
+
+\emph{Proof.} Take \(2k+1\) copies of the incidence graph of \(H(q)\),
+the alternating layout of Theorem 2.2, the identity on friendly
+transitions with freed sets \(R_H=\mathcal P_S\) (source \(H\)) and
+\(R_L\) (source \(D\)) of Corollary 1.8, and on non-friendly transitions
+the local duality \(\sigma\) (\(H\to H\)) or \(\sigma^{-1}\)
+(\(D\to D\)) of Proposition 1.9 with the \(q^2+1\) freed elements. Every
+friendly transition is repaired by Theorem B, every other one by Theorem
+C; \((\ast)\) holds since \(k\le q-1\) (§2), so Theorem 2.2 gives the
+slot counts. Attach \(K_1\) hubs of colour \(\mathcal B\) and \(K_2\) of
+colour \(\mathcal A\) to free slots in any way (one slot per level each;
+unused slots stay free) and use the given graph as hub graph. Theorem
+0.1 applies. \(\square\)
+
+The same holds with \(m\) replaced by the size of any non-friendly set
+satisfying Theorem C, provided \((\ast)\) holds; and for any generalized
+hexagon of order \((q,q)\) with a spread, an exact whisker set with the
+property of Theorem 1.7, and a partial ovoid of a size \(m\) satisfying
+\((\ast)\) (for instance \(m\le q^2+1\)), by the same proof.
+
+\textbf{Corollary 3.2} {[}new; Theorem when the hub graph exists{]}.
+With full slots (\(K_1=K_{\mathcal B}\), \(K_2=K_{\mathcal A}\)) Theorem
+3.1 gives \(n_b(q+1+k,7)\ge F_k(q)\), where
+\[F_k(q)=2(2k+1)(q+1)(q^4+q^2+1)+\begin{cases}k\,(q^4+2q^2+q+1),&k\text{ even},\\[2pt]
+\tfrac{k-1}2\,(2q^4+q^3+q^2+2q+1)+(k+1)(q^2+1),&k\text{ odd}.\end{cases}\]
+In particular
+\[F_2(q)=10N(q)+2q^4+4q^2+2q+2,\quad F_3(q)=14N(q)+2q^4+q^3+5q^2+2q+5,\quad F_4(q)=18N(q)+4q^4+8q^2+4q+4.\]
+The gain over the level-graph value \(2(2k+1)N(q)\) (the 2013 table
+value when \(q+1+k\le16\)) is \(kq^4+O(q^2)\) for \(k\) even and
+\((k-1)q^4+\frac{k-1}2q^3+O(q^2)\) for \(k\) odd; the earlier general
+statement, \texttt{D7\_HEXAGON.md} Corollary 9.3 (\(k=2\)), gave
+\(2(q+2)(q^2+1)\approx2q^3\), and none was stated there for \(k\ge3\)
+except for \(q=3^h\) (Corollary 9.2). With a larger non-friendly set
+\(m\) the formula changes by \(k(m-q^2-1)\) for \(k\) even and
+\((k+1)(m-q^2-1)\) for \(k\) odd.
+
+\emph{Computer-checked} (\texttt{d7thm/cells.py}). The closed forms
+agree with the slot formulas for \(q\le37\), \(k\le6\).
+
+\hypertarget{hub-graphs}{%
+\section{4. Hub graphs}\label{hub-graphs}}
+
+The bound needs \(\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};q-k)\) with
+\(K\approx\lfloor k/2\rfloor q^4\) hubs per side and degree \(q-k\). The
+Moore-type bound for same-colour distance \(6\) is about \((q-k)^6\), so
+there is room, but the explicit hub graph of \texttt{D7\_HEXAGON.md}
+(Lemma 7.1, a plane with pendant trees) has only about
+\(\frac4{27}(q-k)^4\) vertices per colour. Write
+\(K_0(s)=(s+1)(s^4+s^2+1)\) for the number of points of a hexagon of
+order \((s,s)\).
+
+\textbf{Lemma 4.1} (\emph{blown-up hexagon}) {[}Theorem; elementary{]}.
+Let \(s\) be a prime power and \(c\ge1\). Replace every point and every
+line of \(H(s)\) by between \(1\) and \(c\) copies, and join two copies
+when the originals are incident. The result is an
+\(\mathrm{HG}(K_1,K_2;c(s+1))\) for any chosen
+\(K_1,K_2\in[K_0(s),cK_0(s)]\), and any two of its vertices of different
+colours are at distance at most \(5\).
+
+\emph{Proof.} A path between copies of \(x\neq y\) projects to a walk
+from \(x\) to \(y\) of the same length, and a geodesic from \(x\) to
+\(y\) lifts to copies, so the distance is \(d(x,y)\); two copies of one
+element are at distance \(2\). A copy of \(x\) has degree
+\(\sum_{y\ \mathrm I\ x}t_y\le c(s+1)\). \(\square\)
+
+\textbf{Lemma 4.2} (\emph{sums}) {[}new; Theorem{]}. Let
+\(Y_1,\dots,Y_r\) be bipartite graphs with colour classes \((A_i,B_i)\),
+each with all same-colour distances at most \(6\), and for \(i<r\) also
+all different-colour distances at most \(5\). Suppose \(|A_j|\le|B_i|\)
+and \(|B_j|\le|A_i|\) for \(i<j\). For every \(i<j\) add an injective
+map \(A_j\to B_i\) and an injective map \(B_j\to A_i\), as edges. The
+result is an
+\(\mathrm{HG}(\sum|A_i|,\sum|B_i|;\ \max_i\Delta(Y_i)+r-1)\).
+
+\emph{Proof.} The new edges join the colours \(A\) and \(B\), so the
+graph is bipartite with classes \(\bigcup A_i\), \(\bigcup B_i\). A
+vertex of \(Y_i\) gains one edge to each \(Y_j\), \(j<i\), and at most
+one from each \(Y_j\), \(j>i\). Same-colour pairs inside one \(Y_i\) are
+at distance at most \(6\) in \(Y_i\). For \(x\in A_j\) and \(z\in A_i\)
+with \(i<j\), \(x\) has a neighbour \(b\in B_i\), and
+\(d_{Y_i}(b,z)\le5\) since \(i<r\); so \(d(x,z)\le6\). The same for
+\(B\). \(\square\)
+
+\textbf{Lemma 4.3} (\texttt{D7\_HEXAGON.md}, Lemma 7.1, with the colours
+sized separately) {[}restatement; Theorem{]}. Let \(s\) be a prime
+power, \(n=s^2+s+1\), \(t=\delta-s-1\ge0\), \(u=\delta-1\). Attach to
+the incidence graph of \(\mathrm{PG}(2,s)\) \(c_P\) pendant vertices at
+the points and \(c_L\) at the lines (at most \(t\) per core vertex), and
+\(g_P\), \(g_L\) pendant vertices below these (at most \(u\) per
+vertex). This is an \(\mathrm{HG}(n+c_L+g_P,\ n+c_P+g_L;\ \delta)\).
+\emph{Proof.} The distance argument of Lemma 7.1 does not use the
+numbers of pendant vertices. \(\square\) (Different-colour distances can
+be \(7\) here, so such a part can only be the last part \(Y_r\) in Lemma
+4.2; squad card c5 confirmed this with a negative control.)
+
+\textbf{Theorem 4.4} {[}new; Theorem; (b) computer-assisted: the
+decompositions are found and verified by a program{]}. Let \(k\ge2\). An
+\(\mathrm{HG}(K_{\mathcal B}(q,k),K_{\mathcal A}(q,k);q-k)\) (full slots
+of Theorem 2.2, \(m=q^2+1\)) exists
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  for every prime power \(q\ge300k\);
+\item
+  for \(2\le k\le12\), for every prime power \(q\ge q_k\), where
+\end{enumerate}
+
+\begin{longtable}[]{@{}llllllllllll@{}}
+\toprule\noalign{}
+\(k\) & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(q_k\) & 16 & 23 & 23 & 29 & 23 & 31 & 29 & 37 & 32 & 43 & 41 \\
+\end{longtable}
+
+These are the thresholds of our search (\texttt{d7thm/hubopt.py}), not
+of the method; they are not monotone in \(k\).
+
+\emph{Proof.} (a) Let \(q\ge300k\) (so \(q\ge600\)). The slot counts
+satisfy \(q^4<\Lambda\le K_{\mathcal A}\le K_{\mathcal B}\),
+\(K_{\mathcal B}/K_{\mathcal A}\le P/\Lambda\le1+1/q\) and
+\(K_{\mathcal B}\le kP\le k(q+1)^4\). Put \(x=K_{\mathcal A}^{1/5}-1\)
+(\(>q^{4/5}-1>160\)). By Nagura's theorem {[}Na52{]} (for \(y\ge25\)
+there is a prime in \((y,\frac65y)\)) there is a prime \(s\) with
+\(x/1.2<s<x\). Then \(K_0(s)<K_0(x)<(x+1)^5=K_{\mathcal A}\), and, with
+\(K_0(y)\ge y^5\), \(x^5\ge K_{\mathcal A}(1-5K_{\mathcal A}^{-1/5})\)
+(Bernoulli) and \(K_{\mathcal A}^{-1/5}<q^{-4/5}\le0.006\),
+\[\frac{K_{\mathcal B}}{K_0(s)}<\frac{1.2^5K_{\mathcal B}}{x^5}\le\frac{2.4884\,(1+1/q)}{1-0.03}<3 .\]
+So Lemma 4.1 with \(c=3\) gives an
+\(\mathrm{HG}(K_{\mathcal B},K_{\mathcal A};3(s+1))\), and
+\(3(s+1)<3(x+1)=3K_{\mathcal A}^{1/5}\le3k^{1/5}(q+1)^{4/5}=3(q+1)\bigl(k/(q+1)\bigr)^{1/5}\le 3\cdot300^{-1/5}(q+1) <0.959\,(q+1)\le q-k\),
+the last step because \(0.041(q+1)\ge 12.3k\ge k+1\). (b) For
+\(q\le200\) the program \texttt{d7thm/hubopt.py} (an enumeration of
+multisets of parts with bounds) writes for each \((q,k)\) a
+decomposition into parts of Lemmas 4.1--4.3, combined by Lemma 4.2, and
+verifies it (sizes add up, the order condition, the degrees, the
+pendant-tree parameters, which \texttt{hubopt.out} prints); each line
+can be checked by hand. Examples: \((q,k)=(16,2)\), \(K=66{,}065\):
+\(H(8)+H(7)+H(5)\) and two copies of \(H(4)\) blown up to \(2{,}730\)
+and \(2{,}372\) (degrees \(9+4\), \(8+4\), \(6+4\), \(10+4\le14\));
+another one, built and checked below, is \(H(8)+H(7)+H(5)+H(5)\) and a
+pendant-tree part on \(\mathrm{PG}(2,5)\) with \(124\) and \(116\)
+vertices at depth \(1\) and \(1{,}049\) and \(1{,}041\) at depth \(2\)
+(\(1{,}196\) per colour, degree \(10\)). \((q,k)=(23,3)\):
+\(H(11)+H(9)+H(8)\), the last blown up to \(49{,}506\) and \(37{,}867\).
+Below the full slots the same search gives the hub graphs of §5.2, for
+instance \((13,4)\): \(H(7)+H(7)\), two hexagons of order \(7\) joined
+by a perfect matching from the points of each to the lines of the other
+(\(39{,}216\) per colour, degree \(8+1=9\)). For \(200<q\le2\cdot10^5\)
+Lemma 4.1 alone suffices (\texttt{d7thm/hubcap.py}, which finds \(s\)
+and \(c\) for every such \(q\)); for \(q>2\cdot10^5\ge300k\) use (a).
+\(\square\)
+
+\emph{Computer-checked.} \texttt{d7thm/build\_cert.py} builds the hub
+graph of a certificate (hexagons from \texttt{research/d10D7/hexgen2.c},
+random injections) and \texttt{hgcheck\ edges} checks it:
+\((q,k)=(16,2)\), \(\mathrm{HG}(66065,66065;14)\) (the one behind
+\((19,7)\)), \((17,2)\), \(\mathrm{HG}(84117,84117;15)\), and
+\((23,3)\), \(\mathrm{HG}(293092,281453;20)\): no same-colour pair at
+distance more than \(6\), degrees as claimed
+(\texttt{d7thm/cert\_checks.out}).
+
+\textbf{Computer-checked hub graphs below \(q_k\)}
+(\texttt{d7thm/hgcheck.c}, own code: bit-parallel breadth-first search
+from every hub; \texttt{d7thm/hgcheck\_lab.out},
+\texttt{d7thm/hgrun.out}). The lab's stored hub graphs, read from the
+solution files, re-checked standalone: \(\mathrm{HG}(15541,15541;9)\)
+{[}(14,7){]}, \(\mathrm{HG}(29535,29535;11)\) {[}(16,7){]},
+\(\mathrm{HG}(32356,30327;10)\) and \(\mathrm{HG}(32356,30158;10)\)
+{[}(17,7){]}, \(\mathrm{HG}(25308,25308;9)\) {[}(18,7), PSL(2,37){]},
+\(\mathrm{HG}(66065,66065;14)\) {[}(19,7){]},
+\(\mathrm{HG}(70163,66322;13)\) {[}(20,7){]}, and the Haar graph over
+\(\mathrm{PSL}(2,29)\) of job ``conics'', \(\mathrm{HG}(12180,12180;8)\)
+{[}(15,7), \texttt{conics/d15D7/hub\_psl29.txt}{]}: all VALID. The two
+cluster-assisted ones {[}(15,7) \(16{,}152\), (18,7) \(34{,}440\){]} are
+not hub graphs in this sense (their same-colour pairs are joined through
+the levels; in the hub graph alone \(452{,}256\) and \(654{,}360\)
+ordered same-colour pairs are at distance more than \(6\), the second
+number as in \texttt{conics2/README.md}); for them (HG) is covered by
+the all-pairs checks of the whole graphs. New random graphs
+(\texttt{hgcheck\ rand}, up to four seeds, aimed 2-switch repair when
+\(K\le60{,}000\)) at the slot counts of Theorem 2.2 with \(m=q^2+1\),
+for the \((q,k)\) with \(11\le q<q_k\), \(k\le5\) (ordered same-colour
+pairs at distance more than \(6\) are ``far pairs''; Haar graphs of
+\(\mathbb Z_K\) were also tried and never covered):
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\((q,k)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\delta=q-k\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(K_{\mathcal B}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(K_{\mathcal A}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(M(\delta)/K_{\mathcal B}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+result
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\((11,2)\) & 9 & 14,895 & 14,895 & 20.1 & found (rand seed 2) \\
+\((13,2)\) & 11 & 28,913 & 28,913 & 38.4 & found (rand seed 1) \\
+\((11,3)\) & 8 & 16,228 & 15,017 & 8.5 & not found (last graph tried:
+602,324 far pairs) \\
+\((13,3)\) & 10 & 31,112 & 29,083 & 19.2 & not found (last graph tried:
+44 far pairs) \\
+\((16,3)\) & 13 & 70,163 & 66,322 & 46.4 & found (rand seed 1) \\
+\((17,3)\) & 14 & 89,032 & 84,407 & 58.7 & found (rand seed 1) \\
+\((19,3)\) & 16 & 137,924 & 131,425 & 88.5 & found (rand seed 1) \\
+\((11,4)\) & 7 & 29,790 & 29,790 & 1.9 & not found (last graph tried:
+270,820,464 far pairs) \\
+\((13,4)\) & 9 & 57,826 & 57,826 & 5.2 & not found (last graph tried:
+37,527,036 far pairs) \\
+\((16,4)\) & 12 & 132,130 & 132,130 & 14.7 & not found (last graph
+tried: 13,824 far pairs) \\
+\((17,4)\) & 13 & 168,234 & 168,234 & 19.4 & not found (last graph
+tried: 212 far pairs) \\
+\((19,4)\) & 15 & 262,126 & 262,126 & 30.9 & found (rand seed 1) \\
+\((11,5)\) & 6 & 32,334 & 29,912 & 0.6 & not found (last graph tried:
+1,190,378,570 far pairs) \\
+\((13,5)\) & 8 & 62,054 & 57,996 & 2.2 & not found (last graph tried:
+1,152,049,654 far pairs) \\
+\((16,5)\) & 11 & 140,069 & 132,387 & 7.9 & not found (last graph tried:
+43,492,232 far pairs) \\
+\((17,5)\) & 12 & 177,774 & 168,524 & 11.0 & not found (last graph
+tried: 5,026,754 far pairs) \\
+\((19,5)\) & 14 & 275,486 & 262,488 & 19.0 & not found (last graph
+tried: 11,012 far pairs) \\
+\end{longtable}
+
+We did not run \(k=5\) with \(q\ge23\) (more than \(300{,}000\) hubs per
+colour) or \(k=6\).
+
+\textbf{Heuristic.} Let
+\(M(\delta)=1+\delta(\delta-1)+\delta(\delta-1)^3+\delta(\delta-1)^5\),
+the most vertices of one colour within distance \(6\) of a vertex in a
+graph of maximum degree \(\delta\). In the table above a random hub
+graph worked exactly when \(M(\delta)/K_{\mathcal B}\ge20\); at
+\(19.0\)--\(19.4\) (\((19,5)\), \((13,3)\), \((17,4)\)) tens to
+thousands of far pairs were left, and below that random graphs are far
+off. Where they fail the lab used Haar graphs over \(\mathrm{PSL}(2,p)\)
+and paths through the levels, which reach fewer hubs than the slots
+(\(16{,}152\) of \(16{,}309\) at \((15,7)\), \(34{,}440\) of
+\(59{,}070\) at \((18,7)\)).
+
+\hypertarget{the-cells}{%
+\section{5. The cells}\label{the-cells}}
+
+\hypertarget{the-fifteen-built-graphs}{%
+\subsection{5.1 The fifteen built
+graphs}\label{the-fifteen-built-graphs}}
+
+\texttt{d7thm/cells.py} recomputes, for every graph built in the jobs
+``conics'' and ``conics-2'', the slot vectors of §2 from \(q\), the type
+string, \(|\mathcal P_S|=P(q)\), \(|R_L|\) (\(q^4+q\) without \(S_0\),
+\(q^4+q^2+q\) with it) and \(m\), and the order
+\(2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}\) from the hub counts.
+\textbf{Computer-checked}: all fifteen agree with the builders
+(\texttt{cells.out}): every slot vector equals the one printed in the
+make logs on branch \texttt{claude/conics-2-diameter-7-ic0oat}, and
+every order equals the \(n\) of the solution file. The current graphs:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0800}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1067}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1200}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+cell
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(q\), types
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(m\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hubs per side
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hub graph
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+all-pairs check
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+the bound follows from
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+(14,7) & 11, \(HDHDH\) & 768 & 15,541 + 15,541 & random & 1,802,642 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(15,7) & 11, \(HHDHHDD\) & 768 & 16,152 + 16,152 & Haar, clusters &
+2,512,488 & passed & all-pairs check \\
+(16,7) & 13, \(HDHDH\) & 792 & 29,535 + 29,535 & random & 4,081,410 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(17,7) & 13, \(HHDHHDD\) & 792 & 32,356 + 30,327 & random & 5,693,959 &
+passed & Thm 3.1 + computer (set, hub graph) \\
+(18,7) & 13, \(HHDHDHDHD\) & 792 & 34,440 + 34,440 & Haar, clusters &
+7,309,092 & passed & all-pairs check \\
+(19,7) & 16, \(HDHDH\) & 257 & 66,065 + 66,065 & random & 11,316,940 &
+9/16 ranges & \textbf{Theorem} (\(=F_2(16)\)) \\
+(20,7) & 16, \(HHDHHDD\) & 257 & 70,163 + 66,322 & random & 15,795,219 &
+9/24 ranges & Thm 3.1 + computer (hub graph) (\(=F_3(16)\)) \\
+\end{longtable}
+
+All use \(\Lambda=q^4+q^2+q\) (with \(S_0\)). Hub graphs: ``random''
+means random bipartite of degree \(q-k\) (checked standalone, §4);
+``Haar, clusters'' means a Haar graph over
+\(\mathbb Z_{673}\rtimes\mathbb Z_{24}\) resp. \(\mathrm{PSL}(2,41)\)
+whose same-colour pairs are partly joined through the levels
+(\texttt{conics2/README.md} §5). The all-pairs states are those of
+\texttt{conics2/README.md} at 11:44 UTC.
+
+At \((19,7)\) and \((20,7)\) the built graphs use exactly the sets of
+Theorem 3.1 (\(m=q^2+1\), the elliptic section), so their orders are
+\(F_2(16)\) and \(F_3(16)\). For \((19,7)\) every ingredient is proved:
+the sets (Corollary 1.8, Proposition 1.9), the repair of every
+transition (Theorems B and C), the slot counts (Theorem 2.2) and an
+\(\mathrm{HG}(66065,66065;14)\) (Theorem 4.4: \(H(8)+H(7)+H(5)+H(5)\)
+and a pendant-tree part, joined by Lemma 4.2). So
+\[n_b(19,7)\ \ge\ 11{,}316{,}940\] holds by proof, independently of the
+all-pairs check of the built graph (which uses a random hub graph and
+was not complete when job ``conics-2'' ended). For \((20,7)\) the hub
+graph \(\mathrm{HG}(70163,66322;13)\) is not covered by Theorem 4.4; it
+is computer-checked (the builder's graph, re-checked standalone by
+\texttt{hgcheck}, and a second random graph, seed 1,
+\texttt{hgrun.out}); with the proved equal-sided hub graph of
+\(65{,}737\) hubs per colour the bound is \(15{,}790{,}208\). This is a
+statement about the theorems, not a record claim: the lab records values
+after the coordinator's own check.
+
+\textbf{A larger (18,7) graph} {[}new; Theorem, built and partly
+computer-checked{]}. At \((q,k)=(13,4)\) the cluster-assisted Haar hub
+graph of the current build has \(34{,}440\) hubs per colour, while Lemma
+4.2 gives \(\mathrm{HG}(39216,39216;9)\) (\(H(7)+H(7)\), §4). With the
+build's sets (slots \(59{,}070\) per colour) or those of Theorem 3.1
+(slots \(57{,}826\)), Theorem 3.1 gives
+\[n_b(18,7)\ \ge\ 18\cdot402{,}234+2\cdot39{,}216\ =\ 7{,}318{,}644,\]
+\(9{,}552\) more than the lab's \(7{,}309{,}092\). We built it with
+\texttt{conics2/typed\_build.py} (same hexagon file, types
+\(HHDHDHDHD\), the 792-point mirrored set, \(S_0\) included; the hub
+graph from \texttt{d7thm/build\_cert.py}): the builder re-checks every
+hypothesis (segment and dual segment sets, the local duality at all 792
+points, same-colour hub distances at most \(6\), degrees \(15\) to
+\(18\)) and writes \(n=7{,}318{,}644\), \(65{,}612{,}918\) edges,
+edge-list sha256
+\texttt{c80d9c0e6a569508b2314c3c3cd6c53babce0ecb844017fdf7f86f297426ed1a};
+the solution file
+\texttt{research/frontier/sols/d18D7\_hex13\_typedwhisk\_h7h7\_n7318644.sol}
+rebuilds it byte for byte (\texttt{typed\_build.py\ build}).
+\textbf{Computer-checked:} (i) its level part (all edges between level
+vertices, \(64{,}554{,}086\) of them) is identical to that of the lab's
+\(7{,}309{,}092\) graph, rebuilt from its solution file (sha256
+\texttt{314d5db9…}, as recorded); (ii) \texttt{apsp\_fast}
+(\texttt{conics/apsp\_fast.c}) from all \(78{,}432\) hubs: bipartite,
+degrees \(15\) to \(18\), every hub within distance \(7\) of every
+vertex (\texttt{RESULT\ VALID\ d=18\ D=7\ n=7318644} for the sources
+\(7{,}240{,}212\) to \(7{,}318{,}643\)); (iii) \texttt{apsp\_fast} from
+three ranges of level vertices (sources \(0\)--\(262{,}143\) in level
+\(0\), \(804{,}468\)--\(1{,}066{,}611\) in level \(1\),
+\(6{,}978{,}068\)--\(7{,}240{,}211\) in level \(8\); \(786{,}432\)
+sources, \(10.9\%\) of the level vertices): all \texttt{RESULT\ VALID},
+eccentricity at most \(7\). Pairs of level vertices are within distance
+\(7\) inside two levels by Theorems B and C, whose hypotheses the
+builder checked; a full all-pairs check (about \(20\) hours on 4 cores
+here) was not run and is left to the coordinator
+(\texttt{d7thm/d18D7/}).
+
+\hypertarget{the-cells-delta14dots26}{%
+\subsection{\texorpdfstring{5.2 The cells
+\(\Delta=14,\dots,26\)}{5.2 The cells \textbackslash Delta=14,\textbackslash dots,26}}\label{the-cells-delta14dots26}}
+
+For each \(\Delta\), the best \((q,k)\) with \(q+1+k=\Delta\); ``level
+graphs'' is \(\max 2(2k+1)N(q)\), the 2013 table value for
+\(\Delta\le16\) and the lab's beyond-table value for
+\(\Delta=17,\dots,20\)
+(\texttt{research/frontier/beyond/BEYOND\_TABLE.md}, branch
+\texttt{claude/new-cells-beyond-etos3t}). \(F_k(q)\) is Corollary 3.2
+with \(m=q^2+1\); its hub graph is ``proof'' (Theorem 4.4), ``computer''
+(\texttt{hgcheck}) or ``open''. ``Proved'' is the value of Theorem 3.1
+with the hub graph that \texttt{d7thm/hubopt.py} finds below the slots
+(a sum by Lemma 4.2, shown in the last column; full slots where Theorem
+4.4 applies). The search is not proved optimal, so these are values
+found, not the best the lemmas allow.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0759}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1266}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0633}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1392}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1013}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1392}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1519}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2025}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+cell
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+level graphs
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\((q,k)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(F_k(q)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hub graph at full slots
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+proved
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+at \((q,k)\): hubs
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hub graph of the proved value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+(14,7) & 1,771,560 & \((11,2)\) & 1,801,350 & computer & 1,797,726 &
+\((11,2)\): 13,083 + 13,083 & H(5) + H(5) + H(5) + H(4) \\
+(15,7) & 2,480,184 & \((11,3)\) & 2,511,429 & open & 2,503,620 &
+\((11,3)\): 11,718 + 11,718 & H(5) + H(5) + H(5) \\
+(16,7) & 4,022,340 & \((13,2)\) & 4,080,166 & computer & 4,079,910 &
+\((13,2)\): 28,785 + 28,785 & H(7) + H(5) + H(5) + H(4) \\
+(17,7) & 5,631,276 & \((13,3)\) & 5,691,471 & open & 5,686,116 &
+\((13,3)\): 27,420 + 27,420 & H(7) + H(5) + H(5) \\
+(18,7) & 7,240,212 & \((13,4)\) & 7,355,864 & open & 7,318,644 &
+\((13,4)\): 39,216 + 39,216 & H(7) + H(7) \\
+(19,7) & 11,184,810 & \((16,2)\) & 11,316,940 & proof & 11,316,940 &
+\((16,2)\): 66,065 + 66,065 & H(8) + H(7) + H(5) + H(4)x2 + H(4)x2 \\
+(20,7) & 15,658,734 & \((16,3)\) & 15,795,219 & computer & 15,791,202 &
+\((16,3)\): 66,234 + 66,234 & H(8) + H(7) + H(5) + H(5) + H(4) \\
+(21,7) & 21,120,372 & \((17,3)\) & 21,293,811 & computer & 21,290,219 &
+\((17,3)\): 85,440 + 84,407 & H(8) + H(8) + H(5) + H(5) + H(4)x2 \\
+(22,7) & 27,154,764 & \((17,4)\) & 27,491,232 & open & 27,476,636 &
+\((17,4)\): 160,936 + 160,936 & H(9) + H(8) + H(8) + H(7) \\
+(23,7) & 36,591,240 & \((19,3)\) & 36,860,589 & computer & 36,857,870 &
+\((19,3)\): 135,205 + 131,425 & H(9) + H(8) + H(7) + H(5)x2 + H(5) \\
+(24,7) & 47,045,880 & \((19,4)\) & 47,570,132 & computer & 47,566,386 &
+\((19,4)\): 260,253 + 260,253 & H(9) + H(9) + H(9) + H(8) + H(7) +
+H(5) \\
+(25,7) & 57,500,520 & \((19,5)\) & 58,038,494 & open & 58,013,214 &
+\((19,5)\): 256,347 + 256,347 & H(9) + H(9) + H(9) + H(8) + H(7) \\
+(26,7) & 67,955,160 & \((19,6)\) & 68,741,538 & open & 68,663,784 &
+\((19,6)\): 354,312 + 354,312 & H(11) + H(11) \\
+\end{longtable}
+
+At \((15,7)\) the lab's Haar graph over \(\mathrm{PSL}(2,29)\)
+(\texttt{CONICS.md} §3.4; re-checked above: same-colour distances at
+most \(6\) in the hub graph alone) fits the slots of Theorem 2.2 with
+\(m=q^2+1\) as well, so Theorem 3.1 with that computer-checked hub graph
+gives \(14N(11)+2\cdot12{,}180=2{,}504{,}544\).
+
+At \((18,7)\) the proved value, \(7{,}318{,}644\), exceeds the lab's
+built \(7{,}309{,}092\) (§5.1). The proved values exceed the level-graph
+values at every cell \(\Delta=14,\dots,26\). For \(k\ge3\) the lab's
+notes had no general statement except for \(q=3^h\)
+(\texttt{D7\_HEXAGON.md}, Corollary 9.2; §9 there says none covers
+\((15,7)\)). The values with computer-found ingredients (the lab's sets
+\(m=768,792\) and hub graphs) are the built values of §5.1 and are
+larger at \(q=11,13\).
+
+\hypertarget{summary-what-is-new}{%
+\section{6. Summary: what is new}\label{summary-what-is-new}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+result
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+label
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Theorem 1.4: lines meeting \(v\), whiskers and the spread lines missed
+by them form a dual segment set, for any hexagon, spread and whisker
+set; maximality criterion & new in this form (special cases:
+\texttt{CONICS.md} Lemma 3.1, \texttt{conics2} Prop. 1(c),(d)) &
+Theorem, coordinate-free \\
+Proposition 1.5: in a dual segment set whose lines meet only in spread
+points, at most \(q^4+q\) lines are off the spread;
+\(\mathcal L_v\cup W\) attains it & new & Theorem \\
+Lemma 1.6: an exact whisker set misses at most \(q^3-q^2\) spread lines,
+exactly \(q^2\) under the ``all or nothing'' property & new & Theorem \\
+Theorem 1.7, Corollary 1.8: \(\lvert R_H\rvert=(q+1)(q^3+1)\),
+\(\lvert R_L\rvert=q^4+q^2+q\), \(R_L\) maximal, every odd \(q\) and
+even \(q\ge4\) & restatement of \texttt{conics2} Prop. 1 with proof &
+Theorem; Computer-checked \(q=3,\dots,16\) (squad c1--c3, builder;
+\(q=2\) checked to have no zero-free \(G\)) \\
+Theorem 2.1: for every regular tournament and typing, the hub counts per
+side are at most \(\lfloor k/2\rfloor\) friendly sets, with the exact
+second-order term & new & Theorem; Computer-checked (all tournaments on
+\(\le7\) levels, SAT to 13 levels, squad c6) \\
+Theorem 2.2: the alternating layout attains Theorem 2.1 for every \(k\);
+closed forms & new & Theorem; Computer-checked \(k\le40\) \\
+Theorem 3.1, Corollary 3.2: \(n_b(q+1+k,7)\ge F_k(q)\) given the hub
+graph & new (for \(k=2\) it improves \texttt{D7\_HEXAGON.md} Cor. 9.3
+from \(\approx2q^3\) to \(\approx2q^4\) above the level graph; nothing
+was stated for \(k\ge3\), \(q\neq3^h\)) & Theorem \\
+Lemma 4.2: sums of hub graphs; Lemma 4.1: blow-ups; Lemma 4.3:
+\texttt{D7\_HEXAGON.md} Lemma 7.1 with the colours sized separately &
+4.2 new; 4.1 elementary; 4.3 restatement & Theorem; Computer-checked
+(squad c5) \\
+Theorem 4.4: the hub graphs at full slots exist for \(q\ge q_k\)
+(\(q_2=16\), \(q_3=q_4=23\), \ldots, \(q_k\le300k\)) & new & Theorem;
+(b) computer-assisted (certificates by program for \(q\le200\)) \\
+\(n_b(19,7)\ge11{,}316{,}940\) and \(n_b(18,7)\ge7{,}318{,}644\) (above
+the lab's \(7{,}309{,}092\)) by proof; proved values above the level
+graphs at \((14,7)\)--\((26,7)\) (§5.2) & new consequence & Theorem; the
+\((18,7)\) graph built, checked from every hub, full all-pairs check
+open \\
+The formulas reproduce all fifteen built graphs; the lab's hub graphs
+re-checked standalone; new random hub graphs for \(q<q_k\) & --- &
+Computer-checked \\
+Random hub graphs fail at \((q,k)=(11,3),(13,4)\); larger dual segment
+sets than \(q^4+q^2+q\) for \(q\ge5\); a coordinate-free description of
+the \(q^2\) lines with \(\nu=0\) & --- & open; Heuristic remarks in §1.3
+and §4 \\
+\end{longtable}
+
+The theorems explain the values built by the two jobs (at \(q=16\)
+exactly) and give the same kind of bound for every \(q\) and every
+\(k\), with an explicit hub graph wherever \(q\ge q_k\). One value is
+raised: at \((18,7)\) the explicit hub graph beats the computer-found
+one, giving \(7{,}318{,}644\) (a candidate until the coordinator's
+all-pairs check).
+
+\emph{Review.} A separate referee session re-derived the numerical steps
+(the Nagura chain, the closed forms, every table entry, all certificates
+of \texttt{hubopt.out} with its own checker, and Theorem 2.1 on all
+regular tournaments with at most \(7\) levels) and found no error in the
+proofs; it found that the first certificate search was far from optimal
+(now \texttt{hubopt.py}, which produced the \((18,7)\) hub graph) and
+several wording problems, all corrected here.
+
+\hypertarget{appendix-files}{%
+\section{Appendix: files}\label{appendix-files}}
+
+In \texttt{research/synthetic/d7thm/} (Python 3;
+\texttt{pip\ install\ python-sat} for \texttt{slots.py}; C with OpenMP
+for \texttt{hgcheck.c}; commands in \texttt{d7thm/README.md}):
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{slots.py} → \texttt{slots.out}: §2 (all typings of the
+  rotational tournament for \(k\le8\), all regular tournaments on 5 and
+  7 levels, SAT for 9--13 levels).
+\item
+  \texttt{hubcap\_lib.py}, \texttt{hubcap.py} → \texttt{hubcap.out}:
+  Lemma 4.1 coverage for \(q\le2\cdot10^5\) and the inequalities of
+  Theorem 4.4(a); \texttt{hubopt.py} → \texttt{hubopt.out}: the
+  certificates of Theorem 4.4(b) and of §5.2 for \(q\le200\) (one line
+  per \((q,k)\), pendant-tree parameters included);
+  \texttt{build\_cert.py}: the hub graph of a certificate as an edge
+  list.
+\item
+  \texttt{d18D7/}: the \((18,7)\) graph of §5.1 (builder log, level-part
+  comparison, the check from every hub); its solution file is
+  \texttt{research/frontier/sols/d18D7\_hex13\_typedwhisk\_h7h7\_n7318644.sol}.
+\item
+  \texttt{hgcheck.c}: standalone check of a hub graph (same-colour
+  distances by bit-parallel BFS from every vertex); modes \texttt{sol}
+  (read a solution file), \texttt{rand} (random bipartite graph,
+  optional aimed 2-switch repair), \texttt{haar} (Haar graphs of
+  \(\mathbb Z_K\)). \texttt{hgcheck\_lab.out}: the lab's hub graphs;
+  \texttt{hgrun.py} → \texttt{hgrun.out}: random hub graphs at the slot
+  counts of Theorem 2.2 for \(q<q_k\).
+\item
+  \texttt{cells.py} → \texttt{cells.out}: §5.1 and the closed forms of
+  Corollary 3.2; \texttt{table.py} → \texttt{table.out}: §5.2.
+\end{itemize}
+
+Squad round \texttt{research/squads/d7thm-r1/}: \texttt{BRIEF.md}, cards
+\texttt{c1}--\texttt{c6} (code and logs), \texttt{scoreboard.jsonl};
+logged in \texttt{research/squads/LOG.md}. The PDF
+\texttt{D7\_THEOREMS.pdf} is made from this file by pandoc and tectonic
+(\texttt{d7thm/make\_pdf.sh}).
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}MS13{]} M. Miller, J. Širáň, Moore graphs and beyond: a survey of
+  the degree/diameter problem, Electron. J. Combin., Dynamic Survey DS14
+  (2013).
+\item
+  {[}Na52{]} J. Nagura, On the interval containing at least one prime
+  number, Proc. Japan Acad. 28 (1952) 177--181.
+\item
+  {[}Th80{]} J. A. Thas, Polar spaces, generalized hexagons and perfect
+  codes, J. Combin. Theory Ser. A 29 (1980) 87--93.
+\item
+  {[}VM98{]} H. Van Maldeghem, Generalized Polygons, Birkhäuser, 1998.
+\end{itemize}
+
+\end{document}
