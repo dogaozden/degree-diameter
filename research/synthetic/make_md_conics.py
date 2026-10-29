@@ -89,7 +89,7 @@ t = re.sub(r'\\multicolumn\{(\d+)\}\{c\}\{([^{}]*)\}\\\\\[2pt\]', r'\\multicolum
 
 def enum(m):
     opts, body = m.group(1) or '', m.group(2)
-    lab = re.search(r'label=\\textup\{(.*?)\}(,|\]|$)', opts)
+    lab = re.search(r'label=\\textup\{(.*?)\}(,|\]|$)', opts) or re.search(r'label=([^,\]]*)', opts)
     fmt = lab.group(1) if lab else '(\\arabic*)'
     st = re.search(r'start=(\d+)', opts)
     n0 = int(st.group(1)) if st else 1

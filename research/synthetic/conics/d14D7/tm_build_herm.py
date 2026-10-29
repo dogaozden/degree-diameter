@@ -76,6 +76,10 @@ def main():
     if mode == 'make':
         hexfn, solfn, mirfn, offs, solout, outfn = sys.argv[2:8]; hubE = None; hubK = None
         extra = [int(v) for v in open(sys.argv[8]).read().split()] if len(sys.argv) > 8 else []
+        if os.environ.get('HUBGRAPH'):                    # explicit hub graph: first line K, then "a b" per edge
+            hl = open(os.environ['HUBGRAPH']).read().split('\n')
+            hubK = (int(hl[0]), int(hl[0]))
+            hubE = np.array([[int(v) for v in t.split()] for t in hl[1:] if t.strip()], dtype=np.int64)
     else:
         hexfn, mysol, outfn = sys.argv[2:5]; d = os.path.dirname(os.path.abspath(mysol))
         man = open(mysol).read().split('\n')
