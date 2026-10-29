@@ -57,3 +57,24 @@ Checker stderr, final progress line (copied unedited):
 
 Exit status: 0. Wall time: 7813 s (from 19:22:14 to 21:32:27, UTC).
 
+
+### Range d20 18: sources 11188295..11846430
+
+Checker stdout (copied unedited):
+
+```
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=11188295..11846430
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+```
+
+Checker stderr, final progress line (copied unedited):
+
+```
+658135 of 658135 sources done (1793317340)
+```
+
+Exit status: 0. Wall time: 7793 s (from 21:32:27 to 23:42:20, UTC).
+
+## Summary
+
+Both ranges of this worker finished with the checker's own RESULT line; the two ranges are part of the (20,7) all-pairs check, which the worker does not complete alone.
