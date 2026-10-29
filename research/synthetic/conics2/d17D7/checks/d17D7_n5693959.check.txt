@@ -5,6 +5,8 @@ d17D7(5,693,959) 2 711745..1423490 session_01QYEEyGMUvhrPmDxqURNgY3 : n=5693959 
 d17D7(5,693,959) 3 1423490..2135235 session_01QYEEyHMK2TAaAudWmVEtCr : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=1423490..2135235 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
 d17D7(5,693,959) 4 2135235..2846980 session_01QYEEyHVHkkoJX8Sh4Bt24Y : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=2135235..2846980 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
 d17D7(5,693,959) 5 2846980..3558725 session_01QYEEyKxh5UHknzwn8b1QhG : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=2846980..3558725 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
+d17D7(5,693,959) 6 3558725..4270470 session_01QYEEyHXRk7T39Dn1cUZgdi : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=3558725..4270470 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
 d17D7(5,693,959) 7 4270470..4982215 session_01QYEEyGmcyuvtQp1nNXjfnX : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=4270470..4982215 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
 d17D7(5,693,959) 8 4982215..5693959 session_01QYEEyL4CDbESzHvqDpRboS : n=5693959 edges=48243644 degree min=15 max=17 bipartite=yes diameter=7 sources=4982215..5693959 | RESULT VALID d=17 D=7 n=5693959 (sources in the range only)
-# ranges cover 0..5693959 exactly: False; every range VALID with n, max degree 17, bipartite, diameter 7: True
+# ranges cover 0..5693959 exactly: True; every range VALID with n, max degree 17, bipartite, diameter 7: True
+=> every vertex reaches every vertex within 7: diameter 7, bipartite, maximum degree 17: valid for (17,7), n = 5693959.
