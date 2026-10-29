@@ -87,8 +87,9 @@ solution file with typed_build.py build, compares the edge list sha256, and runs
 on its range; some ranges ran on the coordinator's machine instead. Map: research/synthetic/conics2/check_sessions.txt;
 result lines, copied from the raw tool output in each transcript (not from summaries): check_results.txt; per-cell
 files written by assemble_checks.py: research/synthetic/conics2/d1xD7/checks/.
-Result: see the README table (complete checks: (14,7), (15,7) both graphs, (16,7), (17,7) 5,693,790, and those listed
-there as complete at the end of the job).
+Result: complete and VALID: (14,7) 1,802,642 (local), (15,7) 2,512,488 and 2,509,944, (16,7) 4,081,410, (17,7) 5,693,959
+and 5,693,790, (18,7) 7,309,092 and 7,290,828. Not complete at the end of the job: (19,7) 11,316,940 (5 of 16 ranges)
+and (20,7) 15,795,219 (1 of 24); workers for every other range were running (check_sessions.txt).
 Lessons for the next coordinator. (1) A worker takes its task from its first message only: requests sent later from the
 coordinator session (a second range, or a switch to a new graph) were declined as unverified peer messages, which is
 the right behaviour. Plan every candidate before starting workers, or start a new session per new task. (2) Sessions
