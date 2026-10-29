@@ -9,3 +9,9 @@ q=11 k=5 d=6 K_B=32334 K_A=29912: rand seed 4 | haar K_A on both sides: rand see
 q=13 k=5 d=8 K_B=62054 K_A=57996: rand seed 4 | haar K_A on both sides: rand seed=4 K1=62054 K2=57996 degree min=7 max=8 far_same_colour_pairs=1152049654 / RESULT INVALID / haar K=57996 d=8 try=29 |S-S|=57 covered=5667 S=11243,19388,46606,27838,9526,17782,54257,8233 / RESULT NOT FOUND
 q=16 k=5 d=11 K_B=140069 K_A=132387: rand seed 4 | haar K_A on both sides: rand seed=4 K1=140069 K2=132387 degree min=10 max=11 far_same_colour_pairs=43492232 / RESULT INVALID / haar K=132387 d=11 try=29 |S-S|=111 covered=39161 S=24114,90796,24905,58548,117836,20632,35541,57037,67195,118591,46642 / RESULT NOT FOUND
 q=17 k=5 d=12 K_B=177774 K_A=168524: rand seed 4 | haar K_A on both sides: rand seed=4 K1=177774 K2=168524 degree min=11 max=12 far_same_colour_pairs=5026754 / RESULT INVALID / haar K=168524 d=12 try=29 |S-S|=133 covered=52241 S=1278,37359,146159,59220,157775,130323,71490,106130,18555,23662,121732,104381 / RESULT NOT FOUND
+q=19 k=5 d=14 K_B=275486 K_A=262488: rand seed 4 | haar K_A on both sides: rand seed=4 K1=275486 K2=262488 degree min=13 max=14 far_same_colour_pairs=11012 / RESULT INVALID / haar K=262488 d=14 try=29 |S-S|=183 covered=141069 S=166359,201792,196319,176764,240433,47005,153575,20192,224307,167957,8888,176337,246360,195174 / RESULT NOT FOUND
+Traceback (most recent call last):
+  File "/home/user/degree-diameter/research/synthetic/d7thm/hgrun.py", line 46, in <module>
+    res = (res[0] + ' | ' + res2[0], (res[1] if res else []) + res2[1])
+           ~~~^^^
+TypeError: 'NoneType' object is not subscriptable

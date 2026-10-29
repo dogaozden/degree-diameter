@@ -43,6 +43,6 @@ for k in range(2, 7):
         if res is None or 'RESULT VALID' not in res[1][-1]:
             r = subprocess.run([HG, 'haar', str(KA), str(d), '1', '30'], capture_output=True, text=True, timeout=3600).stdout
             res2 = ('haar K_A on both sides', r.strip().splitlines()[-2:])
-            res = (res[0] + ' | ' + res2[0], (res[1] if res else []) + res2[1])
+            res = ((res[0] + ' | ' if res else '') + res2[0], (res[1] if res else []) + res2[1])
         s = 'q=%d k=%d d=%d K_B=%d K_A=%d: %s: %s' % (q, k, d, KB, KA, res[0], ' / '.join(res[1]))
         print(s, flush=True); out.write(s + '\n'); out.flush()

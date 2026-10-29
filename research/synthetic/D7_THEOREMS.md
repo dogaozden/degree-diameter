@@ -419,7 +419,7 @@ and $c$ for every such $q$); for $q>2\cdot10^5\ge300k$ use (a). $\square$
 *Computer-checked.* `d7thm/build_cert.py` builds the hub graph of a certificate (hexagons from
 `research/d10D7/hexgen2.c`, random injections) and `hgcheck edges` checks it: $(q,k)=(16,2)$,
 $\mathrm{HG}(66065,66065;14)$ (the one behind $(19,7)$), $(17,2)$, $\mathrm{HG}(84117,84117;15)$, and $(23,3)$,
-$\mathrm{HG}(293092,281453;20)$ CERT233: no same-colour pair at distance more than $6$, degrees as claimed
+$\mathrm{HG}(293092,281453;20)$: no same-colour pair at distance more than $6$, degrees as claimed
 (`d7thm/cert_checks.out`).
 
 **Computer-checked hub graphs below $q_k$** (`d7thm/hgcheck.c`, own code: bit-parallel breadth-first search from every
@@ -430,15 +430,36 @@ $\mathrm{HG}(66065,66065;14)$ [(19,7)], $\mathrm{HG}(70163,66322;13)$ [(20,7)], 
 $\mathrm{PSL}(2,29)$ of job "conics", $\mathrm{HG}(12180,12180;8)$ [(15,7), `conics/d15D7/hub_psl29.txt`]: all VALID. The two cluster-assisted ones
 [(15,7) $16{,}152$, (18,7) $34{,}440$] are not hub graphs in this sense (their same-colour pairs are joined through the
 levels; in the hub graph alone $452{,}256$ and $654{,}360$ ordered same-colour pairs are at distance more than $6$, the
-second number as in `conics2/README.md`); for them (HG) is covered by the all-pairs checks of the whole graphs. New random graphs at the slot counts of
-Theorem 2.2 with $m=q^2+1$: $(11,2)$: $\mathrm{HG}(14895,14895;9)$ (rand seed 2); $(13,2)$: $\mathrm{HG}(28913,28913;11)$ (rand seed 1); $(16,3)$: $\mathrm{HG}(70163,66322;13)$ (rand seed 1); $(17,3)$: $\mathrm{HG}(89032,84407;14)$ (rand seed 1); $(19,3)$: $\mathrm{HG}(137924,131425;16)$ (rand seed 1); $(19,4)$: $\mathrm{HG}(262126,262126;15)$ (rand seed 1). Not found (random graphs, up to four seeds, aimed 2-switch repair for $K\le60{,}000$; Haar graphs of $\mathbb Z_K$ for $K>300{,}000$): $(11,3)$ (602,324 far pairs at best), $(13,3)$ (44 far pairs at best), $(11,4)$ (270,820,464 far pairs at best), $(13,4)$ (37,527,036 far pairs at best), $(16,4)$ (13,824 far pairs at best), $(17,4)$ (212 far pairs at best), $(11,5)$ (1,190,378,570 far pairs at best), $(13,5)$ (1,152,049,654 far pairs at best), $(16,5)$ (43,492,232 far pairs at best), $(17,5)$ (5,026,754 far pairs at best), and the other $(q,k)$ with $k\le6$, $q\le27$ listed in `hgrun.out`.
+second number as in `conics2/README.md`); for them (HG) is covered by the all-pairs checks of the whole graphs. New random graphs (`hgcheck rand`, up to four seeds, aimed 2-switch repair when $K\le60{,}000$) at the slot counts of Theorem 2.2 with $m=q^2+1$, for the $(q,k)$ with $11\le q<q_k$, $k\le5$ (ordered same-colour pairs at distance more than $6$ are "far pairs"; Haar graphs of $\mathbb Z_K$ were also tried and never covered):
+
+| $(q,k)$ | $\delta=q-k$ | $K_{\mathcal B}$ | $K_{\mathcal A}$ | $M(\delta)/K_{\mathcal B}$ | result |
+|---|---|---:|---:|---:|---|
+| $(11,2)$ | 9 | 14,895 | 14,895 | 20.1 | found (rand seed 2) |
+| $(13,2)$ | 11 | 28,913 | 28,913 | 38.4 | found (rand seed 1) |
+| $(11,3)$ | 8 | 16,228 | 15,017 | 8.5 | not found (last graph tried: 602,324 far pairs) |
+| $(13,3)$ | 10 | 31,112 | 29,083 | 19.2 | not found (last graph tried: 44 far pairs) |
+| $(16,3)$ | 13 | 70,163 | 66,322 | 46.4 | found (rand seed 1) |
+| $(17,3)$ | 14 | 89,032 | 84,407 | 58.7 | found (rand seed 1) |
+| $(19,3)$ | 16 | 137,924 | 131,425 | 88.5 | found (rand seed 1) |
+| $(11,4)$ | 7 | 29,790 | 29,790 | 1.9 | not found (last graph tried: 270,820,464 far pairs) |
+| $(13,4)$ | 9 | 57,826 | 57,826 | 5.2 | not found (last graph tried: 37,527,036 far pairs) |
+| $(16,4)$ | 12 | 132,130 | 132,130 | 14.7 | not found (last graph tried: 13,824 far pairs) |
+| $(17,4)$ | 13 | 168,234 | 168,234 | 19.4 | not found (last graph tried: 212 far pairs) |
+| $(19,4)$ | 15 | 262,126 | 262,126 | 30.9 | found (rand seed 1) |
+| $(11,5)$ | 6 | 32,334 | 29,912 | 0.6 | not found (last graph tried: 1,190,378,570 far pairs) |
+| $(13,5)$ | 8 | 62,054 | 57,996 | 2.2 | not found (last graph tried: 1,152,049,654 far pairs) |
+| $(16,5)$ | 11 | 140,069 | 132,387 | 7.9 | not found (last graph tried: 43,492,232 far pairs) |
+| $(17,5)$ | 12 | 177,774 | 168,524 | 11.0 | not found (last graph tried: 5,026,754 far pairs) |
+| $(19,5)$ | 14 | 275,486 | 262,488 | 19.0 | not found (last graph tried: 11,012 far pairs) |
+
+We did not run $k=5$ with $q\ge23$ (more than $300{,}000$ hubs per colour) or $k=6$.
 
 **Heuristic.** Let $M(\delta)=1+\delta(\delta-1)+\delta(\delta-1)^3+\delta(\delta-1)^5$, the most vertices of one colour
-within distance $6$ of a vertex in a graph of maximum degree $\delta$. In these runs a random hub graph with $K$
-vertices per colour worked when $M(\delta)/K\ge20$ ($(11,2)$: $20.1$; $(16,3)$: $46$; $(19,3)$: $88$), came close at
-$19.2$ ($(13,3)$: $32$ ordered far pairs left after $400$ aimed switches) and failed below ($(11,3)$: $8.5$; $(13,4)$:
-$5.2$; $(11,4)$: $1.9$). Where it fails the lab used Haar graphs over $\mathrm{PSL}(2,p)$ and paths through the levels,
-which reach fewer hubs than the slots ($16{,}152$ of $16{,}309$ at $(15,7)$, $34{,}440$ of $59{,}070$ at $(18,7)$).
+within distance $6$ of a vertex in a graph of maximum degree $\delta$. In the table above a random hub graph worked
+exactly when $M(\delta)/K_{\mathcal B}\ge20$; at $19.0$–$19.4$ ($(19,5)$, $(13,3)$, $(17,4)$) tens to thousands of far
+pairs were left, and below that random graphs are far off. Where they fail the lab used Haar graphs over
+$\mathrm{PSL}(2,p)$ and paths through the levels, which reach fewer hubs than the slots ($16{,}152$ of $16{,}309$ at
+$(15,7)$, $34{,}440$ of $59{,}070$ at $(18,7)$).
 
 # 5. The cells
 
