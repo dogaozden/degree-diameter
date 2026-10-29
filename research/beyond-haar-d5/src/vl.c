@@ -151,6 +151,46 @@ static long inc_move(int e, int g) {
     return inc_delta;
 }
 
+
+/* focused move (INC mode): pick an uncovered (s, v, h), a random non-backtracking walk s -> v of the right parity,
+   and an edge used once on it; return the voltage of that edge that makes the walk end at sheet h (or -1). */
+static int focus_move(int *pe) {
+    long tot = (long)b * b * m; int s = -1, v = -1, h = -1;
+    for (int t = 0; t < 20000; t++) {
+        long r = rnd() % tot; int ss = r / ((long)b * m), vv = (r / m) % b, hh = r % m;
+        if (!relevant(ss, vv)) continue;
+        if (cnt[r] == 0) { s = ss; v = vv; h = hh; break; }
+    }
+    if (s < 0) return -1;
+    int L0 = side[s] == 0 ? D : D - 1;
+    for (int t = 0; t < 2000; t++) {
+        int L = L0 - (rnd() % 2) * 2;                     /* lengths L0 or L0-2 */
+        if (((L & 1) != (side[s] != side[v])) ) L--;      /* fix parity */
+        if (L < 1) continue;
+        int x = s, laste = -1, we[16], wd[16], wv[16];
+        for (int k = 0; k < L; k++) {
+            int i, tries = 0;
+            do { i = rnd() % deg[x]; } while (de[x][i] == laste && ++tries < 50);
+            if (de[x][i] == laste) break;
+            we[k] = de[x][i]; wd[k] = dd[x][i]; wv[k] = x; laste = we[k]; x = dn[x][i];
+            if (k == L - 1 && x != v) { L = -1; break; }
+        }
+        if (L < 1 || x != v) continue;
+        int pos = rnd() % L, e = we[pos], once = 1;
+        for (int k = 0; k < L; k++) if (k != pos && we[k] == e) once = 0;
+        if (!once || fixed_[e]) continue;
+        /* product = P1 * g' * P2 with g' = volt (dir 0) or volt^-1 (dir 1) */
+        int P1 = 0, P2 = 0;
+        for (int k = 0; k < pos; k++) { int g = volt[we[k]]; if (wd[k]) g = inv_[g]; P1 = mul[(size_t)P1 * m + g]; }
+        for (int k = pos + 1; k < L; k++) { int g = volt[we[k]]; if (wd[k]) g = inv_[g]; P2 = mul[(size_t)P2 * m + g]; }
+        int gp = mul[(size_t)mul[(size_t)inv_[P1] * m + h] * m + inv_[P2]];
+        int g = wd[pos] ? inv_[gp] : gp;
+        (void)wv;
+        *pe = e; return g;
+    }
+    return -1;
+}
+
 static void write_sol(const char *path, long cost, const char *gname) {
     if (!path) return;
     char tmp[1024]; snprintf(tmp, sizeof tmp, "%s.tmp", path);
@@ -229,6 +269,8 @@ int main(int argc, char **argv) {
     int bvolt[MAXE], beu[MAXE], bew[MAXE];
     memcpy(bvolt, volt, sizeof(int) * E); memcpy(beu, eu, sizeof(int) * E); memcpy(bew, ew, sizeof(int) * E);
     int INC = getenv("INC") ? atoi(getenv("INC")) : 0;
+    double FOCUS = getenv("FOCUS") ? atof(getenv("FOCUS")) : 0;
+    double GIBBS = getenv("GIBBS") ? atof(getenv("GIBBS")) : 0;
     if (INC) {
         if (SWAP > 0) { fprintf(stderr, "INC mode has no swap moves\n"); return 2; }
         base_dist();
@@ -243,7 +285,22 @@ int main(int argc, char **argv) {
             for (long it = 0; it < ITERS && best > 0; it++) {
                 if ((it & 255) == 0 && now() > t_end) break;
                 double T = T0 * pow(T1 / T0, (double)it / ITERS);
-                int e = freee[rnd() % nfree], old = volt[e], g = rnd() % m; if (g == old) continue;
+                int e = freee[rnd() % nfree], old, g = rnd() % m;
+                if (GIBBS > 0 && rnd01() < GIBBS) {   /* heat bath on one edge: try every value */
+                    static long dl[65536]; int o = volt[e]; long acc = 0; double wsum = 0;
+                    for (int x = 0; x < m; x++) { if (x == o) { dl[x] = 0; continue; } dl[x] = inc_move(e, x); inc_move(e, o); }
+                    long mn = dl[0]; for (int x = 1; x < m; x++) if (dl[x] < mn) mn = dl[x];
+                    for (int x = 0; x < m; x++) wsum += exp(-(dl[x] - mn) / T);
+                    double r = rnd01() * wsum; int pick = m - 1;
+                    for (int x = 0; x < m; x++) { r -= exp(-(dl[x] - mn) / T); if (r <= 0) { pick = x; break; } }
+                    if (pick != o) { acc = inc_move(e, pick); cur += acc; }
+                    it_total++;
+                    if (cur < best) { best = cur; memcpy(bvolt, volt, sizeof(int) * E); write_sol(OUT, best, gname);
+                        fprintf(stderr, "  t=%.1fs run %d it %ld best %ld\n", now() - t_start, run, it, best); }
+                    continue;
+                }
+                if (FOCUS > 0 && rnd01() < FOCUS) { int fe, fg = focus_move(&fe); if (fg >= 0) { e = fe; g = fg; } }
+                old = volt[e]; if (g == old) continue;
                 long dlt = inc_move(e, g);
                 if (dlt <= 0 || rnd01() < exp(-dlt / T)) cur += dlt; else inc_move(e, old);
                 it_total++;
