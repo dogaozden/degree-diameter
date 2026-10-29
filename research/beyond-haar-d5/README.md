@@ -84,6 +84,10 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 | (7,5) | products Q x C_k (A4, S4 with cyclic), coset graphs | 1164-1176 | 96-848 | central factors make them abelian-like lifts; weak |
 | (7,5) | coset graphs \|H\| = 2 of the non-solvable groups of order 1176 and 1200 | 1176, 1200 | 8 | squad r4-c1: C5 x (SL(2,5):C2) = SmallGroup(1200,475), cost 8 (2M of ~320M unions, then annealing); C7 x PSL(3,2), cost 14; non-Haar (no regular subgroup of index 2) |
 | (7,5) | coset graphs AGL(1,49) \|H\| = 4, A5 x C20 / C29 \|H\| = 2 / 3 | 1176, 1200, 1160 | 30-90 | |
+| (7,5) | coset graphs \|H\| = 2 of the solvable groups of order 1176, Haar-type subgroups skipped | 1176 | **4** | (C7 x C7):C24 = SmallGroup(1176,213) (inside AGL(1,49)), H = an involution: cost 4 in the first 2M unions; full enumeration of all ~57M unions run separately (see below). Non-Haar: no index-2 subgroup meets H trivially. Neighbours SmallGroup(1176,214..218): 10-35 |
+| (7,5) | affine F_7^2 : K, K <= GL(2,7) of order 12h, \|H\| = h = 4, 6, 8, 12 | 1176 | 16 | coset/affine7.g |
+| (7,5) | 1-dim affine F_q : C_k, H = <x -> -x> (non-Haar when 4 divides k): (61,20), (97,12), (293,4) | 1220, 1164, 1172 | 12, 20, 133 | |
+| (5,5) | affine F_2^4 : K, \|H\| = 16; C2 x C2 x A6, \|H\| = 8 | 360 | 408; 4 | |
 | (7,5) | random lifts of 3+3 / 4+4 bases over groups of order 147-196 | 1176 | 28-36 | squads r1-c2, c3 |
 | (7,5) | W(4)+2 matchings over Z7, W(5)+1 matching over order 4 | 1190, 1248 | thousands | GQ lifts far off |
 | (7,5) | surgery on 1152 (+2 vertices) | 1154 | 436 pairs | dead end |

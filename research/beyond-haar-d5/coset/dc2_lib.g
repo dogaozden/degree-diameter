@@ -72,3 +72,8 @@ AffGrp := function(n, q, special)
   Add(perms, PermList(List(vecs, v -> Position(vecs, v + One(F) * Concatenation([1], List([2..n], i -> 0))))));
   return Group(perms);
 end;
+AffSub := function(q, k)   # F_q : C_k (x -> a x + b, a in the subgroup of order k of F_q^*), as permutations of F_q
+  local F, el, w;
+  F := GF(q); el := Elements(F); w := PrimitiveRoot(F)^((q - 1) / k);
+  return Group(PermList(List(el, x -> Position(el, x + One(F)))), PermList(List(el, x -> Position(el, w * x))));
+end;

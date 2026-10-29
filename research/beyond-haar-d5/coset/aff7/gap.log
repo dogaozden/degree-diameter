@@ -1,0 +1,16 @@
+Syntax warning: Unbound global variable in dc2_lib.g:42
+  if IsBound(SKIPHAAR) and SKIPHAAR then
+                           ^^^^^^^^
+h = 4: 4 classes of K
+  K 1 C2 . S4 = SL(2,3) . C2
+  K 2 C3 x D16
+  K 3 C48
+  K 4 C3 x Q16
+h = 6: 2 classes of K
+  K 1 C3 x SL(2,3)
+  K 2 C3 x ((C6 x C2) : C2)
+h = 8: 1 classes of K
+  K 1 C3 x QD32
+h = 12: 1 classes of K
+  K 1 C3 x (C2 . S4 = SL(2,3) . C2)
+h = 14: 0 classes of K

@@ -62,3 +62,8 @@ Round-3 c1 final: (7,5) h=3 orders 1731..1845 except 1764, 1776, 1800, 1824, 183
 1210 (the Haar case above); many pairs capped at 2M unions, so not exhaustive.
 Opus (20:45): solvable groups of order 1176 with h=2 and Haar-type subgroups skipped: (C7 x C7):C24 =
 SmallGroup(1176,213) reaches cost 4 at 1176 within the first 2M unions; full enumeration (about 57M unions) running.
+Round-4 c2 final: record-type 3+3 base over C3 x (C5:C4), (60,1), (60,9): best cost 6 at 360; no k-opt fix.
+Squad tally (r1-r4, 19 cards): no valid graph. The squads' main contributions were the cost-2 lifts at 360 (r2-c2),
+which led to the exact 2+2 search, and the coset-graph sweeps (r3-c1, r4-c1), which found the closest (7,5)
+near misses (SmallGroup(1200,475) cost 8, and the 1210 Haar case). The best (7,5) result so far came from an Opus
+sweep that skips Haar-type subgroups, built on the round-4 tools.
