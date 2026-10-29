@@ -129,6 +129,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 |---|---|---:|---:|---|
 | **(5,5)** | **lift of [[2,3],[3,2]] by SmallGroup(90,6) = C15 x S3 (exh/b4a2x.c, exact search)** | **360** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID; 16 solutions; records/** |
 | **(7,5)** | **coset graph of C5 x (SL(2,5):C2) = SmallGroup(1200,475), \|H\| = 2 = Haar graph of SL(2,5) x Z5** | **1200** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID, build_haar2.py VALID; orbit-type Haar (S closed under an involutory automorphism); records/** |
+| (5,5) | lifts of [[2,3],[3,2]] (exh/b4a2x.c) over 23 groups of order 90..102 | 360-408 | 0 at 360 only | exhaustive with no solution: (90,i) i = 1, 3, 5, 8, 9; C23:C4, D92; C31:C3; D94; C4 x C4 x S3; D98; D100. Stopped at a time cap (partial, no solution): C46 x C2, C16 x S3, C2 x C8 x S3, C7 x D14, C10 x D10, C17 x S3, and the cyclic/order-100 runs listed at the end of this file. (90,6) = C15 x S3: 16 solutions |
 | (5,5) | Z89-lifts of the 2+2 base [[2,3],[3,2]] | 356 | none exists | exhaustive (exh/cyc22.c, 22 CPU-min); solutions exist up to Z80 at least |
 | (5,5) | lifts of 2+2 base [[1,4],[4,1]] over every group of order 89..95 | 356-380 | none exists | **exhaustive** (exh/b4a1x.c, seconds per group); annealing had reached cost 2 at 360 over C9 x D10 and C5 x ((C3 x C3):C2), so that plateau is a real obstruction |
 | (5,5) | record 3+3 base over SmallGroup(60,3) | 360 | 4 | squad r2-c2 |
