@@ -84,8 +84,8 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
 
 - The exact search for the [[2,3],[3,2]] 2+2 base (exh/b4a2x.c) is the route that worked. Order 90: no solution for
   SmallGroup(90,i), i = 9, 3, 5, 8, 1; 16 solutions for i = 6 (C15 x S3, the 360 graph; that run stopped after its
-  first branch); not run for i = 7, 2 (non-abelian) and 10, 4 (abelian). Orders 91..95 (364..380 vertices): see the
-  status line at the end of this file. Cyclic groups are the slowest (small Aut) and least promising (no Z89-lift).
+  first branch); not run for i = 7, 2 (non-abelian) and 10, 4 (abelian). Orders 91..102 (364..408 vertices): see the
+  status section at the end of this file. Cyclic groups are the slowest (small Aut) and least promising (no Z89-lift).
 - For (7,5) above 1,200: orbit-type Haar graphs (coset graphs with |H| = 2 and a normal complement) of more groups.
   Tried at 1210..1320 (2 x odd orders, the non-solvable groups of order 1260 and 1320): best costs 18-36 in short
   anneals; the 1,200 hit needed 15 CPU-min of annealing from a cost-8 start, so longer anneals are the obvious next
@@ -129,7 +129,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 |---|---|---:|---:|---|
 | **(5,5)** | **lift of [[2,3],[3,2]] by SmallGroup(90,6) = C15 x S3 (exh/b4a2x.c, exact search)** | **360** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID; 16 solutions; records/** |
 | **(7,5)** | **coset graph of C5 x (SL(2,5):C2) = SmallGroup(1200,475), \|H\| = 2 = Haar graph of SL(2,5) x Z5** | **1200** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID, build_haar2.py VALID; orbit-type Haar (S closed under an involutory automorphism); records/** |
-| (5,5) | lifts of [[2,3],[3,2]] (exh/b4a2x.c) over 23 groups of order 90..102 | 360-408 | 0 at 360 only | exhaustive with no solution: (90,i) i = 1, 3, 5, 8, 9; C23:C4, D92; C31:C3; D94; C4 x C4 x S3; D98; D100. Stopped at a time cap (partial, no solution): C46 x C2, C16 x S3, C2 x C8 x S3, C7 x D14, C10 x D10, C17 x S3, and the cyclic/order-100 runs listed at the end of this file. (90,6) = C15 x S3: 16 solutions |
+| (5,5) | lifts of [[2,3],[3,2]] (exh/b4a2x.c) over 23 groups of order 90..102 | 360-408 | 0 at 360 only | exhaustive with no solution: (90,i) i = 1, 3, 5, 8, 9; C23:C4, D92; C31:C3; D94; C4 x C4 x S3; D98; D100. Stopped at a time cap (partial, no solution): C46 x C2, C16 x S3, C2 x C8 x S3, C7 x D14, C10 x D10, C17 x S3, and the cyclic and order-100 runs listed at the end of this file. (90,6) = C15 x S3: 16 solutions |
 | (5,5) | Z89-lifts of the 2+2 base [[2,3],[3,2]] | 356 | none exists | exhaustive (exh/cyc22.c, 22 CPU-min); solutions exist up to Z80 at least |
 | (5,5) | lifts of 2+2 base [[1,4],[4,1]] over every group of order 89..95 | 356-380 | none exists | **exhaustive** (exh/b4a1x.c, seconds per group); annealing had reached cost 2 at 360 over C9 x D10 and C5 x ((C3 x C3):C2), so that plateau is a real obstruction |
 | (5,5) | record 3+3 base over SmallGroup(60,3) | 360 | 4 | squad r2-c2 |
@@ -157,3 +157,25 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 
 Squad rounds and their scoreboards: `../squads/bh5-r1/`, `../squads/bh5-r2/`, `../squads/bh5-r3/`, log in
 `../squads/LOG.md`.
+
+## Status at the end of the session (23:38 UTC)
+
+All searches stopped; nothing runs. Results: (5,5) 360 (non-Haar lift by C15 x S3) and (7,5) 1,200 (Haar graph of
+SL(2,5) x Z5), both at the top of this file.
+
+The exact search exh/b4a2x.c over lifts of [[2,3],[3,2]] (exh/runs/b4a2x_ORDER.txt, solutions in b4a2x_ORDER_i.sol):
+- with solutions: SmallGroup(90,6) = C15 x S3 (16 solutions in the first branch, 2 isomorphism classes; run stopped
+  there).
+- exhaustive, no solution: (90,1) C5 x D18, (90,3) D90, (90,5) C3 x C3 x D10, (90,8) C5 x ((C3 x C3):C2), (90,9)
+  (C15 x C3):C2; (92,1) C23:C4, (92,3) D92; (93,1) C31:C3; (94,1) D94; (96,78) C4 x C4 x S3; (98,1) D98; (100,4) D100.
+- partial, no solution so far: (92,4) C46 x C2, (96,4) C16 x S3, (96,106) C2 x C8 x S3, (98,3) C7 x D14, (100,14)
+  C10 x D10, (102,1) C17 x S3, (91,1) C91 (20 min each); (95,1) C95, (100,1) C25:C4, (100,13) D10 x D10 (stopped at
+  the end, 3-18 min); (90,7) C3 x D30 (stopped at once).
+- not run: (90,2) C9 x D10, (90,4) C90, (90,10) C30 x C3, (92,2) C92, (93,2) C93, (94,2) C94, the other groups of
+  orders 96, 98 and 100, and orders 97, 99, 101, 102 (C102, others). The cyclic groups are the slowest (small Aut)
+  and the least promising (no Z89-lift exists, exh/cyc22.c).
+
+Next steps, in order: finish the partial runs above; the remaining groups of order 96 and 100 with large Aut; the
+same search for other 4-vertex 5-regular bases is already done ([[1,4],[4,1]], none up to order 95), so the next
+base family is 3+3 (the record-type [[1,2,2],[2,1,2],[2,2,1]], best cost 4 at 360) with an exact search in the style
+of b4a2x.c. For (7,5): longer anneals of orbit-type coset unions (|H| = 2) for groups of order 1204..1320.

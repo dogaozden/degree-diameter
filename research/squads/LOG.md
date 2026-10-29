@@ -88,3 +88,7 @@ S3 x D30, 4 with |Aut| = 90. Neither is a Haar graph: the colour-preserving auto
 A1 u B0), so it is not vertex-transitive. Files in research/beyond-haar-d5/records/ (d5D5_n360*). Lineage: squad
 r2-c2's cost-2 lifts at 360 on 2+2 bases led to the exact 2+2 searches (b4a1x, then b4a2x). Next: b4a2x over the
 groups of orders 91..95 (364..380 vertices), running now.
+Opus (22:37-23:38): b4a2x over 23 groups of order 90..102 (364..408 vertices, 4 CPUs, 20 min cap): no solution
+beyond order 90. Exhaustive and empty: C23:C4, D92, C31:C3, D94, C4 x C4 x S3, D98, D100; the rest partial (see
+research/beyond-haar-d5/README.md, end). The (7,5) coset sweeps at 1204..1320 were stopped at 22:37 to free the
+CPUs (best costs 18-36, no hit). Session totals: (5,5) 360 (non-Haar), (7,5) 1,200 (Haar via the coset route).
