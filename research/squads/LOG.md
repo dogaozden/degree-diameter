@@ -17,3 +17,18 @@ Kept: the (5,5) small-base near misses; bi-coset graphs with |G| divisible by 4.
 bases with more than 8 vertices (worse, as the coupon-collector law predicts).
 Opus alone meanwhile: exhaustive search of all Z89-lifts of the 2+2 base [[2,3],[3,2]] (exh/cyc22.c, 22 CPU-min):
 no solution, so no 356-vertex graph of that form. Solutions exist up to Z80 at least (320 vertices).
+Round-1 c1 and c4 did not report back (no scoreboard line); their folders hold logs only.
+
+### Round bh5-r2 (19:17 UTC, 6 cards, research/squads/bh5-r2/)
+Cards: c1 (5,5) bi-coset h=2, |G| divisible by 4, orders 356-400 · c2 (5,5) long anneals of the round-1 near
+misses (2+2 over order 90/92-94, 3+3 over order 60) · c3 (7,5) bi-coset h=2, orders 1156-1200 · c4 (7,5) mixed
+route-chart lifts (3 chart colours over F2 + 1 plain) · c5 wildcard (both cells) · c6 wildcard (5,5).
+Best per card: c2 cost 2 at 360 (2+2 base [[1,4],[4,1]] over C9 x D10 and C5 x ((C3 x C3):C2)), 4 at 360 (3+3 over
+SmallGroup(60,3)), 6 at 376 · c3 58 at 1188 (metacyclic only; SmallGroups data for 1156-1200 was missing then) · c4
+896 at 1216 (chart structure no better than random lifts) · c5 44 at 360 (K66 minus a matching over order 30), 142
+at 1184 · c6 1868 pairs at 356 (Z5-symmetric with fixed points, dead end) · c1: pending at the time of writing.
+Kept: the cost-2 lifts at 360 (Opus: basin sampling, i.e. many short anneals, each near miss checked by exact
+2-opt/3-opt, src/kopt.c). Dropped: route charts at Δ=7, large bases, fixed-point actions.
+Opus alone meanwhile: exhaustive coset graphs of almost simple groups (coset/dcenum.c). Best (7,5): PSL(2,17),
+|H| = |K| = 4, 1224 vertices, cost 14 (all 12,156 unions). Best (5,5): A6 h=2 and S6 h=4 at 360, cost 20. Annealing
+the Z17-lift description of the PSL(2,17) graph from that start did not improve it.

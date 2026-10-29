@@ -15,6 +15,7 @@ Job "beyond-haar-d5" (Opus cloud session, Oct 29 2026). Goal: beat our values 35
 | `src/gap_tables.g` | GAP: multiplication tables of all SmallGroups of an order (identity = 0). |
 | `src/gq_base.py`, `src/rand_base.py`, `src/grow.py`, `src/export_lift.py` | GQ bases, random regular bases, surgery starts, lift export for `apsp`. |
 | `exh/cyc22.c` | exhaustive search of all Z_n-lifts of a 2+2 base (unit-normalised, sorted parallel edges, last two voltages by 128-bit bitset rotations). |
+| `exh/b4a1x.c` | exact search of all lifts of the 2+2 base [[1,4],[4,1]] by any group of order <= 128: the self-fibres of A0 and B0 must be all of G; their walks through the single A1-B1 edge c are g_i c^-1 d_j and inverses, so c is solved from the missed elements; automorphisms of G reduce the A0-B1 voltages; survivors get the full test. Validated on A5 (240 vertices: solutions found, confirmed by vl and apsp). |
 | `exh/cycgen.c` | Z_n-lifts of any small base: random outer voltages + exact inner two; `SA=1` anneals the outer ones with the inner two minimised exactly. |
 | `coset/dc_export.g`, `coset/dc2_lib.g`, `coset/sg_export.g` | GAP: bi-coset graph data (coset actions and double cosets HgK) for a group and all pairs of classes of subgroups of order h. |
 | `coset/dcenum.c` | exhaustive enumeration of all unions of double cosets with total degree Δ; two BFS (G is transitive on each side). |
@@ -31,7 +32,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 | cell | construction | vertices | best cost | note |
 |---|---|---:|---:|---|
 | (5,5) | Z89-lifts of the 2+2 base [[2,3],[3,2]] | 356 | none exists | exhaustive (exh/cyc22.c, 22 CPU-min); solutions exist up to Z80 at least |
-| (5,5) | lifts of 2+2 base [[1,4],[4,1]] over C9 x D10 and C5 x ((C3 x C3):C2) (order 90) | 360 | 2 | squad r2-c2; the two misses are one involution in a vertex's own fibre; 3-opt neighbourhoods of two such lifts: no fix |
+| (5,5) | lifts of 2+2 base [[1,4],[4,1]] over every group of order 89..95 | 356-380 | none exists | **exhaustive** (exh/b4a1x.c, seconds per group); annealing had reached cost 2 at 360 over C9 x D10 and C5 x ((C3 x C3):C2), so that plateau is a real obstruction |
 | (5,5) | record 3+3 base over SmallGroup(60,3) | 360 | 4 | squad r2-c2 |
 | (5,5) | bi-coset graphs of A6 (h=2), S6, PGL(2,9), M10 (h=4) | 360 | 20 | exhaustive over all unions |
 | (5,5) | surgery on 354 / 352 (+2 vertices, rewiring) | 356 | 152 pairs | dead end |
