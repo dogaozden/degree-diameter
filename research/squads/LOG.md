@@ -58,3 +58,7 @@ non-Haar (no subgroup of order 180); exact search for the other 2+2 base [[2,3],
 the own-fibre conditions; filtered = brute force on SmallGroup(72,30)) running over the groups of order 90;
 annealing of the SmallGroup(1200,475) coset unions; solvable groups of order 1176 with h=2 (Haar-type subgroups
 skipped).
+Round-3 c1 final: (7,5) h=3 orders 1731..1845 except 1764, 1776, 1800, 1824, 1836 (too many groups); best cost 2 at
+1210 (the Haar case above); many pairs capped at 2M unions, so not exhaustive.
+Opus (20:45): solvable groups of order 1176 with h=2 and Haar-type subgroups skipped: (C7 x C7):C24 =
+SmallGroup(1176,213) reaches cost 4 at 1176 within the first 2M unions; full enumeration (about 57M unions) running.

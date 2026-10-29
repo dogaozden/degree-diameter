@@ -73,6 +73,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 | (5,5) | bi-coset graphs of A6 (h=2), S6, PGL(2,9), M10 (h=4) | 360 | 20 | exhaustive over all unions |
 | (5,5) | bi-coset graphs, \|H\| = 2, all groups of order 356..400 divisible by 4 (central H skipped) | 356-400 | 8 | squad r2-c1 |
 | (5,5) | bi-coset graphs, \|H\| = 3 and 4, SmallGroups of order 534..558 and 712..744 | 356-372 | 6 (Haar of G/H) | squad r3-c2; the cost-6 and cost-8 cases have H normal, i.e. Haar graphs of G/H; core-free cases are worse |
+| (5,5) | coset graphs \|H\| = 4 of the 23 non-solvable groups of order 720 | 360 | 4 | C2 x A6 with H = C4: cost 4, all 176 unions (exhaustive); non-Haar (no subgroup of order 180); the others 20+ |
 | (5,5) | all 10 5-regular 3+3 bases over all 13 groups of order 60 (screen), then basins + exact 2/3-opt | 360 | 4 | record-type base [[1,2,2],[2,1,2],[2,2,1]] over C15:C4 is best (squad r2-c2: 4); 3-opt of that lift: no fix |
 | (5,5) | surgery on 354 / 352 (+2 vertices, rewiring) | 356 | 152 pairs | dead end |
 | (7,5) | bi-coset graph of PSL(2,17), \|H\| = \|K\| = 4 | 1224 | 14 | exhaustive over all 12,156 unions; 7-regular, diameter 6 (apsp) |
@@ -81,6 +82,8 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 | (7,5) | bi-coset graphs of A5 x A5, \|H\| = 6 | 1200 | 24 | squad r3-c3, partly capped |
 | (7,5) | bi-coset graphs, \|H\| = 3, all SmallGroups of order 1731..1845 | 1154-1230 | 2 (Haar), 18 (non-Haar) | squad r3-c1 + exporter; best: (C11 x C11):C15 at 1210 with cost 2, but G has a normal subgroup R of index 3 meeting H trivially, so it is the Haar graph of R = (C11 x C11):C5 with an S closed under an order-3 automorphism (orbit-type Haar). Best non-Haar: C199:C9 (H inside every index-3 subgroup), 1194, cost 18 |
 | (7,5) | products Q x C_k (A4, S4 with cyclic), coset graphs | 1164-1176 | 96-848 | central factors make them abelian-like lifts; weak |
+| (7,5) | coset graphs \|H\| = 2 of the non-solvable groups of order 1176 and 1200 | 1176, 1200 | 8 | squad r4-c1: C5 x (SL(2,5):C2) = SmallGroup(1200,475), cost 8 (2M of ~320M unions, then annealing); C7 x PSL(3,2), cost 14; non-Haar (no regular subgroup of index 2) |
+| (7,5) | coset graphs AGL(1,49) \|H\| = 4, A5 x C20 / C29 \|H\| = 2 / 3 | 1176, 1200, 1160 | 30-90 | |
 | (7,5) | random lifts of 3+3 / 4+4 bases over groups of order 147-196 | 1176 | 28-36 | squads r1-c2, c3 |
 | (7,5) | W(4)+2 matchings over Z7, W(5)+1 matching over order 4 | 1190, 1248 | thousands | GQ lifts far off |
 | (7,5) | surgery on 1152 (+2 vertices) | 1154 | 436 pairs | dead end |

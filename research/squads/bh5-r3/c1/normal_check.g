@@ -9,5 +9,5 @@ Chk := function(ORD, id)
   od;
   Print(ORD, " ", id, " order-3 subgroup classes normal? ", res, "\n");
 end;
-Chk(1791, 3); Chk(1734, 5);
+Chk(1815, 3);
 QUIT;
