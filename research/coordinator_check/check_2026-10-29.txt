@@ -10,3 +10,9 @@ rebuilt on the Mac mini with research/synthetic/conics/d14D7/tm_build_herm.py fr
 and research/p4/d6/hex/hex_q13.bin: hubs per side 29366 29366; n = 4081072, edges = 32614144, degree min 14 max 16
 edge list sha256 350f9e078ebcc2e3bd997cb4fafce94f074da937f02cef59f91a14e5369e476c (matches the finder's)
 apsp_mt (all pairs, no symmetry), Wed Oct 28 23:32 to Thu Oct 29 04:39 PDT -> RESULT VALID d=16 D=7 n=4081072
+
+== (14,7) 1,802,642 — job conics-2, branch claude/conics-2-diameter-7-ic0oat (research/synthetic/conics2/d14D7/)
+rebuilt on the Mac mini with research/synthetic/conics2/typed_build.py build from research/frontier/sols/d14D7_hex11_typedwhisk_nu0_n1802642.sol
+and research/p4/d6/hex/hex_q11.bin: n = 1802642, edges = 12600827, degree min 12 max 14, hub graph edges 139840
+edge list sha256 98de1d8e969ebec7e87d860ff5b242755d7bd5802cabc49527d55a7390573c62 (matches the finder's)
+apsp_mt (all pairs, no symmetry), Thu Oct 29 04:40 to 05:12 PDT -> RESULT VALID d=14 D=7 n=1802642
