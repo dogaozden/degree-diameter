@@ -31,10 +31,13 @@ import sys, os, hashlib
 import numpy as np
 
 
+WHISK = {11: (1, 1, 3), 13: (2, 1, 1)}                   # q: (c, c0, c1) of POLISHED.md Theorem 6.5
+
+
 def whisker_RL(q, N, LP, PL, X):
-    """R_L = lines != v meeting v, plus the exact whisker set of POLISHED.md Theorem 6.5 (q = 11: c = 1, (c0,c1) = (1,3))."""
-    assert q == 11
-    c, c0, c1 = 1, 1, 3
+    """R_L = lines != v meeting v, plus the exact whisker set of POLISHED.md Theorem 6.5 (q = 11: c = 1, (c0,c1) = (1,3);
+    q = 13: c = 2, (c0,c1) = (1,1)); the elliptic hyperplane is x0 + c x4 = 0."""
+    c, c0, c1 = WHISK[q]
     inv = [0] + [pow(a, q - 2, q) for a in range(1, q)]
     e1 = np.nonzero((X == np.array([0, 1, 0, 0, 0, 0, 0])).all(1))[0][0]
     e6 = np.nonzero((X == np.array([0, 0, 0, 0, 0, 0, 1])).all(1))[0][0]
@@ -144,7 +147,7 @@ def main():
         inR.append(s)
     RH, RL = inR
     # --- the larger friendly sets (Remark 9.4 of D7_HEXAGON.md)
-    inHyp = (X[:, 0] + X[:, 4]) % q == 0                    # elliptic hyperplane x4 = -x0 (q = 11 = 3 mod 4)
+    inHyp = (X[:, 0] + WHISK[q][0] * X[:, 4]) % q == 0      # elliptic hyperplane x0 + c x4 = 0 (c = 1 at q = 11, 2 at 13)
     spread = np.nonzero(inHyp[LP].all(axis=1))[0]
     assert len(spread) == q ** 3 + 1, len(spread)
     RH = np.zeros(N, bool); RH[LP[spread].reshape(-1)] = True
@@ -153,15 +156,15 @@ def main():
         RL = whisker_RL(q, N, LP, PL, X)
         print(f'friendly sets: R_H = Hermitian spread points ({RH.sum()}), R_L = lines meeting v + exact whiskers '
               f'({RL.sum()})', flush=True)
-    mt0 = open(mirfn).read().split('\n')
-    R0 = np.array([int(v) for v in mt0[1].split()[1:]], dtype=np.int64)[:756]
-    P0 = X[R0]
-    Gm = (P0[:, None, 0] * P0[None, :, 4] + P0[:, None, 4] * P0[None, :, 0] + P0[:, None, 1] * P0[None, :, 5]
-          + P0[:, None, 5] * P0[None, :, 1] + P0[:, None, 2] * P0[None, :, 6] + P0[:, None, 6] * P0[None, :, 2]
-          - 2 * P0[:, None, 3] * P0[None, :, 3]) % q
-    np.fill_diagonal(Gm, 1)
-    assert (Gm != 0).all(), 'R_0 not pairwise opposite'
     if pencils:
+      mt0 = open(mirfn).read().split('\n')
+      R0 = np.array([int(v) for v in mt0[1].split()[1:]], dtype=np.int64)[:756]
+      P0 = X[R0]
+      Gm = (P0[:, None, 0] * P0[None, :, 4] + P0[:, None, 4] * P0[None, :, 0] + P0[:, None, 1] * P0[None, :, 5]
+            + P0[:, None, 5] * P0[None, :, 1] + P0[:, None, 2] * P0[None, :, 6] + P0[:, None, 6] * P0[None, :, 2]
+            - 2 * P0[:, None, 3] * P0[None, :, 3]) % q
+      np.fill_diagonal(Gm, 1)
+      assert (Gm != 0).all(), 'R_0 not pairwise opposite'
       RL = np.zeros(N, bool); RL[PL[R0].reshape(-1)] = True
       assert RL.sum() == (q + 1) * len(R0)
     if pencils and extra:                                              # extra lines with no point on a pencil line of R_0
