@@ -7,6 +7,11 @@ Job "beyond-haar-d5" (Opus cloud session, Oct 29 2026). Goal: beat our values 35
 the regular voltage lift of the 4-vertex base [[2,3],[3,2]] (A0-B0 double edge, A0-B1 triple, A1-B0 triple, A1-B1
 double) by G = SmallGroup(90,6) = C15 x S3. Voltages (element numbers in records/g90_6_C15xS3.table, identity 0):
 A0-B0 {0, 6}, A0-B1 {0, 5, 34}, A1-B0 {1, 31, 68}, A1-B1 {0, 6}; edge a -> b of voltage g joins (a,h) and (b,h g).
+The same voltages as elements (t, p) of Z15 x S3 (GAP's isomorphism; products (t,p)(s,q) = (t+s, pq), i^(pq) =
+(i^p)^q): A0-B0 {(0,()), (6,(1 3))}, A0-B1 {(0,()), (10,(1 3)), (12,(2 3))}, A1-B0 {(0,(1 3)), (1,(2 3)), (9,(2 3))},
+A1-B1 {(0,()), (6,(1 3))}. records/build_d5D5_n360_z15s3.py builds the graph from this description alone (no group
+table) and checks it by BFS: VALID; apsp.c on its output: VALID; nauty canonical hash equal to that of the saved edge
+list (isomorphic).
 Found by the exact search exh/b4a2x.c over all lifts of this base by the groups of order 90 (run for SmallGroup(90,6)
 at about 21:50 UTC, noticed at about 22:33; that run found 16 solutions in its first branch, x = 6, before it was stopped).
 Checked: research/lifts/coordinator_check/apsp.c: degree 5, bipartite, diameter 5, RESULT VALID at D = 5 and INVALID
