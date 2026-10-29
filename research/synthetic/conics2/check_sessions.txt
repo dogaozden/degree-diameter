@@ -81,3 +81,23 @@ d17D7nu0 2 711745 1423490 session_01QYEEyH4QnmAFEJ5EmAcruo   (reassigned 08:13)
 d17D7nu0 3 1423490 2135235 session_01QYEEyHMK2TAaAudWmVEtCr   (reassigned 08:13)
 d17D7nu0 4 2135235 2846980 session_01QYEEyHVHkkoJX8Sh4Bt24Y   (reassigned 08:20)
 d17D7nu0 5 2846980 3558725 session_01QYEEyKxh5UHknzwn8b1QhG   (reassigned 08:20)
+d16D7nu0 6 2550885 3061062 session_01QYEEyGoRtATsUarZtsdzPd   (new session 08:31, original range-6 session never started)
+d16D7nu0 8 3571239 4081410 local   (coordinator machine, 08:30)
+# new session 08:32 for (16,7) range 7 (the original range-7 session never started)
+d16D7nu0 7 3061062 3571239 session_01QYEEyK4xpaoCW5cueG2qve
+# STATE AT 08:32 UTC (read from the transcripts): which graph each worker actually runs. Workers declined requests sent
+# from the coordinator session after their first message (correctly: a peer message is not their user's instruction),
+# so several of the reassignments above did not happen.
+# (19,7) nu0 n=11,316,940 running: ranges 4 (JMoaG), 6 (HpHFr), 11 (HdgGa), 13 (J7cYJ), 14 (Gxjy8), 15 (HLZ8m).
+#   Not running: 1 (He18G declined), 2 (JmPu39 declined), 3 (Ky6PE declined), 5 (LQcoJ declined), 7, 8 (never
+#   started), 9, 10, 12, 16 (still on the old graph).
+# (19,7) old n=11,316,428 (ranges of 707,273): sessions JMhNU 5658216..6365493, J9MDS 6365493..7072770, GLW8p
+#   7780047..8487324, JkYJma 10609155..11316428 (idle since 07:24; whether the process survives is unknown).
+# (20,7) nu0 n=15,795,219 running: ranges 1-6 (new sessions), 13, 16, 17, 19, 22, 24. Not running: 7-10 (never started),
+#   11, 12, 14, 15, 18, 20, 21, 23 (still on the old graph).
+# (20,7) old n=15,794,963 (ranges of 658,124): K1bvW 6581240..7239364, KHozb 7239364..7897488, J7YpY 8555612..9213736,
+#   LLoc6 9213736..9871860, HaCBU 11188108..11846232, KFtA4 12504356..13162480, GQzVw 13162480..13820604,
+#   JSysC 14478728..15136852.
+# (17,7) nu0 n=5,693,959 running: ranges 3 (HMK2T), 4 (HVHkk), 5 (Kxh5U). Ranges 1 (HrtGn) and 2 (H4Qnm) declined.
+# (15,7) meta n=2,512,488: range 4 done (JpqH4); ranges 1, 2, 3 declined (Gsjqj, K929gt, HQbDm).
+# (18,7) n=7,290,828: ranges 1-4 running; range 10 (GF8vT) idle since 06:52 with no result (asked for its status 08:32).
