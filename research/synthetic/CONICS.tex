@@ -616,8 +616,9 @@ degree $5$, diameter $6$, is self-polar, and folds to $392$ vertices of diameter
 
 \subsection{The diameter-7 freed sets}
 \status{restatement, with one squad computation} The diameter-$7$ constructions (\texttt{SYNTHETIC.md} \S4) free the
-incidences of a matching at a set $R$ of points. With a duality ($q=3^h$) any segment set may be freed, and the point
-set of a spread (Hermitian, or the Ree--Tits spread when $q=3^{2e+1}$) is the largest one; with arbitrary matchings
+incidences of a matching at a set $R$ of points. When the matching is a duality ($q=3^h$) or the identity of a friendly
+transition (a copy of $H(q)$ followed by a copy of its dual, any $q$), any segment set may be freed, and the point
+set of a spread (Hermitian, or the Ree--Tits spread when $q=3^{2e+1}$) is the largest one; with other matchings
 $R$ must be non-collinear and the matching a local duality, which is easy when $R$ is a partial ovoid. So the
 size of the records at $(7,7),(9,7),(10,7),(13,7)$ is governed by large partial ovoids of $H(q)$, i.e.\ of $Q(6,q)$.
 The conic-like ones are:
@@ -706,7 +707,7 @@ For $G=\mathrm{PSL}(2,29)$ ($12{,}180$ elements) a short local search finds such
 (\texttt{conics/d15D7/psl\_hubgraph2.py}); for $\mathrm{PSL}(2,31)$ ($14{,}880$ elements) it reached $14{,}879$ of
 $14{,}880$ and stopped there. With $\mathrm{PSL}(2,29)$,
 $$n_b(15,7)\ \ge\ 14\cdot177{,}156+2\cdot12{,}180\ =\ 2{,}504{,}544,$$
-against the lab's $2{,}501{,}491$ (table $2{,}480{,}184$); the slots allow up to $2{,}512{,}560$ with a better hub graph.
+against the lab's $2{,}501{,}491$ (table $2{,}480{,}184$); the slots allow up to $2{,}480{,}184+17{,}520+16{,}188=2{,}513{,}892$ (unequal sides) with a better hub graph.
 \emph{All-pairs check} (\texttt{apsp\_mt}, every vertex, diameter $\le7$): queued after the $(14,7)$ check; the result goes to \texttt{conics/d15D7/checks/}.
 
 \emph{And at $(16,7)$} \status{computer, not built}. In the same five-copy layout at $q=13$ (record

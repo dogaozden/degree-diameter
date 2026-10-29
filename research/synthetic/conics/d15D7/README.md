@@ -17,7 +17,7 @@ line-side hub x joined to point-side hub x s for s in a set S of 8 elements, wit
 
     n = 14 * 177,156 + 2 * 12,180 = 2,504,544   (lab 2,501,491; table 2,480,184).
 
-The slots allow up to 2 * 16,188 hubs (n = 2,512,560) with a better hub graph. The same search over PSL(2,31) (14,880
+The slots allow up to 17,520 line-side and 16,188 point-side hubs (n = 2,513,892) with a better hub graph. The same search over PSL(2,31) (14,880
 elements, n would be 2,509,944) reached 14,879 of 14,880 and stalled; psl31_search.log is that run.
 
 Files:
