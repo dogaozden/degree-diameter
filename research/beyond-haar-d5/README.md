@@ -3,6 +3,18 @@
 Job "beyond-haar-d5" (Opus cloud session, Oct 29 2026). Goal: beat our values 354 at (Δ,D) = (5,5) and 1,152 at
 (7,5) with graphs that are not Haar graphs (all Haar graphs of the relevant orders were searched elsewhere).
 
+**NEW (5,5): 360 vertices (our value was 354).** A 5-regular bipartite graph of diameter exactly 5 on 360 vertices:
+the regular voltage lift of the 4-vertex base [[2,3],[3,2]] (A0-B0 double edge, A0-B1 triple, A1-B0 triple, A1-B1
+double) by G = SmallGroup(90,6) = C15 x S3. Voltages (element numbers in records/g90_6_C15xS3.table, identity 0):
+A0-B0 {0, 6}, A0-B1 {0, 5, 34}, A1-B0 {1, 31, 68}, A1-B1 {0, 6}; edge a -> b of voltage g joins (a,h) and (b,h g).
+Found by the exact search exh/b4a2x.c over all lifts of this base by the groups of order 90 (run for SmallGroup(90,6)
+at about 21:50 UTC, noticed at 22:40; that run found 16 solutions in its first branch, x = 6, before it was stopped).
+Checked: research/lifts/coordinator_check/apsp.c: degree 5, bipartite, diameter 5, RESULT VALID at D = 5 and INVALID
+at D = 4 (records/d5D5_n360_apsp.txt); independent Python BFS: VALID (records/d5D5_n360_check_independent.txt); all
+16 solutions in exh/runs/b4a2x_90_6.sol are VALID under apsp.c. Files: records/d5D5_n360_lift_g90_6.edges (sha256
+e710083eaafe30f9fb4e02ab769ed7351166e533f92077944b273584aa7b220c), builder records/build_d5D5_n360.sh
+(exh/b4a2x_edges.py). Whether it is also a Haar graph: see the note below the 1,200 entry.
+
 **NEW (7,5): 1,200 vertices (our value was 1,152).** A 7-regular bipartite graph of diameter exactly 5 on 1,200
 vertices: the coset graph of G = C5 x (SL(2,5):C2) = SmallGroup(1200,475) on the right cosets of a non-central
 involution subgroup H (600 per side), Hx ~ Hy iff x y^-1 in S, S = a union of 4 double cosets HgH (sizes 4, 4, 4, 2,
@@ -22,10 +34,11 @@ ecc 5 from both sides, no duplicate edges, sha256 a56affd8f9737984c8ae551fd4322f
 (records/d7D5_n1200_build_haar2.txt); apsp.c on that edge list: VALID. Independent Python BFS on the coset edge
 list: VALID (records/d7D5_n1200_check_independent.txt).
 
-(5,5): no graph above 354 was found. Near misses are listed below (cost 0 would be a valid graph).
 
 ## Summary
 
+- **(5,5): 360 vertices** (was 354), see the top of this file: a lift of the 2+2 base [[2,3],[3,2]] by C15 x S3,
+  found by the exact search exh/b4a2x.c.
 - **(7,5): 1,200 vertices** (was 1,152), see the top of this file. It came from the coset-graph route (annealing over
   unions of double cosets with stabiliser order 2), but it is a Haar graph of SL(2,5) x Z5 whose connection set is
   closed under an involutory automorphism. The genuinely non-Haar constructions came no closer than cost 4.
@@ -42,7 +55,7 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
   unions exhausted, no fix).
 - **Closest (7,5) non-Haar structures:** the coset graph of (C7 x C7):C24 = SmallGroup(1176,213) (a subgroup of
   index 2 in AGL(1,49)) with H = an involution: 1176 vertices, cost 4, and the full enumeration of all 56.6M unions
-  of double cosets has no cost-0 member. Then C5 x (SL(2,5):C2) with |H| = 2 (1200, cost 8; partial), SmallGroup(1176,
+  of double cosets has no cost-0 member. Then SmallGroup(1176,
   236) (cost 7, partial), PSL(2,17) with |H| = 4 (1224, cost 14; exhaustive), C7 x PSL(3,2) (1176, cost 14),
   C199:C9 with |H| = 3 (1194, cost 18), random 2+2 lifts over groups of order 290/291 (1160/1164, cost 20). A Haar graph of (C11 x C11):C5 at 1210 reached cost 2
   through the coset route (orbit-type S); its 2-opt neighbourhood has no fix.
@@ -63,8 +76,8 @@ list: VALID (records/d7D5_n1200_check_independent.txt).
   Tried at 1210..1320 (2 x odd orders, the non-solvable groups of order 1260 and 1320): best costs 18-36 in short
   anneals; the 1,200 hit needed 15 CPU-min of annealing from a cost-8 start, so longer anneals are the obvious next
   step.
-- Full enumerations (no 2M cap) for the coset graphs that were only partly searched: SmallGroup(1200,475) (about
-  320M unions, a few CPU-hours), SmallGroup(1176,236) and (1176,229) (about 1 CPU-hour each); and the h = 2 sweep of
+- Full enumerations (no 2M cap) for the coset graphs that were only partly searched: SmallGroup(1176,236) and
+  (1176,229) (about 1 CPU-hour each); and the h = 2 sweep of
   the 1040 groups of order 1200 and 235 of order 1184 with Haar-type subgroups skipped (coset/sweep_nh.sh).
 - Longer annealing (hours) of the 3+3 record-type base over C15:C4 and the other non-abelian groups of order 60.
 
@@ -100,6 +113,7 @@ vertices missed within distance 5 by the two base vertices; whole graphs = order
 
 | cell | construction | vertices | best cost | note |
 |---|---|---:|---:|---|
+| **(5,5)** | **lift of [[2,3],[3,2]] by SmallGroup(90,6) = C15 x S3 (exh/b4a2x.c, exact search)** | **360** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID; 16 solutions; records/** |
 | **(7,5)** | **coset graph of C5 x (SL(2,5):C2) = SmallGroup(1200,475), \|H\| = 2 = Haar graph of SL(2,5) x Z5** | **1200** | **0 (valid)** | **apsp VALID (INVALID at D=4), Python BFS VALID, build_haar2.py VALID; orbit-type Haar (S closed under an involutory automorphism); records/** |
 | (5,5) | Z89-lifts of the 2+2 base [[2,3],[3,2]] | 356 | none exists | exhaustive (exh/cyc22.c, 22 CPU-min); solutions exist up to Z80 at least |
 | (5,5) | lifts of 2+2 base [[1,4],[4,1]] over every group of order 89..95 | 356-380 | none exists | **exhaustive** (exh/b4a1x.c, seconds per group); annealing had reached cost 2 at 360 over C9 x D10 and C5 x ((C3 x C3):C2), so that plateau is a real obstruction |
