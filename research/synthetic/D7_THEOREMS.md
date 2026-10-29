@@ -426,11 +426,12 @@ $\mathrm{HG}(293092,281453;20)$ CERT233: no same-colour pair at distance more th
 hub; `d7thm/hgcheck_lab.out`, `d7thm/hgrun.out`). The lab's stored hub graphs, read from the solution files, re-checked
 standalone: $\mathrm{HG}(15541,15541;9)$ [(14,7)], $\mathrm{HG}(29535,29535;11)$ [(16,7)], $\mathrm{HG}(32356,30327;10)$
 and $\mathrm{HG}(32356,30158;10)$ [(17,7)], $\mathrm{HG}(25308,25308;9)$ [(18,7), PSL(2,37)],
-$\mathrm{HG}(66065,66065;14)$ [(19,7)], $\mathrm{HG}(70163,66322;13)$ [(20,7)]: all VALID. The two cluster-assisted ones
+$\mathrm{HG}(66065,66065;14)$ [(19,7)], $\mathrm{HG}(70163,66322;13)$ [(20,7)], and the Haar graph over
+$\mathrm{PSL}(2,29)$ of job "conics", $\mathrm{HG}(12180,12180;8)$ [(15,7), `conics/d15D7/hub_psl29.txt`]: all VALID. The two cluster-assisted ones
 [(15,7) $16{,}152$, (18,7) $34{,}440$] are not hub graphs in this sense (their same-colour pairs are joined through the
 levels; in the hub graph alone $452{,}256$ and $654{,}360$ ordered same-colour pairs are at distance more than $6$, the
 second number as in `conics2/README.md`); for them (HG) is covered by the all-pairs checks of the whole graphs. New random graphs at the slot counts of
-Theorem 2.2 with $m=q^2+1$: GAPRESULTS
+Theorem 2.2 with $m=q^2+1$: $(11,2)$: $\mathrm{HG}(14895,14895;9)$ (rand seed 2); $(13,2)$: $\mathrm{HG}(28913,28913;11)$ (rand seed 1); $(16,3)$: $\mathrm{HG}(70163,66322;13)$ (rand seed 1); $(17,3)$: $\mathrm{HG}(89032,84407;14)$ (rand seed 1); $(19,3)$: $\mathrm{HG}(137924,131425;16)$ (rand seed 1); $(19,4)$: $\mathrm{HG}(262126,262126;15)$ (rand seed 1). Not found (random graphs, up to four seeds, aimed 2-switch repair for $K\le60{,}000$; Haar graphs of $\mathbb Z_K$ for $K>300{,}000$): $(11,3)$ (602,324 far pairs at best), $(13,3)$ (44 far pairs at best), $(11,4)$ (270,820,464 far pairs at best), $(13,4)$ (37,527,036 far pairs at best), $(16,4)$ (13,824 far pairs at best), $(17,4)$ (212 far pairs at best), $(11,5)$ (1,190,378,570 far pairs at best), $(13,5)$ (1,152,049,654 far pairs at best), $(16,5)$ (43,492,232 far pairs at best), $(17,5)$ (5,026,754 far pairs at best), and the other $(q,k)$ with $k\le6$, $q\le27$ listed in `hgrun.out`.
 
 **Heuristic.** Let $M(\delta)=1+\delta(\delta-1)+\delta(\delta-1)^3+\delta(\delta-1)^5$, the most vertices of one colour
 within distance $6$ of a vertex in a graph of maximum degree $\delta$. In these runs a random hub graph with $K$
@@ -484,7 +485,25 @@ branch `claude/new-cells-beyond-etos3t`). $F_k(q)$ is Corollary 3.2 with $m=q^2+
 outright: full slots where Theorem 4.4 applies, otherwise the largest equal-sided hub graph that Lemmas 4.1–4.3 give
 below the slots (found by `d7thm/table.py`; the decomposition is printed in `table.out`).
 
-TABLE52
+| cell | level graphs | $(q,k)$ | $F_k(q)$ | hub graph | fully proved | at $(q,k)$, hubs per colour |
+|------|---------:|-----|----------:|--------|----------:|--------------|
+| (14,7) | 1,771,560 | $(11,2)$ | 1,801,350 | computer | 1,778,632 | $(11,2)$, 3,536 |
+| (15,7) | 2,480,184 | $(11,3)$ | 2,511,429 | open | 2,485,982 | $(11,3)$, 2,899 |
+| (16,7) | 4,022,340 | $(13,2)$ | 4,080,166 | computer | 4,073,554 | $(13,2)$, 25,607 |
+| (17,7) | 5,631,276 | $(13,3)$ | 5,691,471 | open | 5,638,530 | $(13,3)$, 3,627 |
+| (18,7) | 7,240,212 | $(13,4)$ | 7,355,864 | open | 7,244,736 | $(13,4)$, 2,262 |
+| (19,7) | 11,184,810 | $(16,2)$ | 11,316,940 | proof | 11,316,940 | $(16,2)$, full slots |
+| (20,7) | 15,658,734 | $(16,3)$ | 15,795,219 | computer | 15,790,208 | $(16,3)$, 65,737 |
+| (21,7) | 21,120,372 | $(17,3)$ | 21,293,811 | computer | 21,289,186 | $(17,3)$, 84,407 |
+| (22,7) | 27,154,764 | $(17,4)$ | 27,491,232 | open | 27,321,920 | $(17,4)$, 83,578 |
+| (23,7) | 36,591,240 | $(19,3)$ | 36,860,589 | computer | 36,854,090 | $(19,3)$, 131,425 |
+| (24,7) | 47,045,880 | $(19,4)$ | 47,570,132 | computer | 47,438,986 | $(19,4)$, 196,553 |
+| (25,7) | 57,500,520 | $(19,5)$ | 58,038,494 | open | 57,742,574 | $(19,5)$, 121,027 |
+| (26,7) | 67,955,160 | $(19,6)$ | 68,741,538 | open | 68,176,190 | $(19,6)$, 110,515 |
+
+At $(15,7)$ the lab's Haar graph over $\mathrm{PSL}(2,29)$ (`CONICS.md` §3.4; re-checked above: same-colour distances at
+most $6$ in the hub graph alone) fits the slots of Theorem 2.2 with $m=q^2+1$ as well, so Theorem 3.1 with that computer-checked hub graph gives
+$14N(11)+2\cdot12{,}180=2{,}504{,}544$.
 
 The fully proved values exceed the level-graph values at every cell $\Delta=14,\dots,26$. For $k\ge3$ the lab's notes had no general statement
 except for $q=3^h$ (`D7_HEXAGON.md`, Corollary 9.2; §9 there says none covers $(15,7)$). The values with
