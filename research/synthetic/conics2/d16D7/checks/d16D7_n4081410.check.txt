@@ -5,4 +5,8 @@ d16D7(4,081,410) 2 510177..1020354 session_01QYEEyHMK2TAaAudWmVEtCr : n=4081410 
 d16D7(4,081,410) 3 1020354..1530531 session_01QYEEyKxh5UHknzwn8b1QhG : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=1020354..1530531 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only) | Thu Oct 29 07:59:21 UTC 2026
 d16D7(4,081,410) 4 1530531..2040708 session_01QYEEyKVGa4b3pciUzs7r66 : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=1530531..2040708 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only)
 d16D7(4,081,410) 5 2040708..2550885 session_01QYEEyH4QnmAFEJ5EmAcruo : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=2040708..2550885 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only) | Thu Oct 29 07:55:46 UTC 2026
-# ranges cover 0..4081410 exactly: False; every range VALID with n, max degree 16, bipartite, diameter 7: True
+d16D7(4,081,410) 6 2550885..3061062 session_01QYEEyGoRtATsUarZtsdzPd : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=2550885..3061062 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only)
+d16D7(4,081,410) 7 3061062..3571239 session_01QYEEyK4xpaoCW5cueG2qve : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=3061062..3571239 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only)
+d16D7(4,081,410) 8 3571239..4081410 local (coordinator machine, 08:30:47-08:55:37 UTC) : n=4081410 edges=32617187 degree min=14 max=16 bipartite=yes diameter=7 sources=3571239..4081410 | RESULT VALID d=16 D=7 n=4081410 (sources in the range only)
+# ranges cover 0..4081410 exactly: True; every range VALID with n, max degree 16, bipartite, diameter 7: True
+=> every vertex reaches every vertex within 7: diameter 7, bipartite, maximum degree 16: valid for (16,7), n = 4081410.

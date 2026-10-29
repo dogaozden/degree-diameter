@@ -14,9 +14,9 @@ incidence graph of H(q)) and D (its dual), friendly transitions (types differ, i
 | (14,7) | 11, HDHDH | 1,789,588 / 1,802,400 | **1,802,642** | 15,541 + 15,541 | random, degree 9 | passed (all sources, local) |
 | (15,7) | 11, HHDHHDD | 2,501,491 / 2,504,544 | **2,512,488** | 16,152 + 16,152 | Haar Z_673 x\| Z_24, degree 8, clusters | CHECK15M |
 |  |  |  | 2,509,944 | 14,880 + 14,880 | Haar PSL(2,31), degree 8, clusters | passed (4 ranges) |
-| (16,7) | 13, HDHDH | 4,052,108 / 4,081,072 | **4,081,410** | 29,535 + 29,535 | random, degree 11 | CHECK16 |
+| (16,7) | 13, HDHDH | 4,052,108 / 4,081,072 | **4,081,410** | 29,535 + 29,535 | random, degree 11 | passed (8 ranges) |
 | (17,7) | 13, HHDHHDD | 5,631,276 (beyond table) | **5,693,959** | 32,356 + 30,327 | random, degree 10 | CHECK17N |
-|  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | CHECK17 |
+|  |  |  | 5,693,790 | 32,356 + 30,158 | random, degree 10 | passed (8 ranges) |
 | (18,7) | 13, HHDHDHDHD | 7,240,212 (beyond table) | **7,309,092** | 34,440 + 34,440 | Haar PSL(2,41), degree 9, clusters | CHECK18N |
 |  |  |  | 7,290,828 | 25,308 + 25,308 | Haar PSL(2,37), degree 9 | CHECK18 |
 | (19,7) | 16, HDHDH | 11,184,810 (beyond table) | **11,316,940** | 66,065 + 66,065 | random, degree 14 | CHECK19 |

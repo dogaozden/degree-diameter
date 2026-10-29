@@ -101,3 +101,21 @@ d16D7nu0 7 3061062 3571239 session_01QYEEyK4xpaoCW5cueG2qve
 # (17,7) nu0 n=5,693,959 running: ranges 3 (HMK2T), 4 (HVHkk), 5 (Kxh5U). Ranges 1 (HrtGn) and 2 (H4Qnm) declined.
 # (15,7) meta n=2,512,488: range 4 done (JpqH4); ranges 1, 2, 3 declined (Gsjqj, K929gt, HQbDm).
 # (18,7) n=7,290,828: ranges 1-4 running; range 10 (GF8vT) idle since 06:52 with no result (asked for its status 08:32).
+# 08:56: local (16,7) range 7 stopped after 24 s (session K4xpa had finished range 7); local queue now runs (15,7) meta 0..1884366 (ranges 1-3)
+d15D7meta 1-3 0 1884366 local   (coordinator machine, from 08:56)
+# 08:57-08:58 new sessions (task in the first message), (17,7) nu0 missing ranges and (18,7) PSL(2,41) n=7,309,092
+d17D7nu0b 1 0 711745 session_01QYEEyGaUGdpbmuMH4iFduH
+d17D7nu0b 2 711745 1423490 session_01QYEEyGMUvhrPmDxqURNgY3
+d17D7nu0b 6 3558725 4270470 session_01QYEEyHXRk7T39Dn1cUZgdi
+d17D7nu0b 7 4270470 4982215 session_01QYEEyGmcyuvtQp1nNXjfnX
+d17D7nu0b 8 4982215 5693959 session_01QYEEyL4CDbESzHvqDpRboS
+d18D7cl 1 0 730909 session_01QYEEyGQG6gWmLEt2Lis7wY
+d18D7cl 2 730909 1461818 session_01QYEEyHUwRSKNkzDvBDtJ5k
+d18D7cl 3 1461818 2192727 session_01QYEEyH8PQ735ShCRQbpaCq
+d18D7cl 4 2192727 2923636 session_01QYEEyHDUEi7sPn88hAGdGN
+d18D7cl 5 2923636 3654546 session_01QYEEyLoumUmoNN9QJZ1qWW
+d18D7cl 6 3654546 4385455 session_01QYEEyLZeWzhMHDVMEvVSMB
+d18D7cl 7 4385455 5116364 session_01QYEEyLqCeyjkeNAKDqq8LN
+d18D7cl 8 5116364 5847273 session_01QYEEyLqXVZ5CyopkmMpiqj
+d18D7cl 9 5847273 6578182 session_01QYEEyGjNJsMdhjeKprnq3Q
+d18D7cl 10 6578182 7309092 session_01QYEEyKTME5gsoeqyZFEadB
