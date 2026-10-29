@@ -1,0 +1,270 @@
+{
+ "q": 8,
+ "points": 585,
+ "lines": 585,
+ "gq": {
+  "points": 585,
+  "lines": 585,
+  "expected_points": 585,
+  "expected_lines": 585,
+  "pts_per_line": [
+   9
+  ],
+  "lines_per_pt": [
+   9
+  ],
+  "two_points_on_at_most_one_line": true,
+  "gq3_unique_projection": true,
+  "incident_projection_is_s": true,
+  "triangles": 49140,
+  "triangles_expected": 49140,
+  "pass": true
+ },
+ "nauty_group_order": 6340239360.0,
+ "nauty_gens_are_automorphisms": true,
+ "nauty_seconds": 2.94,
+ "search": {
+  "method": "product replacement",
+  "trials": 344929,
+  "seconds": 2.7,
+  "found": 3
+ },
+ "n_polarities_found": 3,
+ "polarities": [
+  {
+   "polarity_core": {
+    "bijection": true,
+    "involution": true,
+    "p_I_L_iff_thetaL_I_thetap": true,
+    "pass": true
+   },
+   "absolute": {
+    "n_absolute_points": 65,
+    "n_absolute_lines": 65,
+    "absolute_points_ovoid": true,
+    "absolute_lines_spread": true,
+    "absolute_lines_are_theta_of_absolute_points": true,
+    "pass": true
+   },
+   "structures": [
+    {
+     "j": 0,
+     "points": 585,
+     "lines": 585,
+     "expected_vertices": 585,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 9,
+     "incidence_diameter": 4,
+     "folded_vertices": 585,
+     "folded_symmetric": true,
+     "folded_max_degree": 9,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 1,
+     "points": 650,
+     "lines": 650,
+     "expected_vertices": 650,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 10,
+     "incidence_diameter": 4,
+     "folded_vertices": 650,
+     "folded_symmetric": true,
+     "folded_max_degree": 10,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "points": 715,
+     "lines": 715,
+     "expected_vertices": 715,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 11,
+     "incidence_diameter": 4,
+     "folded_vertices": 715,
+     "folded_symmetric": true,
+     "folded_max_degree": 11,
+     "folded_diameter": 3,
+     "pass": true
+    }
+   ],
+   "pass": true
+  },
+  {
+   "polarity_core": {
+    "bijection": true,
+    "involution": true,
+    "p_I_L_iff_thetaL_I_thetap": true,
+    "pass": true
+   },
+   "absolute": {
+    "n_absolute_points": 65,
+    "n_absolute_lines": 65,
+    "absolute_points_ovoid": true,
+    "absolute_lines_spread": true,
+    "absolute_lines_are_theta_of_absolute_points": true,
+    "pass": true
+   },
+   "structures": [
+    {
+     "j": 0,
+     "points": 585,
+     "lines": 585,
+     "expected_vertices": 585,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 9,
+     "incidence_diameter": 4,
+     "folded_vertices": 585,
+     "folded_symmetric": true,
+     "folded_max_degree": 9,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 1,
+     "points": 650,
+     "lines": 650,
+     "expected_vertices": 650,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 10,
+     "incidence_diameter": 4,
+     "folded_vertices": 650,
+     "folded_symmetric": true,
+     "folded_max_degree": 10,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "points": 715,
+     "lines": 715,
+     "expected_vertices": 715,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 11,
+     "incidence_diameter": 4,
+     "folded_vertices": 715,
+     "folded_symmetric": true,
+     "folded_max_degree": 11,
+     "folded_diameter": 3,
+     "pass": true
+    }
+   ],
+   "pass": true
+  },
+  {
+   "polarity_core": {
+    "bijection": true,
+    "involution": true,
+    "p_I_L_iff_thetaL_I_thetap": true,
+    "pass": true
+   },
+   "absolute": {
+    "n_absolute_points": 65,
+    "n_absolute_lines": 65,
+    "absolute_points_ovoid": true,
+    "absolute_lines_spread": true,
+    "absolute_lines_are_theta_of_absolute_points": true,
+    "pass": true
+   },
+   "structures": [
+    {
+     "j": 0,
+     "points": 585,
+     "lines": 585,
+     "expected_vertices": 585,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 9,
+     "incidence_diameter": 4,
+     "folded_vertices": 585,
+     "folded_symmetric": true,
+     "folded_max_degree": 9,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 1,
+     "points": 650,
+     "lines": 650,
+     "expected_vertices": 650,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 10,
+     "incidence_diameter": 4,
+     "folded_vertices": 650,
+     "folded_symmetric": true,
+     "folded_max_degree": 10,
+     "folded_diameter": 3,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "points": 715,
+     "lines": 715,
+     "expected_vertices": 715,
+     "polarity": {
+      "bijection": true,
+      "involution": true,
+      "p_I_L_iff_thetaL_I_thetap": true,
+      "pass": true
+     },
+     "max_degree_incidence": 11,
+     "incidence_diameter": 4,
+     "folded_vertices": 715,
+     "folded_symmetric": true,
+     "folded_max_degree": 11,
+     "folded_diameter": 3,
+     "pass": true
+    }
+   ],
+   "pass": true
+  }
+ ],
+ "gq_pass": true,
+ "all_polarities_pass": true,
+ "verified_jq_pairs": [
+  1,
+  2
+ ],
+ "total_seconds": 14.1
+}

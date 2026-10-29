@@ -37,6 +37,26 @@ A *polarity* of an incidence structure $\mathcal{S}$ is a bijection $\theta$ fro
 
 So a self-polar bipartite graph of diameter $D$ gives a graph of diameter $D-1$ with half the vertices. In this note it is used in two ways: as a description of what the conic does to the hats (§1.3), and to compare with the tables of the general degree–diameter problem (where it gives nothing new; §§1.3, 2.4, 3.2).
 
+## 0.3 Cloning, and why the cloned sets are ovals and ovoids
+
+A *clone* of a point $x$ is a new point incident with exactly the lines through $x$; a *line clone* of $L$ is a new line incident with exactly the points of $L$ (`SYNTHETIC.md` §2.1 calls the second a shadow line with all stand-ins original).
+
+**Lemma 0.2 (Cloning).** \[standard; proof\] Let $\mathcal{S}$ have diameter $D\ge2$, and add a clone $x'$ for each entry $x$ of a multiset $X$ of points. Then distances between old elements do not change, $d(x',y)=d(x,y)$ for every element $y\ne x$, and $d(x',x)=2$; so the diameter is still $D$. A line $L$ gains $|L\cap X|$ incidences (with multiplicity) and no old point gains any. Dually for line clones; and point clones and line clones may be added together (a clone of $x$ and a clone of $L$ are at distance at most $3$ if $x\mathrel{\mathrm{I}}L$, and at the distance of $x$ and $L$ otherwise, plus the flag $x'\mathrel{\mathrm{I}}L'$ if one adds it).
+
+*Proof.* A shortest path from $x$ to $y\ne x$ leaves $x$ along a line through $x$, which also passes through $x'$; conversely a path from $x'$ is a path from $x$ after its first step. Two clones of one point have a common line. $\square$
+
+So adding points never hurts the diameter; it only costs degree. If every old element may gain $k$ incidences, the point multisets that can be cloned are exactly those with at most $k$ entries on every line. This is where the conic-like objects come from \[restatement\]:
+
+- *projective plane, $k=1$*: any two points are collinear, so only one point can be cloned. The hats of §1 are clones of the marked points of one line $\ell$ that *miss* $\ell$ (each $H_s$ is on the $q$ lines through $X_s$ other than $\ell$); everything else in the construction repairs what missing $\ell$ breaks;
+
+- *projective plane, $k=2$*: an arc can be cloned; an oval (a conic) and, dually, its tangent lines give Delorme’s construction at $\Delta=q+3$ (§1.6);
+
+- *generalized quadrangle, $k=1$*: partial ovoids; an ovoid gives a regular result (Theorem B with weights, `SYNTHETIC.md` §2; §2 below);
+
+- *generalized hexagon, $k=1$*: non-collinear sets (partial distance-$2$ ovoids). A distance-$2$ ovoid with a distance-$2$ spread would give $2(q+2)(q^4+q^2+1)=2N+2(q^4+q^2+1)$ elements at $\Delta=q+2$, fewer than Theorem D’s $2N+2q^4+4q^3+4q+10$, which doubles along pairwise opposite elements with levels instead.
+
+In the plane the conic therefore enters in two different ways: as a set that can be cloned when the degree may rise by two, and (Section 1) as the absolute set of the polarity that organizes the hats when it may rise by one.
+
 # 1. Projective planes: the hats relative to a conic
 
 ## 1.1 The conic frame
@@ -108,7 +128,7 @@ The four hats can also be built without changing any incidence of the plane (`re
 
 *Proof.* The same check as in Lemma 1.3, rule by rule over the table of the cited proposition; the only new pairs are the extra incidences, and $(H_i,AX_{s(i)})$ goes to $(X_{\tau s(i)},K_{\tau(i)})$, which is the extra incidence of $K_{\tau(i)}$ because $s^{-1}\tau=\tau s$. No incidence of the plane is changed, so the old part of the polarity graph is the Erdős–Rényi graph. $\square$
 
-*Computer.* `conics/zero_polar.py`, $q=3,\dots,13$ (polarity, diameter $3$, old part of the fold equal to the Erdős–Rényi graph, fold of diameter $2$).
+*Computer.* `conics/zero_polar.py`, $q=3,\dots,13$ (polarity, diameter $3$, old part of the fold equal to the Erdős–Rényi graph, fold of diameter $2$); independently squad card `conics-r2/c1`, $42$ instances ($q=3,\dots,13$, every conjugate pair), with $\tau=\mathrm{id}$ failing as a control.
 
 So, in the language of the general problem: *the Erdős–Rényi graph of $\mathrm{PG}(2,q)$, $q$ odd, has room for five more vertices at maximum degree $q+2$ and diameter $2$*, and the five vertices are the folded hats. We have not searched the literature on extensions of polarity graphs; the count $q^2+q+6$ is below the tabled values except at $\Delta=15$, as said above.
 
@@ -120,7 +140,7 @@ In the four-hat structure the elements of degree $q+1$ (the deficient ones) are 
 
 *Proof.* Let $p$ be deficient, on $AY$ with $Y\in\ell$ unmarked. $p^\perp$ does not pass through $A$ (as $p\notin\ell$), is not $\ell$ (as $p\ne A$), and meets $\ell=A^\perp$ in the pole of the line $pA=AY$. By Proposition 1.1, $AY=(Y^\tau)^\perp$, so this pole is $Y^\tau$. The marked set is $\tau$-invariant, so $Y^\tau$ is unmarked and $p^\perp$ is deficient. If $p\in\mathcal{C}$, the line $AY$ is not a tangent (the tangents from $A$ are $AZ$, $AZ'$ and $Z,Z'$ are marked in the four hats; in the three hats $Z'$ is unmarked, but $AZ'$ meets $\mathcal{C}$ only in $Z'\in\ell$, which is not deficient), so $AY$ is a secant and $p^*\ne p$ is deficient too, $p^*\notin\ell$; its tangent $(p^*)^\perp$ meets $\ell$ in $Y^\tau$ as before and does not contain $p$. The map $p\mapsto p^\perp$ is injective, and on $\mathcal{C}$ we composed it with the involution $p\mapsto p^*$ of the deficient points of $\mathcal{C}$, so $\mu$ is injective; the numbers of deficient points and lines are equal. Self-polarity: $\hat\theta$ maps the added flag $(p,p^\perp)$ to itself and $(p,(p^*)^\perp)$ to $(p^*,p^\perp)$, the added flag of $p^*$. $\square$
 
-*Computer.* `conics/polar_frames.py` for $q=3,\dots,13$, and independently squad card `c3` ($24$ instances, $q=3,\dots,13$; the number of deficient points on $\mathcal{C}$ varies with $X$, from $0$ to $12$ at $q=13$). In the folded graph the added flags $(p,p^\perp)$ are loops, so the regular bipartite version does not give a regular graph of diameter $2$.
+*Computer.* `conics/polar_frames.py` for $q=3,\dots,13$, and independently squad card `c3` ($24$ instances, $q=3,\dots,13$; the number of deficient points on $\mathcal{C}$ varies with $X$, from $0$ to $12$ at $q=13$). The same matching also completes the zero-change four hats of Proposition 1.8 (their deficient elements are again the points off $\ell$, other than $A$, on the lines $AY$, $Y$ unmarked, and dually; checked for $q=3,\dots,13$ in `conics/zero_polar.py`): this gives a $(q+2)$-regular structure of diameter $3$ that contains $\mathrm{PG}(2,q)$ with every incidence kept, is self-polar, and has every flag given by an explicit rule. In the folded graph the added flags $(p,p^\perp)$ are loops, so the regular bipartite version does not give a regular graph of diameter $2$.
 
 ## 1.5 Does a conic allow more hats?
 
@@ -135,6 +155,14 @@ In the four-hat structure the elements of degree $q+1$ (the deficient ones) are 
 (2) *All self-polar extensions at $q=5$* (`conics/sat_polar.py`): new points and new lines tied by the conic polarity, all incidences of the new elements free, no change to the plane. $k=5$: SAT. $k=6$ (five hats): UNSAT. The search is split soundly by the orbit of the conic group $\mathrm{PGL}(2,5)$ that contains the point most often copied (conic point, external, internal) and the number $r$ of lines through it used by one new point; see `conics/k6_q5_E0.out` for the cases and times.
 
 Earlier work, which this note does not repeat, ruled out five hats in the hat model at default and random frames for $q=4,\dots,13$, and $+3$ without changes for $q\ge42$ (`research/plus2/REPORT.md`, `research/plus3/plus3.tex`).
+
+## 1.6 At $\Delta=q+3$ the conic itself is cloned
+
+\[restatement\] Let $q$ be odd, $\mathcal{C}$ a conic. Clone every point of $\mathcal{C}$ and every tangent line of $\mathcal{C}$, and add the flag (clone of $p$, clone of the tangent at $p$) for each $p\in\mathcal{C}$. By Lemma 0.2 the diameter stays $3$. A secant gains two clones, a tangent one, a passant none; dually an external point is on two tangent clones, a point of $\mathcal{C}$ on one, an internal point on none; the clones have degree $q+2$. So the maximum degree is $q+3$ and there are $2(q^2+q+1)+2(q+1)=2(q^2+2q+2)$ elements: $394$ at $q=13$, the 2013 table value at $(16,3)$ (Delorme’s construction; `research/d3d6/REPORT.md`). The lab’s $396$ there is not of this kind: it places three four-hat gadgets on three anti-flags permuted by a Singer subgroup of order $3$ (`research/d3d6/REPORT.md`).
+
+**Remark 1.10.** \[new; proof\] No hat gadget can be added on top of the conic clones at $\Delta=q+3$: a gadget raises by one the degree of every point of its line $\ell$ (`SYNTHETIC.md`, Lemma 1.4: each point of $\ell$ gains $M$, $K_t$ or the net $+1$ of the rotation), every line of $\mathrm{PG}(2,q)$ contains external points ($q\ge3$), and external points already have degree $q+3$. The structure is self-polar (clone of $p$ $\leftrightarrow$ clone of the tangent at $p$), and its fold has $q^2+2q+2$ vertices at $(\Delta,D)=(q+3,2)$: $197$ at $(16,2)$, below the tabled $200$ and $216$.
+
+*Computer.* `conics/conic_clones.py`, $q=3,\dots,13$: $2(q^2+2q+2)$ elements, maximum degree $q+3$, diameter $3$, a point of degree $q+3$ on every line, self-polar, fold of diameter $2$.
 
 # 2. Generalized quadrangles
 
@@ -195,7 +223,7 @@ At $q=8$ this gives $585,650,715$ for $j=0,1,2$, which are the tabled values of 
 
 \[restatement\] Theorem D (`SYNTHETIC.md` §3) doubles $H(q)$ along levels built from a *spread* $\Sigma$, one line $v\in\Sigma$ and an exact whisker set. The spread plays the role that the special line plays for the hats: the components of the doubled set are the ball of radius $2$ about $v$ and one “broom” per spread line, and the ceiling $q|\mathcal A_0|+2(q^3+1)=2N$ is reached because every element outside $\mathcal A_0$ sees exactly one element of it. For odd $q$ the whiskers come from $q^2-1$ further Hermitian spreads through $v$ (with $\Sigma$, $q^2$ spreads pairwise meeting only in $v$), so the whole configuration is cut out by elliptic hyperplane sections; we found no conic-level description beyond this. The levels are not invariant under a polarity (they contain spread lines but not the corresponding ovoid points), so the folding of §0.2 does not apply to Theorem D as it stands.
 
-*A self-polar doubling* \[new; proof\]. For $q=3^{2e+1}$ take the polarity $\theta$, its Ree–Tits ovoid $\mathcal{O}$ and absolute spread $\Sigma$, and the single level $\mathcal A_0=\mathcal{O}\cup\Sigma$. Its components are the $q^3+1$ flags $(p,\theta(p))$ (trees of diameter $1$), a point off $\mathcal{O}$ is on at most one line of $\Sigma$ and a line off $\Sigma$ has at most one point of $\mathcal{O}$, so conditions (L0) and (C) of `SYNTHETIC.md` §3.1 hold and the doubling with $m$ versions has diameter $6$, maximum degree $q+m$ and $2N+2(m-1)(q^3+1)$ elements. It is self-polar, so it folds to a graph of diameter $5$ with $N+(m-1)(q^3+1)$ vertices: $392$ at $(5,5)$ for $q=3$, $m=2$, far below the tabled $650$. Not a record; recorded only because it is the hexagon analogue of Corollary 1.7.
+*A self-polar doubling* \[new; proof\]. For $q=3^{2e+1}$ take the polarity $\theta$, its Ree–Tits ovoid $\mathcal{O}$ and absolute spread $\Sigma$, and the single level $\mathcal A_0=\mathcal{O}\cup\Sigma$. Its components are the $q^3+1$ flags $(p,\theta(p))$ (trees of diameter $1$), a point off $\mathcal{O}$ is on at most one line of $\Sigma$ and a line off $\Sigma$ has at most one point of $\mathcal{O}$, so conditions (L0) and (C) of `SYNTHETIC.md` §3.1 hold and the doubling with $m$ versions has diameter $6$, maximum degree $q+m$ and $2N+2(m-1)(q^3+1)$ elements. It is self-polar, so it folds to a graph of diameter $5$ with $N+(m-1)(q^3+1)$ vertices: $392$ at $(5,5)$ for $q=3$, $m=2$, far below the tabled $650$. Not a record; recorded only because it is the hexagon analogue of Corollary 1.7. *Computer* (squad card `conics-r2/c3`): $H(3)$ built from Tits’ equations; a polarity found with `nauty` (the automorphism group of the incidence graph has order $8{,}491{,}392=2|G_2(3)|$); its $28$ absolute points are pairwise opposite, its $28$ absolute lines pairwise opposite, each absolute point on one absolute line; the doubling has $784$ elements, maximum degree $5$, diameter $6$, is self-polar, and folds to $392$ vertices of diameter $5$.
 
 ## 3.3 The diameter-7 freed sets
 
