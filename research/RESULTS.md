@@ -237,3 +237,4 @@ by the coordinator with build_haar.py, two BFS from both sides, ecc ≤ D, nothi
 - Oct 26 11:17 PT (harvest): (8,10) 8,043,840 (was 7,818,096), prod psl 7 psl 19 n 7; claude/raise2-8-10-record-dmm6z4.
 - Oct 26 11:17 PT (coordinator): (3,10) 810 (new cell for us; table 800): voltage lift of a 5+5 cubic base over C3 x He3; claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.
 - Oct 26 13:17 PT (coordinator): (3,11) 1,320 (raised, was 1,080; beyond the 2013 table): voltage lift over SmallGroup(165,1); claude/own-small-cells-dkwo42; all-pairs checked on the Mac mini.
+- Oct 29 00:15 PT (coordinator): (15,7) 2,504,544 (raised, was 2,501,491) (hexagon constructions): the Hermitian spread and the exact whisker set freed on the friendly transitions, PSL(2,29) Haar hub graph; claude/conics-generalized-polygons-6gjqxi (research/synthetic/conics/d15D7/); rebuilt and checked on the Mac mini (research/coordinator_check/check_2026-10-29.txt).
