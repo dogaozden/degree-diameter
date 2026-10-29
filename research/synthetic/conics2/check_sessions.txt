@@ -119,3 +119,10 @@ d18D7cl 7 4385455 5116364 session_01QYEEyLqCeyjkeNAKDqq8LN
 d18D7cl 8 5116364 5847273 session_01QYEEyLqXVZ5CyopkmMpiqj
 d18D7cl 9 5847273 6578182 session_01QYEEyGjNJsMdhjeKprnq3Q
 d18D7cl 10 6578182 7309092 session_01QYEEyKTME5gsoeqyZFEadB
+# 09:04-09:05 new sessions for (19,7) nu0 (n=11,316,940); ranges 1-3 started, 5 and 7 stayed pending (capacity)
+d19D7nu0b 1 0 707309 session_01QYEEyJTwfDPXrVFJHnAbei
+d19D7nu0b 2 707309 1414618 session_01QYEEyKVBMw86FjfwauSoCA
+d19D7nu0b 3 1414618 2121927 session_01QYEEyKS9oFiof2nvvBvznv
+d19D7nu0b 5 2829236 3536545 session_01QYEEyJBUxxvbD7iuQf316D   (pending at 09:07)
+d19D7nu0b 7 4243854 4951163 session_01QYEEyKHoVSosKWZpCsyfbX   (pending at 09:07)
+# (18,7) cluster range 10 session KTME5 pending at 09:07; fallback: local run after the (15,7) meta check
