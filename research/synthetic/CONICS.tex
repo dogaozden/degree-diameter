@@ -738,7 +738,9 @@ is a plain one from every vertex, split into $8$ source ranges run on separate m
 \emph{All-pairs check} \status{computer}: \texttt{apsp\_fast} on $8$ ranges of $510{,}134$ sources covering all
 $4{,}081{,}072$ vertices, each on its own machine after rebuilding the graph from the stored solution (same sha256
 everywhere): every range gives bipartite, degrees $14$ to $16$, largest eccentricity $7$, and
-\texttt{RESULT VALID d=16 D=7 n=4081072} (\texttt{conics/d16D7/checks/}).
+\texttt{RESULT VALID d=16 D=7 n=4081072} (\texttt{conics/d16D7/checks/}). The lab's own hub checker
+(\texttt{research/d15D7b/hubfar.c}, independent code) run from all $58{,}732$ hubs here, and from all $24{,}360$ hubs of
+the $(15,7)$ graph, finds no pair at distance more than $7$.
 
 \section{Summary: what is new}\label{sec:summary}
 \begin{itemize}

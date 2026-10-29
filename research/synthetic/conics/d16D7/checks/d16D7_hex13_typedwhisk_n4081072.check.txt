@@ -42,3 +42,6 @@ n = 4081072, edges = 32614144, degree min 14 max 16, hub graph edges 322970
 8 (03:39-04:10) n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes diameter=7 sources=3570938..4081072
   RESULT VALID d=16 D=7 n=4081072 (sources in the range only)
 => all 4,081,072 sources reach every vertex within 7: diameter 7, bipartite, maximum degree 16: valid for (16,7).
+-- independent check of the hub part with the lab's research/d15D7b/hubfar.c in the main session (cc -O2 -pthread; BFS
+   to depth 7 from all 58,732 hubs, sources "R 4022340 4081072"; edge list sha256 350f9e07...), 05:08:41 to 05:17:48 UTC:
+n=4081072 edges=32614144 degree min=14 max=16 bipartite=yes connected=yes sources=58732 far_pairs=0 max_ecc=7
