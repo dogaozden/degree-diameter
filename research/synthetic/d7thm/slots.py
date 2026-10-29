@@ -11,7 +11,7 @@ Parts:
      alternating typing (HD)^k H, with the slot minima written as (number of friendly transitions, P or Lam);
   2. every labelled regular tournament on 5 and 7 levels with every typing (exhaustive);
   3. SAT (python-sat) on 9 and 11 levels: is there a regular tournament and typing with both minima equal to the
-     upper bound a P + (k-a) m (a = floor(k/2))?  (Theorem 3.3 says no for k even; this tests k odd.)
+     upper bound a P + (k-a) m (a = floor(k/2))?  (one combined instance: f, g >= a everywhere, f >= a+1 on D levels, g >= a+1 on H levels; Theorem 2.1(b),(c) are proved in the note)
 Output: slots.out"""
 import itertools, sys
 from pysat.formula import CNF, IDPool
@@ -27,7 +27,7 @@ def mins(L, arcs, types, P, Lam, m):
 
 def sym(L, arcs, types):
     """symbolic minima: for every level the pair (friendly count, 'P'/'L'); return the lexicographically smallest for
-    alpha and beta (valid when Lam - m > a (P - Lam), true for all prime powers q > a, Lemma 3.2)"""
+    alpha and beta (valid under hypothesis (*) of D7_THEOREMS.md Section 2)"""
     fo = [0] * L; fi = [0] * L
     for (i, j) in arcs:
         if types[i] != types[j]:

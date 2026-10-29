@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Build the hub graph of a Lemma 4.2 certificate (hubsum.py) and write it as an edge list for `hgcheck edges`.
-usage: build_cert.py q k HEXDIR OUT.txt [SEED]
+usage: build_cert.py q k HEXDIR OUT.txt [SEED] [--typed]
 HEXDIR holds hex_q{s}.bin from research/d10D7/hexgen2.c for the hexagons H(s) the certificate uses.
 Parts: blown-up H(s) (Lemma 4.1: each point and line gets 1..c copies, copies of incident elements adjacent), a plane
 PG(2,p) with pendant trees (Lemma 4.3; p prime here), joined by random injections A_j -> B_i, B_j -> A_i (i < j)."""
 import sys, random, struct
 import numpy as np
-from hubsum import search
+from hubopt import optimise
 from hubcap_lib import slots, PP
 
 def read_hex(path):
@@ -79,9 +79,9 @@ def tree(d, x, y, rng):
 
 def main():
     q, k, hexdir, out = int(sys.argv[1]), int(sys.argv[2]), sys.argv[3], sys.argv[4]
-    rng = np.random.default_rng(int(sys.argv[5]) if len(sys.argv) > 5 else 1)
+    rng = np.random.default_rng(int(sys.argv[5]) if len(sys.argv) > 5 and sys.argv[5].isdigit() else 1)
     KB, KA = slots(q, k)
-    sol = search(KB, KA, q - k)
+    tot, K1, K2, sol = optimise(KB, KA, q - k)
     assert sol, 'no certificate'
     print('certificate:', sol)
     parts = []
@@ -101,7 +101,11 @@ def main():
             for b, a in zip(range(yj), rng.permutation(xi)[:yj]):      # B_j -> A_i
                 E.append((offA[i] + a, offB[j] + b))
     with open(out, 'w') as f:
-        f.write('%d %d\n' % (offA[-1], offB[-1]))
+        if '--typed' in sys.argv:                     # typed_build.py hub file: first line K (equal sides)
+            assert offA[-1] == offB[-1]
+            f.write('%d\n' % offA[-1])
+        else:
+            f.write('%d %d\n' % (offA[-1], offB[-1]))
         for a, b in E:
             f.write('%d %d\n' % (a, b))
     print('wrote', out, 'K1 =', offA[-1], 'K2 =', offB[-1], 'edges =', len(E))

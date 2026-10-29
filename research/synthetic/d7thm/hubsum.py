@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Hub graphs by sums of hexagons (D7_THEOREMS.md, Lemma 5.2 and Corollary 5.3).
+"""Hub graphs by sums of hexagons (D7_THEOREMS.md, Lemma 4.2 and Theorem 4.4).
 
 HG(K1, K2; delta): bipartite, colour classes of sizes K1, K2, maximum degree <= delta, same-colour distances <= 6.
 
 Parts (each with colour classes (A_i, B_i)):
   * core (s, c): the incidence graph of H(s) with every point and every line replaced by 1..c copies (blow-up,
-    Lemma 5.1); sizes |A_i|, |B_i| anywhere in [K0(s), c K0(s)], degree <= c(s+1), diameter 6 (every pair, both
+    Lemma 4.1); sizes |A_i|, |B_i| anywhere in [K0(s), c K0(s)], degree <= c(s+1), diameter 6 (every pair, both
     colours: same colour <= 6, different colours <= 5);
   * last part (optional): the plane with pendant trees of D7_HEXAGON.md Lemma 7.1 (two colours sized independently),
     sizes in [7, kappa(delta_L)], degree <= delta_L, same-colour distances <= 6.
-Sum (Lemma 5.2): parts Y_1..Y_r in order, the last one possibly a pendant-tree part; for every i < j an injective map
+Sum (Lemma 4.2): parts Y_1..Y_r in order, the last one possibly a pendant-tree part; for every i < j an injective map
 A_j -> B_i and B_j -> A_i (edges).  Needs |A_j| <= |B_i| and |B_j| <= |A_i| for i < j.  Degree <= max deg(Y_i) + r - 1.
 
-For every k and every prime power q <= QMAX not covered by Lemma 5.1 alone (hubcap.py), search for a sum with r <= RMAX
+For every k and every prime power q <= QMAX not covered by Lemma 4.1 alone (hubcap.py), search for a sum with r <= RMAX
 parts.  Output: hubsum.out with one certificate per (q, k) (the parts and their sizes), and the uncovered (q, k).
 A certificate is checked by verify(): sizes add up, ordering, degrees."""
 import sys, signal
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     out = open('hubsum.out', 'w')
     def say(*a):
         s = ' '.join(str(x) for x in a); print(s); out.write(s + '\n'); out.flush()
-    say('Lemma 5.2 certificates (sum of blown-up hexagons and a pendant-tree part), prime powers q <= %d, r <= %d' % (QMAX, RMAX))
+    say('Lemma 4.2 certificates (first-found search; superseded by hubopt.py) (sum of blown-up hexagons and a pendant-tree part), prime powers q <= %d, r <= %d' % (QMAX, RMAX))
     for k in range(1, 13):
         unc = []
         for q in PP:

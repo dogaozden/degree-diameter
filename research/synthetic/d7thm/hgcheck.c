@@ -124,7 +124,8 @@ int main(int argc, char **argv) {
         build_csr(E, SA, SB);
         if (argc > 6 && !strcmp(argv[6], "repair")) {
             int e0; far_s = far_x = -1; long cur = far_pairs(&e0); int rounds = 0;
-            while (cur > 0 && rounds < 400) {
+            int maxr = argc > 7 ? atoi(argv[7]) : 400;
+            while (cur > 0 && rounds < maxr) {
                 rounds++;
                 long s = far_s, x = far_x; if (s < 0) break;
                 /* make s adjacent to a neighbour c of x by a 2-switch */

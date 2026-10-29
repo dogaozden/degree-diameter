@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Computer checks of HG(K_B, K_A; q-k) for the (q, k) not covered by Lemmas 5.1-5.2 (hubsum.out), q = 11..27, k <= 6,
+"""Computer checks of HG(K_B, K_A; q-k) for the (q, k) not covered by Lemmas 4.1-4.2 (hubsum.out), q = 11..27, k <= 6,
 with m = q^2+1 (Theorem 3.4 slot counts).  Random bipartite graphs (hgcheck rand) for K <= 300,000, else Haar graphs
 of Z_K with K = K_A on both sides (hgcheck haar; equal sides, so the B side gets K_A <= K_B hubs).  Output: hgrun.out"""
 import subprocess, re
