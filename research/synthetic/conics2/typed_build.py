@@ -85,13 +85,11 @@ class F:
         return self.M[a, self.INV[b]]
 
 
-def tr(Fq, x):                                         # absolute trace, characteristic 2
-    t, y = 0, x
-    while True:
-        t ^= int(y)
-        y = int(Fq.M[y, y])
-        if y == x:
-            return t
+def tr(Fq, x):                                         # absolute trace x + x^2 + ... + x^(q/2), characteristic 2
+    t, y, k = 0, int(x), 1
+    while k < Fq.q:
+        t = int(Fq.A[t, y]); y = int(Fq.M[y, y]); k *= 2
+    return t
 
 
 def params(Fq):
