@@ -44,7 +44,7 @@ if not IsBound(NOAUT) then
   cc := ConjugacyClasses(P);;
   for c in cc do
     r := Representative(c); p := Order(r);
-    if p in [2, 3, 5, 7] then
+    if p in [2, 3, 4, 5, 7] then
       AppendTo(f, "ALPHA ", p, "\n");
       AppendTo(f, JoinStringsWithSeparator(List([1..n], b -> String(b^r - 1)), " "), "\n");
       C := Centralizer(P, r);

@@ -127,7 +127,7 @@ static int *isrep;
 static long long typebest; static long long typesol;
 static int Sbuf[16];
 
-static int anti = 0, *apm;
+static int anti = 0, *apm; static int NFIXBIG = 150;   /* psi with more fixed elements: low cap (abelian-like, no hits seen) */
 static void build_orbits(int a) {
     int p = alp[a]; int *pm = aperm[a];
     if (anti) {   /* psi(x) = beta(x)^-1, beta = alpha_a of order 1 or 2: orbits of size 1 (beta(x) = x^-1) and 2 */
@@ -200,10 +200,33 @@ static void rec_fix(int need, int fs, int at) {
     for (int i = fs; i < nfix; i++) if (fixel[i] != 0) { Sbuf[at] = fixel[i]; rec_fix(need - 1, i + 1, at + 1); }
 }
 
+/* beta of order 4: psi = inv o beta has order 4, orbits of size 1, 2, 4; S = {e} + one 2-orbit + one 4-orbit, or
+ * {e} + 2 fixed + one 4-orbit (sets without a 4-orbit are psi^3- or beta^2-invariant, covered elsewhere) */
+static void run_anti4(int a) {
+    int *pm = aperm[a]; int *ps = malloc(sizeof(int) * n), *seen = calloc(n, sizeof(int));
+    for (int i = 0; i < n; i++) ps[i] = inv[pm[i]];
+    int *fx = malloc(sizeof(int) * n), nf = 0, (*o2)[2] = malloc(sizeof(int) * 2 * n), n2 = 0, (*o4)[4] = malloc(sizeof(int) * 4 * n), n4 = 0;
+    for (int i = 0; i < n; i++) if (!seen[i]) {
+        int c[8], k = 0, x = i; do { if (k < 8) c[k] = x; k++; seen[x] = 1; x = ps[x]; } while (x != i);
+        if (k == 1) fx[nf++] = i; else if (k == 2) { o2[n2][0] = c[0]; o2[n2][1] = c[1]; n2++; }
+        else if (k == 4) { for (int j = 0; j < 4; j++) o4[n4][j] = c[j]; n4++; }
+    }
+    long long e0 = evals, p0 = npassA; clock_t c0 = clock(); typebest = 1LL << 40; typesol = 0;
+    snprintf(tagbuf, sizeof tagbuf, "anti4_a%d", a);
+    for (int q = 0; q < n4; q++) {
+        for (int j = 0; j < 4; j++) Sbuf[1 + j] = o4[q][j]; Sbuf[0] = 0;
+        for (int t = 0; t < n2; t++) { Sbuf[5] = o2[t][0]; Sbuf[6] = o2[t][1]; eval_set(7, tagbuf); }
+        for (int u = 0; u < nf; u++) if (fx[u] != 0) for (int v = u + 1; v < nf; v++) if (fx[v] != 0) { Sbuf[5] = fx[u]; Sbuf[6] = fx[v]; eval_set(7, tagbuf); }
+    }
+    printf("ANTI4 alpha %d p 4 fixed %d two %d four %d best %lld sols %lld evals %lld passXX %lld secs %.1f\n", a, nf, n2, n4,
+           typebest, typesol, evals - e0, npassA - p0, (double)(clock() - c0) / CLOCKS_PER_SEC);
+    fflush(stdout); free(ps); free(seen); free(fx); free(o2); free(o4);
+}
 static void run_anti(void) {
     static const int types[][2] = { {1,3}, {3,2}, {5,1}, {7,0} };
     anti = 1;
     for (int a = 0; a < nal; a++) {
+        if (alp[a] == 4) { type_e0 = evals; cap_ev = 1LL << 62; capped = 0; run_anti4(a); continue; }
         if (alp[a] != 1 && alp[a] != 2) continue;
         build_orbits(a);
         for (int t = 0; t < 4; t++) {
@@ -211,7 +234,7 @@ static void run_anti(void) {
             if (f > nfix || m > norb) continue;
             want_m = m; want_f = f; typebest = 1LL << 40; typesol = 0;
             long long e0 = evals, p0 = npassA; clock_t c0 = clock(); type_e0 = evals; capped = 0;
-            cap_ev = f >= 4 ? cap_ev_hi : cap_ev_lo;
+            cap_ev = (f >= 4 || nfix > NFIXBIG) ? cap_ev_hi : cap_ev_lo;
             snprintf(tagbuf, sizeof tagbuf, "anti_a%d_p%d_f%d_m%d", a, alp[a], f, m);
             Sbuf[0] = 0; rec_fix(f - 1, 0, 1);
             printf("ANTI alpha %d p %d f %d m %d best %lld sols %lld evals %lld passXX %lld secs %.1f%s\n", a, alp[a], f, m,
@@ -224,6 +247,7 @@ static void run_anti(void) {
 static void run_exh(void) {
     static const int types[][3] = { {2,1,3}, {2,3,2}, {2,5,1}, {3,1,2}, {3,4,1}, {5,2,1}, {7,0,1} };
     for (int a = 0; a < nal; a++) {
+        if (alp[a] == 1 || alp[a] == 4) continue;   /* identity and order 4: anti mode only */
         build_orbits(a);
         for (int t = 0; t < 7; t++) if (types[t][0] == alp[a]) {
             int f = types[t][1], m = types[t][2];
@@ -270,6 +294,7 @@ int main(int argc, char **argv) {
     printf("GROUP %s n %d ninv %d nalpha %d\n", argv[1], n, ninv, nal);
     if (getenv("SLOW")) use_fast = 0;
     if (getenv("MAXEV")) cap_ev_lo = cap_ev_hi = atoll(getenv("MAXEV"));
+    if (getenv("NFIXBIG")) NFIXBIG = atoi(getenv("NFIXBIG"));
     if (getenv("MAXEVF")) cap_ev_hi = atoll(getenv("MAXEVF"));   /* cap for types with >= 4 fixed elements */
     if (!strcmp(argv[2], "exh")) run_exh();
     else if (!strcmp(argv[2], "anti")) run_anti();

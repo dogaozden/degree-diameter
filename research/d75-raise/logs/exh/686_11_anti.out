@@ -1,0 +1,9 @@
+alpha 0: p 2 fixed 2 orbits 342 reps 10
+GROUP /tmp/d75/g686_11.ht n 686 ninv 1 nalpha 18
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 579700 passXX 0 secs 0.1
+alpha 17: p 2 fixed 98 orbits 294 reps 18
+ANTI alpha 17 p 2 f 1 m 3 best 1099511627776 sols 0 evals 770004 passXX 0 secs 0.1
+ANTI alpha 17 p 2 f 3 m 2 best 1099511627776 sols 0 evals 24555744 passXX 0 secs 4.4
+ANTI alpha 17 p 2 f 5 m 1 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.5 CAPPED
+ANTI alpha 17 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+DONE evals 31905448 sols 0

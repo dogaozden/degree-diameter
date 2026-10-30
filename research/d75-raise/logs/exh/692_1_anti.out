@@ -1,0 +1,23 @@
+alpha 0: p 2 fixed 2 orbits 345 reps 3
+GROUP /tmp/d75/g692_1.ht n 692 ninv 1 nalpha 8
+ANTI alpha 0 p 1 f 1 m 3 best 1099511627776 sols 0 evals 176988 passXX 0 secs 0.0
+alpha 1: p 2 fixed 348 orbits 172 reps 2
+ANTI alpha 1 p 2 f 1 m 3 best 1099511627776 sols 0 evals 29070 passXX 0 secs 0.0
+ANTI alpha 1 p 2 f 3 m 2 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI alpha 1 p 2 f 5 m 1 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+ANTI alpha 1 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+alpha 2: p 2 fixed 346 orbits 173 reps 2
+ANTI alpha 2 p 2 f 1 m 3 best 1099511627776 sols 0 evals 29412 passXX 0 secs 0.0
+ANTI alpha 2 p 2 f 3 m 2 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI alpha 2 p 2 f 5 m 1 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.4 CAPPED
+ANTI alpha 2 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+alpha 3: p 2 fixed 348 orbits 172 reps 1
+ANTI alpha 3 p 2 f 1 m 3 best 1099511627776 sols 0 evals 14535 passXX 0 secs 0.0
+ANTI alpha 3 p 2 f 3 m 2 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI alpha 3 p 2 f 5 m 1 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.7 CAPPED
+ANTI alpha 3 p 2 f 7 m 0 best 1099511627776 sols 0 evals 3000000 passXX 0 secs 0.3 CAPPED
+ANTI4 alpha 4 p 4 fixed 2 two 1 four 172 best 1099511627776 sols 0 evals 172 passXX 0 secs 0.0
+ANTI4 alpha 5 p 4 fixed 4 two 0 four 172 best 1099511627776 sols 0 evals 516 passXX 0 secs 0.0
+ANTI4 alpha 6 p 4 fixed 2 two 1 four 172 best 1099511627776 sols 0 evals 172 passXX 0 secs 0.0
+ANTI4 alpha 7 p 4 fixed 4 two 0 four 172 best 1099511627776 sols 0 evals 516 passXX 0 secs 0.0
+DONE evals 27251381 sols 0
