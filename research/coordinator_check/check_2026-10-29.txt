@@ -40,3 +40,9 @@ rebuilt on the Mac mini with research/frontier/build_haar2.py from records/d7D5_
 edge list sha256 a56affd8f9737984c8ae551fd4322fe1c5b2187d7f98bd8ad8b1aae6ba72adf0 (matches the finder's)
 apsp_mt (all pairs, no symmetry) -> RESULT VALID d=7 D=5 n=1200; at D = 4 -> RESULT INVALID
 apsp_mt on the finder's coset-graph edge list records/d7D5_n1200_coset_sg1200_475.edges -> RESULT VALID d=7 D=5 n=1200
+
+== (5,5) 384 — job beyond-haar-d5b, branch claude/beyond-haar-d5-records-ik8bce (research/beyond-haar-d5b/records/)
+rebuilt on the Mac mini with the coordinator's own lift code (records/coordinator_lift_check.py: Cayley table of SmallGroup(96,17) from records/g96_17.txt,
+identity and associativity checked; voltages SOL x 6 y 1 2 z 39 45 81 w 20 on the base [[2,3],[3,2]]): n = 384, edges = 960, 5-regular, bipartite
+apsp_mt (all pairs, no symmetry) on the rebuild -> RESULT VALID d=5 D=5 n=384; at D = 4 -> RESULT INVALID
+apsp_mt on the finder's records/d5D5_n384_a2_g96_17.edges (sha256 2b45098b49ab8a753eb89e8210d9a34467aa0f78b771462ed9a0c3b0f7a3e2af) -> RESULT VALID d=5 D=5 n=384

@@ -47,7 +47,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (15, 4) | 4,946 | **5,070** | +2.5% | finite geometry | ✓ |
 | (16, 4) | 5,134 | **5,440** | +6.0% | orbit search (Haar) | ✓ |
 | (4, 5) | 160 | **162** | +1.2% | evolutionary search | ✓ |
-| (5, 5) | 336 | **360** | +7.1% | voltage lift of a 4-vertex base by C15 x S3 (not a Haar graph) | [354] |
+| (5, 5) | 336 | **384** | +14.3% | voltage lift of a 4-vertex base by a group of order 96 | [354] |
 | (7, 5) | 1,134 | **1,200** | +5.8% | Haar graph of SL(2,5) x C5 (found as a coset graph) | [1,152] |
 | (8, 5) | 1,710 | **2,048** | +19.8% | route-chart lift | (1,764) |
 | (9, 5) | 2,496 | **2,758** | +10.5% | Haar graph, squad search | (2,662) |
