@@ -7,7 +7,10 @@
  *   - automorphisms of G (generators read from a file; orbits by union-find on the (x, {y1, y2}) states);
  *   - x -> x^-1 (relabel the B0 fibre by right multiplication with x^-1; z_i -> z_i x^-1);
  *   - Y = {1, y1, y2} -> Y y^-1 for y in Y (relabel B1 by y^-1, then A1 by y);
- *   - w -> w^-1 for fixed (x, Y) (relabel A1 by w^-1; z_i -> w^-1 z_i).
+ *   - w -> w^-1 for fixed (x, Y) (relabel A1 by w^-1; z_i -> w^-1 z_i);
+ *   - the base rotation A0 <-> A1, B0 <-> B1, which after renormalising gives x' = w and w' = z0 x z0^-1. With
+ *     cls(g) = the orbit of g under Aut(G) and inversion (numbered by its smallest element), the Y translations,
+ *     x inversion and w inversion keep cls(x) and cls(w), so we may require cls(x) <= cls(w).
  * Search: for each canonical (x, Y) and each w with w <= w^-1, the closed walks of length <= 4 at A0 and at B0 (own
  * fibres; they must cover G) are split by which z slots they use. Walks without z give a base cover; walks using one
  * slot give per-value bitsets S(v); walks using two or three slots are evaluated in the z0 < z1 < z2 loops, with
@@ -113,6 +116,13 @@ int main(int argc, char **argv) {
             unite(s, sidx(x, mul[a][inv_[b]], inv_[b]));          /* Y b^-1 */
         }
     }
+    /* element classes under Aut(G) and inversion (for the rotation symmetry) */
+    int *euf = malloc(sizeof(int) * m), cls[128];
+    for (int g = 0; g < m; g++) euf[g] = g;
+    #define EFIND(a) ({ int _a = (a); while (euf[_a] != _a) _a = euf[_a]; _a; })
+    for (int g = 0; g < m; g++) { int t[24], nt = 0; t[nt++] = inv_[g]; for (int k = 0; k < ngen && nt < 24; k++) t[nt++] = gens[k][g];
+        for (int k = 0; k < nt; k++) { int r1 = EFIND(g), r2 = EFIND(t[k]); if (r1 < r2) euf[r2] = r1; else if (r2 < r1) euf[r1] = r2; } }
+    for (int g = 0; g < m; g++) cls[g] = NOSYM ? 0 : EFIND(g);
     long ncanon = 0, nw = 0, nfull = 0, nsol = 0; clock_t t0 = clock();
     u128 S[2][128];
     volt[E_X0] = 0; volt[E_Y0] = 0; volt[E_W0] = 0;
@@ -122,7 +132,7 @@ int main(int argc, char **argv) {
         ncanon++;
         volt[E_X1] = x; volt[E_Y1] = a; volt[E_Y2] = b;
         for (int w = 1; w < m; w++) {
-            if (!NOSYM && inv_[w] < w) continue;
+            if (!NOSYM && (inv_[w] < w || cls[w] < cls[x])) continue;
             nw++; volt[E_W1] = w;
             u128 c0[2]; for (int t = 0; t < 2; t++) c0[t] = bit(0) | cover(W0[t], n0[t]);
             for (int v = 0; v < m; v++) { volt[E_Z0] = v; for (int t = 0; t < 2; t++) S[t][v] = cover(W1[t], n1[t]); }

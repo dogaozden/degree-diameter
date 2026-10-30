@@ -22,6 +22,7 @@ static int bestset[64], nbest;
 static int *adj, *deg;   /* vertices 0..nA-1 A, nA..nA+nB-1 B */
 static int *dist, *q;
 static const char *outpath;
+static int sa_mode = 0; static long long tot_evals = 0;   /* SA: test() must not write the graph on every evaluation (SA writes on improvements) */
 
 static int bfs(int s) {
     int n = nA + nB; for (int i = 0; i < n; i++) dist[i] = -1;
@@ -37,14 +38,14 @@ static void write_graph(int *set, int k) {
     fclose(f);
 }
 static void test(void) {
-    tested++;
+    tested++; tot_evals++;
     int n = nA + nB; memset(deg, 0, sizeof(int) * n);
     for (int j = 0; j < nch; j++) { int d = chosen[j];
         for (int e = 0; e < nE[d]; e++) { int a = EA[d][e], b = nA + EB[d][e];
             if (deg[a] >= DELTA || deg[b] >= DELTA) { fprintf(stderr, "degree overflow\n"); exit(1); }
             adj[a * DELTA + deg[a]++] = b; adj[b * DELTA + deg[b]++] = a; } }
     long c = bfs(0); c += bfs(nA);
-    if (c < bestcost) { bestcost = c; nbest = nch; memcpy(bestset, chosen, sizeof(int) * nch); if (!nsol) write_graph(chosen, nch); }
+    if (c < bestcost) { bestcost = c; nbest = nch; memcpy(bestset, chosen, sizeof(int) * nch); if (!nsol && !sa_mode) write_graph(chosen, nch); }
     if (c == 0) { nsol++; printf("SOL"); for (int j = 0; j < nch; j++) printf(" %d", chosen[j]); printf("\n"); fflush(stdout);
         if (nsol == 1) write_graph(chosen, nch); }
 }
@@ -91,7 +92,7 @@ int main(int argc, char **argv) {
     int hist[64] = {0}; for (int d = 0; d < ndc; d++) if (contrib[d] < 64) hist[contrib[d]]++;
     fprintf(stderr, "%s: nA %d nB %d double cosets %d; contributions", argv[1], nA, nB, ndc);
     for (int c = 1; c < 64; c++) if (hist[c]) fprintf(stderr, " %dx%d", hist[c], c); fprintf(stderr, "\n");
-    if (getenv("SA")) {   /* annealing over unions: swap one chosen double coset for an unchosen one of equal size */
+    if (getenv("SA")) { sa_mode = 1;   /* annealing over unions: swap one chosen double coset for an unchosen one of equal size */
         double SECS = getenv("SECS") ? atof(getenv("SECS")) : 60, T0 = getenv("T0") ? atof(getenv("T0")) : 3,
                T1 = getenv("T1") ? atof(getenv("T1")) : 0.3; long ITERS = getenv("ITERS") ? atol(getenv("ITERS")) : 20000;
         uint64_t rs = 88172645463325252ULL ^ (getenv("SEED") ? (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL : 0);
@@ -116,7 +117,7 @@ int main(int argc, char **argv) {
             if (cur < gbest) { gbest = cur; nbest = nch; memcpy(bestset, chosen, sizeof(int) * nch); }
         }
         bestcost = gbest;
-        printf("RESULT %s SA solutions %lld best %ld vertices %d set", argv[1], nsol, bestcost, n);
+        printf("RESULT %s SA solutions %lld best %ld vertices %d evals %lld set", argv[1], nsol, bestcost, n, tot_evals);
         for (int j = 0; j < nbest; j++) printf(" %d", bestset[j]); printf("\n");
         return 0;
     }
