@@ -28,3 +28,15 @@ rebuilt on the Mac mini with research/synthetic/conics2/typed_build.py build fro
 and research/p4/d6/hex/hex_q13.bin: hubs per side 29535 29535; n = 4081410, edges = 32617187, degree min 14 max 16, hub graph edges 324830
 edge list sha256 1bc34853dd30ddbd2483e5a0f90c62bd3e8acf12d5f52ee0a6950008df3c879a (matches the finder's)
 apsp_mt (all pairs, no symmetry), Thu Oct 29 06:31 to 11:39 PDT -> RESULT VALID d=16 D=7 n=4081410
+
+== (5,5) 360 — job beyond-haar-d5, branch claude/beyond-haar-d5-constructions-ojg0bw (research/beyond-haar-d5/records/)
+rebuilt on the Mac mini from the printed description alone (no group table) with records/build_d5D5_n360_z15s3.py: n = 360, edges = 900, 5-regular, bipartite
+(own labelling, so its sha256 differs from the finder's edge list, which nauty finds isomorphic; both files checked)
+apsp_mt (all pairs, no symmetry) on the rebuild -> RESULT VALID d=5 D=5 n=360; at D = 4 -> RESULT INVALID
+apsp_mt on the finder's records/d5D5_n360_lift_g90_6.edges (sha256 e710083eaafe30f9fb4e02ab769ed7351166e533f92077944b273584aa7b220c) -> RESULT VALID d=5 D=5 n=360
+
+== (7,5) 1,200 — job beyond-haar-d5, branch claude/beyond-haar-d5-constructions-ojg0bw (research/beyond-haar-d5/records/)
+rebuilt on the Mac mini with research/frontier/build_haar2.py from records/d7D5_n1200_haar_sl5xc5.txt: n = 1200, edges = 4200, 7-regular, no duplicate edges, VALID d=7 D=5
+edge list sha256 a56affd8f9737984c8ae551fd4322fe1c5b2187d7f98bd8ad8b1aae6ba72adf0 (matches the finder's)
+apsp_mt (all pairs, no symmetry) -> RESULT VALID d=7 D=5 n=1200; at D = 4 -> RESULT INVALID
+apsp_mt on the finder's coset-graph edge list records/d7D5_n1200_coset_sg1200_475.edges -> RESULT VALID d=7 D=5 n=1200
