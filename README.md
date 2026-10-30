@@ -105,7 +105,7 @@ record, with dates and checks, is in [`research/RESULTS.md`](research/RESULTS.md
 | (8, 10) | 6,927,210 | **7,818,096** | +12.9% | finite geometry ¹ | — |
 | (9, 10) | 20,017,260 | **23,975,280** | +19.8% | orbit search (Haar) | — |
 | (10, 10) | 50,331,156 | **60,141,120** | +19.5% | orbit search (Haar) | — |
-| (11, 10) | 0 | **148,729,680** | new | finite geometry ¹ | — |
+| (11, 10) | 130,592,354 | **148,729,680** | +13.9% | Haar graph of PSL(2,89) × Z₂₁₁ | — |
 | (12, 10) | 300,383,050 | **325,832,976** | +8.5% | orbit search (Haar) | — |
 | (13, 10) | 617,330,936 | **677,714,400** | +9.8% | orbit search (Haar) | — |
 | (14, 10) | 1,213,477,190 | **1,326,627,120** | +9.3% | orbit search (Haar) | — |
