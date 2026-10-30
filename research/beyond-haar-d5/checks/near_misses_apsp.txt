@@ -1,0 +1,17 @@
+# apsp.c on the main near misses (all 7- or 5-regular, bipartite, diameter 6: not valid at D = 5)
+Thu Oct 29 21:30:42 UTC 2026
+== (C7xC7):C24_coset_1176
+n=1176 edges=4116 degree min=7 max=7 bipartite=yes diameter=6
+RESULT VALID d=7 D=6 n=1176
+== PSL(2,17)_coset_h4_1224
+n=1224 edges=4284 degree min=7 max=7 bipartite=yes diameter=6
+RESULT VALID d=7 D=6 n=1224
+== C2xA6_coset_h4_360
+n=360 edges=900 degree min=5 max=5 bipartite=yes diameter=6
+RESULT VALID d=5 D=6 n=360
+== 3+3_lift_C15:C4_360
+n=360 edges=900 degree min=5 max=5 bipartite=yes diameter=6
+RESULT VALID d=5 D=6 n=360
+== Haar_(C11xC11):C5_1210
+n=1210 edges=4235 degree min=7 max=7 bipartite=yes diameter=6
+RESULT VALID d=7 D=6 n=1210

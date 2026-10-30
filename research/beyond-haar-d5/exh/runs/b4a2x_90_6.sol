@@ -1,0 +1,16 @@
+SOL x 6 y 5 34 z 1 31 68 w 6
+SOL x 6 y 5 34 z 10 42 43 w 51
+SOL x 6 y 5 40 z 8 41 88 w 6
+SOL x 6 y 5 40 z 32 76 86 w 51
+SOL x 6 y 5 52 z 3 24 44 w 51
+SOL x 6 y 5 52 z 17 50 69 w 6
+SOL x 6 y 5 58 z 16 28 63 w 51
+SOL x 6 y 5 58 z 23 36 71 w 6
+SOL x 6 y 12 22 z 3 68 84 w 35
+SOL x 6 y 12 22 z 19 61 66 w 81
+SOL x 6 y 12 73 z 3 15 68 w 51
+SOL x 6 y 12 73 z 4 17 22 w 6
+SOL x 6 y 15 40 z 7 57 69 w 87
+SOL x 6 y 15 40 z 19 56 70 w 64
+SOL x 6 y 15 68 z 3 47 75 w 87
+SOL x 6 y 15 68 z 9 29 78 w 64

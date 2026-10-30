@@ -1,0 +1,14 @@
+b1_k4s1_147_1 base=base_k4_s1.txt group=sg_147_1.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 62 check 62 b 8 m 147 vertices 1176 iters 90831 runs 1 secs 30.0
+b1_k4s1_147_4 base=base_k4_s1.txt group=sg_147_4.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 52 check 52 b 8 m 147 vertices 1176 iters 77875 runs 1 secs 30.1
+b1_k4s1_148_1 base=base_k4_s1.txt group=sg_148_1.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 58 check 58 b 8 m 148 vertices 1184 iters 73177 runs 1 secs 30.1
+b1_k4s2_147_5 base=base_k4_s2.txt group=sg_147_5.txt secs=30 seed=2 T0=5 T1=0.3 :: RESULT best 48 check 48 b 8 m 147 vertices 1176 iters 75981 runs 1 secs 30.0
+b1_k5s1_120_34 base=base_k5_s1.txt group=sg_120_34.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 130 check 130 b 10 m 120 vertices 1200 iters 62656 runs 1 secs 30.0
+b1_k5s1_120_5 base=base_k5_s1.txt group=sg_120_5.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 86 check 86 b 10 m 120 vertices 1200 iters 56654 runs 1 secs 30.1
+b1_k6s1_100_13 base=base_k6_s1.txt group=sg_100_13.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 186 check 186 b 12 m 100 vertices 1200 iters 47221 runs 1 secs 30.0
+b1_k6s1_98_3 base=base_k6_s1.txt group=sg_98_3.txt secs=30 seed=1 T0=5 T1=0.3 :: RESULT best 115 check 115 b 12 m 98 vertices 1176 iters 50404 runs 1 secs 30.1
+b2_k4s2_147_5_T3 base=base_k4_s2.txt group=sg_147_5.txt secs=60 seed=2 T0=3 T1=0.2 :: RESULT best 36 check 36 b 8 m 147 vertices 1176 iters 206367 runs 2 secs 60.0
+b2_k4s2_147_5_T8 base=base_k4_s2.txt group=sg_147_5.txt secs=60 seed=7 T0=8 T1=0.5 :: RESULT best 66 check 66 b 8 m 147 vertices 1176 iters 163400 runs 1 secs 60.0
+b2_k5s1_120_5 base=base_k5_s1.txt group=sg_120_5.txt secs=60 seed=2 T0=3 T1=0.2 :: RESULT best 85 check 85 b 10 m 120 vertices 1200 iters 148419 runs 1 secs 60.1
+b2_k6s1_98_3 base=base_k6_s1.txt group=sg_98_3.txt secs=60 seed=2 T0=3 T1=0.2 :: RESULT best 96 check 96 b 12 m 98 vertices 1176 iters 115120 runs 1 secs 60.1
+b2_k4s1_147_4 base=base_k4_s1.txt group=sg_147_4.txt secs=60 seed=2 T0=3 T1=0.2 :: RESULT best 50 check 50 b 8 m 147 vertices 1176 iters 224780 runs 2 secs 60.0
+b3_k4s2_147_5_T2 base=base_k4_s2.txt group=sg_147_5.txt secs=100 seed=3 T0=2 T1=0.1 :: RESULT best 46 check 46 b 8 m 147 vertices 1176 iters 537747 runs 3 secs 100.0
