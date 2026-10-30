@@ -1,0 +1,10 @@
+c3_pgl27xc7: 3 classes of subgroups of order 4
+Syntax warning: Unbound global variable in dc_export.g:21
+    base := Set(List(Elements(H), hh -> PositionCanonical(RB, g^-1 * hh)));
+                                                          ^^
+Syntax warning: Unbound global variable in dc_export.g:21
+    base := Set(List(Elements(H), hh -> PositionCanonical(RB, g^-1 * hh)));
+                                                              ^
+Syntax warning: Unbound global variable in dc_export.g:33
+        Collected(List(dcs, D -> Size(D) / Size(K))), "\n");
+                                                ^

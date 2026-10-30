@@ -1,0 +1,20 @@
+Read("dc2_lib.g");
+Read("build_h2.g");
+P := function(G, name, h)
+  local t;
+  t := Runtime();
+  Print(name, " order ", Size(G), " h ", h, " classes-of-H ", Length(SubsOfOrder(G, h)), "\n");
+  ExportPairs(G, h, Concatenation("dc/", name));
+  Print("  done in ", Runtime() - t, " ms\n");
+end;
+P(Image(IsomorphismPermGroup(PGL(2,13))), "pgl2_13", 2);
+P(Image(IsomorphismPermGroup(DirectProduct(PSL(2,13), CyclicGroup(2)))), "psl2_13xc2", 2);
+P(Image(IsomorphismPermGroup(DirectProduct(PSL(2,7), CyclicGroup(13)))), "psl2_7xc13", 2);
+P(AffSub(47,46), "agl1_47", 2);
+P(AffSub(79,26), "aff79_26", 2);
+P(AffSub(127,18), "aff127_18", 2);
+P(F7AGL, "f7_agl17", 2);
+P(Image(IsomorphismPermGroup(DirectProduct(AlternatingGroup(5), CyclicGroup(35)))), "a5xc35", 2);
+P(Image(IsomorphismPermGroup(DirectProduct(AlternatingGroup(6), CyclicGroup(6)))), "a6xc6", 2);
+P(Image(IsomorphismPermGroup(DirectProduct(SymmetricGroup(6), CyclicGroup(3)))), "s6xc3", 2);
+QUIT;

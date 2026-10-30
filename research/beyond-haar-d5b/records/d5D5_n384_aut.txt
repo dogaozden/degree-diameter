@@ -1,0 +1,30 @@
+graph d5D5_n384_a1_g96_31.edges
+2 orbits; grpsize=192; 4 gens; 7 nodes (1 bad leaf); maxlev=2
+|Aut| = 192, structure C3 : (((C8 x C2) : C2) : C2)
+vertex orbits: [ 192, 192 ]
+colour-preserving part C: order 
+96 = C3 : (C2 . ((C4 x C2) : C2) = (C2 x C2) . (C4 x C2)), orbit sizes 
+[ 96, 96, 96, 96 ]
+HAAR: no (|C| is not divisible by 192)
+graph d5D5_n384_a1_g96_51.edges
+1 orbit; grpsize=768; 5 gens; 12 nodes; maxlev=3
+|Aut| = 768, structure C3 : (((C2 x Q8) : C2) : D8)
+vertex orbits: [ 384 ]
+colour-preserving part C: order 384 = C3 x ((C8 : C4) : C4), orbit sizes 
+[ 192, 192 ]
+subgroups of C of order 192 (up to conjugacy): 3; transitive on both sides: 0
+HAAR: no
+graph d5D5_n384_a1_g96_66.edges
+4 orbits; grpsize=96; 3 gens; 8 nodes (3 bad leaves); maxlev=2
+|Aut| = 96, structure Q8 : (C3 : C4)
+vertex orbits: [ 96, 96, 96, 96 ]
+colour-preserving part C: order 96 = Q8 : (C3 : C4), orbit sizes 
+[ 96, 96, 96, 96 ]
+HAAR: no (|C| is not divisible by 192)
+graph d5D5_n384_a2_g96_17.edges
+2 orbits; grpsize=192; 4 gens; 7 nodes (1 bad leaf); maxlev=2
+|Aut| = 192, structure C3 : ((C8 : C4) : C2)
+vertex orbits: [ 192, 192 ]
+colour-preserving part C: order 96 = C3 : (Q8 : C4), orbit sizes 
+[ 96, 96, 96, 96 ]
+HAAR: no (|C| is not divisible by 192)

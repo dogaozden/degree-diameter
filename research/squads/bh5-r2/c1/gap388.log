@@ -1,0 +1,6 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/squads/bh5-r1/c8/gap_tab.g:14
+    AppendTo(out, JoinStringsWithSeparator(List(el, h -> String(PositionSorted\
+(el, g*h) - 1)), " "), "\n");
+                                                                              \
+ ^^

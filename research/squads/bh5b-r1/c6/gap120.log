@@ -1,0 +1,5 @@
+Syntax warning: Unbound global variable in /home/user/degree-diameter/research\
+/beyond-haar-d5b/src/gap_tables.g:15
+    AppendTo(out, JoinStringsWithSeparator(List(el, h -> String(Position(el, g\
+*h) - 1)), " "), "\n");
+                                                                         ^^
