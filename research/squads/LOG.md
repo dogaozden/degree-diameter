@@ -85,3 +85,20 @@ Calibrated the search that found the vertex-transitive (5,5) record: non-Haar |H
 the 602 groups P of order 128 with <= 11 involutions (231 pairs H = K, 2 s anneals): one cost-0 pair (the record) and
 12, 30, 34, 44, ... (median ~56 of 384) for the rest. Its (6,5) analogue, C3 x P256 on 768 vertices (2.03 walks per
 target, more slack than the record's 1.78), is round 5 (4,284 groups P with <= 11 involutions).
+
+### Round s65r5 (09:22-09:52 UTC, 8 cards, research/squads/s65r5/)
+Cards: c1-c6 the (6,5) analogue of the vertex-transitive (5,5) record search: non-Haar |H| = 2 bi-coset graphs of
+G = C3 x P, P of order 256 with <= 11 involutions (4,284 groups in six parts; 768 vertices) · c7 exhaustive Haar
+remainder (orders 352-360, then 361-380) · c8 the semidirect variants C3 : P256 (P acting on C3 by inversion through an
+index-2 subgroup), P with 1 or 3 involutions.
+Best per card (coset cost of 768; none valid): c1 48 (P = SmallGroup(256,113), 180 pairs from ids 2-164) · c2 48
+(256_3019 and 256_3504, 302 pairs, all of part 1) · c3 66 (75 pairs, half of part 2) · c4 60 (81 pairs, all of part
+3) · c5 67 (33 pairs, all of part 4) · c6 none (part 5, ids above 26,245: no non-Haar pair at all) · c7 closed 360_98,
+360_28, 360_108, 360_100, 352_169 and 375_2, 375_5, 376_10, 378_23, 378_27, 378_48, 378_54: no Haar graph; the
+exhaustive search now covers ALL 93 groups of order 352-360 with <= 3 involutions (none works) · c8 62 (57 pairs).
+Reading: about 670 C3 x P256 pairs annealed, costs 48-1160, median ~100 of 768; the (5,5) calibration had its lone
+cost-0 pair among 231 pairs with the rest at 12+, so the (6,5) distribution (best 48 = 6% of the vertices, against 12/384
+= 3% for the (5,5) runner-up) looks worse, not merely unlucky. Round 6 finishes the sweep anyway (part 0 rest and part
+2 rest), adds P with 15 involutions, and moves the non-Haar |H| = 2 sweep to orders 722-760 and 720 (ids 451-840).
+Director meanwhile: 2+2 lifts by few-involution groups of order 192 (768 vertices, the lift analogue of the (5,5) order-96
+records) under tabu: 22-36, far behind order 176 (6); dropped.

@@ -1,0 +1,60 @@
+START 360_98 start=0 at 09:22:03 rem=1677
+EXPORTED hx_360_98.txt n=360 |Aut|=384 gens=6 C30 x (C3 : C4)
+RC 0 360_98
+END 360_98 at 09:29:14
+START 360_28 start=0 at 09:29:14 rem=1246
+EXPORTED hx_360_28.txt n=360 |Aut|=8640 gens=6 C2 x (C9 : (C5 : C4))
+RC 0 360_28
+END 360_28 at 09:31:14
+START 360_108 start=0 at 09:31:14 rem=1126
+EXPORTED hx_360_108.txt n=360 |Aut|=13824 gens=6 C10 x ((C3 x C3) : C4)
+RC 0 360_108
+END 360_108 at 09:33:31
+START 360_100 start=130 at 09:33:31 rem=989
+EXPORTED hx_360_100.txt n=360 |Aut|=1920 gens=6 C3 x (C3 : (C5 : Q8))
+RC 0 360_100 resume from 130 NP=1854
+END 360_100 at 09:34:37
+START 352_169 start=132 at 09:34:37 rem=923
+EXPORTED hx_352_169.txt n=352 |Aut|=2560 gens=9 C22 x Q16
+RC 0 352_169 resume from 132 NP=792
+END 352_169 at 09:35:03
+START 378_54 start=0 at 09:35:03 rem=897
+EXPORTED hx_378_54.txt n=378 |Aut|=1728 gens=4 C3 x C21 x S3
+RC 0 378_54
+END 378_54 at 09:38:28
+START 378_48 start=0 at 09:38:29 rem=691
+EXPORTED hx_378_48.txt n=378 |Aut|=1512 gens=4 C3 x (S3 x (C7 : C3))
+RC 0 378_48
+END 378_48 at 09:41:17
+START 375_2 start=0 at 09:41:17 rem=523
+EXPORTED hx_375_2.txt n=375 |Aut|=1200 gens=2 ((C5 x C5) : C5) : C3
+RC 0 375_2
+END 375_2 at 09:42:05
+START 378_27 start=0 at 09:42:05 rem=475
+EXPORTED hx_378_27.txt n=378 |Aut|=1134 gens=4 C2 x (C7 : (C9 : C3))
+RC 0 378_27
+END 378_27 at 09:43:45
+START 376_10 start=0 at 09:43:45 rem=375
+EXPORTED hx_376_10.txt n=376 |Aut|=1104 gens=5 C47 x Q8
+RC 0 376_10
+END 376_10 at 09:45:31
+START 375_5 start=0 at 09:45:31 rem=269
+EXPORTED hx_375_5.txt n=375 |Aut|=1000 gens=6 C3 x (C25 : C5)
+RC 0 375_5
+END 375_5 at 09:46:20
+START 378_23 start=0 at 09:46:20 rem=220
+EXPORTED hx_378_23.txt n=378 |Aut|=756 gens=3 C18 x (C7 : C3)
+RC 0 378_23
+END 378_23 at 09:48:03
+SKIP 378_24 (deadline)
+SKIP 378_25 (deadline)
+SKIP 378_16 (deadline)
+SKIP 380_1 (deadline)
+SKIP 372_10 (deadline)
+SKIP 368_26 (deadline)
+SKIP 368_21 (deadline)
+SKIP 364_1 (deadline)
+SKIP 378_2 (deadline)
+SKIP 378_46 (deadline)
+SKIP 378_33 (deadline)
+ALLDONE 09:48:03
