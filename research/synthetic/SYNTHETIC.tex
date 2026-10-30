@@ -29,6 +29,7 @@
 \newcommand{\cO}{\mathcal{O}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cL}{\mathcal{L}}
+\newcommand{\cQ}{\mathcal{Q}}
 \newcommand{\lam}{\lambda}
 \newcommand{\diam}{\operatorname{diam}}
 \newcommand{\new}[1]{\textcolor{BrickRed}{#1}}
@@ -815,6 +816,265 @@ $(15,7)$ & $7$ copies, types $HHDHDHD$ & friendly: segment sets with some collin
 \end{center}
 With classical ingredients only (the $q^2+1$ points of an elliptic quadric section, $q^2+1$ lines of a Hermitian spread, and an explicit hub graph built from a projective plane with pendant trees) the same theorems give $n_b(q+2,7)\ge 6N+2(q^2+1)$ for every $q\ge5$ (\path{D7_HEXAGON.md}, Corollary~9.1).
 
+\section{Diameter 5: level structures of generalized quadrangles, freed sets and hubs}\label{sec:d5}
+
+(Theorems A, B, C, E and the other numbered statements cited in this section are those of \path{D5_QUADRANGLE.md}.)
+
+This section follows the plan of Section~\ref{sec:d7} one step lower: copies of a generalized quadrangle joined by bijections have diameter $5$, and freeing some of the joining incidences makes room for new points and lines. The difference is that at diameter $5$ there is an exact criterion for which incidences can be freed, and it is much more restrictive than at diameter~$7$.
+
+Let $\cQ$ be a generalized quadrangle of order $(q,q)$ (Section~\ref{sec:d4}): every line has $q+1$ points, every point is on $q+1$ lines, and for every anti-flag $(p,L)$ exactly one point of $L$ is collinear with $p$. It has $N=(q+1)(q^2+1)$ points and $N$ lines, and its dual $\cQ^D$ (points and lines exchanged) is again a quadrangle of order $(q,q)$. Three facts are used throughout:
+\begin{enumerate}[label=\textup{(Q\arabic*)},leftmargin=3em]
+\item two distinct points are collinear or have a common collinear point, so they are at distance $2$ or $4$; a point and a line are at distance $1$ or $3$; dually for lines;
+\item a line not through $p$ has exactly one point collinear with $p$, and a line through $p$ has $q$ of them; dually, a point not on $L$ is on exactly one line concurrent with $L$;
+\item for every point $p$ and every line $L$, some point collinear with $p$ lies on $L$ (by (Q2), or another point of $L$ if $p\I L$); dually.
+\end{enumerate}
+The quadrangles used are $W(q)$ and $Q(4,q)$ \cite{PT}, and $Q(4,q)$ is isomorphic to the dual of $W(q)$ \cite[3.2.1]{PT}. As in Lemma~\ref{lem:diam}, distances in a structure of diameter $5$ can be read off from pairs of the same kind:
+
+\begin{lemma}\label{lem:diam5}
+An incidence structure in which every element is incident with something has diameter at most $5$ if and only if any two points, and any two lines, are at distance at most $4$; that is, any two points are collinear or both collinear with a third point, and dually.
+\end{lemma}
+
+\begin{proof}
+Same-kind distances are even and point--line distances odd. If $p$ is a point and $L$ a line, and $p'$ is a point of $L$, then $d(p,L)\le d(p,p')+1\le 5$.
+\end{proof}
+
+\subsection{Level structures}\label{ssec:levels5}
+Fix $r\ge1$ and take $2r+1$ copies $\cQ_0,\dots,\cQ_{2r}$, indexed modulo $2r+1$, each a copy of $\cQ$ (\emph{type} $H$) or of $\cQ^D$ (\emph{type} $D$). For an element $x$ of $\cQ$ write $x_j$ for its copy in $\cQ_j$; if $\cQ_j$ has type $D$, a line $\ell$ of $\cQ$ gives a point $\ell_j$ and a point $p$ gives a line $p_j$. The \emph{transitions} are the pairs $j\to j+k$, $1\le k\le r$; every two copies are joined by exactly one transition. (Any orientation of the pairs in which every copy has $r$ outgoing transitions would do; all layouts below use this one.) For each transition $t=(j\to j')$ choose a bijection $M_t$ from the points of $\cQ_j$ to the lines of $\cQ_{j'}$.
+
+\begin{definition}[Level structure]\label{def:levels5}
+Its points are the points of all copies, its lines the lines of all copies, and its incidences are those inside each copy together with $p\I M_t(p)$ for every transition $t=(j\to j')$ and every point $p$ of $\cQ_j$.
+\end{definition}
+
+Every point gains $r$ lines and every line $r$ points, so the structure is $(q+1+r)$-regular with $(2r+1)\cdot 2N$ elements. A transition is \emph{friendly} if the two copies have different types. Then a point $p_j$ of $\cQ_j$ and the line $p_{j'}$ of $\cQ_{j'}$ come from the same element $p$ of $\cQ$, and $M_t$ may be the \emph{identity} $p_j\mapsto p_{j'}$. For $q=7,8,9,9,9,11$ and $2r+1=5,5,5,7,9,7$ the orders $(2r+1)\cdot2N$ are the values of the 2013 table in the cells $(10,5)$--$(15,5)$, which the CombinatoricsWiki \cite{LPP} credits to Delorme, G\'omez and Quisquater \cite{DGQ}. We could not find that paper; the cell $(16,5)$, credited to them as well, is not of this form, so we can say only that the orders coincide.
+
+\begin{theorem}[Theorem A]\label{thm:levelA5}
+For any types and bijections, the level structure has diameter at most $5$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:diam5} it suffices to join two points, and two lines, by a path of length at most $4$. Inside one copy this is (Q1). Otherwise take $u$ in $\cQ_j$ and $v$ in $\cQ_{j'}$ with a transition $M$ from $j$ to $j'$ (one of the two directions is a transition). Two points: $u$, the line $M(u)$, then $v$ inside $\cQ_{j'}$, at most $1+3$. Two lines: $u$ to the point $M^{-1}(v)$ inside $\cQ_j$, then $v$, at most $3+1$.
+\end{proof}
+
+\subsection{Freeing incidences and adding hubs}\label{ssec:hubs5}
+For each transition $t=(j\to j')$ choose a set $R_t$ of points of $\cQ_j$, the \emph{freed} points, and:
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.5em]
+\item delete the incidences $p\I M_t(p)$, $p\in R_t$; each deletion leaves a free incidence (a \emph{slot}) at the point $p$ of $\cQ_j$ and one at the line $M_t(p)$ of $\cQ_{j'}$;
+\item add $K$ new lines, the \emph{line-hubs}, each incident with one freed point in \emph{every} copy (taking a slot there), and $K'$ new points, the \emph{point-hubs}, each incident with one freed line in every copy; every slot is taken at most once;
+\item add incidences between line-hubs and point-hubs (the \emph{hub graph} $Y$), at most $q-r$ at each hub.
+\end{enumerate}
+Copy $j$ has $\alpha_j=\sum_{t\text{ out of }j}|R_t|$ free point slots and $\beta_j=\sum_{t\text{ into }j}|R_t|$ free line slots, so $K\le\min_j\alpha_j$ and $K'\le\min_j\beta_j$. All degrees stay at most $q+1+r$ (a hub has $2r+1$ incidences with the copies), and there are $(2r+1)\cdot 2N+K+K'$ elements. This is the operation of \S\ref{ssec:hubs} with quadrangles in place of hexagons.
+
+Call the transition $t$ \emph{repaired} if after the deletion every point of $\cQ_j$ is within distance $4$ of every point of $\cQ_{j'}$, and every line of $\cQ_j$ of every line of $\cQ_{j'}$, using only these two copies and the remaining incidences of $t$. A shortest such path uses exactly one incidence of $t$: it uses an odd number of them, and with three it would contain a path between two distinct lines of $\cQ_{j'}$ and one between two distinct points of $\cQ_j$, each of length at least $2$, so its length would be at least $3+2+2=7$. So $t$ is repaired if and only if for all $u$ in $\cQ_j$ and $v$ in $\cQ_{j'}$ of the same kind there is a point $a\notin R_t$ of $\cQ_j$ with
+\begin{equation}\label{eq:repair5}
+d(u,a)+1+d(M_t(a),v)\le 4 .
+\end{equation}
+
+\begin{theorem}[Assembly; Theorems 3.5, 3.6]\label{thm:assembly5}
+If every transition is repaired, any two line-hubs and any two point-hubs are within distance $4$, and every hub is on at most $q-r$ hub incidences, the structure has diameter at most $5$ and maximum degree at most $q+1+r$; so $n_b(q+1+r,5)\ge(2r+1)\cdot 2N+K+K'$.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:diam5}. Two old points or two old lines: inside a copy by (Q1), in different copies through their transition. A line-hub $h$ and an old line $v$ of $\cQ_j$: $h$ contains a point of $\cQ_j$, which is within $3$ of $v$; dually for point-hubs and old points. Two hubs of the same kind: by hypothesis.
+\end{proof}
+
+The hypothesis on the hubs holds, for instance, if $Y$ alone has all same-kind distances at most $4$ (\S\ref{ssec:hubgraphs}). The hypothesis on the transitions is a property of one bijection and one freed set, and the next theorem decides it exactly.
+
+\subsection{The exact criterion}\label{ssec:thmE}
+
+\begin{theorem}[Theorem E]\label{thm:E}
+Let $t=(j\to j')$ be a transition with bijection $M$ and freed set $R$. Then $t$ is repaired if and only if for every $x\in R$:
+\begin{enumerate}[label=\textup{(E\arabic*)},leftmargin=3em,start=2]
+\item every point of $\cQ_{j'}$ lies on $M(a)$ for some point $a\notin R$ collinear with $x$;
+\item every line of $\cQ_j$ contains a point $a\notin R$ such that $M(a)$ and $M(x)$ are concurrent.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We check \eqref{eq:repair5}. Distances between points of one copy are even, between a point and a line odd. \emph{Two points $u\in\cQ_j$, $v\in\cQ_{j'}$}: we need $d(u,a)+d(M(a),v)\le3$, with $d(u,a)\in\{0,2,4\}$ and $d(M(a),v)\in\{1,3\}$. If $u\notin R$, take $a=u$: $d(M(u),v)\le 3$ by (Q1). If $u=x\in R$, then $a\ne x$, so we need $d(x,a)=2$ and $d(M(a),v)=1$: a point $a\notin R$ collinear with $x$ with $v$ on $M(a)$. For all $v$ this is (E2). \emph{Two lines $u\in\cQ_j$, $v\in\cQ_{j'}$}: now $d(u,a)\in\{1,3\}$ and $d(M(a),v)\in\{0,2,4\}$, so the possibilities are $(1,0)$, $(1,2)$, $(3,0)$. If $v=M(b)$ with $b\notin R$, take $a=b$: $d(u,b)\le3$. If $v=M(x)$ with $x\in R$, then $M(a)=v$ is impossible, so we need $a\I u$, $a\notin R$, and $M(a)$ concurrent with $M(x)$. For all $u$ this is (E3).
+\end{proof}
+
+(The note's proof also goes through point--line pairs and a condition (E1), which (E2) implies; with Lemma~\ref{lem:diam5} these are not needed. The program \path{check_d5.py} compares (E2), (E3) with a direct computation of distances on $336$ transitions in $W(q)$ and $Q(4,q)$, $q=2,3$.)
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[xscale=1.15,yscale=1.0]
+  \draw[rounded corners=8pt,gray] (-0.6,-0.7) rectangle (4.3,3.0); \node[font=\small] at (1.85,3.3) {copy $\cQ_j$};
+  \draw[rounded corners=8pt,gray] (5.3,-0.7) rectangle (10.0,3.0); \node[font=\small] at (7.65,3.3) {copy $\cQ_{j'}$};
+  \node[pt] (x) at (0.2,2.2) {}; \node[above] at (x) {$x_j$};
+  \node[pt] (y) at (2.0,2.2) {}; \node[above] at (y) {$y_j$};
+  \node[ln] (xy) at (1.1,1.2) {}; \node[left] at (xy) {$(xy)_j$};
+  \node[ln] (lj) at (3.0,1.2) {}; \node[right] at (lj) {$\ell_j$};
+  \foreach \t/\n in {2.5/a,3.0/b,3.5/c} {\node[pt] (\n) at (\t,0.0) {}; \draw[old] (lj)--(\n);}
+  \node[font=\scriptsize] at (3.0,-0.4) {not collinear with $x$};
+  \draw[old] (x)--(xy); \draw[old] (y)--(xy); \draw[old] (y)--(lj);
+  \node[ln] (Mx) at (6.2,2.2) {}; \node[above] at (Mx) {$x_{j'}$};
+  \node[ln] (My) at (8.0,2.2) {}; \node[above] at (My) {$y_{j'}$};
+  \node[pt] (lp) at (8.9,1.2) {}; \node[right] at (lp) {$\ell_{j'}$};
+  \draw[old] (My)--(lp);
+  \foreach \t/\n in {2.5/a,3.0/b,3.5/c} {\node[ln] (\n2) at (\t+5.9,0.0) {}; \draw[old] (lp)--(\n2); }
+  \draw[gone] (x) to[out=15,in=165] (Mx);
+  \draw[gone] (y) to[out=15,in=165] (My);
+  \draw[old,gray!70] (a) to[out=-20,in=200] (a2);
+\end{tikzpicture}
+\caption{Why a friendly transition with $M$ the identity ($\cQ_j$ a copy of $\cQ$, $\cQ_{j'}$ of $\cQ^D$) cannot free two collinear points $x,y$. Dashed: the deleted incidences $x_j\I x_{j'}$, $y_j\I y_{j'}$. Take a line $\ell\ne xy$ through $y$; in $\cQ_{j'}$ it is a point $\ell_{j'}$. A path of length $4$ from $x_j$ to $\ell_{j'}$ must be $x_j$, a line, a point $a_j$ collinear with $x$, the line $a_{j'}$, then $\ell_{j'}$; so $a$ must be a point of $\ell$ collinear with $x$. The only one is $y$ (Q2), and $y$ is freed. The other points of $\ell$ (bottom) are not collinear with $x$, so their incidences with $\cQ_{j'}$ (grey) do not help: in these two copies $d(x_j,\ell_{j'})=6$.}
+\label{fig:collinearpair}
+\end{figure}
+
+\subsection{Transitions given by an isomorphism: partial ovoids}\label{ssec:thmB5}
+Call a transition \emph{automorphic} if $M$ is the restriction of an isomorphism from $\cQ_j$ to the dual of $\cQ_{j'}$: the identity of a friendly transition, or a duality of $\cQ$ (an incidence-preserving bijection exchanging points and lines; $W(q)$ has one exactly when $q$ is even \cite[3.2.1]{PT}).
+
+\begin{theorem}[Theorem B]\label{thm:B5}
+An automorphic transition is repaired if and only if its freed points are pairwise non-collinear (a \emph{partial ovoid} of $\cQ_j$).
+\end{theorem}
+
+\begin{proof}
+An isomorphism preserves incidence and collinearity, so (E2) and (E3) for $x$ both say: every line of $\cQ_j$ contains a point $a\notin R$ collinear with $x$. A line through $x$ has $q$ points collinear with $x$, a line $\ell$ not through $x$ exactly one, $p_\ell$ (Q2). If no freed point is collinear with $x$, every line is covered. If a freed point $y$ is collinear with $x$, every line $\ell\ne xy$ through $y$ has $p_\ell=y$ and is not covered (Figure~\ref{fig:collinearpair}).
+\end{proof}
+
+At diameter $7$ the corresponding sets were the segment sets (Theorem~\ref{thm:segment}), which may contain collinear pairs; at diameter $5$ a single collinear pair breaks the transition. In $W(q)$ and $Q(4,q)$ the largest partial ovoids are the ovoids, $q^2+1$ points meeting every line once; $Q(4,q)$ has ovoids for every $q$, $W(q)$ only for $q$ even \cite[3.4.1, 3.4.2]{PT}. Dually, freed lines on a friendly transition from a copy of $\cQ^D$ must be pairwise non-concurrent lines of $\cQ$ (a \emph{partial spread}).
+
+\subsection{Local dualities, and why they stop at two points for odd \texorpdfstring{$q$}{q}}\label{ssec:thmC5}
+For a transition between two copies of the same type, $M$ goes from the points to the lines of $\cQ$ itself, and for $Q(4,q)$ with $q$ odd there is no duality. As at diameter~$7$ (\S\ref{ssec:localdual}), it is enough that $M$ looks like a duality near the freed points.
+
+\begin{theorem}[Theorem C]\label{thm:C5}
+The transition is repaired if
+\begin{enumerate}[label=\textup{(H\arabic*)},leftmargin=3em]
+\item no two freed points are collinear, and
+\item[\textup{(H3)}] for every $x\in R$, $M$ maps the points collinear with $x$ onto the lines concurrent with $M(x)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(E2): by (H1) no point collinear with $x$ is freed, so by (H3) the lines $M(a)$, $a\notin R$ collinear with $x$, are all the lines concurrent with $M(x)$, and every point lies on one of them (Q3). (E3): the points $a$ with $M(a)$ concurrent with $M(x)$ are exactly the points collinear with $x$, none of them freed, and every line contains one (Q3).
+\end{proof}
+
+The diameter-$7$ condition (H2), that the lines $M(R)$ be pairwise non-concurrent, follows here: for $x\ne y$ in $R$, $M$ maps the $q+1$ points collinear with both onto the lines concurrent with both $M(x)$ and $M(y)$, and two concurrent lines have only $q-1$ such lines (those through their common point).
+
+\emph{Two points always work} (Proposition~6.4). Let $x,y$ be non-collinear points and $\ell,m$ non-concurrent lines. The sets $\{x,y\}$, $\{x,y\}^\perp$ (the $q+1$ points collinear with both), the $q^2-1$ other points collinear with $x$, and the $q^2-1$ other points collinear with $y$ are disjoint, and the same holds for $\{\ell,m\}$ and the lines concurrent with them, with the same sizes. A bijection sending $x\mapsto\ell$, $y\mapsto m$ and each piece onto the corresponding piece, extended arbitrarily, satisfies (H1) and (H3) for $R=\{x,y\}$.
+
+\emph{Not three} (Corollary~6.2). Three pairwise non-collinear points form a \emph{triad}, and its \emph{centres} are the points collinear with all three; dually for lines. Under (H1) and (H3), $M$ maps the centres of a triad $\{x,y,z\}\subseteq R$ onto the lines concurrent with all of $M(x),M(y),M(z)$, which are pairwise non-concurrent by the remark above; so a triad and its image have the same number of centres. For $q$ odd the points of $Q(4,q)$ are \emph{antiregular} (every triad has $0$ or $2$ centres) and the points of $W(q)$ \emph{regular} (every triad has $1$ or $q+1$ centres) \cite[1.3.6, 3.3.1]{PT}. A triad of lines of $Q(4,q)$ is a triad of points of $W(q)$, so the two counts never agree, and a local duality of $Q(4,q)$ (or of $W(q)$) has at most two freed points. At diameter $7$ local dualities carried $81$ to $768$ freed points per transition; here they carry two.
+
+\subsection{Freeing concurrent lines in pairs, and the hub rule}\label{ssec:relaxed}
+On a friendly transition the freed set must be a partial ovoid or a partial spread (Theorem~\ref{thm:B5}), and in the layouts of \S\ref{ssec:layouts} the number of freed lines on the transitions from type $D$ to type $H$ limits everything. Some concurrent pairs can be freed if the hubs are placed with care.
+
+Let $\cQ=Q(4,q)$, let $\cQ_j$ have type $D$ and $\cQ_{j'}$ type $H$, and let $M$ be the identity: the point $\ell_j$ of $\cQ_j$ ($\ell$ a line of $\cQ$) is matched with the line $\ell_{j'}$. Free a set $T$ of lines of $\cQ$ in which every line meets at most one other line of $T$, its \emph{partner}.
+
+\begin{proposition}[Proposition 7.1]\label{prop:badpairs}
+After the deletion, the pairs of the same kind in $\cQ_j\cup\cQ_{j'}$ at distance more than $4$ are exactly the following, for every partner pair $\ell,m$ with common point $z$ and every point $p\ne z$ of $m$: the points $\ell_j$ and $p_{j'}$; the lines $p_j$ and $\ell_{j'}$; and the same with $\ell$ and $m$ exchanged. That is $4q$ pairs for each partner pair.
+\end{proposition}
+
+\begin{proof}
+For a line $\ell\in T$ without partner, (E2) and (E3) hold as in Theorem~\ref{thm:B5}. Let $\ell$ have partner $m$. (E2) for $\ell$ asks that every point $v$ of $\cQ$ lie on a line $a\notin T$ meeting $\ell$, $a\ne\ell$. A point $v$ on $\ell$ is on $q$ such lines, at most one of them in $T$. A point $v$ off $\ell$ is on exactly one line meeting $\ell$ (Q2), and this line is in $T$ only if it is $m$, that is, $v\in m\setminus\{z\}$. (E3) for $\ell$ asks the same of every point $u$ of $\cQ$, read as the line $u_j$ of $\cQ_j$. Following the proof of Theorem~\ref{thm:E}, the failures are exactly the stated pairs.
+\end{proof}
+
+\begin{proposition}[Proposition 7.2: the hub rule]\label{prop:hubrule}
+Suppose that, for every line $\ell\in T$ with partner $m$, the slot at the line $\ell_{j'}$ is taken by a point-hub $g_\ell$ whose line in $\cQ_j$ is $o_j$ for some point $o$ of $m$. Then all the pairs of Proposition~\ref{prop:badpairs} are within distance $4$.
+\end{proposition}
+
+\begin{proof}
+For $p\in m\setminus\{z\}$: $\ell_{j'}$, $g_\ell$, $o_j$, $m_j$, $p_j$ is a path, since $o$ and $p$ are points of $m$, so that the lines $o_j$ and $p_j$ of $\cQ_j$ pass through its point $m_j$. And $\ell_j$, $o'_j$, $g_m$, $m_{j'}$, $p_{j'}$ is a path, where $o'$ is the point of $\ell$ at which the hub $g_m$ of the partner sits in $\cQ_j$.
+\end{proof}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[xscale=1.2,yscale=1.0]
+  \draw[rounded corners=8pt,gray] (-0.9,-1.2) rectangle (3.9,2.9); \node[font=\small] at (1.5,3.2) {$\cQ_j$, type $D$};
+  \draw[rounded corners=8pt,gray] (5.6,-1.2) rectangle (10.4,2.9); \node[font=\small] at (8.0,3.2) {$\cQ_{j'}$, type $H$};
+  \node[pt] (lj) at (0.3,1.9) {}; \node[left] at (lj) {$\ell_j$};
+  \node[pt] (mj) at (2.7,1.9) {}; \node[right] at (mj) {$m_j$};
+  \node[ln] (zj) at (1.5,2.5) {}; \node[above] at (zj) {$z_j$};
+  \draw[old] (lj)--(zj)--(mj);
+  \node[ln] (oj) at (2.2,0.7) {}; \node[left] at (oj) {$o_j$};
+  \node[ln] (opj) at (0.6,0.7) {}; \node[left] at (opj) {$o'_j$};
+  \node[ln] (pj) at (3.2,0.7) {}; \node[right] at (pj) {$p_j$};
+  \draw[old] (mj)--(oj); \draw[old] (mj)--(pj); \draw[old] (lj)--(opj);
+  \node[ln] (lp) at (6.6,1.9) {}; \node[left] at (lp) {$\ell_{j'}$};
+  \node[ln] (mp) at (9.2,1.9) {}; \node[right] at (mp) {$m_{j'}$};
+  \node[pt] (zp) at (7.9,2.5) {}; \node[above] at (zp) {$z_{j'}$};
+  \draw[old] (lp)--(zp)--(mp);
+  \node[pt] (pp) at (9.7,0.7) {}; \node[right] at (pp) {$p_{j'}$};
+  \draw[old] (mp)--(pp);
+  \draw[gone] (lj) to[out=40,in=150] (lp);
+  \draw[gone] (mj) to[out=40,in=150] (mp);
+  \node[npt] (gl) at (4.75,-0.15) {}; \node[below] at (gl) {\textcolor{BrickRed}{$g_\ell$}};
+  \node[npt] (gm) at (4.75,0.75) {}; \node[above=1pt] at (gm) {\textcolor{BrickRed}{$g_m$}};
+  \draw[added] (gl)--(lp); \draw[added] (gl)--(oj);
+  \draw[added] (gm)--(mp); \draw[added] (gm)--(opj);
+\end{tikzpicture}
+\caption{The hub rule at a partner pair $\ell,m$ of freed lines of $\cQ=Q(4,q)$ meeting in $z$. In the copy $\cQ_j$ of the dual the lines $\ell,m$ are collinear points $\ell_j,m_j$, and their matched lines $\ell_{j'},m_{j'}$ (dashed incidences deleted) are concurrent in $\cQ_{j'}$. The point-hub $g_\ell$ that takes the slot at $\ell_{j'}$ is put, in $\cQ_j$, on a line $o_j$ through $m_j$ ($o$ a point of $m$), and likewise $g_m$ on a line $o'_j$ through $\ell_j$. Then $p_j$ and $\ell_{j'}$ are joined through $g_\ell$, and $\ell_j$ and $p_{j'}$ through $g_m$, for every point $p\ne z$ of $m$; these are the pairs that the deletion broke.}
+\label{fig:hubrule}
+\end{figure}
+
+\emph{The hubs exist} (Lemma~7.3). In the seven-copy layout of \S\ref{ssec:layouts} the transitions from type $H$ to type $D$ free an ovoid $O$ of $Q(4,q)$, which meets every line exactly once; put $g_\ell$, in the two copies of type $D$, at the point $o=O\cap m$ of the partner. A point of $O$ has three free slots in one of these copies and two in the other, and at most two lines of $T$ pass through a point, so at most two hubs ask for it. The requests can be met whatever the common points of the partners are, even when a partner pair meets at a point of $O$ (then both hubs sit there). One point-hub per line of $T$ suffices, because in this layout the transitions out of the two copies of type $D$ end in different copies.
+
+How large can $T$ be? Read in $W(q)$, $T$ is a set of points each collinear with at most one other. A single point uses its $q+1$ lines, a pair $2q+1$ lines, and no line is shared, so $|T|\le 2(q+1)(q^2+1)/(2q+1)$, which is $86$ at $q=9$; for partial ovoids of $W(q)$, $q$ odd, Tallini's bound is $q^2-q+1$ \cite{Ta91}. Computer searches found $66$ at $q=9$ and $89$ at $q=11$ (\path{D5_QUADRANGLE.md}, \S7).
+
+\subsection{Layouts and slot counts}\label{ssec:layouts}
+Over $\cQ=Q(4,q)$, $q$ odd, let every transition from type $H$ to type $D$ be the identity and free $a$ points, every transition from $D$ to $H$ the identity and free $b$ lines, and every transition between copies of the same type free $c$ points with a local duality ($c=2$). Counting the transitions out of and into each copy (Propositions~8.1--8.3):
+\begin{itemize}[leftmargin=1.5em]
+\item five copies $HHDHD$ ($r=2$): $\min_j\alpha_j=\min_j\beta_j=b+c$;
+\item seven copies $HHHDHHD$ ($r=3$): $\alpha=(a+2c,a+2c,a+2c,2b+c,a+2c,a+2c,3b)$, $\beta=(b+2c,b+2c,b+2c,3a,b+2c,b+2c,2a+c)$;
+\item nine copies $HHHHDHHHD$ ($r=4$): $\min_j\alpha_j=\min(a+3c,3b+c)$, $\min_j\beta_j=b+3c$.
+\end{itemize}
+(Over all regular tournaments on seven vertices and all typings, the best value of $\min\alpha+\min\beta$ is $\min(a+b+4c,3b+3c)$, \path{D5_QUADRANGLE.md}, \S8.) With three copies some copy has no friendly outgoing transition, and hubs are limited by $c$. For $q$ even all copies have type $H$ over $W(q)$, every transition is a duality restricted to the points, and every transition frees an ovoid of $W(q)$, so $\alpha_j=\beta_j=r(q^2+1)$.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.55]
+  \foreach \j/\t in {0/H,1/H,2/H,3/D,4/H,5/H,6/D} {
+    \node[draw,circle,inner sep=1.5pt,minimum size=0.62cm,font=\small,fill=white] (c\j) at ({90-360*\j/7}:1.55) {$\t_{\j}$};
+  }
+  \foreach \a/\b in {0/3,1/3,2/3,4/6,5/6}
+    \draw[-{Stealth[length=4pt]},black,thick,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+  \foreach \a/\b in {3/4,3/5,6/0,6/1,6/2}
+    \draw[-{Stealth[length=4pt]},BrickRed,thick,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+  \foreach \a/\b in {0/1,0/2,1/2,1/4,2/4,2/5,4/5,4/0,5/0,5/1,3/6}
+    \draw[-{Stealth[length=3pt]},gray,densely dotted,shorten <=9pt,shorten >=9pt] (c\a)--(c\b);
+\end{tikzpicture}
+\caption{The seven-copy layout $HHHDHHD$ (transitions $j\to j+1,j+2,j+3$). Black: the five transitions from type $H$ to type $D$, identity, freeing an ovoid of $Q(4,q)$ ($a=q^2+1$ points). Red: the five from $D$ to $H$, identity, freeing $b$ lines (a partial spread, or a set with partner pairs and the hub rule). Dotted: the eleven between copies of the same type (ten $H\to H$ and $3\to6$), each a local duality on two points.}
+\label{fig:layout7}
+\end{figure}
+
+\subsection{Hub graphs}\label{ssec:hubgraphs}
+The hub incidences form a bipartite graph $Y$ whose two sides are the line-hubs and the point-hubs. It needs all degrees at most $\delta=q-r$ and any two vertices of the same side within distance $4$ (Lemma~9.1). Either side may play either role below. Explicit ones:
+\begin{enumerate}[label=\textup{(Y\arabic*)},leftmargin=3em,start=0]
+\item $K,K'\le\delta$: the complete bipartite graph;
+\item the incidence graph of a projective plane of order $s$, $s+1\le\delta$, with up to $\delta-s-1$ new vertices of degree one attached to every vertex: $s^2+s+1\le K,K'\le(s^2+s+1)(\delta-s)$. Two old vertices of one side are at distance $2$. A new vertex on $c$ and an old vertex $x$ of its side are within $1+3$, since $c$ and $x$ are on different sides; two new vertices of one side hang on vertices at distance at most $2$;
+\item the incidence graph of a quadrangle of order $(s,s)$, $s+1\le\delta$, with up to $\delta-s-1$ new vertices of degree one attached to each of the $s+1$ lines through a fixed point and to each of the $s+1$ points of a fixed line: $N(s)\le K,K'\le N(s)+(s+1)(\delta-s-1)$;
+\item the incidence graph of the level structure of Theorem~\ref{thm:levelA5} built on a quadrangle of order $(s,s)$ with $2r'+1$ copies, $s+1+r'\le\delta$: $K=K'=(2r'+1)N(s)$.
+\end{enumerate}
+
+\subsection{What the constructions give}\label{ssec:families5}
+\emph{The ingredients} (by their combinatorial property, with the reason they exist). An ovoid of $Q(4,q)$: $q^2+1$ points meeting every line once; it exists for every $q$ \cite[3.4.1]{PT}, and \path{D5_QUADRANGLE.md}, Lemma~1.1, gives one explicitly. For $q$ odd, $q\ge5$, a partial spread of $Q(4,q)$ with $3q-1$ lines, that is, $3q-1$ pairwise non-collinear points of $W(q)$: explicit in \path{D5_QUADRANGLE.md}, Lemma~1.3 (found by the lab; we did not find it in the sources we read). Two-point local dualities (\S\ref{ssec:thmC5}). For $q$ even, a duality and an ovoid of $W(q)$ \cite[3.2.1, 3.4.1]{PT}. The hub graphs of \S\ref{ssec:hubgraphs}.
+
+\emph{The families} (Corollaries~10.1--10.4). For $q$ even and $1\le r\le q-1$: $n_b(q+1+r,5)\ge(2r+1)\cdot2N+K+K'$ with $K,K'\le r(q^2+1)$ and a hub graph with $\delta=q-r$. For $q$ odd, $q\ge5$, with $a=q^2+1$, $b=3q-1$, $c=2$ (on the transition between the two copies of type $D$, $2\to4$, $3\to6$ and $4\to8$ in the three layouts, $M$ goes from the lines to the points of $Q(4,q)$, and the dual of the two-point recipe is used):
+\begin{align*}
+n_b(q+3,5)&\ge 10N+K+K', & K,K'&\le 3q+1, & \delta&=q-2;\\
+n_b(q+4,5)&\ge 14N+K+K', & K&\le 6q,\ K'\le 3q+3, & \delta&=q-3;\\
+n_b(q+5,5)&\ge 18N+K+K', & K&\le\min(q^2+7,9q-1),\ K'\le 3q+5, & \delta&=q-4.
+\end{align*}
+Every transition is repaired by Theorems~\ref{thm:B5} and~\ref{thm:C5}, and Theorem~\ref{thm:assembly5} gives the bound. With the hub graphs of \S\ref{ssec:hubgraphs}:
+
+\begin{center}\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+cell & 2013 table & these families & from & lab value (construction)\\
+\midrule
+$(10,5)$ & 4{,}000 & 4{,}044 & $q=7$, five copies, $22+22$ hubs & 4{,}800 (lift of $W(7)$)\\
+$(11,5)$ & 5{,}850 & 6{,}090 & $q=8$, $r=2$, $120+120$ & 7{,}020 (lift of $W(8)$)\\
+$(12,5)$ & 8{,}200 & 8{,}430 & $q=8$, $r=3$, $120+120$ & 9{,}840 (lift of $W(9)$)\\
+$(13,5)$ & 11{,}480 & 11{,}552 & $q=9$, seven copies, $42+30$ & 11{,}700 (lift of $W(8)$)\\
+$(14,5)$ & 14{,}760 & 14{,}812 & $q=9$, nine copies, $26+26$ & 17{,}568 (lift of $W(11)$)\\
+$(15,5)$ & 20{,}496 & 20{,}598 & $q=11$, seven copies, $66+36$ & 20{,}736 (route-chart lift)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These are above the 2013 table in all six cells and below the lab's values in all six (\path{D5_QUADRANGLE.md}, \S14). With computer-found freed sets the same construction gives $11{,}636$ at $(13,5)$ and $20{,}715$ at $(15,5)$ (seven copies over $Q(4,9)$ and $Q(4,11)$, freed lines with $30$ and $36$ partner pairs and the hub rule), both checked by breadth-first search from every vertex, and both below the lab's values. A count of slots (Proposition~14.1) shows that, with at most two freed points on each transition between copies of the same type, no structure of this kind reaches the lab's values in the cells $(10,5)$--$(14,5)$ and $(16,5)$; at $(15,5)$ it would need a set $T$ of at least $111$ points of $W(11)$, against the $89$ found.
+
+\emph{Credits.} The level structures themselves are not ours (their orders are the table values credited to \cite{DGQ}). Deleting the incidences of an identity matching at a set of pairwise non-collinear points and attaching new vertices is in Rajiv's preprint \cite{R26} for general (non-bipartite) graphs; Theorem~\ref{thm:B5} is the bipartite version of that step at diameter $5$, with one-sided hubs. We did not search the literature for a criterion like Theorem~\ref{thm:E} or for the bound of two points for local dualities.
+
 \appendix
 \section{Coordinates and checks}\label{app:checks}
 \emph{Coordinates.} Explicit coordinates for every construction: \path{research/theorems/POLISHED.md} (\S2 for the hats, \S\S3--5 for diameter $4$, \S\S6--7 for diameter $6$; on branch \path{claude/thm-polish-2oddll}), \path{research/plus2/coords/coords.tex} (the hats, with a hand-checkable proof), and \path{research/theorems/D7_HEXAGON.md} (diameter $7$; branch \path{claude/d7-hexagon-theorems-4w1prt}).
@@ -839,6 +1099,11 @@ The record values themselves were checked by the lab's coordinator with all-pair
 \bibitem{VM98} H.~Van Maldeghem, Generalized Polygons, Birkh\"auser, 1998.
 \bibitem{P71} S.~E. Payne, Nonisomorphic generalized quadrangles, J. Algebra \textbf{18} (1971), 201--212.
 \bibitem{PT} S.~E. Payne and J.~A. Thas, Finite Generalized Quadrangles, 2nd ed., European Mathematical Society, 2009.
+\bibitem{DGQ} C.~Delorme, J.~G\'omez and J.-J.~Quisquater, On large bipartite graphs, manuscript, cited as submitted by \cite{LPP}; we could not find it.
+\bibitem{LPP} E.~Loz, H.~P\'erez-Ros\'es and G.~Pineda-Villavicencio, The degree--diameter problem for bipartite graphs, CombinatoricsWiki (2010); table as of January 2012, equal to \cite[Table 4]{MS13}, read through the Internet Archive.
+\bibitem{MS13} M.~Miller and J.~\v{S}ir\'a\v{n}, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin. (2013), dynamic survey DS14v2.
+\bibitem{R26} R.~Rajiv, preprint, Zenodo, 30 September 2026, doi:10.5281/zenodo.23052995.
+\bibitem{Ta91} G.~Tallini, Blocking sets with respect to planes in $\mathrm{PG}(3,q)$ and maximal spreads of a nonsingular quadric in $\mathrm{PG}(4,q)$, Mitt. Math. Sem. Giessen \textbf{201} (1991), 141--147.
 \end{thebibliography}
 
 \end{document}
