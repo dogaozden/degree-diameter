@@ -1,0 +1,14 @@
+1. H(2), H(3): sphere sizes (q+1)q^(i-1), q^5 opposite elements; Lemma 1.6 (opposite elements in balls of radius 4 and 2): checked
+2-3. q = 2: wiring, degrees, counts, bipartite (all patterns); Theorem 1 far sets (reading 2): checked
+     q = 2, pattern ab, reading 1, thesis labelling: 1890 elements, diameter 9
+     q = 2, pattern ab, reading 2, thesis labelling: 1890 elements, diameter 9
+     q = 2, pattern aa (one block type): diameter 10
+2-3. q = 3: wiring, degrees, counts, bipartite (all patterns); Theorem 1 far sets (reading 2): checked
+     q = 3, pattern aba, reading 1, thesis labelling: 14560 elements, diameter 9
+     q = 3, pattern aba, reading 2, thesis labelling: 14560 elements, diameter 9
+     q = 3, pattern aaa (one block type): diameter 10
+4. Theorem 2: A, B and the far counts 1,348, 7,286, 19,286, 75,560, 208,666 (q = 7, 8, 9, 11, 13): checked
+5. Lemma 5.6 and the route words (alpha = 5..8, all patterns): r4 >= alpha, starved pairs of both bars, largest m2 140, 201, 272, 353, best 134, 197, 262, 347; Theorem 3 numbers: checked
+6. Lemma 5.2 at q = 2: relabelling every copy by a collineation (Av, a, A^-T w) changes nothing; diameter 9: checked
+7. q = 3, pattern aba, reading 1, the audit labelling rebuilt here: 14560 elements, degrees [6], diameter 8 (point labels agreeing with copy 0: 364 of 5460)
+ALL CHECKS PASSED
