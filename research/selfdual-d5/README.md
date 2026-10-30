@@ -5,8 +5,18 @@ Job "selfdual-d5" (Opus cloud session, Oct 30 2026, from 20:35 UTC). Method from
 (t^2 = c, t x t^-1 = beta(x)), then H(G,S) = Cay(G^, tS) is vertex-transitive and only X X = G (X = S^-1 S) has to
 be checked. Work in progress; see the status section at the end.
 
-**NEW (9,5): 2,814 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790 earlier in this job): the
-Haar graph of G = C67 : C21 = <x, y | x^67 = y^21 = 1, y x y^-1 = x^29> = SmallGroup(1407,2) = C7 x (C67 : C3), elements
+**NEW (9,5): 2,928 vertices** (our value was 2,758, the Haar graph of C197 : C7; 2,790 and 2,814 earlier in this
+job): the Haar graph of G = C61 : C24 = <x, y | x^61 = y^24 = 1, y x y^-1 = x^14> = SmallGroup(1464,1) (y acts with
+order 6), elements x^i y^j written (i,j), S = {(0,0), (19,0), (42,12), (59,4), (35,20), (54,7), (30,5), (57,14),
+(56,10)}, (g,A) ~ (s g, B). 9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y^13, so also a
+Cayley graph of G : <tau> (order 2,928) with T = S tau. Checks: apsp.c VALID at D = 5, INVALID at D = 4
+(`records/d9D5_n2928_haar_c61c24_apsp.txt`), independent Python checker VALID, GAP-free rebuild from the formula identical
+to the saved edge list, Cayley build and the search's own build: same nauty canonical form
+(`records/d9D5_n2928_haar_c61c24_cayley.txt`). Files: `records/d9D5_n2928_haar_c61c24.edges` (sha256
+b018047dc73e01113857ca8eb258da2d6ae3f7e693dd64f08466dead75ecd233), rebuild `records/build_d9D5_n2928_haar_c61c24.sh`,
+search output `records/d9D5_n2928_haar_c61c24_search.out` (sdtabu K = 9 on the metacyclic list, record 6, type (3,3)).
+
+Earlier in this job, **2,814 vertices**: the Haar graph of G = C67 : C21 = <x, y | x^67 = y^21 = 1, y x y^-1 = x^29> = SmallGroup(1407,2) = C7 x (C67 : C3), elements
 x^i y^j written (i,j), S = {(0,0), (51,0), (4,0), (22,10), (10,11), (44,5), (3,16), (55,19), (25,2)}, (g,A) ~ (s g, B).
 9-regular, bipartite, diameter 5. Self-dual for beta(x) = x^-1, beta(y) = y (psi fixes (0,0), (51,0), (4,0) and swaps
 three pairs), so also the Cayley graph of G : <tau> = C67 : C42 with T = S tau (three involutions, three inverse pairs).
