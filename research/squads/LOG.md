@@ -118,7 +118,9 @@ downward · c4 (7,5) 2+2 lifts over 2-rich groups of order 304-320 · c5 (6,5) 2
 wildcard (it chose surgery on the 384 graphs: add two vertices and rewire with the 2-switch annealer).
 Best per card (cost 0 = valid): c1 16 (SmallGroup(1260,61/62)), 30 at 1320 · c2 13 (1806,15), 16 (1830,2) · c3 263
 (1316) · c4 34 (SmallGroup(312,55)) · c5 15 (order 176) · c6 123 (SmallGroup(544,221)) · c7 31 at 384 (annealing does
-not even reach the known order-64 level; 118 at 432) · c8 no valid graph.
+not even reach the known order-64 level; 118 at 432) · c8 no valid graph. Only c6 and c7 wrote scoreboard lines; the
+other numbers are read from the cards' log files (c1, c3, c4, c5, c8 were still running or waiting when the session
+stopped all processes at 08:47).
 The machine was overloaded (load 11-14 on 4 cores from the exact searches plus 8 cards), which cut every card's
 effective budget; several cards overran the time box. Reading: no new graph and no new idea; the squad confirmed that
 annealing is far off for (6,5), (7,5), (8,5) lifts and for 3+3 (5,5) lifts. Two rounds in a row without a graph, so
