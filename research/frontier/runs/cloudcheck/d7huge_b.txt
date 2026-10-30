@@ -1,0 +1,80 @@
+# d7huge worker b (check job d7huge-b): all-pairs checks of the (19,7) and (20,7) graphs
+# Written by the worker from the raw tool output; lines below are copied unedited from the checker.
+
+## Machine
+nproc: 4
+free -g:
+               total        used        free      shared  buff/cache   available
+Mem:              15           3           8           0           4          12
+Swap:              0           0           0
+
+## sha256 checks
+hexgen2 16 -> hex/hex_q16.bin: f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394  (expected f7a701a11c2edcdc0014bd8a0eaa2a0ecce11e5953fd4bc63cc8a61c327a4394)
+typed_build.py build -> d19.edges: d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1  (expected d71baea19994d2fb013823260b5c8f44e8407207eaa52c0b24fcc78dd1fc7fc1)
+typed_build.py build -> d20.edges: f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba  (expected f9e6399daa20c5d1022acb10f068a19303d3ba10b38cc0c8c1e18f00d1d0dbba)
+
+## Commands
+cc -O2 -o hexgen2 research/d10D7/hexgen2.c && ./hexgen2 16          (run in a scratch directory; output hex/hex_q16.bin)
+python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d19D7_hex16_typedwhisk_nu0_n11316940.sol d19.edges
+python3 research/synthetic/conics2/typed_build.py build hex/hex_q16.bin research/frontier/sols/d20D7_hex16_typedwhisk_nu0_n15795219.sol d20.edges
+cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
+./apsp_fast d19.edges 19 7 4 LO HI   (d19 ranges; LO=(i-1)*707309, HI=min(i*707309,11316940))
+./apsp_fast d20.edges 20 7 4 LO HI   (d20 ranges; LO=(i-1)*658135, HI=min(i*658135,15795219))
+Runs one at a time under nohup via run_all.sh (22 ranges, in the order a..k).
+
+## Ranges (checker stdout, then its last progress line from stderr)
+
+### d19_r10_6365781_7073090
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=6365781..7073090
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793327586)
+
+### d19_r12_7780399_8487708
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=7780399..8487708
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793332856)
+
+### d19_r16_10609635_11316940
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=10609635..11316940
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707305 of 707305 sources done (1793338206)
+
+### d19_r5_2829236_3536545
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=2829236..3536545
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793306612)
+
+### d19_r7_4243854_4951163
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=4243854..4951163
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793311897)
+
+### d19_r8_4951163_5658472
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=4951163..5658472
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793317132)
+
+### d19_r9_5658472_6365781
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=5658472..6365781
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793322390)
+
+### d20_r2_658135_1316270
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=658135..1316270
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+stderr (last line): 658135 of 658135 sources done (1793345989)
+
+### d20_r4_1974405_2632540
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=1974405..2632540
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+stderr (last line): 658135 of 658135 sources done (1793354254)
+
+### d20_r7_3948810_4606945
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=3948810..4606945
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+stderr (last line): 658135 of 658135 sources done (1793364859)
+
+### d20_r8_4606945_5265080
+n=15795219 edges=157589798 degree min=18 max=20 bipartite=yes diameter=7 sources=4606945..5265080
+RESULT VALID d=20 D=7 n=15795219 (sources in the range only)
+stderr (last line): 658135 of 658135 sources done (1793372615)
