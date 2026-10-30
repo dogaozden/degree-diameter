@@ -17,16 +17,14 @@ total number of hubs for every $k$. (3) With the $q^2+1$ points of an elliptic q
 transitions, this gives, for every $k\ge2$ and every prime power $q\ge q_k$,
 $$n_b(q+1+k,7)\ \ge\ 2(2k+1)(q+1)(q^4+q^2+1)+\begin{cases}k\,(q^4+2q^2+q+1)&k\text{ even},\\[2pt]
 \tfrac{k-1}2\,(2q^4+q^3+q^2+2q+1)+(k+1)(q^2+1)&k\text{ odd},\end{cases}$$
-with $q_2=16$, $q_3=q_4=23$, $q_5=29$, $q_k\le 300k$ in general. The hub graphs are given by a new explicit
-construction (sums of blown-up hexagons); smaller $q$ are checked by computer where possible. The formulas reproduce
+with $q_2=16$, $q_3=q_4=23$, $q_5=29$, $q_k\le 300k$ in general. The hub graphs are explicit (sums of blown-up hexagons); smaller $q$ are checked by computer where possible. The formulas reproduce
 the vertex counts of all fifteen graphs built in the two jobs. At $(19,7)$ the formula equals the built value
 $11{,}316{,}940$ and every ingredient is proved. At $(18,7)$ the theorem with an explicit hub graph (two copies of the
-incidence graph of $H(7)$ joined by perfect matchings) gives $7{,}318{,}644$, above the lab's value $7{,}309{,}092$; that
-graph was built, and checked from every hub (§5.1).
+incidence graph of $H(7)$ joined by perfect matchings) gives $7{,}318{,}644$, above the value $7{,}309{,}092$ of branch `claude/conics-2-diameter-7-ic0oat` (not of master). Every ingredient is explicit, so no computer search is needed for this bound; the graph was also built and checked from every hub (§5.1).
 
 *Labels.* Every result is marked **Theorem** (proved here or in the cited note), **Computer-checked** (a program checked
 it; the program is in the repository) or **Heuristic**, and **[new]** or **[restatement]**. "New" means new in the lab's
-notes; the literature check of `D7_HEXAGON.md` §11 applies, and we did not search the literature again.
+notes; the literature check of `D7_HEXAGON.md` §11 applies, and we did not search the literature again. **[standard]** marks a known result, with its source given.
 
 *Sources.* `research/synthetic/CONICS.md` §3.4 (branch `claude/conics-generalized-polygons-6gjqxi`);
 `research/synthetic/conics2/README.md` (branch `claude/conics-2-diameter-7-ic0oat`, state of 11:44 UTC);
@@ -52,8 +50,7 @@ $(q+1)(q^3+1)$ elements (`D7_HEXAGON.md`, Proposition 1.4).
 
 **Layouts.** $L=2k+1$ *levels*, each a copy of $I$ of *type* $H$ (colour $\mathcal A$ = points, $\mathcal B$ = lines) or
 $D$ (colour $\mathcal A$ = lines, $\mathcal B$ = points). The levels are the vertices of a *regular tournament* $T$: every
-two levels are joined by exactly one *transition* $j\to j'$, and every level has $k$ outgoing and $k$ incoming
-transitions. A transition is a bijection from the $\mathcal A$-elements of level $j$ to the $\mathcal B$-elements of
+two levels are joined by exactly one *transition* $j\to j'$, and every level has $k$ outgoing and $k$ incoming transitions. Regularity is also what makes the degree $q+1+k$: a level with $k+1$ outgoing transitions would give its $\mathcal A$-elements degree $q+k+2$, so regular tournaments are the class of Theorem 2.1. Here $k$ is the number of transitions out of a level, which `D7_HEXAGON.md` calls $r$; there $k$ is the step of a transition $(j,k)$. A transition is a bijection from the $\mathcal A$-elements of level $j$ to the $\mathcal B$-elements of
 level $j'$; it is *friendly* if the types differ, and then it is the identity. `D7_HEXAGON.md` uses the rotational
 tournament $j\to j+i$ ($1\le i\le k$, indices mod $L$); Theorem A and Theorem 3.4 there hold verbatim for every regular
 tournament, since their proofs only use that every pair of levels is the pair of one transition. The *freed set* $R_t$
@@ -78,8 +75,7 @@ maximum degree at most $\delta$, in which any two vertices *of the same colour* 
 the graph has maximum degree $q+1+k$ and diameter at most $7$, and
 $$n_b(q+1+k,7)\ \ge\ 2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}.$$
 
-The value $2(2k+1)N(q)$ alone (no freed sets, no hubs) is the value of the 2013 table at the cells $(7,7)$,
-$(9,7)$–$(16,7)$ [MS13], and the lab's beyond-table value at $(17,7)$–$(20,7)$.
+The value $2(2k+1)N(q)$ alone (no freed sets, no hubs) is the value of the 2013 table at the cells $(7,7)$, $(9,7)$–$(16,7)$ [MS13] for the pairs $(q,k)=(5,1),(7,1),(8,1),(9,1),(9,2),(11,1),(11,2),(11,3),(13,2)$ (cells $\Delta=q+1+k=7,9,10,\dots,16$ in this order), and the lab's beyond-table value at $(17,7)$–$(20,7)$.
 
 **What uses coordinates.** Sections 2 and 4 are about tournaments and bipartite graphs only. In §1, Theorem 1.4,
 Proposition 1.5 and Lemma 1.6 hold in every generalized hexagon of order $(q,q)$ with a spread; only Theorem 1.7 (the
@@ -102,7 +98,7 @@ $$S_0(W)=\{n\in S\setminus\{v\}:\ n\text{ meets no line of }W\},\qquad R_L(W)=\m
 
 (This is the configuration of Theorem D, `POLISHED.md` §6.2 and `SYNTHETIC.md` §3.2, written without coordinates.)
 
-**Lemma 1.2** [restatement, with the counts; Theorem]. (a) The points at distance at most $3$ from $v$ are the $q+1$
+**Lemma 1.2** [restatement, with the counts, parts (c)–(e) from `POLISHED.md` §6.2; Theorem]. (a) The points at distance at most $3$ from $v$ are the $q+1$
 points of $v$ and the $q^2(q+1)$ points at distance $3$, each of which lies on exactly one line of $\mathcal L_v$.
 (b) The points of $\mathcal P_S$ not on $v$ are at distance $5$ from $v$. (c) There are $q^3(q^2-1)$ free points. (d) A
 line opposite $v$ and not in $S$ has exactly one point in $\mathcal P_S$ and $q$ free points. (e) A whisker set has at
@@ -199,13 +195,13 @@ $F(tz_0)=tF(z_0)$, and $F(z_0)\neq0$ since $G$ has no zero. So $t\mapsto F(tz_0)
 $\mathbb F^\times$: one whisker through $X$ if $\nu(X)\neq0$, none if $\nu(X)=0$. $\nu$ is constant on spread lines by
 `POLISHED.md`, Lemma 6.6(d) / 6.12(d). The count is Lemma 1.6. $\square$
 
-**Corollary 1.8** [Theorem]. For every prime power $q$ with $q$ odd or $q\ge4$, in $H(q)$:
+**Corollary 1.8** [restatement; Theorem]. For every prime power $q$ with $q$ odd or $q\ge4$, in $H(q)$:
 $R_H=\mathcal P_S$ is a segment set with $P(q)=q^4+q^3+q+1$ points, and $R_L=\mathcal L_v\cup W\cup S_0(W)$ is a maximal
 dual segment set with $\Lambda(q)=q^4+q^2+q$ lines (Theorem 1.4 with Theorem 1.7). In the notation of Proposition 1.5,
 $\mathcal L_v\cup W$ is extremal and $|R_L\cap S|=q^2$.
 
 *Computer-checked.* `conics2/typed_build.py` asserts every statement of Theorem 1.7 and Corollary 1.8 for
-$q=4,5,7,11,13,16$ inside the builds. Independently, squad round `d7thm-r1` (own code, not the builder): card c1 for
+$q=11,13,16$ inside the builds (the make logs on that branch; `conics2/README.md` also reports runs at $q=4,5,7$, which are not claimed here, as no log is kept). Independently, squad round `d7thm-r1` (own code, not the builder): card c1 for
 $q=3,5,7$ (hexagon built from the quadric and Tits' equations), card c2 for $q=9,11$, card c3 for $q=2,4,8$: exactness of
 $W$, $\nu$ constant on spread lines, $0$ or $q+1$ whiskers per spread line, $|S_0|=q^2$ equal to the lines with $\nu=0$,
 the dual segment property, $|R_L|=q^4+q^2+q$ ($6{,}651$ at $q=9$, $14{,}773$ at $q=11$, $276$ at $q=4$, $4{,}168$ at
@@ -221,7 +217,7 @@ dual segment set of $H(2)$ has $25$ lines (**Computer-checked**, `conics2/README
 of the kind in Proposition 1.5). Whether
 $q^4+q^2+q$ can be beaten for $q\ge5$ is open; by Proposition 1.5 a set of this kind would need more than $q^2$ spread
 lines. (iii) For $q=3^h$ the pencils of an ovoid give a dual segment set of $P(q)$ lines, and the duality layout of
-`D7_HEXAGON.md`, Corollary 8.2 (every freed set of size $P(q)$) is at least as good as any typed layout, by Theorem 2.1. (iv) We know no coordinate-free description of the $q^2$
+`D7_HEXAGON.md`, Corollary 8.2 (every freed set of size $P(q)$) is at least as good as any typed layout: every freed set allowed by Theorems B and C has at most $P(q)$ elements (Proposition 1.4 for segment sets; a set of pairwise opposite points, or of pairwise opposite lines, is non-collinear, resp. non-concurrent, and has at most $q^4+q^2+1<P(q)$ elements by Hoffman's bound for the collinearity graph, whose least eigenvalue is $-(q+1)$), so $\alpha_j,\beta_j\le kP(q)$ for every typed layout, and the duality layout attains this. (iv) We know no coordinate-free description of the $q^2$
 lines with $\nu=0$.
 
 ## 1.4 The non-friendly sets
@@ -305,7 +301,7 @@ lines: $\min\beta=a\Lambda+am$. For $k$ odd, $f_j=a$ only at $H$ levels and ever
 $\alpha_j=(a+1)\Lambda+am\ge aP+(a+1)m$ by $(\ast)$; so $\min\alpha=aP+(a+1)m$; $g_j=a$ only at $H$ levels, where
 $\beta_j=a\Lambda+(a+1)m$. $\square$
 
-So, with friendly point sets of size $P$, friendly line sets of size $\Lambda$ and non-friendly sets of size $m$, the
+So, under $(\ast)$, with friendly point sets of size $P$, friendly line sets of size $\Lambda$ and non-friendly sets of size $m$, the
 alternating layout maximizes $K_{\mathcal A}+K_{\mathcal B}$ (and for $k$ even each of them) over all regular
 tournaments and typings. Its slot counts are
 $$K_{\mathcal B}(q,k)=K_{\mathcal A}(q,k)=\tfrac k2(\Lambda+m)\ (k\text{ even}),\qquad
@@ -357,7 +353,7 @@ $$F_k(q)=2(2k+1)(q+1)(q^4+q^2+1)+\begin{cases}k\,(q^4+2q^2+q+1),&k\text{ even},\
 \tfrac{k-1}2\,(2q^4+q^3+q^2+2q+1)+(k+1)(q^2+1),&k\text{ odd}.\end{cases}$$
 In particular
 $$F_2(q)=10N(q)+2q^4+4q^2+2q+2,\quad F_3(q)=14N(q)+2q^4+q^3+5q^2+2q+5,\quad F_4(q)=18N(q)+4q^4+8q^2+4q+4.$$
-The gain over the level-graph value $2(2k+1)N(q)$ (the 2013 table value when $q+1+k\le16$) is $kq^4+O(q^2)$ for $k$ even and $(k-1)q^4+\frac{k-1}2q^3+O(q^2)$ for
+The gain over the level-graph value $2(2k+1)N(q)$ (the 2013 table value for the pairs of §0) is $kq^4+O(q^2)$ for $k$ even and $(k-1)q^4+\frac{k-1}2q^3+O(q^2)$ for
 $k$ odd; the earlier general statement, `D7_HEXAGON.md` Corollary 9.3 ($k=2$), gave $2(q+2)(q^2+1)\approx2q^3$, and
 none was stated there for $k\ge3$ except for $q=3^h$ (Corollary 9.2). With a larger non-friendly set $m$ the formula changes by $k(m-q^2-1)$ for $k$ even and
 $(k+1)(m-q^2-1)$ for $k$ odd.
@@ -371,7 +367,7 @@ degree $q-k$. The Moore-type bound for same-colour distance $6$ is about $(q-k)^
 hub graph of `D7_HEXAGON.md` (Lemma 7.1, a plane with pendant trees) has only about $\frac4{27}(q-k)^4$ vertices per
 colour. Write $K_0(s)=(s+1)(s^4+s^2+1)$ for the number of points of a hexagon of order $(s,s)$.
 
-**Lemma 4.1** (*blown-up hexagon*) [Theorem; elementary]. Let $s$ be a prime power and $c\ge1$. Replace every point and
+**Lemma 4.1** (*blown-up hexagon*) [standard; Theorem]. Duplicating elements of the split Cayley hexagon is Delorme's construction [De85a, §8(b)]; this is its uniform version, and the projection argument is standard. Let $s$ be a prime power and $c\ge1$. Replace every point and
 every line of $H(s)$ by between $1$ and $c$ copies, and join two copies when the originals are incident. The result is
 an $\mathrm{HG}(K_1,K_2;c(s+1))$ for any chosen $K_1,K_2\in[K_0(s),cK_0(s)]$, and any two of its vertices of different
 colours are at distance at most $5$.
@@ -388,12 +384,11 @@ $B_j\to A_i$, as edges. The result is an $\mathrm{HG}(\sum|A_i|,\sum|B_i|;\ \max
 *Proof.* The new edges join the colours $A$ and $B$, so the graph is bipartite with classes $\bigcup A_i$, $\bigcup B_i$.
 A vertex of $Y_i$ gains one edge to each $Y_j$, $j<i$, and at most one from each $Y_j$, $j>i$. Same-colour pairs inside
 one $Y_i$ are at distance at most $6$ in $Y_i$. For $x\in A_j$ and $z\in A_i$ with $i<j$, $x$ has a neighbour
-$b\in B_i$, and $d_{Y_i}(b,z)\le5$ since $i<r$; so $d(x,z)\le6$. The same for $B$. $\square$
+$b\in B_i$, and $d_{Y_i}(b,z)\le5$ since $i<r$; so $d(x,z)\le6$. The same for $B$. $\square$ Lemma 4.2 is a compound in the sense of [GF85] (copies of graphs joined by matchings along a tournament); the new point is the order condition, with different-colour distance $\le5$ in every part but the last, which makes every same-colour pair reach distance $6$ through an earlier part.
 
 **Lemma 4.3** (`D7_HEXAGON.md`, Lemma 7.1, with the colours sized separately) [restatement; Theorem]. Let $s$ be a prime
 power, $n=s^2+s+1$, $t=\delta-s-1\ge0$, $u=\delta-1$. Attach to the incidence graph of $\mathrm{PG}(2,s)$ $c_P$ pendant
-vertices at the points and $c_L$ at the lines (at most $t$ per core vertex), and $g_P$, $g_L$ pendant vertices below
-these (at most $u$ per vertex). This is an $\mathrm{HG}(n+c_L+g_P,\ n+c_P+g_L;\ \delta)$. *Proof.* The distance argument
+vertices at the points and $c_L$ at the lines (at most $t$ per core vertex), and $g_P$, $g_L$ pendant vertices below these: $g_P$ below the $c_P$ pendants at points, $g_L$ below the $c_L$ at lines (at most $u$ per vertex). This is an $\mathrm{HG}(n+c_L+g_P,\ n+c_P+g_L;\ \delta)$. *Proof.* The distance argument
 of Lemma 7.1 does not use the numbers of pendant vertices. $\square$ (Different-colour distances can be $7$ here, so such
 a part can only be the last part $Y_r$ in Lemma 4.2; squad card c5 confirmed this with a negative control.)
 
@@ -408,7 +403,7 @@ Theorem 2.2, $m=q^2+1$) exists
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | $q_k$ | 16 | 23 | 23 | 29 | 23 | 31 | 29 | 37 | 32 | 43 | 41 |
 
-These are the thresholds of our search (`d7thm/hubopt.py`), not of the method; they are not monotone in $k$.
+These are the smallest $q$ from which our sums of Lemmas 4.1–4.3 reach the full slots: `d7thm/hubopt.py` and a second, independently written search (`research/referee/d7thm_checks/mysearch.py`, branch `claude/referee-d7-theorems-8og1h3`) agree at every $(q,k)$ with $k\le12$ and $q<q_k$, but neither is exhaustive over size assignments. Other hub graphs may do better. They are not monotone in $k$.
 
 *Proof.* (a) Let $q\ge300k$ (so $q\ge600$). The slot counts satisfy $q^4<\Lambda\le K_{\mathcal A}\le K_{\mathcal B}$,
 $K_{\mathcal B}/K_{\mathcal A}\le P/\Lambda\le1+1/q$ and $K_{\mathcal B}\le kP\le k(q+1)^4$. Put
@@ -423,13 +418,10 @@ $q\le200$ the program `d7thm/hubopt.py` (an enumeration of multisets of parts wi
 decomposition into parts of Lemmas 4.1–4.3, combined by Lemma 4.2, and verifies it (sizes add up, the order condition,
 the degrees, the pendant-tree parameters, which `hubopt.out` prints); each line can be checked by hand. Examples:
 $(q,k)=(16,2)$, $K=66{,}065$: $H(8)+H(7)+H(5)$ and two copies of $H(4)$ blown up to $2{,}730$ and $2{,}372$
-(degrees $9+4$, $8+4$, $6+4$, $10+4\le14$); another one, built and checked below, is $H(8)+H(7)+H(5)+H(5)$ and a
-pendant-tree part on $\mathrm{PG}(2,5)$ with $124$ and $116$ vertices at depth $1$ and $1{,}049$ and $1{,}041$ at depth
-$2$ ($1{,}196$ per colour, degree $10$). $(q,k)=(23,3)$: $H(11)+H(9)+H(8)$, the last blown up to $49{,}506$ and
+(degrees $9+4$, $8+4$, $6+4$, $10+4\le14$; this is the certificate that `build_cert.py` builds and `cert_checks.out` checks); $(q,k)=(23,3)$: $H(11)+H(9)+H(8)$, the last blown up to $49{,}506$ and
 $37{,}867$. Below the full slots the same search gives the hub graphs of §5.2, for instance $(13,4)$: $H(7)+H(7)$,
 two hexagons of order $7$ joined by a perfect matching from the points of each to the lines of the other ($39{,}216$
-per colour, degree $8+1=9$). For $200<q\le2\cdot10^5$ Lemma 4.1 alone suffices (`d7thm/hubcap.py`, which finds $s$
-and $c$ for every such $q$); for $q>2\cdot10^5\ge300k$ use (a). $\square$
+per colour, degree $8+1=9$). For $200<q\le2\cdot10^5$ a single blow-up with $c\le2$ suffices (Lemma 4.1 alone; `d7thm/hubcap.py` finds $s$ and $c$ for every such $q$); for $q>2\cdot10^5\ge300k$ use (a). $\square$
 
 *Computer-checked.* `d7thm/build_cert.py` builds the hub graph of a certificate (hexagons from
 `research/d10D7/hexgen2.c`, random injections) and `hgcheck edges` checks it: $(q,k)=(16,2)$,
@@ -473,7 +465,7 @@ We did not run $k=5$ with $q\ge23$ (more than $300{,}000$ hubs per colour) or $k
 within distance $6$ of a vertex in a graph of maximum degree $\delta$. In the table above a random hub graph worked
 exactly when $M(\delta)/K_{\mathcal B}\ge20$; at $19.0$–$19.4$ ($(19,5)$, $(13,3)$, $(17,4)$) tens to thousands of far
 pairs were left, and below that random graphs are far off. Where they fail the lab used Haar graphs over
-$\mathrm{PSL}(2,p)$ and paths through the levels, which reach fewer hubs than the slots ($16{,}152$ of $16{,}309$ at
+$\mathbb Z_{673}\rtimes\mathbb Z_{24}$ and $\mathrm{PSL}(2,41)$ and paths through the levels, which reach fewer hubs than the slots ($16{,}152$ of $16{,}309$ at
 $(15,7)$, $34{,}440$ of $59{,}070$ at $(18,7)$).
 
 # 5. The cells
@@ -483,8 +475,7 @@ $(15,7)$, $34{,}440$ of $59{,}070$ at $(18,7)$).
 `d7thm/cells.py` recomputes, for every graph built in the jobs "conics" and "conics-2", the slot vectors of §2 from
 $q$, the type string, $|\mathcal P_S|=P(q)$, $|R_L|$ ($q^4+q$ without $S_0$, $q^4+q^2+q$ with it) and $m$, and the
 order $2(2k+1)N(q)+K_{\mathcal A}+K_{\mathcal B}$ from the hub counts. **Computer-checked**: all fifteen agree with the
-builders (`cells.out`): every slot vector equals the one printed in the make logs on branch
-`claude/conics-2-diameter-7-ic0oat`, and every order equals the $n$ of the solution file. The current graphs:
+builders (`cells.out`): twelve of the fifteen builds have a make log on branch `claude/conics-2-diameter-7-ic0oat`, and all twelve slot vectors equal the printed ones (this includes the $(15,7)$ build with $16{,}152$ hubs per side, whose `make_meta.log` is not compared by `cells.py`). The three builds of job "conics" (orders $1{,}802{,}400$, $2{,}504{,}544$, $4{,}081{,}072$ for $(14,7)$, $(15,7)$, $(16,7)$) have no make log and are compared by order only; they agree. Every order equals the $n$ of its solution file. The current graphs:
 
 | cell | $q$, types | $m$ | hubs per side | hub graph | $n$ | all-pairs check | the bound follows from |
 |------|--------|----|----------|----------|--------:|----------|------------------|
@@ -504,24 +495,24 @@ all-pairs states are those of `conics2/README.md` at 11:44 UTC.
 At $(19,7)$ and $(20,7)$ the built graphs use exactly the sets of Theorem 3.1 ($m=q^2+1$, the elliptic section), so their
 orders are $F_2(16)$ and $F_3(16)$. For $(19,7)$ every ingredient is proved: the sets (Corollary 1.8, Proposition 1.9),
 the repair of every transition (Theorems B and C), the slot counts (Theorem 2.2) and an $\mathrm{HG}(66065,66065;14)$
-(Theorem 4.4: $H(8)+H(7)+H(5)+H(5)$ and a pendant-tree part, joined by Lemma 4.2). So
+(Theorem 4.4: $H(8)+H(7)+H(5)$ and two copies of $H(4)$ blown up to $2{,}730$ and $2{,}372$ vertices per colour, joined by Lemma 4.2; this is the certificate that `d7thm/cert_checks.out` checks). So
 $$n_b(19,7)\ \ge\ 11{,}316{,}940$$
 holds by proof, independently of the all-pairs check of the built graph (which uses a random hub graph and was not
 complete when job "conics-2" ended). For $(20,7)$ the hub graph $\mathrm{HG}(70163,66322;13)$ is not covered by
 Theorem 4.4; it is computer-checked (the builder's graph, re-checked standalone by `hgcheck`, and a second random graph,
-seed 1, `hgrun.out`); with the proved equal-sided hub graph of $65{,}737$ hubs per colour the bound is $15{,}790{,}208$.
+seed 1, `hgrun.out`); with the proved equal-sided hub graph of $66{,}234$ hubs per colour the bound is $15{,}791{,}202$, as in §5.2.
 This is a statement about the theorems, not a record claim: the lab records values after the coordinator's own check.
 
-**A larger (18,7) graph** [new; Theorem, built and partly computer-checked]. At $(q,k)=(13,4)$ the cluster-assisted Haar
+**A larger (18,7) graph** [new; Theorem; all ingredients explicit; built and partly computer-checked]. At $(q,k)=(13,4)$ the cluster-assisted Haar
 hub graph of the current build has $34{,}440$ hubs per colour, while Lemma 4.2 gives $\mathrm{HG}(39216,39216;9)$
-($H(7)+H(7)$, §4). With the build's sets (slots $59{,}070$ per colour) or those of Theorem 3.1 (slots $57{,}826$),
+($H(7)+H(7)$, §4). With the build's sets (slots $59{,}070$ per colour) or those of Theorem 3.1 (slots $57{,}826$, from Corollary 1.8, Proposition 1.9 and Theorem 2.2; no computer search is needed for this bound),
 Theorem 3.1 gives
 $$n_b(18,7)\ \ge\ 18\cdot402{,}234+2\cdot39{,}216\ =\ 7{,}318{,}644,$$
-$9{,}552$ more than the lab's $7{,}309{,}092$. We built it with `conics2/typed_build.py` (same hexagon file, types
+$9{,}552$ more than the value $7{,}309{,}092$ of branch `claude/conics-2-diameter-7-ic0oat` (not on master). We built it with `conics2/typed_build.py` (same hexagon file, types
 $HHDHDHDHD$, the 792-point mirrored set, $S_0$ included; the hub graph from `d7thm/build_cert.py`): the builder re-checks
 every hypothesis (segment and dual segment sets, the local duality at all 792 points, same-colour hub distances at most
 $6$, degrees $15$ to $18$) and writes $n=7{,}318{,}644$, $65{,}612{,}918$ edges, edge-list sha256
-`c80d9c0e6a569508b2314c3c3cd6c53babce0ecb844017fdf7f86f297426ed1a`; the solution file
+`c80d9c0e…ed1a` (full hash in `d7thm/d18D7/README.md`); the solution file
 `research/frontier/sols/d18D7_hex13_typedwhisk_h7h7_n7318644.sol` rebuilds it byte for byte (`typed_build.py build`). **Computer-checked:** (i) its level part (all edges
 between level vertices, $64{,}554{,}086$ of them) is identical to that of the lab's $7{,}309{,}092$ graph, rebuilt from
 its solution file (sha256 `314d5db9…`, as recorded); (ii) `apsp_fast` (`conics/apsp_fast.c`) from all $78{,}432$ hubs: bipartite, degrees $15$ to $18$, every
@@ -564,8 +555,7 @@ $14N(11)+2\cdot12{,}180=2{,}504{,}544$.
 
 At $(18,7)$ the proved value, $7{,}318{,}644$, exceeds the lab's built $7{,}309{,}092$ (§5.1). The proved values exceed the level-graph values at every cell $\Delta=14,\dots,26$. For $k\ge3$ the lab's notes had no general statement
 except for $q=3^h$ (`D7_HEXAGON.md`, Corollary 9.2; §9 there says none covers $(15,7)$). The values with
-computer-found ingredients (the lab's sets $m=768,792$ and hub graphs) are the built values of §5.1 and are larger at
-$q=11,13$.
+computer-found ingredients (the lab's sets $m=768,792$ and hub graphs) are the built values of §5.1 and are larger at $(14,7)$–$(17,7)$; at $(18,7)$ the explicit hub graph $H(7)+H(7)$ beats the computer-found one.
 
 
 # 6. Summary: what is new
@@ -617,6 +607,8 @@ Squad round `research/squads/d7thm-r1/`: `BRIEF.md`, cards `c1`–`c6` (code and
 
 # References
 
+- [De85a] C. Delorme, Grands graphes de degré et diamètre donnés, European J. Combin. 6 (1985) 291–302.
+- [GF85] J. Gómez, M. A. Fiol, Dense compound graphs, Ars Combin. 20-A (1985) 211–237.
 - [MS13] M. Miller, J. Širáň, Moore graphs and beyond: a survey of the degree/diameter problem, Electron. J. Combin.,
   Dynamic Survey DS14 (2013).
 - [Na52] J. Nagura, On the interval containing at least one prime number, Proc. Japan Acad. 28 (1952) 177–181.
