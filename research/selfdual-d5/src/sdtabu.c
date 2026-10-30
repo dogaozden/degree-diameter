@@ -8,7 +8,8 @@
  * TEN steps; restart from a random set after STALL steps without improvement.
  * usage: sdtabu FILE.ht REC F M      or      sdtabu FILE.ht all   (every record and every type of valency K, SECS each)
  * env: K (default 6), SECS (per type, default 20), SEED, NB (default 48), TEN (default 12), STALL (default 300),
- *      MAXSOL (stop a type after this many solutions, default 5), EDGES (edge list of the first solution).
+ *      MAXSOL (stop a type after this many solutions, default 5), EDGES (edge list of the first solution),
+ *      DEEP=thr,secs (give a type secs more seconds if its best energy after SECS is <= thr), TYPES (as in sdk).
  * output: "SOL tag s_0 .. s_K-1", one "TABU rec .. f .. m .. best .. sols .. steps .. secs" line per type, "DONE".
  */
 #include <stdio.h>
@@ -102,6 +103,7 @@ static void randomize(void) {
     for (int i = 0; i < nm_; i++) { int x = rand_item(0); it[nit++] = x; }
 }
 
+static double deep_secs = 0; static int deep_thr = 0;
 static void run(int r, int f, int m, double secs, int NB, int TEN, int STALL, int MAXSOL) {
     setup(r);
     if (rkind[r]) { fixed0 = orbof[0]; nf_ = 0; nm_ = m - 1; } else { fixed0 = -1; nf_ = f - 1; nm_ = m; }
@@ -110,7 +112,11 @@ static void run(int r, int f, int m, double secs, int NB, int TEN, int STALL, in
     tabu_until = calloc(nfl + nol, sizeof(long long)); step = 0;
     clock_t c0 = clock(); int best = 1 << 30, sols = 0, restarts = 0;
     randomize(); int k = build(); int e = pp_uncov(S, k, 1), runbest = e; long long last_imp = 0;
-    while ((double)(clock() - c0) / CLOCKS_PER_SEC < secs && sols < MAXSOL) {
+    int extended = 0;
+    for (;;) {
+        double el = (double)(clock() - c0) / CLOCKS_PER_SEC;
+        if (sols >= MAXSOL) break;
+        if (el >= secs) { if (!extended && deep_secs > 0 && best <= deep_thr) { secs += deep_secs; extended = 1; } else break; }
         step++;
         int bi = -1, bx = -1, be = 1 << 30;
         for (int t = 0; t < NB; t++) {
@@ -133,8 +139,8 @@ static void run(int r, int f, int m, double secs, int NB, int TEN, int STALL, in
             randomize(); k = build(); e = pp_uncov(S, k, 1); runbest = e; last_imp = step; restarts++; continue; }
         if (step - last_imp > STALL) { randomize(); k = build(); e = pp_uncov(S, k, 1); runbest = e; last_imp = step; restarts++; }
     }
-    printf("TABU rec %d %s %d f %d m %d best %d sols %d steps %lld restarts %d secs %.1f\n", r, rkind[r] ? "ext" : "alpha",
-           rkind[r] ? rc[r] : rp[r], f, m, best, sols, step, restarts, (double)(clock() - c0) / CLOCKS_PER_SEC);
+    printf("TABU rec %d %s %d f %d m %d best %d sols %d steps %lld restarts %d secs %.1f%s\n", r, rkind[r] ? "ext" : "alpha",
+           rkind[r] ? rc[r] : rp[r], f, m, best, sols, step, restarts, (double)(clock() - c0) / CLOCKS_PER_SEC, extended ? " DEEP" : "");
     fflush(stdout); free(tabu_until);
 }
 
@@ -146,6 +152,7 @@ int main(int argc, char **argv) {
     int STALL = getenv("STALL") ? atoi(getenv("STALL")) : 300, MAXSOL = getenv("MAXSOL") ? atoi(getenv("MAXSOL")) : 5;
     if (getenv("SEED")) { rs ^= (uint64_t)atoll(getenv("SEED")) * 0x9E3779B97F4A7C15ULL; for (int i = 0; i < 10; i++) rnd(); }
     edges_out = getenv("EDGES");
+    if (getenv("DEEP")) sscanf(getenv("DEEP"), "%d,%lf", &deep_thr, &deep_secs);   /* DEEP=thr,secs: extend a type whose best <= thr */
     load(argv[1]);
     psi = malloc(sizeof(int) * n); fl = malloc(sizeof(int) * n); ol = malloc(sizeof(int) * 2 * n); orbof = malloc(sizeof(int) * n);
     printf("GROUP %s n %d K %d records %d\n", argv[1], n, K, nrec);
