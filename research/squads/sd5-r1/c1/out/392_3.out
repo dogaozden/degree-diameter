@@ -1,0 +1,16 @@
+GROUP /home/user/degree-diameter/research/squads/sd5-r1/c1/tmp/g392_3.ht n 392 ninv 1 nalpha 2 mode o4
+ALPHA4 rec 0 fixed 1 two 97 four 49 other 0
+PAT A rec 0 nF 1 n2 97 n4 49 sets 49 passXX 0 best 384 sols 0 secs 0.00
+PAT B rec 0 nF 1 n2 97 n4 49 sets 4753 passXX 0 best 362 sols 0 secs 0.00
+PAT X5 skipped (nF 1 n2 97 n4 49)
+PAT X31 skipped (nF 1 n2 97 n4 49)
+PAT X12 rec 0 nF 1 n2 97 n4 49 sets 4656 passXX 0 best 1073741824 sols 0 secs 0.00
+PAT X03 rec 0 nF 1 n2 97 n4 49 sets 147440 passXX 0 best 1073741824 sols 0 secs 0.02
+ALPHA4 rec 1 fixed 97 two 49 four 49 other 0
+PAT A rec 1 nF 97 n2 49 n4 49 sets 4753 passXX 0 best 344 sols 0 secs 0.00
+PAT B rec 1 nF 97 n2 49 n4 49 sets 2401 passXX 0 best 374 sols 0 secs 0.00
+PAT X5 rec 1 nF 97 n2 49 n4 49 sets 300000 passXX 0 best 1073741824 sols 0 CAPPED secs 0.05
+PAT X31 rec 1 nF 97 n2 49 n4 49 sets 300000 passXX 0 best 1073741824 sols 0 CAPPED secs 0.04
+PAT X12 rec 1 nF 97 n2 49 n4 49 sets 114072 passXX 0 best 1073741824 sols 0 secs 0.02
+PAT X03 rec 1 nF 97 n2 49 n4 49 sets 18424 passXX 0 best 1073741824 sols 0 secs 0.00
+DONE n 392 2n 784 records 2 sols 0 best 344 bestrec 1 evals 896548 passXX 0 anomaly_yy 0 anomaly_odd 0 secs 0.1
