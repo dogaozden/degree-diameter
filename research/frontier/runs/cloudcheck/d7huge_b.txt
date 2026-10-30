@@ -5,7 +5,7 @@
 nproc: 4
 free -g:
                total        used        free      shared  buff/cache   available
-Mem:              15           5           5           0           4           9
+Mem:              15           1           9           0           4          13
 Swap:              0           0           0
 
 ## sha256 checks
@@ -23,6 +23,11 @@ cc -O3 -march=native -pthread -o apsp_fast research/synthetic/conics/apsp_fast.c
 Runs one at a time under nohup via run_all.sh (22 ranges, in the order a..k).
 
 ## Ranges (checker stdout, then its last progress line from stderr)
+
+### d19_r10_6365781_7073090
+n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=6365781..7073090
+RESULT VALID d=19 D=7 n=11316940 (sources in the range only)
+stderr (last line): 707309 of 707309 sources done (1793327586)
 
 ### d19_r5_2829236_3536545
 n=11316940 edges=107433784 degree min=17 max=19 bipartite=yes diameter=7 sources=2829236..3536545
